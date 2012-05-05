@@ -106,7 +106,6 @@ NOINST_H_FILES =			\
 	gedit-close-button.h		\
 	gedit-close-confirmation-dialog.h \
 	gedit-command-line.h		\
-	gedit-dbus.h			\
 	gedit-dirs.h			\
 	gedit-document-input-stream.h	\
 	gedit-document-loader.h		\
@@ -189,7 +188,6 @@ libgedit_c_files =			\
 	gedit-commands-help.c		\
 	gedit-commands-search.c		\
 	gedit-commands-view.c		\
-	gedit-dbus.c			\
 	gedit-debug.c			\
 	gedit-dirs.c			\
 	gedit-document.c 		\
@@ -238,11 +236,6 @@ libgedit_la_SOURCES = 			\
 
 if !ENABLE_GVFS_METADATA
 libgedit_la_SOURCES += gedit-metadata-manager.c
-endif
-
-if !PLATFORM_WIN32
-libgedit_la_SOURCES += gedit-fifo.c
-NOINST_H_FILES += gedit-fifo.h
 endif
 
 ENUM_TYPES = 			\
