@@ -37,9 +37,6 @@
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
 #define GEDIT_TYPE_APP              (gedit_app_get_type())
 #define GEDIT_APP(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_APP, GeditApp))
 #define GEDIT_APP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_APP, GeditAppClass))
@@ -47,30 +44,21 @@ G_BEGIN_DECLS
 #define GEDIT_IS_APP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_APP))
 #define GEDIT_APP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_APP, GeditAppClass))
 
-/* Private structure type */
+typedef struct _GeditApp        GeditApp;
+typedef struct _GeditAppClass   GeditAppClass;
 typedef struct _GeditAppPrivate GeditAppPrivate;
-
-/*
- * Main object structure
- */
-typedef struct _GeditApp GeditApp;
 
 struct _GeditApp
 {
-	GObject parent;
+	GtkApplication parent;
 
 	/*< private > */
 	GeditAppPrivate *priv;
 };
 
-/*
- * Class definition
- */
-typedef struct _GeditAppClass GeditAppClass;
-
 struct _GeditAppClass
 {
-	GObjectClass parent_class;
+	GtkApplicationClass parent_class;
 
 	gboolean (*last_window_destroyed)	(GeditApp    *app,
 	                                         GeditWindow *window);
@@ -87,8 +75,6 @@ struct _GeditAppClass
 	void (*set_window_title)		(GeditApp    *app,
 	                                         GeditWindow *window,
 	                                         const gchar *title);
-
-	void (*quit)                            (GeditApp    *app);
 
 	GeditWindow *(*create_window)		(GeditApp    *app);
 
@@ -113,9 +99,7 @@ typedef enum
 /* We need to define this here to avoid problems with bindings and gsettings */
 #define GEDIT_LOCKDOWN_ALL 0xF
 
-/*
- * Public methods
- */
+/* Public methods */
 GType 		 gedit_app_get_type 			(void) G_GNUC_CONST;
 
 GeditApp 	*gedit_app_get_default			(void);
@@ -147,9 +131,7 @@ gboolean	gedit_app_process_window_event		(GeditApp    *app,
 							 GeditWindow *window,
 							 GdkEvent    *event);
 
-/*
- * Non exported functions
- */
+/* Non exported functions */
 GeditWindow	*_gedit_app_restore_window		(GeditApp    *app,
 							 const gchar *role);
 GeditWindow	*_gedit_app_get_window_in_viewport	(GeditApp     *app,
@@ -178,7 +160,6 @@ void			 _gedit_app_set_default_print_settings	(GeditApp         *app,
 								 GtkPrintSettings *settings);
 
 GObject			*_gedit_app_get_settings		(GeditApp  *app);
-void                     _gedit_app_quit                        (GeditApp  *app);
 void                     _gedit_app_ready                       (GeditApp  *app);
 
 G_END_DECLS

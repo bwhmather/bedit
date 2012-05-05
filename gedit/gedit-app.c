@@ -74,7 +74,6 @@ enum
 
 struct _GeditAppPrivate
 {
-	GList	          *windows;
 	GeditWindow       *active_window;
 
 	GeditLockdownMask  lockdown;
@@ -90,17 +89,7 @@ struct _GeditAppPrivate
 
 static GeditApp *app_instance = NULL;
 
-G_DEFINE_ABSTRACT_TYPE(GeditApp, gedit_app, G_TYPE_OBJECT)
-
-static void
-gedit_app_finalize (GObject *object)
-{
-	GeditApp *app = GEDIT_APP (object); 
-
-	g_list_free (app->priv->windows);
-
-	G_OBJECT_CLASS (gedit_app_parent_class)->finalize (object);
-}
+G_DEFINE_ABSTRACT_TYPE(GeditApp, gedit_app, GTK_TYPE_APPLICATION)
 
 static void
 gedit_app_dispose (GObject *object)
@@ -247,6 +236,36 @@ gedit_app_set_window_title_impl (GeditApp    *app,
 	gtk_window_set_title (GTK_WINDOW (window), title);
 }
 
+static void
+gedit_app_startup (GApplication *application)
+{
+	const gchar *dir;
+	gchar *icon_dir;
+
+	G_APPLICATION_CLASS (gedit_app_parent_class)->startup (application);
+
+	gedit_debug_message (DEBUG_APP, "Set icon");
+
+	dir = gedit_dirs_get_gedit_data_dir ();
+	icon_dir = g_build_filename (dir, "icons", NULL);
+
+	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (), icon_dir);
+	g_free (icon_dir);
+}
+
+static void
+gedit_app_activate (GApplication *application)
+{
+	GeditWindow *window;
+
+	gedit_debug_message (DEBUG_APP, "Create main window");
+	window = gedit_app_create_window (GEDIT_APP (application), NULL);
+	gtk_application_add_window (GTK_APPLICATION (application), GTK_WINDOW (window));
+
+	gedit_debug_message (DEBUG_APP, "Show window");
+	gtk_widget_show (GTK_WIDGET (window));
+}
+
 static gboolean
 ensure_user_config_dir (void)
 {
@@ -370,7 +389,7 @@ save_print_settings (GeditApp *app)
 }
 
 static void
-gedit_app_quit_impl (GeditApp *app)
+gedit_app_shutdown (GApplication *app)
 {
 	gedit_debug_message (DEBUG_APP, "Quitting\n");
 
@@ -378,10 +397,10 @@ gedit_app_quit_impl (GeditApp *app)
 	ensure_user_config_dir ();
 
 	save_accels ();
-	save_page_setup (app);
-	save_print_settings (app);
+	save_page_setup (GEDIT_APP (app));
+	save_print_settings (GEDIT_APP (app));
 
-	gtk_main_quit ();
+	G_APPLICATION_CLASS (gedit_app_parent_class)->shutdown (app);
 }
 
 static void
@@ -449,22 +468,18 @@ window_delete_event (GeditWindow *window,
 	return TRUE;
 }
 
-void
-_gedit_app_quit (GeditApp *app)
-{
-	GEDIT_APP_GET_CLASS (app)->quit (app);
-}
-
 static void
-window_destroy (GeditWindow *window, 
+window_destroy (GeditWindow *window,
 		GeditApp    *app)
 {
-	app->priv->windows = g_list_remove (app->priv->windows,
-					    window);
+	GList *windows;
+
+	gtk_application_remove_window (GTK_APPLICATION (app), GTK_WINDOW (window));
+	windows = gtk_application_get_windows (GTK_APPLICATION (app));
 
 	if (window == app->priv->active_window)
 	{
-		set_active_window (app, app->priv->windows != NULL ? app->priv->windows->data : NULL);
+		set_active_window (app, windows != NULL ? windows->data : NULL);
 	}
 
 /* CHECK: I don't think we have to disconnect this function, since windows
@@ -477,14 +492,14 @@ window_destroy (GeditWindow *window,
 					      G_CALLBACK (window_destroy),
 					      app);
 */
-	if (app->priv->windows == NULL)
+	if (windows == NULL)
 	{
 		if (!GEDIT_APP_GET_CLASS (app)->last_window_destroyed (app, window))
 		{
 			return;
 		}
 
-		_gedit_app_quit (app);
+		g_application_quit (G_APPLICATION (app));
 	}
 }
 
@@ -492,7 +507,8 @@ static GeditWindow *
 gedit_app_create_window_impl (GeditApp *app)
 {
 	GeditWindow *window;
-	gboolean isfirst;
+	GList *windows;
+	gboolean is_first;
 	
 	/*
 	 * We need to be careful here, there is a race condition:
@@ -501,29 +517,29 @@ gedit_app_create_window_impl (GeditApp *app)
 	 * is never NULL when at least a window exists.
 	 */
 
-	isfirst = (app->priv->windows == NULL);
+	windows = gtk_application_get_windows (GTK_APPLICATION (app));
+	is_first = (windows == NULL);
 	
-	window = g_object_new (GEDIT_TYPE_WINDOW, NULL);
+	window = g_object_new (GEDIT_TYPE_WINDOW, "application", app, NULL);
 
-	if (isfirst)
+	if (is_first)
 	{
 		set_active_window (app, window);
 	}
 
-	app->priv->windows = g_list_prepend (app->priv->windows,
-					     window);
+	gtk_application_add_window (GTK_APPLICATION (app), GTK_WINDOW (window));
 
 	gedit_debug_message (DEBUG_APP, "Window created");
 
-	g_signal_connect (window, 
+	g_signal_connect (window,
 			  "focus_in_event",
-			  G_CALLBACK (window_focus_in_event), 
+			  G_CALLBACK (window_focus_in_event),
 			  app);
 	g_signal_connect (window,
 			  "delete_event",
 			  G_CALLBACK (window_delete_event),
-			  app);			  
-	g_signal_connect (window, 
+			  app);
+	g_signal_connect (window,
 			  "destroy",
 			  G_CALLBACK (window_destroy),
 			  app);
@@ -540,18 +556,21 @@ static void
 gedit_app_class_init (GeditAppClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GApplicationClass *app_class = G_APPLICATION_CLASS (klass);
 
-	object_class->finalize = gedit_app_finalize;
 	object_class->dispose = gedit_app_dispose;
 	object_class->get_property = gedit_app_get_property;
 	object_class->constructor = gedit_app_constructor;
 	object_class->constructed = gedit_app_constructed;
 
+	app_class->startup = gedit_app_startup;
+	app_class->activate = gedit_app_activate;
+	app_class->shutdown = gedit_app_shutdown;
+
 	klass->last_window_destroyed = gedit_app_last_window_destroyed_impl;
 	klass->show_help = gedit_app_show_help_impl;
 	klass->help_link_id = gedit_app_help_link_id_impl;
 	klass->set_window_title = gedit_app_set_window_title_impl;
-	klass->quit = gedit_app_quit_impl;
 	klass->create_window = gedit_app_create_window_impl;
 	klass->ready = gedit_app_ready_impl;
 
@@ -691,6 +710,7 @@ gedit_app_init (GeditApp *app)
 	                            app);
 }
 
+/* FIXME: lets kill this method */
 /**
  * gedit_app_get_default:
  *
@@ -719,7 +739,10 @@ gedit_app_get_default (void)
 #endif
 #endif
 
-	return GEDIT_APP (g_object_new (type, NULL));
+	return GEDIT_APP (g_object_new (type,
+	                                "application-id", "org.gnome.Gedit",
+	                                // FIXME: should be HANDLES_COMMAND_LINE
+	                                NULL));
 }
 
 /* Generates a unique string for a window role */
@@ -840,6 +863,7 @@ _gedit_app_restore_window (GeditApp    *app,
 	return window;
 }
 
+/* FIXME: lets kill this method */
 /**
  * gedit_app_get_windows:
  * @app: the #GeditApp
@@ -854,7 +878,7 @@ gedit_app_get_windows (GeditApp *app)
 {
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
-	return app->priv->windows;
+	return gtk_application_get_windows (GTK_APPLICATION (app));
 }
 
 /**
@@ -959,8 +983,7 @@ _gedit_app_get_window_in_viewport (GeditApp  *app,
 				   gint       viewport_y)
 {
 	GeditWindow *window;
-
-	GList *l;
+	GList *windows, *l;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
@@ -973,7 +996,8 @@ _gedit_app_get_window_in_viewport (GeditApp  *app,
 		return window;
 
 	/* otherwise try to see if there is a window on this workspace */
-	for (l = app->priv->windows; l != NULL; l = l->next)
+	windows = gtk_application_get_windows (GTK_APPLICATION (app));
+	for (l = windows; l != NULL; l = l->next)
 	{
 		window = l->data;
 
@@ -997,18 +1021,15 @@ GList *
 gedit_app_get_documents	(GeditApp *app)
 {
 	GList *res = NULL;
-	GList *windows;
+	GList *windows, *l;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
-	windows = app->priv->windows;
-
-	while (windows != NULL)
+	windows = gtk_application_get_windows (GTK_APPLICATION (app));
+	for (l = windows; l != NULL; l = g_list_next (l))
 	{
 		res = g_list_concat (res,
-				     gedit_window_get_documents (GEDIT_WINDOW (windows->data)));
-
-		windows = g_list_next (windows);
+				     gedit_window_get_documents (GEDIT_WINDOW (l->data)));
 	}
 
 	return res;
@@ -1027,18 +1048,15 @@ GList *
 gedit_app_get_views (GeditApp *app)
 {
 	GList *res = NULL;
-	GList *windows;
+	GList *windows, *l;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
-	windows = app->priv->windows;
-
-	while (windows != NULL)
+	windows = gtk_application_get_windows (GTK_APPLICATION (app));
+	for (l = windows; l != NULL; l = g_list_next (l))
 	{
 		res = g_list_concat (res,
-				     gedit_window_get_views (GEDIT_WINDOW (windows->data)));
-
-		windows = g_list_next (windows);
+				     gedit_window_get_views (GEDIT_WINDOW (l->data)));
 	}
 
 	return res;
@@ -1102,11 +1120,14 @@ gedit_app_process_window_event (GeditApp    *app,
 static void
 app_lockdown_changed (GeditApp *app)
 {
-	GList *l;
+	GList *windows, *l;
 
-	for (l = app->priv->windows; l != NULL; l = l->next)
+	windows = gtk_application_get_windows (GTK_APPLICATION (app));
+	for (l = windows; l != NULL; l = g_list_next (l))
+	{
 		_gedit_window_set_lockdown (GEDIT_WINDOW (l->data),
-					    app->priv->lockdown);
+		                            app->priv->lockdown);
+	}
 
 	g_object_notify (G_OBJECT (app), "lockdown");
 }

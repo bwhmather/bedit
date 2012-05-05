@@ -3193,7 +3193,7 @@ fullscreen_controls_build (GeditWindow *window)
 	priv->fullscreen_controls = gtk_window_new (GTK_WINDOW_POPUP);
 
 	gtk_window_set_transient_for (GTK_WINDOW (priv->fullscreen_controls),
-				      &window->window);
+				      GTK_WINDOW (&window->window));
 	
 	/* popup toolbar */
 	toolbar = gtk_ui_manager_get_widget (priv->manager, "/FullscreenToolBar");
@@ -4863,7 +4863,7 @@ _gedit_window_fullscreen (GeditWindow *window)
 		return;
 
 	/* Go to fullscreen mode and hide bars */
-	gtk_window_fullscreen (&window->window);
+	gtk_window_fullscreen (GTK_WINDOW (&window->window));
 
 	gedit_multi_notebook_foreach_notebook (window->priv->multi_notebook,
 					       (GtkCallback)hide_notebook_tabs,
@@ -4907,7 +4907,7 @@ _gedit_window_unfullscreen (GeditWindow *window)
 		return;
 
 	/* Unfullscreen and show bars */
-	gtk_window_unfullscreen (&window->window);
+	gtk_window_unfullscreen (GTK_WINDOW (&window->window));
 
 	gedit_multi_notebook_foreach_notebook (window->priv->multi_notebook,
 					       (GtkCallback)show_notebook_tabs,

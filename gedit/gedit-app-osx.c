@@ -369,7 +369,7 @@ static void
 on_osx_will_terminate (GtkOSXApplication *osxapp,
                        GeditAppOSX       *app)
 {
-	_gedit_app_quit (GEDIT_APP (app));
+	g_application_quit (G_APPLICATION (app));
 }
 
 static gboolean

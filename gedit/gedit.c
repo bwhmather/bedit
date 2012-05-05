@@ -37,151 +37,25 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 
-#include "gedit-command-line.h"
-#include "gedit-dbus.h"
-
 #include "gedit-app.h"
-#include "gedit-encodings.h"
 
-#include "gedit-commands.h"
 #include "gedit-debug.h"
 #include "gedit-dirs.h"
-#include "gedit-encodings.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-session.h"
-#include "gedit-utils.h"
-#include "gedit-window.h"
 
 #ifndef ENABLE_GVFS_METADATA
 #include "gedit-metadata-manager.h"
 #define METADATA_FILE "gedit-metadata.xml"
 #endif
 
-static void
-gedit_main_window (void)
-{
-	GSList *file_list;
-	GeditWindow *window;
-	GeditCommandLine *command_line;
-	GeditApp *app;
-	gboolean doc_created = FALSE;
-	const gchar *geometry;
-
-	app = gedit_app_get_default ();
-
-	gedit_debug_message (DEBUG_APP, "Create main window");
-	window = gedit_app_create_window (app, NULL);
-
-	command_line = gedit_command_line_get_default ();
-	file_list = gedit_command_line_get_file_list (command_line);
-
-	if (file_list != NULL)
-	{
-		GSList *loaded;
-		const GeditEncoding *encoding;
-		gint line_position;
-		gint column_position;
-
-		encoding = gedit_command_line_get_encoding (command_line);
-		line_position = gedit_command_line_get_line_position (command_line);
-		column_position = gedit_command_line_get_column_position (command_line);
-
-		gedit_debug_message (DEBUG_APP, "Load files");
-		loaded = _gedit_cmd_load_files_from_prompt (window,
-		                                            file_list,
-		                                            encoding,
-		                                            line_position,
-		                                            column_position);
-
-		doc_created = loaded != NULL;
-		g_slist_free (loaded);
-	}
-
-	if (!doc_created || gedit_command_line_get_new_document (command_line))
-	{
-		gedit_debug_message (DEBUG_APP, "Create tab");
-		gedit_window_create_tab (window, TRUE);
-	}
-
-	geometry = gedit_command_line_get_geometry (command_line);
-
-	gedit_debug_message (DEBUG_APP, "Show window");
-	gtk_widget_show (GTK_WIDGET (window));
-
-	if (geometry)
-	{
-		gtk_window_parse_geometry (GTK_WINDOW (window),
-		                           geometry);
-	}
-}
-
-static void
-gedit_main (gboolean service)
-{
-	GeditPluginsEngine *engine;
-	GeditApp *app;
-	const gchar *dir;
-	gchar *icon_dir;
-
-	gedit_debug_message (DEBUG_APP, "Set icon");
-
-	dir = gedit_dirs_get_gedit_data_dir ();
-	icon_dir = g_build_filename (dir, "icons", NULL);
-
-	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (), icon_dir);
-	g_free (icon_dir);
-
-	/* Init plugins engine */
-	gedit_debug_message (DEBUG_APP, "Init plugins");
-	engine = gedit_plugins_engine_get_default ();
-
-	app = gedit_app_get_default ();
-
-	/* Initialize session management */
-	gedit_debug_message (DEBUG_APP, "Init session manager");
-	gedit_session_init ();
-
-	if (!service)
-	{
-		gboolean restored = FALSE;
-
-		if (gedit_session_is_restored ())
-		{
-			restored = gedit_session_load ();
-		}
-
-		if (!restored)
-		{
-			gedit_main_window ();
-		}
-	}
-
-	_gedit_app_ready (app);
-
-	gedit_debug_message (DEBUG_APP, "Start gtk-main");
-	gtk_main ();
-
-	/* Make sure settings are saved */
-	g_settings_sync ();
-
-	/* Cleanup */
-	g_object_unref (engine);
-	g_object_unref (app);
-
-	gedit_dirs_shutdown ();
-
-#ifndef ENABLE_GVFS_METADATA
-	gedit_metadata_manager_shutdown ();
-#endif
-}
-
 int
 main (int argc, char *argv[])
 {
+	GeditApp *app;
+	GeditPluginsEngine *engine;
 	const gchar *dir;
-	GeditCommandLine *command_line;
-	gboolean ret;
-	gboolean service = FALSE;
+	gint status;
 
 #ifndef ENABLE_GVFS_METADATA
 	const gchar *cache_dir;
@@ -214,22 +88,47 @@ main (int argc, char *argv[])
 	g_free (metadata_filename);
 #endif
 
-	/* Parse command line arguments */
-	command_line = gedit_command_line_get_default ();
+	/* FIXME: This is needed if not we get a crash building with introspection */
+#ifdef ENABLE_INTROSPECTION
+	GOptionContext *context;
+	GError *error = NULL;
 
-	ret = gedit_command_line_parse (command_line, &argc, &argv);
-
-	if (!ret)
+	context = g_option_context_new (_("- Edit text files"));
+	g_option_context_add_group (context, g_irepository_get_option_group ());
+	if (!g_option_context_parse (context, &argc, &argv, &error))
 	{
-		g_object_unref (command_line);
+		g_print(_("%s\nRun '%s --help' to see a full list of available command line options.\n"),
+		        error->message, argv[0]);
+
+		g_error_free (error);
 		return 1;
 	}
+	g_option_context_free (context);
+#endif
 
-	gedit_main (service);
+	/* Init plugins en thegine */
+	gedit_debug_message (DEBUG_APP, "Init plugins");
+	engine = gedit_plugins_engine_get_default ();
 
-	g_object_unref (command_line);
+	/* Initialize session management */
+	gedit_debug_message (DEBUG_APP, "Init session manager");
+	gedit_session_init ();
 
-	return 0;
+	gedit_debug_message (DEBUG_APP, "Run application");
+	app = gedit_app_get_default ();
+	status = g_application_run (G_APPLICATION (app), argc, argv);
+
+	/* Cleanup */
+	g_object_unref (app);
+	g_object_unref (engine);
+
+	gedit_dirs_shutdown ();
+
+#ifndef ENABLE_GVFS_METADATA
+	gedit_metadata_manager_shutdown ();
+#endif
+
+	return status;
 }
 
 /* ex:set ts=8 noet: */

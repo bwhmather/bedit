@@ -49,10 +49,7 @@ typedef enum
 	GEDIT_WINDOW_STATE_ERROR		= 1 << 4,
 	GEDIT_WINDOW_STATE_SAVING_SESSION	= 1 << 5
 } GeditWindowState;
-	
-/*
- * Type checking and casting macros
- */
+
 #define GEDIT_TYPE_WINDOW              (gedit_window_get_type())
 #define GEDIT_WINDOW(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_WINDOW, GeditWindow))
 #define GEDIT_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_WINDOW, GeditWindowClass))
@@ -60,30 +57,21 @@ typedef enum
 #define GEDIT_IS_WINDOW_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_WINDOW))
 #define GEDIT_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_WINDOW, GeditWindowClass))
 
-/* Private structure type */
+typedef struct _GeditWindow        GeditWindow;
+typedef struct _GeditWindowClass   GeditWindowClass;
 typedef struct _GeditWindowPrivate GeditWindowPrivate;
-
-/*
- * Main object structure
- */
-typedef struct _GeditWindow GeditWindow;
 
 struct _GeditWindow
 {
-	GtkWindow window;
+	GtkApplicationWindow window;
 
 	/*< private > */
 	GeditWindowPrivate *priv;
 };
 
-/*
- * Class definition
- */
-typedef struct _GeditWindowClass GeditWindowClass;
-
 struct _GeditWindowClass
 {
-	GtkWindowClass parent_class;
+	GtkApplicationWindowClass parent_class;
 
 	/* Signals */
 	void	 (* tab_added)      	(GeditWindow *window,
@@ -93,13 +81,11 @@ struct _GeditWindowClass
 	void	 (* tabs_reordered) 	(GeditWindow *window);
 	void	 (* active_tab_changed)	(GeditWindow *window,
 				     	 GeditTab    *tab);
-	void	 (* active_tab_state_changed)	
+	void	 (* active_tab_state_changed)
 					(GeditWindow *window);
 };
 
-/*
- * Public methods
- */
+/* Public methods */
 GType 		 gedit_window_get_type 			(void) G_GNUC_CONST;
 
 GeditTab	*gedit_window_create_tab		(GeditWindow         *window,
