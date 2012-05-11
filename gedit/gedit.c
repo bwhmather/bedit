@@ -87,24 +87,6 @@ main (int argc, char *argv[])
 	g_free (metadata_filename);
 #endif
 
-	/* FIXME: This is needed if not we get a crash building with introspection */
-#ifdef ENABLE_INTROSPECTION
-	GOptionContext *context;
-	GError *error = NULL;
-
-	context = g_option_context_new (_("- Edit text files"));
-	g_option_context_add_group (context, g_irepository_get_option_group ());
-	if (!g_option_context_parse (context, &argc, &argv, &error))
-	{
-		g_print(_("%s\nRun '%s --help' to see a full list of available command line options.\n"),
-		        error->message, argv[0]);
-
-		g_error_free (error);
-		return 1;
-	}
-	g_option_context_free (context);
-#endif
-
 	/* Init plugins en thegine */
 	gedit_debug_message (DEBUG_APP, "Init plugins");
 	engine = gedit_plugins_engine_get_default ();

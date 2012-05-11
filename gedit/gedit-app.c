@@ -34,10 +34,15 @@
 
 #include <string.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 #include <glib/gi18n.h>
 #include <libpeas/peas-extension-set.h>
 #include <gtksourceview/gtksourcestyleschememanager.h>
+
+#ifdef ENABLE_INTROSPECTION
+#include <girepository.h>
+#endif
 
 #include "gedit-app.h"
 #include "gedit-commands.h"
@@ -88,6 +93,110 @@ struct _GeditAppPrivate
 };
 
 static GeditApp *app_instance = NULL;
+
+static gboolean help = FALSE;
+static gboolean version = FALSE;
+static gboolean list_encodings = FALSE;
+static gchar *encoding_charset = NULL;
+static gboolean new_window = FALSE;
+static gboolean new_document = FALSE;
+static gchar *geometry = NULL;
+static gboolean wait = FALSE;
+static gboolean background = FALSE;
+static gboolean standalone = FALSE;
+static gchar **remaining_args = NULL;
+static const GeditEncoding *encoding = NULL;
+static GSList *file_list = NULL;
+static gint line_position = 0;
+static gint column_position = 0;
+
+static const GOptionEntry options[] =
+{
+	/* Help */
+	{
+		"help", '?', 0, G_OPTION_ARG_NONE, &help,
+		N_("Show the application's help"), NULL
+	},
+
+	/* Version */
+	{
+		"version", 'V', 0, G_OPTION_ARG_NONE, &version,
+		N_("Show the application's version"), NULL
+	},
+
+	/* List available encodings */
+	{
+		"list-encodings", '\0', 0, G_OPTION_ARG_NONE, &list_encodings,
+		N_("Display list of possible values for the encoding option"),
+		NULL
+	},
+
+	/* Encoding */
+	{
+		"encoding", '\0', 0, G_OPTION_ARG_STRING,
+		&encoding_charset,
+		N_("Set the character encoding to be used to open the files listed on the command line"),
+		N_("ENCODING")
+	},
+
+	/* Open a new window */
+	{
+		"new-window", '\0', 0, G_OPTION_ARG_NONE,
+		&new_window,
+		N_("Create a new top-level window in an existing instance of gedit"),
+		NULL
+	},
+
+	/* Create a new empty document */
+	{
+		"new-document", '\0', 0, G_OPTION_ARG_NONE,
+		&new_document,
+		N_("Create a new document in an existing instance of gedit"),
+		NULL
+	},
+
+	/* Window geometry */
+	{
+		"geometry", 'g', 0, G_OPTION_ARG_STRING,
+		&geometry,
+		N_("Set the size and position of the window (WIDTHxHEIGHT+X+Y)"),
+		N_("GEOMETRY")
+	},
+
+	/* Wait for closing documents */
+	{
+		"wait", 'w', 0, G_OPTION_ARG_NONE,
+		&wait,
+		N_("Open files and block process until files are closed"),
+		NULL
+	},
+
+	/* Run in the background */
+	{
+		"background", 'b', 0, G_OPTION_ARG_NONE,
+		&background,
+		N_("Run gedit in the background"),
+		NULL
+	},
+
+	/* New instance */
+	{
+		"standalone", 's', 0, G_OPTION_ARG_NONE,
+		&standalone,
+		N_("Run gedit in standalone mode"),
+		NULL
+	},
+
+	/* collects file arguments */
+	{
+		G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY,
+		&remaining_args,
+		NULL,
+		N_("[FILE...] [+LINE[:COLUMN]]")
+	},
+
+	{NULL}
+};
 
 G_DEFINE_ABSTRACT_TYPE(GeditApp, gedit_app, GTK_TYPE_APPLICATION)
 
@@ -257,13 +366,282 @@ static void
 gedit_app_activate (GApplication *application)
 {
 	GeditWindow *window;
+	gboolean doc_created = FALSE;
 
-	gedit_debug_message (DEBUG_APP, "Create main window");
-	window = gedit_app_create_window (GEDIT_APP (application), NULL);
-	gtk_application_add_window (GTK_APPLICATION (application), GTK_WINDOW (window));
+	window = app->priv->active_window;
 
-	gedit_debug_message (DEBUG_APP, "Show window");
-	gtk_widget_show (GTK_WIDGET (window));
+	if (window == NULL || new_window)
+	{
+		gedit_debug_message (DEBUG_APP, "Create main window");
+		window = gedit_app_create_window (GEDIT_APP (application), NULL);
+
+		gedit_debug_message (DEBUG_APP, "Show window");
+		gtk_widget_show (GTK_WIDGET (window));
+	}
+	else
+	{
+		window = app->priv->active_window;
+	}
+
+	if (geometry)
+	{
+		gtk_window_parse_geometry (GTK_WINDOW (window),
+		                           geometry);
+	}
+
+	if (file_list != NULL)
+	{
+		GSList *loaded;
+
+		gedit_debug_message (DEBUG_APP, "Load files");
+		loaded = _gedit_cmd_load_files_from_prompt (window,
+		                                            file_list,
+		                                            encoding,
+		                                            line_position,
+		                                            column_position);
+
+		doc_created = loaded != NULL;
+		g_slist_free (loaded);
+	}
+
+	if (!doc_created || new_document)
+	{
+		gedit_debug_message (DEBUG_APP, "Create tab");
+		gedit_window_create_tab (window, TRUE);
+	}
+}
+
+static GOptionContext *
+get_option_context (void)
+{
+	GOptionContext *context;
+
+	context = g_option_context_new (_("- Edit text files"));
+	g_option_context_add_main_entries (context, options, GETTEXT_PACKAGE);
+	g_option_context_add_group (context, gtk_get_option_group (FALSE));
+
+#ifdef ENABLE_INTROSPECTION
+	g_option_context_add_group (context, g_irepository_get_option_group ());
+#endif
+
+	return context;
+}
+
+static gboolean
+option_context_parse (GOptionContext  *context,
+                      gchar          **arguments,
+                      GError         **error)
+{
+	gint argc;
+	gchar **argv;
+	gint i;
+	gboolean ret;
+
+	/* We have to make an extra copy of the array, since g_option_context_parse()
+	 * assumes that it can remove strings from the array without freeing them.
+	 */
+	argc = g_strv_length (arguments);
+	argv = g_new (gchar *, argc);
+	for (i = 0; i < argc; i++)
+	{
+		argv[i] = arguments[i];
+	}
+
+	ret = g_option_context_parse (context, &argc, &argv, error);
+
+	g_free (argv);
+
+	return ret;
+}
+
+static void
+clear_options (void)
+{
+	g_free (encoding_charset);
+	g_strfreev (remaining_args);
+	g_free (geometry);
+	g_slist_free_full (file_list, g_object_unref);
+
+	help = FALSE;
+	version = FALSE;
+	list_encodings = FALSE;
+	encoding_charset = NULL;
+	new_window = FALSE;
+	new_document = FALSE;
+	geometry = NULL;
+	wait = FALSE;
+	background = FALSE;
+	standalone = FALSE;
+	remaining_args = NULL;
+	encoding = NULL;
+	file_list = NULL;
+	line_position = 0;
+	column_position = 0;
+}
+
+static void
+get_line_column_position (const gchar *arg,
+                          gint        *line,
+                          gint        *column)
+{
+	gchar **split;
+
+	split = g_strsplit (arg, ":", 2);
+
+	if (split != NULL)
+	{
+		if (split[0] != NULL)
+		{
+			*line = atoi (split[0]);
+		}
+
+		if (split[1] != NULL)
+		{
+			*column = atoi (split[1]);
+		}
+	}
+
+	g_strfreev (split);
+}
+
+static gint
+gedit_app_command_line (GApplication            *application,
+                        GApplicationCommandLine *command_line)
+{
+	gchar **arguments;
+	GOptionContext *context;
+	GError *error = NULL;
+
+	arguments = g_application_command_line_get_arguments (command_line, NULL);
+
+	context = get_option_context ();
+
+	/* Avoid exit() on the main instance */
+	g_option_context_set_help_enabled (context, FALSE);
+
+	if (!option_context_parse (context, arguments, &error))
+	{
+		/* We should never get here since parsing would have
+		 * failed on the client side... */
+		g_application_command_line_printerr (command_line,
+		                                     _("%s\nRun '%s --help' to see a full list of available command line options.\n"),
+		                                     error->message, arguments[0]);
+
+		g_error_free (error);
+		g_application_command_line_set_exit_status (command_line, 1);
+	}
+	else
+	{
+		/* Parse encoding */
+		if (encoding_charset)
+		{
+			encoding = gedit_encoding_get_from_charset (encoding_charset);
+
+			if (encoding == NULL)
+			{
+				g_application_command_line_printerr (command_line,
+				                                     _("%s: invalid encoding."),
+				                                     encoding_charset);
+			}
+
+			g_free (encoding_charset);
+		}
+
+		/* Parse filenames */
+		if (remaining_args)
+		{
+			gint i;
+
+			for (i = 0; remaining_args[i]; i++)
+			{
+				if (*remaining_args[i] == '+')
+				{
+					if (*(remaining_args[i] + 1) == '\0')
+					{
+						/* goto the last line of the document */
+						line_position = G_MAXINT;
+						column_position = 0;
+					}
+					else
+					{
+						get_line_column_position (remaining_args[i] + 1,
+							                  &line_position,
+							                  &column_position);
+					}
+				}
+				else
+				{
+					GFile *file;
+
+					file = g_application_command_line_create_file_for_arg (command_line, remaining_args[i]);
+					file_list = g_slist_prepend (file_list, file);
+				}
+			}
+
+			file_list = g_slist_reverse (file_list);
+		}
+
+		g_application_activate (application);
+	}
+
+	g_option_context_free (context);
+	clear_options ();
+
+	return 0;
+}
+
+static gboolean
+gedit_app_local_command_line (GApplication   *application,
+                              gchar        ***arguments,
+                              gint           *exit_status)
+{
+	GOptionContext *context;
+	GError *error = NULL;
+	gboolean ret = FALSE;
+
+	/* Handle some of the option without contacting the main instance */
+	context = get_option_context ();
+
+	if (!option_context_parse (context, *arguments, &error))
+	{
+		g_printerr (_("%s\nRun '%s --help' to see a full list of available command line options.\n"),
+		           error->message, (*arguments)[0]);
+
+		g_error_free (error);
+		*exit_status = 1;
+		ret = TRUE;
+	}
+	else if (version)
+	{
+		g_print ("%s - Version %s\n", g_get_application_name (), VERSION);
+		ret = TRUE;
+	}
+	else if (list_encodings)
+	{
+		gint i = 0;
+		const GeditEncoding *enc;
+
+		while ((enc = gedit_encoding_get_from_index (i)) != NULL)
+		{
+			g_print ("%s\n", gedit_encoding_get_charset (enc));
+
+			++i;
+		}
+
+		ret = TRUE;
+	}
+	else if (standalone)
+	{
+		GApplicationFlags old_flags;
+
+		old_flags = g_application_get_flags (application);
+		g_application_set_flags (application, old_flags | G_APPLICATION_NON_UNIQUE);
+	}
+
+	g_option_context_free (context);
+	clear_options ();
+
+	return ret ? ret : G_APPLICATION_CLASS (gedit_app_parent_class)->local_command_line (application, arguments, exit_status);
 }
 
 static gboolean
@@ -563,6 +941,8 @@ gedit_app_class_init (GeditAppClass *klass)
 
 	app_class->startup = gedit_app_startup;
 	app_class->activate = gedit_app_activate;
+	app_class->command_line = gedit_app_command_line;
+	app_class->local_command_line = gedit_app_local_command_line;
 	app_class->shutdown = gedit_app_shutdown;
 
 	klass->last_window_destroyed = gedit_app_last_window_destroyed_impl;
@@ -739,7 +1119,7 @@ gedit_app_get_default (void)
 
 	return GEDIT_APP (g_object_new (type,
 	                                "application-id", "org.gnome.Gedit",
-	                                // FIXME: should be HANDLES_COMMAND_LINE
+	                                "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
 	                                NULL));
 }
 

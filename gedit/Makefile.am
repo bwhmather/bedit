@@ -102,7 +102,6 @@ NOINST_H_FILES =			\
 	gedit-cell-renderer-button.h	\
 	gedit-close-button.h		\
 	gedit-close-confirmation-dialog.h \
-	gedit-command-line.h		\
 	gedit-dirs.h			\
 	gedit-document-input-stream.h	\
 	gedit-document-loader.h		\
@@ -176,7 +175,6 @@ libgedit_c_files =			\
 	gedit-cell-renderer-button.c	\
 	gedit-close-button.c		\
 	gedit-close-confirmation-dialog.c \
-	gedit-command-line.c		\
 	gedit-commands-documents.c	\
 	gedit-commands-edit.c		\
 	gedit-commands-file.c		\
