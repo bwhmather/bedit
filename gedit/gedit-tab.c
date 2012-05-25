@@ -2442,6 +2442,8 @@ get_print_settings (GeditTab *tab)
 {
 	gpointer data;
 	GeditDocument *doc;
+	GtkPrintSettings *settings;
+	gchar *name;
 
 	doc = gedit_tab_get_document (tab);
 
@@ -2450,12 +2452,19 @@ get_print_settings (GeditTab *tab)
 
 	if (data == NULL)
 	{
-		return _gedit_app_get_default_print_settings (gedit_app_get_default());
+		settings = _gedit_app_get_default_print_settings (gedit_app_get_default());
 	}
 	else
 	{
-		return gtk_print_settings_copy (GTK_PRINT_SETTINGS (data));
+		settings = gtk_print_settings_copy (GTK_PRINT_SETTINGS (data));
 	}
+
+	name = gedit_document_get_short_name_for_display (doc);
+	gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_BASENAME, name);
+
+	g_free (name);
+
+	return settings;
 }
 
 /* FIXME: show the info bar only if the operation will be "long" */
