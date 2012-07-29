@@ -39,10 +39,10 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
+#include <gtksourceview/gtksourcelanguagemanager.h>
 
 #include "gedit-file-chooser-dialog.h"
 #include "gedit-encodings-combo-box.h"
-#include "gedit-language-manager.h"
 #include "gedit-debug.h"
 #include "gedit-enum-types.h"
 #include "gedit-settings.h"
@@ -290,7 +290,7 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 		GtkSourceLanguageManager *lm;
 		const gchar * const *languages;
 
-		lm = gedit_get_language_manager ();
+		lm = gtk_source_language_manager_get_default ();
 		languages = gtk_source_language_manager_get_language_ids (lm);
 
 		while ((languages != NULL) && (*languages != NULL))

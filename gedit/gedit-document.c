@@ -44,7 +44,6 @@
 #include "gedit-document.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
-#include "gedit-language-manager.h"
 #include "gedit-document-loader.h"
 #include "gedit-document-saver.h"
 #include "gedit-marshal.h"
@@ -878,7 +877,7 @@ guess_language (GeditDocument *doc,
 		if (strcmp (data, "_NORMAL_") != 0)
 		{
 			language = gtk_source_language_manager_get_language (
-						gedit_get_language_manager (),
+						gtk_source_language_manager_get_default (),
 						data);
 		}
 
@@ -902,7 +901,7 @@ guess_language (GeditDocument *doc,
 		}
 
 		language = gtk_source_language_manager_guess_language (
-					gedit_get_language_manager (),
+					gtk_source_language_manager_get_default (),
 					basename,
 					content_type);
 

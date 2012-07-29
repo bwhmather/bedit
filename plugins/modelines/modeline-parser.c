@@ -22,7 +22,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <gedit/gedit-language-manager.h>
+#include <gtksourceview/gtksourcelanguagemanager.h>
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-document.h>
 #include <gedit/gedit-settings.h>
@@ -761,7 +761,7 @@ modeline_parser_apply_modeline (GtkSourceView *view)
 		        GtkSourceLanguageManager *manager;
 		        GtkSourceLanguage *language;
 
-		        manager = gedit_get_language_manager ();
+		        manager = gtk_source_language_manager_get_default ();
 
 			language = gtk_source_language_manager_get_language
 					(manager, options.language_id);

@@ -38,6 +38,7 @@
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
+#include <gtksourceview/gtksourcelanguagemanager.h>
 #include <libpeas/peas-extension-set.h>
 
 #include "gedit-ui.h"
@@ -51,7 +52,6 @@
 #include "gedit-utils.h"
 #include "gedit-commands.h"
 #include "gedit-debug.h"
-#include "gedit-language-manager.h"
 #include "gedit-panel.h"
 #include "gedit-documents-panel.h"
 #include "gedit-plugins-engine.h"
@@ -857,7 +857,7 @@ language_toggled (GtkToggleAction *action,
 	else
 	{
 		lang = gtk_source_language_manager_get_language (
-				gedit_get_language_manager (),
+				gtk_source_language_manager_get_default (),
 				lang_id);
 		if (lang == NULL)
 		{
@@ -1014,7 +1014,7 @@ get_languages_sorted_by_section (GeditWindow *window)
 	gint i;
 	GSList *languages = NULL;
 
-	lm = gedit_get_language_manager ();
+	lm = gtk_source_language_manager_get_default ();
 	ids = gtk_source_language_manager_get_language_ids (lm);
 
 	for (i = 0; ids[i] != NULL; i++)
@@ -2097,7 +2097,7 @@ fill_language_combo (GeditWindow *window)
 					 GTK_MENU_ITEM (menu_item),
 					 name);
 
-	lm = gedit_get_language_manager ();
+	lm = gtk_source_language_manager_get_default ();
 	ids = gtk_source_language_manager_get_language_ids (lm);
 
 	for (i = 0; ids[i] != NULL; i++)

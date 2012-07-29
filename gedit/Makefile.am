@@ -118,7 +118,6 @@ NOINST_H_FILES =			\
 	gedit-floating-slider.h		\
 	gedit-history-entry.h		\
 	gedit-io-error-info-bar.h	\
-	gedit-language-manager.h	\
 	gedit-multi-notebook.h		\
 	gedit-notebook.h		\
 	gedit-notebook-popup-menu.h	\
@@ -205,7 +204,6 @@ libgedit_c_files =			\
 	gedit-floating-slider.c		\
 	gedit-history-entry.c		\
 	gedit-io-error-info-bar.c	\
-	gedit-language-manager.c	\
 	gedit-message-bus.c		\
 	gedit-message.c			\
 	gedit-multi-notebook.c		\
