@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-SUBDIRS = smclient theatrics
+SUBDIRS = theatrics
 
 bin_PROGRAMS = gedit
 
@@ -10,7 +10,6 @@ pkglib_LTLIBRARIES = libgedit-private.la
 INCLUDES =								\
 	-I$(top_srcdir)							\
 	-I$(srcdir)							\
-	-I$(srcdir)/smclient						\
 	$(GEDIT_CFLAGS)							\
 	$(GTK_MAC_CFLAGS)						\
 	$(WARN_CFLAGS)							\
@@ -27,7 +26,6 @@ gedit_LDADD =			\
 	libgedit-private.la	\
 	$(GEDIT_LIBS)		\
 	$(GTK_MAC_LIBS)		\
-	$(EGG_SMCLIENT_LIBS)	\
 	$(INTROSPECTION_LIBS)
 
 if PLATFORM_WIN32
@@ -39,7 +37,6 @@ endif
 libgedit_la_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
 
 libgedit_la_LIBADD = \
-	smclient/libeggsmclient.la	\
 	theatrics/libtheatrics.la
 
 # GEDIT_LIBS must be the last to ensure correct order on some platforms
@@ -126,7 +123,6 @@ NOINST_H_FILES =			\
 	gedit-print-job.h		\
 	gedit-print-preview.h		\
 	gedit-replace-dialog.h		\
-	gedit-session.h			\
 	gedit-settings.h		\
 	gedit-status-combo-box.h	\
 	gedit-tab-label.h		\
@@ -216,7 +212,6 @@ libgedit_c_files =			\
 	gedit-print-preview.c		\
 	gedit-progress-info-bar.c	\
 	gedit-replace-dialog.c		\
-	gedit-session.c			\
 	gedit-settings.c		\
 	gedit-statusbar.c		\
 	gedit-status-combo-box.c	\

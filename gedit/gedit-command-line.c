@@ -37,7 +37,6 @@
 #endif
 
 #include "gedit-command-line.h"
-#include "eggsmclient.h"
 
 #define GEDIT_COMMAND_LINE_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_COMMAND_LINE, GeditCommandLinePrivate))
 
@@ -334,7 +333,6 @@ gedit_command_line_parse (GeditCommandLine   *command_line,
 	context = g_option_context_new (_("- Edit text files"));
 	g_option_context_add_main_entries (context, options, GETTEXT_PACKAGE);
 	g_option_context_add_group (context, gtk_get_option_group (TRUE));
-	g_option_context_add_group (context, egg_sm_client_get_option_group ());
 
 #ifdef ENABLE_INTROSPECTION
 	g_option_context_add_group (context, g_irepository_get_option_group ());

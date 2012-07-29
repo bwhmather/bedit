@@ -132,8 +132,6 @@ gboolean	gedit_app_process_window_event		(GeditApp    *app,
 							 GdkEvent    *event);
 
 /* Non exported functions */
-GeditWindow	*_gedit_app_restore_window		(GeditApp    *app,
-							 const gchar *role);
 GeditWindow	*_gedit_app_get_window_in_viewport	(GeditApp     *app,
 							 GdkScreen   *screen,
 							 gint         workspace,

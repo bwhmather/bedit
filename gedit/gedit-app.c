@@ -761,64 +761,6 @@ gen_role (void)
 				g_get_host_name ());
 }
 
-static GeditWindow *
-gedit_app_create_window_real (GeditApp    *app,
-			      gboolean     set_geometry,
-			      const gchar *role)
-{
-	GeditWindow *window;
-	
-	window = GEDIT_APP_GET_CLASS (app)->create_window (app);
-
-	if (role != NULL)
-	{
-		gtk_window_set_role (GTK_WINDOW (window), role);
-	}
-	else
-	{
-		gchar *newrole;
-
-		newrole = gen_role ();
-		gtk_window_set_role (GTK_WINDOW (window), newrole);
-		g_free (newrole);
-	}
-
-	if (set_geometry)
-	{
-		GdkWindowState state;
-		gint w, h;
-
-		state = g_settings_get_int (app->priv->window_settings,
-					    GEDIT_SETTINGS_WINDOW_STATE);
-
-		g_settings_get (app->priv->window_settings,
-				GEDIT_SETTINGS_WINDOW_SIZE,
-				"(ii)", &w, &h);
-
-		gtk_window_set_default_size (GTK_WINDOW (window), w, h);
-
-		if ((state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
-		{
-			gtk_window_maximize (GTK_WINDOW (window));
-		}
-		else
-		{
-			gtk_window_unmaximize (GTK_WINDOW (window));
-		}
-
-		if ((state & GDK_WINDOW_STATE_STICKY ) != 0)
-		{
-			gtk_window_stick (GTK_WINDOW (window));
-		}
-		else
-		{
-			gtk_window_unstick (GTK_WINDOW (window));
-		}
-	}
-
-	return window;
-}
-
 /**
  * gedit_app_create_window:
  * @app: the #GeditApp
@@ -833,32 +775,49 @@ gedit_app_create_window (GeditApp  *app,
 			 GdkScreen *screen)
 {
 	GeditWindow *window;
+	gchar *role;
+	GdkWindowState state;
+	gint w, h;
 
 	gedit_debug (DEBUG_APP);
 
-	window = gedit_app_create_window_real (app, TRUE, NULL);
+	window = GEDIT_APP_GET_CLASS (app)->create_window (app);
 
 	if (screen != NULL)
 	{
 		gtk_window_set_screen (GTK_WINDOW (window), screen);
 	}
 
-	return window;
-}
+	role = gen_role ();
+	gtk_window_set_role (GTK_WINDOW (window), role);
+	g_free (role);
 
-/*
- * Same as _create_window, but doesn't set the geometry.
- * The session manager takes care of it. Used in gnome-session.
- */
-GeditWindow *
-_gedit_app_restore_window (GeditApp    *app,
-			   const gchar *role)
-{
-	GeditWindow *window;
+	state = g_settings_get_int (app->priv->window_settings,
+				    GEDIT_SETTINGS_WINDOW_STATE);
 
-	gedit_debug (DEBUG_APP);
+	g_settings_get (app->priv->window_settings,
+			GEDIT_SETTINGS_WINDOW_SIZE,
+			"(ii)", &w, &h);
 
-	window = gedit_app_create_window_real (app, FALSE, role);
+	gtk_window_set_default_size (GTK_WINDOW (window), w, h);
+
+	if ((state & GDK_WINDOW_STATE_MAXIMIZED) != 0)
+	{
+		gtk_window_maximize (GTK_WINDOW (window));
+	}
+	else
+	{
+		gtk_window_unmaximize (GTK_WINDOW (window));
+	}
+
+	if ((state & GDK_WINDOW_STATE_STICKY ) != 0)
+	{
+		gtk_window_stick (GTK_WINDOW (window));
+	}
+	else
+	{
+		gtk_window_unstick (GTK_WINDOW (window));
+	}
 
 	return window;
 }

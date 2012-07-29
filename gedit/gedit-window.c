@@ -2174,7 +2174,7 @@ clone_window (GeditWindow *origin)
 	else
 		gtk_window_unmaximize (GTK_WINDOW (window));
 
-	if ((origin->priv->window_state & GDK_WINDOW_STATE_STICKY ) != 0)
+	if ((origin->priv->window_state & GDK_WINDOW_STATE_STICKY) != 0)
 		gtk_window_stick (GTK_WINDOW (window));
 	else
 		gtk_window_unstick (GTK_WINDOW (window));

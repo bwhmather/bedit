@@ -42,7 +42,6 @@
 #include "gedit-debug.h"
 #include "gedit-dirs.h"
 #include "gedit-plugins-engine.h"
-#include "gedit-session.h"
 
 #ifndef ENABLE_GVFS_METADATA
 #include "gedit-metadata-manager.h"
@@ -109,10 +108,6 @@ main (int argc, char *argv[])
 	/* Init plugins en thegine */
 	gedit_debug_message (DEBUG_APP, "Init plugins");
 	engine = gedit_plugins_engine_get_default ();
-
-	/* Initialize session management */
-	gedit_debug_message (DEBUG_APP, "Init session manager");
-	gedit_session_init ();
 
 	gedit_debug_message (DEBUG_APP, "Run application");
 	app = gedit_app_get_default ();

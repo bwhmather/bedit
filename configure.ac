@@ -358,20 +358,6 @@ GEDIT_LIBS="$GEDIT_LIBS $X11_LIBS $UNIX_LIBS"
 AC_SUBST(GEDIT_CFLAGS)
 AC_SUBST(GEDIT_LIBS)
 
-if test "$os_osx" = "no" &&
-   test "$os_win32" = "no"; then
-	PKG_CHECK_MODULES(EGG_SMCLIENT, [
-		sm >= 1.0.0
-		ice
-	])
-else
-	EGG_SMCLIENT_CFLAGS=
-	EGG_SMCLIENT_LIBS=
-fi
-
-AC_SUBST(EGG_SMCLIENT_CFLAGS)
-AC_SUBST(EGG_SMCLIENT_LIBS)
-
 dnl ================================================================
 dnl GSettings stuff
 dnl ================================================================
@@ -452,7 +438,6 @@ data/org.gnome.gedit.gschema.xml.in
 data/Makefile
 docs/Makefile
 docs/reference/Makefile
-gedit/smclient/Makefile
 gedit/theatrics/Makefile
 gedit/Makefile
 help/Makefile
