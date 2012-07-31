@@ -2,20 +2,16 @@ DIST_SUBDIRS = \
 	changecase	\
 	checkupdate	\
 	docinfo		\
+	externaltools	\
 	filebrowser	\
 	modelines	\
+	pythonconsole	\
+	quickopen	\
+	snippets	\
 	sort		\
 	spell 		\
 	time		\
 	zeitgeist
-
-if ENABLE_PYTHON
-DIST_SUBDIRS += \
-	externaltools	\
-	pythonconsole	\
-	quickopen	\
-	snippets
-endif
 
 SUBDIRS = \
 	changecase	\
