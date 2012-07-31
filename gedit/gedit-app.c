@@ -35,6 +35,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <locale.h>
 
 #include <glib/gi18n.h>
 #include <libpeas/peas-extension-set.h>
@@ -65,6 +66,11 @@
 #endif
 #endif
 
+#ifndef ENABLE_GVFS_METADATA
+#include "gedit-metadata-manager.h"
+#define METADATA_FILE "gedit-metadata.xml"
+#endif
+
 #define GEDIT_PAGE_SETUP_FILE		"gedit-page-setup"
 #define GEDIT_PRINT_SETTINGS_FILE	"gedit-print-settings"
 
@@ -79,6 +85,8 @@ enum
 
 struct _GeditAppPrivate
 {
+	GeditPluginsEngine *engine;
+
 	GeditWindow       *active_window;
 
 	GeditLockdownMask  lockdown;
@@ -215,6 +223,8 @@ gedit_app_dispose (GObject *object)
 	   all extensions which in turn will deactivate the extension */
 	g_clear_object (&app->priv->extensions);
 
+	g_clear_object (&app->priv->engine);
+
 	G_OBJECT_CLASS (gedit_app_parent_class)->dispose (object);
 }
 
@@ -346,12 +356,51 @@ gedit_app_set_window_title_impl (GeditApp    *app,
 }
 
 static void
+extension_added (PeasExtensionSet *extensions,
+		 PeasPluginInfo   *info,
+		 PeasExtension    *exten,
+		 GeditApp         *app)
+{
+	gedit_app_activatable_activate (GEDIT_APP_ACTIVATABLE (exten));
+}
+
+static void
+extension_removed (PeasExtensionSet *extensions,
+		   PeasPluginInfo   *info,
+		   PeasExtension    *exten,
+		   GeditApp         *app)
+{
+	gedit_app_activatable_deactivate (GEDIT_APP_ACTIVATABLE (exten));
+}
+
+static void
 gedit_app_startup (GApplication *application)
 {
+	GeditApp *app = GEDIT_APP (application);
+	GtkSourceStyleSchemeManager *manager;
 	const gchar *dir;
 	gchar *icon_dir;
+#ifndef ENABLE_GVFS_METADATA
+	const gchar *cache_dir;
+	gchar *metadata_filename;
+#endif
 
 	G_APPLICATION_CLASS (gedit_app_parent_class)->startup (application);
+
+	/* Setup debugging */
+	gedit_debug_init ();
+	gedit_debug_message (DEBUG_APP, "Startup");
+
+	/* Setup locale/gettext */
+	setlocale (LC_ALL, "");
+
+	dir = gedit_dirs_get_gedit_locale_dir ();
+	bindtextdomain (GETTEXT_PACKAGE, dir);
+
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
+
+	gedit_dirs_init ();
 
 	gedit_debug_message (DEBUG_APP, "Set icon");
 
@@ -360,6 +409,53 @@ gedit_app_startup (GApplication *application)
 
 	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (), icon_dir);
 	g_free (icon_dir);
+
+#ifndef ENABLE_GVFS_METADATA
+	/* Setup metadata-manager */
+	cache_dir = gedit_dirs_get_user_cache_dir ();
+
+	metadata_filename = g_build_filename (cache_dir, METADATA_FILE, NULL);
+
+	gedit_metadata_manager_init (metadata_filename);
+
+	g_free (metadata_filename);
+#endif
+
+	/* Load settings */
+	app->priv->settings = gedit_settings_new ();
+	app->priv->window_settings = g_settings_new ("org.gnome.gedit.state.window");
+
+	/* initial lockdown state */
+	app->priv->lockdown = gedit_settings_get_lockdown (GEDIT_SETTINGS (app->priv->settings));
+
+	/*
+	 * We use the default gtksourceview style scheme manager so that plugins
+	 * can obtain it easily without a gedit specific api, but we need to
+	 * add our search path at startup before the manager is actually used.
+	 */
+	manager = gtk_source_style_scheme_manager_get_default ();
+	gtk_source_style_scheme_manager_append_search_path (manager,
+	                                                    gedit_dirs_get_user_styles_dir ());
+
+	app->priv->engine = gedit_plugins_engine_get_default ();
+	app->priv->extensions = peas_extension_set_new (PEAS_ENGINE (app->priv->engine),
+	                                                GEDIT_TYPE_APP_ACTIVATABLE,
+	                                                "app", app,
+	                                                NULL);
+
+	g_signal_connect (app->priv->extensions,
+	                  "extension-added",
+	                  G_CALLBACK (extension_added),
+	                  app);
+
+	g_signal_connect (app->priv->extensions,
+	                  "extension-removed",
+	                  G_CALLBACK (extension_removed),
+	                  app);
+
+	peas_extension_set_foreach (app->priv->extensions,
+	                            (PeasExtensionSetForeachFunc) extension_added,
+	                            app);
 }
 
 static void
@@ -778,6 +874,12 @@ gedit_app_shutdown (GApplication *app)
 	save_page_setup (GEDIT_APP (app));
 	save_print_settings (GEDIT_APP (app));
 
+#ifndef ENABLE_GVFS_METADATA
+	gedit_metadata_manager_shutdown ();
+#endif
+
+	gedit_dirs_shutdown ();
+
 	G_APPLICATION_CLASS (gedit_app_parent_class)->shutdown (app);
 }
 
@@ -1028,64 +1130,9 @@ load_print_settings (GeditApp *app)
 }
 
 static void
-extension_added (PeasExtensionSet *extensions,
-		 PeasPluginInfo   *info,
-		 PeasExtension    *exten,
-		 GeditApp         *app)
-{
-	gedit_app_activatable_activate (GEDIT_APP_ACTIVATABLE (exten));
-}
-
-static void
-extension_removed (PeasExtensionSet *extensions,
-		   PeasPluginInfo   *info,
-		   PeasExtension    *exten,
-		   GeditApp         *app)
-{
-	gedit_app_activatable_deactivate (GEDIT_APP_ACTIVATABLE (exten));
-}
-
-static void
 gedit_app_init (GeditApp *app)
 {
-	GtkSourceStyleSchemeManager *manager;
-
 	app->priv = GEDIT_APP_GET_PRIVATE (app);
-
-	/* Load settings */
-	app->priv->settings = gedit_settings_new ();
-	app->priv->window_settings = g_settings_new ("org.gnome.gedit.state.window");
-
-	/* initial lockdown state */
-	app->priv->lockdown = gedit_settings_get_lockdown (GEDIT_SETTINGS (app->priv->settings));
-
-	/*
-	 * We use the default gtksourceview style scheme manager so that plugins
-	 * can obtain it easily without a gedit specific api, but we need to
-	 * add our search path at startup before the manager is actually used.
-	 */
-	manager = gtk_source_style_scheme_manager_get_default ();
-	gtk_source_style_scheme_manager_append_search_path (manager,
-							    gedit_dirs_get_user_styles_dir ());
-
-	app->priv->extensions = peas_extension_set_new (PEAS_ENGINE (gedit_plugins_engine_get_default ()),
-							GEDIT_TYPE_APP_ACTIVATABLE,
-							"app", app,
-							NULL);
-
-	g_signal_connect (app->priv->extensions,
-			  "extension-added",
-			  G_CALLBACK (extension_added),
-			  app);
-
-	g_signal_connect (app->priv->extensions,
-			  "extension-removed",
-			  G_CALLBACK (extension_removed),
-			  app);
-
-	peas_extension_set_foreach (app->priv->extensions,
-	                            (PeasExtensionSetForeachFunc) extension_added,
-	                            app);
 }
 
 /* FIXME: lets kill this method */
