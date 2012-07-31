@@ -17,8 +17,6 @@ EXTRA_DIST = 			\
 	HACKING			\
 	MAINTAINERS		\
 	gedit.doap		\
-	xmldocs.make 		\
-	omf.make		\
 	intltool-extract.in 	\
 	intltool-merge.in 	\
 	intltool-update.in
@@ -40,9 +38,7 @@ MAINTAINERCLEANFILES = 		\
 	ltmain.sh		\
 	missing			\
 	mkinstalldirs		\
-	omf.make		\
 	py-compile		\
-	xmldocs.make		\
 	m4/gnome-doc-utils.m4	\
 	m4/gtk-doc.m4		\
 	m4/intltool.m4		\
