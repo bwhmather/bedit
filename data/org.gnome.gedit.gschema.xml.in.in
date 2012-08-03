@@ -221,12 +221,25 @@
   </schema>
   <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.gedit.preferences.encodings" path="/org/gnome/gedit/preferences/encodings/">
     <key name="auto-detected" type="as">
-      <default l10n="messages">['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']</default>
+      <!-- Translators: This is the sorted list of encodings used by gedit
+           for automatic detection of the file encoding. You may want to customize it adding
+           encodings that are common in your country, for instance the GB18030 encoding
+           for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+           (covering English and most Western European languages) if you think people
+           in you country will rarely use it.
+           "CURRENT" is a magic value used by gedit and it represents the encoding
+           for the current locale, so please don't translate the "CURRENT" term.
+           Only recognized encodings are used.
+           See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+           a list of supported encodings -->
+      <_default l10n="messages">['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']</_default>
       <_summary>Automatically Detected Encodings</_summary>
       <_description>Sorted list of encodings used by gedit for automatically detecting the encoding of a file. "CURRENT" represents the current locale encoding. Only recognized encodings are used.</_description>
     </key>
     <key name="shown-in-menu" type="as">
-      <default l10n="messages">['ISO-8859-15']</default>
+      <!-- Translators: This is the list of encodings shown by default in the Character Encoding
+           menu in open/save file selector. Only recognized encodings are displayed.-->
+      <_default l10n="messages">['ISO-8859-15']</_default>
       <_summary>Encodings shown in menu</_summary>
       <_description>List of encodings shown in the Character Encoding menu in open/save file selector. Only recognized encodings are used.</_description>
     </key>
