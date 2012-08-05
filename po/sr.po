@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
 "keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-09 16:31+0000\n"
-"PO-Revision-Date: 2012-03-10 22:15+0200\n"
+"POT-Creation-Date: 2012-08-03 08:38+0000\n"
+"PO-Revision-Date: 2012-08-05 09:23+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -36,18 +36,16 @@ msgid "Edit text files"
 msgstr "Уређујте текстуалне документе"
 
 #: ../data/gedit.desktop.in.in.h:4
-#| msgid "Open a new window"
+msgid "gedit Text Editor"
+msgstr "Вилењакова бележница — уређивач текста"
+
+#: ../data/gedit.desktop.in.in.h:5
 msgid "Open a New Window"
 msgstr "Отворите нови прозор"
 
-#: ../data/gedit.desktop.in.in.h:5
-#| msgid "Create a new document"
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Document"
 msgstr "Отворите нови документ"
-
-#: ../data/gedit.desktop.in.in.h:6
-msgid "gedit Text Editor"
-msgstr "Вилењакова бележница — уређивач текста"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
 msgid "Use Default Font"
@@ -84,8 +82,7 @@ msgstr "Поставке стила"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
-msgstr ""
-"ИД поставке стила Прегледа Гтк извора који се користи за бојење текста."
+msgstr "ИД поставке стила Прегледа Гтк извора који се користи за бојење текста."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
 msgid "Create Backup Copies"
@@ -96,9 +93,9 @@ msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Да ли програм треба да прави резервну копију за датотеке које чува. Можете "
-"поставити проширење датотеке са резервном копијом помоћу опције „Екстензија "
-"резервне копије“."
+"Да ли програм треба да прави резервне примерке за датотеке које чува. Можете "
+"поставити проширење датотеке резерве помоћу опције „Проширење резервног "
+"примерка“."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
 msgid "Autosave"
@@ -132,11 +129,11 @@ msgstr "Ограничење опозива радњи (ЗАСТАРЕЛО)"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
-"Највећи број радњи које ће програм моћи да опозове или понови. Користите „-"
-"1“ за неограничени број радњи. Застарело почевши од 2.12.0."
+"Највећи број радњи које ће програм моћи да опозове или понови. Користите "
+"„-1“ за неограничени број радњи. Застарело почевши од 2.12.0."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
 msgid "Maximum Number of Undo Actions"
@@ -144,11 +141,11 @@ msgstr "Највећи број опозваних радњи"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
 msgstr ""
-"Највећи број радњи које ће програм моћи да опозове или понови. Користите „-"
-"1“ за неограничени број радњи."
+"Највећи број радњи које ће програм моћи да опозове или понови. Користите "
+"„-1“ за неограничени број радњи."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
 msgid "Line Wrapping Mode"
@@ -199,7 +196,8 @@ msgstr "Приказ бројева редова"
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr ""
-"Да ли програм треба да прикаже бројеве линија у простору за уређивање текста."
+"Да ли програм треба да прикаже бројеве редова у простору за уређивање "
+"текста."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
 msgid "Highlight Current Line"
@@ -251,9 +249,9 @@ msgstr ""
 "Одређује како се курсор помера када се притисну типке ПОЧЕТАК и КРАЈ. "
 "Користите „disabled“ за стално враћање на почетак/крај реда, „after“ за "
 "померање на почетак/крај реда по првом притиску и на почетак/крај текста "
-"занемаријући размаке по другом притиску, „before“ за померање на почетак/"
-"крај текста пре померања на почетак/крај реда и „always“ за померање на "
-"почетак/крај текста уместо на почетак/крај реда."
+"занемаријући размаке по другом притиску, „before“ за померање на "
+"почетак/крај текста пре померања на почетак/крај реда и „always“ за померање "
+"на почетак/крај текста уместо на почетак/крај реда."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
 msgid "Restore Previous Cursor Position"
@@ -297,11 +295,11 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
 msgid "Toolbar is Visible"
-msgstr "Приказ линије алата"
+msgstr "Приказ траке алата"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
 msgid "Whether the toolbar should be visible in editing windows."
-msgstr "Да ли линија алата треба да буде видљива."
+msgstr "Да ли трака алата треба да буде видљива."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
 msgid "Notebook Show Tabs Mode"
@@ -322,13 +320,13 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
 msgid "Status Bar is Visible"
-msgstr "Приказ линије стања"
+msgstr "Приказ траке стања"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
-"Да ли линија стања на дну прозора за уређивање текста треба да буде видљива."
+"Да ли трака стања на дну прозора за уређивање текста треба да буде видљива."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
 msgid "Side panel is Visible"
@@ -431,14 +429,32 @@ msgid ""
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
 "Одређује који ће словни лик бити коришћен за штампање бројева редова. Ово ће "
-"једино имати ефекта уколико опција „Штампање бројева редова“ није постављена "
-"на 0."
+"једино имати ефекта уколико опција „Штампање бројева редова“ није "
+"постављена на 0."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+# Ово треба да буде UTF-8,CURRENT,ISO-8859-2 за латинични превод!!!
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr ""
+"[„UTF-8“, „CURRENT“, „ISO-8859-2“, „ISO-8859-5“, „WINDOWS-1250“, "
+"„WINDOWS-1251“, „ISO-8859-15“]"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "Самостално откривање кодних распореда"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -448,11 +464,17 @@ msgstr ""
 "кодног распореда датотеке. „CURRENT“ означава текући кодни распоред "
 "локалитета. Користе се једино препознати кодни распореди."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "[„ISO-8859-15“]"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "Кодни распореди приказани у изборнику"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -460,17 +482,17 @@ msgstr ""
 "Списак кодирања приказаних у изборнику за кодирање знакова при избору "
 "датотека. Користе се само препознати кодни распореди."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
-msgstr "Покренути додаци"
+msgstr "Покренути прикључци"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Списак активних додатака. Садржи „путању“ активних додатака. Погледајте "
-"датотеку „.gedit-plugin“ да сазнате „путању“ датог додатка."
+"Списак активних прикључака. Садржи „путању“ активних прикључака. Погледајте "
+"датотеку „.gedit-plugin“ да сазнате „путању“ датог прикључка."
 
 #: ../gedit/gedit-app.c:222
 msgid "There was an error displaying the help."
@@ -490,7 +512,7 @@ msgstr "Поништи _одјаву"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:152
 msgid "Close _without Saving"
-msgstr "Затвори _без снимања"
+msgstr "Затвори _без чувања"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:214
 msgid "Question"
@@ -509,8 +531,7 @@ msgstr[1] ""
 "Измене у последње %ld секунде ће бити трајно одбачене уколико не сачувате."
 msgstr[2] ""
 "Измене у последњих %ld секунди ће бити трајно одбачене уколико не сачувате."
-msgstr[3] ""
-"Измене у последњој секунди ће бити трајно одбачене уколико не сачувате."
+msgstr[3] "Измене у последњој секунди ће бити трајно одбачене уколико не сачувате."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:423
 msgid ""
@@ -534,8 +555,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Измене у последњем минуту и %ld секунди ће бити трајно одбачене уколико не "
 "сачувате."
-msgstr[3] ""
-"Измене у последњем минуту ће бити трајно одбачене уколико не сачувате."
+msgstr[3] "Измене у последњем минуту ће бити трајно одбачене уколико не сачувате."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:439
 #, c-format
@@ -550,8 +570,7 @@ msgstr[1] ""
 "Измене у последња %ld минута ће бити трајно одбачене уколико не сачувате."
 msgstr[2] ""
 "Измене у последњих %ld минута ће бити трајно одбачене уколико не сачувате."
-msgstr[3] ""
-"Измене у последњем минуту ће бити трајно одбачене уколико не сачувате."
+msgstr[3] "Измене у последњем минуту ће бити трајно одбачене уколико не сачувате."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:454
 msgid "If you don't save, changes from the last hour will be permanently lost."
@@ -575,8 +594,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Измене у последњем часу и %d минута ће бити трајно одбачене уколико не "
 "сачувате."
-msgstr[3] ""
-"Измене у последњем часу ће бити трајно одбачене уколико не сачувате."
+msgstr[3] "Измене у последњем часу ће бити трајно одбачене уколико не сачувате."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:475
 #, c-format
@@ -584,14 +602,11 @@ msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
-msgstr[0] ""
-"Измене у последњих %d часа ће бити трајно одбачене уколико не сачувате."
-msgstr[1] ""
-"Измене у последња %d часа ће бити трајно одбачене уколико не сачувате."
+msgstr[0] "Измене у последњих %d часа ће бити трајно одбачене уколико не сачувате."
+msgstr[1] "Измене у последња %d часа ће бити трајно одбачене уколико не сачувате."
 msgstr[2] ""
 "Измене у последњих %d часова ће бити трајно одбачене уколико не сачувате."
-msgstr[3] ""
-"Измене у последњем часу ће бити трајно одбачене уколико не сачувате."
+msgstr[3] "Измене у последњем часу ће бити трајно одбачене уколико не сачувате."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:519
 #, c-format
@@ -623,15 +638,13 @@ msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] "%d документ има несачуване измене. Да сачувам измене пре затварања?"
-msgstr[1] ""
-"%d документа имају несачуване измене. Да сачувам измене пре затварања?"
-msgstr[2] ""
-"%d докумената има несачуване измене. Да сачувам измене пре затварања?"
+msgstr[1] "%d документа имају несачуване измене. Да сачувам измене пре затварања?"
+msgstr[2] "%d докумената има несачуване измене. Да сачувам измене пре затварања?"
 msgstr[3] "Документ има несачуване измене. Да сачувам измене пре затварања?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:733
 msgid "Docum_ents with unsaved changes:"
-msgstr "Документи са несачуваним изменама:"
+msgstr "Докум_енти са несачуваним изменама:"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:735
 msgid "S_elect the documents you want to save:"
@@ -639,7 +652,7 @@ msgstr "Изаберите _документе које желите да сач
 
 #: ../gedit/gedit-close-confirmation-dialog.c:759
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr "Уколико не сачувате, све ваше измене ће бити трајно одбачене."
+msgstr "Уколико их не сачувате, све измене ће бити трајно изгубљене."
 
 #: ../gedit/gedit-command-line.c:232
 #, c-format
@@ -648,7 +661,7 @@ msgstr "%s: неисправан кодни запис.\n"
 
 #: ../gedit/gedit-command-line.c:256
 msgid "Show the application's version"
-msgstr "Приказује издање програма"
+msgstr "Исписује податке о издању програма"
 
 #: ../gedit/gedit-command-line.c:262
 msgid "Display list of possible values for the encoding option"
@@ -696,7 +709,7 @@ msgstr "Покреће програм у самосталном режиму"
 
 #: ../gedit/gedit-command-line.c:327
 msgid "[FILE...] [+LINE[:COLUMN]]"
-msgstr "[ДАТОТЕКА...] [+ЛИНИЈА[:КОЛОНА]]"
+msgstr "[ДАТОТЕКА...] [+РЕД[:КОЛОНА]]"
 
 #. Setup command line options
 #: ../gedit/gedit-command-line.c:334
@@ -710,7 +723,8 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"Покрените „%s --help“ за потпун списак доступних могућности.\n"
+"Покрените „%s --help“ да ​​видите потпун списак доступних опција линије "
+"наредби.\n"
 
 #: ../gedit/gedit-commands-file.c:272
 #, c-format
@@ -740,7 +754,7 @@ msgstr "Датотека „%s“ је само за читање."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Да ли желите да покушате да је замените оном коју снимате?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_Замени"
 
@@ -810,8 +824,7 @@ msgstr[1] ""
 "Измене учињене у документу у последње %ld секунде ће бити трајно одбачене."
 msgstr[2] ""
 "Измене учињене у документу у последњих %ld секунди ће бити трајно одбачене."
-msgstr[3] ""
-"Измене учињене у документу у последњој секунди ће бити трајно одбачене."
+msgstr[3] "Измене учињене у документу у последњој секунди ће бити трајно одбачене."
 
 #: ../gedit/gedit-commands-file.c:1236
 msgid ""
@@ -836,8 +849,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Измене учињене у документу у последњем минуту и %ld секунди ће бити трајно "
 "одбачене."
-msgstr[3] ""
-"Измене учињене у документу у последњем минуту ће бити трајно одбачене."
+msgstr[3] "Измене учињене у документу у последњем минуту ће бити трајно одбачене."
 
 #: ../gedit/gedit-commands-file.c:1252
 #, c-format
@@ -852,8 +864,7 @@ msgstr[1] ""
 "Измене учињене у документу у последња %ld минута ће бити трајно одбачене."
 msgstr[2] ""
 "Измене учињене у документу у последњих %ld минута ће бити трајно одбачене."
-msgstr[3] ""
-"Измене учињене у документу у последњем минуту ће бити трајно одбачене."
+msgstr[3] "Измене учињене у документу у последњем минуту ће бити трајно одбачене."
 
 #: ../gedit/gedit-commands-file.c:1267
 msgid "Changes made to the document in the last hour will be permanently lost."
@@ -877,8 +888,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Измене учињене у документу у последњем часу и %d минута ће бити трајно "
 "одбачене."
-msgstr[3] ""
-"Измене учињене у документу у последњем часу ће бити трајно одбачене."
+msgstr[3] "Измене учињене у документу у последњем часу ће бити трајно одбачене."
 
 #: ../gedit/gedit-commands-file.c:1288
 #, c-format
@@ -886,14 +896,11 @@ msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] ""
-"Измене учињене у документу у последњем %d часу ће бити трајно одбачене."
-msgstr[1] ""
-"Измене учињене у документу у последња %d часа ће бити трајно одбачене."
+msgstr[0] "Измене учињене у документу у последњем %d часу ће бити трајно одбачене."
+msgstr[1] "Измене учињене у документу у последња %d часа ће бити трајно одбачене."
 msgstr[2] ""
 "Измене учињене у документу у последњих %d часова ће бити трајно одбачене."
-msgstr[3] ""
-"Измене учињене у документу у последњем часу ће бити трајно одбачене."
+msgstr[3] "Измене учињене у документу у последњем часу ће бити трајно одбачене."
 
 #: ../gedit/gedit-commands-file.c:1314
 msgid "_Revert"
@@ -935,7 +942,7 @@ msgstr "Пронашао сам и заменио једну појаву"
 msgid "\"%s\" not found"
 msgstr "Нисам пронашао „%s“"
 
-#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
+#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Несачуван документ „%d“"
@@ -1089,7 +1096,7 @@ msgstr "_Опис"
 
 #: ../gedit/gedit-encodings-dialog.c:404 ../gedit/gedit-encodings-dialog.c:465
 msgid "_Encoding"
-msgstr "_Кодни распоред"
+msgstr "_Кодирање"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-encodings-dialog.ui.h:1
@@ -1102,7 +1109,7 @@ msgstr "Дос_тупни кодни распореди:"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:3
 msgid "E_ncodings shown in menu:"
-msgstr "Кодни _распореди приказани у изборнику:"
+msgstr "_Кодирања приказана у изборнику:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:52
 #: ../gedit/gedit-preferences-dialog.c:909
@@ -1136,7 +1143,7 @@ msgstr "Виндоуз"
 #: ../gedit/gedit-io-error-info-bar.c:182
 #: ../gedit/gedit-io-error-info-bar.c:497
 msgid "_Retry"
-msgstr "Пон_ови"
+msgstr "_Пробај поново"
 
 #: ../gedit/gedit-io-error-info-bar.c:203
 #, c-format
@@ -1192,7 +1199,7 @@ msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
 msgstr ""
-"Име рачунара није исправно. Проверите да ли сте унели исправну адресу и "
+"Назив рачунара није исправан. Проверите да ли сте унели исправну адресу и "
 "покушајте поново."
 
 #: ../gedit/gedit-io-error-info-bar.c:312
@@ -1242,7 +1249,7 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:612
 msgid "You do not have the permissions necessary to open the file."
-msgstr "Немате неопходне дозволе за отварање датотеке."
+msgstr "Немате потребне дозволе да отворите датотеку."
 
 #: ../gedit/gedit-io-error-info-bar.c:618
 msgid "gedit has not been able to detect the character encoding."
@@ -1424,15 +1431,16 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:1121
 msgid "A file with the same name already exists. Please use a different name."
-msgstr "Постоји још једна датотека са истим именом. Користите неко друго име."
+msgstr ""
+"Постоји још једна датотека са истим називом. Користите неки други назив."
 
 #: ../gedit/gedit-io-error-info-bar.c:1126
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
 msgstr ""
-"Диск на који покушавате да сачувате датотеку има ограничење на дужину имена "
-"датотека. Употребите краће име."
+"Диск на који покушавате да сачувате датотеку има ограничење на дужину назива "
+"датотека. Употребите краћи назив."
 
 #: ../gedit/gedit-io-error-info-bar.c:1133
 msgid ""
@@ -1479,7 +1487,7 @@ msgstr "Неки неисправни знакови су откривени п�
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
-"Уколико наставите чување ове датотеке можете да оштетите документ. Да ипак "
+"Уколико наставите чување ове датотеке можете да оштетите документ.  Да ипак "
 "сачувам?"
 
 #. Keep in sync with the respective GtkActions
@@ -1567,12 +1575,12 @@ msgstr "Прелом текста"
 #: ../gedit/gedit-preferences-dialog.ui.h:5
 #: ../gedit/gedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
-msgstr "Омогући _прелом текста"
+msgstr "Укључи _преламање текста"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:6
 #: ../gedit/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
-msgstr "Не д_ели реч у две линије"
+msgstr "Немој _делити речи у два реда"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:7
 msgid "Highlighting"
@@ -1635,7 +1643,7 @@ msgstr "Словни лик"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:21
 msgid "Editor _font: "
-msgstr "Словни лик _уређивача:"
+msgstr "Словни лик _уређивача: "
 
 #: ../gedit/gedit-preferences-dialog.ui.h:22
 msgid "Pick the editor font"
@@ -1667,7 +1675,7 @@ msgstr "Словни лик и боје"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Plugins"
-msgstr "Додаци"
+msgstr "Прикључци"
 
 #: ../gedit/gedit-print-job.c:572
 #, c-format
@@ -1708,7 +1716,7 @@ msgstr "Испиши _број након"
 #. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
 #: ../gedit/gedit-print-preferences.ui.h:8
 msgid "lines"
-msgstr "реда"
+msgstr "редова"
 
 #: ../gedit/gedit-print-preferences.ui.h:12
 msgid "Page header"
@@ -1769,7 +1777,7 @@ msgstr "Прикажите више страна одједном"
 
 #: ../gedit/gedit-print-preview.c:672
 msgid "Zoom 1:1"
-msgstr "Увећање 1:1"
+msgstr "Увећај 1:1"
 
 #: ../gedit/gedit-print-preview.c:681
 msgid "Zoom to fit the whole page"
@@ -1805,18 +1813,18 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Прегледајте страну документа коју желите да одштампате"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "Замени"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
-msgstr "З_амени све"
+msgstr "_Замени све"
 
 #: ../gedit/gedit-replace-dialog.ui.h:2
 msgid "Replace All"
-msgstr "Замени све"
+msgstr "Замените све"
 
 #: ../gedit/gedit-replace-dialog.ui.h:3
 msgid "_Search for: "
@@ -1832,11 +1840,11 @@ msgstr "_Упореди величину слова"
 
 #: ../gedit/gedit-replace-dialog.ui.h:6
 msgid "Match _entire word only"
-msgstr "Упор_еди само целе речи"
+msgstr "Упореди само _целе речи"
 
 #: ../gedit/gedit-replace-dialog.ui.h:7
 msgid "Search _backwards"
-msgstr "Тражи у_назад"
+msgstr "Тражи _уназад"
 
 #: ../gedit/gedit-replace-dialog.ui.h:8
 msgid "_Wrap around"
@@ -1966,11 +1974,11 @@ msgstr "_Алати"
 
 #: ../gedit/gedit-ui.h:48
 msgid "_Documents"
-msgstr "До_кументи"
+msgstr "_Документи"
 
 #: ../gedit/gedit-ui.h:49
 msgid "_Help"
-msgstr "_Помоћ"
+msgstr "По_моћ"
 
 #: ../gedit/gedit-ui.h:53
 msgid "Create a new document"
@@ -1996,7 +2004,7 @@ msgstr "Подесите програм"
 #. Help menu
 #: ../gedit/gedit-ui.h:62
 msgid "_Contents"
-msgstr "Садр_жај"
+msgstr "_Садржај"
 
 #: ../gedit/gedit-ui.h:63
 msgid "Open the gedit manual"
@@ -2016,15 +2024,15 @@ msgstr "Сачувајте тренутну датотеку"
 
 #: ../gedit/gedit-ui.h:79
 msgid "Save the current file with a different name"
-msgstr "Сачувајте тренутну датотеку под другим именом"
+msgstr "Сачувајте текућу датотеку под другим називом"
 
 #: ../gedit/gedit-ui.h:81
 msgid "Revert to a saved version of the file"
-msgstr "Вратите сачувану верзију датотеке"
+msgstr "Врати на сачувано издање датотеке"
 
 #: ../gedit/gedit-ui.h:82
 msgid "Print Previe_w"
-msgstr "Преглед пре_д штампу"
+msgstr "Преглед пред _штампу"
 
 #: ../gedit/gedit-ui.h:83
 msgid "Print preview"
@@ -2064,7 +2072,7 @@ msgstr "Изабери _све"
 
 #: ../gedit/gedit-ui.h:101
 msgid "Select the entire document"
-msgstr "Изаберите цео документ"
+msgstr "Изаберите читав документ"
 
 #. View menu
 #: ../gedit/gedit-ui.h:104
@@ -2074,7 +2082,7 @@ msgstr "_Режим истицања"
 #. Search menu
 #: ../gedit/gedit-ui.h:107
 msgid "_Find..."
-msgstr "_Потражи..."
+msgstr "_Нађи..."
 
 #: ../gedit/gedit-ui.h:108
 msgid "Search for text"
@@ -2114,11 +2122,11 @@ msgstr "Уклоните истицање пронађеног текста"
 
 #: ../gedit/gedit-ui.h:122
 msgid "Go to _Line..."
-msgstr "Иди у _ред..."
+msgstr "_Иди на ред..."
 
 #: ../gedit/gedit-ui.h:123
 msgid "Go to a specific line"
-msgstr "Идите у изабрани ред унутар документа"
+msgstr "Идите на одређени ред у тексту"
 
 #. Documents menu
 #: ../gedit/gedit-ui.h:126
@@ -2191,19 +2199,19 @@ msgstr "Затворите програм"
 
 #: ../gedit/gedit-ui.h:160
 msgid "_Toolbar"
-msgstr "Линија _алата"
+msgstr "_Палета алата"
 
 #: ../gedit/gedit-ui.h:161
 msgid "Show or hide the toolbar in the current window"
-msgstr "Прикажите или сакријте линију алата у тренутном прозору"
+msgstr "Прикажите или сакријте траку алата у тренутном прозору"
 
 #: ../gedit/gedit-ui.h:163
 msgid "_Statusbar"
-msgstr "Линија _стања"
+msgstr "Трака _стања"
 
 #: ../gedit/gedit-ui.h:164
 msgid "Show or hide the statusbar in the current window"
-msgstr "Прикажите или сакријте линију стања у тренутном прозору"
+msgstr "Прикажите или сакријте траку стања у тренутном прозору"
 
 #: ../gedit/gedit-ui.h:167
 msgid "Edit text in fullscreen"
@@ -2211,7 +2219,7 @@ msgstr "Уређујте текст преко целог екрана"
 
 #: ../gedit/gedit-ui.h:174
 msgid "Side _Panel"
-msgstr "_Бочна површ"
+msgstr "Бочна _површ"
 
 #: ../gedit/gedit-ui.h:175
 msgid "Show or hide the side panel in the current window"
@@ -2225,22 +2233,22 @@ msgstr "_Доња површ"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Прикажите или сакријте доњу површ у тренутном прозору"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Проверите вашу инсталацију."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Не могу да отворим датотеку сучеља „%s“. Грешка: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
-msgstr "Не могу да пронађем објекат „%s“ унутар датотеке „%s“."
+msgstr "Не могу да пронађем објекат „%s“ унутар датотеке %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ на „%s“"
@@ -2266,7 +2274,7 @@ msgstr "Ниска коју желите да потражите"
 
 #: ../gedit/gedit-view-frame.c:777
 msgid "Line you want to move the cursor to"
-msgstr "Ред у који желите да померите курсор"
+msgstr "Ред на који желите да поставите курсор"
 
 #: ../gedit/gedit-window.c:941
 #, c-format
@@ -2525,7 +2533,7 @@ msgstr "Извршите наредбу"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:2
 msgid "Execute a custom command and put its output in a new document"
-msgstr "Покреће команду и смешта њен излаз у нови документ"
+msgstr "Покреће наредбу и смешта њен излаз у нови документ"
 
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
@@ -2551,7 +2559,7 @@ msgstr ""
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
-msgstr "Назив Панго словног лика. Примери су „Sans 12“ или „Monospace Bold 14“"
+msgstr "Назив Панго писма. Примери су „Sans 12“ или „Monospace Bold 14“."
 
 #: ../plugins/externaltools/tools/capture.py:92
 #, python-format
@@ -2787,35 +2795,35 @@ msgstr "Прегледач датотека"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:848
 msgid "An error occurred while creating a new directory"
-msgstr "Догодила се грешка при прављењу нове фасцикле"
+msgstr "Дошло је до грешке при прављењу нове фасцикле"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:851
 msgid "An error occurred while creating a new file"
-msgstr "Догодила се грешка при прављењу нове датотеке"
+msgstr "Дошло је до грешке при прављењу нове датотеке"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:854
 msgid "An error occurred while renaming a file or directory"
-msgstr "Догодила се грешка при преименовању датотеке или фасцикле"
+msgstr "Дошло је до грешке при преименовању датотеке или фасцикле"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:857
 msgid "An error occurred while deleting a file or directory"
-msgstr "Догодила се грешка при брисању датотеке или фасцикле"
+msgstr "Дошло је до грешке при брисању датотеке или фасцикле"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:860
 msgid "An error occurred while opening a directory in the file manager"
-msgstr "Догодила се грешка при отварању фасцикле у прегледачу датотека"
+msgstr "Дошло је до грешке при отварању фасцикле у прегледачу датотека"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:863
 msgid "An error occurred while setting a root directory"
-msgstr "Догодила се грешка при постављању коренске фасцикле"
+msgstr "Дошло је до грешке при постављању коренске фасцикле"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:866
 msgid "An error occurred while loading a directory"
-msgstr "Догодила се грешка током учитавања фасцикле"
+msgstr "Дошло је до грешке током учитавања фасцикле"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:869
 msgid "An error occurred"
-msgstr "Догодила се грешка"
+msgstr "Дошло је до грешке"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:1085
 msgid ""
@@ -2896,7 +2904,7 @@ msgstr "_Филтер"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:826
 msgid "_Move to Trash"
-msgstr "Пре_мести у смеће"
+msgstr "Премести у _смеће"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:827
 msgid "Move selected file or folder to trash"
@@ -2904,7 +2912,7 @@ msgstr "Преместите изабрану датотеку или фасци
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:829
 msgid "_Delete"
-msgstr "О_бриши"
+msgstr "_Обриши"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:830
 msgid "Delete selected file or folder"
@@ -2932,7 +2940,7 @@ msgstr "Додајте нову празну фасциклу"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:852
 msgid "New F_ile"
-msgstr "Нова датотека"
+msgstr "Нова _датотека"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:853
 msgid "Add new empty file"
@@ -2940,7 +2948,7 @@ msgstr "Додајте нову празну датотеку"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:858
 msgid "_Rename"
-msgstr "П_реименуј"
+msgstr "_Преименуј"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:859
 msgid "Rename selected file or folder"
@@ -3073,9 +3081,9 @@ msgid ""
 "generally applies to opening a document from the command line or opening it "
 "with Nautilus, etc.)"
 msgstr ""
-"Ако је изабрано, додатак за разгледање датотека ће приказати фасциклу "
+"Ако је изабрано, прикључак за разгледање датотека ће приказати фасциклу "
 "документа који је први отворен, уколико прегледач није већ коришћен. Ово "
-"обично вреди када се документ отвара из командне линије, у Наутилусу, итд."
+"обично вреди када се документ отвара из линије наредби, у Наутилусу, итд."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
 msgid "File Browser Filter Mode"
@@ -3089,8 +3097,8 @@ msgid ""
 msgstr ""
 "Вредност одређује које датотеке ће бити филтриране из прегледача датотека. "
 "Подржане вредности су: „none“ (без филтрирања), „hidden“ (филтрирај скривене "
-"датотеке), „binary“ (филтрирај извршне датотеке) и y"
-"„hidden_and_binar“ (филтрирај скривене и извршне датотеке)."
+"датотеке), „binary“ (филтрирај извршне датотеке) и y „hidden-and-binar“ "
+"(филтрирај скривене и извршне датотеке)."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
 msgid "File Browser Filter Pattern"
@@ -3133,8 +3141,8 @@ msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
-"Ако је изабрано, терминал ће користити десктоп-глобал стандардна слова ако "
-"је моноспејс (и већина сличних слова може да дође у обзир)."
+"Ако је изабрано, терминал ће да користи опште писмо радне површи ако је "
+"утврђене ширине (или у супротном најсличније писмо које пронађе)."
 
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
 msgid "C_ommand color:"
@@ -3148,7 +3156,7 @@ msgstr "Боја _грешке:"
 #: ../plugins/pythonconsole/pythonconsole/__init__.py:52
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
-msgstr "Конзола Питона"
+msgstr "Питонова конзола"
 
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
 msgid "Interactive Python console standing in the bottom panel"
@@ -3295,7 +3303,7 @@ msgstr "Архива сажета Гзипом"
 #: ../plugins/snippets/snippets/manager.py:873
 #: ../plugins/snippets/snippets/manager.py:936
 msgid "Bzip2 compressed archive"
-msgstr "Архива сажета Бзипом"
+msgstr "Архива сажета Бзипом 2"
 
 #: ../plugins/snippets/snippets/manager.py:788
 msgid "Single snippets file"
@@ -3310,7 +3318,7 @@ msgstr "Све датотеке"
 #: ../plugins/snippets/snippets/manager.py:801
 #, python-format
 msgid "The following error occurred while exporting: %s"
-msgstr "Догодила се грешка при извозу: %s"
+msgstr "Дошло је до грешке при извозу: %s"
 
 #: ../plugins/snippets/snippets/manager.py:805
 msgid "Export successfully completed"
@@ -3435,7 +3443,7 @@ msgstr "Поређај"
 
 #: ../plugins/sort/gedit-sort-plugin.ui.h:2
 msgid "_Sort"
-msgstr "Пор_еђај"
+msgstr "_Поређај"
 
 #: ../plugins/sort/gedit-sort-plugin.ui.h:3
 msgid "_Reverse order"
@@ -3451,7 +3459,7 @@ msgstr "_Занемари величину слова"
 
 #: ../plugins/sort/gedit-sort-plugin.ui.h:6
 msgid "S_tart at column:"
-msgstr "Почни са колоном:"
+msgstr "Почни са _колоном:"
 
 #: ../plugins/sort/gedit-sort-plugin.ui.h:7
 msgid "You cannot undo a sort operation"
@@ -3481,7 +3489,7 @@ msgstr "_Занемари све"
 #. + Add to Dictionary
 #: ../plugins/spell/gedit-automatic-spell-checker.c:514
 msgid "_Add"
-msgstr "Дод_ај"
+msgstr "_Додај"
 
 #: ../plugins/spell/gedit-automatic-spell-checker.c:553
 msgid "_Spelling Suggestions..."
@@ -3584,7 +3592,7 @@ msgstr "Провера писања"
 
 #: ../plugins/spell/spell-checker.ui.h:2
 msgid "Misspelled word:"
-msgstr "Погрешно откуцане речи:"
+msgstr "Погрешно написана реч:"
 
 #: ../plugins/spell/spell-checker.ui.h:3
 msgid "word"
@@ -3671,7 +3679,7 @@ msgstr "01.11.2009, 17:52:00"
 
 #: ../plugins/time/gedit-time-dialog.ui.h:7
 msgid "_Insert"
-msgstr "У_метни"
+msgstr "_Уметни"
 
 #: ../plugins/time/gedit-time-plugin.c:188
 msgid "In_sert Date and Time..."
@@ -3688,7 +3696,7 @@ msgstr "Доступни формати"
 #. ex:ts=8:noet:
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:1
 msgid "Configure date/time plugin"
-msgstr "Подесите додатак за датум/време"
+msgstr "Подесите прикључак за датум/време"
 
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "When inserting date/time..."
@@ -3743,2407 +3751,3 @@ msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Пријављује приступ и оставља догађај за документа коришћена Вилењаковом "
 "бележницом"
-
-#~| msgid "button1"
-#~ msgid "toolbutton1"
-#~ msgstr "дугме_алата1"
-
-#~| msgid "button1"
-#~ msgid "toolbutton2"
-#~ msgstr "дугме_алата2"
-
-#~ msgid "_Add..."
-#~ msgstr "Дод_ај..."
-
-#~ msgid "Previous location"
-#~ msgstr "Претходно место"
-
-#~ msgid "Go to previous location"
-#~ msgstr "Идите на претходно место"
-
-#~ msgid "Go to a previously opened location"
-#~ msgstr "Идите на претходно отворено место"
-
-#~ msgid "Next location"
-#~ msgstr "Наредно место"
-
-#~ msgid "Go to next location"
-#~ msgstr "Идите на следеће место"
-
-#~ msgid "External Tools Manager"
-#~ msgstr "Управник спољних алата"
-
-#~ msgid "Bottom Panel is Visible"
-#~ msgstr "Панел на дну је видљив"
-
-#~ msgid ""
-#~ "List of VFS schemes gedit supports in write mode. The 'file' scheme is "
-#~ "writable by default."
-#~ msgstr ""
-#~ "Списак VFS шема које програм подржава у режиму уписа. Шема „file“ је "
-#~ "подразумевано уписива."
-
-#~ msgid "Monospace 12"
-#~ msgstr "Monospace 12"
-
-#~ msgid "Monospace 9"
-#~ msgstr "Monospace 9"
-
-#~ msgid "Sans 11"
-#~ msgstr "Sans 11"
-
-#~ msgid "Sans 8"
-#~ msgstr "Sans 8"
-
-#~ msgid ""
-#~ "Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM"
-#~ "\" to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display "
-#~ "icons only, \"GEDIT_TOOLBAR_ICONS_AND_TEXT\" to display both icons and "
-#~ "text, and \"GEDIT_TOOLBAR_ICONS_BOTH_HORIZ\" to display prioritized text "
-#~ "beside icons. Note that the values are case-sensitive, so make sure they "
-#~ "appear exactly as mentioned here."
-#~ msgstr ""
-#~ "Стил дугмића на линији алата. Могуће вредности су „GEDIT_TOOLBAR_SYSTEM“ "
-#~ "за Подразумевани системски стил, „GEDIT_TOOLBAR_ICONS“ за приказ само "
-#~ "икона, „GEDIT_TOOLBAR_ICONS_AND_TEXT“ за приказ и икона и текста, и "
-#~ "„GEDIT_TOOLBAR_ICONS_BOTH_HORIZ“ за приказ наглашеног текста поред икона. "
-#~ "Обратите пажњу да су вредности осетљиве на велика и мала слова, па се "
-#~ "уверите да их користите као што су овде наведене."
-
-#~ msgid "Toolbar Buttons Style"
-#~ msgstr "Стил дугмића на палети са алатима"
-
-#~ msgid ""
-#~ "Whether gedit should highlight the bracket matching the selected one."
-#~ msgstr "Да ли да програм упари заграду која се поклапа са означеном."
-
-#~ msgid ""
-#~ "Whether the bottom panel at the bottom of editing windows should be "
-#~ "visible."
-#~ msgstr "Да ли панел на дну простора за унос текста треба да буде видљив."
-
-#~ msgid "Writable VFS schemes"
-#~ msgstr "Могућности уписа на виртуалне системе датотека"
-
-#~ msgid "[ISO-8859-15]"
-#~ msgstr "[ISO-8859-15]"
-
-# Ово треба да буде UTF-8,CURRENT,ISO-8859-2 за латинични превод!!!
-#~ msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
-#~ msgstr ""
-#~ "[UTF-8,CURRENT,ISO-8859-2,ISO-8859-5,WINDOWS-1250,WINDOWS-1251,ISO-8859-"
-#~ "15]"
-
-#~ msgid "Automatic Indentation"
-#~ msgstr "Аутоматско увлачење"
-
-#~ msgid "Current Line"
-#~ msgstr "Текући ред"
-
-#~ msgid "Right Margin"
-#~ msgstr "Десна маргина"
-
-#~ msgid "_Right margin at column:"
-#~ msgstr "_Десна маргина у колони:"
-
-#~ msgid "[FILE...]"
-#~ msgstr "[ДАТОТЕКА...]"
-
-#~ msgid "Plugin"
-#~ msgstr "Додатак"
-
-#~ msgid "Enabled"
-#~ msgstr "Укључено"
-
-#~ msgid "_About"
-#~ msgstr "_О програму"
-
-#~ msgid "C_onfigure"
-#~ msgstr "П_одеси"
-
-#~ msgid "A_ctivate"
-#~ msgstr "У_кључи"
-
-#~ msgid "Ac_tivate All"
-#~ msgstr "Ук_ључи све"
-
-#~ msgid "_Deactivate All"
-#~ msgstr "_Искључи све"
-
-#~ msgid "Active _Plugins:"
-#~ msgstr "_Укључени додаци"
-
-#~ msgid "_About Plugin"
-#~ msgstr "_О додатку"
-
-#~ msgid "C_onfigure Plugin"
-#~ msgstr "П_одеси додатак"
-
-#~ msgid "Cannot initialize preferences manager."
-#~ msgstr "Не могу да покренем управљача поставки."
-
-#~ msgid "Expected `%s', got `%s' for key %s"
-#~ msgstr "Очекивано ’%s‘, добио ’%s‘ за кључ %s"
-
-#~ msgid "It is not possible to detect the encoding automatically"
-#~ msgstr "Не могу сам да препознам кодни распоред"
-
-#~ msgid "Page Set_up..."
-#~ msgstr "Подешавање стране..."
-
-#~ msgid "Set up the page settings"
-#~ msgstr "Мења подешавања странице"
-
-#~ msgid "_Incremental Search..."
-#~ msgstr "_Интерактивно тражење..."
-
-#~ msgid "Incrementally search for text"
-#~ msgstr "Интерактивно тражи задати текст"
-
-#~ msgid "Snippets Manager"
-#~ msgstr "Управник исечака"
-
-#~ msgid "_Autocheck Spelling"
-#~ msgstr "_Аутоматски проверавај писање"
-
-#~ msgid "Tags"
-#~ msgstr "Елементи"
-
-#~ msgid "Select the group of tags you want to use"
-#~ msgstr "Изаберите групу елемената које желите да користите"
-
-#~ msgid "_Preview"
-#~ msgstr "_Преглед пред штампу"
-
-#~ msgid "Available Tag Lists"
-#~ msgstr "Доступни спискови елемената"
-
-#~ msgid "Abbreviated form"
-#~ msgstr "Скраћени облик"
-
-#~ msgid "Abbreviation"
-#~ msgstr "Скраћеница"
-
-#~ msgid "Above"
-#~ msgstr "Изнад"
-
-#~ msgid "Accessibility key character"
-#~ msgstr "Знак за приступни тастер"
-
-#~ msgid "Acronym"
-#~ msgstr "Акроним"
-
-#~ msgid "Align"
-#~ msgstr "Поравнање"
-
-#~ msgid "Alignment character"
-#~ msgstr "Знак за поравнање"
-
-#~ msgid "Alternative"
-#~ msgstr "Алтернативно"
-
-#~ msgid "Anchor"
-#~ msgstr "Веза"
-
-#~ msgid "Anchor URI"
-#~ msgstr "Адреса везе"
-
-# bug: what???
-#~ msgid "Applet class file code"
-#~ msgstr "Код за аплете"
-
-# bug: what???
-#~ msgid "Applet class file code (deprecated)"
-#~ msgstr "Код за аплете (превазиђено)"
-
-#~ msgid "Array"
-#~ msgstr "Низ"
-
-#~ msgid "Associated information"
-#~ msgstr "Приложени подаци"
-
-#~ msgid "Author info"
-#~ msgstr "Подаци о аутору"
-
-#~ msgid "Axis related headers"
-#~ msgstr "Заглавља у вези осе"
-
-#~ msgid "Background color"
-#~ msgstr "Боја позадине"
-
-#~ msgid "Background color (deprecated)"
-#~ msgstr "Боја позадине (превазиђено)"
-
-#~ msgid "Background texture tile"
-#~ msgstr "Текстура позадине"
-
-#~ msgid "Background texture tile (deprecated)"
-#~ msgstr "Текстура позадине (превазиђено)"
-
-#~ msgid "Base URI"
-#~ msgstr "Основна адреса"
-
-#~ msgid "Base font"
-#~ msgstr "Основни фонт"
-
-#~ msgid "Base font (deprecated)"
-#~ msgstr "Основни фонт (превазиђено)"
-
-#~ msgid "Bold"
-#~ msgstr "Зацрњена"
-
-#~ msgid "Border"
-#~ msgstr "Ивица"
-
-#~ msgid "Border (deprecated)"
-#~ msgstr "Ивица (превазиђено)"
-
-#~ msgid "Border color"
-#~ msgstr "Боја ивице"
-
-#~ msgid "Cell rowspan"
-#~ msgstr "Поље у више редова"
-
-#~ msgid "Center"
-#~ msgstr "Центрирај"
-
-#~ msgid "Center (deprecated)"
-#~ msgstr "Центрирај (превазиђено)"
-
-#~ msgid "Character encoding of linked resource"
-#~ msgstr "Кодирање знакова везаног ресурса"
-
-#~ msgid "Checked (state)"
-#~ msgstr "Изабрано (стање)"
-
-#~ msgid "Checked state"
-#~ msgstr "Је ли изабрано"
-
-#~ msgid "Citation"
-#~ msgstr "Цитат"
-
-#~ msgid "Cite reason for change"
-#~ msgstr "Наведите разлог измене"
-
-#~ msgid "Class implementation ID"
-#~ msgstr "ИБ имплементације класе"
-
-#~ msgid "Class list"
-#~ msgstr "Списак класа"
-
-#~ msgid "Clear text flow control"
-#~ msgstr "Очисти контролу протока текста"
-
-#~ msgid "Code content type"
-#~ msgstr "Врста садржаја кода"
-
-#~ msgid "Color of selected links"
-#~ msgstr "Боја изабраних веза"
-
-#~ msgid "Color of selected links (deprecated)"
-#~ msgstr "Боја изабраних веза (превазиђено)"
-
-#~ msgid "Column span"
-#~ msgstr "Распон стубаца"
-
-#~ msgid "Columns"
-#~ msgstr "Ступци"
-
-#~ msgid "Comment"
-#~ msgstr "Примедба"
-
-#~ msgid "Computer code fragment"
-#~ msgstr "Исечак рачунарског кода"
-
-#~ msgid "Content type"
-#~ msgstr "Врста садржаја"
-
-#~ msgid "Content type (deprecated)"
-#~ msgstr "Врста садржаја (превазиђено)"
-
-#~ msgid "Coordinates"
-#~ msgstr "Координате"
-
-#~ msgid "DIV Style container"
-#~ msgstr "Садржалац DIV стила"
-
-#~ msgid "DIV container"
-#~ msgstr "Садржалац DIV"
-
-#~ msgid "Date and time of change"
-#~ msgstr "Датум и време измене"
-
-#~ msgid "Declare flag"
-#~ msgstr "Declare атрибут"
-
-#~ msgid "Defer attribute"
-#~ msgstr "Defer атрибут"
-
-#~ msgid "Definition description"
-#~ msgstr "Опис дефиниције"
-
-#~ msgid "Definition list"
-#~ msgstr "Списак дефиниција"
-
-#~ msgid "Definition term"
-#~ msgstr "Израз дефиниције"
-
-#~ msgid "Deleted text"
-#~ msgstr "Обрисани текст"
-
-#~ msgid "Direction"
-#~ msgstr "Смер"
-
-#~ msgid "Directionality"
-#~ msgstr "Усмеривост"
-
-#~ msgid "Directionality (deprecated)"
-#~ msgstr "Усмеривост (превазиђено)"
-
-# хм, хм?
-#~ msgid "Directory list"
-#~ msgstr "Списак фасцикли"
-
-#~ msgid "Disabled"
-#~ msgstr "Искључено"
-
-#~ msgid "Document base"
-#~ msgstr "Основа документа"
-
-#~ msgid "Document body"
-#~ msgstr "Тело документа"
-
-#~ msgid "Document head"
-#~ msgstr "Заглавље документа"
-
-#~ msgid "Document title"
-#~ msgstr "Наслов документа"
-
-#~ msgid "Document type"
-#~ msgstr "Врста документа"
-
-#~ msgid "Element ID"
-#~ msgstr "ИБ елемента"
-
-#~ msgid "Embedded object"
-#~ msgstr "Угњеждени објекат"
-
-#~ msgid "Emphasis"
-#~ msgstr "Наглашавање"
-
-#~ msgid "Encode type"
-#~ msgstr "Врста кодирања"
-
-#~ msgid "Figure"
-#~ msgstr "Слика"
-
-#~ msgid "Font face"
-#~ msgstr "Фонт"
-
-#~ msgid "Font face (deprecated)"
-#~ msgstr "Фонт (превазиђено)"
-
-#~ msgid "For label"
-#~ msgstr "За ознаку"
-
-#~ msgid "Forced line break"
-#~ msgstr "Ручни прелом реда"
-
-#~ msgid "Form"
-#~ msgstr "Образац"
-
-#~ msgid "Form action handler"
-#~ msgstr "Акција за образац"
-
-#~ msgid "Form control group"
-#~ msgstr "Група елемената за образац"
-
-#~ msgid "Form field label text"
-#~ msgstr "Текст ознаке поља у обрасцу"
-
-#~ msgid "Form input"
-#~ msgstr "Унос у образац"
-
-#~ msgid "Form input type"
-#~ msgstr "Врста уноса у образац"
-
-#~ msgid "Form method"
-#~ msgstr "Начин слања обрасца"
-
-#~ msgid "Forward link"
-#~ msgstr "Прослеђивање везе"
-
-#~ msgid "Frame"
-#~ msgstr "Оквир"
-
-#~ msgid "Frame border"
-#~ msgstr "Ивица оквира"
-
-#~ msgid "Frame render parts"
-#~ msgstr "Делови исцртавања оквира"
-
-#~ msgid "Frame source"
-#~ msgstr "Извор оквира"
-
-#~ msgid "Frame spacing"
-#~ msgstr "Размак оквира"
-
-#~ msgid "Frame target"
-#~ msgstr "Одредиште оквира"
-
-#~ msgid "Frameborder"
-#~ msgstr "Ивица оквира"
-
-#~ msgid "Frameset"
-#~ msgstr "Скуп оквира"
-
-#~ msgid "Frameset columns"
-#~ msgstr "Ступци скупа оквира"
-
-#~ msgid "Frameset rows"
-#~ msgstr "Редови скупа оквира"
-
-#~ msgid "Framespacing"
-#~ msgstr "Размак оквира"
-
-#~ msgid "Generic embedded object"
-#~ msgstr "Општи угњеждени објекат"
-
-#~ msgid "Generic metainformation"
-#~ msgstr "Општи метаподаци"
-
-#~ msgid "Generic span"
-#~ msgstr "Опште обухватање"
-
-#~ msgid "HREF URI"
-#~ msgstr "HREF адреса"
-
-#~ msgid "HTML - Special Characters"
-#~ msgstr "HTML — нарочити знаци"
-
-#~ msgid "HTML - Tags"
-#~ msgstr "HTML — Ознаке"
-
-#~ msgid "HTML root element"
-#~ msgstr "Корени HTML елемент"
-
-#~ msgid "HTML version"
-#~ msgstr "Издање HTML-а"
-
-#~ msgid "HTTP header name"
-#~ msgstr "Назив HTTP заглавља"
-
-#~ msgid "Header cell IDs"
-#~ msgstr "ИБ поља заглавља"
-
-#~ msgid "Heading"
-#~ msgstr "Заглавље"
-
-#~ msgid "Heading 1"
-#~ msgstr "Заглавље 1"
-
-#~ msgid "Heading 2"
-#~ msgstr "Заглавље 2"
-
-#~ msgid "Heading 3"
-#~ msgstr "Заглавље 3"
-
-#~ msgid "Heading 4"
-#~ msgstr "Заглавље 4"
-
-#~ msgid "Heading 5"
-#~ msgstr "Заглавље 5"
-
-#~ msgid "Heading 6"
-#~ msgstr "Заглавље 6"
-
-#~ msgid "Height"
-#~ msgstr "Висина"
-
-#~ msgid "Horizontal rule"
-#~ msgstr "Водоравна линија"
-
-#~ msgid "Horizontal space"
-#~ msgstr "Водоравни размак"
-
-#~ msgid "Horizontal space (deprecated)"
-#~ msgstr "Водоравни размак (превазиђено)"
-
-#~ msgid "I18N BiDi override"
-#~ msgstr "И18А двосмерно превазилажење"
-
-#~ msgid "Image"
-#~ msgstr "Слика"
-
-#~ msgid "Image map"
-#~ msgstr "Мапирана слика"
-
-#~ msgid "Image map area"
-#~ msgstr "Област мапиране слике"
-
-#~ msgid "Image map name"
-#~ msgstr "Назив мапиране слике"
-
-#~ msgid "Image source"
-#~ msgstr "Извор слике"
-
-#~ msgid "Inline frame"
-#~ msgstr "Оквир у тексту"
-
-#~ msgid "Inline layer"
-#~ msgstr "Слој у тексту"
-
-#~ msgid "Inserted text"
-#~ msgstr "Уметнути текст"
-
-#~ msgid "Instance definition"
-#~ msgstr "Једна дефиниција"
-
-#~ msgid "Italic text"
-#~ msgstr "Курзивни текст"
-
-#~ msgid "Java applet"
-#~ msgstr "Јава програмче"
-
-#~ msgid "Java applet (deprecated)"
-#~ msgstr "Јава програмче (превазиђено)"
-
-#~ msgid "Label"
-#~ msgstr "Ознака"
-
-#~ msgid "Language code"
-#~ msgstr "Код језика"
-
-#~ msgid "Large text style"
-#~ msgstr "Стил великог текста"
-
-#~ msgid "Layer"
-#~ msgstr "Слој"
-
-#~ msgid "Link color"
-#~ msgstr "Боја везе"
-
-#~ msgid "Link color (deprecated)"
-#~ msgstr "Боја за везе (превазиђено)"
-
-#~ msgid "List item"
-#~ msgstr "Ставка списка"
-
-#~ msgid "List of MIME types for file upload"
-#~ msgstr "Списак МИМЕ врсти за набацивање датотеке"
-
-#~ msgid "List of supported character sets"
-#~ msgstr "Списак подржаних скупова знакова"
-
-#~ msgid "Listing"
-#~ msgstr "Испис"
-
-#~ msgid "Local change to font"
-#~ msgstr "Локална измена словног лика"
-
-#~ msgid "Long description link"
-#~ msgstr "Дуг опис везе"
-
-#~ msgid "Long quotation"
-#~ msgstr "Дуг навод"
-
-#~ msgid "Mail link"
-#~ msgstr "Веза за пошту"
-
-#~ msgid "Margin pixel height"
-#~ msgstr "Висина маргине у пикселима"
-
-#~ msgid "Margin pixel width"
-#~ msgstr "Ширина маргине у пикселима"
-
-#~ msgid "Marquee"
-#~ msgstr "Рекламна порука"
-
-#~ msgid "Maximum length of text field"
-#~ msgstr "Највећа дужина текстуалног поља"
-
-#~ msgid "Media-independent link"
-#~ msgstr "Веза независна од медија"
-
-#~ msgid "Menu list"
-#~ msgstr "Списак као мени"
-
-#~ msgid "Menu list (deprecated)"
-#~ msgstr "Списак као мени (превазиђено)"
-
-#~ msgid "Multi-line text field"
-#~ msgstr "Вишередно текстуално поље"
-
-#~ msgid "Multicolumn"
-#~ msgstr "Вишестубаца"
-
-#~ msgid "Multiple"
-#~ msgstr "Вишеструки избор"
-
-#~ msgid "Name"
-#~ msgstr "Назив"
-
-#~ msgid "Named property value"
-#~ msgstr "Именована вредност особине"
-
-#~ msgid "Next ID"
-#~ msgstr "Следећи ИБ"
-
-#~ msgid "No URI"
-#~ msgstr "Без адресе"
-
-#~ msgid "No embedded objects"
-#~ msgstr "Нема угњеждених објеката"
-
-#~ msgid "No frames"
-#~ msgstr "Без оквира"
-
-#~ msgid "No layers"
-#~ msgstr "Без слојева"
-
-#~ msgid "No line break"
-#~ msgstr "Без прелома реда"
-
-#~ msgid "No resize"
-#~ msgstr "Без промене величине"
-
-#~ msgid "No script"
-#~ msgstr "Без скрипте"
-
-#~ msgid "No shade"
-#~ msgstr "Без сенчења"
-
-#~ msgid "No shade (deprecated)"
-#~ msgstr "Без сенчења (превазиђено)"
-
-#~ msgid "No word wrap"
-#~ msgstr "Без прелома реда"
-
-#~ msgid "No word wrap (deprecated)"
-#~ msgstr "Без прелома реда (превазиђено)"
-
-#~ msgid "Non-breaking space"
-#~ msgstr "Размак без прелома реда"
-
-#~ msgid "Note"
-#~ msgstr "Белешка"
-
-#~ msgid "Object applet file"
-#~ msgstr "Датотека објекта програмчета"
-
-#~ msgid "Object applet file (deprecated)"
-#~ msgstr "Датотека објекта програмчета (превазиђено)"
-
-#~ msgid "Object data reference"
-#~ msgstr "Референца објекта података"
-
-#~ msgid "Offset for alignment character"
-#~ msgstr "Померај за знак поравнања"
-
-#~ msgid "OnBlur event"
-#~ msgstr "Догађај OnBlur"
-
-#~ msgid "OnChange event"
-#~ msgstr "Догађај OnChange"
-
-#~ msgid "OnClick event"
-#~ msgstr "Догађај OnClick"
-
-#~ msgid "OnDblClick event"
-#~ msgstr "Догађај OnDblClick"
-
-#~ msgid "OnFocus event"
-#~ msgstr "Догађај OnFocus"
-
-#~ msgid "OnKeyDown event"
-#~ msgstr "Догађај OnKeyDown"
-
-#~ msgid "OnKeyPress event"
-#~ msgstr "Догађај OnKeyPress"
-
-#~ msgid "OnKeyUp event"
-#~ msgstr "Догађај OnKeyUp"
-
-#~ msgid "OnLoad event"
-#~ msgstr "Догађај OnLoad"
-
-#~ msgid "OnMouseDown event"
-#~ msgstr "Догађај OnMouseDown"
-
-#~ msgid "OnMouseMove event"
-#~ msgstr "Догађај OnMouseMove"
-
-#~ msgid "OnMouseOut event"
-#~ msgstr "Догађај OnMouseOut"
-
-#~ msgid "OnMouseOver event"
-#~ msgstr "Догађај OnMouseOver"
-
-#~ msgid "OnMouseUp event"
-#~ msgstr "Догађај OnMouseUp"
-
-#~ msgid "OnReset event"
-#~ msgstr "Догађај OnReset"
-
-#~ msgid "OnSelect event"
-#~ msgstr "Догађај OnSelect"
-
-#~ msgid "OnSubmit event"
-#~ msgstr "Догађај OnSubmit"
-
-#~ msgid "OnUnload event"
-#~ msgstr "Догађај OnUnload"
-
-#~ msgid "Option group"
-#~ msgstr "Група опција"
-
-#~ msgid "Option selector"
-#~ msgstr "Бирач опције"
-
-#~ msgid "Ordered list"
-#~ msgstr "Уређени списак"
-
-#~ msgid "Output media"
-#~ msgstr "Медиј за излаз"
-
-#~ msgid "Paragraph"
-#~ msgstr "Пасус"
-
-#~ msgid "Paragraph class"
-#~ msgstr "Класа пасуса"
-
-#~ msgid "Paragraph style"
-#~ msgstr "Стил пасуса"
-
-#~ msgid "Preformatted listing"
-#~ msgstr "Преобликовани испис"
-
-#~ msgid "Preformatted text"
-#~ msgstr "Преобликовани текст"
-
-#~ msgid "Profile metainfo dictionary"
-#~ msgstr "Речник профила са метаподацима"
-
-#~ msgid "Push button"
-#~ msgstr "Дугме"
-
-#~ msgid "Quote"
-#~ msgstr "Навод"
-
-#~ msgid "Range"
-#~ msgstr "Опсег"
-
-#~ msgid "ReadOnly text and password"
-#~ msgstr "Текст само за читање и лозинка"
-
-#~ msgid "Reduced spacing"
-#~ msgstr "Смањени размак"
-
-#~ msgid "Reduced spacing (deprecated)"
-#~ msgstr "Смањени размак (превазиђено)"
-
-#~ msgid "Reverse link"
-#~ msgstr "Обрнута веза"
-
-#~ msgid "Root"
-#~ msgstr "Корен"
-
-#~ msgid "Rows"
-#~ msgstr "Редови"
-
-#~ msgid "Rulings between rows and columns"
-#~ msgstr "Линије између редова и стубаца"
-
-#~ msgid "Sample program output, scripts"
-#~ msgstr "Пример исписа програма, скрипти"
-
-#~ msgid "Scope covered by header cells"
-#~ msgstr "Опсег који покривају поља заглавља"
-
-#~ msgid "Script language name"
-#~ msgstr "Име скрипт језика"
-
-# bug: s/statments/statements/
-#~ msgid "Script statements"
-#~ msgstr "Наредбе скрипте"
-
-#~ msgid "Scrollbar"
-#~ msgstr "Клизач"
-
-#~ msgid "Selectable option"
-#~ msgstr "Избирива опција"
-
-#~ msgid "Server-side image map"
-#~ msgstr "Мапа слике на серверу"
-
-#~ msgid "Shape"
-#~ msgstr "Облик"
-
-#~ msgid "Short inline quotation"
-#~ msgstr "Кратак уметнути навод"
-
-#~ msgid "Single line prompt"
-#~ msgstr "Упит у једном реду"
-
-#~ msgid "Size"
-#~ msgstr "Величина"
-
-#~ msgid "Size (deprecated)"
-#~ msgstr "Величина (превазиђено)"
-
-#~ msgid "Small text style"
-#~ msgstr "Стил малог текста"
-
-#~ msgid "Soft line break"
-#~ msgstr "Меки прелом реда"
-
-#~ msgid "Sound"
-#~ msgstr "Звук"
-
-#~ msgid "Source"
-#~ msgstr "Извор"
-
-#~ msgid "Space-separated archive list"
-#~ msgstr "Размаком раздвојен списак архива"
-
-#~ msgid "Spacer"
-#~ msgstr "Размакница"
-
-#~ msgid "Spacing between cells"
-#~ msgstr "Размак међу пољима"
-
-#~ msgid "Spacing within cells"
-#~ msgstr "Размак у пољима"
-
-# оставити „спан“???
-#~ msgid "Span"
-#~ msgstr "Обухватање"
-
-#~ msgid "Square root"
-#~ msgstr "Квадратни корен"
-
-#~ msgid "Standby load message"
-#~ msgstr "Порука за чекање при учитавању"
-
-#~ msgid "Starting sequence number"
-#~ msgstr "Број за почетак низа"
-
-#~ msgid "Starting sequence number (deprecated)"
-#~ msgstr "Број за почетак низа (превазиђено)"
-
-#~ msgid "Strike-through text"
-#~ msgstr "Прецртани текст"
-
-#~ msgid "Strike-through text (deprecated)"
-#~ msgstr "Прецртани текст (превазиђено)"
-
-#~ msgid "Strike-through text style"
-#~ msgstr "Стил прецртаног текста"
-
-#~ msgid "Strike-through text style (deprecated)"
-#~ msgstr "Стил прецртаног текста (превазиђено)"
-
-#~ msgid "Strong emphasis"
-#~ msgstr "Снажно наглашавање"
-
-#~ msgid "Style info"
-#~ msgstr "Подаци о стилу"
-
-#~ msgid "Subscript"
-#~ msgstr "Индекс"
-
-#~ msgid "Superscript"
-#~ msgstr "Степен"
-
-#~ msgid "Tab order position"
-#~ msgstr "Редослед при прелазу табулатором"
-
-#~ msgid "Table"
-#~ msgstr "Табела"
-
-#~ msgid "Table body"
-#~ msgstr "Тело табеле"
-
-#~ msgid "Table caption"
-#~ msgstr "Наслов табеле"
-
-#~ msgid "Table column group properties"
-#~ msgstr "Особине групе стубаца табеле"
-
-#~ msgid "Table column properties"
-#~ msgstr "Особине ступца табеле"
-
-#~ msgid "Table data cell"
-#~ msgstr "Поље табеле са подацима"
-
-#~ msgid "Table footer"
-#~ msgstr "Подножје табеле"
-
-#~ msgid "Table header"
-#~ msgstr "Заглавље табеле"
-
-#~ msgid "Table header cell"
-#~ msgstr "Поље заглавља табеле"
-
-#~ msgid "Table row"
-#~ msgstr "Ред табеле"
-
-#~ msgid "Table summary"
-#~ msgstr "Сажетак табеле"
-
-#~ msgid "Target - Blank"
-#~ msgstr "Одредиште — празно"
-
-#~ msgid "Target - Parent"
-#~ msgstr "Одредиште — садржалац"
-
-#~ msgid "Target - Self"
-#~ msgstr "Одредиште — исти"
-
-#~ msgid "Target - Top"
-#~ msgstr "Одредиште — главни"
-
-#~ msgid "Teletype or monospace text style"
-#~ msgstr "Стил текста утврђене ширине"
-
-#~ msgid "Text"
-#~ msgstr "Текст"
-
-#~ msgid "Text color"
-#~ msgstr "Боја текста"
-
-#~ msgid "Text color (deprecated)"
-#~ msgstr "Боја текста (превазиђено)"
-
-#~ msgid "Text entered by user"
-#~ msgstr "Текст који уноси корисник"
-
-#~ msgid "Title"
-#~ msgstr "Наслов"
-
-#~ msgid "Top margin in pixels"
-#~ msgstr "Горња маргина у пикселима"
-
-#~ msgid "URL"
-#~ msgstr "Адреса"
-
-#~ msgid "Underlined text style"
-#~ msgstr "Стил подвученог текста"
-
-#~ msgid "Unordered list"
-#~ msgstr "Неуређени списак"
-
-#~ msgid "Use image map"
-#~ msgstr "Користи мапу слике"
-
-#~ msgid "Value"
-#~ msgstr "Вредност"
-
-#~ msgid "Value interpretation"
-#~ msgstr "Тумачење вредности"
-
-#~ msgid "Variable or program argument"
-#~ msgstr "Променљива или аргумент програма"
-
-#~ msgid "Vertical cell alignment"
-#~ msgstr "Усправно поравнање поља"
-
-#~ msgid "Vertical space"
-#~ msgstr "Усправни размак"
-
-#~ msgid "Vertical space (deprecated)"
-#~ msgstr "Усправни размак (превазиђено)"
-
-#~ msgid "Visited link color"
-#~ msgstr "Боја посећених веза"
-
-#~ msgid "Visited link color (deprecated)"
-#~ msgstr "Боја за посећене везе (превазиђено)"
-
-#~ msgid "Width"
-#~ msgstr "Ширина"
-
-#~ msgid "XHTML 1.0 - Tags"
-#~ msgstr "XHTML 1.0 — Ознаке"
-
-#~ msgid "Bibliography (cite)"
-#~ msgstr "Библиографија (цитат)"
-
-#~ msgid "Bibliography (item)"
-#~ msgstr "Библиографија (ставка)"
-
-#~ msgid "Bibliography (shortcite)"
-#~ msgstr "Библиографија (кратак цитат)"
-
-#~ msgid "Bibliography (thebibliography)"
-#~ msgstr "Библиографија (thebibliography)"
-
-#~ msgid "Brackets ()"
-#~ msgstr "Заграде ()"
-
-#~ msgid "Brackets <>"
-#~ msgstr "Заграде <>"
-
-#~ msgid "Brackets []"
-#~ msgstr "Заграде []"
-
-#~ msgid "Brackets {}"
-#~ msgstr "Заграде {}"
-
-#~ msgid "File input"
-#~ msgstr "Укључење датотеке"
-
-#~ msgid "Footnote"
-#~ msgstr "Фуснота"
-
-#~ msgid "Function cosine"
-#~ msgstr "Функција косинус"
-
-#~ msgid "Function e^"
-#~ msgstr "Функција e^"
-
-#~ msgid "Function exp"
-#~ msgstr "Функција exp"
-
-#~ msgid "Function log"
-#~ msgstr "Функција log"
-
-#~ msgid "Function log10"
-#~ msgstr "Функција log10"
-
-#~ msgid "Function sine"
-#~ msgstr "Функција синус"
-
-#~ msgid "Greek alpha"
-#~ msgstr "Грчко алфа"
-
-#~ msgid "Greek beta"
-#~ msgstr "Грчко бета"
-
-#~ msgid "Greek epsilon"
-#~ msgstr "Грчко ипсилон"
-
-#~ msgid "Greek gamma"
-#~ msgstr "Грчко гама"
-
-#~ msgid "Greek lambda"
-#~ msgstr "Грчко ламбда"
-
-#~ msgid "Greek rho"
-#~ msgstr "Грчко ро"
-
-#~ msgid "Greek tau"
-#~ msgstr "Грчко тау"
-
-#~ msgid "Header 0 (chapter)"
-#~ msgstr "Заглавље 0 (chapter)"
-
-#~ msgid "Header 0 (chapter*)"
-#~ msgstr "Заглавље 0 (chapter*)"
-
-#~ msgid "Header 1 (section)"
-#~ msgstr "Заглавље 1 (section)"
-
-#~ msgid "Header 1 (section*)"
-#~ msgstr "Заглавље 1 (section*)"
-
-#~ msgid "Header 2 (subsection)"
-#~ msgstr "Заглавље 2 (subsection)"
-
-#~ msgid "Header 2 (subsection*)"
-#~ msgstr "Заглавље 2 (subsection*)"
-
-#~ msgid "Header 3 (subsubsection)"
-#~ msgstr "Заглавље 3 (subsubsection)"
-
-#~ msgid "Header 3 (subsubsection*)"
-#~ msgstr "Заглавље 3 (subsubsection*)"
-
-#~ msgid "Header 4 (paragraph)"
-#~ msgstr "Заглавље 4 (paragraph)"
-
-#~ msgid "Header appendix"
-#~ msgstr "Заглавље додатка"
-
-#~ msgid "Item"
-#~ msgstr "Ставка"
-
-#~ msgid "Item with label"
-#~ msgstr "Ставка са ознаком"
-
-#~ msgid "Latex - Tags"
-#~ msgstr "ЛаТеХ — Ознаке"
-
-#~ msgid "List description"
-#~ msgstr "Опис списка"
-
-#~ msgid "List enumerate"
-#~ msgstr "Побројани списак"
-
-#~ msgid "List itemize"
-#~ msgstr "Списак по тачкама"
-
-#~ msgid "Maths (display)"
-#~ msgstr "Математички израз (издвојен)"
-
-#~ msgid "Maths (inline)"
-#~ msgstr "Математички израз (у тексту)"
-
-#~ msgid "Operator fraction"
-#~ msgstr "Оператор разломка"
-
-#~ msgid "Operator integral (display)"
-#~ msgstr "Оператор интеграла (издвојен)"
-
-#~ msgid "Operator integral (inline)"
-#~ msgstr "Оператор интеграла (у тексту)"
-
-#~ msgid "Operator sum (display)"
-#~ msgstr "Оператор збира (издвојен)"
-
-#~ msgid "Operator sum (inline)"
-#~ msgstr "Оператор збира (у тексту)"
-
-#~ msgid "Reference label"
-#~ msgstr "Ознака референце"
-
-#~ msgid "Reference ref"
-#~ msgstr "Референца реф"
-
-#~ msgid "Symbol <<"
-#~ msgstr "Симбол <"
-
-#~ msgid "Symbol <="
-#~ msgstr "Симбол <="
-
-#~ msgid "Symbol >="
-#~ msgstr "Симбол >="
-
-#~ msgid "Symbol >>"
-#~ msgstr "Симбол >>"
-
-#~ msgid "Symbol and"
-#~ msgstr "Симбол and"
-
-#~ msgid "Symbol const"
-#~ msgstr "Симбол const"
-
-#~ msgid "Symbol d-by-dt"
-#~ msgstr "Симбол d-са-dt"
-
-#~ msgid "Symbol d-by-dt-partial"
-#~ msgstr "Симбол d-са-dt-парцијално"
-
-#~ msgid "Symbol d2-by-dt2-partial"
-#~ msgstr "Симбол d2-са-dt2-парцијално"
-
-#~ msgid "Symbol dagger"
-#~ msgstr "Симбол бодеж"
-
-#~ msgid "Symbol em-dash ---"
-#~ msgstr "Симбол дуга црта ---"
-
-#~ msgid "Symbol en-dash --"
-#~ msgstr "Симбол црта --"
-
-#~ msgid "Symbol equiv"
-#~ msgstr "Симбол еквиваленција"
-
-#~ msgid "Symbol infinity"
-#~ msgstr "Симбол бесконачно"
-
-#~ msgid "Symbol mathspace ,"
-#~ msgstr "Симбол матразмак ,"
-
-#~ msgid "Symbol mathspace ."
-#~ msgstr "Симбол матразмак ."
-
-#~ msgid "Symbol mathspace _"
-#~ msgstr "Симбол матразмак _"
-
-#~ msgid "Symbol mathspace __"
-#~ msgstr "Симбол матразмак __"
-
-#~ msgid "Symbol simeq"
-#~ msgstr "Симбол слично"
-
-#~ msgid "Symbol star"
-#~ msgstr "Симбол звезда"
-
-#~ msgid "Typeface bold"
-#~ msgstr "Масни фонт"
-
-#~ msgid "Typeface italic"
-#~ msgstr "Курзивни фонт"
-
-#~ msgid "Typeface slanted"
-#~ msgstr "Искошени фонт"
-
-#~ msgid "Typeface type"
-#~ msgstr "Врста фонта"
-
-#~ msgid "Unbreakable text"
-#~ msgstr "Непреломиви текст"
-
-#~ msgid ""
-#~ "Provides a method to easily insert commonly used tags/strings into a "
-#~ "document without having to type them."
-#~ msgstr ""
-#~ "Обезбеђује начин лаког уметања често коришћених елемената/ниски у "
-#~ "документ без потребе да их куцате."
-
-#~ msgid "Tag list"
-#~ msgstr "Списак елемената"
-
-#~ msgid "XSLT - Axes"
-#~ msgstr "XSLT — Осе"
-
-#~ msgid "XSLT - Elements"
-#~ msgstr "XSLT — Елементи"
-
-#~ msgid "XSLT - Functions"
-#~ msgstr "XSLT — Функције"
-
-#~ msgid "ancestor"
-#~ msgstr "предак"
-
-#~ msgid "ancestor-or-self"
-#~ msgstr "предак-или-исти"
-
-#~ msgid "attribute"
-#~ msgstr "атрибут"
-
-#~ msgid "child"
-#~ msgstr "садржани"
-
-#~ msgid "descendant"
-#~ msgstr "наследник"
-
-#~ msgid "descendant-or-self"
-#~ msgstr "наследник-или-исти"
-
-#~ msgid "following"
-#~ msgstr "наредни"
-
-#~ msgid "following-sibling"
-#~ msgstr "наредни-слични"
-
-#~ msgid "namespace"
-#~ msgstr "простор имена"
-
-#~ msgid "parent"
-#~ msgstr "надређени"
-
-#~ msgid "preceding"
-#~ msgstr "претходни"
-
-#~ msgid "preceding-sibling"
-#~ msgstr "претходни-слични"
-
-#~ msgid "self"
-#~ msgstr "исти"
-
-#~ msgid "XUL - Tags"
-#~ msgstr "XUL — Ознаке"
-
-#~ msgid "Configure insert date/time plugin..."
-#~ msgstr "Подеси додатак за убацивање датума/времена..."
-
-#~ msgid "Backup Copy Extension"
-#~ msgstr "Екстензија резервне копије"
-
-#~ msgid ""
-#~ "Extension or suffix to use for backup file names. This will only take "
-#~ "effect if the \"Create Backup Copies\" option is turned on."
-#~ msgstr ""
-#~ "Екстензија или суфикс који ће бити коришћен у имену резервне копије "
-#~ "датотеке. Ово ће једино имати ефекта уколико је опција „Прави резервне "
-#~ "копије“ укључена."
-
-#~ msgid "Character Codings"
-#~ msgstr "Кодирања знакова"
-
-#~ msgid "<b>Current Line</b>"
-#~ msgstr "<b>Текући ред</b>"
-
-#~ msgid "<b>Font</b>"
-#~ msgstr "<b>Словни лик</b>"
-
-#~ msgid "<b>Line Numbers</b>"
-#~ msgstr "<b>Бројеви линија</b>"
-
-#~ msgid "<span weight=\"bold\">Color Scheme</span>"
-#~ msgstr "<span weight=\"bold\">Поставка боја</span>"
-
-#~ msgid "Ch_aracter Coding:"
-#~ msgstr "Кодирање зн_акова:"
-
-#~ msgid "Could not obtain backup filename"
-#~ msgstr "Не могу да прибавим име датотеке резервног примерка"
-
-#~ msgid "<b>Fonts</b>"
-#~ msgstr "<b>Фонтови</b>"
-
-#~ msgid "<b>Page header</b>"
-#~ msgstr "<b>Заглавље странице</b>"
-
-#~ msgid "<b>Syntax Highlighting</b>"
-#~ msgstr "<b>Истицање синтаксе</b>"
-
-#~ msgid "0"
-#~ msgstr "0"
-
-#~ msgid "<span weight=\"bold\">File Name</span>"
-#~ msgstr "<span weight=\"bold\">Име датотеке</span>"
-
-#~ msgid "_Indent"
-#~ msgstr "Ув_лачење"
-
-#~ msgid "U_nindent"
-#~ msgstr "И_звуци"
-
-#~ msgid "Unindent selected lines"
-#~ msgstr "Поништи увлачење изабраних редова"
-
-#~ msgid "Indent Lines"
-#~ msgstr "Увуци редове"
-
-#~ msgid "Indents or un-indents selected lines."
-#~ msgstr "Увлачи или извлачи изабране редове."
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "<b>Language</b>"
-#~ msgstr "<b>Језик</b>"
-
-#~ msgid "<b>word</b>"
-#~ msgstr "<b>реч</b>"
-
-#~ msgid "HttP header name"
-#~ msgstr "Назив HTTP заглавља"
-
-#~ msgid "<span size=\"small\">01/11/2002 17:52:00</span>"
-#~ msgstr "<span size=\"small\">01/11/2002 17:52:00</span>"
-
-#~ msgid "<span weight=\"bold\"> When inserting date/time...</span>"
-#~ msgstr "<span weight=\"bold\"> Приликом уметања датума/времена...</span>"
-
-#~ msgid "Open Location"
-#~ msgstr "Отвори место"
-
-#~ msgid "Enter the _location (URI) of the file you would like to open:"
-#~ msgstr "Унесите место (адресу) датотеке коју желите да отворите:"
-
-#~ msgid "Open _Location..."
-#~ msgstr "Отвори _место..."
-
-#~ msgid "Open a file from a specified location"
-#~ msgstr "Отвори датотеку са одређене локације"
-
-#~ msgid "Edit tool <i>%s</i>:"
-#~ msgstr "Уреди алат <i>%s</i>:"
-
-#~ msgid "Co_mmand(s):"
-#~ msgstr "На_редба(е):"
-
-#~ msgid "Edit tool <i>make</i>:"
-#~ msgstr "Уреди алат <i>make</i>:"
-
-#~ msgid "_Description:"
-#~ msgstr "О_пис:"
-
-#~ msgid "Insert User Na_me"
-#~ msgstr "Уметни корисничко и_ме"
-
-#~ msgid "Insert the user name at the cursor position"
-#~ msgstr "Уметни корисничко име на позицију курсора"
-
-#~ msgid "Inserts the user name at the cursor position."
-#~ msgstr "Умеће корисничко име на позицију курсора."
-
-#~ msgid "User name"
-#~ msgstr "Корисничко име"
-
-#~ msgid "%s: malformed file name or URI.\n"
-#~ msgstr "%s: лоше образовано име датотеке или адресе.\n"
-
-#~ msgid "None"
-#~ msgstr "Без истицања"
-
-#~ msgid "The following python code, run in a snippet, does not return a value"
-#~ msgstr "Овај питон код, покренут као исечак, не враћа вредност"
-
-#~ msgid "language|%s (%s)"
-#~ msgstr "%s (%s)"
-
-#~ msgid "language|Unknown (%s)"
-#~ msgstr "Непознат (%s)"
-
-#~ msgid "language|Default"
-#~ msgstr "Подразумевани"
-
-#~ msgid "Monospace Regular 9"
-#~ msgstr "Monospace Regular 9"
-
-#~ msgid "Sans Regular 11"
-#~ msgstr "Sans Regular 11"
-
-#~ msgid "Sans Regular 8"
-#~ msgstr "Sans Regular 8"
-
-#~ msgid ""
-#~ "Specifies the font to use for a document's body when printing documents. "
-#~ "This is a gnome-print font name and replaced by print_font_body_pango."
-#~ msgstr ""
-#~ "Подешава који ће словни лик бити коришћен за тело документа приликом "
-#~ "штампања. Ово је име словног лика за Гном штампу и замењује се са "
-#~ "print_font_body_pango."
-
-#~ msgid ""
-#~ "Specifies the font to use for line numbers when printing. This will only "
-#~ "take effect if the \"Print Line Numbers\" option is non-zero. This is a "
-#~ "gnome-print font name and replaced by print_font_numbers_pango."
-#~ msgstr ""
-#~ "Подешава који ће словни лик бити коришћен за штампање бројева редова. Ово "
-#~ "ће једино имати ефекта уколико опција „Штампај бројеве линија“ није "
-#~ "подешена на 0. Ово је име словног лика за Гном штампу и замењује се са "
-#~ "print_font_numbers_pango."
-
-#~ msgid ""
-#~ "Specifies the font to use for page headers when printing a document. This "
-#~ "will only take effect if the \"Print Header\" option is turned on. This "
-#~ "is a gnome-print font name and replaced by print_font_header_pango."
-#~ msgstr ""
-#~ "Подешава који ће словни лик бити коришћен за штампање заглавља странице. "
-#~ "Ово ће једино имати ефекта ако је укључена опција „Штампај заглавље“. Ово "
-#~ "је име словног ликсловног лика за Гном штампу и замењује се са "
-#~ "print_font_header_pango."
-
-#~ msgid "Page Setup"
-#~ msgstr "Подешавање стране"
-
-#~ msgid "General"
-#~ msgstr "Опште"
-
-#~ msgid "The entered location is not valid."
-#~ msgstr "Наведено место није исправно."
-
-#~ msgid "The file contains corrupted data."
-#~ msgstr "Датотека садржи оштећене податке."
-
-#~ msgid "The file contains data in an invalid format."
-#~ msgstr "Датотека садржи податке у неодговарајућем облику."
-
-#~ msgid ""
-#~ "There are too many open files. Please close some applications and try "
-#~ "again."
-#~ msgstr ""
-#~ "Има превише отворених датотека. Затворите неке програме и покушајте "
-#~ "поново."
-
-#~ msgid ""
-#~ "Not enough available memory to open the file. Please close some running "
-#~ "applications and try again."
-#~ msgstr ""
-#~ "Нема довољно слободне меморије да бисте отворили датотеку. Затворите неке "
-#~ "покренуте програме и покушајте поново."
-
-#~ msgid ""
-#~ "Host name was empty. Please check that your proxy settings are correct "
-#~ "and try again."
-#~ msgstr ""
-#~ "Име рачунара је празно. Проверите исправност подешавања вашег мрежног "
-#~ "посредника и покушајте поново."
-
-#~ msgid ""
-#~ "Attempt to log in failed. Please check that you typed the location "
-#~ "correctly and try again."
-#~ msgstr ""
-#~ "Покушај пријаве није успео. Проверите да ли сте унели исправну адресу и "
-#~ "покушајте поново."
-
-#~ msgid "The file you are trying to open is not a regular file."
-#~ msgstr "Датотека коју покушавате да отворите није регуларна датотека."
-
-#~ msgid "Attempt to log in failed."
-#~ msgstr "Покушај пријаве није успео."
-
-#~ msgid ""
-#~ "%s is a directory. Please check that you typed the location correctly and "
-#~ "try again."
-#~ msgstr ""
-#~ "%s је фасцикла. Проверите да ли сте тачно унели путању и покушајте поново."
-
-#~ msgid ""
-#~ "Not enough available memory to save the file. Please close some running "
-#~ "applications and try again."
-#~ msgstr ""
-#~ "Нема довољно слободне меморије да бисте сачували датотеку. Молим "
-#~ "затворите неке покренуте програме и покушајте поново."
-
-#~ msgid ""
-#~ "%s is not a regular file. Please check that you typed the location "
-#~ "correctly and try again."
-#~ msgstr ""
-#~ "%s није обична датотека. Молим проверите да ли сте унели исправну путању "
-#~ "и покушајте поново."
-
-#~ msgid "Other"
-#~ msgstr "Остало"
-
-#~ msgid "Number of pages horizontally"
-#~ msgstr "Број страна водоравно"
-
-#~ msgid "Number of pages vertically"
-#~ msgstr "Број страна усправно"
-
-#~ msgid "No visible output was created."
-#~ msgstr "Нема ништа видљиво на излазу."
-
-#~ msgid "Rendering page %d of %d..."
-#~ msgstr "Исцртава страницу %d од %d..."
-
-#~ msgid ""
-#~ "Nothing\n"
-#~ "Current document\n"
-#~ "All documents"
-#~ msgstr ""
-#~ "Ништа\n"
-#~ "Текући документ\n"
-#~ "Сви документи"
-
-#~ msgid "gtk-revert-to-saved"
-#~ msgstr "gtk-revert-to-saved"
-
-#~ msgid "on"
-#~ msgstr "на"
-
-#~ msgid "Invalid uri"
-#~ msgstr "Неисправан УРИ"
-
-#~ msgid "Recent Files"
-#~ msgstr "Скорашње датотеке"
-
-#~ msgid "Background Color"
-#~ msgstr "Боја позадине"
-
-#~ msgid ""
-#~ "Background color for selected text in the editing area. This will only "
-#~ "take effect if the \"Use Default Colors\" option is turned off."
-#~ msgstr ""
-#~ "Боја позадине за означени текст у простору за унос текста. Ово ће једино "
-#~ "имати ефекта ако је искључена опција „Користи подразумеване боје“."
-
-#~ msgid ""
-#~ "Background color for unselected text in the editing area. This will only "
-#~ "take effect if the \"Use Default Colors\" option is turned off."
-#~ msgstr ""
-#~ "Боја позадине неозначеног текста у простору за измену текста. Ово ће "
-#~ "једино имати ефекта уколико је искључена опција „Користи подразумеване "
-#~ "боје“."
-
-#~ msgid ""
-#~ "Foreground color for selected text in the editing area. This will only "
-#~ "take effect if the \"Use Default Colors\" option is turned off."
-#~ msgstr ""
-#~ "Боја означеног текста у простору за измене текста. Ово ће једино имати "
-#~ "ефекта уколико је опција „Користи подразумеване боје“ искључена."
-
-#~ msgid ""
-#~ "Foreground color for the unselected text in the editing area. This will "
-#~ "only take effect if the \"Use Default Colors\" option is turned off."
-#~ msgstr ""
-#~ "Боја неозначеног текста у простору за измене текста. Ово ће једино имати "
-#~ "ефекта уколико је опција „Користи подразумеване боје“ искључена."
-
-#~ msgid "Selected Text Color"
-#~ msgstr "Боја означеног текста"
-
-#~ msgid "Selection Color"
-#~ msgstr "Боја означеног простора"
-
-#~ msgid "Text Color"
-#~ msgstr "Боја текста"
-
-#~ msgid "Use Default Colors"
-#~ msgstr "Користи подразумеване боје"
-
-#~ msgid ""
-#~ "Whether to use the system's default colors for the editing area. If this "
-#~ "option is turned off, then the colors of the editing area will be those "
-#~ "specified in the \"Background Color\", \"Text Color\", \"Selected Text "
-#~ "Color\", and \"Selection Color\" options."
-#~ msgstr ""
-#~ "Да ли треба користити подразумеване системске боје за простор за измену "
-#~ "текста. Ако је ова опција укључена, онда ће боје у простору за измену "
-#~ "текста бити оне наведене у подешавањима за „Боја позадина“, „Боја "
-#~ "текста“, „Боја означеног текста“, и „Боја ознаке“."
-
-#~ msgid "Push this button to configure text color"
-#~ msgstr "Притисните ово дугме како бисте подесили боју текста"
-
-#~ msgid "Push this button to configure background color"
-#~ msgstr "Притисните ово дугме како бисте подесили боју позадине"
-
-#~ msgid ""
-#~ "Push this button to configure the color in which the selected text should "
-#~ "appear"
-#~ msgstr ""
-#~ "Притисните ово дугме како бисте подесили боју у којој ће се означени "
-#~ "текст  појавити"
-
-#~ msgid ""
-#~ "Push this button to configure the color in which the selected text should "
-#~ "be marked"
-#~ msgstr ""
-#~ "Притисните ово дугме како бисте подесили боју којом означени текст треба "
-#~ "да буде означен"
-
-#~ msgid "Elements"
-#~ msgstr "Елементи"
-
-#~ msgid "<b>Elements</b>"
-#~ msgstr "<b>Елементи</b>"
-
-#~ msgid "Highlight _mode:"
-#~ msgstr "_Режим истицања:"
-
-#~ msgid "Italic"
-#~ msgstr "Курзив"
-
-#~ msgid "Normal _text color:"
-#~ msgstr "Боја обичног _текста:"
-
-#~ msgid "Pick a color"
-#~ msgstr "Изаберите боју"
-
-#~ msgid "Pick the normal text color"
-#~ msgstr "Изаберите боју обичног текста"
-
-#~ msgid "Pick the selected text color"
-#~ msgstr "Изаберите боју означеног текста"
-
-#~ msgid "Pick the selection color"
-#~ msgstr "Изаберите боју означене области"
-
-#~ msgid "Se_lection color:"
-#~ msgstr "Бо_ја означене области:"
-
-#~ msgid "Selecte_d text color:"
-#~ msgstr "Боја _означеног текста:"
-
-#~ msgid "Strikethrough"
-#~ msgstr "Прецртано"
-
-#~ msgid "U_se default theme colors"
-#~ msgstr "Користи боје под_разумеване теме"
-
-#~ msgid "Underline"
-#~ msgstr "Подвучено"
-
-#~ msgid "_Background:"
-#~ msgstr "_Позадина:"
-
-#~ msgid "_Enable syntax highlighting"
-#~ msgstr "Укључи ис_тицање синтаксе"
-
-#~ msgid "_Foreground:"
-#~ msgstr "_Боја:"
-
-#~ msgid "_Reset to Default "
-#~ msgstr "_Врати на подразумевано "
-
-#~ msgid "Please, check that you typed the location correctly and try again."
-#~ msgstr "Молим проверите да ли сте тачно навели место и покушајте поново."
-
-#~ msgid "Could not find the required widgets inside %s."
-#~ msgstr "Не могу да пронађем неопходне елементе у %s."
-
-#~ msgid "Double-click on a tag to insert it in the current document"
-#~ msgstr ""
-#~ "Кликните двапут на елемент како бисте га убацили у тренутни документ"
-
-#~ msgid "_Use default theme font"
-#~ msgstr "Користи _словни лик подразумеване теме"
-
-#~ msgid "Insert in output panel"
-#~ msgstr "Уметни у излазни панел"
-
-#~ msgid "F7"
-#~ msgstr "F7"
-
-#~ msgid "_Accelerator:"
-#~ msgstr "_Пречица:"
-
-# хм, хм?
-#~ msgid "_New Directory"
-#~ msgstr "_Нова фасцикла"
-
-#~ msgid "Add new empty directory"
-#~ msgstr "Додај нову празну фасциклу"
-
-#~ msgid "_View Directory"
-#~ msgstr "Пре_гледај фасциклу:"
-
-#~ msgid "Advanced filtering"
-#~ msgstr "Напредно филтрирање"
-
-#~ msgid "Afrikaans"
-#~ msgstr "африканс"
-
-#~ msgid "Amharic"
-#~ msgstr "амхарски"
-
-#~ msgid "Arabic (Egypt)"
-#~ msgstr "арапски (Египат)"
-
-#~ msgid "Azerbaijani"
-#~ msgstr "азербејџански"
-
-#~ msgid "Belarusian"
-#~ msgstr "белоруски"
-
-#~ msgid "Bulgarian"
-#~ msgstr "бугарски"
-
-#~ msgid "Bengali"
-#~ msgstr "бенгали"
-
-#~ msgid "Breton"
-#~ msgstr "бретањски"
-
-#~ msgid "Catalan"
-#~ msgstr "каталонски"
-
-#~ msgid "Czech"
-#~ msgstr "чешки"
-
-#~ msgid "Welsh"
-#~ msgstr "велшки"
-
-#~ msgid "Danish"
-#~ msgstr "дански"
-
-#~ msgid "German (Austria)"
-#~ msgstr "немачки (Аустрија)"
-
-#~ msgid "German (Germany)"
-#~ msgstr "немачки (Немачка)"
-
-#~ msgid "German (Swiss)"
-#~ msgstr "немачки (Швајцарска)"
-
-#~ msgid "English (American)"
-#~ msgstr "енглески (амерички)"
-
-#~ msgid "English (British)"
-#~ msgstr "енглески (британски)"
-
-#~ msgid "English (Canadian)"
-#~ msgstr "енглески (канадски)"
-
-#~ msgid "Esperanto"
-#~ msgstr "есперанто"
-
-#~ msgid "Spanish"
-#~ msgstr "шпански"
-
-#~ msgid "Estonian"
-#~ msgstr "естонски"
-
-#~ msgid "Persian"
-#~ msgstr "персијски"
-
-#~ msgid "Finnish"
-#~ msgstr "фински"
-
-#~ msgid "Faroese"
-#~ msgstr "фарски"
-
-#~ msgid "French (France)"
-#~ msgstr "француски (Франуска)"
-
-#~ msgid "French (Swiss)"
-#~ msgstr "француски (Швајцарска)"
-
-#~ msgid "Irish"
-#~ msgstr "ирски"
-
-#~ msgid "Scottish Gaelic"
-#~ msgstr "шкотски гаелски"
-
-#~ msgid "Gallegan"
-#~ msgstr "галски"
-
-#~ msgid "Manx Gaelic"
-#~ msgstr "манкс гаелски"
-
-#~ msgid "Hindi"
-#~ msgstr "хинду"
-
-#~ msgid "Croatian"
-#~ msgstr "хрватски"
-
-#~ msgid "Upper Sorbian"
-#~ msgstr "лужичкосрпски"
-
-#~ msgid "Hungarian"
-#~ msgstr "мађарски"
-
-#~ msgid "Interlingua (IALA)"
-#~ msgstr "интерлингва (IALA)"
-
-#~ msgid "Indonesian"
-#~ msgstr "индонежански"
-
-#~ msgid "Icelandic"
-#~ msgstr "исландски"
-
-#~ msgid "Italian"
-#~ msgstr "италијански"
-
-#~ msgid "Kurdish"
-#~ msgstr "курдски"
-
-#~ msgid "Latin"
-#~ msgstr "латински"
-
-#~ msgid "Lithuanian"
-#~ msgstr "литвански"
-
-#~ msgid "Latvian"
-#~ msgstr "летонски"
-
-#~ msgid "Malagasy"
-#~ msgstr "малагази"
-
-#~ msgid "Maori"
-#~ msgstr "маори"
-
-#~ msgid "Macedonian"
-#~ msgstr "македонски"
-
-#~ msgid "Mongolian"
-#~ msgstr "монголски"
-
-#~ msgid "Marathi"
-#~ msgstr "марати"
-
-#~ msgid "Malay"
-#~ msgstr "малајски"
-
-#~ msgid "Maltese"
-#~ msgstr "малтешки"
-
-#~ msgid "Norwegian Bokmal"
-#~ msgstr "норвешки бокмал"
-
-#~ msgid "Dutch"
-#~ msgstr "холандски"
-
-#~ msgid "Norwegian Nynorsk"
-#~ msgstr "норвешки нинорск"
-
-#~ msgid "Norwegian"
-#~ msgstr "Норвешки"
-
-#~ msgid "Nyanja"
-#~ msgstr "њанџа"
-
-#~ msgid "Polish"
-#~ msgstr "пољски"
-
-#~ msgid "Portuguese (Portugal)"
-#~ msgstr "португалски (Португал)"
-
-#~ msgid "Portuguese (Brazilian)"
-#~ msgstr "португалски (Бразил)"
-
-#~ msgid "Quechua"
-#~ msgstr "кечуа"
-
-#~ msgid "Russian"
-#~ msgstr "руски"
-
-#~ msgid "Kinyarwanda"
-#~ msgstr "кинјарванда"
-
-#~ msgid "Sardinian"
-#~ msgstr "сардинијски"
-
-#~ msgid "Slovak"
-#~ msgstr "словачки"
-
-#~ msgid "Slovenian"
-#~ msgstr "словеначки"
-
-#~ msgid "Swedish"
-#~ msgstr "шведски"
-
-#~ msgid "Swahili"
-#~ msgstr "свахили"
-
-#~ msgid "Tamil"
-#~ msgstr "тамил"
-
-#~ msgid "Tetum"
-#~ msgstr "тетум"
-
-#~ msgid "Tagalog"
-#~ msgstr "тагалог"
-
-#~ msgid "Tswana"
-#~ msgstr "цвана"
-
-#~ msgid "Ukrainian"
-#~ msgstr "украјински"
-
-#~ msgid "Uzbek"
-#~ msgstr "узбечки"
-
-#~ msgid "Walloon"
-#~ msgstr "валун"
-
-#~ msgid "Yiddish"
-#~ msgstr "јидиш"
-
-#~ msgid "Zulu"
-#~ msgstr "зулу"
-
-#~ msgid "BGSound"
-#~ msgstr "Позадински звук"
-
-#~ msgid "Behavior"
-#~ msgstr "Понашање"
-
-#~ msgid "Blinking text"
-#~ msgstr "Треперећи текст"
-
-#~ msgid "Box"
-#~ msgstr "Оквир"
-
-#~ msgid "Space"
-#~ msgstr "Размак"
-
-#~ msgid "Normal"
-#~ msgstr "Обично"
-
-#~ msgid "Use Normal highlight mode"
-#~ msgstr "Користи обичан режим истицања"
-
-#~ msgid ""
-#~ "cd $GEDIT_CURRENT_DOCUMENT_DIR\n"
-#~ "make"
-#~ msgstr ""
-#~ "cd $GEDIT_CURRENT_DOCUMENT_DIR\n"
-#~ "make"
-
-#~ msgid ""
-#~ "Could not load the file \"%s\". The file is probably corrupt. Please fix "
-#~ "or remove the file. To try to load the file again, select the Tools -> "
-#~ "Manage Snippets... menu item."
-#~ msgstr ""
-#~ "Не могу да учитам датотеку „%s“. Она је вероватно оштећена. Молим "
-#~ "исправите или уклоните датотеку. Да би покушали да учитате датотеку "
-#~ "поново изаберите редом ставке менија: „Алати —> Цитати“."
-
-#~ msgid "Gedit View"
-#~ msgstr "Гедит преглед"
-
-#~ msgid "Gedit View."
-#~ msgstr "Гедит преглед."
-
-#~ msgid "Gedit viewer factory"
-#~ msgstr "Производња Гедит прегледа"
-
-#~ msgid "gedit application"
-#~ msgstr "програм гедит"
-
-#~ msgid "gedit automation factory"
-#~ msgstr "производња гедит аутоматизације"
-
-#~ msgid "Go to Line"
-#~ msgstr "Иди на линију"
-
-#~ msgid "_Go to Line"
-#~ msgstr "И_ди на линију"
-
-#~ msgid "The text \"%s\" was not found."
-#~ msgstr "Текст „%s“ није пронађен."
-
-#~ msgid "Set program location..."
-#~ msgstr "Постави локације програма..."
-
-#~ msgid ""
-#~ "The %s plugin uses an external program, called <tt>%s</tt>, to perform "
-#~ "its task.\n"
-#~ "\n"
-#~ "Please, specify the location of the <tt>%s</tt> program."
-#~ msgstr ""
-#~ "Додатак %s користи спољашњи програм, <tt>%s</tt>, да изврши задатак.\n"
-#~ "\n"
-#~ "Наведите локацију <tt>%s</tt> програма."
-
-#~ msgid "Goto Line"
-#~ msgstr "Иди на линију"
-
-#~ msgid "_Line number:"
-#~ msgstr "Број _линије:"
-
-#~ msgid "dialog1"
-#~ msgstr "прозорче1"
-
-#~ msgid "Browse for program location..."
-#~ msgstr "Изабери програм..."
-
-#~ msgid "label"
-#~ msgstr "ознака"
-
-#~ msgid "Open from URI"
-#~ msgstr "Отвори са адресе"
-
-#~ msgid "Invalid UTF-8 data"
-#~ msgstr "Неисправни UTF-8 подаци"
-
-#~ msgid "Could not read symbolic link information for %s"
-#~ msgstr "Не могу да прочитам информације о симболичкој вези за %s"
-
-#~ msgid "The file has too many symbolic links."
-#~ msgstr "Датотека има превише симболичких веза."
-
-#~ msgid "gedit cannot handle %s: locations in write mode."
-#~ msgstr "гедит не може да користи %s: адресе за писање."
-
-#~ msgid "gedit cannot handle this kind of location in write mode."
-#~ msgstr "гедит не може да подржи овај тип локације за писање"
-
-#~ msgid "A file named \"%s\" already exists.\n"
-#~ msgstr "Датотека са именом „%s“ већ постоји.\n"
-
-#~ msgid "Select a file to open"
-#~ msgstr "Изаберите датотеку да отворите"
-
-#~ msgid "Select files to open"
-#~ msgstr "Изаберите датотеке да отворите"
-
-#~ msgid "Select a filename to save"
-#~ msgstr "Изаберите име датотеке за снимање"
-
-#~ msgid "Saving document \"%s\"..."
-#~ msgstr "Чувам датотеку „%s“..."
-
-#~ msgid "The document \"%s\" has not been saved."
-#~ msgstr "Документ „%s“ није сачуван."
-
-#~ msgid "The document \"%s\" has been saved."
-#~ msgstr "Документ „%s“ је сачуван."
-
-#~ msgid "Save as..."
-#~ msgstr "Сачувај као..."
-
-#~ msgid "The document \"%s\" has not been reverted."
-#~ msgstr "Документ „%s“ није повраћен."
-
-#~ msgid "The document \"%s\" has been reverted."
-#~ msgstr "Документ „%s“ је повраћен."
-
-#~ msgid "Could not read data from stdin."
-#~ msgstr "Не могу да прочитам податке са стандардног улаза."
-
-#~ msgid "Loaded file \"%s\""
-#~ msgstr "Датотека „%s“ је учитана"
-
-#~ msgid "Loaded %d file"
-#~ msgid_plural "Loaded %d files"
-#~ msgstr[0] "%d датотека учитана"
-#~ msgstr[1] "%d датотеке учитане"
-#~ msgstr[2] "%d датотека учитано"
-
-#~ msgid "Created file \"%s\""
-#~ msgstr "Направљена је датотека „%s“"
-
-#~ msgid "Access was denied."
-#~ msgstr "Приступ је одбијен."
-
-# bug: capitalise "there"
-#~ msgid ""
-#~ "there are too many open files. Please, close some open files and try "
-#~ "again."
-#~ msgstr ""
-#~ "Има превише отворених датотека. Затворите неке отворене датотеке и "
-#~ "покушајте поново."
-
-#~ msgid ""
-#~ "gedit was not able to automatically detect the character coding. Please, "
-#~ "check that you are not trying to open a binary file and try again "
-#~ "selecting a character coding in the 'Open File...' (or 'Open Location') "
-#~ "dialog."
-#~ msgstr ""
-#~ "гедит не може да сам да препозна кодирање знакова. Проверите да не "
-#~ "покушавате да отворите бинарну датотеку и покушајте да поново изаберете "
-#~ "кодирање знакова у прозорчету за отварање датотека."
-
-#~ msgid ""
-#~ "Please, check that you are not trying to open a binary file and that you "
-#~ "selected the right character coding in the 'Open File... ' (or 'Open "
-#~ "Location') dialog and try again."
-#~ msgstr ""
-#~ "Проверите да не покушавате да отворите бинарну датотеку и да сте изабрали "
-#~ "исправно кодирање знакова у прозорчету за отварање датотека, па покушајте "
-#~ "поново."
-
-#~ msgid ""
-#~ "The file contains data in an invalid format. Probably, you are trying to "
-#~ "open a binary file."
-#~ msgstr ""
-#~ "Датотека садржи неисправне податке. Вероватно покушавате да отворите "
-#~ "бинарну датотеку."
-
-#~ msgid ""
-#~ "Not enough available memory. Please, close some running applications and "
-#~ "try again."
-#~ msgstr ""
-#~ "Нема довољно меморије. Затворите неке покренуте програме и покушајте "
-#~ "поново."
-
-#~ msgid ""
-#~ "The host name was empty. Please, check that your proxy settings are "
-#~ "correct and try again."
-#~ msgstr ""
-#~ "Име рачунара није унето. Проверите да ли је мрежни посредник исправно "
-#~ "подешен и покушајте поново."
-
-#~ msgid ""
-#~ "The file contains invalid UTF-8 data. Probably, you are trying to revert "
-#~ "a binary file."
-#~ msgstr ""
-#~ "Датотека садржи неисправне УТФ-8 податке. Вероватно покушавате да "
-#~ "повратите бинарну датотеку."
-
-#~ msgid "Could not create the file \"%s\""
-#~ msgstr "Не могу да направим датотеку „%s“"
-
-#~ msgid "Make sure you have the appropriate write permissions."
-#~ msgstr "Проверите да ли имате прикладна овлашћења за упис."
-
-#~ msgid "The file name is too long."
-#~ msgstr "Име датотеке је предугачко."
-
-#~ msgid ""
-#~ "A directory component in the file name does not exist or is a dangling "
-#~ "symbolic link."
-#~ msgstr ""
-#~ "Директоријум из имена датотеке не постоји или је неповезана симболичка "
-#~ "веза."
-
-#~ msgid ""
-#~ "There is not enough disk space to create the file. Please free some disk "
-#~ "space and try again."
-#~ msgstr ""
-#~ "Нема довољно простора на диску да бисте направили датотеку. Ослободите "
-#~ "мало простора на диску и покушајте поново."
-
-#~ msgid "Close the output window"
-#~ msgstr "Затвори прозор са излазом"
-
-#~ msgid "Clear the output window"
-#~ msgstr "Очисти прозор са излазом"
-
-#~ msgid "Output Lines"
-#~ msgstr "Линије излаза"
-
-#~ msgid "Printing page %d of %d..."
-#~ msgstr "Штампа страницу %d од %d..."
-
-#~ msgid "Change the visibility of the output window in the current window"
-#~ msgstr "Промени видљивост прозора са излазом у тренутном прозору"
-
-#~ msgid "Close"
-#~ msgstr "Затвори"
-
-#~ msgid "Copy"
-#~ msgstr "Умножи"
-
-#~ msgid "Cu_t"
-#~ msgstr "_Исеци"
-
-#~ msgid "Cut"
-#~ msgstr "Исеци"
-
-#~ msgid "Find Previous"
-#~ msgstr "Нађи претходно"
-
-#~ msgid "Main toolbar"
-#~ msgstr "Главна палета са алатима"
-
-#~ msgid "New"
-#~ msgstr "Нови"
-
-#~ msgid "Open Location..."
-#~ msgstr "Отвори локацију..."
-
-#~ msgid "Paste"
-#~ msgstr "Убаци"
-
-#~ msgid "Print Previe_w..."
-#~ msgstr "Пре_глед пред штампу..."
-
-#~ msgid "Quit"
-#~ msgstr "Изађи"
-
-#~ msgid "Redo"
-#~ msgstr "Понови"
-
-#~ msgid "Select All"
-#~ msgstr "Изабери све"
-
-#~ msgid ""
-#~ "Set toolbar button style according to desktop Menu and Toolbar Preferences"
-#~ msgstr "Постави стил дугмића главних алатки према поставкама из Гнома"
-
-#~ msgid "Show only icons in the toolbar"
-#~ msgstr "Прикажи само иконе за главне алатке"
-
-#~ msgid "Show text below every icon in the toolbar"
-#~ msgstr "Прикажи текст испод сваке иконе за главне алатке"
-
-#~ msgid "Show text only beside important icons in the toolbar"
-#~ msgstr "Прикажи текст само поред важних икона међу главним алаткама"
-
-#~ msgid "T_ext for Important Icons"
-#~ msgstr "_Текст за важне иконе"
-
-#~ msgid "Undo"
-#~ msgstr "Опозови"
-
-#~ msgid "_Close"
-#~ msgstr "_Затвори"
-
-#~ msgid "_Copy"
-#~ msgstr "_Умножи"
-
-#~ msgid "_Customize Toolbar"
-#~ msgstr "Прилагоди _главне алатке"
-
-#~ msgid "_Desktop Default"
-#~ msgstr "Подразумевано у ок_ружењу"
-
-#~ msgid "_Icons Only"
-#~ msgstr "Само _иконе"
-
-#~ msgid "_New"
-#~ msgstr "_Нова"
-
-#~ msgid "_Paste"
-#~ msgstr "У_баци"
-
-#~ msgid "_Quit"
-#~ msgstr "_Изађи"
-
-#~ msgid "_Redo"
-#~ msgstr "По_нови"
-
-#~ msgid "_Text for All Icons"
-#~ msgstr "_Текст за све иконе"
-
-#~ msgid "_Undo"
-#~ msgstr "_Опозови"
-
-#~ msgid "Quit an existing instance of gedit"
-#~ msgstr "Угаси постојећу инстанцу гедита"
-
-#~ msgid "The file you are trying to open contains an invalid byte sequence."
-#~ msgstr "Датотека коју покушавате да отворите садржи неисправан низ бајтова."
-
-#~ msgid ""
-#~ "gedit was not able to automatically determine the encoding of the file "
-#~ "you want to open."
-#~ msgstr "гедит не може сам да препозна кодирање за датотеку коју отварате."
-
-#~ msgid "Update"
-#~ msgstr "Освежи"
-
-#~ msgid "gedit: Document Info plugin"
-#~ msgstr "гедит: Додатак за податке о документу"
-
-#~ msgid "Sa_ve Copy..."
-#~ msgstr "Сачувај _умножено..."
-
-#~ msgid "Could not save a copy of the file to \"%s\""
-#~ msgstr "Не може да сачува умножено из датотеке у „%s“."
-
-#~ msgid "You are trying to overwrite the original file"
-#~ msgstr "Покушавате да преснимите изворну датотеку"
-
-#~ msgid "Save Copy..."
-#~ msgstr "Сачувај умножено..."
-
-#~ msgid "%s (copy)"
-#~ msgstr "%s (умножено)"
-
-#~ msgid "Save a Copy"
-#~ msgstr "Сачувај умножено"
-
-#~ msgid "Saves a copy of the current document to a local or remote location."
-#~ msgstr "Чува умножено из текућег документа на локално или удаљено место."
-
-#~ msgid "_Run Command..."
-#~ msgstr "Изв_рши наредбу..."
-
-#~ msgid "Run Command"
-#~ msgstr "Изврши наредбу"
-
-#~ msgid "_Run"
-#~ msgstr "Пок_рени"
-
-#~ msgid "Failed"
-#~ msgstr "Неуспешно"
-
-#~ msgid ""
-#~ "The shell command entry is empty.\n"
-#~ "\n"
-#~ "Please, insert a valid shell command."
-#~ msgstr ""
-#~ "Није унета наредба.\n"
-#~ "\n"
-#~ "Унесите исправну наредбу."
-
-#~ msgid ""
-#~ "Error parsing the shell command.\n"
-#~ "\n"
-#~ "Please, insert a valid shell command."
-#~ msgstr ""
-#~ "Грешка приликом растављања наредбе.\n"
-#~ "\n"
-#~ "Унесите исправну наредбу љуске."
-
-#~ msgid "Executing command"
-#~ msgstr "Извршавам наредбу"
-
-#~ msgid ""
-#~ "Executes an external program and, if required, displays its output in the "
-#~ "output window."
-#~ msgstr ""
-#~ "Извршава спољашњи програм и по потреби приказује његов излаз у прозору."
-
-#~ msgid "Shell command"
-#~ msgstr "Наредба љуске"
-
-#~ msgid "_Show results in Output Window"
-#~ msgstr "Прика_жи резултате у излазном прозору"
-
-#~ msgid "The selected text does not contain misspelled words."
-#~ msgstr "Означени текст не садржи погрешно написане речи."
-
-#~ msgid "The document does not contain misspelled words."
-#~ msgstr "Документ не садржи погрешно написане речи."
-
-#~ msgid "Tag list plugin"
-#~ msgstr "Додатак за листу елемената"
-
-#~ msgid "Tag _List"
-#~ msgstr "_Листа елемената"
-
-#~ msgid "Show the tag list window"
-#~ msgstr "Прикажи прозор са листом елемената"
