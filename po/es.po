@@ -20,14 +20,15 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-04-05 20:29+0000\n"
-"PO-Revision-Date: 2012-03-07 10:28+0100\n"
+"POT-Creation-Date: 2012-08-03 08:38+0000\n"
+"PO-Revision-Date: 2012-08-07 20:15+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 1.9.3\n"
+"X-Generator: Gtranslator 2.91.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/gedit.desktop.in.in.h:1
@@ -138,8 +139,8 @@ msgstr "Límite de acciones deshacer (OBSOLETO)"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
 "Número máximo de acciones que gedit puede deshacer o rehacer. Use «-1» para "
 "un número ilimitado de acciones. Obsoleto desde 2.12.0"
@@ -150,8 +151,8 @@ msgstr "Número máximo de acciones para deshacer"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
 msgstr ""
 "Número máximo de acciones que gedit puede deshacer o rehacer. Use «-1» para "
 "un número ilimitado de acciones."
@@ -257,12 +258,13 @@ msgid ""
 "the text instead of the start/end of the line."
 msgstr ""
 "Especifica cómo se mueve el cursor cuando se pulsan las teclas «INICIO» y "
-"«FIN». Use «disabled» para moverse siempre al incio/final de la línea, «after» "
-"para moverse al inicio/final de la línea la primera vez que se pulsan las "
-"teclas y al inicio/final del texto, ignorando los espacios en blanco, la "
-"segunda vez que se pulsan, «before» para moverse al inicio/final del texto "
-"antes de moverse al inicio/final de la línea y «always» para moverse siempre "
-"al inicio/final del texto en lugar del inicio/final de la línea."
+"«FIN». Use «disabled» para moverse siempre al incio/final de la línea, "
+"«after» para moverse al inicio/final de la línea la primera vez que se "
+"pulsan las teclas y al inicio/final del texto, ignorando los espacios en "
+"blanco, la segunda vez que se pulsan, «before» para moverse al inicio/final "
+"del texto antes de moverse al inicio/final de la línea y «always» para "
+"moverse siempre al inicio/final del texto en lugar del inicio/final de la "
+"línea."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
 msgid "Restore Previous Cursor Position"
@@ -325,11 +327,11 @@ msgid ""
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"Especifica cómo deben mostrarse las pestañas en un «netbook». Use «never» para "
-"no mostrar nunca las pestañas, «always» para mostrar siempre las pestañas, y "
-"«auto» para mostrar las pestañas sólo cuando hay más de una. Note que los "
-"valores son sensibles a capitalización, por ello asegúrese de que aparecen "
-"exactamente del mismo modo en que se mencionan aquí."
+"Especifica cómo deben mostrarse las pestañas en un «netbook». Use «never» "
+"para no mostrar nunca las pestañas, «always» para mostrar siempre las "
+"pestañas, y «auto» para mostrar las pestañas sólo cuando hay más de una. "
+"Note que los valores son sensibles a capitalización, por ello asegúrese de "
+"que aparecen exactamente del mismo modo en que se mencionan aquí."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
 msgid "Status Bar is Visible"
@@ -397,8 +399,8 @@ msgid ""
 msgstr ""
 "Especifica cómo deben ajustarse las líneas demasiado largas al imprimir. Use "
 "«none» para no ajustar las líneas, «word» para ajustar en los límites de las "
-"palabras y «char» para ajustar de acuerdo a caracteres individuales. Note que "
-"los valores son sensibles a capitalización, por ello asegúrese de que "
+"palabras y «char» para ajustar de acuerdo a caracteres individuales. Note "
+"que los valores son sensibles a capitalización, por ello asegúrese de que "
 "aparecen exactamente del mismo modo en que se mencionan aquí."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
@@ -452,11 +454,27 @@ msgstr ""
 "imprimen. Esto sólo tiene efecto si la opción «Imprimir números de línea» es "
 "distinta de cero."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+#| msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "Detección automática de codificación"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -467,11 +485,18 @@ msgstr ""
 "configuración regional actual. Sólo se utilizan las codificaciones "
 "reconocidas."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+#| msgid "[ISO-8859-15]"
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "Codificaciones mostradas en el menú"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -480,11 +505,11 @@ msgstr ""
 "selector de archivos para abrir/guardar. Sólo se usan las codificaciones "
 "reconocidas."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "Complementos activos"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -742,7 +767,7 @@ msgstr "El archivo «%s» es de sólo lectura."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "¿Desea intentar reemplazarlo por el que está guardando ahora?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_Reemplazar"
 
@@ -773,8 +798,8 @@ msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
-"El archivo «%s» se guardó anteriormente usando compresión y ahora se guardará "
-"como texto plano."
+"El archivo «%s» se guardó anteriormente usando compresión y ahora se "
+"guardará como texto plano."
 
 #: ../gedit/gedit-commands-file.c:622
 msgid "_Save As Plain Text"
@@ -918,7 +943,7 @@ msgstr "Se encontró y reemplazó una aparición"
 msgid "\"%s\" not found"
 msgstr "No se encontró «%s»"
 
-#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
+#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Documento no guardado %d"
@@ -1791,12 +1816,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Vista previa de una página en el documento que se va a imprimir"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "Reemplazar"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "Reemplazar _todo"
 
@@ -2209,22 +2234,22 @@ msgstr "Panel _inferior"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Mostrar u ocultar el panel inferior en la ventana actual"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Compruebe su instalación."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "No se pudo abrir el archivo de IU %s. Error: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "No se pudo encontrar el objeto «%s» en el archivo %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ en %s"
@@ -5021,12 +5046,6 @@ msgstr ""
 #~ "visible."
 #~ msgstr ""
 #~ "Indica si debe ser visible el panel inferior bajo las ventanas de edición."
-
-#~ msgid "[ISO-8859-15]"
-#~ msgstr "[ISO-8859-15]"
-
-#~ msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
-#~ msgstr "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
 
 #~ msgid "Cannot initialize preferences manager."
 #~ msgstr "No se pudo inicializar el gestor de preferencias."
