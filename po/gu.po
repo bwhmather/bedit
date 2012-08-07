@@ -7,10 +7,11 @@ msgstr ""
 "Project-Id-Version: gu\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
 "cgi?product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-06 18:26+0000\n"
-"PO-Revision-Date: 2012-03-15 14:31+0530\n"
+"POT-Creation-Date: 2012-08-03 08:38+0000\n"
+"PO-Revision-Date: 2012-08-07 16:57+0530\n"
 "Last-Translator: \n"
 "Language-Team: gu_IN <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -38,18 +39,16 @@ msgid "Edit text files"
 msgstr "લખાણ ફાઇલોમાં ફેરફાર કરો"
 
 #: ../data/gedit.desktop.in.in.h:4
-#| msgid "_Move to New Window"
+msgid "gedit Text Editor"
+msgstr "gedit લખાણ સંપાદક"
+
+#: ../data/gedit.desktop.in.in.h:5
 msgid "Open a New Window"
 msgstr "નવી વિન્ડોને ખોલો"
 
-#: ../data/gedit.desktop.in.in.h:5
-#| msgid "Create a new document"
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Document"
 msgstr "નવાં દસ્તાવેજને ખોલો"
-
-#: ../data/gedit.desktop.in.in.h:6
-msgid "gedit Text Editor"
-msgstr "gedit લખાણ સંપાદક"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
 msgid "Use Default Font"
@@ -129,8 +128,8 @@ msgstr "રદ કરવાની ક્રિયાઓની મર્યાદ
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
 "મહત્તમ સંખ્યાની ક્રિયાઓ કે જેને gedit રદ કરવા માટે અથવા ફરીથી કરવા માટે સમર્થ હશે. "
 "અમર્યાદિત સંખ્યાની ક્રિયાઓ માટે \"-1\" વાપરો. 2.12.0 થી ઉતારી પડાયેલ છે"
@@ -141,8 +140,8 @@ msgstr "મહત્તમ સંખ્યાની રદ કરેલી સ�
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
 msgstr ""
 "મહત્તમ સંખ્યાની ક્રિયાઓ કે જેને gedit રદ કરવા માટે અથવા ફરીથી કરવા માટે સમર્થ હશે. "
 "અમર્યાદિત સંખ્યાની ક્રિયાઓ માટે \"-1\" વાપરો."
@@ -280,8 +279,6 @@ msgid "Ensure Trailing Newline"
 msgstr "ખાતરી કરો કે છેલ્લે નવું વાક્ય હોય"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
-#| msgid ""
-#| "Whether gedit should include a document header when printing documents."
 msgid "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "શું gedit ખાતરી કરશે કે દસ્તાવેજો હંમેશા છેલ્લે નવાં વાક્ય સાથે અંત કરશે."
 
@@ -411,11 +408,26 @@ msgstr ""
 "છાપતી વખતે લીટી ક્રમાંક માટે ઉપયોગ માં આવનાર ફોન્ટ દર્શાવો \"લીટી ક્રમાંકો છાપો\" "
 "વિકલ્પ શુન્ય ન હોય ત્યારે જ તેની અસર થશે."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "સ્વયં શોધાયેલી સંગ્રહપદ્ધતિઓ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -425,11 +437,17 @@ msgstr ""
 "ક્રમમાં ગોઠવાયેલ. \"CURRENT\" વર્તમાન લોકેલ સંગ્રહપદ્ધતિ રજૂ કરે છે. માત્ર ઓળખીતી "
 "સંગ્રહપદ્ધતિઓ જ વપરાય છે."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "મેનુમાં દેખાતી સંગ્રહપદ્ધતિઓ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -437,11 +455,11 @@ msgstr ""
 "ખોલો/સંગ્રહો ફાઈલ પસંદગીકારક મેનુમાં દેખાતા અક્ષરો માટેના કોડની સંગ્રહપદ્ધતિની યાદી. "
 "માત્ર ઓળખાયેલી સંગ્રહપદ્ધતિઓ વપરાય છે."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "સક્રિય પ્લગઈનો"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -601,7 +619,6 @@ msgid "Create a new document in an existing instance of gedit"
 msgstr "હાલના gedit ના નમૂનામાં નવો દસ્તાવેજ બનાવો"
 
 #: ../gedit/gedit-command-line.c:294
-#| msgid "Set the X geometry window size (WIDTHxHEIGHT+X+Y)"
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "વિન્ડોનું માપ અને સ્થાનને સુયોજિત કરો (WIDTHxHEIGHT+X+Y)"
 
@@ -665,7 +682,7 @@ msgstr "ફાઈલ \"%s\" માત્ર-વાંચી શકાય તે�
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "શું તમે તેને સંગ્રહ થઈ રહેલ ફાઇલ સાથે બદલવાનો પ્રયાસ કરવા માગો છો?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "બદલો (_R)"
 
@@ -803,7 +820,7 @@ msgstr "એક વખત શબ્દ મળ્યો અને બદલાય�
 msgid "\"%s\" not found"
 msgstr "\"%s\" શોધાયુ નથી"
 
-#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
+#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "અસંગ્રહિત દસ્તાવેજ %d"
@@ -1502,12 +1519,10 @@ msgid "Color Scheme"
 msgstr "રંગ પદ્ધતિ"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
-#| msgid "Style Scheme"
 msgid "Install scheme"
 msgstr "યોજના સ્થાપિત કરો"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:25
-#| msgid "Style Scheme"
 msgid "Install Scheme"
 msgstr "યોજના સ્થાપિત કરો"
 
@@ -1516,7 +1531,6 @@ msgid "Uninstall scheme"
 msgstr "યોજના બિનસ્થાપિત કરો"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:27
-#| msgid "Style Scheme"
 msgid "Uninstall Scheme"
 msgstr "યોજના બિનસ્થાપિત કરો"
 
@@ -1663,12 +1677,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "દસ્તાવેજમાં છાપવા માટેના પાનાંનું પૂર્વદર્શન"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "બદલો"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "બધુ બદલો (_A)"
 
@@ -2081,22 +2095,22 @@ msgstr "નીચેની તકતી (_B)"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "વર્તમાન વિન્ડોમાંની તળિયાની તકતી બતાવો અથવા છુપાવો"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "મહેરબાની કરીને તમારું સ્થાપન ચકાસો."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "UI ફાઇલ %s ખોલવામાં અસમર્થ. ભૂલ: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "ફાઈલ %s માં ઘટક '%s' ને શોધવામાં અસમર્થ."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ on %s"
@@ -2585,7 +2599,6 @@ msgid "_Save:"
 msgstr "સંગ્રહો (_S):"
 
 #: ../plugins/externaltools/tools/tools.ui.h:33
-#| msgid "_Shortcut Key:"
 msgid "Shortcut _Key:"
 msgstr "ટૂંકાણ કી (_K):"
 
@@ -2853,7 +2866,6 @@ msgid "Show binary files"
 msgstr "બાઈનરી ફાઈલો બતાવો"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:1202
-#| msgid "_Match Filename"
 msgid "Match Filename"
 msgstr "ફાઈલનામ સરખાવો"
 
@@ -3007,12 +3019,10 @@ msgid "Interactive Python console standing in the bottom panel"
 msgstr "પૂછપરછવાળું python કન્સોલ એ તળિયેની પેનલમાં ઊભું છે"
 
 #: ../plugins/quickopen/quickopen/__init__.py:71
-#| msgid "Quick Open"
 msgid "Quick open"
 msgstr "ઝડપી ખોલો"
 
 #: ../plugins/quickopen/quickopen/__init__.py:72
-#| msgid "Quickly open files"
 msgid "Quickly open documents"
 msgstr "દસ્તાવેજોને ઝડપથી ખોલો"
 
