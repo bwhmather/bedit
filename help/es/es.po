@@ -9,14 +9,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2012-06-23 21:37+0000\n"
-"PO-Revision-Date: 2012-06-26 20:12+0200\n"
+"POT-Creation-Date: 2012-08-02 09:38+0000\n"
+"PO-Revision-Date: 2012-08-08 12:41+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Generator: Gtranslator 2.91.4\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -761,13 +762,11 @@ msgstr ""
 
 #: C/gedit-open-recent.page:25(item/p)
 msgid ""
-"Launch <app>gconf-editor</app> and select <guiseq><gui>apps</"
-"gui><gui>gedit-2</gui><gui>preferences</gui><gui>ui</gui><gui>recents</gui></"
-"guiseq>."
+"Launch <app>gconf-editor</app> and select <guiseq><gui>apps</gui><gui>gedit-"
+"2</gui><gui>preferences</gui><gui>ui</gui><gui>recents</gui></guiseq>."
 msgstr ""
-"Lance <app>gconf-editor</app> y seleccione <guiseq><gui>apps</"
-"gui><gui>gedit-2</gui><gui>preferencias</gui><gui>iu</gui><gui>recientes</"
-"gui></guiseq>."
+"Lance <app>gconf-editor</app> y seleccione <guiseq><gui>apps</gui><gui>gedit-"
+"2</gui><gui>preferencias</gui><gui>iu</gui><gui>recientes</gui></guiseq>."
 
 #: C/gedit-open-recent.page:26(item/p)
 msgid ""
@@ -1344,8 +1343,7 @@ msgstr ""
 
 #: C/gedit-plugins-commander.page:27(note/p)
 msgid "The last key in the above key combination is a period."
-msgstr ""
-"La última tecla de la combinación de teclas indicada es un punto («.»)."
+msgstr "La última tecla de la combinación de teclas indicada es un punto («.»)."
 
 #: C/gedit-plugins-commander.page:33(td/p) C/gedit-shortcut-keys.page:56(td/p)
 #: C/gedit-shortcut-keys.page:88(td/p) C/gedit-shortcut-keys.page:124(td/p)
@@ -1681,8 +1679,7 @@ msgid ""
 msgstr ""
 "Este complemento es para usuarios avanzados y para usarlo correctamente "
 "requiere conocimientos de «script». Use este complemento con cuidado, ya que "
-"errores con sus «script» pueden afectar a su trabajo de forma no "
-"intencionada."
+"errores con sus «script» pueden afectar a su trabajo de forma no intencionada."
 
 #: C/gedit-plugins-file-browser.page:16(info/desc)
 msgid "Use the side pane to browse and open files"
@@ -2588,8 +2585,8 @@ msgid ""
 "The Sort dialog will open, allowing you to choose between several sorting "
 "options:"
 msgstr ""
-"El diálogo «Ordenar» se abrirá, permitiéndole elegir entre varias opciones "
-"de ordenación:"
+"El diálogo «Ordenar» se abrirá, permitiéndole elegir entre varias opciones de "
+"ordenación:"
 
 #: C/gedit-plugins-sort.page:31(item/p)
 msgid ""
@@ -2692,8 +2689,8 @@ msgid ""
 msgstr ""
 "El panel lateral muestra inicialmente una lista de documentos abiertos, por "
 "lo que para ver y usar la <app>Lista de etiquetas</app>, deberá pulsar en la "
-"pestaña que muestra el icono «más» en la parte inferior del panel lateral. "
-"El icono se parece a esto:"
+"pestaña que muestra el icono «más» en la parte inferior del panel lateral. El "
+"icono se parece a esto:"
 
 #: C/gedit-plugins-tag-list.page:39(section/title)
 msgid "Inserting Tags and Special Characters"
@@ -3000,14 +2997,18 @@ msgstr ""
 "em> seleccione <gui>Intercalar</gui>."
 
 #: C/gedit-printing.page:19(note/p)
+#| msgid ""
+#| "Printing with <app>gedit</app> requires that you have connected and "
+#| "configured your printer. If you have not done this, please consult the "
+#| "printing help documentation for your desktop environment."
 msgid ""
 "Printing with <app>gedit</app> requires that you have connected and "
-"configured your printer. If you have not done this, please consult the "
-"printing help documentation for your desktop environment."
+"configured your printer. If you have not done this, please consult the <link "
+"href=\"ghelp:gnome-help?printing\">printing help for GNOME</link>."
 msgstr ""
 "Imprimir con <app>gedit</app> requiere que tenga conectada y configurada una "
-"impresora. Si no lo ha hecho, consulte la documentación acerca de la "
-"impresión en su entorno de escritorio."
+"impresora. Si no lo ha hecho, consulte la <link href=\"ghelp:gnome-help?"
+"printing\">ayuda para imprimir en GNOME</link>."
 
 #: C/gedit-printing.page:22(page/p)
 msgid ""
@@ -3096,8 +3097,8 @@ msgid ""
 "For example, if you enter \"1,3,5-7,9\" in the <gui>Pages</gui> textbox, "
 "pages 1,3,5,6,7 and 9 will be printed."
 msgstr ""
-"Por ejemplo, si escribe «1,3,5-7,9» en la caja de texto <gui>Páginas</gui>,"
-"se imprimirán las páginas 1,3,5,6,7 y 9."
+"Por ejemplo, si escribe «1,3,5-7,9» en la caja de texto <gui>Páginas</gui>,se "
+"imprimirán las páginas 1,3,5,6,7 y 9."
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
@@ -3380,8 +3381,8 @@ msgid ""
 "Press the <key>Ctrl</key> and use your mouse or touchpad's <key>scroll</key> "
 "feature to move up or down through the text."
 msgstr ""
-"Pulse <key>Ctrl</key> y use el <key>deslizador</key> de su ratón o "
-"«touchpad» para moverse hacia arriba o hacia abajo a través del texto."
+"Pulse <key>Ctrl</key> y use el <key>deslizador</key> de su ratón o «touchpad» "
+"para moverse hacia arriba o hacia abajo a través del texto."
 
 #: C/gedit-search.page:52(page/p)
 msgid ""
@@ -3985,11 +3986,6 @@ msgid "Undo a recent action"
 msgstr "Deshacer una acción reciente"
 
 #: C/gedit-undo-recent-action.page:25(page/p)
-#| msgid ""
-#| "After you have enabled the plugin, turn-on Multi Edit mode by pressing "
-#| "<keyseq><key>Ctrl</key><key>Shift</key><key>C</key></keyseq>, or clicking "
-#| "<guiseq><gui>Edit</gui><gui>Multi Edit Mode</gui></guiseq>. You can then "
-#| "select the points in your file that you would like start editing."
 msgid ""
 "If you make a mistake while using <app>gedit</app>, you can undo it by "
 "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
@@ -7578,8 +7574,8 @@ msgstr ""
 #~ "pane to show the tag list tab."
 #~ msgstr ""
 #~ "Por omisión, el panel lateral muestra una pestaña conteniendo una lista "
-#~ "de documentos abiertos. Pulse en la pestaña que muestra un icono «+» en "
-#~ "la parte de abajo del panel lateral para mostrar la pestaña de listas de "
+#~ "de documentos abiertos. Pulse en la pestaña que muestra un icono «+» en la "
+#~ "parte de abajo del panel lateral para mostrar la pestaña de listas de "
 #~ "etiquetas."
 
 #~ msgid ""
