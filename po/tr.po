@@ -1,28 +1,28 @@
 # Turkish translation of gedit.
 # Copyright (C) 2002-2003, 2004, 2005 Free Software Foundation, Inc.
 #
+#
 # Nilgün Belma Bugüner <nilgun@fide.org>, 2001, 2002.
 # Fatih Demir <kabalak@gtranslator.org>, 2000.
 # Baris Cicek <baris@teamforce.name.tr>, 2004, 2005, 2008, 2009.
 # Rıdvan CAN <ridvan@gamebox.net>, 2004.
-# Muhammet Kara <muhammet.k@gmail.com>, 2011, 2012.
-#
+# Muhammet Kara <muhammetk@acikkaynak.name.tr>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-13 12:52+0000\n"
-"PO-Revision-Date: 2012-03-17 11:48+0200\n"
-"Last-Translator: Muhammet Kara <muhammet.k@gmail.com>\n"
-"Language-Team: Türkçe <gnome-turk@gnome.org>\n"
+"POT-Creation-Date: 2012-08-03 08:38+0000\n"
+"PO-Revision-Date: 2012-08-09 17:27+0000\n"
+"Last-Translator: Muhammet Kara <muhammetk@acikkaynak.name.tr>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-DamnedLies-Scope: partial\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.4\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -41,12 +41,10 @@ msgid "gedit Text Editor"
 msgstr "gedit Metin Düzenleyici"
 
 #: ../data/gedit.desktop.in.in.h:5
-#| msgid "_Move to New Window"
 msgid "Open a New Window"
 msgstr "Yeni Pencere Aç"
 
 #: ../data/gedit.desktop.in.in.h:6
-#| msgid "Create a new document"
 msgid "Open a New Document"
 msgstr "Yeni Belge Aç"
 
@@ -432,11 +430,27 @@ msgstr ""
 "sadece \"Print Line Numbers\" seçeneği sıfırdan başka bir şey ise etki "
 "gösterir."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+#| msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-9', 'UTF-16', 'WINDOWS-1254']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "Otomatik Algılanan Kodlamalar"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -446,11 +460,18 @@ msgstr ""
 "listesi. \"CURRENT\" mevcut yerelleştirme kodlamasıdır. Sadece "
 "algılanankodlamalar kullanılır."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+#| msgid "[ISO-8859-15]"
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-9']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "Menüde gösterilen kodlamalar"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -458,11 +479,11 @@ msgstr ""
 "Karakter kodu menüsündeki açma/kaydetme dosya seçicideki gösterilen "
 "kodlamaların listesi. Sadece tanımlanmış kodlamaları kullanılır."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "Etkin eklentiler"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -640,7 +661,6 @@ msgid "Create a new document in an existing instance of gedit"
 msgstr "Gedit'in mevcut durumuna yeni bir belge yarat"
 
 #: ../gedit/gedit-command-line.c:294
-#| msgid "Set the X geometry window size (WIDTHxHEIGHT+X+Y)"
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Pencerenin boyutunu ve konumunu ayarla (GENİŞLİKxYÜKSEKLİK+X+Y)"
 
@@ -704,7 +724,7 @@ msgstr "\"%s\" dosyası salt-okunur."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Onu kaydettiğiniz ile değiştirmeyi denemek ister misiniz?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_Değiştir"
 
@@ -855,7 +875,7 @@ msgstr "Bir eşleşme bulundu ve değiştirildi"
 msgid "\"%s\" not found"
 msgstr "\"%s\" bulunamadı"
 
-#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
+#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Kaydedilmemiş Belge %d"
@@ -1354,13 +1374,12 @@ msgstr ""
 "kısa bir isim kullanın."
 
 #: ../gedit/gedit-io-error-info-bar.c:1133
-#, fuzzy
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
 "have this limitation."
 msgstr ""
-"Dosyayı kaydetmeye çalıştığınız diskte dosya boyutu sınırı var.  Lütfen daha "
+"Dosyayı kaydetmeye çalıştığınız diskte dosya boyutu sınırı var. Lütfen daha "
 "küçük bir dosyayı kaydetmeye çalışın ya da sınırlaması olmayan bir disk "
 "kullanın."
 
@@ -1721,12 +1740,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Yazdırılacak belgedeki bir sayfanın önizlemesi"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "Değiştir"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "_Hepsini Değiştir"
 
@@ -2138,22 +2157,22 @@ msgstr "_Alt Panel"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Geçerli penceredeki alt paneli göster ya da gizle"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Lütfen kurulumunuzu kontrol edin."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "UI dosyası %s açılamadı. Hata: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "'%s' nesnesi %s dosyası içerisinde bulunamadı."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "%s üzerinde /"
@@ -3654,6 +3673,7 @@ msgstr "Zeitgeist veri sağlayıcısı"
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
+"Gedit'le kullanılan belgeler için erişim ve terketme olaylarını kaydeder"
 
 #~ msgid "_Add..."
 #~ msgstr "_Ekle.."
@@ -3734,12 +3754,6 @@ msgstr ""
 
 #~ msgid "Writable VFS schemes"
 #~ msgstr "Yazılabilir VFS şemaları"
-
-#~ msgid "[ISO-8859-15]"
-#~ msgstr "[ISO-8859-15]"
-
-#~ msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
-#~ msgstr "[UTF-8,CURRENT,ISO-8859-9,UTF-16]"
 
 #~ msgid "Character Codings"
 #~ msgstr "Karakter Kodlamaları"
