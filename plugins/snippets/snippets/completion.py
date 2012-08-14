@@ -166,7 +166,7 @@ class Defaults(GObject.Object, GtkSource.CompletionProvider):
                 self.proposals = []
 
                 for d in defaults:
-                        self.proposals.append(GtkSource.CompletionItem(d))
+                        self.proposals.append(GtkSource.CompletionItem.new(d, d, None, None))
 
         def do_get_name(self):
                 return ""

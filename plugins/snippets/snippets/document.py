@@ -287,7 +287,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                                 self.defaults_provider.set_defaults(next.defaults)
 
                                 cm = self.view.get_completion()
-                                cm.show([self.defaults_provider], cm.create_context())
+                                cm.show([self.defaults_provider], cm.create_context(None))
 
                 if last:
                         # This is the end of the placeholder, remove the snippet etc
