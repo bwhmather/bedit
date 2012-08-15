@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-10 15:06+0300\n"
-"PO-Revision-Date: 2012-08-10 15:07+0200\n"
+"POT-Creation-Date: 2012-08-15 20:50+0300\n"
+"PO-Revision-Date: 2012-08-15 20:53+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "Language: he\n"
@@ -697,8 +697,8 @@ msgstr "מופע אחד נמצא והוחלף"
 msgid "\"%s\" not found"
 msgstr "‏\"%s\" לא נמצא"
 
-#: ../gedit/gedit-document.c:1221
-#: ../gedit/gedit-document.c:1247
+#: ../gedit/gedit-document.c:1222
+#: ../gedit/gedit-document.c:1248
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "מסמך שלא נשמר %d"
@@ -1972,25 +1972,25 @@ msgid "/ on %s"
 msgstr "/ תחת %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:546
+#: ../gedit/gedit-view-frame.c:542
 msgid "_Wrap Around"
 msgstr "_גלישה מסביב"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:556
+#: ../gedit/gedit-view-frame.c:552
 msgid "Match _Entire Word Only"
 msgstr "התאמת מילים _שלמות בלבד"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:566
+#: ../gedit/gedit-view-frame.c:562
 msgid "_Match Case"
 msgstr "הת_אמת רישיות"
 
-#: ../gedit/gedit-view-frame.c:767
+#: ../gedit/gedit-view-frame.c:759
 msgid "String you want to search for"
 msgstr "המחרוזת שברצונך לחפש"
 
-#: ../gedit/gedit-view-frame.c:777
+#: ../gedit/gedit-view-frame.c:769
 msgid "Line you want to move the cursor to"
 msgstr "השורה אליה להעביר את הסמן"
 
@@ -2844,7 +2844,7 @@ msgid "Type to search..."
 msgstr "יש להקליד כדי לחפש..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "מקטעים"
@@ -2919,8 +2919,8 @@ msgstr "מחיקת המקטע הנבחר"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
-msgid "This is not a valid Tab trigger. Triggers can either contain letters or a single (non-alphanumeric) character like: {, [, etc."
-msgstr "זהו אינו מזניק Tab תקני. מזניקים יכולים להיות אותיות או תו יחיד (שאינו אות או מספר) כגון: {, [, וכו׳."
+msgid "This is not a valid Tab trigger. Triggers can either contain alphanumeric characters (or _, : and .) or a single (non-alphanumeric) character like: {, [, etc."
+msgstr "זהו אינו מזניק תקני ללשונית. מזניקים יכולים להיות אותיות (או _, : ו־ .) או תו יחיד (שאינו אות או מספר) כגון: {, [, וכו׳."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
