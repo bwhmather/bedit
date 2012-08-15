@@ -27,6 +27,7 @@ from placeholder import *
 import completion
 from signals import Signals
 from shareddata import SharedData
+import helper
 
 class DynamicSnippet(dict):
         def __init__(self, text):
@@ -598,31 +599,34 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                         end = buf.get_iter_at_mark(buf.get_insert())
 
                 start = end.copy()
-
                 word = None
+                first = True
 
-                if start.backward_word_start():
-                        # Check if we were at a word start ourselves
-                        tmp = start.copy()
-                        tmp.forward_word_end()
+                # Move start backward as long as there is a valid character
+                while start.backward_char():
+                        c = start.get_char()
 
-                        if tmp.equal(end):
-                                word = unicode(buf.get_text(start, end, False), 'utf-8')
-                        else:
-                                start = end.copy()
-                else:
-                        start = end.copy()
+                        if not helper.is_tab_trigger_character(c):
+                                # Check this for a single special char
+                                if first and helper.is_tab_trigger(c):
+                                        break
 
-                if not word or word == '':
-                        if start.backward_char():
-                                word = start.get_char()
+                                # Make sure first char is valid
+                                while not start.equal(end) and \
+                                      not helper.is_first_tab_trigger_character(start):
+                                        start.forward_char()
 
-                                if word.isalnum() or word.isspace():
-                                        return (None, None, None)
-                        else:
-                                return (None, None, None)
+                                break
 
-                return (word, start, end)
+                        first = False
+
+                if not start.equal(end):
+                        word = unicode(buf.get_text(start, end, False), 'utf-8')
+
+                        if word and word != '':
+                                return (word, start, end)
+
+                return (None, None, None)
 
         def parse_and_run_snippet(self, data, iter):
                 if not self.view.get_editable():

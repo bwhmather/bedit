@@ -945,21 +945,7 @@ class Library(Singleton):
                 if not trigger:
                         return True
 
-                if trigger.isdigit():
-                        return False
-
-                self.check_buffer.set_text(trigger)
-
-                start, end = self.check_buffer.get_bounds()
-                text = unicode(self.check_buffer.get_text(start, end, False), 'utf-8')
-
-                s = start.copy()
-                e = end.copy()
-
-                end.backward_word_start()
-                start.forward_word_end()
-
-                return (s.equal(end) and e.equal(start)) or (len(text) == 1 and not (text.isalnum() or text.isspace()))
+                return is_tab_trigger(trigger)
 
         # Snippet getters
         # ===============

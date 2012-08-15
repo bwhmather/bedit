@@ -660,7 +660,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                         img.show()
 
                         #self['hbox_tab_trigger'].set_spacing(3)
-                        tip = _('This is not a valid Tab trigger. Triggers can either contain letters or a single (non-alphanumeric) character like: {, [, etc.')
+                        tip = _('This is not a valid Tab trigger. Triggers can either contain alphanumeric characters (or _, : and .) or a single (non-alphanumeric) character like: {, [, etc.')
 
                         entry.set_tooltip_text(tip)
                         img.set_tooltip_text(tip)

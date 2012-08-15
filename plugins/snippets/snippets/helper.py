@@ -146,6 +146,25 @@ def _write_node(node, file, cdata_nodes=(), indent=0):
 def _cdata(text):
         return '<![CDATA[' + text.replace(']]>', ']]]]><![CDATA[>') + ']]>'
 
+def is_tab_trigger(w):
+        if len(w) == 1 and not (w.isalnum() or w.isspace()):
+                return True
+
+        if not is_first_tab_trigger_character(w[0]):
+                return False
+
+        for c in w:
+                if not is_tab_trigger_character(c):
+                        return False
+
+        return True
+
+def is_first_tab_trigger_character(c):
+        return c.isalpha() or c in '_:.'
+
+def is_tab_trigger_character(c):
+        return c.isalnum() or c in '_:.'
+
 def buffer_word_boundary(buf):
         iter = buf.get_iter_at_mark(buf.get_insert())
         start = iter.copy()
