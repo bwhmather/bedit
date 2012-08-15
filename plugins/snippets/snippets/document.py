@@ -819,7 +819,8 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
 
                 if not (state & Gdk.ModifierType.CONTROL_MASK) and \
                                 not (state & Gdk.ModifierType.MOD1_MASK) and \
-                                event.keyval in self.TAB_KEY_VAL:
+                                event.keyval in self.TAB_KEY_VAL and \
+                                not view.get_buffer().get_has_selection():
                         if not state & Gdk.ModifierType.SHIFT_MASK:
                                 return self.run_snippet()
                         else:
