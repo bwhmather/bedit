@@ -637,8 +637,12 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                 if not self.view.get_editable():
                         return False
 
-                snippets = Library().from_tag(trigger, self.language_id)
                 buf = self.view.get_buffer()
+
+                if buf.get_has_selection():
+                        return False
+
+                snippets = Library().from_tag(trigger, self.language_id)
 
                 if snippets:
                         if len(snippets) == 1:
@@ -819,8 +823,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
 
                 if not (state & Gdk.ModifierType.CONTROL_MASK) and \
                                 not (state & Gdk.ModifierType.MOD1_MASK) and \
-                                event.keyval in self.TAB_KEY_VAL and \
-                                not view.get_buffer().get_has_selection():
+                                event.keyval in self.TAB_KEY_VAL:
                         if not state & Gdk.ModifierType.SHIFT_MASK:
                                 return self.run_snippet()
                         else:
