@@ -205,12 +205,8 @@ hide_search_widget (GeditViewFrame *frame,
 static gboolean
 search_entry_flush_timeout (GeditViewFrame *frame)
 {
-	GDK_THREADS_ENTER ();
-
 	frame->priv->typeselect_flush_timeout = 0;
 	hide_search_widget (frame, FALSE);
-
-	GDK_THREADS_LEAVE ();
 
 	return FALSE;
 }
@@ -578,11 +574,7 @@ real_search_enable_popdown (gpointer data)
 {
 	GeditViewFrame *frame = GEDIT_VIEW_FRAME (data);
 
-	GDK_THREADS_ENTER ();
-
 	frame->priv->disable_popdown = FALSE;
-
-	GDK_THREADS_LEAVE ();
 
 	return FALSE;
 }
