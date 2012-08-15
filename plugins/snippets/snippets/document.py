@@ -613,7 +613,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
 
                                 # Make sure first char is valid
                                 while not start.equal(end) and \
-                                      not helper.is_first_tab_trigger_character(start):
+                                      not helper.is_first_tab_trigger_character(start.get_char()):
                                         start.forward_char()
 
                                 break
