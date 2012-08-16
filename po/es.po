@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-08-03 08:38+0000\n"
-"PO-Revision-Date: 2012-08-07 20:15+0200\n"
+"POT-Creation-Date: 2012-08-15 07:45+0000\n"
+"PO-Revision-Date: 2012-08-16 15:54+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Gtranslator 2.91.5\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -139,8 +139,8 @@ msgstr "Límite de acciones deshacer (OBSOLETO)"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
+"\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
 "Número máximo de acciones que gedit puede deshacer o rehacer. Use «-1» para "
 "un número ilimitado de acciones. Obsoleto desde 2.12.0"
@@ -151,8 +151,8 @@ msgstr "Número máximo de acciones para deshacer"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
+"\" for unlimited number of actions."
 msgstr ""
 "Número máximo de acciones que gedit puede deshacer o rehacer. Use «-1» para "
 "un número ilimitado de acciones."
@@ -258,13 +258,12 @@ msgid ""
 "the text instead of the start/end of the line."
 msgstr ""
 "Especifica cómo se mueve el cursor cuando se pulsan las teclas «INICIO» y "
-"«FIN». Use «disabled» para moverse siempre al incio/final de la línea, "
-"«after» para moverse al inicio/final de la línea la primera vez que se "
-"pulsan las teclas y al inicio/final del texto, ignorando los espacios en "
-"blanco, la segunda vez que se pulsan, «before» para moverse al inicio/final "
-"del texto antes de moverse al inicio/final de la línea y «always» para "
-"moverse siempre al inicio/final del texto en lugar del inicio/final de la "
-"línea."
+"«FIN». Use «disabled» para moverse siempre al incio/final de la línea, «after» "
+"para moverse al inicio/final de la línea la primera vez que se pulsan las "
+"teclas y al inicio/final del texto, ignorando los espacios en blanco, la "
+"segunda vez que se pulsan, «before» para moverse al inicio/final del texto "
+"antes de moverse al inicio/final de la línea y «always» para moverse siempre "
+"al inicio/final del texto en lugar del inicio/final de la línea."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
 msgid "Restore Previous Cursor Position"
@@ -327,11 +326,11 @@ msgid ""
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"Especifica cómo deben mostrarse las pestañas en un «netbook». Use «never» "
-"para no mostrar nunca las pestañas, «always» para mostrar siempre las "
-"pestañas, y «auto» para mostrar las pestañas sólo cuando hay más de una. "
-"Note que los valores son sensibles a capitalización, por ello asegúrese de "
-"que aparecen exactamente del mismo modo en que se mencionan aquí."
+"Especifica cómo deben mostrarse las pestañas en un «netbook». Use «never» para "
+"no mostrar nunca las pestañas, «always» para mostrar siempre las pestañas, y "
+"«auto» para mostrar las pestañas sólo cuando hay más de una. Note que los "
+"valores son sensibles a capitalización, por ello asegúrese de que aparecen "
+"exactamente del mismo modo en que se mencionan aquí."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
 msgid "Status Bar is Visible"
@@ -399,8 +398,8 @@ msgid ""
 msgstr ""
 "Especifica cómo deben ajustarse las líneas demasiado largas al imprimir. Use "
 "«none» para no ajustar las líneas, «word» para ajustar en los límites de las "
-"palabras y «char» para ajustar de acuerdo a caracteres individuales. Note "
-"que los valores son sensibles a capitalización, por ello asegúrese de que "
+"palabras y «char» para ajustar de acuerdo a caracteres individuales. Note que "
+"los valores son sensibles a capitalización, por ello asegúrese de que "
 "aparecen exactamente del mismo modo en que se mencionan aquí."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
@@ -466,7 +465,6 @@ msgstr ""
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
-#| msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
@@ -488,7 +486,6 @@ msgstr ""
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
-#| msgid "[ISO-8859-15]"
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-15']"
 
@@ -798,8 +795,8 @@ msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
-"El archivo «%s» se guardó anteriormente usando compresión y ahora se "
-"guardará como texto plano."
+"El archivo «%s» se guardó anteriormente usando compresión y ahora se guardará "
+"como texto plano."
 
 #: ../gedit/gedit-commands-file.c:622
 msgid "_Save As Plain Text"
@@ -943,7 +940,7 @@ msgstr "Se encontró y reemplazó una aparición"
 msgid "\"%s\" not found"
 msgstr "No se encontró «%s»"
 
-#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
+#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Documento no guardado %d"
@@ -3189,7 +3186,7 @@ msgid "Type to search..."
 msgstr "Escriba para buscar…"
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Recortes"
@@ -3264,12 +3261,17 @@ msgstr "Borrar el recorte seleccionado"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
+#| msgid ""
+#| "This is not a valid Tab trigger. Triggers can either contain letters or a "
+#| "single (non-alphanumeric) character like: {, [, etc."
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
-"Este no es un disparador válido. Los disparadores pueden contener letras o "
-"un solo carácter no alfanumérico como {,[, etcétera."
+"Este no es un disparador válido. Los disparadores pueden contener caracteres "
+"alfanuméricos (o _, : y .) o un solo carácter no alfanumérico como {,[, "
+"etcétera."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
