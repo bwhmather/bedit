@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: as\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
 "cgi?product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-08-03 08:38+0000\n"
-"PO-Revision-Date: 2012-08-06 08:52+0530\n"
+"POT-Creation-Date: 2012-08-15 07:45+0000\n"
+"PO-Revision-Date: 2012-08-16 13:25+0530\n"
 "Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
 "Language-Team: as_IN <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -426,7 +426,6 @@ msgstr ""
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
-#| msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
@@ -447,7 +446,6 @@ msgstr ""
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
-#| msgid "[ISO-8859-15]"
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-15']"
 
@@ -850,7 +848,7 @@ msgstr "এবাৰ চিনাক্ত কৰি প্ৰতিস্থা
 msgid "\"%s\" not found"
 msgstr "\"%s\" পোৱা নাযায়"
 
-#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
+#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "অসংৰক্ষিত দস্তাবেজ %d"
@@ -3074,7 +3072,7 @@ msgid "Type to search..."
 msgstr "বিচাৰিবলে টাইপ কৰক..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "স্নিপেটসমূহ"
@@ -3149,12 +3147,17 @@ msgstr "নিৰ্বাচিত স্নিপেট আতৰাওক"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
+#| msgid ""
+#| "This is not a valid Tab trigger. Triggers can either contain letters or a "
+#| "single (non-alphanumeric) character like: {, [, etc."
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
-"ই এটা বৈধ Tab ট্ৰিগাৰ নহয়। ট্ৰিগাৰৰ ক্ষেত্ৰত আখৰ বা কেৱল এটা আলফা-নিউমেৰিক ব্যতীত "
-"আখৰ যেনে {, [, নিচিনা ব্যৱহাৰ কৰা যাব।"
+"ই এটা বৈধ Tab ট্ৰিগাৰ নহয়। ট্ৰিগাৰসমূহে আলফানিউমেৰিক আখৰ যেনে "
+"(অথবা _, : আৰু .) অথবা এটা (নন-আলফানিউমেৰিক) আখৰ যেনে: {, "
+"[, ইত্যাদী অন্তৰ্ভুক্ত কৰিব পাৰে।"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
