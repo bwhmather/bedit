@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "POT-Creation-Date: 2012-06-23 21:37+0000\n"
-"PO-Revision-Date: 2012-07-17 19:38+0200\n"
+"PO-Revision-Date: 2012-07-17 20:36+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: Galician <gnome-l10n-gl@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -112,6 +112,7 @@ msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
 #: C/index.page:21(page/title)
+#, fuzzy
 msgid ""
 "<media type=\"image\" mime=\"image/png\" src=\"figures/gedit-icon.png\"> </"
 "media> gedit Text Editor"
@@ -3965,7 +3966,6 @@ msgid "Undo a recent action"
 msgstr "Desfacer unha acción recente"
 
 #: C/gedit-undo-recent-action.page:25(page/p)
-#, fuzzy
 #| msgid ""
 #| "After you have enabled the plugin, turn-on Multi Edit mode by pressing "
 #| "<keyseq><key>Ctrl</key><key>Shift</key><key>C</key></keyseq>, or clicking "
@@ -3976,11 +3976,7 @@ msgid ""
 "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
 "<guiseq><gui>Edit</gui><gui>Undo</gui></guiseq>. Doing so will cause "
 "<app>gedit</app> to undo one set of similar actions."
-msgstr ""
-"Despois de activar o engadido, active o modo de edición múltiple premendo "
-"<keyseq><key>Ctrl</key><key>Maiús</key><key>C</key></keyseq>, ou premendo "
-"<guiseq><gui>Editar</gui><gui>Modo de edición múltiple</gui></guiseq>. Prema "
-"seleccionar os puntos no ficheiro que quere comezar a editar."
+msgstr "Se tivo un erro ao usar "
 
 #: C/gedit-undo-recent-action.page:30(note/p)
 msgid ""
@@ -3992,7 +3988,7 @@ msgstr ""
 
 #: C/gedit-undo-recent-action.page:35(note/p)
 msgid "You cannot undo a change after you have saved it."
-msgstr ""
+msgstr "Non podes desfacer un cambio despois de gardares."
 
 #: C/gedit-view-open-files-in-sidepane.page:19(page/title)
 msgid "View a list of files in the side pane"

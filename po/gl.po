@@ -1,33 +1,32 @@
-# translation of gedit-master-po-gl-116402.merged.po to Galician
 # Galician translation of gedit.
 # Copyright (C) 1999-2001, 2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
-#
+# Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
+# colaborar connosco, podes atopar máis información en http://www.trasno.net
 # Ruben Lopez Gomez <ryu@mundivia.es>, 1999.
-# Manuel A. FernÃ¡ndez Montecelo <manuel@sindominio.net>, 2001.
+# Manuel A. Fernández Montecelo <manuel@sindominio.net>, 2001.
 # Ignacio Casal Quinteiro <nacho.resa@gmail.com>, 2005, 2006.
 # Ignacio Casal Quinteiro <icq@svn.gnome.org>, 2007, 2008.
 # Mancomún - Centro de Referencia e Servizos de Software Libre <g11n@mancomun.org>, 2009.
 # Suso Baleato <suso.baleato@xunta.es>, 2009.
 # Antón Méixome <meixome@mancomun.org>, 2009.
-# Francisco Diéguez <frandieguez@ubuntu.com>, 2010.
 # Antón Méixome <meixome@certima.net>, 2010.
-# Fran Diéguez <frandieguez@gnome.org>, 2010, 2011.
-# Fran Dieguez <frandieguez@gnome.org>, 2009, 2010, 2011, 2012.
-#
+# Fran Diéguez <frandieguez@gnome.org>, 2009, 2010, 2011, 2012.
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2012.
+# Fran Dieguez <frandieguez@gnome.org>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-master-po-gl-116402.merged\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-03 10:37+0200\n"
-"PO-Revision-Date: 2012-03-06 21:37+0100\n"
+"POT-Creation-Date: 2012-08-17 01:01+0200\n"
+"PO-Revision-Date: 2012-08-17 01:03+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
-"Language-Team: Galician <gnome-l10n-gl@gnome.org>\n"
+"Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.0\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -418,7 +417,7 @@ msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
 "Especifica o tipo de letra para utilizar no corpo do documento cando se "
-"imprimen ficheiros."
+"imprimen documentos."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
 msgid "Header Font for Printing"
@@ -458,9 +457,8 @@ msgstr ""
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
-#, fuzzy
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
-msgstr "[UTF-8,ACTUAL,ISO-8859-15,UTF-16]"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
@@ -480,9 +478,8 @@ msgstr ""
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
-#, fuzzy
 msgid "['ISO-8859-15']"
-msgstr "[ISO-8859-15]"
+msgstr "['ISO-8859-15']"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
@@ -706,7 +703,7 @@ msgstr "XEOMETRÍA"
 #: ../gedit/gedit-command-line.c:302
 msgid "Open files and block process until files are closed"
 msgstr ""
-"Abrir os ficheiros e bloquear os procesos até que se cerren os ficheiros"
+"Abrir os ficheiros e bloquear os procesos até que se pechen os ficheiros"
 
 #: ../gedit/gedit-command-line.c:310
 msgid "Run gedit in the background"
@@ -940,7 +937,7 @@ msgstr "Atopada e substituída unha aparición"
 msgid "\"%s\" not found"
 msgstr "Non se atopou «%s»"
 
-#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
+#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Documento non gardado %d"
@@ -1586,15 +1583,15 @@ msgstr "Non _dividir as palabras en dúas liñas"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:7
 msgid "Highlighting"
-msgstr "Resaltado"
+msgstr "Realce"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:8
 msgid "Highlight current _line"
-msgstr "Resaltar a _liña actual"
+msgstr "Realzar a _liña actual"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:9
 msgid "Highlight matching _brackets"
-msgstr "Resaltar o parén_tese coincidente"
+msgstr "Realzar o parén_tese coincidente"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "View"
@@ -1694,7 +1691,7 @@ msgstr "Preparando…"
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-print-preferences.ui.h:1
 msgid "Syntax Highlighting"
-msgstr "Resaltado de sintaxe"
+msgstr "Realce de sintaxe"
 
 #: ../gedit/gedit-print-preferences.ui.h:2
 msgid "Print synta_x highlighting"
@@ -2253,25 +2250,25 @@ msgid "/ on %s"
 msgstr "/ en %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:546
+#: ../gedit/gedit-view-frame.c:542
 msgid "_Wrap Around"
 msgstr "_Dar a volta"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:556
+#: ../gedit/gedit-view-frame.c:552
 msgid "Match _Entire Word Only"
 msgstr "Coincidir só coa palabra com_pleta"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:566
+#: ../gedit/gedit-view-frame.c:562
 msgid "_Match Case"
 msgstr "Di_ferenciar maiúsculas de minúsculas"
 
-#: ../gedit/gedit-view-frame.c:767
+#: ../gedit/gedit-view-frame.c:759
 msgid "String you want to search for"
 msgstr "A cadea que quere buscar"
 
-#: ../gedit/gedit-view-frame.c:777
+#: ../gedit/gedit-view-frame.c:769
 msgid "Line you want to move the cursor to"
 msgstr "A liña á que quere mover o cursor"
 
@@ -2397,7 +2394,7 @@ msgstr "Pór en maiúsculas a primeira letra de cada palabra seleccionada"
 #. ex:set ts=8 noet:
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
 msgid "Check update"
-msgstr "Estado marcado"
+msgstr "Comprobar actualizacións"
 
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
 msgid "Check for latest version of gedit"
@@ -3189,7 +3186,7 @@ msgid "Type to search..."
 msgstr "Escriba para buscar…"
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Fragmentos"
@@ -3197,7 +3194,7 @@ msgstr "Fragmentos"
 #: ../plugins/snippets/snippets/exporter.py:82
 #, python-format
 msgid "The archive \"%s\" could not be created"
-msgstr "Non foi posíbel crear o ficheiro \"%s\""
+msgstr "Non foi posíbel crear o arquivo \"%s\""
 
 #: ../plugins/snippets/snippets/exporter.py:99
 #, python-format
@@ -3228,7 +3225,7 @@ msgstr "O ficheiro \"%s\" importado non é un ficheiro de fragmentos válido"
 #: ../plugins/snippets/snippets/importer.py:77
 #, python-format
 msgid "The archive \"%s\" could not be extracted"
-msgstr "Non foi posíbel extraer o ficheiro \"%s\""
+msgstr "Non foi posíbel extraer o arquivo \"%s\""
 
 #: ../plugins/snippets/snippets/importer.py:95
 #, python-format
@@ -3265,11 +3262,13 @@ msgstr "Eliminar o fragmento seleccionado"
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
-"Este non é un activador válido. Os activadores poden conter letras ou un só "
-"carácter non alfanumérico, como {, [ etc."
+"Este non é un disparador de Tabulación válido. Os disparadores poden conter "
+"caracteres alfanuméricos (ou _, : e .) ou un só carácter (non alfanumérico) "
+"como: {, [ etc."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
@@ -3359,13 +3358,13 @@ msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
 msgstr ""
-"A execución da orde Python (%s) excedeu o tempo máximo. Cancelouse a "
+"A execución da orde Python (%s) excedeu o tempo máximo. Interrompeuse a "
 "execución."
 
 #: ../plugins/snippets/snippets/placeholder.py:610
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
-msgstr "Produciuse un fallo ao executar a orde Python (%s): %s"
+msgstr "Produciuse un erro ao executar a orde Python (%s): %s"
 
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:2
 msgid "Insert often-used pieces of text in a fast way"
@@ -3573,7 +3572,7 @@ msgstr "Definir o idioma do documento actual"
 
 #: ../plugins/spell/gedit-spell-plugin.c:126
 msgid "_Highlight Misspelled Words"
-msgstr "_Resaltar as palabras mal escritas"
+msgstr "_Realzar as palabras mal escritas"
 
 #: ../plugins/spell/gedit-spell-plugin.c:128
 msgid "Automatically spell-check the current document"
@@ -3753,7 +3752,7 @@ msgstr "Fornecedor de datos Zeitgeist"
 
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
-msgstr "Rexistra o acceso e peche dos documentos usados en gedit"
+msgstr "Rexistra o acceso e saída dos documentos usados en gedit"
 
 #~ msgid "toolbutton1"
 #~ msgstr "botonferramenta1"
