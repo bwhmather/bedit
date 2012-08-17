@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
 "keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-08-03 08:38+0000\n"
-"PO-Revision-Date: 2012-08-05 09:23+0200\n"
+"POT-Creation-Date: 2012-08-15 07:45+0000\n"
+"PO-Revision-Date: 2012-08-17 11:26+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -82,7 +82,8 @@ msgstr "Поставке стила"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
-msgstr "ИД поставке стила Прегледа Гтк извора који се користи за бојење текста."
+msgstr ""
+"ИД поставке стила Прегледа Гтк извора који се користи за бојење текста."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
 msgid "Create Backup Copies"
@@ -196,8 +197,7 @@ msgstr "Приказ бројева редова"
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr ""
-"Да ли програм треба да прикаже бројеве редова у простору за уређивање "
-"текста."
+"Да ли програм треба да прикаже бројеве редова у простору за уређивање текста."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
 msgid "Highlight Current Line"
@@ -249,9 +249,9 @@ msgstr ""
 "Одређује како се курсор помера када се притисну типке ПОЧЕТАК и КРАЈ. "
 "Користите „disabled“ за стално враћање на почетак/крај реда, „after“ за "
 "померање на почетак/крај реда по првом притиску и на почетак/крај текста "
-"занемаријући размаке по другом притиску, „before“ за померање на "
-"почетак/крај текста пре померања на почетак/крај реда и „always“ за померање "
-"на почетак/крај текста уместо на почетак/крај реда."
+"занемаријући размаке по другом притиску, „before“ за померање на почетак/"
+"крај текста пре померања на почетак/крај реда и „always“ за померање на "
+"почетак/крај текста уместо на почетак/крај реда."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
 msgid "Restore Previous Cursor Position"
@@ -429,8 +429,8 @@ msgid ""
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
 "Одређује који ће словни лик бити коришћен за штампање бројева редова. Ово ће "
-"једино имати ефекта уколико опција „Штампање бројева редова“ није "
-"постављена на 0."
+"једино имати ефекта уколико опција „Штампање бројева редова“ није постављена "
+"на 0."
 
 # Ово треба да буде UTF-8,CURRENT,ISO-8859-2 за латинични превод!!!
 #. Translators: This is the sorted list of encodings used by gedit
@@ -531,7 +531,8 @@ msgstr[1] ""
 "Измене у последње %ld секунде ће бити трајно одбачене уколико не сачувате."
 msgstr[2] ""
 "Измене у последњих %ld секунди ће бити трајно одбачене уколико не сачувате."
-msgstr[3] "Измене у последњој секунди ће бити трајно одбачене уколико не сачувате."
+msgstr[3] ""
+"Измене у последњој секунди ће бити трајно одбачене уколико не сачувате."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:423
 msgid ""
@@ -555,7 +556,8 @@ msgstr[1] ""
 msgstr[2] ""
 "Измене у последњем минуту и %ld секунди ће бити трајно одбачене уколико не "
 "сачувате."
-msgstr[3] "Измене у последњем минуту ће бити трајно одбачене уколико не сачувате."
+msgstr[3] ""
+"Измене у последњем минуту ће бити трајно одбачене уколико не сачувате."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:439
 #, c-format
@@ -570,7 +572,8 @@ msgstr[1] ""
 "Измене у последња %ld минута ће бити трајно одбачене уколико не сачувате."
 msgstr[2] ""
 "Измене у последњих %ld минута ће бити трајно одбачене уколико не сачувате."
-msgstr[3] "Измене у последњем минуту ће бити трајно одбачене уколико не сачувате."
+msgstr[3] ""
+"Измене у последњем минуту ће бити трајно одбачене уколико не сачувате."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:454
 msgid "If you don't save, changes from the last hour will be permanently lost."
@@ -594,7 +597,8 @@ msgstr[1] ""
 msgstr[2] ""
 "Измене у последњем часу и %d минута ће бити трајно одбачене уколико не "
 "сачувате."
-msgstr[3] "Измене у последњем часу ће бити трајно одбачене уколико не сачувате."
+msgstr[3] ""
+"Измене у последњем часу ће бити трајно одбачене уколико не сачувате."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:475
 #, c-format
@@ -602,11 +606,14 @@ msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
-msgstr[0] "Измене у последњих %d часа ће бити трајно одбачене уколико не сачувате."
-msgstr[1] "Измене у последња %d часа ће бити трајно одбачене уколико не сачувате."
+msgstr[0] ""
+"Измене у последњих %d часа ће бити трајно одбачене уколико не сачувате."
+msgstr[1] ""
+"Измене у последња %d часа ће бити трајно одбачене уколико не сачувате."
 msgstr[2] ""
 "Измене у последњих %d часова ће бити трајно одбачене уколико не сачувате."
-msgstr[3] "Измене у последњем часу ће бити трајно одбачене уколико не сачувате."
+msgstr[3] ""
+"Измене у последњем часу ће бити трајно одбачене уколико не сачувате."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:519
 #, c-format
@@ -638,8 +645,10 @@ msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] "%d документ има несачуване измене. Да сачувам измене пре затварања?"
-msgstr[1] "%d документа имају несачуване измене. Да сачувам измене пре затварања?"
-msgstr[2] "%d докумената има несачуване измене. Да сачувам измене пре затварања?"
+msgstr[1] ""
+"%d документа имају несачуване измене. Да сачувам измене пре затварања?"
+msgstr[2] ""
+"%d докумената има несачуване измене. Да сачувам измене пре затварања?"
 msgstr[3] "Документ има несачуване измене. Да сачувам измене пре затварања?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:733
@@ -824,7 +833,8 @@ msgstr[1] ""
 "Измене учињене у документу у последње %ld секунде ће бити трајно одбачене."
 msgstr[2] ""
 "Измене учињене у документу у последњих %ld секунди ће бити трајно одбачене."
-msgstr[3] "Измене учињене у документу у последњој секунди ће бити трајно одбачене."
+msgstr[3] ""
+"Измене учињене у документу у последњој секунди ће бити трајно одбачене."
 
 #: ../gedit/gedit-commands-file.c:1236
 msgid ""
@@ -849,7 +859,8 @@ msgstr[1] ""
 msgstr[2] ""
 "Измене учињене у документу у последњем минуту и %ld секунди ће бити трајно "
 "одбачене."
-msgstr[3] "Измене учињене у документу у последњем минуту ће бити трајно одбачене."
+msgstr[3] ""
+"Измене учињене у документу у последњем минуту ће бити трајно одбачене."
 
 #: ../gedit/gedit-commands-file.c:1252
 #, c-format
@@ -864,7 +875,8 @@ msgstr[1] ""
 "Измене учињене у документу у последња %ld минута ће бити трајно одбачене."
 msgstr[2] ""
 "Измене учињене у документу у последњих %ld минута ће бити трајно одбачене."
-msgstr[3] "Измене учињене у документу у последњем минуту ће бити трајно одбачене."
+msgstr[3] ""
+"Измене учињене у документу у последњем минуту ће бити трајно одбачене."
 
 #: ../gedit/gedit-commands-file.c:1267
 msgid "Changes made to the document in the last hour will be permanently lost."
@@ -888,7 +900,8 @@ msgstr[1] ""
 msgstr[2] ""
 "Измене учињене у документу у последњем часу и %d минута ће бити трајно "
 "одбачене."
-msgstr[3] "Измене учињене у документу у последњем часу ће бити трајно одбачене."
+msgstr[3] ""
+"Измене учињене у документу у последњем часу ће бити трајно одбачене."
 
 #: ../gedit/gedit-commands-file.c:1288
 #, c-format
@@ -896,11 +909,14 @@ msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] "Измене учињене у документу у последњем %d часу ће бити трајно одбачене."
-msgstr[1] "Измене учињене у документу у последња %d часа ће бити трајно одбачене."
+msgstr[0] ""
+"Измене учињене у документу у последњем %d часу ће бити трајно одбачене."
+msgstr[1] ""
+"Измене учињене у документу у последња %d часа ће бити трајно одбачене."
 msgstr[2] ""
 "Измене учињене у документу у последњих %d часова ће бити трајно одбачене."
-msgstr[3] "Измене учињене у документу у последњем часу ће бити трајно одбачене."
+msgstr[3] ""
+"Измене учињене у документу у последњем часу ће бити трајно одбачене."
 
 #: ../gedit/gedit-commands-file.c:1314
 msgid "_Revert"
@@ -942,7 +958,7 @@ msgstr "Пронашао сам и заменио једну појаву"
 msgid "\"%s\" not found"
 msgstr "Нисам пронашао „%s“"
 
-#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
+#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Несачуван документ „%d“"
@@ -3097,8 +3113,8 @@ msgid ""
 msgstr ""
 "Вредност одређује које датотеке ће бити филтриране из прегледача датотека. "
 "Подржане вредности су: „none“ (без филтрирања), „hidden“ (филтрирај скривене "
-"датотеке), „binary“ (филтрирај извршне датотеке) и y „hidden-and-binar“ "
-"(филтрирај скривене и извршне датотеке)."
+"датотеке), „binary“ (филтрирај извршне датотеке) и y „hidden-and-"
+"binar“ (филтрирај скривене и извршне датотеке)."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
 msgid "File Browser Filter Pattern"
@@ -3185,7 +3201,7 @@ msgid "Type to search..."
 msgstr "Упишите да потражите..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Исечци"
@@ -3260,12 +3276,17 @@ msgstr "Обришите одабрани исечак"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
+#| msgid ""
+#| "This is not a valid Tab trigger. Triggers can either contain letters or a "
+#| "single (non-alphanumeric) character like: {, [, etc."
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
-"Ово није исправан прекидач за језичак. Прекидачи могу да садрже слова или "
-"једноструке знаке који нису слова ни цифре, попут {, [, итд."
+"Ово није исправан прекидач за језичак. Прекидачи могу да садрже "
+"словно-бројевне знаке (или _ : и .) или једноструке знаке који нису слова ни "
+"цифре, попут {, [, итд."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
