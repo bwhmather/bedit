@@ -6,23 +6,21 @@
 # Ahmad Riza H Nst <ari@160c.afraid.org>, 20040508.
 # Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2011, 2012.
 # Ade Malsasa Akbar <rockmania52@gmail.com>, 2011.
-# Andika Triwidada <andika@gmail.com>, 2011.
+# Andika Triwidada <andika@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-05-17 10:48+0000\n"
-"PO-Revision-Date: 2012-04-05 18:35+0700\n"
-"Last-Translator: Dirgita <dirgitadevina@yahoo.co.id>\n"
-"Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
+"POT-Creation-Date: 2012-08-15 07:45+0000\n"
+"PO-Revision-Date: 2012-08-21 19:21+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"Language-Team: Indonesian <gnome@i15n.org>\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-Language: Indonesian\n"
-"X-Poedit-Country: Indonesia\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Lokalize 1.1\n"
 
@@ -132,8 +130,8 @@ msgstr "Batas \"Tak Jadi\" (Undo) (TIDAK DIPAKAI)"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
 "Jumlah aksi maksimal yang dapat di undo ataupun di redo oleh gedit. Isi "
 "dengan \"-1\" untuk tidak terbatas. Tidak digunakan lagi sejak 2.12.0"
@@ -144,8 +142,8 @@ msgstr "Maksimal Aksi \"Tak Jadi\" (Undo)"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
 msgstr ""
 "Jumlah aksi maksimal yang dapat di undo ataupun di redo oleh gedit. Isi "
 "dengan \"-1\" untuk tidak terbatas."
@@ -436,11 +434,26 @@ msgstr ""
 "Tentukan huruf yang digunakan untuk nomor baris ketika mencetak. Hal ini "
 "hanya akan berakibat jika pilihan \"Cetak Nomor Baris\" tidak nol."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "Encoding Yang Terdeteksi Secara Otomatis"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -450,11 +463,17 @@ msgstr ""
 "mendeteksi encoding berkas secara otomatis. \"CURRENT\" adalah lokal "
 "encoding yang terpakai. Hanya encoding yang dikenali yang akan dipergunakan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "Encoding terlihat di menu"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -462,11 +481,11 @@ msgstr ""
 "Daftar dari encoding yang diperlihatkan dalam menu Pengkodean Karakter pada "
 "pemilih buka/simpan berkas. Hanya pengkodean yang dikenali yang dipergunakan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "Plugin aktif"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -673,13 +692,13 @@ msgstr ""
 #: ../gedit/gedit-commands-file.c:272
 #, c-format
 msgid "Loading file '%s'…"
-msgstr "Memuat berkas '%s'..."
+msgstr "Memuat berkas '%s'…"
 
 #: ../gedit/gedit-commands-file.c:281
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
-msgstr[0] "Memuat %d berkas..."
+msgstr[0] "Memuat %d berkas…"
 
 #. Translators: "Open Files" is the title of the file chooser window
 #: ../gedit/gedit-commands-file.c:446
@@ -695,7 +714,7 @@ msgstr "Berkas \"%s\" hanya dapat dibaca saja."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Apakah Anda ingin menimpa dengan ini?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_Ganti"
 
@@ -736,7 +755,7 @@ msgstr "_Simpan Sebagai Teks Biasa"
 #: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
 #, c-format
 msgid "Saving file '%s'…"
-msgstr "Menyimpan berkas '%s'..."
+msgstr "Menyimpan berkas '%s'…"
 
 #: ../gedit/gedit-commands-file.c:846
 msgid "Save As"
@@ -745,7 +764,7 @@ msgstr "Simpan Sebagai"
 #: ../gedit/gedit-commands-file.c:1173
 #, c-format
 msgid "Reverting the document '%s'…"
-msgstr "Mengembalikan dokumen '%s'..."
+msgstr "Mengembalikan dokumen '%s'…"
 
 #: ../gedit/gedit-commands-file.c:1218
 #, c-format
@@ -827,8 +846,8 @@ msgid "translator-credits"
 msgstr ""
 "Mohammad DAMT <mdamt@gnome.org>\n"
 "Ahmad Riza H Nst <rizahnst@gnome.org>\n"
-"Ade Malsasa Akbar <rockmania52@gmail.com>, 2011.Andika Triwidada "
-"<andika@gmail.com>, 2009, 2010, 2011.\n"
+"Ade Malsasa Akbar <rockmania52@gmail.com>, 2011.\n"
+"Andika Triwidada <andika@gmail.com>, 2009, 2010, 2011, 2012.\n"
 "Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2011."
 
 #: ../gedit/gedit-commands-search.c:112
@@ -1200,7 +1219,7 @@ msgstr "Pilih pengkodean karakter lain dari menu dan coba lagi."
 #: ../gedit/gedit-io-error-info-bar.c:653
 #, c-format
 msgid "Could not open the file %s."
-msgstr "Berkas %s tidak dapat dibuka"
+msgstr "Berkas %s tidak dapat dibuka."
 
 #: ../gedit/gedit-io-error-info-bar.c:712
 #, c-format
@@ -1263,12 +1282,12 @@ msgstr ""
 #: ../gedit/gedit-io-error-info-bar.c:998
 #, c-format
 msgid "Could not create a backup file while saving %s"
-msgstr "Tidak dapat membuat berkas backup ketika menyimpan %s."
+msgstr "Tidak dapat membuat berkas backup ketika menyimpan %s"
 
 #: ../gedit/gedit-io-error-info-bar.c:1003
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
-msgstr "Tidak dapat membuat berkas backup sementara ketika menyimpan %s."
+msgstr "Tidak dapat membuat berkas backup sementara ketika menyimpan %s"
 
 #: ../gedit/gedit-io-error-info-bar.c:1020
 msgid ""
@@ -1711,12 +1730,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Cuplikan halaman pada dokumen yang mau dicetak"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "Ganti"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "G_anti Semua"
 
@@ -1775,7 +1794,7 @@ msgstr[0] "Ada %d tab dengan galat"
 #: ../gedit/gedit-tab.c:734
 #, c-format
 msgid "Reverting %s from %s"
-msgstr "Mengembalikan %s dari %s..."
+msgstr "Mengembalikan %s dari %s"
 
 #: ../gedit/gedit-tab.c:741
 #, c-format
@@ -2128,22 +2147,22 @@ msgstr "Panel _Bawah"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Menampilkan atau menyembunyikan panel bawah pada jendela aplikasi"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Coba periksa pemasangan Anda."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Tidak dapat membuka berkas UI %s. Galat: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Tak bisa temukan objek '%s' di dalam berkas %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ pada %s"
@@ -2251,7 +2270,7 @@ msgstr "Ubah Kapitalisasi"
 
 #: ../plugins/changecase/changecase.plugin.desktop.in.h:2
 msgid "Changes the case of selected text."
-msgstr "Ubah kapitalisasi teks yang dipilih"
+msgstr "Ubah kapitalisasi teks yang dipilih."
 
 #: ../plugins/changecase/gedit-changecase-plugin.c:242
 msgid "C_hange Case"
@@ -2313,7 +2332,7 @@ msgstr "Aba_ikan Versi"
 
 #: ../plugins/checkupdate/gedit-check-update-plugin.c:317
 msgid "There is a new version of gedit"
-msgstr "Ada gedit versi baru "
+msgstr "Ada gedit versi baru"
 
 #: ../plugins/checkupdate/gedit-check-update-plugin.c:321
 msgid ""
@@ -3083,7 +3102,7 @@ msgid "Type to search..."
 msgstr "Ketik untuk mencari..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Snippet"
@@ -3096,7 +3115,7 @@ msgstr "Arsip \"%s\" tidak dapat dibuat"
 #: ../plugins/snippets/snippets/exporter.py:99
 #, python-format
 msgid "Target directory \"%s\" does not exist"
-msgstr "Direktori tujuan \"%s\" tak ada."
+msgstr "Direktori tujuan \"%s\" tak ada"
 
 #: ../plugins/snippets/snippets/exporter.py:102
 #, python-format
@@ -3158,12 +3177,16 @@ msgstr "Hapus snippet terpilih"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
+#| msgid ""
+#| "This is not a valid Tab trigger. Triggers can either contain letters or a "
+#| "single (non-alphanumeric) character like: {, [, etc."
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
-"Ini bukan tab pemicu yang benar. Pemicu bisa berisi huruf atau karakter "
-"tunggal bukan alfanumerik, seperti {, [, dll."
+"Ini bukan pemicu tab yang valid. Pemicu bisa berisi huruf alfanumerik (atau "
+"_, : dan .) atau karakter tunggal bukan alfanumerik, seperti {, [, dll."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
@@ -3474,7 +3497,7 @@ msgstr "Memeriksa ejaan pada dokumen aktif secara otomatis"
 
 #: ../plugins/spell/gedit-spell-plugin.c:810
 msgid "The document is empty."
-msgstr "Dokumen masih kosong"
+msgstr "Dokumen masih kosong."
 
 #: ../plugins/spell/gedit-spell-plugin.c:835
 msgid "No misspelled words"
@@ -3647,4 +3670,3 @@ msgstr "Penyedia data Zeitgeist"
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
 msgstr "Log akses dan kejadian untuk dokumen yang memakai gedit"
-
