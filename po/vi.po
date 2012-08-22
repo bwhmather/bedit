@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2012-08-15 07:45+0000\n"
-"PO-Revision-Date: 2012-08-22 14:38+0700\n"
+"PO-Revision-Date: 2012-08-22 14:40+0700\n"
 "Last-Translator: Nguyễn Thái Ngọc Duy <pclouds@gmail.com>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "Language: vi\n"
@@ -427,10 +427,9 @@ msgstr ""
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
-#, fuzzy
 #| msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
-msgstr "[UTF-8,CURRENT]"
+msgstr "['UTF-8', 'CURRENT', 'UTF-16']"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
@@ -449,10 +448,9 @@ msgstr ""
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
-#, fuzzy
 #| msgid "[ISO-8859-15]"
 msgid "['ISO-8859-15']"
-msgstr "[UTF-8]"
+msgstr "['UTF-8']"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
@@ -3145,7 +3143,6 @@ msgstr "Xóa đoạn đã chọn"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
-#, fuzzy
 #| msgid ""
 #| "This is not a valid Tab trigger. Triggers can either contain letters or a "
 #| "single (non-alphanumeric) character like: {, [, etc."
@@ -3154,8 +3151,9 @@ msgid ""
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
 "[, etc."
 msgstr ""
-"Đây không phải là một cách tạo nên Tab hợp lệ. Cách thực hiện có thể chứa từ "
-"hoặc kí tự đơn (không phải chữ, số) như: {, [  ..."
+"Đây không phải là một cách tạo nên Tab hợp lệ. Cách thực hiện có thể chứa "
+"nhiều chữ hoặc số (hoặc _, : và .) hoặc một ký tự đơn (không phải chữ hoặc "
+"số) như: {, [..."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
