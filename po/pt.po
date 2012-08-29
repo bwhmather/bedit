@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.4\n"
+"Project-Id-Version: 3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-17 00:30+0000\n"
-"PO-Revision-Date: 2012-03-17 00:35+0000\n"
+"POT-Creation-Date: 2012-08-29 01:12+0100\n"
+"PO-Revision-Date: 2012-08-29 01:15+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "Language: pt\n"
@@ -289,7 +289,8 @@ msgstr "Garantir Quebra de Linha no Final"
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
-"Se o gedit deverá ou não garantir que os documentos terminam sempre com uma quebra de linha."
+"Se o gedit deverá ou não garantir que os documentos terminam sempre com uma "
+"quebra de linha."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
 msgid "Toolbar is Visible"
@@ -431,11 +432,26 @@ msgstr ""
 "Especifica a fonte a utilizar para números de linhas ao imprimir. Apenas "
 "terá efeito se a opção \"Print Line Numbers\" for diferente de zero."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'ISO-8859-1', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "Codificações Detectadas Automaticamente"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -446,11 +462,17 @@ msgstr ""
 "configuração regional actual. Apenas são utilizadas codificações "
 "reconhecidas."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "Codificações apresentadas no menu"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -459,11 +481,11 @@ msgstr ""
 "selector de abrir/gravar ficheiros. Apenas são utilizadas codificações "
 "reconhecidas."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "Plugins activos"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -727,7 +749,7 @@ msgstr "O ficheiro \"%s\" é apenas de leitura."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Deseja tentar substituí-lo pelo que está a gravar?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "Substitui_r"
 
@@ -1770,12 +1792,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Uma antevisão da página no documento a ser impresso"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "Substituir"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "Substituir Tod_as"
 
@@ -2188,46 +2210,46 @@ msgstr "Painel _Inferior"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Apresentar ou esconder o painel inferior na janela actual"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Verifique a sua instalação."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Incapaz de abrir o ficheiro de interface %s. Erro: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Incapaz de encontrar o objecto '%s' dentro do ficheiro %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ em %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:546
+#: ../gedit/gedit-view-frame.c:542
 msgid "_Wrap Around"
 msgstr "_Dar a Volta"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:556
+#: ../gedit/gedit-view-frame.c:552
 msgid "Match _Entire Word Only"
 msgstr "_Equivaler Apenas a Palavra Completa"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:566
+#: ../gedit/gedit-view-frame.c:562
 msgid "_Match Case"
 msgstr "E_quivaler a Capitalização"
 
-#: ../gedit/gedit-view-frame.c:767
+#: ../gedit/gedit-view-frame.c:759
 msgid "String you want to search for"
 msgstr "Expressão que deseja procurar"
 
-#: ../gedit/gedit-view-frame.c:777
+#: ../gedit/gedit-view-frame.c:769
 msgid "Line you want to move the cursor to"
 msgstr "Linha para onde deseja mover o cursor"
 
@@ -3144,7 +3166,7 @@ msgid "Type to search..."
 msgstr "Tipo a procurar..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Pedaços"
@@ -3220,11 +3242,13 @@ msgstr "Apagar o pedaço seleccionado"
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
 "Este não é um despoletador de Tabulador válido. Despoletadores podem conter "
-"letras ou um único caracter (não alfanumérico) tal como: {, [, etc."
+"caracteres alfanuméricos (ou _,: e .) ou um único caracter (não alfanumérico) "
+"tal como: {, [, etc."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
@@ -3787,12 +3811,6 @@ msgstr "Regista o acesso e fecho de documentos utilizando o gedit"
 #~ msgstr ""
 #~ "Se o painel inferior no fundo das janelas de edição deverá ou não ser "
 #~ "visível."
-
-#~ msgid "[ISO-8859-15]"
-#~ msgstr "[ISO-8859-15]"
-
-#~ msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
-#~ msgstr "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
 
 #~ msgid "Automatic Indentation"
 #~ msgstr "Indentação Automática"
