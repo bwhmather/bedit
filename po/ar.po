@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-08 09:05+0200\n"
-"PO-Revision-Date: 2012-08-08 09:09+0200\n"
+"POT-Creation-Date: 2012-09-05 07:20+0200\n"
+"PO-Revision-Date: 2012-09-05 07:20+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -927,7 +927,7 @@ msgstr "تمّ إيجاد واستبدال حدوث واحد"
 msgid "\"%s\" not found"
 msgstr "‏\"%s\" غير موجود"
 
-#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
+#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "مستند غير محفوظ %Id"
@@ -2215,25 +2215,25 @@ msgid "/ on %s"
 msgstr "/ على %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:546
+#: ../gedit/gedit-view-frame.c:542
 msgid "_Wrap Around"
 msgstr "_لف حول"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:556
+#: ../gedit/gedit-view-frame.c:552
 msgid "Match _Entire Word Only"
 msgstr "طابِق _كل الكلمة فقط"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:566
+#: ../gedit/gedit-view-frame.c:562
 msgid "_Match Case"
 msgstr "_طابِق الحالة"
 
-#: ../gedit/gedit-view-frame.c:767
+#: ../gedit/gedit-view-frame.c:759
 msgid "String you want to search for"
 msgstr "السلسة التي تريد البحث عنها"
 
-#: ../gedit/gedit-view-frame.c:777
+#: ../gedit/gedit-view-frame.c:769
 msgid "Line you want to move the cursor to"
 msgstr "السطر الذي تريد تحريك المؤشّر إليه"
 
@@ -3135,7 +3135,7 @@ msgid "Type to search..."
 msgstr "اكتب لتبحث..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "قصاصات"
@@ -3211,8 +3211,9 @@ msgstr "احذف القصاصات المختارة"
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
 "هذا ليس مولد تبويبات سليم. لا يمكن للمولدات إلا أن تحوي حروفا أو رمزا منفردا "
 "غير أبجدي عددي، مثل } و ] إلخ."
