@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-27 11:55+0530\n"
-"PO-Revision-Date: 2012-02-27 12:00+0530\n"
+"POT-Creation-Date: 2012-09-05 21:40+0530\n"
+"PO-Revision-Date: 2012-09-05 21:43+0530\n"
 "Last-Translator: Dr.T.Vasudevan <agnihot3@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -35,15 +35,23 @@ msgstr ""
 msgid "Edit text files"
 msgstr "உரை கோப்புகளை திருத்தவும் "
 
-#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:791
+#: ../data/gedit.desktop.in.in.h:2
+msgid "Open a New Document"
+msgstr "ஒரு புதிய ஆவணத்தை திற"
+
+#: ../data/gedit.desktop.in.in.h:3
+msgid "Open a New Window"
+msgstr "புதிய சாளரத்தை திற"
+
+#: ../data/gedit.desktop.in.in.h:4 ../gedit/gedit-print-job.c:791
 msgid "Text Editor"
 msgstr "உரை திருத்தி "
 
-#: ../data/gedit.desktop.in.in.h:3
+#: ../data/gedit.desktop.in.in.h:5
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/gedit.desktop.in.in.h:4
+#: ../data/gedit.desktop.in.in.h:6
 msgid "gedit Text Editor"
 msgstr "gedit உரை திருத்தி "
 
@@ -448,7 +456,28 @@ msgstr ""
 "கணினியின் இயல்பான எழுத்துரு அளவில் உங்கள் எழுத்துருக்கள் இருக்க வேண்டுமா. இந்த தேர்வை "
 "நீக்கினால் \"எழுத்துருவை திருத்து\" தேர்வின் மூலம் நீங்கள் தேர்வு செய்தவைகளை பயன்படுத்தும்"
 
-#: ../gedit/gedit-app.c:224
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:77
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../gedit/gedit-app.c:222
 msgid "There was an error displaying the help."
 msgstr "உதவியை காட்டுவதில் பிழை."
 
@@ -685,7 +714,7 @@ msgstr "கோப்பு \"%s\" வாசிப்புக்கு மட்
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "நீங்கள் சேமிக்கும் ஒன்றால் அதனை மாற்ற விரும்புகிறீர்களா? "
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_R இடமாற்று"
 
@@ -839,11 +868,11 @@ msgid "Unsaved Document %d"
 msgstr "சேமிக்கப்படாத ஆவணம் %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2396 ../gedit/gedit-window.c:2403
+#: ../gedit/gedit-window.c:2397 ../gedit/gedit-window.c:2404
 msgid "Read-Only"
 msgstr "வாசிக்க மட்டும்"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3845
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3846
 msgid "Documents"
 msgstr "ஆவணங்கள்"
 
@@ -1684,12 +1713,12 @@ msgstr "பக்க முன்பார்வை"
 msgid "The preview of a page in the document to be printed"
 msgstr "ஆவணத்திலுள்ள அச்சிடப்பட வேண்டிய பக்கத்தின் முன்பார்வை "
 
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:2
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:2
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "இடமாற்று"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "_A அனைத்தையும் மாற்று"
 
@@ -2103,46 +2132,46 @@ msgstr "_B கீழ் பலகம் "
 msgid "Show or hide the bottom panel in the current window"
 msgstr "நடப்பு சாளரத்தின் கீழே உள்ள பலகத்தினை காட்டவும் அல்லது மறைக்கவும்"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "உங்கள் நிறுவலை சரிபார்க்கவும்."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "ui கோப்பு %sஐ திறக்க முடியவில்லை. பிழை: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "பொருள் '%s'ஐ கோப்பு %s உள்ளே காண முடியவில்லை."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ on %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:546
+#: ../gedit/gedit-view-frame.c:542
 msgid "_Wrap Around"
 msgstr "_W மடிந்து வருதல்"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:556
+#: ../gedit/gedit-view-frame.c:552
 msgid "Match _Entire Word Only"
 msgstr "_E முழு சொல்லை மட்டும் ஒப்பிடு "
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:566
+#: ../gedit/gedit-view-frame.c:562
 msgid "_Match Case"
 msgstr "_M நிலைப் பொருத்தம்"
 
-#: ../gedit/gedit-view-frame.c:767
+#: ../gedit/gedit-view-frame.c:759
 msgid "String you want to search for"
 msgstr "தேட வேண்டிய சரம்"
 
-#: ../gedit/gedit-view-frame.c:777
+#: ../gedit/gedit-view-frame.c:769
 msgid "Line you want to move the cursor to"
 msgstr "நிலைகாட்டியை நகர்த்த வேண்டிய வரி"
 
@@ -2154,7 +2183,7 @@ msgstr "%s சிறப்புச் சுட்டு வகையைப் 
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2090
+#: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
 #: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:450
 #: ../plugins/externaltools/tools/manager.py:561
@@ -2193,28 +2222,28 @@ msgid "Find"
 msgstr "தேடு"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1714
+#: ../gedit/gedit-window.c:1715
 #, c-format
 msgid "Activate '%s'"
 msgstr "%s ஐ தூண்டு செய்க"
 
-#: ../gedit/gedit-window.c:2071
+#: ../gedit/gedit-window.c:2072
 msgid "Use Spaces"
 msgstr "இடைவெளிகளை பயன்படுத்து"
 
-#: ../gedit/gedit-window.c:2144
+#: ../gedit/gedit-window.c:2145
 msgid "Tab Width"
 msgstr "தத்தல் அகலம்"
 
-#: ../gedit/gedit-window.c:2253
+#: ../gedit/gedit-window.c:2254
 msgid "Bracket match is out of range"
 msgstr "அடைப்புக்குறி ஒப்பீடு வரையறை தாண்டியுள்ளது"
 
-#: ../gedit/gedit-window.c:2258
+#: ../gedit/gedit-window.c:2259
 msgid "Bracket match not found"
 msgstr "அடைப்புக்குறி ஒப்பீடு ஏதும் காணப்படவில்லை"
 
-#: ../gedit/gedit-window.c:2263
+#: ../gedit/gedit-window.c:2264
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "அடைப்புக்குறி ஒப்பீடு இந்த வரியில் காணப்பட்டது: %d"
@@ -2330,11 +2359,9 @@ msgstr "தற்போதைய ஆவணத்தின் புள்ளி 
 
 #. ex:set ts=8 noet:
 #. ex:ts=4:et:
-#. ex:ts=8:noet:
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:1
 #: ../plugins/externaltools/tools/tools.ui.h:1
 #: ../plugins/snippets/snippets/snippets.ui.h:1
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:1
 msgid "    "
 msgstr "    "
 
@@ -2763,131 +2790,131 @@ msgstr ""
 "புதிய அடைவு தற்போது வடிகட்டப்பட்டது. அடைவைப் பார்க்க நீங்கள் வடிகட்டி அமைப்பை மாற்ற "
 "வேண்டும்."
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:734
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:733
 msgid "Bookmarks"
 msgstr "புத்தகக்குறிகள்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:822
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:821
 msgid "_Filter"
 msgstr "_வடிப்பி"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:827
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:826
 msgid "_Move to Trash"
 msgstr "_M குப்பை தொட்டிக்கு நகர்த்தவும் "
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:828
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:827
 msgid "Move selected file or folder to trash"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு அல்லது அடைவினை குப்பை தொட்டிக்கு நகர்த்தவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:830
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:829
 msgid "_Delete"
 msgstr "_D அழி"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:831
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:830
 msgid "Delete selected file or folder"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு அல்லது அடைவினை அழிக்கவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:838
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:837
 msgid "Open selected file"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பினை திறக்கவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:844
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:843
 msgid "Up"
 msgstr "மேல்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:845
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:844
 msgid "Open the parent folder"
 msgstr "மூல அடைவினை திறக்கவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:850
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:849
 msgid "_New Folder"
 msgstr "_N புதிய அடைவு"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:851
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:850
 msgid "Add new empty folder"
 msgstr "புதிய வெற்று கோப்பினை சேர்க்கவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:853
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:852
 msgid "New F_ile"
 msgstr "_i புதிய கோப்பு "
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:854
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:853
 msgid "Add new empty file"
 msgstr "புதிய வெற்று கோப்பினை சேர்க்கவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:859
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:858
 msgid "_Rename"
 msgstr "_R பெயர் மாற்று"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:860
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:859
 msgid "Rename selected file or folder"
 msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு அல்லது அடைவின் பெயரை மாற்றவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:866
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:865
 msgid "_Previous Location"
 msgstr "_P முந்தைய இடம் "
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:868
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:867
 msgid "Go to the previous visited location"
 msgstr "முந்தைய பார்வையிட்ட இடத்திற்கு செல்லவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:870
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:869
 msgid "_Next Location"
 msgstr "_N அடுத்த இடம் "
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:871
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:870
 msgid "Go to the next visited location"
 msgstr "அடுத்து பார்வையிட்ட இடத்திற்கு செல்லவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:872
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:871
 msgid "Re_fresh View"
 msgstr "_f பார்வையை புதுப்பிக்கவும் "
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:873
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:872
 msgid "Refresh the view"
 msgstr "பார்வையை புதுப்பிக்கவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:874
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:892
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:873
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:891
 msgid "_View Folder"
 msgstr "_V அடைவை காட்டுக"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:875
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:893
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:874
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:892
 msgid "View folder in file manager"
 msgstr "கோப்பு மேலாளரில் அடைவினை பார்க்கவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:882
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:881
 msgid "Show _Hidden"
 msgstr "_H மறைவானதை காட்டவும் "
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:883
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:882
 msgid "Show hidden files and folders"
 msgstr "மறைவான கோப்புகள் மற்றும் அடைவுகளை காட்டவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:885
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:884
 msgid "Show _Binary"
 msgstr "_B இருமத்தை காட்டவும் "
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:886
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:885
 msgid "Show binary files"
 msgstr "இரும கோப்புகளை காட்டவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1207
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1202
 msgid "Match Filename"
 msgstr "கோப்புப் பெயரை பொருத்தவும்"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2009
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2004
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "ஏற்றப்பட்ட தொகுதியில் ஏற்றும் பொருள் இல்லை: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2086
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2081
 #, c-format
 msgid "Could not open media: %s"
 msgstr "ஊடகத்தை திறக்க முடியவில்லை: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2133
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2128
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "தொகுதியை ஏற்ற முடியவில்லை: %s"
@@ -3052,7 +3079,7 @@ msgstr "கோப்பை விரைவாக திறக்கவும்"
 msgid "Type to search..."
 msgstr "தேட உள்ளிடு..."
 
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:2
 msgid "Snippets"
 msgstr "கத்தரிப்புகள்"
@@ -3128,10 +3155,12 @@ msgstr "தேர்வு செய்த உரை துண்டை நீ�
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
-"இது செல்லுபடியாகும் கீற்று விசை அல்ல. விசைகள் வெறும் எழுத்தாகவோ அல்லது {, [,  போல ஒரே "
+"இது செல்லுபடியாகும் கீற்று விசை அல்ல. விசைகள் வெறும் எழுத்தாகவோ (அல்லது _, : மற்றும்.) அல்லது "
+"{, [,  போல ஒரே "
 "ஒரு குறியீடாகவோ இருக்கலாம்."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
@@ -3341,7 +3370,7 @@ msgstr "ஆவணத்தை அல்லது தேர்வுசெய்�
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: ../plugins/spell/gedit-automatic-spell-checker.c:420
-#: ../plugins/spell/gedit-spell-checker-dialog.c:458
+#: ../plugins/spell/gedit-spell-checker-dialog.c:444
 msgid "(no suggested words)"
 msgstr "(பரிந்துரைக்க வார்த்தைகள் இல்லை)"
 
@@ -3363,20 +3392,20 @@ msgstr "_A சேர்"
 msgid "_Spelling Suggestions..."
 msgstr "_S எழுத்துக் கூட்டல் பரிந்துரைகள்"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:278
+#: ../plugins/spell/gedit-spell-checker-dialog.c:264
 msgid "Check Spelling"
 msgstr "எழுத்துக் கோவை சரிபார்ப்பு"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:289
+#: ../plugins/spell/gedit-spell-checker-dialog.c:275
 msgid "Suggestions"
 msgstr "யோசனைகள்"
 
 #. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: ../plugins/spell/gedit-spell-checker-dialog.c:565
+#: ../plugins/spell/gedit-spell-checker-dialog.c:551
 msgid "(correct spelling)"
 msgstr "(சரியான எழுத்துக் கோவை)"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:706
+#: ../plugins/spell/gedit-spell-checker-dialog.c:692
 msgid "Completed spell checking"
 msgstr "எழுத்துக் கோவை சரிபார்ப்பு முடிந்தது"
 
@@ -3408,12 +3437,12 @@ msgctxt "language"
 msgid "Default"
 msgstr "முன்னிருப்பு"
 
-#: ../plugins/spell/gedit-spell-language-dialog.c:142
+#: ../plugins/spell/gedit-spell-language-dialog.c:140
 #: ../plugins/spell/languages-dialog.ui.h:2
 msgid "Set language"
 msgstr "மொழியை அமைக்கவும்"
 
-#: ../plugins/spell/gedit-spell-language-dialog.c:196
+#: ../plugins/spell/gedit-spell-language-dialog.c:182
 msgid "Languages"
 msgstr "மொழிகள்"
 
@@ -3518,16 +3547,17 @@ msgstr "இந்த ஆவண சொற்களின் எழுத்து
 msgid "Spell Checker"
 msgstr "சொல் திருத்தி "
 
+#. ex:ts=8:noet:
 #. Translators: Use the more common date format in your locale
 #: ../plugins/time/gedit-time-dialog.ui.h:2
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
 #, no-c-format
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
 #: ../plugins/time/gedit-time-dialog.ui.h:3
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:6
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
 msgid "01/11/2009 17:52:00"
 msgstr "01/11/2009 17:52:00"
 
@@ -3536,7 +3566,7 @@ msgid "Insert Date and Time"
 msgstr "தேதியையும் நேரத்தையும் சொருகவும்"
 
 #: ../plugins/time/gedit-time-dialog.ui.h:5
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:8
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:7
 msgid "Use the _selected format"
 msgstr "_s தேர்வுசெய்த வடிவமைப்பை பயன்படுத்துக"
 
@@ -3545,7 +3575,7 @@ msgid "_Insert"
 msgstr "_I நுழைக்க"
 
 #: ../plugins/time/gedit-time-dialog.ui.h:7
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:11
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:10
 msgid "_Use custom format"
 msgstr "_U தனிப்பயன் வடிவத்தை பயன்படுத்து"
 
@@ -3561,15 +3591,15 @@ msgstr "தற்போதைய தேதியையும் நேரத்�
 msgid "Available formats"
 msgstr "புழங்கக்கூடிய வடிவங்கள்"
 
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:7
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:6
 msgid "Configure date/time plugin"
 msgstr "தேதி/நேரம் சொருகியை வடிவமைக்கவும்..."
 
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:9
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:8
 msgid "When inserting date/time..."
 msgstr "தேதி/நேரம் உள்சொருகும்பொழுது..."
 
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:10
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:9
 msgid "_Prompt for a format"
 msgstr "_P வடிவத்திற்காக நினைவுபடுத்தவும்"
 
@@ -3696,12 +3726,6 @@ msgstr "செய்ட்கீஸ்ட் தரவு கொடுபோர�
 #~ "Whether the bottom panel at the bottom of editing windows should be "
 #~ "visible."
 #~ msgstr "திருத்தும் சாளரத்தின் கீழ் உள்ள சட்டம் காட்டப்பட வேண்டுமா"
-
-#~ msgid "[ISO-8859-15]"
-#~ msgstr "[ISO-8859-15]"
-
-#~ msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
-#~ msgstr "[UTF-8,CURRENT,ISO-8859-15]"
 
 #~ msgid "Automatic Indentation"
 #~ msgstr "தானியக்க உள்ளடக்கம்"
