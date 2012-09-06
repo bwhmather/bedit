@@ -5,7 +5,7 @@
 # Supakorn Siddhichai <supakorn.siddhichai@nectec.or.th>, 2003, 2004.
 # Supranee Thirawatthanasuk <supranee@opentle.org>, 2004.
 # Chanchai Junlouchai <taz@opentle.org>, 2004.
-# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2004-2010.
+# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2004-2010, 2012.
 # Kittiphong Meesawat <ktphong@yahoo.com>, 2010.
 # Akom Chotiphantawanon <knight2000@gmail.com>, 2009, 2011-2012.
 #
@@ -14,14 +14,14 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-27 04:03+0000\n"
-"PO-Revision-Date: 2012-03-31 12:59+0700\n"
-"Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
+"POT-Creation-Date: 2012-08-15 07:45+0000\n"
+"PO-Revision-Date: 2012-09-06 22:01+0700\n"
+"Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: th\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Language: Thai\n"
 "X-Poedit-Country: THAILAND\n"
@@ -125,8 +125,8 @@ msgstr "จำนวนจำกัดของการเรียกคืน
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
 "จำนวนครั้งสูงสุดของการปฏิบัติการที่ gedit จะสามารถเรียกคืนการทำหรือทำซ้ำได้  ใช้ค่า \"-1\" "
 "จะหมายถึงไม่จำกัดจำนวน  คีย์นี้เลิกใช้แล้วตั้งแต่รุ่น 2.12.0"
@@ -137,8 +137,8 @@ msgstr "จำนวนปฏิบัติการสูงสุดของ
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
 msgstr ""
 "จำนวนครั้งสูงสุดของการปฏิบัติการที่ gedit จะสามารถเรียกคืนการทำหรือทำซ้ำได้  ใช้ค่า \"-1\" "
 "จะหมายถึงไม่จำกัดจำนวน"
@@ -407,11 +407,26 @@ msgstr ""
 "เลือกแบบอักษรสำหรับส่วนของเลขบรรทัดที่จะใช้สำหรับเวลาพิมพ์ มีผลใช้เมื่อ \"พิมพ์เลขบรรทัด\" "
 "ไม่มีค่าเป็นศูนย์"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'TIS-620', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "รหัสอักขระที่จะตรวจหาโดยอัตโนมัติ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -420,11 +435,17 @@ msgstr ""
 "ลำดับของรหัสอักขระที่ gedit ใช้ตรวจสอบรหัสอักขระของแฟ้มโดยอัตโนมัติ ค่า \"CURRENT\" "
 "ใช้แทนรหัสตามข้อกำหนดท้องถิ่นในขณะนั้น gedit จะใช้เฉพาะรหัสที่รู้จักเท่านั้น"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['TIS-620']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "การเข้ารหัสที่แสดงบนเมนู"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -432,11 +453,11 @@ msgstr ""
 "รายชื่อรหัสอักขระที่จะแสดงในเมนูรหัสอักขระของกล่องเปิด/บันทึกแฟ้ม gedit "
 "จะแสดงเฉพาะรหัสที่รู้จักเท่านั้น"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "ปลั๊กอินที่เปิดใช้"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -657,7 +678,7 @@ msgstr "แฟ้ม \"%s\" อ่านได้อย่างเดียว"
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "คุณต้องการพยายามเขียนทับแฟ้มดังกล่าวด้วยข้อมูลที่กำลังจะบันทึกนี้หรือไม่?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "แ_ทนที่"
 
@@ -1638,12 +1659,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "ตัวอย่างของหน้าเอกสารที่จะสั่งพิมพ์"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "แทนที่"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "แทนที่ทั้งห_มด"
 
@@ -2055,22 +2076,22 @@ msgstr "ช่องด้าน_ล่าง"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "ซ่อนหรือแสดงช่องด้านล่างในหน้าต่างปัจจุบัน"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "กรุณาตรวจสอบว่าคุณติดตั้งโปรแกรมถูกต้องหรือไม่"
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "ไม่สามารถเปิดแฟ้มส่วนติดต่อผู้ใช้ %s ข้อผิดพลาด: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "หาอ็อบเจกต์ '%s' ภายในแฟ้ม %s ไม่พบ"
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ ที่ %s"
@@ -2995,7 +3016,7 @@ msgid "Type to search..."
 msgstr "พิมพ์เพื่อค้นหา..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "ข้อความสั้น"
@@ -3071,11 +3092,12 @@ msgstr "ลบข้อความสั้นที่เลือก"
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
-"ข้อความนี้ไม่ใช่ตัวย่อสะกิดด้วยแท็บที่ใช้ได้ ข้อความที่สะกิดได้ อาจเป็นตัวอักษรหลายตัว หรืออักษรเดี่ยวๆ "
-"ที่ไม่ใช่พยัญชนะหรือตัวเลข เช่น {, [ เป็นต้น"
+"ข้อความนี้ไม่ใช่ตัวย่อสะกิดด้วยแท็บที่ใช้ได้ ข้อความที่สะกิดได้ อาจเป็นพยัญชนะหรือตัวเลขหลายตัว (หรือ "
+"_, : และ .) หรืออักขระเดี่ยวๆ ที่ไม่ใช่พยัญชนะหรือตัวเลข เช่น {, [ เป็นต้น"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
@@ -3587,18 +3609,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ "รายการ VFS scheme ที่ gedit สนับสนุนการเขียน โดย scheme 'file' "
 #~ "ถือว่าเขียนได้โดยปริยาย"
 
-#~ msgid "Monospace 12"
-#~ msgstr "Monospace 12"
-
-#~ msgid "Monospace 9"
-#~ msgstr "Monospace 9"
-
-#~ msgid "Sans 11"
-#~ msgstr "Sans 11"
-
-#~ msgid "Sans 8"
-#~ msgstr "Sans 8"
-
 #~ msgid ""
 #~ "Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM"
 #~ "\" to use the system's default style, \"GEDIT_TOOLBAR_ICONS\" to display "
@@ -3628,12 +3638,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgid "Writable VFS schemes"
 #~ msgstr "VFS scheme ที่เขียนได้"
 
-#~ msgid "[ISO-8859-15]"
-#~ msgstr "[TIS-620]"
-
-#~ msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
-#~ msgstr "[UTF-8,CURRENT,TIS-620,UTF-16]"
-
 #~ msgid "Automatic Indentation"
 #~ msgstr "ร่นบรรทัดอัตโนมัติ"
 
@@ -3645,9 +3649,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 
 #~ msgid "_Right margin at column:"
 #~ msgstr "กั้นขวาเริ่มจาก_คอลัมน์ที่:"
-
-#~ msgid "[FILE...]"
-#~ msgstr "[FILE...]"
 
 #~ msgid "Plugin"
 #~ msgstr "ปลั๊กอิน"
@@ -4003,9 +4004,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgid "Generic span"
 #~ msgstr "span"
 
-#~ msgid "HREF URI"
-#~ msgstr "HREF URI"
-
 #~ msgid "HTML - Special Characters"
 #~ msgstr "HTML - อักขระพิเศษ"
 
@@ -4026,21 +4024,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 
 #~ msgid "Heading 1"
 #~ msgstr "หัวเรื่อง 1"
-
-#~ msgid "Heading 2"
-#~ msgstr "หัวเรื่อง 2"
-
-#~ msgid "Heading 3"
-#~ msgstr "หัวเรื่อง 3"
-
-#~ msgid "Heading 4"
-#~ msgstr "หัวเรื่อง 4"
-
-#~ msgid "Heading 5"
-#~ msgstr "หัวเรื่อง 5"
-
-#~ msgid "Heading 6"
-#~ msgstr "หัวเรื่อง 6"
 
 #~ msgid "Height"
 #~ msgstr "ความสูง"
@@ -4219,60 +4202,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgid "Offset for alignment character"
 #~ msgstr "ตำแหน่งของอักขระสำหรับจัดเรียงแนว"
 
-#~ msgid "OnBlur event"
-#~ msgstr "เหตุการณ์ OnBlur"
-
-#~ msgid "OnChange event"
-#~ msgstr "เหตุการณ์ OnChange"
-
-#~ msgid "OnClick event"
-#~ msgstr "เหตุการณ์ OnClick"
-
-#~ msgid "OnDblClick event"
-#~ msgstr "เหตุการณ์ OnDblClick"
-
-#~ msgid "OnFocus event"
-#~ msgstr "เหตุการณ์ OnFocus"
-
-#~ msgid "OnKeyDown event"
-#~ msgstr "เหตุการณ์ OnKeyDown"
-
-#~ msgid "OnKeyPress event"
-#~ msgstr "เหตุการณ์ OnKeyPress"
-
-#~ msgid "OnKeyUp event"
-#~ msgstr "เหตุการณ์ OnKeyUp"
-
-#~ msgid "OnLoad event"
-#~ msgstr "เหตุการณ์ OnLoad"
-
-#~ msgid "OnMouseDown event"
-#~ msgstr "เหตุการณ์ OnMouseDown"
-
-#~ msgid "OnMouseMove event"
-#~ msgstr "เหตุการณ์ OnMouseMove"
-
-#~ msgid "OnMouseOut event"
-#~ msgstr "เหตุการณ์ OnMouseOut"
-
-#~ msgid "OnMouseOver event"
-#~ msgstr "เหตุการณ์ OnMouseOver"
-
-#~ msgid "OnMouseUp event"
-#~ msgstr "เหตุการณ์ OnMouseUp"
-
-#~ msgid "OnReset event"
-#~ msgstr "เหตุการณ์ OnReset"
-
-#~ msgid "OnSelect event"
-#~ msgstr "เหตุการณ์ OnSelect"
-
-#~ msgid "OnSubmit event"
-#~ msgstr "เหตุการณ์ OnSubmit"
-
-#~ msgid "OnUnload event"
-#~ msgstr "เหตุการณ์ OnUnload"
-
 #~ msgid "Option group"
 #~ msgstr "กลุ่มตัวเลือก"
 
@@ -4387,9 +4316,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgid "Spacing within cells"
 #~ msgstr "ช่องไฟภายในช่องตาราง"
 
-#~ msgid "Span"
-#~ msgstr "Span"
-
 #~ msgid "Square root"
 #~ msgstr "รากที่สอง"
 
@@ -4494,9 +4420,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 
 #~ msgid "Top margin in pixels"
 #~ msgstr "ระยะเว้นขอบบนเป็นพิกเซล"
-
-#~ msgid "URL"
-#~ msgstr "URL"
 
 #~ msgid "Underlined text style"
 #~ msgstr "ตัวขีดเส้นใต้"
@@ -4814,9 +4737,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgid "<b>Syntax Highlighting</b>"
 #~ msgstr "<b>การเน้นไวยากรณ์</b>"
 
-#~ msgid "0"
-#~ msgstr "0"
-
 #~ msgid "<span weight=\"bold\">File Name</span>"
 #~ msgstr "<span weight=\"bold\">ชื่อแฟ้ม</span>"
 
@@ -4835,9 +4755,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgid "Indents or un-indents selected lines."
 #~ msgstr "ร่นบรรทัดที่เลือกเข้าหรือออก"
 
-#~ msgid "*"
-#~ msgstr "*"
-
 #~ msgid "<b>Language</b>"
 #~ msgstr "<b>ภาษา</b>"
 
@@ -4846,9 +4763,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 
 #~ msgid "HttP header name"
 #~ msgstr "ชื่อข้อมูลส่วนหัว HTTP"
-
-#~ msgid "<span size=\"small\">01/11/2002 17:52:00</span>"
-#~ msgstr "<span size=\"small\">01/11/2002 17:52:00</span>"
 
 #~ msgid "<span weight=\"bold\"> When inserting date/time...</span>"
 #~ msgstr "<span weight=\"bold\"> เวลาเมื่อกำลังแทรกค่าวันที่และเวลา...</span>"
@@ -5035,12 +4949,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgid "The entered location is not valid."
 #~ msgstr "ตำแหน่งที่ระบุ ไม่สามารถใช้งานได้"
 
-#~ msgid "gtk-revert-to-saved"
-#~ msgstr "gtk-revert-to-saved"
-
-#~ msgid "on"
-#~ msgstr "ที่"
-
 #~ msgid "Invalid uri"
 #~ msgstr "URI ไม่ถูกต้อง"
 
@@ -5206,9 +5114,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgid "Space"
 #~ msgstr "ช่องว่าง"
 
-#~ msgid "F7"
-#~ msgstr "F7"
-
 #~ msgid "_New Directory"
 #~ msgstr "ไ_ดเรกทอรีใหม่"
 
@@ -5218,241 +5123,17 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgid "_View Directory"
 #~ msgstr "แ_สดงไดเรกทอรี"
 
-#~ msgid "Afrikaans"
-#~ msgstr "ภาษาแอฟริกา"
-
-#~ msgid "Amharic"
-#~ msgstr "ภาษาอัมฮาริก"
-
-#~ msgid "Arabic (Egypt)"
-#~ msgstr "ภาษาอารบิก (อียิปต์)"
-
-#~ msgid "Azerbaijani"
-#~ msgstr "ภาษาอาร์เซอร์ไบจาน"
-
-#~ msgid "Belarusian"
-#~ msgstr "ภาษาเบลารุส"
-
-#~ msgid "Bulgarian"
-#~ msgstr "ภาษาบัลแกเรีย"
-
-#~ msgid "Bengali"
-#~ msgstr "ภาษาเบ็งกาลี"
-
-#, fuzzy
-#~ msgid "Breton"
-#~ msgstr "ภาษาบรีทัน"
-
-#~ msgid "Catalan"
-#~ msgstr "ภาษาคาตะลาน"
-
-#~ msgid "Czech"
-#~ msgstr "ภาษาเช็ก"
-
-#~ msgid "Welsh"
-#~ msgstr "ภาษาเวลส์"
-
-#~ msgid "Danish"
-#~ msgstr "ภาษาเดนมาร์ก"
-
-#~ msgid "German (Austria)"
-#~ msgstr "ภาษาเยอรมัน (ออสเตรีย)"
-
-#~ msgid "German (Germany)"
-#~ msgstr "ภาษาเยอรมัน (เยอรมนี)"
-
-#~ msgid "German (Swiss)"
-#~ msgstr "ภาษาเยอรมัน (สวิส)"
-
-#~ msgid "English (American)"
-#~ msgstr "ภาษาอังกฤษ (อเมริกัน)"
-
-#~ msgid "English (British)"
-#~ msgstr "ภาษาอังกฤษ (อังกฤษ)"
-
-#~ msgid "English (Canadian)"
-#~ msgstr "ภาษาอังกฤษ (แคนาดา)"
-
-#~ msgid "Esperanto"
-#~ msgstr "ภาษาเอสเปอรันโต"
-
-#~ msgid "Spanish"
-#~ msgstr "ภาษาสเปน"
-
-#~ msgid "Estonian"
-#~ msgstr "ภาษาเอสโตเนีย"
-
-#~ msgid "Persian"
-#~ msgstr "ภาษาเปอร์เซีย"
-
-#~ msgid "Finnish"
-#~ msgstr "ภาษาฟินแลนด์"
-
-#~ msgid "Faroese"
-#~ msgstr "ภาษาแฟโร"
-
-#~ msgid "French (France)"
-#~ msgstr "ภาษาฝรั่งเศส (ฝรั่งเศส)"
-
-#~ msgid "French (Swiss)"
-#~ msgstr "ภาษาฝรั่งเศส (สวิส)"
-
-#~ msgid "Irish"
-#~ msgstr "ภาษาไอริช"
-
-#~ msgid "Hindi"
-#~ msgstr "ภาษาฮินดี"
-
-#~ msgid "Croatian"
-#~ msgstr "ภาษาโครเอเชีย"
-
-#~ msgid "Hungarian"
-#~ msgstr "ภาษาฮังการี"
-
-#~ msgid "Interlingua (IALA)"
-#~ msgstr "ภาษานานาชาติ (IALA)"
-
-#~ msgid "Indonesian"
-#~ msgstr "ภาษาอินโดนีเซีย"
-
-#~ msgid "Icelandic"
-#~ msgstr "ภาษาไอซ์แลนด์"
-
-#~ msgid "Italian"
-#~ msgstr "ภาษาอิตาลี"
-
-#~ msgid "Kurdish"
-#~ msgstr "ภาษาเคิร์ด"
-
-#~ msgid "Latin"
-#~ msgstr "ภาษาละติน"
-
-#~ msgid "Lithuanian"
-#~ msgstr "ภาษาลิทัวเนีย"
-
-#~ msgid "Latvian"
-#~ msgstr "ภาษาลัตเวีย"
-
-#~ msgid "Malagasy"
-#~ msgstr "ภาษามาลากาซี"
-
-#~ msgid "Maori"
-#~ msgstr "ภาษาเมารี"
-
-#~ msgid "Macedonian"
-#~ msgstr "ภาษามาซิโดเนีย"
-
-#~ msgid "Mongolian"
-#~ msgstr "ภาษามองโกล"
-
-#~ msgid "Marathi"
-#~ msgstr "ภาษามาราฐี"
-
-#~ msgid "Malay"
-#~ msgstr "ภาษามลายู"
-
-#, fuzzy
-#~ msgid "Maltese"
-#~ msgstr "ภาษามอลตา"
-
-#~ msgid "Norwegian Bokmal"
-#~ msgstr "ภาษานอร์เวย์ Bokmal"
-
-#~ msgid "Dutch"
-#~ msgstr "ภาษาดัตช์"
-
-#~ msgid "Norwegian Nynorsk"
-#~ msgstr "ภาษานอร์เวย์ Nynorsk"
-
-#~ msgid "Norwegian"
-#~ msgstr "ภาษานอร์เวย์"
-
-#~ msgid "Polish"
-#~ msgstr "ภาษาโปแลนด์"
-
-#~ msgid "Portuguese (Portugal)"
-#~ msgstr "ภาษาโปรตุเกส (โปรตุเกส)"
-
-#~ msgid "Portuguese (Brazilian)"
-#~ msgstr "ภาษาโปรตุเกส (บราซิล)"
-
-#, fuzzy
-#~ msgid "Quechua"
-#~ msgstr "ภาษาคิวชัว"
-
-#~ msgid "Russian"
-#~ msgstr "ภาษารัสเซีย"
-
-#, fuzzy
-#~ msgid "Kinyarwanda"
-#~ msgstr "ภาษาคินยารวันดา"
-
-#~ msgid "Slovak"
-#~ msgstr "ภาษาสโลวัก"
-
-#~ msgid "Slovenian"
-#~ msgstr "ภาษาสโลวีเนีย"
-
-#~ msgid "Swedish"
-#~ msgstr "ภาษาสวีเดน"
-
-#~ msgid "Swahili"
-#~ msgstr "ภาษาสวาฮีลี"
-
-#~ msgid "Tamil"
-#~ msgstr "ภาษาทมิฬ"
-
-#~ msgid "Tagalog"
-#~ msgstr "ภาษาตากาล็อก"
-
-#, fuzzy
-#~ msgid "Tswana"
-#~ msgstr "ภาษาเซตสวานา"
-
-#~ msgid "Ukrainian"
-#~ msgstr "ภาษายูเครน"
-
-#~ msgid "Uzbek"
-#~ msgstr "ภาษาอุซเบกิสถาน"
-
-#, fuzzy
-#~ msgid "Walloon"
-#~ msgstr "ภาษาวัลลูน"
-
-#, fuzzy
-#~ msgid "Yiddish"
-#~ msgstr "ภาษายีดิช"
-
-#~ msgid "Zulu"
-#~ msgstr "ภาษาซูลู"
-
 #~ msgid "Blinking text"
 #~ msgstr "ตัวกะพริบ"
 
 #~ msgid "Box"
 #~ msgstr "กล่อง"
 
-#~ msgid "FALSE"
-#~ msgstr "FALSE"
-
-#~ msgid "TRUE"
-#~ msgstr "TRUE"
-
-#~ msgid "hidden_and_binary"
-#~ msgstr "hidden_and_binary"
-
 #~ msgid "Normal"
 #~ msgstr "ปกติ"
 
 #~ msgid "Use Normal highlight mode"
 #~ msgstr "ใช้โหมดเน้นแบบปกติ"
-
-#~ msgid ""
-#~ "cd $GEDIT_CURRENT_DOCUMENT_DIR\n"
-#~ "make"
-#~ msgstr ""
-#~ "cd $GEDIT_CURRENT_DOCUMENT_DIR\n"
-#~ "make"
 
 #~ msgid ""
 #~ "Could not load the file \"%s\". The file is probably corrupt. Please fix "
@@ -5674,10 +5355,10 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgstr "อ่านข้อมูลจาก stdin ไม่ได้"
 
 #~ msgid "Reverting file:"
-#~ msgstr "กำลังแปลงแฟ้มกลับ.."
+#~ msgstr "กำลังแปลงแฟ้มกลับ:"
 
 #~ msgid "Loading file:"
-#~ msgstr "กำลังอ่านแฟ้ม..."
+#~ msgstr "กำลังอ่านแฟ้ม:"
 
 #~ msgid "Loaded file \"%s\""
 #~ msgstr "อ่านแฟ้ม \"%s\""
@@ -5788,7 +5469,7 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 #~ msgstr "แสดงตัว_อย่างก่อนพิมพ์..."
 
 #~ msgid "Quit"
-#~ msgstr "ออกจากโปรแกรม"
+#~ msgstr "ออก"
 
 #~ msgid "Redo"
 #~ msgstr "ทำซ้ำ"
@@ -5826,9 +5507,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 
 #~ msgid "_Desktop Default"
 #~ msgstr "ค่าปริยายของเ_ดสก์ทอป"
-
-#~ msgid "_Icons Only"
-#~ msgstr "เฉพาะไ_อคอน"
 
 #~ msgid "_New"
 #~ msgstr "ใ_หม่"
