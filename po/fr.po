@@ -27,10 +27,11 @@ msgstr ""
 "Project-Id-Version: gedit HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-06 21:42+0000\n"
-"PO-Revision-Date: 2012-03-07 12:38+0100\n"
+"POT-Creation-Date: 2012-08-15 07:45+0000\n"
+"PO-Revision-Date: 2012-09-06 16:53+0200\n"
 "Last-Translator: Bruno Brouard <annoa.b@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8 bits\n"
@@ -50,16 +51,16 @@ msgid "Edit text files"
 msgstr "Éditer des fichiers texte"
 
 #: ../data/gedit.desktop.in.in.h:4
+msgid "gedit Text Editor"
+msgstr "Éditeur de texte gedit"
+
+#: ../data/gedit.desktop.in.in.h:5
 msgid "Open a New Window"
 msgstr "Ouvrir une nouvelle fenêtre"
 
-#: ../data/gedit.desktop.in.in.h:5
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Document"
 msgstr "Ouvrir un nouveau document"
-
-#: ../data/gedit.desktop.in.in.h:6
-msgid "gedit Text Editor"
-msgstr "Éditeur de texte gedit"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
 msgid "Use Default Font"
@@ -146,8 +147,8 @@ msgstr "Limite de l'action annuler (DÉCONSEILLÉ)"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
 "Nombre maximum d'actions que gedit sera en mesure d'annuler ou de "
 "réintégrer. Indiquez « -1 » si vous ne voulez pas indiquer de limite. "
@@ -159,8 +160,8 @@ msgstr "Nombre maximum d'annulations possibles"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
 msgstr ""
 "Nombre maximum d'actions que gedit sera en mesure d'annuler ou de "
 "réintégrer. Indiquez « -1 » si vous ne voulez pas indiquer de limite."
@@ -266,14 +267,14 @@ msgid ""
 "the start/end of the line and \"always\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 msgstr ""
-"Indique comment le curseur se déplace quand les touches « Origine » et « Fin » "
-"sont enfoncées. Utilisez « disabled » (désactivé) pour aller toujours en "
-"début/fin de ligne, « after » (après) pour aller en début/fin de ligne la "
-"première fois que les touches sont enfoncées et en début/fin de texte en "
-"ignorant les espaces, la seconde fois que les touches sont manœuvrées, "
-"« before » (avant) pour aller en début/fin de texte avant de se déplacer en "
-"début/fin de ligne et « always » (toujours) pour toujours aller en début/fin "
-"de texte au lieu de début/fin de ligne."
+"Indique comment le curseur se déplace quand les touches « Origine » et "
+"« Fin » sont enfoncées. Utilisez « disabled » (désactivé) pour aller "
+"toujours en début/fin de ligne, « after » (après) pour aller en début/fin de "
+"ligne la première fois que les touches sont enfoncées et en début/fin de "
+"texte en ignorant les espaces, la seconde fois que les touches sont "
+"manœuvrées, « before » (avant) pour aller en début/fin de texte avant de se "
+"déplacer en début/fin de ligne et « always » (toujours) pour toujours aller "
+"en début/fin de texte au lieu de début/fin de ligne."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
 msgid "Restore Previous Cursor Position"
@@ -337,10 +338,10 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr ""
 "Définit le mode d'affichage des onglets de fenêtre. Utilisez « never » pour "
-"ne jamais les afficher, « always » pour toujours les afficher et « auto » pour "
-"les afficher s'il y en a plus d'un. Notez que ces valeurs sont sensibles à "
-"la casse, assurez-vous donc qu'elles apparaissent exactement comme indiqué "
-"ci-dessus."
+"ne jamais les afficher, « always » pour toujours les afficher et « auto » "
+"pour les afficher s'il y en a plus d'un. Notez que ces valeurs sont "
+"sensibles à la casse, assurez-vous donc qu'elles apparaissent exactement "
+"comme indiqué ci-dessus."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
 msgid "Status Bar is Visible"
@@ -463,11 +464,26 @@ msgstr ""
 "Cela ne s'appliquera que si l'option « Afficher les numéros de ligne » est "
 "non-nulle."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "Codages détectés automatiquement"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -477,11 +493,17 @@ msgstr ""
 "codage d'un fichier. « CURRENT » est le codage local actuel. Seuls les "
 "codages reconnus sont utilisés."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "Codages affichés dans le menu"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -490,18 +512,18 @@ msgstr ""
 "sélecteur de fichiers ouvrir/enregistrer. Seuls les codages reconnus sont "
 "utilisés."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "Greffons actifs"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Liste des greffons actifs. Il contient l'« emplacement » des greffons actifs. "
-"Consultez le fichier .gedit-plugin pour obtenir l'« emplacement » (Location) "
-"d'un greffon donné."
+"Liste des greffons actifs. Il contient l'« emplacement » des greffons "
+"actifs. Consultez le fichier .gedit-plugin pour obtenir "
+"l'« emplacement » (Location) d'un greffon donné."
 
 #: ../gedit/gedit-app.c:222
 msgid "There was an error displaying the help."
@@ -595,8 +617,8 @@ msgstr[0] ""
 "Si vous n'enregistrez pas, les modifications effectuées depuis une heure et "
 "une minute seront définitivement perdues."
 msgstr[1] ""
-"Si vous n'enregistrez pas, les modifications effectuées depuis une heure et %"
-"d minutes seront définitivement perdues."
+"Si vous n'enregistrez pas, les modifications effectuées depuis une heure et "
+"%d minutes seront définitivement perdues."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:475
 #, c-format
@@ -615,7 +637,8 @@ msgstr[1] ""
 #, c-format
 msgid "Changes to document \"%s\" will be permanently lost."
 msgstr ""
-"Les modifications effectuées au document « %s » seront définitivement perdues."
+"Les modifications effectuées au document « %s » seront définitivement "
+"perdues."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:524
 #, c-format
@@ -763,7 +786,7 @@ msgstr "Le fichier « %s » est en lecture seule."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Voulez-vous le remplacer par celui que vous essayez d'enregistrer ?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "R_emplacer"
 
@@ -1537,8 +1560,8 @@ msgstr "_Utiliser la police système à chasse fixe (%s)"
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
-"Impossible de créer le répertoire « %s » : g_mkdir_with_parents() a échoué : %"
-"s"
+"Impossible de créer le répertoire « %s » : g_mkdir_with_parents() a échoué : "
+"%s"
 
 #: ../gedit/gedit-preferences-dialog.c:860
 msgid "The selected color scheme cannot be installed."
@@ -1822,12 +1845,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "L'aperçu de la page dans le document à imprimer"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "Remplacer"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "_Tout remplacer"
 
@@ -2240,22 +2263,22 @@ msgstr "Panneau _inférieur"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Affiche ou masque le panneau inférieur dans la fenêtre actuelle"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Vérifiez votre installation."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Impossible d'ouvrir le fichier d'interface %s. Erreur : %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Impossible de trouver l'objet « %s » dans le fichier %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ sur %s"
@@ -3117,8 +3140,8 @@ msgid ""
 msgstr ""
 "Cette valeur détermine quels fichiers du gestionnaire de fichiers sont "
 "filtrés. Les valeurs possibles sont : « none » (ne filtre rien), « hide-"
-"hidden » (filtre les fichiers cachés) et « hide-binary » (filtre les fichiers "
-"binaires)."
+"hidden » (filtre les fichiers cachés) et « hide-binary » (filtre les "
+"fichiers binaires)."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
 msgid "File Browser Filter Pattern"
@@ -3205,7 +3228,7 @@ msgid "Type to search..."
 msgstr "Saisissez le nom du fichier à ouvrir..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Fragments de code"
@@ -3282,11 +3305,13 @@ msgstr "Supprime le fragment de code sélectionné"
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
 "Ce n'est pas un déclencheur valide. Les déclencheurs peuvent contenir des "
-"lettres ou un seul caractère non alphanumérique comme {, [, etc."
+"caractères alphanumériques (ou _, : et .) ou un seul caractère non "
+"alphanumérique comme {, [, etc."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
@@ -3368,8 +3393,8 @@ msgstr "Exportation des fragments de code"
 #: ../plugins/snippets/snippets/manager.py:1044
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
-"Saisissez un nouveau raccourci clavier ou appuyez sur « Retour arrière » pour "
-"effacer"
+"Saisissez un nouveau raccourci clavier ou appuyez sur « Retour arrière » "
+"pour effacer"
 
 #: ../plugins/snippets/snippets/manager.py:1046
 msgid "Type a new shortcut"
