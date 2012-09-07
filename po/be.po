@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-06 18:26+0000\n"
-"PO-Revision-Date: 2012-03-07 23:29+0300\n"
+"POT-Creation-Date: 2012-08-15 07:45+0000\n"
+"PO-Revision-Date: 2012-09-07 17:47+0300\n"
 "Last-Translator: Sviatlana Liasovich <xelj.gjkz@bk.ru>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
-"Language: \n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -32,16 +32,16 @@ msgid "Edit text files"
 msgstr "Рэдагаванне тэкставых файлаў"
 
 #: ../data/gedit.desktop.in.in.h:4
+msgid "gedit Text Editor"
+msgstr "Тэкставы рэдактар gedit"
+
+#: ../data/gedit.desktop.in.in.h:5
 msgid "Open a New Window"
 msgstr "Адкрыць новае акно"
 
-#: ../data/gedit.desktop.in.in.h:5
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Document"
 msgstr "Адкрыць новы дакумент"
-
-#: ../data/gedit.desktop.in.in.h:6
-msgid "gedit Text Editor"
-msgstr "Тэкставы рэдактар gedit"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
 msgid "Use Default Font"
@@ -124,8 +124,8 @@ msgstr "Абмежаванне колькасці дзеянняў, якія м�
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
 "Максімальная колькасць дзеянняў, якія gedit дазваляе адрабіць назад ці зноў "
 "паўтарыць. Значэнне \"-1\" азначае неабмежаваную колькасць такіх дзеянняў. "
@@ -137,8 +137,8 @@ msgstr "Максімальная колькасць дзеянняў, якія �
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
 msgstr ""
 "Максімальная колькасць дзеянняў, якія gedit дазваляе адрабіць назад ці зноў "
 "паўтарыць. Значэнне \"-1\" азначае неабмежаваную колькасць такіх дзеянняў."
@@ -423,11 +423,26 @@ msgstr ""
 "паводзіны праграмы, толькі калі опцыя \"Друк нумарацыі радкоў\" мае "
 "ненулявое значэнне."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'WINDOWS-1251', 'ISO-8859-5', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "Аўтаматычна вызначаныя кадаванні"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -437,11 +452,17 @@ msgstr ""
 "апазнання кадаванняў файлаў. Значэнне \"CURRENT\" азначае прадвызначанае "
 "кадаванне мясцовасці. Выкарыстоўваюцца толькі вядомыя кадаванні."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['UTF-8', 'CURRENT', 'WINDOWS-1251', 'ISO-8859-5', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "Кадаванні для меню"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -449,11 +470,11 @@ msgstr ""
 "Спіс кадаванняў, якія паказваюцца ў меню \"Кадаванне знакаў\" у дыялогу "
 "адкрыцця/захавання файлаў. Выкарыстоўваюцца толькі вядомыя кадаванні."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "Актыўныя плугіны"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -724,7 +745,7 @@ msgstr "Файл \"%s\" даступны толькі для чытання."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Ці хочаце паспрабаваць замяніць яго тым, што захоўваеце?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_Замяніць"
 
@@ -1780,12 +1801,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Папярэдні агляд старонкі дакумента для друку"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "Замяніць"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "За_мяніць усё"
 
@@ -2199,22 +2220,22 @@ msgstr "_Ніжняя панэль"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Паказаць ці схаваць ніжнюю панэль у гэтым акне"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Праверце правільнасць усталявання."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Не ўдалося адкрыць файл інтэрфейсу карыстальніка \"%s\". Памылка: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Не ўдалося адшукаць аб'ект \"%s\" у файле \"%s\"."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ на %s"
@@ -3147,7 +3168,7 @@ msgid "Type to search..."
 msgstr "Імгненны пошук..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Урыўкі"
@@ -3223,11 +3244,12 @@ msgstr "Выдаліць вылучаны ўрывак"
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
 "Гэта непрыдатны актыватар табуляцыі. Актыватары могуць складацца або толькі "
-"з літар, або з аднаго нялітарна-лічбавага знака, напрыклад: { ці ["
+"з літар і лічбаў (а таксама _, : і .), або з аднаго нялітарна-лічбавага знака, напрыклад: { ці ["
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
