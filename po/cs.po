@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-08-15 07:45+0000\n"
-"PO-Revision-Date: 2012-09-07 10:22+0200\n"
+"POT-Creation-Date: 2012-09-09 15:09+0000\n"
+"PO-Revision-Date: 2012-09-09 21:39+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -48,10 +48,14 @@ msgid "gedit Text Editor"
 msgstr "Textový editor gedit"
 
 #: ../data/gedit.desktop.in.in.h:5
+msgid "Text"
+msgstr "Text"
+
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
 msgstr "Otevřít nové okno"
 
-#: ../data/gedit.desktop.in.in.h:6
+#: ../data/gedit.desktop.in.in.h:7
 msgid "Open a New Document"
 msgstr "Otevřít nový dokument"
 
@@ -2241,25 +2245,25 @@ msgid "/ on %s"
 msgstr "/ na %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:546
+#: ../gedit/gedit-view-frame.c:542
 msgid "_Wrap Around"
 msgstr "Přecházet přes _okraj"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:556
+#: ../gedit/gedit-view-frame.c:552
 msgid "Match _Entire Word Only"
 msgstr "Hledat pouze _celá slova"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:566
+#: ../gedit/gedit-view-frame.c:562
 msgid "_Match Case"
 msgstr "_Rozlišovat velikost písmen"
 
-#: ../gedit/gedit-view-frame.c:767
+#: ../gedit/gedit-view-frame.c:759
 msgid "String you want to search for"
 msgstr "Řetězec, který chcete hledat"
 
-#: ../gedit/gedit-view-frame.c:777
+#: ../gedit/gedit-view-frame.c:769
 msgid "Line you want to move the cursor to"
 msgstr "Řádek, na který chcete přesunout kurzor"
 
