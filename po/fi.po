@@ -1,33 +1,34 @@
 # gedit Finnish Translation
 # Suomennos: http://www.gnome.fi/
 # Copyright (C) 1999-2010 Free Software Foundation Inc.
-# Jarkko Ranta <jjranta@cc.joensuu.fi>, 2000-2004.
-# Sami Pesonen <sampeson@iki.fi>, 2005.
-# Lauri Nurmi <lanurmi@iki.fi>, 2005-2007.
-# Ilkka Tuohela <hile@iki.fi>, 2005-2009.
-# Tommi Vainikainen <thv@iki.fi>, 2009-2010.
-# Jiri Grönroos <jiri.gronroos.iki.fi>, 2010.
 #
 # Gnome 2012-03 Finnish translation sprint participants:
 # Jiri Grönroos
 # Flammie Pirinen
 # Niklas Laxström
 # Jarkko Ruottinen
+# Jarkko Ranta <jjranta@cc.joensuu.fi>, 2000-2004.
+# Sami Pesonen <sampeson@iki.fi>, 2005.
+# Lauri Nurmi <lanurmi@iki.fi>, 2005-2007.
+# Ilkka Tuohela <hile@iki.fi>, 2005-2009.
+# Tommi Vainikainen <thv@iki.fi>, 2009-2010.
+# Jiri Grönroos <jiri.gronroos.iki.fi>, 2010, 2012.
 msgid ""
 msgstr ""
-""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-02-12 13:10+0000\n"
-"PO-Revision-Date: 2012-03-12 08:36:55+0000\n"
-"Last-Translator: Tommi Vainikainen <thv@iki.fi>\n"
-"Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-09-09 15:09+0000\n"
+"PO-Revision-Date: 2012-09-11 22:12+0300\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"Language-Team: Finnish <>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2012-02-19 15:15:59+0000\n"
-"X-Generator: MediaWiki 1.20alpha (r113129); Translate 2012-03-02\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -45,21 +46,46 @@ msgstr "Muokkaa tekstitiedostoja"
 msgid "gedit Text Editor"
 msgstr "gedit-tekstimuokkain"
 
+#: ../data/gedit.desktop.in.in.h:5
+msgid "Text"
+msgstr "Teksti"
+
+#: ../data/gedit.desktop.in.in.h:6
+#| msgid "_Move to New Window"
+msgid "Open a New Window"
+msgstr "Avaa uusi ikkuna"
+
+#: ../data/gedit.desktop.in.in.h:7
+#| msgid "Create a new document"
+msgid "Open a New Document"
+msgstr "Avaa uusi asiakirja"
+
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
 msgid "Use Default Font"
 msgstr "Käytä oletuskirjasinta"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
-msgid "Whether to use the system's default fixed width font for editing text instead of a font specific to gedit. If this option is turned off, then the font named in the \"Editor Font\" option will be used instead of the system font."
-msgstr "Määrittää käytetäänkö tekstin muokkaukseen järjestelmän oletuskirjasinta geditissä määritellyn kirjasimen sijasta. Jos tämä otetaan pois päältä, käytetään kohdassa ”Muokkaimen kirjasin” määriteltyä kirjasinta."
+msgid ""
+"Whether to use the system's default fixed width font for editing text "
+"instead of a font specific to gedit. If this option is turned off, then the "
+"font named in the \"Editor Font\" option will be used instead of the system "
+"font."
+msgstr ""
+"Määrittää käytetäänkö tekstin muokkaukseen järjestelmän oletuskirjasinta "
+"geditissä määritellyn kirjasimen sijasta. Jos tämä otetaan pois päältä, "
+"käytetään kohdassa ”Muokkaimen kirjasin” määriteltyä kirjasinta."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
 msgid "Editor Font"
 msgstr "Muokkaimen kirjasin"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
-msgid "A custom font that will be used for the editing area. This will only take effect if the \"Use Default Font\" option is turned off."
-msgstr "Mukautettu kirjasin, jota käytetään muokkausalueella. Tämä on voimassa ainoastaan mikäli asetus ”Käytä oletuskirjasinta” ei ole päällä."
+msgid ""
+"A custom font that will be used for the editing area. This will only take "
+"effect if the \"Use Default Font\" option is turned off."
+msgstr ""
+"Mukautettu kirjasin, jota käytetään muokkausalueella. Tämä on voimassa "
+"ainoastaan mikäli asetus ”Käytä oletuskirjasinta” ei ole päällä."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
 msgid "Style Scheme"
@@ -67,47 +93,70 @@ msgstr "Tyylimalli"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
-msgstr "Tunniste GtkSourceView-tyyliskeemalle, jota käytetään tekstin väritykseen."
+msgstr ""
+"Tunniste GtkSourceView-tyyliskeemalle, jota käytetään tekstin väritykseen."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
 msgid "Create Backup Copies"
 msgstr "Luo varmuuskopiot"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
-msgid "Whether gedit should create backup copies for the files it saves. You can set the backup file extension with the \"Backup Copy Extension\" option."
-msgstr "Määrittää tekeekö gedit tallennettavista tiedostoista varmuuskopiot. Voit asettaa tiedostonimen laajennoksen asetuksella ”Varmuuskopion nimilaajenne”."
+msgid ""
+"Whether gedit should create backup copies for the files it saves. You can "
+"set the backup file extension with the \"Backup Copy Extension\" option."
+msgstr ""
+"Määrittää tekeekö gedit tallennettavista tiedostoista varmuuskopiot. Voit "
+"asettaa tiedostonimen laajennoksen asetuksella ”Varmuuskopion nimilaajenne”."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
 msgid "Autosave"
 msgstr "Autotallennus"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
-msgid "Whether gedit should automatically save modified files after a time interval. You can set the time interval with the \"Autosave Interval\" option."
-msgstr "Tallentaako gedit automaattisesti muokatut tiedostot tietyn ajan jälkeen. Haluttu aikaväli voidaan asettaa ”Autotallennus väli”-valintaan."
+msgid ""
+"Whether gedit should automatically save modified files after a time "
+"interval. You can set the time interval with the \"Autosave Interval\" "
+"option."
+msgstr ""
+"Tallentaako gedit automaattisesti muokatut tiedostot tietyn ajan jälkeen. "
+"Haluttu aikaväli voidaan asettaa ”Autotallennus väli”-valintaan."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
 msgid "Autosave Interval"
 msgstr "Autotallennuksen väli"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
-msgid "Number of minutes after which gedit will automatically save modified files. This will only take effect if the \"Autosave\" option is turned on."
-msgstr "Minuuttimäärä, joka jälkeen gedit automaattisesti tallentaa muokatut tiedostot. Tämä on toiminnassa vain jos ”Autotallennus”-valinta on käytössä."
+msgid ""
+"Number of minutes after which gedit will automatically save modified files. "
+"This will only take effect if the \"Autosave\" option is turned on."
+msgstr ""
+"Minuuttimäärä, joka jälkeen gedit automaattisesti tallentaa muokatut "
+"tiedostot. Tämä on toiminnassa vain jos ”Autotallennus”-valinta on käytössä."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
 msgid "Undo Actions Limit (DEPRECATED)"
 msgstr "Kumoamiskertojen enimmäismäärä (VANHENTUNUT)"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
-msgid "Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for unlimited number of actions. Deprecated since 2.12.0"
-msgstr "Suurin määrä toimintoja jotka gedit voi kumota tai tehdä uudestaan. Arvo ”-1” tarkoittaa rajatonta määrää. Tämä avain on vanhentunut versiosta 2.12.0 alkaen."
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
+msgstr ""
+"Suurin määrä toimintoja jotka gedit voi kumota tai tehdä uudestaan. Arvo "
+"”-1” tarkoittaa rajatonta määrää. Tämä avain on vanhentunut versiosta 2.12.0 "
+"alkaen."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
 msgid "Maximum Number of Undo Actions"
 msgstr "Kumoamistoimintojen enimmäismäärä"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
-msgid "Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for unlimited number of actions."
-msgstr "Suurin määrä toimintoja jotka gedit voi kumota tai tehdä uudestaan. Arvo ”-1” tarkoittaa rajatonta määrää."
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
+msgstr ""
+"Suurin määrä toimintoja jotka gedit voi kumota tai tehdä uudestaan. Arvo "
+"”-1” tarkoittaa rajatonta määrää."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
 msgid "Line Wrapping Mode"
@@ -115,15 +164,26 @@ msgstr "Rivitystapa"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
 #, fuzzy
-msgid "Specifies how to wrap long lines in the editing area. Use \"none\" for no wrapping, \"word\" for wrapping at word boundaries, and \"char\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-msgstr "Määrittää kuinka pitkät rivit rivitetään muokkausalueella. Käytä arvoa ”GTK_WRAP_NONE” jos et halua rivittää, ”GTK_WRAP_WORD” rivittääksesi sanan vaihtuessa, ja ”GTK_WRAP_CHAR” rivittääksesi yksittäisen merkin kohdalta. Huomaa että kirjainkoko merkitsee arvoissa, joten varmista että kirjoitat arvon täsmälleen kuten tässä on neuvottu."
+msgid ""
+"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
+"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+"wrapping at individual character boundaries. Note that the values are case-"
+"sensitive, so make sure they appear exactly as mentioned here."
+msgstr ""
+"Määrittää kuinka pitkät rivit rivitetään muokkausalueella. Käytä arvoa "
+"”GTK_WRAP_NONE” jos et halua rivittää, ”GTK_WRAP_WORD” rivittääksesi sanan "
+"vaihtuessa, ja ”GTK_WRAP_CHAR” rivittääksesi yksittäisen merkin kohdalta. "
+"Huomaa että kirjainkoko merkitsee arvoissa, joten varmista että kirjoitat "
+"arvon täsmälleen kuten tässä on neuvottu."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
 msgid "Tab Size"
 msgstr "Sarkaimen koko"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
-msgid "Specifies the number of spaces that should be displayed instead of Tab characters."
+msgid ""
+"Specifies the number of spaces that should be displayed instead of Tab "
+"characters."
 msgstr "Määrittää sarkainmerkkien sijasta lisättävien välilyöntien lukumäärän."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
@@ -188,16 +248,35 @@ msgstr "Älykkäät Home/End-näppäimet"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
 #, fuzzy
-msgid "Specifies how the cursor moves when the HOME and END keys are pressed. Use \"disabled\" to always move at the start/end of the line, \"after\" to move to the start/end of the line the first time the keys are pressed and to the start/end of the text ignoring whitespaces the second time the keys are pressed, \"before\" to move to the start/end of the text before moving to the start/end of the line and \"always\" to always move to the start/end of the text instead of the start/end of the line."
-msgstr "Määrittää, kuinka kohdistin liikkuu, kun Home ja End-näppäimiä painetaan. Arvolla ”DISABLED” siirrytään aina rivin alkuun tai loppuun, arvolla ”AFTER” siirrytään ensikerralla rivin alkuun tai loppuun, ja toisen kerran painettaessa tekstin alkuun tai loppuun, jättäen tyhjä tila huomioimatta toista kertaa painettaessa, arvolla ”BEFORE” siirrytään aina ensin tekstin alkuun tai loppuun ennen rivin alkuun tai loppuun siirtymistä, ja arvolla ”ALWAYS” siirrytään aina tekstin alkuun tai loppuun rivin alun ja lopun sijasta."
+msgid ""
+"Specifies how the cursor moves when the HOME and END keys are pressed. Use "
+"\"disabled\" to always move at the start/end of the line, \"after\" to move "
+"to the start/end of the line the first time the keys are pressed and to the "
+"start/end of the text ignoring whitespaces the second time the keys are "
+"pressed, \"before\" to move to the start/end of the text before moving to "
+"the start/end of the line and \"always\" to always move to the start/end of "
+"the text instead of the start/end of the line."
+msgstr ""
+"Määrittää, kuinka kohdistin liikkuu, kun Home ja End-näppäimiä painetaan. "
+"Arvolla ”DISABLED” siirrytään aina rivin alkuun tai loppuun, arvolla ”AFTER” "
+"siirrytään ensikerralla rivin alkuun tai loppuun, ja toisen kerran "
+"painettaessa tekstin alkuun tai loppuun, jättäen tyhjä tila huomioimatta "
+"toista kertaa painettaessa, arvolla ”BEFORE” siirrytään aina ensin tekstin "
+"alkuun tai loppuun ennen rivin alkuun tai loppuun siirtymistä, ja arvolla "
+"”ALWAYS” siirrytään aina tekstin alkuun tai loppuun rivin alun ja lopun "
+"sijasta."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
 msgid "Restore Previous Cursor Position"
 msgstr "Palaa edelliseen kohdistimen kohtaan"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
-msgid "Whether gedit should restore the previous cursor position when a file is loaded."
-msgstr "Määrittää palauttaako gedit edellisen kohdistimen sijainnin avattaessa tiedostoa."
+msgid ""
+"Whether gedit should restore the previous cursor position when a file is "
+"loaded."
+msgstr ""
+"Määrittää palauttaako gedit edellisen kohdistimen sijainnin avattaessa "
+"tiedostoa."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
 msgid "Enable Syntax Highlighting"
@@ -212,7 +291,8 @@ msgid "Enable Search Highlighting"
 msgstr "Käytä hakujen väritystä"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
-msgid "Whether gedit should highlight all the occurrences of the searched text."
+msgid ""
+"Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Määrittää korostaako gedit kaikki haetun tekstin osumat asiakirjasta."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
@@ -221,7 +301,8 @@ msgstr "Varmista loppuun rivinvaihto"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
 #, fuzzy
-msgid "Whether gedit will ensure that documents always end with a trailing newline."
+msgid ""
+"Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "Määrittää lisääkö gedit asiakirjojen otsikot tulosteisiin."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
@@ -238,25 +319,34 @@ msgstr "Muistio. Näytä välilehdet tila."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
 #, fuzzy
-msgid "Specifies when to show the notebook tabs. Use \"never\" to never show the tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only when there is more than one tab. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-msgstr "Määrittää kuinka pitkät rivit rivitetään tulostusta varten. Käytä arvoa ”GTK_WRAP_NONE” jos et halua rivittää, ”GTK_WRAP_WORD” rivittääksesi sanan vaihtuessa, ja ”GTK_WRAP_CHAR” rivittääksesi yksittäisen merkin kohdalta. Huomaa että kirjainkoko merkitsee arvoissa, joten varmista että kirjoitat arvon täsmälleen kuten tässä on neuvottu."
+msgid ""
+"Specifies when to show the notebook tabs. Use \"never\" to never show the "
+"tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
+"when there is more than one tab. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
+msgstr ""
+"Määrittää kuinka pitkät rivit rivitetään tulostusta varten. Käytä arvoa "
+"”GTK_WRAP_NONE” jos et halua rivittää, ”GTK_WRAP_WORD” rivittääksesi sanan "
+"vaihtuessa, ja ”GTK_WRAP_CHAR” rivittääksesi yksittäisen merkin kohdalta. "
+"Huomaa että kirjainkoko merkitsee arvoissa, joten varmista että kirjoitat "
+"arvon täsmälleen kuten tässä on neuvottu."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
 msgid "Status Bar is Visible"
 msgstr "Tilarivi näytetään"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
-msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Määrittää näytetäänkö muokkausikkunan alalaidassa tilarivi."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
-#, fuzzy
 msgid "Side panel is Visible"
-msgstr "Sivupaneeli näytetään"
+msgstr "Sivupaneeli on näkyvissä"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
-#, fuzzy
-msgid "Whether the side panel at the left of editing windows should be visible."
+msgid ""
+"Whether the side panel at the left of editing windows should be visible."
 msgstr "Onko sivupaneeli muokkausikkunan vasemmalla puolella näkyvissä."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
@@ -264,8 +354,12 @@ msgid "Maximum Recent Files"
 msgstr "Viimeisimmät tiedostot -listan enimmäispituus"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
-msgid "Specifies the maximum number of recently opened files that will be displayed in the \"Recent Files\" submenu."
-msgstr "Määrittää kohdassa ”Viimeisimmät tiedostot” näytettävien äskettäin avattujen tiedostojen enimmäismäärän."
+msgid ""
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
+msgstr ""
+"Määrittää kohdassa ”Viimeisimmät tiedostot” näytettävien äskettäin avattujen "
+"tiedostojen enimmäismäärän."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
 msgid "Print Syntax Highlighting"
@@ -289,23 +383,38 @@ msgstr "Tulostuksen rivitystapa"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
 #, fuzzy
-msgid "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, \"word\" for wrapping at word boundaries, and \"char\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-msgstr "Määrittää kuinka pitkät rivit rivitetään tulostusta varten. Käytä arvoa ”GTK_WRAP_NONE” jos et halua rivittää, ”GTK_WRAP_WORD” rivittääksesi sanan vaihtuessa, ja ”GTK_WRAP_CHAR” rivittääksesi yksittäisen merkin kohdalta. Huomaa että kirjainkoko merkitsee arvoissa, joten varmista että kirjoitat arvon täsmälleen kuten tässä on neuvottu."
+msgid ""
+"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
+"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
+msgstr ""
+"Määrittää kuinka pitkät rivit rivitetään tulostusta varten. Käytä arvoa "
+"”GTK_WRAP_NONE” jos et halua rivittää, ”GTK_WRAP_WORD” rivittääksesi sanan "
+"vaihtuessa, ja ”GTK_WRAP_CHAR” rivittääksesi yksittäisen merkin kohdalta. "
+"Huomaa että kirjainkoko merkitsee arvoissa, joten varmista että kirjoitat "
+"arvon täsmälleen kuten tässä on neuvottu."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
 msgid "Print Line Numbers"
 msgstr "Tulosta rivinumerot"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
-msgid "If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, gedit will print line numbers every such number of lines."
-msgstr "Jos tämän arvo on 0, rivinumeroita ei näytetä asiakirjoja tulostettaessa.Muutoin gedit tulostaa rivinumeron määrittämäsi riviluvun välein."
+msgid ""
+"If this value is 0, then no line numbers will be inserted when printing a "
+"document. Otherwise, gedit will print line numbers every such number of "
+"lines."
+msgstr ""
+"Jos tämän arvo on 0, rivinumeroita ei näytetä asiakirjoja tulostettaessa."
+"Muutoin gedit tulostaa rivinumeron määrittämäsi riviluvun välein."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
 msgid "Body Font for Printing"
 msgstr "Tekstin tulostuskirjasin"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
-msgid "Specifies the font to use for a document's body when printing documents."
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
 msgstr "Määrittää tulostettaessa käytettävän tekstikirjasimen."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
@@ -313,40 +422,85 @@ msgid "Header Font for Printing"
 msgstr "Otsikkotietojen tulostuskirjasin"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
-msgid "Specifies the font to use for page headers when printing a document. This will only take effect if the \"Print Header\" option is turned on."
-msgstr "Määrittää tulostettaessa käytettävän otsikkotiedon kirjasimen. Tämä on voimassa ainoastaan, mikäli asetus ”Tulosta otsikkotiedot” on päällä."
+msgid ""
+"Specifies the font to use for page headers when printing a document. This "
+"will only take effect if the \"Print Header\" option is turned on."
+msgstr ""
+"Määrittää tulostettaessa käytettävän otsikkotiedon kirjasimen. Tämä on "
+"voimassa ainoastaan, mikäli asetus ”Tulosta otsikkotiedot” on päällä."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
 msgid "Line Number Font for Printing"
 msgstr "Rivinumeroiden tulostuskirjasin"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
-msgid "Specifies the font to use for line numbers when printing. This will only take effect if the \"Print Line Numbers\" option is non-zero."
-msgstr "Määrittää tulostettaessa käytettävän rivinumeron kirjasimen. Tämä on voimassa ainoastaan, mikäli asetuksen ”Tulosta rivinumerot” arvo on muu kuin nolla."
+msgid ""
+"Specifies the font to use for line numbers when printing. This will only "
+"take effect if the \"Print Line Numbers\" option is non-zero."
+msgstr ""
+"Määrittää tulostettaessa käytettävän rivinumeron kirjasimen. Tämä on "
+"voimassa ainoastaan, mikäli asetuksen ”Tulosta rivinumerot” arvo on muu kuin "
+"nolla."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "Tunnista merkistö automaattisesti"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
-msgid "Sorted list of encodings used by gedit for automatically detecting the encoding of a file. \"CURRENT\" represents the current locale encoding. Only recognized encodings are used."
-msgstr "Lajiteltu luettelo merkistöistä, joita gedit yrittää automaattisesti tunnistaa tiedostoista. ”NYKYINEN” tarkoittaa nykyisen maa-asetuston mukaista. Vain tunnettuja merkistöjä käytetään."
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+msgid ""
+"Sorted list of encodings used by gedit for automatically detecting the "
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
+msgstr ""
+"Lajiteltu luettelo merkistöistä, joita gedit yrittää automaattisesti "
+"tunnistaa tiedostoista. ”NYKYINEN” tarkoittaa nykyisen maa-asetuston "
+"mukaista. Vain tunnettuja merkistöjä käytetään."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "Valikossa näytettävät koodaustavat"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
-msgid "List of encodings shown in the Character Encoding menu in open/save file selector. Only recognized encodings are used."
-msgstr "Luettelo merkistöistä, jotka näytetään merkistökoodausvalikossa avaa/tallenna tiedostoikkunassa. Vain tunnettuja merkistöjä käytetään."
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+msgid ""
+"List of encodings shown in the Character Encoding menu in open/save file "
+"selector. Only recognized encodings are used."
+msgstr ""
+"Luettelo merkistöistä, jotka näytetään merkistökoodausvalikossa avaa/"
+"tallenna tiedostoikkunassa. Vain tunnettuja merkistöjä käytetään."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "Käytössä olevat liitännäiset"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
-msgid "List of active plugins. It contains the \"Location\" of the active plugins. See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
-msgstr "Lista aktiivisista liitännäisistä. Lista sisältää aktiivisen liitännäisen sijainnin. Katso tiedostoa .gedit-plugin, josta voit selvittää kunkin liitännäisen sijainnin kohdasta ”Location”."
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+msgid ""
+"List of active plugins. It contains the \"Location\" of the active plugins. "
+"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+msgstr ""
+"Lista aktiivisista liitännäisistä. Lista sisältää aktiivisen liitännäisen "
+"sijainnin. Katso tiedostoa .gedit-plugin, josta voit selvittää kunkin "
+"liitännäisen sijainnin kohdasta ”Location”."
 
 #: ../gedit/gedit-app.c:222
 msgid "There was an error displaying the help."
@@ -374,46 +528,85 @@ msgstr "Kysymys"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
-msgid "If you don't save, changes from the last %ld second will be permanently lost."
-msgid_plural "If you don't save, changes from the last %ld seconds will be permanently lost."
-msgstr[0] "Mikäli et tallenna, muutokset viimeisen %ld sekunnin ajalta menetetään pysyvästi."
-msgstr[1] "Mikäli et tallenna, muutokset viimeisten %ld sekunnin ajalta menetetään pysyvästi."
+msgid ""
+"If you don't save, changes from the last %ld second will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld seconds will be permanently "
+"lost."
+msgstr[0] ""
+"Mikäli et tallenna, muutokset viimeisen %ld sekunnin ajalta menetetään "
+"pysyvästi."
+msgstr[1] ""
+"Mikäli et tallenna, muutokset viimeisten %ld sekunnin ajalta menetetään "
+"pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:423
-msgid "If you don't save, changes from the last minute will be permanently lost."
-msgstr "Mikäli et tallenna, muutokset viimeisen minuutin ajalta menetetään pysyvästi."
+msgid ""
+"If you don't save, changes from the last minute will be permanently lost."
+msgstr ""
+"Mikäli et tallenna, muutokset viimeisen minuutin ajalta menetetään pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:429
 #, c-format
-msgid "If you don't save, changes from the last minute and %ld second will be permanently lost."
-msgid_plural "If you don't save, changes from the last minute and %ld seconds will be permanently lost."
-msgstr[0] "Mikäli et tallenna, muutokset viimeisen minuutin ja %ld sekunnin ajalta menetetään pysyvästi."
-msgstr[1] "Mikäli et tallenna, muutokset viimeisten minuutin ja %ld sekunnin ajalta menetetään pysyvästi."
+msgid ""
+"If you don't save, changes from the last minute and %ld second will be "
+"permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last minute and %ld seconds will be "
+"permanently lost."
+msgstr[0] ""
+"Mikäli et tallenna, muutokset viimeisen minuutin ja %ld sekunnin ajalta "
+"menetetään pysyvästi."
+msgstr[1] ""
+"Mikäli et tallenna, muutokset viimeisten minuutin ja %ld sekunnin ajalta "
+"menetetään pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:439
 #, c-format
-msgid "If you don't save, changes from the last %ld minute will be permanently lost."
-msgid_plural "If you don't save, changes from the last %ld minutes will be permanently lost."
-msgstr[0] "Mikäli et tallenna, muutokset viimeisen %ld minuutin ajalta menetetään pysyvästi."
-msgstr[1] "Mikäli et tallenna, muutokset viimeisten %ld minuutin ajalta menetetään pysyvästi."
+msgid ""
+"If you don't save, changes from the last %ld minute will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld minutes will be permanently "
+"lost."
+msgstr[0] ""
+"Mikäli et tallenna, muutokset viimeisen %ld minuutin ajalta menetetään "
+"pysyvästi."
+msgstr[1] ""
+"Mikäli et tallenna, muutokset viimeisten %ld minuutin ajalta menetetään "
+"pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:454
 msgid "If you don't save, changes from the last hour will be permanently lost."
-msgstr "Mikäli et tallenna, muutokset viimeisen tunnin ajalta menetetään pysyvästi."
+msgstr ""
+"Mikäli et tallenna, muutokset viimeisen tunnin ajalta menetetään pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:460
 #, c-format
-msgid "If you don't save, changes from the last hour and %d minute will be permanently lost."
-msgid_plural "If you don't save, changes from the last hour and %d minutes will be permanently lost."
-msgstr[0] "Mikäli et tallenna, muutokset viimeisen tunnin ja %d minuutin ajalta menetetään pysyvästi."
-msgstr[1] "Mikäli et tallenna, muutokset viimeisen tunnin ja %d minuutin ajalta menetetään pysyvästi."
+msgid ""
+"If you don't save, changes from the last hour and %d minute will be "
+"permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last hour and %d minutes will be "
+"permanently lost."
+msgstr[0] ""
+"Mikäli et tallenna, muutokset viimeisen tunnin ja %d minuutin ajalta "
+"menetetään pysyvästi."
+msgstr[1] ""
+"Mikäli et tallenna, muutokset viimeisen tunnin ja %d minuutin ajalta "
+"menetetään pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:475
 #, c-format
-msgid "If you don't save, changes from the last %d hour will be permanently lost."
-msgid_plural "If you don't save, changes from the last %d hours will be permanently lost."
-msgstr[0] "Mikäli et tallenna, muutokset viimeisen %d tunnin ajalta menetetään pysyvästi."
-msgstr[1] "Mikäli et tallenna, muutokset viimeisten %d tunnin ajalta menetetään pysyvästi."
+msgid ""
+"If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %d hours will be permanently lost."
+msgstr[0] ""
+"Mikäli et tallenna, muutokset viimeisen %d tunnin ajalta menetetään "
+"pysyvästi."
+msgstr[1] ""
+"Mikäli et tallenna, muutokset viimeisten %d tunnin ajalta menetetään "
+"pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:519
 #, c-format
@@ -440,9 +633,14 @@ msgstr[1] "Muutokset %d asiakirjaan menetetään lopullisesti."
 #: ../gedit/gedit-close-confirmation-dialog.c:714
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
-msgid_plural "There are %d documents with unsaved changes. Save changes before closing?"
-msgstr[0] "Sinulla on avoinna %d asiakirja jossa on tallentamattomia muutoksia. Tallennetaanko muutokset ennen sulkemista?"
-msgstr[1] "Sinulla on avoinna %d asiakirja jossa on tallentamattomia muutoksia. Tallennetaanko muutokset ennen sulkemista?"
+msgid_plural ""
+"There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] ""
+"Sinulla on avoinna %d asiakirja jossa on tallentamattomia muutoksia. "
+"Tallennetaanko muutokset ennen sulkemista?"
+msgstr[1] ""
+"Sinulla on avoinna %d asiakirja jossa on tallentamattomia muutoksia. "
+"Tallennetaanko muutokset ennen sulkemista?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:733
 msgid "Docum_ents with unsaved changes:"
@@ -470,8 +668,12 @@ msgid "Display list of possible values for the encoding option"
 msgstr "Näytä luettelo mahdollisista arvoista koodausvalintaan"
 
 #: ../gedit/gedit-command-line.c:270
-msgid "Set the character encoding to be used to open the files listed on the command line"
-msgstr "Aseta merkistön koodaus jota haluat käyttää avatessasi komentorivillä luettelemiasi tiedostoja"
+msgid ""
+"Set the character encoding to be used to open the files listed on the "
+"command line"
+msgstr ""
+"Aseta merkistön koodaus jota haluat käyttää avatessasi komentorivillä "
+"luettelemiasi tiedostoja"
 
 #: ../gedit/gedit-command-line.c:271
 msgid "ENCODING"
@@ -495,7 +697,8 @@ msgstr "MITAT"
 
 #: ../gedit/gedit-command-line.c:302
 msgid "Open files and block process until files are closed"
-msgstr "Avaa tiedostoja ja estä prosessia jatkamasta, kunnes tiedostot ovat suljettu"
+msgstr ""
+"Avaa tiedostoja ja estä prosessia jatkamasta, kunnes tiedostot ovat suljettu"
 
 #: ../gedit/gedit-command-line.c:310
 msgid "Run gedit in the background"
@@ -516,8 +719,12 @@ msgstr "- Muokkaa tekstitiedostoja"
 
 #: ../gedit/gedit-command-line.c:345
 #, c-format
-msgid "%s\nRun '%s --help' to see a full list of available command line options.\n"
-msgstr "%s\nKomennolla '%s --help' näet kaikki mahdolliset komentorivivalitsimet.\n"
+msgid ""
+"%s\n"
+"Run '%s --help' to see a full list of available command line options.\n"
+msgstr ""
+"%s\n"
+"Komennolla '%s --help' näet kaikki mahdolliset komentorivivalitsimet.\n"
 
 #: ../gedit/gedit-commands-file.c:272
 #, c-format
@@ -545,7 +752,7 @@ msgstr "Tiedostoa ”%s” voi vain lukea."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Haluatko yrittää korvata sen tiedostolla jota olet tallentamassa?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "Ko_rvaa"
 
@@ -555,8 +762,12 @@ msgstr "Tallennetaanko tiedosto käyttäen pakkausta?"
 
 #: ../gedit/gedit-commands-file.c:613
 #, c-format
-msgid "The file \"%s\" was previously saved as plain text and will now be saved using compression."
-msgstr "Tiedosto %s on aikaisemmin tallennettu tekstinä ja tallennetaan nyt käyttäen pakkausta."
+msgid ""
+"The file \"%s\" was previously saved as plain text and will now be saved "
+"using compression."
+msgstr ""
+"Tiedosto %s on aikaisemmin tallennettu tekstinä ja tallennetaan nyt käyttäen "
+"pakkausta."
 
 #: ../gedit/gedit-commands-file.c:615
 msgid "_Save Using Compression"
@@ -568,8 +779,12 @@ msgstr "Tallennetaanko tiedosto muotoilemattomana tekstinä?"
 
 #: ../gedit/gedit-commands-file.c:620
 #, c-format
-msgid "The file \"%s\" was previously saved using compression and will now be saved as plain text."
-msgstr "Tiedosto %s oli aiemmin tallennettu pakattuna ja tallennetaan nyt muotoilemattomana tekstinä."
+msgid ""
+"The file \"%s\" was previously saved using compression and will now be saved "
+"as plain text."
+msgstr ""
+"Tiedosto %s oli aiemmin tallennettu pakattuna ja tallennetaan nyt "
+"muotoilemattomana tekstinä."
 
 #: ../gedit/gedit-commands-file.c:622
 msgid "_Save As Plain Text"
@@ -596,46 +811,86 @@ msgstr "Peru tekemättömät muutokset asiakirjaan ”%s”?"
 
 #: ../gedit/gedit-commands-file.c:1227
 #, c-format
-msgid "Changes made to the document in the last %ld second will be permanently lost."
-msgid_plural "Changes made to the document in the last %ld seconds will be permanently lost."
-msgstr[0] "Viimeisen %ld sekunnin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
-msgstr[1] "Viimeisten %ld sekunnin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
+msgid ""
+"Changes made to the document in the last %ld second will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %ld seconds will be permanently "
+"lost."
+msgstr[0] ""
+"Viimeisen %ld sekunnin aikana asiakirjaan tehdyt muutokset menetetään "
+"lopullisesti."
+msgstr[1] ""
+"Viimeisten %ld sekunnin aikana asiakirjaan tehdyt muutokset menetetään "
+"lopullisesti."
 
 #: ../gedit/gedit-commands-file.c:1236
-msgid "Changes made to the document in the last minute will be permanently lost."
-msgstr "Viimeisen minuutin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
+msgid ""
+"Changes made to the document in the last minute will be permanently lost."
+msgstr ""
+"Viimeisen minuutin aikana asiakirjaan tehdyt muutokset menetetään "
+"lopullisesti."
 
 #: ../gedit/gedit-commands-file.c:1242
 #, c-format
-msgid "Changes made to the document in the last minute and %ld second will be permanently lost."
-msgid_plural "Changes made to the document in the last minute and %ld seconds will be permanently lost."
-msgstr[0] "Viimeisen minuutin ja %ld sekunnin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
-msgstr[1] "Viimeisen minuutin ja %ld sekunnin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
+msgid ""
+"Changes made to the document in the last minute and %ld second will be "
+"permanently lost."
+msgid_plural ""
+"Changes made to the document in the last minute and %ld seconds will be "
+"permanently lost."
+msgstr[0] ""
+"Viimeisen minuutin ja %ld sekunnin aikana asiakirjaan tehdyt muutokset "
+"menetetään lopullisesti."
+msgstr[1] ""
+"Viimeisen minuutin ja %ld sekunnin aikana asiakirjaan tehdyt muutokset "
+"menetetään lopullisesti."
 
 #: ../gedit/gedit-commands-file.c:1252
 #, c-format
-msgid "Changes made to the document in the last %ld minute will be permanently lost."
-msgid_plural "Changes made to the document in the last %ld minutes will be permanently lost."
-msgstr[0] "Viimeisen %ld minuutin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
-msgstr[1] "Viimeisten %ld minuutin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
+msgid ""
+"Changes made to the document in the last %ld minute will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %ld minutes will be permanently "
+"lost."
+msgstr[0] ""
+"Viimeisen %ld minuutin aikana asiakirjaan tehdyt muutokset menetetään "
+"lopullisesti."
+msgstr[1] ""
+"Viimeisten %ld minuutin aikana asiakirjaan tehdyt muutokset menetetään "
+"lopullisesti."
 
 #: ../gedit/gedit-commands-file.c:1267
 msgid "Changes made to the document in the last hour will be permanently lost."
-msgstr "Viimeisen tunnin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
+msgstr ""
+"Viimeisen tunnin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
 
 #: ../gedit/gedit-commands-file.c:1273
 #, c-format
-msgid "Changes made to the document in the last hour and %d minute will be permanently lost."
-msgid_plural "Changes made to the document in the last hour and %d minutes will be permanently lost."
-msgstr[0] "Viimeisen tunnin ja %d minuutin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
-msgstr[1] "Viimeisen tunnin ja %d minuutin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
+msgid ""
+"Changes made to the document in the last hour and %d minute will be "
+"permanently lost."
+msgid_plural ""
+"Changes made to the document in the last hour and %d minutes will be "
+"permanently lost."
+msgstr[0] ""
+"Viimeisen tunnin ja %d minuutin aikana asiakirjaan tehdyt muutokset "
+"menetetään lopullisesti."
+msgstr[1] ""
+"Viimeisen tunnin ja %d minuutin aikana asiakirjaan tehdyt muutokset "
+"menetetään lopullisesti."
 
 #: ../gedit/gedit-commands-file.c:1288
 #, c-format
-msgid "Changes made to the document in the last %d hour will be permanently lost."
-msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] "Viimeisen %d tunnin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
-msgstr[1] "Viimeisten %d tunnin aikana asiakirjaan tehdyt muutokset menetetään lopullisesti."
+msgid ""
+"Changes made to the document in the last %d hour will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %d hours will be permanently lost."
+msgstr[0] ""
+"Viimeisen %d tunnin aikana asiakirjaan tehdyt muutokset menetetään "
+"lopullisesti."
+msgstr[1] ""
+"Viimeisten %d tunnin aikana asiakirjaan tehdyt muutokset menetetään "
+"lopullisesti."
 
 #: ../gedit/gedit-commands-file.c:1314
 msgid "_Revert"
@@ -647,7 +902,19 @@ msgstr "gedit on pieni ja kevyt tekstimuokkain GNOME-työpöytäympäristölle."
 
 #: ../gedit/gedit-commands-help.c:113
 msgid "translator-credits"
-msgstr "Ilkka Tuohela, 2005-2009\nLauri Nurmi, 2005-2007\nSami Pesonen, 2005\nJarkko Ranta, 2000-2004\n\nhttp://www.gnome.fi/\n\nLaunchpad Contributions:\n  Eetu Huisman https://launchpad.net/~eh\n  Jiri Grönroos https://launchpad.net/~jiri-gronroos\n  Jussi Aalto https://launchpad.net/~jtaalto\n  Tommi Vainikainen https://launchpad.net/~thv"
+msgstr ""
+"Ilkka Tuohela, 2005-2009\n"
+"Lauri Nurmi, 2005-2007\n"
+"Sami Pesonen, 2005\n"
+"Jarkko Ranta, 2000-2004\n"
+"\n"
+"http://www.gnome.fi/\n"
+"\n"
+"Launchpad Contributions:\n"
+"  Eetu Huisman https://launchpad.net/~eh\n"
+"  Jiri Grönroos https://launchpad.net/~jiri-gronroos\n"
+"  Jussi Aalto https://launchpad.net/~jtaalto\n"
+"  Tommi Vainikainen https://launchpad.net/~thv"
 
 #: ../gedit/gedit-commands-search.c:112
 #, c-format
@@ -911,13 +1178,21 @@ msgstr "”%s” ei ole kelvollinen sijainti."
 
 #: ../gedit/gedit-io-error-info-bar.c:289
 #, c-format
-msgid "Host %s could not be found. Please check that your proxy settings are correct and try again."
-msgstr "Verkkonimeä %s ei löydy. Tarkista että välipalvelimesi asetukset ovat kunnossa ja yritä uudelleen."
+msgid ""
+"Host %s could not be found. Please check that your proxy settings are "
+"correct and try again."
+msgstr ""
+"Verkkonimeä %s ei löydy. Tarkista että välipalvelimesi asetukset ovat "
+"kunnossa ja yritä uudelleen."
 
 #: ../gedit/gedit-io-error-info-bar.c:304
 #, c-format
-msgid "Hostname was invalid. Please check that you typed the location correctly and try again."
-msgstr "Kohdekoneen nimi ei ole kelvollinen. Tarkista kirjoittamasi osoite ja koeta uudelleen."
+msgid ""
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
+msgstr ""
+"Kohdekoneen nimi ei ole kelvollinen. Tarkista kirjoittamasi osoite ja koeta "
+"uudelleen."
 
 #: ../gedit/gedit-io-error-info-bar.c:312
 #, c-format
@@ -958,8 +1233,12 @@ msgid "Edit Any_way"
 msgstr "_Muokkaa joka tapauksessa"
 
 #: ../gedit/gedit-io-error-info-bar.c:608
-msgid "The number of followed links is limited and the actual file could not be found within this limit."
-msgstr "Seurattujen linkkien lukumäärä on rajoitettu, eikä todellista tiedostoa löytynyt tämän rajan puitteissa."
+msgid ""
+"The number of followed links is limited and the actual file could not be "
+"found within this limit."
+msgstr ""
+"Seurattujen linkkien lukumäärä on rajoitettu, eikä todellista tiedostoa "
+"löytynyt tämän rajan puitteissa."
 
 #: ../gedit/gedit-io-error-info-bar.c:612
 msgid "You do not have the permissions necessary to open the file."
@@ -984,8 +1263,12 @@ msgid "There was a problem opening the file %s."
 msgstr "Tiedostoa %s avatessa tapahtui virhe."
 
 #: ../gedit/gedit-io-error-info-bar.c:629
-msgid "The file you opened has some invalid characters. If you continue editing this file you could corrupt this document."
-msgstr "Avatussa tiedostossa on epäkelvollisia merkkejä. Jos jatkat tiedoston muokkausta, voit vioittaa tätä sitä."
+msgid ""
+"The file you opened has some invalid characters. If you continue editing "
+"this file you could corrupt this document."
+msgstr ""
+"Avatussa tiedostossa on epäkelvollisia merkkejä. Jos jatkat tiedoston "
+"muokkausta, voit vioittaa tätä sitä."
 
 #: ../gedit/gedit-io-error-info-bar.c:632
 msgid "You can also choose another character encoding and try again."
@@ -1012,8 +1295,12 @@ msgid "Could not save the file %s using the %s character encoding."
 msgstr "Tiedoston %s tallennus käyttäen merkistökoodausta %s ei onnistunut."
 
 #: ../gedit/gedit-io-error-info-bar.c:715
-msgid "The document contains one or more characters that cannot be encoded using the specified character encoding."
-msgstr "Tiedosto sisältää yhden tai useamman kirjasimen, joiden näyttäminen ei onnistu käyttäen valittua merkistökoodausta."
+msgid ""
+"The document contains one or more characters that cannot be encoded using "
+"the specified character encoding."
+msgstr ""
+"Tiedosto sisältää yhden tai useamman kirjasimen, joiden näyttäminen ei "
+"onnistu käyttäen valittua merkistökoodausta."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
@@ -1027,8 +1314,12 @@ msgid "This file (%s) is already open in another gedit window."
 msgstr "Tiedosto (%s) on jo auki toisessa geditin ikkunassa."
 
 #: ../gedit/gedit-io-error-info-bar.c:815
-msgid "gedit opened this instance of the file in a non-editable way. Do you want to edit it anyway?"
-msgstr "Tämä tiedoston näkymä on avattu vain luettavassa tilassa. Haluatko silti muokata sitä?"
+msgid ""
+"gedit opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
+msgstr ""
+"Tämä tiedoston näkymä on avattu vain luettavassa tilassa. Haluatko silti "
+"muokata sitä?"
 
 #: ../gedit/gedit-io-error-info-bar.c:873
 #: ../gedit/gedit-io-error-info-bar.c:971
@@ -1045,6 +1336,7 @@ msgstr "Älä Ta_llenna"
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
+#.
 #: ../gedit/gedit-io-error-info-bar.c:895
 #, c-format
 msgid "The file %s has been modified since reading it."
@@ -1052,7 +1344,9 @@ msgstr "Tiedostoa ”%s” on muokattu sen avaamisen jälkeen."
 
 #: ../gedit/gedit-io-error-info-bar.c:910
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
-msgstr "Jos tallennat tiedoston, kaikki ulkopuoliset muutokset hukataan. Tallennetaanko silti?"
+msgstr ""
+"Jos tallennat tiedoston, kaikki ulkopuoliset muutokset hukataan. "
+"Tallennetaanko silti?"
 
 #: ../gedit/gedit-io-error-info-bar.c:998
 #, c-format
@@ -1062,50 +1356,93 @@ msgstr "Varmuuskopiointitiedostoa ei voitu luoda tallennettaessa tiedostoa %s"
 #: ../gedit/gedit-io-error-info-bar.c:1003
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
-msgstr "Väliaikaista varmuuskopiointitiedostoa ei voitu luoda tallennettaessa tiedostoa %s"
+msgstr ""
+"Väliaikaista varmuuskopiointitiedostoa ei voitu luoda tallennettaessa "
+"tiedostoa %s"
 
 #: ../gedit/gedit-io-error-info-bar.c:1020
-msgid "gedit could not back up the old copy of the file before saving the new one. You can ignore this warning and save the file anyway, but if an error occurs while saving, you could lose the old copy of the file. Save anyway?"
-msgstr "Gedit ei voinut varmuuskopioida vanhaa versiota tiedostosta ennen uuden tallentamista. Voit ohittaa tämän varoituksen ja tallentaa tästä huolimatta, mutta mikäli virhe tapahtuu tallennettaessa, saatat hävittää vanhan version tiedostosta. Tallenetaanko tästä huolimatta?"
+msgid ""
+"gedit could not back up the old copy of the file before saving the new one. "
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
+msgstr ""
+"Gedit ei voinut varmuuskopioida vanhaa versiota tiedostosta ennen uuden "
+"tallentamista. Voit ohittaa tämän varoituksen ja tallentaa tästä huolimatta, "
+"mutta mikäli virhe tapahtuu tallennettaessa, saatat hävittää vanhan version "
+"tiedostosta. Tallenetaanko tästä huolimatta?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:1080
 #, c-format
-msgid "gedit cannot handle %s locations in write mode. Please check that you typed the location correctly and try again."
-msgstr "Gedit ei osaa kirjoittaa ”%s”-sijainteihin. Tarkista, että annoit sijainnin oikein ja yritä uudelleen."
+msgid ""
+"gedit cannot handle %s locations in write mode. Please check that you typed "
+"the location correctly and try again."
+msgstr ""
+"Gedit ei osaa kirjoittaa ”%s”-sijainteihin. Tarkista, että annoit sijainnin "
+"oikein ja yritä uudelleen."
 
 #: ../gedit/gedit-io-error-info-bar.c:1088
-msgid "gedit cannot handle this location in write mode. Please check that you typed the location correctly and try again."
-msgstr "Gedit ei osaa kirjoittaa tämän tyyppiseen sijaintiin. Tarkista, että annoit sijainnin oikein ja yritä uudelleen."
+msgid ""
+"gedit cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
+msgstr ""
+"Gedit ei osaa kirjoittaa tämän tyyppiseen sijaintiin. Tarkista, että annoit "
+"sijainnin oikein ja yritä uudelleen."
 
 #: ../gedit/gedit-io-error-info-bar.c:1097
 #, c-format
-msgid "%s is not a valid location. Please check that you typed the location correctly and try again."
-msgstr "%s ei ole kelvollinen sijainti. Tarkista, että kirjoitit osoitteen oikein ja yritä uudelleen."
+msgid ""
+"%s is not a valid location. Please check that you typed the location "
+"correctly and try again."
+msgstr ""
+"%s ei ole kelvollinen sijainti. Tarkista, että kirjoitit osoitteen oikein ja "
+"yritä uudelleen."
 
 #: ../gedit/gedit-io-error-info-bar.c:1104
-msgid "You do not have the permissions necessary to save the file. Please check that you typed the location correctly and try again."
-msgstr "Oikeutesi eivät riitä tiedoston tallentamiseen. Tarkista, että annoit sijainnin oikein ja yritä uudelleen."
+msgid ""
+"You do not have the permissions necessary to save the file. Please check "
+"that you typed the location correctly and try again."
+msgstr ""
+"Oikeutesi eivät riitä tiedoston tallentamiseen. Tarkista, että annoit "
+"sijainnin oikein ja yritä uudelleen."
 
 #: ../gedit/gedit-io-error-info-bar.c:1110
-msgid "There is not enough disk space to save the file. Please free some disk space and try again."
-msgstr "Levytila ei riitä tiedoston tallentamiseksi. Vapauta levytilaa ja yritä uudelleen."
+msgid ""
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
+msgstr ""
+"Levytila ei riitä tiedoston tallentamiseksi. Vapauta levytilaa ja yritä "
+"uudelleen."
 
 #: ../gedit/gedit-io-error-info-bar.c:1115
-msgid "You are trying to save the file on a read-only disk. Please check that you typed the location correctly and try again."
-msgstr "Yrität tallentaa tiedostoa levylle, jolta voi vain lukea. Tarkista, että kirjoitit osoitteen oikein ja yritä uudelleen."
+msgid ""
+"You are trying to save the file on a read-only disk. Please check that you "
+"typed the location correctly and try again."
+msgstr ""
+"Yrität tallentaa tiedostoa levylle, jolta voi vain lukea. Tarkista, että "
+"kirjoitit osoitteen oikein ja yritä uudelleen."
 
 #: ../gedit/gedit-io-error-info-bar.c:1121
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Samanniminen tiedosto on jo olemassa. Käytä toista nimeä."
 
 #: ../gedit/gedit-io-error-info-bar.c:1126
-msgid "The disk where you are trying to save the file has a limitation on length of the file names. Please use a shorter name."
-msgstr "Levy, jolle yrität tallentaa tiedostoa, rajoittaa tiedostonimien pituutta. Valitse lyhyempi nimi."
+msgid ""
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
+msgstr ""
+"Levy, jolle yrität tallentaa tiedostoa, rajoittaa tiedostonimien pituutta. "
+"Valitse lyhyempi nimi."
 
 #: ../gedit/gedit-io-error-info-bar.c:1133
-msgid "The disk where you are trying to save the file has a limitation on file sizes. Please try saving a smaller file or saving it to a disk that does not have this limitation."
-msgstr "Levy, jonne olet tallentamassa tiedostoa on tiedostoilla kokorajoitus. Yritä tallentaa pienempi tiedosto tai tallenna se levylle, jolla ei ole tätä rajoitusta."
+msgid ""
+"The disk where you are trying to save the file has a limitation on file "
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
+msgstr ""
+"Levy, jonne olet tallentamassa tiedostoa on tiedostoilla kokorajoitus. Yritä "
+"tallentaa pienempi tiedosto tai tallenna se levylle, jolla ei ole tätä "
+"rajoitusta."
 
 #: ../gedit/gedit-io-error-info-bar.c:1149
 #, c-format
@@ -1115,6 +1452,7 @@ msgstr "Tiedoston ”%s” tallentaminen epäonnistui."
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
+#.
 #: ../gedit/gedit-io-error-info-bar.c:1194
 #, c-format
 msgid "The file %s changed on disk."
@@ -1138,7 +1476,8 @@ msgid "Some invalid chars have been detected while saving %s"
 msgstr "Epäkelvollisia merkkejä havaittu %s tallennettaessa tiedostoa."
 
 #: ../gedit/gedit-io-error-info-bar.c:1294
-msgid "If you continue saving this file you can corrupt the document.  Save anyway?"
+msgid ""
+"If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr "Jos jatkat tallettamista, niin tämä tiedosto voi vioittua."
 
 #. Keep in sync with the respective GtkActions
@@ -1174,7 +1513,8 @@ msgstr "_Käytä järjestelmän tasalevyistä kirjasinta (%s)"
 #: ../gedit/gedit-preferences-dialog.c:676
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
-msgstr "Kansiota ”%s” ei voitu luoda, g_mkdir_with_parents() epäonnistui: %s"
+msgstr ""
+"Kansiota ”%s” luominen epäonnistui, g_mkdir_with_parents() epäonnistui: %s"
 
 #: ../gedit/gedit-preferences-dialog.c:860
 msgid "The selected color scheme cannot be installed."
@@ -1195,7 +1535,7 @@ msgstr "Värimallitiedostot"
 #: ../gedit/gedit-preferences-dialog.c:954
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
-msgstr "Värimallia ”%s” ei voitu poistaa"
+msgstr "Värimallin ”%s” poisto epäonnistui"
 
 #: ../gedit/gedit-preferences-dialog.c:1177
 msgid "gedit Preferences"
@@ -1239,9 +1579,8 @@ msgid "Highlight current _line"
 msgstr "Korosta nykyinen _rivi"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:9
-#, fuzzy
 msgid "Highlight matching _brackets"
-msgstr "Korosta _vastaava sulku"
+msgstr "Korosta _vastaava sulut"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "View"
@@ -1302,24 +1641,20 @@ msgid "Color Scheme"
 msgstr "Väriteema"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
-#, fuzzy
 msgid "Install scheme"
-msgstr "Sisältömalli"
+msgstr "Asenna teema"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:25
-#, fuzzy
 msgid "Install Scheme"
-msgstr "Tyylimalli"
+msgstr "Asenna teema"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:26
-#, fuzzy
 msgid "Uninstall scheme"
-msgstr "Sisältömalli"
+msgstr "Poista teema"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:27
-#, fuzzy
 msgid "Uninstall Scheme"
-msgstr "Tyylimalli"
+msgstr "Poista teema"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Font & Colors"
@@ -1464,12 +1799,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Esikatselunäkymä tulostettavan asiakirjan sivusta"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "Korvaa"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "Korvaa k_aikki"
 
@@ -1665,7 +2000,7 @@ msgstr "Tietoja tästä sovelluksesta"
 
 #: ../gedit/gedit-ui.h:69
 msgid "Leave fullscreen mode"
-msgstr "Palaa kokoruututilasta"
+msgstr "Poistu koko näytön tilasta"
 
 #: ../gedit/gedit-ui.h:77
 msgid "Save the current file"
@@ -1799,28 +2134,24 @@ msgid "_New Tab Group"
 msgstr "_Uusi välilehtiryhmä"
 
 #: ../gedit/gedit-ui.h:131
-#, fuzzy
 msgid "Create a new tab group"
-msgstr "Luo uusi asiakirja"
+msgstr "Luo uusi välilehtiryhmä"
 
 #: ../gedit/gedit-ui.h:132
-#, fuzzy
 msgid "P_revious Tab Group"
-msgstr "Edellinen sijainti"
+msgstr "Edellinen _välilehtiryhmä"
 
 #: ../gedit/gedit-ui.h:133
-#, fuzzy
 msgid "Switch to the previous tab group"
-msgstr "Näytä edellinen sivu"
+msgstr "Vaihda edelliseen välilehtiryhmään"
 
 #: ../gedit/gedit-ui.h:134
 msgid "Nex_t Tab Group"
-msgstr ""
+msgstr "_Seuraava välilehtiryhmä"
 
 #: ../gedit/gedit-ui.h:135
-#, fuzzy
 msgid "Switch to the next tab group"
-msgstr "Näytä seuraava sivu"
+msgstr "Vaihda seuraavaan välilehtiryhmään"
 
 #: ../gedit/gedit-ui.h:136
 msgid "_Previous Document"
@@ -1868,16 +2199,15 @@ msgstr "Näytä tai piilota tilarivi tässä ikkunassa"
 
 #: ../gedit/gedit-ui.h:167
 msgid "Edit text in fullscreen"
-msgstr "Muokkaa tekstiä kokoruututilassa"
+msgstr "Muokkaa tekstiä koko näytön tilassa"
 
 #: ../gedit/gedit-ui.h:174
 msgid "Side _Panel"
 msgstr "_Sivupaneeli"
 
 #: ../gedit/gedit-ui.h:175
-#, fuzzy
 msgid "Show or hide the side panel in the current window"
-msgstr "Näytä tai piilot sivupaneeli nykyisessä ikkunassa"
+msgstr "Näytä tai piilota sivupaneeli nykyisessä ikkunassa"
 
 #: ../gedit/gedit-ui.h:177
 msgid "_Bottom Panel"
@@ -1887,46 +2217,46 @@ msgstr "_Alapaneeli"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Näytä tai piilota alapaneeli tässä ikkunassa"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Tarkista asennuksesi."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
-msgstr "Ei voitu avata käyttöliittymätiedostoa %s. Virhe: %s"
+msgstr "Käyttöliittymätiedoston %s avaus epäonnistui. Virhe: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Kohdetta ”%s” ei löydy tiedostosta %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ levyjaossa %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:546
+#: ../gedit/gedit-view-frame.c:542
 msgid "_Wrap Around"
 msgstr "_Rivitä"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:556
+#: ../gedit/gedit-view-frame.c:552
 msgid "Match _Entire Word Only"
 msgstr "Täsmää vain _kokonaisia sanoja"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:566
+#: ../gedit/gedit-view-frame.c:562
 msgid "_Match Case"
 msgstr "_Huomioi kirjainkoko"
 
-#: ../gedit/gedit-view-frame.c:767
+#: ../gedit/gedit-view-frame.c:759
 msgid "String you want to search for"
 msgstr "Etsittävä merkkijono"
 
-#: ../gedit/gedit-view-frame.c:777
+#: ../gedit/gedit-view-frame.c:769
 msgid "Line you want to move the cursor to"
 msgstr "Rivi, jolle haluat siirtää kursorin"
 
@@ -1996,14 +2326,13 @@ msgid "Bracket match is out of range"
 msgstr "Sulkuparin täsmäys"
 
 #: ../gedit/gedit-window.c:2259
-#, fuzzy
 msgid "Bracket match not found"
-msgstr "Sulkuparin täsmäys"
+msgstr "Vastaavaa sulkua ei löytynyt"
 
 #: ../gedit/gedit-window.c:2264
 #, c-format
 msgid "Bracket match found on line: %d"
-msgstr ""
+msgstr "Vastaava sulku löytyi riviltä: %d"
 
 #. ex:set ts=8 noet:
 #: ../plugins/changecase/changecase.plugin.desktop.in.h:1
@@ -2076,8 +2405,12 @@ msgid "There is a new version of gedit"
 msgstr "Uusi versio geditistä on saatavilla"
 
 #: ../plugins/checkupdate/gedit-check-update-plugin.c:321
-msgid "You can download the new version of gedit by clicking on the download button or ignore that version and wait for a new one"
-msgstr "Voit imuroida uuden version geditistä napsauttamalla imurointipainiketta tai ohittaa uuden version ja odottaa seuraavaa"
+msgid ""
+"You can download the new version of gedit by clicking on the download button "
+"or ignore that version and wait for a new one"
+msgstr ""
+"Voit imuroida uuden version geditistä napsauttamalla imurointipainiketta tai "
+"ohittaa uuden version ja odottaa seuraavaa"
 
 #. ex:set ts=8 noet:
 #: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
@@ -2097,8 +2430,12 @@ msgid "Document Statistics"
 msgstr "Asiakirjan tilastot"
 
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
-msgid "Analyzes the current document and reports the number of words, lines, characters and non-space characters in it."
-msgstr "Käy läpi aktiivisen asiakirjan ja kertoo siinä olevien sanojen, rivien, merkkien ja ei-tyhjien merkkien määrät."
+msgid ""
+"Analyzes the current document and reports the number of words, lines, "
+"characters and non-space characters in it."
+msgstr ""
+"Käy läpi aktiivisen asiakirjan ja kertoo siinä olevien sanojen, rivien, "
+"merkkien ja ei-tyhjien merkkien määrät."
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:427
 msgid "_Document Statistics"
@@ -2195,10 +2532,12 @@ msgstr "Suorita ulkoisia komentoja ja skriptejä."
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
 msgid "Whether to use the system font"
-msgstr ""
+msgstr "Käytetäänkö järjestelmän kirjasinta"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
-msgid "If true, the external tools will use the desktop-global standard font if it's monospace (and the most similar font it can come up with otherwise)."
+msgid ""
+"If true, the external tools will use the desktop-global standard font if "
+"it's monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
@@ -2209,7 +2548,7 @@ msgstr ""
 #: ../plugins/externaltools/tools/capture.py:92
 #, python-format
 msgid "Could not execute command: %s"
-msgstr "Komentoa ei voitu suorittaa: %s"
+msgstr "Komennon suoritus epäonnistui: %s"
 
 #: ../plugins/externaltools/tools/functions.py:159
 msgid "You must be inside a word to run this command"
@@ -2329,27 +2668,24 @@ msgid "Insert at cursor position"
 msgstr "Lisää kohdistimen kohdalle"
 
 #: ../plugins/externaltools/tools/tools.ui.h:18
-#, fuzzy
 msgid "Manage External Tools"
-msgstr "Hallinnoi _Ulkoisia työkaluja…"
+msgstr "Hallinnoi ulkoisia työkaluja"
 
 #: ../plugins/externaltools/tools/tools.ui.h:19
 msgid "_Tools:"
 msgstr "Työ_kalut:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:20
-#, fuzzy
 msgid "Add a new tool"
-msgstr "Lisää uusi tyhjä kansio"
+msgstr "Lisää uusi työkalu"
 
 #: ../plugins/externaltools/tools/tools.ui.h:21
 msgid "Add Tool"
 msgstr "Lisää työkalu."
 
 #: ../plugins/externaltools/tools/tools.ui.h:22
-#, fuzzy
 msgid "Remove selected tool"
-msgstr "Peru valittu tekstikatkelma"
+msgstr "Poista valittu työkalu"
 
 #: ../plugins/externaltools/tools/tools.ui.h:23
 msgid "Remove Tool"
@@ -2387,13 +2723,12 @@ msgid "_Save:"
 msgstr "_Tallenna_"
 
 #: ../plugins/externaltools/tools/tools.ui.h:33
-#, fuzzy
 msgid "Shortcut _Key:"
 msgstr "_Pikanäppäin:"
 
 #: ../plugins/externaltools/tools/windowactivatable.py:179
 msgid "Manage _External Tools..."
-msgstr "Hallinnoi _Ulkoisia työkaluja…"
+msgstr "Hallinnoi _ulkoisia työkaluja…"
 
 #: ../plugins/externaltools/tools/windowactivatable.py:180
 msgid "Opens the External Tools Manager"
@@ -2477,8 +2812,12 @@ msgid "An error occurred"
 msgstr "Tapahtui virhe"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:1085
-msgid "Cannot move file to trash, do you\nwant to delete permanently?"
-msgstr "Tiedostoa ei voi siirtää roskakoriin.\nHaluatko poistaa sen pysyvästi?"
+msgid ""
+"Cannot move file to trash, do you\n"
+"want to delete permanently?"
+msgstr ""
+"Tiedostoa ei voi siirtää roskakoriin.\n"
+"Haluatko poistaa sen pysyvästi?"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:1090
 #, c-format
@@ -2507,8 +2846,12 @@ msgid "(Empty)"
 msgstr "[Tyhjä]"
 
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3467
-msgid "The renamed file is currently filtered out. You need to adjust your filter settings to make the file visible"
-msgstr "Uudelleennimetty tiedosto on tällä hetkellä suodatettu pois. Sinun täytyy muuttaa suodatinasetuksiasi, jos haluat nähdä sen."
+msgid ""
+"The renamed file is currently filtered out. You need to adjust your filter "
+"settings to make the file visible"
+msgstr ""
+"Uudelleennimetty tiedosto on tällä hetkellä suodatettu pois. Sinun täytyy "
+"muuttaa suodatinasetuksiasi, jos haluat nähdä sen."
 
 #. Translators: This is the default name of new files created by the file browser pane.
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3711
@@ -2516,8 +2859,12 @@ msgid "file"
 msgstr "tiedosto"
 
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3739
-msgid "The new file is currently filtered out. You need to adjust your filter settings to make the file visible"
-msgstr "Uusi tiedosto on tällä hetkellä suodatettu pois. Sinun täytyy säätää suodatinasetuksiasi, jos haluat nähdä sen."
+msgid ""
+"The new file is currently filtered out. You need to adjust your filter "
+"settings to make the file visible"
+msgstr ""
+"Uusi tiedosto on tällä hetkellä suodatettu pois. Sinun täytyy säätää "
+"suodatinasetuksiasi, jos haluat nähdä sen."
 
 #. Translators: This is the default name of new directories created by the file browser pane.
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3770
@@ -2525,8 +2872,12 @@ msgid "directory"
 msgstr "kansio"
 
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3795
-msgid "The new directory is currently filtered out. You need to adjust your filter settings to make the directory visible"
-msgstr "Uusi kansio on tällä hetkellä suodatettu pois. Sinun täytyy säätää suodatinasetuksiasi, jos haluat nähdä sen."
+msgid ""
+"The new directory is currently filtered out. You need to adjust your filter "
+"settings to make the directory visible"
+msgstr ""
+"Uusi kansio on tällä hetkellä suodatettu pois. Sinun täytyy säätää "
+"suodatinasetuksiasi, jos haluat nähdä sen."
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:733
 msgid "Bookmarks"
@@ -2639,9 +2990,8 @@ msgid "Show binary files"
 msgstr "Näytä binääritiedostot"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:1202
-#, fuzzy
 msgid "Match Filename"
-msgstr "_Huomioi kirjainkoko"
+msgstr "Täsmää tiedostonimi"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2004
 #, c-format
@@ -2651,12 +3001,12 @@ msgstr "Liitetylle taltiolle ei löydy liitos-oliota: %s"
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2081
 #, c-format
 msgid "Could not open media: %s"
-msgstr "Mediaa ei voitu avata: %s"
+msgstr "Median avaus epäonnistui: %s"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2128
 #, c-format
 msgid "Could not mount volume: %s"
-msgstr "Taltiota ei voitu liittää: %s"
+msgstr "Taltion liittäminen epäonnistui: %s"
 
 #. ex:ts=8:noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
@@ -2664,24 +3014,37 @@ msgid "Open With Tree View"
 msgstr "Avaa puunäkymä"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
-msgid "Open the tree view when the file browser plugin gets loaded instead of the bookmarks view"
-msgstr "Avaa puunäkymä kirjanmerkkinäkymän sijasta, kun tiedostoselain ladataan"
+msgid ""
+"Open the tree view when the file browser plugin gets loaded instead of the "
+"bookmarks view"
+msgstr ""
+"Avaa puunäkymä kirjanmerkkinäkymän sijasta, kun tiedostoselain ladataan"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Tiedostoselaimen juurihakemisto"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
-msgid "The file browser root directory to use when loading the file browser plugin and onload/tree_view is TRUE."
-msgstr "Tiedostoselaimen juurikansiona käytettävä kansio, kun liitännäistä ladataan ja avain onload/tree_view on TOSI."
+msgid ""
+"The file browser root directory to use when loading the file browser plugin "
+"and onload/tree_view is TRUE."
+msgstr ""
+"Tiedostoselaimen juurikansiona käytettävä kansio, kun liitännäistä ladataan "
+"ja avain onload/tree_view on TOSI."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Tiedostoselaimen virtuaalinen juurihakemisto"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
-msgid "The file browser virtual root directory to use when loading the file browser plugin when onload/tree_view is TRUE. The virtual root must always be below the actual root."
-msgstr "Tiedostoselaimen virtuaalisena juurikansiona käytettävä kansio, kun liitännäistä ladataan ja avain onload/tree_view on TOSI. Virtuaalisen kansion täytyy aina olla todellisen juurikansion alikansio."
+msgid ""
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
+msgstr ""
+"Tiedostoselaimen virtuaalisena juurikansiona käytettävä kansio, kun "
+"liitännäistä ladataan ja avain onload/tree_view on TOSI. Virtuaalisen "
+"kansion täytyy aina olla todellisen juurikansion alikansio."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
 msgid "Enable Restore of Remote Locations"
@@ -2696,8 +3059,16 @@ msgid "Set Location to First Document"
 msgstr "Aseta sijainti ensimmäiselle asiakirjalle"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
-msgid "If TRUE the file browser plugin will view the directory of the first opened document given that the file browser hasn't been used yet. (Thus this generally applies to opening a document from the command line or opening it with Nautilus, etc.)"
-msgstr "Jos TOSI niin tiedostoselainliitännäinen näyttää ensin avatun asiakirjan hakemiston jos tiedostoselainta käytetään ensimmäistä kertaa. (Tämä siis käytännössä soveltuu tilanteisiin, joissa asiakirja on on avattu komentoriviltä tai Nautiluksesta jne.)"
+msgid ""
+"If TRUE the file browser plugin will view the directory of the first opened "
+"document given that the file browser hasn't been used yet. (Thus this "
+"generally applies to opening a document from the command line or opening it "
+"with Nautilus, etc.)"
+msgstr ""
+"Jos TOSI niin tiedostoselainliitännäinen näyttää ensin avatun asiakirjan "
+"hakemiston jos tiedostoselainta käytetään ensimmäistä kertaa. (Tämä siis "
+"käytännössä soveltuu tilanteisiin, joissa asiakirja on on avattu "
+"komentoriviltä tai Nautiluksesta jne.)"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
 msgid "File Browser Filter Mode"
@@ -2705,16 +3076,27 @@ msgstr "Tiedostoselaimen suodatintila"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
 #, fuzzy
-msgid "This value determines what files get filtered from the file browser. Valid values are: none (filter nothing), hide-hidden (filter hidden files) and hide-binary (filter binary files)."
-msgstr "Tämä avain määrittää, mitkä tiedostot suodatetaan tiedostoselaimessa. Kelvolliset arvot ovat: none (ei suodatusta), hidden (suodatetaan piilotiedostot), binary (suodatetaan binääritiedostot) sekä hidden_and_binary (suodatetaan piilo- ja binääritiedostot)"
+msgid ""
+"This value determines what files get filtered from the file browser. Valid "
+"values are: none (filter nothing), hide-hidden (filter hidden files) and "
+"hide-binary (filter binary files)."
+msgstr ""
+"Tämä avain määrittää, mitkä tiedostot suodatetaan tiedostoselaimessa. "
+"Kelvolliset arvot ovat: none (ei suodatusta), hidden (suodatetaan "
+"piilotiedostot), binary (suodatetaan binääritiedostot) sekä "
+"hidden_and_binary (suodatetaan piilo- ja binääritiedostot)"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Tiedostoselaimen suodatinmalli"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
-msgid "The filter pattern to filter the file browser with. This filter works on top of the filter_mode."
-msgstr "Tiedostoselaimen listan suodatuksessa käytetty suodatin. Tämä suodatin on käytössä avaimen filter_mode määrittelemällä tavalla."
+msgid ""
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
+msgstr ""
+"Tiedostoselaimen listan suodatuksessa käytetty suodatin. Tämä suodatin on "
+"käytössä avaimen filter_mode määrittelemällä tavalla."
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
@@ -2725,28 +3107,28 @@ msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Tuki emacsin, katen ja vimin tilariveille."
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
-#, fuzzy
 msgid "Command Color Text"
-msgstr "_Komennon väri:"
+msgstr "Komennon väri"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
-#, fuzzy
 msgid "The command color text"
-msgstr "_Komennon väri:"
+msgstr "Komennon väri"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
-#, fuzzy
 msgid "Error Color Text"
-msgstr "_Virheen väri:"
+msgstr "Virheen väri"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
-#, fuzzy
 msgid "The error color text"
-msgstr "_Virheen väri:"
+msgstr "Virheen väri"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
-msgid "If true, the terminal will use the desktop-global standard font if it's monospace (and the most similar font it can come up with otherwise)."
-msgstr "Jos tosi, pääte käyttää työpöydänlaajuista peruskirjasinta jos se on tasavälinen (ja muussa tapauksessa lähintä vastaavaa)."
+msgid ""
+"If true, the terminal will use the desktop-global standard font if it's "
+"monospace (and the most similar font it can come up with otherwise)."
+msgstr ""
+"Jos tosi, pääte käyttää työpöydänlaajuista peruskirjasinta jos se on "
+"tasavälinen (ja muussa tapauksessa lähintä vastaavaa)."
 
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
 msgid "C_ommand color:"
@@ -2789,7 +3171,7 @@ msgid "Type to search..."
 msgstr "Hae kirjoittamalla…"
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Tekstileikkeet"
@@ -2797,7 +3179,7 @@ msgstr "Tekstileikkeet"
 #: ../plugins/snippets/snippets/exporter.py:82
 #, python-format
 msgid "The archive \"%s\" could not be created"
-msgstr "Arkistoa ”%s” ei voitu luoda"
+msgstr "Arkiston ”%s” luonti epäonnistui"
 
 #: ../plugins/snippets/snippets/exporter.py:99
 #, python-format
@@ -2828,12 +3210,12 @@ msgstr "Tuotu tiedosto ”%s” ei ole kelvollinen tekstileiketiedosto"
 #: ../plugins/snippets/snippets/importer.py:77
 #, python-format
 msgid "The archive \"%s\" could not be extracted"
-msgstr "Arkistoa ”%s” ei voitu purkaa"
+msgstr "Arkiston ”%s” purkaminen epäonnistui"
 
 #: ../plugins/snippets/snippets/importer.py:95
 #, python-format
 msgid "The following files could not be imported: %s"
-msgstr "Seuraavia tiedostoja ei voitu tuoda: %s"
+msgstr "Seuraavien tiedostojen tuonti epäonnistui: %s"
 
 #: ../plugins/snippets/snippets/importer.py:111
 #: ../plugins/snippets/snippets/importer.py:124
@@ -2864,14 +3246,24 @@ msgstr "Poista valittu tekstileike"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
-msgid "This is not a valid Tab trigger. Triggers can either contain letters or a single (non-alphanumeric) character like: {, [, etc."
-msgstr "Tämä ei ole kelvollinen Tab-laukaisin. Laukaisimet voivat sisältää vain kirjaimia tai yksittäisiä (ei-aakkosnumerrisia) merkkejä kuten: {, [, jne."
+#, fuzzy
+#| msgid ""
+#| "This is not a valid Tab trigger. Triggers can either contain letters or a "
+#| "single (non-alphanumeric) character like: {, [, etc."
+msgid ""
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
+msgstr ""
+"Tämä ei ole kelvollinen Tab-laukaisin. Laukaisimet voivat sisältää vain "
+"kirjaimia tai yksittäisiä (ei-aakkosnumerrisia) merkkejä kuten: {, [, jne."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
 #: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "Single word the snippet is activated with after pressing Tab"
-msgstr "Yksi sana, joka aktivoi tekstileikkeen Tab-näppäimen painamisen jälkeen"
+msgstr ""
+"Yksi sana, joka aktivoi tekstileikkeen Tab-näppäimen painamisen jälkeen"
 
 #: ../plugins/snippets/snippets/manager.py:759
 #, python-format
@@ -2950,8 +3342,12 @@ msgstr "Syötä uusi pikanäppäin"
 
 #: ../plugins/snippets/snippets/placeholder.py:602
 #, python-format
-msgid "Execution of the Python command (%s) exceeds the maximum time, execution aborted."
-msgstr "Python-komennon (%s) suoritus ylitti suurimman sallitun ajan, joten suoritus keskeytettiin."
+msgid ""
+"Execution of the Python command (%s) exceeds the maximum time, execution "
+"aborted."
+msgstr ""
+"Python-komennon (%s) suoritus ylitti suurimman sallitun ajan, joten suoritus "
+"keskeytettiin."
 
 #: ../plugins/snippets/snippets/placeholder.py:610
 #, python-format
@@ -3111,6 +3507,7 @@ msgstr "Oikoluku on valmis"
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
+#.
 #: ../plugins/spell/gedit-spell-checker-language.c:378
 #: ../plugins/spell/gedit-spell-checker-language.c:384
 #, c-format
@@ -3120,6 +3517,7 @@ msgstr "%s (%s)"
 
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
+#.
 #: ../plugins/spell/gedit-spell-checker-language.c:393
 #, c-format
 msgctxt "language"
@@ -3128,6 +3526,7 @@ msgstr "Tuntematon (%s)"
 
 #. Translators: this refers the Default language used by the
 #. * spell checker
+#.
 #: ../plugins/spell/gedit-spell-checker-language.c:499
 msgctxt "language"
 msgid "Default"
@@ -3300,32 +3699,32 @@ msgid "_Prompt for a format"
 msgstr "_Kysy muotoilua"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
-#, fuzzy
 msgid "Prompt Type"
-msgstr "Kysymysviesti"
+msgstr "Kysymyksen tyyppi"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
-msgid "If the user should be prompted for a format or if the selected or custom format should be used."
-msgstr "Ilmoitus käyttäjälle formaatista, jos pitäisi käyttää valittua tai erikoisformaatia."
+msgid ""
+"If the user should be prompted for a format or if the selected or custom "
+"format should be used."
+msgstr ""
+"Kysytäänkö käyttäältä muotoilusta vai käytetäänkö valittua "
+"vai mukautetua muotoilua."
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
-#, fuzzy
 msgid "Selected Format"
-msgstr "Valittu"
+msgstr "Valittu muotoilu"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
 msgid "The selected format used when inserting the date/time."
-msgstr "Valittua muotoa käytetään asetetuissa päivä/aika tiedoissa."
+msgstr "Valittua muoto, jota käytetään päivää ja aikaa lisätessä asiakirjaan."
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
-#, fuzzy
 msgid "Custom Format"
-msgstr "_Käytä mukautettua muotoilua"
+msgstr "Mukautettu muotoilu"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
-#, fuzzy
 msgid "The custom format used when inserting the date/time."
-msgstr "Kun lisätään päivämäärää/kellonaikaa…"
+msgstr "Päivää ja aikaa lisättäessä käytettävä mukautettu muotoilu."
 
 #: ../plugins/time/time.plugin.desktop.in.h:1
 msgid "Insert Date/Time"
@@ -3337,9 +3736,9 @@ msgstr "Lisää päiväys ja aika kohdistimen kohdalle."
 
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:1
 msgid "Zeitgeist dataprovider"
-msgstr ""
+msgstr "Zeitgeist-tietotarjoaja"
 
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
-msgstr "Kerää logi geditillä avatuista ja suljetuista tiedostoista."
+msgstr "Kerää lokia geditillä avatuista ja suljetuista tiedostoista"
 
