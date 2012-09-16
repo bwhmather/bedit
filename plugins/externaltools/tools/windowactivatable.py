@@ -26,9 +26,6 @@ from capture import Capture
 from functions import *
 
 class ToolMenu(object):
-    ACTION_HANDLER_DATA_KEY = "ExternalToolActionHandlerData"
-    ACTION_ITEM_DATA_KEY = "ExternalToolActionItemData"
-
     def __init__(self, library, window, panel, menupath):
         super(ToolMenu, self).__init__()
         self._library = library
@@ -52,13 +49,11 @@ class ToolMenu(object):
             self._merge_id = 0
 
         for action in self._action_group.list_actions():
-            handler = action.get_data(self.ACTION_HANDLER_DATA_KEY)
+            if action._tool_handler is not None:
+                action.disconnect(action._tool_handler)
 
-            if handler is not None:
-                action.disconnect(handler)
-
-            action.set_data(self.ACTION_ITEM_DATA_KEY, None)
-            action.set_data(self.ACTION_HANDLER_DATA_KEY, None)
+            action._tool_item = None
+            action._tool_handler = None
 
             self._action_group.remove_action(action)
 
@@ -88,9 +83,10 @@ class ToolMenu(object):
             action = Gtk.Action(action_name, item.name.replace('_', '__'), item.comment, None)
             handler = action.connect("activate", capture_menu_action, self._window, self._panel, item)
 
-            action.set_data(self.ACTION_ITEM_DATA_KEY, item)
-            action.set_data(self.ACTION_HANDLER_DATA_KEY, handler)
-            
+            # Attach the item and the handler to the action object
+            action._tool_item = item
+            action._tool_handler = handler
+
             # Make sure to replace accel
             accelpath = '<Actions>/ExternalToolsPluginToolActions/%s' % (action_name, )
             
@@ -109,7 +105,7 @@ class ToolMenu(object):
     def on_accelmap_changed(self, accelmap, path, key, mod, tool):
         tool.shortcut = Gtk.accelerator_name(key, mod)
         tool.save()
-        self._window.get_data("ExternalToolsPluginWindowData").update_manager(tool)
+        self._window._external_tools_window_activatable.update_manager(tool)
 
     def update(self):
         self.remove()
@@ -148,10 +144,9 @@ class ToolMenu(object):
         language = document.get_language()
 
         for action in self._action_group.list_actions():
-            item = action.get_data(self.ACTION_ITEM_DATA_KEY)
-
-            if item is not None:
-                action.set_visible(states[item.applicability] and self.filter_language(language, item))
+            if action._tool_item is not None:
+                action.set_visible(states[action._tool_item.applicability] and
+                                   self.filter_language(language, action._tool_item))
 
 # FIXME: restore the launch of the manager on configure using PeasGtk.Configurable
 class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
@@ -166,9 +161,8 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
         self.menu = None
 
     def do_activate(self):
-        # We need to get access to the activatable object to update the
-        # menuitems from the manager.
-        self.window.set_data("ExternalToolsPluginWindowData", self)
+        # Ugly hack... we need to get access to the activatable to update the menuitems
+        self.window._external_tools_window_activatable = self
         self._library = ToolLibrary()
 
         ui_manager = self.window.get_ui_manager()
@@ -224,7 +218,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
             self.window.get_ui_manager().ensure_update()
 
     def do_deactivate(self):
-        self.window.set_data("ExternalToolsPluginWindowData", None)
+        self.window._external_tools_window_activatable = None
         ui_manager = self.window.get_ui_manager()
         self.menu.deactivate()
         ui_manager.remove_ui(self._merge_id)
@@ -242,6 +236,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
                 self._manager.dialog.set_default_size(*self._manager_default_size)
 
             self._manager.dialog.connect('destroy', self.on_manager_destroy)
+            self._manager.connect('tools-updated', self.on_manager_tools_updated)
 
         window = Gedit.App.get_default().get_active_window()
         self._manager.run(window)
@@ -256,5 +251,9 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
         alloc = dialog.get_allocation()
         self._manager_default_size = [alloc.width, alloc.height]
         self._manager = None
+
+    def on_manager_tools_updated(self, manager):
+        for window in Gedit.App.get_default().get_windows():
+            window._external_tools_window_activatable.menu.update()
 
 # ex:ts=4:et:

@@ -274,11 +274,16 @@ class LanguagesPopup(Gtk.Window):
     def do_proximity_out_event(self, event):
         return self.propagate_mouse_event(event)
 
-class Manager:
+class Manager(GObject.Object):
     TOOL_COLUMN = 0 # For Tree
     NAME_COLUMN = 1 # For Combo
 
+    __gsignals__ = {
+        'tools-updated': (GObject.SignalFlags.RUN_LAST, None, ())
+    }
+
     def __init__(self, datadir):
+        GObject.Object.__init__(self)
         self.datadir = datadir
         self.dialog = None
         self._languages = {}
@@ -859,7 +864,8 @@ class Manager:
             Gedit.App.get_default().show_help(self.dialog, 'gedit', 'gedit-plugins-external-tools')
             return
 
-        self.on_tool_manager_dialog_focus_out(dialog, None)
+        self.save_current_tool()
+        self.emit('tools-updated')
 
         self.dialog.destroy()
         self.dialog = None
@@ -867,10 +873,7 @@ class Manager:
 
     def on_tool_manager_dialog_focus_out(self, dialog, event):
         self.save_current_tool()
-
-        for window in Gedit.App.get_default().get_windows():
-            windowactivatable = window.get_data("ExternalToolsPluginWindowData")
-            windowactivatable.menu.update()
+        self.emit('tools-updated')
 
     def get_cell_data_cb(self, column, cell, model, piter, user_data=None):
         tool = model.get_value(piter, self.TOOL_COLUMN)
