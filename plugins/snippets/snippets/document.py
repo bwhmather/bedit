@@ -366,9 +366,13 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
 
         def location_name_for_env(self, location):
                 if location:
-                        info = location.query_info("standard::display-name", 0, None)
+                        try:
+                                info = location.query_info("standard::display-name", 0, None)
+                                display_name = info.get_display_name()
+                        except:
+                                display_name = ''
 
-                        return {'utf8': unicode(info.get_display_name(), 'utf-8'),
+                        return {'utf8': unicode(display_name, 'utf-8'),
                                 'noenc': location.get_basename()}
                 else:
                         return u''
