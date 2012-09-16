@@ -61,8 +61,9 @@ def spaces_instead_of_tabs(view, text):
 def insert_with_indent(view, piter, text, indentfirst = True, context = None):
         text = spaces_instead_of_tabs(view, text)
         lines = text.split('\n')
+        buf = view.get_buffer()
 
-        view.get_buffer().set_data('GeditSnippetsPluginContext', context)
+        buf._snippets_context = context
 
         if len(lines) == 1:
                 view.get_buffer().insert(piter, text)
@@ -77,12 +78,14 @@ def insert_with_indent(view, piter, text, indentfirst = True, context = None):
                         else:
                                 text += lines[i] + '\n'
 
-                view.get_buffer().insert(piter, text[:-1])
+                buf.insert(piter, text[:-1])
 
-        view.get_buffer().set_data('GeditSnippetsPluginContext', None)
+        buf._snippets_context = None
 
 def get_buffer_context(buf):
-        return buf.get_data('GeditSnippetsPluginContext')
+        if hasattr(buf, "_snippets_context"):
+                return buf._snippets_context
+        return None
 
 def snippets_debug(*s):
         return
