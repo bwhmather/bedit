@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-05 07:20+0200\n"
-"PO-Revision-Date: 2012-09-05 07:20+0200\n"
+"POT-Creation-Date: 2012-09-17 20:53+0200\n"
+"PO-Revision-Date: 2012-09-17 20:53+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -46,10 +46,14 @@ msgid "gedit Text Editor"
 msgstr "محرّر النصوص ج‌إدِت"
 
 #: ../data/gedit.desktop.in.in.h:5
+msgid "Text"
+msgstr "نص"
+
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
 msgstr "افتح نافذة جديدة"
 
-#: ../data/gedit.desktop.in.in.h:6
+#: ../data/gedit.desktop.in.in.h:7
 msgid "Open a New Document"
 msgstr "افتح مستندا جديدا"
 
@@ -280,12 +284,12 @@ msgstr "فيما إذا كان على محرر النصوص إبراز جميع 
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
 msgid "Ensure Trailing Newline"
-msgstr ""
+msgstr "تأكد من وجود سطر في النهاية"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
-msgstr ""
+msgstr "ما إذا على محرر النصوص أن يتأكد من وجود سطر في نهاية الملف."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
 msgid "Toolbar is Visible"
@@ -297,7 +301,7 @@ msgstr "ما إذا وجب لشريط الأدوات أن يكون مرئيّا 
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
 msgid "Notebook Show Tabs Mode"
-msgstr ""
+msgstr "نمط عرض الألس"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
 msgid ""
@@ -306,6 +310,9 @@ msgid ""
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
+"يحدد متى تعرض الألسنة. استخدم \"never\" لعدم عرضها أبدا، \"always\" لعرضها "
+"دائما، و \"auto\" لعرضها فقط عند وجود أكثر من لسان. لاحظ أن هذه القيم يجب أن "
+"تكتب الإنجليزية وبحروف صغيرة."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
 msgid "Status Bar is Visible"
@@ -2247,9 +2254,9 @@ msgstr "استخدم نمط الإبراز %s"
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
 #: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:450
-#: ../plugins/externaltools/tools/manager.py:561
-#: ../plugins/externaltools/tools/manager.py:882
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:566
+#: ../plugins/externaltools/tools/manager.py:885
 msgid "Plain Text"
 msgstr "نص صِرف"
 
@@ -2545,27 +2552,27 @@ msgstr "خرج"
 msgid "All languages"
 msgstr "كل اللغات"
 
-#: ../plugins/externaltools/tools/manager.py:550
-#: ../plugins/externaltools/tools/manager.py:554
-#: ../plugins/externaltools/tools/manager.py:880
+#: ../plugins/externaltools/tools/manager.py:555
+#: ../plugins/externaltools/tools/manager.py:559
+#: ../plugins/externaltools/tools/manager.py:883
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "كل اللغات"
 
-#: ../plugins/externaltools/tools/manager.py:667
+#: ../plugins/externaltools/tools/manager.py:672
 msgid "New tool"
 msgstr "أداة جديدة"
 
-#: ../plugins/externaltools/tools/manager.py:798
+#: ../plugins/externaltools/tools/manager.py:803
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "هذا الاختصار مخصص من قبل ل %s"
 
-#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/manager.py:847
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "اكتب اختصارا جديدا، أو أنقر Backspace للمسح"
 
-#: ../plugins/externaltools/tools/manager.py:844
+#: ../plugins/externaltools/tools/manager.py:849
 msgid "Type a new accelerator"
 msgstr "اكتب اختصارا جديدا"
 
@@ -2699,23 +2706,23 @@ msgstr "ا_حفظ:"
 msgid "Shortcut _Key:"
 msgstr "_مفتاح الاختصار:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:179
+#: ../plugins/externaltools/tools/windowactivatable.py:173
 msgid "Manage _External Tools..."
 msgstr "أدر الأ_دوات الخارجية..."
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
+#: ../plugins/externaltools/tools/windowactivatable.py:174
 msgid "Opens the External Tools Manager"
 msgstr "يفتح مدير الأدوات الخارجية"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:183
+#: ../plugins/externaltools/tools/windowactivatable.py:177
 msgid "External _Tools"
 msgstr "الأدوات ال_خارجية"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:184
+#: ../plugins/externaltools/tools/windowactivatable.py:178
 msgid "External tools"
 msgstr "الأدوات الخارجية"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:218
+#: ../plugins/externaltools/tools/windowactivatable.py:212
 msgid "Shell Output"
 msgstr "خرْج الصدفة"
 
