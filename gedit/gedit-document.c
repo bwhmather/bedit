@@ -1421,7 +1421,6 @@ document_loader_loaded (GeditDocumentLoader *loader,
 	{
 		GtkTextIter iter;
 		GFileInfo *info;
-		gboolean restore_cursor;
 		const gchar *content_type = NULL;
 		gboolean read_only = FALSE;
 		GTimeVal mtime = {0, 0};
@@ -1464,54 +1463,48 @@ document_loader_loaded (GeditDocumentLoader *loader,
 		set_compression_type (doc,
 		                      gedit_document_loader_get_compression_type (loader));
 
-		restore_cursor = g_settings_get_boolean (doc->priv->editor_settings,
-							 GEDIT_SETTINGS_RESTORE_CURSOR_POSITION);
-
 		/* move the cursor at the requested line if any */
 		if (doc->priv->requested_line_pos > 0)
 		{
-			gint column;
-
-			column = (doc->priv->requested_column_pos < 1) ? 0 : doc->priv->requested_column_pos - 1;
-
-			/* line_pos - 1 because get_iter_at_line counts from 0 */
-			gtk_text_buffer_get_iter_at_line_offset (GTK_TEXT_BUFFER (doc),
-								 &iter,
-								 doc->priv->requested_line_pos - 1,
-								 column);
+			gedit_document_goto_line_offset (doc,
+							 doc->priv->requested_line_pos - 1,
+							 doc->priv->requested_column_pos < 1 ? 0 : doc->priv->requested_column_pos - 1);
 		}
-		/* else, if enabled, to the position stored in the metadata */
-		else if (restore_cursor)
+		else
 		{
-			gchar *pos;
-			gint offset;
+			/* if enabled, move to the position stored in the metadata */
+			if (g_settings_get_boolean (doc->priv->editor_settings, GEDIT_SETTINGS_RESTORE_CURSOR_POSITION))
+			{
+				gchar *pos;
+				gint offset;
 
-			pos = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_POSITION);
+				pos = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_POSITION);
 
-			offset = pos ? atoi (pos) : 0;
-			g_free (pos);
+				offset = pos ? atoi (pos) : 0;
+				g_free (pos);
 
-			gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc),
-							    &iter,
-							    MAX (offset, 0));
+				gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc),
+								    &iter,
+								    MAX (offset, 0));
 
-			/* make sure it's a valid position, if the file
-			 * changed we may have ended up in the middle of
-			 * a utf8 character cluster */
-			if (!gtk_text_iter_is_cursor_position (&iter))
+				/* make sure it's a valid position, if the file
+				 * changed we may have ended up in the middle of
+				 * a utf8 character cluster */
+				if (!gtk_text_iter_is_cursor_position (&iter))
+				{
+					gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
+									&iter);
+				}
+			}
+			/* otherwise to the top */
+			else
 			{
 				gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
 								&iter);
 			}
-		}
-		/* otherwise to the top */
-		else
-		{
-			gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
-							&iter);
-		}
 
-		gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+			gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+		}
 	}
 
 	/* special case creating a named new doc */
@@ -2001,29 +1994,34 @@ gedit_document_goto_line_offset (GeditDocument *doc,
 				 gint           line,
 				 gint           line_offset)
 {
-	gboolean ret = TRUE;
-	guint offset_count;
+	gboolean ret;
 	GtkTextIter iter;
-	
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (line >= -1, FALSE);
 	g_return_val_if_fail (line_offset >= -1, FALSE);
-	
-	gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
-					  &iter,
-					  line);
 
-	offset_count = gtk_text_iter_get_chars_in_line (&iter);
-	if (line_offset > offset_count)
+	ret = gedit_document_goto_line (doc, line);
+
+	if (ret)
 	{
-		ret = FALSE;
+		guint offset_count;
+
+		gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
+						  &iter,
+						  line);
+
+		offset_count = gtk_text_iter_get_chars_in_line (&iter);
+		if (line_offset > offset_count)
+		{
+			ret = FALSE;
+		}
+		else
+		{
+			gtk_text_iter_set_line_offset (&iter, line_offset);
+			gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+		}
 	}
-	else
-	{
-		gtk_text_iter_set_line_offset (&iter, line_offset);
-	}
-	
-	gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
 
 	return ret;
 }

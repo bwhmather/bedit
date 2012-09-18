@@ -159,17 +159,11 @@ load_file_list (GeditWindow         *window,
 
 					if (line_pos > 0)
 					{
-						/* document counts lines starting from 0 */
 						if (column_pos > 0)
 						{
-							GtkTextIter iter;
-
-							gtk_text_buffer_get_iter_at_line_offset (GTK_TEXT_BUFFER (doc),
-							                                         &iter,
-							                                         line_pos - 1,
-							                                         column_pos - 1);
-
-							gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
+							gedit_document_goto_line_offset (doc,
+							                                 line_pos - 1,
+							                                 column_pos - 1);
 						}
 						else
 						{
