@@ -10,19 +10,19 @@ msgstr ""
 "Project-Id-Version: gedit.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-06 18:26+0000\n"
-"PO-Revision-Date: 2012-03-15 06:25+0530\n"
+"POT-Creation-Date: 2012-09-09 15:09+0000\n"
+"PO-Revision-Date: 2012-09-19 20:22+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
+"Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "\n"
 "\n"
 "\n"
-"Language: pa\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -37,18 +37,20 @@ msgid "Edit text files"
 msgstr "ਟੈਕਸਟ ਫਾਇਲਾਂ ਸੋਧੋ"
 
 #: ../data/gedit.desktop.in.in.h:4
-#| msgid "_Move to New Window"
+msgid "gedit Text Editor"
+msgstr "ਜੀ-ਸੰਪਾਦਕ ਟੈਕਸਟ ਐਡੀਟਰ"
+
+#: ../data/gedit.desktop.in.in.h:5
+msgid "Text"
+msgstr "ਟੈਕਸਟ"
+
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
 msgstr "ਇੱਕ ਨਵੀਂ ਵਿੰਡੋ ਖੋਲ੍ਹੋ"
 
-#: ../data/gedit.desktop.in.in.h:5
-#| msgid "Create a new document"
+#: ../data/gedit.desktop.in.in.h:7
 msgid "Open a New Document"
 msgstr "ਇੱਕ ਨਵਾਂ ਦਸਤਾਵੇਜ਼ ਖੋਲ੍ਹੋ"
-
-#: ../data/gedit.desktop.in.in.h:6
-msgid "gedit Text Editor"
-msgstr "ਜੀ-ਸੰਪਾਦਕ ਟੈਕਸਟ ਐਡੀਟਰ"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
 msgid "Use Default Font"
@@ -133,8 +135,8 @@ msgstr "ਐਕਸ਼ਨ ਵਾਪਿਸ ਜਾਣ ਦੀ ਸੀਮਾ (ਬਰਤ
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions. Deprecated since 2.12.0"
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
 "ਵਾਪਸ ਜਾਂ ਮੁੜ-ਵਾਪਸ ਕੀਤੇ ਜਾਣ ਵਾਲੀਆਂ ਵੱਧ ਤੋਂ ਵੱਧ ਕਾਰਵਾਈਆਂ ਦੀ ਗਿਣਤੀ ਹੈ। ਕਾਰਵਾਈਆਂ "
 "ਦੀ ਗਿਣਤੀ ਨੂੰ "
@@ -146,8 +148,8 @@ msgstr "ਵੱਧ ਤੋਂ ਵੱਧ ਵਾਪਸੀ ਪਗਾਂ ਦੀ ਗਿ
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use \"-1"
-"\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
 msgstr ""
 "ਵਾਪਸ ਜਾਂ ਮੁੜ-ਵਾਪਸ ਕੀਤੇ ਜਾਣ ਵਾਲੀਆਂ ਵੱਧ ਤੋਂ ਵੱਧ ਕਾਰਵਾਈਆਂ ਦੀ ਗਿਣਤੀ ਹੈ। ਕਾਰਵਾਈਆਂ "
 "ਦੀ ਗਿਣਤੀ ਨੂੰ "
@@ -297,8 +299,6 @@ msgid "Ensure Trailing Newline"
 msgstr "ਅੰਤ 'ਚ ਨਵੀਂ-ਲਾਈਨ ਦੀ ਪੁਸ਼ਟੀ"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
-#| msgid ""
-#| "Whether gedit should include a document header when printing documents."
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
@@ -445,11 +445,27 @@ msgstr ""
 "ਲਾਗੂ ਹੋ ਸਕੇਗਾ ਜੇ "
 "\"ਲਾਈਨ ਨੰਬਰ ਪਰਿੰਟ ਕਰੋ\"ਚੋਣ ਸਿਫਰ ਨਾ ਹੋਵੇ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+#| msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "ਆਟੋਮੈਟਿਕ ਖੋਜੀ ਗਈ ਇੰਕੋਡਿੰਗ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -459,11 +475,18 @@ msgstr ""
 "ਮੌਜੂਦਾ ਲੋਕੇਲ ਇੰਕੋਡਿੰਗ "
 "\"(CURRENT) ਮੌਜੂਦ\" ਨੂੰ ਵੇਖਾਉਦਾ ਹੈ। ਸਿਰਫ ਪਛਾਣੀ ਗਈ ਇੰਕੋਡਿੰਗ ਹੀ ਵਰਤੀ ਜਾਵੇਗੀ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+#| msgid "[ISO-8859-15]"
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "ਮੇਨੂ ਵਿੱਚ ਵੇਖਾਉਣ ਲਈ ਇੰਕੋਡਿੰਗ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -472,11 +495,11 @@ msgstr ""
 "ਰਿਹਾ ਹੈ। ਸਿਰਫ "
 "ਮਨਜੂਰਸ਼ੁਦਾ ਇੰਕੋਡਿੰਗ ਹੀ ਵਰਤੀ ਜਾਵੇਗੀ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "ਸਰਗਰਮ ਪਲੱਗਇਨ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -663,7 +686,6 @@ msgid "Create a new document in an existing instance of gedit"
 msgstr "ਜੀ-ਸੰਪਾਦਕ ਦੇ ਮੌਜੂਦ ਮੌਕੇ ਵਿੱਚ ਨਵਾਂ ਡੌਕੂਮੈਂਟ ਬਣਾਓ"
 
 #: ../gedit/gedit-command-line.c:294
-#| msgid "Set the X geometry window size (WIDTHxHEIGHT+X+Y)"
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "ਵਿੰਡੋ ਦਾ ਆਕਾਰ ਅਤੇ ਸਥਿਤੀ ਸੈੱਟ ਕਰੋ (WIDTHxHEIGHT+X+Y)"
 
@@ -728,7 +750,7 @@ msgid "Do you want to try to replace it with the one you are saving?"
 msgstr ""
 "ਕੀ ਤੁਸੀ ਇਸ ਨੂੰ ਉਸ ਫਾਇਲ ਨਾਲ ਤਬਦੀਲ ਕਰਨਾ ਚਾਹੋਗੇ, ਜਿਸ ਨੂੰ ਸੰਭਾਲਣ ਜਾ ਰਹੇ ਹੋ?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "ਬਦਲੋ(_R)"
 
@@ -1613,22 +1635,18 @@ msgid "Color Scheme"
 msgstr "ਰੰਗ ਸਕੀਮ"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
-#| msgid "Content scheme"
 msgid "Install scheme"
 msgstr "ਸਕੀਮ ਇੰਸਟਾਲ"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:25
-#| msgid "Style Scheme"
 msgid "Install Scheme"
 msgstr "ਸਕੀਮ ਇੰਸਟਾਲ"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:26
-#| msgid "Content scheme"
 msgid "Uninstall scheme"
 msgstr "ਸਕੀਮ ਅਣ-ਇੰਸਟਾਲ"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:27
-#| msgid "Style Scheme"
 msgid "Uninstall Scheme"
 msgstr "ਸਕੀਮ ਅਣ-ਇੰਸਟਾਲ"
 
@@ -1775,12 +1793,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "ਡੌਕੂਮੈਂਟ ਵਿੱਚ ਇੱਕ ਸਫ਼ੇ ਦੀ ਝਲਕ ਪਰਿੰਟ ਕੀਤੀ ਜਾਂਦੀ ਹੈ"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "ਬਦਲੋ"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "ਸਭ ਬਦਲੋ(_A)"
 
@@ -2193,46 +2211,46 @@ msgstr "ਹੇਠਲਾ ਪੈਨਲ(_B)"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "ਮੌਜੂਦਾ ਵਿੰਡੋ ਵਿੱਚ ਹੇਠਲਾ ਪੈਨਲ ਵੇਖੋ ਜਾਂ ਓਹਲੇ"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "ਆਪਣੀ ਇੰਸਟਾਲੇਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰੋ ਜੀ।"
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "%s UI ਫਾਇਲ ਖੋਲਣ ਲਈ ਅਸਮਰੱਥ ਹੈ: ਗਲਤੀ: %s"
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "ਫਾਇਲ %2$s ਵਿੱਚ  '%1$s' ਆਬਜੈਕਟ ਲੱਭਣ ਲਈ ਅਸਮਰੱਥ ਹੈ।"
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "%s ਉੱਤੇ /"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:546
+#: ../gedit/gedit-view-frame.c:542
 msgid "_Wrap Around"
 msgstr "ਪਾਸਿਓ ਸਮੇਟੋ(_W)"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:556
+#: ../gedit/gedit-view-frame.c:552
 msgid "Match _Entire Word Only"
 msgstr "ਪੂਰਾ ਸ਼ਬਦ ਹੀ ਮਿਲਾਓ(_E)"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:566
+#: ../gedit/gedit-view-frame.c:562
 msgid "_Match Case"
 msgstr "ਮਿਲਦਾ ਕੇਸ(_M)"
 
-#: ../gedit/gedit-view-frame.c:767
+#: ../gedit/gedit-view-frame.c:759
 msgid "String you want to search for"
 msgstr "ਲਾਈਨ, ਜਿਸ ਦੀ ਤੁਸੀਂ ਖੋਜ ਕਰਨੀ ਚਾਹੁੰਦੇ ਹੋ"
 
-#: ../gedit/gedit-view-frame.c:777
+#: ../gedit/gedit-view-frame.c:769
 msgid "Line you want to move the cursor to"
 msgstr "ਲਾਈਨ, ਜਿਸ ਵਿੱਚ ਤੁਸੀਂ ਕਰਸਰ ਲੈ ਕੇ ਜਾਣਾ ਚਾਹੁੰਦੇ ਹੋ"
 
@@ -2703,7 +2721,6 @@ msgid "_Save:"
 msgstr "ਸੰਭਾਲੋ(_S):"
 
 #: ../plugins/externaltools/tools/tools.ui.h:33
-#| msgid "_Shortcut Key:"
 msgid "Shortcut _Key:"
 msgstr "ਸ਼ਾਰਟਕੱਟ ਸਵਿੱਚ(_K):"
 
@@ -2973,7 +2990,6 @@ msgid "Show binary files"
 msgstr "ਬਾਈਨਰੀ ਫਾਇਲਾਂ ਵੇਖੋ"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:1202
-#| msgid "_Match Filename"
 msgid "Match Filename"
 msgstr "ਫਾਇਲ ਨਾਂ ਮੇਲ"
 
@@ -3159,7 +3175,7 @@ msgid "Type to search..."
 msgstr "...ਲੱਭਣ ਲਈ ਲਿਖੋ"
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "ਸਨਿੱਪਟ"
@@ -3234,12 +3250,16 @@ msgstr "ਚੁਣਿਆ ਸਨਿੱਪਟ ਹਟਾਓ"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
+#| msgid ""
+#| "This is not a valid Tab trigger. Triggers can either contain letters or a "
+#| "single (non-alphanumeric) character like: {, [, etc."
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
-"ਇਹ ਇੱਕ ਠੀਕ ਟੈਬ ਟਰਿੱਗਰ ਨਹੀਂ ਹੈ। ਟਰਿੱਗਰ ਇੱਕ ਅੱਖਰ ਜਾਂ ਇੱਕ ਇੱਕਲਾ ਨਾ-ਗਿਣਤੀ, ਅੱਖਰ, "
-"ਜਿਵੇਂ {, "
+"ਇਹ ਇੱਕ ਠੀਕ ਟੈਬ ਟਰਿੱਗਰ ਨਹੀਂ ਹੈ। ਟਰਿੱਗਰ ਵਰਣਮਾਲਾ ਅੱਖਰ-ਅੰਕ (ਜਾਂ _, : ਅਤੇ .) ਜਾਂ "
+"ਇੱਕ ਅੱਖਰ (ਨਾ-ਅੰਕ), ਅੱਖਰ, ਜਿਵੇਂ {, "
 "[ ਆਦਿ ਹੋ ਸਕਦਾ ਹੈ।"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
@@ -4627,9 +4647,6 @@ msgstr "ਜੀ-ਸੰਪਾਦਕ ਨਾਲ ਵਰਤੇ ਗਏ ਡੌਕੂਮ�
 #~ msgid "Teletype or monospace text style"
 #~ msgstr "ਟੈਲੀਟਾਇਪ ਜਾਂ ਸਮਾਨ-ਥਾਂ ਟੈਕਸਟ ਸਟਾਇਲ"
 
-#~ msgid "Text"
-#~ msgstr "ਟੈਕਸਟ"
-
 #~ msgid "Text color"
 #~ msgstr "ਟੈਕਸਟ ਰੰਗ"
 
@@ -5000,12 +5017,6 @@ msgstr "ਜੀ-ਸੰਪਾਦਕ ਨਾਲ ਵਰਤੇ ਗਏ ਡੌਕੂਮ�
 #~ "Whether the bottom panel at the bottom of editing windows should be "
 #~ "visible."
 #~ msgstr "ਕੀ ਸੰਪਾਦਕ ਵਿੰਡੋ ਵਿੱਚ ਹੇਠਾਂ ਹੇਠਲਾ ਪੈਨਲ ਵੇਖਾਇਆ ਜਾਵੇ।"
-
-#~ msgid "[ISO-8859-15]"
-#~ msgstr "[ISO-8859-15]"
-
-#~ msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
-#~ msgstr "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
 
 #~| msgid "<b>Automatic Indentation</b>"
 #~ msgid "Automatic Indentation"
