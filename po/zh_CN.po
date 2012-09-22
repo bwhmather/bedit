@@ -14,21 +14,23 @@
 # Yinghua Wang <wantinghard@gmail.com>, 2010.
 # Aron Xu <aronxu@gnome.org>, 2010.
 # Colin Zhao <lonely.ibm@gmail.com>, 2011.
-# YunQiang Su <wzssyqa@gmail.com>, 2011.
+# YunQiang Su <wzssyqa@gmail.com>, 2011, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-08-03 08:38+0000\n"
-"PO-Revision-Date: 2012-08-05 21:58+0800\n"
-"Last-Translator: Colin Zhao <lonely.ibm@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <i18n-zh@googlegroups.com>\n"
+"POT-Creation-Date: 2012-09-09 15:09+0000\n"
+"PO-Revision-Date: 2012-09-23 03:49+0800\n"
+"Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
+"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bits\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Gtranslator 2.91.5\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -47,10 +49,14 @@ msgid "gedit Text Editor"
 msgstr "gedit 文本编辑器"
 
 #: ../data/gedit.desktop.in.in.h:5
+msgid "Text"
+msgstr "文本"
+
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
 msgstr "打开新窗口"
 
-#: ../data/gedit.desktop.in.in.h:6
+#: ../data/gedit.desktop.in.in.h:7
 msgid "Open a New Document"
 msgstr "打开新文档"
 
@@ -822,7 +828,7 @@ msgstr "找到并替换了一处"
 msgid "\"%s\" not found"
 msgstr "“%s”未找到"
 
-#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
+#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "未保存文档 %d"
@@ -2092,25 +2098,25 @@ msgid "/ on %s"
 msgstr "%s 上的 /"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:546
+#: ../gedit/gedit-view-frame.c:542
 msgid "_Wrap Around"
 msgstr "回到文档头部继续搜索(_W)"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:556
+#: ../gedit/gedit-view-frame.c:552
 msgid "Match _Entire Word Only"
 msgstr "只匹配整个单词(_E)"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:566
+#: ../gedit/gedit-view-frame.c:562
 msgid "_Match Case"
 msgstr "区分大小写(_M)"
 
-#: ../gedit/gedit-view-frame.c:767
+#: ../gedit/gedit-view-frame.c:759
 msgid "String you want to search for"
 msgstr "您想要搜索的字符串"
 
-#: ../gedit/gedit-view-frame.c:777
+#: ../gedit/gedit-view-frame.c:769
 msgid "Line you want to move the cursor to"
 msgstr "您想要将光标移动到的行"
 
@@ -3003,7 +3009,7 @@ msgid "Type to search..."
 msgstr "搜索..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "片段"
@@ -3078,11 +3084,16 @@ msgstr "删除选中的片段"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
+#| msgid ""
+#| "This is not a valid Tab trigger. Triggers can either contain letters or a "
+#| "single (non-alphanumeric) character like: {, [, etc."
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
-"Tab 触发器无效。触发器必须由字母构成，或使用单个非字母字符 (如“{”、“[”等)。"
+"此 Tab 触发器无效。触发器必须由字母(或_，: 和 .)构成，或使用单个非字母字符 "
+"(如“{”、“[”等)。"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
