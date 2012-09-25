@@ -5,14 +5,15 @@
 # Ivan Petruk <petruk.ivan@gmail.com>
 # wanderlust <wanderlust@ukr.net>, 2009.
 # Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
+# Re. <ted.korostiled@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-24 12:49+0200\n"
-"PO-Revision-Date: 2012-03-24 13:06+0300\n"
-"Last-Translator: Korostil Daniel <ted.korostiled@gmail.com>\n"
-"Language-Team: translation@linux.org.ua\n"
+"POT-Creation-Date: 2012-09-25 23:19+0300\n"
+"PO-Revision-Date: 2012-09-25 23:25+0300\n"
+"Last-Translator: Re. <ted.korostiled@gmail.com>\n"
+"Language-Team: linux.org.ua\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,10 +39,14 @@ msgid "gedit Text Editor"
 msgstr "Текстовий редактор gedit"
 
 #: ../data/gedit.desktop.in.in.h:5
+msgid "Text"
+msgstr "Текст"
+
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
 msgstr "Створити нове вікно"
 
-#: ../data/gedit.desktop.in.in.h:6
+#: ../data/gedit.desktop.in.in.h:7
 msgid "Open a New Document"
 msgstr "Відкрити новий документ"
 
@@ -372,8 +377,8 @@ msgid ""
 "individual character boundaries. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"Визначає, як переносити довгі рядки під час друкування. Використовуйте «none» для "
-"вимкнення переносу, «word» для переносу на межі слів і «char» для "
+"Визначає, як переносити довгі рядки під час друкування. Використовуйте "
+"«none» для вимкнення переносу, «word» для переносу на межі слів і «char» для "
 "символьного переносу. Зауважте, що значення чутливі до регістру і мають "
 "з'являтися точно у вказаному вигляді."
 
@@ -408,8 +413,8 @@ msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"Визначає шрифт, що використовується для друкування заголовків сторінок. Матиме "
-"ефект лише тоді, коли параметр \"Друкувати заголовок\" увімкнено."
+"Визначає шрифт, що використовується для друкування заголовків сторінок. "
+"Матиме ефект лише тоді, коли параметр \"Друкувати заголовок\" увімкнено."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
 msgid "Line Number Font for Printing"
@@ -420,14 +425,29 @@ msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"Визначає шрифт, що використовується для друкування номерів рядків. Матиме ефект "
-"лише тоді, коли параметр \"Друкувати номерів рядків\" увімкнено."
+"Визначає шрифт, що використовується для друкування номерів рядків. Матиме "
+"ефект лише тоді, коли параметр \"Друкувати номерів рядків\" увімкнено."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
 msgstr "Автовизначення кодування"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -437,11 +457,17 @@ msgstr ""
 "кодування файлу. \"CURRENT\" - поточне кодування локалізації. "
 "Використовуються лише підтримувані кодування."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
 msgstr "Кодування, що показані в меню"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -449,11 +475,11 @@ msgstr ""
 "Перелік кодувань, який показується у меню \"Кодування символів\" діалогу "
 "вибору файлів. Використовуються лише підтримувані кодування."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
 msgstr "Активні модулі"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -691,12 +717,12 @@ msgstr ""
 "%s\n"
 "Запустіть «%s --help» для отримання повного списку підтримуваних ключів.\n"
 
-#: ../gedit/gedit-commands-file.c:272
+#: ../gedit/gedit-commands-file.c:266
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "Завантажується файл \"%s\"..."
 
-#: ../gedit/gedit-commands-file.c:281
+#: ../gedit/gedit-commands-file.c:275
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -705,28 +731,28 @@ msgstr[1] "Завантажуються %d файли..."
 msgstr[2] "Завантажуються %d файлів..."
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:446
+#: ../gedit/gedit-commands-file.c:440
 msgid "Open Files"
 msgstr "Відкрити файли"
 
-#: ../gedit/gedit-commands-file.c:557
+#: ../gedit/gedit-commands-file.c:551
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Файл \"%s\" лише для читання."
 
-#: ../gedit/gedit-commands-file.c:562
+#: ../gedit/gedit-commands-file.c:556
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Спробувати замінити його файлом, що ви записуєте?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:270
+#: ../gedit/gedit-commands-file.c:564 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "За_мінити"
 
-#: ../gedit/gedit-commands-file.c:612
+#: ../gedit/gedit-commands-file.c:606
 msgid "Save the file using compression?"
 msgstr "Зберегти файл зі стисненням?"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:607
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -735,15 +761,15 @@ msgstr ""
 "Файл \"%s\" було раніше збережено у форматі простого тексту і тепер буде "
 "збережено з використанням стиснення."
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:609
 msgid "_Save Using Compression"
 msgstr "З_берегти зі стисненням"
 
-#: ../gedit/gedit-commands-file.c:619
+#: ../gedit/gedit-commands-file.c:613
 msgid "Save the file as plain text?"
 msgstr "Зберегти файл у форматі простого тесту?"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:614
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -752,30 +778,30 @@ msgstr ""
 "Файл \"%s\" раніше був збережений з використанням стиснення і тепер "
 "зберігається у форматі простого тексту."
 
-#: ../gedit/gedit-commands-file.c:622
+#: ../gedit/gedit-commands-file.c:616
 msgid "_Save As Plain Text"
 msgstr "З_берегти як звичайний"
 
-#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
+#: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:953
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Зберігається файл \"%s\"..."
 
-#: ../gedit/gedit-commands-file.c:846
+#: ../gedit/gedit-commands-file.c:840
 msgid "Save As"
 msgstr "Зберегти як"
 
-#: ../gedit/gedit-commands-file.c:1173
+#: ../gedit/gedit-commands-file.c:1167
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Відновлення документу \"%s\"..."
 
-#: ../gedit/gedit-commands-file.c:1218
+#: ../gedit/gedit-commands-file.c:1212
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Відновити незбережені зміни в документі \"%s\"?"
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1221
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -789,13 +815,13 @@ msgstr[1] ""
 msgstr[2] ""
 "Зміни, внесені в документ за останні %ld секунд, будуть остаточно втрачені."
 
-#: ../gedit/gedit-commands-file.c:1236
+#: ../gedit/gedit-commands-file.c:1230
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Зміни, внесені в документ за останню хвилину, будуть остаточно втрачені."
 
-#: ../gedit/gedit-commands-file.c:1242
+#: ../gedit/gedit-commands-file.c:1236
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -813,7 +839,7 @@ msgstr[2] ""
 "Зміни, внесені в документ за останню хвилину та %ld секунд, будуть остаточно "
 "втрачені."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1246
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -827,12 +853,12 @@ msgstr[1] ""
 msgstr[2] ""
 "Зміни, внесені в документ за останні %ld хвилини, будуть остаточно втрачені."
 
-#: ../gedit/gedit-commands-file.c:1267
+#: ../gedit/gedit-commands-file.c:1261
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Зміни, внесені в документ за останню годину, будуть остаточно втрачені."
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1267
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -850,7 +876,7 @@ msgstr[2] ""
 "Зміни, внесені в документ за останню годину та %d хвилин, будуть остаточно "
 "втрачені."
 
-#: ../gedit/gedit-commands-file.c:1288
+#: ../gedit/gedit-commands-file.c:1282
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -863,7 +889,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Зміни, внесені в документ за останні %d годин, будуть остаточно втрачені."
 
-#: ../gedit/gedit-commands-file.c:1314
+#: ../gedit/gedit-commands-file.c:1308
 msgid "_Revert"
 msgstr "Від_новити"
 
@@ -1763,12 +1789,12 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Попередній перегляд сторінки, яку буде надруковано"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:207 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
 #: ../gedit/gedit-window.c:1557
 msgid "Replace"
 msgstr "Замінити"
 
-#: ../gedit/gedit-replace-dialog.c:269
+#: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
 msgstr "Замінити _все"
 
@@ -2182,46 +2208,46 @@ msgstr "_Нижня панель"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Показати або сховати нижню панель у теперішньому вікні"
 
-#: ../gedit/gedit-utils.c:1017
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Перевірте встановлення програми."
 
-#: ../gedit/gedit-utils.c:1075
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Не вдається знайти файл інтерфейсу %s. Помилка \"%s\"."
 
-#: ../gedit/gedit-utils.c:1094
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Не вдається знайти об'єкт «%s» у файлі %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1316
+#: ../gedit/gedit-utils.c:1332
 #, c-format
 msgid "/ on %s"
 msgstr "/ на %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:546
+#: ../gedit/gedit-view-frame.c:542
 msgid "_Wrap Around"
 msgstr "_Досягнувши кінця, починати спочатку"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:556
+#: ../gedit/gedit-view-frame.c:552
 msgid "Match _Entire Word Only"
 msgstr "Збігається _ціле слово"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:566
+#: ../gedit/gedit-view-frame.c:562
 msgid "_Match Case"
 msgstr "Збігається _регістр"
 
-#: ../gedit/gedit-view-frame.c:767
+#: ../gedit/gedit-view-frame.c:759
 msgid "String you want to search for"
 msgstr "Рядок, яку треба знайти"
 
-#: ../gedit/gedit-view-frame.c:777
+#: ../gedit/gedit-view-frame.c:769
 msgid "Line you want to move the cursor to"
 msgstr "Рядок, куди треба перемістити курсор"
 
@@ -2235,9 +2261,9 @@ msgstr "Використовувати режим виділення синта�
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
 #: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:450
-#: ../plugins/externaltools/tools/manager.py:561
-#: ../plugins/externaltools/tools/manager.py:882
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:566
+#: ../plugins/externaltools/tools/manager.py:885
 msgid "Plain Text"
 msgstr "Звичайний текст"
 
@@ -2536,28 +2562,28 @@ msgstr "Вихід"
 msgid "All languages"
 msgstr "Мови"
 
-#: ../plugins/externaltools/tools/manager.py:550
-#: ../plugins/externaltools/tools/manager.py:554
-#: ../plugins/externaltools/tools/manager.py:880
+#: ../plugins/externaltools/tools/manager.py:555
+#: ../plugins/externaltools/tools/manager.py:559
+#: ../plugins/externaltools/tools/manager.py:883
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Мови"
 
-#: ../plugins/externaltools/tools/manager.py:667
+#: ../plugins/externaltools/tools/manager.py:672
 msgid "New tool"
 msgstr "Новий інструмент"
 
-#: ../plugins/externaltools/tools/manager.py:798
+#: ../plugins/externaltools/tools/manager.py:803
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Ця комбінація вже прив'язана до %s"
 
-#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/manager.py:847
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr ""
 "Введіть нову комбінацію клавіш, або натисніть Backspace, щоб очистити її"
 
-#: ../plugins/externaltools/tools/manager.py:844
+#: ../plugins/externaltools/tools/manager.py:849
 msgid "Type a new accelerator"
 msgstr "Натисніть нову комбінацію клавіш"
 
@@ -2691,23 +2717,23 @@ msgstr "З_берегти:"
 msgid "Shortcut _Key:"
 msgstr "Комбінація к_лавіш:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:179
+#: ../plugins/externaltools/tools/windowactivatable.py:173
 msgid "Manage _External Tools..."
 msgstr "Керувати з_овнішніми інструментами..."
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
+#: ../plugins/externaltools/tools/windowactivatable.py:174
 msgid "Opens the External Tools Manager"
 msgstr "Відкрити менеджер зовнішніх інструментів"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:183
+#: ../plugins/externaltools/tools/windowactivatable.py:177
 msgid "External _Tools"
 msgstr "Зовнішні _інструменти"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:184
+#: ../plugins/externaltools/tools/windowactivatable.py:178
 msgid "External tools"
 msgstr "Зовнішні інструменти"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:218
+#: ../plugins/externaltools/tools/windowactivatable.py:212
 msgid "Shell Output"
 msgstr "Вікно оболонки"
 
@@ -3133,7 +3159,7 @@ msgid "Type to search..."
 msgstr "Введіть для пошуку…"
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:57
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Фрагменти тексту"
@@ -3209,11 +3235,13 @@ msgstr "Вилучити виділений фрагмент тексту"
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
 msgid ""
-"This is not a valid Tab trigger. Triggers can either contain letters or a "
-"single (non-alphanumeric) character like: {, [, etc."
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
 msgstr ""
 "Значення не є правильним підсвічуванням вкладки. Підсвічення може або "
-"містити літери, або один не алфавітно-цифровий символ такий, як {, [ тощо."
+"містити алфавітно-цифрові символи (або _, : і .), або такий один не "
+"алфавітно-цифровий символ, як {, [ тощо."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
@@ -4597,9 +4625,6 @@ msgstr "Реєстр доступу і виходу для документів,
 
 #~ msgid "Teletype or monospace text style"
 #~ msgstr "Телетайпний або моноширний стиль тексту"
-
-#~ msgid "Text"
-#~ msgstr "Текст"
 
 #~ msgid "Text color"
 #~ msgstr "Колір тексту"
