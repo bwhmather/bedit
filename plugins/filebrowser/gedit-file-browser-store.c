@@ -1661,7 +1661,7 @@ model_recomposite_icon_real (GeditFileBrowserStore *tree_model,
 	}
 	else
 	{
-		icon = gedit_file_browser_utils_pixbuf_from_file (node->file, GTK_ICON_SIZE_MENU);
+		icon = gedit_file_browser_utils_pixbuf_from_file (node->file, GTK_ICON_SIZE_MENU, FALSE);
 	}
 
 	if (node->icon)
@@ -2243,7 +2243,7 @@ model_add_node_from_dir (GeditFileBrowserStore *model,
 			file_browser_node_set_name (node);
 
 		if (node->icon == NULL)
-			node->icon = gedit_file_browser_utils_pixbuf_from_theme ("folder", GTK_ICON_SIZE_MENU);
+			node->icon = gedit_file_browser_utils_pixbuf_from_theme ("folder-symbolic", GTK_ICON_SIZE_MENU);
 
 		model_add_node (model, node, parent);
 	}

@@ -146,19 +146,19 @@ add_file (GeditFileBookmarksStore *model,
 		return FALSE;
 
 	if (flags & GEDIT_FILE_BOOKMARKS_STORE_IS_HOME)
-		pixbuf = gedit_file_browser_utils_pixbuf_from_theme ("user-home", GTK_ICON_SIZE_MENU);
+		pixbuf = gedit_file_browser_utils_pixbuf_from_theme ("user-home-symbolic", GTK_ICON_SIZE_MENU);
 	else if (flags & GEDIT_FILE_BOOKMARKS_STORE_IS_DESKTOP)
-		pixbuf = gedit_file_browser_utils_pixbuf_from_theme ("user-desktop", GTK_ICON_SIZE_MENU);
+		pixbuf = gedit_file_browser_utils_pixbuf_from_theme ("user-desktop-symbolic", GTK_ICON_SIZE_MENU);
 	else if (flags & GEDIT_FILE_BOOKMARKS_STORE_IS_ROOT)
-		pixbuf = gedit_file_browser_utils_pixbuf_from_theme ("drive-harddisk", GTK_ICON_SIZE_MENU);
+		pixbuf = gedit_file_browser_utils_pixbuf_from_theme ("drive-harddisk-symbolic", GTK_ICON_SIZE_MENU);
 
 	if (pixbuf == NULL)
 	{
 		/* getting the icon is a sync get_info call, so we just do it for local files */
 		if (native)
-			pixbuf = gedit_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU);
+			pixbuf = gedit_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU, TRUE);
 		else
-			pixbuf = gedit_file_browser_utils_pixbuf_from_theme ("folder", GTK_ICON_SIZE_MENU);
+			pixbuf = gedit_file_browser_utils_pixbuf_from_theme ("folder-symbolic", GTK_ICON_SIZE_MENU);
 	}
 
 	if (name == NULL)
@@ -217,6 +217,7 @@ init_special_directories (GeditFileBookmarksStore *model)
 		g_object_unref (file);
 	}
 
+#if defined(G_OS_WIN32) || defined(OS_OSX)
 	path = g_get_user_special_dir (G_USER_DIRECTORY_DESKTOP);
 	if (path != NULL)
 	{
@@ -234,6 +235,7 @@ init_special_directories (GeditFileBookmarksStore *model)
 			  GEDIT_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR, NULL);
 		g_object_unref (file);
 	}
+#endif
 
 	file = g_file_new_for_uri ("file:///");
 	add_file (model, file, _("File System"), GEDIT_FILE_BOOKMARKS_STORE_IS_ROOT, NULL);
@@ -256,21 +258,21 @@ get_fs_properties (gpointer    fs,
 
 	if (G_IS_DRIVE (fs))
 	{
-		icon = g_drive_get_icon (G_DRIVE (fs));
+		icon = g_drive_get_symbolic_icon (G_DRIVE (fs));
 		*name = g_drive_get_name (G_DRIVE (fs));
 
 		*flags |= GEDIT_FILE_BOOKMARKS_STORE_IS_DRIVE;
 	}
 	else if (G_IS_VOLUME (fs))
 	{
-		icon = g_volume_get_icon (G_VOLUME (fs));
+		icon = g_volume_get_symbolic_icon (G_VOLUME (fs));
 		*name = g_volume_get_name (G_VOLUME (fs));
 
 		*flags |= GEDIT_FILE_BOOKMARKS_STORE_IS_VOLUME;
 	}
 	else if (G_IS_MOUNT (fs))
 	{
-		icon = g_mount_get_icon (G_MOUNT (fs));
+		icon = g_mount_get_symbolic_icon (G_MOUNT (fs));
 		*name = g_mount_get_name (G_MOUNT (fs));
 
 		*flags |= GEDIT_FILE_BOOKMARKS_STORE_IS_MOUNT;

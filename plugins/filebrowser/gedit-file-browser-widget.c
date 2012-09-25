@@ -568,7 +568,7 @@ insert_path_item (GeditFileBrowserWidget *obj,
 		unescape = gedit_file_browser_utils_file_basename (file);
 
 		/* Get the icon */
-		icon = gedit_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU);
+		icon = gedit_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU, TRUE);
 	}
 
 	gtk_tree_store_insert_after (obj->priv->combo_model, iter, NULL,
@@ -725,7 +725,7 @@ fill_combo_model (GeditFileBrowserWidget *obj)
 	GtkTreeIter iter;
 	GdkPixbuf *icon;
 
-	icon = gedit_file_browser_utils_pixbuf_from_theme (GTK_STOCK_HOME, GTK_ICON_SIZE_MENU);
+	icon = gedit_file_browser_utils_pixbuf_from_theme ("user-bookmarks-symbolic", GTK_ICON_SIZE_MENU);
 
 	gtk_tree_store_append (store, &iter, NULL);
 	gtk_tree_store_set (store, &iter,

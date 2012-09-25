@@ -103,14 +103,19 @@ gedit_file_browser_utils_pixbuf_from_icon (GIcon       *icon,
 
 GdkPixbuf *
 gedit_file_browser_utils_pixbuf_from_file (GFile       *file,
-                                           GtkIconSize  size)
+                                           GtkIconSize  size,
+                                           gboolean     use_symbolic)
 {
 	GIcon *icon;
 	GFileInfo *info;
 	GdkPixbuf *ret = NULL;
+	const char *attribute;
+
+	attribute = use_symbolic ? G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON :
+	                           G_FILE_ATTRIBUTE_STANDARD_ICON;
 
 	info = g_file_query_info (file,
-				  G_FILE_ATTRIBUTE_STANDARD_ICON,
+				  attribute,
 				  G_FILE_QUERY_INFO_NONE,
 				  NULL,
 				  NULL);
@@ -118,7 +123,8 @@ gedit_file_browser_utils_pixbuf_from_file (GFile       *file,
 	if (!info)
 		return NULL;
 
-	icon = g_file_info_get_icon (info);
+	icon = use_symbolic ? g_file_info_get_symbolic_icon (info) :
+	                      g_file_info_get_icon (info);
 	if (icon != NULL)
 		ret = gedit_file_browser_utils_pixbuf_from_icon (icon, size);
 
@@ -163,8 +169,8 @@ gedit_file_browser_utils_confirmation_dialog (GeditWindow    *window,
 
 	gtk_widget_set_can_default (button, TRUE);
 	gtk_dialog_add_action_widget (GTK_DIALOG (dlg),
-                                      button,
-                                      GTK_RESPONSE_CANCEL);
+	                              button,
+	                              GTK_RESPONSE_CANCEL);
 
 	/* Add custom button */
 	button = gtk_button_new_from_stock (button_stock);

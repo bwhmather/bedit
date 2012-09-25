@@ -31,7 +31,8 @@ GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_theme	(gchar const    *name,
 GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_icon	(GIcon          *icon,
 								 GtkIconSize     size);
 GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_file	(GFile          *file,
-								 GtkIconSize     size);
+								 GtkIconSize     size,
+								 gboolean        use_symbolic);
 
 gchar		*gedit_file_browser_utils_file_basename		(GFile          *file);
 
