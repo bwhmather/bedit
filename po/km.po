@@ -1,0 +1,3596 @@
+# translation of po_gedit-km.po to Khmer
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# Khoem Sokhem <khoemsokhem@khmeros.info>, 2012.
+# Khmer translation for gedit
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the gedit package.
+msgid ""
+msgstr ""
+"Project-Id-Version: po_gedit-km\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-09-26 09:33+0000\n"
+"PO-Revision-Date: 2012-03-28 06:51+0000\n"
+"Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
+"Language-Team: Khmer\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Launchpad-Export-Date: 2012-09-03 06:00+0000\n"
+"X-Generator: Launchpad (build 15890)\n"
+"X-Language: km-KH\n"
+
+#: ../data/gedit.desktop.in.in.h:1
+msgid "gedit"
+msgstr "gedit"
+
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:791
+msgid "Text Editor"
+msgstr "កម្មវិធី​​កែសម្រួល​​អត្ថបទ"
+
+#: ../data/gedit.desktop.in.in.h:3
+msgid "Edit text files"
+msgstr "កែ​សម្រួល​ឯកសារ​អត្ថបទ"
+
+#: ../data/gedit.desktop.in.in.h:4
+msgid "gedit Text Editor"
+msgstr "កម្មវិធី​កែសម្រួល​អត្ថបទ gedit"
+
+#: ../data/gedit.desktop.in.in.h:5
+msgid "Text"
+msgstr "អត្ថបទ"
+
+#: ../data/gedit.desktop.in.in.h:6
+msgid "Open a New Window"
+msgstr "បើក​បង្អួច​ថ្មី"
+
+#: ../data/gedit.desktop.in.in.h:7
+msgid "Open a New Document"
+msgstr "បើក​ឯកសារ​ថ្មី"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+msgid "Use Default Font"
+msgstr "ប្រើ​ពុម្ពអក្សរ​លំនាំដើម"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+msgid ""
+"Whether to use the system's default fixed width font for editing text "
+"instead of a font specific to gedit. If this option is turned off, then the "
+"font named in the \"Editor Font\" option will be used instead of the system "
+"font."
+msgstr ""
+"ថាតើ​ត្រូវ​ប្រើ​ពុម្ពអក្សរ​ដែលមាន​ទទឹង​ថេរ​លំនាំដើម​របស់​ប្រព័ន្ធ​សម្រាប់​កែសម្រួល​អត្ថបទ​ជំនួស​ឲ្យ​ពុម្ពអក្សរ​ជាក់លាក់​"
+"ចំពោះ gedit ដែរ​ឬទេ ។ ប្រសិនបើ​ជម្រើស​នេះ​ត្រូវ​បានបិទ នោះពុម្ពអក្សរ​ដែលមាន​ឈ្មោះ​នៅ​ក្នុង​ជម្រើស​ "
+"\"កម្មវិធី​កែសម្រួល​ពុម្ពអក្សរ\" នឹង​ត្រូវ​បាន​ប្រើ​ជំនួស​ឲ្យ​ពុម្ពអក្សរ​ប្រព័ន្ធ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+msgid "Editor Font"
+msgstr "កម្មវិធី​កែសម្រួល​ពុម្ពអក្សរ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
+msgid ""
+"A custom font that will be used for the editing area. This will only take "
+"effect if the \"Use Default Font\" option is turned off."
+msgstr ""
+"ពុម្ពអក្សរ​ផ្ទាល់ខ្លួន​នឹង​ត្រូវ​បាន​ប្រើ​សម្រាប់​ផ្ទៃ​កែសម្រួល ។ វា​នឹង​មាន​ប្រសិទ្ធិភាព​តែ​ក្នុង​ករណី​ដែល​​ជម្រើស "
+"\"ប្រើ​ពុម្ពអក្សរ​លំនាំដើម\" ត្រូវ​បាន​បិទ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
+msgid "Style Scheme"
+msgstr "គ្រោងការណ៍​រចនាសម្ព័ន្ធ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
+msgid "The ID of a GtkSourceView Style Scheme used to color the text."
+msgstr "លេខ​សម្គាល់​គ្រោងការណ៍​រចនាសម្ព័ន្ធ GtkSourceView បាន​ប្រើ​សម្រាប់​ពណ៌​អត្ថបទ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
+msgid "Create Backup Copies"
+msgstr "បង្កើត​ច្បាប់​ចម្លង​បម្រុង​ទុក"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+msgid ""
+"Whether gedit should create backup copies for the files it saves. You can "
+"set the backup file extension with the \"Backup Copy Extension\" option."
+msgstr ""
+"ថាតើ gedit គួរ​បង្កើត​ច្បាប់​ចម្លង​បម្រុងទុក​សម្រាប់​ឯកសារ​ដែល​វា​រក្សាទុក​ដែរឬទេ ។ អ្នក​អាច​កំណត់​​​កន្ទុយ​"
+"ឯកសារ​បម្រុង​ទុក​ដោយ​ប្រើ​ជម្រើស \"កន្ទុយ​ឯកសារ​ច្បាប់​ចម្លង​បម្រុងទុក\" ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
+msgid "Autosave"
+msgstr "រក្សាទុក​ស្វ័យប្រវត្តិ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
+msgid ""
+"Whether gedit should automatically save modified files after a time "
+"interval. You can set the time interval with the \"Autosave Interval\" "
+"option."
+msgstr ""
+"ថាតើ​ gedit គួរ​រក្សាទុក​ឯកសារ​ដែល​បាន​កែប្រែ​ដោយ​ស្វ័យ​ប្រវត្តិ​បន្ទាប់ពី​ចន្លោះ​​ពេល​ជាក់លាក់​ដែរ​ឬទេ ។ "
+"អ្នក​អាច​កំណត់​ចន្លោះ​ពេល​ដោយ​ប្រើ​ជម្រើស \"ចន្លោះ​ពេល​រក្សាទុក​ដោយ​ស្វ័យ​ប្រវត្តិ\" ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
+msgid "Autosave Interval"
+msgstr "ចន្លោះ​ពេល​រក្សាទុក​ដោយ​ស្វ័យ​ប្រវត្តិ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
+msgid ""
+"Number of minutes after which gedit will automatically save modified files. "
+"This will only take effect if the \"Autosave\" option is turned on."
+msgstr ""
+"ចំនួន​នាទី​បន្ទាប់​ពី​ gedit នឹង​រក្សាទុក​ឯកសារ​ដែលបានកែប្រែ​ដោយ​ស្វ័យ​ប្រវត្តិ ។ វា​មាន​ប្រសិទ្ធភាព​តែ​"
+"ក្នុងករណី​បាន​បើក​ជម្រើស \"រក្សាទុក​ដោយ​ស្វ័យ​ប្រវត្តិ\" ប៉ុណ្ណោះ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+msgid "Undo Actions Limit (DEPRECATED)"
+msgstr "មិន​ធ្វើ​ដែន​កំណត់​សកម្មភាព​វិញ (បដិសេធ)"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
+msgstr ""
+"ចំនួន​សកម្មភាព​អតិបរមា​ដែល​ gedit អាច​មិន​ធ្វើ​វិញ ឬ​ធ្វើវិញ ។ ប្រើ \"-1\" សម្រាប់​ចំនួន​សកម្មភាព​គ្មាន​"
+"កំណត់ ។ បាន​បដិសេធ​ទាំង​ពីកំណែ ២.១២.០"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+msgid "Maximum Number of Undo Actions"
+msgstr "ចំនួន​សកម្មភាព​មិន​ធ្វើ​វិញ​អតិបរមា"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
+msgstr ""
+"ចំនួន​សកម្មភាព​អតិបរមា​ដែល​ gedit អាច​មិន​ធ្វើ​វិញ ឬ​ធ្វើ​វិញ ។ ប្រើ \"-1\" សម្រាប់​ចំនួន​សកម្មភាព​គ្មាន​"
+"កំណត់ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+msgid "Line Wrapping Mode"
+msgstr "របៀប​រុំ​បន្ទាត់"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+msgid ""
+"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
+"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+"wrapping at individual character boundaries. Note that the values are case-"
+"sensitive, so make sure they appear exactly as mentioned here."
+msgstr ""
+"បញ្ជាក់​ចំនួន​ប្រវែង​រុំ​បន្ទាត់​នៅក្នុង​ផ្ទៃ​កែសម្រួល ។ ប្រើ \"គ្មាន\" សម្រាប់​ការ​មិន​រុំ \"ពាក្យ\" សម្រាប់​"
+"ការ​រុំ​ជុំវិញ​​ពាក្យ និង \"តួអក្សរ\" សម្រាប់​រុំ​ជុំវិញ​តួអក្សរ​នីមួយៗ ។ ចំណាំ​ថា តម្លៃ​ប្រកាន់​អក្សរ​តូចធំ ដូច្នេះ​ត្រូវ​"
+"ប្រាកថា ពួក​វា​បង្ហាញ​យ៉ាង​ត្រឹមត្រូវ​ដូច​ដែលបាន​អធិប្បាយ​ខាង​លើ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+msgid "Tab Size"
+msgstr "ទំហំ​ថេប"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+msgid ""
+"Specifies the number of spaces that should be displayed instead of Tab "
+"characters."
+msgstr "បញ្ជាក់​ចំនួន​ដកឃ្លា ដែល​គួរ​ត្រូវ​បាន​បង្ហាញ​ជំនួស​ឲ្យ​តួអក្សរ​ថេប ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+msgid "Insert spaces"
+msgstr "បញ្ចូល​ចន្លោះ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+msgid "Whether gedit should insert spaces instead of tabs."
+msgstr "ថាតើ gedit គួរ​បញ្ចូល​ដកឃ្លា​ជំនួស​ឲ្យ​ថេប​ឬ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+msgid "Automatic indent"
+msgstr "ចូល​បន្ទាត់​ដោយ​ស្វ័យ​ប្រវត្តិ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+msgid "Whether gedit should enable automatic indentation."
+msgstr "ថាតើ gedit គួរ​បើក​ការ​ចូល​បន្ទាត់​ដោយ​ស្វ័យ​ប្រវត្តិ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+msgid "Display Line Numbers"
+msgstr "បង្ហាញ​លេខ​បន្ទាត់"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+msgid "Whether gedit should display line numbers in the editing area."
+msgstr "ថាតើ gedit គួរ​បង្ហាញ​លេខ​បន្ទាត់​ក្នុង​ផ្ទៃ​កែសម្រួល​ដែរឬទេ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+msgid "Highlight Current Line"
+msgstr "រំលេច​បន្ទាត់​បច្ចុប្បន្ន"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+msgid "Whether gedit should highlight the current line."
+msgstr "ថាតើ gedit គួរ​រំលេច​បន្ទាត់​បច្ចុប្បន្ន ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+msgid "Highlight Matching Brackets"
+msgstr "រំលេច​វង់ក្រចក​ដែល​ផ្គូផ្គង"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+msgid "Whether gedit should highlight matching brackets."
+msgstr "ថាតើ gedit គួរ​រំលេច​វង់ក្រចក​ដែល​ផ្គូផ្គង ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
+msgid "Display Right Margin"
+msgstr "បង្ហាញ​រឹម​ខាង​ស្ដាំ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
+msgid "Whether gedit should display the right margin in the editing area."
+msgstr "ថាតើ gedit គួរ​បង្ហាញ​រឹម​ខាង​ស្ដាំ​នៅ​ក្នុង​ផ្ទៃ​កែសម្រួល ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
+msgid "Right Margin Position"
+msgstr "ទីតាំង​រឹម​ខាង​ស្ដាំ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+msgid "Specifies the position of the right margin."
+msgstr "បញ្ជាក់​ទីតាំង​របស់​រឹម​ខាង​ស្ដាំ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
+msgid "Smart Home End"
+msgstr "Smart Home End"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
+msgid ""
+"Specifies how the cursor moves when the HOME and END keys are pressed. Use "
+"\"disabled\" to always move at the start/end of the line, \"after\" to move "
+"to the start/end of the line the first time the keys are pressed and to the "
+"start/end of the text ignoring whitespaces the second time the keys are "
+"pressed, \"before\" to move to the start/end of the text before moving to "
+"the start/end of the line and \"always\" to always move to the start/end of "
+"the text instead of the start/end of the line."
+msgstr ""
+"Specifies how the cursor moves when the HOME and END keys are pressed. Use "
+"\"disabled\" to always move at the start/end of the line, \"after\" to move "
+"to the start/end of the line the first time the keys are pressed and to the "
+"start/end of the text ignoring whitespaces the second time the keys are "
+"pressed, \"before\" to move to the start/end of the text before moving to "
+"the start/end of the line and \"always\" to always move to the start/end of "
+"the text instead of the start/end of the line."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+msgid "Restore Previous Cursor Position"
+msgstr "ស្ដារ​ទីតាំង​ទស្សន៍​ទ្រនិច​មុន"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+msgid ""
+"Whether gedit should restore the previous cursor position when a file is "
+"loaded."
+msgstr "ថាតើ gedit គួរ​ស្ដារ​ទីតាំង​ទស្សន៍​ទ្រនិច​មុន​នៅ​ពេល​ឯកសារ​ត្រូវ​បាន​ផ្ទុក​ដែរឬទេ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+msgid "Enable Syntax Highlighting"
+msgstr "បើក​ការ​រំលេច​វាក្យសម្ពន្ធ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+msgid "Whether gedit should enable syntax highlighting."
+msgstr "ថាតើ gedit គួរ​បើក​ការ​រំលេច​វាក្យសម្ពន្ធ​ដែរ​ឬទេ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+msgid "Enable Search Highlighting"
+msgstr "បើក​ការ​រំលេច​ការ​ស្វែងរក"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
+msgid ""
+"Whether gedit should highlight all the occurrences of the searched text."
+msgstr "ថាតើ gedit គួរ​រំលេច​ការ​កើត​ឡើង​​ទាំងអស់​នៃ​អត្ថបទ​ដែល​បាន​ស្វែងរក​ដែរ​ឬទេ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
+msgid "Ensure Trailing Newline"
+msgstr "ប្រាកដ​បន្ទាត់​ថ្មី"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
+msgid ""
+"Whether gedit will ensure that documents always end with a trailing newline."
+msgstr "ថា​តើ​ gedit នឹង​ប្រាកដ​ថា​ឯកសារ​តែងតែ​បញ្ចប់​ដោយ​គ្មាន​បន្ទាត់ថ្មី ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
+msgid "Toolbar is Visible"
+msgstr "របារ​ឧបករណ៍​មើល​ឃើញ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
+msgid "Whether the toolbar should be visible in editing windows."
+msgstr "ថាតើរបារ​ឧបករណ៍​គួរ​មើលឃើញ​ក្នុង​បង្អួច​កែសម្រួល​ដែរឬទេ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
+msgid "Notebook Show Tabs Mode"
+msgstr "Notebook បង្ហាញ​របៀប​ថេប"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
+msgid ""
+"Specifies when to show the notebook tabs. Use \"never\" to never show the "
+"tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
+"when there is more than one tab. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
+msgstr ""
+"បញ្ជាក់​ពេល​ត្រូវ​បង្ហាញ​ថេប​របស់ tabs ។ ប្រើ​ \"កុំ​បង្ហាញ\" ដើម្បី​កុំ​បង្ហាញ​ថេប \"បង្ហាញ​ជា​និច្ច\" "
+"ដើម្បី​បង្ហាញ​ថេប​ជា​និច្ច និង \"ស្វ័យ​ប្រវត្តិ\" ដើម្បី​បង្ហាញថេប តែ​នៅ​ពេល​មាន​ថេប​ច្រើន​ជាង​មួយ ។ "
+"ចំណាំថា តម្លៃ​ប្រកាន់​អក្សរតូចធំ ដូច្នេះ​ត្រូវ​ប្រាកដថា ពួកវា​បង្ហាញ​យ៉ាង​ត្រឹមត្រូវ​ដូច​ដែល​បាន​អធិប្បា​នៅ​ទីនេះ "
+"។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+msgid "Status Bar is Visible"
+msgstr "របារ​ស្ថានភាព​មើលឃើញ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
+msgstr "ថាតើ​របារ​ស្ថានភាព​នៅ​ខាង​ក្រោម​បង្អួច​កែសម្រួល​គួរ​មើលឃើញ​ដែរឬទេ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+msgid "Side panel is Visible"
+msgstr "បន្ទះ​ចំហៀង​មើលឃើញ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+msgid ""
+"Whether the side panel at the left of editing windows should be visible."
+msgstr "ថាតើ​បន្ទះ​ចំហៀង​នៅ​ខាង​ឆ្វេង​បង្អួច​កែសម្រួល​គួរ​មើល​ឃើញ​ដែរឬទេ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+msgid "Maximum Recent Files"
+msgstr "ឯកសារ​ថ្មីៗ​អតិបរមា"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+msgid ""
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
+msgstr "បញ្ជាក់​ចំនួន​ឯកសារ​ដែលបាន​បើក​ថ្មី​ ដែល​នឹង​ត្រូវ​បាន​បង្ហាញ​ក្នុង​ម៉ឺនុយ​រង \"ឯកសារ​ថ្មីៗ\" ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+msgid "Print Syntax Highlighting"
+msgstr "បោះពុម្ព​ការ​រំលេច​វាក្យសម្ពន្ធ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+msgid "Whether gedit should print syntax highlighting when printing documents."
+msgstr "ថាតើ​ gedit គួរ​បោះពុម្ព​ការ​រំលេច​វាក្យសម្ពន្ធ​នៅ​ពេល​បោះពុម្ព​ឯកសារ​ដែរឬទេ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+msgid "Print Header"
+msgstr "បោះពុម្ព​ក្បាល"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+msgid "Whether gedit should include a document header when printing documents."
+msgstr "ថាតើ gedit គួរ​ដាក់​បញ្ចូល​ក្បាល​ឯកសារ​នៅ​ពេល​បោះពុម្ព​ឯកសារ​ដែរ​ឬទេ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+msgid "Printing Line Wrapping Mode"
+msgstr "បោះពុម្ព​របៀប​រុំ​បន្ទាត់"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+msgid ""
+"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
+"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
+msgstr ""
+"បញ្ជាក់វិធី​រុំ​ប្រវែង​បន្ទាត់​សម្រាប់ការ​បោះពុម្ព ។ ប្រើ \"គ្មាន\" សម្រាប់គ្មាន​កា​ររុំ \"ពាក្យ\" សម្រាប់​រុំ​"
+"ពាក្យ និង \"តួអក្សរ\" សម្រាប់​រុំ​តួអក្សរ ។ ចំណាំ​ថា តម្លៃ​ប្រកាន់​អក្សរ​តូចធំ ដូច្នេះ​ត្រូវ​ប្រាកដថា ពួកវា​"
+"បង្ហាញ​យ៉ាង​ត្រឹមត្រូវ​ដូច​ដែលបានអធិប្បាយ​នៅ​ទីនេះ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+msgid "Print Line Numbers"
+msgstr "បោះពុម្ព​​លេខ​បន្ទាត់"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+msgid ""
+"If this value is 0, then no line numbers will be inserted when printing a "
+"document. Otherwise, gedit will print line numbers every such number of "
+"lines."
+msgstr ""
+"ប្រសិនបើ​តម្លៃ ០ នោះ​គ្មាន​លេខ​បន្ទាត់​នឹង​ត្រូវ​បាន​បញ្ចូល​នៅ​ពេលបោះពុម្ព​ឯកសារ​ទេ ។ បើ​មិន​ដូច្នេះ​ទេ "
+"gedit នឹង​បោះពុម្ព​លេខ​បន្ទាត់​រាល់​លេខ​ដែល​បន្ទាត់​មាន ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+msgid "Body Font for Printing"
+msgstr "ពុម្ពអក្សរ​តួ​សម្រាប់​បោះពុម្ព"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
+msgstr "បញ្ជាក់​ពុម្ព​អក្សរ​ ត្រូវ​ប្រើ​សម្រាប់​តួ​ឯកសារ​នៅ​ពេល​បោះពុម្ព ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+msgid "Header Font for Printing"
+msgstr "ពុម្ពអក្សរ​សម្រាប់ក្បាលនៅ​ពេល​បោះពុម្ព"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+msgid ""
+"Specifies the font to use for page headers when printing a document. This "
+"will only take effect if the \"Print Header\" option is turned on."
+msgstr ""
+"បញ្ជាក់ពុម្ពអក្សរ​ត្រូវ​ប្រើ​សម្រាប់​ក្បាល​នៅ​ពេល​បោះពុម្ព​ឯកសារ ។ វា​នឹង​មាន​ប្រសិទ្ធភាព​តែ​ក្នុង​ករណី​ដែល​"
+"ជម្រើស \"បោះពុម្ព​ក្បាល\" ត្រូវ​បាន​បើក ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+msgid "Line Number Font for Printing"
+msgstr "ពុម្ពអក្សរ​លេខ​បន្ទាត់​សម្រាប់បោះពុម្ព"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+msgid ""
+"Specifies the font to use for line numbers when printing. This will only "
+"take effect if the \"Print Line Numbers\" option is non-zero."
+msgstr ""
+"បញ្ជាក់​ពុម្ពអក្សរ​ត្រូវ​ប្រើ​សម្រាប់​លេខ​បន្ទាត់​នៅ​ពេល​បោះពុម្ព ។ វា​មាន​ប្រសិទ្ធ​ភាព​តែ​ក្នុង​ករណី​ដែល​ជម្រើស "
+"\"បោះពុម្ព​លេខ​បន្ទាត់\" មិន​សូន្យ​ប៉ុណ្ណោះ ។"
+
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in you country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+msgid "Automatically Detected Encodings"
+msgstr "រកឃើញ​ការ​អ៊ិនកូដ​ដោយ​ស្វ័យ​ប្រវត្តិ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+msgid ""
+"Sorted list of encodings used by gedit for automatically detecting the "
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
+msgstr ""
+"បញ្ជី​អ៊ិនកូដ​ដែលបាន​តម្រៀប​បាន​ប្រើ​ដោយ gedit សម្រាប់ការ​រកឃើញ​ការ​អ៊ិនកូដ​ឯកសារ​ដោយ​ស្វ័យ​ប្រវត្តិ ។ "
+"\"បច្ចុប្បន្ន\" បង្ហាញ​ការ​អ៊ិនកូដ​មូលដ្ឋនា​បច្ចុប្បន្ន ។ មាន​តែ​ការ​អ៊ិនកូដ​ដែល​ស្គាល់​ប៉ុណ្ណោះ​ត្រូវ​បាន​ប្រើ ។"
+
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+msgid "Encodings shown in menu"
+msgstr "ការ​អ៊ិនកូដ​បង្ហាញ​ក្នុង​ម៉ឺនុយ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+msgid ""
+"List of encodings shown in the Character Encoding menu in open/save file "
+"selector. Only recognized encodings are used."
+msgstr ""
+"បញ្ជី​អ៊ិនកូដ​បាន​បង្ហាញ​ក្នុង​ម៉ឺនុយ​អ៊ិនកូដ​តួអក្សរ​​នៅ​ក្នុង​កម្មវិធី​ជ្រើស​បើក/រក្សាទុក​ឯកសារ ។ មាន​តែ​ការ​អ៊ិនកូដ​ដែល​"
+"ស្គាល់​ប៉ុណ្ណោះ​ត្រូវ​បាន​ប្រើ ។"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+msgid "Active plugins"
+msgstr "កម្មវិធី​ជំនួយ​សកម្ម"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+msgid ""
+"List of active plugins. It contains the \"Location\" of the active plugins. "
+"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+msgstr ""
+"បញ្ជី​កម្មវិធី​ជំនួយ​សកម្ម ។ វា​មាន​ \"ទីតាំង\" របស់​កម្មវិធី​ជំនួយ​សកម្ម ។ សូម​មើល​ឯកសារ .gedit-plugin "
+"ដើម្បី​​ទទួលបាន \"ទីតាំង\" របស់​កម្មវិធី​ជំនួយ​ដែលបានផ្ដល់​ឲ្យ ។"
+
+#: ../gedit/gedit-app.c:222
+msgid "There was an error displaying the help."
+msgstr "មាន​កំហុស​ក្នុងការ​បង្ហាញ​ជំនួយ ។"
+
+#: ../gedit/gedit-app-osx.c:274
+msgid "About gedit"
+msgstr "អំពី gedit"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:141
+msgid "Log Out _without Saving"
+msgstr "ចេញ​ដោយ​មិន​រក្សាទុក"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:145
+msgid "_Cancel Logout"
+msgstr "បោះបង់​កា​រចេញ"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:152
+msgid "Close _without Saving"
+msgstr "បិទ​ដោយ​មិន​រក្សាទុក"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:214
+msgid "Question"
+msgstr "សំណួរ"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:414
+#, c-format
+msgid ""
+"If you don't save, changes from the last %ld second will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld seconds will be permanently "
+"lost."
+msgstr[0] "ប្រសិនបើ​អ្នក​មិន​រក្សាតុក ការ​ផ្លាស់​ប្ដូរ​ក្នុង​រយៈពេល %ld វិនាទី​ចុងក្រោយ​នឹង​បាត់​បង់ ។"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:423
+msgid ""
+"If you don't save, changes from the last minute will be permanently lost."
+msgstr "ប្រសិនបើ​អ្នក​មិន​រក្សាទុក​ទេ ការ​ផ្លាស់ប្ដូរ​​នៅ​នាទី​ចុងក្រោយ​នឹង​បាត់បង់ ។"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:429
+#, c-format
+msgid ""
+"If you don't save, changes from the last minute and %ld second will be "
+"permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last minute and %ld seconds will be "
+"permanently lost."
+msgstr[0] "ប្រសិនបើ​អ្នក​មិន​រក្សាទុក ការ​ផ្លាស់ប្ដូរនៅ​​ប៉ុន្មាន​នាទី និង %ld វិនាទី​ចុងក្រោយ​នឹង​បាត់បង់ ។"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:439
+#, c-format
+msgid ""
+"If you don't save, changes from the last %ld minute will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld minutes will be permanently "
+"lost."
+msgstr[0] "ប្រសិន​បើ​​អ្នក​មិន​រក្សាទុក ការ​ផ្លាស់ប្ដូរ​នៅ​ %ld នាទី​ចុងក្រោយ​នឹង​បាត់បង់ ។"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:454
+msgid "If you don't save, changes from the last hour will be permanently lost."
+msgstr "ប្រសិន​បើ​អ្នក​មិន​រក្សាទុក​ ការ​ផ្លាស់ប្ដូរ​នៅ​​ប៉ុន្មាន​ម៉ោង​ចុងក្រោយ​​នឹង​បាត់បង់ ។"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:460
+#, c-format
+msgid ""
+"If you don't save, changes from the last hour and %d minute will be "
+"permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last hour and %d minutes will be "
+"permanently lost."
+msgstr[0] "ប្រសិន​បើ​អ្នក​មិន​រក្សាទុក ការ​ផ្លាស់ប្ដូរ​នៅ​​​​ប៉ុន្មាន​ម៉ោង និង %d នាទី​ចុងក្រោយ​នឹង​បាត់បង់ ។"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:475
+#, c-format
+msgid ""
+"If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %d hours will be permanently lost."
+msgstr[0] "ប្រសិនបើ​អ្នក​មិន​រក្សាទុក ការ​ផ្លាស់ប្ដូរ​នៅ​ម៉ោង %d ម៉ោង​ចុងក្រោយ​នឹង​បាត់បង់ ។"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:519
+#, c-format
+msgid "Changes to document \"%s\" will be permanently lost."
+msgstr "ការ​ផ្លាស់ប្ដូរ​ក្នុង​ឯកសារ \"%s\" នឹង​បាត់បង់ ។"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:524
+#, c-format
+msgid "Save changes to document \"%s\" before closing?"
+msgstr "រក្សាទុក​ការ​ផ្លាស់ប្ដូរ​ឯកសារ \"%s\" មុន​នឹង​បិទ​ ?"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:538
+#: ../gedit/gedit-close-confirmation-dialog.c:755
+msgid "Saving has been disabled by the system administrator."
+msgstr "កា​ររក្សាទុក​ត្រូវ​បាន​បិទ​ដោយ​អ្នក​គ្រប់គ្រង​ប្រព័ន្ធ ។"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:706
+#, c-format
+msgid "Changes to %d document will be permanently lost."
+msgid_plural "Changes to %d documents will be permanently lost."
+msgstr[0] "ការ​ផ្លាស់ប្ដូរ​ក្នុងឯកសារ %d នឹង​បាត់បង់ ។"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:714
+#, c-format
+msgid "There is %d document with unsaved changes. Save changes before closing?"
+msgid_plural ""
+"There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] "មាន​ឯកសារ %d ដែល​មាន​កា​រផ្លាស់ប្ដូរ​មិន​បាន​រក្សាទុក ។ រក្សាទុក​ការ​ផ្លាស់ប្ដូរ​មុន​នឹង​បិទ ?"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:733
+msgid "Docum_ents with unsaved changes:"
+msgstr "ឯកសារ​មាន​ការ​ផ្លាស់ប្ដូរ​ដែល​មិន​បាន​រក្សាទុក ៖"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:735
+msgid "S_elect the documents you want to save:"
+msgstr "ជ្រើស​ឯកសារ​ដែល​អ្នក​ចង់​រក្សាទុក ៖"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:759
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "ប្រសិន​បើ​អ្នក​មិន​រក្សាទុក កា​រផ្លាស់ប្ដូរ​របស់​អ្នក​ទាំងអស់​នឹង​បាត់បង់ ។"
+
+#: ../gedit/gedit-command-line.c:232
+#, c-format
+msgid "%s: invalid encoding.\n"
+msgstr "%s ៖ ការ​អ៊ីនកូដ​មិន​ត្រឹមត្រូវ ។\n"
+
+#: ../gedit/gedit-command-line.c:256
+msgid "Show the application's version"
+msgstr "បង្ហាញ​កំណែ​របស់​កម្មវិធី"
+
+#: ../gedit/gedit-command-line.c:262
+msgid "Display list of possible values for the encoding option"
+msgstr "បង្ហាញ​បញ្ជី​តម្លៃ​ដែល​អាច​ប្រើ​បាន​សម្រាប់​ជម្រើស​អ៊ីនកូដ"
+
+#: ../gedit/gedit-command-line.c:270
+msgid ""
+"Set the character encoding to be used to open the files listed on the "
+"command line"
+msgstr "កំណត់​ការ​អ៊ីនកូដ​តួអក្សរត្រូវ​ប្រើ​ ដើម្បី​បើក​ឯកសារ​ដែល​បាន​រាយ​នៅ​លើ​បន្ទាត់​ពាក្យ​បញ្ជា"
+
+#: ../gedit/gedit-command-line.c:271
+msgid "ENCODING"
+msgstr "ការ​អ៊ីនកូដ"
+
+#: ../gedit/gedit-command-line.c:278
+msgid "Create a new top-level window in an existing instance of gedit"
+msgstr "បង្កើត​បង្អួច​កម្រិត​ខាង​លើ​ថ្មី​នៅ​ក្នុង​ធាតុ​ដែល​មាន​ស្រាប់​របស់ gedit"
+
+#: ../gedit/gedit-command-line.c:286
+msgid "Create a new document in an existing instance of gedit"
+msgstr "បង្កើត​ឯកសារ​ថ្មី​នៅ​ក្នុង​ធាតុ​ដែល​ស្រាប់​របស់ gedit"
+
+#: ../gedit/gedit-command-line.c:294
+msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+msgstr "កំណត់​ទំហំ និង​ទីតាំង​របស់បង្អួច (WIDTHxHEIGHT+X+Y)"
+
+#: ../gedit/gedit-command-line.c:295
+msgid "GEOMETRY"
+msgstr "ធរណីមាត្រ"
+
+#: ../gedit/gedit-command-line.c:302
+msgid "Open files and block process until files are closed"
+msgstr "បើក​ឯកសារ និងទប់​ស្កាត់​ដំណើរការ​រហូត​ដល់​ឯកសារ​ត្រុវ​បាន​បិទ"
+
+#: ../gedit/gedit-command-line.c:310
+msgid "Run gedit in the background"
+msgstr "ដំណើរការ gedit នៅ​ក្នុង​ផ្ទៃ​ខាង​ក្រោយ"
+
+#: ../gedit/gedit-command-line.c:318
+msgid "Run gedit in standalone mode"
+msgstr "ដំណើរការ gedit នៅ​ក្នុង​របៀប​​​មិន​ត​ជា​ប​ណ្ដាញ"
+
+#: ../gedit/gedit-command-line.c:327
+msgid "[FILE...] [+LINE[:COLUMN]]"
+msgstr "[FILE...] [+LINE[:COLUMN]]"
+
+#. Setup command line options
+#: ../gedit/gedit-command-line.c:334
+msgid "- Edit text files"
+msgstr "- កែសម្រួល​ឯកសារ​អត្ថបទ"
+
+#: ../gedit/gedit-command-line.c:345
+#, c-format
+msgid ""
+"%s\n"
+"Run '%s --help' to see a full list of available command line options.\n"
+msgstr ""
+"%s\n"
+"ដំណើរការ '%s --help' ដើម្បីមើល​បញ្ជី​ជម្រើស​ពាក្យ​បញ្ជា​ដែល​អាច​ប្រើ​បាន​ពេញ​លេញ ។\n"
+
+#: ../gedit/gedit-commands-file.c:266
+#, c-format
+msgid "Loading file '%s'…"
+msgstr "កំពុង​ផ្ទុក​ឯកលារ '%s'…"
+
+#: ../gedit/gedit-commands-file.c:275
+#, c-format
+msgid "Loading %d file…"
+msgid_plural "Loading %d files…"
+msgstr[0] "កំពុង​ផ្ទុក​ឯកសារ %d …"
+
+#. Translators: "Open Files" is the title of the file chooser window
+#: ../gedit/gedit-commands-file.c:440
+msgid "Open Files"
+msgstr "បើក​ឯកសារ"
+
+#: ../gedit/gedit-commands-file.c:551
+#, c-format
+msgid "The file \"%s\" is read-only."
+msgstr "ឯកសារ \"%s\" បាន​តែ​អាន ។"
+
+#: ../gedit/gedit-commands-file.c:556
+msgid "Do you want to try to replace it with the one you are saving?"
+msgstr "តើ​អ្នក​ចង់ព្យាយាម​ជំនួស​វា​ដោយ​ធាតុ​មួយ​ដែល​អ្នកបាន​រក្សាទុក​ឬ ?"
+
+#: ../gedit/gedit-commands-file.c:564 ../gedit/gedit-replace-dialog.c:283
+msgid "_Replace"
+msgstr "ជំនួស"
+
+#: ../gedit/gedit-commands-file.c:606
+msgid "Save the file using compression?"
+msgstr "រក្សាទុក​ឯកសារ​ដោយ​ប្រើ​ការ​បង្ហាប់ ?"
+
+#: ../gedit/gedit-commands-file.c:607
+#, c-format
+msgid ""
+"The file \"%s\" was previously saved as plain text and will now be saved "
+"using compression."
+msgstr ""
+"ឯកសារ \"%s\" ពី​មុន​ត្រូវ​បាន​រក្សាទុក​ជា​អត្ថបទ​ធម្មតា ហើយ​ឥឡូ​វនេះ​​នឹង​ត្រូវ​បាន​រក្សាទុក​ដោយ​ប្រើ​ការ​"
+"បង្ហាប់ ។"
+
+#: ../gedit/gedit-commands-file.c:609
+msgid "_Save Using Compression"
+msgstr "រក្សាទុក​ដោយ​ប្រើ​ការ​បង្ហាប់"
+
+#: ../gedit/gedit-commands-file.c:613
+msgid "Save the file as plain text?"
+msgstr "រក្សាទុក​ឯកសារ​ជា​អត្ថបទ​ធម្មតា ?"
+
+#: ../gedit/gedit-commands-file.c:614
+#, c-format
+msgid ""
+"The file \"%s\" was previously saved using compression and will now be saved "
+"as plain text."
+msgstr ""
+"ឯកសារ \"%s\" ពី​មុន​ត្រូវ​បាន​រក្សាទុក​ដោយ​ប្រើ​ការ​បង្ហាប់ ហើយ​ឥឡូវ​​នេះ​នឹង​ត្រូវ​បាន​រក្សាទុក​ជា​អត្ថបទ​"
+"ធម្មតា ។"
+
+#: ../gedit/gedit-commands-file.c:616
+msgid "_Save As Plain Text"
+msgstr "រក្សាទុក​ជា​អត្ថបទ​ធម្មតា"
+
+#: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:953
+#, c-format
+msgid "Saving file '%s'…"
+msgstr "កំពុង​រក្សាទុក​ឯកសារ '%s'…"
+
+#: ../gedit/gedit-commands-file.c:840
+msgid "Save As"
+msgstr "រក្សា​ទុក​​ជា"
+
+#: ../gedit/gedit-commands-file.c:1167
+#, c-format
+msgid "Reverting the document '%s'…"
+msgstr "កំពុង​ត្រឡប់​ឯកសារ '%s'…"
+
+#: ../gedit/gedit-commands-file.c:1212
+#, c-format
+msgid "Revert unsaved changes to document '%s'?"
+msgstr "ត្រឡប់ការ​ផ្លាស់ប្ដូរ​ដែល​មិ​ន​បាន​រក្សាទុក​ទៅ​ឯកសារ '%s'?"
+
+#: ../gedit/gedit-commands-file.c:1221
+#, c-format
+msgid ""
+"Changes made to the document in the last %ld second will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %ld seconds will be permanently "
+"lost."
+msgstr[0] "ការ​ផ្លាស់ប្ដូរ​ដែល​បាន​អនុវត្ត​ក្នុង​រយៈពេល %ld វិនាទី​នឹង​បាត់បង់​ទាំង​ស្រុង ។"
+
+#: ../gedit/gedit-commands-file.c:1230
+msgid ""
+"Changes made to the document in the last minute will be permanently lost."
+msgstr "ការ​ផ្លាស់ប្ដូរ​ឯកសារ​ក្នុង​រយៈ​ពេល​នាទី​ចុងក្រោយ​នឹង​បាត់បង់​ទាំង​ស្រុង ។"
+
+#: ../gedit/gedit-commands-file.c:1236
+#, c-format
+msgid ""
+"Changes made to the document in the last minute and %ld second will be "
+"permanently lost."
+msgid_plural ""
+"Changes made to the document in the last minute and %ld seconds will be "
+"permanently lost."
+msgstr[0] "ការ​ផ្លាស់ប្ដូរ​ឯកសារ​នៅ​​នាទី​ចុងក្រោយ និង %ld វិនាទី​នឹង​បាត់បង់​ទាំង​ស្រុង ។"
+
+#: ../gedit/gedit-commands-file.c:1246
+#, c-format
+msgid ""
+"Changes made to the document in the last %ld minute will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %ld minutes will be permanently "
+"lost."
+msgstr[0] "ការ​ផ្លាស់ប្ូរ​ឯកសារ​ក្នុង​រយៈ​​ពេល %ld នាទី​ចុងក្រោយ​នឹង​បាត់បង់​ទាំង​ស្រុង ។"
+
+#: ../gedit/gedit-commands-file.c:1261
+msgid "Changes made to the document in the last hour will be permanently lost."
+msgstr "ការ​ផ្លាស់ប្ដូរ​ឯកសារ​​នៅ​ម៉ោង​ចុងក្រោយ​នឹង​បាត់បង់​ទាំង​ស្រុង ។"
+
+#: ../gedit/gedit-commands-file.c:1267
+#, c-format
+msgid ""
+"Changes made to the document in the last hour and %d minute will be "
+"permanently lost."
+msgid_plural ""
+"Changes made to the document in the last hour and %d minutes will be "
+"permanently lost."
+msgstr[0] "ការ​ផ្លាស់ប្ដូរ​ឯកសារ​ដែល​​នៅ​ម៉ោង​ចុងក្រោយ និង %d នាទី​នឹង​បាត់បង់​ទាំង​ស្រុង ។"
+
+#: ../gedit/gedit-commands-file.c:1282
+#, c-format
+msgid ""
+"Changes made to the document in the last %d hour will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %d hours will be permanently lost."
+msgstr[0] "ការ​ផ្លាស់ប្ដូរ​ឯកសារ​នៅ %d ម៉ោង​ចុងក្រោយ​​នឹង​បាត់បង់​ទាំង​ស្រុង ។"
+
+#: ../gedit/gedit-commands-file.c:1308
+msgid "_Revert"
+msgstr "ត្រឡប់"
+
+#: ../gedit/gedit-commands-help.c:88
+msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
+msgstr "gedit គឺ​ជា​កម្មវិធី​កែសម្រួល​អត្ថបទ​តូច​​មួយ​សម្រាប់​ផ្ទៃតុ GNOME"
+
+#: ../gedit/gedit-commands-help.c:113
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Khoem Sokhem https://launchpad.net/~khoemsokhem"
+
+#: ../gedit/gedit-commands-search.c:112
+#, c-format
+msgid "Found and replaced %d occurrence"
+msgid_plural "Found and replaced %d occurrences"
+msgstr[0] "រក​ឃើញ​ការ​កើត​ឡើង %d ដែល​បាន​ជំនួស"
+
+#: ../gedit/gedit-commands-search.c:121
+msgid "Found and replaced one occurrence"
+msgstr "បាន​រក​ឃើញ និង​ជំនួស​ការ​កើត​ឡើង​មួយ"
+
+#. Translators: %s is replaced by the text
+#. entered by the user in the search box
+#: ../gedit/gedit-commands-search.c:144
+#, c-format
+msgid "\"%s\" not found"
+msgstr "រក​មិន​ឃើញ \"%s\""
+
+#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
+#, c-format
+msgid "Unsaved Document %d"
+msgstr "ឯកសារ​មិន​បាន​រក្សាទុក %d"
+
+#: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
+#: ../gedit/gedit-window.c:2397 ../gedit/gedit-window.c:2404
+msgid "Read-Only"
+msgstr "បាន​តែ​អាន"
+
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3846
+msgid "Documents"
+msgstr "ឯកសារ"
+
+#: ../gedit/gedit-encodings.c:142 ../gedit/gedit-encodings.c:184
+#: ../gedit/gedit-encodings.c:186 ../gedit/gedit-encodings.c:188
+#: ../gedit/gedit-encodings.c:190 ../gedit/gedit-encodings.c:192
+#: ../gedit/gedit-encodings.c:194 ../gedit/gedit-encodings.c:196
+msgid "Unicode"
+msgstr "យូនីកូដ"
+
+#: ../gedit/gedit-encodings.c:155 ../gedit/gedit-encodings.c:179
+#: ../gedit/gedit-encodings.c:229 ../gedit/gedit-encodings.c:272
+msgid "Western"
+msgstr "ភាគ​ខាង​លិច"
+
+#: ../gedit/gedit-encodings.c:157 ../gedit/gedit-encodings.c:231
+#: ../gedit/gedit-encodings.c:268
+msgid "Central European"
+msgstr "អឺរ៉ុប​កណ្ដាល"
+
+#: ../gedit/gedit-encodings.c:159
+msgid "South European"
+msgstr "អឺរ៉ុប​ខាង​ត្បូង"
+
+#: ../gedit/gedit-encodings.c:161 ../gedit/gedit-encodings.c:175
+#: ../gedit/gedit-encodings.c:282
+msgid "Baltic"
+msgstr "បាល់ទិក"
+
+#: ../gedit/gedit-encodings.c:163 ../gedit/gedit-encodings.c:233
+#: ../gedit/gedit-encodings.c:246 ../gedit/gedit-encodings.c:250
+#: ../gedit/gedit-encodings.c:252 ../gedit/gedit-encodings.c:270
+msgid "Cyrillic"
+msgstr "ស៊ីរីលីក"
+
+#: ../gedit/gedit-encodings.c:165 ../gedit/gedit-encodings.c:239
+#: ../gedit/gedit-encodings.c:280
+msgid "Arabic"
+msgstr "អារ៉ាប់"
+
+#: ../gedit/gedit-encodings.c:167 ../gedit/gedit-encodings.c:274
+msgid "Greek"
+msgstr "ក្រិក"
+
+#: ../gedit/gedit-encodings.c:169
+msgid "Hebrew Visual"
+msgstr "ហេប្រូ"
+
+#: ../gedit/gedit-encodings.c:171 ../gedit/gedit-encodings.c:235
+#: ../gedit/gedit-encodings.c:276
+msgid "Turkish"
+msgstr "ទួរគី"
+
+#: ../gedit/gedit-encodings.c:173
+msgid "Nordic"
+msgstr "ណ័រឌីក"
+
+#: ../gedit/gedit-encodings.c:177
+msgid "Celtic"
+msgstr "សែលតិក"
+
+#: ../gedit/gedit-encodings.c:181
+msgid "Romanian"
+msgstr "រូម៉ានី"
+
+#: ../gedit/gedit-encodings.c:199
+msgid "Armenian"
+msgstr "អារមេនី"
+
+#: ../gedit/gedit-encodings.c:201 ../gedit/gedit-encodings.c:203
+#: ../gedit/gedit-encodings.c:217
+msgid "Chinese Traditional"
+msgstr "ចិន​បុរាណ"
+
+#: ../gedit/gedit-encodings.c:205
+msgid "Cyrillic/Russian"
+msgstr "ស៊ីរីលីក/រុស្ស៊ី"
+
+#: ../gedit/gedit-encodings.c:208 ../gedit/gedit-encodings.c:210
+#: ../gedit/gedit-encodings.c:212 ../gedit/gedit-encodings.c:242
+#: ../gedit/gedit-encodings.c:257
+msgid "Japanese"
+msgstr "ជប៉ុន"
+
+#: ../gedit/gedit-encodings.c:215 ../gedit/gedit-encodings.c:244
+#: ../gedit/gedit-encodings.c:248 ../gedit/gedit-encodings.c:263
+msgid "Korean"
+msgstr "កូរ៉េ"
+
+#: ../gedit/gedit-encodings.c:220 ../gedit/gedit-encodings.c:222
+#: ../gedit/gedit-encodings.c:224
+msgid "Chinese Simplified"
+msgstr "ចិន​សាមញ្ញ"
+
+#: ../gedit/gedit-encodings.c:226
+msgid "Georgian"
+msgstr "ហ្សកហ្ស៊ី"
+
+#: ../gedit/gedit-encodings.c:237 ../gedit/gedit-encodings.c:278
+msgid "Hebrew"
+msgstr "ហេប្រូ"
+
+#: ../gedit/gedit-encodings.c:254
+msgid "Cyrillic/Ukrainian"
+msgstr "ស៊ីរីលីក/អ៊ុយក្រែន"
+
+#: ../gedit/gedit-encodings.c:259 ../gedit/gedit-encodings.c:265
+#: ../gedit/gedit-encodings.c:284
+msgid "Vietnamese"
+msgstr "វៀតណាម"
+
+#: ../gedit/gedit-encodings.c:261
+msgid "Thai"
+msgstr "ថៃ"
+
+#: ../gedit/gedit-encodings.c:435
+msgid "Unknown"
+msgstr "មិន​ស្គាល់"
+
+#: ../gedit/gedit-encodings-combo-box.c:301
+msgid "Automatically Detected"
+msgstr "បាន​រកឃើញ​ដោយ​ស្វ័យ​ប្រវត្តិ"
+
+#: ../gedit/gedit-encodings-combo-box.c:320
+#: ../gedit/gedit-encodings-combo-box.c:336
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "មូលដ្ឋាន (Locale) បច្ចុប្បន្ន (%s)"
+
+#: ../gedit/gedit-encodings-combo-box.c:388
+msgid "Add or Remove..."
+msgstr "បន្ថែម ឬ​យក​ចេញ..."
+
+#: ../gedit/gedit-encodings-dialog.c:345
+msgid "Character Encodings"
+msgstr "ការ​អ៊ិនកូដ​តួអក្សរ"
+
+#: ../gedit/gedit-encodings-dialog.c:395 ../gedit/gedit-encodings-dialog.c:456
+msgid "_Description"
+msgstr "សេចក្ដីពណ៌នា"
+
+#: ../gedit/gedit-encodings-dialog.c:404 ../gedit/gedit-encodings-dialog.c:465
+msgid "_Encoding"
+msgstr "កា​រអ៊ិនកូដ"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-encodings-dialog.ui.h:1
+msgid "Character encodings"
+msgstr "ការ​អ៊ិនកូដ​តួអក្សរ"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:2
+msgid "A_vailable encodings:"
+msgstr "ការ​អ៊ិនកូដ​ដែល​មាន ៖"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:3
+msgid "E_ncodings shown in menu:"
+msgstr "កា​រអ៊ិនកូដ​បាន​បង្ហាញ​ក្នុង​ម៉ឺនុយ ៖"
+
+#: ../gedit/gedit-file-chooser-dialog.c:52
+#: ../gedit/gedit-preferences-dialog.c:909
+msgid "All Files"
+msgstr "ឯកសារ​ទាំង​អស់"
+
+#: ../gedit/gedit-file-chooser-dialog.c:53
+msgid "All Text Files"
+msgstr "ឯកសារ​អត្ថបទ​ទាំងអស់"
+
+#: ../gedit/gedit-file-chooser-dialog.c:95
+msgid "C_haracter Encoding:"
+msgstr "ការ​អ៊ីនកូដ​តួអក្សរ ៖"
+
+#: ../gedit/gedit-file-chooser-dialog.c:154
+msgid "L_ine Ending:"
+msgstr "បញ្ចប់​បន្ទាត់ ៖"
+
+#: ../gedit/gedit-file-chooser-dialog.c:173
+msgid "Unix/Linux"
+msgstr "យូនីក/លីនុច"
+
+#: ../gedit/gedit-file-chooser-dialog.c:179
+msgid "Mac OS Classic"
+msgstr "Mac OS Classic"
+
+#: ../gedit/gedit-file-chooser-dialog.c:185
+msgid "Windows"
+msgstr "វីនដូ"
+
+#: ../gedit/gedit-io-error-info-bar.c:182
+#: ../gedit/gedit-io-error-info-bar.c:497
+msgid "_Retry"
+msgstr "ព្យាយាម​ម្ដង​ទៀត"
+
+#: ../gedit/gedit-io-error-info-bar.c:203
+#, c-format
+msgid "Could not find the file %s."
+msgstr "រក​មិន​ឃើញ​ឯកសារ %s ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:205
+#: ../gedit/gedit-io-error-info-bar.c:248
+#: ../gedit/gedit-io-error-info-bar.c:255
+msgid "Please check that you typed the location correctly and try again."
+msgstr "សូម​ពិនិត្យ​ថាតើ​អ្នក​បាន​វាយ​ទីតាំង​ត្រឹមត្រូវ​ដែរឬទេ ហើយ​ព្យាយាម​ម្ដង​ទៀត ។"
+
+#. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
+#: ../gedit/gedit-io-error-info-bar.c:224
+#, c-format
+msgid "gedit cannot handle %s locations."
+msgstr "gedit មិន​អាច​គ្រប់គ្រង​ទីតាំង %s បាន​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:230
+msgid "gedit cannot handle this location."
+msgstr "gedit មិន​អាច​គ្រប់គ្រង​ទីតាំង​នេះ​បាន​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:238
+msgid "The location of the file cannot be mounted."
+msgstr "ទីតាំង​ឯកសារ​មិន​អាច​ត្រូវ​បាន​ម៉ោន​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:242
+msgid "The location of the file cannot be accessed because it is not mounted."
+msgstr "ទីតាំង​ឯកសារ​មិនអាច​ត្រូវ​បាន​ចូល​ដំណើរការ​បាន​ទេ ពីព្រោះ​វា​មិន​ត្រូវ​បាន​ម៉ោន ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:246
+#, c-format
+msgid "%s is a directory."
+msgstr "%s គឺ​ជាថត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:253
+#, c-format
+msgid "%s is not a valid location."
+msgstr "%s មិនមែន​ជា​ទីតាំង​ត្រឹមត្រូវ​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:289
+#, c-format
+msgid ""
+"Host %s could not be found. Please check that your proxy settings are "
+"correct and try again."
+msgstr "រក​មិន​ឃើញ​ម៉ាស៊ីន %s ។ សូម​ពិនិត្យ​មើល​ថាតើ​ការ​កំណត់​ប្រូកស៊ី​ត្រឹមត្រូវ​ដែរឬទេ ហើយ​ព្យាយាម​ម្ដង​ទៀ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:304
+#, c-format
+msgid ""
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
+msgstr ""
+"ឈ្មោះ​ម៉ាស៊ីន​មិន​ត្រឹមត្រូវ​ទេ ។ សូម​ពិនិត្យ​មើល​ថាតើ​អ្នក​បាន​វាយ​ទីតាំង​ត្រឹមត្រូវ​ដែរឬទេ ហើយ​ព្យាយាម​ម្ដង​ទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:312
+#, c-format
+msgid "%s is not a regular file."
+msgstr "%s មិន​មែន​ជា​ឯកសារ​ធម្មតា​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:317
+msgid "Connection timed out. Please try again."
+msgstr "អស់​ពេល​ក្នុង​ការ​តភ្ជាប់ ។ សូម​ព្យាយាម​ម្ដង​ទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:340
+msgid "The file is too big."
+msgstr "ឯកសារ​ធំ​ពេក ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:381
+#, c-format
+msgid "Unexpected error: %s"
+msgstr "កំហុស​ដែល​មិន​រំពឹង​ទុក ៖ %s"
+
+#: ../gedit/gedit-io-error-info-bar.c:417
+msgid "gedit cannot find the file. Perhaps it has recently been deleted."
+msgstr "gedit រក​មិន​ឃើញ​ឯកសារ​ទេ ។ ប្រហែល​ជា​វា​ត្រូវ​បាន​លុប​ហើយ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:427
+#, c-format
+msgid "Could not revert the file %s."
+msgstr "មិន​អាច​ត្រឡប់​ទៅឯកសារ %s ទៅ​ដើម​វិញ​បាន​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:454
+msgid "Ch_aracter Encoding:"
+msgstr "ការ​អ៊ីនកូដ​តួអក្សរ ៖"
+
+#. Translators: the access key chosen for this string should be
+#. different from other main menu access keys (Open, Edit, View...)
+#: ../gedit/gedit-io-error-info-bar.c:506
+#: ../gedit/gedit-io-error-info-bar.c:782
+msgid "Edit Any_way"
+msgstr "អញ្ចឹង​ កែសម្រួល"
+
+#: ../gedit/gedit-io-error-info-bar.c:608
+msgid ""
+"The number of followed links is limited and the actual file could not be "
+"found within this limit."
+msgstr "ចំនួន​តំណ​ដែល​ដែល​បាន​តាមដាន​​មាន​កំណត់ ហើយ​​ឯកសារ​ពិតប្រាកដ​រក​ឃើញនៅ​ក្នុង​ដែន​នេះ​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:612
+msgid "You do not have the permissions necessary to open the file."
+msgstr "ង្នក​មិនមាន​សិទ្ធិ​ចាំបាច់ ដើម្បី​បើក​ឯកសារ​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:618
+msgid "gedit has not been able to detect the character encoding."
+msgstr "gedit មិន​អាច​រក​ឃើញ​ការ​អ៊ីនកូដ​តួអក្សរ​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:620
+#: ../gedit/gedit-io-error-info-bar.c:642
+msgid "Please check that you are not trying to open a binary file."
+msgstr "សូម​ពិនិត្យ​មើល​ថាត​អ្នក​មិន​កំពុង​ព្យាយាម​បើក​ឯកសារ​គោល​ពីរ​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:621
+msgid "Select a character encoding from the menu and try again."
+msgstr "ជ្រើស​ការ​អ៊ីនកូដ​តួអក្សរ​ពី​ម៉ឺនុយ ហើយ​ព្យាយាម​ម្ដង​ទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:627
+#, c-format
+msgid "There was a problem opening the file %s."
+msgstr "មាន​​បញ្ហា​ក្នុង​ការ​បើក​ឯកសារ %s ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:629
+msgid ""
+"The file you opened has some invalid characters. If you continue editing "
+"this file you could corrupt this document."
+msgstr ""
+"ឯកសារ​ដែល​អ្នក​បាន​បើក​មាន​តួអក្សរ​មិន​ត្រឹមត្រូវ ។ ប្រសិនបើ​អ្នក​បន្ត​កែសម្រួល​​ឯកសារ​នេះ វា​អាច​ខូច​បាន ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:632
+msgid "You can also choose another character encoding and try again."
+msgstr "អ្នក​ក៏​អាច​ជ្រើស​ការ​អ៊ីនកូដ​តួអក្សរ​ផ្សេង​ ហើយ​ព្យាយាម​ម្ដង​ទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:639
+#, c-format
+msgid "Could not open the file %s using the %s character encoding."
+msgstr "មិនអាច​បើក​ឯកសារ %s ដោយ​ប្រើ​ការ​អ៊ីនកូដ​តួអក្សរ %s បាន​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:643
+#: ../gedit/gedit-io-error-info-bar.c:717
+msgid "Select a different character encoding from the menu and try again."
+msgstr "ជ្រើស​ការ​អ៊ីនកូដ​តួអក្សរ​ផ្សេង​ពី​ម៉ឺនុយ ហើយ​ព្យាយាម​ម្ដង​ទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:653
+#, c-format
+msgid "Could not open the file %s."
+msgstr "មិនអាច​បើក​ឯកសារ %s បាន​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:712
+#, c-format
+msgid "Could not save the file %s using the %s character encoding."
+msgstr "មិន​អាច​រក្សាទុក​ឯកសារ %s ដោយ​ប្រើ​ការ​អ៊ីនកូដ​តួអក្សរ %s បាន​ទេ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:715
+msgid ""
+"The document contains one or more characters that cannot be encoded using "
+"the specified character encoding."
+msgstr ""
+"ឯកសារ​មាន​តួអក្សរ​មួយ ឬ​ច្រើន ដែល​មិន​អាច​ត្រូវ​បាន​អ៊ីនកូដ ដោយ​ប្រើ​ការ​អ៊ីនកូដ​តួអក្សរ​ដែល​បាន​បញ្ជាក់ ។"
+
+#. Translators: the access key chosen for this string should be
+#. different from other main menu access keys (Open, Edit, View...)
+#: ../gedit/gedit-io-error-info-bar.c:787
+msgid "D_on't Edit"
+msgstr "កុំ​កែសម្រួល"
+
+#: ../gedit/gedit-io-error-info-bar.c:801
+#, c-format
+msgid "This file (%s) is already open in another gedit window."
+msgstr "ឯកសារ​នេះ​ (%s) ត្រូវ​បាន​បើក​រួច​ហើយ​នៅ​ក្នុង​បង្អួច gedit ផ្សេង ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:815
+msgid ""
+"gedit opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
+msgstr ""
+"gedit បាន​បើក​ធាតុ​របស់​ឯកសារ​នេះ​តាម​វិធី​ដែល​មិន​អាច​កែសម្រួល​បាន ។ បើក​អញ្ចឹង តើ​អ្នក​ចង់កែសម្រួល​វា​"
+"ដែរឬទេ ?"
+
+#: ../gedit/gedit-io-error-info-bar.c:873
+#: ../gedit/gedit-io-error-info-bar.c:971
+#: ../gedit/gedit-io-error-info-bar.c:1260
+msgid "S_ave Anyway"
+msgstr "អញ្ចឹង រក្សាទុក"
+
+#: ../gedit/gedit-io-error-info-bar.c:877
+#: ../gedit/gedit-io-error-info-bar.c:975
+#: ../gedit/gedit-io-error-info-bar.c:1264
+msgid "D_on't Save"
+msgstr "កុំ​រក្សាទុក"
+
+#. FIXME: review this message, it's not clear since for the user the "modification"
+#. * could be interpreted as the changes he made in the document. beside "reading" is
+#. * not accurate (since last load/save)
+#.
+#: ../gedit/gedit-io-error-info-bar.c:895
+#, c-format
+msgid "The file %s has been modified since reading it."
+msgstr "ឯកសារ %s ត្រូវ​បានកែប្រែ​តាំង​ពី​អាន​វា​មក​ម្លះ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:910
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
+msgstr "ប្រសិន​បើ​អ្នក​រក្សាទុក​វា ការ​ផ្លាស់ប្ដូរ​ខា​ងក្រៅ​ទាំងអស់​អាច​បាត់បង់ ។ អញ្ចឹង រក្សាទុក​ដែរឬទេ ?"
+
+#: ../gedit/gedit-io-error-info-bar.c:998
+#, c-format
+msgid "Could not create a backup file while saving %s"
+msgstr "មិនអាច​បង្កើត​ឯកសារ​បម្រុង​ទុក​នៅ​ពេល​រក្សាទុក %s បាន​ទេ"
+
+#: ../gedit/gedit-io-error-info-bar.c:1003
+#, c-format
+msgid "Could not create a temporary backup file while saving %s"
+msgstr "មិនអាច​បង្កើត​ឯកសារ​ច្បាប់​ចម្លង​បម្រុងទុក​បណ្ដោះអាសន្ន​បាន​ទេ នៅ​ពេល​រក្សាទុក %s"
+
+#: ../gedit/gedit-io-error-info-bar.c:1020
+msgid ""
+"gedit could not back up the old copy of the file before saving the new one. "
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
+msgstr ""
+"gedit មិន​អាច​បម្រុង​ទុក​ច្បាប់​ចម្លង​ចាស់​របស់​ឯកសារ​មុន​នឹង​រក្សាទុក​ជា​ច្បាប់​ចម្លង​ថ្មី​បាន​ទេ ។ អ្នក​អាច​មិន​"
+"អើពើ​ការ​ព្រមាន​នេះ ហើយ​រក្សាទុក​ឯកសារ អ្នក​អាច​បាត់បង់​ច្បាប់​ចម្លង​ឯកសារ​ចាស់ ។ អញ្ចឹង​រក្សាទុក​"
+"ដែរឬទេ ?"
+
+#. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
+#: ../gedit/gedit-io-error-info-bar.c:1080
+#, c-format
+msgid ""
+"gedit cannot handle %s locations in write mode. Please check that you typed "
+"the location correctly and try again."
+msgstr ""
+"gedit មិន​អាច​គ្រប់គ្រង​ទីតាំង %s ក្នុង​របៀប​សរសេរ​បាន​ទេ ។ សូម​ពិនិត្យ​មើល​ថា អ្នក​បាន​វាយ​ទីតាំង​ត្រឹមត្រូវ "
+"ហើយ​ព្យាយាម​ម្ដ​ងទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:1088
+msgid ""
+"gedit cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
+msgstr ""
+"gedit មិន អាច​គ្រប់គ្រង​ទីតាំង​នេះ​ក្នុង​របៀប​សរសេរ​បាន​ទេ ។ សូម​ពិនិត្យ​មើល​ថា អ្នក​បាន​វាយ​ទីតាំង​ត្រឹមត្រូវ "
+"ហើយ​ព្យាយាម​ម្ដង​ទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:1097
+#, c-format
+msgid ""
+"%s is not a valid location. Please check that you typed the location "
+"correctly and try again."
+msgstr ""
+"%s មិនមែនជា​ទីតាំង​ត្រឹមត្រូវ​ទេ ។ សូម​ពិនិត្យ​មើល​ថា អ្នក​បាន​វាយ​ទីតាំង​ត្រឹមត្រូវ ហើយ​ព្យាយាម​ម្ដ​ងទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:1104
+msgid ""
+"You do not have the permissions necessary to save the file. Please check "
+"that you typed the location correctly and try again."
+msgstr ""
+"អ្នក​មិន​មាន​សិទ្ធិ ដើម្បី​រក្សាទុក​ឯកសារ​នេះ​ទេ ។ សូម​ពិនិត្យ​មើល​ថា អ្នក​បាន​វាយ​ទីតាំង​ត្រឹមត្រូវ ហើយ​ព្យាយាម​"
+"ម្ដងទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:1110
+msgid ""
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
+msgstr "មិនមាន​ទំហំ​ថាស​គ្រប់គ្រាន់ ដើម្បី​រក្សាទុក​ឯកសារ​ទេ ។ សូម​លុប​ឯកសរ​មួយ​ចំនួន ហើយ​ព្យាយាម​ម្ដង​ទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:1115
+msgid ""
+"You are trying to save the file on a read-only disk. Please check that you "
+"typed the location correctly and try again."
+msgstr ""
+"អ្នក​កំពុង​ព្យាយាម​រក្សាទុក​ឯកសារ​​នៅ​លើ​ថាស​ដែល​បាន​តែ​អាន ។ សូម​ពិនិត្យ​មើល​ថា អ្នក​បាន​វាយ​ទីតាំង​ត្រឹមត្រូវ "
+"ហើយ​ព្យាយាម​ម្ដង​ទៀត ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:1121
+msgid "A file with the same name already exists. Please use a different name."
+msgstr "មាន​ឯកសារ​ដែល​មាន​ឈ្មោះ​ដូច​គ្នា​នេះ​រួច​ហើយ ។ សូម​ប្រើ​ឈ្មោះ​ផ្សេង ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:1126
+msgid ""
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
+msgstr "ថាស​ដែល​អ្នក​កំពុង​ព្យាយាម​រក្សាទុក​ឯកសារ​មាន​ដែន​កំណត់​​លើ​ឈ្មោះ​ឯកសារ ។ សូម​ប្រើ​ឈ្មោះ​ខ្លី ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:1133
+msgid ""
+"The disk where you are trying to save the file has a limitation on file "
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
+msgstr ""
+"ថាស​ដែល​អ្នក​កំពុង​ព្យាយាម​រក្សាទុក​ឯកសារ​មាន​ដែន​កំណត់​នៅ​លើ​ទំហំ​ឯកសារ ។ សូម​ព្យាយាម​រក្សាទុក​ឲ្យ​ឯកសារ​តូច​"
+"ជាង​នេះ ឬ​រក្សាទុក​វា​ក្នុង​ថាស​ដែល​មិនមាន​ដែន​កំណត់ ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:1149
+#, c-format
+msgid "Could not save the file %s."
+msgstr "មិន​អាច​រក្សាទុក​ឯកសារ %s បាន​ទេ ។"
+
+#. FIXME: review this message, it's not clear since for the user the "modification"
+#. * could be interpreted as the changes he made in the document. beside "reading" is
+#. * not accurate (since last load/save)
+#.
+#: ../gedit/gedit-io-error-info-bar.c:1194
+#, c-format
+msgid "The file %s changed on disk."
+msgstr "ឯកសារ​ %s បាន​ផ្លាស់ប្ដូរ​នៅ​លើ​ថាស ។"
+
+#: ../gedit/gedit-io-error-info-bar.c:1199
+msgid "Do you want to drop your changes and reload the file?"
+msgstr "តើ​អ្នក​ចង់​បោះបង់​ការ​ផ្លាស់ប្ដូរ​ ហើយ​ផ្ទុក​ឯកសារ​ឡើវិញ​ឬ ?"
+
+#: ../gedit/gedit-io-error-info-bar.c:1201
+msgid "Do you want to reload the file?"
+msgstr "តើ​អ្នក​ចង់​ផ្ទុក​ឯកសារ​ឡើងវិញ​ឬ ?"
+
+#: ../gedit/gedit-io-error-info-bar.c:1206
+msgid "_Reload"
+msgstr "ផ្ទុក​ឡើងវិញ"
+
+#: ../gedit/gedit-io-error-info-bar.c:1278
+#, c-format
+msgid "Some invalid chars have been detected while saving %s"
+msgstr "តួអក្សរ​មិន​ត្រឹមត្រូវ​មួយ​ចំនួន​ត្រូវ​បាន​រកឃើញ​នៅ​ពេល​រក្សាទុក %s"
+
+#: ../gedit/gedit-io-error-info-bar.c:1294
+msgid ""
+"If you continue saving this file you can corrupt the document.  Save anyway?"
+msgstr "ប្រសិនបើ​អ្នក​បន្ត​រក្សាទុក​ឯកសារ​នេះ វា​អាច​ខូច ។ អញ្ចឹង​រក្សាទុក​ដែរ​ឬទេ ?"
+
+#. Keep in sync with the respective GtkActions
+#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:140
+msgid "_Move to New Window"
+msgstr "ផ្លាស់ទី​ទៅ​បង្អួច​ថ្មី"
+
+#: ../gedit/gedit-notebook-popup-menu.c:190 ../gedit/gedit-ui.h:78
+msgid "Save _As..."
+msgstr "រក្សាទុកជា..."
+
+#: ../gedit/gedit-notebook-popup-menu.c:203 ../gedit/gedit-ui.h:84
+msgid "_Print..."
+msgstr "បោះពុម្ព..."
+
+#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:587
+msgid "Empty"
+msgstr "ទទេ"
+
+#: ../gedit/gedit-panel.c:475
+msgid "Hide panel"
+msgstr "លាក់​បន្ទះ"
+
+#: ../gedit/gedit-preferences-dialog.c:423
+msgid "Click on this button to select the font to be used by the editor"
+msgstr "ចុច​ប៊ូតុង​នេះ ដើម្បី ជ្រើស​ពុម្ពអក្សរ​ត្រូវ​ប្រើ​ដោយ​កម្មវិធី​កែសម្រួល"
+
+#: ../gedit/gedit-preferences-dialog.c:438
+#, c-format
+msgid "_Use the system fixed width font (%s)"
+msgstr "ប្រើ​ពុម្ព​អក្សរ​មាន​ទទឹង​ថេរ​របស់​ប្រព័ន្ធ (%s)"
+
+#: ../gedit/gedit-preferences-dialog.c:676
+#, c-format
+msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+msgstr "មិន​អាច​បង្កើត​ថត '%s' បាន​ទេ ៖ g_mkdir_with_parents() បាន​បរាជ័យ ៖ %s"
+
+#: ../gedit/gedit-preferences-dialog.c:860
+msgid "The selected color scheme cannot be installed."
+msgstr "ពណ៌​ចម្រុះ​ដែល​បាន​ជ្រើស​មិនអាច​ត្រូវ​បាន​ដំឡើង​ទេ ។"
+
+#: ../gedit/gedit-preferences-dialog.c:887
+msgid "Add Scheme"
+msgstr "បន្ថែម​គ្រោងការណ៍"
+
+#: ../gedit/gedit-preferences-dialog.c:894
+msgid "A_dd Scheme"
+msgstr "បន្ថែម​គ្រោងការណ៍"
+
+#: ../gedit/gedit-preferences-dialog.c:902
+msgid "Color Scheme Files"
+msgstr "ឯកសារ​ពណ៌​ចម្រុះ"
+
+#: ../gedit/gedit-preferences-dialog.c:954
+#, c-format
+msgid "Could not remove color scheme \"%s\"."
+msgstr "មិន​អាច​យក​គ្រោងពណ៌ \"%s\" ចេញ​បាន​ទេ ។"
+
+#: ../gedit/gedit-preferences-dialog.c:1177
+msgid "gedit Preferences"
+msgstr "ចំណូល​ចិត្ត​របស់ gedit"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-preferences-dialog.ui.h:1
+msgid "Preferences"
+msgstr "ចំណូល​ចិត្ត"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:552
+msgid "_Display line numbers"
+msgstr "បង្ហាញ​លេខ​បន្ទាត់"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:3
+msgid "Display right _margin at column:"
+msgstr "បង្ហាញ​រឹម​ខាង​ស្ដាំ នៅ​ជួរឈរ ៖"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:4
+#: ../gedit/gedit-print-preferences.ui.h:9
+msgid "Text Wrapping"
+msgstr "រុំ​អត្ថបទ"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:5
+#: ../gedit/gedit-print-preferences.ui.h:10
+msgid "Enable text _wrapping"
+msgstr "បើក​ការ​រុំ​អត្ថបទ"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:6
+#: ../gedit/gedit-print-preferences.ui.h:11
+msgid "Do not _split words over two lines"
+msgstr "កុំ​បំបែក​ពាក្យ​​ជា​ពីរ​បន្ទាត់"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:7
+msgid "Highlighting"
+msgstr "ការ​រំលេច"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:8
+msgid "Highlight current _line"
+msgstr "រំលេច​បន្ទាត់​បច្ចុប្បន្ន"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:9
+msgid "Highlight matching _brackets"
+msgstr "រំលេច​វង់ក្រចក​ផ្គូផ្គង"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:10
+msgid "View"
+msgstr "មើល"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:11
+msgid "Tab Stops"
+msgstr "ឈប់​ថេប"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:12
+msgid "_Tab width:"
+msgstr "ទទឹង​ថេប ៖"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:13
+msgid "Insert _spaces instead of tabs"
+msgstr "បញ្ចូល​ចន្លោះ​ជំនួស​ឲ្យ​ថេប"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:14
+msgid "_Enable automatic indentation"
+msgstr "បើក​ការ​ចូល​បន្ទាត់​ដោយ​ស្វ័យ​ប្រវត្តិ"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:15
+msgid "File Saving"
+msgstr "ការ​រក្សាទុក​ឯកសារ"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:16
+msgid "Create a _backup copy of files before saving"
+msgstr "បង្កើត​ច្បាប់ចម្លង​ឯកសារ​បម្រុងទុក​មុន​នឹង​រក្សាទុក"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:17
+msgid "_Autosave files every"
+msgstr "រក្សាទុក​ឯកសារ​ដោយ​ស្វ័យ​ប្រវត្តិ​រៀងរាល់"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:18
+msgid "_minutes"
+msgstr "នាទី"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:19
+msgid "Editor"
+msgstr "កម្មវិធី​កែសម្រួល"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:20
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+msgid "Font"
+msgstr "ពុម្ព​អក្សរ"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:21
+msgid "Editor _font: "
+msgstr "ពុម្ពអក្សរ​របស់​កម្មវិធី​កែសម្រួល  ៖ "
+
+#: ../gedit/gedit-preferences-dialog.ui.h:22
+msgid "Pick the editor font"
+msgstr "ជ្រើស​ពុម្ពអក្សរ​របស់​កម្មវិធី​កែសម្រួល"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:23
+msgid "Color Scheme"
+msgstr "ពណ៌​ចម្រុះ"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:24
+msgid "Install scheme"
+msgstr "ដំឡើង​គ្រោងការណ៍"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:25
+msgid "Install Scheme"
+msgstr "ដំឡើង​គ្រោងការណ៍"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:26
+msgid "Uninstall scheme"
+msgstr "លុប​គ្រោងការណ៍"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:27
+msgid "Uninstall Scheme"
+msgstr "លុប​គ្រោងការណ៍"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:28
+msgid "Font & Colors"
+msgstr "ពុម្ពអក្សរ និង​ពណ៌"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:29
+msgid "Plugins"
+msgstr "កម្មវិធី​ជំនួយ"
+
+#: ../gedit/gedit-print-job.c:572
+#, c-format
+msgid "File: %s"
+msgstr "ឯកសារ ៖ %s"
+
+#: ../gedit/gedit-print-job.c:581
+msgid "Page %N of %Q"
+msgstr "ទំព័រ %N នៃ %Q"
+
+#: ../gedit/gedit-print-job.c:843
+msgid "Preparing..."
+msgstr "កំពុង​រៀបចំ..."
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-print-preferences.ui.h:1
+msgid "Syntax Highlighting"
+msgstr "ការ​រំលេច​​វាក្យ​សម្ព័ន្ធ"
+
+#: ../gedit/gedit-print-preferences.ui.h:2
+msgid "Print synta_x highlighting"
+msgstr "បោះពុម្ព​ការ​រំលេច​វាក្យសម្ពន្ធ"
+
+#: ../gedit/gedit-print-preferences.ui.h:3
+msgid "Line Numbers"
+msgstr "លេខ​បន្ទាត់"
+
+#: ../gedit/gedit-print-preferences.ui.h:4
+msgid "Print line nu_mbers"
+msgstr "បោះពុម្ព​លេខ​បន្ទាត់"
+
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#: ../gedit/gedit-print-preferences.ui.h:6
+msgid "_Number every"
+msgstr "លេខ​រៀងរាល់"
+
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#: ../gedit/gedit-print-preferences.ui.h:8
+msgid "lines"
+msgstr "បន្ទាត់"
+
+#: ../gedit/gedit-print-preferences.ui.h:12
+msgid "Page header"
+msgstr "ក្បាល​ទំព័រ"
+
+#: ../gedit/gedit-print-preferences.ui.h:13
+msgid "Print page _headers"
+msgstr "បោះពុម្ព​ក្បាល​ទំព័រ"
+
+#: ../gedit/gedit-print-preferences.ui.h:14
+msgid "Fonts"
+msgstr "ពុម្ពអក្សរ"
+
+#: ../gedit/gedit-print-preferences.ui.h:15
+msgid "_Body:"
+msgstr "តួ ៖"
+
+#: ../gedit/gedit-print-preferences.ui.h:16
+msgid "_Line numbers:"
+msgstr "លេខ​បន្ទាត់ ៖"
+
+#: ../gedit/gedit-print-preferences.ui.h:17
+msgid "He_aders and footers:"
+msgstr "បឋមកថា និង​បាតកថា ៖"
+
+#: ../gedit/gedit-print-preferences.ui.h:18
+msgid "_Restore Default Fonts"
+msgstr "ស្ដារ​ពុម្ពលំនាំដើម"
+
+#: ../gedit/gedit-print-preview.c:582
+msgid "Show the previous page"
+msgstr "បង្ហាញ​ទំព័រ​មុន"
+
+#: ../gedit/gedit-print-preview.c:594
+msgid "Show the next page"
+msgstr "បង្ហាញ​ទំព័រ​បន្ទាប់"
+
+#: ../gedit/gedit-print-preview.c:610
+msgid "Current page (Alt+P)"
+msgstr "ទំព័រ​បច្ចុប្បន្ន (Alt+P)"
+
+#. Translators: the "of" from "1 of 19" in print preview.
+#: ../gedit/gedit-print-preview.c:633
+msgid "of"
+msgstr "នៃ"
+
+#: ../gedit/gedit-print-preview.c:641
+msgid "Page total"
+msgstr "ទំព័រ​សរុប"
+
+#: ../gedit/gedit-print-preview.c:642
+msgid "The total number of pages in the document"
+msgstr "ចំនួន​ទំព័រ​សរុប​ក្នុង​ឯកសារ​នេះ"
+
+#: ../gedit/gedit-print-preview.c:659
+msgid "Show multiple pages"
+msgstr "បង្ហាញ​ទំព័រ​ច្រើន"
+
+#: ../gedit/gedit-print-preview.c:672
+msgid "Zoom 1:1"
+msgstr "ពង្រីក ១ ៖ ១"
+
+#: ../gedit/gedit-print-preview.c:681
+msgid "Zoom to fit the whole page"
+msgstr "ពង្រីក​ឲ្យ​សមនឹង​ទំព័រ​ទាំង​មូល"
+
+#: ../gedit/gedit-print-preview.c:690
+msgid "Zoom the page in"
+msgstr "ពង្រីក​ទំព័រ"
+
+#: ../gedit/gedit-print-preview.c:699
+msgid "Zoom the page out"
+msgstr "បង្រួម​ទំព័រ"
+
+#: ../gedit/gedit-print-preview.c:711
+msgid "_Close Preview"
+msgstr "បិទ​ការ​មើល​ជា​មុន"
+
+#: ../gedit/gedit-print-preview.c:714
+msgid "Close print preview"
+msgstr "បិទ​ការ​មើល​មុន​បោះពុម្ព"
+
+#: ../gedit/gedit-print-preview.c:783
+#, c-format
+msgid "Page %d of %d"
+msgstr "ទំព័រ %d នៃ %d"
+
+#: ../gedit/gedit-print-preview.c:967
+msgid "Page Preview"
+msgstr "មើល​ទំព័រ​ជាមុន"
+
+#: ../gedit/gedit-print-preview.c:968
+msgid "The preview of a page in the document to be printed"
+msgstr "ការ​មើល​ទំព័រ​ជា​មុន​ក្នុង​ឯកសារ​ត្រូវ​បោះពុម្ព"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-window.c:1557
+msgid "Replace"
+msgstr "ជំនួស"
+
+#: ../gedit/gedit-replace-dialog.c:282
+msgid "Replace _All"
+msgstr "ជំនួស​ទាំងអស់"
+
+#: ../gedit/gedit-replace-dialog.ui.h:2
+msgid "Replace All"
+msgstr "ជំនួស​ទាំងអស់"
+
+#: ../gedit/gedit-replace-dialog.ui.h:3
+msgid "_Search for: "
+msgstr "ស្វែងរក ៖ "
+
+#: ../gedit/gedit-replace-dialog.ui.h:4
+msgid "Replace _with: "
+msgstr "ជំនួស​ដោយ ៖ "
+
+#: ../gedit/gedit-replace-dialog.ui.h:5
+msgid "_Match case"
+msgstr "ករណី​ផ្គូផ្គង"
+
+#: ../gedit/gedit-replace-dialog.ui.h:6
+msgid "Match _entire word only"
+msgstr "ផ្គូផ្គង​ពាក្យ​ទាំង​មូល"
+
+#: ../gedit/gedit-replace-dialog.ui.h:7
+msgid "Search _backwards"
+msgstr "ស្វែងរកថយក្រោយ"
+
+#: ../gedit/gedit-replace-dialog.ui.h:8
+msgid "_Wrap around"
+msgstr "រុំ​ជុំវិញ"
+
+#. Use spaces to leave padding proportional to the font size
+#: ../gedit/gedit-statusbar.c:70 ../gedit/gedit-statusbar.c:76
+msgid "OVR"
+msgstr "OVR"
+
+#: ../gedit/gedit-statusbar.c:70 ../gedit/gedit-statusbar.c:76
+msgid "INS"
+msgstr "INS"
+
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
+#. use abbreviations if possible to avoid space problems.
+#: ../gedit/gedit-statusbar.c:248
+#, c-format
+msgid "  Ln %d, Col %d"
+msgstr "  Ln %d, Col %d"
+
+#: ../gedit/gedit-statusbar.c:347
+#, c-format
+msgid "There is a tab with errors"
+msgid_plural "There are %d tabs with errors"
+msgstr[0] "មាន​ថែប %d ​ដែល​មាន​កំហុស"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:734
+#, c-format
+msgid "Reverting %s from %s"
+msgstr "ត្រឡប់​ %s ពី %s"
+
+#: ../gedit/gedit-tab.c:741
+#, c-format
+msgid "Reverting %s"
+msgstr "ត្រឡប់ %s"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:757
+#, c-format
+msgid "Loading %s from %s"
+msgstr "ផ្ទុក %s ពី %s"
+
+#: ../gedit/gedit-tab.c:764
+#, c-format
+msgid "Loading %s"
+msgstr "ផ្ទុក %s"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:845
+#, c-format
+msgid "Saving %s to %s"
+msgstr "រក្សាទុក %s ទៅ %s"
+
+#: ../gedit/gedit-tab.c:852
+#, c-format
+msgid "Saving %s"
+msgstr "រក្សាទុក %s"
+
+#. Read only
+#: ../gedit/gedit-tab.c:1835
+msgid "RO"
+msgstr "RO"
+
+#: ../gedit/gedit-tab.c:1882
+#, c-format
+msgid "Error opening file %s"
+msgstr "កំហុស​ក្នុង​ការ​បើកឯកសារ %s"
+
+#: ../gedit/gedit-tab.c:1887
+#, c-format
+msgid "Error reverting file %s"
+msgstr "កំហុស​ក្នុង​ការ​ត្រឡប់​ឯកសារ %s"
+
+#: ../gedit/gedit-tab.c:1892
+#, c-format
+msgid "Error saving file %s"
+msgstr "កំហុស​ក្នុងការ​រក្សាទុក​ឯកសារ %s"
+
+#: ../gedit/gedit-tab.c:1913
+msgid "Unicode (UTF-8)"
+msgstr "យូនីកូដ (UTF-8)"
+
+#: ../gedit/gedit-tab.c:1920
+msgid "Name:"
+msgstr "ឈ្មោះ ៖"
+
+#: ../gedit/gedit-tab.c:1921
+msgid "MIME Type:"
+msgstr "ប្រភេទ MIME ៖"
+
+#: ../gedit/gedit-tab.c:1922
+msgid "Encoding:"
+msgstr "ការ​អ៊ិនកូដ ៖"
+
+#: ../gedit/gedit-tab-label.c:283
+msgid "Close document"
+msgstr "បិទ​ឯកសារ"
+
+#. Toplevel
+#: ../gedit/gedit-ui.h:43
+msgid "_File"
+msgstr "ឯកសារ"
+
+#: ../gedit/gedit-ui.h:44
+msgid "_Edit"
+msgstr "កែសម្រួល"
+
+#: ../gedit/gedit-ui.h:45
+msgid "_View"
+msgstr "មើល"
+
+#: ../gedit/gedit-ui.h:46
+msgid "_Search"
+msgstr "ស្វែងរក"
+
+#: ../gedit/gedit-ui.h:47
+msgid "_Tools"
+msgstr "ឧបករណ៍"
+
+#: ../gedit/gedit-ui.h:48
+msgid "_Documents"
+msgstr "ឯកសារ"
+
+#: ../gedit/gedit-ui.h:49
+msgid "_Help"
+msgstr "ជំនួយ"
+
+#: ../gedit/gedit-ui.h:53
+msgid "Create a new document"
+msgstr "បង្កើត​ឯកសារ​ថ្មី​មួយ"
+
+#: ../gedit/gedit-ui.h:54
+msgid "_Open..."
+msgstr "បើក..."
+
+#: ../gedit/gedit-ui.h:55 ../gedit/gedit-window.c:1486
+msgid "Open a file"
+msgstr "បើក​ឯកសារ"
+
+#. Edit menu
+#: ../gedit/gedit-ui.h:58
+msgid "Pr_eferences"
+msgstr "ចំណូល​ចិត្ត"
+
+#: ../gedit/gedit-ui.h:59
+msgid "Configure the application"
+msgstr "កំណត់​រចនាសម្ព័ន្ធ​កម្មវិធី"
+
+#. Help menu
+#: ../gedit/gedit-ui.h:62
+msgid "_Contents"
+msgstr "មាតិកា"
+
+#: ../gedit/gedit-ui.h:63
+msgid "Open the gedit manual"
+msgstr "បើក​សៀវភៅ​របស់ gedit"
+
+#: ../gedit/gedit-ui.h:65
+msgid "About this application"
+msgstr "អំពី​កម្មវិធី​នេះ"
+
+#: ../gedit/gedit-ui.h:69
+msgid "Leave fullscreen mode"
+msgstr "ចាកចេញ​ពី​របៀប​ពេញ​អេក្រង់"
+
+#: ../gedit/gedit-ui.h:77
+msgid "Save the current file"
+msgstr "រក្សាទុក​ឯកសារ​បច្ចុប្បន្ន"
+
+#: ../gedit/gedit-ui.h:79
+msgid "Save the current file with a different name"
+msgstr "រក្សាទុក​ឯកសារ​បច្ចុប្បន្ន​ដោយ​ប្រើឈ្មោះ​ផ្សេង"
+
+#: ../gedit/gedit-ui.h:81
+msgid "Revert to a saved version of the file"
+msgstr "ត្រឡប់​ទៅ​កំណែ​ឯកសារ​ដែល​បាន​រក្សាទុក"
+
+#: ../gedit/gedit-ui.h:82
+msgid "Print Previe_w"
+msgstr "មើល​មុន​បោះពុម្ព"
+
+#: ../gedit/gedit-ui.h:83
+msgid "Print preview"
+msgstr "មើល​មុន​បោះពុម្ព"
+
+#: ../gedit/gedit-ui.h:85
+msgid "Print the current page"
+msgstr "បោះពុម្ព​ទំព័រ​បច្ចុប្បន្ន"
+
+#: ../gedit/gedit-ui.h:89
+msgid "Undo the last action"
+msgstr "មិន​ធ្វើ​សកម្មភាព​ចុងក្រោយ​វិញ"
+
+#: ../gedit/gedit-ui.h:91
+msgid "Redo the last undone action"
+msgstr "ធ្វើ​សកម្មភាព​ដែល​មិន​អាច​ធ្វើ​វិញ​ចុងក្រោយ​វិញ"
+
+#: ../gedit/gedit-ui.h:93
+msgid "Cut the selection"
+msgstr "កាត់​ការ​ជ្រើស"
+
+#: ../gedit/gedit-ui.h:95
+msgid "Copy the selection"
+msgstr "ចម្លង​ការ​ជ្រើស"
+
+#: ../gedit/gedit-ui.h:97
+msgid "Paste the clipboard"
+msgstr "បិទ​ភ្ជាប់​ក្ដារតម្បៀតខ្ទាស់"
+
+#: ../gedit/gedit-ui.h:99
+msgid "Delete the selected text"
+msgstr "លុប​អត្ថបទ​ដែល​បាមន​ជ្រើស"
+
+#: ../gedit/gedit-ui.h:100
+msgid "Select _All"
+msgstr "ជ្រើស​ទាំងអស់"
+
+#: ../gedit/gedit-ui.h:101
+msgid "Select the entire document"
+msgstr "ជ្រើស​ឯកសារ​ទាំង​មូល"
+
+#. View menu
+#: ../gedit/gedit-ui.h:104
+msgid "_Highlight Mode"
+msgstr "របៀប​រំលេច"
+
+#. Search menu
+#: ../gedit/gedit-ui.h:107
+msgid "_Find..."
+msgstr "រក..."
+
+#: ../gedit/gedit-ui.h:108
+msgid "Search for text"
+msgstr "ស្វែងរក​អត្ថបទ"
+
+#: ../gedit/gedit-ui.h:109
+msgid "Find Ne_xt"
+msgstr "រក​បន្ទាប់"
+
+#: ../gedit/gedit-ui.h:110
+msgid "Search forwards for the same text"
+msgstr "ស្វែងរក​ទៅ​មុន​ក្នុង​អត្ថបទ​ដដែល"
+
+#: ../gedit/gedit-ui.h:111
+msgid "Find Pre_vious"
+msgstr "រក​មុន"
+
+#: ../gedit/gedit-ui.h:112
+msgid "Search backwards for the same text"
+msgstr "ស្វែងរក​ថយក្រោយ​ក្នុង​អត្ថបទដដែល"
+
+#: ../gedit/gedit-ui.h:114 ../gedit/gedit-ui.h:117
+msgid "_Replace..."
+msgstr "ជំនួស..."
+
+#: ../gedit/gedit-ui.h:115 ../gedit/gedit-ui.h:118
+msgid "Search for and replace text"
+msgstr "ស្វែងរក ហើយ​ជំនួស​អត្ថបទ"
+
+#: ../gedit/gedit-ui.h:120
+msgid "_Clear Highlight"
+msgstr "សម្អាត​រំលេច"
+
+#: ../gedit/gedit-ui.h:121
+msgid "Clear highlighting of search matches"
+msgstr "សម្អាត​រំលេច​នៃ​ការ​ផ្គូផ្គង​ស្វែងរក"
+
+#: ../gedit/gedit-ui.h:122
+msgid "Go to _Line..."
+msgstr "ទៅ​កាន់​បន្ទាត់..."
+
+#: ../gedit/gedit-ui.h:123
+msgid "Go to a specific line"
+msgstr "ទៅ​កាន់​បន្ទាត់​ជាក់លាក់"
+
+#. Documents menu
+#: ../gedit/gedit-ui.h:126
+msgid "_Save All"
+msgstr "រក្សាទុក​ទាំងអស់"
+
+#: ../gedit/gedit-ui.h:127
+msgid "Save all open files"
+msgstr "រក្សាទុក​ឯកសារ​ដែល​បាន​បើក​ទាំងអស់"
+
+#: ../gedit/gedit-ui.h:128
+msgid "_Close All"
+msgstr "បិទ​ទាំងអស់"
+
+#: ../gedit/gedit-ui.h:129
+msgid "Close all open files"
+msgstr "បិទ​ឯកសារ​ដែល​បើក​ទាំងអស់"
+
+#: ../gedit/gedit-ui.h:130
+msgid "_New Tab Group"
+msgstr "ក្រុម​ថេប​ថ្មី"
+
+#: ../gedit/gedit-ui.h:131
+msgid "Create a new tab group"
+msgstr "បង្កើត​ក្រុម​ថេប​ថ្មី"
+
+#: ../gedit/gedit-ui.h:132
+msgid "P_revious Tab Group"
+msgstr "ក្រុម​ថេប​មុន"
+
+#: ../gedit/gedit-ui.h:133
+msgid "Switch to the previous tab group"
+msgstr "ប្ដូរ​ទៅ​ក្រុម​ថេប​មុន"
+
+#: ../gedit/gedit-ui.h:134
+msgid "Nex_t Tab Group"
+msgstr "ក្រុម​ថេប​បន្ទាប់"
+
+#: ../gedit/gedit-ui.h:135
+msgid "Switch to the next tab group"
+msgstr "ប្ដូរ​ទៅ​ក្រុម​ថេប​បន្ទាប់"
+
+#: ../gedit/gedit-ui.h:136
+msgid "_Previous Document"
+msgstr "ឯកសារ​មុន"
+
+#: ../gedit/gedit-ui.h:137
+msgid "Activate previous document"
+msgstr "ធ្វើ​ឲ្យ​ឯកសារ​មុន​សកម្ម"
+
+#: ../gedit/gedit-ui.h:138
+msgid "N_ext Document"
+msgstr "ឯកសារ​បន្ទាប់"
+
+#: ../gedit/gedit-ui.h:139
+msgid "Activate next document"
+msgstr "ធ្វើ​ឲ្យ​ឯកសារ​បន្ទាប់​សកម្ម"
+
+#: ../gedit/gedit-ui.h:141
+msgid "Move the current document to a new window"
+msgstr "ផ្លាស់ទី​​​ឯកសារ​បច្ចុប្បន្ន​​ទៅ​បង្អួច​ថ្មី"
+
+#: ../gedit/gedit-ui.h:148
+msgid "Close the current file"
+msgstr "បិទ​ឯកសារ​បច្ចុប្បន្ន"
+
+#: ../gedit/gedit-ui.h:155
+msgid "Quit the program"
+msgstr "ចេញ​ពី​កម្មវិធី"
+
+#: ../gedit/gedit-ui.h:160
+msgid "_Toolbar"
+msgstr "របារ​ឧបករណ៍1"
+
+#: ../gedit/gedit-ui.h:161
+msgid "Show or hide the toolbar in the current window"
+msgstr "បង្ហាញ ឬលាក់​របារ​ឧបករណ៍​ក្នុង​បង្អួច​បច្ចុប្បន្ន"
+
+#: ../gedit/gedit-ui.h:163
+msgid "_Statusbar"
+msgstr "របារ​ស្ថានភាព"
+
+#: ../gedit/gedit-ui.h:164
+msgid "Show or hide the statusbar in the current window"
+msgstr "បង្ហាញ​ ឬ​លាក់​របារ​ស្ថានភាព​ក្នុង​បង្អួច​បច្ចុប្បន្ន"
+
+#: ../gedit/gedit-ui.h:167
+msgid "Edit text in fullscreen"
+msgstr "កែសម្រួល​អត្ថបទ​ក្នុង​របៀប​ពេញ​អេក្រង់"
+
+#: ../gedit/gedit-ui.h:174
+msgid "Side _Panel"
+msgstr "បន្ទះ​ចំហៀង"
+
+#: ../gedit/gedit-ui.h:175
+msgid "Show or hide the side panel in the current window"
+msgstr "បង្ហាញ ឬ​លាក់​បន្ទះ​ចំហៀង​ក្នុង​បង្អួច​បច្ចុប្បន្ន"
+
+#: ../gedit/gedit-ui.h:177
+msgid "_Bottom Panel"
+msgstr "បន្ទះ​ខាង​ក្រោម"
+
+#: ../gedit/gedit-ui.h:178
+msgid "Show or hide the bottom panel in the current window"
+msgstr "បង្ហាញ ឬ​លាក់​បន្ទះ​ខាង​ក្រោម​ក្នុង​បង្អួច​បច្ចុប្បន្ន"
+
+#: ../gedit/gedit-utils.c:1033
+msgid "Please check your installation."
+msgstr "សូម​ពិនិត្យ​មើល​ការ​ដំឡើង​របស់​អ្នក ។"
+
+#: ../gedit/gedit-utils.c:1091
+#, c-format
+msgid "Unable to open UI file %s. Error: %s"
+msgstr "មិនអាច​បើក​ឯកសារ​ UI %s បាន​ទេ ។ កំហុស ៖ %s"
+
+#: ../gedit/gedit-utils.c:1110
+#, c-format
+msgid "Unable to find the object '%s' inside file %s."
+msgstr "មិនអាច​រក​វត្ថុ '%s' ក្នុង​ឯកសារ %s បាន​ទេ ។"
+
+#. Translators: '/ on <remote-share>'
+#: ../gedit/gedit-utils.c:1332
+#, c-format
+msgid "/ on %s"
+msgstr "/ នៅ​លើ %s"
+
+#. create "Wrap Around" menu item.
+#: ../gedit/gedit-view-frame.c:542
+msgid "_Wrap Around"
+msgstr "រុំ​ជុំវិញ"
+
+#. create "Match Entire Word Only" menu item.
+#: ../gedit/gedit-view-frame.c:552
+msgid "Match _Entire Word Only"
+msgstr "ផ្គូផ្គង​ពាក្យ​ទាំ​ងមូល"
+
+#. create "Match Case" menu item.
+#: ../gedit/gedit-view-frame.c:562
+msgid "_Match Case"
+msgstr "ផ្គូផ្គង"
+
+#: ../gedit/gedit-view-frame.c:759
+msgid "String you want to search for"
+msgstr "ឃ្លា​ដែល​​​អ្នក​ចង់​ស្វែងរក"
+
+#: ../gedit/gedit-view-frame.c:769
+msgid "Line you want to move the cursor to"
+msgstr "បន្ទាត់​ដែល​អ្នក​ចង់​ផ្លាស់ទី​ទស្សន៍ទ្រនិច​ទៅ"
+
+#: ../gedit/gedit-window.c:941
+#, c-format
+msgid "Use %s highlight mode"
+msgstr "ប្រើ​របៀប​រំលេច %s"
+
+#. add the "Plain Text" item before all the others
+#. Translators: "Plain Text" means that no highlight mode is selected in the
+#. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
+#: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
+#: ../plugins/externaltools/tools/manager.py:146
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:566
+#: ../plugins/externaltools/tools/manager.py:885
+msgid "Plain Text"
+msgstr "អត្ថបទ​ធម្មតា"
+
+#: ../gedit/gedit-window.c:1047
+msgid "Disable syntax highlighting"
+msgstr "បិទ​ការ​រំលេច​វាក្យសម្ពន្ធ"
+
+#. Translators: %s is a URI
+#: ../gedit/gedit-window.c:1364
+#, c-format
+msgid "Open '%s'"
+msgstr "បើក '%s'"
+
+#: ../gedit/gedit-window.c:1488
+msgid "Open a recently used file"
+msgstr "បើក​ឯកសារ​ដែល​បាន​ប្រើ​ថ្មីៗ"
+
+#: ../gedit/gedit-window.c:1494
+msgid "Open"
+msgstr "បើក"
+
+#: ../gedit/gedit-window.c:1551
+msgid "Save"
+msgstr "រក្សាទុក"
+
+#: ../gedit/gedit-window.c:1553
+msgid "Print"
+msgstr "បោះពុម្ព"
+
+#: ../gedit/gedit-window.c:1555
+msgid "Find"
+msgstr "រក"
+
+#. Translators: %s is a URI
+#: ../gedit/gedit-window.c:1715
+#, c-format
+msgid "Activate '%s'"
+msgstr "ធ្វើ​ឲ្យ '%s' សកម្ម"
+
+#: ../gedit/gedit-window.c:2072
+msgid "Use Spaces"
+msgstr "ប្រើ​ចន្លោះ​មិន​ឃើញ"
+
+#: ../gedit/gedit-window.c:2145
+msgid "Tab Width"
+msgstr "ទទឹង​ផ្ទាំង"
+
+#: ../gedit/gedit-window.c:2254
+msgid "Bracket match is out of range"
+msgstr "ការ​ផ្គូផ្គង​វង់ក្រច​នៅ​ខាង​ក្រៅ​ជួរ"
+
+#: ../gedit/gedit-window.c:2259
+msgid "Bracket match not found"
+msgstr "រក​មិន​ឃើញ​ការ​ផ្គូផ្គង​វង់​ក្រចក"
+
+#: ../gedit/gedit-window.c:2264
+#, c-format
+msgid "Bracket match found on line: %d"
+msgstr "រក​ឃើញ​ការ​ផ្គូផ្គង​វង់​ក្រច​នៅ​បន្ទាត់ ៖ %d"
+
+#. ex:set ts=8 noet:
+#: ../plugins/changecase/changecase.plugin.desktop.in.h:1
+msgid "Change Case"
+msgstr "ប្ដូរតួអក្សរ"
+
+#: ../plugins/changecase/changecase.plugin.desktop.in.h:2
+msgid "Changes the case of selected text."
+msgstr "ប្ដូរ​តួអក្សរ​​​អត្ថបទ​ដែល​បាន​ជ្រើស ។"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:242
+msgid "C_hange Case"
+msgstr "ប្ដូរតួអក្សរ"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:243
+msgid "All _Upper Case"
+msgstr "អក្សរ​ធំ​ទាំងអស់"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:244
+msgid "Change selected text to upper case"
+msgstr "ប្ដូរ​អត្ថបទ​ដែល​បាន​ជ្រើស​ទៅ​អក្សរ​ធំ"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:246
+msgid "All _Lower Case"
+msgstr "អក្សរ​តូច​ទាំងអស់"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:247
+msgid "Change selected text to lower case"
+msgstr "ប្ដូរ​អត្ថបទ​ដែល​បាន​ជ្រើស​ទៅ​អក្សរ​តូច"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:249
+msgid "_Invert Case"
+msgstr "ត្រឡប់​តួអក្សរ"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:250
+msgid "Invert the case of selected text"
+msgstr "ត្រឡប់​អត្ថបទ​ដែល​បាន​ជ្រើស"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:252
+msgid "_Title Case"
+msgstr "ចំណង​ជើង"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:253
+msgid "Capitalize the first letter of each selected word"
+msgstr "ដាក់​អក្សរ​ដំបូង​ធំ​នៃ​ពាក្យ​ដែលបាន​ជ្រើស​នីមួយៗ"
+
+#. ex:set ts=8 noet:
+#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
+msgid "Check update"
+msgstr "ពិនិត្យ​មើល​បច្ចុប្បន្នភាព"
+
+#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
+msgid "Check for latest version of gedit"
+msgstr "ពិនិត្យ​មើល​កំណែ​ចុងក្រោយ​របស់​ gedit"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:257
+msgid "There was an error displaying the URI."
+msgstr "មាន​កំហុស​ក្នុង​ការ​បង្ហាញ URI ។"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:294
+msgid "_Download"
+msgstr "ទាញយក"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:302
+msgid "_Ignore Version"
+msgstr "មិនអើពើ​កំណែ"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:317
+msgid "There is a new version of gedit"
+msgstr "មាន​កំណែ​របស់ gedit ថ្មី"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:321
+msgid ""
+"You can download the new version of gedit by clicking on the download button "
+"or ignore that version and wait for a new one"
+msgstr ""
+"អ្នក​អាចទាញយក​កំណែ​របស់ gedit ថ្មី ដោយ​ចុច​​ប៊ូតុង​ទាញយក ឬ​មិន​អើពើ​កំណែ​នោះ ហើយ​រង់ចាំ​កំណែ​ថ្មី​មួយ​ទៀត"
+
+#. ex:set ts=8 noet:
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+msgid "Version to Ignore"
+msgstr "កំណែ​ត្រូវ​អើពើ"
+
+#. This is releated to the next gedit version to be released
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+msgid "Version to ignore until a newer version is released."
+msgstr "កំណែ​ត្រូវ​អើពើ​រហូត​ដល់​កំណែ​ថ្មី​ចេញ​ផ្សាយ ។"
+
+#. ex:set ts=8 noet:
+#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:1
+msgid "Document Statistics"
+msgstr "ស្ថិតិ​ឯកសារ"
+
+#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
+msgid ""
+"Analyzes the current document and reports the number of words, lines, "
+"characters and non-space characters in it."
+msgstr ""
+"វិភាគ​ឯកសារ និង​របាយការណ៍​បច្ចុប្បន្ន​ ចំនួន​ពាក្យ បន្ទាត់ តួអក្សរ និង​តួអក្សរ​មិនមែន​ជា​ដកឃ្លា​នៅ​ក្នុង​វា ។"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:427
+msgid "_Document Statistics"
+msgstr "ស្ថិតិ​ឯកសារ"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:429
+msgid "Get statistical information on the current document"
+msgstr "យក​ព័ត៌មាន​ស្ថិតិ​នៅ​លើ​ឯកសារ​បច្ចុប្បន្ន"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:2
+msgid "_Update"
+msgstr "ធ្វើ​បច្ចុប្បន្នភាព"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:3
+msgid "File Name"
+msgstr "ឈ្មោះ​ឯកសារ"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
+#: ../plugins/externaltools/tools/tools.ui.h:27
+#: ../plugins/snippets/snippets/snippets.ui.h:13
+msgid "    "
+msgstr "    "
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:5
+msgid "Document"
+msgstr "ឯកសារ"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:6
+msgid "Selection"
+msgstr "ជម្រើស"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:7
+msgid "Lines"
+msgstr "បន្ទាត់"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:8
+msgid "Words"
+msgstr "ពាក្យ"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:9
+msgid "Characters (with spaces)"
+msgstr "តួអកស្រ (មាន​ដកឃ្លា)"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:10
+msgid "Characters (no spaces)"
+msgstr "តួអក្សរ (គ្មាន​ដកឃ្លា)"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:11
+msgid "Bytes"
+msgstr "បៃ"
+
+#: ../plugins/externaltools/data/build.desktop.in.h:1
+msgid "Build"
+msgstr "ស្ថាបនា"
+
+#: ../plugins/externaltools/data/build.desktop.in.h:2
+msgid "Run \"make\" in the document directory"
+msgstr "ដំណើរការ \"make\" នៅ​ក្នុង​ថត​ឯកសារ"
+
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
+#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
+msgid "Open terminal here"
+msgstr "បើក​ស្ថានីយ​នៅ​ទីនេះ"
+
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:2
+#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:2
+msgid "Open a terminal in the document location"
+msgstr "បើក​ស្ថានីយ​នៅ​ក្នុងទីតាំង​ឯកសារ"
+
+#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:1
+msgid "Remove trailing spaces"
+msgstr "យក​ដកឃ្លា​នៅ​ខាង​ចុង​ចេញ"
+
+#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:2
+msgid "Remove useless trailing spaces in your file"
+msgstr "យក​ដកឃ្លា​នៅ​ខាង​ចុង​ចេញ​ដែល​គ្មាន​ប្រយោជន៍​នៅ​ក្នុង​ឯកសារ"
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:1
+msgid "Run command"
+msgstr "រត់​ពាក្យ​បញ្ជា"
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:2
+msgid "Execute a custom command and put its output in a new document"
+msgstr "អនុវត្ត​ពាក្យ​បញ្ជា​ផ្ទាល់ខ្លួន ហើយ​ដាក់​លទ្ធផល​របស់​វា​ក្នុង​ឯកសារ​ថ្មី"
+
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
+msgid "External Tools"
+msgstr "ឧបករណ៍​ខាង​ក្រៅ"
+
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
+msgid "Execute external commands and shell scripts."
+msgstr "ប្រតិបត្តិ​ពាក្យ​បញ្ជា​ស្ថានីយ និង​ស្គ្រីប​សែល"
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+msgid "Whether to use the system font"
+msgstr "ថាតើ​ត្រូវ​ប្រើ​ពុម្ពអក្សរ​ប្រព័ន្ធ​ដែរឬទេ"
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+msgid ""
+"If true, the external tools will use the desktop-global standard font if "
+"it's monospace (and the most similar font it can come up with otherwise)."
+msgstr ""
+"ប្រសិនបើ​ពិត ឧបករណ៍​ខាង​ក្រៅ​នឹង​ប្រើ​ពុម្ពអក្សរ​ស្តង់ដារ​សកម្ម​របស់​ផ្ទៃតុ ប្រសិនបើ​វា​ជា​ monospace (ហើយ​"
+"ស្រដៀង​គ្នា​នឹង​​ពុម្ពអក្សរ​ដេល​មាន​ជា​មួយ) ។"
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgstr "ឈ្មោះ​ពុម្ពអក្សរ​របស់ Pango ។ ឧទាហរណ៍ \"Sans 12\" ឬ \"Monospace Bold 14\" ។"
+
+#: ../plugins/externaltools/tools/capture.py:92
+#, python-format
+msgid "Could not execute command: %s"
+msgstr "មិនអាច​អនុវត្ត​ពាក្យ​បញ្ជា​បាន​ទេ ៖ %s"
+
+#: ../plugins/externaltools/tools/functions.py:159
+msgid "You must be inside a word to run this command"
+msgstr "អ្នក​ត្រូវ​តែ​ស្ថិត​ក្នុង​ពាក្យ ដើម្បី​ដំណើរការ​ពាក្យ​បញ្ជា​នេះ"
+
+#: ../plugins/externaltools/tools/functions.py:265
+msgid "Running tool:"
+msgstr "ឧបករណ៍​កំពុង​ដំណើរការ ៖"
+
+#: ../plugins/externaltools/tools/functions.py:294
+msgid "Done."
+msgstr "ធ្វើ​រួច ។"
+
+#: ../plugins/externaltools/tools/functions.py:296
+msgid "Exited"
+msgstr "បាន​ចាកចេញ"
+
+#: ../plugins/externaltools/tools/manager.py:144
+msgid "All languages"
+msgstr "គ្រប់ភាសា"
+
+#: ../plugins/externaltools/tools/manager.py:555
+#: ../plugins/externaltools/tools/manager.py:559
+#: ../plugins/externaltools/tools/manager.py:883
+#: ../plugins/externaltools/tools/tools.ui.h:28
+msgid "All Languages"
+msgstr "គ្រប់ភាសា"
+
+#: ../plugins/externaltools/tools/manager.py:672
+msgid "New tool"
+msgstr "ឧបករណ៍​ថ្មី"
+
+#: ../plugins/externaltools/tools/manager.py:803
+#, python-format
+msgid "This accelerator is already bound to %s"
+msgstr "ឧបករណ៍​បង្កើន​ល្បឿន​នេះ​បាន​ភ្ជាប់​រួច​ហើយ​ទៅ %s"
+
+#: ../plugins/externaltools/tools/manager.py:847
+msgid "Type a new accelerator, or press Backspace to clear"
+msgstr "ប្រភេទ​ឧបករណ៍​បង្កើន​ល្បឿន​ថ្មី ឬ​ចុច​លុបថយក្រោយ ដើម្បី​សម្អាត"
+
+#: ../plugins/externaltools/tools/manager.py:849
+msgid "Type a new accelerator"
+msgstr "ប្រភេទ​ឧបករណ៍​បង្កើន​ល្បឿន​ថ្មី"
+
+#: ../plugins/externaltools/tools/outputpanel.py:120
+msgid "Stopped."
+msgstr "បាន​បញ្ឈប់ ។"
+
+#. ex:ts=4:et:
+#: ../plugins/externaltools/tools/tools.ui.h:1
+msgid "All documents"
+msgstr "ឯកសារ​ទាំងអស់"
+
+#: ../plugins/externaltools/tools/tools.ui.h:2
+msgid "All documents except untitled ones"
+msgstr "ឯកសារ​ទាំងអស់ លើកលែង​តែ​ឯកសារ​មួយ​គ្មាន​ចំណ​ងជើង"
+
+#: ../plugins/externaltools/tools/tools.ui.h:3
+msgid "Local files only"
+msgstr "តែ​​ឯកសារ​មូលដ្ឋាន"
+
+#: ../plugins/externaltools/tools/tools.ui.h:4
+msgid "Remote files only"
+msgstr "តែ​ឯកសារ​ពី​ចម្ងាយ"
+
+#: ../plugins/externaltools/tools/tools.ui.h:5
+msgid "Untitled documents only"
+msgstr "តែ​ឯកសារ​គ្មាន​ចំណង​ជើង"
+
+#: ../plugins/externaltools/tools/tools.ui.h:6
+msgid "Nothing"
+msgstr "កុំ​ធ្វើ​អ្វី​ទាំងអស់"
+
+#: ../plugins/externaltools/tools/tools.ui.h:7
+msgid "Current document"
+msgstr "ឯកសារ​បច្ចុប្បន្ន"
+
+#: ../plugins/externaltools/tools/tools.ui.h:8
+msgid "Current selection"
+msgstr "ជម្រើស​បច្ចុប្បន្ន"
+
+#: ../plugins/externaltools/tools/tools.ui.h:9
+msgid "Current selection (default to document)"
+msgstr "ជម្រើស​បច្ចុប្បន្ន (លំនាំដើម​ទៅ​ឯកសារ)"
+
+#: ../plugins/externaltools/tools/tools.ui.h:10
+msgid "Current line"
+msgstr "បន្ទាត់​បច្ចុប្បន្ន"
+
+#: ../plugins/externaltools/tools/tools.ui.h:11
+msgid "Current word"
+msgstr "ពាក្យ​បច្ចុប្បន្ន"
+
+#: ../plugins/externaltools/tools/tools.ui.h:12
+msgid "Display in bottom pane"
+msgstr "បង្ហាញ​​ក្នុង​បន្ទះ​ខាង​ក្រោម"
+
+#: ../plugins/externaltools/tools/tools.ui.h:13
+msgid "Create new document"
+msgstr "បង្កើត​ឯកសារ​ថ្មី"
+
+#: ../plugins/externaltools/tools/tools.ui.h:14
+msgid "Append to current document"
+msgstr "បន្ថែម​ទៅ​ខាង​ចុង​ឯកសារ​បច្ចុប្បន្ន"
+
+#: ../plugins/externaltools/tools/tools.ui.h:15
+msgid "Replace current document"
+msgstr "ជំនួស​ឯកសារ​បច្ចុប្បន្ន"
+
+#: ../plugins/externaltools/tools/tools.ui.h:16
+msgid "Replace current selection"
+msgstr "ជំនួស​ជម្រើស​បច្ចុប្បន្ន"
+
+#: ../plugins/externaltools/tools/tools.ui.h:17
+msgid "Insert at cursor position"
+msgstr "បញ្ចូល​ទីតាំង​ទស្សន៍​ទ្រនិច"
+
+#: ../plugins/externaltools/tools/tools.ui.h:18
+msgid "Manage External Tools"
+msgstr "គ្រប់គ្រង​ឧបករណ៍​ខាង​ក្រៅ"
+
+#: ../plugins/externaltools/tools/tools.ui.h:19
+msgid "_Tools:"
+msgstr "ឧបករណ៍ ៖"
+
+#: ../plugins/externaltools/tools/tools.ui.h:20
+msgid "Add a new tool"
+msgstr "បន្ថែម​ឧបករណ៍​ថ្មី"
+
+#: ../plugins/externaltools/tools/tools.ui.h:21
+msgid "Add Tool"
+msgstr "បន្ថែម​ឧបករណ៍"
+
+#: ../plugins/externaltools/tools/tools.ui.h:22
+msgid "Remove selected tool"
+msgstr "យក​ឧបករណ៍​ដែលបាន​ជ្រើស​ចេញ"
+
+#: ../plugins/externaltools/tools/tools.ui.h:23
+msgid "Remove Tool"
+msgstr "យក​ឧបករណ៍​ចេញ"
+
+#: ../plugins/externaltools/tools/tools.ui.h:24
+msgid "Revert tool"
+msgstr "ត្រឡប់​ឧបករណ៍"
+
+#: ../plugins/externaltools/tools/tools.ui.h:25
+msgid "Revert Tool"
+msgstr "ត្រឡប់​ឧបករណ៍"
+
+#: ../plugins/externaltools/tools/tools.ui.h:26
+#: ../plugins/snippets/snippets/snippets.ui.h:11
+msgid "_Edit:"
+msgstr "កែសម្រួល ៖"
+
+#: ../plugins/externaltools/tools/tools.ui.h:29
+msgid "_Applicability:"
+msgstr "ភាព​អាច​អនុវត្ត​បាន ៖"
+
+#: ../plugins/externaltools/tools/tools.ui.h:30
+msgid "_Output:"
+msgstr "លទ្ធផល ៖"
+
+#: ../plugins/externaltools/tools/tools.ui.h:31
+msgid "_Input:"
+msgstr "ការ​បញ្ចូល ៖"
+
+#: ../plugins/externaltools/tools/tools.ui.h:32
+msgid "_Save:"
+msgstr "រក្សាទុក ៖"
+
+#: ../plugins/externaltools/tools/tools.ui.h:33
+msgid "Shortcut _Key:"
+msgstr "គ្រាប់​ចុច​ផ្លូវកាត់ ៖"
+
+#: ../plugins/externaltools/tools/windowactivatable.py:173
+msgid "Manage _External Tools..."
+msgstr "គ្រប់គ្រង​ឧបករណ៍​ខាង​ក្រៅ..."
+
+#: ../plugins/externaltools/tools/windowactivatable.py:174
+msgid "Opens the External Tools Manager"
+msgstr "បើក​កម្មវិធី​គ្រប់គ្រង​ឧបករណ៍​ខាង​ក្រៅ"
+
+#: ../plugins/externaltools/tools/windowactivatable.py:177
+msgid "External _Tools"
+msgstr "ឧបករណ៍​ខាង​ក្រៅ"
+
+#: ../plugins/externaltools/tools/windowactivatable.py:178
+msgid "External tools"
+msgstr "ឧបករណ៍​ខាង​ក្រៅ"
+
+#: ../plugins/externaltools/tools/windowactivatable.py:212
+msgid "Shell Output"
+msgstr "លទ្ធផល​សែល"
+
+#. ex:ts=4:et:
+#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
+msgid "File Browser Panel"
+msgstr "បន្ទះ​កម្មវិធី​រុករក​ឯកសារ"
+
+#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
+msgid "Easy file access from the side panel"
+msgstr "ងាយស្រួល​ចូល​ដំណើរការ​ពី​បន្ទះ​ចំហៀង"
+
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
+msgid "File System"
+msgstr "ប្រព័ន្ធ​ឯកសារ"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:558
+msgid "_Set root to active document"
+msgstr "កំណត់​ root ចំពោះ​ឯកសារ​សកម្ម"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:560
+msgid "Set the root to the active document location"
+msgstr "កំណត់ root ចំពោះ​ទីតាំង​ឯកសារ​សកម្ម"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:565
+msgid "_Open terminal here"
+msgstr "បើក​ស្ថានីយ​នៅ​ទីនេះ"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:567
+msgid "Open a terminal at the currently opened directory"
+msgstr "បើក​ស្ថានីយ​នៅ​ថត​ដែលបាន​បើក​បច្ចុប្បន្ន"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:705
+msgid "File Browser"
+msgstr "កម្មវិធី​រុករក​ឯកសារ"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:848
+msgid "An error occurred while creating a new directory"
+msgstr "កំហុស​មួយ​បាន​កើត​ឡើង ខណៈ​ដែល​កំពុង​បង្កើត​ថត​ថ្មី"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:851
+msgid "An error occurred while creating a new file"
+msgstr "កំហុស​មួយ​បានកើត​ឡើង ខណៈ​ដែលកំពុង​បង្កើត​ឯកសារ​ថ្មី"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:854
+msgid "An error occurred while renaming a file or directory"
+msgstr "កំហុស​មួយ​បានកើត​ឡើង ខណៈ​ដែល​កំពុង​ប្ដូរ​ឈ្មោះ​ឯកសារ ឬ​ថត"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:857
+msgid "An error occurred while deleting a file or directory"
+msgstr "កំហុស​មួយ​បានកើត​ឡើង ខណៈ​ដែល​កំពុង​លុប​ឯកសរ ឬ​ថត"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:860
+msgid "An error occurred while opening a directory in the file manager"
+msgstr "កំហុស​មួយ​បានកើត​ឡើង ខណៈ​ដែល​កំពុង​បើក​ថត​នៅ​ក្នុង​កម្មវិធីគ្រប់គ្រង​ឯកសារ"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:863
+msgid "An error occurred while setting a root directory"
+msgstr "កំហុស​មួយ​បានកើត​ឡើង ខណៈ​ដែល​កំពុង​កំណត់​ថត root"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:866
+msgid "An error occurred while loading a directory"
+msgstr "កំហុស​មួយ​បានកើត​ឡើង ខណៈ​ដែល​កំពុង​ផ្ទុក​ថត"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:869
+msgid "An error occurred"
+msgstr "កំហុស​មួយ​បានកើត​ឡើង"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1085
+msgid ""
+"Cannot move file to trash, do you\n"
+"want to delete permanently?"
+msgstr ""
+"មិន​អាច​ផ្លាស់ទី​ឯកសារ​ទៅ​ធុង​សំរាម​បាន​ទេ តើ​អ្នក​ចង់\n"
+"លុប​ជា​អចិន្ត្រៃយ៍​ដែរ​ឬទេ ?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1090
+#, c-format
+msgid "The file \"%s\" cannot be moved to the trash."
+msgstr "ឯកសារ \"%s\" មិនអាច​ត្រូវ​បាន​ផ្លាស់ទី​ទៅ​ធុង​សំរាម​បាន​ទេ ។"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1095
+msgid "The selected files cannot be moved to the trash."
+msgstr "ឯកសារ​ដែល​បាន​ជ្រើស​មិនអាច​ត្រូវ​បាន​ផ្លាស់ទី​ទៅ​ធុង​សំរាម​ទេ ។"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1127
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\"?"
+msgstr "តើ​អ្នក​ប្រាកដ​ជា​ចង់​លុប​ \"%s\" ជា​អចិន្ត្រៃយ៍​ដែរ​ឬទេ ?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1132
+msgid "Are you sure you want to permanently delete the selected files?"
+msgstr "តើ​អ្នក​ប្រាកដ​ជា​ចង់​លុប​ឯកសារ​ដែល​បាន​ជ្រើសជា​អចិន្ត្រៃយ៍​ដែរ​ឬទេ ?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1135
+msgid "If you delete an item, it is permanently lost."
+msgstr "ប្រសិន​បើ​អ្នក​លុប​ធាតុ​មួយ វា​នឹង​បាត់បង់​ជា​អចិន្ត្រៃយ៍ ។"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1722
+msgid "(Empty)"
+msgstr "(ទទេ)"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3467
+msgid ""
+"The renamed file is currently filtered out. You need to adjust your filter "
+"settings to make the file visible"
+msgstr ""
+"ឯកសារ​ដែល​បាន​ប្ដូរ​ឈ្មោះ​បច្ចុប្បន្ន​ត្រូវ​បាន​ត្រង​ចេញ​ហើយ ។ អ្នក​ត្រូវ​តែ​កែសម្រួល​កា​រកំណត់​តម្រង ដើម្បី​ធ្វើ​ឲ្យ​"
+"ឯកសារ​អាច​មើល​ឃើញ"
+
+#. Translators: This is the default name of new files created by the file browser pane.
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3711
+msgid "file"
+msgstr "ឯកសារ"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3739
+msgid ""
+"The new file is currently filtered out. You need to adjust your filter "
+"settings to make the file visible"
+msgstr ""
+"ឯកសារ​ថ្មី​បច្ចុប្បន្ន​ត្រូវ​បាន​​ត្រង​ចេញ ។ អ្នក​ត្រូវ​តែ​កែប្រែ​ការ​កំណត់​តម្រង​របស់​អ្នក ដើម្បី​ធ្វើ​ឲ្យ​ឯកសារ​មើល​"
+"ឃើញ"
+
+#. Translators: This is the default name of new directories created by the file browser pane.
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3770
+msgid "directory"
+msgstr "ថត"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3795
+msgid ""
+"The new directory is currently filtered out. You need to adjust your filter "
+"settings to make the directory visible"
+msgstr "ថត​ថ្មី​ត្រុវ​បាន​ត្រង​ចេញ ។ អ្នក​ត្រូវ​តែ​កែប្រែ​កា​រកំណត់​តម្រង​របស់​អ្នក ដើម្បី​ធ្វើ​ឲ្យ​ថត​អាច​មើល​ឃើញ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:733
+msgid "Bookmarks"
+msgstr "ចំណាំ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:821
+msgid "_Filter"
+msgstr "តម្រង"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:826
+msgid "_Move to Trash"
+msgstr "ផ្លាស់ទី​ទៅ​ធុង​សំរាម"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:827
+msgid "Move selected file or folder to trash"
+msgstr "ផ្លាស់ទី​ឯកសារ​ ឬ​ថត​ដែល​បាន​ជ្រើស​​ទៅ​ធុង​សំរាម"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:829
+msgid "_Delete"
+msgstr "លុប"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:830
+msgid "Delete selected file or folder"
+msgstr "លុប​ឯកសារ ឬ​ថត​ដែលបាន​ជ្រើស"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:837
+msgid "Open selected file"
+msgstr "បើក​ឯកសារ​ដែល​បាន​ជ្រើស"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:843
+msgid "Up"
+msgstr "ឡើង​លើ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:844
+msgid "Open the parent folder"
+msgstr "បើក​ថត​​មេ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:849
+msgid "_New Folder"
+msgstr "ថត​ថ្មី"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:850
+msgid "Add new empty folder"
+msgstr "បន្ថែម​ថត​ទទេ​ថ្មី​មួយ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:852
+msgid "New F_ile"
+msgstr "ឯកសារ​ថ្មី"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:853
+msgid "Add new empty file"
+msgstr "បន្ថែម​ឯកសារ​ទទេ​ថ្មី​មួយ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:858
+msgid "_Rename"
+msgstr "ប្ដូរ​ឈ្មោះ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:859
+msgid "Rename selected file or folder"
+msgstr "ប្ដូរ​ឈ្មោះ​ឯកសរ ឬ​ថត​ដែល​បាន​ជ្រើស"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:865
+msgid "_Previous Location"
+msgstr "ទីតាំង​មុន"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:867
+msgid "Go to the previous visited location"
+msgstr "ទៅ​កាន់​ទីតាំង​ដែលបាន​មើល​ពី​មុន"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:869
+msgid "_Next Location"
+msgstr "ទីតាំង​បន្ទាប់"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:870
+msgid "Go to the next visited location"
+msgstr "ទៅ​កាន់​ទីតាំង​ដែល​បាន​មើល​បន្ទាប់"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:871
+msgid "Re_fresh View"
+msgstr "ធ្វើ​ឲ្យទិដ្ឋភាព​ស្រស់"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:872
+msgid "Refresh the view"
+msgstr "ធ្វើ​ឲ្យ​ទិដ្ឋភាព​ស្រស់"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:873
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:891
+msgid "_View Folder"
+msgstr "មើល​ថត"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:874
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:892
+msgid "View folder in file manager"
+msgstr "មើល​ថត​ក្នុង​កម្មវិធី​គ្រប់គ្រង​ឯកសារ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:881
+msgid "Show _Hidden"
+msgstr "បង្ហាញ​ឯកសារ​ដែល​លាក់"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:882
+msgid "Show hidden files and folders"
+msgstr "បង្ហាញ​ឯកសារ និង​ថត​ដែល​លាក់"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:884
+msgid "Show _Binary"
+msgstr "បង្ហាញ​ឯកសារ​គោលពីរ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:885
+msgid "Show binary files"
+msgstr "បង្ហាញ​ឯកសរ​គោលពីរ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1202
+msgid "Match Filename"
+msgstr "ផ្គូផ្គង​ឈ្មោះ​ឯកសារ"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2004
+#, c-format
+msgid "No mount object for mounted volume: %s"
+msgstr "គ្មាន​វត្ថុ​ម៉ោន​សម្រាប់​ភាគ​ដែល​បានម៉ោន ៖ %s"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2081
+#, c-format
+msgid "Could not open media: %s"
+msgstr "មិន​អាច​បើក​មេឌៀ​បាន​ទេ ៖ %s"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2128
+#, c-format
+msgid "Could not mount volume: %s"
+msgstr "មិន​អាច​ម៉ោន​ភាគ​បាន​ទេ ៖ %s"
+
+#. ex:ts=8:noet:
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+msgid "Open With Tree View"
+msgstr "បើក​​ជា​មួយទិដ្ឋភាព​មែកធាង"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+msgid ""
+"Open the tree view when the file browser plugin gets loaded instead of the "
+"bookmarks view"
+msgstr "បើក​ទិដ្ឋភាព​មែកធាង នៅ​ពេល​កម្មវិធី​ជំនួយ​របស់​កម្មវិធី​រុករក​ឯកសារ ត្រូវ​បាន​ផ្ទុក​ជំនួយ​ឲ្យ​ទិដ្ឋភាព​ចំណាំ"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+msgid "File Browser Root Directory"
+msgstr "ថត​ Root របស់​កម្មវិធី​រុករក​ឯកសារ"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+msgid ""
+"The file browser root directory to use when loading the file browser plugin "
+"and onload/tree_view is TRUE."
+msgstr ""
+"ថ root របស់​កម្មវិធី​រុករក​ឯកសារ​ត្រូវ​ប្រើ​ នៅ​ពេល​ផ្ទុក​​កម្មវិធី​ជំនួយ​របស់​កម្មវិធី​រុករក​ឯកសារ និង onload/"
+"tree_view គឺ​ពិត ។"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+msgid "File Browser Virtual Root Directory"
+msgstr "ថត Root និម្មិត​របស់​កម្មវិធី​រុករក​ឯកសារ"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+msgid ""
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
+msgstr ""
+"ថត root និម្មិត​របស់​កម្មវិធី​រុករក​ឯកសារ ត្រូវ​ប្រើ​នៅ​ពេល​ផ្ទុក​កម្មវិធី​ជំនួយ​របស់​កម្មវិធី​រុករក​នៅ​​ពេល onload/"
+"tree_view ពិត ។ root និម្មិត​ត្រូវ​តែ​នៅ​ក្រោម​ root ពិតប្រាកដ​ជា​និច្ច ។"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+msgid "Enable Restore of Remote Locations"
+msgstr "បើក​ការ​ស្ដារ​ទីតាំង​ពី​ចម្ងាយ​ឡើងវិញ"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+msgid "Sets whether to enable restoring of remote locations."
+msgstr "កំណត់​ថាតើ​ត្រូវ​បើក​ការ​ស្ដារ​ទីតាំង​ពី​ចម្ងាយ​ឡើងវិញ​ដែរឬទេ ។"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+msgid "Set Location to First Document"
+msgstr "កំណត់​ទីតាំង​ទៅ​ឯកសារ​ដំបូង"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+msgid ""
+"If TRUE the file browser plugin will view the directory of the first opened "
+"document given that the file browser hasn't been used yet. (Thus this "
+"generally applies to opening a document from the command line or opening it "
+"with Nautilus, etc.)"
+msgstr ""
+"ប្រសិនបើ​ពិត កម្មវិធី​ជំនួយ​របស់​​កម្មវិធី​រុករក​ឯកសារ​នឹង​មើល​ថត​របស់​ឯកសារ​ដែលបាន​បើក​ដំបូង ឲ្យ​តែ​កម្មវិធី​រុករក​"
+"ឯកសារ​មិន​ត្រូវ​បាន​ប្រើ​នៅ​ឡើយ ។ (ដូច្នេះ​វា​ជាទូទៅ អនុវត្ត​លើ​ឯកសារ​ដែល​បានបើក​ពី​បន្ទាត់​ពាក្យ​បញ្ជា ឬ​​"
+"បើក​វា​ជា​មួយ Nautilus ។ល។)"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+msgid "File Browser Filter Mode"
+msgstr "របៀប​ត្រង​របស់​កម្មវិធី​រុករក​ឯកសារ"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+msgid ""
+"This value determines what files get filtered from the file browser. Valid "
+"values are: none (filter nothing), hide-hidden (filter hidden files) and "
+"hide-binary (filter binary files)."
+msgstr ""
+"តម្លៃ​នេះ​កំណត់​ថាត​ឯកសារ​អ្វីត្រូ​វបាន​ត្រង​ពី​កម្មវិធីរុករក​ឯកសារ ។ តម្លៃ​ត្រឹមត្រូវ​គឺ ៖ គ្មាន (មិន​ត្រង) "
+"លាក់ឯកសារ​​ដែល​បាន​លាក់ (ត្រង​ឯកសារ​ដែលលាក់) និង​លាក់​ឯកសារ​គោលពីរ (ត្រង​ឯកសារ​គោលពីរ) ។"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+msgid "File Browser Filter Pattern"
+msgstr "លំនាំ​តម្រង​កម្មវិធី​រុករក​ឯកសារ"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+msgid ""
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
+msgstr "លំនាំត្រង​ ត្រូវ​ត្រង​កម្មវិធី​រុករក​ឯកសារ ។ តម្រង​នេះ​ដំណើរការ​លើ​ផ្នែក​ខាង​លើ​នៃ​របៀប​ត្រង ។"
+
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:1
+msgid "Modelines"
+msgstr "របៀប​បន្ទាត់"
+
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:2
+msgid "Emacs, Kate and Vim-style modelines support for gedit."
+msgstr "របៀប​បន្ទាត់​តាម​រចនាប័ទ្ម Emacs, Kate និង Vim គាំទ្រ​សម្រាប់  gedit ។"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+msgid "Command Color Text"
+msgstr "ពណ៌​អត្ថបទ​ពាក្យ​បញ្ជា"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+msgid "The command color text"
+msgstr "ពណ៌​អត្ថបទ​ពាក្យ​បញ្ជា"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+msgid "Error Color Text"
+msgstr "ពណ៌​អត្ថបទ​កំហុស"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+msgid "The error color text"
+msgstr "ពណ៌​អត្ថបទ​កំហុស"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+msgid ""
+"If true, the terminal will use the desktop-global standard font if it's "
+"monospace (and the most similar font it can come up with otherwise)."
+msgstr ""
+"ប្រសិនបើពិត ស្ថានីយ​នឹង​ប្រើ​ពុម្ពអក្សរ​ស្តង់ដារ​សកល​របស់​ផ្ទៃតុ​ ប្រសិន​បើ​វា​ជា monospace (ហើយ​ស្រដៀង​គ្នា​"
+"នឹង​ពុម្ពអក្សរ​ដែល​​មក​ជា​មួយ) ។"
+
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
+msgid "C_ommand color:"
+msgstr "ពណ៌​ពាក្យ​បញ្ជា ៖"
+
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:2
+msgid "_Error color:"
+msgstr "ពណ៌​កំហុស ៖"
+
+#. ex:et:ts=4:
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:52
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
+msgid "Python Console"
+msgstr "កុង​សូល Python"
+
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
+msgid "Interactive Python console standing in the bottom panel"
+msgstr "កុងសូល Python អន្តរកម្ម​នៅ​ក្នុង​បន្ទះ​ខាង​ក្រោម"
+
+#: ../plugins/quickopen/quickopen/__init__.py:71
+msgid "Quick open"
+msgstr "បើក​រហ័ស"
+
+#: ../plugins/quickopen/quickopen/__init__.py:72
+msgid "Quickly open documents"
+msgstr "បើក​ឯកសារ​រហ័ស"
+
+#. ex:ts=4:et:
+#: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
+#: ../plugins/quickopen/quickopen/popup.py:31
+msgid "Quick Open"
+msgstr "បើក​រហ័ស"
+
+#: ../plugins/quickopen/quickopen.plugin.desktop.in.h:2
+msgid "Quickly open files"
+msgstr "បើក​ឯកសារ​រហ័ស"
+
+#: ../plugins/quickopen/quickopen/popup.py:72
+msgid "Type to search..."
+msgstr "វាយ​បញ្ចូល​ ដើម្បី​ស្វែងរក..."
+
+#. ex:ts=8:et:
+#: ../plugins/snippets/snippets/document.py:57
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:1
+msgid "Snippets"
+msgstr "អត្ថបទ​ខ្លីៗ"
+
+#: ../plugins/snippets/snippets/exporter.py:82
+#, python-format
+msgid "The archive \"%s\" could not be created"
+msgstr "ប័ណ្ណសារ \"%s\" មិន​អាច​ត្រូវ​បាន​បង្កើត​ទេ"
+
+#: ../plugins/snippets/snippets/exporter.py:99
+#, python-format
+msgid "Target directory \"%s\" does not exist"
+msgstr "មិន​ទាន់​មាន​ថត​គោលដៅ \"%s\""
+
+#: ../plugins/snippets/snippets/exporter.py:102
+#, python-format
+msgid "Target directory \"%s\" is not a valid directory"
+msgstr "ថត​គោលដៅ \"%s\" មិនមែន​ជា​ថត​ត្រឹមត្រូវ​ទេ"
+
+#: ../plugins/snippets/snippets/importer.py:47
+#: ../plugins/snippets/snippets/importer.py:108
+#, python-format
+msgid "File \"%s\" does not exist"
+msgstr "មិន​ទាន់មាន​ឯកសារ \"%s\" ទេ"
+
+#: ../plugins/snippets/snippets/importer.py:50
+#, python-format
+msgid "File \"%s\" is not a valid snippets file"
+msgstr "ឯកសារ \"%s\" មិនមែន​ជា​ឯកសារ​អត្ថបទ​ខ្លីៗ​ត្រឹមត្រូវ​ទេ"
+
+#: ../plugins/snippets/snippets/importer.py:67
+#, python-format
+msgid "Imported file \"%s\" is not a valid snippets file"
+msgstr "ឯកសារ​ដែល​បាននាំចូល \"%s\" មិនមែន​ជា​ឯកសារ​អត្ថបទ​ខ្លីៗ​ត្រឹមត្រូវ​ទេ"
+
+#: ../plugins/snippets/snippets/importer.py:77
+#, python-format
+msgid "The archive \"%s\" could not be extracted"
+msgstr "ប័ណ្ណសារ \"%s\" មិន​អាច​ត្រូវ​បាន​ស្រង់ចេញ​ទេ"
+
+#: ../plugins/snippets/snippets/importer.py:95
+#, python-format
+msgid "The following files could not be imported: %s"
+msgstr "ឯកសារ​ដូច​ខាង​ក្រោម​មិនអាច​ត្រូវ​បាននាំចូល​ទេ ៖ %s"
+
+#: ../plugins/snippets/snippets/importer.py:111
+#: ../plugins/snippets/snippets/importer.py:124
+#, python-format
+msgid "File \"%s\" is not a valid snippets archive"
+msgstr "ឯកសារ \"%s\" មិនមែន​ជា​​ប័ណ្ណសារ​អត្ថបទ​ខ្លីៗ​ត្រឹមត្រូវ​ទេ"
+
+#: ../plugins/snippets/snippets/manager.py:43
+msgid "Snippets archive"
+msgstr "ប័ណ្ណសារ​អត្ថបទ​ខ្លីៗ"
+
+#: ../plugins/snippets/snippets/manager.py:63
+msgid "Add a new snippet..."
+msgstr "បន្ថែម​អត្ថបទ​ខ្លីៗ​ថ្មី..."
+
+#: ../plugins/snippets/snippets/manager.py:116
+msgid "Global"
+msgstr "សកល"
+
+#: ../plugins/snippets/snippets/manager.py:400
+msgid "Revert selected snippet"
+msgstr "ត្រឡប់​អត្ថបទ​ខ្លីៗ​ដែលបាន​ជ្រើស"
+
+#: ../plugins/snippets/snippets/manager.py:403
+#: ../plugins/snippets/snippets/snippets.ui.h:5
+msgid "Delete selected snippet"
+msgstr "លុប​អត្ថបទ​ខ្លីៗ​ដែល​បានជ្រើស"
+
+#. self['hbox_tab_trigger'].set_spacing(3)
+#: ../plugins/snippets/snippets/manager.py:663
+msgid ""
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
+msgstr ""
+"នេះ​មិនមែន​ជា​គន្លឹះ​ថេប​ត្រឹមត្រូវ​ទេ ។ គន្លឹះ​អាច​មាន​តួអក្សរ​ជា​លេខ​​ (or _, : and .) ឬ​មាន​តួអក្សរ​តែ​"
+"មួយ (មិនមែនជា​លេខ) ដូច​ជា៖ {, [, ។ល។"
+
+#. self['hbox_tab_trigger'].set_spacing(0)
+#: ../plugins/snippets/snippets/manager.py:670
+#: ../plugins/snippets/snippets/snippets.ui.h:16
+msgid "Single word the snippet is activated with after pressing Tab"
+msgstr "ពាក្យ​តែ​មួយ​ដែល​អត្ថបទខ្លីៗ​ត្រូវ​បាន​ធ្វើ​ឲ្យ​សកម្ម​បន្ទាប់​ពី​ចុច​ ថេប"
+
+#: ../plugins/snippets/snippets/manager.py:759
+#, python-format
+msgid "The following error occurred while importing: %s"
+msgstr "កំហុស​ដូច​ខាង​ក្រោម​បានកើត​ឡើង​ខណៈ​ដែល​នាំចូល ៖ %s"
+
+#: ../plugins/snippets/snippets/manager.py:766
+msgid "Import successfully completed"
+msgstr "បាន​បញ្ចប់​កា​រនាំចូល​ដោយ​ស្វ័យ​ប្រវត្តិ"
+
+#: ../plugins/snippets/snippets/manager.py:780
+#: ../plugins/snippets/snippets/snippets.ui.h:7
+msgid "Import snippets"
+msgstr "នាំចូល​អត្ថបទ​ខ្លីៗ"
+
+#: ../plugins/snippets/snippets/manager.py:785
+#: ../plugins/snippets/snippets/manager.py:871
+#: ../plugins/snippets/snippets/manager.py:934
+msgid "All supported archives"
+msgstr "ប័ណ្ណ​សារ​ដែល​បានគាំទ្រ​ទាំងអស់"
+
+#: ../plugins/snippets/snippets/manager.py:786
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:935
+msgid "Gzip compressed archive"
+msgstr "ប័ណ្ណសារ​ដែលបាន​បង្ហាប់​ជា Gzip"
+
+#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:873
+#: ../plugins/snippets/snippets/manager.py:936
+msgid "Bzip2 compressed archive"
+msgstr "ប័ណ្ណសារ​ដែល​បាន​បង្ហាប់​ជា Bzip2"
+
+#: ../plugins/snippets/snippets/manager.py:788
+msgid "Single snippets file"
+msgstr "ឯកសារ​អត្ថបទ​ខ្លីៗ​តែ​មួយ"
+
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:938
+msgid "All files"
+msgstr "ឯកសារ​ទាំងអស់"
+
+#: ../plugins/snippets/snippets/manager.py:801
+#, python-format
+msgid "The following error occurred while exporting: %s"
+msgstr "កំហុស​ដូច​ខាង​ក្រោម​បានកើត​ឡើង​ខណៈ​ដែល​នាំចេញ ៖ %s"
+
+#: ../plugins/snippets/snippets/manager.py:805
+msgid "Export successfully completed"
+msgstr "បាន​បញ្ចប់​ការ​នាំចេញ​ដោយ​ជោគជ័យ"
+
+#. Ask if system snippets should also be exported
+#: ../plugins/snippets/snippets/manager.py:845
+#: ../plugins/snippets/snippets/manager.py:912
+msgid "Do you want to include selected <b>system</b> snippets in your export?"
+msgstr "តើ​អ្នក​ចង់​រួម​បញ្ចូលអត្ថបទ​ខ្លីៗ​របស់​ <b>ប្រព័ន្ធ</b> ក្នុង​ការ​នាំចេញ​របស់​អ្នក​ដែរឬទេ ?"
+
+#: ../plugins/snippets/snippets/manager.py:860
+#: ../plugins/snippets/snippets/manager.py:930
+msgid "There are no snippets selected to be exported"
+msgstr "មិនមាន​អត្ថបទ​ខ្លីៗ​បាន​ជ្រើស​ត្រូវ​នាំចេញ​ទេ"
+
+#: ../plugins/snippets/snippets/manager.py:865
+#: ../plugins/snippets/snippets/manager.py:903
+msgid "Export snippets"
+msgstr "នាំចេញ​អត្ថបទ​ខ្លីៗ"
+
+#: ../plugins/snippets/snippets/manager.py:1044
+msgid "Type a new shortcut, or press Backspace to clear"
+msgstr "វាយ​ផ្លូវកាត់​ថ្មី ឬ​ចុច​លុប​ថយក្រោយ (Backspace) ដើម្បី​សម្អាត"
+
+#: ../plugins/snippets/snippets/manager.py:1046
+msgid "Type a new shortcut"
+msgstr "វាយ​ផ្លូវ​កាត់​ថ្មី"
+
+#: ../plugins/snippets/snippets/placeholder.py:602
+#, python-format
+msgid ""
+"Execution of the Python command (%s) exceeds the maximum time, execution "
+"aborted."
+msgstr "ការ​អនុវត្ត​ពាក្យ​បញ្ជា Python (%s) លើស​ចំនួន​អតិបរមា ការ​អនុវត្ត​​បាន​បោះបង់ ។"
+
+#: ../plugins/snippets/snippets/placeholder.py:610
+#, python-format
+msgid "Execution of the Python command (%s) failed: %s"
+msgstr "អនុវត្ត​ពាក្យ​បញ្ជា Python (%s) បាន​បដិសេធ ៖ %s"
+
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:2
+msgid "Insert often-used pieces of text in a fast way"
+msgstr "បញ្ចូល​ផ្នែក​អត្ថបទ​ដែលបាន​ប្រើញឹកញាប់​ក្នុង​វិធីដែល​រហ័ស"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:1
+msgid "Manage Snippets"
+msgstr "គ្រប់គ្រង​អត្ថបទ​ខ្លីៗ"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:2
+msgid "_Snippets:"
+msgstr "អត្ថបទ​ខ្លីៗ​ ៖"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:3
+msgid "Create new snippet"
+msgstr "បង្កើត​អត្ថបទ​ខ្លីៗ​ថ្មី"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:4
+msgid "Add Snippet"
+msgstr "បន្ថែម​​ផ្នែក​តូចៗ"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:6
+msgid "Remove Snippet"
+msgstr "យក​ផ្នែក​តូច​ៗ​ចេញ"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:8
+msgid "Import Snippets"
+msgstr "នាំចូល​អត្ថបទ ខ្លីៗ"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:9
+msgid "Export selected snippets"
+msgstr "នាំចេញ​អត្ថបទ​ខ្លីៗ​ដែលបាន​ជ្រើស"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:10
+msgid "Export Snippets"
+msgstr "នាំចេញ​អត្ថបទ​ខ្លីៗ"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:12
+msgid "Activation"
+msgstr "ការ​ធ្វើ​ឲ្យ​សកម្ម"
+
+#. "tab" here means the tab key, not the notebook tab!
+#: ../plugins/snippets/snippets/snippets.ui.h:15
+msgid "_Tab trigger:"
+msgstr "គន្លឹះ​ថេប ៖"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:17
+msgid "S_hortcut key:"
+msgstr "គ្រាប់ចុច​ផ្លូវកាត់ ៖"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:18
+msgid "Shortcut key with which the snippet is activated"
+msgstr "គ្រាប់​ចុច​ផ្លូវ​កាត់​ដែល​មាន​អត្ថបទ​ខ្លីៗ​ត្រូវ​បាន​ធ្វើ​ឲ្យ​សកម្ម"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:19
+msgid "_Drop targets:"
+msgstr "ទម្លាក់​គោលដៅ ៖"
+
+#: ../plugins/snippets/snippets/windowactivatable.py:154
+msgid "Manage _Snippets..."
+msgstr "គ្រប់គ្រង​អត្ថបទ​ខ្លីៗ..."
+
+#: ../plugins/snippets/snippets/windowactivatable.py:155
+msgid "Manage snippets"
+msgstr "គ្រប់គ្រង​អត្ថបទ​ខ្លីៗ"
+
+#: ../plugins/sort/gedit-sort-plugin.c:88
+msgid "S_ort..."
+msgstr "តម្រៀប..."
+
+#: ../plugins/sort/gedit-sort-plugin.c:90
+msgid "Sort the current document or selection"
+msgstr "តម្រៀប​ឯកសារ​បច្ចុប្បន្ន ឬ​ជម្រើស"
+
+#. ex:ts=8:noet:
+#: ../plugins/sort/gedit-sort-plugin.ui.h:1
+#: ../plugins/sort/sort.plugin.desktop.in.h:1
+msgid "Sort"
+msgstr "តម្រៀប"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:2
+msgid "_Sort"
+msgstr "តម្រៀប"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:3
+msgid "_Reverse order"
+msgstr "លំដាប់​បញ្ច្រាស"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:4
+msgid "R_emove duplicates"
+msgstr "យក​ពាក្យ​ស្ទួន​ចេញ"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:5
+msgid "_Ignore case"
+msgstr "មិន​អើពើ​ករណី​ដូច​គ្នា"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:6
+msgid "S_tart at column:"
+msgstr "ចាប់ផ្ដើម​នៅ​ជួរឈរ ៖"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:7
+msgid "You cannot undo a sort operation"
+msgstr "អ្នកមិន​អាច​មិន​ធ្វើ​ប្រតិបត្តិការ​តម្រៀប​វិញ​បាន​ទេ"
+
+#: ../plugins/sort/sort.plugin.desktop.in.h:2
+msgid "Sorts a document or selected text."
+msgstr "តម្រៀប​ឯកសារ​ ឬ​អត្ថបទ​ដែលបាន​ជ្រើស ។"
+
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
+#. * for the current misspelled word
+#: ../plugins/spell/gedit-automatic-spell-checker.c:420
+#: ../plugins/spell/gedit-spell-checker-dialog.c:444
+msgid "(no suggested words)"
+msgstr "(គ្មាន​ពាក្យ​ដែល​បាន​ស្នើ)"
+
+#: ../plugins/spell/gedit-automatic-spell-checker.c:444
+msgid "_More..."
+msgstr "ផ្សេងៗ​ទៀត..."
+
+#. Ignore all
+#: ../plugins/spell/gedit-automatic-spell-checker.c:499
+msgid "_Ignore All"
+msgstr "មិន​អើពើ​ទាំងអស់"
+
+#. + Add to Dictionary
+#: ../plugins/spell/gedit-automatic-spell-checker.c:514
+msgid "_Add"
+msgstr "បន្ថែម"
+
+#: ../plugins/spell/gedit-automatic-spell-checker.c:553
+msgid "_Spelling Suggestions..."
+msgstr "កំពុង​ពិនិត្យ​ការ​ស្នើ..."
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:264
+msgid "Check Spelling"
+msgstr "ពិនិត្យ​អក្ខរាវិរុទ្ធ"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:275
+msgid "Suggestions"
+msgstr "សំណើ"
+
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
+#: ../plugins/spell/gedit-spell-checker-dialog.c:551
+msgid "(correct spelling)"
+msgstr "(ការ​ប្រកប​ត្រឹមត្រូវ)"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:692
+msgid "Completed spell checking"
+msgstr "បាន​បញ្ចប់​ការ​ពិនិត្យ​អក្ខរាវិរុទ្ធ"
+
+#. Translators: the first %s is the language name, and
+#. * the second %s is the locale name. Example:
+#. * "French (France)"
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:378
+#: ../plugins/spell/gedit-spell-checker-language.c:384
+#, c-format
+msgctxt "language"
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#. Translators: this refers to an unknown language code
+#. * (one which isn't in our built-in list).
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:393
+#, c-format
+msgctxt "language"
+msgid "Unknown (%s)"
+msgstr "មិន​ស្គាល់ (%s)"
+
+#. Translators: this refers the Default language used by the
+#. * spell checker
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:499
+msgctxt "language"
+msgid "Default"
+msgstr "លំនាំដើម"
+
+#. ex:ts=8:noet:
+#: ../plugins/spell/gedit-spell-language-dialog.c:140
+#: ../plugins/spell/languages-dialog.ui.h:1
+msgid "Set language"
+msgstr "កំណត់​ភាសា"
+
+#: ../plugins/spell/gedit-spell-language-dialog.c:182
+msgid "Languages"
+msgstr "ភាសា"
+
+#: ../plugins/spell/gedit-spell-plugin.c:107
+msgid "_Check Spelling..."
+msgstr "ពិនិត្យ​អក្ខរាវិរុទ្ធ..."
+
+#: ../plugins/spell/gedit-spell-plugin.c:109
+msgid "Check the current document for incorrect spelling"
+msgstr "ពិនិត្យ​ឯកសារ​បច្ចុប្បន្ន​សម្រាប់​ការ​ប្រកប​មិន​ត្រឹមត្រូវ"
+
+#: ../plugins/spell/gedit-spell-plugin.c:115
+msgid "Set _Language..."
+msgstr "កំណត់​ភាសា..."
+
+#: ../plugins/spell/gedit-spell-plugin.c:117
+msgid "Set the language of the current document"
+msgstr "កំណត់​ភាសា​របស់​ឯកសារ​បច្ចុប្បន្ន"
+
+#: ../plugins/spell/gedit-spell-plugin.c:126
+msgid "_Highlight Misspelled Words"
+msgstr "រំលេច​ពាក្យ​ដែល​ខុស"
+
+#: ../plugins/spell/gedit-spell-plugin.c:128
+msgid "Automatically spell-check the current document"
+msgstr "ពិនិត្យ​អក្ខរាវិរុទ្ធ​ឯកសារ​បច្ចុប្បន្ន​ដោយ​ស្វ័យ​ប្រវត្តិ"
+
+#: ../plugins/spell/gedit-spell-plugin.c:810
+msgid "The document is empty."
+msgstr "ឯកសារ​ទទេ"
+
+#: ../plugins/spell/gedit-spell-plugin.c:835
+msgid "No misspelled words"
+msgstr "គ្មាន​ពាក្យ​ដែល​ខុស​ទេ"
+
+#: ../plugins/spell/languages-dialog.ui.h:2
+msgid "Select the _language of the current document."
+msgstr "ជ្រើស​ភាសា​របស់​ឯកសារ​បច្ចុប្បន្ន ។"
+
+#: ../plugins/spell/spell-checker.ui.h:1
+msgid "Check spelling"
+msgstr "ពិនិត្យ​អក្ខរាវិរុទ្ធ"
+
+#: ../plugins/spell/spell-checker.ui.h:2
+msgid "Misspelled word:"
+msgstr "ពាក្យ​ដែល​ខុស ៖"
+
+#: ../plugins/spell/spell-checker.ui.h:3
+msgid "word"
+msgstr "ពាក្យ"
+
+#: ../plugins/spell/spell-checker.ui.h:4
+msgid "Change _to:"
+msgstr "ផ្លាស់ប្ដូ​រទៅ ៖"
+
+#: ../plugins/spell/spell-checker.ui.h:5
+msgid "Check _Word"
+msgstr "ពិនិត្យ​ពាក្យ"
+
+#: ../plugins/spell/spell-checker.ui.h:6
+msgid "_Suggestions:"
+msgstr "ស្នើ ៖"
+
+#: ../plugins/spell/spell-checker.ui.h:7
+msgid "_Ignore"
+msgstr "មិន​អើពើ"
+
+#: ../plugins/spell/spell-checker.ui.h:8
+msgid "Cha_nge"
+msgstr "ផ្លាស់ប្ដូរ"
+
+#: ../plugins/spell/spell-checker.ui.h:9
+msgid "Ignore _All"
+msgstr "មិន​អើពើ​ទាំងអស់"
+
+#: ../plugins/spell/spell-checker.ui.h:10
+msgid "Change A_ll"
+msgstr "ផ្លាស់ប្ដូរ​ទាំងអស់"
+
+#: ../plugins/spell/spell-checker.ui.h:11
+msgid "User dictionary:"
+msgstr "វចនានុក្រម​អ្នក​ប្រើ ៖"
+
+#: ../plugins/spell/spell-checker.ui.h:12
+msgid "Add w_ord"
+msgstr "បន្ថែម​ពាក្យ"
+
+#: ../plugins/spell/spell-checker.ui.h:13
+msgid "Language:"
+msgstr "ភាសា ៖"
+
+#: ../plugins/spell/spell-checker.ui.h:14
+msgid "Language"
+msgstr "ភាសា"
+
+#: ../plugins/spell/spell.plugin.desktop.in.h:1
+msgid "Spell Checker"
+msgstr "កម្មវិធី​ពិនិត្យអក្ខរាវិរុទ្ធ"
+
+#: ../plugins/spell/spell.plugin.desktop.in.h:2
+msgid "Checks the spelling of the current document."
+msgstr "ពិនិត្យ​មើល​ការ​ប្រកប​ឯកសារ​បច្ចុប្បន្ន ។"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:1
+msgid "Insert Date and Time"
+msgstr "បញ្ចូល​កាលបរិច្ឆេទ និង​ពេលវេលា"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:2
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
+msgid "Use the _selected format"
+msgstr "ប្រើទ្រង់ទ្រាយ​ដែល​បាន​ជ្រើស"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:3
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
+msgid "_Use custom format"
+msgstr "ប្រើ​ទ្រង់ទ្រាយ​ផ្ទាល់ខ្លួន"
+
+#. Translators: Use the more common date format in your locale
+#: ../plugins/time/gedit-time-dialog.ui.h:5
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:8
+#, no-c-format
+msgid "%d/%m/%Y %H:%M:%S"
+msgstr "%d/%m/%Y %H:%M:%S"
+
+#. Translators: This example should follow the date format defined in the entry above
+#: ../plugins/time/gedit-time-dialog.ui.h:6
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:10
+msgid "01/11/2009 17:52:00"
+msgstr "01/11/2009 17:52:00"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:7
+msgid "_Insert"
+msgstr "បញ្ចូល"
+
+#: ../plugins/time/gedit-time-plugin.c:188
+msgid "In_sert Date and Time..."
+msgstr "បញ្ចូល​កាលបរិច្ឆេទ និង​ពេលវេលា..."
+
+#: ../plugins/time/gedit-time-plugin.c:190
+msgid "Insert current date and time at the cursor position"
+msgstr "បញ្ចូលកាលបរិច្ឆេទ និង​ពេលវេលា​នៅ​ទីតាំង​ទស្សន៍​ទ្រនិច"
+
+#: ../plugins/time/gedit-time-plugin.c:537
+msgid "Available formats"
+msgstr "ទ្រង់ទ្រាយ​អាច​ប្រើ​បាន"
+
+#. ex:ts=8:noet:
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:1
+msgid "Configure date/time plugin"
+msgstr "កំណត់​រចនាសម្ព័ន្ធ​កម្មវិធី​ជំនួយ​កាលបរិច្ឆេទ/ពេលវេលា"
+
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:2
+msgid "When inserting date/time..."
+msgstr "នៅ​ពេល​បញ្ចូល​កាលបរិច្ឆេទ/ពេលវេលា..."
+
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
+msgid "_Prompt for a format"
+msgstr "ប្រអប់​បញ្ចូល​សម្រាប់​ទ្រង់ទ្រាយ"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+msgid "Prompt Type"
+msgstr "ប្រភេទ​ប្រអប់​បញ្ចូល"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+msgid ""
+"If the user should be prompted for a format or if the selected or custom "
+"format should be used."
+msgstr "ប្រសិនបើ​អ្នក​ប្រើ​​​សួរ​រក​ទ្រង់ទ្រាយ ឬ​ប្រសិនបើ​បាន​ជ្រើស ឬ​ទ្រង់ទ្រាយ​ផ្ទាល់​ខ្លួន​គួរ​ត្រូវ​បាន​ប្រើ ។"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+msgid "Selected Format"
+msgstr "ទ្រង់ទ្រាយ​ដែល​បាន​ជ្រើស"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+msgid "The selected format used when inserting the date/time."
+msgstr "ទ្រង់ទ្រាយ​ដែល​បាន​ជ្រើស​ បាន​ប្រើនៅ​ពេល​បញ្ចូល​កាលបរិច្ឆេទ/ពេលវេលា ។"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+msgid "Custom Format"
+msgstr "ទ្រង់ទ្រាយ​ផ្ទាល់ខ្លួន"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+msgid "The custom format used when inserting the date/time."
+msgstr "ទ្រង់ទ្រាយ​ផ្ទាល់​ខ្លួន​បាន​ប្រើ​នៅ​ពេល​បញ្ចូល​កាលបរិច្ឆេទ/ពេលវេលា ។"
+
+#: ../plugins/time/time.plugin.desktop.in.h:1
+msgid "Insert Date/Time"
+msgstr "បញ្ចូល​កាលបរិច្ឆេទ/ពេលវេលា"
+
+#: ../plugins/time/time.plugin.desktop.in.h:2
+msgid "Inserts current date and time at the cursor position."
+msgstr "បញ្ចូល​កាលបរិច្ឆេទ និង​ពេលវេលា​នៅ​ទីតាំង​ទស្សន៍ទ្រនិច"
+
+#: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:1
+msgid "Zeitgeist dataprovider"
+msgstr "Zeitgeist dataprovider"
+
+#: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
+msgid "Logs access and leave event for documents used with gedit"
+msgstr "ចុះ​កំណត់​ហេតុ​ការ​ចូល​ និង​​ព្រឹត្តិការណ៍​ចាកចេញ​សម្រាប់​ឯកសារ​ដែល​បាន​ប្រើ​ជា​មួយ gedit"
+
+#~ msgid "Plaintext;Write;"
+#~ msgstr "Plaintext;Write;"
