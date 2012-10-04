@@ -155,7 +155,7 @@ gedit_status_combo_box_class_init (GeditStatusComboBoxClass *klass)
 		  "-GtkButton-inner-border: 0;\n"
 		  "-GtkWidget-focus-line-width : 0;\n"
 		  "-GtkWidget-focus-padding : 0;\n"
-		  "padding: 0;\n"
+		  "padding: 1px 8px 2px 4px;\n"
 		"}";
 
 	object_class->finalize = gedit_status_combo_box_finalize;
