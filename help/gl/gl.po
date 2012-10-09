@@ -1,23 +1,22 @@
 # Galician translation for gedit.
 # Copyright (C) 2011 gedit's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gedit package.
-#
 # Fran Diéguez <frandieguez@gnome.org>, 2011.
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2011.
 # Fran Dieguez <frandieguez@gnome.org>, 2011, 2012.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"POT-Creation-Date: 2012-06-23 21:37+0000\n"
-"PO-Revision-Date: 2012-07-17 20:36+0200\n"
+"POT-Creation-Date: 2012-08-16 23:04+0000\n"
+"PO-Revision-Date: 2012-10-09 11:20+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
-"Language-Team: Galician <gnome-l10n-gl@gnome.org>\n"
+"Language-Team: gnome-l10n-gl@gnome.org\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Gtranslator 2.91.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -27,8 +26,8 @@ msgstr ""
 "Leandro Regueiro <leandro.regueiro@gmail.com>, 2011.\n"
 "\n"
 "Proxecto Trasno - Adaptación do software libre á lingua galega.\n"
-"Se desexas colaborar connosco podes atopar máis información en http://www."
-"trasno.net"
+"Se desexas colaborar connosco podes atopar máis información en "
+"http://www.trasno.net"
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
@@ -112,13 +111,12 @@ msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
 #: C/index.page:21(page/title)
-#, fuzzy
 msgid ""
 "<media type=\"image\" mime=\"image/png\" src=\"figures/gedit-icon.png\"> </"
 "media> gedit Text Editor"
 msgstr ""
-"<media type=\"image\" mime=\"image/png\" src=\"figures/gedit-icon.png\"></"
-"media> Editor de texto gedit"
+"<media type=\"image\" mime=\"image/png\" src=\"figures/gedit-icon.png\"> </media> "
+"Editor de texto gedit"
 
 #: C/index.page:26(page/p)
 msgid ""
@@ -1423,13 +1421,6 @@ msgid "Dashboard"
 msgstr "Taboleiro"
 
 #: C/gedit-plugins-dashboard.page:18(page/p)
-#| msgid ""
-#| "The <app>Dashboard</app> plugin provides quick access to your most "
-#| "recently-used files and most-frequently used files. To activate the "
-#| "<app>Dashboard</app> plugin, select <keyseq><key>Edit</key><key> "
-#| "Preferences</key><key>Plugins</key><key>Dashboard</key></keyseq>. You "
-#| "will need to restart <app>gedit</app> to activate the <app>Dashboard</"
-#| "app> plugin."
 msgid ""
 "The <app>Dashboard</app> plugin provides quick access to your most recently-"
 "used files and most-frequently used files. To activate the <app>Dashboard</"
@@ -2986,14 +2977,18 @@ msgstr ""
 "<gui>Ordenar</gui>."
 
 #: C/gedit-printing.page:19(note/p)
+#| msgid ""
+#| "Printing with <app>gedit</app> requires that you have connected and "
+#| "configured your printer. If you have not done this, please consult the "
+#| "printing help documentation for your desktop environment."
 msgid ""
 "Printing with <app>gedit</app> requires that you have connected and "
-"configured your printer. If you have not done this, please consult the "
-"printing help documentation for your desktop environment."
+"configured your printer. If you have not done this, please consult the <link "
+"href=\"ghelp:gnome-help?printing\">printing help for GNOME</link>."
 msgstr ""
 "Imprimir con <app>gedit</app> require que teña conectada e configurada unha "
-"impresora. Se non o fixo, consulte a documentación sobre a impresión no seu "
-"contorno de escritorio."
+"impresora. Se non o fixo, consulte a <link href=\"ghelp:gnome-"
+"help?printing\">documentación sobre a impresión en GNOME</link>."
 
 #: C/gedit-printing.page:22(page/p)
 msgid ""
@@ -3966,11 +3961,6 @@ msgid "Undo a recent action"
 msgstr "Desfacer unha acción recente"
 
 #: C/gedit-undo-recent-action.page:25(page/p)
-#| msgid ""
-#| "After you have enabled the plugin, turn-on Multi Edit mode by pressing "
-#| "<keyseq><key>Ctrl</key><key>Shift</key><key>C</key></keyseq>, or clicking "
-#| "<guiseq><gui>Edit</gui><gui>Multi Edit Mode</gui></guiseq>. You can then "
-#| "select the points in your file that you would like start editing."
 msgid ""
 "If you make a mistake while using <app>gedit</app>, you can undo it by "
 "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
@@ -3985,6 +3975,10 @@ msgid ""
 "word one at a time. This makes <app>gedit</app>'s <em>undo </em> feature "
 "more efficient."
 msgstr ""
+"Desfacer un «conxunto de accións similares» significa, por exemplo, que "
+"<app>gedit</app> eliminará unha palabra enteira fronte a eliminar cada "
+"caracter dunha palabra cada vez. Isto fai que <app>gedit</app> sexa máis "
+"eficiente ao <em>desfacer</em>."
 
 #: C/gedit-undo-recent-action.page:35(note/p)
 msgid "You cannot undo a change after you have saved it."
