@@ -74,8 +74,6 @@ struct _GeditPrintPreviewPrivate
 	gint tile_w;
 	gint tile_h;
 
-	GtkPageOrientation orientation;
-
 	/* multipage support */
 	gint rows;
 	gint cols;
@@ -228,17 +226,8 @@ update_tile_size (GeditPrintPreview *preview)
 	w = 2 * PAGE_PAD + floor (priv->scale * get_paper_width (preview) + 0.5);
 	h = 2 * PAGE_PAD + floor (priv->scale * get_paper_height (preview) + 0.5);
 
-	if ((priv->orientation == GTK_PAGE_ORIENTATION_LANDSCAPE) ||
-	    (priv->orientation == GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE))
-	{
-		priv->tile_w = h;
-		priv->tile_h = w;
-	}
-	else
-	{
-		priv->tile_w = w;
-		priv->tile_h = h;	
-	}
+	priv->tile_w = w;
+	priv->tile_h = h;
 }
 
 /* Zoom should always be set with one of these two function
@@ -277,17 +266,8 @@ set_zoom_fit_to_size (GeditPrintPreview *preview)
 	width /= priv->cols;
 	height /= priv->rows;
 
-	if ((priv->orientation == GTK_PAGE_ORIENTATION_LANDSCAPE) ||
-	    (priv->orientation == GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE))
-	{
-		p_width = get_paper_height (preview);
-		p_height = get_paper_width (preview);
-	}
-	else
-	{
-		p_width = get_paper_width (preview);
-		p_height = get_paper_height (preview);
-	}
+	p_width = get_paper_width (preview);
+	p_height = get_paper_height (preview);
 
 	zoomx = MAX (1, width - 2 * PAGE_PAD) / p_width;
 	zoomy = MAX (1, height - 2 * PAGE_PAD) / p_height;
@@ -1038,19 +1018,6 @@ draw_page_content (cairo_t            *cr,
 	/* scale to the desired size */
 	cairo_scale (cr, preview->priv->scale, preview->priv->scale);
 
-	/* rotate acording to page orientation if needed */
-	if ((preview->priv->orientation == GTK_PAGE_ORIENTATION_LANDSCAPE) ||
-	    (preview->priv->orientation == GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE))
-	{
-		cairo_matrix_t matrix;
-
-		cairo_matrix_init (&matrix,
-				   0, -1,
-				   1,  0,
-				   0,  get_paper_width (preview));
-		cairo_transform (cr, &matrix);
-	}
-
 	gtk_print_context_set_cairo_context (preview->priv->context,
 					     cr,
 					     preview->priv->dpi,
@@ -1072,16 +1039,6 @@ draw_page_frame (cairo_t            *cr,
 
 	w = get_paper_width (preview);
 	h = get_paper_height (preview);
-
-	if ((preview->priv->orientation == GTK_PAGE_ORIENTATION_LANDSCAPE) ||
-	    (preview->priv->orientation == GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE))
-	{
-		double tmp;
-
-		tmp = w;
-		w = h;
-		h = tmp;
-	}
 
 	w *= preview->priv->scale;
 	h *= preview->priv->scale;
@@ -1236,14 +1193,8 @@ static void
 update_paper_size (GeditPrintPreview *preview,
 		   GtkPageSetup      *page_setup)
 {
-	GtkPaperSize *paper_size;
-
-	paper_size = gtk_page_setup_get_paper_size (page_setup);
-
-	preview->priv->paper_w = gtk_paper_size_get_width (paper_size, GTK_UNIT_INCH);
-	preview->priv->paper_h = gtk_paper_size_get_height (paper_size, GTK_UNIT_INCH);
-
-	preview->priv->orientation = gtk_page_setup_get_orientation (page_setup);
+	preview->priv->paper_w = gtk_page_setup_get_paper_width (page_setup, GTK_UNIT_INCH);
+	preview->priv->paper_h = gtk_page_setup_get_paper_height (page_setup, GTK_UNIT_INCH);
 }
 
 static void
