@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit-master-po-gl-116402.merged\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-17 01:01+0200\n"
-"PO-Revision-Date: 2012-08-17 01:03+0200\n"
+"POT-Creation-Date: 2012-10-17 10:42+0200\n"
+"PO-Revision-Date: 2012-10-17 10:42+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -45,10 +45,14 @@ msgid "gedit Text Editor"
 msgstr "Editor de texto gedit"
 
 #: ../data/gedit.desktop.in.in.h:5
+msgid "Text;"
+msgstr "Texto;"
+
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
 msgstr "Abrir unha nova xanela"
 
-#: ../data/gedit.desktop.in.in.h:6
+#: ../data/gedit.desktop.in.in.h:7
 msgid "Open a New Document"
 msgstr "Abrir un novo documento"
 
@@ -732,12 +736,12 @@ msgstr ""
 "Execute '%s --help' para ver unha lista completa das opcións de liña de "
 "ordes dispoñíbeis.\n"
 
-#: ../gedit/gedit-commands-file.c:272
+#: ../gedit/gedit-commands-file.c:266
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "Cargando o ficheiro '%s'…"
 
-#: ../gedit/gedit-commands-file.c:281
+#: ../gedit/gedit-commands-file.c:275
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -745,28 +749,28 @@ msgstr[0] "Cargando %d ficheiro…"
 msgstr[1] "Cargando %d ficheiros…"
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:446
+#: ../gedit/gedit-commands-file.c:440
 msgid "Open Files"
 msgstr "Abrir ficheiros"
 
-#: ../gedit/gedit-commands-file.c:557
+#: ../gedit/gedit-commands-file.c:551
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "O ficheiro \"%s\" é só de lectura."
 
-#: ../gedit/gedit-commands-file.c:562
+#: ../gedit/gedit-commands-file.c:556
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Quere tentar substituílo co que está gardando agora?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:564 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_Substituír"
 
-#: ../gedit/gedit-commands-file.c:612
+#: ../gedit/gedit-commands-file.c:606
 msgid "Save the file using compression?"
 msgstr "Desexa gardar o ficheiro usando compresión?"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:607
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -775,15 +779,15 @@ msgstr ""
 "O ficheiro «%s» gardouse anteriormente como texto plano e agora gardarase "
 "usando compresión."
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:609
 msgid "_Save Using Compression"
 msgstr "_Gardar usando compresión"
 
-#: ../gedit/gedit-commands-file.c:619
+#: ../gedit/gedit-commands-file.c:613
 msgid "Save the file as plain text?"
 msgstr "Desexa gardar o ficheiro como texto plano?"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:614
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -792,30 +796,30 @@ msgstr ""
 "O ficheiro «%s» gardouse anteriormente usando compresión e agora gardarase "
 "como texto plano."
 
-#: ../gedit/gedit-commands-file.c:622
+#: ../gedit/gedit-commands-file.c:616
 msgid "_Save As Plain Text"
 msgstr "Gardar como te_xto plano"
 
-#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
+#: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:953
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Gardando o ficheiro '%s'…"
 
-#: ../gedit/gedit-commands-file.c:846
+#: ../gedit/gedit-commands-file.c:840
 msgid "Save As"
 msgstr "Gardar como"
 
-#: ../gedit/gedit-commands-file.c:1173
+#: ../gedit/gedit-commands-file.c:1167
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Recuperando o documento '%s'…"
 
-#: ../gedit/gedit-commands-file.c:1218
+#: ../gedit/gedit-commands-file.c:1212
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Quere recuperar os cambios non gardados no documento '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1221
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -829,14 +833,14 @@ msgstr[1] ""
 "Os cambios realizados no documento nos últimos %ld segundos perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1236
+#: ../gedit/gedit-commands-file.c:1230
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Os cambios realizados no documento no último minuto perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1242
+#: ../gedit/gedit-commands-file.c:1236
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -851,7 +855,7 @@ msgstr[1] ""
 "Os cambios realizados no documento no último minuto e %ld segundos "
 "perderanse permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1246
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -865,12 +869,12 @@ msgstr[1] ""
 "Os cambios realizados no documento nos últimos %ld minutos perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1267
+#: ../gedit/gedit-commands-file.c:1261
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Os cambios realizados no documento na última hora perderanse permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1267
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -885,7 +889,7 @@ msgstr[1] ""
 "Os cambios realizados no documento na última hora e %d minutos perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1288
+#: ../gedit/gedit-commands-file.c:1282
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -898,7 +902,7 @@ msgstr[1] ""
 "Os cambios realizados no documento nas últimas %d horas perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1314
+#: ../gedit/gedit-commands-file.c:1308
 msgid "_Revert"
 msgstr "_Recuperar"
 
@@ -1743,69 +1747,69 @@ msgstr "C_abeceiras e pés de páxina:"
 msgid "_Restore Default Fonts"
 msgstr "_Restaurar os tipos de letra predeterminados"
 
-#: ../gedit/gedit-print-preview.c:582
+#: ../gedit/gedit-print-preview.c:562
 msgid "Show the previous page"
 msgstr "Mostrar a páxina anterior"
 
-#: ../gedit/gedit-print-preview.c:594
+#: ../gedit/gedit-print-preview.c:574
 msgid "Show the next page"
 msgstr "Mostrar a páxina seguinte"
 
-#: ../gedit/gedit-print-preview.c:610
+#: ../gedit/gedit-print-preview.c:590
 msgid "Current page (Alt+P)"
 msgstr "Páxina actual (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:633
+#: ../gedit/gedit-print-preview.c:613
 msgid "of"
 msgstr "de"
 
-#: ../gedit/gedit-print-preview.c:641
+#: ../gedit/gedit-print-preview.c:621
 msgid "Page total"
 msgstr "Total de páxinas"
 
-#: ../gedit/gedit-print-preview.c:642
+#: ../gedit/gedit-print-preview.c:622
 msgid "The total number of pages in the document"
 msgstr "O número total de páxinas do documento"
 
-#: ../gedit/gedit-print-preview.c:659
+#: ../gedit/gedit-print-preview.c:639
 msgid "Show multiple pages"
 msgstr "Mostrar múltiples páxinas"
 
-#: ../gedit/gedit-print-preview.c:672
+#: ../gedit/gedit-print-preview.c:652
 msgid "Zoom 1:1"
 msgstr "Ampliación 1:1"
 
-#: ../gedit/gedit-print-preview.c:681
+#: ../gedit/gedit-print-preview.c:661
 msgid "Zoom to fit the whole page"
 msgstr "Ampliar até encaixar a páxina completa"
 
-#: ../gedit/gedit-print-preview.c:690
+#: ../gedit/gedit-print-preview.c:670
 msgid "Zoom the page in"
 msgstr "Ampliar a páxina"
 
-#: ../gedit/gedit-print-preview.c:699
+#: ../gedit/gedit-print-preview.c:679
 msgid "Zoom the page out"
 msgstr "Reducir a páxina"
 
-#: ../gedit/gedit-print-preview.c:711
+#: ../gedit/gedit-print-preview.c:691
 msgid "_Close Preview"
 msgstr "Pe_char a previsualización"
 
-#: ../gedit/gedit-print-preview.c:714
+#: ../gedit/gedit-print-preview.c:694
 msgid "Close print preview"
 msgstr "Pechar a previsualización de impresión"
 
-#: ../gedit/gedit-print-preview.c:783
+#: ../gedit/gedit-print-preview.c:763
 #, c-format
 msgid "Page %d of %d"
 msgstr "Páxina %d de %d"
 
-#: ../gedit/gedit-print-preview.c:967
+#: ../gedit/gedit-print-preview.c:947
 msgid "Page Preview"
 msgstr "Previsualización da páxina"
 
-#: ../gedit/gedit-print-preview.c:968
+#: ../gedit/gedit-print-preview.c:948
 msgid "The preview of a page in the document to be printed"
 msgstr "Previsualización dunha páxina no documento que se vai imprimir"
 
@@ -2282,9 +2286,9 @@ msgstr "Usar o modo de realce %s"
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
 #: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:450
-#: ../plugins/externaltools/tools/manager.py:561
-#: ../plugins/externaltools/tools/manager.py:882
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:566
+#: ../plugins/externaltools/tools/manager.py:885
 msgid "Plain Text"
 msgstr "Texto plano"
 
@@ -2586,27 +2590,27 @@ msgstr "Saíu"
 msgid "All languages"
 msgstr "Todos os idiomas"
 
-#: ../plugins/externaltools/tools/manager.py:550
-#: ../plugins/externaltools/tools/manager.py:554
-#: ../plugins/externaltools/tools/manager.py:880
+#: ../plugins/externaltools/tools/manager.py:555
+#: ../plugins/externaltools/tools/manager.py:559
+#: ../plugins/externaltools/tools/manager.py:883
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Todos os idiomas"
 
-#: ../plugins/externaltools/tools/manager.py:667
+#: ../plugins/externaltools/tools/manager.py:672
 msgid "New tool"
 msgstr "Ferramenta nova"
 
-#: ../plugins/externaltools/tools/manager.py:798
+#: ../plugins/externaltools/tools/manager.py:803
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Este acelerador xa está ligado a %s"
 
-#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/manager.py:847
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Escriba unha tecla rápida nova ou prema na tecla retroceso para limpar"
 
-#: ../plugins/externaltools/tools/manager.py:844
+#: ../plugins/externaltools/tools/manager.py:849
 msgid "Type a new accelerator"
 msgstr "Escriba unha tecla rápida nova"
 
@@ -2740,23 +2744,23 @@ msgstr "_Gardar:"
 msgid "Shortcut _Key:"
 msgstr "A_tallo de teclado:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:179
+#: ../plugins/externaltools/tools/windowactivatable.py:173
 msgid "Manage _External Tools..."
 msgstr "Xestionar Ferramentas _externas…"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
+#: ../plugins/externaltools/tools/windowactivatable.py:174
 msgid "Opens the External Tools Manager"
 msgstr "Abre o xestor de ferramentas externas"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:183
+#: ../plugins/externaltools/tools/windowactivatable.py:177
 msgid "External _Tools"
 msgstr "_Ferramentas externas"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:184
+#: ../plugins/externaltools/tools/windowactivatable.py:178
 msgid "External tools"
 msgstr "Ferramentas externas"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:218
+#: ../plugins/externaltools/tools/windowactivatable.py:212
 msgid "Shell Output"
 msgstr "Saída do intérprete de ordes"
 
@@ -2769,7 +2773,7 @@ msgstr "Panel do navegador de ficheiros"
 msgid "Easy file access from the side panel"
 msgstr "Acceso fácil a ficheiros desde o panel lateral"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:239
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
 msgid "File System"
 msgstr "Sistema de ficheiros"
 
@@ -4621,9 +4625,6 @@ msgstr "Rexistra o acceso e saída dos documentos usados en gedit"
 
 #~ msgid "Teletype or monospace text style"
 #~ msgstr "Teletipo ou estilo de texto monoespazado"
-
-#~ msgid "Text"
-#~ msgstr "Texto"
 
 #~ msgid "Text color"
 #~ msgstr "Cor do texto"
