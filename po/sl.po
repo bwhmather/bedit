@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-08-29 00:01+0000\n"
-"PO-Revision-Date: 2012-08-29 09:25+0100\n"
+"POT-Creation-Date: 2012-10-17 19:06+0000\n"
+"PO-Revision-Date: 2012-10-18 08:03+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: \n"
@@ -41,10 +41,14 @@ msgid "gedit Text Editor"
 msgstr "Gedit urejevalnik besedil "
 
 #: ../data/gedit.desktop.in.in.h:5
+msgid "Text;"
+msgstr "Besedilo;"
+
+#: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
 msgstr "Odpri novo okno"
 
-#: ../data/gedit.desktop.in.in.h:6
+#: ../data/gedit.desktop.in.in.h:7
 msgid "Open a New Document"
 msgstr "Odpri nov dokument"
 
@@ -554,12 +558,12 @@ msgstr ""
 "%s\n"
 "Zaženite '%s --help' za podroben pregled celotnega seznama možnosti ukazne vrstice.\n"
 
-#: ../gedit/gedit-commands-file.c:272
+#: ../gedit/gedit-commands-file.c:266
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "Nalaganje datoteke '%s' ..."
 
-#: ../gedit/gedit-commands-file.c:281
+#: ../gedit/gedit-commands-file.c:275
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -569,71 +573,71 @@ msgstr[2] "Nalaganje %d datotek ..."
 msgstr[3] "Nalaganje %d datotek ..."
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:446
+#: ../gedit/gedit-commands-file.c:440
 msgid "Open Files"
 msgstr "Odpri datoteke"
 
-#: ../gedit/gedit-commands-file.c:557
+#: ../gedit/gedit-commands-file.c:551
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Datoteka \"%s\" je le berljiva."
 
-#: ../gedit/gedit-commands-file.c:562
+#: ../gedit/gedit-commands-file.c:556
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Jo želite poskusiti nadomestiti s to, ki jo shranjujete?"
 
-#: ../gedit/gedit-commands-file.c:570
+#: ../gedit/gedit-commands-file.c:564
 #: ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_Zamenjaj"
 
-#: ../gedit/gedit-commands-file.c:612
+#: ../gedit/gedit-commands-file.c:606
 msgid "Save the file using compression?"
 msgstr "Ali želite datoteko shraniti s stiskanjem?"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:607
 #, c-format
 msgid "The file \"%s\" was previously saved as plain text and will now be saved using compression."
 msgstr "Datoteka \"%s\" je bila prehodno shranjena kot običajno besedilo in bo bila sedaj shranjena s stiskanjem."
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:609
 msgid "_Save Using Compression"
 msgstr "_Shrani z uporabo stiskanja"
 
-#: ../gedit/gedit-commands-file.c:619
+#: ../gedit/gedit-commands-file.c:613
 msgid "Save the file as plain text?"
 msgstr "Ali želite datoteko shraniti kot običajno besedilo?"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:614
 #, c-format
 msgid "The file \"%s\" was previously saved using compression and will now be saved as plain text."
 msgstr "Datoteka \"%s\" je bila predhodno shranjena z uporabo stiskanja in bo sedaj shranjena kot običajno besedilo."
 
-#: ../gedit/gedit-commands-file.c:622
+#: ../gedit/gedit-commands-file.c:616
 msgid "_Save As Plain Text"
 msgstr "Shrani kot običajno besedilno datoteko"
 
-#: ../gedit/gedit-commands-file.c:742
-#: ../gedit/gedit-commands-file.c:959
+#: ../gedit/gedit-commands-file.c:736
+#: ../gedit/gedit-commands-file.c:953
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Shranjevanje datoteke '%s' ..."
 
-#: ../gedit/gedit-commands-file.c:846
+#: ../gedit/gedit-commands-file.c:840
 msgid "Save As"
 msgstr "Shrani kot"
 
-#: ../gedit/gedit-commands-file.c:1173
+#: ../gedit/gedit-commands-file.c:1167
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Povračanje dokumenta '%s' ..."
 
-#: ../gedit/gedit-commands-file.c:1218
+#: ../gedit/gedit-commands-file.c:1212
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Povrni neshranjene spremembe dokumentu '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1221
 #, c-format
 msgid "Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural "Changes made to the document in the last %ld seconds will be permanently lost."
@@ -642,11 +646,11 @@ msgstr[1] "Spremembe dokumenta narejene v zadnji %ld sekundi bodo trajno izgublj
 msgstr[2] "Spremembe dokumenta narejene v zadnjih %ld sekundah bodo trajno izgubljene."
 msgstr[3] "Spremembe dokumenta narejene v zadnjih %ld sekundah bodo trajno izgubljene."
 
-#: ../gedit/gedit-commands-file.c:1236
+#: ../gedit/gedit-commands-file.c:1230
 msgid "Changes made to the document in the last minute will be permanently lost."
 msgstr "Spremembe dokumenta narejene v zadnji minuti bodo trajno izgubljene."
 
-#: ../gedit/gedit-commands-file.c:1242
+#: ../gedit/gedit-commands-file.c:1236
 #, c-format
 msgid "Changes made to the document in the last minute and %ld second will be permanently lost."
 msgid_plural "Changes made to the document in the last minute and %ld seconds will be permanently lost."
@@ -655,7 +659,7 @@ msgstr[1] "Spremembe dokumenta narejene v zadnji minuti in %ld sekundi bodo traj
 msgstr[2] "Spremembe dokumenta narejene v zadnji minuti in %ld sekundah bodo trajno izgubljene."
 msgstr[3] "Spremembe dokumenta narejene v zadnji minuti in %ld sekundah bodo trajno izgubljene."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1246
 #, c-format
 msgid "Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural "Changes made to the document in the last %ld minutes will be permanently lost."
@@ -664,11 +668,11 @@ msgstr[1] "Spremembe dokumenta narejene v zadnji %ld minuti bodo trajno izgublje
 msgstr[2] "Spremembe dokumenta narejene v zadnjih %ld minutah bodo trajno izgubljene."
 msgstr[3] "Spremembe dokumenta narejene v zadnjih %ld minutah bodo trajno izgubljene."
 
-#: ../gedit/gedit-commands-file.c:1267
+#: ../gedit/gedit-commands-file.c:1261
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Spremembe dokumenta narejene v zadnji uri bodo trajno izgubljene."
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1267
 #, c-format
 msgid "Changes made to the document in the last hour and %d minute will be permanently lost."
 msgid_plural "Changes made to the document in the last hour and %d minutes will be permanently lost."
@@ -677,7 +681,7 @@ msgstr[1] "Spremembe dokumenta narejene v zadnji uri in %d minuti bodo trajno iz
 msgstr[2] "Spremembe dokumenta narejene v zadnji uri in %d minutah bodo trajno izgubljene."
 msgstr[3] "Spremembe dokumenta narejene v zadnji uri in %d minutah bodo trajno izgubljene."
 
-#: ../gedit/gedit-commands-file.c:1288
+#: ../gedit/gedit-commands-file.c:1282
 #, c-format
 msgid "Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
@@ -686,7 +690,7 @@ msgstr[1] "Spremembe dokumenta narejene v zadnji %d uri bodo trajno izgubljene."
 msgstr[2] "Spremembe dokumenta narejene v zadnji %d urah bodo trajno izgubljene."
 msgstr[3] "Spremembe dokumenta narejene v zadnji %d urah bodo trajno izgubljene."
 
-#: ../gedit/gedit-commands-file.c:1314
+#: ../gedit/gedit-commands-file.c:1308
 msgid "_Revert"
 msgstr "_Povrni"
 
@@ -1480,69 +1484,69 @@ msgstr "_Glave in noge:"
 msgid "_Restore Default Fonts"
 msgstr "_Povrni privzete pisave"
 
-#: ../gedit/gedit-print-preview.c:582
+#: ../gedit/gedit-print-preview.c:562
 msgid "Show the previous page"
 msgstr "Pokaži prejšnjo stran"
 
-#: ../gedit/gedit-print-preview.c:594
+#: ../gedit/gedit-print-preview.c:574
 msgid "Show the next page"
 msgstr "Pokaži naslednjo stran"
 
-#: ../gedit/gedit-print-preview.c:610
+#: ../gedit/gedit-print-preview.c:590
 msgid "Current page (Alt+P)"
 msgstr "Trenutna stran (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:633
+#: ../gedit/gedit-print-preview.c:613
 msgid "of"
 msgstr "od"
 
-#: ../gedit/gedit-print-preview.c:641
+#: ../gedit/gedit-print-preview.c:621
 msgid "Page total"
 msgstr "Skupaj strani"
 
-#: ../gedit/gedit-print-preview.c:642
+#: ../gedit/gedit-print-preview.c:622
 msgid "The total number of pages in the document"
 msgstr "Celotno število strani v dokumentu"
 
-#: ../gedit/gedit-print-preview.c:659
+#: ../gedit/gedit-print-preview.c:639
 msgid "Show multiple pages"
 msgstr "Pokaži več strani"
 
-#: ../gedit/gedit-print-preview.c:672
+#: ../gedit/gedit-print-preview.c:652
 msgid "Zoom 1:1"
 msgstr "Približaj 1:1"
 
-#: ../gedit/gedit-print-preview.c:681
+#: ../gedit/gedit-print-preview.c:661
 msgid "Zoom to fit the whole page"
 msgstr "Približaj na širino strani"
 
-#: ../gedit/gedit-print-preview.c:690
+#: ../gedit/gedit-print-preview.c:670
 msgid "Zoom the page in"
 msgstr "Približaj stran"
 
-#: ../gedit/gedit-print-preview.c:699
+#: ../gedit/gedit-print-preview.c:679
 msgid "Zoom the page out"
 msgstr "Oddalji stran"
 
-#: ../gedit/gedit-print-preview.c:711
+#: ../gedit/gedit-print-preview.c:691
 msgid "_Close Preview"
 msgstr "_Zapri predogled"
 
-#: ../gedit/gedit-print-preview.c:714
+#: ../gedit/gedit-print-preview.c:694
 msgid "Close print preview"
 msgstr "Zapri predogled tiskanja"
 
-#: ../gedit/gedit-print-preview.c:783
+#: ../gedit/gedit-print-preview.c:763
 #, c-format
 msgid "Page %d of %d"
 msgstr "Stran %d od %d"
 
-#: ../gedit/gedit-print-preview.c:967
+#: ../gedit/gedit-print-preview.c:947
 msgid "Page Preview"
 msgstr "Predogled strani"
 
-#: ../gedit/gedit-print-preview.c:968
+#: ../gedit/gedit-print-preview.c:948
 msgid "The preview of a page in the document to be printed"
 msgstr "Predogled strani v dokumentu za tisk"
 
@@ -2027,9 +2031,9 @@ msgstr "Uporabi način poudarjanje %s"
 #: ../gedit/gedit-window.c:1046
 #: ../gedit/gedit-window.c:2091
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:450
-#: ../plugins/externaltools/tools/manager.py:561
-#: ../plugins/externaltools/tools/manager.py:882
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:566
+#: ../plugins/externaltools/tools/manager.py:885
 msgid "Plain Text"
 msgstr "Običajno besedilo"
 
@@ -2315,27 +2319,27 @@ msgstr "Končal"
 msgid "All languages"
 msgstr "Vsi jeziki"
 
-#: ../plugins/externaltools/tools/manager.py:550
-#: ../plugins/externaltools/tools/manager.py:554
-#: ../plugins/externaltools/tools/manager.py:880
+#: ../plugins/externaltools/tools/manager.py:555
+#: ../plugins/externaltools/tools/manager.py:559
+#: ../plugins/externaltools/tools/manager.py:883
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Vsi jeziki"
 
-#: ../plugins/externaltools/tools/manager.py:667
+#: ../plugins/externaltools/tools/manager.py:672
 msgid "New tool"
 msgstr "Novo orodje"
 
-#: ../plugins/externaltools/tools/manager.py:798
+#: ../plugins/externaltools/tools/manager.py:803
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Ta bližnjica je že vezana na %s"
 
-#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/manager.py:847
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Vpišite novo bližnjico ali pritisnite vračalko za izbris"
 
-#: ../plugins/externaltools/tools/manager.py:844
+#: ../plugins/externaltools/tools/manager.py:849
 msgid "Type a new accelerator"
 msgstr "Vpišite novo bližnjico"
 
@@ -2469,23 +2473,23 @@ msgstr "_Shrani:"
 msgid "Shortcut _Key:"
 msgstr "Tipkovna _bližnjica:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:179
+#: ../plugins/externaltools/tools/windowactivatable.py:173
 msgid "Manage _External Tools..."
 msgstr "Upravljanje z _zunanjimi orodji ..."
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
+#: ../plugins/externaltools/tools/windowactivatable.py:174
 msgid "Opens the External Tools Manager"
 msgstr "Odpre upravljalnik  zunanjih orodij"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:183
+#: ../plugins/externaltools/tools/windowactivatable.py:177
 msgid "External _Tools"
 msgstr "Zunanja _orodja"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:184
+#: ../plugins/externaltools/tools/windowactivatable.py:178
 msgid "External tools"
 msgstr "Zunanja orodja"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:218
+#: ../plugins/externaltools/tools/windowactivatable.py:212
 msgid "Shell Output"
 msgstr "Izpis v lupini"
 
@@ -2498,7 +2502,7 @@ msgstr "Pladenj brskalnika datotek"
 msgid "Easy file access from the side panel"
 msgstr "Enostaven dostop do datotek iz stranskega pladnja"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:239
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
 msgid "File System"
 msgstr "Datotečni sistem"
 
@@ -4364,9 +4368,6 @@ msgstr "Beleži dostop in pusti dogodek za dokumente, ki so bili uporabljeni z g
 
 #~ msgid "Teletype or monospace text style"
 #~ msgstr "Enopresledni slog besedila"
-
-#~ msgid "Text"
-#~ msgstr "Besedilo"
 
 #~ msgid "Text color"
 #~ msgstr "Barva besedila"
