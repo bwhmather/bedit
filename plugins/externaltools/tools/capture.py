@@ -151,7 +151,7 @@ class Capture(GObject.Object):
 
             return False
 
-    def process_read_buffer(self):
+    def process_read_buffer(self, source):
         if self.read_buffer:
             if source == self.pipe.stdout:
                 self.emit('stdout-line', self.read_buffer)
@@ -188,13 +188,13 @@ class Capture(GObject.Object):
                         self.emit('stderr-line', line)
             else:
                 source.close()
-                self.process_read_buffer()
+                self.process_read_buffer(source)
                 self.pipe = None
 
                 return False
 
         if condition & ~(GObject.IO_IN | GObject.IO_PRI):
-            self.process_read_buffer()
+            self.process_read_buffer(source)
             self.pipe = None
 
             return False
