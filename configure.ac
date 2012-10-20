@@ -387,6 +387,12 @@ AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 
 GNOME_COMPILE_WARNINGS([maximum])
 
+GTK_REQUIRED=3.6.0
+
+AC_SUBST([GTK_REQUIRED])
+
+PKG_CHECK_MODULES(GTK, gtk+-3.0 >= $GTK_REQUIRED) 
+
 if test "$USE_MAINTAINER_MODE" = "yes"; then
 	enable_deprecations=yes
 else
