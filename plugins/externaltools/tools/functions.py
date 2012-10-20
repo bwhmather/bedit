@@ -133,8 +133,6 @@ def run_external_tool(window, panel, node):
         elif input_type == 'selection' or input_type == 'selection-document':
             try:
                 start, end = document.get_selection_bounds()
-                
-                print start, end
             except ValueError:
                 if input_type == 'selection-document':
                     start, end = document.get_bounds()
