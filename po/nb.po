@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 3.6.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-13 12:27+0200\n"
-"PO-Revision-Date: 2012-10-13 12:27+0200\n"
+"POT-Creation-Date: 2012-10-22 19:50+0200\n"
+"PO-Revision-Date: 2012-10-22 19:50+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -36,8 +36,8 @@ msgid "gedit Text Editor"
 msgstr "gedit tekstredigering"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text"
-msgstr "Tekst"
+msgid "Text;"
+msgstr "Tekst;"
 
 #: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
@@ -1666,69 +1666,69 @@ msgstr "Toppt_ekst og bunntekst:"
 msgid "_Restore Default Fonts"
 msgstr "Gjenopp_rett forvalgte skrifter"
 
-#: ../gedit/gedit-print-preview.c:582
+#: ../gedit/gedit-print-preview.c:562
 msgid "Show the previous page"
 msgstr "Vis forrige side"
 
-#: ../gedit/gedit-print-preview.c:594
+#: ../gedit/gedit-print-preview.c:574
 msgid "Show the next page"
 msgstr "Vis neste side"
 
-#: ../gedit/gedit-print-preview.c:610
+#: ../gedit/gedit-print-preview.c:590
 msgid "Current page (Alt+P)"
 msgstr "Denne siden (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:633
+#: ../gedit/gedit-print-preview.c:613
 msgid "of"
 msgstr "av"
 
-#: ../gedit/gedit-print-preview.c:641
+#: ../gedit/gedit-print-preview.c:621
 msgid "Page total"
 msgstr "Sider totalt"
 
-#: ../gedit/gedit-print-preview.c:642
+#: ../gedit/gedit-print-preview.c:622
 msgid "The total number of pages in the document"
 msgstr "Totalt antall sider i dokumentet"
 
-#: ../gedit/gedit-print-preview.c:659
+#: ../gedit/gedit-print-preview.c:639
 msgid "Show multiple pages"
 msgstr "Vis flere sider"
 
-#: ../gedit/gedit-print-preview.c:672
+#: ../gedit/gedit-print-preview.c:652
 msgid "Zoom 1:1"
 msgstr "Zoom 1:1"
 
-#: ../gedit/gedit-print-preview.c:681
+#: ../gedit/gedit-print-preview.c:661
 msgid "Zoom to fit the whole page"
 msgstr "Zoom tilpasset hele siden"
 
-#: ../gedit/gedit-print-preview.c:690
+#: ../gedit/gedit-print-preview.c:670
 msgid "Zoom the page in"
 msgstr "Sett inn på siden"
 
-#: ../gedit/gedit-print-preview.c:699
+#: ../gedit/gedit-print-preview.c:679
 msgid "Zoom the page out"
 msgstr "Zoom ut på siden"
 
-#: ../gedit/gedit-print-preview.c:711
+#: ../gedit/gedit-print-preview.c:691
 msgid "_Close Preview"
 msgstr "_Lukk forhåndsvisning"
 
-#: ../gedit/gedit-print-preview.c:714
+#: ../gedit/gedit-print-preview.c:694
 msgid "Close print preview"
 msgstr "Lukk forhåndsvisning av utskrift"
 
-#: ../gedit/gedit-print-preview.c:783
+#: ../gedit/gedit-print-preview.c:763
 #, c-format
 msgid "Page %d of %d"
 msgstr "Side %d av %d"
 
-#: ../gedit/gedit-print-preview.c:967
+#: ../gedit/gedit-print-preview.c:947
 msgid "Page Preview"
 msgstr "Forhåndsvisning av side"
 
-#: ../gedit/gedit-print-preview.c:968
+#: ../gedit/gedit-print-preview.c:948
 msgid "The preview of a page in the document to be printed"
 msgstr "Forhåndsvisning av en side i dokumentet som skal skrives ut"
 
@@ -2485,19 +2485,19 @@ msgstr "Et pango skriftnavn. For eksempel «Sans 12» eller «Monospace Bold 14
 msgid "Could not execute command: %s"
 msgstr "Kunne ikke kjøre kommando: %s"
 
-#: ../plugins/externaltools/tools/functions.py:159
+#: ../plugins/externaltools/tools/functions.py:157
 msgid "You must be inside a word to run this command"
 msgstr "Du må være inne i et ord for å kjøre denne kommandoen"
 
-#: ../plugins/externaltools/tools/functions.py:265
+#: ../plugins/externaltools/tools/functions.py:263
 msgid "Running tool:"
 msgstr "Kjører verktøy:"
 
-#: ../plugins/externaltools/tools/functions.py:294
+#: ../plugins/externaltools/tools/functions.py:292
 msgid "Done."
 msgstr "Ferdig."
 
-#: ../plugins/externaltools/tools/functions.py:296
+#: ../plugins/externaltools/tools/functions.py:294
 msgid "Exited"
 msgstr "Avsluttet"
 
