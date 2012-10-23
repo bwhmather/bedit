@@ -34,8 +34,8 @@ msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-09-16 17:10+0000\n"
-"PO-Revision-Date: 2012-09-29 02:19+0200\n"
+"POT-Creation-Date: 2012-10-16 21:38+0000\n"
+"PO-Revision-Date: 2012-10-23 15:25+0200\n"
 "Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: Greek\n"
 "Language: el\n"
@@ -62,8 +62,9 @@ msgid "gedit Text Editor"
 msgstr "Επεξεργαστής κειμένου gedit"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text"
-msgstr "Κείμενο"
+#| msgid "Text"
+msgid "Text;"
+msgstr "Text;Κείμενο;"
 
 #: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
@@ -109,8 +110,8 @@ msgstr "Στυλ σχήματος"
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr ""
-"Το ID ενός Σχήματος στυλ GtkSourceView που χρησιμοποιείται για χρωματίζει το "
-"κείμενο."
+"Το ID ενός σχήματος στυλ GtkSourceView που χρησιμοποιείται για να χρωματίζει "
+"το κείμενο."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
 msgid "Create Backup Copies"
@@ -123,7 +124,7 @@ msgid ""
 msgstr ""
 "Αν η εφαρμογή θα δημιουργεί αντίγραφα ασφαλείας για τα αρχεία που "
 "αποθηκεύει. Μπορείτε να ορίσετε την επέκταση των αρχείων ασφαλείας στην "
-"επιλογή \"Επέκταση Αρχείου Ασφαλείας\"."
+"επιλογή \"Επέκταση αρχείου ασφαλείας\"."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
 msgid "Autosave"
@@ -385,7 +386,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
 msgid "Print Syntax Highlighting"
-msgstr "Εκτύπωση επισήμανσης σύνταξης"
+msgstr "Εκτύπωση της επισήμανσης σύνταξης"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
 msgid "Whether gedit should print syntax highlighting when printing documents."
@@ -452,7 +453,7 @@ msgid ""
 msgstr ""
 "Καθορίζει τη χρήσης της γραμματοσειράς στις κεφαλίδες σελίδας κατά την "
 "εκτύπωση. Αυτό πραγματοποιείται μόνο αν είναι ενεργοποιημένη η \"Εκτύπωση "
-"Κεφαλίδας\"."
+"κεφαλίδας\"."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
 msgid "Line Number Font for Printing"
@@ -465,7 +466,7 @@ msgid ""
 msgstr ""
 "Καθορίζει τον τρόπο χρήσης της γραμματοσειράς στους αριθμούς γραμμών κατά "
 "την εκτύπωση. Αυτό πραγματοποιείται μόνο αν δεν είναι μηδενική η τιμή στην "
-"\"Εκτύπωση Αριθμών Γραμμών\"."
+"\"Εκτύπωση αριθμών γραμμών\"."
 
 #. Translators: This is the sorted list of encodings used by gedit
 #. for automatic detection of the file encoding. You may want to customize it adding
@@ -755,12 +756,12 @@ msgstr ""
 "Εκτελέστε '%s --help' για να δείτε μια πλήρη λίστα των διαθέσιμων επιλογών "
 "γραμμής εντολών.\n"
 
-#: ../gedit/gedit-commands-file.c:272
+#: ../gedit/gedit-commands-file.c:266
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "Φόρτωση αρχείου '%s'…"
 
-#: ../gedit/gedit-commands-file.c:281
+#: ../gedit/gedit-commands-file.c:275
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -768,29 +769,29 @@ msgstr[0] "Φόρτωση %d αρχείου…"
 msgstr[1] "Φόρτωση %d αρχείων…"
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:446
+#: ../gedit/gedit-commands-file.c:440
 msgid "Open Files"
 msgstr "Άνοιγμα αρχείων"
 
-#: ../gedit/gedit-commands-file.c:557
+#: ../gedit/gedit-commands-file.c:551
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Το αρχείο \"%s\" είναι μόνο για ανάγνωση."
 
-#: ../gedit/gedit-commands-file.c:562
+#: ../gedit/gedit-commands-file.c:556
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr ""
 "Θέλετε να γίνει προσπάθεια να το αντικαταστήσετε με αυτό που αποθηκεύετε;"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:564 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_Αντικατάσταση"
 
-#: ../gedit/gedit-commands-file.c:612
+#: ../gedit/gedit-commands-file.c:606
 msgid "Save the file using compression?"
 msgstr "Αποθήκευση του αρχείου με την χρήση συμπίεσης;"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:607
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -799,15 +800,15 @@ msgstr ""
 "Το αρχείο \"%s\" είχε αποθηκευτεί ως απλό κείμενο και τώρα θα αποθηκευτεί με "
 "την χρήση συμπίεσης."
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:609
 msgid "_Save Using Compression"
 msgstr "_Αποθήκευση με χρήση συμπίεσης"
 
-#: ../gedit/gedit-commands-file.c:619
+#: ../gedit/gedit-commands-file.c:613
 msgid "Save the file as plain text?"
 msgstr "Αποθήκευση αρχείου ως απλό κείμενο;"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:614
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -816,30 +817,30 @@ msgstr ""
 "Το αρχείο \"%s\" είχε αποθηκευθεί με την χρήση συμπίεσης και τώρα θα "
 "αποθηκευτεί ως απλό κείμενο."
 
-#: ../gedit/gedit-commands-file.c:622
+#: ../gedit/gedit-commands-file.c:616
 msgid "_Save As Plain Text"
 msgstr "_Αποθήκευση ως απλό κείμενο"
 
-#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
+#: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:953
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Αποθήκευση αρχείου '%s'…"
 
-#: ../gedit/gedit-commands-file.c:846
+#: ../gedit/gedit-commands-file.c:840
 msgid "Save As"
 msgstr "Αποθήκευση ως"
 
-#: ../gedit/gedit-commands-file.c:1173
+#: ../gedit/gedit-commands-file.c:1167
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Γίνεται επαναφορά του εγγράφου '%s'…"
 
-#: ../gedit/gedit-commands-file.c:1218
+#: ../gedit/gedit-commands-file.c:1212
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Επαναφορά μη αποθηκευμένων αλλαγών στο έγγραφο '%s';"
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1221
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -853,13 +854,13 @@ msgstr[1] ""
 "Οι αλλαγές που έγιναν στο έγγραφο τα τελευταία %ld δευτερόλεπτα θα χαθούν "
 "οριστικά."
 
-#: ../gedit/gedit-commands-file.c:1236
+#: ../gedit/gedit-commands-file.c:1230
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Οι αλλαγές που έγιναν στο έγγραφο το τελευταίο λεπτό θα χαθούν οριστικά."
 
-#: ../gedit/gedit-commands-file.c:1242
+#: ../gedit/gedit-commands-file.c:1236
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -874,7 +875,7 @@ msgstr[1] ""
 "Οι αλλαγές που έγιναν στο έγγραφο το τελευταίο λεπτό και %ld δευτερόλεπτα θα "
 "χαθούν οριστικά."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1246
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -886,12 +887,12 @@ msgstr[0] ""
 msgstr[1] ""
 "Οι αλλαγές που έγιναν στο έγγραφο τα τελευταία %ld λεπτά θα χαθούν οριστικά."
 
-#: ../gedit/gedit-commands-file.c:1267
+#: ../gedit/gedit-commands-file.c:1261
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Οι αλλαγές που έγιναν στο έγγραφο την τελευταία ώρα θα χαθούν οριστικά."
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1267
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -906,7 +907,7 @@ msgstr[1] ""
 "Οι αλλαγές που έγιναν στο έγγραφο την τελευταία ώρα και %d λεπτά θα χαθούν "
 "οριστικά."
 
-#: ../gedit/gedit-commands-file.c:1288
+#: ../gedit/gedit-commands-file.c:1282
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -917,7 +918,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Οι αλλαγές που έγιναν στο έγγραφο τις τελευταίες %d ώρες θα χαθούν οριστικά."
 
-#: ../gedit/gedit-commands-file.c:1314
+#: ../gedit/gedit-commands-file.c:1308
 msgid "_Revert"
 msgstr "Επανα_φορά"
 
@@ -1297,7 +1298,7 @@ msgid ""
 "this file you could corrupt this document."
 msgstr ""
 "Το αρχείο που ανοίξατε περιέχει μερικούς μη έγκυρους χαρακτήρες. Αν "
-"συνεχίσετε να επεξεργάζεστε αυτό το αρχείο μπορεί να αχρηστέψετε το έγγραφο."
+"συνεχίσετε να επεξεργάζεστε αυτό το αρχείο μπορεί να αχρηστεύσετε το έγγραφο."
 
 #: ../gedit/gedit-io-error-info-bar.c:632
 msgid "You can also choose another character encoding and try again."
@@ -1572,7 +1573,7 @@ msgstr ""
 #: ../gedit/gedit-preferences-dialog.c:860
 msgid "The selected color scheme cannot be installed."
 msgstr ""
-"Tο επιλεγμένο σχήμα χρώματος δεν μπορεί να μετακινηθεί στα απορρίμματα."
+"Το επιλεγμένο σχήμα χρώματος δεν μπορεί να μετακινηθεί στα απορρίμματα."
 
 #: ../gedit/gedit-preferences-dialog.c:887
 msgid "Add Scheme"
@@ -1649,7 +1650,7 @@ msgstr "Πλάτος _στηλοθέτη:"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:13
 msgid "Insert _spaces instead of tabs"
-msgstr "Εισαγωγή _διαστημάτων αντί για στηλοθέτες"
+msgstr "Εισαγωγή _διαστημάτων αντί στηλοθετών"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:14
 msgid "_Enable automatic indentation"
@@ -1711,7 +1712,7 @@ msgstr "Απεγκατάσταση σχήματος"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Font & Colors"
-msgstr "Γραμματοσειρές & Χρώματα"
+msgstr "Γραμματοσειρές & χρώματα"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Plugins"
@@ -1733,7 +1734,7 @@ msgstr "Προετοιμασία..."
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-print-preferences.ui.h:1
 msgid "Syntax Highlighting"
-msgstr "Επισήμανσης σύνταξης"
+msgstr "Επισήμανση σύνταξης"
 
 #: ../gedit/gedit-print-preferences.ui.h:2
 msgid "Print synta_x highlighting"
@@ -1785,69 +1786,69 @@ msgstr "Κεφα_λίδες και υποσέλιδα:"
 msgid "_Restore Default Fonts"
 msgstr "Επαναφο_ρά προεπιλεγμένων γραμματοσειρών"
 
-#: ../gedit/gedit-print-preview.c:582
+#: ../gedit/gedit-print-preview.c:562
 msgid "Show the previous page"
 msgstr "Προβολή της προηγούμενης σελίδας"
 
-#: ../gedit/gedit-print-preview.c:594
+#: ../gedit/gedit-print-preview.c:574
 msgid "Show the next page"
 msgstr "Προβολή της επόμενης σελίδας"
 
-#: ../gedit/gedit-print-preview.c:610
+#: ../gedit/gedit-print-preview.c:590
 msgid "Current page (Alt+P)"
 msgstr "Τρέχουσα σελίδα (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:633
+#: ../gedit/gedit-print-preview.c:613
 msgid "of"
 msgstr "από"
 
-#: ../gedit/gedit-print-preview.c:641
+#: ../gedit/gedit-print-preview.c:621
 msgid "Page total"
 msgstr "Σύνολο σελίδων"
 
-#: ../gedit/gedit-print-preview.c:642
+#: ../gedit/gedit-print-preview.c:622
 msgid "The total number of pages in the document"
 msgstr "Ο συνολικός αριθμός σελίδων στο έγγραφο"
 
-#: ../gedit/gedit-print-preview.c:659
+#: ../gedit/gedit-print-preview.c:639
 msgid "Show multiple pages"
 msgstr "Προβολή πολλαπλών σελίδων"
 
-#: ../gedit/gedit-print-preview.c:672
+#: ../gedit/gedit-print-preview.c:652
 msgid "Zoom 1:1"
 msgstr "Εστίαση 1:1"
 
-#: ../gedit/gedit-print-preview.c:681
+#: ../gedit/gedit-print-preview.c:661
 msgid "Zoom to fit the whole page"
 msgstr "Προσαρμογή εστίασης σε όλη τη σελίδα"
 
-#: ../gedit/gedit-print-preview.c:690
+#: ../gedit/gedit-print-preview.c:670
 msgid "Zoom the page in"
 msgstr "Εστίαση στη σελίδα"
 
-#: ../gedit/gedit-print-preview.c:699
+#: ../gedit/gedit-print-preview.c:679
 msgid "Zoom the page out"
 msgstr "Άρση εστίασης στη σελίδα"
 
-#: ../gedit/gedit-print-preview.c:711
+#: ../gedit/gedit-print-preview.c:691
 msgid "_Close Preview"
 msgstr "_Κλείσιμο προεπισκόπησης"
 
-#: ../gedit/gedit-print-preview.c:714
+#: ../gedit/gedit-print-preview.c:694
 msgid "Close print preview"
 msgstr "Κλείσιμο προεπισκόπησης εκτύπωσης"
 
-#: ../gedit/gedit-print-preview.c:783
+#: ../gedit/gedit-print-preview.c:763
 #, c-format
 msgid "Page %d of %d"
 msgstr "Σελίδα %d από %d"
 
-#: ../gedit/gedit-print-preview.c:967
+#: ../gedit/gedit-print-preview.c:947
 msgid "Page Preview"
 msgstr "Προεπισκόπηση σελίδας"
 
-#: ../gedit/gedit-print-preview.c:968
+#: ../gedit/gedit-print-preview.c:948
 msgid "The preview of a page in the document to be printed"
 msgstr "Η προεπισκόπηση της σελίδας του εγγράφου που θα εκτυπωθεί"
 
@@ -2323,9 +2324,9 @@ msgstr "Χρήση %s λειτουργίας επισήμανσης"
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
 #: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:450
-#: ../plugins/externaltools/tools/manager.py:561
-#: ../plugins/externaltools/tools/manager.py:882
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:566
+#: ../plugins/externaltools/tools/manager.py:885
 msgid "Plain Text"
 msgstr "Απλό κείμενο"
 
@@ -2560,7 +2561,7 @@ msgstr "Απομάκρυνση κενών που περισσεύουν"
 
 #: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:2
 msgid "Remove useless trailing spaces in your file"
-msgstr "Απομάκρυνση άχρηστων trailing spaces από το αρχείο σας"
+msgstr "Απομάκρυνση άχρηστων κενών από το αρχείο σας"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:1
 msgid "Run command"
@@ -2627,27 +2628,27 @@ msgstr "Τερματίστηκε"
 msgid "All languages"
 msgstr "Όλες οι γλώσσες"
 
-#: ../plugins/externaltools/tools/manager.py:550
-#: ../plugins/externaltools/tools/manager.py:554
-#: ../plugins/externaltools/tools/manager.py:880
+#: ../plugins/externaltools/tools/manager.py:555
+#: ../plugins/externaltools/tools/manager.py:559
+#: ../plugins/externaltools/tools/manager.py:883
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Όλες οι γλώσσες"
 
-#: ../plugins/externaltools/tools/manager.py:667
+#: ../plugins/externaltools/tools/manager.py:672
 msgid "New tool"
 msgstr "Νέο εργαλείο"
 
-#: ../plugins/externaltools/tools/manager.py:798
+#: ../plugins/externaltools/tools/manager.py:803
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Αυτή η συντόμευση είναι ήδη αντιστοιχισμένη με %s"
 
-#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/manager.py:847
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Πληκτρολογήστε μια νέα συντόμευση, ή πατήστε Backspace για εκκαθάριση"
 
-#: ../plugins/externaltools/tools/manager.py:844
+#: ../plugins/externaltools/tools/manager.py:849
 msgid "Type a new accelerator"
 msgstr "Πληκτρολογήστε μια νέα συντόμευση"
 
@@ -2702,7 +2703,7 @@ msgstr "Τρέχουσα λέξη"
 
 #: ../plugins/externaltools/tools/tools.ui.h:12
 msgid "Display in bottom pane"
-msgstr "Προβολή στο κάτω ταμπλώ"
+msgstr "Προβολή στο κάτω ταμπλό"
 
 #: ../plugins/externaltools/tools/tools.ui.h:13
 msgid "Create new document"
@@ -2771,7 +2772,7 @@ msgstr "Απο_τέλεσμα:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "_Input:"
-msgstr "_Input:"
+msgstr "Ε_ισαγωγή:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:32
 msgid "_Save:"
@@ -2781,23 +2782,23 @@ msgstr "Αποθήκευ_ση:"
 msgid "Shortcut _Key:"
 msgstr "Πλήκτρο σ_υντόμευσης:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:179
+#: ../plugins/externaltools/tools/windowactivatable.py:173
 msgid "Manage _External Tools..."
 msgstr "Διαχείριση _εξωτερικών εργαλείων..."
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
+#: ../plugins/externaltools/tools/windowactivatable.py:174
 msgid "Opens the External Tools Manager"
 msgstr "Ανοίγει την διαχείριση εξωτερικών εργαλείων"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:183
+#: ../plugins/externaltools/tools/windowactivatable.py:177
 msgid "External _Tools"
 msgstr "Εξωτερικά _εργαλεία"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:184
+#: ../plugins/externaltools/tools/windowactivatable.py:178
 msgid "External tools"
 msgstr "Εξωτερικά εργαλεία"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:218
+#: ../plugins/externaltools/tools/windowactivatable.py:212
 msgid "Shell Output"
 msgstr "Αποτέλεσμα κελύφους"
 
@@ -2810,7 +2811,7 @@ msgstr "Μπάρα περιήγησης αρχείων"
 msgid "Easy file access from the side panel"
 msgstr "Εύκολη πρόσβαση σε αρχείο από την πλευρική μπάρα"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:239
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
 msgid "File System"
 msgstr "Σύστημα αρχείων"
 
@@ -3290,7 +3291,7 @@ msgstr "Προσθήκη νέου αποσπάσματος..."
 
 #: ../plugins/snippets/snippets/manager.py:116
 msgid "Global"
-msgstr "Global"
+msgstr "Καθολικό"
 
 #: ../plugins/snippets/snippets/manager.py:400
 msgid "Revert selected snippet"
