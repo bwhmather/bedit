@@ -21,10 +21,10 @@ import gettext
 
 from gi.repository import Gtk, Gdk, Gedit, GObject
 
-from document import Document
-from library import Library
-from shareddata import SharedData
-from signals import Signals
+from .document import Document
+from .library import Library
+from .shareddata import SharedData
+from .signals import Signals
 
 class Message(Gedit.Message):
         view = GObject.property(type=Gedit.View)

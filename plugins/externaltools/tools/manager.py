@@ -19,8 +19,8 @@
 __all__ = ('Manager', )
 
 import os.path
-from library import *
-from functions import *
+from .library import *
+from .functions import *
 import hashlib
 from xml.sax import saxutils
 from gi.repository import GObject, Gtk, GtkSource, Gedit
@@ -460,7 +460,12 @@ class Manager(GObject.Object):
             n1 = t1.name
             n2 = t2.name
 
-        return cmp(n1.lower(), n2.lower())
+        if n1.lower() < n2.lower():
+            return -1
+        elif n1.lower() > n2.lower():
+            return 1
+        else:
+            return 0
 
     def __init_tools_view(self):
         # Tools column
@@ -510,7 +515,7 @@ class Manager(GObject.Object):
             return None, None
 
     def compute_hash(self, string):
-        return hashlib.md5(string).hexdigest()
+        return hashlib.md5(string.encode('utf-8')).hexdigest()
 
     def save_current_tool(self):
         if self.current_node is None:
@@ -584,7 +589,7 @@ class Manager(GObject.Object):
 
         self.script_hash = self.compute_hash(script)
 
-        contenttype, uncertain = Gio.content_type_guess(None, script)
+        contenttype, uncertain = Gio.content_type_guess(None, script.encode('utf-8'))
         lmanager = GtkSource.LanguageManager.get_default()
         language = lmanager.guess_language(None, contenttype)
 

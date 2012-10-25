@@ -18,7 +18,7 @@
 import os
 import re
 import sys
-from substitutionparser import SubstitutionParser
+from .substitutionparser import SubstitutionParser
 
 class Token:
         def __init__(self, klass, data):

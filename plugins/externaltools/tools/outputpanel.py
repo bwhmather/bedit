@@ -21,11 +21,11 @@ __all__ = ('OutputPanel', 'UniqueById')
 
 import os
 from weakref import WeakKeyDictionary
-from capture import *
+from .capture import *
 import re
-import linkparsing
-import filelookup
-from gi.repository import GObject, Gio, Gdk, Gtk, Pango, Gedit
+from . import linkparsing
+from . import filelookup
+from gi.repository import GLib, Gio, Gdk, Gtk, Pango, Gedit
 
 class UniqueById:
     __shared_state = WeakKeyDictionary()
@@ -168,7 +168,7 @@ class OutputPanel(UniqueById):
             buffer.apply_tag(tag, start_iter, end_iter)
 
         buffer.delete_mark(insert)
-        GObject.idle_add(self.scroll_to_end)
+        GLib.idle_add(self.scroll_to_end)
 
     def show(self):
         panel = self.window.get_bottom_panel()
@@ -233,6 +233,6 @@ class OutputPanel(UniqueById):
 
         if gfile:
             Gedit.commands_load_location(self.window, gfile, None, link.line_nr, link.col_nr)
-            GObject.idle_add(self.idle_grab_focus)
+            GLib.idle_add(self.idle_grab_focus)
 
 # ex:ts=4:et:

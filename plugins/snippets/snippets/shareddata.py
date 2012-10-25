@@ -15,14 +15,12 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from singleton import Singleton
+from .singleton import Singleton
 import os
 
 from gi.repository import Gtk
 
-class SharedData(object):
-    __metaclass__ = Singleton
-
+class SharedData(object, metaclass=Singleton):
     def __init__(self):
         self.dlg = None
         self.dlg_default_size = None

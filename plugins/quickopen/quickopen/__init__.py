@@ -17,11 +17,11 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330,
 #  Boston, MA 02111-1307, USA.
 
-from popup import Popup
+from .popup import Popup
 import os
 from gi.repository import GObject, Gio, Gtk, Gedit
-from virtualdirs import RecentDocumentsDirectory
-from virtualdirs import CurrentDocumentsDirectory
+from .virtualdirs import RecentDocumentsDirectory
+from .virtualdirs import CurrentDocumentsDirectory
 
 ui_str = """<ui>
   <menubar name="MenuBar">
@@ -133,7 +133,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
 
         paths = []
 
-        for line in file(filename, 'r').xreadlines():
+        for line in open(filename, 'r'):
             uri = line.strip().split(" ")[0]
             f = Gio.file_new_for_uri(uri)
 
@@ -160,7 +160,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         desktopdir = None
 
         if os.path.isfile(config):
-            for line in file(config, 'r').xreadlines():
+            for line in open(config, 'r'):
                 line = line.strip()
 
                 if line.startswith('XDG_DESKTOP_DIR'):

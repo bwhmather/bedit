@@ -18,9 +18,9 @@
 import os
 from gi.repository import Gio
 
-from placeholder import *
-from parser import Parser, Token
-from helper import *
+from .placeholder import *
+from .parser import Parser, Token
+from .helper import *
 
 class EvalUtilities:
         def __init__(self, view=None):
@@ -113,9 +113,9 @@ class Snippet:
 
                 if accel:
                         keyval, mod = Gtk.accelerator_parse(accel)
-                        accel = unicode(Gtk.accelerator_get_label(keyval, mod), 'utf-8')
+                        accel = Gtk.accelerator_get_label(keyval, mod)
 
-                return accel or u''
+                return accel or ''
 
         def display(self):
                 nm = markup_escape(self['description'])
@@ -133,7 +133,7 @@ class Snippet:
                 if not detail:
                         return nm
                 else:
-                        return nm + ' (<b>' + markup_escape(unicode.join(u', ', detail)) + \
+                        return nm + ' (<b>' + markup_escape(', '.join(detail)) + \
                                         '</b>)'
 
         def _add_placeholder(self, placeholder):
@@ -150,7 +150,7 @@ class Snippet:
 
         def _insert_text(self, text):
                 # Insert text keeping indentation in mind
-                indented = unicode.join(u'\n' + self._indent, spaces_instead_of_tabs(self._view, text).split('\n'))
+                indented = str.join('\n' + self._indent, spaces_instead_of_tabs(self._view, text).split('\n'))
                 self._view.get_buffer().insert(self._insert_iter(), indented)
 
         def _insert_iter(self):
@@ -160,7 +160,7 @@ class Snippet:
                 if data in self.environ['utf8']:
                         val = self.environ['utf8'][data]
                 else:
-                        val = u''
+                        val = ''
 
                 # Get all the current indentation
                 all_indent = compute_indentation(self._view, self._insert_iter())
@@ -169,7 +169,7 @@ class Snippet:
                 indent = all_indent[len(self._indent):]
 
                 # Keep indentation
-                return unicode.join(u'\n' + indent, val.split('\n'))
+                return str.join('\n' + indent, val.split('\n'))
 
         def _create_placeholder(self, data):
                 tabstop = data['tabstop']
@@ -247,7 +247,7 @@ class Snippet:
                                 sys.stderr.write('Token class not supported: %s (%s)\n' % token.klass)
                                 continue
 
-                        if isinstance(val, basestring):
+                        if isinstance(val, str):
                                 # Insert text
                                 self._insert_text(val)
                         else:
@@ -321,8 +321,7 @@ class Snippet:
                 # So now all of the snippet is in the buffer, we have all our
                 # placeholders right here, what's next, put all marks in the
                 # plugin_data.marks
-                k = self.placeholders.keys()
-                k.sort(reverse=True)
+                k = sorted(self.placeholders.keys(), reverse=True)
 
                 plugin_data.placeholders.insert(last_index, self.placeholders[0])
                 last_iter = self.placeholders[0].end_iter()

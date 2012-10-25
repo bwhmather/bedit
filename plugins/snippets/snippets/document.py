@@ -21,13 +21,13 @@ import re
 import cairo
 from gi.repository import Gtk, Gdk, Gio, GLib, GtkSource, Gedit
 
-from library import Library
-from snippet import Snippet
-from placeholder import *
-import completion
-from signals import Signals
-from shareddata import SharedData
-import helper
+from .library import Library
+from .snippet import Snippet
+from .placeholder import *
+from . import completion
+from .signals import Signals
+from .shareddata import SharedData
+from . import helper
 
 class DynamicSnippet(dict):
         def __init__(self, text):
@@ -327,37 +327,37 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                 bounds = buf.get_selection_bounds()
 
                 if bounds:
-                        u8 = unicode(buf.get_text(bounds[0], bounds[1], False), 'utf-8')
+                        u8 = buf.get_text(bounds[0], bounds[1], False)
 
                         return {'utf8': u8, 'noenc': self.string_in_native_doc_encoding(buf, u8)}
                 else:
-                        return u''
+                        return ''
 
         def env_get_current_word(self, buf):
                 start, end = buffer_word_boundary(buf)
                 enc = buf.get_encoding()
 
-                u8 = unicode(buf.get_text(start, end, False), 'utf-8')
+                u8 = buf.get_text(start, end, False)
 
                 return {'utf8': u8, 'noenc': self.string_in_native_doc_encoding(buf, u8)}
 
         def env_get_current_line(self, buf):
                 start, end = buffer_line_boundary(buf)
 
-                u8 = unicode(buf.get_text(start, end, False), 'utf-8')
+                u8 = buf.get_text(start, end, False)
 
                 return {'utf8': u8, 'noenc': self.string_in_native_doc_encoding(buf, u8)}
 
         def env_get_current_line_number(self, buf):
                 start, end = buffer_line_boundary(buf)
 
-                return unicode(str(start.get_line() + 1), 'utf-8')
+                return str(start.get_line() + 1)
 
         def location_uri_for_env(self, location):
                 if not location:
-                        return {'utf8': u'', 'noenc': u''}
+                        return {'utf8': '', 'noenc': ''}
 
-                u8 = unicode(location.get_parse_name(), 'utf-8')
+                u8 = location.get_parse_name()
 
                 if location.has_uri_scheme('file'):
                         u8 = "file://" + u8
@@ -372,23 +372,23 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                         except:
                                 display_name = ''
 
-                        return {'utf8': unicode(display_name, 'utf-8'),
+                        return {'utf8': display_name,
                                 'noenc': location.get_basename()}
                 else:
-                        return u''
+                        return ''
 
         def location_scheme_for_env(self, location):
                 if location:
-                        return unicode(location.get_uri_scheme(), 'utf-8')
+                        return location.get_uri_scheme()
                 else:
-                        return u''
+                        return ''
 
         def location_path_for_env(self, location):
                 if location and location.has_uri_scheme('file'):
-                        return {'utf8': unicode(location.get_parse_name(), 'utf-8'),
+                        return {'utf8': location.get_parse_name(),
                                 'noenc': location.get_path()}
                 else:
-                        return u''
+                        return ''
 
         def location_dir_for_env(self, location):
                 if location:
@@ -398,7 +398,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                                 return {'utf8': parent.get_parse_name(),
                                         'noenc': parent.get_path()}
 
-                return u''
+                return ''
 
         def env_add_for_location(self, environ, location, prefix):
                 parts = {'URI': self.location_uri_for_env,
@@ -424,9 +424,9 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                 typ = buf.get_mime_type()
 
                 if typ:
-                        return unicode(typ, 'utf-8')
+                        return typ
                 else:
-                        return u''
+                        return ''
 
         def env_get_documents_uri(self, buf):
                 toplevel = self.view.get_toplevel()
@@ -444,7 +444,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                                         documents_uri['utf8'].append(r)
                                         documents_uri['noenc'].append(str(r))
 
-                return {'utf8': u' '.join(documents_uri['utf8']),
+                return {'utf8': ' '.join(documents_uri['utf8']),
                         'noenc': ' '.join(documents_uri['noenc'])}
 
         def env_get_documents_path(self, buf):
@@ -463,7 +463,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                                         documents_path['utf8'].append(r)
                                         documents_path['noenc'].append(str(r))
 
-                return {'utf8': u' '.join(documents_path['utf8']),
+                return {'utf8': ' '.join(documents_path['utf8']),
                         'noenc': ' '.join(documents_path['noenc'])}
 
         def get_environment(self):
@@ -474,15 +474,15 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                         # Get the original environment, as utf-8
                         v = os.environ[k]
                         environ['noenc'][k] = v
-                        environ['utf8'][k] = unicode(os.environ[k], 'utf-8')
+                        environ['utf8'][k] = os.environ[k].encode('utf-8')
 
-                variables = {u'GEDIT_SELECTED_TEXT': self.env_get_selected_text,
-                             u'GEDIT_CURRENT_WORD': self.env_get_current_word,
-                             u'GEDIT_CURRENT_LINE': self.env_get_current_line,
-                             u'GEDIT_CURRENT_LINE_NUMBER': self.env_get_current_line_number,
-                             u'GEDIT_CURRENT_DOCUMENT_TYPE': self.env_get_document_type,
-                             u'GEDIT_DOCUMENTS_URI': self.env_get_documents_uri,
-                             u'GEDIT_DOCUMENTS_PATH': self.env_get_documents_path}
+                variables = {'GEDIT_SELECTED_TEXT': self.env_get_selected_text,
+                             'GEDIT_CURRENT_WORD': self.env_get_current_word,
+                             'GEDIT_CURRENT_LINE': self.env_get_current_line,
+                             'GEDIT_CURRENT_LINE_NUMBER': self.env_get_current_line_number,
+                             'GEDIT_CURRENT_DOCUMENT_TYPE': self.env_get_document_type,
+                             'GEDIT_DOCUMENTS_URI': self.env_get_documents_uri,
+                             'GEDIT_DOCUMENTS_PATH': self.env_get_documents_path}
 
                 for var in variables:
                         v = variables[var](buf)
@@ -570,7 +570,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                 self.active_snippets.append(sn)
 
                 # Put cursor at first tab placeholder
-                keys = filter(lambda x: x > 0, sn.placeholders.keys())
+                keys = list(filter(lambda x: x > 0, sn.placeholders.keys()))
 
                 if len(keys) == 0:
                         if 0 in sn.placeholders:
@@ -625,7 +625,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                         first = False
 
                 if not start.equal(end):
-                        word = unicode(buf.get_text(start, end, False), 'utf-8')
+                        word = buf.get_text(start, end, False)
 
                         if word and word != '':
                                 return (word, start, end)
@@ -859,7 +859,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                 # Remove file scheme
                 gfile = Gio.file_new_for_uri(uri)
 
-                environ = {'utf8': {'GEDIT_DROP_DOCUMENT_TYPE': unicode(mime, 'utf-8')},
+                environ = {'utf8': {'GEDIT_DROP_DOCUMENT_TYPE': mime.encode('utf-8')},
                            'noenc': {'GEDIT_DROP_DOCUMENT_TYPE': mime}}
 
                 self.env_add_for_location(environ, gfile, 'GEDIT_DROP_DOCUMENT')
@@ -870,7 +870,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                 relpath = location.get_relative_path(gfile)
 
                 # CHECK: what is the encoding of relpath?
-                environ['utf8']['GEDIT_DROP_DOCUMENT_RELATIVE_PATH'] = unicode(relpath, 'utf-8')
+                environ['utf8']['GEDIT_DROP_DOCUMENT_RELATIVE_PATH'] = relpath.encode('utf-8')
                 environ['noenc']['GEDIT_DROP_DOCUMENT_RELATIVE_PATH'] = relpath
 
                 mark = buf.get_mark('gtk_drag_target')

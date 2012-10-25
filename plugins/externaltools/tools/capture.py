@@ -22,7 +22,7 @@ import os, sys, signal
 import locale
 import subprocess
 import fcntl
-from gi.repository import GObject
+from gi.repository import GLib, GObject
 
 class Capture(GObject.Object):
     CAPTURE_STDOUT = 0x01
@@ -87,7 +87,7 @@ class Capture(GObject.Object):
 
         try:
             self.pipe = subprocess.Popen(self.command, **popen_args)
-        except OSError, e:
+        except OSError as e:
             self.pipe = None
             self.emit('stderr-line', _('Could not execute command: %s') % (e, ))
             return
@@ -100,29 +100,33 @@ class Capture(GObject.Object):
             flags = fcntl.fcntl(self.pipe.stdout.fileno(), fcntl.F_GETFL) | os.O_NONBLOCK
             fcntl.fcntl(self.pipe.stdout.fileno(), fcntl.F_SETFL, flags)
 
-            GObject.io_add_watch(self.pipe.stdout,
-                                 GObject.IO_IN | GObject.IO_HUP | GObject.IO_ERR,
-                                 self.on_output)
+            channel = GLib.IOChannel.unix_new(self.pipe.stdout.fileno())
+            GLib.io_add_watch(channel,
+                              GLib.PRIORITY_DEFAULT,
+                              GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
+                              self.on_output)
 
         if self.flags & self.CAPTURE_STDERR:
             # Set non blocking
             flags = fcntl.fcntl(self.pipe.stderr.fileno(), fcntl.F_GETFL) | os.O_NONBLOCK
             fcntl.fcntl(self.pipe.stderr.fileno(), fcntl.F_SETFL, flags)
 
-            GObject.io_add_watch(self.pipe.stderr,
-                                 GObject.IO_IN | GObject.IO_HUP | GObject.IO_ERR,
-                                 self.on_output)
+            channel = GLib.IOChannel.unix_new(self.pipe.stderr.fileno())
+            GLib.io_add_watch(channel,
+                              GLib.PRIORITY_DEFAULT,
+                              GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
+                              self.on_output)
 
         # IO
         if self.input_text is not None:
             # Write async, in chunks of something
-            self.write_buffer = str(self.input_text)
+            self.write_buffer = self.input_text.encode('utf-8')
 
             if self.idle_write_chunk():
-                self.idle_write_id = GObject.idle_add(self.idle_write_chunk)
+                self.idle_write_id = GLib.idle_add(self.idle_write_chunk)
 
         # Wait for the process to complete
-        GObject.child_watch_add(self.pipe.pid, self.on_child_end)
+        GLib.child_watch_add(self.pipe.pid, self.on_child_end)
 
     def idle_write_chunk(self):
         if not self.pipe:
@@ -136,7 +140,7 @@ class Capture(GObject.Object):
             self.pipe.stdin.write(self.write_buffer[:m])
             
             if m == l:
-                self.write_buffer = ''
+                self.write_buffer = b''
                 self.pipe.stdin.close()
                 
                 self.idle_write_id = 0
@@ -166,11 +170,9 @@ class Capture(GObject.Object):
 
             if len(line) > 0:
                 try:
-                    line = unicode(line, 'utf-8')
+                    line = line
                 except:
-                    line = unicode(line,
-                                   locale.getdefaultlocale()[1],
-                                   'replace')
+                    line = line.encode(locale.getdefaultlocale()[1])
 
                 self.read_buffer += line
                 lines = self.read_buffer.splitlines(True)
@@ -204,7 +206,7 @@ class Capture(GObject.Object):
     def stop(self, error_code = -1):
         if self.pipe is not None:
             if self.idle_write_id:
-                GObject.source_remove(self.idle_write_id)
+                GLib.source_remove(self.idle_write_id)
                 self.idle_write_id = 0
 
             if not self.tried_killing:
@@ -213,9 +215,13 @@ class Capture(GObject.Object):
             else:
                 os.kill(self.pipe.pid, signal.SIGKILL)
 
+    def emit_end_execute(self, error_code):
+        self.emit('end-execute', error_code)
+        return False
+
     def on_child_end(self, pid, error_code):
         # In an idle, so it is emitted after all the std*-line signals
         # have been intercepted
-        GObject.idle_add(self.emit, 'end-execute', error_code)
+        GLib.idle_add(self.emit_end_execute, error_code)
 
 # ex:ts=4:et:

@@ -22,8 +22,8 @@ import shutil
 from gi.repository import Gedit, GLib, GObject, Gtk
 import platform
 
-from library import Library
-from manager import Manager
+from .library import Library
+from .manager import Manager
 
 class AppActivatable(GObject.Object, Gedit.AppActivatable):
         __gtype_name__ = "GeditSnippetsAppActivatable"

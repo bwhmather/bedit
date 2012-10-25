@@ -17,9 +17,9 @@
 
 from gi.repository import GObject, Gtk, GtkSource, Gedit
 
-from library import Library
-from languagemanager import get_language_manager
-from snippet import Snippet
+from .library import Library
+from .languagemanager import get_language_manager
+from .snippet import Snippet
 
 class Proposal(GObject.Object, GtkSource.CompletionProposal):
         __gtype_name__ = "GeditSnippetsProposal"
@@ -83,7 +83,7 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
 
                 if start.backward_word_start():
                         self.mark_position(start)
-                        return unicode(start.get_text(it), 'utf-8')
+                        return start.get_text(it)
                 else:
                         return None
 

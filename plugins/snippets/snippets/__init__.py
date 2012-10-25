@@ -15,8 +15,8 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from appactivatable import AppActivatable
-from windowactivatable import WindowActivatable
-from document import Document
+from .appactivatable import AppActivatable
+from .windowactivatable import WindowActivatable
+from .document import Document
 
 # ex:ts=8:et:

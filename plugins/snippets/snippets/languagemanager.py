@@ -18,7 +18,7 @@
 from gi.repository import GtkSource
 import os
 
-from library import Library
+from .library import Library
 
 global manager
 manager = None

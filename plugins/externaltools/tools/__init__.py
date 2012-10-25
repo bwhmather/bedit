@@ -17,8 +17,8 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 from gi.repository import GObject, Gedit
-from windowactivatable import WindowActivatable
-from library import ToolLibrary
+from .windowactivatable import WindowActivatable
+from .library import ToolLibrary
 import os
 
 class AppActivatable(GObject.Object, Gedit.AppActivatable):

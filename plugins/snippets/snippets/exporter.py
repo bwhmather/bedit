@@ -20,9 +20,9 @@ import tempfile
 import sys
 import shutil
 
-from library import *
+from .library import *
 import xml.etree.ElementTree as et
-from helper import *
+from .helper import *
 
 class Exporter:
         def __init__(self, filename, snippets):

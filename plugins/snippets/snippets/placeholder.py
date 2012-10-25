@@ -25,8 +25,8 @@ import locale
 import subprocess
 from gi.repository import GObject
 
-from helper import *
-from substitutionparser import SubstitutionParser
+from .helper import *
+from .substitutionparser import SubstitutionParser
 
 # These are places in a view where the cursor can go and do things
 class Placeholder:
@@ -143,7 +143,7 @@ class Placeholder:
                         eiter = self.end_iter()
 
                         if biter and eiter:
-                                return unicode(self.buf.get_text(self.begin_iter(), self.end_iter(), False), 'utf-8')
+                                return self.buf.get_text(self.begin_iter(), self.end_iter(), False)
                         else:
                                 return ''
                 else:
@@ -422,7 +422,7 @@ class PlaceholderShell(PlaceholderExpand):
                 self.close_shell()
                 self.remove_timeout()
 
-                self.set_text(unicode.join(u'', self.shell_output).rstrip('\n'))
+                self.set_text(str.join('', self.shell_output).rstrip('\n'))
 
                 if self.default == None:
                         self.default = self.get_text()
@@ -437,10 +437,9 @@ class PlaceholderShell(PlaceholderExpand):
 
                         if len(line) > 0:
                                 try:
-                                        line = unicode(line, 'utf-8')
+                                        line = line
                                 except:
-                                        line = unicode(line, locale.getdefaultlocale()[1],
-                                                        'replace')
+                                        line = line.encode(locale.getdefaultlocale()[1])
 
                                 self.shell_output += line
                                 self.install_timeout()
@@ -539,7 +538,7 @@ class PlaceholderEval(PlaceholderExpand):
                 return hasattr(signal, 'SIGALRM')
 
         def timeout_cb(self, signum = 0, frame = 0):
-                raise TimeoutError, "Operation timed out (>2 seconds)"
+                raise TimeoutError("Operation timed out (>2 seconds)")
 
         def install_timeout(self):
                 if not self.timeout_supported():
@@ -578,7 +577,7 @@ class PlaceholderEval(PlaceholderExpand):
                         del self.namespace['process_snippet']
 
                 try:
-                        exec text in self.namespace
+                        exec(text, self.namespace)
                 except:
                         traceback.print_exc()
 
@@ -603,7 +602,7 @@ class PlaceholderEval(PlaceholderExpand):
                                 'time, execution aborted.') % self.command)
 
                                 return False
-                        except Exception, detail:
+                        except Exception as detail:
                                 self.remove_timeout()
 
                                 message_dialog(None, Gtk.MessageType.ERROR,
@@ -684,7 +683,7 @@ class PlaceholderRegex(PlaceholderExpand):
                 # Try to compile pattern
                 try:
                         regex = re.compile(pattern, self.modifiers)
-                except re.error, message:
+                except re.error as message:
                         sys.stderr.write('Could not compile regular expression: %s\n%s\n' % (pattern, message))
                         return False
 

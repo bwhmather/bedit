@@ -18,10 +18,11 @@
 #  Boston, MA 02111-1307, USA.
 
 import os
+import functools
 import fnmatch
 from gi.repository import Gio, GObject, Pango, Gtk, Gdk, Gedit
 import xml.sax.saxutils
-from virtualdirs import VirtualDirectory
+from .virtualdirs import VirtualDirectory
 
 class Popup(Gtk.Dialog):
     __gtype_name__ = "QuickOpenPopup"
@@ -172,7 +173,12 @@ class Popup(Gtk.Dialog):
     def _compare_entries(self, a, b, lpart):
         if lpart in a:
             if lpart in b:
-                return cmp(a.index(lpart), b.index(lpart))
+                if a.index(lpart) < b.index(lpart):
+                    return -1
+                elif a.index(lpart) > b.index(lpart):
+                    return 1
+                else:
+                    return 0
             else:
                 return -1
         elif lpart in b:
@@ -194,7 +200,7 @@ class Popup(Gtk.Dialog):
             entries = self._cache[d]
         else:
             entries = self._list_dir(d)
-            entries.sort(lambda x, y: cmp(x[1].lower(), y[1].lower()))
+            entries.sort(key=lambda x: x[1].lower())
             self._cache[d] = entries
 
         found = []
@@ -218,7 +224,7 @@ class Popup(Gtk.Dialog):
                      (not lpart or len(parts) == 1):
                     found.append(entry)
 
-        found.sort(lambda a, b: self._compare_entries(a[1].lower(), b[1].lower(), lpart))
+        found.sort(key=functools.cmp_to_key(lambda a, b: self._compare_entries(a[1].lower(), b[1].lower(), lpart)))
 
         if lpart == '..':
             newdirs.append(d.get_parent())

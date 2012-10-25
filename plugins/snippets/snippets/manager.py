@@ -21,13 +21,13 @@ import shutil
 
 from gi.repository import Gtk, Gio, Gdk, GtkSource, Gedit, GObject
 
-from snippet import Snippet
-from helper import *
-from library import *
-from importer import *
-from exporter import *
-from document import Document
-from languagemanager import get_language_manager
+from .snippet import Snippet
+from .helper import *
+from .library import *
+from .importer import *
+from .exporter import *
+from .document import Document
+from .languagemanager import get_language_manager
 
 class Manager(Gtk.Dialog, Gtk.Buildable):
         NAME_COLUMN = 0
@@ -515,7 +515,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                         self['entry_tab_trigger'].set_text(self.snippet['tag'])
                         self['entry_accelerator'].set_text( \
                                         self.snippet.accelerator_display())
-                        self['combo_drop_targets'].get_child().set_text(u', '.join(self.snippet['drop-targets']))
+                        self['combo_drop_targets'].get_child().set_text(', '.join(self.snippet['drop-targets']))
 
                         buf = self['source_view_snippet'].get_buffer()
                         buf.begin_not_undoable_action()
@@ -652,7 +652,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
 
         def entry_tab_trigger_update_valid(self):
                 entry = self['entry_tab_trigger']
-                text = unicode(entry.get_text(), 'utf-8')
+                text = entry.get_text()
 
                 if text and not Library().valid_tab_trigger(text):
                         img = self['image_tab_trigger']
@@ -675,7 +675,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                 if not self.snippet:
                         return
 
-                text = unicode(entry.get_text(), 'utf-8')
+                text = entry.get_text()
 
                 # save tag
                 self.snippet['tag'] = text
@@ -685,7 +685,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                 if not self.snippet:
                         return
 
-                text = unicode(entry.get_text(), 'utf-8')
+                text = entry.get_text()
 
                 # save drop targets
                 self.snippet['drop-targets'] = text
@@ -699,8 +699,8 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                         return
 
                 buf = source_view.get_buffer()
-                text = unicode(buf.get_text(buf.get_start_iter(), \
-                                buf.get_end_iter(), False), 'utf-8')
+                text = buf.get_text(buf.get_start_iter(), \
+                       buf.get_end_iter(), False)
 
                 self.snippet['text'] = text
                 self.snippet_changed()
@@ -1113,7 +1113,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                 if not uris:
                         return
 
-                text = unicode(entry.get_text(), 'utf-8')
+                text = entry.get_text()
 
                 if text:
                         mimes = [text]
@@ -1129,7 +1129,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                         if mime:
                                 mimes.append(mime)
 
-                entry.set_text(u', '.join(mimes))
+                entry.set_text(', '.join(mimes))
                 self.on_entry_drop_targets_focus_out(entry, None)
                 context.finish(True, False, timestamp)
 

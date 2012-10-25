@@ -24,7 +24,7 @@ import re
 from gi.repository import Gdk, Gtk
 
 import xml.etree.ElementTree as et
-from helper import *
+from .helper import *
 
 class NamespacedId:
         def __init__(self, namespace, id):
@@ -87,7 +87,7 @@ class SnippetData:
                                         keyval, mod = Gtk.accelerator_parse(child.text)
 
                                         if Gtk.accelerator_valid(keyval, mod):
-                                                child.text = unicode(Gtk.accelerator_name(keyval, mod), 'utf-8')
+                                                child.text = Gtk.accelerator_name(keyval, mod)
                                         else:
                                                 child.text = ''
 
@@ -138,7 +138,7 @@ class SnippetData:
                         return
 
                 if isinstance(value, list):
-                        value = u','.join(value)
+                        value = ','.join(value)
 
                 if not self.can_modify() and self.properties[prop] != value:
                         # ohoh, this is not can_modify, but it needs to be changed...
@@ -620,7 +620,7 @@ class SnippetsUserFile(SnippetsSystemFile):
 
                 try:
                         if not os.path.isdir(path):
-                                os.makedirs(path, 0755)
+                                os.makedirs(path, 0o755)
                 except OSError:
                         # TODO: this is bad...
                         sys.stderr.write("Error in making dirs\n")

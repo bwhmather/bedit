@@ -21,7 +21,7 @@ import tempfile
 import sys
 import shutil
 
-from library import *
+from .library import *
 
 class Importer:
         def __init__(self, filename):
@@ -55,7 +55,7 @@ class Importer:
                 # Make sure dir exists
                 try:
                     os.makedirs(destdir)
-                except OSError, e:
+                except OSError as e:
                     if e.errno != errno.EEXIST:
                         raise
 
@@ -92,7 +92,7 @@ class Importer:
                 shutil.rmtree(dirname)
 
                 if len(errors) > 0:
-                        return _('The following files could not be imported: %s') % u', '.join(errors)
+                        return _('The following files could not be imported: %s') % ', '.join(errors)
 
         def import_targz(self):
                 self.import_archive('tar -x --gzip -f')
