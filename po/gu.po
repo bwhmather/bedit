@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: gu\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
 "cgi?product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-09-09 15:09+0000\n"
-"PO-Revision-Date: 2012-09-14 14:12+0530\n"
+"POT-Creation-Date: 2012-10-16 21:38+0000\n"
+"PO-Revision-Date: 2012-10-25 12:17+0530\n"
 "Last-Translator: \n"
 "Language-Team: gu_IN <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -43,8 +43,9 @@ msgid "gedit Text Editor"
 msgstr "gedit લખાણ સંપાદક"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text"
-msgstr "લખાણ"
+#| msgid "Text"
+msgid "Text;"
+msgstr "લખાણ;"
 
 #: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
@@ -660,12 +661,12 @@ msgstr ""
 "%s\n"
 "ચલાવો '%s --help' ઉપલ્બધ આદેશ લાટી વિકલ્પોને સંપૂર્ણ યાદીમાં જોવા માટે.\n"
 
-#: ../gedit/gedit-commands-file.c:272
+#: ../gedit/gedit-commands-file.c:266
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "ફાઈલ '%s' લાવી રહ્યા છીએ…"
 
-#: ../gedit/gedit-commands-file.c:281
+#: ../gedit/gedit-commands-file.c:275
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -673,73 +674,73 @@ msgstr[0] "%d ફાઇલ લાવી રહ્યા છે…"
 msgstr[1] "%d ફાઇલો લાવી રહ્યા છે…"
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:446
+#: ../gedit/gedit-commands-file.c:440
 msgid "Open Files"
 msgstr "ફાઇલો ખોલો"
 
-#: ../gedit/gedit-commands-file.c:557
+#: ../gedit/gedit-commands-file.c:551
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "ફાઈલ \"%s\" માત્ર-વાંચી શકાય તેવી છે."
 
-#: ../gedit/gedit-commands-file.c:562
+#: ../gedit/gedit-commands-file.c:556
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "શું તમે તેને સંગ્રહ થઈ રહેલ ફાઇલ સાથે બદલવાનો પ્રયાસ કરવા માગો છો?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:564 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "બદલો (_R)"
 
-#: ../gedit/gedit-commands-file.c:612
+#: ../gedit/gedit-commands-file.c:606
 msgid "Save the file using compression?"
 msgstr "સંકોચનની મદદથી ફાઇલને સંગ્રહો છો?"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:607
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr "ફાઇલ \"%s\" એ સાદા લખાણ તરીકે પહેલાં સંગ્રહ થયેલ છે અને સંકોચની મદદથી હવે સંગ્રહાશે."
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:609
 msgid "_Save Using Compression"
 msgstr "સંકોચનની મદદથી સંગ્રહો (_S)"
 
-#: ../gedit/gedit-commands-file.c:619
+#: ../gedit/gedit-commands-file.c:613
 msgid "Save the file as plain text?"
 msgstr "શું સાદા લખાણ તરીકે ફાઇલને સંગ્રહો છો?"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:614
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr "ફાઇલ \"%s\" એ સંકોચની મદદથી પહેલાં સંગ્રહ થયેલ છે અને સાદા લખાણ તરીકે હવે સંગ્રહાશે."
 
-#: ../gedit/gedit-commands-file.c:622
+#: ../gedit/gedit-commands-file.c:616
 msgid "_Save As Plain Text"
 msgstr "સાદા લખાણ તરીકે સંગ્રહો (_S)"
 
-#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
+#: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:953
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "ફાઈલ '%s' સંગ્રહી રહ્યા છીએ…"
 
-#: ../gedit/gedit-commands-file.c:846
+#: ../gedit/gedit-commands-file.c:840
 msgid "Save As"
 msgstr "આ રીતે સંગ્રહ કરો"
 
-#: ../gedit/gedit-commands-file.c:1173
+#: ../gedit/gedit-commands-file.c:1167
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "દસ્તાવેજ '%s' ને પહેલાંની સ્થિતિમાં લાવી રહ્યા છીએ…"
 
-#: ../gedit/gedit-commands-file.c:1218
+#: ../gedit/gedit-commands-file.c:1212
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "શું દસ્તાવેજ '%s' ના નહિં સંગ્રહાયેલ ફેરફારો ઉલટાવવા માંગો છો?"
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1221
 #, c-format
 msgid "Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
@@ -748,11 +749,11 @@ msgid_plural ""
 msgstr[0] "દસ્તાવેજમાં છેલ્લી %ld સેકન્ડમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 msgstr[1] "દસ્તાવેજમાં છેલ્લી %ld સેકન્ડોમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 
-#: ../gedit/gedit-commands-file.c:1236
+#: ../gedit/gedit-commands-file.c:1230
 msgid "Changes made to the document in the last minute will be permanently lost."
 msgstr "દસ્તાવેજમાં છેલ્લી મિનિટમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 
-#: ../gedit/gedit-commands-file.c:1242
+#: ../gedit/gedit-commands-file.c:1236
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -763,7 +764,7 @@ msgid_plural ""
 msgstr[0] "દસ્તાવેજમાં છેલ્લી મિનિટ અને %ld સેકન્ડમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 msgstr[1] "દસ્તાવેજમાં છેલ્લી મિનિટ અને %ld સેકન્ડોમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1246
 #, c-format
 msgid "Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
@@ -772,11 +773,11 @@ msgid_plural ""
 msgstr[0] "દસ્તાવેજમાં છેલ્લી %ld મિનિટમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 msgstr[1] "દસ્તાવેજમાં છેલ્લી %ld મિનિટોમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 
-#: ../gedit/gedit-commands-file.c:1267
+#: ../gedit/gedit-commands-file.c:1261
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "છેલ્લા કલાકમાં દસ્તાવેજમાં કરવામાં આવેલ બધા ફેરફારો કાયમ માટે નષ્ટ થઈ જશે."
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1267
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -787,14 +788,14 @@ msgid_plural ""
 msgstr[0] "દસ્તાવેજમાં છેલ્લા કલાક અને %d મિનિટમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 msgstr[1] "દસ્તાવેજમાં છેલ્લા કલાક અને %d મિનિટોમાં થયેલા બદલાવો કાયમ માટે ખોવાઈ જશે."
 
-#: ../gedit/gedit-commands-file.c:1288
+#: ../gedit/gedit-commands-file.c:1282
 #, c-format
 msgid "Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "દસ્તાવેજમાં છેલ્લા %d કલાકમાં કરવામાં આવેલ બધા ફેરફારો કાયમ માટે નષ્ટ થઈ જશે."
 msgstr[1] "દસ્તાવેજમાં છેલ્લા %d કલાકોમાં કરવામાં આવેલ બધા ફેરફારો કાયમ માટે નષ્ટ થઈ જશે."
 
-#: ../gedit/gedit-commands-file.c:1314
+#: ../gedit/gedit-commands-file.c:1308
 msgid "_Revert"
 msgstr "પહેલાની સ્થિતિમાં લાવો (_R)"
 
@@ -1614,69 +1615,69 @@ msgstr "હેડરો અને ફૂટરો (_a):"
 msgid "_Restore Default Fonts"
 msgstr "મૂળભુત ફોન્ટનો ફરીથી સંગ્રહ (_R)"
 
-#: ../gedit/gedit-print-preview.c:582
+#: ../gedit/gedit-print-preview.c:562
 msgid "Show the previous page"
 msgstr "પહેલાંનું પાનું બતાવો"
 
-#: ../gedit/gedit-print-preview.c:594
+#: ../gedit/gedit-print-preview.c:574
 msgid "Show the next page"
 msgstr "આગળનું પાનું બતાવો"
 
-#: ../gedit/gedit-print-preview.c:610
+#: ../gedit/gedit-print-preview.c:590
 msgid "Current page (Alt+P)"
 msgstr "વર્તમાન પાનું (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:633
+#: ../gedit/gedit-print-preview.c:613
 msgid "of"
 msgstr "નું"
 
-#: ../gedit/gedit-print-preview.c:641
+#: ../gedit/gedit-print-preview.c:621
 msgid "Page total"
 msgstr "પાનાં કુલ"
 
-#: ../gedit/gedit-print-preview.c:642
+#: ../gedit/gedit-print-preview.c:622
 msgid "The total number of pages in the document"
 msgstr "દસ્તાવેજમાં કુલ પાનાંઓની સંખ્યા"
 
-#: ../gedit/gedit-print-preview.c:659
+#: ../gedit/gedit-print-preview.c:639
 msgid "Show multiple pages"
 msgstr "ઘણા પાનાંઓ બતાવો"
 
-#: ../gedit/gedit-print-preview.c:672
+#: ../gedit/gedit-print-preview.c:652
 msgid "Zoom 1:1"
 msgstr "નાનામોટાપણું 1:1"
 
-#: ../gedit/gedit-print-preview.c:681
+#: ../gedit/gedit-print-preview.c:661
 msgid "Zoom to fit the whole page"
 msgstr "આખા પાનાંમાં બંધબેસે તે રીતે નાનુંમોટું કરો"
 
-#: ../gedit/gedit-print-preview.c:690
+#: ../gedit/gedit-print-preview.c:670
 msgid "Zoom the page in"
 msgstr "પાનું મોટું કરો"
 
-#: ../gedit/gedit-print-preview.c:699
+#: ../gedit/gedit-print-preview.c:679
 msgid "Zoom the page out"
 msgstr "પાનું નાનું કરો"
 
-#: ../gedit/gedit-print-preview.c:711
+#: ../gedit/gedit-print-preview.c:691
 msgid "_Close Preview"
 msgstr "પૂર્વદર્શન બંધ કરો (_C)"
 
-#: ../gedit/gedit-print-preview.c:714
+#: ../gedit/gedit-print-preview.c:694
 msgid "Close print preview"
 msgstr "છાપન પૂર્વદર્શન બંધ કરો"
 
-#: ../gedit/gedit-print-preview.c:783
+#: ../gedit/gedit-print-preview.c:763
 #, c-format
 msgid "Page %d of %d"
 msgstr "%d પાનું %d માંથી"
 
-#: ../gedit/gedit-print-preview.c:967
+#: ../gedit/gedit-print-preview.c:947
 msgid "Page Preview"
 msgstr "પાનાં પૂર્વદર્શન"
 
-#: ../gedit/gedit-print-preview.c:968
+#: ../gedit/gedit-print-preview.c:948
 msgid "The preview of a page in the document to be printed"
 msgstr "દસ્તાવેજમાં છાપવા માટેના પાનાંનું પૂર્વદર્શન"
 
@@ -2152,9 +2153,9 @@ msgstr "%s પ્રકાશિત સ્થિતિ વાપરો"
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
 #: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:450
-#: ../plugins/externaltools/tools/manager.py:561
-#: ../plugins/externaltools/tools/manager.py:882
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:566
+#: ../plugins/externaltools/tools/manager.py:885
 msgid "Plain Text"
 msgstr "સાદુ લખાણ"
 
@@ -2452,27 +2453,27 @@ msgstr "બહાર નીકળી ગયેલ"
 msgid "All languages"
 msgstr "બધી ભાષાઓ"
 
-#: ../plugins/externaltools/tools/manager.py:550
-#: ../plugins/externaltools/tools/manager.py:554
-#: ../plugins/externaltools/tools/manager.py:880
+#: ../plugins/externaltools/tools/manager.py:555
+#: ../plugins/externaltools/tools/manager.py:559
+#: ../plugins/externaltools/tools/manager.py:883
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "બધી ભાષાઓ"
 
-#: ../plugins/externaltools/tools/manager.py:667
+#: ../plugins/externaltools/tools/manager.py:672
 msgid "New tool"
 msgstr "નવું સાધન"
 
-#: ../plugins/externaltools/tools/manager.py:798
+#: ../plugins/externaltools/tools/manager.py:803
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "આ પ્રવેગક પહેલાથી જ %s સાથે બંધાયેલ છે"
 
-#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/manager.py:847
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "નવો પ્રવેગક લખો, અથવા સાફ કરવા માટે બેકસ્પેસ દબાવો"
 
-#: ../plugins/externaltools/tools/manager.py:844
+#: ../plugins/externaltools/tools/manager.py:849
 msgid "Type a new accelerator"
 msgstr "નવો પ્રવેગક લખો"
 
@@ -2606,23 +2607,23 @@ msgstr "સંગ્રહો (_S):"
 msgid "Shortcut _Key:"
 msgstr "ટૂંકાણ કી (_K):"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:179
+#: ../plugins/externaltools/tools/windowactivatable.py:173
 msgid "Manage _External Tools..."
 msgstr "બાહ્ય સાધનો ને સંચાલિત કરો (_E)..."
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
+#: ../plugins/externaltools/tools/windowactivatable.py:174
 msgid "Opens the External Tools Manager"
 msgstr "બાહ્ય સાધનો વ્યવસ્થાપક ખોલે છે"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:183
+#: ../plugins/externaltools/tools/windowactivatable.py:177
 msgid "External _Tools"
 msgstr "બાહ્ય સાધનો (_T)"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:184
+#: ../plugins/externaltools/tools/windowactivatable.py:178
 msgid "External tools"
 msgstr "બાહ્ય સાધનો"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:218
+#: ../plugins/externaltools/tools/windowactivatable.py:212
 msgid "Shell Output"
 msgstr "શેલ આઉટપુટ"
 
@@ -2635,7 +2636,7 @@ msgstr "ફાઈલ બ્રાઉઝર તકતી"
 msgid "Easy file access from the side panel"
 msgstr "બાજુ તકતીમાંથી સરળ ફાઈલ વપરાશ"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:239
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
 msgid "File System"
 msgstr "ફાઈલ સિસ્ટમ"
 
@@ -3120,9 +3121,6 @@ msgstr "પસંદ કરેલ સ્નિપેટ કાઢી નાખ�
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
-#| msgid ""
-#| "This is not a valid Tab trigger. Triggers can either contain letters or a "
-#| "single (non-alphanumeric) character like: {, [, etc."
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
