@@ -184,7 +184,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                       self._temp_export = None
 
                 if self.dnd_name:
-                        context.set_icon_name(self.dnd_name, 0, 0)
+                        Gtk.drag_set_icon_name(context, self.dnd_name, 0, 0)
 
                 dirname = tempfile.mkdtemp()
                 filename = os.path.join(dirname, self.default_export_name)
