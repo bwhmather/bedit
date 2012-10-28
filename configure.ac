@@ -34,7 +34,7 @@ PKG_PROG_PKG_CONFIG
 # needed on osx
 AC_PROG_OBJC
 
-AM_PATH_PYTHON
+AM_PATH_PYTHON(3.2.3)
 
 # Initialize libtool
 LT_PREREQ([2.2.6])
