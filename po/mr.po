@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: mr\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-09-09 15:09+0000\n"
-"PO-Revision-Date: 2012-09-12 15:52+0530\n"
+"POT-Creation-Date: 2012-10-16 21:38+0000\n"
+"PO-Revision-Date: 2012-10-31 10:18+0530\n"
 "Last-Translator: Sandeep Shedmake <sshedmak@redhat.com>\n"
 "Language-Team: Marathi <maajhe-sanganak@freelists.org>\n"
 "Language: mr\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 "X-DamnedLies-Scope: partial\n"
 
 #: ../data/gedit.desktop.in.in.h:1
@@ -34,8 +34,9 @@ msgid "gedit Text Editor"
 msgstr "gedit मजकूर संपादक"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text"
-msgstr "मजकूर"
+#| msgid "Text"
+msgid "Text;"
+msgstr "मजकूर;"
 
 #: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
@@ -720,12 +721,12 @@ msgstr ""
 "%s\n"
 "उपलब्ध आदेश ओळ पर्याय पाहण्याकरीता '%s --help' चालवा.\n"
 
-#: ../gedit/gedit-commands-file.c:272
+#: ../gedit/gedit-commands-file.c:266
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "'%s' फाइल लोड होत आहे"
 
-#: ../gedit/gedit-commands-file.c:281
+#: ../gedit/gedit-commands-file.c:275
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -733,29 +734,29 @@ msgstr[0] "%d फाइल लोड होत आहे"
 msgstr[1] "%d फाइली लोड होत आहे"
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:446
+#: ../gedit/gedit-commands-file.c:440
 msgid "Open Files"
 msgstr "फाइल्स् उघडा"
 
-#: ../gedit/gedit-commands-file.c:557
+#: ../gedit/gedit-commands-file.c:551
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "\"%s\" ही फाइल फक्त वाचण्यायोग्य आहे."
 
-#: ../gedit/gedit-commands-file.c:562
+#: ../gedit/gedit-commands-file.c:556
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr ""
 "तुम्ही सुरक्षित करत असलेल्याशी ही बदली करण्याचा प्रयत्न करू इच्छिता काय?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:564 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "बदलवा (_R)"
 
-#: ../gedit/gedit-commands-file.c:612
+#: ../gedit/gedit-commands-file.c:606
 msgid "Save the file using compression?"
 msgstr "कंप्रेशनचा वापर करून फाइल साठवा?"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:607
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -764,15 +765,15 @@ msgstr ""
 "फाइल \"%s\" पूर्वी सोपे मजकूर म्हणून साठवले गेले व आत्ता कंप्रेशनचा वापर करून "
 "साठवले जाईल."
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:609
 msgid "_Save Using Compression"
 msgstr "कंप्रेशनचा वापर करून साठवत आहे (_S)"
 
-#: ../gedit/gedit-commands-file.c:619
+#: ../gedit/gedit-commands-file.c:613
 msgid "Save the file as plain text?"
 msgstr "फाइलला सोपे मजकूर म्हणून साठवा?"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:614
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -781,30 +782,30 @@ msgstr ""
 "कंप्रेशनचा वापर करून फाइल \"%s\" पूर्वी साठवले गेले व आत्ता सोपे मजकूर "
 "प्रमाणे साठवले जाईल."
 
-#: ../gedit/gedit-commands-file.c:622
+#: ../gedit/gedit-commands-file.c:616
 msgid "_Save As Plain Text"
 msgstr "स्पष्ट मजकूर म्हणून साठवा (_S)"
 
-#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
+#: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:953
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "'%s' फाइल साठवत आहे…"
 
-#: ../gedit/gedit-commands-file.c:846
+#: ../gedit/gedit-commands-file.c:840
 msgid "Save As"
 msgstr "असे साठवा"
 
-#: ../gedit/gedit-commands-file.c:1173
+#: ../gedit/gedit-commands-file.c:1167
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "दस्तऐवज '%s' मूळ स्थितीवर आणत आहे"
 
-#: ../gedit/gedit-commands-file.c:1218
+#: ../gedit/gedit-commands-file.c:1212
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "दस्तऐवज '%s' मधील असंग्रहित बदल परत करावेत का?"
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1221
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -814,12 +815,12 @@ msgid_plural ""
 msgstr[0] "दस्तऐवजात मागील %ld सेकंदात केलेले बदल कायमस्वरूपी नष्ट होतील."
 msgstr[1] "दस्तऐवजात मागील %ld सेकंदांत केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1236
+#: ../gedit/gedit-commands-file.c:1230
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "दस्तऐवजात मागील मिनिटात केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1242
+#: ../gedit/gedit-commands-file.c:1236
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -832,7 +833,7 @@ msgstr[0] ""
 msgstr[1] ""
 "दस्तऐवजात मागील मिनिट आणि %ld सेकंदांत केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1246
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -842,11 +843,11 @@ msgid_plural ""
 msgstr[0] "दस्तऐवजात मागील %ld मिनिटात केलेले बदल कायमस्वरूपी नष्ट होतील."
 msgstr[1] "दस्तऐवजात मागील %ld मिनिटांत केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1267
+#: ../gedit/gedit-commands-file.c:1261
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "दस्तऐवजात मागील तासात केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1267
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -859,7 +860,7 @@ msgstr[0] ""
 msgstr[1] ""
 "दस्तऐवजात मागील तासात आणि %d मिनिटांत केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1288
+#: ../gedit/gedit-commands-file.c:1282
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -868,7 +869,7 @@ msgid_plural ""
 msgstr[0] "दस्तऐवजात मागील %d तासात केलेले बदल कायमस्वरूपी नष्ट होतील."
 msgstr[1] "दस्तऐवजात मागील %d तासांत केलेले बदल कायमस्वरूपी नष्ट होतील."
 
-#: ../gedit/gedit-commands-file.c:1314
+#: ../gedit/gedit-commands-file.c:1308
 msgid "_Revert"
 msgstr "मूळ स्थितीवर या (_R)"
 
@@ -1708,69 +1709,69 @@ msgstr "मथळे आणि तळटिपा(_a):"
 msgid "_Restore Default Fonts"
 msgstr "पूर्वनिर्धारीत फाँट मूळस्थितीत आणा (_R)"
 
-#: ../gedit/gedit-print-preview.c:582
+#: ../gedit/gedit-print-preview.c:562
 msgid "Show the previous page"
 msgstr "मागील पान दाखवा"
 
-#: ../gedit/gedit-print-preview.c:594
+#: ../gedit/gedit-print-preview.c:574
 msgid "Show the next page"
 msgstr "पुढील पान दाखवा"
 
-#: ../gedit/gedit-print-preview.c:610
+#: ../gedit/gedit-print-preview.c:590
 msgid "Current page (Alt+P)"
 msgstr "चालू पान (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:633
+#: ../gedit/gedit-print-preview.c:613
 msgid "of"
 msgstr "याचे"
 
-#: ../gedit/gedit-print-preview.c:641
+#: ../gedit/gedit-print-preview.c:621
 msgid "Page total"
 msgstr "एकूण पृष्ठ "
 
-#: ../gedit/gedit-print-preview.c:642
+#: ../gedit/gedit-print-preview.c:622
 msgid "The total number of pages in the document"
 msgstr "दस्तऐवजातील एकूण पाने"
 
-#: ../gedit/gedit-print-preview.c:659
+#: ../gedit/gedit-print-preview.c:639
 msgid "Show multiple pages"
 msgstr "अनेक पाने दाखवा"
 
-#: ../gedit/gedit-print-preview.c:672
+#: ../gedit/gedit-print-preview.c:652
 msgid "Zoom 1:1"
 msgstr "झूम 1:1"
 
-#: ../gedit/gedit-print-preview.c:681
+#: ../gedit/gedit-print-preview.c:661
 msgid "Zoom to fit the whole page"
 msgstr "संपूर्ण पानात मावण्याइतके झूम करा"
 
-#: ../gedit/gedit-print-preview.c:690
+#: ../gedit/gedit-print-preview.c:670
 msgid "Zoom the page in"
 msgstr "पान आत झूम करा"
 
-#: ../gedit/gedit-print-preview.c:699
+#: ../gedit/gedit-print-preview.c:679
 msgid "Zoom the page out"
 msgstr "पान बाहेर झूम करा"
 
-#: ../gedit/gedit-print-preview.c:711
+#: ../gedit/gedit-print-preview.c:691
 msgid "_Close Preview"
 msgstr "पुर्वदृश्य बंद करा (_C)"
 
-#: ../gedit/gedit-print-preview.c:714
+#: ../gedit/gedit-print-preview.c:694
 msgid "Close print preview"
 msgstr "मुद्रण पुर्वदृश्य बंद करा"
 
-#: ../gedit/gedit-print-preview.c:783
+#: ../gedit/gedit-print-preview.c:763
 #, c-format
 msgid "Page %d of %d"
 msgstr "पान %2$d पैकी %1$d"
 
-#: ../gedit/gedit-print-preview.c:967
+#: ../gedit/gedit-print-preview.c:947
 msgid "Page Preview"
 msgstr "मुद्रण पूर्वदृश्य"
 
-#: ../gedit/gedit-print-preview.c:968
+#: ../gedit/gedit-print-preview.c:948
 msgid "The preview of a page in the document to be printed"
 msgstr "दस्तऐवज मध्ये छपाई करीताचे पानाचे पूर्वदृश्य"
 
@@ -2246,9 +2247,9 @@ msgstr "%s उठावदार पद्धती वापरा"
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
 #: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:450
-#: ../plugins/externaltools/tools/manager.py:561
-#: ../plugins/externaltools/tools/manager.py:882
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:566
+#: ../plugins/externaltools/tools/manager.py:885
 msgid "Plain Text"
 msgstr "पाठ्य"
 
@@ -2549,27 +2550,27 @@ msgstr "उत्तेजित"
 msgid "All languages"
 msgstr "सर्व भाषा"
 
-#: ../plugins/externaltools/tools/manager.py:550
-#: ../plugins/externaltools/tools/manager.py:554
-#: ../plugins/externaltools/tools/manager.py:880
+#: ../plugins/externaltools/tools/manager.py:555
+#: ../plugins/externaltools/tools/manager.py:559
+#: ../plugins/externaltools/tools/manager.py:883
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "सर्व भाषा"
 
-#: ../plugins/externaltools/tools/manager.py:667
+#: ../plugins/externaltools/tools/manager.py:672
 msgid "New tool"
 msgstr "नवे उपकरण"
 
-#: ../plugins/externaltools/tools/manager.py:798
+#: ../plugins/externaltools/tools/manager.py:803
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "प्रवर्गक आधिपासूनच %s करीता बांधले आहे"
 
-#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/manager.py:847
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "नवीन प्रवर्गक टाइप करा, किंवा पुसून टाकण्याकरीता Backspace दाबा"
 
-#: ../plugins/externaltools/tools/manager.py:844
+#: ../plugins/externaltools/tools/manager.py:849
 msgid "Type a new accelerator"
 msgstr "नवीन प्रवर्गक टाइप करा"
 
@@ -2703,23 +2704,23 @@ msgstr "संचयन (_S):"
 msgid "Shortcut _Key:"
 msgstr "शार्टकट कि (_k):"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:179
+#: ../plugins/externaltools/tools/windowactivatable.py:173
 msgid "Manage _External Tools..."
 msgstr "बाहेरील उपकरन व्यवस्थापीत करा (_E)..."
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
+#: ../plugins/externaltools/tools/windowactivatable.py:174
 msgid "Opens the External Tools Manager"
 msgstr "बाह्य साधन व्यवस्थापक उघडा"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:183
+#: ../plugins/externaltools/tools/windowactivatable.py:177
 msgid "External _Tools"
 msgstr "बाहेरील उपकरने (_T)"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:184
+#: ../plugins/externaltools/tools/windowactivatable.py:178
 msgid "External tools"
 msgstr "बाहेरील उपकरने"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:218
+#: ../plugins/externaltools/tools/windowactivatable.py:212
 msgid "Shell Output"
 msgstr "शेल आउटपुट"
 
@@ -2732,7 +2733,7 @@ msgstr "फाइल ब्राउजर पटल"
 msgid "Easy file access from the side panel"
 msgstr "बाजूच्या पट्टीपासून सोपे फाइल प्रवेश"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:239
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
 msgid "File System"
 msgstr "फाइल प्रणाली"
 
