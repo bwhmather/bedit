@@ -597,31 +597,6 @@ on_search_highlighting_changed (GSettings     *settings,
 }
 
 static void
-on_max_recents_changed (GSettings     *settings,
-			const gchar   *key,
-			GeditSettings *gs)
-{
-	const GList *windows;
-	gint max;
-	
-	g_settings_get (settings, key, "u", &max);
-	
-	windows = gedit_app_get_windows (gedit_app_get_default ());
-	while (windows != NULL)
-	{
-		GeditWindow *w = GEDIT_WINDOW (windows->data);
-
-		gtk_recent_chooser_set_limit (GTK_RECENT_CHOOSER (w->priv->toolbar_recent_menu),
-					      max);
-
-		windows = g_list_next (windows);
-	}
-	
-	/* FIXME: we have no way at the moment to trigger the
-	 * update of the inline recents in the File menu */
-}
-
-static void
 gedit_settings_init (GeditSettings *gs)
 {
 	gs->priv = GEDIT_SETTINGS_GET_PRIVATE (gs);
@@ -717,12 +692,6 @@ gedit_settings_init (GeditSettings *gs)
 	g_signal_connect (gs->priv->editor,
 			  "changed::search-highlighting",
 			  G_CALLBACK (on_search_highlighting_changed),
-			  gs);
-
-	/* ui changes */
-	g_signal_connect (gs->priv->ui,
-			  "changed::max-recents",
-			  G_CALLBACK (on_max_recents_changed),
 			  gs);
 }
 

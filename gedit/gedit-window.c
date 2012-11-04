@@ -52,6 +52,7 @@
 #include "gedit-utils.h"
 #include "gedit-commands.h"
 #include "gedit-debug.h"
+#include "gedit-open-tool-button.h"
 #include "gedit-panel.h"
 #include "gedit-documents-panel.h"
 #include "gedit-plugins-engine.h"
@@ -1442,50 +1443,22 @@ toolbar_visibility_changed (GtkWidget   *toolbar,
 		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
 }
 
-static GtkWidget *
+static void
 setup_toolbar_open_button (GeditWindow *window,
 			   GtkWidget   *toolbar)
 {
-	GtkRecentManager *recent_manager;
-	GtkRecentFilter *filter;
-	GtkWidget *toolbar_recent_menu;
 	GtkToolItem *open_button;
+	GtkWidget *recent_menu;
 	GtkAction *action;
-	gint max_recents;
 
-	recent_manager = gtk_recent_manager_get_default ();
-	
-	g_settings_get (window->priv->ui_settings, GEDIT_SETTINGS_MAX_RECENTS,
-			"u", &max_recents);
+	open_button = gedit_open_tool_button_new ();
 
-	/* recent files menu tool button */
-	toolbar_recent_menu = gtk_recent_chooser_menu_new_for_manager (recent_manager);
+	recent_menu = gtk_menu_tool_button_get_menu (GTK_MENU_TOOL_BUTTON (open_button));
 
-	gtk_recent_chooser_set_local_only (GTK_RECENT_CHOOSER (toolbar_recent_menu),
-					   FALSE);
-	gtk_recent_chooser_set_sort_type (GTK_RECENT_CHOOSER (toolbar_recent_menu),
-					  GTK_RECENT_SORT_MRU);
-	gtk_recent_chooser_set_limit (GTK_RECENT_CHOOSER (toolbar_recent_menu),
-				      max_recents);
-
-	filter = gtk_recent_filter_new ();
-	gtk_recent_filter_add_group (filter, "gedit");
-	gtk_recent_chooser_set_filter (GTK_RECENT_CHOOSER (toolbar_recent_menu),
-				       filter);
-
-	g_signal_connect (toolbar_recent_menu,
-			  "item_activated",
+	g_signal_connect (recent_menu,
+			  "item-activated",
 			  G_CALLBACK (recent_chooser_item_activated),
 			  window);
-	
-	/* add the custom Open button to the toolbar */
-	open_button = gtk_menu_tool_button_new_from_stock (GTK_STOCK_OPEN);
-	gtk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (open_button),
-				       toolbar_recent_menu);
-
-	gtk_tool_item_set_tooltip_text (open_button, _("Open a file"));
-	gtk_menu_tool_button_set_arrow_tooltip_text (GTK_MENU_TOOL_BUTTON (open_button),
-						     _("Open a recently used file"));
 
 	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
 					      "FileOpen");
@@ -1499,8 +1472,6 @@ setup_toolbar_open_button (GeditWindow *window,
 	gtk_toolbar_insert (GTK_TOOLBAR (toolbar),
 			    open_button,
 			    1);
-	
-	return toolbar_recent_menu;
 }
 
 static void
@@ -1671,8 +1642,7 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 #endif
 	set_toolbar_visibility (window, NULL);
 	
-	window->priv->toolbar_recent_menu = setup_toolbar_open_button (window,
-								       window->priv->toolbar);
+	setup_toolbar_open_button (window, window->priv->toolbar);
 
 	gtk_container_foreach (GTK_CONTAINER (window->priv->toolbar),
 			       (GtkCallback)set_non_homogeneus,

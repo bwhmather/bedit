@@ -93,7 +93,6 @@ struct _GeditWindowPrivate
 	GtkActionGroup *documents_list_action_group;
 	guint           documents_list_menu_ui_id;
 	GtkWidget      *toolbar;
-	GtkWidget      *toolbar_recent_menu;
 	GtkWidget      *menubar;
 
 	/* recent files */
