@@ -703,7 +703,6 @@ int main (int   argc,
 	gboolean have_unowned;
 	gboolean have_unowned_group;
 
-	g_type_init ();
 	g_test_init (&argc, &argv, NULL);
 	gtk_init (&argc, &argv);
 

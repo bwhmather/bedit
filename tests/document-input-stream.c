@@ -140,7 +140,6 @@ test_consecutive_multibyte_big_read ()
 int main (int   argc,
           char *argv[])
 {
-	g_type_init ();
 	g_test_init (&argc, &argv, NULL);
 
 	g_test_add_func ("/document-input-stream/empty", test_empty);

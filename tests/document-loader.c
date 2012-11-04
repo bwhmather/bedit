@@ -231,7 +231,6 @@ test_begin_new_line_detection ()
 int main (int   argc,
           char *argv[])
 {
-	g_type_init ();
 	g_test_init (&argc, &argv, NULL);
 
 	g_test_add_func ("/document-loader/end-line-stripping", test_end_line_stripping);

@@ -240,9 +240,6 @@ main (int argc, char *argv[])
 	gchar *metadata_filename;
 #endif
 
-	/* Init type system as soon as possible */
-	g_type_init ();
-
 	/* Setup debugging */
 	gedit_debug_init ();
 	gedit_debug_message (DEBUG_APP, "Startup");
