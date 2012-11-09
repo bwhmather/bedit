@@ -571,7 +571,7 @@ class PlaceholderEval(PlaceholderExpand):
                         self.set_text('')
                         return
 
-                text = "def process_snippet():\n\t" + u"\n\t".join(text.split("\n"))
+                text = "def process_snippet():\n\t" + "\n\t".join(text.split("\n"))
 
                 if 'process_snippet' in self.namespace:
                         del self.namespace['process_snippet']
