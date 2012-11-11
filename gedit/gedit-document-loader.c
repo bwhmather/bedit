@@ -369,6 +369,7 @@ static const GeditEncoding *
 get_metadata_encoding (GeditDocumentLoader *loader)
 {
 	const GeditEncoding *enc = NULL;
+	GFileInfo *info;
 
 	if (loader->priv->location == NULL)
 	{
@@ -389,7 +390,6 @@ get_metadata_encoding (GeditDocumentLoader *loader)
 
 	g_free (charset);
 #else
-	GFileInfo *info;
 
 	info = gedit_document_loader_get_info (loader);
 
