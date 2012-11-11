@@ -847,7 +847,7 @@ window_from_display_arguments (gboolean           new_window,
 {
 	GdkScreen *screen = NULL;
 	GeditApp *app;
-	GeditWindow *ret;
+	GeditWindow *ret = NULL;
 
 	/* get correct screen using the display_name and screen_number */
 	if (dparams->display_name != NULL && *dparams->display_name)
@@ -861,25 +861,20 @@ window_from_display_arguments (gboolean           new_window,
 
 	app = gedit_app_get_default ();
 
-	if (new_window)
+	if (!new_window)
 	{
-		ret = gedit_app_create_window (app, screen);
-		gedit_window_create_tab (ret, TRUE);
-
-		return ret;
-	}
-
-	if (screen != NULL)
-	{
-		ret = _gedit_app_get_window_in_viewport (app,
-		                                         screen,
-		                                         dparams->workspace == -1 ? 0 : dparams->workspace,
-		                                         dparams->viewport_x == -1 ? 0 : dparams->viewport_x,
-		                                         dparams->viewport_y == -1 ? 0 : dparams->viewport_y);
-	}
-	else
-	{
-		ret = gedit_app_get_active_window (app);
+		if (screen != NULL)
+		{
+			ret = _gedit_app_get_window_in_viewport (app,
+				                                 screen,
+				                                 dparams->workspace == -1 ? 0 : dparams->workspace,
+				                                 dparams->viewport_x == -1 ? 0 : dparams->viewport_x,
+				                                 dparams->viewport_y == -1 ? 0 : dparams->viewport_y);
+		}
+		else
+		{
+			ret = gedit_app_get_active_window (app);
+		}
 	}
 
 	if (!ret)
