@@ -7,10 +7,10 @@
 # Torstein Adolf Winterseth <kvikende@fsfe.org>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 3.6.x\n"
+"Project-Id-Version: gedit 3.7.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-22 19:50+0200\n"
-"PO-Revision-Date: 2012-10-22 19:50+0200\n"
+"POT-Creation-Date: 2012-11-17 16:13+0100\n"
+"PO-Revision-Date: 2012-11-17 16:13+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -873,11 +873,11 @@ msgid "Unsaved Document %d"
 msgstr "Ikke-lagret dokument %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2397 ../gedit/gedit-window.c:2404
+#: ../gedit/gedit-window.c:2367 ../gedit/gedit-window.c:2374
 msgid "Read-Only"
 msgstr "Skrivebeskyttet"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3846
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3816
 msgid "Documents"
 msgstr "Dokumenter"
 
@@ -1427,6 +1427,14 @@ msgstr "L_agre som …"
 msgid "_Print..."
 msgstr "S_kriv ut …"
 
+#: ../gedit/gedit-open-tool-button.c:85 ../gedit/gedit-ui.h:55
+msgid "Open a file"
+msgstr "Åpne en fil"
+
+#: ../gedit/gedit-open-tool-button.c:87
+msgid "Open a recently used file"
+msgstr "Åpne nylig brukt fil"
+
 #: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:587
 msgid "Empty"
 msgstr "Tom"
@@ -1734,7 +1742,7 @@ msgstr "Forhåndsvisning av en side i dokumentet som skal skrives ut"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1557
+#: ../gedit/gedit-window.c:1528
 msgid "Replace"
 msgstr "Erstatt"
 
@@ -1905,10 +1913,6 @@ msgstr "Opprett et nytt dokument"
 #: ../gedit/gedit-ui.h:54
 msgid "_Open..."
 msgstr "_Åpne …"
-
-#: ../gedit/gedit-ui.h:55 ../gedit/gedit-window.c:1486
-msgid "Open a file"
-msgstr "Åpne en fil"
 
 #. Edit menu
 #: ../gedit/gedit-ui.h:58
@@ -2194,7 +2198,7 @@ msgstr "Streng du vil søke etter"
 msgid "Line you want to move the cursor to"
 msgstr "Linje du vil flytte markøren til"
 
-#: ../gedit/gedit-window.c:941
+#: ../gedit/gedit-window.c:942
 #, c-format
 msgid "Use %s highlight mode"
 msgstr "Bruk uthevingsmodus %s"
@@ -2202,67 +2206,63 @@ msgstr "Bruk uthevingsmodus %s"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
+#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2061
 #: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:455
-#: ../plugins/externaltools/tools/manager.py:566
-#: ../plugins/externaltools/tools/manager.py:885
+#: ../plugins/externaltools/tools/manager.py:571
+#: ../plugins/externaltools/tools/manager.py:890
 msgid "Plain Text"
 msgstr "Vanlig tekst"
 
-#: ../gedit/gedit-window.c:1047
+#: ../gedit/gedit-window.c:1048
 msgid "Disable syntax highlighting"
 msgstr "Deaktiver syntaksutheving"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1364
+#: ../gedit/gedit-window.c:1365
 #, c-format
 msgid "Open '%s'"
 msgstr "Åpne «%s»"
 
-#: ../gedit/gedit-window.c:1488
-msgid "Open a recently used file"
-msgstr "Åpne nylig brukt fil"
-
-#: ../gedit/gedit-window.c:1494
+#: ../gedit/gedit-window.c:1467
 msgid "Open"
 msgstr "Åpne"
 
-#: ../gedit/gedit-window.c:1551
+#: ../gedit/gedit-window.c:1522
 msgid "Save"
 msgstr "Lagre"
 
-#: ../gedit/gedit-window.c:1553
+#: ../gedit/gedit-window.c:1524
 msgid "Print"
 msgstr "Skriv ut"
 
-#: ../gedit/gedit-window.c:1555
+#: ../gedit/gedit-window.c:1526
 msgid "Find"
 msgstr "Finn"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1715
+#: ../gedit/gedit-window.c:1685
 #, c-format
 msgid "Activate '%s'"
 msgstr "Aktiver «%s»"
 
-#: ../gedit/gedit-window.c:2072
+#: ../gedit/gedit-window.c:2042
 msgid "Use Spaces"
 msgstr "Bruk mellomrom"
 
-#: ../gedit/gedit-window.c:2145
+#: ../gedit/gedit-window.c:2115
 msgid "Tab Width"
 msgstr "Tabulatorbredde"
 
-#: ../gedit/gedit-window.c:2254
+#: ../gedit/gedit-window.c:2224
 msgid "Bracket match is out of range"
 msgstr "Søk etter sammenhørende hakeparantes utenfor gyldig område"
 
-#: ../gedit/gedit-window.c:2259
+#: ../gedit/gedit-window.c:2229
 msgid "Bracket match not found"
 msgstr "Fant ingen sammenhørende hakeparanteser"
 
-#: ../gedit/gedit-window.c:2264
+#: ../gedit/gedit-window.c:2234
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Sammenhørende hakeparantes funnet på linje: %d"
@@ -2505,27 +2505,27 @@ msgstr "Avsluttet"
 msgid "All languages"
 msgstr "Alle språk"
 
-#: ../plugins/externaltools/tools/manager.py:555
-#: ../plugins/externaltools/tools/manager.py:559
-#: ../plugins/externaltools/tools/manager.py:883
+#: ../plugins/externaltools/tools/manager.py:560
+#: ../plugins/externaltools/tools/manager.py:564
+#: ../plugins/externaltools/tools/manager.py:888
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Alle språk"
 
-#: ../plugins/externaltools/tools/manager.py:672
+#: ../plugins/externaltools/tools/manager.py:677
 msgid "New tool"
 msgstr "Nytt verktøy"
 
-#: ../plugins/externaltools/tools/manager.py:803
+#: ../plugins/externaltools/tools/manager.py:808
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Denne snarveien er allerede satt til %s"
 
-#: ../plugins/externaltools/tools/manager.py:847
+#: ../plugins/externaltools/tools/manager.py:852
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Skriv inn en ny snarvei eller trykk slett for å tømme"
 
-#: ../plugins/externaltools/tools/manager.py:849
+#: ../plugins/externaltools/tools/manager.py:854
 msgid "Type a new accelerator"
 msgstr "Skriv inn en ny snarvei"
 
@@ -3090,7 +3090,7 @@ msgstr "Åpne dokumenter raskt"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:31
+#: ../plugins/quickopen/quickopen/popup.py:32
 msgid "Quick Open"
 msgstr "Hurtigåpning"
 
@@ -3098,7 +3098,7 @@ msgstr "Hurtigåpning"
 msgid "Quickly open files"
 msgstr "Åpne filer raskt"
 
-#: ../plugins/quickopen/quickopen/popup.py:72
+#: ../plugins/quickopen/quickopen/popup.py:73
 msgid "Type to search..."
 msgstr "Skriv for å søke …"
 
@@ -3267,7 +3267,7 @@ msgstr "Skriv inn en ny snarvei eller trykk slett for å tømme"
 msgid "Type a new shortcut"
 msgstr "Skriv inn en ny snarvei"
 
-#: ../plugins/snippets/snippets/placeholder.py:602
+#: ../plugins/snippets/snippets/placeholder.py:601
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3275,7 +3275,7 @@ msgid ""
 msgstr ""
 "Kjøring av Python-kommando (%s) overstiger maksimal tid. Kjøring avbrutt."
 
-#: ../plugins/snippets/snippets/placeholder.py:610
+#: ../plugins/snippets/snippets/placeholder.py:609
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Kjøring av Python-kommando (%s) feilet: %s"
