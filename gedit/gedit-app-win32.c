@@ -57,17 +57,6 @@ gedit_app_win32_help_link_id_impl (GeditApp    *app,
 }
 
 static void
-gedit_app_win32_class_init (GeditAppWin32Class *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GeditAppClass *app_class = GEDIT_APP_CLASS (klass);
-
-	object_class->finalize = gedit_app_win32_finalize;
-
-	app_class->help_link_id = gedit_app_win32_help_link_id_impl;
-}
-
-static void
 setup_path (void)
 {
 	gchar *path;
@@ -119,14 +108,35 @@ prep_console (void)
 }
 
 static void
-gedit_app_win32_init (GeditAppWin32 *self)
+gedit_app_win32_startup (GApplication *application)
 {
+	G_APPLICATION_CLASS (gedit_app_win32_parent_class)->startup (application);
+
 	setup_path ();
 	prep_console ();
 
 	/* manually set name and icon */
 	g_set_application_name("gedit");
 	gtk_window_set_default_icon_name ("accessories-text-editor");
+}
+
+static void
+gedit_app_win32_class_init (GeditAppWin32Class *klass)
+{
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GApplicationClass *gapp_class = G_APPLICATION_CLASS (klass);
+	GeditAppClass *app_class = GEDIT_APP_CLASS (klass);
+
+	object_class->finalize = gedit_app_win32_finalize;
+
+	gapp_class->startup = gedit_app_win32_startup;
+
+	app_class->help_link_id = gedit_app_win32_help_link_id_impl;
+}
+
+static void
+gedit_app_win32_init (GeditAppWin32 *self)
+{
 }
 
 /* ex:set ts=8 noet: */
