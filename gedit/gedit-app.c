@@ -77,8 +77,6 @@ struct _GeditAppPrivate
 {
 	GeditPluginsEngine *engine;
 
-	GeditWindow       *active_window;
-
 	GeditLockdownMask  lockdown;
 
 	GtkPageSetup      *page_setup;
@@ -234,13 +232,6 @@ gedit_app_get_property (GObject    *object,
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
 	}
-}
-
-static gboolean
-gedit_app_last_window_destroyed_impl (GeditApp    *app,
-                                      GeditWindow *window)
-{
-	return TRUE;
 }
 
 static gchar *
@@ -432,7 +423,7 @@ gedit_app_activate (GApplication *application)
 	GeditWindow *window;
 	gboolean doc_created = FALSE;
 
-	window = app->priv->active_window;
+	window = GEDIT_WINDOW (gtk_application_get_active_window (GTK_APPLICATION (application)));
 
 	if (window == NULL || new_window)
 	{
@@ -441,10 +432,6 @@ gedit_app_activate (GApplication *application)
 
 		gedit_debug_message (DEBUG_APP, "Show window");
 		gtk_widget_show (GTK_WIDGET (window));
-	}
-	else
-	{
-		window = app->priv->active_window;
 	}
 
 	if (geometry)
@@ -893,26 +880,6 @@ gedit_app_constructed (GObject *object)
 	load_accels ();
 }
 
-static void
-set_active_window (GeditApp    *app,
-                   GeditWindow *window)
-{
-	app->priv->active_window = window;
-}
-
-static gboolean
-window_focus_in_event (GeditWindow   *window, 
-		       GdkEventFocus *event, 
-		       GeditApp      *app)
-{
-	/* updates active_view and active_child when a new toplevel receives focus */
-	g_return_val_if_fail (GEDIT_IS_WINDOW (window), FALSE);
-
-	set_active_window (app, window);
-
-	return FALSE;
-}
-
 static gboolean 
 window_delete_event (GeditWindow *window,
                      GdkEvent    *event,
@@ -934,80 +901,20 @@ window_delete_event (GeditWindow *window,
 	return TRUE;
 }
 
-static void
-window_destroy (GeditWindow *window,
-		GeditApp    *app)
-{
-	GList *windows;
-
-	gtk_application_remove_window (GTK_APPLICATION (app), GTK_WINDOW (window));
-	windows = gtk_application_get_windows (GTK_APPLICATION (app));
-
-	if (window == app->priv->active_window)
-	{
-		set_active_window (app, windows != NULL ? windows->data : NULL);
-	}
-
-/* CHECK: I don't think we have to disconnect this function, since windows
-   is being destroyed */
-/*					     
-	g_signal_handlers_disconnect_by_func (window, 
-					      G_CALLBACK (window_focus_in_event),
-					      app);
-	g_signal_handlers_disconnect_by_func (window, 
-					      G_CALLBACK (window_destroy),
-					      app);
-*/
-	if (windows == NULL)
-	{
-		if (!GEDIT_APP_GET_CLASS (app)->last_window_destroyed (app, window))
-		{
-			return;
-		}
-
-		g_application_quit (G_APPLICATION (app));
-	}
-}
-
 static GeditWindow *
 gedit_app_create_window_impl (GeditApp *app)
 {
 	GeditWindow *window;
-	GList *windows;
-	gboolean is_first;
-	
-	/*
-	 * We need to be careful here, there is a race condition:
-	 * when another gedit is launched it checks active_window,
-	 * so we must do our best to ensure that active_window
-	 * is never NULL when at least a window exists.
-	 */
-
-	windows = gtk_application_get_windows (GTK_APPLICATION (app));
-	is_first = (windows == NULL);
 	
 	window = g_object_new (GEDIT_TYPE_WINDOW, "application", app, NULL);
-
-	if (is_first)
-	{
-		set_active_window (app, window);
-	}
 
 	gtk_application_add_window (GTK_APPLICATION (app), GTK_WINDOW (window));
 
 	gedit_debug_message (DEBUG_APP, "Window created");
 
 	g_signal_connect (window,
-			  "focus_in_event",
-			  G_CALLBACK (window_focus_in_event),
-			  app);
-	g_signal_connect (window,
 			  "delete_event",
 			  G_CALLBACK (window_delete_event),
-			  app);
-	g_signal_connect (window,
-			  "destroy",
-			  G_CALLBACK (window_destroy),
 			  app);
 
 	return window;
@@ -1029,7 +936,6 @@ gedit_app_class_init (GeditAppClass *klass)
 	app_class->local_command_line = gedit_app_local_command_line;
 	app_class->shutdown = gedit_app_shutdown;
 
-	klass->last_window_destroyed = gedit_app_last_window_destroyed_impl;
 	klass->show_help = gedit_app_show_help_impl;
 	klass->help_link_id = gedit_app_help_link_id_impl;
 	klass->set_window_title = gedit_app_set_window_title_impl;
@@ -1276,12 +1182,12 @@ _gedit_app_get_window_in_viewport (GeditApp  *app,
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
 	/* first try if the active window */
-	window = app->priv->active_window;
+	window = GEDIT_WINDOW (gtk_application_get_active_window (GTK_APPLICATION (app)));
 
-	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
-
-	if (is_in_viewport (window, screen, workspace, viewport_x, viewport_y))
+	if (window != NULL && is_in_viewport (window, screen, workspace, viewport_x, viewport_y))
+	{
 		return window;
+	}
 
 	/* otherwise try to see if there is a window on this workspace */
 	windows = gtk_application_get_windows (GTK_APPLICATION (app));

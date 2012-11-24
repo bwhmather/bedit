@@ -39,20 +39,6 @@ gedit_app_osx_finalize (GObject *object)
 	G_OBJECT_CLASS (gedit_app_osx_parent_class)->finalize (object);
 }
 
-static gboolean
-gedit_app_osx_last_window_destroyed_impl (GeditApp *app,
-                                          GeditWindow *window)
-{
-	if (!GPOINTER_TO_INT (g_object_get_data (G_OBJECT (window), "gedit-is-quitting-all")))
-	{
-		/* Create hidden proxy window on OS X to handle the menu */
-		gedit_app_create_window (app, NULL);
-		return FALSE;
-	}
-
-	return GEDIT_APP_CLASS (gedit_app_osx_parent_class)->last_window_destroyed (app, window);
-}
-
 gboolean
 gedit_app_osx_show_url (GeditAppOSX *app,
                         const gchar *url)
@@ -356,7 +342,6 @@ gedit_app_osx_class_init (GeditAppOSXClass *klass)
 	object_class->finalize = gedit_app_osx_finalize;
 	object_class->constructed = gedit_app_osx_constructed;
 
-	app_class->last_window_destroyed = gedit_app_osx_last_window_destroyed_impl;
 	app_class->show_help = gedit_app_osx_show_help_impl;
 	app_class->set_window_title = gedit_app_osx_set_window_title_impl;
 	app_class->quit = gedit_app_osx_quit_impl;

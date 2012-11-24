@@ -60,9 +60,6 @@ struct _GeditAppClass
 {
 	GtkApplicationClass parent_class;
 
-	gboolean (*last_window_destroyed)	(GeditApp    *app,
-	                                         GeditWindow *window);
-
 	gboolean (*show_help)			(GeditApp    *app,
 	                                         GtkWindow   *parent,
 	                                         const gchar *name,
