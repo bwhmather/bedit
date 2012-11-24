@@ -70,7 +70,7 @@ dialog_response_handler (GtkDialog *dlg,
 {
 	if (res_id == GTK_RESPONSE_HELP)
 	{
-		gedit_app_show_help (gedit_app_get_default (),
+		gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
 				     GTK_WINDOW (dlg),
 				     NULL,
 				     "gedit-spellcheck");

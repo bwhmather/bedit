@@ -23,7 +23,7 @@ from .library import *
 from .functions import *
 import hashlib
 from xml.sax import saxutils
-from gi.repository import GObject, Gtk, GtkSource, Gedit
+from gi.repository import Gio, GObject, Gtk, GtkSource, Gedit
 
 class LanguagesPopup(Gtk.Window):
     __gtype_name__ = "LanguagePopup"
@@ -866,7 +866,7 @@ class Manager(GObject.Object):
 
     def on_tool_manager_dialog_response(self, dialog, response):
         if response == Gtk.ResponseType.HELP:
-            Gedit.App.get_default().show_help(self.dialog, 'gedit', 'gedit-plugins-external-tools')
+            Gio.Application.get_default().show_help(self.dialog, 'gedit', 'gedit-plugins-external-tools')
             return
 
         self.save_current_tool()

@@ -290,7 +290,7 @@ response_handler (GtkDialog            *dialog,
 {
 	if (response_id == GTK_RESPONSE_HELP)
 	{
-		gedit_app_show_help (gedit_app_get_default(),
+		gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
 		                     GTK_WINDOW (dialog),
 		                     "gedit",
 		                     NULL);

@@ -1046,7 +1046,7 @@ gedit_view_set_font (GeditView   *view,
 		GObject *settings;
 		gchar *font;
 
-		settings = _gedit_app_get_settings (gedit_app_get_default ());
+		settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
 		font = gedit_settings_get_system_font (GEDIT_SETTINGS (settings));
 
 		font_desc = pango_font_description_from_string (font);

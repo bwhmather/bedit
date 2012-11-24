@@ -1932,8 +1932,8 @@ quit_all ()
 	GList *item;
 	GeditApp *app;
 
-	app = gedit_app_get_default ();
-	windows = g_list_copy ((GList *)gedit_app_get_windows (app));
+	app = GEDIT_APP (g_application_get_default ());
+	windows = g_list_copy (gtk_application_get_windows (GTK_APPLICATION (app)));
 
 	for (item = windows; item; item = g_list_next (item))
 	{

@@ -347,7 +347,7 @@ gedit_window_key_press_event (GtkWidget   *widget,
 
 	if (!handled)
 	{
-		return gedit_app_process_window_event (gedit_app_get_default (),
+		return gedit_app_process_window_event (GEDIT_APP (g_application_get_default ()),
 		                                       GEDIT_WINDOW (widget),
 		                                       (GdkEvent *)event);
 	}
@@ -676,7 +676,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	enable_syntax_highlighting = g_settings_get_boolean (window->priv->editor_settings,
 							     GEDIT_SETTINGS_SYNTAX_HIGHLIGHTING);
 
-	lockdown = gedit_app_get_lockdown (gedit_app_get_default ());
+	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 
 	state = gedit_tab_get_state (tab);
 	state_normal = (state == GEDIT_TAB_STATE_NORMAL);
@@ -2160,7 +2160,7 @@ clone_window (GeditWindow *origin)
 
 	gedit_debug (DEBUG_WINDOW);
 
-	app = gedit_app_get_default ();
+	app = GEDIT_APP (g_application_get_default ());
 
 	screen = gtk_window_get_screen (GTK_WINDOW (origin));
 	window = gedit_app_create_window (app, screen);
@@ -2299,7 +2299,7 @@ set_title (GeditWindow *window)
 
 	if (tab == NULL)
 	{
-		gedit_app_set_window_title (gedit_app_get_default (),
+		gedit_app_set_window_title (GEDIT_APP (g_application_get_default ()),
 		                            window,
 		                            "gedit");
 		return;
@@ -2389,7 +2389,9 @@ set_title (GeditWindow *window)
 		}
 	}
 
-	gedit_app_set_window_title (gedit_app_get_default (), window, title);
+	gedit_app_set_window_title (GEDIT_APP (g_application_get_default ()),
+				    window,
+				    title);
 
 	g_free (dirname);
 	g_free (name);
@@ -2641,7 +2643,7 @@ set_sensitivity_according_to_window_state (GeditWindow *window)
 	GeditLockdownMask lockdown;
 	gint num_tabs;
 
-	lockdown = gedit_app_get_lockdown (gedit_app_get_default ());
+	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 
 	/* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have two
 	   operations (save and print/print preview) that uses the message area at

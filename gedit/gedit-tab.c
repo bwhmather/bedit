@@ -1089,7 +1089,7 @@ document_loaded (GeditDocument *document,
 			GList *all_documents;
 			GList *l;
 
-			all_documents = gedit_app_get_documents (gedit_app_get_default ());
+			all_documents = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
 
 			for (l = all_documents; l != NULL; l = g_list_next (l))
 			{
@@ -1652,8 +1652,10 @@ gedit_tab_init (GeditTab *tab)
 					    GEDIT_SETTINGS_AUTO_SAVE);
 	g_settings_get (tab->priv->editor, GEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
 			"u", &auto_save_interval);
-	
-	lockdown = gedit_app_get_lockdown (gedit_app_get_default ());
+
+	GeditApp *app = GEDIT_APP (g_application_get_default ());
+
+	lockdown = gedit_app_get_lockdown (app);
 	tab->priv->auto_save = auto_save &&
 			       !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK);
 	tab->priv->auto_save = (tab->priv->auto_save != FALSE);
@@ -2429,7 +2431,7 @@ get_page_setup (GeditTab *tab)
 
 	if (data == NULL)
 	{
-		return _gedit_app_get_default_page_setup (gedit_app_get_default());
+		return _gedit_app_get_default_page_setup (GEDIT_APP (g_application_get_default ()));
 	}
 	else
 	{
@@ -2452,7 +2454,7 @@ get_print_settings (GeditTab *tab)
 
 	if (data == NULL)
 	{
-		settings = _gedit_app_get_default_print_settings (gedit_app_get_default());
+		settings = _gedit_app_get_default_print_settings (GEDIT_APP (g_application_get_default ()));
 	}
 	else
 	{
@@ -2508,7 +2510,7 @@ store_print_settings (GeditTab      *tab,
 				(GDestroyNotify)g_object_unref);
 
 	/* make them the default */
-	_gedit_app_set_default_print_settings (gedit_app_get_default (),
+	_gedit_app_set_default_print_settings (GEDIT_APP (g_application_get_default ()),
 					       settings);
 
 	page_setup = gedit_print_job_get_page_setup (job);
@@ -2520,7 +2522,7 @@ store_print_settings (GeditTab      *tab,
 				(GDestroyNotify)g_object_unref);
 
 	/* make it the default */
-	_gedit_app_set_default_page_setup (gedit_app_get_default (),
+	_gedit_app_set_default_page_setup (GEDIT_APP (g_application_get_default ()),
 					   page_setup);
 }
 
@@ -2892,9 +2894,11 @@ gedit_tab_set_auto_save_enabled	(GeditTab *tab,
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
 	/* Force disabling when lockdown is active */
-	lockdown = gedit_app_get_lockdown (gedit_app_get_default());
+	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 	if (lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK)
+	{
 		enable = FALSE;
+	}
 	
 	doc = gedit_tab_get_document (tab);
 

@@ -380,7 +380,7 @@ on_osx_block_termination (GtkOSXApplication *osxapp,
 	GtkAction *action;
 	GeditWindow *window;
 
-	window = gedit_app_get_active_window (GEDIT_APP (app));
+	window = gtk_appliction_get_active_window (GTK_APPLICATION (app));
 
 	// Synthesize quit-all
 	manager = gedit_window_get_ui_manager (window);
@@ -412,8 +412,8 @@ on_osx_open_files (GtkOSXApplication  *osxapp,
 	{
 		GSList *files;
 		GeditWindow *window;
-		
-		window = gedit_app_get_active_window (GEDIT_APP (app));
+
+		window = gtk_application_get_active_window (GTK_APPLICATION (app));
 
 		files = gedit_commands_load_locations (window,
 		                                       locations,

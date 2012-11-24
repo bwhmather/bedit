@@ -56,16 +56,6 @@
 #include "gedit-app-activatable.h"
 #include "gedit-plugins-engine.h"
 
-#ifdef OS_OSX
-#include "gedit-app-osx.h"
-#else
-#ifdef G_OS_WIN32
-#include "gedit-app-win32.h"
-#else
-#include "gedit-app-x11.h"
-#endif
-#endif
-
 #ifndef ENABLE_GVFS_METADATA
 #include "gedit-metadata-manager.h"
 #define METADATA_FILE "gedit-metadata.xml"
@@ -99,8 +89,6 @@ struct _GeditAppPrivate
 
 	PeasExtensionSet  *extensions;
 };
-
-static GeditApp *app_instance = NULL;
 
 static gboolean help = FALSE;
 static gboolean version = FALSE;
@@ -246,27 +234,6 @@ gedit_app_get_property (GObject    *object,
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
 	}
-}
-
-static GObject *
-gedit_app_constructor (GType                  gtype,
-                       guint                  n_construct_params,
-                       GObjectConstructParam *construct_params)
-{
-	if (!app_instance)
-	{
-		GObject *obj = G_OBJECT_CLASS (
-			gedit_app_parent_class)->constructor (gtype,
-			                                      n_construct_params,
-			                                      construct_params);
-
-		app_instance = GEDIT_APP (obj);
-		g_object_add_weak_pointer (obj, (gpointer *) &app_instance);
-
-		return obj;
-	}
-
-	return g_object_ref (app_instance);
 }
 
 static gboolean
@@ -921,6 +888,8 @@ load_accels (void)
 static void
 gedit_app_constructed (GObject *object)
 {
+	G_OBJECT_CLASS (gedit_app_parent_class)->constructed (object);
+
 	load_accels ();
 }
 
@@ -1052,7 +1021,6 @@ gedit_app_class_init (GeditAppClass *klass)
 
 	object_class->dispose = gedit_app_dispose;
 	object_class->get_property = gedit_app_get_property;
-	object_class->constructor = gedit_app_constructor;
 	object_class->constructed = gedit_app_constructed;
 
 	app_class->startup = gedit_app_startup;
@@ -1148,41 +1116,6 @@ gedit_app_init (GeditApp *app)
 	app->priv = GEDIT_APP_GET_PRIVATE (app);
 }
 
-/* FIXME: lets kill this method */
-/**
- * gedit_app_get_default:
- *
- * Returns the #GeditApp object. This object is a singleton and
- * represents the running gedit instance.
- *
- * Return value: (transfer none): the #GeditApp pointer
- */
-GeditApp *
-gedit_app_get_default (void)
-{
-	GType type;
-
-	if (app_instance != NULL)
-	{
-		return app_instance;
-	}
-
-#ifdef OS_OSX
-	type = GEDIT_TYPE_APP_OSX;
-#else
-#ifdef G_OS_WIN32
-	type = GEDIT_TYPE_APP_WIN32;
-#else
-	type = GEDIT_TYPE_APP_X11;
-#endif
-#endif
-
-	return GEDIT_APP (g_object_new (type,
-	                                "application-id", "org.gnome.Gedit",
-	                                "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
-	                                NULL));
-}
-
 /* Generates a unique string for a window role */
 static gchar *
 gen_role (void)
@@ -1258,48 +1191,6 @@ gedit_app_create_window (GeditApp  *app,
 	}
 
 	return window;
-}
-
-/* FIXME: lets kill this method */
-/**
- * gedit_app_get_windows:
- * @app: the #GeditApp
- *
- * Returns all the windows currently present in #GeditApp.
- *
- * Return value: (element-type Gedit.Window) (transfer none): the list of #GeditWindows objects.
- * The list should not be freed
- */
-const GList *
-gedit_app_get_windows (GeditApp *app)
-{
-	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-
-	return gtk_application_get_windows (GTK_APPLICATION (app));
-}
-
-/**
- * gedit_app_get_active_window:
- * @app: the #GeditApp
- *
- * Retrives the #GeditWindow currently active.
- *
- * Return value: (transfer none): the active #GeditWindow
- */
-GeditWindow *
-gedit_app_get_active_window (GeditApp *app)
-{
-	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
-
-	/* make sure our active window is always realized:
-	 * this is needed on startup if we launch two gedit fast
-	 * enough that the second instance comes up before the
-	 * first one shows its window.
-	 */
-	if (!gtk_widget_get_realized (GTK_WIDGET (app->priv->active_window)))
-		gtk_widget_realize (GTK_WIDGET (app->priv->active_window));
-
-	return app->priv->active_window;
 }
 
 static gboolean

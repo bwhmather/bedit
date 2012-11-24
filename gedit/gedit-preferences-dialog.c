@@ -161,7 +161,7 @@ dialog_response_handler (GtkDialog *dlg,
 	switch (res_id)
 	{
 		case GTK_RESPONSE_HELP:
-			gedit_app_show_help (gedit_app_get_default (),
+			gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
 			                     GTK_WINDOW (dlg),
 			                     NULL,
 			                     "index#configure-gedit");
@@ -430,7 +430,7 @@ setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 				      ATK_RELATION_CONTROLLER_FOR);
 
 	/* Get values */
-	settings = _gedit_app_get_settings (gedit_app_get_default ());
+	settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
 	system_font = gedit_settings_get_system_font (GEDIT_SETTINGS (settings));
 	use_default_font = g_settings_get_boolean (dlg->priv->editor,
 						   GEDIT_SETTINGS_USE_DEFAULT_FONT);

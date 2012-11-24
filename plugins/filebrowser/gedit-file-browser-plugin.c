@@ -906,15 +906,13 @@ on_rename_cb (GeditFileBrowserStore *store,
 	      GFile                 *newfile,
 	      GeditWindow           *window)
 {
-	GeditApp *app;
 	GList *documents;
 	GList *item;
 	GeditDocument *doc;
 	GFile *docfile;
 
 	/* Find all documents and set its uri to newuri where it matches olduri */
-	app = gedit_app_get_default ();
-	documents = gedit_app_get_documents (app);
+	documents = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
 
 	for (item = documents; item; item = item->next)
 	{

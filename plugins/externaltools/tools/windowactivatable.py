@@ -18,7 +18,7 @@
 
 __all__ = ('ExternalToolsPlugin', 'Manager', 'OutputPanel', 'Capture', 'UniqueById')
 
-from gi.repository import GObject, Gtk, Gedit, PeasGtk
+from gi.repository import Gio, GObject, Gtk, Gedit, PeasGtk
 from .manager import Manager
 from .library import ToolLibrary
 from .outputpanel import OutputPanel
@@ -238,7 +238,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
             self._manager.dialog.connect('destroy', self.on_manager_destroy)
             self._manager.connect('tools-updated', self.on_manager_tools_updated)
 
-        window = Gedit.App.get_default().get_active_window()
+        window = Gio.Application.get_default().get_active_window()
         self._manager.run(window)
 
         return self._manager.dialog
@@ -253,7 +253,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
         self._manager = None
 
     def on_manager_tools_updated(self, manager):
-        for window in Gedit.App.get_default().get_windows():
+        for window in Gio.Application.get_default().get_windows():
             window._external_tools_window_activatable.menu.update()
 
 # ex:ts=4:et:

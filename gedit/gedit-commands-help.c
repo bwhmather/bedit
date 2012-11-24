@@ -48,7 +48,7 @@ _gedit_cmd_help_contents (GtkAction   *action,
 {
 	gedit_debug (DEBUG_COMMANDS);
 
-	gedit_app_show_help (gedit_app_get_default (),
+	gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
 	                     GTK_WINDOW (window),
 	                     NULL,
 	                     NULL);

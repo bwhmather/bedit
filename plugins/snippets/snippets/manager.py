@@ -87,8 +87,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                         self.tree_view.expand_row(path, False)
 
         def build_model(self, force_reload = False):
-                window = Gedit.App.get_default().get_active_window()
-
+                window = Gio.Application.get_default().get_active_window()
                 if window:
                         view = window.get_active_view()
 
@@ -599,10 +598,9 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
 
         def do_response(self, resp):
                 if resp == Gtk.ResponseType.HELP:
-                        Gedit.App.get_default().show_help(self, 'gedit', 'gedit-plugins-snippets')
-                        return
-
-                self.destroy()
+                        Gio.Application.get_default().show_help(self, 'gedit', 'gedit-plugins-snippets')
+                else:
+                        self.destroy()
 
         def on_cell_editing_started(self, renderer, editable, path):
                 piter = self.model.get_iter(path)

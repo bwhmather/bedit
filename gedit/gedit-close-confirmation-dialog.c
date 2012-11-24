@@ -190,13 +190,14 @@ set_logout_mode (GeditCloseConfirmationDialog *dlg,
 static void 
 gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 {
+	GeditLockdownMask lockdown;
 	AtkObject *atk_obj;
 
 	dlg->priv = GEDIT_CLOSE_CONFIRMATION_DIALOG_GET_PRIVATE (dlg);
 
-	dlg->priv->disable_save_to_disk = 
-			gedit_app_get_lockdown (gedit_app_get_default ()) 
-			& GEDIT_LOCKDOWN_SAVE_TO_DISK;
+	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
+
+	dlg->priv->disable_save_to_disk = lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK;
 
 	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);		
 	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),

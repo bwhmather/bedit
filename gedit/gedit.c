@@ -31,21 +31,42 @@
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
-
 #include <glib.h>
-
 #include "gedit-app.h"
+#ifdef OS_OSX
+#include "gedit-app-osx.h"
+#else
+#ifdef G_OS_WIN32
+#include "gedit-app-win32.h"
+#else
+#include "gedit-app-x11.h"
+#endif
+#endif
 
 int
 main (int argc, char *argv[])
 {
+	GType type;
 	GeditApp *app;
 	gint status;
 
-	app = gedit_app_get_default ();
+#ifdef OS_OSX
+	type = GEDIT_TYPE_APP_OSX;
+#else
+#ifdef G_OS_WIN32
+	type = GEDIT_TYPE_APP_WIN32;
+#else
+	type = GEDIT_TYPE_APP_X11;
+#endif
+#endif
+
+	app = g_object_new (type,
+	                    "application-id", "org.gnome.Gedit",
+	                    "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
+	                    NULL);
+
 	status = g_application_run (G_APPLICATION (app), argc, argv);
 
-	/* Cleanup */
 	g_object_unref (app);
 
 	return status;

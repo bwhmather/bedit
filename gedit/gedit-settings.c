@@ -88,8 +88,8 @@ on_lockdown_changed (GSettings   *settings,
 	GeditApp *app;
 	
 	locked = g_settings_get_boolean (settings, key);
-	app = gedit_app_get_default ();
-	
+	app = GEDIT_APP (g_application_get_default ());
+
 	if (strcmp (key, GEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE) == 0)
 	{
 		_gedit_app_set_lockdown_bit (app, 
@@ -124,9 +124,9 @@ set_font (GeditSettings *gs,
 	guint ts;
 	
 	g_settings_get (gs->priv->editor, GEDIT_SETTINGS_TABS_SIZE, "u", &ts);
-	
-	views = gedit_app_get_views (gedit_app_get_default ());
-	
+
+	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
+
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		/* Note: we use def=FALSE to avoid GeditView to query dconf */
@@ -242,7 +242,8 @@ on_scheme_changed (GSettings     *settings,
 		}
 	}
 
-	docs = gedit_app_get_documents (gedit_app_get_default ());
+	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
 		g_return_if_fail (GTK_SOURCE_IS_BUFFER (l->data));
@@ -263,9 +264,9 @@ on_auto_save_changed (GSettings     *settings,
 	gboolean auto_save;
 	
 	auto_save = g_settings_get_boolean (settings, key);
-	
-	docs = gedit_app_get_documents (gedit_app_get_default ());
-	
+
+	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
 		GeditTab *tab = gedit_tab_get_from_document (GEDIT_DOCUMENT (l->data));
@@ -285,9 +286,9 @@ on_auto_save_interval_changed (GSettings     *settings,
 	gint auto_save_interval;
 	
 	g_settings_get (settings, key, "u", &auto_save_interval);
-	
-	docs = gedit_app_get_documents (gedit_app_get_default ());
-	
+
+	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
 		GeditTab *tab = gedit_tab_get_from_document (GEDIT_DOCUMENT (l->data));
@@ -309,9 +310,9 @@ on_undo_actions_limit_changed (GSettings     *settings,
 	ul = g_settings_get_int (settings, key);
 	
 	ul = CLAMP (ul, -1, 250);
-	
-	docs = gedit_app_get_documents (gedit_app_get_default ());
-	
+
+	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (l->data),
@@ -331,8 +332,8 @@ on_wrap_mode_changed (GSettings     *settings,
 
 	wrap_mode = g_settings_get_enum (settings, key);
 
-	views = gedit_app_get_views (gedit_app_get_default ());
-	
+	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
+
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (l->data),
@@ -353,9 +354,9 @@ on_tabs_size_changed (GSettings     *settings,
 	g_settings_get (settings, key, "u", &ts);
 	
 	ts = CLAMP (ts, 1, 24);
-	
-	views = gedit_app_get_views (gedit_app_get_default ());
-	
+
+	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
+
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data),
@@ -374,9 +375,9 @@ on_insert_spaces_changed (GSettings     *settings,
 	gboolean spaces;
 	
 	spaces = g_settings_get_boolean (settings, key);
-	
-	views = gedit_app_get_views (gedit_app_get_default ());
-	
+
+	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
+
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_view_set_insert_spaces_instead_of_tabs (
@@ -396,9 +397,9 @@ on_auto_indent_changed (GSettings     *settings,
 	gboolean enable;
 	
 	enable = g_settings_get_boolean (settings, key);
-	
-	views = gedit_app_get_views (gedit_app_get_default ());
-	
+
+	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
+
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_view_set_auto_indent (GTK_SOURCE_VIEW (l->data),
@@ -417,9 +418,9 @@ on_display_line_numbers_changed (GSettings     *settings,
 	gboolean line_numbers;
 	
 	line_numbers = g_settings_get_boolean (settings, key);
-	
-	views = gedit_app_get_views (gedit_app_get_default ());
-	
+
+	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
+
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (l->data),
@@ -438,9 +439,9 @@ on_hl_current_line_changed (GSettings     *settings,
 	gboolean hl;
 	
 	hl = g_settings_get_boolean (settings, key);
-	
-	views = gedit_app_get_views (gedit_app_get_default ());
-	
+
+	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
+
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_view_set_highlight_current_line (GTK_SOURCE_VIEW (l->data),
@@ -459,9 +460,9 @@ on_bracket_matching_changed (GSettings     *settings,
 	gboolean enable;
 	
 	enable = g_settings_get_boolean (settings, key);
-	
-	docs = gedit_app_get_documents (gedit_app_get_default ());
-	
+
+	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (l->data),
@@ -480,9 +481,9 @@ on_display_right_margin_changed (GSettings     *settings,
 	gboolean display;
 	
 	display = g_settings_get_boolean (settings, key);
-	
-	views = gedit_app_get_views (gedit_app_get_default ());
-	
+
+	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
+
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_view_set_show_right_margin (GTK_SOURCE_VIEW (l->data),
@@ -503,9 +504,9 @@ on_right_margin_position_changed (GSettings     *settings,
 	g_settings_get (settings, key, "u", &pos);
 	
 	pos = CLAMP (pos, 1, 160);
-	
-	views = gedit_app_get_views (gedit_app_get_default ());
-	
+
+	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
+
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_view_set_right_margin_position (GTK_SOURCE_VIEW (l->data),
@@ -525,8 +526,8 @@ on_smart_home_end_changed (GSettings     *settings,
 
 	smart_he = g_settings_get_enum (settings, key);
 
-	views = gedit_app_get_views (gedit_app_get_default ());
-	
+	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
+
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_view_set_smart_home_end (GTK_SOURCE_VIEW (l->data),
@@ -546,9 +547,9 @@ on_syntax_highlighting_changed (GSettings     *settings,
 	gboolean enable;
 	
 	enable = g_settings_get_boolean (settings, key);
-	
-	docs = gedit_app_get_documents (gedit_app_get_default ());
-	
+
+	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
 		gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (l->data),
@@ -558,7 +559,7 @@ on_syntax_highlighting_changed (GSettings     *settings,
 	g_list_free (docs);
 
 	/* update the sensitivity of the Higlight Mode menu item */
-	windows = gedit_app_get_windows (gedit_app_get_default ());
+	windows = gtk_application_get_windows (GTK_APPLICATION (g_application_get_default ()));
 	while (windows != NULL)
 	{
 		GtkUIManager *ui;
@@ -584,9 +585,9 @@ on_search_highlighting_changed (GSettings     *settings,
 	gboolean enable;
 	
 	enable = g_settings_get_boolean (settings, key);
-	
-	docs = gedit_app_get_documents (gedit_app_get_default ());
-	
+
+	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
 		gedit_document_set_enable_search_highlighting  (GEDIT_DOCUMENT (l->data),
