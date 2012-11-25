@@ -38,7 +38,7 @@
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
-#include <gtksourceview/gtksourcelanguagemanager.h>
+#include <gtksourceview/gtksource.h>
 #include <libpeas/peas-extension-set.h>
 
 #include "gedit-ui.h"

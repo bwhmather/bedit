@@ -22,7 +22,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <gtksourceview/gtksourcelanguagemanager.h>
+#include <gtksourceview/gtksource.h>
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-document.h>
 #include <gedit/gedit-settings.h>

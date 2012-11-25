@@ -38,8 +38,7 @@
 #include <stdlib.h>
 
 #include <glib/gi18n.h>
-#include <gtksourceview/gtksourcestyleschememanager.h>
-#include <gtksourceview/gtksourcelanguagemanager.h>
+#include <gtksourceview/gtksource.h>
 
 #include "gedit-settings.h"
 #include "gedit-document.h"

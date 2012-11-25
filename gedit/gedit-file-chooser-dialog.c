@@ -39,7 +39,7 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <gtksourceview/gtksourcelanguagemanager.h>
+#include <gtksourceview/gtksource.h>
 
 #include "gedit-file-chooser-dialog.h"
 #include "gedit-encodings-combo-box.h"
