@@ -82,7 +82,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
 
         def do_deactivate(self):
                 if self.timeout_update_id != 0:
-                        GObject.source_remove(self.timeout_update_id)
+                        GLib.source_remove(self.timeout_update_id)
                         self.timeout_update_id = 0
 
                         del self.update_placeholders[:]
@@ -765,7 +765,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                         self.jump_placeholders.append((self.active_placeholder, current))
 
                         if self.timeout_update_id == 0:
-                                self.timeout_update_id = GObject.timeout_add(0,
+                                self.timeout_update_id = GLib.timeout_add(0,
                                                 self.update_snippet_contents)
 
         def on_buffer_changed(self, buf):
@@ -776,7 +776,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                                 self.update_placeholders.append(current)
 
                         if self.timeout_update_id == 0:
-                                self.timeout_update_id = GObject.timeout_add(0, \
+                                self.timeout_update_id = GLib.timeout_add(0, \
                                                 self.update_snippet_contents)
 
         def on_buffer_insert_text(self, buf, piter, text, length):
