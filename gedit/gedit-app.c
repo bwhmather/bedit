@@ -473,6 +473,8 @@ gedit_app_activate (GApplication *application)
 		gedit_debug_message (DEBUG_APP, "Create tab");
 		gedit_window_create_tab (window, TRUE);
 	}
+
+	gtk_window_present (GTK_WINDOW (window));
 }
 
 static GOptionContext *
