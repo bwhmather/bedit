@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gedit.master.or\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-09-09 15:09+0000\n"
-"PO-Revision-Date: 2012-09-21 14:43+0530\n"
+"POT-Creation-Date: 2012-11-04 12:28+0000\n"
+"PO-Revision-Date: 2012-11-28 18:34+0530\n"
 "Last-Translator: Manoj Kumar Giri <mgiri@redhat.com>\n"
 "Language-Team: Oriya <oriya-it@googlegroups.com>\n"
 "Language: or\n"
@@ -26,7 +26,7 @@ msgstr ""
 "\n"
 "\n"
 "\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -45,16 +45,15 @@ msgid "gedit Text Editor"
 msgstr "gedit ପାଠ୍ଯ ସମ୍ପାଦକ"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text"
-msgstr "ପାଠ୍ଯ"
+#| msgid "Text"
+msgid "Text;"
+msgstr "ପାଠ୍ଯ;"
 
 #: ../data/gedit.desktop.in.in.h:6
-#| msgid "_Move to New Window"
 msgid "Open a New Window"
 msgstr "ନୂଆ ୱିଣ୍ଡୋ ଖୋଲନ୍ତୁ"
 
 #: ../data/gedit.desktop.in.in.h:7
-#| msgid "Create a new document"
 msgid "Open a New Document"
 msgstr "ନୂଆ ଦଲିଲ ଖୋଲନ୍ତୁ"
 
@@ -308,8 +307,6 @@ msgid "Ensure Trailing Newline"
 msgstr "ନୂଆ ଧାଡ଼ି ନିଶ୍ଚିତ କରନ୍ତୁ"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
-#| msgid ""
-#| "Whether gedit should include a document header when printing documents."
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "ଦଲିଲ ନୂଆ ଧାଡ଼ିରେ ସମାପ୍ତ ହୋଇଥାଏ ବୋଲି gedit ସର୍ବଦା ନିଶ୍ଚିତ କରିବ।"
@@ -469,7 +466,6 @@ msgstr ""
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
-#| msgid "[UTF-8,CURRENT,ISO-8859-15,UTF-16]"
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
@@ -492,7 +488,6 @@ msgstr ""
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
-#| msgid "[ISO-8859-15]"
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-15']"
 
@@ -743,12 +738,12 @@ msgstr ""
 "ଉପଲବ୍ଧ ନିର୍ଦ୍ଦେଶନାମା ବିକଳ୍ପଗୁଡ଼ିକର ସମ୍ପୂର୍ଣ୍ଣ ତାଲିକା ଦେଖିବା ପାଇଁ'%s --help' "
 "କୁ ଚଲାନ୍ତୁ.\n"
 
-#: ../gedit/gedit-commands-file.c:272
+#: ../gedit/gedit-commands-file.c:266
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "'%s' ଫାଇଲକୁ ଧାରଣ କରୁଅଛି..."
 
-#: ../gedit/gedit-commands-file.c:281
+#: ../gedit/gedit-commands-file.c:275
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -756,79 +751,81 @@ msgstr[0] "%d ଫାଇଲକୁ ଧାରଣ କରୁଅଛି..."
 msgstr[1] "%d ଫାଇଲଗୁଡ଼ିକ ଧାରଣ କରୁଉଛି..."
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:446
+#: ../gedit/gedit-commands-file.c:440
 msgid "Open Files"
 msgstr "ଫାଇଲ ମାନଙ୍କୁ ଖୋଲନ୍ତୁ"
 
-#: ../gedit/gedit-commands-file.c:557
+#: ../gedit/gedit-commands-file.c:551
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "\"%s\" ଫାଇଲଟି କେବଳ ଲେଖନୀୟ।"
 
-#: ../gedit/gedit-commands-file.c:562
+#: ../gedit/gedit-commands-file.c:556
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr ""
 "ଆପଣ ଏହାକୁ ସଂରକ୍ଷଣ କରାଯାଉଥିବା ଫାଇଲ ସହିତ ବଦଳାଇବା ପାଇଁ ଚେଷ୍ଟା କରିବାକୁ ଚାହାନ୍ତି "
 "କି?"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:564 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "ବଦଳାନ୍ତୁ (_R)"
 
-#: ../gedit/gedit-commands-file.c:612
+#: ../gedit/gedit-commands-file.c:606
 msgid "Save the file using compression?"
 msgstr "ସଙ୍କୋଚନ ପ୍ରଣାଳୀକୁ ବ୍ୟବହାର କରି ଫାଇଲକୁ ସଂରକ୍ଷଣ କରିବେ କି?"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:607
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr ""
 "ଫାଇଲ \"%s\" ପୂର୍ବରୁ ସରଳ ପାଠ୍ୟ ଭାବରେ ସଂରକ୍ଷିତ ଏବଂ ବର୍ତ୍ତମାନ ସଙ୍କୋଚନ ବ୍ୟବାହର "
-"କରି ସଂରକ୍ଷିତ ହେବ।"
+"କରି ସଂରକ୍ଷିତ "
+"ହେବ।"
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:609
 msgid "_Save Using Compression"
 msgstr "ସଙ୍କୋଚନ ପ୍ରଣାଳୀକୁ ବ୍ୟବହାର କରି ଫାଇଲକୁ ସଂରକ୍ଷଣ କରନ୍ତୁ (_S)"
 
-#: ../gedit/gedit-commands-file.c:619
+#: ../gedit/gedit-commands-file.c:613
 msgid "Save the file as plain text?"
 msgstr "ଫାଇଲକୁ ସରଳ ପାଠ୍ୟ ଭାବରେ ସଂରକ୍ଷଣ କରିବେ କି?"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:614
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
 "ସଙ୍କୋଚନ ବ୍ୟବହାର କରି ଫାଇଲ \"%s\" ପୂର୍ବରୁ ସଂରକ୍ଷିତ ଏବଂ ବର୍ତ୍ତମାନ ସରଳ ପାଠ୍ୟ "
-"ଭାବରେ ସଂରକ୍ଷିତ ହେବ।"
+"ଭାବରେ ସଂରକ୍ଷିତ "
+"ହେବ।"
 
-#: ../gedit/gedit-commands-file.c:622
+#: ../gedit/gedit-commands-file.c:616
 msgid "_Save As Plain Text"
 msgstr "ସାଧାରଣ ପାଠ୍ୟ ଭାବରେ ସଂରକ୍ଷଣ କରନ୍ତୁ (_S)"
 
-#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
+#: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:953
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "'%s' ଫାଇଲକୁ ସଂରକ୍ଷଣ କରୁଅଛି..."
 
-#: ../gedit/gedit-commands-file.c:846
+#: ../gedit/gedit-commands-file.c:840
 msgid "Save As"
 msgstr "ଏପରି ଭାବରେ ସଂରକ୍ଷଣ କରନ୍ତୁ"
 
-#: ../gedit/gedit-commands-file.c:1173
+#: ../gedit/gedit-commands-file.c:1167
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "'%s' ଦଲିଲକୁ ପ୍ରତ୍ଯାବୃତ୍ତ କରୁଅଛି..."
 
-#: ../gedit/gedit-commands-file.c:1218
+#: ../gedit/gedit-commands-file.c:1212
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "ଅସଂରକ୍ଷିତ ପରିବର୍ତ୍ତନଗୁଡ଼ିକୁ ଦଲିଲ '%s' କୁ ପ୍ରତ୍ୟାବୃତ କରିବେ କି?"
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1221
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -840,12 +837,12 @@ msgstr[0] ""
 msgstr[1] ""
 "ପୂର୍ବ %ld ସେକେଣ୍ଡରେ ହୋଇଥିବା ଦଲିଲର ପରିବର୍ତ୍ତନଗୁଡ଼ିକ ପୂରା ନଷ୍ଟ ହୋଇଯିବ."
 
-#: ../gedit/gedit-commands-file.c:1236
+#: ../gedit/gedit-commands-file.c:1230
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "ପୂର୍ବ ମିନିଟ୍ ରେ ହୋଇଥିବା ଦଲିଲର ପରିବର୍ତ୍ତନଗୁଡ଼ିକ ପୂରା ନଷ୍ଟ ହୋଇଯିବ."
 
-#: ../gedit/gedit-commands-file.c:1242
+#: ../gedit/gedit-commands-file.c:1236
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -858,7 +855,7 @@ msgstr[0] ""
 msgstr[1] ""
 "ପୂର୍ବ ମିନିଟ୍ ଓ %ld ସେକେଣ୍ଡରେ ହୋଇଥିବା ଦଲିଲର ପରିବର୍ତ୍ତନଗୁଡ଼ିକ ପୂରା ନଷ୍ଟ ହୋଇଯିବ."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1246
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -870,12 +867,12 @@ msgstr[0] ""
 msgstr[1] ""
 "ପୂର୍ବ %ld ମିନିଟ୍ ରେ ହୋଇଥିବା ଦଲିଲର ପରିବର୍ତ୍ତନଗୁଡ଼ିକ ପୂରା ନଷ୍ଟ ହୋଇଯିବ."
 
-#: ../gedit/gedit-commands-file.c:1267
+#: ../gedit/gedit-commands-file.c:1261
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "ଦଲିଲରେ ଶେଷ ମୁହୁର୍ତ୍ତରେ କରାଯାଇଥିବା ପରିବର୍ତ୍ତନଗୁଡ଼ିକ ସବୁଦିନ ପାଇଁ ନଷ୍ଟହୋଇଯିବ."
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1267
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -888,7 +885,7 @@ msgstr[0] ""
 msgstr[1] ""
 "ପୂର୍ବ ଘଣ୍ଟା ଓ %d ମିନିଟ୍ ରେ ହୋଇଥିବା ଦଲିଲର ପରିବର୍ତ୍ତନଗୁଡ଼ିକ ପୂରା ନଷ୍ଟ ହୋଇଯିବ."
 
-#: ../gedit/gedit-commands-file.c:1288
+#: ../gedit/gedit-commands-file.c:1282
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -899,7 +896,7 @@ msgstr[0] ""
 msgstr[1] ""
 "ଦଲିଲରେ ଶେଷ %d ଘଣ୍ଟା କରାଯାଇଥିବା ପରିବର୍ତ୍ତନ ଗୁଡିକ ସବୁଦିନ ପାଇଁ ନଷ୍ଟ ହୋଇଯିବ।"
 
-#: ../gedit/gedit-commands-file.c:1314
+#: ../gedit/gedit-commands-file.c:1308
 msgid "_Revert"
 msgstr "ପୁନଃପ୍ରତ୍ଯାବର୍ତ୍ତନ କରନ୍ତୁ (_R)"
 
@@ -1665,22 +1662,18 @@ msgid "Color Scheme"
 msgstr "ରଙ୍ଗ ଯୋଜନା"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
-#| msgid "Content scheme"
 msgid "Install scheme"
 msgstr "ସ୍ଥାପନ ଯୋଜନା"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:25
-#| msgid "Style Scheme"
 msgid "Install Scheme"
 msgstr "ସ୍ଥାପନ ଯୋଜନା"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:26
-#| msgid "Content scheme"
 msgid "Uninstall scheme"
 msgstr "ବିସ୍ଥାପନ ଯୋଜନା"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:27
-#| msgid "Style Scheme"
 msgid "Uninstall Scheme"
 msgstr "ବିସ୍ଥାପନ ଯୋଜନା"
 
@@ -1760,69 +1753,69 @@ msgstr "ଶୀର୍ଷକ ଓ ପାଦିକା (_a)"
 msgid "_Restore Default Fonts"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅକ୍ଷରରୂପ ପୁନଃସ୍ଥାପନ କରନ୍ତୁ (_R)"
 
-#: ../gedit/gedit-print-preview.c:582
+#: ../gedit/gedit-print-preview.c:562
 msgid "Show the previous page"
 msgstr "ପୂର୍ବ ପୃଷ୍ଠା ଦର୍ଶାନ୍ତୁ"
 
-#: ../gedit/gedit-print-preview.c:594
+#: ../gedit/gedit-print-preview.c:574
 msgid "Show the next page"
 msgstr "ପରବର୍ତ୍ତୀ ପୃଷ୍ଠା ଦର୍ଶାନ୍ତୁ"
 
-#: ../gedit/gedit-print-preview.c:610
+#: ../gedit/gedit-print-preview.c:590
 msgid "Current page (Alt+P)"
 msgstr "ବର୍ତ୍ତମାନର ପୃଷ୍ଠା (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:633
+#: ../gedit/gedit-print-preview.c:613
 msgid "of"
 msgstr "ର"
 
-#: ../gedit/gedit-print-preview.c:641
+#: ../gedit/gedit-print-preview.c:621
 msgid "Page total"
 msgstr "ସମୁଦାୟ ପ୍ରୁଷ୍ଠା ସଂଖ୍ଯା"
 
-#: ../gedit/gedit-print-preview.c:642
+#: ../gedit/gedit-print-preview.c:622
 msgid "The total number of pages in the document"
 msgstr "ଦଲିଲରେ ଥିବା ସମୁଦାୟ ପ୍ରୁଷ୍ଠା ମାନଙ୍କର ସଂଖ୍ଯା"
 
-#: ../gedit/gedit-print-preview.c:659
+#: ../gedit/gedit-print-preview.c:639
 msgid "Show multiple pages"
 msgstr "ଏକାଧିକ ପ୍ରୁଷ୍ଠା ମାନଙ୍କୁ ଦେଖାଇଥାଏ"
 
-#: ../gedit/gedit-print-preview.c:672
+#: ../gedit/gedit-print-preview.c:652
 msgid "Zoom 1:1"
 msgstr "୧:୧ ଅନୁପାତରେ ସାନବଡ କରନ୍ତୁ"
 
-#: ../gedit/gedit-print-preview.c:681
+#: ../gedit/gedit-print-preview.c:661
 msgid "Zoom to fit the whole page"
 msgstr "ସମ୍ପୂର୍ଣ୍ଣ ପୃଷ୍ଠାରେ ମେଳ ହେବାପାଇଁ ସାନବଡ଼ କରନ୍ତୁ"
 
-#: ../gedit/gedit-print-preview.c:690
+#: ../gedit/gedit-print-preview.c:670
 msgid "Zoom the page in"
 msgstr "ବିନ୍ଯାସର ବ୍ଯବସ୍ଥା କରନ୍ତୁ"
 
-#: ../gedit/gedit-print-preview.c:699
+#: ../gedit/gedit-print-preview.c:679
 msgid "Zoom the page out"
 msgstr "ବାହାରି ଯାଇଥିବା ପୃଷ୍ଠାକୁ ସାନବଡ଼କରନ୍ତୁ"
 
-#: ../gedit/gedit-print-preview.c:711
+#: ../gedit/gedit-print-preview.c:691
 msgid "_Close Preview"
 msgstr "ପୂର୍ବାବଲୋକନକୁ ବନ୍ଦ କରନ୍ତୁ (_C)"
 
-#: ../gedit/gedit-print-preview.c:714
+#: ../gedit/gedit-print-preview.c:694
 msgid "Close print preview"
 msgstr "ମୁଦ୍ରଣ ପ୍ରାକଦର୍ଶନକୁ ବନ୍ଦକରନ୍ତୁ"
 
-#: ../gedit/gedit-print-preview.c:783
+#: ../gedit/gedit-print-preview.c:763
 #, c-format
 msgid "Page %d of %d"
 msgstr "ପୃଷ୍ଠା %d ର %d"
 
-#: ../gedit/gedit-print-preview.c:967
+#: ../gedit/gedit-print-preview.c:947
 msgid "Page Preview"
 msgstr "ପ୍ରୁଷ୍ଠା ପୂର୍ବାବଲୋକନ"
 
-#: ../gedit/gedit-print-preview.c:968
+#: ../gedit/gedit-print-preview.c:948
 msgid "The preview of a page in the document to be printed"
 msgstr "ମୂଦ୍ରିତ କରାଯିବା ଦଲିଲର ଗୋଟିଏ ପ୍ରୁଷ୍ଠାର ପୂର୍ବାବଲୋକନ"
 
@@ -2226,7 +2219,6 @@ msgid "Show or hide the statusbar in the current window"
 msgstr "ପ୍ରଚଳିତ ୱିଣ୍ଡୋରେ ଅବସ୍ଥିତିପଟିକୁ ଦର୍ଶାନ୍ତୁ ଅଥବା ଲୁଚାନ୍ତୁ"
 
 #: ../gedit/gedit-ui.h:167
-#| msgid "Edit text at fullscreen"
 msgid "Edit text in fullscreen"
 msgstr "ସମ୍ପୂର୍ଣ୍ଣ ପରଦାରେ ପାଠ୍ଯକୁ ସମ୍ପାଦନ କରନ୍ତୁ"
 
@@ -2299,9 +2291,9 @@ msgstr "%s ବିଶେଷଦର୍ଶନ ଧାରା ବ୍ଯବହାର କ
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
 #: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:450
-#: ../plugins/externaltools/tools/manager.py:561
-#: ../plugins/externaltools/tools/manager.py:882
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:566
+#: ../plugins/externaltools/tools/manager.py:885
 msgid "Plain Text"
 msgstr "ସାଧାରଣ ପାଠ୍ୟ"
 
@@ -2433,16 +2425,13 @@ msgid "There is a new version of gedit"
 msgstr "ସେଠାରେ geditର ଗୋଟିଏ ନୂତନ ସଂସ୍କରଣକୁ ଅଛି"
 
 #: ../plugins/checkupdate/gedit-check-update-plugin.c:321
-#| msgid ""
-#| "You can download the new version of gedit by pressing on the download "
-#| "button"
 msgid ""
 "You can download the new version of gedit by clicking on the download button "
 "or ignore that version and wait for a new one"
 msgstr ""
 "ଆହରଣ ବଟନ ଅଥବା ସେହି ସଂସ୍କରଣକୁ ଅଗ୍ରାହ୍ୟ କରନ୍ତୁ ଏବଂ ନୂଆ ସଂସ୍କରଣକୁ ଅପେକ୍ଷା "
-"କରନ୍ତୁକୁ କ୍ଲିକ କରି "
-"ଆପଣ geditର ନୂତନ ସଂସ୍କରଣକୁ ଆହରଣ କରିପାରିବେ"
+"କରନ୍ତୁକୁ କ୍ଲିକ କରି ଆପଣ "
+"geditର ନୂତନ ସଂସ୍କରଣକୁ ଆହରଣ କରିପାରିବେ"
 
 #. ex:set ts=8 noet:
 #: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
@@ -2472,7 +2461,6 @@ msgid "_Document Statistics"
 msgstr "ଦଲିଲର ପରିସଂଖ୍ଯାନ (_D)"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:429
-#| msgid "Get statistic info on current document"
 msgid "Get statistical information on the current document"
 msgstr "ସାମ୍ପ୍ରତିକ ଦଲିଲର ପରିସଂଖ୍ଯାନ ସୂଚନା ଆଣନ୍ତୁ"
 
@@ -2588,19 +2576,19 @@ msgstr ""
 msgid "Could not execute command: %s"
 msgstr "ନିର୍ଦ୍ଦେଶକୁ ନିଷ୍ପାଦନ କରିପାରିଲା ନାହିଁ: %s"
 
-#: ../plugins/externaltools/tools/functions.py:159
+#: ../plugins/externaltools/tools/functions.py:157
 msgid "You must be inside a word to run this command"
 msgstr "ଏହି ନିର୍ଦ୍ଦେଶକୁ ଚଲାଇବା ପାଇଁ ଆପଣଙ୍କୁ ଗୋଟିଏ ଶବ୍ଦ ମଧ୍ଯରେ ରହିବାକୁ ପଡ଼ିବ"
 
-#: ../plugins/externaltools/tools/functions.py:265
+#: ../plugins/externaltools/tools/functions.py:263
 msgid "Running tool:"
 msgstr "ସାଧନ ଚାଲୁଅଛି:"
 
-#: ../plugins/externaltools/tools/functions.py:294
+#: ../plugins/externaltools/tools/functions.py:292
 msgid "Done."
 msgstr "ସମାପ୍ତ."
 
-#: ../plugins/externaltools/tools/functions.py:296
+#: ../plugins/externaltools/tools/functions.py:294
 msgid "Exited"
 msgstr "ପ୍ରସ୍ଥାନ କରିସାରିଛି"
 
@@ -2608,27 +2596,27 @@ msgstr "ପ୍ରସ୍ଥାନ କରିସାରିଛି"
 msgid "All languages"
 msgstr "ସମସ୍ତ ଭାଷାଗୁଡ଼ିକ"
 
-#: ../plugins/externaltools/tools/manager.py:550
-#: ../plugins/externaltools/tools/manager.py:554
-#: ../plugins/externaltools/tools/manager.py:880
+#: ../plugins/externaltools/tools/manager.py:555
+#: ../plugins/externaltools/tools/manager.py:559
+#: ../plugins/externaltools/tools/manager.py:883
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "ସମସ୍ତ ଭାଷାଗୁଡ଼ିକ"
 
-#: ../plugins/externaltools/tools/manager.py:667
+#: ../plugins/externaltools/tools/manager.py:672
 msgid "New tool"
 msgstr "ନୂତନ ସାଧନ"
 
-#: ../plugins/externaltools/tools/manager.py:798
+#: ../plugins/externaltools/tools/manager.py:803
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "ଏହି ତ୍ୱରକଟି ପୂର୍ବରୁ %s ସହିତ ବନ୍ଧାହୋଇଛି"
 
-#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/manager.py:847
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "ଗୋଟିଏ ନୂତନ ତ୍ୱରକ ଟାଇପକରନ୍ତୁ, କିମ୍ବା ସଫାକରିବା ପାଇଁ Backspace ଦବାନ୍ତୁ"
 
-#: ../plugins/externaltools/tools/manager.py:844
+#: ../plugins/externaltools/tools/manager.py:849
 msgid "Type a new accelerator"
 msgstr "ଗୋଟିଏ ନୂତନ ତ୍ୱରକ ଟାଇପକରନ୍ତୁ"
 
@@ -2706,7 +2694,6 @@ msgid "Insert at cursor position"
 msgstr "ସୂଚକ ସ୍ଥାନରେ ଭର୍ତ୍ତିକରନ୍ତୁ"
 
 #: ../plugins/externaltools/tools/tools.ui.h:18
-#| msgid "Manage _External Tools..."
 msgid "Manage External Tools"
 msgstr "ବାହ୍ୟ ସାଧନଗୁଡ଼ିକୁ ପରିଚାଳନା କରନ୍ତୁ"
 
@@ -2715,7 +2702,6 @@ msgid "_Tools:"
 msgstr "ସାଧନଗୁଡ଼ିକ (_T):"
 
 #: ../plugins/externaltools/tools/tools.ui.h:20
-#| msgid "Add a new snippet..."
 msgid "Add a new tool"
 msgstr "ନୂତନ ଉପକରଣ ଯୋଗକରନ୍ତୁ"
 
@@ -2724,7 +2710,6 @@ msgid "Add Tool"
 msgstr "ଉପକରଣ ଯୋଗକରନ୍ତୁ"
 
 #: ../plugins/externaltools/tools/tools.ui.h:22
-#| msgid "Revert selected snippet"
 msgid "Remove selected tool"
 msgstr "ବଚ୍ଛିତ ଉପକରଣକୁ ବାହାର କରନ୍ତୁ"
 
@@ -2733,12 +2718,10 @@ msgid "Remove Tool"
 msgstr "ଉପକରଣକୁ ବାହାର କରନ୍ତୁ"
 
 #: ../plugins/externaltools/tools/tools.ui.h:24
-#| msgid "_Revert"
 msgid "Revert tool"
 msgstr "ଉପକରଣକୁ ପ୍ରତ୍ଯାବର୍ତ୍ତନ କରନ୍ତୁ"
 
 #: ../plugins/externaltools/tools/tools.ui.h:25
-#| msgid "_Revert"
 msgid "Revert Tool"
 msgstr "ଉପକରଣକୁ ପ୍ରତ୍ଯାବର୍ତ୍ତନ କରନ୍ତୁ"
 
@@ -2764,27 +2747,26 @@ msgid "_Save:"
 msgstr "ସଂରକ୍ଷଣ କରନ୍ତୁ (_S):"
 
 #: ../plugins/externaltools/tools/tools.ui.h:33
-#| msgid "_Shortcut Key:"
 msgid "Shortcut _Key:"
 msgstr "ସଂକ୍ଷିପ୍ତପଥ କି (_K):"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:179
+#: ../plugins/externaltools/tools/windowactivatable.py:173
 msgid "Manage _External Tools..."
 msgstr "ବାହ୍ୟ ସାଧନଗୁଡ଼ିକୁ ପରିଚାଳନା କରନ୍ତୁ (_E)..."
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
+#: ../plugins/externaltools/tools/windowactivatable.py:174
 msgid "Opens the External Tools Manager"
 msgstr "ବାହ୍ୟ ସାଧନ ପରିଚାଳକକୁ ଖୋଲିଥାଏ"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:183
+#: ../plugins/externaltools/tools/windowactivatable.py:177
 msgid "External _Tools"
 msgstr "ବାହ୍ୟ ସାଧନଗୁଡ଼ିକ (_T)"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:184
+#: ../plugins/externaltools/tools/windowactivatable.py:178
 msgid "External tools"
 msgstr "ବାହ୍ୟ ସାଧନଗୁଡ଼ିକ"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:218
+#: ../plugins/externaltools/tools/windowactivatable.py:212
 msgid "Shell Output"
 msgstr "ସେଲ ଫଳାଫଳ"
 
@@ -2794,11 +2776,10 @@ msgid "File Browser Panel"
 msgstr "ଫାଇଲ ବ୍ରାଉଜର ଫଳକ"
 
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
-#| msgid "Easy file access from the side pane"
 msgid "Easy file access from the side panel"
 msgstr "ପାର୍ଶ୍ୱ ପରଦାଖଣ୍ଡରୁ ସହଜ ଫାଇଲ ଅଭିଗମ୍ୟ"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:239
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
 msgid "File System"
 msgstr "ଫାଇଲ ତନ୍ତ୍ର"
 
@@ -3038,7 +3019,6 @@ msgid "Show binary files"
 msgstr "ଦ୍ୱିମୀକ ଫାଇଲଗୁଡ଼ିକୁ ଦର୍ଶାନ୍ତୁ"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:1202
-#| msgid "_Match Filename"
 msgid "Match Filename"
 msgstr "ଫାଇଲ ନାମ ମେଳାନ୍ତୁ"
 
@@ -3128,11 +3108,6 @@ msgid "File Browser Filter Mode"
 msgstr "ଫାଇଲ ବ୍ରାଉଜର ଛଣା ବ୍ୟବସ୍ଥା"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
-#| msgid ""
-#| "This value determines what files get filtered from the file browser. "
-#| "Valid values are: none (filter nothing), hidden (filter hidden files), "
-#| "binary (filter binary files) and hidden_and_binary (filter both hidden "
-#| "and binary files)."
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -3165,7 +3140,6 @@ msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Emacs, Kate ଏବଂ Vim-style modelines gedit ପାଇଁ ସମର୍ଥନ ଦିଅନ୍ତି."
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
-#| msgid "C_ommand color:"
 msgid "Command Color Text"
 msgstr "ନିର୍ଦ୍ଦେଶ ପାଠ୍ୟ ରଙ୍ଗ"
 
@@ -3174,7 +3148,6 @@ msgid "The command color text"
 msgstr "ନିର୍ଦ୍ଦେଶ ରଙ୍ଗ ପାଠ୍ୟ"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
-#| msgid "_Error color:"
 msgid "Error Color Text"
 msgstr "ତ୍ରୁଟି ରଙ୍ଗ ପାଠ୍ୟ"
 
@@ -3206,7 +3179,6 @@ msgid "Python Console"
 msgstr "Python କୋନସୋଲ"
 
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
-#| msgid "Interactive python console standing in the bottom panel"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "ତଳ ପ୍ୟାନେଲରେ ରଖାଯାଇଥିବା ପାରସ୍ପରିକ  Python କୋନସୋଲ"
 
@@ -3308,9 +3280,6 @@ msgstr "ବଚ୍ଛିତ ସୂଚନାକୁ ଲିଭାନ୍ତୁ"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:663
-#| msgid ""
-#| "This is not a valid tab trigger. Triggers can either contain letters or a "
-#| "single, non alphanumeric, character like {, [, etcetera."
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3323,7 +3292,6 @@ msgstr ""
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
 #: ../plugins/snippets/snippets/snippets.ui.h:16
-#| msgid "Single word with which the snippet is activated after pressing tab"
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "ଏକ ଶବ୍ଦ ଯାହା ସହିତ ସୂଚନାଟି ଟ୍ୟାବ ଦବାଇବା ପରେ ସକ୍ରିୟହୋଇଥାଏ"
 
@@ -3420,12 +3388,10 @@ msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Python ନିର୍ଦ୍ଦେଶ (%s)ର ନିଷ୍ପାଦନ ବିଫଳ ହୋଇଛି: %s"
 
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:2
-#| msgid "Insert often used pieces of text in a fast way"
 msgid "Insert often-used pieces of text in a fast way"
 msgstr "ବ୍ୟବହୃତ ହେଉଥିବା ପାଠ୍ୟଖଣ୍ଡକୁ ଦୃତଗତିରେ ଭର୍ତ୍ତିକରନ୍ତୁ"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:1
-#| msgid "Manage snippets"
 msgid "Manage Snippets"
 msgstr "ସୂଚନାଗୁଡ଼ିକୁ ପରିଚାଳନା କରନ୍ତୁ"
 
@@ -3438,17 +3404,14 @@ msgid "Create new snippet"
 msgstr "ନୂଆ ସୂଚନା ସୃଷ୍ଟି କରନ୍ତୁ"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:4
-#| msgid "Snippets"
 msgid "Add Snippet"
 msgstr "ଗୋଟିଏ ସୂଚନା ଯୋଗକରନ୍ତୁ"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:6
-#| msgid "Snippets"
 msgid "Remove Snippet"
 msgstr "ସୂଚନାଗୁଡ଼ିକୁ ବାହାର କରନ୍ତୁ"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:8
-#| msgid "Import snippets"
 msgid "Import Snippets"
 msgstr "ସୂଚନାଗୁଡ଼ିକୁ ଆମଦାନୀ କରନ୍ତୁ"
 
@@ -3457,7 +3420,6 @@ msgid "Export selected snippets"
 msgstr "ବଚ୍ଛିତ ସୂଚନାଗୁଡ଼ିକୁ ରପ୍ତାନୀ କରନ୍ତୁ"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:10
-#| msgid "Export snippets"
 msgid "Export Snippets"
 msgstr "ସୂଚନାଗୁଡ଼ିକୁ ରପ୍ତାନି କରନ୍ତୁ"
 
@@ -3779,8 +3741,8 @@ msgid ""
 "format should be used."
 msgstr ""
 "ଯଦି ଚାଳକକୁ କୌଣସି ଶୈଳୀ ପାଇଁ ପଚରାଯାଏ ଅଥବା ଯଦି ବଚ୍ଛିତ ଅଥବା ଇଚ୍ଛାରୂପଣ ଶୈଳୀକୁ "
-"ବ୍ୟବହାର "
-"କରିବା ପାଇଁ ପଚରାଯାଏ।"
+"ବ୍ୟବହାର କରିବା "
+"ପାଇଁ ପଚରାଯାଏ।"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
 msgid "Selected Format"
