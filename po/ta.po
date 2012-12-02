@@ -14,15 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-05 21:40+0530\n"
-"PO-Revision-Date: 2012-09-05 21:43+0530\n"
-"Last-Translator: Dr.T.Vasudevan <agnihot3@gmail.com>\n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2012-12-02 15:34+0530\n"
+"PO-Revision-Date: 2012-12-02 15:38+0530\n"
+"Last-Translator: Dr.T.Vasudevan <drtvasudevan@gmail.com>\n"
+"Language-Team: American English <gnome-tamil-translation@googlegroups.com>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\\n"
 "\n"
 "\n"
@@ -32,221 +32,228 @@ msgstr ""
 "\n"
 
 #: ../data/gedit.desktop.in.in.h:1
-msgid "Edit text files"
-msgstr "உரை கோப்புகளை திருத்தவும் "
+msgid "gedit"
+msgstr "கெடிட்"
 
-#: ../data/gedit.desktop.in.in.h:2
-msgid "Open a New Document"
-msgstr "ஒரு புதிய ஆவணத்தை திற"
-
-#: ../data/gedit.desktop.in.in.h:3
-msgid "Open a New Window"
-msgstr "புதிய சாளரத்தை திற"
-
-#: ../data/gedit.desktop.in.in.h:4 ../gedit/gedit-print-job.c:791
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:791
 msgid "Text Editor"
 msgstr "உரை திருத்தி "
 
-#: ../data/gedit.desktop.in.in.h:5
-msgid "gedit"
-msgstr "gedit"
+#: ../data/gedit.desktop.in.in.h:3
+msgid "Edit text files"
+msgstr "உரை கோப்புகளை திருத்தவும் "
 
-#: ../data/gedit.desktop.in.in.h:6
+#: ../data/gedit.desktop.in.in.h:4
 msgid "gedit Text Editor"
 msgstr "gedit உரை திருத்தி "
 
+#: ../data/gedit.desktop.in.in.h:5
+msgid "Text;"
+msgstr "உரை;"
+
+#: ../data/gedit.desktop.in.in.h:6
+msgid "Open a New Window"
+msgstr "புதிய சாளரத்தை திற"
+
+#: ../data/gedit.desktop.in.in.h:7
+msgid "Open a New Document"
+msgstr "ஒரு புதிய ஆவணத்தை திற"
+
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+msgid "Use Default Font"
+msgstr "கொடாநிலை எழுத்துரு பயன்படுத்துக"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+msgid ""
+"Whether to use the system's default fixed width font for editing text "
+"instead of a font specific to gedit. If this option is turned off, then the "
+"font named in the \"Editor Font\" option will be used instead of the system "
+"font."
+msgstr ""
+"கணினியின் இயல்பான எழுத்துரு அளவில் உங்கள் எழுத்துருக்கள் இருக்க வேண்டுமா. "
+"இந்த தேர்வை "
+"நீக்கினால் \"எழுத்துருவை திருத்து\" தேர்வின் மூலம் நீங்கள் தேர்வு செய்தவைகளை "
+"பயன்படுத்தும்"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+msgid "Editor Font"
+msgstr "திருத்தி எழுத்துரு"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
-"ஒரு தனிப்பயன் எழுத்து தொகுக்கும் பரப்பில் பயன்படுத்தப்படும். \"முன்னிருப்பு எழுத்துருவை "
+"ஒரு தனிப்பயன் எழுத்து தொகுக்கும் பரப்பில் பயன்படுத்தப்படும். \"முன்னிருப்பு "
+"எழுத்துருவை "
 "பயன்படுத்து\"தேர்வு நீக்கப்பட்டு இருந்தால் மட்டுமே இது செயல் படும்."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
-msgid "Active plugins"
-msgstr "செயல்படும் செருகிகள்"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
-msgid "Automatic indent"
-msgstr "தானியங்கி ஒதுக்கம்"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
-msgid "Automatically Detected Encodings"
-msgstr "தானாக கண்டறிந்த குறியீட்டாக்கம்"
-
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
-msgid "Autosave"
-msgstr "தானாக சேமிக்கவும்"
+msgid "Style Scheme"
+msgstr "பாங்கு திட்டங்கள்"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
-msgid "Autosave Interval"
-msgstr "தானாக சேமிக்க இடைவெளி"
+msgid "The ID of a GtkSourceView Style Scheme used to color the text."
+msgstr "உரையை வண்ணப்படுத்த பயன்படும்  GtkSourceView பாணி திட்டத்தின் அடையாளம்"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
-msgid "Body Font for Printing"
-msgstr "முழு உரையின் அச்சிடுவதற்கான எழுத்துரு"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
 msgid "Create Backup Copies"
 msgstr "காப்புநகல்களை உருவாக்கு"
 
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+msgid ""
+"Whether gedit should create backup copies for the files it saves. You can "
+"set the backup file extension with the \"Backup Copy Extension\" option."
+msgstr ""
+"கெடிட் தான் சேமிக்கும் கோப்புகளுக்கான காப்புக்கோப்பை உருவாக்க வேண்டுமா. "
+"நீங்கள் \" காப்பு "
+"நகல் விரிவாக்கம் \" ஐ பயன்படுத்தி காப்பு கோப்பை அமைக்கலாம்"
+
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
-msgid "Display Line Numbers"
-msgstr "வரிசை எண்களை காட்டுக"
+msgid "Autosave"
+msgstr "தானாக சேமிக்கவும்"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
-msgid "Display Right Margin"
-msgstr "வலது எல்லையை காண்பிக்கவும்"
+msgid ""
+"Whether gedit should automatically save modified files after a time "
+"interval. You can set the time interval with the \"Autosave Interval\" "
+"option."
+msgstr ""
+"மாற்றப்பட்ட கோப்புகளை கெடிட் குறிப்பிட்ட கால இடைவெளிக்கு பிறகு தானாக சேமிக்க "
+"வேண்டுமா. "
+"\"தானாக சேமிக்கும் கால இடைவெளி\" இல் நேரத்தை அமைக்கலாம்."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
-msgid "Editor Font"
-msgstr "திருத்தி எழுத்துரு"
+msgid "Autosave Interval"
+msgstr "தானாக சேமிக்க இடைவெளி"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
-msgid "Enable Search Highlighting"
-msgstr "தேடுதல் சிறப்புச் சுட்டுதலை இயலுமைபடுத்தவும்"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
-msgid "Enable Syntax Highlighting"
-msgstr "தொடர் அமைப்பை சிறப்புச் சுட்டுதலை இயலுமைபடுத்தவும்"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
-msgid "Encodings shown in menu"
-msgstr "பட்டியலில் காட்டப் பட்ட குறியாக்கங்கள்"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
-msgid "Ensure Trailing Newline"
-msgstr "தொடரும் புதிய வரியை நிச்சயம் செய்க"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
-msgid "Header Font for Printing"
-msgstr "அச்சிட தலைப்பு எழுத்துக்கான எழுத்துரு"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
-msgid "Highlight Current Line"
-msgstr "நடப்பு வரியை சிறப்புச் சுட்டுக"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
-msgid "Highlight Matching Brackets"
-msgstr " பொருந்தும் அடைப்புக்குறிகளை சிறப்புச்சுட்டு"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
-msgid ""
-"If this value is 0, then no line numbers will be inserted when printing a "
-"document. Otherwise, gedit will print line numbers every such number of "
-"lines."
-msgstr ""
-"இந்த மதிப்பு 0 ஆக இருந்தால், கோட்டு எண் அச்சிடும் ஆவணத்தில் புகுத்தப் படாது. இல்லையானால் "
-"உள்ள எண்ணுக்கு தகுந்தபடி அந்த எண் வரிகளுக்கு ஒரு முறை கோட்டு எண் கெடிடால் அச்சில் "
-"புகுத்தப் படும்."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
-msgid "Insert spaces"
-msgstr "இடைவெளிகளை செருகவும்"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
-msgid "Line Number Font for Printing"
-msgstr "வரியெண்ணை அச்சடிக்க வேண்டிய எழுத்துரு"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
-msgid "Line Wrapping Mode"
-msgstr "வரி மடக்கல் பாங்கு"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
-msgid ""
-"List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
-msgstr ""
-"செயல்படும் உதவி செருகல் களின் பட்டியல். உதவி செருகல் களின் \"Location\" இதில் உள்ளது. "
-"எந்த ஒரு உதவி செருகலின் \"Location\" ஐ அறிய .gedit-plugin கோப்பை பார்க்கவும்"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
-msgid ""
-"List of encodings shown in the Character Encoding menu in open/save file "
-"selector. Only recognized encodings are used."
-msgstr ""
-"திற/சேமி கோப்பு தேர்வு செய்வானில் எண்-எழுத்து குறியீட்டாக்க மெனுவில் உள்ள எழுத்துருக்களின் "
-"பட்டியல். புரியக்கூடிய குறிமுறைகள் மட்டுமே பயன்படுத்தப்பட்டுள்ளன."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
-msgid "Maximum Number of Undo Actions"
-msgstr "அதிகபட்ச மறை செயல்களின் எண்ணிக்கை"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
-msgid "Maximum Recent Files"
-msgstr "அதிகபட்ச அண்மைக் கோப்புகள்"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
-msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions."
-msgstr ""
-"கெடிட் ஆல் ரத்து செய் அல்லது மீட்டும் செய் செயல்களின்அதிகபட்ச எண்ணிக்கை. எல்லையற்ற எண்ணிக்கை "
-"செயல்களுக்கு \"-1\" உபயோகிக்கவும்."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
-msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
-msgstr ""
-"கெடிட் ஆல் ரத்து செய் அல்லது மீட்டும் செய் செயல்களின்அதிகபட்ச எண்ணிக்கை. எல்லையற்ற எண்ணிக்கை "
-"செயல்களுக்கு \"-1\" உபயோகிக்கவும். 2.12.0 முதல் கை விடப்பட்டது "
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
-msgid "Notebook Show Tabs Mode"
-msgstr "நோட்டுப்புத்தக கீற்றை காட்டு பாங்கு"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"தானாக கோப்பை சேமிக்க ஆகும் நேரம். இது விளைவுகளை மட்டும் எடுத்துக்கொள்ளும்\"தானாக "
+"தானாக கோப்பை சேமிக்க ஆகும் நேரம். இது விளைவுகளை மட்டும் "
+"எடுத்துக்கொள்ளும்\"தானாக "
 "சேமித்தல்\" தேர்வு செயல்படுத்தப்பட்டது."
 
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+msgid "Undo Actions Limit (DEPRECATED)"
+msgstr "செயல்கள் வரையறையை மறை (DEPRECATED) -கை விடப்பட்டது"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
+msgstr ""
+"கெடிட் ஆல் ரத்து செய் அல்லது மீட்டும் செய் செயல்களின்அதிகபட்ச எண்ணிக்கை. "
+"எல்லையற்ற எண்ணிக்கை "
+"செயல்களுக்கு \"-1\" உபயோகிக்கவும். 2.12.0 முதல் கை விடப்பட்டது "
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+msgid "Maximum Number of Undo Actions"
+msgstr "அதிகபட்ச மறை செயல்களின் எண்ணிக்கை"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
+msgstr ""
+"கெடிட் ஆல் ரத்து செய் அல்லது மீட்டும் செய் செயல்களின்அதிகபட்ச எண்ணிக்கை. "
+"எல்லையற்ற எண்ணிக்கை "
+"செயல்களுக்கு \"-1\" உபயோகிக்கவும்."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+msgid "Line Wrapping Mode"
+msgstr "வரி மடக்கல் பாங்கு"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+msgid ""
+"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
+"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+"wrapping at individual character boundaries. Note that the values are case-"
+"sensitive, so make sure they appear exactly as mentioned here."
+msgstr ""
+"திருத்துவதற்காக நீண்ட வரிகளை எவ்வாறு மடக்க வேண்டும் என்பதை குறிப்பிடு "
+"\"none\" மடக்காமல் "
+"இருக்க  \"word\" குறிப்பிட்ட எல்லைக்குள் மடக்க மற்றும் \"char\" குறிப்பிட்ட "
+"எழுத்து "
+"எண்ணிக்கைக்குள் மடக்க உதவும். மதிப்புகள் மேல் நிலை கீழ் நிலை எழுத்துக்களை "
+"மாற்றி "
+"உணரக்கூடியவை அதனால் இங்கே துல்லியமாக காட்டப்பட வேண்டும் என்பதை நினைவில் கொள்க"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+msgid "Tab Size"
+msgstr "தத்தல் அளவு"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+msgid ""
+"Specifies the number of spaces that should be displayed instead of Tab "
+"characters."
+msgstr ""
+"தத்தல் விசையை பயன்படுத்தும்போது காட்டப்பட வேண்டிய இடைவெளிகளின் எண்ணிக்கையை "
+"குறிப்பிடவும்"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+msgid "Insert spaces"
+msgstr "இடைவெளிகளை செருகவும்"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+msgid "Whether gedit should insert spaces instead of tabs."
+msgstr "கெடிட் தத்தல்களுக்கு பதிலாக வெற்று இடத்தை சொருக வேண்டுமா."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+msgid "Automatic indent"
+msgstr "தானியங்கி ஒதுக்கம்"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+msgid "Whether gedit should enable automatic indentation."
+msgstr "கெடிட் தானியங்கு ஓரச்சீர்மையை இயலுமை படுத்த வேண்டுமா."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+msgid "Display Line Numbers"
+msgstr "வரிசை எண்களை காட்டுக"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+msgid "Whether gedit should display line numbers in the editing area."
+msgstr "கெடிட் திருத்தும் பரப்பில் கோட்டு எண்ணிக்கையை காட்ட வேண்டுமா."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+msgid "Highlight Current Line"
+msgstr "நடப்பு வரியை சிறப்புச் சுட்டுக"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+msgid "Whether gedit should highlight the current line."
+msgstr "கெடிட் நடப்பு வரியை சிறப்பு சுட்ட வேண்டுமா."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+msgid "Highlight Matching Brackets"
+msgstr " பொருந்தும் அடைப்புக்குறிகளை சிறப்புச்சுட்டு"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+msgid "Whether gedit should highlight matching brackets."
+msgstr "கெடிட் பொருந்தும் அடைப்புகுறிகளை சிறப்பு சுட்ட வேண்டுமா."
+
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
-msgid "Print Header"
-msgstr "தலைப்பகுதியை அச்சிடுக"
+msgid "Display Right Margin"
+msgstr "வலது எல்லையை காண்பிக்கவும்"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
-msgid "Print Line Numbers"
-msgstr "வரிசை எண்களை அச்சிடுக"
+msgid "Whether gedit should display the right margin in the editing area."
+msgstr "கெடிட் திருத்தும் பரப்பில் வலது விளிம்பை காட்ட வேண்டுமா. "
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
-msgid "Print Syntax Highlighting"
-msgstr "தொடர் அமைப்பை அச்சிடவும்"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
-msgid "Printing Line Wrapping Mode"
-msgstr "வரி மடக்கல் பாங்கை அச்சடி"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
-msgid "Restore Previous Cursor Position"
-msgstr "முந்தைய நிலைகாட்டி இடத்தை மறுசேமி"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
 msgid "Right Margin Position"
 msgstr "வலது எல்லை இடம்"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
-msgid "Side panel is Visible"
-msgstr "பக்கப் பட்டை தெரிகிறது"
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+msgid "Specifies the position of the right margin."
+msgstr "வலது எல்லையின் இருப்பிடத்தை குறிப்பிடுகிறது."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
 msgid "Smart Home End"
 msgstr "சூட்டிகை இல்லம் முடிவு"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
-msgid ""
-"Sorted list of encodings used by gedit for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
-"recognized encodings are used."
-msgstr ""
-"ஜிஎடிட் பயன்படுத்தி தானாகவே எழுத்துருக்களை கண்டறிந்துகொள்வதற்காக பட்டியலில் உள்ள "
-"எழுத்துருக்கள் \"தற்போதைய\" இப்போதுள்ள மொழியின் எழுத்துருவைக்காட்டும்."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -258,209 +265,205 @@ msgid ""
 msgstr ""
 "HOME மற்றும் END விசைகளை அழுத்திய பின் எப்படி நிலைக்காட்டி நகர்கிறது என்பதை "
 "குறிப்பிடுகிறது. வரியின் துவக்கம்/ முடிவுக்கு எப்போதும் நகர \"DISABLED"
-"\" (செயல்நீக்கப்பட்டது) ஐ பயன்படுத்துக.  முதல் முறை அழுத்திய பின்  வரியின் துவக்கம்/ "
-"முடிவுக்கு நகரவும் இரண்டாம் முறை அழுத்திய பின் காலி இடத்தை உதாசீனம் செய்து உரையின் "
-"துவக்கம்/ முடிவுக்கு நகர \"after\" ஐ பயன்படுத்துக. முதல் முறை அழுத்திய பின் காலி "
-"இடத்தை உதாசீனம் செய்து உரையின் துவக்கம்/ முடிவுக்கு நகரவும், இரண்டாம் முறை அழுத்திய பின்  "
-"வரியின் துவக்கம்/ முடிவுக்கு நகரவும் \"before\" ஐ பயன்படுத்துக. மேலும் எப்போதும் வரியை "
+"\" (செயல்நீக்கப்பட்டது) ஐ பயன்படுத்துக.  முதல் முறை அழுத்திய பின்  வரியின் "
+"துவக்கம்/ "
+"முடிவுக்கு நகரவும் இரண்டாம் முறை அழுத்திய பின் காலி இடத்தை உதாசீனம் செய்து "
+"உரையின் "
+"துவக்கம்/ முடிவுக்கு நகர \"after\" ஐ பயன்படுத்துக. முதல் முறை அழுத்திய பின் "
+"காலி "
+"இடத்தை உதாசீனம் செய்து உரையின் துவக்கம்/ முடிவுக்கு நகரவும், இரண்டாம் முறை "
+"அழுத்திய பின்  "
+"வரியின் துவக்கம்/ முடிவுக்கு நகரவும் \"before\" ஐ பயன்படுத்துக. மேலும் "
+"எப்போதும் வரியை "
 "விலக்கி உரையின் துவக்கம்/ முடிவுக்கு நகர \"always\" ஐ பயன்படுத்துக."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+msgid "Restore Previous Cursor Position"
+msgstr "முந்தைய நிலைகாட்டி இடத்தை மறுசேமி"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
-"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
-"individual character boundaries. Note that the values are case-sensitive, so "
-"make sure they appear exactly as mentioned here."
+"Whether gedit should restore the previous cursor position when a file is "
+"loaded."
 msgstr ""
-"அச்சடிப்பதற்காக நீண்ட வரிகளை எவ்வாறு மடக்க வேண்டும் என்பதை குறிப்பிடு \"none\" மடக்காமல் "
-"இருக்க  \"word\" குறிப்பிட்ட எல்லைக்குள் மடக்க மற்றும் \"char\" குறிப்பிட்ட எழுத்து "
-"எண்ணிக்கைக்குள் மடக்க உதவும். மதிப்புகள் மேல் நிலை கீழ் நிலை எழுத்துக்களை மாற்றி "
-"உணரக்கூடியவை அதனால் இங்கே துல்லியமாக காட்டப்பட வேண்டும் என்பதை நினைவில் கொள்க."
+"கெடிட் கோப்பை திறக்கும் போது நிலை காட்டியை முன் இருந்த இடத்திலேயே வைக்க "
+"வேண்டுமா"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+msgid "Enable Syntax Highlighting"
+msgstr "தொடர் அமைப்பை சிறப்புச் சுட்டுதலை இயலுமைபடுத்தவும்"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+msgid "Whether gedit should enable syntax highlighting."
+msgstr "கெடிட் தொடரமைப்பு சிறப்புச் சுட்டலை இயலுமைபடுத்த வேண்டுமா."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+msgid "Enable Search Highlighting"
+msgstr "தேடுதல் சிறப்புச் சுட்டுதலை இயலுமைபடுத்தவும்"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-"wrapping at individual character boundaries. Note that the values are case-"
-"sensitive, so make sure they appear exactly as mentioned here."
+"Whether gedit should highlight all the occurrences of the searched text."
 msgstr ""
-"திருத்துவதற்காக நீண்ட வரிகளை எவ்வாறு மடக்க வேண்டும் என்பதை குறிப்பிடு \"none\" மடக்காமல் "
-"இருக்க  \"word\" குறிப்பிட்ட எல்லைக்குள் மடக்க மற்றும் \"char\" குறிப்பிட்ட எழுத்து "
-"எண்ணிக்கைக்குள் மடக்க உதவும். மதிப்புகள் மேல் நிலை கீழ் நிலை எழுத்துக்களை மாற்றி "
-"உணரக்கூடியவை அதனால் இங்கே துல்லியமாக காட்டப்பட வேண்டும் என்பதை நினைவில் கொள்க"
+"கெடிட் ஆவணத்தில் தேடப் பட்ட சொல் இருக்கும் எல்லா இடங்களையும் சிறப்பு சுட்ட "
+"வேண்டுமா."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
-msgid "Specifies the font to use for a document's body when printing documents."
-msgstr "ஆவணம் அச்சடிக்கும் போது பயன்படுத்த வேண்டிய எழுத்துருவை குறிக்கும்"
+msgid "Ensure Trailing Newline"
+msgstr "தொடரும் புதிய வரியை நிச்சயம் செய்க"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
 msgid ""
-"Specifies the font to use for line numbers when printing. This will only "
-"take effect if the \"Print Line Numbers\" option is non-zero."
+"Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
-"அச்சிடும்பொழுது வரி எண்ணைப் பயன்படுத்த எழுத்தைக் குறிப்பிடு.\"Print Line Numbers\" "
-"தேர்வு பூஜியம் இல்லையென்றால் அது விளைவை ஏற்கும்."
+"கெடிட் ஆவணங்கள் எப்போதும் ஒரு புதிய வரியுடன் முடியும் என நிச்சயிக்குமா."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
-msgid ""
-"Specifies the font to use for page headers when printing a document. This "
-"will only take effect if the \"Print Header\" option is turned on."
-msgstr ""
-"ஆவணத்தை அச்சிடும்பொழுதுத் தலைப்புப் பக்கத்திற்குப் பயன்படும் எழுத்தைக் குறிப்பிடு.  \"Print "
-"Header\" தேர்வினைத் திருப்ப இது மட்டுமே செயல் கொள்ளும்."
+msgid "Toolbar is Visible"
+msgstr "கருவிப்பட்டை தெரிகிறது"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
-msgid ""
-"Specifies the maximum number of recently opened files that will be displayed "
-"in the \"Recent Files\" submenu."
-msgstr "சமீபத்திய கோப்புகள் துணைப்பட்டியலிக் காட்டப்பட வேண்டிய அதிக பட்ச கோப்புகளின் எண்ணிக்கை"
+msgid "Whether the toolbar should be visible in editing windows."
+msgstr "திருத்தி சாளரத்தில் கருவிப்பட்டி காட்டப்பட வேண்டுமா"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
-msgid ""
-"Specifies the number of spaces that should be displayed instead of Tab "
-"characters."
-msgstr ""
-"தத்தல் விசையை பயன்படுத்தும்போது காட்டப்பட வேண்டிய இடைவெளிகளின் எண்ணிக்கையை குறிப்பிடவும்"
+msgid "Notebook Show Tabs Mode"
+msgstr "நோட்டுப்புத்தக கீற்றை காட்டு பாங்கு"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
-msgid "Specifies the position of the right margin."
-msgstr "வலது எல்லையின் இருப்பிடத்தை குறிப்பிடுகிறது."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"நோட்டுப்புத்தகத்தின் கீற்றுக்களை எப்போது காட்ட வேண்டும் என்பதை குறிப்பிடுகிறது. \"never\" "
-"எப்போதும் காட்டாமல்  இருக்க.  \"always\" எப்போதும் காட்ட; மற்றும் \"auto\" ஒன்றுக்கு "
-"மேற்பட்ட கீற்றூக்கள் இருக்கும்போது மட்டும் காட்ட. மதிப்புகள் மேல் நிலை கீழ் நிலை எழுத்துக்களை "
-"மாற்றி உணரக்கூடியவை அதனால் இங்கே உள்ளதுபோல் துல்லியமாக காட்டப்பட வேண்டும் என்பதை நினைவில் "
+"நோட்டுப்புத்தகத்தின் கீற்றுக்களை எப்போது காட்ட வேண்டும் என்பதை "
+"குறிப்பிடுகிறது. \"never\" "
+"எப்போதும் காட்டாமல்  இருக்க.  \"always\" எப்போதும் காட்ட; மற்றும் \"auto\" "
+"ஒன்றுக்கு "
+"மேற்பட்ட கீற்றூக்கள் இருக்கும்போது மட்டும் காட்ட. மதிப்புகள் மேல் நிலை கீழ் "
+"நிலை எழுத்துக்களை "
+"மாற்றி உணரக்கூடியவை அதனால் இங்கே உள்ளதுபோல் துல்லியமாக காட்டப்பட வேண்டும் "
+"என்பதை நினைவில் "
 "கொள்க."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
 msgid "Status Bar is Visible"
 msgstr "நிலை-பட்டையைக் காட்டுக"
 
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
+msgstr "திருத்தி சாளரத்தின் கீழ் உள்ள நிலைப்பட்டி காட்டப்பட வேண்டுமா"
+
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
-msgid "Style Scheme"
-msgstr "பாங்கு திட்டங்கள்"
+msgid "Side panel is Visible"
+msgstr "பக்கப் பட்டை தெரிகிறது"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
-msgid "Tab Size"
-msgstr "தத்தல் அளவு"
+msgid ""
+"Whether the side panel at the left of editing windows should be visible."
+msgstr ""
+"திருத்தும் சாளரங்களின் இடது பக்கத்தில் பக்கச் சட்டம் காட்டப்பட வேண்டுமா"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
-msgid "The ID of a GtkSourceView Style Scheme used to color the text."
-msgstr "உரையை வண்ணப்படுத்த பயன்படும்  GtkSourceView பாணி திட்டத்தின் அடையாளம்"
+msgid "Maximum Recent Files"
+msgstr "அதிகபட்ச அண்மைக் கோப்புகள்"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
-msgid "Toolbar is Visible"
-msgstr "கருவிப்பட்டை தெரிகிறது"
+msgid ""
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
+msgstr ""
+"சமீபத்திய கோப்புகள் துணைப்பட்டியலிக் காட்டப்பட வேண்டிய அதிக பட்ச கோப்புகளின் "
+"எண்ணிக்கை"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
-msgid "Undo Actions Limit (DEPRECATED)"
-msgstr "செயல்கள் வரையறையை மறை (DEPRECATED) -கை விடப்பட்டது"
+msgid "Print Syntax Highlighting"
+msgstr "தொடர் அமைப்பை அச்சிடவும்"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
-msgid "Use Default Font"
-msgstr "கொடாநிலை எழுத்துரு பயன்படுத்துக"
+msgid "Whether gedit should print syntax highlighting when printing documents."
+msgstr ""
+"ஆவணத்தை அச்சிடும்பொழுது கெடிட் தொடரமைப்பு சிறப்புச் சுட்டலை அச்சிட வேண்டுமா."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
-msgid ""
-"Whether gedit should automatically save modified files after a time "
-"interval. You can set the time interval with the \"Autosave Interval\" "
-"option."
-msgstr ""
-"மாற்றப்பட்ட கோப்புகளை கெடிட் குறிப்பிட்ட கால இடைவெளிக்கு பிறகு தானாக சேமிக்க வேண்டுமா. "
-"\"தானாக சேமிக்கும் கால இடைவெளி\" இல் நேரத்தை அமைக்கலாம்."
+msgid "Print Header"
+msgstr "தலைப்பகுதியை அச்சிடுக"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
-msgid ""
-"Whether gedit should create backup copies for the files it saves. You can "
-"set the backup file extension with the \"Backup Copy Extension\" option."
-msgstr ""
-"கெடிட் தான் சேமிக்கும் கோப்புகளுக்கான காப்புக்கோப்பை உருவாக்க வேண்டுமா. நீங்கள் \" காப்பு "
-"நகல் விரிவாக்கம் \" ஐ பயன்படுத்தி காப்பு கோப்பை அமைக்கலாம்"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
-msgid "Whether gedit should display line numbers in the editing area."
-msgstr "கெடிட் திருத்தும் பரப்பில் கோட்டு எண்ணிக்கையை காட்ட வேண்டுமா."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
-msgid "Whether gedit should display the right margin in the editing area."
-msgstr "கெடிட் திருத்தும் பரப்பில் வலது விளிம்பை காட்ட வேண்டுமா. "
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
-msgid "Whether gedit should enable automatic indentation."
-msgstr "கெடிட் தானியங்கு ஓரச்சீர்மையை இயலுமை படுத்த வேண்டுமா."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
-msgid "Whether gedit should enable syntax highlighting."
-msgstr "கெடிட் தொடரமைப்பு சிறப்புச் சுட்டலை இயலுமைபடுத்த வேண்டுமா."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
-msgid "Whether gedit should highlight all the occurrences of the searched text."
-msgstr "கெடிட் ஆவணத்தில் தேடப் பட்ட சொல் இருக்கும் எல்லா இடங்களையும் சிறப்பு சுட்ட வேண்டுமா."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
-msgid "Whether gedit should highlight matching brackets."
-msgstr "கெடிட் பொருந்தும் அடைப்புகுறிகளை சிறப்பு சுட்ட வேண்டுமா."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
-msgid "Whether gedit should highlight the current line."
-msgstr "கெடிட் நடப்பு வரியை சிறப்பு சுட்ட வேண்டுமா."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "கெடிட் ஆவணத்தை அச்சடிக்கும் போது ஆவணத் தலைப்பை சேர்க்க வேண்டுமா."
 
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+msgid "Printing Line Wrapping Mode"
+msgstr "வரி மடக்கல் பாங்கை அச்சடி"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+msgid ""
+"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
+"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
+msgstr ""
+"அச்சடிப்பதற்காக நீண்ட வரிகளை எவ்வாறு மடக்க வேண்டும் என்பதை குறிப்பிடு "
+"\"none\" மடக்காமல் "
+"இருக்க  \"word\" குறிப்பிட்ட எல்லைக்குள் மடக்க மற்றும் \"char\" குறிப்பிட்ட "
+"எழுத்து "
+"எண்ணிக்கைக்குள் மடக்க உதவும். மதிப்புகள் மேல் நிலை கீழ் நிலை எழுத்துக்களை "
+"மாற்றி "
+"உணரக்கூடியவை அதனால் இங்கே துல்லியமாக காட்டப்பட வேண்டும் என்பதை நினைவில் கொள்க."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+msgid "Print Line Numbers"
+msgstr "வரிசை எண்களை அச்சிடுக"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+msgid ""
+"If this value is 0, then no line numbers will be inserted when printing a "
+"document. Otherwise, gedit will print line numbers every such number of "
+"lines."
+msgstr ""
+"இந்த மதிப்பு 0 ஆக இருந்தால், கோட்டு எண் அச்சிடும் ஆவணத்தில் புகுத்தப் படாது. "
+"இல்லையானால் "
+"உள்ள எண்ணுக்கு தகுந்தபடி அந்த எண் வரிகளுக்கு ஒரு முறை கோட்டு எண் கெடிடால் "
+"அச்சில் "
+"புகுத்தப் படும்."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+msgid "Body Font for Printing"
+msgstr "முழு உரையின் அச்சிடுவதற்கான எழுத்துரு"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
+msgstr "ஆவணம் அச்சடிக்கும் போது பயன்படுத்த வேண்டிய எழுத்துருவை குறிக்கும்"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+msgid "Header Font for Printing"
+msgstr "அச்சிட தலைப்பு எழுத்துக்கான எழுத்துரு"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+msgid ""
+"Specifies the font to use for page headers when printing a document. This "
+"will only take effect if the \"Print Header\" option is turned on."
+msgstr ""
+"ஆவணத்தை அச்சிடும்பொழுதுத் தலைப்புப் பக்கத்திற்குப் பயன்படும் எழுத்தைக் "
+"குறிப்பிடு.  \"Print "
+"Header\" தேர்வினைத் திருப்ப இது மட்டுமே செயல் கொள்ளும்."
+
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
-msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "கெடிட் தத்தல்களுக்கு பதிலாக வெற்று இடத்தை சொருக வேண்டுமா."
+msgid "Line Number Font for Printing"
+msgstr "வரியெண்ணை அச்சடிக்க வேண்டிய எழுத்துரு"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
-msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "ஆவணத்தை அச்சிடும்பொழுது கெடிட் தொடரமைப்பு சிறப்புச் சுட்டலை அச்சிட வேண்டுமா."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:69
 msgid ""
-"Whether gedit should restore the previous cursor position when a file is "
-"loaded."
-msgstr "கெடிட் கோப்பை திறக்கும் போது நிலை காட்டியை முன் இருந்த இடத்திலேயே வைக்க வேண்டுமா"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:70
-msgid "Whether gedit will ensure that documents always end with a trailing newline."
-msgstr "கெடிட் ஆவணங்கள் எப்போதும் ஒரு புதிய வரியுடன் முடியும் என நிச்சயிக்குமா."
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:71
-msgid "Whether the side panel at the left of editing windows should be visible."
-msgstr "திருத்தும் சாளரங்களின் இடது பக்கத்தில் பக்கச் சட்டம் காட்டப்பட வேண்டுமா"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:72
-msgid "Whether the status bar at the bottom of editing windows should be visible."
-msgstr "திருத்தி சாளரத்தின் கீழ் உள்ள நிலைப்பட்டி காட்டப்பட வேண்டுமா"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:73
-msgid "Whether the toolbar should be visible in editing windows."
-msgstr "திருத்தி சாளரத்தில் கருவிப்பட்டி காட்டப்பட வேண்டுமா"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:74
-msgid ""
-"Whether to use the system's default fixed width font for editing text "
-"instead of a font specific to gedit. If this option is turned off, then the "
-"font named in the \"Editor Font\" option will be used instead of the system "
-"font."
+"Specifies the font to use for line numbers when printing. This will only "
+"take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"கணினியின் இயல்பான எழுத்துரு அளவில் உங்கள் எழுத்துருக்கள் இருக்க வேண்டுமா. இந்த தேர்வை "
-"நீக்கினால் \"எழுத்துருவை திருத்து\" தேர்வின் மூலம் நீங்கள் தேர்வு செய்தவைகளை பயன்படுத்தும்"
-
-#. Translators: This is the list of encodings shown by default in the Character Encoding
-#. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:77
-msgid "['ISO-8859-15']"
-msgstr "['ISO-8859-15']"
+"அச்சிடும்பொழுது வரி எண்ணைப் பயன்படுத்த எழுத்தைக் குறிப்பிடு.\"Print Line "
+"Numbers\" "
+"தேர்வு பூஜியம் இல்லையென்றால் அது விளைவை ஏற்கும்."
 
 #. Translators: This is the sorted list of encodings used by gedit
 #. for automatic detection of the file encoding. You may want to customize it adding
@@ -473,9 +476,55 @@ msgstr "['ISO-8859-15']"
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+msgid "Automatically Detected Encodings"
+msgstr "தானாக கண்டறிந்த குறியீட்டாக்கம்"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+msgid ""
+"Sorted list of encodings used by gedit for automatically detecting the "
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
+msgstr ""
+"ஜிஎடிட் பயன்படுத்தி தானாகவே எழுத்துருக்களை கண்டறிந்துகொள்வதற்காக பட்டியலில் "
+"உள்ள "
+"எழுத்துருக்கள் \"தற்போதைய\" இப்போதுள்ள மொழியின் எழுத்துருவைக்காட்டும்."
+
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+msgid "Encodings shown in menu"
+msgstr "பட்டியலில் காட்டப் பட்ட குறியாக்கங்கள்"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+msgid ""
+"List of encodings shown in the Character Encoding menu in open/save file "
+"selector. Only recognized encodings are used."
+msgstr ""
+"திற/சேமி கோப்பு தேர்வு செய்வானில் எண்-எழுத்து குறியீட்டாக்க மெனுவில் உள்ள "
+"எழுத்துருக்களின் "
+"பட்டியல். புரியக்கூடிய குறிமுறைகள் மட்டுமே பயன்படுத்தப்பட்டுள்ளன."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+msgid "Active plugins"
+msgstr "செயல்படும் செருகிகள்"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+msgid ""
+"List of active plugins. It contains the \"Location\" of the active plugins. "
+"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+msgstr ""
+"செயல்படும் உதவி செருகல் களின் பட்டியல். உதவி செருகல் களின் \"Location\" இதில் "
+"உள்ளது. "
+"எந்த ஒரு உதவி செருகலின் \"Location\" ஐ அறிய .gedit-plugin கோப்பை பார்க்கவும்"
 
 #: ../gedit/gedit-app.c:222
 msgid "There was an error displaying the help."
@@ -503,19 +552,23 @@ msgstr "கேள்வி"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
-msgid "If you don't save, changes from the last %ld second will be permanently lost."
+msgid ""
+"If you don't save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
-"நீங்கள் சேமிக்கவில்லை என்றால் கடைசி %ld வினாடியில் செய்த மாற்றங்களை நிரந்தரமாக "
+"நீங்கள் சேமிக்கவில்லை என்றால் கடைசி %ld வினாடியில் செய்த மாற்றங்களை "
+"நிரந்தரமாக "
 "இழந்துவிடுவீர்கள்."
 msgstr[1] ""
-"நீங்கள் சேமிக்கவில்லை என்றால் கடைசி %ld வினாடிகளில் செய்த மாற்றங்களை நிரந்தரமாக "
+"நீங்கள் சேமிக்கவில்லை என்றால் கடைசி %ld வினாடிகளில் செய்த மாற்றங்களை "
+"நிரந்தரமாக "
 "இழந்துவிடுவீர்கள்."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:423
-msgid "If you don't save, changes from the last minute will be permanently lost."
+msgid ""
+"If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நிமிடத்தில் செய்த மாற்றங்களை உறுதியாக "
 "இழந்துவிடுவீர்கள்கள்."
@@ -529,28 +582,35 @@ msgid_plural ""
 "If you don't save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நிமிடம் %ld வினாடியில் செய்த மாற்றங்களை நிரந்தரமாக "
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நிமிடம் %ld வினாடியில் செய்த மாற்றங்களை "
+"நிரந்தரமாக "
 "இழந்துவிடுவீர்கள்."
 msgstr[1] ""
-"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நிமிடம் %ld வினாடிகளில் செய்த மாற்றங்களை நிரந்தரமாக "
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி நிமிடம் %ld வினாடிகளில் செய்த மாற்றங்களை "
+"நிரந்தரமாக "
 "இழந்துவிடுவீர்கள்."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:439
 #, c-format
-msgid "If you don't save, changes from the last %ld minute will be permanently lost."
+msgid ""
+"If you don't save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
-"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி %ld நிமிடத்தில் செய்த மாற்றங்களை நிரந்தரமாக "
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி %ld நிமிடத்தில் செய்த மாற்றங்களை "
+"நிரந்தரமாக "
 "இழந்துவிடுவீர்கள்."
 msgstr[1] ""
-"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி %ld நிமிடங்களில் செய்த மாற்றங்களை நிரந்தரமாக "
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி %ld நிமிடங்களில் செய்த மாற்றங்களை "
+"நிரந்தரமாக "
 "இழந்துவிடுவீர்கள்."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:454
 msgid "If you don't save, changes from the last hour will be permanently lost."
-msgstr "நீங்கள் சேமிக்காவிட்டால் கடைசி மணியில் செய்த மாற்றங்களை நிரந்தரமாக இழக்க நேரும். "
+msgstr ""
+"நீங்கள் சேமிக்காவிட்டால் கடைசி மணியில் செய்த மாற்றங்களை நிரந்தரமாக இழக்க "
+"நேரும். "
 
 #: ../gedit/gedit-close-confirmation-dialog.c:460
 #, c-format
@@ -561,21 +621,27 @@ msgid_plural ""
 "If you don't save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி மணி %d நிமிடத்தில் செய்த மாற்றங்களை நிரந்தரமாக "
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி மணி %d நிமிடத்தில் செய்த மாற்றங்களை "
+"நிரந்தரமாக "
 "இழந்துவிடுவீர்கள்."
 msgstr[1] ""
-"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி மணி %d நிமிடங்களில் செய்த மாற்றங்களை நிரந்தரமாக "
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி மணி %d நிமிடங்களில் செய்த மாற்றங்களை "
+"நிரந்தரமாக "
 "இழந்துவிடுவீர்கள்."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:475
 #, c-format
-msgid "If you don't save, changes from the last %d hour will be permanently lost."
-msgid_plural "If you don't save, changes from the last %d hours will be permanently lost."
+msgid ""
+"If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] ""
-"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி %d மணி நேரத்திலிருந்து மாற்றங்களை உறுதியாக "
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி %d மணி நேரத்திலிருந்து மாற்றங்களை "
+"உறுதியாக "
 "இழந்துவிடுவீர்கள்"
 msgstr[1] ""
-"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி %d மணிகள் நேரத்திலிருந்து மாற்றங்களை உறுதியாக "
+"நீங்கள் சேமிக்கவில்லையென்றால் கடைசி %d மணிகள் நேரத்திலிருந்து மாற்றங்களை "
+"உறுதியாக "
 "இழந்துவிடுவீர்கள்"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:519
@@ -603,9 +669,13 @@ msgstr[1] "%d  ஆவணங்களில் மாற்றங்களை ந
 #: ../gedit/gedit-close-confirmation-dialog.c:714
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
-msgid_plural "There are %d documents with unsaved changes. Save changes before closing?"
-msgstr[0] "%d ஆவணம் சேமிக்கப்படாமல் உள்ளது. மூடுவதற்கு முன் மாற்றங்களை சேமிக்க வேண்டுமா?"
-msgstr[1] "%d ஆவணங்கள் சேமிக்கப்படாமல் உள்ளன. மூடுவதற்கு முன் மாற்றங்களை சேமிக்க வேண்டுமா?"
+msgid_plural ""
+"There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] ""
+"%d ஆவணம் சேமிக்கப்படாமல் உள்ளது. மூடுவதற்கு முன் மாற்றங்களை சேமிக்க வேண்டுமா?"
+msgstr[1] ""
+"%d ஆவணங்கள் சேமிக்கப்படாமல் உள்ளன. மூடுவதற்கு முன் மாற்றங்களை சேமிக்க "
+"வேண்டுமா?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:733
 msgid "Docum_ents with unsaved changes:"
@@ -617,7 +687,9 @@ msgstr "_e சேமிக்க விரும்பும் ஆவணங்�
 
 #: ../gedit/gedit-close-confirmation-dialog.c:759
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr "நீங்கள் சேமிக்கவில்லையென்றால், நீங்கள் செய்த மாற்றங்களை நிரந்தரமாக இழக்க நேரும். "
+msgstr ""
+"நீங்கள் சேமிக்கவில்லையென்றால், நீங்கள் செய்த மாற்றங்களை நிரந்தரமாக இழக்க "
+"நேரும். "
 
 #: ../gedit/gedit-command-line.c:232
 #, c-format
@@ -686,14 +758,15 @@ msgid ""
 "Run '%s --help' to see a full list of available command line options.\n"
 msgstr ""
 "%s\n"
-"'%s --help' ஐ இயக்கி இருக்கும் அனைத்து கட்டளைவரி விருப்பங்களின் பட்டியலை காணலாம்.\n"
+"'%s --help' ஐ இயக்கி இருக்கும் அனைத்து கட்டளைவரி விருப்பங்களின் பட்டியலை "
+"காணலாம்.\n"
 
-#: ../gedit/gedit-commands-file.c:272
+#: ../gedit/gedit-commands-file.c:266
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "'%s' கோப்பினை ஏற்றுகிறது…"
 
-#: ../gedit/gedit-commands-file.c:281
+#: ../gedit/gedit-commands-file.c:275
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -701,28 +774,28 @@ msgstr[0] "%d கோப்பினை ஏற்றுகிறது..."
 msgstr[1] "%d கோப்புகளை ஏற்றுகிறது..."
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:446
+#: ../gedit/gedit-commands-file.c:440
 msgid "Open Files"
 msgstr "கோப்புகளை திறக்கவும்"
 
-#: ../gedit/gedit-commands-file.c:557
+#: ../gedit/gedit-commands-file.c:551
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "கோப்பு \"%s\" வாசிப்புக்கு மட்டும்."
 
-#: ../gedit/gedit-commands-file.c:562
+#: ../gedit/gedit-commands-file.c:556
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "நீங்கள் சேமிக்கும் ஒன்றால் அதனை மாற்ற விரும்புகிறீர்களா? "
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:564 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_R இடமாற்று"
 
-#: ../gedit/gedit-commands-file.c:612
+#: ../gedit/gedit-commands-file.c:606
 msgid "Save the file using compression?"
 msgstr " சுருக்கிய கோப்பாக சேமிக்கவா?"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:607
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -731,15 +804,15 @@ msgstr ""
 "\"%s\" கோப்பு முன்பு சுருக்கிய வடிவில் சேமிக்கப்பட்டது. இப்போது வெற்று உரையாக "
 "சேமிக்கப்படும்."
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:609
 msgid "_Save Using Compression"
 msgstr "_S சுருக்கிய கோப்பாக சேமி"
 
-#: ../gedit/gedit-commands-file.c:619
+#: ../gedit/gedit-commands-file.c:613
 msgid "Save the file as plain text?"
 msgstr "வெற்று உரை பட்டியலாக சேமிக்கவா?"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:614
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -748,43 +821,48 @@ msgstr ""
 "\"%s\" கோப்பு முன்பு சுருக்கிய வடிவில் சேமிக்கப்பட்டது. இபோது வெற்று உரையாக "
 "சேமிக்கப்படும்."
 
-#: ../gedit/gedit-commands-file.c:622
+#: ../gedit/gedit-commands-file.c:616
 msgid "_Save As Plain Text"
 msgstr "_S வெற்று உரை பட்டியலாக சேமி"
 
-#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
+#: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:953
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "'%s' கோப்பினை சேமிக்கிறது…"
 
-#: ../gedit/gedit-commands-file.c:846
+#: ../gedit/gedit-commands-file.c:840
 msgid "Save As"
 msgstr "இப்படி சேமி"
 
-#: ../gedit/gedit-commands-file.c:1173
+#: ../gedit/gedit-commands-file.c:1167
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "ஆவணம் '%s' ஐ பழைய நிலைக்கு மீட்கிறது…"
 
-#: ../gedit/gedit-commands-file.c:1218
+#: ../gedit/gedit-commands-file.c:1212
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr " '%s' ஆவணத்தில் சேமிக்காத மாற்றங்களை மீட்கலாமா?"
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1221
 #, c-format
-msgid "Changes made to the document in the last %ld second will be permanently lost."
+msgid ""
+"Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
-msgstr[0] "கடைசி %ld நொடியில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
-msgstr[1] "கடைசி %ld நொடிகளில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
+msgstr[0] ""
+"கடைசி %ld நொடியில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
+msgstr[1] ""
+"கடைசி %ld நொடிகளில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
+
+#: ../gedit/gedit-commands-file.c:1230
+msgid ""
+"Changes made to the document in the last minute will be permanently lost."
+msgstr ""
+"கடைசி நிமிடத்தில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
 
 #: ../gedit/gedit-commands-file.c:1236
-msgid "Changes made to the document in the last minute will be permanently lost."
-msgstr "கடைசி நிமிடத்தில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
-
-#: ../gedit/gedit-commands-file.c:1242
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -799,20 +877,24 @@ msgstr[1] ""
 "கடைசி நிமிடத்தில் மற்றும் %ld நொடிகளில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக "
 "இழந்துவிடுவீர்கள்."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1246
 #, c-format
-msgid "Changes made to the document in the last %ld minute will be permanently lost."
+msgid ""
+"Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
-msgstr[0] "கடைசி %ld நிமிடத்தில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
-msgstr[1] "கடைசி %ld நிமிடங்களில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
+msgstr[0] ""
+"கடைசி %ld நிமிடத்தில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
+msgstr[1] ""
+"கடைசி %ld நிமிடங்களில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக "
+"இழந்துவிடுவீர்கள்."
 
-#: ../gedit/gedit-commands-file.c:1267
+#: ../gedit/gedit-commands-file.c:1261
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "கடைசி மணியில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தமாக இழக்க நேரும்."
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1267
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -821,18 +903,24 @@ msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-"கடைசி மணி மற்றும் %d நிமிடத்தில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
+"கடைசி மணி மற்றும் %d நிமிடத்தில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக "
+"இழந்துவிடுவீர்கள்."
 msgstr[1] ""
-"கடைசி மணி மற்றும் %d நிமிடங்களில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
+"கடைசி மணி மற்றும் %d நிமிடங்களில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக "
+"இழந்துவிடுவீர்கள்."
 
-#: ../gedit/gedit-commands-file.c:1288
+#: ../gedit/gedit-commands-file.c:1282
 #, c-format
-msgid "Changes made to the document in the last %d hour will be permanently lost."
-msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] "கடைசி %d மணியில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
-msgstr[1] "கடைசி %d மணிகளில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
+msgid ""
+"Changes made to the document in the last %d hour will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %d hours will be permanently lost."
+msgstr[0] ""
+"கடைசி %d மணியில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
+msgstr[1] ""
+"கடைசி %d மணிகளில் ஆவணத்தில் செய்த மாற்றங்களை நிரந்தரமாக இழந்துவிடுவீர்கள்."
 
-#: ../gedit/gedit-commands-file.c:1314
+#: ../gedit/gedit-commands-file.c:1308
 msgid "_Revert"
 msgstr "_R பழையநிலையை மீட்கவும்"
 
@@ -862,17 +950,17 @@ msgstr "தேடி மாற்றியவை ஒரு முறை நட�
 msgid "\"%s\" not found"
 msgstr "\"%s\" கண்டு பிடிக்கப் படவில்லை"
 
-#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
+#: ../gedit/gedit-document.c:1221 ../gedit/gedit-document.c:1247
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "சேமிக்கப்படாத ஆவணம் %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2397 ../gedit/gedit-window.c:2404
+#: ../gedit/gedit-window.c:2367 ../gedit/gedit-window.c:2374
 msgid "Read-Only"
 msgstr "வாசிக்க மட்டும்"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3846
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3816
 msgid "Documents"
 msgstr "ஆவணங்கள்"
 
@@ -1020,12 +1108,12 @@ msgstr "_Eகுறிமுறையாக்கம்"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-encodings-dialog.ui.h:1
-msgid "A_vailable encodings:"
-msgstr "_v புழங்கக்கூடிய குறிமுறையாக்கங்கள்:"
-
-#: ../gedit/gedit-encodings-dialog.ui.h:2
 msgid "Character encodings"
 msgstr "எழுத்து குறியீடுகள்"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:2
+msgid "A_vailable encodings:"
+msgstr "_v புழங்கக்கூடிய குறிமுறையாக்கங்கள்:"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:3
 msgid "E_ncodings shown in menu:"
@@ -1110,7 +1198,8 @@ msgid ""
 "Host %s could not be found. Please check that your proxy settings are "
 "correct and try again."
 msgstr ""
-"\"%s\"  கோப்பைத் காணவில்லை தயவு செய்து உங்கள் போலி அமைப்பை சரிபா ர்த்து பின் மீண்டும் "
+"\"%s\"  கோப்பைத் காணவில்லை தயவு செய்து உங்கள் போலி அமைப்பை சரிபா ர்த்து பின் "
+"மீண்டும் "
 "முயற்சிச் செய்க."
 
 #: ../gedit/gedit-io-error-info-bar.c:304
@@ -1119,7 +1208,8 @@ msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
 msgstr ""
-"புரவலன் பெயர் செல்லுபடியாகாதது நீங்கள் உள்ளிட்ட இடம் சரியா என சரிபார்த்து மறுபடியும் "
+"புரவலன் பெயர் செல்லுபடியாகாதது நீங்கள் உள்ளிட்ட இடம் சரியா என சரிபார்த்து "
+"மறுபடியும் "
 "முயற்சிக்கவும்."
 
 #: ../gedit/gedit-io-error-info-bar.c:312
@@ -1142,7 +1232,9 @@ msgstr "எதிர்பாராத பிழை: %s"
 
 #: ../gedit/gedit-io-error-info-bar.c:417
 msgid "gedit cannot find the file. Perhaps it has recently been deleted."
-msgstr "gedit ஆல் கோப்பினை கண்டுபிடிக்க முடியவில்லை. அது சமீபத்தில் அழிக்கப்பட்டு இருக்கலாம்."
+msgstr ""
+"gedit ஆல் கோப்பினை கண்டுபிடிக்க முடியவில்லை. அது சமீபத்தில் அழிக்கப்பட்டு "
+"இருக்கலாம்."
 
 #: ../gedit/gedit-io-error-info-bar.c:427
 #, c-format
@@ -1165,7 +1257,8 @@ msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
-"பின்பற்றப்பட்ட இணைப்புகள் வரையறுக்கப்பட்டது மற்றும் உண்மையான கோப்பு இந்த வரம்புக்குள் காண "
+"பின்பற்றப்பட்ட இணைப்புகள் வரையறுக்கப்பட்டது மற்றும் உண்மையான கோப்பு இந்த "
+"வரம்புக்குள் காண "
 "முடியவில்லை."
 
 #: ../gedit/gedit-io-error-info-bar.c:612
@@ -1183,7 +1276,8 @@ msgstr "இரும (பைனரி) கோப்பை திறக்க ம
 
 #: ../gedit/gedit-io-error-info-bar.c:621
 msgid "Select a character encoding from the menu and try again."
-msgstr "பட்டியிலிருந்து எழுத்து குறியிடலை தேர்ந்தெடுத்து மீண்டும் முயற்சி செய்யவும்."
+msgstr ""
+"பட்டியிலிருந்து எழுத்து குறியிடலை தேர்ந்தெடுத்து மீண்டும் முயற்சி செய்யவும்."
 
 #: ../gedit/gedit-io-error-info-bar.c:627
 #, c-format
@@ -1195,7 +1289,8 @@ msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
 msgstr ""
-"நீங்கள் திறந்த கோப்பில் செல்லுபடியாகாத எழுத்துருக்கள் உள்ளன. தொடர்ந்து திருத்தினால் இந்த "
+"நீங்கள் திறந்த கோப்பில் செல்லுபடியாகாத எழுத்துருக்கள் உள்ளன. தொடர்ந்து "
+"திருத்தினால் இந்த "
 "ஆவணம் பயனற்று போகும்."
 
 #: ../gedit/gedit-io-error-info-bar.c:632
@@ -1210,7 +1305,9 @@ msgstr "கோப்பு %sஐ %s எழுத்து குறியிட�
 #: ../gedit/gedit-io-error-info-bar.c:643
 #: ../gedit/gedit-io-error-info-bar.c:717
 msgid "Select a different character encoding from the menu and try again."
-msgstr "பட்டியிலிருந்து வேறு எழுத்து குறியிடலை தேர்ந்தெடுத்து மீண்டும் முயற்சி செய்யவும்."
+msgstr ""
+"பட்டியிலிருந்து வேறு எழுத்து குறியிடலை தேர்ந்தெடுத்து மீண்டும் முயற்சி "
+"செய்யவும்."
 
 #: ../gedit/gedit-io-error-info-bar.c:653
 #, c-format
@@ -1226,7 +1323,8 @@ msgstr "%s கோப்பை %s எழுத்து குறியாக்�
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
-msgstr "இந்த ஆவணத்தில் ஒன்றோ மேற்பட்டோ எழுத்துப்பாணி கொடுத்த குறியீட்டில் இல்லை"
+msgstr ""
+"இந்த ஆவணத்தில் ஒன்றோ மேற்பட்டோ எழுத்துப்பாணி கொடுத்த குறியீட்டில் இல்லை"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
@@ -1243,7 +1341,9 @@ msgstr "இந்த கோப்பு (%s) ஏற்கனவே வேறொ�
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
-msgstr "கெடிட் இந்த கோப்பை திருத்த இயலாத வகையில் திறந்தது. அதை எப்படியும் திருத்த வேண்டுமா?"
+msgstr ""
+"கெடிட் இந்த கோப்பை திருத்த இயலாத வகையில் திறந்தது. அதை எப்படியும் திருத்த "
+"வேண்டுமா?"
 
 #: ../gedit/gedit-io-error-info-bar.c:873
 #: ../gedit/gedit-io-error-info-bar.c:971
@@ -1269,7 +1369,8 @@ msgstr "கோப்பு %s அதனை படித்த பின் ம�
 #: ../gedit/gedit-io-error-info-bar.c:910
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
-"நீங்கள் சேமித்தால், அனைத்து வெளியார்ந்த மாற்றங்களும் இழக்கப்படும். இருந்தாலும் சேமிக்கவா?"
+"நீங்கள் சேமித்தால், அனைத்து வெளியார்ந்த மாற்றங்களும் இழக்கப்படும். "
+"இருந்தாலும் சேமிக்கவா?"
 
 #: ../gedit/gedit-io-error-info-bar.c:998
 #, c-format
@@ -1279,7 +1380,8 @@ msgstr "%s ஐ சேமிக்கும் போது ஒரு காப�
 #: ../gedit/gedit-io-error-info-bar.c:1003
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
-msgstr "%s ஐ சேமிக்கும் போது ஒரு தற்காலிக காப்புக் கோப்பினை உருவாக்க முடியவில்லை"
+msgstr ""
+"%s ஐ சேமிக்கும் போது ஒரு தற்காலிக காப்புக் கோப்பினை உருவாக்க முடியவில்லை"
 
 #: ../gedit/gedit-io-error-info-bar.c:1020
 msgid ""
@@ -1287,8 +1389,10 @@ msgid ""
 "You can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"புதிதாக சேமிக்கும் போது கெடிட் ஆல் பழைய கோப்பின் காப்பு-நகலை உருவாக்க முடியவில்லை. "
-"இந்த எச்சரிக்கையை மீறி சேமிக்கலாம். ஆனால் சேமிப்பில் தவறு ஏற்படின் பழைய கோப்பை இழக்க "
+"புதிதாக சேமிக்கும் போது கெடிட் ஆல் பழைய கோப்பின் காப்பு-நகலை உருவாக்க "
+"முடியவில்லை. "
+"இந்த எச்சரிக்கையை மீறி சேமிக்கலாம். ஆனால் சேமிப்பில் தவறு ஏற்படின் பழைய "
+"கோப்பை இழக்க "
 "நேரிடலாம். இருந்தாலும் சேமிக்க வேண்டுமா?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
@@ -1298,7 +1402,8 @@ msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"கெடிட் %s இடத்தை எழுதும் பாங்கில் திறக்க இயலவில்லை. நீங்கள் உள்ளிட்ட இடத்தை சரிபார்த்து "
+"கெடிட் %s இடத்தை எழுதும் பாங்கில் திறக்க இயலவில்லை. நீங்கள் உள்ளிட்ட இடத்தை "
+"சரிபார்த்து "
 "மறுபடியும் முயற்சிக்கவும்."
 
 #: ../gedit/gedit-io-error-info-bar.c:1088
@@ -1306,7 +1411,8 @@ msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"கெடிட் இந்த இடத்தை எழுதும் பாங்கில் திறக்க இயலவில்லை. நீங்கள் உள்ளிட்ட இடத்தை சரிபார்த்து "
+"கெடிட் இந்த இடத்தை எழுதும் பாங்கில் திறக்க இயலவில்லை. நீங்கள் உள்ளிட்ட இடத்தை "
+"சரிபார்த்து "
 "மறுபடியும் முயற்சிக்கவும்."
 
 #: ../gedit/gedit-io-error-info-bar.c:1097
@@ -1315,14 +1421,16 @@ msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
-"\"%s\" செல்லுபடியாகாத இடம்.  நீங்கள் உள்ளிட்ட இடத்தை சரிபார்த்து மறுபடியும் முயற்சிக்கவும்."
+"\"%s\" செல்லுபடியாகாத இடம்.  நீங்கள் உள்ளிட்ட இடத்தை சரிபார்த்து மறுபடியும் "
+"முயற்சிக்கவும்."
 
 #: ../gedit/gedit-io-error-info-bar.c:1104
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
-"கோப்பை சேமிக்க தேவையான அனுமதி உங்களுக்கு இல்லை. நீங்கள் உள்ளிட்ட இடத்தை சரிபார்த்து "
+"கோப்பை சேமிக்க தேவையான அனுமதி உங்களுக்கு இல்லை. நீங்கள் உள்ளிட்ட இடத்தை "
+"சரிபார்த்து "
 "மறுபடியும் முயற்சிக்கவும். "
 
 #: ../gedit/gedit-io-error-info-bar.c:1110
@@ -1330,7 +1438,8 @@ msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
 msgstr ""
-"கோப்பை சேமிப்பதற்கு வட்டில் இடம் கிடையாது. தயவுசெய்து, வட்டில் இடம் உருவாக்கி மறுபடியும் "
+"கோப்பை சேமிப்பதற்கு வட்டில் இடம் கிடையாது. தயவுசெய்து, வட்டில் இடம் உருவாக்கி "
+"மறுபடியும் "
 "முயற்சிசெய்க."
 
 #: ../gedit/gedit-io-error-info-bar.c:1115
@@ -1338,7 +1447,8 @@ msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr ""
-"நீங்கள் படிக்க மட்டுமான வட்டில் கோப்பை சேமிக்க முயற்சிக்கிறீர்கள்.  நீங்கள் உள்ளிட்ட இடத்தை "
+"நீங்கள் படிக்க மட்டுமான வட்டில் கோப்பை சேமிக்க முயற்சிக்கிறீர்கள்.  நீங்கள் "
+"உள்ளிட்ட இடத்தை "
 "சரிபார்த்து மறுபடியும் முயற்சிக்கவும்."
 
 #: ../gedit/gedit-io-error-info-bar.c:1121
@@ -1350,7 +1460,8 @@ msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
 msgstr ""
-"நீங்கள் சேமிக்க விரும்பும் அடைவு உள்ள வட்டில் கோப்புகளின் பெயருக்கு சில வரம்புகள் உள்ளன. "
+"நீங்கள் சேமிக்க விரும்பும் அடைவு உள்ள வட்டில் கோப்புகளின் பெயருக்கு சில "
+"வரம்புகள் உள்ளன. "
 "சிறிய கோப்புப் பெயரை பயன்படுத்தவும்."
 
 #: ../gedit/gedit-io-error-info-bar.c:1133
@@ -1359,7 +1470,8 @@ msgid ""
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
 "have this limitation."
 msgstr ""
-"நீங்கள் சேமிக்க விரும்பும் அடைவு உள்ள வட்டில் கோப்பு அளவுக்கு வரம்பு உள்ளது. சிறிய "
+"நீங்கள் சேமிக்க விரும்பும் அடைவு உள்ள வட்டில் கோப்பு அளவுக்கு வரம்பு உள்ளது. "
+"சிறிய "
 "கோப்புகளை சேமிக்க முயற்சி செய்யவும் அல்லது வரம்பு இல்லாத வட்டில் சேமிக்கவும்"
 
 #: ../gedit/gedit-io-error-info-bar.c:1149
@@ -1394,8 +1506,10 @@ msgid "Some invalid chars have been detected while saving %s"
 msgstr "%s ஐ சேமிக்கும் போது சில செல்லுபடியகாத எழுத்துருக்கள் காணப்பட்டன."
 
 #: ../gedit/gedit-io-error-info-bar.c:1294
-msgid "If you continue saving this file you can corrupt the document.  Save anyway?"
-msgstr "தொடர்ந்து திருத்தினால் இந்த ஆவணம் பயனற்று போகும். எப்படியும் சேமிக்க வேண்டுமா?"
+msgid ""
+"If you continue saving this file you can corrupt the document.  Save anyway?"
+msgstr ""
+"தொடர்ந்து திருத்தினால் இந்த ஆவணம் பயனற்று போகும். எப்படியும் சேமிக்க வேண்டுமா?"
 
 #. Keep in sync with the respective GtkActions
 #: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:140
@@ -1410,6 +1524,14 @@ msgstr "_A இப்படி சேமிக்க"
 msgid "_Print..."
 msgstr "_P அச்சிடுக..."
 
+#: ../gedit/gedit-open-tool-button.c:85 ../gedit/gedit-ui.h:55
+msgid "Open a file"
+msgstr "கோப்பை திறக்கவும்"
+
+#: ../gedit/gedit-open-tool-button.c:87
+msgid "Open a recently used file"
+msgstr "சமீபத்தில் பயன்படுத்திய கோப்பைத் திறக்கவும்"
+
 #: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:587
 msgid "Empty"
 msgstr "வெற்று"
@@ -1420,7 +1542,9 @@ msgstr "பலகத்தை மறைக்கவும்"
 
 #: ../gedit/gedit-preferences-dialog.c:423
 msgid "Click on this button to select the font to be used by the editor"
-msgstr "இந்த பொத்தானை சொடுக்கி  திருத்தியில் பயன்படுத்துவதற்கான எழுத்தினைத் தேர்வு செய்க"
+msgstr ""
+"இந்த பொத்தானை சொடுக்கி  திருத்தியில் பயன்படுத்துவதற்கான எழுத்தினைத் தேர்வு "
+"செய்க"
 
 #: ../gedit/gedit-preferences-dialog.c:438
 #, c-format
@@ -1430,7 +1554,8 @@ msgstr "_U கணினி நிலை அகல எழுது (%s) ஐ ப�
 #: ../gedit/gedit-preferences-dialog.c:676
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
-msgstr "அடைவு '%s' ஐ உருவாக்க முடியவில்லை: g_mkdir_with_parents() தோல்வியுற்றது: %s"
+msgstr ""
+"அடைவு '%s' ஐ உருவாக்க முடியவில்லை: g_mkdir_with_parents() தோல்வியுற்றது: %s"
 
 #: ../gedit/gedit-preferences-dialog.c:860
 msgid "The selected color scheme cannot be installed."
@@ -1459,126 +1584,126 @@ msgstr "கெடிட் விருப்பங்கள்"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-preferences-dialog.ui.h:1
-msgid "Color Scheme"
-msgstr "வண்ணதிட்டங்கள்"
+msgid "Preferences"
+msgstr "விருப்பங்கள்"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2
-msgid "Create a _backup copy of files before saving"
-msgstr "_n சேமிப்பதற்கு முன் பாதுகாப்புக்காக கோப்புகளின் நகலை சேமித்து வைக்கவும்"
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:552
+msgid "_Display line numbers"
+msgstr "_D வரிசை எண்களைக் காண்பிக்கவும்:"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:3
 msgid "Display right _margin at column:"
 msgstr "_m பத்தியில்  வலது ஓரத்தை காட்டுக:"
 
-#. ex:set ts=8 noet:
 #: ../gedit/gedit-preferences-dialog.ui.h:4
-#: ../gedit/gedit-print-preferences.ui.h:1
-msgid "Do not _split words over two lines"
-msgstr "_s வார்த்தையை இரண்டு வரிகளுக்குப் பிரிக்காதே"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:5
-msgid "Editor"
-msgstr "திருத்தி"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:6
-msgid "Editor _font: "
-msgstr "_f திருத்தியின் எழுத்துரு:"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:7
-#: ../gedit/gedit-print-preferences.ui.h:2
-msgid "Enable text _wrapping"
-msgstr "_ w உரை மடக்கலை இயலுமைபடுத்தவும்"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:8
-msgid "File Saving"
-msgstr "கோப்பு சேமிக்கப்படுகிறது"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:9
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
-msgid "Font"
-msgstr "எழுத்து வகை"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:10
-msgid "Font & Colors"
-msgstr "எழுத்து வகைகளும் வண்ணங்களும்"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:11
-msgid "Highlight current _line"
-msgstr "_l நடப்பு வரியை சிறப்புச் சுட்டுக "
-
-#: ../gedit/gedit-preferences-dialog.ui.h:12
-msgid "Highlight matching _brackets"
-msgstr "_b பொருத்தும் அடைப்புக்குறிகளை சிறப்புச் சுட்டுக "
-
-#: ../gedit/gedit-preferences-dialog.ui.h:13
-msgid "Highlighting"
-msgstr "சிறப்புச் சுட்டல்"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:14
-msgid "Insert _spaces instead of tabs"
-msgstr "_s தத்தலுக்கு பதிலாக இடைவெளியை சொருகு"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:15
-msgid "Install Scheme"
-msgstr "கருத்தை நிறுவு"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:16
-msgid "Install scheme"
-msgstr "கருத்தை நிறுவு"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:17
-msgid "Pick the editor font"
-msgstr "திருத்தி பயன்படுத்தும் எழுத்துருவை தேர்வு செய்யவும்"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:18
-msgid "Plugins"
-msgstr "சொருகுபொருள்கள்"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:19
-msgid "Preferences"
-msgstr "விருப்பங்கள்"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:20
-msgid "Tab Stops"
-msgstr "தத்தல் நிறுத்தங்கள்"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:21
-#: ../gedit/gedit-print-preferences.ui.h:11
+#: ../gedit/gedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "உரையை மடக்குதல்"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:22
-msgid "Uninstall Scheme"
-msgstr "கருத்தை நீக்கு"
+#: ../gedit/gedit-preferences-dialog.ui.h:5
+#: ../gedit/gedit-print-preferences.ui.h:10
+msgid "Enable text _wrapping"
+msgstr "_ w உரை மடக்கலை இயலுமைபடுத்தவும்"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:23
-msgid "Uninstall scheme"
-msgstr "கருத்தை நீக்கு"
+#: ../gedit/gedit-preferences-dialog.ui.h:6
+#: ../gedit/gedit-print-preferences.ui.h:11
+msgid "Do not _split words over two lines"
+msgstr "_s வார்த்தையை இரண்டு வரிகளுக்குப் பிரிக்காதே"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:24
+#: ../gedit/gedit-preferences-dialog.ui.h:7
+msgid "Highlighting"
+msgstr "சிறப்புச் சுட்டல்"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:8
+msgid "Highlight current _line"
+msgstr "_l நடப்பு வரியை சிறப்புச் சுட்டுக "
+
+#: ../gedit/gedit-preferences-dialog.ui.h:9
+msgid "Highlight matching _brackets"
+msgstr "_b பொருத்தும் அடைப்புக்குறிகளை சிறப்புச் சுட்டுக "
+
+#: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "View"
 msgstr "காட்சி"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
-msgid "_Autosave files every"
-msgstr "_A தானாக சேமிக்க கால இடைவெளி"
+#: ../gedit/gedit-preferences-dialog.ui.h:11
+msgid "Tab Stops"
+msgstr "தத்தல் நிறுத்தங்கள்"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26 ../gedit/gedit-view.c:552
-msgid "_Display line numbers"
-msgstr "_D வரிசை எண்களைக் காண்பிக்கவும்:"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:27
-msgid "_Enable automatic indentation"
-msgstr "_E தானியக்க உள்ளடக்கத்தை இயலுமைபடுத்தவும்"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:12
 msgid "_Tab width:"
 msgstr "_T தத்தல் அகலம்: "
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:13
+msgid "Insert _spaces instead of tabs"
+msgstr "_s தத்தலுக்கு பதிலாக இடைவெளியை சொருகு"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:14
+msgid "_Enable automatic indentation"
+msgstr "_E தானியக்க உள்ளடக்கத்தை இயலுமைபடுத்தவும்"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:15
+msgid "File Saving"
+msgstr "கோப்பு சேமிக்கப்படுகிறது"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:16
+msgid "Create a _backup copy of files before saving"
+msgstr ""
+"_n சேமிப்பதற்கு முன் பாதுகாப்புக்காக கோப்புகளின் நகலை சேமித்து வைக்கவும்"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:17
+msgid "_Autosave files every"
+msgstr "_A தானாக சேமிக்க கால இடைவெளி"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:18
 msgid "_minutes"
 msgstr "_m நிமிடங்கள்"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:19
+msgid "Editor"
+msgstr "திருத்தி"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:20
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+msgid "Font"
+msgstr "எழுத்து வகை"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:21
+msgid "Editor _font: "
+msgstr "_f திருத்தியின் எழுத்துரு:"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:22
+msgid "Pick the editor font"
+msgstr "திருத்தி பயன்படுத்தும் எழுத்துருவை தேர்வு செய்யவும்"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:23
+msgid "Color Scheme"
+msgstr "வண்ணதிட்டங்கள்"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:24
+msgid "Install scheme"
+msgstr "கருத்தை நிறுவு"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:25
+msgid "Install Scheme"
+msgstr "கருத்தை நிறுவு"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:26
+msgid "Uninstall scheme"
+msgstr "கருத்தை நீக்கு"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:27
+msgid "Uninstall Scheme"
+msgstr "கருத்தை நீக்கு"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:28
+msgid "Font & Colors"
+msgstr "எழுத்து வகைகளும் வண்ணங்களும்"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:29
+msgid "Plugins"
+msgstr "சொருகுபொருள்கள்"
 
 #: ../gedit/gedit-print-job.c:572
 #, c-format
@@ -1593,128 +1718,130 @@ msgstr "பக்கம் %Q இல் %N"
 msgid "Preparing..."
 msgstr "தயாராகிறது..."
 
-#: ../gedit/gedit-print-preferences.ui.h:3
-msgid "Fonts"
-msgstr "எழுத்து வகைகள்"
-
-#: ../gedit/gedit-print-preferences.ui.h:4
-msgid "He_aders and footers:"
-msgstr "_a தலைக்குறிப்பு மற்றும் அடிக்குறிப்பு"
-
-#: ../gedit/gedit-print-preferences.ui.h:5
-msgid "Line Numbers"
-msgstr "வரிசை எண்கள்"
-
-#: ../gedit/gedit-print-preferences.ui.h:6
-msgid "Page header"
-msgstr "பக்க தலைப்பு"
-
-#: ../gedit/gedit-print-preferences.ui.h:7
-msgid "Print line nu_mbers"
-msgstr "வரி எண்களை அச்சிடு (_m)"
-
-#: ../gedit/gedit-print-preferences.ui.h:8
-msgid "Print page _headers"
-msgstr "பக்க தலைப்புகளை அச்சிடு (_h)"
-
-#: ../gedit/gedit-print-preferences.ui.h:9
-msgid "Print synta_x highlighting"
-msgstr "_x இலக்கணத் சிறப்புச் சுட்டியை அச்சிடும்"
-
-#: ../gedit/gedit-print-preferences.ui.h:10
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-print-preferences.ui.h:1
 msgid "Syntax Highlighting"
 msgstr "இலக்கணத் சிறப்புச் சுட்டல்"
 
-#: ../gedit/gedit-print-preferences.ui.h:12
-msgid "_Body:"
-msgstr "_B உடல்:"
+#: ../gedit/gedit-print-preferences.ui.h:2
+msgid "Print synta_x highlighting"
+msgstr "_x இலக்கணத் சிறப்புச் சுட்டியை அச்சிடும்"
 
-#: ../gedit/gedit-print-preferences.ui.h:13
-msgid "_Line numbers:"
-msgstr "_L வரிசை எண்கள்:"
+#: ../gedit/gedit-print-preferences.ui.h:3
+msgid "Line Numbers"
+msgstr "வரிசை எண்கள்"
+
+#: ../gedit/gedit-print-preferences.ui.h:4
+msgid "Print line nu_mbers"
+msgstr "வரி எண்களை அச்சிடு (_m)"
 
 #. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: ../gedit/gedit-print-preferences.ui.h:15
+#: ../gedit/gedit-print-preferences.ui.h:6
 msgid "_Number every"
 msgstr "_N ஒவ்வொரு இத்தனை வரிக்கும் எண் இடு"
 
-#: ../gedit/gedit-print-preferences.ui.h:16
-msgid "_Restore Default Fonts"
-msgstr "_R இயல்பான எழுத்துருவை மீட்டு அமைக்கவும்"
-
 #. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: ../gedit/gedit-print-preferences.ui.h:18
+#: ../gedit/gedit-print-preferences.ui.h:8
 msgid "lines"
 msgstr "வரிகள்"
 
-#: ../gedit/gedit-print-preview.c:582
+#: ../gedit/gedit-print-preferences.ui.h:12
+msgid "Page header"
+msgstr "பக்க தலைப்பு"
+
+#: ../gedit/gedit-print-preferences.ui.h:13
+msgid "Print page _headers"
+msgstr "பக்க தலைப்புகளை அச்சிடு (_h)"
+
+#: ../gedit/gedit-print-preferences.ui.h:14
+msgid "Fonts"
+msgstr "எழுத்து வகைகள்"
+
+#: ../gedit/gedit-print-preferences.ui.h:15
+msgid "_Body:"
+msgstr "_B உடல்:"
+
+#: ../gedit/gedit-print-preferences.ui.h:16
+msgid "_Line numbers:"
+msgstr "_L வரிசை எண்கள்:"
+
+#: ../gedit/gedit-print-preferences.ui.h:17
+msgid "He_aders and footers:"
+msgstr "_a தலைக்குறிப்பு மற்றும் அடிக்குறிப்பு"
+
+#: ../gedit/gedit-print-preferences.ui.h:18
+msgid "_Restore Default Fonts"
+msgstr "_R இயல்பான எழுத்துருவை மீட்டு அமைக்கவும்"
+
+#: ../gedit/gedit-print-preview.c:562
 msgid "Show the previous page"
 msgstr "முந்தைய பக்கத்தை காட்டுக"
 
-#: ../gedit/gedit-print-preview.c:594
+#: ../gedit/gedit-print-preview.c:574
 msgid "Show the next page"
 msgstr "அடுத்த பக்கத்தை காட்டுக"
 
-#: ../gedit/gedit-print-preview.c:610
+#: ../gedit/gedit-print-preview.c:590
 msgid "Current page (Alt+P)"
 msgstr "நடப்பு பக்கம் (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:633
+#: ../gedit/gedit-print-preview.c:613
 msgid "of"
 msgstr "இதில்"
 
-#: ../gedit/gedit-print-preview.c:641
+#: ../gedit/gedit-print-preview.c:621
 msgid "Page total"
 msgstr "மொத்தப் பக்கம்"
 
-#: ../gedit/gedit-print-preview.c:642
+#: ../gedit/gedit-print-preview.c:622
 msgid "The total number of pages in the document"
 msgstr "ஆவணத்திலுள்ள பக்கங்களின் எண்ணிக்கை"
 
-#: ../gedit/gedit-print-preview.c:659
+#: ../gedit/gedit-print-preview.c:639
 msgid "Show multiple pages"
 msgstr "பல பக்கங்களை காட்டு"
 
-#: ../gedit/gedit-print-preview.c:672
+#: ../gedit/gedit-print-preview.c:652
 msgid "Zoom 1:1"
 msgstr "அளவு 1:1"
 
-#: ../gedit/gedit-print-preview.c:681
+#: ../gedit/gedit-print-preview.c:661
 msgid "Zoom to fit the whole page"
 msgstr "முழுப்பக்கத்தை பொருத்த அணுகு"
 
-#: ../gedit/gedit-print-preview.c:690
+#: ../gedit/gedit-print-preview.c:670
 msgid "Zoom the page in"
 msgstr "பக்கத்தை அணுகிப் பார்க்கவும்"
 
-#: ../gedit/gedit-print-preview.c:699
+#: ../gedit/gedit-print-preview.c:679
 msgid "Zoom the page out"
 msgstr "பக்கத்தை விலகிப் பார்க்கவும்"
 
-#: ../gedit/gedit-print-preview.c:711
+#: ../gedit/gedit-print-preview.c:691
 msgid "_Close Preview"
 msgstr "_C அச்சு முன்பார்வையை மூடுக"
 
-#: ../gedit/gedit-print-preview.c:714
+#: ../gedit/gedit-print-preview.c:694
 msgid "Close print preview"
 msgstr "அச்சு முன்னோட்டத்தை மூடுக"
 
-#: ../gedit/gedit-print-preview.c:783
+#: ../gedit/gedit-print-preview.c:763
 #, c-format
 msgid "Page %d of %d"
 msgstr "பக்கம் %d இல் %d"
 
-#: ../gedit/gedit-print-preview.c:967
+#: ../gedit/gedit-print-preview.c:947
 msgid "Page Preview"
 msgstr "பக்க முன்பார்வை"
 
-#: ../gedit/gedit-print-preview.c:968
+#: ../gedit/gedit-print-preview.c:948
 msgid "The preview of a page in the document to be printed"
 msgstr "ஆவணத்திலுள்ள அச்சிடப்பட வேண்டிய பக்கத்தின் முன்பார்வை "
 
-#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:2
-#: ../gedit/gedit-window.c:1557
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-window.c:1528
 msgid "Replace"
 msgstr "இடமாற்று"
 
@@ -1722,30 +1849,29 @@ msgstr "இடமாற்று"
 msgid "Replace _All"
 msgstr "_A அனைத்தையும் மாற்று"
 
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.ui.h:1
-msgid "Match _entire word only"
-msgstr "_e உள்ளிடும் வார்தையை மட்டும் பொருத்து"
-
-#: ../gedit/gedit-replace-dialog.ui.h:3
+#: ../gedit/gedit-replace-dialog.ui.h:2
 msgid "Replace All"
 msgstr "அனைத்தையும் மாற்று"
+
+#: ../gedit/gedit-replace-dialog.ui.h:3
+msgid "_Search for: "
+msgstr "_S தேடு: "
 
 #: ../gedit/gedit-replace-dialog.ui.h:4
 msgid "Replace _with: "
 msgstr "_w இதைக் கொண்டு இடமாற்று: "
 
 #: ../gedit/gedit-replace-dialog.ui.h:5
-msgid "Search _backwards"
-msgstr "_ப தேடல் பின்னே"
-
-#: ../gedit/gedit-replace-dialog.ui.h:6
 msgid "_Match case"
 msgstr "_M பொருத்த நிலை"
 
+#: ../gedit/gedit-replace-dialog.ui.h:6
+msgid "Match _entire word only"
+msgstr "_e உள்ளிடும் வார்தையை மட்டும் பொருத்து"
+
 #: ../gedit/gedit-replace-dialog.ui.h:7
-msgid "_Search for: "
-msgstr "_S தேடு: "
+msgid "Search _backwards"
+msgstr "_ப தேடல் பின்னே"
 
 #: ../gedit/gedit-replace-dialog.ui.h:8
 msgid "_Wrap around"
@@ -1886,10 +2012,6 @@ msgstr "புதிய ஆவணத்தை உருவாக்கு"
 #: ../gedit/gedit-ui.h:54
 msgid "_Open..."
 msgstr "_O திறக்க..."
-
-#: ../gedit/gedit-ui.h:55 ../gedit/gedit-window.c:1486
-msgid "Open a file"
-msgstr "கோப்பை திறக்கவும்"
 
 #. Edit menu
 #: ../gedit/gedit-ui.h:58
@@ -2122,7 +2244,8 @@ msgstr "_P பக்க பலகம்"
 
 #: ../gedit/gedit-ui.h:175
 msgid "Show or hide the side panel in the current window"
-msgstr "நடப்பு சாளரத்தின் பக்கத்தில் உள்ள பலகத்தினை காட்டவும் அல்லது மறைக்கவும்"
+msgstr ""
+"நடப்பு சாளரத்தின் பக்கத்தில் உள்ள பலகத்தினை காட்டவும் அல்லது மறைக்கவும்"
 
 #: ../gedit/gedit-ui.h:177
 msgid "_Bottom Panel"
@@ -2175,7 +2298,7 @@ msgstr "தேட வேண்டிய சரம்"
 msgid "Line you want to move the cursor to"
 msgstr "நிலைகாட்டியை நகர்த்த வேண்டிய வரி"
 
-#: ../gedit/gedit-window.c:941
+#: ../gedit/gedit-window.c:942
 #, c-format
 msgid "Use %s highlight mode"
 msgstr "%s சிறப்புச் சுட்டு வகையைப் பயன்படுத்துக"
@@ -2183,67 +2306,63 @@ msgstr "%s சிறப்புச் சுட்டு வகையைப் 
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
+#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2061
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:450
-#: ../plugins/externaltools/tools/manager.py:561
-#: ../plugins/externaltools/tools/manager.py:882
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:571
+#: ../plugins/externaltools/tools/manager.py:890
 msgid "Plain Text"
 msgstr "வெற்று உரை"
 
-#: ../gedit/gedit-window.c:1047
+#: ../gedit/gedit-window.c:1048
 msgid "Disable syntax highlighting"
 msgstr "இலக்கண சிறப்புச் சுட்டுதலை செயல்நீக்கு"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1364
+#: ../gedit/gedit-window.c:1365
 #, c-format
 msgid "Open '%s'"
 msgstr "'%s' ஐ திற"
 
-#: ../gedit/gedit-window.c:1488
-msgid "Open a recently used file"
-msgstr "சமீபத்தில் பயன்படுத்திய கோப்பைத் திறக்கவும்"
-
-#: ../gedit/gedit-window.c:1494
+#: ../gedit/gedit-window.c:1467
 msgid "Open"
 msgstr "திற"
 
-#: ../gedit/gedit-window.c:1551
+#: ../gedit/gedit-window.c:1522
 msgid "Save"
 msgstr "சேமி"
 
-#: ../gedit/gedit-window.c:1553
+#: ../gedit/gedit-window.c:1524
 msgid "Print"
 msgstr "அச்சிடுக..."
 
-#: ../gedit/gedit-window.c:1555
+#: ../gedit/gedit-window.c:1526
 msgid "Find"
 msgstr "தேடு"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1715
+#: ../gedit/gedit-window.c:1685
 #, c-format
 msgid "Activate '%s'"
 msgstr "%s ஐ தூண்டு செய்க"
 
-#: ../gedit/gedit-window.c:2072
+#: ../gedit/gedit-window.c:2042
 msgid "Use Spaces"
 msgstr "இடைவெளிகளை பயன்படுத்து"
 
-#: ../gedit/gedit-window.c:2145
+#: ../gedit/gedit-window.c:2115
 msgid "Tab Width"
 msgstr "தத்தல் அகலம்"
 
-#: ../gedit/gedit-window.c:2254
+#: ../gedit/gedit-window.c:2224
 msgid "Bracket match is out of range"
 msgstr "அடைப்புக்குறி ஒப்பீடு வரையறை தாண்டியுள்ளது"
 
-#: ../gedit/gedit-window.c:2259
+#: ../gedit/gedit-window.c:2229
 msgid "Bracket match not found"
 msgstr "அடைப்புக்குறி ஒப்பீடு ஏதும் காணப்படவில்லை"
 
-#: ../gedit/gedit-window.c:2264
+#: ../gedit/gedit-window.c:2234
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "அடைப்புக்குறி ஒப்பீடு இந்த வரியில் காணப்பட்டது: %d"
@@ -2291,16 +2410,17 @@ msgstr "_T முதலெழுத்து பெரிய எழுத்த�
 
 #: ../plugins/changecase/gedit-changecase-plugin.c:253
 msgid "Capitalize the first letter of each selected word"
-msgstr "ஒவ்வொரு தேர்ந்தெடுத்த வார்த்தையின் முதல் எழுத்தையும் மேல் நிலை எழுத்தாக்குக"
+msgstr ""
+"ஒவ்வொரு தேர்ந்தெடுத்த வார்த்தையின் முதல் எழுத்தையும் மேல் நிலை எழுத்தாக்குக"
 
 #. ex:set ts=8 noet:
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
-msgid "Check for latest version of gedit"
-msgstr "கெடிட் இன் புதிய பதிப்புக்கு சோதிக்கவும்"
-
-#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
 msgid "Check update"
 msgstr "இற்றைபடுத்தலை சரிபார்"
+
+#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
+msgid "Check for latest version of gedit"
+msgstr "கெடிட் இன் புதிய பதிப்புக்கு சோதிக்கவும்"
 
 #: ../plugins/checkupdate/gedit-check-update-plugin.c:257
 msgid "There was an error displaying the URI."
@@ -2323,7 +2443,8 @@ msgid ""
 "You can download the new version of gedit by clicking on the download button "
 "or ignore that version and wait for a new one"
 msgstr ""
-"கெடிட் இன் புதிய பதிப்பை தரவிறக்கு பொத்தானை சொடுக்கி  தரவிறக்கலாம். அல்லது பதிப்பை  "
+"கெடிட் இன் புதிய பதிப்பை தரவிறக்கு பொத்தானை சொடுக்கி  தரவிறக்கலாம். அல்லது "
+"பதிப்பை  "
 "உதாசீனம்  செய் து புதியதுக்கு காத்திருக்கலாம். "
 
 #. ex:set ts=8 noet:
@@ -2336,18 +2457,20 @@ msgstr "உதாசீனம் செய்ய வேண்டிய பதி
 msgid "Version to ignore until a newer version is released."
 msgstr "அடுத்த பதிப்பு வெளிவரும் வரை உதாசீனம்   செய்ய வேண்டிய பதிப் பு  "
 
+#. ex:set ts=8 noet:
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:1
+msgid "Document Statistics"
+msgstr "ஆவணம் புள்ளி விவரம்"
+
+#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
 msgid ""
 "Analyzes the current document and reports the number of words, lines, "
 "characters and non-space characters in it."
 msgstr ""
-"தற்போதைய ஆவணத்தை சோதித்து, அதில் எத்தனை சொற்கள், வரிசைகள், எழுத்துருக்கள் மற்றும் இடைவெளி "
+"தற்போதைய ஆவணத்தை சோதித்து, அதில் எத்தனை சொற்கள், வரிசைகள், எழுத்துருக்கள் "
+"மற்றும் இடைவெளி "
 "அல்லா எழுத்துருக்கள் உள்ளன என்பதைக்காட்டும்"
-
-#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:6
-msgid "Document Statistics"
-msgstr "ஆவணம் புள்ளி விவரம்"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:427
 msgid "_Document Statistics"
@@ -2357,49 +2480,47 @@ msgstr "_D ஆவண புள்ளி விவரம்"
 msgid "Get statistical information on the current document"
 msgstr "தற்போதைய ஆவணத்தின் புள்ளி விவரங்களை பெறவும்"
 
-#. ex:set ts=8 noet:
-#. ex:ts=4:et:
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:1
-#: ../plugins/externaltools/tools/tools.ui.h:1
-#: ../plugins/snippets/snippets/snippets.ui.h:1
-msgid "    "
-msgstr "    "
-
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:2
-msgid "Bytes"
-msgstr "பைட்டுகள்"
+msgid "_Update"
+msgstr "_U மேம்படுத்துக"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:3
-msgid "Characters (no spaces)"
-msgstr "எழுத்துருக்கள் (இடைவெளிகள் அல்லா)"
+msgid "File Name"
+msgstr "கோப்புப் பெயர்"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
-msgid "Characters (with spaces)"
-msgstr "எழுத்துருக்கள் (இடைவெளிகளுடன்)"
+#: ../plugins/externaltools/tools/tools.ui.h:27
+#: ../plugins/snippets/snippets/snippets.ui.h:13
+msgid "    "
+msgstr "    "
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:5
 msgid "Document"
 msgstr "ஆவணம்"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:7
-msgid "File Name"
-msgstr "கோப்புப் பெயர்"
-
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:8
-msgid "Lines"
-msgstr "கோடுகள்"
-
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:9
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:6
 msgid "Selection"
 msgstr "தேர்வு"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:10
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:7
+msgid "Lines"
+msgstr "கோடுகள்"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:8
 msgid "Words"
 msgstr "சொற்கள்"
 
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:9
+msgid "Characters (with spaces)"
+msgstr "எழுத்துருக்கள் (இடைவெளிகளுடன்)"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:10
+msgid "Characters (no spaces)"
+msgstr "எழுத்துருக்கள் (இடைவெளிகள் அல்லா)"
+
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:11
-msgid "_Update"
-msgstr "_U மேம்படுத்துக"
+msgid "Bytes"
+msgstr "பைட்டுகள்"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:1
 msgid "Build"
@@ -2411,13 +2532,13 @@ msgstr "ஆவண அடைவில் “make”ஐ இயக்கு"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
-msgid "Open a terminal in the document location"
-msgstr "தற்போது திறக்கப்பட்ட அடைவில் ஒரு முனையத்தை திறக்கவும்"
+msgid "Open terminal here"
+msgstr "இங்கு முனையத்தை திறக்கவும்"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:2
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:2
-msgid "Open terminal here"
-msgstr "இங்கு முனையத்தை திறக்கவும்"
+msgid "Open a terminal in the document location"
+msgstr "தற்போது திறக்கப்பட்ட அடைவில் ஒரு முனையத்தை திறக்கவும்"
 
 #: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:1
 msgid "Remove trailing spaces"
@@ -2428,57 +2549,59 @@ msgid "Remove useless trailing spaces in your file"
 msgstr "உங்கள் கோப்பில் உள்ள பயனிலாத தொடரும் வெற்றிடங்களை நீக்குக"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:1
-msgid "Execute a custom command and put its output in a new document"
-msgstr "தனிப்பயன் கட்டளையை செயல்படுத்தி வெளியீட்டை புதிய ஆவணமாக ஆக்குக"
-
-#: ../plugins/externaltools/data/run-command.desktop.in.h:2
 msgid "Run command"
 msgstr "இயக்குக கட்டளை"
 
-#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
-msgid "Execute external commands and shell scripts."
-msgstr "வெளியார்ந்த கட்டளைகள் மற்றும் ஷெல் குறிப்புகளை செயல்படுத்துக."
+#: ../plugins/externaltools/data/run-command.desktop.in.h:2
+msgid "Execute a custom command and put its output in a new document"
+msgstr "தனிப்பயன் கட்டளையை செயல்படுத்தி வெளியீட்டை புதிய ஆவணமாக ஆக்குக"
 
-#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
 msgstr "வெளியார்ந்த கருவிகள்"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
-msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
-msgstr "பாங்கோ எழுத்துரு பெயர். உதாரணங்கள் \"Sans 12\" அல்லது \"Monospace Bold 14\"."
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
+msgid "Execute external commands and shell scripts."
+msgstr "வெளியார்ந்த கட்டளைகள் மற்றும் ஷெல் குறிப்புகளை செயல்படுத்துக."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+msgid "Whether to use the system font"
+msgstr "கணினி எழுத்துருக்களை பயன்படுத்த வேண்டுமா"
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
-"உண்மையெனில் வெளியார்ந்த கருவிகள் மோனோஸ்பேசாக இருப்பின்  மேல் மேசையின் பொது தகுதர "
+"உண்மையெனில் வெளியார்ந்த கருவிகள் மோனோஸ்பேசாக இருப்பின்  மேல் மேசையின் பொது "
+"தகுதர "
 "எழுத்துருவை பயன்படுத்தும் (அல்லது அதற்கு ஒப்பான எழுத்துருவை பயன்படுத்தும்)"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
-msgid "Whether to use the system font"
-msgstr "கணினி எழுத்துருக்களை பயன்படுத்த வேண்டுமா"
+msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgstr ""
+"பாங்கோ எழுத்துரு பெயர். உதாரணங்கள் \"Sans 12\" அல்லது \"Monospace Bold 14\"."
 
 #: ../plugins/externaltools/tools/capture.py:92
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "கட்டளையை செயலாற்ற முடியவில்லை: %s"
 
-#: ../plugins/externaltools/tools/functions.py:159
+#: ../plugins/externaltools/tools/functions.py:157
 msgid "You must be inside a word to run this command"
 msgstr "சொல்லுக்குள் இருந்து இந்த கட்டளையை இயக்க வேண்டும்"
 
-#: ../plugins/externaltools/tools/functions.py:265
+#: ../plugins/externaltools/tools/functions.py:263
 msgid "Running tool:"
 msgstr "இயங்கும் கருவி:"
 
-#: ../plugins/externaltools/tools/functions.py:294
+#: ../plugins/externaltools/tools/functions.py:292
 msgid "Done."
 msgstr "முடிந்தது."
 
-#: ../plugins/externaltools/tools/functions.py:296
+#: ../plugins/externaltools/tools/functions.py:294
 msgid "Exited"
 msgstr "வெளியேற்றப்பட்டது"
 
@@ -2486,27 +2609,28 @@ msgstr "வெளியேற்றப்பட்டது"
 msgid "All languages"
 msgstr "எல்லா மொழிகளும்"
 
-#: ../plugins/externaltools/tools/manager.py:550
-#: ../plugins/externaltools/tools/manager.py:554
-#: ../plugins/externaltools/tools/manager.py:880
-#: ../plugins/externaltools/tools/tools.ui.h:4
+#: ../plugins/externaltools/tools/manager.py:560
+#: ../plugins/externaltools/tools/manager.py:564
+#: ../plugins/externaltools/tools/manager.py:888
+#: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "எல்லா மொழிகளும்"
 
-#: ../plugins/externaltools/tools/manager.py:667
+#: ../plugins/externaltools/tools/manager.py:677
 msgid "New tool"
 msgstr "புதிய கருவி"
 
-#: ../plugins/externaltools/tools/manager.py:798
+#: ../plugins/externaltools/tools/manager.py:808
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "%s உடன் இந்த மாற்றி ஏற்கனவே பிணைக்கப்பட்டுள்ளது"
 
-#: ../plugins/externaltools/tools/manager.py:842
+#: ../plugins/externaltools/tools/manager.py:852
 msgid "Type a new accelerator, or press Backspace to clear"
-msgstr "புதிய மாற்றியை தட்டச்சு செய்யவும் அல்லது பின்னோக்கு விசையை அழுத்தி துடைக்கவும்"
+msgstr ""
+"புதிய மாற்றியை தட்டச்சு செய்யவும் அல்லது பின்னோக்கு விசையை அழுத்தி துடைக்கவும்"
 
-#: ../plugins/externaltools/tools/manager.py:844
+#: ../plugins/externaltools/tools/manager.py:854
 msgid "Type a new accelerator"
 msgstr "ஒரு புதிய மாற்றியை தட்டச்சு செய்யவும்"
 
@@ -2514,161 +2638,162 @@ msgstr "ஒரு புதிய மாற்றியை தட்டச்ச
 msgid "Stopped."
 msgstr "நிறுத்தப்பட்டது."
 
-#: ../plugins/externaltools/tools/tools.ui.h:2
-msgid "Add Tool"
-msgstr "கருவி சேர் "
-
-#: ../plugins/externaltools/tools/tools.ui.h:3
-msgid "Add a new tool"
-msgstr "புதிய கருவியை சேர்"
-
-#: ../plugins/externaltools/tools/tools.ui.h:5
+#. ex:ts=4:et:
+#: ../plugins/externaltools/tools/tools.ui.h:1
 msgid "All documents"
 msgstr "அனைத்து ஆவணங்கள்"
 
-#: ../plugins/externaltools/tools/tools.ui.h:6
+#: ../plugins/externaltools/tools/tools.ui.h:2
 msgid "All documents except untitled ones"
 msgstr "தலைப்பிடப்படாத ஒன்றைத் தவிர அனைத்து ஆவணங்களும்"
 
+#: ../plugins/externaltools/tools/tools.ui.h:3
+msgid "Local files only"
+msgstr "உள்ளமை கோப்புகள் மட்டும்"
+
+#: ../plugins/externaltools/tools/tools.ui.h:4
+msgid "Remote files only"
+msgstr "தொலை கோப்புகள் மட்டும்"
+
+#: ../plugins/externaltools/tools/tools.ui.h:5
+msgid "Untitled documents only"
+msgstr "தலைப்பில்லாத ஆவணங்கள் மட்டும்"
+
+#: ../plugins/externaltools/tools/tools.ui.h:6
+msgid "Nothing"
+msgstr "எதுவுமில்லை"
+
 #: ../plugins/externaltools/tools/tools.ui.h:7
-msgid "Append to current document"
-msgstr "நடப்பு ஆவணத்துக்குச் சேர்க"
-
-#: ../plugins/externaltools/tools/tools.ui.h:8
-msgid "Create new document"
-msgstr "புதிய ஆவணத்தைப் உருவாக்கவும்"
-
-#: ../plugins/externaltools/tools/tools.ui.h:9
 msgid "Current document"
 msgstr "நடப்பு ஆவணம்"
+
+#: ../plugins/externaltools/tools/tools.ui.h:8
+msgid "Current selection"
+msgstr "நடப்பு தேர்வு"
+
+#: ../plugins/externaltools/tools/tools.ui.h:9
+msgid "Current selection (default to document)"
+msgstr "நடப்பு தேர்வு (ஆவணத்துக்கு முன்னிருப்பு)"
 
 #: ../plugins/externaltools/tools/tools.ui.h:10
 msgid "Current line"
 msgstr "நடப்பு வரி"
 
 #: ../plugins/externaltools/tools/tools.ui.h:11
-msgid "Current selection"
-msgstr "நடப்பு தேர்வு"
-
-#: ../plugins/externaltools/tools/tools.ui.h:12
-msgid "Current selection (default to document)"
-msgstr "நடப்பு தேர்வு (ஆவணத்துக்கு முன்னிருப்பு)"
-
-#: ../plugins/externaltools/tools/tools.ui.h:13
 msgid "Current word"
 msgstr "நடப்பு வார்த்தை"
 
-#: ../plugins/externaltools/tools/tools.ui.h:14
+#: ../plugins/externaltools/tools/tools.ui.h:12
 msgid "Display in bottom pane"
 msgstr "வரிசை எண்கள் காட்டுக"
 
+#: ../plugins/externaltools/tools/tools.ui.h:13
+msgid "Create new document"
+msgstr "புதிய ஆவணத்தைப் உருவாக்கவும்"
+
+#: ../plugins/externaltools/tools/tools.ui.h:14
+msgid "Append to current document"
+msgstr "நடப்பு ஆவணத்துக்குச் சேர்க"
+
 #: ../plugins/externaltools/tools/tools.ui.h:15
-msgid "Insert at cursor position"
-msgstr "நிலைக்காட்டி இருக்குமிடத்தில் நுழைக்கவும்"
-
-#: ../plugins/externaltools/tools/tools.ui.h:16
-msgid "Local files only"
-msgstr "உள்ளமை கோப்புகள் மட்டும்"
-
-#: ../plugins/externaltools/tools/tools.ui.h:17
-msgid "Manage External Tools"
-msgstr "வெளியார்ந்த கருவிகளை மேலாளவும் "
-
-#: ../plugins/externaltools/tools/tools.ui.h:18
-msgid "Nothing"
-msgstr "எதுவுமில்லை"
-
-#: ../plugins/externaltools/tools/tools.ui.h:19
-msgid "Remote files only"
-msgstr "தொலை கோப்புகள் மட்டும்"
-
-#: ../plugins/externaltools/tools/tools.ui.h:20
-msgid "Remove Tool"
-msgstr "நீக்கும் கருவி"
-
-#: ../plugins/externaltools/tools/tools.ui.h:21
-msgid "Remove selected tool"
-msgstr "தேர்வு செய்த கருவியை நீக்கு"
-
-#: ../plugins/externaltools/tools/tools.ui.h:22
 msgid "Replace current document"
 msgstr "நடப்பு ஆவணத்தை இதனால் மாற்றுக"
 
-#: ../plugins/externaltools/tools/tools.ui.h:23
+#: ../plugins/externaltools/tools/tools.ui.h:16
 msgid "Replace current selection"
 msgstr "நடப்பு தேர்வினை இதனால் மாற்றுக"
 
-#: ../plugins/externaltools/tools/tools.ui.h:24
-msgid "Revert Tool"
-msgstr "பழையநிலையை மீட்கும் கருவி"
+#: ../plugins/externaltools/tools/tools.ui.h:17
+msgid "Insert at cursor position"
+msgstr "நிலைக்காட்டி இருக்குமிடத்தில் நுழைக்கவும்"
 
-#: ../plugins/externaltools/tools/tools.ui.h:25
+#: ../plugins/externaltools/tools/tools.ui.h:18
+msgid "Manage External Tools"
+msgstr "வெளியார்ந்த கருவிகளை மேலாளவும் "
+
+#: ../plugins/externaltools/tools/tools.ui.h:19
+msgid "_Tools:"
+msgstr "_T கருவிகள்: "
+
+#: ../plugins/externaltools/tools/tools.ui.h:20
+msgid "Add a new tool"
+msgstr "புதிய கருவியை சேர்"
+
+#: ../plugins/externaltools/tools/tools.ui.h:21
+msgid "Add Tool"
+msgstr "கருவி சேர் "
+
+#: ../plugins/externaltools/tools/tools.ui.h:22
+msgid "Remove selected tool"
+msgstr "தேர்வு செய்த கருவியை நீக்கு"
+
+#: ../plugins/externaltools/tools/tools.ui.h:23
+msgid "Remove Tool"
+msgstr "நீக்கும் கருவி"
+
+#: ../plugins/externaltools/tools/tools.ui.h:24
 msgid "Revert tool"
 msgstr "பழையநிலையை மீட்கும் கருவி"
 
+#: ../plugins/externaltools/tools/tools.ui.h:25
+msgid "Revert Tool"
+msgstr "பழையநிலையை மீட்கும் கருவி"
+
 #: ../plugins/externaltools/tools/tools.ui.h:26
-msgid "Shortcut _Key:"
-msgstr "_K குறுக்கு விசை:"
-
-#: ../plugins/externaltools/tools/tools.ui.h:27
-msgid "Untitled documents only"
-msgstr "தலைப்பில்லாத ஆவணங்கள் மட்டும்"
-
-#: ../plugins/externaltools/tools/tools.ui.h:28
-msgid "_Applicability:"
-msgstr "_A பொருந்துதல்: "
-
-#: ../plugins/externaltools/tools/tools.ui.h:29
-#: ../plugins/snippets/snippets/snippets.ui.h:16
+#: ../plugins/snippets/snippets/snippets.ui.h:11
 msgid "_Edit:"
 msgstr "_E திருத்து:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:30
-msgid "_Input:"
-msgstr "_I உள்ளீடு: "
+#: ../plugins/externaltools/tools/tools.ui.h:29
+msgid "_Applicability:"
+msgstr "_A பொருந்துதல்: "
 
-#: ../plugins/externaltools/tools/tools.ui.h:31
+#: ../plugins/externaltools/tools/tools.ui.h:30
 msgid "_Output:"
 msgstr "_O வெளியீடு: "
+
+#: ../plugins/externaltools/tools/tools.ui.h:31
+msgid "_Input:"
+msgstr "_I உள்ளீடு: "
 
 #: ../plugins/externaltools/tools/tools.ui.h:32
 msgid "_Save:"
 msgstr "_S சேமிக்கவும்: "
 
 #: ../plugins/externaltools/tools/tools.ui.h:33
-msgid "_Tools:"
-msgstr "_T கருவிகள்: "
+msgid "Shortcut _Key:"
+msgstr "_K குறுக்கு விசை:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:179
+#: ../plugins/externaltools/tools/windowactivatable.py:173
 msgid "Manage _External Tools..."
 msgstr "_E வெளியார்ந்த கருவிகளை மேலாளவும் "
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
+#: ../plugins/externaltools/tools/windowactivatable.py:174
 msgid "Opens the External Tools Manager"
 msgstr "வெளியார்ந்த கருவிகள் மேலாளரை திறக்கிறது"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:183
+#: ../plugins/externaltools/tools/windowactivatable.py:177
 msgid "External _Tools"
 msgstr "_T வெளியார்ந்த கருவிகள்"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:184
+#: ../plugins/externaltools/tools/windowactivatable.py:178
 msgid "External tools"
 msgstr "வெளியார்ந்த கருவிகள்"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:218
+#: ../plugins/externaltools/tools/windowactivatable.py:212
 msgid "Shell Output"
 msgstr "ஷெல் வெளியீடு"
 
 #. ex:ts=4:et:
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
-msgid "Easy file access from the side panel"
-msgstr "பக்க பலகத்திலிருந்து கோப்பினை எளிதாக அணுகலாம்"
-
-#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
 msgid "File Browser Panel"
 msgstr "கோப்பு உலாவி பலகம்"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:239
+#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
+msgid "Easy file access from the side panel"
+msgstr "பக்க பலகத்திலிருந்து கோப்பினை எளிதாக அணுகலாம்"
+
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
 msgid "File System"
 msgstr "கோப்பு அமைப்பு"
 
@@ -2763,7 +2888,8 @@ msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"மறுபெயரிடப்பட்ட கோப்பு தற்போது வடிக்கப்பட்டது. கோப்பு தெரிய உங்கள் வடிப்பு அமைவை சரி "
+"மறுபெயரிடப்பட்ட கோப்பு தற்போது வடிக்கப்பட்டது. கோப்பு தெரிய உங்கள் வடிப்பு "
+"அமைவை சரி "
 "செய்ய வேண்டும்"
 
 #. Translators: This is the default name of new files created by the file browser pane.
@@ -2775,7 +2901,9 @@ msgstr "கோப்பு"
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
-msgstr "புதிய கோப்பு வடிகட்டப் பட்டது. கோப்பை பார்க்க நீங்கள் வடிகட்டி அமைப்பை மாற்ற வேண்டும்."
+msgstr ""
+"புதிய கோப்பு வடிகட்டப் பட்டது. கோப்பை பார்க்க நீங்கள் வடிகட்டி அமைப்பை மாற்ற "
+"வேண்டும்."
 
 #. Translators: This is the default name of new directories created by the file browser pane.
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3770
@@ -2787,7 +2915,8 @@ msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
-"புதிய அடைவு தற்போது வடிகட்டப்பட்டது. அடைவைப் பார்க்க நீங்கள் வடிகட்டி அமைப்பை மாற்ற "
+"புதிய அடைவு தற்போது வடிகட்டப்பட்டது. அடைவைப் பார்க்க நீங்கள் வடிகட்டி அமைப்பை "
+"மாற்ற "
 "வேண்டும்."
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:733
@@ -2804,7 +2933,8 @@ msgstr "_M குப்பை தொட்டிக்கு நகர்த்�
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:827
 msgid "Move selected file or folder to trash"
-msgstr "தேர்ந்தெடுக்கப்பட்ட கோப்பு அல்லது அடைவினை குப்பை தொட்டிக்கு நகர்த்தவும்"
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட கோப்பு அல்லது அடைவினை குப்பை தொட்டிக்கு நகர்த்தவும்"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:829
 msgid "_Delete"
@@ -2921,20 +3051,30 @@ msgstr "தொகுதியை ஏற்ற முடியவில்லை:
 
 #. ex:ts=8:noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
-msgid "Enable Restore of Remote Locations"
-msgstr "தொலை இடங்களின் மீட்டமைப்பினை இயலுமைபடுத்தவும்"
+msgid "Open With Tree View"
+msgstr "கிளை பார்வையாக திறக்கவும்"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
-msgid "File Browser Filter Mode"
-msgstr "கோப்பு உலாவி வடிப்பி முறை"
+msgid ""
+"Open the tree view when the file browser plugin gets loaded instead of the "
+"bookmarks view"
+msgstr ""
+"கோப்பு சொருகுப்பொருள் ஏற்றப் படும் போது புத்தக குறிகள் காட்சி அல்லாது கிளைக் "
+"காட்சியை "
+"திறக்கவும்."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
-msgid "File Browser Filter Pattern"
-msgstr "கோப்பு உலாவி வடிப்பி தோரணி"
-
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
 msgid "File Browser Root Directory"
 msgstr "கோப்பு உலாவி ரூட் அடைவு"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+msgid ""
+"The file browser root directory to use when loading the file browser plugin "
+"and onload/tree_view is TRUE."
+msgstr ""
+"ஏற்றும் போது கிளைக் காட்சியை திறக்கவும் என்பது உண்மை எனும் போது உபயோகிக்க "
+"வேண்டிய கோப்பு "
+"உலாவியின் மூல கோப்பு."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
 msgid "File Browser Virtual Root Directory"
@@ -2942,53 +3082,61 @@ msgstr "கோப்பு உலாவி மெய்நிகர் ரூட
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
 msgid ""
-"If TRUE the file browser plugin will view the directory of the first opened "
-"document given that the file browser hasn't been used yet. (Thus this "
-"generally applies to opening a document from the command line or opening it "
-"with Nautilus, etc.)"
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
 msgstr ""
-"உண்மை எனில் கோப்பு சொருகுப்பொருள் முதலில் திறக்கப் பட்ட ஆவணத்தின் அடைவை பார்க்கும். "
-"(அதாவது கோப்பு உலாவி திறக்கப் படவில்லை எனில்) இப்படியாக இது பொதுவாக கட்டளை "
-"வரியிலிருந்து ஆவணத்தை திறக்கவோ அல்லது நாடுலஸ் வழியாக திறக்கவோ பயனாகும்."
+"ஏற்றும் போது கிளைக் காட்சியை திறக்கவும் என்பது உண்மை எனும் போது உபயோகிக்க "
+"வேண்டிய கோப்பு "
+"உலாவியின் மெய்நிகர் மூல கோப்பு. மெய்நிகர் மூலம் எப்போதும் மூலத்தின் கீழேயே "
+"இருக்க வேண்டும்."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
-msgid "Open With Tree View"
-msgstr "கிளை பார்வையாக திறக்கவும்"
+msgid "Enable Restore of Remote Locations"
+msgstr "தொலை இடங்களின் மீட்டமைப்பினை இயலுமைபடுத்தவும்"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
-msgid ""
-"Open the tree view when the file browser plugin gets loaded instead of the "
-"bookmarks view"
-msgstr ""
-"கோப்பு சொருகுப்பொருள் ஏற்றப் படும் போது புத்தக குறிகள் காட்சி அல்லாது கிளைக் காட்சியை "
-"திறக்கவும்."
+msgid "Sets whether to enable restoring of remote locations."
+msgstr "தொலைநிலை இடங்களை மீட்பதை இயலுமைபடுத்துவதா என அமைக்கிறது."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
 msgid "Set Location to First Document"
 msgstr "முதல் ஆவணத்திற்கு இடத்தை அமைக்கவும்"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
-msgid "Sets whether to enable restoring of remote locations."
-msgstr "தொலைநிலை இடங்களை மீட்பதை இயலுமைபடுத்துவதா என அமைக்கிறது."
+msgid ""
+"If TRUE the file browser plugin will view the directory of the first opened "
+"document given that the file browser hasn't been used yet. (Thus this "
+"generally applies to opening a document from the command line or opening it "
+"with Nautilus, etc.)"
+msgstr ""
+"உண்மை எனில் கோப்பு சொருகுப்பொருள் முதலில் திறக்கப் பட்ட ஆவணத்தின் அடைவை "
+"பார்க்கும். "
+"(அதாவது கோப்பு உலாவி திறக்கப் படவில்லை எனில்) இப்படியாக இது பொதுவாக கட்டளை "
+"வரியிலிருந்து ஆவணத்தை திறக்கவோ அல்லது நாடுலஸ் வழியாக திறக்கவோ பயனாகும்."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
-msgid ""
-"The file browser root directory to use when loading the file browser plugin "
-"and onload/tree_view is TRUE."
-msgstr ""
-"ஏற்றும் போது கிளைக் காட்சியை திறக்கவும் என்பது உண்மை எனும் போது உபயோகிக்க வேண்டிய கோப்பு "
-"உலாவியின் மூல கோப்பு."
+msgid "File Browser Filter Mode"
+msgstr "கோப்பு உலாவி வடிப்பி முறை"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
 msgid ""
-"The file browser virtual root directory to use when loading the file browser "
-"plugin when onload/tree_view is TRUE. The virtual root must always be below "
-"the actual root."
+"This value determines what files get filtered from the file browser. Valid "
+"values are: none (filter nothing), hide-hidden (filter hidden files) and "
+"hide-binary (filter binary files)."
 msgstr ""
-"ஏற்றும் போது கிளைக் காட்சியை திறக்கவும் என்பது உண்மை எனும் போது உபயோகிக்க வேண்டிய கோப்பு "
-"உலாவியின் மெய்நிகர் மூல கோப்பு. மெய்நிகர் மூலம் எப்போதும் மூலத்தின் கீழேயே இருக்க வேண்டும்."
+"இந்த மதிப்பு எந்த கோப்புகள் கோப்பு உலாவியால் வடிகட்டப் படும் என "
+"நிர்ணயிக்கிறது. "
+"செல்லுபடியாகும் மதிப்புகள்: எதுவும் இல்லை (வடிகட்ட எதுவுமில்லை),மறைந்த  "
+"(மறைந்த "
+"கோப்புகளை வடிகட்டு), இருநிலை (இருநிலை கோப்புகளை வடிகட்டு) மற்றும் hide-binary "
+"(மறைந்த மற்றும் இரும கோப்புகள்)."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+msgid "File Browser Filter Pattern"
+msgstr "கோப்பு உலாவி வடிப்பி தோரணி"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -2996,48 +3144,38 @@ msgstr ""
 "கோப்பு உலாவி உபயோகிக்க வேண்டிய வடிகட்டி தோரணி. வடிகட்டி, வடிகட்டி பாணியின் "
 "( filter_mode) மீது இயங்கும். "
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
-msgid ""
-"This value determines what files get filtered from the file browser. Valid "
-"values are: none (filter nothing), hide-hidden (filter hidden files) and "
-"hide-binary (filter binary files)."
-msgstr ""
-"இந்த மதிப்பு எந்த கோப்புகள் கோப்பு உலாவியால் வடிகட்டப் படும் என நிர்ணயிக்கிறது. "
-"செல்லுபடியாகும் மதிப்புகள்: எதுவும் இல்லை (வடிகட்ட எதுவுமில்லை),மறைந்த  (மறைந்த "
-"கோப்புகளை வடிகட்டு), இருநிலை (இருநிலை கோப்புகளை வடிகட்டு) மற்றும் hide-binary "
-"(மறைந்த மற்றும் இரும கோப்புகள்)."
-
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
-msgid "Emacs, Kate and Vim-style modelines support for gedit."
-msgstr "கெடிட் க்கு ஈமாக்ஸ்,கேட் மற்றும் விம்முறை மோட்லைன்ஸ் ஆதரவு."
-
-#: ../plugins/modelines/modelines.plugin.desktop.in.h:2
 msgid "Modelines"
 msgstr "மோட்லைன்ஸ்"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:2
+msgid "Emacs, Kate and Vim-style modelines support for gedit."
+msgstr "கெடிட் க்கு ஈமாக்ஸ்,கேட் மற்றும் விம்முறை மோட்லைன்ஸ் ஆதரவு."
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
 msgid "Command Color Text"
+msgstr "கட்டளை உரை நிறம் "
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+msgid "The command color text"
 msgstr "கட்டளை உரை நிறம் "
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
 msgid "Error Color Text"
 msgstr "பிழை உரை நிறம்"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+msgid "The error color text"
+msgstr "பிழை உரை நிறம் "
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
-"உண்மையெனில் மேல் மேசையின் பொது தகுதர எழுத்துருவை பயன்படுத்தும்(அல்லது அதற்கு ஒப்பான "
+"உண்மையெனில் மேல் மேசையின் பொது தகுதர எழுத்துருவை பயன்படுத்தும்(அல்லது அதற்கு "
+"ஒப்பான "
 "எழுத்துருவை பயன்படுத்தும்)"
-
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
-msgid "The command color text"
-msgstr "கட்டளை உரை நிறம் "
-
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
-msgid "The error color text"
-msgstr "பிழை உரை நிறம் "
 
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
 msgid "C_ommand color:"
@@ -3047,13 +3185,13 @@ msgstr "கட்டளை நிறம் (_o):"
 msgid "_Error color:"
 msgstr "பிழை நிறம் (_E):"
 
+#. ex:et:ts=4:
 #: ../plugins/pythonconsole/pythonconsole/__init__.py:52
-#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "பைத்தான் முனையம்"
 
-#. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "கீழ் பலகத்தின் உள்ளே ஊடாடும் பைதான் முனையம்"
 
@@ -3067,7 +3205,7 @@ msgstr "ஆவணங்களை விரைவாக திறக்கவு�
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:31
+#: ../plugins/quickopen/quickopen/popup.py:32
 msgid "Quick Open"
 msgstr "விரைவாக திறக்கவும்"
 
@@ -3075,12 +3213,13 @@ msgstr "விரைவாக திறக்கவும்"
 msgid "Quickly open files"
 msgstr "கோப்பை விரைவாக திறக்கவும்"
 
-#: ../plugins/quickopen/quickopen/popup.py:72
+#: ../plugins/quickopen/quickopen/popup.py:73
 msgid "Type to search..."
 msgstr "தேட உள்ளிடு..."
 
+#. ex:ts=8:et:
 #: ../plugins/snippets/snippets/document.py:57
-#: ../plugins/snippets/snippets.plugin.desktop.in.h:2
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "கத்தரிப்புகள்"
 
@@ -3113,7 +3252,8 @@ msgstr "\"%s\"  கோப்பு செல்லுபடியாகும்
 #: ../plugins/snippets/snippets/importer.py:67
 #, python-format
 msgid "Imported file \"%s\" is not a valid snippets file"
-msgstr "இறக்குமதி செய்யப்பட்ட \"%s\"   கோப்பு செல்லுபடியாகும் கத்தரிப்பு கோப்பு அல்ல"
+msgstr ""
+"இறக்குமதி செய்யப்பட்ட \"%s\"   கோப்பு செல்லுபடியாகும் கத்தரிப்பு கோப்பு அல்ல"
 
 #: ../plugins/snippets/snippets/importer.py:77
 #, python-format
@@ -3159,15 +3299,16 @@ msgid ""
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
 "[, etc."
 msgstr ""
-"இது செல்லுபடியாகும் கீற்று விசை அல்ல. விசைகள் வெறும் எழுத்தாகவோ (அல்லது _, : மற்றும்.) அல்லது "
-"{, [,  போல ஒரே "
-"ஒரு குறியீடாகவோ இருக்கலாம்."
+"இது செல்லுபடியாகும் கீற்று விசை அல்ல. விசைகள் வெறும் எழுத்தாகவோ (அல்லது _, : "
+"மற்றும்.) "
+"அல்லது {, [,  போல ஒரே ஒரு குறியீடாகவோ இருக்கலாம்."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:670
-#: ../plugins/snippets/snippets/snippets.ui.h:14
+#: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "Single word the snippet is activated with after pressing Tab"
-msgstr "கத்தரிப்பை செயல்படுத்தும் தத்தல் விசையை அழுத்தியபின் உள்ளிடும் ஒற்றை சொல்."
+msgstr ""
+"கத்தரிப்பை செயல்படுத்தும் தத்தல் விசையை அழுத்தியபின் உள்ளிடும் ஒற்றை சொல்."
 
 #: ../plugins/snippets/snippets/manager.py:759
 #, python-format
@@ -3179,7 +3320,7 @@ msgid "Import successfully completed"
 msgstr "வெற்றிகரமாக இறக்குமதி முடிந்தது"
 
 #: ../plugins/snippets/snippets/manager.py:780
-#: ../plugins/snippets/snippets/snippets.ui.h:9
+#: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr " கத்தரிப்புகளை இறக்குமதி செய்க"
 
@@ -3224,7 +3365,9 @@ msgstr "ஏற்றுமதி வெற்றிகரமாக முடி�
 #: ../plugins/snippets/snippets/manager.py:845
 #: ../plugins/snippets/snippets/manager.py:912
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
-msgstr "தேர்ந்தெடுக்கப்பட்ட <b>கணினி</b> கத்தரிப்புகளை உங்கள் ஏற்றுமதிக்கு சேர்க்க வேண்டுமா?"
+msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட <b>கணினி</b> கத்தரிப்புகளை உங்கள் ஏற்றுமதிக்கு சேர்க்க "
+"வேண்டுமா?"
 
 #: ../plugins/snippets/snippets/manager.py:860
 #: ../plugins/snippets/snippets/manager.py:930
@@ -3238,83 +3381,85 @@ msgstr "கத்தரிப்புகளை ஏற்றுமதி செ�
 
 #: ../plugins/snippets/snippets/manager.py:1044
 msgid "Type a new shortcut, or press Backspace to clear"
-msgstr "புதிய குறுக்கு விசையை தட்டச்சு செய்யவும் அல்லது பின்னோக்கு விசையை அழுத்தி துடைக்கவும்"
+msgstr ""
+"புதிய குறுக்கு விசையை தட்டச்சு செய்யவும் அல்லது பின்னோக்கு விசையை அழுத்தி "
+"துடைக்கவும்"
 
 #: ../plugins/snippets/snippets/manager.py:1046
 msgid "Type a new shortcut"
 msgstr "ஒரு புதிய குறுக்கு விசையை தட்டச்சு செய்யவும்"
 
-#: ../plugins/snippets/snippets/placeholder.py:602
+#: ../plugins/snippets/snippets/placeholder.py:601
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
 msgstr ""
-"பைதான் கட்டளை (%s) ஐ நிறைவேற்ற எடுக்கும் நேரம் அதிக பட்ச வரம்பை தாண்டி விட்டது, கை "
+"பைதான் கட்டளை (%s) ஐ நிறைவேற்ற எடுக்கும் நேரம் அதிக பட்ச வரம்பை தாண்டி "
+"விட்டது, கை "
 "விடப்படுகிறது."
 
-#: ../plugins/snippets/snippets/placeholder.py:610
+#: ../plugins/snippets/snippets/placeholder.py:609
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "பைதான் கட்டளை (%s) ஐ நிறைவேற்றுதல் தோல்வி அடைந்தது:%s"
 
-#. ex:ts=8:et:
-#: ../plugins/snippets/snippets.plugin.desktop.in.h:1
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:2
 msgid "Insert often-used pieces of text in a fast way"
 msgstr "அடிக்கடி பயன் படுத்தும் உரைத் துணுக்குகளை வேகமாக உள்ளிட."
 
+#: ../plugins/snippets/snippets/snippets.ui.h:1
+msgid "Manage Snippets"
+msgstr "கத்தரிப்புகளை மேலாண்மை செய்க"
+
 #: ../plugins/snippets/snippets/snippets.ui.h:2
-msgid "Activation"
-msgstr "செயல்படுத்தல்"
+msgid "_Snippets:"
+msgstr "_S கத்தரிப்புகள்: "
 
 #: ../plugins/snippets/snippets/snippets.ui.h:3
-msgid "Add Snippet"
-msgstr "கத்தரிப்பை சேர்"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Create new snippet"
 msgstr "புதிய உரை துண்டை உருவாக்கவும்"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:6
-msgid "Export Snippets"
-msgstr "கத்தரிப்புகளை ஏற்றுமதி செய்க"
+#: ../plugins/snippets/snippets/snippets.ui.h:4
+msgid "Add Snippet"
+msgstr "கத்தரிப்பை சேர்"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:7
-msgid "Export selected snippets"
-msgstr "தேர்வு செய்த உரை துண்டை ஏற்றுமதி செய்க"
+#: ../plugins/snippets/snippets/snippets.ui.h:6
+msgid "Remove Snippet"
+msgstr "கத்தரிப்பை நீக்கு"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:8
 msgid "Import Snippets"
 msgstr "கத்தரிப்புகளை இறக்குமதி செய்க"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:10
-msgid "Manage Snippets"
-msgstr "கத்தரிப்புகளை மேலாண்மை செய்க"
+#: ../plugins/snippets/snippets/snippets.ui.h:9
+msgid "Export selected snippets"
+msgstr "தேர்வு செய்த உரை துண்டை ஏற்றுமதி செய்க"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:11
-msgid "Remove Snippet"
-msgstr "கத்தரிப்பை நீக்கு"
+#: ../plugins/snippets/snippets/snippets.ui.h:10
+msgid "Export Snippets"
+msgstr "கத்தரிப்புகளை ஏற்றுமதி செய்க"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:12
+msgid "Activation"
+msgstr "செயல்படுத்தல்"
+
+#. "tab" here means the tab key, not the notebook tab!
+#: ../plugins/snippets/snippets/snippets.ui.h:15
+msgid "_Tab trigger:"
+msgstr "_T தத்தல் விசை: "
+
+#: ../plugins/snippets/snippets/snippets.ui.h:17
 msgid "S_hortcut key:"
 msgstr "_h குறுக்கு விசை:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:13
+#: ../plugins/snippets/snippets/snippets.ui.h:18
 msgid "Shortcut key with which the snippet is activated"
 msgstr "கத்தரிப்பை செயல்படுத்தும் குறுக்குவழி விசை"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:15
+#: ../plugins/snippets/snippets/snippets.ui.h:19
 msgid "_Drop targets:"
 msgstr "_D இலக்குகளை விடுக:"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:17
-msgid "_Snippets:"
-msgstr "_S கத்தரிப்புகள்: "
-
-#. "tab" here means the tab key, not the notebook tab!
-#: ../plugins/snippets/snippets/snippets.ui.h:19
-msgid "_Tab trigger:"
-msgstr "_T தத்தல் விசை: "
 
 #: ../plugins/snippets/snippets/windowactivatable.py:154
 msgid "Manage _Snippets..."
@@ -3334,33 +3479,33 @@ msgstr "நடப்பு ஆவணம் அல்லது தேர்ந்
 
 #. ex:ts=8:noet:
 #: ../plugins/sort/gedit-sort-plugin.ui.h:1
-msgid "R_emove duplicates"
-msgstr "_e போலிகளை நீக்கவும்"
-
-#: ../plugins/sort/gedit-sort-plugin.ui.h:2
-msgid "S_tart at column:"
-msgstr "_t பத்தியில் தொடங்கவும்:"
-
-#: ../plugins/sort/gedit-sort-plugin.ui.h:3
 #: ../plugins/sort/sort.plugin.desktop.in.h:1
 msgid "Sort"
 msgstr "அடுக்கு"
 
+#: ../plugins/sort/gedit-sort-plugin.ui.h:2
+msgid "_Sort"
+msgstr "_S அடுக்கவும்"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:3
+msgid "_Reverse order"
+msgstr "_R வரிசையை முன் பின்னாக்கு"
+
 #: ../plugins/sort/gedit-sort-plugin.ui.h:4
-msgid "You cannot undo a sort operation"
-msgstr "வரிசைப் படுத்தியச் செயல்பாட்டினை உங்களால் ரத்துச் செய்ய முடியாது"
+msgid "R_emove duplicates"
+msgstr "_e போலிகளை நீக்கவும்"
 
 #: ../plugins/sort/gedit-sort-plugin.ui.h:5
 msgid "_Ignore case"
 msgstr "_I மேல் கீழ் நிலைகளை உதாசீனம் செய்க"
 
 #: ../plugins/sort/gedit-sort-plugin.ui.h:6
-msgid "_Reverse order"
-msgstr "_R வரிசையை முன் பின்னாக்கு"
+msgid "S_tart at column:"
+msgstr "_t பத்தியில் தொடங்கவும்:"
 
 #: ../plugins/sort/gedit-sort-plugin.ui.h:7
-msgid "_Sort"
-msgstr "_S அடுக்கவும்"
+msgid "You cannot undo a sort operation"
+msgstr "வரிசைப் படுத்தியச் செயல்பாட்டினை உங்களால் ரத்துச் செய்ய முடியாது"
 
 #: ../plugins/sort/sort.plugin.desktop.in.h:2
 msgid "Sorts a document or selected text."
@@ -3437,8 +3582,9 @@ msgctxt "language"
 msgid "Default"
 msgstr "முன்னிருப்பு"
 
+#. ex:ts=8:noet:
 #: ../plugins/spell/gedit-spell-language-dialog.c:140
-#: ../plugins/spell/languages-dialog.ui.h:2
+#: ../plugins/spell/languages-dialog.ui.h:1
 msgid "Set language"
 msgstr "மொழியை அமைக்கவும்"
 
@@ -3478,22 +3624,21 @@ msgstr "வெற்று ஆவணம்."
 msgid "No misspelled words"
 msgstr "தவறான சொற்கள் இல்லை"
 
-#. ex:ts=8:noet:
-#: ../plugins/spell/languages-dialog.ui.h:1
+#: ../plugins/spell/languages-dialog.ui.h:2
 msgid "Select the _language of the current document."
 msgstr "_l இந்த ஆவணத்தின் மொழியை தேர்வுசெய்க."
 
 #: ../plugins/spell/spell-checker.ui.h:1
-msgid "Add w_ord"
-msgstr "_சo சொல்லை சேர்க்கவும்"
+msgid "Check spelling"
+msgstr "எழுத்துக் கோவை சரிபார்பு"
 
 #: ../plugins/spell/spell-checker.ui.h:2
-msgid "Cha_nge"
-msgstr "_n மாற்றுக"
+msgid "Misspelled word:"
+msgstr "தவறான எழுத்துக் கோவை உள்ள சொல்:"
 
 #: ../plugins/spell/spell-checker.ui.h:3
-msgid "Change A_ll"
-msgstr "_l அனைத்தையும் மாற்றுக"
+msgid "word"
+msgstr "சொல்"
 
 #: ../plugins/spell/spell-checker.ui.h:4
 msgid "Change _to:"
@@ -3504,80 +3649,79 @@ msgid "Check _Word"
 msgstr "_W வார்த்தைச் சரிபார்பு"
 
 #: ../plugins/spell/spell-checker.ui.h:6
-msgid "Check spelling"
-msgstr "எழுத்துக் கோவை சரிபார்பு"
+msgid "_Suggestions:"
+msgstr "_S யோசனைகள்:"
 
 #: ../plugins/spell/spell-checker.ui.h:7
+msgid "_Ignore"
+msgstr "_I புறக்கணிக்கவும்"
+
+#: ../plugins/spell/spell-checker.ui.h:8
+msgid "Cha_nge"
+msgstr "_n மாற்றுக"
+
+#: ../plugins/spell/spell-checker.ui.h:9
 msgid "Ignore _All"
 msgstr "_A அனைத்தையும் புறக்கணி"
 
-#: ../plugins/spell/spell-checker.ui.h:8
-msgid "Language"
-msgstr "மொழி"
-
-#: ../plugins/spell/spell-checker.ui.h:9
-msgid "Language:"
-msgstr "மொழி:"
-
 #: ../plugins/spell/spell-checker.ui.h:10
-msgid "Misspelled word:"
-msgstr "தவறான எழுத்துக் கோவை உள்ள சொல்:"
+msgid "Change A_ll"
+msgstr "_l அனைத்தையும் மாற்றுக"
 
 #: ../plugins/spell/spell-checker.ui.h:11
 msgid "User dictionary:"
 msgstr "பயனர் அகராதி:"
 
 #: ../plugins/spell/spell-checker.ui.h:12
-msgid "_Ignore"
-msgstr "_I புறக்கணிக்கவும்"
+msgid "Add w_ord"
+msgstr "_சo சொல்லை சேர்க்கவும்"
 
 #: ../plugins/spell/spell-checker.ui.h:13
-msgid "_Suggestions:"
-msgstr "_S யோசனைகள்:"
+msgid "Language:"
+msgstr "மொழி:"
 
 #: ../plugins/spell/spell-checker.ui.h:14
-msgid "word"
-msgstr "சொல்"
+msgid "Language"
+msgstr "மொழி"
 
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
-msgid "Checks the spelling of the current document."
-msgstr "இந்த ஆவண சொற்களின் எழுத்துக் கோவையை சரிபார்க்கவும்"
-
-#: ../plugins/spell/spell.plugin.desktop.in.h:2
 msgid "Spell Checker"
 msgstr "சொல் திருத்தி "
 
-#. ex:ts=8:noet:
-#. Translators: Use the more common date format in your locale
+#: ../plugins/spell/spell.plugin.desktop.in.h:2
+msgid "Checks the spelling of the current document."
+msgstr "இந்த ஆவண சொற்களின் எழுத்துக் கோவையை சரிபார்க்கவும்"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:1
+msgid "Insert Date and Time"
+msgstr "தேதியையும் நேரத்தையும் சொருகவும்"
+
 #: ../plugins/time/gedit-time-dialog.ui.h:2
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
+msgid "Use the _selected format"
+msgstr "_s தேர்வுசெய்த வடிவமைப்பை பயன்படுத்துக"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:3
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
+msgid "_Use custom format"
+msgstr "_U தனிப்பயன் வடிவத்தை பயன்படுத்து"
+
+#. Translators: Use the more common date format in your locale
+#: ../plugins/time/gedit-time-dialog.ui.h:5
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:8
 #, no-c-format
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%d/%m/%Y %H:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
-#: ../plugins/time/gedit-time-dialog.ui.h:3
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
+#: ../plugins/time/gedit-time-dialog.ui.h:6
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:10
 msgid "01/11/2009 17:52:00"
 msgstr "01/11/2009 17:52:00"
 
-#: ../plugins/time/gedit-time-dialog.ui.h:4
-msgid "Insert Date and Time"
-msgstr "தேதியையும் நேரத்தையும் சொருகவும்"
-
-#: ../plugins/time/gedit-time-dialog.ui.h:5
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:7
-msgid "Use the _selected format"
-msgstr "_s தேர்வுசெய்த வடிவமைப்பை பயன்படுத்துக"
-
-#: ../plugins/time/gedit-time-dialog.ui.h:6
+#: ../plugins/time/gedit-time-dialog.ui.h:7
 msgid "_Insert"
 msgstr "_I நுழைக்க"
-
-#: ../plugins/time/gedit-time-dialog.ui.h:7
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:10
-msgid "_Use custom format"
-msgstr "_U தனிப்பயன் வடிவத்தை பயன்படுத்து"
 
 #: ../plugins/time/gedit-time-plugin.c:188
 msgid "In_sert Date and Time..."
@@ -3591,45 +3735,47 @@ msgstr "தற்போதைய தேதியையும் நேரத்�
 msgid "Available formats"
 msgstr "புழங்கக்கூடிய வடிவங்கள்"
 
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:6
+#. ex:ts=8:noet:
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:1
 msgid "Configure date/time plugin"
 msgstr "தேதி/நேரம் சொருகியை வடிவமைக்கவும்..."
 
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:8
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "When inserting date/time..."
 msgstr "தேதி/நேரம் உள்சொருகும்பொழுது..."
 
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:9
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
 msgid "_Prompt for a format"
 msgstr "_P வடிவத்திற்காக நினைவுபடுத்தவும்"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
-msgid "Custom Format"
-msgstr "தனிப்பயன் வடிவம்"
+msgid "Prompt Type"
+msgstr "தூண்டல் வகை"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
 msgstr ""
-"பயனருக்கு தேர்ந்தெடுத்த ஒழுங்கு அல்லது   தனிப்பயன் ஒழுங்கை பயன்படுத்த வேண்டுமா  இல்லைபயன "
+"பயனருக்கு தேர்ந்தெடுத்த ஒழுங்கு அல்லது   தனிப்பயன் ஒழுங்கை பயன்படுத்த "
+"வேண்டுமா  இல்லைபயன "
 "ரை ஒழுங்கு கேட்டு  தூண்ட வேண்டுமா."
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
-msgid "Prompt Type"
-msgstr "தூண்டல் வகை"
-
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
 msgid "Selected Format"
 msgstr "தேர்ந்தெடுக்கப்பட்ட ஒழுங்கு "
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
-msgid "The custom format used when inserting the date/time."
-msgstr "தேதி/நேரம் உள்சொருகும்பொழுது பயன்படுத்த தனிப்பயன் ஒழுங்கு"
-
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "தேதி/நேரம் உள்சொருகும்பொழுது பயன்படுத்த  தேர்ந்தெடுத்த ஒழுங்கு"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+msgid "Custom Format"
+msgstr "தனிப்பயன் வடிவம்"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+msgid "The custom format used when inserting the date/time."
+msgstr "தேதி/நேரம் உள்சொருகும்பொழுது பயன்படுத்த தனிப்பயன் ஒழுங்கு"
 
 #: ../plugins/time/time.plugin.desktop.in.h:1
 msgid "Insert Date/Time"
@@ -3640,12 +3786,12 @@ msgid "Inserts current date and time at the cursor position."
 msgstr "தற்போதைய தேதியையும் நேரத்தையும் நிலை காட்டி இருக்குமிடத்தில் சொருகும்"
 
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:1
-msgid "Logs access and leave event for documents used with gedit"
-msgstr "ஆவணங்களுக்கு அணுகல் வெளியேற நிகழ்வுகளை கெடிடி உடன் பதிவு செய்கிறது"
-
-#: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Zeitgeist dataprovider"
 msgstr "செய்ட்கீஸ்ட் தரவு கொடுபோர்"
+
+#: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
+msgid "Logs access and leave event for documents used with gedit"
+msgstr "ஆவணங்களுக்கு அணுகல் வெளியேற நிகழ்வுகளை கெடிடி உடன் பதிவு செய்கிறது"
 
 #~ msgid "_Add..."
 #~ msgstr "சேர் (_A)..."
@@ -4587,9 +4733,6 @@ msgstr "செய்ட்கீஸ்ட் தரவு கொடுபோர�
 
 #~ msgid "Teletype or monospace text style"
 #~ msgstr "டெலிடைப் அல்லது மோனேஸ்பேஸ் உரை தோற்றம்"
-
-#~ msgid "Text"
-#~ msgstr "உரை"
 
 #~ msgid "Text color"
 #~ msgstr "உரை நிறம்"
