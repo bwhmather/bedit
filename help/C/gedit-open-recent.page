@@ -13,17 +13,25 @@
 
   <title>Reopen a recently-used file</title>
 
-  <p>By default, <app>gedit</app> provides easy access to five of your most recently-used files. Here is how you can open a recently-used file:</p>
+  <p>By default, <app>gedit</app> provides easy access to five of your most
+  recently-used files. Here is how you can open a recently-used file:</p>
   <list type="numbered">
-    <item><p>Click the downward-facing arrow to the right of the <gui>Open</gui> button.</p></item>
-    <item><p><app>gedit</app> will display a list of the five most-recently used files.</p></item>
+    <item><p>Click the downward-facing arrow to the right of the <gui>Open</gui>
+    button.</p></item>
+    <item><p><app>gedit</app> will display a list of the five most-recently used
+    files.</p></item>
     <item><p>Select the desired file, and it will open in a new tab.</p></item>
   </list>
 
-  <note style="advanced"><p>To adjust the number of recently-used files that gedit displays, you will need to use the <app>gconf-editor</app> application.</p>
+  <note style="advanced"><p>To adjust the number of recently-used files that
+  gedit displays, you will need to use the <app>gconf-editor</app> application.
+  </p>
     <list>
-      <item><p>Launch <app>gconf-editor</app> and select <guiseq><gui>apps</gui><gui>gedit-2</gui><gui>preferences</gui><gui>ui</gui><gui>recents</gui></guiseq>.</p></item>
-      <item><p>Double-click on the number next to <gui>max_recents</gui> and change the number to your desired value.</p></item>
+      <item><p>Launch <app>gconf-editor</app> and select <guiseq><gui>apps</gui
+      ><gui>gedit-2</gui><gui>preferences</gui><gui>ui</gui><gui>recents</gui>
+      </guiseq>.</p></item>
+      <item><p>Double-click on the number next to <gui>max_recents</gui> and
+      change the number to your desired value.</p></item>
     </list>
   </note>
 
