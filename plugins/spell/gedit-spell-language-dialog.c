@@ -73,7 +73,7 @@ dialog_response_handler (GtkDialog *dlg,
 		gedit_app_show_help (gedit_app_get_default (),
 				     GTK_WINDOW (dlg),
 				     NULL,
-				     "gedit-spell-checker-plugin");
+				     "gedit-spellcheck");
 
 		g_signal_stop_emission_by_name (dlg, "response");
 	}
