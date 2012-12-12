@@ -4,7 +4,7 @@
 
   <info>
     <link type="guide" xref="gedit-files-basic" group="fifth"/>
-    <revision pkgversion="3.0" version="1.0" date="2011-03-25" status="final"/>
+    <revision pkgversion="3.6" version="1.4" date="2012-12-12" status="final"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jwcampbell@gmail.com</email>
@@ -24,13 +24,13 @@
   </list>
 
   <note style="advanced"><p>To adjust the number of recently-used files that
-  gedit displays, you will need to use the <app>gconf-editor</app> application.
+  gedit displays, you will need to use the <app>dconf-editor</app> application.
   </p>
     <list>
-      <item><p>Launch <app>gconf-editor</app> and select <guiseq><gui>apps</gui
-      ><gui>gedit-2</gui><gui>preferences</gui><gui>ui</gui><gui>recents</gui>
-      </guiseq>.</p></item>
-      <item><p>Double-click on the number next to <gui>max_recents</gui> and
+      <item><p>Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui
+      ><gui>gnome</gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui>
+      <gui>max-recents</gui></guiseq>.</p></item>
+      <item><p>Double-click on the number next to <gui>max-recents</gui> and
       change the number to your desired value.</p></item>
     </list>
   </note>

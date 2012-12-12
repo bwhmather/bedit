@@ -11,18 +11,26 @@
     </credit>
   </info>
 
-  <title>Edit a file as the root (administative) user</title>
+  <title>Edit a file as the root user</title>
 
-  <note style="warning"><p>Editing files as the root user is potentially dangerous, and may break your system in bad ways. Take great care when editing files as the root user.</p></note>
+  <note style="warning"><p>Editing files as the root user is potentially
+  dangerous, and may break your system in bad ways. Take great care when editing
+  files as the root user.</p></note>
 
-  <p>To edit files as the root user, launch <app>gedit</app> from the terminal by entering:</p>
-    <code>sudo gedit</code>
-  <p>Using the <cmd>sudo</cmd> command, you will need to successfully enter your password before <app>gedit</app> will open.</p>
+  <p>To edit files as the root user, launch <app>gedit</app> from the terminal
+  by entering:</p> <code>sudo gedit</code>
+  <p>Using the 
+    <cmd>sudo</cmd>
+  command, you will need to successfully enter your password before <app>gedit
+  </app> will open.</p>
 
-  <p>As an alternative to the <cmd>sudo</cmd> command, you may obtain administrative privileges by entering:</p>
+  <p>As an alternative to the <cmd>sudo</cmd> command, you may obtain
+  administrative privileges by entering:</p>
     <code>su -</code>
-  <p>You would then launch <app>gedit</app> using the <cmd>gedit</cmd> command.</p>
+  <p>You would then launch <app>gedit</app> using the <cmd>gedit</cmd> command.
+  </p>
 
-  <note><p>Once you have opened <app>gedit</app> with administrative privileges, the application will retain those privileges until you close it.</p></note>
+  <note><p>Once you have opened <app>gedit</app> with administrative privileges,
+  the application will retain those privileges until you close it.</p></note>
 
 </page>
