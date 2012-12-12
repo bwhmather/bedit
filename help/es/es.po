@@ -9,15 +9,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2012-12-06 11:11+0000\n"
-"PO-Revision-Date: 2012-12-06 20:57+0100\n"
+"POT-Creation-Date: 2012-12-12 08:03+0000\n"
+"PO-Revision-Date: 2012-12-12 12:19+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
+"Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -76,7 +76,7 @@ msgstr "Editor de textos gedit"
 #: C/gedit-plugins-color-picker.page:9(credit/name)
 #: C/gedit-plugins-commander.page:9(credit/name)
 #: C/gedit-plugins-dashboard.page:9(credit/name)
-#: C/gedit-plugins-doc-stats.page:13(credit/name)
+#: C/gedit-plugins-doc-stats.page:14(credit/name)
 #: C/gedit-plugins-draw-spaces.page:9(credit/name)
 #: C/gedit-plugins-external-tools.page:15(credit/name)
 #: C/gedit-plugins-file-browser.page:13(credit/name)
@@ -172,6 +172,7 @@ msgid "To change the color scheme, complete the following steps:"
 msgstr "Para cambiar el esquema de colores complete los siguientes pasos:"
 
 #: C/gedit-change-color-scheme.page:20(item/p)
+#: C/gedit-change-default-font.page:24(item/p)
 msgid ""
 "Select <guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Font &amp; Colors</"
 "gui></guiseq>."
@@ -226,14 +227,6 @@ msgstr ""
 #: C/gedit-change-default-font.page:23(steps/title)
 msgid "To change the default font in <app>gedit</app>:"
 msgstr "Para cambiar la tipografía predeterminada en <app>gedit</app>:"
-
-#: C/gedit-change-default-font.page:24(item/p)
-msgid ""
-"Select <keyseq><key>Edit</key><key>Preferences</key><key>Font &amp; Colors</"
-"key></keyseq>."
-msgstr ""
-"Seleccione <keyseq><key>Editar</key><key>Preferencias</key><key>Tipografía y "
-"colores</key></keyseq>."
 
 #: C/gedit-change-default-font.page:26(item/p)
 msgid ""
@@ -308,8 +301,9 @@ msgstr ""
 "aparecerá como una pestaña nueva a la derecha de esos archivos."
 
 #: C/gedit-edit-as-root.page:14(page/title)
-msgid "Edit a file as the root (administative) user"
-msgstr "Editar un archivo como usuario root (administrador)"
+#| msgid "Edit a file as the root (administative) user"
+msgid "Edit a file as the root user"
+msgstr "Editar un archivo como root"
 
 #: C/gedit-edit-as-root.page:16(note/p)
 msgid ""
@@ -319,7 +313,7 @@ msgstr ""
 "Editar archivos como superusuario es potencialmente peligroso y puede romper "
 "su sistema. Tenga mucho cuidado al editar archivos como superusuario."
 
-#: C/gedit-edit-as-root.page:18(page/p)
+#: C/gedit-edit-as-root.page:20(page/p)
 msgid ""
 "To edit files as the root user, launch <app>gedit</app> from the terminal by "
 "entering:"
@@ -327,20 +321,23 @@ msgstr ""
 "Para editar archivos como superusuario lance <app>gedit</app> desde la "
 "terminal introduciendo:"
 
-#: C/gedit-edit-as-root.page:19(page/code)
+#: C/gedit-edit-as-root.page:21(page/code)
 #, no-wrap
 msgid "sudo gedit"
 msgstr "sudo gedit"
 
-#: C/gedit-edit-as-root.page:20(page/p)
+#: C/gedit-edit-as-root.page:22(page/p)
+#| msgid ""
+#| "Using the <cmd>sudo</cmd> command, you will need to successfully enter "
+#| "your password before <app>gedit</app> will open."
 msgid ""
 "Using the <cmd>sudo</cmd> command, you will need to successfully enter your "
-"password before <app>gedit</app> will open."
+"password before <app>gedit </app> will open."
 msgstr ""
 "Usando el comando <cmd>sudo</cmd> deberá introducir correctamente su "
 "contraseña antes de que <app>gedit</app> se abra."
 
-#: C/gedit-edit-as-root.page:22(page/p)
+#: C/gedit-edit-as-root.page:27(page/p)
 msgid ""
 "As an alternative to the <cmd>sudo</cmd> command, you may obtain "
 "administrative privileges by entering:"
@@ -348,18 +345,18 @@ msgstr ""
 "Como alternativa al comando <cmd>sudo</cmd> puede obtener privilegios de "
 "administración introduciendo:"
 
-#: C/gedit-edit-as-root.page:23(page/code)
+#: C/gedit-edit-as-root.page:29(page/code)
 #, no-wrap
 msgid "su -"
 msgstr "su -"
 
-#: C/gedit-edit-as-root.page:24(page/p)
+#: C/gedit-edit-as-root.page:30(page/p)
 msgid ""
 "You would then launch <app>gedit</app> using the <cmd>gedit</cmd> command."
 msgstr ""
 "Después podrá lanzar <app>gedit</app> usando el comando <cmd>gedit</cmd>."
 
-#: C/gedit-edit-as-root.page:26(note/p)
+#: C/gedit-edit-as-root.page:33(note/p)
 msgid ""
 "Once you have opened <app>gedit</app> with administrative privileges, the "
 "application will retain those privileges until you close it."
@@ -736,46 +733,56 @@ msgstr ""
 "de los archivos más recientemente usados. Aquí se muestra cómo puede abrir "
 "un archivo usado recientemente."
 
-#: C/gedit-open-recent.page:18(item/p)
+#: C/gedit-open-recent.page:19(item/p)
 msgid ""
 "Click the downward-facing arrow to the right of the <gui>Open</gui> button."
 msgstr "Pulse la flecha hacia abajo junto al botón <gui>Abrir</gui>."
 
-#: C/gedit-open-recent.page:19(item/p)
+#: C/gedit-open-recent.page:21(item/p)
 msgid ""
 "<app>gedit</app> will display a list of the five most-recently used files."
 msgstr ""
 "<app>gedit</app> mostrará una lista de los cinco archivos más recientemente "
 "usados."
 
-#: C/gedit-open-recent.page:20(item/p)
+#: C/gedit-open-recent.page:23(item/p)
 msgid "Select the desired file, and it will open in a new tab."
 msgstr "Seleccione el archivo que quiera y se abrirá en una pestaña nueva."
 
-#: C/gedit-open-recent.page:23(note/p)
+#: C/gedit-open-recent.page:26(note/p)
+#| msgid ""
+#| "To adjust the number of recently-used files that gedit displays, you will "
+#| "need to use the <app>gconf-editor</app> application."
 msgid ""
 "To adjust the number of recently-used files that gedit displays, you will "
-"need to use the <app>gconf-editor</app> application."
+"need to use the <app>dconf-editor</app> application."
 msgstr ""
 "Para ajustar el número de archivos usados recientemente que muestra gedit, "
-"debe usar la aplicación <app>gconf-editor</app>."
+"debe usar la aplicación <app>dconf-editor</app>."
 
-#: C/gedit-open-recent.page:25(item/p)
+#: C/gedit-open-recent.page:30(item/p)
+#| msgid ""
+#| "Launch <app>gconf-editor</app> and select <guiseq><gui>apps</"
+#| "gui><gui>gedit-2</gui><gui>preferences</gui><gui>ui</gui><gui>recents</"
+#| "gui></guiseq>."
 msgid ""
-"Launch <app>gconf-editor</app> and select <guiseq><gui>apps</"
-"gui><gui>gedit-2</gui><gui>preferences</gui><gui>ui</gui><gui>recents</gui></"
-"guiseq>."
-msgstr ""
-"Lance <app>gconf-editor</app> y seleccione <guiseq><gui>apps</"
-"gui><gui>gedit-2</gui><gui>preferencias</gui><gui>iu</gui><gui>recientes</"
+"Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui><gui>gnome</"
+"gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</"
 "gui></guiseq>."
+msgstr ""
+"Ejecute <app>dconf-editor</app> y seleccione <guiseq><gui>org</"
+"gui><gui>gnome</gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> "
+"<gui>max-recents</gui></guiseq>."
 
-#: C/gedit-open-recent.page:26(item/p)
+#: C/gedit-open-recent.page:33(item/p)
+#| msgid ""
+#| "Double-click on the number next to <gui>max_recents</gui> and change the "
+#| "number to your desired value."
 msgid ""
-"Double-click on the number next to <gui>max_recents</gui> and change the "
+"Double-click on the number next to <gui>max-recents</gui> and change the "
 "number to your desired value."
 msgstr ""
-"Pulse dos veces en el número junto a <gui>max_recents</gui> y cambie el "
+"Pulse dos veces en el número junto a <gui>max-recents</gui> y cambie el "
 "número al valor que quiera."
 
 #: C/gedit-plugin-guide.page:14(page/title)
@@ -920,7 +927,7 @@ msgstr ""
 "Este complemento no inserta automáticamente etiquetas de cierre HTML o XML."
 
 #: C/gedit-plugins-change-case.page:9(credit/name)
-#: C/gedit-plugins-doc-stats.page:9(credit/name)
+#: C/gedit-plugins-doc-stats.page:10(credit/name)
 #: C/gedit-plugins-external-tools.page:11(credit/name)
 #: C/gedit-plugins-file-browser.page:9(credit/name)
 #: C/gedit-plugins-insert-date-time.page:9(credit/name)
@@ -1214,11 +1221,11 @@ msgid "Pick a color from a dialog and insert its hexadecimal representation"
 msgstr ""
 "Seleccionar un color de un diálogo e insertar su representación hexadecimal"
 
-#: C/gedit-plugins-color-picker.page:16(page/title)
+#: C/gedit-plugins-color-picker.page:17(page/title)
 msgid "Color picker"
 msgstr "Selector de color"
 
-#: C/gedit-plugins-color-picker.page:18(page/p)
+#: C/gedit-plugins-color-picker.page:19(page/p)
 msgid ""
 "The <app>color picker</app> plugin helps you to insert the character codes "
 "that represent a certain color. This can make it easier to choose and use "
@@ -1228,7 +1235,7 @@ msgstr ""
 "caracteres que representa un color determinado. Esto puede simplificar el "
 "elegir y usar el color correcto en sus programas."
 
-#: C/gedit-plugins-color-picker.page:22(page/p)
+#: C/gedit-plugins-color-picker.page:23(page/p)
 msgid ""
 "To enable the color picker plugin, select <guiseq><gui> Edit</"
 "gui><gui>Preferences</gui><gui>Plugins</gui><gui>Color Picker</gui> </"
@@ -1238,11 +1245,11 @@ msgstr ""
 "gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Selector de color</"
 "gui></guiseq>."
 
-#: C/gedit-plugins-color-picker.page:26(page/p)
+#: C/gedit-plugins-color-picker.page:27(page/p)
 msgid "To open and use the color picker:"
 msgstr "Para abrir y usar el selector de color:"
 
-#: C/gedit-plugins-color-picker.page:28(item/p)
+#: C/gedit-plugins-color-picker.page:29(item/p)
 msgid ""
 "Place your cursor at the point in your document where you want to insert the "
 "color code."
@@ -1250,7 +1257,7 @@ msgstr ""
 "Sitúe el cursor en el punto del documento en el que quiere insertar el "
 "código del color."
 
-#: C/gedit-plugins-color-picker.page:30(item/p)
+#: C/gedit-plugins-color-picker.page:31(item/p)
 msgid ""
 "Select <guiseq><gui>Tools</gui><gui>Pick Color...</gui></guiseq>. The color "
 "picker dialog will appear."
@@ -1258,44 +1265,24 @@ msgstr ""
 "Seleccione <guiseq><gui>Herramientas</gui><gui>Seleccionar color...</gui></"
 "guiseq>. aparecerá el diálogo del selector de color."
 
-#: C/gedit-plugins-color-picker.page:32(item/p)
-msgid ""
-"If the color that you want to select is currently on your screen, click on "
-"the icon that looks like an eyedropper."
-msgstr ""
-"Si el color que quiere seleccionar está actualmente en su pantalla, pulse en "
-"el icono que parece un cuentagotas."
+#: C/gedit-plugins-color-picker.page:33(item/p)
+msgid "Click on the desired color in the color picker window."
+msgstr "Pulse en el color que quiera en la ventana del selector de color."
 
-#: C/gedit-plugins-color-picker.page:34(item/p)
+#: C/gedit-plugins-color-picker.page:35(item/p)
+#| msgid ""
+#| "To insert that color code into your document, click <gui> Insert</gui>. "
+#| "The code will be inserted where you had placed your cursor."
 msgid ""
-"Your mouse pointer will change appearance, and will look like an eyedropper."
+"The appropriate color code will be inserted where you had placed your cursor."
 msgstr ""
-"El puntero de su ratón cambiará su apariencia, y se parecerá a un "
-"cuentagotas."
+"El código del color seleccionado se insertará donde tenga situado el cursor."
 
-#: C/gedit-plugins-color-picker.page:36(item/p)
-msgid ""
-"Use the eyedropper and click on the portion of your screen that contains the "
-"color you want to use. The color code for that color will appear in the "
-"color picker window."
-msgstr ""
-"Use el cuenta gotas y pulse en una parte de su pantalla que contenga el "
-"color que quiere usar. El código del color aparecerá en la ventana del "
-"selector de color."
-
-#: C/gedit-plugins-color-picker.page:39(item/p)
-msgid ""
-"To insert that color code into your document, click <gui> Insert</gui>. The "
-"code will be inserted where you had placed your cursor."
-msgstr ""
-"Para insertar el código del color en su documento, pulse <gui> Insertar</"
-"gui>. El código se insertará donde tenga situado el cursor."
-
-#: C/gedit-plugins-color-picker.page:42(item/p)
+#: C/gedit-plugins-color-picker.page:37(item/p)
 msgid "To close the <app>color picker</app>, click <gui>Close</gui>."
 msgstr "Para cerrar el <app>selector de color</app>, pulse <gui>Cerrar</gui>."
 
-#: C/gedit-plugins-color-picker.page:46(note/p)
+#: C/gedit-plugins-color-picker.page:42(note/p)
 msgid ""
 "You can make fine-grained adjustments to the color by adjusting the values "
 "for Hue, Saturation, Value, Red, Green, or Blue."
@@ -1303,7 +1290,7 @@ msgstr ""
 "Puede hacer ajustes más precisos en el color modificando los valores de "
 "Tono, Saturación, Valor, Rojo, Verde o Azul."
 
-#: C/gedit-plugins-color-picker.page:48(note/p)
+#: C/gedit-plugins-color-picker.page:44(note/p)
 msgid ""
 "Additionally, you can save colors by right-clicking on any of the colored "
 "boxes in the color picker, and selecting <gui>Save color here</gui>. This "
@@ -1345,8 +1332,7 @@ msgstr ""
 
 #: C/gedit-plugins-commander.page:27(note/p)
 msgid "The last key in the above key combination is a period."
-msgstr ""
-"La última tecla de la combinación de teclas indicada es un punto («.»)."
+msgstr "La última tecla de la combinación de teclas indicada es un punto («.»)."
 
 #: C/gedit-plugins-commander.page:33(td/p) C/gedit-shortcut-keys.page:56(td/p)
 #: C/gedit-shortcut-keys.page:88(td/p) C/gedit-shortcut-keys.page:124(td/p)
@@ -1498,34 +1484,45 @@ msgstr ""
 "pulsando <guiseq><gui>Archivo</gui><gui>Nuevo</gui></guiseq>, o pulsando "
 "<keyseq><key>Ctrl</key><key>N</key></keyseq>."
 
-#: C/gedit-plugins-doc-stats.page:16(info/desc)
+#: C/gedit-plugins-doc-stats.page:17(info/desc)
 msgid "View document statistics"
 msgstr "Ver las estadísticas del documento"
 
-#: C/gedit-plugins-doc-stats.page:19(page/title)
+#: C/gedit-plugins-doc-stats.page:20(page/title)
 msgid "Document statistics"
 msgstr "Estadísticas del documento"
 
-#: C/gedit-plugins-doc-stats.page:21(page/p)
+#: C/gedit-plugins-doc-stats.page:22(page/p)
+#| msgid ""
+#| "The <em>Document Statistics</em> plugin can show you various statistics "
+#| "about your current document. To enable this plugin, select "
+#| "<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</"
+#| "gui><gui>Document Statisics</gui></guiseq>."
 msgid ""
-"The <em>Document Statistics</em> plugin can show you various statistics "
-"about your current document. To enable this plugin, select "
-"<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui><gui>Document "
-"Statisics</gui></guiseq>."
+"The <em>Document Statistics</em> plugin shows you various statistics about "
+"your current document. To enable this plugin, select <guiseq><gui>Edit </"
+"gui><gui>Preferences</gui><gui>Plugins</gui><gui>Document Statistics</gui> </"
+"guiseq>."
 msgstr ""
 "El complemento <em>Estadísticas del documento</em> puede mostrarle varias "
 "estadísticas sobre el documento actual. Para activar este complemento, "
 "seleccione <guiseq><gui>Editar</gui><gui>Preferencias</"
 "gui><gui>Complementos</gui><gui>Estadísticas del documento</gui></guiseq>."
 
-#: C/gedit-plugins-doc-stats.page:24(section/title)
+#: C/gedit-plugins-doc-stats.page:28(section/title)
 msgid "Using Document Statistics"
 msgstr "Usar «Estadísticas del documento»"
 
-#: C/gedit-plugins-doc-stats.page:26(section/p)
+#: C/gedit-plugins-doc-stats.page:30(section/p)
+#| msgid ""
+#| "Once the plugin is enabled, use it by selecting <guiseq><gui>Tools</"
+#| "gui><gui>Document Statistics</gui></guiseq>. A window will display the "
+#| "statistical information of your document, including the number of words, "
+#| "lines, characters, non-space characters, and the size of your file in "
+#| "bytes."
 msgid ""
-"Once the plugin is enabled, use it by selecting <guiseq><gui>Tools</"
-"gui><gui>Document Statistics</gui></guiseq>. A window will display the "
+"Once the plugin is enabled, use it by selecting <guiseq><gui>Tools</gui> "
+"<gui>Document Statistics</gui></guiseq>. A window will display the "
 "statistical information of your document, including the number of words, "
 "lines, characters, non-space characters, and the size of your file in bytes."
 msgstr ""
@@ -1535,21 +1532,28 @@ msgstr ""
 "incluyendo el número de palabras, de líneas, de caracteres, de caracteres "
 "sin espacios y el tamaño en bytes de su archivo."
 
-#: C/gedit-plugins-doc-stats.page:28(section/p)
+#: C/gedit-plugins-doc-stats.page:36(section/p)
+#| msgid ""
+#| "You can also use <em>Document Statistics</em> to show you information "
+#| "about just a portion of your document. To do this, use the mouse pointer "
+#| "to select the portion of text that you want to examine, and then select "
+#| "<guiseq><gui>Tools</gui><gui>Document Statistics</gui></guiseq>. "
+#| "<app>Gedit</app> will display information for both your entire document, "
+#| "and for the portion of text that you highlighted."
 msgid ""
 "You can also use <em>Document Statistics</em> to show you information about "
 "just a portion of your document. To do this, use the mouse pointer to select "
-"the portion of text that you want to examine, and then select "
-"<guiseq><gui>Tools</gui><gui>Document Statistics</gui></guiseq>. <app>Gedit</"
-"app> will display information for both your entire document, and for the "
-"portion of text that you highlighted."
+"the portion of text that you want to examine, and then select <guiseq><gui> "
+"Tools</gui><gui>Document Statistics</gui></guiseq>. <app>Gedit</app> will "
+"display information for both your entire document, and for the portion of "
+"text that you highlighted."
 msgstr ""
 "También puede usar las <em>Estadísticas del documento</em> para mostrar "
 "información sobre un fragmento de su documento. Para hacer esto, use el "
-"ratón para seleccione el fragmento de texto que quiere examinar y seleccione "
-"<guiseq><gui>Herramientas</gui><gui>Estadísticas del documento</gui></"
-"guiseq>. <app>gedit</app> mostrará información del documento completo y del "
-"fragmento de texto que ha resaltado."
+"ratón para seleccionar el fragmento de texto que quiere examinar y "
+"seleccione <guiseq><gui>Herramientas</gui><gui>Estadísticas del documento</"
+"gui></guiseq>. <app>Gedit</app> mostrará información del documento completo "
+"y del fragmento de texto que ha resaltado."
 
 #: C/gedit-plugins-draw-spaces.page:13(info/desc)
 msgid "Show white space between words or portions of code"
@@ -1682,8 +1686,7 @@ msgid ""
 msgstr ""
 "Este complemento es para usuarios avanzados y para usarlo correctamente "
 "requiere conocimientos de «script». Use este complemento con cuidado, ya que "
-"errores con sus «script» pueden afectar a su trabajo de forma no "
-"intencionada."
+"errores con sus «script» pueden afectar a su trabajo de forma no intencionada."
 
 #: C/gedit-plugins-file-browser.page:16(info/desc)
 msgid "Use the side pane to browse and open files"
@@ -2589,8 +2592,8 @@ msgid ""
 "The Sort dialog will open, allowing you to choose between several sorting "
 "options:"
 msgstr ""
-"El diálogo «Ordenar» se abrirá, permitiéndole elegir entre varias opciones "
-"de ordenación:"
+"El diálogo «Ordenar» se abrirá, permitiéndole elegir entre varias opciones de "
+"ordenación:"
 
 #: C/gedit-plugins-sort.page:31(item/p)
 msgid ""
@@ -2693,8 +2696,8 @@ msgid ""
 msgstr ""
 "El panel lateral muestra inicialmente una lista de documentos abiertos, por "
 "lo que para ver y usar la <app>Lista de etiquetas</app>, deberá pulsar en la "
-"pestaña que muestra el icono «más» en la parte inferior del panel lateral. "
-"El icono se parece a esto:"
+"pestaña que muestra el icono «más» en la parte inferior del panel lateral. El "
+"icono se parece a esto:"
 
 #: C/gedit-plugins-tag-list.page:39(section/title)
 msgid "Inserting Tags and Special Characters"
@@ -2850,24 +2853,33 @@ msgstr ""
 "cambiar el texto en <app>gedit</app>:"
 
 #: C/gedit-plugins-text-size.page:27(item/p)
+#| msgid ""
+#| "To <em>increase</em> the text size, select <keyseq><key>Ctrl</key> <key>"
+#| "+</key></keyseq>."
 msgid ""
-"To <em>increase</em> the text size, select <keyseq><key>Ctrl</key> <key>+</"
+"To <em>increase</em> the text size, press <keyseq><key>Ctrl</key> <key>+</"
 "key></keyseq>."
 msgstr ""
 "Para <em>aumentar</em> el tamaño del texto, seleccione <keyseq><key>Ctrl</"
 "key> <key>+</key></keyseq>."
 
 #: C/gedit-plugins-text-size.page:29(item/p)
+#| msgid ""
+#| "To <em>decrease</em> the text size, select <keyseq><key>Ctrl</key> <key>-"
+#| "</key></keyseq>."
 msgid ""
-"To <em>decrease</em> the text size, select <keyseq><key>Ctrl</key> <key>-</"
+"To <em>decrease</em> the text size, press <keyseq><key>Ctrl</key> <key>-</"
 "key></keyseq>."
 msgstr ""
 "Para <em>disminuir</em> el tamaño del texto, seleccione <keyseq><key>Ctrl</"
 "key> <key>-</key></keyseq>."
 
 #: C/gedit-plugins-text-size.page:31(item/p)
+#| msgid ""
+#| "To <em>reset</em> the text size to the default size, select "
+#| "<keyseq><key>Ctrl</key><key>0</key></keyseq>."
 msgid ""
-"To <em>reset</em> the text size to the default size, select "
+"To <em>reset</em> the text size to the default size, press "
 "<keyseq><key>Ctrl</key><key>0</key></keyseq>."
 msgstr ""
 "Para <em>restablecer</em> el tamaño del texto a su tamaño predeterminado, "
@@ -3002,10 +3014,6 @@ msgstr ""
 "em> seleccione <gui>Intercalar</gui>."
 
 #: C/gedit-printing.page:19(note/p)
-#| msgid ""
-#| "Printing with <app>gedit</app> requires that you have connected and "
-#| "configured your printer. If you have not done this, please consult the "
-#| "<link href=\"ghelp:gnome-help?printing\">printing help for GNOME</link>."
 msgid ""
 "Printing with <app>gedit</app> requires that you have connected and "
 "configured your printer. If you have not done this, please consult the <link "
@@ -3102,8 +3110,8 @@ msgid ""
 "For example, if you enter \"1,3,5-7,9\" in the <gui>Pages</gui> textbox, "
 "pages 1,3,5,6,7 and 9 will be printed."
 msgstr ""
-"Por ejemplo, si escribe «1,3,5-7,9» en la caja de texto <gui>Páginas</gui>,"
-"se imprimirán las páginas 1,3,5,6,7 y 9."
+"Por ejemplo, si escribe «1,3,5-7,9» en la caja de texto <gui>Páginas</gui>,se "
+"imprimirán las páginas 1,3,5,6,7 y 9."
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
@@ -3386,8 +3394,8 @@ msgid ""
 "Press the <key>Ctrl</key> and use your mouse or touchpad's <key>scroll</key> "
 "feature to move up or down through the text."
 msgstr ""
-"Pulse <key>Ctrl</key> y use el <key>deslizador</key> de su ratón o "
-"«touchpad» para moverse hacia arriba o hacia abajo a través del texto."
+"Pulse <key>Ctrl</key> y use el <key>deslizador</key> de su ratón o «touchpad» "
+"para moverse hacia arriba o hacia abajo a través del texto."
 
 #: C/gedit-search.page:52(page/p)
 msgid ""
@@ -3888,8 +3896,8 @@ msgid "Move a tab, creating a new gedit window"
 msgstr "Mover una pestaña, creando una ventana nueva de gedit"
 
 #: C/gedit-tabs-moving.page:44(section/p)
-msgid "To drag a tab into a new window:"
-msgstr "Arrastrar una pestaña a una ventana nueva:"
+msgid "To create a new window from an existing tab:"
+msgstr "Para crear una ventana nueva desde una pestaña existente:"
 
 #: C/gedit-tabs-moving.page:47(item/p)
 msgid "Click and hold the mouse button on the tab."
@@ -3935,13 +3943,30 @@ msgstr "Arrastre la pestaña a la nueva ventana"
 msgid "Place it beside other tabs in the new window"
 msgstr "Ubíquela junto a las otras pestañas, en la ventana nueva"
 
-#: C/gedit-tabs-moving.page:73(section/p)
+#: C/gedit-tabs-moving.page:74(note/p)
 msgid ""
-"See <link xref=\"gedit-shortcut-keys#gedit-tab-shortcuts\"/> for shortcuts "
-"to make it easier to manage your tabs."
+"You may find it easier to move a tab from one window to another by dragging "
+"the tab to the <gui>Activities</gui> hot-corner of the <gui> GNOME Shell</"
+"gui>. This will reveal each of the open <app>gedit</app> windows. You can "
+"then release the tab on the desired <app>gedit</app> window."
 msgstr ""
-"Consulte en la <link xref=\"gedit-shortcut-keys#gedit-tab-shortcuts\"/> los "
-"atajos que simplifican la gestión de sus pestañas"
+"Es posible que le resulte más fácil mover una pestaña de una ventana a otra "
+"arrastrando la pestaña a la esquina activa del menú de <gui>Actividades</"
+"gui> de <gui> GNOME Shell</gui>. Esto mostrará el resto de ventanas de "
+"<app>gedit</app> abiertas. Puede soltar la pestaña en la ventana de "
+"<app>gedit</app> que quiera."
+
+#: C/gedit-tabs-moving.page:81(section/p)
+#| msgid ""
+#| "See <link xref=\"gedit-shortcut-keys#gedit-tab-shortcuts\"/> for "
+#| "shortcuts to make it easier to manage your tabs."
+msgid ""
+"See the <link xref=\"gedit-shortcut-keys#gedit-tab-shortcuts\">tab-related "
+"shortcut keys</link> table to make it easier to manage your tabs."
+msgstr ""
+"Consulte los <link xref=\"gedit-shortcut-keys#gedit-tab-shortcuts\">atajos "
+"relacionados con las pestañas</link> que simplifican la gestión de sus "
+"pestañas."
 
 #: C/gedit-tabs.page:20(page/title)
 msgid "Add and remove tabs"
@@ -4070,6 +4095,39 @@ msgstr ""
 "El panel lateral sólo muestra los archivos abiertos en la ventana actual. "
 "Cuando hay varias ventanas abiertas, en el panel lateral sólo se muestran "
 "los archivos abiertos en la ventana actual."
+
+#~ msgid ""
+#~ "Select <keyseq><key>Edit</key><key>Preferences</key><key>Font &amp; "
+#~ "Colors</key></keyseq>."
+#~ msgstr ""
+#~ "Seleccione <keyseq><key>Editar</key><key>Preferencias</"
+#~ "key><key>Tipografía y colores</key></keyseq>."
+
+#~ msgid ""
+#~ "If the color that you want to select is currently on your screen, click "
+#~ "on the icon that looks like an eyedropper."
+#~ msgstr ""
+#~ "Si el color que quiere seleccionar está actualmente en su pantalla, pulse "
+#~ "en el icono que parece un cuentagotas."
+
+#~ msgid ""
+#~ "Your mouse pointer will change appearance, and will look like an "
+#~ "eyedropper."
+#~ msgstr ""
+#~ "El puntero de su ratón cambiará su apariencia, y se parecerá a un "
+#~ "cuentagotas."
+
+#~ msgid ""
+#~ "Use the eyedropper and click on the portion of your screen that contains "
+#~ "the color you want to use. The color code for that color will appear in "
+#~ "the color picker window."
+#~ msgstr ""
+#~ "Use el cuenta gotas y pulse en una parte de su pantalla que contenga el "
+#~ "color que quiere usar. El código del color aparecerá en la ventana del "
+#~ "selector de color."
+
+#~ msgid "To drag a tab into a new window:"
+#~ msgstr "Arrastrar una pestaña a una ventana nueva:"
 
 #~ msgid ""
 #~ "We all make mistakes. Even <app>gedit</app> users make mistakes. "
@@ -7579,8 +7637,8 @@ msgstr ""
 #~ "pane to show the tag list tab."
 #~ msgstr ""
 #~ "Por omisión, el panel lateral muestra una pestaña conteniendo una lista "
-#~ "de documentos abiertos. Pulse en la pestaña que muestra un icono «+» en "
-#~ "la parte de abajo del panel lateral para mostrar la pestaña de listas de "
+#~ "de documentos abiertos. Pulse en la pestaña que muestra un icono «+» en la "
+#~ "parte de abajo del panel lateral para mostrar la pestaña de listas de "
 #~ "etiquetas."
 
 #~ msgid ""
