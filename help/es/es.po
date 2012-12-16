@@ -9,15 +9,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2012-12-12 08:03+0000\n"
-"PO-Revision-Date: 2012-12-12 12:19+0100\n"
+"POT-Creation-Date: 2012-12-14 03:30+0000\n"
+"PO-Revision-Date: 2012-12-16 19:56+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español <gnome-es-list@gnome.org>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -100,7 +100,7 @@ msgstr "Editor de textos gedit"
 #: C/gedit-replace.page:10(credit/name) C/gedit-save-file.page:9(credit/name)
 #: C/gedit-search.page:10(credit/name)
 #: C/gedit-shortcut-keys.page:10(credit/name)
-#: C/gedit-spellcheck.page:10(credit/name)
+#: C/gedit-spellcheck.page:9(credit/name)
 #: C/gedit-syntax-highlighting.page:9(credit/name)
 #: C/gedit-tabs-moving.page:9(credit/name) C/gedit-tabs.page:10(credit/name)
 #: C/gedit-undo-recent-action.page:9(credit/name)
@@ -301,7 +301,6 @@ msgstr ""
 "aparecerá como una pestaña nueva a la derecha de esos archivos."
 
 #: C/gedit-edit-as-root.page:14(page/title)
-#| msgid "Edit a file as the root (administative) user"
 msgid "Edit a file as the root user"
 msgstr "Editar un archivo como root"
 
@@ -327,9 +326,6 @@ msgid "sudo gedit"
 msgstr "sudo gedit"
 
 #: C/gedit-edit-as-root.page:22(page/p)
-#| msgid ""
-#| "Using the <cmd>sudo</cmd> command, you will need to successfully enter "
-#| "your password before <app>gedit</app> will open."
 msgid ""
 "Using the <cmd>sudo</cmd> command, you will need to successfully enter your "
 "password before <app>gedit </app> will open."
@@ -750,9 +746,6 @@ msgid "Select the desired file, and it will open in a new tab."
 msgstr "Seleccione el archivo que quiera y se abrirá en una pestaña nueva."
 
 #: C/gedit-open-recent.page:26(note/p)
-#| msgid ""
-#| "To adjust the number of recently-used files that gedit displays, you will "
-#| "need to use the <app>gconf-editor</app> application."
 msgid ""
 "To adjust the number of recently-used files that gedit displays, you will "
 "need to use the <app>dconf-editor</app> application."
@@ -761,10 +754,6 @@ msgstr ""
 "debe usar la aplicación <app>dconf-editor</app>."
 
 #: C/gedit-open-recent.page:30(item/p)
-#| msgid ""
-#| "Launch <app>gconf-editor</app> and select <guiseq><gui>apps</"
-#| "gui><gui>gedit-2</gui><gui>preferences</gui><gui>ui</gui><gui>recents</"
-#| "gui></guiseq>."
 msgid ""
 "Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui><gui>gnome</"
 "gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</"
@@ -775,9 +764,6 @@ msgstr ""
 "<gui>max-recents</gui></guiseq>."
 
 #: C/gedit-open-recent.page:33(item/p)
-#| msgid ""
-#| "Double-click on the number next to <gui>max_recents</gui> and change the "
-#| "number to your desired value."
 msgid ""
 "Double-click on the number next to <gui>max-recents</gui> and change the "
 "number to your desired value."
@@ -1270,9 +1256,6 @@ msgid "Click on the desired color in the color picker window."
 msgstr "Pulse en el color que quiera en la ventana del selector de color."
 
 #: C/gedit-plugins-color-picker.page:35(item/p)
-#| msgid ""
-#| "To insert that color code into your document, click <gui> Insert</gui>. "
-#| "The code will be inserted where you had placed your cursor."
 msgid ""
 "The appropriate color code will be inserted where you had placed your cursor."
 msgstr ""
@@ -1332,7 +1315,8 @@ msgstr ""
 
 #: C/gedit-plugins-commander.page:27(note/p)
 msgid "The last key in the above key combination is a period."
-msgstr "La última tecla de la combinación de teclas indicada es un punto («.»)."
+msgstr ""
+"La última tecla de la combinación de teclas indicada es un punto («.»)."
 
 #: C/gedit-plugins-commander.page:33(td/p) C/gedit-shortcut-keys.page:56(td/p)
 #: C/gedit-shortcut-keys.page:88(td/p) C/gedit-shortcut-keys.page:124(td/p)
@@ -1493,11 +1477,6 @@ msgid "Document statistics"
 msgstr "Estadísticas del documento"
 
 #: C/gedit-plugins-doc-stats.page:22(page/p)
-#| msgid ""
-#| "The <em>Document Statistics</em> plugin can show you various statistics "
-#| "about your current document. To enable this plugin, select "
-#| "<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</"
-#| "gui><gui>Document Statisics</gui></guiseq>."
 msgid ""
 "The <em>Document Statistics</em> plugin shows you various statistics about "
 "your current document. To enable this plugin, select <guiseq><gui>Edit </"
@@ -1514,12 +1493,6 @@ msgid "Using Document Statistics"
 msgstr "Usar «Estadísticas del documento»"
 
 #: C/gedit-plugins-doc-stats.page:30(section/p)
-#| msgid ""
-#| "Once the plugin is enabled, use it by selecting <guiseq><gui>Tools</"
-#| "gui><gui>Document Statistics</gui></guiseq>. A window will display the "
-#| "statistical information of your document, including the number of words, "
-#| "lines, characters, non-space characters, and the size of your file in "
-#| "bytes."
 msgid ""
 "Once the plugin is enabled, use it by selecting <guiseq><gui>Tools</gui> "
 "<gui>Document Statistics</gui></guiseq>. A window will display the "
@@ -1533,13 +1506,6 @@ msgstr ""
 "sin espacios y el tamaño en bytes de su archivo."
 
 #: C/gedit-plugins-doc-stats.page:36(section/p)
-#| msgid ""
-#| "You can also use <em>Document Statistics</em> to show you information "
-#| "about just a portion of your document. To do this, use the mouse pointer "
-#| "to select the portion of text that you want to examine, and then select "
-#| "<guiseq><gui>Tools</gui><gui>Document Statistics</gui></guiseq>. "
-#| "<app>Gedit</app> will display information for both your entire document, "
-#| "and for the portion of text that you highlighted."
 msgid ""
 "You can also use <em>Document Statistics</em> to show you information about "
 "just a portion of your document. To do this, use the mouse pointer to select "
@@ -1686,7 +1652,8 @@ msgid ""
 msgstr ""
 "Este complemento es para usuarios avanzados y para usarlo correctamente "
 "requiere conocimientos de «script». Use este complemento con cuidado, ya que "
-"errores con sus «script» pueden afectar a su trabajo de forma no intencionada."
+"errores con sus «script» pueden afectar a su trabajo de forma no "
+"intencionada."
 
 #: C/gedit-plugins-file-browser.page:16(info/desc)
 msgid "Use the side pane to browse and open files"
@@ -2592,8 +2559,8 @@ msgid ""
 "The Sort dialog will open, allowing you to choose between several sorting "
 "options:"
 msgstr ""
-"El diálogo «Ordenar» se abrirá, permitiéndole elegir entre varias opciones de "
-"ordenación:"
+"El diálogo «Ordenar» se abrirá, permitiéndole elegir entre varias opciones "
+"de ordenación:"
 
 #: C/gedit-plugins-sort.page:31(item/p)
 msgid ""
@@ -2696,8 +2663,8 @@ msgid ""
 msgstr ""
 "El panel lateral muestra inicialmente una lista de documentos abiertos, por "
 "lo que para ver y usar la <app>Lista de etiquetas</app>, deberá pulsar en la "
-"pestaña que muestra el icono «más» en la parte inferior del panel lateral. El "
-"icono se parece a esto:"
+"pestaña que muestra el icono «más» en la parte inferior del panel lateral. "
+"El icono se parece a esto:"
 
 #: C/gedit-plugins-tag-list.page:39(section/title)
 msgid "Inserting Tags and Special Characters"
@@ -2853,9 +2820,6 @@ msgstr ""
 "cambiar el texto en <app>gedit</app>:"
 
 #: C/gedit-plugins-text-size.page:27(item/p)
-#| msgid ""
-#| "To <em>increase</em> the text size, select <keyseq><key>Ctrl</key> <key>"
-#| "+</key></keyseq>."
 msgid ""
 "To <em>increase</em> the text size, press <keyseq><key>Ctrl</key> <key>+</"
 "key></keyseq>."
@@ -2864,9 +2828,6 @@ msgstr ""
 "key> <key>+</key></keyseq>."
 
 #: C/gedit-plugins-text-size.page:29(item/p)
-#| msgid ""
-#| "To <em>decrease</em> the text size, select <keyseq><key>Ctrl</key> <key>-"
-#| "</key></keyseq>."
 msgid ""
 "To <em>decrease</em> the text size, press <keyseq><key>Ctrl</key> <key>-</"
 "key></keyseq>."
@@ -2875,9 +2836,6 @@ msgstr ""
 "key> <key>-</key></keyseq>."
 
 #: C/gedit-plugins-text-size.page:31(item/p)
-#| msgid ""
-#| "To <em>reset</em> the text size to the default size, select "
-#| "<keyseq><key>Ctrl</key><key>0</key></keyseq>."
 msgid ""
 "To <em>reset</em> the text size to the default size, press "
 "<keyseq><key>Ctrl</key><key>0</key></keyseq>."
@@ -3110,8 +3068,8 @@ msgid ""
 "For example, if you enter \"1,3,5-7,9\" in the <gui>Pages</gui> textbox, "
 "pages 1,3,5,6,7 and 9 will be printed."
 msgstr ""
-"Por ejemplo, si escribe «1,3,5-7,9» en la caja de texto <gui>Páginas</gui>,se "
-"imprimirán las páginas 1,3,5,6,7 y 9."
+"Por ejemplo, si escribe «1,3,5-7,9» en la caja de texto <gui>Páginas</gui>,"
+"se imprimirán las páginas 1,3,5,6,7 y 9."
 
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
@@ -3394,8 +3352,8 @@ msgid ""
 "Press the <key>Ctrl</key> and use your mouse or touchpad's <key>scroll</key> "
 "feature to move up or down through the text."
 msgstr ""
-"Pulse <key>Ctrl</key> y use el <key>deslizador</key> de su ratón o «touchpad» "
-"para moverse hacia arriba o hacia abajo a través del texto."
+"Pulse <key>Ctrl</key> y use el <key>deslizador</key> de su ratón o "
+"«touchpad» para moverse hacia arriba o hacia abajo a través del texto."
 
 #: C/gedit-search.page:52(page/p)
 msgid ""
@@ -3787,31 +3745,72 @@ msgstr "Abrir la guía de usuario de gedit"
 msgid "F1"
 msgstr "F1"
 
-#: C/gedit-spellcheck.page:15(page/title)
+#: C/gedit-spellcheck.page:13(credit/name)
+msgid "Baptiste Mille-Mathias"
+msgstr "Baptiste Mille-Mathias"
+
+#: C/gedit-spellcheck.page:16(info/desc)
+#| msgid "Use the spell-check feature"
+msgid "Enable and use gedit's spell-checking feature"
+msgstr "Activar y usar la característica de comprobación de ortografía"
+
+#: C/gedit-spellcheck.page:19(page/title)
 msgid "Spell-check your document"
 msgstr "Comprobar la ortografía de su documento"
 
-#: C/gedit-spellcheck.page:16(page/p)
+#: C/gedit-spellcheck.page:21(section/title)
+#| msgid "Use the spell-check feature"
+msgid "Enable the spell checker"
+msgstr "Activar la comprobación de ortografía"
+
+#: C/gedit-spellcheck.page:22(section/p)
+#| msgid ""
+#| "To enable the plugin, select <guiseq><gui>Edit</gui><gui>Preferences</"
+#| "gui><gui>Plugins</gui><gui>Bracket Completion</gui></guiseq>."
 msgid ""
-"Using the spell-check feature in <app>gedit</app> requires that you first "
-"enable the spell-check plugin. To enable the plugin, select "
-"<guiseq><gui>Edit </gui><gui>Preferences</gui><gui>Plugins</gui><gui>Spell "
-"Checker</gui> </guiseq>."
+"To enable the plugin, select <guiseq><gui>Edit</gui><gui>Preferences </"
+"gui><gui>Plugins</gui><gui>Spell Checker</gui></guiseq>."
 msgstr ""
-"Usar la característica de comprobación de ortografía en <app>gedit</app> "
-"requiere que primero active el complemento del corrector ortográfico. Para "
-"activar este complemento, seleccione <guiseq><gui>Editar</"
+"Para activar el complemento seleccione <guiseq><gui>Editar</"
 "gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Corrector "
 "ortográfico</gui></guiseq>."
 
-#: C/gedit-spellcheck.page:22(note/p)
+#: C/gedit-spellcheck.page:25(section/p)
 msgid ""
-"Select <guiseq><gui>Tools</gui><gui>Autocheck Spelling</gui></guiseq> to "
-"make <app>gedit</app> highlight spelling errors while you type."
+"<app>gedit</app> will only check your document's spelling when you choose "
+"<guiseq><gui>Tools</gui><gui>Check Spelling</gui></guiseq>. To have <app> "
+"gedit</app> automatically check your spelling, select <guiseq><gui>Tools </"
+"gui><gui>Highlight Misspelled Words</gui></guiseq>."
 msgstr ""
-"Seleccione <guiseq><gui>Herramientas</gui><gui>Comprobar ortografía...</"
-"gui></guiseq> para que <app>gedit</app> resalte errores ortográficos al "
-"escribir."
+"<app>gedit</app> sólo comprobará la ortografía del documento cuando elija "
+"<guiseq><gui>Herramientas</gui><gui>Comprobar ortografía</gui></guiseq>. "
+"Para hacer que <app> gedit</app> compruebe la ortografía automáticamente, "
+"seleccione <guiseq><gui>Herramientas </gui><gui>Resaltar palabras mal "
+"escritas</gui></guiseq>."
+
+#: C/gedit-spellcheck.page:32(section/title)
+msgid "Define the language to use for spell checking"
+msgstr "Definir el idioma que usar para la comprobación de la ortografía"
+
+#: C/gedit-spellcheck.page:33(section/p)
+msgid ""
+"By default, <app>gedit</app> will use your current language to spell check "
+"your document. If you need to use another language, choose <guiseq> "
+"<gui>Tools</gui><gui>Set Language...</gui></guiseq>, then choose the "
+"language you want to use."
+msgstr ""
+"De manera predeterminada, <app>gedit</app> usará su idioma actual para "
+"comprobar la ortografía del documento. Si necesita usar otro idioma, elija "
+"<guiseq> <gui>Herramientas</gui><gui>Establecer idioma...</gui></guiseq>, y "
+"elija el idioma que quiere usar."
+
+#: C/gedit-spellcheck.page:39(note/p)
+msgid ""
+"The list of available languages will vary, depending on the configuration of "
+"your system."
+msgstr ""
+"La lista de los idiomas disponible variará dependiendo de la configuración "
+"de su sistema."
 
 #: C/gedit-syntax-highlighting.page:14(page/title)
 msgid "Turn on syntax highlighting"
@@ -3943,7 +3942,7 @@ msgstr "Arrastre la pestaña a la nueva ventana"
 msgid "Place it beside other tabs in the new window"
 msgstr "Ubíquela junto a las otras pestañas, en la ventana nueva"
 
-#: C/gedit-tabs-moving.page:74(note/p)
+#: C/gedit-tabs-moving.page:75(note/p)
 msgid ""
 "You may find it easier to move a tab from one window to another by dragging "
 "the tab to the <gui>Activities</gui> hot-corner of the <gui> GNOME Shell</"
@@ -3956,10 +3955,7 @@ msgstr ""
 "<app>gedit</app> abiertas. Puede soltar la pestaña en la ventana de "
 "<app>gedit</app> que quiera."
 
-#: C/gedit-tabs-moving.page:81(section/p)
-#| msgid ""
-#| "See <link xref=\"gedit-shortcut-keys#gedit-tab-shortcuts\"/> for "
-#| "shortcuts to make it easier to manage your tabs."
+#: C/gedit-tabs-moving.page:82(section/p)
 msgid ""
 "See the <link xref=\"gedit-shortcut-keys#gedit-tab-shortcuts\">tab-related "
 "shortcut keys</link> table to make it easier to manage your tabs."
@@ -4095,6 +4091,26 @@ msgstr ""
 "El panel lateral sólo muestra los archivos abiertos en la ventana actual. "
 "Cuando hay varias ventanas abiertas, en el panel lateral sólo se muestran "
 "los archivos abiertos en la ventana actual."
+
+#~ msgid ""
+#~ "Using the spell-check feature in <app>gedit</app> requires that you first "
+#~ "enable the spell-check plugin. To enable the plugin, select "
+#~ "<guiseq><gui>Edit </gui><gui>Preferences</gui><gui>Plugins</"
+#~ "gui><gui>Spell Checker</gui> </guiseq>."
+#~ msgstr ""
+#~ "Usar la característica de comprobación de ortografía en <app>gedit</app> "
+#~ "requiere que primero active el complemento del corrector ortográfico. "
+#~ "Para activar este complemento, seleccione <guiseq><gui>Editar</"
+#~ "gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Corrector "
+#~ "ortográfico</gui></guiseq>."
+
+#~ msgid ""
+#~ "Select <guiseq><gui>Tools</gui><gui>Autocheck Spelling</gui></guiseq> to "
+#~ "make <app>gedit</app> highlight spelling errors while you type."
+#~ msgstr ""
+#~ "Seleccione <guiseq><gui>Herramientas</gui><gui>Comprobar ortografía...</"
+#~ "gui></guiseq> para que <app>gedit</app> resalte errores ortográficos al "
+#~ "escribir."
 
 #~ msgid ""
 #~ "Select <keyseq><key>Edit</key><key>Preferences</key><key>Font &amp; "
@@ -4328,9 +4344,6 @@ msgstr ""
 #~ "app>."
 #~ msgstr ""
 #~ "Existen diferentes maneras de organizar sus pestañas en <app>gedit</app>."
-
-#~ msgid "Use the spell-check feature"
-#~ msgstr "Usar la característica de comprobación de ortografía"
 
 #~ msgid ""
 #~ "The following section provides options that can help you replace text "
@@ -7637,8 +7650,8 @@ msgstr ""
 #~ "pane to show the tag list tab."
 #~ msgstr ""
 #~ "Por omisión, el panel lateral muestra una pestaña conteniendo una lista "
-#~ "de documentos abiertos. Pulse en la pestaña que muestra un icono «+» en la "
-#~ "parte de abajo del panel lateral para mostrar la pestaña de listas de "
+#~ "de documentos abiertos. Pulse en la pestaña que muestra un icono «+» en "
+#~ "la parte de abajo del panel lateral para mostrar la pestaña de listas de "
 #~ "etiquetas."
 
 #~ msgid ""
