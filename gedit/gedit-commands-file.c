@@ -128,12 +128,12 @@ load_file_list (GeditWindow         *window,
 		gint                 column_pos,
 		gboolean             create)
 {
-	GeditTab      *tab;
-	GSList        *loaded_files = NULL; /* Number of files to load */
-	gboolean       jump_to = TRUE; /* Whether to jump to the new tab */
-	GList         *win_docs;
-	GSList        *files_to_load = NULL;
-	const GSList  *l;
+	GeditTab *tab;
+	GSList *loaded_files = NULL; /* Number of files to load */
+	gboolean jump_to = TRUE; /* Whether to jump to the new tab */
+	GList *win_docs;
+	GSList *files_to_load = NULL;
+	const GSList *l;
 	gint num_loaded_files = 0;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -144,45 +144,47 @@ load_file_list (GeditWindow         *window,
 	 * in "window" and remove duplicates from "uris" list */
 	for (l = files; l != NULL; l = l->next)
 	{
-		if (!is_duplicated_file (files_to_load, l->data))
+		if (is_duplicated_file (files_to_load, l->data))
 		{
-			tab = get_tab_from_file (win_docs, l->data);
-			if (tab != NULL)
+			continue;
+		}
+
+		tab = get_tab_from_file (win_docs, l->data);
+		if (tab != NULL)
+		{
+			if (l == files)
 			{
-				if (l == files)
+				GeditDocument *doc;
+
+				gedit_window_set_active_tab (window, tab);
+				jump_to = FALSE;
+				doc = gedit_tab_get_document (tab);
+
+				if (line_pos > 0)
 				{
-					GeditDocument *doc;
-
-					gedit_window_set_active_tab (window, tab);
-					jump_to = FALSE;
-					doc = gedit_tab_get_document (tab);
-
-					if (line_pos > 0)
+					if (column_pos > 0)
 					{
-						if (column_pos > 0)
-						{
-							gedit_document_goto_line_offset (doc,
-							                                 line_pos - 1,
-							                                 column_pos - 1);
-						}
-						else
-						{
-							gedit_document_goto_line (doc, line_pos - 1);
-						}
-
-						gedit_view_scroll_to_cursor (gedit_tab_get_view (tab));
+						gedit_document_goto_line_offset (doc,
+						                                 line_pos - 1,
+						                                 column_pos - 1);
 					}
-				}
+					else
+					{
+						gedit_document_goto_line (doc, line_pos - 1);
+					}
 
-				++num_loaded_files;
-				loaded_files = g_slist_prepend (loaded_files,
-				                                gedit_tab_get_document (tab));
+					gedit_view_scroll_to_cursor (gedit_tab_get_view (tab));
+				}
 			}
-			else
-			{
-				files_to_load = g_slist_prepend (files_to_load, 
-								 l->data);
-			}
+
+			++num_loaded_files;
+			loaded_files = g_slist_prepend (loaded_files,
+			                                gedit_tab_get_document (tab));
+		}
+		else
+		{
+			files_to_load = g_slist_prepend (files_to_load,
+							 l->data);
 		}
 	}
 
