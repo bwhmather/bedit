@@ -46,8 +46,7 @@ typedef enum
 	GEDIT_WINDOW_STATE_SAVING		= 1 << 1,
 	GEDIT_WINDOW_STATE_PRINTING		= 1 << 2,
 	GEDIT_WINDOW_STATE_LOADING		= 1 << 3,
-	GEDIT_WINDOW_STATE_ERROR		= 1 << 4,
-	GEDIT_WINDOW_STATE_SAVING_SESSION	= 1 << 5
+	GEDIT_WINDOW_STATE_ERROR		= 1 << 4
 } GeditWindowState;
 
 #define GEDIT_TYPE_WINDOW              (gedit_window_get_type())
@@ -165,9 +164,6 @@ GFile		*_gedit_window_get_default_location 	(GeditWindow         *window);
 
 void		 _gedit_window_set_default_location 	(GeditWindow         *window,
 							 GFile               *location);
-
-void		 _gedit_window_set_saving_session_state	(GeditWindow         *window,
-							 gboolean             saving_session);
 
 void		 _gedit_window_fullscreen		(GeditWindow         *window);
 

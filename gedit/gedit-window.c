@@ -2639,8 +2639,7 @@ set_sensitivity_according_to_window_state (GeditWindow *window)
 {
 	GtkAction *action;
 	GeditLockdownMask lockdown;
-	GeditNotebook *notebook;
-	gint i;
+	gint num_tabs;
 
 	lockdown = gedit_app_get_lockdown (gedit_app_get_default ());
 
@@ -2664,82 +2663,31 @@ set_sensitivity_according_to_window_state (GeditWindow *window)
 	gtk_action_set_sensitive (action, 
 				  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
 				  !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
-			
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
-					      "FileNew");
-	gtk_action_set_sensitive (action, 
-				  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
-				  
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
-					      "FileOpen");
-	gtk_action_set_sensitive (action, 
-				  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
 
-	gtk_action_group_set_sensitive (window->priv->recents_action_group,
-					!(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
+	num_tabs = gedit_multi_notebook_get_n_tabs (window->priv->multi_notebook);
 
-	i = 0;
-	notebook = gedit_multi_notebook_get_nth_notebook (window->priv->multi_notebook, i);
-	while (notebook != NULL)
+	if (!gtk_action_group_get_sensitive (window->priv->action_group))
 	{
-		gedit_notebook_set_close_buttons_sensitive (notebook,
-							    !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
-		notebook = gedit_multi_notebook_get_nth_notebook (window->priv->multi_notebook,
-								  ++i);
+		gtk_action_group_set_sensitive (window->priv->action_group,
+						num_tabs > 0);
 	}
 
-	if ((window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION) != 0)
+	if (!gtk_action_group_get_sensitive (window->priv->quit_action_group))
 	{
-		/* TODO: If we really care, Find could be active
-		 * when in SAVING_SESSION state */
-
-		if (gtk_action_group_get_sensitive (window->priv->action_group))
-		{
-			gtk_action_group_set_sensitive (window->priv->action_group,
-							FALSE);
-		}
-		
-		if (gtk_action_group_get_sensitive (window->priv->quit_action_group))
-		{
-			gtk_action_group_set_sensitive (window->priv->quit_action_group,
-							FALSE);
-		}
-		
-		if (gtk_action_group_get_sensitive (window->priv->close_action_group))
-		{
-			gtk_action_group_set_sensitive (window->priv->close_action_group,
-							FALSE);
-		}
+		gtk_action_group_set_sensitive (window->priv->quit_action_group,
+						num_tabs > 0);
 	}
-	else
+
+	if (!gtk_action_group_get_sensitive (window->priv->close_action_group))
 	{
-		gint num_tabs;
-
-		num_tabs = gedit_multi_notebook_get_n_tabs (window->priv->multi_notebook);
-
-		if (!gtk_action_group_get_sensitive (window->priv->action_group))
-		{
-			gtk_action_group_set_sensitive (window->priv->action_group,
-							num_tabs > 0);
-		}
-		
-		if (!gtk_action_group_get_sensitive (window->priv->quit_action_group))
-		{
-			gtk_action_group_set_sensitive (window->priv->quit_action_group,
-							num_tabs > 0);
-		}
-		
-		if (!gtk_action_group_get_sensitive (window->priv->close_action_group))
-		{
 #ifdef OS_OSX
-			/* On OS X, File Close is always sensitive */
-			gtk_action_group_set_sensitive (window->priv->close_action_group,
-							TRUE);
+		/* On OS X, File Close is always sensitive */
+		gtk_action_group_set_sensitive (window->priv->close_action_group,
+						TRUE);
 #else
-			gtk_action_group_set_sensitive (window->priv->close_action_group,
-							num_tabs > 0);
+		gtk_action_group_set_sensitive (window->priv->close_action_group,
+						num_tabs > 0);
 #endif
-		}
 	}
 }
 
@@ -2825,8 +2773,7 @@ update_window_state (GeditWindow *window)
 	old_ws = window->priv->state;
 	old_num_of_errors = window->priv->num_tabs_with_error;
 	
-	window->priv->state = old_ws & GEDIT_WINDOW_STATE_SAVING_SESSION;
-	
+	window->priv->state = 0;
 	window->priv->num_tabs_with_error = 0;
 
 	gedit_multi_notebook_foreach_tab (window->priv->multi_notebook,
@@ -2948,9 +2895,6 @@ get_drop_window (GtkWidget *widget)
 
 	target_window = gtk_widget_get_toplevel (widget);
 	g_return_val_if_fail (GEDIT_IS_WINDOW (target_window), NULL);
-
-	if ((GEDIT_WINDOW(target_window)->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION) != 0)
-		return NULL;
 	
 	return GEDIT_WINDOW (target_window);
 }
@@ -3413,8 +3357,6 @@ on_tab_added (GeditMultiNotebook *multi,
 
 	gedit_debug (DEBUG_WINDOW);
 
-	g_return_if_fail ((window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION) == 0);
-
 	num_notebooks = gedit_multi_notebook_get_n_notebooks (multi);
 	num_tabs = gedit_multi_notebook_get_n_tabs (multi);
 
@@ -3500,8 +3442,6 @@ on_tab_removed (GeditMultiNotebook *multi,
 	gint num_tabs;
 
 	gedit_debug (DEBUG_WINDOW);
-
-	g_return_if_fail ((window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION) == 0);
 
 	num_notebooks = gedit_multi_notebook_get_n_notebooks (multi);
 	num_tabs = gedit_multi_notebook_get_n_tabs (multi);
@@ -4558,8 +4498,7 @@ void
 gedit_window_close_all_tabs (GeditWindow *window)
 {
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-			  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
+	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
 
 	window->priv->removing_tabs = TRUE;
 
@@ -4580,8 +4519,7 @@ gedit_window_close_tabs (GeditWindow *window,
 			 const GList *tabs)
 {
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-			  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING_SESSION));
+	g_return_if_fail (!(window->priv->state & GEDIT_WINDOW_STATE_SAVING));
 
 	window->priv->removing_tabs = TRUE;
 
@@ -4811,29 +4749,6 @@ _gedit_window_get_all_tabs (GeditWindow *window)
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
 	return gedit_multi_notebook_get_all_tabs (window->priv->multi_notebook);
-}
-
-void 
-_gedit_window_set_saving_session_state (GeditWindow *window,
-					gboolean     saving_session)
-{
-	GeditWindowState old_state;
-
-	g_return_if_fail (GEDIT_IS_WINDOW (window));
-	
-	old_state = window->priv->state;
-
-	if (saving_session)
-		window->priv->state |= GEDIT_WINDOW_STATE_SAVING_SESSION;
-	else
-		window->priv->state &= ~GEDIT_WINDOW_STATE_SAVING_SESSION;
-
-	if (old_state != window->priv->state)
-	{
-		set_sensitivity_according_to_window_state (window);
-
-		g_object_notify (G_OBJECT (window), "state");
-	}
 }
 
 static void

@@ -1017,8 +1017,7 @@ _gedit_cmd_file_save_documents_list (GeditWindow *window,
 	gedit_debug (DEBUG_COMMANDS);
 
 	g_return_if_fail (!(gedit_window_get_state (window) & 
-			    (GEDIT_WINDOW_STATE_PRINTING |
-			     GEDIT_WINDOW_STATE_SAVING_SESSION)));
+			    GEDIT_WINDOW_STATE_PRINTING));
 
 	l = docs;
 	while (l != NULL)
@@ -1853,8 +1852,7 @@ file_close_all (GeditWindow *window,
 
 	g_return_if_fail (!(gedit_window_get_state (window) &
 	                    (GEDIT_WINDOW_STATE_SAVING |
-	                     GEDIT_WINDOW_STATE_PRINTING |
-	                     GEDIT_WINDOW_STATE_SAVING_SESSION)));
+	                     GEDIT_WINDOW_STATE_PRINTING)));
 
 	g_object_set_data (G_OBJECT (window),
 			   GEDIT_IS_CLOSING_ALL,
@@ -1920,8 +1918,7 @@ _gedit_cmd_file_close_all (GtkAction   *action,
 
 	g_return_if_fail (!(gedit_window_get_state (window) &
 	                    (GEDIT_WINDOW_STATE_SAVING |
-	                    GEDIT_WINDOW_STATE_PRINTING |
-	                    GEDIT_WINDOW_STATE_SAVING_SESSION)));
+	                    GEDIT_WINDOW_STATE_PRINTING)));
 
 	file_close_all (window, FALSE);
 }
@@ -1948,8 +1945,7 @@ quit_all ()
 
 		if (!(gedit_window_get_state (window) &
 		                    (GEDIT_WINDOW_STATE_SAVING |
-		                     GEDIT_WINDOW_STATE_PRINTING |
-		                     GEDIT_WINDOW_STATE_SAVING_SESSION)))
+		                     GEDIT_WINDOW_STATE_PRINTING)))
 		{
 			file_close_all (window, TRUE);
 		}
@@ -1975,8 +1971,7 @@ _gedit_cmd_file_quit (GtkAction   *action,
 
 	g_return_if_fail (!(gedit_window_get_state (window) &
 	                    (GEDIT_WINDOW_STATE_SAVING |
-	                     GEDIT_WINDOW_STATE_PRINTING |
-	                     GEDIT_WINDOW_STATE_SAVING_SESSION)));
+	                     GEDIT_WINDOW_STATE_PRINTING)));
 
 	file_close_all (window, TRUE);
 }

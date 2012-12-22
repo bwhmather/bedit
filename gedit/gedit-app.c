@@ -455,9 +455,7 @@ window_delete_event (GeditWindow *window,
 	ws = gedit_window_get_state (window);
 
 	if (ws & 
-	    (GEDIT_WINDOW_STATE_SAVING |
-	     GEDIT_WINDOW_STATE_PRINTING |
-	     GEDIT_WINDOW_STATE_SAVING_SESSION))
+	    (GEDIT_WINDOW_STATE_SAVING | GEDIT_WINDOW_STATE_PRINTING))
 	{
 		return TRUE;
 	}
