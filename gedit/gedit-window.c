@@ -114,7 +114,7 @@ gedit_window_get_property (GObject    *object,
 		case PROP_STATE:
 			g_value_set_enum (value,
 					  gedit_window_get_state (window));
-			break;			
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;			
@@ -2803,6 +2803,44 @@ update_window_state (GeditWindow *window)
 }
 
 static void
+update_can_close (GeditWindow *window)
+{
+	GeditWindowPrivate *priv = window->priv;
+	GList *tabs;
+	GList *l;
+	gboolean can_close = TRUE;
+
+	gedit_debug (DEBUG_WINDOW);
+
+	tabs = gedit_multi_notebook_get_all_tabs (priv->multi_notebook);
+
+	for (l = tabs; l != NULL; l = g_list_next (l))
+	{
+		GeditTab *tab = l->data;
+
+		if (!_gedit_tab_get_can_close (tab))
+		{
+			can_close = FALSE;
+			break;
+		}
+	}
+
+	if (can_close && (priv->inhibition_cookie != 0))
+	{
+		gtk_application_uninhibit (GTK_APPLICATION (g_application_get_default ()),
+					   priv->inhibition_cookie);
+		priv->inhibition_cookie = 0;
+	}
+	else if (!can_close && (priv->inhibition_cookie == 0))
+	{
+		priv->inhibition_cookie = gtk_application_inhibit (GTK_APPLICATION (g_application_get_default ()),
+		                                                   GTK_WINDOW (window),
+		                                                   GTK_APPLICATION_INHIBIT_LOGOUT,
+		                                                   _("There are unsaved documents"));
+	}
+}
+
+static void
 sync_state (GeditTab    *tab,
 	    GParamSpec  *pspec,
 	    GeditWindow *window)
@@ -2888,6 +2926,14 @@ sync_name (GeditTab    *tab,
 	peas_extension_set_foreach (window->priv->extensions,
 	                            (PeasExtensionSetForeachFunc) extension_update_state,
 	                            window);
+}
+
+static void
+sync_can_close (GeditTab    *tab,
+		GParamSpec  *pspec,
+		GeditWindow *window)
+{
+	update_can_close (window);
 }
 
 static GeditWindow *
@@ -3380,10 +3426,13 @@ on_tab_added (GeditMultiNotebook *multi,
 			  G_CALLBACK (sync_state),
 			  window);
 	g_signal_connect (tab,
+			  "notify::can-close",
+			  G_CALLBACK (sync_can_close),
+			  window);
+	g_signal_connect (tab,
 			  "drop_uris",
 			  G_CALLBACK (drop_uris_cb),
 			  window);
-
 	g_signal_connect (doc,
 			  "bracket-matched",
 			  G_CALLBACK (bracket_matched_cb),
@@ -3428,6 +3477,7 @@ on_tab_added (GeditMultiNotebook *multi,
 	update_documents_list_menu (window);
 
 	update_window_state (window);
+	update_can_close (window);
 
 	g_signal_emit (G_OBJECT (window), signals[TAB_ADDED], 0, tab);
 }
@@ -3456,6 +3506,9 @@ on_tab_removed (GeditMultiNotebook *multi,
 					      window);
 	g_signal_handlers_disconnect_by_func (tab,
 					      G_CALLBACK (sync_state), 
+					      window);
+	g_signal_handlers_disconnect_by_func (tab,
+					      G_CALLBACK (sync_can_close),
 					      window);
 	g_signal_handlers_disconnect_by_func (tab,
 					      G_CALLBACK (drop_uris_cb),
@@ -3550,6 +3603,7 @@ on_tab_removed (GeditMultiNotebook *multi,
 	}
 
 	update_window_state (window);
+	update_can_close (window);
 
 	g_signal_emit (G_OBJECT (window), signals[TAB_REMOVED], 0, tab);
 }
@@ -3985,8 +4039,10 @@ gedit_window_init (GeditWindow *window)
 	gedit_debug (DEBUG_WINDOW);
 
 	window->priv = GEDIT_WINDOW_GET_PRIVATE (window);
+
 	window->priv->removing_tabs = FALSE;
 	window->priv->state = GEDIT_WINDOW_STATE_NORMAL;
+	window->priv->inhibition_cookie = 0;
 	window->priv->dispose_has_run = FALSE;
 	window->priv->fullscreen_controls = NULL;
 	window->priv->fullscreen_animation_timeout_id = 0;
@@ -4713,7 +4769,7 @@ static void
 add_unsaved_doc (GeditTab *tab,
 		 GList   **res)
 {
-	if (!_gedit_tab_can_close (tab))
+	if (!_gedit_tab_get_can_close (tab))
 	{
 		GeditDocument *doc;
 

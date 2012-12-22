@@ -113,6 +113,8 @@ struct _GeditWindowPrivate
 
 	GeditWindowState state;
 
+	guint           inhibition_cookie;
+
 	gint            bottom_panel_item_removed_handler_id;
 
 	GtkWindowGroup *window_group;

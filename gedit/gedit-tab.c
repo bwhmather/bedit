@@ -92,7 +92,8 @@ enum
 	PROP_NAME,
 	PROP_STATE,
 	PROP_AUTO_SAVE,
-	PROP_AUTO_SAVE_INTERVAL
+	PROP_AUTO_SAVE_INTERVAL,
+	PROP_CAN_CLOSE
 };
 
 /* Signals */
@@ -205,6 +206,10 @@ gedit_tab_get_property (GObject    *object,
 		case PROP_AUTO_SAVE_INTERVAL:
 			g_value_set_int (value,
 					 gedit_tab_get_auto_save_interval (tab));
+			break;
+		case PROP_CAN_CLOSE:
+			g_value_set_boolean (value,
+					     _gedit_tab_get_can_close (tab));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -338,6 +343,15 @@ gedit_tab_class_init (GeditTabClass *klass)
 							   0,
 							   G_PARAM_READWRITE |
 							   G_PARAM_STATIC_STRINGS));
+
+	g_object_class_install_property (object_class,
+					 PROP_CAN_CLOSE,
+					 g_param_spec_boolean ("can-close",
+							       "Can close",
+							       "Whether the tab can be closed",
+							       TRUE,
+							       G_PARAM_READABLE |
+							       G_PARAM_STATIC_STRINGS));
 
 	signals[DROP_URIS] =
 		g_signal_new ("drop-uris",
@@ -477,6 +491,7 @@ gedit_tab_set_state (GeditTab      *tab,
 				       state);
 
 	g_object_notify (G_OBJECT (tab), "state");
+	g_object_notify (G_OBJECT (tab), "can-close");
 }
 
 static void 
@@ -506,6 +521,7 @@ document_modified_changed (GtkTextBuffer *document,
 			   GeditTab      *tab)
 {
 	g_object_notify (G_OBJECT (tab), "name");
+	g_object_notify (G_OBJECT (tab), "can-close");
 }
 
 static void
@@ -2204,7 +2220,6 @@ _gedit_tab_load_stream (GeditTab            *tab,
 	                            encoding,
 	                            line_pos,
 	                            column_pos);
-
 }
 
 void
@@ -2825,7 +2840,7 @@ _gedit_tab_mark_for_closing (GeditTab *tab)
 }
 
 gboolean
-_gedit_tab_can_close (GeditTab *tab)
+_gedit_tab_get_can_close (GeditTab *tab)
 {
 	GeditDocument *doc;
 	GeditTabState  ts;
@@ -2845,15 +2860,25 @@ _gedit_tab_can_close (GeditTab *tab)
 
 	/* Do not close tab with saving errors */
 	if (ts == GEDIT_TAB_STATE_SAVING_ERROR)
+	{
 		return FALSE;
-		
+	}
+
 	doc = gedit_tab_get_document (tab);
 
-	/* TODO: we need to save the file also if it has been externally
-	   modified - Paolo (Oct 10, 2005) */
+	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	{
+		return FALSE;
+	}
 
-	return (!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)) &&
-		!gedit_document_get_deleted (doc));
+	if (gedit_document_is_local (doc) &&
+	    (gedit_document_get_deleted (doc) ||
+	    _gedit_document_check_externally_modified (doc)))
+	{
+		return FALSE;
+	}
+
+	return TRUE;
 }
 
 /**

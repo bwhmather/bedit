@@ -1335,7 +1335,7 @@ _gedit_cmd_file_revert (GtkAction   *action,
 	 * if the document has not been modified, do
 	 * not bug the user further */
 	if (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
-	    _gedit_tab_can_close (tab))
+	    _gedit_tab_get_can_close (tab))
 	{
 		do_revert (window, tab);
 		return;
@@ -1766,7 +1766,7 @@ tab_can_close (GeditTab  *tab,
 
 	doc = gedit_tab_get_document (tab);
 
-	if (!_gedit_tab_can_close (tab))
+	if (!_gedit_tab_get_can_close (tab))
 	{
 		GtkWidget     *dlg;
 
