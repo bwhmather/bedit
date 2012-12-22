@@ -122,11 +122,6 @@ gboolean	gedit_app_process_window_event		(GeditApp    *app,
 							 GdkEvent    *event);
 
 /* Non exported functions */
-GeditWindow	*_gedit_app_get_window_in_viewport	(GeditApp     *app,
-							 GdkScreen   *screen,
-							 gint         workspace,
-							 gint         viewport_x,
-							 gint         viewport_y);
 void		 _gedit_app_set_lockdown		(GeditApp          *app,
 							 GeditLockdownMask  lockdown);
 void		 _gedit_app_set_lockdown_bit		(GeditApp          *app,
