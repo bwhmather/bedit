@@ -1768,12 +1768,9 @@ tab_can_close (GeditTab  *tab,
 
 	if (!_gedit_tab_get_can_close (tab))
 	{
-		GtkWidget     *dlg;
+		GtkWidget *dlg;
 
-		dlg = gedit_close_confirmation_dialog_new_single (window,
-								  doc,
-								  FALSE);
-
+		dlg = gedit_close_confirmation_dialog_new_single (window, doc);
 		g_signal_connect (dlg,
 				  "response",
 				  G_CALLBACK (close_confirmation_dialog_response_handler),
@@ -1890,14 +1887,12 @@ file_close_all (GeditWindow *window,
 
 		dlg = gedit_close_confirmation_dialog_new_single (
 						GTK_WINDOW (window),
-						doc,
-						FALSE);
+						doc);
 	}
 	else
 	{
 		dlg = gedit_close_confirmation_dialog_new (GTK_WINDOW (window),
-							   unsaved_docs,
-							   FALSE);
+							   unsaved_docs);
 	}
 
 	g_list_free (unsaved_docs);

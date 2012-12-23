@@ -43,8 +43,7 @@
 enum 
 {
 	PROP_0,	
-	PROP_UNSAVED_DOCUMENTS,
-	PROP_LOGOUT_MODE
+	PROP_UNSAVED_DOCUMENTS
 };
 
 /* Mode */
@@ -65,14 +64,9 @@ enum
 
 struct _GeditCloseConfirmationDialogPrivate 
 {
-	gboolean     logout_mode;
-
 	GList       *unsaved_documents;
-	
 	GList       *selected_documents;
-
 	GtkTreeModel *list_store;
-	
 	gboolean     disable_save_to_disk;
 };
 
@@ -126,64 +120,6 @@ response_cb (GeditCloseConfirmationDialog *dlg,
 	else
 	{
 		priv->selected_documents = NULL;
-	}
-}
-
-static void
-set_logout_mode (GeditCloseConfirmationDialog *dlg,
-		 gboolean                      logout_mode)
-{
-	dlg->priv->logout_mode = logout_mode;
-	
-	if (logout_mode)
-	{
-		gtk_dialog_add_button (GTK_DIALOG (dlg),
-				       _("Log Out _without Saving"),
-				       GTK_RESPONSE_NO);
-
-		gedit_dialog_add_button (GTK_DIALOG (dlg),
-					 _("_Cancel Logout"),
-					 GTK_STOCK_CANCEL,
-					 GTK_RESPONSE_CANCEL);
-	}
-	else
-	{
-		gtk_dialog_add_button (GTK_DIALOG (dlg),
-				       _("Close _without Saving"),
-				       GTK_RESPONSE_NO);
-
-		gtk_dialog_add_button (GTK_DIALOG (dlg),
-				       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
-	}
-	
-	if (dlg->priv->disable_save_to_disk)
-	{
-		gtk_dialog_set_default_response	(GTK_DIALOG (dlg),
-						 GTK_RESPONSE_NO);
-	}
-	else
-	{
-		const gchar *stock_id = GTK_STOCK_SAVE;
-		
-		if (GET_MODE (dlg->priv) == SINGLE_DOC_MODE)
-		{
-			GeditDocument *doc;
-			
-			doc = GEDIT_DOCUMENT (dlg->priv->unsaved_documents->data);
-			
-			if (gedit_document_get_readonly (doc) || 
-			    gedit_document_is_untitled (doc))
-			{
-				stock_id = GTK_STOCK_SAVE_AS;
-			}
-		}
-
-		gtk_dialog_add_button (GTK_DIALOG (dlg),
-				       stock_id, 
-				       GTK_RESPONSE_YES);
-
-		gtk_dialog_set_default_response	(GTK_DIALOG (dlg), 
-						 GTK_RESPONSE_YES);
 	}
 }
 
@@ -252,10 +188,6 @@ gedit_close_confirmation_dialog_set_property (GObject      *object,
 		case PROP_UNSAVED_DOCUMENTS:
 			set_unsaved_document (dlg, g_value_get_pointer (value));
 			break;
-			
-		case PROP_LOGOUT_MODE:
-			set_logout_mode (dlg, g_value_get_boolean (value));
-			break;
 
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -277,10 +209,6 @@ gedit_close_confirmation_dialog_get_property (GObject    *object,
 	{
 		case PROP_UNSAVED_DOCUMENTS:
 			g_value_set_pointer (value, priv->unsaved_documents);
-			break;
-
-		case PROP_LOGOUT_MODE:
-			g_value_set_boolean (value, priv->logout_mode);
 			break;
 
 		default:
@@ -305,15 +233,6 @@ gedit_close_confirmation_dialog_class_init (GeditCloseConfirmationDialogClass *k
 					 g_param_spec_pointer ("unsaved_documents",
 						 	       "Unsaved Documents",
 							       "List of Unsaved Documents",
-							       (G_PARAM_READWRITE | 
-							        G_PARAM_CONSTRUCT_ONLY)));
-
-	g_object_class_install_property (gobject_class,
-					 PROP_LOGOUT_MODE,
-					 g_param_spec_boolean ("logout_mode",
-						 	       "Logout Mode",
-							       "Whether the dialog is in logout mode",
-							       FALSE,
 							       (G_PARAM_READWRITE | 
 							        G_PARAM_CONSTRUCT_ONLY)));
 }
@@ -358,15 +277,14 @@ gedit_close_confirmation_dialog_get_selected_documents (GeditCloseConfirmationDi
 
 GtkWidget *
 gedit_close_confirmation_dialog_new (GtkWindow *parent, 
-				     GList     *unsaved_documents,
-				     gboolean   logout_mode)
+				     GList     *unsaved_documents)
 {
 	GtkWidget *dlg;
+
 	g_return_val_if_fail (unsaved_documents != NULL, NULL);
 
 	dlg = GTK_WIDGET (g_object_new (GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG,
 				        "unsaved_documents", unsaved_documents,
-				        "logout_mode", logout_mode,
 				        NULL));
 	g_return_val_if_fail (dlg != NULL, NULL);
 
@@ -383,8 +301,7 @@ gedit_close_confirmation_dialog_new (GtkWindow *parent,
 
 GtkWidget *
 gedit_close_confirmation_dialog_new_single (GtkWindow     *parent, 
-					    GeditDocument *doc,
-					    gboolean       logout_mode)
+					    GeditDocument *doc)
 {
 	GtkWidget *dlg;
 	GList *unsaved_documents;
@@ -393,12 +310,52 @@ gedit_close_confirmation_dialog_new_single (GtkWindow     *parent,
 	unsaved_documents = g_list_prepend (NULL, doc);
 
 	dlg = gedit_close_confirmation_dialog_new (parent, 
-						   unsaved_documents,
-						   logout_mode);
+						   unsaved_documents);
 	
 	g_list_free (unsaved_documents);
 
 	return dlg;
+}
+
+static void
+add_buttons (GeditCloseConfirmationDialog *dlg)
+{
+	gtk_dialog_add_button (GTK_DIALOG (dlg),
+			       _("Close _without Saving"),
+			       GTK_RESPONSE_NO);
+
+	gtk_dialog_add_button (GTK_DIALOG (dlg),
+			       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+
+	if (dlg->priv->disable_save_to_disk)
+	{
+		gtk_dialog_set_default_response	(GTK_DIALOG (dlg),
+						 GTK_RESPONSE_NO);
+	}
+	else
+	{
+		const gchar *stock_id = GTK_STOCK_SAVE;
+
+		if (GET_MODE (dlg->priv) == SINGLE_DOC_MODE)
+		{
+			GeditDocument *doc;
+
+			doc = GEDIT_DOCUMENT (dlg->priv->unsaved_documents->data);
+
+			if (gedit_document_get_readonly (doc) ||
+			    gedit_document_is_untitled (doc))
+			{
+				stock_id = GTK_STOCK_SAVE_AS;
+			}
+		}
+
+		gtk_dialog_add_button (GTK_DIALOG (dlg),
+				       stock_id,
+				       GTK_RESPONSE_YES);
+
+		gtk_dialog_set_default_response	(GTK_DIALOG (dlg),
+						 GTK_RESPONSE_YES);
+	}
 }
 
 static gchar *
@@ -500,6 +457,8 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	g_return_if_fail (dlg->priv->unsaved_documents->data != NULL);
 	doc = GEDIT_DOCUMENT (dlg->priv->unsaved_documents->data);
 
+	add_buttons (dlg);
+
 	/* Image */
 	image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_WARNING, 
 					  GTK_ICON_SIZE_DIALOG);
@@ -552,13 +511,9 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-	
 	gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 0);
-
 	gtk_box_pack_start (GTK_BOX (vbox), primary_label, FALSE, FALSE, 0);
-		      
 	gtk_box_pack_start (GTK_BOX (vbox), secondary_label, FALSE, FALSE, 0);
-
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
 			    hbox, 
 	                    FALSE, 
@@ -679,6 +634,8 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	gchar     *markup_str;
 
 	priv = dlg->priv;
+
+	add_buttons (dlg);
 
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
 	gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
