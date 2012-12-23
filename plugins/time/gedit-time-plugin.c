@@ -29,19 +29,15 @@
 #endif
 
 #include <string.h>
-#include <time.h>
-
-#include "gedit-time-plugin.h"
-#include <gedit/gedit-app.h>
-
 #include <glib/gi18n-lib.h>
 #include <glib.h>
-
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-utils.h>
 #include <gedit/gedit-window.h>
 #include <gedit/gedit-window-activatable.h>
 #include <libpeas-gtk/peas-gtk-configurable.h>
+#include <gedit/gedit-app.h>
+#include "gedit-time-plugin.h"
 
 #define GEDIT_TIME_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
 					      GEDIT_TYPE_TIME_PLUGIN, \
@@ -359,52 +355,23 @@ get_custom_format (GeditTimePlugin *plugin)
 }
 
 static gchar *
-get_time (const gchar* format)
+get_time (const gchar *format)
 {
-	gchar *out = NULL;
-	gchar *out_utf8 = NULL;
-	time_t clock;
-	struct tm *now;
-	size_t out_length = 0;
-	gchar *locale_format;
+	gchar *out;
+	GDateTime *now;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_val_if_fail (format != NULL, NULL);
 
-	if (strlen (format) == 0)
+	if (*format == '\0')
 		return g_strdup (" ");
 
-	locale_format = g_locale_from_utf8 (format, -1, NULL, NULL, NULL);
-	if (locale_format == NULL)
-		return g_strdup (" ");
+	now = g_date_time_new_now_local ();
+	out = g_date_time_format (now, format);
+	g_date_time_unref (now);
 
-	clock = time (NULL);
-	now = localtime (&clock);
-
-	do
-	{
-		out_length += 255;
-		out = g_realloc (out, out_length);
-	}
-	while (strftime (out, out_length, locale_format, now) == 0);
-
-	g_free (locale_format);
-
-	if (g_utf8_validate (out, -1, NULL))
-	{
-		out_utf8 = out;
-	}
-	else
-	{
-		out_utf8 = g_locale_to_utf8 (out, -1, NULL, NULL, NULL);
-		g_free (out);
-
-		if (out_utf8 == NULL)
-			out_utf8 = g_strdup (" ");
-	}
-
-	return out_utf8;
+	return out;
 }
 
 static void
