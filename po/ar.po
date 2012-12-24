@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-17 20:53+0200\n"
-"PO-Revision-Date: 2012-09-17 20:53+0200\n"
+"POT-Creation-Date: 2012-12-24 12:49+0200\n"
+"PO-Revision-Date: 2012-12-24 12:49+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -46,8 +46,8 @@ msgid "gedit Text Editor"
 msgstr "محرّر النصوص ج‌إدِت"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text"
-msgstr "نص"
+msgid "Text;"
+msgstr "نص;"
 
 #: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
@@ -708,12 +708,12 @@ msgstr ""
 "%s\n"
 "نفّذ '%s --help' لتحصل على قائمة كاملة بخيارات سطر الأوامر المتاحة.\n"
 
-#: ../gedit/gedit-commands-file.c:272
+#: ../gedit/gedit-commands-file.c:268
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "يُحمّل الملف '%s'…"
 
-#: ../gedit/gedit-commands-file.c:281
+#: ../gedit/gedit-commands-file.c:277
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -725,73 +725,73 @@ msgstr[4] "يُحمّل %Id ملفا…"
 msgstr[5] "يُحمّل %Id ملف…"
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:446
+#: ../gedit/gedit-commands-file.c:442
 msgid "Open Files"
 msgstr "افتح الملفّات"
 
-#: ../gedit/gedit-commands-file.c:557
+#: ../gedit/gedit-commands-file.c:553
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "الملف \"%s\" للقراءة فقط."
 
-#: ../gedit/gedit-commands-file.c:562
+#: ../gedit/gedit-commands-file.c:558
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "هل تريد استبداله بالملف الذي أنت بصدد حفظه؟"
 
-#: ../gedit/gedit-commands-file.c:570 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "است_بدل"
 
-#: ../gedit/gedit-commands-file.c:612
+#: ../gedit/gedit-commands-file.c:608
 msgid "Save the file using compression?"
 msgstr "أأحفظ الملف مضغوطا؟"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:609
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr "حفظ الملف \"%s\" من قبل دون ضغط وسيُحفظ الآن مضغوطا."
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:611
 msgid "_Save Using Compression"
 msgstr "احفظ م_ضغوطا"
 
-#: ../gedit/gedit-commands-file.c:619
+#: ../gedit/gedit-commands-file.c:615
 msgid "Save the file as plain text?"
 msgstr "أأحفظ الملف دون ضغط؟"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:616
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr "حفظ الملف \"%s\" من قبل دون مضغوطا وسيُحفظ الآن دون ضغط."
 
-#: ../gedit/gedit-commands-file.c:622
+#: ../gedit/gedit-commands-file.c:618
 msgid "_Save As Plain Text"
 msgstr "احفظ _دون ضغط"
 
-#: ../gedit/gedit-commands-file.c:742 ../gedit/gedit-commands-file.c:959
+#: ../gedit/gedit-commands-file.c:738 ../gedit/gedit-commands-file.c:955
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "يحفظ الملف \"%s\"..."
 
-#: ../gedit/gedit-commands-file.c:846
+#: ../gedit/gedit-commands-file.c:842
 msgid "Save As"
 msgstr "احفظ باسم"
 
-#: ../gedit/gedit-commands-file.c:1173
+#: ../gedit/gedit-commands-file.c:1169
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "يسترجع المستند '%s'..."
 
-#: ../gedit/gedit-commands-file.c:1218
+#: ../gedit/gedit-commands-file.c:1214
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "أأعكس التغييرات غير المحفوظة في المستند '%s'؟"
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1223
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -808,12 +808,12 @@ msgstr[4] ""
 msgstr[5] ""
 "ستضيع التّغييرات المحدثة على المستند في الـ%Ild ثانية الأخيرة نهائيًا."
 
-#: ../gedit/gedit-commands-file.c:1236
+#: ../gedit/gedit-commands-file.c:1232
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "ستضيع التّغييرات المحدثة على المستند في الدّقيقة الأخيرة نهائيًا."
 
-#: ../gedit/gedit-commands-file.c:1242
+#: ../gedit/gedit-commands-file.c:1238
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -833,7 +833,7 @@ msgstr[4] ""
 msgstr[5] ""
 "ستضيع التّغييرات المحدثة على المستند في الدّقيقة والـ%Ild ثانية الأخيرة نهائيًا."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1248
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -850,11 +850,11 @@ msgstr[4] ""
 msgstr[5] ""
 "ستضيع التّغييرات المحدثة على المستند في الـ%Ild دقيقة الأخيرة نهائيًا."
 
-#: ../gedit/gedit-commands-file.c:1267
+#: ../gedit/gedit-commands-file.c:1263
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "ستضيع التّغييرات المحدثة على المستند في السّاعة الأخيرة نهائيًا."
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1269
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -874,7 +874,7 @@ msgstr[4] ""
 msgstr[5] ""
 "ستضيع التّغييرات المحدثة على المستند في السّاعة والـ%Id دقيقة الأخيرة نهائيًا."
 
-#: ../gedit/gedit-commands-file.c:1288
+#: ../gedit/gedit-commands-file.c:1284
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -888,7 +888,7 @@ msgstr[3] ""
 msgstr[4] "ستضيع التّغييرات المحدثة على المستند في الـ%Id ساعة الأخيرة نهائيًا."
 msgstr[5] "ستضيع التّغييرات المحدثة على المستند في الـ%Id ساعة الأخيرة نهائيًا."
 
-#: ../gedit/gedit-commands-file.c:1314
+#: ../gedit/gedit-commands-file.c:1310
 msgid "_Revert"
 msgstr "ا_عكس"
 
@@ -934,17 +934,17 @@ msgstr "تمّ إيجاد واستبدال حدوث واحد"
 msgid "\"%s\" not found"
 msgstr "‏\"%s\" غير موجود"
 
-#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
+#: ../gedit/gedit-document.c:1223 ../gedit/gedit-document.c:1249
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "مستند غير محفوظ %Id"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2397 ../gedit/gedit-window.c:2404
+#: ../gedit/gedit-window.c:2367 ../gedit/gedit-window.c:2374
 msgid "Read-Only"
 msgstr "للقراءة فقط"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3846
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3816
 msgid "Documents"
 msgstr "مستندات"
 
@@ -1475,6 +1475,14 @@ msgstr "احفظ با_سم..."
 msgid "_Print..."
 msgstr "ا_طبع..."
 
+#: ../gedit/gedit-open-tool-button.c:85 ../gedit/gedit-ui.h:55
+msgid "Open a file"
+msgstr "افتح ملفا"
+
+#: ../gedit/gedit-open-tool-button.c:87
+msgid "Open a recently used file"
+msgstr "افتح ملفا استخدم مؤخرا"
+
 #: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:587
 msgid "Empty"
 msgstr "فارغ"
@@ -1712,75 +1720,75 @@ msgstr "الت_رويسات والتذييلات:"
 msgid "_Restore Default Fonts"
 msgstr "اس_ترجع الخطوط المبدئية"
 
-#: ../gedit/gedit-print-preview.c:582
+#: ../gedit/gedit-print-preview.c:562
 msgid "Show the previous page"
 msgstr "أظهر الصفحة السابقة"
 
-#: ../gedit/gedit-print-preview.c:594
+#: ../gedit/gedit-print-preview.c:574
 msgid "Show the next page"
 msgstr "أظهر الصفحة التالية"
 
-#: ../gedit/gedit-print-preview.c:610
+#: ../gedit/gedit-print-preview.c:590
 msgid "Current page (Alt+P)"
 msgstr "الصفحة الحالية (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:633
+#: ../gedit/gedit-print-preview.c:613
 msgid "of"
 msgstr "مِن"
 
-#: ../gedit/gedit-print-preview.c:641
+#: ../gedit/gedit-print-preview.c:621
 msgid "Page total"
 msgstr "مجموع الصفحات"
 
-#: ../gedit/gedit-print-preview.c:642
+#: ../gedit/gedit-print-preview.c:622
 msgid "The total number of pages in the document"
 msgstr "مجموع الصفحات في المستند"
 
-#: ../gedit/gedit-print-preview.c:659
+#: ../gedit/gedit-print-preview.c:639
 msgid "Show multiple pages"
 msgstr "أظهر صفحات متعددة"
 
-#: ../gedit/gedit-print-preview.c:672
+#: ../gedit/gedit-print-preview.c:652
 msgid "Zoom 1:1"
 msgstr "تقريب 1:1"
 
-#: ../gedit/gedit-print-preview.c:681
+#: ../gedit/gedit-print-preview.c:661
 msgid "Zoom to fit the whole page"
 msgstr "اضبط الحجم لملائمة الصفحة بكاملها"
 
-#: ../gedit/gedit-print-preview.c:690
+#: ../gedit/gedit-print-preview.c:670
 msgid "Zoom the page in"
 msgstr "قرّب الصفحة"
 
-#: ../gedit/gedit-print-preview.c:699
+#: ../gedit/gedit-print-preview.c:679
 msgid "Zoom the page out"
 msgstr "بعّد الصفحة"
 
-#: ../gedit/gedit-print-preview.c:711
+#: ../gedit/gedit-print-preview.c:691
 msgid "_Close Preview"
 msgstr "أ_غلق المعاينة"
 
-#: ../gedit/gedit-print-preview.c:714
+#: ../gedit/gedit-print-preview.c:694
 msgid "Close print preview"
 msgstr "أغلق معيانة الطباعة"
 
-#: ../gedit/gedit-print-preview.c:783
+#: ../gedit/gedit-print-preview.c:763
 #, c-format
 msgid "Page %d of %d"
 msgstr "الصفحة %Id من %Id"
 
-#: ../gedit/gedit-print-preview.c:967
+#: ../gedit/gedit-print-preview.c:947
 msgid "Page Preview"
 msgstr "معاينة الصفحة"
 
-#: ../gedit/gedit-print-preview.c:968
+#: ../gedit/gedit-print-preview.c:948
 msgid "The preview of a page in the document to be printed"
 msgstr "معاينة صفحة من المستند الذي ستتم طباعته"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1557
+#: ../gedit/gedit-window.c:1528
 msgid "Replace"
 msgstr "استبدل"
 
@@ -1955,10 +1963,6 @@ msgstr "أنشئ مستندا جديدا"
 #: ../gedit/gedit-ui.h:54
 msgid "_Open..."
 msgstr "ا_فتح..."
-
-#: ../gedit/gedit-ui.h:55 ../gedit/gedit-window.c:1486
-msgid "Open a file"
-msgstr "افتح ملفا"
 
 #. Edit menu
 #: ../gedit/gedit-ui.h:58
@@ -2244,7 +2248,7 @@ msgstr "السلسة التي تريد البحث عنها"
 msgid "Line you want to move the cursor to"
 msgstr "السطر الذي تريد تحريك المؤشّر إليه"
 
-#: ../gedit/gedit-window.c:941
+#: ../gedit/gedit-window.c:942
 #, c-format
 msgid "Use %s highlight mode"
 msgstr "استخدم نمط الإبراز %s"
@@ -2252,67 +2256,63 @@ msgstr "استخدم نمط الإبراز %s"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
+#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2061
 #: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:455
-#: ../plugins/externaltools/tools/manager.py:566
-#: ../plugins/externaltools/tools/manager.py:885
+#: ../plugins/externaltools/tools/manager.py:571
+#: ../plugins/externaltools/tools/manager.py:890
 msgid "Plain Text"
 msgstr "نص صِرف"
 
-#: ../gedit/gedit-window.c:1047
+#: ../gedit/gedit-window.c:1048
 msgid "Disable syntax highlighting"
 msgstr "عطّل إبراز الصيغة"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1364
+#: ../gedit/gedit-window.c:1365
 #, c-format
 msgid "Open '%s'"
 msgstr "افتح '%s'"
 
-#: ../gedit/gedit-window.c:1488
-msgid "Open a recently used file"
-msgstr "افتح ملفا استخدم مؤخرا"
-
-#: ../gedit/gedit-window.c:1494
+#: ../gedit/gedit-window.c:1467
 msgid "Open"
 msgstr "افتح"
 
-#: ../gedit/gedit-window.c:1551
+#: ../gedit/gedit-window.c:1522
 msgid "Save"
 msgstr "احفظ"
 
-#: ../gedit/gedit-window.c:1553
+#: ../gedit/gedit-window.c:1524
 msgid "Print"
 msgstr "اطبع"
 
-#: ../gedit/gedit-window.c:1555
+#: ../gedit/gedit-window.c:1526
 msgid "Find"
 msgstr "ابحث"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1715
+#: ../gedit/gedit-window.c:1685
 #, c-format
 msgid "Activate '%s'"
 msgstr "نشّط '%s'"
 
-#: ../gedit/gedit-window.c:2072
+#: ../gedit/gedit-window.c:2042
 msgid "Use Spaces"
 msgstr "استخدم المسافات"
 
-#: ../gedit/gedit-window.c:2145
+#: ../gedit/gedit-window.c:2115
 msgid "Tab Width"
 msgstr "عرض التبويب"
 
-#: ../gedit/gedit-window.c:2254
+#: ../gedit/gedit-window.c:2224
 msgid "Bracket match is out of range"
 msgstr "موافقة الأقواس خارج المدى"
 
-#: ../gedit/gedit-window.c:2259
+#: ../gedit/gedit-window.c:2229
 msgid "Bracket match not found"
 msgstr "لم يعثر على قوس موافق"
 
-#: ../gedit/gedit-window.c:2264
+#: ../gedit/gedit-window.c:2234
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "لم يعثر على قوس موافق في سطر: %d"
@@ -2532,19 +2532,19 @@ msgstr "اسم خط بانجو. \"Sans 12\" أو \"Monospace Bold 14\" مثلا.
 msgid "Could not execute command: %s"
 msgstr "تعذّر تنفيذ الأمر: %s"
 
-#: ../plugins/externaltools/tools/functions.py:159
+#: ../plugins/externaltools/tools/functions.py:157
 msgid "You must be inside a word to run this command"
 msgstr "يجب عليك أن تكون داخل كلمة لتشغيل هذا الأمر"
 
-#: ../plugins/externaltools/tools/functions.py:265
+#: ../plugins/externaltools/tools/functions.py:263
 msgid "Running tool:"
 msgstr "الأداة المشغلة:"
 
-#: ../plugins/externaltools/tools/functions.py:294
+#: ../plugins/externaltools/tools/functions.py:292
 msgid "Done."
 msgstr "تم."
 
-#: ../plugins/externaltools/tools/functions.py:296
+#: ../plugins/externaltools/tools/functions.py:294
 msgid "Exited"
 msgstr "خرج"
 
@@ -2552,27 +2552,27 @@ msgstr "خرج"
 msgid "All languages"
 msgstr "كل اللغات"
 
-#: ../plugins/externaltools/tools/manager.py:555
-#: ../plugins/externaltools/tools/manager.py:559
-#: ../plugins/externaltools/tools/manager.py:883
+#: ../plugins/externaltools/tools/manager.py:560
+#: ../plugins/externaltools/tools/manager.py:564
+#: ../plugins/externaltools/tools/manager.py:888
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "كل اللغات"
 
-#: ../plugins/externaltools/tools/manager.py:672
+#: ../plugins/externaltools/tools/manager.py:677
 msgid "New tool"
 msgstr "أداة جديدة"
 
-#: ../plugins/externaltools/tools/manager.py:803
+#: ../plugins/externaltools/tools/manager.py:808
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "هذا الاختصار مخصص من قبل ل %s"
 
-#: ../plugins/externaltools/tools/manager.py:847
+#: ../plugins/externaltools/tools/manager.py:852
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "اكتب اختصارا جديدا، أو أنقر Backspace للمسح"
 
-#: ../plugins/externaltools/tools/manager.py:849
+#: ../plugins/externaltools/tools/manager.py:854
 msgid "Type a new accelerator"
 msgstr "اكتب اختصارا جديدا"
 
@@ -2735,7 +2735,7 @@ msgstr "لوحة متصفح الملفات"
 msgid "Easy file access from the side panel"
 msgstr "وصول سهل للملفات من اللوحة الجانبية"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:239
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
 msgid "File System"
 msgstr "نظام الملفات"
 
@@ -3129,7 +3129,7 @@ msgstr "يفتح المستندات بسرعة"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:31
+#: ../plugins/quickopen/quickopen/popup.py:32
 msgid "Quick Open"
 msgstr "فتح سريع"
 
@@ -3137,7 +3137,7 @@ msgstr "فتح سريع"
 msgid "Quickly open files"
 msgstr "يفتح الملفات بسرعة"
 
-#: ../plugins/quickopen/quickopen/popup.py:72
+#: ../plugins/quickopen/quickopen/popup.py:73
 msgid "Type to search..."
 msgstr "اكتب لتبحث..."
 
@@ -3306,14 +3306,14 @@ msgstr "اكتب اختصارا جديدا، أو انقر Backspace للمسح"
 msgid "Type a new shortcut"
 msgstr "اكتب اختصارا جديدا"
 
-#: ../plugins/snippets/snippets/placeholder.py:602
+#: ../plugins/snippets/snippets/placeholder.py:601
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
 msgstr "تنفيذ أمر بيثون (%s) تعدّى الوقت الأقصى. أُحبط التنفيذ."
 
-#: ../plugins/snippets/snippets/placeholder.py:610
+#: ../plugins/snippets/snippets/placeholder.py:609
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "فشل تنفيذ أمر بيثون (%s)‏ : %s"
@@ -3637,15 +3637,15 @@ msgstr "01/11/2009 17:52:00"
 msgid "_Insert"
 msgstr "أ_درج"
 
-#: ../plugins/time/gedit-time-plugin.c:188
+#: ../plugins/time/gedit-time-plugin.c:184
 msgid "In_sert Date and Time..."
 msgstr "أد_رج التاريخ والوقت..."
 
-#: ../plugins/time/gedit-time-plugin.c:190
+#: ../plugins/time/gedit-time-plugin.c:186
 msgid "Insert current date and time at the cursor position"
 msgstr "أدرج التاريخ والوقت الحالي عند موقع المؤشر"
 
-#: ../plugins/time/gedit-time-plugin.c:537
+#: ../plugins/time/gedit-time-plugin.c:504
 msgid "Available formats"
 msgstr "التنسيقات المتوفّرة"
 
