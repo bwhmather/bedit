@@ -28,8 +28,8 @@ msgstr ""
 "Project-Id-Version: gedit 2.24\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-11-04 11:42+0000\n"
-"PO-Revision-Date: 2012-10-26 15:49-0300\n"
+"POT-Creation-Date: 2012-12-09 08:12+0000\n"
+"PO-Revision-Date: 2012-11-21 04:50-0300\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -2311,8 +2311,8 @@ msgstr "Usa modo de destaque %s"
 #: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
 #: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:455
-#: ../plugins/externaltools/tools/manager.py:571
-#: ../plugins/externaltools/tools/manager.py:890
+#: ../plugins/externaltools/tools/manager.py:566
+#: ../plugins/externaltools/tools/manager.py:885
 msgid "Plain Text"
 msgstr "Texto sem formatação"
 
@@ -2612,27 +2612,27 @@ msgstr "Saiu"
 msgid "All languages"
 msgstr "Todos os idiomas"
 
-#: ../plugins/externaltools/tools/manager.py:560
-#: ../plugins/externaltools/tools/manager.py:564
-#: ../plugins/externaltools/tools/manager.py:888
+#: ../plugins/externaltools/tools/manager.py:555
+#: ../plugins/externaltools/tools/manager.py:559
+#: ../plugins/externaltools/tools/manager.py:883
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Todos os idiomas"
 
-#: ../plugins/externaltools/tools/manager.py:677
+#: ../plugins/externaltools/tools/manager.py:672
 msgid "New tool"
 msgstr "Nova ferramenta"
 
-#: ../plugins/externaltools/tools/manager.py:808
+#: ../plugins/externaltools/tools/manager.py:803
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Este acelerador já está associado a %s"
 
-#: ../plugins/externaltools/tools/manager.py:852
+#: ../plugins/externaltools/tools/manager.py:847
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Digite um novo acelerador ou pressione Backspace para limpar"
 
-#: ../plugins/externaltools/tools/manager.py:854
+#: ../plugins/externaltools/tools/manager.py:849
 msgid "Type a new accelerator"
 msgstr "Digite um novo acelerador"
 
@@ -3200,7 +3200,7 @@ msgstr "Abre arquivos rapidamente"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:32
+#: ../plugins/quickopen/quickopen/popup.py:31
 msgid "Quick Open"
 msgstr "Abertura rápida"
 
@@ -3208,7 +3208,7 @@ msgstr "Abertura rápida"
 msgid "Quickly open files"
 msgstr "Abre arquivos rapidamente"
 
-#: ../plugins/quickopen/quickopen/popup.py:73
+#: ../plugins/quickopen/quickopen/popup.py:72
 msgid "Type to search..."
 msgstr "Digite para pesquisar..."
 
@@ -3380,14 +3380,14 @@ msgstr "Digite um novo atalho, ou pressione Backspace para limpar"
 msgid "Type a new shortcut"
 msgstr "Digite um novo atalho"
 
-#: ../plugins/snippets/snippets/placeholder.py:601
+#: ../plugins/snippets/snippets/placeholder.py:602
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
 msgstr "A execução do comando python (%s) excedeu o tempo máximo: abortando."
 
-#: ../plugins/snippets/snippets/placeholder.py:609
+#: ../plugins/snippets/snippets/placeholder.py:610
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Falha na execução do comando python (%s): %s"
