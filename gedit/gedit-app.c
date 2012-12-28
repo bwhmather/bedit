@@ -104,6 +104,7 @@ static GInputStream *stdin_stream = NULL;
 static GSList *file_list = NULL;
 static gint line_position = 0;
 static gint column_position = 0;
+static GApplicationCommandLine *command_line = NULL;
 
 static const GOptionEntry options[] =
 {
@@ -505,9 +506,19 @@ get_active_window (GtkApplication *app)
 }
 
 static void
+set_command_line_wait (GeditTab *tab)
+{
+	g_object_set_data_full (G_OBJECT (tab),
+	                        "GeditTabCommandLineWait",
+	                        g_object_ref (command_line),
+	                        (GDestroyNotify)g_object_unref);
+}
+
+static void
 gedit_app_activate (GApplication *application)
 {
 	GeditWindow *window = NULL;
+	GeditTab *tab;
 	gboolean doc_created = FALSE;
 
 	if (!new_window)
@@ -534,12 +545,18 @@ gedit_app_activate (GApplication *application)
 	{
 		gedit_debug_message (DEBUG_APP, "Load stdin");
 
-		doc_created = gedit_window_create_tab_from_stream (window,
-		                                                   stdin_stream,
-		                                                   encoding,
-		                                                   line_position,
-		                                                   column_position,
-		                                                   TRUE) != NULL;
+		tab = gedit_window_create_tab_from_stream (window,
+		                                           stdin_stream,
+		                                           encoding,
+		                                           line_position,
+		                                           column_position,
+		                                           TRUE);
+		doc_created = tab != NULL;
+
+		if (doc_created && command_line)
+		{
+			set_command_line_wait (tab);
+		}
 		g_input_stream_close (stdin_stream, NULL, NULL);
 	}
 
@@ -555,13 +572,23 @@ gedit_app_activate (GApplication *application)
 		                                            column_position);
 
 		doc_created = doc_created || loaded != NULL;
+
+		if (command_line)
+		{
+			g_slist_foreach (loaded, (GFunc)set_command_line_wait, NULL);
+		}
 		g_slist_free (loaded);
 	}
 
 	if (!doc_created || new_document)
 	{
 		gedit_debug_message (DEBUG_APP, "Create tab");
-		gedit_window_create_tab (window, TRUE);
+		tab = gedit_window_create_tab (window, TRUE);
+
+		if (command_line)
+		{
+			set_command_line_wait (tab);
+		}
 	}
 
 	gtk_window_present (GTK_WINDOW (window));
@@ -634,6 +661,7 @@ clear_options (void)
 	file_list = NULL;
 	line_position = 0;
 	column_position = 0;
+	command_line = NULL;
 }
 
 static void
@@ -663,13 +691,13 @@ get_line_column_position (const gchar *arg,
 
 static gint
 gedit_app_command_line (GApplication            *application,
-                        GApplicationCommandLine *command_line)
+                        GApplicationCommandLine *cl)
 {
 	gchar **arguments;
 	GOptionContext *context;
 	GError *error = NULL;
 
-	arguments = g_application_command_line_get_arguments (command_line, NULL);
+	arguments = g_application_command_line_get_arguments (cl, NULL);
 
 	context = get_option_context ();
 
@@ -680,15 +708,20 @@ gedit_app_command_line (GApplication            *application,
 	{
 		/* We should never get here since parsing would have
 		 * failed on the client side... */
-		g_application_command_line_printerr (command_line,
+		g_application_command_line_printerr (cl,
 		                                     _("%s\nRun '%s --help' to see a full list of available command line options.\n"),
 		                                     error->message, arguments[0]);
 
 		g_error_free (error);
-		g_application_command_line_set_exit_status (command_line, 1);
+		g_application_command_line_set_exit_status (cl, 1);
 	}
 	else
 	{
+		if (wait)
+		{
+			command_line = cl;
+		}
+
 		/* Parse encoding */
 		if (encoding_charset)
 		{
@@ -696,7 +729,7 @@ gedit_app_command_line (GApplication            *application,
 
 			if (encoding == NULL)
 			{
-				g_application_command_line_printerr (command_line,
+				g_application_command_line_printerr (cl,
 				                                     _("%s: invalid encoding."),
 				                                     encoding_charset);
 			}
@@ -728,13 +761,13 @@ gedit_app_command_line (GApplication            *application,
 				}
 				else if (*remaining_args[i] == '-' && *(remaining_args[i] + 1) == '\0')
 				{
-					stdin_stream = g_application_command_line_get_stdin (command_line);
+					stdin_stream = g_application_command_line_get_stdin (cl);
 				}
 				else
 				{
 					GFile *file;
 
-					file = g_application_command_line_create_file_for_arg (command_line, remaining_args[i]);
+					file = g_application_command_line_create_file_for_arg (cl, remaining_args[i]);
 					file_list = g_slist_prepend (file_list, file);
 				}
 			}
