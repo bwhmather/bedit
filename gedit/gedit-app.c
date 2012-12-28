@@ -96,7 +96,6 @@ static gboolean new_window = FALSE;
 static gboolean new_document = FALSE;
 static gchar *geometry = NULL;
 static gboolean wait = FALSE;
-static gboolean background = FALSE;
 static gboolean standalone = FALSE;
 static gchar **remaining_args = NULL;
 static const GeditEncoding *encoding = NULL;
@@ -164,14 +163,6 @@ static const GOptionEntry options[] =
 		"wait", 'w', 0, G_OPTION_ARG_NONE,
 		&wait,
 		N_("Open files and block process until files are closed"),
-		NULL
-	},
-
-	/* Run in the background */
-	{
-		"background", 'b', 0, G_OPTION_ARG_NONE,
-		&background,
-		N_("Run gedit in the background"),
 		NULL
 	},
 
@@ -654,7 +645,6 @@ clear_options (void)
 	new_document = FALSE;
 	geometry = NULL;
 	wait = FALSE;
-	background = FALSE;
 	standalone = FALSE;
 	remaining_args = NULL;
 	encoding = NULL;
