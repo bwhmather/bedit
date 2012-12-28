@@ -1935,8 +1935,6 @@ check_file_on_disk (GeditDocument *doc)
 
 			g_file_info_get_modification_time (info, &timeval);
 
-			g_object_unref (info);
-
 			if (timeval.tv_sec > doc->priv->mtime.tv_sec ||
 			    (timeval.tv_sec == doc->priv->mtime.tv_sec &&
 			     timeval.tv_usec > doc->priv->mtime.tv_usec))
