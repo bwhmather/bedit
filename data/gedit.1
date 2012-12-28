@@ -3,8 +3,13 @@
 \fBgedit\fP \- text editor for the GNOME Desktop
 
 .SH SYNOPSIS
+.br
 .B gedit
 [\fIOPTION\fR...] [\fIFILE\fR...] [+\fILINE\fR[:\fICOLUMN\fR]]
+.br
+.B gedit
+[\fIOPTION\fR...] -
+
 .SH DESCRIPTION
 .B gedit
 is the official text editor of the GNOME desktop environment.
@@ -74,6 +79,9 @@ of a webpage to
 .B gedit
 , like "http://www.gnome.org", or load a file from a FTP server,
 like "ftp://ftp.gnome.org/robots.txt".
+.TP
+\fB-\fR
+.B gedit will read from stdin
 .TP
 \fB+LINE\fR
 For the first file, go to the line specified by LINE (do not insert a space between the "+" sign and the number).

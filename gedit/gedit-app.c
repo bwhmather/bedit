@@ -114,6 +114,7 @@ static gboolean background = FALSE;
 static gboolean standalone = FALSE;
 static gchar **remaining_args = NULL;
 static const GeditEncoding *encoding = NULL;
+static GInputStream *stdin_stream = NULL;
 static GSList *file_list = NULL;
 static gint line_position = 0;
 static gint column_position = 0;
@@ -485,6 +486,19 @@ gedit_app_activate (GApplication *application)
 		                           geometry);
 	}
 
+	if (stdin_stream)
+	{
+		gedit_debug_message (DEBUG_APP, "Load stdin");
+
+		doc_created = gedit_window_create_tab_from_stream (window,
+		                                                   stdin_stream,
+		                                                   encoding,
+		                                                   line_position,
+		                                                   column_position,
+		                                                   TRUE) != NULL;
+		g_input_stream_close (stdin_stream, NULL, NULL);
+	}
+
 	if (file_list != NULL)
 	{
 		GSList *loaded;
@@ -496,7 +510,7 @@ gedit_app_activate (GApplication *application)
 		                                            line_position,
 		                                            column_position);
 
-		doc_created = loaded != NULL;
+		doc_created = doc_created || loaded != NULL;
 		g_slist_free (loaded);
 	}
 
@@ -556,6 +570,7 @@ clear_options (void)
 	g_free (encoding_charset);
 	g_strfreev (remaining_args);
 	g_free (geometry);
+	g_clear_object (&stdin_stream);
 	g_slist_free_full (file_list, g_object_unref);
 
 	help = FALSE;
@@ -664,6 +679,10 @@ gedit_app_command_line (GApplication            *application,
 							                  &line_position,
 							                  &column_position);
 					}
+				}
+				else if (*remaining_args[i] == '-' && *(remaining_args[i] + 1) == '\0')
+				{
+					stdin_stream = g_application_command_line_get_stdin (command_line);
 				}
 				else
 				{

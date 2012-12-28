@@ -148,8 +148,6 @@ gboolean	 gedit_utils_decode_uri 		(const gchar      *uri,
 /* Turns data from a drop into a list of well formatted uris */
 gchar		**gedit_utils_drop_get_uris		(GtkSelectionData *selection_data);
 
-gboolean	 gedit_utils_can_read_from_stdin	(void);
-
 GeditDocumentCompressionType
 		 gedit_utils_get_compression_type_from_content_type
 		 					(const gchar      *content_type);

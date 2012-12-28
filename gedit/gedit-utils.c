@@ -1540,24 +1540,6 @@ gedit_utils_decode_uri (const gchar  *uri,
 	return TRUE;
 }
 
-gboolean
-gedit_utils_can_read_from_stdin (void)
-{
-#ifdef G_OS_UNIX
-	if (!isatty (STDIN_FILENO))
-	{
-		struct stat sbuffer;
-
-		if (fstat (STDIN_FILENO, &sbuffer) == 0 &&
-		    (S_ISREG (sbuffer.st_mode) || S_ISFIFO (sbuffer.st_mode) || S_ISLNK (sbuffer.st_mode)))
-		{
-			return TRUE;
-		}
-	}
-#endif
-	return FALSE;
-}
-
 GeditDocumentCompressionType
 gedit_utils_get_compression_type_from_content_type (const gchar *content_type)
 {
