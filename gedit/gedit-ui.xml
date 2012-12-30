@@ -49,7 +49,7 @@
       </placeholder>
       <separator/>
       <menuitem name="FileCloseMenu" action="FileClose"/>
-      <menuitem name="FileQuitMenu" action="FileQuit"/>
+      <placeholder name="FileQuitMenuHolder" />
     </menu>
 
     <menu name="EditMenu" action="Edit">
@@ -72,7 +72,7 @@
       <separator/>
       <placeholder name="EditOps_6" />
       <separator/>
-      <menuitem name="EditPreferencesMenu" action="EditPreferences"/>
+      <placeholder name="EditPreferencesMenuHolder" />
     </menu>
 
     <menu name="ViewMenu" action="View">
@@ -150,9 +150,11 @@
     </menu>
 
     <menu name="HelpMenu" action="Help">
-      <menuitem name="HelpContentsMenu" action="HelpContents"/>
-      <menuitem name="HelpAboutMenu" action="HelpAbout"/>
+     <placeholder name="HelpOps_1" />
+     <separator/>
+     <placeholder name="HelpHolder" />
     </menu>
+
   </menubar>
 
   <toolbar name="ToolBar">

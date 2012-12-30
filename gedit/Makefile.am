@@ -264,6 +264,7 @@ EXTRA_DIST = 				\
 	gedit.rc			\
 	gedit.gresource.xml		\
 	gedit-ui.xml			\
+	gedit-ui-fallback.xml		\
 	gedit-encodings-dialog.ui	\
 	gedit-preferences-dialog.ui	\
 	gedit-replace-dialog.ui		\

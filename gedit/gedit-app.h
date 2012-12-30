@@ -144,6 +144,8 @@ void			 _gedit_app_set_default_print_settings	(GeditApp         *app,
 
 GObject			*_gedit_app_get_settings		(GeditApp  *app);
 
+gboolean		 _gedit_app_has_app_menu		(GeditApp  *app);
+
 G_END_DECLS
 
 #endif  /* __GEDIT_APP_H__  */

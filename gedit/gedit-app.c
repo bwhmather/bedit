@@ -55,6 +55,8 @@
 #include "gedit-settings.h"
 #include "gedit-app-activatable.h"
 #include "gedit-plugins-engine.h"
+#include "gedit-commands.h"
+#include "gedit-preferences-dialog.h"
 
 #ifndef ENABLE_GVFS_METADATA
 #include "gedit-metadata-manager.h"
@@ -307,6 +309,88 @@ gedit_app_set_window_title_impl (GeditApp    *app,
 }
 
 static void
+new_window_activated (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
+{
+	GeditApp *app;
+	GeditWindow *window;
+
+	app = GEDIT_APP (user_data);
+	window = gedit_app_create_window (app, NULL);
+
+	gedit_debug_message (DEBUG_APP, "Show window");
+	gtk_widget_show (GTK_WIDGET (window));
+
+	gedit_debug_message (DEBUG_APP, "Create tab");
+	gedit_window_create_tab (window, TRUE);
+
+	gtk_window_present (GTK_WINDOW (window));
+}
+
+static void
+preferences_activated (GSimpleAction  *action,
+                       GVariant       *parameter,
+                       gpointer        user_data)
+{
+	GtkApplication *app;
+	GeditWindow *window;
+
+	app = GTK_APPLICATION (user_data);
+	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
+
+	gedit_show_preferences_dialog (window);
+}
+
+static void
+help_activated (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       user_data)
+{
+	GtkApplication *app;
+	GeditWindow *window;
+
+	app = GTK_APPLICATION (user_data);
+	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
+
+	_gedit_cmd_help_contents (NULL, window);
+}
+
+static void
+about_activated (GSimpleAction  *action,
+                 GVariant       *parameter,
+                 gpointer        user_data)
+{
+	GtkApplication *app;
+	GeditWindow *window;
+
+	app = GTK_APPLICATION (user_data);
+	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
+
+	_gedit_cmd_help_about (NULL, window);
+}
+
+static void
+quit_activated (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       user_data)
+{
+	GApplication *app;
+
+	app = G_APPLICATION (user_data);
+
+	g_application_quit (app);
+}
+
+static GActionEntry app_entries[] = {
+	{ "new_window", new_window_activated, NULL, NULL, NULL },
+	{ "preferences", preferences_activated, NULL, NULL, NULL },
+	{ "help", help_activated, NULL, NULL, NULL },
+	{ "about", about_activated, NULL, NULL, NULL },
+	{ "quit", quit_activated, NULL, NULL, NULL }
+};
+
+static void
 extension_added (PeasExtensionSet *extensions,
 		 PeasPluginInfo   *info,
 		 PeasExtension    *exten,
@@ -378,6 +462,37 @@ gedit_app_startup (GApplication *application)
 
 	/* initial lockdown state */
 	app->priv->lockdown = gedit_settings_get_lockdown (GEDIT_SETTINGS (app->priv->settings));
+
+	/* app menu */
+	if (_gedit_app_has_app_menu (app))
+	{
+		GtkBuilder *builder;
+		GError *error = NULL;
+
+		g_action_map_add_action_entries (G_ACTION_MAP (app),
+			                         app_entries,
+			                         G_N_ELEMENTS (app_entries),
+			                         app);
+
+		builder = gtk_builder_new ();
+		if (!gtk_builder_add_from_resource (builder,
+		                                    "/org/gnome/gedit/ui/gedit-menu.ui",
+		                                    &error))
+		{
+			g_warning ("loading menu builder file: %s", error->message);
+			g_error_free (error);
+		}
+		else
+		{
+			GMenuModel *app_menu;
+
+			app_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "appmenu"));
+			gtk_application_set_app_menu (GTK_APPLICATION (application),
+			                              app_menu);
+		}
+
+		g_object_unref (builder);
+	}
 
 	/*
 	 * We use the default gtksourceview style scheme manager so that plugins
@@ -1418,6 +1533,23 @@ _gedit_app_get_settings (GeditApp *app)
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
 	return app->priv->settings;
+}
+
+gboolean
+_gedit_app_has_app_menu (GeditApp *app)
+{
+	GtkSettings *gtk_settings;
+	gboolean show_app_menu;
+
+	g_return_val_if_fail (GEDIT_IS_APP (app), FALSE);
+
+	gtk_settings = gtk_settings_get_default ();
+	g_object_get (G_OBJECT (gtk_settings),
+	              "gtk-shell-shows-app-menu",
+	              &show_app_menu,
+	              NULL);
+
+	return show_app_menu;
 }
 
 /* ex:set ts=8 noet: */

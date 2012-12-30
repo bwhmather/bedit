@@ -2,6 +2,8 @@
 <gresources>
   <gresource prefix="/org/gnome/gedit/ui">
     <file preprocess="xml-stripblanks">gedit-ui.xml</file>
+    <file preprocess="xml-stripblanks">gedit-ui-fallback.xml</file>
+    <file preprocess="xml-stripblanks">gedit-menu.ui</file>
     <file preprocess="xml-stripblanks">gedit-encodings-dialog.ui</file>
     <file preprocess="xml-stripblanks">gedit-preferences-dialog.ui</file>
     <file preprocess="xml-stripblanks">gedit-replace-dialog.ui</file>

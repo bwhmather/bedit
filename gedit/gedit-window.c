@@ -1576,6 +1576,19 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 		return;
 	}
 
+	if (!_gedit_app_has_app_menu (GEDIT_APP (g_application_get_default ())))
+	{
+		gtk_ui_manager_add_ui_from_resource (manager,
+						     "/org/gnome/gedit/ui/gedit-ui-fallback.xml",
+						     &error);
+		if (error != NULL)
+		{
+			g_warning ("Could not add fallback ui definition: %s", error->message);
+			g_error_free (error);
+			return;
+		}
+	}
+
 	/* show tooltips in the statusbar */
 	g_signal_connect (manager,
 			  "connect_proxy",
