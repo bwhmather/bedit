@@ -96,7 +96,7 @@ enum
 	TARGET_URI_LIST = 100
 };
 
-G_DEFINE_TYPE(GeditWindow, gedit_window, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE(GeditWindow, gedit_window, GTK_TYPE_APPLICATION_WINDOW)
 
 static void	recent_manager_changed	(GtkRecentManager *manager,
 					 GeditWindow      *window);
