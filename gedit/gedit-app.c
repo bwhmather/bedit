@@ -1023,8 +1023,6 @@ gedit_app_create_window_impl (GeditApp *app)
 	
 	window = g_object_new (GEDIT_TYPE_WINDOW, "application", app, NULL);
 
-	gtk_application_add_window (GTK_APPLICATION (app), GTK_WINDOW (window));
-
 	gedit_debug_message (DEBUG_APP, "Window created");
 
 	g_signal_connect (window,
