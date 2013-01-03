@@ -67,8 +67,10 @@
 
 /**
  * gedit_utils_location_has_file_scheme:
+ * @location: the location to check
  *
- * Returns: %TRUE if @location is a file: uri and is not a chained uri */
+ * Returns: %TRUE if @location is a file: uri and is not a chained uri
+ */
 gboolean
 gedit_utils_location_has_file_scheme (GFile *location)
 {
