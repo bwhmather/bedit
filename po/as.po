@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: as\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-12-28 19:36+0000\n"
-"PO-Revision-Date: 2013-01-02 17:51+0530\n"
+"POT-Creation-Date: 2013-01-02 12:29+0000\n"
+"PO-Revision-Date: 2013-01-04 14:48+0530\n"
 "Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
 "Language-Team: Assamese <kde-i18n-doc@kde.org>\n"
 "Language: as_IN\n"
@@ -516,68 +516,67 @@ msgstr ""
 "প্লাগিনৰ "
 "\"অৱস্থান\" জানিবলৈ .gedit-plugin ফাইল চাওক।"
 
-#: ../gedit/gedit-app.c:113
-#| msgid "Show the application's version"
+#: ../gedit/gedit-app.c:115
 msgid "Show the application's help"
 msgstr "এপ্লিকেচনৰ সহায় দেখুৱাওক"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:121
 msgid "Show the application's version"
 msgstr "এপ্লিকেচনৰ সংস্কৰণ দেখুৱাওক"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:127
 msgid "Display list of possible values for the encoding option"
 msgstr "এনক'ডিংৰ বাবে উপলব্ধ বিকল্পসমূহৰ সম্ভাব্য মানৰ তালিকা প্ৰদৰ্শন কৰক"
 
-#: ../gedit/gedit-app.c:133
+#: ../gedit/gedit-app.c:135
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr ""
 "কমান্ড শাৰীত তালিকাভুক্ত ফাইল খোলাৰ বাবে ব্যৱহৃত আখৰ এনক'ডিং নিৰ্ধাৰণ কৰক"
 
-#: ../gedit/gedit-app.c:134
+#: ../gedit/gedit-app.c:136
 msgid "ENCODING"
 msgstr "ENCODING"
 
-#: ../gedit/gedit-app.c:141
+#: ../gedit/gedit-app.c:143
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "বৰ্তমান চলমান gedit ৰ কোনো উদাহৰণত এটা উচ্চস্তৰৰ উইন্ডো সৃষ্টি কৰক"
 
-#: ../gedit/gedit-app.c:149
+#: ../gedit/gedit-app.c:151
 msgid "Create a new document in an existing instance of gedit"
 msgstr "বৰ্তমান চলমান gedit ৰ কোনো উদাহৰণত এটা নতুন দস্তাবেজ সৃষ্টি কৰক"
 
-#: ../gedit/gedit-app.c:157
+#: ../gedit/gedit-app.c:159
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "উইন্ডো (WIDTHxHEIGHT+X+Y) ৰ আকাৰ আৰু অৱস্থান সংহতি কৰক"
 
-#: ../gedit/gedit-app.c:158
+#: ../gedit/gedit-app.c:160
 msgid "GEOMETRY"
 msgstr "জ্যামিতি"
 
-#: ../gedit/gedit-app.c:165
+#: ../gedit/gedit-app.c:167
 msgid "Open files and block process until files are closed"
 msgstr ""
 "ফাইলসমূহ খোলক আৰু প্ৰক্ৰিয়াসমূহ অবৰোধ কৰক যেতিয়া লৈকে ফাইলসমূহ বন্ধ হৈ নাযায়"
 
-#: ../gedit/gedit-app.c:173
+#: ../gedit/gedit-app.c:175
 msgid "Run gedit in standalone mode"
 msgstr "gedit ক স্টেন্ডএল্ন অৱস্থাত চলাওক"
 
-#: ../gedit/gedit-app.c:182
+#: ../gedit/gedit-app.c:184
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FILE...] [+LINE[:COLUMN]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:283
 msgid "There was an error displaying the help."
 msgstr "সহায় প্ৰদৰ্শনত এটা ত্ৰুটি হৈছিল।"
 
-#: ../gedit/gedit-app.c:593
+#: ../gedit/gedit-app.c:708
 msgid "- Edit text files"
 msgstr "- লিখনী ফাইল সম্পাদন কৰক"
 
-#: ../gedit/gedit-app.c:702 ../gedit/gedit-app.c:791
+#: ../gedit/gedit-app.c:817 ../gedit/gedit-app.c:906
 #, c-format
 msgid ""
 "%s\n"
@@ -586,9 +585,8 @@ msgstr ""
 "%s\n"
 "কমান্ড শাৰীৰ সকলো বিকল্প চাবলৈ '%s --help' চলাওক।\n"
 
-#: ../gedit/gedit-app.c:723
+#: ../gedit/gedit-app.c:838
 #, c-format
-#| msgid "%s: invalid encoding.\n"
 msgid "%s: invalid encoding."
 msgstr "%s: অবৈধ এনক'ডিং।"
 
@@ -918,11 +916,11 @@ msgid "Unsaved Document %d"
 msgstr "অসংৰক্ষিত দস্তাবেজ %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2367 ../gedit/gedit-window.c:2374
+#: ../gedit/gedit-window.c:2380 ../gedit/gedit-window.c:2387
 msgid "Read-Only"
 msgstr "কেৱল পঢ়িব পৰা"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3812
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3825
 msgid "Documents"
 msgstr "দস্তাবেজসমূহ"
 
@@ -1469,6 +1467,29 @@ msgstr ""
 "দস্তাবেজখন "
 "ক্ষতিগ্ৰস্থ হ'ব পাৰে।  তথাপিও সংৰক্ষণ কৰিব?"
 
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-menu.ui.h:1
+#| msgid "_Move to New Window"
+msgid "_New Window"
+msgstr "নতুন উইন্ডো (_N)"
+
+#: ../gedit/gedit-menu.ui.h:2
+#| msgid "Preferences"
+msgid "_Preferences"
+msgstr "পছন্দসমূহ (_P)"
+
+#: ../gedit/gedit-menu.ui.h:3 ../gedit/gedit-ui.h:49
+msgid "_Help"
+msgstr "সহায় (_H)"
+
+#: ../gedit/gedit-menu.ui.h:4
+msgid "_About"
+msgstr "পৰিচিতি (_A)"
+
+#: ../gedit/gedit-menu.ui.h:5
+msgid "_Quit"
+msgstr "প্ৰস্থান কৰক (_Q)"
+
 #. Keep in sync with the respective GtkActions
 #: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:140
 msgid "_Move to New Window"
@@ -1955,10 +1976,6 @@ msgstr "সঁজুলিসমূহ (_T)"
 msgid "_Documents"
 msgstr "দস্তাবেজসমূহ (_D)"
 
-#: ../gedit/gedit-ui.h:49
-msgid "_Help"
-msgstr "সহায় (_H)"
-
 #: ../gedit/gedit-ui.h:53
 msgid "Create a new document"
 msgstr "এটা নতুন দস্তাবেজ সৃষ্টি কৰক"
@@ -2259,7 +2276,7 @@ msgstr "%s উজ্জ্বলতাৰ ধৰণ ব্যৱহাৰ কৰ
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2061
+#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2074
 #: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:455
 #: ../plugins/externaltools/tools/manager.py:571
@@ -2294,34 +2311,33 @@ msgid "Find"
 msgstr "সন্ধান কৰক"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1685
+#: ../gedit/gedit-window.c:1698
 #, c-format
 msgid "Activate '%s'"
 msgstr "'%s' সক্ৰিয় কৰক"
 
-#: ../gedit/gedit-window.c:2042
+#: ../gedit/gedit-window.c:2055
 msgid "Use Spaces"
 msgstr "শূণ্যস্থান ব্যৱহাৰ কৰক"
 
-#: ../gedit/gedit-window.c:2115
+#: ../gedit/gedit-window.c:2128
 msgid "Tab Width"
 msgstr "টেবৰ প্ৰস্থ"
 
-#: ../gedit/gedit-window.c:2224
+#: ../gedit/gedit-window.c:2237
 msgid "Bracket match is out of range"
 msgstr "ব্ৰেকেট মিল সীমাৰ বাহিৰ"
 
-#: ../gedit/gedit-window.c:2229
+#: ../gedit/gedit-window.c:2242
 msgid "Bracket match not found"
 msgstr "ব্ৰেকেট মিল পোৱা নগল"
 
-#: ../gedit/gedit-window.c:2234
+#: ../gedit/gedit-window.c:2247
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "শাৰী: %d ত ব্ৰেকেট মিল পোৱা গল"
 
-#: ../gedit/gedit-window.c:2839
-#| msgid "Create new document"
+#: ../gedit/gedit-window.c:2852
 msgid "There are unsaved documents"
 msgstr "অসংৰক্ষিত দস্তাবেজসমূহ আছে"
 
@@ -3875,9 +3891,6 @@ msgstr "gedit ৰ সৈতে ব্যৱহৃত দস্তাবেজস
 
 #~ msgid "Enabled"
 #~ msgstr "সক্ৰিয়"
-
-#~ msgid "_About"
-#~ msgstr "পৰিচিতি (_A)"
 
 #~ msgid "C_onfigure"
 #~ msgstr "সংৰূপণ কৰক (_o)"
