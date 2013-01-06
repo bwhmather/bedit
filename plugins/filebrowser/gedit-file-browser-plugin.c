@@ -521,7 +521,7 @@ on_selection_changed_cb (GtkTreeSelection       *selection,
 
 		if (location)
 		{
-			sensitive = gedit_utils_location_has_file_scheme (location);
+			sensitive = g_file_has_uri_scheme (location, "file");
 			g_object_unref (location);
 		}
 		else
@@ -1029,7 +1029,7 @@ on_tab_added_cb (GeditWindow            *window,
 
 		if (location != NULL)
 		{
-			if (gedit_utils_location_has_file_scheme (location))
+			if (g_file_has_uri_scheme (location, "file"))
 			{
 				prepare_auto_root (plugin);
 				set_root_from_doc (plugin, doc);

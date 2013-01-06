@@ -744,7 +744,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                 success = True
 
                 for gfile in files:
-                        if not Gedit.utils_location_has_file_scheme(gfile):
+                        if not gfile.has_uri_scheme('file'):
                                 continue
 
                         # Remove file://

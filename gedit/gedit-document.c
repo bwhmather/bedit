@@ -1464,7 +1464,7 @@ document_loader_loaded (GeditDocumentLoader *loader,
 	/* special case creating a named new doc */
 	else if (doc->priv->create &&
 	         (error->domain == G_IO_ERROR && error->code == G_IO_ERROR_NOT_FOUND) &&
-	         (gedit_utils_location_has_file_scheme (doc->priv->location)))
+	         (g_file_has_uri_scheme (doc->priv->location, "file")))
 	{
 		reset_temp_loading_data (doc);
 
@@ -1475,7 +1475,7 @@ document_loader_loaded (GeditDocumentLoader *loader,
 
 		return;
 	}
-	
+
 	g_signal_emit (doc,
 		       document_signals[LOADED],
 		       0,
@@ -1897,7 +1897,7 @@ gedit_document_is_local (GeditDocument *doc)
 		return FALSE;
 	}
 
-	return gedit_utils_location_has_file_scheme (doc->priv->location);
+	return g_file_has_uri_scheme (doc->priv->location, "file");
 }
 
 static void

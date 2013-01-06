@@ -50,8 +50,6 @@ G_BEGIN_DECLS
 
 enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
 
-gboolean	 gedit_utils_location_has_file_scheme	(GFile            *location);
-
 void		 gedit_utils_menu_position_under_widget (GtkMenu          *menu,
 							 gint             *x,
 							 gint             *y,
