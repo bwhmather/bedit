@@ -25,16 +25,15 @@
 
     <steps>
       <title>Replace text in <app>gedit</app></title>
-      <item><p>Open the Replace tool by clicking <guiseq><gui>Search</gui><gui>
-      Replace</gui></guiseq> or press <keyseq><key>Ctrl</key><key>H</key>
-      </keyseq>.</p></item>
+      <item><p>Open the Replace tool by clicking <guiseq><gui>Search</gui>
+      <gui>Replace</gui></guiseq> or press <keyseq><key>Ctrl</key>
+      <key>H</key></keyseq>.</p></item>
       <item><p>Enter the text that you wish to replace into the 'Search for:'
       field.</p></item>
-      <item><p>Enter the new, replacement text into the 'Replace with:' field.
-      </p></item>
-      <item>
-        <p>Once you have entered the original and replacement text, select your
-        desired replacement options:</p>
+      <item><p>Enter the new, replacement text into the 'Replace with:'
+      field.</p></item>
+      <item><p>Once you have entered the original and replacement text, select
+      your desired replacement options:</p>
         <list>
           <item><p>To replace <em>only</em> the next matching portion of text,
           click <gui>Replace</gui>.</p></item>
@@ -45,8 +44,8 @@
     </steps>
 
     <note style="warning">
-      <p>Use the <gui>Replace All</gui> function with care. <gui>Replace All
-      </gui> works on the entirety of your text file, and does not allow you
+      <p>Use the <gui>Replace All</gui> function with care. <gui>Replace
+      All</gui> works on the entirety of your text file, and does not allow you
       to highlight portions of text where the replace function will be
       performed.</p>
     </note>
@@ -56,10 +55,10 @@
     <terms>
       <item>
         <title>Match case</title>
-        <p>The <em>Match case</em> option allows you to specify whether you want
-        your search to be case-sensitive. If this option is selected, searches
-        will be case-sensitive. If not, searches will not be case-sensitive.
-        </p>
+        <p>The <em>Match case</em> option allows you to specify whether you
+        want your search to be case-sensitive. If this option is selected,
+        searches will be case-sensitive. If not, searches will not be
+        case-sensitive.</p>
       </item>
       <item>
         <title>Match entire word only</title>
@@ -71,16 +70,16 @@
       </item>
       <item>
         <title>Search backwards</title>
-        <p>This command behaves identically to the Find Previous command. If you
-        wish to step through search results from end to beginning, select this
-        option.</p>
+        <p>This command behaves identically to the Find Previous command. If
+        you wish to step through search results from end to beginning, select
+        this option.</p>
       </item>
       <item>
         <title>Wrap around</title>
-        <p>With the <app>wrap around</app> option enabled, <app>gedit</app> will
-        re-start the search/replace action at the top of the file after it has
-        reached the bottom of the file. This ensures that your search/replace
-        action is made across your entire file.</p>
+        <p>With the <app>wrap around</app> option enabled, <app>gedit</app>
+        will re-start the search/replace action at the top of the file after it
+        has reached the bottom of the file. This ensures that your
+        search/replace action is made across your entire file.</p>
       </item>
     </terms>
   </section>
