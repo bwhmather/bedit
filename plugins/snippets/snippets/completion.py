@@ -111,7 +111,7 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
                 if word:
                         proposals = filter(lambda x: x['tag'].startswith(word), proposals)
 
-                return map(lambda x: Proposal(x), proposals)
+                return list(map(lambda x: Proposal(x), proposals))
 
         def do_populate(self, context):
                 proposals = self.get_proposals(self.get_word(context))
