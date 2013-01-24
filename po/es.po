@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-05 23:41+0000\n"
-"PO-Revision-Date: 2013-01-08 14:10+0100\n"
+"POT-Creation-Date: 2013-01-21 07:47+0000\n"
+"PO-Revision-Date: 2013-01-24 16:33+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -48,8 +48,9 @@ msgid "gedit Text Editor"
 msgstr "Editor de textos gedit"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text;"
-msgstr "Texto;"
+#| msgid "Text Editor"
+msgid "Text;Editor;"
+msgstr "texto;editor;"
 
 #: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
@@ -1492,12 +1493,10 @@ msgstr ""
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-menu.ui.h:1
-#| msgid "_Move to New Window"
 msgid "_New Window"
 msgstr "_Ventana nueva"
 
 #: ../gedit/gedit-menu.ui.h:2
-#| msgid "Preferences"
 msgid "_Preferences"
 msgstr "_Preferencias"
 
@@ -2249,22 +2248,22 @@ msgstr "Panel _inferior"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Mostrar u ocultar el panel inferior en la ventana actual"
 
-#: ../gedit/gedit-utils.c:1035
+#: ../gedit/gedit-utils.c:1023
 msgid "Please check your installation."
 msgstr "Compruebe su instalación."
 
-#: ../gedit/gedit-utils.c:1093
+#: ../gedit/gedit-utils.c:1081
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "No se pudo abrir el archivo de IU %s. Error: %s"
 
-#: ../gedit/gedit-utils.c:1112
+#: ../gedit/gedit-utils.c:1100
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "No se pudo encontrar el objeto «%s» en el archivo %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1334
+#: ../gedit/gedit-utils.c:1323
 #, c-format
 msgid "/ on %s"
 msgstr "/ en %s"
@@ -3776,6 +3775,9 @@ msgstr "Proveedor de datos de Zeitgeist"
 msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Registra los accesos y deja los eventos para los documentos usados con gedit"
+
+#~ msgid "Text;"
+#~ msgstr "Texto;"
 
 #~ msgid "Log Out _without Saving"
 #~ msgstr "Salir de la sesión _sin guardar"
