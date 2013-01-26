@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-05 23:41+0000\n"
-"PO-Revision-Date: 2011-11-09 16:10+0900\n"
-"Last-Translator: Zeper <zeper@msn.com>\n"
+"POT-Creation-Date: 2013-01-21 07:47+0000\n"
+"PO-Revision-Date: 2013-01-26 12:00+0900\n"
+"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -36,16 +36,15 @@ msgid "gedit Text Editor"
 msgstr "gedit تېكىست تەھرىرلىگۈچ"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text;"
-msgstr "تېكىست؛"
+#| msgid "Text Editor"
+msgid "Text;Editor;"
+msgstr "Text؛Editor؛تېكىست؛تەھرىرلىگۈچ؛تەھرىرلىگۈ"
 
 #: ../data/gedit.desktop.in.in.h:6
-#| msgid "_Move to New Window"
 msgid "Open a New Window"
 msgstr "يېڭى كۆزنەك ئېچىش"
 
 #: ../data/gedit.desktop.in.in.h:7
-#| msgid "Create a new document"
 msgid "Open a New Document"
 msgstr "يېڭى پۈتۈك ئېچىش"
 
@@ -112,13 +111,13 @@ msgstr "ھۆججەت ئۆزگەرتىلگەندىن كېيىن ئاپتومات�
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
 msgid "Undo Actions Limit (DEPRECATED)"
-msgstr "يېنىۋېلىش مەشغۇلاتىنىڭ چېكى(ئىشلىتىلمەس بولدى)"
+msgstr "يېنىۋېلىش مەشغۇلاتىنىڭ چېكى(تاشلىۋېتىلگەن)"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
-msgstr "Gedit  تىكى يېنىۋېلىش ۋە يانغانغا پۇشايمان قىلىش مەشغۇلاتنىڭ ئەڭ چوڭ چېكىنى كۆرسىتىدۇ.«-1» ئىشلىتىلسە چېكى يوق بولىدۇ. 2.12.0 نەشرىدىن باشلاپ ئىشلىتىلمىدى."
+msgstr "Gedit  تىكى يېنىۋېلىش ۋە يانغانغا پۇشايمان قىلىش مەشغۇلاتنىڭ ئەڭ چوڭ چېكىنى كۆرسىتىدۇ.«-1» ئىشلىتىلسە چېكى يوق بولىدۇ. 2.12.0 نەشرىدىن باشلاپ ئىشلىتىلمىدى(تاشلىۋېتىلدى)."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
 msgid "Maximum Number of Undo Actions"
@@ -255,8 +254,6 @@ msgid "Ensure Trailing Newline"
 msgstr "يېڭى قۇر بىلەن كەلگەنلىكنى جەزملە"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
-#| msgid ""
-#| "Whether gedit should include a document header when printing documents."
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "مەيلى قانداق بولمىسۇن gedit دائىم ھۆججەتنىڭ يېڭى قۇر بىلەن ئاياغلاشقانلىقىنى جەزملىسۇن."
@@ -430,7 +427,6 @@ msgid ""
 msgstr "ئاكتىپ قىستۇرمىلارنى كۆرسىتىدۇ. ئۇنىڭدا ئاكتىپ قىستۇرمىلارنىڭ «ئورنى» بار. بېرىلگەن قىستۇرمىنىڭ «ئورنى» غا ئېرىشىش ئۈچۈن .gedit-plugin ھۆججىتىگە قاراڭ."
 
 #: ../gedit/gedit-app.c:115
-#| msgid "Show the application's version"
 msgid "Show the application's help"
 msgstr "پروگراممىنىڭ ياردىمى كۆرسەت"
 
@@ -461,7 +457,6 @@ msgid "Create a new document in an existing instance of gedit"
 msgstr "Gedit نىڭ بار بولغان ئۈلگىسىدىن يېڭى پۈتۈك قۇر"
 
 #: ../gedit/gedit-app.c:159
-#| msgid "Set the X geometry window size (WIDTHxHEIGHT+X+Y)"
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "كۆزنەكنىڭ چوڭلۇقى ۋە ئورنىنى بېكىتىش(WIDTHxHEIGHT+X+Y)"
 
@@ -499,7 +494,6 @@ msgstr "%s\n"
 
 #: ../gedit/gedit-app.c:838
 #, c-format
-#| msgid "%s: invalid encoding.\n"
 msgid "%s: invalid encoding."
 msgstr "%s: ئىناۋەتسىز كودلاش."
 
@@ -755,13 +749,7 @@ msgstr "Gedit بولسا گىنوم ئۈستەلئۈستىدىكى كىچىك ت
 msgid "translator-credits"
 msgstr "Gheyret Kenji <gheyret@gmail.com>\n"
 "Sahran<sahran@live.com>\n"
-"Muhemmed Erdem <misran_erdem@hotmail.com>\n"
-"\n"
-"Launchpad Contributions:\n"
-"  Abdumomin.Kadir https://launchpad.net/~abdumomin-kadir\n"
-"  Gheyret T.Kenji https://launchpad.net/~gheyret\n"
-"  Gheyret T.Kenji https://launchpad.net/~gheyretkenji\n"
-"  Sahran https://launchpad.net/~sahran"
+"Muhemmed Erdem <misran_erdem@hotmail.com>"
 
 #: ../gedit/gedit-commands-search.c:112
 #, c-format
@@ -1291,12 +1279,10 @@ msgstr "ئەگەر ساقلاۋەرسىڭىز بۇ ھۆججەتنى بۇزۇپ �
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-menu.ui.h:1
-#| msgid "_Move to New Window"
 msgid "_New Window"
 msgstr "يېڭى كۆزنەك(_N)"
 
 #: ../gedit/gedit-menu.ui.h:2
-#| msgid "Preferences"
 msgid "_Preferences"
 msgstr "مايىللىق(_P)"
 
@@ -1479,22 +1465,18 @@ msgid "Color Scheme"
 msgstr "رەڭ لايىھىسى"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
-#| msgid "Style Scheme"
 msgid "Install scheme"
 msgstr "لايىھىنى ئورنات"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:25
-#| msgid "Style Scheme"
 msgid "Install Scheme"
 msgstr "ئورنىتىش لايىھىسى"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:26
-#| msgid "Writable VFS schemes"
 msgid "Uninstall scheme"
 msgstr "لايىھىنى چىقىرىۋەت"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:27
-#| msgid "Style Scheme"
 msgid "Uninstall Scheme"
 msgstr "ئۆچۈرۈش لايىھىسى"
 
@@ -1672,7 +1654,7 @@ msgstr "پۈتۈن سۆزگە ماسلاش(_E)"
 
 #: ../gedit/gedit-replace-dialog.ui.h:7
 msgid "Search _backwards"
-msgstr "ئارقىغا ئىزدە(_B)"
+msgstr "ئارقىغا قاراپ ئىزدىسۇن(_B)"
 
 #: ../gedit/gedit-replace-dialog.ui.h:8
 msgid "_Wrap around"
@@ -1698,7 +1680,7 @@ msgstr "  %d قۇر، %d ئىستون"
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
-msgstr[0] "%d دانە tabs دا خاتالىق بار"
+msgstr[0] "%d دانە بەتكۈچتە خاتالىق بار"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
@@ -2050,22 +2032,22 @@ msgstr "پەس تاختا(_B)"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "ھازىرقى كۆزنەكتە پەس تاختىنى كۆرسىتىدۇ ياكى يوشۇرىدۇ"
 
-#: ../gedit/gedit-utils.c:1035
+#: ../gedit/gedit-utils.c:1023
 msgid "Please check your installation."
 msgstr "ئورناتمىڭىزنى تەكشۈرۈڭ."
 
-#: ../gedit/gedit-utils.c:1093
+#: ../gedit/gedit-utils.c:1081
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "UI ھۆججىتى %s نى ئاچالمىدى. خاتالىق:%s"
 
-#: ../gedit/gedit-utils.c:1112
+#: ../gedit/gedit-utils.c:1100
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "نەڭ «%s» نى ھۆججەت %s نىڭ ئىچىدىن تاپقىلى بولمىدى."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1334
+#: ../gedit/gedit-utils.c:1323
 #, c-format
 msgid "/ on %s"
 msgstr "/ %s دىكى"
@@ -2163,7 +2145,6 @@ msgid "Bracket match found on line: %d"
 msgstr "%d قۇردىن تىرناقلار جۈپى تېپىلمىدى"
 
 #: ../gedit/gedit-window.c:2852
-#| msgid "Create new document"
 msgid "There are unsaved documents"
 msgstr "ساقلانمىغان پۈتۈكلەر بار"
 
@@ -2496,7 +2477,6 @@ msgid "Insert at cursor position"
 msgstr "نۇربەلگە ئورنىغا قىستۇر"
 
 #: ../plugins/externaltools/tools/tools.ui.h:18
-#| msgid "Manage _External Tools..."
 msgid "Manage External Tools"
 msgstr "سىرتقى قورالنى باشقۇرۇش"
 
@@ -2505,7 +2485,6 @@ msgid "_Tools:"
 msgstr "قوراللار(_T)"
 
 #: ../plugins/externaltools/tools/tools.ui.h:20
-#| msgid "Add a new snippet..."
 msgid "Add a new tool"
 msgstr "قورال قوشىدۇ"
 
@@ -2514,7 +2493,6 @@ msgid "Add Tool"
 msgstr "قورال قوشۇش"
 
 #: ../plugins/externaltools/tools/tools.ui.h:22
-#| msgid "Revert selected snippet"
 msgid "Remove selected tool"
 msgstr "تاللانغان قورالنى چىقىرىۋېتىدۇ"
 
@@ -2523,12 +2501,10 @@ msgid "Remove Tool"
 msgstr "قورال چىقىرىۋېتىش"
 
 #: ../plugins/externaltools/tools/tools.ui.h:24
-#| msgid "_Revert"
 msgid "Revert tool"
 msgstr "قورالنى ئەسلىگە ياندۇرۇش"
 
 #: ../plugins/externaltools/tools/tools.ui.h:25
-#| msgid "_Revert"
 msgid "Revert Tool"
 msgstr "قورالنى ئەسلىگە ياندۇرۇش"
 
@@ -2554,7 +2530,6 @@ msgid "_Save:"
 msgstr "ساقلا(_S)"
 
 #: ../plugins/externaltools/tools/tools.ui.h:33
-#| msgid "_Shortcut Key:"
 msgid "Shortcut _Key:"
 msgstr "تېزلەتمە(_K):"
 
@@ -2814,7 +2789,6 @@ msgid "Show binary files"
 msgstr "ئىككىلىك ھۆججەتنى كۆرسىتىدۇ"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:1202
-#| msgid "_Match Filename"
 msgid "Match Filename"
 msgstr "ھۆججەت ئاتىغا ماسلاش"
 
@@ -3039,7 +3013,7 @@ msgstr "يېڭى پۇرۇچ قوشۇش..."
 
 #: ../plugins/snippets/snippets/manager.py:115
 msgid "Global"
-msgstr "ئومۇمىيەت"
+msgstr "ئومۇمىي دائىرىلىك"
 
 #: ../plugins/snippets/snippets/manager.py:399
 msgid "Revert selected snippet"
@@ -3052,9 +3026,6 @@ msgstr "تاللانغان پۇرۇچنى ئۆچۈرۈش"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
 #: ../plugins/snippets/snippets/manager.py:661
-#| msgid ""
-#| "This is not a valid Tab trigger. Triggers can either contain letters or a "
-#| "single (non-alphanumeric) character like: {, [, etc."
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3159,7 +3130,6 @@ msgid "Insert often-used pieces of text in a fast way"
 msgstr "تېز سۈرەتتە كۆپ ئىشلىتىدىغان تېكىست بۆلەك قىستۇرۇش"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:1
-#| msgid "Manage snippets"
 msgid "Manage Snippets"
 msgstr "پۇرۇچلارنى باشقۇرۇش"
 
@@ -3172,17 +3142,14 @@ msgid "Create new snippet"
 msgstr "يېڭى پۇرۇچ قۇرۇش"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:4
-#| msgid "_Snippets:"
 msgid "Add Snippet"
 msgstr "پۇرۇچ قوشۇش"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:6
-#| msgid "Import snippets"
 msgid "Remove Snippet"
 msgstr "پۇرۇچنى چىقىرىۋېتىش"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:8
-#| msgid "Import snippets"
 msgid "Import Snippets"
 msgstr "پۇرۇچلارنى ئىمپورت قىل"
 
@@ -3191,7 +3158,6 @@ msgid "Export selected snippets"
 msgstr "تاللانغان پۇرۇچنى ئېكسپورت قىلىش"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:10
-#| msgid "Export snippets"
 msgid "Export Snippets"
 msgstr "كود پارچىسى ئېكسپورت قىلىش"
 
@@ -3544,6 +3510,9 @@ msgstr "Zeitgeist سانلىق-مەلۇمات تەمىنلىگۈچى"
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
 msgstr "زىيارەتنى خاتىرىلەپ، gedit تا ئىشلىتىلگەن پۈتۈكنىڭ ھادىسىلىرىنى خاتىرىلەيدۇ."
+
+#~ msgid "Text;"
+#~ msgstr "تېكىست؛"
 
 #~ msgid "Log Out _without Saving"
 #~ msgstr "ساقلىماي چىقىپ كەت(_W)"
