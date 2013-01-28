@@ -67,7 +67,7 @@ static GHashTable *iso_639_table = NULL;
 static GHashTable *iso_3166_table = NULL;
 
 static gchar *
-get_iso_codes_locale_dir ()
+get_iso_codes_locale_dir (void)
 {
 	gchar *locale_dir = NULL;
 
