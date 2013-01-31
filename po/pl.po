@@ -10,14 +10,14 @@
 # Wadim Dziedzic <wdziedzic@aviary.pl>, 2007.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009.
 # Piotr Zaryk <pzaryk@aviary.pl>, 2008.
-# Piotr Drąg <piotrdrag@gmail.com>, 2009-2012.
-# Aviary.pl <gnomepl@aviary.pl>, 2006-2012.
+# Piotr Drąg <piotrdrag@gmail.com>, 2009-2013.
+# Aviary.pl <gnomepl@aviary.pl>, 2006-2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-28 20:37+0100\n"
-"PO-Revision-Date: 2012-12-28 20:38+0100\n"
+"POT-Creation-Date: 2013-01-31 21:26+0100\n"
+"PO-Revision-Date: 2013-01-31 21:27+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -46,8 +46,8 @@ msgid "gedit Text Editor"
 msgstr "Edytor tekstu gedit"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text;"
-msgstr "Tekst;"
+msgid "Text;Editor;"
+msgstr "Tekst;Edytor;"
 
 #: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
@@ -518,19 +518,19 @@ msgstr ""
 "Lista aktywnych wtyczek. Zawiera \"Położenie\" aktywnej wtyczki. Proszę "
 "zobaczyć plik .gedit-plugins w celu otrzymania \"Położenia\" danej wtyczki."
 
-#: ../gedit/gedit-app.c:113
+#: ../gedit/gedit-app.c:115
 msgid "Show the application's help"
 msgstr "Wyświetla pomoc programu"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:121
 msgid "Show the application's version"
 msgstr "Wyświetla wersję programu"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:127
 msgid "Display list of possible values for the encoding option"
 msgstr "Wyświetla listę możliwych wartości dla opcji kodowania"
 
-#: ../gedit/gedit-app.c:133
+#: ../gedit/gedit-app.c:135
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -538,47 +538,47 @@ msgstr ""
 "Ustawia kodowanie znaków używane podczas otwierania plików wymienionych w "
 "wierszu poleceń"
 
-#: ../gedit/gedit-app.c:134
+#: ../gedit/gedit-app.c:136
 msgid "ENCODING"
 msgstr "KODOWANIE"
 
-#: ../gedit/gedit-app.c:141
+#: ../gedit/gedit-app.c:143
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Tworzy nowe główne okno w ramach istniejącej instancji programu gedit"
 
-#: ../gedit/gedit-app.c:149
+#: ../gedit/gedit-app.c:151
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Tworzy nowy dokument w ramach istniejącej instancji programu gedit"
 
-#: ../gedit/gedit-app.c:157
+#: ../gedit/gedit-app.c:159
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Ustawia rozmiar i położenie okna (SZEROKOŚĆxWYSOKOŚĆ+x+Y)"
 
-#: ../gedit/gedit-app.c:158
+#: ../gedit/gedit-app.c:160
 msgid "GEOMETRY"
 msgstr "GEOMETRIA"
 
-#: ../gedit/gedit-app.c:165
+#: ../gedit/gedit-app.c:167
 msgid "Open files and block process until files are closed"
 msgstr "Otwiera pliki i blokuje proces, dopóki pliki nie zostaną zamknięte"
 
-#: ../gedit/gedit-app.c:173
+#: ../gedit/gedit-app.c:175
 msgid "Run gedit in standalone mode"
 msgstr "Uruchamia program gedit w trybie samodzielnym"
 
-#: ../gedit/gedit-app.c:182
+#: ../gedit/gedit-app.c:184
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[PLIK...] [+WIERSZ[:KOLUMNA]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:283
 msgid "There was an error displaying the help."
 msgstr "Wystąpił błąd podczas wyświetlania pomocy."
 
-#: ../gedit/gedit-app.c:593
+#: ../gedit/gedit-app.c:708
 msgid "- Edit text files"
 msgstr "- edycja plików tekstowych"
 
-#: ../gedit/gedit-app.c:702 ../gedit/gedit-app.c:791
+#: ../gedit/gedit-app.c:817 ../gedit/gedit-app.c:906
 #, c-format
 msgid ""
 "%s\n"
@@ -588,7 +588,7 @@ msgstr ""
 "Wykonanie polecenia \"%s --help\" wyświetli pełną listę dostępnych opcji z "
 "wiersza poleceń.\n"
 
-#: ../gedit/gedit-app.c:723
+#: ../gedit/gedit-app.c:838
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: nieprawidłowe kodowanie."
@@ -944,8 +944,8 @@ msgstr ""
 "Wadim Dziedzic <wdziedzic@aviary.pl>, 2007\n"
 "Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009\n"
 "Piotr Zaryk <pzaryk@aviary.pl>, 2008\n"
-"Piotr Drąg <piotrdrag@gmail.com>, 2009-2012\n"
-"Aviary.pl <gnomepl@aviary.pl>, 2006-2012"
+"Piotr Drąg <piotrdrag@gmail.com>, 2009-2013\n"
+"Aviary.pl <gnomepl@aviary.pl>, 2006-2013"
 
 #: ../gedit/gedit-commands-search.c:112
 #, c-format
@@ -972,11 +972,11 @@ msgid "Unsaved Document %d"
 msgstr "Niezapisany dokument %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2367 ../gedit/gedit-window.c:2374
+#: ../gedit/gedit-window.c:2380 ../gedit/gedit-window.c:2387
 msgid "Read-Only"
 msgstr "Tylko do odczytu"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3812
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3825
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -1518,6 +1518,27 @@ msgid ""
 msgstr ""
 "Kontynuacja zapisywania tego pliku może uszkodzić dokument. Zapisać mimo to?"
 
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-menu.ui.h:1
+msgid "_New Window"
+msgstr "_Nowe okno"
+
+#: ../gedit/gedit-menu.ui.h:2
+msgid "_Preferences"
+msgstr "_Preferencje"
+
+#: ../gedit/gedit-menu.ui.h:3 ../gedit/gedit-ui.h:49
+msgid "_Help"
+msgstr "Pomo_c"
+
+#: ../gedit/gedit-menu.ui.h:4
+msgid "_About"
+msgstr "_O programie"
+
+#: ../gedit/gedit-menu.ui.h:5
+msgid "_Quit"
+msgstr "Za_kończ"
+
 #. Keep in sync with the respective GtkActions
 #: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:140
 msgid "_Move to New Window"
@@ -2007,10 +2028,6 @@ msgstr "_Narzędzia"
 msgid "_Documents"
 msgstr "_Dokumenty"
 
-#: ../gedit/gedit-ui.h:49
-msgid "_Help"
-msgstr "Pomo_c"
-
 #: ../gedit/gedit-ui.h:53
 msgid "Create a new document"
 msgstr "Tworzy nowy dokument"
@@ -2260,22 +2277,22 @@ msgstr "Panel _dolny"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Przełącza wyświetlanie panelu dolnego w bieżącym oknie"
 
-#: ../gedit/gedit-utils.c:1033
+#: ../gedit/gedit-utils.c:1023
 msgid "Please check your installation."
 msgstr "Proszę sprawdzić poprawność instalacji."
 
-#: ../gedit/gedit-utils.c:1091
+#: ../gedit/gedit-utils.c:1081
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Nie można otworzyć pliku interfejsu użytkownika %s. Błąd: %s"
 
-#: ../gedit/gedit-utils.c:1110
+#: ../gedit/gedit-utils.c:1100
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Nie można odnaleźć obiektu \"%s\" w pliku %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1332
+#: ../gedit/gedit-utils.c:1323
 #, c-format
 msgid "/ on %s"
 msgstr "/ na %s"
@@ -2311,7 +2328,7 @@ msgstr "Używa trybu wyróżniania elementów składni %s"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2061
+#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2074
 #: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:455
 #: ../plugins/externaltools/tools/manager.py:571
@@ -2346,33 +2363,33 @@ msgid "Find"
 msgstr "Znajdź"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1685
+#: ../gedit/gedit-window.c:1698
 #, c-format
 msgid "Activate '%s'"
 msgstr "Aktywuje \"%s\""
 
-#: ../gedit/gedit-window.c:2042
+#: ../gedit/gedit-window.c:2055
 msgid "Use Spaces"
 msgstr "Spacje zamiast Tab"
 
-#: ../gedit/gedit-window.c:2115
+#: ../gedit/gedit-window.c:2128
 msgid "Tab Width"
 msgstr "Szerokość tabulacji"
 
-#: ../gedit/gedit-window.c:2224
+#: ../gedit/gedit-window.c:2237
 msgid "Bracket match is out of range"
 msgstr "Parowanie nawiasów jest poza zakresem"
 
-#: ../gedit/gedit-window.c:2229
+#: ../gedit/gedit-window.c:2242
 msgid "Bracket match not found"
 msgstr "Nie odnaleziono pasującego nawiasu"
 
-#: ../gedit/gedit-window.c:2234
+#: ../gedit/gedit-window.c:2247
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Odnaleziono pasujący nawias w wierszu: %d"
 
-#: ../gedit/gedit-window.c:2839
+#: ../gedit/gedit-window.c:2852
 msgid "There are unsaved documents"
 msgstr "Są niezapisane dokumenty"
 
