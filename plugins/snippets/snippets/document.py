@@ -660,7 +660,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                                 self.provider.set_proposals(snippets)
                                 cm = self.view.get_completion()
 
-                                cm.show([self.provider], cm.create_context())
+                                cm.show([self.provider], cm.create_context(None))
                                 return True
 
                 return False
