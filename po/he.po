@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-06 01:39+0200\n"
-"PO-Revision-Date: 2013-01-06 01:39+0200\n"
+"POT-Creation-Date: 2013-02-02 11:35+0200\n"
+"PO-Revision-Date: 2013-02-02 11:36+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "Language: he\n"
@@ -39,8 +39,8 @@ msgid "gedit Text Editor"
 msgstr "עורך הטקסט gedit"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text;"
-msgstr "טקסט;"
+msgid "Text;Editor;"
+msgstr "טקסט;עורך;עריכה;"
 
 #: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
@@ -1969,22 +1969,22 @@ msgstr "החלונית ה_תחתונה"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "הצגה או הסתרה של החלונית התחתונה בחלון הנוכחי"
 
-#: ../gedit/gedit-utils.c:1035
+#: ../gedit/gedit-utils.c:1023
 msgid "Please check your installation."
 msgstr "נא לבדוק את ההתקנה שלך."
 
-#: ../gedit/gedit-utils.c:1093
+#: ../gedit/gedit-utils.c:1081
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "לא ניתן לפתוח את קובץ המנשק %s. שגיאה: %s"
 
-#: ../gedit/gedit-utils.c:1112
+#: ../gedit/gedit-utils.c:1100
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "לא ניתן למצוא את הפריט '%s' בתוך הקובץ %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1334
+#: ../gedit/gedit-utils.c:1323
 #, c-format
 msgid "/ on %s"
 msgstr "/ תחת %s"
@@ -3414,6 +3414,9 @@ msgstr "ספק נתוני שימוש"
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
 msgstr "רישום אירועי הגישה והעזיבה עבור מסמכים בהם נעשה שימוש ב־gedit"
+
+#~ msgid "Text;"
+#~ msgstr "טקסט;"
 
 #~ msgid "Log Out _without Saving"
 #~ msgstr "יציאה _ללא שמירה"
