@@ -32,6 +32,8 @@ if test -z $GTKDOCIZE; then
         exit 1
 fi
 
+git submodule update --init --recursive
+
 gtkdocize || exit $?
 autopoint --force || exit $?
 AUTOPOINT='intltoolize --automake --copy' autoreconf --force --install --verbose
