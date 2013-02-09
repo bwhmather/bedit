@@ -430,6 +430,11 @@ else
 	enable_introspection=no
 fi
 
+# libgd
+LIBGD_INIT([
+	revealer
+])
+
 AC_CONFIG_FILES([
 Makefile
 data/gedit.desktop.in
@@ -441,6 +446,7 @@ docs/reference/Makefile
 gedit/theatrics/Makefile
 gedit/Makefile
 help/Makefile
+libgd/Makefile
 pixmaps/Makefile
 plugins/Makefile
 plugins/changecase/Makefile
