@@ -150,7 +150,8 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                 else:
                         # Do the fancy completion dialog
                         self.provider.set_proposals(snippets)
-                        self.view.emit("show-completion")
+                        cm = self.view.get_completion()
+                        cm.show([self.provider], cm.create_context(None))
 
                 return True
 
