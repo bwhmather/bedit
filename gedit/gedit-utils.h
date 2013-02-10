@@ -38,7 +38,7 @@
 #include <atk/atk.h>
 #include <gedit/gedit-encodings.h>
 #include <gedit/gedit-document.h>
-#include <gtksourceview/gtksourceview.h>
+#include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 

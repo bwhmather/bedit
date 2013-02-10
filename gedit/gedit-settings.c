@@ -23,7 +23,7 @@
 
 #include <string.h>
 
-#include <gtksourceview/gtksourcestyleschememanager.h>
+#include <gtksourceview/gtksource.h>
 
 #include "gedit-settings.h"
 #include "gedit-app.h"

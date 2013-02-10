@@ -39,7 +39,7 @@
 
 #include <glib/gi18n.h>
 #include <libpeas/peas-extension-set.h>
-#include <gtksourceview/gtksourcestyleschememanager.h>
+#include <gtksourceview/gtksource.h>
 
 #ifdef ENABLE_INTROSPECTION
 #include <girepository.h>

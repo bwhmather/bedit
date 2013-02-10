@@ -40,7 +40,7 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <libpeas-gtk/peas-gtk-plugin-manager.h>
-#include <gtksourceview/gtksourcestyleschememanager.h>
+#include <gtksourceview/gtksource.h>
 
 #include "gedit-preferences-dialog.h"
 #include "gedit-utils.h"

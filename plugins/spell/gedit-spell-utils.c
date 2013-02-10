@@ -23,7 +23,7 @@
 #include <string.h>
 
 #include "gedit-spell-utils.h"
-#include <gtksourceview/gtksourcebuffer.h>
+#include <gtksourceview/gtksource.h>
 
 gboolean
 gedit_spell_utils_is_digit (const char *text, gssize length)
