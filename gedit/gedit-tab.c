@@ -537,9 +537,9 @@ set_info_bar (GeditTab  *tab,
 	if (tab->priv->info_bar != NULL)
 	{
 		revealer = gtk_widget_get_parent (tab->priv->info_bar);
-		g_signal_connect (revealer, "notify::revealed",
+		g_signal_connect (revealer, "notify::child-revealed",
 		                  G_CALLBACK(gtk_widget_destroy), NULL);
-		gd_revealer_set_revealed (GD_REVEALER (revealer), FALSE);
+		gd_revealer_set_reveal_child (GD_REVEALER (revealer), FALSE);
 	}
 
 	tab->priv->info_bar = info_bar;
@@ -552,7 +552,7 @@ set_info_bar (GeditTab  *tab,
 	gtk_box_pack_start (GTK_BOX (tab), revealer, FALSE, FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (revealer), tab->priv->info_bar);
 
-	gd_revealer_set_revealed (GD_REVEALER (revealer), TRUE);
+	gd_revealer_set_reveal_child (GD_REVEALER (revealer), TRUE);
 
 	g_object_add_weak_pointer (G_OBJECT (tab->priv->info_bar),
 				   (gpointer *)&tab->priv->info_bar);
