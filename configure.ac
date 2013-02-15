@@ -433,6 +433,7 @@ fi
 # libgd
 LIBGD_INIT([
 	revealer
+	static
 ])
 
 AC_CONFIG_FILES([
