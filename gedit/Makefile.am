@@ -1,6 +1,4 @@
 ## Process this file with automake to produce Makefile.in
-SUBDIRS = theatrics
-
 bin_PROGRAMS = gedit
 
 noinst_LTLIBRARIES = libgedit.la
@@ -38,7 +36,6 @@ endif
 libgedit_la_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
 
 libgedit_la_LIBADD = \
-	theatrics/libtheatrics.la \
 	$(top_builddir)/libgd/libgd.la
 
 # GEDIT_LIBS must be the last to ensure correct order on some platforms
@@ -99,8 +96,6 @@ BUILT_SOURCES = 			\
 	gedit-marshal.h
 
 NOINST_H_FILES =			\
-	gedit-animatable.h		\
-	gedit-animated-overlay.h        \
 	gedit-cell-renderer-button.h	\
 	gedit-close-button.h		\
 	gedit-close-confirmation-dialog.h \
@@ -112,7 +107,6 @@ NOINST_H_FILES =			\
 	gedit-documents-panel.h		\
 	gedit-encodings-dialog.h	\
 	gedit-file-chooser-dialog.h	\
-	gedit-floating-slider.h		\
 	gedit-history-entry.h		\
 	gedit-io-error-info-bar.h	\
 	gedit-multi-notebook.h		\
@@ -171,8 +165,6 @@ libgedit_private_la_SOURCES =		\
 	gedit-resources.c
 
 libgedit_c_files =			\
-	gedit-animatable.c		\
-	gedit-animated-overlay.c	\
 	gedit-app.c               	\
 	gedit-cell-renderer-button.c	\
 	gedit-close-button.c		\
@@ -196,7 +188,6 @@ libgedit_c_files =			\
 	gedit-encodings-combo-box.c	\
 	gedit-encodings-dialog.c	\
 	gedit-file-chooser-dialog.c	\
-	gedit-floating-slider.c		\
 	gedit-history-entry.c		\
 	gedit-io-error-info-bar.c	\
 	gedit-message-bus.c		\

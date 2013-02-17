@@ -444,7 +444,6 @@ data/org.gnome.gedit.gschema.xml.in
 data/Makefile
 docs/Makefile
 docs/reference/Makefile
-gedit/theatrics/Makefile
 gedit/Makefile
 help/Makefile
 libgd/Makefile

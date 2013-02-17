@@ -19,10 +19,6 @@ TEST_PROGS			+= document-saver
 document_saver_SOURCES		= document-saver.c
 document_saver_LDADD		= $(progs_ldadd)
 
-TEST_GTK_PROGS			= test-overlay
-test_overlay_SOURCES		= test-overlay.c
-test_overlay_LDADD		= $(progs_ldadd)
-
 TESTS = $(TEST_PROGS)
 
 EXTRA_DIST = setup-document-saver.sh

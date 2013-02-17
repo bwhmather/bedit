@@ -28,8 +28,7 @@
 #include "gedit-marshal.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
-#include "gedit-animated-overlay.h"
-#include "gedit-floating-slider.h"
+#include <libgd/gd.h>
 
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
@@ -173,10 +172,7 @@ hide_search_widget (GeditViewFrame *frame,
 		frame->priv->typeselect_flush_timeout = 0;
 	}
 
-	/* To hide the slider we just set the animation-state property */
-	g_object_set (G_OBJECT (frame->priv->slider),
-	              "animation-state", GEDIT_THEATRICS_ANIMATION_STATE_INTENDING_TO_GO,
-	              NULL);
+	gd_revealer_set_reveal_child (GD_REVEALER (frame->priv->slider), FALSE);
 
 	if (cancel)
 	{
@@ -933,6 +929,7 @@ create_search_widget (GeditViewFrame *frame)
 	GtkStyleContext *context;
 
 	search_widget = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	gtk_widget_set_name (search_widget, "gedit-search-slider");
 
 	context = gtk_widget_get_style_context (search_widget);
 	gtk_style_context_add_class (context, GTK_STYLE_CLASS_LINKED);
@@ -1107,13 +1104,7 @@ start_interactive_search_real (GeditViewFrame *frame)
 	GtkTextIter iter;
 	GtkTextMark *mark;
 
-	if (gtk_bin_get_child (GTK_BIN (frame->priv->slider)) == NULL)
-	{
-		gtk_container_add (GTK_CONTAINER (frame->priv->slider),
-		                   create_search_widget (frame));
-	}
-
-	if (gtk_widget_get_visible (frame->priv->slider))
+	if (gd_revealer_get_reveal_child (GD_REVEALER (frame->priv->slider)))
 	{
 		if (frame->priv->search_mode != frame->priv->request_search_mode)
 		{
@@ -1161,10 +1152,7 @@ start_interactive_search_real (GeditViewFrame *frame)
 	frame->priv->start_mark = gtk_text_buffer_create_mark (buffer, NULL,
 	                                                       &iter, FALSE);
 
-	/* To slide in we set the right animation state in the animatable */
-	g_object_set (G_OBJECT (frame->priv->slider),
-	              "animation-state", GEDIT_THEATRICS_ANIMATION_STATE_COMING,
-	              NULL);
+	gd_revealer_set_reveal_child (GD_REVEALER (frame->priv->slider), TRUE);
 
 	/* NOTE: we must be very careful here to not have any text before
 	   focusing the entry because when the entry is focused the text is
@@ -1263,16 +1251,13 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	/* Create the scrolled window */
 	sw = gtk_scrolled_window_new (NULL, NULL);
-
 	gtk_container_add (GTK_CONTAINER (sw), frame->priv->view);
-
 	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
 					GTK_POLICY_AUTOMATIC,
 					GTK_POLICY_AUTOMATIC);
-
 	gtk_widget_show (sw);
 
-	frame->priv->overlay = gedit_animated_overlay_new ();
+	frame->priv->overlay = gtk_overlay_new ();
 	gtk_container_add (GTK_CONTAINER (frame->priv->overlay), sw);
 	gtk_widget_override_background_color (frame->priv->overlay, 0, &transparent);
 	gtk_widget_show (frame->priv->overlay);
@@ -1280,8 +1265,10 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	gtk_box_pack_start (GTK_BOX (frame), frame->priv->overlay, TRUE, TRUE, 0);
 
 	/* Add slider */
-	frame->priv->slider = gedit_floating_slider_new ();
-	gtk_widget_set_name (frame->priv->slider, "search-slider");
+	frame->priv->slider = gd_revealer_new ();
+	gtk_container_add (GTK_CONTAINER (frame->priv->slider),
+	                   create_search_widget (frame));
+	gtk_widget_show (frame->priv->slider);
 	gtk_widget_set_halign (frame->priv->slider, GTK_ALIGN_END);
 	gtk_widget_set_valign (frame->priv->slider, GTK_ALIGN_START);
 
@@ -1294,14 +1281,8 @@ gedit_view_frame_init (GeditViewFrame *frame)
 		gtk_widget_set_margin_left (frame->priv->slider, SEARCH_POPUP_MARGIN);
 	}
 
-	g_object_set (G_OBJECT (frame->priv->slider),
-	              "easing", GEDIT_THEATRICS_CHOREOGRAPHER_EASING_EXPONENTIAL_IN_OUT,
-	              "blocking", GEDIT_THEATRICS_CHOREOGRAPHER_BLOCKING_DOWNSTAGE,
-	              "orientation", GTK_ORIENTATION_VERTICAL,
-	              NULL);
-
-	gedit_animated_overlay_add_animated_overlay (GEDIT_ANIMATED_OVERLAY (frame->priv->overlay),
-	                                             GEDIT_ANIMATABLE (frame->priv->slider));
+	gtk_overlay_add_overlay (GTK_OVERLAY (frame->priv->overlay),
+	                         frame->priv->slider);
 }
 
 GeditViewFrame *
