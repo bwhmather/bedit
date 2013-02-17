@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-31 21:26+0100\n"
-"PO-Revision-Date: 2013-01-31 21:27+0100\n"
+"POT-Creation-Date: 2013-02-17 16:32+0100\n"
+"PO-Revision-Date: 2013-02-17 16:33+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -143,7 +143,7 @@ msgid ""
 "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 msgstr ""
 "Maksymalna liczba działań, których cofnięcie lub ponowienie będzie możliwe. "
-"\"-1\" oznacza liczbę nieskończoną. Przestarzałe od wersji 2.12.0."
+"\"-1\" oznacza liczbę nieskończoną. Przestarzałe od wersji 2.12.0"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
 msgid "Maximum Number of Undo Actions"
@@ -464,7 +464,7 @@ msgstr ""
 #. encodings that are common in your country, for instance the GB18030 encoding
 #. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
 #. (covering English and most Western European languages) if you think people
-#. in you country will rarely use it.
+#. in your country will rarely use it.
 #. "CURRENT" is a magic value used by gedit and it represents the encoding
 #. for the current locale, so please don't translate the "CURRENT" term.
 #. Only recognized encodings are used.
@@ -1630,7 +1630,7 @@ msgstr "Zawijanie tekstu"
 #: ../gedit/gedit-preferences-dialog.ui.h:5
 #: ../gedit/gedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
-msgstr "Za_wijanie tekstu"
+msgstr "_Włączone"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:6
 #: ../gedit/gedit-print-preferences.ui.h:11
@@ -1755,7 +1755,7 @@ msgstr "Dru_kowanie"
 
 #: ../gedit/gedit-print-preferences.ui.h:3
 msgid "Line Numbers"
-msgstr "Numery wierszy:"
+msgstr "Numery wierszy"
 
 #: ../gedit/gedit-print-preferences.ui.h:4
 msgid "Print line nu_mbers"
@@ -1929,73 +1929,73 @@ msgstr[2] "%d otwartych kart zawiera błędy"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:750
+#: ../gedit/gedit-tab.c:759
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Przywracanie dokumentu %s z katalogu %s"
 
-#: ../gedit/gedit-tab.c:757
+#: ../gedit/gedit-tab.c:766
 #, c-format
 msgid "Reverting %s"
 msgstr "Przywracanie %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:773
+#: ../gedit/gedit-tab.c:782
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Wczytywanie pliku %s z katalogu %s"
 
-#: ../gedit/gedit-tab.c:780
+#: ../gedit/gedit-tab.c:789
 #, c-format
 msgid "Loading %s"
 msgstr "Wczytywanie %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:861
+#: ../gedit/gedit-tab.c:870
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Zapisywanie pliku %s do katalogu %s"
 
-#: ../gedit/gedit-tab.c:868
+#: ../gedit/gedit-tab.c:877
 #, c-format
 msgid "Saving %s"
 msgstr "Zapisywanie %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1853
+#: ../gedit/gedit-tab.c:1862
 msgid "RO"
 msgstr "tylko do odczytu"
 
-#: ../gedit/gedit-tab.c:1900
+#: ../gedit/gedit-tab.c:1909
 #, c-format
 msgid "Error opening file %s"
 msgstr "Podczas otwierania pliku %s wystąpił błąd"
 
-#: ../gedit/gedit-tab.c:1905
+#: ../gedit/gedit-tab.c:1914
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Podczas przywracania pliku %s wystąpił błąd"
 
-#: ../gedit/gedit-tab.c:1910
+#: ../gedit/gedit-tab.c:1919
 #, c-format
 msgid "Error saving file %s"
 msgstr "Podczas zapisywania pliku %s wystąpił błąd"
 
-#: ../gedit/gedit-tab.c:1931
+#: ../gedit/gedit-tab.c:1940
 msgid "Unicode (UTF-8)"
 msgstr "Unikod (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1938
+#: ../gedit/gedit-tab.c:1947
 msgid "Name:"
 msgstr "Nazwa:"
 
-#: ../gedit/gedit-tab.c:1939
+#: ../gedit/gedit-tab.c:1948
 msgid "MIME Type:"
 msgstr "Typ MIME:"
 
-#: ../gedit/gedit-tab.c:1940
+#: ../gedit/gedit-tab.c:1949
 msgid "Encoding:"
 msgstr "Kodowanie:"
 
@@ -2469,7 +2469,7 @@ msgid ""
 "or ignore that version and wait for a new one"
 msgstr ""
 "Można pobrać nową wersję programu gedit klikając przycisk \"Pobierz\" lub "
-"pominąć ją i poczekać na nowszą."
+"pominąć ją i poczekać na nowszą"
 
 #. ex:set ts=8 noet:
 #: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
