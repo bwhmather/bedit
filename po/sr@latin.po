@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
 "keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-02 12:29+0000\n"
-"PO-Revision-Date: 2013-01-18 11:56+0200\n"
+"POT-Creation-Date: 2013-02-09 02:33+0000\n"
+"PO-Revision-Date: 2013-02-18 11:15+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
@@ -40,8 +40,9 @@ msgid "gedit Text Editor"
 msgstr "Vilenjakova beležnica — uređivač teksta"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text;"
-msgstr "Tekst;"
+#| msgid "Text Editor"
+msgid "Text;Editor;"
+msgstr "uređivač;tekst;"
 
 #: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
@@ -442,7 +443,7 @@ msgstr ""
 #. encodings that are common in your country, for instance the GB18030 encoding
 #. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
 #. (covering English and most Western European languages) if you think people
-#. in you country will rarely use it.
+#. in your country will rarely use it.
 #. "CURRENT" is a magic value used by gedit and it represents the encoding
 #. for the current locale, so please don't translate the "CURRENT" term.
 #. Only recognized encodings are used.
@@ -499,7 +500,6 @@ msgstr ""
 "datoteku „.gedit-plugin“ da saznate „putanju“ datog priključka."
 
 #: ../gedit/gedit-app.c:115
-#| msgid "Show the application's version"
 msgid "Show the application's help"
 msgstr "Prikazuje pomoć programa"
 
@@ -571,7 +571,6 @@ msgstr ""
 
 #: ../gedit/gedit-app.c:838
 #, c-format
-#| msgid "%s: invalid encoding.\n"
 msgid "%s: invalid encoding."
 msgstr "%s: neispravan kodni zapis."
 
@@ -1506,12 +1505,10 @@ msgstr ""
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-menu.ui.h:1
-#| msgid "_Move to New Window"
 msgid "_New Window"
 msgstr "_Novi prozor"
 
 #: ../gedit/gedit-menu.ui.h:2
-#| msgid "Preferences"
 msgid "_Preferences"
 msgstr "_Postavke"
 
@@ -2270,22 +2267,22 @@ msgstr "_Donja površ"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Prikažite ili sakrijte donju površ u trenutnom prozoru"
 
-#: ../gedit/gedit-utils.c:1033
+#: ../gedit/gedit-utils.c:1023
 msgid "Please check your installation."
 msgstr "Proverite vašu instalaciju."
 
-#: ../gedit/gedit-utils.c:1091
+#: ../gedit/gedit-utils.c:1081
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Ne mogu da otvorim datoteku sučelja „%s“. Greška: %s"
 
-#: ../gedit/gedit-utils.c:1110
+#: ../gedit/gedit-utils.c:1100
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Ne mogu da pronađem objekat „%s“ unutar datoteke %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1332
+#: ../gedit/gedit-utils.c:1323
 #, c-format
 msgid "/ on %s"
 msgstr "/ na „%s“"
@@ -2383,7 +2380,6 @@ msgid "Bracket match found on line: %d"
 msgstr "Poklapanje zagrada se nalaze u redu: %d"
 
 #: ../gedit/gedit-window.c:2852
-#| msgid "Create new document"
 msgid "There are unsaved documents"
 msgstr "Imate nesačuvanih dokumenata"
 
