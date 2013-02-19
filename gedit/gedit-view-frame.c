@@ -926,20 +926,26 @@ static GtkWidget *
 create_search_widget (GeditViewFrame *frame)
 {
 	GtkWidget *search_widget;
+	GtkWidget *hbox;
 	GtkStyleContext *context;
 
-	search_widget = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-	gtk_widget_set_name (search_widget, "gedit-search-slider");
-
+	/* wrap it in a frame, so we can specify borders etc */
+	search_widget = gtk_frame_new (NULL);
 	context = gtk_widget_get_style_context (search_widget);
+	gtk_style_context_add_class (context, "gedit-search-slider");
+
+	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	gtk_container_add (GTK_CONTAINER (search_widget), hbox);
+
+	context = gtk_widget_get_style_context (hbox);
 	gtk_style_context_add_class (context, GTK_STYLE_CLASS_LINKED);
 
-	gtk_widget_show (search_widget);
+	gtk_widget_show (hbox);
 
-	g_signal_connect (search_widget, "key-press-event",
+	g_signal_connect (hbox, "key-press-event",
 	                  G_CALLBACK (search_widget_key_press_event),
 	                  frame);
-	g_signal_connect (search_widget, "scroll-event",
+	g_signal_connect (hbox, "scroll-event",
 	                  G_CALLBACK (search_widget_scroll_event),
 	                  frame);
 
@@ -970,12 +976,12 @@ create_search_widget (GeditViewFrame *frame)
 		                  G_CALLBACK (search_entry_focus_out_event),
 		                  frame);
 
-	gtk_container_add (GTK_CONTAINER (search_widget),
+	gtk_container_add (GTK_CONTAINER (hbox),
 	                   frame->priv->search_entry);
 
 	/* Up/Down buttons */
 	frame->priv->go_up_button = create_button_from_symbolic ("go-up-symbolic");
-	gtk_box_pack_start (GTK_BOX (search_widget), frame->priv->go_up_button,
+	gtk_box_pack_start (GTK_BOX (hbox), frame->priv->go_up_button,
 	                    FALSE, FALSE, 0);
 	g_signal_connect (frame->priv->go_up_button,
 	                  "clicked",
@@ -983,7 +989,7 @@ create_search_widget (GeditViewFrame *frame)
 	                  frame);
 
 	frame->priv->go_down_button = create_button_from_symbolic ("go-down-symbolic");
-	gtk_box_pack_start (GTK_BOX (search_widget), frame->priv->go_down_button,
+	gtk_box_pack_start (GTK_BOX (hbox), frame->priv->go_down_button,
 	                    FALSE, FALSE, 0);
 	g_signal_connect (frame->priv->go_down_button,
 	                  "clicked",
