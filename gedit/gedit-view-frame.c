@@ -933,13 +933,12 @@ create_search_widget (GeditViewFrame *frame)
 	search_widget = gtk_frame_new (NULL);
 	context = gtk_widget_get_style_context (search_widget);
 	gtk_style_context_add_class (context, "gedit-search-slider");
+	gtk_widget_show (search_widget);
 
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-	gtk_container_add (GTK_CONTAINER (search_widget), hbox);
-
 	context = gtk_widget_get_style_context (hbox);
 	gtk_style_context_add_class (context, GTK_STYLE_CLASS_LINKED);
-
+	gtk_container_add (GTK_CONTAINER (search_widget), hbox);
 	gtk_widget_show (hbox);
 
 	g_signal_connect (hbox, "key-press-event",
