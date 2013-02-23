@@ -2047,7 +2047,7 @@ get_icon (GtkIconTheme *theme,
 		return get_stock_icon (theme, GTK_STOCK_FILE, size);
 	
 	pixbuf = gtk_icon_info_load_icon (icon_info, NULL);
-	gtk_icon_info_free (icon_info);
+	g_object_unref (icon_info);
 	
 	if (pixbuf == NULL)
 		return get_stock_icon (theme, GTK_STOCK_FILE, size);
