@@ -22,8 +22,8 @@
   
   <p>The <app>code comment</app> plugin makes it easier to quickly create or 
   remove code comments. To enable the code comment plugin, select
-  <guiseq><gui>Edit</gui><gui> Preferences</gui><gui>Plugins</gui>
-  <gui>Code comment</gui></guiseq>.</p>
+  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
+  <gui>Plugins</gui><gui>Code comment</gui></guiseq>.</p>
   
   <p>To create or remove a comment:</p>
   <steps>
@@ -37,7 +37,7 @@
     <key>Ctrl</key><key>M</key></keyseq>.</p></item>
   </steps>
   
-  <note style="tip"><p><app>Gedit</app> will automatically use the correct
+  <note style="tip"><p><app>gedit</app> will automatically use the correct
   style of comment based on the language or syntax of the file. If
   <app>gedit</app> doesn't identify your language or syntax, you can select it
   from the language list in the bottom <gui>Status bar</gui>.</p></note>
