@@ -44,7 +44,7 @@ class VirtualDirectory(object):
 
             if info:
                 self._children.append((child, info))
-        except StandardError as e:
+        except Exception as e:
             pass
 
 class RecentDocumentsDirectory(VirtualDirectory):
