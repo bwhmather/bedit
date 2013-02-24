@@ -6,7 +6,7 @@
 
 <info>
   <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins"/>
-  <revision pkgversion="3.0" version="1.0" date="2011-03-25" status="final"/>
+  <revision pkgversion="3.8" date="2013-02-24" status="candidate"/>
   <credit type="author">
     <name>Daniel Neel</name>
     <email>dneelyep@gmail.com</email>
@@ -25,7 +25,8 @@
   Specifically, it extends <app>gedit</app> by helping you to run scripts on
   your working files, and by allowing <app>gedit</app> to interact with other
   programs on your computer. To enable the <app>External Tools</app> plugin,
-  select <guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui>
+  select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
   <gui>External Tools</gui></guiseq>.</p>
 
   <section id="plugin-config-external-tools">

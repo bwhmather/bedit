@@ -3,7 +3,7 @@
       id="gedit-plugins-draw-spaces">
   <info>
     <link type="guide" xref="gedit-plugin-guide#gedit-additional-plugins"/>
-    <revision version="3.4" date="2011-11-05" status="candidate"/>
+    <revision version="3.8" date="2013-02-24" status="candidate"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
@@ -20,10 +20,11 @@
   whitespace visible, you can more easily see how whitespace is used in a 
   document, and can apply spacing strategies more consistently.</p>
    
-  <p>To enable this plugin, select <guiseq><gui>Edit</gui>
-  <gui>Preferences</gui><gui>Plugins</gui><gui>Draw Spaces</gui></guiseq>.
-  After you have enabled the plugin, you can set its options by highlighting
-  the plugin and selecting <gui>Preferences</gui>.</p>
+  <p>To enable this plugin, select <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
+  <gui>Draw Spaces</gui></guiseq>. After you have enabled the plugin, you can
+  set its options by highlighting the plugin and selecting 
+  <gui style="menuitem">Preferences</gui>.</p>
   
   <list>
   <title>By default, the <app>Draw Spaces</app> plugin will mark the following

@@ -29,8 +29,8 @@
     <item><p>Navigate to the line where you want to insert or remove the 
     bookmark.</p></item>
     <item><p>Press <keyseq><key>Ctrl</key><key>Alt</key><key>B</key></keyseq>, 
-    or click <guiseq><gui>Edit</gui><gui>Toggle Bookmark</gui></guiseq>.</p>
-    </item>
+    or click <guiseq><gui style="menu">Edit</gui>
+    <gui style="menuitem">Toggle Bookmark</gui></guiseq>.</p></item>
   </steps>
   
   <steps>
@@ -39,9 +39,12 @@
     next bookmark.</p></item>
     <item><p>Press <keyseq><key>Ctrl</key><key>Shift</key><key>B</key></keyseq>
     to move to the previous bookmark.</p>
-    <note><p>If you prefer using the mouse, you can click <guiseq><gui>Edit</gui>
-  <gui>Go to Next Bookmark</gui></guiseq> or <guiseq><gui>Edit</gui><gui>Go to 
-  Previous Bookmark</gui></guiseq>.</p></note></item>
+    <note><p>If you prefer using the mouse, you can click <guiseq>
+    <gui style="menu">gedit</gui>
+    <gui style="menuitem">Go to Next Bookmark</gui></guiseq> or 
+    <guiseq><gui style="menu">Edit</gui>
+    <gui style="menuitem">Go to Previous Bookmark</gui></guiseq>.</p></note>
+    </item>
   </steps>
     
   
