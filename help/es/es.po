@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2013-02-21 17:48+0000\n"
-"PO-Revision-Date: 2013-02-22 12:20+0100\n"
+"POT-Creation-Date: 2013-02-24 10:12+0000\n"
+"PO-Revision-Date: 2013-02-25 13:27+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -172,26 +172,30 @@ msgid "To change the color scheme, complete the following steps:"
 msgstr "Para cambiar el esquema de colores complete los siguientes pasos:"
 
 #: C/gedit-change-color-scheme.page:21(item/p)
+#: C/gedit-change-default-font.page:24(item/p)
+#| msgid ""
+#| "Select <guiseq><gui>Edit</gui><gui>Preferences</gui> <gui>Font &amp; "
+#| "Colors</gui></guiseq>."
 msgid ""
-"Select <guiseq><gui>Edit</gui><gui>Preferences</gui> <gui>Font &amp; Colors</"
-"gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgstr ""
-"Seleccione <guiseq><gui>Editar</gui><gui>Preferencias</gui><gui>Tipografía y "
-"colores</gui></guiseq>."
+"Seleccione <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferencias</gui> <gui>Tipografía y colores</gui></guiseq>."
 
-#: C/gedit-change-color-scheme.page:23(item/p)
+#: C/gedit-change-color-scheme.page:24(item/p)
 msgid "Choose your desired color scheme."
 msgstr "Elija el esquema de color que quiera."
 
-#: C/gedit-change-color-scheme.page:26(page/p)
+#: C/gedit-change-color-scheme.page:27(page/p)
 msgid "The new color scheme will be applied immediately."
 msgstr "Se aplicará el nuevo esquema de color inmediatamente."
 
-#: C/gedit-change-color-scheme.page:29(section/title)
+#: C/gedit-change-color-scheme.page:30(section/title)
 msgid "Use a Custom Color Scheme"
 msgstr "Usar un esquema de color personalizado"
 
-#: C/gedit-change-color-scheme.page:34(section/p)
+#: C/gedit-change-color-scheme.page:35(section/p)
 msgid ""
 "You can also use color schemes that have been created by others, or create "
 "and use your own color schemes."
@@ -199,12 +203,7 @@ msgstr ""
 "También puede usar esquemas de colores creados por otros o crear y usar su "
 "propio esquema de colores."
 
-#: C/gedit-change-color-scheme.page:36(section/p)
-#| msgid ""
-#| "Instructions on how to install custom color schemes, as well as examples "
-#| "of color schemes that you can download and use, are available on the "
-#| "<link href=\"http://live.gnome.org/GtkSourceView/StyleSchemes\">gedit "
-#| "wiki </link>."
+#: C/gedit-change-color-scheme.page:37(section/p)
 msgid ""
 "Instructions on how to install custom color schemes, as well as examples of "
 "color schemes that you can download and use, are available on the <link href="
@@ -232,22 +231,14 @@ msgstr ""
 msgid "To change the default font in <app>gedit</app>:"
 msgstr "Para cambiar la tipografía predeterminada en <app>gedit</app>:"
 
-#: C/gedit-change-default-font.page:24(item/p)
-msgid ""
-"Select <guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Font &amp; Colors</"
-"gui></guiseq>."
-msgstr ""
-"Seleccione <guiseq><gui>Editar</gui><gui>Preferencias</gui><gui>Tipografía y "
-"colores</gui></guiseq>."
-
-#: C/gedit-change-default-font.page:26(item/p)
+#: C/gedit-change-default-font.page:27(item/p)
 msgid ""
 "Uncheck the box next to the phrase, \"Use the system fixed-width font.\""
 msgstr ""
 "Desmarque la casilla junto a la frase «Usar la tipografía de ancho fijo del "
 "sistema.»"
 
-#: C/gedit-change-default-font.page:28(item/p)
+#: C/gedit-change-default-font.page:29(item/p)
 msgid ""
 "Choose your desired font, and use the <gui>slider</gui> to set the default "
 "font size."
@@ -255,7 +246,7 @@ msgstr ""
 "Elija la tipografía que quiere y use el <gui>deslizador</gui> para "
 "establecer el tamaño predeterminado de la tipografía."
 
-#: C/gedit-change-default-font.page:30(item/p)
+#: C/gedit-change-default-font.page:31(item/p)
 msgid "Click <gui>Select</gui>, and then click <gui>Close</gui>."
 msgstr "Pulse <gui>Seleccionar</gui>, y luego pulse <gui>Guardar</gui>."
 
@@ -294,12 +285,12 @@ msgstr "Crear un archivo nuevo"
 #| "The easiest way to create a new file in <app>gedit</app>, is to click the "
 #| "icon that looks like a blank piece of paper with a \"plus\" sign next to "
 #| "it. If you prefer, you may also select <guiseq><gui>File</gui><gui>New</"
-#| "gui> </guiseq>, or press <keyseq><key>Ctrl</key><key>N</key></keyseq>."
+#| "gui></guiseq>, or press <keyseq><key>Ctrl</key><key>N</key></keyseq>."
 msgid ""
 "The easiest way to create a new file in <app>gedit</app>, is to click the "
-"icon that looks like a blank piece of paper with a \"plus\" sign next to it. "
-"If you prefer, you may also select <guiseq><gui>File</gui><gui>New</gui></"
-"guiseq>, or press <keyseq><key>Ctrl</key><key>N</key></keyseq>."
+"icon in the toolbar that looks like a blank piece of paper. If you prefer, "
+"you may also select <guiseq><gui>File</gui><gui>New</gui></guiseq>, or press "
+"<keyseq><key>Ctrl</key><key>N</key></keyseq>."
 msgstr ""
 "La manera más fácil de crear un archivo nuevo en <app>gedit</app> es pulsar "
 "en el icono que parece un trozo de papel en blanco con un signo «+» junto a "
@@ -307,7 +298,7 @@ msgstr ""
 "gui><gui>Nuevo</gui></guiseq>, o pulsar <keyseq><key>Ctrl</key><key>N</key></"
 "keyseq>."
 
-#: C/gedit-create-new-file.page:22(page/p)
+#: C/gedit-create-new-file.page:21(page/p)
 msgid ""
 "Any one of these actions will create a new file in the <app>gedit</app> "
 "window. If you have other files open in <app>gedit</app>, the new file that "
@@ -343,9 +334,6 @@ msgid "sudo gedit"
 msgstr "sudo gedit"
 
 #: C/gedit-edit-as-root.page:26(page/p)
-#| msgid ""
-#| "Using the <cmd>sudo</cmd> command, you will need to successfully enter "
-#| "your password before <app>gedit </app> will open."
 msgid ""
 "Using the <cmd>sudo</cmd> command, you will need to successfully enter your "
 "password before <app>gedit</app> will open."
@@ -774,10 +762,6 @@ msgstr ""
 "debe usar la aplicación <app>dconf-editor</app>."
 
 #: C/gedit-open-recent.page:30(item/p)
-#| msgid ""
-#| "Launch <app>dconf-editor</app> and select <guiseq><gui>org</"
-#| "gui><gui>gnome</gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> "
-#| "<gui>max-recents</gui></guiseq>."
 msgid ""
 "Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui> <gui>gnome</"
 "gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</"
@@ -848,15 +832,19 @@ msgstr ""
 "documento."
 
 #: C/gedit-plugins-bookmarks.page:22(page/p)
+#| msgid ""
+#| "To enable the bookmark plugin, select <guiseq><gui>Edit</gui><gui> "
+#| "Preferences</gui><gui>Plugins</gui><gui>Bookmarks</gui></guiseq>."
 msgid ""
-"To enable the bookmark plugin, select <guiseq><gui>Edit</gui><gui> "
-"Preferences</gui><gui>Plugins</gui><gui>Bookmarks</gui></guiseq>."
+"To enable the bookmark plugin, select <guiseq><gui style=\"menu\">gedit</"
+"gui> <gui style=\"menuitem\">Preferences</gui><gui>Plugins</gui> "
+"<gui>Bookmarks</gui></guiseq>."
 msgstr ""
-"Para activar el complemento de marcadores, seleccione <guiseq><gui>Editar</"
-"gui><gui> Preferencias</gui><gui>Complementos</gui><gui>Marcadores</gui></"
-"guiseq>."
+"Para activar el complemento de marcadores, seleccione <guiseq><gui style="
+"\"menu\">gedit</gui> <gui style=\"menuitem\">Preferencias</"
+"gui><gui>Complementos</gui> <gui>Marcadores</gui></guiseq>."
 
-#: C/gedit-plugins-bookmarks.page:26(steps/title)
+#: C/gedit-plugins-bookmarks.page:27(steps/title)
 msgid ""
 "Bookmarks are inserted and removed by completing the same action. To insert "
 "or remove bookmarks:"
@@ -864,23 +852,28 @@ msgstr ""
 "Los marcadores se insertan y se quitan realizando la misma acción. Para "
 "insertar o quitar marcadores:"
 
-#: C/gedit-plugins-bookmarks.page:28(item/p)
+#: C/gedit-plugins-bookmarks.page:29(item/p)
 msgid "Navigate to the line where you want to insert or remove the bookmark."
 msgstr "Navegue hasta la línea en la que quiere insertar o quitar el marcador."
 
-#: C/gedit-plugins-bookmarks.page:30(item/p)
+#: C/gedit-plugins-bookmarks.page:31(item/p)
+#| msgid ""
+#| "Press <keyseq><key>Ctrl</key><key>Alt</key><key>B</key></keyseq>, or "
+#| "click <guiseq><gui>Edit</gui><gui>Toggle Bookmark</gui></guiseq>."
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>Alt</key><key>B</key></keyseq>, or click "
-"<guiseq><gui>Edit</gui><gui>Toggle Bookmark</gui></guiseq>."
+"<guiseq><gui style=\"menu\">Edit</gui> <gui style=\"menuitem\">Toggle "
+"Bookmark</gui></guiseq>."
 msgstr ""
-"Pulse <keyseq><key>Ctrl</key><key>Alt</key><key>B</key></keyseq>, o pulse "
-"<guiseq><gui>Editar</gui><gui>Alternar marcador</gui></guiseq>."
+"Pulse <keyseq><key>Ctrl</key><key>Alt</key><key>B</key></keyseq>, o pulse en "
+"<guiseq><gui style=\"menu\">Editar</gui> <gui style=\"menuitem\">Alternar "
+"marcador</gui></guiseq>."
 
-#: C/gedit-plugins-bookmarks.page:36(steps/title)
+#: C/gedit-plugins-bookmarks.page:37(steps/title)
 msgid "To move between bookmarks:"
 msgstr "Para moverse entre marcadores:"
 
-#: C/gedit-plugins-bookmarks.page:37(item/p)
+#: C/gedit-plugins-bookmarks.page:38(item/p)
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>B</key></keyseq> to move to the next "
 "bookmark."
@@ -888,7 +881,7 @@ msgstr ""
 "Pulse <keyseq><key>Ctrl</key><key>B</key></keyseq> para moverse al siguiente "
 "marcador."
 
-#: C/gedit-plugins-bookmarks.page:39(item/p)
+#: C/gedit-plugins-bookmarks.page:40(item/p)
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>Shift</key><key>B</key></keyseq> to move "
 "to the previous bookmark."
@@ -896,15 +889,20 @@ msgstr ""
 "Pulse <keyseq><key>Ctrl</key><key>Shift</key><key>B</key></keyseq> para "
 "moverse al marcador anterior."
 
-#: C/gedit-plugins-bookmarks.page:41(note/p)
+#: C/gedit-plugins-bookmarks.page:42(note/p)
+#| msgid ""
+#| "If you prefer using the mouse, you can click <guiseq><gui>Edit</gui> "
+#| "<gui>Go to Next Bookmark</gui></guiseq> or <guiseq><gui>Edit</gui><gui>Go "
+#| "to Previous Bookmark</gui></guiseq>."
 msgid ""
-"If you prefer using the mouse, you can click <guiseq><gui>Edit</gui> <gui>Go "
-"to Next Bookmark</gui></guiseq> or <guiseq><gui>Edit</gui><gui>Go to "
+"If you prefer using the mouse, you can click <guiseq> <gui style=\"menu"
+"\">gedit</gui> <gui style=\"menuitem\">Go to Next Bookmark</gui></guiseq> or "
+"<guiseq><gui style=\"menu\">Edit</gui> <gui style=\"menuitem\">Go to "
 "Previous Bookmark</gui></guiseq>."
 msgstr ""
 "Si prefiere usar el ratón, puede pulsar <guiseq><gui>Editar</gui><gui>Ir al "
-"siguiente marcador</gui></guiseq> o <guiseq><gui>Editar</gui><gui>Ir al "
-"marcador anterior</gui></guiseq>."
+"siguiente marcador</gui></guiseq> o <guiseq><gui style=\"menu\">Editar</"
+"gui><gui style=\"menuitem\">Ir al marcador anterior</gui></guiseq>."
 
 #: C/gedit-plugins-bracket-comp.page:12(info/desc)
 msgid "Auto-complete closing brackets"
@@ -923,15 +921,19 @@ msgstr ""
 "los paréntesis, llaves y corchetes."
 
 #: C/gedit-plugins-bracket-comp.page:20(page/p)
+#| msgid ""
+#| "To enable the plugin, select <guiseq><gui>Edit</gui><gui>Preferences</"
+#| "gui> <gui>Plugins</gui><gui>Bracket Completion</gui></guiseq>."
 msgid ""
-"To enable the plugin, select <guiseq><gui>Edit</gui><gui>Preferences</gui> "
-"<gui>Plugins</gui><gui>Bracket Completion</gui></guiseq>."
+"To enable the plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Bracket "
+"Completion</gui></guiseq>."
 msgstr ""
-"Para activar el complemento seleccione <guiseq><gui>Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Completar paréntesis</"
-"gui></guiseq>."
+"Para activar el complemento seleccione <guiseq><gui style=\"menu\">gedit</"
+"gui><gui> Preferencias</gui><gui>Complementos</gui><gui>Completar "
+"paréntesis</gui></guiseq>."
 
-#: C/gedit-plugins-bracket-comp.page:23(note/p)
+#: C/gedit-plugins-bracket-comp.page:24(note/p)
 msgid "This plugin does not automatically insert closing HTML or XML tags."
 msgstr ""
 "Este complemento no inserta automáticamente etiquetas de cierre HTML o XML."
@@ -962,19 +964,25 @@ msgid "Change case"
 msgstr "Cambiar capitalización"
 
 #: C/gedit-plugins-change-case.page:22(page/p)
+#| msgid ""
+#| "This plugin helps you to change the case of selected portions of text. "
+#| "You can use it to change text to be all lower case, all upper case, to "
+#| "invert the case, or apply title case. To enable this plugin, select "
+#| "<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</"
+#| "gui><gui>Change Case</gui></guiseq>."
 msgid ""
 "This plugin helps you to change the case of selected portions of text. You "
 "can use it to change text to be all lower case, all upper case, to invert "
-"the case, or apply title case. To enable this plugin, select "
-"<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui><gui>Change "
-"Case</gui></guiseq>."
+"the case, or apply title case. To enable this plugin, select <guiseq><gui "
+"style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> "
+"<gui>Plugins</gui><gui>Change Case</gui></guiseq>."
 msgstr ""
 "Este complemento le ayuda a cambiar la capitalización de fragmentos de texto "
 "seleccionados. Puede usarlo para cambiar todo el texto a minúsculas, a "
 "mayúsculas, para invertir la capitalización o para aplicar títulos. Para "
-"activar este complemento, seleccione <guiseq><gui>Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Cambiar "
-"capitalización</gui></guiseq>."
+"activar este complemento, seleccione <guiseq><gui style=\"menu\">gedit</"
+"gui><gui> Preferencias</gui><gui>Complementos</gui><gui>Cambiar "
+"capitalización</gui></guiseq>."
 
 #: C/gedit-plugins-change-case.page:28(page/p)
 msgid ""
@@ -989,10 +997,12 @@ msgid "Highlight the portion of text that you want to change."
 msgstr "Resalte el fragmento de texto que quiere cambiar."
 
 #: C/gedit-plugins-change-case.page:33(item/p)
-msgid "Select <guiseq><gui>Edit</gui><gui>Change Case</gui></guiseq>"
+#| msgid "Select <guiseq><gui>Edit</gui><gui>Change Case</gui></guiseq>"
+msgid ""
+"Select <guiseq><gui style=\"menu\">gedit</gui><gui>Change Case</gui></guiseq>"
 msgstr ""
-"Seleccione <guiseq><gui>Editar</gui><gui>Cambiar capitalización</gui></"
-"guiseq>"
+"Seleccione <guiseq><gui style=\"menu\">gedit</gui><gui>Cambiar "
+"capitalización</gui></guiseq>"
 
 #: C/gedit-plugins-change-case.page:35(item/p)
 msgid "Choose your desired text-formatting option."
@@ -1042,23 +1052,30 @@ msgid "Character map"
 msgstr "Mapa de caracteres"
 
 #: C/gedit-plugins-character-map.page:30(page/p)
+#| msgid ""
+#| "The <app>Character Map</app> plugin enables you to insert characters into "
+#| "your document that you may not be able to type easily using your "
+#| "keyboard. To enable this plugin, select <guiseq><gui>Edit</"
+#| "gui><gui>Preferences</gui> <gui>Plugins</gui><gui>Character Map</gui></"
+#| "guiseq>."
 msgid ""
 "The <app>Character Map</app> plugin enables you to insert characters into "
 "your document that you may not be able to type easily using your keyboard. "
-"To enable this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</gui> "
-"<gui>Plugins</gui><gui>Character Map</gui></guiseq>."
+"To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Character Map</"
+"gui></guiseq>."
 msgstr ""
 "El complemento <app>Mapa de caracteres</app> le permite insertar en su "
 "documento caracteres que es posible que sean fáciles de escribir usando su "
-"teclado. Para activar este complemento, seleccione <guiseq><gui>Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Mapa de caracteres</"
-"gui></guiseq>."
+"teclado. Para activar este complemento, seleccione <guiseq><gui style=\"menu"
+"\">gedit</gui> <gui style=\"menuitem\">Preferencias</gui><gui>Complementos</"
+"gui> <gui>Mapa de caracteres</gui></guiseq>."
 
-#: C/gedit-plugins-character-map.page:36(section/title)
+#: C/gedit-plugins-character-map.page:37(section/title)
 msgid "Using Character Map"
 msgstr "Usar el mapa de caracteres"
 
-#: C/gedit-plugins-character-map.page:38(section/p)
+#: C/gedit-plugins-character-map.page:39(section/p)
 msgid ""
 "Once the plugin is enabled, you can add characters from the <em>Character "
 "Map</em> tab of the side panel (<guiseq><gui>View</gui> <gui>Side Panel</"
@@ -1068,7 +1085,7 @@ msgstr ""
 "pestaña <em>Mapa de caracteres</em> en el panel lateral (<guiseq><gui>Ver</"
 "gui><gui>Panel lateral</gui></guiseq>)."
 
-#: C/gedit-plugins-character-map.page:43(item/p)
+#: C/gedit-plugins-character-map.page:44(item/p)
 msgid ""
 "Place the cursor at the point in your document at which you would like your "
 "special character."
@@ -1076,7 +1093,7 @@ msgstr ""
 "Sitúe el cursor en el punto del documento en el que quiere insertar el "
 "carácter especial."
 
-#: C/gedit-plugins-character-map.page:45(item/p)
+#: C/gedit-plugins-character-map.page:46(item/p)
 msgid ""
 "Open the side panel by selecting <guiseq><gui>View</gui> <gui>Side Panel</"
 "gui></guiseq>, or by pressing <key>F9</key>."
@@ -1084,11 +1101,11 @@ msgstr ""
 "Abra el panel lateral seleccionando <guiseq><gui>Ver</gui><gui>Panel "
 "lateral</gui></guiseq>, o pulsando <key>F9</key>."
 
-#: C/gedit-plugins-character-map.page:47(item/p)
+#: C/gedit-plugins-character-map.page:48(item/p)
 msgid "Select the <em>Character Map</em> tab in the side panel."
 msgstr "Seleccione la pestaña <em>Mapa de caracteres</em> en el panel lateral."
 
-#: C/gedit-plugins-character-map.page:49(item/p)
+#: C/gedit-plugins-character-map.page:50(item/p)
 msgid ""
 "If neccessary, choose the character set to which your character belongs from "
 "the list at the top of the <em>Character Map</em> tab (e.g., Arabic)."
@@ -1097,11 +1114,11 @@ msgstr ""
 "carácter de la lista de la parte superior de la pestaña <em>Mapa de "
 "caracteres</em> (ej, Árabe)."
 
-#: C/gedit-plugins-character-map.page:52(item/p)
+#: C/gedit-plugins-character-map.page:53(item/p)
 msgid "Double click your desired character to insert it."
 msgstr "Pulse dos veces en el carácter que quiere para insertarlo."
 
-#: C/gedit-plugins-character-map.page:55(note/p)
+#: C/gedit-plugins-character-map.page:56(note/p)
 msgid ""
 "You must click on the editing view of your document to continue editing "
 "normally."
@@ -1118,16 +1135,22 @@ msgid "Code assistance"
 msgstr "Asistente de código"
 
 #: C/gedit-plugins-code-assistance.page:21(page/p)
+#| msgid ""
+#| "The <app>gedit-code-assistance</app> plugin provides real-time error "
+#| "highlighting for C, C++ and Objective-C. To enable this plugin, select "
+#| "<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui><gui>Code "
+#| "Assistance</gui></guiseq>."
 msgid ""
 "The <app>gedit-code-assistance</app> plugin provides real-time error "
 "highlighting for C, C++ and Objective-C. To enable this plugin, select "
-"<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui><gui>Code "
-"Assistance</gui></guiseq>."
+"<guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</"
+"gui> <gui>Plugins</gui><gui>Code Assistance</gui></guiseq>."
 msgstr ""
 "El complemento <app>asistente de código de gedit</app> proporciona resaltado "
 "de errores en tiempo real para C, C++ y Objective-C. Para activar este "
-"complemento, seleccione <guiseq><gui>Editar</gui><gui>Preferencias</"
-"gui><gui>Complementos</gui><gui>Asistente de código</gui></guiseq>."
+"complemento, seleccione <guiseq><gui style=\"menu\">gedit</gui><gui style="
+"\"menuitem\">Preferencias</gui> <gui>Complementos</gui><gui>Asistente de "
+"código</gui></guiseq>."
 
 #: C/gedit-plugins-code-assistance.page:39(section/title)
 msgid "How the code assistance plugin works"
@@ -1175,16 +1198,22 @@ msgstr ""
 "caracteres especiales."
 
 #: C/gedit-plugins-code-comment.page:23(page/p)
+#| msgid ""
+#| "The <app>code comment</app> plugin makes it easier to quickly create or "
+#| "remove code comments. To enable the code comment plugin, select "
+#| "<guiseq><gui>Edit</gui><gui> Preferences</gui><gui>Plugins</gui> "
+#| "<gui>Code comment</gui></guiseq>."
 msgid ""
 "The <app>code comment</app> plugin makes it easier to quickly create or "
-"remove code comments. To enable the code comment plugin, select "
-"<guiseq><gui>Edit</gui><gui> Preferences</gui><gui>Plugins</gui> <gui>Code "
-"comment</gui></guiseq>."
+"remove code comments. To enable the code comment plugin, select <guiseq><gui "
+"style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> "
+"<gui>Plugins</gui><gui>Code comment</gui></guiseq>."
 msgstr ""
 "El complemento <app>comentar código</app> hace que sea más sencillo añadir o "
 "quitar comentarios al código. Para activar el complemento de comentar "
-"código, seleccione <guiseq><gui>Editar</gui><gui> Preferencias</"
-"gui><gui>Complementos</gui><gui>Comentar código</gui></guiseq>."
+"código, seleccione <guiseq><gui style=\"menu\">gedit</gui><gui style="
+"\"menuitem\">Preferencias</gui> <gui>Complementos</gui><gui>Comentar código</"
+"gui></guiseq>."
 
 #: C/gedit-plugins-code-comment.page:28(page/p)
 msgid "To create or remove a comment:"
@@ -1197,31 +1226,44 @@ msgstr ""
 "Resalte el fragmento de texto donde quiere añadir o quitar o comentario."
 
 #: C/gedit-plugins-code-comment.page:32(item/p)
+#| msgid ""
+#| "To add a comment, click <guiseq><gui>Edit</gui> <gui>Comment Code</gui></"
+#| "guiseq>, or press <keyseq><key>Ctrl</key> <key>M</key></keyseq>."
 msgid ""
-"To add a comment, click <guiseq><gui>Edit</gui> <gui>Comment Code</gui></"
-"guiseq>, or press <keyseq><key>Ctrl</key> <key>M</key></keyseq>."
+"To add a comment, click <guiseq><gui style=\"menu\">gedit</gui> <gui>Comment "
+"Code</gui></guiseq>, or press <keyseq><key>Ctrl</key> <key>M</key></keyseq>."
 msgstr ""
-"Para añadir un comentario, pulse <guiseq><gui>Editar</gui><gui>Comentar "
-"código</gui></guiseq>, o pulse <keyseq><key>Ctrl</key><key>M</key></keyseq>."
+"Para añadir un comentario, pulse <guiseq><gui style=\"menu\">gedit</gui> "
+"<gui>Comentar código</gui></guiseq>, o pulse <keyseq><key>Ctrl</key> <key>M</"
+"key></keyseq>."
 
 #: C/gedit-plugins-code-comment.page:35(item/p)
+#| msgid ""
+#| "To remove a comment, click <guiseq><gui>Edit</gui> <gui>Uncomment Code</"
+#| "gui></guiseq>, or press <keyseq><key>Shift</key> <key>Ctrl</key><key>M</"
+#| "key></keyseq>."
 msgid ""
-"To remove a comment, click <guiseq><gui>Edit</gui> <gui>Uncomment Code</"
-"gui></guiseq>, or press <keyseq><key>Shift</key> <key>Ctrl</key><key>M</"
-"key></keyseq>."
+"To remove a comment, click <guiseq><gui style=\"menu\">gedit</gui> "
+"<gui>Uncomment Code</gui></guiseq>, or press <keyseq><key>Shift</key> "
+"<key>Ctrl</key><key>M</key></keyseq>."
 msgstr ""
-"Para quitar un comentario, pulse <guiseq><gui>Editar</gui><gui>Descomentar "
-"código</gui></guiseq>, o pulse <keyseq><key>Mayús</key><key>Ctrl</"
-"key><key>M</key></keyseq>."
+"Para quitar un comentario, pulse <guiseq><gui style=\"menuitem\">gedit</"
+"gui><gui>Descomentar código</gui></guiseq>, o pulse <keyseq><key>Mayús</"
+"key><key>Ctrl</key><key>M</key></keyseq>."
 
 #: C/gedit-plugins-code-comment.page:40(note/p)
+#| msgid ""
+#| "<app>Gedit</app> will automatically use the correct style of comment "
+#| "based on the language or syntax of the file. If <app>gedit</app> doesn't "
+#| "identify your language or syntax, you can select it from the language "
+#| "list in the bottom <gui>Status bar</gui>."
 msgid ""
-"<app>Gedit</app> will automatically use the correct style of comment based "
+"<app>gedit</app> will automatically use the correct style of comment based "
 "on the language or syntax of the file. If <app>gedit</app> doesn't identify "
 "your language or syntax, you can select it from the language list in the "
 "bottom <gui>Status bar</gui>."
 msgstr ""
-"<app>Gedit</app> usará automáticamente el estilo de comentario correcto "
+"<app>gedit</app> usará automáticamente el estilo de comentario correcto "
 "basándose en el lenguaje o la sintaxis del archivo. Si <app>gedit </app> no "
 "identifica el lenguaje ni la sintaxis, puede seleccionarlo de la lista de "
 "lenguajes en la <gui>Barra de estado</gui> inferior."
@@ -1246,14 +1288,18 @@ msgstr ""
 "elegir y usar el color correcto en sus programas."
 
 #: C/gedit-plugins-color-picker.page:23(page/p)
+#| msgid ""
+#| "To enable the color picker plugin, select <guiseq><gui> Edit</"
+#| "gui><gui>Preferences</gui><gui>Plugins</gui><gui>Color Picker</gui> </"
+#| "guiseq>."
 msgid ""
-"To enable the color picker plugin, select <guiseq><gui> Edit</"
-"gui><gui>Preferences</gui><gui>Plugins</gui><gui>Color Picker</gui> </"
-"guiseq>."
+"To enable the color picker plugin, select <guiseq> <gui style=\"menu"
+"\">gedit</gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
+"gui><gui>Color Picker</gui></guiseq>."
 msgstr ""
-"Para activar el selector de color, seleccione <guiseq><gui> Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Selector de color</"
-"gui></guiseq>."
+"Para activar el selector de color, seleccione <guiseq><gui style=\"menu"
+"\">gedit</gui><gui> Preferencias</gui><gui>Complementos</gui><gui>Selector "
+"de color</gui></guiseq>."
 
 #: C/gedit-plugins-color-picker.page:27(page/p)
 msgid "To open and use the color picker:"
@@ -1317,19 +1363,25 @@ msgid "Commander"
 msgstr "Comando"
 
 #: C/gedit-plugins-commander.page:19(page/p)
+#| msgid ""
+#| "The <app>Commander</app> plugin is a plugin for advanced <app>gedit</app> "
+#| "users that allows you to perform command-line actions on the current "
+#| "file. To enable the commander plugin, select <guiseq><gui>Edit</gui><gui> "
+#| "Preferences</gui><gui>Plugins</gui><gui>Commander</gui></guiseq>."
 msgid ""
 "The <app>Commander</app> plugin is a plugin for advanced <app>gedit</app> "
 "users that allows you to perform command-line actions on the current file. "
-"To enable the commander plugin, select <guiseq><gui>Edit</gui><gui> "
-"Preferences</gui><gui>Plugins</gui><gui>Commander</gui></guiseq>."
+"To enable the commander plugin, select <guiseq> <gui style=\"menu\">gedit</"
+"gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
+"gui><gui>Commander</gui></guiseq>."
 msgstr ""
 "El complemento <app>Comando</app> es para usuarios avanzados de <app>gedit</"
 "app> que permite realizar acciones de línea de comandos sobre el archivo "
-"actual. Para activar el complemento «Comando», seleccione "
-"<guiseq><gui>Editar</gui><gui> Preferencias</gui><gui>Complementos</"
-"gui><gui>Comando</gui></guiseq>."
+"actual. Para activar el complemento «Comando», seleccione <guiseq><gui style="
+"\"menu\">gedit</gui><gui style=\"menuitem\">Preferencias</gui> "
+"<gui>Complementos</gui><gui>Comando</gui></guiseq>."
 
-#: C/gedit-plugins-commander.page:24(page/p)
+#: C/gedit-plugins-commander.page:25(page/p)
 msgid ""
 "Once you have enabled the plugin, activate it by pressing <keyseq><key> "
 "Ctrl</key><key>.</key></keyseq>."
@@ -1337,74 +1389,74 @@ msgstr ""
 "Una vez que haya instalado el complemento, actívelo pulsando <keyseq><key> "
 "Ctrl</key><key>.</key></keyseq>."
 
-#: C/gedit-plugins-commander.page:27(note/p)
+#: C/gedit-plugins-commander.page:28(note/p)
 msgid "The last key in the above key combination is a period."
 msgstr "La última tecla de la combinación de teclas indicada es un punto («.»)."
 
-#: C/gedit-plugins-commander.page:33(td/p) C/gedit-shortcut-keys.page:56(td/p)
+#: C/gedit-plugins-commander.page:34(td/p) C/gedit-shortcut-keys.page:56(td/p)
 #: C/gedit-shortcut-keys.page:88(td/p) C/gedit-shortcut-keys.page:124(td/p)
 #: C/gedit-shortcut-keys.page:168(td/p) C/gedit-shortcut-keys.page:186(td/p)
 #: C/gedit-shortcut-keys.page:217(td/p) C/gedit-shortcut-keys.page:243(td/p)
 msgid "To Do This"
 msgstr "Para hacer esto"
 
-#: C/gedit-plugins-commander.page:33(td/p) C/gedit-shortcut-keys.page:56(td/p)
+#: C/gedit-plugins-commander.page:34(td/p) C/gedit-shortcut-keys.page:56(td/p)
 #: C/gedit-shortcut-keys.page:88(td/p) C/gedit-shortcut-keys.page:124(td/p)
 #: C/gedit-shortcut-keys.page:168(td/p) C/gedit-shortcut-keys.page:186(td/p)
 #: C/gedit-shortcut-keys.page:217(td/p) C/gedit-shortcut-keys.page:243(td/p)
 msgid "Press This"
 msgstr "Pulsar esto"
 
-#: C/gedit-plugins-commander.page:38(td/p)
+#: C/gedit-plugins-commander.page:39(td/p)
 msgid "See an overview of available commands"
 msgstr "Ver una descripción de los comandos disponibles"
 
-#: C/gedit-plugins-commander.page:38(td/p)
+#: C/gedit-plugins-commander.page:39(td/p)
 msgid "Tab + Tab"
 msgstr "Tab + Tab"
 
-#: C/gedit-plugins-commander.page:42(td/p)
+#: C/gedit-plugins-commander.page:43(td/p)
 msgid "Find a word within the current file"
 msgstr "Buscar una palabra en el archivo actual"
 
-#: C/gedit-plugins-commander.page:42(td/p)
+#: C/gedit-plugins-commander.page:43(td/p)
 msgid "/ <em>foo </em>"
 msgstr "/ <em>foo</em>"
 
-#: C/gedit-plugins-commander.page:44(td/p)
+#: C/gedit-plugins-commander.page:45(td/p)
 msgid "This will find the word <em>foo</em>."
 msgstr "Esto buscará la palabra <em>foo</em>."
 
-#: C/gedit-plugins-commander.page:47(td/p)
+#: C/gedit-plugins-commander.page:48(td/p)
 msgid "Replace a word within the current file"
 msgstr "Reemplazar una palabra en el archivo actual"
 
-#: C/gedit-plugins-commander.page:47(td/p)
+#: C/gedit-plugins-commander.page:48(td/p)
 msgid "// foo bar"
 msgstr "// foo bar"
 
-#: C/gedit-plugins-commander.page:49(td/p)
+#: C/gedit-plugins-commander.page:50(td/p)
 msgid "This will replace <em>foo</em> with <em>bar</em>."
 msgstr "Esto reemplazará <em>foo</em> por <em>bar</em>."
 
-#: C/gedit-plugins-commander.page:52(td/p)
+#: C/gedit-plugins-commander.page:53(td/p)
 msgid "Move the cursor to a certain line number in your file"
 msgstr "Mover el cursos a un determinado número de línea en su archivo"
 
-#: C/gedit-plugins-commander.page:53(td/p)
+#: C/gedit-plugins-commander.page:54(td/p)
 msgid "go [line number] <em>or</em> just <em>g</em> [line number]"
 msgstr ""
 "go [número de línea] <em>o</em> simplemente <em>g</em> [número de línea]"
 
-#: C/gedit-plugins-commander.page:57(td/p)
+#: C/gedit-plugins-commander.page:58(td/p)
 msgid "Toggle the bookmark indicator for the current line"
 msgstr "Conmutar el indicador de marcador para la línea actual"
 
-#: C/gedit-plugins-commander.page:58(td/p)
+#: C/gedit-plugins-commander.page:59(td/p)
 msgid "bookmark <em>or</em> just <em>b</em>"
 msgstr "bookmark <em>o</em> simplemente <em>b</em>"
 
-#: C/gedit-plugins-commander.page:63(note/p)
+#: C/gedit-plugins-commander.page:64(note/p)
 msgid ""
 "Some commands, such as the <app>bookmark</app> command require that the "
 "appropriate plugin be installed and activated. If you do not have the "
@@ -1425,19 +1477,27 @@ msgid "Dashboard"
 msgstr "Tablero"
 
 #: C/gedit-plugins-dashboard.page:18(page/p)
+#| msgid ""
+#| "The <app>Dashboard</app> plugin provides quick access to your most "
+#| "recently-used files and most-frequently used files. To activate the "
+#| "<app>Dashboard</app> plugin, select <guiseq><gui>Edit</gui><gui> "
+#| "Preferences</gui><gui>Plugins</gui><gui>Dashboard</gui></guiseq>. You "
+#| "will need to restart <app>gedit</app> to activate the <app>Dashboard</"
+#| "app> plugin."
 msgid ""
 "The <app>Dashboard</app> plugin provides quick access to your most recently-"
 "used files and most-frequently used files. To activate the <app>Dashboard</"
-"app> plugin, select <guiseq><gui>Edit</gui><gui> Preferences</"
-"gui><gui>Plugins</gui><gui>Dashboard</gui></guiseq>. You will need to "
-"restart <app>gedit</app> to activate the <app>Dashboard</app> plugin."
+"app> plugin, select <guiseq> <gui style=\"menu\">gedit</gui><gui style="
+"\"menuitem\">Preferences</gui> <gui>Plugins</gui><gui>Dashboard</gui></"
+"guiseq>. You will need to restart <app>gedit</app> to activate the "
+"<app>Dashboard</app> plugin."
 msgstr ""
 "El complemento <app>Tablero</app> proporciona un rápido acceso a los "
 "archivos usados más recientemente y a los más frecuentemente usados. Para "
-"activar el complemento <app>Tablero</app>, seleccione <guiseq><gui>Editar</"
-"gui><gui> Preferencias</gui><gui>Complementos</gui><gui>Tablero</gui></"
-"guiseq>. Deberá reiniciar <app>gedit</app> para activar el complemento "
-"<app>Tablero</app>."
+"activar el complemento <app>Tablero</app>, seleccione <guiseq><gui style="
+"\"menu\">gedit</gui> <gui style=\"menuitem\">Preferencias</"
+"gui><gui>Complementos</gui> <gui>Tablero</gui></guiseq>. Deberá reiniciar "
+"<app>gedit</app> para activar el complemento <app>Tablero</app>."
 
 #: C/gedit-plugins-dashboard.page:25(page/p)
 msgid ""
@@ -1503,18 +1563,19 @@ msgstr "Estadísticas del documento"
 #| msgid ""
 #| "The <em>Document Statistics</em> plugin shows you various statistics "
 #| "about your current document. To enable this plugin, select "
-#| "<guiseq><gui>Edit </gui><gui>Preferences</gui><gui>Plugins</"
-#| "gui><gui>Document Statistics</gui> </guiseq>."
+#| "<guiseq><gui>Edit</gui> <gui>Preferences</gui><gui>Plugins</gui> "
+#| "<gui>Document Statistics</gui></guiseq>."
 msgid ""
 "The <em>Document Statistics</em> plugin shows you various statistics about "
-"your current document. To enable this plugin, select <guiseq><gui>Edit</gui> "
-"<gui>Preferences</gui><gui>Plugins</gui> <gui>Document Statistics</gui></"
-"guiseq>."
+"your current document. To enable this plugin, select <guiseq><gui style="
+"\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
+"gui><gui>Document Statistics</gui></guiseq>."
 msgstr ""
 "El complemento <em>Estadísticas del documento</em> puede mostrarle varias "
 "estadísticas sobre el documento actual. Para activar este complemento, "
-"seleccione <guiseq><gui>Editar</gui><gui>Preferencias</"
-"gui><gui>Complementos</gui><gui>Estadísticas del documento</gui></guiseq>."
+"seleccione <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferencias</gui><gui>Complementos</gui> <gui>Estadísticas del "
+"documento</gui></guiseq>."
 
 #: C/gedit-plugins-doc-stats.page:28(section/title)
 msgid "Using Document Statistics"
@@ -1534,13 +1595,6 @@ msgstr ""
 "sin espacios y el tamaño en bytes de su archivo."
 
 #: C/gedit-plugins-doc-stats.page:36(section/p)
-#| msgid ""
-#| "You can also use <em>Document Statistics</em> to show you information "
-#| "about just a portion of your document. To do this, use the mouse pointer "
-#| "to select the portion of text that you want to examine, and then select "
-#| "<guiseq><gui> Tools</gui><gui>Document Statistics</gui></guiseq>. "
-#| "<app>Gedit</app> will display information for both your entire document, "
-#| "and for the portion of text that you highlighted."
 msgid ""
 "You can also use <em>Document Statistics</em> to show you information about "
 "just a portion of your document. To do this, use the mouse pointer to select "
@@ -1578,18 +1632,25 @@ msgstr ""
 "puede aplicar estrategias de espaciado de manera más consistente."
 
 #: C/gedit-plugins-draw-spaces.page:23(page/p)
+#| msgid ""
+#| "To enable this plugin, select <guiseq><gui>Edit</gui> <gui>Preferences</"
+#| "gui><gui>Plugins</gui><gui>Draw Spaces</gui></guiseq>. After you have "
+#| "enabled the plugin, you can set its options by highlighting the plugin "
+#| "and selecting <gui>Preferences</gui>."
 msgid ""
-"To enable this plugin, select <guiseq><gui>Edit</gui> <gui>Preferences</"
-"gui><gui>Plugins</gui><gui>Draw Spaces</gui></guiseq>. After you have "
-"enabled the plugin, you can set its options by highlighting the plugin and "
-"selecting <gui>Preferences</gui>."
+"To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Draw Spaces</"
+"gui></guiseq>. After you have enabled the plugin, you can set its options by "
+"highlighting the plugin and selecting <gui style=\"menuitem\">Preferences</"
+"gui>."
 msgstr ""
-"Para activar este complemento, seleccione <guiseq><gui>Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Dibujar espacios</"
-"gui></guiseq>. Una vez que haya activado el complemento, puede establecer "
-"sus opciones marcando el complemento y seleccionando <gui>Preferencias</gui>."
+"Para activar este complemento, seleccione <guiseq><gui style=\"menu\">gedit</"
+"gui> <gui style=\"menuitem\">Preferencias</gui><gui>Complementos</gui> "
+"<gui>Dibujar espacios</gui></guiseq>. Una vez que haya activado el "
+"complemento, puede establecer sus opciones marcando el complemento y "
+"seleccionando <gui style=\"menuitem\">Preferencias</gui>."
 
-#: C/gedit-plugins-draw-spaces.page:29(list/title)
+#: C/gedit-plugins-draw-spaces.page:30(list/title)
 msgid ""
 "By default, the <app>Draw Spaces</app> plugin will mark the following types "
 "of whitespace in a file:"
@@ -1597,39 +1658,39 @@ msgstr ""
 "De manera predeterminada, el complemento <app>Dibujar espacios</app> marcará "
 "los siguientes tipos de espacios en blanco en un archivo:"
 
-#: C/gedit-plugins-draw-spaces.page:31(item/p)
+#: C/gedit-plugins-draw-spaces.page:32(item/p)
 msgid "Spaces"
 msgstr "Espacios"
 
-#: C/gedit-plugins-draw-spaces.page:32(item/p)
+#: C/gedit-plugins-draw-spaces.page:33(item/p)
 msgid "Tabs"
 msgstr "Pestañas"
 
-#: C/gedit-plugins-draw-spaces.page:33(item/p)
+#: C/gedit-plugins-draw-spaces.page:34(item/p)
 msgid "Leading spaces"
 msgstr "Espacios iniciales"
 
-#: C/gedit-plugins-draw-spaces.page:34(item/p)
+#: C/gedit-plugins-draw-spaces.page:35(item/p)
 msgid "Spaces in text"
 msgstr "Espacios en el texto"
 
-#: C/gedit-plugins-draw-spaces.page:35(item/p)
+#: C/gedit-plugins-draw-spaces.page:36(item/p)
 msgid "Trailing spaces"
 msgstr "Espacios sobrantes"
 
-#: C/gedit-plugins-draw-spaces.page:39(list/title)
+#: C/gedit-plugins-draw-spaces.page:40(list/title)
 msgid "You can also set the plugin to mark:"
 msgstr "También puede configurar el complemento para marcar:"
 
-#: C/gedit-plugins-draw-spaces.page:40(item/p)
+#: C/gedit-plugins-draw-spaces.page:41(item/p)
 msgid "New Lines"
 msgstr "Líneas nuevas"
 
-#: C/gedit-plugins-draw-spaces.page:41(item/p)
+#: C/gedit-plugins-draw-spaces.page:42(item/p)
 msgid "Non-breaking spaces"
 msgstr "Espacios de no ruptura"
 
-#: C/gedit-plugins-draw-spaces.page:44(note/p)
+#: C/gedit-plugins-draw-spaces.page:45(note/p)
 msgid ""
 "Though you will be able to see the dots when you work on a file, the dots "
 "will not be visible when you print a file to paper."
@@ -1648,27 +1709,34 @@ msgid "External tools"
 msgstr "Herramientas externas"
 
 #: C/gedit-plugins-external-tools.page:24(page/p)
+#| msgid ""
+#| "The <em>External Tools</em> plugin can help simplify repetitive tasks. "
+#| "Specifically, it extends <app>gedit</app> by helping you to run scripts "
+#| "on your working files, and by allowing <app>gedit</app> to interact with "
+#| "other programs on your computer. To enable the <app>External Tools</app> "
+#| "plugin, select <guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</"
+#| "gui> <gui>External Tools</gui></guiseq>."
 msgid ""
 "The <em>External Tools</em> plugin can help simplify repetitive tasks. "
 "Specifically, it extends <app>gedit</app> by helping you to run scripts on "
 "your working files, and by allowing <app>gedit</app> to interact with other "
 "programs on your computer. To enable the <app>External Tools</app> plugin, "
-"select <guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui> "
-"<gui>External Tools</gui></guiseq>."
+"select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui><gui>Plugins</gui> <gui>External Tools</gui></guiseq>."
 msgstr ""
 "El complemento <em>Herramientas externas</em> puede ayudarle a simplificar "
 "tareas repetitivas. Específicamente, amplía <app>gedit</app> ayudándole a "
 "ejecutar scripts en los archivos en los que está trabajando, y permitiendo a "
 "<app>gedit</app> interactuar con otros programas de su equipo. Para activar "
-"el complemento <app>Herramientas externas</app>, seleccione "
-"<guiseq><gui>Editar</gui><gui>Preferencias</gui><gui>Complementos</"
+"el complemento <app>Herramientas externas</app>, seleccione <guiseq><gui "
+"style=\"menu\">gedit</gui><gui> Preferencias</gui><gui>Complementos</"
 "gui><gui>Herramientas externas</gui></guiseq>."
 
-#: C/gedit-plugins-external-tools.page:32(section/title)
+#: C/gedit-plugins-external-tools.page:33(section/title)
 msgid "Configure the external tools plugin"
 msgstr "Configurar el complemento de herramientas externas"
 
-#: C/gedit-plugins-external-tools.page:34(section/p)
+#: C/gedit-plugins-external-tools.page:35(section/p)
 msgid ""
 "Once you have enabled the plugin, you will need to configure it to suit your "
 "needs. The configuration options are available by selecting "
@@ -1679,7 +1747,7 @@ msgstr ""
 "seleccionando <guiseq><gui>Herramientas</gui><gui>Gestionar herramientas "
 "externas</gui></guiseq>."
 
-#: C/gedit-plugins-external-tools.page:39(note/p)
+#: C/gedit-plugins-external-tools.page:40(note/p)
 msgid ""
 "This plugin is for advanced users, and requires knowledge of scripting to be "
 "used effectively. Use this plugin with care, as mistakes with your scripts "
@@ -1710,20 +1778,20 @@ msgstr ""
 "proporcionándole un acceso fácil a sus archivos usados frecuentemente."
 
 #: C/gedit-plugins-file-browser.page:26(page/p)
+#| msgid ""
+#| "You can enable the <gui>Side Pane</gui> by selecting <guiseq><gui>Edit</"
+#| "gui><gui>Preferences</gui><gui>Plugins</gui> <gui>File Browser Pane</"
+#| "gui></guiseq>."
 msgid ""
-"You can enable the <gui>Side Pane</gui> by selecting <guiseq><gui>Edit</"
-"gui><gui>Preferences</gui><gui>Plugins</gui> <gui>File Browser Pane</gui></"
-"guiseq>."
+"You can enable the <gui>Side Pane</gui> by selecting <guiseq><gui style="
+"\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
+"gui><gui>File Browser Pane</gui></guiseq>."
 msgstr ""
-"Puede activar el <gui>Panel lateral</gui> seleccionando <guiseq><gui>Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Panel del examinador "
-"de archivos</gui></guiseq>."
+"Puede activar el <gui>Panel lateral</gui> seleccionando <guiseq><gui style="
+"\"menu\">gedit</gui><gui style=\"menuitem\">Preferencias</gui> "
+"<gui>Complementos</gui><gui>Panel del examinador de archivos</gui></guiseq>."
 
 #: C/gedit-plugins-file-browser.page:32(section/p)
-#| msgid ""
-#| "To activate and use the <gui>side pane</gui>, select <guiseq><gui>View </"
-#| "gui><gui>Side pane</gui></guiseq> (or just press <key>F9</key>), and then "
-#| "click on the <gui>file-browser</gui> icon at the bottom of the pane."
 msgid ""
 "To activate and use the <gui>side pane</gui>, select <guiseq><gui>View</"
 "gui><gui>Side pane</gui></guiseq> (or just press <key>F9</key>), and then "
@@ -1747,38 +1815,45 @@ msgstr "Insertar fecha/hora"
 #| "As this name of this plugin suggests, the <gui>Insert Date/Time</gui> "
 #| "plugin allows you to insert the date and/or time at the current cursor "
 #| "position. To enable this plugin, select <guiseq><gui>Edit</gui> "
-#| "<gui>Preferences</gui><gui> Plugins</gui> <gui>Insert Date/Time</gui></"
+#| "<gui>Preferences</gui><gui>Plugins</gui><gui>Insert Date/Time</gui></"
 #| "guiseq>. To use the plugin, press <guiseq><gui>Edit</gui><gui>Insert Date "
 #| "and Time</gui></guiseq>."
 msgid ""
 "As this name of this plugin suggests, the <gui>Insert Date/Time</gui> plugin "
 "allows you to insert the date and/or time at the current cursor position. To "
-"enable this plugin, select <guiseq><gui>Edit</gui> <gui>Preferences</"
-"gui><gui>Plugins</gui><gui>Insert Date/Time</gui></guiseq>. To use the "
-"plugin, press <guiseq><gui>Edit</gui><gui>Insert Date and Time</gui></"
-"guiseq>."
+"enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Insert Date/"
+"Time</gui></guiseq>. To use the plugin, press <guiseq> <gui style=\"menu"
+"\">Edit</gui><gui>Insert Date and Time</gui></guiseq>."
 msgstr ""
 "Como su propio nombre indica, el complemento <gui>Insertar fecha y hora</"
 "gui> le permite insertar la fecha y/o la hora en posición actual del cursor. "
-"Para activar este complemento, seleccione <guiseq><gui>Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Insertar fecha y "
-"hora</gui></guiseq>. Para usar el complemento, pulse <guiseq><gui>Editar</"
-"gui><gui>Insertar fecha y hora</gui></guiseq>."
+"Para activar este complemento, seleccione <guiseq><gui style=\"menu\">gedit</"
+"gui><gui> Preferencias</gui><gui>Complementos</gui><gui>Insertar fecha y "
+"hora</gui></guiseq>. Para usar el complemento, pulse <guiseq><gui style="
+"\"menu\">Editar</gui><gui>Insertar fecha y hora</gui></guiseq>."
 
 #: C/gedit-plugins-insert-date-time.page:29(page/p)
+#| msgid ""
+#| "By default, the <gui>Insert Date/Time</gui> plugin will prompt you to "
+#| "choose your preferred date/time format each time that you use the plugin. "
+#| "However, you can choose your own default date and time format by "
+#| "selecting <guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui> "
+#| "<gui>Insert Date/Time</gui><gui>Configure</gui></guiseq>."
 msgid ""
 "By default, the <gui>Insert Date/Time</gui> plugin will prompt you to choose "
 "your preferred date/time format each time that you use the plugin. However, "
 "you can choose your own default date and time format by selecting "
-"<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui> <gui>Insert "
-"Date/Time</gui><gui>Configure</gui></guiseq>."
+"<guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</"
+"gui> <gui>Plugins</gui><gui>Insert Date/Time</gui><gui>Configure</gui></"
+"guiseq>."
 msgstr ""
 "De manera predeterminada, el complemento <gui>Insertar fecha y hora</gui> le "
 "pedirá su formato de fecha y hora preferido cada vez que use el complemento. "
 "Sin embargo, puede seleccionar el formato de fecha y hora predeterminado "
-"seleccionando <guiseq><gui>Editar</gui><gui>Preferencias</"
-"gui><gui>Complementos</gui><gui>Insertar fecha y hora</gui><gui>Configurar</"
-"gui></guiseq>."
+"seleccionando <guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem"
+"\">Preferencias</gui> <gui>Complementos</gui><gui>Insertar fecha y horar</"
+"gui><gui>Configurar</gui></guiseq>."
 
 #: C/gedit-plugins-install.page:15(info/desc)
 msgid "How to install third-party plugins"
@@ -1839,19 +1914,24 @@ msgstr ""
 "nombre de usuario."
 
 #: C/gedit-plugins-install.page:41(item/p)
+#| msgid ""
+#| "After you have placed the plugin files into the correct directory, the "
+#| "plugin will appear in the Preferences menu. Select <guiseq><gui>Edit </"
+#| "gui><gui>Preferences</gui><gui>Plugins</gui><gui>[Name of Plugin]</gui> </"
+#| "guiseq> to enable the plugin."
 msgid ""
 "After you have placed the plugin files into the correct directory, the "
 "plugin will appear in the Preferences menu. Select <guiseq><gui>Edit </"
-"gui><gui>Preferences</gui><gui>Plugins</gui><gui>[Name of Plugin]</gui> </"
-"guiseq> to enable the plugin."
+"gui><gui style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>[Name "
+"of Plugin]</gui></guiseq> to enable the plugin."
 msgstr ""
 "Después de mover el complemento a la carpeta correcta, aparecerá en el menú "
-"«Preferencias». Seleccione <guiseq><gui>Editar</gui><gui>Preferencias</"
-"gui><gui>Complementos</gui><gui>[Nombre del complemento]</gui></guiseq> para "
-"activarlo."
+"«Preferencias». Seleccione <guiseq><gui>Editar</gui><gui style=\"menuitem"
+"\">Preferencias</gui><gui>Complementos</gui><gui>[Nombre del complemento]</"
+"gui></guiseq> para activarlo."
 
 #: C/gedit-plugins-install.page:45(item/p)
-#: C/gedit-plugins-session-saver.page:46(item/p)
+#: C/gedit-plugins-session-saver.page:47(item/p)
 msgid "Click <gui>Close</gui>."
 msgstr "Pulse <gui>Cerrar</gui>."
 
@@ -1897,19 +1977,23 @@ msgstr ""
 "una línea larga o puede dividir una línea larga en varias líneas más cortas."
 
 #: C/gedit-plugins-join-split-lines.page:21(page/p)
+#| msgid ""
+#| "To enable this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</"
+#| "gui> <gui>Plugins</gui><gui>Join/Split Lines</gui></guiseq>."
 msgid ""
-"To enable this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</gui> "
-"<gui>Plugins</gui><gui>Join/Split Lines</gui></guiseq>."
+"To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Join/Split "
+"Lines</gui></guiseq>."
 msgstr ""
-"Para activar este complemento seleccione <guiseq><gui>Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Unir/dividir líneas</"
+"Para activar este complemento seleccione <guiseq><gui style=\"menu\">gedit</"
+"gui><gui> Preferencias</gui><gui>Complementos</gui><gui>Unir/dividir líneas</"
 "gui></guiseq>."
 
-#: C/gedit-plugins-join-split-lines.page:25(steps/title)
+#: C/gedit-plugins-join-split-lines.page:26(steps/title)
 msgid "To join multiple lines into one longer line:"
 msgstr "Para unir varias líneas en una sola línea larga:"
 
-#: C/gedit-plugins-join-split-lines.page:26(item/p)
+#: C/gedit-plugins-join-split-lines.page:27(item/p)
 msgid ""
 "Select the lines that you want to join. To do this, you can use the mouse, "
 "or you can press <keyseq><key>Shift</key><key>Up Arrow</key> </keyseq> or "
@@ -1919,19 +2003,19 @@ msgstr ""
 "pulsar <keyseq><key>Mayús</key><key>Flecha arriba</key></keyseq> o "
 "<keyseq><key>Mayús</key><key>Flecha abajo</key></keyseq>."
 
-#: C/gedit-plugins-join-split-lines.page:30(item/p)
+#: C/gedit-plugins-join-split-lines.page:31(item/p)
 msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgstr "Pulse <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 
-#: C/gedit-plugins-join-split-lines.page:31(item/p)
+#: C/gedit-plugins-join-split-lines.page:32(item/p)
 msgid "The lines that you selected will be joined into one longer line."
 msgstr "Las líneas que seleccione se unirán en una sola línea larga."
 
-#: C/gedit-plugins-join-split-lines.page:36(steps/title)
+#: C/gedit-plugins-join-split-lines.page:37(steps/title)
 msgid "To split one line into multiple lines:"
 msgstr "Para dividir una línea en varias líneas:"
 
-#: C/gedit-plugins-join-split-lines.page:37(item/p)
+#: C/gedit-plugins-join-split-lines.page:38(item/p)
 msgid ""
 "Select the line that you want to split by placing your cursor anywhere on "
 "that line."
@@ -1939,11 +2023,11 @@ msgstr ""
 "Seleccione las líneas que dividir situando el cursor el cualquier parte de "
 "la línea."
 
-#: C/gedit-plugins-join-split-lines.page:39(item/p)
+#: C/gedit-plugins-join-split-lines.page:40(item/p)
 msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgstr "Pulse <keyseq><key>Ctrl</key><key>Mayús</key><key>J</key></keyseq>."
 
-#: C/gedit-plugins-join-split-lines.page:41(item/p)
+#: C/gedit-plugins-join-split-lines.page:42(item/p)
 msgid ""
 "The line will be split into multiple lines. Spaces are used to determine "
 "where it is safe to split a line, and the length of each line will not "
@@ -1978,13 +2062,17 @@ msgstr ""
 "los editores de texto <app>Emacs</app>, <app>Kate</app> y <app>Vim</app>."
 
 #: C/gedit-plugins-modelines.page:27(page/p)
+#| msgid ""
+#| "To enable the <app>Modelines</app> plugin, select <guiseq><gui>Edit</gui> "
+#| "<gui>Preferences</gui><gui>Plugins</gui><gui>Modelines</gui></guiseq>."
 msgid ""
-"To enable the <app>Modelines</app> plugin, select <guiseq><gui>Edit</gui> "
-"<gui>Preferences</gui><gui>Plugins</gui><gui>Modelines</gui></guiseq>."
+"To enable the <app>Modelines</app> plugin, select <guiseq><gui style=\"menu"
+"\">gedit</gui> <gui style=\"menuitem\">Preferences</gui><gui>Plugins</"
+"gui><gui>Modelines</gui></guiseq>."
 msgstr ""
 "Para activar el complemento <app>Modos de líneas</app> seleccione "
-"<guiseq><gui>Editar</gui><gui>Preferencias</gui><gui>Complementos</"
-"gui><gui>Modos de líneas</gui></guiseq>."
+"<guiseq><gui style=\"menu\">gedit</gui><gui> Preferencias</"
+"gui><gui>Complementos</gui><gui>Modos de líneas</gui></guiseq>."
 
 #: C/gedit-plugins-modelines.page:31(section/title)
 msgid "General Modeline Options"
@@ -2161,30 +2249,43 @@ msgid "Multi edit"
 msgstr "Edición múltiple"
 
 #: C/gedit-plugins-multi-edit.page:19(page/p)
+#| msgid ""
+#| "The <app>Multi Edit</app> plugin allows you to edit a document in "
+#| "multiple places at once. This can be helpful when performing tedious "
+#| "editing tasks. To enable the Multi Edit plugin, select <guiseq><gui>Edit</"
+#| "gui><gui> Preferences</gui><gui>Plugins</gui><gui>Multi Edit</gui></"
+#| "guiseq>."
 msgid ""
 "The <app>Multi Edit</app> plugin allows you to edit a document in multiple "
 "places at once. This can be helpful when performing tedious editing tasks. "
-"To enable the Multi Edit plugin, select <guiseq><gui>Edit</gui><gui> "
-"Preferences</gui><gui>Plugins</gui><gui>Multi Edit</gui></guiseq>."
+"To enable the Multi Edit plugin, select <guiseq><gui style=\"menu\">gedit</"
+"gui><gui> Preferences</gui><gui>Plugins</gui><gui>Multi Edit</gui></guiseq>."
 msgstr ""
-"El complemento <em>Edición múltiple</em> le permite editar un documento en "
+"El complemento <app>Edición múltiple</app> le permite editar un documento en "
 "varios sitios a la vez. Esto puede ser útil para realizar tareas de edición "
 "tediosas. Para activar este complemento de edición múltiple, seleccione "
-"<guiseq><gui>Editar</gui><gui> Preferencias</gui><gui>Complementos</"
-"gui><gui>Edición múltiple</gui></guiseq>."
+"<guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferencias</gui><gui>Complementos</gui> <gui>Edición múltiple</gui></"
+"guiseq>."
 
 #: C/gedit-plugins-multi-edit.page:24(page/p)
+#| msgid ""
+#| "After you have enabled the plugin, turn-on Multi Edit mode by pressing "
+#| "<keyseq><key>Ctrl</key><key>Shift</key><key>C</key></keyseq>, or clicking "
+#| "<guiseq><gui>Edit</gui><gui>Multi Edit Mode</gui></guiseq>. You can then "
+#| "select the points in your file that you would like start editing."
 msgid ""
 "After you have enabled the plugin, turn-on Multi Edit mode by pressing "
 "<keyseq><key>Ctrl</key><key>Shift</key><key>C</key></keyseq>, or clicking "
-"<guiseq><gui>Edit</gui><gui>Multi Edit Mode</gui></guiseq>. You can then "
-"select the points in your file that you would like start editing."
+"<guiseq><gui style=\"menu\">gedit</gui><gui>Multi Edit Mode</gui></guiseq>. "
+"You can then select the points in your file that you would like start "
+"editing."
 msgstr ""
 "Después de activar el complemento, active el modo de edición múltiple "
 "pulsando <keyseq><key>Ctrl</key><key>Mayús</key><key>C</key></keyseq>, o "
-"pulsando <guiseq><gui>Editar</gui><gui>Modo de edición múltiple</gui></"
-"guiseq>. Puede seleccionar los puntos en el archivo que quiere empezar a "
-"editar."
+"pulsando <guiseq><gui style=\"menu\">gedit</gui><gui>Modo de edición "
+"múltiple</gui></guiseq>. Puede seleccionar los puntos en el archivo que "
+"quiere empezar a editar."
 
 #: C/gedit-plugins-multi-edit.page:29(page/p)
 msgid "To insert editing points in your file:"
@@ -2243,19 +2344,20 @@ msgstr "Consola de Python"
 #| "You can add a Python console to the bottom pane, allowing you to test "
 #| "Python scripts without leaving <app>gedit</app>. To enable the Python "
 #| "console, select <guiseq><gui>Edit</gui><gui>Preferences</gui> "
-#| "<gui>Plugins</gui><gui> Python Console</gui></guiseq>."
+#| "<gui>Plugins</gui><gui>Python Console</gui></guiseq>."
 msgid ""
 "You can add a Python console to the bottom pane, allowing you to test Python "
 "scripts without leaving <app>gedit</app>. To enable the Python console, "
-"select <guiseq><gui>Edit</gui><gui>Preferences</gui> <gui>Plugins</"
-"gui><gui>Python Console</gui></guiseq>."
+"select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui><gui>Plugins</gui> <gui>Python Console</gui></guiseq>."
 msgstr ""
 "Puede añadir una consola de Python al panel inferior, lo que le permite "
 "probar sus scripts Python sin salir de <app>gedit</app>. Para activar la "
-"consola de Python, seleccione <guiseq><gui>Editar</gui><gui>Preferencias</"
-"gui><gui>Complementos</gui><gui>Consola Python</gui></guiseq>."
+"consola de Python, seleccione <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Preferencias</gui><gui>Complementos</gui> <gui>Consola "
+"Python</gui></guiseq>."
 
-#: C/gedit-plugins-pyconsole.page:22(page/p)
+#: C/gedit-plugins-pyconsole.page:23(page/p)
 msgid ""
 "Once the Python console is enabled, you can open it by selecting "
 "<guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just press "
@@ -2265,7 +2367,7 @@ msgstr ""
 "<guiseq><gui>Ver</gui><gui>Panel inferior</gui></guiseq>, o simplemente "
 "pulsando <keyseq><key>Mayús</key><key>F9</key></keyseq>."
 
-#: C/gedit-plugins-pyconsole.page:26(note/p)
+#: C/gedit-plugins-pyconsole.page:27(note/p)
 msgid ""
 "If you have also enabled the <gui>Embeded Terminal</gui> plugin, the "
 "<gui>Python Console</gui> will appear as a separate tab in the bottom pane."
@@ -2283,16 +2385,22 @@ msgid "Quick open"
 msgstr "Apertura rápida"
 
 #: C/gedit-plugins-quick-open.page:18(page/p)
+#| msgid ""
+#| "As the name of this plugin would imply, the <app>Quick Open</app> plugin "
+#| "helps you to open files more quickly than the regular way of opening "
+#| "files. To enable this plugin, select <guiseq><gui>Edit</gui><gui> "
+#| "Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></guiseq>."
 msgid ""
 "As the name of this plugin would imply, the <app>Quick Open</app> plugin "
 "helps you to open files more quickly than the regular way of opening files. "
-"To enable this plugin, select <guiseq><gui>Edit</gui><gui> Preferences</"
-"gui><gui>Plugins</gui><gui>Quick Open</gui></guiseq>."
+"To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui><gui> "
+"Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></guiseq>."
 msgstr ""
 "Como su propio nombre indica, el complemento de <app>Apertura rápida</app> "
 "le ayuda a abrir archivos más rápidamente que de la manera habitual. Para "
-"activar este complemento, seleccione <guiseq><gui>Editar</gui><gui> "
-"Preferencias</gui><gui>Complementos</gui><gui>Apertura rápida</gui></guiseq>."
+"activar este complemento, seleccione <guiseq><gui style=\"menu\">gedit</"
+"gui><gui> Preferencias</gui><gui>Complementos</gui><gui>Apertura rápida</"
+"gui></guiseq>."
 
 #: C/gedit-plugins-quick-open.page:23(page/p)
 msgid "Once you've enabled it, here is how to use the plugin:"
@@ -2352,22 +2460,28 @@ msgid "Session Saver"
 msgstr "Guardador de sesiones"
 
 #: C/gedit-plugins-session-saver.page:18(page/p)
+#| msgid ""
+#| "The <app>Session Saver</app> plugin saves groups of files together so "
+#| "that you can open them together at a later time. To enable the plugin, "
+#| "select <guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui> "
+#| "<gui>Session Saver</gui></guiseq>."
 msgid ""
 "The <app>Session Saver</app> plugin saves groups of files together so that "
 "you can open them together at a later time. To enable the plugin, select "
-"<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui> <gui>Session "
-"Saver</gui></guiseq>."
+"<guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem\">Preferences</"
+"gui><gui>Plugins</gui> <gui>Session Saver</gui></guiseq>."
 msgstr ""
-"El complemento <em>Guardador de sesiones</em> guarda grupos de archivos "
+"El complemento <app>Guardador de sesiones</app> guarda grupos de archivos "
 "juntos, por lo que que puede puede abrirlos juntos más tarde. Para activar "
-"este complemento, seleccione <guiseq><gui>Editar</gui><gui>Preferencias</"
-"gui><gui>Complementos</gui><gui>Guardador de sesiones</gui></guiseq>."
+"este complemento, seleccione <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Preferencias</gui><gui>Complementos</gui> <gui>Guardador "
+"de sesiones</gui></guiseq>."
 
-#: C/gedit-plugins-session-saver.page:24(steps/title)
+#: C/gedit-plugins-session-saver.page:25(steps/title)
 msgid "To save a new session:"
 msgstr "Para guardar una sesión nueva:"
 
-#: C/gedit-plugins-session-saver.page:25(item/p)
+#: C/gedit-plugins-session-saver.page:26(item/p)
 msgid ""
 "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui><gui>Save current "
 "session</gui></guiseq>."
@@ -2375,34 +2489,34 @@ msgstr ""
 "Seleccione <guiseq><gui>Archivo</gui><gui>Sesiones guardadas</"
 "gui><gui>Guardar sesión actual</gui></guiseq>."
 
-#: C/gedit-plugins-session-saver.page:27(item/p)
+#: C/gedit-plugins-session-saver.page:28(item/p)
 msgid "Type a session name in the <gui>Save session</gui> dialog box."
 msgstr ""
 "Escriba un nombre para la sesión en el cuadro de diálogo <gui>Guardar "
 "sesión</gui>."
 
-#: C/gedit-plugins-session-saver.page:29(item/p)
+#: C/gedit-plugins-session-saver.page:30(item/p)
 msgid "Click <gui>Save</gui>."
 msgstr "Pulse <gui>Guardar</gui>."
 
-#: C/gedit-plugins-session-saver.page:33(steps/title)
+#: C/gedit-plugins-session-saver.page:34(steps/title)
 msgid "To open an existing session:"
 msgstr "Para abrir una sesión existente:"
 
-#: C/gedit-plugins-session-saver.page:34(item/p)
+#: C/gedit-plugins-session-saver.page:35(item/p)
 msgid "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui></guiseq>."
 msgstr ""
 "Seleccione <guiseq><gui>Archivo</gui><gui>Sesiones guardadas</gui></guiseq>."
 
-#: C/gedit-plugins-session-saver.page:36(item/p)
+#: C/gedit-plugins-session-saver.page:37(item/p)
 msgid "Click the name of your desired session."
 msgstr "Pulse en el nombre de la sesión que quiere."
 
-#: C/gedit-plugins-session-saver.page:40(steps/title)
+#: C/gedit-plugins-session-saver.page:41(steps/title)
 msgid "To delete an existing session:"
 msgstr "Para eliminar una sesión existente:"
 
-#: C/gedit-plugins-session-saver.page:41(item/p)
+#: C/gedit-plugins-session-saver.page:42(item/p)
 msgid ""
 "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui><gui> Manage saved "
 "sessions</gui></guiseq>."
@@ -2410,15 +2524,15 @@ msgstr ""
 "Seleccione <guiseq><gui>Archivo</gui><gui>Sesiones guardadas</"
 "gui><gui>Gestionar sesiones guardadas</gui></guiseq>."
 
-#: C/gedit-plugins-session-saver.page:43(item/p)
+#: C/gedit-plugins-session-saver.page:44(item/p)
 msgid "Select the name of the session that you want to delete."
 msgstr "Seleccione el nombre de la sesión que quiere eliminar."
 
-#: C/gedit-plugins-session-saver.page:45(item/p)
+#: C/gedit-plugins-session-saver.page:46(item/p)
 msgid "Click <gui>Delete</gui>."
 msgstr "Pulse <gui>Eliminar</gui>."
 
-#: C/gedit-plugins-session-saver.page:47(item/p)
+#: C/gedit-plugins-session-saver.page:48(item/p)
 msgid ""
 "The session name will still be listed in your list of sessions until you "
 "close <app>gedit</app>."
@@ -2452,13 +2566,17 @@ msgstr ""
 "fácil y rápido."
 
 #: C/gedit-plugins-snippets-guide.page:22(page/p)
+#| msgid ""
+#| "To enable the <app>Snippets</app> plugin, select <guiseq><gui>Edit</gui> "
+#| "<gui>Preferences</gui><gui>Plugins</gui><gui>Snippets</gui></guiseq>."
 msgid ""
-"To enable the <app>Snippets</app> plugin, select <guiseq><gui>Edit</gui> "
-"<gui>Preferences</gui><gui>Plugins</gui><gui>Snippets</gui></guiseq>."
+"To enable the <app>Snippets</app> plugin, select <guiseq><gui style=\"menu"
+"\">gedit</gui> <gui style=\"menuitem\">Preferences</gui><gui>Plugins</"
+"gui><gui>Snippets</gui></guiseq>."
 msgstr ""
-"Para activar el complemento <app>Recortes</app> seleccione "
-"<guiseq><gui>Editar</gui><gui>Preferencias</gui><gui>Complementos</"
-"gui><gui>Recortes</gui></guiseq>."
+"Para activar el complemento <app>Recortes</app> seleccione <guiseq><gui "
+"style=\"menu\">gedit</gui> <gui style=\"menuitem\">Preferencias</"
+"gui><gui>Complementos</gui> <gui>Recortes</gui></guiseq>."
 
 #: C/gedit-plugins-snippets-guide.page:26(section/title)
 msgid "Using, Modifying and creating snippets"
@@ -2572,12 +2690,6 @@ msgstr ""
 "El complemento «Ordenar» coloca las líneas seleccionadas en orden alfabético."
 
 #: C/gedit-plugins-sort.page:24(note/p)
-#| msgid ""
-#| "You cannot use the <gui>Undo</gui> feature to correct a <gui>Sort</gui> "
-#| "operation, so we recommend that you save the file immediately before "
-#| "performing the sort. If you make a mistake with the sort, you can revert "
-#| "to the previously-saved version of the file by selecting "
-#| "<guiseq><gui>File</gui> <gui>Revert</gui></guiseq>."
 msgid ""
 "You cannot use the <gui>Undo</gui> feature to correct a <gui>Sort</gui> "
 "operation, so we recommend that you save the file immediately before "
@@ -2592,27 +2704,31 @@ msgstr ""
 "seleccionando <guiseq><gui>Archivo</gui><gui>Revertir</gui></guiseq>."
 
 #: C/gedit-plugins-sort.page:30(page/p)
+#| msgid ""
+#| "To enable the <app>Sort</app> plugin, select <guiseq><gui>Edit</gui> "
+#| "<gui>Preferences</gui><gui>Plugins</gui><gui>Sort</gui></guiseq>."
 msgid ""
-"To enable the <app>Sort</app> plugin, select <guiseq><gui>Edit</gui> "
-"<gui>Preferences</gui><gui>Plugins</gui><gui>Sort</gui></guiseq>."
+"To enable the <app>Sort</app> plugin, select <guiseq><gui style=\"menu"
+"\">gedit</gui> <gui style=\"menuitem\">Preferences</gui><gui>Plugins</"
+"gui><gui>Sort</gui></guiseq>."
 msgstr ""
-"Para activar el complemento <app>Ordenar</app> seleccione "
-"<guiseq><gui>Editar</gui><gui>Preferencias</gui><gui>Complementos</"
+"Para activar el complemento <app>Ordenar</app> seleccione <guiseq><gui style="
+"\"menu\">gedit</gui><gui> Preferencias</gui><gui>Complementos</"
 "gui><gui>Ordenar</gui></guiseq>."
 
 #: C/gedit-plugins-sort.page:33(page/p)
 #| msgid ""
 #| "After you have enabled the <gui>Sort</gui> plugin, use it by selecting "
 #| "the lines of text you want to sort, and then clicking <guiseq><gui>Edit</"
-#| "gui> <gui>Sort</gui></guiseq>."
+#| "gui><gui>Sort</gui></guiseq>."
 msgid ""
 "After you have enabled the <gui>Sort</gui> plugin, use it by selecting the "
-"lines of text you want to sort, and then clicking <guiseq><gui>Edit</"
-"gui><gui>Sort</gui></guiseq>."
+"lines of text you want to sort, and then clicking <guiseq><gui style=\"menu"
+"\">gedit</gui><gui>Sort</gui></guiseq>."
 msgstr ""
 "Después de que haya activado el complemento <gui>Ordenar</gui>, úselo "
-"seleccionando las líneas de texto que quiere ordenar, y pulse "
-"<guiseq><gui>Editar</gui><gui>Ordenar</gui></guiseq>."
+"seleccionando las líneas de texto que quiere ordenar, y pulse <guiseq><gui "
+"style=\"menu\">gedit</gui><gui>Ordenar</gui></guiseq>."
 
 #: C/gedit-plugins-sort.page:37(page/p)
 msgid ""
@@ -2703,17 +2819,24 @@ msgid "Enabling the Plugin"
 msgstr "Activar el complemento"
 
 #: C/gedit-plugins-tag-list.page:35(section/p)
+#| msgid ""
+#| "You can activate the plugin by selecting <guiseq><gui>Edit</gui> "
+#| "<gui>Preferences</gui><gui>Plugins</gui><gui>Tag List</gui></guiseq>. "
+#| "Once you have activated the plugin, access it by selecting "
+#| "<guiseq><gui>View</gui><gui>Side Pane</gui></guiseq>, or by pressing "
+#| "<key>F9</key>."
 msgid ""
-"You can activate the plugin by selecting <guiseq><gui>Edit</gui> "
-"<gui>Preferences</gui><gui>Plugins</gui><gui>Tag List</gui></guiseq>. Once "
-"you have activated the plugin, access it by selecting <guiseq><gui>View</"
-"gui><gui>Side Pane</gui></guiseq>, or by pressing <key>F9</key>."
+"You can activate the plugin by selecting <guiseq><gui style=\"menu\">gedit</"
+"gui> <gui style=\"menuitem\">Preferences</gui><gui>Plugins</gui><gui>Tag "
+"List</gui></guiseq>. Once you have activated the plugin, access it by "
+"selecting <guiseq><gui>View</gui><gui>Side Pane</gui></guiseq>, or by "
+"pressing <key>F9</key>."
 msgstr ""
-"Puede activar el complemento seleccionando <guiseq><gui>Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Lista de etiquetas</"
-"gui></guiseq>. Una vez que lo haya activado, acceda a él seleccionando "
-"<guiseq><gui>Ver</gui><gui>Panel lateral</gui></guiseq>, o pulsando <key>F9</"
-"key>."
+"Puede activar el complemento seleccionando <guiseq><gui style=\"menu"
+"\">gedit</gui><gui style=\"menuitem\">Preferencias</gui> <gui>Complementos</"
+"gui><gui>Lista de etiquetas</gui></guiseq>. Una vez que lo haya activado, "
+"acceda a él seleccionando <guiseq><gui>Ver</gui><gui>Panel lateral</gui></"
+"guiseq>, o pulsando <key>F9</key>."
 
 #: C/gedit-plugins-tag-list.page:41(section/p)
 msgid ""
@@ -2833,15 +2956,16 @@ msgstr ""
 
 #: C/gedit-plugins-terminal.page:23(page/p)
 #| msgid ""
-#| "To enable this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</"
-#| "gui> <gui>Plugins</gui><gui>Embedded Terminal</gui></guiseq>."
+#| "To enable this plugin, select <guiseq><gui>Edit</gui> <gui>Preferences</"
+#| "gui><gui>Plugins</gui> <gui>Embedded Terminal</gui></guiseq>."
 msgid ""
-"To enable this plugin, select <guiseq><gui>Edit</gui> <gui>Preferences</"
-"gui><gui>Plugins</gui> <gui>Embedded Terminal</gui></guiseq>."
+"To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Embedded "
+"Terminal</gui></guiseq>."
 msgstr ""
-"Para activar este complemento, seleccione <guiseq><gui>Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Terminal empotrada</"
-"gui></guiseq>."
+"Para activar este complemento, seleccione <guiseq><gui style=\"menu\">gedit</"
+"gui> <gui style=\"menuitem\">Preferencias</gui><gui>Complementos</gui> "
+"<gui>Terminal empotrada</gui></guiseq>."
 
 #: C/gedit-plugins-terminal.page:27(page/p)
 msgid ""
@@ -2865,21 +2989,22 @@ msgstr "Tamaño del texto"
 #| msgid ""
 #| "The text size plugin allows you to temporarily change the text size in "
 #| "<app>gedit</app> without changing the program's default text size. To "
-#| "enable this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</"
-#| "gui><gui>Plugins </gui><gui>Text Size</gui></guiseq>."
+#| "enable this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</gui> "
+#| "<gui>Plugins</gui><gui>Text Size</gui></guiseq>."
 msgid ""
 "The text size plugin allows you to temporarily change the text size in "
 "<app>gedit</app> without changing the program's default text size. To enable "
-"this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</gui> "
-"<gui>Plugins</gui><gui>Text Size</gui></guiseq>."
+"this plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui style="
+"\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Text Size</gui></"
+"guiseq>."
 msgstr ""
 "El complemento de tamaño del texto le permite cambiar temporalmente el "
 "tamaño del texto en <app>gedit</app> sin cambiar el tamaño del texto "
 "predeterminado del programa. Para activar este complemento, elija "
-"<guiseq><gui>Editar</gui><gui>Preferencias</gui><gui>Complementos</"
-"gui><gui>Tamaño del texto</gui></guiseq>."
+"<guiseq><gui style=\"menu\">gedit</gui><gui> Preferencias</"
+"gui><gui>Complementos</gui><gui>Tamaño del texto</gui></guiseq>."
 
-#: C/gedit-plugins-text-size.page:25(list/title)
+#: C/gedit-plugins-text-size.page:26(list/title)
 msgid ""
 "Once you have enabled the plugin, do any of the following to change the text "
 "size in <app>gedit</app>:"
@@ -2887,7 +3012,7 @@ msgstr ""
 "Una vez activado el complemento, realice cualquiera de estas acciones para "
 "cambiar el texto en <app>gedit</app>:"
 
-#: C/gedit-plugins-text-size.page:27(item/p)
+#: C/gedit-plugins-text-size.page:28(item/p)
 msgid ""
 "To <em>increase</em> the text size, press <keyseq><key>Ctrl</key> <key>+</"
 "key></keyseq>."
@@ -2895,7 +3020,7 @@ msgstr ""
 "Para <em>aumentar</em> el tamaño del texto, seleccione <keyseq><key>Ctrl</"
 "key> <key>+</key></keyseq>."
 
-#: C/gedit-plugins-text-size.page:29(item/p)
+#: C/gedit-plugins-text-size.page:30(item/p)
 msgid ""
 "To <em>decrease</em> the text size, press <keyseq><key>Ctrl</key> <key>-</"
 "key></keyseq>."
@@ -2903,7 +3028,7 @@ msgstr ""
 "Para <em>disminuir</em> el tamaño del texto, seleccione <keyseq><key>Ctrl</"
 "key> <key>-</key></keyseq>."
 
-#: C/gedit-plugins-text-size.page:31(item/p)
+#: C/gedit-plugins-text-size.page:32(item/p)
 msgid ""
 "To <em>reset</em> the text size to the default size, press "
 "<keyseq><key>Ctrl</key><key>0</key></keyseq>."
@@ -2920,16 +3045,22 @@ msgid "Word completion"
 msgstr "Completado de palabras"
 
 #: C/gedit-plugins-word-completion.page:23(page/p)
+#| msgid ""
+#| "The <app>Word Completion</app> plugin can speed up your editing by "
+#| "suggesting completions of words as you type. To enable the plugin, select "
+#| "<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui><gui>Word "
+#| "Completion</gui></guiseq>."
 msgid ""
 "The <app>Word Completion</app> plugin can speed up your editing by "
 "suggesting completions of words as you type. To enable the plugin, select "
-"<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui><gui>Word "
-"Completion</gui></guiseq>."
+"<guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</"
+"gui> <gui>Plugins</gui><gui>Word Completion</gui></guiseq>."
 msgstr ""
 "El complemento <app>Completado de palabras</app> puede acelerar la edición "
 "sugiriéndole completados de palabras a medida que escribe. Para activar este "
-"complemento, seleccione <guiseq><gui>Editar</gui><gui>Preferencias</"
-"gui><gui>Complementos</gui><gui>Completado de palabras</gui></guiseq>."
+"complemento, seleccione <guiseq><gui style=\"menu\">gedit</gui> <gui style="
+"\"menuitem\">Preferencias</gui><gui>Complementos</gui> <gui>Completado de "
+"palabras</gui></guiseq>."
 
 #: C/gedit-plugins-word-completion.page:28(page/p)
 msgid ""
@@ -3831,22 +3962,18 @@ msgstr "Activar la comprobación de ortografía"
 
 #: C/gedit-spellcheck.page:22(section/p)
 #| msgid ""
-#| "To enable the plugin, select <guiseq><gui>Edit</gui><gui>Preferences </"
-#| "gui><gui>Plugins</gui><gui>Spell Checker</gui></guiseq>."
+#| "To enable the plugin, select <guiseq><gui>Edit</gui> <gui>Preferences</"
+#| "gui><gui>Plugins</gui> <gui>Spell Checker</gui></guiseq>."
 msgid ""
-"To enable the plugin, select <guiseq><gui>Edit</gui> <gui>Preferences</"
-"gui><gui>Plugins</gui> <gui>Spell Checker</gui></guiseq>."
+"To enable the plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Spell Checker</"
+"gui></guiseq>."
 msgstr ""
-"Para activar el complemento seleccione <guiseq><gui>Editar</"
-"gui><gui>Preferencias</gui><gui>Complementos</gui><gui>Corrector "
+"Para activar el complemento seleccione <guiseq><gui style=\"menu\">gedit</"
+"gui><gui> Preferencias</gui><gui>Complementos</gui><gui>Corrector "
 "ortográfico</gui></guiseq>."
 
 #: C/gedit-spellcheck.page:26(section/p)
-#| msgid ""
-#| "<app>gedit</app> will only check your document's spelling when you choose "
-#| "<guiseq><gui>Tools</gui><gui>Check Spelling</gui></guiseq>. To have <app> "
-#| "gedit</app> automatically check your spelling, select <guiseq><gui>Tools "
-#| "</gui><gui>Highlight Misspelled Words</gui></guiseq>."
 msgid ""
 "<app>gedit</app> will only check your document's spelling when you choose "
 "<guiseq><gui>Tools</gui><gui>Check Spelling</gui></guiseq>. To have "
@@ -3864,11 +3991,6 @@ msgid "Define the language to use for spell checking"
 msgstr "Definir el idioma que usar para la comprobación de la ortografía"
 
 #: C/gedit-spellcheck.page:34(section/p)
-#| msgid ""
-#| "By default, <app>gedit</app> will use your current language to spell "
-#| "check your document. If you need to use another language, choose <guiseq> "
-#| "<gui>Tools</gui><gui>Set Language...</gui></guiseq>, then choose the "
-#| "language you want to use."
 msgid ""
 "By default, <app>gedit</app> will use your current language to spell check "
 "your document. If you need to use another language, choose "
@@ -4087,16 +4209,21 @@ msgid "Undo a recent action"
 msgstr "Deshacer una acción reciente"
 
 #: C/gedit-undo-recent-action.page:25(page/p)
+#| msgid ""
+#| "If you make a mistake while using <app>gedit</app>, you can undo it by "
+#| "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
+#| "<guiseq><gui>Edit</gui><gui>Undo</gui></guiseq>. Doing so will cause "
+#| "<app>gedit</app> to undo one set of similar actions."
 msgid ""
 "If you make a mistake while using <app>gedit</app>, you can undo it by "
 "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
-"<guiseq><gui>Edit</gui><gui>Undo</gui></guiseq>. Doing so will cause "
-"<app>gedit</app> to undo one set of similar actions."
+"<guiseq><gui style=\"menu\">gedit</gui><gui>Undo</gui></guiseq>. Doing so "
+"will cause <app>gedit</app> to undo one set of similar actions."
 msgstr ""
 "Si comete un error mientras usa <app>gedit</app>, puede deshacerlo pulsando "
-"<keyseq><key>Ctrl</key><key>Z</key></keyseq>, o pulsando "
-"<guiseq><gui>Editar</gui><gui>Deshacer</gui></guiseq>. Esto hará que "
-"<app>gedit</app> deshaga un conjunto de acciones similares."
+"<keyseq><key>Ctrl</key><key>Z</key></keyseq>, o pulsando <guiseq><gui style="
+"\"menu\">gedit</gui><gui>Deshacer</gui></guiseq>. Esto hará que <app>gedit</"
+"app> deshaga un conjunto de acciones similares."
 
 #: C/gedit-undo-recent-action.page:30(note/p)
 msgid ""
@@ -4144,12 +4271,6 @@ msgstr ""
 "contenido se muestre en el área de trabajo."
 
 #: C/gedit-view-open-files-in-sidepane.page:31(page/p)
-#| msgid ""
-#| "The side pane also contains a <app>File Browser</app> view. If the pane "
-#| "displays a file directory instead of currently open files, click <media "
-#| "type=\"image\" mime=\"image/png\" src=\"figures/gedit-side-pane2.png\"> "
-#| "documents icon</media> at the bottom of the pane to switch to the "
-#| "<app>Documents</app> view."
 msgid ""
 "The side pane also contains a <app>File Browser</app> view. If the pane "
 "displays a file directory instead of currently open files, click <media type="
@@ -4172,6 +4293,13 @@ msgstr ""
 "El panel lateral sólo muestra los archivos abiertos en la ventana actual. "
 "Cuando hay varias ventanas abiertas, en el panel lateral sólo se muestran "
 "los archivos abiertos en la ventana actual."
+
+#~ msgid ""
+#~ "Select <guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Font &amp; "
+#~ "Colors</gui></guiseq>."
+#~ msgstr ""
+#~ "Seleccione <guiseq><gui>Editar</gui><gui>Preferencias</"
+#~ "gui><gui>Tipografía y colores</gui></guiseq>."
 
 #~ msgid ""
 #~ "Using the spell-check feature in <app>gedit</app> requires that you first "
