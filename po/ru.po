@@ -23,7 +23,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2013-02-10 17:19+0000\n"
-"PO-Revision-Date: 2013-02-12 08:49+0400\n"
+"PO-Revision-Date: 2013-02-25 22:18+0400\n"
 "Last-Translator: Yuri Myasoedov <omerta13@yandex.ru>\n"
 "Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -450,7 +450,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
 msgid "Automatically Detected Encodings"
-msgstr "Кодировки, определяемые автоматически"
+msgstr "Автоматически определяемые кодировки"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
 msgid ""
@@ -458,9 +458,9 @@ msgid ""
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
 "recognized encodings are used."
 msgstr ""
-"Сортированный список кодировок, используемых редактором для автоопределения "
-"кодировки файла. «ТЕКУЩАЯ» — это кодировка локали. Используются только "
-"распознаваемые кодировки."
+"Упорядоченный список кодировок, используемый gedit для автоматического "
+"определения кодировки файла. «ТЕКУЩАЯ» — это кодировка текущего языка "
+"системы. Используются только распознаваемые кодировки."
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
@@ -470,7 +470,7 @@ msgstr "['UTF-8', 'WINDOWS-1251', 'KOI8-R', 'ISO-8859-15', 'ISO-8859-5']"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
 msgid "Encodings shown in menu"
-msgstr "Кодировки, отображаемые в меню"
+msgstr "Кодировки, доступные в меню"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
 msgid ""
@@ -489,8 +489,9 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Список включённых модулей. В нём содержатся «адреса» включённых модулей. См. "
-"файл .gedit-plugin для получения «адреса» выбранного модуля."
+"Список включённых модулей, в котором содержатся местоположения включённых "
+"модулей. См. файл .gedit-plugin для получения местоположения выбранного "
+"модуля."
 
 #: ../gedit/gedit-app.c:115
 msgid "Show the application's help"
@@ -1159,7 +1160,7 @@ msgstr "Не удалось найти файл «%s»."
 #: ../gedit/gedit-io-error-info-bar.c:248
 #: ../gedit/gedit-io-error-info-bar.c:255
 msgid "Please check that you typed the location correctly and try again."
-msgstr "Убедитесь, что адрес указан правильно, и попробуйте еще раз."
+msgstr "Убедитесь, что адрес указан правильно, и попробуйте ещё раз."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:224
@@ -1261,7 +1262,7 @@ msgstr "Недостаточно прав для открытия файла."
 
 #: ../gedit/gedit-io-error-info-bar.c:618
 msgid "gedit has not been able to detect the character encoding."
-msgstr "Редактору gedit не удалось определить кодировку символов."
+msgstr "Не удалось определить кодировку символов."
 
 #: ../gedit/gedit-io-error-info-bar.c:620
 #: ../gedit/gedit-io-error-info-bar.c:642
@@ -1315,7 +1316,7 @@ msgid ""
 "the specified character encoding."
 msgstr ""
 "Документ содержит символы, которые не могут быть отображены с использованием "
-"указанной кодировки"
+"указанной кодировки."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
@@ -1333,8 +1334,7 @@ msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
 msgstr ""
-"gedit открыл этот файл в режиме «только чтение». Вы всё равно хотите "
-"отредактировать его?"
+"Файл был открыт в режиме «только чтение». Всё равно отредактировать его?"
 
 #: ../gedit/gedit-io-error-info-bar.c:873
 #: ../gedit/gedit-io-error-info-bar.c:971
@@ -1379,10 +1379,10 @@ msgid ""
 "You can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"gedit не может сделать резервную копию старой копии файла до сохранения "
-"нового. Вы можете проигнорировать это предупреждение и сохранить в любом "
-"случае, но если появится ошибка во время сохранения, вы потеряете старую "
-"копию файла. Всё равно сохранить?"
+"Невозможно сделать резервную копию старой копии файла до сохранения нового. "
+"Можно проигнорировать это предупреждение и сохранить в любом случае, но если "
+"во время сохранения появится ошибка, старая копия файла будет утеряна. Всё "
+"равно сохранить?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:1080
@@ -1391,7 +1391,7 @@ msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"gedit не может открыть адрес %s в режиме записи. Убедитесь в правильности "
+"Невозможно открыть адрес «%s» в режиме записи. Убедитесь в правильности "
 "указанного адреса и попробуйте ещё раз."
 
 #: ../gedit/gedit-io-error-info-bar.c:1088
@@ -1399,8 +1399,8 @@ msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
 msgstr ""
-"gedit не может открыть этот адрес в режиме записи. Убедитесь в правильности "
-"введённого адреса и попробуйте ещё раз."
+"Невозможно открыть этот адрес в режиме записи. Убедитесь в правильности "
+"указанного адреса и попробуйте ещё раз."
 
 #: ../gedit/gedit-io-error-info-bar.c:1097
 #, c-format
@@ -1408,7 +1408,7 @@ msgid ""
 "%s is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
-"%s не является верным адресом. Убедитесь в правильности введённого адреса и "
+"%s не является верным адресом. Убедитесь в правильности указанного адреса и "
 "попробуйте ещё раз."
 
 #: ../gedit/gedit-io-error-info-bar.c:1104
@@ -1416,7 +1416,7 @@ msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
-"Недостаточно прав для сохранения файла. Убедитесь в правильности введённого "
+"Недостаточно прав для сохранения файла. Убедитесь в правильности указанного "
 "адреса и попробуйте ещё раз."
 
 #: ../gedit/gedit-io-error-info-bar.c:1110
@@ -1432,8 +1432,8 @@ msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr ""
-"Вы пытаетесь сохранить файл на устройство в режиме только чтение. Убедитесь "
-"в правильности введённого адреса и попробуйте ещё раз."
+"Невозможно сохранить файл на устройство в режиме «только чтение». Убедитесь "
+"в правильности указанного адреса и попробуйте ещё раз."
 
 #: ../gedit/gedit-io-error-info-bar.c:1121
 msgid "A file with the same name already exists. Please use a different name."
@@ -1444,8 +1444,9 @@ msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
 msgstr ""
-"Диск, на который вы пытаетесь сохранить файл, имеет ограничение на длину "
-"имени файла. Используйте более короткое имя."
+"Диск, выбранный для сохранения файла, имеет ограничение на размер файла. "
+"Попробуйте сохранить файл меньшего размера или воспользуйтесь диском без "
+"подобных ограничений."
 
 #: ../gedit/gedit-io-error-info-bar.c:1133
 msgid ""
@@ -1453,9 +1454,8 @@ msgid ""
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
 "have this limitation."
 msgstr ""
-"Диск, на который вы пытаетесь сохранить файл, имеет ограничение на размер "
-"файла. Попробуйте сохранить файл меньшего размера или воспользуйтесь диском, "
-"не имеющим подобного ограничения."
+"Диск, выбранный для сохранения файла, имеет ограничение на длину имени "
+"файла. Используйте более короткое имя."
 
 #: ../gedit/gedit-io-error-info-bar.c:1149
 #, c-format
@@ -1709,7 +1709,7 @@ msgstr "Модули"
 #: ../gedit/gedit-print-job.c:572
 #, c-format
 msgid "File: %s"
-msgstr "Файл: «%s»"
+msgstr "Файл: %s"
 
 #: ../gedit/gedit-print-job.c:581
 msgid "Page %N of %Q"
@@ -1848,7 +1848,7 @@ msgstr "Заменить"
 
 #: ../gedit/gedit-replace-dialog.c:282
 msgid "Replace _All"
-msgstr "Заменить вс_е"
+msgstr "Заменить вс_ё"
 
 #: ../gedit/gedit-replace-dialog.ui.h:2
 msgid "Replace All"
@@ -2113,7 +2113,7 @@ msgstr "Найти след_ующее"
 
 #: ../gedit/gedit-ui.h:110
 msgid "Search forwards for the same text"
-msgstr "Обратный поиск этого же текста"
+msgstr "Прямой поиск того же текста"
 
 #: ../gedit/gedit-ui.h:111
 msgid "Find Pre_vious"
@@ -2158,7 +2158,7 @@ msgstr "Сохранить все открытые файлы"
 
 #: ../gedit/gedit-ui.h:128
 msgid "_Close All"
-msgstr "_Закрыть все"
+msgstr "_Закрыть всё"
 
 #: ../gedit/gedit-ui.h:129
 msgid "Close all open files"
@@ -2987,7 +2987,7 @@ msgstr "_Следующий адрес"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:870
 msgid "Go to the next visited location"
-msgstr "Перейти к следующему посещенному адресу"
+msgstr "Перейти к следующему посещённому адресу"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:871
 msgid "Re_fresh View"
