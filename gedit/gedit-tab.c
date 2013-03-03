@@ -58,6 +58,7 @@ struct _GeditTabPrivate
 
 	GeditViewFrame         *frame;
 
+	GtkWidget	       *info_bar_revealer;
 	GtkWidget	       *info_bar;
 	GtkWidget	       *print_preview;
 
@@ -529,33 +530,42 @@ static void
 set_info_bar (GeditTab  *tab,
 	      GtkWidget *info_bar)
 {
-	GtkWidget *revealer;
-
 	if (tab->priv->info_bar == info_bar)
 		return;
-
-	if (tab->priv->info_bar != NULL)
-	{
-		revealer = gtk_widget_get_parent (tab->priv->info_bar);
-		g_signal_connect (revealer, "notify::child-revealed",
-		                  G_CALLBACK(gtk_widget_destroy), NULL);
-		gd_revealer_set_reveal_child (GD_REVEALER (revealer), FALSE);
-	}
 
 	tab->priv->info_bar = info_bar;
 
 	if (info_bar == NULL)
-		return;
+	{
+		gd_revealer_set_reveal_child (GD_REVEALER (tab->priv->info_bar_revealer), FALSE);
+		tab->priv->info_bar = NULL;
+	}
+	else
+	{
+		/* lazy init the reveler */
+		if (tab->priv->info_bar_revealer == NULL)
+		{
+			tab->priv->info_bar_revealer = gd_revealer_new ();
+			gtk_widget_show (tab->priv->info_bar_revealer);
+			gtk_box_pack_start (GTK_BOX (tab), tab->priv->info_bar_revealer, FALSE, FALSE, 0);
+		}
+		else
+		{
+			GtkWidget *old;
 
-	revealer = gd_revealer_new ();
-	gtk_widget_show (revealer);
-	gtk_box_pack_start (GTK_BOX (tab), revealer, FALSE, FALSE, 0);
-	gtk_container_add (GTK_CONTAINER (revealer), tab->priv->info_bar);
+			old = gtk_bin_get_child (GTK_BIN (tab->priv->info_bar_revealer));
+			if (old != NULL)
+			{
+				gtk_container_remove (GTK_CONTAINER (tab->priv->info_bar_revealer), old);				
+			}
+		}
 
-	gd_revealer_set_reveal_child (GD_REVEALER (revealer), TRUE);
+		gtk_container_add (GTK_CONTAINER (tab->priv->info_bar_revealer), info_bar);
+		gd_revealer_set_reveal_child (GD_REVEALER (tab->priv->info_bar_revealer), TRUE);
 
-	g_object_add_weak_pointer (G_OBJECT (tab->priv->info_bar),
-				   (gpointer *)&tab->priv->info_bar);
+		g_object_add_weak_pointer (G_OBJECT (info_bar),
+					   (gpointer *)&tab->priv->info_bar);
+	}
 }
 
 static void
