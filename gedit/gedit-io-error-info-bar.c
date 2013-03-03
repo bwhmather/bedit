@@ -737,10 +737,12 @@ gedit_conversion_error_info_bar_get_encoding (GtkWidget *info_bar)
 
 	menu = g_object_get_data (G_OBJECT (info_bar), 
 				  "gedit-info-bar-encoding-menu");	
-	g_return_val_if_fail (menu, NULL);
-	
-	return gedit_encodings_combo_box_get_selected_encoding
-					(GEDIT_ENCODINGS_COMBO_BOX (menu));
+	if (menu != NULL)
+	{
+		return gedit_encodings_combo_box_get_selected_encoding (GEDIT_ENCODINGS_COMBO_BOX (menu));
+	}
+
+	return NULL;
 }
 
 GtkWidget *
