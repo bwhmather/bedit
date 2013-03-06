@@ -742,6 +742,8 @@ gedit_multi_notebook_get_all_tabs (GeditMultiNotebook *mnb)
 		{
 			ret = g_list_prepend (ret, l->data);
 		}
+
+		g_list_free (children);
 	}
 
 	ret = g_list_reverse (ret);

@@ -2851,6 +2851,8 @@ update_can_close (GeditWindow *window)
 		                                                   GTK_APPLICATION_INHIBIT_LOGOUT,
 		                                                   _("There are unsaved documents"));
 	}
+
+	g_list_free (tabs);
 }
 
 static void

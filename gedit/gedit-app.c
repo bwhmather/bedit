@@ -884,6 +884,7 @@ gedit_app_command_line (GApplication            *application,
 	}
 
 	g_option_context_free (context);
+	g_strfreev (arguments);
 	clear_options ();
 
 	return 0;
