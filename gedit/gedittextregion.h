@@ -1,4 +1,4 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- 
+/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
  * gedittextregion.h - GtkTextMark based region utility functions
  *
@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.  
+ * Boston, MA 02111-1307, USA.
  */
 
 #ifndef __GEDIT_TEXT_REGION_H__
@@ -40,7 +40,7 @@ struct _GeditTextRegionIterator {
 	/*< private >*/
 	gpointer dummy1;
 	guint32  dummy2;
-	gpointer dummy3;	
+	gpointer dummy3;
 };
 
 GeditTextRegion *gedit_text_region_new                          (GtkTextBuffer *buffer);

@@ -214,7 +214,7 @@ load_file_list (GeditWindow         *window,
 					 line_pos,
 					 column_pos,
 					 create);
-			
+
 			/* make sure the view has focus */
 			gtk_widget_grab_focus (GTK_WIDGET (gedit_tab_get_view (tab)));
 
@@ -438,7 +438,7 @@ _gedit_cmd_file_open (GtkAction   *action,
 		return;
 	}
 
-	/* Translators: "Open Files" is the title of the file chooser window */ 
+	/* Translators: "Open Files" is the title of the file chooser window */
 	open_dialog = gedit_file_chooser_dialog_new (_("Open Files"),
 						     GTK_WINDOW (window),
 						     GTK_FILE_CHOOSER_ACTION_OPEN,
@@ -939,7 +939,7 @@ _gedit_cmd_file_save_tab (GeditTab    *tab,
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
-	if (gedit_document_is_untitled (doc) || 
+	if (gedit_document_is_untitled (doc) ||
 	    gedit_document_get_readonly (doc))
 	{
 		gedit_debug_message (DEBUG_COMMANDS, "Untitled or Readonly");
@@ -1016,7 +1016,7 @@ _gedit_cmd_file_save_documents_list (GeditWindow *window,
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (!(gedit_window_get_state (window) & 
+	g_return_if_fail (!(gedit_window_get_state (window) &
 			    GEDIT_WINDOW_STATE_PRINTING));
 
 	l = docs;
@@ -1027,7 +1027,7 @@ _gedit_cmd_file_save_documents_list (GeditWindow *window,
 		GeditTabState state;
 
 		g_return_if_fail (GEDIT_IS_DOCUMENT (l->data));
- 
+
 		doc = GEDIT_DOCUMENT (l->data);
 		t = gedit_tab_get_from_document (doc);
 		state = gedit_tab_get_state (t);
@@ -1042,7 +1042,7 @@ _gedit_cmd_file_save_documents_list (GeditWindow *window,
 		{
 			/* FIXME: manage the case of local readonly files owned by the
 			   user is running gedit - Paolo (Dec. 8, 2005) */
-			if (gedit_document_is_untitled (doc) || 
+			if (gedit_document_is_untitled (doc) ||
 			    gedit_document_get_readonly (doc))
 			{
 				if (document_needs_saving (doc))
@@ -1116,7 +1116,7 @@ void
 gedit_commands_save_all_documents (GeditWindow *window)
 {
 	GList *docs;
-	
+
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -1143,9 +1143,9 @@ gedit_commands_save_document (GeditWindow   *window,
 
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 	g_return_if_fail (GEDIT_IS_DOCUMENT (document));
-	
+
 	gedit_debug (DEBUG_COMMANDS);
-	
+
 	tab = gedit_tab_get_from_document (document);
 	_gedit_cmd_file_save_tab (tab, window);
 }
@@ -1508,7 +1508,7 @@ save_and_close_all_documents (const GList  *docs,
 		   - GEDIT_TAB_STATE_LOADING: close, we are sure the file is unmodified
 		   - GEDIT_TAB_STATE_REVERTING: since the user wants
 		     to return back to the version of the file she previously saved, we can close
-		     without saving (CHECK: are we sure this is the right behavior, suppose the case 
+		     without saving (CHECK: are we sure this is the right behavior, suppose the case
 		     the original file has been deleted)
 		   - [*] GEDIT_TAB_STATE_SAVING: invalid, ClosAll
 		     and Quit are unsensitive if the window state is SAVING.
@@ -1538,12 +1538,12 @@ save_and_close_all_documents (const GList  *docs,
 		{
 			if ((g_list_index ((GList *)docs, doc) >= 0) &&
 			    (state != GEDIT_TAB_STATE_LOADING) &&
-			    (state != GEDIT_TAB_STATE_LOADING_ERROR) &&			    
+			    (state != GEDIT_TAB_STATE_LOADING_ERROR) &&
 			    (state != GEDIT_TAB_STATE_REVERTING)) /* CHECK: is this the right behavior with REVERTING ?*/
-			{			
+			{
 				/* The document must be saved before closing */
 				g_return_if_fail (document_needs_saving (doc));
-				
+
 				/* FIXME: manage the case of local readonly files owned by the
 				   user is running gedit - Paolo (Dec. 8, 2005) */
 				if (gedit_document_is_untitled (doc) ||
@@ -1806,8 +1806,8 @@ _gedit_cmd_file_close_tab (GeditTab    *tab,
 			   GEDIT_IS_QUITTING,
 			   GBOOLEAN_TO_POINTER (FALSE));
 
-	g_object_set_data (G_OBJECT (window), 
-	                   GEDIT_IS_QUITTING_ALL, 
+	g_object_set_data (G_OBJECT (window),
+	                   GEDIT_IS_QUITTING_ALL,
 	                   GINT_TO_POINTER (FALSE));
 
 
@@ -1858,7 +1858,7 @@ file_close_all (GeditWindow *window,
 	g_object_set_data (G_OBJECT (window),
 			   GEDIT_IS_QUITTING,
 			   GBOOLEAN_TO_POINTER (is_quitting));
-			   
+
 	unsaved_docs = gedit_window_get_unsaved_documents (window);
 
 	if (unsaved_docs == NULL)
@@ -1933,7 +1933,7 @@ quit_all ()
 	for (item = windows; item; item = g_list_next (item))
 	{
 		GeditWindow *window = GEDIT_WINDOW (item->data);
-	
+
 		g_object_set_data (G_OBJECT (window),
 		                   GEDIT_IS_QUITTING_ALL,
 		                   GINT_TO_POINTER (TRUE));

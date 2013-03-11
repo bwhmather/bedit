@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with gedit; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
@@ -314,7 +314,7 @@ run_search (GeditViewFrame   *frame,
 		                                      &start_iter,
 		                                      NULL);
 	}
-	
+
 	if (found)
 	{
 		gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc),
@@ -450,7 +450,7 @@ search_widget_key_press_event (GtkWidget      *widget,
 		retval = TRUE;
 	}
 
-	if (((event->state & modifiers) == (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) && 
+	if (((event->state & modifiers) == (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) &&
 	    (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
 	{
 		search_again (frame, TRUE);
@@ -464,7 +464,7 @@ search_widget_key_press_event (GtkWidget      *widget,
 		retval = TRUE;
 	}
 
-	if (((event->state & modifiers) == GDK_CONTROL_MASK) && 
+	if (((event->state & modifiers) == GDK_CONTROL_MASK) &&
 	    (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
 	{
 		search_again (frame, FALSE);
@@ -668,24 +668,24 @@ search_entry_insert_text (GtkEditable    *editable,
 			return;
 
 		c = g_utf8_get_char (p);
-		
+
 		if (((c == '-' || c == '+') && *position == 0) ||
 		    (c == ':' && *position != 0))
 		{
 			gchar *s = NULL;
-		
+
 			if (c == ':')
 			{
 				s = gtk_editable_get_chars (editable, 0, -1);
 				s = g_utf8_strchr (s, -1, ':');
 			}
-			
+
 			if (s == NULL || s == p)
 			{
 				next = g_utf8_next_char (p);
 				p = next;
 			}
-			
+
 			g_free (s);
 		}
 
@@ -733,7 +733,7 @@ search_entry_insert_text (GtkEditable    *editable,
 		insert_text = TRUE;
 
 		g_signal_stop_emission_by_name (editable, "insert_text");
-		
+
 		gtk_editable_insert_text (editable, escaped_text, new_len, position);
 
 		insert_text = FALSE;

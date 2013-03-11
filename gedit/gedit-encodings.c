@@ -2,7 +2,7 @@
  * gedit-encodings.c
  * This file is part of gedit
  *
- * Copyright (C) 2002-2005 Paolo Maggi 
+ * Copyright (C) 2002-2005 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
@@ -50,8 +50,8 @@ G_DEFINE_BOXED_TYPE (GeditEncoding, gedit_encoding,
                      gedit_encoding_copy,
                      gedit_encoding_free)
 
-/* 
- * The original versions of the following tables are taken from profterm 
+/*
+ * The original versions of the following tables are taken from profterm
  *
  * Copyright (C) 2002 Red Hat, Inc.
  */
@@ -112,7 +112,7 @@ typedef enum
   GEDIT_ENCODING_KOI8_R,
   GEDIT_ENCODING_KOI8__R,
   GEDIT_ENCODING_KOI8_U,
-  
+
   GEDIT_ENCODING_SHIFT_JIS,
   GEDIT_ENCODING_TCVN,
   GEDIT_ENCODING_TIS_620,
@@ -133,7 +133,7 @@ typedef enum
 
   GEDIT_ENCODING_UTF_8,
   GEDIT_ENCODING_UNKNOWN
-  
+
 } GeditEncodingIndex;
 
 static const GeditEncoding utf8_encoding =  {
@@ -145,8 +145,8 @@ static const GeditEncoding utf8_encoding =  {
 /* initialized in gedit_encoding_lazy_init() */
 static GeditEncoding unknown_encoding = {
 	GEDIT_ENCODING_UNKNOWN,
-	NULL, 
-	NULL 
+	NULL,
+	NULL
 };
 
 static const GeditEncoding encodings [] = {
@@ -252,7 +252,7 @@ static const GeditEncoding encodings [] = {
     "KOI8-R", N_("Cyrillic") },
   { GEDIT_ENCODING_KOI8_U,
     "KOI8U", N_("Cyrillic/Ukrainian") },
-  
+
   { GEDIT_ENCODING_SHIFT_JIS,
     "SHIFT_JIS", N_("Japanese") },
   { GEDIT_ENCODING_TCVN,
@@ -316,12 +316,12 @@ gedit_encoding_get_from_charset (const gchar *charset)
 	if (g_ascii_strcasecmp (charset, "UTF-8") == 0)
 		return gedit_encoding_get_utf8 ();
 
-	i = 0; 
+	i = 0;
 	while (i < GEDIT_ENCODING_LAST)
 	{
 		if (g_ascii_strcasecmp (charset, encodings[i].charset) == 0)
 			return &encodings[i];
-      
+
 		++i;
 	}
 
@@ -368,17 +368,17 @@ gedit_encoding_get_current (void)
 	if (initialized != FALSE)
 		return locale_encoding;
 
-	if (g_get_charset (&locale_charset) == FALSE) 
+	if (g_get_charset (&locale_charset) == FALSE)
 	{
 		g_return_val_if_fail (locale_charset != NULL, &utf8_encoding);
-		
+
 		locale_encoding = gedit_encoding_get_from_charset (locale_charset);
 	}
 	else
 	{
 		locale_encoding = &utf8_encoding;
 	}
-	
+
 	if (locale_encoding == NULL)
 	{
 		locale_encoding = &unknown_encoding;
@@ -395,7 +395,7 @@ gchar *
 gedit_encoding_to_string (const GeditEncoding* enc)
 {
 	g_return_val_if_fail (enc != NULL, NULL);
-	
+
 	gedit_encoding_lazy_init ();
 
 	g_return_val_if_fail (enc->charset != NULL, NULL);
@@ -447,7 +447,7 @@ gedit_encoding_copy (const GeditEncoding *enc)
 	return (GeditEncoding *) enc;
 }
 
-void 
+void
 gedit_encoding_free (GeditEncoding *enc)
 {
 	g_return_if_fail (enc != NULL);
@@ -474,7 +474,7 @@ _gedit_encoding_strv_to_list (const gchar * const *enc_str)
 	GSList *res = NULL;
 	gchar **p;
 	const GeditEncoding *enc;
-	
+
 	for (p = (gchar **)enc_str; p != NULL && *p != NULL; p++)
 	{
 		const gchar *charset = *p;
@@ -508,7 +508,7 @@ _gedit_encoding_list_to_strv (const GSList *enc_list)
 	{
 		const GeditEncoding *enc;
 		const gchar *charset;
-		
+
 		enc = (const GeditEncoding *)l->data;
 
 		charset = gedit_encoding_get_charset (enc);

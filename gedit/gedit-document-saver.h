@@ -21,7 +21,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
  * Modified by the gedit Team, 2005-2007. See the AUTHORS file for a
  * list of people on the gedit Team.
@@ -53,7 +53,7 @@ typedef struct _GeditDocumentSaverPrivate GeditDocumentSaverPrivate;
  */
 typedef struct _GeditDocumentSaver GeditDocumentSaver;
 
-struct _GeditDocumentSaver 
+struct _GeditDocumentSaver
 {
 	GObject object;
 
@@ -66,7 +66,7 @@ struct _GeditDocumentSaver
  */
 typedef struct _GeditDocumentSaverClass GeditDocumentSaverClass;
 
-struct _GeditDocumentSaverClass 
+struct _GeditDocumentSaverClass
 {
 	GObjectClass parent_class;
 

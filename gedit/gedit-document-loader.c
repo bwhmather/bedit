@@ -21,7 +21,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
  * Modified by the gedit Team, 2005-2008. See the AUTHORS file for a
  * list of people on the gedit Team.
@@ -111,7 +111,7 @@ struct _GeditDocumentLoaderPrivate
 	const GeditEncoding	 *auto_detected_encoding;
 	GeditDocumentNewlineType  auto_detected_newline_type;
 	GeditDocumentCompressionType auto_detected_compression_type;
-	
+
 	goffset                   bytes_read;
 
 	GCancellable 	         *cancellable;
@@ -349,7 +349,7 @@ static AsyncData *
 async_data_new (GeditDocumentLoader *loader)
 {
 	AsyncData *async;
-	
+
 	async = g_slice_new (AsyncData);
 	async->loader = loader;
 	async->cancellable = g_object_ref (loader->priv->cancellable);
@@ -403,7 +403,7 @@ get_metadata_encoding (GeditDocumentLoader *loader)
 
 		if (charset == NULL)
 			return NULL;
-		
+
 		enc = gedit_encoding_get_from_charset (charset);
 	}
 #endif
@@ -446,9 +446,9 @@ close_input_stream_ready_cb (GInputStream *stream,
 		async_data_free (async);
 		return;
 	}
-	
+
 	gedit_debug_message (DEBUG_LOADER, "Finished closing input stream");
-	
+
 	if (!g_input_stream_close_finish (stream, res, &error))
 	{
 		gedit_debug_message (DEBUG_LOADER, "Closing input stream error: %s", error->message);
@@ -607,7 +607,7 @@ async_read_cb (GInputStream *stream,
 		loader->priv->auto_detected_newline_type =
 			gedit_document_output_stream_detect_newline_type (GEDIT_DOCUMENT_OUTPUT_STREAM (loader->priv->output));
 
-		
+
 
 		write_complete (async);
 
@@ -738,7 +738,7 @@ finish_query_info (AsyncData *async)
 {
 	GeditDocumentLoader *loader;
 	GFileInfo *info;
-	
+
 	loader = async->loader;
 	info = loader->priv->info;
 
@@ -775,7 +775,7 @@ query_info_cb (GFile        *source,
 	{
 		async_data_free (async);
 		return;
-	}	
+	}
 
 	priv = async->loader->priv;
 
@@ -814,7 +814,7 @@ mount_ready_callback (GFile        *file,
 	}
 
 	mounted = g_file_mount_enclosing_volume_finish (file, res, &error);
-	
+
 	if (!mounted)
 	{
 		async_failed (async, error);
@@ -855,7 +855,7 @@ async_read_ready_callback (GObject      *source,
 {
 	GError *error = NULL;
 	GeditDocumentLoader *loader;
-	
+
 	gedit_debug (DEBUG_LOADER);
 
 	/* manual check for cancelled state */
@@ -866,19 +866,19 @@ async_read_ready_callback (GObject      *source,
 	}
 
 	loader = async->loader;
-	
+
 	loader->priv->stream = G_INPUT_STREAM (g_file_read_finish (loader->priv->location,
 								     res, &error));
 
 	if (!loader->priv->stream)
-	{		
+	{
 		if (error->code == G_IO_ERROR_NOT_MOUNTED && !async->tried_mount)
 		{
 			recover_not_mounted (async);
 			g_error_free (error);
 			return;
 		}
-		
+
 		/* Propagate error */
 		g_propagate_error (&loader->priv->error, error);
 		gedit_document_loader_loading (loader,
@@ -889,7 +889,7 @@ async_read_ready_callback (GObject      *source,
 		return;
 	}
 
-	/* get the file info: note we cannot use 
+	/* get the file info: note we cannot use
 	 * g_file_input_stream_query_info_async since it is not able to get the
 	 * content type etc, beside it is not supported by gvfs.
 	 * Using the file instead of the stream is slightly racy, but for
@@ -907,7 +907,7 @@ async_read_ready_callback (GObject      *source,
 static void
 open_async_read (AsyncData *async)
 {
-	g_file_read_async (async->loader->priv->location, 
+	g_file_read_async (async->loader->priv->location,
 	                   G_PRIORITY_HIGH,
 	                   async->cancellable,
 	                   (GAsyncReadyCallback) async_read_ready_callback,
@@ -952,7 +952,7 @@ gedit_document_loader_load (GeditDocumentLoader *loader)
 	/* the loader can be used just once, then it must be thrown away */
 	g_return_if_fail (loader->priv->used == FALSE);
 	loader->priv->used = TRUE;
-	
+
 	/* make sure no load operation is currently running */
 	g_return_if_fail (loader->priv->cancellable == NULL);
 
@@ -981,7 +981,7 @@ gboolean
 gedit_document_loader_cancel (GeditDocumentLoader *loader)
 {
 	gedit_debug (DEBUG_LOADER);
-	
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT_LOADER (loader), FALSE);
 
 	if (loader->priv->cancellable == NULL)
@@ -1038,7 +1038,7 @@ gedit_document_loader_get_encoding (GeditDocumentLoader *loader)
 	if (loader->priv->encoding != NULL)
 		return loader->priv->encoding;
 
-	g_return_val_if_fail (loader->priv->auto_detected_encoding != NULL, 
+	g_return_val_if_fail (loader->priv->auto_detected_encoding != NULL,
 			      gedit_encoding_get_current ());
 
 	return loader->priv->auto_detected_encoding;

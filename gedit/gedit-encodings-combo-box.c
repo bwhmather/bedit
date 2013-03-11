@@ -17,14 +17,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 2003-2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2003-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id: gedit-encodings-combo-box.c 6112 2008-01-23 08:26:24Z sfre $
  */
@@ -111,7 +111,7 @@ gedit_encodings_combo_box_get_property (GObject    *object,
 	combo = GEDIT_ENCODINGS_COMBO_BOX (object);
 
 	switch (prop_id)
-	{	
+	{
 		case PROP_SAVE_MODE:
 			g_value_set_boolean (value, combo->priv->save_mode);
 			break;

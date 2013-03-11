@@ -2,7 +2,7 @@
  * gedit-io-error-info-bar.h
  * This file is part of gedit
  *
- * Copyright (C) 2005 - Paolo Maggi 
+ * Copyright (C) 2005 - Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
@@ -46,7 +46,7 @@ GtkWidget	*gedit_conversion_error_while_saving_info_bar_new	(GFile              
 									 const GeditEncoding *encoding,
 									 const GError        *error);
 
-const GeditEncoding 
+const GeditEncoding
 		*gedit_conversion_error_info_bar_get_encoding		(GtkWidget           *info_bar);
 
 GtkWidget	*gedit_file_already_open_warning_info_bar_new		(GFile               *location);

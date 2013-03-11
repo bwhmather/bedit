@@ -3,7 +3,7 @@
  * gedit-spell-language-dialog.c
  * This file is part of gedit
  *
- * Copyright (C) 2002 Paolo Maggi 
+ * Copyright (C) 2002 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,14 +17,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
- * Boston, MA 02111-1307, USA. 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 2002. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2002. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -47,7 +47,7 @@ enum
 };
 
 
-struct _GeditSpellLanguageDialog 
+struct _GeditSpellLanguageDialog
 {
 	GtkDialog dialog;
 
@@ -58,7 +58,7 @@ struct _GeditSpellLanguageDialog
 G_DEFINE_TYPE(GeditSpellLanguageDialog, gedit_spell_language_dialog, GTK_TYPE_DIALOG)
 
 
-static void 
+static void
 gedit_spell_language_dialog_class_init (GeditSpellLanguageDialogClass *klass)
 {
 	/* GObjectClass *object_class = G_OBJECT_CLASS (klass); */
@@ -79,7 +79,7 @@ dialog_response_handler (GtkDialog *dlg,
 	}
 }
 
-static void 
+static void
 scroll_to_selected (GtkTreeView *tree_view)
 {
 	GtkTreeModel *model;
@@ -127,7 +127,7 @@ create_dialog (GeditSpellLanguageDialog *dlg,
 		"content",
 		NULL
 	};
-	
+
 	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
 				GTK_STOCK_CANCEL,
 				GTK_RESPONSE_CANCEL,
@@ -180,11 +180,11 @@ create_dialog (GeditSpellLanguageDialog *dlg,
 	/* Add the encoding column */
 	cell = gtk_cell_renderer_text_new ();
 	column = gtk_tree_view_column_new_with_attributes (_("Languages"),
-							   cell, 
+							   cell,
 							   "text",
 							   COLUMN_LANGUAGE_NAME,
 							   NULL);
-	
+
 	gtk_tree_view_append_column (GTK_TREE_VIEW (dlg->languages_treeview),
 				     column);
 
@@ -196,7 +196,7 @@ create_dialog (GeditSpellLanguageDialog *dlg,
 			  G_CALLBACK (scroll_to_selected),
 			  dlg);
 	g_signal_connect (dlg->languages_treeview,
-			  "row-activated", 
+			  "row-activated",
 			  G_CALLBACK (language_row_activated),
 			  dlg);
 }
@@ -204,7 +204,7 @@ create_dialog (GeditSpellLanguageDialog *dlg,
 static void
 gedit_spell_language_dialog_init (GeditSpellLanguageDialog *dlg)
 {
-	
+
 }
 
 static void
@@ -263,7 +263,7 @@ gedit_spell_language_dialog_new (GtkWindow                       *parent,
 	populate_language_list (dlg, cur_lang);
 
 	gtk_window_set_transient_for (GTK_WINDOW (dlg), parent);
-	gtk_widget_grab_focus (dlg->languages_treeview);					     
+	gtk_widget_grab_focus (dlg->languages_treeview);
 
 	return GTK_WIDGET (dlg);
 }

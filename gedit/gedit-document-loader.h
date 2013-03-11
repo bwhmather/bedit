@@ -18,10 +18,10 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
  * Modified by the gedit Team, 2005-2008. See the AUTHORS file for a
  * list of people on the gedit Team.
@@ -68,7 +68,7 @@ struct _GeditDocumentLoader
  */
 typedef struct _GeditDocumentLoaderClass GeditDocumentLoaderClass;
 
-struct _GeditDocumentLoaderClass 
+struct _GeditDocumentLoaderClass
 {
 	GObjectClass parent_class;
 
@@ -103,7 +103,7 @@ gboolean		 gedit_document_loader_cancel		(GeditDocumentLoader *loader);
 GeditDocument		*gedit_document_loader_get_document	(GeditDocumentLoader *loader);
 
 /* Returns STDIN_URI if loading from stdin */
-#define STDIN_URI "stdin:" 
+#define STDIN_URI "stdin:"
 GFile			*gedit_document_loader_get_location	(GeditDocumentLoader *loader);
 
 const GeditEncoding	*gedit_document_loader_get_encoding	(GeditDocumentLoader *loader);
@@ -115,7 +115,7 @@ GeditDocumentCompressionType gedit_document_loader_get_compression_type
 
 goffset			 gedit_document_loader_get_bytes_read	(GeditDocumentLoader *loader);
 
-/* You can get from the info: content_type, time_modified, standard_size, access_can_write 
+/* You can get from the info: content_type, time_modified, standard_size, access_can_write
    and also the metadata*/
 GFileInfo		*gedit_document_loader_get_info		(GeditDocumentLoader *loader);
 

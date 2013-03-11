@@ -3,7 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2000-2001 Chema Celorio, Paolo Maggi
- * Copyright (C) 2002-2008 Paolo Maggi  
+ * Copyright (C) 2002-2008 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,14 +17,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
- * Boston, MA 02111-1307, USA. 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
@@ -60,7 +60,7 @@ typedef enum
 {
 	GEDIT_PRINT_JOB_RESULT_OK,
 	GEDIT_PRINT_JOB_RESULT_CANCEL,
-	GEDIT_PRINT_JOB_RESULT_ERROR	
+	GEDIT_PRINT_JOB_RESULT_ERROR
 } GeditPrintJobResult;
 
 /* Private structure type */
@@ -72,10 +72,10 @@ typedef struct _GeditPrintJobPrivate GeditPrintJobPrivate;
 typedef struct _GeditPrintJob GeditPrintJob;
 
 
-struct _GeditPrintJob 
+struct _GeditPrintJob
 {
 	GObject parent;
-	
+
 	/* <private> */
 	GeditPrintJobPrivate *priv;
 };
@@ -85,7 +85,7 @@ struct _GeditPrintJob
  */
 typedef struct _GeditPrintJobClass GeditPrintJobClass;
 
-struct _GeditPrintJobClass 
+struct _GeditPrintJobClass
 {
 	GObjectClass parent_class;
 

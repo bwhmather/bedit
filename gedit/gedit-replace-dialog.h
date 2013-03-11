@@ -16,14 +16,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
@@ -54,7 +54,7 @@ typedef struct _GeditReplaceDialogPrivate GeditReplaceDialogPrivate;
  */
 typedef struct _GeditReplaceDialog GeditReplaceDialog;
 
-struct _GeditReplaceDialog 
+struct _GeditReplaceDialog
 {
 	GtkDialog dialog;
 
@@ -112,7 +112,7 @@ gboolean	 gedit_replace_dialog_get_backwards	(GeditReplaceDialog *dialog);
 void		 gedit_replace_dialog_set_wrap_around	(GeditReplaceDialog *dialog,
 							 gboolean            wrap_around);
 gboolean	 gedit_replace_dialog_get_wrap_around	(GeditReplaceDialog *dialog);
-   
+
 G_END_DECLS
 
 #endif  /* __GEDIT_REPLACE_DIALOG_H__  */

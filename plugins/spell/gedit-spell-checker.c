@@ -260,7 +260,7 @@ lazy_init (GeditSpellChecker               *spell,
 		gchar *key;
 
 		key = gedit_spell_osx_get_preferred_spell_language ();
-		
+
 		if (key)
 		{
 			spell->active_lang = gedit_spell_checker_language_from_key (key);

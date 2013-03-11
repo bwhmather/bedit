@@ -44,7 +44,7 @@ typedef struct _GeditViewFrameClass		GeditViewFrameClass;
 struct _GeditViewFrame
 {
 	GtkBox parent;
-	
+
 	GeditViewFramePrivate *priv;
 };
 

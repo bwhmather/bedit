@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with gedit; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
@@ -237,7 +237,7 @@ notebook_show_popup_menu (GtkNotebook        *notebook,
 	g_signal_emit (G_OBJECT (mnb), signals[SHOW_POPUP_MENU], 0, event, tab);
 }
 
-static void 
+static void
 notebook_tab_close_request (GeditNotebook      *notebook,
 			    GeditTab           *tab,
 			    GeditMultiNotebook *mnb)
@@ -316,7 +316,7 @@ notebook_page_added (GtkNotebook        *notebook,
 	g_signal_emit (G_OBJECT (mnb), signals[TAB_ADDED], 0, notebook, tab);
 }
 
-static void 
+static void
 notebook_switch_page (GtkNotebook        *book,
 		      GtkWidget          *pg,
 		      gint                page_num,
@@ -650,7 +650,7 @@ gedit_multi_notebook_get_active_tab (GeditMultiNotebook *mnb)
 {
 	g_return_val_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb), NULL);
 
-	return (mnb->priv->active_tab == NULL) ? 
+	return (mnb->priv->active_tab == NULL) ?
 				NULL : GEDIT_TAB (mnb->priv->active_tab);
 }
 
@@ -660,7 +660,7 @@ gedit_multi_notebook_set_active_tab (GeditMultiNotebook *mnb,
 {
 	GList *l;
 	gint page_num;
-	
+
 	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
@@ -703,10 +703,10 @@ gedit_multi_notebook_set_current_page (GeditMultiNotebook *mnb,
 	for (l = mnb->priv->notebooks; l != NULL; l = g_list_next (l))
 	{
 		gint p;
-		
+
 		p = gtk_notebook_get_n_pages (GTK_NOTEBOOK (l->data));
 		pages += p;
-		
+
 		if ((pages - 1) >= page_num)
 			break;
 

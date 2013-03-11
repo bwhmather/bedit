@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with gedit; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
@@ -402,7 +402,7 @@ guess_encoding (GeditDocumentOutputStream *stream,
 		{
 			gsize remainder;
 			const gchar *end;
-			
+
 			if (g_utf8_validate (inbuf, inbuf_size, &end) ||
 			    stream->priv->use_first)
 			{

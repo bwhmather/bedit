@@ -2,7 +2,7 @@
  * gedit-close-confirmation-dialog.h
  * This file is part of gedit
  *
- * Copyright (C) 2004-2005 GNOME Foundation 
+ * Copyright (C) 2004-2005 GNOME Foundation
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
- * Boston, MA 02111-1307, USA. 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
 /*
- * Modified by the gedit Team, 2004-2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2004-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  */
 
 #ifndef __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__
@@ -45,7 +45,7 @@ typedef struct _GeditCloseConfirmationDialog 		GeditCloseConfirmationDialog;
 typedef struct _GeditCloseConfirmationDialogClass 	GeditCloseConfirmationDialogClass;
 typedef struct _GeditCloseConfirmationDialogPrivate 	GeditCloseConfirmationDialogPrivate;
 
-struct _GeditCloseConfirmationDialog 
+struct _GeditCloseConfirmationDialog
 {
 	GtkDialog parent;
 
@@ -53,7 +53,7 @@ struct _GeditCloseConfirmationDialog
 	GeditCloseConfirmationDialogPrivate *priv;
 };
 
-struct _GeditCloseConfirmationDialogClass 
+struct _GeditCloseConfirmationDialogClass
 {
 	GtkDialogClass parent_class;
 };
@@ -62,7 +62,7 @@ GType 		 gedit_close_confirmation_dialog_get_type		(void) G_GNUC_CONST;
 
 GtkWidget	*gedit_close_confirmation_dialog_new			(GtkWindow     *parent,
 									 GList         *unsaved_documents);
-GtkWidget 	*gedit_close_confirmation_dialog_new_single 		(GtkWindow     *parent, 
+GtkWidget 	*gedit_close_confirmation_dialog_new_single 		(GtkWindow     *parent,
 									 GeditDocument *doc);
 
 const GList	*gedit_close_confirmation_dialog_get_unsaved_documents  (GeditCloseConfirmationDialog *dlg);

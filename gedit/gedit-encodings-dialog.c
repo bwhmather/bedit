@@ -2,7 +2,7 @@
  * gedit-encodings-dialog.c
  * This file is part of gedit
  *
- * Copyright (C) 2002-2005 Paolo Maggi 
+ * Copyright (C) 2002-2005 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
- * Boston, MA 02111-1307, USA. 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
 /*
- * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
@@ -105,7 +105,7 @@ enum {
 static void
 count_selected_items_func (GtkTreeModel *model,
 			   GtkTreePath  *path,
-			   GtkTreeIter  *iter, 
+			   GtkTreeIter  *iter,
 			   gpointer      data)
 {
 	int *count = data;
@@ -144,7 +144,7 @@ displayed_selection_changed_callback (GtkTreeSelection     *selection,
 static void
 get_selected_encodings_func (GtkTreeModel *model,
 			     GtkTreePath  *path,
-			     GtkTreeIter  *iter, 
+			     GtkTreeIter  *iter,
 			     gpointer      data)
 {
 	GSList **list = data;
@@ -234,7 +234,7 @@ remove_button_clicked_callback (GtkWidget            *button,
 					     &encodings);
 
 	tmp = encodings;
-	while (tmp != NULL) 
+	while (tmp != NULL)
 	{
 		dialog->priv->show_in_menu_list = g_slist_remove (dialog->priv->show_in_menu_list,
 								  tmp->data);
@@ -283,7 +283,7 @@ init_shown_in_menu_tree_model (GeditEncodingsDialog *dialog)
 	g_slist_free (list);
 }
 
-static void 
+static void
 response_handler (GtkDialog            *dialog,
 		  gint                  response_id,
                   GeditEncodingsDialog *dlg)
@@ -330,11 +330,11 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 	};
 
 	dlg->priv = GEDIT_ENCODINGS_DIALOG_GET_PRIVATE (dlg);
-	
+
 	dlg->priv->enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
-	
+
 	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
-				GTK_STOCK_CANCEL, 
+				GTK_STOCK_CANCEL,
 				GTK_RESPONSE_CANCEL,
 				GTK_STOCK_OK,
 				GTK_RESPONSE_OK,
@@ -412,7 +412,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 
 	/* Add the data */
 	i = 0;
-	while ((enc = gedit_encoding_get_from_index (i)) != NULL) 
+	while ((enc = gedit_encoding_get_from_index (i)) != NULL)
 	{
 		gtk_list_store_append (dlg->priv->available_liststore,
 				       &parent_iter);

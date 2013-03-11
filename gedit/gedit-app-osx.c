@@ -120,7 +120,7 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 			g_object_unref (location);
 
 			NSURL *nsurl = [NSURL URLWithString:[NSString stringWithUTF8String:uri]];
-			
+
 			[native setRepresentedURL:nsurl];
 			g_free (uri);
 #else
@@ -134,7 +134,7 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 #endif
 		}
 
-		ismodified = !gedit_document_is_untouched (document); 
+		ismodified = !gedit_document_is_untouched (document);
 		[native setDocumentEdited:ismodified];
 	}
 	else
@@ -249,7 +249,7 @@ setup_mac_menu (GeditWindow *window)
 	GtkWidget *menu;
 
 	manager = gedit_window_get_ui_manager (window);
-	
+
 	/* Hide the menu bar */
 	menu = gtk_ui_manager_get_widget (manager, "/MenuBar");
 	gtk_widget_hide (menu);
@@ -390,9 +390,9 @@ on_osx_open_files (GtkOSXApplication  *osxapp,
 		                             g_file_new_for_path (*paths));
 		++paths;
 	}
-	
+
 	locations = g_slist_reverse (locations);
-	
+
 	if (locations != NULL)
 	{
 		GSList *files;
@@ -408,7 +408,7 @@ on_osx_open_files (GtkOSXApplication  *osxapp,
 
 		g_slist_free_full (locations, g_object_unref);
 	}
-	
+
 	return TRUE;
 }
 

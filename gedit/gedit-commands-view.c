@@ -79,7 +79,7 @@ _gedit_cmd_view_show_side_panel (GtkAction   *action,
 
 	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
 	panel = gedit_window_get_side_panel (window);
-	
+
 	gtk_widget_set_visible (GTK_WIDGET (panel), visible);
 
 	if (visible)

@@ -17,7 +17,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with gedit; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
@@ -50,7 +50,7 @@ struct _GeditSettingsPrivate
 	GSettings *interface;
 	GSettings *editor;
 	GSettings *ui;
-	
+
 	gchar *old_scheme;
 };
 
@@ -86,31 +86,31 @@ on_lockdown_changed (GSettings   *settings,
 {
 	gboolean locked;
 	GeditApp *app;
-	
+
 	locked = g_settings_get_boolean (settings, key);
 	app = GEDIT_APP (g_application_get_default ());
 
 	if (strcmp (key, GEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE) == 0)
 	{
-		_gedit_app_set_lockdown_bit (app, 
+		_gedit_app_set_lockdown_bit (app,
 					     GEDIT_LOCKDOWN_COMMAND_LINE,
 					     locked);
 	}
 	else if (strcmp (key, GEDIT_SETTINGS_LOCKDOWN_PRINTING) == 0)
 	{
-		_gedit_app_set_lockdown_bit (app, 
+		_gedit_app_set_lockdown_bit (app,
 					     GEDIT_LOCKDOWN_PRINTING,
 					     locked);
 	}
 	else if (strcmp (key, GEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP) == 0)
 	{
-		_gedit_app_set_lockdown_bit (app, 
+		_gedit_app_set_lockdown_bit (app,
 					     GEDIT_LOCKDOWN_PRINT_SETUP,
 					     locked);
 	}
 	else if (strcmp (key, GEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK) == 0)
 	{
-		_gedit_app_set_lockdown_bit (app, 
+		_gedit_app_set_lockdown_bit (app,
 					     GEDIT_LOCKDOWN_SAVE_TO_DISK,
 					     locked);
 	}
@@ -122,7 +122,7 @@ set_font (GeditSettings *gs,
 {
 	GList *views, *l;
 	guint ts;
-	
+
 	g_settings_get (gs->priv->editor, GEDIT_SETTINGS_TABS_SIZE, "u", &ts);
 
 	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
@@ -134,7 +134,7 @@ set_font (GeditSettings *gs,
 
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data), ts);
 	}
-	
+
 	g_list_free (views);
 }
 
@@ -143,19 +143,19 @@ on_system_font_changed (GSettings     *settings,
 			const gchar   *key,
 			GeditSettings *gs)
 {
-	
+
 	gboolean use_default_font;
 	gchar *font;
-	
+
 	use_default_font = g_settings_get_boolean (gs->priv->editor,
 						   GEDIT_SETTINGS_USE_DEFAULT_FONT);
 	if (!use_default_font)
 		return;
-	
+
 	font = g_settings_get_string (settings, key);
-	
+
 	set_font (gs, font);
-	
+
 	g_free (font);
 }
 
@@ -168,7 +168,7 @@ on_use_default_font_changed (GSettings     *settings,
 	gchar *font;
 
 	def = g_settings_get_boolean (settings, key);
-	
+
 	if (def)
 	{
 		font = g_settings_get_string (gs->priv->interface,
@@ -179,9 +179,9 @@ on_use_default_font_changed (GSettings     *settings,
 		font = g_settings_get_string (gs->priv->editor,
 					      GEDIT_SETTINGS_EDITOR_FONT);
 	}
-	
+
 	set_font (gs, font);
-	
+
 	g_free (font);
 }
 
@@ -192,16 +192,16 @@ on_editor_font_changed (GSettings     *settings,
 {
 	gboolean use_default_font;
 	gchar *font;
-	
+
 	use_default_font = g_settings_get_boolean (gs->priv->editor,
 						   GEDIT_SETTINGS_USE_DEFAULT_FONT);
 	if (use_default_font)
 		return;
-	
+
 	font = g_settings_get_string (settings, key);
-	
+
 	set_font (gs, font);
-	
+
 	g_free (font);
 }
 
@@ -235,7 +235,7 @@ on_scheme_changed (GSettings     *settings,
 		g_warning ("Default style scheme '%s' not found, falling back to 'classic'", scheme);
 
 		style = gtk_source_style_scheme_manager_get_scheme (manager, "classic");
-		if (style == NULL) 
+		if (style == NULL)
 		{
 			g_warning ("Style scheme 'classic' cannot be found, check your GtkSourceView installation.");
 			return;
@@ -262,7 +262,7 @@ on_auto_save_changed (GSettings     *settings,
 {
 	GList *docs, *l;
 	gboolean auto_save;
-	
+
 	auto_save = g_settings_get_boolean (settings, key);
 
 	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
@@ -270,10 +270,10 @@ on_auto_save_changed (GSettings     *settings,
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
 		GeditTab *tab = gedit_tab_get_from_document (GEDIT_DOCUMENT (l->data));
-		
+
 		gedit_tab_set_auto_save_enabled (tab, auto_save);
 	}
-	
+
 	g_list_free (docs);
 }
 
@@ -284,7 +284,7 @@ on_auto_save_interval_changed (GSettings     *settings,
 {
 	GList *docs, *l;
 	gint auto_save_interval;
-	
+
 	g_settings_get (settings, key, "u", &auto_save_interval);
 
 	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
@@ -292,10 +292,10 @@ on_auto_save_interval_changed (GSettings     *settings,
 	for (l = docs; l != NULL; l = g_list_next (l))
 	{
 		GeditTab *tab = gedit_tab_get_from_document (GEDIT_DOCUMENT (l->data));
-		
+
 		gedit_tab_set_auto_save_interval (tab, auto_save_interval);
 	}
-	
+
 	g_list_free (docs);
 }
 
@@ -306,9 +306,9 @@ on_undo_actions_limit_changed (GSettings     *settings,
 {
 	GList *docs, *l;
 	gint ul;
-	
+
 	ul = g_settings_get_int (settings, key);
-	
+
 	ul = CLAMP (ul, -1, 250);
 
 	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
@@ -318,7 +318,7 @@ on_undo_actions_limit_changed (GSettings     *settings,
 		gtk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (l->data),
 						       ul);
 	}
-	
+
 	g_list_free (docs);
 }
 
@@ -339,7 +339,7 @@ on_wrap_mode_changed (GSettings     *settings,
 		gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (l->data),
 					     wrap_mode);
 	}
-	
+
 	g_list_free (views);
 }
 
@@ -350,9 +350,9 @@ on_tabs_size_changed (GSettings     *settings,
 {
 	GList *views, *l;
 	guint ts;
-	
+
 	g_settings_get (settings, key, "u", &ts);
-	
+
 	ts = CLAMP (ts, 1, 24);
 
 	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
@@ -362,7 +362,7 @@ on_tabs_size_changed (GSettings     *settings,
 		gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (l->data),
 					       ts);
 	}
-	
+
 	g_list_free (views);
 }
 
@@ -373,7 +373,7 @@ on_insert_spaces_changed (GSettings     *settings,
 {
 	GList *views, *l;
 	gboolean spaces;
-	
+
 	spaces = g_settings_get_boolean (settings, key);
 
 	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
@@ -384,7 +384,7 @@ on_insert_spaces_changed (GSettings     *settings,
 					GTK_SOURCE_VIEW (l->data),
 					spaces);
 	}
-	
+
 	g_list_free (views);
 }
 
@@ -395,7 +395,7 @@ on_auto_indent_changed (GSettings     *settings,
 {
 	GList *views, *l;
 	gboolean enable;
-	
+
 	enable = g_settings_get_boolean (settings, key);
 
 	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
@@ -405,7 +405,7 @@ on_auto_indent_changed (GSettings     *settings,
 		gtk_source_view_set_auto_indent (GTK_SOURCE_VIEW (l->data),
 						 enable);
 	}
-	
+
 	g_list_free (views);
 }
 
@@ -416,7 +416,7 @@ on_display_line_numbers_changed (GSettings     *settings,
 {
 	GList *views, *l;
 	gboolean line_numbers;
-	
+
 	line_numbers = g_settings_get_boolean (settings, key);
 
 	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
@@ -426,7 +426,7 @@ on_display_line_numbers_changed (GSettings     *settings,
 		gtk_source_view_set_show_line_numbers (GTK_SOURCE_VIEW (l->data),
 						       line_numbers);
 	}
-	
+
 	g_list_free (views);
 }
 
@@ -437,7 +437,7 @@ on_hl_current_line_changed (GSettings     *settings,
 {
 	GList *views, *l;
 	gboolean hl;
-	
+
 	hl = g_settings_get_boolean (settings, key);
 
 	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
@@ -447,7 +447,7 @@ on_hl_current_line_changed (GSettings     *settings,
 		gtk_source_view_set_highlight_current_line (GTK_SOURCE_VIEW (l->data),
 							    hl);
 	}
-	
+
 	g_list_free (views);
 }
 
@@ -458,7 +458,7 @@ on_bracket_matching_changed (GSettings     *settings,
 {
 	GList *docs, *l;
 	gboolean enable;
-	
+
 	enable = g_settings_get_boolean (settings, key);
 
 	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
@@ -468,7 +468,7 @@ on_bracket_matching_changed (GSettings     *settings,
 		gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (l->data),
 								   enable);
 	}
-	
+
 	g_list_free (docs);
 }
 
@@ -479,7 +479,7 @@ on_display_right_margin_changed (GSettings     *settings,
 {
 	GList *views, *l;
 	gboolean display;
-	
+
 	display = g_settings_get_boolean (settings, key);
 
 	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
@@ -489,7 +489,7 @@ on_display_right_margin_changed (GSettings     *settings,
 		gtk_source_view_set_show_right_margin (GTK_SOURCE_VIEW (l->data),
 						       display);
 	}
-	
+
 	g_list_free (views);
 }
 
@@ -500,9 +500,9 @@ on_right_margin_position_changed (GSettings     *settings,
 {
 	GList *views, *l;
 	gint pos;
-	
+
 	g_settings_get (settings, key, "u", &pos);
-	
+
 	pos = CLAMP (pos, 1, 160);
 
 	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
@@ -512,7 +512,7 @@ on_right_margin_position_changed (GSettings     *settings,
 		gtk_source_view_set_right_margin_position (GTK_SOURCE_VIEW (l->data),
 							   pos);
 	}
-	
+
 	g_list_free (views);
 }
 
@@ -533,7 +533,7 @@ on_smart_home_end_changed (GSettings     *settings,
 		gtk_source_view_set_smart_home_end (GTK_SOURCE_VIEW (l->data),
 						    smart_he);
 	}
-	
+
 	g_list_free (views);
 }
 
@@ -545,7 +545,7 @@ on_syntax_highlighting_changed (GSettings     *settings,
 	const GList *windows;
 	GList *docs, *l;
 	gboolean enable;
-	
+
 	enable = g_settings_get_boolean (settings, key);
 
 	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
@@ -555,7 +555,7 @@ on_syntax_highlighting_changed (GSettings     *settings,
 		gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (l->data),
 							enable);
 	}
-	
+
 	g_list_free (docs);
 
 	/* update the sensitivity of the Higlight Mode menu item */
@@ -583,7 +583,7 @@ on_search_highlighting_changed (GSettings     *settings,
 {
 	GList *docs, *l;
 	gboolean enable;
-	
+
 	enable = g_settings_get_boolean (settings, key);
 
 	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
@@ -593,7 +593,7 @@ on_search_highlighting_changed (GSettings     *settings,
 		gedit_document_set_enable_search_highlighting  (GEDIT_DOCUMENT (l->data),
 								enable);
 	}
-	
+
 	g_list_free (docs);
 }
 
@@ -601,7 +601,7 @@ static void
 gedit_settings_init (GeditSettings *gs)
 {
 	gs->priv = GEDIT_SETTINGS_GET_PRIVATE (gs);
-	
+
 	gs->priv->old_scheme = NULL;
 	gs->priv->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
 	gs->priv->ui = g_settings_new ("org.gnome.gedit.preferences.ui");
@@ -615,7 +615,7 @@ gedit_settings_init (GeditSettings *gs)
 			  NULL);
 
 	gs->priv->interface = g_settings_new ("org.gnome.desktop.interface");
-	
+
 	g_signal_connect (gs->priv->interface,
 			  "changed::monospace-font-name",
 			  G_CALLBACK (on_system_font_changed),
@@ -718,7 +718,7 @@ gedit_settings_get_lockdown (GeditSettings *gs)
 {
 	guint lockdown = 0;
 	gboolean command_line, printing, print_setup, save_to_disk;
-	
+
 	command_line = g_settings_get_boolean (gs->priv->lockdown,
 					       GEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE);
 	printing = g_settings_get_boolean (gs->priv->lockdown,
@@ -749,10 +749,10 @@ gedit_settings_get_system_font (GeditSettings *gs)
 	gchar *system_font;
 
 	g_return_val_if_fail (GEDIT_IS_SETTINGS (gs), NULL);
-	
+
 	system_font = g_settings_get_string (gs->priv->interface,
 					     "monospace-font-name");
-	
+
 	return system_font;
 }
 

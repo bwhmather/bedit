@@ -134,7 +134,7 @@ text_not_found (GeditWindow *window,
 		const gchar *text)
 {
 	gchar *searched;
-	
+
 	searched = gedit_utils_str_end_truncate (text, MAX_MSG_LENGTH);
 
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
@@ -197,12 +197,12 @@ run_search (GeditView   *view,
 		{
 			found = gedit_document_search_backward (doc,
 							        NULL, /* FIXME: set the start_inter */
-							        NULL, 
+							        NULL,
 							        &match_start,
 							        &match_end);
 		}
 	}
-	
+
 	if (found)
 	{
 		gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc),
@@ -267,7 +267,7 @@ do_find (GeditReplaceDialog *dialog,
 	}
 
 	g_free (search_text);
-	
+
 	found = run_search (active_view,
 			    wrap_around,
 			    search_backwards);
@@ -393,8 +393,8 @@ do_replace (GeditReplaceDialog *dialog,
 
 	unescaped_search_text = gedit_utils_unescape_search_text (search_entry_text);
 
-	get_selected_text (GTK_TEXT_BUFFER (doc), 
-			   &selected_text, 
+	get_selected_text (GTK_TEXT_BUFFER (doc),
+			   &selected_text,
 			   NULL);
 
 	match_case = gedit_replace_dialog_get_match_case (dialog);
@@ -413,7 +413,7 @@ do_replace (GeditReplaceDialog *dialog,
 		return;
 	}
 
-	unescaped_replace_text = gedit_utils_unescape_search_text (replace_entry_text);	
+	unescaped_replace_text = gedit_utils_unescape_search_text (replace_entry_text);
 	replace_selected_text (GTK_TEXT_BUFFER (doc), unescaped_replace_text);
 
 	g_free (unescaped_search_text);
@@ -456,7 +456,7 @@ do_replace_all (GeditReplaceDialog *dialog,
 	GEDIT_SEARCH_SET_CASE_SENSITIVE (flags, match_case);
 	GEDIT_SEARCH_SET_ENTIRE_WORD (flags, entire_word);
 
-	count = gedit_document_replace_all (doc, 
+	count = gedit_document_replace_all (doc,
 					    search_entry_text,
 					    replace_entry_text,
 					    flags);
@@ -575,7 +575,7 @@ _gedit_cmd_search_replace (GtkAction   *action,
 	else
 	{
 		g_return_if_fail (GEDIT_IS_REPLACE_DIALOG (data));
-		
+
 		replace_dialog = GTK_WIDGET (data);
 	}
 
@@ -610,15 +610,15 @@ do_find_again (GeditWindow *window,
 	GeditView *active_view;
 	gboolean wrap_around = TRUE;
 	gpointer data;
-	
+
 	active_view = gedit_window_get_active_view (window);
 	g_return_if_fail (active_view != NULL);
 
 	data = g_object_get_data (G_OBJECT (window), GEDIT_REPLACE_DIALOG_KEY);
-	
+
 	if (data != NULL)
 		wrap_around = gedit_replace_dialog_get_wrap_around (GEDIT_REPLACE_DIALOG (data));
-	
+
 	run_search (active_view,
 		    wrap_around,
 		    backward);

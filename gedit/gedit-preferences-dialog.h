@@ -3,7 +3,7 @@
  * gedit-preferences-dialog.c
  * This file is part of gedit
  *
- * Copyright (C) 2001-2005 Paolo Maggi 
+ * Copyright (C) 2001-2005 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,14 +17,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
- * Boston, MA 02111-1307, USA. 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
 /*
- * Modified by the gedit Team, 2003. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2003. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
@@ -56,10 +56,10 @@ typedef struct _GeditPreferencesDialogPrivate GeditPreferencesDialogPrivate;
  */
 typedef struct _GeditPreferencesDialog GeditPreferencesDialog;
 
-struct _GeditPreferencesDialog 
+struct _GeditPreferencesDialog
 {
 	GtkDialog dialog;
-	
+
 	/*< private > */
 	GeditPreferencesDialogPrivate *priv;
 };
@@ -69,7 +69,7 @@ struct _GeditPreferencesDialog
  */
 typedef struct _GeditPreferencesDialogClass GeditPreferencesDialogClass;
 
-struct _GeditPreferencesDialogClass 
+struct _GeditPreferencesDialogClass
 {
 	GtkDialogClass parent_class;
 };

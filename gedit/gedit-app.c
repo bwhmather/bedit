@@ -2,7 +2,7 @@
  * gedit-app.c
  * This file is part of gedit
  *
- * Copyright (C) 2005-2006 - Paolo Maggi 
+ * Copyright (C) 2005-2006 - Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
@@ -83,7 +83,7 @@ struct _GeditAppPrivate
 
 	GtkPageSetup      *page_setup;
 	GtkPrintSettings  *print_settings;
-	
+
 	GObject           *settings;
 	GSettings         *window_settings;
 
@@ -279,7 +279,7 @@ gedit_app_show_help_impl (GeditApp    *app,
 		dialog = gtk_message_dialog_new (parent,
 						 GTK_DIALOG_DESTROY_WITH_PARENT,
 						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_CLOSE, 
+						 GTK_BUTTONS_CLOSE,
 						 _("There was an error displaying the help."));
 
 		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
@@ -991,7 +991,7 @@ get_page_setup_file (void)
 	gchar *setup = NULL;
 
 	config_dir = gedit_dirs_get_user_config_dir ();
-	
+
 	if (config_dir != NULL)
 	{
 		setup = g_build_filename (config_dir,
@@ -1111,7 +1111,7 @@ gedit_app_constructed (GObject *object)
 	load_accels ();
 }
 
-static gboolean 
+static gboolean
 window_delete_event (GeditWindow *window,
                      GdkEvent    *event,
                      GeditApp    *app)
@@ -1120,7 +1120,7 @@ window_delete_event (GeditWindow *window,
 
 	ws = gedit_window_get_state (window);
 
-	if (ws & 
+	if (ws &
 	    (GEDIT_WINDOW_STATE_SAVING | GEDIT_WINDOW_STATE_PRINTING))
 	{
 		return TRUE;
@@ -1136,7 +1136,7 @@ static GeditWindow *
 gedit_app_create_window_impl (GeditApp *app)
 {
 	GeditWindow *window;
-	
+
 	window = g_object_new (GEDIT_TYPE_WINDOW, "application", app, NULL);
 
 	gedit_debug_message (DEBUG_APP, "Window created");
@@ -1257,7 +1257,7 @@ gen_role (void)
 {
 	GTimeVal result;
 	static gint serial;
-	
+
 	g_get_current_time (&result);
 
 	return g_strdup_printf ("gedit-window-%ld-%ld-%d-%s",

@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with gedit; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 
@@ -29,7 +29,7 @@
 
 /* linux/bsd has it. others such as Solaris, do not */
 #ifndef ACCESSPERMS
-#define ACCESSPERMS (S_IRWXU|S_IRWXG|S_IRWXO) 
+#define ACCESSPERMS (S_IRWXU|S_IRWXG|S_IRWXO)
 #endif
 
 #define DEFAULT_LOCAL_URI "/tmp/gedit-document-saver-test.txt"
@@ -721,7 +721,7 @@ int main (int   argc,
 
 	g_test_add_func ("/document-saver/remote", test_remote);
 	g_test_add_func ("/document-saver/remote-new-line", test_remote_newline);
-	
+
 
 	if (have_unowned)
 	{

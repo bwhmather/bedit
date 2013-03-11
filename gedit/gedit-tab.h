@@ -2,7 +2,7 @@
  * gedit-tab.h
  * This file is part of gedit
  *
- * Copyright (C) 2005 - Paolo Maggi 
+ * Copyright (C) 2005 - Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
@@ -43,13 +43,13 @@ typedef enum
 	GEDIT_TAB_STATE_NORMAL = 0,
 	GEDIT_TAB_STATE_LOADING,
 	GEDIT_TAB_STATE_REVERTING,
-	GEDIT_TAB_STATE_SAVING,	
+	GEDIT_TAB_STATE_SAVING,
 	GEDIT_TAB_STATE_PRINTING,
 	GEDIT_TAB_STATE_PRINT_PREVIEWING,
 	GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW,
 	GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE,
 	GEDIT_TAB_STATE_LOADING_ERROR,
-	GEDIT_TAB_STATE_REVERTING_ERROR,	
+	GEDIT_TAB_STATE_REVERTING_ERROR,
 	GEDIT_TAB_STATE_SAVING_ERROR,
 	GEDIT_TAB_STATE_GENERIC_ERROR,
 	GEDIT_TAB_STATE_CLOSING,
@@ -75,7 +75,7 @@ typedef struct _GeditTabPrivate GeditTabPrivate;
  */
 typedef struct _GeditTab GeditTab;
 
-struct _GeditTab 
+struct _GeditTab
 {
 	GtkBox vbox;
 
@@ -88,7 +88,7 @@ struct _GeditTab
  */
 typedef struct _GeditTabClass GeditTabClass;
 
-struct _GeditTabClass 
+struct _GeditTabClass
 {
 	GtkBoxClass parent_class;
 
@@ -110,18 +110,18 @@ GeditTab	*gedit_tab_get_from_document	(GeditDocument       *doc);
 
 GeditTabState	 gedit_tab_get_state		(GeditTab	     *tab);
 
-gboolean	 gedit_tab_get_auto_save_enabled	
-						(GeditTab            *tab); 
-
-void		 gedit_tab_set_auto_save_enabled	
-						(GeditTab            *tab, 
-						 gboolean            enable);
-
-gint		 gedit_tab_get_auto_save_interval 
+gboolean	 gedit_tab_get_auto_save_enabled
 						(GeditTab            *tab);
 
-void		 gedit_tab_set_auto_save_interval 
-						(GeditTab            *tab, 
+void		 gedit_tab_set_auto_save_enabled
+						(GeditTab            *tab,
+						 gboolean            enable);
+
+gint		 gedit_tab_get_auto_save_interval
+						(GeditTab            *tab);
+
+void		 gedit_tab_set_auto_save_interval
+						(GeditTab            *tab,
 						 gint                interval);
 
 void		 gedit_tab_set_info_bar		(GeditTab            *tab,
@@ -131,7 +131,7 @@ void		 gedit_tab_set_info_bar		(GeditTab            *tab,
  */
 GtkWidget 	*_gedit_tab_new 		(void);
 
-/* Whether create is TRUE, creates a new empty document if location does 
+/* Whether create is TRUE, creates a new empty document if location does
    not refer to an existing location */
 GtkWidget	*_gedit_tab_new_from_location	(GFile               *location,
 						 const GeditEncoding *encoding,

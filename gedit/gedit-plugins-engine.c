@@ -2,7 +2,7 @@
  * gedit-plugins-engine.c
  * This file is part of gedit
  *
- * Copyright (C) 2002-2005 Paolo Maggi 
+ * Copyright (C) 2002-2005 Paolo Maggi
  * Copyright (C) 2010 Steve Frécinaux
  *
  * This program is free software; you can redistribute it and/or modify
@@ -17,14 +17,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
- * Boston, MA 02111-1307, USA. 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
 
 /*
- * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2002-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
@@ -69,7 +69,7 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
 	peas_engine_enable_loader (PEAS_ENGINE (engine), "python3");
 
 	engine->priv->plugin_settings = g_settings_new ("org.gnome.gedit.plugins");
-	
+
 	/* Require gedit's typelib. */
 	typelib_dir = g_build_filename (gedit_dirs_get_gedit_lib_dir (),
 	                                "girepository-1.0",
@@ -101,7 +101,7 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
 		g_error_free (error);
 		error = NULL;
 	}
-	
+
 	peas_engine_add_search_path (PEAS_ENGINE (engine),
 	                             gedit_dirs_get_user_plugins_dir (),
 	                             gedit_dirs_get_user_plugins_dir ());

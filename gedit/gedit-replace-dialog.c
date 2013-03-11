@@ -16,14 +16,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
@@ -127,7 +127,7 @@ gedit_replace_dialog_response (GtkDialog *dialog,
 	}
 }
 
-static void 
+static void
 gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -187,18 +187,18 @@ search_text_entry_changed (GtkEditable        *editable,
 
 	if (*search_string != '\0')
 	{
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog), 
+		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 			GEDIT_REPLACE_DIALOG_FIND_RESPONSE, TRUE);
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog), 
+		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 			GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE, TRUE);
 	}
 	else
 	{
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog), 
+		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 			GEDIT_REPLACE_DIALOG_FIND_RESPONSE, FALSE);
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog), 
+		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 			GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE, FALSE);
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog), 
+		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 			GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE, FALSE);
 	}
 }
@@ -222,7 +222,7 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
 				GTK_STOCK_CLOSE, GTK_RESPONSE_CANCEL,
 				NULL);
-				
+
 	/* HIG defaults */
 	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);
 	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
@@ -343,11 +343,11 @@ gedit_replace_dialog_new (GtkWindow *parent)
 	{
 		gtk_window_set_transient_for (GTK_WINDOW (dlg),
 					      parent);
-	
+
 		gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg),
 						    TRUE);
 	}
-	
+
 	return GTK_WIDGET (dlg);
 }
 
@@ -364,7 +364,7 @@ gedit_replace_dialog_set_search_text (GeditReplaceDialog *dialog,
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 					   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
 					   (text != '\0'));
-					   
+
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 					   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
 					   (text != '\0'));

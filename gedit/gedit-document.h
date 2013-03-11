@@ -3,8 +3,8 @@
  * This file is part of gedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
- * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi 
- * Copyright (C) 2002-2005 Paolo Maggi 
+ * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
+ * Copyright (C) 2002-2005 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,18 +18,18 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
- 
+
 #ifndef __GEDIT_DOCUMENT_H__
 #define __GEDIT_DOCUMENT_H__
 
@@ -76,7 +76,7 @@ typedef enum
 
 typedef enum
 {
-	GEDIT_SEARCH_DONT_SET_FLAGS	= 1 << 0, 
+	GEDIT_SEARCH_DONT_SET_FLAGS	= 1 << 0,
 	GEDIT_SEARCH_ENTIRE_WORD	= 1 << 1,
 	GEDIT_SEARCH_CASE_SENSITIVE	= 1 << 2
 
@@ -120,11 +120,11 @@ typedef struct _GeditDocumentPrivate    GeditDocumentPrivate;
  * Main object structure
  */
 typedef struct _GeditDocument           GeditDocument;
- 
+
 struct _GeditDocument
 {
 	GtkSourceBuffer buffer;
-	
+
 	/*< private > */
 	GeditDocumentPrivate *priv;
 };
@@ -253,7 +253,7 @@ gboolean	 gedit_document_is_local	(GeditDocument       *doc);
 
 gboolean	 gedit_document_get_deleted	(GeditDocument       *doc);
 
-gboolean	 gedit_document_goto_line 	(GeditDocument       *doc, 
+gboolean	 gedit_document_goto_line 	(GeditDocument       *doc,
 						 gint                 line);
 
 gboolean	 gedit_document_goto_line_offset(GeditDocument       *doc,
@@ -263,7 +263,7 @@ gboolean	 gedit_document_goto_line_offset(GeditDocument       *doc,
 void		 gedit_document_set_search_text	(GeditDocument       *doc,
 						 const gchar         *text,
 						 guint                flags);
-						 
+
 gchar		*gedit_document_get_search_text	(GeditDocument       *doc,
 						 guint               *flags);
 
@@ -275,7 +275,7 @@ gboolean	 gedit_document_search_forward	(GeditDocument       *doc,
 						 const GtkTextIter   *end,
 						 GtkTextIter         *match_start,
 						 GtkTextIter         *match_end);
-						 
+
 gboolean	 gedit_document_search_backward	(GeditDocument       *doc,
 						 const GtkTextIter   *start,
 						 const GtkTextIter   *end,
@@ -283,19 +283,19 @@ gboolean	 gedit_document_search_backward	(GeditDocument       *doc,
 						 GtkTextIter         *match_end);
 
 gint		 gedit_document_replace_all 	(GeditDocument       *doc,
-				            	 const gchar         *find, 
-						 const gchar         *replace, 
+				            	 const gchar         *find,
+						 const gchar         *replace,
 					    	 guint                flags);
 
 void 		 gedit_document_set_language 	(GeditDocument       *doc,
 						 GtkSourceLanguage   *lang);
-GtkSourceLanguage 
+GtkSourceLanguage
 		*gedit_document_get_language 	(GeditDocument       *doc);
 
-const GeditEncoding 
+const GeditEncoding
 		*gedit_document_get_encoding	(GeditDocument       *doc);
 
-void		 gedit_document_set_enable_search_highlighting 
+void		 gedit_document_set_enable_search_highlighting
 						(GeditDocument       *doc,
 						 gboolean             enable);
 
@@ -315,13 +315,13 @@ void		 gedit_document_set_metadata	(GeditDocument       *doc,
 						 const gchar         *first_key,
 						 ...);
 
-/* 
+/*
  * Non exported functions
  */
 void		 _gedit_document_set_readonly 	(GeditDocument       *doc,
 						 gboolean             readonly);
 
-glong		 _gedit_document_get_seconds_since_last_save_or_load 
+glong		 _gedit_document_get_seconds_since_last_save_or_load
 						(GeditDocument       *doc);
 
 void		 _gedit_document_apply_error_style
@@ -336,7 +336,7 @@ gboolean	_gedit_document_check_externally_modified
 void		_gedit_document_search_region   (GeditDocument       *doc,
 						 const GtkTextIter   *start,
 						 const GtkTextIter   *end);
-						  
+
 /* Search macros */
 #define GEDIT_SEARCH_IS_DONT_SET_FLAGS(sflags) ((sflags & GEDIT_SEARCH_DONT_SET_FLAGS) != 0)
 #define GEDIT_SEARCH_SET_DONT_SET_FLAGS(sflags,state) ((state == TRUE) ? \
@@ -355,7 +355,7 @@ void		_gedit_document_search_region   (GeditDocument       *doc,
  * @doc:
  * @userdata:
  */
-typedef GMountOperation *(*GeditMountOperationFactory)(GeditDocument *doc, 
+typedef GMountOperation *(*GeditMountOperationFactory)(GeditDocument *doc,
 						       gpointer       userdata);
 
 void		 _gedit_document_set_mount_operation_factory

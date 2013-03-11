@@ -159,7 +159,7 @@ settings_try_new (const gchar *schema)
 static void
 gedit_file_browser_plugin_init (GeditFileBrowserPlugin *plugin)
 {
-	
+
 
 	plugin->priv = GEDIT_FILE_BROWSER_PLUGIN_GET_PRIVATE (plugin);
 

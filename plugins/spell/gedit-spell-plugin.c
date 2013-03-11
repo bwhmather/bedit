@@ -1,13 +1,13 @@
 /*
  * gedit-spell-plugin.c
- * 
- * Copyright (C) 2002-2005 Paolo Maggi 
+ *
+ * Copyright (C) 2002-2005 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2, or (at your option)
  * any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -197,7 +197,7 @@ gedit_spell_plugin_get_property (GObject    *object,
 	}
 }
 
-static void 
+static void
 set_spell_language_cb (GeditSpellChecker   *spell,
 		       const GeditSpellCheckerLanguage *lang,
 		       GeditDocument 	   *doc)
@@ -255,9 +255,9 @@ get_spell_checker_from_document (GeditDocument *doc)
 
 		set_language_from_metadata (spell, doc);
 
-		g_object_set_qdata_full (G_OBJECT (doc), 
-					 spell_checker_id, 
-					 spell, 
+		g_object_set_qdata_full (G_OBJECT (doc),
+					 spell_checker_id,
+					 spell,
 					 (GDestroyNotify) g_object_unref);
 
 		g_signal_connect (spell,
@@ -304,24 +304,24 @@ update_current (GeditDocument *doc,
 	range = get_check_range (doc);
 	g_return_if_fail (range != NULL);
 
-	gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), 
+	gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc),
 					    &iter, current);
 
 	if (!gtk_text_iter_inside_word (&iter))
-	{	
+	{
 		/* if we're not inside a word,
 		 * we must be in some spaces.
 		 * skip forward to the beginning of the next word. */
 		if (!gtk_text_iter_is_end (&iter))
 		{
 			gtk_text_iter_forward_word_end (&iter);
-			gtk_text_iter_backward_word_start (&iter);	
+			gtk_text_iter_backward_word_start (&iter);
 		}
 	}
 	else
 	{
 		if (!gtk_text_iter_starts_word (&iter))
-			gtk_text_iter_backward_word_start (&iter);	
+			gtk_text_iter_backward_word_start (&iter);
 	}
 
 	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
@@ -329,7 +329,7 @@ update_current (GeditDocument *doc,
 					  range->end_mark);
 
 	if (gtk_text_iter_compare (&end_iter, &iter) < 0)
-	{	
+	{
 		gtk_text_buffer_move_mark (GTK_TEXT_BUFFER (doc),
 					   range->current_mark,
 					   &end_iter);
@@ -371,9 +371,9 @@ set_check_range (GeditDocument *doc,
 		range->current_mark = gtk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
 				"check_range_current_mark", &iter, TRUE);
 
-		g_object_set_qdata_full (G_OBJECT (doc), 
-				 check_range_id, 
-				 range, 
+		g_object_set_qdata_full (G_OBJECT (doc),
+				 check_range_id,
+				 range,
 				 (GDestroyNotify)g_free);
 	}
 
@@ -432,12 +432,12 @@ get_current_word (GeditDocument *doc, gint *start, gint *end)
 	range = get_check_range (doc);
 	g_return_val_if_fail (range != NULL, NULL);
 
-	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc), 
+	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
 			&end_iter, range->end_mark);
 
 	range_end = gtk_text_iter_get_offset (&end_iter);
 
-	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc), 
+	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
 			&current_iter, range->current_mark);
 
 	end_iter = current_iter;
@@ -478,7 +478,7 @@ goto_next_word (GeditDocument *doc)
 	range = get_check_range (doc);
 	g_return_val_if_fail (range != NULL, FALSE);
 
-	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc), 
+	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
 					  &current_iter,
 					  range->current_mark);
 	gtk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &end_iter);
@@ -584,7 +584,7 @@ ignore_cb (GeditSpellCheckerDialog *dlg,
 	if (word == NULL)
 	{
 		gedit_spell_checker_dialog_set_completed (dlg);
-		
+
 		return;
 	}
 
@@ -990,7 +990,7 @@ set_auto_spell_from_metadata (GeditWindow    *window,
 	if (active_str)
 	{
 		active = *active_str == '1';
-	
+
 		g_free (active_str);
 	}
 
@@ -1002,7 +1002,7 @@ set_auto_spell_from_metadata (GeditWindow    *window,
 	if (active_doc == doc && action_group != NULL)
 	{
 		GtkAction *action;
-		
+
 		action = gtk_action_group_get_action (action_group,
 						      "AutoSpell");
 
@@ -1107,7 +1107,7 @@ tab_removed_cb (GeditWindow      *window,
 
 	doc = gedit_tab_get_document (tab);
 	g_object_set_data (G_OBJECT (doc), GEDIT_AUTOMATIC_SPELL_VIEW, NULL);
-	
+
 	g_signal_handlers_disconnect_by_func (doc, on_document_loaded, plugin);
 	g_signal_handlers_disconnect_by_func (doc, on_document_saved, plugin);
 }

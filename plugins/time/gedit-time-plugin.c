@@ -666,7 +666,7 @@ get_configure_widget (GeditTimePlugin *plugin)
 		"time_dialog_content",
 		NULL
 	};
-	
+
 	gedit_debug (DEBUG_PLUGINS);
 
 	widget = g_slice_new (TimeConfigureWidget);
@@ -810,7 +810,7 @@ get_choose_format_dialog (GtkWindow                 *parent,
 	GtkBuilder *builder;
 	gchar *sf, *cf;
 	GtkWindowGroup *wg = NULL;
-	
+
 	if (parent != NULL)
 		wg = gtk_window_get_group (parent);
 

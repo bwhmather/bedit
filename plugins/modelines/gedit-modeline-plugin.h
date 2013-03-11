@@ -1,7 +1,7 @@
 /*
  * gedit-modeline-plugin.h
  * Emacs, Kate and Vim-style modelines support for gedit.
- * 
+ *
  * Copyright (C) 2005-2007 - Steve Frécinaux <code@istique.net>
  *
  * This program is free software; you can redistribute it and/or modify

@@ -3,7 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2000-2001 Chema Celorio, Paolo Maggi
- * Copyright (C) 2002-2008 Paolo Maggi  
+ * Copyright (C) 2002-2008 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,14 +17,14 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
- * Boston, MA 02111-1307, USA. 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id: gedit-print.c 6022 2007-12-09 14:38:57Z pborelli $
  */
@@ -64,7 +64,7 @@ struct _GeditPrintJobPrivate
 	GtkWidget                *preview;
 
 	GeditPrintJobStatus       status;
-	
+
 	gchar                    *status_string;
 
 	gdouble			  progress;
@@ -95,7 +95,7 @@ enum
 	PROP_VIEW
 };
 
-enum 
+enum
 {
 	PRINTING,
 	SHOW_PREVIEW,
@@ -107,7 +107,7 @@ static guint print_job_signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (GeditPrintJob, gedit_print_job, G_TYPE_OBJECT)
 
-static void          end_print_cb      (GtkPrintOperation *operation, 
+static void          end_print_cb      (GtkPrintOperation *operation,
                                         GtkPrintContext   *context,
                                         GeditPrintJob     *job);
 
@@ -122,7 +122,7 @@ set_view (GeditPrintJob *job, GeditView *view)
 	job->priv->doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 }
 
-static void 
+static void
 gedit_print_job_get_property (GObject    *object,
 			      guint       prop_id,
 			      GValue     *value,
@@ -141,7 +141,7 @@ gedit_print_job_get_property (GObject    *object,
 	}
 }
 
-static void 
+static void
 gedit_print_job_set_property (GObject      *object,
 			      guint         prop_id,
 			      const GValue *value,
@@ -187,11 +187,11 @@ gedit_print_job_dispose (GObject *object)
 		g_object_unref (job->priv->operation);
 		job->priv->operation = NULL;
 	}
-	
+
 	G_OBJECT_CLASS (gedit_print_job_parent_class)->dispose (object);
 }
 
-static void 
+static void
 gedit_print_job_class_init (GeditPrintJobClass *klass)
 {
 	GObjectClass *object_class;
@@ -246,7 +246,7 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 			      2,
 			      G_TYPE_UINT,
 			      G_TYPE_POINTER);
-			      			      
+
 	g_type_class_add_private (object_class, sizeof (GeditPrintJobPrivate));
 }
 
@@ -264,7 +264,7 @@ wrap_mode_checkbutton_toggled (GtkToggleButton *button,
 {
 	if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton)))
 	{
-		gtk_widget_set_sensitive (job->priv->do_not_split_checkbutton, 
+		gtk_widget_set_sensitive (job->priv->do_not_split_checkbutton,
 					  FALSE);
 		gtk_toggle_button_set_inconsistent (
 			GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton),
@@ -286,7 +286,7 @@ restore_button_clicked (GtkButton     *button,
 
 {
 	gchar *body, *header, *numbers;
-	
+
 	g_settings_reset (job->priv->print_settings,
 			  GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
 	g_settings_reset (job->priv->print_settings,
@@ -310,14 +310,14 @@ restore_button_clicked (GtkButton     *button,
 	gtk_font_button_set_font_name (
 			GTK_FONT_BUTTON (job->priv->numbers_fontbutton),
 			numbers);
-	
+
 	g_free (body);
 	g_free (header);
 	g_free (numbers);
 }
 
 static GObject *
-create_custom_widget_cb (GtkPrintOperation *operation, 
+create_custom_widget_cb (GtkPrintOperation *operation,
 			 GeditPrintJob     *job)
 {
 	GtkBuilder *builder;
@@ -396,7 +396,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	/* Text wrapping */
 	wrap_mode = g_settings_get_enum (job->priv->print_settings,
 					 GEDIT_SETTINGS_PRINT_WRAP_MODE);
-	
+
 	switch (wrap_mode)
 	{
 		case GTK_WRAP_WORD:
@@ -418,7 +418,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 				GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton), TRUE);
 	}
 
-	gtk_widget_set_sensitive (job->priv->do_not_split_checkbutton, 
+	gtk_widget_set_sensitive (job->priv->do_not_split_checkbutton,
 				  wrap_mode != GTK_WRAP_NONE);
 
 	/* Set initial values */
@@ -523,7 +523,7 @@ create_compositor (GeditPrintJob *job)
 	GtkWrapMode wrap_mode;
 	guint print_line_numbers;
 	gboolean print_header;
-	
+
 	/* Create and initialize print compositor */
 	print_font_body = g_settings_get_string (job->priv->print_settings,
 						 GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
@@ -537,10 +537,10 @@ create_compositor (GeditPrintJob *job)
 			"u", &print_line_numbers);
 	print_header = g_settings_get_boolean (job->priv->print_settings,
 					       GEDIT_SETTINGS_PRINT_HEADER);
-	
+
 	wrap_mode = g_settings_get_enum (job->priv->print_settings,
 					 GEDIT_SETTINGS_PRINT_WRAP_MODE);
-	
+
 	job->priv->compositor = GTK_SOURCE_PRINT_COMPOSITOR (
 					g_object_new (GTK_SOURCE_TYPE_PRINT_COMPOSITOR,
 						     "buffer", GTK_SOURCE_BUFFER (job->priv->doc),
@@ -559,7 +559,7 @@ create_compositor (GeditPrintJob *job)
 	g_free (print_font_body);
 	g_free (print_font_header);
 	g_free (print_font_numbers);
-	
+
 	if (print_header)
 	{
 		gchar *doc_name;
@@ -572,7 +572,7 @@ create_compositor (GeditPrintJob *job)
 		left = g_strdup_printf (_("File: %s"), name_to_display);
 
 		/* Translators: %N is the current page number, %Q is the total
-		 * number of pages (ex. Page 2 of 10) 
+		 * number of pages (ex. Page 2 of 10)
 		 */
 		gtk_source_print_compositor_set_header_format (job->priv->compositor,
 							       TRUE,
@@ -587,7 +587,7 @@ create_compositor (GeditPrintJob *job)
 }
 
 static void
-begin_print_cb (GtkPrintOperation *operation, 
+begin_print_cb (GtkPrintOperation *operation,
 	        GtkPrintContext   *context,
 	        GeditPrintJob     *job)
 {
@@ -596,7 +596,7 @@ begin_print_cb (GtkPrintOperation *operation,
 	job->priv->status = GEDIT_PRINT_JOB_STATUS_PAGINATING;
 
 	job->priv->progress = 0.0;
-	
+
 	g_signal_emit (job, print_job_signals[PRINTING], 0, job->priv->status);
 }
 
@@ -617,7 +617,7 @@ preview_destroyed (GtkWidget                *preview,
 	gtk_print_operation_preview_end_preview (gtk_preview);
 }
 
-static gboolean 
+static gboolean
 preview_cb (GtkPrintOperation        *op,
 	    GtkPrintOperationPreview *gtk_preview,
 	    GtkPrintContext          *context,
@@ -641,16 +641,16 @@ preview_cb (GtkPrintOperation        *op,
 }
 
 static gboolean
-paginate_cb (GtkPrintOperation *operation, 
+paginate_cb (GtkPrintOperation *operation,
 	     GtkPrintContext   *context,
 	     GeditPrintJob     *job)
 {
-	gboolean res;	
-	
+	gboolean res;
+
 	job->priv->status = GEDIT_PRINT_JOB_STATUS_PAGINATING;
-	
+
 	res = gtk_source_print_compositor_paginate (job->priv->compositor, context);
-		
+
 	if (res)
 	{
 		gint n_pages;
@@ -684,25 +684,25 @@ draw_page_cb (GtkPrintOperation *operation,
 	if (!job->priv->is_preview)
 	{
 		g_free (job->priv->status_string);
-	
+
 		n_pages = gtk_source_print_compositor_get_n_pages (job->priv->compositor);
-	
+
 		job->priv->status = GEDIT_PRINT_JOB_STATUS_DRAWING;
-	
-		job->priv->status_string = g_strdup_printf ("Rendering page %d of %d...", 
+
+		job->priv->status_string = g_strdup_printf ("Rendering page %d of %d...",
 							    page_nr + 1,
 							    n_pages);
-	
+
 		job->priv->progress = page_nr / (2.0 * n_pages) + 0.5;
 
 		g_signal_emit (job, print_job_signals[PRINTING], 0, job->priv->status);
-	}	
+	}
 
 	gtk_source_print_compositor_draw_page (job->priv->compositor, context, page_nr);
 }
 
 static void
-end_print_cb (GtkPrintOperation *operation, 
+end_print_cb (GtkPrintOperation *operation,
 	      GtkPrintContext   *context,
 	      GeditPrintJob     *job)
 {
@@ -721,7 +721,7 @@ done_cb (GtkPrintOperation       *operation,
 	GError *error = NULL;
 	GeditPrintJobResult print_result;
 
-	switch (result) 
+	switch (result)
 	{
 		case GTK_PRINT_OPERATION_RESULT_CANCEL:
 			print_result = GEDIT_PRINT_JOB_RESULT_CANCEL;
@@ -739,20 +739,20 @@ done_cb (GtkPrintOperation       *operation,
 		default:
 			g_return_if_reached ();
 	}
-	
+
 	/* Avoid job is destroyed in the handler of the "done" message */
 	g_object_ref (job);
-	
+
 	g_signal_emit (job, print_job_signals[DONE], 0, print_result, error);
-	
+
 	g_object_unref (operation);
 	job->priv->operation = NULL;
-	
+
 	g_object_unref (job);
 }
 
 /* Note that gedit_print_job_print can can only be called once on a given GeditPrintJob */
-GtkPrintOperationResult	 
+GtkPrintOperationResult
 gedit_print_job_print (GeditPrintJob            *job,
 		       GtkPrintOperationAction   action,
 		       GtkPageSetup             *page_setup,
@@ -793,15 +793,15 @@ gedit_print_job_print (GeditPrintJob            *job,
 	gtk_print_operation_set_allow_async (priv->operation, TRUE);
 
 	g_signal_connect (priv->operation,
-			  "create-custom-widget", 
+			  "create-custom-widget",
 			  G_CALLBACK (create_custom_widget_cb),
 			  job);
 	g_signal_connect (priv->operation,
-			  "custom-widget-apply", 
-			  G_CALLBACK (custom_widget_apply_cb), 
+			  "custom-widget-apply",
+			  G_CALLBACK (custom_widget_apply_cb),
 			  job);
   	g_signal_connect (priv->operation,
-			  "begin-print", 
+			  "begin-print",
 			  G_CALLBACK (begin_print_cb),
 			  job);
 	g_signal_connect (priv->operation,
@@ -809,23 +809,23 @@ gedit_print_job_print (GeditPrintJob            *job,
 			  G_CALLBACK (preview_cb),
 			  job);
   	g_signal_connect (priv->operation,
-			  "paginate", 
+			  "paginate",
 			  G_CALLBACK (paginate_cb),
 			  job);
 	g_signal_connect (priv->operation,
-			  "draw-page", 
+			  "draw-page",
 			  G_CALLBACK (draw_page_cb),
 			  job);
 	g_signal_connect (priv->operation,
-			  "end-print", 
+			  "end-print",
 			  G_CALLBACK (end_print_cb),
 			  job);
 	g_signal_connect (priv->operation,
-			  "done", 
+			  "done",
 			  G_CALLBACK (done_cb),
-			  job);			  
+			  job);
 
-	return gtk_print_operation_run (priv->operation, 
+	return gtk_print_operation_run (priv->operation,
 					action,
 					parent,
 					error);
@@ -835,11 +835,11 @@ static void
 gedit_print_job_init (GeditPrintJob *job)
 {
 	job->priv = GEDIT_PRINT_JOB_GET_PRIVATE (job);
-	
+
 	job->priv->print_settings = g_settings_new ("org.gnome.gedit.preferences.print");
-	
+
 	job->priv->status = GEDIT_PRINT_JOB_STATUS_INIT;
-	
+
 	job->priv->status_string = g_strdup (_("Preparing..."));
 }
 
@@ -847,9 +847,9 @@ GeditPrintJob *
 gedit_print_job_new (GeditView *view)
 {
 	GeditPrintJob *job;
-	
+
 	g_return_val_if_fail (GEDIT_IS_VIEW (view), NULL);
-	
+
 	job = GEDIT_PRINT_JOB (g_object_new (GEDIT_TYPE_PRINT_JOB,
 					     "view", view,
 					      NULL));
@@ -870,7 +870,7 @@ gedit_print_job_get_status_string (GeditPrintJob *job)
 {
 	g_return_val_if_fail (GEDIT_IS_PRINT_JOB (job), NULL);
 	g_return_val_if_fail (job->priv->status_string != NULL, NULL);
-	
+
 	return job->priv->status_string;
 }
 

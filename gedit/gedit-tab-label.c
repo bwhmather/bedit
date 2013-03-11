@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
 
@@ -108,7 +108,7 @@ gedit_tab_label_get_property (GObject    *object,
 }
 
 static void
-close_button_clicked_cb (GtkWidget     *widget, 
+close_button_clicked_cb (GtkWidget     *widget,
 			 GeditTabLabel *tab_label)
 {
 	g_signal_emit (tab_label, signals[CLOSE_CLICKED], 0, NULL);
@@ -225,7 +225,7 @@ static void
 gedit_tab_label_class_init (GeditTabLabelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	
+
 	object_class->finalize = gedit_tab_label_finalize;
 	object_class->set_property = gedit_tab_label_set_property;
 	object_class->get_property = gedit_tab_label_get_property;
@@ -332,7 +332,7 @@ gedit_tab_label_set_close_button_sensitive (GeditTabLabel *tab_label,
 
 	state = gedit_tab_get_state (tab_label->priv->tab);
 
-	gtk_widget_set_sensitive (tab_label->priv->close_button, 
+	gtk_widget_set_sensitive (tab_label->priv->close_button,
 				  tab_label->priv->close_button_sensitive &&
 				  (state != GEDIT_TAB_STATE_CLOSING) &&
 				  (state != GEDIT_TAB_STATE_SAVING)  &&

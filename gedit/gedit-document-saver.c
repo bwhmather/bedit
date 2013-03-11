@@ -81,7 +81,7 @@ typedef struct
 
 #define REMOTE_QUERY_ATTRIBUTES G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE "," \
 				G_FILE_ATTRIBUTE_TIME_MODIFIED
-				
+
 #define GEDIT_DOCUMENT_SAVER_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
 							  GEDIT_TYPE_DOCUMENT_SAVER, \
 							  GeditDocumentSaverPrivate))
@@ -113,7 +113,7 @@ struct _GeditDocumentSaverPrivate
 	GCancellable		 *cancellable;
 	GOutputStream		 *stream;
 	GInputStream		 *input;
-	
+
 	GError                   *error;
 };
 
@@ -217,7 +217,7 @@ static AsyncData *
 async_data_new (GeditDocumentSaver *saver)
 {
 	AsyncData *async;
-	
+
 	async = g_slice_new (AsyncData);
 	async->saver = saver;
 	async->cancellable = g_object_ref (saver->priv->cancellable);
@@ -244,7 +244,7 @@ async_data_free (AsyncData *async)
 	g_slice_free (AsyncData, async);
 }
 
-static void 
+static void
 gedit_document_saver_class_init (GeditDocumentSaverClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -367,7 +367,7 @@ gedit_document_saver_new (GeditDocument                *doc,
 }
 
 static void
-remote_save_completed_or_failed (GeditDocumentSaver *saver, 
+remote_save_completed_or_failed (GeditDocumentSaver *saver,
 				 AsyncData 	    *async)
 {
 	gedit_document_saver_saving (saver,
@@ -481,7 +481,7 @@ remote_get_info_cb (GFile        *source,
 		async_data_free (async);
 		return;
 	}
-	
+
 	saver = async->saver;
 
 	gedit_debug_message (DEBUG_SAVER, "Finished query info on file");
@@ -518,9 +518,9 @@ close_async_ready_get_info_cb (GOutputStream *stream,
 		async_data_free (async);
 		return;
 	}
-	
+
 	gedit_debug_message (DEBUG_SAVER, "Finished closing stream");
-	
+
 	if (!g_output_stream_close_finish (stream, res, &error))
 	{
 		gedit_debug_message (DEBUG_SAVER, "Closing stream error: %s", error->message);
@@ -529,7 +529,7 @@ close_async_ready_get_info_cb (GOutputStream *stream,
 		return;
 	}
 
-	/* get the file info: note we cannot use 
+	/* get the file info: note we cannot use
 	 * g_file_output_stream_query_info_async since it is not able to get the
 	 * content type etc, beside it is not supported by gvfs.
 	 * I'm not sure this is actually necessary, can't we just use
@@ -701,7 +701,7 @@ async_replace_ready_callback (GFile        *source,
 		async_data_free (async);
 		return;
 	}
-	
+
 	saver = async->saver;
 	file_stream = g_file_replace_finish (source, res, &error);
 
@@ -819,7 +819,7 @@ mount_ready_callback (GFile        *file,
 	}
 
 	mounted = g_file_mount_enclosing_volume_finish (file, res, &error);
-	
+
 	if (!mounted)
 	{
 		async_failed (async, error);
@@ -836,7 +836,7 @@ recover_not_mounted (AsyncData *async)
 {
 	GeditDocument *doc;
 	GMountOperation *mount_operation;
-	
+
 	gedit_debug (DEBUG_LOADER);
 
 	doc = gedit_document_saver_get_document (async->saver);
@@ -870,7 +870,7 @@ check_modification_callback (GFile        *source,
 		async_data_free (async);
 		return;
 	}
-	
+
 	saver = async->saver;
 	info = g_file_query_info_finish (source, res, &error);
 	if (info == NULL)
@@ -881,7 +881,7 @@ check_modification_callback (GFile        *source,
 			g_error_free (error);
 			return;
 		}
-		
+
 		/* it's perfectly fine if the file doesn't exist yet */
 		if (error->code != G_IO_ERROR_NOT_FOUND)
 		{
@@ -931,7 +931,7 @@ check_modified_async (AsyncData *async)
 {
 	gedit_debug_message (DEBUG_SAVER, "Check externally modified");
 
-	g_file_query_info_async (async->saver->priv->location, 
+	g_file_query_info_async (async->saver->priv->location,
 				 G_FILE_ATTRIBUTE_TIME_MODIFIED,
 				 G_FILE_QUERY_INFO_NONE,
 				 G_PRIORITY_HIGH,
@@ -946,14 +946,14 @@ save_remote_file_real (GeditDocumentSaver *saver)
 	AsyncData *async;
 
 	gedit_debug_message (DEBUG_SAVER, "Starting  save");
-	
+
 	/* First find out if the file is modified externally. This requires
 	 * a stat, but I don't think we can do this any other way
 	 */
 	async = async_data_new (saver);
-	
+
 	check_modified_async (async);
-	
+
 	/* return false to stop timeout */
 	return FALSE;
 }

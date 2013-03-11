@@ -2,7 +2,7 @@
  * gedit-io-error-info-bar.c
  * This file is part of gedit
  *
- * Copyright (C) 2005 - Paolo Maggi 
+ * Copyright (C) 2005 - Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,18 +16,18 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
- 
+
 /*
  * Verbose error reporting for file I/O operations (load, save, revert, create)
  */
@@ -88,7 +88,7 @@ set_contents (GtkWidget *area,
 	      GtkWidget *contents)
 {
 	GtkWidget *content_area;
-	
+
 	content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (area));
 	gtk_container_add (GTK_CONTAINER (content_area), contents);
 }
@@ -189,8 +189,8 @@ create_io_loading_error_info_bar (const gchar *primary_text,
 
 static gboolean
 parse_gio_error (gint          code,
-	         gchar       **error_message, 
-	         gchar       **message_details, 
+	         gchar       **error_message,
+	         gchar       **message_details,
 	         GFile        *location,
 	         const gchar  *uri_for_display)
 {
@@ -228,7 +228,7 @@ parse_gio_error (gint          code,
 				else
 				{
 					*message_details = g_strdup (_("gedit cannot handle this location."));
-				}	
+				}
 
 				g_free (scheme_string);
 			}
@@ -237,25 +237,25 @@ parse_gio_error (gint          code,
 		case G_IO_ERROR_NOT_MOUNTABLE_FILE:
 			*message_details = g_strdup (_("The location of the file cannot be mounted."));
 			break;
-	
+
 		case G_IO_ERROR_NOT_MOUNTED:
 			*message_details = g_strdup( _("The location of the file cannot be accessed because it is not mounted."));
 
-			break;	
+			break;
 		case G_IO_ERROR_IS_DIRECTORY:
 			*error_message = g_strdup_printf (_("%s is a directory."),
 							 uri_for_display);
 			*message_details = g_strdup (_("Please check that you typed the "
 						      "location correctly and try again."));
 			break;
-		
+
 		case G_IO_ERROR_INVALID_FILENAME:
 			*error_message = g_strdup_printf (_("%s is not a valid location."),
 							 uri_for_display);
 			*message_details = g_strdup (_("Please check that you typed the "
 						      "location correctly and try again."));
 			break;
-		
+
 		case G_IO_ERROR_HOST_NOT_FOUND:
 			/* This case can be hit for user-typed strings like "foo" due to
 			 * the code that guesses web addresses when there's no initial "/".
@@ -296,7 +296,7 @@ parse_gio_error (gint          code,
 				}
 
 				g_free (uri);
-			
+
 				if (!*message_details)
 				{
 					/* use the same string as INVALID_HOST */
@@ -327,8 +327,8 @@ parse_gio_error (gint          code,
 
 static gboolean
 parse_gedit_error (gint          code,
-	           gchar       **error_message, 
-	           gchar       **message_details, 
+	           gchar       **error_message,
+	           gchar       **message_details,
 	           GFile        *location,
 	           const gchar  *uri_for_display)
 {
@@ -349,9 +349,9 @@ parse_gedit_error (gint          code,
 }
 
 static void
-parse_error (const GError *error, 
-	     gchar       **error_message, 
-	     gchar       **message_details, 
+parse_error (const GError *error,
+	     gchar       **error_message,
+	     gchar       **message_details,
 	     GFile        *location,
 	     const gchar  *uri_for_display)
 {
@@ -373,12 +373,12 @@ parse_error (const GError *error,
 					 location,
 					 uri_for_display);
 	}
-	
+
 	if (!ret)
 	{
-		g_warning ("Hit unhandled case %d (%s) in %s.", 
+		g_warning ("Hit unhandled case %d (%s) in %s.",
 			   error->code, error->message, G_STRFUNC);
-		*message_details = g_strdup_printf (_("Unexpected error: %s"), 
+		*message_details = g_strdup_printf (_("Unexpected error: %s"),
 						    error->message);
 	}
 }
@@ -396,7 +396,7 @@ gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail ((error->domain == GEDIT_DOCUMENT_ERROR) || 
+	g_return_val_if_fail ((error->domain == GEDIT_DOCUMENT_ERROR) ||
 			      (error->domain == G_IO_ERROR), NULL);
 
 	full_formatted_uri = g_file_get_parse_name (location);
@@ -456,8 +456,8 @@ create_combo_box (GtkWidget *info_bar,
 	g_free (label_markup);
 	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
 	menu = gedit_encodings_combo_box_new (TRUE);
-	g_object_set_data (G_OBJECT (info_bar), 
-			   "gedit-info-bar-encoding-menu", 
+	g_object_set_data (G_OBJECT (info_bar),
+			   "gedit-info-bar-encoding-menu",
 			   menu);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), menu);
@@ -526,7 +526,7 @@ create_conversion_error_info_bar (const gchar *primary_text,
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
-	
+
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
 	primary_label = gtk_label_new (primary_markup);
 	g_free (primary_markup);
@@ -572,7 +572,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 	GtkWidget *info_bar;
 	gboolean edit_anyway = FALSE;
 	gboolean convert_error = FALSE;
-	
+
 	g_return_val_if_fail (error != NULL, NULL);
 	g_return_val_if_fail ((error->domain == G_CONVERT_ERROR) ||
 			      (error->domain == GEDIT_DOCUMENT_ERROR) ||
@@ -594,7 +594,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
-	
+
 	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
@@ -637,7 +637,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 	else if (is_gio_error (error, G_IO_ERROR_INVALID_DATA) && encoding != NULL)
 	{
 		error_message = g_strdup_printf (_("Could not open the file %s using the %s character encoding."),
-						 uri_for_display, 
+						 uri_for_display,
 						 encoding_name);
 		message_details = g_strconcat (_("Please check that you are not trying to open a binary file."), "\n",
 					       _("Select a different character encoding from the menu and try again."), NULL);
@@ -671,7 +671,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 	g_free (encoding_name);
 	g_free (error_message);
 	g_free (message_details);
-	
+
 	return info_bar;
 }
 
@@ -687,35 +687,35 @@ gedit_conversion_error_while_saving_info_bar_new (GFile               *location,
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
 	GtkWidget *info_bar;
-	
+
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 	g_return_val_if_fail (error != NULL, NULL);
 	g_return_val_if_fail (error->domain == G_CONVERT_ERROR ||
 	                      error->domain == G_IO_ERROR, NULL);
 	g_return_val_if_fail (encoding != NULL, NULL);
-	
+
 	full_formatted_uri = g_file_get_parse_name (location);
 
 	/* Truncate the URI so it doesn't get insanely wide. Note that even
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri, 
+	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
-	
+
 	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	encoding_name = gedit_encoding_to_string (encoding);
-	
+
 	error_message = g_strdup_printf (_("Could not save the file %s using the %s character encoding."),
-					 uri_for_display, 
+					 uri_for_display,
 					 encoding_name);
 	message_details = g_strconcat (_("The document contains one or more characters that cannot be encoded "
 					 "using the specified character encoding."), "\n",
 				       _("Select a different character encoding from the menu and try again."), NULL);
-	
+
 	info_bar = create_conversion_error_info_bar (error_message,
 						     message_details,
 						     FALSE);
@@ -724,7 +724,7 @@ gedit_conversion_error_while_saving_info_bar_new (GFile               *location,
 	g_free (encoding_name);
 	g_free (error_message);
 	g_free (message_details);
-	
+
 	return info_bar;
 }
 
@@ -735,8 +735,8 @@ gedit_conversion_error_info_bar_get_encoding (GtkWidget *info_bar)
 
 	g_return_val_if_fail (GTK_IS_INFO_BAR (info_bar), NULL);
 
-	menu = g_object_get_data (G_OBJECT (info_bar), 
-				  "gedit-info-bar-encoding-menu");	
+	menu = g_object_get_data (G_OBJECT (info_bar),
+				  "gedit-info-bar-encoding-menu");
 	if (menu != NULL)
 	{
 		return gedit_encodings_combo_box_get_selected_encoding (GEDIT_ENCODINGS_COMBO_BOX (menu));
@@ -770,10 +770,10 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri, 
+	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
-	
+
 	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
@@ -802,7 +802,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 
 	primary_text = g_strdup_printf (_("This file (%s) is already open in another gedit window."), uri_for_display);
 	g_free (uri_for_display);
-	
+
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
 	g_free (primary_text);
 	primary_label = gtk_label_new (primary_markup);
@@ -862,7 +862,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri, 
+	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -870,7 +870,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
-	
+
 	info_bar_add_stock_button_with_text (GTK_INFO_BAR (info_bar),
 					     _("S_ave Anyway"),
 					     GTK_STOCK_SAVE,
@@ -960,7 +960,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri, 
+	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -968,7 +968,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
-	
+
 	info_bar_add_stock_button_with_text (GTK_INFO_BAR (info_bar),
 					     _("S_ave Anyway"),
 					     GTK_STOCK_SAVE,
@@ -1054,7 +1054,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail ((error->domain == GEDIT_DOCUMENT_ERROR) || 
+	g_return_val_if_fail ((error->domain == GEDIT_DOCUMENT_ERROR) ||
 			      (error->domain == G_IO_ERROR), NULL);
 
 	full_formatted_uri = g_file_get_parse_name (location);
@@ -1063,7 +1063,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri, 
+	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -1139,9 +1139,9 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 	}
 	else
 	{
-		parse_error (error, 
-			     &error_message, 
-			     &message_details, 
+		parse_error (error,
+			     &error_message,
+			     &message_details,
 			     location,
 			     uri_for_display);
 	}
@@ -1182,7 +1182,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 	 * though the dialog uses wrapped text, if the URI doesn't contain
 	 * white space then the text-wrapping code is too stupid to wrap it.
 	 */
-	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri, 
+	temp_uri_for_display = gedit_utils_str_middle_truncate (full_formatted_uri,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
@@ -1203,7 +1203,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 		secondary_text = _("Do you want to reload the file?");
 
 	info_bar = gtk_info_bar_new ();
-	
+
 	info_bar_add_stock_button_with_text (GTK_INFO_BAR (info_bar),
 					     _("_Reload"),
 					     GTK_STOCK_REFRESH,
@@ -1257,7 +1257,7 @@ gedit_invalid_character_info_bar_new (GFile *location)
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
-	
+
 	info_bar_add_stock_button_with_text (GTK_INFO_BAR (info_bar),
 					     _("S_ave Anyway"),
 					     GTK_STOCK_SAVE,

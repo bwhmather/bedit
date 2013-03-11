@@ -6,7 +6,7 @@ gedit_spell_osx_get_preferred_spell_language ()
 {
 	gchar *ret = NULL;
 	NSAutoreleasePool *pool;
-	
+
 	pool = [[NSAutoreleasePool alloc] init];
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5

@@ -359,7 +359,7 @@ static void
 gedit_file_chooser_dialog_init (GeditFileChooserDialog *dialog)
 {
 	dialog->priv = GEDIT_FILE_CHOOSER_DIALOG_GET_PRIVATE (dialog);
-	
+
 	dialog->priv->filter_settings = g_settings_new ("org.gnome.gedit.state.file-filter");
 }
 

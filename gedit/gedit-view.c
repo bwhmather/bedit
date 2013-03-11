@@ -3,8 +3,8 @@
  * This file is part of gedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
- * Copyright (C) 2000, 2002 Chema Celorio, Paolo Maggi 
- * Copyright (C) 2003-2005 Paolo Maggi  
+ * Copyright (C) 2000, 2002 Chema Celorio, Paolo Maggi
+ * Copyright (C) 2003-2005 Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,16 +18,16 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
- * Boston, MA 02111-1307, USA. 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
+ * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
+ * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
  * See the ChangeLog files for a list of changes.
  *
- * $Id$ 
+ * $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -87,13 +87,13 @@ enum
 static guint view_signals [LAST_SIGNAL] = { 0 };
 
 static void
-document_read_only_notify_handler (GeditDocument *document, 
+document_read_only_notify_handler (GeditDocument *document,
 			           GParamSpec    *pspec,
 				   GeditView     *view)
 {
 	gedit_debug (DEBUG_VIEW);
 
-	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
+	gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
 				    !gedit_document_get_readonly (document));
 }
 
@@ -109,7 +109,7 @@ search_highlight_updated_cb (GeditDocument *doc,
 	gint y;
 	gint height;
 	GtkTextView *text_view;
-	
+
 	text_view = GTK_TEXT_VIEW (view);
 
 	g_return_if_fail (gedit_document_get_enable_search_highlighting (
@@ -160,7 +160,7 @@ current_buffer_removed (GeditView *view)
 		g_signal_handlers_disconnect_by_func (view->priv->current_buffer,
 						      search_highlight_updated_cb,
 						      view);
-				     
+
 		g_object_unref (view->priv->current_buffer);
 		view->priv->current_buffer = NULL;
 	}
@@ -172,10 +172,10 @@ on_notify_buffer_cb (GeditView  *view,
 		     gpointer    userdata)
 {
 	GtkTextBuffer *buffer;
-	
+
 	current_buffer_removed (view);
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-	
+
 	if (buffer == NULL || !GEDIT_IS_DOCUMENT (buffer))
 		return;
 
@@ -185,7 +185,7 @@ on_notify_buffer_cb (GeditView  *view,
 			  G_CALLBACK (document_read_only_notify_handler),
 			  view);
 
-	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), 
+	gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
 				    !gedit_document_get_readonly (GEDIT_DOCUMENT (buffer)));
 
 	g_signal_connect (buffer,
@@ -194,7 +194,7 @@ on_notify_buffer_cb (GeditView  *view,
 			  view);
 }
 
-static void 
+static void
 gedit_view_init (GeditView *view)
 {
 	GtkTargetList *tl;
@@ -288,7 +288,7 @@ gedit_view_constructed (GObject *object)
 
 	/*
 	 *  Set tab, fonts, wrap mode, colors, etc. according
-	 *  to preferences 
+	 *  to preferences
 	 */
 	if (!use_default_font)
 	{
@@ -327,7 +327,7 @@ gedit_view_constructed (GObject *object)
 	smart_home_end = g_settings_get_enum (view->priv->editor_settings,
 	                                      GEDIT_SETTINGS_SMART_HOME_END);
 
-	g_object_set (G_OBJECT (view), 
+	g_object_set (G_OBJECT (view),
 	              "wrap_mode", wrap_mode,
 	              "show_line_numbers", display_line_numbers,
 	              "auto_indent", auto_indent,
@@ -371,7 +371,7 @@ gedit_view_draw (GtkWidget *widget,
 	{
 		GdkRectangle visible_rect;
 		GtkTextIter iter1, iter2;
-		
+
 		gtk_text_view_get_visible_rect (text_view, &visible_rect);
 		gtk_text_view_get_line_at_y (text_view, &iter1,
 					     visible_rect.y, NULL);
@@ -379,7 +379,7 @@ gedit_view_draw (GtkWidget *widget,
 					     visible_rect.y
 					     + visible_rect.height, NULL);
 		gtk_text_iter_forward_line (&iter2);
-				     
+
 		_gedit_document_search_region (doc,
 					       &iter1,
 					       &iter2);
@@ -394,14 +394,14 @@ drag_get_uri_target (GtkWidget      *widget,
 {
 	GdkAtom target;
 	GtkTargetList *tl;
-	
+
 	tl = gtk_target_list_new (NULL, 0);
 	gtk_target_list_add_uri_targets (tl, 0);
-	
+
 	target = gtk_drag_dest_find_target (widget, context, tl);
 	gtk_target_list_unref (tl);
-	
-	return target;	
+
+	return target;
 }
 
 static gboolean
@@ -413,13 +413,13 @@ gedit_view_drag_motion (GtkWidget      *widget,
 {
 	gboolean result;
 
-	/* Chain up to allow textview to scroll and position dnd mark, note 
+	/* Chain up to allow textview to scroll and position dnd mark, note
 	 * that this needs to be checked if gtksourceview or gtktextview
 	 * changes drag_motion behaviour */
 	result = GTK_WIDGET_CLASS (gedit_view_parent_class)->drag_motion (widget, context, x, y, timestamp);
 
 	/* If this is a URL, deal with it here */
-	if (drag_get_uri_target (widget, context) != GDK_NONE) 
+	if (drag_get_uri_target (widget, context) != GDK_NONE)
 	{
 		gdk_drag_status (context,
 				 gdk_drag_context_get_suggested_action (context),
@@ -461,12 +461,12 @@ gedit_view_drag_data_received (GtkWidget        *widget,
 		gchar **uri_list;
 
 		uri_list = gedit_utils_drop_get_uris (selection_data);
-		
+
 		if (uri_list != NULL)
 		{
 			g_signal_emit (widget, view_signals[DROP_URIS], 0, uri_list);
 			g_strfreev (uri_list);
-			
+
 			gtk_drag_finish (context, TRUE, FALSE, timestamp);
 		}
 	}
@@ -558,11 +558,11 @@ create_line_numbers_menu (GtkWidget *view)
 			 item,
 			 "active",
 			 G_SETTINGS_BIND_SET);
-	
+
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-	
+
 	gtk_widget_show_all (menu);
-	
+
 	return menu;
 }
 
@@ -574,19 +574,19 @@ show_line_numbers_menu (GtkWidget      *view,
 
 	menu = create_line_numbers_menu (view);
 
-	gtk_menu_popup (GTK_MENU (menu), 
-			NULL, 
+	gtk_menu_popup (GTK_MENU (menu),
 			NULL,
-			NULL, 
 			NULL,
-			event->button, 
+			NULL,
+			NULL,
+			event->button,
 			event->time);
 }
 
 static gboolean
 gedit_view_button_press_event (GtkWidget *widget, GdkEventButton *event)
 {
-	if ((event->type == GDK_BUTTON_PRESS) && 
+	if ((event->type == GDK_BUTTON_PRESS) &&
 	    (event->button == GDK_BUTTON_SECONDARY) &&
 	    (event->window == gtk_text_view_get_window (GTK_TEXT_VIEW (widget),
 						        GTK_TEXT_WINDOW_LEFT)))
@@ -676,7 +676,7 @@ delete_line (GtkTextView *text_view,
 	if (gtk_text_buffer_get_selection_bounds (buffer, &start, &end))
 	{
 		gtk_text_iter_order (&start, &end);
-		
+
 		if (gtk_text_iter_starts_line (&end))
 		{
 			/* Do no delete the line with the cursor if the cursor
@@ -688,29 +688,29 @@ delete_line (GtkTextView *text_view,
 			count = 1;
 		}
 	}
-	
+
 	gtk_text_iter_set_line_offset (&start, 0);
 
 	if (count > 0)
-	{		
+	{
 		gtk_text_iter_forward_lines (&end, count);
 
 		if (gtk_text_iter_is_end (&end))
-		{		
+		{
 			if (gtk_text_iter_backward_line (&start) && !gtk_text_iter_ends_line (&start))
 				gtk_text_iter_forward_to_line_end (&start);
 		}
 	}
-	else if (count < 0) 
+	else if (count < 0)
 	{
 		if (!gtk_text_iter_ends_line (&end))
 			gtk_text_iter_forward_to_line_end (&end);
 
-		while (count < 0) 
+		while (count < 0)
 		{
 			if (!gtk_text_iter_backward_line (&start))
 				break;
-				
+
 			++count;
 		}
 
@@ -729,12 +729,12 @@ delete_line (GtkTextView *text_view,
 	{
 		GtkTextIter cur = start;
 		gtk_text_iter_set_line_offset (&cur, 0);
-		
+
 		gtk_text_buffer_begin_user_action (buffer);
 
 		gtk_text_buffer_place_cursor (buffer, &cur);
 
-		gtk_text_buffer_delete_interactive (buffer, 
+		gtk_text_buffer_delete_interactive (buffer,
 						    &start,
 						    &end,
 						    gtk_text_view_get_editable (text_view));
@@ -811,10 +811,10 @@ gedit_view_class_init (GeditViewClass *klass)
 
 	/* A new signal DROP_URIS has been added to allow plugins to intercept
 	 * the default dnd behaviour of 'text/uri-list'. GeditView now handles
-	 * dnd in the default handlers of drag_drop, drag_motion and 
+	 * dnd in the default handlers of drag_drop, drag_motion and
 	 * drag_data_received. The view emits drop_uris from drag_data_received
-	 * if valid uris have been dropped. Plugins should connect to 
-	 * drag_motion, drag_drop and drag_data_received to change this 
+	 * if valid uris have been dropped. Plugins should connect to
+	 * drag_motion, drag_drop and drag_data_received to change this
 	 * default behaviour. They should _NOT_ use this signal because this
 	 * will not prevent gedit from loading the uri
 	 */
@@ -842,8 +842,8 @@ gedit_view_class_init (GeditViewClass *klass)
 /**
  * gedit_view_new:
  * @doc: a #GeditDocument
- * 
- * Creates a new #GeditView object displaying the @doc document. 
+ *
+ * Creates a new #GeditView object displaying the @doc document.
  * @doc cannot be %NULL.
  *
  * Return value: a new #GeditView
@@ -941,7 +941,7 @@ gedit_view_paste_clipboard (GeditView *view)
 /**
  * gedit_view_delete_selection:
  * @view: a #GeditView
- * 
+ *
  * Deletes the text currently selected in the #GtkTextBuffer associated
  * to the view and scroll to the cursor position.
  **/
@@ -974,7 +974,7 @@ gedit_view_delete_selection (GeditView *view)
 /**
  * gedit_view_select_all:
  * @view: a #GeditView
- * 
+ *
  * Selects all the text displayed in the @view.
  **/
 void
@@ -997,7 +997,7 @@ gedit_view_select_all (GeditView *view)
 /**
  * gedit_view_scroll_to_cursor:
  * @view: a #GeditView
- * 
+ *
  * Scrolls the @view to the cursor position.
  **/
 void
@@ -1026,13 +1026,13 @@ gedit_view_scroll_to_cursor (GeditView *view)
  * @view: a #GeditView
  * @def: whether to reset the default font
  * @font_name: the name of the font to use
- * 
+ *
  * If @def is #TRUE, resets the font of the @view to the default font
  * otherwise sets it to @font_name.
  **/
 void
-gedit_view_set_font (GeditView   *view, 
-		     gboolean     def, 
+gedit_view_set_font (GeditView   *view,
+		     gboolean     def,
 		     const gchar *font_name)
 {
 	PangoFontDescription *font_desc;

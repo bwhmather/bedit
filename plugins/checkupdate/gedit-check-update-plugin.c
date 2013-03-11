@@ -646,9 +646,9 @@ gedit_check_update_plugin_class_init (GeditCheckUpdatePluginClass *klass)
 	object_class->dispose = gedit_check_update_plugin_dispose;
 	object_class->set_property = gedit_check_update_plugin_set_property;
 	object_class->get_property = gedit_check_update_plugin_get_property;
-	
+
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
-	
+
 	g_type_class_add_private (object_class, sizeof (GeditCheckUpdatePluginPrivate));
 }
 

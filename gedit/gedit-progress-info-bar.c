@@ -2,7 +2,7 @@
  * gedit-progress-info-bar.c
  * This file is part of gedit
  *
- * Copyright (C) 2005 - Paolo Maggi 
+ * Copyright (C) 2005 - Paolo Maggi
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,20 +16,20 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, 
+ * Foundation, Inc., 59 Temple Place, Suite 330,
  * Boston, MA 02111-1307, USA.
  */
- 
+
 /*
- * Modified by the gedit Team, 2005. See the AUTHORS file for a 
- * list of people on the gedit Team.  
- * See the ChangeLog files for a list of changes. 
+ * Modified by the gedit Team, 2005. See the AUTHORS file for a
+ * list of people on the gedit Team.
+ * See the ChangeLog files for a list of changes.
  *
  * $Id$
  */
- 
+
  /* TODO: add properties */
- 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -91,7 +91,7 @@ gedit_progress_info_bar_set_property (GObject      *object,
 	}
 }
 
-static void 
+static void
 gedit_progress_info_bar_class_init (GeditProgressInfoBarClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
@@ -117,9 +117,9 @@ gedit_progress_info_bar_init (GeditProgressInfoBar *bar)
 	GtkWidget *vbox;
 	GtkWidget *hbox;
 	GtkWidget *content;
-	
+
 	bar->priv = GEDIT_PROGRESS_INFO_BAR_GET_PRIVATE (bar);
-	
+
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_widget_show (vbox);
 
@@ -127,17 +127,17 @@ gedit_progress_info_bar_init (GeditProgressInfoBar *bar)
 	gtk_widget_show (hbox);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
 
-	bar->priv->image = gtk_image_new_from_icon_name (GTK_STOCK_MISSING_IMAGE, 
+	bar->priv->image = gtk_image_new_from_icon_name (GTK_STOCK_MISSING_IMAGE,
 							 GTK_ICON_SIZE_SMALL_TOOLBAR);
 	gtk_widget_show (bar->priv->image);
 	gtk_box_pack_start (GTK_BOX (hbox), bar->priv->image, FALSE, FALSE, 4);
-	
+
 	bar->priv->label = gtk_label_new ("");
 	gtk_widget_show (bar->priv->label);
 	gtk_box_pack_start (GTK_BOX (hbox), bar->priv->label, FALSE, TRUE, 0);
 	gtk_label_set_use_markup (GTK_LABEL (bar->priv->label), TRUE);
 	gtk_widget_set_halign (bar->priv->label, GTK_ALIGN_START);
-	gtk_label_set_ellipsize (GTK_LABEL (bar->priv->label), 
+	gtk_label_set_ellipsize (GTK_LABEL (bar->priv->label),
 				 PANGO_ELLIPSIZE_END);
 
 	bar->priv->progress = gtk_progress_bar_new ();
@@ -145,7 +145,7 @@ gedit_progress_info_bar_init (GeditProgressInfoBar *bar)
 	gtk_widget_show (bar->priv->progress);
 	gtk_box_pack_start (GTK_BOX (vbox), bar->priv->progress, FALSE, TRUE, 0);
 	gtk_widget_set_size_request (bar->priv->progress, -1, 15);
-	
+
 	content = gtk_info_bar_get_content_area (GTK_INFO_BAR (bar));
 	gtk_container_add (GTK_CONTAINER (content), vbox);
 }
@@ -167,7 +167,7 @@ gedit_progress_info_bar_new (const gchar *stock_id,
 	gedit_progress_info_bar_set_stock_image (bar, stock_id);
 	gedit_progress_info_bar_set_markup (bar, markup);
 
-	return GTK_WIDGET (bar);	
+	return GTK_WIDGET (bar);
 }
 
 void
@@ -176,7 +176,7 @@ gedit_progress_info_bar_set_stock_image (GeditProgressInfoBar *bar,
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 	g_return_if_fail (stock_id != NULL);
-	
+
 	gtk_image_set_from_stock (GTK_IMAGE (bar->priv->image),
 				  stock_id,
 				  GTK_ICON_SIZE_SMALL_TOOLBAR);
