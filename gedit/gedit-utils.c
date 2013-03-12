@@ -63,8 +63,6 @@
 #include <sys/stat.h>
 #endif
 
-#define STDIN_DELAY_MICROSECONDS 100000
-
 static void
 widget_get_origin (GtkWidget *widget,
 		   gint      *x,
