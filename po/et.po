@@ -9,15 +9,15 @@
 # Tõivo Leedjärv <toivo linux ee>, 2002, 2003.
 # Priit Laes <plaes plaes org>, 2005, 2009.
 # Ivar Smolin <okul linux ee>, 2005–2011.
-# Mattias Põldaru <mahfiaz@gmail.com>, 2009–2010, 2012.
+# Mattias Põldaru <mahfiaz@gmail.com>, 2009–2010, 2012, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-10-17 16:13+0000\n"
-"PO-Revision-Date: 2012-10-17 21:24+0300\n"
+"POT-Creation-Date: 2013-03-11 22:17+0000\n"
+"PO-Revision-Date: 2013-03-12 16:39+0300\n"
 "Last-Translator: Mattias Põldaru <mahfiaz@gmail.com>\n"
 "Language-Team: Estonian <>\n"
 "Language: et\n"
@@ -40,8 +40,8 @@ msgstr "Tekstifailide redigeerimine"
 msgid "gedit Text Editor"
 msgstr "Tekstiredaktor gedit"
 
-msgid "Text;"
-msgstr "Tekst;"
+msgid "Text;Editor;"
+msgstr "tekst;redaktor;toimeti;tekstitoimeti;"
 
 msgid "Open a New Window"
 msgstr "Uue akna avamine"
@@ -356,7 +356,7 @@ msgstr ""
 #. encodings that are common in your country, for instance the GB18030 encoding
 #. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
 #. (covering English and most Western European languages) if you think people
-#. in you country will rarely use it.
+#. in your country will rarely use it.
 #. "CURRENT" is a magic value used by gedit and it represents the encoding
 #. for the current locale, so please don't translate the "CURRENT" term.
 #. Only recognized encodings are used.
@@ -405,23 +405,70 @@ msgstr ""
 "\". Mida see \"asukoht\" iga plugina jaoks tähendab, seda saab vaadata ."
 "gedit-plugin failist."
 
+msgid "Show the application's help"
+msgstr "Rakenduse abi kuvamine"
+
+msgid "Show the application's version"
+msgstr "Näita rakenduse versiooni"
+
+msgid "Display list of possible values for the encoding option"
+msgstr "Kodeerimisvaliku võimalike väärtuste nimekirja kuvamine"
+
+msgid ""
+"Set the character encoding to be used to open the files listed on the "
+"command line"
+msgstr "Käsurealt avatavate failidele kooditabeli seadmine"
+
+msgid "ENCODING"
+msgstr "KOODITABEL"
+
+msgid "Create a new top-level window in an existing instance of gedit"
+msgstr "Uue ülemise taseme akna loomine olemasolevale gedit'i instantsile"
+
+msgid "Create a new document in an existing instance of gedit"
+msgstr "Uue dokumendi loomine olemasolevas gedit'i instantsis"
+
+msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+msgstr "Akna suuruse ja asukoha määramine (LAIUSxKÕRGUS+X+Y)"
+
+msgid "GEOMETRY"
+msgstr "GEOMEETRIA"
+
+msgid "Open files and block process until files are closed"
+msgstr "Failide avamine ja protsessi blokkimine kuni failide sulgemiseni"
+
+msgid "Run gedit in standalone mode"
+msgstr "Gediti käivitamine iseseisvas režiimis"
+
+msgid "[FILE...] [+LINE[:COLUMN]]"
+msgstr "[FAIL...] [+RIDA[:VEERG]]"
+
 msgid "There was an error displaying the help."
 msgstr "Abiteabe kuvamisel tekkis viga."
+
+msgid "- Edit text files"
+msgstr "- Tekstifailide redigeerimine"
+
+#, c-format
+msgid ""
+"%s\n"
+"Run '%s --help' to see a full list of available command line options.\n"
+msgstr ""
+"%s\n"
+"Kõigi saadaolevate käsureavõtmete vaatamiseks käivita '%s --help'.\n"
+
+#, c-format
+msgid "%s: invalid encoding."
+msgstr "%s: vigane kodeering."
 
 msgid "About gedit"
 msgstr "Geditist lähemalt"
 
-msgid "Log Out _without Saving"
-msgstr "Logi välja _ilma salvestamata"
-
-msgid "_Cancel Logout"
-msgstr "_Tühista väljalogimine"
+msgid "Question"
+msgstr "Küsimus"
 
 msgid "Close _without Saving"
 msgstr "Sulge _ilma salvestamata"
-
-msgid "Question"
-msgstr "Küsimus"
 
 #, c-format
 msgid ""
@@ -536,60 +583,6 @@ msgstr "_Vali dokumendid, mida soovid salvestada:"
 
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Kui Sa ei salvesta, siis lähevad kõik muudatused kaotsi."
-
-#, c-format
-msgid "%s: invalid encoding.\n"
-msgstr "%s: vigane kodeering.\n"
-
-msgid "Show the application's version"
-msgstr "Näita rakenduse versiooni"
-
-msgid "Display list of possible values for the encoding option"
-msgstr "Kodeerimisvaliku võimalike väärtuste nimekirja kuvamine"
-
-msgid ""
-"Set the character encoding to be used to open the files listed on the "
-"command line"
-msgstr "Käsurealt avatavate failidele kooditabeli seadmine"
-
-msgid "ENCODING"
-msgstr "KOODITABEL"
-
-msgid "Create a new top-level window in an existing instance of gedit"
-msgstr "Uue ülemise taseme akna loomine olemasolevale gedit'i instantsile"
-
-msgid "Create a new document in an existing instance of gedit"
-msgstr "Uue dokumendi loomine olemasolevas gedit'i instantsis"
-
-msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr "Akna suuruse ja asukoha määramine (LAIUSxKÕRGUS+X+Y)"
-
-msgid "GEOMETRY"
-msgstr "GEOMEETRIA"
-
-msgid "Open files and block process until files are closed"
-msgstr "Failide avamine ja protsessi blokkimine kuni failide sulgemiseni"
-
-msgid "Run gedit in the background"
-msgstr "Gediti käivitamine taustal"
-
-msgid "Run gedit in standalone mode"
-msgstr "Gediti käivitamine iseseisvas režiimis"
-
-msgid "[FILE...] [+LINE[:COLUMN]]"
-msgstr "[FAIL...] [+RIDA[:VEERG]]"
-
-#. Setup command line options
-msgid "- Edit text files"
-msgstr "- Tekstifailide redigeerimine"
-
-#, c-format
-msgid ""
-"%s\n"
-"Run '%s --help' to see a full list of available command line options.\n"
-msgstr ""
-"%s\n"
-"Kõigi saadaolevate käsureavõtmete vaatamiseks käivita '%s --help'.\n"
 
 #, c-format
 msgid "Loading file '%s'…"
@@ -1176,6 +1169,22 @@ msgstr ""
 "Jätkates selle faili salvestamist võid sa dokumendi rikkuda.  Kas peaks "
 "siiski salvestama?"
 
+#. ex:set ts=8 noet:
+msgid "_New Window"
+msgstr "_Uus aken"
+
+msgid "_Preferences"
+msgstr "_Eelistused"
+
+msgid "_Help"
+msgstr "A_bi"
+
+msgid "_About"
+msgstr "_Lähemalt"
+
+msgid "_Quit"
+msgstr "_Lõpeta"
+
 #. Keep in sync with the respective GtkActions
 msgid "_Move to New Window"
 msgstr "_Tõsta uude aknasse"
@@ -1185,6 +1194,12 @@ msgstr "Sa_lvesta kui..."
 
 msgid "_Print..."
 msgstr "_Prindi..."
+
+msgid "Open a file"
+msgstr "Faili avamine"
+
+msgid "Open a recently used file"
+msgstr "Viimati kasutatud faili avamine"
 
 msgid "Empty"
 msgstr "Tühi"
@@ -1541,17 +1556,11 @@ msgstr "_Tööriistad"
 msgid "_Documents"
 msgstr "_Dokumendid"
 
-msgid "_Help"
-msgstr "A_bi"
-
 msgid "Create a new document"
 msgstr "Uue dokumendi loomine"
 
 msgid "_Open..."
 msgstr "_Ava..."
-
-msgid "Open a file"
-msgstr "Faili avamine"
 
 #. Edit menu
 msgid "Pr_eferences"
@@ -1787,9 +1796,6 @@ msgstr "Süntaksi esiletõstmise keelamine"
 msgid "Open '%s'"
 msgstr "Ava '%s'"
 
-msgid "Open a recently used file"
-msgstr "Viimati kasutatud faili avamine"
-
 msgid "Open"
 msgstr "Ava"
 
@@ -1822,6 +1828,9 @@ msgstr "Sulgude vastavusi ei leitud"
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Sulgude vastavus leiti real %d"
+
+msgid "There are unsaved documents"
+msgstr "Mõned dokumendid on salvestamata"
 
 #. ex:set ts=8 noet:
 msgid "Change Case"
@@ -2882,6 +2891,18 @@ msgstr "Zeitgeisti andmevarustaja"
 
 msgid "Logs access and leave event for documents used with gedit"
 msgstr "Logib geditiga avatud dokumentide avamise ja sulgemise sündmuseid"
+
+#~ msgid "Text;"
+#~ msgstr "Tekst;"
+
+#~ msgid "Log Out _without Saving"
+#~ msgstr "Logi välja _ilma salvestamata"
+
+#~ msgid "_Cancel Logout"
+#~ msgstr "_Tühista väljalogimine"
+
+#~ msgid "Run gedit in the background"
+#~ msgstr "Gediti käivitamine taustal"
 
 #~ msgid "toolbutton1"
 #~ msgstr "tööriistanupp1"
