@@ -5,20 +5,20 @@
 # Jordi Mas i Hernàndez <jmas@softcatala.org>, 2003.
 # Aleix Badia i Bosch <abadia@ica.es>, 2004.
 # Josep Puigdemont <josep.puigdemont@gmail.com>, 2005, 2006, 2007.
-# Gil Forcada <gilforcada@guifi.net>, 2008, 2009, 2010, 2011.
+# Gil Forcada <gilforcada@guifi.net>, 2008, 2009, 2010, 2011, 2012, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-26 01:33+0200\n"
-"PO-Revision-Date: 2012-09-23 12:14+0200\n"
-"Last-Translator: David Planella <david.planella@ubuntu.com>\n"
+"POT-Creation-Date: 2013-03-17 19:58+0100\n"
+"PO-Revision-Date: 2012-11-03 16:19+0100\n"
+"Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca-XV\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bits\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: ../data/gedit.desktop.in.in.h:1
@@ -38,8 +38,8 @@ msgid "gedit Text Editor"
 msgstr "Editor de text gedit"
 
 #: ../data/gedit.desktop.in.in.h:5
-msgid "Text"
-msgstr "Text"
+msgid "Text;Editor;"
+msgstr "Text;Editor;"
 
 #: ../data/gedit.desktop.in.in.h:6
 msgid "Open a New Window"
@@ -97,13 +97,13 @@ msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
 msgstr ""
-"Si gedit hauria de crear còpies de seguretat per als fitxers que alça. Podeu "
-"establir l'extensió del fitxer de còpia de seguretat a l'opció «Extensió de "
-"les còpies de seguretat»."
+"Si gedit hauria de crear còpies de seguretat per als fitxers que guarda. "
+"Podeu establir l'extensió del fitxer de còpia de seguretat a l'opció "
+"«Extensió de les còpies de seguretat»."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
 msgid "Autosave"
-msgstr "Alça automàticament"
+msgstr "Guarda automàticament"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
 msgid ""
@@ -111,22 +111,22 @@ msgid ""
 "interval. You can set the time interval with the \"Autosave Interval\" "
 "option."
 msgstr ""
-"Si el gedit hauria d'alçar automàticament els fitxers modificats després "
+"Si el gedit hauria de guardar automàticament els fitxers modificats després "
 "d'un interval de temps. Podeu establir l'interval de temps a l'opció "
-"«Interval de desament automàtic»."
+"«Interval de guardat automàtic»."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
 msgid "Autosave Interval"
-msgstr "Interval d'alçat automàtic"
+msgstr "Interval de guardat automàtic"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"El nombre de minuts que han de passar perquè el gedit alce automàticament "
-"els fitxers modificats. Només afectarà si l'opció «Alça automàticament» està "
-"habilitada."
+"El nombre de minuts que han de passar perquè el gedit guarde automàticament "
+"els fitxers modificats. Només afectarà si l'opció «Guarda automàticament» "
+"està habilitada."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
 msgid "Undo Actions Limit (DEPRECATED)"
@@ -453,7 +453,7 @@ msgstr ""
 #. encodings that are common in your country, for instance the GB18030 encoding
 #. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
 #. (covering English and most Western European languages) if you think people
-#. in you country will rarely use it.
+#. in your country will rarely use it.
 #. "CURRENT" is a magic value used by gedit and it represents the encoding
 #. for the current locale, so please don't translate the "CURRENT" term.
 #. Only recognized encodings are used.
@@ -494,7 +494,7 @@ msgid ""
 "selector. Only recognized encodings are used."
 msgstr ""
 "Llista de les codificacions mostrades al menú de codificació de caràcters al "
-"diàleg obri/alça de fitxer. Només s'utilitzen codificacions reconegudes."
+"diàleg obri/guarda de fitxer. Només s'utilitzen codificacions reconegudes."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
 msgid "Active plugins"
@@ -509,167 +509,19 @@ msgstr ""
 "Vegeu el fitxer .gedit-plugin per obtindre la «Location» d'un connector "
 "determinat."
 
-#: ../gedit/gedit-app.c:222
-msgid "There was an error displaying the help."
-msgstr "S'ha produït un error en mostrar l'ajuda."
+#: ../gedit/gedit-app.c:115
+msgid "Show the application's help"
+msgstr "Mostra l'ajuda de l'aplicació"
 
-#: ../gedit/gedit-app-osx.c:274
-msgid "About gedit"
-msgstr "Quant al gedit"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:141
-msgid "Log Out _without Saving"
-msgstr "Ix se_nse alçar"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:145
-msgid "_Cancel Logout"
-msgstr "_Cancel·la l'eixida"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:152
-msgid "Close _without Saving"
-msgstr "_Tanca sense alçar"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:214
-msgid "Question"
-msgstr "Pregunta"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:414
-#, c-format
-msgid ""
-"If you don't save, changes from the last %ld second will be permanently lost."
-msgid_plural ""
-"If you don't save, changes from the last %ld seconds will be permanently "
-"lost."
-msgstr[0] ""
-"Si no ho alceu, es perdran permanentment els canvis fets en el darrer segon."
-msgstr[1] ""
-"Si no ho alceu, es perdran permanentment els canvis fets en els darrers %ld "
-"segons."
-
-#: ../gedit/gedit-close-confirmation-dialog.c:423
-msgid ""
-"If you don't save, changes from the last minute will be permanently lost."
-msgstr ""
-"Si no ho alceu, es perdran permanentment els cavis fets en el darrer minut."
-
-#: ../gedit/gedit-close-confirmation-dialog.c:429
-#, c-format
-msgid ""
-"If you don't save, changes from the last minute and %ld second will be "
-"permanently lost."
-msgid_plural ""
-"If you don't save, changes from the last minute and %ld seconds will be "
-"permanently lost."
-msgstr[0] ""
-"Si no ho alceu, es perdran permanentment els canvis fets en el darrer minut "
-"i %ld segon."
-msgstr[1] ""
-"Si no ho alceu, es perdran permanentment els canvis fets en el darrer minut "
-"i %ld segons."
-
-#: ../gedit/gedit-close-confirmation-dialog.c:439
-#, c-format
-msgid ""
-"If you don't save, changes from the last %ld minute will be permanently lost."
-msgid_plural ""
-"If you don't save, changes from the last %ld minutes will be permanently "
-"lost."
-msgstr[0] ""
-"Si no ho alceu, es perdran permanentment els canvis fets el darrer minut."
-msgstr[1] ""
-"Si no ho alceu, es perdran permanentment els canvis fets els darrers %ld "
-"minuts."
-
-#: ../gedit/gedit-close-confirmation-dialog.c:454
-msgid "If you don't save, changes from the last hour will be permanently lost."
-msgstr "Si no ho alceu, es perdran per sempre els canvis fets la darrera hora."
-
-#: ../gedit/gedit-close-confirmation-dialog.c:460
-#, c-format
-msgid ""
-"If you don't save, changes from the last hour and %d minute will be "
-"permanently lost."
-msgid_plural ""
-"If you don't save, changes from the last hour and %d minutes will be "
-"permanently lost."
-msgstr[0] ""
-"Si no ho alceu, es perdran permanentment els canvis fets la darrera hora i "
-"%d minut."
-msgstr[1] ""
-"Si no ho alceu, es perdran permanentment els canvis fets la darrera hora i "
-"%d minuts."
-
-#: ../gedit/gedit-close-confirmation-dialog.c:475
-#, c-format
-msgid ""
-"If you don't save, changes from the last %d hour will be permanently lost."
-msgid_plural ""
-"If you don't save, changes from the last %d hours will be permanently lost."
-msgstr[0] ""
-"Si no ho alceu, es perdran per sempre els canvis fets la darrera hora."
-msgstr[1] ""
-"Si no ho alceu, es perdran per sempre els canvis fets les darreres %d hores."
-
-#: ../gedit/gedit-close-confirmation-dialog.c:519
-#, c-format
-msgid "Changes to document \"%s\" will be permanently lost."
-msgstr "Es perdran permanentment els canvis fets al document «%s»."
-
-#: ../gedit/gedit-close-confirmation-dialog.c:524
-#, c-format
-msgid "Save changes to document \"%s\" before closing?"
-msgstr "Voleu alçar els canvis del document «%s» abans de tancar?"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:538
-#: ../gedit/gedit-close-confirmation-dialog.c:755
-msgid "Saving has been disabled by the system administrator."
-msgstr "L'administrador del sistema ha inhabilitat l'alçar."
-
-#: ../gedit/gedit-close-confirmation-dialog.c:706
-#, c-format
-msgid "Changes to %d document will be permanently lost."
-msgid_plural "Changes to %d documents will be permanently lost."
-msgstr[0] "Es perdran permanentment els canvis fets a %d document."
-msgstr[1] "Es perdran permanentment els canvis fets a %d documents."
-
-#: ../gedit/gedit-close-confirmation-dialog.c:714
-#, c-format
-msgid "There is %d document with unsaved changes. Save changes before closing?"
-msgid_plural ""
-"There are %d documents with unsaved changes. Save changes before closing?"
-msgstr[0] ""
-"Hi ha %d document amb canvis sense alçar. Voleu alçar els canvis abans de "
-"tancar?"
-msgstr[1] ""
-"Hi ha %d documents amb canvis sense alçar. Voleu alçar els canvis abans de "
-"tancar?"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:733
-msgid "Docum_ents with unsaved changes:"
-msgstr "Docum_ents amb canvis per alçar:"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:735
-msgid "S_elect the documents you want to save:"
-msgstr "S_eleccioneu els documents que voleu alçar:"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:759
-msgid "If you don't save, all your changes will be permanently lost."
-msgstr "Si no ho alceu es perdran permanentment tots els canvis."
-
-#: ../gedit/gedit-command-line.c:232
-#, c-format
-msgid "%s: invalid encoding.\n"
-msgstr "%s: codificació no vàlida.\n"
-
-#: ../gedit/gedit-command-line.c:256
+#: ../gedit/gedit-app.c:121
 msgid "Show the application's version"
 msgstr "Mostra la versió de l'aplicació"
 
-#: ../gedit/gedit-command-line.c:262
+#: ../gedit/gedit-app.c:127
 msgid "Display list of possible values for the encoding option"
 msgstr "Mostra una llista dels valors possibles per a la codificació"
 
-#: ../gedit/gedit-command-line.c:270
+#: ../gedit/gedit-app.c:135
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -677,48 +529,47 @@ msgstr ""
 "Estableix la codificació de caràcters a emprar per obrir els fitxers "
 "llistats en la línia d'ordes"
 
-#: ../gedit/gedit-command-line.c:271
+#: ../gedit/gedit-app.c:136
 msgid "ENCODING"
 msgstr "CODIFICACIÓ"
 
-#: ../gedit/gedit-command-line.c:278
+#: ../gedit/gedit-app.c:143
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Crea una finestra nova en una instància existent del gedit"
 
-#: ../gedit/gedit-command-line.c:286
+#: ../gedit/gedit-app.c:151
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Crea un nou document en una instància existent del gedit"
 
-#: ../gedit/gedit-command-line.c:294
+#: ../gedit/gedit-app.c:159
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Estableix la mida i posició de la finestra (AMPLADAxALÇADA+X+Y)"
 
-#: ../gedit/gedit-command-line.c:295
+#: ../gedit/gedit-app.c:160
 msgid "GEOMETRY"
 msgstr "GEOMETRIA"
 
-#: ../gedit/gedit-command-line.c:302
+#: ../gedit/gedit-app.c:167
 msgid "Open files and block process until files are closed"
 msgstr "Obri els fitxers i bloca el procés fins que es tanquen"
 
-#: ../gedit/gedit-command-line.c:310
-msgid "Run gedit in the background"
-msgstr "Executa el gedit en segon pla"
-
-#: ../gedit/gedit-command-line.c:318
+#: ../gedit/gedit-app.c:175
 msgid "Run gedit in standalone mode"
 msgstr "Executa el gedit en mode independent"
 
-#: ../gedit/gedit-command-line.c:327
+#: ../gedit/gedit-app.c:184
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FITXER...] [+LÍNIA[:COLUMNA]]"
 
-#. Setup command line options
-#: ../gedit/gedit-command-line.c:334
+#: ../gedit/gedit-app.c:283
+msgid "There was an error displaying the help."
+msgstr "S'ha produït un error en mostrar l'ajuda."
+
+#: ../gedit/gedit-app.c:708
 msgid "- Edit text files"
 msgstr "- Editeu fitxers de text"
 
-#: ../gedit/gedit-command-line.c:345
+#: ../gedit/gedit-app.c:817 ../gedit/gedit-app.c:907
 #, c-format
 msgid ""
 "%s\n"
@@ -728,12 +579,155 @@ msgstr ""
 "Executeu «%s --help» per veure la llista completa d'opcions disponibles per "
 "a la línia d'ordes.\n"
 
-#: ../gedit/gedit-commands-file.c:266
+#: ../gedit/gedit-app.c:838
+#, c-format
+msgid "%s: invalid encoding."
+msgstr "%s: codificació no vàlida."
+
+#: ../gedit/gedit-app-osx.c:260
+msgid "About gedit"
+msgstr "Quant al gedit"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:151
+msgid "Question"
+msgstr "Pregunta"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:324
+msgid "Close _without Saving"
+msgstr "_Tanca sense guardar"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:372
+#, c-format
+msgid ""
+"If you don't save, changes from the last %ld second will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld seconds will be permanently "
+"lost."
+msgstr[0] ""
+"Si no ho guardeu, es perdran permanentment els canvis fets en el darrer "
+"segon."
+msgstr[1] ""
+"Si no ho guardeu, es perdran permanentment els canvis fets en els darrers "
+"%ld segons."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:381
+msgid ""
+"If you don't save, changes from the last minute will be permanently lost."
+msgstr ""
+"Si no ho guardeu, es perdran permanentment els cavis fets en el darrer minut."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:387
+#, c-format
+msgid ""
+"If you don't save, changes from the last minute and %ld second will be "
+"permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last minute and %ld seconds will be "
+"permanently lost."
+msgstr[0] ""
+"Si no ho guardeu, es perdran permanentment els canvis fets en el darrer "
+"minut i %ld segon."
+msgstr[1] ""
+"Si no ho guardeu, es perdran permanentment els canvis fets en el darrer "
+"minut i %ld segons."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:397
+#, c-format
+msgid ""
+"If you don't save, changes from the last %ld minute will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld minutes will be permanently "
+"lost."
+msgstr[0] ""
+"Si no ho guardeu, es perdran permanentment els canvis fets el darrer minut."
+msgstr[1] ""
+"Si no ho guardeu, es perdran permanentment els canvis fets els darrers %ld "
+"minuts."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:412
+msgid "If you don't save, changes from the last hour will be permanently lost."
+msgstr ""
+"Si no ho guardeu, es perdran per sempre els canvis fets la darrera hora."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:418
+#, c-format
+msgid ""
+"If you don't save, changes from the last hour and %d minute will be "
+"permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last hour and %d minutes will be "
+"permanently lost."
+msgstr[0] ""
+"Si no ho guardeu, es perdran permanentment els canvis fets la darrera hora i "
+"%d minut."
+msgstr[1] ""
+"Si no ho guardeu, es perdran permanentment els canvis fets la darrera hora i "
+"%d minuts."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:433
+#, c-format
+msgid ""
+"If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %d hours will be permanently lost."
+msgstr[0] ""
+"Si no ho guardeu, es perdran per sempre els canvis fets la darrera hora."
+msgstr[1] ""
+"Si no ho guardeu, es perdran per sempre els canvis fets les darreres %d "
+"hores."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:479
+#, c-format
+msgid "Changes to document \"%s\" will be permanently lost."
+msgstr "Es perdran permanentment els canvis fets al document «%s»."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:484
+#, c-format
+msgid "Save changes to document \"%s\" before closing?"
+msgstr "Voleu guardar els canvis del document «%s» abans de tancar?"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:498
+#: ../gedit/gedit-close-confirmation-dialog.c:713
+msgid "Saving has been disabled by the system administrator."
+msgstr "L'administrador del sistema ha inhabilitat el guardar."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:664
+#, c-format
+msgid "Changes to %d document will be permanently lost."
+msgid_plural "Changes to %d documents will be permanently lost."
+msgstr[0] "Es perdran permanentment els canvis fets a %d document."
+msgstr[1] "Es perdran permanentment els canvis fets a %d documents."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:672
+#, c-format
+msgid "There is %d document with unsaved changes. Save changes before closing?"
+msgid_plural ""
+"There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] ""
+"Hi ha %d document amb canvis sense guardar. Voleu guardar els canvis abans "
+"de tancar?"
+msgstr[1] ""
+"Hi ha %d documents amb canvis sense guardar. Voleu guardar els canvis abans "
+"de tancar?"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:691
+msgid "Docum_ents with unsaved changes:"
+msgstr "Docum_ents amb canvis per guardar:"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:693
+msgid "S_elect the documents you want to save:"
+msgstr "S_eleccioneu els documents que voleu guardar:"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:717
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "Si no ho guardeu es perdran permanentment tots els canvis."
+
+#: ../gedit/gedit-commands-file.c:268
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "S'està carregant el fitxer «%s»…"
 
-#: ../gedit/gedit-commands-file.c:275
+#: ../gedit/gedit-commands-file.c:277
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -741,75 +735,77 @@ msgstr[0] "S'està carregant %d fitxer…"
 msgstr[1] "S'estan carregant %d fitxers…"
 
 #. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:440
+#: ../gedit/gedit-commands-file.c:442
 msgid "Open Files"
 msgstr "Obertura de fitxers"
 
-#: ../gedit/gedit-commands-file.c:551
+#: ../gedit/gedit-commands-file.c:553
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "El fitxer «%s» és de només de lectura."
 
-#: ../gedit/gedit-commands-file.c:556
+#: ../gedit/gedit-commands-file.c:558
 msgid "Do you want to try to replace it with the one you are saving?"
-msgstr "Voleu intentar reemplaçar-lo pel que esteu alçant?"
+msgstr "Voleu intentar reemplaçar-lo pel que esteu guardant?"
 
-#: ../gedit/gedit-commands-file.c:564 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.c:283
 msgid "_Replace"
 msgstr "_Reemplaça"
 
-#: ../gedit/gedit-commands-file.c:606
+#: ../gedit/gedit-commands-file.c:608
 msgid "Save the file using compression?"
-msgstr "Voleu alçar el fitxer comprimit?"
+msgstr "Voleu guardar el fitxer comprimit?"
 
-#: ../gedit/gedit-commands-file.c:607
+#: ../gedit/gedit-commands-file.c:609
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr ""
-"Abans s'havia alçat el fitxer «%s» com a text pla i ara s'alçarà comprimit."
+"Abans s'havia guardat el fitxer «%s» com a text pla i ara es guardarà "
+"comprimit."
 
-#: ../gedit/gedit-commands-file.c:609
+#: ../gedit/gedit-commands-file.c:611
 msgid "_Save Using Compression"
 msgstr "Al_ça'l comprimit"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:615
 msgid "Save the file as plain text?"
-msgstr "Voleu alçar el fiter com a text pla?"
+msgstr "Voleu guardar el fiter com a text pla?"
 
-#: ../gedit/gedit-commands-file.c:614
+#: ../gedit/gedit-commands-file.c:616
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
-"Abans s'havia alçat el fitxer «%s» comprimit i ara s'alçarà com a text pla."
+"Abans s'havia guardat el fitxer «%s» comprimit i ara es guardarà com a text "
+"pla."
 
-#: ../gedit/gedit-commands-file.c:616
+#: ../gedit/gedit-commands-file.c:618
 msgid "_Save As Plain Text"
-msgstr "_Anomena i alça com a text pla"
+msgstr "_Anomena i guarda com a text pla"
 
-#: ../gedit/gedit-commands-file.c:736 ../gedit/gedit-commands-file.c:953
+#: ../gedit/gedit-commands-file.c:738 ../gedit/gedit-commands-file.c:955
 #, c-format
 msgid "Saving file '%s'…"
-msgstr "S'està alçant el fitxer «%s»…"
+msgstr "S'està guardant el fitxer «%s»…"
 
-#: ../gedit/gedit-commands-file.c:840
+#: ../gedit/gedit-commands-file.c:842
 msgid "Save As"
-msgstr "Anomena i alça"
+msgstr "Anomena i guarda"
 
-#: ../gedit/gedit-commands-file.c:1167
+#: ../gedit/gedit-commands-file.c:1168
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "S'està recuperant el document «%s»…"
 
-#: ../gedit/gedit-commands-file.c:1212
+#: ../gedit/gedit-commands-file.c:1213
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
-msgstr "Voleu recuperar els canvis no alçats al document «%s»?"
+msgstr "Voleu recuperar els canvis no guardats al document «%s»?"
 
-#: ../gedit/gedit-commands-file.c:1221
+#: ../gedit/gedit-commands-file.c:1222
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -822,13 +818,13 @@ msgstr[1] ""
 "Es perdran permanentment els canvis fets al document en els darrers %ld "
 "segons."
 
-#: ../gedit/gedit-commands-file.c:1230
+#: ../gedit/gedit-commands-file.c:1231
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Es perdran permanentment els canvis fets al document en el darrer minut."
 
-#: ../gedit/gedit-commands-file.c:1236
+#: ../gedit/gedit-commands-file.c:1237
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -843,7 +839,7 @@ msgstr[1] ""
 "Es perdran permanentment els canvis fets al document en el darrer minut i "
 "%ld segons."
 
-#: ../gedit/gedit-commands-file.c:1246
+#: ../gedit/gedit-commands-file.c:1247
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -856,11 +852,11 @@ msgstr[1] ""
 "Es perdran permanentment els canvis fets al document en els darrers %ld "
 "minuts."
 
-#: ../gedit/gedit-commands-file.c:1261
+#: ../gedit/gedit-commands-file.c:1262
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Es perdran per sempre els canvis fets al document la darrera hora."
 
-#: ../gedit/gedit-commands-file.c:1267
+#: ../gedit/gedit-commands-file.c:1268
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -875,7 +871,7 @@ msgstr[1] ""
 "Es perdran permanentment els canvis fets al document en la darrera hora i %d "
 "minuts."
 
-#: ../gedit/gedit-commands-file.c:1282
+#: ../gedit/gedit-commands-file.c:1283
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -886,7 +882,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Es perdran per sempre els canvis fets al document les darreres %d hores."
 
-#: ../gedit/gedit-commands-file.c:1308
+#: ../gedit/gedit-commands-file.c:1309
 msgid "_Revert"
 msgstr "_Recupera"
 
@@ -922,17 +918,17 @@ msgstr "S'ha trobat i reemplaçat una cadena coincident"
 msgid "\"%s\" not found"
 msgstr "No s'ha trobat «%s»"
 
-#: ../gedit/gedit-document.c:1222 ../gedit/gedit-document.c:1248
+#: ../gedit/gedit-document.c:1223 ../gedit/gedit-document.c:1249
 #, c-format
 msgid "Unsaved Document %d"
-msgstr "Document no alçat %d"
+msgstr "Document no guardat %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2397 ../gedit/gedit-window.c:2404
+#: ../gedit/gedit-window.c:2380 ../gedit/gedit-window.c:2387
 msgid "Read-Only"
 msgstr "Només de lectura"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3846
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3827
 msgid "Documents"
 msgstr "Documents"
 
@@ -1216,7 +1212,7 @@ msgstr "Codificació de c_aràcter:"
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:506
-#: ../gedit/gedit-io-error-info-bar.c:782
+#: ../gedit/gedit-io-error-info-bar.c:784
 msgid "Edit Any_way"
 msgstr "Edita de _totes maneres"
 
@@ -1284,7 +1280,7 @@ msgstr "No s'ha pogut obrir el fitxer %s."
 #: ../gedit/gedit-io-error-info-bar.c:712
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
-msgstr "No s'ha pogut alçar el fitxer %s amb la codificació de caràcters %s."
+msgstr "No s'ha pogut guardar el fitxer %s amb la codificació de caràcters %s."
 
 #: ../gedit/gedit-io-error-info-bar.c:715
 msgid ""
@@ -1296,16 +1292,16 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:787
+#: ../gedit/gedit-io-error-info-bar.c:789
 msgid "D_on't Edit"
 msgstr "_No l'editis"
 
-#: ../gedit/gedit-io-error-info-bar.c:801
+#: ../gedit/gedit-io-error-info-bar.c:803
 #, c-format
 msgid "This file (%s) is already open in another gedit window."
 msgstr "Este fitxer (%s) ja està obert en una altra finestra del gedit."
 
-#: ../gedit/gedit-io-error-info-bar.c:815
+#: ../gedit/gedit-io-error-info-bar.c:817
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1313,57 +1309,57 @@ msgstr ""
 "el gedit ha obert esta instància del fitxer d'una manera que no és editable. "
 "Voleu editar-lo de totes maneres?"
 
-#: ../gedit/gedit-io-error-info-bar.c:873
-#: ../gedit/gedit-io-error-info-bar.c:971
-#: ../gedit/gedit-io-error-info-bar.c:1260
+#: ../gedit/gedit-io-error-info-bar.c:875
+#: ../gedit/gedit-io-error-info-bar.c:973
+#: ../gedit/gedit-io-error-info-bar.c:1262
 msgid "S_ave Anyway"
 msgstr "Al_ça igualment"
 
-#: ../gedit/gedit-io-error-info-bar.c:877
-#: ../gedit/gedit-io-error-info-bar.c:975
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../gedit/gedit-io-error-info-bar.c:879
+#: ../gedit/gedit-io-error-info-bar.c:977
+#: ../gedit/gedit-io-error-info-bar.c:1266
 msgid "D_on't Save"
-msgstr "_No alces"
+msgstr "_No guardes"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:895
+#: ../gedit/gedit-io-error-info-bar.c:897
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "El fitxer %s s'ha modificat des que s'ha llegit."
 
-#: ../gedit/gedit-io-error-info-bar.c:910
+#: ../gedit/gedit-io-error-info-bar.c:912
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
-"Si l'alceu, tots els canvis externs fets es poden perdre. Voleu alçar-lo "
-"igualment?"
+"Si el guardeu, tots els canvis externs fets es poden perdre. Voleu guardar-"
+"lo igualment?"
 
-#: ../gedit/gedit-io-error-info-bar.c:998
+#: ../gedit/gedit-io-error-info-bar.c:1000
 #, c-format
 msgid "Could not create a backup file while saving %s"
-msgstr "No s'ha pogut crear una còpia de seguretat en alçar el fitxer %s"
+msgstr "No s'ha pogut crear una còpia de seguretat en guardar el fitxer %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1003
+#: ../gedit/gedit-io-error-info-bar.c:1005
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr ""
-"No s'ha pogut crear una còpia de seguretat temporal en alçar el fitxer %s"
+"No s'ha pogut crear una còpia de seguretat temporal en guardar el fitxer %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1020
+#: ../gedit/gedit-io-error-info-bar.c:1022
 msgid ""
 "gedit could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
 "El gedit no ha pogut fer una còpia de seguretat de la còpia antiga abans de "
-"alçar el fitxer. Podeu oblidar este avís i alçar el fitxer, però si es "
-"produeix un error en alçar, podríeu perdre la còpia antiga del fitxer. Voleu "
-"alçar igualment?"
+"guardar el fitxer. Podeu oblidar este avís i guardar el fitxer, però si es "
+"produeix un error en guardar, podríeu perdre la còpia antiga del fitxer. "
+"Voleu guardar igualment?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1080
+#: ../gedit/gedit-io-error-info-bar.c:1082
 #, c-format
 msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
@@ -1372,7 +1368,7 @@ msgstr ""
 "el gedit no pot gestionar ubicacions %s en mode d'escriptura. Comproveu que "
 "hàgeu escrit correctament la ubicació i torneu-ho a intentar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../gedit/gedit-io-error-info-bar.c:1090
 msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1380,7 +1376,7 @@ msgstr ""
 "el gedit no pot gestionar esta ubicació en mode d'escriptura. Comproveu que "
 "hàgeu escrit correctament la ubicació i torneu-ho a intentar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1097
+#: ../gedit/gedit-io-error-info-bar.c:1099
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1389,88 +1385,109 @@ msgstr ""
 "%s no és una ubicació vàlida. Comproveu que l'hàgeu escrit correctament i "
 "torneu-ho a intentar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../gedit/gedit-io-error-info-bar.c:1106
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
-"No teniu el permís necessari per poder alçar este fitxer. Comproveu que la "
+"No teniu el permís necessari per poder guardar este fitxer. Comproveu que la "
 "ubicació estiga ben escrita i torneu-ho a intentar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1110
+#: ../gedit/gedit-io-error-info-bar.c:1112
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
 msgstr ""
-"No hi ha suficient espai al disc per alçar el fitxer. Allibereu espai de "
+"No hi ha suficient espai al disc per guardar el fitxer. Allibereu espai de "
 "disc i torneu-ho a intentar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1115
+#: ../gedit/gedit-io-error-info-bar.c:1117
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr ""
-"Esteu intentant alçar el fitxer en un disc de només lectura. Comproveu que "
+"Esteu intentant guardar el fitxer en un disc de només lectura. Comproveu que "
 "la ubicació estiga ben escrita i torneu-ho a intentar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1123
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Ja existeix un fitxer amb este mateix nom, utilitzeu-ne un altre."
 
-#: ../gedit/gedit-io-error-info-bar.c:1126
+#: ../gedit/gedit-io-error-info-bar.c:1128
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
 msgstr ""
-"El disc on esteu intentant alçar el fitxer té una limitació quan a la "
+"El disc on esteu intentant guardar el fitxer té una limitació quan a la "
 "longitud dels noms dels fitxers, utilitzeu un nom més curt."
 
-#: ../gedit/gedit-io-error-info-bar.c:1133
+#: ../gedit/gedit-io-error-info-bar.c:1135
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
 "have this limitation."
 msgstr ""
-"El disc on esteu intentant alçar el fitxer té una limitació en la mida dels "
-"fitxers. Intenteu alçar un fitxer més petit o alçar-ho en un disc que no "
-"tinga esta limitació."
+"El disc on esteu intentant guardar el fitxer té una limitació en la mida "
+"dels fitxers. Intenteu guardar un fitxer més petit o guardar-ho en un disc "
+"que no tinga esta limitació."
 
-#: ../gedit/gedit-io-error-info-bar.c:1149
+#: ../gedit/gedit-io-error-info-bar.c:1151
 #, c-format
 msgid "Could not save the file %s."
-msgstr "No s'ha pogut alçar el fitxer %s."
+msgstr "No s'ha pogut guardar el fitxer %s."
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:1194
+#: ../gedit/gedit-io-error-info-bar.c:1196
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "El fitxer %s ha canviat al disc."
 
-#: ../gedit/gedit-io-error-info-bar.c:1199
+#: ../gedit/gedit-io-error-info-bar.c:1201
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "Voleu descartar els canvis i carregar de nou el fitxer?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1201
+#: ../gedit/gedit-io-error-info-bar.c:1203
 msgid "Do you want to reload the file?"
 msgstr "Voleu carregar de nou el fitxer?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1206
+#: ../gedit/gedit-io-error-info-bar.c:1208
 msgid "_Reload"
 msgstr "Carrega de _nou"
 
-#: ../gedit/gedit-io-error-info-bar.c:1278
+#: ../gedit/gedit-io-error-info-bar.c:1280
 #, c-format
 msgid "Some invalid chars have been detected while saving %s"
 msgstr "S'han detectat alguns caràcters no vàlids mentre es desava «%s»"
 
-#: ../gedit/gedit-io-error-info-bar.c:1294
+#: ../gedit/gedit-io-error-info-bar.c:1296
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
-"Si alceu igualment el fitxer pot quedar malmés. Voleu alçar tot i així?"
+"Si guardeu igualment el fitxer pot quedar malmés. Voleu guardar tot i així?"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-menu.ui.h:1
+msgid "_New Window"
+msgstr "Finestra _nova"
+
+#: ../gedit/gedit-menu.ui.h:2
+msgid "_Preferences"
+msgstr "_Preferències"
+
+#: ../gedit/gedit-menu.ui.h:3 ../gedit/gedit-ui.h:49
+msgid "_Help"
+msgstr "A_juda"
+
+#: ../gedit/gedit-menu.ui.h:4
+msgid "_About"
+msgstr "_Quant a"
+
+#: ../gedit/gedit-menu.ui.h:5
+msgid "_Quit"
+msgstr "_Tanca"
 
 #. Keep in sync with the respective GtkActions
 #: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:140
@@ -1479,11 +1496,19 @@ msgstr "_Mou a una finestra nova"
 
 #: ../gedit/gedit-notebook-popup-menu.c:190 ../gedit/gedit-ui.h:78
 msgid "Save _As..."
-msgstr "_Anomena i alça..."
+msgstr "_Anomena i guarda..."
 
 #: ../gedit/gedit-notebook-popup-menu.c:203 ../gedit/gedit-ui.h:84
 msgid "_Print..."
 msgstr "_Imprimeix..."
+
+#: ../gedit/gedit-open-tool-button.c:85 ../gedit/gedit-ui.h:55
+msgid "Open a file"
+msgstr "Obri un fitxer"
+
+#: ../gedit/gedit-open-tool-button.c:87
+msgid "Open a recently used file"
+msgstr "Obri un fitxer utilitzat recentment"
 
 #: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:587
 msgid "Empty"
@@ -1597,11 +1622,11 @@ msgstr "Habilita el _sagnat automàtic"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:15
 msgid "File Saving"
-msgstr "Alçat de fitxers"
+msgstr "Guardat de fitxers"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:16
 msgid "Create a _backup copy of files before saving"
-msgstr "Crea una _còpia de seguretat dels fitxers abans d'alçar-los"
+msgstr "Crea una _còpia de seguretat dels fitxers abans de guardar-los"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:17
 msgid "_Autosave files every"
@@ -1725,75 +1750,75 @@ msgstr "C_apçaleres i peus de pàgina:"
 msgid "_Restore Default Fonts"
 msgstr "_Restaura els tipus de lletra per defecte"
 
-#: ../gedit/gedit-print-preview.c:582
+#: ../gedit/gedit-print-preview.c:562
 msgid "Show the previous page"
 msgstr "Mostra la pàgina anterior"
 
-#: ../gedit/gedit-print-preview.c:594
+#: ../gedit/gedit-print-preview.c:574
 msgid "Show the next page"
 msgstr "Mostra la pàgina següent"
 
-#: ../gedit/gedit-print-preview.c:610
+#: ../gedit/gedit-print-preview.c:590
 msgid "Current page (Alt+P)"
 msgstr "Pàgina actual (Alt+P)"
 
 #. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:633
+#: ../gedit/gedit-print-preview.c:613
 msgid "of"
 msgstr "de"
 
-#: ../gedit/gedit-print-preview.c:641
+#: ../gedit/gedit-print-preview.c:621
 msgid "Page total"
 msgstr "Total pàgines"
 
-#: ../gedit/gedit-print-preview.c:642
+#: ../gedit/gedit-print-preview.c:622
 msgid "The total number of pages in the document"
 msgstr "El nombre de pàgines total del document"
 
-#: ../gedit/gedit-print-preview.c:659
+#: ../gedit/gedit-print-preview.c:639
 msgid "Show multiple pages"
 msgstr "Mostra múltiples pàgines"
 
-#: ../gedit/gedit-print-preview.c:672
+#: ../gedit/gedit-print-preview.c:652
 msgid "Zoom 1:1"
 msgstr "Zoom 1:1"
 
-#: ../gedit/gedit-print-preview.c:681
+#: ../gedit/gedit-print-preview.c:661
 msgid "Zoom to fit the whole page"
 msgstr "Millor ajust"
 
-#: ../gedit/gedit-print-preview.c:690
+#: ../gedit/gedit-print-preview.c:670
 msgid "Zoom the page in"
 msgstr "Apropa a la pàgina"
 
-#: ../gedit/gedit-print-preview.c:699
+#: ../gedit/gedit-print-preview.c:679
 msgid "Zoom the page out"
 msgstr "Allunya de la pàgina"
 
-#: ../gedit/gedit-print-preview.c:711
+#: ../gedit/gedit-print-preview.c:691
 msgid "_Close Preview"
 msgstr "_Tanca la previsualització"
 
-#: ../gedit/gedit-print-preview.c:714
+#: ../gedit/gedit-print-preview.c:694
 msgid "Close print preview"
 msgstr "Tanca la visualització prèvia de la impressió"
 
-#: ../gedit/gedit-print-preview.c:783
+#: ../gedit/gedit-print-preview.c:763
 #, c-format
 msgid "Page %d of %d"
 msgstr "Pàgina %d de %d"
 
-#: ../gedit/gedit-print-preview.c:967
+#: ../gedit/gedit-print-preview.c:947
 msgid "Page Preview"
 msgstr "Visualització prèvia de la pàgina"
 
-#: ../gedit/gedit-print-preview.c:968
+#: ../gedit/gedit-print-preview.c:948
 msgid "The preview of a page in the document to be printed"
 msgstr "La visualització prèvia de la pàgina del document a imprimir"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1557
+#: ../gedit/gedit-window.c:1528
 msgid "Replace"
 msgstr "Reemplaça"
 
@@ -1854,74 +1879,74 @@ msgstr[1] "Hi ha %d tabulacions amb errors"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:734
+#: ../gedit/gedit-tab.c:769
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "S'està recuperant %s de %s"
 
-#: ../gedit/gedit-tab.c:741
+#: ../gedit/gedit-tab.c:776
 #, c-format
 msgid "Reverting %s"
 msgstr "S'està recuperant %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:757
+#: ../gedit/gedit-tab.c:792
 #, c-format
 msgid "Loading %s from %s"
 msgstr "S'està carregant %s de %s"
 
-#: ../gedit/gedit-tab.c:764
+#: ../gedit/gedit-tab.c:799
 #, c-format
 msgid "Loading %s"
 msgstr "S'està carregant %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:845
+#: ../gedit/gedit-tab.c:880
 #, c-format
 msgid "Saving %s to %s"
-msgstr "S'està alçant %s a %s"
+msgstr "S'està guardant %s a %s"
 
-#: ../gedit/gedit-tab.c:852
+#: ../gedit/gedit-tab.c:887
 #, c-format
 msgid "Saving %s"
-msgstr "S'està alçant %s"
+msgstr "S'està guardant %s"
 
 #  FIXME: NL (Només Lectura)?
 #. Read only
-#: ../gedit/gedit-tab.c:1835
+#: ../gedit/gedit-tab.c:1872
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1882
+#: ../gedit/gedit-tab.c:1919
 #, c-format
 msgid "Error opening file %s"
 msgstr "S'ha produït un error en obrir el fitxer %s"
 
-#: ../gedit/gedit-tab.c:1887
+#: ../gedit/gedit-tab.c:1924
 #, c-format
 msgid "Error reverting file %s"
 msgstr "S'ha produït un error en recuperar el document %s"
 
-#: ../gedit/gedit-tab.c:1892
+#: ../gedit/gedit-tab.c:1929
 #, c-format
 msgid "Error saving file %s"
-msgstr "S'ha produït un error en alçar el fitxer %s"
+msgstr "S'ha produït un error en guardar el fitxer %s"
 
-#: ../gedit/gedit-tab.c:1913
+#: ../gedit/gedit-tab.c:1950
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1920
+#: ../gedit/gedit-tab.c:1957
 msgid "Name:"
 msgstr "Nom:"
 
-#: ../gedit/gedit-tab.c:1921
+#: ../gedit/gedit-tab.c:1958
 msgid "MIME Type:"
 msgstr "Tipus de MIME:"
 
-#: ../gedit/gedit-tab.c:1922
+#: ../gedit/gedit-tab.c:1959
 msgid "Encoding:"
 msgstr "Codificació:"
 
@@ -1954,10 +1979,6 @@ msgstr "Ei_nes"
 msgid "_Documents"
 msgstr "_Documents"
 
-#: ../gedit/gedit-ui.h:49
-msgid "_Help"
-msgstr "A_juda"
-
 #: ../gedit/gedit-ui.h:53
 msgid "Create a new document"
 msgstr "Crea un document nou"
@@ -1965,10 +1986,6 @@ msgstr "Crea un document nou"
 #: ../gedit/gedit-ui.h:54
 msgid "_Open..."
 msgstr "_Obri..."
-
-#: ../gedit/gedit-ui.h:55 ../gedit/gedit-window.c:1486
-msgid "Open a file"
-msgstr "Obri un fitxer"
 
 #. Edit menu
 #: ../gedit/gedit-ui.h:58
@@ -1998,15 +2015,15 @@ msgstr "Ix del mode de pantalla completa"
 
 #: ../gedit/gedit-ui.h:77
 msgid "Save the current file"
-msgstr "Alça el fitxer"
+msgstr "Guarda el fitxer"
 
 #: ../gedit/gedit-ui.h:79
 msgid "Save the current file with a different name"
-msgstr "Alça el fitxer amb un altre nom"
+msgstr "Guarda el fitxer amb un altre nom"
 
 #: ../gedit/gedit-ui.h:81
 msgid "Revert to a saved version of the file"
-msgstr "Recupera la versió alçada del fitxer"
+msgstr "Recupera la versió guardada del fitxer"
 
 #: ../gedit/gedit-ui.h:82
 msgid "Print Previe_w"
@@ -2113,7 +2130,7 @@ msgstr "Al_ça-ho tot"
 
 #: ../gedit/gedit-ui.h:127
 msgid "Save all open files"
-msgstr "Alça tots els fitxers oberts"
+msgstr "Guarda tots els fitxers oberts"
 
 #: ../gedit/gedit-ui.h:128
 msgid "_Close All"
@@ -2211,51 +2228,51 @@ msgstr "Quadre _inferior"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Mostra o amaga el quadre inferior de la finestra actual"
 
-#: ../gedit/gedit-utils.c:1033
+#: ../gedit/gedit-utils.c:1026
 msgid "Please check your installation."
 msgstr "Comproveu la instal·lació."
 
-#: ../gedit/gedit-utils.c:1091
+#: ../gedit/gedit-utils.c:1084
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "No s'ha pogut obrir el fitxer d'interfície d'usuari %s. Error: %s"
 
-#: ../gedit/gedit-utils.c:1110
+#: ../gedit/gedit-utils.c:1103
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "No s'ha trobat l'objecte «%s» dins del fitxer %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1332
+#: ../gedit/gedit-utils.c:1326
 #, c-format
 msgid "/ on %s"
 msgstr "/ a %s"
 
 # FIXME
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:542
+#: ../gedit/gedit-view-frame.c:538
 msgid "_Wrap Around"
 msgstr "Cont_inua des de l'inici"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:552
+#: ../gedit/gedit-view-frame.c:548
 msgid "Match _Entire Word Only"
 msgstr "Coincidència només amb la paraula s_encera"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:562
+#: ../gedit/gedit-view-frame.c:558
 msgid "_Match Case"
 msgstr "Coi_ncidència de majúscules i minúscules"
 
-#: ../gedit/gedit-view-frame.c:759
+#: ../gedit/gedit-view-frame.c:755
 msgid "String you want to search for"
 msgstr "Cadena que vulgueu cercar"
 
-#: ../gedit/gedit-view-frame.c:769
+#: ../gedit/gedit-view-frame.c:765
 msgid "Line you want to move the cursor to"
 msgstr "Línia on vulgueu moure el cursor"
 
-#: ../gedit/gedit-window.c:941
+#: ../gedit/gedit-window.c:942
 #, c-format
 msgid "Use %s highlight mode"
 msgstr "Utilitza el mode de ressaltat %s"
@@ -2263,70 +2280,70 @@ msgstr "Utilitza el mode de ressaltat %s"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1046 ../gedit/gedit-window.c:2091
+#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2074
 #: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:455
-#: ../plugins/externaltools/tools/manager.py:566
-#: ../plugins/externaltools/tools/manager.py:885
+#: ../plugins/externaltools/tools/manager.py:571
+#: ../plugins/externaltools/tools/manager.py:890
 msgid "Plain Text"
 msgstr "Text pla"
 
-#: ../gedit/gedit-window.c:1047
+#: ../gedit/gedit-window.c:1048
 msgid "Disable syntax highlighting"
 msgstr "Inhabilita el ressaltat de la sintaxi"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1364
+#: ../gedit/gedit-window.c:1365
 #, c-format
 msgid "Open '%s'"
 msgstr "Obri «%s»"
 
-#: ../gedit/gedit-window.c:1488
-msgid "Open a recently used file"
-msgstr "Obri un fitxer utilitzat recentment"
-
-#: ../gedit/gedit-window.c:1494
+#: ../gedit/gedit-window.c:1467
 msgid "Open"
 msgstr "Obri"
 
-#: ../gedit/gedit-window.c:1551
+#: ../gedit/gedit-window.c:1522
 msgid "Save"
-msgstr "Alça"
+msgstr "Guarda"
 
-#: ../gedit/gedit-window.c:1553
+#: ../gedit/gedit-window.c:1524
 msgid "Print"
 msgstr "Imprimeix"
 
-#: ../gedit/gedit-window.c:1555
+#: ../gedit/gedit-window.c:1526
 msgid "Find"
 msgstr "Cerca"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1715
+#: ../gedit/gedit-window.c:1698
 #, c-format
 msgid "Activate '%s'"
 msgstr "Activa «%s»"
 
-#: ../gedit/gedit-window.c:2072
+#: ../gedit/gedit-window.c:2055
 msgid "Use Spaces"
 msgstr "Utilitza espais"
 
-#: ../gedit/gedit-window.c:2145
+#: ../gedit/gedit-window.c:2128
 msgid "Tab Width"
 msgstr "Amplada de la tabulació"
 
-#: ../gedit/gedit-window.c:2254
+#: ../gedit/gedit-window.c:2237
 msgid "Bracket match is out of range"
 msgstr "El claudàtor coincident està fora del rang"
 
-#: ../gedit/gedit-window.c:2259
+#: ../gedit/gedit-window.c:2242
 msgid "Bracket match not found"
 msgstr "No s'ha trobat el claudàtor coincident"
 
-#: ../gedit/gedit-window.c:2264
+#: ../gedit/gedit-window.c:2247
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "S'ha trobat una coincidència de claudàtors a la línia: %d"
+
+#: ../gedit/gedit-window.c:2852
+msgid "There are unsaved documents"
+msgstr "Hi ha documents sense guardar"
 
 #. ex:set ts=8 noet:
 #: ../plugins/changecase/changecase.plugin.desktop.in.h:1
@@ -2548,19 +2565,19 @@ msgstr ""
 msgid "Could not execute command: %s"
 msgstr "No s'ha pogut executar l'orde: %s"
 
-#: ../plugins/externaltools/tools/functions.py:159
+#: ../plugins/externaltools/tools/functions.py:157
 msgid "You must be inside a word to run this command"
 msgstr "Heu de ser dins d'una paraula per poder executar esta orde"
 
-#: ../plugins/externaltools/tools/functions.py:265
+#: ../plugins/externaltools/tools/functions.py:263
 msgid "Running tool:"
 msgstr "S'està executant l'eina:"
 
-#: ../plugins/externaltools/tools/functions.py:294
+#: ../plugins/externaltools/tools/functions.py:292
 msgid "Done."
 msgstr "Fet."
 
-#: ../plugins/externaltools/tools/functions.py:296
+#: ../plugins/externaltools/tools/functions.py:294
 msgid "Exited"
 msgstr "Ha eixit"
 
@@ -2568,27 +2585,27 @@ msgstr "Ha eixit"
 msgid "All languages"
 msgstr "Totes les llengües"
 
-#: ../plugins/externaltools/tools/manager.py:555
-#: ../plugins/externaltools/tools/manager.py:559
-#: ../plugins/externaltools/tools/manager.py:883
+#: ../plugins/externaltools/tools/manager.py:560
+#: ../plugins/externaltools/tools/manager.py:564
+#: ../plugins/externaltools/tools/manager.py:888
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Totes les llengües"
 
-#: ../plugins/externaltools/tools/manager.py:672
+#: ../plugins/externaltools/tools/manager.py:677
 msgid "New tool"
 msgstr "Eina nova"
 
-#: ../plugins/externaltools/tools/manager.py:803
+#: ../plugins/externaltools/tools/manager.py:808
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Este accelerador ja s'utilitza per a %s"
 
-#: ../plugins/externaltools/tools/manager.py:847
+#: ../plugins/externaltools/tools/manager.py:852
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Teclegeu un nou accelerador, o premeu la tecla de retrocés per netejar"
 
-#: ../plugins/externaltools/tools/manager.py:849
+#: ../plugins/externaltools/tools/manager.py:854
 msgid "Type a new accelerator"
 msgstr "Teclegeu un accelerador nou"
 
@@ -2751,7 +2768,7 @@ msgstr "Quadre del navegador de fitxers"
 msgid "Easy file access from the side panel"
 msgstr "Accés fàcil als fitxers des del quadre lateral"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:239
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
 msgid "File System"
 msgstr "Sistema de fitxers"
 
@@ -2807,7 +2824,7 @@ msgstr "S'ha produït un error en carregar-se un directori"
 msgid "An error occurred"
 msgstr "S'ha produït un error"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1085
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1083
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2816,25 +2833,25 @@ msgstr ""
 "paperera, el voleu suprimir\n"
 "immediatament?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1090
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1088
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "No es pot moure el fitxer «%s» a la paperera."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1095
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1093
 msgid "The selected files cannot be moved to the trash."
 msgstr "No es poden moure a la paperera els fitxers seleccionats."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1127
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1125
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Esteu segur que voleu suprimir permanentment «%s»?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1132
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1130
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Esteu segur que voleu suprimir permanentment els fitxers seleccionats?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1135
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1133
 msgid "If you delete an item, it is permanently lost."
 msgstr "Si suprimiu un element, este es perdrà per sempre."
 
@@ -3156,7 +3173,7 @@ msgstr "Obri documents ràpidament"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:31
+#: ../plugins/quickopen/quickopen/popup.py:32
 msgid "Quick Open"
 msgstr "Obri ràpid"
 
@@ -3164,7 +3181,7 @@ msgstr "Obri ràpid"
 msgid "Quickly open files"
 msgstr "Obri fitxers ràpidament"
 
-#: ../plugins/quickopen/quickopen/popup.py:72
+#: ../plugins/quickopen/quickopen/popup.py:73
 msgid "Type to search..."
 msgstr "Escriviu per cercar..."
 
@@ -3229,21 +3246,21 @@ msgstr "Arxiu de fragments"
 msgid "Add a new snippet..."
 msgstr "Afig un fragment nou..."
 
-#: ../plugins/snippets/snippets/manager.py:116
+#: ../plugins/snippets/snippets/manager.py:115
 msgid "Global"
 msgstr "Global"
 
-#: ../plugins/snippets/snippets/manager.py:400
+#: ../plugins/snippets/snippets/manager.py:399
 msgid "Revert selected snippet"
 msgstr "Reverteix el fragment seleccionat"
 
-#: ../plugins/snippets/snippets/manager.py:403
+#: ../plugins/snippets/snippets/manager.py:402
 #: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Delete selected snippet"
 msgstr "Suprimeix el fragment seleccionat"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:663
+#: ../plugins/snippets/snippets/manager.py:661
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3254,88 +3271,88 @@ msgstr ""
 "siga alfanumèric, com ara «{», «[», etcètera."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:670
+#: ../plugins/snippets/snippets/manager.py:668
 #: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Paraula que activa un fragment després de prémer la tecla de tabulació"
 
-#: ../plugins/snippets/snippets/manager.py:759
+#: ../plugins/snippets/snippets/manager.py:757
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "S'ha produït este error en importar: %s"
 
-#: ../plugins/snippets/snippets/manager.py:766
+#: ../plugins/snippets/snippets/manager.py:764
 msgid "Import successfully completed"
 msgstr "S'ha importat correctament"
 
-#: ../plugins/snippets/snippets/manager.py:780
+#: ../plugins/snippets/snippets/manager.py:778
 #: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr "Importa els fragments"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:783
+#: ../plugins/snippets/snippets/manager.py:869
+#: ../plugins/snippets/snippets/manager.py:932
 msgid "All supported archives"
 msgstr "Tots els arxius implementats"
 
-#: ../plugins/snippets/snippets/manager.py:786
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:935
+#: ../plugins/snippets/snippets/manager.py:784
+#: ../plugins/snippets/snippets/manager.py:870
+#: ../plugins/snippets/snippets/manager.py:933
 msgid "Gzip compressed archive"
 msgstr "Arxiu comprimit amb el gzip"
+
+#: ../plugins/snippets/snippets/manager.py:785
+#: ../plugins/snippets/snippets/manager.py:871
+#: ../plugins/snippets/snippets/manager.py:934
+msgid "Bzip2 compressed archive"
+msgstr "Arxiu comprimit amb el bzip2"
+
+#: ../plugins/snippets/snippets/manager.py:786
+msgid "Single snippets file"
+msgstr "Fitxer de fragments simples"
 
 #: ../plugins/snippets/snippets/manager.py:787
 #: ../plugins/snippets/snippets/manager.py:873
 #: ../plugins/snippets/snippets/manager.py:936
-msgid "Bzip2 compressed archive"
-msgstr "Arxiu comprimit amb el bzip2"
-
-#: ../plugins/snippets/snippets/manager.py:788
-msgid "Single snippets file"
-msgstr "Fitxer de fragments simples"
-
-#: ../plugins/snippets/snippets/manager.py:789
-#: ../plugins/snippets/snippets/manager.py:875
-#: ../plugins/snippets/snippets/manager.py:938
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: ../plugins/snippets/snippets/manager.py:801
+#: ../plugins/snippets/snippets/manager.py:799
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "S'ha produït este error en exportar: %s"
 
-#: ../plugins/snippets/snippets/manager.py:805
+#: ../plugins/snippets/snippets/manager.py:803
 msgid "Export successfully completed"
 msgstr "S'ha exportat correctament"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:845
-#: ../plugins/snippets/snippets/manager.py:912
+#: ../plugins/snippets/snippets/manager.py:843
+#: ../plugins/snippets/snippets/manager.py:910
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "Voleu incloure fragments de <b>sistema</b> seleccionats en l'exportació?"
 
-#: ../plugins/snippets/snippets/manager.py:860
-#: ../plugins/snippets/snippets/manager.py:930
+#: ../plugins/snippets/snippets/manager.py:858
+#: ../plugins/snippets/snippets/manager.py:928
 msgid "There are no snippets selected to be exported"
 msgstr "No hi ha cap fragment seleccionat per exportar"
 
-#: ../plugins/snippets/snippets/manager.py:865
-#: ../plugins/snippets/snippets/manager.py:903
+#: ../plugins/snippets/snippets/manager.py:863
+#: ../plugins/snippets/snippets/manager.py:901
 msgid "Export snippets"
 msgstr "Exporta els fragments"
 
-#: ../plugins/snippets/snippets/manager.py:1044
+#: ../plugins/snippets/snippets/manager.py:1042
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Teclegeu un nou accelerador, o premeu la tecla de retrocés per netejar"
 
-#: ../plugins/snippets/snippets/manager.py:1046
+#: ../plugins/snippets/snippets/manager.py:1044
 msgid "Type a new shortcut"
 msgstr "Teclegeu un accelerador nou"
 
-#: ../plugins/snippets/snippets/placeholder.py:602
+#: ../plugins/snippets/snippets/placeholder.py:601
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3344,7 +3361,7 @@ msgstr ""
 "L'execució de l'orde de Python (%s) ha excedit el temps d'espera màxim, s'ha "
 "interromput l'execució."
 
-#: ../plugins/snippets/snippets/placeholder.py:610
+#: ../plugins/snippets/snippets/placeholder.py:609
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Ha fallat l'execució de l'orde de Python (%s): %s"
@@ -3670,15 +3687,15 @@ msgstr "01/11/2009 17:52:00"
 msgid "_Insert"
 msgstr "_Insereix"
 
-#: ../plugins/time/gedit-time-plugin.c:188
+#: ../plugins/time/gedit-time-plugin.c:184
 msgid "In_sert Date and Time..."
 msgstr "_Insereix la data/hora..."
 
-#: ../plugins/time/gedit-time-plugin.c:190
+#: ../plugins/time/gedit-time-plugin.c:186
 msgid "Insert current date and time at the cursor position"
 msgstr "Insereix la data i l'hora actual a la posició del cursor"
 
-#: ../plugins/time/gedit-time-plugin.c:537
+#: ../plugins/time/gedit-time-plugin.c:504
 msgid "Available formats"
 msgstr "Formats disponibles"
 
@@ -3739,3 +3756,15 @@ msgstr "Proveïdor de dades del Zeitgeist"
 msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Registra els esdeveniments d'accés i tancament dels documents amb el gedit"
+
+#~ msgid "Text;"
+#~ msgstr "Text;"
+
+#~ msgid "Log Out _without Saving"
+#~ msgstr "Surt se_nse desar"
+
+#~ msgid "_Cancel Logout"
+#~ msgstr "_Cancel·la la sortida"
+
+#~ msgid "Run gedit in the background"
+#~ msgstr "Executa el gedit en segon pla"
