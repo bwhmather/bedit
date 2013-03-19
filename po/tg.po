@@ -1,0 +1,3528 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Victor Ibragimov <victor.ibragimov@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Tajik Gnome\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-03-12 16:02+0000\n"
+"PO-Revision-Date: 2013-01-21 17:21+0500\n"
+"Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
+"Language-Team: \n"
+"Language: Tajik\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: ../data/gedit.desktop.in.in.h:1
+msgid "gedit"
+msgstr ""
+
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:791
+msgid "Text Editor"
+msgstr ""
+
+#: ../data/gedit.desktop.in.in.h:3
+msgid "Edit text files"
+msgstr ""
+
+#: ../data/gedit.desktop.in.in.h:4
+msgid "gedit Text Editor"
+msgstr ""
+
+#: ../data/gedit.desktop.in.in.h:5
+#, fuzzy
+#| msgid "Editor"
+msgid "Text;Editor;"
+msgstr "Муҳаррир"
+
+#: ../data/gedit.desktop.in.in.h:6
+msgid "Open a New Window"
+msgstr ""
+
+#: ../data/gedit.desktop.in.in.h:7
+msgid "Open a New Document"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+msgid "Use Default Font"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+msgid ""
+"Whether to use the system's default fixed width font for editing text "
+"instead of a font specific to gedit. If this option is turned off, then the "
+"font named in the \"Editor Font\" option will be used instead of the system "
+"font."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+msgid "Editor Font"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
+msgid ""
+"A custom font that will be used for the editing area. This will only take "
+"effect if the \"Use Default Font\" option is turned off."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
+msgid "Style Scheme"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
+msgid "The ID of a GtkSourceView Style Scheme used to color the text."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
+msgid "Create Backup Copies"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+msgid ""
+"Whether gedit should create backup copies for the files it saves. You can "
+"set the backup file extension with the \"Backup Copy Extension\" option."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
+msgid "Autosave"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
+msgid ""
+"Whether gedit should automatically save modified files after a time "
+"interval. You can set the time interval with the \"Autosave Interval\" "
+"option."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
+msgid "Autosave Interval"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
+msgid ""
+"Number of minutes after which gedit will automatically save modified files. "
+"This will only take effect if the \"Autosave\" option is turned on."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+msgid "Undo Actions Limit (DEPRECATED)"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+msgid "Maximum Number of Undo Actions"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use "
+"\"-1\" for unlimited number of actions."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+msgid "Line Wrapping Mode"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+msgid ""
+"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
+"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+"wrapping at individual character boundaries. Note that the values are case-"
+"sensitive, so make sure they appear exactly as mentioned here."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+msgid "Tab Size"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+msgid ""
+"Specifies the number of spaces that should be displayed instead of Tab "
+"characters."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+msgid "Insert spaces"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+msgid "Whether gedit should insert spaces instead of tabs."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+msgid "Automatic indent"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+msgid "Whether gedit should enable automatic indentation."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+msgid "Display Line Numbers"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+msgid "Whether gedit should display line numbers in the editing area."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+msgid "Highlight Current Line"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+msgid "Whether gedit should highlight the current line."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+msgid "Highlight Matching Brackets"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+msgid "Whether gedit should highlight matching brackets."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
+msgid "Display Right Margin"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
+msgid "Whether gedit should display the right margin in the editing area."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
+msgid "Right Margin Position"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+msgid "Specifies the position of the right margin."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
+msgid "Smart Home End"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
+msgid ""
+"Specifies how the cursor moves when the HOME and END keys are pressed. Use "
+"\"disabled\" to always move at the start/end of the line, \"after\" to move "
+"to the start/end of the line the first time the keys are pressed and to the "
+"start/end of the text ignoring whitespaces the second time the keys are "
+"pressed, \"before\" to move to the start/end of the text before moving to "
+"the start/end of the line and \"always\" to always move to the start/end of "
+"the text instead of the start/end of the line."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+msgid "Restore Previous Cursor Position"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+msgid ""
+"Whether gedit should restore the previous cursor position when a file is "
+"loaded."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+msgid "Enable Syntax Highlighting"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+msgid "Whether gedit should enable syntax highlighting."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+msgid "Enable Search Highlighting"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
+msgid ""
+"Whether gedit should highlight all the occurrences of the searched text."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
+msgid "Ensure Trailing Newline"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
+msgid ""
+"Whether gedit will ensure that documents always end with a trailing newline."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
+msgid "Toolbar is Visible"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
+msgid "Whether the toolbar should be visible in editing windows."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
+msgid "Notebook Show Tabs Mode"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
+msgid ""
+"Specifies when to show the notebook tabs. Use \"never\" to never show the "
+"tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
+"when there is more than one tab. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+msgid "Status Bar is Visible"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+msgid ""
+"Whether the status bar at the bottom of editing windows should be visible."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+msgid "Side panel is Visible"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+msgid ""
+"Whether the side panel at the left of editing windows should be visible."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+msgid "Maximum Recent Files"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+msgid ""
+"Specifies the maximum number of recently opened files that will be displayed "
+"in the \"Recent Files\" submenu."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+msgid "Print Syntax Highlighting"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+msgid "Whether gedit should print syntax highlighting when printing documents."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+msgid "Print Header"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+msgid "Whether gedit should include a document header when printing documents."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+msgid "Printing Line Wrapping Mode"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+msgid ""
+"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
+"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+msgid "Print Line Numbers"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+msgid ""
+"If this value is 0, then no line numbers will be inserted when printing a "
+"document. Otherwise, gedit will print line numbers every such number of "
+"lines."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+msgid "Body Font for Printing"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+msgid ""
+"Specifies the font to use for a document's body when printing documents."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+msgid "Header Font for Printing"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+msgid ""
+"Specifies the font to use for page headers when printing a document. This "
+"will only take effect if the \"Print Header\" option is turned on."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+msgid "Line Number Font for Printing"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+msgid ""
+"Specifies the font to use for line numbers when printing. This will only "
+"take effect if the \"Print Line Numbers\" option is non-zero."
+msgstr ""
+
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in your country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+msgid "Automatically Detected Encodings"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+msgid ""
+"Sorted list of encodings used by gedit for automatically detecting the "
+"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used."
+msgstr ""
+
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+msgid "Encodings shown in menu"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+msgid ""
+"List of encodings shown in the Character Encoding menu in open/save file "
+"selector. Only recognized encodings are used."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+msgid "Active plugins"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+msgid ""
+"List of active plugins. It contains the \"Location\" of the active plugins. "
+"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+msgstr ""
+
+#: ../gedit/gedit-app.c:115
+msgid "Show the application's help"
+msgstr ""
+
+#: ../gedit/gedit-app.c:121
+msgid "Show the application's version"
+msgstr ""
+
+#: ../gedit/gedit-app.c:127
+msgid "Display list of possible values for the encoding option"
+msgstr ""
+
+#: ../gedit/gedit-app.c:135
+msgid ""
+"Set the character encoding to be used to open the files listed on the "
+"command line"
+msgstr ""
+
+#: ../gedit/gedit-app.c:136
+msgid "ENCODING"
+msgstr "РАМЗГУЗОРӢ"
+
+#: ../gedit/gedit-app.c:143
+msgid "Create a new top-level window in an existing instance of gedit"
+msgstr ""
+
+#: ../gedit/gedit-app.c:151
+msgid "Create a new document in an existing instance of gedit"
+msgstr ""
+
+#: ../gedit/gedit-app.c:159
+msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+msgstr ""
+
+#: ../gedit/gedit-app.c:160
+msgid "GEOMETRY"
+msgstr ""
+
+#: ../gedit/gedit-app.c:167
+msgid "Open files and block process until files are closed"
+msgstr ""
+
+#: ../gedit/gedit-app.c:175
+msgid "Run gedit in standalone mode"
+msgstr ""
+
+#: ../gedit/gedit-app.c:184
+msgid "[FILE...] [+LINE[:COLUMN]]"
+msgstr ""
+
+#: ../gedit/gedit-app.c:283
+msgid "There was an error displaying the help."
+msgstr ""
+
+#: ../gedit/gedit-app.c:708
+msgid "- Edit text files"
+msgstr ""
+
+#: ../gedit/gedit-app.c:817 ../gedit/gedit-app.c:907
+#, c-format
+msgid ""
+"%s\n"
+"Run '%s --help' to see a full list of available command line options.\n"
+msgstr ""
+
+#: ../gedit/gedit-app.c:838
+#, c-format
+msgid "%s: invalid encoding."
+msgstr ""
+
+#: ../gedit/gedit-app-osx.c:260
+msgid "About gedit"
+msgstr ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:151
+msgid "Question"
+msgstr "Савол"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:324
+msgid "Close _without Saving"
+msgstr ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:372
+#, c-format
+msgid ""
+"If you don't save, changes from the last %ld second will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld seconds will be permanently "
+"lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:381
+msgid ""
+"If you don't save, changes from the last minute will be permanently lost."
+msgstr ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:387
+#, c-format
+msgid ""
+"If you don't save, changes from the last minute and %ld second will be "
+"permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last minute and %ld seconds will be "
+"permanently lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:397
+#, c-format
+msgid ""
+"If you don't save, changes from the last %ld minute will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %ld minutes will be permanently "
+"lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:412
+msgid "If you don't save, changes from the last hour will be permanently lost."
+msgstr ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:418
+#, c-format
+msgid ""
+"If you don't save, changes from the last hour and %d minute will be "
+"permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last hour and %d minutes will be "
+"permanently lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:433
+#, c-format
+msgid ""
+"If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural ""
+"If you don't save, changes from the last %d hours will be permanently lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:479
+#, c-format
+msgid "Changes to document \"%s\" will be permanently lost."
+msgstr ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:484
+#, c-format
+msgid "Save changes to document \"%s\" before closing?"
+msgstr ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:498
+#: ../gedit/gedit-close-confirmation-dialog.c:713
+msgid "Saving has been disabled by the system administrator."
+msgstr ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:664
+#, c-format
+msgid "Changes to %d document will be permanently lost."
+msgid_plural "Changes to %d documents will be permanently lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:672
+#, c-format
+msgid "There is %d document with unsaved changes. Save changes before closing?"
+msgid_plural ""
+"There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:691
+msgid "Docum_ents with unsaved changes:"
+msgstr ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:693
+msgid "S_elect the documents you want to save:"
+msgstr ""
+
+#: ../gedit/gedit-close-confirmation-dialog.c:717
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:268
+#, c-format
+msgid "Loading file '%s'…"
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:277
+#, c-format
+msgid "Loading %d file…"
+msgid_plural "Loading %d files…"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Translators: "Open Files" is the title of the file chooser window
+#: ../gedit/gedit-commands-file.c:442
+msgid "Open Files"
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:553
+#, c-format
+msgid "The file \"%s\" is read-only."
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:558
+msgid "Do you want to try to replace it with the one you are saving?"
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.c:283
+msgid "_Replace"
+msgstr "_Ҷойгузин кардан"
+
+#: ../gedit/gedit-commands-file.c:608
+msgid "Save the file using compression?"
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:609
+#, c-format
+msgid ""
+"The file \"%s\" was previously saved as plain text and will now be saved "
+"using compression."
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:611
+msgid "_Save Using Compression"
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:615
+msgid "Save the file as plain text?"
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:616
+#, c-format
+msgid ""
+"The file \"%s\" was previously saved using compression and will now be saved "
+"as plain text."
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:618
+msgid "_Save As Plain Text"
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:738 ../gedit/gedit-commands-file.c:955
+#, c-format
+msgid "Saving file '%s'…"
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:842
+msgid "Save As"
+msgstr "Захира кардан ҳамчун"
+
+#: ../gedit/gedit-commands-file.c:1168
+#, c-format
+msgid "Reverting the document '%s'…"
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:1213
+#, c-format
+msgid "Revert unsaved changes to document '%s'?"
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:1222
+#, c-format
+msgid ""
+"Changes made to the document in the last %ld second will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %ld seconds will be permanently "
+"lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-commands-file.c:1231
+msgid ""
+"Changes made to the document in the last minute will be permanently lost."
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:1237
+#, c-format
+msgid ""
+"Changes made to the document in the last minute and %ld second will be "
+"permanently lost."
+msgid_plural ""
+"Changes made to the document in the last minute and %ld seconds will be "
+"permanently lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-commands-file.c:1247
+#, c-format
+msgid ""
+"Changes made to the document in the last %ld minute will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %ld minutes will be permanently "
+"lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-commands-file.c:1262
+msgid "Changes made to the document in the last hour will be permanently lost."
+msgstr ""
+
+#: ../gedit/gedit-commands-file.c:1268
+#, c-format
+msgid ""
+"Changes made to the document in the last hour and %d minute will be "
+"permanently lost."
+msgid_plural ""
+"Changes made to the document in the last hour and %d minutes will be "
+"permanently lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-commands-file.c:1283
+#, c-format
+msgid ""
+"Changes made to the document in the last %d hour will be permanently lost."
+msgid_plural ""
+"Changes made to the document in the last %d hours will be permanently lost."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-commands-file.c:1309
+msgid "_Revert"
+msgstr "_Бозгашт"
+
+#: ../gedit/gedit-commands-help.c:88
+msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
+msgstr ""
+
+#: ../gedit/gedit-commands-help.c:113
+msgid "translator-credits"
+msgstr ""
+
+#: ../gedit/gedit-commands-search.c:112
+#, c-format
+msgid "Found and replaced %d occurrence"
+msgid_plural "Found and replaced %d occurrences"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../gedit/gedit-commands-search.c:121
+msgid "Found and replaced one occurrence"
+msgstr ""
+
+#. Translators: %s is replaced by the text
+#. entered by the user in the search box
+#: ../gedit/gedit-commands-search.c:144
+#, c-format
+msgid "\"%s\" not found"
+msgstr "\"%s\" вуҷуд надорад"
+
+#: ../gedit/gedit-document.c:1223 ../gedit/gedit-document.c:1249
+#, c-format
+msgid "Unsaved Document %d"
+msgstr ""
+
+#: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
+#: ../gedit/gedit-window.c:2380 ../gedit/gedit-window.c:2387
+msgid "Read-Only"
+msgstr "Танҳо барои хондан"
+
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3827
+msgid "Documents"
+msgstr "Ҳуҷҷатҳо"
+
+#: ../gedit/gedit-encodings.c:142 ../gedit/gedit-encodings.c:184
+#: ../gedit/gedit-encodings.c:186 ../gedit/gedit-encodings.c:188
+#: ../gedit/gedit-encodings.c:190 ../gedit/gedit-encodings.c:192
+#: ../gedit/gedit-encodings.c:194 ../gedit/gedit-encodings.c:196
+msgid "Unicode"
+msgstr ""
+
+#: ../gedit/gedit-encodings.c:155 ../gedit/gedit-encodings.c:179
+#: ../gedit/gedit-encodings.c:229 ../gedit/gedit-encodings.c:272
+msgid "Western"
+msgstr "Ғарбӣ"
+
+#: ../gedit/gedit-encodings.c:157 ../gedit/gedit-encodings.c:231
+#: ../gedit/gedit-encodings.c:268
+msgid "Central European"
+msgstr "Европаи Марказӣ"
+
+#: ../gedit/gedit-encodings.c:159
+msgid "South European"
+msgstr ""
+
+#: ../gedit/gedit-encodings.c:161 ../gedit/gedit-encodings.c:175
+#: ../gedit/gedit-encodings.c:282
+msgid "Baltic"
+msgstr "Балтикӣ"
+
+#: ../gedit/gedit-encodings.c:163 ../gedit/gedit-encodings.c:233
+#: ../gedit/gedit-encodings.c:246 ../gedit/gedit-encodings.c:250
+#: ../gedit/gedit-encodings.c:252 ../gedit/gedit-encodings.c:270
+msgid "Cyrillic"
+msgstr "Кириллӣ"
+
+#: ../gedit/gedit-encodings.c:165 ../gedit/gedit-encodings.c:239
+#: ../gedit/gedit-encodings.c:280
+msgid "Arabic"
+msgstr "Арабӣ"
+
+#: ../gedit/gedit-encodings.c:167 ../gedit/gedit-encodings.c:274
+msgid "Greek"
+msgstr "Юнонӣ"
+
+#: ../gedit/gedit-encodings.c:169
+msgid "Hebrew Visual"
+msgstr ""
+
+#: ../gedit/gedit-encodings.c:171 ../gedit/gedit-encodings.c:235
+#: ../gedit/gedit-encodings.c:276
+msgid "Turkish"
+msgstr "Туркӣ"
+
+#: ../gedit/gedit-encodings.c:173
+msgid "Nordic"
+msgstr ""
+
+#: ../gedit/gedit-encodings.c:177
+msgid "Celtic"
+msgstr ""
+
+#: ../gedit/gedit-encodings.c:181
+msgid "Romanian"
+msgstr "Руминӣ"
+
+#: ../gedit/gedit-encodings.c:199
+msgid "Armenian"
+msgstr "Арманӣ"
+
+#: ../gedit/gedit-encodings.c:201 ../gedit/gedit-encodings.c:203
+#: ../gedit/gedit-encodings.c:217
+msgid "Chinese Traditional"
+msgstr "Хитоии анъанавӣ"
+
+#: ../gedit/gedit-encodings.c:205
+msgid "Cyrillic/Russian"
+msgstr ""
+
+#: ../gedit/gedit-encodings.c:208 ../gedit/gedit-encodings.c:210
+#: ../gedit/gedit-encodings.c:212 ../gedit/gedit-encodings.c:242
+#: ../gedit/gedit-encodings.c:257
+msgid "Japanese"
+msgstr "Ҷопонӣ"
+
+#: ../gedit/gedit-encodings.c:215 ../gedit/gedit-encodings.c:244
+#: ../gedit/gedit-encodings.c:248 ../gedit/gedit-encodings.c:263
+msgid "Korean"
+msgstr "Кореягӣ"
+
+#: ../gedit/gedit-encodings.c:220 ../gedit/gedit-encodings.c:222
+#: ../gedit/gedit-encodings.c:224
+msgid "Chinese Simplified"
+msgstr "Хитоии оддӣ"
+
+#: ../gedit/gedit-encodings.c:226
+msgid "Georgian"
+msgstr "Гурҷӣ"
+
+#: ../gedit/gedit-encodings.c:237 ../gedit/gedit-encodings.c:278
+msgid "Hebrew"
+msgstr "Ибрӣ"
+
+#: ../gedit/gedit-encodings.c:254
+msgid "Cyrillic/Ukrainian"
+msgstr ""
+
+#: ../gedit/gedit-encodings.c:259 ../gedit/gedit-encodings.c:265
+#: ../gedit/gedit-encodings.c:284
+msgid "Vietnamese"
+msgstr "Ветнамӣ"
+
+#: ../gedit/gedit-encodings.c:261
+msgid "Thai"
+msgstr "Тайӣ"
+
+#: ../gedit/gedit-encodings.c:435
+msgid "Unknown"
+msgstr "Номаълум"
+
+#: ../gedit/gedit-encodings-combo-box.c:301
+msgid "Automatically Detected"
+msgstr ""
+
+#: ../gedit/gedit-encodings-combo-box.c:320
+#: ../gedit/gedit-encodings-combo-box.c:336
+#, c-format
+msgid "Current Locale (%s)"
+msgstr ""
+
+#: ../gedit/gedit-encodings-combo-box.c:388
+msgid "Add or Remove..."
+msgstr ""
+
+#: ../gedit/gedit-encodings-dialog.c:345
+msgid "Character Encodings"
+msgstr ""
+
+#: ../gedit/gedit-encodings-dialog.c:395 ../gedit/gedit-encodings-dialog.c:456
+msgid "_Description"
+msgstr "_Тавсиф"
+
+#: ../gedit/gedit-encodings-dialog.c:404 ../gedit/gedit-encodings-dialog.c:465
+msgid "_Encoding"
+msgstr "_Рамзгузорӣ"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-encodings-dialog.ui.h:1
+msgid "Character encodings"
+msgstr ""
+
+#: ../gedit/gedit-encodings-dialog.ui.h:2
+msgid "A_vailable encodings:"
+msgstr ""
+
+#: ../gedit/gedit-encodings-dialog.ui.h:3
+msgid "E_ncodings shown in menu:"
+msgstr ""
+
+#: ../gedit/gedit-file-chooser-dialog.c:52
+#: ../gedit/gedit-preferences-dialog.c:909
+msgid "All Files"
+msgstr "Ҳамаи файлҳо"
+
+#: ../gedit/gedit-file-chooser-dialog.c:53
+msgid "All Text Files"
+msgstr ""
+
+#: ../gedit/gedit-file-chooser-dialog.c:95
+msgid "C_haracter Encoding:"
+msgstr ""
+
+#: ../gedit/gedit-file-chooser-dialog.c:154
+msgid "L_ine Ending:"
+msgstr ""
+
+#: ../gedit/gedit-file-chooser-dialog.c:173
+msgid "Unix/Linux"
+msgstr ""
+
+#: ../gedit/gedit-file-chooser-dialog.c:179
+msgid "Mac OS Classic"
+msgstr ""
+
+#: ../gedit/gedit-file-chooser-dialog.c:185
+msgid "Windows"
+msgstr "Равзанаҳо"
+
+#: ../gedit/gedit-io-error-info-bar.c:182
+#: ../gedit/gedit-io-error-info-bar.c:497
+msgid "_Retry"
+msgstr "_Такрор кардан"
+
+#: ../gedit/gedit-io-error-info-bar.c:203
+#, c-format
+msgid "Could not find the file %s."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:205
+#: ../gedit/gedit-io-error-info-bar.c:248
+#: ../gedit/gedit-io-error-info-bar.c:255
+msgid "Please check that you typed the location correctly and try again."
+msgstr ""
+
+#. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
+#: ../gedit/gedit-io-error-info-bar.c:224
+#, c-format
+msgid "gedit cannot handle %s locations."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:230
+msgid "gedit cannot handle this location."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:238
+msgid "The location of the file cannot be mounted."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:242
+msgid "The location of the file cannot be accessed because it is not mounted."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:246
+#, c-format
+msgid "%s is a directory."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:253
+#, c-format
+msgid "%s is not a valid location."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:289
+#, c-format
+msgid ""
+"Host %s could not be found. Please check that your proxy settings are "
+"correct and try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:304
+#, c-format
+msgid ""
+"Hostname was invalid. Please check that you typed the location correctly and "
+"try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:312
+#, c-format
+msgid "%s is not a regular file."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:317
+msgid "Connection timed out. Please try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:340
+msgid "The file is too big."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:381
+#, c-format
+msgid "Unexpected error: %s"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:417
+msgid "gedit cannot find the file. Perhaps it has recently been deleted."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:427
+#, c-format
+msgid "Could not revert the file %s."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:454
+msgid "Ch_aracter Encoding:"
+msgstr ""
+
+#. Translators: the access key chosen for this string should be
+#. different from other main menu access keys (Open, Edit, View...)
+#: ../gedit/gedit-io-error-info-bar.c:506
+#: ../gedit/gedit-io-error-info-bar.c:784
+msgid "Edit Any_way"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:608
+msgid ""
+"The number of followed links is limited and the actual file could not be "
+"found within this limit."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:612
+msgid "You do not have the permissions necessary to open the file."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:618
+msgid "gedit has not been able to detect the character encoding."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:620
+#: ../gedit/gedit-io-error-info-bar.c:642
+msgid "Please check that you are not trying to open a binary file."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:621
+msgid "Select a character encoding from the menu and try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:627
+#, c-format
+msgid "There was a problem opening the file %s."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:629
+msgid ""
+"The file you opened has some invalid characters. If you continue editing "
+"this file you could corrupt this document."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:632
+msgid "You can also choose another character encoding and try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:639
+#, c-format
+msgid "Could not open the file %s using the %s character encoding."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:643
+#: ../gedit/gedit-io-error-info-bar.c:717
+msgid "Select a different character encoding from the menu and try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:653
+#, c-format
+msgid "Could not open the file %s."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:712
+#, c-format
+msgid "Could not save the file %s using the %s character encoding."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:715
+msgid ""
+"The document contains one or more characters that cannot be encoded using "
+"the specified character encoding."
+msgstr ""
+
+#. Translators: the access key chosen for this string should be
+#. different from other main menu access keys (Open, Edit, View...)
+#: ../gedit/gedit-io-error-info-bar.c:789
+msgid "D_on't Edit"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:803
+#, c-format
+msgid "This file (%s) is already open in another gedit window."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:817
+msgid ""
+"gedit opened this instance of the file in a non-editable way. Do you want to "
+"edit it anyway?"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:875
+#: ../gedit/gedit-io-error-info-bar.c:973
+#: ../gedit/gedit-io-error-info-bar.c:1262
+msgid "S_ave Anyway"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:879
+#: ../gedit/gedit-io-error-info-bar.c:977
+#: ../gedit/gedit-io-error-info-bar.c:1266
+msgid "D_on't Save"
+msgstr ""
+
+#. FIXME: review this message, it's not clear since for the user the "modification"
+#. * could be interpreted as the changes he made in the document. beside "reading" is
+#. * not accurate (since last load/save)
+#.
+#: ../gedit/gedit-io-error-info-bar.c:897
+#, c-format
+msgid "The file %s has been modified since reading it."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:912
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1000
+#, c-format
+msgid "Could not create a backup file while saving %s"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1005
+#, c-format
+msgid "Could not create a temporary backup file while saving %s"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1022
+msgid ""
+"gedit could not back up the old copy of the file before saving the new one. "
+"You can ignore this warning and save the file anyway, but if an error occurs "
+"while saving, you could lose the old copy of the file. Save anyway?"
+msgstr ""
+
+#. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
+#: ../gedit/gedit-io-error-info-bar.c:1082
+#, c-format
+msgid ""
+"gedit cannot handle %s locations in write mode. Please check that you typed "
+"the location correctly and try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1090
+msgid ""
+"gedit cannot handle this location in write mode. Please check that you typed "
+"the location correctly and try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1099
+#, c-format
+msgid ""
+"%s is not a valid location. Please check that you typed the location "
+"correctly and try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1106
+msgid ""
+"You do not have the permissions necessary to save the file. Please check "
+"that you typed the location correctly and try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1112
+msgid ""
+"There is not enough disk space to save the file. Please free some disk space "
+"and try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1117
+msgid ""
+"You are trying to save the file on a read-only disk. Please check that you "
+"typed the location correctly and try again."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1123
+msgid "A file with the same name already exists. Please use a different name."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1128
+msgid ""
+"The disk where you are trying to save the file has a limitation on length of "
+"the file names. Please use a shorter name."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1135
+msgid ""
+"The disk where you are trying to save the file has a limitation on file "
+"sizes. Please try saving a smaller file or saving it to a disk that does not "
+"have this limitation."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1151
+#, c-format
+msgid "Could not save the file %s."
+msgstr ""
+
+#. FIXME: review this message, it's not clear since for the user the "modification"
+#. * could be interpreted as the changes he made in the document. beside "reading" is
+#. * not accurate (since last load/save)
+#.
+#: ../gedit/gedit-io-error-info-bar.c:1196
+#, c-format
+msgid "The file %s changed on disk."
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1201
+msgid "Do you want to drop your changes and reload the file?"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1203
+msgid "Do you want to reload the file?"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1208
+msgid "_Reload"
+msgstr "_Аз нав бор кардан"
+
+#: ../gedit/gedit-io-error-info-bar.c:1280
+#, c-format
+msgid "Some invalid chars have been detected while saving %s"
+msgstr ""
+
+#: ../gedit/gedit-io-error-info-bar.c:1296
+msgid ""
+"If you continue saving this file you can corrupt the document.  Save anyway?"
+msgstr ""
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-menu.ui.h:1
+msgid "_New Window"
+msgstr "_Равзанаи нав"
+
+#: ../gedit/gedit-menu.ui.h:2
+msgid "_Preferences"
+msgstr "_Хусусиятҳо"
+
+#: ../gedit/gedit-menu.ui.h:3 ../gedit/gedit-ui.h:49
+msgid "_Help"
+msgstr "_Кӯмак"
+
+#: ../gedit/gedit-menu.ui.h:4
+msgid "_About"
+msgstr "_Дар бораи барнома"
+
+#: ../gedit/gedit-menu.ui.h:5
+msgid "_Quit"
+msgstr "_Баромад"
+
+#. Keep in sync with the respective GtkActions
+#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:140
+msgid "_Move to New Window"
+msgstr ""
+
+#: ../gedit/gedit-notebook-popup-menu.c:190 ../gedit/gedit-ui.h:78
+msgid "Save _As..."
+msgstr "Захира _кардан ҳамчун..."
+
+#: ../gedit/gedit-notebook-popup-menu.c:203 ../gedit/gedit-ui.h:84
+msgid "_Print..."
+msgstr "_Чоп кардан..."
+
+#: ../gedit/gedit-open-tool-button.c:85 ../gedit/gedit-ui.h:55
+msgid "Open a file"
+msgstr "Кушодани файл"
+
+#: ../gedit/gedit-open-tool-button.c:87
+msgid "Open a recently used file"
+msgstr ""
+
+#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:587
+msgid "Empty"
+msgstr "Холӣ"
+
+#: ../gedit/gedit-panel.c:475
+msgid "Hide panel"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.c:423
+msgid "Click on this button to select the font to be used by the editor"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.c:438
+#, c-format
+msgid "_Use the system fixed width font (%s)"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.c:676
+#, c-format
+msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.c:860
+msgid "The selected color scheme cannot be installed."
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.c:887
+msgid "Add Scheme"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.c:894
+msgid "A_dd Scheme"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.c:902
+msgid "Color Scheme Files"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.c:954
+#, c-format
+msgid "Could not remove color scheme \"%s\"."
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.c:1177
+msgid "gedit Preferences"
+msgstr ""
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-preferences-dialog.ui.h:1
+msgid "Preferences"
+msgstr "Хусусиятҳо"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:552
+msgid "_Display line numbers"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:3
+msgid "Display right _margin at column:"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:4
+#: ../gedit/gedit-print-preferences.ui.h:9
+msgid "Text Wrapping"
+msgstr "Ғунҷоиши матн"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:5
+#: ../gedit/gedit-print-preferences.ui.h:10
+msgid "Enable text _wrapping"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:6
+#: ../gedit/gedit-print-preferences.ui.h:11
+msgid "Do not _split words over two lines"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:7
+msgid "Highlighting"
+msgstr "Ҷудокунӣ"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:8
+msgid "Highlight current _line"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:9
+msgid "Highlight matching _brackets"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:10
+msgid "View"
+msgstr "Намоиш"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:11
+msgid "Tab Stops"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:12
+msgid "_Tab width:"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:13
+msgid "Insert _spaces instead of tabs"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:14
+msgid "_Enable automatic indentation"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:15
+msgid "File Saving"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:16
+msgid "Create a _backup copy of files before saving"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:17
+msgid "_Autosave files every"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:18
+msgid "_minutes"
+msgstr "_дақиқа"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:19
+msgid "Editor"
+msgstr "Муҳаррир"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:20
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+msgid "Font"
+msgstr "Шрифт"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:21
+msgid "Editor _font: "
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:22
+msgid "Pick the editor font"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:23
+msgid "Color Scheme"
+msgstr "Схемаи рангҳо"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:24
+msgid "Install scheme"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:25
+msgid "Install Scheme"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:26
+msgid "Uninstall scheme"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:27
+msgid "Uninstall Scheme"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:28
+msgid "Font & Colors"
+msgstr ""
+
+#: ../gedit/gedit-preferences-dialog.ui.h:29
+msgid "Plugins"
+msgstr "Плагинҳо"
+
+#: ../gedit/gedit-print-job.c:572
+#, c-format
+msgid "File: %s"
+msgstr "Файл: %s"
+
+#: ../gedit/gedit-print-job.c:581
+msgid "Page %N of %Q"
+msgstr "Саҳифаи %N аз %Q"
+
+#: ../gedit/gedit-print-job.c:843
+msgid "Preparing..."
+msgstr "Омодасозӣ..."
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-print-preferences.ui.h:1
+msgid "Syntax Highlighting"
+msgstr ""
+
+#: ../gedit/gedit-print-preferences.ui.h:2
+msgid "Print synta_x highlighting"
+msgstr ""
+
+#: ../gedit/gedit-print-preferences.ui.h:3
+msgid "Line Numbers"
+msgstr "Рақамҳои хатҳо"
+
+#: ../gedit/gedit-print-preferences.ui.h:4
+msgid "Print line nu_mbers"
+msgstr ""
+
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#: ../gedit/gedit-print-preferences.ui.h:6
+msgid "_Number every"
+msgstr ""
+
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#: ../gedit/gedit-print-preferences.ui.h:8
+msgid "lines"
+msgstr "хатҳо"
+
+#: ../gedit/gedit-print-preferences.ui.h:12
+msgid "Page header"
+msgstr ""
+
+#: ../gedit/gedit-print-preferences.ui.h:13
+msgid "Print page _headers"
+msgstr ""
+
+#: ../gedit/gedit-print-preferences.ui.h:14
+msgid "Fonts"
+msgstr "Шрифтҳо"
+
+#: ../gedit/gedit-print-preferences.ui.h:15
+msgid "_Body:"
+msgstr "_Матни асосии паём:"
+
+#: ../gedit/gedit-print-preferences.ui.h:16
+msgid "_Line numbers:"
+msgstr "_Рақамҳои хатҳо:"
+
+#: ../gedit/gedit-print-preferences.ui.h:17
+msgid "He_aders and footers:"
+msgstr ""
+
+#: ../gedit/gedit-print-preferences.ui.h:18
+msgid "_Restore Default Fonts"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.c:562
+msgid "Show the previous page"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.c:574
+msgid "Show the next page"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.c:590
+msgid "Current page (Alt+P)"
+msgstr ""
+
+#. Translators: the "of" from "1 of 19" in print preview.
+#: ../gedit/gedit-print-preview.c:613
+msgid "of"
+msgstr "аз"
+
+#: ../gedit/gedit-print-preview.c:621
+msgid "Page total"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.c:622
+msgid "The total number of pages in the document"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.c:639
+msgid "Show multiple pages"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.c:652
+msgid "Zoom 1:1"
+msgstr "Танзими андозаи 1:1"
+
+#: ../gedit/gedit-print-preview.c:661
+msgid "Zoom to fit the whole page"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.c:670
+msgid "Zoom the page in"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.c:679
+msgid "Zoom the page out"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.c:691
+msgid "_Close Preview"
+msgstr "_Пӯшидани пешнамоиш"
+
+#: ../gedit/gedit-print-preview.c:694
+msgid "Close print preview"
+msgstr "Пӯшидани пешнамоиши чоп"
+
+#: ../gedit/gedit-print-preview.c:763
+#, c-format
+msgid "Page %d of %d"
+msgstr "Саҳифаи %d аз %d"
+
+#: ../gedit/gedit-print-preview.c:947
+msgid "Page Preview"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.c:948
+msgid "The preview of a page in the document to be printed"
+msgstr ""
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-window.c:1528
+msgid "Replace"
+msgstr "Ҷойгузин кардан"
+
+#: ../gedit/gedit-replace-dialog.c:282
+msgid "Replace _All"
+msgstr "Ҷойгузин кардани _ҳама"
+
+#: ../gedit/gedit-replace-dialog.ui.h:2
+msgid "Replace All"
+msgstr "Ҷойгузин кардани ҳама"
+
+#: ../gedit/gedit-replace-dialog.ui.h:3
+msgid "_Search for: "
+msgstr "_Ҷустуҷӯи:"
+
+#: ../gedit/gedit-replace-dialog.ui.h:4
+msgid "Replace _with: "
+msgstr ""
+
+#: ../gedit/gedit-replace-dialog.ui.h:5
+msgid "_Match case"
+msgstr ""
+
+#: ../gedit/gedit-replace-dialog.ui.h:6
+msgid "Match _entire word only"
+msgstr ""
+
+#: ../gedit/gedit-replace-dialog.ui.h:7
+msgid "Search _backwards"
+msgstr ""
+
+#: ../gedit/gedit-replace-dialog.ui.h:8
+msgid "_Wrap around"
+msgstr ""
+
+#. Use spaces to leave padding proportional to the font size
+#: ../gedit/gedit-statusbar.c:70 ../gedit/gedit-statusbar.c:76
+msgid "OVR"
+msgstr "РҲМ"
+
+#: ../gedit/gedit-statusbar.c:70 ../gedit/gedit-statusbar.c:76
+msgid "INS"
+msgstr ""
+
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
+#. use abbreviations if possible to avoid space problems.
+#: ../gedit/gedit-statusbar.c:248
+#, c-format
+msgid "  Ln %d, Col %d"
+msgstr ""
+
+#: ../gedit/gedit-statusbar.c:347
+#, c-format
+msgid "There is a tab with errors"
+msgid_plural "There are %d tabs with errors"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:769
+#, c-format
+msgid "Reverting %s from %s"
+msgstr ""
+
+#: ../gedit/gedit-tab.c:776
+#, c-format
+msgid "Reverting %s"
+msgstr ""
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:792
+#, c-format
+msgid "Loading %s from %s"
+msgstr ""
+
+#: ../gedit/gedit-tab.c:799
+#, c-format
+msgid "Loading %s"
+msgstr "Боркунии %s"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:880
+#, c-format
+msgid "Saving %s to %s"
+msgstr ""
+
+#: ../gedit/gedit-tab.c:887
+#, c-format
+msgid "Saving %s"
+msgstr "Захиракунии %s"
+
+#. Read only
+#: ../gedit/gedit-tab.c:1872
+msgid "RO"
+msgstr ""
+
+#: ../gedit/gedit-tab.c:1919
+#, c-format
+msgid "Error opening file %s"
+msgstr ""
+
+#: ../gedit/gedit-tab.c:1924
+#, c-format
+msgid "Error reverting file %s"
+msgstr ""
+
+#: ../gedit/gedit-tab.c:1929
+#, c-format
+msgid "Error saving file %s"
+msgstr ""
+
+#: ../gedit/gedit-tab.c:1950
+msgid "Unicode (UTF-8)"
+msgstr ""
+
+#: ../gedit/gedit-tab.c:1957
+msgid "Name:"
+msgstr "Ном:"
+
+#: ../gedit/gedit-tab.c:1958
+msgid "MIME Type:"
+msgstr ""
+
+#: ../gedit/gedit-tab.c:1959
+msgid "Encoding:"
+msgstr "Рамзгузорӣ:"
+
+#: ../gedit/gedit-tab-label.c:283
+msgid "Close document"
+msgstr ""
+
+#. Toplevel
+#: ../gedit/gedit-ui.h:43
+msgid "_File"
+msgstr "_Файл"
+
+#: ../gedit/gedit-ui.h:44
+msgid "_Edit"
+msgstr "_Таҳрир"
+
+#: ../gedit/gedit-ui.h:45
+msgid "_View"
+msgstr "_Намоиш"
+
+#: ../gedit/gedit-ui.h:46
+msgid "_Search"
+msgstr "_Ҷустуҷӯ"
+
+#: ../gedit/gedit-ui.h:47
+msgid "_Tools"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:48
+msgid "_Documents"
+msgstr "_Ҳуҷҷатҳо"
+
+#: ../gedit/gedit-ui.h:53
+msgid "Create a new document"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:54
+msgid "_Open..."
+msgstr "_Кушодан..."
+
+#. Edit menu
+#: ../gedit/gedit-ui.h:58
+msgid "Pr_eferences"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:59
+msgid "Configure the application"
+msgstr ""
+
+#. Help menu
+#: ../gedit/gedit-ui.h:62
+msgid "_Contents"
+msgstr "_Мундариҷа"
+
+#: ../gedit/gedit-ui.h:63
+msgid "Open the gedit manual"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:65
+msgid "About this application"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:69
+msgid "Leave fullscreen mode"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:77
+msgid "Save the current file"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:79
+msgid "Save the current file with a different name"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:81
+msgid "Revert to a saved version of the file"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:82
+msgid "Print Previe_w"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:83
+msgid "Print preview"
+msgstr "Пешнамоиши чоп"
+
+#: ../gedit/gedit-ui.h:85
+msgid "Print the current page"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:89
+msgid "Undo the last action"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:91
+msgid "Redo the last undone action"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:93
+msgid "Cut the selection"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:95
+msgid "Copy the selection"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:97
+msgid "Paste the clipboard"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:99
+msgid "Delete the selected text"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:100
+msgid "Select _All"
+msgstr "_Интихоб кардани ҳама"
+
+#: ../gedit/gedit-ui.h:101
+msgid "Select the entire document"
+msgstr ""
+
+#. View menu
+#: ../gedit/gedit-ui.h:104
+msgid "_Highlight Mode"
+msgstr ""
+
+#. Search menu
+#: ../gedit/gedit-ui.h:107
+msgid "_Find..."
+msgstr "_Ёфтан..."
+
+#: ../gedit/gedit-ui.h:108
+msgid "Search for text"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:109
+msgid "Find Ne_xt"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:110
+msgid "Search forwards for the same text"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:111
+msgid "Find Pre_vious"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:112
+msgid "Search backwards for the same text"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:114 ../gedit/gedit-ui.h:117
+msgid "_Replace..."
+msgstr "_Ҷойгузин кардан..."
+
+#: ../gedit/gedit-ui.h:115 ../gedit/gedit-ui.h:118
+msgid "Search for and replace text"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:120
+msgid "_Clear Highlight"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:121
+msgid "Clear highlighting of search matches"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:122
+msgid "Go to _Line..."
+msgstr ""
+
+#: ../gedit/gedit-ui.h:123
+msgid "Go to a specific line"
+msgstr ""
+
+#. Documents menu
+#: ../gedit/gedit-ui.h:126
+msgid "_Save All"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:127
+msgid "Save all open files"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:128
+msgid "_Close All"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:129
+msgid "Close all open files"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:130
+msgid "_New Tab Group"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:131
+msgid "Create a new tab group"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:132
+msgid "P_revious Tab Group"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:133
+msgid "Switch to the previous tab group"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:134
+msgid "Nex_t Tab Group"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:135
+msgid "Switch to the next tab group"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:136
+msgid "_Previous Document"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:137
+msgid "Activate previous document"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:138
+msgid "N_ext Document"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:139
+msgid "Activate next document"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:141
+msgid "Move the current document to a new window"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:148
+msgid "Close the current file"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:155
+msgid "Quit the program"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:160
+msgid "_Toolbar"
+msgstr "_Навори абзорҳо"
+
+#: ../gedit/gedit-ui.h:161
+msgid "Show or hide the toolbar in the current window"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:163
+msgid "_Statusbar"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:164
+msgid "Show or hide the statusbar in the current window"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:167
+msgid "Edit text in fullscreen"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:174
+msgid "Side _Panel"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:175
+msgid "Show or hide the side panel in the current window"
+msgstr ""
+
+#: ../gedit/gedit-ui.h:177
+msgid "_Bottom Panel"
+msgstr "_Лавҳаи поён"
+
+#: ../gedit/gedit-ui.h:178
+msgid "Show or hide the bottom panel in the current window"
+msgstr ""
+
+#: ../gedit/gedit-utils.c:1026
+msgid "Please check your installation."
+msgstr ""
+
+#: ../gedit/gedit-utils.c:1084
+#, c-format
+msgid "Unable to open UI file %s. Error: %s"
+msgstr ""
+
+#: ../gedit/gedit-utils.c:1103
+#, c-format
+msgid "Unable to find the object '%s' inside file %s."
+msgstr ""
+
+#. Translators: '/ on <remote-share>'
+#: ../gedit/gedit-utils.c:1326
+#, c-format
+msgid "/ on %s"
+msgstr "/ дар %s"
+
+#. create "Wrap Around" menu item.
+#: ../gedit/gedit-view-frame.c:538
+msgid "_Wrap Around"
+msgstr ""
+
+#. create "Match Entire Word Only" menu item.
+#: ../gedit/gedit-view-frame.c:548
+msgid "Match _Entire Word Only"
+msgstr ""
+
+#. create "Match Case" menu item.
+#: ../gedit/gedit-view-frame.c:558
+msgid "_Match Case"
+msgstr ""
+
+#: ../gedit/gedit-view-frame.c:755
+msgid "String you want to search for"
+msgstr ""
+
+#: ../gedit/gedit-view-frame.c:765
+msgid "Line you want to move the cursor to"
+msgstr ""
+
+#: ../gedit/gedit-window.c:942
+#, c-format
+msgid "Use %s highlight mode"
+msgstr ""
+
+#. add the "Plain Text" item before all the others
+#. Translators: "Plain Text" means that no highlight mode is selected in the
+#. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
+#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2074
+#: ../plugins/externaltools/tools/manager.py:146
+#: ../plugins/externaltools/tools/manager.py:455
+#: ../plugins/externaltools/tools/manager.py:571
+#: ../plugins/externaltools/tools/manager.py:890
+msgid "Plain Text"
+msgstr ""
+
+#: ../gedit/gedit-window.c:1048
+msgid "Disable syntax highlighting"
+msgstr ""
+
+#. Translators: %s is a URI
+#: ../gedit/gedit-window.c:1365
+#, c-format
+msgid "Open '%s'"
+msgstr "Кушодани \"%s\""
+
+#: ../gedit/gedit-window.c:1467
+msgid "Open"
+msgstr "Кушодан"
+
+#: ../gedit/gedit-window.c:1522
+msgid "Save"
+msgstr "Захира кардан"
+
+#: ../gedit/gedit-window.c:1524
+msgid "Print"
+msgstr "Чоп кардан"
+
+#: ../gedit/gedit-window.c:1526
+msgid "Find"
+msgstr "Ёфтан"
+
+#. Translators: %s is a URI
+#: ../gedit/gedit-window.c:1698
+#, c-format
+msgid "Activate '%s'"
+msgstr "Фаъол кардани \"%s\""
+
+#: ../gedit/gedit-window.c:2055
+msgid "Use Spaces"
+msgstr ""
+
+#: ../gedit/gedit-window.c:2128
+msgid "Tab Width"
+msgstr ""
+
+#: ../gedit/gedit-window.c:2237
+msgid "Bracket match is out of range"
+msgstr ""
+
+#: ../gedit/gedit-window.c:2242
+msgid "Bracket match not found"
+msgstr ""
+
+#: ../gedit/gedit-window.c:2247
+#, c-format
+msgid "Bracket match found on line: %d"
+msgstr ""
+
+#: ../gedit/gedit-window.c:2852
+msgid "There are unsaved documents"
+msgstr ""
+
+#. ex:set ts=8 noet:
+#: ../plugins/changecase/changecase.plugin.desktop.in.h:1
+msgid "Change Case"
+msgstr "Тағйир додани регистр"
+
+#: ../plugins/changecase/changecase.plugin.desktop.in.h:2
+msgid "Changes the case of selected text."
+msgstr ""
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:242
+msgid "C_hange Case"
+msgstr ""
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:243
+msgid "All _Upper Case"
+msgstr ""
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:244
+msgid "Change selected text to upper case"
+msgstr ""
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:246
+msgid "All _Lower Case"
+msgstr ""
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:247
+msgid "Change selected text to lower case"
+msgstr ""
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:249
+msgid "_Invert Case"
+msgstr ""
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:250
+msgid "Invert the case of selected text"
+msgstr ""
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:252
+msgid "_Title Case"
+msgstr ""
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:253
+msgid "Capitalize the first letter of each selected word"
+msgstr ""
+
+#. ex:set ts=8 noet:
+#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
+msgid "Check update"
+msgstr ""
+
+#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
+msgid "Check for latest version of gedit"
+msgstr ""
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:257
+msgid "There was an error displaying the URI."
+msgstr ""
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:294
+msgid "_Download"
+msgstr ""
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:302
+msgid "_Ignore Version"
+msgstr ""
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:317
+msgid "There is a new version of gedit"
+msgstr ""
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:321
+msgid ""
+"You can download the new version of gedit by clicking on the download button "
+"or ignore that version and wait for a new one"
+msgstr ""
+
+#. ex:set ts=8 noet:
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+msgid "Version to Ignore"
+msgstr ""
+
+#. This is releated to the next gedit version to be released
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+msgid "Version to ignore until a newer version is released."
+msgstr ""
+
+#. ex:set ts=8 noet:
+#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:1
+msgid "Document Statistics"
+msgstr "Омори ҳуҷҷат"
+
+#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
+msgid ""
+"Analyzes the current document and reports the number of words, lines, "
+"characters and non-space characters in it."
+msgstr ""
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:427
+msgid "_Document Statistics"
+msgstr "_Омори ҳуҷҷат"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:429
+msgid "Get statistical information on the current document"
+msgstr ""
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:2
+msgid "_Update"
+msgstr "_Навсозӣ кардан"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:3
+msgid "File Name"
+msgstr "Номи файл"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
+#: ../plugins/externaltools/tools/tools.ui.h:27
+#: ../plugins/snippets/snippets/snippets.ui.h:13
+msgid "    "
+msgstr "    "
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:5
+msgid "Document"
+msgstr "Ҳуҷҷат"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:6
+msgid "Selection"
+msgstr "Интихоб"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:7
+msgid "Lines"
+msgstr "Хатҳо"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:8
+msgid "Words"
+msgstr "Калимаҳо"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:9
+msgid "Characters (with spaces)"
+msgstr ""
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:10
+msgid "Characters (no spaces)"
+msgstr ""
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:11
+msgid "Bytes"
+msgstr "Байт"
+
+#: ../plugins/externaltools/data/build.desktop.in.h:1
+msgid "Build"
+msgstr "Сохтан"
+
+#: ../plugins/externaltools/data/build.desktop.in.h:2
+msgid "Run \"make\" in the document directory"
+msgstr ""
+
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
+#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
+msgid "Open terminal here"
+msgstr ""
+
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:2
+#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:2
+msgid "Open a terminal in the document location"
+msgstr ""
+
+#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:1
+msgid "Remove trailing spaces"
+msgstr ""
+
+#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:2
+msgid "Remove useless trailing spaces in your file"
+msgstr ""
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:1
+msgid "Run command"
+msgstr "Иҷро кардани фармон"
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:2
+msgid "Execute a custom command and put its output in a new document"
+msgstr ""
+
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
+msgid "External Tools"
+msgstr ""
+
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
+msgid "Execute external commands and shell scripts."
+msgstr ""
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+msgid "Whether to use the system font"
+msgstr ""
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+msgid ""
+"If true, the external tools will use the desktop-global standard font if "
+"it's monospace (and the most similar font it can come up with otherwise)."
+msgstr ""
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgstr ""
+
+#: ../plugins/externaltools/tools/capture.py:92
+#, python-format
+msgid "Could not execute command: %s"
+msgstr ""
+
+#: ../plugins/externaltools/tools/functions.py:157
+msgid "You must be inside a word to run this command"
+msgstr ""
+
+#: ../plugins/externaltools/tools/functions.py:263
+msgid "Running tool:"
+msgstr ""
+
+#: ../plugins/externaltools/tools/functions.py:292
+msgid "Done."
+msgstr "Тайёр."
+
+#: ../plugins/externaltools/tools/functions.py:294
+msgid "Exited"
+msgstr ""
+
+#: ../plugins/externaltools/tools/manager.py:144
+msgid "All languages"
+msgstr "Ҳамаи забонҳо"
+
+#: ../plugins/externaltools/tools/manager.py:560
+#: ../plugins/externaltools/tools/manager.py:564
+#: ../plugins/externaltools/tools/manager.py:888
+#: ../plugins/externaltools/tools/tools.ui.h:28
+msgid "All Languages"
+msgstr "Ҳамаи забонҳо"
+
+#: ../plugins/externaltools/tools/manager.py:677
+msgid "New tool"
+msgstr ""
+
+#: ../plugins/externaltools/tools/manager.py:808
+#, python-format
+msgid "This accelerator is already bound to %s"
+msgstr ""
+
+#: ../plugins/externaltools/tools/manager.py:852
+msgid "Type a new accelerator, or press Backspace to clear"
+msgstr ""
+
+#: ../plugins/externaltools/tools/manager.py:854
+msgid "Type a new accelerator"
+msgstr ""
+
+#: ../plugins/externaltools/tools/outputpanel.py:120
+msgid "Stopped."
+msgstr "Қатъ карда шуд."
+
+#. ex:ts=4:et:
+#: ../plugins/externaltools/tools/tools.ui.h:1
+msgid "All documents"
+msgstr "Ҳамаи ҳуҷҷатҳо"
+
+#: ../plugins/externaltools/tools/tools.ui.h:2
+msgid "All documents except untitled ones"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:3
+msgid "Local files only"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:4
+msgid "Remote files only"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:5
+msgid "Untitled documents only"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:6
+msgid "Nothing"
+msgstr "Ҳеҷ чиз"
+
+#: ../plugins/externaltools/tools/tools.ui.h:7
+msgid "Current document"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:8
+msgid "Current selection"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:9
+msgid "Current selection (default to document)"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:10
+msgid "Current line"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:11
+msgid "Current word"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:12
+msgid "Display in bottom pane"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:13
+msgid "Create new document"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:14
+msgid "Append to current document"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:15
+msgid "Replace current document"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:16
+msgid "Replace current selection"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:17
+msgid "Insert at cursor position"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:18
+msgid "Manage External Tools"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:19
+msgid "_Tools:"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:20
+msgid "Add a new tool"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:21
+msgid "Add Tool"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:22
+msgid "Remove selected tool"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:23
+msgid "Remove Tool"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:24
+msgid "Revert tool"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:25
+msgid "Revert Tool"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:26
+#: ../plugins/snippets/snippets/snippets.ui.h:11
+msgid "_Edit:"
+msgstr "_Таҳрир кардан:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:29
+msgid "_Applicability:"
+msgstr ""
+
+#: ../plugins/externaltools/tools/tools.ui.h:30
+msgid "_Output:"
+msgstr "_Натиҷа:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:31
+msgid "_Input:"
+msgstr "_Вуруд:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:32
+msgid "_Save:"
+msgstr "_Захира кардан:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:33
+msgid "Shortcut _Key:"
+msgstr ""
+
+#: ../plugins/externaltools/tools/windowactivatable.py:173
+msgid "Manage _External Tools..."
+msgstr ""
+
+#: ../plugins/externaltools/tools/windowactivatable.py:174
+msgid "Opens the External Tools Manager"
+msgstr ""
+
+#: ../plugins/externaltools/tools/windowactivatable.py:177
+msgid "External _Tools"
+msgstr ""
+
+#: ../plugins/externaltools/tools/windowactivatable.py:178
+msgid "External tools"
+msgstr ""
+
+#: ../plugins/externaltools/tools/windowactivatable.py:212
+msgid "Shell Output"
+msgstr ""
+
+#. ex:ts=4:et:
+#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
+msgid "File Browser Panel"
+msgstr ""
+
+#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
+msgid "Easy file access from the side panel"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
+msgid "File System"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:558
+msgid "_Set root to active document"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:560
+msgid "Set the root to the active document location"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:565
+msgid "_Open terminal here"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:567
+msgid "Open a terminal at the currently opened directory"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:705
+msgid "File Browser"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:848
+msgid "An error occurred while creating a new directory"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:851
+msgid "An error occurred while creating a new file"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:854
+msgid "An error occurred while renaming a file or directory"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:857
+msgid "An error occurred while deleting a file or directory"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:860
+msgid "An error occurred while opening a directory in the file manager"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:863
+msgid "An error occurred while setting a root directory"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:866
+msgid "An error occurred while loading a directory"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:869
+msgid "An error occurred"
+msgstr "Хатогӣ ба вучуд омадааст"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1083
+msgid ""
+"Cannot move file to trash, do you\n"
+"want to delete permanently?"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1088
+#, c-format
+msgid "The file \"%s\" cannot be moved to the trash."
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1093
+msgid "The selected files cannot be moved to the trash."
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1125
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\"?"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1130
+msgid "Are you sure you want to permanently delete the selected files?"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1133
+msgid "If you delete an item, it is permanently lost."
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1722
+msgid "(Empty)"
+msgstr "(Холӣ)"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3467
+msgid ""
+"The renamed file is currently filtered out. You need to adjust your filter "
+"settings to make the file visible"
+msgstr ""
+
+#. Translators: This is the default name of new files created by the file browser pane.
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3711
+msgid "file"
+msgstr "файл"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3739
+msgid ""
+"The new file is currently filtered out. You need to adjust your filter "
+"settings to make the file visible"
+msgstr ""
+
+#. Translators: This is the default name of new directories created by the file browser pane.
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3770
+msgid "directory"
+msgstr "директория"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3795
+msgid ""
+"The new directory is currently filtered out. You need to adjust your filter "
+"settings to make the directory visible"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:733
+msgid "Bookmarks"
+msgstr "Хатбаракҳо"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:821
+msgid "_Filter"
+msgstr "_Филтр"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:826
+msgid "_Move to Trash"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:827
+msgid "Move selected file or folder to trash"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:829
+msgid "_Delete"
+msgstr "_Нест кардан"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:830
+msgid "Delete selected file or folder"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:837
+msgid "Open selected file"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:843
+msgid "Up"
+msgstr "Боло"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:844
+msgid "Open the parent folder"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:849
+msgid "_New Folder"
+msgstr "_Ҷузвдони нав"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:850
+msgid "Add new empty folder"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:852
+msgid "New F_ile"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:853
+msgid "Add new empty file"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:858
+msgid "_Rename"
+msgstr "_Иваз кардани ном"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:859
+msgid "Rename selected file or folder"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:865
+msgid "_Previous Location"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:867
+msgid "Go to the previous visited location"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:869
+msgid "_Next Location"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:870
+msgid "Go to the next visited location"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:871
+msgid "Re_fresh View"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:872
+msgid "Refresh the view"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:873
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:891
+msgid "_View Folder"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:874
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:892
+msgid "View folder in file manager"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:881
+msgid "Show _Hidden"
+msgstr "Намоиш додани _ноаён"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:882
+msgid "Show hidden files and folders"
+msgstr "Намоиш додани файлҳо ва ҷузвдонҳои ноаён"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:884
+msgid "Show _Binary"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:885
+msgid "Show binary files"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1202
+msgid "Match Filename"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2004
+#, c-format
+msgid "No mount object for mounted volume: %s"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2081
+#, c-format
+msgid "Could not open media: %s"
+msgstr ""
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2128
+#, c-format
+msgid "Could not mount volume: %s"
+msgstr ""
+
+#. ex:ts=8:noet:
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+msgid "Open With Tree View"
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+msgid ""
+"Open the tree view when the file browser plugin gets loaded instead of the "
+"bookmarks view"
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+msgid "File Browser Root Directory"
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+msgid ""
+"The file browser root directory to use when loading the file browser plugin "
+"and onload/tree_view is TRUE."
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+msgid "File Browser Virtual Root Directory"
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+msgid ""
+"The file browser virtual root directory to use when loading the file browser "
+"plugin when onload/tree_view is TRUE. The virtual root must always be below "
+"the actual root."
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+msgid "Enable Restore of Remote Locations"
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+msgid "Sets whether to enable restoring of remote locations."
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+msgid "Set Location to First Document"
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+msgid ""
+"If TRUE the file browser plugin will view the directory of the first opened "
+"document given that the file browser hasn't been used yet. (Thus this "
+"generally applies to opening a document from the command line or opening it "
+"with Nautilus, etc.)"
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+msgid "File Browser Filter Mode"
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+msgid ""
+"This value determines what files get filtered from the file browser. Valid "
+"values are: none (filter nothing), hide-hidden (filter hidden files) and "
+"hide-binary (filter binary files)."
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+msgid "File Browser Filter Pattern"
+msgstr ""
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+msgid ""
+"The filter pattern to filter the file browser with. This filter works on top "
+"of the filter_mode."
+msgstr ""
+
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:1
+msgid "Modelines"
+msgstr ""
+
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:2
+msgid "Emacs, Kate and Vim-style modelines support for gedit."
+msgstr ""
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+msgid "Command Color Text"
+msgstr ""
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+msgid "The command color text"
+msgstr ""
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+msgid "Error Color Text"
+msgstr ""
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+msgid "The error color text"
+msgstr ""
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+msgid ""
+"If true, the terminal will use the desktop-global standard font if it's "
+"monospace (and the most similar font it can come up with otherwise)."
+msgstr ""
+
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
+msgid "C_ommand color:"
+msgstr ""
+
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:2
+msgid "_Error color:"
+msgstr ""
+
+#. ex:et:ts=4:
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:52
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
+msgid "Python Console"
+msgstr ""
+
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
+msgid "Interactive Python console standing in the bottom panel"
+msgstr ""
+
+#: ../plugins/quickopen/quickopen/__init__.py:71
+msgid "Quick open"
+msgstr ""
+
+#: ../plugins/quickopen/quickopen/__init__.py:72
+msgid "Quickly open documents"
+msgstr ""
+
+#. ex:ts=4:et:
+#: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
+#: ../plugins/quickopen/quickopen/popup.py:32
+msgid "Quick Open"
+msgstr ""
+
+#: ../plugins/quickopen/quickopen.plugin.desktop.in.h:2
+msgid "Quickly open files"
+msgstr ""
+
+#: ../plugins/quickopen/quickopen/popup.py:73
+msgid "Type to search..."
+msgstr ""
+
+#. ex:ts=8:et:
+#: ../plugins/snippets/snippets/document.py:57
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:1
+msgid "Snippets"
+msgstr ""
+
+#: ../plugins/snippets/snippets/exporter.py:82
+#, python-format
+msgid "The archive \"%s\" could not be created"
+msgstr ""
+
+#: ../plugins/snippets/snippets/exporter.py:99
+#, python-format
+msgid "Target directory \"%s\" does not exist"
+msgstr ""
+
+#: ../plugins/snippets/snippets/exporter.py:102
+#, python-format
+msgid "Target directory \"%s\" is not a valid directory"
+msgstr ""
+
+#: ../plugins/snippets/snippets/importer.py:47
+#: ../plugins/snippets/snippets/importer.py:108
+#, python-format
+msgid "File \"%s\" does not exist"
+msgstr "Файли \"%s\" вуҷуд надорад"
+
+#: ../plugins/snippets/snippets/importer.py:50
+#, python-format
+msgid "File \"%s\" is not a valid snippets file"
+msgstr ""
+
+#: ../plugins/snippets/snippets/importer.py:67
+#, python-format
+msgid "Imported file \"%s\" is not a valid snippets file"
+msgstr ""
+
+#: ../plugins/snippets/snippets/importer.py:77
+#, python-format
+msgid "The archive \"%s\" could not be extracted"
+msgstr ""
+
+#: ../plugins/snippets/snippets/importer.py:95
+#, python-format
+msgid "The following files could not be imported: %s"
+msgstr ""
+
+#: ../plugins/snippets/snippets/importer.py:111
+#: ../plugins/snippets/snippets/importer.py:124
+#, python-format
+msgid "File \"%s\" is not a valid snippets archive"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:43
+msgid "Snippets archive"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:63
+msgid "Add a new snippet..."
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:115
+msgid "Global"
+msgstr "Умумӣ"
+
+#: ../plugins/snippets/snippets/manager.py:399
+msgid "Revert selected snippet"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:402
+#: ../plugins/snippets/snippets/snippets.ui.h:5
+msgid "Delete selected snippet"
+msgstr ""
+
+#. self['hbox_tab_trigger'].set_spacing(3)
+#: ../plugins/snippets/snippets/manager.py:661
+msgid ""
+"This is not a valid Tab trigger. Triggers can either contain alphanumeric "
+"characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
+"[, etc."
+msgstr ""
+
+#. self['hbox_tab_trigger'].set_spacing(0)
+#: ../plugins/snippets/snippets/manager.py:668
+#: ../plugins/snippets/snippets/snippets.ui.h:16
+msgid "Single word the snippet is activated with after pressing Tab"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:757
+#, python-format
+msgid "The following error occurred while importing: %s"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:764
+msgid "Import successfully completed"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:778
+#: ../plugins/snippets/snippets/snippets.ui.h:7
+msgid "Import snippets"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:783
+#: ../plugins/snippets/snippets/manager.py:869
+#: ../plugins/snippets/snippets/manager.py:932
+msgid "All supported archives"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:784
+#: ../plugins/snippets/snippets/manager.py:870
+#: ../plugins/snippets/snippets/manager.py:933
+msgid "Gzip compressed archive"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:785
+#: ../plugins/snippets/snippets/manager.py:871
+#: ../plugins/snippets/snippets/manager.py:934
+msgid "Bzip2 compressed archive"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:786
+msgid "Single snippets file"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:873
+#: ../plugins/snippets/snippets/manager.py:936
+msgid "All files"
+msgstr "Ҳамаи файлҳо"
+
+#: ../plugins/snippets/snippets/manager.py:799
+#, python-format
+msgid "The following error occurred while exporting: %s"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:803
+msgid "Export successfully completed"
+msgstr ""
+
+#. Ask if system snippets should also be exported
+#: ../plugins/snippets/snippets/manager.py:843
+#: ../plugins/snippets/snippets/manager.py:910
+msgid "Do you want to include selected <b>system</b> snippets in your export?"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:858
+#: ../plugins/snippets/snippets/manager.py:928
+msgid "There are no snippets selected to be exported"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:863
+#: ../plugins/snippets/snippets/manager.py:901
+msgid "Export snippets"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:1042
+msgid "Type a new shortcut, or press Backspace to clear"
+msgstr ""
+
+#: ../plugins/snippets/snippets/manager.py:1044
+msgid "Type a new shortcut"
+msgstr ""
+
+#: ../plugins/snippets/snippets/placeholder.py:601
+#, python-format
+msgid ""
+"Execution of the Python command (%s) exceeds the maximum time, execution "
+"aborted."
+msgstr ""
+
+#: ../plugins/snippets/snippets/placeholder.py:609
+#, python-format
+msgid "Execution of the Python command (%s) failed: %s"
+msgstr ""
+
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:2
+msgid "Insert often-used pieces of text in a fast way"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:1
+msgid "Manage Snippets"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:2
+msgid "_Snippets:"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:3
+msgid "Create new snippet"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:4
+msgid "Add Snippet"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:6
+msgid "Remove Snippet"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:8
+msgid "Import Snippets"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:9
+msgid "Export selected snippets"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:10
+msgid "Export Snippets"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:12
+msgid "Activation"
+msgstr ""
+
+#. "tab" here means the tab key, not the notebook tab!
+#: ../plugins/snippets/snippets/snippets.ui.h:15
+msgid "_Tab trigger:"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:17
+msgid "S_hortcut key:"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:18
+msgid "Shortcut key with which the snippet is activated"
+msgstr ""
+
+#: ../plugins/snippets/snippets/snippets.ui.h:19
+msgid "_Drop targets:"
+msgstr ""
+
+#: ../plugins/snippets/snippets/windowactivatable.py:154
+msgid "Manage _Snippets..."
+msgstr ""
+
+#: ../plugins/snippets/snippets/windowactivatable.py:155
+msgid "Manage snippets"
+msgstr ""
+
+#: ../plugins/sort/gedit-sort-plugin.c:88
+msgid "S_ort..."
+msgstr ""
+
+#: ../plugins/sort/gedit-sort-plugin.c:90
+msgid "Sort the current document or selection"
+msgstr ""
+
+#. ex:ts=8:noet:
+#: ../plugins/sort/gedit-sort-plugin.ui.h:1
+#: ../plugins/sort/sort.plugin.desktop.in.h:1
+msgid "Sort"
+msgstr "Мураттаб кардан"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:2
+msgid "_Sort"
+msgstr "_Мураттаб кардан"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:3
+msgid "_Reverse order"
+msgstr ""
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:4
+msgid "R_emove duplicates"
+msgstr ""
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:5
+msgid "_Ignore case"
+msgstr ""
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:6
+msgid "S_tart at column:"
+msgstr ""
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:7
+msgid "You cannot undo a sort operation"
+msgstr ""
+
+#: ../plugins/sort/sort.plugin.desktop.in.h:2
+msgid "Sorts a document or selected text."
+msgstr ""
+
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
+#. * for the current misspelled word
+#: ../plugins/spell/gedit-automatic-spell-checker.c:420
+#: ../plugins/spell/gedit-spell-checker-dialog.c:444
+msgid "(no suggested words)"
+msgstr ""
+
+#: ../plugins/spell/gedit-automatic-spell-checker.c:444
+msgid "_More..."
+msgstr "_Бештар..."
+
+#. Ignore all
+#: ../plugins/spell/gedit-automatic-spell-checker.c:499
+msgid "_Ignore All"
+msgstr "_Нодида гирифтани ҳама"
+
+#. + Add to Dictionary
+#: ../plugins/spell/gedit-automatic-spell-checker.c:514
+msgid "_Add"
+msgstr "_Илова кардан"
+
+#: ../plugins/spell/gedit-automatic-spell-checker.c:553
+msgid "_Spelling Suggestions..."
+msgstr ""
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:264
+msgid "Check Spelling"
+msgstr "Санҷидани имло"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:275
+msgid "Suggestions"
+msgstr "Пешниҳодҳо"
+
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
+#: ../plugins/spell/gedit-spell-checker-dialog.c:551
+msgid "(correct spelling)"
+msgstr ""
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:692
+msgid "Completed spell checking"
+msgstr ""
+
+#. Translators: the first %s is the language name, and
+#. * the second %s is the locale name. Example:
+#. * "French (France)"
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:378
+#: ../plugins/spell/gedit-spell-checker-language.c:384
+#, c-format
+msgctxt "language"
+msgid "%s (%s)"
+msgstr ""
+
+#. Translators: this refers to an unknown language code
+#. * (one which isn't in our built-in list).
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:393
+#, c-format
+msgctxt "language"
+msgid "Unknown (%s)"
+msgstr "Номаълум (%s)"
+
+#. Translators: this refers the Default language used by the
+#. * spell checker
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:499
+msgctxt "language"
+msgid "Default"
+msgstr "Пешфарз"
+
+#. ex:ts=8:noet:
+#: ../plugins/spell/gedit-spell-language-dialog.c:140
+#: ../plugins/spell/languages-dialog.ui.h:1
+msgid "Set language"
+msgstr ""
+
+#: ../plugins/spell/gedit-spell-language-dialog.c:182
+msgid "Languages"
+msgstr "Забонҳо"
+
+#: ../plugins/spell/gedit-spell-plugin.c:107
+msgid "_Check Spelling..."
+msgstr "_Санҷидани имло..."
+
+#: ../plugins/spell/gedit-spell-plugin.c:109
+msgid "Check the current document for incorrect spelling"
+msgstr ""
+
+#: ../plugins/spell/gedit-spell-plugin.c:115
+msgid "Set _Language..."
+msgstr ""
+
+#: ../plugins/spell/gedit-spell-plugin.c:117
+msgid "Set the language of the current document"
+msgstr ""
+
+#: ../plugins/spell/gedit-spell-plugin.c:126
+msgid "_Highlight Misspelled Words"
+msgstr ""
+
+#: ../plugins/spell/gedit-spell-plugin.c:128
+msgid "Automatically spell-check the current document"
+msgstr ""
+
+#: ../plugins/spell/gedit-spell-plugin.c:810
+msgid "The document is empty."
+msgstr ""
+
+#: ../plugins/spell/gedit-spell-plugin.c:835
+msgid "No misspelled words"
+msgstr ""
+
+#: ../plugins/spell/languages-dialog.ui.h:2
+msgid "Select the _language of the current document."
+msgstr ""
+
+#: ../plugins/spell/spell-checker.ui.h:1
+msgid "Check spelling"
+msgstr "Санҷидани имло"
+
+#: ../plugins/spell/spell-checker.ui.h:2
+msgid "Misspelled word:"
+msgstr ""
+
+#: ../plugins/spell/spell-checker.ui.h:3
+msgid "word"
+msgstr "калима"
+
+#: ../plugins/spell/spell-checker.ui.h:4
+msgid "Change _to:"
+msgstr "Тағйир додан _ба:"
+
+#: ../plugins/spell/spell-checker.ui.h:5
+msgid "Check _Word"
+msgstr ""
+
+#: ../plugins/spell/spell-checker.ui.h:6
+msgid "_Suggestions:"
+msgstr "_Пешниҳодҳо:"
+
+#: ../plugins/spell/spell-checker.ui.h:7
+msgid "_Ignore"
+msgstr "_Нодида гирифтан"
+
+#: ../plugins/spell/spell-checker.ui.h:8
+msgid "Cha_nge"
+msgstr ""
+
+#: ../plugins/spell/spell-checker.ui.h:9
+msgid "Ignore _All"
+msgstr "Нодида гирифтани _ҳама"
+
+#: ../plugins/spell/spell-checker.ui.h:10
+msgid "Change A_ll"
+msgstr ""
+
+#: ../plugins/spell/spell-checker.ui.h:11
+msgid "User dictionary:"
+msgstr ""
+
+#: ../plugins/spell/spell-checker.ui.h:12
+msgid "Add w_ord"
+msgstr ""
+
+#: ../plugins/spell/spell-checker.ui.h:13
+msgid "Language:"
+msgstr "Забон:"
+
+#: ../plugins/spell/spell-checker.ui.h:14
+msgid "Language"
+msgstr "Забон"
+
+#: ../plugins/spell/spell.plugin.desktop.in.h:1
+msgid "Spell Checker"
+msgstr ""
+
+#: ../plugins/spell/spell.plugin.desktop.in.h:2
+msgid "Checks the spelling of the current document."
+msgstr ""
+
+#: ../plugins/time/gedit-time-dialog.ui.h:1
+msgid "Insert Date and Time"
+msgstr ""
+
+#: ../plugins/time/gedit-time-dialog.ui.h:2
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
+msgid "Use the _selected format"
+msgstr ""
+
+#: ../plugins/time/gedit-time-dialog.ui.h:3
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
+msgid "_Use custom format"
+msgstr ""
+
+#. Translators: Use the more common date format in your locale
+#: ../plugins/time/gedit-time-dialog.ui.h:5
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:8
+#, no-c-format
+msgid "%d/%m/%Y %H:%M:%S"
+msgstr ""
+
+#. Translators: This example should follow the date format defined in the entry above
+#: ../plugins/time/gedit-time-dialog.ui.h:6
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:10
+msgid "01/11/2009 17:52:00"
+msgstr ""
+
+#: ../plugins/time/gedit-time-dialog.ui.h:7
+msgid "_Insert"
+msgstr "_Дарҷ кардан"
+
+#: ../plugins/time/gedit-time-plugin.c:184
+msgid "In_sert Date and Time..."
+msgstr ""
+
+#: ../plugins/time/gedit-time-plugin.c:186
+msgid "Insert current date and time at the cursor position"
+msgstr ""
+
+#: ../plugins/time/gedit-time-plugin.c:504
+msgid "Available formats"
+msgstr ""
+
+#. ex:ts=8:noet:
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:1
+msgid "Configure date/time plugin"
+msgstr ""
+
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:2
+msgid "When inserting date/time..."
+msgstr ""
+
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
+msgid "_Prompt for a format"
+msgstr ""
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+msgid "Prompt Type"
+msgstr ""
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+msgid ""
+"If the user should be prompted for a format or if the selected or custom "
+"format should be used."
+msgstr ""
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+msgid "Selected Format"
+msgstr ""
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+msgid "The selected format used when inserting the date/time."
+msgstr ""
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+msgid "Custom Format"
+msgstr ""
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+msgid "The custom format used when inserting the date/time."
+msgstr ""
+
+#: ../plugins/time/time.plugin.desktop.in.h:1
+msgid "Insert Date/Time"
+msgstr ""
+
+#: ../plugins/time/time.plugin.desktop.in.h:2
+msgid "Inserts current date and time at the cursor position."
+msgstr ""
+
+#: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:1
+msgid "Zeitgeist dataprovider"
+msgstr ""
+
+#: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
+msgid "Logs access and leave event for documents used with gedit"
+msgstr ""
+
+#~ msgid "Text;"
+#~ msgstr "Матн;"
