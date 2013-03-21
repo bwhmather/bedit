@@ -66,7 +66,8 @@ HELP_FILES = \
 	gedit-tabs.page \
 	gedit-undo-recent-action.page \
 	gedit-view-open-files-in-sidepane.page \
-	index.page
+	index.page \
+	legal.xml
 
 HELP_LINGUAS = ar bg ca cs da de el es eu fi fr gl hu it ja ko lv oc pt_BR ru sl sv te th uk zh_CN zh_HK zh_TW
 
