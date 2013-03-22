@@ -58,16 +58,16 @@
           proper snippets. <app>Gedit</app> will normally detect the language or
           syntax of the file that you're using, but sometimes you may need to
           set it.</p>
-        </note>
-      </item>
-      <item>
-        <p>Review the snippets that are available for your language or syntax.
-        Choose a snippet that you think would be useful for you.</p>
-        <figure>
+          <figure>
             <desc>In this example, the language is set to HTML.</desc>
             <media type="image" mime="image/png"
             src="figures/gedit-html-snippet.png"></media>
         </figure>
+        </note>
+      </item>
+      <item>
+        <p>Browse the snippets that are available for your language or
+        syntax.</p>
       </item>
     </steps>
   </section>
@@ -79,17 +79,29 @@
 
     <steps>
       <item>
-        <p>For example, if you have set the syntax to <em>HTML</em>, type
-        <code>head </code>, and press the <key>Tab</key> key. The text would
-        have auto completed into a snippet as:</p>
-        <code>
-        <![CDATA[<head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-        <title>Page Title</title>
-        </head>]]>
-        </code>
+        <p>Type the desired snippet name anywhere in your current document.</p>
+      </item>
+      <item>
+        <p>Press <key>Tab</key> to insert the snippet associated with the input
+        term.</p>
       </item>
     </steps>
+  </section>
+
+    <section id="example-insert-snippet">
+    <title>Snippet Example Usage</title>
+
+    <p>For example, if you have set the syntax to <em>HTML</em>, type
+    <code>head </code>, and press the <key>Tab</key> key. The text would have
+    auto completed into a snippet as:</p>
+
+    <code>
+      <![CDATA[<head>
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <title>Page Title</title>
+      </head>]]>
+    </code>
+
   </section>
 
   <section id="adding-snippets">
@@ -137,8 +149,8 @@
 
   </section>
 
-    <section id="example-snippet">
-      <title>Snippet Example Usage</title>
+  <section id="example-add-snippet">
+    <title>New Snippet Example</title>
 
     <p>Consider you have created a snippet with the term <var>greetings</var>
     in <gui style="input">Tab trigger:</gui>. The
@@ -160,7 +172,6 @@
     on your choice of usage. To do so, press <key>Tab</key> to choose between
     "wonderful" and "amazing" and press <key>Del</key> to delete the least
     preferred option.</p>
-
   </section>
 
   <!--TODO: <section id="modifying-snippets">
