@@ -1919,9 +1919,8 @@ _gedit_cmd_file_close_all (GtkAction   *action,
 }
 
 /* Quit */
-#ifdef OS_OSX
 static void
-quit_all ()
+quit_all (void)
 {
 	GList *windows;
 	GList *item;
@@ -1948,21 +1947,18 @@ quit_all ()
 
 	g_list_free (windows);
 }
-#endif
 
 void
 _gedit_cmd_file_quit (GtkAction   *action,
-		     GeditWindow *window)
+                      GeditWindow *window)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
-#ifdef OS_OSX
-	if (action != NULL)
+	if (window == NULL)
 	{
 		quit_all ();
 		return;
 	}
-#endif
 
 	g_return_if_fail (!(gedit_window_get_state (window) &
 	                    (GEDIT_WINDOW_STATE_SAVING |

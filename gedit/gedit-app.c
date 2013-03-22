@@ -375,11 +375,7 @@ quit_activated (GSimpleAction *action,
                 GVariant      *parameter,
                 gpointer       user_data)
 {
-	GApplication *app;
-
-	app = G_APPLICATION (user_data);
-
-	g_application_quit (app);
+	_gedit_cmd_file_quit (NULL, NULL);
 }
 
 static GActionEntry app_entries[] = {
