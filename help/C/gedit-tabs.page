@@ -10,11 +10,15 @@
       <name>Jim Campbell</name>
       <email>jwcampbell@gmail.com</email>
     </credit>
-
     <credit type="collaborator">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
+    <credit type="editor">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
   </info>
 
   <title>Add and remove tabs</title>
@@ -22,7 +26,6 @@
   files in a single window. The tab that is larger than the other tabs indicates
   the file that is currently open. The smaller tabs indicate other files that
   are available to work on.</p>
-  <!--<p>add figure tags also<media type="image" mime="" src=""/></p>-->
 
   <section id="gedit-adding-tabs">
     <title>Adding tabs</title>
@@ -33,7 +36,7 @@
 
   <section id="gedit-removing-tabs">
     <title>Removing tabs</title>
-    <p>To remove a tab, click the <guiseq><gui>X</gui></guiseq> on the tab's
+    <p>To remove a tab, click the <gui style="button">×</gui> on the tab's
     right side. To remove all open tabs, press <keyseq><key>Ctrl</key>
     <key>Shift</key><key>W</key></keyseq>.</p>
   </section>
