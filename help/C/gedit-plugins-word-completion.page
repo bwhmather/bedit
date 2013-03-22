@@ -9,30 +9,44 @@
       <name>Jim Campbell</name>
       <email>jwcampbell@gmail.com</email>
     </credit>
-    
     <credit type="author">
       <name>Paul Weaver</name>
       <email>ch3pjw@bath.ac.uk</email>
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
     </credit>
-
+    <credit type="author">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+    </credit>
     <desc>Autocomplete words or portions of code as you type</desc>
   </info>
 
   <title>Word completion</title>
 
   <p>The <app>Word Completion</app> plugin can speed up your editing by 
-  suggesting completions of words as you type. To enable the plugin, select 
-  <guiseq><gui style="menu">gedit</gui><gui style="menuitem">Preferences</gui>
-  <gui>Plugins</gui><gui>Word Completion</gui></guiseq>.</p>
+  suggesting completions of words as you type. To enable the plugin:</p>
 
-  <p>While editing, the <app>Word Completion</app> plugin will automatically 
-  display a pop-up list of words that begin with the letters you have already 
-  typed. Word suggestions are based upon words that appear elsewhere in your 
-  document and upon pre-defined keywords if your document is of a recognised 
+  <steps>
+    <item>
+      <p>Select <guiseq><gui style="menu">Edit</gui>
+      <gui style="menuitem">Preferences</gui>
+      <gui style="tab">Plugins</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Select <gui style="menuitem">Word Completion</gui> to enable the
+      plugin.</p>
+    </item>
+  </steps>
+
+  <p>While editing, the <app>Word Completion</app> plugin will automatically
+  display a pop-up list of words that begin with the letters you have already
+  typed. Word suggestions are based upon words that appear elsewhere in your
+  document and upon pre-defined keywords if your document is of a recognised
   format.</p>
 
-  <p>To insert a suggested word, double-click on it in the pop-up list or 
-  press <keyseq><key>Alt</key><key>Num</key></keyseq>, where <key>Num</key> 
-  is the number displayed next to your desired word.</p>
-  
+  <p>To insert a suggested word, double-click on it in the pop-up list or press
+  <keyseq><key>Alt</key><key>Num</key></keyseq>, where <key>Num</key> is the
+  number displayed next to your desired word.</p>
+
 </page>

@@ -10,22 +10,50 @@
       <name>Jim Campbell</name>
       <email>jwcampbell@gmail.com</email>
     </credit>
+    <credit type="author">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
     <desc>Add a terminal console to the bottom pane</desc>
   </info>
 
   <title>Embedded terminal</title>
 
   <p><app>gedit</app> makes it possible to include an embedded version of
-  <app>Gnome Terminal</app>, the GNOME command-line application, in the bottom
-  pane of the <app>gedit</app> window.  This will let you run scripts, install
+  <app>GNOME Terminal</app>, the GNOME command-line application, in the bottom
+  pane of the <app>gedit</app> window. This will let you run scripts, install
   needed software, or test your program without leaving <app>gedit</app>.</p>
 
-  <p>To enable this plugin, select <guiseq><gui style="menu">gedit</gui>
-  <gui style="menuitem">Preferences</gui><gui>Plugins</gui>
-  <gui>Embedded Terminal</gui></guiseq>.</p>
+  <section id="enable-embedded-terminal">
+    <title>Enable Embedded Terminal</title>
 
-  <p>Once you have enabled the plugin, add the terminal to the bottom pane by
-  selecting <guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just
-  press <keyseq><key>Ctrl</key><key>F9</key></keyseq>.</p>
+    <p>To enable the Embedded Terminal plugin:</p>
 
+    <steps>
+      <item>
+        <p>Select <guiseq><gui style="menu">gedit</gui>
+        <gui style="menuitem">Preferences</gui>
+        <gui style="tab">Plugins</gui></guiseq>.</p>
+      </item>
+      <item>
+        <p>Select <gui>Embedded Terminal</gui> to enable the plugin.</p>
+      </item>
+    </steps>
+  </section>
+
+  <section id="using-embedded-terminal">
+    <title>Using Embedded Terminal</title>
+
+    <p>Once you have enabled the plugin, to add a terminal to the bottom
+    pane:</p>
+
+    <steps>
+      <item>
+        <p>Select <guiseq><gui style="menu">View</gui>
+        <gui style="menuitem">Bottom Pane</gui></guiseq>. Alternatively, you
+        can press <keyseq><key>Ctrl</key><key>F9</key></keyseq>.</p>
+      </item>
+    </steps>
+  </section>
 </page>
