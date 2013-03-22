@@ -9,6 +9,11 @@
       <name>Jim Campbell</name>
       <email>jwcampbell@gmail.com</email>
     </credit>
+    <credit type="editor">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
   </info>
 
   <title>Turn on syntax highlighting</title>
@@ -16,15 +21,16 @@
   <section id="gedit-syntax-highlighting-section">
     <title>Syntax Highlighting</title>
     <p><app>gedit</app> provides syntax highlighting for a wide range of markup,
-    programming, and scientific languages.  If <app>gedit</app> recognizes the
+    programming, and scientific languages. If <app>gedit</app> recognizes the
     syntax being used when you open a file, it will automatically highlight the
     text.</p>
 
     <p>If your syntax or language is not highlighted upon startup, you can
     select the appropriate syntax or language by clicking
-    <guiseq><gui>View</gui><gui>Highlight Mode</gui></guiseq>, and then
-    choosing the desired syntax. Alternately, you can select the syntax name
-    from a list at the bottom of the <app>gedit</app> window.</p>
+    <guiseq><gui style="menu">View</gui>
+    <gui style="menuitem">Highlight Mode</gui></guiseq>,
+    and then choosing the desired syntax. Alternately, you can select the syntax
+    name from a list at the bottom of the <app>gedit</app> window.</p>
   </section>
 
 </page>
