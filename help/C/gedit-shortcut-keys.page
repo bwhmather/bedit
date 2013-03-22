@@ -22,12 +22,17 @@
     <credit type="author">
       <name>Ignacio Casal Quinteiro</name>
     </credit>
+    <credit type="editor">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
+    </credit>
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
   </info>
 
   <title>Shortcut keys</title>
 
-  <p>Use <gui>shortcut keys</gui> to perform common tasks more quickly than 
-  with the mouse and menus. The following tables list all of <app>gedit's</app> 
+  <p>Use <gui>shortcut keys</gui> to perform common tasks more quickly than with
+  the mouse and menus. The following tables list all of <app>gedit's</app>
   shortcut keys.</p>
 
 <!--  
@@ -42,41 +47,44 @@ Please skip this list for now. I'm not sure if it is needed.
     <item><p><link xref="#gedit-tools-shortcuts">gedit tool and plugin shortcuts</link></p></item>
     <item><p><link xref="#gedit-help-shortcuts">User-help shortcuts</link></p></item>
   </list>
-
 -->
-
-
-    <!-- For the sake of appearance, I have not used the <keyseq> feature to 
-    display key sequences in the tables. -->
 
     <table rules="rows" frame="top bottom" ui:expanded="yes">
     <title>Tab-related Shortcut keys</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>  <td><p>Press This</p></td>  
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Switch to the next tab to the left</p></td> <td><p>Ctrl + Alt 
-          + PageUp</p></td>  
+          <td><p>Switch to the next tab to the left</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key>
+          <key>PageUp</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Switch to the next tab to the right</p></td>  <td><p>Ctrl + 
-          Alt + PageDown</p></td>
+          <td><p>Switch to the next tab to the right</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Alt</key>
+          <key>PageDown</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Close tab</p></td>  <td><p>Ctrl + W</p></td>
+          <td><p>Close tab</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Save all tabs</p></td>  <td><p>Ctrl + Shift + L</p></td>
+          <td><p>Save all tabs</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>L</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Close all tabs</p></td>  <td><p>Ctrl + Shift + W</p></td>  
+          <td><p>Close all tabs</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Jump to <var>n</var>th tab</p></td>  <td><p>Alt + <var>n</var>
-          </p></td>
+          <td><p>Jump to <var>n</var>th tab</p></td>
+          <td><p><keyseq><key>Alt</key><var>n</var></keyseq></p></td>
         </tr>
       </tbody>
     </table>
@@ -85,34 +93,44 @@ Please skip this list for now. I'm not sure if it is needed.
     <title>Shortcut keys for working with files</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>  <td><p>Press This</p></td>  
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Create a new document</p></td>  <td><p>Ctrl + N</p></td>  
+          <td><p>Create a new document</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>N</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Open a document</p></td>  <td><p>Ctrl + O</p></td>  
+          <td><p>Open a document</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>O</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Save the current document</p></td>  <td><p>Ctrl + S</p></td>  
+          <td><p>Save the current document</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>S</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Save the current document with a new filename</p></td>  <td><p>
-          Ctrl + Shift + S</p></td>  
+          <td><p>Save the current document with a new filename</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>S</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Print the current document</p></td>  <td><p>Ctrl + P</p></td>  
+          <td><p>Print the current document</p></td>
+          <td><p><keyseq><key>Ctrl </key><key>P</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Print preview</p></td>  <td><p>Ctrl + Shift + P</p></td>  
+          <td><p>Print preview</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>P</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Close the current document</p></td>  <td><p>Ctrl + W</p></td>  
+          <td><p>Close the current document</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>W</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Quit gedit</p></td>  <td><p>Ctrl + Q</p></td>  
+          <td><p>Quit gedit</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Q</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
@@ -121,42 +139,48 @@ Please skip this list for now. I'm not sure if it is needed.
     <title>Shortcut keys for editing files</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>  <td><p>Press This</p></td>  
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Undo the last action</p></td>  <td><p>Ctrl + Z</p></td>  
+          <td><p>Undo the last action</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Z</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Redo the last undone action</p></td>  <td><p>Ctrl + Shift + Z
-          </p></td>  
+          <td><p>Redo the last undone action</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>Z</key></keyseq></p></td>
         </tr>
         <tr>
           <td><p>Cut the selected text or region and place it on the clipboard
-          </p></td>  <td><p>Ctrl + X</p></td>  
+          </p></td>
+          <td><p><keyseq><key>Ctrl</key><key>X</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Copy the selected text or region onto the clipboard</p></td>  
-          <td><p>Ctrl + C</p></td>  
+          <td><p>Copy the selected text or region onto the clipboard</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>C</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Paste the contents of the clipboard</p></td>  <td><p>Ctrl + V
-          </p></td>  
+          <td><p>Paste the contents of the clipboard</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>V</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Select all text in the file</p></td>  <td><p>Ctrl + A</p></td>  
+          <td><p>Select all text in the file</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>A</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Delete the current line</p></td>  <td><p>Ctrl + D</p></td>  
+          <td><p>Delete the current line</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>D</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move the selected line up one line</p></td>  <td><p>Alt + Up 
-          Arrow</p></td>  
+          <td><p>Move the selected line up one line</p></td>
+          <td><p><keyseq><key>Alt</key><key>Up Arrow</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Move the selected line down one line</p></td>  <td><p>Alt + 
-          Down Arrow</p></td>  
+          <td><p>Move the selected line down one line</p></td>
+          <td><p><keyseq><key>Alt</key><key>Down Arrow</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
@@ -165,16 +189,19 @@ Please skip this list for now. I'm not sure if it is needed.
     <title>Shortcut keys for showing and hiding panes</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>  <td><p>Press This</p></td>  
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Show / hide the side pane</p></td>  <td><p>F9</p></td>  
+          <td><p>Show / hide the side pane</p></td>
+          <td><p><key>F9</key></p></td>  
         </tr>
         <tr>
-          <td><p>Show / hide the bottom pane.</p></td>  <td><p>Ctrl + F9</p>
-          </td>  
+          <td><p>Show / hide the bottom pane.</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>F9</key></keyseq></p>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -183,29 +210,35 @@ Please skip this list for now. I'm not sure if it is needed.
     <title>Shortcut keys for searching</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>  <td><p>Press This</p></td>  
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Find a string</p></td>  <td><p>Ctrl + F</p></td>  
+          <td><p>Find a string</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>F</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Find the next instance of the string</p></td>  <td><p>Ctrl + G
-          </p></td>  
+          <td><p>Find the next instance of the string</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Find the previous instance of the string</p></td>  <td><p>Ctrl 
-          + Shift + G</p></td>  
+          <td><p>Find the previous instance of the string</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Search and Replace</p></td>  <td><p>Ctrl + H</p></td>  
+          <td><p>Search and Replace</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>H</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Clear highlight</p></td>  <td><p>Ctrl + Shift + K</p></td>  
+          <td><p>Clear highlight</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>K</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Goto line</p></td>  <td><p>Ctrl + I</p></td>  
+          <td><p>Goto line</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>I</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
@@ -214,24 +247,27 @@ Please skip this list for now. I'm not sure if it is needed.
     <title>Shortcut keys for tools</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>  <td><p>Press This</p></td>  
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Check spelling</p></td>  <td><p>Shift + F7</p></td>  
+          <td><p>Check spelling</p></td>
+          <td><p><keyseq><key>Shift</key><key>F7</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Remove trailing spaces (with plugin)</p></td>  <td><p>Alt + F12
-          </p></td>  
+          <td><p>Remove trailing spaces (with plugin)</p></td>
+          <td><p><keyseq><key>Alt</key><key>F12</key></keyseq></p></td>
         </tr>
         <tr>
-          <td><p>Run "make" in the current directory (with plugin)</p></td>  
-          <td><p>F8</p></td>  
+          <td><p>Run "make" in the current directory (with plugin)</p></td>
+          <td><p><key>F8</key></p></td>
         </tr>
         <tr>
-          <td><p>Directory listing (with plugin)</p></td>  <td><p>Ctrl + Shift 
-          + D</p></td>  
+          <td><p>Directory listing (with plugin)</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Shift</key>
+          <key>D</key></keyseq></p></td>
         </tr>
       </tbody>
     </table>
@@ -240,12 +276,14 @@ Please skip this list for now. I'm not sure if it is needed.
     <title>Shortcut keys for user help</title>
       <thead>
         <tr>
-          <td><p>To Do This</p></td>  <td><p>Press This</p></td>  
+          <td><p>To Do This</p></td>
+          <td><p>Press This</p></td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><p>Open the gedit user guide</p></td>  <td><p>F1</p></td>  
+          <td><p>Open the gedit user guide</p></td>
+          <td><p><key>F1</key></p></td>
         </tr>
       </tbody>
     </table>
