@@ -45,7 +45,6 @@ HELP_FILES = \
 	gedit-plugins-pyconsole.page \
 	gedit-plugins-quick-open.page \
 	gedit-plugins-session-saver.page \
-	gedit-plugins-snippets-guide.page \
 	gedit-plugins-snippets.page \
 	gedit-plugins-sort.page \
 	gedit-plugins-tag-list.page \
