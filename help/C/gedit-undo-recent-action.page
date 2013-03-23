@@ -9,28 +9,33 @@
       <name>Jim Campbell</name>
       <email>jwcampbell@gmail.com</email>
     </credit>
-
     <credit type="author">
       <name>Daniel Neel</name>
       <email>dneelyep@gmail.com</email>
     </credit>
-    <credit type="author">
-      <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+    <credit type="editor">
+      <name>Sindhu S</name>
+      <email>sindhus@live.in</email>
     </credit>
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
   </info>
 
   <title>Undo a recent action</title>
 
-  <p>If you make a mistake while using <app>gedit</app>, you can undo it by 
-  pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking 
-  <guiseq><gui style="menu">gedit</gui><gui>Undo</gui></guiseq>. Doing so will cause 
+  <p>If you make a mistake while using <app>gedit</app>, you can undo it by
+  pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking
+  <guiseq><gui style="menu">gedit</gui>
+  <gui style="menuitem">Undo</gui></guiseq>. Doing so will cause
   <app>gedit</app> to undo one set of similar actions.</p>
   
-  <note><p>Undoing a "set of similar actions" means, for example, that 
-  <app>gedit</app> will remove an entire word rather than removing each 
-  character in the word one at a time. This makes <app>gedit</app>'s <em>undo
-  </em> feature more efficient.</p></note>
+  <note>
+    <p>Undoing a "set of similar actions" means, for example, that
+    <app>gedit</app> will remove an entire word rather than removing each
+    character in the word one at a time. This makes <app>gedit</app>'s
+    <em>undo</em> feature more efficient.</p>
+  </note>
   
-  <note><p>You cannot undo a change after you have saved it.</p></note>
+  <note style="important">
+    <p>You cannot undo a change after you have saved it.</p>
+  </note>
 </page>
