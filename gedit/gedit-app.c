@@ -1537,16 +1537,22 @@ _gedit_app_has_app_menu (GeditApp *app)
 {
 	GtkSettings *gtk_settings;
 	gboolean show_app_menu;
+	gboolean show_menubar;
 
 	g_return_val_if_fail (GEDIT_IS_APP (app), FALSE);
 
+	/* We have three cases:
+	 * - GNOME 3: show-app-menu true, show-menubar false -> use the app menu
+	 * - Unity, OSX: show-app-menu and show-menubar true -> use the normal menu
+	 * - Other WM, Windows: show-app-menu and show-menubar false -> use the normal menu
+	 */
 	gtk_settings = gtk_settings_get_default ();
 	g_object_get (G_OBJECT (gtk_settings),
-	              "gtk-shell-shows-app-menu",
-	              &show_app_menu,
+	              "gtk-shell-shows-app-menu", &show_app_menu,
+	              "gtk-shell-shows-menubar", &show_menubar,
 	              NULL);
 
-	return show_app_menu;
+	return show_app_menu && !show_menubar;
 }
 
 /* ex:set ts=8 noet: */
