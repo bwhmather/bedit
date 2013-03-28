@@ -181,8 +181,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         self._popup.show()
 
     def on_popup_destroy(self, popup, user_data=None):
-        alloc = popup.get_allocation()
-        self.set_popup_size((alloc.width, alloc.height))
+        self.set_popup_size(popup.get_final_size())
 
         self._popup = None
 

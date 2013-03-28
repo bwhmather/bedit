@@ -39,6 +39,7 @@ class Popup(Gtk.Dialog):
         self._handler = handler
         self._build_ui()
 
+        self._size = (0, 0)
         self._dirs = []
         self._cache = {}
         self._theme = None
@@ -60,6 +61,9 @@ class Popup(Gtk.Dialog):
                 unique.append(path.get_uri())
 
         self.connect('show', self.on_show)
+
+    def get_final_size(self):
+        return self._size
 
     def _build_ui(self):
         self.set_border_width(5)
@@ -529,6 +533,13 @@ class Popup(Gtk.Dialog):
     def do_response(self, response):
         if response != Gtk.ResponseType.ACCEPT or not self._activate():
             self.destroy()
+
+    def do_configure_event(self, event):
+        if self.get_realized():
+            alloc = self.get_allocation()
+            self._size = (alloc.width, alloc.height)
+
+        return Gtk.Dialog.do_configure_event(self, event)
 
     def on_selection_changed(self, selection):
         model, rows = selection.get_selected_rows()
