@@ -380,7 +380,7 @@ class Popup(Gtk.Dialog):
             model, rows = selection.get_selected_rows()
             start = rows[0]
 
-            self._shift_start = Gtk.TreeRowReference(self._store, start)
+            self._shift_start = Gtk.TreeRowReference.new(self._store, start)
         else:
             start = self._shift_start.get_path()
 
