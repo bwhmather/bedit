@@ -9,15 +9,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2013-03-23 22:19+0000\n"
-"PO-Revision-Date: 2013-03-25 17:44+0100\n"
+"POT-Creation-Date: 2013-03-28 00:10+0000\n"
+"PO-Revision-Date: 2013-03-28 18:30+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español <gnome-es-list@gnome.org>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 2.91.5\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -1362,7 +1362,8 @@ msgstr ""
 
 #: C/gedit-plugins-commander.page:28(note/p)
 msgid "The last key in the above key combination is a period."
-msgstr "La última tecla de la combinación de teclas indicada es un punto («.»)."
+msgstr ""
+"La última tecla de la combinación de teclas indicada es un punto («.»)."
 
 #: C/gedit-plugins-commander.page:34(td/p) C/gedit-shortcut-keys.page:56(td/p)
 #: C/gedit-shortcut-keys.page:97(td/p) C/gedit-shortcut-keys.page:143(td/p)
@@ -1702,7 +1703,8 @@ msgid ""
 msgstr ""
 "Este complemento es para usuarios avanzados y para usarlo correctamente "
 "requiere conocimientos de «script». Use este complemento con cuidado, ya que "
-"errores con sus «script» pueden afectar a su trabajo de forma no intencionada."
+"errores con sus «script» pueden afectar a su trabajo de forma no "
+"intencionada."
 
 #: C/gedit-plugins-file-browser.page:16(info/desc)
 msgid "Use the side pane to browse and open files"
@@ -2472,7 +2474,6 @@ msgstr ""
 "fácil y rápido."
 
 #: C/gedit-plugins-snippets.page:29(section/title)
-#| msgid "Enabling the Plugin"
 msgid "Enable Snippets Plugin"
 msgstr "Activar el complemento de recortes"
 
@@ -2486,9 +2487,6 @@ msgstr "Para activar el complemento <gui>Recortes</gui>:"
 #: C/gedit-plugins-terminal.page:35(item/p)
 #: C/gedit-plugins-text-size.page:32(item/p)
 #: C/gedit-spellcheck.page:35(item/p)
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
 "\">Preferences</gui> <gui style=\"tab\">Plugins</gui></guiseq>."
@@ -2503,7 +2501,6 @@ msgstr ""
 "complemento."
 
 #: C/gedit-plugins-snippets.page:47(section/title)
-#| msgid "Snippets"
 msgid "Browse Snippets"
 msgstr "Examinar los recortes"
 
@@ -2512,9 +2509,6 @@ msgid "To browse available snippets:"
 msgstr "Para examinar los recortes disponibles:"
 
 #: C/gedit-plugins-snippets.page:52(item/p)
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem"
 "\">Manage Snippets</gui></guiseq>."
@@ -2523,7 +2517,6 @@ msgstr ""
 "\"menuitem\">Gestionar recortes</gui></guiseq>."
 
 #: C/gedit-plugins-snippets.page:55(note/p)
-#, fuzzy
 #| msgid ""
 #| "The status bar at the bottom of the <app>gedit</app> window will show the "
 #| "current language setting. This language setting is what allows gedit to "
@@ -2537,11 +2530,12 @@ msgid ""
 "<app>Gedit</app> will normally detect the language or syntax of the file "
 "that you're using, but sometimes you may need to set it."
 msgstr ""
-"La barra de estado en la parte inferior de la ventana de <app>gedit</app> "
-"mostrará la configuración del lenguaje actual, que es lo que permite a Gedit "
-"insertar los recortes adecuados. Normalmente, <app>Gedit</app> detectará el "
-"lenguaje o la sintaxis del archivo que está usando, pero es posible que "
-"algunas veces deba establecerlo."
+"Asegúrese de que la sintaxis está configurada correctamente. La barra de "
+"estado en la parte inferior de la ventana de <app>gedit</app> mostrará la "
+"configuración del lenguaje actual, que es lo que permite a gedit insertar "
+"los recortes adecuados. Normalmente, <app>Gedit</app> detectará el lenguaje "
+"o la sintaxis del archivo que está usando, pero es posible que algunas veces "
+"deba establecerlo."
 
 #: C/gedit-plugins-snippets.page:62(figure/desc)
 msgid "In this example, the language is set to HTML."
@@ -2552,12 +2546,10 @@ msgid "Browse the snippets that are available for your language or syntax."
 msgstr ""
 
 #: C/gedit-plugins-snippets.page:76(section/title)
-#| msgid "Using snippets"
 msgid "Using Snippets"
 msgstr "Usar los recortes"
 
 #: C/gedit-plugins-snippets.page:78(section/p)
-#| msgid "Number of lines in the current document."
 msgid "To insert a snippet into your current document:"
 msgstr "Para insertar un recorte en su documento actual:"
 
@@ -2573,10 +2565,9 @@ msgstr ""
 
 #: C/gedit-plugins-snippets.page:92(section/title)
 msgid "Snippet Example Usage"
-msgstr ""
+msgstr "Ejemplo de uso de Recortes"
 
 #: C/gedit-plugins-snippets.page:94(section/p)
-#, fuzzy
 #| msgid ""
 #| "For example, if you set the syntax to <em>HTML</em>, type <code>head </"
 #| "code>, and press the <key>Tab</key> key, you should see something like "
@@ -2587,19 +2578,11 @@ msgid ""
 "into a snippet as:"
 msgstr ""
 "Por ejemplo, si establece que la sintaxis es <em>HTML</em>, escriba "
-"<code>head</code>, y pulse la tecla <key>Tab</key>. Debería ver algo como "
-"esto:"
+"<code>head</code>, y pulse la tecla <key>Tab</key>. El texto se debería "
+"autocompletar con este recorte:"
 
 #: C/gedit-plugins-snippets.page:98(section/code)
 #, no-wrap
-#| msgid ""
-#| "\n"
-#| "        &lt;head&gt;\n"
-#| "          &lt;meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" /&gt;\n"
-#| "          &lt;title&gt;Page Title&lt;/title&gt;\n"
-#| "          \n"
-#| "        &lt;/head&gt;\n"
-#| "        "
 msgid ""
 "\n"
 "      &lt;head&gt;\n"
@@ -2616,7 +2599,6 @@ msgstr ""
 "    "
 
 #: C/gedit-plugins-snippets.page:108(section/title)
-#| msgid "gedit Snippets"
 msgid "Adding Snippets"
 msgstr "Añadir recortes"
 
@@ -2628,14 +2610,14 @@ msgstr ""
 
 #: C/gedit-plugins-snippets.page:115(item/p)
 #| msgid ""
-#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+#| "Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem"
+#| "\">Manage Snippets</gui></guiseq>."
 msgid ""
-"Select <guiseq><gui style=\"menu\"/> <gui style=\"menuitem\">Manage "
-"Snippets</gui>.</guiseq>."
+"Select <guiseq style=\"menu\"><gui style=\"menuitem\">Tools</gui> <gui style="
+"\"menuitem\">Manage Snippets</gui></guiseq>."
 msgstr ""
-"Seleccione <guiseq><gui style=\"menu\"/> <gui style=\"menuitem\">Gestionar "
-"recortes</gui>.</guiseq>."
+"Seleccione <guiseq style=\"menu\"><gui style=\"menuitem\">Herramientas</gui> "
+"<gui style=\"menuitem\">Gestionar recortes</gui></guiseq>."
 
 #: C/gedit-plugins-snippets.page:119(item/p)
 msgid ""
@@ -2689,7 +2671,7 @@ msgstr ""
 
 #: C/gedit-plugins-snippets.page:158(section/title)
 msgid "New Snippet Example"
-msgstr ""
+msgstr "Ejemplo de recorte nuevo"
 
 #: C/gedit-plugins-snippets.page:160(section/p)
 msgid ""
@@ -2759,7 +2741,6 @@ msgstr ""
 "seleccionando <guiseq><gui>Archivo</gui><gui>Revertir</gui></guiseq>."
 
 #: C/gedit-plugins-sort.page:38(section/title)
-#| msgid "Sort Plugin"
 msgid "Enable Sort Plugin"
 msgstr "Activar el complemento Ordenar"
 
@@ -2773,7 +2754,6 @@ msgstr ""
 "Seleccione <gui style=\"menuitem\">Ordenar</gui> para activar el complemento."
 
 #: C/gedit-plugins-sort.page:56(section/title)
-#| msgid "Sort Plugin"
 msgid "Using Sort Plugin"
 msgstr "Usar el complemento Ordenar"
 
@@ -2786,9 +2766,6 @@ msgid "Drag and highlight the desired lines of text."
 msgstr "Arrastre y resalte las línea de texto que quiere."
 
 #: C/gedit-plugins-sort.page:65(item/p)
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">gedit</gui><gui>Change Case</gui></"
-#| "guiseq>"
 msgid ""
 "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem\">Sort</"
 "gui></guiseq>."
@@ -2857,11 +2834,6 @@ msgid "Tag list"
 msgstr "Lista de etiquetas"
 
 #: C/gedit-plugins-tag-list.page:28(page/p)
-#| msgid ""
-#| "The <app>Tag List</app> plugin allows you to insert common tags and "
-#| "special characters from a list in the side pane. By default, the plugin "
-#| "can insert tags and special characters for HTML, XHTML, XSLT, XUL and "
-#| "LaTeX."
 msgid ""
 "The <app>Tag List</app> plugin allows you to insert common tags and special "
 "characters from a list in the side pane. By default, the plugin can insert "
@@ -2874,12 +2846,10 @@ msgstr ""
 "especiales para HTML, XHTML, XSLT, XUL y LaTeX."
 
 #: C/gedit-plugins-tag-list.page:34(section/title)
-#| msgid "Enabling the Plugin"
 msgid "Enable Tag List Plugin"
 msgstr "Activar el complemento Lista de etiquetas"
 
 #: C/gedit-plugins-tag-list.page:36(section/p)
-#| msgid "Using the Tag List plugin"
 msgid "To enable the <app>Tag List</app> plugin:"
 msgstr "Para activar el complemento de <app>Lista de etiquetas</app>:"
 
@@ -2890,7 +2860,6 @@ msgstr ""
 "complemento."
 
 #: C/gedit-plugins-tag-list.page:49(item/p)
-#, fuzzy
 #| msgid ""
 #| "Open the side panel by selecting <guiseq><gui>View</gui> <gui>Side Panel</"
 #| "gui></guiseq>, or by pressing <key>F9</key>."
@@ -2898,11 +2867,11 @@ msgid ""
 "Access the tag list by selecting <guiseq><gui style=\"menu\">View</gui> <gui "
 "style=\"menuitem\">Side Pane</gui></guiseq>, or by pressing <key>F9</key>."
 msgstr ""
-"Abra el panel lateral seleccionando <guiseq><gui>Ver</gui><gui>Panel "
-"lateral</gui></guiseq>, o pulsando <key>F9</key>."
+"Acceda a la lista de tareas seleccionando <guiseq><gui style=\"menu\">Ver</"
+"gui> <gui style=\"menuitem\">Panel lateral</gui></guiseq>, o pulsando "
+"<key>F9</key>."
 
 #: C/gedit-plugins-tag-list.page:56(section/p)
-#, fuzzy
 #| msgid ""
 #| "The side pane initially shows a list of open documents, so to view and "
 #| "use the <app>tag list</app>, you will need to click on the tab showing "
@@ -2914,10 +2883,10 @@ msgid ""
 "\"plus\" icon at the bottom of the side pane. The icon will look similar to "
 "this:"
 msgstr ""
-"El panel lateral muestra inicialmente una lista de documentos abiertos, por "
+"El panel lateral mostrará inicialmente una lista de documentos abiertos, por "
 "lo que para ver y usar la <app>Lista de etiquetas</app>, deberá pulsar en la "
-"pestaña que muestra el icono «más» en la parte inferior del panel lateral. El "
-"icono se parece a esto:"
+"pestaña que muestra el icono «más» en la parte inferior del panel lateral. "
+"El icono se parece a esto:"
 
 #: C/gedit-plugins-tag-list.page:67(section/title)
 msgid "Inserting Tags and Special Characters"
@@ -2982,7 +2951,6 @@ msgstr ""
 "<keyseq><key>Mayús</key><key>Intro</key></keyseq>."
 
 #: C/gedit-plugins-tag-list.page:101(note/p)
-#, fuzzy
 #| msgid ""
 #| "Pressing the <key>Return</key> key will insert the tag at the cursor "
 #| "position, and then return focus to the document. Pressing "
@@ -3018,12 +2986,6 @@ msgid "Embedded terminal"
 msgstr "Terminal empotrada"
 
 #: C/gedit-plugins-terminal.page:23(page/p)
-#| msgid ""
-#| "<app>gedit</app> makes it possible to include an embedded version of "
-#| "<app>Gnome Terminal</app>, the GNOME command-line application, in the "
-#| "bottom pane of the <app>gedit</app> window. This will let you run "
-#| "scripts, install needed software, or test your program without leaving "
-#| "<app>gedit</app>."
 msgid ""
 "<app>gedit</app> makes it possible to include an embedded version of "
 "<app>GNOME Terminal</app>, the GNOME command-line application, in the bottom "
@@ -3037,7 +2999,6 @@ msgstr ""
 "de <app>gedit</app>."
 
 #: C/gedit-plugins-terminal.page:29(section/title)
-#| msgid "Embedded terminal"
 msgid "Enable Embedded Terminal"
 msgstr "Activar la terminal empotrada"
 
@@ -3052,23 +3013,15 @@ msgstr ""
 "complemento."
 
 #: C/gedit-plugins-terminal.page:46(section/title)
-#| msgid "Embedded terminal"
 msgid "Using Embedded Terminal"
 msgstr "Usar la terminal empotrada"
 
 #: C/gedit-plugins-terminal.page:48(section/p)
-#| msgid ""
-#| "Once you have enabled the plugin, do any of the following to change the "
-#| "text size in <app>gedit</app>:"
 msgid "Once you have enabled the plugin, to add a terminal to the bottom pane:"
 msgstr ""
 "Una vez activado el complemento, para añadir una terminal al panel inferior:"
 
 #: C/gedit-plugins-terminal.page:53(item/p)
-#| msgid ""
-#| "To add a comment, click <guiseq><gui style=\"menu\">gedit</gui> "
-#| "<gui>Comment Code</gui></guiseq>, or press <keyseq><key>Ctrl</key> "
-#| "<key>M</key></keyseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">View</gui> <gui style=\"menuitem\">Bottom "
 "Pane</gui></guiseq>. Alternatively, you can press <keyseq><key>Ctrl</"
@@ -3079,7 +3032,6 @@ msgstr ""
 "<keyseq><key>Ctrl</key><key>F9</key></keyseq>."
 
 #: C/gedit-plugins-text-size.page:17(info/desc)
-#| msgid "Increase or decrease the text size"
 msgid "Increase or decrease text size"
 msgstr "Aumentar o disminuir el tamaño del texto"
 
@@ -3088,7 +3040,6 @@ msgid "Text Size"
 msgstr "Tamaño del texto"
 
 #: C/gedit-plugins-text-size.page:22(page/p)
-#, fuzzy
 #| msgid ""
 #| "The text size plugin allows you to temporarily change the text size in "
 #| "<app>gedit</app> without changing the program's default text size. To "
@@ -3102,12 +3053,9 @@ msgid ""
 msgstr ""
 "El complemento de tamaño del texto le permite cambiar temporalmente el "
 "tamaño del texto en <app>gedit</app> sin cambiar el tamaño del texto "
-"predeterminado del programa. Para activar este complemento, elija "
-"<guiseq><gui style=\"menu\">gedit</gui><gui> Preferencias</"
-"gui><gui>Complementos</gui><gui>Tamaño del texto</gui></guiseq>."
+"predeterminado del programa."
 
 #: C/gedit-plugins-text-size.page:27(section/title)
-#| msgid "Enabling the Plugin"
 msgid "Enable Text Size Plugin"
 msgstr "Activar el complemento Tamaño del texto"
 
@@ -3122,7 +3070,6 @@ msgstr ""
 "complemento."
 
 #: C/gedit-plugins-text-size.page:44(section/title)
-#| msgid "User Name Plugin"
 msgid "Use Text Size Plugin"
 msgstr "Usar el complemento Tamaño del texto"
 
@@ -3135,9 +3082,6 @@ msgstr ""
 "cambiar el texto en <app>gedit</app>:"
 
 #: C/gedit-plugins-text-size.page:50(item/p)
-#| msgid ""
-#| "To <em>increase</em> the text size, press <keyseq><key>Ctrl</key> <key>+</"
-#| "key></keyseq>."
 msgid ""
 "To <em>increase</em> the text size, press <keyseq><key>Ctrl</key><key>+</"
 "key></keyseq>."
@@ -3146,9 +3090,6 @@ msgstr ""
 "<key>+</key></keyseq>."
 
 #: C/gedit-plugins-text-size.page:54(item/p)
-#| msgid ""
-#| "To <em>decrease</em> the text size, press <keyseq><key>Ctrl</key> <key>-</"
-#| "key></keyseq>."
 msgid ""
 "To <em>decrease</em> the text size, press <keyseq><key>Ctrl</key><key>-</"
 "key></keyseq>."
@@ -3173,12 +3114,6 @@ msgid "Word completion"
 msgstr "Completado de palabras"
 
 #: C/gedit-plugins-word-completion.page:26(page/p)
-#| msgid ""
-#| "The <app>Word Completion</app> plugin can speed up your editing by "
-#| "suggesting completions of words as you type. To enable the plugin, select "
-#| "<guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem"
-#| "\">Preferences</gui> <gui>Plugins</gui><gui>Word Completion</gui></"
-#| "guiseq>."
 msgid ""
 "The <app>Word Completion</app> plugin can speed up your editing by "
 "suggesting completions of words as you type. To enable the plugin:"
@@ -3188,9 +3123,6 @@ msgstr ""
 "complemento:"
 
 #: C/gedit-plugins-word-completion.page:31(item/p)
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">Edit</gui> <gui style=\"menuitem"
 "\">Preferences</gui> <gui style=\"tab\">Plugins</gui></guiseq>."
@@ -3243,7 +3175,6 @@ msgid "Reverse"
 msgstr "Invertir"
 
 #: C/gedit-printing-order.page:25(section/p)
-#, fuzzy
 #| msgid ""
 #| "Printers usually print the first page first, and the last page last, so "
 #| "the pages end up in reverse order when you pick them up."
@@ -3252,12 +3183,10 @@ msgid ""
 "pages end up in reverse order when you pick them up. To reverse the order:"
 msgstr ""
 "Generalmente, las impresoras imprimen primero la primera página, y luego la "
-"última, por lo que las páginas acaban en orden inverso cuando las coge."
+"última, por lo que las páginas acaban en orden inverso cuando las coge. Para "
+"invertir el orden:"
 
 #: C/gedit-printing-order.page:31(item/p)
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui></guiseq>."
@@ -3266,7 +3195,6 @@ msgstr ""
 "\">Imprimir…</gui></guiseq>."
 
 #: C/gedit-printing-order.page:35(item/p)
-#, fuzzy
 #| msgid ""
 #| "In the <gui>General</gui> tab of the Print window under <em>Copies</em> "
 #| "check <gui>Collate</gui>."
@@ -3274,12 +3202,13 @@ msgid ""
 "In the <gui style=\"tab\">General</gui> tab of the Print dialog under <gui "
 "style=\"group\">Copies</gui>, check <gui style=\"checkbox\">Reverse</gui>."
 msgstr ""
-"En la pestaña <gui>General</gui> de la ventana de impresión, en <gui style="
-"\"group\">Copias</gui> seleccione <gui style=\"checkbox\">Intercalar</gui>."
+"En la pestaña <gui style=\"tab\">General</gui> de la ventana de impresión, "
+"en <gui style=\"group\">Copias</gui> seleccione <gui style=\"checkbox"
+"\">Invertir</gui>."
 
 #: C/gedit-printing-order.page:41(section/p)
 msgid "The last page will be printed first, and so on."
-msgstr ""
+msgstr "La última página se imprimirá primero, y así sucesivamente."
 
 #: C/gedit-printing-order.page:45(section/title)
 msgid "Collate"
@@ -3302,7 +3231,6 @@ msgid "To Collate:"
 msgstr "Para intercalar:"
 
 #: C/gedit-printing-order.page:55(item/p)
-#| msgid "Click <guiseq><gui>File</gui><gui>Print</gui></guiseq>"
 msgid ""
 "Click <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui></guiseq>."
@@ -3311,9 +3239,6 @@ msgstr ""
 "\">Imprimir</gui></guiseq>."
 
 #: C/gedit-printing-order.page:59(item/p)
-#| msgid ""
-#| "In the <gui>General</gui> tab of the Print window under <em>Copies</em> "
-#| "check <gui>Collate</gui>."
 msgid ""
 "In the <gui style=\"tab\">General</gui> tab of the Print dialog under <gui "
 "style=\"group\">Copies</gui> check <gui style=\"checkbox\">Collate</gui>."
@@ -3322,7 +3247,6 @@ msgstr ""
 "\"group\">Copies</gui> marque <gui style=\"checkbox\">Intercalar</gui>."
 
 #: C/gedit-printing.page:19(page/title)
-#| msgid "Printing a Document"
 msgid "Printing documents"
 msgstr "Imprimir documentos"
 
@@ -3341,16 +3265,10 @@ msgid "<app>gedit</app> allows you to print both to a file and to paper."
 msgstr ""
 
 #: C/gedit-printing.page:30(section/title)
-#| msgid "Print preview"
 msgid "Print Preview"
 msgstr "Vista previa de impresión"
 
 #: C/gedit-printing.page:32(section/p)
-#| msgid ""
-#| "<app>gedit</app> allows you to both print output to a file, as well as "
-#| "printing output to paper. Prior to printing your document, you can also "
-#| "preview how the printed document will look by using the <gui>Print "
-#| "Preview</gui> feature."
 msgid ""
 "Prior to printing your document, you can preview how the printed document "
 "will look by using <gui>Print Preview</gui>. To preview the document:"
@@ -3360,10 +3278,6 @@ msgstr ""
 "impresión</app>."
 
 #: C/gedit-printing.page:37(item/p)
-#| msgid ""
-#| "To remove a comment, click <guiseq><gui style=\"menu\">gedit</gui> "
-#| "<gui>Uncomment Code</gui></guiseq>, or press <keyseq><key>Shift</key> "
-#| "<key>Ctrl</key><key>M</key></keyseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print "
 "Preview</gui></guiseq>. Alternatively, you can press <keyseq><key>Shift</"
@@ -3382,7 +3296,6 @@ msgid ""
 msgstr ""
 
 #: C/gedit-printing.page:52(section/title)
-#| msgid "Printing to paper"
 msgid "Printing To Paper"
 msgstr "Imprimir en papel"
 
@@ -3393,9 +3306,6 @@ msgid ""
 msgstr ""
 
 #: C/gedit-printing.page:59(item/p)
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui> <gui style=\"tab\">General</gui></guiseq>."
@@ -3425,7 +3335,7 @@ msgstr ""
 
 #: C/gedit-printing.page:83(section/title)
 msgid "Print Multiple Copies And Between Specified Ranges"
-msgstr ""
+msgstr "Imprimir varias copias y entre rangos especificados"
 
 #: C/gedit-printing.page:85(section/p)
 msgid ""
@@ -3434,7 +3344,6 @@ msgid ""
 msgstr ""
 
 #: C/gedit-printing.page:91(section/title)
-#| msgid "Printing to paper"
 msgid "Printing To File"
 msgstr "Imprimir a un archivo"
 
@@ -3445,9 +3354,6 @@ msgid ""
 msgstr ""
 
 #: C/gedit-printing.page:98(item/p)
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui> <gui style=\"menuitem\">Print to File</gui></guiseq>."
@@ -3457,7 +3363,6 @@ msgstr ""
 "guiseq>."
 
 #: C/gedit-printing.page:103(item/p)
-#| msgid "Printing is enabled for the following file formats:"
 msgid ""
 "Printing is enabled for the following file formats, you may select from:"
 msgstr "La impresión está activada para los siguientes formatos de archivo:"
@@ -3475,7 +3380,6 @@ msgid "Scalable Vector Graphic (.svg)"
 msgstr "Gráfico vectorial escalable (.svg)"
 
 #: C/gedit-printing.page:118(item/p)
-#| msgid "To perform the sort operation, click <gui>Sort</gui>."
 msgid "To print the document to file, click <gui style=\"button\">Print</gui>."
 msgstr ""
 "Para imprimir el documento a un archivo, pulse <gui style=\"button"
@@ -3493,9 +3397,6 @@ msgid ""
 msgstr ""
 
 #: C/gedit-printing-select.page:27(item/p)
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print…"
 "</gui></guiseq>."
@@ -3504,9 +3405,6 @@ msgstr ""
 "\">Imprimir…</gui></guiseq>."
 
 #: C/gedit-printing-select.page:31(item/p)
-#| msgid ""
-#| "In the <gui>General</gui> tab in the Print window choose <gui>Pages</gui> "
-#| "from the <gui>Range</gui> section."
 msgid ""
 "In the <gui style=\"tab\">General</gui> tab in the Print dialog choose <gui "
 "style=\"radiobutton\">Pages</gui> from the <gui style=\"group\">Range</gui> "
@@ -3517,7 +3415,6 @@ msgstr ""
 "\"group\">Rango</gui>."
 
 #: C/gedit-printing-select.page:35(item/p)
-#, fuzzy
 #| msgid ""
 #| "Type the numbers of the pages you want to print in the textbox, separated "
 #| "by commas. Use a dash to denote a range of pages."
@@ -3525,7 +3422,7 @@ msgid ""
 "Type the numbers of the pages you want to print in the document, separated "
 "by commas. Use a dash to denote a range of pages."
 msgstr ""
-"Escriba los números de las páginas quiere imprimir en la caja de texto, "
+"Escriba los números de las páginas quiere imprimir en el documento, "
 "separados por comas. Use un guión para indicar un rango de páginas."
 
 #. This is a reference to an external file such as an image or video. When
@@ -3594,9 +3491,6 @@ msgid "Replace text in <app>gedit</app>"
 msgstr "Reemplazar texto en <app>gedit</app>"
 
 #: C/gedit-replace.page:33(item/p)
-#| msgid ""
-#| "Open the Replace tool by clicking <guiseq><gui>Search</gui> <gui>Replace</"
-#| "gui></guiseq> or press <keyseq><key>Ctrl</key> <key>H</key></keyseq>."
 msgid ""
 "Open the Replace tool by clicking <guiseq><gui style=\"menu\">Search</gui> "
 "<gui style=\"menuitem\">Replace</gui></guiseq> or press <keyseq><key>Ctrl</"
@@ -3717,11 +3611,6 @@ msgid "Save a file"
 msgstr "Guardar un archivo"
 
 #: C/gedit-save-file.page:22(page/p)
-#| msgid ""
-#| "To save a file in <app>gedit</app>, click on the disk-drive icon with the "
-#| "word <gui>Save</gui> next to it. You may also select <guiseq><gui>File</"
-#| "gui> <gui>Save</gui></guiseq>, or just press <keyseq><key>Ctrl</key> "
-#| "<key>S</key></keyseq>."
 msgid ""
 "To save a file in <app>gedit</app>, click on the disk-drive icon with the "
 "word <gui style=\"button\">Save</gui> next to it. You may also select "
@@ -3761,11 +3650,6 @@ msgid "Finding text"
 msgstr "Buscar texto"
 
 #: C/gedit-search.page:32(item/p)
-#| msgid ""
-#| "Open the <gui style=\"menu\">search window</gui> by clicking "
-#| "<guiseq><gui>Search</gui><gui>Find</gui> </guiseq> or pressing "
-#| "<keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your cursor "
-#| "to the start of the <gui>search window</gui>."
 msgid ""
 "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
 "\">Search</gui> <gui style=\"menuitem\">Find</gui> </guiseq> or pressing "
@@ -3797,9 +3681,6 @@ msgstr ""
 "los siguientes pasos:"
 
 #: C/gedit-search.page:51(item/p)
-#| msgid ""
-#| "Click on the <gui>up</gui> or <gui>down</gui> facing arrows next to the "
-#| "<gui>search window</gui>"
 msgid ""
 "Click on the <gui style=\"button\">up</gui> or <gui style=\"button\">down</"
 "gui> facing arrows next to the <gui>search window</gui>."
@@ -3808,9 +3689,6 @@ msgstr ""
 "\">abajo</gui> junto a la <gui>ventana de búsqueda</gui>"
 
 #: C/gedit-search.page:56(item/p)
-#| msgid ""
-#| "Press the <key>up arrow</key> or <key>down arrow</key> keys on your "
-#| "keyboard"
 msgid ""
 "Press the <key>up arrow</key> or <key>down arrow</key> keys on your keyboard."
 msgstr ""
@@ -3818,9 +3696,6 @@ msgstr ""
 "teclado."
 
 #: C/gedit-search.page:60(item/p)
-#| msgid ""
-#| "Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq> <key>Ctrl</"
-#| "key><key>Shift</key><key>G</key></keyseq>."
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
 "key><key>Shift</key><key>G</key></keyseq>."
@@ -3833,8 +3708,8 @@ msgid ""
 "Press the <key>Ctrl</key> and use your mouse or touchpad's <key>scroll</key> "
 "feature to move up or down through the text."
 msgstr ""
-"Pulse <key>Ctrl</key> y use el <key>deslizador</key> de su ratón o «touchpad» "
-"para moverse hacia arriba o hacia abajo a través del texto."
+"Pulse <key>Ctrl</key> y use el <key>deslizador</key> de su ratón o "
+"«touchpad» para moverse hacia arriba o hacia abajo a través del texto."
 
 #: C/gedit-search.page:69(page/p)
 msgid ""
@@ -3863,10 +3738,6 @@ msgstr ""
 "de búsqueda."
 
 #: C/gedit-search.page:82(item/p)
-#| msgid ""
-#| "For advanced search options, you can click on the <gui>Magnifying Glass</"
-#| "gui> icon in the search window, or you can right-click on any portion of "
-#| "the search window."
 msgid ""
 "For advanced search options, you can click on the <gui style=\"button"
 "\">Magnifying Glass</gui> icon in the search window, or you can right-click "
@@ -3927,7 +3798,6 @@ msgid "Switch to the next tab to the left"
 msgstr "Cambiar a la siguiente pestaña a la izquierda"
 
 #: C/gedit-shortcut-keys.page:63(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>Re Pag</key></keyseq>"
 
@@ -3936,7 +3806,6 @@ msgid "Switch to the next tab to the right"
 msgstr "Cambiar a la siguiente pestaña a la derecha"
 
 #: C/gedit-shortcut-keys.page:68(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>Av Pag</key></keyseq>"
 
@@ -3945,7 +3814,6 @@ msgid "Close tab"
 msgstr "Cerrar pestaña"
 
 #: C/gedit-shortcut-keys.page:73(td/p) C/gedit-shortcut-keys.page:130(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 
@@ -3954,7 +3822,6 @@ msgid "Save all tabs"
 msgstr "Guardar todas las pestañas."
 
 #: C/gedit-shortcut-keys.page:77(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key> <key>L</key></keyseq>"
 
@@ -3963,7 +3830,6 @@ msgid "Close all tabs"
 msgstr "Cerrar todas las pestañas."
 
 #: C/gedit-shortcut-keys.page:82(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key> <key>W</key></keyseq>"
 
@@ -3972,7 +3838,6 @@ msgid "Jump to <var>n</var>th tab"
 msgstr "Saltar a la <var>n</var>a pestaña."
 
 #: C/gedit-shortcut-keys.page:87(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 
@@ -3985,7 +3850,6 @@ msgid "Create a new document"
 msgstr "Crear un documento nuevo"
 
 #: C/gedit-shortcut-keys.page:104(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 
@@ -3994,7 +3858,6 @@ msgid "Open a document"
 msgstr "Abrir un documento"
 
 #: C/gedit-shortcut-keys.page:108(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 
@@ -4003,7 +3866,6 @@ msgid "Save the current document"
 msgstr "Guardar el documento actual"
 
 #: C/gedit-shortcut-keys.page:112(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 
@@ -4012,7 +3874,6 @@ msgid "Save the current document with a new filename"
 msgstr "Guardar el documento actual con un nombre de archivo nuevo"
 
 #: C/gedit-shortcut-keys.page:116(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key> <key>S</key></keyseq>"
 
@@ -4021,7 +3882,6 @@ msgid "Print the current document"
 msgstr "Imprimir el documento actual"
 
 #: C/gedit-shortcut-keys.page:121(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 
@@ -4030,7 +3890,6 @@ msgid "Print preview"
 msgstr "Vista previa de impresión"
 
 #: C/gedit-shortcut-keys.page:125(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key> <key>P</key></keyseq>"
 
@@ -4043,7 +3902,6 @@ msgid "Quit gedit"
 msgstr "Salir de gedit"
 
 #: C/gedit-shortcut-keys.page:134(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 
@@ -4056,7 +3914,6 @@ msgid "Undo the last action"
 msgstr "Deshacer la última acción"
 
 #: C/gedit-shortcut-keys.page:150(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
@@ -4065,7 +3922,6 @@ msgid "Redo the last undone action"
 msgstr "Rehacer la última acción deshecha"
 
 #: C/gedit-shortcut-keys.page:154(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key> <key>Z</key></keyseq>"
 
@@ -4074,7 +3930,6 @@ msgid "Cut the selected text or region and place it on the clipboard"
 msgstr "Cortar el texto o región seleccionada y ubicarlo en el portapapeles"
 
 #: C/gedit-shortcut-keys.page:160(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 
@@ -4083,7 +3938,6 @@ msgid "Copy the selected text or region onto the clipboard"
 msgstr "Copiar el texto o región seleccionado al portapapeles"
 
 #: C/gedit-shortcut-keys.page:164(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 
@@ -4092,7 +3946,6 @@ msgid "Paste the contents of the clipboard"
 msgstr "Pegar el contenido del portapapeles"
 
 #: C/gedit-shortcut-keys.page:168(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 
@@ -4101,7 +3954,6 @@ msgid "Select all text in the file"
 msgstr "Seleccionar todo el texto en el archivo"
 
 #: C/gedit-shortcut-keys.page:172(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
@@ -4110,7 +3962,6 @@ msgid "Delete the current line"
 msgstr "Eliminar la línea actual"
 
 #: C/gedit-shortcut-keys.page:176(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 
@@ -4119,7 +3970,6 @@ msgid "Move the selected line up one line"
 msgstr "Mover la línea seleccionada una línea arriba"
 
 #: C/gedit-shortcut-keys.page:180(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Flecha arriba</key></keyseq>"
 
@@ -4128,7 +3978,6 @@ msgid "Move the selected line down one line"
 msgstr "Mover la línea seleccionada una línea abajo"
 
 #: C/gedit-shortcut-keys.page:184(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Flecha abajo</key></keyseq>"
 
@@ -4149,7 +3998,6 @@ msgid "Show / hide the bottom pane."
 msgstr "Mostrar/ocultar el panel inferior"
 
 #: C/gedit-shortcut-keys.page:204(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 
@@ -4162,7 +4010,6 @@ msgid "Find a string"
 msgstr "Buscar una cadena"
 
 #: C/gedit-shortcut-keys.page:221(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 
@@ -4171,7 +4018,6 @@ msgid "Find the next instance of the string"
 msgstr "Buscar la siguiente instancia de la cadena"
 
 #: C/gedit-shortcut-keys.page:225(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 
@@ -4180,7 +4026,6 @@ msgid "Find the previous instance of the string"
 msgstr "Buscar la instancia anterior de la cadena"
 
 #: C/gedit-shortcut-keys.page:229(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key><key>G</key></keyseq>"
 
@@ -4189,7 +4034,6 @@ msgid "Search and Replace"
 msgstr "Buscar y reemplazar"
 
 #: C/gedit-shortcut-keys.page:233(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 
@@ -4198,7 +4042,6 @@ msgid "Clear highlight"
 msgstr "Limpiar el resaltado"
 
 #: C/gedit-shortcut-keys.page:237(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key> <key>K</key></keyseq>"
 
@@ -4207,7 +4050,6 @@ msgid "Goto line"
 msgstr "Ir a la línea"
 
 #: C/gedit-shortcut-keys.page:242(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
@@ -4220,7 +4062,6 @@ msgid "Check spelling"
 msgstr "Comprobar ortografía"
 
 #: C/gedit-shortcut-keys.page:258(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Mayús</key><key>F7</key></keyseq>"
 
@@ -4229,7 +4070,6 @@ msgid "Remove trailing spaces (with plugin)"
 msgstr "Eliminar espacios finales (con complemento)"
 
 #: C/gedit-shortcut-keys.page:262(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
@@ -4246,7 +4086,6 @@ msgid "Directory listing (with plugin)"
 msgstr "Listado de carpeta (con complemento)"
 
 #: C/gedit-shortcut-keys.page:270(td/p)
-#| msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key> <key>D</key></keyseq>"
 
@@ -4267,7 +4106,6 @@ msgid "Baptiste Mille-Mathias"
 msgstr "Baptiste Mille-Mathias"
 
 #: C/gedit-spellcheck.page:24(info/desc)
-#| msgid "Enable and use gedit's spell-checking feature"
 msgid "Enable and use spell-checking feature"
 msgstr "Activar y usar la característica de comprobación de ortografía"
 
@@ -4295,12 +4133,9 @@ msgstr ""
 
 #: C/gedit-spellcheck.page:50(section/p)
 msgid "To check for misspelt words in your document:"
-msgstr ""
+msgstr "Para comprobar si hay palabras mal escritas en su documento:"
 
 #: C/gedit-spellcheck.page:54(item/p)
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem\">Check "
 "Spelling</gui></guiseq>."
@@ -4314,10 +4149,14 @@ msgid ""
 "document as you type, select <guiseq><gui style=\"menu\">Tools</gui><gui "
 "style=\"menuitem\">Highlight Misspelled Words</gui></guiseq>."
 msgstr ""
+"Para hacer que <app>gedit</app> resalte automáticamente las palabras mal "
+"escritas en su documento a medida que escribe, seleccione <guiseq><gui style="
+"\"menu\">Herramientas</gui><gui style=\"menuitem\">Resaltar palabras mal "
+"escritas</gui></guiseq>."
 
 #: C/gedit-spellcheck.page:67(section/title)
 msgid "Using spell-check"
-msgstr ""
+msgstr "Usar la corrección ortográfica"
 
 #: C/gedit-spellcheck.page:69(section/p)
 msgid ""
@@ -4332,24 +4171,33 @@ msgid ""
 "<gui style=\"input\">Change to:</gui> allows you to input a word and use "
 "<gui style=\"button\">Check Word</gui> to check the validity of the spelling."
 msgstr ""
+"<gui style=\"input\">Cambiar a:</gui> le permite escribir una palabra y usar "
+"la opción <gui style=\"button\">Comprobar palabra</gui> para verificar su "
+"ortografía."
 
 #: C/gedit-spellcheck.page:81(item/p)
 msgid ""
 "<gui style=\"menu\">Suggestions:</gui> lists the available substitutions for "
 "the word."
 msgstr ""
+"<gui style=\"menu\">Sugerencias:</gui> lista las sustituciones disponibles "
+"para la palabra."
 
 #: C/gedit-spellcheck.page:85(item/p)
 msgid ""
 "<gui style=\"button\">Ignore</gui> allows you to bypass spell check for "
 "<em>a</em> instance of current word."
 msgstr ""
+"<gui style=\"button\">Ignorar todo</gui> le permite omitir la corrección "
+"ortográfica para <em>una</em> instancia de la palabra actual."
 
 #: C/gedit-spellcheck.page:89(item/p)
 msgid ""
 "<gui style=\"button\">Ignore All</gui> allows you to bypass spell check for "
 "<em>all</em> instances of the current word."
 msgstr ""
+"<gui style=\"button\">Ignorar todo</gui> le permite omitir la corrección "
+"ortográfica para <em>todas</em> las instancias de la palabra actual."
 
 #: C/gedit-spellcheck.page:93(item/p)
 msgid ""
@@ -4357,6 +4205,9 @@ msgid ""
 "word with <em>a</em> chosen substitute from the <gui style=\"menuitem"
 "\">Suggestions:</gui> list."
 msgstr ""
+"<gui style=\"button\">Cambiar</gui> sustituye la palabra mal escrita o no "
+"reconocida por <em>una</em> palabra elegida de la lista de <gui style="
+"\"menuitem\">Sugerencias:</gui>."
 
 #: C/gedit-spellcheck.page:98(item/p)
 msgid ""
@@ -4364,6 +4215,9 @@ msgid ""
 "unrecognized words with the chosen substitute from the <gui style=\"menuitem"
 "\">Suggestions:</gui> list."
 msgstr ""
+"<gui style=\"button\">Cambiar todo</gui> sustituye <em>todas</em> las "
+"palabras mal escritas o no reconocidas con la palabra elegida de la lista de "
+"<gui style=\"menuitem\">Sugerencias:</gui>."
 
 #: C/gedit-spellcheck.page:103(item/p)
 msgid ""
@@ -4372,17 +4226,17 @@ msgid ""
 "<gui>User dictionary</gui> will allow <app>gedit</app> to recognize the word "
 "in documents and thus will not be highlighted as a misspelt word."
 msgstr ""
+"<gui style=\"button\">Añadir palabra</gui> le permite añadir la palabra "
+"actual al <gui>Diccionario del usuario</gui> de <app>gedit</app>. Añadir una "
+"palabra personalizada al <gui>Diccionario del usuario</gui> permitirá a "
+"<app>gedit</app> reconocer la palabra en los documentos y, por lo tanto, no "
+"se resaltará como una palabra mal escrita."
 
 #: C/gedit-spellcheck.page:114(section/title)
 msgid "Define the language to use for spell checking"
 msgstr "Definir el idioma que usar para la comprobación de la ortografía"
 
 #: C/gedit-spellcheck.page:115(section/p)
-#| msgid ""
-#| "By default, <app>gedit</app> will use your current language to spell "
-#| "check your document. If you need to use another language, choose "
-#| "<guiseq><gui>Tools</gui><gui>Set Language…</gui></guiseq>, then choose "
-#| "the language you want to use."
 msgid ""
 "By default, <app>gedit</app> will use your current language to spell check "
 "your document. If you need to use another language, choose <guiseq><gui "
@@ -4422,7 +4276,6 @@ msgstr ""
 "sintaxis usada al abrir el archivo, automáticamente resaltará el texto."
 
 #: C/gedit-syntax-highlighting.page:28(section/p)
-#, fuzzy
 #| msgid ""
 #| "If your syntax or language is not highlighted upon startup, you can "
 #| "select the appropriate syntax or language by clicking <guiseq><gui>View</"
@@ -4437,11 +4290,11 @@ msgid ""
 "name from a list at the bottom of the <app>gedit</app> window."
 msgstr ""
 "Si su sintaxis o lenguaje no están resaltados desde el principio, puede "
-"seleccionar la sintaxis o lenguaje apropiado pulsando <guiseq><gui>Ver</"
-"gui><gui>Modo de resaltado</gui></guiseq>, y después seleccionando la "
-"sintaxis que quiere. Alternativamente, puede seleccionar el nombre de la "
-"sintaxis desde una lista en la parte inferior de la ventana de <app>gedit</"
-"app>."
+"seleccionar la sintaxis o lenguaje apropiado pulsando <guiseq><gui style="
+"\"menu\">Ver</gui> <gui style=\"menuitem\">Modo de resaltado</gui></guiseq>, "
+"y después seleccionando la sintaxis que quiere. Alternativamente, puede "
+"seleccionar el nombre de la sintaxis desde una lista en la parte inferior de "
+"la ventana de <app>gedit</app>."
 
 #: C/gedit-tabs-moving.page:23(page/title)
 msgid "Move and re-order tabs"
@@ -4473,7 +4326,6 @@ msgid "Click and hold the mouse button on the tab."
 msgstr "Pulse y mantenga pulsado el botón del ratón en la pestaña."
 
 #: C/gedit-tabs-moving.page:39(item/p)
-#| msgid "Move the tab to the desired position among the other tabs"
 msgid "Move the tab to the desired position among the other tab."
 msgstr "Mueva la pestaña a la posición que quiera entre otras pestañas"
 
@@ -4527,12 +4379,10 @@ msgid "If you want to move a tab from one window to another:"
 msgstr "Si quiere mover una pestaña de una ventana a otra:"
 
 #: C/gedit-tabs-moving.page:86(item/p)
-#| msgid "Drag the tab to the new window"
 msgid "Drag the tab to the new window."
 msgstr "Arrastre la pestaña a la nueva ventana."
 
 #: C/gedit-tabs-moving.page:89(item/p)
-#| msgid "Place it beside other tabs in the new window"
 msgid "Place it beside other tabs in the new window."
 msgstr "Sitúela junto a las otras pestañas, en la ventana nueva."
 
@@ -4591,10 +4441,6 @@ msgid "Removing tabs"
 msgstr "Quitar pestañas"
 
 #: C/gedit-tabs.page:39(section/p)
-#| msgid ""
-#| "To remove a tab, click the <guiseq><gui>X</gui></guiseq> on the tab's "
-#| "right side. To remove all open tabs, press <keyseq><key>Ctrl</key> "
-#| "<key>Shift</key><key>W</key></keyseq>."
 msgid ""
 "To remove a tab, click the <gui style=\"button\">×</gui> on the tab's right "
 "side. To remove all open tabs, press <keyseq><key>Ctrl</key> <key>Shift</"
@@ -4609,11 +4455,6 @@ msgid "Undo a recent action"
 msgstr "Deshacer una acción reciente"
 
 #: C/gedit-undo-recent-action.page:25(page/p)
-#| msgid ""
-#| "If you make a mistake while using <app>gedit</app>, you can undo it by "
-#| "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
-#| "<guiseq><gui style=\"menu\">gedit</gui><gui>Undo</gui></guiseq>. Doing so "
-#| "will cause <app>gedit</app> to undo one set of similar actions."
 msgid ""
 "If you make a mistake while using <app>gedit</app>, you can undo it by "
 "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
@@ -4627,11 +4468,6 @@ msgstr ""
 "app> deshaga un conjunto de acciones similares."
 
 #: C/gedit-undo-recent-action.page:32(note/p)
-#| msgid ""
-#| "Undoing a \"set of similar actions\" means, for example, that <app>gedit</"
-#| "app> will remove an entire word rather than removing each character in "
-#| "the word one at a time. This makes <app>gedit</app>'s <em>undo </em> "
-#| "feature more efficient."
 msgid ""
 "Undoing a \"set of similar actions\" means, for example, that <app>gedit</"
 "app> will remove an entire word rather than removing each character in the "
@@ -4664,11 +4500,6 @@ msgstr ""
 "mismo tiempo que sólo usando pestañas."
 
 #: C/gedit-view-open-files-in-sidepane.page:30(page/p)
-#| msgid ""
-#| "To view a list of open files in a side pane, click <guiseq><gui>View</"
-#| "gui> <gui>Side Pane</gui></guiseq>. A pane will appear to the left of the "
-#| "workspace with a listing of all currently open files. Clicking a file in "
-#| "the side pane will display that file in the workspace."
 msgid ""
 "To view a list of open files in a side pane, click <guiseq><gui style=\"menu"
 "\">View</gui> <gui style=\"menuitem\">Side Pane</gui></guiseq>. A pane will "
@@ -4717,6 +4548,20 @@ msgid ""
 "a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, "
 "California, 94041, USA."
 msgstr ""
+"Este trabajo usa la licencia Creative Commons Compartir-igual de atribución "
+"sin soporte 3.0. Para ver una copia de esta licencia, visite <_:link-1/> o "
+"envíe una carta a Creative Commons, 444 Castro Street, Suite 900, Mountain "
+"View, California, 94041, USA."
+
+#~| msgid ""
+#~| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+#~| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+#~ msgid ""
+#~ "Select <guiseq><gui style=\"menu\"/> <gui style=\"menuitem\">Manage "
+#~ "Snippets</gui>.</guiseq>."
+#~ msgstr ""
+#~ "Seleccione <guiseq><gui style=\"menu\"/> <gui style=\"menuitem"
+#~ "\">Gestionar recortes</gui>.</guiseq>."
 
 #~ msgid ""
 #~ "To enable the <app>Snippets</app> plugin, select <guiseq><gui style=\"menu"
@@ -4858,8 +4703,8 @@ msgstr ""
 #~ "For example, if you enter \"1,3,5-7,9\" in the <gui>Pages</gui> textbox, "
 #~ "pages 1, 3, 5, 6, 7 and 9 will be printed."
 #~ msgstr ""
-#~ "Por ejemplo, si escribe «1,3,5-7,9» en la caja de texto <gui>Páginas</gui>,"
-#~ "se imprimirán las páginas 1,3,5,6,7 y 9."
+#~ "Por ejemplo, si escribe «1,3,5-7,9» en la caja de texto <gui>Páginas</"
+#~ "gui>,se imprimirán las páginas 1,3,5,6,7 y 9."
 
 #~ msgid "Ctrl + Alt + PageUp"
 #~ msgstr "Ctrl + Alt + Re Pág"
@@ -8546,8 +8391,8 @@ msgstr ""
 #~ "pane to show the tag list tab."
 #~ msgstr ""
 #~ "Por omisión, el panel lateral muestra una pestaña conteniendo una lista "
-#~ "de documentos abiertos. Pulse en la pestaña que muestra un icono «+» en la "
-#~ "parte de abajo del panel lateral para mostrar la pestaña de listas de "
+#~ "de documentos abiertos. Pulse en la pestaña que muestra un icono «+» en "
+#~ "la parte de abajo del panel lateral para mostrar la pestaña de listas de "
 #~ "etiquetas."
 
 #~ msgid ""
