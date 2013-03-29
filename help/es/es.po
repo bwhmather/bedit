@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2013-03-28 00:10+0000\n"
-"PO-Revision-Date: 2013-03-28 18:30+0100\n"
+"POT-Creation-Date: 2013-03-28 17:34+0000\n"
+"PO-Revision-Date: 2013-03-29 11:53+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -2517,12 +2517,6 @@ msgstr ""
 "\"menuitem\">Gestionar recortes</gui></guiseq>."
 
 #: C/gedit-plugins-snippets.page:55(note/p)
-#| msgid ""
-#| "The status bar at the bottom of the <app>gedit</app> window will show the "
-#| "current language setting. This language setting is what allows gedit to "
-#| "insert the proper snippets. <app>Gedit</app> will normally detect the "
-#| "language or syntax of the file that you're using, but sometimes you may "
-#| "need to set it."
 msgid ""
 "Make sure the syntax is set appropriately. The status bar at the bottom of "
 "the <app>gedit</app> window will show the current language setting. This "
@@ -2543,7 +2537,7 @@ msgstr "En este ejemplo, el lenguaje establecido es HTML."
 
 #: C/gedit-plugins-snippets.page:69(item/p)
 msgid "Browse the snippets that are available for your language or syntax."
-msgstr ""
+msgstr "Examinar los fragmentos disponibles para su lenguage o sintaxis."
 
 #: C/gedit-plugins-snippets.page:76(section/title)
 msgid "Using Snippets"
@@ -2556,6 +2550,8 @@ msgstr "Para insertar un recorte en su documento actual:"
 #: C/gedit-plugins-snippets.page:82(item/p)
 msgid "Type the desired snippet name anywhere in your current document."
 msgstr ""
+"Escriba el nombre del recorte que quiere en cualquier lugar de su documento "
+"actual."
 
 #: C/gedit-plugins-snippets.page:85(item/p)
 msgid ""
@@ -2568,10 +2564,6 @@ msgid "Snippet Example Usage"
 msgstr "Ejemplo de uso de Recortes"
 
 #: C/gedit-plugins-snippets.page:94(section/p)
-#| msgid ""
-#| "For example, if you set the syntax to <em>HTML</em>, type <code>head </"
-#| "code>, and press the <key>Tab</key> key, you should see something like "
-#| "this:"
 msgid ""
 "For example, if you have set the syntax to <em>HTML</em>, type <code>head </"
 "code>, and press the <key>Tab</key> key. The text would have auto completed "
@@ -2607,11 +2599,10 @@ msgid ""
 "You can add new Snippets that work either globally (that is, they are "
 "language agnostic) or only in a particular syntax."
 msgstr ""
+"Puede añadir recortes nuevos que funcionen globalmente (es decir, para "
+"cualquier lenguaje) o sólo para una sintaxis determinada."
 
 #: C/gedit-plugins-snippets.page:115(item/p)
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem"
-#| "\">Manage Snippets</gui></guiseq>."
 msgid ""
 "Select <guiseq style=\"menu\"><gui style=\"menuitem\">Tools</gui> <gui style="
 "\"menuitem\">Manage Snippets</gui></guiseq>."
@@ -2624,13 +2615,20 @@ msgid ""
 "From the <gui>Manage Snippets</gui> sidebar select the desired syntax and "
 "click on the \"+\" button to list existing snippets for the selected syntax."
 msgstr ""
+"Desde la barra lateral de <gui>Gestionar recortes</gui>, seleccione la "
+"sintaxis que quiere y pulse el icono «+» para listar los recortes existentes "
+"para la sintaxis seleccionada."
 
 #: C/gedit-plugins-snippets.page:123(note/p)
 msgid ""
-"To add a snippet that works gloablly (that is, when no particular syntax or "
+"To add a snippet that works globally (that is, when no particular syntax or "
 "language has been set for the document), select <gui>Global</gui> from the "
 "<gui>Manage Snippets</gui> sidebar."
 msgstr ""
+"Para añadir un recorte que funcione globalmente (es decir, cuando no se ha "
+"establecido una sintaxis o un lenguaje concreto para el documento), "
+"seleccione <gui>Global</gui> en la barra lateral de <gui>Gestionar recortes</"
+"gui>."
 
 #: C/gedit-plugins-snippets.page:129(item/p)
 msgid ""
@@ -2645,6 +2643,8 @@ msgid ""
 "Input a name for the new snippet. The name of the snippet can be different "
 "from the snippet you want to add."
 msgstr ""
+"Introduzca un nombre para el recorte nuevo. El nombre del recorte puede ser "
+"diferente del recorte que quiere añadir."
 
 #: C/gedit-plugins-snippets.page:137(item/p)
 msgid ""
@@ -2652,6 +2652,9 @@ msgid ""
 "term for the <gui style=\"input\">Tab trigger:</gui> textarea. You will be "
 "using this term to insert your snippet."
 msgstr ""
+"En la sección <gui style=\"group\">Activación</gui> debe introducir un "
+"término en el área de texto <gui style=\"input\">Disparador:</gui>. Deberá "
+"usar este término para insertar el recorte."
 
 #: C/gedit-plugins-snippets.page:141(note/p)
 msgid ""
@@ -2660,14 +2663,22 @@ msgid ""
 "the desired combination of keys. Once you have pressed and released the "
 "keys, the keyboard shortcut will be set."
 msgstr ""
+"Si quiere insertar un recorte con un atajo de teclado, pulse con el ratón en "
+"el área de texto <gui style=\"input\">Tecla rápida:</gui> y pulse la "
+"combinación de teclas que quiere. Una vez que haya pulsado y soltado las "
+"teclas, el atajo de teclado quedará configurado."
 
 #: C/gedit-plugins-snippets.page:148(item/p)
 msgid ""
 "Under the textarea for <gui style=\"input\">Edit:</gui>, input the desired "
 "text for the snippet. You may use <code>${n}</code> to indicate variables, "
-"where <em>n</em> is to replaced with a number that represents the numerical "
+"where <em>n</em> is replaced with a number that represents the numerical "
 "order of variables included."
 msgstr ""
+"Introduzca el texto que quiere para el recorte en el área de texto <gui "
+"style=\"input\">Editar:</gui>. Puede usar <code>${n}</code> para indicar "
+"variables, donde <em>n</em> se reemplaza con un número que representa el "
+"orden numérico de las variables incluidas."
 
 #: C/gedit-plugins-snippets.page:158(section/title)
 msgid "New Snippet Example"
@@ -2679,6 +2690,9 @@ msgid ""
 "<gui style=\"input\">Tab trigger:</gui>. The <gui style=\"input\">Edit:</"
 "gui> textarea contains:"
 msgstr ""
+"Considere que ha creado un recorte con el término <var>felicidades</var> en "
+"<gui style=\"input\">Disparador:</gui>. El área de texto <gui style=\"input"
+"\">Editar:</gui> contiene:"
 
 #: C/gedit-plugins-snippets.page:164(section/code)
 #, no-wrap
@@ -2688,6 +2702,10 @@ msgid ""
 "      &lt;/greetings&gt;\n"
 "    "
 msgstr ""
+"\n"
+"      &lt;felicidades&gt;¡Hola ${1:maravilloso}${2:increíble} mundo!\n"
+"      &lt;/felicidades&gt;\n"
+"    "
 
 #: C/gedit-plugins-snippets.page:169(section/p)
 msgid ""
@@ -2695,6 +2713,9 @@ msgid ""
 "and pressing the <key>Tab</key> key. The following text snippet will be "
 "inserted:"
 msgstr ""
+"Puede insertar este fragmento escribiendo <var>felicidades</var> en el "
+"documento y pulsando la tecla <key>Tab</key> key. Se insertará el siguiente "
+"recorte de texto:"
 
 #: C/gedit-plugins-snippets.page:173(section/code)
 #, no-wrap
@@ -2703,6 +2724,9 @@ msgid ""
 "      &lt;greetings&gt;Hello wonderfulamazing world!&lt;/greetings&gt;\n"
 "    "
 msgstr ""
+"\n"
+"      &lt;felicidades&gt;¡Hola maravillosoincreíble mundo!&lt;/felicidades&gt;\n"
+"    "
 
 #: C/gedit-plugins-snippets.page:177(section/p)
 msgid ""
@@ -2711,6 +2735,10 @@ msgid ""
 "\"wonderful\" and \"amazing\" and press <key>Del</key> to delete the least "
 "preferred option."
 msgstr ""
+"Las palabras «maravilloso» e «increíble», se pueden conservar o se pueden "
+"eliminar, dependiendo de lo que elija. Para eliminarlas, pulse <key>Tab</"
+"key> para elegir entre «maravilloso» e «increíble» y pulse <key>Del</key> "
+"para eliminar la opción elegida."
 
 #: C/gedit-plugins-sort.page:21(info/desc)
 msgid "Sort lines of text into alphabetical order"
@@ -2860,9 +2888,6 @@ msgstr ""
 "complemento."
 
 #: C/gedit-plugins-tag-list.page:49(item/p)
-#| msgid ""
-#| "Open the side panel by selecting <guiseq><gui>View</gui> <gui>Side Panel</"
-#| "gui></guiseq>, or by pressing <key>F9</key>."
 msgid ""
 "Access the tag list by selecting <guiseq><gui style=\"menu\">View</gui> <gui "
 "style=\"menuitem\">Side Pane</gui></guiseq>, or by pressing <key>F9</key>."
@@ -2872,11 +2897,6 @@ msgstr ""
 "<key>F9</key>."
 
 #: C/gedit-plugins-tag-list.page:56(section/p)
-#| msgid ""
-#| "The side pane initially shows a list of open documents, so to view and "
-#| "use the <app>tag list</app>, you will need to click on the tab showing "
-#| "the \"plus\" icon at the bottom of the side pane. The icon will look "
-#| "similar to this:"
 msgid ""
 "The side pane will initially show a list of open documents, so to view and "
 "use the <app>Tag List</app>, you will need to click on the tab showing the "
@@ -2951,11 +2971,6 @@ msgstr ""
 "<keyseq><key>Mayús</key><key>Intro</key></keyseq>."
 
 #: C/gedit-plugins-tag-list.page:101(note/p)
-#| msgid ""
-#| "Pressing the <key>Return</key> key will insert the tag at the cursor "
-#| "position, and then return focus to the document. Pressing "
-#| "<keyseq><key>Shift</key><key>Return</key></keyseq> will insert the tag at "
-#| "the cursor position, but will keep the focus on the <app>tag-list</app>."
 msgid ""
 "Pressing the <key>Return</key> key will insert the tag at the cursor "
 "position, and then return focus to the document. Pressing "
@@ -3040,12 +3055,6 @@ msgid "Text Size"
 msgstr "Tamaño del texto"
 
 #: C/gedit-plugins-text-size.page:22(page/p)
-#| msgid ""
-#| "The text size plugin allows you to temporarily change the text size in "
-#| "<app>gedit</app> without changing the program's default text size. To "
-#| "enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
-#| "style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Text Size</"
-#| "gui></guiseq>."
 msgid ""
 "The text size plugin allows you to temporarily change the text size for "
 "better readibility in <app>gedit</app> without changing the program's "
@@ -3175,9 +3184,6 @@ msgid "Reverse"
 msgstr "Invertir"
 
 #: C/gedit-printing-order.page:25(section/p)
-#| msgid ""
-#| "Printers usually print the first page first, and the last page last, so "
-#| "the pages end up in reverse order when you pick them up."
 msgid ""
 "Printers usually print the first page first, and the last page last, so the "
 "pages end up in reverse order when you pick them up. To reverse the order:"
@@ -3195,9 +3201,6 @@ msgstr ""
 "\">Imprimir…</gui></guiseq>."
 
 #: C/gedit-printing-order.page:35(item/p)
-#| msgid ""
-#| "In the <gui>General</gui> tab of the Print window under <em>Copies</em> "
-#| "check <gui>Collate</gui>."
 msgid ""
 "In the <gui style=\"tab\">General</gui> tab of the Print dialog under <gui "
 "style=\"group\">Copies</gui>, check <gui style=\"checkbox\">Reverse</gui>."
@@ -3262,7 +3265,7 @@ msgstr ""
 
 #: C/gedit-printing.page:27(page/p)
 msgid "<app>gedit</app> allows you to print both to a file and to paper."
-msgstr ""
+msgstr "<app>gedit</app> le permite imprimir a un archivo o en papel."
 
 #: C/gedit-printing.page:30(section/title)
 msgid "Print Preview"
@@ -3294,6 +3297,11 @@ msgid ""
 "at the top of the document preview tab. To close and return to the document "
 "click <gui style=\"button\">Close Preview</gui>."
 msgstr ""
+"Se abrirá una vista previa del documento en la misma pestaña del archivo. "
+"Puede examinar esta vista previa con la ayuda de los botones de navegación y "
+"de las herramientas de la barra de herramientas de la parte superior de la "
+"pestaña del documento. Para cerrar la vista previa y volver al documento, "
+"pulse en <gui style=\"button\">Cerrar vista previa</gui>."
 
 #: C/gedit-printing.page:52(section/title)
 msgid "Printing To Paper"
@@ -3304,6 +3312,8 @@ msgid ""
 "You can print your documents to paper using a local or remote printer. To "
 "print a file:"
 msgstr ""
+"Puede imprimir sus documentos en papel usando una impresora local o remota. "
+"Para imprimir un archivo:"
 
 #: C/gedit-printing.page:59(item/p)
 msgid ""
@@ -3316,6 +3326,7 @@ msgstr ""
 #: C/gedit-printing.page:64(item/p)
 msgid "Select desired from printer from the list of printers available."
 msgstr ""
+"Seleccione la impresora que quiere de la lista de impresoras disponibles."
 
 #: C/gedit-printing.page:67(item/p)
 msgid ""
@@ -3323,6 +3334,10 @@ msgid ""
 "once you are satisfied with the settings, click <gui style=\"button\">Print</"
 "gui> to send the file to printer."
 msgstr ""
+"Puede previsualizar el archivo usando el botón de <gui style=\"button"
+"\">Vista previa de impresión</gui> y, una vez que esté satisfecho con la "
+"configuración, pulse <gui style=\"button\">Imprimir</gui> para enviar el "
+"archivo a la impresora."
 
 #: C/gedit-printing.page:73(section/p)
 msgid ""
@@ -3332,6 +3347,12 @@ msgid ""
 "programs, please consult <link href=\"help:gnome-help/printing#paper"
 "\">Layout and Paper options</link> help."
 msgstr ""
+"Adicionalmente, en la pestaña <gui style=\"tab\">Configuración de página</"
+"gui> puede elegir las opciones <gui style=\"group\">Distribución</gui> y "
+"<gui style=\"group\">Papel</gui> options. Dado que estas opciones están "
+"disponibles en todos los programas de <app>GNOME</app>, consulte la ayuda "
+"sobre <link href=\"help:gnome-help/printing#paper\">Opciones de distribución "
+"y de papel</link>."
 
 #: C/gedit-printing.page:83(section/title)
 msgid "Print Multiple Copies And Between Specified Ranges"
@@ -3342,6 +3363,8 @@ msgid ""
 "You can set <gui style=\"group\">Range</gui> and <gui style=\"group"
 "\">Copies</gui> options to help you:"
 msgstr ""
+"Puede establecer las opciones <gui style=\"group\">Rango</gui> y <gui style="
+"\"group\">Copias</gui> para ayduarle:"
 
 #: C/gedit-printing.page:91(section/title)
 msgid "Printing To File"
@@ -3352,6 +3375,8 @@ msgid ""
 "You can also use <app>gedit</app> to print to a file. To print your document "
 "to file of a different format:"
 msgstr ""
+"También puede usar <app>gedit</app> para imprimir a un archivo. Para "
+"imprimir su documento a un archivo con otro formato:"
 
 #: C/gedit-printing.page:98(item/p)
 msgid ""
@@ -3395,6 +3420,9 @@ msgid ""
 "if you want to input page numbers \"1,3,5-7,9\", then only pages 1, 3, 5, 6, "
 "7 and 9 will be printed. To print pages to your choice:"
 msgstr ""
+"Puede imprimir solo ciertas páginas del documento de manera selectiva. Por "
+"ejemplo, si quiere imprimir las páginas «1,3,5-7,9», solo se imprimirán las "
+"páginas 1, 3, 5, 6, 7 y 9. Para imprimir páginas a su elección:"
 
 #: C/gedit-printing-select.page:27(item/p)
 msgid ""
@@ -3415,9 +3443,6 @@ msgstr ""
 "\"group\">Rango</gui>."
 
 #: C/gedit-printing-select.page:35(item/p)
-#| msgid ""
-#| "Type the numbers of the pages you want to print in the textbox, separated "
-#| "by commas. Use a dash to denote a range of pages."
 msgid ""
 "Type the numbers of the pages you want to print in the document, separated "
 "by commas. Use a dash to denote a range of pages."
@@ -4123,6 +4148,8 @@ msgid ""
 "The Spell-check feature is provided as a plugin in <app>gedit</app> which "
 "can be enabled as required. To enable the plugin:"
 msgstr ""
+"La característica de corrección ortográfica es un complemento de <app>gedit</"
+"app> que se puede activar si lo necesita. Para activar el complemento:"
 
 #: C/gedit-spellcheck.page:40(item/p)
 msgid ""
@@ -4165,6 +4192,10 @@ msgid ""
 "displayed in bold style next to <gui>Misspelled word:</gui>. You can choose "
 "from the following corrective actions:"
 msgstr ""
+"Puede elegir sustituir las palabras mal escritas usando el diálogo del "
+"corrector ortográfico. La palabra mal escrita analizada por el corrector se "
+"muestra en negrita junto a <gui>Palabra mal escrita:</gui>. Puede elegir "
+"entre las siguientes opciones del corrector:"
 
 #: C/gedit-spellcheck.page:76(item/p)
 msgid ""
@@ -4276,12 +4307,6 @@ msgstr ""
 "sintaxis usada al abrir el archivo, automáticamente resaltará el texto."
 
 #: C/gedit-syntax-highlighting.page:28(section/p)
-#| msgid ""
-#| "If your syntax or language is not highlighted upon startup, you can "
-#| "select the appropriate syntax or language by clicking <guiseq><gui>View</"
-#| "gui><gui>Highlight Mode</gui></guiseq>, and then choosing the desired "
-#| "syntax. Alternately, you can select the syntax name from a list at the "
-#| "bottom of the <app>gedit</app> window."
 msgid ""
 "If your syntax or language is not highlighted upon startup, you can select "
 "the appropriate syntax or language by clicking <guiseq><gui style=\"menu"
