@@ -25,15 +25,15 @@ class LinkParserTest(unittest.TestCase):
         self.p = LinkParser()
 
     def assert_link_count(self, links, expected_count):
-        self.assertEquals(len(links), expected_count, 'incorrect nr of links')
+        self.assertEqual(len(links), expected_count, 'incorrect nr of links')
 
     def assert_link(self, actual, path, line_nr, col_nr=0):
-        self.assertEquals(actual.path, path, "incorrect path")
-        self.assertEquals(actual.line_nr, line_nr, "incorrect line nr")
-        self.assertEquals(actual.col_nr, col_nr, "incorrect col nr")
+        self.assertEqual(actual.path, path, "incorrect path")
+        self.assertEqual(actual.line_nr, line_nr, "incorrect line nr")
+        self.assertEqual(actual.col_nr, col_nr, "incorrect col nr")
 
     def assert_link_text(self, text, link, link_text):
-        self.assertEquals(text[link.start:link.end], link_text,
+        self.assertEqual(text[link.start:link.end], link_text,
            "the expected link text does not match the text within the string")
 
     def test_parse_gcc_simple_test_with_real_output(self):
