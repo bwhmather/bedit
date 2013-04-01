@@ -248,8 +248,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
             self._manager.tool_changed(tool, True)
 
     def on_manager_destroy(self, dialog):
-        alloc = dialog.get_allocation()
-        self._manager_default_size = [alloc.width, alloc.height]
+        self._manager_default_size = self._manager.get_final_size()
         self._manager = None
 
     def on_manager_tools_updated(self, manager):

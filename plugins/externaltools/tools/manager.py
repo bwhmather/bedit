@@ -286,10 +286,14 @@ class Manager(GObject.Object):
         GObject.Object.__init__(self)
         self.datadir = datadir
         self.dialog = None
+        self._size = (0, 0)
         self._languages = {}
         self._tool_rows = {}
 
         self.build()
+
+    def get_final_size(self):
+        return self._size
 
     def build(self):
         callbacks = {
@@ -297,6 +301,7 @@ class Manager(GObject.Object):
             'on_action_remove_tool_activated' : self.on_action_remove_tool_activated,
             'on_tool_manager_dialog_response' : self.on_tool_manager_dialog_response,
             'on_tool_manager_dialog_focus_out': self.on_tool_manager_dialog_focus_out,
+            'on_tool_manager_dialog_configure_event': self.on_tool_manager_dialog_configure_event,
             'on_accelerator_key_press'        : self.on_accelerator_key_press,
             'on_accelerator_focus_in'         : self.on_accelerator_focus_in,
             'on_accelerator_focus_out'        : self.on_accelerator_focus_out,
@@ -879,6 +884,11 @@ class Manager(GObject.Object):
     def on_tool_manager_dialog_focus_out(self, dialog, event):
         self.save_current_tool()
         self.emit('tools-updated')
+
+    def on_tool_manager_dialog_configure_event(self, dialog, event):
+        if dialog.get_realized():
+            alloc = dialog.get_allocation()
+            self._size = (alloc.width, alloc.height)
 
     def get_cell_data_cb(self, column, cell, model, piter, user_data=None):
         tool = model.get_value(piter, self.TOOL_COLUMN)
