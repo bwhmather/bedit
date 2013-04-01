@@ -60,7 +60,7 @@ class SharedData(object, metaclass=Singleton):
             return None
 
     def manager_destroyed(self, dlg):
-        self.dlg_default_size = [dlg.get_allocation().width, dlg.get_allocation().height]
+        self.dlg_default_size = dlg.get_final_size()
         self.dlg = None
 
     def show_manager(self, window, datadir):

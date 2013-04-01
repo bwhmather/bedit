@@ -46,10 +46,14 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
         def __init__(self):
                 self.snippet = None
                 self._temp_export = None
+                self._size = (0, 0)
 
                 self.key_press_id = 0
                 self.dnd_target_list = Gtk.TargetList.new([])
                 self.dnd_target_list.add(Gdk.atom_intern("text/uri-list", True), 0, self.TARGET_URI)
+
+        def get_final_size(self):
+                return self._size
 
         def get_language_snippets(self, path, name = None):
                 library = Library()
@@ -324,6 +328,13 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
 
                 lst = entry.drag_dest_get_target_list()
                 lst.add_uri_targets(self.TARGET_URI)
+
+        def do_configure_event(self, event):
+                if self.get_realized():
+                        alloc = self.get_allocation()
+                        self._size = (alloc.width, alloc.height)
+
+                return Gtk.Dialog.do_configure_event(self, event)
 
         def __getitem__(self, key):
                 return self.builder.get_object(key)
