@@ -247,12 +247,14 @@ class LanguagesPopup(Gtk.Window):
     def do_button_press_event(self, event):
         if not self.in_window(event):
             self.destroy()
+            return True
         else:
             return self.propagate_mouse_event(event)
 
     def do_button_release_event(self, event):
         if not self.in_window(event):
             self.destroy()
+            return True
         else:
             return self.propagate_mouse_event(event)
 
