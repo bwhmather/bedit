@@ -273,7 +273,7 @@ def capture_end_execute_panel(capture, exit_code, panel, view, output_type):
         end.forward_chars(300)
         uri = ''
 
-        mtype, uncertain = Gio.content_type_guess(None, doc.get_text(start, end, False))
+        mtype, uncertain = Gio.content_type_guess(None, doc.get_text(start, end, False).encode('utf-8'))
         lmanager = GtkSource.LanguageManager.get_default()
 
         location = doc.get_location()
