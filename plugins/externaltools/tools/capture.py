@@ -170,13 +170,13 @@ class Capture(GObject.Object):
 
             if len(line) > 0:
                 try:
-                    line = line
+                    line = line.decode('utf-8')
                 except:
-                    line = line.encode(locale.getdefaultlocale()[1])
+                    line = line.decode(locale.getdefaultlocale()[1])
 
                 self.read_buffer += line
                 lines = self.read_buffer.splitlines(True)
-                
+
                 if not lines[-1].endswith("\n"):
                     self.read_buffer = lines[-1]
                     lines = lines[0:-1]
