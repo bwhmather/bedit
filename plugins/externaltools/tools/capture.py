@@ -157,7 +157,7 @@ class Capture(GObject.Object):
 
     def process_read_buffer(self, source):
         if self.read_buffer:
-            if source == self.pipe.stdout:
+            if source.unix_get_fd() == self.pipe.stdout.fileno():
                 self.emit('stdout-line', self.read_buffer)
             else:
                 self.emit('stderr-line', self.read_buffer)
@@ -184,7 +184,7 @@ class Capture(GObject.Object):
                     self.read_buffer = ''
 
                 for line in lines:
-                    if not self.pipe or source == self.pipe.stdout:
+                    if not self.pipe or source.unix_get_fd() == self.pipe.stdout.fileno():
                         self.emit('stdout-line', line)
                     else:
                         self.emit('stderr-line', line)
