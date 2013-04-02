@@ -172,7 +172,7 @@ class Capture(GObject.Object):
                 if buf:
                     print(buf)
                     self.emit(signalname, buf)
-            if status != status == GLib.IOStatus.AGAIN:
+            if status != GLib.IOStatus.AGAIN:
                 return False
 
         if condition & ~(GObject.IO_IN | GObject.IO_PRI):
