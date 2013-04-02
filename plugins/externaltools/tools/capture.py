@@ -126,7 +126,7 @@ class Capture(GObject.Object):
                 self.idle_write_id = GLib.idle_add(self.idle_write_chunk)
 
         # Wait for the process to complete
-        GLib.child_watch_add(self.pipe.pid, self.on_child_end)
+        GLib.child_watch_add(GLib.PRIORITY_DEFAULT, self.pipe.pid, self.on_child_end)
 
     def idle_write_chunk(self):
         if not self.pipe:
@@ -164,6 +164,11 @@ class Capture(GObject.Object):
 
             self.read_buffer = ''
 
+    def close_pipe(self, source):
+        if self.pipe:
+            source.shutdown(True)
+            self.pipe = None
+
     def on_output(self, source, condition):
         if condition & (GObject.IO_IN | GObject.IO_PRI):
             line = source.read()
@@ -189,15 +194,14 @@ class Capture(GObject.Object):
                     else:
                         self.emit('stderr-line', line)
             else:
-                source.close()
                 self.process_read_buffer(source)
-                self.pipe = None
+                self.close_pipe(source)
 
                 return False
 
         if condition & ~(GObject.IO_IN | GObject.IO_PRI):
             self.process_read_buffer(source)
-            self.pipe = None
+            self.close_pipe(source)
 
             return False
         else:

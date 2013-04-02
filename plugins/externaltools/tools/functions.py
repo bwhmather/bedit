@@ -196,12 +196,12 @@ def run_external_tool(window, panel, node):
         document.begin_user_action()
 
     capture.connect('stderr-line', capture_stderr_line_panel, panel)
-    capture.connect('begin-execute', capture_begin_execute_panel, panel, view, node.name)    
+    capture.connect('begin-execute', capture_begin_execute_panel, panel, view, node.name)
     capture.connect('end-execute', capture_end_execute_panel, panel, view, output_type)
 
     # Run the command
     capture.execute()
-    
+
     if output_type != 'nothing':
         document.end_user_action()
 
