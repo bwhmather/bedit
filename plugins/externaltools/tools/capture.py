@@ -83,7 +83,6 @@ class Capture(GObject.Object):
 
         self.tried_killing = False
         self.idle_write_id = 0
-        self.read_buffer = ''
 
         try:
             self.pipe = subprocess.Popen(self.command, **popen_args)
@@ -115,7 +114,7 @@ class Capture(GObject.Object):
             GLib.io_add_watch(channel,
                               GLib.PRIORITY_DEFAULT,
                               GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
-                              self.on_output)
+                              self.on_err_output)
 
         # IO
         if self.input_text is not None:
@@ -155,57 +154,45 @@ class Capture(GObject.Object):
 
             return False
 
-    def process_read_buffer(self, source):
-        if self.read_buffer:
-            if source.unix_get_fd() == self.pipe.stdout.fileno():
-                self.emit('stdout-line', self.read_buffer)
-            else:
-                self.emit('stderr-line', self.read_buffer)
-
-            self.read_buffer = ''
-
     def close_pipe(self, source):
         if self.pipe:
             source.shutdown(True)
             self.pipe = None
 
-    def on_output(self, source, condition):
+    def handle_source(self, source, condition, signalname):
         if condition & (GObject.IO_IN | GObject.IO_PRI):
-            line = source.read()
-
-            if len(line) > 0:
+            status = GLib.IOStatus.NORMAL
+            while status == GLib.IOStatus.NORMAL:
                 try:
-                    line = line.decode('utf-8')
-                except:
-                    line = line.decode(locale.getdefaultlocale()[1])
-
-                self.read_buffer += line
-                lines = self.read_buffer.splitlines(True)
-
-                if not lines[-1].endswith("\n"):
-                    self.read_buffer = lines[-1]
-                    lines = lines[0:-1]
-                else:
-                    self.read_buffer = ''
-
-                for line in lines:
-                    if not self.pipe or source.unix_get_fd() == self.pipe.stdout.fileno():
-                        self.emit('stdout-line', line)
-                    else:
-                        self.emit('stderr-line', line)
-            else:
-                self.process_read_buffer(source)
-                self.close_pipe(source)
-
+                    (status, buf, length, terminator_pos) = source.read_line()
+                except Exception as e:
+                    # FIXME: why do we get here? read_line should not raise, should it?
+                    # print(e)
+                    return False
+                if buf:
+                    print(buf)
+                    self.emit(signalname, buf)
+            if status != status == GLib.IOStatus.AGAIN:
                 return False
 
         if condition & ~(GObject.IO_IN | GObject.IO_PRI):
-            self.process_read_buffer(source)
+            return False
+
+        return True
+
+    def on_output(self, source, condition):
+        ret = self.handle_source(source, condition, 'stdout-line')
+        if ret is False:
             self.close_pipe(source)
 
-            return False
-        else:
-            return True
+        return ret
+
+    def on_err_output(self, source, condition):
+        ret = self.handle_source(source, condition, 'stderr-line')
+        if ret is False:
+            self.close_pipe(source)
+
+        return ret
 
     def stop(self, error_code = -1):
         if self.pipe is not None:
