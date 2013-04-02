@@ -126,7 +126,7 @@ class Capture(GObject.Object):
                 self.idle_write_id = GLib.idle_add(self.idle_write_chunk)
 
         # Wait for the process to complete
-        GLib.child_watch_add(GLib.PRIORITY_DEFAULT, self.pipe.pid, self.on_child_end)
+        GLib.child_watch_add(self.pipe.pid, self.on_child_end)
 
     def idle_write_chunk(self):
         if not self.pipe:
