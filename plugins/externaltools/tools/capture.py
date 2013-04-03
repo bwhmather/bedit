@@ -141,11 +141,11 @@ class Capture(GObject.Object):
             m = min(l, self.WRITE_BUFFER_SIZE)
 
             self.pipe.stdin.write(self.write_buffer[:m])
-            
+
             if m == l:
                 self.write_buffer = b''
                 self.pipe.stdin.close()
-                
+
                 self.idle_write_id = 0
 
                 return False
@@ -184,6 +184,9 @@ class Capture(GObject.Object):
             self.out_channel.shutdown(True)
             self.out_channel = None
             self.out_channel_id = 0
+            # pipe should be set to None only if the err has finished too
+            if self.err_channel is None:
+                self.pipe = None
 
         return ret
 
@@ -193,6 +196,9 @@ class Capture(GObject.Object):
             self.err_channel.shutdown(True)
             self.err_channel = None
             self.err_channel = 0
+            # pipe should be set to None only if the out has finished too
+            if self.out_channel is None:
+                self.pipe = None
 
         return ret
 
