@@ -99,8 +99,8 @@ class Capture(GObject.Object):
             flags = fcntl.fcntl(self.pipe.stdout.fileno(), fcntl.F_GETFL) | os.O_NONBLOCK
             fcntl.fcntl(self.pipe.stdout.fileno(), fcntl.F_SETFL, flags)
 
-            channel = GLib.IOChannel.unix_new(self.pipe.stdout.fileno())
-            GLib.io_add_watch(channel,
+            self.out_channel = GLib.IOChannel.unix_new(self.pipe.stdout.fileno())
+            GLib.io_add_watch(self.out_channel,
                               GLib.PRIORITY_DEFAULT,
                               GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
                               self.on_output)
@@ -110,8 +110,8 @@ class Capture(GObject.Object):
             flags = fcntl.fcntl(self.pipe.stderr.fileno(), fcntl.F_GETFL) | os.O_NONBLOCK
             fcntl.fcntl(self.pipe.stderr.fileno(), fcntl.F_SETFL, flags)
 
-            channel = GLib.IOChannel.unix_new(self.pipe.stderr.fileno())
-            GLib.io_add_watch(channel,
+            self.err_channel = GLib.IOChannel.unix_new(self.pipe.stderr.fileno())
+            GLib.io_add_watch(self.err_channel,
                               GLib.PRIORITY_DEFAULT,
                               GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
                               self.on_err_output)
@@ -154,11 +154,6 @@ class Capture(GObject.Object):
 
             return False
 
-    def close_pipe(self, source):
-        if self.pipe:
-            source.shutdown(True)
-            self.pipe = None
-
     def handle_source(self, source, condition, signalname):
         if condition & (GObject.IO_IN | GObject.IO_PRI):
             status = GLib.IOStatus.NORMAL
@@ -170,7 +165,6 @@ class Capture(GObject.Object):
                     # print(e)
                     return False
                 if buf:
-                    print(buf)
                     self.emit(signalname, buf)
             if status != GLib.IOStatus.AGAIN:
                 return False
@@ -182,15 +176,17 @@ class Capture(GObject.Object):
 
     def on_output(self, source, condition):
         ret = self.handle_source(source, condition, 'stdout-line')
-        if ret is False:
-            self.close_pipe(source)
+        if ret is False and self.out_channel:
+            self.out_channel.shutdown(True)
+            self.out_channel = None
 
         return ret
 
     def on_err_output(self, source, condition):
         ret = self.handle_source(source, condition, 'stderr-line')
-        if ret is False:
-            self.close_pipe(source)
+        if ret is False and self.err_channel:
+            self.err_channel.shutdown(True)
+            self.err_channel = None
 
         return ret
 
