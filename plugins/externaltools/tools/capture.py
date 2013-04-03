@@ -197,21 +197,21 @@ class Capture(GObject.Object):
         return ret
 
     def stop(self, error_code = -1):
+        if self.idle_write_id:
+            GLib.source_remove(self.idle_write_id)
+            self.idle_write_id = 0
+
+        if self.out_channel_id:
+            self.out_channel.shutdown(True)
+            self.out_channel = None
+            self.out_channel_id = 0
+
+        if self.err_channel_id:
+            self.err_channel.shutdown(True)
+            self.err_channel = None
+            self.err_channel = 0
+
         if self.pipe is not None:
-            if self.idle_write_id:
-                GLib.source_remove(self.idle_write_id)
-                self.idle_write_id = 0
-
-            if self.out_channel_id:
-                self.out_channel.shutdown(True)
-                self.out_channel = None
-                self.out_channel_id = 0
-
-            if self.err_channel_id:
-                self.err_channel.shutdown(True)
-                self.err_channel = None
-                self.err_channel = 0
-
             if not self.tried_killing:
                 os.kill(self.pipe.pid, signal.SIGTERM)
                 self.tried_killing = True
