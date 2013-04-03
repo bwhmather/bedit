@@ -83,6 +83,10 @@ class Capture(GObject.Object):
 
         self.tried_killing = False
         self.idle_write_id = 0
+        self.out_channel = None
+        self.err_channel = None
+        self.out_channel_id = 0
+        self.err_channel_id = 0
 
         try:
             self.pipe = subprocess.Popen(self.command, **popen_args)
@@ -100,10 +104,10 @@ class Capture(GObject.Object):
             fcntl.fcntl(self.pipe.stdout.fileno(), fcntl.F_SETFL, flags)
 
             self.out_channel = GLib.IOChannel.unix_new(self.pipe.stdout.fileno())
-            GLib.io_add_watch(self.out_channel,
-                              GLib.PRIORITY_DEFAULT,
-                              GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
-                              self.on_output)
+            self.out_channel_id = GLib.io_add_watch(self.out_channel,
+                                                    GLib.PRIORITY_DEFAULT,
+                                                    GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
+                                                    self.on_output)
 
         if self.flags & self.CAPTURE_STDERR:
             # Set non blocking
@@ -111,10 +115,10 @@ class Capture(GObject.Object):
             fcntl.fcntl(self.pipe.stderr.fileno(), fcntl.F_SETFL, flags)
 
             self.err_channel = GLib.IOChannel.unix_new(self.pipe.stderr.fileno())
-            GLib.io_add_watch(self.err_channel,
-                              GLib.PRIORITY_DEFAULT,
-                              GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
-                              self.on_err_output)
+            self.err_channel_id = GLib.io_add_watch(self.err_channel,
+                                                    GLib.PRIORITY_DEFAULT,
+                                                    GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
+                                                    self.on_err_output)
 
         # IO
         if self.input_text is not None:
@@ -179,6 +183,7 @@ class Capture(GObject.Object):
         if ret is False and self.out_channel:
             self.out_channel.shutdown(True)
             self.out_channel = None
+            self.out_channel_id = 0
 
         return ret
 
@@ -187,6 +192,7 @@ class Capture(GObject.Object):
         if ret is False and self.err_channel:
             self.err_channel.shutdown(True)
             self.err_channel = None
+            self.err_channel = 0
 
         return ret
 
@@ -195,6 +201,16 @@ class Capture(GObject.Object):
             if self.idle_write_id:
                 GLib.source_remove(self.idle_write_id)
                 self.idle_write_id = 0
+
+            if self.out_channel_id:
+                self.out_channel.shutdown(True)
+                self.out_channel = None
+                self.out_channel_id = 0
+
+            if self.err_channel_id:
+                self.err_channel.shutdown(True)
+                self.err_channel = None
+                self.err_channel = 0
 
             if not self.tried_killing:
                 os.kill(self.pipe.pid, signal.SIGTERM)
