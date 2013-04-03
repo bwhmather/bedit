@@ -556,6 +556,8 @@ set_info_bar (GeditTab  *tab,
 			old = gtk_bin_get_child (GTK_BIN (tab->priv->info_bar_revealer));
 			if (old != NULL)
 			{
+				g_object_remove_weak_pointer (G_OBJECT (old),
+				                              (gpointer *)&tab->priv->info_bar);
 				gtk_container_remove (GTK_CONTAINER (tab->priv->info_bar_revealer), old);
 			}
 		}
