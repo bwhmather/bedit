@@ -843,21 +843,24 @@ gedit_utils_get_window_workspace (GtkWindow *gtkwindow)
 	window = gtk_widget_get_window (GTK_WIDGET (gtkwindow));
 	display = gdk_window_get_display (window);
 
-	gdk_error_trap_push ();
-	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (window),
-				     gdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"),
-				     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-				     &bytes_after, (gpointer) &workspace);
-	err = gdk_error_trap_pop ();
+	if (GDK_IS_X11_DISPLAY (display))
+	{
+		gdk_error_trap_push ();
+		result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (window),
+					     gdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"),
+					     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
+					     &bytes_after, (gpointer) &workspace);
+		err = gdk_error_trap_pop ();
 
-	if (err != Success || result != Success)
+		if (err != Success || result != Success)
+			return ret;
+
+		if (type == XA_CARDINAL && format == 32 && nitems > 0)
+			ret = workspace[0];
+
+		XFree (workspace);
 		return ret;
-
-	if (type == XA_CARDINAL && format == 32 && nitems > 0)
-		ret = workspace[0];
-
-	XFree (workspace);
-	return ret;
+	}
 #else
 	/* FIXME: on mac etc proably there are native APIs
 	 * to get the current workspace etc */
@@ -900,25 +903,28 @@ gedit_utils_get_current_viewport (GdkScreen    *screen,
 	root_win = gdk_screen_get_root_window (screen);
 	display = gdk_screen_get_display (screen);
 
-	gdk_error_trap_push ();
-	result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
-				     gdk_x11_get_xatom_by_name_for_display (display, "_NET_DESKTOP_VIEWPORT"),
-				     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
-				     &bytes_after, (void*) &coordinates);
-	err = gdk_error_trap_pop ();
-
-	if (err != Success || result != Success)
-		return;
-
-	if (type != XA_CARDINAL || format != 32 || nitems < 2)
+	if (GDK_IS_X11_DISPLAY (display))
 	{
-		XFree (coordinates);
-		return;
-	}
+		gdk_error_trap_push ();
+		result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
+					     gdk_x11_get_xatom_by_name_for_display (display, "_NET_DESKTOP_VIEWPORT"),
+					     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
+					     &bytes_after, (void*) &coordinates);
+		err = gdk_error_trap_pop ();
 
-	*x = coordinates[0];
-	*y = coordinates[1];
-	XFree (coordinates);
+		if (err != Success || result != Success)
+			return;
+
+		if (type != XA_CARDINAL || format != 32 || nitems < 2)
+		{
+			XFree (coordinates);
+			return;
+		}
+
+		*x = coordinates[0];
+		*y = coordinates[1];
+		XFree (coordinates);
+	}
 #else
 	/* FIXME: on mac etc proably there are native APIs
 	 * to get the current workspace etc */

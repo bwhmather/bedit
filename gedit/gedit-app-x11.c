@@ -22,6 +22,10 @@
 
 #include "gedit-app-x11.h"
 
+#ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
+#endif
+
 #define GEDIT_APP_X11_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_APP_X11, GeditAppX11Private))
 
 G_DEFINE_TYPE (GeditAppX11, gedit_app_x11, GEDIT_TYPE_APP)
@@ -69,7 +73,8 @@ gedit_app_add_platform_data (GApplication    *app,
    * "_NET_WM_USER_TIME_WINDOW" one since that's what we're doing
    * here...
    */
-  if (!g_getenv ("DESKTOP_STARTUP_ID") && g_getenv ("DISPLAY"))
+  if (!g_getenv ("DESKTOP_STARTUP_ID") && g_getenv ("DISPLAY") &&
+      GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
     {
       gchar *startup_id;
       Display *display;
