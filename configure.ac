@@ -276,7 +276,7 @@ dnl ================================================================
 dnl libzeitgeit check: for zeitgeist plugin
 dnl ================================================================
 
-LIBZEITGEIST_REQUIRED=0.3.2
+LIBZEITGEIST_REQUIRED=0.9.12
 
 AC_ARG_ENABLE([zeitgeist],
 	AS_HELP_STRING([--enable-zeitgeist[=@<:@no/auto/yes@:>@]],[Build with zeitgeist support]),
@@ -284,13 +284,13 @@ AC_ARG_ENABLE([zeitgeist],
 	[enable_zeitgeist="auto"])
 
 if test "x$enable_zeitgeist" = "xauto" ; then
-	PKG_CHECK_EXISTS([zeitgeist-1.0 >= $LIBZEITGEIST_REQUIRED], \
+	PKG_CHECK_EXISTS([zeitgeist-2.0 >= $LIBZEITGEIST_REQUIRED], \
 			  enable_zeitgeist="yes", enable_zeitgeist="no")
 fi
 
 if test "x$enable_zeitgeist" = "xyes" ; then
 	PKG_CHECK_MODULES(ZEITGEIST, \
-			  [zeitgeist-1.0 >= $LIBZEITGEIST_REQUIRED])
+			  [zeitgeist-2.0 >= $LIBZEITGEIST_REQUIRED])
 fi
 
 AM_CONDITIONAL(ENABLE_ZEITGEIST, test x"$enable_zeitgeist" = "xyes")
