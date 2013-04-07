@@ -5,7 +5,7 @@
 
   <info>
     <link type="guide" xref="index"/>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.8" date="2013-04-07" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jwcampbell@gmail.com</email>
@@ -145,6 +145,30 @@ Please skip this list for now. I'm not sure if it is needed.
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td><p>Move to the beginning of the current line</p></td>
+          <td><p><key>Home</key></p></td>
+        </tr>
+        <tr>
+          <td><p>Move to the end of the current line</p></td>
+          <td><p><key>End</key></p></td>
+        </tr>
+        <tr>
+          <td><p>Move to the beginning of the document</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>Home</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Move to the end of the document</p></td>
+          <td><p><keyseq><key>Ctrl</key><key>End</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Move the selected word right one word</p></td>
+          <td><p><keyseq><key>Alt</key><key>Right Arrow</key></keyseq></p></td>
+        </tr>
+        <tr>
+          <td><p>Move the selected word left one word</p></td>
+          <td><p><keyseq><key>Alt</key><key>Left Arrow</key></keyseq></p></td>
+        </tr>
         <tr>
           <td><p>Undo the last action</p></td>
           <td><p><keyseq><key>Ctrl</key><key>Z</key></keyseq></p></td>
