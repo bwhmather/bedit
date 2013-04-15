@@ -437,8 +437,12 @@ int main (int   argc,
 	g_test_add_func ("/document-output-stream/consecutive_tnewline", test_consecutive_tnewline);
 	g_test_add_func ("/document-output-stream/big-char", test_big_char);
 	g_test_add_func ("/document-output-stream/test-boundary", test_boundary);
-	g_test_add_func ("/document-output-stream/test-invalid-utf8", test_invalid_utf8);
 
+/*
+This broke after https://bugzilla.gnome.org/show_bug.cgi?id=694669 we need to revisit the test
+to pick something that is actually invalid utf8
+	g_test_add_func ("/document-output-stream/test-invalid-utf8", test_invalid_utf8);
+*/
 	g_test_add_func ("/document-output-stream/smart conversion: utf8-utf8", test_utf8_utf8);
 	g_test_add_func ("/document-output-stream/smart conversion: empty", test_empty_conversion);
 	g_test_add_func ("/document-output-stream/smart conversion: guessed", test_guessed);
