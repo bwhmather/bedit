@@ -859,8 +859,9 @@ gedit_utils_get_window_workspace (GtkWindow *gtkwindow)
 			ret = workspace[0];
 
 		XFree (workspace);
-		return ret;
 	}
+
+	return ret;
 #else
 	/* FIXME: on mac etc proably there are native APIs
 	 * to get the current workspace etc */
