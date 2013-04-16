@@ -45,7 +45,7 @@ typedef struct _GeditFileBrowserPluginClass   GeditFileBrowserPluginClass;
 
 struct _GeditFileBrowserPlugin
 {
-	PeasExtensionBase parent_instance;
+	GObject parent_instance;
 
 	/* < private > */
 	GeditFileBrowserPluginPrivate *priv;
@@ -53,7 +53,7 @@ struct _GeditFileBrowserPlugin
 
 struct _GeditFileBrowserPluginClass
 {
-	PeasExtensionBaseClass parent_class;
+	GObjectClass parent_class;
 };
 
 /*

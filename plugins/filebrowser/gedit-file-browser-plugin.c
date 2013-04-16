@@ -69,9 +69,6 @@ struct _GeditFileBrowserPluginPrivate
 	GeditWindow            *window;
 
 	GeditFileBrowserWidget *tree_widget;
-	gulong                  merge_id;
-	GtkActionGroup         *action_group;
-	GtkActionGroup	       *single_selection_action_group;
 	gboolean	        auto_root;
 	gulong                  end_loading_handle;
 	gboolean		confirm_trash;
@@ -119,7 +116,7 @@ static gboolean on_confirm_no_trash_cb   (GeditFileBrowserWidget        *widget,
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBrowserPlugin,
 				gedit_file_browser_plugin,
-				PEAS_TYPE_EXTENSION_BASE,
+				G_TYPE_OBJECT,
 				0,
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
 							       gedit_window_activatable_iface_init)	\
@@ -159,8 +156,6 @@ settings_try_new (const gchar *schema)
 static void
 gedit_file_browser_plugin_init (GeditFileBrowserPlugin *plugin)
 {
-
-
 	plugin->priv = GEDIT_FILE_BROWSER_PLUGIN_GET_PRIVATE (plugin);
 
 	plugin->priv->settings = g_settings_new (FILEBROWSER_BASE_SETTINGS);
@@ -256,9 +251,9 @@ prepare_auto_root (GeditFileBrowserPlugin *plugin)
 	}
 
 	priv->end_loading_handle = g_signal_connect (store,
-	                                               "end-loading",
-	                                               G_CALLBACK (on_end_loading_cb),
-	                                               plugin);
+	                                             "end-loading",
+	                                             G_CALLBACK (on_end_loading_cb),
+	                                             plugin);
 }
 
 static void
@@ -415,8 +410,8 @@ set_root_from_doc (GeditFileBrowserPlugin *plugin,
 }
 
 static void
-on_action_set_active_root (GtkAction              *action,
-                           GeditFileBrowserPlugin *plugin)
+set_active_root (GeditFileBrowserWidget *widget,
+                 GeditFileBrowserPlugin *plugin)
 {
 	set_root_from_doc (plugin,
 	                   gedit_window_get_active_document (plugin->priv->window));
@@ -445,35 +440,18 @@ get_terminal (GeditFileBrowserPlugin *plugin)
 }
 
 static void
-on_action_open_terminal (GtkAction              *action,
-                         GeditFileBrowserPlugin *plugin)
+open_in_terminal (GeditFileBrowserWidget *widget,
+                  GFile                  *location,
+                  GeditFileBrowserPlugin *plugin)
 {
-	GeditFileBrowserPluginPrivate *priv = plugin->priv;
-	GFile *file;
-
-	GtkTreeIter iter;
-	GeditFileBrowserStore *store;
-
-	/* Get the current directory */
-	if (!gedit_file_browser_widget_get_selected_directory (priv->tree_widget, &iter))
-		return;
-
-	store = gedit_file_browser_widget_get_browser_store (priv->tree_widget);
-	gtk_tree_model_get (GTK_TREE_MODEL (store),
-	                    &iter,
-	                    GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION,
-	                    &file,
-	                    -1);
-
-	if (file)
+	if (location)
 	{
 		gchar *terminal;
 		gchar *local;
 		gchar *argv[2];
 
 		terminal = get_terminal (plugin);
-
-		local = g_file_get_path (file);
+		local = g_file_get_path (location);
 
 		argv[0] = terminal;
 		argv[1] = NULL;
@@ -489,139 +467,7 @@ on_action_open_terminal (GtkAction              *action,
 
 		g_free (terminal);
 		g_free (local);
-		g_object_unref (file);
 	}
-}
-
-static void
-on_selection_changed_cb (GtkTreeSelection       *selection,
-			 GeditFileBrowserPlugin *plugin)
-{
-	GeditFileBrowserPluginPrivate *priv = plugin->priv;
-	GtkTreeView *tree_view;
-	GtkTreeModel *model;
-	GtkTreeIter iter;
-	gboolean sensitive;
-
-	tree_view = GTK_TREE_VIEW (gedit_file_browser_widget_get_browser_view (priv->tree_widget));
-	model = gtk_tree_view_get_model (tree_view);
-
-	if (!GEDIT_IS_FILE_BROWSER_STORE (model))
-		return;
-
-	sensitive = gedit_file_browser_widget_get_selected_directory (priv->tree_widget, &iter);
-
-	if (sensitive)
-	{
-		GFile *location;
-
-		gtk_tree_model_get (model, &iter,
-				    GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION,
-				    &location, -1);
-
-		if (location)
-		{
-			sensitive = g_file_has_uri_scheme (location, "file");
-			g_object_unref (location);
-		}
-		else
-		{
-			sensitive = FALSE;
-		}
-	}
-
-	gtk_action_set_sensitive (
-		gtk_action_group_get_action (priv->single_selection_action_group,
-					     "OpenTerminal"),
-		sensitive);
-}
-
-#define POPUP_UI ""                             \
-"<ui>"                                          \
-"  <popup name=\"FilePopup\">"                  \
-"    <placeholder name=\"FilePopup_Opt1\">"     \
-"      <menuitem action=\"SetActiveRoot\"/>"    \
-"    </placeholder>"                            \
-"    <placeholder name=\"FilePopup_Opt4\">"     \
-"      <menuitem action=\"OpenTerminal\"/>"     \
-"    </placeholder>"                            \
-"  </popup>"                                    \
-"  <popup name=\"BookmarkPopup\">"              \
-"    <placeholder name=\"BookmarkPopup_Opt1\">" \
-"      <menuitem action=\"SetActiveRoot\"/>"    \
-"    </placeholder>"                            \
-"  </popup>"                                    \
-"</ui>"
-
-static GtkActionEntry extra_actions[] =
-{
-	{"SetActiveRoot", GTK_STOCK_JUMP_TO, N_("_Set Root to Active Document"),
-	 NULL,
-	 N_("Set the root to the active document location"),
-	 G_CALLBACK (on_action_set_active_root)}
-};
-
-static GtkActionEntry extra_single_selection_actions[] = {
-	{"OpenTerminal", "utilities-terminal", N_("_Open in Terminal"),
-	 NULL,
-	 N_("Open a terminal at the currently opened directory"),
-	 G_CALLBACK (on_action_open_terminal)}
-};
-
-static void
-add_popup_ui (GeditFileBrowserPlugin *plugin)
-{
-	GeditFileBrowserPluginPrivate *priv = plugin->priv;
-	GtkUIManager *manager;
-	GtkActionGroup *action_group;
-	GError *error = NULL;
-
-	manager = gedit_file_browser_widget_get_ui_manager (priv->tree_widget);
-
-	action_group = gtk_action_group_new ("FileBrowserPluginExtra");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
-				      extra_actions,
-				      G_N_ELEMENTS (extra_actions),
-				      plugin);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
-	priv->action_group = action_group;
-
-	action_group = gtk_action_group_new ("FileBrowserPluginSingleSelectionExtra");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
-				      extra_single_selection_actions,
-				      G_N_ELEMENTS (extra_single_selection_actions),
-				      plugin);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
-	priv->single_selection_action_group = action_group;
-
-	priv->merge_id = gtk_ui_manager_add_ui_from_string (manager,
-							      POPUP_UI,
-							      -1,
-							      &error);
-
-	if (priv->merge_id == 0)
-	{
-		g_warning("Unable to merge UI: %s", error->message);
-		g_error_free(error);
-	}
-}
-
-static void
-remove_popup_ui (GeditFileBrowserPlugin *plugin)
-{
-	GeditFileBrowserPluginPrivate *priv = plugin->priv;
-	GtkUIManager *manager;
-
-	manager = gedit_file_browser_widget_get_ui_manager (priv->tree_widget);
-	gtk_ui_manager_remove_ui (manager, priv->merge_id);
-
-	gtk_ui_manager_remove_action_group (manager, priv->action_group);
-	g_object_unref (priv->action_group);
-
-	gtk_ui_manager_remove_action_group (manager, priv->single_selection_action_group);
-	g_object_unref (priv->single_selection_action_group);
 }
 
 static void
@@ -631,10 +477,8 @@ gedit_file_browser_plugin_update_state (GeditWindowActivatable *activatable)
 	GeditDocument *doc;
 
 	doc = gedit_window_get_active_document (priv->window);
-
-	gtk_action_set_sensitive (gtk_action_group_get_action (priv->action_group,
-	                                                       "SetActiveRoot"),
-	                          doc != NULL && !gedit_document_is_untitled (doc));
+	gedit_file_browser_widget_set_active_root_enabled (priv->tree_widget,
+	                                                   doc != NULL && !gedit_document_is_untitled (doc));
 }
 
 static void
@@ -646,13 +490,10 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 	GtkWidget *image;
 	GdkPixbuf *pixbuf;
 	GeditFileBrowserStore *store;
-	gchar *data_dir;
 
 	priv = plugin->priv;
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (activatable));
-	priv->tree_widget = GEDIT_FILE_BROWSER_WIDGET (gedit_file_browser_widget_new (data_dir));
-	g_free (data_dir);
+	priv->tree_widget = GEDIT_FILE_BROWSER_WIDGET (gedit_file_browser_widget_new ());
 
 	g_signal_connect (priv->tree_widget,
 			  "location-activated",
@@ -671,12 +512,15 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 	                  G_CALLBACK (on_confirm_no_trash_cb),
 	                  priv->window);
 
-	g_signal_connect (gtk_tree_view_get_selection (GTK_TREE_VIEW
-			  (gedit_file_browser_widget_get_browser_view
-			  (priv->tree_widget))),
-			  "changed",
-			  G_CALLBACK (on_selection_changed_cb),
-			  plugin);
+	g_signal_connect (priv->tree_widget,
+	                  "open-in-terminal",
+	                  G_CALLBACK (open_in_terminal),
+	                  plugin);
+
+	g_signal_connect (priv->tree_widget,
+	                  "set-active-root",
+	                  G_CALLBACK (set_active_root),
+	                  plugin);
 
 	g_settings_bind (priv->settings,
 	                 FILEBROWSER_FILTER_PATTERN,
@@ -705,8 +549,6 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 	                      _("File Browser"),
 	                      image);
 	gtk_widget_show (GTK_WIDGET (priv->tree_widget));
-
-	add_popup_ui (plugin);
 
 	/* Install nautilus preferences */
 	install_nautilus_prefs (plugin);
@@ -779,8 +621,6 @@ gedit_file_browser_plugin_deactivate (GeditWindowActivatable *activatable)
 		g_signal_handler_disconnect (priv->nautilus_settings,
 					     priv->confirm_trash_handle);
 	}
-
-	remove_popup_ui (plugin);
 
 	panel = gedit_window_get_side_panel (priv->window);
 	gedit_panel_remove_item (panel, GTK_WIDGET (priv->tree_widget));

@@ -68,11 +68,14 @@ struct _GeditFileBrowserWidgetClass
 					 GList                  *list);
 	gboolean (* confirm_no_trash)	(GeditFileBrowserWidget *widget,
 					 GList                  *list);
+	void (* open_in_terminal)       (GeditFileBrowserWidget *widget,
+	                                 GFile                  *location);
+	void (* set_active_root)        (GeditFileBrowserWidget *widget);
 };
 
 GType		 gedit_file_browser_widget_get_type            (void) G_GNUC_CONST;
 
-GtkWidget	*gedit_file_browser_widget_new            	(const gchar            *data_dir);
+GtkWidget	*gedit_file_browser_widget_new            	(void);
 
 void		 gedit_file_browser_widget_show_bookmarks       (GeditFileBrowserWidget *obj);
 void		 gedit_file_browser_widget_show_files           (GeditFileBrowserWidget *obj);
@@ -89,6 +92,9 @@ gboolean	 gedit_file_browser_widget_get_selected_directory
 								(GeditFileBrowserWidget *obj,
 								 GtkTreeIter            *iter);
 
+void             gedit_file_browser_widget_set_active_root_enabled (GeditFileBrowserWidget *widget,
+                                                                    gboolean                enabled);
+
 GeditFileBrowserStore *
 gedit_file_browser_widget_get_browser_store         		(GeditFileBrowserWidget *obj);
 GeditFileBookmarksStore *
@@ -97,9 +103,6 @@ GeditFileBrowserView *
 gedit_file_browser_widget_get_browser_view			(GeditFileBrowserWidget *obj);
 GtkWidget *
 gedit_file_browser_widget_get_filter_entry			(GeditFileBrowserWidget *obj);
-
-GtkUIManager *
-gedit_file_browser_widget_get_ui_manager			(GeditFileBrowserWidget *obj);
 
 gulong gedit_file_browser_widget_add_filter			(GeditFileBrowserWidget *obj,
 								 GeditFileBrowserWidgetFilterFunc func,

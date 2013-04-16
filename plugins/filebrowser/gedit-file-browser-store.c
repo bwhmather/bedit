@@ -315,6 +315,9 @@ gedit_file_browser_store_set_property (GObject      *object,
 
 	switch (prop_id)
 	{
+		case PROP_ROOT:
+			gedit_file_browser_store_set_root (obj, G_FILE (g_value_get_object (value)));
+			break;
 		case PROP_FILTER_MODE:
 			gedit_file_browser_store_set_filter_mode (obj,
 			                                          g_value_get_flags (value));
@@ -340,7 +343,7 @@ gedit_file_browser_store_class_init (GeditFileBrowserStoreClass *klass)
 					 		      "Root",
 					 		      "The root location",
 					 		      G_TYPE_FILE,
-					 		      G_PARAM_READABLE));
+					 		      G_PARAM_CONSTRUCT | G_PARAM_READWRITE));
 
 	g_object_class_install_property (object_class, PROP_VIRTUAL_ROOT,
 					 g_param_spec_object ("virtual-root",
@@ -2970,13 +2973,9 @@ model_mount_root (GeditFileBrowserStore *model,
 GeditFileBrowserStore *
 gedit_file_browser_store_new (GFile *root)
 {
-	GeditFileBrowserStore *obj =
-	    GEDIT_FILE_BROWSER_STORE (g_object_new
-				      (GEDIT_TYPE_FILE_BROWSER_STORE,
-				       NULL));
-
-	gedit_file_browser_store_set_root (obj, root);
-	return obj;
+	return GEDIT_FILE_BROWSER_STORE (g_object_new (GEDIT_TYPE_FILE_BROWSER_STORE,
+	                                               "root", root,
+	                                               NULL));
 }
 
 void
