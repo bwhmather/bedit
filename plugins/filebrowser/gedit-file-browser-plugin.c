@@ -555,14 +555,14 @@ on_selection_changed_cb (GtkTreeSelection       *selection,
 
 static GtkActionEntry extra_actions[] =
 {
-	{"SetActiveRoot", GTK_STOCK_JUMP_TO, N_("_Set root to active document"),
+	{"SetActiveRoot", GTK_STOCK_JUMP_TO, N_("_Set Root to Active Document"),
 	 NULL,
 	 N_("Set the root to the active document location"),
 	 G_CALLBACK (on_action_set_active_root)}
 };
 
 static GtkActionEntry extra_single_selection_actions[] = {
-	{"OpenTerminal", "utilities-terminal", N_("_Open terminal here"),
+	{"OpenTerminal", "utilities-terminal", N_("_Open in Terminal"),
 	 NULL,
 	 N_("Open a terminal at the currently opened directory"),
 	 G_CALLBACK (on_action_open_terminal)}
