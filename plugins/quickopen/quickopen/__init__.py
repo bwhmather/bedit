@@ -68,7 +68,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         manager = self.window.get_ui_manager()
         self._action_group = Gtk.ActionGroup(name="GeditQuickOpenPluginActions")
         self._action_group.add_actions([
-            ("QuickOpen", Gtk.STOCK_OPEN, _("Quick open"),
+            ("QuickOpen", Gtk.STOCK_OPEN, _("Quick Open..."),
              '<Primary><Alt>o', _("Quickly open documents"),
              self.on_quick_open_activate)
         ])
