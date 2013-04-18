@@ -342,28 +342,38 @@ filter_func_free (FilterFunc *func)
 static void
 gedit_file_browser_widget_finalize (GObject *object)
 {
+	GeditFileBrowserWidgetPrivate *priv = GEDIT_FILE_BROWSER_WIDGET (object)->priv;
+
+	g_free (priv->filter_pattern_str);
+
+	G_OBJECT_CLASS (gedit_file_browser_widget_parent_class)->finalize (object);
+}
+
+static void
+gedit_file_browser_widget_dispose (GObject *object)
+{
 	GeditFileBrowserWidget *obj = GEDIT_FILE_BROWSER_WIDGET (object);
+	GeditFileBrowserWidgetPrivate *priv = obj->priv;
 
-	g_object_unref (obj->priv->file_store);
-	g_object_unref (obj->priv->bookmarks_store);
+	g_clear_object (&priv->file_store);
+	g_clear_object (&priv->bookmarks_store);
 
-	g_slist_free_full (obj->priv->filter_funcs, (GDestroyNotify)filter_func_free);
+	g_slist_free_full (priv->filter_funcs, (GDestroyNotify)filter_func_free);
+	g_list_free_full (priv->locations, (GDestroyNotify)location_free);
 
-	g_list_free_full (obj->priv->locations, (GDestroyNotify)location_free);
-
-	g_hash_table_destroy (obj->priv->bookmarks_hash);
+	if (priv->bookmarks_hash != NULL)
+	{
+		g_hash_table_unref (priv->bookmarks_hash);
+		priv->bookmarks_hash = NULL;
+	}
 
 	cancel_async_operation (obj);
 
-	if (obj->priv->busy_cursor)
-		g_object_unref (obj->priv->busy_cursor);
+	g_clear_object (&priv->busy_cursor);
+	g_clear_object (&priv->dir_menu);
+	g_clear_object (&priv->bookmarks_menu);
 
-	g_free (obj->priv->filter_pattern_str);
-
-	g_clear_object (&obj->priv->dir_menu);
-	g_clear_object (&obj->priv->bookmarks_menu);
-
-	G_OBJECT_CLASS (gedit_file_browser_widget_parent_class)->finalize (object);
+	G_OBJECT_CLASS (gedit_file_browser_widget_parent_class)->dispose (object);
 }
 
 static void
@@ -418,6 +428,7 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->finalize = gedit_file_browser_widget_finalize;
+	object_class->dispose = gedit_file_browser_widget_dispose;
 
 	object_class->get_property = gedit_file_browser_widget_get_property;
 	object_class->set_property = gedit_file_browser_widget_set_property;
