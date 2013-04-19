@@ -699,7 +699,7 @@ class Manager(GObject.Object):
 
     def tool_changed(self, tool, refresh=False):
         for row in self._tool_rows[tool]:
-            self.model.row_changed(row.get_path(), self.model.get_iter(row.get_path()))
+            self.model.set_value(self.model.get_iter(row.get_path()), self.TOOL_COLUMN, tool)
 
         if refresh and tool == self.current_node:
             self.fill_fields()
