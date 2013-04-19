@@ -126,7 +126,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         self._popup.connect('destroy', self.on_popup_destroy)
 
     def _local_bookmarks(self):
-        filename = os.path.expanduser('~/.gtk-bookmarks')
+        filename = os.path.expanduser('~/.config/gtk-3.0/bookmarks')
 
         if not os.path.isfile(filename):
             return []
