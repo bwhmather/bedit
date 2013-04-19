@@ -22,18 +22,12 @@
 
 #include "gedit-status-combo-box.h"
 
-#include <gdk/gdkkeysyms.h>
-
 #define COMBO_BOX_TEXT_DATA "GeditStatusComboBoxTextData"
 
 #define GEDIT_STATUS_COMBO_BOX_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_STATUS_COMBO_BOX, GeditStatusComboBoxPrivate))
 
-static void	menu_deactivate		(GtkMenu *menu, GeditStatusComboBox *combo);
-
 struct _GeditStatusComboBoxPrivate
 {
-	GtkWidget *frame;
-	GtkWidget *button;
 	GtkWidget *hbox;
 	GtkWidget *label;
 	GtkWidget *item;
@@ -59,13 +53,12 @@ enum
 enum
 {
 	PROP_0,
-
 	PROP_LABEL
 };
 
 static guint signals[NUM_SIGNALS] = { 0 };
 
-G_DEFINE_TYPE_WITH_CODE (GeditStatusComboBox, gedit_status_combo_box, GTK_TYPE_EVENT_BOX,
+G_DEFINE_TYPE_WITH_CODE (GeditStatusComboBox, gedit_status_combo_box, GTK_TYPE_MENU_BUTTON,
                          g_type_add_class_private (g_define_type_id, sizeof (GeditStatusComboBoxClassPrivate)))
 
 static void
@@ -113,22 +106,6 @@ gedit_status_combo_box_set_property (GObject      *object,
 }
 
 static void
-gedit_status_combo_box_destroy (GtkWidget *widget)
-{
-	GeditStatusComboBox *combo = GEDIT_STATUS_COMBO_BOX (widget);
-
-	if (combo->priv->menu)
-	{
-		g_signal_handlers_disconnect_by_func (combo->priv->menu,
-						      menu_deactivate,
-						      combo);
-		gtk_menu_detach (GTK_MENU (combo->priv->menu));
-	}
-
-	GTK_WIDGET_CLASS (gedit_status_combo_box_parent_class)->destroy (widget);
-}
-
-static void
 gedit_status_combo_box_changed (GeditStatusComboBox *combo,
 				GtkMenuItem         *item)
 {
@@ -147,7 +124,6 @@ static void
 gedit_status_combo_box_class_init (GeditStatusComboBoxClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	static const gchar style[] =
 		"* {\n"
 		  "-GtkButton-default-border : 0;\n"
@@ -161,7 +137,6 @@ gedit_status_combo_box_class_init (GeditStatusComboBoxClass *klass)
 	object_class->finalize = gedit_status_combo_box_finalize;
 	object_class->get_property = gedit_status_combo_box_get_property;
 	object_class->set_property = gedit_status_combo_box_set_property;
-	widget_class->destroy = gedit_status_combo_box_destroy;
 
 	klass->changed = gedit_status_combo_box_changed;
 
@@ -190,162 +165,18 @@ gedit_status_combo_box_class_init (GeditStatusComboBoxClass *klass)
 }
 
 static void
-menu_deactivate (GtkMenu             *menu,
-		 GeditStatusComboBox *combo)
-{
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (combo->priv->button), FALSE);
-}
-
-static void
-menu_position_func (GtkMenu		*menu,
-	            gint		*x,
-		    gint		*y,
-		    gboolean		*push_in,
-		    GeditStatusComboBox *combo)
-{
-	GtkRequisition request;
-	GtkAllocation allocation;
-
-	*push_in = FALSE;
-
-	gtk_widget_get_preferred_size (gtk_widget_get_toplevel (GTK_WIDGET (menu)),
-	                               &request, NULL);
-
-	/* get the origin... */
-	gdk_window_get_origin (gtk_widget_get_window (GTK_WIDGET (combo)), x, y);
-
-	/* make the menu as wide as the widget */
-	gtk_widget_get_allocation (GTK_WIDGET (combo), &allocation);
-	if (request.width < allocation.width)
-	{
-		gtk_widget_set_size_request (GTK_WIDGET (menu), allocation.width, -1);
-	}
-
-	/* position it above the widget */
-	*y -= request.height;
-}
-
-static void
-show_menu (GeditStatusComboBox *combo,
-	   guint                button,
-	   guint32              time)
-{
-	GtkRequisition request;
-	gint max_height;
-	GtkAllocation allocation;
-
-	gtk_widget_get_preferred_size (combo->priv->menu,
-	                               &request, NULL);
-
-	/* do something relative to our own height here, maybe we can do better */
-	gtk_widget_get_allocation (GTK_WIDGET (combo), &allocation);
-	max_height = allocation.height * 20;
-
-	if (request.height > max_height)
-	{
-		gtk_widget_set_size_request (combo->priv->menu, -1, max_height);
-		gtk_widget_set_size_request (gtk_widget_get_toplevel (combo->priv->menu), -1, max_height);
-	}
-
-	gtk_menu_popup (GTK_MENU (combo->priv->menu),
-			NULL,
-			NULL,
-			(GtkMenuPositionFunc)menu_position_func,
-			combo,
-			button,
-			time);
-
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (combo->priv->button), TRUE);
-
-	if (combo->priv->current_item)
-	{
-		gtk_menu_shell_select_item (GTK_MENU_SHELL (combo->priv->menu),
-					    combo->priv->current_item);
-	}
-}
-
-static void
-menu_detached (GtkWidget *widget,
-	       GtkMenu   *menu)
-{
-	GeditStatusComboBox *combo = GEDIT_STATUS_COMBO_BOX (widget);
-
-	g_return_if_fail (GTK_MENU (combo->priv->menu) == menu);
-
-	combo->priv->menu = NULL;
-}
-
-static gboolean
-button_press_event (GtkWidget           *widget,
-		    GdkEventButton      *event,
-		    GeditStatusComboBox *combo)
-{
-	if (event->type == GDK_BUTTON_PRESS && event->button == 1)
-	{
-		show_menu (combo, event->button,event->time);
-		return TRUE;
-	}
-
-	return FALSE;
-}
-
-static gboolean
-key_press_event (GtkWidget           *widget,
-		 GdkEventKey         *event,
-		 GeditStatusComboBox *combo)
-{
-	if (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_ISO_Enter ||
-	    event->keyval == GDK_KEY_KP_Enter || event->keyval == GDK_KEY_space ||
-	    event->keyval == GDK_KEY_KP_Space)
-	{
-		show_menu (combo, 0, event->time);
-		return TRUE;
-	}
-
-	return FALSE;
-}
-
-static void
-set_shadow_type (GeditStatusComboBox *combo)
-{
-	GtkStyleContext *context;
-	GtkShadowType shadow_type;
-	GtkWidget *statusbar;
-
-	/* This is a hack needed to use the shadow type of a statusbar */
-	statusbar = gtk_statusbar_new ();
-	context = gtk_widget_get_style_context (statusbar);
-
-	gtk_style_context_get_style (context, "shadow-type", &shadow_type, NULL);
-	gtk_frame_set_shadow_type (GTK_FRAME (combo->priv->frame), shadow_type);
-
-	gtk_widget_destroy (statusbar);
-}
-
-static void
 gedit_status_combo_box_init (GeditStatusComboBox *self)
 {
 	GtkStyleContext *context;
 
 	self->priv = GEDIT_STATUS_COMBO_BOX_GET_PRIVATE (self);
 
-	gtk_event_box_set_visible_window (GTK_EVENT_BOX (self), TRUE);
-
-	self->priv->frame = gtk_frame_new (NULL);
-	gtk_widget_show (self->priv->frame);
-
-	self->priv->button = gtk_toggle_button_new ();
-	gtk_button_set_relief (GTK_BUTTON (self->priv->button), GTK_RELIEF_NONE);
-	gtk_widget_show (self->priv->button);
-
-	set_shadow_type (self);
+	gtk_button_set_relief (GTK_BUTTON (self), GTK_RELIEF_NONE);
+	gtk_menu_button_set_direction (GTK_MENU_BUTTON (self), GTK_ARROW_UP);
 
 	self->priv->hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 3);
 	gtk_widget_show (self->priv->hbox);
-
-	gtk_container_add (GTK_CONTAINER (self), self->priv->frame);
-	gtk_container_add (GTK_CONTAINER (self->priv->frame), self->priv->button);
-	gtk_container_add (GTK_CONTAINER (self->priv->button), self->priv->hbox);
+	gtk_container_add (GTK_CONTAINER (self), self->priv->hbox);
 
 	self->priv->label = gtk_label_new ("");
 	gtk_widget_show (self->priv->label);
@@ -369,29 +200,10 @@ gedit_status_combo_box_init (GeditStatusComboBox *self)
 	gtk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->arrow, FALSE, TRUE, 0);
 
 	self->priv->menu = gtk_menu_new ();
-	gtk_menu_attach_to_widget (GTK_MENU (self->priv->menu),
-				   GTK_WIDGET (self),
-				   menu_detached);
-
-	g_signal_connect (self->priv->button,
-			  "button-press-event",
-			  G_CALLBACK (button_press_event),
-			  self);
-	g_signal_connect (self->priv->button,
-			  "key-press-event",
-			  G_CALLBACK (key_press_event),
-			  self);
-	g_signal_connect (self->priv->menu,
-			  "deactivate",
-			  G_CALLBACK (menu_deactivate),
-			  self);
+	gtk_menu_button_set_popup (GTK_MENU_BUTTON (self), self->priv->menu);
 
 	/* make it as small as possible */
-	context = gtk_widget_get_style_context (GTK_WIDGET (self->priv->button));
-	gtk_style_context_add_provider (context,
-	                                GTK_STYLE_PROVIDER (GEDIT_STATUS_COMBO_BOX_GET_CLASS (self)->priv->css),
-	                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-	context = gtk_widget_get_style_context (GTK_WIDGET (self->priv->frame));
+	context = gtk_widget_get_style_context (GTK_WIDGET (self));
 	gtk_style_context_add_provider (context,
 	                                GTK_STYLE_PROVIDER (GEDIT_STATUS_COMBO_BOX_GET_CLASS (self)->priv->css),
 	                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);

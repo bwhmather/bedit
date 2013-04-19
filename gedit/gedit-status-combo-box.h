@@ -42,14 +42,14 @@ typedef struct _GeditStatusComboBoxClassPrivate	GeditStatusComboBoxClassPrivate;
 
 struct _GeditStatusComboBox
 {
-	GtkEventBox parent;
+	GtkMenuButton parent;
 
 	GeditStatusComboBoxPrivate *priv;
 };
 
 struct _GeditStatusComboBoxClass
 {
-	GtkEventBoxClass parent_class;
+	GtkMenuButtonClass parent_class;
 
 	GeditStatusComboBoxClassPrivate *priv;
 
