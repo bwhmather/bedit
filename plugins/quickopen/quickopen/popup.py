@@ -160,7 +160,8 @@ class Popup(Gtk.Dialog):
                 if not entry:
                     break
 
-                entries.append((gfile.get_child(entry.get_name()), entry))
+                if not entry.get_is_backup():
+                    entries.append((gfile.get_child(entry.get_name()), entry))
         else:
             entries = ret
 
