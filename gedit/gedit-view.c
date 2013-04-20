@@ -269,18 +269,11 @@ static void
 gedit_view_constructed (GObject *object)
 {
 	GeditView *view;
+	GeditViewPrivate *priv;
 	gboolean use_default_font;
-	gboolean display_line_numbers;
-	gboolean auto_indent;
-	gboolean insert_spaces;
-	gboolean display_right_margin;
-	gboolean hl_current_line;
-	guint tabs_size;
-	guint right_margin_position;
-	GtkWrapMode wrap_mode;
-	GtkSourceSmartHomeEndType smart_home_end;
 
 	view = GEDIT_VIEW (object);
+	priv = view->priv;
 
 	/* Get setting values */
 	use_default_font = g_settings_get_boolean (view->priv->editor_settings,
@@ -306,37 +299,61 @@ gedit_view_constructed (GObject *object)
 		gedit_view_set_font (view, TRUE, NULL);
 	}
 
-	display_line_numbers = g_settings_get_boolean (view->priv->editor_settings,
-	                                               GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS);
-	auto_indent = g_settings_get_boolean (view->priv->editor_settings,
-	                                      GEDIT_SETTINGS_AUTO_INDENT);
-	g_settings_get (view->priv->editor_settings, GEDIT_SETTINGS_TABS_SIZE,
-	                "u", &tabs_size);
-	insert_spaces = g_settings_get_boolean (view->priv->editor_settings,
-	                                        GEDIT_SETTINGS_INSERT_SPACES);
-	display_right_margin = g_settings_get_boolean (view->priv->editor_settings,
-	                                               GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN);
-	g_settings_get (view->priv->editor_settings, GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
-	                "u", &right_margin_position);
-	hl_current_line = g_settings_get_boolean (view->priv->editor_settings,
-	                                          GEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE);
+	g_settings_bind (priv->editor_settings,
+	                 GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS,
+	                 view,
+	                 "show-line-numbers",
+	                 G_SETTINGS_BIND_GET);
 
-	wrap_mode = g_settings_get_enum (view->priv->editor_settings,
-	                                 GEDIT_SETTINGS_WRAP_MODE);
+	g_settings_bind (priv->editor_settings,
+	                 GEDIT_SETTINGS_AUTO_INDENT,
+	                 view,
+	                 "auto-indent",
+	                 G_SETTINGS_BIND_GET);
 
-	smart_home_end = g_settings_get_enum (view->priv->editor_settings,
-	                                      GEDIT_SETTINGS_SMART_HOME_END);
+	g_settings_bind (priv->editor_settings,
+	                 GEDIT_SETTINGS_TABS_SIZE,
+	                 view,
+	                 "tab-width",
+	                 G_SETTINGS_BIND_GET);
+
+	g_settings_bind (priv->editor_settings,
+	                 GEDIT_SETTINGS_INSERT_SPACES,
+	                 view,
+	                 "insert-spaces-instead-of-tabs",
+	                 G_SETTINGS_BIND_GET);
+
+	g_settings_bind (priv->editor_settings,
+	                 GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
+	                 view,
+	                 "show-right-margin",
+	                 G_SETTINGS_BIND_GET);
+
+	g_settings_bind (priv->editor_settings,
+	                 GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
+	                 view,
+	                 "right-margin-position",
+	                 G_SETTINGS_BIND_GET);
+
+	g_settings_bind (priv->editor_settings,
+	                 GEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE,
+	                 view,
+	                 "highlight-current-line",
+	                 G_SETTINGS_BIND_GET);
+
+	g_settings_bind (priv->editor_settings,
+	                 GEDIT_SETTINGS_WRAP_MODE,
+	                 view,
+	                 "wrap-mode",
+	                 G_SETTINGS_BIND_GET);
+
+	g_settings_bind (priv->editor_settings,
+	                 GEDIT_SETTINGS_SMART_HOME_END,
+	                 view,
+	                 "smart-home-end",
+	                 G_SETTINGS_BIND_GET);
 
 	g_object_set (G_OBJECT (view),
-	              "wrap_mode", wrap_mode,
-	              "show_line_numbers", display_line_numbers,
-	              "auto_indent", auto_indent,
-	              "tab_width", tabs_size,
-	              "insert_spaces_instead_of_tabs", insert_spaces,
-	              "show_right_margin", display_right_margin,
-	              "right_margin_position", right_margin_position,
-	              "highlight_current_line", hl_current_line,
-	              "smart_home_end", smart_home_end,
 	              "indent_on_tab", TRUE,
 	              NULL);
 
