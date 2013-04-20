@@ -2486,11 +2486,11 @@ static void
 get_style_colors (GeditDocument *doc,
                   const gchar   *style_name,
                   gboolean      *foreground_set,
-                  GdkColor      *foreground,
+                  GdkRGBA       *foreground,
                   gboolean      *background_set,
-                  GdkColor      *background,
+                  GdkRGBA       *background,
                   gboolean      *line_background_set,
-                  GdkColor      *line_background,
+                  GdkRGBA       *line_background,
                   gboolean      *bold_set,
                   gboolean      *bold,
                   gboolean      *italic_set,
@@ -2534,7 +2534,7 @@ get_style_colors (GeditDocument *doc,
 
 	if (*foreground_set)
 	{
-		if (fg == NULL || !gdk_color_parse (fg, foreground))
+		if (fg == NULL || !gdk_rgba_parse (foreground, fg))
 		{
 			*foreground_set = FALSE;
 		}
@@ -2543,7 +2543,7 @@ get_style_colors (GeditDocument *doc,
 	if (*background_set)
 	{
 		if (bg == NULL ||
-		    !gdk_color_parse (bg, background))
+		    !gdk_rgba_parse (background, bg))
 		{
 			*background_set = FALSE;
 		}
@@ -2552,7 +2552,7 @@ get_style_colors (GeditDocument *doc,
 	if (*line_background_set)
 	{
 		if (line_bg == NULL ||
-		    !gdk_color_parse (line_bg, background))
+		    !gdk_rgba_parse (line_background, line_bg))
 		{
 			*line_background_set = FALSE;
 		}
@@ -2569,7 +2569,7 @@ get_style_colors (GeditDocument *doc,
 			     "Falling back to hard-coded colors "
 			     "for the \"found\" text tag.");
 
-	gdk_color_parse ("#FFFF78", background);
+	gdk_rgba_parse (background, "#FFFF78");
 	*background_set = TRUE;
 	*foreground_set = FALSE;
 
@@ -2581,9 +2581,9 @@ sync_tag_style (GeditDocument *doc,
                 GtkTextTag    *tag,
                 const gchar   *style_name)
 {
-	GdkColor fg;
-	GdkColor bg;
-	GdkColor line_bg;
+	GdkRGBA fg;
+	GdkRGBA bg;
+	GdkRGBA line_bg;
 	gboolean fg_set;
 	gboolean bg_set;
 	gboolean line_bg_set;
@@ -2613,9 +2613,9 @@ sync_tag_style (GeditDocument *doc,
 	g_object_freeze_notify (G_OBJECT (tag));
 
 	g_object_set (tag,
-	              "foreground-gdk", fg_set ? &fg : NULL,
-	              "background-gdk", bg_set ? &bg : NULL,
-	              "paragraph-background-gdk", line_bg_set ? &line_bg : NULL,
+	              "foreground-rgba", fg_set ? &fg : NULL,
+	              "background-rgba", bg_set ? &bg : NULL,
+	              "paragraph-background-rgba", line_bg_set ? &line_bg : NULL,
 	              "weight", bold_set && bold ? PANGO_WEIGHT_BOLD : PANGO_WEIGHT_NORMAL,
 	              "style", italic_set && italic ? PANGO_STYLE_ITALIC : PANGO_STYLE_NORMAL,
 	              "underline", underline_set && underline ? PANGO_UNDERLINE_SINGLE : PANGO_UNDERLINE_NONE,
