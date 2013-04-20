@@ -57,7 +57,6 @@ enum
 
 enum
 {
-	COLUMN_INDENT,
 	COLUMN_ICON,
 	COLUMN_NAME,
 	COLUMN_FILE,
@@ -127,7 +126,6 @@ struct _GeditFileBrowserWidgetPrivate
 
 	GtkWidget *combo;
 	GtkTreeStore *combo_model;
-	GtkCellRenderer *indent_renderer;
 
 	GtkWidget *filter_entry;
 
@@ -513,7 +511,6 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	                                             "/org/gnome/gedit/plugins/file-browser/ui/gedit-file-browser-widget.ui");
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, combo);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, combo_model);
-	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, indent_renderer);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, treeview);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, filter_entry);
 
@@ -599,8 +596,7 @@ static void
 insert_path_item (GeditFileBrowserWidget *obj,
                   GFile                  *file,
 		  GtkTreeIter            *after,
-		  GtkTreeIter            *iter,
-		  guint                   indent)
+		  GtkTreeIter            *iter)
 {
 	gchar *unescape;
 	GdkPixbuf *icon = NULL;
@@ -620,7 +616,6 @@ insert_path_item (GeditFileBrowserWidget *obj,
 
 	gtk_tree_store_set (obj->priv->combo_model,
 	                    iter,
-	                    COLUMN_INDENT, indent,
 	                    COLUMN_ICON, icon,
 	                    COLUMN_NAME, unescape,
 	                    COLUMN_FILE, file,
@@ -656,31 +651,6 @@ combo_set_active_by_id (GeditFileBrowserWidget *obj,
 					       (obj->priv->combo), &iter);
 }
 
-static guint
-uri_num_parents (GFile *from,
-		 GFile *to)
-{
-	/* Determine the number of 'levels' to get from #from to #to. */
-	guint parents = 0;
-	GFile *parent;
-
-	if (from == NULL)
-		return 0;
-
-	g_object_ref (from);
-
-	while ((parent = g_file_get_parent (from)) && !(to && g_file_equal (from, to)))
-	{
-		g_object_unref (from);
-		from = parent;
-
-		++parents;
-	}
-
-	g_object_unref (from);
-	return parents;
-}
-
 static void
 insert_location_path (GeditFileBrowserWidget *obj)
 {
@@ -689,7 +659,6 @@ insert_location_path (GeditFileBrowserWidget *obj)
 	GFile *tmp;
 	GtkTreeIter separator;
 	GtkTreeIter iter;
-	guint indent;
 
 	if (!obj->priv->current_location)
 	{
@@ -702,11 +671,9 @@ insert_location_path (GeditFileBrowserWidget *obj)
 	current = loc->virtual_root;
 	combo_find_by_id (obj, SEPARATOR_ID, &separator);
 
-	indent = uri_num_parents (loc->virtual_root, loc->root);
-
 	while (current != NULL)
 	{
-		insert_path_item (obj, current, &separator, &iter, indent--);
+		insert_path_item (obj, current, &separator, &iter);
 
 		if (current == loc->virtual_root)
 		{
@@ -796,31 +763,6 @@ fill_combo_model (GeditFileBrowserWidget *obj)
 	gtk_combo_box_set_row_separator_func (GTK_COMBO_BOX (obj->priv->combo),
 					      separator_func, obj, NULL);
 	gtk_combo_box_set_active (GTK_COMBO_BOX (obj->priv->combo), 0);
-}
-
-static void
-indent_cell_data_func (GtkCellLayout   *cell_layout,
-                       GtkCellRenderer *cell,
-                       GtkTreeModel    *model,
-                       GtkTreeIter     *iter,
-                       gpointer         data)
-{
-	gchar *indent;
-	guint num;
-
-	gtk_tree_model_get (model, iter, COLUMN_INDENT, &num, -1);
-
-	if (num == 0)
-	{
-		g_object_set (cell, "text", "", NULL);
-	}
-	else
-	{
-		indent = g_strnfill (num * 2, ' ');
-
-		g_object_set (cell, "text", indent, NULL);
-		g_free (indent);
-	}
 }
 
 static void
@@ -1028,10 +970,6 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 	gtk_widget_init_template (GTK_WIDGET (obj));
 
 	/* combo */
-	gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (obj->priv->combo),
-	                                    obj->priv->indent_renderer,
-	                                    indent_cell_data_func, obj, NULL);
-
 	fill_combo_model (obj);
 	g_signal_connect (obj->priv->combo, "changed",
 	                  G_CALLBACK (on_combo_changed), obj);
