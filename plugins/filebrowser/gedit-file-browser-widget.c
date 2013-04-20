@@ -345,11 +345,31 @@ gedit_file_browser_widget_finalize (GObject *object)
 }
 
 static void
+clear_signals (GeditFileBrowserWidget *obj)
+{
+	GSList *item;
+	SignalNode *node;
+
+	item = obj->priv->signal_pool;
+	while (item != NULL)
+	{
+		node = (SignalNode *) (item->data);
+		item = g_slist_delete_link (item, item);
+
+		g_signal_handler_disconnect (node->object, node->id);
+		g_slice_free (SignalNode, node);
+	}
+
+	obj->priv->signal_pool = NULL;
+}
+
+static void
 gedit_file_browser_widget_dispose (GObject *object)
 {
 	GeditFileBrowserWidget *obj = GEDIT_FILE_BROWSER_WIDGET (object);
 	GeditFileBrowserWidgetPrivate *priv = obj->priv;
 
+	clear_signals (obj);
 	g_clear_object (&priv->file_store);
 	g_clear_object (&priv->bookmarks_store);
 
@@ -535,24 +555,6 @@ add_signal (GeditFileBrowserWidget *obj,
 
 	obj->priv->signal_pool =
 	    g_slist_prepend (obj->priv->signal_pool, node);
-}
-
-static void
-clear_signals (GeditFileBrowserWidget *obj)
-{
-	GSList *item;
-	SignalNode *node;
-
-	for (item = obj->priv->signal_pool; item; item = item->next)
-	{
-		node = (SignalNode *) (item->data);
-
-		g_signal_handler_disconnect (node->object, node->id);
-		g_slice_free (SignalNode, node);
-	}
-
-	g_slist_free (obj->priv->signal_pool);
-	obj->priv->signal_pool = NULL;
 }
 
 static gboolean
