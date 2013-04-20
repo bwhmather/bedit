@@ -235,9 +235,6 @@ static void change_show_hidden_state           (GSimpleAction          *action,
 static void change_show_binary_state           (GSimpleAction          *action,
                                                 GVariant               *state,
                                                 gpointer                user_data);
-static void bookmark_open_activated            (GSimpleAction          *action,
-                                                GVariant               *parameter,
-                                                gpointer                user_data);
 static void open_in_terminal_activated         (GSimpleAction          *action,
                                                 GVariant               *parameter,
                                                 gpointer                user_data);
@@ -969,7 +966,6 @@ static GActionEntry browser_entries[] = {
 	{ "open_in_terminal", open_in_terminal_activated },
 	{ "show_hidden", activate_toggle, NULL, "false", change_show_hidden_state },
 	{ "show_binary", activate_toggle, NULL, "false", change_show_binary_state },
-	{ "bookmark_open", bookmark_open_activated },
 	{ "previous_location", previous_location_activated },
 	{ "next_location", next_location_activated },
 	{ "up", up_activated }
@@ -2948,28 +2944,6 @@ change_show_binary_state (GSimpleAction *action,
 	                    action,
 	                    state,
 	                    GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
-}
-
-static void
-bookmark_open_activated (GSimpleAction *action,
-                         GVariant      *parameter,
-                         gpointer       user_data)
-{
-	GeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET (user_data);
-	GtkTreeModel *model;
-	GtkTreeSelection *selection;
-	GtkTreeIter iter;
-
-	model = gtk_tree_view_get_model (GTK_TREE_VIEW (widget->priv->treeview));
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (widget->priv->treeview));
-
-	if (!GEDIT_IS_FILE_BOOKMARKS_STORE (model))
-		return;
-
-	if (gtk_tree_selection_get_selected (selection, NULL, &iter))
-	{
-		bookmark_open (widget, model, &iter);
-	}
 }
 
 static void
