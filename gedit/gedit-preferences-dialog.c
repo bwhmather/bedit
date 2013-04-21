@@ -84,7 +84,7 @@ struct _GeditPreferencesDialogPrivate
 	/* Font */
 	GtkWidget	*default_font_checkbutton;
 	GtkWidget	*font_button;
-	GtkWidget	*font_hbox;
+	GtkWidget	*font_grid;
 
 	/* Style Scheme */
 	GtkListStore	*schemes_treeview_model;
@@ -408,7 +408,7 @@ on_use_default_font_changed (GSettings              *settings,
 
 	value = g_settings_get_boolean (settings, key);
 
-	gtk_widget_set_sensitive (dlg->priv->font_hbox, !value);
+	gtk_widget_set_sensitive (dlg->priv->font_grid, !value);
 }
 
 static void
@@ -449,7 +449,7 @@ setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 				      use_default_font);
 
 	/* Set initial widget sensitivity */
-	gtk_widget_set_sensitive (dlg->priv->font_hbox, !use_default_font);
+	gtk_widget_set_sensitive (dlg->priv->font_grid, !use_default_font);
 
 	/* Connect signals */
 	g_signal_connect (dlg->priv->editor,
@@ -1118,13 +1118,12 @@ setup_plugins_page (GeditPreferencesDialog *dlg)
 	gedit_debug (DEBUG_PREFS);
 
 	page_content = peas_gtk_plugin_manager_new (NULL);
+	gtk_widget_set_vexpand (GTK_WIDGET (page_content), TRUE);
+	gtk_widget_set_hexpand (GTK_WIDGET (page_content), TRUE);
 	g_return_if_fail (page_content != NULL);
 
-	gtk_box_pack_start (GTK_BOX (dlg->priv->plugin_manager_place_holder),
-			    page_content,
-			    TRUE,
-			    TRUE,
-			    0);
+	gtk_container_add (GTK_CONTAINER (dlg->priv->plugin_manager_place_holder),
+	                   page_content);
 
 	gtk_widget_show_all (page_content);
 }
@@ -1195,7 +1194,7 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 	dlg->priv->auto_save_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "auto_save_spinbutton"));
 	dlg->priv->default_font_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "default_font_checkbutton"));
 	dlg->priv->font_button = GTK_WIDGET (gtk_builder_get_object (builder, "font_button"));
-	dlg->priv->font_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "font_hbox"));
+	dlg->priv->font_grid = GTK_WIDGET (gtk_builder_get_object (builder, "font_grid"));
 	dlg->priv->schemes_treeview_model = GTK_LIST_STORE (gtk_builder_get_object (builder, "schemes_treeview_model"));
 	dlg->priv->schemes_treeview = GTK_WIDGET (gtk_builder_get_object (builder, "schemes_treeview"));
 	dlg->priv->schemes_column = GTK_TREE_VIEW_COLUMN (gtk_builder_get_object (builder, "schemes_column"));
