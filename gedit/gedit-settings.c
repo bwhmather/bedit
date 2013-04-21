@@ -300,50 +300,6 @@ on_auto_save_interval_changed (GSettings     *settings,
 }
 
 static void
-on_undo_actions_limit_changed (GSettings     *settings,
-			       const gchar   *key,
-			       GeditSettings *gs)
-{
-	GList *docs, *l;
-	gint ul;
-
-	ul = g_settings_get_int (settings, key);
-
-	ul = CLAMP (ul, -1, 250);
-
-	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
-
-	for (l = docs; l != NULL; l = g_list_next (l))
-	{
-		gtk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (l->data),
-						       ul);
-	}
-
-	g_list_free (docs);
-}
-
-static void
-on_bracket_matching_changed (GSettings     *settings,
-			     const gchar   *key,
-			     GeditSettings *gs)
-{
-	GList *docs, *l;
-	gboolean enable;
-
-	enable = g_settings_get_boolean (settings, key);
-
-	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
-
-	for (l = docs; l != NULL; l = g_list_next (l))
-	{
-		gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (l->data),
-								   enable);
-	}
-
-	g_list_free (docs);
-}
-
-static void
 on_syntax_highlighting_changed (GSettings     *settings,
 				const gchar   *key,
 				GeditSettings *gs)
@@ -380,27 +336,6 @@ on_syntax_highlighting_changed (GSettings     *settings,
 
 		windows = g_list_next (windows);
 	}
-}
-
-static void
-on_search_highlighting_changed (GSettings     *settings,
-				const gchar   *key,
-				GeditSettings *gs)
-{
-	GList *docs, *l;
-	gboolean enable;
-
-	enable = g_settings_get_boolean (settings, key);
-
-	docs = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
-
-	for (l = docs; l != NULL; l = g_list_next (l))
-	{
-		gedit_document_set_enable_search_highlighting  (GEDIT_DOCUMENT (l->data),
-								enable);
-	}
-
-	g_list_free (docs);
 }
 
 static void
@@ -449,20 +384,8 @@ gedit_settings_init (GeditSettings *gs)
 			  G_CALLBACK (on_auto_save_interval_changed),
 			  gs);
 	g_signal_connect (gs->priv->editor,
-			  "changed::undo-actions-limit",
-			  G_CALLBACK (on_undo_actions_limit_changed),
-			  gs);
-	g_signal_connect (gs->priv->editor,
-			  "changed::bracket-matching",
-			  G_CALLBACK (on_bracket_matching_changed),
-			  gs);
-	g_signal_connect (gs->priv->editor,
 			  "changed::syntax-highlighting",
 			  G_CALLBACK (on_syntax_highlighting_changed),
-			  gs);
-	g_signal_connect (gs->priv->editor,
-			  "changed::search-highlighting",
-			  G_CALLBACK (on_search_highlighting_changed),
 			  gs);
 }
 

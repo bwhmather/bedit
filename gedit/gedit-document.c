@@ -946,9 +946,6 @@ static void
 gedit_document_init (GeditDocument *doc)
 {
 	GtkSourceStyleScheme *style_scheme;
-	gint undo_actions;
-	gboolean bracket_matching;
-	gboolean search_hl;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
@@ -979,21 +976,20 @@ gedit_document_init (GeditDocument *doc)
 
 	doc->priv->encoding = gedit_encoding_get_utf8 ();
 
-	undo_actions = g_settings_get_int (doc->priv->editor_settings,
-					   GEDIT_SETTINGS_MAX_UNDO_ACTIONS);
-	bracket_matching = g_settings_get_boolean (doc->priv->editor_settings,
-						   GEDIT_SETTINGS_BRACKET_MATCHING);
-	search_hl = g_settings_get_boolean (doc->priv->editor_settings,
-					    GEDIT_SETTINGS_SEARCH_HIGHLIGHTING);
+	g_settings_bind (doc->priv->editor_settings,
+	                 GEDIT_SETTINGS_MAX_UNDO_ACTIONS,
+	                 doc,
+	                 "max-undo-levels");
 
-	gtk_source_buffer_set_max_undo_levels (GTK_SOURCE_BUFFER (doc),
-					       undo_actions);
+	g_settings_bind (doc->priv->editor_settings,
+	                 GEDIT_SETTINGS_BRACKET_MATCHING,
+	                 doc,
+	                 "bracket-matching");
 
-	gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (doc),
-							   bracket_matching);
-
-	gedit_document_set_enable_search_highlighting (doc,
-						       search_hl);
+	g_settings_bind (doc->priv->editor_settings,
+	                 GEDIT_SETTINGS_SEARCH_HIGHLIGHTING,
+	                 doc,
+	                 "enable-search-highlighting");
 
 	style_scheme = get_default_style_scheme (doc->priv->editor_settings);
 	if (style_scheme != NULL)
