@@ -45,9 +45,7 @@
   <object class="GtkAction" id="remove_snippet_action">
     <signal name="activate" handler="on_action_remove_snippet_activated" swapped="no"/>
   </object>
-  <object class="GeditDocument" id="source_buffer">
-    <property name="highlight-matching-brackets">True</property>
-  </object>
+  <object class="GeditDocument" id="source_buffer"/>
   <object class="GeditSnippetsManager" id="snippets_manager">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
