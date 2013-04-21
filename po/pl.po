@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-09 19:14+0200\n"
-"PO-Revision-Date: 2013-04-09 19:15+0200\n"
-"Last-Translator: Wojciech Szczęsny <wszczesny@aviary.pl>\n"
+"POT-Creation-Date: 2013-04-21 20:54+0200\n"
+"PO-Revision-Date: 2013-04-21 20:55+0200\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -968,7 +968,7 @@ msgstr "Odnaleziono i zmieniono jedno wystąpienie"
 msgid "\"%s\" not found"
 msgstr "Wyrażenie \"%s\" nie zostało odnalezione"
 
-#: ../gedit/gedit-document.c:1223 ../gedit/gedit-document.c:1249
+#: ../gedit/gedit-document.c:1224 ../gedit/gedit-document.c:1250
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Niezapisany dokument %d"
@@ -1138,7 +1138,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "Ko_dowania widoczne w menu:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:52
-#: ../gedit/gedit-preferences-dialog.c:909
+#: ../gedit/gedit-preferences-dialog.c:911
 msgid "All Files"
 msgstr "Wszystkie pliki"
 
@@ -1570,44 +1570,44 @@ msgstr "Pusty"
 msgid "Hide panel"
 msgstr "Ukrywa panel"
 
-#: ../gedit/gedit-preferences-dialog.c:423
+#: ../gedit/gedit-preferences-dialog.c:425
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Kliknięcie tego przycisku umożliwia wybór czcionki edytora"
 
-#: ../gedit/gedit-preferences-dialog.c:438
+#: ../gedit/gedit-preferences-dialog.c:440
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "_Systemowa o stałej szerokości (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:676
+#: ../gedit/gedit-preferences-dialog.c:678
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Nie można utworzyć katalogu \"%s\": zmienna g_mkdir_with_parents() się nie "
 "powiodła: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:860
+#: ../gedit/gedit-preferences-dialog.c:862
 msgid "The selected color scheme cannot be installed."
 msgstr "Wybrany schemat kolorów nie mógł zostać zainstalowany."
 
-#: ../gedit/gedit-preferences-dialog.c:887
+#: ../gedit/gedit-preferences-dialog.c:889
 msgid "Add Scheme"
 msgstr "Dodaj schemat"
 
-#: ../gedit/gedit-preferences-dialog.c:894
+#: ../gedit/gedit-preferences-dialog.c:896
 msgid "A_dd Scheme"
 msgstr "_Dodaj schemat"
 
-#: ../gedit/gedit-preferences-dialog.c:902
+#: ../gedit/gedit-preferences-dialog.c:904
 msgid "Color Scheme Files"
 msgstr "Pliki schematów kolorów"
 
-#: ../gedit/gedit-preferences-dialog.c:954
+#: ../gedit/gedit-preferences-dialog.c:956
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nie można usunąć schematu kolorów \"%s\"."
 
-#: ../gedit/gedit-preferences-dialog.c:1177
+#: ../gedit/gedit-preferences-dialog.c:1158
 msgid "gedit Preferences"
 msgstr "Preferencje programu gedit"
 
@@ -1616,7 +1616,7 @@ msgstr "Preferencje programu gedit"
 msgid "Preferences"
 msgstr "Preferencje"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:552
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:569
 msgid "_Display line numbers"
 msgstr "Wyświetla_nie numerów wierszy"
 
@@ -1710,26 +1710,30 @@ msgid "Color Scheme"
 msgstr "Schemat kolorów"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
+msgid "column"
+msgstr "kolumna"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
 msgstr "Instaluje schemat"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
+#: ../gedit/gedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
 msgstr "Zainstaluj schemat"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26
+#: ../gedit/gedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
 msgstr "Odinstalowuje schemat"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:27
+#: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Uninstall Scheme"
 msgstr "Odinstaluj schemat"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Font & Colors"
 msgstr "Czcionki i kolory"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:30
 msgid "Plugins"
 msgstr "Wtyczki"
 
@@ -2279,22 +2283,22 @@ msgstr "Panel _dolny"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Przełącza wyświetlanie panelu dolnego w bieżącym oknie"
 
-#: ../gedit/gedit-utils.c:1032
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Proszę sprawdzić poprawność instalacji."
 
-#: ../gedit/gedit-utils.c:1090
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Nie można otworzyć pliku interfejsu użytkownika %s. Błąd: %s"
 
-#: ../gedit/gedit-utils.c:1109
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Nie można odnaleźć obiektu \"%s\" w pliku %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1332
+#: ../gedit/gedit-utils.c:1333
 #, c-format
 msgid "/ on %s"
 msgstr "/ na %s"
