@@ -981,17 +981,20 @@ gedit_document_init (GeditDocument *doc)
 	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_MAX_UNDO_ACTIONS,
 	                 doc,
-	                 "max-undo-levels");
+	                 "max-undo-levels",
+	                 G_SETTINGS_BIND_GET);
 
 	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_BRACKET_MATCHING,
 	                 doc,
-	                 "bracket-matching");
+	                 "highlight-matching-brackets",
+	                 G_SETTINGS_BIND_GET);
 
 	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_SEARCH_HIGHLIGHTING,
 	                 doc,
-	                 "enable-search-highlighting");
+	                 "enable-search-highlighting",
+	                 G_SETTINGS_BIND_GET);
 
 	style_scheme = get_default_style_scheme (priv->editor_settings);
 	if (style_scheme != NULL)
