@@ -1156,7 +1156,7 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 				NULL);
 
 	gtk_window_set_title (GTK_WINDOW (dlg), _("gedit Preferences"));
-	gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
+	gtk_window_set_resizable (GTK_WINDOW (dlg), TRUE);
 	gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
 
 	/* HIG defaults */
@@ -1208,7 +1208,7 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 	g_object_unref (builder);
 
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
-			    dlg->priv->notebook, FALSE, FALSE, 0);
+			    dlg->priv->notebook, TRUE, TRUE, 0);
 	g_object_unref (dlg->priv->notebook);
 	gtk_container_set_border_width (GTK_CONTAINER (dlg->priv->notebook), 5);
 

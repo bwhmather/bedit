@@ -766,6 +766,8 @@
                       <object class="GtkBox" id="vbox1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <child>
                           <object class="GtkScrolledWindow" id="schemes-scrolled-window">
@@ -886,6 +888,8 @@
               <object class="GtkBox" id="plugin_manager_place_holder">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
                 <property name="border_width">12</property>
                 <property name="orientation">vertical</property>
                 <child>
