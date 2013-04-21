@@ -945,53 +945,55 @@ get_default_content_type (void)
 static void
 gedit_document_init (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GtkSourceStyleScheme *style_scheme;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
 	doc->priv = GEDIT_DOCUMENT_GET_PRIVATE (doc);
+	priv = doc->priv;
 
-	doc->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
+	priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
 
-	doc->priv->location = NULL;
-	doc->priv->untitled_number = get_untitled_number ();
+	priv->location = NULL;
+	priv->untitled_number = get_untitled_number ();
 
-	doc->priv->metadata_info = NULL;
+	priv->metadata_info = NULL;
 
-	doc->priv->content_type = get_default_content_type ();
+	priv->content_type = get_default_content_type ();
 
-	doc->priv->readonly = FALSE;
+	priv->readonly = FALSE;
 
-	doc->priv->stop_cursor_moved_emission = FALSE;
+	priv->stop_cursor_moved_emission = FALSE;
 
-	doc->priv->last_save_was_manually = TRUE;
-	doc->priv->language_set_by_user = FALSE;
+	priv->last_save_was_manually = TRUE;
+	priv->language_set_by_user = FALSE;
 
-	doc->priv->dispose_has_run = FALSE;
+	priv->dispose_has_run = FALSE;
 
-	doc->priv->mtime.tv_sec = 0;
-	doc->priv->mtime.tv_usec = 0;
+	priv->mtime.tv_sec = 0;
+	priv->mtime.tv_usec = 0;
 
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
-	doc->priv->encoding = gedit_encoding_get_utf8 ();
+	priv->encoding = gedit_encoding_get_utf8 ();
 
-	g_settings_bind (doc->priv->editor_settings,
+	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_MAX_UNDO_ACTIONS,
 	                 doc,
 	                 "max-undo-levels");
 
-	g_settings_bind (doc->priv->editor_settings,
+	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_BRACKET_MATCHING,
 	                 doc,
 	                 "bracket-matching");
 
-	g_settings_bind (doc->priv->editor_settings,
+	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_SEARCH_HIGHLIGHTING,
 	                 doc,
 	                 "enable-search-highlighting");
 
-	style_scheme = get_default_style_scheme (doc->priv->editor_settings);
+	style_scheme = get_default_style_scheme (priv->editor_settings);
 	if (style_scheme != NULL)
 		gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (doc),
 						    style_scheme);
