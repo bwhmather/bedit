@@ -89,6 +89,8 @@ struct _GeditPreferencesDialogPrivate
 	/* Style Scheme */
 	GtkListStore	*schemes_treeview_model;
 	GtkWidget	*schemes_treeview;
+	GtkTreeViewColumn *schemes_column;
+	GtkCellRenderer *schemes_renderer;
 	GtkWidget	*install_scheme_button;
 	GtkWidget	*uninstall_scheme_button;
 	GtkWidget	*schemes_scrolled_window;
@@ -1059,40 +1061,18 @@ scheme_description_cell_data_func (GtkTreeViewColumn *column,
 static void
 setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
 {
-	GtkCellRenderer *renderer;
-	GtkTreeViewColumn *column;
+	GeditPreferencesDialogPrivate *priv = dlg->priv;
 	GtkTreeSelection *selection;
 	GtkStyleContext *context;
 	const gchar *def_id;
 
 	gedit_debug (DEBUG_PREFS);
 
-	/* Create GtkListStore for styles & setup treeview. */
-	dlg->priv->schemes_treeview_model = gtk_list_store_new (NUM_COLUMNS,
-								G_TYPE_STRING,
-								G_TYPE_STRING,
-								G_TYPE_STRING,
-								G_TYPE_STRING);
-
-	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dlg->priv->schemes_treeview_model),
-					      0,
-					      GTK_SORT_ASCENDING);
-	gtk_tree_view_set_model (GTK_TREE_VIEW (dlg->priv->schemes_treeview),
-				 GTK_TREE_MODEL (dlg->priv->schemes_treeview_model));
-
-	column = gtk_tree_view_column_new ();
-
-	renderer = gtk_cell_renderer_text_new ();
-	g_object_set (renderer, "ellipsize", PANGO_ELLIPSIZE_END, NULL);
-	gtk_tree_view_column_pack_start (column, renderer, TRUE);
-	gtk_tree_view_column_set_cell_data_func (column,
-						 renderer,
+	gtk_tree_view_column_set_cell_data_func (priv->schemes_column,
+						 priv->schemes_renderer,
 						 scheme_description_cell_data_func,
 						 dlg,
 						 NULL);
-
-	gtk_tree_view_append_column (GTK_TREE_VIEW (dlg->priv->schemes_treeview),
-				     column);
 
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->schemes_treeview));
 	gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
@@ -1158,6 +1138,7 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 		"adjustment1",
 		"adjustment2",
 		"adjustment3",
+		"schemes_treeview_model",
 		NULL
 	};
 
@@ -1215,7 +1196,10 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 	dlg->priv->default_font_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "default_font_checkbutton"));
 	dlg->priv->font_button = GTK_WIDGET (gtk_builder_get_object (builder, "font_button"));
 	dlg->priv->font_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "font_hbox"));
+	dlg->priv->schemes_treeview_model = GTK_LIST_STORE (gtk_builder_get_object (builder, "schemes_treeview_model"));
 	dlg->priv->schemes_treeview = GTK_WIDGET (gtk_builder_get_object (builder, "schemes_treeview"));
+	dlg->priv->schemes_column = GTK_TREE_VIEW_COLUMN (gtk_builder_get_object (builder, "schemes_column"));
+	dlg->priv->schemes_renderer = GTK_CELL_RENDERER (gtk_builder_get_object (builder, "schemes_renderer"));
 	dlg->priv->schemes_scrolled_window = GTK_WIDGET (gtk_builder_get_object (builder, "schemes-scrolled-window"));
 	dlg->priv->install_scheme_button = GTK_WIDGET (gtk_builder_get_object (builder, "install_scheme_button"));
 	dlg->priv->uninstall_scheme_button = GTK_WIDGET (gtk_builder_get_object (builder, "uninstall_scheme_button"));
