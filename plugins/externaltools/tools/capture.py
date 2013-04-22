@@ -206,13 +206,17 @@ class Capture(GObject.Object):
         if self.idle_write_id:
             GLib.source_remove(self.idle_write_id)
             self.idle_write_id = 0
+            if self.pipe:
+                self.pipe.stdin.close()
 
         if self.out_channel_id:
+            GLib.source_remove(self.out_channel_id)
             self.out_channel.shutdown(True)
             self.out_channel = None
             self.out_channel_id = 0
 
         if self.err_channel_id:
+            GLib.source_remove(self.err_channel_id)
             self.err_channel.shutdown(True)
             self.err_channel = None
             self.err_channel = 0
@@ -223,6 +227,8 @@ class Capture(GObject.Object):
                 self.tried_killing = True
             else:
                 os.kill(self.pipe.pid, signal.SIGKILL)
+
+            self.pipe = None
 
     def emit_end_execute(self, error_code):
         self.emit('end-execute', error_code)
