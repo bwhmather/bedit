@@ -909,7 +909,9 @@ class Manager(GObject.Object):
             escaped = saxutils.escape(tool.name)
 
             if tool.shortcut:
-                markup = '%s (<b>%s</b>)' % (escaped, saxutils.escape(tool.shortcut))
+                key, mods = Gtk.accelerator_parse(tool.shortcut)
+                label = Gtk.accelerator_get_label(key, mods)
+                markup = '%s (<b>%s</b>)' % (escaped, label)
             else:
                 markup = escaped
 
