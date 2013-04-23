@@ -32,7 +32,6 @@
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
-#include <libgd/gd.h>
 
 #include "gedit-app.h"
 #include "gedit-notebook.h"
@@ -537,7 +536,7 @@ set_info_bar (GeditTab  *tab,
 
 	if (info_bar == NULL)
 	{
-		gd_revealer_set_reveal_child (GD_REVEALER (tab->priv->info_bar_revealer), FALSE);
+		gtk_revealer_set_reveal_child (GTK_REVEALER (tab->priv->info_bar_revealer), FALSE);
 		tab->priv->info_bar = NULL;
 	}
 	else
@@ -545,7 +544,7 @@ set_info_bar (GeditTab  *tab,
 		/* lazy init the reveler */
 		if (tab->priv->info_bar_revealer == NULL)
 		{
-			tab->priv->info_bar_revealer = gd_revealer_new ();
+			tab->priv->info_bar_revealer = gtk_revealer_new ();
 			gtk_widget_show (tab->priv->info_bar_revealer);
 			gtk_box_pack_start (GTK_BOX (tab), tab->priv->info_bar_revealer, FALSE, FALSE, 0);
 		}
@@ -563,7 +562,7 @@ set_info_bar (GeditTab  *tab,
 		}
 
 		gtk_container_add (GTK_CONTAINER (tab->priv->info_bar_revealer), info_bar);
-		gd_revealer_set_reveal_child (GD_REVEALER (tab->priv->info_bar_revealer), TRUE);
+		gtk_revealer_set_reveal_child (GTK_REVEALER (tab->priv->info_bar_revealer), TRUE);
 
 		g_object_add_weak_pointer (G_OBJECT (info_bar),
 					   (gpointer *)&tab->priv->info_bar);

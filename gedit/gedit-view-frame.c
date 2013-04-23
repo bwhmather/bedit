@@ -28,7 +28,6 @@
 #include "gedit-marshal.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
-#include <libgd/gd.h>
 
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
@@ -172,7 +171,7 @@ hide_search_widget (GeditViewFrame *frame,
 		frame->priv->typeselect_flush_timeout = 0;
 	}
 
-	gd_revealer_set_reveal_child (GD_REVEALER (frame->priv->slider), FALSE);
+	gtk_revealer_set_reveal_child (GTK_REVEALER (frame->priv->slider), FALSE);
 
 	if (cancel)
 	{
@@ -1109,7 +1108,7 @@ start_interactive_search_real (GeditViewFrame *frame)
 	GtkTextIter iter;
 	GtkTextMark *mark;
 
-	if (gd_revealer_get_reveal_child (GD_REVEALER (frame->priv->slider)))
+	if (gtk_revealer_get_reveal_child (GTK_REVEALER (frame->priv->slider)))
 	{
 		if (frame->priv->search_mode != frame->priv->request_search_mode)
 		{
@@ -1157,7 +1156,7 @@ start_interactive_search_real (GeditViewFrame *frame)
 	frame->priv->start_mark = gtk_text_buffer_create_mark (buffer, NULL,
 	                                                       &iter, FALSE);
 
-	gd_revealer_set_reveal_child (GD_REVEALER (frame->priv->slider), TRUE);
+	gtk_revealer_set_reveal_child (GTK_REVEALER (frame->priv->slider), TRUE);
 
 	/* NOTE: we must be very careful here to not have any text before
 	   focusing the entry because when the entry is focused the text is
@@ -1270,7 +1269,7 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	gtk_box_pack_start (GTK_BOX (frame), frame->priv->overlay, TRUE, TRUE, 0);
 
 	/* Add slider */
-	frame->priv->slider = gd_revealer_new ();
+	frame->priv->slider = gtk_revealer_new ();
 	gtk_container_add (GTK_CONTAINER (frame->priv->slider),
 	                   create_search_widget (frame));
 	gtk_widget_show (frame->priv->slider);
