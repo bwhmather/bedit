@@ -20,19 +20,21 @@
 
   <title>Quick open</title>
 
-  <p>As the name of this plugin would imply, the <app>Quick Open</app>
-  plugin helps you to open files more quickly than the regular way of opening
+  <p>As the name of this plugin would imply, the <app>Quick Open</app> plugin
+  helps you to open files more quickly than using the usual ways of opening
   files. To enable this plugin, select <guiseq><gui style="menu">gedit</gui>
   <gui>Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></guiseq>.</p>
     
   <p>Once you have enabled the <app>Quick Open</app> plugin you can use it as
   follows:</p>
+
   <steps>
-    <item><p>Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>
-    Ctrl</key><key>Alt</key><key>O</key></keyseq>, or by selecting <guiseq>
-    <gui>File</gui><gui>Quick Open</gui></guiseq>.</p>
+    <item><p>Open the <app>Quick Open</app> dialog box by pressing
+    <keyseq><key>Ctrl</key><key>Alt</key><key>O</key></keyseq>, or by selecting
+    <guiseq><gui>File</gui><gui>Quick Open</gui></guiseq>.</p>
     <p>The <gui>Quick Open</gui> file dialog will appear.</p></item>
-    <item><p>Use your mouse to select the file or files that you want to open.</p>
+    <item><p>Use your mouse to select the file or files that you want to
+    open.</p>
     <p>To select several individual files, hold down your <key>Ctrl</key> key
     while you click on the files that you want to open.</p>
     <p>To select a group of files, click on the first file that you want to
@@ -41,21 +43,23 @@
     <item><p>Click <gui>Open</gui>.</p></item>
   </steps>
 
-  <p>You can find files in:</p>
+  <p><app>Quick Open</app> will look for files in:</p>
 
   <list>
-    <item><p>The directory of the currently open document</p></item>
-    <item><p>The root directory of the <app xref="gedit-plugins-file-browser">
-	File Browser Pane</app> plugin</p></item>
+    <item><p>The directory of the currently opened document</p></item>
+    <item><p>The root directory of the
+    <app xref="gedit-plugins-file-browser">File Browser Pane</app>
+    plugin</p></item>
     <item><p>Recent documents which are also shown in the<file>Recent</file>
     folder in <app>Files</app></p></item>
-    <item><p>Directories you have bookmarked in <app>Files</app></p></item>
-    <item><p>Your <file>Desktop </file> directory</p></item>
+    <item><p>Directories which you have bookmarked in
+    <app>Files</app></p></item>
+    <item><p>Your <file>Desktop</file> directory</p></item>
     <item><p>Your <file>Home</file> directory</p></item>
   </list>
 
   <note style="tip">
-    <p>The <app>Quick Open</app> displays files in any of the above locations
+    <p><app>Quick Open</app> displays files in any of the above locations
     regardless of whether or not you have opened them previously.</p>
   </note>
 
