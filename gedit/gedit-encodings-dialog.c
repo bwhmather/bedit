@@ -317,14 +317,17 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 {
 	GtkBuilder *builder;
 	GtkWidget *content;
-	GtkCellRenderer *cell_renderer;
-	GtkTreeModel *sort_model;
-	GtkTreeViewColumn *column;
 	GtkTreeIter parent_iter;
 	GtkTreeSelection *selection;
+	GtkTreeModel *sort_available;
+	GtkTreeModel *sort_displayed;
 	const GeditEncoding *enc;
 	int i;
 	gchar *root_objects[] = {
+		"available_liststore",
+		"sort_available",
+		"displayed_liststore",
+		"sort_displayed",
 		"encodings-dialog-contents",
 		NULL
 	};
@@ -369,7 +372,11 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 	dlg->priv->add_button = GTK_WIDGET (gtk_builder_get_object (builder, "add-button"));
 	dlg->priv->remove_button = GTK_WIDGET (gtk_builder_get_object (builder, "remove-button"));
 	dlg->priv->available_treeview = GTK_WIDGET (gtk_builder_get_object (builder, "available-treeview"));
+	dlg->priv->available_liststore = GTK_LIST_STORE (gtk_builder_get_object (builder, "available_liststore"));
+	sort_available = GTK_TREE_MODEL (gtk_builder_get_object (builder, "sort_available"));
 	dlg->priv->displayed_treeview = GTK_WIDGET (gtk_builder_get_object (builder, "displayed-treeview"));
+	dlg->priv->displayed_liststore = GTK_LIST_STORE (gtk_builder_get_object (builder, "displayed_liststore"));
+	sort_displayed = GTK_TREE_MODEL (gtk_builder_get_object (builder, "sort_displayed"));
 	g_object_unref (builder);
 
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
@@ -387,28 +394,6 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 			  dlg);
 
 	/* Tree view of available encodings */
-	dlg->priv->available_liststore = gtk_list_store_new (N_COLUMNS,
-							     G_TYPE_STRING,
-							     G_TYPE_STRING);
-
-	cell_renderer = gtk_cell_renderer_text_new ();
-	column = gtk_tree_view_column_new_with_attributes (_("_Description"),
-							   cell_renderer,
-							   "text", COLUMN_NAME,
-							   NULL);
-	gtk_tree_view_append_column (GTK_TREE_VIEW (dlg->priv->available_treeview),
-				     column);
-	gtk_tree_view_column_set_sort_column_id (column, COLUMN_NAME);
-
-	cell_renderer = gtk_cell_renderer_text_new ();
-	column = gtk_tree_view_column_new_with_attributes (_("_Encoding"),
-							   cell_renderer,
-							   "text",
-							   COLUMN_CHARSET,
-							   NULL);
-	gtk_tree_view_append_column (GTK_TREE_VIEW (dlg->priv->available_treeview),
-				     column);
-	gtk_tree_view_column_set_sort_column_id (column, COLUMN_CHARSET);
 
 	/* Add the data */
 	i = 0;
@@ -427,19 +412,11 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 	}
 
 	/* Sort model */
-	sort_model = gtk_tree_model_sort_new_with_model (GTK_TREE_MODEL (dlg->priv->available_liststore));
-	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort_model),
+	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort_available),
 					      COLUMN_NAME,
 					      GTK_SORT_ASCENDING);
 
-	gtk_tree_view_set_model (GTK_TREE_VIEW (dlg->priv->available_treeview),
-				 sort_model);
-	g_object_unref (G_OBJECT (dlg->priv->available_liststore));
-	g_object_unref (G_OBJECT (sort_model));
-
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->available_treeview));
-	gtk_tree_selection_set_mode (GTK_TREE_SELECTION (selection),
-				     GTK_SELECTION_MULTIPLE);
 
 	available_selection_changed_callback (selection, dlg);
 	g_signal_connect (selection,
@@ -448,47 +425,16 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 			  dlg);
 
 	/* Tree view of selected encodings */
-	dlg->priv->displayed_liststore = gtk_list_store_new (N_COLUMNS,
-							     G_TYPE_STRING,
-							     G_TYPE_STRING);
-
-	cell_renderer = gtk_cell_renderer_text_new ();
-	column = gtk_tree_view_column_new_with_attributes (_("_Description"),
-							   cell_renderer,
-							   "text", COLUMN_NAME,
-							   NULL);
-	gtk_tree_view_append_column (GTK_TREE_VIEW (dlg->priv->displayed_treeview),
-				     column);
-	gtk_tree_view_column_set_sort_column_id (column, COLUMN_NAME);
-
-	cell_renderer = gtk_cell_renderer_text_new ();
-	column = gtk_tree_view_column_new_with_attributes (_("_Encoding"),
-							   cell_renderer,
-							   "text",
-							   COLUMN_CHARSET,
-							   NULL);
-	gtk_tree_view_append_column (GTK_TREE_VIEW (dlg->priv->displayed_treeview),
-				     column);
-	gtk_tree_view_column_set_sort_column_id (column, COLUMN_CHARSET);
 
 	/* Add the data */
 	init_shown_in_menu_tree_model (dlg);
 
 	/* Sort model */
-	sort_model = gtk_tree_model_sort_new_with_model (GTK_TREE_MODEL (dlg->priv->displayed_liststore));
-
-	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE
-					      (sort_model), COLUMN_NAME,
+	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort_displayed),
+					      COLUMN_NAME,
 					      GTK_SORT_ASCENDING);
 
-	gtk_tree_view_set_model (GTK_TREE_VIEW (dlg->priv->displayed_treeview),
-				 sort_model);
-	g_object_unref (G_OBJECT (sort_model));
-	g_object_unref (G_OBJECT (dlg->priv->displayed_liststore));
-
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->displayed_treeview));
-	gtk_tree_selection_set_mode (GTK_TREE_SELECTION (selection),
-				     GTK_SELECTION_MULTIPLE);
 
 	displayed_selection_changed_callback (selection, dlg);
 	g_signal_connect (selection,
@@ -500,11 +446,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 GtkWidget *
 gedit_encodings_dialog_new (void)
 {
-	GtkWidget *dlg;
-
-	dlg = GTK_WIDGET (g_object_new (GEDIT_TYPE_ENCODINGS_DIALOG, NULL));
-
-	return dlg;
+	return GTK_WIDGET (g_object_new (GEDIT_TYPE_ENCODINGS_DIALOG, NULL));
 }
 
 /* ex:set ts=8 noet: */
