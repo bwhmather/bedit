@@ -101,7 +101,6 @@ struct _GeditPreferencesDialogPrivate
 	/* Tabs */
 	GtkWidget	*tabs_width_spinbutton;
 	GtkWidget	*insert_spaces_checkbutton;
-	GtkWidget	*tabs_width_hbox;
 
 	/* Auto indentation */
 	GtkWidget	*auto_indent_checkbutton;
@@ -114,7 +113,6 @@ struct _GeditPreferencesDialogPrivate
 	GtkWidget	*backup_copy_checkbutton;
 	GtkWidget	*auto_save_checkbutton;
 	GtkWidget	*auto_save_spinbutton;
-	GtkWidget	*autosave_hbox;
 
 	GtkWidget	*display_line_numbers_checkbutton;
 
@@ -145,18 +143,8 @@ gedit_preferences_dialog_dispose (GObject *object)
 }
 
 static void
-gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-	object_class->dispose = gedit_preferences_dialog_dispose;
-
-	g_type_class_add_private (object_class, sizeof (GeditPreferencesDialogPrivate));
-}
-
-static void
-dialog_response_handler (GtkDialog *dlg,
-			 gint       res_id)
+gedit_preferences_dialog_response (GtkDialog *dlg,
+                                   gint       res_id)
 {
 	gedit_debug (DEBUG_PREFS);
 
@@ -167,9 +155,6 @@ dialog_response_handler (GtkDialog *dlg,
 			                     GTK_WINDOW (dlg),
 			                     NULL,
 			                     "index#configure-gedit");
-
-			g_signal_stop_emission_by_name (dlg, "response");
-
 			break;
 
 		default:
@@ -178,33 +163,53 @@ dialog_response_handler (GtkDialog *dlg,
 }
 
 static void
-on_auto_save_changed (GSettings              *settings,
-		      const gchar            *key,
-		      GeditPreferencesDialog *dlg)
+gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 {
-	gboolean value;
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
-	gedit_debug (DEBUG_PREFS);
+	object_class->dispose = gedit_preferences_dialog_dispose;
 
-	value = g_settings_get_boolean (settings, key);
+	dialog_class->response = gedit_preferences_dialog_response;
 
-	gtk_widget_set_sensitive (dlg->priv->auto_save_spinbutton, value);
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+	                                             "/org/gnome/gedit/ui/gedit-preferences-dialog.ui");
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, notebook);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, display_line_numbers_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, right_margin_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, right_margin_position_spinbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, highlight_current_line_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, bracket_matching_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, wrap_text_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, split_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, tabs_width_spinbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, insert_spaces_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, auto_indent_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, backup_copy_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, auto_save_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, auto_save_spinbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, default_font_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, font_button);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, font_grid);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, schemes_treeview_model);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, schemes_treeview);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, schemes_column);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, schemes_renderer);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, schemes_scrolled_window);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, install_scheme_button);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, uninstall_scheme_button);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, schemes_toolbar);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, plugin_manager_place_holder);
+
+	g_type_class_add_private (object_class, sizeof (GeditPreferencesDialogPrivate));
 }
 
 static void
 setup_editor_page (GeditPreferencesDialog *dlg)
 {
-	gboolean auto_save;
-
 	gedit_debug (DEBUG_PREFS);
-
-	/* Get values */
-	auto_save = g_settings_get_boolean (dlg->priv->editor,
-					    GEDIT_SETTINGS_AUTO_SAVE);
-
-	/* Set widget sensitivity */
-	gtk_widget_set_sensitive (dlg->priv->auto_save_spinbutton,
-				  auto_save);
 
 	/* Connect signal */
 	g_settings_bind (dlg->priv->editor,
@@ -237,10 +242,11 @@ setup_editor_page (GeditPreferencesDialog *dlg)
 			 dlg->priv->auto_save_spinbutton,
 			 "value",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-	g_signal_connect (dlg->priv->editor,
-			  "changed::auto-save",
-			  G_CALLBACK (on_auto_save_changed),
-			  dlg);
+	g_settings_bind (dlg->priv->editor,
+			 GEDIT_SETTINGS_AUTO_SAVE,
+			 dlg->priv->auto_save_spinbutton,
+			 "sensitive",
+			 G_SETTINGS_BIND_GET);
 	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_AUTO_SAVE,
 			 dlg->priv->auto_save_checkbutton,
@@ -1131,85 +1137,12 @@ setup_plugins_page (GeditPreferencesDialog *dlg)
 static void
 gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 {
-	GtkBuilder *builder;
-	gchar *root_objects[] = {
-		"notebook",
-		"adjustment1",
-		"adjustment2",
-		"adjustment3",
-		"schemes_treeview_model",
-		NULL
-	};
-
 	gedit_debug (DEBUG_PREFS);
 
 	dlg->priv = GEDIT_PREFERENCES_DIALOG_GET_PRIVATE (dlg);
-
 	dlg->priv->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
 
-	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
-				GTK_STOCK_CLOSE,
-				GTK_RESPONSE_CLOSE,
-				GTK_STOCK_HELP,
-				GTK_RESPONSE_HELP,
-				NULL);
-
-	gtk_window_set_title (GTK_WINDOW (dlg), _("gedit Preferences"));
-	gtk_window_set_resizable (GTK_WINDOW (dlg), TRUE);
-	gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
-
-	/* HIG defaults */
-	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))), 2); /* 2 * 5 + 2 = 12 */
-	gtk_container_set_border_width (GTK_CONTAINER (gtk_dialog_get_action_area (GTK_DIALOG (dlg))), 5);
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (dlg))), 6);
-
-	g_signal_connect (dlg,
-			  "response",
-			  G_CALLBACK (dialog_response_handler),
-			  NULL);
-
-	builder = gtk_builder_new ();
-	gtk_builder_add_objects_from_resource (builder, "/org/gnome/gedit/ui/gedit-preferences-dialog.ui",
-	                                       root_objects, NULL);
-	dlg->priv->notebook = GTK_WIDGET (gtk_builder_get_object (builder, "notebook"));
-	g_object_ref (dlg->priv->notebook);
-	dlg->priv->display_line_numbers_checkbutton =
-		GTK_WIDGET (gtk_builder_get_object (builder, "display_line_numbers_checkbutton"));
-	dlg->priv->right_margin_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "right_margin_checkbutton"));
-	dlg->priv->right_margin_position_spinbutton =
-		GTK_WIDGET (gtk_builder_get_object (builder, "right_margin_position_spinbutton"));
-	dlg->priv->highlight_current_line_checkbutton =
-		GTK_WIDGET (gtk_builder_get_object (builder, "highlight_current_line_checkbutton"));
-	dlg->priv->bracket_matching_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "bracket_matching_checkbutton"));
-	dlg->priv->wrap_text_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "wrap_text_checkbutton"));
-	dlg->priv->split_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "split_checkbutton"));
-	dlg->priv->tabs_width_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "tabs_width_spinbutton"));
-	dlg->priv->tabs_width_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "tabs_width_hbox"));
-	dlg->priv->insert_spaces_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "insert_spaces_checkbutton"));
-	dlg->priv->auto_indent_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "auto_indent_checkbutton"));
-	dlg->priv->autosave_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "autosave_hbox"));
-	dlg->priv->backup_copy_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "backup_copy_checkbutton"));
-	dlg->priv->auto_save_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "auto_save_checkbutton"));
-	dlg->priv->auto_save_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "auto_save_spinbutton"));
-	dlg->priv->default_font_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "default_font_checkbutton"));
-	dlg->priv->font_button = GTK_WIDGET (gtk_builder_get_object (builder, "font_button"));
-	dlg->priv->font_grid = GTK_WIDGET (gtk_builder_get_object (builder, "font_grid"));
-	dlg->priv->schemes_treeview_model = GTK_LIST_STORE (gtk_builder_get_object (builder, "schemes_treeview_model"));
-	dlg->priv->schemes_treeview = GTK_WIDGET (gtk_builder_get_object (builder, "schemes_treeview"));
-	dlg->priv->schemes_column = GTK_TREE_VIEW_COLUMN (gtk_builder_get_object (builder, "schemes_column"));
-	dlg->priv->schemes_renderer = GTK_CELL_RENDERER (gtk_builder_get_object (builder, "schemes_renderer"));
-	dlg->priv->schemes_scrolled_window = GTK_WIDGET (gtk_builder_get_object (builder, "schemes-scrolled-window"));
-	dlg->priv->install_scheme_button = GTK_WIDGET (gtk_builder_get_object (builder, "install_scheme_button"));
-	dlg->priv->uninstall_scheme_button = GTK_WIDGET (gtk_builder_get_object (builder, "uninstall_scheme_button"));
-	dlg->priv->schemes_toolbar = GTK_WIDGET (gtk_builder_get_object (builder, "schemes-toolbar"));
-	dlg->priv->plugin_manager_place_holder = GTK_WIDGET (gtk_builder_get_object (builder, "plugin_manager_place_holder"));
-	g_object_unref (builder);
-
-	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
-			    dlg->priv->notebook, TRUE, TRUE, 0);
-	g_object_unref (dlg->priv->notebook);
-	gtk_container_set_border_width (GTK_CONTAINER (dlg->priv->notebook), 5);
+	gtk_widget_init_template (GTK_WIDGET (dlg));
 
 	setup_editor_page (dlg);
 	setup_view_page (dlg);
