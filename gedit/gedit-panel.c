@@ -615,18 +615,23 @@ static void
 gedit_panel_constructed (GObject *object)
 {
 	GeditPanel *panel = GEDIT_PANEL (object);
+	GtkStyleContext *context;
 
 	/* Build the panel, now that we know the orientation
 			   (_init has been called previously) */
+
+	context = gtk_widget_get_style_context (GTK_WIDGET (panel));
 
 	build_notebook_for_panel (panel);
 	if (panel->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
 	{
 		build_horizontal_panel (panel);
+		gtk_style_context_add_class (context, GTK_STYLE_CLASS_HORIZONTAL);
 	}
 	else
 	{
 		build_vertical_panel (panel);
+		gtk_style_context_add_class (context, GTK_STYLE_CLASS_VERTICAL);
 	}
 
 	g_signal_connect (panel,
