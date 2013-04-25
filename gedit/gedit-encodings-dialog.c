@@ -54,7 +54,9 @@ struct _GeditEncodingsDialogPrivate
 	GSettings	*enc_settings;
 
 	GtkListStore	*available_liststore;
+	GtkTreeModel	*sort_available;
 	GtkListStore	*displayed_liststore;
+	GtkTreeModel	*sort_displayed;
 	GtkWidget	*available_treeview;
 	GtkWidget	*displayed_treeview;
 	GtkWidget	*add_button;
@@ -81,17 +83,65 @@ gedit_encodings_dialog_dispose (GObject *object)
 	GeditEncodingsDialogPrivate *priv = GEDIT_ENCODINGS_DIALOG (object)->priv;
 
 	g_clear_object (&priv->enc_settings);
+	g_message ("disposed");
 
 	G_OBJECT_CLASS (gedit_encodings_dialog_parent_class)->dispose (object);
+}
+
+static void
+gedit_encodings_dialog_response (GtkDialog *dialog,
+                                 gint       response_id)
+{
+	GeditEncodingsDialogPrivate *priv = GEDIT_ENCODINGS_DIALOG (dialog)->priv;
+
+	switch (response_id)
+	{
+		case GTK_RESPONSE_HELP:
+			gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
+			                     GTK_WINDOW (dialog),
+			                     "gedit",
+			                     NULL);
+			break;
+
+		case GTK_RESPONSE_OK:
+		{
+			gchar **encs;
+
+			encs = _gedit_encoding_list_to_strv (priv->show_in_menu_list);
+			g_settings_set_strv (priv->enc_settings,
+			                     GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU,
+			                     (const gchar * const *)encs);
+
+			g_strfreev (encs);
+		}
+		default:
+			break;
+	}
 }
 
 static void
 gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
 	object_class->finalize = gedit_encodings_dialog_finalize;
 	object_class->dispose = gedit_encodings_dialog_dispose;
+
+	dialog_class->response = gedit_encodings_dialog_response;
+
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+	                                             "/org/gnome/gedit/ui/gedit-encodings-dialog.ui");
+	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialogPrivate, add_button);
+	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialogPrivate, remove_button);
+	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialogPrivate, available_treeview);
+	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialogPrivate, available_liststore);
+	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialogPrivate, sort_available);
+	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialogPrivate, displayed_treeview);
+	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialogPrivate, displayed_liststore);
+	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialogPrivate, sort_displayed);
 
 	g_type_class_add_private (object_class, sizeof (GeditEncodingsDialogPrivate));
 }
@@ -284,105 +334,21 @@ init_shown_in_menu_tree_model (GeditEncodingsDialog *dialog)
 }
 
 static void
-response_handler (GtkDialog            *dialog,
-		  gint                  response_id,
-                  GeditEncodingsDialog *dlg)
-{
-	if (response_id == GTK_RESPONSE_HELP)
-	{
-		gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
-		                     GTK_WINDOW (dialog),
-		                     "gedit",
-		                     NULL);
-
-		g_signal_stop_emission_by_name (dialog, "response");
-		return;
-	}
-
-	if (response_id == GTK_RESPONSE_OK)
-	{
-		gchar **encs;
-
-		encs = _gedit_encoding_list_to_strv (dlg->priv->show_in_menu_list);
-		g_settings_set_strv (dlg->priv->enc_settings,
-				     GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU,
-				     (const gchar * const *)encs);
-
-		g_strfreev (encs);
-	}
-}
-
-static void
 gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 {
-	GtkBuilder *builder;
-	GtkWidget *content;
 	GtkTreeIter parent_iter;
 	GtkTreeSelection *selection;
-	GtkTreeModel *sort_available;
-	GtkTreeModel *sort_displayed;
 	const GeditEncoding *enc;
 	int i;
-	gchar *root_objects[] = {
-		"available_liststore",
-		"sort_available",
-		"displayed_liststore",
-		"sort_displayed",
-		"encodings-dialog-contents",
-		NULL
-	};
 
 	dlg->priv = GEDIT_ENCODINGS_DIALOG_GET_PRIVATE (dlg);
 
 	dlg->priv->enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
 
-	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
-				GTK_STOCK_CANCEL,
-				GTK_RESPONSE_CANCEL,
-				GTK_STOCK_OK,
-				GTK_RESPONSE_OK,
-				GTK_STOCK_HELP,
-				GTK_RESPONSE_HELP,
-				NULL);
-
-	gtk_window_set_title (GTK_WINDOW (dlg), _("Character Encodings"));
-	gtk_window_set_default_size (GTK_WINDOW (dlg), 650, 400);
-
-	/* HIG defaults */
-	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
-			     2); /* 2 * 5 + 2 = 12 */
-	gtk_container_set_border_width (GTK_CONTAINER (gtk_dialog_get_action_area (GTK_DIALOG (dlg))),
-					5);
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (dlg))), 6);
+	gtk_widget_init_template (GTK_WIDGET (dlg));
 
 	gtk_dialog_set_default_response (GTK_DIALOG (dlg),
 					 GTK_RESPONSE_OK);
-
-	g_signal_connect (dlg,
-			  "response",
-			  G_CALLBACK (response_handler),
-			  dlg);
-
-	builder = gtk_builder_new ();
-	gtk_builder_add_objects_from_resource (builder, "/org/gnome/gedit/ui/gedit-encodings-dialog.ui",
-	                                       root_objects, NULL);
-	content = GTK_WIDGET (gtk_builder_get_object (builder, "encodings-dialog-contents"));
-	g_object_ref (content);
-	dlg->priv->add_button = GTK_WIDGET (gtk_builder_get_object (builder, "add-button"));
-	dlg->priv->remove_button = GTK_WIDGET (gtk_builder_get_object (builder, "remove-button"));
-	dlg->priv->available_treeview = GTK_WIDGET (gtk_builder_get_object (builder, "available-treeview"));
-	dlg->priv->available_liststore = GTK_LIST_STORE (gtk_builder_get_object (builder, "available_liststore"));
-	sort_available = GTK_TREE_MODEL (gtk_builder_get_object (builder, "sort_available"));
-	dlg->priv->displayed_treeview = GTK_WIDGET (gtk_builder_get_object (builder, "displayed-treeview"));
-	dlg->priv->displayed_liststore = GTK_LIST_STORE (gtk_builder_get_object (builder, "displayed_liststore"));
-	sort_displayed = GTK_TREE_MODEL (gtk_builder_get_object (builder, "sort_displayed"));
-	g_object_unref (builder);
-
-	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
-			    content, TRUE, TRUE, 0);
-	g_object_unref (content);
-	gtk_container_set_border_width (GTK_CONTAINER (content), 5);
 
 	g_signal_connect (dlg->priv->add_button,
 			  "clicked",
@@ -412,7 +378,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 	}
 
 	/* Sort model */
-	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort_available),
+	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dlg->priv->sort_available),
 					      COLUMN_NAME,
 					      GTK_SORT_ASCENDING);
 
@@ -430,7 +396,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 	init_shown_in_menu_tree_model (dlg);
 
 	/* Sort model */
-	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (sort_displayed),
+	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dlg->priv->sort_displayed),
 					      COLUMN_NAME,
 					      GTK_SORT_ASCENDING);
 

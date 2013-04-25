@@ -23,12 +23,13 @@
   <object class="GtkTreeModelSort" id="sort_displayed">
     <property name="model">displayed_liststore</property>
   </object>
-  <object class="GtkDialog" id="encodings-dialog">
+  <template class="GeditEncodingsDialog" parent="GtkDialog">
     <property name="width_request">650</property>
     <property name="height_request">400</property>
     <property name="can_focus">False</property>
     <property name="has_focus">False</property>
     <property name="is_focus">False</property>
+    <property name="border_width">5</property>
     <property name="title" translatable="yes">Character encodings</property>
     <property name="modal">True</property>
     <property name="destroy_with_parent">True</property>
@@ -40,6 +41,7 @@
         <property name="has_focus">False</property>
         <property name="is_focus">False</property>
         <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
         <child internal-child="action_area">
           <object class="GtkButtonBox" id="dialog-action_area3">
             <property name="visible">True</property>
@@ -47,6 +49,8 @@
             <property name="has_focus">False</property>
             <property name="is_focus">False</property>
             <property name="layout_style">end</property>
+            <property name="border_width">5</property>
+            <property name="spacing">6</property>
             <child>
               <object class="GtkButton" id="helpbutton1">
                 <property name="label">gtk-help</property>
@@ -110,7 +114,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkGrid" id="encodings-dialog-contents">
+          <object class="GtkGrid" id="encodings_dialog_contents">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="has_focus">False</property>
@@ -119,7 +123,7 @@
             <property name="column_spacing">6</property>
             <property name="column_homogeneous">True</property>
             <child>
-              <object class="GtkLabel" id="available-label">
+              <object class="GtkLabel" id="available_label">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="has_focus">False</property>
@@ -128,7 +132,7 @@
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes">A_vailable encodings:</property>
                 <property name="use_underline">True</property>
-                <property name="mnemonic_widget">available-treeview</property>
+                <property name="mnemonic_widget">available_treeview</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -147,7 +151,7 @@
                 <property name="vexpand">True</property>
                 <property name="shadow_type">etched-in</property>
                 <child>
-                  <object class="GtkTreeView" id="available-treeview">
+                  <object class="GtkTreeView" id="available_treeview">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="has_focus">False</property>
@@ -155,7 +159,7 @@
                     <property name="model">sort_available</property>
                     <property name="rules_hint">True</property>
                     <child internal-child="selection">
-                      <object class="GtkTreeSelection" id="treeview-selection">
+                      <object class="GtkTreeSelection" id="treeview_selection">
                         <property name="mode">multiple</property>
                       </object>
                     </child>
@@ -194,7 +198,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="add-button">
+              <object class="GtkButton" id="add_button">
                 <property name="label">gtk-add</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
@@ -214,7 +218,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="remove-button">
+              <object class="GtkButton" id="remove_button">
                 <property name="label">gtk-remove</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
@@ -241,7 +245,7 @@
                 <property name="is_focus">False</property>
                 <property name="shadow_type">etched-in</property>
                 <child>
-                  <object class="GtkTreeView" id="displayed-treeview">
+                  <object class="GtkTreeView" id="displayed_treeview">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="has_focus">False</property>
@@ -290,7 +294,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="displayed-label">
+              <object class="GtkLabel" id="displayed_label">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="has_focus">False</property>
@@ -299,7 +303,7 @@
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes">E_ncodings shown in menu:</property>
                 <property name="use_underline">True</property>
-                <property name="mnemonic_widget">displayed-treeview</property>
+                <property name="mnemonic_widget">displayed_treeview</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -322,5 +326,5 @@
       <action-widget response="-6">closebutton1</action-widget>
       <action-widget response="-5">button1</action-widget>
     </action-widgets>
-  </object>
+  </template>
 </interface>

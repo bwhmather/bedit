@@ -158,7 +158,7 @@ gedit_preferences_dialog_response (GtkDialog *dlg,
 			break;
 
 		default:
-			gtk_widget_destroy (GTK_WIDGET(dlg));
+			gtk_widget_destroy (GTK_WIDGET (dlg));
 	}
 }
 

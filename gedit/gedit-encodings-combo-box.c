@@ -187,7 +187,10 @@ dialog_response_cb (GtkDialog              *dialog,
 		update_menu (menu);
 	}
 
-	gtk_widget_destroy (GTK_WIDGET (dialog));
+	if (response_id != GTK_RESPONSE_HELP)
+	{
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+	}
 }
 
 static void
