@@ -548,18 +548,21 @@ static void
 build_vertical_panel (GeditPanel *panel)
 {
 	GtkStyleContext *context;
+	GtkWidget *title_frame;
 	GtkWidget *title_hbox;
 	GtkWidget *icon_name_hbox;
 	GtkWidget *dummy_label;
 	GtkWidget *close_button;
 
-	context = gtk_widget_get_style_context (GTK_WIDGET (panel));
+	/* Create title */
+	title_frame = gtk_frame_new (NULL);
+	context = gtk_widget_get_style_context (GTK_WIDGET (title_frame));
 	gtk_style_context_add_class (context, "title");
-
-	/* Create title hbox */
-	title_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-	gtk_box_pack_start (GTK_BOX (panel->priv->main_box), title_hbox,
+	gtk_box_pack_start (GTK_BOX (panel->priv->main_box), title_frame,
 	                             FALSE, FALSE, 0);
+
+	title_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+	gtk_container_add (GTK_CONTAINER (title_frame), title_hbox);
 
 	icon_name_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 	gtk_box_pack_start (GTK_BOX (title_hbox),
@@ -602,7 +605,7 @@ build_vertical_panel (GeditPanel *panel)
 			    FALSE,
 			    0);
 
-	gtk_widget_show_all (title_hbox);
+	gtk_widget_show_all (title_frame);
 
 	gtk_box_pack_start (GTK_BOX (panel->priv->main_box),
 			    panel->priv->notebook,
