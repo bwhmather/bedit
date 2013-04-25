@@ -35,8 +35,8 @@ msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
 "keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-24 08:31+0000\n"
-"PO-Revision-Date: 2013-04-24 17:20+0300\n"
+"POT-Creation-Date: 2013-04-24 21:55+0000\n"
+"PO-Revision-Date: 2013-04-25 09:07+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
@@ -760,10 +760,10 @@ msgid_plural "Loading %d files…"
 msgstr[0] "Φόρτωση %d αρχείου…"
 msgstr[1] "Φόρτωση %d αρχείων…"
 
-#. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442
-msgid "Open Files"
-msgstr "Άνοιγμα αρχείων"
+#. Translators: "Open" is the title of the file chooser window
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1471
+msgid "Open"
+msgstr "Άνοιγμα"
 
 #: ../gedit/gedit-commands-file.c:553
 #, c-format
@@ -1094,17 +1094,9 @@ msgstr "Τρέχον Locale (%s)"
 msgid "Add or Remove..."
 msgstr "Προσθήκη ή Αφαίρεση..."
 
-#: ../gedit/gedit-encodings-dialog.c:345
+#: ../gedit/gedit-encodings-dialog.c:348
 msgid "Character Encodings"
 msgstr "Κωδικοποιήσεις χαρακτήρων"
-
-#: ../gedit/gedit-encodings-dialog.c:395 ../gedit/gedit-encodings-dialog.c:456
-msgid "_Description"
-msgstr "_Περιγραφή"
-
-#: ../gedit/gedit-encodings-dialog.c:404 ../gedit/gedit-encodings-dialog.c:465
-msgid "_Encoding"
-msgstr "Κω_δικοποίηση"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-encodings-dialog.ui.h:1
@@ -1116,11 +1108,19 @@ msgid "A_vailable encodings:"
 msgstr "Δια_θέσιμες κωδικοποιήσεις:"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:3
+msgid "_Description"
+msgstr "_Περιγραφή"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:4
+msgid "_Encoding"
+msgstr "Κω_δικοποίηση"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:5
 msgid "E_ncodings shown in menu:"
 msgstr "Κω_δικοποιήσεις που εμφανίζονται στο μενού:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:52
-#: ../gedit/gedit-preferences-dialog.c:911
+#: ../gedit/gedit-preferences-dialog.c:917
 msgid "All Files"
 msgstr "Όλα τα Αρχεία"
 
@@ -1572,56 +1572,52 @@ msgstr "Κενή"
 msgid "Hide panel"
 msgstr "Απόκρυψη πλαισίου"
 
-#: ../gedit/gedit-preferences-dialog.c:425
+#: ../gedit/gedit-preferences-dialog.c:431
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Πατήστε αυτό το κουμπί για να επιλέξετε τη γραμματοσειρά που θα "
 "χρησιμοποιείται από τον επεξεργαστή"
 
-#: ../gedit/gedit-preferences-dialog.c:440
+#: ../gedit/gedit-preferences-dialog.c:446
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr ""
 "_Χρήση της προκαθορισμένης γραμματοσειράς σταθερού πλάτους του συστήματος "
 "(%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:678
+#: ../gedit/gedit-preferences-dialog.c:684
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Δεν είναι δυνατή η δημιουργία του καταλόγου '%s': g_mkdir_with_parents() "
 "απέτυχε: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:862
+#: ../gedit/gedit-preferences-dialog.c:868
 msgid "The selected color scheme cannot be installed."
 msgstr ""
 "Το επιλεγμένο σχήμα χρώματος δεν μπορεί να μετακινηθεί στα απορρίμματα."
 
-#: ../gedit/gedit-preferences-dialog.c:889
+#: ../gedit/gedit-preferences-dialog.c:895
 msgid "Add Scheme"
 msgstr "Προσθήκη σχήματος"
 
-#: ../gedit/gedit-preferences-dialog.c:896
+#: ../gedit/gedit-preferences-dialog.c:902
 msgid "A_dd Scheme"
 msgstr "Προ_σθήκη σχήματος"
 
-#: ../gedit/gedit-preferences-dialog.c:904
+#: ../gedit/gedit-preferences-dialog.c:910
 msgid "Color Scheme Files"
 msgstr "Αρχεία σχήματος χρώματος"
 
-#: ../gedit/gedit-preferences-dialog.c:956
+#: ../gedit/gedit-preferences-dialog.c:962
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Αδυναμία απομάκρυνσης σχήματος χρώματος \"%s\"."
 
-#: ../gedit/gedit-preferences-dialog.c:1157
-msgid "gedit Preferences"
-msgstr "Προτιμήσεις gedit"
-
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-preferences-dialog.ui.h:1
-msgid "Preferences"
-msgstr "Προτιμήσεις"
+msgid "gedit Preferences"
+msgstr "Προτιμήσεις gedit"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:569
 msgid "_Display line numbers"
@@ -1717,7 +1713,6 @@ msgid "Color Scheme"
 msgstr "Χρωματικό σχήμα"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
-#| msgid "Columns"
 msgid "column"
 msgstr "στήλη"
 
@@ -2359,10 +2354,6 @@ msgstr "Απενεργοποίηση επισήμανσης σύνταξης"
 msgid "Open '%s'"
 msgstr "Άνοιγμα '%s'"
 
-#: ../gedit/gedit-window.c:1471
-msgid "Open"
-msgstr "Άνοιγμα"
-
 #: ../gedit/gedit-window.c:1526
 msgid "Save"
 msgstr "Αποθήκευση"
@@ -2676,6 +2667,11 @@ msgid "Stopped."
 msgstr "Διακόπηκε."
 
 #. ex:ts=4:et:
+#: ../plugins/externaltools/tools/outputpanel.ui.h:1
+#| msgid "Remove Tool"
+msgid "Stop Tool"
+msgstr "Παύση εργαλείου"
+
 #: ../plugins/externaltools/tools/tools.ui.h:1
 msgid "All documents"
 msgstr "Όλα τα έγγραφα"
@@ -2798,7 +2794,6 @@ msgid "_Save:"
 msgstr "Αποθήκευ_ση:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:33
-#| msgid "Shortcut _Key:"
 msgid "Shortcut _key:"
 msgstr "_Πλήκτρο συντόμευσης:"
 
@@ -2837,12 +2832,10 @@ msgstr "Σύστημα αρχείων"
 
 #. ex:ts=8:noet:
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
-#| msgid "Open"
 msgid "_Open"
 msgstr "Ά_νοιγμα"
 
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:2
-#| msgid "_Set root to active document"
 msgid "_Set Root to Active Document"
 msgstr "Ορισμός του ρι_ζικού στο ενεργό έγγραφο"
 
@@ -2855,7 +2848,6 @@ msgid "New F_ile"
 msgstr "Νέο αρ_χείο"
 
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:5
-#| msgid "_Rename"
 msgid "_Rename..."
 msgstr "_Μετονομασία..."
 
@@ -2876,7 +2868,6 @@ msgid "_View Folder"
 msgstr "Προ_βολή φακέλου"
 
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:10
-#| msgid "_Open terminal here"
 msgid "_Open in Terminal"
 msgstr "Άν_οιγμα σε τερματικό"
 
@@ -2985,7 +2976,6 @@ msgstr ""
 
 #. Translators: This is the default name of new directories created by the file browser pane.
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3784
-#| msgid "_View Folder"
 msgid "Untitled Folder"
 msgstr "Ανώνυμος φάκελος"
 
@@ -3160,7 +3150,6 @@ msgid "Interactive Python console standing in the bottom panel"
 msgstr "Διαδραστική κονσόλα Python στο κάτω πλαίσιο"
 
 #: ../plugins/quickopen/quickopen/__init__.py:71
-#| msgid "Quick Open"
 msgid "Quick Open..."
 msgstr "Γρήγορο άνοιγμα..."
 
@@ -3544,9 +3533,7 @@ msgctxt "language"
 msgid "Default"
 msgstr "Προεπιλεγμένη"
 
-#. ex:ts=8:noet:
 #: ../plugins/spell/gedit-spell-language-dialog.c:140
-#: ../plugins/spell/languages-dialog.ui.h:1
 msgid "Set language"
 msgstr "Ορισμός γλώσσας"
 
@@ -3585,6 +3572,12 @@ msgstr "Το έγγραφο είναι κενό."
 #: ../plugins/spell/gedit-spell-plugin.c:835
 msgid "No misspelled words"
 msgstr "Δεν υπάρχουν ανορθόγραφες λέξεις"
+
+#. ex:ts=8:noet:
+#: ../plugins/spell/languages-dialog.ui.h:1
+#| msgid "Set language"
+msgid "Set Language"
+msgstr "Ορισμός γλώσσας"
 
 #: ../plugins/spell/languages-dialog.ui.h:2
 msgid "Select the _language of the current document."
@@ -3758,6 +3751,12 @@ msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Καταγράφει την πρόσβαση και την έξοδο σε έγγραφα που χρησιμοποιούνται με το "
 "gedit"
+
+#~ msgid "Open Files"
+#~ msgstr "Άνοιγμα αρχείων"
+
+#~ msgid "Preferences"
+#~ msgstr "Προτιμήσεις"
 
 #~ msgid "Set the root to the active document location"
 #~ msgstr "Ορισμός του ριζικού καταλόγου στην ενεργή τοποθεσία του εγγράφου"
