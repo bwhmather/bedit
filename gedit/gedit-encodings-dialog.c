@@ -83,7 +83,6 @@ gedit_encodings_dialog_dispose (GObject *object)
 	GeditEncodingsDialogPrivate *priv = GEDIT_ENCODINGS_DIALOG (object)->priv;
 
 	g_clear_object (&priv->enc_settings);
-	g_message ("disposed");
 
 	G_OBJECT_CLASS (gedit_encodings_dialog_parent_class)->dispose (object);
 }
@@ -115,7 +114,7 @@ gedit_encodings_dialog_response (GtkDialog *dialog,
 			g_strfreev (encs);
 		}
 		default:
-			break;
+			gtk_widget_destroy (GTK_WIDGET (dialog));
 	}
 }
 
