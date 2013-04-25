@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2013-04-15 20:57+0000\n"
-"PO-Revision-Date: 2013-04-17 17:47+0200\n"
+"POT-Creation-Date: 2013-04-24 08:31+0000\n"
+"PO-Revision-Date: 2013-04-24 18:21+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -86,7 +86,7 @@ msgstr "Editor de textos gedit"
 #: C/gedit-plugins-modelines.page:13(credit/name)
 #: C/gedit-plugins-multi-edit.page:9(credit/name)
 #: C/gedit-plugins-pyconsole.page:9(credit/name)
-#: C/gedit-plugins-quick-open.page:9(credit/name)
+#: C/gedit-plugins-quick-open.page:10(credit/name)
 #: C/gedit-plugins-session-saver.page:9(credit/name)
 #: C/gedit-plugins-snippets.page:9(credit/name)
 #: C/gedit-plugins-sort.page:13(credit/name)
@@ -728,7 +728,7 @@ msgstr ""
 "codificación de caracteres apropiada."
 
 #: C/gedit-open-on-server.page:39(item/p)
-#: C/gedit-plugins-quick-open.page:37(item/p)
+#: C/gedit-plugins-quick-open.page:43(item/p)
 msgid "Click <gui>Open</gui>."
 msgstr "Pulse <gui>Abrir</gui>."
 
@@ -2279,20 +2279,30 @@ msgstr ""
 "<gui>Consola Python</gui> aparecerá en una pestaña separada en el panel "
 "inferior."
 
-#: C/gedit-plugins-quick-open.page:13(info/desc)
+#: C/gedit-plugins-quick-open.page:14(credit/name)
+msgid "Shobha Tyagi"
+msgstr "Shobha Tyagi"
+
+#: C/gedit-plugins-quick-open.page:18(info/desc)
 msgid "Quickly open a file or set of files"
 msgstr "Abrir rápidamente un archivo o un conjunto de archivos"
 
-#: C/gedit-plugins-quick-open.page:16(page/title)
+#: C/gedit-plugins-quick-open.page:21(page/title)
 msgid "Quick open"
 msgstr "Apertura rápida"
 
-#: C/gedit-plugins-quick-open.page:18(page/p)
+#: C/gedit-plugins-quick-open.page:23(page/p)
+#| msgid ""
+#| "As the name of this plugin would imply, the <app>Quick Open</app> plugin "
+#| "helps you to open files more quickly than the regular way of opening "
+#| "files. To enable this plugin, select <guiseq><gui style=\"menu\">gedit</"
+#| "gui><gui> Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></"
+#| "guiseq>."
 msgid ""
 "As the name of this plugin would imply, the <app>Quick Open</app> plugin "
-"helps you to open files more quickly than the regular way of opening files. "
-"To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui><gui> "
-"Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></guiseq>."
+"helps you to open files more quickly than using the usual ways of opening "
+"files. To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> "
+"<gui>Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></guiseq>."
 msgstr ""
 "Como su propio nombre indica, el complemento de <app>Apertura rápida</app> "
 "le ayuda a abrir archivos más rápidamente que de la manera habitual. Para "
@@ -2300,30 +2310,37 @@ msgstr ""
 "gui><gui> Preferencias</gui><gui>Complementos</gui><gui>Apertura rápida</"
 "gui></guiseq>."
 
-#: C/gedit-plugins-quick-open.page:23(page/p)
-msgid "Once you've enabled it, here is how to use the plugin:"
-msgstr ""
-"Una vez que lo haya activado, aquí se explica cómo usar el complemento:"
-
-#: C/gedit-plugins-quick-open.page:26(item/p)
+#: C/gedit-plugins-quick-open.page:28(page/p)
 msgid ""
-"Open the <app>Quick Open</app> dialog by pressing <keyseq><key> Ctrl</"
-"key><key>Alt</key><key>O</key></keyseq>, or by selecting <guiseq> <gui>File</"
+"Once you have enabled the <app>Quick Open</app> plugin you can use it as "
+"follows:"
+msgstr ""
+"Una vez que haya activado el complemento de <app>Apertura rápida</app> puede "
+"usarlo de la siguiente manera:"
+
+#: C/gedit-plugins-quick-open.page:32(item/p)
+#| msgid ""
+#| "Open the <app>Quick Open</app> dialog by pressing <keyseq><key> Ctrl</"
+#| "key><key>Alt</key><key>O</key></keyseq>, or by selecting <guiseq> "
+#| "<gui>File</gui><gui>Quick Open</gui></guiseq>."
+msgid ""
+"Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
+"key><key>Alt</key><key>O</key></keyseq>, or by selecting <guiseq><gui>File</"
 "gui><gui>Quick Open</gui></guiseq>."
 msgstr ""
 "Abra el diálogo <app>Apertura rápida</app> pulsando <keyseq><key> Ctrl</"
 "key><key>Alt</key><key>O</key></keyseq>, o seleccionando "
 "<guiseq><gui>Archivo</gui><gui>Apertura rápida</gui></guiseq>."
 
-#: C/gedit-plugins-quick-open.page:29(item/p)
+#: C/gedit-plugins-quick-open.page:35(item/p)
 msgid "The <gui>Quick Open</gui> file dialog will appear."
 msgstr "Aparecerá el diálogo <gui>Apertura rápida</gui> de archivos."
 
-#: C/gedit-plugins-quick-open.page:30(item/p)
+#: C/gedit-plugins-quick-open.page:36(item/p)
 msgid "Use your mouse to select the file or files that you want to open."
 msgstr "Use su ratón para seleccionar los archivos que quiere abrir."
 
-#: C/gedit-plugins-quick-open.page:32(item/p)
+#: C/gedit-plugins-quick-open.page:38(item/p)
 msgid ""
 "To select several individual files, hold down your <key>Ctrl</key> key while "
 "you click on the files that you want to open."
@@ -2331,7 +2348,7 @@ msgstr ""
 "Para seleccionar varios archivos individuales, mantenga pulsada la tecla "
 "<key>Ctrl</key> mientras pulsa sobre los archivos que quiere abrir."
 
-#: C/gedit-plugins-quick-open.page:34(item/p)
+#: C/gedit-plugins-quick-open.page:40(item/p)
 msgid ""
 "To select a group of files, click on the first file that you want to open, "
 "hold down the <key>Shift</key> key, and then click on the last file in the "
@@ -2341,13 +2358,50 @@ msgstr ""
 "mantenga pulsada la tecla <key>Mayús</key>, y pulse sobre el último archivo "
 "de la lista de archivos que quiera abrir."
 
-#: C/gedit-plugins-quick-open.page:40(note/p)
+#: C/gedit-plugins-quick-open.page:46(page/p)
+msgid "<app>Quick Open</app> will look for files in:"
+msgstr "<app>Apertura rápida</app> buscará archivos en:"
+
+#: C/gedit-plugins-quick-open.page:49(item/p)
+#| msgid "Print the current document"
+msgid "The directory of the currently opened document"
+msgstr "La carpeta del documento abierto actualmente"
+
+#: C/gedit-plugins-quick-open.page:50(item/p)
 msgid ""
-"The <app>Quick Open</app> plugin will only display files that you have "
-"previously opened."
+"The root directory of the <app xref=\"gedit-plugins-file-browser\">File "
+"Browser Pane</app> plugin"
 msgstr ""
-"El complemento de <app>Apertura rápida</app> sólo mostrará los archivos que "
-"haya abierto previamente."
+"La carpeta raíz del complemento <app xref=\"gedit-plugins-file-browser"
+"\">Panel del examinador de archivos</app> plugin"
+
+#: C/gedit-plugins-quick-open.page:53(item/p)
+msgid ""
+"Recent documents which are also shown in the<file>Recent</file> folder in "
+"<app>Files</app>"
+msgstr ""
+"Los documentos recientes, que también se muestran en la carpeta "
+"<file>Recientes</file> en <app>Archivos</app>"
+
+#: C/gedit-plugins-quick-open.page:55(item/p)
+msgid "Directories which you have bookmarked in <app>Files</app>"
+msgstr "Carpetas que ha añadido como marcadores en <app>Archivos</app>"
+
+#: C/gedit-plugins-quick-open.page:57(item/p)
+msgid "Your <file>Desktop</file> directory"
+msgstr "Su carpeta <file>Escritorio</file>"
+
+#: C/gedit-plugins-quick-open.page:58(item/p)
+msgid "Your <file>Home</file> directory"
+msgstr "Su <file>Carpeta personal</file>"
+
+#: C/gedit-plugins-quick-open.page:62(note/p)
+msgid ""
+"<app>Quick Open</app> displays files in any of the above locations "
+"regardless of whether or not you have opened them previously."
+msgstr ""
+"<app>Apertura rápida</app> muestra archivos en cualquiera de las ubicaciones "
+"anteriores, sin importar si los ha abierto o no anteriormente."
 
 #: C/gedit-plugins-session-saver.page:13(info/desc)
 msgid "Save and restore your working sessions"
@@ -3934,62 +3988,50 @@ msgid "Shortcut keys for editing files"
 msgstr "Teclas rápidas para editar archivos"
 
 #: C/gedit-shortcut-keys.page:149(td/p)
-#| msgid "Toggle the bookmark indicator for the current line"
 msgid "Move to the beginning of the current line"
 msgstr "Mover al principio de la línea actual"
 
 #: C/gedit-shortcut-keys.page:150(td/p)
-#| msgid "<key>F9</key>"
 msgid "<key>Home</key>"
 msgstr "<key>Inicio</key>"
 
 #: C/gedit-shortcut-keys.page:153(td/p)
-#| msgid "Delete the current line"
 msgid "Move to the end of the current line"
 msgstr "Mover al final de la línea actual"
 
 #: C/gedit-shortcut-keys.page:154(td/p)
-#| msgid "<key>F9</key>"
 msgid "<key>End</key>"
 msgstr "<key>Fin</key>"
 
 #: C/gedit-shortcut-keys.page:157(td/p)
-#| msgid "*Checks the spelling of the current document."
 msgid "Move to the beginning of the document"
 msgstr "Mover al principio del documento"
 
 #: C/gedit-shortcut-keys.page:158(td/p)
-#| msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Inicio</key></keyseq>"
 
 #: C/gedit-shortcut-keys.page:161(td/p)
-#| msgid "Save the current document"
 msgid "Move to the end of the document"
 msgstr "Mover al final del documento"
 
 #: C/gedit-shortcut-keys.page:162(td/p)
-#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Fin</key></keyseq>"
 
 #: C/gedit-shortcut-keys.page:165(td/p)
-#| msgid "Move the selected line up one line"
 msgid "Move the selected word right one word"
 msgstr "Mover la palabra seleccionada una palabra a la derecha"
 
 #: C/gedit-shortcut-keys.page:166(td/p)
-#| msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgid "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Flecha derecha</key></keyseq>"
 
 #: C/gedit-shortcut-keys.page:169(td/p)
-#| msgid "Move the selected line up one line"
 msgid "Move the selected word left one word"
 msgstr "Mover la palabra seleccionada una palabra a la izquierda"
 
 #: C/gedit-shortcut-keys.page:170(td/p)
-#| msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgid "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Flecha izquierda</key></keyseq>"
 
@@ -4636,6 +4678,17 @@ msgstr ""
 "sin soporte 3.0. Para ver una copia de esta licencia, visite <_:link-1/> o "
 "envíe una carta a Creative Commons, 444 Castro Street, Suite 900, Mountain "
 "View, California, 94041, USA."
+
+#~ msgid "Once you've enabled it, here is how to use the plugin:"
+#~ msgstr ""
+#~ "Una vez que lo haya activado, aquí se explica cómo usar el complemento:"
+
+#~ msgid ""
+#~ "The <app>Quick Open</app> plugin will only display files that you have "
+#~ "previously opened."
+#~ msgstr ""
+#~ "El complemento de <app>Apertura rápida</app> sólo mostrará los archivos "
+#~ "que haya abierto previamente."
 
 #~| msgid ""
 #~| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
