@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-24 22:26+0100\n"
-"PO-Revision-Date: 2013-01-24 22:26+0100\n"
+"POT-Creation-Date: 2013-04-25 08:46+0200\n"
+"PO-Revision-Date: 2013-04-25 08:47+0200\n"
 "Last-Translator: Milo Casagrande <milo@ubuntu.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -464,7 +464,7 @@ msgstr ""
 #. encodings that are common in your country, for instance the GB18030 encoding
 #. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
 #. (covering English and most Western European languages) if you think people
-#. in you country will rarely use it.
+#. in your country will rarely use it.
 #. "CURRENT" is a magic value used by gedit and it represents the encoding
 #. for the current locale, so please don't translate the "CURRENT" term.
 #. Only recognized encodings are used.
@@ -577,11 +577,11 @@ msgstr "[FILE...] [+RIGA[:COLONNA]]"
 msgid "There was an error displaying the help."
 msgstr "Si è verificato un errore nel mostrare l'aiuto."
 
-#: ../gedit/gedit-app.c:708
+#: ../gedit/gedit-app.c:704
 msgid "- Edit text files"
 msgstr "- Modifica file di testo"
 
-#: ../gedit/gedit-app.c:817 ../gedit/gedit-app.c:906
+#: ../gedit/gedit-app.c:813 ../gedit/gedit-app.c:903
 #, c-format
 msgid ""
 "%s\n"
@@ -591,7 +591,7 @@ msgstr ""
 "Eseguire \"%s --help\" per visualizzare un elenco completo delle opzioni "
 "disponibili a riga di comando.\n"
 
-#: ../gedit/gedit-app.c:838
+#: ../gedit/gedit-app.c:834
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codifica non valida."
@@ -939,17 +939,17 @@ msgstr "Trovata e sostituita una occorrenza."
 msgid "\"%s\" not found"
 msgstr "«%s» non trovato"
 
-#: ../gedit/gedit-document.c:1223 ../gedit/gedit-document.c:1249
+#: ../gedit/gedit-document.c:1224 ../gedit/gedit-document.c:1250
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Documento %d non salvato"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2380 ../gedit/gedit-window.c:2387
+#: ../gedit/gedit-window.c:2387 ../gedit/gedit-window.c:2394
 msgid "Read-Only"
 msgstr "Sola lettura"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3825
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3834
 msgid "Documents"
 msgstr "Documenti"
 
@@ -1109,7 +1109,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "_Codifiche mostrate nel menù:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:52
-#: ../gedit/gedit-preferences-dialog.c:909
+#: ../gedit/gedit-preferences-dialog.c:911
 msgid "All Files"
 msgstr "Tutti i file"
 
@@ -1233,7 +1233,7 @@ msgstr "Codifica _caratteri:"
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:506
-#: ../gedit/gedit-io-error-info-bar.c:782
+#: ../gedit/gedit-io-error-info-bar.c:784
 msgid "Edit Any_way"
 msgstr "_Modifica lo stesso"
 
@@ -1312,16 +1312,16 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:787
+#: ../gedit/gedit-io-error-info-bar.c:789
 msgid "D_on't Edit"
 msgstr "Non mo_dificare"
 
-#: ../gedit/gedit-io-error-info-bar.c:801
+#: ../gedit/gedit-io-error-info-bar.c:803
 #, c-format
 msgid "This file (%s) is already open in another gedit window."
 msgstr "Questo file (%s) è già aperto in un'altra finestra del programma."
 
-#: ../gedit/gedit-io-error-info-bar.c:815
+#: ../gedit/gedit-io-error-info-bar.c:817
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1329,15 +1329,15 @@ msgstr ""
 "Il programma ha aperto il file in modalità sola lettura. Modificarlo lo "
 "stesso?"
 
-#: ../gedit/gedit-io-error-info-bar.c:873
-#: ../gedit/gedit-io-error-info-bar.c:971
-#: ../gedit/gedit-io-error-info-bar.c:1260
+#: ../gedit/gedit-io-error-info-bar.c:875
+#: ../gedit/gedit-io-error-info-bar.c:973
+#: ../gedit/gedit-io-error-info-bar.c:1262
 msgid "S_ave Anyway"
 msgstr "_Salva comunque"
 
-#: ../gedit/gedit-io-error-info-bar.c:877
-#: ../gedit/gedit-io-error-info-bar.c:975
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../gedit/gedit-io-error-info-bar.c:879
+#: ../gedit/gedit-io-error-info-bar.c:977
+#: ../gedit/gedit-io-error-info-bar.c:1266
 msgid "D_on't Save"
 msgstr "_Non salvare"
 
@@ -1345,30 +1345,30 @@ msgstr "_Non salvare"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:895
+#: ../gedit/gedit-io-error-info-bar.c:897
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "Il file %s è stato modificato dall'ultima lettura."
 
-#: ../gedit/gedit-io-error-info-bar.c:910
+#: ../gedit/gedit-io-error-info-bar.c:912
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Salvare il file può comportare la perdita di tutti i cambiamenti esterni. "
 "Salvare lo stesso?"
 
-#: ../gedit/gedit-io-error-info-bar.c:998
+#: ../gedit/gedit-io-error-info-bar.c:1000
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "Impossibile creare un file di backup durante il salvataggio di «%s»"
 
-#: ../gedit/gedit-io-error-info-bar.c:1003
+#: ../gedit/gedit-io-error-info-bar.c:1005
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr ""
 "Impossibile creare un file di backup temporaneo durante il salvataggio di "
 "«%s»"
 
-#: ../gedit/gedit-io-error-info-bar.c:1020
+#: ../gedit/gedit-io-error-info-bar.c:1022
 msgid ""
 "gedit could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1380,7 +1380,7 @@ msgstr ""
 "Salvare lo stesso?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1080
+#: ../gedit/gedit-io-error-info-bar.c:1082
 #, c-format
 msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
@@ -1389,7 +1389,7 @@ msgstr ""
 "Impossibile gestire posizioni «%s» in modalità scrittura. Assicurarsi di "
 "aver digitato correttamente la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../gedit/gedit-io-error-info-bar.c:1090
 msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1397,7 +1397,7 @@ msgstr ""
 "Impossibile gestire questo tipo di posizioni in modalità scrittura. "
 "Assicurarsi di aver digitato correttamente la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1097
+#: ../gedit/gedit-io-error-info-bar.c:1099
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1406,7 +1406,7 @@ msgstr ""
 "«%s» non è una posizione valida. Assicurarsi di aver digitato correttamente "
 "la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../gedit/gedit-io-error-info-bar.c:1106
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1414,7 +1414,7 @@ msgstr ""
 "Permessi per salvare il file insufficienti. Assicurarsi di aver digitato "
 "correttamente la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1110
+#: ../gedit/gedit-io-error-info-bar.c:1112
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1422,7 +1422,7 @@ msgstr ""
 "Non c'è abbastanza spazio su disco per salvare il file. Liberare un po' di "
 "spazio e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1115
+#: ../gedit/gedit-io-error-info-bar.c:1117
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1430,11 +1430,11 @@ msgstr ""
 "Si sta cercando di salvare un file su di un disco a sola lettura. "
 "Assicurarsi di aver digitato correttamente la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1123
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Un file con lo stesso nome esiste già. Usare un nome differente."
 
-#: ../gedit/gedit-io-error-info-bar.c:1126
+#: ../gedit/gedit-io-error-info-bar.c:1128
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1443,7 +1443,7 @@ msgstr ""
 "limitazione per quanto riguarda la lunghezza dei nomi dei file. Usare un "
 "nome più corto."
 
-#: ../gedit/gedit-io-error-info-bar.c:1133
+#: ../gedit/gedit-io-error-info-bar.c:1135
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1453,7 +1453,7 @@ msgstr ""
 "limitazione per quanto riguarda le dimensioni dei file. Salvare un file più "
 "piccolo, oppure salvare il file su un disco che non ha questa limitazione."
 
-#: ../gedit/gedit-io-error-info-bar.c:1149
+#: ../gedit/gedit-io-error-info-bar.c:1151
 #, c-format
 msgid "Could not save the file %s."
 msgstr "Impossibile salvare il file «%s»."
@@ -1462,31 +1462,31 @@ msgstr "Impossibile salvare il file «%s»."
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:1194
+#: ../gedit/gedit-io-error-info-bar.c:1196
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "Il file «%s» è stato modificato."
 
-#: ../gedit/gedit-io-error-info-bar.c:1199
+#: ../gedit/gedit-io-error-info-bar.c:1201
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "Tralasciare i cambiamenti apportati e caricare nuovamente il file?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1201
+#: ../gedit/gedit-io-error-info-bar.c:1203
 msgid "Do you want to reload the file?"
 msgstr "Caricare nuovamente il file?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1206
+#: ../gedit/gedit-io-error-info-bar.c:1208
 msgid "_Reload"
 msgstr "_Ricarica"
 
-#: ../gedit/gedit-io-error-info-bar.c:1278
+#: ../gedit/gedit-io-error-info-bar.c:1280
 #, c-format
 msgid "Some invalid chars have been detected while saving %s"
 msgstr ""
 "Sono stati individuati alcuni caratteri non validi durante il salvataggio di "
 "%s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1294
+#: ../gedit/gedit-io-error-info-bar.c:1296
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1544,47 +1544,47 @@ msgstr "Vuoto"
 msgid "Hide panel"
 msgstr "Nasconde il riquadro"
 
-#: ../gedit/gedit-preferences-dialog.c:423
+#: ../gedit/gedit-preferences-dialog.c:425
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Fare clic su questo pulsante per selezionare il carattere che verrà usato "
 "dall'editor"
 
-#: ../gedit/gedit-preferences-dialog.c:438
+#: ../gedit/gedit-preferences-dialog.c:440
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "_Usare il carattere a spaziatura fissa di sistema (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:676
+#: ../gedit/gedit-preferences-dialog.c:678
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "La directory «%s» non può essere creata: g_mkdir_with_parents() non "
 "riuscito: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:860
+#: ../gedit/gedit-preferences-dialog.c:862
 msgid "The selected color scheme cannot be installed."
 msgstr "Lo schema colore selezionato non può essere installato."
 
-#: ../gedit/gedit-preferences-dialog.c:887
+#: ../gedit/gedit-preferences-dialog.c:889
 msgid "Add Scheme"
 msgstr "Aggiungi schema"
 
 # (ndt) pulsante
-#: ../gedit/gedit-preferences-dialog.c:894
+#: ../gedit/gedit-preferences-dialog.c:896
 msgid "A_dd Scheme"
 msgstr "A_ggiungi schema"
 
-#: ../gedit/gedit-preferences-dialog.c:902
+#: ../gedit/gedit-preferences-dialog.c:904
 msgid "Color Scheme Files"
 msgstr "File schema colore"
 
-#: ../gedit/gedit-preferences-dialog.c:954
+#: ../gedit/gedit-preferences-dialog.c:956
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Impossibile rimuovere lo schema colore «%s»."
 
-#: ../gedit/gedit-preferences-dialog.c:1177
+#: ../gedit/gedit-preferences-dialog.c:1157
 msgid "gedit Preferences"
 msgstr "Preferenze di gedit"
 
@@ -1593,7 +1593,7 @@ msgstr "Preferenze di gedit"
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:552
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:569
 msgid "_Display line numbers"
 msgstr "Mostrare i numeri di _riga"
 
@@ -1687,28 +1687,32 @@ msgid "Color Scheme"
 msgstr "Schema colore"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
+msgid "column"
+msgstr "colonna"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
 msgstr "Installa uno schema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
+#: ../gedit/gedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
 msgstr "Installa schema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26
+#: ../gedit/gedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
 msgstr "Rimuove uno schema"
 
 # (NdT) o Schema dello stile?
 # Ho messo così perché c'è anche Schema colore
-#: ../gedit/gedit-preferences-dialog.ui.h:27
+#: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Uninstall Scheme"
 msgstr "Rimuovi schema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Font & Colors"
 msgstr "Caratteri e colori"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:30
 msgid "Plugins"
 msgstr "Plugin"
 
@@ -1849,7 +1853,7 @@ msgstr "L'anteprima di stampa di una pagina del documento da stampare"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1528
+#: ../gedit/gedit-window.c:1532
 msgid "Replace"
 msgstr "Sostituisci"
 
@@ -1910,73 +1914,73 @@ msgstr[1] "Ci sono %d schede con errori"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:750
+#: ../gedit/gedit-tab.c:771
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Ripristino di %s da %s"
 
-#: ../gedit/gedit-tab.c:757
+#: ../gedit/gedit-tab.c:778
 #, c-format
 msgid "Reverting %s"
 msgstr "Ripristino di %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:773
+#: ../gedit/gedit-tab.c:794
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Caricamento di %s da %s"
 
-#: ../gedit/gedit-tab.c:780
+#: ../gedit/gedit-tab.c:801
 #, c-format
 msgid "Loading %s"
 msgstr "Caricamento di %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:861
+#: ../gedit/gedit-tab.c:882
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Salvataggio di %s in %s"
 
-#: ../gedit/gedit-tab.c:868
+#: ../gedit/gedit-tab.c:889
 #, c-format
 msgid "Saving %s"
 msgstr "Salvataggio di %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1853
+#: ../gedit/gedit-tab.c:1874
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1900
+#: ../gedit/gedit-tab.c:1921
 #, c-format
 msgid "Error opening file %s"
 msgstr "Errore nell'aprire il file «%s»"
 
-#: ../gedit/gedit-tab.c:1905
+#: ../gedit/gedit-tab.c:1926
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Errore nel ripristinare il file «%s»"
 
-#: ../gedit/gedit-tab.c:1910
+#: ../gedit/gedit-tab.c:1931
 #, c-format
 msgid "Error saving file %s"
 msgstr "Errore nel salvare il file «%s»"
 
-#: ../gedit/gedit-tab.c:1931
+#: ../gedit/gedit-tab.c:1952
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1938
+#: ../gedit/gedit-tab.c:1959
 msgid "Name:"
 msgstr "Nome:"
 
-#: ../gedit/gedit-tab.c:1939
+#: ../gedit/gedit-tab.c:1960
 msgid "MIME Type:"
 msgstr "Tipo MIME:"
 
-#: ../gedit/gedit-tab.c:1940
+#: ../gedit/gedit-tab.c:1961
 msgid "Encoding:"
 msgstr "Codifica:"
 
@@ -2260,46 +2264,46 @@ msgstr "_Riquadro inferiore"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Mostra o nasconde il riquadro inferiore nella finestra corrente"
 
-#: ../gedit/gedit-utils.c:1023
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Controllare la propria installazione."
 
-#: ../gedit/gedit-utils.c:1081
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Impossibile aprire il file %s. Errore: %s"
 
-#: ../gedit/gedit-utils.c:1100
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Impossibile trovare l'oggetto «%s» all'interno del file «%s»."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1323
+#: ../gedit/gedit-utils.c:1333
 #, c-format
 msgid "/ on %s"
 msgstr "/ su %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:542
+#: ../gedit/gedit-view-frame.c:538
 msgid "_Wrap Around"
 msgstr "_Ricomincia dall'inizio"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:552
+#: ../gedit/gedit-view-frame.c:548
 msgid "Match _Entire Word Only"
 msgstr "Solo parole int_ere "
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:562
+#: ../gedit/gedit-view-frame.c:558
 msgid "_Match Case"
 msgstr "_Maiuscole/Minuscole"
 
-#: ../gedit/gedit-view-frame.c:759
+#: ../gedit/gedit-view-frame.c:755
 msgid "String you want to search for"
 msgstr "Stringa da cercare"
 
-#: ../gedit/gedit-view-frame.c:769
+#: ../gedit/gedit-view-frame.c:765
 msgid "Line you want to move the cursor to"
 msgstr "Riga su cui spostare il cursore"
 
@@ -2311,72 +2315,72 @@ msgstr "Usa la modalità di evidenziazione %s"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2074
+#: ../gedit/gedit-window.c:1051 ../gedit/gedit-window.c:2078
 #: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:455
-#: ../plugins/externaltools/tools/manager.py:571
-#: ../plugins/externaltools/tools/manager.py:890
+#: ../plugins/externaltools/tools/manager.py:462
+#: ../plugins/externaltools/tools/manager.py:578
+#: ../plugins/externaltools/tools/manager.py:902
 msgid "Plain Text"
 msgstr "Testo semplice"
 
-#: ../gedit/gedit-window.c:1048
+#: ../gedit/gedit-window.c:1052
 msgid "Disable syntax highlighting"
 msgstr "Disattiva evidenziazione sintassi"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1365
+#: ../gedit/gedit-window.c:1369
 #, c-format
 msgid "Open '%s'"
 msgstr "Apri «%s»"
 
-#: ../gedit/gedit-window.c:1467
+#: ../gedit/gedit-window.c:1471
 msgid "Open"
 msgstr "Apri"
 
-#: ../gedit/gedit-window.c:1522
+#: ../gedit/gedit-window.c:1526
 msgid "Save"
 msgstr "Salva"
 
-#: ../gedit/gedit-window.c:1524
+#: ../gedit/gedit-window.c:1528
 msgid "Print"
 msgstr "Stampa"
 
-#: ../gedit/gedit-window.c:1526
+#: ../gedit/gedit-window.c:1530
 msgid "Find"
 msgstr "Trova"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1698
+#: ../gedit/gedit-window.c:1702
 #, c-format
 msgid "Activate '%s'"
 msgstr "Attiva «%s»"
 
 # (ndt) opzione quando si seleziona la dimensione
 # della tabulazione
-#: ../gedit/gedit-window.c:2055
+#: ../gedit/gedit-window.c:2059
 msgid "Use Spaces"
 msgstr "Usare spazi"
 
 # (ndt) è un po' lunghetta...
 # Larg. tabul.
-#: ../gedit/gedit-window.c:2128
+#: ../gedit/gedit-window.c:2135
 msgid "Tab Width"
 msgstr "Larghezza tabulazione"
 
-#: ../gedit/gedit-window.c:2237
+#: ../gedit/gedit-window.c:2244
 msgid "Bracket match is out of range"
 msgstr "Corrispondenza parentesi oltre l'intervallo"
 
-#: ../gedit/gedit-window.c:2242
+#: ../gedit/gedit-window.c:2249
 msgid "Bracket match not found"
 msgstr "Corrispondenza parentesi non trovata"
 
-#: ../gedit/gedit-window.c:2247
+#: ../gedit/gedit-window.c:2254
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Corrispondenza parentesi trovata alla riga: %d"
 
-#: ../gedit/gedit-window.c:2852
+#: ../gedit/gedit-window.c:2859
 msgid "There are unsaved documents"
 msgstr "Sono presenti documenti non salvati"
 
@@ -2597,7 +2601,7 @@ msgstr ""
 "Il nome di un carattere Pango. Per esempio \"Sans 12\" o \"Monospace Bold "
 "14\"."
 
-#: ../plugins/externaltools/tools/capture.py:92
+#: ../plugins/externaltools/tools/capture.py:95
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Impossibile eseguire il comando: %s"
@@ -2623,27 +2627,27 @@ msgstr "Uscito"
 msgid "All languages"
 msgstr "Tutti i linguaggi"
 
-#: ../plugins/externaltools/tools/manager.py:560
-#: ../plugins/externaltools/tools/manager.py:564
-#: ../plugins/externaltools/tools/manager.py:888
+#: ../plugins/externaltools/tools/manager.py:567
+#: ../plugins/externaltools/tools/manager.py:571
+#: ../plugins/externaltools/tools/manager.py:900
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Tutti i linguaggi"
 
-#: ../plugins/externaltools/tools/manager.py:677
+#: ../plugins/externaltools/tools/manager.py:684
 msgid "New tool"
 msgstr "Nuovo strumento"
 
-#: ../plugins/externaltools/tools/manager.py:808
+#: ../plugins/externaltools/tools/manager.py:815
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Questa scorciatoia è associata con %s"
 
-#: ../plugins/externaltools/tools/manager.py:852
+#: ../plugins/externaltools/tools/manager.py:859
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Inserire una nuova scorciatoia o premere Backspace per annullare"
 
-#: ../plugins/externaltools/tools/manager.py:854
+#: ../plugins/externaltools/tools/manager.py:861
 msgid "Type a new accelerator"
 msgstr "Inserire una nuova scorciatoia"
 
@@ -3224,7 +3228,7 @@ msgstr "Apri velocemente"
 msgid "Quickly open files"
 msgstr "Apre velocemente i file"
 
-#: ../plugins/quickopen/quickopen/popup.py:73
+#: ../plugins/quickopen/quickopen/popup.py:77
 msgid "Type to search..."
 msgstr "Ricerca..."
 
@@ -3285,25 +3289,25 @@ msgstr "Il file «%s» non è un archivio snippet valido"
 msgid "Snippets archive"
 msgstr "Archivio snippet"
 
-#: ../plugins/snippets/snippets/manager.py:63
+#: ../plugins/snippets/snippets/manager.py:67
 msgid "Add a new snippet..."
 msgstr "Aggiungi una nuova snippet..."
 
-#: ../plugins/snippets/snippets/manager.py:115
+#: ../plugins/snippets/snippets/manager.py:119
 msgid "Global"
 msgstr "Globale"
 
-#: ../plugins/snippets/snippets/manager.py:399
+#: ../plugins/snippets/snippets/manager.py:410
 msgid "Revert selected snippet"
 msgstr "Ripristina snippet selezionata"
 
-#: ../plugins/snippets/snippets/manager.py:402
+#: ../plugins/snippets/snippets/manager.py:413
 #: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Delete selected snippet"
 msgstr "Elimina snippet selezionata"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:661
+#: ../plugins/snippets/snippets/manager.py:672
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3314,85 +3318,85 @@ msgstr ""
 "{, [, ecc..."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:668
+#: ../plugins/snippets/snippets/manager.py:679
 #: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr ""
 "Singola parola con cui la snippet è attivata dopo la pressione del tasto "
 "tabulatore"
 
-#: ../plugins/snippets/snippets/manager.py:757
+#: ../plugins/snippets/snippets/manager.py:768
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Si è verificato il seguente errore durante l'importazione: %s"
 
-#: ../plugins/snippets/snippets/manager.py:764
+#: ../plugins/snippets/snippets/manager.py:775
 msgid "Import successfully completed"
 msgstr "Importazione completata con successo"
 
-#: ../plugins/snippets/snippets/manager.py:778
+#: ../plugins/snippets/snippets/manager.py:789
 #: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr "Importa snippet"
 
-#: ../plugins/snippets/snippets/manager.py:783
-#: ../plugins/snippets/snippets/manager.py:869
-#: ../plugins/snippets/snippets/manager.py:932
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "All supported archives"
 msgstr "Tutti gli archivi supportati"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:795
+#: ../plugins/snippets/snippets/manager.py:881
+#: ../plugins/snippets/snippets/manager.py:944
 msgid "Gzip compressed archive"
 msgstr "Archivio compresso con gzip"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "Bzip2 compressed archive"
 msgstr "Archivio compresso con bzip2"
 
-#: ../plugins/snippets/snippets/manager.py:786
+#: ../plugins/snippets/snippets/manager.py:797
 msgid "Single snippets file"
 msgstr "File snippet singola"
 
-#: ../plugins/snippets/snippets/manager.py:787
-#: ../plugins/snippets/snippets/manager.py:873
-#: ../plugins/snippets/snippets/manager.py:936
+#: ../plugins/snippets/snippets/manager.py:798
+#: ../plugins/snippets/snippets/manager.py:884
+#: ../plugins/snippets/snippets/manager.py:947
 msgid "All files"
 msgstr "Tutti i file"
 
-#: ../plugins/snippets/snippets/manager.py:799
+#: ../plugins/snippets/snippets/manager.py:810
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Si è verificato il seguente errore durante l'esportazione: %s"
 
-#: ../plugins/snippets/snippets/manager.py:803
+#: ../plugins/snippets/snippets/manager.py:814
 msgid "Export successfully completed"
 msgstr "Esportazione completata con successo"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:843
-#: ../plugins/snippets/snippets/manager.py:910
+#: ../plugins/snippets/snippets/manager.py:854
+#: ../plugins/snippets/snippets/manager.py:921
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "Includere nell'esportazione le snippet di <b>sistema</b> selezionate?"
 
-#: ../plugins/snippets/snippets/manager.py:858
-#: ../plugins/snippets/snippets/manager.py:928
+#: ../plugins/snippets/snippets/manager.py:869
+#: ../plugins/snippets/snippets/manager.py:939
 msgid "There are no snippets selected to be exported"
 msgstr "Non ci sono snippet selezionate per l'esportazione"
 
-#: ../plugins/snippets/snippets/manager.py:863
-#: ../plugins/snippets/snippets/manager.py:901
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 msgid "Export snippets"
 msgstr "Esporta snippet"
 
-#: ../plugins/snippets/snippets/manager.py:1042
+#: ../plugins/snippets/snippets/manager.py:1053
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Inserire una nuova scorciatoia o premere Backspace per pulire"
 
-#: ../plugins/snippets/snippets/manager.py:1044
+#: ../plugins/snippets/snippets/manager.py:1055
 msgid "Type a new shortcut"
 msgstr "Inserire una nuova scorciatoia"
 
