@@ -262,6 +262,7 @@ EXTRA_DIST = 				\
 	gedit-encodings-dialog.ui	\
 	gedit-preferences-dialog.ui	\
 	gedit-replace-dialog.ui		\
+	gedit-print-preview.ui		\
 	gedit-print-preferences.ui
 
 CLEANFILES = $(BUILT_SOURCES) $(BUILT_SOURCES_PRIVATE)

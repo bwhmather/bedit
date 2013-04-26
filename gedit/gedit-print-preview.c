@@ -49,9 +49,6 @@ struct _GeditPrintPreviewPrivate
 	GtkPrintContext *context;
 	GtkPrintOperationPreview *gtk_preview;
 
-	GtkWidget *layout;
-	GtkWidget *scrolled_window;
-
 	GtkToolItem *next;
 	GtkToolItem *prev;
 	GtkWidget   *page_entry;
@@ -61,6 +58,9 @@ struct _GeditPrintPreviewPrivate
 	GtkToolItem *zoom_fit;
 	GtkToolItem *zoom_in;
 	GtkToolItem *zoom_out;
+	GtkToolItem *close;
+
+	GtkWidget *layout;
 
 	/* real size of the page in inches */
 	double paper_w;
@@ -82,7 +82,7 @@ struct _GeditPrintPreviewPrivate
 	guint cur_page;
 };
 
-G_DEFINE_TYPE (GeditPrintPreview, gedit_print_preview, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
 
 static void
 gedit_print_preview_get_property (GObject    *object,
@@ -148,6 +148,21 @@ gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 	object_class->finalize = gedit_print_preview_finalize;
 
 	widget_class->grab_focus = gedit_print_preview_grab_focus;
+
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+	                                             "/org/gnome/gedit/ui/gedit-print-preview.ui");
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, prev);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, next);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, multi);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, page_entry);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, last);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, zoom_one);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, zoom_fit);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, zoom_in);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, zoom_out);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, close);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, layout);
 
 	g_type_class_add_private (object_class, sizeof (GeditPrintPreviewPrivate));
 }
@@ -536,168 +551,6 @@ close_button_clicked (GtkWidget         *button,
 	gtk_widget_destroy (GTK_WIDGET (preview));
 }
 
-static void
-create_bar (GeditPrintPreview *preview)
-{
-	GeditPrintPreviewPrivate *priv;
-	GtkWidget *toolbar;
-	GtkToolItem *i;
-	AtkObject *atko;
-	GtkWidget *status;
-
-	priv = preview->priv;
-
-	toolbar = gtk_toolbar_new ();
-	gtk_toolbar_set_style (GTK_TOOLBAR (toolbar),
-			       GTK_TOOLBAR_BOTH_HORIZ);
-	gtk_widget_show (toolbar);
-	gtk_box_pack_start (GTK_BOX (preview),
-			    toolbar,
-			    FALSE, FALSE, 0);
-
-	priv->prev = gtk_tool_button_new_from_stock (GTK_STOCK_GO_BACK);
-	gtk_tool_button_set_label (GTK_TOOL_BUTTON (priv->prev),
-				   "P_revious Page");
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (priv->prev), TRUE);
-	gtk_tool_item_set_tooltip_text (priv->prev, _("Show the previous page"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->prev, -1);
-	g_signal_connect (priv->prev,
-			  "clicked",
-			  G_CALLBACK (prev_button_clicked),
-			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->prev));
-
-	priv->next = gtk_tool_button_new_from_stock (GTK_STOCK_GO_FORWARD);
-	gtk_tool_button_set_label (GTK_TOOL_BUTTON (priv->next),
-				   "_Next Page");
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (priv->next), TRUE);
-	gtk_tool_item_set_tooltip_text (priv->next, _("Show the next page"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->next, -1);
-	g_signal_connect (priv->next,
-			  "clicked",
-			  G_CALLBACK (next_button_clicked),
-			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->next));
-
-	i = gtk_separator_tool_item_new ();
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
-
-	status = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-	priv->page_entry = gtk_entry_new ();
-	gtk_entry_set_width_chars (GTK_ENTRY (priv->page_entry), 3);
-	gtk_entry_set_max_length (GTK_ENTRY (priv->page_entry), 6);
-	gtk_widget_set_tooltip_text (priv->page_entry, _("Current page (Alt+P)"));
-
-	g_signal_connect (priv->page_entry,
-			  "activate",
-			  G_CALLBACK (page_entry_activated),
-			  preview);
-	g_signal_connect (priv->page_entry,
-			  "insert-text",
-			  G_CALLBACK (page_entry_insert_text),
-			  NULL);
-	g_signal_connect (priv->page_entry,
-			  "focus-out-event",
-			  G_CALLBACK (page_entry_focus_out),
-			  preview);
-
-	gtk_box_pack_start (GTK_BOX (status),
-			    priv->page_entry,
-			    FALSE, FALSE, 0);
-	/* gtk_label_set_mnemonic_widget ((GtkLabel *) l, mp->priv->page_entry); */
-
-	/* We are displaying 'XXX of XXX'. */
-	gtk_box_pack_start (GTK_BOX (status),
-	                    /* Translators: the "of" from "1 of 19" in print preview. */
-			    gtk_label_new (_("of")),
-			    FALSE, FALSE, 0);
-
-	priv->last = gtk_label_new ("");
-	gtk_box_pack_start (GTK_BOX (status),
-			    priv->last,
-			    FALSE, FALSE, 0);
-	atko = gtk_widget_get_accessible (priv->last);
-	atk_object_set_name (atko, _("Page total"));
-	atk_object_set_description (atko, _("The total number of pages in the document"));
-
-	gtk_widget_show_all (status);
-
-	i = gtk_tool_item_new ();
-	gtk_container_add (GTK_CONTAINER (i), status);
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
-
-	i = gtk_separator_tool_item_new ();
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
-
-	priv->multi = gtk_tool_button_new_from_stock (GTK_STOCK_DND_MULTIPLE);
-	gtk_tool_button_set_label (GTK_TOOL_BUTTON (priv->multi),
-				   "_Show Multiple Pages");
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (priv->multi), TRUE);
-	gtk_tool_item_set_tooltip_text (priv->multi, _("Show multiple pages"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->multi, -1);
-	g_signal_connect (priv->multi,
-			  "clicked",
-			  G_CALLBACK (multi_button_clicked),
-			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->multi));
-
-	i = gtk_separator_tool_item_new ();
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
-
-	priv->zoom_one = gtk_tool_button_new_from_stock (GTK_STOCK_ZOOM_100);
-	gtk_tool_item_set_tooltip_text (priv->zoom_one, _("Zoom 1:1"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_one, -1);
-	g_signal_connect (priv->zoom_one,
-			  "clicked",
-			  G_CALLBACK (zoom_one_button_clicked),
-			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->zoom_one));
-
-	priv->zoom_fit = gtk_tool_button_new_from_stock (GTK_STOCK_ZOOM_FIT);
-	gtk_tool_item_set_tooltip_text (priv->zoom_fit,	_("Zoom to fit the whole page"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_fit, -1);
-	g_signal_connect (priv->zoom_fit,
-			  "clicked",
-			  G_CALLBACK (zoom_fit_button_clicked),
-			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->zoom_fit));
-
-	priv->zoom_in = gtk_tool_button_new_from_stock (GTK_STOCK_ZOOM_IN);
-	gtk_tool_item_set_tooltip_text (priv->zoom_in, _("Zoom the page in"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_in, -1);
-	g_signal_connect (priv->zoom_in,
-			  "clicked",
-			  G_CALLBACK (zoom_in_button_clicked),
-			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->zoom_in));
-
-	priv->zoom_out = gtk_tool_button_new_from_stock (GTK_STOCK_ZOOM_OUT);
-	gtk_tool_item_set_tooltip_text (priv->zoom_out, _("Zoom the page out"));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->zoom_out, -1);
-	g_signal_connect (priv->zoom_out,
-			  "clicked",
-			  G_CALLBACK (zoom_out_button_clicked),
-			  preview);
-	gtk_widget_show (GTK_WIDGET (priv->zoom_out));
-
-	i = gtk_separator_tool_item_new ();
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
-
-	i = gtk_tool_button_new (NULL, _("_Close Preview"));
-	gtk_tool_button_set_use_underline (GTK_TOOL_BUTTON (i), TRUE);
-	gtk_tool_item_set_is_important (i, TRUE);
-	gtk_tool_item_set_tooltip_text (i, _("Close print preview"));
-	g_signal_connect (i, "clicked",
-			  G_CALLBACK (close_button_clicked), preview);
-	gtk_widget_show (GTK_WIDGET (i));
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar), i, -1);
-}
-
 static gint
 get_first_page_displayed (GeditPrintPreview *preview)
 {
@@ -933,53 +786,6 @@ preview_layout_key_press (GtkWidget         *widget,
 }
 
 static void
-create_preview_layout (GeditPrintPreview *preview)
-{
-	GeditPrintPreviewPrivate *priv;
-	AtkObject *atko;
-
-	priv = preview->priv;
-
-	priv->layout = gtk_layout_new (NULL, NULL);
-	/* gtk_widget_set_double_buffered (priv->layout, FALSE); */
-
-	atko = gtk_widget_get_accessible (GTK_WIDGET (priv->layout));
-	atk_object_set_name (atko, _("Page Preview"));
-	atk_object_set_description (atko, _("The preview of a page in the document to be printed"));
-
-	gtk_widget_add_events (priv->layout,
-			       GDK_POINTER_MOTION_MASK |
-			       GDK_BUTTON_PRESS_MASK |
-			       GDK_KEY_PRESS_MASK);
-
-	gtk_widget_set_can_focus (priv->layout, TRUE);
-
-  	g_signal_connect (priv->layout,
-			  "key-press-event",
-			  G_CALLBACK (preview_layout_key_press),
-			  preview);
-
-	g_object_set (priv->layout, "has-tooltip", TRUE, NULL);
-  	g_signal_connect (priv->layout,
-			  "query-tooltip",
-			  G_CALLBACK (preview_layout_query_tooltip),
-			  preview);
-
-	priv->scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (priv->scrolled_window),
-					GTK_POLICY_AUTOMATIC,
-					GTK_POLICY_AUTOMATIC);
-
-	gtk_container_add (GTK_CONTAINER (priv->scrolled_window), priv->layout);
-	gtk_box_pack_end (GTK_BOX (preview),
-			  priv->scrolled_window,
-			  TRUE, TRUE, 0);
-
-	gtk_widget_show_all (GTK_WIDGET (priv->scrolled_window));
-	gtk_widget_grab_focus (GTK_WIDGET (priv->layout));
-}
-
-static void
 gedit_print_preview_init (GeditPrintPreview *preview)
 {
 	GeditPrintPreviewPrivate *priv;
@@ -994,11 +800,64 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 	priv->context = NULL;
 	priv->gtk_preview = NULL;
 
-	gtk_orientable_set_orientation (GTK_ORIENTABLE (preview),
-	                                GTK_ORIENTATION_VERTICAL);
+	gtk_widget_init_template (GTK_WIDGET (preview));
 
-	create_bar (preview);
-	create_preview_layout (preview);
+	g_signal_connect (priv->prev,
+			  "clicked",
+			  G_CALLBACK (prev_button_clicked),
+			  preview);
+	g_signal_connect (priv->next,
+			  "clicked",
+			  G_CALLBACK (next_button_clicked),
+			  preview);
+	g_signal_connect (priv->page_entry,
+			  "activate",
+			  G_CALLBACK (page_entry_activated),
+			  preview);
+	g_signal_connect (priv->page_entry,
+			  "insert-text",
+			  G_CALLBACK (page_entry_insert_text),
+			  NULL);
+	g_signal_connect (priv->page_entry,
+			  "focus-out-event",
+			  G_CALLBACK (page_entry_focus_out),
+			  preview);
+	g_signal_connect (priv->multi,
+			  "clicked",
+			  G_CALLBACK (multi_button_clicked),
+			  preview);
+	g_signal_connect (priv->zoom_one,
+			  "clicked",
+			  G_CALLBACK (zoom_one_button_clicked),
+			  preview);
+	g_signal_connect (priv->zoom_fit,
+			  "clicked",
+			  G_CALLBACK (zoom_fit_button_clicked),
+			  preview);
+	g_signal_connect (priv->zoom_in,
+			  "clicked",
+			  G_CALLBACK (zoom_in_button_clicked),
+			  preview);
+	g_signal_connect (priv->zoom_out,
+			  "clicked",
+			  G_CALLBACK (zoom_out_button_clicked),
+			  preview);
+	g_signal_connect (priv->close,
+			  "clicked",
+			  G_CALLBACK (close_button_clicked),
+			  preview);
+
+	g_object_set (priv->layout, "has-tooltip", TRUE, NULL);
+  	g_signal_connect (priv->layout,
+			  "query-tooltip",
+			  G_CALLBACK (preview_layout_query_tooltip),
+			  preview);
+  	g_signal_connect (priv->layout,
+			  "key-press-event",
+			  G_CALLBACK (preview_layout_key_press),
+			  preview);
+
+	gtk_widget_grab_focus (GTK_WIDGET (priv->layout));
 
 	/* FIXME */
 	priv->cur_page = 0;
