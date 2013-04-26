@@ -28,6 +28,7 @@
 #define WINDOW_DATA_KEY	       	"GeditFileBrowserMessagesWindowData"
 
 #define BUS_CONNECT(bus, name, data) gedit_message_bus_connect(bus, MESSAGE_OBJECT_PATH, #name, (GeditMessageCallback)  message_##name##_cb, data, NULL)
+#define BUS_DISCONNECT(bus, name, data) gedit_message_bus_disconnect_by_func(bus, MESSAGE_OBJECT_PATH, #name, (GeditMessageCallback)  message_##name##_cb, data)
 
 typedef struct
 {
@@ -603,16 +604,6 @@ register_methods (GeditWindow            *window,
 	                            "remove_filter");
 
 	gedit_message_bus_register (bus,
-	                            GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_CONTEXT_ITEM,
-	                            MESSAGE_OBJECT_PATH,
-	                            "add_context_item");
-
-	gedit_message_bus_register (bus,
-	                            GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID,
-	                            MESSAGE_OBJECT_PATH,
-	                            "remove_context_item");
-
-	gedit_message_bus_register (bus,
 	                            GEDIT_TYPE_MESSAGE,
 	                            MESSAGE_OBJECT_PATH,
 	                            "up");
@@ -946,8 +937,30 @@ void
 gedit_file_browser_messages_unregister (GeditWindow *window)
 {
 	GeditMessageBus *bus = gedit_window_get_message_bus (window);
+	WindowData *data = get_window_data (window);
 
 	cleanup_signals (window);
+
+	BUS_DISCONNECT (bus, get_root, data);
+	BUS_DISCONNECT (bus, set_root, data);
+	BUS_DISCONNECT (bus, set_emblem, data);
+	BUS_DISCONNECT (bus, add_filter, window);
+	BUS_DISCONNECT (bus, remove_filter, data);
+
+	BUS_DISCONNECT (bus, up, data);
+	BUS_DISCONNECT (bus, history_back, data);
+	BUS_DISCONNECT (bus, history_forward, data);
+
+	BUS_DISCONNECT (bus, refresh, data);
+
+	BUS_DISCONNECT (bus, set_show_hidden, data);
+	BUS_DISCONNECT (bus, set_show_binary, data);
+
+	BUS_DISCONNECT (bus, show_bookmarks, data);
+	BUS_DISCONNECT (bus, show_files, data);
+
+	BUS_DISCONNECT (bus, get_view, data);
+
 	gedit_message_bus_unregister_all (bus, MESSAGE_OBJECT_PATH);
 
 	window_data_free (window);
