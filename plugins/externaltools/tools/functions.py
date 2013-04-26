@@ -107,6 +107,18 @@ def run_external_tool(window, panel, node):
         capture.set_env(GEDIT_DOCUMENTS_URI  = ' '.join(documents_uri),
                         GEDIT_DOCUMENTS_PATH = ' '.join(documents_path))
 
+    # set file browser root env var if possible
+    bus = window.get_message_bus()
+
+    if bus.is_registered('/plugins/filebrowser', 'get_root'):
+        msg = bus.send_sync('/plugins/filebrowser', 'get_root')
+
+        if msg:
+            file_browser_root = msg.props.location
+
+            if file_browser_root and file_browser_root.is_native():
+                capture.set_env(GEDIT_FILE_BROWSER_ROOT = file_browser_root.get_path())
+
     flags = capture.CAPTURE_BOTH
     
     if not node.has_hash_bang():
