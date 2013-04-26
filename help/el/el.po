@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"POT-Creation-Date: 2013-04-02 21:14+0000\n"
-"PO-Revision-Date: 2013-04-08 09:09+0300\n"
+"POT-Creation-Date: 2013-04-25 18:24+0000\n"
+"PO-Revision-Date: 2013-04-26 16:48+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
@@ -88,7 +88,7 @@ msgstr "Επεξεργαστής κειμένου gedit"
 #: C/gedit-plugins-modelines.page:13(credit/name)
 #: C/gedit-plugins-multi-edit.page:9(credit/name)
 #: C/gedit-plugins-pyconsole.page:9(credit/name)
-#: C/gedit-plugins-quick-open.page:9(credit/name)
+#: C/gedit-plugins-quick-open.page:10(credit/name)
 #: C/gedit-plugins-session-saver.page:9(credit/name)
 #: C/gedit-plugins-snippets.page:9(credit/name)
 #: C/gedit-plugins-sort.page:13(credit/name)
@@ -745,7 +745,7 @@ msgstr ""
 "διαλέξετε την κατάλληλη κωδικοποίηση."
 
 #: C/gedit-open-on-server.page:39(item/p)
-#: C/gedit-plugins-quick-open.page:37(item/p)
+#: C/gedit-plugins-quick-open.page:43(item/p)
 msgid "Click <gui>Open</gui>."
 msgstr "Πατήστε <gui>Άνοιγμα</gui>."
 
@@ -1396,15 +1396,15 @@ msgstr ""
 
 #: C/gedit-plugins-commander.page:34(td/p) C/gedit-shortcut-keys.page:56(td/p)
 #: C/gedit-shortcut-keys.page:97(td/p) C/gedit-shortcut-keys.page:143(td/p)
-#: C/gedit-shortcut-keys.page:193(td/p) C/gedit-shortcut-keys.page:214(td/p)
-#: C/gedit-shortcut-keys.page:251(td/p) C/gedit-shortcut-keys.page:280(td/p)
+#: C/gedit-shortcut-keys.page:217(td/p) C/gedit-shortcut-keys.page:238(td/p)
+#: C/gedit-shortcut-keys.page:275(td/p) C/gedit-shortcut-keys.page:304(td/p)
 msgid "To Do This"
 msgstr "Για να κάνετε αυτό"
 
 #: C/gedit-plugins-commander.page:34(td/p) C/gedit-shortcut-keys.page:57(td/p)
 #: C/gedit-shortcut-keys.page:98(td/p) C/gedit-shortcut-keys.page:144(td/p)
-#: C/gedit-shortcut-keys.page:194(td/p) C/gedit-shortcut-keys.page:215(td/p)
-#: C/gedit-shortcut-keys.page:252(td/p) C/gedit-shortcut-keys.page:281(td/p)
+#: C/gedit-shortcut-keys.page:218(td/p) C/gedit-shortcut-keys.page:239(td/p)
+#: C/gedit-shortcut-keys.page:276(td/p) C/gedit-shortcut-keys.page:305(td/p)
 msgid "Press This"
 msgstr "Πατήστε αυτό"
 
@@ -2313,53 +2313,70 @@ msgstr ""
 "θα εμφανιστεί η <gui>Κονσόλα Python</gui> ως μια ξεχωριστή καρτέλα στο κάτω "
 "μέρος του παραθύρου."
 
-#: C/gedit-plugins-quick-open.page:13(info/desc)
+#: C/gedit-plugins-quick-open.page:14(credit/name)
+msgid "Shobha Tyagi"
+msgstr "Shobha Tyagi"
+
+#: C/gedit-plugins-quick-open.page:18(info/desc)
 msgid "Quickly open a file or set of files"
 msgstr "Γρήγορο άνοιγμα ενός αρχείου ή ενός συνόλου αρχείων"
 
-#: C/gedit-plugins-quick-open.page:16(page/title)
+#: C/gedit-plugins-quick-open.page:21(page/title)
 msgid "Quick open"
 msgstr "Γρήγορο άνοιγμα"
 
-#: C/gedit-plugins-quick-open.page:18(page/p)
+#: C/gedit-plugins-quick-open.page:23(page/p)
+#| msgid ""
+#| "As the name of this plugin would imply, the <app>Quick Open</app> plugin "
+#| "helps you to open files more quickly than the regular way of opening "
+#| "files. To enable this plugin, select <guiseq><gui style=\"menu\">gedit</"
+#| "gui><gui> Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></"
+#| "guiseq>."
 msgid ""
 "As the name of this plugin would imply, the <app>Quick Open</app> plugin "
-"helps you to open files more quickly than the regular way of opening files. "
-"To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui><gui> "
-"Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></guiseq>."
+"helps you to open files more quickly than using the usual ways of opening "
+"files. To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> "
+"<gui>Preferences</gui><gui>Plugins</gui><gui>Quick Open</gui></guiseq>."
 msgstr ""
 "Όπως φανερώνει και το όνομα του πρόσθετου, το <app>Γρήγορο άνοιγμα</app> "
 "επιτρέπει πιο γρήγορο άνοιγμα των αρχείων από ότι συνήθως. Για να "
-"ενεργοποιήσετε αυτό το πρόσθετο, επιλέξτε <guiseq><gui style=\"menu\">gedit</"
-"gui><gui> Προτιμήσεις</gui><gui>Πρόσθετα</gui><gui>Γρήγορο άνοιγμα</gui></"
-"guiseq>."
+"ενεργοποιήσετε αυτό το πρόσθετο, επιλέξτε <guiseq><gui "
+"style=\"menu\">gedit</gui><gui> "
+"Προτιμήσεις</gui><gui>Πρόσθετα</gui><gui>Γρήγορο άνοιγμα</gui></guiseq>."
 
-#: C/gedit-plugins-quick-open.page:23(page/p)
-msgid "Once you've enabled it, here is how to use the plugin:"
-msgstr ""
-"Μόλις το ενεργοποιήσετε, δείτε πως μπορείτε να χρησιμοποιήσετε το πρόσθετο:"
-
-#: C/gedit-plugins-quick-open.page:26(item/p)
+#: C/gedit-plugins-quick-open.page:28(page/p)
 msgid ""
-"Open the <app>Quick Open</app> dialog by pressing <keyseq><key> Ctrl</"
-"key><key>Alt</key><key>O</key></keyseq>, or by selecting <guiseq> <gui>File</"
+"Once you have enabled the <app>Quick Open</app> plugin you can use it as "
+"follows:"
+msgstr ""
+"Αφού έχετε ενεργοποιήσει το πρόσθετο <app>Γρήγορο άνοιγμα</app> μπορείτε να "
+"το χρησιμοποιήσετε ως εξής:"
+
+#: C/gedit-plugins-quick-open.page:32(item/p)
+#| msgid ""
+#| "Open the <app>Quick Open</app> dialog by pressing <keyseq><key> Ctrl</"
+#| "key><key>Alt</key><key>O</key></keyseq>, or by selecting <guiseq> "
+#| "<gui>File</gui><gui>Quick Open</gui></guiseq>."
+msgid ""
+"Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
+"key><key>Alt</key><key>O</key></keyseq>, or by selecting <guiseq><gui>File</"
 "gui><gui>Quick Open</gui></guiseq>."
 msgstr ""
-"Ανοίξτε το διάλογο του <app>Γρήγορο άνοιγμα</app> πατώντας <keyseq><key> "
-"Ctrl</key><key>Alt</key><key>O</key></keyseq>, ή επιλέγοντας <guiseq> "
-"<gui>Αρχείο</gui><gui>Γρήγορο άνοιγμα</gui></guiseq>."
+"Ανοίξτε το πλαίσιο διαλόγου του <app>Γρήγορου ανοίγματος</app> πατώντας "
+"<keyseq><key> Ctrl</key><key>Alt</key><key>O</key></keyseq>, ή επιλέγοντας "
+"<guiseq><gui>Αρχείο</gui><gui>Γρήγορο άνοιγμα</gui></guiseq>."
 
-#: C/gedit-plugins-quick-open.page:29(item/p)
+#: C/gedit-plugins-quick-open.page:35(item/p)
 msgid "The <gui>Quick Open</gui> file dialog will appear."
 msgstr "Θα εμφανιστεί το παράθυρο διαλόγου <gui>Γρήγορο άνοιγμα</gui>."
 
-#: C/gedit-plugins-quick-open.page:30(item/p)
+#: C/gedit-plugins-quick-open.page:36(item/p)
 msgid "Use your mouse to select the file or files that you want to open."
 msgstr ""
 "Χρησιμοποιήστε το ποντίκι σας για να επιλέξετε το αρχείο ή τα αρχεία που "
 "θέλετε να ανοίξετε."
 
-#: C/gedit-plugins-quick-open.page:32(item/p)
+#: C/gedit-plugins-quick-open.page:38(item/p)
 msgid ""
 "To select several individual files, hold down your <key>Ctrl</key> key while "
 "you click on the files that you want to open."
@@ -2367,7 +2384,7 @@ msgstr ""
 "Για να επιλέξετε αρκετά διαφορετικά αρχεία, κρατήστε πατημένο το πλήκτρο "
 "<key>Ctrl</key> ενώ πατάτε στα αντικείμενα που θέλετε να επιλέξετε."
 
-#: C/gedit-plugins-quick-open.page:34(item/p)
+#: C/gedit-plugins-quick-open.page:40(item/p)
 msgid ""
 "To select a group of files, click on the first file that you want to open, "
 "hold down the <key>Shift</key> key, and then click on the last file in the "
@@ -2377,13 +2394,50 @@ msgstr ""
 "ανοίξετε, καθώς κρατάτε πατημένο το πλήκτρο <key>Shift</key>, και μετά "
 "πατήστε στο τελευταίο αρχείο της λίστας που θέλετε να ανοίξετε."
 
-#: C/gedit-plugins-quick-open.page:40(note/p)
+#: C/gedit-plugins-quick-open.page:46(page/p)
+msgid "<app>Quick Open</app> will look for files in:"
+msgstr "Το <app>Γρήγορο άνοιγμα</app> θα αναζητήσει αρχεία στο:"
+
+#: C/gedit-plugins-quick-open.page:49(item/p)
+#| msgid "Print the current document"
+msgid "The directory of the currently opened document"
+msgstr "Ο κατάλογος του τρέχοντος ανοιγμένου εγγράφου"
+
+#: C/gedit-plugins-quick-open.page:50(item/p)
 msgid ""
-"The <app>Quick Open</app> plugin will only display files that you have "
-"previously opened."
+"The root directory of the <app xref=\"gedit-plugins-file-browser\">File "
+"Browser Pane</app> plugin"
 msgstr ""
-"Το πρόσθετο <app>Γρήγορο άνοιγμα</app> εμφανίζει μόνο τα αρχεία που είχατε "
-"ανοίξει προηγουμένως."
+"Ο ριζικός κατάλογος του προσθέτου <app xref=\"gedit-plugins-file-"
+"browser\">Παράθυρο περιηγητή αρχείων</app>"
+
+#: C/gedit-plugins-quick-open.page:53(item/p)
+msgid ""
+"Recent documents which are also shown in the<file>Recent</file> folder in "
+"<app>Files</app>"
+msgstr ""
+"Τα πρόσφατα έγγραφα που εμφανίζονται επίσης στον φάκελο "
+"<file>πρόσφατα</file> στα <app>Αρχεία</app>"
+
+#: C/gedit-plugins-quick-open.page:55(item/p)
+msgid "Directories which you have bookmarked in <app>Files</app>"
+msgstr "Οι κατάλογοι που έχετε επισημάνει στο <app>Αρχεία</app>"
+
+#: C/gedit-plugins-quick-open.page:57(item/p)
+msgid "Your <file>Desktop</file> directory"
+msgstr "Ο κατάλογός σας <file>Επιφάνεια εργασίας</file>"
+
+#: C/gedit-plugins-quick-open.page:58(item/p)
+msgid "Your <file>Home</file> directory"
+msgstr "Ο κατάλογός σας <file>Προσωπικός φάκελος</file>"
+
+#: C/gedit-plugins-quick-open.page:62(note/p)
+msgid ""
+"<app>Quick Open</app> displays files in any of the above locations "
+"regardless of whether or not you have opened them previously."
+msgstr ""
+"Το <app>Γρήγορο άνοιγμα</app> εμφανίζει αρχεία σε οποιαδήποτε από τις "
+"παραπάνω τοποθεσίες ανεξάρτητα από το αν τα έχετε ανοίξει προηγουμένως."
 
 #: C/gedit-plugins-session-saver.page:13(info/desc)
 msgid "Save and restore your working sessions"
@@ -3019,11 +3073,6 @@ msgstr ""
 "<keyseq><key>Shift</key><key>Return</key></keyseq>."
 
 #: C/gedit-plugins-tag-list.page:101(note/p)
-#| msgid ""
-#| "Pressing the <key>Return</key> key will insert the tag at the cursor "
-#| "position, and then return focus to the document. Pressing "
-#| "<keyseq><key>Shift</key><key>Return</key></keyseq> will insert the tag at "
-#| "the cursor position, but will keep the focus on the <app>tag- list</app>."
 msgid ""
 "Pressing the <key>Return</key> key will insert the tag at the cursor "
 "position, and then return focus to the document. Pressing "
@@ -3033,8 +3082,8 @@ msgstr ""
 "Πατώντας το πλήκτρο <key>Επιστροφή</key> θα εισάγει την ετικέτα στη θέση του "
 "δρομέα και μετά θα επαναφέρει την εστίαση στο έγγραφο. Πατώντας "
 "<keyseq><key>Shift</key><key>Επιστροφή</key></keyseq> θα εισάγει την ετικέτα "
-"στη θέση του δρομέα, αλλά θα κρατήσει την εστίαση στην <app>Λίστα "
-"ετικετών</app>."
+"στη θέση του δρομέα, αλλά θα κρατήσει την εστίαση στην <app>Λίστα ετικετών</"
+"app>."
 
 #: C/gedit-plugins-tag-list.page:109(note/p)
 msgid ""
@@ -3076,12 +3125,11 @@ msgid "To enable the Embedded Terminal plugin:"
 msgstr "Για ενεργοποίηση του ενσωματωμένου προσθέτου τερματικού:"
 
 #: C/gedit-plugins-terminal.page:40(item/p)
-#| msgid "Select <gui>Embedded Terminal</gui> to enable the plugin."
 msgid ""
 "Select <gui style=\"menuitem\">Embedded Terminal</gui> to enable the plugin."
 msgstr ""
-"Επιλέξτε <gui style=\"menuitem\">Ενσωματωμένο τερματικό</gui> για ενεργοποίηση "
-"του προσθέτου."
+"Επιλέξτε <gui style=\"menuitem\">Ενσωματωμένο τερματικό</gui> για "
+"ενεργοποίηση του προσθέτου."
 
 #: C/gedit-plugins-terminal.page:46(section/title)
 msgid "Using Embedded Terminal"
@@ -3382,7 +3430,6 @@ msgstr ""
 "\">Εκτύπωση</gui> <gui style=\"tab\">Γενικά</gui></guiseq>."
 
 #: C/gedit-printing.page:64(item/p)
-#| msgid "Select desired from printer from the list of printers available."
 msgid "Select the desired printer from the list of printers available."
 msgstr "Επιλέξτε τον επιθυμητό εκτυπωτή από τη λίστα των διαθέσιμων εκτυπωτών."
 
@@ -3474,10 +3521,6 @@ msgid "Only Printing Certain Pages"
 msgstr "Εκτύπωση συγκεκριμένων σελίδων"
 
 #: C/gedit-printing-select.page:21(page/p)
-#| msgid ""
-#| "You can selectively print only certain pages from the document. For "
-#| "example, if you want to input page numbers \"1,3,5-7,9\", then only pages "
-#| "1, 3, 5, 6, 7 and 9 will be printed. To print pages to your choice:"
 msgid ""
 "You can selectively print only certain pages from the document. For example, "
 "if you enter the page numbers \"1,3,5-7,9\", then only pages 1, 3, 5, 6, 7 "
@@ -3507,9 +3550,6 @@ msgstr ""
 "\">Περιοχή</gui>."
 
 #: C/gedit-printing-select.page:35(item/p)
-#| msgid ""
-#| "Type the numbers of the pages you want to print in the document, "
-#| "separated by commas. Use a dash to denote a range of pages."
 msgid ""
 "Type the numbers of the pages you want to print from the document, separated "
 "by commas. Use a dash to specify a range of pages."
@@ -4013,195 +4053,255 @@ msgid "Shortcut keys for editing files"
 msgstr "Συντομεύσεις πλήκτρων για την επεξεργασία αρχείων"
 
 #: C/gedit-shortcut-keys.page:149(td/p)
+#| msgid "Toggle the bookmark indicator for the current line"
+msgid "Move to the beginning of the current line"
+msgstr "Μετάβαση στην αρχή της τρέχουσας γραμμής"
+
+#: C/gedit-shortcut-keys.page:150(td/p)
+#| msgid "<key>F9</key>"
+msgid "<key>Home</key>"
+msgstr "<key>Home</key>"
+
+#: C/gedit-shortcut-keys.page:153(td/p)
+#| msgid "Delete the current line"
+msgid "Move to the end of the current line"
+msgstr "Μετάβαση στο τέλος της τρέχουσας γραμμής"
+
+#: C/gedit-shortcut-keys.page:154(td/p)
+#| msgid "<key>F9</key>"
+msgid "<key>End</key>"
+msgstr "<key>End</key>"
+
+#: C/gedit-shortcut-keys.page:157(td/p)
+#| msgid "Save the current document"
+msgid "Move to the beginning of the document"
+msgstr "Μετάβαση στην αρχή του εγγράφου"
+
+#: C/gedit-shortcut-keys.page:158(td/p)
+#| msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
+
+#: C/gedit-shortcut-keys.page:161(td/p)
+#| msgid "Save the current document"
+msgid "Move to the end of the document"
+msgstr "Μετάβαση στο τέλος του εγγράφου"
+
+#: C/gedit-shortcut-keys.page:162(td/p)
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
+
+#: C/gedit-shortcut-keys.page:165(td/p)
+#| msgid "Move the selected line up one line"
+msgid "Move the selected word right one word"
+msgstr "Μετακίνηση της επιλεγμένης λέξης δεξιά κατά μία λέξη"
+
+#: C/gedit-shortcut-keys.page:166(td/p)
+#| msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
+msgid "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
+msgstr "<keyseq><key>Alt</key><key>δεξιό βέλος</key></keyseq>"
+
+#: C/gedit-shortcut-keys.page:169(td/p)
+#| msgid "Move the selected line up one line"
+msgid "Move the selected word left one word"
+msgstr "Μετακίνηση της επιλεγμένης λέξης αριστερά κατά μία λέξη"
+
+#: C/gedit-shortcut-keys.page:170(td/p)
+#| msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
+msgid "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
+msgstr "<keyseq><key>Alt</key><key>αριστερό βέλος</key></keyseq>"
+
+#: C/gedit-shortcut-keys.page:173(td/p)
 msgid "Undo the last action"
 msgstr "Αναίρεση της τελευταίας ενέργειας"
 
-#: C/gedit-shortcut-keys.page:150(td/p)
+#: C/gedit-shortcut-keys.page:174(td/p)
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:153(td/p)
+#: C/gedit-shortcut-keys.page:177(td/p)
 msgid "Redo the last undone action"
 msgstr "Επανάληψη της ενέργειας που έχει ακυρωθεί"
 
-#: C/gedit-shortcut-keys.page:154(td/p)
+#: C/gedit-shortcut-keys.page:178(td/p)
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:158(td/p)
+#: C/gedit-shortcut-keys.page:182(td/p)
 msgid "Cut the selected text or region and place it on the clipboard"
 msgstr ""
 "Αποκοπή του επιλεγμένου κειμένου ή περιοχής και τοποθέτηση στο πρόχειρο."
 
-#: C/gedit-shortcut-keys.page:160(td/p)
+#: C/gedit-shortcut-keys.page:184(td/p)
 msgid "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:163(td/p)
+#: C/gedit-shortcut-keys.page:187(td/p)
 msgid "Copy the selected text or region onto the clipboard"
 msgstr "Αντιγραφή του επιλεγμένου κειμένου ή περιοχής στο πρόχειρο."
 
-#: C/gedit-shortcut-keys.page:164(td/p)
+#: C/gedit-shortcut-keys.page:188(td/p)
 msgid "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:167(td/p)
+#: C/gedit-shortcut-keys.page:191(td/p)
 msgid "Paste the contents of the clipboard"
 msgstr "Επικόλληση των περιεχομένων του πρόχειρου"
 
-#: C/gedit-shortcut-keys.page:168(td/p)
+#: C/gedit-shortcut-keys.page:192(td/p)
 msgid "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:171(td/p)
+#: C/gedit-shortcut-keys.page:195(td/p)
 msgid "Select all text in the file"
 msgstr "Επιλογή όλου του κειμένου στο αρχείο"
 
-#: C/gedit-shortcut-keys.page:172(td/p)
+#: C/gedit-shortcut-keys.page:196(td/p)
 msgid "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:175(td/p)
+#: C/gedit-shortcut-keys.page:199(td/p)
 msgid "Delete the current line"
 msgstr "Διαγραφή τρέχουσας γραμμής"
 
-#: C/gedit-shortcut-keys.page:176(td/p)
+#: C/gedit-shortcut-keys.page:200(td/p)
 msgid "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:179(td/p)
+#: C/gedit-shortcut-keys.page:203(td/p)
 msgid "Move the selected line up one line"
 msgstr "Μετακίνηση της επιλεγμένης γραμμής μια γραμμή επάνω"
 
-#: C/gedit-shortcut-keys.page:180(td/p)
+#: C/gedit-shortcut-keys.page:204(td/p)
 msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:183(td/p)
+#: C/gedit-shortcut-keys.page:207(td/p)
 msgid "Move the selected line down one line"
 msgstr "Μετακίνηση της επιλεγμένης γραμμής μια γραμμή κάτω"
 
-#: C/gedit-shortcut-keys.page:184(td/p)
+#: C/gedit-shortcut-keys.page:208(td/p)
 msgid "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:190(table/title)
+#: C/gedit-shortcut-keys.page:214(table/title)
 msgid "Shortcut keys for showing and hiding panes"
 msgstr "Συντομεύσεις πλήκτρων για εμφάνιση και απόκρυψη πλαισίων"
 
-#: C/gedit-shortcut-keys.page:199(td/p)
+#: C/gedit-shortcut-keys.page:223(td/p)
 msgid "Show / hide the side pane"
 msgstr "Εμφάνιση / απόκρυψη της πλευρικής στήλης"
 
-#: C/gedit-shortcut-keys.page:200(td/p)
+#: C/gedit-shortcut-keys.page:224(td/p)
 msgid "<key>F9</key>"
 msgstr "<key>F9</key>"
 
-#: C/gedit-shortcut-keys.page:203(td/p)
+#: C/gedit-shortcut-keys.page:227(td/p)
 msgid "Show / hide the bottom pane."
 msgstr "Εμφάνιση / απόκρυψη του κάτω παραθύρου."
 
-#: C/gedit-shortcut-keys.page:204(td/p)
+#: C/gedit-shortcut-keys.page:228(td/p)
 msgid "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:211(table/title)
+#: C/gedit-shortcut-keys.page:235(table/title)
 msgid "Shortcut keys for searching"
 msgstr "Συντομεύσεις πλήκτρων για αναζήτηση"
 
-#: C/gedit-shortcut-keys.page:220(td/p)
+#: C/gedit-shortcut-keys.page:244(td/p)
 msgid "Find a string"
 msgstr "Εύρεση συμβολοσειράς"
 
-#: C/gedit-shortcut-keys.page:221(td/p)
+#: C/gedit-shortcut-keys.page:245(td/p)
 msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:224(td/p)
+#: C/gedit-shortcut-keys.page:248(td/p)
 msgid "Find the next instance of the string"
 msgstr "Εύρεση του επόμενου στιγμιότυπου της συμβολοσειράς"
 
-#: C/gedit-shortcut-keys.page:225(td/p)
+#: C/gedit-shortcut-keys.page:249(td/p)
 msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:228(td/p)
+#: C/gedit-shortcut-keys.page:252(td/p)
 msgid "Find the previous instance of the string"
 msgstr "Εύρεση του προηγούμενου στιγμιότυπου της συμβολοσειράς"
 
-#: C/gedit-shortcut-keys.page:229(td/p)
+#: C/gedit-shortcut-keys.page:253(td/p)
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:232(td/p)
+#: C/gedit-shortcut-keys.page:256(td/p)
 msgid "Search and Replace"
 msgstr "Αναζήτηση και αντικατάσταση"
 
-#: C/gedit-shortcut-keys.page:233(td/p)
+#: C/gedit-shortcut-keys.page:257(td/p)
 msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:236(td/p)
+#: C/gedit-shortcut-keys.page:260(td/p)
 msgid "Clear highlight"
 msgstr "Καθαρισμός επισήμανσης"
 
-#: C/gedit-shortcut-keys.page:237(td/p)
+#: C/gedit-shortcut-keys.page:261(td/p)
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:241(td/p)
+#: C/gedit-shortcut-keys.page:265(td/p)
 msgid "Goto line"
 msgstr "Μετάβαση στη γραμμή"
 
-#: C/gedit-shortcut-keys.page:242(td/p)
+#: C/gedit-shortcut-keys.page:266(td/p)
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:248(table/title)
+#: C/gedit-shortcut-keys.page:272(table/title)
 msgid "Shortcut keys for tools"
 msgstr "Συντομεύσεις πλήκτρων για εργαλεία"
 
-#: C/gedit-shortcut-keys.page:257(td/p)
+#: C/gedit-shortcut-keys.page:281(td/p)
 msgid "Check spelling"
 msgstr "Έλεγχος ορθογραφίας"
 
-#: C/gedit-shortcut-keys.page:258(td/p)
+#: C/gedit-shortcut-keys.page:282(td/p)
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:261(td/p)
+#: C/gedit-shortcut-keys.page:285(td/p)
 msgid "Remove trailing spaces (with plugin)"
 msgstr "Αφαίρεση τελικών κενών (με πρόσθετο)"
 
-#: C/gedit-shortcut-keys.page:262(td/p)
+#: C/gedit-shortcut-keys.page:286(td/p)
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:265(td/p)
+#: C/gedit-shortcut-keys.page:289(td/p)
 msgid "Run \"make\" in the current directory (with plugin)"
 msgstr "Εκτέλεση της εντολής \"make\" στον τρέχοντα κατάλογο (με πρόσθετο)"
 
-#: C/gedit-shortcut-keys.page:266(td/p)
+#: C/gedit-shortcut-keys.page:290(td/p)
 msgid "<key>F8</key>"
 msgstr "<key>F8</key>"
 
-#: C/gedit-shortcut-keys.page:269(td/p)
+#: C/gedit-shortcut-keys.page:293(td/p)
 msgid "Directory listing (with plugin)"
 msgstr "Λίστα καταλόγου (με πρόσθετο)"
 
-#: C/gedit-shortcut-keys.page:270(td/p)
+#: C/gedit-shortcut-keys.page:294(td/p)
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 
-#: C/gedit-shortcut-keys.page:277(table/title)
+#: C/gedit-shortcut-keys.page:301(table/title)
 msgid "Shortcut keys for user help"
 msgstr "Συντομεύσεις πλήκτρων για την βοήθεια του χρήστη"
 
-#: C/gedit-shortcut-keys.page:286(td/p)
+#: C/gedit-shortcut-keys.page:310(td/p)
 msgid "Open the gedit user guide"
 msgstr "Άνοιγμα του οδηγού χρήσης του gedit"
 
-#: C/gedit-shortcut-keys.page:287(td/p)
+#: C/gedit-shortcut-keys.page:311(td/p)
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
@@ -4663,6 +4763,18 @@ msgstr ""
 "ShareAlike 3.0 Unported. Για να δείτε ένα αντίγραφο αυτής της άδειας, "
 "επισκεφτείτε <_:link-1/> ή στείλτε ένα γράμμα στο Creative Commons, 444 "
 "Castro Street, Suite 900, Mountain View, California, 94041, USA."
+
+#~ msgid "Once you've enabled it, here is how to use the plugin:"
+#~ msgstr ""
+#~ "Μόλις το ενεργοποιήσετε, δείτε πως μπορείτε να χρησιμοποιήσετε το "
+#~ "πρόσθετο:"
+
+#~ msgid ""
+#~ "The <app>Quick Open</app> plugin will only display files that you have "
+#~ "previously opened."
+#~ msgstr ""
+#~ "Το πρόσθετο <app>Γρήγορο άνοιγμα</app> εμφανίζει μόνο τα αρχεία που "
+#~ "είχατε ανοίξει προηγουμένως."
 
 #~| msgid ""
 #~| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
