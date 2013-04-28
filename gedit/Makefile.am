@@ -263,7 +263,8 @@ EXTRA_DIST = 				\
 	gedit-preferences-dialog.ui	\
 	gedit-replace-dialog.ui		\
 	gedit-print-preview.ui		\
-	gedit-print-preferences.ui
+	gedit-print-preferences.ui	\
+	gedit-progress-info-bar.ui
 
 CLEANFILES = $(BUILT_SOURCES) $(BUILT_SOURCES_PRIVATE)
 

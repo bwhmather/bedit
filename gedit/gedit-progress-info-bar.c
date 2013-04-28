@@ -20,16 +20,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-/*
- * Modified by the gedit Team, 2005. See the AUTHORS file for a
- * list of people on the gedit Team.
- * See the ChangeLog files for a list of changes.
- *
- * $Id$
- */
-
- /* TODO: add properties */
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -65,8 +55,6 @@ gedit_progress_info_bar_set_has_cancel_button (GeditProgressInfoBar *bar,
 		gtk_info_bar_add_button (GTK_INFO_BAR (bar),
 					 GTK_STOCK_CANCEL,
 					 GTK_RESPONSE_CANCEL);
-
-	g_object_notify (G_OBJECT (bar), "has-cancel-button");
 }
 
 static void
@@ -95,6 +83,7 @@ static void
 gedit_progress_info_bar_class_init (GeditProgressInfoBarClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	gobject_class->set_property = gedit_progress_info_bar_set_property;
 
@@ -108,46 +97,24 @@ gedit_progress_info_bar_class_init (GeditProgressInfoBarClass *klass)
 							       G_PARAM_CONSTRUCT_ONLY |
 							       G_PARAM_STATIC_STRINGS));
 
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+	                                             "/org/gnome/gedit/ui/gedit-progress-info-bar.ui");
+	gtk_widget_class_bind_child (widget_class, GeditProgressInfoBarPrivate, image);
+	gtk_widget_class_bind_child (widget_class, GeditProgressInfoBarPrivate, label);
+	gtk_widget_class_bind_child (widget_class, GeditProgressInfoBarPrivate, progress);
+
 	g_type_class_add_private (gobject_class, sizeof (GeditProgressInfoBarPrivate));
 }
 
 static void
 gedit_progress_info_bar_init (GeditProgressInfoBar *bar)
 {
-	GtkWidget *vbox;
-	GtkWidget *hbox;
-	GtkWidget *content;
+	bar->priv = G_TYPE_INSTANCE_GET_PRIVATE (bar,
+	                                         GEDIT_TYPE_PROGRESS_INFO_BAR,
+	                                         GeditProgressInfoBarPrivate);
 
-	bar->priv = GEDIT_PROGRESS_INFO_BAR_GET_PRIVATE (bar);
-
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-	gtk_widget_show (vbox);
-
-	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-	gtk_widget_show (hbox);
-	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
-
-	bar->priv->image = gtk_image_new_from_icon_name (GTK_STOCK_MISSING_IMAGE,
-							 GTK_ICON_SIZE_SMALL_TOOLBAR);
-	gtk_widget_show (bar->priv->image);
-	gtk_box_pack_start (GTK_BOX (hbox), bar->priv->image, FALSE, FALSE, 4);
-
-	bar->priv->label = gtk_label_new ("");
-	gtk_widget_show (bar->priv->label);
-	gtk_box_pack_start (GTK_BOX (hbox), bar->priv->label, FALSE, TRUE, 0);
-	gtk_label_set_use_markup (GTK_LABEL (bar->priv->label), TRUE);
-	gtk_widget_set_halign (bar->priv->label, GTK_ALIGN_START);
-	gtk_label_set_ellipsize (GTK_LABEL (bar->priv->label),
-				 PANGO_ELLIPSIZE_END);
-
-	bar->priv->progress = gtk_progress_bar_new ();
-	gtk_widget_set_hexpand (bar->priv->progress, TRUE);
-	gtk_widget_show (bar->priv->progress);
-	gtk_box_pack_start (GTK_BOX (vbox), bar->priv->progress, FALSE, TRUE, 0);
-	gtk_widget_set_size_request (bar->priv->progress, -1, 15);
-
-	content = gtk_info_bar_get_content_area (GTK_INFO_BAR (bar));
-	gtk_container_add (GTK_CONTAINER (content), vbox);
+	gtk_widget_init_template (GTK_WIDGET (bar));
 }
 
 GtkWidget *
