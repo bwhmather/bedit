@@ -1,5 +1,5 @@
 /*
- * gedit-status-combo-box.c
+ * gedit-status-menu-button.c
  * This file is part of gedit
  *
  * Copyright (C) 2008 - Jesse van den Kieboom
@@ -20,13 +20,9 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "gedit-status-combo-box.h"
+#include "gedit-status-menu-button.h"
 
-#define COMBO_BOX_TEXT_DATA "GeditStatusComboBoxTextData"
-
-#define GEDIT_STATUS_COMBO_BOX_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_STATUS_COMBO_BOX, GeditStatusComboBoxPrivate))
-
-struct _GeditStatusComboBoxPrivate
+struct _GeditStatusMenuButtonPrivate
 {
 	GtkWidget *hbox;
 	GtkWidget *label;
@@ -34,7 +30,7 @@ struct _GeditStatusComboBoxPrivate
 	GtkWidget *arrow;
 };
 
-struct _GeditStatusComboBoxClassPrivate
+struct _GeditStatusMenuButtonClassPrivate
 {
 	GtkCssProvider *css;
 };
@@ -46,40 +42,40 @@ enum
 	PROP_LABEL
 };
 
-G_DEFINE_TYPE_WITH_CODE (GeditStatusComboBox, gedit_status_combo_box, GTK_TYPE_MENU_BUTTON,
-                         g_type_add_class_private (g_define_type_id, sizeof (GeditStatusComboBoxClassPrivate)))
+G_DEFINE_TYPE_WITH_CODE (GeditStatusMenuButton, gedit_status_menu_button, GTK_TYPE_MENU_BUTTON,
+                         g_type_add_class_private (g_define_type_id, sizeof (GeditStatusMenuButtonClassPrivate)))
 
 static void
-gedit_status_combo_box_finalize (GObject *object)
+gedit_status_menu_button_finalize (GObject *object)
 {
-	G_OBJECT_CLASS (gedit_status_combo_box_parent_class)->finalize (object);
+	G_OBJECT_CLASS (gedit_status_menu_button_parent_class)->finalize (object);
 }
 
 static void
-gedit_status_combo_box_set_label (GeditStatusComboBox *combo,
-				  const gchar         *label)
+gedit_status_menu_button_set_label (GeditStatusMenuButton *button,
+				    const gchar         *label)
 {
-	gtk_label_set_markup (GTK_LABEL (combo->priv->label), label);
+	gtk_label_set_markup (GTK_LABEL (button->priv->label), label);
 }
 
 static const gchar *
-gedit_status_combo_box_get_label (GeditStatusComboBox *combo)
+gedit_status_menu_button_get_label (GeditStatusMenuButton *button)
 {
-	return gtk_label_get_label (GTK_LABEL (combo->priv->label));
+	return gtk_label_get_label (GTK_LABEL (button->priv->label));
 }
 
 static void
-gedit_status_combo_box_get_property (GObject    *object,
-			             guint       prop_id,
-			             GValue     *value,
-			             GParamSpec *pspec)
+gedit_status_menu_button_get_property (GObject    *object,
+				       guint       prop_id,
+				       GValue     *value,
+				       GParamSpec *pspec)
 {
-	GeditStatusComboBox *obj = GEDIT_STATUS_COMBO_BOX (object);
+	GeditStatusMenuButton *obj = GEDIT_STATUS_MENU_BUTTON (object);
 
 	switch (prop_id)
 	{
 		case PROP_LABEL:
-			g_value_set_string (value, gedit_status_combo_box_get_label (obj));
+			g_value_set_string (value, gedit_status_menu_button_get_label (obj));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -88,17 +84,17 @@ gedit_status_combo_box_get_property (GObject    *object,
 }
 
 static void
-gedit_status_combo_box_set_property (GObject      *object,
-			             guint         prop_id,
-			             const GValue *value,
-			             GParamSpec   *pspec)
+gedit_status_menu_button_set_property (GObject      *object,
+				       guint         prop_id,
+				       const GValue *value,
+				       GParamSpec   *pspec)
 {
-	GeditStatusComboBox *obj = GEDIT_STATUS_COMBO_BOX (object);
+	GeditStatusMenuButton *obj = GEDIT_STATUS_MENU_BUTTON (object);
 
 	switch (prop_id)
 	{
 		case PROP_LABEL:
-			gedit_status_combo_box_set_label (obj, g_value_get_string (value));
+			gedit_status_menu_button_set_label (obj, g_value_get_string (value));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -107,7 +103,7 @@ gedit_status_combo_box_set_property (GObject      *object,
 }
 
 static void
-gedit_status_combo_box_class_init (GeditStatusComboBoxClass *klass)
+gedit_status_menu_button_class_init (GeditStatusMenuButtonClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	static const gchar style[] =
@@ -120,26 +116,26 @@ gedit_status_combo_box_class_init (GeditStatusComboBoxClass *klass)
 		  "padding: 1px 8px 2px 4px;\n"
 		"}";
 
-	object_class->finalize = gedit_status_combo_box_finalize;
-	object_class->get_property = gedit_status_combo_box_get_property;
-	object_class->set_property = gedit_status_combo_box_set_property;
+	object_class->finalize = gedit_status_menu_button_finalize;
+	object_class->get_property = gedit_status_menu_button_get_property;
+	object_class->set_property = gedit_status_menu_button_set_property;
 
 	g_object_class_override_property (object_class, PROP_LABEL, "label");
 
-	g_type_class_add_private (object_class, sizeof (GeditStatusComboBoxPrivate));
+	g_type_class_add_private (object_class, sizeof (GeditStatusMenuButtonPrivate));
 
-	klass->priv = G_TYPE_CLASS_GET_PRIVATE (klass, GEDIT_TYPE_STATUS_COMBO_BOX, GeditStatusComboBoxClassPrivate);
+	klass->priv = G_TYPE_CLASS_GET_PRIVATE (klass, GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButtonClassPrivate);
 
 	klass->priv->css = gtk_css_provider_new ();
 	gtk_css_provider_load_from_data (klass->priv->css, style, -1, NULL);
 }
 
 static void
-gedit_status_combo_box_init (GeditStatusComboBox *self)
+gedit_status_menu_button_init (GeditStatusMenuButton *self)
 {
 	GtkStyleContext *context;
 
-	self->priv = GEDIT_STATUS_COMBO_BOX_GET_PRIVATE (self);
+	self->priv = G_TYPE_INSTANCE_GET_PRIVATE(self, GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButtonPrivate);
 
 	gtk_button_set_relief (GTK_BUTTON (self), GTK_RELIEF_NONE);
 	gtk_menu_button_set_direction (GTK_MENU_BUTTON (self), GTK_ARROW_UP);
@@ -172,18 +168,18 @@ gedit_status_combo_box_init (GeditStatusComboBox *self)
 	/* make it as small as possible */
 	context = gtk_widget_get_style_context (GTK_WIDGET (self));
 	gtk_style_context_add_provider (context,
-	                                GTK_STYLE_PROVIDER (GEDIT_STATUS_COMBO_BOX_GET_CLASS (self)->priv->css),
+	                                GTK_STYLE_PROVIDER (GEDIT_STATUS_MENU_BUTTON_GET_CLASS (self)->priv->css),
 	                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 /**
- * gedit_status_combo_box_new:
+ * gedit_status_menu_button_new:
  * @label: (allow-none):
  */
 GtkWidget *
-gedit_status_combo_box_new (const gchar *label)
+gedit_status_menu_button_new (void)
 {
-	return g_object_new (GEDIT_TYPE_STATUS_COMBO_BOX, "label", label, NULL);
+	return g_object_new (GEDIT_TYPE_STATUS_MENU_BUTTON, NULL);
 }
 
 /* ex:set ts=8 noet: */

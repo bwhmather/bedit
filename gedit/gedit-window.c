@@ -59,7 +59,7 @@
 #include "gedit-window-activatable.h"
 #include "gedit-enum-types.h"
 #include "gedit-dirs.h"
-#include "gedit-status-combo-box.h"
+#include "gedit-status-menu-button.h"
 #include "gedit-settings.h"
 #include "gedit-marshal.h"
 
@@ -2001,7 +2001,7 @@ create_tab_width_combo (GeditWindow *window)
 	guint i = 0;
 	GtkWidget *item;
 
-	window->priv->tab_width_combo = gedit_status_combo_box_new (_("Tab Width:"));
+	window->priv->tab_width_combo = gedit_status_menu_button_new ();
 	window->priv->tab_width_combo_menu = gtk_menu_new ();
 	gtk_menu_button_set_popup (GTK_MENU_BUTTON (window->priv->tab_width_combo),
 	                           window->priv->tab_width_combo_menu);
@@ -2081,7 +2081,7 @@ create_language_combo (GeditWindow *window)
 	GtkWidget *item;
 	gint i;
 
-	window->priv->language_combo = gedit_status_combo_box_new (NULL);
+	window->priv->language_combo = gedit_status_menu_button_new ();
 	window->priv->language_combo_menu = gtk_menu_new ();
 	gtk_menu_button_set_popup (GTK_MENU_BUTTON (window->priv->language_combo),
 	                           window->priv->language_combo_menu);

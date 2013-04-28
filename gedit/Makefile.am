@@ -119,7 +119,7 @@ NOINST_H_FILES =			\
 	gedit-print-preview.h		\
 	gedit-replace-dialog.h		\
 	gedit-settings.h		\
-	gedit-status-combo-box.h	\
+	gedit-status-menu-button.h	\
 	gedit-tab-label.h		\
 	gedittextregion.h		\
 	gedit-ui.h			\
@@ -205,7 +205,7 @@ libgedit_c_files =			\
 	gedit-replace-dialog.c		\
 	gedit-settings.c		\
 	gedit-statusbar.c		\
-	gedit-status-combo-box.c	\
+	gedit-status-menu-button.c	\
 	gedit-tab.c 			\
 	gedit-tab-label.c		\
 	gedit-utils.c 			\
