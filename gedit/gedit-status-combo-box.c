@@ -199,9 +199,6 @@ gedit_status_combo_box_init (GeditStatusComboBox *self)
 
 	gtk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->arrow, FALSE, TRUE, 0);
 
-	self->priv->menu = gtk_menu_new ();
-	gtk_menu_button_set_popup (GTK_MENU_BUTTON (self), self->priv->menu);
-
 	/* make it as small as possible */
 	context = gtk_widget_get_style_context (GTK_WIDGET (self));
 	gtk_style_context_add_provider (context,
@@ -230,13 +227,9 @@ void
 gedit_status_combo_box_set_label (GeditStatusComboBox *combo,
 				  const gchar         *label)
 {
-	gchar *text;
-
 	g_return_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo));
 
-	text = g_strconcat ("  ", label, ": ", NULL);
-	gtk_label_set_markup (GTK_LABEL (combo->priv->label), text);
-	g_free (text);
+	gtk_label_set_markup (GTK_LABEL (combo->priv->label), label);
 }
 
 const gchar *
@@ -245,110 +238,6 @@ gedit_status_combo_box_get_label (GeditStatusComboBox *combo)
 	g_return_val_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo), NULL);
 
 	return gtk_label_get_label (GTK_LABEL (combo->priv->label));
-}
-
-static void
-item_activated (GtkMenuItem         *item,
-		GeditStatusComboBox *combo)
-{
-	gedit_status_combo_box_set_item (combo, item);
-}
-
-/**
- * gedit_status_combo_box_add_item:
- * @combo:
- * @item:
- * @text: (allow-none):
- */
-void
-gedit_status_combo_box_add_item (GeditStatusComboBox *combo,
-				 GtkMenuItem         *item,
-				 const gchar         *text)
-{
-	g_return_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo));
-	g_return_if_fail (GTK_IS_MENU_ITEM (item));
-
-	gtk_menu_shell_append (GTK_MENU_SHELL (combo->priv->menu), GTK_WIDGET (item));
-
-	gedit_status_combo_box_set_item_text (combo, item, text);
-	g_signal_connect (item, "activate", G_CALLBACK (item_activated), combo);
-}
-
-void
-gedit_status_combo_box_remove_item (GeditStatusComboBox *combo,
-				    GtkMenuItem         *item)
-{
-	g_return_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo));
-	g_return_if_fail (GTK_IS_MENU_ITEM (item));
-
-	gtk_container_remove (GTK_CONTAINER (combo->priv->menu),
-			      GTK_WIDGET (item));
-}
-
-/**
- * gedit_status_combo_box_get_items:
- * @combo:
- *
- * Returns: (element-type Gtk.Widget) (transfer container):
- */
-GList *
-gedit_status_combo_box_get_items (GeditStatusComboBox *combo)
-{
-	g_return_val_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo), NULL);
-
-	return gtk_container_get_children (GTK_CONTAINER (combo->priv->menu));
-}
-
-const gchar *
-gedit_status_combo_box_get_item_text (GeditStatusComboBox *combo,
-				      GtkMenuItem	  *item)
-{
-	const gchar *ret = NULL;
-
-	g_return_val_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo), NULL);
-	g_return_val_if_fail (GTK_IS_MENU_ITEM (item), NULL);
-
-	ret = g_object_get_data (G_OBJECT (item), COMBO_BOX_TEXT_DATA);
-
-	return ret;
-}
-
-/**
- * gedit_status_combo_box_set_item_text:
- * @combo:
- * @item:
- * @text: (allow-none):
- */
-void
-gedit_status_combo_box_set_item_text (GeditStatusComboBox *combo,
-				      GtkMenuItem	  *item,
-				      const gchar         *text)
-{
-	g_return_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo));
-	g_return_if_fail (GTK_IS_MENU_ITEM (item));
-
-	g_object_set_data_full (G_OBJECT (item),
-				COMBO_BOX_TEXT_DATA,
-				g_strdup (text),
-				(GDestroyNotify)g_free);
-}
-
-void
-gedit_status_combo_box_set_item (GeditStatusComboBox *combo,
-				 GtkMenuItem         *item)
-{
-	g_return_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo));
-	g_return_if_fail (GTK_IS_MENU_ITEM (item));
-
-	g_signal_emit (combo, signals[CHANGED], 0, item, NULL);
-}
-
-GtkLabel *
-gedit_status_combo_box_get_item_label (GeditStatusComboBox *combo)
-{
-	g_return_val_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo), NULL);
-
-	return GTK_LABEL (combo->priv->item);
 }
 
 /* ex:set ts=8 noet: */

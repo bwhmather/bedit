@@ -60,9 +60,6 @@ struct _GeditWindowPrivate
 	GtkWidget      *hpaned;
 	GtkWidget      *vpaned;
 
-	GtkWidget      *tab_width_combo;
-	GtkWidget      *language_combo;
-
 	GeditMessageBus *message_bus;
 	PeasExtensionSet *extensions;
 
@@ -73,14 +70,16 @@ struct _GeditWindowPrivate
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;
+	GtkWidget      *tab_width_combo;
+	GtkWidget      *tab_width_combo_menu;
+	GtkWidget      *language_combo;
+	GtkWidget      *language_combo_menu;
 	guint           generic_message_cid;
 	guint           tip_message_cid;
-	guint 		bracket_match_message_cid;
-
-	/* signal handler ids */
-	guint 		tab_width_id;
-	guint 		spaces_instead_of_tabs_id;
-	guint 		language_changed_id;
+	guint 	        bracket_match_message_cid;
+	GBinding       *spaces_instead_of_tabs_binding;
+	guint 	        tab_width_id;
+	guint 	        language_changed_id;
 
 	/* Menus & Toolbars */
 	GtkUIManager   *manager;

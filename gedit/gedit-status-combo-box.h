@@ -58,29 +58,12 @@ struct _GeditStatusComboBoxClass
 };
 
 GType gedit_status_combo_box_get_type 			(void) G_GNUC_CONST;
+
 GtkWidget *gedit_status_combo_box_new			(const gchar 		*label);
 
 const gchar *gedit_status_combo_box_get_label 		(GeditStatusComboBox 	*combo);
 void gedit_status_combo_box_set_label 			(GeditStatusComboBox 	*combo,
 							 const gchar         	*label);
-
-void gedit_status_combo_box_add_item 			(GeditStatusComboBox 	*combo,
-							 GtkMenuItem         	*item,
-							 const gchar         	*text);
-void gedit_status_combo_box_remove_item			(GeditStatusComboBox    *combo,
-							 GtkMenuItem            *item);
-
-GList *gedit_status_combo_box_get_items			(GeditStatusComboBox    *combo);
-const gchar *gedit_status_combo_box_get_item_text 	(GeditStatusComboBox	*combo,
-							 GtkMenuItem		*item);
-void gedit_status_combo_box_set_item_text 		(GeditStatusComboBox	*combo,
-							 GtkMenuItem		*item,
-							 const gchar            *text);
-
-void gedit_status_combo_box_set_item			(GeditStatusComboBox	*combo,
-							 GtkMenuItem		*item);
-
-GtkLabel *gedit_status_combo_box_get_item_label		(GeditStatusComboBox	*combo);
 
 G_END_DECLS
 
