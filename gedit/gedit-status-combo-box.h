@@ -61,10 +61,6 @@ GType gedit_status_combo_box_get_type 			(void) G_GNUC_CONST;
 
 GtkWidget *gedit_status_combo_box_new			(const gchar 		*label);
 
-const gchar *gedit_status_combo_box_get_label 		(GeditStatusComboBox 	*combo);
-void gedit_status_combo_box_set_label 			(GeditStatusComboBox 	*combo,
-							 const gchar         	*label);
-
 G_END_DECLS
 
 #endif /* __GEDIT_STATUS_COMBO_BOX_H__ */

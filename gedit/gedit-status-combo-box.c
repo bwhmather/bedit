@@ -56,6 +56,19 @@ gedit_status_combo_box_finalize (GObject *object)
 }
 
 static void
+gedit_status_combo_box_set_label (GeditStatusComboBox *combo,
+				  const gchar         *label)
+{
+	gtk_label_set_markup (GTK_LABEL (combo->priv->label), label);
+}
+
+static const gchar *
+gedit_status_combo_box_get_label (GeditStatusComboBox *combo)
+{
+	return gtk_label_get_label (GTK_LABEL (combo->priv->label));
+}
+
+static void
 gedit_status_combo_box_get_property (GObject    *object,
 			             guint       prop_id,
 			             GValue     *value,
@@ -111,12 +124,7 @@ gedit_status_combo_box_class_init (GeditStatusComboBoxClass *klass)
 	object_class->get_property = gedit_status_combo_box_get_property;
 	object_class->set_property = gedit_status_combo_box_set_property;
 
-	g_object_class_install_property (object_class, PROP_LABEL,
-					 g_param_spec_string ("label",
-					 		      "LABEL",
-					 		      "The label",
-					 		      NULL,
-					 		      G_PARAM_READWRITE));
+	g_object_class_override_property (object_class, PROP_LABEL, "label");
 
 	g_type_class_add_private (object_class, sizeof (GeditStatusComboBoxPrivate));
 
@@ -168,8 +176,6 @@ gedit_status_combo_box_init (GeditStatusComboBox *self)
 	                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
-/* public functions */
-
 /**
  * gedit_status_combo_box_new:
  * @label: (allow-none):
@@ -178,28 +184,6 @@ GtkWidget *
 gedit_status_combo_box_new (const gchar *label)
 {
 	return g_object_new (GEDIT_TYPE_STATUS_COMBO_BOX, "label", label, NULL);
-}
-
-/**
- * gedit_status_combo_box_set_label:
- * @combo:
- * @label: (allow-none):
- */
-void
-gedit_status_combo_box_set_label (GeditStatusComboBox *combo,
-				  const gchar         *label)
-{
-	g_return_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo));
-
-	gtk_label_set_markup (GTK_LABEL (combo->priv->label), label);
-}
-
-const gchar *
-gedit_status_combo_box_get_label (GeditStatusComboBox *combo)
-{
-	g_return_val_if_fail (GEDIT_IS_STATUS_COMBO_BOX (combo), NULL);
-
-	return gtk_label_get_label (GTK_LABEL (combo->priv->label));
 }
 
 /* ex:set ts=8 noet: */
