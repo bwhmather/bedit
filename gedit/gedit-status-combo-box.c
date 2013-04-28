@@ -32,21 +32,11 @@ struct _GeditStatusComboBoxPrivate
 	GtkWidget *label;
 	GtkWidget *item;
 	GtkWidget *arrow;
-
-	GtkWidget *menu;
-	GtkWidget *current_item;
 };
 
 struct _GeditStatusComboBoxClassPrivate
 {
 	GtkCssProvider *css;
-};
-
-/* Signals */
-enum
-{
-	CHANGED,
-	NUM_SIGNALS
 };
 
 /* Properties */
@@ -55,8 +45,6 @@ enum
 	PROP_0,
 	PROP_LABEL
 };
-
-static guint signals[NUM_SIGNALS] = { 0 };
 
 G_DEFINE_TYPE_WITH_CODE (GeditStatusComboBox, gedit_status_combo_box, GTK_TYPE_MENU_BUTTON,
                          g_type_add_class_private (g_define_type_id, sizeof (GeditStatusComboBoxClassPrivate)))
@@ -106,21 +94,6 @@ gedit_status_combo_box_set_property (GObject      *object,
 }
 
 static void
-gedit_status_combo_box_changed (GeditStatusComboBox *combo,
-				GtkMenuItem         *item)
-{
-	const gchar *text;
-
-	text = g_object_get_data (G_OBJECT (item), COMBO_BOX_TEXT_DATA);
-
-	if (text != NULL)
-	{
-		gtk_label_set_markup (GTK_LABEL (combo->priv->item), text);
-		combo->priv->current_item = GTK_WIDGET (item);
-	}
-}
-
-static void
 gedit_status_combo_box_class_init (GeditStatusComboBoxClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -137,17 +110,6 @@ gedit_status_combo_box_class_init (GeditStatusComboBoxClass *klass)
 	object_class->finalize = gedit_status_combo_box_finalize;
 	object_class->get_property = gedit_status_combo_box_get_property;
 	object_class->set_property = gedit_status_combo_box_set_property;
-
-	klass->changed = gedit_status_combo_box_changed;
-
-	signals[CHANGED] =
-	    g_signal_new ("changed",
-			  G_OBJECT_CLASS_TYPE (object_class),
-			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditStatusComboBoxClass,
-					   changed), NULL, NULL,
-			  g_cclosure_marshal_VOID__OBJECT, G_TYPE_NONE, 1,
-			  GTK_TYPE_MENU_ITEM);
 
 	g_object_class_install_property (object_class, PROP_LABEL,
 					 g_param_spec_string ("label",
