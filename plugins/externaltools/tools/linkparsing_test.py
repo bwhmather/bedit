@@ -72,6 +72,14 @@ test.c:14:13: error: expected ';' before 'return'
     def test_parse_gcc_none_as_argument(self):
         self.assertRaises(ValueError, self.p.parse, None)
 
+    def test_parse_grep_one_line(self):
+        line = "libnautilus-private/nautilus-canvas-container.h:45:#define NAUTILUS_CANVAS_ICON_DATA(pointer)"
+        links = self.p.parse(line)
+        self.assert_link_count(links, 1)
+        lnk = links[0]
+        self.assert_link(lnk, "libnautilus-private/nautilus-canvas-container.h", 45)
+        self.assert_link_text(line, lnk, "libnautilus-private/nautilus-canvas-container.h:45")
+
     def test_parse_python_simple_test_with_real_output(self):
         output = """
 Traceback (most recent call last):

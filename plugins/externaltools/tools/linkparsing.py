@@ -158,6 +158,7 @@ class RegexpLinkParser(AbstractLinkParser):
         return links
 
 # gcc 'test.c:13: warning: ...'
+# grep 'test.c:5:int main(...'
 # javac 'Test.java:13: ...'
 # ruby 'test.rb:5: ...'
 # scalac 'Test.scala:5: ...'
@@ -165,13 +166,13 @@ class RegexpLinkParser(AbstractLinkParser):
 REGEXP_STANDARD = r"""
 ^
 (?P<lnk>
-    (?P<pth> [^\:\n]* )
+    (?P<pth> [^ \:\n]* )
     \:
     (?P<ln> \d+)
     \:?
     (?P<col> \d+)?
 )
-\:\s"""
+\:"""
 
 # python '  File "test.py", line 13'
 REGEXP_PYTHON = r"""
