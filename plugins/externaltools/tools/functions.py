@@ -18,7 +18,6 @@
 
 import os
 from gi.repository import Gio, Gtk, Gdk, GtkSource, Gedit
-from .outputpanel import OutputPanel
 from .capture import *
 
 def default(val, d):
@@ -38,6 +37,20 @@ def current_word(document):
         piter.forward_word_end()
             
     return (start, piter)
+
+def file_browser_root(window):
+    bus = window.get_message_bus()
+
+    if bus.is_registered('/plugins/filebrowser', 'get_root'):
+        msg = bus.send_sync('/plugins/filebrowser', 'get_root')
+
+        if msg:
+            browser_root = msg.props.location
+
+            if browser_root and browser_root.is_native():
+                return browser_root.get_path()
+                
+    return None
 
 # ==== Capture related functions ====
 def run_external_tool(window, panel, node):
@@ -108,16 +121,9 @@ def run_external_tool(window, panel, node):
                         GEDIT_DOCUMENTS_PATH = ' '.join(documents_path))
 
     # set file browser root env var if possible
-    bus = window.get_message_bus()
-
-    if bus.is_registered('/plugins/filebrowser', 'get_root'):
-        msg = bus.send_sync('/plugins/filebrowser', 'get_root')
-
-        if msg:
-            file_browser_root = msg.props.location
-
-            if file_browser_root and file_browser_root.is_native():
-                capture.set_env(GEDIT_FILE_BROWSER_ROOT = file_browser_root.get_path())
+    browser_root = file_browser_root(window)
+    if browser_root:
+        capture.set_env(GEDIT_FILE_BROWSER_ROOT = browser_root)
 
     flags = capture.CAPTURE_BOTH
     

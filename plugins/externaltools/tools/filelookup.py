@@ -18,6 +18,7 @@
 
 import os
 from gi.repository import Gio, Gedit
+from .functions import *
 
 class FileLookup:
     """
@@ -26,9 +27,10 @@ class FileLookup:
     methods of trying to find the real file.
     """
 
-    def __init__(self):
+    def __init__(self, window):
         self.providers = []
         self.providers.append(AbsoluteFileLookupProvider())
+        self.providers.append(BrowserRootFileLookupProvider(window))
         self.providers.append(CwdFileLookupProvider())
         self.providers.append(OpenDocumentRelPathFileLookupProvider())
         self.providers.append(OpenDocumentFileLookupProvider())
@@ -75,6 +77,23 @@ class AbsoluteFileLookupProvider(FileLookupProvider):
             return Gio.file_new_for_path(path)
         else:
             return None
+
+class BrowserRootFileLookupProvider(FileLookupProvider):
+    """
+    This lookup provider tries to find a file specified by the path relative to
+    the file browser root.
+    """
+    def __init__(self, window):
+        self.window = window
+
+    def lookup(self, path):
+        root = file_browser_root(self.window)
+        if root:
+            real_path = os.path.join(root, path)
+            if os.path.isfile(real_path):
+                return Gio.file_new_for_path(real_path)
+            
+        return None
 
 
 class CwdFileLookupProvider(FileLookupProvider):

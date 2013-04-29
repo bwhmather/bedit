@@ -92,7 +92,7 @@ class OutputPanel(UniqueById):
         self.links = []
 
         self.link_parser = linkparsing.LinkParser()
-        self.file_lookup = filelookup.FileLookup()
+        self.file_lookup = filelookup.FileLookup(window)
 
     def get_profile_settings(self):
         #FIXME return either the gnome-terminal settings or the gedit one
