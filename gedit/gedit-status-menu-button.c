@@ -24,10 +24,7 @@
 
 struct _GeditStatusMenuButtonPrivate
 {
-	GtkWidget *hbox;
 	GtkWidget *label;
-	GtkWidget *item;
-	GtkWidget *arrow;
 };
 
 struct _GeditStatusMenuButtonClassPrivate
@@ -106,6 +103,7 @@ static void
 gedit_status_menu_button_class_init (GeditStatusMenuButtonClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	static const gchar style[] =
 		"* {\n"
 		  "-GtkButton-default-border : 0;\n"
@@ -122,6 +120,11 @@ gedit_status_menu_button_class_init (GeditStatusMenuButtonClass *klass)
 
 	g_object_class_override_property (object_class, PROP_LABEL, "label");
 
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+	                                             "/org/gnome/gedit/ui/gedit-status-menu-button.ui");
+	gtk_widget_class_bind_child (widget_class, GeditStatusMenuButtonPrivate, label);
+
 	g_type_class_add_private (object_class, sizeof (GeditStatusMenuButtonPrivate));
 
 	klass->priv = G_TYPE_CLASS_GET_PRIVATE (klass, GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButtonClassPrivate);
@@ -137,33 +140,7 @@ gedit_status_menu_button_init (GeditStatusMenuButton *self)
 
 	self->priv = G_TYPE_INSTANCE_GET_PRIVATE(self, GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButtonPrivate);
 
-	gtk_button_set_relief (GTK_BUTTON (self), GTK_RELIEF_NONE);
-	gtk_menu_button_set_direction (GTK_MENU_BUTTON (self), GTK_ARROW_UP);
-
-	self->priv->hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 3);
-	gtk_widget_show (self->priv->hbox);
-	gtk_container_add (GTK_CONTAINER (self), self->priv->hbox);
-
-	self->priv->label = gtk_label_new ("");
-	gtk_widget_show (self->priv->label);
-
-	gtk_label_set_single_line_mode (GTK_LABEL (self->priv->label), TRUE);
-	gtk_widget_set_halign (self->priv->label, GTK_ALIGN_START);
-
-	gtk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->label, FALSE, TRUE, 0);
-
-	self->priv->item = gtk_label_new ("");
-	gtk_widget_show (self->priv->item);
-
-	gtk_label_set_single_line_mode (GTK_LABEL (self->priv->item), TRUE);
-	gtk_widget_set_halign (self->priv->item, GTK_ALIGN_START);
-
-	gtk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->item, TRUE, TRUE, 0);
-
-	self->priv->arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE);
-	gtk_widget_show (self->priv->arrow);
-
-	gtk_box_pack_start (GTK_BOX (self->priv->hbox), self->priv->arrow, FALSE, TRUE, 0);
+	gtk_widget_init_template (GTK_WIDGET (self));
 
 	/* make it as small as possible */
 	context = gtk_widget_get_style_context (GTK_WIDGET (self));
