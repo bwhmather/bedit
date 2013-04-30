@@ -8,7 +8,6 @@ pkglib_LTLIBRARIES = libgedit-private.la
 INCLUDES =								\
 	-I$(top_srcdir)							\
 	-I$(srcdir)							\
-	-I$(top_srcdir)/libgd						\
 	$(GEDIT_CFLAGS)							\
 	$(GTK_MAC_CFLAGS)						\
 	$(WARN_CFLAGS)							\
@@ -35,11 +34,8 @@ endif
 
 libgedit_la_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
 
-libgedit_la_LIBADD = \
-	$(top_builddir)/libgd/libgd.la
-
 # GEDIT_LIBS must be the last to ensure correct order on some platforms
-libgedit_la_LIBADD += $(GEDIT_LIBS) $(GTK_MAC_LIBS)
+libgedit_la_LIBADD = $(GEDIT_LIBS) $(GTK_MAC_LIBS)
 
 libgedit_private_la_LIBADD = libgedit.la $(GEDIT_LIBS)
 
