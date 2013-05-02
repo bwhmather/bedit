@@ -43,14 +43,14 @@ typedef struct _GeditViewFrameClass		GeditViewFrameClass;
 
 struct _GeditViewFrame
 {
-	GtkBox parent;
+	GtkOverlay parent;
 
 	GeditViewFramePrivate *priv;
 };
 
 struct _GeditViewFrameClass
 {
-	GtkBoxClass parent_class;
+	GtkOverlayClass parent_class;
 };
 
 GType		 gedit_view_frame_get_type	(void) G_GNUC_CONST;

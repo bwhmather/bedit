@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.8 -->
+  <object class="GeditDocument" id="doc"/>
+  <template class="GeditViewFrame" parent="GtkOverlay">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="has_focus">False</property>
+    <property name="is_focus">False</property>
+    <child>
+      <object class="GtkScrolledWindow" id="scrolledwindow">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="has_focus">False</property>
+        <property name="is_focus">False</property>
+        <property name="shadow_type">none</property>
+        <child>
+          <object class="GeditView" id="view">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="buffer">doc</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child type="overlay">
+      <object class="GtkRevealer" id="slider">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">end</property>
+        <property name="valign">start</property>
+        <child>
+          <object class="GtkFrame" id="frame">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <style>
+              <class name="gedit-search-slider"/>
+            </style>
+            <child>
+              <object class="GtkBox" id="hbox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">horizontal</property>
+                <style>
+                  <class name="linked"/>
+                </style>
+                <child>
+                  <object class="GtkEntry" id="search_entry">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="width_chars">25</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="go_up_button">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkImage" id="up_image">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="icon_size">1</property>
+                        <property name="icon_name">go-up-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="go_down_button">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkImage" id="down_image">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="icon_size">1</property>
+                        <property name="icon_name">go-down-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

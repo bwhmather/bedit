@@ -48,8 +48,6 @@ typedef enum
 struct _GeditViewFramePrivate
 {
 	GtkWidget   *view;
-	GtkWidget   *overlay;
-
 	SearchMode   search_mode;
 	SearchMode   request_search_mode;
 
@@ -94,7 +92,7 @@ typedef enum
 	GEDIT_SEARCH_ENTRY_NOT_FOUND
 } GeditSearchEntryBgColor;
 
-G_DEFINE_TYPE (GeditViewFrame, gedit_view_frame, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GeditViewFrame, gedit_view_frame, GTK_TYPE_OVERLAY)
 
 static void
 gedit_view_frame_finalize (GObject *object)
@@ -893,20 +891,6 @@ search_entry_focus_out_event (GtkWidget      *widget,
 	return FALSE;
 }
 
-static GtkWidget *
-create_button_from_symbolic (const gchar *icon_name)
-{
-	GtkWidget *button;
-
-	button = gtk_button_new ();
-	gtk_widget_set_can_focus (button, FALSE);
-	gtk_button_set_image (GTK_BUTTON (button),
-	                      gtk_image_new_from_icon_name (icon_name,
-	                                                    GTK_ICON_SIZE_MENU));
-
-	return button;
-}
-
 static void
 on_go_up_button_clicked (GtkWidget      *button,
                          GeditViewFrame *frame)
@@ -921,38 +905,17 @@ on_go_down_button_clicked (GtkWidget      *button,
 	search_again (frame, FALSE);
 }
 
-static GtkWidget *
-create_search_widget (GeditViewFrame *frame)
+static void
+setup_search_widget (GeditViewFrame *frame)
 {
-	GtkWidget *search_widget;
-	GtkWidget *hbox;
-	GtkStyleContext *context;
-
-	/* wrap it in a frame, so we can specify borders etc */
-	search_widget = gtk_frame_new (NULL);
-	context = gtk_widget_get_style_context (search_widget);
-	gtk_style_context_add_class (context, "gedit-search-slider");
-	gtk_widget_show (search_widget);
-
-	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-	context = gtk_widget_get_style_context (hbox);
-	gtk_style_context_add_class (context, GTK_STYLE_CLASS_LINKED);
-	gtk_container_add (GTK_CONTAINER (search_widget), hbox);
-	gtk_widget_show (hbox);
-
-	g_signal_connect (hbox, "key-press-event",
+	g_signal_connect (frame->priv->slider, "key-press-event",
 	                  G_CALLBACK (search_widget_key_press_event),
 	                  frame);
-	g_signal_connect (hbox, "scroll-event",
+	g_signal_connect (frame->priv->slider, "scroll-event",
 	                  G_CALLBACK (search_widget_scroll_event),
 	                  frame);
 
 	/* add entry */
-	frame->priv->search_entry = gtk_entry_new ();
-	gtk_widget_show (frame->priv->search_entry);
-
-	gtk_entry_set_width_chars (GTK_ENTRY (frame->priv->search_entry), 25);
-
 	g_signal_connect (frame->priv->search_entry, "populate-popup",
 	                  G_CALLBACK (search_entry_populate_popup),
 	                  frame);
@@ -974,27 +937,16 @@ create_search_widget (GeditViewFrame *frame)
 		                  G_CALLBACK (search_entry_focus_out_event),
 		                  frame);
 
-	gtk_container_add (GTK_CONTAINER (hbox),
-	                   frame->priv->search_entry);
-
 	/* Up/Down buttons */
-	frame->priv->go_up_button = create_button_from_symbolic ("go-up-symbolic");
-	gtk_box_pack_start (GTK_BOX (hbox), frame->priv->go_up_button,
-	                    FALSE, FALSE, 0);
 	g_signal_connect (frame->priv->go_up_button,
 	                  "clicked",
 	                  G_CALLBACK (on_go_up_button_clicked),
 	                  frame);
 
-	frame->priv->go_down_button = create_button_from_symbolic ("go-down-symbolic");
-	gtk_box_pack_start (GTK_BOX (hbox), frame->priv->go_down_button,
-	                    FALSE, FALSE, 0);
 	g_signal_connect (frame->priv->go_down_button,
 	                  "clicked",
 	                  G_CALLBACK (on_go_down_button_clicked),
 	                  frame);
-
-	return search_widget;
 }
 
 static gboolean
@@ -1190,6 +1142,7 @@ static void
 gedit_view_frame_class_init (GeditViewFrameClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->finalize = gedit_view_frame_finalize;
 	object_class->dispose = gedit_view_frame_dispose;
@@ -1211,6 +1164,15 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	                                                      G_PARAM_READABLE |
 	                                                      G_PARAM_STATIC_STRINGS));
 
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+	                                             "/org/gnome/gedit/ui/gedit-view-frame.ui");
+	gtk_widget_class_bind_child (widget_class, GeditViewFramePrivate, view);
+	gtk_widget_class_bind_child (widget_class, GeditViewFramePrivate, slider);
+	gtk_widget_class_bind_child (widget_class, GeditViewFramePrivate, search_entry);
+	gtk_widget_class_bind_child (widget_class, GeditViewFramePrivate, go_up_button);
+	gtk_widget_class_bind_child (widget_class, GeditViewFramePrivate, go_down_button);
+
 	g_type_class_add_private (object_class, sizeof (GeditViewFramePrivate));
 }
 
@@ -1230,7 +1192,6 @@ static void
 gedit_view_frame_init (GeditViewFrame *frame)
 {
 	GeditDocument *doc;
-	GtkWidget *sw;
 	GdkRGBA transparent = {0, 0, 0, 0};
 
 	frame->priv = GEDIT_VIEW_FRAME_GET_PRIVATE (frame);
@@ -1238,43 +1199,17 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	frame->priv->typeselect_flush_timeout = 0;
 	frame->priv->wrap_around = TRUE;
 
-	gtk_orientable_set_orientation (GTK_ORIENTABLE (frame),
-	                                GTK_ORIENTATION_VERTICAL);
+	gtk_widget_init_template (GTK_WIDGET (frame));
 
-	doc = gedit_document_new ();
+	gtk_widget_override_background_color (GTK_WIDGET (frame), 0, &transparent);
 
+	doc = gedit_view_frame_get_document (frame);
 	_gedit_document_set_mount_operation_factory (doc,
 						     view_frame_mount_operation_factory,
 						     frame);
 
-	frame->priv->view = gedit_view_new (doc);
-	gtk_widget_set_vexpand (frame->priv->view, TRUE);
-	gtk_widget_show (frame->priv->view);
-
-	g_object_unref (doc);
-
-	/* Create the scrolled window */
-	sw = gtk_scrolled_window_new (NULL, NULL);
-	gtk_container_add (GTK_CONTAINER (sw), frame->priv->view);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-					GTK_POLICY_AUTOMATIC,
-					GTK_POLICY_AUTOMATIC);
-	gtk_widget_show (sw);
-
-	frame->priv->overlay = gtk_overlay_new ();
-	gtk_container_add (GTK_CONTAINER (frame->priv->overlay), sw);
-	gtk_widget_override_background_color (frame->priv->overlay, 0, &transparent);
-	gtk_widget_show (frame->priv->overlay);
-
-	gtk_box_pack_start (GTK_BOX (frame), frame->priv->overlay, TRUE, TRUE, 0);
-
-	/* Add slider */
-	frame->priv->slider = gtk_revealer_new ();
-	gtk_container_add (GTK_CONTAINER (frame->priv->slider),
-	                   create_search_widget (frame));
-	gtk_widget_show (frame->priv->slider);
-	gtk_widget_set_halign (frame->priv->slider, GTK_ALIGN_END);
-	gtk_widget_set_valign (frame->priv->slider, GTK_ALIGN_START);
+	/* Slider margin */
+	setup_search_widget (frame);
 
 	if (gtk_widget_get_direction (frame->priv->slider) == GTK_TEXT_DIR_LTR)
 	{
@@ -1284,9 +1219,6 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	{
 		gtk_widget_set_margin_left (frame->priv->slider, SEARCH_POPUP_MARGIN);
 	}
-
-	gtk_overlay_add_overlay (GTK_OVERLAY (frame->priv->overlay),
-	                         frame->priv->slider);
 }
 
 GeditViewFrame *

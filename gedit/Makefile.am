@@ -261,7 +261,8 @@ EXTRA_DIST = 				\
 	gedit-print-preview.ui		\
 	gedit-print-preferences.ui	\
 	gedit-progress-info-bar.ui	\
-	gedit-status-menu-button.ui
+	gedit-status-menu-button.ui	\
+	gedit-view-frame.ui
 
 CLEANFILES = $(BUILT_SOURCES) $(BUILT_SOURCES_PRIVATE)
 
