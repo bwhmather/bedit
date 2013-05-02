@@ -1456,6 +1456,11 @@ setup_toolbar_open_button (GeditWindow *window,
 	GtkAction *action;
 
 	open_button = gedit_open_tool_button_new ();
+	g_settings_bind (window->priv->ui_settings,
+	                 GEDIT_SETTINGS_MAX_RECENTS,
+	                 open_button,
+	                 "limit",
+	                 G_SETTINGS_BIND_GET);
 
 	recent_menu = gtk_menu_tool_button_get_menu (GTK_MENU_TOOL_BUTTON (open_button));
 

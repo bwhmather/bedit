@@ -25,12 +25,17 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include "gedit-settings.h"
 #include "gedit-open-tool-button.h"
 
 struct _GeditOpenToolButtonPrivate
 {
-	GSettings *ui_settings;
+	gint limit;
+};
+
+enum
+{
+	PROP_0,
+	PROP_LIMIT
 };
 
 G_DEFINE_TYPE (GeditOpenToolButton, gedit_open_tool_button, GTK_TYPE_MENU_TOOL_BUTTON)
@@ -50,11 +55,9 @@ set_recent_menu (GeditOpenToolButton *button)
 	gtk_recent_chooser_set_sort_type (GTK_RECENT_CHOOSER (recent_menu),
 					  GTK_RECENT_SORT_MRU);
 
-	g_settings_bind (button->priv->ui_settings,
-			 GEDIT_SETTINGS_MAX_RECENTS,
-			 GTK_RECENT_CHOOSER (recent_menu),
-			 "limit",
-			 G_SETTINGS_BIND_GET);
+	g_object_bind_property (button, "limit",
+	                        recent_menu, "limit",
+	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
 
 	filter = gtk_recent_filter_new ();
 	gtk_recent_filter_add_group (filter, "gedit");
@@ -68,11 +71,45 @@ set_recent_menu (GeditOpenToolButton *button)
 static void
 gedit_open_tool_button_dispose (GObject *object)
 {
+	G_OBJECT_CLASS (gedit_open_tool_button_parent_class)->dispose (object);
+}
+
+static void
+gedit_open_tool_button_get_property (GObject    *object,
+                                     guint       prop_id,
+                                     GValue     *value,
+                                     GParamSpec *pspec)
+{
 	GeditOpenToolButton *button = GEDIT_OPEN_TOOL_BUTTON (object);
 
-	g_clear_object (&button->priv->ui_settings);
+	switch (prop_id)
+	{
+		case PROP_LIMIT:
+			g_value_set_int (value, button->priv->limit);
+			break;
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
 
-	G_OBJECT_CLASS (gedit_open_tool_button_parent_class)->dispose (object);
+static void
+gedit_open_tool_button_set_property (GObject      *object,
+                                     guint         prop_id,
+                                     const GValue *value,
+                                     GParamSpec   *pspec)
+{
+	GeditOpenToolButton *button = GEDIT_OPEN_TOOL_BUTTON (object);
+
+	switch (prop_id)
+	{
+		case PROP_LIMIT:
+			button->priv->limit = g_value_get_int (value);
+			break;
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
 }
 
 static void
@@ -86,8 +123,7 @@ gedit_open_tool_button_constructed (GObject *object)
 	gtk_menu_tool_button_set_arrow_tooltip_text (GTK_MENU_TOOL_BUTTON (button),
 						     _("Open a recently used file"));
 
-	if (G_OBJECT_CLASS (gedit_open_tool_button_parent_class)->constructed != NULL)
-		G_OBJECT_CLASS (gedit_open_tool_button_parent_class)->constructed (object);
+	G_OBJECT_CLASS (gedit_open_tool_button_parent_class)->constructed (object);
 }
 
 static void
@@ -97,7 +133,7 @@ gedit_open_tool_button_init (GeditOpenToolButton *button)
 	                                            GEDIT_TYPE_OPEN_TOOL_BUTTON,
 	                                            GeditOpenToolButtonPrivate);
 
-	button->priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
+	button->priv->limit = 10;
 }
 
 static void
@@ -106,13 +142,25 @@ gedit_open_tool_button_class_init (GeditOpenToolButtonClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->dispose = gedit_open_tool_button_dispose;
+	object_class->get_property = gedit_open_tool_button_get_property;
+	object_class->set_property = gedit_open_tool_button_set_property;
 	object_class->constructed = gedit_open_tool_button_constructed;
+
+	g_object_class_install_property (object_class, PROP_LIMIT,
+	                                 g_param_spec_int ("limit",
+	                                                   "Limit",
+	                                                   "The maximum number of recently used documents.",
+	                                                   0,
+	                                                   G_MAXINT,
+	                                                   10,
+	                                                   G_PARAM_READWRITE |
+	                                                   G_PARAM_STATIC_STRINGS));
 
 	g_type_class_add_private (object_class, sizeof (GeditOpenToolButtonPrivate));
 }
 
 GtkToolItem *
-gedit_open_tool_button_new ()
+gedit_open_tool_button_new (void)
 {
 	GeditOpenToolButton *button;
 
