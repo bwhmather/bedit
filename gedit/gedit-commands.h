@@ -69,92 +69,115 @@ GSList	        *_gedit_cmd_load_files_from_prompt	(GeditWindow         *window,
 							 gint                 line_pos,
 							 gint                 column_pos) G_GNUC_WARN_UNUSED_RESULT;
 
-void		_gedit_cmd_file_new			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_file_open			(GtkAction   *action,
-							 GeditWindow *window);
+void		_gedit_cmd_file_new			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_file_open			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
 void		_gedit_cmd_file_save_tab		(GeditTab    *tab,
 							 GeditWindow *window);
 void		_gedit_cmd_file_save_as_tab		(GeditTab    *tab,
 							 GeditWindow *window);
-void		_gedit_cmd_file_save			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_file_save_as			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_file_save_all		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_file_revert			(GtkAction   *action,
-							 GeditWindow *window);
+void		_gedit_cmd_file_save			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_file_save_as			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_file_save_all		(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_file_revert			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
 void		_gedit_cmd_file_open_uri		(GtkAction   *action,
 							 GeditWindow *window);
-void		_gedit_cmd_file_print_preview		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_file_print			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_file_close			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_file_close_all		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_file_quit			(GtkAction   *action,
-							 GeditWindow *window);
+void		_gedit_cmd_file_print			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_file_close			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_file_close_all		(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_file_quit			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
 
-void		_gedit_cmd_edit_undo			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_edit_redo			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_edit_cut			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_edit_copy			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_edit_paste			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_edit_delete			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_edit_select_all		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_edit_preferences		(GtkAction   *action,
-							 GeditWindow *window);
+void		_gedit_cmd_edit_undo			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_edit_redo			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_edit_cut			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_edit_copy			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_edit_paste			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_edit_delete			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_edit_select_all		(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_edit_preferences		(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
 
-void		_gedit_cmd_view_show_toolbar		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_view_show_statusbar		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_view_show_side_panel		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_view_show_bottom_panel	(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_view_toggle_fullscreen_mode	(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_view_leave_fullscreen_mode	(GtkAction   *action,
-							 GeditWindow *window);
-void            _gedit_cmd_view_highlight_mode          (GtkAction   *action,
-                                                         GeditWindow *window);
+void		_gedit_cmd_view_toggle_fullscreen_mode	(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_view_leave_fullscreen_mode	(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void            _gedit_cmd_view_highlight_mode          (GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
 
-void		_gedit_cmd_search_find			(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_search_find_next		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_search_find_prev		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_search_replace		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_search_clear_highlight	(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_search_goto_line		(GtkAction   *action,
-							 GeditWindow *window);
+void		_gedit_cmd_search_find			(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_search_find_next		(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_search_find_prev		(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_search_replace		(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_search_clear_highlight	(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_search_goto_line		(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
 
-void		_gedit_cmd_documents_previous_document	(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_documents_next_document	(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_documents_move_to_new_window	(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_documents_new_tab_group	(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_documents_previous_tab_group	(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_documents_next_tab_group	(GtkAction   *action,
-							 GeditWindow *window);
+void		_gedit_cmd_documents_previous_document	(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_documents_next_document	(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_documents_move_to_new_window	(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_documents_new_tab_group	(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_documents_previous_tab_group	(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
+void		_gedit_cmd_documents_next_tab_group	(GSimpleAction *action,
+                                                         GVariant      *parameter,
+                                                         gpointer       user_data);
 
 void		_gedit_cmd_help_contents		(GtkAction   *action,
 							 GeditWindow *window);

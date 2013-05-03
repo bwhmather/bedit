@@ -65,6 +65,7 @@ struct _GeditWindowPrivate
 
 	/* Widgets for fullscreen mode */
 	GtkWidget      *fullscreen_controls;
+	gboolean        fullscreen_controls_setup;
 	guint           fullscreen_animation_timeout_id;
 	gboolean        fullscreen_animation_enter;
 
@@ -83,21 +84,14 @@ struct _GeditWindowPrivate
 
 	/* Menus & Toolbars */
 	GtkUIManager   *manager;
-	GtkActionGroup *action_group;
-	GtkActionGroup *always_sensitive_action_group;
-	GtkActionGroup *close_action_group;
-	GtkActionGroup *quit_action_group;
-	GtkActionGroup *panels_action_group;
 	GtkActionGroup *documents_list_action_group;
 	guint           documents_list_menu_ui_id;
-	GtkWidget      *toolbar;
-	GtkWidget      *menubar;
+
+	GtkWidget      *headerbar;
+	GtkWidget      *open_button;
+	GtkWidget      *open_menu;
 
 	/* recent files */
-	GtkActionGroup *recents_action_group;
-	guint           recents_menu_ui_id;
-	gulong          recents_handler_id;
-
 	guint           update_documents_list_menu_id;
 
 	gint            num_tabs_with_error;

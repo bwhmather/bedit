@@ -42,77 +42,13 @@
 #include "gedit-window-private.h"
 #include "gedit-highlight-mode-dialog.h"
 
-
 void
-_gedit_cmd_view_show_toolbar (GtkAction   *action,
-			      GeditWindow *window)
+_gedit_cmd_view_toggle_fullscreen_mode (GSimpleAction *action,
+                                        GVariant      *parameter,
+                                        gpointer       user_data)
 {
-	gboolean visible;
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 
-	gedit_debug (DEBUG_COMMANDS);
-
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
-
-	gtk_widget_set_visible (window->priv->toolbar, visible);
-}
-
-void
-_gedit_cmd_view_show_statusbar (GtkAction   *action,
-			        GeditWindow *window)
-{
-	gboolean visible;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
-
-	gtk_widget_set_visible (window->priv->statusbar, visible);
-}
-
-void
-_gedit_cmd_view_show_side_panel (GtkAction   *action,
-			         GeditWindow *window)
-{
-	gboolean visible;
-	GeditPanel *panel;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
-	panel = gedit_window_get_side_panel (window);
-
-	gtk_widget_set_visible (GTK_WIDGET (panel), visible);
-
-	if (visible)
-	{
-		gtk_widget_grab_focus (GTK_WIDGET (panel));
-	}
-}
-
-void
-_gedit_cmd_view_show_bottom_panel (GtkAction   *action,
-				   GeditWindow *window)
-{
-	gboolean visible;
-	GeditPanel *panel;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
-	panel = gedit_window_get_bottom_panel (window);
-
-	gtk_widget_set_visible (GTK_WIDGET (panel), visible);
-
-	if (visible)
-	{
-		gtk_widget_grab_focus (GTK_WIDGET (panel));
-	}
-}
-
-void
-_gedit_cmd_view_toggle_fullscreen_mode (GtkAction   *action,
-					GeditWindow *window)
-{
 	gedit_debug (DEBUG_COMMANDS);
 
 	if (_gedit_window_is_fullscreen (window))
@@ -122,22 +58,13 @@ _gedit_cmd_view_toggle_fullscreen_mode (GtkAction   *action,
 }
 
 void
-_gedit_cmd_view_leave_fullscreen_mode (GtkAction   *action,
-				       GeditWindow *window)
+_gedit_cmd_view_leave_fullscreen_mode (GSimpleAction *action,
+                                       GVariant      *parameter,
+                                       gpointer       user_data)
 {
-	GtkAction *view_action;
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 
-	view_action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
-						   "ViewFullscreen");
-	g_signal_handlers_block_by_func
-		(view_action, G_CALLBACK (_gedit_cmd_view_toggle_fullscreen_mode),
-		 window);
-	gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (view_action),
-				      FALSE);
 	_gedit_window_unfullscreen (window);
-	g_signal_handlers_unblock_by_func (view_action,
-					   G_CALLBACK (_gedit_cmd_view_toggle_fullscreen_mode),
-					   window);
 }
 
 static void
@@ -156,15 +83,17 @@ on_language_selected (GeditHighlightModeDialog *dlg,
 }
 
 void
-_gedit_cmd_view_highlight_mode (GtkAction   *action,
-                                GeditWindow *window)
+_gedit_cmd_view_highlight_mode (GSimpleAction *action,
+                                GVariant      *parameter,
+                                gpointer       user_data)
 {
+	GtkWindow *window = GTK_WINDOW (user_data);
 	GtkWidget *dlg;
 	GeditDocument *doc;
 
-	dlg = gedit_highlight_mode_dialog_new (GTK_WINDOW (window));
+	dlg = gedit_highlight_mode_dialog_new (window);
 
-	doc = gedit_window_get_active_document (window);
+	doc = gedit_window_get_active_document (GEDIT_WINDOW (window));
 	if (doc)
 	{
 		gedit_highlight_mode_dialog_select_language (GEDIT_HIGHLIGHT_MODE_DIALOG (dlg),

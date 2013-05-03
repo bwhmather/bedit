@@ -30,40 +30,19 @@
 
   <menubar name="MenuBar">
     <menu name="FileMenu" action="File">
-      <menuitem name="FileNewMenu" action="FileNew"/>
       <placeholder name="FileOps_1"/>
-      <menuitem name="FileOpenMenu" action="FileOpen"/>
       <placeholder name="FileOps_2"/>
       <separator/>
-      <menuitem name="FileSaveMenu" action="FileSave"/>
-      <menuitem name="FileSaveAsMenu" action="FileSaveAs"/>
       <placeholder name="FileOps_3"/>
-      <menuitem name="FileRevertMenu" action="FileRevert"/>
       <placeholder name="FileOps_4"/>
       <separator/>
       <placeholder name="FileOps_5"/>
-      <menuitem name="FilePrintPreviewMenu" action="FilePrintPreview"/>
-      <menuitem name="FilePrintMenu" action="FilePrint"/>
-      <placeholder name="FileRecentsPlaceholder">
-        <separator/>
-      </placeholder>
-      <separator/>
-      <menuitem name="FileCloseMenu" action="FileClose"/>
-      <placeholder name="FileQuitMenuHolder" />
     </menu>
 
     <menu name="EditMenu" action="Edit">
-      <menuitem name="EditUndoMenu" action="EditUndo"/>
-      <menuitem name="EditRedoMenu" action="EditRedo"/>
-      <separator/>
-      <menuitem name="EditCutMenu" action="EditCut"/>
-      <menuitem name="EditCopyMenu" action="EditCopy"/>
-      <menuitem name="EditPasteMenu" action="EditPaste"/>
-      <menuitem name="EditDeleteMenu" action="EditDelete"/>
       <placeholder name="EditOps_1" /> 
       <separator/>
       <placeholder name="EditOps_2" /> 
-      <menuitem name="EditSelectAllMenu" action="EditSelectAll"/>
       <placeholder name="EditOps_3" />
       <separator/>
       <placeholder name="EditOps_4" />
@@ -76,38 +55,7 @@
     </menu>
 
     <menu name="ViewMenu" action="View">
-      <menuitem name="ViewToolbarMenu" action="ViewToolbar"/>
-      <menuitem name="ViewStatusbarMenu" action="ViewStatusbar"/>
-      <menuitem name="ViewSidePaneMenu" action="ViewSidePanel"/>
-      <menuitem name="ViewBottomPaneMenu" action="ViewBottomPanel"/>
-      <separator/>
-      <menuitem name="ViewFullscreenMenu" action="ViewFullscreen"/>
-      <separator/>
       <menuitem name="ViewHighlightModeMenu" action="ViewHighlightMode"/>
-    </menu>
-
-    <menu name="SearchMenu" action="Search">
-      <menuitem name="SearchFindMenu" action="SearchFind"/>
-      <menuitem name="SearchFindNextMenu" action="SearchFindNext"/>
-      <menuitem name="SearchFindPreviousMenu" action="SearchFindPrevious"/>
-      <placeholder name="SearchOps_1" />
-      <separator/>
-      <placeholder name="SearchOps_2" />
-      <separator/>
-      <menuitem name="SearchReplaceMenu" action="SearchReplace"/>
-      <placeholder name="SearchOps_3" />
-      <separator/>
-      <placeholder name="SearchOps_4" />
-      <separator/>
-      <menuitem name="SearchClearHighlight" action="SearchClearHighlight"/>      
-      <placeholder name="SearchOps_5" />
-      <separator/>
-      <placeholder name="SearchOps_6" />
-      <separator/>
-      <menuitem name="SearchGoToLineMenu" action="SearchGoToLine"/>      
-      <placeholder name="SearchOps_7" />
-      <separator/>
-      <placeholder name="SearchOps_8" />
     </menu>
 
     <menu name="ToolsMenu" action="Tools">
@@ -122,72 +70,5 @@
       <placeholder name="ToolsOps_5" />
     </menu>
 
-    <placeholder name="ExtraMenu_1" />
-
-    <menu name="DocumentsMenu" action="Documents">
-      <menuitem action="FileSaveAll" />
-      <menuitem action="FileCloseAll" />
-      <separator />
-      <menuitem action="DocumentsNewTabGroup"/>
-      <menuitem action="DocumentsPreviousTabGroup"/>
-      <menuitem action="DocumentsNextTabGroup"/>
-      <separator />
-      <placeholder name="DocumentsOps_1" />
-      <separator/>
-      <placeholder name="DocumentsOps_2" />
-      <separator/>
-      <placeholder name="DocumentsOps_3" />
-      <menuitem action="DocumentsPreviousDocument" />      
-      <menuitem action="DocumentsNextDocument" />
-      <separator/>
-      <menuitem action="DocumentsMoveToNewWindow"/>
-      <placeholder name="DocumentsListPlaceholder">
-      <separator/>
-      </placeholder>
-    </menu>
-
-    <menu name="HelpMenu" action="Help">
-     <placeholder name="HelpOps_1" />
-     <separator/>
-     <placeholder name="HelpHolder" />
-    </menu>
-
   </menubar>
-
-  <toolbar name="ToolBar">
-    <toolitem action="FileNew"/>
-    <toolitem action="FileSave"/>
-    <separator/>
-    <toolitem action="FilePrint"/>
-    <separator/>
-    <toolitem action="EditUndo"/>
-    <toolitem action="EditRedo"/>
-    <separator/>
-    <toolitem action="EditCut"/>
-    <toolitem action="EditCopy"/>
-    <toolitem action="EditPaste"/>
-    <separator/>
-    <toolitem action="SearchFind"/>
-    <toolitem action="SearchReplace"/>
-  </toolbar>
-
-  <toolbar name="FullscreenToolBar">
-    <toolitem action="FileNew"/>
-    <toolitem action="FileSave"/>
-    <separator/>
-    <toolitem action="FilePrint"/>
-    <separator/>
-    <toolitem action="EditUndo"/>
-    <toolitem action="EditRedo"/>
-    <separator/>
-    <toolitem action="EditCut"/>
-    <toolitem action="EditCopy"/>
-    <toolitem action="EditPaste"/>
-    <separator/>
-    <toolitem action="SearchFind"/>
-    <toolitem action="SearchReplace"/>
-    <separator expand="true"/>
-    <toolitem action="LeaveFullscreen"/>
-  </toolbar>
-
 </ui>

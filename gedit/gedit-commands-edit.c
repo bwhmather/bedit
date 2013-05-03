@@ -43,9 +43,11 @@
 #include "gedit-preferences-dialog.h"
 
 void
-_gedit_cmd_edit_undo (GtkAction   *action,
-		      GeditWindow *window)
+_gedit_cmd_edit_undo (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 	GtkSourceBuffer *active_document;
 
@@ -64,9 +66,11 @@ _gedit_cmd_edit_undo (GtkAction   *action,
 }
 
 void
-_gedit_cmd_edit_redo (GtkAction   *action,
-		      GeditWindow *window)
+_gedit_cmd_edit_redo (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 	GtkSourceBuffer *active_document;
 
@@ -85,9 +89,11 @@ _gedit_cmd_edit_redo (GtkAction   *action,
 }
 
 void
-_gedit_cmd_edit_cut (GtkAction   *action,
-		     GeditWindow *window)
+_gedit_cmd_edit_cut (GSimpleAction *action,
+                     GVariant      *parameter,
+                     gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -101,9 +107,11 @@ _gedit_cmd_edit_cut (GtkAction   *action,
 }
 
 void
-_gedit_cmd_edit_copy (GtkAction   *action,
-		      GeditWindow *window)
+_gedit_cmd_edit_copy (GSimpleAction *action,
+                      GVariant      *parameter,
+                      gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -117,9 +125,11 @@ _gedit_cmd_edit_copy (GtkAction   *action,
 }
 
 void
-_gedit_cmd_edit_paste (GtkAction   *action,
-		       GeditWindow *window)
+_gedit_cmd_edit_paste (GSimpleAction *action,
+                       GVariant      *parameter,
+                       gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -133,9 +143,11 @@ _gedit_cmd_edit_paste (GtkAction   *action,
 }
 
 void
-_gedit_cmd_edit_delete (GtkAction   *action,
-			GeditWindow *window)
+_gedit_cmd_edit_delete (GSimpleAction *action,
+                        GVariant      *parameter,
+                        gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -149,9 +161,11 @@ _gedit_cmd_edit_delete (GtkAction   *action,
 }
 
 void
-_gedit_cmd_edit_select_all (GtkAction   *action,
-			    GeditWindow *window)
+_gedit_cmd_edit_select_all (GSimpleAction *action,
+                            GVariant      *parameter,
+                            gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditView *active_view;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -165,9 +179,12 @@ _gedit_cmd_edit_select_all (GtkAction   *action,
 }
 
 void
-_gedit_cmd_edit_preferences (GtkAction   *action,
-			     GeditWindow *window)
+_gedit_cmd_edit_preferences (GSimpleAction *action,
+                             GVariant      *parameter,
+                             gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
+
 	gedit_debug (DEBUG_COMMANDS);
 
 	gedit_show_preferences_dialog (window);

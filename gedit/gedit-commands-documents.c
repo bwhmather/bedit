@@ -43,9 +43,11 @@
 #include "gedit-debug.h"
 
 void
-_gedit_cmd_documents_previous_document (GtkAction   *action,
-					GeditWindow *window)
+_gedit_cmd_documents_previous_document (GSimpleAction *action,
+                                        GVariant      *parameter,
+                                        gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GtkNotebook *notebook;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -55,9 +57,11 @@ _gedit_cmd_documents_previous_document (GtkAction   *action,
 }
 
 void
-_gedit_cmd_documents_next_document (GtkAction   *action,
-				    GeditWindow *window)
+_gedit_cmd_documents_next_document (GSimpleAction *action,
+                                    GVariant      *parameter,
+                                    gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GtkNotebook *notebook;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -67,9 +71,11 @@ _gedit_cmd_documents_next_document (GtkAction   *action,
 }
 
 void
-_gedit_cmd_documents_move_to_new_window (GtkAction   *action,
-					 GeditWindow *window)
+_gedit_cmd_documents_move_to_new_window (GSimpleAction *action,
+                                         GVariant      *parameter,
+                                         gpointer       user_data)
 {
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -84,24 +90,27 @@ _gedit_cmd_documents_move_to_new_window (GtkAction   *action,
 
 /* Methods releated with the tab groups */
 void
-_gedit_cmd_documents_new_tab_group (GtkAction   *action,
-				    GeditWindow *window)
+_gedit_cmd_documents_new_tab_group (GSimpleAction *action,
+                                    GVariant      *parameter,
+                                    gpointer       user_data)
 {
-	gedit_multi_notebook_add_new_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (window)));
+	gedit_multi_notebook_add_new_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
 }
 
 void
-_gedit_cmd_documents_previous_tab_group (GtkAction   *action,
-					 GeditWindow *window)
+_gedit_cmd_documents_previous_tab_group (GSimpleAction *action,
+                                         GVariant      *parameter,
+                                         gpointer       user_data)
 {
-	gedit_multi_notebook_previous_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (window)));
+	gedit_multi_notebook_previous_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
 }
 
 void
-_gedit_cmd_documents_next_tab_group (GtkAction   *action,
-				     GeditWindow *window)
+_gedit_cmd_documents_next_tab_group (GSimpleAction *action,
+                                     GVariant      *parameter,
+                                     gpointer       user_data)
 {
-	gedit_multi_notebook_next_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (window)));
+	gedit_multi_notebook_next_notebook (GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (GEDIT_WINDOW (user_data))));
 }
 
 /* ex:set ts=8 noet: */

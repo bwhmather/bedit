@@ -43,24 +43,11 @@
 #include "gedit-debug.h"
 
 void
-_gedit_cmd_file_print_preview (GtkAction   *action,
-			       GeditWindow *window)
+_gedit_cmd_file_print (GSimpleAction *action,
+                       GVariant      *parameter,
+                       gpointer       user_data)
 {
-	GeditTab *tab;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	tab = gedit_window_get_active_tab (window);
-	if (tab == NULL)
-		return;
-
-	_gedit_tab_print_preview (tab);
-}
-
-void
-_gedit_cmd_file_print (GtkAction   *action,
-		       GeditWindow *window)
-{
+	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GeditTab *tab;
 
 	gedit_debug (DEBUG_COMMANDS);

@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.8 -->
+  <menu id="gear-menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Save As…</attribute>
+        <attribute name="action">win.save_as</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Reload</attribute>
+        <attribute name="action">win.revert</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Print…</attribute>
+        <attribute name="action">win.print</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Fullscreen</attribute>
+        <attribute name="action">win.fullscreen</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Find…</attribute>
+        <attribute name="action">win.find</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Find and Replace…</attribute>
+        <attribute name="action">win.replace</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Clear Highlight</attribute>
+        <attribute name="action">win.clear_highlight</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Go to Line…</attribute>
+        <attribute name="action">win.goto_line</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Highlight Mode…</attribute>
+        <attribute name="action">win.highlight_mode</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Close</attribute>
+        <attribute name="action">win.close</attribute>
+      </item>
+    </section>
+  </menu>
+  <template class="GeditWindow" parent="GtkWindow">
+    <property name="can_focus">False</property>
+    <property name="has_focus">False</property>
+    <property name="is_focus">False</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="headerbar">
+        <property name="visible">True</property>
+        <property name="show_close_button">True</property>
+        <child>
+          <object class="GtkBox" id="open_box">
+            <property name="visible">True</property>
+            <property name="orientation">horizontal</property>
+            <property name="valign">center</property>
+            <style>
+              <class name="linked"/>
+            </style>
+            <child>
+              <object class="GtkButton" id="open_button">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Open</property>
+                <property name="tooltip_text" translatable="yes">Open a file</property>
+                <property name="action_name">win.open</property>
+                <style>
+                  <class name="text-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GeditOpenMenuButton" id="open_menu">
+                <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Open a recently used file</property>
+                <style>
+                  <class name="image-button"/>
+                </style>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="new_tab_button">
+            <property name="visible">True</property>
+            <property name="valign">center</property>
+            <property name="tooltip_text" translatable="yes">Create a new document</property>
+            <property name="action_name">win.new_tab</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="new_tab_image">
+                <property name="visible">True</property>
+                <property name="icon_size">1</property>
+                <property name="icon_name">tab-new-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="save_button">
+            <property name="visible">True</property>
+            <property name="valign">center</property>
+            <property name="tooltip_text" translatable="yes">Save the current file</property>
+            <property name="action_name">win.save</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="save_image">
+                <property name="visible">True</property>
+                <property name="icon_size">1</property>
+                <property name="icon_name">document-save-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="gear_button">
+            <property name="visible">True</property>
+            <property name="valign">center</property>
+            <property name="menu_model">gear-menu</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="gear_image">
+                <property name="visible">True</property>
+                <property name="icon_size">1</property>
+                <property name="icon_name">emblem-system-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox" id="main_box">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkPaned" id="hpaned">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="has_focus">False</property>
+            <property name="is_focus">False</property>
+            <child>
+              <object class="GeditPanel" id="side_panel">
+                <property name="visible">False</property>
+                <property name="orientation">vertical</property>
+              </object>
+              <packing>
+                <property name="resize">False</property>
+                <property name="shrink">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkPaned" id="vpaned">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="has_focus">False</property>
+                <property name="is_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GeditMultiNotebook" id="multi_notebook">
+                    <property name="visible">True</property>
+                  </object>
+                  <packing>
+                    <property name="resize">True</property>
+                    <property name="shrink">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GeditPanel" id="bottom_panel">
+                    <property name="visible">False</property>
+                    <property name="orientation">horizontal</property>
+                  </object>
+                  <packing>
+                    <property name="resize">False</property>
+                    <property name="shrink">False</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="resize">True</property>
+                <property name="shrink">True</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GeditStatusbar" id="statusbar">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </template>
+  <object class="GtkWindow" id="fullscreen_controls">
+    <property name="type">popup</property>
+    <property name="can_focus">False</property>
+    <property name="has_focus">False</property>
+    <property name="is_focus">False</property>
+    <child>
+      <object class="GtkHeaderBar" id="fullscreen_headerbar">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkBox" id="fullscreen_open_box">
+            <property name="visible">True</property>
+            <property name="orientation">horizontal</property>
+            <property name="valign">center</property>
+            <style>
+              <class name="linked"/>
+            </style>
+            <child>
+              <object class="GtkButton" id="fullscreen_open_button">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Open</property>
+                <property name="tooltip_text" translatable="yes">Open a file</property>
+                <property name="action_name">win.open</property>
+                <style>
+                  <class name="text-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GeditOpenMenuButton" id="fullscreen_open_menu">
+                <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Open a recently used file</property>
+                <style>
+                  <class name="image-button"/>
+                </style>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="fullscreen_new_tab_button">
+            <property name="visible">True</property>
+            <property name="valign">center</property>
+            <property name="tooltip_text" translatable="yes">Create a new document</property>
+            <property name="action_name">win.new_tab</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="fullscreen_new_tab_image">
+                <property name="visible">True</property>
+                <property name="icon_size">1</property>
+                <property name="icon_name">tab-new-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="fullscreen_save_button">
+            <property name="visible">True</property>
+            <property name="valign">center</property>
+            <property name="tooltip_text" translatable="yes">Save the current file</property>
+            <property name="action_name">win.save</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="fullscreen_save_image">
+                <property name="visible">True</property>
+                <property name="icon_size">1</property>
+                <property name="icon_name">document-save-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="fullscreen_find_button">
+            <property name="visible">True</property>
+            <property name="valign">center</property>
+            <property name="tooltip_text" translatable="yes">Search for text</property>
+            <property name="action_name">win.find</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="fullscreen_find_image">
+                <property name="visible">True</property>
+                <property name="icon_size">1</property>
+                <property name="icon_name">edit-find-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="fullscreen_gear_button">
+            <property name="visible">True</property>
+            <property name="valign">center</property>
+            <property name="menu_model">gear-menu</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="fullscreen_gear_image">
+                <property name="visible">True</property>
+                <property name="icon_size">1</property>
+                <property name="icon_name">emblem-system-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="leave_fullscreen_button">
+            <property name="visible">True</property>
+            <property name="valign">center</property>
+            <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
+            <property name="action_name">win.leave_fullscreen</property>
+            <style>
+              <class name="image-button"/>
+            </style>
+            <child>
+              <object class="GtkImage" id="leave_fullscreen_image">
+                <property name="visible">True</property>
+                <property name="icon_size">1</property>
+                <property name="icon_name">view-restore-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

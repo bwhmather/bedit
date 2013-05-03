@@ -41,7 +41,6 @@
 #include <gtksourceview/gtksource.h>
 #include <libpeas/peas-extension-set.h>
 
-#include "gedit-ui.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
 #include "gedit-app.h"
@@ -52,7 +51,7 @@
 #include "gedit-utils.h"
 #include "gedit-commands.h"
 #include "gedit-debug.h"
-#include "gedit-open-tool-button.h"
+#include "gedit-open-menu-button.h"
 #include "gedit-panel.h"
 #include "gedit-documents-panel.h"
 #include "gedit-plugins-engine.h"
@@ -99,9 +98,6 @@ static const GtkTargetEntry drop_types [] = {
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditWindow, gedit_window, GTK_TYPE_APPLICATION_WINDOW)
-
-static void	recent_manager_changed	(GtkRecentManager *manager,
-					 GeditWindow      *window);
 
 static void
 gedit_window_get_property (GObject    *object,
@@ -233,16 +229,6 @@ gedit_window_dispose (GObject *object)
 		gtk_widget_destroy (window->priv->fullscreen_controls);
 
 		window->priv->fullscreen_controls = NULL;
-	}
-
-	if (window->priv->recents_handler_id != 0)
-	{
-		GtkRecentManager *recent_manager;
-
-		recent_manager =  gtk_recent_manager_get_default ();
-		g_signal_handler_disconnect (recent_manager,
-					     window->priv->recents_handler_id);
-		window->priv->recents_handler_id = 0;
 	}
 
 	if (window->priv->update_documents_list_menu_id != 0)
@@ -438,95 +424,19 @@ gedit_window_class_init (GeditWindowClass *klass)
 							     GEDIT_WINDOW_STATE_NORMAL,
 							     G_PARAM_READABLE |
 							     G_PARAM_STATIC_STRINGS));
-}
 
-static void
-menu_item_select_cb (GtkMenuItem *proxy,
-		     GeditWindow *window)
-{
-	GtkAction *action;
-	char *message;
-
-	action = gtk_activatable_get_related_action (GTK_ACTIVATABLE (proxy));
-	g_return_if_fail (action != NULL);
-
-	g_object_get (G_OBJECT (action), "tooltip", &message, NULL);
-	if (message)
-	{
-		gtk_statusbar_push (GTK_STATUSBAR (window->priv->statusbar),
-				    window->priv->tip_message_cid, message);
-		g_free (message);
-	}
-}
-
-static void
-menu_item_deselect_cb (GtkMenuItem *proxy,
-                       GeditWindow *window)
-{
-	gtk_statusbar_pop (GTK_STATUSBAR (window->priv->statusbar),
-			   window->priv->tip_message_cid);
-}
-
-static void
-connect_proxy_cb (GtkUIManager *manager,
-                  GtkAction *action,
-                  GtkWidget *proxy,
-                  GeditWindow *window)
-{
-	if (GTK_IS_MENU_ITEM (proxy))
-	{
-		g_signal_connect (proxy, "select",
-				  G_CALLBACK (menu_item_select_cb), window);
-		g_signal_connect (proxy, "deselect",
-				  G_CALLBACK (menu_item_deselect_cb), window);
-	}
-}
-
-static void
-disconnect_proxy_cb (GtkUIManager *manager,
-                     GtkAction    *action,
-                     GtkWidget    *proxy,
-                     GeditWindow  *window)
-{
-	if (GTK_IS_MENU_ITEM (proxy))
-	{
-		g_signal_handlers_disconnect_by_func
-			(proxy, G_CALLBACK (menu_item_select_cb), window);
-		g_signal_handlers_disconnect_by_func
-			(proxy, G_CALLBACK (menu_item_deselect_cb), window);
-	}
-}
-
-/* Returns TRUE if toolbar is visible */
-static gboolean
-set_toolbar_visibility (GeditWindow *window,
-                        GeditWindow *origin)
-{
-	gboolean visible;
-	GtkAction *action;
-
-	if (origin == NULL)
-	{
-		visible = g_settings_get_boolean (window->priv->ui_settings,
-		                                  GEDIT_SETTINGS_TOOLBAR_VISIBLE);
-	}
-	else
-	{
-		visible = gtk_widget_get_visible (origin->priv->toolbar);
-	}
-
-	/* Set visibility */
-	gtk_widget_set_visible (window->priv->toolbar, visible);
-
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
-	                                      "ViewToolbar");
-
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-	{
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
-	}
-
-	return visible;
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+	                                             "/org/gnome/gedit/ui/gedit-window.ui");
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, headerbar);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, open_menu);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, hpaned);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, vpaned);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, multi_notebook);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, bottom_panel);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, statusbar);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_controls);
 }
 
 static void
@@ -535,7 +445,7 @@ update_next_prev_doc_sensitivity (GeditWindow *window,
 {
 	GeditNotebook *notebook;
 	gint tab_number;
-	GtkAction *action;
+	GAction *action;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -544,21 +454,22 @@ update_next_prev_doc_sensitivity (GeditWindow *window,
 
 	g_return_if_fail (tab_number >= 0);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "DocumentsPreviousDocument");
-	gtk_action_set_sensitive (action, tab_number != 0);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                     "previous_document");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             tab_number != 0);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "DocumentsNextDocument");
-	gtk_action_set_sensitive (action,
-				  tab_number < gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) - 1);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                     "next_document");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             tab_number < gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) - 1);
 }
 
 static void
 update_next_prev_doc_sensitivity_per_window (GeditWindow *window)
 {
 	GeditTab *tab;
-	GtkAction *action;
+	GAction *action;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -570,13 +481,13 @@ update_next_prev_doc_sensitivity_per_window (GeditWindow *window)
 		return;
 	}
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "DocumentsPreviousDocument");
-	gtk_action_set_sensitive (action, FALSE);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                     "previous_document");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "DocumentsNextDocument");
-	gtk_action_set_sensitive (action, FALSE);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                     "next_document");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 }
 
 static void
@@ -585,8 +496,8 @@ received_clipboard_contents (GtkClipboard     *clipboard,
 			     GeditWindow      *window)
 {
 	GeditTab *tab;
-	gboolean sens;
-	GtkAction *action;
+	gboolean enabled;
+	GAction *action;
 
 	/* getting clipboard contents is async, so we need to
 	 * get the current tab and its state */
@@ -601,18 +512,16 @@ received_clipboard_contents (GtkClipboard     *clipboard,
 		state = gedit_tab_get_state (tab);
 		state_normal = (state == GEDIT_TAB_STATE_NORMAL);
 
-		sens = state_normal &&
-		       gtk_selection_data_targets_include_text (selection_data);
+		enabled = state_normal &&
+		          gtk_selection_data_targets_include_text (selection_data);
 	}
 	else
 	{
-		sens = FALSE;
+		enabled = FALSE;
 	}
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "EditPaste");
-
-	gtk_action_set_sensitive (action, sens);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "paste");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
 
 	g_object_unref (window);
 }
@@ -634,14 +543,12 @@ set_paste_sensitivity_according_to_clipboard (GeditWindow  *window,
 	}
 	else
 	{
-		GtkAction *action;
+		GAction *action;
 
-		action = gtk_action_group_get_action (window->priv->action_group,
-						      "EditPaste");
-
+		action = g_action_map_lookup_action (G_ACTION_MAP (window), "paste");
 		/* XFIXES extension not availbale, make
 		 * Paste always sensitive */
-		gtk_action_set_sensitive (action, TRUE);
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
 	}
 }
 
@@ -660,7 +567,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 {
 	GeditDocument *doc;
 	GeditView *view;
-	GtkAction *action;
+	GAction *action;
 	gboolean b;
 	gboolean state_normal;
 	gboolean editable;
@@ -689,83 +596,66 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (window),
 					      GDK_SELECTION_CLIPBOARD);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "FileSave");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				   (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
-				   (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
-				  !gedit_document_get_readonly (doc) &&
-				  !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				      (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
+				      (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+				     !gedit_document_get_readonly (doc) &&
+				     !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "FileSaveAs");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				   (state == GEDIT_TAB_STATE_SAVING_ERROR) ||
-				   (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
-				   (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
-				  !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save_as");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				      (state == GEDIT_TAB_STATE_SAVING_ERROR) ||
+				      (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
+				      (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+				     !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "FileRevert");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				   (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-				  !gedit_document_is_untitled (doc));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "revert");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				      (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+				     !gedit_document_is_untitled (doc));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "FilePrintPreview");
-	gtk_action_set_sensitive (action,
-				  state_normal &&
-				  !(lockdown & GEDIT_LOCKDOWN_PRINTING));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "print");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				     (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+				     !(lockdown & GEDIT_LOCKDOWN_PRINTING));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "FilePrint");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				  (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
-				  !(lockdown & GEDIT_LOCKDOWN_PRINTING));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state != GEDIT_TAB_STATE_CLOSING) &&
+				     (state != GEDIT_TAB_STATE_SAVING) &&
+				     (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+				     (state != GEDIT_TAB_STATE_PRINTING) &&
+				     (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
+				     (state != GEDIT_TAB_STATE_SAVING_ERROR));
 
-	action = gtk_action_group_get_action (window->priv->close_action_group,
-					      "FileClose");
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "undo");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     state_normal &&
+				     gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc)));
 
-	gtk_action_set_sensitive (action,
-				  (state != GEDIT_TAB_STATE_CLOSING) &&
-				  (state != GEDIT_TAB_STATE_SAVING) &&
-				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
-				  (state != GEDIT_TAB_STATE_PRINTING) &&
-				  (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
-				  (state != GEDIT_TAB_STATE_SAVING_ERROR));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "redo");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     state_normal &&
+				     gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "EditUndo");
-	gtk_action_set_sensitive (action,
-				  state_normal &&
-				  gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc)));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "cut");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     state_normal &&
+				     editable &&
+				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "EditRedo");
-	gtk_action_set_sensitive (action,
-				  state_normal &&
-				  gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc)));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "copy");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) &&
+				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "EditCut");
-	gtk_action_set_sensitive (action,
-				  state_normal &&
-				  editable &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
-
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "EditCopy");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				   state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
-
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "EditPaste");
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "paste");
 	if (state_normal && editable)
 	{
 		set_paste_sensitivity_according_to_clipboard (window,
@@ -773,58 +663,50 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	}
 	else
 	{
-		gtk_action_set_sensitive (action, FALSE);
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 	}
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "EditDelete");
-	gtk_action_set_sensitive (action,
-				  state_normal &&
-				  editable &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "delete");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     state_normal &&
+				     editable &&
+				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "SearchFind");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				   state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "SearchReplace");
-	gtk_action_set_sensitive (action,
-				  state_normal &&
-				  editable);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "replace");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     state_normal &&
+				     editable);
 
 	b = !_gedit_document_get_empty_search (doc);
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "SearchFindNext");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				   state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find_next");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "SearchFindPrevious");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				   state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find_prev");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "SearchClearHighlight");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				   state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "clear_highlight");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "SearchGoToLine");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				   state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "goto_line");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "ViewHighlightMode");
-	gtk_action_set_sensitive (action,
-				  (state != GEDIT_TAB_STATE_CLOSING) &&
-				  enable_syntax_highlighting);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "highlight_mode");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state != GEDIT_TAB_STATE_CLOSING) &&
+				     enable_syntax_highlighting);
 
 	update_next_prev_doc_sensitivity (window, tab);
 
@@ -924,407 +806,34 @@ recent_chooser_item_activated (GtkRecentChooser *chooser,
 }
 
 static void
-recents_menu_activate (GtkAction   *action,
-		       GeditWindow *window)
+setup_headerbar_open_button (GeditWindow *window)
 {
-	GtkRecentInfo *info;
-	const gchar *uri;
-	GFile *location;
+	GtkMenu *recent_menu;
 
-	info = g_object_get_data (G_OBJECT (action), "gtk-recent-info");
-	g_return_if_fail (info != NULL);
-
-	/* TODO: get_file when exists */
-	uri = gtk_recent_info_get_uri (info);
-	location = g_file_new_for_uri (uri);
-
-	if (location)
-	{
-		open_recent_file (location, window);
-		g_object_unref (location);
-	}
-}
-
-static gint
-sort_recents_mru (GtkRecentInfo *a, GtkRecentInfo *b)
-{
-	return (gtk_recent_info_get_modified (b) - gtk_recent_info_get_modified (a));
-}
-
-static void	update_recent_files_menu (GeditWindow *window);
-
-static void
-recent_manager_changed (GtkRecentManager *manager,
-			GeditWindow      *window)
-{
-	/* regenerate the menu when the model changes */
-	update_recent_files_menu (window);
-}
-
-/*
- * Manually construct the inline recents list in the File menu.
- * Hopefully gtk 2.12 will add support for it.
- */
-static void
-update_recent_files_menu (GeditWindow *window)
-{
-	GeditWindowPrivate *p = window->priv;
-	GtkRecentManager *recent_manager;
-	gint max_recents;
-	GList *actions, *l, *items;
-	GList *filtered_items = NULL;
-	gint i;
-
-	gedit_debug (DEBUG_WINDOW);
-
-	g_settings_get (window->priv->ui_settings, GEDIT_SETTINGS_MAX_RECENTS,
-			"u", &max_recents);
-
-	g_return_if_fail (p->recents_action_group != NULL);
-
-	if (p->recents_menu_ui_id != 0)
-	{
-		gtk_ui_manager_remove_ui (p->manager,
-					  p->recents_menu_ui_id);
-	}
-
-	actions = gtk_action_group_list_actions (p->recents_action_group);
-	for (l = actions; l != NULL; l = l->next)
-	{
-		g_signal_handlers_disconnect_by_func (GTK_ACTION (l->data),
-						      G_CALLBACK (recents_menu_activate),
-						      window);
- 		gtk_action_group_remove_action (p->recents_action_group,
-						GTK_ACTION (l->data));
-	}
-	g_list_free (actions);
-
-	p->recents_menu_ui_id = gtk_ui_manager_new_merge_id (p->manager);
-
-	recent_manager =  gtk_recent_manager_get_default ();
-	items = gtk_recent_manager_get_items (recent_manager);
-
-	/* filter */
-	for (l = items; l != NULL; l = l->next)
-	{
-		GtkRecentInfo *info = l->data;
-
-		if (!gtk_recent_info_has_group (info, "gedit"))
-			continue;
-
-		filtered_items = g_list_prepend (filtered_items, info);
-	}
-
-	/* sort */
-	filtered_items = g_list_sort (filtered_items,
-				      (GCompareFunc) sort_recents_mru);
-
-	i = 0;
-	for (l = filtered_items; l != NULL; l = l->next)
-	{
-		gchar *action_name;
-		const gchar *display_name;
-		gchar *escaped;
-		gchar *label;
-		gchar *uri;
-		gchar *ruri;
-		gchar *tip;
-		GtkAction *action;
-		GtkRecentInfo *info = l->data;
-		GFile *location;
-		const gchar *mime_type;
-		gchar *content_type;
-		GIcon *icon = NULL;
-
-		/* clamp */
-		if (i >= max_recents)
-			break;
-
-		i++;
-
-		action_name = g_strdup_printf ("recent-info-%d", i);
-
-		display_name = gtk_recent_info_get_display_name (info);
-		escaped = gedit_utils_escape_underscores (display_name, -1);
-		if (i >= 10)
-		{
-			label = g_strdup_printf ("%d.  %s",
-						 i,
-						 escaped);
-		}
-		else
-		{
-			label = g_strdup_printf ("_%d.  %s",
-						 i,
-						 escaped);
-		}
-
-		g_free (escaped);
-
-		/* gtk_recent_info_get_uri_display (info) is buggy and
-		 * works only for local files */
-		location = g_file_new_for_uri (gtk_recent_info_get_uri (info));
-		uri = g_file_get_parse_name (location);
-		g_object_unref (location);
-		ruri = gedit_utils_replace_home_dir_with_tilde (uri);
-		g_free (uri);
-
-		/* Translators: %s is a URI */
-		tip = g_strdup_printf (_("Open '%s'"), ruri);
-		g_free (ruri);
-
-		mime_type = gtk_recent_info_get_mime_type (info);
-		content_type = g_content_type_from_mime_type (mime_type);
-		if (content_type != NULL)
-		{
-			icon = g_content_type_get_icon (content_type);
-			g_free (content_type);
-		}
-
-		action = g_object_new (GTK_TYPE_ACTION,
-		                       "name", action_name,
-		                       "label", label,
-		                       "gicon", icon,
-		                       "always-show-image", TRUE,
-		                       "tooltip", tip,
-		                       NULL);
-
-		g_object_set_data_full (G_OBJECT (action),
-					"gtk-recent-info",
-					gtk_recent_info_ref (info),
-					(GDestroyNotify) gtk_recent_info_unref);
-
-		g_signal_connect (action,
-				  "activate",
-				  G_CALLBACK (recents_menu_activate),
-				  window);
-
-		gtk_action_group_add_action (p->recents_action_group,
-					     action);
-		g_object_unref (action);
-
-		gtk_ui_manager_add_ui (p->manager,
-				       p->recents_menu_ui_id,
-				       "/MenuBar/FileMenu/FileRecentsPlaceholder",
-				       action_name,
-				       action_name,
-				       GTK_UI_MANAGER_MENUITEM,
-				       FALSE);
-
-		g_free (action_name);
-		g_free (label);
-		g_free (tip);
-		if (icon != NULL)
-		{
-			g_object_unref (icon);
-		}
-	}
-
-	g_list_free (filtered_items);
-	g_list_free_full (items, (GDestroyNotify) gtk_recent_info_unref);
-}
-
-static void
-set_non_homogeneus (GtkWidget *widget,
-		    gpointer   data)
-{
-	gtk_tool_item_set_homogeneous (GTK_TOOL_ITEM (widget), FALSE);
-}
-
-static void
-toolbar_visibility_changed (GtkWidget   *toolbar,
-			    GParamSpec  *pspec,
-			    GeditWindow *window)
-{
-	gboolean visible;
-	GtkAction *action;
-
-	visible = gtk_widget_get_visible (toolbar);
-
-	g_settings_set_boolean (window->priv->ui_settings,
-				GEDIT_SETTINGS_TOOLBAR_VISIBLE, visible);
-
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
-					      "ViewToolbar");
-
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
-}
-
-static void
-setup_toolbar_open_button (GeditWindow *window,
-			   GtkWidget   *toolbar)
-{
-	GtkToolItem *open_button;
-	GtkWidget *recent_menu;
-	GtkAction *action;
-
-	open_button = gedit_open_tool_button_new ();
 	g_settings_bind (window->priv->ui_settings,
 	                 GEDIT_SETTINGS_MAX_RECENTS,
-	                 open_button,
+	                 window->priv->open_menu,
 	                 "limit",
 	                 G_SETTINGS_BIND_GET);
 
-	recent_menu = gtk_menu_tool_button_get_menu (GTK_MENU_TOOL_BUTTON (open_button));
+	recent_menu = gtk_menu_button_get_popup (GTK_MENU_BUTTON (window->priv->open_menu));
 
 	g_signal_connect (recent_menu,
 			  "item-activated",
 			  G_CALLBACK (recent_chooser_item_activated),
 			  window);
-
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
-					      "FileOpen");
-	g_object_set (action,
-		      "is_important", TRUE,
-		      "short_label", _("Open"),
-		      NULL);
-	gtk_activatable_set_related_action (GTK_ACTIVATABLE (open_button),
-					    action);
-
-	gtk_toolbar_insert (GTK_TOOLBAR (toolbar),
-			    open_button,
-			    1);
 }
 
 static void
-create_menu_bar_and_toolbar (GeditWindow *window,
-			     GtkWidget   *main_box)
+create_menu_bar_and_toolbar (GeditWindow *window)
 {
 	GtkActionGroup *action_group;
-	GtkAction *action;
 	GtkUIManager *manager;
-	GtkRecentManager *recent_manager;
-	GError *error = NULL;
-
-	gedit_debug (DEBUG_WINDOW);
 
 	manager = gtk_ui_manager_new ();
 	window->priv->manager = manager;
 
-	gtk_window_add_accel_group (GTK_WINDOW (window),
-				    gtk_ui_manager_get_accel_group (manager));
-
-	action_group = gtk_action_group_new ("GeditWindowAlwaysSensitiveActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
-				      gedit_always_sensitive_menu_entries,
-				      G_N_ELEMENTS (gedit_always_sensitive_menu_entries),
-				      window);
-	gtk_action_group_add_toggle_actions (action_group,
-					     gedit_always_sensitive_toggle_menu_entries,
-					     G_N_ELEMENTS (gedit_always_sensitive_toggle_menu_entries),
-					     window);
-
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
-	g_object_unref (action_group);
-	window->priv->always_sensitive_action_group = action_group;
-
-	action_group = gtk_action_group_new ("GeditWindowActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
-				      gedit_menu_entries,
-				      G_N_ELEMENTS (gedit_menu_entries),
-				      window);
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
-	g_object_unref (action_group);
-	window->priv->action_group = action_group;
-
-	/* set short labels to use in the toolbar */
-	action = gtk_action_group_get_action (action_group, "FileSave");
-	g_object_set (action, "short_label", _("Save"), NULL);
-	action = gtk_action_group_get_action (action_group, "FilePrint");
-	g_object_set (action, "short_label", _("Print"), NULL);
-	action = gtk_action_group_get_action (action_group, "SearchFind");
-	g_object_set (action, "short_label", _("Find"), NULL);
-	action = gtk_action_group_get_action (action_group, "SearchReplace");
-	g_object_set (action, "short_label", _("Replace"), NULL);
-
-	/* set which actions should have priority on the toolbar */
-	action = gtk_action_group_get_action (action_group, "FileSave");
-	g_object_set (action, "is_important", TRUE, NULL);
-	action = gtk_action_group_get_action (action_group, "EditUndo");
-	g_object_set (action, "is_important", TRUE, NULL);
-
-	action_group = gtk_action_group_new ("GeditQuitWindowActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
-				      gedit_quit_menu_entries,
-				      G_N_ELEMENTS (gedit_quit_menu_entries),
-				      window);
-
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
-	g_object_unref (action_group);
-	window->priv->quit_action_group = action_group;
-
-	action_group = gtk_action_group_new ("GeditCloseWindowActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_actions (action_group,
-	                              gedit_close_menu_entries,
-	                              G_N_ELEMENTS (gedit_close_menu_entries),
-	                              window);
-
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
-	g_object_unref (action_group);
-	window->priv->close_action_group = action_group;
-
-	action_group = gtk_action_group_new ("GeditWindowPanelsActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	gtk_action_group_add_toggle_actions (action_group,
-					     gedit_panels_toggle_menu_entries,
-					     G_N_ELEMENTS (gedit_panels_toggle_menu_entries),
-					     window);
-
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
-	g_object_unref (action_group);
-	window->priv->panels_action_group = action_group;
-
-	gtk_ui_manager_add_ui_from_resource (manager,
-					     "/org/gnome/gedit/ui/gedit-ui.xml",
-					     &error);
-	if (error != NULL)
-	{
-		g_warning ("Could not add ui definition: %s", error->message);
-		g_error_free (error);
-		return;
-	}
-
-	if (!_gedit_app_has_app_menu (GEDIT_APP (g_application_get_default ())))
-	{
-		gtk_ui_manager_add_ui_from_resource (manager,
-						     "/org/gnome/gedit/ui/gedit-ui-fallback.xml",
-						     &error);
-		if (error != NULL)
-		{
-			g_warning ("Could not add fallback ui definition: %s", error->message);
-			g_error_free (error);
-			return;
-		}
-	}
-
-	/* show tooltips in the statusbar */
-	g_signal_connect (manager,
-			  "connect_proxy",
-			  G_CALLBACK (connect_proxy_cb),
-			  window);
-	g_signal_connect (manager,
-			  "disconnect_proxy",
-			  G_CALLBACK (disconnect_proxy_cb),
-			  window);
-
-	/* recent files menu */
-	action_group = gtk_action_group_new ("RecentFilesActions");
-	gtk_action_group_set_translation_domain (action_group, NULL);
-	window->priv->recents_action_group = action_group;
-	gtk_ui_manager_insert_action_group (manager, action_group, 0);
-	g_object_unref (action_group);
-
-	recent_manager = gtk_recent_manager_get_default ();
-	window->priv->recents_handler_id = g_signal_connect (recent_manager,
-							     "changed",
-							     G_CALLBACK (recent_manager_changed),
-							     window);
-	update_recent_files_menu (window);
+	gedit_debug (DEBUG_WINDOW);
 
 	/* list of open documents menu */
 	action_group = gtk_action_group_new ("DocumentsListActions");
@@ -1332,44 +841,6 @@ create_menu_bar_and_toolbar (GeditWindow *window,
 	window->priv->documents_list_action_group = action_group;
 	gtk_ui_manager_insert_action_group (manager, action_group, 0);
 	g_object_unref (action_group);
-
-	window->priv->menubar = gtk_ui_manager_get_widget (manager, "/MenuBar");
-	gtk_box_pack_start (GTK_BOX (main_box),
-			    window->priv->menubar,
-			    FALSE,
-			    FALSE,
-			    0);
-
-	window->priv->toolbar = gtk_ui_manager_get_widget (manager, "/ToolBar");
-	gtk_style_context_add_class (gtk_widget_get_style_context (window->priv->toolbar),
-				     GTK_STYLE_CLASS_PRIMARY_TOOLBAR);
-
-	gtk_box_pack_start (GTK_BOX (main_box),
-			    window->priv->toolbar,
-			    FALSE,
-			    FALSE,
-			    0);
-
-	/* XXX: We shouldn't need this special case, gtk+ should take care of
-	        using this setting when it is in windows */
-#ifdef G_OS_WIN32
-	gtk_toolbar_set_style (GTK_TOOLBAR (window->priv->toolbar),
-	                       GTK_TOOLBAR_ICONS);
-#else
-	gtk_toolbar_unset_style (GTK_TOOLBAR (window->priv->toolbar));
-#endif
-	set_toolbar_visibility (window, NULL);
-
-	setup_toolbar_open_button (window, window->priv->toolbar);
-
-	gtk_container_foreach (GTK_CONTAINER (window->priv->toolbar),
-			       (GtkCallback)set_non_homogeneus,
-			       NULL);
-
-	g_signal_connect_after (G_OBJECT (window->priv->toolbar),
-				"notify::visible",
-				G_CALLBACK (toolbar_visibility_changed),
-				window);
 }
 
 static void
@@ -1610,55 +1081,6 @@ activate_documents_list_item (GeditWindow *window,
 	g_free (action_name);
 }
 
-/* Returns TRUE if status bar is visible */
-static gboolean
-set_statusbar_style (GeditWindow *window,
-		     GeditWindow *origin)
-{
-	GtkAction *action;
-	gboolean visible;
-
-	if (origin == NULL)
-	{
-		visible = g_settings_get_boolean (window->priv->ui_settings,
-						  GEDIT_SETTINGS_STATUSBAR_VISIBLE);
-	}
-	else
-	{
-		visible = gtk_widget_get_visible (origin->priv->statusbar);
-	}
-
-	gtk_widget_set_visible (window->priv->statusbar, visible);
-
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
-					      "ViewStatusbar");
-
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
-
-	return visible;
-}
-
-static void
-statusbar_visibility_changed (GtkWidget   *statusbar,
-			      GParamSpec  *pspec,
-			      GeditWindow *window)
-{
-	gboolean visible;
-	GtkAction *action;
-
-	visible = gtk_widget_get_visible (statusbar);
-
-	g_settings_set_boolean (window->priv->ui_settings,
-				GEDIT_SETTINGS_STATUSBAR_VISIBLE, visible);
-
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
-					      "ViewStatusbar");
-
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
-}
-
 static void
 tab_width_combo_item_activated (GtkMenuItem *item,
 				GeditWindow *window)
@@ -1761,7 +1183,7 @@ static void
 on_language_button_clicked (GtkButton   *button,
                             GeditWindow *window)
 {
-	_gedit_cmd_view_highlight_mode (NULL, window);
+	_gedit_cmd_view_highlight_mode (NULL, NULL, window);
 }
 
 static void
@@ -1796,12 +1218,9 @@ create_language_button (GeditWindow *window)
 }
 
 static void
-create_statusbar (GeditWindow *window,
-		  GtkWidget   *main_box)
+setup_statusbar (GeditWindow *window)
 {
 	gedit_debug (DEBUG_WINDOW);
-
-	window->priv->statusbar = gedit_statusbar_new ();
 
 	window->priv->generic_message_cid = gtk_statusbar_get_context_id
 		(GTK_STATUSBAR (window->priv->statusbar), "generic_message");
@@ -1810,21 +1229,14 @@ create_statusbar (GeditWindow *window,
 	window->priv->bracket_match_message_cid = gtk_statusbar_get_context_id
 		(GTK_STATUSBAR (window->priv->statusbar), "bracket_match_message");
 
-	gtk_box_pack_end (GTK_BOX (main_box),
-			  window->priv->statusbar,
-			  FALSE,
-			  TRUE,
-			  0);
-
 	create_tab_width_combo (window);
 	create_language_button (window);
 
-	g_signal_connect_after (G_OBJECT (window->priv->statusbar),
-				"notify::visible",
-				G_CALLBACK (statusbar_visibility_changed),
-				window);
-
-	set_statusbar_style (window, NULL);
+	g_settings_bind (window->priv->ui_settings,
+	                 "statusbar-visible",
+	                 window->priv->statusbar,
+	                 "visible",
+	                 G_SETTINGS_BIND_GET);
 }
 
 static GeditWindow *
@@ -1868,14 +1280,6 @@ clone_window (GeditWindow *origin)
 	panel_page = _gedit_panel_get_active_item_id (GEDIT_PANEL (origin->priv->bottom_panel));
 	_gedit_panel_set_active_item_by_id (GEDIT_PANEL (window->priv->bottom_panel),
 					    panel_page);
-
-	gtk_widget_set_visible (window->priv->side_panel,
-				gtk_widget_get_visible (origin->priv->side_panel));
-	gtk_widget_set_visible (window->priv->bottom_panel,
-	                        gtk_widget_get_visible (origin->priv->bottom_panel));
-
-	set_statusbar_style (window, origin);
-	set_toolbar_visibility (window, origin);
 
 	return window;
 }
@@ -1969,7 +1373,9 @@ set_title (GeditWindow *window)
 	GeditDocument *doc = NULL;
 	gchar *name;
 	gchar *dirname = NULL;
+	gchar *main_title = NULL;
 	gchar *title = NULL;
+	gchar *subtitle = NULL;
 	gint len;
 
 	tab = gedit_window_get_active_tab (window);
@@ -1979,6 +1385,10 @@ set_title (GeditWindow *window)
 		gedit_app_set_window_title (GEDIT_APP (g_application_get_default ()),
 		                            window,
 		                            "gedit");
+		gtk_header_bar_set_title (GTK_HEADER_BAR (window->priv->headerbar),
+		                          "gedit");
+		gtk_header_bar_set_subtitle (GTK_HEADER_BAR (window->priv->headerbar),
+		                             NULL);
 		return;
 	}
 
@@ -2037,42 +1447,55 @@ set_title (GeditWindow *window)
 
 	if (gedit_document_get_readonly (doc))
 	{
+		title = g_strdup_printf ("%s [%s]",
+		                         name, _("Read-Only"));
+
 		if (dirname != NULL)
 		{
-			title = g_strdup_printf ("%s [%s] (%s) - gedit",
-						 name,
-						 _("Read-Only"),
-						 dirname);
+			main_title = g_strdup_printf ("%s [%s] (%s) - gedit",
+			                              name,
+			                              _("Read-Only"),
+			                              dirname);
+			subtitle = dirname;
 		}
 		else
 		{
-			title = g_strdup_printf ("%s [%s] - gedit",
-						 name,
-						 _("Read-Only"));
+			main_title = g_strdup_printf ("%s [%s] - gedit",
+			                              name,
+			                              _("Read-Only"));
 		}
 	}
 	else
 	{
+		title = g_strdup (name);
+
 		if (dirname != NULL)
 		{
-			title = g_strdup_printf ("%s (%s) - gedit",
-						 name,
-						 dirname);
+			main_title = g_strdup_printf ("%s (%s) - gedit",
+			                              name,
+			                              dirname);
+			subtitle = dirname;
 		}
 		else
 		{
-			title = g_strdup_printf ("%s - gedit",
-						 name);
+			main_title = g_strdup_printf ("%s - gedit",
+			                              name);
 		}
 	}
 
 	gedit_app_set_window_title (GEDIT_APP (g_application_get_default ()),
 				    window,
-				    title);
+				    main_title);
+
+	gtk_header_bar_set_title (GTK_HEADER_BAR (window->priv->headerbar),
+	                          title);
+	gtk_header_bar_set_subtitle (GTK_HEADER_BAR (window->priv->headerbar),
+	                             subtitle);
 
 	g_free (dirname);
 	g_free (name);
 	g_free (title);
+	g_free (main_title);
 }
 
 #undef MAX_TITLE_LENGTH
@@ -2143,6 +1566,10 @@ language_changed (GObject     *object,
 		label = _("Plain Text");
 
 	gtk_label_set_text (GTK_LABEL (window->priv->language_button_label), label);
+
+	peas_extension_set_foreach (window->priv->extensions,
+	                            (PeasExtensionSetForeachFunc) extension_update_state,
+	                            window);
 }
 
 static void
@@ -2250,56 +1677,88 @@ tab_switched (GeditMultiNotebook *mnb,
 static void
 set_sensitivity_according_to_window_state (GeditWindow *window)
 {
-	GtkAction *action;
+	GAction *action;
 	GeditLockdownMask lockdown;
 	gint num_tabs;
 
 	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
+	num_tabs = gedit_multi_notebook_get_n_tabs (window->priv->multi_notebook);
 
 	/* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have two
 	   operations (save and print/print preview) that uses the message area at
 	   the same time (may be we can remove this limitation in the future) */
 	/* We disable File->Quit/CloseAll if state is saving since saving cannot be
 	   cancelled (may be we can remove this limitation in the future) */
-	gtk_action_group_set_sensitive (window->priv->quit_action_group,
-				  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-				  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
+	action = g_action_map_lookup_action (G_ACTION_MAP (g_application_get_default ()),
+	                                     "quit");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
+	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
+	                             num_tabs > 0);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-				              "FileCloseAll");
-	gtk_action_set_sensitive (action,
-				  !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-				  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close_all");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
+				     !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-				              "FileSaveAll");
-	gtk_action_set_sensitive (action,
-				  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
-				  !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save_all");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
+				     !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 
-	num_tabs = gedit_multi_notebook_get_n_tabs (window->priv->multi_notebook);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
-	if (!gtk_action_group_get_sensitive (window->priv->action_group))
-	{
-		gtk_action_group_set_sensitive (window->priv->action_group,
-						num_tabs > 0);
-	}
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save_as");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
-	if (!gtk_action_group_get_sensitive (window->priv->quit_action_group))
-	{
-		gtk_action_group_set_sensitive (window->priv->quit_action_group,
-						num_tabs > 0);
-	}
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "revert");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
-	if (!gtk_action_group_get_sensitive (window->priv->close_action_group))
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "print");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "replace");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find_next");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find_prev");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "clear_highlight");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "goto_line");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "new_tab_group");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "previous_document");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "next_document");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "move_to_new_window");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 1);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "highlight_mode");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close");
+	if (!g_action_get_enabled (action))
 	{
 #ifdef OS_OSX
 		/* On OS X, File Close is always sensitive */
-		gtk_action_group_set_sensitive (window->priv->close_action_group,
-						TRUE);
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
 #else
-		gtk_action_group_set_sensitive (window->priv->close_action_group,
-						num_tabs > 0);
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 #endif
 	}
 }
@@ -2316,7 +1775,7 @@ _gedit_window_set_lockdown (GeditWindow       *window,
 			    GeditLockdownMask  lockdown)
 {
 	GeditTab *tab;
-	GtkAction *action;
+	GAction *action;
 	gboolean autosave;
 
 	/* start/stop autosave in each existing tab */
@@ -2332,11 +1791,10 @@ _gedit_window_set_lockdown (GeditWindow       *window,
 
 	set_sensitivity_according_to_tab (window, tab);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-				              "FileSaveAll");
-	gtk_action_set_sensitive (action,
-				  !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
-				  !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save_all");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
+				     !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 }
 
 static void
@@ -2484,13 +1942,16 @@ sync_name (GeditTab    *tab,
 
 	if (tab == gedit_window_get_active_tab (window))
 	{
+		GAction *gaction;
+
 		set_title (window);
 
 		doc = gedit_tab_get_document (tab);
-		action = gtk_action_group_get_action (window->priv->action_group,
-						      "FileRevert");
-		gtk_action_set_sensitive (action,
-					  !gedit_document_is_untitled (doc));
+		
+		gaction = g_action_map_lookup_action (G_ACTION_MAP (window),
+		                                      "revert");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (gaction),
+		                             !gedit_document_is_untitled (doc));
 	}
 
 	/* sync the item in the documents list menu */
@@ -2779,9 +2240,9 @@ run_fullscreen_animation (gpointer data)
 }
 
 static void
-show_hide_fullscreen_toolbar (GeditWindow *window,
-			      gboolean     show,
-			      gint         height)
+show_hide_fullscreen_controls (GeditWindow *window,
+			       gboolean     show,
+			       gint         height)
 {
 	GtkSettings *settings;
 	gboolean enable_animations;
@@ -2834,7 +2295,7 @@ on_fullscreen_controls_enter_notify_event (GtkWidget        *widget,
 					   GdkEventCrossing *event,
 					   GeditWindow      *window)
 {
-	show_hide_fullscreen_toolbar (window, TRUE, 0);
+	show_hide_fullscreen_controls (window, TRUE, 0);
 
 	return FALSE;
 }
@@ -2858,45 +2319,23 @@ on_fullscreen_controls_leave_notify_event (GtkWidget        *widget,
 	 */
 	if (y >= h)
 	{
-		show_hide_fullscreen_toolbar (window, FALSE, h);
+		show_hide_fullscreen_controls (window, FALSE, h);
 	}
 
 	return FALSE;
 }
 
 static void
-fullscreen_controls_build (GeditWindow *window)
+fullscreen_controls_setup (GeditWindow *window)
 {
 	GeditWindowPrivate *priv = window->priv;
-	GtkWidget *toolbar;
-	GtkAction *action;
 
-	if (priv->fullscreen_controls != NULL)
+	if (priv->fullscreen_controls_setup)
 		return;
-
-	priv->fullscreen_controls = gtk_window_new (GTK_WINDOW_POPUP);
 
 	gtk_window_set_transient_for (GTK_WINDOW (priv->fullscreen_controls),
 				      GTK_WINDOW (&window->window));
-
-	/* popup toolbar */
-	toolbar = gtk_ui_manager_get_widget (priv->manager, "/FullscreenToolBar");
-	gtk_container_add (GTK_CONTAINER (priv->fullscreen_controls),
-			   toolbar);
-
-	action = gtk_action_group_get_action (priv->always_sensitive_action_group,
-					      "LeaveFullscreen");
-	g_object_set (action, "is-important", TRUE, NULL);
-
-	setup_toolbar_open_button (window, toolbar);
-
-	gtk_container_foreach (GTK_CONTAINER (toolbar),
-			       (GtkCallback)set_non_homogeneus,
-			       NULL);
-
-	/* Set the toolbar style */
-	gtk_toolbar_set_style (GTK_TOOLBAR (toolbar),
-			       GTK_TOOLBAR_BOTH_HORIZ);
+	gtk_window_set_attached_to (GTK_WINDOW (window), priv->fullscreen_controls);
 
 	g_signal_connect (priv->fullscreen_controls, "enter-notify-event",
 			  G_CALLBACK (on_fullscreen_controls_enter_notify_event),
@@ -2904,6 +2343,7 @@ fullscreen_controls_build (GeditWindow *window)
 	g_signal_connect (priv->fullscreen_controls, "leave-notify-event",
 			  G_CALLBACK (on_fullscreen_controls_leave_notify_event),
 			  window);
+	priv->fullscreen_controls_setup = TRUE;
 }
 
 static void
@@ -2911,25 +2351,27 @@ empty_search_notify_cb (GeditDocument *doc,
 			GParamSpec    *pspec,
 			GeditWindow   *window)
 {
-	gboolean sensitive;
-	GtkAction *action;
+	GAction *action;
+	gboolean enabled;
 
 	if (doc != gedit_window_get_active_document (window))
 		return;
 
-	sensitive = !_gedit_document_get_empty_search (doc);
+	enabled = !_gedit_document_get_empty_search (doc);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "SearchFindNext");
-	gtk_action_set_sensitive (action, sensitive);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                     "clear_highlight");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "SearchFindPrevious");
-	gtk_action_set_sensitive (action, sensitive);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "SearchClearHighlight");
-	gtk_action_set_sensitive (action, sensitive);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                     "find_next");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
+
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                     "find_prev");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
 }
 
 static void
@@ -2937,17 +2379,16 @@ can_undo (GeditDocument *doc,
 	  GParamSpec    *pspec,
 	  GeditWindow   *window)
 {
-	GtkAction *action;
-	gboolean sensitive;
+	GAction *action;
+	gboolean enabled;
 
-	sensitive = gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc));
+	enabled = gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc));
 
 	if (doc != gedit_window_get_active_document (window))
 		return;
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					     "EditUndo");
-	gtk_action_set_sensitive (action, sensitive);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "undo");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
 }
 
 static void
@@ -2955,17 +2396,16 @@ can_redo (GeditDocument *doc,
 	  GParamSpec    *pspec,
 	  GeditWindow   *window)
 {
-	GtkAction *action;
-	gboolean sensitive;
+	GAction *action;
+	gboolean enabled;
 
-	sensitive = gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc));
+	enabled = gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc));
 
 	if (doc != gedit_window_get_active_document (window))
 		return;
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					     "EditRedo");
-	gtk_action_set_sensitive (action, sensitive);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "redo");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
 }
 
 static void
@@ -2975,7 +2415,7 @@ selection_changed (GeditDocument *doc,
 {
 	GeditTab *tab;
 	GeditView *view;
-	GtkAction *action;
+	GAction *action;
 	GeditTabState state;
 	gboolean state_normal;
 	gboolean editable;
@@ -2992,37 +2432,24 @@ selection_changed (GeditDocument *doc,
 	view = gedit_tab_get_view (tab);
 	editable = gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "EditCut");
-	gtk_action_set_sensitive (action,
-				  state_normal &&
-				  editable &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "cut");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     state_normal &&
+				     editable &&
+				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "EditCopy");
-	gtk_action_set_sensitive (action,
-				  (state_normal ||
-				   state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "copy");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state_normal ||
+				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) &&
+				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "EditDelete");
-	gtk_action_set_sensitive (action,
-				  state_normal &&
-				  editable &&
-				  gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "delete");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     state_normal &&
+				     editable &&
+				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
-	peas_extension_set_foreach (window->priv->extensions,
-	                            (PeasExtensionSetForeachFunc) extension_update_state,
-	                            window);
-}
-
-static void
-sync_languages_menu (GeditDocument *doc,
-		     GParamSpec    *pspec,
-		     GeditWindow   *window)
-{
 	peas_extension_set_foreach (window->priv->extensions,
 	                            (PeasExtensionSetForeachFunc) extension_update_state,
 	                            window);
@@ -3058,28 +2485,67 @@ update_sensitivity_according_to_open_tabs (GeditWindow *window,
 					   gint         num_notebooks,
 					   gint         num_tabs)
 {
-	GtkAction *action;
+	GAction *action;
 
-	/* Set sensitivity */
-	gtk_action_group_set_sensitive (window->priv->action_group,
-					num_tabs != 0);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					     "DocumentsMoveToNewWindow");
-	gtk_action_set_sensitive (action, num_tabs > 1);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save_as");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "DocumentsPreviousTabGroup");
-	gtk_action_set_sensitive (action, num_notebooks > 1);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "revert");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
-	action = gtk_action_group_get_action (window->priv->action_group,
-					      "DocumentsNextTabGroup");
-	gtk_action_set_sensitive (action, num_notebooks > 1);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "print");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find_next");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "replace");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find_prev");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "clear_highlight");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "goto_line");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "new_tab_group");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "previous_document");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "next_document");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "move_to_new_window");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             num_tabs > 1);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "previous_tab_group");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             num_notebooks > 1);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "next_tab_group");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             num_notebooks > 1);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "highlight_mode");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
 	/* Do not set close action insensitive on OS X */
 #ifndef OS_OSX
-	gtk_action_group_set_sensitive (window->priv->close_action_group,
-	                                num_tabs != 0);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             num_tabs != 0);
 #endif
 }
 
@@ -3147,10 +2613,6 @@ on_tab_added (GeditMultiNotebook *multi,
 	g_signal_connect (doc,
 			  "notify::has-selection",
 			  G_CALLBACK (selection_changed),
-			  window);
-	g_signal_connect (doc,
-			  "notify::language",
-			  G_CALLBACK (sync_languages_menu),
 			  window);
 	g_signal_connect (doc,
 			  "notify::read-only",
@@ -3221,9 +2683,6 @@ on_tab_removed (GeditMultiNotebook *multi,
 					      window);
 	g_signal_handlers_disconnect_by_func (doc,
 					      G_CALLBACK (selection_changed),
-					      window);
-	g_signal_handlers_disconnect_by_func (doc,
-					      G_CALLBACK (sync_languages_menu),
 					      window);
 	g_signal_handlers_disconnect_by_func (doc,
 					      G_CALLBACK (readonly_changed),
@@ -3450,51 +2909,39 @@ vpaned_restore_position (GtkWidget   *widget,
 }
 
 static void
-side_panel_visibility_changed (GtkWidget   *side_panel,
-			       GParamSpec  *pspec,
-			       GeditWindow *window)
+side_panel_visibility_changed (GSettings   *settings,
+                               const gchar *key,
+                               GeditWindow *window)
 {
 	gboolean visible;
-	GtkAction *action;
 
-	visible = gtk_widget_get_visible (side_panel);
+	visible = g_settings_get_boolean (settings, key);
 
-	g_settings_set_boolean (window->priv->ui_settings,
-				GEDIT_SETTINGS_SIDE_PANEL_VISIBLE,
-				visible);
+	gtk_widget_set_visible (window->priv->side_panel, visible);
 
-	action = gtk_action_group_get_action (window->priv->panels_action_group,
-	                                      "ViewSidePanel");
-
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
-
-	/* focus the document */
-	if (!visible)
+	/* focus the right widget */
+	if (visible)
+	{
+		gtk_widget_grab_focus (window->priv->side_panel);
+	}
+	else
 	{
 		gtk_widget_grab_focus (GTK_WIDGET (window->priv->multi_notebook));
 	}
 }
 
 static void
-create_side_panel (GeditWindow *window)
+setup_side_panel (GeditWindow *window)
 {
 	GtkWidget *documents_panel;
 	GtkWidget *image;
 
 	gedit_debug (DEBUG_WINDOW);
 
-	window->priv->side_panel = gedit_panel_new (GTK_ORIENTATION_VERTICAL);
-
-	gtk_paned_pack1 (GTK_PANED (window->priv->hpaned),
-			 window->priv->side_panel,
-			 FALSE,
-			 FALSE);
-
-	g_signal_connect_after (window->priv->side_panel,
-				"notify::visible",
-				G_CALLBACK (side_panel_visibility_changed),
-				window);
+	g_signal_connect (window->priv->ui_settings,
+	                  "changed::side-panel-visible",
+	                  G_CALLBACK (side_panel_visibility_changed),
+	                  window);
 
 	documents_panel = gedit_documents_panel_new (window);
 	image = gtk_image_new_from_icon_name ("view-list-symbolic",
@@ -3508,27 +2955,23 @@ create_side_panel (GeditWindow *window)
 }
 
 static void
-bottom_panel_visibility_changed (GeditPanel  *bottom_panel,
-				 GParamSpec  *pspec,
+bottom_panel_visibility_changed (GSettings   *settings,
+				 const gchar *key,
 				 GeditWindow *window)
 {
 	gboolean visible;
-	GtkAction *action;
 
-	visible = gtk_widget_get_visible (GTK_WIDGET (bottom_panel));
+	visible = g_settings_get_boolean (settings, key) &&
+	          gedit_panel_get_n_items (GEDIT_PANEL (window->priv->bottom_panel)) > 0;
 
-	g_settings_set_boolean (window->priv->ui_settings,
-				GEDIT_SETTINGS_BOTTOM_PANEL_VISIBLE,
-				visible);
+	gtk_widget_set_visible (window->priv->bottom_panel, visible);
 
-	action = gtk_action_group_get_action (window->priv->panels_action_group,
-					      "ViewBottomPanel");
-
-	if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != visible)
-		gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), visible);
-
-	/* focus the document */
-	if (!visible)
+	/* focus the right widget */
+	if (visible)
+	{
+		gtk_widget_grab_focus (window->priv->bottom_panel);
+	}
+	else
 	{
 		gtk_widget_grab_focus (GTK_WIDGET (window->priv->multi_notebook));
 	}
@@ -3541,13 +2984,7 @@ bottom_panel_item_removed (GeditPanel  *panel,
 {
 	if (gedit_panel_get_n_items (panel) == 0)
 	{
-		GtkAction *action;
-
 		gtk_widget_hide (GTK_WIDGET (panel));
-
-		action = gtk_action_group_get_action (window->priv->panels_action_group,
-						      "ViewBottomPanel");
-		gtk_action_set_sensitive (action, FALSE);
 	}
 }
 
@@ -3560,33 +2997,24 @@ bottom_panel_item_added (GeditPanel  *panel,
 	 * sensitive and if needed show the panel */
 	if (gedit_panel_get_n_items (panel) == 1)
 	{
-		GtkAction *action;
 		gboolean show;
 
-		action = gtk_action_group_get_action (window->priv->panels_action_group,
-						      "ViewBottomPanel");
-		gtk_action_set_sensitive (action, TRUE);
-
-		show = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+		show = g_settings_get_boolean (window->priv->ui_settings,
+		                               "bottom-panel-visible");
 		if (show)
+		{
 			gtk_widget_show (GTK_WIDGET (panel));
+		}
 	}
 }
 
 static void
-create_bottom_panel (GeditWindow *window)
+setup_bottom_panel (GeditWindow *window)
 {
 	gedit_debug (DEBUG_WINDOW);
 
-	window->priv->bottom_panel = gedit_panel_new (GTK_ORIENTATION_HORIZONTAL);
-
-	gtk_paned_pack2 (GTK_PANED (window->priv->vpaned),
-			 window->priv->bottom_panel,
-			 FALSE,
-			 FALSE);
-
-	g_signal_connect_after (window->priv->bottom_panel,
-				"notify::visible",
+	g_signal_connect_after (window->priv->ui_settings,
+				"changed::bottom-panel-visible",
 				G_CALLBACK (bottom_panel_visibility_changed),
 				window);
 }
@@ -3628,13 +3056,6 @@ init_panels_visibility (GeditWindow *window)
 		{
 			gtk_widget_show (window->priv->bottom_panel);
 		}
-	}
-	else
-	{
-		GtkAction *action;
-		action = gtk_action_group_get_action (window->priv->panels_action_group,
-						      "ViewBottomPanel");
-		gtk_action_set_sensitive (action, FALSE);
 	}
 
 	/* start track sensitivity after the initial state is set */
@@ -3724,10 +3145,43 @@ extension_removed (PeasExtensionSet *extensions,
 	gtk_ui_manager_ensure_update (window->priv->manager);
 }
 
+static GActionEntry win_entries[] = {
+	{ "open", _gedit_cmd_file_open },
+	{ "new_tab", _gedit_cmd_file_new },
+	{ "save", _gedit_cmd_file_save },
+	{ "save_as", _gedit_cmd_file_save_as },
+	{ "print", _gedit_cmd_file_print },
+	{ "revert", _gedit_cmd_file_revert },
+	{ "close", _gedit_cmd_file_close },
+	{ "fullscreen", _gedit_cmd_view_toggle_fullscreen_mode },
+	{ "leave_fullscreen", _gedit_cmd_view_leave_fullscreen_mode },
+	{ "find", _gedit_cmd_search_find },
+	{ "find_next", _gedit_cmd_search_find_next },
+	{ "find_prev", _gedit_cmd_search_find_prev },
+	{ "replace", _gedit_cmd_search_replace },
+	{ "clear_highlight", _gedit_cmd_search_clear_highlight },
+	{ "goto_line", _gedit_cmd_search_goto_line },
+	{ "save_all", _gedit_cmd_file_save_all },
+	{ "close_all", _gedit_cmd_file_close_all },
+	{ "new_tab_group", _gedit_cmd_documents_new_tab_group },
+	{ "previous_tab_group", _gedit_cmd_documents_previous_tab_group },
+	{ "next_tab_group", _gedit_cmd_documents_next_tab_group },
+	{ "previous_document", _gedit_cmd_documents_previous_document },
+	{ "next_document", _gedit_cmd_documents_next_document },
+	{ "move_to_new_window", _gedit_cmd_documents_move_to_new_window },
+	{ "undo", _gedit_cmd_edit_undo },
+	{ "redo", _gedit_cmd_edit_redo },
+	{ "cut", _gedit_cmd_edit_cut },
+	{ "copy", _gedit_cmd_edit_copy },
+	{ "paste", _gedit_cmd_edit_paste },
+	{ "delete", _gedit_cmd_edit_delete },
+	{ "select_all", _gedit_cmd_edit_select_all },
+	{ "highlight_mode", _gedit_cmd_view_highlight_mode }
+};
+
 static void
 gedit_window_init (GeditWindow *window)
 {
-	GtkWidget *main_box;
 	GtkTargetList *tl;
 
 	gedit_debug (DEBUG_WINDOW);
@@ -3751,42 +3205,26 @@ gedit_window_init (GeditWindow *window)
 
 	window->priv->message_bus = gedit_message_bus_new ();
 
+	gtk_widget_init_template (GTK_WIDGET (window));
+
+	g_action_map_add_action_entries (G_ACTION_MAP (window),
+	                                 win_entries,
+	                                 G_N_ELEMENTS (win_entries),
+	                                 window);
+
 	window->priv->window_group = gtk_window_group_new ();
 	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
 
-	main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-	gtk_container_add (GTK_CONTAINER (window), main_box);
-	gtk_widget_show (main_box);
-
 	/* Add menu bar and toolbar bar */
-	create_menu_bar_and_toolbar (window, main_box);
+	// FIXME: kill this, right now it is just not added to the window
+	create_menu_bar_and_toolbar (window);
 
-	/* Add status bar */
-	create_statusbar (window, main_box);
+	setup_headerbar_open_button (window);
 
-	/* Add the main area */
-	gedit_debug_message (DEBUG_WINDOW, "Add main area");
-	window->priv->hpaned = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
-  	gtk_box_pack_start (GTK_BOX (main_box),
-  			    window->priv->hpaned,
-  			    TRUE,
-  			    TRUE,
-  			    0);
+	/* Setup status bar */
+	setup_statusbar (window);
 
-	window->priv->vpaned = gtk_paned_new (GTK_ORIENTATION_VERTICAL);
-  	gtk_paned_pack2 (GTK_PANED (window->priv->hpaned),
-  			 window->priv->vpaned,
-  			 TRUE,
-  			 FALSE);
-
-	gedit_debug_message (DEBUG_WINDOW, "Create gedit notebook group");
-	window->priv->multi_notebook = gedit_multi_notebook_new ();
-	gtk_paned_pack1 (GTK_PANED (window->priv->vpaned),
-			 GTK_WIDGET (window->priv->multi_notebook),
-			 TRUE,
-			 FALSE);
-	gtk_widget_show (GTK_WIDGET (window->priv->multi_notebook));
-
+	/* Setup main area */
 	g_signal_connect (window->priv->multi_notebook,
 			  "notebook-removed",
 			  G_CALLBACK (on_notebook_removed),
@@ -3832,8 +3270,8 @@ gedit_window_init (GeditWindow *window)
 			  window);
 
 	/* side and bottom panels */
-  	create_side_panel (window);
-	create_bottom_panel (window);
+	setup_side_panel (window);
+	setup_bottom_panel (window);
 
 	/* panels' state must be restored after panels have been mapped,
 	 * since the bottom panel position depends on the size of the vpaned. */
@@ -3850,9 +3288,6 @@ gedit_window_init (GeditWindow *window)
 				"map",
 				G_CALLBACK (vpaned_restore_position),
 				window);
-
-	gtk_widget_show (window->priv->hpaned);
-	gtk_widget_show (window->priv->vpaned);
 
 	/* Drag and drop support */
 	gtk_drag_dest_set (GTK_WIDGET (window),
@@ -4551,19 +3986,9 @@ _gedit_window_fullscreen (GeditWindow *window)
 					       (GtkCallback)hide_notebook_tabs,
 					       window);
 
-	gtk_widget_hide (window->priv->menubar);
-
-	g_signal_handlers_block_by_func (window->priv->toolbar,
-					 toolbar_visibility_changed,
-					 window);
-	gtk_widget_hide (window->priv->toolbar);
-
-	g_signal_handlers_block_by_func (window->priv->statusbar,
-					 statusbar_visibility_changed,
-					 window);
 	gtk_widget_hide (window->priv->statusbar);
 
-	fullscreen_controls_build (window);
+	fullscreen_controls_setup (window);
 	fullscreen_controls_show (window);
 }
 
@@ -4580,9 +4005,6 @@ show_notebook_tabs (GtkNotebook *notebook,
 void
 _gedit_window_unfullscreen (GeditWindow *window)
 {
-	gboolean visible;
-	GtkAction *action;
-
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
 	if (!_gedit_window_is_fullscreen (window))
@@ -4595,25 +4017,10 @@ _gedit_window_unfullscreen (GeditWindow *window)
 					       (GtkCallback)show_notebook_tabs,
 					       window);
 
-	gtk_widget_show (window->priv->menubar);
-
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
-					      "ViewToolbar");
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
-	if (visible)
-		gtk_widget_show (window->priv->toolbar);
-	g_signal_handlers_unblock_by_func (window->priv->toolbar,
-					   toolbar_visibility_changed,
-					   window);
-
-	action = gtk_action_group_get_action (window->priv->always_sensitive_action_group,
-					      "ViewStatusbar");
-	visible = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
-	if (visible)
+	if (g_settings_get_boolean (window->priv->ui_settings, "statusbar-visible"))
+	{
 		gtk_widget_show (window->priv->statusbar);
-	g_signal_handlers_unblock_by_func (window->priv->statusbar,
-					   statusbar_visibility_changed,
-					   window);
+	}
 
 	gtk_widget_hide (window->priv->fullscreen_controls);
 }
