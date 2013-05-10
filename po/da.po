@@ -23,8 +23,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.gnome-2-16\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-17 14:50+0100\n"
-"PO-Revision-Date: 2013-03-16 18:01+0100\n"
+"POT-Creation-Date: 2013-05-10 17:28+0200\n"
+"PO-Revision-Date: 2013-05-10 12:51+0200\n"
 "Last-Translator: Kenneth Nielsen <k.nielsen81@gmail.com>\n"
 "Language-Team: Dansk <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -553,11 +553,11 @@ msgstr "[FIL...] [+LINJE[:KOLONNE]]"
 msgid "There was an error displaying the help."
 msgstr "Der opstod en fejl ved visning af hjælp."
 
-#: ../gedit/gedit-app.c:708
+#: ../gedit/gedit-app.c:704
 msgid "- Edit text files"
 msgstr "- Redigér tekstfiler"
 
-#: ../gedit/gedit-app.c:817 ../gedit/gedit-app.c:907
+#: ../gedit/gedit-app.c:813 ../gedit/gedit-app.c:903
 #, c-format
 msgid ""
 "%s\n"
@@ -567,7 +567,7 @@ msgstr ""
 "Kør \"%s --help\" for at se den fulde liste over tilgængelige "
 "kommandolinjetilvalg.\n"
 
-#: ../gedit/gedit-app.c:838
+#: ../gedit/gedit-app.c:834
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: ugyldig kodning."
@@ -711,10 +711,10 @@ msgid_plural "Loading %d files…"
 msgstr[0] "Indlæser %d fil…"
 msgstr[1] "Indlæser %d filer…"
 
-#. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442
-msgid "Open Files"
-msgstr "Åbn filer"
+#. Translators: "Open" is the title of the file chooser window
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1476
+msgid "Open"
+msgstr "Åbn"
 
 #: ../gedit/gedit-commands-file.c:553
 #, c-format
@@ -725,7 +725,7 @@ msgstr "Filen \"%s\" er skrivebeskyttet."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Vil du forsøge at erstatte den med den du er ved at gemme?"
 
-#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.ui.h:3
 msgid "_Replace"
 msgstr "_Erstat"
 
@@ -902,17 +902,17 @@ msgstr "Fandt og erstattede én forekomst"
 msgid "\"%s\" not found"
 msgstr "\"%s\" ikke fundet"
 
-#: ../gedit/gedit-document.c:1223 ../gedit/gedit-document.c:1249
+#: ../gedit/gedit-document.c:1224 ../gedit/gedit-document.c:1250
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Ugemt dokument %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2380 ../gedit/gedit-window.c:2387
+#: ../gedit/gedit-window.c:2389 ../gedit/gedit-window.c:2396
 msgid "Read-Only"
 msgstr "Skrivebeskyttet"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3827
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3772
 msgid "Documents"
 msgstr "Dokumenter"
 
@@ -1032,31 +1032,19 @@ msgstr "Thai"
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: ../gedit/gedit-encodings-combo-box.c:301
+#: ../gedit/gedit-encodings-combo-box.c:299
 msgid "Automatically Detected"
 msgstr "Automatisk gættet"
 
-#: ../gedit/gedit-encodings-combo-box.c:320
-#: ../gedit/gedit-encodings-combo-box.c:336
+#: ../gedit/gedit-encodings-combo-box.c:318
+#: ../gedit/gedit-encodings-combo-box.c:334
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Aktuel region (%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:388
+#: ../gedit/gedit-encodings-combo-box.c:386
 msgid "Add or Remove..."
 msgstr "Tilføj eller fjern..."
-
-#: ../gedit/gedit-encodings-dialog.c:345
-msgid "Character Encodings"
-msgstr "Tegnkodninger"
-
-#: ../gedit/gedit-encodings-dialog.c:395 ../gedit/gedit-encodings-dialog.c:456
-msgid "_Description"
-msgstr "_Beskrivelse"
-
-#: ../gedit/gedit-encodings-dialog.c:404 ../gedit/gedit-encodings-dialog.c:465
-msgid "_Encoding"
-msgstr "_Kodning"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-encodings-dialog.ui.h:1
@@ -1068,11 +1056,19 @@ msgid "A_vailable encodings:"
 msgstr "_Tilgængelige kodninger:"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:3
+msgid "_Description"
+msgstr "_Beskrivelse"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:4
+msgid "_Encoding"
+msgstr "_Kodning"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:5
 msgid "E_ncodings shown in menu:"
 msgstr "_Kodninger der vises i menu:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:52
-#: ../gedit/gedit-preferences-dialog.c:909
+#: ../gedit/gedit-preferences-dialog.c:917
 msgid "All Files"
 msgstr "Alle filer"
 
@@ -1483,15 +1479,15 @@ msgstr "Gem _som..."
 msgid "_Print..."
 msgstr "_Udskriv..."
 
-#: ../gedit/gedit-open-tool-button.c:85 ../gedit/gedit-ui.h:55
+#: ../gedit/gedit-open-tool-button.c:122 ../gedit/gedit-ui.h:55
 msgid "Open a file"
 msgstr "Åbn en fil"
 
-#: ../gedit/gedit-open-tool-button.c:87
+#: ../gedit/gedit-open-tool-button.c:124
 msgid "Open a recently used file"
 msgstr "Åbn en senest benyttet fil"
 
-#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:587
+#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:590
 msgid "Empty"
 msgstr "Tom"
 
@@ -1499,52 +1495,48 @@ msgstr "Tom"
 msgid "Hide panel"
 msgstr "Skjul panel"
 
-#: ../gedit/gedit-preferences-dialog.c:423
+#: ../gedit/gedit-preferences-dialog.c:431
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Klik på denne knap for at vælge redigeringsprogrammets skrifttype"
 
-#: ../gedit/gedit-preferences-dialog.c:438
+#: ../gedit/gedit-preferences-dialog.c:446
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Br_ug systemets fastbredde-skrifttype (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:676
+#: ../gedit/gedit-preferences-dialog.c:684
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Mappen \"%s\" kunne ikke blive oprettet: g_mkdir_with_parents() fejlede: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:860
+#: ../gedit/gedit-preferences-dialog.c:868
 msgid "The selected color scheme cannot be installed."
 msgstr "Det valgte farveskema kan ikke installeres."
 
-#: ../gedit/gedit-preferences-dialog.c:887
+#: ../gedit/gedit-preferences-dialog.c:895
 msgid "Add Scheme"
 msgstr "Tilføj skema"
 
-#: ../gedit/gedit-preferences-dialog.c:894
+#: ../gedit/gedit-preferences-dialog.c:902
 msgid "A_dd Scheme"
 msgstr "_Tilføj skema"
 
-#: ../gedit/gedit-preferences-dialog.c:902
+#: ../gedit/gedit-preferences-dialog.c:910
 msgid "Color Scheme Files"
 msgstr "Farveskemafiler"
 
-#: ../gedit/gedit-preferences-dialog.c:954
+#: ../gedit/gedit-preferences-dialog.c:962
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Kunne ikke fjerne farveskemaet \"%s\"."
 
-#: ../gedit/gedit-preferences-dialog.c:1177
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-preferences-dialog.ui.h:1
 msgid "gedit Preferences"
 msgstr "Indstillinger for gedit"
 
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-preferences-dialog.ui.h:1
-msgid "Preferences"
-msgstr "Indstillinger"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:552
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:569
 msgid "_Display line numbers"
 msgstr "Vis linje_numre"
 
@@ -1638,26 +1630,30 @@ msgid "Color Scheme"
 msgstr "Farveskema"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:24
+msgid "column"
+msgstr "kolonne"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
 msgstr "Installer skema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
+#: ../gedit/gedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
 msgstr "Installer skema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26
+#: ../gedit/gedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
 msgstr "Afinstaller skema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:27
+#: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Uninstall Scheme"
 msgstr "Afinstaller skema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Font & Colors"
 msgstr "Skrifttyper og farver"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:30
 msgid "Plugins"
 msgstr "Udvidelsesmoduler"
 
@@ -1729,107 +1725,112 @@ msgstr "Side_hoveder og -fødder:"
 msgid "_Restore Default Fonts"
 msgstr "_Gendan standardskrifttyper"
 
-#: ../gedit/gedit-print-preview.c:562
-msgid "Show the previous page"
-msgstr "Vis den foregående side"
-
-#: ../gedit/gedit-print-preview.c:574
-msgid "Show the next page"
-msgstr "Vis den næste side"
-
-#: ../gedit/gedit-print-preview.c:590
-msgid "Current page (Alt+P)"
-msgstr "Aktuel side (Alt+P)"
-
-#. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:613
-msgid "of"
-msgstr "af"
-
-#: ../gedit/gedit-print-preview.c:621
-msgid "Page total"
-msgstr "Sider totalt"
-
-#: ../gedit/gedit-print-preview.c:622
-msgid "The total number of pages in the document"
-msgstr "Det totale antal sider i dokumentet"
-
-#: ../gedit/gedit-print-preview.c:639
-msgid "Show multiple pages"
-msgstr "Vis flere sider"
-
-#: ../gedit/gedit-print-preview.c:652
-msgid "Zoom 1:1"
-msgstr "Zoom 1:1"
-
-#: ../gedit/gedit-print-preview.c:661
-msgid "Zoom to fit the whole page"
-msgstr "Zoom så hele siden bliver vist"
-
-#: ../gedit/gedit-print-preview.c:670
-msgid "Zoom the page in"
-msgstr "Zoom ind på siden"
-
-#: ../gedit/gedit-print-preview.c:679
-msgid "Zoom the page out"
-msgstr "Zoom ud på siden"
-
-#: ../gedit/gedit-print-preview.c:691
-msgid "_Close Preview"
-msgstr "_Luk udskriftsvisning"
-
-#: ../gedit/gedit-print-preview.c:694
-msgid "Close print preview"
-msgstr "Luk udskriftsvisning"
-
-#: ../gedit/gedit-print-preview.c:763
+#: ../gedit/gedit-print-preview.c:616
 #, c-format
 msgid "Page %d of %d"
 msgstr "Side %d ud af %d"
 
-#: ../gedit/gedit-print-preview.c:947
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-print-preview.ui.h:1
+msgid "Show the previous page"
+msgstr "Vis den foregående side"
+
+#: ../gedit/gedit-print-preview.ui.h:2
+#, fuzzy
+msgid "P_revious Page"
+msgstr "_Forrige fanebladsgruppe"
+
+#: ../gedit/gedit-print-preview.ui.h:3
+msgid "Show the next page"
+msgstr "Vis den næste side"
+
+#: ../gedit/gedit-print-preview.ui.h:4
+msgid "_Next Page"
+msgstr ""
+
+#: ../gedit/gedit-print-preview.ui.h:5
+msgid "Current page (Alt+P)"
+msgstr "Aktuel side (Alt+P)"
+
+#. the "of" from "1 of 19" in print preview
+#: ../gedit/gedit-print-preview.ui.h:7
+msgid "of"
+msgstr "af"
+
+#: ../gedit/gedit-print-preview.ui.h:8
+msgid "Page total"
+msgstr "Sider totalt"
+
+#: ../gedit/gedit-print-preview.ui.h:9
+msgid "The total number of pages in the document"
+msgstr "Det totale antal sider i dokumentet"
+
+#: ../gedit/gedit-print-preview.ui.h:10
+msgid "Show multiple pages"
+msgstr "Vis flere sider"
+
+#: ../gedit/gedit-print-preview.ui.h:11
+msgid "Zoom 1:1"
+msgstr "Zoom 1:1"
+
+#: ../gedit/gedit-print-preview.ui.h:12
+msgid "Zoom to fit the whole page"
+msgstr "Zoom så hele siden bliver vist"
+
+#: ../gedit/gedit-print-preview.ui.h:13
+msgid "Zoom the page in"
+msgstr "Zoom ind på siden"
+
+#: ../gedit/gedit-print-preview.ui.h:14
+msgid "Zoom the page out"
+msgstr "Zoom ud på siden"
+
+#: ../gedit/gedit-print-preview.ui.h:15
+msgid "Close print preview"
+msgstr "Luk udskriftsvisning"
+
+#: ../gedit/gedit-print-preview.ui.h:16
+msgid "_Close Preview"
+msgstr "_Luk udskriftsvisning"
+
+#: ../gedit/gedit-print-preview.ui.h:17
 msgid "Page Preview"
 msgstr "Vis udskrift"
 
-#: ../gedit/gedit-print-preview.c:948
+#: ../gedit/gedit-print-preview.ui.h:18
 msgid "The preview of a page in the document to be printed"
 msgstr "Forhåndsvisningen af en side dokumentet der skal udskrives"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1528
+#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1537
 msgid "Replace"
 msgstr "Erstat"
 
-#: ../gedit/gedit-replace-dialog.c:282
+#: ../gedit/gedit-replace-dialog.ui.h:2
 msgid "Replace _All"
 msgstr "Erstat _alle"
 
-#: ../gedit/gedit-replace-dialog.ui.h:2
-msgid "Replace All"
-msgstr "Erstat alle"
-
-#: ../gedit/gedit-replace-dialog.ui.h:3
+#: ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Search for: "
 msgstr "_Søg efter: "
 
-#: ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-replace-dialog.ui.h:5
 msgid "Replace _with: "
 msgstr "Erstat _med: "
 
-#: ../gedit/gedit-replace-dialog.ui.h:5
+#: ../gedit/gedit-replace-dialog.ui.h:6
 msgid "_Match case"
 msgstr "_Forskel på små/store bogstaver"
 
-#: ../gedit/gedit-replace-dialog.ui.h:6
+#: ../gedit/gedit-replace-dialog.ui.h:7
 msgid "Match _entire word only"
 msgstr "Søg kun efter _hele ord"
 
-#: ../gedit/gedit-replace-dialog.ui.h:7
+#: ../gedit/gedit-replace-dialog.ui.h:8
 msgid "Search _backwards"
 msgstr "Søg _bagud"
 
-#: ../gedit/gedit-replace-dialog.ui.h:8
+#: ../gedit/gedit-replace-dialog.ui.h:9
 msgid "_Wrap around"
 msgstr "_Begynd forfra ved slut"
 
@@ -1858,74 +1859,74 @@ msgstr[1] "Der er %d faneblade med fejl"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:769
+#: ../gedit/gedit-tab.c:770
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Forkaster %s fra %s"
 
-#: ../gedit/gedit-tab.c:776
+#: ../gedit/gedit-tab.c:777
 #, c-format
 msgid "Reverting %s"
 msgstr "Forkaster %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:792
+#: ../gedit/gedit-tab.c:793
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Indlæser %s fra %s"
 
-#: ../gedit/gedit-tab.c:799
+#: ../gedit/gedit-tab.c:800
 #, c-format
 msgid "Loading %s"
 msgstr "Indlæser %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:880
+#: ../gedit/gedit-tab.c:881
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Gemmer %s i %s"
 
-#: ../gedit/gedit-tab.c:887
+#: ../gedit/gedit-tab.c:888
 #, c-format
 msgid "Saving %s"
 msgstr "Gemmer %s"
 
 # skrivebeskyttet
 #. Read only
-#: ../gedit/gedit-tab.c:1872
+#: ../gedit/gedit-tab.c:1873
 msgid "RO"
 msgstr "SB"
 
-#: ../gedit/gedit-tab.c:1919
+#: ../gedit/gedit-tab.c:1920
 #, c-format
 msgid "Error opening file %s"
 msgstr "Fejl ved åbning af filen \"%s\""
 
-#: ../gedit/gedit-tab.c:1924
+#: ../gedit/gedit-tab.c:1925
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Fejl ved forkastning af filen \"%s\""
 
-#: ../gedit/gedit-tab.c:1929
+#: ../gedit/gedit-tab.c:1930
 #, c-format
 msgid "Error saving file %s"
 msgstr "Fejl ved gemning af filen \"%s\""
 
-#: ../gedit/gedit-tab.c:1950
+#: ../gedit/gedit-tab.c:1951
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1957
+#: ../gedit/gedit-tab.c:1958
 msgid "Name:"
 msgstr "Navn:"
 
-#: ../gedit/gedit-tab.c:1958
+#: ../gedit/gedit-tab.c:1959
 msgid "MIME Type:"
 msgstr "MIME-type:"
 
-#: ../gedit/gedit-tab.c:1959
+#: ../gedit/gedit-tab.c:1960
 msgid "Encoding:"
 msgstr "Kodning:"
 
@@ -2207,46 +2208,46 @@ msgstr "_Bundpanel"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Vis eller skjul bundpanelet i det aktuelle vindue"
 
-#: ../gedit/gedit-utils.c:1026
+#: ../gedit/gedit-utils.c:1033
 msgid "Please check your installation."
 msgstr "Kontrollér din installation."
 
-#: ../gedit/gedit-utils.c:1084
+#: ../gedit/gedit-utils.c:1091
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Kunne ikke åbne grænsefladefil %s. Fejl: %s"
 
-#: ../gedit/gedit-utils.c:1103
+#: ../gedit/gedit-utils.c:1110
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Kan ikke finde objektet \"%s\" inden i filen %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1326
+#: ../gedit/gedit-utils.c:1333
 #, c-format
 msgid "/ on %s"
 msgstr "/ på %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:538
+#: ../gedit/gedit-view-frame.c:535
 msgid "_Wrap Around"
 msgstr "_Begynd forfra ved slut"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:548
+#: ../gedit/gedit-view-frame.c:545
 msgid "Match _Entire Word Only"
 msgstr "Søg kun efter _hele ord"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:558
+#: ../gedit/gedit-view-frame.c:555
 msgid "_Match Case"
 msgstr "_Forskel på små/store bogstaver"
 
-#: ../gedit/gedit-view-frame.c:755
+#: ../gedit/gedit-view-frame.c:752
 msgid "String you want to search for"
 msgstr "Tekst der skal søges efter"
 
-#: ../gedit/gedit-view-frame.c:765
+#: ../gedit/gedit-view-frame.c:762
 msgid "Line you want to move the cursor to"
 msgstr "Linje som markøren skal flyttes til"
 
@@ -2258,68 +2259,65 @@ msgstr "Benyt fremhævningstilstanden %s"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1047 ../gedit/gedit-window.c:2074
-#: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:455
-#: ../plugins/externaltools/tools/manager.py:571
-#: ../plugins/externaltools/tools/manager.py:890
+#: ../gedit/gedit-window.c:1051 ../gedit/gedit-window.c:2100
+#: ../gedit/gedit-window.c:2488 ../plugins/externaltools/tools/manager.py:146
+#: ../plugins/externaltools/tools/manager.py:462
+#: ../plugins/externaltools/tools/manager.py:578
+#: ../plugins/externaltools/tools/manager.py:902
 msgid "Plain Text"
 msgstr "Almindelig tekst"
 
-#: ../gedit/gedit-window.c:1048
+#: ../gedit/gedit-window.c:1052
 msgid "Disable syntax highlighting"
 msgstr "Deaktivér syntaksfremhævning"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1365
+#: ../gedit/gedit-window.c:1369
 #, c-format
 msgid "Open '%s'"
 msgstr "Åbn \"%s\""
 
-#: ../gedit/gedit-window.c:1467
-msgid "Open"
-msgstr "Åbn"
-
-#: ../gedit/gedit-window.c:1522
+#: ../gedit/gedit-window.c:1531
 msgid "Save"
 msgstr "Gem"
 
-#: ../gedit/gedit-window.c:1524
+#: ../gedit/gedit-window.c:1533
 msgid "Print"
 msgstr "Udskriv"
 
-#: ../gedit/gedit-window.c:1526
+#: ../gedit/gedit-window.c:1535
 msgid "Find"
 msgstr "Find"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1698
+#: ../gedit/gedit-window.c:1707
 #, c-format
 msgid "Activate '%s'"
 msgstr "Aktivér \"%s\""
 
-#: ../gedit/gedit-window.c:2055
+#: ../gedit/gedit-window.c:2053
 msgid "Use Spaces"
 msgstr "Brug mellemrum"
 
-#: ../gedit/gedit-window.c:2128
-msgid "Tab Width"
-msgstr "Tabulatorbredde"
-
-#: ../gedit/gedit-window.c:2237
+#: ../gedit/gedit-window.c:2246
 msgid "Bracket match is out of range"
 msgstr "Parentesmodpart uden for gyldigt interval"
 
-#: ../gedit/gedit-window.c:2242
+#: ../gedit/gedit-window.c:2251
 msgid "Bracket match not found"
 msgstr "Parentesmodpart ikke fundet"
 
-#: ../gedit/gedit-window.c:2247
+#: ../gedit/gedit-window.c:2256
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Parentesmodpart fundet på linje %d"
 
-#: ../gedit/gedit-window.c:2852
+#: ../gedit/gedit-window.c:2440
+#, fuzzy, c-format
+msgid "Tab Width: %u"
+msgstr "Tabulatorbredde"
+
+#: ../gedit/gedit-window.c:2798
 msgid "There are unsaved documents"
 msgstr "Der er ugemte dokumenter"
 
@@ -2418,9 +2416,8 @@ msgid "Document Statistics"
 msgstr "Dokumentstatistik"
 
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
-msgid ""
-"Analyzes the current document and reports the number of words, lines, "
-"characters and non-space characters in it."
+#, fuzzy
+msgid "Report the number of words, lines and characters in a document."
 msgstr ""
 "Analyserer det aktuelle dokument og finder antallet af ord, linjer, tegn og "
 "ikke-mellemrum i det."
@@ -2538,24 +2535,24 @@ msgstr ""
 "Navnet på en Pango-skrifttype. Eksempler: \"Sans 12\" eller \"Monospace Bold "
 "14\"."
 
-#: ../plugins/externaltools/tools/capture.py:92
+#: ../plugins/externaltools/tools/capture.py:95
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Kunne ikke køre kommando: %s"
 
-#: ../plugins/externaltools/tools/functions.py:157
+#: ../plugins/externaltools/tools/functions.py:175
 msgid "You must be inside a word to run this command"
 msgstr "Du skal være inden i et ord for at udføre denne kommando"
 
-#: ../plugins/externaltools/tools/functions.py:263
+#: ../plugins/externaltools/tools/functions.py:281
 msgid "Running tool:"
 msgstr "Kørende værktøj:"
 
-#: ../plugins/externaltools/tools/functions.py:292
+#: ../plugins/externaltools/tools/functions.py:310
 msgid "Done."
 msgstr "Færdig."
 
-#: ../plugins/externaltools/tools/functions.py:294
+#: ../plugins/externaltools/tools/functions.py:312
 msgid "Exited"
 msgstr "Afsluttet"
 
@@ -2563,28 +2560,28 @@ msgstr "Afsluttet"
 msgid "All languages"
 msgstr "Alle sprog"
 
-#: ../plugins/externaltools/tools/manager.py:560
-#: ../plugins/externaltools/tools/manager.py:564
-#: ../plugins/externaltools/tools/manager.py:888
+#: ../plugins/externaltools/tools/manager.py:567
+#: ../plugins/externaltools/tools/manager.py:571
+#: ../plugins/externaltools/tools/manager.py:900
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "All Languages"
 msgstr "Alle sprog"
 
-#: ../plugins/externaltools/tools/manager.py:677
+#: ../plugins/externaltools/tools/manager.py:684
 msgid "New tool"
 msgstr "Nyt værktøj"
 
-#: ../plugins/externaltools/tools/manager.py:808
+#: ../plugins/externaltools/tools/manager.py:815
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Denne genvej er allerede bundet til %s"
 
-#: ../plugins/externaltools/tools/manager.py:852
+#: ../plugins/externaltools/tools/manager.py:859
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr ""
 "Indtast en ny genvej eller tryk på \"slet tilbage\"-knappen for at rydde"
 
-#: ../plugins/externaltools/tools/manager.py:854
+#: ../plugins/externaltools/tools/manager.py:861
 msgid "Type a new accelerator"
 msgstr "Indtast en ny genvej"
 
@@ -2593,6 +2590,11 @@ msgid "Stopped."
 msgstr "Stoppet."
 
 #. ex:ts=4:et:
+#: ../plugins/externaltools/tools/outputpanel.ui.h:1
+#, fuzzy
+msgid "Stop Tool"
+msgstr "Fjern værktøj"
+
 #: ../plugins/externaltools/tools/tools.ui.h:1
 msgid "All documents"
 msgstr "Alle dokumenter"
@@ -2715,7 +2717,8 @@ msgid "_Save:"
 msgstr "_Gem:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:33
-msgid "Shortcut _Key:"
+#, fuzzy
+msgid "Shortcut _key:"
 msgstr "Genvejs_tast:"
 
 #: ../plugins/externaltools/tools/windowactivatable.py:173
@@ -2751,59 +2754,100 @@ msgstr "Nem tilgang til filer fra sidepanelet"
 msgid "File System"
 msgstr "Filsystem"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:558
-msgid "_Set root to active document"
+#. ex:ts=8:noet:
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
+#, fuzzy
+msgid "_Open"
+msgstr "Åbn"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:2
+#, fuzzy
+msgid "_Set Root to Active Document"
 msgstr "_Sæt rod til aktive dokument"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:560
-msgid "Set the root to the active document location"
-msgstr "Sæt roden til stedet hvor det aktive dokument findes"
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:3
+msgid "_New Folder"
+msgstr "Ny _mappe"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:565
-msgid "_Open terminal here"
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:4
+msgid "New F_ile"
+msgstr "Ny F_il"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:5
+#, fuzzy
+msgid "_Rename..."
+msgstr "_Omdøb"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:6
+msgid "_Move to Trash"
+msgstr "_Flyt til papirkurv"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:7
+msgid "_Delete"
+msgstr "_Slet"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:8
+msgid "Re_fresh View"
+msgstr "Op_datér visningen"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:9
+msgid "_View Folder"
+msgstr "_Vis mappe"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:10
+#, fuzzy
+msgid "_Open in Terminal"
 msgstr "_Åben terminal her"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:567
-msgid "Open a terminal at the currently opened directory"
-msgstr "Åben en terminal i den mappe som er åben nu"
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:11
+msgid "_Filter"
+msgstr "_Filter"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:705
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:12
+msgid "Show _Hidden"
+msgstr "Vis s_kjulte"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:13
+msgid "Show _Binary"
+msgstr "Vis _binære filer"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:549
 msgid "File Browser"
 msgstr "Filvælger"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:848
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
 msgid "An error occurred while creating a new directory"
 msgstr "En fejl opstod ved oprettelsen af en ny mappe"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:851
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
 msgid "An error occurred while creating a new file"
 msgstr "En fejl opstod ved oprettelsen af en ny fil"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:854
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
 msgid "An error occurred while renaming a file or directory"
 msgstr "En fejl opstod ved omdøbningen af en fil eller mappe"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:857
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
 msgid "An error occurred while deleting a file or directory"
 msgstr "En fejl opstod ved sletningen af en fil eller mappe"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:860
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:700
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "En fejl opstod ved at åbne en mappe i filvælgeren"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:863
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:703
 msgid "An error occurred while setting a root directory"
 msgstr "En fejl opstod ved indstilling af rodmappen"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:866
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:706
 msgid "An error occurred while loading a directory"
 msgstr "En fejl opstod ved indlæsningen af en mappe"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:869
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:709
 msgid "An error occurred"
 msgstr "Der opstod en fejl"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1083
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2811,33 +2855,33 @@ msgstr ""
 "Filen kan ikke flyttes til papirkurven,\n"
 "ønsker du at slette den permanent?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1088
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:928
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Filen \"%s\" kan ikke flyttes til papirkurven."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1093
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:933
 msgid "The selected files cannot be moved to the trash."
 msgstr "De valgte filer kan ikke flyttes til papirkurven."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1125
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:965
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Er du sikker at du permanent vil slette \"%s\"?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1130
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:970
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Er du sikker på at du permanent vil slette de valgte filer?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:1133
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:973
 msgid "If you delete an item, it is permanently lost."
 msgstr "Hvis du sletter et objekt, vil det gå permanent tabt."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1722
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1727
 msgid "(Empty)"
 msgstr "(Tom)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3467
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3468
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2846,11 +2890,11 @@ msgstr ""
 "filterindstillinger for at gøre filen synlig"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3711
-msgid "file"
-msgstr "fil"
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3725
+msgid "Untitled File"
+msgstr ""
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3739
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3753
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2859,11 +2903,12 @@ msgstr ""
 "filterindstillinger for at gøre filen synlig"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3770
-msgid "directory"
-msgstr "mappe"
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3784
+#, fuzzy
+msgid "Untitled Folder"
+msgstr "_Vis mappe"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3795
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3809
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -2871,131 +2916,21 @@ msgstr ""
 "Den nye mappe er på nuværende tidspunkt filtreret fra. Du skal ændre dine "
 "filterindstillinger for at gøre mappen synlig"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:733
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:757
 msgid "Bookmarks"
 msgstr "Bogmærker"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:821
-msgid "_Filter"
-msgstr "_Filter"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:826
-msgid "_Move to Trash"
-msgstr "_Flyt til papirkurv"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:827
-msgid "Move selected file or folder to trash"
-msgstr "Flyt den valgte fil eller mappe til papirkurven"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:829
-msgid "_Delete"
-msgstr "_Slet"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:830
-msgid "Delete selected file or folder"
-msgstr "Slet den valgte fil eller mappe"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:837
-msgid "Open selected file"
-msgstr "Åbn den valgte fil"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:843
-msgid "Up"
-msgstr "Op"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:844
-msgid "Open the parent folder"
-msgstr "Åben den underliggende mappe"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:849
-msgid "_New Folder"
-msgstr "Ny _mappe"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:850
-msgid "Add new empty folder"
-msgstr "Tilføj ny tom mappe"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:852
-msgid "New F_ile"
-msgstr "Ny F_il"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:853
-msgid "Add new empty file"
-msgstr "Tilføj ny tom fil"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:858
-msgid "_Rename"
-msgstr "_Omdøb"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:859
-msgid "Rename selected file or folder"
-msgstr "Omdøb den valgte fil eller mappe"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:865
-msgid "_Previous Location"
-msgstr "_Forrige sted"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:867
-msgid "Go to the previous visited location"
-msgstr "Gå til det sidst besøgte sted"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:869
-msgid "_Next Location"
-msgstr "_Næste sted"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:870
-msgid "Go to the next visited location"
-msgstr "Gå til det næste besøgte sted"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:871
-msgid "Re_fresh View"
-msgstr "Op_datér visningen"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:872
-msgid "Refresh the view"
-msgstr "Opdatér visningen"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:873
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:891
-msgid "_View Folder"
-msgstr "_Vis mappe"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:874
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:892
-msgid "View folder in file manager"
-msgstr "Vis mappe i filvælgeren"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:881
-msgid "Show _Hidden"
-msgstr "Vis s_kjulte"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:882
-msgid "Show hidden files and folders"
-msgstr "Vis skjulte filer og mapper"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:884
-msgid "Show _Binary"
-msgstr "Vis _binære filer"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:885
-msgid "Show binary files"
-msgstr "Vis binære filer"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1202
-msgid "Match Filename"
-msgstr "Match filnavn"
-
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2004
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1828
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Intet monteringsobjekt for den monterede dataenhed: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2081
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1905
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Kunne ikke åbne mediet: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2128
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1952
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Kunne ikke åbne dataenhed: %s"
@@ -3141,7 +3076,8 @@ msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktiv Python-konsol i bundpanelet"
 
 #: ../plugins/quickopen/quickopen/__init__.py:71
-msgid "Quick open"
+#, fuzzy
+msgid "Quick Open..."
 msgstr "Hurtig åbning"
 
 #: ../plugins/quickopen/quickopen/__init__.py:72
@@ -3158,7 +3094,7 @@ msgstr "Hurtig åbning"
 msgid "Quickly open files"
 msgstr "Åbn filer hurtigt"
 
-#: ../plugins/quickopen/quickopen/popup.py:73
+#: ../plugins/quickopen/quickopen/popup.py:77
 msgid "Type to search..."
 msgstr "Skriv for at søge..."
 
@@ -3219,25 +3155,25 @@ msgstr "Filen \"%s\" er ikke et gyldigt tekststump-arkiv"
 msgid "Snippets archive"
 msgstr "Tekststump-arkiv"
 
-#: ../plugins/snippets/snippets/manager.py:63
+#: ../plugins/snippets/snippets/manager.py:67
 msgid "Add a new snippet..."
 msgstr "Tilføj en ny tekststump..."
 
-#: ../plugins/snippets/snippets/manager.py:115
+#: ../plugins/snippets/snippets/manager.py:119
 msgid "Global"
 msgstr "Global"
 
-#: ../plugins/snippets/snippets/manager.py:399
+#: ../plugins/snippets/snippets/manager.py:410
 msgid "Revert selected snippet"
 msgstr "Gendan den markerede tekststump"
 
-#: ../plugins/snippets/snippets/manager.py:402
+#: ../plugins/snippets/snippets/manager.py:413
 #: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Delete selected snippet"
 msgstr "Slet den markerede tekststump"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:661
+#: ../plugins/snippets/snippets/manager.py:672
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3248,85 +3184,85 @@ msgstr ""
 "tegn såsom: {, [ osv."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:668
+#: ../plugins/snippets/snippets/manager.py:679
 #: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Et enkelt ord hvormed tekststumpen aktiveres, når der trykkes tab"
 
-#: ../plugins/snippets/snippets/manager.py:757
+#: ../plugins/snippets/snippets/manager.py:768
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Den følgende fejl opstod under import: %s"
 
-#: ../plugins/snippets/snippets/manager.py:764
+#: ../plugins/snippets/snippets/manager.py:775
 msgid "Import successfully completed"
 msgstr "Importering fuldført problemfrit"
 
-#: ../plugins/snippets/snippets/manager.py:778
+#: ../plugins/snippets/snippets/manager.py:789
 #: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr "Importér tekststumper"
 
-#: ../plugins/snippets/snippets/manager.py:783
-#: ../plugins/snippets/snippets/manager.py:869
-#: ../plugins/snippets/snippets/manager.py:932
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "All supported archives"
 msgstr "Alle understøttede arkiver"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:795
+#: ../plugins/snippets/snippets/manager.py:881
+#: ../plugins/snippets/snippets/manager.py:944
 msgid "Gzip compressed archive"
 msgstr "Gzip-komprimeret arkiv"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "Bzip2 compressed archive"
 msgstr "Bzip2-komprimeret arkiv"
 
-#: ../plugins/snippets/snippets/manager.py:786
+#: ../plugins/snippets/snippets/manager.py:797
 msgid "Single snippets file"
 msgstr "Enkelt tekststumpfil"
 
-#: ../plugins/snippets/snippets/manager.py:787
-#: ../plugins/snippets/snippets/manager.py:873
-#: ../plugins/snippets/snippets/manager.py:936
+#: ../plugins/snippets/snippets/manager.py:798
+#: ../plugins/snippets/snippets/manager.py:884
+#: ../plugins/snippets/snippets/manager.py:947
 msgid "All files"
 msgstr "Alle filer"
 
-#: ../plugins/snippets/snippets/manager.py:799
+#: ../plugins/snippets/snippets/manager.py:810
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Følgende fejl opstod under eksport: %s"
 
-#: ../plugins/snippets/snippets/manager.py:803
+#: ../plugins/snippets/snippets/manager.py:814
 msgid "Export successfully completed"
 msgstr "Eksportering fuldført problemfrit"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:843
-#: ../plugins/snippets/snippets/manager.py:910
+#: ../plugins/snippets/snippets/manager.py:854
+#: ../plugins/snippets/snippets/manager.py:921
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "Ønsker du at inkludere markerede <b>system</b>-tekststumper i din eksport?"
 
-#: ../plugins/snippets/snippets/manager.py:858
-#: ../plugins/snippets/snippets/manager.py:928
+#: ../plugins/snippets/snippets/manager.py:869
+#: ../plugins/snippets/snippets/manager.py:939
 msgid "There are no snippets selected to be exported"
 msgstr "Ingen tekststumper er markeret til eksport"
 
-#: ../plugins/snippets/snippets/manager.py:863
-#: ../plugins/snippets/snippets/manager.py:901
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 msgid "Export snippets"
 msgstr "Eksportér tekststumper"
 
-#: ../plugins/snippets/snippets/manager.py:1042
+#: ../plugins/snippets/snippets/manager.py:1053
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
 "Indtast en ny genvej eller tryk på \"slet tilbage\"-knappen for at rydde"
 
-#: ../plugins/snippets/snippets/manager.py:1044
+#: ../plugins/snippets/snippets/manager.py:1055
 msgid "Type a new shortcut"
 msgstr "Indtast en ny genvej"
 
@@ -3523,9 +3459,7 @@ msgctxt "language"
 msgid "Default"
 msgstr "Forvalgt"
 
-#. ex:ts=8:noet:
 #: ../plugins/spell/gedit-spell-language-dialog.c:140
-#: ../plugins/spell/languages-dialog.ui.h:1
 msgid "Set language"
 msgstr "Vælg sprog"
 
@@ -3564,6 +3498,12 @@ msgstr "Dokumentet er tomt."
 #: ../plugins/spell/gedit-spell-plugin.c:835
 msgid "No misspelled words"
 msgstr "Ingen forkert stavede ord"
+
+#. ex:ts=8:noet:
+#: ../plugins/spell/languages-dialog.ui.h:1
+#, fuzzy
+msgid "Set Language"
+msgstr "Vælg sprog"
 
 #: ../plugins/spell/languages-dialog.ui.h:2
 msgid "Select the _language of the current document."
@@ -3736,6 +3676,84 @@ msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Logger tilgangs- og forlad-begivenheder for dokumenter, der redigeres med "
 "gedit"
+
+#~ msgid "Open Files"
+#~ msgstr "Åbn filer"
+
+#~ msgid "Character Encodings"
+#~ msgstr "Tegnkodninger"
+
+#~ msgid "Preferences"
+#~ msgstr "Indstillinger"
+
+#~ msgid "Replace All"
+#~ msgstr "Erstat alle"
+
+#~ msgid "Set the root to the active document location"
+#~ msgstr "Sæt roden til stedet hvor det aktive dokument findes"
+
+#~ msgid "Open a terminal at the currently opened directory"
+#~ msgstr "Åben en terminal i den mappe som er åben nu"
+
+#~ msgid "file"
+#~ msgstr "fil"
+
+#~ msgid "directory"
+#~ msgstr "mappe"
+
+#~ msgid "Move selected file or folder to trash"
+#~ msgstr "Flyt den valgte fil eller mappe til papirkurven"
+
+#~ msgid "Delete selected file or folder"
+#~ msgstr "Slet den valgte fil eller mappe"
+
+#~ msgid "Open selected file"
+#~ msgstr "Åbn den valgte fil"
+
+#~ msgid "Up"
+#~ msgstr "Op"
+
+#~ msgid "Open the parent folder"
+#~ msgstr "Åben den underliggende mappe"
+
+#~ msgid "Add new empty folder"
+#~ msgstr "Tilføj ny tom mappe"
+
+#~ msgid "Add new empty file"
+#~ msgstr "Tilføj ny tom fil"
+
+#~ msgid "Rename selected file or folder"
+#~ msgstr "Omdøb den valgte fil eller mappe"
+
+#~ msgid "_Previous Location"
+#~ msgstr "_Forrige sted"
+
+#~ msgid "Go to the previous visited location"
+#~ msgstr "Gå til det sidst besøgte sted"
+
+#~ msgid "_Next Location"
+#~ msgstr "_Næste sted"
+
+#~ msgid "Go to the next visited location"
+#~ msgstr "Gå til det næste besøgte sted"
+
+#~ msgid "Refresh the view"
+#~ msgstr "Opdatér visningen"
+
+#~ msgid "View folder in file manager"
+#~ msgstr "Vis mappe i filvælgeren"
+
+#~ msgid "Show hidden files and folders"
+#~ msgstr "Vis skjulte filer og mapper"
+
+#~ msgid "Show binary files"
+#~ msgstr "Vis binære filer"
+
+#~ msgid "Match Filename"
+#~ msgstr "Match filnavn"
+
+#~ msgid "Quick open"
+#~ msgstr "Hurtig åbning"
 
 #~ msgid "Text"
 #~ msgstr "Tekst"
@@ -4029,9 +4047,6 @@ msgstr ""
 
 #~ msgid "Column span"
 #~ msgstr "Kolonnespænd"
-
-#~ msgid "Columns"
-#~ msgstr "Kolonner"
 
 #~ msgid "Comment"
 #~ msgstr "Kommentar"
