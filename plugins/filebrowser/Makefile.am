@@ -103,7 +103,8 @@ EXTRA_DIST = \
 	gedit-file-browser-enum-register.c.template	\
 	gedit-file-browser-marshal.list			\
 	org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in \
-	gedit-file-browser-widget-ui.xml
+	gedit-file-browser-menus.ui			\
+	gedit-file-browser-widget.ui
 
 CLEANFILES = \
 	$(plugin_DATA)		\
