@@ -58,6 +58,11 @@ GType gedit_status_menu_button_get_type 	(void) G_GNUC_CONST;
 
 GtkWidget *gedit_status_menu_button_new		(void);
 
+void gedit_status_menu_button_set_label		(GeditStatusMenuButton *button,
+						 const gchar           *label);
+
+const gchar *gedit_status_menu_button_get_label (GeditStatusMenuButton *button);
+
 G_END_DECLS
 
 #endif /* __GEDIT_STATUS_MENU_BUTTON_H__ */

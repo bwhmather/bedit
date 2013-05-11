@@ -49,19 +49,6 @@ gedit_status_menu_button_finalize (GObject *object)
 }
 
 static void
-gedit_status_menu_button_set_label (GeditStatusMenuButton *button,
-				    const gchar         *label)
-{
-	gtk_label_set_markup (GTK_LABEL (button->priv->label), label);
-}
-
-static const gchar *
-gedit_status_menu_button_get_label (GeditStatusMenuButton *button)
-{
-	return gtk_label_get_label (GTK_LABEL (button->priv->label));
-}
-
-static void
 gedit_status_menu_button_get_property (GObject    *object,
 				       guint       prop_id,
 				       GValue     *value,
@@ -157,6 +144,22 @@ GtkWidget *
 gedit_status_menu_button_new (void)
 {
 	return g_object_new (GEDIT_TYPE_STATUS_MENU_BUTTON, NULL);
+}
+
+/* we cannot rely on gtk_button_set_label since it manually replaces
+ * the internal child instead of just setting the property :( */
+
+void
+gedit_status_menu_button_set_label (GeditStatusMenuButton *button,
+				    const gchar         *label)
+{
+	gtk_label_set_markup (GTK_LABEL (button->priv->label), label);
+}
+
+const gchar *
+gedit_status_menu_button_get_label (GeditStatusMenuButton *button)
+{
+	return gtk_label_get_label (GTK_LABEL (button->priv->label));
 }
 
 /* ex:set ts=8 noet: */

@@ -2438,7 +2438,7 @@ tab_width_changed (GObject     *object,
 	new_tab_width = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (object));
 
 	label = g_strdup_printf (_("Tab Width: %u"), new_tab_width);
-	gtk_button_set_label (GTK_BUTTON (window->priv->tab_width_combo), label);
+	gedit_status_menu_button_set_label (GEDIT_STATUS_MENU_BUTTON (window->priv->tab_width_combo), label);
 	g_free (label);
 
 	for (item = items; item; item = item->next)
@@ -2487,7 +2487,7 @@ language_changed (GObject     *object,
 	else
 		label = _("Plain Text");
 
-	gtk_button_set_label (GTK_BUTTON (window->priv->language_combo), label);
+	gedit_status_menu_button_set_label (GEDIT_STATUS_MENU_BUTTON (window->priv->language_combo), label);
 }
 
 static void
