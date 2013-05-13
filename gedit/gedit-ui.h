@@ -101,7 +101,9 @@ static const GtkActionEntry gedit_menu_entries[] =
 	  N_("Select the entire document"), G_CALLBACK (_gedit_cmd_edit_select_all) },
 
 	/* View menu */
-	{ "ViewHighlightMode", NULL, N_("_Highlight Mode") },
+	{ "ViewHighlightMode", NULL, N_("_Highlight Mode"), NULL,
+	  N_("Changes the highlight mode of the active document"),
+	  G_CALLBACK (_gedit_cmd_view_highlight_mode) },
 
 	/* Search menu */
 	{ "SearchFind", GTK_STOCK_FIND, N_("_Find..."), "<control>F",

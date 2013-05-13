@@ -103,6 +103,7 @@ NOINST_H_FILES =			\
 	gedit-documents-panel.h		\
 	gedit-encodings-dialog.h	\
 	gedit-file-chooser-dialog.h	\
+	gedit-highlight-mode-dialog.h	\
 	gedit-history-entry.h		\
 	gedit-io-error-info-bar.h	\
 	gedit-multi-notebook.h		\
@@ -184,6 +185,7 @@ libgedit_c_files =			\
 	gedit-encodings-combo-box.c	\
 	gedit-encodings-dialog.c	\
 	gedit-file-chooser-dialog.c	\
+	gedit-highlight-mode-dialog.c	\
 	gedit-history-entry.c		\
 	gedit-io-error-info-bar.c	\
 	gedit-message-bus.c		\
@@ -262,7 +264,8 @@ EXTRA_DIST = 				\
 	gedit-print-preferences.ui	\
 	gedit-progress-info-bar.ui	\
 	gedit-status-menu-button.ui	\
-	gedit-view-frame.ui
+	gedit-view-frame.ui		\
+	gedit-highlight-mode-dialog.ui
 
 CLEANFILES = $(BUILT_SOURCES) $(BUILT_SOURCES_PRIVATE)
 

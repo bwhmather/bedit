@@ -40,6 +40,7 @@
 #include "gedit-debug.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
+#include "gedit-highlight-mode-dialog.h"
 
 
 void
@@ -137,6 +138,34 @@ _gedit_cmd_view_leave_fullscreen_mode (GtkAction   *action,
 	g_signal_handlers_unblock_by_func (view_action,
 					   G_CALLBACK (_gedit_cmd_view_toggle_fullscreen_mode),
 					   window);
+}
+
+static void
+on_language_selected (GeditHighlightModeDialog *dlg,
+                      GtkSourceLanguage *language,
+                      GeditWindow *window)
+{
+	GeditDocument *doc;
+
+	doc = gedit_window_get_active_document (window);
+
+	if (!doc)
+		return;
+
+	gedit_document_set_language (doc, language);
+}
+
+void
+_gedit_cmd_view_highlight_mode (GtkAction   *action,
+                                GeditWindow *window)
+{
+	GtkWidget *dlg;
+
+	dlg = gedit_highlight_mode_dialog_new (GTK_WINDOW (window));
+	g_signal_connect (dlg, "language-selected",
+	                  G_CALLBACK (on_language_selected), window);
+
+	gtk_widget_show (GTK_WIDGET (dlg));
 }
 
 /* ex:set ts=8 noet: */
