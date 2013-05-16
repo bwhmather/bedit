@@ -1,4 +1,5 @@
 <page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
       xmlns:e="http://projectmallard.org/experimental/"
       type="guide" style="2column task"
       id="index">
@@ -10,11 +11,11 @@
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email its:translate="no">jwcampbell@gmail.com</email>
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email>sindhus@live.in</email>
+      <email its:translate="no">sindhus@live.in</email>
     </credit>
 
    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude" /> 
@@ -22,8 +23,7 @@
   </info>
   
   <title>
-    <media type="image" mime="image/png" src="figures/gedit-icon.png">
-    </media>
+    <media type="image" mime="image/png" src="figures/gedit-icon.png" its:translate="no" />
     gedit Text Editor
   </title>
   <p>Welcome to the <app>gedit</app> help guide. For a quick introduction into

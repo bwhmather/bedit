@@ -1,4 +1,5 @@
 <page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
       type="topic" style="task"
       id="gedit-plugins-file-browser">
 
@@ -7,11 +8,11 @@
   <revision pkgversion="3.8" date="2011-08-17" status="review"/>
   <credit type="author">
     <name>Daniel Neel</name>
-    <email>dneelyep@gmail.com</email>
+    <email its:translate="no">dneelyep@gmail.com</email>
   </credit>
   <credit type="author">
     <name>Jim Campbell</name>
-    <email>jwcampbell@gmail.com</email>
+    <email its:translate="no">jwcampbell@gmail.com</email>
   </credit>
   <desc>Use the side pane to browse and open files</desc>
 </info>
@@ -36,9 +37,7 @@
       bottom of the pane.
     </p>
 
-    <p>
-      <media type="image" mime="image/png" src="figures/gedit-side-pane1.png"/>
-    </p>
+    <media type="image" mime="image/png" src="figures/gedit-side-pane1.png" its:translate="no" />
 
     <p>
       This will activate the <em>file-browser</em> mode of the
