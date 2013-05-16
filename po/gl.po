@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit-master-po-gl-116402.merged\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-24 09:56+0200\n"
-"PO-Revision-Date: 2013-04-24 10:31+0200\n"
+"POT-Creation-Date: 2013-05-16 03:36+0200\n"
+"PO-Revision-Date: 2013-05-16 03:36+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -739,10 +739,10 @@ msgid_plural "Loading %d files…"
 msgstr[0] "Cargando %d ficheiro…"
 msgstr[1] "Cargando %d ficheiros…"
 
-#. Translators: "Open Files" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442
-msgid "Open Files"
-msgstr "Abrir ficheiros"
+#. Translators: "Open" is the title of the file chooser window
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1476
+msgid "Open"
+msgstr "Abrir"
 
 #: ../gedit/gedit-commands-file.c:553
 #, c-format
@@ -753,7 +753,7 @@ msgstr "O ficheiro \"%s\" é só de lectura."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Quere tentar substituílo co que está gardando agora?"
 
-#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.ui.h:3
 msgid "_Replace"
 msgstr "_Substituír"
 
@@ -938,11 +938,11 @@ msgid "Unsaved Document %d"
 msgstr "Documento non gardado %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2387 ../gedit/gedit-window.c:2394
+#: ../gedit/gedit-window.c:2389 ../gedit/gedit-window.c:2396
 msgid "Read-Only"
 msgstr "Só de lectura"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3834
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3772
 msgid "Documents"
 msgstr "Documentos"
 
@@ -1062,31 +1062,19 @@ msgstr "Tailandés"
 msgid "Unknown"
 msgstr "Descoñecido"
 
-#: ../gedit/gedit-encodings-combo-box.c:301
+#: ../gedit/gedit-encodings-combo-box.c:299
 msgid "Automatically Detected"
 msgstr "Autodetectada"
 
-#: ../gedit/gedit-encodings-combo-box.c:320
-#: ../gedit/gedit-encodings-combo-box.c:336
+#: ../gedit/gedit-encodings-combo-box.c:318
+#: ../gedit/gedit-encodings-combo-box.c:334
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Configuración rexional actual (%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:388
+#: ../gedit/gedit-encodings-combo-box.c:386
 msgid "Add or Remove..."
 msgstr "Engadir ou e_liminar…"
-
-#: ../gedit/gedit-encodings-dialog.c:345
-msgid "Character Encodings"
-msgstr "Codificacións de caracteres"
-
-#: ../gedit/gedit-encodings-dialog.c:395 ../gedit/gedit-encodings-dialog.c:456
-msgid "_Description"
-msgstr "_Descrición"
-
-#: ../gedit/gedit-encodings-dialog.c:404 ../gedit/gedit-encodings-dialog.c:465
-msgid "_Encoding"
-msgstr "_Codificación"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-encodings-dialog.ui.h:1
@@ -1098,11 +1086,19 @@ msgid "A_vailable encodings:"
 msgstr "Codificacións _dispoñíbeis:"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:3
+msgid "_Description"
+msgstr "_Descrición"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:4
+msgid "_Encoding"
+msgstr "_Codificación"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:5
 msgid "E_ncodings shown in menu:"
 msgstr "Codi_ficacións mostradas no menú:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:52
-#: ../gedit/gedit-preferences-dialog.c:911
+#: ../gedit/gedit-preferences-dialog.c:917
 msgid "All Files"
 msgstr "Todos os ficheiros"
 
@@ -1521,15 +1517,15 @@ msgstr "Gardar _como…"
 msgid "_Print..."
 msgstr "_Imprimir…"
 
-#: ../gedit/gedit-open-tool-button.c:85 ../gedit/gedit-ui.h:55
+#: ../gedit/gedit-open-tool-button.c:122 ../gedit/gedit-ui.h:55
 msgid "Open a file"
 msgstr "Abrir un ficheiro"
 
-#: ../gedit/gedit-open-tool-button.c:87
+#: ../gedit/gedit-open-tool-button.c:124
 msgid "Open a recently used file"
 msgstr "Abrir un ficheiro usado recentemente"
 
-#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:587
+#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:590
 msgid "Empty"
 msgstr "Baleiro"
 
@@ -1537,50 +1533,46 @@ msgstr "Baleiro"
 msgid "Hide panel"
 msgstr "Ocultar o panel"
 
-#: ../gedit/gedit-preferences-dialog.c:425
+#: ../gedit/gedit-preferences-dialog.c:431
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Prema este botón para seleccionar o tipo de letra utilizado no editor"
 
-#: ../gedit/gedit-preferences-dialog.c:440
+#: ../gedit/gedit-preferences-dialog.c:446
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "_Usar o tipo de letra de largura fixa do sistema (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:678
+#: ../gedit/gedit-preferences-dialog.c:684
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Non foi posíbel crear o cartafol '%s': fallou g_mkdir_with_parents(): %s"
 
-#: ../gedit/gedit-preferences-dialog.c:862
+#: ../gedit/gedit-preferences-dialog.c:868
 msgid "The selected color scheme cannot be installed."
 msgstr "Non é posíbel instalar o esquema de cores seleccionado."
 
-#: ../gedit/gedit-preferences-dialog.c:889
+#: ../gedit/gedit-preferences-dialog.c:895
 msgid "Add Scheme"
 msgstr "Engadir esquema"
 
-#: ../gedit/gedit-preferences-dialog.c:896
+#: ../gedit/gedit-preferences-dialog.c:902
 msgid "A_dd Scheme"
 msgstr "_Engadir esquema"
 
-#: ../gedit/gedit-preferences-dialog.c:904
+#: ../gedit/gedit-preferences-dialog.c:910
 msgid "Color Scheme Files"
 msgstr "Ficheiros de esquema de cores"
 
-#: ../gedit/gedit-preferences-dialog.c:956
+#: ../gedit/gedit-preferences-dialog.c:962
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Non foi posíbel eliminar o esquema de cor \"%s\"."
 
-#: ../gedit/gedit-preferences-dialog.c:1157
-msgid "gedit Preferences"
-msgstr "Preferencias do gedit"
-
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-preferences-dialog.ui.h:1
-msgid "Preferences"
-msgstr "Preferencias"
+msgid "gedit Preferences"
+msgstr "Preferencias do gedit"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:569
 msgid "_Display line numbers"
@@ -1771,107 +1763,111 @@ msgstr "C_abeceiras e pés de páxina:"
 msgid "_Restore Default Fonts"
 msgstr "_Restaurar os tipos de letra predeterminados"
 
-#: ../gedit/gedit-print-preview.c:562
-msgid "Show the previous page"
-msgstr "Mostrar a páxina anterior"
-
-#: ../gedit/gedit-print-preview.c:574
-msgid "Show the next page"
-msgstr "Mostrar a páxina seguinte"
-
-#: ../gedit/gedit-print-preview.c:590
-msgid "Current page (Alt+P)"
-msgstr "Páxina actual (Alt+P)"
-
-#. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:613
-msgid "of"
-msgstr "de"
-
-#: ../gedit/gedit-print-preview.c:621
-msgid "Page total"
-msgstr "Total de páxinas"
-
-#: ../gedit/gedit-print-preview.c:622
-msgid "The total number of pages in the document"
-msgstr "O número total de páxinas do documento"
-
-#: ../gedit/gedit-print-preview.c:639
-msgid "Show multiple pages"
-msgstr "Mostrar múltiples páxinas"
-
-#: ../gedit/gedit-print-preview.c:652
-msgid "Zoom 1:1"
-msgstr "Ampliación 1:1"
-
-#: ../gedit/gedit-print-preview.c:661
-msgid "Zoom to fit the whole page"
-msgstr "Ampliar até encaixar a páxina completa"
-
-#: ../gedit/gedit-print-preview.c:670
-msgid "Zoom the page in"
-msgstr "Ampliar a páxina"
-
-#: ../gedit/gedit-print-preview.c:679
-msgid "Zoom the page out"
-msgstr "Reducir a páxina"
-
-#: ../gedit/gedit-print-preview.c:691
-msgid "_Close Preview"
-msgstr "Pe_char a previsualización"
-
-#: ../gedit/gedit-print-preview.c:694
-msgid "Close print preview"
-msgstr "Pechar a previsualización de impresión"
-
-#: ../gedit/gedit-print-preview.c:763
+#: ../gedit/gedit-print-preview.c:616
 #, c-format
 msgid "Page %d of %d"
 msgstr "Páxina %d de %d"
 
-#: ../gedit/gedit-print-preview.c:947
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-print-preview.ui.h:1
+msgid "Show the previous page"
+msgstr "Mostrar a páxina anterior"
+
+#: ../gedit/gedit-print-preview.ui.h:2
+msgid "P_revious Page"
+msgstr "Páxina _anterior"
+
+#: ../gedit/gedit-print-preview.ui.h:3
+msgid "Show the next page"
+msgstr "Mostrar a páxina seguinte"
+
+#: ../gedit/gedit-print-preview.ui.h:4
+msgid "_Next Page"
+msgstr "Páxina _seguinte"
+
+#: ../gedit/gedit-print-preview.ui.h:5
+msgid "Current page (Alt+P)"
+msgstr "Páxina actual (Alt+P)"
+
+#. the "of" from "1 of 19" in print preview
+#: ../gedit/gedit-print-preview.ui.h:7
+msgid "of"
+msgstr "de"
+
+#: ../gedit/gedit-print-preview.ui.h:8
+msgid "Page total"
+msgstr "Total de páxinas"
+
+#: ../gedit/gedit-print-preview.ui.h:9
+msgid "The total number of pages in the document"
+msgstr "O número total de páxinas do documento"
+
+#: ../gedit/gedit-print-preview.ui.h:10
+msgid "Show multiple pages"
+msgstr "Mostrar múltiples páxinas"
+
+#: ../gedit/gedit-print-preview.ui.h:11
+msgid "Zoom 1:1"
+msgstr "Ampliación 1:1"
+
+#: ../gedit/gedit-print-preview.ui.h:12
+msgid "Zoom to fit the whole page"
+msgstr "Ampliar até encaixar a páxina completa"
+
+#: ../gedit/gedit-print-preview.ui.h:13
+msgid "Zoom the page in"
+msgstr "Ampliar a páxina"
+
+#: ../gedit/gedit-print-preview.ui.h:14
+msgid "Zoom the page out"
+msgstr "Reducir a páxina"
+
+#: ../gedit/gedit-print-preview.ui.h:15
+msgid "Close print preview"
+msgstr "Pechar a previsualización de impresión"
+
+#: ../gedit/gedit-print-preview.ui.h:16
+msgid "_Close Preview"
+msgstr "Pe_char a previsualización"
+
+#: ../gedit/gedit-print-preview.ui.h:17
 msgid "Page Preview"
 msgstr "Previsualización da páxina"
 
-#: ../gedit/gedit-print-preview.c:948
+#: ../gedit/gedit-print-preview.ui.h:18
 msgid "The preview of a page in the document to be printed"
 msgstr "Previsualización dunha páxina no documento que se vai imprimir"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1532
+#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1537
 msgid "Replace"
 msgstr "Substituír"
 
-#: ../gedit/gedit-replace-dialog.c:282
+#: ../gedit/gedit-replace-dialog.ui.h:2
 msgid "Replace _All"
 msgstr "Substituír _todo"
 
-#: ../gedit/gedit-replace-dialog.ui.h:2
-msgid "Replace All"
-msgstr "Substituír todo"
-
-#: ../gedit/gedit-replace-dialog.ui.h:3
+#: ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Search for: "
 msgstr "_Buscar por: "
 
-#: ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-replace-dialog.ui.h:5
 msgid "Replace _with: "
 msgstr "Substituír _con: "
 
-#: ../gedit/gedit-replace-dialog.ui.h:5
+#: ../gedit/gedit-replace-dialog.ui.h:6
 msgid "_Match case"
 msgstr "_Diferenciar maiúsculas de minúsculas"
 
-#: ../gedit/gedit-replace-dialog.ui.h:6
+#: ../gedit/gedit-replace-dialog.ui.h:7
 msgid "Match _entire word only"
 msgstr "Coincidir só coa palabra com_pleta"
 
-#: ../gedit/gedit-replace-dialog.ui.h:7
+#: ../gedit/gedit-replace-dialog.ui.h:8
 msgid "Search _backwards"
 msgstr "Buscar cara a _atrás"
 
-#: ../gedit/gedit-replace-dialog.ui.h:8
+#: ../gedit/gedit-replace-dialog.ui.h:9
 msgid "_Wrap around"
 msgstr "Dar a _volta"
 
@@ -2270,25 +2266,25 @@ msgid "/ on %s"
 msgstr "/ en %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:537
+#: ../gedit/gedit-view-frame.c:535
 msgid "_Wrap Around"
 msgstr "_Dar a volta"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:547
+#: ../gedit/gedit-view-frame.c:545
 msgid "Match _Entire Word Only"
 msgstr "Coincidir só coa palabra com_pleta"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:557
+#: ../gedit/gedit-view-frame.c:555
 msgid "_Match Case"
 msgstr "Di_ferenciar maiúsculas de minúsculas"
 
-#: ../gedit/gedit-view-frame.c:754
+#: ../gedit/gedit-view-frame.c:752
 msgid "String you want to search for"
 msgstr "A cadea que quere buscar"
 
-#: ../gedit/gedit-view-frame.c:764
+#: ../gedit/gedit-view-frame.c:762
 msgid "Line you want to move the cursor to"
 msgstr "A liña á que quere mover o cursor"
 
@@ -2300,8 +2296,8 @@ msgstr "Usar o modo de realce %s"
 #. add the "Plain Text" item before all the others
 #. Translators: "Plain Text" means that no highlight mode is selected in the
 #. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1051 ../gedit/gedit-window.c:2078
-#: ../plugins/externaltools/tools/manager.py:146
+#: ../gedit/gedit-window.c:1051 ../gedit/gedit-window.c:2100
+#: ../gedit/gedit-window.c:2488 ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:462
 #: ../plugins/externaltools/tools/manager.py:578
 #: ../plugins/externaltools/tools/manager.py:902
@@ -2318,50 +2314,47 @@ msgstr "Desactivar o realce de sintaxe"
 msgid "Open '%s'"
 msgstr "Abrir '%s'"
 
-#: ../gedit/gedit-window.c:1471
-msgid "Open"
-msgstr "Abrir"
-
-#: ../gedit/gedit-window.c:1526
+#: ../gedit/gedit-window.c:1531
 msgid "Save"
 msgstr "Gardar"
 
-#: ../gedit/gedit-window.c:1528
+#: ../gedit/gedit-window.c:1533
 msgid "Print"
 msgstr "Imprimir"
 
-#: ../gedit/gedit-window.c:1530
+#: ../gedit/gedit-window.c:1535
 msgid "Find"
 msgstr "Buscar"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1702
+#: ../gedit/gedit-window.c:1707
 #, c-format
 msgid "Activate '%s'"
 msgstr "Activar '%s'"
 
-#: ../gedit/gedit-window.c:2059
+#: ../gedit/gedit-window.c:2053
 msgid "Use Spaces"
 msgstr "Usar espazos"
 
-#: ../gedit/gedit-window.c:2135
-msgid "Tab Width"
-msgstr "Largura da tabulación"
-
-#: ../gedit/gedit-window.c:2244
+#: ../gedit/gedit-window.c:2246
 msgid "Bracket match is out of range"
 msgstr "O corchete de coincidencia está fora de rango"
 
-#: ../gedit/gedit-window.c:2249
+#: ../gedit/gedit-window.c:2251
 msgid "Bracket match not found"
 msgstr "Non se encontrou o corchete coincidente"
 
-#: ../gedit/gedit-window.c:2254
+#: ../gedit/gedit-window.c:2256
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Corchete coincidente encontrado na liña: %d"
 
-#: ../gedit/gedit-window.c:2859
+#: ../gedit/gedit-window.c:2440
+#, c-format
+msgid "Tab Width: %u"
+msgstr "Largura da tabulación: %u"
+
+#: ../gedit/gedit-window.c:2798
 msgid "There are unsaved documents"
 msgstr "Hai documentos sen gardar"
 
@@ -2461,12 +2454,8 @@ msgid "Document Statistics"
 msgstr "Estatísticas do documento"
 
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
-msgid ""
-"Analyzes the current document and reports the number of words, lines, "
-"characters and non-space characters in it."
-msgstr ""
-"Analiza o documento actual e informa do número de palabras, liñas, "
-"caracteres e caracteres que non son espazos nel."
+msgid "Report the number of words, lines and characters in a document."
+msgstr "Informa do número de palabras, liñas e caracteres nun documento."
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:427
 msgid "_Document Statistics"
@@ -2586,19 +2575,19 @@ msgstr ""
 msgid "Could not execute command: %s"
 msgstr "Non foi posíbel executar a orde: %s"
 
-#: ../plugins/externaltools/tools/functions.py:157
+#: ../plugins/externaltools/tools/functions.py:175
 msgid "You must be inside a word to run this command"
 msgstr "Debe introducir unha palabra para executar esta orde"
 
-#: ../plugins/externaltools/tools/functions.py:263
+#: ../plugins/externaltools/tools/functions.py:281
 msgid "Running tool:"
 msgstr "Ferramenta en execución:"
 
-#: ../plugins/externaltools/tools/functions.py:292
+#: ../plugins/externaltools/tools/functions.py:310
 msgid "Done."
 msgstr "Feito."
 
-#: ../plugins/externaltools/tools/functions.py:294
+#: ../plugins/externaltools/tools/functions.py:312
 msgid "Exited"
 msgstr "Saíu"
 
@@ -2635,6 +2624,10 @@ msgid "Stopped."
 msgstr "Detido."
 
 #. ex:ts=4:et:
+#: ../plugins/externaltools/tools/outputpanel.ui.h:1
+msgid "Stop Tool"
+msgstr "Deter ferramenta"
+
 #: ../plugins/externaltools/tools/tools.ui.h:1
 msgid "All documents"
 msgstr "Todos os documentos"
@@ -3491,9 +3484,7 @@ msgctxt "language"
 msgid "Default"
 msgstr "predeterminado"
 
-#. ex:ts=8:noet:
 #: ../plugins/spell/gedit-spell-language-dialog.c:140
-#: ../plugins/spell/languages-dialog.ui.h:1
 msgid "Set language"
 msgstr "Definir o idioma"
 
@@ -3532,6 +3523,11 @@ msgstr "O documento está baleiro."
 #: ../plugins/spell/gedit-spell-plugin.c:835
 msgid "No misspelled words"
 msgstr "Non hai palabras con erros ortográficos"
+
+#. ex:ts=8:noet:
+#: ../plugins/spell/languages-dialog.ui.h:1
+msgid "Set Language"
+msgstr "Definir o idioma"
 
 #: ../plugins/spell/languages-dialog.ui.h:2
 msgid "Select the _language of the current document."
@@ -3700,6 +3696,18 @@ msgstr "Fornecedor de datos Zeitgeist"
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
 msgstr "Rexistra o acceso e saída dos documentos usados en gedit"
+
+#~ msgid "Open Files"
+#~ msgstr "Abrir ficheiros"
+
+#~ msgid "Character Encodings"
+#~ msgstr "Codificacións de caracteres"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferencias"
+
+#~ msgid "Replace All"
+#~ msgstr "Substituír todo"
 
 #~ msgid "Set the root to the active document location"
 #~ msgstr "Estabelecer a raíz para a localización do documento activo"
