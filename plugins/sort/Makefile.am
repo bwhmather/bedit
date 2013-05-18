@@ -1,7 +1,6 @@
-# sort plugin
 plugindir = $(GEDIT_PLUGINS_LIBS_DIR)
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-I$(top_srcdir) 				\
 	$(GEDIT_CFLAGS) 				\
 	$(WARN_CFLAGS)					\
@@ -36,6 +35,5 @@ EXTRA_DIST = \
 
 CLEANFILES = $(BUILT_SOURCES) $(plugin_DATA)
 DISTCLEANFILES = $(BUILT_SOURCES) $(plugin_DATA)
-
 
 -include $(top_srcdir)/git.mk

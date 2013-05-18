@@ -1,7 +1,10 @@
-INCLUDES = -g -I$(top_srcdir) -I$(top_srcdir)/gedit $(GEDIT_DEBUG_FLAGS) $(GEDIT_CFLAGS)
+AM_CPPFLAGS = \
+	-I$(top_srcdir) \
+	-I$(top_srcdir)/gedit \
+	$(GEDIT_CFLAGS)
 
-noinst_PROGRAMS = $(TEST_PROGS) $(TEST_GTK_PROGS)
-progs_ldadd     = $(top_builddir)/gedit/libgedit.la
+noinst_PROGRAMS	= $(TEST_PROGS) $(TEST_GTK_PROGS)
+progs_ldadd	= $(top_builddir)/gedit/libgedit.la
 
 TEST_PROGS			= document-input-stream
 document_input_stream_SOURCES	= document-input-stream.c

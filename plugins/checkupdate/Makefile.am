@@ -1,8 +1,6 @@
-# gedit win32 updater
-
 plugindir = $(GEDIT_PLUGINS_LIBS_DIR)
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-I$(top_srcdir) 						\
 	$(GEDIT_CFLAGS) 						\
 	$(LIBSOUP_CFLAGS)						\
