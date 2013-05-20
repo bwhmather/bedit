@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-05-16 22:45+0000\n"
-"PO-Revision-Date: 2013-05-17 13:13+0200\n"
+"POT-Creation-Date: 2013-05-20 08:43+0000\n"
+"PO-Revision-Date: 2013-05-20 12:38+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -1140,12 +1140,10 @@ msgstr "Texto plano"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:1
-#| msgid "_Highlight Mode"
 msgid "Highlight Mode"
 msgstr "Modo resaltado"
 
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:2
-#| msgid "Use %s highlight mode"
 msgid "Search highlight mode..."
 msgstr "Modo de búsqueda resaltada…"
 
@@ -2110,11 +2108,11 @@ msgstr "Seleccionar el documento completo"
 
 #. View menu
 #: ../gedit/gedit-ui.h:104
-msgid "_Highlight Mode"
-msgstr "Modo _resaltado"
+#| msgid "_Highlight Mode"
+msgid "_Highlight Mode..."
+msgstr "Modo _resaltado…"
 
 #: ../gedit/gedit-ui.h:105
-#| msgid "Checks the spelling of the current document."
 msgid "Changes the highlight mode of the active document"
 msgstr "Cambia el modo resaltado del documento actual"
 
@@ -2778,8 +2776,9 @@ msgid "External tools"
 msgstr "Herramientas externas"
 
 #: ../plugins/externaltools/tools/windowactivatable.py:212
-msgid "Shell Output"
-msgstr "Salida de shell"
+#| msgid "Shell Output"
+msgid "Tool Output"
+msgstr "Salida de la herramienta"
 
 #. ex:ts=4:et:
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
