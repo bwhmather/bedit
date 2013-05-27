@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-05-20 08:43+0000\n"
-"PO-Revision-Date: 2013-05-08 12:48+0100\n"
+"POT-Creation-Date: 2013-05-25 16:14+0000\n"
+"PO-Revision-Date: 2013-05-27 16:14+0100\n"
 "Last-Translator: Pavol Klačanský <pavol@klacansky.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -1109,16 +1109,14 @@ msgstr "Windows"
 msgid "Plain Text"
 msgstr "Čistý text"
 
-# GtkDialog title
+#  GtkDialog title
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:1
-#| msgid "_Highlight Mode"
 msgid "Highlight Mode"
 msgstr "Režim zvýrazňovania"
 
 # GtkSearchEntry placeholder_text
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:2
-#| msgid "Use %s highlight mode"
 msgid "Search highlight mode..."
 msgstr "Vyhľadať režim zvýrazňovania…"
 
@@ -2086,12 +2084,10 @@ msgstr "Vyberie celý dokument"
 
 #. View menu
 #: ../gedit/gedit-ui.h:104
-#| msgid "_Highlight Mode"
 msgid "_Highlight Mode..."
 msgstr "Režim _zvýrazňovania…"
 
 #: ../gedit/gedit-ui.h:105
-#| msgid "Checks the spelling of the current document."
 msgid "Changes the highlight mode of the active document"
 msgstr "Mení režim zvýrazňovania aktívneho dokumentu"
 
@@ -2762,10 +2758,8 @@ msgid "External tools"
 msgstr "Externé nástroje"
 
 #: ../plugins/externaltools/tools/windowactivatable.py:212
-#, fuzzy
-#| msgid "Shell Output"
 msgid "Tool Output"
-msgstr "Výstup shellu"
+msgstr "Výstup nástroja"
 
 #. ex:ts=4:et:
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
@@ -3695,84 +3689,3 @@ msgstr "Poskytovateľ dát Zeitgeist"
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
 msgstr "Zaznamenáva udalosti prístupu a opustenia dokumentov pomocou gedit"
-
-#~ msgid "Disable syntax highlighting"
-#~ msgstr "Vypne zvýrazňovanie syntaxe"
-
-#~ msgid "Open Files"
-#~ msgstr "Otvoriť súbory"
-
-#~ msgid "Character Encodings"
-#~ msgstr "Kódovania znakov"
-
-#~ msgid "Preferences"
-#~ msgstr "Nastavenia"
-
-#~ msgid "Replace All"
-#~ msgstr "Nahradiť všetko"
-
-#~ msgid "Set the root to the active document location"
-#~ msgstr "Nastaviť koreň na umiestnenie aktívneho dokumentu"
-
-#~ msgid "Open a terminal at the currently opened directory"
-#~ msgstr "Otvorí terminál v momentálne otvorenom adresári"
-
-#~ msgid "file"
-#~ msgstr "súbor"
-
-#~ msgid "directory"
-#~ msgstr "adresár"
-
-#~ msgid "Move selected file or folder to trash"
-#~ msgstr "Presunúť vybraný súbor alebo priečinok do Koša"
-
-#~ msgid "Delete selected file or folder"
-#~ msgstr "Odstrániť vybraný súbor alebo priečinok"
-
-#~ msgid "Open selected file"
-#~ msgstr "Otvoriť vybraný súbor"
-
-#~ msgid "Up"
-#~ msgstr "Hore"
-
-#~ msgid "Open the parent folder"
-#~ msgstr "Otvoriť nadradený priečinok"
-
-#~ msgid "Add new empty folder"
-#~ msgstr "Pridať nový prázdny priečinok"
-
-#~ msgid "Add new empty file"
-#~ msgstr "Pridať nový prázdny súbor"
-
-#~ msgid "Rename selected file or folder"
-#~ msgstr "Premenovať vybraný súbor alebo priečinok"
-
-#~ msgid "_Previous Location"
-#~ msgstr "_Predchádzajúce umiestnenie"
-
-#~ msgid "Go to the previous visited location"
-#~ msgstr "Prejsť na predchádzajúce navštívené umiestnenie"
-
-#~ msgid "_Next Location"
-#~ msgstr "_Nasledovné umiestnenie"
-
-#~ msgid "Go to the next visited location"
-#~ msgstr "Prejsť na nasledovné navštívené umiestnenie"
-
-#~ msgid "Refresh the view"
-#~ msgstr "Obnoviť zobrazenie"
-
-#~ msgid "View folder in file manager"
-#~ msgstr "Zobraziť priečinok v správcovi súborov"
-
-#~ msgid "Show hidden files and folders"
-#~ msgstr "Zobraziť skryté súbory a priečinky"
-
-#~ msgid "Show binary files"
-#~ msgstr "Zobraziť binárne súbory"
-
-#~ msgid "Match Filename"
-#~ msgstr "Zodpovedajúci názov súboru"
-
-#~ msgid "Quick open"
-#~ msgstr "Rýchle otvorenie"
