@@ -422,6 +422,8 @@ gedit_app_startup (GApplication *application)
 	gedit_debug_init ();
 	gedit_debug_message (DEBUG_APP, "Startup");
 
+	gedit_dirs_init ();
+
 	/* Setup locale/gettext */
 	setlocale (LC_ALL, "");
 
@@ -430,8 +432,6 @@ gedit_app_startup (GApplication *application)
 
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
-
-	gedit_dirs_init ();
 
 	gedit_debug_message (DEBUG_APP, "Set icon");
 
