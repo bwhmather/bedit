@@ -11,15 +11,16 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-05-02 17:39+0000\n"
-"PO-Revision-Date: 2013-05-02 22:21+0100\n"
+"POT-Creation-Date: 2013-06-02 00:10+0000\n"
+"PO-Revision-Date: 2013-06-03 21:18+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: Poedit 1.5.4\n"
 
@@ -741,7 +742,7 @@ msgstr[2] "Nalaganje %d datotek ..."
 msgstr[3] "Nalaganje %d datotek ..."
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1476
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1180
 msgid "Open"
 msgstr "Odpri"
 
@@ -950,11 +951,11 @@ msgid "Unsaved Document %d"
 msgstr "dokument %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2389 ../gedit/gedit-window.c:2396
+#: ../gedit/gedit-window.c:2085 ../gedit/gedit-window.c:2092
 msgid "Read-Only"
 msgstr "Le za branje"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3772
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3464
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -1137,6 +1138,23 @@ msgstr "Mac OS"
 #: ../gedit/gedit-file-chooser-dialog.c:185
 msgid "Windows"
 msgstr "Okna"
+
+#: ../gedit/gedit-highlight-mode-dialog.c:307 ../gedit/gedit-window.c:1796
+#: ../gedit/gedit-window.c:2184 ../plugins/externaltools/tools/manager.py:146
+#: ../plugins/externaltools/tools/manager.py:462
+#: ../plugins/externaltools/tools/manager.py:578
+#: ../plugins/externaltools/tools/manager.py:902
+msgid "Plain Text"
+msgstr "Običajno besedilo"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
+msgid "Highlight Mode"
+msgstr "Način poudarjanja"
+
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:2
+msgid "Search highlight mode..."
+msgstr "Način iskanja s poudarjanjem"
 
 #: ../gedit/gedit-io-error-info-bar.c:182
 #: ../gedit/gedit-io-error-info-bar.c:497
@@ -1509,7 +1527,7 @@ msgid "_Quit"
 msgstr "_Končaj"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:140
+#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "_Prestavi na naslednje okno"
 
@@ -1842,7 +1860,7 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Predogled strani v dokumentu za tisk"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1537
+#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1241
 msgid "Replace"
 msgstr "Zamenjaj"
 
@@ -2092,160 +2110,164 @@ msgstr "Izberi celoten dokument"
 
 #. View menu
 #: ../gedit/gedit-ui.h:104
-msgid "_Highlight Mode"
-msgstr "Način _poudarjanja"
+msgid "_Highlight Mode..."
+msgstr "_Način poudarjanja ..."
+
+#: ../gedit/gedit-ui.h:105
+msgid "Changes the highlight mode of the active document"
+msgstr "Spremeni način poudarjanja trenutnega dokumenta."
 
 #. Search menu
-#: ../gedit/gedit-ui.h:107
+#: ../gedit/gedit-ui.h:109
 msgid "_Find..."
 msgstr "_Poišči ..."
 
-#: ../gedit/gedit-ui.h:108
+#: ../gedit/gedit-ui.h:110
 msgid "Search for text"
 msgstr "Poišči besedilo"
 
-#: ../gedit/gedit-ui.h:109
+#: ../gedit/gedit-ui.h:111
 msgid "Find Ne_xt"
 msgstr "Najdi _naslednje"
 
-#: ../gedit/gedit-ui.h:110
+#: ../gedit/gedit-ui.h:112
 msgid "Search forwards for the same text"
 msgstr "Poišči niz naprej po besedilu"
 
-#: ../gedit/gedit-ui.h:111
+#: ../gedit/gedit-ui.h:113
 msgid "Find Pre_vious"
 msgstr "Najdi _predhodne"
 
-#: ../gedit/gedit-ui.h:112
+#: ../gedit/gedit-ui.h:114
 msgid "Search backwards for the same text"
 msgstr "Niz poišči nazaj po besedilu"
 
-#: ../gedit/gedit-ui.h:114 ../gedit/gedit-ui.h:117
+#: ../gedit/gedit-ui.h:116 ../gedit/gedit-ui.h:119
 msgid "_Replace..."
 msgstr "_Zamenjaj ..."
 
-#: ../gedit/gedit-ui.h:115 ../gedit/gedit-ui.h:118
+#: ../gedit/gedit-ui.h:117 ../gedit/gedit-ui.h:120
 msgid "Search for and replace text"
 msgstr "Poišči in zamenjaj besedilo"
 
-#: ../gedit/gedit-ui.h:120
+#: ../gedit/gedit-ui.h:122
 msgid "_Clear Highlight"
 msgstr "_Počisti poudarjanje"
 
-#: ../gedit/gedit-ui.h:121
+#: ../gedit/gedit-ui.h:123
 msgid "Clear highlighting of search matches"
 msgstr "Počisti poudarjanje iskanih zadetkov"
 
-#: ../gedit/gedit-ui.h:122
+#: ../gedit/gedit-ui.h:124
 msgid "Go to _Line..."
 msgstr "Skoči v _vrstico ..."
 
-#: ../gedit/gedit-ui.h:123
+#: ../gedit/gedit-ui.h:125
 msgid "Go to a specific line"
 msgstr "Pojdi na določeno vrstico"
 
 #. Documents menu
-#: ../gedit/gedit-ui.h:126
+#: ../gedit/gedit-ui.h:128
 msgid "_Save All"
 msgstr "Shrani _vse"
 
-#: ../gedit/gedit-ui.h:127
+#: ../gedit/gedit-ui.h:129
 msgid "Save all open files"
 msgstr "Shrani vse odprte datoteke"
 
-#: ../gedit/gedit-ui.h:128
+#: ../gedit/gedit-ui.h:130
 msgid "_Close All"
 msgstr "_Zapri vse"
 
-#: ../gedit/gedit-ui.h:129
+#: ../gedit/gedit-ui.h:131
 msgid "Close all open files"
 msgstr "Zapri vse odprte datoteke"
 
-#: ../gedit/gedit-ui.h:130
+#: ../gedit/gedit-ui.h:132
 msgid "_New Tab Group"
 msgstr "_Nova skupina zavihkov"
 
-#: ../gedit/gedit-ui.h:131
+#: ../gedit/gedit-ui.h:133
 msgid "Create a new tab group"
 msgstr "Ustvari novo skupino zavihkov"
 
-#: ../gedit/gedit-ui.h:132
+#: ../gedit/gedit-ui.h:134
 msgid "P_revious Tab Group"
 msgstr "P_redhodna skupina zavihkov"
 
-#: ../gedit/gedit-ui.h:133
+#: ../gedit/gedit-ui.h:135
 msgid "Switch to the previous tab group"
 msgstr "Preklopi na predhodno skupino zavihkov"
 
-#: ../gedit/gedit-ui.h:134
+#: ../gedit/gedit-ui.h:136
 msgid "Nex_t Tab Group"
 msgstr "Nasle_dnja skupina zavihkov"
 
-#: ../gedit/gedit-ui.h:135
+#: ../gedit/gedit-ui.h:137
 msgid "Switch to the next tab group"
 msgstr "Preklopi na naslednjo skupino zavihkov"
 
-#: ../gedit/gedit-ui.h:136
+#: ../gedit/gedit-ui.h:138
 msgid "_Previous Document"
 msgstr "_Predhodni dokument"
 
-#: ../gedit/gedit-ui.h:137
+#: ../gedit/gedit-ui.h:139
 msgid "Activate previous document"
 msgstr "Pokaži prejšnji dokument"
 
-#: ../gedit/gedit-ui.h:138
+#: ../gedit/gedit-ui.h:140
 msgid "N_ext Document"
 msgstr "N_aslednji dokument"
 
-#: ../gedit/gedit-ui.h:139
+#: ../gedit/gedit-ui.h:141
 msgid "Activate next document"
 msgstr "Pokaži naslednji dokument"
 
-#: ../gedit/gedit-ui.h:141
+#: ../gedit/gedit-ui.h:143
 msgid "Move the current document to a new window"
 msgstr "Prestavi trenutni dokument v novo okno"
 
-#: ../gedit/gedit-ui.h:148
+#: ../gedit/gedit-ui.h:150
 msgid "Close the current file"
 msgstr "Zapri trenutno datoteko"
 
-#: ../gedit/gedit-ui.h:155
+#: ../gedit/gedit-ui.h:157
 msgid "Quit the program"
 msgstr "Končaj program"
 
-#: ../gedit/gedit-ui.h:160
+#: ../gedit/gedit-ui.h:162
 msgid "_Toolbar"
 msgstr "_Orodna vrstica"
 
-#: ../gedit/gedit-ui.h:161
+#: ../gedit/gedit-ui.h:163
 msgid "Show or hide the toolbar in the current window"
 msgstr "Pokaži ali skrij orodno vrstico v trenutnem oknu"
 
-#: ../gedit/gedit-ui.h:163
+#: ../gedit/gedit-ui.h:165
 msgid "_Statusbar"
 msgstr "Vrstica _stanja"
 
-#: ../gedit/gedit-ui.h:164
+#: ../gedit/gedit-ui.h:166
 msgid "Show or hide the statusbar in the current window"
 msgstr "Pokaži ali skrij vrstico stanja v trenutnem oknu"
 
-#: ../gedit/gedit-ui.h:167
+#: ../gedit/gedit-ui.h:169
 msgid "Edit text in fullscreen"
 msgstr "Urejaj v celozaslonskem načinu"
 
-#: ../gedit/gedit-ui.h:174
+#: ../gedit/gedit-ui.h:176
 msgid "Side _Panel"
 msgstr "Stranski _pladenj"
 
-#: ../gedit/gedit-ui.h:175
+#: ../gedit/gedit-ui.h:177
 msgid "Show or hide the side panel in the current window"
 msgstr "Pokaži ali skrij stranski pladenj v trenutnem oknu"
 
-#: ../gedit/gedit-ui.h:177
+#: ../gedit/gedit-ui.h:179
 msgid "_Bottom Panel"
 msgstr "_Spodnji pladenj"
 
-#: ../gedit/gedit-ui.h:178
+#: ../gedit/gedit-ui.h:180
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Prikaži ali skrij spodnji pladenj v trenutnem oknu"
 
@@ -2292,73 +2314,53 @@ msgstr "Niz, ki ga želite poiskati"
 msgid "Line you want to move the cursor to"
 msgstr "Vrstica, na katero želite premakniti kazalko"
 
-#: ../gedit/gedit-window.c:942
-#, c-format
-msgid "Use %s highlight mode"
-msgstr "Uporabi način poudarjanje %s"
-
-#. add the "Plain Text" item before all the others
-#. Translators: "Plain Text" means that no highlight mode is selected in the
-#. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1051 ../gedit/gedit-window.c:2100
-#: ../gedit/gedit-window.c:2488 ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:462
-#: ../plugins/externaltools/tools/manager.py:578
-#: ../plugins/externaltools/tools/manager.py:902
-msgid "Plain Text"
-msgstr "Običajno besedilo"
-
-#: ../gedit/gedit-window.c:1052
-msgid "Disable syntax highlighting"
-msgstr "Onemogoči poudarjanje skladnje"
-
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1369
+#: ../gedit/gedit-window.c:1073
 #, c-format
 msgid "Open '%s'"
 msgstr "Odpri '%s'"
 
-#: ../gedit/gedit-window.c:1531
+#: ../gedit/gedit-window.c:1235
 msgid "Save"
 msgstr "Shrani"
 
-#: ../gedit/gedit-window.c:1533
+#: ../gedit/gedit-window.c:1237
 msgid "Print"
 msgstr "Natisni"
 
-#: ../gedit/gedit-window.c:1535
+#: ../gedit/gedit-window.c:1239
 msgid "Find"
 msgstr "Poišči"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1707
+#: ../gedit/gedit-window.c:1403
 #, c-format
 msgid "Activate '%s'"
 msgstr "Pokaži \"%s\""
 
-#: ../gedit/gedit-window.c:2053
+#: ../gedit/gedit-window.c:1749
 msgid "Use Spaces"
 msgstr "Uporabi presledke"
 
-#: ../gedit/gedit-window.c:2246
+#: ../gedit/gedit-window.c:1942
 msgid "Bracket match is out of range"
 msgstr "Ujemanje oklepajev je izven obsega"
 
-#: ../gedit/gedit-window.c:2251
+#: ../gedit/gedit-window.c:1947
 msgid "Bracket match not found"
 msgstr "Ujemanja oklepajev ni mogoče najti"
 
-#: ../gedit/gedit-window.c:2256
+#: ../gedit/gedit-window.c:1952
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Na vrstici je bilo najdeno ujemanje oklepaja: %d"
 
-#: ../gedit/gedit-window.c:2440
+#: ../gedit/gedit-window.c:2136
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Širina _tabulatorja: %u"
 
-#: ../gedit/gedit-window.c:2798
+#: ../gedit/gedit-window.c:2491
 msgid "There are unsaved documents"
 msgstr "Odprti so neshranjeni dokumenti"
 
@@ -2771,8 +2773,8 @@ msgid "External tools"
 msgstr "Zunanja orodja"
 
 #: ../plugins/externaltools/tools/windowactivatable.py:212
-msgid "Shell Output"
-msgstr "Izpis v lupini"
+msgid "Tool Output"
+msgstr "Odvod orodja"
 
 #. ex:ts=4:et:
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
@@ -3696,6 +3698,9 @@ msgstr "Ponudnik podatkov Zeitgeist"
 msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Beleži dostop in pusti dogodek za dokumente, ki so bili uporabljeni z gedit"
+
+#~ msgid "Disable syntax highlighting"
+#~ msgstr "Onemogoči poudarjanje skladnje"
 
 #~ msgid "Open Files"
 #~ msgstr "Odpri datoteke"
