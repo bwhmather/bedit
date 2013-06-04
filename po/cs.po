@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-25 12:27+0000\n"
-"PO-Revision-Date: 2013-04-25 20:21+0200\n"
+"POT-Creation-Date: 2013-05-30 12:15+0000\n"
+"PO-Revision-Date: 2013-06-04 11:48+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -738,7 +738,7 @@ msgstr[1] "Načítají se %d soubory…"
 msgstr[2] "Načítá se %d souborů…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1471
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1180
 msgid "Open"
 msgstr "Otevřít"
 
@@ -751,7 +751,7 @@ msgstr "Soubor „%s“ je pouze pro čtení."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Chcete se pokusit nahradit jej souborem, který ukládáte?"
 
-#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.ui.h:3
 msgid "_Replace"
 msgstr "Nah_radit"
 
@@ -940,11 +940,11 @@ msgid "Unsaved Document %d"
 msgstr "Neuložený dokument %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2387 ../gedit/gedit-window.c:2394
+#: ../gedit/gedit-window.c:2085 ../gedit/gedit-window.c:2092
 msgid "Read-Only"
 msgstr "Pouze ke čtení"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3834
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3464
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -1064,17 +1064,17 @@ msgstr "Thajské"
 msgid "Unknown"
 msgstr "Neznámé"
 
-#: ../gedit/gedit-encodings-combo-box.c:304
+#: ../gedit/gedit-encodings-combo-box.c:299
 msgid "Automatically Detected"
 msgstr "Automaticky zjištěné"
 
-#: ../gedit/gedit-encodings-combo-box.c:323
-#: ../gedit/gedit-encodings-combo-box.c:339
+#: ../gedit/gedit-encodings-combo-box.c:318
+#: ../gedit/gedit-encodings-combo-box.c:334
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Současné národní prostředí (%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:391
+#: ../gedit/gedit-encodings-combo-box.c:386
 msgid "Add or Remove..."
 msgstr "Přidat nebo odstranit…"
 
@@ -1127,6 +1127,23 @@ msgstr "Mac OS Classic"
 #: ../gedit/gedit-file-chooser-dialog.c:185
 msgid "Windows"
 msgstr "Windows"
+
+#: ../gedit/gedit-highlight-mode-dialog.c:307 ../gedit/gedit-window.c:1796
+#: ../gedit/gedit-window.c:2184 ../plugins/externaltools/tools/manager.py:146
+#: ../plugins/externaltools/tools/manager.py:462
+#: ../plugins/externaltools/tools/manager.py:578
+#: ../plugins/externaltools/tools/manager.py:902
+msgid "Plain Text"
+msgstr "Prostý text"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
+msgid "Highlight Mode"
+msgstr "Režim zvýrazňování"
+
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:2
+msgid "Search highlight mode..."
+msgstr "Režim zvýrazňování při hledání…"
 
 #: ../gedit/gedit-io-error-info-bar.c:182
 #: ../gedit/gedit-io-error-info-bar.c:497
@@ -1496,7 +1513,7 @@ msgid "_Quit"
 msgstr "U_končit"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:140
+#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "Přes_unout do nového okna"
 
@@ -1508,15 +1525,15 @@ msgstr "Uložit _jako…"
 msgid "_Print..."
 msgstr "_Tisk…"
 
-#: ../gedit/gedit-open-tool-button.c:85 ../gedit/gedit-ui.h:55
+#: ../gedit/gedit-open-tool-button.c:122 ../gedit/gedit-ui.h:55
 msgid "Open a file"
 msgstr "Otevřít soubor"
 
-#: ../gedit/gedit-open-tool-button.c:87
+#: ../gedit/gedit-open-tool-button.c:124
 msgid "Open a recently used file"
 msgstr "Otevřít nedávno používaný soubor"
 
-#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:587
+#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:590
 msgid "Empty"
 msgstr "Prázdné"
 
@@ -1755,107 +1772,111 @@ msgstr "_Záhlaví a zápatí:"
 msgid "_Restore Default Fonts"
 msgstr "_Obnovit výchozí písma"
 
-#: ../gedit/gedit-print-preview.c:562
-msgid "Show the previous page"
-msgstr "Zobrazit předchozí stránku"
-
-#: ../gedit/gedit-print-preview.c:574
-msgid "Show the next page"
-msgstr "Zobrazit následující stránku"
-
-#: ../gedit/gedit-print-preview.c:590
-msgid "Current page (Alt+P)"
-msgstr "Aktuální stránka (Alt+P)"
-
-#. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:613
-msgid "of"
-msgstr "z"
-
-#: ../gedit/gedit-print-preview.c:621
-msgid "Page total"
-msgstr "Celkem stránek"
-
-#: ../gedit/gedit-print-preview.c:622
-msgid "The total number of pages in the document"
-msgstr "Celkový počet stránek v dokumentu"
-
-#: ../gedit/gedit-print-preview.c:639
-msgid "Show multiple pages"
-msgstr "Zobrazovat více stránek"
-
-#: ../gedit/gedit-print-preview.c:652
-msgid "Zoom 1:1"
-msgstr "Přiblížení 1:1"
-
-#: ../gedit/gedit-print-preview.c:661
-msgid "Zoom to fit the whole page"
-msgstr "Přiblížení zaplňující celou stránku"
-
-#: ../gedit/gedit-print-preview.c:670
-msgid "Zoom the page in"
-msgstr "Přiblížit stránku"
-
-#: ../gedit/gedit-print-preview.c:679
-msgid "Zoom the page out"
-msgstr "Oddálit stránku"
-
-#: ../gedit/gedit-print-preview.c:691
-msgid "_Close Preview"
-msgstr "_Zavřít náhled"
-
-#: ../gedit/gedit-print-preview.c:694
-msgid "Close print preview"
-msgstr "Zavřít náhled tisku"
-
-#: ../gedit/gedit-print-preview.c:763
+#: ../gedit/gedit-print-preview.c:616
 #, c-format
 msgid "Page %d of %d"
 msgstr "Stránka %d z %d"
 
-#: ../gedit/gedit-print-preview.c:947
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-print-preview.ui.h:1
+msgid "Show the previous page"
+msgstr "Zobrazit předchozí stránku"
+
+#: ../gedit/gedit-print-preview.ui.h:2
+msgid "P_revious Page"
+msgstr "Předchozí st_ránka"
+
+#: ../gedit/gedit-print-preview.ui.h:3
+msgid "Show the next page"
+msgstr "Zobrazit předchozí stránku"
+
+#: ../gedit/gedit-print-preview.ui.h:4
+msgid "_Next Page"
+msgstr "_Následující stránka"
+
+#: ../gedit/gedit-print-preview.ui.h:5
+msgid "Current page (Alt+P)"
+msgstr "Aktuální stránka (Alt+P)"
+
+#. the "of" from "1 of 19" in print preview
+#: ../gedit/gedit-print-preview.ui.h:7
+msgid "of"
+msgstr "z"
+
+#: ../gedit/gedit-print-preview.ui.h:8
+msgid "Page total"
+msgstr "Celkem stránek"
+
+#: ../gedit/gedit-print-preview.ui.h:9
+msgid "The total number of pages in the document"
+msgstr "Celkový počet stránek v dokumentu"
+
+#: ../gedit/gedit-print-preview.ui.h:10
+msgid "Show multiple pages"
+msgstr "Zobrazovat více stránek"
+
+#: ../gedit/gedit-print-preview.ui.h:11
+msgid "Zoom 1:1"
+msgstr "Přiblížení 1:1"
+
+#: ../gedit/gedit-print-preview.ui.h:12
+msgid "Zoom to fit the whole page"
+msgstr "Přiblížení zaplňující celou stránku"
+
+#: ../gedit/gedit-print-preview.ui.h:13
+msgid "Zoom the page in"
+msgstr "Přiblížit stránku"
+
+#: ../gedit/gedit-print-preview.ui.h:14
+msgid "Zoom the page out"
+msgstr "Oddálit stránku"
+
+#: ../gedit/gedit-print-preview.ui.h:15
+msgid "Close print preview"
+msgstr "Zavřít náhled tisku"
+
+#: ../gedit/gedit-print-preview.ui.h:16
+msgid "_Close Preview"
+msgstr "_Zavřít náhled"
+
+#: ../gedit/gedit-print-preview.ui.h:17
 msgid "Page Preview"
 msgstr "Náhled stránky"
 
-#: ../gedit/gedit-print-preview.c:948
+#: ../gedit/gedit-print-preview.ui.h:18
 msgid "The preview of a page in the document to be printed"
 msgstr "Náhled stránky dokumentu, který se má tisknout"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1532
+#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1241
 msgid "Replace"
 msgstr "Nahradit"
 
-#: ../gedit/gedit-replace-dialog.c:282
+#: ../gedit/gedit-replace-dialog.ui.h:2
 msgid "Replace _All"
 msgstr "Nahradit _vše"
 
-#: ../gedit/gedit-replace-dialog.ui.h:2
-msgid "Replace All"
-msgstr "Nahradit vše"
-
-#: ../gedit/gedit-replace-dialog.ui.h:3
+#: ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Search for: "
 msgstr "_Hledat: "
 
-#: ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-replace-dialog.ui.h:5
 msgid "Replace _with: "
 msgstr "Nahradit z_a: "
 
-#: ../gedit/gedit-replace-dialog.ui.h:5
+#: ../gedit/gedit-replace-dialog.ui.h:6
 msgid "_Match case"
 msgstr "Rozlišovat velikost pís_men"
 
-#: ../gedit/gedit-replace-dialog.ui.h:6
+#: ../gedit/gedit-replace-dialog.ui.h:7
 msgid "Match _entire word only"
 msgstr "Hledat pouze _celá slova"
 
-#: ../gedit/gedit-replace-dialog.ui.h:7
+#: ../gedit/gedit-replace-dialog.ui.h:8
 msgid "Search _backwards"
 msgstr "Hledat _pozpátku"
 
-#: ../gedit/gedit-replace-dialog.ui.h:8
+#: ../gedit/gedit-replace-dialog.ui.h:9
 msgid "_Wrap around"
 msgstr "P_okračovat od začátku"
 
@@ -2076,160 +2097,164 @@ msgstr "Vybrat celý dokument"
 
 #. View menu
 #: ../gedit/gedit-ui.h:104
-msgid "_Highlight Mode"
-msgstr "_Režim zvýrazňování"
+msgid "_Highlight Mode..."
+msgstr "_Režim zvýrazňování…"
+
+#: ../gedit/gedit-ui.h:105
+msgid "Changes the highlight mode of the active document"
+msgstr "Mění režim zvýrazňování v aktivním dokumentu"
 
 #. Search menu
-#: ../gedit/gedit-ui.h:107
+#: ../gedit/gedit-ui.h:109
 msgid "_Find..."
 msgstr "_Hledat…"
 
-#: ../gedit/gedit-ui.h:108
+#: ../gedit/gedit-ui.h:110
 msgid "Search for text"
 msgstr "Hledat text"
 
-#: ../gedit/gedit-ui.h:109
+#: ../gedit/gedit-ui.h:111
 msgid "Find Ne_xt"
 msgstr "Hledat _následující"
 
-#: ../gedit/gedit-ui.h:110
+#: ../gedit/gedit-ui.h:112
 msgid "Search forwards for the same text"
 msgstr "Hledat tentýž text vpřed"
 
-#: ../gedit/gedit-ui.h:111
+#: ../gedit/gedit-ui.h:113
 msgid "Find Pre_vious"
 msgstr "Hledat _předchozí"
 
-#: ../gedit/gedit-ui.h:112
+#: ../gedit/gedit-ui.h:114
 msgid "Search backwards for the same text"
 msgstr "Hledat tentýž text pozpátku"
 
-#: ../gedit/gedit-ui.h:114 ../gedit/gedit-ui.h:117
+#: ../gedit/gedit-ui.h:116 ../gedit/gedit-ui.h:119
 msgid "_Replace..."
 msgstr "Nah_radit…"
 
-#: ../gedit/gedit-ui.h:115 ../gedit/gedit-ui.h:118
+#: ../gedit/gedit-ui.h:117 ../gedit/gedit-ui.h:120
 msgid "Search for and replace text"
 msgstr "Hledat a nahradit text"
 
-#: ../gedit/gedit-ui.h:120
+#: ../gedit/gedit-ui.h:122
 msgid "_Clear Highlight"
 msgstr "_Zrušit zvýrazňování"
 
-#: ../gedit/gedit-ui.h:121
+#: ../gedit/gedit-ui.h:123
 msgid "Clear highlighting of search matches"
 msgstr "Zrušit zvýrazňování výsledků hledání"
 
-#: ../gedit/gedit-ui.h:122
+#: ../gedit/gedit-ui.h:124
 msgid "Go to _Line..."
 msgstr "Přejít n_a řádek…"
 
-#: ../gedit/gedit-ui.h:123
+#: ../gedit/gedit-ui.h:125
 msgid "Go to a specific line"
 msgstr "Přejít na konkrétní řádek"
 
 #. Documents menu
-#: ../gedit/gedit-ui.h:126
+#: ../gedit/gedit-ui.h:128
 msgid "_Save All"
 msgstr "Uložit _vše"
 
-#: ../gedit/gedit-ui.h:127
+#: ../gedit/gedit-ui.h:129
 msgid "Save all open files"
 msgstr "Uložit všechny otevřené soubory"
 
-#: ../gedit/gedit-ui.h:128
+#: ../gedit/gedit-ui.h:130
 msgid "_Close All"
 msgstr "Zavřít vš_e"
 
-#: ../gedit/gedit-ui.h:129
+#: ../gedit/gedit-ui.h:131
 msgid "Close all open files"
 msgstr "Zavřít všechny otevřené soubory"
 
-#: ../gedit/gedit-ui.h:130
+#: ../gedit/gedit-ui.h:132
 msgid "_New Tab Group"
 msgstr "_Nová skupina karet"
 
-#: ../gedit/gedit-ui.h:131
+#: ../gedit/gedit-ui.h:133
 msgid "Create a new tab group"
 msgstr "Vytvořit novou skupinu karet"
 
-#: ../gedit/gedit-ui.h:132
+#: ../gedit/gedit-ui.h:134
 msgid "P_revious Tab Group"
 msgstr "Předchozí skupina ka_ret"
 
-#: ../gedit/gedit-ui.h:133
+#: ../gedit/gedit-ui.h:135
 msgid "Switch to the previous tab group"
 msgstr "Přepnout na předchozí skupinu karet"
 
-#: ../gedit/gedit-ui.h:134
+#: ../gedit/gedit-ui.h:136
 msgid "Nex_t Tab Group"
 msgstr "Následující skupina kare_t"
 
-#: ../gedit/gedit-ui.h:135
+#: ../gedit/gedit-ui.h:137
 msgid "Switch to the next tab group"
 msgstr "Přepnout na následující skupinu karet"
 
-#: ../gedit/gedit-ui.h:136
+#: ../gedit/gedit-ui.h:138
 msgid "_Previous Document"
 msgstr "_Předchozí dokument"
 
-#: ../gedit/gedit-ui.h:137
+#: ../gedit/gedit-ui.h:139
 msgid "Activate previous document"
 msgstr "Aktivovat předchozí dokument"
 
-#: ../gedit/gedit-ui.h:138
+#: ../gedit/gedit-ui.h:140
 msgid "N_ext Document"
 msgstr "Násl_edující dokument"
 
-#: ../gedit/gedit-ui.h:139
+#: ../gedit/gedit-ui.h:141
 msgid "Activate next document"
 msgstr "Aktivovat následující dokument"
 
-#: ../gedit/gedit-ui.h:141
+#: ../gedit/gedit-ui.h:143
 msgid "Move the current document to a new window"
 msgstr "Přesunout aktuální dokument do nového okna"
 
-#: ../gedit/gedit-ui.h:148
+#: ../gedit/gedit-ui.h:150
 msgid "Close the current file"
 msgstr "Zavřít aktuální soubor"
 
-#: ../gedit/gedit-ui.h:155
+#: ../gedit/gedit-ui.h:157
 msgid "Quit the program"
 msgstr "Skončit program"
 
-#: ../gedit/gedit-ui.h:160
+#: ../gedit/gedit-ui.h:162
 msgid "_Toolbar"
 msgstr "Panel nás_trojů"
 
-#: ../gedit/gedit-ui.h:161
+#: ../gedit/gedit-ui.h:163
 msgid "Show or hide the toolbar in the current window"
 msgstr "Zobrazit nebo skrýt panel nástrojů v aktuálním okně"
 
-#: ../gedit/gedit-ui.h:163
+#: ../gedit/gedit-ui.h:165
 msgid "_Statusbar"
 msgstr "_Stavový panel"
 
-#: ../gedit/gedit-ui.h:164
+#: ../gedit/gedit-ui.h:166
 msgid "Show or hide the statusbar in the current window"
 msgstr "Zobrazit nebo skrýt stavový panel v aktuálním okně"
 
-#: ../gedit/gedit-ui.h:167
+#: ../gedit/gedit-ui.h:169
 msgid "Edit text in fullscreen"
 msgstr "Upravovat text v režimu celé obrazovky"
 
-#: ../gedit/gedit-ui.h:174
+#: ../gedit/gedit-ui.h:176
 msgid "Side _Panel"
 msgstr "Postranní _panel"
 
-#: ../gedit/gedit-ui.h:175
+#: ../gedit/gedit-ui.h:177
 msgid "Show or hide the side panel in the current window"
 msgstr "Zobrazit nebo skrýt postranní panel v aktuálním okně"
 
-#: ../gedit/gedit-ui.h:177
+#: ../gedit/gedit-ui.h:179
 msgid "_Bottom Panel"
 msgstr "_Spodní panel"
 
-#: ../gedit/gedit-ui.h:178
+#: ../gedit/gedit-ui.h:180
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Zobrazit nebo skrýt spodní panel v aktuálním okně"
 
@@ -2254,94 +2279,75 @@ msgid "/ on %s"
 msgstr "/ na %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:537
+#: ../gedit/gedit-view-frame.c:535
 msgid "_Wrap Around"
 msgstr "Přecházet přes _okraj"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:547
+#: ../gedit/gedit-view-frame.c:545
 msgid "Match _Entire Word Only"
 msgstr "Hledat pouze _celá slova"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:557
+#: ../gedit/gedit-view-frame.c:555
 msgid "_Match Case"
 msgstr "_Rozlišovat velikost písmen"
 
-#: ../gedit/gedit-view-frame.c:754
+#: ../gedit/gedit-view-frame.c:752
 msgid "String you want to search for"
 msgstr "Řetězec, který chcete hledat"
 
-#: ../gedit/gedit-view-frame.c:764
+#: ../gedit/gedit-view-frame.c:762
 msgid "Line you want to move the cursor to"
 msgstr "Řádek, na který chcete přesunout kurzor"
 
-#: ../gedit/gedit-window.c:942
-#, c-format
-msgid "Use %s highlight mode"
-msgstr "Použít režim zvýrazňování %s"
-
-#. add the "Plain Text" item before all the others
-#. Translators: "Plain Text" means that no highlight mode is selected in the
-#. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1051 ../gedit/gedit-window.c:2078
-#: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:462
-#: ../plugins/externaltools/tools/manager.py:578
-#: ../plugins/externaltools/tools/manager.py:902
-msgid "Plain Text"
-msgstr "Prostý text"
-
-#: ../gedit/gedit-window.c:1052
-msgid "Disable syntax highlighting"
-msgstr "Vypnout zvýrazňování syntaxe"
-
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1369
+#: ../gedit/gedit-window.c:1073
 #, c-format
 msgid "Open '%s'"
 msgstr "Otevřít „%s“"
 
-#: ../gedit/gedit-window.c:1526
+#: ../gedit/gedit-window.c:1235
 msgid "Save"
 msgstr "Uložit"
 
-#: ../gedit/gedit-window.c:1528
+#: ../gedit/gedit-window.c:1237
 msgid "Print"
 msgstr "Tisk"
 
-#: ../gedit/gedit-window.c:1530
+#: ../gedit/gedit-window.c:1239
 msgid "Find"
 msgstr "Hledat"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1702
+#: ../gedit/gedit-window.c:1403
 #, c-format
 msgid "Activate '%s'"
 msgstr "Aktivovat „%s“"
 
-#: ../gedit/gedit-window.c:2059
+#: ../gedit/gedit-window.c:1749
 msgid "Use Spaces"
 msgstr "Použít mezery"
 
-#: ../gedit/gedit-window.c:2135
-msgid "Tab Width"
-msgstr "Šířka tabulátoru"
-
-#: ../gedit/gedit-window.c:2244
+#: ../gedit/gedit-window.c:1942
 msgid "Bracket match is out of range"
 msgstr "Odpovídající závorka je mimo rozsah"
 
-#: ../gedit/gedit-window.c:2249
+#: ../gedit/gedit-window.c:1947
 msgid "Bracket match not found"
 msgstr "Odpovídající závorka nenalezena"
 
-#: ../gedit/gedit-window.c:2254
+#: ../gedit/gedit-window.c:1952
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Odpovídající závorka nalezena na řádku: %d"
 
-#: ../gedit/gedit-window.c:2859
+#: ../gedit/gedit-window.c:2136
+#, c-format
+msgid "Tab Width: %u"
+msgstr "Šířka tabulátoru: %u"
+
+#: ../gedit/gedit-window.c:2491
 msgid "There are unsaved documents"
 msgstr "Některé dokumenty nejsou uložené"
 
@@ -2440,12 +2446,8 @@ msgid "Document Statistics"
 msgstr "Statistika dokumentu"
 
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
-msgid ""
-"Analyzes the current document and reports the number of words, lines, "
-"characters and non-space characters in it."
-msgstr ""
-"Analyzuje aktuální dokument a určí v něm počet slov, řádků, znaků a znaků "
-"bez mezer."
+msgid "Report the number of words, lines and characters in a document."
+msgstr "Informuje o počtu slov, řádků a znaků v dokumentu."
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:427
 msgid "_Document Statistics"
@@ -2564,19 +2566,19 @@ msgstr ""
 msgid "Could not execute command: %s"
 msgstr "Nelze vykonat příkaz: %s"
 
-#: ../plugins/externaltools/tools/functions.py:157
+#: ../plugins/externaltools/tools/functions.py:175
 msgid "You must be inside a word to run this command"
 msgstr "Pro spuštění tohoto příkazu musíte stát na slově"
 
-#: ../plugins/externaltools/tools/functions.py:263
+#: ../plugins/externaltools/tools/functions.py:281
 msgid "Running tool:"
 msgstr "Spouštění nástroje:"
 
-#: ../plugins/externaltools/tools/functions.py:292
+#: ../plugins/externaltools/tools/functions.py:310
 msgid "Done."
 msgstr "Hotovo."
 
-#: ../plugins/externaltools/tools/functions.py:294
+#: ../plugins/externaltools/tools/functions.py:312
 msgid "Exited"
 msgstr "Skončil"
 
@@ -2760,8 +2762,8 @@ msgid "External tools"
 msgstr "Externí nástroje"
 
 #: ../plugins/externaltools/tools/windowactivatable.py:212
-msgid "Shell Output"
-msgstr "Výstup shellu"
+msgid "Tool Output"
+msgstr "Výstup nástroje"
 
 #. ex:ts=4:et:
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
