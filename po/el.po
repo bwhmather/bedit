@@ -35,8 +35,8 @@ msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
 "keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-24 21:55+0000\n"
-"PO-Revision-Date: 2013-04-25 09:07+0300\n"
+"POT-Creation-Date: 2013-05-30 12:15+0000\n"
+"PO-Revision-Date: 2013-06-06 10:19+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
@@ -761,7 +761,7 @@ msgstr[0] "Φόρτωση %d αρχείου…"
 msgstr[1] "Φόρτωση %d αρχείων…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1471
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1180
 msgid "Open"
 msgstr "Άνοιγμα"
 
@@ -775,7 +775,7 @@ msgid "Do you want to try to replace it with the one you are saving?"
 msgstr ""
 "Θέλετε να γίνει προσπάθεια να το αντικαταστήσετε με αυτό που αποθηκεύετε;"
 
-#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.c:283
+#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.ui.h:3
 msgid "_Replace"
 msgstr "_Αντικατάσταση"
 
@@ -956,11 +956,11 @@ msgid "Unsaved Document %d"
 msgstr "Μη αποθηκευμένο έγγραφο %d"
 
 #: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2387 ../gedit/gedit-window.c:2394
+#: ../gedit/gedit-window.c:2085 ../gedit/gedit-window.c:2092
 msgid "Read-Only"
 msgstr "Μόνο για ανάγνωση"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3834
+#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3464
 msgid "Documents"
 msgstr "Έγγραφα"
 
@@ -1080,23 +1080,19 @@ msgstr "Ταϊλανδέζικη"
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: ../gedit/gedit-encodings-combo-box.c:301
+#: ../gedit/gedit-encodings-combo-box.c:299
 msgid "Automatically Detected"
 msgstr "Αυτόματος εντοπισμός"
 
-#: ../gedit/gedit-encodings-combo-box.c:320
-#: ../gedit/gedit-encodings-combo-box.c:336
+#: ../gedit/gedit-encodings-combo-box.c:318
+#: ../gedit/gedit-encodings-combo-box.c:334
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Τρέχον Locale (%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:388
+#: ../gedit/gedit-encodings-combo-box.c:386
 msgid "Add or Remove..."
 msgstr "Προσθήκη ή Αφαίρεση..."
-
-#: ../gedit/gedit-encodings-dialog.c:348
-msgid "Character Encodings"
-msgstr "Κωδικοποιήσεις χαρακτήρων"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-encodings-dialog.ui.h:1
@@ -1147,6 +1143,25 @@ msgstr "Mac OS Classic"
 #: ../gedit/gedit-file-chooser-dialog.c:185
 msgid "Windows"
 msgstr "Windows"
+
+#: ../gedit/gedit-highlight-mode-dialog.c:307 ../gedit/gedit-window.c:1796
+#: ../gedit/gedit-window.c:2184 ../plugins/externaltools/tools/manager.py:146
+#: ../plugins/externaltools/tools/manager.py:462
+#: ../plugins/externaltools/tools/manager.py:578
+#: ../plugins/externaltools/tools/manager.py:902
+msgid "Plain Text"
+msgstr "Απλό κείμενο"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
+#| msgid "_Highlight Mode"
+msgid "Highlight Mode"
+msgstr "Λειτουργία επισήμανσης"
+
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:2
+#| msgid "Use %s highlight mode"
+msgid "Search highlight mode..."
+msgstr "Αναζήτηση λειτουργίας επισήμανσης..."
 
 #: ../gedit/gedit-io-error-info-bar.c:182
 #: ../gedit/gedit-io-error-info-bar.c:497
@@ -1544,7 +1559,7 @@ msgid "_Quit"
 msgstr "Έ_ξοδος"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:140
+#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "_Μετακίνηση σε νέο παράθυρο"
 
@@ -1556,15 +1571,15 @@ msgstr "Αποθήκευση _ως..."
 msgid "_Print..."
 msgstr "_Εκτύπωση..."
 
-#: ../gedit/gedit-open-tool-button.c:85 ../gedit/gedit-ui.h:55
+#: ../gedit/gedit-open-tool-button.c:122 ../gedit/gedit-ui.h:55
 msgid "Open a file"
 msgstr "Άνοιγμα ενός αρχείου"
 
-#: ../gedit/gedit-open-tool-button.c:87
+#: ../gedit/gedit-open-tool-button.c:124
 msgid "Open a recently used file"
 msgstr "Άνοιγμα ενός πρόσφατου αρχείου"
 
-#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:587
+#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:590
 msgid "Empty"
 msgstr "Κενή"
 
@@ -1808,107 +1823,112 @@ msgstr "Κεφα_λίδες και υποσέλιδα:"
 msgid "_Restore Default Fonts"
 msgstr "Επαναφο_ρά προεπιλεγμένων γραμματοσειρών"
 
-#: ../gedit/gedit-print-preview.c:562
-msgid "Show the previous page"
-msgstr "Προβολή της προηγούμενης σελίδας"
-
-#: ../gedit/gedit-print-preview.c:574
-msgid "Show the next page"
-msgstr "Προβολή της επόμενης σελίδας"
-
-#: ../gedit/gedit-print-preview.c:590
-msgid "Current page (Alt+P)"
-msgstr "Τρέχουσα σελίδα (Alt+P)"
-
-#. Translators: the "of" from "1 of 19" in print preview.
-#: ../gedit/gedit-print-preview.c:613
-msgid "of"
-msgstr "από"
-
-#: ../gedit/gedit-print-preview.c:621
-msgid "Page total"
-msgstr "Σύνολο σελίδων"
-
-#: ../gedit/gedit-print-preview.c:622
-msgid "The total number of pages in the document"
-msgstr "Ο συνολικός αριθμός σελίδων στο έγγραφο"
-
-#: ../gedit/gedit-print-preview.c:639
-msgid "Show multiple pages"
-msgstr "Προβολή πολλαπλών σελίδων"
-
-#: ../gedit/gedit-print-preview.c:652
-msgid "Zoom 1:1"
-msgstr "Εστίαση 1:1"
-
-#: ../gedit/gedit-print-preview.c:661
-msgid "Zoom to fit the whole page"
-msgstr "Προσαρμογή εστίασης σε όλη τη σελίδα"
-
-#: ../gedit/gedit-print-preview.c:670
-msgid "Zoom the page in"
-msgstr "Εστίαση στη σελίδα"
-
-#: ../gedit/gedit-print-preview.c:679
-msgid "Zoom the page out"
-msgstr "Άρση εστίασης στη σελίδα"
-
-#: ../gedit/gedit-print-preview.c:691
-msgid "_Close Preview"
-msgstr "_Κλείσιμο προεπισκόπησης"
-
-#: ../gedit/gedit-print-preview.c:694
-msgid "Close print preview"
-msgstr "Κλείσιμο προεπισκόπησης εκτύπωσης"
-
-#: ../gedit/gedit-print-preview.c:763
+#: ../gedit/gedit-print-preview.c:616
 #, c-format
 msgid "Page %d of %d"
 msgstr "Σελίδα %d από %d"
 
-#: ../gedit/gedit-print-preview.c:947
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-print-preview.ui.h:1
+msgid "Show the previous page"
+msgstr "Προβολή της προηγούμενης σελίδας"
+
+#: ../gedit/gedit-print-preview.ui.h:2
+#| msgid "P_revious Tab Group"
+msgid "P_revious Page"
+msgstr "Π_ροηγούμενη σελίδα"
+
+#: ../gedit/gedit-print-preview.ui.h:3
+msgid "Show the next page"
+msgstr "Προβολή της επόμενης σελίδας"
+
+#: ../gedit/gedit-print-preview.ui.h:4
+msgid "_Next Page"
+msgstr "Επόμε_νη σελίδα"
+
+#: ../gedit/gedit-print-preview.ui.h:5
+msgid "Current page (Alt+P)"
+msgstr "Τρέχουσα σελίδα (Alt+P)"
+
+#. the "of" from "1 of 19" in print preview
+#: ../gedit/gedit-print-preview.ui.h:7
+msgid "of"
+msgstr "από"
+
+#: ../gedit/gedit-print-preview.ui.h:8
+msgid "Page total"
+msgstr "Σύνολο σελίδων"
+
+#: ../gedit/gedit-print-preview.ui.h:9
+msgid "The total number of pages in the document"
+msgstr "Ο συνολικός αριθμός σελίδων στο έγγραφο"
+
+#: ../gedit/gedit-print-preview.ui.h:10
+msgid "Show multiple pages"
+msgstr "Προβολή πολλαπλών σελίδων"
+
+#: ../gedit/gedit-print-preview.ui.h:11
+msgid "Zoom 1:1"
+msgstr "Εστίαση 1:1"
+
+#: ../gedit/gedit-print-preview.ui.h:12
+msgid "Zoom to fit the whole page"
+msgstr "Προσαρμογή εστίασης σε όλη τη σελίδα"
+
+#: ../gedit/gedit-print-preview.ui.h:13
+msgid "Zoom the page in"
+msgstr "Εστίαση στη σελίδα"
+
+#: ../gedit/gedit-print-preview.ui.h:14
+msgid "Zoom the page out"
+msgstr "Άρση εστίασης στη σελίδα"
+
+#: ../gedit/gedit-print-preview.ui.h:15
+msgid "Close print preview"
+msgstr "Κλείσιμο προεπισκόπησης εκτύπωσης"
+
+#: ../gedit/gedit-print-preview.ui.h:16
+msgid "_Close Preview"
+msgstr "_Κλείσιμο προεπισκόπησης"
+
+#: ../gedit/gedit-print-preview.ui.h:17
 msgid "Page Preview"
 msgstr "Προεπισκόπηση σελίδας"
 
-#: ../gedit/gedit-print-preview.c:948
+#: ../gedit/gedit-print-preview.ui.h:18
 msgid "The preview of a page in the document to be printed"
 msgstr "Η προεπισκόπηση της σελίδας του εγγράφου που θα εκτυπωθεί"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.c:220 ../gedit/gedit-replace-dialog.ui.h:1
-#: ../gedit/gedit-window.c:1532
+#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1241
 msgid "Replace"
 msgstr "Αντικατάσταση"
 
-#: ../gedit/gedit-replace-dialog.c:282
+#: ../gedit/gedit-replace-dialog.ui.h:2
 msgid "Replace _All"
 msgstr "Αντικατάσταση ό_λων"
 
-#: ../gedit/gedit-replace-dialog.ui.h:2
-msgid "Replace All"
-msgstr "Αντικατάσταση όλων"
-
-#: ../gedit/gedit-replace-dialog.ui.h:3
+#: ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Search for: "
 msgstr "Α_ναζήτηση για: "
 
-#: ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-replace-dialog.ui.h:5
 msgid "Replace _with: "
 msgstr "Αντικατάσταση _με: "
 
-#: ../gedit/gedit-replace-dialog.ui.h:5
+#: ../gedit/gedit-replace-dialog.ui.h:6
 msgid "_Match case"
 msgstr "_Διάκριση πεζών από κεφαλαία"
 
-#: ../gedit/gedit-replace-dialog.ui.h:6
+#: ../gedit/gedit-replace-dialog.ui.h:7
 msgid "Match _entire word only"
 msgstr "Ταίριασμα ο_λόκληρης λέξης μόνο"
 
-#: ../gedit/gedit-replace-dialog.ui.h:7
+#: ../gedit/gedit-replace-dialog.ui.h:8
 msgid "Search _backwards"
 msgstr "Αναζήτηση προς τα _πίσω"
 
-#: ../gedit/gedit-replace-dialog.ui.h:8
+#: ../gedit/gedit-replace-dialog.ui.h:9
 msgid "_Wrap around"
 msgstr "Αναδίπλ_ωση γύρω"
 
@@ -2128,160 +2148,166 @@ msgstr "Επιλογή ολόκληρου του εγγράφου"
 
 #. View menu
 #: ../gedit/gedit-ui.h:104
-msgid "_Highlight Mode"
-msgstr "Λειτουργία _επισήμανσης"
+#| msgid "_Highlight Mode"
+msgid "_Highlight Mode..."
+msgstr "Λειτουργία _επισήμανσης..."
+
+#: ../gedit/gedit-ui.h:105
+#| msgid "Checks the spelling of the current document."
+msgid "Changes the highlight mode of the active document"
+msgstr "Αλλάζει την λειτουργία επισήμανσης του ενεργού εγγράφου"
 
 #. Search menu
-#: ../gedit/gedit-ui.h:107
+#: ../gedit/gedit-ui.h:109
 msgid "_Find..."
 msgstr "_Εύρεση..."
 
-#: ../gedit/gedit-ui.h:108
+#: ../gedit/gedit-ui.h:110
 msgid "Search for text"
 msgstr "Αναζήτηση για κείμενο"
 
-#: ../gedit/gedit-ui.h:109
+#: ../gedit/gedit-ui.h:111
 msgid "Find Ne_xt"
 msgstr "Εύρεση επομέ_νου"
 
-#: ../gedit/gedit-ui.h:110
+#: ../gedit/gedit-ui.h:112
 msgid "Search forwards for the same text"
 msgstr "Αναζήτηση προς τα πίσω για το ίδιο κείμενο"
 
-#: ../gedit/gedit-ui.h:111
+#: ../gedit/gedit-ui.h:113
 msgid "Find Pre_vious"
 msgstr "Εύρεση προη_γουμένου"
 
-#: ../gedit/gedit-ui.h:112
+#: ../gedit/gedit-ui.h:114
 msgid "Search backwards for the same text"
 msgstr "Αναζήτηση προς τα πίσω για το ίδιο κείμενο"
 
-#: ../gedit/gedit-ui.h:114 ../gedit/gedit-ui.h:117
+#: ../gedit/gedit-ui.h:116 ../gedit/gedit-ui.h:119
 msgid "_Replace..."
 msgstr "_Αντικατάσταση..."
 
-#: ../gedit/gedit-ui.h:115 ../gedit/gedit-ui.h:118
+#: ../gedit/gedit-ui.h:117 ../gedit/gedit-ui.h:120
 msgid "Search for and replace text"
 msgstr "Εύρεση και αντικατάσταση κειμένου"
 
-#: ../gedit/gedit-ui.h:120
+#: ../gedit/gedit-ui.h:122
 msgid "_Clear Highlight"
 msgstr "Εκκα_θάριση επισήμανσης"
 
-#: ../gedit/gedit-ui.h:121
+#: ../gedit/gedit-ui.h:123
 msgid "Clear highlighting of search matches"
 msgstr "Εκκαθάριση επισήμανσης ταιριασμάτων αναζήτησης"
 
-#: ../gedit/gedit-ui.h:122
+#: ../gedit/gedit-ui.h:124
 msgid "Go to _Line..."
 msgstr "Μετάβαση σε γρα_μμή..."
 
-#: ../gedit/gedit-ui.h:123
+#: ../gedit/gedit-ui.h:125
 msgid "Go to a specific line"
 msgstr "Μετάβαση σε συγκεκριμένη γραμμή"
 
 #. Documents menu
-#: ../gedit/gedit-ui.h:126
+#: ../gedit/gedit-ui.h:128
 msgid "_Save All"
 msgstr "_Αποθήκευση όλων"
 
-#: ../gedit/gedit-ui.h:127
+#: ../gedit/gedit-ui.h:129
 msgid "Save all open files"
 msgstr "Αποθήκευση όλων των ανοιχτών εγγράφων"
 
-#: ../gedit/gedit-ui.h:128
+#: ../gedit/gedit-ui.h:130
 msgid "_Close All"
 msgstr "_Κλείσιμο όλων"
 
-#: ../gedit/gedit-ui.h:129
+#: ../gedit/gedit-ui.h:131
 msgid "Close all open files"
 msgstr "Κλείσιμο όλων των ανοιχτών εγγράφων"
 
-#: ../gedit/gedit-ui.h:130
+#: ../gedit/gedit-ui.h:132
 msgid "_New Tab Group"
 msgstr "_Νέα ομάδα καρτελών"
 
-#: ../gedit/gedit-ui.h:131
+#: ../gedit/gedit-ui.h:133
 msgid "Create a new tab group"
 msgstr "Δημιουργία νέας ομάδας καρτελών"
 
-#: ../gedit/gedit-ui.h:132
+#: ../gedit/gedit-ui.h:134
 msgid "P_revious Tab Group"
 msgstr "Π_ροηγούμενη ομάδα καρτελών"
 
-#: ../gedit/gedit-ui.h:133
+#: ../gedit/gedit-ui.h:135
 msgid "Switch to the previous tab group"
 msgstr "Αλλαγή στην προηγούμενη ομάδα καρτελών"
 
-#: ../gedit/gedit-ui.h:134
+#: ../gedit/gedit-ui.h:136
 msgid "Nex_t Tab Group"
 msgstr "Επό_μενη ομάδα καρτελών"
 
-#: ../gedit/gedit-ui.h:135
+#: ../gedit/gedit-ui.h:137
 msgid "Switch to the next tab group"
 msgstr "Αλλαγή στην επόμενη ομάδα καρτελών"
 
-#: ../gedit/gedit-ui.h:136
+#: ../gedit/gedit-ui.h:138
 msgid "_Previous Document"
 msgstr "_Προηγούμενα έγγραφα"
 
-#: ../gedit/gedit-ui.h:137
+#: ../gedit/gedit-ui.h:139
 msgid "Activate previous document"
 msgstr "Ενεργοποίηση προηγούμενου εγγράφου"
 
-#: ../gedit/gedit-ui.h:138
+#: ../gedit/gedit-ui.h:140
 msgid "N_ext Document"
 msgstr "Ε_πόμενο έγγραφο"
 
-#: ../gedit/gedit-ui.h:139
+#: ../gedit/gedit-ui.h:141
 msgid "Activate next document"
 msgstr "Ενεργοποίηση επόμενου εγγράφου"
 
-#: ../gedit/gedit-ui.h:141
+#: ../gedit/gedit-ui.h:143
 msgid "Move the current document to a new window"
 msgstr "Μετακίνηση του τρέχοντος εγγράφου σε νέο παράθυρο"
 
-#: ../gedit/gedit-ui.h:148
+#: ../gedit/gedit-ui.h:150
 msgid "Close the current file"
 msgstr "Κλείσιμο του τρέχοντος αρχείου"
 
-#: ../gedit/gedit-ui.h:155
+#: ../gedit/gedit-ui.h:157
 msgid "Quit the program"
 msgstr "Έξοδος από το πρόγραμμα"
 
-#: ../gedit/gedit-ui.h:160
+#: ../gedit/gedit-ui.h:162
 msgid "_Toolbar"
 msgstr "_Εργαλειοθήκη"
 
-#: ../gedit/gedit-ui.h:161
+#: ../gedit/gedit-ui.h:163
 msgid "Show or hide the toolbar in the current window"
 msgstr "Αλλαγή της ορατότητας της εργαλειοθήκης στο τρέχον παράθυρο"
 
-#: ../gedit/gedit-ui.h:163
+#: ../gedit/gedit-ui.h:165
 msgid "_Statusbar"
 msgstr "_Γραμμή κατάστασης"
 
-#: ../gedit/gedit-ui.h:164
+#: ../gedit/gedit-ui.h:166
 msgid "Show or hide the statusbar in the current window"
 msgstr "Αλλαγή της ορατότητας της γραμμής κατάστασης στο τρέχον παράθυρο"
 
-#: ../gedit/gedit-ui.h:167
+#: ../gedit/gedit-ui.h:169
 msgid "Edit text in fullscreen"
 msgstr "Επεξεργασία κειμένου σε πλήρη οθόνη"
 
-#: ../gedit/gedit-ui.h:174
+#: ../gedit/gedit-ui.h:176
 msgid "Side _Panel"
 msgstr "_Πλευρική στήλη"
 
-#: ../gedit/gedit-ui.h:175
+#: ../gedit/gedit-ui.h:177
 msgid "Show or hide the side panel in the current window"
 msgstr "Εμφάνιση ή απόκρυψη της πλευρικής στήλης στο τρέχον παράθυρο"
 
-#: ../gedit/gedit-ui.h:177
+#: ../gedit/gedit-ui.h:179
 msgid "_Bottom Panel"
 msgstr "_Κάτω πλαίσιο"
 
-#: ../gedit/gedit-ui.h:178
+#: ../gedit/gedit-ui.h:180
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Εμφάνιση ή απόκρυψη του κάτω πλαισίου στο τρέχον παράθυρο"
 
@@ -2306,94 +2332,76 @@ msgid "/ on %s"
 msgstr "/ στο %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:537
+#: ../gedit/gedit-view-frame.c:535
 msgid "_Wrap Around"
 msgstr "Αναδίπλ_ωση γύρω"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:547
+#: ../gedit/gedit-view-frame.c:545
 msgid "Match _Entire Word Only"
 msgstr "Ταίριασμα ο_λόκληρης λέξης μόνο"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:557
+#: ../gedit/gedit-view-frame.c:555
 msgid "_Match Case"
 msgstr "_Διάκριση πεζών από κεφαλαία"
 
-#: ../gedit/gedit-view-frame.c:754
+#: ../gedit/gedit-view-frame.c:752
 msgid "String you want to search for"
 msgstr "Αλφαριθμητικό προς αναζήτηση"
 
-#: ../gedit/gedit-view-frame.c:764
+#: ../gedit/gedit-view-frame.c:762
 msgid "Line you want to move the cursor to"
 msgstr "Η γραμμή στην οποία θέλετε μετακινηθεί ο δρομέας"
 
-#: ../gedit/gedit-window.c:942
-#, c-format
-msgid "Use %s highlight mode"
-msgstr "Χρήση %s λειτουργίας επισήμανσης"
-
-#. add the "Plain Text" item before all the others
-#. Translators: "Plain Text" means that no highlight mode is selected in the
-#. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-#: ../gedit/gedit-window.c:1051 ../gedit/gedit-window.c:2078
-#: ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:462
-#: ../plugins/externaltools/tools/manager.py:578
-#: ../plugins/externaltools/tools/manager.py:902
-msgid "Plain Text"
-msgstr "Απλό κείμενο"
-
-#: ../gedit/gedit-window.c:1052
-msgid "Disable syntax highlighting"
-msgstr "Απενεργοποίηση επισήμανσης σύνταξης"
-
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1369
+#: ../gedit/gedit-window.c:1073
 #, c-format
 msgid "Open '%s'"
 msgstr "Άνοιγμα '%s'"
 
-#: ../gedit/gedit-window.c:1526
+#: ../gedit/gedit-window.c:1235
 msgid "Save"
 msgstr "Αποθήκευση"
 
-#: ../gedit/gedit-window.c:1528
+#: ../gedit/gedit-window.c:1237
 msgid "Print"
 msgstr "Εκτύπωση"
 
-#: ../gedit/gedit-window.c:1530
+#: ../gedit/gedit-window.c:1239
 msgid "Find"
 msgstr "Εύρεση"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1702
+#: ../gedit/gedit-window.c:1403
 #, c-format
 msgid "Activate '%s'"
 msgstr "Ενεργοποίηση '%s'"
 
-#: ../gedit/gedit-window.c:2059
+#: ../gedit/gedit-window.c:1749
 msgid "Use Spaces"
 msgstr "Χρήση διαστημάτων"
 
-#: ../gedit/gedit-window.c:2135
-msgid "Tab Width"
-msgstr "Πλάτος στηλοθέτη"
-
-#: ../gedit/gedit-window.c:2244
+#: ../gedit/gedit-window.c:1942
 msgid "Bracket match is out of range"
 msgstr "Το ταίριασμα των αγκύλων είναι εκτός εύρους"
 
-#: ../gedit/gedit-window.c:2249
+#: ../gedit/gedit-window.c:1947
 msgid "Bracket match not found"
 msgstr "Δεν βρέθηκε ταίριασμα αγκυλών"
 
-#: ../gedit/gedit-window.c:2254
+#: ../gedit/gedit-window.c:1952
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Ταίριασμα αγκυλών βρέθηκε στην γραμμή:%d"
 
-#: ../gedit/gedit-window.c:2859
+#: ../gedit/gedit-window.c:2136
+#, c-format
+#| msgid "Tab Width"
+msgid "Tab Width: %u"
+msgstr "Πλάτος στηλοθέτη: %u"
+
+#: ../gedit/gedit-window.c:2491
 msgid "There are unsaved documents"
 msgstr "Υπάρχουν μη αποθηκευμένα έγγραφα"
 
@@ -2492,10 +2500,11 @@ msgid "Document Statistics"
 msgstr "Στατιστικά εγγράφου"
 
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
-msgid ""
-"Analyzes the current document and reports the number of words, lines, "
-"characters and non-space characters in it."
-msgstr "Καταμέτρηση λέξεων, γραμμών, χαρακτήρων και χαρακτήρων χωρίς κενά."
+#| msgid ""
+#| "Analyzes the current document and reports the number of words, lines, "
+#| "characters and non-space characters in it."
+msgid "Report the number of words, lines and characters in a document."
+msgstr "Αναφορά του αριθμού λέξεων, γραμμών, χαρακτήρων σε ένα έγγραφο."
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:427
 msgid "_Document Statistics"
@@ -2617,20 +2626,20 @@ msgstr ""
 msgid "Could not execute command: %s"
 msgstr "Αδύνατη η εκτέλεση της εντολής: %s"
 
-#: ../plugins/externaltools/tools/functions.py:157
+#: ../plugins/externaltools/tools/functions.py:175
 msgid "You must be inside a word to run this command"
 msgstr ""
 "Θα πρέπει να βρίσκεστε μέσα σε μια λέξη για να εκτελέσετε αυτή την εντολή"
 
-#: ../plugins/externaltools/tools/functions.py:263
+#: ../plugins/externaltools/tools/functions.py:281
 msgid "Running tool:"
 msgstr "Εργαλείο σε εκτέλεση:"
 
-#: ../plugins/externaltools/tools/functions.py:292
+#: ../plugins/externaltools/tools/functions.py:310
 msgid "Done."
 msgstr "Ολοκληρώθηκε."
 
-#: ../plugins/externaltools/tools/functions.py:294
+#: ../plugins/externaltools/tools/functions.py:312
 msgid "Exited"
 msgstr "Τερματίστηκε"
 
@@ -2668,7 +2677,6 @@ msgstr "Διακόπηκε."
 
 #. ex:ts=4:et:
 #: ../plugins/externaltools/tools/outputpanel.ui.h:1
-#| msgid "Remove Tool"
 msgid "Stop Tool"
 msgstr "Παύση εργαλείου"
 
@@ -2814,8 +2822,9 @@ msgid "External tools"
 msgstr "Εξωτερικά εργαλεία"
 
 #: ../plugins/externaltools/tools/windowactivatable.py:212
-msgid "Shell Output"
-msgstr "Αποτέλεσμα κελύφους"
+#| msgid "Shell Output"
+msgid "Tool Output"
+msgstr "Έξοδος εργαλείου"
 
 #. ex:ts=4:et:
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
@@ -3575,7 +3584,6 @@ msgstr "Δεν υπάρχουν ανορθόγραφες λέξεις"
 
 #. ex:ts=8:noet:
 #: ../plugins/spell/languages-dialog.ui.h:1
-#| msgid "Set language"
 msgid "Set Language"
 msgstr "Ορισμός γλώσσας"
 
@@ -3751,6 +3759,15 @@ msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Καταγράφει την πρόσβαση και την έξοδο σε έγγραφα που χρησιμοποιούνται με το "
 "gedit"
+
+#~ msgid "Character Encodings"
+#~ msgstr "Κωδικοποιήσεις χαρακτήρων"
+
+#~ msgid "Replace All"
+#~ msgstr "Αντικατάσταση όλων"
+
+#~ msgid "Disable syntax highlighting"
+#~ msgstr "Απενεργοποίηση επισήμανσης σύνταξης"
 
 #~ msgid "Open Files"
 #~ msgstr "Άνοιγμα αρχείων"
