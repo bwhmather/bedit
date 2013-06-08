@@ -142,8 +142,8 @@ _gedit_cmd_view_leave_fullscreen_mode (GtkAction   *action,
 
 static void
 on_language_selected (GeditHighlightModeDialog *dlg,
-                      GtkSourceLanguage *language,
-                      GeditWindow *window)
+                      GtkSourceLanguage        *language,
+                      GeditWindow              *window)
 {
 	GeditDocument *doc;
 
@@ -160,8 +160,17 @@ _gedit_cmd_view_highlight_mode (GtkAction   *action,
                                 GeditWindow *window)
 {
 	GtkWidget *dlg;
+	GeditDocument *doc;
 
 	dlg = gedit_highlight_mode_dialog_new (GTK_WINDOW (window));
+
+	doc = gedit_window_get_active_document (window);
+	if (doc)
+	{
+		gedit_highlight_mode_dialog_select_language (GEDIT_HIGHLIGHT_MODE_DIALOG (dlg),
+		                                             gedit_document_get_language (doc));
+	}
+
 	g_signal_connect (dlg, "language-selected",
 	                  G_CALLBACK (on_language_selected), window);
 

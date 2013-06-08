@@ -59,6 +59,9 @@ GType                    gedit_highlight_mode_dialog_get_type        (void) G_GN
 
 GtkWidget               *gedit_highlight_mode_dialog_new             (GtkWindow *parent);
 
+void                     gedit_highlight_mode_dialog_select_language (GeditHighlightModeDialog *dlg,
+                                                                      GtkSourceLanguage        *language);
+
 G_END_DECLS
 
 #endif /* __GEDIT_HIGHLIGHT_MODE_DIALOG_H__ */

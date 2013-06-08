@@ -342,4 +342,52 @@ gedit_highlight_mode_dialog_new (GtkWindow *parent)
 	                                 NULL));
 }
 
+void
+gedit_highlight_mode_dialog_select_language (GeditHighlightModeDialog *dlg,
+                                             GtkSourceLanguage        *language)
+{
+	GtkTreeIter iter;
+
+	g_return_if_fail (GEDIT_IS_HIGHLIGHT_MODE_DIALOG (dlg));
+
+	if (language == NULL)
+	{
+		return;
+	}
+
+	if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (dlg->priv->treemodelfilter), &iter))
+	{
+		do
+		{
+			GtkSourceLanguage *lang;
+
+			gtk_tree_model_get (GTK_TREE_MODEL (dlg->priv->treemodelfilter),
+			                    &iter,
+			                    COLUMN_LANG, &lang,
+			                    -1);
+
+			if (lang != NULL)
+			{
+				gboolean equal = (lang == language);
+
+				g_object_unref (lang);
+
+				if (equal)
+				{
+					GtkTreePath *path;
+
+					path = gtk_tree_model_get_path (GTK_TREE_MODEL (dlg->priv->treemodelfilter), &iter);
+
+					gtk_tree_selection_select_iter (dlg->priv->treeview_selection, &iter);
+					gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (dlg->priv->treeview),
+					                              path, NULL, TRUE, 0.5, 0);
+					gtk_tree_path_free (path);
+					break;
+				}
+			}
+		}
+		while (gtk_tree_model_iter_next (GTK_TREE_MODEL (dlg->priv->treemodelfilter), &iter));
+	}
+}
+
 /* ex:set ts=8 noet: */
