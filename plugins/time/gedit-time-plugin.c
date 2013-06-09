@@ -1031,8 +1031,6 @@ gedit_time_plugin_create_configure_widget (PeasGtkConfigurable *configurable)
 
 	widget = get_configure_widget (GEDIT_TIME_PLUGIN (configurable));
 
-	/* FIXME: memory leak? Only widget->content is freed, not the entire
-	 * struct. */
 	return widget->content;
 }
 
