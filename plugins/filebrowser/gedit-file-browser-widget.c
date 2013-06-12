@@ -2477,7 +2477,7 @@ do_change_directory (GeditFileBrowserWidget *obj,
 
 	if (action != NULL)
 	{
-		g_action_activate (action, g_variant_new_boolean (TRUE));
+		g_action_activate (action, NULL);
 		return TRUE;
 	}
 
