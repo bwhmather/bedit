@@ -34,8 +34,6 @@ PKG_PROG_PKG_CONFIG
 # needed on osx
 AC_PROG_OBJC
 
-AM_PATH_PYTHON(3.2.3)
-
 # Initialize libtool
 LT_PREREQ([2.2.6])
 LT_INIT(disable-static)
@@ -308,6 +306,7 @@ if test "x$enable_python" = "xauto"; then
 fi
 
 if test "x$enable_python" = "xyes"; then
+	AM_PATH_PYTHON(3.2.3)
 	PKG_CHECK_MODULES(PYTHON, [pygobject-3.0 >= $PYGOBJECT_REQUIRED])
 
 	pyoverridesdir=`$PYTHON -c "import gi; print(gi._overridesdir)"`
