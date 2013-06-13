@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2013-05-16 22:49+0000\n"
-"PO-Revision-Date: 2013-05-17 12:38+0200\n"
+"POT-Creation-Date: 2013-06-07 13:48+0000\n"
+"PO-Revision-Date: 2013-06-13 14:11+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -93,8 +93,6 @@ msgid "Sindhu S"
 msgstr "Sindhu S"
 
 #: C/index.page:25(page/title)
-#| msgctxt "link"
-#| msgid "gedit Text Editor"
 msgid "<_:media-1/> gedit Text Editor"
 msgstr "<_:media-1/> Editor de textos gedit"
 
@@ -1380,6 +1378,7 @@ msgstr ""
 "inferior."
 
 #: C/gedit-plugins-quick-open.page:14(credit/name)
+#: C/gedit-plugins-zeitgeist-dataprovider.page:10(credit/name)
 msgid "Shobha Tyagi"
 msgstr "Shobha Tyagi"
 
@@ -1539,7 +1538,9 @@ msgid "To enable the <gui>Snippets</gui> plugin:"
 msgstr "Para activar el complemento <gui>Recortes</gui>:"
 
 #: C/gedit-plugins-snippets.page:35(item/p)
-#: C/gedit-plugins-sort.page:44(item/p) C/gedit-spellcheck.page:35(item/p)
+#: C/gedit-plugins-sort.page:44(item/p)
+#: C/gedit-plugins-zeitgeist-dataprovider.page:29(item/p)
+#: C/gedit-spellcheck.page:35(item/p)
 msgid ""
 "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
 "\">Preferences</gui> <gui style=\"tab\">Plugins</gui></guiseq>."
@@ -1889,6 +1890,39 @@ msgstr ""
 #: C/gedit-plugins-sort.page:91(item/p)
 msgid "To perform the sort operation, click <gui>Sort</gui>."
 msgstr "Para efectuar la ordenación pulse el botón <gui>Ordenar</gui>."
+
+#: C/gedit-plugins-zeitgeist-dataprovider.page:15(info/desc)
+msgid "Log user activity for documents which are opened in gedit"
+msgstr "Registrar la actividad del usuario para documentos abiertos en gedit"
+
+#: C/gedit-plugins-zeitgeist-dataprovider.page:18(page/title)
+msgid "Zeitgeist dataprovider"
+msgstr "Proveedor de datos de Zeitgeist"
+
+#: C/gedit-plugins-zeitgeist-dataprovider.page:20(page/p)
+msgid ""
+"Zeitgeist is a service that logs user activities and events. Zeitgeist lets "
+"other applications access this information in the form of statistics and "
+"timelines.The Zeitgeist dataprovider plugin for <app>gedit</app> records "
+"user activity for documents used with gedit giving easy access to recently-"
+"used and frequently-used files."
+msgstr ""
+"Zeitgeist es un servicio que registra la actividad del usuario y los "
+"eventos. Zeitgeist permite a otras aplicaciones acceder a esta información "
+"en forma de estadísticas y líneas de tiempo. El complemento Proveedor de "
+"datos de Zeitgeist para <app>gedit</app> registra la actividad del usuario "
+"para documentos usados con gedit, permitiendo el acceso a los últimos "
+"archivos usados y a los más frecuentemente usados con facilidad."
+
+#: C/gedit-plugins-zeitgeist-dataprovider.page:27(steps/title)
+msgid "Enable Zeitgeist dataprovider"
+msgstr "Activa el proveedor de datos de Zeitgeist"
+
+#: C/gedit-plugins-zeitgeist-dataprovider.page:34(item/p)
+#| msgid "Select <gui style=\"menuitem\">Snippets</gui> to enable the plugin."
+msgid "Select <gui style=\"menuitem\">Zietgeist Dataprovider</gui>."
+msgstr ""
+"Seleccione <gui style=\"menuitem\">Proveedor de datos de Zietgeist</gui>."
 
 #: C/gedit-printing-order.page:10(credit/name)
 #: C/gedit-printing-select.page:9(credit/name)
@@ -3321,17 +3355,10 @@ msgstr ""
 "panel lateral hará que su contenido se muestre en el área de trabajo."
 
 #: C/gedit-view-open-files-in-sidepane.page:39(media/span)
-#| msgid "Document statistics"
 msgid "documents icon"
 msgstr "icono de documentos"
 
 #: C/gedit-view-open-files-in-sidepane.page:37(page/p)
-#| msgid ""
-#| "The side pane also contains a <app>File Browser</app> view. If the pane "
-#| "displays a file directory instead of currently open files, click <media "
-#| "type=\"image\" mime=\"image/png\" src=\"figures/gedit-side-pane2.png"
-#| "\">documents icon</media> at the bottom of the pane to switch to the "
-#| "<app>Documents</app> view."
 msgid ""
 "The side pane also contains a <app>File Browser</app> view. If the pane "
 "displays a file directory instead of currently open files, click <_:media-1/"
