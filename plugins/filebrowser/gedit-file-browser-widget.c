@@ -203,6 +203,9 @@ static void next_location_activated            (GSimpleAction          *action,
 static void up_activated                       (GSimpleAction          *action,
                                                 GVariant               *parameter,
                                                 gpointer                user_data);
+static void home_activated                     (GSimpleAction          *action,
+                                                GVariant               *parameter,
+                                                gpointer                user_data);
 static void new_folder_activated               (GSimpleAction          *action,
                                                 GVariant               *parameter,
                                                 gpointer                user_data);
@@ -912,7 +915,8 @@ static GActionEntry browser_entries[] = {
 	{ "show_binary", activate_toggle, NULL, "false", change_show_binary_state },
 	{ "previous_location", previous_location_activated },
 	{ "next_location", next_location_activated },
-	{ "up", up_activated }
+	{ "up", up_activated },
+	{ "home", home_activated }
 };
 
 static void
@@ -1054,6 +1058,9 @@ update_sensitivity (GeditFileBrowserWidget *obj)
 		action = g_simple_action_group_lookup (obj->priv->action_group,
 		                                       "up");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
+		action = g_simple_action_group_lookup (obj->priv->action_group,
+		                                       "home");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
 
 		action = g_simple_action_group_lookup (obj->priv->action_group,
 		                                       "show_hidden");
@@ -1074,6 +1081,9 @@ update_sensitivity (GeditFileBrowserWidget *obj)
 		/* sensitivity */
 		action = g_simple_action_group_lookup (obj->priv->action_group,
 		                                       "up");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
+		action = g_simple_action_group_lookup (obj->priv->action_group,
+		                                       "home");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 
 		action = g_simple_action_group_lookup (obj->priv->action_group,
@@ -2459,6 +2469,10 @@ do_change_directory (GeditFileBrowserWidget *obj,
 
 	switch (event->keyval)
 	{
+		case GDK_KEY_Home:
+			action = g_simple_action_group_lookup (obj->priv->action_group,
+			                                       "home");
+			break;
 		case GDK_KEY_Left:
 			action = g_simple_action_group_lookup (obj->priv->action_group,
 			                                       "previous_location");
@@ -2689,6 +2703,28 @@ up_activated (GSimpleAction *action,
 		return;
 
 	gedit_file_browser_store_set_virtual_root_up (GEDIT_FILE_BROWSER_STORE (model));
+}
+
+static void
+home_activated (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       user_data)
+{
+	GeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET (user_data);
+	GtkTreeModel *model;
+	GFile *home_location;
+
+	model = gtk_tree_view_get_model (GTK_TREE_VIEW (widget->priv->treeview));
+
+	if (!GEDIT_IS_FILE_BROWSER_STORE (model))
+		return;
+
+	home_location = g_file_new_for_path (g_get_home_dir ());
+
+	gedit_file_browser_store_set_virtual_root_from_location (GEDIT_FILE_BROWSER_STORE (model),
+	                                                         home_location);
+
+	g_object_unref (home_location);
 }
 
 static void
