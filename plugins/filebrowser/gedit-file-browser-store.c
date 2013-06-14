@@ -1099,12 +1099,6 @@ model_sort_default (FileBrowserNode *node1,
 	if (f1 != f2)
 		return f1 ? -1 : 1;
 
-	f1 = NODE_IS_HIDDEN (node1);
-	f2 = NODE_IS_HIDDEN (node2);
-
-	if (f1 != f2)
-		return f2 ? -1 : 1;
-
 	return collate_nodes (node1, node2);
 }
 
