@@ -67,8 +67,8 @@ class ToolMenu(object):
     def _insert_directory(self, directory, path):
         ui_manager = self._window.get_ui_manager()
 
-        for item in directory.subdirs:
-            action_name = 'ExternalToolDirectory%X' % id(item)
+        for item in sorted(directory.subdirs, key=lambda x: x.name.lower()):
+            action_name = 'ExternalToolDirectory_%X_%X' % (id(item), id(item.name))
             action = Gtk.Action(action_name, item.name.replace('_', '__'), None, None)
             self._action_group.add_action(action)
 
@@ -78,8 +78,8 @@ class ToolMenu(object):
                            
             self._insert_directory(item, path + '/' + action_name)
 
-        for item in directory.tools:
-            action_name = 'ExternalToolTool%X' % id(item)
+        for item in sorted(directory.tools, key=lambda x: x.name.lower()):
+            action_name = 'ExternalToolTool_%X_%X' % (id(item), id(item.name))
             action = Gtk.Action(action_name, item.name.replace('_', '__'), item.comment, None)
             handler = action.connect("activate", capture_menu_action, self._window, self._panel, item)
 
