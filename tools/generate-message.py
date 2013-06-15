@@ -56,18 +56,20 @@ class ParamSpec:
         argstr = ''
 
         if self.args:
-            ret = (",\n%s" % (indent,)).join(map(lambda x: str(x), self.args))
+            ret = (",\n%s" % (indent,)).join(str(x) for x in self.args)
             argstr = "\n%s%s," % (indent, ret)
 
+        flags = (' |\n%s' % (indent,)).join(x.strip() for x in self.flags.split('|'))
+
         return "%s (%s,\n%s%s,\n%s%s,%s\n%s%s)" % (name,
-                                                 self.format_str(self.name),
-                                                 indent,
-                                                 self.format_str(self.nick),
-                                                 indent,
-                                                 self.format_str(self.desc),
-                                                 argstr,
-                                                 indent,
-                                                 (' |\n%s' % (indent,)).join([x.strip() for x in self.flags.split('|')]))
+                                                   self.format_str(self.name),
+                                                   indent,
+                                                   self.format_str(self.nick),
+                                                   indent,
+                                                   self.format_str(self.desc),
+                                                   argstr,
+                                                   indent,
+                                                   flags)
 
     def write(self):
         delim = "\n" + (" " * 33)
@@ -88,7 +90,7 @@ class ParamSpecTyped(ParamSpec):
             parts = kwargs['gtype'].split('_')
             del parts[1]
 
-            self._ctype = '%s *' % (''.join([x.title() for x in parts]),)
+            self._ctype = '%s *' % (''.join(x.title() for x in parts),)
 
         self.args.append(kwargs['gtype'])
 
@@ -406,7 +408,7 @@ class Message:
         self.ns_upper = self.namespace.upper()
         self.ns_lower = self.namespace.lower()
 
-        self.name_upper = '_'.join([x.upper() for x in parts])
+        self.name_upper = '_'.join(x.upper() for x in parts)
         self.name_lower = self.name_upper.lower()
 
         self.cname_upper = '%s_%s' % (self.ns_upper, self.name_upper)
@@ -416,7 +418,7 @@ class Message:
         self.cclass = '%s%sClass' % (self.namespace, self.name)
 
         self.cobj = '%s%s' % (self.namespace, self.name)
-        self.filename = '%s-%s' % (self.ns_lower, '-'.join([x.lower() for x in parts]))
+        self.filename = '%s-%s' % (self.ns_lower, '-'.join(x.lower() for x in parts))
 
     def normalize_name(self, name):
         if not name:
@@ -425,7 +427,7 @@ class Message:
         return name.replace('_', '-')
 
     def parse_flags(self, flags):
-        return ' | '.join(['G_PARAM_' + x.strip().replace('-', '_').upper() for x in flags.split('|')])
+        return ' | '.join('G_PARAM_' + x.strip().replace('-', '_').upper() for x in flags.split('|'))
 
     def add_prop(self, elem):
         name = self.normalize_name(elem.get('name'))
