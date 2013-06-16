@@ -13,6 +13,14 @@
       <column type="guint"/>
     </columns>
   </object>
+  <object class="GtkMenu" id="location_previous_menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+  </object>
+  <object class="GtkMenu" id="location_next_menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+  </object>
   <template class="GeditFileBrowserWidget" parent="GtkGrid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -40,7 +48,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkButton" id="button1">
+                  <object class="GtkButton" id="previous_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
@@ -61,7 +69,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="button2">
+                  <object class="GtkButton" id="next_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>

@@ -124,6 +124,9 @@ struct _GeditFileBrowserWidgetPrivate
 	GMenuModel *dir_menu;
 	GMenuModel *bookmarks_menu;
 
+	GtkWidget *previous_button;
+	GtkWidget *next_button;
+
 	GtkWidget *combo;
 	GtkTreeStore *combo_model;
 
@@ -144,6 +147,9 @@ struct _GeditFileBrowserWidgetPrivate
 	GList *locations;
 	GList *current_location;
 	gboolean changing_location;
+	GtkWidget *location_previous_menu;
+	GtkWidget *location_next_menu;
+	GtkWidget *current_location_menu_item;
 
 	gboolean enable_delete;
 
@@ -167,6 +173,9 @@ static void on_file_store_error                (GeditFileBrowserStore  *store,
 						GeditFileBrowserWidget *obj);
 static gboolean on_file_store_no_trash 	       (GeditFileBrowserStore  *store,
 						GList                  *files,
+						GeditFileBrowserWidget *obj);
+static gboolean on_location_button_press_event (GtkWidget              *button,
+						GdkEventButton         *event,
 						GeditFileBrowserWidget *obj);
 static void on_combo_changed                   (GtkComboBox            *combo,
 						GeditFileBrowserWidget *obj);
@@ -196,6 +205,8 @@ static void on_virtual_root_changed            (GeditFileBrowserStore  *model,
 						GeditFileBrowserWidget *obj);
 
 static gboolean on_entry_filter_activate       (GeditFileBrowserWidget *obj);
+static void on_location_jump_activate          (GtkMenuItem            *item,
+						GeditFileBrowserWidget *obj);
 static void on_bookmarks_row_changed           (GtkTreeModel           *model,
                                                 GtkTreePath            *path,
                                                 GtkTreeIter            *iter,
@@ -399,6 +410,7 @@ gedit_file_browser_widget_dispose (GObject *object)
 
 	cancel_async_operation (obj);
 
+	g_clear_object (&obj->priv->current_location_menu_item);
 	g_clear_object (&priv->busy_cursor);
 	g_clear_object (&priv->dir_menu);
 	g_clear_object (&priv->bookmarks_menu);
@@ -544,11 +556,15 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/plugins/file-browser/ui/gedit-file-browser-widget.ui");
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, previous_button);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, next_button);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, combo);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, combo_model);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, location_entry);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, treeview);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, filter_entry);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, location_previous_menu);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, location_next_menu);
 
 	g_type_class_add_private (object_class,
 				  sizeof (GeditFileBrowserWidgetPrivate));
@@ -988,6 +1004,11 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 
 	gtk_widget_init_template (GTK_WIDGET (obj));
 
+	g_signal_connect (obj->priv->previous_button, "button-press-event",
+	                  G_CALLBACK (on_location_button_press_event), obj);
+	g_signal_connect (obj->priv->next_button, "button-press-event",
+	                  G_CALLBACK (on_location_button_press_event), obj);
+
 	/* combo */
 	fill_combo_model (obj);
 	g_signal_connect (obj->priv->combo, "changed",
@@ -1364,6 +1385,54 @@ get_topmost_file (GFile *file)
 	return current;
 }
 
+static GtkWidget *
+create_goto_menu_item (GeditFileBrowserWidget *obj,
+		       GList                  *item,
+		       GdkPixbuf              *icon)
+{
+	GtkWidget *result;
+	GtkWidget *image;
+	gchar *unescape;
+	GdkPixbuf *pixbuf = NULL;
+	Location *loc;
+
+	loc = (Location *) (item->data);
+
+	if (!get_from_bookmark_file (obj, loc->virtual_root, &unescape, &pixbuf))
+	{
+		unescape = gedit_file_browser_utils_file_basename (loc->virtual_root);
+
+		if (icon)
+			pixbuf = g_object_ref (icon);
+	}
+
+	if (pixbuf)
+	{
+		image = gtk_image_new_from_pixbuf (pixbuf);
+		g_object_unref (pixbuf);
+
+		gtk_widget_show (image);
+
+		result = gtk_image_menu_item_new_with_label (unescape);
+		gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (result),
+					       image);
+	}
+	else
+	{
+		result = gtk_menu_item_new_with_label (unescape);
+	}
+
+	g_object_set_data (G_OBJECT (result), LOCATION_DATA_KEY, item);
+	g_signal_connect (result, "activate",
+			  G_CALLBACK (on_location_jump_activate), obj);
+
+	gtk_widget_show (result);
+
+	g_free (unescape);
+
+	return result;
+}
+
 static GList *
 list_next_iterator (GList *list)
 {
@@ -1388,7 +1457,12 @@ jump_to_location (GeditFileBrowserWidget *obj,
 		  gboolean                previous)
 {
 	Location *loc;
+	GtkWidget *widget;
+	GList *children;
+	GList *child;
 	GList *(*iter_func) (GList *);
+	GtkWidget *menu_from;
+	GtkWidget *menu_to;
 
 	if (!obj->priv->locations)
 		return;
@@ -1396,23 +1470,61 @@ jump_to_location (GeditFileBrowserWidget *obj,
 	if (previous)
 	{
 		iter_func = list_next_iterator;
+		menu_from = obj->priv->location_previous_menu;
+		menu_to = obj->priv->location_next_menu;
 	}
 	else
 	{
 		iter_func = list_prev_iterator;
+		menu_from = obj->priv->location_next_menu;
+		menu_to = obj->priv->location_previous_menu;
 	}
 
-	obj->priv->changing_location = TRUE;
+	children = gtk_container_get_children (GTK_CONTAINER (menu_from));
+	child = children;
 
-	if (obj->priv->current_location != item)
+	/* This is the menuitem for the current location, which is the first
+	   to be added to the menu */
+	widget = obj->priv->current_location_menu_item;
+
+	while (obj->priv->current_location != item)
 	{
-		obj->priv->current_location = iter_func (obj->priv->current_location);
+		if (widget)
+		{
+			/* Prepend the menu item to the menu */
+			gtk_menu_shell_prepend (GTK_MENU_SHELL (menu_to),
+						widget);
+
+			g_object_unref (widget);
+		}
+
+		widget = GTK_WIDGET (child->data);
+
+		/* Make sure the widget isn't destroyed when removed */
+		g_object_ref (widget);
+		gtk_container_remove (GTK_CONTAINER (menu_from), widget);
+
+		obj->priv->current_location_menu_item = widget;
 
 		if (obj->priv->current_location == NULL)
 		{
 			obj->priv->current_location = obj->priv->locations;
+
+			if (obj->priv->current_location == item)
+				break;
 		}
+		else
+		{
+			obj->priv->current_location =
+			    iter_func (obj->priv->current_location);
+		}
+
+		child = child->next;
 	}
+
+	g_list_free (children);
+
+	obj->priv->changing_location = TRUE;
 
 	loc = (Location *) (obj->priv->current_location->data);
 
@@ -1428,6 +1540,8 @@ static void
 clear_next_locations (GeditFileBrowserWidget *obj)
 {
 	GAction *action;
+	GList *children;
+	GList *item;
 
 	if (obj->priv->current_location == NULL)
 		return;
@@ -1435,9 +1549,22 @@ clear_next_locations (GeditFileBrowserWidget *obj)
 	while (obj->priv->current_location->prev)
 	{
 		location_free ((Location *) (obj->priv->current_location->prev->data));
-		obj->priv->locations = g_list_remove_link (obj->priv->locations,
-		                                           obj->priv->current_location->prev);
+		obj->priv->locations =
+		    g_list_remove_link (obj->priv->locations,
+					obj->priv->current_location->prev);
 	}
+
+	children = gtk_container_get_children (GTK_CONTAINER
+					       (obj->priv->location_next_menu));
+
+	for (item = children; item; item = item->next)
+	{
+		gtk_container_remove (GTK_CONTAINER
+				      (obj->priv->location_next_menu),
+				      GTK_WIDGET (item->data));
+	}
+
+	g_list_free (children);
 
 	action = g_simple_action_group_lookup (obj->priv->action_group,
 	                                       "next_location");
@@ -2316,6 +2443,16 @@ on_virtual_root_changed (GeditFileBrowserStore  *model,
 				loc->root = gedit_file_browser_store_get_root (model);
 				loc->virtual_root = g_object_ref (location);
 
+				if (obj->priv->current_location)
+				{
+					/* Add current location to the menu so we can go back
+					   to it later */
+					gtk_menu_shell_prepend
+					    (GTK_MENU_SHELL
+					     (obj->priv->location_previous_menu),
+					     obj->priv->current_location_menu_item);
+				}
+
 				obj->priv->locations =
 				    g_list_prepend (obj->priv->locations,
 						    loc);
@@ -2325,7 +2462,14 @@ on_virtual_root_changed (GeditFileBrowserStore  *model,
 						    GEDIT_FILE_BROWSER_STORE_COLUMN_ICON,
 						    &pixbuf, -1);
 
-				obj->priv->current_location = obj->priv->locations;
+				obj->priv->current_location =
+				    obj->priv->locations;
+				obj->priv->current_location_menu_item =
+				    create_goto_menu_item (obj,
+							   obj->priv->current_location,
+							   pixbuf);
+
+				g_object_ref_sink (obj->priv->current_location_menu_item);
 
 				if (pixbuf)
 				{
@@ -2381,7 +2525,12 @@ on_model_set (GObject *gobject, GParamSpec *arg1,
 		{
 			GAction *action;
 
+			gtk_menu_shell_prepend (GTK_MENU_SHELL (obj->priv->location_previous_menu),
+						obj->priv->current_location_menu_item);
+
+			g_object_unref (obj->priv->current_location_menu_item);
 			obj->priv->current_location = NULL;
+			obj->priv->current_location_menu_item = NULL;
 
 			action = g_simple_action_group_lookup (obj->priv->action_group,
 			                                       "previous_location");
@@ -2432,6 +2581,123 @@ on_treeview_error (GeditFileBrowserView   *tree_view,
 		   GeditFileBrowserWidget *obj)
 {
 	g_signal_emit (obj, signals[ERROR], 0, code, message);
+}
+
+/* Copied from GTK+'s gtkmenubutton.c and modified */
+static void
+menu_position_func (GtkMenu   *menu,
+		    gint      *x,
+		    gint      *y,
+		    gboolean  *push_in,
+		    GtkWidget *widget)
+{
+	GtkWidget *popup = GTK_WIDGET (menu);
+	GtkWidget *toplevel;
+	GtkRequisition menu_req;
+	GtkTextDirection direction;
+	GdkRectangle monitor;
+	gint monitor_num;
+	GdkScreen *screen;
+	GdkWindow *window;
+	GtkAllocation allocation, arrow_allocation;
+	GtkAlign align;
+
+	/* Set the corresponding type hint on the toplevel,
+	 * so the WM can omit the top side of the shadows.
+	 */
+	toplevel = gtk_widget_get_toplevel (popup);
+	gtk_window_set_type_hint (GTK_WINDOW (toplevel),
+	                          GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU);
+
+	gtk_widget_get_preferred_size (popup, &menu_req, NULL);
+
+	align = gtk_widget_get_halign (popup);
+	direction = gtk_widget_get_direction (widget);
+	window = gtk_widget_get_window (widget);
+
+	screen = gtk_widget_get_screen (GTK_WIDGET (menu));
+	monitor_num = gdk_screen_get_monitor_at_window (screen, window);
+
+	if (monitor_num < 0)
+	{
+		monitor_num = 0;
+	}
+
+	gdk_screen_get_monitor_workarea (screen, monitor_num, &monitor);
+
+	gtk_widget_get_allocation (widget, &allocation);
+	gtk_widget_get_allocation (widget, &arrow_allocation);
+
+	gdk_window_get_origin (window, x, y);
+	*x += allocation.x;
+	*y += allocation.y;
+
+	/* treat the default align value like START */
+	if (align == GTK_ALIGN_FILL)
+	{
+		align = GTK_ALIGN_START;
+	}
+
+	if (align == GTK_ALIGN_CENTER)
+	{
+		*x -= (menu_req.width - allocation.width) / 2;
+	}
+	else if ((align == GTK_ALIGN_START && direction == GTK_TEXT_DIR_LTR) ||
+	         (align == GTK_ALIGN_END && direction == GTK_TEXT_DIR_RTL))
+	{
+		*x += MAX (allocation.width - menu_req.width, 0);
+	}
+	else if (menu_req.width > allocation.width)
+	{
+		*x -= menu_req.width - allocation.width;
+	}
+
+	if ((*y + arrow_allocation.height + menu_req.height) <= monitor.y + monitor.height)
+	{
+		*y += arrow_allocation.height;
+	}
+	else if ((*y - menu_req.height) >= monitor.y)
+	{
+		*y -= menu_req.height;
+	}
+	else if (monitor.y + monitor.height - (*y + arrow_allocation.height) > *y)
+	{
+		*y += arrow_allocation.height;
+	}
+	else
+	{
+		*y -= menu_req.height;
+	}
+
+	*push_in = FALSE;
+}
+
+static gboolean
+on_location_button_press_event (GtkWidget              *button,
+				GdkEventButton         *event,
+				GeditFileBrowserWidget *obj)
+{
+	GtkWidget *menu;
+
+	if (event->button != GDK_BUTTON_SECONDARY)
+	{
+		return FALSE;
+	}
+
+	if (button == obj->priv->previous_button)
+	{
+		menu = obj->priv->location_previous_menu;
+	}
+	else
+	{
+		menu = obj->priv->location_next_menu;
+	}
+
+	gtk_menu_popup_for_device (GTK_MENU (menu), event->device, NULL, NULL,
+	                           (GtkMenuPositionFunc) menu_position_func,
+	                           button, NULL, event->button, event->time);
+
+	return TRUE;
 }
 
 static void
@@ -2757,6 +3023,28 @@ on_entry_filter_activate (GeditFileBrowserWidget *obj)
 	set_filter_pattern_real (obj, text, FALSE);
 
 	return FALSE;
+}
+
+static void
+on_location_jump_activate (GtkMenuItem            *item,
+			   GeditFileBrowserWidget *obj)
+{
+	GList *location;
+
+	location = g_object_get_data (G_OBJECT (item), LOCATION_DATA_KEY);
+
+	if (obj->priv->current_location)
+	{
+		jump_to_location (obj, location,
+				  g_list_position (obj->priv->locations,
+						   location) >
+				  g_list_position (obj->priv->locations,
+						   obj->priv->current_location));
+	}
+	else
+	{
+		jump_to_location (obj, location, TRUE);
+	}
 }
 
 static void
