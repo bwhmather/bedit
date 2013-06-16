@@ -3416,10 +3416,11 @@ gedit_file_browser_store_set_binary_patterns (GeditFileBrowserStore  *model,
 	else
 	{
 		gint i;
+		gssize n_patterns;
 
-		model->priv->binary_pattern_specs = g_ptr_array_new ();
-		g_ptr_array_set_size (model->priv->binary_pattern_specs,
-			              g_strv_length ((gchar **) binary_patterns));
+		n_patterns = g_strv_length ((gchar **) binary_patterns);
+
+		model->priv->binary_pattern_specs = g_ptr_array_sized_new (n_patterns);
 		g_ptr_array_set_free_func (model->priv->binary_pattern_specs,
 			                   (GDestroyNotify) g_pattern_spec_free);
 
