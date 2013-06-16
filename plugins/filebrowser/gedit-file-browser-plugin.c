@@ -48,6 +48,7 @@
 #define FILEBROWSER_OPEN_AT_FIRST_DOC	"open-at-first-doc"
 #define FILEBROWSER_FILTER_MODE		"filter-mode"
 #define FILEBROWSER_FILTER_PATTERN	"filter-pattern"
+#define FILEBROWSER_BINARY_PATTERNS	"binary-patterns"
 
 #define NAUTILUS_BASE_SETTINGS		"org.gnome.nautilus.preferences"
 #define NAUTILUS_FALLBACK_SETTINGS	"org.gnome.gedit.plugins.filebrowser.nautilus"
@@ -562,9 +563,15 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 	store = gedit_file_browser_widget_get_browser_store (priv->tree_widget);
 
 	g_settings_bind (priv->settings,
-	                 "filter-mode",
+	                 FILEBROWSER_FILTER_MODE,
 	                 store,
-	                 "filter-mode",
+	                 FILEBROWSER_FILTER_MODE,
+	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+
+	g_settings_bind (priv->settings,
+	                 FILEBROWSER_BINARY_PATTERNS,
+	                 store,
+	                 FILEBROWSER_BINARY_PATTERNS,
 	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 
 	g_signal_connect (store,

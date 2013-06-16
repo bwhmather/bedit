@@ -122,6 +122,9 @@ struct _GeditFileBrowserStorePrivate
 	GeditFileBrowserStoreFilterFunc filter_func;
 	gpointer filter_user_data;
 
+	gchar **binary_patterns;
+	GPtrArray *binary_pattern_specs;
+
 	SortFunc sort_func;
 
 	GSList *async_handles;
@@ -212,7 +215,8 @@ enum {
 
 	PROP_ROOT,
 	PROP_VIRTUAL_ROOT,
-	PROP_FILTER_MODE
+	PROP_FILTER_MODE,
+	PROP_BINARY_PATTERNS
 };
 
 /* Signals */
@@ -250,6 +254,12 @@ gedit_file_browser_store_finalize (GObject *object)
 
 	/* Free all the nodes */
 	file_browser_node_free (obj, obj->priv->root);
+
+	if (obj->priv->binary_patterns != NULL)
+	{
+		g_strfreev (obj->priv->binary_patterns);
+		g_ptr_array_unref (obj->priv->binary_pattern_specs);
+	}
 
 	/* Cancel any asynchronous operations */
 	for (item = obj->priv->async_handles; item; item = item->next)
@@ -299,6 +309,9 @@ gedit_file_browser_store_get_property (GObject    *object,
 		case PROP_FILTER_MODE:
 			g_value_set_flags (value, obj->priv->filter_mode);
 			break;
+		case PROP_BINARY_PATTERNS:
+			g_value_set_boxed (value, obj->priv->binary_patterns);
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -321,6 +334,10 @@ gedit_file_browser_store_set_property (GObject      *object,
 		case PROP_FILTER_MODE:
 			gedit_file_browser_store_set_filter_mode (obj,
 			                                          g_value_get_flags (value));
+			break;
+		case PROP_BINARY_PATTERNS:
+			gedit_file_browser_store_set_binary_patterns (obj,
+			                                              g_value_get_boxed (value));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -354,11 +371,18 @@ gedit_file_browser_store_class_init (GeditFileBrowserStoreClass *klass)
 
 	g_object_class_install_property (object_class, PROP_FILTER_MODE,
 					 g_param_spec_flags ("filter-mode",
-					 		      "Filter Mode",
-					 		      "The filter mode",
-					 		      GEDIT_TYPE_FILE_BROWSER_STORE_FILTER_MODE,
-					 		      gedit_file_browser_store_filter_mode_get_default (),
-					 		      G_PARAM_READWRITE));
+					 		     "Filter Mode",
+					 		     "The filter mode",
+					 		     GEDIT_TYPE_FILE_BROWSER_STORE_FILTER_MODE,
+					 		     gedit_file_browser_store_filter_mode_get_default (),
+					 		     G_PARAM_READWRITE));
+
+	g_object_class_install_property (object_class, PROP_BINARY_PATTERNS,
+					 g_param_spec_boxed ("binary-patterns",
+					 		     "Binary Patterns",
+					 		     "The binary patterns",
+					 		     G_TYPE_STRV,
+					 		     G_PARAM_READWRITE));
 
 	model_signals[BEGIN_LOADING] =
 	    g_signal_new ("begin-loading",
@@ -1036,6 +1060,32 @@ model_node_update_visibility (GeditFileBrowserStore *model,
 		 (!NODE_IS_TEXT (node) && !NODE_IS_DIR (node)))
 	{
 		node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
+	}
+	else if (FILTER_BINARY (model->priv->filter_mode) &&
+	         model->priv->binary_patterns != NULL)
+	{
+		gint i;
+		gssize name_length;
+		gchar *name_reversed;
+
+		name_length = strlen (node->name);
+		name_reversed = g_utf8_strreverse (node->name, name_length);
+
+		for (i = 0; i < model->priv->binary_pattern_specs->len; ++i)
+		{
+			GPatternSpec *spec;
+
+			spec = g_ptr_array_index (model->priv->binary_pattern_specs, i);
+
+			if (g_pattern_match (spec, name_length,
+			                     node->name, name_reversed))
+			{
+				node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
+				break;
+			}
+		}
+
+		g_free (name_reversed);
 	}
 	else if (model->priv->filter_func)
 	{
@@ -3337,6 +3387,52 @@ gedit_file_browser_store_set_filter_func (GeditFileBrowserStore           *model
 	model->priv->filter_func = func;
 	model->priv->filter_user_data = user_data;
 	model_refilter (model);
+}
+
+const gchar * const *
+gedit_file_browser_store_get_binary_patterns (GeditFileBrowserStore *model)
+{
+	return (const gchar * const *) model->priv->binary_patterns;
+}
+
+void
+gedit_file_browser_store_set_binary_patterns (GeditFileBrowserStore  *model,
+					      const gchar           **binary_patterns)
+{
+	g_return_if_fail (GEDIT_IS_FILE_BROWSER_STORE (model));
+
+	if (model->priv->binary_patterns != NULL)
+	{
+		g_strfreev (model->priv->binary_patterns);
+		g_ptr_array_unref (model->priv->binary_pattern_specs);
+	}
+
+	model->priv->binary_patterns = g_strdupv ((gchar **) binary_patterns);
+
+	if (binary_patterns == NULL)
+	{
+		model->priv->binary_pattern_specs = NULL;
+	}
+	else
+	{
+		gint i;
+
+		model->priv->binary_pattern_specs = g_ptr_array_new ();
+		g_ptr_array_set_size (model->priv->binary_pattern_specs,
+			              g_strv_length ((gchar **) binary_patterns));
+		g_ptr_array_set_free_func (model->priv->binary_pattern_specs,
+			                   (GDestroyNotify) g_pattern_spec_free);
+
+		for (i = 0; binary_patterns[i] != NULL; ++i)
+		{
+			g_ptr_array_add (model->priv->binary_pattern_specs,
+				         g_pattern_spec_new (binary_patterns[i]));
+		}
+	}
+
+	model_refilter (model);
+
+	g_object_notify (G_OBJECT (model), "binary-patterns");
 }
 
 void

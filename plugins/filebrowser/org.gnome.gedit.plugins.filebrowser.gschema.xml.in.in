@@ -35,6 +35,11 @@
       <_summary>File Browser Filter Pattern</_summary>
       <_description>The filter pattern to filter the file browser with. This filter works on top of the filter_mode.</_description>
     </key>
+    <key name="binary-patterns" type="as">
+      <default>['*.la', '*.lo']</default>
+      <_summary>File Browser Binary Patterns</_summary>
+      <_description>The supplemental patterns to use when when filtering binary files.</_description>
+    </key>
   </schema>
 
   <enum id="org.gnome.gedit.plugins.filebrowser.nautilus.ClickPolicy">

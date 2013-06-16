@@ -152,7 +152,7 @@ void		 gedit_file_browser_store_set_value		(GeditFileBrowserStore            *tr
 								 gint                              column,
 								 GValue                           *value);
 
-void		 _gedit_file_browser_store_iter_expanded		(GeditFileBrowserStore            *model,
+void		 _gedit_file_browser_store_iter_expanded	(GeditFileBrowserStore            *model,
 								 GtkTreeIter                      *iter);
 void		 _gedit_file_browser_store_iter_collapsed	(GeditFileBrowserStore            *model,
 								 GtkTreeIter                      *iter);
@@ -164,6 +164,12 @@ void		 gedit_file_browser_store_set_filter_mode	(GeditFileBrowserStore          
 void		 gedit_file_browser_store_set_filter_func	(GeditFileBrowserStore            *model,
 								 GeditFileBrowserStoreFilterFunc   func,
 								 gpointer                          user_data);
+
+const gchar * const *
+                 gedit_file_browser_store_get_binary_patterns	(GeditFileBrowserStore            *model);
+void		 gedit_file_browser_store_set_binary_patterns	(GeditFileBrowserStore            *model,
+								 const gchar                     **binary_patterns);
+
 void		 gedit_file_browser_store_refilter		(GeditFileBrowserStore            *model);
 GeditFileBrowserStoreFilterMode
 gedit_file_browser_store_filter_mode_get_default		(void);
