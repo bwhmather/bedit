@@ -127,6 +127,8 @@ struct _GeditFileBrowserWidgetPrivate
 	GtkWidget *combo;
 	GtkTreeStore *combo_model;
 
+	GtkWidget *location_entry;
+
 	GtkWidget *filter_entry;
 
 	GSimpleActionGroup *action_group;
@@ -167,6 +169,16 @@ static gboolean on_file_store_no_trash 	       (GeditFileBrowserStore  *store,
 						GList                  *files,
 						GeditFileBrowserWidget *obj);
 static void on_combo_changed                   (GtkComboBox            *combo,
+						GeditFileBrowserWidget *obj);
+static void on_location_entry_activate         (GtkEntry               *entry,
+						GeditFileBrowserWidget *obj);
+static gboolean
+	    on_location_entry_focus_out_event  (GtkWidget              *entry,
+						GdkEvent               *event,
+						GeditFileBrowserWidget *obj);
+static gboolean
+	  on_location_entry_key_press_event    (GtkWidget              *entry,
+						GdkEventKey            *event,
 						GeditFileBrowserWidget *obj);
 static gboolean on_treeview_popup_menu         (GeditFileBrowserView   *treeview,
 						GeditFileBrowserWidget *obj);
@@ -534,6 +546,7 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	                                             "/org/gnome/gedit/plugins/file-browser/ui/gedit-file-browser-widget.ui");
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, combo);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, combo_model);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, location_entry);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, treeview);
 	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, filter_entry);
 
@@ -980,6 +993,13 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 	g_signal_connect (obj->priv->combo, "changed",
 	                  G_CALLBACK (on_combo_changed), obj);
 
+	g_signal_connect (obj->priv->location_entry, "activate",
+	                  G_CALLBACK (on_location_entry_activate), obj);
+	g_signal_connect (obj->priv->location_entry, "focus-out-event",
+	                  G_CALLBACK (on_location_entry_focus_out_event), obj);
+	g_signal_connect (obj->priv->location_entry, "key-press-event",
+	                  G_CALLBACK (on_location_entry_key_press_event), obj);
+
 	/* tree view */
 	obj->priv->file_store = gedit_file_browser_store_new (NULL);
 	obj->priv->bookmarks_store = gedit_file_bookmarks_store_new ();
@@ -1295,6 +1315,24 @@ delete_selected_files (GeditFileBrowserWidget *obj,
 	g_list_free_full (rows, (GDestroyNotify) gtk_tree_path_free);
 
 	return result == GEDIT_FILE_BROWSER_STORE_RESULT_OK;
+}
+
+static void
+show_location_entry (GeditFileBrowserWidget *obj,
+                     const gchar            *location)
+{
+	g_warn_if_fail (location != NULL);
+
+	gtk_entry_set_text (GTK_ENTRY (obj->priv->location_entry), location);
+
+	gtk_widget_show (obj->priv->location_entry);
+	gtk_widget_grab_focus (obj->priv->location_entry);
+
+	/* grab_focus() causes the entry's text to become
+	 * selected so, unselect it and move the cursor to the end.
+	 */
+	gtk_editable_set_position (GTK_EDITABLE (obj->priv->location_entry),
+				   -1);
 }
 
 static gboolean
@@ -2429,6 +2467,100 @@ on_combo_changed (GtkComboBox            *combo,
 	}
 }
 
+static void
+on_location_entry_activate (GtkEntry               *entry,
+                            GeditFileBrowserWidget *obj)
+{
+	gchar *location;
+	GFile *root;
+	gchar *cwd;
+	GFile *new_root;
+
+	location = g_strdup (gtk_entry_get_text (entry));
+
+	if (g_str_has_prefix (location, "~/"))
+	{
+		gchar *tmp = location;
+
+		location = g_strdup_printf ("%s/%s",
+		                            g_get_home_dir (),
+		                            tmp + strlen ("~/"));
+
+		g_free (tmp);
+	}
+
+	root = gedit_file_browser_store_get_virtual_root (obj->priv->file_store);
+	cwd = g_file_get_path (root);
+
+	if (cwd == NULL)
+	{
+		cwd = g_file_get_uri (root);
+	}
+
+	new_root = g_file_new_for_commandline_arg_and_cwd (location, cwd);
+
+	if (g_file_query_file_type (new_root,
+	                            G_FILE_QUERY_INFO_NONE,
+	                            NULL) != G_FILE_TYPE_DIRECTORY)
+	{
+		gchar *display_name, *msg;
+
+		display_name = g_file_get_parse_name (new_root);
+		msg = g_strdup_printf (_("Error when loading '%s': "
+		                         "No such directory"),
+		                       display_name);
+
+		g_signal_emit (obj, signals[ERROR], 0,
+			       GEDIT_FILE_BROWSER_ERROR_LOAD_DIRECTORY,
+			       msg);
+
+		g_free (msg);
+		g_free (display_name);
+	}
+	else
+	{
+		gtk_widget_grab_focus (GTK_WIDGET (obj->priv->treeview));
+		gtk_widget_hide (obj->priv->location_entry);
+
+		gedit_file_browser_store_set_root (obj->priv->file_store,
+		                                   new_root);
+	}
+
+	g_object_unref (new_root);
+	g_free (cwd);
+	g_object_unref (root);
+	g_free (location);
+}
+
+static gboolean
+on_location_entry_focus_out_event (GtkWidget              *entry,
+                                   GdkEvent               *event,
+                                   GeditFileBrowserWidget *obj)
+{
+	gtk_widget_hide (entry);
+	return FALSE;
+}
+
+static gboolean
+on_location_entry_key_press_event (GtkWidget              *entry,
+                                   GdkEventKey            *event,
+                                   GeditFileBrowserWidget *obj)
+{
+	guint modifiers;
+
+	modifiers = gtk_accelerator_get_default_mod_mask ();
+
+	if (event->keyval == GDK_KEY_Escape &&
+	    (event->state & modifiers) == 0)
+	{
+		gtk_widget_grab_focus (GTK_WIDGET (obj->priv->treeview));
+		gtk_widget_hide (entry);
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
 static gboolean
 on_treeview_popup_menu (GeditFileBrowserView   *treeview,
 			GeditFileBrowserWidget *obj)
@@ -2539,6 +2671,28 @@ on_treeview_key_press_event (GeditFileBrowserView   *treeview,
 	if ((event->keyval == GDK_KEY_F2) && (event->state & modifiers) == 0)
 	{
 		rename_selected_file (obj);
+		return TRUE;
+	}
+
+	if (event->keyval == GDK_KEY_l &&
+	    (event->state & modifiers) == GDK_CONTROL_MASK)
+	{
+		show_location_entry (obj, "");
+		return TRUE;
+	}
+
+	if (event->keyval == GDK_KEY_slash ||
+	    event->keyval == GDK_KEY_KP_Divide ||
+#ifdef G_OS_WIN32
+	    event->keyval == GDK_KEY_backslash ||
+#endif
+	    event->keyval == GDK_KEY_asciitilde)
+	{
+		gchar location[2] = {'\0', '\0'};
+
+		location[0] = gdk_keyval_to_unicode (event->keyval);
+
+		show_location_entry (obj, location);
 		return TRUE;
 	}
 
