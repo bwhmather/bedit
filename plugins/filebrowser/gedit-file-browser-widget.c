@@ -2788,8 +2788,7 @@ on_location_entry_activate (GtkEntry               *entry,
 		gtk_widget_grab_focus (GTK_WIDGET (obj->priv->treeview));
 		gtk_widget_hide (obj->priv->location_entry);
 
-		gedit_file_browser_store_set_root (obj->priv->file_store,
-		                                   new_root);
+		gedit_file_browser_widget_set_root (obj, new_root, TRUE);
 	}
 
 	g_object_unref (new_root);
@@ -3163,8 +3162,7 @@ home_activated (GSimpleAction *action,
 
 	home_location = g_file_new_for_path (g_get_home_dir ());
 
-	gedit_file_browser_store_set_virtual_root_from_location (GEDIT_FILE_BROWSER_STORE (model),
-	                                                         home_location);
+	gedit_file_browser_widget_set_root  (widget, home_location, TRUE);
 
 	g_object_unref (home_location);
 }
