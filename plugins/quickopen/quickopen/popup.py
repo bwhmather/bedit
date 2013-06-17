@@ -312,13 +312,15 @@ class Popup(Gtk.Dialog):
         return out
 
     def _append_to_store(self, item):
-        if item not in self._stored_items:
+        uri = item[2].get_uri()
+
+        if uri not in self._stored_items:
             self._store.append(item)
-            self._stored_items[item] = True
+            self._stored_items.add(uri)
 
     def _clear_store(self):
         self._store.clear()
-        self._stored_items = {}
+        self._stored_items = set()
 
     def _show_virtuals(self):
         for d in self._dirs:
