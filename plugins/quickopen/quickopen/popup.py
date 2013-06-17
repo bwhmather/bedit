@@ -18,6 +18,7 @@
 #  Boston, MA 02111-1307, USA.
 
 import os
+import platform
 import functools
 import fnmatch
 from gi.repository import Gio, GObject, Pango, Gtk, Gdk, Gedit
@@ -145,6 +146,26 @@ class Popup(Gtk.Dialog):
 
         return pixbuf
 
+    def _is_text(self, entry):
+        content_type = entry.get_content_type()
+
+        if content_type is None or Gio.content_type_is_unknown(content_type):
+            return True
+
+        if platform.system() != 'Windows':
+            if Gio.content_type_is_a(content_type, 'text/plain'):
+                return True
+        else:
+            if Gio.content_type_is_a(content_type, 'text'):
+                return True
+
+            # This covers a rare case in which on Windows the PerceivedType
+            # is not set to "text" but the Content Type is set to text/plain
+            if Gio.content_type_get_mime_type(content_type) == 'text/plain':
+                return True
+
+        return False
+
     def _list_dir(self, gfile):
         entries = []
 
@@ -168,9 +189,15 @@ class Popup(Gtk.Dialog):
         children = []
 
         for entry in entries:
+            file_type = entry[1].get_file_type()
+
+            if file_type == Gio.FileType.REGULAR:
+                if not self._is_text(entry[1]):
+                    continue
+
             children.append((entry[0],
                              entry[1].get_name(),
-                             entry[1].get_file_type(),
+                             file_type,
                              entry[1].get_icon()))
 
         return children
