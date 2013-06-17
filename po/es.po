@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-05-20 08:43+0000\n"
-"PO-Revision-Date: 2013-05-20 12:38+0200\n"
+"POT-Creation-Date: 2013-06-17 10:33+0000\n"
+"PO-Revision-Date: 2013-06-17 17:24+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -2108,7 +2108,6 @@ msgstr "Seleccionar el documento completo"
 
 #. View menu
 #: ../gedit/gedit-ui.h:104
-#| msgid "_Highlight Mode"
 msgid "_Highlight Mode..."
 msgstr "Modo _resaltado…"
 
@@ -2776,7 +2775,6 @@ msgid "External tools"
 msgstr "Herramientas externas"
 
 #: ../plugins/externaltools/tools/windowactivatable.py:212
-#| msgid "Shell Output"
 msgid "Tool Output"
 msgstr "Salida de la herramienta"
 
@@ -2846,43 +2844,43 @@ msgstr "Mostrar _ocultos"
 msgid "Show _Binary"
 msgstr "Mostrar _binarios"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:549
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:550
 msgid "File Browser"
 msgstr "Examinador de archivos"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
 msgid "An error occurred while creating a new directory"
 msgstr "Ocurrió un error al crear la carpeta nueva"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:698
 msgid "An error occurred while creating a new file"
 msgstr "Ocurrió un error al crear un archivo nuevo"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:701
 msgid "An error occurred while renaming a file or directory"
 msgstr "Ocurrió un error al renombrar un archivo o carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:704
 msgid "An error occurred while deleting a file or directory"
 msgstr "Ocurrió un error al eliminar un archivo o carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:700
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:707
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Ocurrió un error al abrir una carpeta en el gestor de archivos"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:703
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:710
 msgid "An error occurred while setting a root directory"
 msgstr "Ocurrió un error al establecer la carpeta raíz"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:706
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:713
 msgid "An error occurred while loading a directory"
 msgstr "Ocurrió un error al cargar una carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:709
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:716
 msgid "An error occurred"
 msgstr "Ocurrió un error"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2891,34 +2889,34 @@ msgstr ""
 "a la papelera, ¿quiere eliminarlo\n"
 "permanentemente?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:928
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:935
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "El archivo %s no se puede mover a la papelera."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:933
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:940
 msgid "The selected files cannot be moved to the trash."
 msgstr "Los archivos seleccionados no se pueden mover a la papelera."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:965
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:972
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "¿Seguro que quiere eliminar permanentemente «%s»?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:970
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:977
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr ""
 "¿Seguro que quiere eliminar permanentemente los archivos seleccionados?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:973
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:980
 msgid "If you delete an item, it is permanently lost."
 msgstr "Si elimina un elemento, se pierde permanentemente."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1727
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1771
 msgid "(Empty)"
 msgstr "(Vacío)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3468
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3559
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2927,11 +2925,11 @@ msgstr ""
 "ajustes de filtros para hacer el archivo visible."
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3725
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3816
 msgid "Untitled File"
 msgstr "Archivo sin título"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3753
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3844
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2940,11 +2938,11 @@ msgstr ""
 "para hacerlo visible"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3784
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3875
 msgid "Untitled Folder"
 msgstr "Carpeta sin título"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3809
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3900
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -2952,24 +2950,30 @@ msgstr ""
 "La carpeta nuevo esta actualmente filtrada. Necesita ajustar los filtros "
 "para hacerlo visible."
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:757
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1828
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2003
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "No existe el objeto montado para el volumen montado: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1905
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2080
 #, c-format
 msgid "Could not open media: %s"
 msgstr "No se pudo abrir el soporte: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1952
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2127
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "No se pudo abrir el volumen: %s"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2775
+#, c-format
+#| msgid "An error occurred while loading a directory"
+msgid "Error when loading '%s': No such directory"
+msgstr "Error al cargar una carpeta «%s»: no existe la carpeta"
 
 #. ex:ts=8:noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
@@ -3060,6 +3064,15 @@ msgstr ""
 "El patrón de filtros con el que filtrar el examinador de archivos. Este "
 "filtro funciona por encima del filter_mode."
 
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+#| msgid "File Browser Filter Pattern"
+msgid "File Browser Binary Patterns"
+msgstr "Patrones binarios del examinador de archivos"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+msgid "The supplemental patterns to use when when filtering binary files."
+msgstr "Los patrones adicionales que usar al filtrar archivos binarios"
+
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
 msgstr "Modos de líneas"
@@ -3120,7 +3133,7 @@ msgstr "Abrir documentos rápidamente"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:32
+#: ../plugins/quickopen/quickopen/popup.py:33
 msgid "Quick Open"
 msgstr "Apertura rápida"
 
@@ -3128,7 +3141,7 @@ msgstr "Apertura rápida"
 msgid "Quickly open files"
 msgstr "Abrir documentos rápidamente"
 
-#: ../plugins/quickopen/quickopen/popup.py:77
+#: ../plugins/quickopen/quickopen/popup.py:78
 msgid "Type to search..."
 msgstr "Escriba para buscar…"
 
