@@ -1713,6 +1713,10 @@ model_recomposite_icon_real (GeditFileBrowserStore *tree_model,
 		icon = gedit_file_browser_utils_pixbuf_from_file (node->file, GTK_ICON_SIZE_MENU, FALSE);
 	}
 
+	/* Fallback to the same icon as the file browser */
+	if (!icon)
+		icon = gedit_file_browser_utils_pixbuf_from_theme ("text-x-generic", GTK_ICON_SIZE_MENU);
+
 	if (node->icon)
 		g_object_unref (node->icon);
 
