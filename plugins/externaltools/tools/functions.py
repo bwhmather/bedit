@@ -224,23 +224,35 @@ def run_external_tool(window, panel, node):
         document.end_user_action()
 
 class MultipleDocumentsSaver:
-    def __init__(self, window, panel, docs, node):
+    def __init__(self, window, panel, all_docs, node):
         self._window = window
         self._panel = panel
         self._node = node
         self._error = False
 
-        self._counter = len(docs)
         self._signal_ids = {}
         self._counter = 0
 
+        if all_docs:
+            docs = window.get_documents()
+        else:
+            docs = [window.get_active_document()]
+            
         signals = {}
 
         for doc in docs:
             signals[doc] = doc.connect('saving', self.on_document_saving)
-            Gedit.commands_save_document(window, doc)
+
+        if all_docs:
+            Gedit.commands.save_all_documents(window)
+        else:
+            Gedit.commands_save_document(window, docs[0])
+
+        for doc in docs:
             doc.disconnect(signals[doc])
-    
+
+        self.run_tool()
+
     def on_document_saving(self, doc, size, total_size):
         self._counter += 1
         self._signal_ids[doc] = doc.connect('saved', self.on_document_saved)
@@ -253,16 +265,19 @@ class MultipleDocumentsSaver:
         del self._signal_ids[doc]
         
         self._counter -= 1
-        
+
+        self.run_tool()
+
+    def run_tool(self):
         if self._counter == 0 and not self._error:
             run_external_tool(self._window, self._panel, self._node)
 
 def capture_menu_action(action, window, panel, node):
     if node.save_files == 'document' and window.get_active_document():
-        MultipleDocumentsSaver(window, panel, [window.get_active_document()], node)
+        MultipleDocumentsSaver(window, panel, False, node)
         return
     elif node.save_files == 'all':
-        MultipleDocumentsSaver(window, panel, window.get_documents(), node)
+        MultipleDocumentsSaver(window, panel, True, node)
         return
 
     run_external_tool(window, panel, node)
