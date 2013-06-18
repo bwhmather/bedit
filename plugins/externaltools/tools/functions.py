@@ -237,6 +237,13 @@ class MultipleDocumentsSaver:
             docs = window.get_documents()
         else:
             docs = [window.get_active_document()]
+
+        for i in range(len(docs)):
+            doc = docs[i]
+
+            if doc.get_modified():
+                all_docs = False
+                docs.remove(doc)
             
         signals = {}
 
@@ -246,7 +253,8 @@ class MultipleDocumentsSaver:
         if all_docs:
             Gedit.commands.save_all_documents(window)
         else:
-            Gedit.commands_save_document(window, docs[0])
+            for doc in docs:
+                Gedit.commands_save_document(window, doc)
 
         for doc in docs:
             doc.disconnect(signals[doc])
