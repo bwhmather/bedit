@@ -46,6 +46,7 @@ HELP_FILES = \
 	gedit-shortcut-keys.page \
 	gedit-spellcheck.page \
 	gedit-syntax-highlighting.page \
+	gedit-tab-groups.page \
 	gedit-tabs-moving.page \
 	gedit-tabs.page \
 	gedit-undo-recent-action.page \
