@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 3.9.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-20 14:04+0200\n"
-"PO-Revision-Date: 2013-05-20 14:07+0200\n"
+"POT-Creation-Date: 2013-06-20 10:36+0200\n"
+"PO-Revision-Date: 2013-06-20 10:37+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -830,11 +830,11 @@ msgstr[1] "Endringer gjort i dokumentet de siste %d timene vil gå tapt."
 msgid "_Revert"
 msgstr "Fo_rkast"
 
-#: ../gedit/gedit-commands-help.c:88
+#: ../gedit/gedit-commands-help.c:89
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "gedit er en liten og lett tekst editor for GNOME skrivebordet"
 
-#: ../gedit/gedit-commands-help.c:113
+#: ../gedit/gedit-commands-help.c:114
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
@@ -2495,15 +2495,15 @@ msgstr "Kunne ikke kjøre kommando: %s"
 msgid "You must be inside a word to run this command"
 msgstr "Du må være inne i et ord for å kjøre denne kommandoen"
 
-#: ../plugins/externaltools/tools/functions.py:281
+#: ../plugins/externaltools/tools/functions.py:304
 msgid "Running tool:"
 msgstr "Kjører verktøy:"
 
-#: ../plugins/externaltools/tools/functions.py:310
+#: ../plugins/externaltools/tools/functions.py:333
 msgid "Done."
 msgstr "Ferdig."
 
-#: ../plugins/externaltools/tools/functions.py:312
+#: ../plugins/externaltools/tools/functions.py:335
 msgid "Exited"
 msgstr "Avsluttet"
 
@@ -2755,43 +2755,43 @@ msgstr "Vis s_kjulte"
 msgid "Show _Binary"
 msgstr "Vis _binære filer"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:549
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:550
 msgid "File Browser"
 msgstr "Filhåndterer"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
 msgid "An error occurred while creating a new directory"
 msgstr "En feil oppsto ved oppretting av ny katalog"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:698
 msgid "An error occurred while creating a new file"
 msgstr "En feil oppsto ved oppretting av en ny fil"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:701
 msgid "An error occurred while renaming a file or directory"
 msgstr "En feil oppsto ved endring av navn på en fil eller katalog"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:704
 msgid "An error occurred while deleting a file or directory"
 msgstr "En feil oppsto ved sletting av en fil eller katalog"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:700
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:707
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "En feil oppsto ved åpning av en katalog i filhåndtereren"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:703
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:710
 msgid "An error occurred while setting a root directory"
 msgstr "En feil oppsto ved forsøk på å sette rotkatalogen"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:706
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:713
 msgid "An error occurred while loading a directory"
 msgstr "En feil oppsto ved lasting av en katalog"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:709
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:716
 msgid "An error occurred"
 msgstr "En feil oppsto"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2799,33 +2799,33 @@ msgstr ""
 "Kan ikke flytte filen til papirkurven.\n"
 "Vil du slette den permanent?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:928
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:935
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Filen «%s» kan ikke flyttes til papirkurven."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:933
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:940
 msgid "The selected files cannot be moved to the trash."
 msgstr "Valgte filer kan ikke flyttes til papirkurven."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:965
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:972
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Er du sikker på at du vil slette «%s» permanent?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:970
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:977
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Er du sikker på at du vil slette valgte filer permanent?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:973
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:980
 msgid "If you delete an item, it is permanently lost."
 msgstr "Hvis du sletter en oppføring vil denne gå tapt."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1727
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1775
 msgid "(Empty)"
 msgstr "(Tom)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3468
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3563
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2834,11 +2834,11 @@ msgstr ""
 "for å gjøre den synlig"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3725
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3820
 msgid "Untitled File"
 msgstr "Fil uten navn"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3753
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3848
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2847,11 +2847,11 @@ msgstr ""
 "den synlig"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3784
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3879
 msgid "Untitled Folder"
 msgstr "Mappe uten navn"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3809
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3904
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -2859,24 +2859,29 @@ msgstr ""
 "Den nye katalogen er filtrert ut. Du må justere filterinnstillingene for å "
 "gjøre den synlig"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:757
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
 msgid "Bookmarks"
 msgstr "Bokmerker"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1828
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2003
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Ingen monteringsobjekt for montert volum: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1905
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2080
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Kunne ikke åpne medie: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1952
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2127
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Kunne ikke montere volum: %s"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2775
+#, c-format
+msgid "Error when loading '%s': No such directory"
+msgstr "Feil ved lasting av «%s»: Katalogen finnes ikke"
 
 #. ex:ts=8:noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
@@ -2966,6 +2971,14 @@ msgstr ""
 "Filtermønster for å filtrere innhold i filleser. Dette filteret kommer i "
 "tillegg til filter_mode."
 
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+msgid "File Browser Binary Patterns"
+msgstr "Binærmønster for filhåndterer"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+msgid "The supplemental patterns to use when when filtering binary files."
+msgstr "Ekstra mønstre som skal brukes ved filtrering av binære filer."
+
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
 msgstr "Moduslinjer"
@@ -3027,7 +3040,7 @@ msgstr "Åpne dokumenter raskt"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:32
+#: ../plugins/quickopen/quickopen/popup.py:33
 msgid "Quick Open"
 msgstr "Hurtigåpning"
 
@@ -3035,7 +3048,7 @@ msgstr "Hurtigåpning"
 msgid "Quickly open files"
 msgstr "Åpne filer raskt"
 
-#: ../plugins/quickopen/quickopen/popup.py:77
+#: ../plugins/quickopen/quickopen/popup.py:78
 msgid "Type to search..."
 msgstr "Skriv for å søke …"
 
