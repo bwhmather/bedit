@@ -553,12 +553,15 @@ gedit_notebook_new (void)
 static void
 gedit_notebook_init (GeditNotebook *notebook)
 {
+	GeditNotebookPrivate *priv;
+
 	notebook->priv = GEDIT_NOTEBOOK_GET_PRIVATE (notebook);
+	priv = notebook->priv;
 
-	notebook->priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
+	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
 
-	notebook->priv->show_tabs_mode = GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS;
-	notebook->priv->close_buttons_sensitive = TRUE;
+	priv->show_tabs_mode = GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS;
+	priv->close_buttons_sensitive = TRUE;
 
 	gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
 	gtk_notebook_set_show_border (GTK_NOTEBOOK (notebook), FALSE);
@@ -567,7 +570,7 @@ gedit_notebook_init (GeditNotebook *notebook)
 	                             GEDIT_NOTEBOOK_GROUP_NAME);
 	gtk_container_set_border_width (GTK_CONTAINER (notebook), 0);
 
-	g_settings_bind (notebook->priv->ui_settings,
+	g_settings_bind (priv->ui_settings,
 			 GEDIT_SETTINGS_SHOW_TABS_MODE,
 			 notebook,
 			 "show-tabs-mode",
