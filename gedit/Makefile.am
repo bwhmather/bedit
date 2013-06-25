@@ -118,7 +118,6 @@ NOINST_H_FILES =			\
 	gedit-settings.h		\
 	gedit-status-menu-button.h	\
 	gedit-tab-label.h		\
-	gedittextregion.h		\
 	gedit-ui.h			\
 	gedit-view-frame.h		\
 	gedit-window-private.h
@@ -209,8 +208,7 @@ libgedit_c_files =			\
 	gedit-utils.c 			\
 	gedit-view.c 			\
 	gedit-view-frame.c		\
-	gedit-window.c			\
-	gedittextregion.c
+	gedit-window.c
 
 libgedit_la_SOURCES = 			\
 	$(BUILT_SOURCES)		\

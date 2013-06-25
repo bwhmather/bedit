@@ -60,11 +60,6 @@ IGNORE_HFILES=		\
 	gedit-marshal.h				\
 	gedit-enum-types.h
 
-# These files are not part of gedit but were copied into it for some reason.
-# Do not parse them to make the docs.
-IGNORE_HFILES +=	\
-	gedittextregion.h
-
 # Images to copy into HTML directory.
 HTML_IMAGES=
 
