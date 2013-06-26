@@ -63,8 +63,6 @@ struct _GeditNotebookPrivate
 
 	GeditNotebookShowTabsModeType show_tabs_mode;
 
-	GtkCssProvider *css;
-
 	guint close_buttons_sensitive : 1;
 	guint ignore_focused_page_update : 1;
 };
@@ -166,7 +164,6 @@ gedit_notebook_dispose (GObject *object)
 	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
 
 	g_clear_object (&notebook->priv->ui_settings);
-	g_clear_object (&notebook->priv->css);
 
 	G_OBJECT_CLASS (gedit_notebook_parent_class)->dispose (object);
 }
