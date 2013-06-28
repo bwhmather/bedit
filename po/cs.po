@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-05-30 12:15+0000\n"
-"PO-Revision-Date: 2013-06-04 11:48+0200\n"
+"POT-Creation-Date: 2013-06-25 07:24+0000\n"
+"PO-Revision-Date: 2013-06-28 18:24+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -898,12 +898,12 @@ msgstr[2] ""
 msgid "_Revert"
 msgstr "V_rátit"
 
-#: ../gedit/gedit-commands-help.c:88
+#: ../gedit/gedit-commands-help.c:89
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr ""
 "gedit je malý a jednoduchý textový editor pro prostředí pracovní plochy GNOME"
 
-#: ../gedit/gedit-commands-help.c:113
+#: ../gedit/gedit-commands-help.c:114
 msgid "translator-credits"
 msgstr ""
 "Michal Bukovjan <bukm@centrum.cz>\n"
@@ -2570,15 +2570,15 @@ msgstr "Nelze vykonat příkaz: %s"
 msgid "You must be inside a word to run this command"
 msgstr "Pro spuštění tohoto příkazu musíte stát na slově"
 
-#: ../plugins/externaltools/tools/functions.py:281
+#: ../plugins/externaltools/tools/functions.py:304
 msgid "Running tool:"
 msgstr "Spouštění nástroje:"
 
-#: ../plugins/externaltools/tools/functions.py:310
+#: ../plugins/externaltools/tools/functions.py:333
 msgid "Done."
 msgstr "Hotovo."
 
-#: ../plugins/externaltools/tools/functions.py:312
+#: ../plugins/externaltools/tools/functions.py:335
 msgid "Exited"
 msgstr "Skončil"
 
@@ -2831,43 +2831,43 @@ msgstr "Zobrazit _skryté"
 msgid "Show _Binary"
 msgstr "Zobrazit _binární"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:549
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:550
 msgid "File Browser"
 msgstr "Prohlížeč souborů"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
 msgid "An error occurred while creating a new directory"
 msgstr "Během vytváření nové složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:698
 msgid "An error occurred while creating a new file"
 msgstr "Během vytváření nového souboru došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:701
 msgid "An error occurred while renaming a file or directory"
 msgstr "Během přejmenovávání souboru či složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:704
 msgid "An error occurred while deleting a file or directory"
 msgstr "Během mazání souboru či složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:700
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:707
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Během otevírání složky ve správci souborů došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:703
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:710
 msgid "An error occurred while setting a root directory"
 msgstr "Během nastavování kořenové složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:706
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:713
 msgid "An error occurred while loading a directory"
 msgstr "Během načítání složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:709
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:716
 msgid "An error occurred"
 msgstr "Vyskytla se chyba"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2875,33 +2875,33 @@ msgstr ""
 "Soubor nelze přesunout do koše,\n"
 "chcete ho trvale smazat?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:928
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:935
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Soubor „%s“ nelze přesunout do koše."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:933
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:940
 msgid "The selected files cannot be moved to the trash."
 msgstr "Vybrané soubory nelze přesunout do koše."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:965
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:972
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Opravdu chcete trvale smazat „%s“?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:970
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:977
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Opravdu chcete trvale smazat vybrané soubory?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:973
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:980
 msgid "If you delete an item, it is permanently lost."
 msgstr "Pokud položku smažete, bude nenávratně ztracena."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1727
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1775
 msgid "(Empty)"
 msgstr "(Prázdné)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3468
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3563
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2910,11 +2910,11 @@ msgstr ""
 "své nastavení filtrování."
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3725
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3820
 msgid "Untitled File"
 msgstr "Nepojmenovaný soubor"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3753
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3848
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2923,11 +2923,11 @@ msgstr ""
 "nastavení filtrování."
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3784
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3879
 msgid "Untitled Folder"
 msgstr "Nepojmenovaná složka"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3809
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3904
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -2935,24 +2935,30 @@ msgstr ""
 "Nová složka je nyní odfiltrována. Aby byla viditelná, musíte upravit své "
 "nastavení filtrování."
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:757
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
 msgid "Bookmarks"
 msgstr "Záložky"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1828
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2003
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Žádný připojovací objekt pro připojený svazek: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1905
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2080
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Nelze otevřít médium: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1952
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2127
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Nelze připojit svazek: %s"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2775
+#, c-format
+#| msgid "An error occurred while loading a directory"
+msgid "Error when loading '%s': No such directory"
+msgstr "Chyba při načítání „%s“: Taková složka neexistuje"
 
 #. ex:ts=8:noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
@@ -3032,7 +3038,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
 msgid "File Browser Filter Pattern"
-msgstr "Filtrační vzorek prohlížeče souborů"
+msgstr "Filtrační vzor pro prohlížeč souborů"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
 msgid ""
@@ -3041,6 +3047,15 @@ msgid ""
 msgstr ""
 "Filtrační vzor, který se používá pro filtrování v prohlížeči souborů. Tento "
 "filtr pracuje nad filter_mode."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+#| msgid "File Browser Filter Pattern"
+msgid "File Browser Binary Patterns"
+msgstr "Binární vzor pro prohlížeč souborů"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+msgid "The supplemental patterns to use when filtering binary files."
+msgstr "Dodatečné vzory, které se použijí při filtrování binárních souborů."
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
@@ -3103,7 +3118,7 @@ msgstr "Rychle otevřít dokumenty"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:32
+#: ../plugins/quickopen/quickopen/popup.py:33
 msgid "Quick Open"
 msgstr "Rychle otevřít"
 
@@ -3111,7 +3126,7 @@ msgstr "Rychle otevřít"
 msgid "Quickly open files"
 msgstr "Rychle otevřít soubory"
 
-#: ../plugins/quickopen/quickopen/popup.py:77
+#: ../plugins/quickopen/quickopen/popup.py:78
 msgid "Type to search..."
 msgstr "Pište, co chcete najít…"
 
