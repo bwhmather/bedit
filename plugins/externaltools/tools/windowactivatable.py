@@ -128,20 +128,22 @@ class ToolMenu(object):
 
     def filter(self, document):
         if document is None:
-            return
-
-        titled = document.get_location() is not None
-        remote = not document.is_local()
+            titled = False
+            remote = False
+            language = None
+        else:
+            titled = document.get_location() is not None
+            remote = not document.is_local()
+            language = document.get_language()
 
         states = {
-            'all' : True,
+            'always': True,
+            'all' : document is not None,
             'local': titled and not remote,
             'remote': titled and remote,
             'titled': titled,
             'untitled': not titled,
         }
-        
-        language = document.get_language()
 
         for action in self._action_group.list_actions():
             if action._tool_item is not None:

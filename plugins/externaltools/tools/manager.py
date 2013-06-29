@@ -308,6 +308,7 @@ class Manager(GObject.Object):
             'on_accelerator_focus_in'         : self.on_accelerator_focus_in,
             'on_accelerator_focus_out'        : self.on_accelerator_focus_out,
             'on_accelerator_backspace'        : self.on_accelerator_backspace,
+            'on_applicability_changed'        : self.on_applicability_changed,
             'on_languages_button_clicked'     : self.on_languages_button_clicked
         }
 
@@ -891,6 +892,18 @@ class Manager(GObject.Object):
         if dialog.get_realized():
             alloc = dialog.get_allocation()
             self._size = (alloc.width, alloc.height)
+
+    def on_applicability_changed(self, combo):
+        applicability = combo.get_model().get_value(combo.get_active_iter(),
+                                                    self.NAME_COLUMN)
+
+        if applicability == 'always':
+            if self.current_node is not None:
+                self.current_node.languages = []
+
+            self.fill_languages_button()
+
+        self['languages_button'].set_sensitive(applicability != 'always')
 
     def get_cell_data_cb(self, column, cell, model, piter, user_data=None):
         tool = model.get_value(piter, self.TOOL_COLUMN)
