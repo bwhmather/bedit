@@ -131,7 +131,10 @@ gedit_progress_info_bar_new (const gchar *stock_id,
 						     "has-cancel-button", has_cancel,
 						     NULL));
 
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 	gedit_progress_info_bar_set_stock_image (bar, stock_id);
+	G_GNUC_END_IGNORE_DEPRECATIONS;
+
 	gedit_progress_info_bar_set_markup (bar, markup);
 
 	return GTK_WIDGET (bar);
@@ -144,9 +147,11 @@ gedit_progress_info_bar_set_stock_image (GeditProgressInfoBar *bar,
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 	g_return_if_fail (stock_id != NULL);
 
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 	gtk_image_set_from_stock (GTK_IMAGE (bar->priv->image),
 				  stock_id,
 				  GTK_ICON_SIZE_SMALL_TOOLBAR);
+	G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 void

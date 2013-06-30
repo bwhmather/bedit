@@ -616,11 +616,10 @@ get_from_bookmark_file (GeditFileBrowserWidget  *obj,
 	item = (NameIcon *)data;
 
 	*name = g_strdup (item->name);
-	*icon = item->icon;
 
-	if (item->icon != NULL)
+	if (icon != NULL && item->icon != NULL)
 	{
-		g_object_ref (item->icon);
+		*icon = g_object_ref (item->icon);
 	}
 
 	return TRUE;
@@ -1387,40 +1386,20 @@ get_topmost_file (GFile *file)
 
 static GtkWidget *
 create_goto_menu_item (GeditFileBrowserWidget *obj,
-		       GList                  *item,
-		       GdkPixbuf              *icon)
+		       GList                  *item)
 {
 	GtkWidget *result;
-	GtkWidget *image;
 	gchar *unescape;
-	GdkPixbuf *pixbuf = NULL;
 	Location *loc;
 
 	loc = (Location *) (item->data);
 
-	if (!get_from_bookmark_file (obj, loc->virtual_root, &unescape, &pixbuf))
+	if (!get_from_bookmark_file (obj, loc->virtual_root, &unescape, NULL))
 	{
 		unescape = gedit_file_browser_utils_file_basename (loc->virtual_root);
-
-		if (icon)
-			pixbuf = g_object_ref (icon);
 	}
 
-	if (pixbuf)
-	{
-		image = gtk_image_new_from_pixbuf (pixbuf);
-		g_object_unref (pixbuf);
-
-		gtk_widget_show (image);
-
-		result = gtk_image_menu_item_new_with_label (unescape);
-		gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (result),
-					       image);
-	}
-	else
-	{
-		result = gtk_menu_item_new_with_label (unescape);
-	}
+	result = gtk_menu_item_new_with_label (unescape);
 
 	g_object_set_data (G_OBJECT (result), LOCATION_DATA_KEY, item);
 	g_signal_connect (result, "activate",
@@ -2433,7 +2412,6 @@ on_virtual_root_changed (GeditFileBrowserStore  *model,
 			if (!obj->priv->changing_location)
 			{
 				Location *loc;
-				GdkPixbuf *pixbuf;
 
 				/* Remove all items from obj->priv->current_location on */
 				if (obj->priv->current_location)
@@ -2457,24 +2435,13 @@ on_virtual_root_changed (GeditFileBrowserStore  *model,
 				    g_list_prepend (obj->priv->locations,
 						    loc);
 
-				gtk_tree_model_get (GTK_TREE_MODEL (model),
-						    &iter,
-						    GEDIT_FILE_BROWSER_STORE_COLUMN_ICON,
-						    &pixbuf, -1);
-
 				obj->priv->current_location =
 				    obj->priv->locations;
 				obj->priv->current_location_menu_item =
 				    create_goto_menu_item (obj,
-							   obj->priv->current_location,
-							   pixbuf);
+							   obj->priv->current_location);
 
 				g_object_ref_sink (obj->priv->current_location_menu_item);
-
-				if (pixbuf)
-				{
-					g_object_unref (pixbuf);
-				}
 			}
 
 			action = g_simple_action_group_lookup (obj->priv->action_group,

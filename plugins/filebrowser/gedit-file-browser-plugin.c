@@ -489,7 +489,6 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 	GeditFileBrowserPluginPrivate *priv;
 	GeditPanel *panel;
 	GtkWidget *image;
-	GdkPixbuf *pixbuf;
 	GeditFileBrowserStore *store;
 
 	priv = plugin->priv;
@@ -530,25 +529,16 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 
 	panel = gedit_window_get_side_panel (priv->window);
-	pixbuf = gedit_file_browser_utils_pixbuf_from_theme ("system-file-manager",
-	                                                     GTK_ICON_SIZE_MENU);
 
-	if (pixbuf)
-	{
-		image = gtk_image_new_from_pixbuf (pixbuf);
-		g_object_unref(pixbuf);
-	}
-	else
-	{
-		image = gtk_image_new_from_stock (GTK_STOCK_INDEX, GTK_ICON_SIZE_MENU);
-	}
-
+	image = gtk_image_new_from_icon_name ("system-file-mangager",
+	                                      GTK_ICON_SIZE_MENU);
 	gtk_widget_show (image);
 	gedit_panel_add_item (panel,
 	                      GTK_WIDGET (priv->tree_widget),
 	                      "GeditFileBrowserPanel",
 	                      _("File Browser"),
 	                      image);
+
 	gtk_widget_show (GTK_WIDGET (priv->tree_widget));
 
 	/* Install nautilus preferences */

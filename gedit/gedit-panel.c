@@ -346,6 +346,7 @@ set_gtk_image_from_gtk_image (GtkImage *image,
 				gtk_image_set_from_pixbuf (image, pb);
 			}
 			break;
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 		case GTK_IMAGE_STOCK:
 			{
 				gchar *s_id;
@@ -364,6 +365,7 @@ set_gtk_image_from_gtk_image (GtkImage *image,
 				gtk_image_set_from_icon_set (image, is, s);
 			}
 			break;
+		G_GNUC_END_IGNORE_DEPRECATIONS;
 		case GTK_IMAGE_ANIMATION:
 			{
 				GdkPixbufAnimation *a;
@@ -382,9 +384,9 @@ set_gtk_image_from_gtk_image (GtkImage *image,
 			}
 			break;
 		default:
-			gtk_image_set_from_stock (image,
-						  GTK_STOCK_FILE,
-						  GTK_ICON_SIZE_MENU);
+			gtk_image_set_from_icon_name (image,
+						      "text-x-generic",
+						      GTK_ICON_SIZE_MENU);
 	}
 }
 
@@ -408,9 +410,9 @@ sync_title (GeditPanel     *panel,
 		gtk_label_set_text (GTK_LABEL (panel->priv->title_label),
 				    _("Empty"));
 
-		gtk_image_set_from_stock (GTK_IMAGE (panel->priv->title_image),
-					  GTK_STOCK_FILE,
-					  GTK_ICON_SIZE_MENU);
+		gtk_image_set_from_icon_name (GTK_IMAGE (panel->priv->title_image),
+					      "text-x-generic",
+					      GTK_ICON_SIZE_MENU);
 	}
 }
 
@@ -571,8 +573,8 @@ build_vertical_panel (GeditPanel *panel)
 			    TRUE,
 			    0);
 
-	panel->priv->title_image = gtk_image_new_from_stock (GTK_STOCK_FILE,
-	                                                     GTK_ICON_SIZE_MENU);
+	panel->priv->title_image = gtk_image_new_from_icon_name ("text-x-generic",
+	                                                         GTK_ICON_SIZE_MENU);
 	gtk_box_pack_start (GTK_BOX (icon_name_hbox),
 			    panel->priv->title_image,
 			    FALSE,
@@ -778,8 +780,8 @@ gedit_panel_add_item (GeditPanel  *panel,
 	if (image == NULL)
 	{
 		/* default to empty */
-		data->icon = gtk_image_new_from_stock (GTK_STOCK_FILE,
-						       GTK_ICON_SIZE_MENU);
+		data->icon = gtk_image_new_from_icon_name ("text-x-generic",
+						           GTK_ICON_SIZE_MENU);
 	}
 	else
 	{
@@ -836,8 +838,10 @@ gedit_panel_add_item_with_stock_icon (GeditPanel  *panel,
 
 	if (stock_id != NULL)
 	{
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 		icon = gtk_image_new_from_stock (stock_id,
 						 GTK_ICON_SIZE_MENU);
+		G_GNUC_END_IGNORE_DEPRECATIONS;
 	}
 
 	return gedit_panel_add_item (panel, item, id, display_name, icon);

@@ -2083,10 +2083,7 @@ _gedit_tab_get_icon (GeditTab *tab)
 	theme = gtk_icon_theme_get_for_screen (screen);
 	g_return_val_if_fail (theme != NULL, NULL);
 
-	gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (GTK_WIDGET (tab)),
-					   GTK_ICON_SIZE_MENU,
-					   NULL,
-					   &icon_size);
+	gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
 
 	switch (tab->priv->state)
 	{

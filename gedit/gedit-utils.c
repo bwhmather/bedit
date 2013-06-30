@@ -172,10 +172,12 @@ gedit_gtk_button_new_with_stock_icon (const gchar *label,
 {
 	GtkWidget *button;
 
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 	button = gtk_button_new_with_mnemonic (label);
 	gtk_button_set_image (GTK_BUTTON (button),
 			      gtk_image_new_from_stock (stock_id,
 							GTK_ICON_SIZE_BUTTON));
+	G_GNUC_END_IGNORE_DEPRECATIONS;
 
 	return button;
 }

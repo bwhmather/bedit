@@ -19,8 +19,14 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#include "gedit-file-browser-utils.h"
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <glib/gi18n-lib.h>
 #include <gedit/gedit-utils.h>
+
+#include "gedit-file-browser-utils.h"
 
 static GdkPixbuf *
 process_icon_pixbuf (GdkPixbuf   *pixbuf,
@@ -164,7 +170,7 @@ gedit_file_browser_utils_confirmation_dialog (GeditWindow    *window,
 	}
 
 	/* Add a cancel button */
-	button = gtk_button_new_from_stock (GTK_STOCK_CANCEL);
+	button = gtk_button_new_with_mnemonic (_("_Cancel"));
 	gtk_widget_show (button);
 
 	gtk_widget_set_can_default (button, TRUE);
@@ -173,11 +179,15 @@ gedit_file_browser_utils_confirmation_dialog (GeditWindow    *window,
 	                              GTK_RESPONSE_CANCEL);
 
 	/* Add custom button */
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 	button = gtk_button_new_from_stock (button_stock);
+	G_GNUC_END_IGNORE_DEPRECATIONS;
 
 	if (button_label)
 	{
+		G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 		gtk_button_set_use_stock (GTK_BUTTON (button), FALSE);
+		G_GNUC_END_IGNORE_DEPRECATIONS;
 		gtk_button_set_label (GTK_BUTTON (button), button_label);
 	}
 

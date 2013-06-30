@@ -460,8 +460,8 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	add_buttons (dlg);
 
 	/* Image */
-	image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_WARNING,
-					  GTK_ICON_SIZE_DIALOG);
+	image = gtk_image_new_from_icon_name ("dialog-warning",
+					      GTK_ICON_SIZE_DIALOG);
 	gtk_widget_set_halign (image, GTK_ALIGN_START);
 
 	/* Primary label */
@@ -643,8 +643,8 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 			    hbox, TRUE, TRUE, 0);
 
 	/* Image */
-	image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_WARNING,
-					  GTK_ICON_SIZE_DIALOG);
+	image = gtk_image_new_from_icon_name ("dialog-warning",
+					      GTK_ICON_SIZE_DIALOG);
 	gtk_widget_set_halign (image, GTK_ALIGN_START);
 	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
 

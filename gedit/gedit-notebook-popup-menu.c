@@ -162,7 +162,6 @@ static void
 gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 {
 	GtkWidget *menu_item;
-	GtkWidget *image;
 
 	menu->priv = G_TYPE_INSTANCE_GET_PRIVATE (menu,
 	                                          GEDIT_TYPE_NOTEBOOK_POPUP_MENU,
@@ -180,16 +179,14 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	menu_item = gtk_image_menu_item_new_from_stock (GTK_STOCK_SAVE, NULL);
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Save"));
 	g_signal_connect (menu_item, "activate",
 	                  G_CALLBACK (on_file_save_menuitem_activate),
 	                  menu);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	menu_item = gtk_image_menu_item_new_with_mnemonic (_("Save _As..."));
-	image = gtk_image_new_from_stock (GTK_STOCK_SAVE_AS, GTK_ICON_SIZE_MENU);
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);
+	menu_item = gtk_menu_item_new_with_mnemonic (_("Save _As..."));
 	g_signal_connect (menu_item, "activate",
 	                  G_CALLBACK (on_file_save_as_menuitem_activate),
 	                  menu);
@@ -200,9 +197,7 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	menu_item = gtk_image_menu_item_new_with_mnemonic (_("_Print..."));
-	image = gtk_image_new_from_stock (GTK_STOCK_PRINT, GTK_ICON_SIZE_MENU);
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Print..."));
 	g_signal_connect (menu_item, "activate",
 	                  G_CALLBACK (on_file_print_menuitem_activate),
 	                  menu);
@@ -213,7 +208,7 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	menu_item = gtk_image_menu_item_new_from_stock (GTK_STOCK_CLOSE, NULL);
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Close"));
 	g_signal_connect (menu_item, "activate",
 	                  G_CALLBACK (on_file_close_menuitem_activate),
 	                  menu);
