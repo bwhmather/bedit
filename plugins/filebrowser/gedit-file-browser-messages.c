@@ -228,7 +228,7 @@ message_set_emblem_cb (GeditMessageBus *bus,
 
 	g_object_get (message, "id", &id, "emblem", &emblem, NULL);
 
-	if (!id || !emblem)
+	if (!id)
 	{
 		g_free (id);
 		g_free (emblem);
@@ -240,40 +240,38 @@ message_set_emblem_cb (GeditMessageBus *bus,
 
 	if (path != NULL)
 	{
-		GError *error = NULL;
-		GdkPixbuf *pixbuf;
+		GtkTreeIter iter;
+		GValue value = G_VALUE_INIT;
+		GdkPixbuf *pixbuf = NULL;
 
-		pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-						   emblem,
-						   10,
-						   0,
-						   &error);
+		if (emblem != NULL)
+		{
+			pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+			                                   emblem,
+			                                   10,
+			                                   GTK_ICON_LOOKUP_FORCE_SIZE,
+			                                   NULL);
+		}
+
+		store = gedit_file_browser_widget_get_browser_store (data->widget);
+
+		if (gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
+		{
+			g_value_init (&value, GDK_TYPE_PIXBUF);
+			g_value_set_object (&value, pixbuf);
+
+			gedit_file_browser_store_set_value (store,
+			                                    &iter,
+			                                    GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM,
+			                                    &value);
+
+			g_value_unset (&value);
+		}
 
 		if (pixbuf)
 		{
-			GValue value = { 0, };
-			GtkTreeIter iter;
-
-			store = gedit_file_browser_widget_get_browser_store (data->widget);
-
-			if (gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
-			{
-				g_value_init (&value, GDK_TYPE_PIXBUF);
-				g_value_set_object (&value, pixbuf);
-
-				gedit_file_browser_store_set_value (store,
-								    &iter,
-								    GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM,
-								    &value);
-
-				g_value_unset (&value);
-			}
-
 			g_object_unref (pixbuf);
 		}
-
-		if (error)
-			g_error_free (error);
 	}
 
 	g_free (id);
