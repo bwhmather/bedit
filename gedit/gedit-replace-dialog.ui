@@ -3,11 +3,11 @@
   <!-- interface-requires gtk+ 3.0 -->
   <template class="GeditReplaceDialog" parent="GtkDialog">
     <property name="can_focus">False</property>
+    <property name="border_width">5</property>
     <property name="title" translatable="yes">Replace</property>
     <property name="resizable">False</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
-    <property name="border_width">5</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
@@ -18,8 +18,6 @@
           <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="border_width">5</property>
-            <property name="spacing">6</property>
             <child>
               <object class="GtkButton" id="close_button">
                 <property name="label">gtk-close</property>
@@ -28,7 +26,6 @@
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -45,7 +42,6 @@
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
@@ -62,7 +58,6 @@
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_underline">True</property>
               </object>
               <packing>
@@ -79,7 +74,6 @@
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
               </object>
               <packing>
@@ -107,9 +101,9 @@
               <object class="GtkGrid" id="grid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="border_width">5</property>
                 <property name="row_spacing">12</property>
                 <property name="column_spacing">12</property>
-                <property name="border_width">5</property>
                 <child>
                   <object class="GtkLabel" id="search_label">
                     <property name="visible">True</property>
@@ -140,12 +134,6 @@
                     <property name="height">1</property>
                   </packing>
                 </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -166,7 +154,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="use_underline">True</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
@@ -184,7 +171,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="use_underline">True</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
@@ -202,7 +188,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="use_underline">True</property>
                     <property name="xalign">0</property>
                     <property name="draw_indicator">True</property>
@@ -220,7 +205,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
-                    <property name="use_action_appearance">False</property>
                     <property name="use_underline">True</property>
                     <property name="xalign">0</property>
                     <property name="active">True</property>
@@ -250,9 +234,9 @@
     </child>
     <action-widgets>
       <action-widget response="0">close_button</action-widget>
-      <action-widget response="0">replace_all_button</action-widget>
-      <action-widget response="0">replace_button</action-widget>
-      <action-widget response="0">find_button</action-widget>
+      <action-widget response="102">replace_all_button</action-widget>
+      <action-widget response="101">replace_button</action-widget>
+      <action-widget response="100">find_button</action-widget>
     </action-widgets>
   </template>
 </interface>
