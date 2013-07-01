@@ -37,6 +37,7 @@
   <message namespace="Gedit" name="FileBrowserMessageIdLocation">
     <include>gio/gio.h</include>
     <property name="id" type="string"/>
+    <property name="name" type="string"/>
     <property name="location" type="object" gtype="G_TYPE_FILE"/>
     <property name="is-directory" type="boolean"/>
   </message>

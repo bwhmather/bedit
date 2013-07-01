@@ -4,6 +4,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2011 - Jesse van den Kieboom
+ * Copyright (C) 2013 - Garrett Regier
  *
  * gedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,6 +32,7 @@ enum
 	PROP_0,
 
 	PROP_ID,
+	PROP_NAME,
 	PROP_LOCATION,
 	PROP_IS_DIRECTORY,
 };
@@ -38,6 +40,7 @@ enum
 struct _GeditFileBrowserMessageIdLocationPrivate
 {
 	gchar *id;
+	gchar *name;
 	GFile *location;
 	gboolean is_directory;
 };
@@ -50,6 +53,7 @@ gedit_file_browser_message_id_location_finalize (GObject *obj)
 	GeditFileBrowserMessageIdLocation *msg = GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION (obj);
 
 	g_free (msg->priv->id);
+	g_free (msg->priv->name);
 	if (msg->priv->location)
 	{
 		g_object_unref (msg->priv->location);
@@ -72,6 +76,9 @@ gedit_file_browser_message_id_location_get_property (GObject    *obj,
 	{
 		case PROP_ID:
 			g_value_set_string (value, msg->priv->id);
+			break;
+		case PROP_NAME:
+			g_value_set_string (value, msg->priv->name);
 			break;
 		case PROP_LOCATION:
 			g_value_set_object (value, msg->priv->location);
@@ -98,6 +105,12 @@ gedit_file_browser_message_id_location_set_property (GObject      *obj,
 		{
 			g_free (msg->priv->id);
 			msg->priv->id = g_value_dup_string (value);
+			break;
+		}
+		case PROP_NAME:
+		{
+			g_free (msg->priv->name);
+			msg->priv->name = g_value_dup_string (value);
 			break;
 		}
 		case PROP_LOCATION:
@@ -130,6 +143,16 @@ gedit_file_browser_message_id_location_class_init (GeditFileBrowserMessageIdLoca
 	                                 g_param_spec_string ("id",
 	                                                      "Id",
 	                                                      "Id",
+	                                                      NULL,
+	                                                      G_PARAM_READWRITE |
+	                                                      G_PARAM_CONSTRUCT |
+	                                                      G_PARAM_STATIC_STRINGS));
+
+	g_object_class_install_property (object_class,
+	                                 PROP_NAME,
+	                                 g_param_spec_string ("name",
+	                                                      "Name",
+	                                                      "Name",
 	                                                      NULL,
 	                                                      G_PARAM_READWRITE |
 	                                                      G_PARAM_CONSTRUCT |

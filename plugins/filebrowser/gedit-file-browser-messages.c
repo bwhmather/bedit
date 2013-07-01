@@ -320,11 +320,13 @@ set_item_message (WindowData   *data,
 		  GeditMessage *message)
 {
 	GeditFileBrowserStore *store;
+	gchar *name;
 	GFile *location;
 	guint flags = 0;
 
 	store = gedit_file_browser_widget_get_browser_store (data->widget);
 	gtk_tree_model_get (GTK_TREE_MODEL (store), iter,
+			    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name,
 			    GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
 			    GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
 			    -1);
@@ -347,6 +349,13 @@ set_item_message (WindowData   *data,
 		              "location", location,
 		              NULL);
 
+		if (gedit_message_has (message, "name"))
+		{
+			g_object_set (message,
+			              "name", name,
+			              NULL);
+		}
+
 		if (gedit_message_has (message, "is_directory"))
 		{
 			g_object_set (message,
@@ -358,6 +367,8 @@ set_item_message (WindowData   *data,
 		g_free (track_id);
 		g_object_unref (location);
 	}
+
+	g_free (name);
 }
 
 static gboolean
