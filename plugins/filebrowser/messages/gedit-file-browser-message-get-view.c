@@ -21,6 +21,10 @@
  * Boston, MA  02110-1301  USA
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "gedit-file-browser-message-get-view.h"
 #include "plugins/filebrowser/gedit-file-browser-view.h"
 

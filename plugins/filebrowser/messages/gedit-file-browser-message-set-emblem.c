@@ -21,6 +21,10 @@
  * Boston, MA  02110-1301  USA
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "gedit-file-browser-message-set-emblem.h"
 
 #define GEDIT_FILE_BROWSER_MESSAGE_SET_EMBLEM_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_EMBLEM, GeditFileBrowserMessageSetEmblemPrivate))

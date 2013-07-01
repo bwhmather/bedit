@@ -370,6 +370,8 @@ AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
 AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
 AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 
+AC_DEFINE(GDK_VERSION_MIN_REQUIRED, GDK_VERSION_3_8, [minimum gdk version])
+
 GNOME_COMPILE_WARNINGS([maximum])
 
 if test "$USE_MAINTAINER_MODE" = "yes"; then
