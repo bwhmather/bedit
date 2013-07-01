@@ -47,9 +47,6 @@ struct _GeditReplaceDialogPrivate
 	GtkWidget *entire_word_checkbutton;
 	GtkWidget *backwards_checkbutton;
 	GtkWidget *wrap_around_checkbutton;
-	GtkWidget *find_button;
-	GtkWidget *replace_button;
-	GtkWidget *replace_all_button;
 
 	gboolean   ui_error;
 };
@@ -135,9 +132,6 @@ gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 	gtk_widget_class_bind_child (widget_class, GeditReplaceDialogPrivate, entire_word_checkbutton);
 	gtk_widget_class_bind_child (widget_class, GeditReplaceDialogPrivate, backwards_checkbutton);
 	gtk_widget_class_bind_child (widget_class, GeditReplaceDialogPrivate, wrap_around_checkbutton);
-	gtk_widget_class_bind_child (widget_class, GeditReplaceDialogPrivate, find_button);
-	gtk_widget_class_bind_child (widget_class, GeditReplaceDialogPrivate, replace_button);
-	gtk_widget_class_bind_child (widget_class, GeditReplaceDialogPrivate, replace_all_button);
 
 	g_type_class_add_private (object_class, sizeof (GeditReplaceDialogPrivate));
 }
