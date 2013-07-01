@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-06-25 07:24+0000\n"
-"PO-Revision-Date: 2013-06-25 14:20+0200\n"
+"POT-Creation-Date: 2013-06-30 17:19+0000\n"
+"PO-Revision-Date: 2013-07-01 14:41+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -1132,9 +1132,9 @@ msgstr "Windows"
 
 #: ../gedit/gedit-highlight-mode-dialog.c:307 ../gedit/gedit-window.c:1796
 #: ../gedit/gedit-window.c:2184 ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:462
-#: ../plugins/externaltools/tools/manager.py:578
-#: ../plugins/externaltools/tools/manager.py:902
+#: ../plugins/externaltools/tools/manager.py:463
+#: ../plugins/externaltools/tools/manager.py:579
+#: ../plugins/externaltools/tools/manager.py:915
 msgid "Plain Text"
 msgstr "Texto plano"
 
@@ -1245,11 +1245,11 @@ msgstr "Codificación de c_aracteres:"
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:506
-#: ../gedit/gedit-io-error-info-bar.c:784
+#: ../gedit/gedit-io-error-info-bar.c:785
 msgid "Edit Any_way"
 msgstr "Editar de todos _modos"
 
-#: ../gedit/gedit-io-error-info-bar.c:608
+#: ../gedit/gedit-io-error-info-bar.c:609
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1257,30 +1257,30 @@ msgstr ""
 "El número de enlaces simbólicos seguidos es limitada y el archivo actual no "
 "se pudo encontrar dentro de ese límite."
 
-#: ../gedit/gedit-io-error-info-bar.c:612
+#: ../gedit/gedit-io-error-info-bar.c:613
 msgid "You do not have the permissions necessary to open the file."
 msgstr "No tiene los permisos necesarios para abrir el archivo."
 
-#: ../gedit/gedit-io-error-info-bar.c:618
+#: ../gedit/gedit-io-error-info-bar.c:619
 msgid "gedit has not been able to detect the character encoding."
 msgstr "gedit no pudo detectar la codificación de caracteres."
 
-#: ../gedit/gedit-io-error-info-bar.c:620
-#: ../gedit/gedit-io-error-info-bar.c:642
+#: ../gedit/gedit-io-error-info-bar.c:621
+#: ../gedit/gedit-io-error-info-bar.c:643
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Compruebe que no está intentando abrir un archivo binario."
 
-#: ../gedit/gedit-io-error-info-bar.c:621
+#: ../gedit/gedit-io-error-info-bar.c:622
 msgid "Select a character encoding from the menu and try again."
 msgstr ""
 "Seleccione una codificación de caracteres desde el menú e inténtelo de nuevo."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
+#: ../gedit/gedit-io-error-info-bar.c:628
 #, c-format
 msgid "There was a problem opening the file %s."
 msgstr "Hubo un problema al abrir el archivo %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:629
+#: ../gedit/gedit-io-error-info-bar.c:630
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1288,37 +1288,37 @@ msgstr ""
 "El archivo que abrió contiene algunos caracteres no válidos. Si continua "
 "editando este archivo puede corromper el documento."
 
-#: ../gedit/gedit-io-error-info-bar.c:632
+#: ../gedit/gedit-io-error-info-bar.c:633
 msgid "You can also choose another character encoding and try again."
 msgstr ""
 "También puede elegir cualquier otra codificación de caracteres e intentarlo "
 "de nuevo."
 
-#: ../gedit/gedit-io-error-info-bar.c:639
+#: ../gedit/gedit-io-error-info-bar.c:640
 #, c-format
 msgid "Could not open the file %s using the %s character encoding."
 msgstr ""
 "No se pudo abrir el archivo %s usando la codificación de caracteres %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:643
-#: ../gedit/gedit-io-error-info-bar.c:717
+#: ../gedit/gedit-io-error-info-bar.c:644
+#: ../gedit/gedit-io-error-info-bar.c:718
 msgid "Select a different character encoding from the menu and try again."
 msgstr ""
 "Seleccione una codificación de caracteres diferente desde el menú e "
 "inténtelo de nuevo."
 
-#: ../gedit/gedit-io-error-info-bar.c:653
+#: ../gedit/gedit-io-error-info-bar.c:654
 #, c-format
 msgid "Could not open the file %s."
 msgstr "No se pudo abrir el archivo %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:712
+#: ../gedit/gedit-io-error-info-bar.c:713
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
 msgstr ""
 "No se pudo guardar el archivo %s usando la codificación de caracteres %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:715
+#: ../gedit/gedit-io-error-info-bar.c:716
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1328,16 +1328,16 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:789
+#: ../gedit/gedit-io-error-info-bar.c:790
 msgid "D_on't Edit"
 msgstr "N_o editar"
 
-#: ../gedit/gedit-io-error-info-bar.c:803
+#: ../gedit/gedit-io-error-info-bar.c:805
 #, c-format
 msgid "This file (%s) is already open in another gedit window."
 msgstr "El archivo (%s) ya está abierto en otra ventana de gedit."
 
-#: ../gedit/gedit-io-error-info-bar.c:817
+#: ../gedit/gedit-io-error-info-bar.c:819
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1345,15 +1345,23 @@ msgstr ""
 "Se ha abierto esta instancia del archivo en una forma no editable. ¿Quiere "
 "editarlo de todas formas?"
 
-#: ../gedit/gedit-io-error-info-bar.c:875
-#: ../gedit/gedit-io-error-info-bar.c:973
-#: ../gedit/gedit-io-error-info-bar.c:1262
+#: ../gedit/gedit-io-error-info-bar.c:877
+#: ../gedit/gedit-io-error-info-bar.c:976
+#: ../gedit/gedit-io-error-info-bar.c:1266
 msgid "S_ave Anyway"
 msgstr "_Guardar de todos modos"
 
-#: ../gedit/gedit-io-error-info-bar.c:879
+#: ../gedit/gedit-io-error-info-bar.c:878
 #: ../gedit/gedit-io-error-info-bar.c:977
-#: ../gedit/gedit-io-error-info-bar.c:1266
+#: ../gedit/gedit-io-error-info-bar.c:1267
+#: ../gedit/gedit-notebook-popup-menu.c:182
+#| msgid "_Save:"
+msgid "_Save"
+msgstr "_Guardar"
+
+#: ../gedit/gedit-io-error-info-bar.c:881
+#: ../gedit/gedit-io-error-info-bar.c:980
+#: ../gedit/gedit-io-error-info-bar.c:1270
 msgid "D_on't Save"
 msgstr "_No guardar"
 
@@ -1361,28 +1369,28 @@ msgstr "_No guardar"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:897
+#: ../gedit/gedit-io-error-info-bar.c:900
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "El archivo %s ha sido modificado desde que lo leyó."
 
-#: ../gedit/gedit-io-error-info-bar.c:912
+#: ../gedit/gedit-io-error-info-bar.c:915
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Si lo guarda, todos los cambios externos podrían perderse. ¿Quiere guardarlo "
 "de todas formas?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1000
+#: ../gedit/gedit-io-error-info-bar.c:1004
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "No se ha podido crear un archivo de respaldo al guardar %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1005
+#: ../gedit/gedit-io-error-info-bar.c:1009
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "No se ha podido crear un archivo de respaldo temporal al guardar %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1022
+#: ../gedit/gedit-io-error-info-bar.c:1026
 msgid ""
 "gedit could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1394,7 +1402,7 @@ msgstr ""
 "antigua del archivo. ¿Quiere guardar de todas formas?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1086
 #, c-format
 msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
@@ -1403,7 +1411,7 @@ msgstr ""
 "No se pueden manipular lugares %s en modo escritura. Compruebe que ha "
 "tecleado el lugar correctamente y pruebe de nuevo."
 
-#: ../gedit/gedit-io-error-info-bar.c:1090
+#: ../gedit/gedit-io-error-info-bar.c:1094
 msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1411,7 +1419,7 @@ msgstr ""
 "No se puede manipular este lugar en modo escritura. Compruebe que ha "
 "tecleado el lugar correctamente y pruebe de nuevo."
 
-#: ../gedit/gedit-io-error-info-bar.c:1099
+#: ../gedit/gedit-io-error-info-bar.c:1103
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1420,7 +1428,7 @@ msgstr ""
 "%s no es un lugar válido. Compruebe que ha tecleado el lugar correctamente y "
 "pruebe de nuevo."
 
-#: ../gedit/gedit-io-error-info-bar.c:1106
+#: ../gedit/gedit-io-error-info-bar.c:1110
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1428,7 +1436,7 @@ msgstr ""
 "No tiene los permisos necesarios para guardar el archivo. Compruebe que ha "
 "tecleado el lugar correctamente y pruebe de nuevo."
 
-#: ../gedit/gedit-io-error-info-bar.c:1112
+#: ../gedit/gedit-io-error-info-bar.c:1116
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1436,7 +1444,7 @@ msgstr ""
 "No hay suficiente espacio en el disco para guardar el archivo. Libere un "
 "poco de espacio y pruebe de nuevo."
 
-#: ../gedit/gedit-io-error-info-bar.c:1117
+#: ../gedit/gedit-io-error-info-bar.c:1121
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1444,11 +1452,11 @@ msgstr ""
 "Está intentando guardar el archivo en un disco de sólo lectura. Compruebe "
 "que ha escrito el lugar correctamente y pruebe de nuevo."
 
-#: ../gedit/gedit-io-error-info-bar.c:1123
+#: ../gedit/gedit-io-error-info-bar.c:1127
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Ya existe un archivo con el mismo nombre. Use un nombre diferente."
 
-#: ../gedit/gedit-io-error-info-bar.c:1128
+#: ../gedit/gedit-io-error-info-bar.c:1132
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1456,7 +1464,7 @@ msgstr ""
 "El disco en donde está intentando guardar el archivo tiene una limitación en "
 "la longitud de los nombres de archivo. Use un nombre de archivo más corto."
 
-#: ../gedit/gedit-io-error-info-bar.c:1135
+#: ../gedit/gedit-io-error-info-bar.c:1139
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1466,7 +1474,7 @@ msgstr ""
 "tamaños de archivo. Intente guardar un archivo más pequeño o guardarlo en un "
 "disco que no tenga esta limitación."
 
-#: ../gedit/gedit-io-error-info-bar.c:1151
+#: ../gedit/gedit-io-error-info-bar.c:1155
 #, c-format
 msgid "Could not save the file %s."
 msgstr "No se puede guardar el archivo %s."
@@ -1475,29 +1483,29 @@ msgstr "No se puede guardar el archivo %s."
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:1196
+#: ../gedit/gedit-io-error-info-bar.c:1200
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "El archivo %s ha cambiado en el disco."
 
-#: ../gedit/gedit-io-error-info-bar.c:1201
+#: ../gedit/gedit-io-error-info-bar.c:1205
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "¿Quiere perder sus cambios y volver a cargar el archivo?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1203
+#: ../gedit/gedit-io-error-info-bar.c:1207
 msgid "Do you want to reload the file?"
 msgstr "¿Quiere volver a cargar el archivo?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1208
+#: ../gedit/gedit-io-error-info-bar.c:1212
 msgid "_Reload"
 msgstr "_Recargar"
 
-#: ../gedit/gedit-io-error-info-bar.c:1280
+#: ../gedit/gedit-io-error-info-bar.c:1285
 #, c-format
 msgid "Some invalid chars have been detected while saving %s"
 msgstr "Se han detectado algunos caracteres no válidos al guardar %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1296
+#: ../gedit/gedit-io-error-info-bar.c:1301
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1526,17 +1534,22 @@ msgid "_Quit"
 msgstr "_Salir"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:142
+#: ../gedit/gedit-notebook-popup-menu.c:171 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "_Mover a una ventana nueva"
 
-#: ../gedit/gedit-notebook-popup-menu.c:190 ../gedit/gedit-ui.h:78
+#: ../gedit/gedit-notebook-popup-menu.c:189 ../gedit/gedit-ui.h:78
 msgid "Save _As..."
 msgstr "Guardar _como…"
 
-#: ../gedit/gedit-notebook-popup-menu.c:203 ../gedit/gedit-ui.h:84
+#: ../gedit/gedit-notebook-popup-menu.c:200 ../gedit/gedit-ui.h:84
 msgid "_Print..."
 msgstr "_Imprimir…"
+
+#: ../gedit/gedit-notebook-popup-menu.c:211
+#| msgid "_Close All"
+msgid "_Close"
+msgstr "_Cerrar"
 
 #: ../gedit/gedit-open-tool-button.c:122 ../gedit/gedit-ui.h:55
 msgid "Open a file"
@@ -1546,11 +1559,11 @@ msgstr "Abrir un archivo"
 msgid "Open a recently used file"
 msgstr "Abrir un archivo usado recientemente"
 
-#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:590
+#: ../gedit/gedit-panel.c:411 ../gedit/gedit-panel.c:592
 msgid "Empty"
 msgstr "Vaciar"
 
-#: ../gedit/gedit-panel.c:475
+#: ../gedit/gedit-panel.c:477
 msgid "Hide panel"
 msgstr "Ocultar panel"
 
@@ -1903,12 +1916,12 @@ msgstr "INS"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:248
+#: ../gedit/gedit-statusbar.c:251
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Ln %d, Col %d"
 
-#: ../gedit/gedit-statusbar.c:347
+#: ../gedit/gedit-statusbar.c:350
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -2269,46 +2282,46 @@ msgstr "Panel _inferior"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Mostrar u ocultar el panel inferior en la ventana actual"
 
-#: ../gedit/gedit-utils.c:1033
+#: ../gedit/gedit-utils.c:1035
 msgid "Please check your installation."
 msgstr "Compruebe su instalación."
 
-#: ../gedit/gedit-utils.c:1091
+#: ../gedit/gedit-utils.c:1093
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "No se pudo abrir el archivo de IU %s. Error: %s"
 
-#: ../gedit/gedit-utils.c:1110
+#: ../gedit/gedit-utils.c:1112
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "No se pudo encontrar el objeto «%s» en el archivo %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1333
+#: ../gedit/gedit-utils.c:1335
 #, c-format
 msgid "/ on %s"
 msgstr "/ en %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:535
+#: ../gedit/gedit-view-frame.c:531
 msgid "_Wrap Around"
 msgstr "_Volver al principio"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:545
+#: ../gedit/gedit-view-frame.c:541
 msgid "Match _Entire Word Only"
 msgstr "Coincidir sólo con palabras compl_etas"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:555
+#: ../gedit/gedit-view-frame.c:551
 msgid "_Match Case"
 msgstr "Coi_ncidir con capitalización"
 
-#: ../gedit/gedit-view-frame.c:752
+#: ../gedit/gedit-view-frame.c:763
 msgid "String you want to search for"
 msgstr "La cadena que quiere buscar"
 
-#: ../gedit/gedit-view-frame.c:762
+#: ../gedit/gedit-view-frame.c:773
 msgid "Line you want to move the cursor to"
 msgstr "Línea a la que quiere mover el cursor"
 
@@ -2479,7 +2492,7 @@ msgid "File Name"
 msgstr "Nombre del archivo"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
-#: ../plugins/externaltools/tools/tools.ui.h:27
+#: ../plugins/externaltools/tools/tools.ui.h:28
 #: ../plugins/snippets/snippets/snippets.ui.h:13
 msgid "    "
 msgstr "    "
@@ -2600,27 +2613,27 @@ msgstr "Salió"
 msgid "All languages"
 msgstr "Todos los idiomas"
 
-#: ../plugins/externaltools/tools/manager.py:567
-#: ../plugins/externaltools/tools/manager.py:571
-#: ../plugins/externaltools/tools/manager.py:900
-#: ../plugins/externaltools/tools/tools.ui.h:28
+#: ../plugins/externaltools/tools/manager.py:568
+#: ../plugins/externaltools/tools/manager.py:572
+#: ../plugins/externaltools/tools/manager.py:913
+#: ../plugins/externaltools/tools/tools.ui.h:29
 msgid "All Languages"
 msgstr "Todos los idiomas"
 
-#: ../plugins/externaltools/tools/manager.py:684
+#: ../plugins/externaltools/tools/manager.py:685
 msgid "New tool"
 msgstr "Herramienta nueva"
 
-#: ../plugins/externaltools/tools/manager.py:815
+#: ../plugins/externaltools/tools/manager.py:816
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Este acelerador ya está vinculado a %s"
 
-#: ../plugins/externaltools/tools/manager.py:859
+#: ../plugins/externaltools/tools/manager.py:860
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Teclee un acelerador nuevo , o pulse Retroceder para limpiar"
 
-#: ../plugins/externaltools/tools/manager.py:861
+#: ../plugins/externaltools/tools/manager.py:862
 msgid "Type a new accelerator"
 msgstr "Teclee un acelerador nuevo"
 
@@ -2634,147 +2647,151 @@ msgid "Stop Tool"
 msgstr "Detener herramienta"
 
 #: ../plugins/externaltools/tools/tools.ui.h:1
+msgid "Always available"
+msgstr "Siempre disponible"
+
+#: ../plugins/externaltools/tools/tools.ui.h:2
 msgid "All documents"
 msgstr "Todos los documentos"
 
-#: ../plugins/externaltools/tools/tools.ui.h:2
+#: ../plugins/externaltools/tools/tools.ui.h:3
 msgid "All documents except untitled ones"
 msgstr "Todos los documentos excepto los que no tienen título"
 
-#: ../plugins/externaltools/tools/tools.ui.h:3
+#: ../plugins/externaltools/tools/tools.ui.h:4
 msgid "Local files only"
 msgstr "Sólo archivos locales"
 
-#: ../plugins/externaltools/tools/tools.ui.h:4
+#: ../plugins/externaltools/tools/tools.ui.h:5
 msgid "Remote files only"
 msgstr "Sólo archivos remotos"
 
-#: ../plugins/externaltools/tools/tools.ui.h:5
+#: ../plugins/externaltools/tools/tools.ui.h:6
 msgid "Untitled documents only"
 msgstr "Sólo los documentos sin título"
 
-#: ../plugins/externaltools/tools/tools.ui.h:6
+#: ../plugins/externaltools/tools/tools.ui.h:7
 msgid "Nothing"
 msgstr "Nada"
 
-#: ../plugins/externaltools/tools/tools.ui.h:7
+#: ../plugins/externaltools/tools/tools.ui.h:8
 msgid "Current document"
 msgstr "Documento actual"
 
-#: ../plugins/externaltools/tools/tools.ui.h:8
+#: ../plugins/externaltools/tools/tools.ui.h:9
 msgid "Current selection"
 msgstr "Selección actual"
 
-#: ../plugins/externaltools/tools/tools.ui.h:9
+#: ../plugins/externaltools/tools/tools.ui.h:10
 msgid "Current selection (default to document)"
 msgstr "Selección actual (predeterminada del documento)"
 
-#: ../plugins/externaltools/tools/tools.ui.h:10
+#: ../plugins/externaltools/tools/tools.ui.h:11
 msgid "Current line"
 msgstr "Línea actual"
 
-#: ../plugins/externaltools/tools/tools.ui.h:11
+#: ../plugins/externaltools/tools/tools.ui.h:12
 msgid "Current word"
 msgstr "Palabra actual"
 
-#: ../plugins/externaltools/tools/tools.ui.h:12
+#: ../plugins/externaltools/tools/tools.ui.h:13
 msgid "Display in bottom pane"
 msgstr "Mostrar en el panel inferior"
 
-#: ../plugins/externaltools/tools/tools.ui.h:13
+#: ../plugins/externaltools/tools/tools.ui.h:14
 msgid "Create new document"
 msgstr "Crear documento nuevo"
 
-#: ../plugins/externaltools/tools/tools.ui.h:14
+#: ../plugins/externaltools/tools/tools.ui.h:15
 msgid "Append to current document"
 msgstr "Añadir al documento actual"
 
-#: ../plugins/externaltools/tools/tools.ui.h:15
+#: ../plugins/externaltools/tools/tools.ui.h:16
 msgid "Replace current document"
 msgstr "Reemplazar el documento actual"
 
-#: ../plugins/externaltools/tools/tools.ui.h:16
+#: ../plugins/externaltools/tools/tools.ui.h:17
 msgid "Replace current selection"
 msgstr "Reemplazar la selección actual"
 
-#: ../plugins/externaltools/tools/tools.ui.h:17
+#: ../plugins/externaltools/tools/tools.ui.h:18
 msgid "Insert at cursor position"
 msgstr "Insertar en la posición del cursor"
 
-#: ../plugins/externaltools/tools/tools.ui.h:18
+#: ../plugins/externaltools/tools/tools.ui.h:19
 msgid "Manage External Tools"
 msgstr "Gestionar herramientas externas"
 
-#: ../plugins/externaltools/tools/tools.ui.h:19
+#: ../plugins/externaltools/tools/tools.ui.h:20
 msgid "_Tools:"
 msgstr "_Herramientas:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:20
+#: ../plugins/externaltools/tools/tools.ui.h:21
 msgid "Add a new tool"
 msgstr "Añadir una herramienta nueva"
 
-#: ../plugins/externaltools/tools/tools.ui.h:21
+#: ../plugins/externaltools/tools/tools.ui.h:22
 msgid "Add Tool"
 msgstr "Añadir herramienta"
 
-#: ../plugins/externaltools/tools/tools.ui.h:22
+#: ../plugins/externaltools/tools/tools.ui.h:23
 msgid "Remove selected tool"
 msgstr "Quitar la herramienta seleccionada"
 
-#: ../plugins/externaltools/tools/tools.ui.h:23
+#: ../plugins/externaltools/tools/tools.ui.h:24
 msgid "Remove Tool"
 msgstr "Quitar herramienta"
 
-#: ../plugins/externaltools/tools/tools.ui.h:24
+#: ../plugins/externaltools/tools/tools.ui.h:25
 msgid "Revert tool"
 msgstr "Revertir herramienta"
 
-#: ../plugins/externaltools/tools/tools.ui.h:25
+#: ../plugins/externaltools/tools/tools.ui.h:26
 msgid "Revert Tool"
 msgstr "Revertir herramienta"
 
-#: ../plugins/externaltools/tools/tools.ui.h:26
+#: ../plugins/externaltools/tools/tools.ui.h:27
 #: ../plugins/snippets/snippets/snippets.ui.h:11
 msgid "_Edit:"
 msgstr "_Editar:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:29
+#: ../plugins/externaltools/tools/tools.ui.h:30
 msgid "_Applicability:"
 msgstr "_Aplicabilidad:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:30
+#: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "_Output:"
 msgstr "_Salida:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:31
+#: ../plugins/externaltools/tools/tools.ui.h:32
 msgid "_Input:"
 msgstr "_Entrada:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:32
+#: ../plugins/externaltools/tools/tools.ui.h:33
 msgid "_Save:"
 msgstr "_Guardar:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:33
+#: ../plugins/externaltools/tools/tools.ui.h:34
 msgid "Shortcut _key:"
 msgstr "A_tajo de teclado:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:173
+#: ../plugins/externaltools/tools/windowactivatable.py:175
 msgid "Manage _External Tools..."
 msgstr "Gestionar herramientas _externas…"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:174
+#: ../plugins/externaltools/tools/windowactivatable.py:176
 msgid "Opens the External Tools Manager"
 msgstr "Abrir el gestor de herramientas externas"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:177
+#: ../plugins/externaltools/tools/windowactivatable.py:179
 msgid "External _Tools"
 msgstr "_Herramientas externas"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:178
+#: ../plugins/externaltools/tools/windowactivatable.py:180
 msgid "External tools"
 msgstr "Herramientas externas"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:212
+#: ../plugins/externaltools/tools/windowactivatable.py:214
 msgid "Tool Output"
 msgstr "Salida de la herramienta"
 
@@ -2844,43 +2861,43 @@ msgstr "Mostrar _ocultos"
 msgid "Show _Binary"
 msgstr "Mostrar _binarios"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:550
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:539
 msgid "File Browser"
 msgstr "Examinador de archivos"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:685
 msgid "An error occurred while creating a new directory"
 msgstr "Ocurrió un error al crear la carpeta nueva"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:698
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
 msgid "An error occurred while creating a new file"
 msgstr "Ocurrió un error al crear un archivo nuevo"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:701
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
 msgid "An error occurred while renaming a file or directory"
 msgstr "Ocurrió un error al renombrar un archivo o carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:704
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
 msgid "An error occurred while deleting a file or directory"
 msgstr "Ocurrió un error al eliminar un archivo o carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:707
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Ocurrió un error al abrir una carpeta en el gestor de archivos"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:710
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:700
 msgid "An error occurred while setting a root directory"
 msgstr "Ocurrió un error al establecer la carpeta raíz"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:713
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:703
 msgid "An error occurred while loading a directory"
 msgstr "Ocurrió un error al cargar una carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:716
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:706
 msgid "An error occurred"
 msgstr "Ocurrió un error"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:920
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2889,26 +2906,26 @@ msgstr ""
 "a la papelera, ¿quiere eliminarlo\n"
 "permanentemente?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:935
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:925
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "El archivo %s no se puede mover a la papelera."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:940
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
 msgid "The selected files cannot be moved to the trash."
 msgstr "Los archivos seleccionados no se pueden mover a la papelera."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:972
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "¿Seguro que quiere eliminar permanentemente «%s»?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:977
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:967
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr ""
 "¿Seguro que quiere eliminar permanentemente los archivos seleccionados?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:980
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:970
 msgid "If you delete an item, it is permanently lost."
 msgstr "Si elimina un elemento, se pierde permanentemente."
 
@@ -2950,26 +2967,32 @@ msgstr ""
 "La carpeta nuevo esta actualmente filtrada. Necesita ajustar los filtros "
 "para hacerlo visible."
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
+#. Add a cancel button
+#: ../plugins/filebrowser/gedit-file-browser-utils.c:173
+#| msgid "_Cancel Logout"
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:788
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2003
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1982
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "No existe el objeto montado para el volumen montado: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2080
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2059
 #, c-format
 msgid "Could not open media: %s"
 msgstr "No se pudo abrir el soporte: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2127
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2106
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "No se pudo abrir el volumen: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2775
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2742
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Error al cargar una carpeta «%s»: no existe la carpeta"
@@ -3068,7 +3091,6 @@ msgid "File Browser Binary Patterns"
 msgstr "Patrones binarios del examinador de archivos"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
-#| msgid "The supplemental patterns to use when when filtering binary files."
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Los patrones adicionales que usar al filtrar archivos binarios."
 
@@ -3806,9 +3828,6 @@ msgstr ""
 
 #~ msgid "Log Out _without Saving"
 #~ msgstr "Salir de la sesión _sin guardar"
-
-#~ msgid "_Cancel Logout"
-#~ msgstr "_Cancelar salida"
 
 #~ msgid "Run gedit in the background"
 #~ msgstr "Ejecutar gedit en segundo plano"
