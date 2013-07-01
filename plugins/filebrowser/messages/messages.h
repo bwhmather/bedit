@@ -9,6 +9,7 @@
 #include "gedit-file-browser-message-id.h"
 #include "gedit-file-browser-message-id-location.h"
 #include "gedit-file-browser-message-set-emblem.h"
+#include "gedit-file-browser-message-set-markup.h"
 #include "gedit-file-browser-message-set-root.h"
 
 #endif /* __GEDIT_FILE_BROWER_MESSAGES_MESSAGES_H__ */

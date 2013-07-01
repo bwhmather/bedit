@@ -42,6 +42,9 @@ struct _GeditFileBrowserViewPrivate
 	GtkCellRenderer *text_renderer;
 
 	GtkTreeModel *model;
+
+	/* Used when renaming */
+	gchar *orig_markup;
 	GtkTreeRowReference *editable;
 
 	/* Click policy */
@@ -1030,8 +1033,8 @@ gedit_file_browser_view_init (GeditFileBrowserView *obj)
 					 obj->priv->text_renderer, TRUE);
 	gtk_tree_view_column_add_attribute (obj->priv->column,
 					    obj->priv->text_renderer,
-					    "text",
-					    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME);
+					    "markup",
+					    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP);
 
 	g_signal_connect (obj->priv->text_renderer, "edited",
 			  G_CALLBACK (on_cell_edited), obj);
@@ -1138,7 +1141,10 @@ void
 gedit_file_browser_view_start_rename (GeditFileBrowserView *tree_view,
 				      GtkTreeIter          *iter)
 {
+	gchar *name;
+	gchar *markup;
 	guint flags;
+	GValue name_escaped = G_VALUE_INIT;
 	GtkTreeRowReference *rowref;
 	GtkTreePath *path;
 
@@ -1148,11 +1154,25 @@ gedit_file_browser_view_start_rename (GeditFileBrowserView *tree_view,
 	g_return_if_fail (iter != NULL);
 
 	gtk_tree_model_get (tree_view->priv->model, iter,
-			    GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
-			    -1);
+	                    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name,
+	                    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP, &markup,
+	                    GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS, &flags,
+	                    -1);
 
 	if (!(FILE_IS_DIR (flags) || !FILE_IS_DUMMY (flags)))
+	{
+		g_free (name);
+		g_free (markup);
 		return;
+	}
+
+	/* Restore the markup to the original
+	 * name, a plugin might have changed the markup.
+	 */
+	g_value_init (&name_escaped, G_TYPE_STRING);
+	g_value_take_string (&name_escaped, g_markup_escape_text (name, -1));
+	gedit_file_browser_store_set_value (GEDIT_FILE_BROWSER_STORE (tree_view->priv->model), iter,
+	                                    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP, &name_escaped);
 
 	path = gtk_tree_model_get_path (tree_view->priv->model, iter);
 	rowref = gtk_tree_row_reference_new (tree_view->priv->model, path);
@@ -1165,6 +1185,8 @@ gedit_file_browser_view_start_rename (GeditFileBrowserView *tree_view,
 					      path);
 
 	gtk_tree_path_free (path);
+
+	tree_view->priv->orig_markup = markup;
 	tree_view->priv->editable = rowref;
 
 	gtk_tree_view_set_cursor (GTK_TREE_VIEW (tree_view),
@@ -1175,6 +1197,9 @@ gedit_file_browser_view_start_rename (GeditFileBrowserView *tree_view,
 				      gtk_tree_row_reference_get_path (tree_view->priv->editable),
 				      tree_view->priv->column,
 				      FALSE, 0.0, 0.0);
+
+	g_value_unset (&name_escaped);
+	g_free (name);
 }
 
 void
@@ -1208,13 +1233,8 @@ on_cell_edited (GtkCellRendererText  *cell,
 	GtkTreePath *treepath;
 	GtkTreeIter iter;
 	gboolean ret;
+	GValue orig_markup = G_VALUE_INIT;
 	GError *error = NULL;
-
-	gtk_tree_row_reference_free (tree_view->priv->editable);
-	tree_view->priv->editable = NULL;
-
-	if (new_text == NULL || *new_text == '\0')
-		return;
 
 	treepath = gtk_tree_path_new_from_string (path);
 	ret = gtk_tree_model_get_iter (GTK_TREE_MODEL (tree_view->priv->model), &iter, treepath);
@@ -1222,7 +1242,14 @@ on_cell_edited (GtkCellRendererText  *cell,
 
 	if (ret)
 	{
-		if (gedit_file_browser_store_rename (GEDIT_FILE_BROWSER_STORE (tree_view->priv->model),
+		/* Restore the original markup */
+		g_value_init (&orig_markup, G_TYPE_STRING);
+		g_value_set_string (&orig_markup, tree_view->priv->orig_markup);
+		gedit_file_browser_store_set_value (GEDIT_FILE_BROWSER_STORE (tree_view->priv->model), &iter,
+		                                    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP, &orig_markup);
+
+		if (new_text != NULL && *new_text != '\0' &&
+		    gedit_file_browser_store_rename (GEDIT_FILE_BROWSER_STORE (tree_view->priv->model),
 		    &iter, new_text, &error))
 		{
 			treepath = gtk_tree_model_get_path (GTK_TREE_MODEL (tree_view->priv->model), &iter);
@@ -1237,7 +1264,15 @@ on_cell_edited (GtkCellRendererText  *cell,
 				       error->code, error->message);
 			g_error_free (error);
 		}
+
+		g_value_unset (&orig_markup);
 	}
+
+	g_free (tree_view->priv->orig_markup);
+	tree_view->priv->orig_markup = NULL;
+	
+	gtk_tree_row_reference_free (tree_view->priv->editable);
+	tree_view->priv->editable = NULL;
 }
 
 static void

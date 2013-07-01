@@ -32,6 +32,7 @@ NOINST_H_FILES = \
 	messages/gedit-file-browser-message-id.h \
 	messages/gedit-file-browser-message-id-location.h \
 	messages/gedit-file-browser-message-set-emblem.h \
+	messages/gedit-file-browser-message-set-markup.h \
 	messages/gedit-file-browser-message-set-root.h \
 	messages/messages.h
 
@@ -52,6 +53,7 @@ libfilebrowser_la_SOURCES = \
 	messages/gedit-file-browser-message-id.c \
 	messages/gedit-file-browser-message-id-location.c \
 	messages/gedit-file-browser-message-set-emblem.c \
+	messages/gedit-file-browser-message-set-markup.c \
 	messages/gedit-file-browser-message-set-root.c \
 	$(NOINST_H_FILES)
 

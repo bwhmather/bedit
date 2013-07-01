@@ -92,6 +92,7 @@ struct _FileBrowserNode
 	GFile *file;
 	guint flags;
 	gchar *name;
+	gchar *markup;
 
 	GdkPixbuf *icon;
 	GdkPixbuf *emblem;
@@ -490,9 +491,10 @@ gedit_file_browser_store_init (GeditFileBrowserStore *obj)
 	obj->priv = GEDIT_FILE_BROWSER_STORE_GET_PRIVATE (obj);
 
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION] = G_TYPE_FILE;
-	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_NAME] = G_TYPE_STRING;
+	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP] = G_TYPE_STRING;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS] = G_TYPE_UINT;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_ICON] = GDK_TYPE_PIXBUF;
+	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_NAME] = G_TYPE_STRING;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM] = GDK_TYPE_PIXBUF;
 
 	/* Default filter mode is hiding the hidden files */
@@ -723,14 +725,17 @@ gedit_file_browser_store_get_value (GtkTreeModel *tree_model,
 		case GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION:
 			set_gvalue_from_node (value, node);
 			break;
-		case GEDIT_FILE_BROWSER_STORE_COLUMN_NAME:
-			g_value_set_string (value, node->name);
+		case GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP:
+			g_value_set_string (value, node->markup);
 			break;
 		case GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS:
 			g_value_set_uint (value, node->flags);
 			break;
 		case GEDIT_FILE_BROWSER_STORE_COLUMN_ICON:
 			g_value_set_object (value, node->icon);
+			break;
+		case GEDIT_FILE_BROWSER_STORE_COLUMN_NAME:
+			g_value_set_string (value, node->name);
 			break;
 		case GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM:
 			g_value_set_object (value, node->emblem);
@@ -1356,11 +1361,17 @@ static void
 file_browser_node_set_name (FileBrowserNode *node)
 {
 	g_free (node->name);
+	g_free (node->markup);
 
 	if (node->file)
 		node->name = gedit_file_browser_utils_file_basename (node->file);
 	else
 		node->name = NULL;
+
+	if (node->name)
+		node->markup = g_markup_escape_text (node->name, -1);
+	else
+		node->markup = NULL;
 }
 
 static void
@@ -1467,6 +1478,7 @@ file_browser_node_free (GeditFileBrowserStore *model,
 		g_object_unref (node->emblem);
 
 	g_free (node->name);
+	g_free (node->markup);
 
 	if (NODE_IS_DIR (node))
 		g_slice_free (FileBrowserNodeDir, (FileBrowserNodeDir *)node);
@@ -1769,6 +1781,7 @@ model_create_dummy_node (GeditFileBrowserStore *model,
 
 	dummy = file_browser_node_new (NULL, parent);
 	dummy->name = g_strdup (_("(Empty)"));
+	dummy->markup = g_markup_escape_text (dummy->name, -1);
 
 	dummy->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_DUMMY;
 	dummy->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
@@ -2947,27 +2960,46 @@ gedit_file_browser_store_set_value (GeditFileBrowserStore *tree_model,
 	GtkTreePath *path;
 
 	g_return_if_fail (GEDIT_IS_FILE_BROWSER_STORE (tree_model));
-	g_return_if_fail (column == GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM);
-	g_return_if_fail (G_VALUE_HOLDS_OBJECT (value));
 	g_return_if_fail (iter != NULL);
 	g_return_if_fail (iter->user_data != NULL);
 
-	data = g_value_get_object (value);
-
-	if (data)
-		g_return_if_fail (GDK_IS_PIXBUF (data));
-
 	node = (FileBrowserNode *) (iter->user_data);
 
-	if (node->emblem)
-		g_object_unref (node->emblem);
+	if (column == GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP)
+	{
+		g_return_if_fail (G_VALUE_HOLDS_STRING (value));
 
-	if (data)
-		node->emblem = g_object_ref (GDK_PIXBUF (data));
+		data = g_value_dup_string (value);
+
+		if (!data)
+			data = g_strdup (node->name);
+
+		g_free (node->markup);
+		node->markup = g_strdup (data);
+	}
+	else if (column == GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM)
+	{
+		g_return_if_fail (G_VALUE_HOLDS_OBJECT (value));
+
+		data = g_value_get_object (value);
+
+		g_return_if_fail (GDK_IS_PIXBUF (data) || data == NULL);
+
+		if (node->emblem)
+			g_object_unref (node->emblem);
+
+		if (data)
+			node->emblem = g_object_ref (GDK_PIXBUF (data));
+		else
+			node->emblem = NULL;
+
+		model_recomposite_icon (tree_model, iter);
+	}
 	else
-		node->emblem = NULL;
-
-	model_recomposite_icon (tree_model, iter);
+	{
+		g_return_if_fail (column == GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP ||
+		                  column == GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM);
+	}
 
 	if (model_node_visibility (tree_model, node))
 	{

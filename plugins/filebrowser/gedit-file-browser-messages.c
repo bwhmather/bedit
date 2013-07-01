@@ -278,6 +278,65 @@ message_set_emblem_cb (GeditMessageBus *bus,
 	g_free (emblem);
 }
 
+static void
+message_set_markup_cb (GeditMessageBus *bus,
+		       GeditMessage    *message,
+		       WindowData      *data)
+{
+	gchar *id = NULL;
+	gchar *markup = NULL;
+	GtkTreePath *path;
+	GeditFileBrowserStore *store;
+
+	g_object_get (message, "id", &id, "markup", &markup, NULL);
+
+	if (!id)
+	{
+		g_free (id);
+		g_free (markup);
+
+		return;
+	}
+
+	path = track_row_lookup (data, id);
+
+	if (path != NULL)
+	{
+		GtkTreeIter iter;
+		GValue value = G_VALUE_INIT;
+
+		store = gedit_file_browser_widget_get_browser_store (data->widget);
+
+		if (gtk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path))
+		{
+			if (markup == NULL)
+			{
+				gchar *name;
+
+				gtk_tree_model_get (GTK_TREE_MODEL (store), &iter,
+				                    GEDIT_FILE_BROWSER_STORE_COLUMN_NAME, &name,
+				                    -1);
+				markup = g_markup_escape_text (name, -1);
+
+				g_free (name);
+			}
+
+			g_value_init (&value, G_TYPE_STRING);
+			g_value_set_string (&value, markup);
+
+			gedit_file_browser_store_set_value (store,
+			                                    &iter,
+			                                    GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP,
+			                                    &value);
+
+			g_value_unset (&value);
+		}
+	}
+
+	g_free (id);
+	g_free (markup);
+}
+
 static gchar *
 item_id (const gchar *path,
 	 GFile *location)
@@ -603,6 +662,11 @@ register_methods (GeditWindow            *window,
 	                            "set_emblem");
 
 	gedit_message_bus_register (bus,
+	                            GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_MARKUP,
+	                            MESSAGE_OBJECT_PATH,
+	                            "set_markup");
+
+	gedit_message_bus_register (bus,
 	                            GEDIT_TYPE_FILE_BROWSER_MESSAGE_ADD_FILTER,
 	                            MESSAGE_OBJECT_PATH,
 	                            "add_filter");
@@ -660,6 +724,7 @@ register_methods (GeditWindow            *window,
 	BUS_CONNECT (bus, get_root, data);
 	BUS_CONNECT (bus, set_root, data);
 	BUS_CONNECT (bus, set_emblem, data);
+	BUS_CONNECT (bus, set_markup, data);
 	BUS_CONNECT (bus, add_filter, window);
 	BUS_CONNECT (bus, remove_filter, data);
 
@@ -953,6 +1018,7 @@ gedit_file_browser_messages_unregister (GeditWindow *window)
 	BUS_DISCONNECT (bus, get_root, data);
 	BUS_DISCONNECT (bus, set_root, data);
 	BUS_DISCONNECT (bus, set_emblem, data);
+	BUS_DISCONNECT (bus, set_markup, data);
 	BUS_DISCONNECT (bus, add_filter, window);
 	BUS_DISCONNECT (bus, remove_filter, data);
 
