@@ -142,8 +142,6 @@ void		_gedit_cmd_search_clear_highlight	(GtkAction   *action,
 							 GeditWindow *window);
 void		_gedit_cmd_search_goto_line		(GtkAction   *action,
 							 GeditWindow *window);
-void		_gedit_cmd_search_incremental_search	(GtkAction   *action,
-							 GeditWindow *window);
 
 void		_gedit_cmd_documents_previous_document	(GtkAction   *action,
 							 GeditWindow *window);
