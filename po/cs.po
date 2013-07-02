@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-06-29 19:43+0000\n"
-"PO-Revision-Date: 2013-06-30 07:29+0200\n"
+"POT-Creation-Date: 2013-06-30 17:19+0000\n"
+"PO-Revision-Date: 2013-07-02 07:44+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -1241,11 +1241,11 @@ msgstr "Kódování zn_aků:"
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:506
-#: ../gedit/gedit-io-error-info-bar.c:784
+#: ../gedit/gedit-io-error-info-bar.c:785
 msgid "Edit Any_way"
 msgstr "_Přesto upravovat"
 
-#: ../gedit/gedit-io-error-info-bar.c:608
+#: ../gedit/gedit-io-error-info-bar.c:609
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1253,29 +1253,29 @@ msgstr ""
 "Počet sledovaných odkazů je omezen a aktuální soubor nelze nalézt v rámci "
 "tohoto omezení."
 
-#: ../gedit/gedit-io-error-info-bar.c:612
+#: ../gedit/gedit-io-error-info-bar.c:613
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Nemáte oprávnění potřebná k otevření souboru."
 
-#: ../gedit/gedit-io-error-info-bar.c:618
+#: ../gedit/gedit-io-error-info-bar.c:619
 msgid "gedit has not been able to detect the character encoding."
 msgstr "gedit nebyl schopen zjistit kódování znaků."
 
-#: ../gedit/gedit-io-error-info-bar.c:620
-#: ../gedit/gedit-io-error-info-bar.c:642
+#: ../gedit/gedit-io-error-info-bar.c:621
+#: ../gedit/gedit-io-error-info-bar.c:643
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Zkontrolujte prosím, že jste se nesnažili otevřít binární soubor."
 
-#: ../gedit/gedit-io-error-info-bar.c:621
+#: ../gedit/gedit-io-error-info-bar.c:622
 msgid "Select a character encoding from the menu and try again."
 msgstr "Vyberte kódování znaků z nabídky a zkuste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
+#: ../gedit/gedit-io-error-info-bar.c:628
 #, c-format
 msgid "There was a problem opening the file %s."
 msgstr "Došlo k problému při otevírání souboru %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:629
+#: ../gedit/gedit-io-error-info-bar.c:630
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1283,31 +1283,31 @@ msgstr ""
 "Soubor, který jste otevřeli, obsahuje nějaké neplatné znaky. Pokud budete "
 "pokračovat v úpravách tohoto dokumentu, můžete jej poškodit."
 
-#: ../gedit/gedit-io-error-info-bar.c:632
+#: ../gedit/gedit-io-error-info-bar.c:633
 msgid "You can also choose another character encoding and try again."
 msgstr "Můžete také vybrat jiné kódování znaků a zkusit to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:639
+#: ../gedit/gedit-io-error-info-bar.c:640
 #, c-format
 msgid "Could not open the file %s using the %s character encoding."
 msgstr "Nelze otevřít soubor „%s“ s použitím kódováním znaků %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:643
-#: ../gedit/gedit-io-error-info-bar.c:717
+#: ../gedit/gedit-io-error-info-bar.c:644
+#: ../gedit/gedit-io-error-info-bar.c:718
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Vyberte z nabídky jiné kódování znaků a zkuste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:653
+#: ../gedit/gedit-io-error-info-bar.c:654
 #, c-format
 msgid "Could not open the file %s."
 msgstr "Nelze otevřít soubor %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:712
+#: ../gedit/gedit-io-error-info-bar.c:713
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
 msgstr "Nelze uložit soubor %s s kódováním znaků %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:715
+#: ../gedit/gedit-io-error-info-bar.c:716
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1317,31 +1317,38 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:789
+#: ../gedit/gedit-io-error-info-bar.c:790
 msgid "D_on't Edit"
 msgstr "Ne_upravovat"
 
-#: ../gedit/gedit-io-error-info-bar.c:803
+#: ../gedit/gedit-io-error-info-bar.c:805
 #, c-format
 msgid "This file (%s) is already open in another gedit window."
 msgstr "Tento soubor (%s) je již otevřen v jiném okně aplikace gedit."
 
-#: ../gedit/gedit-io-error-info-bar.c:817
+#: ../gedit/gedit-io-error-info-bar.c:819
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
 msgstr ""
 "gedit otevřel tento soubor pouze pro čtení. Chcete jej přesto upravovat?"
 
-#: ../gedit/gedit-io-error-info-bar.c:875
-#: ../gedit/gedit-io-error-info-bar.c:973
-#: ../gedit/gedit-io-error-info-bar.c:1262
+#: ../gedit/gedit-io-error-info-bar.c:877
+#: ../gedit/gedit-io-error-info-bar.c:976
+#: ../gedit/gedit-io-error-info-bar.c:1266
 msgid "S_ave Anyway"
 msgstr "_Přesto uložit"
 
-#: ../gedit/gedit-io-error-info-bar.c:879
+#: ../gedit/gedit-io-error-info-bar.c:878
 #: ../gedit/gedit-io-error-info-bar.c:977
-#: ../gedit/gedit-io-error-info-bar.c:1266
+#: ../gedit/gedit-io-error-info-bar.c:1267
+#: ../gedit/gedit-notebook-popup-menu.c:182
+msgid "_Save"
+msgstr "_Uložit"
+
+#: ../gedit/gedit-io-error-info-bar.c:881
+#: ../gedit/gedit-io-error-info-bar.c:980
+#: ../gedit/gedit-io-error-info-bar.c:1270
 msgid "D_on't Save"
 msgstr "Neuklá_dat"
 
@@ -1349,28 +1356,28 @@ msgstr "Neuklá_dat"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:897
+#: ../gedit/gedit-io-error-info-bar.c:900
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "Soubor %s byl od jeho načtení změněn."
 
-#: ../gedit/gedit-io-error-info-bar.c:912
+#: ../gedit/gedit-io-error-info-bar.c:915
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Pokud jej uložíte, všechny externí změny by mohly být ztraceny. Přesto jej "
 "uložit?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1000
+#: ../gedit/gedit-io-error-info-bar.c:1004
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "Nelze vytvořit záložní soubor při ukládání souboru %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1005
+#: ../gedit/gedit-io-error-info-bar.c:1009
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "Nelze vytvořit dočasný záložní soubor při ukládání souboru %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1022
+#: ../gedit/gedit-io-error-info-bar.c:1026
 msgid ""
 "gedit could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1381,7 +1388,7 @@ msgstr ""
 "chybě, mohli byste ztratit starou kopii. Přesto uložit?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1086
 #, c-format
 msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
@@ -1390,7 +1397,7 @@ msgstr ""
 "gedit neumí používat umístění %s v režimu zápisu. Zkontrolujte prosím, že "
 "jste zadali umístění správně, a zkuste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1090
+#: ../gedit/gedit-io-error-info-bar.c:1094
 msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1398,7 +1405,7 @@ msgstr ""
 "gedit nemůže zpracovat umístění v režimu pro zápis. Zkontrolujte prosím, že "
 "jste umístění napsali správně, a zkuste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1099
+#: ../gedit/gedit-io-error-info-bar.c:1103
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1407,7 +1414,7 @@ msgstr ""
 "%s není platné umístění. Zkontrolujte prosím, že jste umístění napsali "
 "správně, a zkuste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1106
+#: ../gedit/gedit-io-error-info-bar.c:1110
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1415,7 +1422,7 @@ msgstr ""
 "Nemáte oprávnění pro uložení souboru. Zkontrolujte prosím, že jste umístění "
 "napsali správně, a zkuste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1112
+#: ../gedit/gedit-io-error-info-bar.c:1116
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1423,7 +1430,7 @@ msgstr ""
 "Pro uložení souboru není dostatek místa na disku. Uvolněte prosím nějaké "
 "místo a zkuste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1117
+#: ../gedit/gedit-io-error-info-bar.c:1121
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1431,11 +1438,11 @@ msgstr ""
 "Pokoušíte se soubor uložit na disk určený pouze pro čtení. Zkontrolujte "
 "prosím, že jste umístění napsali správně, a zkuste to znovu."
 
-#: ../gedit/gedit-io-error-info-bar.c:1123
+#: ../gedit/gedit-io-error-info-bar.c:1127
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Soubor se stejným jménem již existuje. Použijte prosím jiné jméno."
 
-#: ../gedit/gedit-io-error-info-bar.c:1128
+#: ../gedit/gedit-io-error-info-bar.c:1132
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1443,7 +1450,7 @@ msgstr ""
 "Disk, na který se snažíte uložit tento soubor, má omezenu délku názvu "
 "souboru. Použijte prosím kratší název."
 
-#: ../gedit/gedit-io-error-info-bar.c:1135
+#: ../gedit/gedit-io-error-info-bar.c:1139
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1453,7 +1460,7 @@ msgstr ""
 "Zkuste prosím uložit menší soubor, nebo uložit tento soubor na disk, který "
 "nemá toto omezení."
 
-#: ../gedit/gedit-io-error-info-bar.c:1151
+#: ../gedit/gedit-io-error-info-bar.c:1155
 #, c-format
 msgid "Could not save the file %s."
 msgstr "Nelze uložit soubor %s."
@@ -1462,29 +1469,29 @@ msgstr "Nelze uložit soubor %s."
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:1196
+#: ../gedit/gedit-io-error-info-bar.c:1200
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "Soubor %s byl změněn na disku."
 
-#: ../gedit/gedit-io-error-info-bar.c:1201
+#: ../gedit/gedit-io-error-info-bar.c:1205
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "Chcete zahodit provedené změny a soubor načíst znovu?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1203
+#: ../gedit/gedit-io-error-info-bar.c:1207
 msgid "Do you want to reload the file?"
 msgstr "Chcete soubor znovu načíst?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1208
+#: ../gedit/gedit-io-error-info-bar.c:1212
 msgid "_Reload"
 msgstr "Zn_ovu načíst"
 
-#: ../gedit/gedit-io-error-info-bar.c:1280
+#: ../gedit/gedit-io-error-info-bar.c:1285
 #, c-format
 msgid "Some invalid chars have been detected while saving %s"
 msgstr "Při ukládání %s byly zjištěny některé neplatné znaky"
 
-#: ../gedit/gedit-io-error-info-bar.c:1296
+#: ../gedit/gedit-io-error-info-bar.c:1301
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1513,17 +1520,21 @@ msgid "_Quit"
 msgstr "U_končit"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:142
+#: ../gedit/gedit-notebook-popup-menu.c:171 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "Přes_unout do nového okna"
 
-#: ../gedit/gedit-notebook-popup-menu.c:190 ../gedit/gedit-ui.h:78
+#: ../gedit/gedit-notebook-popup-menu.c:189 ../gedit/gedit-ui.h:78
 msgid "Save _As..."
 msgstr "Uložit _jako…"
 
-#: ../gedit/gedit-notebook-popup-menu.c:203 ../gedit/gedit-ui.h:84
+#: ../gedit/gedit-notebook-popup-menu.c:200 ../gedit/gedit-ui.h:84
 msgid "_Print..."
 msgstr "_Tisk…"
+
+#: ../gedit/gedit-notebook-popup-menu.c:211
+msgid "_Close"
+msgstr "_Zavřít"
 
 #: ../gedit/gedit-open-tool-button.c:122 ../gedit/gedit-ui.h:55
 msgid "Open a file"
@@ -1533,11 +1544,11 @@ msgstr "Otevřít soubor"
 msgid "Open a recently used file"
 msgstr "Otevřít nedávno používaný soubor"
 
-#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:590
+#: ../gedit/gedit-panel.c:411 ../gedit/gedit-panel.c:592
 msgid "Empty"
 msgstr "Prázdné"
 
-#: ../gedit/gedit-panel.c:475
+#: ../gedit/gedit-panel.c:477
 msgid "Hide panel"
 msgstr "Skrýt panel"
 
@@ -1891,12 +1902,12 @@ msgstr "VKL"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:248
+#: ../gedit/gedit-statusbar.c:251
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  ř %d, sl %d"
 
-#: ../gedit/gedit-statusbar.c:347
+#: ../gedit/gedit-statusbar.c:350
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -2258,22 +2269,22 @@ msgstr "_Spodní panel"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Zobrazit nebo skrýt spodní panel v aktuálním okně"
 
-#: ../gedit/gedit-utils.c:1033
+#: ../gedit/gedit-utils.c:1035
 msgid "Please check your installation."
 msgstr "Zkontrolujte prosím svou instalaci."
 
-#: ../gedit/gedit-utils.c:1091
+#: ../gedit/gedit-utils.c:1093
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Nelze otevřít soubor „%s“ s uživatelským rozhraním. Chyba: %s"
 
-#: ../gedit/gedit-utils.c:1110
+#: ../gedit/gedit-utils.c:1112
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Nelze najít objekt „%s“ uvnitř souboru %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1333
+#: ../gedit/gedit-utils.c:1335
 #, c-format
 msgid "/ on %s"
 msgstr "/ na %s"
@@ -2835,43 +2846,43 @@ msgstr "Zobrazit _skryté"
 msgid "Show _Binary"
 msgstr "Zobrazit _binární"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:550
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:539
 msgid "File Browser"
 msgstr "Prohlížeč souborů"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:685
 msgid "An error occurred while creating a new directory"
 msgstr "Během vytváření nové složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:698
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
 msgid "An error occurred while creating a new file"
 msgstr "Během vytváření nového souboru došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:701
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
 msgid "An error occurred while renaming a file or directory"
 msgstr "Během přejmenovávání souboru či složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:704
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
 msgid "An error occurred while deleting a file or directory"
 msgstr "Během mazání souboru či složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:707
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Během otevírání složky ve správci souborů došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:710
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:700
 msgid "An error occurred while setting a root directory"
 msgstr "Během nastavování kořenové složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:713
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:703
 msgid "An error occurred while loading a directory"
 msgstr "Během načítání složky došlo k chybě"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:716
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:706
 msgid "An error occurred"
 msgstr "Vyskytla se chyba"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:920
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2879,25 +2890,25 @@ msgstr ""
 "Soubor nelze přesunout do koše,\n"
 "chcete ho trvale smazat?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:935
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:925
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Soubor „%s“ nelze přesunout do koše."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:940
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
 msgid "The selected files cannot be moved to the trash."
 msgstr "Vybrané soubory nelze přesunout do koše."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:972
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Opravdu chcete trvale smazat „%s“?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:977
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:967
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Opravdu chcete trvale smazat vybrané soubory?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:980
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:970
 msgid "If you delete an item, it is permanently lost."
 msgstr "Pokud položku smažete, bude nenávratně ztracena."
 
@@ -2939,26 +2950,31 @@ msgstr ""
 "Nová složka je nyní odfiltrována. Aby byla viditelná, musíte upravit své "
 "nastavení filtrování."
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
+#. Add a cancel button
+#: ../plugins/filebrowser/gedit-file-browser-utils.c:173
+msgid "_Cancel"
+msgstr "_Zrušit"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:788
 msgid "Bookmarks"
 msgstr "Záložky"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2003
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1982
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Žádný připojovací objekt pro připojený svazek: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2080
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2059
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Nelze otevřít médium: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2127
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2106
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Nelze připojit svazek: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2775
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2742
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Chyba při načítání „%s“: Taková složka neexistuje"
