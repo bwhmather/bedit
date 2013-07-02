@@ -69,10 +69,8 @@
  *
  * // Register 'method' at '/plugins/example' with one required
  * // string argument 'arg1'
- * GeditMessageType *message_type = gedit_message_bus_register ("/plugins/example", "method",
- *                                                              0,
- *                                                              "arg1", G_TYPE_STRING,
- *                                                              NULL);
+ * gedit_message_bus_register (bus, EXAMPLE_TYPE_METHOD_MESSAGE,
+ *                             "/plugins/example", "method");
  * </programlisting>
  * </example>
  * <example>
@@ -298,7 +296,8 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 	/**
 	 * GeditMessageBus::registered:
 	 * @bus: a #GeditMessageBus
-	 * @message_type: the registered #GeditMessageType
+	 * @object_path: the registered object path.
+	 * @method: the registered method
 	 *
 	 * The "registered" signal is emitted when a message has been registered
 	 * on the bus.
@@ -320,7 +319,8 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 	/**
 	 * GeditMessageBus::unregistered:
 	 * @bus: a #GeditMessageBus
-	 * @message_type: the unregistered #GeditMessageType
+	 * @object_path: the unregistered object path.
+	 * @method: the unregistered method
 	 *
 	 * The "unregistered" signal is emitted when a message has been
 	 * unregistered from the bus.

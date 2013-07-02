@@ -663,6 +663,8 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	 * @document: the #GeditDocument.
 	 * @location: the location where the document is about to be saved.
 	 * @encoding: the #GeditEncoding used to save the document.
+	 * @newline_type: the #GeditDocumentNewlineType used to save the document.
+	 * @compression_type: the #GeditDocumentCompressionType used to save the document.
 	 * @flags: the #GeditDocumentSaveFlags for the save operation.
 	 *
 	 * The "save" signal is emitted when the document is saved.
