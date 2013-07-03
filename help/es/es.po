@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2013-06-07 13:48+0000\n"
-"PO-Revision-Date: 2013-06-13 14:11+0200\n"
+"POT-Creation-Date: 2013-07-03 10:32+0000\n"
+"PO-Revision-Date: 2013-07-03 16:22+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -1379,6 +1379,7 @@ msgstr ""
 
 #: C/gedit-plugins-quick-open.page:14(credit/name)
 #: C/gedit-plugins-zeitgeist-dataprovider.page:10(credit/name)
+#: C/gedit-search.page:22(credit/name)
 msgid "Shobha Tyagi"
 msgstr "Shobha Tyagi"
 
@@ -1919,7 +1920,6 @@ msgid "Enable Zeitgeist dataprovider"
 msgstr "Activa el proveedor de datos de Zeitgeist"
 
 #: C/gedit-plugins-zeitgeist-dataprovider.page:34(item/p)
-#| msgid "Select <gui style=\"menuitem\">Snippets</gui> to enable the plugin."
 msgid "Select <gui style=\"menuitem\">Zietgeist Dataprovider</gui>."
 msgstr ""
 "Seleccione <gui style=\"menuitem\">Proveedor de datos de Zietgeist</gui>."
@@ -2412,11 +2412,11 @@ msgstr ""
 "archivo</gui>, y podrá seleccionar un nombre para el archivo, así como la "
 "carpeta en la que quiere guardar el archivo."
 
-#: C/gedit-search.page:24(page/title)
+#: C/gedit-search.page:28(page/title)
 msgid "Search for text"
 msgstr "Buscar texto"
 
-#: C/gedit-search.page:26(page/p)
+#: C/gedit-search.page:30(page/p)
 msgid ""
 "The Find tool can help you find specific sequences of text within in your "
 "file."
@@ -2424,11 +2424,11 @@ msgstr ""
 "La herramienta de búsqueda le puede ayudar a encontrar secuencias de texto "
 "específicas en su archivo."
 
-#: C/gedit-search.page:30(steps/title)
+#: C/gedit-search.page:34(steps/title)
 msgid "Finding text"
 msgstr "Buscar texto"
 
-#: C/gedit-search.page:32(item/p)
+#: C/gedit-search.page:36(item/p)
 msgid ""
 "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
 "\">Search</gui> <gui style=\"menuitem\">Find</gui> </guiseq> or pressing "
@@ -2440,12 +2440,12 @@ msgstr ""
 "<keyseq><key>Ctrl</key><key>F</key></keyseq>. Esto moverá su cursor hasta el "
 "principio de la <gui>ventana de búsqueda</gui>."
 
-#: C/gedit-search.page:39(item/p)
+#: C/gedit-search.page:43(item/p)
 msgid "Type the text you wish to search for in the <gui>search window</gui>."
 msgstr ""
 "Introduzca el texto que quiere buscar en la <gui>ventana de búsqueda</gui>."
 
-#: C/gedit-search.page:43(item/p)
+#: C/gedit-search.page:47(item/p)
 msgid ""
 "As you type, <app>gedit</app> will begin highlighting the portions of text "
 "that match what you have entered."
@@ -2453,13 +2453,13 @@ msgstr ""
 "A medida que escribe, <app>gedit</app> empezará a resaltar los recortes de "
 "texto que coniciden con lo que ha escrito."
 
-#: C/gedit-search.page:48(page/p)
+#: C/gedit-search.page:52(page/p)
 msgid "To scroll through the search results, do any of the following:"
 msgstr ""
 "Para desplazarse por los resultados de la búsqueda, realice cualquiera de "
 "los siguientes pasos:"
 
-#: C/gedit-search.page:51(item/p)
+#: C/gedit-search.page:55(item/p)
 msgid ""
 "Click on the <gui style=\"button\">up</gui> or <gui style=\"button\">down</"
 "gui> facing arrows next to the <gui>search window</gui>."
@@ -2467,14 +2467,14 @@ msgstr ""
 "Pulse en las flechas <gui style=\"button\">arriba</gui> o <gui style=\"button"
 "\">abajo</gui> junto a la <gui>ventana de búsqueda</gui>"
 
-#: C/gedit-search.page:56(item/p)
+#: C/gedit-search.page:60(item/p)
 msgid ""
 "Press the <key>up arrow</key> or <key>down arrow</key> keys on your keyboard."
 msgstr ""
 "Pulse las teclas <key>flecha arriba</key> o <key>flecha abajo</key> en su "
 "teclado."
 
-#: C/gedit-search.page:60(item/p)
+#: C/gedit-search.page:64(item/p)
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
 "key><key>Shift</key><key>G</key></keyseq>."
@@ -2482,7 +2482,7 @@ msgstr ""
 "Pulse <keyseq><key>Ctrl</key><key>G</key></keyseq> or<keyseq><key>Ctrl</"
 "key><key>Mayús</key><key>G</key></keyseq>."
 
-#: C/gedit-search.page:64(item/p)
+#: C/gedit-search.page:68(item/p)
 msgid ""
 "Press the <key>Ctrl</key> and use your mouse or touchpad's <key>scroll</key> "
 "feature to move up or down through the text."
@@ -2490,7 +2490,7 @@ msgstr ""
 "Pulse <key>Ctrl</key> y use el <key>deslizador</key> de su ratón o «touchpad» "
 "para moverse hacia arriba o hacia abajo a través del texto."
 
-#: C/gedit-search.page:69(page/p)
+#: C/gedit-search.page:73(page/p)
 msgid ""
 "To close the <gui>search window</gui>, press either <key>Esc</key> or "
 "<key>Enter</key>. Pressing <key>Esc</key> will return the cursor to where it "
@@ -2502,11 +2502,11 @@ msgstr ""
 "donde estaba antes de comenzar la búsqueda. Al pulsar <key>Intro</key> el "
 "cursor volverá a la posición actual en los resultados de la búsqueda."
 
-#: C/gedit-search.page:75(list/title)
+#: C/gedit-search.page:79(list/title)
 msgid "Search tips"
 msgstr "Consejos de búsqueda"
 
-#: C/gedit-search.page:77(item/p)
+#: C/gedit-search.page:81(item/p)
 msgid ""
 "If you highlight a portion of text with your mouse, and then press "
 "<keyseq><key>Ctrl</key><key>F</key></keyseq>, the text you've highlighted "
@@ -2516,17 +2516,42 @@ msgstr ""
 "key><key>F</key></keyseq>, el texto que ha resaltado aparecerá en la ventana "
 "de búsqueda."
 
-#: C/gedit-search.page:82(item/p)
+#: C/gedit-search.page:86(item/p)
+#| msgid ""
+#| "For advanced search options, you can click on the <gui style=\"button"
+#| "\">Magnifying Glass</gui> icon in the search window, or you can right-"
+#| "click on any portion of the search window."
 msgid ""
-"For advanced search options, you can click on the <gui style=\"button"
-"\">Magnifying Glass</gui> icon in the search window, or you can right-click "
-"on any portion of the search window."
+"For more search options, click on the <gui style=\"button\">Magnifying "
+"Glass</gui> icon in the search window, or right-click anywhere in the search "
+"window. You can select one or more of the following search options:"
 msgstr ""
-"Para opciones de búsqueda avanzadas, puede pulsar el icono de la <gui style="
-"\"button\">Lupa</gui> en la ventana de búsqueda, o puede pulsar con el botón "
-"derecho en cualquier parte de la ventana de búsqueda."
+"Para opciones de búsqueda avanzadas, pulse el icono de la <gui style=\"button"
+"\">Lupa</gui> en la ventana de búsqueda, o pulse con el botón derecho en "
+"cualquier parte de la ventana de búsqueda. Puede seleccionar una o más de "
+"las siguientes opciones de búsqueda:"
 
-#: C/gedit-search.page:87(item/p)
+#: C/gedit-search.page:92(item/p)
+msgid "Select <gui>Match Case</gui> to make the search case sensitive."
+msgstr ""
+"Seleccione <gui>Coincidir con capitalización</gui> para que la búsqueda "
+"distinga entre mayúsculas y minúsculas."
+
+#: C/gedit-search.page:95(item/p)
+msgid "Select <gui>Match Entire Word Only</gui> to search only complete words."
+msgstr ""
+"Seleccione <gui>Coincidir sólo con la palabra completa</gui> para buscar "
+"solo palabras completas."
+
+#: C/gedit-search.page:99(item/p)
+msgid ""
+"Select <gui>Wrap Around</gui> to search text from top to bottom and cycle "
+"back again."
+msgstr ""
+"Seleccione <gui>Volver al principio</gui> para buscar el texto de arriba a "
+"abajo y volver a empezar."
+
+#: C/gedit-search.page:105(item/p)
 msgid ""
 "The text that you've searched for will remain highlighted by gedit, even "
 "after you have completed your search. To remove the highlight, click "
