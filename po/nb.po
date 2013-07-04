@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 3.9.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-20 10:36+0200\n"
-"PO-Revision-Date: 2013-06-20 10:37+0200\n"
+"POT-Creation-Date: 2013-07-04 11:23+0200\n"
+"PO-Revision-Date: 2013-07-04 11:24+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -1054,9 +1054,9 @@ msgstr "Windows"
 
 #: ../gedit/gedit-highlight-mode-dialog.c:307 ../gedit/gedit-window.c:1796
 #: ../gedit/gedit-window.c:2184 ../plugins/externaltools/tools/manager.py:146
-#: ../plugins/externaltools/tools/manager.py:462
-#: ../plugins/externaltools/tools/manager.py:578
-#: ../plugins/externaltools/tools/manager.py:902
+#: ../plugins/externaltools/tools/manager.py:463
+#: ../plugins/externaltools/tools/manager.py:579
+#: ../plugins/externaltools/tools/manager.py:915
 msgid "Plain Text"
 msgstr "Vanlig tekst"
 
@@ -1165,11 +1165,11 @@ msgstr "Te_gnkoding:"
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:506
-#: ../gedit/gedit-io-error-info-bar.c:784
+#: ../gedit/gedit-io-error-info-bar.c:785
 msgid "Edit Any_way"
 msgstr "Redi_ger likevel"
 
-#: ../gedit/gedit-io-error-info-bar.c:608
+#: ../gedit/gedit-io-error-info-bar.c:609
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1177,29 +1177,29 @@ msgstr ""
 "Antall lenker som kan følges er begrenset og filen ble ikke funnet innenfor "
 "denne grensen."
 
-#: ../gedit/gedit-io-error-info-bar.c:612
+#: ../gedit/gedit-io-error-info-bar.c:613
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Du har ikke tilstrekkelige rettigheter til å åpne filen."
 
-#: ../gedit/gedit-io-error-info-bar.c:618
+#: ../gedit/gedit-io-error-info-bar.c:619
 msgid "gedit has not been able to detect the character encoding."
 msgstr "gedit har ikke klart å gjenkjenne tegnkodingen."
 
-#: ../gedit/gedit-io-error-info-bar.c:620
-#: ../gedit/gedit-io-error-info-bar.c:642
+#: ../gedit/gedit-io-error-info-bar.c:621
+#: ../gedit/gedit-io-error-info-bar.c:643
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Vennligst sjekk om du prøver å åpne en binær fil."
 
-#: ../gedit/gedit-io-error-info-bar.c:621
+#: ../gedit/gedit-io-error-info-bar.c:622
 msgid "Select a character encoding from the menu and try again."
 msgstr "Velg tegnkoding fra menyen og prøv igjen."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
+#: ../gedit/gedit-io-error-info-bar.c:628
 #, c-format
 msgid "There was a problem opening the file %s."
 msgstr "Det oppsto en feil under åpning av fil %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:629
+#: ../gedit/gedit-io-error-info-bar.c:630
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1207,31 +1207,31 @@ msgstr ""
 "Filen du åpnet har noen ugyldige tegn. Hvis du fortsetter redigering av "
 "denne filen kan den bli ødelagt."
 
-#: ../gedit/gedit-io-error-info-bar.c:632
+#: ../gedit/gedit-io-error-info-bar.c:633
 msgid "You can also choose another character encoding and try again."
 msgstr "Du kan også velge en annen tegnkoding og prøve igjen."
 
-#: ../gedit/gedit-io-error-info-bar.c:639
+#: ../gedit/gedit-io-error-info-bar.c:640
 #, c-format
 msgid "Could not open the file %s using the %s character encoding."
 msgstr "Kunne ikke åpne fil %s som bruker tegnkoding %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:643
-#: ../gedit/gedit-io-error-info-bar.c:717
+#: ../gedit/gedit-io-error-info-bar.c:644
+#: ../gedit/gedit-io-error-info-bar.c:718
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Velg en annen tegnkoding fra menyen og prøv igjen."
 
-#: ../gedit/gedit-io-error-info-bar.c:653
+#: ../gedit/gedit-io-error-info-bar.c:654
 #, c-format
 msgid "Could not open the file %s."
 msgstr "Kunne ikke åpne filen %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:712
+#: ../gedit/gedit-io-error-info-bar.c:713
 #, c-format
 msgid "Could not save the file %s using the %s character encoding."
 msgstr "Kunne ikke lagre fil %s med tegnkoding %s."
 
-#: ../gedit/gedit-io-error-info-bar.c:715
+#: ../gedit/gedit-io-error-info-bar.c:716
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1241,16 +1241,16 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:789
+#: ../gedit/gedit-io-error-info-bar.c:790
 msgid "D_on't Edit"
 msgstr "_Ikke rediger"
 
-#: ../gedit/gedit-io-error-info-bar.c:803
+#: ../gedit/gedit-io-error-info-bar.c:805
 #, c-format
 msgid "This file (%s) is already open in another gedit window."
 msgstr "Denne filen (%s) er allerede åpen i et annet gedit vindu."
 
-#: ../gedit/gedit-io-error-info-bar.c:817
+#: ../gedit/gedit-io-error-info-bar.c:819
 msgid ""
 "gedit opened this instance of the file in a non-editable way. Do you want to "
 "edit it anyway?"
@@ -1258,15 +1258,22 @@ msgstr ""
 "gedit åpnet denne instansen av filen uten mulighet for redigering. Vil du "
 "redigere den likevel?"
 
-#: ../gedit/gedit-io-error-info-bar.c:875
-#: ../gedit/gedit-io-error-info-bar.c:973
-#: ../gedit/gedit-io-error-info-bar.c:1262
+#: ../gedit/gedit-io-error-info-bar.c:877
+#: ../gedit/gedit-io-error-info-bar.c:976
+#: ../gedit/gedit-io-error-info-bar.c:1266
 msgid "S_ave Anyway"
 msgstr "L_agre likevel"
 
-#: ../gedit/gedit-io-error-info-bar.c:879
+#: ../gedit/gedit-io-error-info-bar.c:878
 #: ../gedit/gedit-io-error-info-bar.c:977
-#: ../gedit/gedit-io-error-info-bar.c:1266
+#: ../gedit/gedit-io-error-info-bar.c:1267
+#: ../gedit/gedit-notebook-popup-menu.c:182
+msgid "_Save"
+msgstr "_Lagre"
+
+#: ../gedit/gedit-io-error-info-bar.c:881
+#: ../gedit/gedit-io-error-info-bar.c:980
+#: ../gedit/gedit-io-error-info-bar.c:1270
 msgid "D_on't Save"
 msgstr "_Ikke lagre"
 
@@ -1274,27 +1281,27 @@ msgstr "_Ikke lagre"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:897
+#: ../gedit/gedit-io-error-info-bar.c:900
 #, c-format
 msgid "The file %s has been modified since reading it."
 msgstr "Fil %s er endret siden den ble lest."
 
-#: ../gedit/gedit-io-error-info-bar.c:912
+#: ../gedit/gedit-io-error-info-bar.c:915
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Hvis du lagrer den kan alle eksterne endringer gå tapt. Lagre den likevel?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1000
+#: ../gedit/gedit-io-error-info-bar.c:1004
 #, c-format
 msgid "Could not create a backup file while saving %s"
 msgstr "Kunne ikke opprette sikkerhetskopi ved lagring av %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1005
+#: ../gedit/gedit-io-error-info-bar.c:1009
 #, c-format
 msgid "Could not create a temporary backup file while saving %s"
 msgstr "Kunne ikke opprette en midlertidig sikkerhetskopi ved lagring av %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1022
+#: ../gedit/gedit-io-error-info-bar.c:1026
 msgid ""
 "gedit could not back up the old copy of the file before saving the new one. "
 "You can ignore this warning and save the file anyway, but if an error occurs "
@@ -1306,7 +1313,7 @@ msgstr ""
 "likevel?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1086
 #, c-format
 msgid ""
 "gedit cannot handle %s locations in write mode. Please check that you typed "
@@ -1315,7 +1322,7 @@ msgstr ""
 "gedit kan ikke håndtere %s-adresser i skrivemodus. Vennligst sjekk at du "
 "skrev inn adressen korrekt og prøv igjen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1090
+#: ../gedit/gedit-io-error-info-bar.c:1094
 msgid ""
 "gedit cannot handle this location in write mode. Please check that you typed "
 "the location correctly and try again."
@@ -1323,7 +1330,7 @@ msgstr ""
 "gedit kan ikke håndtere denne adressen i skrivemodus. Vennligst sjekk at du "
 "skrev inn adressen korrekt og prøv igjen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1099
+#: ../gedit/gedit-io-error-info-bar.c:1103
 #, c-format
 msgid ""
 "%s is not a valid location. Please check that you typed the location "
@@ -1332,7 +1339,7 @@ msgstr ""
 "%s er ikke en gyldig adresse. Vennligst sjekk at du skrev inn adressen "
 "korrekt og prøv igjen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1106
+#: ../gedit/gedit-io-error-info-bar.c:1110
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1340,7 +1347,7 @@ msgstr ""
 "Du har ikke nødvendige rettigheter til å lagre filen. Vennligst sjekk at du "
 "skrev inn adressen korrekt og prøv igjen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1112
+#: ../gedit/gedit-io-error-info-bar.c:1116
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1348,7 +1355,7 @@ msgstr ""
 "Det er ikke nok plass på disken til å lagre filen. Vennligst frigjør plass "
 "og prøv igjen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1117
+#: ../gedit/gedit-io-error-info-bar.c:1121
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1356,13 +1363,13 @@ msgstr ""
 "Du prøver å lagre filen på en skrivebeskyttet disk. Vennligst sjekk at du "
 "skrev inn adressen korrekt og prøv igjen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1123
+#: ../gedit/gedit-io-error-info-bar.c:1127
 msgid "A file with the same name already exists. Please use a different name."
 msgstr ""
 "En fil med det samme navnet eksisterer allerede. Vennligst bruk et annet "
 "navn."
 
-#: ../gedit/gedit-io-error-info-bar.c:1128
+#: ../gedit/gedit-io-error-info-bar.c:1132
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1370,7 +1377,7 @@ msgstr ""
 "Disken du prøver å lagre filen på har en begrensning på lengde på filnavn. "
 "Vennligst bruk et kortere navn."
 
-#: ../gedit/gedit-io-error-info-bar.c:1135
+#: ../gedit/gedit-io-error-info-bar.c:1139
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1380,7 +1387,7 @@ msgstr ""
 "Vennligst prøv å lagre en mindre fil eller lagre den på en disk som ikke har "
 "denne begrensningen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1151
+#: ../gedit/gedit-io-error-info-bar.c:1155
 #, c-format
 msgid "Could not save the file %s."
 msgstr "Kunne ikke lagre filen %s."
@@ -1389,29 +1396,29 @@ msgstr "Kunne ikke lagre filen %s."
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:1196
+#: ../gedit/gedit-io-error-info-bar.c:1200
 #, c-format
 msgid "The file %s changed on disk."
 msgstr "Fil %s er endret på disk."
 
-#: ../gedit/gedit-io-error-info-bar.c:1201
+#: ../gedit/gedit-io-error-info-bar.c:1205
 msgid "Do you want to drop your changes and reload the file?"
 msgstr "Vil du forkaste dine endringer og laste filen på nytt?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1203
+#: ../gedit/gedit-io-error-info-bar.c:1207
 msgid "Do you want to reload the file?"
 msgstr "Vil du laste filen på nytt?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1208
+#: ../gedit/gedit-io-error-info-bar.c:1212
 msgid "_Reload"
 msgstr "_Last på nytt"
 
-#: ../gedit/gedit-io-error-info-bar.c:1280
+#: ../gedit/gedit-io-error-info-bar.c:1285
 #, c-format
 msgid "Some invalid chars have been detected while saving %s"
 msgstr "Noen ugyldige tegn ble funnet under lagring av %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:1296
+#: ../gedit/gedit-io-error-info-bar.c:1301
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1440,17 +1447,21 @@ msgid "_Quit"
 msgstr "A_vslutt"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:172 ../gedit/gedit-ui.h:142
+#: ../gedit/gedit-notebook-popup-menu.c:171 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "_Flytt til nytt vindu"
 
-#: ../gedit/gedit-notebook-popup-menu.c:190 ../gedit/gedit-ui.h:78
+#: ../gedit/gedit-notebook-popup-menu.c:189 ../gedit/gedit-ui.h:78
 msgid "Save _As..."
 msgstr "L_agre som …"
 
-#: ../gedit/gedit-notebook-popup-menu.c:203 ../gedit/gedit-ui.h:84
+#: ../gedit/gedit-notebook-popup-menu.c:200 ../gedit/gedit-ui.h:84
 msgid "_Print..."
 msgstr "S_kriv ut …"
+
+#: ../gedit/gedit-notebook-popup-menu.c:211
+msgid "_Close"
+msgstr "_Lukk"
 
 #: ../gedit/gedit-open-tool-button.c:122 ../gedit/gedit-ui.h:55
 msgid "Open a file"
@@ -1460,11 +1471,11 @@ msgstr "Åpne en fil"
 msgid "Open a recently used file"
 msgstr "Åpne nylig brukt fil"
 
-#: ../gedit/gedit-panel.c:409 ../gedit/gedit-panel.c:590
+#: ../gedit/gedit-panel.c:411 ../gedit/gedit-panel.c:592
 msgid "Empty"
 msgstr "Tom"
 
-#: ../gedit/gedit-panel.c:475
+#: ../gedit/gedit-panel.c:477
 msgid "Hide panel"
 msgstr "Skjul panel"
 
@@ -1818,12 +1829,12 @@ msgstr "SET"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:248
+#: ../gedit/gedit-statusbar.c:251
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Ln. %d, Kol. %d"
 
-#: ../gedit/gedit-statusbar.c:347
+#: ../gedit/gedit-statusbar.c:350
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -2184,46 +2195,46 @@ msgstr "_Bunnpanel"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Vis eller skjul bunnpanelet i dette vinduet"
 
-#: ../gedit/gedit-utils.c:1033
+#: ../gedit/gedit-utils.c:1035
 msgid "Please check your installation."
 msgstr "Vennligst sjekk din installasjon."
 
-#: ../gedit/gedit-utils.c:1091
+#: ../gedit/gedit-utils.c:1093
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Kunne ikke åpne fil for brukergrensesnitt %s. Feil: %s"
 
-#: ../gedit/gedit-utils.c:1110
+#: ../gedit/gedit-utils.c:1112
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Kunne ikke finne objekt «%s» i fil %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1333
+#: ../gedit/gedit-utils.c:1335
 #, c-format
 msgid "/ on %s"
 msgstr "/ på %s"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:535
+#: ../gedit/gedit-view-frame.c:531
 msgid "_Wrap Around"
 msgstr "_Bryting"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:545
+#: ../gedit/gedit-view-frame.c:541
 msgid "Match _Entire Word Only"
 msgstr "Kun treff på _hele ord"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:555
+#: ../gedit/gedit-view-frame.c:551
 msgid "_Match Case"
 msgstr "_Skill mellom små/store bokstaver"
 
-#: ../gedit/gedit-view-frame.c:752
+#: ../gedit/gedit-view-frame.c:763
 msgid "String you want to search for"
 msgstr "Streng du vil søke etter"
 
-#: ../gedit/gedit-view-frame.c:762
+#: ../gedit/gedit-view-frame.c:773
 msgid "Line you want to move the cursor to"
 msgstr "Linje du vil flytte markøren til"
 
@@ -2392,7 +2403,7 @@ msgid "File Name"
 msgstr "Filnavn"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
-#: ../plugins/externaltools/tools/tools.ui.h:27
+#: ../plugins/externaltools/tools/tools.ui.h:28
 #: ../plugins/snippets/snippets/snippets.ui.h:13
 msgid "    "
 msgstr "    "
@@ -2511,27 +2522,27 @@ msgstr "Avsluttet"
 msgid "All languages"
 msgstr "Alle språk"
 
-#: ../plugins/externaltools/tools/manager.py:567
-#: ../plugins/externaltools/tools/manager.py:571
-#: ../plugins/externaltools/tools/manager.py:900
-#: ../plugins/externaltools/tools/tools.ui.h:28
+#: ../plugins/externaltools/tools/manager.py:568
+#: ../plugins/externaltools/tools/manager.py:572
+#: ../plugins/externaltools/tools/manager.py:913
+#: ../plugins/externaltools/tools/tools.ui.h:29
 msgid "All Languages"
 msgstr "Alle språk"
 
-#: ../plugins/externaltools/tools/manager.py:684
+#: ../plugins/externaltools/tools/manager.py:685
 msgid "New tool"
 msgstr "Nytt verktøy"
 
-#: ../plugins/externaltools/tools/manager.py:815
+#: ../plugins/externaltools/tools/manager.py:816
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Denne snarveien er allerede satt til %s"
 
-#: ../plugins/externaltools/tools/manager.py:859
+#: ../plugins/externaltools/tools/manager.py:860
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Skriv inn en ny snarvei eller trykk slett for å tømme"
 
-#: ../plugins/externaltools/tools/manager.py:861
+#: ../plugins/externaltools/tools/manager.py:862
 msgid "Type a new accelerator"
 msgstr "Skriv inn en ny snarvei"
 
@@ -2545,147 +2556,151 @@ msgid "Stop Tool"
 msgstr "Stopp verktøy"
 
 #: ../plugins/externaltools/tools/tools.ui.h:1
+msgid "Always available"
+msgstr "Alltid tilgjengelig"
+
+#: ../plugins/externaltools/tools/tools.ui.h:2
 msgid "All documents"
 msgstr "Alle dokumenter"
 
-#: ../plugins/externaltools/tools/tools.ui.h:2
+#: ../plugins/externaltools/tools/tools.ui.h:3
 msgid "All documents except untitled ones"
 msgstr "Alle dokumenter med navn"
 
-#: ../plugins/externaltools/tools/tools.ui.h:3
+#: ../plugins/externaltools/tools/tools.ui.h:4
 msgid "Local files only"
 msgstr "Kun lokale filer"
 
-#: ../plugins/externaltools/tools/tools.ui.h:4
+#: ../plugins/externaltools/tools/tools.ui.h:5
 msgid "Remote files only"
 msgstr "Kun eksterne filer"
 
-#: ../plugins/externaltools/tools/tools.ui.h:5
+#: ../plugins/externaltools/tools/tools.ui.h:6
 msgid "Untitled documents only"
 msgstr "Kun dokumenter uten navn"
 
-#: ../plugins/externaltools/tools/tools.ui.h:6
+#: ../plugins/externaltools/tools/tools.ui.h:7
 msgid "Nothing"
 msgstr "Ingenting"
 
-#: ../plugins/externaltools/tools/tools.ui.h:7
+#: ../plugins/externaltools/tools/tools.ui.h:8
 msgid "Current document"
 msgstr "Aktivt dokument"
 
-#: ../plugins/externaltools/tools/tools.ui.h:8
+#: ../plugins/externaltools/tools/tools.ui.h:9
 msgid "Current selection"
 msgstr "Aktivt utvalg"
 
-#: ../plugins/externaltools/tools/tools.ui.h:9
+#: ../plugins/externaltools/tools/tools.ui.h:10
 msgid "Current selection (default to document)"
 msgstr "Aktivt utvalg (dokument er forvalg)"
 
-#: ../plugins/externaltools/tools/tools.ui.h:10
+#: ../plugins/externaltools/tools/tools.ui.h:11
 msgid "Current line"
 msgstr "Denne linjen"
 
-#: ../plugins/externaltools/tools/tools.ui.h:11
+#: ../plugins/externaltools/tools/tools.ui.h:12
 msgid "Current word"
 msgstr "Dette ordet"
 
-#: ../plugins/externaltools/tools/tools.ui.h:12
+#: ../plugins/externaltools/tools/tools.ui.h:13
 msgid "Display in bottom pane"
 msgstr "Vis i det nederste feltet"
 
-#: ../plugins/externaltools/tools/tools.ui.h:13
+#: ../plugins/externaltools/tools/tools.ui.h:14
 msgid "Create new document"
 msgstr "Opprett nytt dokument"
 
-#: ../plugins/externaltools/tools/tools.ui.h:14
+#: ../plugins/externaltools/tools/tools.ui.h:15
 msgid "Append to current document"
 msgstr "Legg til i dette dokumentet"
 
-#: ../plugins/externaltools/tools/tools.ui.h:15
+#: ../plugins/externaltools/tools/tools.ui.h:16
 msgid "Replace current document"
 msgstr "Erstatt dette dokumentet"
 
-#: ../plugins/externaltools/tools/tools.ui.h:16
+#: ../plugins/externaltools/tools/tools.ui.h:17
 msgid "Replace current selection"
 msgstr "Erstatt dette utvalget"
 
-#: ../plugins/externaltools/tools/tools.ui.h:17
+#: ../plugins/externaltools/tools/tools.ui.h:18
 msgid "Insert at cursor position"
 msgstr "Set inn i markørposisjonen"
 
-#: ../plugins/externaltools/tools/tools.ui.h:18
+#: ../plugins/externaltools/tools/tools.ui.h:19
 msgid "Manage External Tools"
 msgstr "Håndter eksterne verktøy"
 
-#: ../plugins/externaltools/tools/tools.ui.h:19
+#: ../plugins/externaltools/tools/tools.ui.h:20
 msgid "_Tools:"
 msgstr "Verk_tøy:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:20
+#: ../plugins/externaltools/tools/tools.ui.h:21
 msgid "Add a new tool"
 msgstr "Legg til et nytt verktøy"
 
-#: ../plugins/externaltools/tools/tools.ui.h:21
+#: ../plugins/externaltools/tools/tools.ui.h:22
 msgid "Add Tool"
 msgstr "Legg til verktøy"
 
-#: ../plugins/externaltools/tools/tools.ui.h:22
+#: ../plugins/externaltools/tools/tools.ui.h:23
 msgid "Remove selected tool"
 msgstr "Fjern valgt verktøy"
 
-#: ../plugins/externaltools/tools/tools.ui.h:23
+#: ../plugins/externaltools/tools/tools.ui.h:24
 msgid "Remove Tool"
 msgstr "Fjern verktøy"
 
-#: ../plugins/externaltools/tools/tools.ui.h:24
+#: ../plugins/externaltools/tools/tools.ui.h:25
 msgid "Revert tool"
 msgstr "Forkast verktøy"
 
-#: ../plugins/externaltools/tools/tools.ui.h:25
+#: ../plugins/externaltools/tools/tools.ui.h:26
 msgid "Revert Tool"
 msgstr "Forkast verktøy"
 
-#: ../plugins/externaltools/tools/tools.ui.h:26
+#: ../plugins/externaltools/tools/tools.ui.h:27
 #: ../plugins/snippets/snippets/snippets.ui.h:11
 msgid "_Edit:"
 msgstr "R_ediger:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:29
+#: ../plugins/externaltools/tools/tools.ui.h:30
 msgid "_Applicability:"
 msgstr "_Anvendbarhet"
 
-#: ../plugins/externaltools/tools/tools.ui.h:30
+#: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "_Output:"
 msgstr "_Utdata:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:31
+#: ../plugins/externaltools/tools/tools.ui.h:32
 msgid "_Input:"
 msgstr "_Inndata:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:32
+#: ../plugins/externaltools/tools/tools.ui.h:33
 msgid "_Save:"
 msgstr "_Lagre:"
 
-#: ../plugins/externaltools/tools/tools.ui.h:33
+#: ../plugins/externaltools/tools/tools.ui.h:34
 msgid "Shortcut _key:"
 msgstr "_Snarveitast:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:173
+#: ../plugins/externaltools/tools/windowactivatable.py:175
 msgid "Manage _External Tools..."
 msgstr "Håndter _eksterne verktøy …"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:174
+#: ../plugins/externaltools/tools/windowactivatable.py:176
 msgid "Opens the External Tools Manager"
 msgstr "Åpner håndtering av eksterne verktøy"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:177
+#: ../plugins/externaltools/tools/windowactivatable.py:179
 msgid "External _Tools"
 msgstr "Eksterne verk_tøy"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:178
+#: ../plugins/externaltools/tools/windowactivatable.py:180
 msgid "External tools"
 msgstr "Eksterne verktøy"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:212
+#: ../plugins/externaltools/tools/windowactivatable.py:214
 msgid "Tool Output"
 msgstr "Utdata fra verktøy"
 
@@ -2755,43 +2770,43 @@ msgstr "Vis s_kjulte"
 msgid "Show _Binary"
 msgstr "Vis _binære filer"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:550
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:539
 msgid "File Browser"
 msgstr "Filhåndterer"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:685
 msgid "An error occurred while creating a new directory"
 msgstr "En feil oppsto ved oppretting av ny katalog"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:698
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
 msgid "An error occurred while creating a new file"
 msgstr "En feil oppsto ved oppretting av en ny fil"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:701
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
 msgid "An error occurred while renaming a file or directory"
 msgstr "En feil oppsto ved endring av navn på en fil eller katalog"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:704
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
 msgid "An error occurred while deleting a file or directory"
 msgstr "En feil oppsto ved sletting av en fil eller katalog"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:707
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "En feil oppsto ved åpning av en katalog i filhåndtereren"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:710
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:700
 msgid "An error occurred while setting a root directory"
 msgstr "En feil oppsto ved forsøk på å sette rotkatalogen"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:713
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:703
 msgid "An error occurred while loading a directory"
 msgstr "En feil oppsto ved lasting av en katalog"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:716
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:706
 msgid "An error occurred"
 msgstr "En feil oppsto"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:920
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2799,33 +2814,33 @@ msgstr ""
 "Kan ikke flytte filen til papirkurven.\n"
 "Vil du slette den permanent?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:935
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:925
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Filen «%s» kan ikke flyttes til papirkurven."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:940
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
 msgid "The selected files cannot be moved to the trash."
 msgstr "Valgte filer kan ikke flyttes til papirkurven."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:972
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Er du sikker på at du vil slette «%s» permanent?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:977
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:967
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Er du sikker på at du vil slette valgte filer permanent?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:980
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:970
 msgid "If you delete an item, it is permanently lost."
 msgstr "Hvis du sletter en oppføring vil denne gå tapt."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1775
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1783
 msgid "(Empty)"
 msgstr "(Tom)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3563
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3505
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2834,11 +2849,11 @@ msgstr ""
 "for å gjøre den synlig"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3820
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3762
 msgid "Untitled File"
 msgstr "Fil uten navn"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3848
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3790
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2847,11 +2862,11 @@ msgstr ""
 "den synlig"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3879
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3821
 msgid "Untitled Folder"
 msgstr "Mappe uten navn"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3904
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3846
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -2859,26 +2874,31 @@ msgstr ""
 "Den nye katalogen er filtrert ut. Du må justere filterinnstillingene for å "
 "gjøre den synlig"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
+#. Add a cancel button
+#: ../plugins/filebrowser/gedit-file-browser-utils.c:173
+msgid "_Cancel"
+msgstr "A_vbryt"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:788
 msgid "Bookmarks"
 msgstr "Bokmerker"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2003
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1982
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Ingen monteringsobjekt for montert volum: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2080
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2059
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Kunne ikke åpne medie: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2127
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2106
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Kunne ikke montere volum: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2775
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2742
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Feil ved lasting av «%s»: Katalogen finnes ikke"
@@ -2976,7 +2996,7 @@ msgid "File Browser Binary Patterns"
 msgstr "Binærmønster for filhåndterer"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
-msgid "The supplemental patterns to use when when filtering binary files."
+msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Ekstra mønstre som skal brukes ved filtrering av binære filer."
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
