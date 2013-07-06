@@ -300,23 +300,6 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
-right_margin_checkbutton_toggled (GtkToggleButton        *button,
-				  GeditPreferencesDialog *dlg)
-{
-	gboolean active;
-
-	g_return_if_fail (button == GTK_TOGGLE_BUTTON (dlg->priv->right_margin_checkbutton));
-
-	active = gtk_toggle_button_get_active (button);
-
-	g_settings_set_boolean (dlg->priv->editor, GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
-				active);
-
-	gtk_widget_set_sensitive (dlg->priv->right_margin_position_spinbutton,
-				  active);
-}
-
-static void
 setup_view_page (GeditPreferencesDialog *dlg)
 {
 	GtkWrapMode wrap_mode;
@@ -366,8 +349,6 @@ setup_view_page (GeditPreferencesDialog *dlg)
 	/* Set widgets sensitivity */
 	gtk_widget_set_sensitive (dlg->priv->split_checkbutton,
 				  (wrap_mode != GTK_WRAP_NONE));
-	gtk_widget_set_sensitive (dlg->priv->right_margin_position_spinbutton,
-				  display_right_margin);
 	/* Connect signals */
 	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS,
@@ -380,10 +361,20 @@ setup_view_page (GeditPreferencesDialog *dlg)
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 	g_settings_bind (dlg->priv->editor,
+	                 GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
+	                 dlg->priv->right_margin_checkbutton,
+	                 "active",
+	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+	g_settings_bind (dlg->priv->editor,
+	                 GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
+	                 dlg->priv->right_margin_position_spinbutton,
+	                 "sensitive",
+	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
 			 dlg->priv->right_margin_position_spinbutton,
 			 "value",
-			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET | G_SETTINGS_BIND_NO_SENSITIVITY);
 	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
 			 dlg->priv->auto_save_spinbutton,
@@ -396,10 +387,6 @@ setup_view_page (GeditPreferencesDialog *dlg)
 	g_signal_connect (dlg->priv->split_checkbutton,
 			  "toggled",
 			  G_CALLBACK (wrap_mode_checkbutton_toggled),
-			  dlg);
-	g_signal_connect (dlg->priv->right_margin_checkbutton,
-			  "toggled",
-			  G_CALLBACK (right_margin_checkbutton_toggled),
 			  dlg);
 }
 
