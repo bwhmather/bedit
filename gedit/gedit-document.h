@@ -74,12 +74,19 @@ typedef enum
 #define GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT GEDIT_DOCUMENT_NEWLINE_TYPE_LF
 #endif
 
+/**
+ * GeditSearchFlags:
+ * @GEDIT_SEARCH_DONT_SET_FLAGS:
+ * @GEDIT_SEARCH_ENTIRE_WORD:
+ * @GEDIT_SEARCH_CASE_SENSITIVE:
+ *
+ * Deprecated: 3.10: Use the search and replace API in #GtkSourceBuffer.
+ */
 typedef enum
 {
 	GEDIT_SEARCH_DONT_SET_FLAGS	= 1 << 0,
 	GEDIT_SEARCH_ENTIRE_WORD	= 1 << 1,
 	GEDIT_SEARCH_CASE_SENSITIVE	= 1 << 2
-
 } GeditSearchFlags;
 
 /*
@@ -260,28 +267,33 @@ gboolean	 gedit_document_goto_line_offset(GeditDocument       *doc,
 						 gint                 line,
 						 gint                 line_offset);
 
+G_DEPRECATED_FOR (gtk_source_buffer_set_search_text)
 void		 gedit_document_set_search_text	(GeditDocument       *doc,
 						 const gchar         *text,
 						 guint                flags);
 
+G_DEPRECATED_FOR (gtk_source_buffer_get_search_text)
 gchar		*gedit_document_get_search_text	(GeditDocument       *doc,
 						 guint               *flags);
 
 gboolean	 gedit_document_get_can_search_again
 						(GeditDocument       *doc);
 
+G_DEPRECATED_FOR (gtk_source_buffer_forward_search_async)
 gboolean	 gedit_document_search_forward	(GeditDocument       *doc,
 						 const GtkTextIter   *start,
 						 const GtkTextIter   *end,
 						 GtkTextIter         *match_start,
 						 GtkTextIter         *match_end);
 
+G_DEPRECATED_FOR (gtk_source_buffer_backward_search_async)
 gboolean	 gedit_document_search_backward	(GeditDocument       *doc,
 						 const GtkTextIter   *start,
 						 const GtkTextIter   *end,
 						 GtkTextIter         *match_start,
 						 GtkTextIter         *match_end);
 
+G_DEPRECATED_FOR (gtk_source_buffer_search_replace_all)
 gint		 gedit_document_replace_all 	(GeditDocument       *doc,
 				            	 const gchar         *find,
 						 const gchar         *replace,
@@ -295,10 +307,12 @@ GtkSourceLanguage
 const GeditEncoding
 		*gedit_document_get_encoding	(GeditDocument       *doc);
 
+G_DEPRECATED_FOR (gtk_source_buffer_set_highlight_search)
 void		 gedit_document_set_enable_search_highlighting
 						(GeditDocument       *doc,
 						 gboolean             enable);
 
+G_DEPRECATED_FOR (gtk_source_buffer_get_highlight_search)
 gboolean	 gedit_document_get_enable_search_highlighting
 						(GeditDocument       *doc);
 
@@ -332,10 +346,6 @@ void		 _gedit_document_apply_error_style
 /* Note: this is a sync stat: use only on local files */
 gboolean	_gedit_document_check_externally_modified
 						(GeditDocument       *doc);
-
-void		_gedit_document_search_region   (GeditDocument       *doc,
-						 const GtkTextIter   *start,
-						 const GtkTextIter   *end);
 
 /* Search macros */
 #define GEDIT_SEARCH_IS_DONT_SET_FLAGS(sflags) ((sflags & GEDIT_SEARCH_DONT_SET_FLAGS) != 0)

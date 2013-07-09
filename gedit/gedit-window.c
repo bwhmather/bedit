@@ -795,7 +795,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 				  state_normal &&
 				  editable);
 
-	b = gedit_document_get_can_search_again (doc);
+	b = gtk_source_buffer_get_search_text (GTK_SOURCE_BUFFER (doc)) != NULL;
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
 	gtk_action_set_sensitive (action,
@@ -2869,9 +2869,9 @@ fullscreen_controls_build (GeditWindow *window)
 }
 
 static void
-can_search_again (GeditDocument *doc,
-		  GParamSpec    *pspec,
-		  GeditWindow   *window)
+search_text_notify_cb (GeditDocument *doc,
+		       GParamSpec    *pspec,
+		       GeditWindow   *window)
 {
 	gboolean sensitive;
 	GtkAction *action;
@@ -2879,7 +2879,7 @@ can_search_again (GeditDocument *doc,
 	if (doc != gedit_window_get_active_document (window))
 		return;
 
-	sensitive = gedit_document_get_can_search_again (doc);
+	sensitive = gtk_source_buffer_get_search_text (GTK_SOURCE_BUFFER (doc)) != NULL;
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
@@ -3095,8 +3095,8 @@ on_tab_added (GeditMultiNotebook *multi,
 			  G_CALLBACK (update_cursor_position_statusbar),
 			  window);
 	g_signal_connect (doc,
-			  "notify::can-search-again",
-			  G_CALLBACK (can_search_again),
+			  "notify::search-text",
+			  G_CALLBACK (search_text_notify_cb),
 			  window);
 	g_signal_connect (doc,
 			  "notify::can-undo",
@@ -3173,7 +3173,7 @@ on_tab_removed (GeditMultiNotebook *multi,
 					      G_CALLBACK (update_cursor_position_statusbar),
 					      window);
 	g_signal_handlers_disconnect_by_func (doc,
-					      G_CALLBACK (can_search_again),
+					      G_CALLBACK (search_text_notify_cb),
 					      window);
 	g_signal_handlers_disconnect_by_func (doc,
 					      G_CALLBACK (can_undo),
