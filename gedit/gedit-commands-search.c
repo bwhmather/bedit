@@ -1,5 +1,5 @@
 /*
- * gedit-search-commands.c
+ * gedit-commands-search.c
  * This file is part of gedit
  *
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
@@ -24,7 +24,7 @@
  */
 
 /*
- * Modified by the gedit Team, 1998-2006. See the AUTHORS file for a
+ * Modified by the gedit Team, 1998-2013. See the AUTHORS file for a
  * list of people on the gedit Team.
  * See the ChangeLog files for a list of changes.
  *
@@ -146,59 +146,45 @@ text_not_found (GeditWindow *window,
 	g_free (searched);
 }
 
-/*
 static void
+finish_search_from_dialog (GeditWindow *window,
+			   gboolean     found)
+{
+	GeditReplaceDialog *replace_dialog;
+
+	replace_dialog = g_object_get_data (G_OBJECT (window), GEDIT_REPLACE_DIALOG_KEY);
+
+	g_return_if_fail (replace_dialog != NULL);
+
+	if (found)
+	{
+		text_found (window, 0);
+	}
+	else
+	{
+		const gchar *search_text = gedit_replace_dialog_get_search_text (replace_dialog);
+		text_not_found (window, search_text);
+	}
+
+	gtk_dialog_set_response_sensitive (GTK_DIALOG (replace_dialog),
+					   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
+					   found);
+}
+
+static gboolean
 forward_search_finished (GtkSourceBuffer *buffer,
 			 GAsyncResult    *result,
 			 GeditView       *view)
 {
-}
-
-static void
-backward_search_finished (GtkSourceBuffer *buffer,
-			  GAsyncResult    *result,
-			  GeditView       *view)
-{
-}
-*/
-
-static gboolean
-run_search (GeditView   *view,
-	    gboolean     wrap_around,
-	    gboolean     search_backwards)
-{
-	GtkSourceBuffer *buffer;
-	GtkTextIter start_at;
+	gboolean found;
 	GtkTextIter match_start;
 	GtkTextIter match_end;
-	gboolean found;
 
-	buffer = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-
-	gtk_source_buffer_set_search_wrap_around (buffer, wrap_around);
-
-	if (search_backwards)
-	{
-		gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (buffer),
-						      &start_at,
-						      NULL);
-
-		found = gtk_source_buffer_backward_search (buffer,
-							   &start_at,
-							   &match_start,
-							   &match_end);
-	}
-	else
-	{
-		gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (buffer),
-						      NULL,
-						      &start_at);
-
-		found = gtk_source_buffer_forward_search (buffer,
-							  &start_at,
-							  &match_start,
-							  &match_end);
-	}
+	found = gtk_source_buffer_forward_search_finish (buffer,
+							 result,
+							 &match_start,
+							 &match_end,
+							 NULL);
 
 	if (found)
 	{
@@ -210,12 +196,167 @@ run_search (GeditView   *view,
 	}
 	else
 	{
+		GtkTextIter end_selection;
+
+		gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (buffer),
+						      NULL,
+						      &end_selection);
+
 		gtk_text_buffer_select_range (GTK_TEXT_BUFFER (buffer),
-					      &start_at,
-					      &start_at);
+					      &end_selection,
+					      &end_selection);
 	}
 
 	return found;
+}
+
+static void
+forward_search_from_dialog_finished (GtkSourceBuffer *buffer,
+				     GAsyncResult    *result,
+				     GeditWindow     *window)
+{
+	GeditView *view = gedit_window_get_active_view (window);
+	gboolean found;
+
+	if (view == NULL)
+	{
+		return;
+	}
+
+	found = forward_search_finished (buffer, result, view);
+
+	finish_search_from_dialog (window, found);
+}
+
+static void
+run_forward_search (GeditWindow *window,
+		    gboolean     from_dialog)
+{
+	GeditView *view;
+	GtkTextBuffer *buffer;
+	GtkTextIter start_at;
+
+	view = gedit_window_get_active_view (window);
+
+	if (view == NULL)
+	{
+		return;
+	}
+
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+
+	gtk_text_buffer_get_selection_bounds (buffer, NULL, &start_at);
+
+	if (from_dialog)
+	{
+		gtk_source_buffer_forward_search_async (GTK_SOURCE_BUFFER (buffer),
+							&start_at,
+							NULL,
+							(GAsyncReadyCallback)forward_search_from_dialog_finished,
+							window);
+	}
+	else
+	{
+		gtk_source_buffer_forward_search_async (GTK_SOURCE_BUFFER (buffer),
+							&start_at,
+							NULL,
+							(GAsyncReadyCallback)forward_search_finished,
+							view);
+	}
+}
+
+static gboolean
+backward_search_finished (GtkSourceBuffer *buffer,
+			  GAsyncResult    *result,
+			  GeditView       *view)
+{
+	gboolean found;
+	GtkTextIter match_start;
+	GtkTextIter match_end;
+
+	found = gtk_source_buffer_backward_search_finish (buffer,
+							  result,
+							  &match_start,
+							  &match_end,
+							  NULL);
+
+	if (found)
+	{
+		gtk_text_buffer_select_range (GTK_TEXT_BUFFER (buffer),
+					      &match_start,
+					      &match_end);
+
+		gedit_view_scroll_to_cursor (view);
+	}
+	else
+	{
+		GtkTextIter start_selection;
+
+		gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (buffer),
+						      &start_selection,
+						      NULL);
+
+		gtk_text_buffer_select_range (GTK_TEXT_BUFFER (buffer),
+					      &start_selection,
+					      &start_selection);
+	}
+
+	return found;
+}
+
+static void
+backward_search_from_dialog_finished (GtkSourceBuffer *buffer,
+				      GAsyncResult    *result,
+				      GeditWindow     *window)
+{
+	GeditView *view = gedit_window_get_active_view (window);
+	gboolean found;
+
+	if (view == NULL)
+	{
+		return;
+	}
+
+	found = backward_search_finished (buffer, result, view);
+
+	finish_search_from_dialog (window, found);
+}
+
+static void
+run_backward_search (GeditWindow *window,
+		     gboolean     from_dialog)
+{
+	GeditView *view;
+	GtkTextBuffer *buffer;
+	GtkTextIter start_at;
+
+	view = gedit_window_get_active_view (window);
+
+	if (view == NULL)
+	{
+		return;
+	}
+
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+
+	gtk_text_buffer_get_selection_bounds (buffer, &start_at, NULL);
+
+	if (from_dialog)
+	{
+		gtk_source_buffer_backward_search_async (GTK_SOURCE_BUFFER (buffer),
+							 &start_at,
+							 NULL,
+							 (GAsyncReadyCallback)backward_search_from_dialog_finished,
+							 window);
+	}
+	else
+	{
+		gtk_source_buffer_backward_search_async (GTK_SOURCE_BUFFER (buffer),
+							 &start_at,
+							 NULL,
+							 (GAsyncReadyCallback)backward_search_finished,
+							 view);
+	}
 }
 
 static void
@@ -249,9 +390,6 @@ do_find (GeditReplaceDialog *dialog,
 {
 	GeditView *active_view;
 	GtkSourceBuffer *buffer;
-	gboolean wrap_around;
-	gboolean search_backwards;
-	gboolean found;
 
 	/* TODO: make the dialog insensitive when all the tabs are closed
 	 * and assert here that the view is not NULL */
@@ -266,24 +404,14 @@ do_find (GeditReplaceDialog *dialog,
 
 	set_search_state (dialog, buffer);
 
-	wrap_around = gedit_replace_dialog_get_wrap_around (dialog);
-	search_backwards = gedit_replace_dialog_get_backwards (dialog);
-
-	found = run_search (active_view, wrap_around, search_backwards);
-
-	if (found)
+	if (gedit_replace_dialog_get_backwards (dialog))
 	{
-		text_found (window, 0);
+		run_backward_search (window, TRUE);
 	}
 	else
 	{
-		const gchar *search_text = gedit_replace_dialog_get_search_text (dialog);
-		text_not_found (window, search_text);
+		run_forward_search (window, TRUE);
 	}
-
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-					   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
-					   found);
 }
 
 /* FIXME: move in gedit-document.c and share it with gedit-view */
@@ -529,7 +657,6 @@ do_find_again (GeditWindow *window,
 	       gboolean     backward)
 {
 	GeditView *active_view;
-	gboolean wrap_around = TRUE;
 	gpointer data;
 
 	active_view = gedit_window_get_active_view (window);
@@ -539,10 +666,20 @@ do_find_again (GeditWindow *window,
 
 	if (data != NULL)
 	{
-		wrap_around = gedit_replace_dialog_get_wrap_around (GEDIT_REPLACE_DIALOG (data));
+		GtkTextBuffer *buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (active_view));
+
+		set_search_state (GEDIT_REPLACE_DIALOG (data),
+				  GTK_SOURCE_BUFFER (buffer));
 	}
 
-	run_search (active_view, wrap_around, backward);
+	if (backward)
+	{
+		run_backward_search (window, FALSE);
+	}
+	else
+	{
+		run_forward_search (window, FALSE);
+	}
 }
 
 void
