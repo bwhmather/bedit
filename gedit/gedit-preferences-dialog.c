@@ -393,24 +393,9 @@ setup_view_page (GeditPreferencesDialog *dlg)
 }
 
 static void
-on_use_default_font_changed (GSettings              *settings,
-			     const gchar            *key,
-			     GeditPreferencesDialog *dlg)
-{
-	gboolean value;
-
-	gedit_debug (DEBUG_PREFS);
-
-	value = g_settings_get_boolean (settings, key);
-
-	gtk_widget_set_sensitive (dlg->priv->font_grid, !value);
-}
-
-static void
 setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 {
 	GObject *settings;
-	gboolean use_default_font;
 	gchar *system_font = NULL;
 	gchar *label;
 
@@ -429,8 +414,6 @@ setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 	/* Get values */
 	settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
 	system_font = gedit_settings_get_system_font (GEDIT_SETTINGS (settings));
-	use_default_font = g_settings_get_boolean (dlg->priv->editor,
-						   GEDIT_SETTINGS_USE_DEFAULT_FONT);
 
 	label = g_strdup_printf(_("_Use the system fixed width font (%s)"),
 				system_font);
@@ -439,23 +422,17 @@ setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 	g_free (system_font);
 	g_free (label);
 
-	/* read current config and setup initial state */
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->default_font_checkbutton),
-				      use_default_font);
-
-	/* Set initial widget sensitivity */
-	gtk_widget_set_sensitive (dlg->priv->font_grid, !use_default_font);
-
-	/* Connect signals */
-	g_signal_connect (dlg->priv->editor,
-			  "changed::use-default-font",
-			  G_CALLBACK (on_use_default_font_changed),
-			  dlg);
+	/* Bind settings */
 	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_USE_DEFAULT_FONT,
 			 dlg->priv->default_font_checkbutton,
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+	g_settings_bind (dlg->priv->editor,
+			 GEDIT_SETTINGS_USE_DEFAULT_FONT,
+			 dlg->priv->font_grid,
+			 "sensitive",
+			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET | G_SETTINGS_BIND_INVERT_BOOLEAN);
 	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_EDITOR_FONT,
 			 dlg->priv->font_button,
