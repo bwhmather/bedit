@@ -118,6 +118,7 @@ struct _GeditPreferencesDialogPrivate
 
 	/* Right margin */
 	GtkWidget	*right_margin_checkbutton;
+	GtkWidget       *right_margin_position_grid;
 	GtkWidget	*right_margin_position_spinbutton;
 
 	/* Highlighting */
@@ -179,6 +180,7 @@ gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, notebook);
 	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, display_line_numbers_checkbutton);
 	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, right_margin_checkbutton);
+	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, right_margin_position_grid);
 	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, right_margin_position_spinbutton);
 	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, highlight_current_line_checkbutton);
 	gtk_widget_class_bind_child (widget_class, GeditPreferencesDialogPrivate, bracket_matching_checkbutton);
@@ -367,14 +369,14 @@ setup_view_page (GeditPreferencesDialog *dlg)
 	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 	g_settings_bind (dlg->priv->editor,
 	                 GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
-	                 dlg->priv->right_margin_position_spinbutton,
+	                 dlg->priv->right_margin_position_grid,
 	                 "sensitive",
 	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
 			 dlg->priv->right_margin_position_spinbutton,
 			 "value",
-			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET | G_SETTINGS_BIND_NO_SENSITIVITY);
+			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 	g_settings_bind (dlg->priv->editor,
 			 GEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
 			 dlg->priv->auto_save_spinbutton,
