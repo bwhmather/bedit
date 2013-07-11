@@ -198,17 +198,23 @@ def run_external_tool(window, panel, node):
         view.set_editable(False)
         view.set_cursor_visible(False)
 
-        if output_type == 'insert':
-            pos = document.get_iter_at_mark(document.get_mark('insert'))
-        elif output_type == 'replace-selection':
-            document.delete_selection(False, False)
-            pos = document.get_iter_at_mark(document.get_mark('insert'))
-        elif output_type == 'replace-document':
-            document.set_text('')
-            pos = document.get_end_iter()
+        if output_type.startswith('replace-'):
+            if output_type == 'replace-selection':
+                try:
+                    start_iter, end_iter = document.get_selection_bounds()
+                except ValueError:
+                    start_iter = document.get_iter_at_mark(document.get_insert())
+                    end_iter = start_iter.copy()
+            elif output_type == 'replace-document':
+                start_iter, end_iter = document.get_bounds()
+            capture.connect('stdout-line', capture_delayed_replace,
+                            document, start_iter, end_iter)
         else:
-            pos = document.get_end_iter()
-        capture.connect('stdout-line', capture_stdout_line_document, document, pos)
+            if output_type == 'insert':
+                pos = document.get_iter_at_mark(document.get_insert())
+            else:
+                pos = document.get_end_iter()
+            capture.connect('stdout-line', capture_stdout_line_document, document, pos)
     elif output_type != 'nothing':
         capture.connect('stdout-line', capture_stdout_line_panel, panel)
         document.begin_user_action()
@@ -340,5 +346,16 @@ def capture_stdout_line_panel(capture, line, panel):
 
 def capture_stdout_line_document(capture, line, document, pos):
     document.insert(pos, line)
+
+def capture_delayed_replace(capture, line, document, start_iter, end_iter):
+    document.delete(start_iter, end_iter)
+
+    # Must be done after deleting the text
+    pos = document.get_iter_at_mark(document.get_insert())
+
+    capture_stdout_line_document(capture, line, document, pos)
+
+    capture.disconnect_by_func(capture_delayed_replace)
+    capture.connect('stdout-line', capture_stdout_line_document, document, pos)
 
 # ex:ts=4:et:
