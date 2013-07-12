@@ -437,9 +437,12 @@ add_notebook (GeditMultiNotebook *mnb,
 	      GtkWidget          *notebook,
 	      gboolean            main_container)
 {
+	gtk_widget_set_hexpand (notebook, TRUE);
+	gtk_widget_set_vexpand (notebook, TRUE);
+
 	if (main_container)
 	{
-		gtk_box_pack_start (GTK_BOX (mnb), notebook, TRUE, TRUE, 0);
+		gtk_container_add (GTK_CONTAINER (mnb), notebook);
 
 		mnb->priv->notebooks = g_list_append (mnb->priv->notebooks,
 		                                      notebook);
