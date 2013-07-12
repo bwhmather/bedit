@@ -62,7 +62,7 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GeditMultiNotebook, gedit_multi_notebook, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GeditMultiNotebook, gedit_multi_notebook, GTK_TYPE_GRID)
 
 static void	remove_notebook		(GeditMultiNotebook *mnb,
 					 GtkWidget          *notebook);
