@@ -28,6 +28,7 @@
 #include "gedit-view-frame.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
+#include "libgd/gd.h"
 
 #include <gtksourceview/gtksource.h>
 #include <gdk/gdkkeysyms.h>
@@ -63,7 +64,8 @@ struct _GeditViewFramePrivate
 	gchar       *old_search_text;
 
 	GtkRevealer *slider;
-	GtkEntry    *search_entry;
+	GdTaggedEntry *search_entry;
+	GdTaggedEntryTag *entry_tag;
 	GtkWidget   *go_up_button;
 	GtkWidget   *go_down_button;
 
@@ -71,6 +73,7 @@ struct _GeditViewFramePrivate
 	glong        view_scroll_event_id;
 	glong        search_entry_focus_out_id;
 	glong        search_entry_changed_id;
+	guint        idle_update_entry_tag_id;
 
 	guint        disable_popdown : 1;
 
@@ -124,6 +127,14 @@ gedit_view_frame_dispose (GObject *object)
 		g_source_remove (frame->priv->typeselect_flush_timeout);
 		frame->priv->typeselect_flush_timeout = 0;
 	}
+
+	if (frame->priv->idle_update_entry_tag_id != 0)
+	{
+		g_source_remove (frame->priv->idle_update_entry_tag_id);
+		frame->priv->idle_update_entry_tag_id = 0;
+	}
+
+	g_clear_object (&frame->priv->entry_tag);
 
 	G_OBJECT_CLASS (gedit_view_frame_parent_class)->dispose (object);
 }
@@ -236,7 +247,7 @@ static void
 finish_search (GeditViewFrame    *frame,
 	       gboolean           found)
 {
-	const gchar *entry_text = gtk_entry_get_text (frame->priv->search_entry);
+	const gchar *entry_text = gtk_entry_get_text (GTK_ENTRY (frame->priv->search_entry));
 
 	if (found || (*entry_text == '\0'))
 	{
@@ -527,6 +538,87 @@ search_widget_key_press_event (GtkWidget      *widget,
 }
 
 static void
+update_entry_tag (GeditViewFrame *frame)
+{
+	GtkTextBuffer *buffer;
+	GtkTextIter select_start;
+	GtkTextIter select_end;
+	gint count;
+	gint pos;
+	gchar *label;
+
+	if (frame->priv->search_mode == GOTO_LINE)
+	{
+		gd_tagged_entry_remove_tag (frame->priv->search_entry,
+					    frame->priv->entry_tag);
+		return;
+	}
+
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
+
+	count = gtk_source_buffer_get_search_occurrences_count (GTK_SOURCE_BUFFER (buffer));
+
+	gtk_text_buffer_get_selection_bounds (buffer, &select_start, &select_end);
+
+	pos = gtk_source_buffer_get_search_occurrence_position (GTK_SOURCE_BUFFER (buffer),
+								&select_start,
+								&select_end);
+
+	if (count == -1 || pos == -1)
+	{
+		/* Wait that the buffer is fully scanned. */
+		return;
+	}
+
+	if (count == 0)
+	{
+		gd_tagged_entry_remove_tag (frame->priv->search_entry,
+					    frame->priv->entry_tag);
+		return;
+	}
+
+	if (pos == 0)
+	{
+		label = g_strdup_printf ("%d", count);
+	}
+	else
+	{
+		/* Translators: the first %d is the position of the current search
+		 * occurrence, and the second %d is the total number of search
+		 * occurrences.
+		 */
+		label = g_strdup_printf (_("%d of %d"), pos, count);
+	}
+
+	gd_tagged_entry_tag_set_label (frame->priv->entry_tag, label);
+
+	gd_tagged_entry_add_tag (frame->priv->search_entry,
+				 frame->priv->entry_tag);
+
+	g_free (label);
+}
+
+static gboolean
+update_entry_tag_idle_cb (GeditViewFrame *frame)
+{
+	frame->priv->idle_update_entry_tag_id = 0;
+
+	update_entry_tag (frame);
+
+	return G_SOURCE_REMOVE;
+}
+
+static void
+install_update_entry_tag_idle (GeditViewFrame *frame)
+{
+	if (frame->priv->idle_update_entry_tag_id == 0)
+	{
+		frame->priv->idle_update_entry_tag_id = g_idle_add ((GSourceFunc)update_entry_tag_idle_cb,
+								    frame);
+	}
+}
+
+static void
 update_search (GeditViewFrame *frame)
 {
 	GtkSourceBuffer *buffer;
@@ -535,7 +627,7 @@ update_search (GeditViewFrame *frame)
 
 	buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
 
-	entry_text = gtk_entry_get_text (frame->priv->search_entry);
+	entry_text = gtk_entry_get_text (GTK_ENTRY (frame->priv->search_entry));
 	unescaped_entry_text = gtk_source_utils_unescape_search_text (entry_text);
 
 	gtk_source_buffer_set_search_text (buffer, unescaped_entry_text);
@@ -849,7 +941,7 @@ customize_for_search_mode (GeditViewFrame *frame)
 		gtk_widget_hide (frame->priv->go_down_button);
 	}
 
-	gtk_entry_set_icon_from_gicon (frame->priv->search_entry,
+	gtk_entry_set_icon_from_gicon (GTK_ENTRY (frame->priv->search_entry),
 	                               GTK_ENTRY_ICON_PRIMARY,
 	                               icon);
 
@@ -858,6 +950,7 @@ customize_for_search_mode (GeditViewFrame *frame)
 
 static void
 search_init (GtkWidget      *entry,
+	     GParamSpec     *pspec,
              GeditViewFrame *frame)
 {
 	const gchar *entry_text;
@@ -978,8 +1071,40 @@ on_go_down_button_clicked (GtkWidget      *button,
 }
 
 static void
+mark_set_cb (GtkTextBuffer  *buffer,
+	     GtkTextIter    *location,
+	     GtkTextMark    *mark,
+	     GeditViewFrame *frame)
+{
+	GtkTextMark *insert;
+	GtkTextMark *selection_bound;
+
+	insert = gtk_text_buffer_get_insert (buffer);
+	selection_bound = gtk_text_buffer_get_selection_bound (buffer);
+
+	if (mark == insert || mark == selection_bound)
+	{
+		install_update_entry_tag_idle (frame);
+	}
+}
+
+static void
 setup_search_widget (GeditViewFrame *frame)
 {
+	GtkTextBuffer *buffer;
+
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
+
+	g_signal_connect (buffer,
+			  "mark-set",
+			  G_CALLBACK (mark_set_cb),
+			  frame);
+
+	g_signal_connect_swapped (buffer,
+				  "notify::search-occurrences-count",
+				  G_CALLBACK (install_update_entry_tag_idle),
+				  frame);
+
 	g_signal_connect (frame->priv->slider,
 			  "key-press-event",
 	                  G_CALLBACK (search_widget_key_press_event),
@@ -1010,9 +1135,13 @@ setup_search_widget (GeditViewFrame *frame)
 	                  G_CALLBACK (search_entry_insert_text),
 	                  frame);
 
+	/* Use the "notify::text" signal, because the "changed" signal is
+	 * delayed with a GtkSearchEntry.
+	 * See https://bugzilla.gnome.org/show_bug.cgi?id=700229
+	 */
 	frame->priv->search_entry_changed_id =
 		g_signal_connect (frame->priv->search_entry,
-				  "changed",
+				  "notify::text",
 		                  G_CALLBACK (search_init),
 		                  frame);
 
@@ -1088,7 +1217,7 @@ init_search_entry (GeditViewFrame *frame)
 
 		line_str = g_strdup_printf ("%d", line + 1);
 
-		gtk_entry_set_text (frame->priv->search_entry, line_str);
+		gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry), line_str);
 
 		gtk_editable_select_region (GTK_EDITABLE (frame->priv->search_entry),
 		                            0, -1);
@@ -1120,7 +1249,7 @@ init_search_entry (GeditViewFrame *frame)
 
 		if (selection_exists && (search_text != NULL) && (selection_len <= 160))
 		{
-			gtk_entry_set_text (frame->priv->search_entry, search_text);
+			gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry), search_text);
 
 			gtk_editable_set_position (GTK_EDITABLE (frame->priv->search_entry),
 			                           -1);
@@ -1132,7 +1261,7 @@ init_search_entry (GeditViewFrame *frame)
 			g_signal_handler_block (frame->priv->search_entry,
 			                        frame->priv->search_entry_changed_id);
 
-			gtk_entry_set_text (frame->priv->search_entry, old_search_text);
+			gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry), old_search_text);
 
 			gtk_editable_select_region (GTK_EDITABLE (frame->priv->search_entry),
 			                            0, -1);
@@ -1192,7 +1321,7 @@ start_interactive_search_real (GeditViewFrame *frame)
 	g_signal_handler_block (frame->priv->search_entry,
 	                        frame->priv->search_entry_changed_id);
 
-	gtk_entry_set_text (frame->priv->search_entry, "");
+	gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry), "");
 
 	g_signal_handler_unblock (frame->priv->search_entry,
 	                          frame->priv->search_entry_changed_id);
@@ -1212,6 +1341,8 @@ start_interactive_search_real (GeditViewFrame *frame)
 		g_timeout_add_seconds (GEDIT_VIEW_FRAME_SEARCH_TIMEOUT,
 				       (GSourceFunc) search_entry_flush_timeout,
 				       frame);
+
+	install_update_entry_tag_idle (frame);
 }
 
 static void
@@ -1284,6 +1415,13 @@ gedit_view_frame_init (GeditViewFrame *frame)
 						     view_frame_mount_operation_factory,
 						     frame);
 
+	frame->priv->entry_tag = gd_tagged_entry_tag_new ("");
+
+	gd_tagged_entry_tag_set_style (frame->priv->entry_tag,
+				       "gedit-search-entry-occurrences-tag");
+
+	gd_tagged_entry_tag_set_has_close_button (frame->priv->entry_tag, FALSE);
+
 	/* Slider margin */
 	setup_search_widget (frame);
 
@@ -1355,7 +1493,7 @@ gedit_view_frame_clear_search (GeditViewFrame *frame)
 	g_signal_handler_block (frame->priv->search_entry,
 	                        frame->priv->search_entry_changed_id);
 
-	gtk_entry_set_text (frame->priv->search_entry, "");
+	gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry), "");
 
 	g_signal_handler_unblock (frame->priv->search_entry,
 	                          frame->priv->search_entry_changed_id);
