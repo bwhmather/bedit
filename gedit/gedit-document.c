@@ -950,6 +950,18 @@ get_default_content_type (void)
 }
 
 static void
+on_highlight_updated (GeditDocument *doc,
+		      GtkTextIter   *start,
+		      GtkTextIter   *end)
+{
+	g_signal_emit (doc,
+		       document_signals[SEARCH_HIGHLIGHT_UPDATED],
+		       0,
+		       start,
+		       end);
+}
+
+static void
 gedit_document_init (GeditDocument *doc)
 {
 	GeditDocumentPrivate *priv;
@@ -1016,6 +1028,11 @@ gedit_document_init (GeditDocument *doc)
 	g_signal_connect (doc,
 			  "notify::location",
 			  G_CALLBACK (on_location_changed),
+			  NULL);
+
+	g_signal_connect (doc,
+			  "highlight-updated",
+			  G_CALLBACK (on_highlight_updated),
 			  NULL);
 }
 
