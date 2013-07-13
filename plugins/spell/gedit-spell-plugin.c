@@ -33,6 +33,7 @@
 #include <gedit/gedit-statusbar.h>
 #include <gedit/gedit-window.h>
 #include <gedit/gedit-window-activatable.h>
+#include <gtksourceview/gtksource.h>
 
 #include "gedit-spell-checker.h"
 #include "gedit-spell-checker-dialog.h"
@@ -658,7 +659,9 @@ change_all_cb (GeditSpellCheckerDialog *dlg,
 	CheckRange *range;
 	gchar *w = NULL;
 	GtkTextIter start, end;
-	gint flags = 0;
+	gboolean case_sensitive;
+	gboolean at_word_boundaries;
+	gboolean highlight_search;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -689,11 +692,21 @@ change_all_cb (GeditSpellCheckerDialog *dlg,
 
 	g_free (w);
 
-	GEDIT_SEARCH_SET_CASE_SENSITIVE (flags, TRUE);
-	GEDIT_SEARCH_SET_ENTIRE_WORD (flags, TRUE);
+	case_sensitive = gtk_source_buffer_get_case_sensitive_search (GTK_SOURCE_BUFFER (doc));
+	at_word_boundaries = gtk_source_buffer_get_search_at_word_boundaries (GTK_SOURCE_BUFFER (doc));
+	highlight_search = gtk_source_buffer_get_highlight_search (GTK_SOURCE_BUFFER (doc));
 
-	/* CHECK: currently this function does escaping etc */
-	gedit_document_replace_all (doc, word, change, flags);
+	gtk_source_buffer_set_case_sensitive_search (GTK_SOURCE_BUFFER (doc), TRUE);
+	gtk_source_buffer_set_search_at_word_boundaries (GTK_SOURCE_BUFFER (doc), TRUE);
+	gtk_source_buffer_set_highlight_search (GTK_SOURCE_BUFFER (doc), FALSE);
+
+	gtk_source_buffer_set_search_text (GTK_SOURCE_BUFFER (doc), word);
+	gtk_source_buffer_search_replace_all (GTK_SOURCE_BUFFER (doc), change, -1);
+	gtk_source_buffer_set_search_text (GTK_SOURCE_BUFFER (doc), NULL);
+
+	gtk_source_buffer_set_case_sensitive_search (GTK_SOURCE_BUFFER (doc), case_sensitive);
+	gtk_source_buffer_set_search_at_word_boundaries (GTK_SOURCE_BUFFER (doc), at_word_boundaries);
+	gtk_source_buffer_set_highlight_search (GTK_SOURCE_BUFFER (doc), highlight_search);
 
 	update_current (doc, range->mw_start + g_utf8_strlen (change, -1));
 
@@ -843,6 +856,8 @@ spell_cb (GtkAction        *action,
 	gtk_window_set_modal (GTK_WINDOW (dlg), TRUE);
 	gtk_window_set_transient_for (GTK_WINDOW (dlg),
 				      GTK_WINDOW (priv->window));
+
+	gtk_source_buffer_set_search_text (GTK_SOURCE_BUFFER (doc), NULL);
 
 	g_signal_connect (dlg, "ignore", G_CALLBACK (ignore_cb), view);
 	g_signal_connect (dlg, "ignore_all", G_CALLBACK (ignore_cb), view);
