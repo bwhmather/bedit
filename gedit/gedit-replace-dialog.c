@@ -88,7 +88,7 @@ gedit_replace_dialog_response (GtkDialog *dialog,
 			{
 				gchar *text;
 
-				text = gedit_utils_unescape_search_text (str);
+				text = gtk_source_utils_unescape_search_text (str);
 				gedit_history_entry_prepend_text
 						(GEDIT_HISTORY_ENTRY (dlg->priv->replace_entry),
 						 text);
@@ -102,7 +102,7 @@ gedit_replace_dialog_response (GtkDialog *dialog,
 			{
 				gchar *text;
 
-				text = gedit_utils_unescape_search_text (str);
+				text = gtk_source_utils_unescape_search_text (str);
 				gedit_history_entry_prepend_text
 						(GEDIT_HISTORY_ENTRY (dlg->priv->search_entry),
 						 text);
@@ -151,7 +151,7 @@ insert_text_handler (GtkEditable *editable,
 	if (insert_text)
 		return;
 
-	escaped_text = gedit_utils_escape_search_text (text);
+	escaped_text = gtk_source_utils_escape_search_text (text);
 
 	new_len = strlen (escaped_text);
 
@@ -209,7 +209,7 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 	dlg->priv->search_entry = gedit_history_entry_new ("search-for-entry", TRUE);
 	gtk_widget_set_size_request (dlg->priv->search_entry, 300, -1);
 	gedit_history_entry_set_escape_func (GEDIT_HISTORY_ENTRY (dlg->priv->search_entry),
-	                                     (GeditHistoryEntryEscapeFunc) gedit_utils_escape_search_text);
+	                                     (GeditHistoryEntryEscapeFunc) gtk_source_utils_escape_search_text);
 	gtk_widget_set_hexpand (GTK_WIDGET (dlg->priv->search_entry), TRUE);
 	dlg->priv->search_text_entry = gedit_history_entry_get_entry (GEDIT_HISTORY_ENTRY (dlg->priv->search_entry));
 	gtk_entry_set_activates_default (GTK_ENTRY (dlg->priv->search_text_entry), TRUE);
@@ -220,7 +220,7 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 
 	dlg->priv->replace_entry = gedit_history_entry_new ("replace-with-entry", TRUE);
 	gedit_history_entry_set_escape_func (GEDIT_HISTORY_ENTRY (dlg->priv->replace_entry),
-	                                     (GeditHistoryEntryEscapeFunc) gedit_utils_escape_search_text);
+	                                     (GeditHistoryEntryEscapeFunc) gtk_source_utils_escape_search_text);
 	gtk_widget_set_hexpand (GTK_WIDGET (dlg->priv->replace_entry), TRUE);
 	dlg->priv->replace_text_entry = gedit_history_entry_get_entry (GEDIT_HISTORY_ENTRY (dlg->priv->replace_entry));
 	gtk_entry_set_activates_default (GTK_ENTRY (dlg->priv->replace_text_entry), TRUE);

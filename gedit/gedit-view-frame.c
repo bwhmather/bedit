@@ -799,7 +799,7 @@ search_entry_insert_text (GtkEditable    *editable,
 			return;
 		}
 
-		escaped_text = gedit_utils_escape_search_text (text);
+		escaped_text = gtk_source_utils_escape_search_text (text);
 
 		gedit_debug_message (DEBUG_SEARCH, "Escaped Text: %s", escaped_text);
 

@@ -277,12 +277,26 @@ gedit_utils_set_atk_relation (GtkWidget       *obj1,
 	g_object_unref (G_OBJECT (relation));
 }
 
+/**
+ * gedit_utils_escape_search_text:
+ * @text:
+ *
+ * Returns:
+ * Deprecated: 3.10: Use gtk_source_utils_escape_search_text() instead.
+ */
 gchar *
 gedit_utils_escape_search_text (const gchar* text)
 {
 	return gtk_source_utils_escape_search_text (text);
 }
 
+/**
+ * gedit_utils_unescape_search_text:
+ * @text:
+ *
+ * Returns:
+ * Deprecated: 3.10: Use gtk_source_utils_unescape_search_text() instead.
+ */
 gchar *
 gedit_utils_unescape_search_text (const gchar *text)
 {
