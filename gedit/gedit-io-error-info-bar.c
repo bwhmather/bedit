@@ -151,9 +151,9 @@ create_io_loading_error_info_bar (const gchar *primary_text,
 {
 	GtkWidget *info_bar;
 
-	info_bar = gtk_info_bar_new_with_buttons (
-					GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-					NULL);
+	info_bar = gtk_info_bar_new_with_buttons (_("_Cancel"),
+						  GTK_RESPONSE_CANCEL,
+						  NULL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_ERROR);
 
@@ -499,7 +499,7 @@ create_conversion_error_info_bar (const gchar *primary_text,
 	}
 
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 GTK_STOCK_CANCEL,
+				 _("_Cancel"),
 				 GTK_RESPONSE_CANCEL);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
@@ -1194,7 +1194,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 				 _("_Reload"),
 				 GTK_RESPONSE_OK);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 GTK_STOCK_CANCEL,
+				 _("_Cancel"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
