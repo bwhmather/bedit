@@ -256,7 +256,7 @@ parse_gio_error (gint          code,
 						host_name = gedit_utils_make_valid_utf8 (hn);
 						g_free (hn);
 
-						host_markup = g_markup_printf_escaped ("<i>%s</i>", host_name);
+						host_markup = g_markup_printf_escaped ("“%s”", host_name);
 						g_free (host_name);
 
 						/* Translators: %s is a host name */
@@ -384,7 +384,7 @@ gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
+	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	if (is_gio_error (error, G_IO_ERROR_NOT_FOUND))
@@ -564,7 +564,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
+	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	if (encoding != NULL)
@@ -673,7 +673,7 @@ gedit_conversion_error_while_saving_info_bar_new (GFile               *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
+	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	encoding_name = gedit_encoding_to_string (encoding);
@@ -742,7 +742,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
+	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
@@ -828,7 +828,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
+	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
@@ -920,7 +920,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
+	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
@@ -1018,7 +1018,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
+	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	if (is_gio_error (error, G_IO_ERROR_NOT_SUPPORTED))
@@ -1137,7 +1137,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
+	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	/* FIXME: review this message, it's not clear since for the user the "modification"
@@ -1201,7 +1201,7 @@ gedit_invalid_character_info_bar_new (GFile *location)
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("<i>%s</i>", temp_uri_for_display);
+	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
