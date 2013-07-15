@@ -213,11 +213,8 @@ parse_gio_error (gint          code,
 			break;
 
 		case G_IO_ERROR_NOT_MOUNTABLE_FILE:
-			*message_details = g_strdup (_("The location of the file cannot be mounted."));
-			break;
-
 		case G_IO_ERROR_NOT_MOUNTED:
-			*message_details = g_strdup( _("The location of the file cannot be accessed because it is not mounted."));
+			*message_details = g_strdup (_("The location of the file cannot be accessed."));
 			break;
 
 		case G_IO_ERROR_IS_DIRECTORY:
