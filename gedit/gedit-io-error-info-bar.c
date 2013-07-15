@@ -94,20 +94,6 @@ set_contents (GtkWidget *area,
 }
 
 static void
-info_bar_add_button_with_text (GtkInfoBar  *info_bar,
-			       const gchar *text,
-			       const gchar *icon_name,
-			       gint         response_id)
-{
-	GtkWidget *button;
-	GtkWidget *image;
-
-	button = gtk_info_bar_add_button (info_bar, text, response_id);
-	image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_BUTTON);
-	gtk_button_set_image (GTK_BUTTON (button), image);
-}
-
-static void
 set_info_bar_text_and_icon (GtkWidget   *info_bar,
 			    const gchar *icon_name,
 			    const gchar *primary_text,
@@ -178,10 +164,9 @@ create_io_loading_error_info_bar (const gchar *primary_text,
 
 	if (recoverable_error)
 	{
-		info_bar_add_button_with_text (GTK_INFO_BAR (info_bar),
-					       _("_Retry"),
-					       "view-refresh",
-					       GTK_RESPONSE_OK);
+		gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+					 _("_Retry"),
+					 GTK_RESPONSE_OK);
 	}
 
 	return info_bar;
@@ -493,10 +478,9 @@ create_conversion_error_info_bar (const gchar *primary_text,
 
 	info_bar = gtk_info_bar_new ();
 
-	info_bar_add_button_with_text (GTK_INFO_BAR (info_bar),
-				       _("_Retry"),
-				       "edit-redo",
-				       GTK_RESPONSE_OK);
+	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+				 _("_Retry"),
+				 GTK_RESPONSE_OK);
 
 	if (edit_anyway)
 	{
@@ -873,10 +857,9 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 
 	info_bar = gtk_info_bar_new ();
 
-	info_bar_add_button_with_text (GTK_INFO_BAR (info_bar),
-					     _("S_ave Anyway"),
-					     _("_Save"),
-					     GTK_RESPONSE_YES);
+	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+				 _("S_ave Anyway"),
+				 GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
 				 _("D_on't Save"),
 				 GTK_RESPONSE_CANCEL);
@@ -972,10 +955,9 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 
 	info_bar = gtk_info_bar_new ();
 
-	info_bar_add_button_with_text (GTK_INFO_BAR (info_bar),
-				       _("S_ave Anyway"),
-				       _("_Save"),
-				       GTK_RESPONSE_YES);
+	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+				 _("S_ave Anyway"),
+				 GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
 				 _("D_on't Save"),
 				 GTK_RESPONSE_CANCEL);
@@ -1208,10 +1190,9 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 
 	info_bar = gtk_info_bar_new ();
 
-	info_bar_add_button_with_text (GTK_INFO_BAR (info_bar),
-				       _("_Reload"),
-				       "view-refresh",
-				       GTK_RESPONSE_OK);
+	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+				 _("_Reload"),
+				 GTK_RESPONSE_OK);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
 				 GTK_STOCK_CANCEL,
 				 GTK_RESPONSE_CANCEL);
@@ -1262,10 +1243,9 @@ gedit_invalid_character_info_bar_new (GFile *location)
 
 	info_bar = gtk_info_bar_new ();
 
-	info_bar_add_button_with_text (GTK_INFO_BAR (info_bar),
-				       _("S_ave Anyway"),
-				       _("_Save"),
-				       GTK_RESPONSE_YES);
+	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+				 _("S_ave Anyway"),
+				 GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
 				 _("D_on't Save"),
 				 GTK_RESPONSE_CANCEL);
