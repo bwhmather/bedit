@@ -1122,7 +1122,6 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
 	gchar *primary_text;
-	const gchar *secondary_text;
 	GtkWidget *info_bar;
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
@@ -1148,16 +1147,27 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 					uri_for_display);
 	g_free (uri_for_display);
 
-	if (document_modified)
-		secondary_text = _("Do you want to drop your changes and reload the file?");
-	else
-		secondary_text = _("Do you want to reload the file?");
-
 	info_bar = gtk_info_bar_new ();
 
-	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("_Reload"),
-				 GTK_RESPONSE_OK);
+	if (document_modified)
+	{
+		GtkWidget *box;
+		GtkWidget *button;
+		button = gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+						  _("Drop Changes and _Reload"),
+						  GTK_RESPONSE_OK);
+		box = gtk_info_bar_get_action_area (GTK_INFO_BAR (info_bar));
+		gtk_button_box_set_child_non_homogeneous (GTK_BUTTON_BOX (box),
+							  button,
+							  TRUE);
+	}
+	else
+	{
+		gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
+					 _("_Reload"),
+					 GTK_RESPONSE_OK);
+	}
+
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
 				 _("_Cancel"),
 				 GTK_RESPONSE_CANCEL);
@@ -1166,7 +1176,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 
 	set_info_bar_text (info_bar,
 			   primary_text,
-			   secondary_text);
+			   NULL);
 
 	g_free (primary_text);
 
