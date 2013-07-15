@@ -584,8 +584,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 	         (error->domain == GEDIT_DOCUMENT_ERROR &&
 	         error->code == GEDIT_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED))
 	{
-		message_details = g_strconcat (_("Unable to able to detect "
-					         "the character encoding."), "\n",
+		message_details = g_strconcat (_("Unable to detect the character encoding."), "\n",
 					       _("Please check that you are not trying to open a binary file."), "\n",
 					       _("Select a character encoding from the menu and try again."), NULL);
 		convert_error = TRUE;
