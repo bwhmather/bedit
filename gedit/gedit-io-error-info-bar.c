@@ -178,7 +178,7 @@ parse_gio_error (gint          code,
 	{
 		case G_IO_ERROR_NOT_FOUND:
 		case G_IO_ERROR_NOT_DIRECTORY:
-			*error_message = g_strdup_printf (_("Could not find the file %s."),
+			*error_message = g_strdup_printf (_("Could not find the file “%s”."),
 							  uri_for_display);
 			*message_details = g_strdup (_("Please check that you typed the "
 					      	       "location correctly and try again."));
@@ -196,10 +196,10 @@ parse_gio_error (gint          code,
 
 				if ((scheme_string != NULL) && g_utf8_validate (scheme_string, -1, NULL))
 				{
-					scheme_markup = g_markup_printf_escaped ("<i>%s:</i>", scheme_string);
+					scheme_markup = g_markup_escape_text (scheme_string, -1);
 
 					/* Translators: %s is a URI scheme (like for example http:, ftp:, etc.) */
-					*message_details = g_strdup_printf (_("Unable to handle %s locations."),
+					*message_details = g_strdup_printf (_("Unable to handle “%s:” locations."),
 									   scheme_markup);
 					g_free (scheme_markup);
 				}
@@ -218,14 +218,14 @@ parse_gio_error (gint          code,
 			break;
 
 		case G_IO_ERROR_IS_DIRECTORY:
-			*error_message = g_strdup_printf (_("%s is a directory."),
+			*error_message = g_strdup_printf (_("“%s” is a directory."),
 							 uri_for_display);
 			*message_details = g_strdup (_("Please check that you typed the "
 						      "location correctly and try again."));
 			break;
 
 		case G_IO_ERROR_INVALID_FILENAME:
-			*error_message = g_strdup_printf (_("%s is not a valid location."),
+			*error_message = g_strdup_printf (_("“%s” is not a valid location."),
 							 uri_for_display);
 			*message_details = g_strdup (_("Please check that you typed the "
 						      "location correctly and try again."));
@@ -256,12 +256,12 @@ parse_gio_error (gint          code,
 						host_name = gedit_utils_make_valid_utf8 (hn);
 						g_free (hn);
 
-						host_markup = g_markup_printf_escaped ("“%s”", host_name);
+						host_markup = g_markup_escape_text (host_name, -1);
 						g_free (host_name);
 
 						/* Translators: %s is a host name */
 						*message_details = g_strdup_printf (
-							_("Host %s could not be found. "
+							_("Host “%s” could not be found. "
 							"Please check that your proxy settings "
 							"are correct and try again."),
 							host_markup);
@@ -284,7 +284,7 @@ parse_gio_error (gint          code,
 			break;
 
 		case G_IO_ERROR_NOT_REGULAR_FILE:
-			*message_details = g_strdup_printf (_("%s is not a regular file."),
+			*message_details = g_strdup_printf (_("“%s” is not a regular file."),
 							   uri_for_display);
 			break;
 
@@ -384,7 +384,7 @@ gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
+	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
 	if (is_gio_error (error, G_IO_ERROR_NOT_FOUND))
@@ -399,7 +399,7 @@ gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 
 	if (error_message == NULL)
 	{
-		error_message = g_strdup_printf (_("Could not revert the file %s."),
+		error_message = g_strdup_printf (_("Could not revert the file “%s”."),
 						 uri_for_display);
 	}
 
@@ -564,7 +564,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
+	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
 	if (encoding != NULL)
@@ -593,7 +593,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 	else if (error->domain == GEDIT_DOCUMENT_ERROR &&
 	         error->code == GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK)
 	{
-		error_message = g_strdup_printf (_("There was a problem opening the file %s."),
+		error_message = g_strdup_printf (_("There was a problem opening the file “%s”."),
 						 uri_for_display);
 		message_details = g_strconcat (_("The file you opened has some invalid characters. "
 					       "If you continue editing this file you could corrupt this "
@@ -605,7 +605,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 	}
 	else if (is_gio_error (error, G_IO_ERROR_INVALID_DATA) && encoding != NULL)
 	{
-		error_message = g_strdup_printf (_("Could not open the file %s using the %s character encoding."),
+		error_message = g_strdup_printf (_("Could not open the file “%s” using the “%s” character encoding."),
 						 uri_for_display,
 						 encoding_name);
 		message_details = g_strconcat (_("Please check that you are not trying to open a binary file."), "\n",
@@ -619,7 +619,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 
 	if (error_message == NULL)
 	{
-		error_message = g_strdup_printf (_("Could not open the file %s."),
+		error_message = g_strdup_printf (_("Could not open the file “%s”."),
 						 uri_for_display);
 	}
 
@@ -673,12 +673,12 @@ gedit_conversion_error_while_saving_info_bar_new (GFile               *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
+	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
 	encoding_name = gedit_encoding_to_string (encoding);
 
-	error_message = g_strdup_printf (_("Could not save the file %s using the %s character encoding."),
+	error_message = g_strdup_printf (_("Could not save the file “%s” using the “%s” character encoding."),
 					 uri_for_display,
 					 encoding_name);
 	message_details = g_strconcat (_("The document contains one or more characters that cannot be encoded "
@@ -742,7 +742,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
+	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
@@ -764,7 +764,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
-	primary_text = g_strdup_printf (_("This file (%s) is already open in another gedit window."), uri_for_display);
+	primary_text = g_strdup_printf (_("This file “%s” is already open in another window."), uri_for_display);
 	g_free (uri_for_display);
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
@@ -828,7 +828,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
+	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
@@ -851,7 +851,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 	 * could be interpreted as the changes he made in the document. beside "reading" is
 	 * not accurate (since last load/save)
 	 */
-	primary_text = g_strdup_printf (_("The file %s has been modified since reading it."),
+	primary_text = g_strdup_printf (_("The file “%s” has been modified since reading it."),
 					uri_for_display);
 	g_free (uri_for_display);
 
@@ -920,7 +920,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
+	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
@@ -948,12 +948,12 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 	/* FIXME: review this messages */
 	if (create_backup_copy)
 	{
-		primary_text = g_strdup_printf (_("Could not create a backup file while saving %s"),
+		primary_text = g_strdup_printf (_("Could not create a backup file while saving “%s”"),
 						uri_for_display);
 	}
 	else
 	{
-		primary_text = g_strdup_printf (_("Could not create a temporary backup file while saving %s"),
+		primary_text = g_strdup_printf (_("Could not create a temporary backup file while saving “%s”"),
 						uri_for_display);
 	}
 
@@ -1018,7 +1018,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
+	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
 	if (is_gio_error (error, G_IO_ERROR_NOT_SUPPORTED))
@@ -1027,10 +1027,10 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 
 		if ((scheme_string != NULL) && g_utf8_validate (scheme_string, -1, NULL))
 		{
-			scheme_markup = g_markup_printf_escaped ("<i>%s:</i>", scheme_string);
+			scheme_markup = g_markup_escape_text (scheme_string, -1);
 
 			/* Translators: %s is a URI scheme (like for example http:, ftp:, etc.) */
-			message_details = g_strdup_printf (_("Cannot handle %s locations in write mode. "
+			message_details = g_strdup_printf (_("Cannot handle “%s:” locations in write mode. "
 							     "Please check that you typed the "
 							     "location correctly and try again."),
 							   scheme_markup);
@@ -1047,7 +1047,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 	}
 	else if (is_gio_error (error, G_IO_ERROR_INVALID_FILENAME))
 	{
-		message_details = g_strdup_printf (_("%s is not a valid location. "
+		message_details = g_strdup_printf (_("“%s” is not a valid location. "
 						     "Please check that you typed the "
 						     "location correctly and try again."),
 						   uri_for_display);
@@ -1099,7 +1099,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 
 	if (error_message == NULL)
 	{
-		error_message = g_strdup_printf (_("Could not save the file %s."),
+		error_message = g_strdup_printf (_("Could not save the file “%s”."),
 						 uri_for_display);
 	}
 
@@ -1136,14 +1136,14 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
+	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
 	/* FIXME: review this message, it's not clear since for the user the "modification"
 	 * could be interpreted as the changes he made in the document. beside "reading" is
 	 * not accurate (since last load/save)
 	 */
-	primary_text = g_strdup_printf (_("The file %s changed on disk."),
+	primary_text = g_strdup_printf (_("The file “%s” changed on disk."),
 					uri_for_display);
 	g_free (uri_for_display);
 
@@ -1211,7 +1211,7 @@ gedit_invalid_character_info_bar_new (GFile *location)
 								MAX_URI_IN_DIALOG_LENGTH);
 	g_free (full_formatted_uri);
 
-	uri_for_display = g_markup_printf_escaped ("“%s”", temp_uri_for_display);
+	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
 	info_bar = gtk_info_bar_new ();
@@ -1230,7 +1230,7 @@ gedit_invalid_character_info_bar_new (GFile *location)
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
-	primary_text = g_strdup_printf (_("Some invalid chars have been detected while saving %s"),
+	primary_text = g_strdup_printf (_("Some invalid chars have been detected while saving “%s”"),
 					uri_for_display);
 
 	g_free (uri_for_display);
