@@ -94,13 +94,11 @@ set_contents (GtkWidget *area,
 }
 
 static void
-set_info_bar_text_and_icon (GtkWidget   *info_bar,
-			    const gchar *icon_name,
-			    const gchar *primary_text,
-			    const gchar *secondary_text)
+set_info_bar_text (GtkWidget   *info_bar,
+		   const gchar *primary_text,
+		   const gchar *secondary_text)
 {
 	GtkWidget *hbox_content;
-	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -108,10 +106,6 @@ set_info_bar_text_and_icon (GtkWidget   *info_bar,
 	GtkWidget *secondary_label;
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-
-	image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
@@ -157,10 +151,9 @@ create_io_loading_error_info_bar (const gchar *primary_text,
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_ERROR);
 
-	set_info_bar_text_and_icon (info_bar,
-				    "dialog-error",
-				    primary_text,
-				    secondary_text);
+	set_info_bar_text (info_bar,
+			   primary_text,
+			   secondary_text);
 
 	if (recoverable_error)
 	{
@@ -469,7 +462,6 @@ create_conversion_error_info_bar (const gchar *primary_text,
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
-	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -503,11 +495,6 @@ create_conversion_error_info_bar (const gchar *primary_text,
 				 GTK_RESPONSE_CANCEL);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-
-	image = gtk_image_new_from_icon_name ("dialog-error",
-	                                      GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
@@ -735,7 +722,6 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
-	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -777,11 +763,6 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 				       GTK_MESSAGE_WARNING);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-
-	image = gtk_image_new_from_icon_name ("dialog-warning",
-	                                      GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_halign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
@@ -825,7 +806,6 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
-	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -867,11 +847,6 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 				       GTK_MESSAGE_WARNING);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-
-	image = gtk_image_new_from_icon_name ("dialog-warning",
-	                                      GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
@@ -919,7 +894,6 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
-	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -965,11 +939,6 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 				       GTK_MESSAGE_WARNING);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-
-	image = gtk_image_new_from_icon_name ("dialog-warning",
-	                                      GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
@@ -1199,10 +1168,9 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
 
-	set_info_bar_text_and_icon (info_bar,
-					"gtk-dialog-warning",
-					primary_text,
-					secondary_text);
+	set_info_bar_text (info_bar,
+			   primary_text,
+			   secondary_text);
 
 	g_free (primary_text);
 
@@ -1214,7 +1182,6 @@ gedit_invalid_character_info_bar_new (GFile *location)
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
-	GtkWidget *image;
 	GtkWidget *vbox;
 	GtkWidget *primary_label;
 	GtkWidget *secondary_label;
@@ -1253,11 +1220,6 @@ gedit_invalid_character_info_bar_new (GFile *location)
 				       GTK_MESSAGE_WARNING);
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-
-	image = gtk_image_new_from_icon_name ("dialog-warning",
-	                                      GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
