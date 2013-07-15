@@ -199,13 +199,13 @@ parse_gio_error (gint          code,
 					scheme_markup = g_markup_printf_escaped ("<i>%s:</i>", scheme_string);
 
 					/* Translators: %s is a URI scheme (like for example http:, ftp:, etc.) */
-					*message_details = g_strdup_printf (_("gedit cannot handle %s locations."),
+					*message_details = g_strdup_printf (_("Unable to handle %s locations."),
 									   scheme_markup);
 					g_free (scheme_markup);
 				}
 				else
 				{
-					*message_details = g_strdup (_("gedit cannot handle this location."));
+					*message_details = g_strdup (_("Unable to handle this location."));
 				}
 
 				g_free (scheme_string);
@@ -218,8 +218,8 @@ parse_gio_error (gint          code,
 
 		case G_IO_ERROR_NOT_MOUNTED:
 			*message_details = g_strdup( _("The location of the file cannot be accessed because it is not mounted."));
-
 			break;
+
 		case G_IO_ERROR_IS_DIRECTORY:
 			*error_message = g_strdup_printf (_("%s is a directory."),
 							 uri_for_display);
@@ -392,7 +392,7 @@ gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 
 	if (is_gio_error (error, G_IO_ERROR_NOT_FOUND))
 	{
-		message_details = g_strdup (_("gedit cannot find the file. "
+		message_details = g_strdup (_("Cannot find the requested file. "
 					      "Perhaps it has recently been deleted."));
 	}
 	else
@@ -587,7 +587,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 	         (error->domain == GEDIT_DOCUMENT_ERROR &&
 	         error->code == GEDIT_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED))
 	{
-		message_details = g_strconcat (_("gedit has not been able to detect "
+		message_details = g_strconcat (_("Unable to able to detect "
 					         "the character encoding."), "\n",
 					       _("Please check that you are not trying to open a binary file."), "\n",
 					       _("Select a character encoding from the menu and try again."), NULL);
@@ -781,8 +781,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 	gtk_widget_set_can_focus (primary_label, TRUE);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
-	secondary_text = _("gedit opened this instance of the file in a non-editable way. "
-			   "Do you want to edit it anyway?");
+	secondary_text = _("Do you want to edit it anyway?");
 	secondary_markup = g_strdup_printf ("<small>%s</small>",
 					    secondary_text);
 	secondary_label = gtk_label_new (secondary_markup);
@@ -974,7 +973,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 	gtk_widget_set_can_focus (primary_label, TRUE);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 
-	secondary_text = _("gedit could not back up the old copy of the file before saving the new one. "
+	secondary_text = _("Could not back up the old copy of the file before saving the new one. "
 			   "You can ignore this warning and save the file anyway, but if an error "
 			   "occurs while saving, you could lose the old copy of the file. Save anyway?");
 	secondary_markup = g_strdup_printf ("<small>%s</small>",
@@ -1034,7 +1033,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 			scheme_markup = g_markup_printf_escaped ("<i>%s:</i>", scheme_string);
 
 			/* Translators: %s is a URI scheme (like for example http:, ftp:, etc.) */
-			message_details = g_strdup_printf (_("gedit cannot handle %s locations in write mode. "
+			message_details = g_strdup_printf (_("Cannot handle %s locations in write mode. "
 							     "Please check that you typed the "
 							     "location correctly and try again."),
 							   scheme_markup);
@@ -1042,7 +1041,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 		}
 		else
 		{
-			message_details = g_strdup (_("gedit cannot handle this location in write mode. "
+			message_details = g_strdup (_("Cannot handle this location in write mode. "
 						      "Please check that you typed the "
 						      "location correctly and try again."));
 		}
