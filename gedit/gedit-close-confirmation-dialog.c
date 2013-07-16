@@ -460,9 +460,10 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	add_buttons (dlg);
 
 	/* Image */
-	image = gtk_image_new_from_icon_name ("dialog-warning",
+	image = gtk_image_new_from_icon_name ("dialog-warning-symbolic",
 					      GTK_ICON_SIZE_DIALOG);
 	gtk_widget_set_halign (image, GTK_ALIGN_START);
+	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	/* Primary label */
 	primary_label = gtk_label_new (NULL);
@@ -476,13 +477,13 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 
 	if (dlg->priv->disable_save_to_disk)
 	{
-		str = g_markup_printf_escaped (_("Changes to document \"%s\" will be permanently lost."),
-					       doc_name);
+		str = g_markup_printf_escaped (_("Changes to document “%s” will be permanently lost."),
+		                               doc_name);
 	}
 	else
 	{
-		str = g_markup_printf_escaped (_("Save changes to document \"%s\" before closing?"),
-					       doc_name);
+		str = g_markup_printf_escaped (_("Save changes to document “%s” before closing?"),
+		                               doc_name);
 	}
 
 	g_free (doc_name);
@@ -495,9 +496,14 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 
 	/* Secondary label */
 	if (dlg->priv->disable_save_to_disk)
+	{
 		str = g_strdup (_("Saving has been disabled by the system administrator."));
+	}
 	else
+	{
 		str = get_text_secondary_label (doc);
+	}
+
 	secondary_label = gtk_label_new (str);
 	g_free (str);
 	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
@@ -515,10 +521,7 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_box_pack_start (GTK_BOX (vbox), primary_label, FALSE, FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (vbox), secondary_label, FALSE, FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
-			    hbox,
-	                    FALSE,
-			    FALSE,
-			    0);
+	                    hbox, FALSE, FALSE, 0);
 
 	gtk_widget_show_all (hbox);
 }
@@ -643,9 +646,10 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 			    hbox, TRUE, TRUE, 0);
 
 	/* Image */
-	image = gtk_image_new_from_icon_name ("dialog-warning",
+	image = gtk_image_new_from_icon_name ("dialog-warning-symbolic",
 					      GTK_ICON_SIZE_DIALOG);
 	gtk_widget_set_halign (image, GTK_ALIGN_START);
+	gtk_widget_set_valign (image, GTK_ALIGN_START);
 	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
@@ -688,9 +692,13 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_box_pack_start (GTK_BOX (vbox), vbox2, FALSE, FALSE, 0);
 
 	if (priv->disable_save_to_disk)
+	{
 		select_label = gtk_label_new_with_mnemonic (_("Docum_ents with unsaved changes:"));
+	}
 	else
+	{
 		select_label = gtk_label_new_with_mnemonic (_("S_elect the documents you want to save:"));
+	}
 
 	gtk_box_pack_start (GTK_BOX (vbox2), select_label, FALSE, FALSE, 0);
 	gtk_label_set_line_wrap (GTK_LABEL (select_label), TRUE);
