@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-15 10:17+0200\n"
-"PO-Revision-Date: 2013-07-15 10:17+0200\n"
+"POT-Creation-Date: 2013-07-17 08:58+0200\n"
+"PO-Revision-Date: 2013-07-17 08:58+0200\n"
 "Last-Translator: Milo Casagrande <milo@ubuntu.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -1151,60 +1151,64 @@ msgstr "Modalità evidenziazione"
 msgid "Search highlight mode..."
 msgstr "Modalità ricerca evidenziazione..."
 
-#: ../gedit/gedit-io-error-info-bar.c:182
-#: ../gedit/gedit-io-error-info-bar.c:497
+#. Add a cancel button
+#: ../gedit/gedit-io-error-info-bar.c:148
+#: ../gedit/gedit-io-error-info-bar.c:491
+#: ../gedit/gedit-io-error-info-bar.c:1171
+#: ../plugins/filebrowser/gedit-file-browser-utils.c:173
+msgid "_Cancel"
+msgstr "A_nnulla"
+
+#: ../gedit/gedit-io-error-info-bar.c:161
+#: ../gedit/gedit-io-error-info-bar.c:471
 msgid "_Retry"
 msgstr "_Riprova"
 
-#: ../gedit/gedit-io-error-info-bar.c:203
+#: ../gedit/gedit-io-error-info-bar.c:181
 #, c-format
-msgid "Could not find the file %s."
+msgid "Could not find the file “%s”."
 msgstr "Impossibile trovare il file «%s»."
 
-#: ../gedit/gedit-io-error-info-bar.c:205
-#: ../gedit/gedit-io-error-info-bar.c:248
-#: ../gedit/gedit-io-error-info-bar.c:255
+#: ../gedit/gedit-io-error-info-bar.c:183
+#: ../gedit/gedit-io-error-info-bar.c:223
+#: ../gedit/gedit-io-error-info-bar.c:230
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Controllare di aver digitato correttamente la posizione e riprovare."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:224
+#: ../gedit/gedit-io-error-info-bar.c:202
 #, c-format
-msgid "gedit cannot handle %s locations."
-msgstr "Il programma non è in grado di gestire posizioni %s."
+msgid "Unable to handle “%s:” locations."
+msgstr "Impossibile gestire posizioni «%s:»."
 
-#: ../gedit/gedit-io-error-info-bar.c:230
-msgid "gedit cannot handle this location."
-msgstr "Il programma non è in grado di gestire questa posizione."
+#: ../gedit/gedit-io-error-info-bar.c:208
+msgid "Unable to handle this location."
+msgstr "Impossibile gestire questa posizione."
 
-#: ../gedit/gedit-io-error-info-bar.c:238
-msgid "The location of the file cannot be mounted."
-msgstr "Non è possibile montare la posizione del file."
+#: ../gedit/gedit-io-error-info-bar.c:217
+msgid "The location of the file cannot be accessed."
+msgstr "Impossibile accedere alla posizione del file."
 
-#: ../gedit/gedit-io-error-info-bar.c:242
-msgid "The location of the file cannot be accessed because it is not mounted."
-msgstr "Non è possibile accedere alla posizione del file poiché non è montata."
-
-#: ../gedit/gedit-io-error-info-bar.c:246
+#: ../gedit/gedit-io-error-info-bar.c:221
 #, c-format
-msgid "%s is a directory."
+msgid "“%s” is a directory."
 msgstr "«%s» è una directory."
 
-#: ../gedit/gedit-io-error-info-bar.c:253
+#: ../gedit/gedit-io-error-info-bar.c:228
 #, c-format
-msgid "%s is not a valid location."
+msgid "“%s” is not a valid location."
 msgstr "«%s» non è una posizione valida."
 
-#: ../gedit/gedit-io-error-info-bar.c:289
+#: ../gedit/gedit-io-error-info-bar.c:264
 #, c-format
 msgid ""
-"Host %s could not be found. Please check that your proxy settings are "
+"Host “%s” could not be found. Please check that your proxy settings are "
 "correct and try again."
 msgstr ""
 "Non è stato trovato alcun host «%s». Controllare che le impostazioni del "
 "proxy siano corrette e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:304
+#: ../gedit/gedit-io-error-info-bar.c:279
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1213,45 +1217,46 @@ msgstr ""
 "Il nome dell'host non è valido. Controllare di aver digitato correttamente "
 "la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:312
+#: ../gedit/gedit-io-error-info-bar.c:287
 #, c-format
-msgid "%s is not a regular file."
-msgstr "%s non è un file normale."
+msgid "“%s” is not a regular file."
+msgstr "«%s» non è un file regolare."
 
-#: ../gedit/gedit-io-error-info-bar.c:317
+#: ../gedit/gedit-io-error-info-bar.c:292
 msgid "Connection timed out. Please try again."
 msgstr "Connessione scaduta. Riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:340
+#: ../gedit/gedit-io-error-info-bar.c:315
 msgid "The file is too big."
 msgstr "Il file è troppo grande."
 
-#: ../gedit/gedit-io-error-info-bar.c:381
+#: ../gedit/gedit-io-error-info-bar.c:356
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Errore inatteso: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:417
-msgid "gedit cannot find the file. Perhaps it has recently been deleted."
-msgstr "Impossibile trovare il file. Forse è stato eliminato di recente."
+#: ../gedit/gedit-io-error-info-bar.c:392
+msgid "Cannot find the requested file. Perhaps it has recently been deleted."
+msgstr ""
+"Impossibile trovare il file richiesto: forse è stato eliminato di recente."
 
-#: ../gedit/gedit-io-error-info-bar.c:427
+#: ../gedit/gedit-io-error-info-bar.c:402
 #, c-format
-msgid "Could not revert the file %s."
+msgid "Could not revert the file “%s”."
 msgstr "Impossibile ripristinare il file «%s»."
 
-#: ../gedit/gedit-io-error-info-bar.c:454
+#: ../gedit/gedit-io-error-info-bar.c:429
 msgid "Ch_aracter Encoding:"
 msgstr "Codifica _caratteri:"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:506
-#: ../gedit/gedit-io-error-info-bar.c:785
+#: ../gedit/gedit-io-error-info-bar.c:479
+#: ../gedit/gedit-io-error-info-bar.c:751
 msgid "Edit Any_way"
 msgstr "_Modifica lo stesso"
 
-#: ../gedit/gedit-io-error-info-bar.c:609
+#: ../gedit/gedit-io-error-info-bar.c:577
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1259,30 +1264,29 @@ msgstr ""
 "Il numero di collegamenti da seguire è limitato e non è possibile trovare il "
 "file con questo limite."
 
-#: ../gedit/gedit-io-error-info-bar.c:613
+#: ../gedit/gedit-io-error-info-bar.c:581
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Permessi non sufficienti per aprire il file."
 
-#: ../gedit/gedit-io-error-info-bar.c:619
-msgid "gedit has not been able to detect the character encoding."
-msgstr ""
-"Il programma non è stato in grado di determinare la codifica dei caratteri."
+#: ../gedit/gedit-io-error-info-bar.c:587
+msgid "Unable to detect the character encoding."
+msgstr "Impossibile determinare la codifica dei caratteri."
 
-#: ../gedit/gedit-io-error-info-bar.c:621
-#: ../gedit/gedit-io-error-info-bar.c:643
+#: ../gedit/gedit-io-error-info-bar.c:588
+#: ../gedit/gedit-io-error-info-bar.c:610
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Assicurarsi che il file non sia un file binario."
 
-#: ../gedit/gedit-io-error-info-bar.c:622
+#: ../gedit/gedit-io-error-info-bar.c:589
 msgid "Select a character encoding from the menu and try again."
 msgstr "Selezionare una codifica dei caratteri dal menù e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:628
+#: ../gedit/gedit-io-error-info-bar.c:595
 #, c-format
-msgid "There was a problem opening the file %s."
-msgstr "Si è verificato un problema nell'aprire il file %s."
+msgid "There was a problem opening the file “%s”."
+msgstr "Si è verificato un problema nell'aprire il file «%s»."
 
-#: ../gedit/gedit-io-error-info-bar.c:630
+#: ../gedit/gedit-io-error-info-bar.c:597
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1290,33 +1294,33 @@ msgstr ""
 "Il file aperto contiene alcuni caratteri non validi. Continuando a "
 "modificare il file, il documento potrebbe diventare inutilizzabile."
 
-#: ../gedit/gedit-io-error-info-bar.c:633
+#: ../gedit/gedit-io-error-info-bar.c:600
 msgid "You can also choose another character encoding and try again."
 msgstr ""
 "È possibile scegliere un'altra codifica dei caratteri e provare nuovamente."
 
-#: ../gedit/gedit-io-error-info-bar.c:640
+#: ../gedit/gedit-io-error-info-bar.c:607
 #, c-format
-msgid "Could not open the file %s using the %s character encoding."
+msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "Impossibile aprire il file «%s» usando la codifica dei caratteri «%s»."
 
-#: ../gedit/gedit-io-error-info-bar.c:644
-#: ../gedit/gedit-io-error-info-bar.c:718
+#: ../gedit/gedit-io-error-info-bar.c:611
+#: ../gedit/gedit-io-error-info-bar.c:685
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Selezionare una diversa codifica dei caratteri dal menù e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:654
+#: ../gedit/gedit-io-error-info-bar.c:621
 #, c-format
-msgid "Could not open the file %s."
+msgid "Could not open the file “%s”."
 msgstr "Impossibile aprire il file «%s»."
 
-#: ../gedit/gedit-io-error-info-bar.c:713
+#: ../gedit/gedit-io-error-info-bar.c:680
 #, c-format
-msgid "Could not save the file %s using the %s character encoding."
+msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr ""
 "Impossibile salvare il file «%s» usando la codifica dei caratteri «%s»."
 
-#: ../gedit/gedit-io-error-info-bar.c:716
+#: ../gedit/gedit-io-error-info-bar.c:683
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1326,39 +1330,28 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:790
+#: ../gedit/gedit-io-error-info-bar.c:756
 msgid "D_on't Edit"
 msgstr "Non mo_dificare"
 
-#: ../gedit/gedit-io-error-info-bar.c:805
+#: ../gedit/gedit-io-error-info-bar.c:766
 #, c-format
-msgid "This file (%s) is already open in another gedit window."
-msgstr "Questo file (%s) è già aperto in un'altra finestra del programma."
+msgid "This file “%s” is already open in another window."
+msgstr "Il file «%s» è già aperto in un'altra finestra."
 
-#: ../gedit/gedit-io-error-info-bar.c:819
-msgid ""
-"gedit opened this instance of the file in a non-editable way. Do you want to "
-"edit it anyway?"
-msgstr ""
-"Il programma ha aperto il file in modalità sola lettura. Modificarlo lo "
-"stesso?"
+#: ../gedit/gedit-io-error-info-bar.c:780
+msgid "Do you want to edit it anyway?"
+msgstr "Aprirlo comunque?"
 
-#: ../gedit/gedit-io-error-info-bar.c:877
-#: ../gedit/gedit-io-error-info-bar.c:976
-#: ../gedit/gedit-io-error-info-bar.c:1266
+#: ../gedit/gedit-io-error-info-bar.c:836
+#: ../gedit/gedit-io-error-info-bar.c:928
+#: ../gedit/gedit-io-error-info-bar.c:1219
 msgid "S_ave Anyway"
 msgstr "_Salva comunque"
 
-#: ../gedit/gedit-io-error-info-bar.c:878
-#: ../gedit/gedit-io-error-info-bar.c:977
-#: ../gedit/gedit-io-error-info-bar.c:1267
-#: ../gedit/gedit-notebook-popup-menu.c:182
-msgid "_Save"
-msgstr "_Salva"
-
-#: ../gedit/gedit-io-error-info-bar.c:881
-#: ../gedit/gedit-io-error-info-bar.c:980
-#: ../gedit/gedit-io-error-info-bar.c:1270
+#: ../gedit/gedit-io-error-info-bar.c:839
+#: ../gedit/gedit-io-error-info-bar.c:931
+#: ../gedit/gedit-io-error-info-bar.c:1222
 msgid "D_on't Save"
 msgstr "_Non salvare"
 
@@ -1366,33 +1359,33 @@ msgstr "_Non salvare"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:900
+#: ../gedit/gedit-io-error-info-bar.c:853
 #, c-format
-msgid "The file %s has been modified since reading it."
-msgstr "Il file %s è stato modificato dall'ultima lettura."
+msgid "The file “%s” has been modified since reading it."
+msgstr "Il file «%s» è stato modificato dall'ultima lettura."
 
-#: ../gedit/gedit-io-error-info-bar.c:915
+#: ../gedit/gedit-io-error-info-bar.c:868
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Salvare il file può comportare la perdita di tutti i cambiamenti esterni. "
 "Salvare lo stesso?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1004
+#: ../gedit/gedit-io-error-info-bar.c:950
 #, c-format
-msgid "Could not create a backup file while saving %s"
+msgid "Could not create a backup file while saving “%s”"
 msgstr "Impossibile creare un file di backup durante il salvataggio di «%s»"
 
-#: ../gedit/gedit-io-error-info-bar.c:1009
+#: ../gedit/gedit-io-error-info-bar.c:955
 #, c-format
-msgid "Could not create a temporary backup file while saving %s"
+msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
 "Impossibile creare un file di backup temporaneo durante il salvataggio di "
 "«%s»"
 
-#: ../gedit/gedit-io-error-info-bar.c:1026
+#: ../gedit/gedit-io-error-info-bar.c:972
 msgid ""
-"gedit could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs "
+"Could not back up the old copy of the file before saving the new one. You "
+"can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
 "Impossibile creare un backup della vecchia versione del file prima del "
@@ -1401,41 +1394,41 @@ msgstr ""
 "Salvare lo stesso?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1086
+#: ../gedit/gedit-io-error-info-bar.c:1032
 #, c-format
 msgid ""
-"gedit cannot handle %s locations in write mode. Please check that you typed "
-"the location correctly and try again."
+"Cannot handle “%s:” locations in write mode. Please check that you typed the "
+"location correctly and try again."
 msgstr ""
-"Impossibile gestire posizioni «%s» in modalità scrittura. Assicurarsi di "
+"Impossibile gestire posizioni «%s:» in modalità scrittura: assicurarsi di "
 "aver digitato correttamente la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1094
+#: ../gedit/gedit-io-error-info-bar.c:1040
 msgid ""
-"gedit cannot handle this location in write mode. Please check that you typed "
-"the location correctly and try again."
+"Cannot handle this location in write mode. Please check that you typed the "
+"location correctly and try again."
 msgstr ""
-"Impossibile gestire questo tipo di posizioni in modalità scrittura. "
-"Assicurarsi di aver digitato correttamente la posizione e riprovare."
+"Impossibile gestire questo tipo di posizioni in modalità scrittura: "
+"assicurarsi di aver digitato correttamente la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1103
+#: ../gedit/gedit-io-error-info-bar.c:1049
 #, c-format
 msgid ""
-"%s is not a valid location. Please check that you typed the location "
+"“%s” is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
-"«%s» non è una posizione valida. Assicurarsi di aver digitato correttamente "
+"«%s» non è una posizione valida: assicurarsi di aver digitato correttamente "
 "la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1110
+#: ../gedit/gedit-io-error-info-bar.c:1056
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
-"Permessi per salvare il file insufficienti. Assicurarsi di aver digitato "
+"Permessi per salvare il file insufficienti: assicurarsi di aver digitato "
 "correttamente la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1116
+#: ../gedit/gedit-io-error-info-bar.c:1062
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1443,7 +1436,7 @@ msgstr ""
 "Non c'è abbastanza spazio su disco per salvare il file. Liberare un po' di "
 "spazio e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1067
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1451,11 +1444,11 @@ msgstr ""
 "Si sta cercando di salvare un file su di un disco a sola lettura. "
 "Assicurarsi di aver digitato correttamente la posizione e riprovare."
 
-#: ../gedit/gedit-io-error-info-bar.c:1127
+#: ../gedit/gedit-io-error-info-bar.c:1073
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Un file con lo stesso nome esiste già. Usare un nome differente."
 
-#: ../gedit/gedit-io-error-info-bar.c:1132
+#: ../gedit/gedit-io-error-info-bar.c:1078
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1464,7 +1457,7 @@ msgstr ""
 "limitazione per quanto riguarda la lunghezza dei nomi dei file. Usare un "
 "nome più corto."
 
-#: ../gedit/gedit-io-error-info-bar.c:1139
+#: ../gedit/gedit-io-error-info-bar.c:1085
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1474,40 +1467,36 @@ msgstr ""
 "limitazione per quanto riguarda le dimensioni dei file. Salvare un file più "
 "piccolo, oppure salvare il file su un disco che non ha questa limitazione."
 
-#: ../gedit/gedit-io-error-info-bar.c:1155
+#: ../gedit/gedit-io-error-info-bar.c:1101
 #, c-format
-msgid "Could not save the file %s."
+msgid "Could not save the file “%s”."
 msgstr "Impossibile salvare il file «%s»."
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:1200
+#: ../gedit/gedit-io-error-info-bar.c:1145
 #, c-format
-msgid "The file %s changed on disk."
+msgid "The file “%s” changed on disk."
 msgstr "Il file «%s» è stato modificato."
 
-#: ../gedit/gedit-io-error-info-bar.c:1205
-msgid "Do you want to drop your changes and reload the file?"
-msgstr "Tralasciare i cambiamenti apportati e caricare nuovamente il file?"
+#: ../gedit/gedit-io-error-info-bar.c:1156
+msgid "Drop Changes and _Reload"
+msgstr "Sca_rta modifiche e ricarica"
 
-#: ../gedit/gedit-io-error-info-bar.c:1207
-msgid "Do you want to reload the file?"
-msgstr "Caricare nuovamente il file?"
-
-#: ../gedit/gedit-io-error-info-bar.c:1212
+#: ../gedit/gedit-io-error-info-bar.c:1166
 msgid "_Reload"
 msgstr "_Ricarica"
 
-#: ../gedit/gedit-io-error-info-bar.c:1285
+#: ../gedit/gedit-io-error-info-bar.c:1232
 #, c-format
-msgid "Some invalid chars have been detected while saving %s"
+msgid "Some invalid chars have been detected while saving “%s”"
 msgstr ""
 "Sono stati individuati alcuni caratteri non validi durante il salvataggio di "
-"%s"
+"«%s»"
 
-#: ../gedit/gedit-io-error-info-bar.c:1301
+#: ../gedit/gedit-io-error-info-bar.c:1248
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1539,6 +1528,10 @@ msgstr "_Esci"
 #: ../gedit/gedit-notebook-popup-menu.c:171 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "_Sposta in una nuova finestra"
+
+#: ../gedit/gedit-notebook-popup-menu.c:182
+msgid "_Save"
+msgstr "_Salva"
 
 #: ../gedit/gedit-notebook-popup-menu.c:189 ../gedit/gedit-ui.h:78
 msgid "Save _As..."
@@ -2983,11 +2976,6 @@ msgid ""
 msgstr ""
 "La nuova directory è stata esclusa dal filtro. Modificare le impostazioni "
 "del filtro per renderla visibile"
-
-#. Add a cancel button
-#: ../plugins/filebrowser/gedit-file-browser-utils.c:173
-msgid "_Cancel"
-msgstr "A_nnulla"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:788
 msgid "Bookmarks"
