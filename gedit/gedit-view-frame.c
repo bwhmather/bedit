@@ -823,95 +823,60 @@ search_entry_insert_text (GtkEditable    *editable,
                           gint           *position,
                           GeditViewFrame *frame)
 {
-	if (frame->priv->search_mode == GOTO_LINE)
+	gunichar c;
+	const gchar *p;
+	const gchar *end;
+	const gchar *next;
+
+	if (frame->priv->search_mode == SEARCH)
 	{
-		gunichar c;
-		const gchar *p;
-		const gchar *end;
-		const gchar *next;
+		return;
+	}
 
-		p = text;
-		end = text + length;
+	p = text;
+	end = text + length;
 
-		if (p == end)
+	if (p == end)
+	{
+		return;
+	}
+
+	c = g_utf8_get_char (p);
+
+	if (((c == '-' || c == '+') && *position == 0) ||
+	    (c == ':' && *position != 0))
+	{
+		gchar *s = NULL;
+
+		if (c == ':')
 		{
-			return;
+			s = gtk_editable_get_chars (editable, 0, -1);
+			s = g_utf8_strchr (s, -1, ':');
 		}
+
+		if (s == NULL || s == p)
+		{
+			next = g_utf8_next_char (p);
+			p = next;
+		}
+
+		g_free (s);
+	}
+
+	while (p != end)
+	{
+		next = g_utf8_next_char (p);
 
 		c = g_utf8_get_char (p);
 
-		if (((c == '-' || c == '+') && *position == 0) ||
-		    (c == ':' && *position != 0))
+		if (!g_unichar_isdigit (c))
 		{
-			gchar *s = NULL;
-
-			if (c == ':')
-			{
-				s = gtk_editable_get_chars (editable, 0, -1);
-				s = g_utf8_strchr (s, -1, ':');
-			}
-
-			if (s == NULL || s == p)
-			{
-				next = g_utf8_next_char (p);
-				p = next;
-			}
-
-			g_free (s);
+			g_signal_stop_emission_by_name (editable, "insert_text");
+			gtk_widget_error_bell (GTK_WIDGET (frame->priv->search_entry));
+			break;
 		}
 
-		while (p != end)
-		{
-			next = g_utf8_next_char (p);
-
-			c = g_utf8_get_char (p);
-
-			if (!g_unichar_isdigit (c))
-			{
-				g_signal_stop_emission_by_name (editable, "insert_text");
-				gtk_widget_error_bell (GTK_WIDGET (frame->priv->search_entry));
-				break;
-			}
-
-			p = next;
-		}
-	}
-	else
-	{
-		/* SEARCH mode */
-		static gboolean  insert_text = FALSE;
-		gchar           *escaped_text;
-		gint             new_len;
-
-		gedit_debug_message (DEBUG_SEARCH, "Text: %s", text);
-
-		/* To avoid recursive behavior */
-		if (insert_text)
-		{
-			return;
-		}
-
-		escaped_text = gtk_source_utils_escape_search_text (text);
-
-		gedit_debug_message (DEBUG_SEARCH, "Escaped Text: %s", escaped_text);
-
-		new_len = strlen (escaped_text);
-
-		if (new_len == length)
-		{
-			g_free (escaped_text);
-			return;
-		}
-
-		insert_text = TRUE;
-
-		g_signal_stop_emission_by_name (editable, "insert_text");
-
-		gtk_editable_insert_text (editable, escaped_text, new_len, position);
-
-		insert_text = FALSE;
-
-		g_free (escaped_text);
+		p = next;
 	}
 }
 
@@ -1249,19 +1214,27 @@ init_search_entry (GeditViewFrame *frame)
 
 		if (selection_exists && (search_text != NULL) && (selection_len <= 160))
 		{
-			gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry), search_text);
+			gchar *search_text_escaped = gtk_source_utils_escape_search_text (search_text);
+
+			gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry),
+					    search_text_escaped);
 
 			gtk_editable_set_position (GTK_EDITABLE (frame->priv->search_entry),
 			                           -1);
+
+			g_free (search_text_escaped);
 		}
 		else if (old_search_text != NULL)
 		{
+			gchar *old_search_text_escaped = gtk_source_utils_escape_search_text (old_search_text);
+
 			g_free (frame->priv->old_search_text);
-			frame->priv->old_search_text = g_strdup (old_search_text);
+			frame->priv->old_search_text = old_search_text_escaped;
 			g_signal_handler_block (frame->priv->search_entry,
 			                        frame->priv->search_entry_changed_id);
 
-			gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry), old_search_text);
+			gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry),
+					    old_search_text_escaped);
 
 			gtk_editable_select_region (GTK_EDITABLE (frame->priv->search_entry),
 			                            0, -1);
