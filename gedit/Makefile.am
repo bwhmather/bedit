@@ -5,7 +5,7 @@ noinst_LTLIBRARIES = libgedit.la
 
 pkglib_LTLIBRARIES = libgedit-private.la
 
-INCLUDES =								\
+AM_CPPFLAGS =								\
 	-I$(top_srcdir)							\
 	-I$(srcdir)							\
 	-I$(top_srcdir)/libgd						\
