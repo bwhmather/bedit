@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-07-15 20:07+0000\n"
+"POT-Creation-Date: 2013-07-19 16:15+0000\n"
 "PO-Revision-Date: 2013-07-16 10:58+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -680,22 +680,22 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za posledních %d hodin navždy "
 "ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:479
+#: ../gedit/gedit-close-confirmation-dialog.c:480
 #, c-format
-msgid "Changes to document \"%s\" will be permanently lost."
+msgid "Changes to document “%s” will be permanently lost."
 msgstr "Změny v dokumentu „%s“ budou navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:484
+#: ../gedit/gedit-close-confirmation-dialog.c:485
 #, c-format
-msgid "Save changes to document \"%s\" before closing?"
+msgid "Save changes to document “%s” before closing?"
 msgstr "Uložit před zavřením změny v dokumentu „%s“?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:498
-#: ../gedit/gedit-close-confirmation-dialog.c:713
+#: ../gedit/gedit-close-confirmation-dialog.c:500
+#: ../gedit/gedit-close-confirmation-dialog.c:721
 msgid "Saving has been disabled by the system administrator."
 msgstr "Ukládání bylo správcem systému zakázáno."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:664
+#: ../gedit/gedit-close-confirmation-dialog.c:668
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -703,7 +703,7 @@ msgstr[0] "Změny v %d dokumentu budou navždy ztraceny."
 msgstr[1] "Změny ve %d dokumentech budou navždy ztraceny."
 msgstr[2] "Změny v %d dokumentech budou navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:672
+#: ../gedit/gedit-close-confirmation-dialog.c:676
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -712,15 +712,15 @@ msgstr[0] "V %d dokumentu jsou neuložené změny. Uložit změny před zavřen�
 msgstr[1] "Ve %d dokumentech jsou neuložené změny. Uložit změny před zavřením?"
 msgstr[2] "V %d dokumentech jsou neuložené změny. Uložit změny před zavřením?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:691
+#: ../gedit/gedit-close-confirmation-dialog.c:696
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_enty s neuloženými změnami:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:693
+#: ../gedit/gedit-close-confirmation-dialog.c:700
 msgid "S_elect the documents you want to save:"
 msgstr "_Vyberte dokumenty, které chcete uložit:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:717
+#: ../gedit/gedit-close-confirmation-dialog.c:725
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Pokud je neuložíte, budou všechny vaše změny navždy ztraceny."
 
@@ -1377,9 +1377,9 @@ msgid ""
 "can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"Nezdařilo se zazálohovat starou kopii souboru před uložením nové. Můžete toto "
-"varování ignorovat a přesto soubor uložit, ale pokud při ukládání dojde k "
-"chybě, mohli byste ztratit starou kopii. Přesto uložit?"
+"Nezdařilo se zazálohovat starou kopii souboru před uložením nové. Můžete "
+"toto varování ignorovat a přesto soubor uložit, ale pokud při ukládání dojde "
+"k chybě, mohli byste ztratit starou kopii. Přesto uložit?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:1032
@@ -1388,16 +1388,16 @@ msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
-"Nelze obsloužit umístění „%s:“ v režimu zápisu. Zkontrolujte prosím, že "
-"jste zadali umístění správně, a zkuste to znovu."
+"Nelze obsloužit umístění „%s:“ v režimu zápisu. Zkontrolujte prosím, že jste "
+"zadali umístění správně, a zkuste to znovu."
 
 #: ../gedit/gedit-io-error-info-bar.c:1040
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
-"Nelze obsloužit umístění v režimu pro zápis. Zkontrolujte prosím, že "
-"jste umístění napsali správně, a zkuste to znovu."
+"Nelze obsloužit umístění v režimu pro zápis. Zkontrolujte prosím, že jste "
+"umístění napsali správně, a zkuste to znovu."
 
 #: ../gedit/gedit-io-error-info-bar.c:1049
 #, c-format
@@ -2283,26 +2283,35 @@ msgstr "Nelze najít objekt „%s“ uvnitř souboru %s."
 msgid "/ on %s"
 msgstr "/ na %s"
 
+#. Translators: the first %d is the position of the current search
+#. * occurrence, and the second %d is the total number of search
+#. * occurrences.
+#.
+#: ../gedit/gedit-view-frame.c:590
+#, c-format
+msgid "%d of %d"
+msgstr "%d z %d"
+
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:589
+#: ../gedit/gedit-view-frame.c:681
 msgid "_Wrap Around"
 msgstr "Přecházet přes _okraj"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:604
+#: ../gedit/gedit-view-frame.c:696
 msgid "Match _Entire Word Only"
 msgstr "Hledat pouze _celá slova"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:619
+#: ../gedit/gedit-view-frame.c:711
 msgid "_Match Case"
 msgstr "_Rozlišovat velikost písmen"
 
-#: ../gedit/gedit-view-frame.c:836
+#: ../gedit/gedit-view-frame.c:893
 msgid "String you want to search for"
 msgstr "Řetězec, který chcete hledat"
 
-#: ../gedit/gedit-view-frame.c:846
+#: ../gedit/gedit-view-frame.c:903
 msgid "Line you want to move the cursor to"
 msgstr "Řádek, na který chcete přesunout kurzor"
 
