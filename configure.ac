@@ -380,18 +380,14 @@ AC_DEFINE(GDK_VERSION_MIN_REQUIRED, GDK_VERSION_3_8, [minimum gdk version])
 
 GNOME_COMPILE_WARNINGS([maximum])
 
-if test "$USE_MAINTAINER_MODE" = "yes"; then
-	enable_deprecations=yes
-else
-	enable_deprecations=no
-fi
-
 AC_ARG_ENABLE(deprecations,
               [AS_HELP_STRING([--enable-deprecations],
                               [warn about deprecated usages [default=no]])],
               [enable_deprecations=$enableval], [])
 
+AC_MSG_CHECKING([whether to forbid deprecated symbols])
 if test "$enable_deprecations" = "yes"; then
+	AC_MSG_RESULT(yes)
 	DISABLE_DEPRECATED_CFLAGS="\
 -DGSEAL_ENABLE \
 -DG_DISABLE_DEPRECATED \
@@ -402,6 +398,8 @@ if test "$enable_deprecations" = "yes"; then
 -DPEAS_DISABLE_DEPRECATED"
 
 	AC_SUBST(DISABLE_DEPRECATED_CFLAGS)
+else
+	AC_MSG_RESULT(no)
 fi
 
 # on win32 plugins must be able to resolve all symbols at link time
