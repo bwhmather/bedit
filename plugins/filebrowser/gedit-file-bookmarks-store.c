@@ -212,7 +212,7 @@ init_special_directories (GeditFileBookmarksStore *model)
 	if (path != NULL)
 	{
 		file = g_file_new_for_path (path);
-		add_file (model, file, NULL, GEDIT_FILE_BOOKMARKS_STORE_IS_HOME |
+		add_file (model, file, _("Home"), GEDIT_FILE_BOOKMARKS_STORE_IS_HOME |
 			 GEDIT_FILE_BOOKMARKS_STORE_IS_SPECIAL_DIR, NULL);
 		g_object_unref (file);
 	}
