@@ -556,15 +556,15 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/plugins/file-browser/ui/gedit-file-browser-widget.ui");
-	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, previous_button);
-	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, next_button);
-	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, combo);
-	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, combo_model);
-	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, location_entry);
-	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, treeview);
-	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, filter_entry);
-	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, location_previous_menu);
-	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidgetPrivate, location_next_menu);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidget, previous_button);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidget, next_button);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidget, combo);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidget, combo_model);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidget, location_entry);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidget, treeview);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidget, filter_entry);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidget, location_previous_menu);
+	gtk_widget_class_bind_child (widget_class, GeditFileBrowserWidget, location_next_menu);
 
 	g_type_class_add_private (object_class,
 				  sizeof (GeditFileBrowserWidgetPrivate));

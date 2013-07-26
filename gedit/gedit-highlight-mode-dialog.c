@@ -112,11 +112,11 @@ gedit_highlight_mode_dialog_class_init (GeditHighlightModeDialogClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-highlight-mode-dialog.ui");
-	gtk_widget_class_bind_child (widget_class, GeditHighlightModeDialogPrivate, treeview);
-	gtk_widget_class_bind_child (widget_class, GeditHighlightModeDialogPrivate, entry);
-	gtk_widget_class_bind_child (widget_class, GeditHighlightModeDialogPrivate, liststore);
-	gtk_widget_class_bind_child (widget_class, GeditHighlightModeDialogPrivate, treemodelfilter);
-	gtk_widget_class_bind_child (widget_class, GeditHighlightModeDialogPrivate, treeview_selection);
+	gtk_widget_class_bind_child (widget_class, GeditHighlightModeDialog, treeview);
+	gtk_widget_class_bind_child (widget_class, GeditHighlightModeDialog, entry);
+	gtk_widget_class_bind_child (widget_class, GeditHighlightModeDialog, liststore);
+	gtk_widget_class_bind_child (widget_class, GeditHighlightModeDialog, treemodelfilter);
+	gtk_widget_class_bind_child (widget_class, GeditHighlightModeDialog, treeview_selection);
 
 	g_type_class_add_private (object_class, sizeof (GeditHighlightModeDialogPrivate));
 }

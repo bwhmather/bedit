@@ -152,17 +152,17 @@ gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-print-preview.ui");
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, prev);
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, next);
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, multi);
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, page_entry);
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, last);
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, zoom_one);
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, zoom_fit);
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, zoom_in);
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, zoom_out);
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, close);
-	gtk_widget_class_bind_child (widget_class, GeditPrintPreviewPrivate, layout);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, prev);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, next);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, multi);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, page_entry);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, last);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, zoom_one);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, zoom_fit);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, zoom_in);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, zoom_out);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, close);
+	gtk_widget_class_bind_child (widget_class, GeditPrintPreview, layout);
 
 	g_type_class_add_private (object_class, sizeof (GeditPrintPreviewPrivate));
 }

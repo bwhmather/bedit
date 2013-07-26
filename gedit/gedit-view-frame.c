@@ -1347,11 +1347,11 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-view-frame.ui");
-	gtk_widget_class_bind_child (widget_class, GeditViewFramePrivate, view);
-	gtk_widget_class_bind_child (widget_class, GeditViewFramePrivate, slider);
-	gtk_widget_class_bind_child (widget_class, GeditViewFramePrivate, search_entry);
-	gtk_widget_class_bind_child (widget_class, GeditViewFramePrivate, go_up_button);
-	gtk_widget_class_bind_child (widget_class, GeditViewFramePrivate, go_down_button);
+	gtk_widget_class_bind_child (widget_class, GeditViewFrame, view);
+	gtk_widget_class_bind_child (widget_class, GeditViewFrame, slider);
+	gtk_widget_class_bind_child (widget_class, GeditViewFrame, search_entry);
+	gtk_widget_class_bind_child (widget_class, GeditViewFrame, go_up_button);
+	gtk_widget_class_bind_child (widget_class, GeditViewFrame, go_down_button);
 
 	g_type_class_add_private (object_class, sizeof (GeditViewFramePrivate));
 }
