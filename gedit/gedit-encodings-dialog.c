@@ -133,14 +133,14 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-encodings-dialog.ui");
-	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialog, add_button);
-	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialog, remove_button);
-	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialog, available_treeview);
-	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialog, available_liststore);
-	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialog, sort_available);
-	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialog, displayed_treeview);
-	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialog, displayed_liststore);
-	gtk_widget_class_bind_child (widget_class, GeditEncodingsDialog, sort_displayed);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, add_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, remove_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, available_treeview);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, available_liststore);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, sort_available);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, displayed_treeview);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, displayed_liststore);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, sort_displayed);
 
 	g_type_class_add_private (object_class, sizeof (GeditEncodingsDialogPrivate));
 }

@@ -125,13 +125,13 @@ gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-replace-dialog.ui");
-	gtk_widget_class_bind_child (widget_class, GeditReplaceDialog, grid);
-	gtk_widget_class_bind_child (widget_class, GeditReplaceDialog, search_label);
-	gtk_widget_class_bind_child (widget_class, GeditReplaceDialog, replace_label);
-	gtk_widget_class_bind_child (widget_class, GeditReplaceDialog, match_case_checkbutton);
-	gtk_widget_class_bind_child (widget_class, GeditReplaceDialog, entire_word_checkbutton);
-	gtk_widget_class_bind_child (widget_class, GeditReplaceDialog, backwards_checkbutton);
-	gtk_widget_class_bind_child (widget_class, GeditReplaceDialog, wrap_around_checkbutton);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, grid);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, search_label);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, replace_label);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, match_case_checkbutton);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, entire_word_checkbutton);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, backwards_checkbutton);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, wrap_around_checkbutton);
 
 	g_type_class_add_private (object_class, sizeof (GeditReplaceDialogPrivate));
 }
