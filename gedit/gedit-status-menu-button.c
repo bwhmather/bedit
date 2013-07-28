@@ -43,12 +43,6 @@ G_DEFINE_TYPE_WITH_CODE (GeditStatusMenuButton, gedit_status_menu_button, GTK_TY
                          g_type_add_class_private (g_define_type_id, sizeof (GeditStatusMenuButtonClassPrivate)))
 
 static void
-gedit_status_menu_button_finalize (GObject *object)
-{
-	G_OBJECT_CLASS (gedit_status_menu_button_parent_class)->finalize (object);
-}
-
-static void
 gedit_status_menu_button_get_property (GObject    *object,
 				       guint       prop_id,
 				       GValue     *value,
@@ -101,7 +95,6 @@ gedit_status_menu_button_class_init (GeditStatusMenuButtonClass *klass)
 		  "padding: 1px 8px 2px 4px;\n"
 		"}";
 
-	object_class->finalize = gedit_status_menu_button_finalize;
 	object_class->get_property = gedit_status_menu_button_get_property;
 	object_class->set_property = gedit_status_menu_button_set_property;
 
