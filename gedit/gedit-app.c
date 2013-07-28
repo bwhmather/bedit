@@ -66,8 +66,6 @@
 #define GEDIT_PAGE_SETUP_FILE		"gedit-page-setup"
 #define GEDIT_PRINT_SETTINGS_FILE	"gedit-print-settings"
 
-#define GEDIT_APP_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_APP, GeditAppPrivate))
-
 /* Properties */
 enum
 {
@@ -187,7 +185,7 @@ static const GOptionEntry options[] =
 	{NULL}
 };
 
-G_DEFINE_ABSTRACT_TYPE(GeditApp, gedit_app, GTK_TYPE_APPLICATION)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GeditApp, gedit_app, GTK_TYPE_APPLICATION)
 
 static void
 gedit_app_dispose (GObject *object)
@@ -1175,8 +1173,6 @@ gedit_app_class_init (GeditAppClass *klass)
 							     0,
 							     G_PARAM_READABLE |
 							     G_PARAM_STATIC_STRINGS));
-
-	g_type_class_add_private (object_class, sizeof (GeditAppPrivate));
 }
 
 static void
@@ -1244,7 +1240,7 @@ load_print_settings (GeditApp *app)
 static void
 gedit_app_init (GeditApp *app)
 {
-	app->priv = GEDIT_APP_GET_PRIVATE (app);
+	app->priv = gedit_app_get_instance_private (app);
 }
 
 /* Generates a unique string for a window role */

@@ -38,10 +38,6 @@
 
 #include "gedit-statusbar.h"
 
-#define GEDIT_STATUSBAR_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object),\
-					    GEDIT_TYPE_STATUSBAR,\
-					    GeditStatusbarPrivate))
-
 struct _GeditStatusbarPrivate
 {
 	GtkWidget     *overwrite_mode_label;
@@ -61,7 +57,7 @@ struct _GeditStatusbarPrivate
 	guint          flash_message_id;
 };
 
-G_DEFINE_TYPE(GeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
 
 static gchar *
 get_overwrite_mode_string (gboolean overwrite)
@@ -96,8 +92,6 @@ gedit_statusbar_class_init (GeditStatusbarClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->dispose = gedit_statusbar_dispose;
-
-	g_type_class_add_private (object_class, sizeof (GeditStatusbarPrivate));
 }
 
 #define CURSOR_POSITION_LABEL_WIDTH_CHARS 18
@@ -108,7 +102,7 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 	GtkWidget *hbox;
 	GtkWidget *error_image;
 
-	statusbar->priv = GEDIT_STATUSBAR_GET_PRIVATE (statusbar);
+	statusbar->priv = gedit_statusbar_get_instance_private (statusbar);
 
 	statusbar->priv->overwrite_mode_label = gtk_label_new (NULL);
 	gtk_label_set_width_chars (GTK_LABEL (statusbar->priv->overwrite_mode_label),

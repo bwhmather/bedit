@@ -46,8 +46,6 @@
 
 #define GEDIT_SETTINGS_SYSTEM_FONT "monospace-font-name"
 
-#define GEDIT_SETTINGS_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_SETTINGS, GeditSettingsPrivate))
-
 struct _GeditSettingsPrivate
 {
 	GSettings *lockdown;
@@ -58,7 +56,7 @@ struct _GeditSettingsPrivate
 	gchar *old_scheme;
 };
 
-G_DEFINE_TYPE (GeditSettings, gedit_settings, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditSettings, gedit_settings, G_TYPE_OBJECT)
 
 static void
 gedit_settings_finalize (GObject *object)
@@ -345,7 +343,7 @@ on_syntax_highlighting_changed (GSettings     *settings,
 static void
 gedit_settings_init (GeditSettings *gs)
 {
-	gs->priv = GEDIT_SETTINGS_GET_PRIVATE (gs);
+	gs->priv = gedit_settings_get_instance_private (gs);
 
 	gs->priv->old_scheme = NULL;
 	gs->priv->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
@@ -400,8 +398,6 @@ gedit_settings_class_init (GeditSettingsClass *klass)
 
 	object_class->finalize = gedit_settings_finalize;
 	object_class->dispose = gedit_settings_dispose;
-
-	g_type_class_add_private (object_class, sizeof (GeditSettingsPrivate));
 }
 
 GObject *

@@ -46,8 +46,6 @@
 #include "gedit-settings.h"
 #include "gedit-view-frame.h"
 
-#define GEDIT_TAB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_TAB, GeditTabPrivate))
-
 #define GEDIT_TAB_KEY "GEDIT_TAB_KEY"
 
 struct _GeditTabPrivate
@@ -85,7 +83,7 @@ struct _GeditTabPrivate
 	gint                    ask_if_externally_modified : 1;
 };
 
-G_DEFINE_TYPE(GeditTab, gedit_tab, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditTab, gedit_tab, GTK_TYPE_BOX)
 
 enum
 {
@@ -364,8 +362,6 @@ gedit_tab_class_init (GeditTabClass *klass)
 			      G_TYPE_NONE,
 			      1,
 			      G_TYPE_STRV);
-
-	g_type_class_add_private (object_class, sizeof (GeditTabPrivate));
 }
 
 /**
@@ -1668,7 +1664,7 @@ gedit_tab_init (GeditTab *tab)
 	GeditDocument *doc;
 	GeditView *view;
 
-	tab->priv = GEDIT_TAB_GET_PRIVATE (tab);
+	tab->priv = gedit_tab_get_instance_private (tab);
 
 	tab->priv->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
 

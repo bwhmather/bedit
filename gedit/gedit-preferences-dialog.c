@@ -70,11 +70,6 @@ enum
 	NUM_COLUMNS
 };
 
-
-#define GEDIT_PREFERENCES_DIALOG_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-						     GEDIT_TYPE_PREFERENCES_DIALOG, \
-						     GeditPreferencesDialogPrivate))
-
 struct _GeditPreferencesDialogPrivate
 {
 	GSettings	*editor;
@@ -129,9 +124,7 @@ struct _GeditPreferencesDialogPrivate
 	GtkWidget	*plugin_manager_place_holder;
 };
 
-
-G_DEFINE_TYPE(GeditPreferencesDialog, gedit_preferences_dialog, GTK_TYPE_DIALOG)
-
+G_DEFINE_TYPE_WITH_PRIVATE (GeditPreferencesDialog, gedit_preferences_dialog, GTK_TYPE_DIALOG)
 
 static void
 gedit_preferences_dialog_dispose (GObject *object)
@@ -204,8 +197,6 @@ gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, uninstall_scheme_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, schemes_toolbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, plugin_manager_place_holder);
-
-	g_type_class_add_private (object_class, sizeof (GeditPreferencesDialogPrivate));
 }
 
 static void
@@ -1105,7 +1096,7 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 {
 	gedit_debug (DEBUG_PREFS);
 
-	dlg->priv = GEDIT_PREFERENCES_DIALOG_GET_PRIVATE (dlg);
+	dlg->priv = gedit_preferences_dialog_get_instance_private (dlg);
 	dlg->priv->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
 
 	gtk_widget_init_template (GTK_WIDGET (dlg));

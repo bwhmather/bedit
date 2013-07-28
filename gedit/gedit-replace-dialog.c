@@ -51,7 +51,7 @@ struct _GeditReplaceDialogPrivate
 	gboolean   ui_error;
 };
 
-G_DEFINE_TYPE(GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
 
 void
 gedit_replace_dialog_present_with_time (GeditReplaceDialog *dialog,
@@ -115,7 +115,6 @@ gedit_replace_dialog_response (GtkDialog *dialog,
 static void
 gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 {
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
@@ -132,8 +131,6 @@ gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, entire_word_checkbutton);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, backwards_checkbutton);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, wrap_around_checkbutton);
-
-	g_type_class_add_private (object_class, sizeof (GeditReplaceDialogPrivate));
 }
 
 static void
@@ -202,7 +199,7 @@ search_text_entry_changed (GtkEditable        *editable,
 static void
 gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 {
-	dlg->priv = G_TYPE_INSTANCE_GET_PRIVATE (dlg, GEDIT_TYPE_REPLACE_DIALOG, GeditReplaceDialogPrivate);
+	dlg->priv = gedit_replace_dialog_get_instance_private (dlg);
 
 	gtk_widget_init_template (GTK_WIDGET (dlg));
 

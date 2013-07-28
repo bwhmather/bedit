@@ -73,8 +73,6 @@ PROFILE (static GTimer *timer = NULL)
 #define GEDIT_MAX_PATH_LEN  2048
 #endif
 
-#define GEDIT_DOCUMENT_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_DOCUMENT, GeditDocumentPrivate))
-
 static void	gedit_document_load_real	(GeditDocument                *doc,
 						 GFile                        *location,
 						 const GeditEncoding          *encoding,
@@ -167,7 +165,7 @@ enum {
 
 static guint document_signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(GeditDocument, gedit_document, GTK_SOURCE_TYPE_BUFFER)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditDocument, gedit_document, GTK_SOURCE_TYPE_BUFFER)
 
 GQuark
 gedit_document_error_quark (void)
@@ -727,8 +725,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      2,
 			      GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
 			      GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE);
-
-	g_type_class_add_private (object_class, sizeof (GeditDocumentPrivate));
 }
 
 static void
@@ -969,7 +965,7 @@ gedit_document_init (GeditDocument *doc)
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	doc->priv = GEDIT_DOCUMENT_GET_PRIVATE (doc);
+	doc->priv = gedit_document_get_instance_private (doc);
 	priv = doc->priv;
 
 	priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");

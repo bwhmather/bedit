@@ -70,15 +70,11 @@ struct _GeditCloseConfirmationDialogPrivate
 	gboolean     disable_save_to_disk;
 };
 
-#define GEDIT_CLOSE_CONFIRMATION_DIALOG_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), \
-							GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG, \
-							GeditCloseConfirmationDialogPrivate))
-
 #define GET_MODE(priv) (((priv->unsaved_documents != NULL) && \
 			 (priv->unsaved_documents->next == NULL)) ? \
 			  SINGLE_DOC_MODE : MULTIPLE_DOCS_MODE)
 
-G_DEFINE_TYPE(GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GTK_TYPE_DIALOG)
 
 static void 	 set_unsaved_document 		(GeditCloseConfirmationDialog *dlg,
 						 const GList                  *list);
@@ -129,7 +125,7 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 	GeditLockdownMask lockdown;
 	AtkObject *atk_obj;
 
-	dlg->priv = GEDIT_CLOSE_CONFIRMATION_DIALOG_GET_PRIVATE (dlg);
+	dlg->priv = gedit_close_confirmation_dialog_get_instance_private (dlg);
 
 	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 
@@ -225,8 +221,6 @@ gedit_close_confirmation_dialog_class_init (GeditCloseConfirmationDialogClass *k
 	gobject_class->set_property = gedit_close_confirmation_dialog_set_property;
 	gobject_class->get_property = gedit_close_confirmation_dialog_get_property;
 	gobject_class->finalize = gedit_close_confirmation_dialog_finalize;
-
-	g_type_class_add_private (klass, sizeof (GeditCloseConfirmationDialogPrivate));
 
 	g_object_class_install_property (gobject_class,
 					 PROP_UNSAVED_DOCUMENTS,

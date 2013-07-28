@@ -34,9 +34,6 @@
  * there is no I/O involved and should be accessed only by the main
  * thread */
 
-
-G_DEFINE_TYPE (GeditDocumentInputStream, gedit_document_input_stream, G_TYPE_INPUT_STREAM);
-
 struct _GeditDocumentInputStreamPrivate
 {
 	GtkTextBuffer *buffer;
@@ -57,6 +54,8 @@ enum
 	PROP_NEWLINE_TYPE,
 	PROP_ENSURE_TRAILING_NEWLINE
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE (GeditDocumentInputStream, gedit_document_input_stream, G_TYPE_INPUT_STREAM);
 
 static gssize     gedit_document_input_stream_read     (GInputStream      *stream,
 							void              *buffer,
@@ -129,8 +128,6 @@ gedit_document_input_stream_class_init (GeditDocumentInputStreamClass *klass)
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 	GInputStreamClass *stream_class = G_INPUT_STREAM_CLASS (klass);
 
-	g_type_class_add_private (klass, sizeof (GeditDocumentInputStreamPrivate));
-
 	gobject_class->get_property = gedit_document_input_stream_get_property;
 	gobject_class->set_property = gedit_document_input_stream_set_property;
 
@@ -185,9 +182,7 @@ gedit_document_input_stream_class_init (GeditDocumentInputStreamClass *klass)
 static void
 gedit_document_input_stream_init (GeditDocumentInputStream *stream)
 {
-	stream->priv = G_TYPE_INSTANCE_GET_PRIVATE (stream,
-						    GEDIT_TYPE_DOCUMENT_INPUT_STREAM,
-						    GeditDocumentInputStreamPrivate);
+	stream->priv = gedit_document_input_stream_get_instance_private (stream);
 }
 
 static gsize

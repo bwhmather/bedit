@@ -82,7 +82,7 @@ struct _GeditPrintPreviewPrivate
 	guint cur_page;
 };
 
-G_DEFINE_TYPE (GeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
 
 static void
 gedit_print_preview_get_property (GObject    *object,
@@ -163,8 +163,6 @@ gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPrintPreview, zoom_out);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPrintPreview, close);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPrintPreview, layout);
-
-	g_type_class_add_private (object_class, sizeof (GeditPrintPreviewPrivate));
 }
 
 static void
@@ -790,10 +788,7 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 {
 	GeditPrintPreviewPrivate *priv;
 
-	priv = G_TYPE_INSTANCE_GET_PRIVATE (preview,
-					    GEDIT_TYPE_PRINT_PREVIEW,
-					    GeditPrintPreviewPrivate);
-
+	priv = gedit_print_preview_get_instance_private (preview);
 	preview->priv = priv;
 
 	priv->operation = NULL;

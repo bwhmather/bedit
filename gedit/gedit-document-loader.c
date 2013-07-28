@@ -89,11 +89,6 @@ enum
 				G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE "," \
 				GEDIT_METADATA_ATTRIBUTE_ENCODING
 
-#define GEDIT_DOCUMENT_LOADER_GET_PRIVATE(object) \
-				(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-				 GEDIT_TYPE_DOCUMENT_LOADER,   \
-				 GeditDocumentLoaderPrivate))
-
 static void open_async_read (AsyncData *async);
 
 struct _GeditDocumentLoaderPrivate
@@ -124,7 +119,7 @@ struct _GeditDocumentLoaderPrivate
 	gboolean                  guess_content_type_from_content;
 };
 
-G_DEFINE_TYPE(GeditDocumentLoader, gedit_document_loader, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditDocumentLoader, gedit_document_loader, G_TYPE_OBJECT)
 
 static void
 gedit_document_loader_set_property (GObject      *object,
@@ -303,14 +298,12 @@ gedit_document_loader_class_init (GeditDocumentLoaderClass *klass)
 			      2,
 			      G_TYPE_BOOLEAN,
 			      G_TYPE_POINTER);
-
-	g_type_class_add_private (object_class, sizeof (GeditDocumentLoaderPrivate));
 }
 
 static void
 gedit_document_loader_init (GeditDocumentLoader *loader)
 {
-	loader->priv = GEDIT_DOCUMENT_LOADER_GET_PRIVATE (loader);
+	loader->priv = gedit_document_loader_get_instance_private (loader);
 
 	loader->priv->enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
 	loader->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");

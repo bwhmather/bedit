@@ -43,10 +43,6 @@
  * in other to be able to mark characters as invalid if there was some
  * specific problem on the conversion */
 
-#define GEDIT_DOCUMENT_OUTPUT_STREAM_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object),\
-							 GEDIT_TYPE_DOCUMENT_OUTPUT_STREAM,\
-							 GeditDocumentOutputStreamPrivate))
-
 #define MAX_UNICHAR_LEN 6
 
 struct _GeditDocumentOutputStreamPrivate
@@ -86,7 +82,7 @@ enum
 	PROP_ENSURE_TRAILING_NEWLINE
 };
 
-G_DEFINE_TYPE (GeditDocumentOutputStream, gedit_document_output_stream, G_TYPE_OUTPUT_STREAM)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditDocumentOutputStream, gedit_document_output_stream, G_TYPE_OUTPUT_STREAM)
 
 static gssize gedit_document_output_stream_write   (GOutputStream  *stream,
                                                     const void     *buffer,
@@ -237,14 +233,12 @@ gedit_document_output_stream_class_init (GeditDocumentOutputStreamClass *klass)
 	                                                       G_PARAM_STATIC_NAME |
 	                                                       G_PARAM_STATIC_BLURB |
 	                                                       G_PARAM_CONSTRUCT_ONLY));
-
-	g_type_class_add_private (object_class, sizeof (GeditDocumentOutputStreamPrivate));
 }
 
 static void
 gedit_document_output_stream_init (GeditDocumentOutputStream *stream)
 {
-	stream->priv = GEDIT_DOCUMENT_OUTPUT_STREAM_GET_PRIVATE (stream);
+	stream->priv = gedit_document_output_stream_get_instance_private (stream);
 
 	stream->priv->buffer = NULL;
 	stream->priv->buflen = 0;

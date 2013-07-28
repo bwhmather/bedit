@@ -82,10 +82,6 @@ typedef struct
 #define REMOTE_QUERY_ATTRIBUTES G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE "," \
 				G_FILE_ATTRIBUTE_TIME_MODIFIED
 
-#define GEDIT_DOCUMENT_SAVER_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-							  GEDIT_TYPE_DOCUMENT_SAVER, \
-							  GeditDocumentSaverPrivate))
-
 static void check_modified_async (AsyncData *async);
 
 struct _GeditDocumentSaverPrivate
@@ -117,7 +113,7 @@ struct _GeditDocumentSaverPrivate
 	GError                   *error;
 };
 
-G_DEFINE_TYPE(GeditDocumentSaver, gedit_document_saver, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditDocumentSaver, gedit_document_saver, G_TYPE_OBJECT)
 
 static void
 gedit_document_saver_set_property (GObject      *object,
@@ -328,14 +324,12 @@ gedit_document_saver_class_init (GeditDocumentSaverClass *klass)
 			      2,
 			      G_TYPE_BOOLEAN,
 			      G_TYPE_POINTER);
-
-	g_type_class_add_private (object_class, sizeof (GeditDocumentSaverPrivate));
 }
 
 static void
 gedit_document_saver_init (GeditDocumentSaver *saver)
 {
-	saver->priv = GEDIT_DOCUMENT_SAVER_GET_PRIVATE (saver);
+	saver->priv = gedit_document_saver_get_instance_private (saver);
 
 	saver->priv->cancellable = g_cancellable_new ();
 	saver->priv->error = NULL;

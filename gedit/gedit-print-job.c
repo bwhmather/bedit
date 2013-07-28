@@ -44,11 +44,6 @@
 #include "gedit-dirs.h"
 #include "gedit-settings.h"
 
-
-#define GEDIT_PRINT_JOB_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-					    GEDIT_TYPE_PRINT_JOB, \
-					    GeditPrintJobPrivate))
-
 struct _GeditPrintJobPrivate
 {
 	GSettings                *print_settings;
@@ -105,7 +100,7 @@ enum
 
 static guint print_job_signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GeditPrintJob, gedit_print_job, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditPrintJob, gedit_print_job, G_TYPE_OBJECT)
 
 static void          end_print_cb      (GtkPrintOperation *operation,
                                         GtkPrintContext   *context,
@@ -246,8 +241,6 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 			      2,
 			      G_TYPE_UINT,
 			      G_TYPE_POINTER);
-
-	g_type_class_add_private (object_class, sizeof (GeditPrintJobPrivate));
 }
 
 static void
@@ -834,7 +827,7 @@ gedit_print_job_print (GeditPrintJob            *job,
 static void
 gedit_print_job_init (GeditPrintJob *job)
 {
-	job->priv = GEDIT_PRINT_JOB_GET_PRIVATE (job);
+	job->priv = gedit_print_job_get_instance_private (job);
 
 	job->priv->print_settings = g_settings_new ("org.gnome.gedit.preferences.print");
 

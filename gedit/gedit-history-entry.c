@@ -49,10 +49,6 @@ enum {
 
 #define GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT 10
 
-#define GEDIT_HISTORY_ENTRY_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-						GEDIT_TYPE_HISTORY_ENTRY, \
-						GeditHistoryEntryPrivate))
-
 struct _GeditHistoryEntryPrivate
 {
 	gchar              *history_id;
@@ -63,7 +59,7 @@ struct _GeditHistoryEntryPrivate
 	GSettings          *settings;
 };
 
-G_DEFINE_TYPE(GeditHistoryEntry, gedit_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditHistoryEntry, gedit_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
 
 static void
 gedit_history_entry_set_property (GObject      *object,
@@ -213,8 +209,6 @@ gedit_history_entry_class_init (GeditHistoryEntryClass *klass)
 	                                                       TRUE,
 	                                                       G_PARAM_READWRITE |
 	                                                       G_PARAM_STATIC_STRINGS));
-
-	g_type_class_add_private (object_class, sizeof (GeditHistoryEntryPrivate));
 }
 
 static GtkListStore *
@@ -411,7 +405,7 @@ gedit_history_entry_init (GeditHistoryEntry *entry)
 {
 	GeditHistoryEntryPrivate *priv;
 
-	priv = GEDIT_HISTORY_ENTRY_GET_PRIVATE (entry);
+	priv = gedit_history_entry_get_instance_private (entry);
 	entry->priv = priv;
 
 	priv->history_id = NULL;

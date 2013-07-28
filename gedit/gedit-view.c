@@ -54,8 +54,6 @@
 
 #define GEDIT_VIEW_SCROLL_MARGIN 0.02
 
-#define GEDIT_VIEW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_VIEW, GeditViewPrivate))
-
 enum
 {
 	TARGET_URI_LIST = 100,
@@ -69,7 +67,7 @@ struct _GeditViewPrivate
 	PeasExtensionSet *extensions;
 };
 
-G_DEFINE_TYPE(GeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)
 
 /* Signals */
 enum
@@ -135,7 +133,7 @@ gedit_view_init (GeditView *view)
 
 	gedit_debug (DEBUG_VIEW);
 
-	view->priv = GEDIT_VIEW_GET_PRIVATE (view);
+	view->priv = gedit_view_get_instance_private (view);
 
 	view->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
 
@@ -741,8 +739,6 @@ gedit_view_class_init (GeditViewClass *klass)
 		              NULL, NULL,
 		              g_cclosure_marshal_VOID__BOXED,
 		              G_TYPE_NONE, 1, G_TYPE_STRV);
-
-	g_type_class_add_private (klass, sizeof (GeditViewPrivate));
 
 	binding_set = gtk_binding_set_by_class (klass);
 

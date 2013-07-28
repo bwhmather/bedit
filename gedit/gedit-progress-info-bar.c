@@ -35,9 +35,6 @@ enum {
 	PROP_HAS_CANCEL_BUTTON
 };
 
-
-#define GEDIT_PROGRESS_INFO_BAR_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_PROGRESS_INFO_BAR, GeditProgressInfoBarPrivate))
-
 struct _GeditProgressInfoBarPrivate
 {
 	GtkWidget *image;
@@ -45,7 +42,7 @@ struct _GeditProgressInfoBarPrivate
 	GtkWidget *progress;
 };
 
-G_DEFINE_TYPE(GeditProgressInfoBar, gedit_progress_info_bar, GTK_TYPE_INFO_BAR)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditProgressInfoBar, gedit_progress_info_bar, GTK_TYPE_INFO_BAR)
 
 static void
 gedit_progress_info_bar_set_has_cancel_button (GeditProgressInfoBar *bar,
@@ -103,16 +100,12 @@ gedit_progress_info_bar_class_init (GeditProgressInfoBarClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditProgressInfoBar, image);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditProgressInfoBar, label);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditProgressInfoBar, progress);
-
-	g_type_class_add_private (gobject_class, sizeof (GeditProgressInfoBarPrivate));
 }
 
 static void
 gedit_progress_info_bar_init (GeditProgressInfoBar *bar)
 {
-	bar->priv = G_TYPE_INSTANCE_GET_PRIVATE (bar,
-	                                         GEDIT_TYPE_PROGRESS_INFO_BAR,
-	                                         GeditProgressInfoBarPrivate);
+	bar->priv = gedit_progress_info_bar_get_instance_private (bar);
 
 	gtk_widget_init_template (GTK_WIDGET (bar));
 }

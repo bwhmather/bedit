@@ -114,8 +114,6 @@
  *
  */
 
-#define GEDIT_MESSAGE_BUS_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_MESSAGE_BUS, GeditMessageBusPrivate))
-
 typedef struct
 {
 	gchar *object_path;
@@ -174,7 +172,7 @@ static guint message_bus_signals[LAST_SIGNAL];
 static void gedit_message_bus_dispatch_real (GeditMessageBus *bus,
                                              GeditMessage    *message);
 
-G_DEFINE_TYPE(GeditMessageBus, gedit_message_bus, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditMessageBus, gedit_message_bus, G_TYPE_OBJECT)
 
 static MessageIdentifier *
 message_identifier_new (const gchar *object_path,
@@ -338,8 +336,6 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		              2,
 		              G_TYPE_STRING,
 		              G_TYPE_STRING);
-
-	g_type_class_add_private (object_class, sizeof (GeditMessageBusPrivate));
 }
 
 static Message *
@@ -593,7 +589,7 @@ free_type (gpointer data)
 static void
 gedit_message_bus_init (GeditMessageBus *self)
 {
-	self->priv = GEDIT_MESSAGE_BUS_GET_PRIVATE (self);
+	self->priv = gedit_message_bus_get_instance_private (self);
 
 	self->priv->messages = g_hash_table_new_full (message_identifier_hash,
 	                                              message_identifier_equal,

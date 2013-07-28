@@ -41,7 +41,6 @@
  * Since: 2.25.3
  *
  */
-#define GEDIT_MESSAGE_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_MESSAGE, GeditMessagePrivate))
 
 enum
 {
@@ -57,7 +56,7 @@ struct _GeditMessagePrivate
 	gchar *method;
 };
 
-G_DEFINE_TYPE (GeditMessage, gedit_message, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditMessage, gedit_message, G_TYPE_OBJECT)
 
 static void
 gedit_message_finalize (GObject *object)
@@ -159,14 +158,12 @@ gedit_message_class_init (GeditMessageClass *klass)
 	                                                      G_PARAM_READWRITE |
 	                                                      G_PARAM_CONSTRUCT |
 	                                                      G_PARAM_STATIC_STRINGS));
-
-	g_type_class_add_private (object_class, sizeof (GeditMessagePrivate));
 }
 
 static void
 gedit_message_init (GeditMessage *self)
 {
-	self->priv = GEDIT_MESSAGE_GET_PRIVATE (self);
+	self->priv = gedit_message_get_instance_private (self);
 }
 
 /**

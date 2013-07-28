@@ -38,7 +38,7 @@ enum
 	PROP_LIMIT
 };
 
-G_DEFINE_TYPE (GeditOpenToolButton, gedit_open_tool_button, GTK_TYPE_MENU_TOOL_BUTTON)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditOpenToolButton, gedit_open_tool_button, GTK_TYPE_MENU_TOOL_BUTTON)
 
 static void
 set_recent_menu (GeditOpenToolButton *button)
@@ -129,10 +129,7 @@ gedit_open_tool_button_constructed (GObject *object)
 static void
 gedit_open_tool_button_init (GeditOpenToolButton *button)
 {
-	button->priv = G_TYPE_INSTANCE_GET_PRIVATE (button,
-	                                            GEDIT_TYPE_OPEN_TOOL_BUTTON,
-	                                            GeditOpenToolButtonPrivate);
-
+	button->priv = gedit_open_tool_button_get_instance_private (button);
 	button->priv->limit = 10;
 }
 
@@ -155,8 +152,6 @@ gedit_open_tool_button_class_init (GeditOpenToolButtonClass *klass)
 	                                                   10,
 	                                                   G_PARAM_READWRITE |
 	                                                   G_PARAM_STATIC_STRINGS));
-
-	g_type_class_add_private (object_class, sizeof (GeditOpenToolButtonPrivate));
 }
 
 GtkToolItem *

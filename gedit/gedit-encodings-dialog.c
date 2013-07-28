@@ -45,10 +45,6 @@
 #include "gedit-dirs.h"
 #include "gedit-settings.h"
 
-#define GEDIT_ENCODINGS_DIALOG_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-						   GEDIT_TYPE_ENCODINGS_DIALOG,           \
-						   GeditEncodingsDialogPrivate))
-
 struct _GeditEncodingsDialogPrivate
 {
 	GSettings	*enc_settings;
@@ -65,7 +61,7 @@ struct _GeditEncodingsDialogPrivate
 	GSList		*show_in_menu_list;
 };
 
-G_DEFINE_TYPE(GeditEncodingsDialog, gedit_encodings_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditEncodingsDialog, gedit_encodings_dialog, GTK_TYPE_DIALOG)
 
 static void
 gedit_encodings_dialog_finalize (GObject *object)
@@ -141,8 +137,6 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, displayed_treeview);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, displayed_liststore);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, sort_displayed);
-
-	g_type_class_add_private (object_class, sizeof (GeditEncodingsDialogPrivate));
 }
 
 enum {
@@ -340,7 +334,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 	const GeditEncoding *enc;
 	int i;
 
-	dlg->priv = GEDIT_ENCODINGS_DIALOG_GET_PRIVATE (dlg);
+	dlg->priv = gedit_encodings_dialog_get_instance_private (dlg);
 
 	dlg->priv->enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
 

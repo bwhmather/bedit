@@ -45,12 +45,12 @@
 #include "gedit-settings.h"
 #include "gedit-utils.h"
 
-G_DEFINE_TYPE(GeditPluginsEngine, gedit_plugins_engine, PEAS_TYPE_ENGINE)
-
 struct _GeditPluginsEnginePrivate
 {
 	GSettings *plugin_settings;
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE (GeditPluginsEngine, gedit_plugins_engine, PEAS_TYPE_ENGINE)
 
 GeditPluginsEngine *default_engine = NULL;
 
@@ -62,9 +62,7 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	engine->priv = G_TYPE_INSTANCE_GET_PRIVATE (engine,
-	                                            GEDIT_TYPE_PLUGINS_ENGINE,
-	                                            GeditPluginsEnginePrivate);
+	engine->priv = gedit_plugins_engine_get_instance_private (engine);
 
 	peas_engine_enable_loader (PEAS_ENGINE (engine), "python3");
 
@@ -133,8 +131,6 @@ gedit_plugins_engine_class_init (GeditPluginsEngineClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->dispose = gedit_plugins_engine_dispose;
-
-	g_type_class_add_private (klass, sizeof (GeditPluginsEnginePrivate));
 }
 
 GeditPluginsEngine *

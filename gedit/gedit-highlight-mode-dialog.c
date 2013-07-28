@@ -50,13 +50,7 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GeditHighlightModeDialog, gedit_highlight_mode_dialog, GTK_TYPE_DIALOG)
-
-static void
-gedit_highlight_mode_dialog_finalize (GObject *object)
-{
-	G_OBJECT_CLASS (gedit_highlight_mode_dialog_parent_class)->finalize (object);
-}
+G_DEFINE_TYPE_WITH_PRIVATE (GeditHighlightModeDialog, gedit_highlight_mode_dialog, GTK_TYPE_DIALOG)
 
 static void
 gedit_highlight_mode_dialog_response (GtkDialog *dialog,
@@ -94,8 +88,6 @@ gedit_highlight_mode_dialog_class_init (GeditHighlightModeDialogClass *klass)
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
-	object_class->finalize = gedit_highlight_mode_dialog_finalize;
-
 	dialog_class->response = gedit_highlight_mode_dialog_response;
 
 	signals[LANGUAGE_SELECTED] =
@@ -117,8 +109,6 @@ gedit_highlight_mode_dialog_class_init (GeditHighlightModeDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditHighlightModeDialog, liststore);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditHighlightModeDialog, treemodelfilter);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditHighlightModeDialog, treeview_selection);
-
-	g_type_class_add_private (object_class, sizeof (GeditHighlightModeDialogPrivate));
 }
 
 static gboolean
@@ -277,9 +267,7 @@ gedit_highlight_mode_dialog_init (GeditHighlightModeDialog *dlg)
 	gint i;
 	GtkTreeIter iter;
 
-	dlg->priv = G_TYPE_INSTANCE_GET_PRIVATE (dlg,
-	                                         GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG,
-	                                         GeditHighlightModeDialogPrivate);
+	dlg->priv = gedit_highlight_mode_dialog_get_instance_private (dlg);
 	priv = dlg->priv;
 
 	gtk_widget_init_template (GTK_WIDGET (dlg));

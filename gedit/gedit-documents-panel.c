@@ -42,10 +42,6 @@
 
 #include <glib/gi18n.h>
 
-#define GEDIT_DOCUMENTS_PANEL_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-						  GEDIT_TYPE_DOCUMENTS_PANEL,            \
-						  GeditDocumentsPanelPrivate))
-
 struct _GeditDocumentsPanelPrivate
 {
 	GeditWindow        *window;
@@ -62,7 +58,7 @@ struct _GeditDocumentsPanelPrivate
 	guint               setting_active_notebook : 1;
 };
 
-G_DEFINE_TYPE(GeditDocumentsPanel, gedit_documents_panel, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditDocumentsPanel, gedit_documents_panel, GTK_TYPE_BOX)
 
 enum
 {
@@ -731,8 +727,6 @@ gedit_documents_panel_class_init (GeditDocumentsPanelClass *klass)
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY |
 							      G_PARAM_STATIC_STRINGS));
-
-	g_type_class_add_private (object_class, sizeof (GeditDocumentsPanelPrivate));
 }
 
 static GtkTreePath *
@@ -1097,7 +1091,7 @@ gedit_documents_panel_init (GeditDocumentsPanel *panel)
 
 	gedit_debug (DEBUG_PANEL);
 
-	panel->priv = GEDIT_DOCUMENTS_PANEL_GET_PRIVATE (panel);
+	panel->priv = gedit_documents_panel_get_instance_private (panel);
 
 	panel->priv->adding_tab = FALSE;
 	panel->priv->is_reodering = FALSE;

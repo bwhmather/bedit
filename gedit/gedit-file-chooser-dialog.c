@@ -47,8 +47,6 @@
 #include "gedit-enum-types.h"
 #include "gedit-settings.h"
 
-#define GEDIT_FILE_CHOOSER_DIALOG_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialogPrivate))
-
 #define ALL_FILES		_("All Files")
 #define ALL_TEXT_FILES		_("All Text Files")
 
@@ -64,7 +62,7 @@ struct _GeditFileChooserDialogPrivate
 	GtkListStore *newline_store;
 };
 
-G_DEFINE_TYPE(GeditFileChooserDialog, gedit_file_chooser_dialog, GTK_TYPE_FILE_CHOOSER_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditFileChooserDialog, gedit_file_chooser_dialog, GTK_TYPE_FILE_CHOOSER_DIALOG)
 
 static void
 gedit_file_chooser_dialog_dispose (GObject *object)
@@ -82,8 +80,6 @@ gedit_file_chooser_dialog_class_init (GeditFileChooserDialogClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->dispose = gedit_file_chooser_dialog_dispose;
-
-	g_type_class_add_private (object_class, sizeof (GeditFileChooserDialogPrivate));
 }
 
 static void
@@ -358,7 +354,7 @@ all_text_files_filter (const GtkFileFilterInfo *filter_info,
 static void
 gedit_file_chooser_dialog_init (GeditFileChooserDialog *dialog)
 {
-	dialog->priv = GEDIT_FILE_CHOOSER_DIALOG_GET_PRIVATE (dialog);
+	dialog->priv = gedit_file_chooser_dialog_get_instance_private (dialog);
 
 	dialog->priv->filter_settings = g_settings_new ("org.gnome.gedit.state.file-filter");
 }

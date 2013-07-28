@@ -29,8 +29,6 @@
 #include "gedit-tab-label.h"
 #include "gedit-close-button.h"
 
-#define GEDIT_TAB_LABEL_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_TAB_LABEL, GeditTabLabelPrivate))
-
 /* Signals */
 enum
 {
@@ -59,7 +57,7 @@ struct _GeditTabLabelPrivate
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GeditTabLabel, gedit_tab_label, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditTabLabel, gedit_tab_label, GTK_TYPE_BOX)
 
 static void
 gedit_tab_label_finalize (GObject *object)
@@ -249,8 +247,6 @@ gedit_tab_label_class_init (GeditTabLabelClass *klass)
 							      GEDIT_TYPE_TAB,
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY));
-
-	g_type_class_add_private (object_class, sizeof (GeditTabLabelPrivate));
 }
 
 static void
@@ -264,7 +260,7 @@ gedit_tab_label_init (GeditTabLabel *tab_label)
 	GtkWidget *label;
 	GtkWidget *dummy_label;
 
-	tab_label->priv = GEDIT_TAB_LABEL_GET_PRIVATE (tab_label);
+	tab_label->priv = gedit_tab_label_get_instance_private (tab_label);
 
 	tab_label->priv->close_button_sensitive = TRUE;
 

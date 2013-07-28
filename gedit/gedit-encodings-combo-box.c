@@ -43,10 +43,6 @@
 
 #define ENCODING_KEY "Enconding"
 
-#define GEDIT_ENCODINGS_COMBO_BOX_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object),	\
-							GEDIT_TYPE_ENCODINGS_COMBO_BOX,	\
-							GeditEncodingsComboBoxPrivate))
-
 struct _GeditEncodingsComboBoxPrivate
 {
 	GSettings *enc_settings;
@@ -75,7 +71,7 @@ enum
 };
 
 
-G_DEFINE_TYPE(GeditEncodingsComboBox, gedit_encodings_combo_box, GTK_TYPE_COMBO_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditEncodingsComboBox, gedit_encodings_combo_box, GTK_TYPE_COMBO_BOX)
 
 static void	  update_menu 		(GeditEncodingsComboBox       *combo_box);
 
@@ -173,8 +169,6 @@ gedit_encodings_combo_box_class_init (GeditEncodingsComboBoxClass *klass)
 							       G_PARAM_READWRITE |
 							       G_PARAM_CONSTRUCT |
 							       G_PARAM_STATIC_STRINGS));
-
-	g_type_class_add_private (object_class, sizeof (GeditEncodingsComboBoxPrivate));
 }
 
 static void
@@ -399,7 +393,7 @@ update_menu (GeditEncodingsComboBox *menu)
 static void
 gedit_encodings_combo_box_init (GeditEncodingsComboBox *menu)
 {
-	menu->priv = GEDIT_ENCODINGS_COMBO_BOX_GET_PRIVATE (menu);
+	menu->priv = gedit_encodings_combo_box_get_instance_private (menu);
 
 	menu->priv->enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
 

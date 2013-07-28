@@ -20,12 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-
 #include "gedit-multi-notebook.h"
 #include "gedit-marshal.h"
-
-
-#define GEDIT_MULTI_NOTEBOOK_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_MULTI_NOTEBOOK, GeditMultiNotebookPrivate))
 
 struct _GeditMultiNotebookPrivate
 {
@@ -62,7 +58,7 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GeditMultiNotebook, gedit_multi_notebook, GTK_TYPE_GRID)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditMultiNotebook, gedit_multi_notebook, GTK_TYPE_GRID)
 
 static void	remove_notebook		(GeditMultiNotebook *mnb,
 					 GtkWidget          *notebook);
@@ -108,8 +104,6 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 
 	object_class->finalize = gedit_multi_notebook_finalize;
 	object_class->get_property = gedit_multi_notebook_get_property;
-
-	g_type_class_add_private (object_class, sizeof (GeditMultiNotebookPrivate));
 
 	signals[NOTEBOOK_ADDED] =
 		g_signal_new ("notebook-added",
@@ -562,7 +556,7 @@ remove_notebook (GeditMultiNotebook *mnb,
 static void
 gedit_multi_notebook_init (GeditMultiNotebook *mnb)
 {
-	mnb->priv = GEDIT_MULTI_NOTEBOOK_GET_PRIVATE (mnb);
+	mnb->priv = gedit_multi_notebook_get_instance_private (mnb);
 
 	mnb->priv->removing_notebook = FALSE;
 

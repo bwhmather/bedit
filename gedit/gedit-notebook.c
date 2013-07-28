@@ -51,8 +51,6 @@
 #include "gedit-settings.h"
 #include "gedit-marshal.h"
 
-#define GEDIT_NOTEBOOK_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_NOTEBOOK, GeditNotebookPrivate))
-
 #define GEDIT_NOTEBOOK_GROUP_NAME "GeditNotebookGroup"
 
 struct _GeditNotebookPrivate
@@ -67,7 +65,7 @@ struct _GeditNotebookPrivate
 	guint ignore_focused_page_update : 1;
 };
 
-G_DEFINE_TYPE(GeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
 
 /* Properties */
 enum
@@ -530,8 +528,6 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 			      2,
 			      GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE,
 			      GEDIT_TYPE_TAB);
-
-	g_type_class_add_private (object_class, sizeof (GeditNotebookPrivate));
 }
 
 /**
@@ -552,7 +548,7 @@ gedit_notebook_init (GeditNotebook *notebook)
 {
 	GeditNotebookPrivate *priv;
 
-	notebook->priv = GEDIT_NOTEBOOK_GET_PRIVATE (notebook);
+	notebook->priv = gedit_notebook_get_instance_private (notebook);
 	priv = notebook->priv;
 
 	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");

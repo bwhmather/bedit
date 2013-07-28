@@ -36,7 +36,7 @@ enum
 	PROP_TAB
 };
 
-G_DEFINE_TYPE (GeditNotebookPopupMenu, gedit_notebook_popup_menu, GTK_TYPE_MENU)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditNotebookPopupMenu, gedit_notebook_popup_menu, GTK_TYPE_MENU)
 
 static void
 gedit_notebook_popup_menu_set_property (GObject      *object,
@@ -118,8 +118,6 @@ gedit_notebook_popup_menu_class_init (GeditNotebookPopupMenuClass *klass)
 	                                                      GEDIT_TYPE_TAB,
 	                                                      G_PARAM_READWRITE |
 	                                                      G_PARAM_CONSTRUCT_ONLY));
-
-	g_type_class_add_private (object_class, sizeof (GeditNotebookPopupMenuPrivate));
 }
 
 static void
@@ -163,9 +161,7 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 {
 	GtkWidget *menu_item;
 
-	menu->priv = G_TYPE_INSTANCE_GET_PRIVATE (menu,
-	                                          GEDIT_TYPE_NOTEBOOK_POPUP_MENU,
-	                                          GeditNotebookPopupMenuPrivate);
+	menu->priv = gedit_notebook_popup_menu_get_instance_private (menu);
 
 	/* Keep in sync with the respective GtkActions */
 	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move to New Window"));

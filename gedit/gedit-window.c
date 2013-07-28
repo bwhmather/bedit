@@ -68,10 +68,6 @@
 #define LANGUAGE_DATA "GeditWindowLanguageData"
 #define FULLSCREEN_ANIMATION_SPEED 4
 
-#define GEDIT_WINDOW_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object),\
-					 GEDIT_TYPE_WINDOW,                    \
-					 GeditWindowPrivate))
-
 /* Signals */
 enum
 {
@@ -96,7 +92,7 @@ enum
 	TARGET_URI_LIST = 100
 };
 
-G_DEFINE_TYPE(GeditWindow, gedit_window, GTK_TYPE_APPLICATION_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditWindow, gedit_window, GTK_TYPE_APPLICATION_WINDOW)
 
 static void	recent_manager_changed	(GtkRecentManager *manager,
 					 GeditWindow      *window);
@@ -436,8 +432,6 @@ gedit_window_class_init (GeditWindowClass *klass)
 							     GEDIT_WINDOW_STATE_NORMAL,
 							     G_PARAM_READABLE |
 							     G_PARAM_STATIC_STRINGS));
-
-	g_type_class_add_private (object_class, sizeof (GeditWindowPrivate));
 }
 
 static void
@@ -3690,7 +3684,7 @@ gedit_window_init (GeditWindow *window)
 
 	gedit_debug (DEBUG_WINDOW);
 
-	window->priv = GEDIT_WINDOW_GET_PRIVATE (window);
+	window->priv = gedit_window_get_instance_private (window);
 
 	window->priv->removing_tabs = FALSE;
 	window->priv->state = GEDIT_WINDOW_STATE_NORMAL;

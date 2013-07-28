@@ -45,8 +45,6 @@
 
 #define PANEL_ITEM_KEY "GeditPanelItemKey"
 
-#define GEDIT_PANEL_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_PANEL, GeditPanelPrivate))
-
 struct _GeditPanelPrivate
 {
 	GtkOrientation orientation;
@@ -89,7 +87,7 @@ static guint signals[LAST_SIGNAL];
 
 static void	gedit_panel_constructed	(GObject *object);
 
-G_DEFINE_TYPE(GeditPanel, gedit_panel, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditPanel, gedit_panel, GTK_TYPE_BIN)
 
 static void
 gedit_panel_finalize (GObject *object)
@@ -245,8 +243,6 @@ gedit_panel_class_init (GeditPanelClass *klass)
 	GtkBindingSet *binding_set;
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-	g_type_class_add_private (klass, sizeof (GeditPanelPrivate));
 
 	object_class->constructed = gedit_panel_constructed;
 	object_class->finalize = gedit_panel_finalize;
@@ -453,7 +449,7 @@ panel_show (GeditPanel *panel,
 static void
 gedit_panel_init (GeditPanel *panel)
 {
-	panel->priv = GEDIT_PANEL_GET_PRIVATE (panel);
+	panel->priv = gedit_panel_get_instance_private (panel);
 
 	panel->priv->main_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	gtk_widget_show (panel->priv->main_box);
