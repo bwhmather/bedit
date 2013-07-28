@@ -39,8 +39,11 @@ enum
 	PROP_LABEL
 };
 
-G_DEFINE_TYPE_WITH_CODE (GeditStatusMenuButton, gedit_status_menu_button, GTK_TYPE_MENU_BUTTON,
-                         g_type_add_class_private (g_define_type_id, sizeof (GeditStatusMenuButtonClassPrivate)))
+G_DEFINE_TYPE_WITH_CODE (GeditStatusMenuButton,
+			 gedit_status_menu_button,
+			 GTK_TYPE_MENU_BUTTON,
+			 G_ADD_PRIVATE (GeditStatusMenuButton)
+			 g_type_add_class_private (g_define_type_id, sizeof (GeditStatusMenuButtonClassPrivate)))
 
 static void
 gedit_status_menu_button_get_property (GObject    *object,
@@ -105,8 +108,6 @@ gedit_status_menu_button_class_init (GeditStatusMenuButtonClass *klass)
 	                                             "/org/gnome/gedit/ui/gedit-status-menu-button.ui");
 	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusMenuButton, label);
 
-	g_type_class_add_private (object_class, sizeof (GeditStatusMenuButtonPrivate));
-
 	klass->priv = G_TYPE_CLASS_GET_PRIVATE (klass, GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButtonClassPrivate);
 
 	klass->priv->css = gtk_css_provider_new ();
@@ -118,7 +119,7 @@ gedit_status_menu_button_init (GeditStatusMenuButton *self)
 {
 	GtkStyleContext *context;
 
-	self->priv = G_TYPE_INSTANCE_GET_PRIVATE(self, GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButtonPrivate);
+	self->priv = gedit_status_menu_button_get_instance_private (self);
 
 	gtk_widget_init_template (GTK_WIDGET (self));
 

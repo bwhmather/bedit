@@ -39,8 +39,6 @@
 
 #define SEARCH_POPUP_MARGIN 12
 
-#define GEDIT_VIEW_FRAME_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_VIEW_FRAME, GeditViewFramePrivate))
-
 typedef enum
 {
 	GOTO_LINE,
@@ -105,7 +103,7 @@ typedef enum
 	GEDIT_SEARCH_ENTRY_NOT_FOUND
 } GeditSearchEntryBgColor;
 
-G_DEFINE_TYPE (GeditViewFrame, gedit_view_frame, GTK_TYPE_OVERLAY)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditViewFrame, gedit_view_frame, GTK_TYPE_OVERLAY)
 
 static void
 gedit_view_frame_finalize (GObject *object)
@@ -1352,8 +1350,6 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, search_entry);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, go_up_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, go_down_button);
-
-	g_type_class_add_private (object_class, sizeof (GeditViewFramePrivate));
 }
 
 static GMountOperation *
@@ -1372,7 +1368,7 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	GeditDocument *doc;
 	GdkRGBA transparent = {0, 0, 0, 0};
 
-	frame->priv = GEDIT_VIEW_FRAME_GET_PRIVATE (frame);
+	frame->priv = gedit_view_frame_get_instance_private (frame);
 
 	frame->priv->typeselect_flush_timeout = 0;
 	frame->priv->case_sensitive_search = FALSE;
