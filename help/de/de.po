@@ -9,18 +9,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit help\n"
-"POT-Creation-Date: 2013-05-16 22:49+0000\n"
-"PO-Revision-Date: 2013-04-24 21:16+0200\n"
+"POT-Creation-Date: 2013-07-18 17:00+0000\n"
+"PO-Revision-Date: 2013-07-29 22:04+0100\n"
 "Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: German\n"
-"X-Poedit-Country: GERMANY\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -28,7 +26,22 @@ msgid "translator-credits"
 msgstr ""
 "Jan Arne Petersen <jap@gnome.org>, 2007\n"
 "Mario Blättermann <mario.blaettermann@gmail.com>, 2008-2013\n"
-"Christian Kirbach <Christian.Kirbach@gmail.com>, 2011, 2012, 2013"
+"Christian Kirbach <christian.kirbach@gmail.com>, 2011, 2012, 2013"
+
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#.
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/index.page:26(media)
+msgctxt "_"
+msgid ""
+"external ref='figures/gedit-icon.png' md5='a7174de2671462e1ac4f80a82ad09184'"
+msgstr "original"
 
 #: C/index.page:8(info/title)
 msgctxt "link"
@@ -95,11 +108,10 @@ msgid "Sindhu S"
 msgstr "Sindhu S"
 
 #: C/index.page:25(page/title)
-#, fuzzy
 #| msgctxt "link"
 #| msgid "gedit Text Editor"
 msgid "<_:media-1/> gedit Text Editor"
-msgstr "gedit Texteditor"
+msgstr "<_:media-1/> gedit Texteditor"
 
 #: C/index.page:29(page/p)
 msgid ""
@@ -451,6 +463,40 @@ msgstr ""
 "Sie können auch den Mauszeiger an den oberen Rand des Bildschirms bewegen, "
 "um die <gui>Menüleiste</gui> anzuzeigen. Klicken Sie dann auf <gui>Vollbild "
 "verlassen</gui>."
+
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#.
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gedit-open-files-from-sidepane.page:44(media)
+#: C/gedit-plugins-file-browser.page:40(media)
+msgctxt "_"
+msgid ""
+"external ref='figures/gedit-side-pane1.png' "
+"md5='ac9c80cb0552d63b593c71f23be69b53'"
+msgstr "original"
+
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#.
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gedit-open-files-from-sidepane.page:62(media)
+#: C/gedit-view-open-files-in-sidepane.page:39(media)
+msgctxt "_"
+msgid ""
+"external ref='figures/gedit-side-pane2.png' "
+"md5='e7a12a43adc9c9cb8c992ad22a815a57'"
+msgstr "original"
 
 #: C/gedit-open-files-from-sidepane.page:15(page/title)
 msgid "View and open files from the side pane"
@@ -1399,6 +1445,8 @@ msgstr ""
 "Fußleiste."
 
 #: C/gedit-plugins-quick-open.page:14(credit/name)
+#: C/gedit-plugins-zeitgeist-dataprovider.page:10(credit/name)
+#: C/gedit-search.page:22(credit/name)
 msgid "Shobha Tyagi"
 msgstr "Shobha Tyagi"
 
@@ -1561,7 +1609,9 @@ msgid "To enable the <gui>Snippets</gui> plugin:"
 msgstr "So aktivieren Sie das <gui>Schnipsel</gui>-Plugin:"
 
 #: C/gedit-plugins-snippets.page:35(item/p)
-#: C/gedit-plugins-sort.page:44(item/p) C/gedit-spellcheck.page:35(item/p)
+#: C/gedit-plugins-sort.page:44(item/p)
+#: C/gedit-plugins-zeitgeist-dataprovider.page:29(item/p)
+#: C/gedit-spellcheck.page:35(item/p)
 msgid ""
 "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
 "\">Preferences</gui> <gui style=\"tab\">Plugins</gui></guiseq>."
@@ -1729,6 +1779,9 @@ msgid ""
 "term for the <gui style=\"input\">Tab trigger:</gui> textarea. You will be "
 "using this term to insert your snippet."
 msgstr ""
+"Sie müssen im Abschnitt <gui style=\"group\">Aktivierung</gui> einen Begriff "
+"für den Textbereich <gui style=\"input\">Tabulatorauslösung:</gui> eingeben. "
+"Verwenden Sie dann diesen Begriff, um Ihren Schnipsel einzufügen."
 
 #: C/gedit-plugins-snippets.page:141(note/p)
 msgid ""
@@ -1749,6 +1802,10 @@ msgid ""
 "where <em>n</em> is replaced with a number that represents the numerical "
 "order of variables included."
 msgstr ""
+"Geben Sie den für den Schnipsel gewünschten Text im Textbereich unter <gui "
+"style=\"input\">Bearbeiten:</gui> ein. Verwenden Sie <code>${n}</code>, um "
+"Variaben zu definieren, wobei <em>n</em> durch eine Zahl ersetzt wird, "
+"welche die numerische Reihenfolge der enthaltenen Variablen darstellt."
 
 #: C/gedit-plugins-snippets.page:158(section/title)
 msgid "New Snippet Example"
@@ -1911,6 +1968,35 @@ msgid "To perform the sort operation, click <gui>Sort</gui>."
 msgstr ""
 "Starten Sie den Sortiervorgang anschließend, indem Sie auf den Knopf "
 "<gui>Sortieren</gui> klicken."
+
+#: C/gedit-plugins-zeitgeist-dataprovider.page:15(info/desc)
+msgid "Log user activity for documents which are opened in gedit"
+msgstr ""
+
+#: C/gedit-plugins-zeitgeist-dataprovider.page:18(page/title)
+msgid "Zeitgeist dataprovider"
+msgstr ""
+
+#: C/gedit-plugins-zeitgeist-dataprovider.page:20(page/p)
+msgid ""
+"Zeitgeist is a service that logs user activities and events. Zeitgeist lets "
+"other applications access this information in the form of statistics and "
+"timelines.The Zeitgeist dataprovider plugin for <app>gedit</app> records "
+"user activity for documents used with gedit giving easy access to recently-"
+"used and frequently-used files."
+msgstr ""
+
+#: C/gedit-plugins-zeitgeist-dataprovider.page:27(steps/title)
+msgid "Enable Zeitgeist dataprovider"
+msgstr ""
+
+#: C/gedit-plugins-zeitgeist-dataprovider.page:34(item/p)
+#, fuzzy
+#| msgid "Select <gui style=\"menuitem\">Snippets</gui> to enable the plugin."
+msgid "Select <gui style=\"menuitem\">Zietgeist Dataprovider</gui>."
+msgstr ""
+"Wählen Sie <gui style=\"menuitem\">Schnipsel</gui>, um das Plugin zu "
+"aktivieren."
 
 #: C/gedit-printing-order.page:10(credit/name)
 #: C/gedit-printing-select.page:9(credit/name)
@@ -2092,6 +2178,11 @@ msgid ""
 "programs, please consult <link href=\"help:gnome-help/printing#paper"
 "\">Layout and Paper options</link> help."
 msgstr ""
+"Zusätzlich können Sie im Reiter <gui style=\"tab\">Seite einrichten</gui>: "
+"<gui style=\"group\">Layout</gui> und <gui style=\"group\">Papier</gui> "
+"wählen. Diese Einstellungen sind in allen <app>GNOME</app>-Anwendungen "
+"verfügbar. Bitte lesen Sie dazu auch <link href=\"help:gnome-help/"
+"printing#paper\">Optionen für Layout und Papier</link>."
 
 #: C/gedit-printing.page:83(section/title)
 msgid "Print Multiple Copies And Between Specified Ranges"
@@ -2401,11 +2492,11 @@ msgstr ""
 "gui> geöffnet, in welchem Sie einen Namen für die Datei und einen Ordner "
 "auswählen können, in dem die Datei gespeichert werden soll."
 
-#: C/gedit-search.page:24(page/title)
+#: C/gedit-search.page:28(page/title)
 msgid "Search for text"
 msgstr "Nach Text suchen"
 
-#: C/gedit-search.page:26(page/p)
+#: C/gedit-search.page:30(page/p)
 msgid ""
 "The Find tool can help you find specific sequences of text within in your "
 "file."
@@ -2413,11 +2504,11 @@ msgstr ""
 "Das Suchwerkzeug hilft Ihnen beim Auffinden bestimmter Textteile in Ihrer "
 "Datei."
 
-#: C/gedit-search.page:30(steps/title)
+#: C/gedit-search.page:34(steps/title)
 msgid "Finding text"
 msgstr "Text finden"
 
-#: C/gedit-search.page:32(item/p)
+#: C/gedit-search.page:36(item/p)
 msgid ""
 "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
 "\">Search</gui> <gui style=\"menuitem\">Find</gui> </guiseq> or pressing "
@@ -2430,11 +2521,11 @@ msgstr ""
 "Eingabemarke an den Beginn der Eingabezeile im <gui>Suchfenster</gui> "
 "verschoben."
 
-#: C/gedit-search.page:39(item/p)
+#: C/gedit-search.page:43(item/p)
 msgid "Type the text you wish to search for in the <gui>search window</gui>."
 msgstr "Geben Sie den zu suchenden Text im <gui>Suchfenster</gui> ein."
 
-#: C/gedit-search.page:43(item/p)
+#: C/gedit-search.page:47(item/p)
 msgid ""
 "As you type, <app>gedit</app> will begin highlighting the portions of text "
 "that match what you have entered."
@@ -2442,11 +2533,11 @@ msgstr ""
 "Bei der Eingabe beginnt <app>gedit</app>, die Textteile hervorzuheben, die "
 "mit dem eingegebenen Text übereinstimmen."
 
-#: C/gedit-search.page:48(page/p)
+#: C/gedit-search.page:52(page/p)
 msgid "To scroll through the search results, do any of the following:"
 msgstr "Um die Suchergebnisse zu durchsuchen, gehen Sie wie folgt vor:"
 
-#: C/gedit-search.page:51(item/p)
+#: C/gedit-search.page:55(item/p)
 msgid ""
 "Click on the <gui style=\"button\">up</gui> or <gui style=\"button\">down</"
 "gui> facing arrows next to the <gui>search window</gui>."
@@ -2454,13 +2545,13 @@ msgstr ""
 "Klicken Sie auf die nach <gui style=\"button\">unten</gui> oder <gui style="
 "\"button\">oben</gui> weisenden Pfeile neben dem <gui>Suchfenster</gui> oder"
 
-#: C/gedit-search.page:56(item/p)
+#: C/gedit-search.page:60(item/p)
 msgid ""
 "Press the <key>up arrow</key> or <key>down arrow</key> keys on your keyboard."
 msgstr ""
 "Drücken Sie die <key>↑</key>-Taste oder <key>↓</key>-Taste auf Ihrer Tastatur"
 
-#: C/gedit-search.page:60(item/p)
+#: C/gedit-search.page:64(item/p)
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
 "key><key>Shift</key><key>G</key></keyseq>."
@@ -2468,7 +2559,7 @@ msgstr ""
 "Drücken Sie <keyseq><key>Strg</key><key>G</key></keyseq> oder "
 "<keyseq><key>Strg</key><key>Umschalttaste</key><key>G</key></keyseq>."
 
-#: C/gedit-search.page:64(item/p)
+#: C/gedit-search.page:68(item/p)
 msgid ""
 "Press the <key>Ctrl</key> and use your mouse or touchpad's <key>scroll</key> "
 "feature to move up or down through the text."
@@ -2477,7 +2568,7 @@ msgstr ""
 "key>-Funktion der Maus oder des Touchpads, um sich nach oben oder unten "
 "durch den Text zu bewegen."
 
-#: C/gedit-search.page:69(page/p)
+#: C/gedit-search.page:73(page/p)
 msgid ""
 "To close the <gui>search window</gui>, press either <key>Esc</key> or "
 "<key>Enter</key>. Pressing <key>Esc</key> will return the cursor to where it "
@@ -2490,11 +2581,11 @@ msgstr ""
 "Beginn Ihrer Suche war. Nach dem Drücken von <key>Eingabe</key> wird der "
 "Cursor an der aktuellen Position der Suchergebnisse platziert."
 
-#: C/gedit-search.page:75(list/title)
+#: C/gedit-search.page:79(list/title)
 msgid "Search tips"
 msgstr "Suchtipps"
 
-#: C/gedit-search.page:77(item/p)
+#: C/gedit-search.page:81(item/p)
 msgid ""
 "If you highlight a portion of text with your mouse, and then press "
 "<keyseq><key>Ctrl</key><key>F</key></keyseq>, the text you've highlighted "
@@ -2504,17 +2595,36 @@ msgstr ""
 "<keyseq><key>Strg</key><key>F</key></keyseq> drücken, erscheint der "
 "hervorgehobene Text im Suchfenster."
 
-#: C/gedit-search.page:82(item/p)
+#: C/gedit-search.page:86(item/p)
+#, fuzzy
+#| msgid ""
+#| "For advanced search options, you can click on the <gui style=\"button"
+#| "\">Magnifying Glass</gui> icon in the search window, or you can right-"
+#| "click on any portion of the search window."
 msgid ""
-"For advanced search options, you can click on the <gui style=\"button"
-"\">Magnifying Glass</gui> icon in the search window, or you can right-click "
-"on any portion of the search window."
+"For more search options, click on the <gui style=\"button\">Magnifying "
+"Glass</gui> icon in the search window, or right-click anywhere in the search "
+"window. You can select one or more of the following search options:"
 msgstr ""
 "Erweiterte Suchoptionen erreichen Sie, indem Sie auf das <gui style=\"button"
 "\">Lupensymbol</gui> im Suchfenster klicken oder einen Klick mit der rechten "
 "Maustaste auf einer beliebigen Stelle des Suchfensters ausführen."
 
-#: C/gedit-search.page:87(item/p)
+#: C/gedit-search.page:92(item/p)
+msgid "Select <gui>Match Case</gui> to make the search case sensitive."
+msgstr ""
+
+#: C/gedit-search.page:95(item/p)
+msgid "Select <gui>Match Entire Word Only</gui> to search only complete words."
+msgstr ""
+
+#: C/gedit-search.page:99(item/p)
+msgid ""
+"Select <gui>Wrap Around</gui> to search text from top to bottom and cycle "
+"back again."
+msgstr ""
+
+#: C/gedit-search.page:105(item/p)
 msgid ""
 "The text that you've searched for will remain highlighted by gedit, even "
 "after you have completed your search. To remove the highlight, click "
@@ -3001,6 +3111,10 @@ msgid ""
 "displayed in bold style next to <gui>Misspelled word:</gui>. You can choose "
 "from the following corrective actions:"
 msgstr ""
+"Sie können die korrekte Ersetzung für falsch geschriebene Wörter im Dialog "
+"»Rechtschreibung« prüfen wählen. Das falsch geschriebene Wort in Prüfung "
+"wird in fetter Schrift neben <gui>Falsch geschriebenes Wort:</gui> "
+"angezeigt. Sie können eine der folgenden korrigierenden Aktionen wählen:"
 
 #: C/gedit-spellcheck.page:76(item/p)
 msgid ""
@@ -3041,6 +3155,9 @@ msgid ""
 "word with <em>a</em> chosen substitute from the <gui style=\"menuitem"
 "\">Suggestions:</gui> list."
 msgstr ""
+"<gui style=\"button\">Ändern</gui> ersetzt das falsch geschriebene oder "
+"unbekannte Wort mit <em>einem</em> gewählten Ersatz aus der Liste der <gui "
+"style=\"menuitem\">Vorschläge:</gui> ."
 
 #: C/gedit-spellcheck.page:98(item/p)
 msgid ""
@@ -3048,6 +3165,9 @@ msgid ""
 "unrecognized words with the chosen substitute from the <gui style=\"menuitem"
 "\">Suggestions:</gui> list."
 msgstr ""
+"<gui style=\"button\">Alle ändern</gui> ersetzt <em>alle</em> falsch "
+"geschriebenen oder unbekannten Wörter mit dem gewählten Ersatz aus der Liste "
+"der <gui style=\"menuitem\">Vorschläge:</gui>."
 
 #: C/gedit-spellcheck.page:103(item/p)
 msgid ""
@@ -3403,30 +3523,12 @@ msgstr ""
 "einzusehen, oder senden Sie einen Brief an: Creative Commons, 444 Castro "
 "Street, Suite 900, Mountain View, California, 94041, USA."
 
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-icon.png' "
-#~ "md5='a7174de2671462e1ac4f80a82ad09184'"
-#~ msgstr "original"
-
 #~ msgid ""
 #~ "<media type=\"image\" mime=\"image/png\" src=\"figures/gedit-icon.png\"> "
 #~ "</media> gedit Text Editor"
 #~ msgstr ""
 #~ "<media type=\"image\" mime=\"image/png\" src=\"figures/gedit-icon.png\"> "
 #~ "</media> gedit Texteditor"
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-side-pane1.png' "
-#~ "md5='ac9c80cb0552d63b593c71f23be69b53'"
-#~ msgstr "original"
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-side-pane2.png' "
-#~ "md5='e7a12a43adc9c9cb8c992ad22a815a57'"
-#~ msgstr "original"
 
 #~ msgid "Record commonly-referenced locations with bookmarks"
 #~ msgstr "Speichern häufig verwendeter Stellen in Lesezeichen"
@@ -3989,1006 +4091,3 @@ msgstr ""
 
 #~ msgid "You can also set the plugin to mark:"
 #~ msgstr "Sie können das Plugin auch verwenden, um Folgendes zu markieren:"
-
-# Zeilenumbrüche?
-#~ msgid "New Lines"
-#~ msgstr "Zeilenumbrüche"
-
-#~ msgid "Non-breaking spaces"
-#~ msgstr "Geschützte Leerzeichen"
-
-#~ msgid ""
-#~ "Though you will be able to see the dots when you work on a file, the dots "
-#~ "will not be visible when you print a file to paper."
-#~ msgstr ""
-#~ "Obwohl Sie nun die Punkte während der Bearbeitung einer Datei sehen "
-#~ "können, sind diese beim Ausdrucken auf Papier nicht sichtbar."
-
-#~ msgid "Join several lines of text, or split long lines"
-#~ msgstr "Textzeilen zusammenfassen oder lange Zeilen teilen"
-
-#~ msgid "Join/Split lines"
-#~ msgstr "Zeilen zusammenfügen/umbrechen"
-
-#~ msgid ""
-#~ "The <app>Join/Split Lines</app> plugin can join shorter lines into one "
-#~ "longer line, or can split a long line into multiple shorter lines."
-#~ msgstr ""
-#~ "Das <app>Zeilen zusammenfügen/umbrechen</app>-Plugin kann kurze Zeilen zu "
-#~ "einer längeren Zeile zusammenfassen oder längere Zeilen in kürzere Zeilen "
-#~ "umbrechen."
-
-#~ msgid ""
-#~ "To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> "
-#~ "<gui style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Join/"
-#~ "Split Lines</gui></guiseq>."
-#~ msgstr ""
-#~ "Um das Plugin zu aktivieren, wählen Sie <guiseq><gui style=\"menu"
-#~ "\">gedit</gui><gui style=\"menuitem\">Einstellungen</gui><gui>Plugins</"
-#~ "gui><gui>Zeilen zusammenfügen/umbrechen</gui></guiseq>."
-
-#~ msgid "To join multiple lines into one longer line:"
-#~ msgstr "So fügen Sie mehrere Zeilen zu einer längeren Zeile zusammen:"
-
-#~ msgid ""
-#~ "Select the lines that you want to join. To do this, you can use the "
-#~ "mouse, or you can press <keyseq><key>Shift</key><key>Up Arrow</key> </"
-#~ "keyseq> or <keyseq><key>Shift</key><key>Down Arrow</key></keyseq>."
-#~ msgstr ""
-#~ "Wählen Sie die Zeilen, die Sie zusammenführen wollen. Dazu können Sie "
-#~ "entweder die Maus verwenden, oder drücken Sie <keyseq><key>Umschalttaste</"
-#~ "key><key>Pfeiltaste hoch</key></keyseq> oder <keyseq><key>Umschalttaste</"
-#~ "key><key>Pfeiltaste runter</key></keyseq>."
-
-#~ msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
-#~ msgstr "Drücken Sie <keyseq><key>Strg</key><key>J</key></keyseq>."
-
-#~ msgid "The lines that you selected will be joined into one longer line."
-#~ msgstr ""
-#~ "Die gewählten Zeilen werden zu einer längeren Zeile zusammengefasst."
-
-#~ msgid "To split one line into multiple lines:"
-#~ msgstr "So teilen Sie eine Zeile in mehrere Zeilen:"
-
-#~ msgid ""
-#~ "Select the line that you want to split by placing your cursor anywhere on "
-#~ "that line."
-#~ msgstr ""
-#~ "Wählen Sie die zu teilende Zeile aus, indem Sie den Eingabecursor an "
-#~ "einer beliebigen Stelle in dieser Zeile platzieren."
-
-#~ msgid "Press <keyseq><key>Ctrl</key><key>Shift</key><key>J</key></keyseq>."
-#~ msgstr ""
-#~ "Drücken Sie <keyseq><key>Strg</key><key>Umschalttaste</key><key>J</key></"
-#~ "keyseq>."
-
-#~ msgid ""
-#~ "The line will be split into multiple lines. Spaces are used to determine "
-#~ "where it is safe to split a line, and the length of each line will not "
-#~ "exceed 80 characters."
-#~ msgstr ""
-#~ "Die Zeile wird in mehrere Zeilen unterteilt. Leerzeichen werden dazu "
-#~ "verwendet, einen sicheren Platz zum Teilen der Zeile zu finden. Die Länge "
-#~ "jeder Zeile wird 80 Zeichen nicht überschreiten."
-
-#~ msgid "2011"
-#~ msgstr "2011"
-
-#~ msgid "Edit a document in multiple places at once"
-#~ msgstr "Ein Dokument an mehreren Stellen gleichzeitig bearbeiten"
-
-#~ msgid "Multi edit"
-#~ msgstr "Mehrfachbearbeitung"
-
-#~ msgid ""
-#~ "The <app>Multi Edit</app> plugin allows you to edit a document in "
-#~ "multiple places at once. This can be helpful when performing tedious "
-#~ "editing tasks. To enable the Multi Edit plugin, select <guiseq><gui style="
-#~ "\"menu\">gedit</gui><gui> Preferences</gui><gui>Plugins</gui><gui>Multi "
-#~ "Edit</gui></guiseq>."
-#~ msgstr ""
-#~ "Das <app>Mehrfachbearbeitung</app>-Plugin ermöglicht Ihnen die "
-#~ "Bearbeitung eines Dokuments an verschiedenen Stellen gleichzeitig. Dies "
-#~ "kann bei ermüdenden Bearbeitungsroutinen sinnvoll sein. Um dieses Plugin "
-#~ "zu aktivieren, wählen Sie <guiseq><gui style=\"menu\">gedit</gui><gui "
-#~ "style=\"menuitem\">Einstellungen</gui><gui>Plugins</"
-#~ "gui><gui>Mehrfachbearbeitung</gui></guiseq>."
-
-#~ msgid ""
-#~ "After you have enabled the plugin, turn-on Multi Edit mode by pressing "
-#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>C</key></keyseq>, or clicking "
-#~ "<guiseq><gui style=\"menu\">gedit</gui><gui>Multi Edit Mode</gui></"
-#~ "guiseq>. You can then select the points in your file that you would like "
-#~ "start editing."
-#~ msgstr ""
-#~ "Nachdem Sie das Plugin aktiviert haben, schalten Sie mit der "
-#~ "Tastenkombination <keyseq><key>Strg</key><key>Umschalttaste</key><key>C</"
-#~ "key></keyseq> oder durch Wählen von <guiseq><gui style=\"menu\">gedit</"
-#~ "gui><gui>Mehrfachbearbeitungsmodus</gui></guiseq> den "
-#~ "Mehrfachbearbeitungsmodus ein. Sie können dann die Stellen in Ihrer Datei "
-#~ "auswählen, an denen Sie mit der Bearbeitung beginnen wollen."
-
-#~ msgid "To insert editing points in your file:"
-#~ msgstr "So fügen Sie Bearbeitungspunkte in Ihre Datei ein:"
-
-#~ msgid "Place your cursor at your first desired editing point."
-#~ msgstr ""
-#~ "Platzieren Sie den Eingabezeiger am ersten der gewünschten "
-#~ "Bearbeitungspunkte."
-
-#~ msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
-#~ msgstr "Drücken Sie <keyseq><key>Strg</key><key>E</key></keyseq>."
-
-#~ msgid ""
-#~ "Move to your next editing point, and press <keyseq><key>Ctrl</key> "
-#~ "<key>E</key></keyseq> again."
-#~ msgstr ""
-#~ "Springen Sie zum nächsten Bearbeitungspunkt und drücken Sie erneut "
-#~ "<keyseq><key>Strg</key><key>E</key></keyseq>."
-
-#~ msgid "Continue inserting editing points, adding as many as you need."
-#~ msgstr "Fügen Sie weitere Bearbeitungspunkte ein, so viele wie gewünscht."
-
-#~ msgid ""
-#~ "Once you have inserted all of your editing points, you can make your "
-#~ "desired edits."
-#~ msgstr ""
-#~ "Sobald Sie alle Bearbeitungspunkte eingefügt haben, können Sie Ihre "
-#~ "Bearbeitungen vornehmen."
-
-#~ msgid ""
-#~ "To remove editing points, press the <key>Esc</key> key. This will remove "
-#~ "all of the editing points. Pressing the <key>Esc</key> key again will "
-#~ "turn off Multi Edit mode, returning the editor back to its normal state."
-#~ msgstr ""
-#~ "Um Bearbeitungspunkte zu entfernen, drücken Sie die <key>Esc</key>-Taste. "
-#~ "Dadurch werden sämtliche Bearbeitungspunkte entfernt. Durch erneutes "
-#~ "Drücken der <key>Esc</key>-Taste wird der Mehrfachbearbeitungsmodus "
-#~ "abgeschaltet und der Editor kehrt in den Normalzustand zurück."
-
-#~ msgid "Save and restore your working sessions"
-#~ msgstr "Ihre laufenden Sitzungen speichern und wiederherstellen"
-
-#~ msgid "Session Saver"
-#~ msgstr "Sitzungsspeicherung"
-
-#~ msgid ""
-#~ "The <app>Session Saver</app> plugin saves groups of files together so "
-#~ "that you can open them together at a later time. To enable the plugin, "
-#~ "select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#~ "\">Preferences</gui><gui>Plugins</gui> <gui>Session Saver</gui></guiseq>."
-#~ msgstr ""
-#~ "Das <app>Sitzungsspeicherung</app>-Plugin gruppiert Dateien, so dass Sie "
-#~ "sie später alle auf einmal öffnen können. Um dieses Plugin zu aktivieren, "
-#~ "wählen Sie <guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem"
-#~ "\">Einstellungen</gui><gui>Plugins</gui><gui>Sitzungsspeicherung</gui></"
-#~ "guiseq>."
-
-#~ msgid "To save a new session:"
-#~ msgstr "So speichern Sie eine neue Sitzung:"
-
-#~ msgid ""
-#~ "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui><gui>Save current "
-#~ "session</gui></guiseq>."
-#~ msgstr ""
-#~ "Wählen Sie <guiseq><gui>Datei</gui><gui>Gespeicherte Sitzungen</"
-#~ "gui><gui>Die aktuelle Sitzung speichern</gui></guiseq>."
-
-#~ msgid "Type a session name in the <gui>Save session</gui> dialog box."
-#~ msgstr ""
-#~ "Geben Sie einen Sitzungsnamen in das Dialogfeld <gui>Sitzung speichern</"
-#~ "gui> ein."
-
-#~ msgid "Click <gui>Save</gui>."
-#~ msgstr "Klicken Sie auf <gui>Speichern</gui>."
-
-#~ msgid "To open an existing session:"
-#~ msgstr "So öffnen Sie eine existierende Sitzung:"
-
-#~ msgid "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui></guiseq>."
-#~ msgstr ""
-#~ "Wählen Sie <guiseq><gui>Datei</gui><gui>Gespeicherte Sitzungen</gui></"
-#~ "guiseq>."
-
-#~ msgid "Click the name of your desired session."
-#~ msgstr "Klicken Sie auf den Namen der gewünschten Sitzung."
-
-#~ msgid "To delete an existing session:"
-#~ msgstr "So löschen Sie eine existierende Sitzung:"
-
-#~ msgid ""
-#~ "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui><gui> Manage saved "
-#~ "sessions</gui></guiseq>."
-#~ msgstr ""
-#~ "Wählen Sie <guiseq><gui>Datei</gui><gui>Gespeicherte Sitzungen</"
-#~ "gui><gui>Gespeicherte Sitzungen verwalten</gui></guiseq>."
-
-#~ msgid "Select the name of the session that you want to delete."
-#~ msgstr "Wählen Sie den Namen der Sitzung, die Sie löschen wollen."
-
-#~ msgid "Click <gui>Delete</gui>."
-#~ msgstr "Klicken Sie auf <gui>Löschen</gui>."
-
-#~ msgid ""
-#~ "The session name will still be listed in your list of sessions until you "
-#~ "close <app>gedit</app>."
-#~ msgstr ""
-#~ "Der Sitzungsname wird noch in der Sitzungsliste angezeigt, bis Sie "
-#~ "<app>gedit</app> schließen."
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-side-pane3.png' "
-#~ "md5='4b800d370193ac0ed8db9eb33b86e11c'"
-#~ msgstr "original"
-
-#~ msgid ""
-#~ "Automatically insert tags, strings and special characters into a document"
-#~ msgstr ""
-#~ "Markierungen, Zeichenketten und Sonderzeichen automatisch in ein Dokument "
-#~ "einfügen"
-
-#~ msgid "Tag list"
-#~ msgstr "Floskelliste"
-
-#~ msgid ""
-#~ "The <app>Tag List</app> plugin allows you to insert common tags and "
-#~ "special characters from a list in the side pane. By default, the plugin "
-#~ "can insert tags and special characters for <app>HTML</app>, <app>XHTML</"
-#~ "app>, <app>XSLT</app>, <app>XUL</app> and <app>LaTeX</app>."
-#~ msgstr ""
-#~ "Das <app>Floskellisten</app>-Plugin ermöglicht Ihnen das Einfügen "
-#~ "üblicher Markierungen und Sonderzeichen aus einer Liste in der "
-#~ "Seitenleiste. Standardmäßig fügt das Plugin Markierungen und "
-#~ "Sonderzeichen für <app>HTML</app>, <app>XHTML</app>, <app>XSLT</app>, "
-#~ "<app>XUL</app> und <app>LaTeX</app> ein."
-
-#~ msgid "Enable Tag List Plugin"
-#~ msgstr "Das Floskellisten-Plugin aktivieren"
-
-#~ msgid "To enable the <app>Tag List</app> plugin:"
-#~ msgstr "So aktivieren Sie das <app>Floskellisten</app>-Plugin:"
-
-#~ msgid "Select <gui style=\"menuitem\">Tag List</gui> to enable the plugin."
-#~ msgstr ""
-#~ "Wählen Sie <gui style=\"menuitem\">Floskelliste</gui>, um das Plugin zu "
-#~ "aktivieren."
-
-#~ msgid ""
-#~ "Access the tag list by selecting <guiseq><gui style=\"menu\">View</gui> "
-#~ "<gui style=\"menuitem\">Side Pane</gui></guiseq>, or by pressing <key>F9</"
-#~ "key>."
-#~ msgstr ""
-#~ "Um auf die Floskelliste zuzugreifen, wählen Sie <guiseq><gui style=\"menu"
-#~ "\">Ansicht</gui><gui style=\"menuitem\">Seitenleiste</gui></guiseq> oder "
-#~ "drücken Sie <key>F9</key>."
-
-#~ msgid ""
-#~ "The side pane will initially show a list of open documents, so to view "
-#~ "and use the <app>Tag List</app>, you will need to click on the tab "
-#~ "showing the \"plus\" icon at the bottom of the side pane. The icon will "
-#~ "look similar to this:"
-#~ msgstr ""
-#~ "Die Seitenleiste zeigt anfänglich eine Liste der geöffneten Dokumente an. "
-#~ "Um die <app>Floskelliste</app> anzuzeigen und nutzen zu können, klicken "
-#~ "Sie auf den Reiter mit dem »Plus«-Symbol am unteren Rand der "
-#~ "Seitenleiste. Das Symbol sieht in etwa so aus:"
-
-#~ msgid "Inserting Tags and Special Characters"
-#~ msgstr "Einfügen von Markierungen und Sonderzeichen"
-
-#~ msgid ""
-#~ "The <app>tag list</app> uses a drop-down menu to let you choose from the "
-#~ "different types of tags. For example, one tag option is <gui>HTML - Tags</"
-#~ "gui>."
-#~ msgstr ""
-#~ "Die <app>Floskelliste</app> verwendet ein ausklappbares Auswahlmenü, in "
-#~ "dem Sie direkt die verschiedenen Typen von Markierungen auswählen können. "
-#~ "Eines davon ist beispielsweise <gui>HTML - Kennzeichnungen</gui>."
-
-#~ msgid "To start inserting tags, complete the following:"
-#~ msgstr "Eine neue Markierung können Sie auf die folgende Weise erstellen:"
-
-#~ msgid ""
-#~ "Move the cursor to where you will want to insert the tag or special "
-#~ "character."
-#~ msgstr ""
-#~ "Bewegen Sie die Eingabemarke dahin, wo Sie die Markierung oder das "
-#~ "Sonderzeichen einfügen wollen."
-
-#~ msgid ""
-#~ "Select the desired tag type from the drop-down menu at the top of the "
-#~ "side pane."
-#~ msgstr ""
-#~ "Wählen Sie die gewünschte Markierung in der Auswahlliste im oberen "
-#~ "Bereich der Seitenleiste aus."
-
-#~ msgid "Scroll through the list to find the desired tag or character."
-#~ msgstr ""
-#~ "Blättern Sie in der Floskelliste nach der gewünschten Markierung oder dem "
-#~ "Zeichen."
-
-#~ msgid "Double-click on the tag in the tag list."
-#~ msgstr "Doppelklicken Sie auf die Markierung in der Markierungsliste."
-
-#~ msgid ""
-#~ "The tag or special character you have chosen will then be displayed in "
-#~ "your document."
-#~ msgstr ""
-#~ "Die gewählte Markierung oder das gewählte Sonderzeichen wird nun in Ihrem "
-#~ "Dokument angezeigt."
-
-#~ msgid "Tag List Tips"
-#~ msgstr "Tipps zur Floskelliste"
-
-#~ msgid ""
-#~ "You can also insert a tag by pressing <key>Return</key> or "
-#~ "<keyseq><key>Shift</key><key>Return</key></keyseq>."
-#~ msgstr ""
-#~ "Sie können eine Markierung auch durch Drücken der <key>Eingabetaste</key> "
-#~ "oder der Tastenkombination <keyseq><key>Umschalttaste</"
-#~ "key><key>Eingabetaste</key></keyseq> einfügen."
-
-#~| msgid ""
-#~| "Pressing the <key>Return</key> key will insert the tag at the cursor "
-#~| "position, and then return focus to the document. Pressing "
-#~| "<keyseq><key>Shift</key><key>Return</key></keyseq> will insert the tag "
-#~| "at the cursor position, but will keep the focus on the <app>tag- list</"
-#~| "app>."
-#~ msgid ""
-#~ "Pressing the <key>Return</key> key will insert the tag at the cursor "
-#~ "position, and then return focus to the document. Pressing "
-#~ "<keyseq><key>Shift</key><key>Return</key></keyseq> will insert the tag at "
-#~ "the cursor position, but will keep the focus on the <app>tag-list</app>."
-#~ msgstr ""
-#~ "Ein Druck auf die <key>Eingabetaste</key> fügt die Floskel an der "
-#~ "Position der Eingabemarke ein und gibt den Fokus an das Dokument zurück. "
-#~ "Durch Drücken der Tastenkombination <keyseq><key>Umschalttaste</"
-#~ "key><key>Eingabetaste</key></keyseq> wird die Floskel ebenfalls an der "
-#~ "Eingabemarke eingefügt, aber der Fokus verbleibt in der "
-#~ "<app>Floskelliste</app>."
-
-#~ msgid ""
-#~ "You can see a preview of what text will be inserted for each tag and "
-#~ "special character by clicking on the word the <gui>Preview</gui> at the "
-#~ "bottom of the side pane."
-#~ msgstr ""
-#~ "Klicken Sie auf <gui>Vorschau</gui> am unteren Ende der Seitenleiste, um "
-#~ "eine Vorschau auf den einzufügenden Text oder das einzufügende "
-#~ "Sonderzeichen zu erhalten."
-
-#~ msgid "Add a terminal console to the bottom pane"
-#~ msgstr "Eine Terminalkonsole am unteren Rand hinzufügen"
-
-#~ msgid "Embedded terminal"
-#~ msgstr "Eingebettetes Terminal"
-
-#~ msgid ""
-#~ "<app>gedit</app> makes it possible to include an embedded version of "
-#~ "<app>GNOME Terminal</app>, the GNOME command-line application, in the "
-#~ "bottom pane of the <app>gedit</app> window. This will let you run "
-#~ "scripts, install needed software, or test your program without leaving "
-#~ "<app>gedit</app>."
-#~ msgstr ""
-#~ "<app>gedit</app> kann eine eingebettete Version von <app>Gnome Terminal</"
-#~ "app> anzeigen, der Befehlszeilenanwendung in GNOME. Diese wird am unteren "
-#~ "Rand des <app>gedit</app>-Hauptfensters angezeigt. Auf diese Weise können "
-#~ "Sie Skripte ausführen, benötigte Software installieren oder Ihr Programm "
-#~ "testen, ohne <app>gedit</app> zu verlassen."
-
-#~ msgid "Enable Embedded Terminal"
-#~ msgstr "Eingebettetes Terminal aktivieren"
-
-#~ msgid "To enable the Embedded Terminal plugin:"
-#~ msgstr "So aktivieren Sie das Plugin für das eingebettete Terminal:"
-
-#~| msgid "Select <gui>Embedded Terminal</gui> to enable the plugin."
-#~ msgid ""
-#~ "Select <gui style=\"menuitem\">Embedded Terminal</gui> to enable the "
-#~ "plugin."
-#~ msgstr ""
-#~ "Wählen Sie <gui style=\"menuitem\">Eingebettetes Terminal</gui>, um das "
-#~ "Plugin zu aktivieren."
-
-#~ msgid "Using Embedded Terminal"
-#~ msgstr "Eingebettetes Terminal verwenden"
-
-#~ msgid ""
-#~ "Once you have enabled the plugin, to add a terminal to the bottom pane:"
-#~ msgstr ""
-#~ "Sobald das Plugin aktiviert ist, können Sie folgendermaßen ein Terminal "
-#~ "der unteren Leiste hinzufügen:"
-
-#~ msgid ""
-#~ "Select <guiseq><gui style=\"menu\">View</gui> <gui style=\"menuitem"
-#~ "\">Bottom Pane</gui></guiseq>. Alternatively, you can press "
-#~ "<keyseq><key>Ctrl</key><key>F9</key></keyseq>."
-#~ msgstr ""
-#~ "Wählen Sie <guiseq><gui style=\"menu\">Ansicht</gui><gui style=\"menuitem"
-#~ "\">Untere Leiste</gui></guiseq> oder drücken Sie <keyseq><key>Strg</"
-#~ "key><key>F9</key></keyseq>."
-
-#~ msgid "Increase or decrease text size"
-#~ msgstr "Die Textgröße erhöhen oder verringern"
-
-#~ msgid "Text Size"
-#~ msgstr "Textgröße"
-
-#~ msgid ""
-#~ "The text size plugin allows you to temporarily change the text size for "
-#~ "better readibility in <app>gedit</app> without changing the program's "
-#~ "default text size."
-#~ msgstr ""
-#~ "Das <app>Textgröße</app>-Plugin ermöglicht das vorübergehende Ändern der "
-#~ "Textgröße in <app>gedit</app>, ohne die vorgegebene Textgröße des "
-#~ "Programms zu ändern."
-
-#~ msgid "Enable Text Size Plugin"
-#~ msgstr "Plugin für Textgröße aktivieren"
-
-#~ msgid "To enable Text Size plugin:"
-#~ msgstr "So aktivieren Sie das Plugin für die Textgröße:"
-
-#~ msgid "Select <gui style=\"menuitem\">Text Size</gui> to enable the plugin."
-#~ msgstr ""
-#~ "Wählen Sie <gui style=\"menuitem\">Textgröße</gui>, um das Plugin zu "
-#~ "aktivieren."
-
-#~ msgid "Use Text Size Plugin"
-#~ msgstr "Plugins für Textgröße verwenden"
-
-#~ msgid ""
-#~ "Once you have enabled the plugin, do any of the following to change the "
-#~ "text size in <app>gedit</app>:"
-#~ msgstr ""
-#~ "Sobald das Plugin aktiviert ist, können Sie folgendermaßen die Textgröße "
-#~ "in <app>gedit</app> ändern:"
-
-#~ msgid ""
-#~ "To <em>increase</em> the text size, press <keyseq><key>Ctrl</key><key>+</"
-#~ "key></keyseq>."
-#~ msgstr ""
-#~ "Um die Textgröße zu <em>erhöhen</em>, drücken Sie <keyseq><key>Strg</"
-#~ "key><key>+</key></keyseq>."
-
-#~ msgid ""
-#~ "To <em>decrease</em> the text size, press <keyseq><key>Ctrl</key><key>-</"
-#~ "key></keyseq>."
-#~ msgstr ""
-#~ "Um die Textgröße zu <em>verringern</em>, drücken Sie <keyseq><key>Strg</"
-#~ "key><key>-</key></keyseq>."
-
-#~ msgid ""
-#~ "To <em>reset</em> the text size to the default size, press "
-#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq>."
-#~ msgstr ""
-#~ "Um die Textgröße auf den vorgegebenen Wert <em>zurückzusetzen</em>, "
-#~ "drücken Sie <keyseq><key>Strg</key><key>0</key></keyseq>."
-
-#~ msgid "Autocomplete words or portions of code as you type"
-#~ msgstr ""
-#~ "Wörter oder Code-Bestandteile beim Eingeben automatisch vervollständigen"
-
-#~ msgid "Word completion"
-#~ msgstr "Wortvervollständigung"
-
-#~ msgid ""
-#~ "The <app>Word Completion</app> plugin can speed up your editing by "
-#~ "suggesting completions of words as you type. To enable the plugin:"
-#~ msgstr ""
-#~ "Das <app>Wortvervollständigung</app>-Plugin beschleunigt die Bearbeitung, "
-#~ "indem die Vervollständigung von Wörtern bereits bei der Eingabe "
-#~ "vorgeschlagen wird. So aktivieren Sie das Plugin:"
-
-#~ msgid ""
-#~ "Select <guiseq><gui style=\"menu\">Edit</gui> <gui style=\"menuitem"
-#~ "\">Preferences</gui> <gui style=\"tab\">Plugins</gui></guiseq>."
-#~ msgstr ""
-#~ "Wählen Sie <guiseq><gui style=\"menu\">Bearbeiten</gui><gui style="
-#~ "\"menuitem\">Einstellungen</gui><gui style=\"tab\">Plugins</gui></guiseq>."
-
-#~ msgid ""
-#~ "Select <gui style=\"menuitem\">Word Completion</gui> to enable the plugin."
-#~ msgstr ""
-#~ "Wählen Sie <gui style=\"menuitem\">Wortvervollständigung</gui>, um das "
-#~ "Plugin zu aktivieren."
-
-#~ msgid ""
-#~ "While editing, the <app>Word Completion</app> plugin will automatically "
-#~ "display a pop-up list of words that begin with the letters you have "
-#~ "already typed. Word suggestions are based upon words that appear "
-#~ "elsewhere in your document and upon pre-defined keywords if your document "
-#~ "is of a recognised format."
-#~ msgstr ""
-#~ "Das Plugin <app>Wortvervollständigung</app> zeigt automatisch während der "
-#~ "Bearbeitung eine Einblendliste mit Wörtern an, die mit den bereits "
-#~ "eingegebenen Buchstaben beginnen. Die vorgeschlagenen Wörter werden aus "
-#~ "bereits in Ihrem Dokument enthaltenen Wörtern ermittelt, oder aus "
-#~ "vordefinierten Schlüsselwörtern, falls das Dokumentformat erkannt wurde."
-
-#~ msgid ""
-#~ "To insert a suggested word, double-click on it in the pop-up list or "
-#~ "press <keyseq><key>Alt</key><key>Num</key></keyseq>, where <key>Num</key> "
-#~ "is the number displayed next to your desired word."
-#~ msgstr ""
-#~ "Um ein vorgeschlagenes Wort einzufügen, doppelklicken Sie in der "
-#~ "Einblendliste darauf oder drücken Sie <keyseq><key>Alt</key><key>Zahl</"
-#~ "key></keyseq>, wobei <key>Zahl</key> die Nummer ist, die neben dem "
-#~ "gewünschten Wort angezeigt wird."
-
-#~ msgid "Once you've enabled it, here is how to use the plugin:"
-#~ msgstr "Sobald das Plugin aktiviert ist, verwenden Sie es folgendermaßen:"
-
-#~ msgid ""
-#~ "The <app>Quick Open</app> plugin will only display files that you have "
-#~ "previously opened."
-#~ msgstr ""
-#~ "Das Plugin <app>Schnelles Öffnen</app> zeigt nur Dateien an, die Sie "
-#~ "bereits einmal geöffnet hatten."
-
-#~ msgid ""
-#~ "To enable the <app>Snippets</app> plugin, select <guiseq><gui style=\"menu"
-#~ "\">gedit</gui> <gui style=\"menuitem\">Preferences</gui><gui>Plugins</"
-#~ "gui><gui>Snippets</gui></guiseq>."
-#~ msgstr ""
-#~ "Um das <app>Schnipsel</app>-Plugin zu aktivieren, wählen Sie <guiseq><gui "
-#~ "style=\"menu\">gedit</gui><gui style=\"menuitem\">Einstellungen</"
-#~ "gui><gui>Plugins</gui><gui>Schnipsel</gui></guiseq>."
-
-#~ msgid "Using, Modifying and creating snippets"
-#~ msgstr "Verwenden, Bearbeiten und Erstellen von Schnipseln"
-
-#~ msgid "Inserting snippets of text into your files"
-#~ msgstr "Textschnipsel in Ihre Datei einfügen"
-
-#~ msgid "The following points will help you get started with using snippets:"
-#~ msgstr ""
-#~ "Die folgenden Punkte sollten Sie beim Einstieg in die Arbeit mit "
-#~ "Textschnipseln bedenken:"
-
-#~ msgid "Make sure the syntax is set appropriately."
-#~ msgstr "Stellen Sie sicher, dass die Syntax entsprechend eingestellt ist."
-
-#~ msgid "Review the default snippets."
-#~ msgstr "Schauen Sie sich die Standardschnipsel an."
-
-#~ msgid ""
-#~ "Select <guiseq><gui>Tools</gui><gui>Manage Snippets</gui></guiseq>. "
-#~ "Review the snippets that are available for your language or syntax. Find "
-#~ "some basic snippets that you think might be useful for you."
-#~ msgstr ""
-#~ "Wählen Sie <guiseq><gui>Werkzeuge</gui><gui>Schnipsel verwalten</gui></"
-#~ "guiseq>. Schauen Sie sich die Schnipsel an, die für ihre Sprache oder "
-#~ "Syntax zur Verfügung stehen. Suchen Sie sich zunächst die Schnipsel "
-#~ "heraus, die möglicherweise für Sie von Nutzen sein könnten."
-
-#~ msgid "Try using some of the snippets."
-#~ msgstr "Probieren Sie einige der Schnipsel aus."
-
-#~ msgid ""
-#~ "To enable the <app>Sort</app> plugin, select <guiseq><gui style=\"menu"
-#~ "\">gedit</gui> <gui style=\"menuitem\">Preferences</gui><gui>Plugins</"
-#~ "gui><gui>Sort</gui></guiseq>."
-#~ msgstr ""
-#~ "Um das <app>Sortieren</app>-Plugin zu aktivieren, wählen Sie <guiseq><gui "
-#~ "style=\"menu\">gedit</gui><gui style=\"menuitem\">Einstellungen</"
-#~ "gui><gui>Plugins</gui><gui>Sortieren</gui></guiseq>."
-
-#~ msgid ""
-#~ "After you have enabled the <gui>Sort</gui> plugin, use it by selecting "
-#~ "the lines of text you want to sort, and then clicking <guiseq><gui style="
-#~ "\"menu\">gedit</gui><gui>Sort</gui></guiseq>."
-#~ msgstr ""
-#~ "Sobald Sie das <gui>Sortieren</gui>-Plugin aktiviert haben, wählen Sie "
-#~ "die zu sortierenden Textzeilen aus und klicken Sie auf <guiseq><gui style="
-#~ "\"menu\">gedit</gui><gui>Sortieren</gui></guiseq>."
-
-#~ msgid ""
-#~ "To use the <app>Tag List</app> plugin, you will need to enable the "
-#~ "plugin, and then activate the tag-list portion of the side pane."
-#~ msgstr ""
-#~ "Um das <app>Floskellisten</app>-Plugin verwenden zu können, müssen Sie es "
-#~ "zunächst aktivieren und anschließend den Floskellistenbereich der "
-#~ "Seitenleiste aktivieren."
-
-#~ msgid ""
-#~ "You can activate the plugin by selecting <guiseq><gui style=\"menu"
-#~ "\">gedit</gui> <gui style=\"menuitem\">Preferences</gui><gui>Plugins</"
-#~ "gui><gui>Tag List</gui></guiseq>. Once you have activated the plugin, "
-#~ "access it by selecting <guiseq><gui>View</gui><gui>Side Pane</gui></"
-#~ "guiseq>, or by pressing <key>F9</key>."
-#~ msgstr ""
-#~ "Um das Plugin zu aktivieren, wählen Sie <guiseq><gui style=\"menu"
-#~ "\">gedit</gui><gui style=\"menuitem\">Einstellungen</gui><gui>Plugins</"
-#~ "gui><gui>Floskelliste</gui></guiseq>. Sobald Sie das Plugin aktiviert "
-#~ "haben, können Sie über das Menü <guiseq><gui>Ansicht</"
-#~ "gui><gui>Seitenleiste</gui></guiseq> oder durch Drücken von <key>F9</key> "
-#~ "darauf zugreifen."
-
-#~ msgid ""
-#~ "To enable this plugin, select <guiseq><gui style=\"menu\">gedit</gui> "
-#~ "<gui style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Embedded "
-#~ "Terminal</gui></guiseq>."
-#~ msgstr ""
-#~ "Um dieses Plugin zu aktivieren, wählen Sie <guiseq><gui style=\"menu"
-#~ "\">gedit</gui><gui style=\"menuitem\">Einstellungen</gui><gui>Plugins</"
-#~ "gui><gui>Eingebettetes Terminal</gui></guiseq>."
-
-#~ msgid ""
-#~ "Once you have enabled the plugin, add the terminal to the bottom pane by "
-#~ "selecting <guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just "
-#~ "press <keyseq><key>Ctrl</key><key>F9</key></keyseq>."
-#~ msgstr ""
-#~ "Sobald Sie das Plugin aktiviert haben, wählen Sie zum Hinzufügen des "
-#~ "Terminals in der unteren Leiste <guiseq><gui>Ansicht</gui><gui>Fußleiste</"
-#~ "gui></guiseq> oder drücken Sie <keyseq><key>Strg</key><key>F9</key></"
-#~ "keyseq>."
-
-#~ msgctxt "_"
-#~ msgid "external ref='reverse-collate.png' md5='__failed__'"
-#~ msgstr "ok"
-
-#~ msgid "Creative Commons Share Alike 3.0"
-#~ msgstr "Creative Commons Share Alike 3.0"
-
-#~ msgid "To reverse the order:"
-#~ msgstr "So kehren Sie die Reihenfolge um:"
-
-#~ msgid "<guiseq><gui>File</gui><gui>Print</gui></guiseq>"
-#~ msgstr "<guiseq><gui>Datei</gui><gui>Drucken</gui></guiseq>"
-
-#~ msgid ""
-#~ "In the <gui>General</gui> tab of the Print window under <em>Copies</em>, "
-#~ "check <gui>Reverse</gui>. The last page will be printed first, and so on."
-#~ msgstr ""
-#~ "Aktivieren Sie im Reiter <gui>Allgemein</gui> des Druckfensters unter "
-#~ "<em>Kopien</em> das Ankreuzfeld <gui>Rückwärts</gui>. Die letzte Seite "
-#~ "wird dann zuerst gedruckt usw."
-
-#~ msgid "Printing output to a file"
-#~ msgstr "Drucken in eine Datei"
-
-#~ msgid ""
-#~ "You can also use <app>gedit</app> to print to a file. To do so, select "
-#~ "<guiseq><gui>File</gui><gui>Print</gui><gui>Print to File</gui></guiseq>."
-#~ msgstr ""
-#~ "Sie können <app>gedit</app> zum Drucken in eine Datei verwenden. Wählen "
-#~ "Sie hierzu <guiseq><gui>Datei</gui><gui>Drucken</gui><gui>In Datei "
-#~ "drucken</gui></guiseq>."
-
-#~ msgctxt "_"
-#~ msgid "external ref='print-select.png' md5='__failed__'"
-#~ msgstr "ok"
-
-#~ msgid "To only print certain pages from the document:"
-#~ msgstr "So drucken Sie nur bestimmte Seiten eines Dokuments:"
-
-#~ msgid "Click <guiseq><gui>File</gui><gui> Print...</gui></guiseq>"
-#~ msgstr "Wählen Sie <guiseq><gui>Datei</gui><gui>Drucken …</gui></guiseq>."
-
-#~ msgid ""
-#~ "For example, if you enter \"1,3,5-7,9\" in the <gui>Pages</gui> textbox, "
-#~ "pages 1, 3, 5, 6, 7 and 9 will be printed."
-#~ msgstr ""
-#~ "Wenn Sie beispielsweise »1,3,5-7,9« im Textfeld <gui>Seiten</gui> "
-#~ "eingeben, werden die Seiten 1,3,5,6,7 und 9 gedruckt."
-
-#~ msgid "Ctrl + Alt + PageUp"
-#~ msgstr "Strg+Alt+Bild auf"
-
-#~ msgid "Ctrl + Alt + PageDown"
-#~ msgstr "Strg + Alt + Bild_Ab"
-
-#~ msgid "Ctrl + W"
-#~ msgstr "Strg + W"
-
-#~ msgid "Ctrl + Shift + L"
-#~ msgstr "Umschalt + Strg + L"
-
-#~ msgid "Ctrl + Shift + W"
-#~ msgstr "Umschalt + Strg + W"
-
-#~ msgid "Alt + <var>n</var>"
-#~ msgstr "Alt + <var>n</var>"
-
-#~ msgid "Ctrl + N"
-#~ msgstr "Strg + N"
-
-#~ msgid "Ctrl + O"
-#~ msgstr "Strg + O"
-
-#~ msgid "Ctrl + S"
-#~ msgstr "Strg + S"
-
-#~ msgid "Ctrl + Shift + S"
-#~ msgstr "Umschalt + Strg + S"
-
-#~ msgid "Ctrl + P"
-#~ msgstr "Strg + P"
-
-#~ msgid "Ctrl + Shift + P"
-#~ msgstr "Umschalt + Strg + P"
-
-#~ msgid "Ctrl + Q"
-#~ msgstr "Strg + Q"
-
-#~ msgid "Ctrl + Z"
-#~ msgstr "Strg + Z"
-
-#~ msgid "Ctrl + Shift + Z"
-#~ msgstr "Umschalt + Strg + Z"
-
-#~ msgid "Ctrl + X"
-#~ msgstr "Strg + X"
-
-#~ msgid "Ctrl + C"
-#~ msgstr "Strg + C"
-
-#~ msgid "Ctrl + V"
-#~ msgstr "Strg + V"
-
-#~ msgid "Ctrl + A"
-#~ msgstr "Strg + A"
-
-#~ msgid "Ctrl + D"
-#~ msgstr "Strg + D"
-
-#~ msgid "Alt + Up Arrow"
-#~ msgstr "Alt + Pfeiltaste hoch"
-
-#~ msgid "Alt + Down Arrow"
-#~ msgstr "Alt + Pfeiltaste runter"
-
-#~ msgid "F9"
-#~ msgstr "F9"
-
-#~ msgid "Ctrl + F9"
-#~ msgstr "Strg + F9"
-
-#~ msgid "Ctrl + F"
-#~ msgstr "Strg + F"
-
-#~ msgid "Ctrl + G"
-#~ msgstr "Strg + G"
-
-#~ msgid "Ctrl + Shift + G"
-#~ msgstr "Umschalt + Strg + G"
-
-#~ msgid "Ctrl + H"
-#~ msgstr "Strg + H"
-
-#~ msgid "Ctrl + Shift + K"
-#~ msgstr "Umschalt + Strg + K"
-
-#~ msgid "Ctrl + I"
-#~ msgstr "Strg + I"
-
-#~ msgid "Shift + F7"
-#~ msgstr "Umschalt + F7"
-
-#~ msgid "Alt + F12"
-#~ msgstr "Alt + F12"
-
-#~ msgid "F8"
-#~ msgstr "F8"
-
-#~ msgid "Ctrl + Shift + D"
-#~ msgstr "Umschalt + Strg + D"
-
-#~ msgid "F1"
-#~ msgstr "F1"
-
-#~ msgid ""
-#~ "To enable the plugin, select <guiseq><gui style=\"menu\">gedit</gui> <gui "
-#~ "style=\"menuitem\">Preferences</gui><gui>Plugins</gui> <gui>Spell "
-#~ "Checker</gui></guiseq>."
-#~ msgstr ""
-#~ "Um das Plugin zu aktivieren, wählen Sie <guiseq><gui style=\"menu"
-#~ "\">gedit</gui><gui style=\"menuitem\">Einstellungen</gui><gui>Plugins</"
-#~ "gui><gui>Rechtschreibprüfung</gui></guiseq>."
-
-#~ msgid ""
-#~ "<app>gedit</app> will only check your document's spelling when you choose "
-#~ "<guiseq><gui>Tools</gui><gui>Check Spelling</gui></guiseq>. To have "
-#~ "<app>gedit</app> automatically check your spelling, select "
-#~ "<guiseq><gui>Tools</gui><gui>Highlight Misspelled Words</gui></guiseq>."
-#~ msgstr ""
-#~ "<app>gedit</app> prüft nur die Rechtschreibung Ihres Dokuments, wenn Sie "
-#~ "<guiseq><gui>Werkzeuge</gui><gui>Rechtschreibung prüfen</gui></guiseq> "
-#~ "wählen. Um <app>gedit</app> die Rechtschreibung automatisch prüfen zu "
-#~ "lassen, wählen Sie <guiseq><gui>Werkzeuge</gui><gui>Rechtschreibfehler "
-#~ "hervorheben</gui></guiseq>."
-
-#~ msgid "Click and hold the mouse button on the tab"
-#~ msgstr ""
-#~ "Klicken Sie mit der Maustaste auf den Reiter und halten Sie sie gedrückt"
-
-#~ msgid "Release the mouse button"
-#~ msgstr "Lassen Sie die Maustaste los"
-
-#~ msgid ""
-#~ "Select <keyseq><key>Edit</key><key>Preferences</key><key>Font &amp; "
-#~ "Colors</key></keyseq>."
-#~ msgstr ""
-#~ "Wählen Sie <guiseq><gui>Bearbeiten</gui><gui>Einstellungen</"
-#~ "gui><gui>Schrift und Farben</gui></guiseq>."
-
-#~ msgid ""
-#~ "If the color that you want to select is currently on your screen, click "
-#~ "on the icon that looks like an eyedropper."
-#~ msgstr ""
-#~ "Falls die einzufügende Farbe sich irgendwo auf Ihrem Bildschirm befindet, "
-#~ "klicken Sie auf das Symbol, das wie eine Pipette aussieht."
-
-#~ msgid ""
-#~ "Your mouse pointer will change appearance, and will look like an "
-#~ "eyedropper."
-#~ msgstr "Ihr Mauszeiger verändert nun sein Aussehen in eine Farbpipette."
-
-#~ msgid ""
-#~ "Use the eyedropper and click on the portion of your screen that contains "
-#~ "the color you want to use. The color code for that color will appear in "
-#~ "the color picker window."
-#~ msgstr ""
-#~ "Klicken Sie mit der Pipette auf jenen Teil des Bildschirms, der die zu "
-#~ "verwendende Farbe enthält. Der Code für diese Farbe wird im Farbwähler-"
-#~ "Fenster angezeigt."
-
-#~ msgid ""
-#~ "Using the spell-check feature in <app>gedit</app> requires that you first "
-#~ "enable the spell-check plugin. To enable the plugin, select "
-#~ "<guiseq><gui>Edit </gui><gui>Preferences</gui><gui>Plugins</"
-#~ "gui><gui>Spell Checker</gui> </guiseq>."
-#~ msgstr ""
-#~ "Wenn Sie die Rechtschreibprüfung in <app>gedit</app> verwenden wollen, "
-#~ "müssen Sie zunächst das Rechtschreibprüfung-Plugin aktivieren. Wählen Sie "
-#~ "hierzu <guiseq><gui>Bearbeiten</gui><gui>Einstellungen</gui><gui>Plugins</"
-#~ "gui><gui>Rechtschreibprüfung</gui></guiseq>."
-
-#~ msgid ""
-#~ "Select <guiseq><gui>Tools</gui><gui>Autocheck Spelling</gui></guiseq> to "
-#~ "make <app>gedit</app> highlight spelling errors while you type."
-#~ msgstr ""
-#~ "Wählen Sie <guiseq><gui>Werkzeuge</gui><gui>Automatische "
-#~ "Rechtschreibprüfung</gui></guiseq>, damit <app>gedit</app> "
-#~ "Rechtschreibfehler bereits während der Eingabe hervorhebt."
-
-#~ msgid "To drag a tab into a new window:"
-#~ msgstr "So verschieben Sie einen Reiter in ein neues Fenster:"
-
-#~ msgid ""
-#~ "We all make mistakes. Even <app>gedit</app> users make mistakes. "
-#~ "Fortunately, <app>gedit</app> can help you recover from mistakes. To undo "
-#~ "an action in <app>gedit</app>, press <keyseq><key>Ctrl</key><key>Z</key></"
-#~ "keyseq>, or click <guiseq><gui>Edit</gui><gui>Undo</gui></guiseq>."
-#~ msgstr ""
-#~ "Wir machen alle Fehler. Sogar <app>gedit</app>-Benutzer sind nicht "
-#~ "unfehlbar. Glücklicherweise kann <app>gedit</app> Ihnen helfen, Fehler "
-#~ "wiedergutzumachen. Um eine Aktion in <app>gedit</app> rückgängig zu "
-#~ "machen, drücken Sie <keyseq><key>Strg</key><key>Z</key></keyseq> oder "
-#~ "klicken Sie auf <guiseq><gui>Bearbeiten</gui><gui>Rückgängig</gui></"
-#~ "guiseq>."
-
-#~ msgid ""
-#~ "<app>gedit</app> will undo one action every time you press "
-#~ "<keyseq><key>Ctrl</key><key>Z</key></keyseq> or select <guiseq><gui>Edit</"
-#~ "gui><gui>Undo</gui></guiseq>."
-#~ msgstr ""
-#~ "Bei jeder Ausführung der Tastenkombination <keyseq><key>Strg</key><key>Z</"
-#~ "key></keyseq> oder beim Wählen von <guiseq><gui>Bearbeiten</"
-#~ "gui><gui>Rückgängig</gui></guiseq> wird jeweils eine Aktion "
-#~ "zurückgenommen."
-
-#~ msgid ""
-#~ "This will activate the <em>file-browser</em> mode of the <app>side panel</"
-#~ "app>. You can then use the navigation buttons at the top of the pane to "
-#~ "locate and open your desired files."
-#~ msgstr ""
-#~ "Dadurch wird der <em>Dateiverwaltungsmodus</em> der <app>Seitenleiste</"
-#~ "app> aktiviert. Sie können dann die Navigationsknöpfe im oberen Bereich "
-#~ "der Leiste verwenden, um nach den gewünschten Dateien zu suchen und sie "
-#~ "zu öffnen."
-
-#~ msgid "Drag the tab out of the space it occupies"
-#~ msgstr "Ziehen Sie den Reiter aus dem Bereich heraus, den er belegt"
-
-#~ msgid ""
-#~ "It's difficult to drag a tab into a new window when either the old or new "
-#~ "window is maximized. For best results, un-maximize the windows before "
-#~ "dragging the tab."
-#~ msgstr ""
-#~ "Es ist schwierig, einen Reiter in ein neues Fenster zu verschieben, wenn "
-#~ "eines der beiden Fenster maximiert ist. Stellen Sie zunächst die "
-#~ "Originalgröße des Fensters wieder her, bevor Sie den Reiter verschieben."
-
-#~ msgid "jwcampbell@gmail.com"
-#~ msgstr "jwcampbell@gmail.com"
-
-#~ msgid "dneelyep@gmail.com"
-#~ msgstr "dneelyep@gmail.com"
-
-#~ msgid "@@image: 'print-select.png'; md5=THIS FILE DOESN'T EXIST"
-#~ msgstr "x"
-
-#~ msgid "philbull@gmail.com"
-#~ msgstr "philbull@gmail.com"
-
-#~ msgid "@@image: 'reverse-collate.png'; md5=THIS FILE DOESN'T EXIST"
-#~ msgstr "x"
-
-#~ msgid "File"
-#~ msgstr "Datei"
-
-#~ msgid "Print"
-#~ msgstr "Drucken"
-
-#~ msgid "ch3pjw@bath.ac.uk"
-#~ msgstr "ch3pjw@bath.ac.uk"
-
-#~ msgid ""
-#~ "This assumes the reader knows how to use gedit in general. By the end of "
-#~ "this page, the reader will be able to use the character map plugin to "
-#~ "insert characters into their documents."
-#~ msgstr ""
-#~ "Dies setzt voraus, dass der Leser mit der grundlegenden Bedienung von "
-#~ "gedit vertraut ist. Am Ende der Seite wird der Leser in der Lage sein, "
-#~ "das Zeichentabelle-Plugin zum Einfügen von Zeichen in Dokumente zu "
-#~ "verwenden."
-
-#~ msgid ""
-#~ "To enable the commander plugin, select <guiseq><gui>Edit</gui><gui> "
-#~ "Preferences</gui><gui>Plugins</gui><gui>Commander</gui></guiseq>."
-#~ msgstr ""
-#~ "Um das <app>Commander</app>-Plugin zu aktivieren, wählen Sie "
-#~ "<guiseq><gui>Bearbeiten</gui><gui>Einstellungen</gui><gui>Plugins</"
-#~ "gui><gui>Commander</gui></guiseq>."
-
-#~ msgid "First step..."
-#~ msgstr "Erster Schritt …"
-
-#~ msgid "Second step..."
-#~ msgstr "Zweiter Schritt …"
-
-#~ msgid "Third step..."
-#~ msgstr "Dritter Schritt …"
-
-#~ msgid "Do more with gedit by using gedit plugins."
-#~ msgstr "Holen Sie mit Plugins mehr aus gedit."
-
-#~ msgid "Coming soon!"
-#~ msgstr "Bald verfügbar!"
-
-#~ msgid ""
-#~ "Some gedit plugins need to be manually installed. Here is how to install "
-#~ "them."
-#~ msgstr ""
-#~ "Einige gedit-Plugins müssen manuell installiert werden. Nachfolgend lesen "
-#~ "Sie, wie Sie dazu vorgehen müssen."
-
-#~ msgid "Obtain"
-#~ msgstr "Holen"
-
-#~ msgid ""
-#~ "The first step to install a plugin in <app>gedit</app> is to obtain the "
-#~ "plugin. Third-party plugins will often be obtained by downloading them "
-#~ "from the plugin's web site. Refer to the plugin's documentation for "
-#~ "further information on obtaining the plugin - instructions will vary "
-#~ "depending on the plugin."
-#~ msgstr ""
-#~ "Der erste Schritt zur Installation eines Plugins in <app>gedit</app> ist "
-#~ "die Besorgung. Meist lässt sich ein Plugin von einer Webseite "
-#~ "herunterladen. Lesen Sie die entsprechende Dokumentation, um "
-#~ "Informationen zur Besorgung des Plugins zu erhalten. Die Anweisungen zur "
-#~ "Besorgung können variieren."
-
-#~ msgid "Install"
-#~ msgstr "Installieren"
-
-#~ msgid "Installing a Plugin"
-#~ msgstr "Installieren eines Plugins"
-
-#~ msgid "Locate the plugin files to be installed."
-#~ msgstr "Ermitteln Sie den Ort des zu installierenden Plugins."
-
-#~ msgid "Install the plugin files:"
-#~ msgstr "Installieren Sie die Plugin-Dateien:"
