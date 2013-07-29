@@ -40,10 +40,6 @@
 #include "gedit-file-browser-marshal.h"
 #include "gedit-file-browser-enum-types.h"
 
-#define GEDIT_FILE_BROWSER_WIDGET_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), \
-						      GEDIT_TYPE_FILE_BROWSER_WIDGET, \
-						      GeditFileBrowserWidgetPrivate))
-
 #define LOCATION_DATA_KEY "gedit-file-browser-widget-location"
 
 enum
@@ -266,7 +262,11 @@ static void set_active_root_activated          (GSimpleAction          *action,
                                                 GVariant               *parameter,
                                                 gpointer                user_data);
 
-G_DEFINE_DYNAMIC_TYPE (GeditFileBrowserWidget, gedit_file_browser_widget, GTK_TYPE_GRID)
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBrowserWidget,
+				gedit_file_browser_widget,
+				GTK_TYPE_GRID,
+				0,
+				G_ADD_PRIVATE_DYNAMIC (GeditFileBrowserWidget))
 
 static void
 free_name_icon (gpointer data)
@@ -565,9 +565,6 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, filter_entry);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, location_previous_menu);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, location_next_menu);
-
-	g_type_class_add_private (object_class,
-				  sizeof (GeditFileBrowserWidgetPrivate));
 }
 
 static void
@@ -954,7 +951,7 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 	GAction *action;
 	GError *error = NULL;
 
-	obj->priv = GEDIT_FILE_BROWSER_WIDGET_GET_PRIVATE (obj);
+	obj->priv = gedit_file_browser_widget_get_instance_private (obj);
 
 	obj->priv->filter_pattern_str = g_strdup ("");
 	obj->priv->bookmarks_hash = g_hash_table_new_full (g_file_hash,

@@ -27,10 +27,6 @@
 #include "gedit-file-bookmarks-store.h"
 #include "gedit-file-browser-utils.h"
 
-#define GEDIT_FILE_BOOKMARKS_STORE_GET_PRIVATE(object)( \
-		G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_FILE_BOOKMARKS_STORE, \
-		GeditFileBookmarksStorePrivate))
-
 struct _GeditFileBookmarksStorePrivate
 {
 	GVolumeMonitor *volume_monitor;
@@ -55,7 +51,11 @@ static gboolean find_with_flags       (GtkTreeModel            *model,
                                        guint                    flags,
                                        guint                    notflags);
 
-G_DEFINE_DYNAMIC_TYPE (GeditFileBookmarksStore, gedit_file_bookmarks_store, GTK_TYPE_TREE_STORE)
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBookmarksStore,
+				gedit_file_bookmarks_store,
+				GTK_TYPE_TREE_STORE,
+				0,
+				G_ADD_PRIVATE_DYNAMIC (GeditFileBookmarksStore))
 
 static void
 gedit_file_bookmarks_store_dispose (GObject *object)
@@ -78,20 +78,11 @@ gedit_file_bookmarks_store_dispose (GObject *object)
 }
 
 static void
-gedit_file_bookmarks_store_finalize (GObject *object)
-{
-	G_OBJECT_CLASS (gedit_file_bookmarks_store_parent_class)->finalize (object);
-}
-
-static void
 gedit_file_bookmarks_store_class_init (GeditFileBookmarksStoreClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->dispose = gedit_file_bookmarks_store_dispose;
-	object_class->finalize = gedit_file_bookmarks_store_finalize;
-
-	g_type_class_add_private (object_class, sizeof (GeditFileBookmarksStorePrivate));
 }
 
 static void
@@ -102,7 +93,7 @@ gedit_file_bookmarks_store_class_finalize (GeditFileBookmarksStoreClass *klass)
 static void
 gedit_file_bookmarks_store_init (GeditFileBookmarksStore *obj)
 {
-	obj->priv = GEDIT_FILE_BOOKMARKS_STORE_GET_PRIVATE (obj);
+	obj->priv = gedit_file_bookmarks_store_get_instance_private (obj);
 }
 
 /* Private */

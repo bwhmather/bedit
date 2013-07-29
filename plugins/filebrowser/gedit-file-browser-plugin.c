@@ -59,8 +59,6 @@
 #define TERMINAL_BASE_SETTINGS		"org.gnome.desktop.default-applications.terminal"
 #define TERMINAL_EXEC_KEY		"exec"
 
-#define GEDIT_FILE_BROWSER_PLUGIN_GET_PRIVATE(object)	(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_FILE_BROWSER_PLUGIN, GeditFileBrowserPluginPrivate))
-
 struct _GeditFileBrowserPluginPrivate
 {
 	GSettings              *settings;
@@ -119,6 +117,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBrowserPlugin,
 				gedit_file_browser_plugin,
 				G_TYPE_OBJECT,
 				0,
+				G_ADD_PRIVATE_DYNAMIC (GeditFileBrowserPlugin)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
 							       gedit_window_activatable_iface_init)	\
 													\
@@ -157,7 +156,7 @@ settings_try_new (const gchar *schema)
 static void
 gedit_file_browser_plugin_init (GeditFileBrowserPlugin *plugin)
 {
-	plugin->priv = GEDIT_FILE_BROWSER_PLUGIN_GET_PRIVATE (plugin);
+	plugin->priv = gedit_file_browser_plugin_get_instance_private (plugin);
 
 	plugin->priv->settings = g_settings_new (FILEBROWSER_BASE_SETTINGS);
 	plugin->priv->terminal_settings = g_settings_new (TERMINAL_BASE_SETTINGS);
@@ -633,9 +632,6 @@ gedit_file_browser_plugin_class_init (GeditFileBrowserPluginClass *klass)
 	object_class->get_property = gedit_file_browser_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
-
-	g_type_class_add_private (object_class,
-				  sizeof (GeditFileBrowserPluginPrivate));
 }
 
 static void

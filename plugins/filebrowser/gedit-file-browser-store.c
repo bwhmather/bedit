@@ -34,10 +34,6 @@
 #include "gedit-file-browser-error.h"
 #include "gedit-file-browser-utils.h"
 
-#define GEDIT_FILE_BROWSER_STORE_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), \
-						     GEDIT_TYPE_FILE_BROWSER_STORE, \
-						     GeditFileBrowserStorePrivate))
-
 #define NODE_IS_DIR(node)		(FILE_IS_DIR((node)->flags))
 #define NODE_IS_HIDDEN(node)		(FILE_IS_HIDDEN((node)->flags))
 #define NODE_IS_TEXT(node)		(FILE_IS_TEXT((node)->flags))
@@ -204,6 +200,7 @@ static void delete_files                                    (AsyncData          
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBrowserStore, gedit_file_browser_store,
 				G_TYPE_OBJECT,
 				0,
+				G_ADD_PRIVATE_DYNAMIC (GeditFileBrowserStore)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_MODEL,
 							       gedit_file_browser_store_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GTK_TYPE_TREE_DRAG_SOURCE,
@@ -449,9 +446,6 @@ gedit_file_browser_store_class_init (GeditFileBrowserStoreClass *klass)
 	    		  g_cclosure_marshal_VOID__OBJECT,
 	    		  G_TYPE_NONE, 1,
 	    		  G_TYPE_FILE);
-
-	g_type_class_add_private (object_class,
-				  sizeof (GeditFileBrowserStorePrivate));
 }
 
 static void
@@ -488,7 +482,7 @@ gedit_file_browser_store_drag_source_init (GtkTreeDragSourceIface *iface)
 static void
 gedit_file_browser_store_init (GeditFileBrowserStore *obj)
 {
-	obj->priv = GEDIT_FILE_BROWSER_STORE_GET_PRIVATE (obj);
+	obj->priv = gedit_file_browser_store_get_instance_private (obj);
 
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION] = G_TYPE_FILE;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP] = G_TYPE_STRING;
