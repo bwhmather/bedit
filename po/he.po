@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 10:21+0300\n"
-"PO-Revision-Date: 2013-07-31 10:26+0200\n"
+"POT-Creation-Date: 2013-07-31 11:48+0300\n"
+"PO-Revision-Date: 2013-07-31 11:50+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "Language: he\n"
@@ -638,14 +638,14 @@ msgstr[0] "אם לא תתבצע שמירה, השינויים מהשעה האחר
 msgstr[1] "אם לא תתבצע שמירה, השינויים מ־%d השעות האחרונות יאבדו."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:475
-#, fuzzy, c-format
+#, c-format
 msgid "Changes to document “%s” will be permanently lost."
-msgstr "שינויים שנערכו בקובץ ״%s״ בשעה האחרונה יאבדו."
+msgstr "השינויים שנערכו במסמך „%s“ ילכו לאיבוד."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:480
-#, fuzzy, c-format
+#, c-format
 msgid "Save changes to document “%s” before closing?"
-msgstr "האם לשמור את השינויים למסמך ״%s״ לפני הסגירה?"
+msgstr "האם לשמור את השינויים למסמך „%s“ לפני הסגירה?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:495
 #: ../gedit/gedit-close-confirmation-dialog.c:719
@@ -1074,9 +1074,8 @@ msgstr "חיפוש במצב הדגשה…"
 #: ../gedit/gedit-io-error-info-bar.c:491
 #: ../gedit/gedit-io-error-info-bar.c:1171
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:173
-#, fuzzy
 msgid "_Cancel"
-msgstr "_ביטול יציאה"
+msgstr "_ביטול"
 
 #: ../gedit/gedit-io-error-info-bar.c:161
 #: ../gedit/gedit-io-error-info-bar.c:471
@@ -1084,9 +1083,9 @@ msgid "_Retry"
 msgstr "_ניסיון חוזר"
 
 #: ../gedit/gedit-io-error-info-bar.c:181
-#, fuzzy, c-format
+#, c-format
 msgid "Could not find the file “%s”."
-msgstr "לא ניתן לפתוח את הקובץ %s."
+msgstr "לא ניתן למצוא את הקובץ „%s“."
 
 #: ../gedit/gedit-io-error-info-bar.c:183
 #: ../gedit/gedit-io-error-info-bar.c:223
@@ -1096,36 +1095,35 @@ msgstr "נא לוודא שהמיקום הוקלד נכון ולנסות שנית
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:202
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to handle “%s:” locations."
-msgstr "אין באפשרות gedit להתמודד עם מיקומי %s."
+msgstr "לא ניתן לטפל במיקומים מסוג „%s:“."
 
 #: ../gedit/gedit-io-error-info-bar.c:208
-#, fuzzy
 msgid "Unable to handle this location."
-msgstr "אין באפשרות ‏gedit להתמודד עם מיקום זה."
+msgstr "לא ניתן לטפל במיקום זה."
 
 #: ../gedit/gedit-io-error-info-bar.c:217
-#, fuzzy
 msgid "The location of the file cannot be accessed."
-msgstr "לא ניתן לעגון את מיקום הקובץ."
+msgstr "לא ניתן לגשת למיקום הקובץ."
 
 #: ../gedit/gedit-io-error-info-bar.c:221
-#, fuzzy, c-format
+#, c-format
 msgid "“%s” is a directory."
-msgstr "‏%s הוא תיקייה"
+msgstr "„‏%s“ הנה תיקייה"
 
 #: ../gedit/gedit-io-error-info-bar.c:228
-#, fuzzy, c-format
+#, c-format
 msgid "“%s” is not a valid location."
-msgstr "%s אינו מיקום תקין."
+msgstr "‏„%s“ אינו מיקום תקין."
 
 #: ../gedit/gedit-io-error-info-bar.c:264
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
 "correct and try again."
-msgstr "המארח %s לא נמצא. נא לבדוק את הגדרות מתווך הרשת ולנסות שנית."
+msgstr ""
+"לא ניתן למצוא את המארח „%s“. נא לבדוק את הגדרות מתווך הרשת ולנסות שנית."
 
 #: ../gedit/gedit-io-error-info-bar.c:279
 #, c-format
@@ -1135,9 +1133,9 @@ msgid ""
 msgstr "שם המארח לא היה תקין. נא לבדוק שהמיקום שהוזן נכון ולנסות שוב."
 
 #: ../gedit/gedit-io-error-info-bar.c:287
-#, fuzzy, c-format
+#, c-format
 msgid "“%s” is not a regular file."
-msgstr "‏%s אינו קובץ רגיל."
+msgstr "„‏%s“ אינו קובץ רגיל."
 
 #: ../gedit/gedit-io-error-info-bar.c:292
 msgid "Connection timed out. Please try again."
@@ -1388,7 +1386,7 @@ msgstr "הקובץ „%s“ השתנה בכונן."
 
 #: ../gedit/gedit-io-error-info-bar.c:1156
 msgid "Drop Changes and _Reload"
-msgstr ""
+msgstr "השמטת השינויים ו_רענון"
 
 #: ../gedit/gedit-io-error-info-bar.c:1166
 msgid "_Reload"
@@ -2548,7 +2546,7 @@ msgstr "עצירת כלי"
 
 #: ../plugins/externaltools/tools/tools.ui.h:1
 msgid "Always available"
-msgstr ""
+msgstr "תמיד זמין"
 
 #: ../plugins/externaltools/tools/tools.ui.h:2
 msgid "All documents"
@@ -2706,7 +2704,7 @@ msgstr "גישה קלה לקבצים מחלונית הצד"
 
 #: ../plugins/filebrowser/gedit-file-bookmarks-store.c:206
 msgid "Home"
-msgstr ""
+msgstr "בית"
 
 #: ../plugins/filebrowser/gedit-file-bookmarks-store.c:232
 msgid "File System"
@@ -2988,7 +2986,7 @@ msgstr "File Browser Binary Patterns"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
-msgstr ""
+msgstr "התבניות המשלימות לשימוש בעת סינון קבצים בינריים."
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
