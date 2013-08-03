@@ -604,15 +604,12 @@ gedit_file_browser_store_get_iter (GtkTreeModel *tree_model,
 
 		for (item = FILE_BROWSER_NODE_DIR (node)->children; item; item = item->next)
 		{
-			FileBrowserNode *child;
-
-			child = (FileBrowserNode *) (item->data);
+			FileBrowserNode *child = (FileBrowserNode *) (item->data);
 
 			if (model_node_inserted (model, child))
 			{
 				if (num == indices[i])
 				{
-					node = child;
 					break;
 				}
 
@@ -621,7 +618,9 @@ gedit_file_browser_store_get_iter (GtkTreeModel *tree_model,
 		}
 
 		if (item == NULL)
+		{
 			return FALSE;
+		}
 
 		node = (FileBrowserNode *) (item->data);
 	}
