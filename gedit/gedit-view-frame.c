@@ -260,7 +260,7 @@ finish_search (GeditViewFrame    *frame,
 {
 	const gchar *entry_text = gtk_entry_get_text (GTK_ENTRY (frame->priv->search_entry));
 
-	if (found || (*entry_text == '\0'))
+	if (found || (entry_text[0] == '\0'))
 	{
 		gedit_view_scroll_to_cursor (frame->priv->view);
 
@@ -624,7 +624,7 @@ install_update_entry_tag_idle (GeditViewFrame *frame)
 }
 
 static void
-update_search (GeditViewFrame *frame)
+update_search_settings (GeditViewFrame *frame)
 {
 	GtkSourceBuffer *buffer;
 	const gchar *entry_text;
@@ -910,90 +910,106 @@ customize_for_search_mode (GeditViewFrame *frame)
 }
 
 static void
-search_init (GtkWidget      *entry,
-             GeditViewFrame *frame)
+update_goto_line (GeditViewFrame *frame)
 {
-	const gchar *entry_text = gtk_entry_get_text (GTK_ENTRY (entry));
+	const gchar *entry_text;
+	gboolean moved;
+	gboolean moved_offset;
+	gint line;
+	gint offset_line = 0;
+	gint line_offset = 0;
+	gchar **split_text = NULL;
+	const gchar *text;
+	GtkTextIter iter;
+	GeditDocument *doc;
 
+	entry_text = gtk_entry_get_text (GTK_ENTRY (frame->priv->search_entry));
+
+	if (entry_text[0] == '\0')
+	{
+		return;
+	}
+
+	doc = gedit_view_frame_get_document (frame);
+
+	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
+					  &iter,
+					  frame->priv->start_mark);
+
+	split_text = g_strsplit (entry_text, ":", -1);
+
+	if (g_strv_length (split_text) > 1)
+	{
+		text = split_text[0];
+	}
+	else
+	{
+		text = entry_text;
+	}
+
+	if (text[0] == '-')
+	{
+		gint cur_line = gtk_text_iter_get_line (&iter);
+
+		if (text[1] != '\0')
+		{
+			offset_line = MAX (atoi (text + 1), 0);
+		}
+
+		line = MAX (cur_line - offset_line, 0);
+	}
+	else if (entry_text[0] == '+')
+	{
+		gint cur_line = gtk_text_iter_get_line (&iter);
+
+		if (text[1] != '\0')
+		{
+			offset_line = MAX (atoi (text + 1), 0);
+		}
+
+		line = cur_line + offset_line;
+	}
+	else
+	{
+		line = MAX (atoi (text) - 1, 0);
+	}
+
+	if (split_text[1] != NULL)
+	{
+		line_offset = atoi (split_text[1]);
+	}
+
+	g_strfreev (split_text);
+
+	moved = gedit_document_goto_line (doc, line);
+	moved_offset = gedit_document_goto_line_offset (doc, line, line_offset);
+
+	gedit_view_scroll_to_cursor (frame->priv->view);
+
+	if (!moved || !moved_offset)
+	{
+		set_search_state (frame, SEARCH_STATE_NOT_FOUND);
+	}
+	else
+	{
+		set_search_state (frame, SEARCH_STATE_NORMAL);
+	}
+}
+
+static void
+search_entry_changed_cb (GtkEntry       *entry,
+			 GeditViewFrame *frame)
+{
 	renew_flush_timeout (frame);
 
 	if (frame->priv->search_mode == SEARCH)
 	{
-		update_search (frame);
+		update_search_settings (frame);
 		start_search (frame);
 	}
-	else if (*entry_text != '\0')
+	else
 	{
-		gboolean moved, moved_offset;
-		gint line;
-		gint offset_line = 0;
-		gint line_offset = 0;
-		gchar **split_text = NULL;
-		const gchar *text;
-		GtkTextIter iter;
-		GeditDocument *doc;
-
-		doc = gedit_view_frame_get_document (frame);
-
-		gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
-						  &iter,
-						  frame->priv->start_mark);
-
-		split_text = g_strsplit (entry_text, ":", -1);
-
-		if (g_strv_length (split_text) > 1)
-		{
-			text = split_text[0];
-		}
-		else
-		{
-			text = entry_text;
-		}
-
-		if (*text == '-')
-		{
-			gint cur_line = gtk_text_iter_get_line (&iter);
-
-			if (*(text + 1) != '\0')
-				offset_line = MAX (atoi (text + 1), 0);
-
-			line = MAX (cur_line - offset_line, 0);
-		}
-		else if (*entry_text == '+')
-		{
-			gint cur_line = gtk_text_iter_get_line (&iter);
-
-			if (*(text + 1) != '\0')
-				offset_line = MAX (atoi (text + 1), 0);
-
-			line = cur_line + offset_line;
-		}
-		else
-		{
-			line = MAX (atoi (text) - 1, 0);
-		}
-
-		if (split_text[1] != NULL)
-		{
-			line_offset = atoi (split_text[1]);
-		}
-
-		g_strfreev (split_text);
-
-		moved = gedit_document_goto_line (doc, line);
-		moved_offset = gedit_document_goto_line_offset (doc, line,
-								line_offset);
-
-		gedit_view_scroll_to_cursor (frame->priv->view);
-
-		if (!moved || !moved_offset)
-		{
-			set_search_state (frame, SEARCH_STATE_NOT_FOUND);
-		}
-		else
-		{
-			set_search_state (frame, SEARCH_STATE_NORMAL);
-		}
+		update_goto_line (frame);
 	}
 }
 
@@ -1354,7 +1370,7 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	frame->priv->search_entry_changed_id =
 		g_signal_connect (frame->priv->search_entry,
 				  "changed",
-		                  G_CALLBACK (search_init),
+		                  G_CALLBACK (search_entry_changed_cb),
 		                  frame);
 
 	frame->priv->search_entry_focus_out_id =
