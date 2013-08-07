@@ -73,12 +73,10 @@ struct _GeditViewFramePrivate
 	GtkWidget *go_down_button;
 
 	guint flush_timeout_id;
-	glong view_scroll_event_id;
-	glong search_entry_focus_out_id;
-	glong search_entry_changed_id;
 	guint idle_update_entry_tag_id;
-
-	guint disable_popdown : 1;
+	gulong view_scroll_event_id;
+	gulong search_entry_focus_out_id;
+	gulong search_entry_changed_id;
 
 	/* Used to remember the state of the last incremental search (the
 	 * buffer search state may be changed by the search and replace dialog).
@@ -166,13 +164,10 @@ hide_search_widget (GeditViewFrame *frame,
 {
 	GtkTextBuffer *buffer;
 
-	if (frame->priv->disable_popdown)
+	if (!gtk_revealer_get_reveal_child (frame->priv->revealer))
 	{
 		return;
 	}
-
-	g_signal_handler_block (frame->priv->search_entry,
-	                        frame->priv->search_entry_focus_out_id);
 
 	if (frame->priv->view_scroll_event_id != 0)
 	{
@@ -205,12 +200,7 @@ hide_search_widget (GeditViewFrame *frame,
 	gtk_text_buffer_delete_mark (buffer, frame->priv->start_mark);
 	frame->priv->start_mark = NULL;
 
-	/* Make sure the view is the one who has the focus when we destroy
-	   the search widget */
 	gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
-
-	g_signal_handler_unblock (frame->priv->search_entry,
-	                          frame->priv->search_entry_focus_out_id);
 }
 
 static gboolean
@@ -677,8 +667,8 @@ match_case_toggled_cb (GtkCheckMenuItem *menu_item,
 }
 
 static void
-add_popup_menu_items (GtkWidget      *menu,
-                      GeditViewFrame *frame)
+add_popup_menu_items (GeditViewFrame *frame,
+		      GtkWidget      *menu)
 {
 	GtkWidget *menu_item;
 
@@ -728,22 +718,32 @@ add_popup_menu_items (GtkWidget      *menu,
 	gtk_widget_show (menu_item);
 }
 
-static gboolean
-real_search_enable_popdown (GeditViewFrame *frame)
+static void
+popup_menu_hide_cb (GeditViewFrame *frame)
 {
-	frame->priv->disable_popdown = FALSE;
-	return FALSE;
+	renew_flush_timeout (frame);
+
+	g_signal_handler_unblock (frame->priv->search_entry,
+				  frame->priv->search_entry_focus_out_id);
 }
 
 static void
-search_enable_popdown (GtkWidget      *widget,
-                       GeditViewFrame *frame)
+setup_popup_menu (GeditViewFrame *frame,
+		  GtkWidget      *menu)
 {
-	g_timeout_add (200,
-		       (GSourceFunc)real_search_enable_popdown,
-		       frame);
+	if (frame->priv->flush_timeout_id != 0)
+	{
+		g_source_remove (frame->priv->flush_timeout_id);
+		frame->priv->flush_timeout_id = 0;
+	}
 
-	renew_flush_timeout (frame);
+	g_signal_handler_block (frame->priv->search_entry,
+				frame->priv->search_entry_focus_out_id);
+
+	g_signal_connect_swapped (menu,
+				  "hide",
+				  G_CALLBACK (popup_menu_hide_cb),
+				  frame);
 }
 
 static void
@@ -753,24 +753,19 @@ search_entry_populate_popup (GtkEntry       *entry,
 {
 	GtkWidget *menu_item;
 
-	frame->priv->disable_popdown = TRUE;
-
-	g_signal_connect (menu,
-			  "hide",
-			  G_CALLBACK (search_enable_popdown),
-			  frame);
-
 	if (frame->priv->search_mode == GOTO_LINE)
 	{
 		return;
 	}
+
+	setup_popup_menu (frame, GTK_WIDGET (menu));
 
 	/* separator */
 	menu_item = gtk_separator_menu_item_new ();
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	add_popup_menu_items (GTK_WIDGET (menu), frame);
+	add_popup_menu_items (frame, GTK_WIDGET (menu));
 }
 
 static void
@@ -790,14 +785,8 @@ search_entry_icon_release (GtkEntry             *entry,
 	menu = gtk_menu_new ();
 	gtk_widget_show (menu);
 
-	frame->priv->disable_popdown = TRUE;
-
-	g_signal_connect (menu,
-			  "hide",
-	                  G_CALLBACK (search_enable_popdown),
-			  frame);
-
-	add_popup_menu_items (menu, frame);
+	setup_popup_menu (frame, menu);
+	add_popup_menu_items (frame, menu);
 
 	gtk_menu_popup (GTK_MENU (menu),
 	                NULL, NULL,
@@ -1376,8 +1365,8 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	frame->priv->search_entry_focus_out_id =
 		g_signal_connect (frame->priv->search_entry,
 				  "focus-out-event",
-		                  G_CALLBACK (search_entry_focus_out_event),
-		                  frame);
+				  G_CALLBACK (search_entry_focus_out_event),
+				  frame);
 
 	g_signal_connect (frame->priv->go_up_button,
 	                  "clicked",
