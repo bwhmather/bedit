@@ -1050,81 +1050,6 @@ mark_set_cb (GtkTextBuffer  *buffer,
 	}
 }
 
-static void
-setup_search_widget (GeditViewFrame *frame)
-{
-	GtkTextBuffer *buffer;
-
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
-
-	g_signal_connect (buffer,
-			  "mark-set",
-			  G_CALLBACK (mark_set_cb),
-			  frame);
-
-	g_signal_connect_swapped (buffer,
-				  "notify::search-occurrences-count",
-				  G_CALLBACK (install_update_entry_tag_idle),
-				  frame);
-
-	g_signal_connect (frame->priv->revealer,
-			  "key-press-event",
-	                  G_CALLBACK (search_widget_key_press_event),
-	                  frame);
-
-	g_signal_connect (frame->priv->revealer,
-			  "scroll-event",
-	                  G_CALLBACK (search_widget_scroll_event),
-	                  frame);
-
-	g_signal_connect (frame->priv->search_entry,
-			  "populate-popup",
-	                  G_CALLBACK (search_entry_populate_popup),
-	                  frame);
-
-	g_signal_connect (frame->priv->search_entry,
-			  "icon-release",
-	                  G_CALLBACK (search_entry_icon_release),
-	                  frame);
-
-	g_signal_connect (frame->priv->search_entry,
-			  "activate",
-	                  G_CALLBACK (search_entry_activate),
-	                  frame);
-
-	g_signal_connect (frame->priv->search_entry,
-			  "insert_text",
-	                  G_CALLBACK (search_entry_insert_text),
-	                  frame);
-
-	/* Use the "notify::text" signal, because the "changed" signal is
-	 * delayed with a GtkSearchEntry.
-	 * See https://bugzilla.gnome.org/show_bug.cgi?id=700229
-	 */
-	frame->priv->search_entry_changed_id =
-		g_signal_connect (frame->priv->search_entry,
-				  "notify::text",
-		                  G_CALLBACK (search_init),
-		                  frame);
-
-	frame->priv->search_entry_focus_out_id =
-		g_signal_connect (frame->priv->search_entry,
-				  "focus-out-event",
-		                  G_CALLBACK (search_entry_focus_out_event),
-		                  frame);
-
-	/* Up/Down buttons */
-	g_signal_connect (frame->priv->go_up_button,
-	                  "clicked",
-	                  G_CALLBACK (on_go_up_button_clicked),
-	                  frame);
-
-	g_signal_connect (frame->priv->go_down_button,
-	                  "clicked",
-	                  G_CALLBACK (on_go_down_button_clicked),
-	                  frame);
-}
-
 static gboolean
 get_selected_text (GtkTextBuffer  *doc,
 		   gchar         **selected_text,
@@ -1390,9 +1315,6 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	gd_tagged_entry_tag_set_has_close_button (frame->priv->entry_tag, FALSE);
 
-	/* revealer margin */
-	setup_search_widget (frame);
-
 	if (gtk_widget_get_direction (GTK_WIDGET (frame->priv->revealer)) == GTK_TEXT_DIR_LTR)
 	{
 		gtk_widget_set_margin_right (GTK_WIDGET (frame->priv->revealer),
@@ -1403,6 +1325,72 @@ gedit_view_frame_init (GeditViewFrame *frame)
 		gtk_widget_set_margin_left (GTK_WIDGET (frame->priv->revealer),
 					    SEARCH_POPUP_MARGIN);
 	}
+
+	g_signal_connect (doc,
+			  "mark-set",
+			  G_CALLBACK (mark_set_cb),
+			  frame);
+
+	g_signal_connect_swapped (doc,
+				  "notify::search-occurrences-count",
+				  G_CALLBACK (install_update_entry_tag_idle),
+				  frame);
+
+	g_signal_connect (frame->priv->revealer,
+			  "key-press-event",
+	                  G_CALLBACK (search_widget_key_press_event),
+	                  frame);
+
+	g_signal_connect (frame->priv->revealer,
+			  "scroll-event",
+	                  G_CALLBACK (search_widget_scroll_event),
+	                  frame);
+
+	g_signal_connect (frame->priv->search_entry,
+			  "populate-popup",
+	                  G_CALLBACK (search_entry_populate_popup),
+	                  frame);
+
+	g_signal_connect (frame->priv->search_entry,
+			  "icon-release",
+	                  G_CALLBACK (search_entry_icon_release),
+	                  frame);
+
+	g_signal_connect (frame->priv->search_entry,
+			  "activate",
+	                  G_CALLBACK (search_entry_activate),
+	                  frame);
+
+	g_signal_connect (frame->priv->search_entry,
+			  "insert_text",
+	                  G_CALLBACK (search_entry_insert_text),
+	                  frame);
+
+	/* Use the "notify::text" signal, because the "changed" signal is
+	 * delayed with a GtkSearchEntry.
+	 * See https://bugzilla.gnome.org/show_bug.cgi?id=700229
+	 */
+	frame->priv->search_entry_changed_id =
+		g_signal_connect (frame->priv->search_entry,
+				  "notify::text",
+		                  G_CALLBACK (search_init),
+		                  frame);
+
+	frame->priv->search_entry_focus_out_id =
+		g_signal_connect (frame->priv->search_entry,
+				  "focus-out-event",
+		                  G_CALLBACK (search_entry_focus_out_event),
+		                  frame);
+
+	g_signal_connect (frame->priv->go_up_button,
+	                  "clicked",
+	                  G_CALLBACK (on_go_up_button_clicked),
+	                  frame);
+
+	g_signal_connect (frame->priv->go_down_button,
+	                  "clicked",
+	                  G_CALLBACK (on_go_down_button_clicked),
+	                  frame);
 }
 
 GeditViewFrame *
