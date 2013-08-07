@@ -47,8 +47,8 @@ typedef enum
 
 struct _GeditViewFramePrivate
 {
-	GeditView   *view;
-	SearchMode   search_mode;
+	GeditView *view;
+	SearchMode search_mode;
 
 	/* Where the search has started. When the user presses escape in the
 	 * search entry (to cancel the search), we return to the start_mark.
@@ -58,21 +58,21 @@ struct _GeditViewFramePrivate
 	/* Used to restore the search state if an incremental search is
 	 * cancelled.
 	 */
-	gchar       *old_search_text;
+	gchar *old_search_text;
 
 	GtkRevealer *revealer;
 	GdTaggedEntry *search_entry;
 	GdTaggedEntryTag *entry_tag;
-	GtkWidget   *go_up_button;
-	GtkWidget   *go_down_button;
+	GtkWidget *go_up_button;
+	GtkWidget *go_down_button;
 
-	guint        typeselect_flush_timeout;
-	glong        view_scroll_event_id;
-	glong        search_entry_focus_out_id;
-	glong        search_entry_changed_id;
-	guint        idle_update_entry_tag_id;
+	guint typeselect_flush_timeout;
+	glong view_scroll_event_id;
+	glong search_entry_focus_out_id;
+	glong search_entry_changed_id;
+	guint idle_update_entry_tag_id;
 
-	guint        disable_popdown : 1;
+	guint disable_popdown : 1;
 
 	/* Used to remember the state of the last incremental search (the
 	 * buffer search state may be changed by the search and replace dialog).
