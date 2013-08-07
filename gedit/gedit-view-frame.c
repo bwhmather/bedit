@@ -914,7 +914,6 @@ customize_for_search_mode (GeditViewFrame *frame)
 
 static void
 search_init (GtkWidget      *entry,
-	     GParamSpec     *pspec,
              GeditViewFrame *frame)
 {
 	const gchar *entry_text;
@@ -1368,13 +1367,9 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	                  G_CALLBACK (search_entry_insert_text),
 	                  frame);
 
-	/* Use the "notify::text" signal, because the "changed" signal is
-	 * delayed with a GtkSearchEntry.
-	 * See https://bugzilla.gnome.org/show_bug.cgi?id=700229
-	 */
 	frame->priv->search_entry_changed_id =
 		g_signal_connect (frame->priv->search_entry,
-				  "notify::text",
+				  "changed",
 		                  G_CALLBACK (search_init),
 		                  frame);
 
