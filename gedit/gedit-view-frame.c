@@ -49,7 +49,6 @@ struct _GeditViewFramePrivate
 {
 	GeditView   *view;
 	SearchMode   search_mode;
-	SearchMode   request_search_mode;
 
 	/* Where the search has started. When the user presses escape in the
 	 * search entry (to cancel the search), we return to the start_mark.
@@ -1246,7 +1245,8 @@ init_search_entry (GeditViewFrame *frame)
 }
 
 static void
-start_interactive_search_real (GeditViewFrame *frame)
+start_interactive_search_real (GeditViewFrame *frame,
+			       SearchMode      request_search_mode)
 {
 	GtkTextBuffer *buffer;
 	GtkTextIter iter;
@@ -1254,7 +1254,7 @@ start_interactive_search_real (GeditViewFrame *frame)
 
 	if (gtk_revealer_get_reveal_child (frame->priv->slider))
 	{
-		if (frame->priv->search_mode != frame->priv->request_search_mode)
+		if (frame->priv->search_mode != request_search_mode)
 		{
 			hide_search_widget (frame, TRUE);
 		}
@@ -1266,7 +1266,7 @@ start_interactive_search_real (GeditViewFrame *frame)
 		}
 	}
 
-	frame->priv->search_mode = frame->priv->request_search_mode;
+	frame->priv->search_mode = request_search_mode;
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
 
@@ -1433,9 +1433,7 @@ gedit_view_frame_popup_search (GeditViewFrame *frame)
 {
 	g_return_if_fail (GEDIT_IS_VIEW_FRAME (frame));
 
-	frame->priv->request_search_mode = SEARCH;
-
-	start_interactive_search_real (frame);
+	start_interactive_search_real (frame, SEARCH);
 }
 
 void
@@ -1443,9 +1441,7 @@ gedit_view_frame_popup_goto_line (GeditViewFrame *frame)
 {
 	g_return_if_fail (GEDIT_IS_VIEW_FRAME (frame));
 
-	frame->priv->request_search_mode = GOTO_LINE;
-
-	start_interactive_search_real (frame);
+	start_interactive_search_real (frame, GOTO_LINE);
 }
 
 void
