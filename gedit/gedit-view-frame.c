@@ -60,7 +60,7 @@ struct _GeditViewFramePrivate
 	 */
 	gchar       *old_search_text;
 
-	GtkRevealer *slider;
+	GtkRevealer *revealer;
 	GdTaggedEntry *search_entry;
 	GdTaggedEntryTag *entry_tag;
 	GtkWidget   *go_up_button;
@@ -187,7 +187,7 @@ hide_search_widget (GeditViewFrame *frame,
 		frame->priv->typeselect_flush_timeout = 0;
 	}
 
-	gtk_revealer_set_reveal_child (frame->priv->slider, FALSE);
+	gtk_revealer_set_reveal_child (frame->priv->revealer, FALSE);
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
 
@@ -1067,12 +1067,12 @@ setup_search_widget (GeditViewFrame *frame)
 				  G_CALLBACK (install_update_entry_tag_idle),
 				  frame);
 
-	g_signal_connect (frame->priv->slider,
+	g_signal_connect (frame->priv->revealer,
 			  "key-press-event",
 	                  G_CALLBACK (search_widget_key_press_event),
 	                  frame);
 
-	g_signal_connect (frame->priv->slider,
+	g_signal_connect (frame->priv->revealer,
 			  "scroll-event",
 	                  G_CALLBACK (search_widget_scroll_event),
 	                  frame);
@@ -1252,7 +1252,7 @@ start_interactive_search_real (GeditViewFrame *frame,
 	GtkTextIter iter;
 	GtkTextMark *mark;
 
-	if (gtk_revealer_get_reveal_child (frame->priv->slider))
+	if (gtk_revealer_get_reveal_child (frame->priv->revealer))
 	{
 		if (frame->priv->search_mode != request_search_mode)
 		{
@@ -1283,7 +1283,7 @@ start_interactive_search_real (GeditViewFrame *frame,
 	frame->priv->start_mark = gtk_text_buffer_create_mark (buffer, NULL,
 	                                                       &iter, FALSE);
 
-	gtk_revealer_set_reveal_child (frame->priv->slider, TRUE);
+	gtk_revealer_set_reveal_child (frame->priv->revealer, TRUE);
 
 	/* NOTE: we must be very careful here to not have any text before
 	   focusing the entry because when the entry is focused the text is
@@ -1346,7 +1346,7 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-view-frame.ui");
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, view);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, slider);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, revealer);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, search_entry);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, go_up_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, go_down_button);
@@ -1391,17 +1391,17 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	gd_tagged_entry_tag_set_has_close_button (frame->priv->entry_tag, FALSE);
 
-	/* Slider margin */
+	/* revealer margin */
 	setup_search_widget (frame);
 
-	if (gtk_widget_get_direction (GTK_WIDGET (frame->priv->slider)) == GTK_TEXT_DIR_LTR)
+	if (gtk_widget_get_direction (GTK_WIDGET (frame->priv->revealer)) == GTK_TEXT_DIR_LTR)
 	{
-		gtk_widget_set_margin_right (GTK_WIDGET (frame->priv->slider),
+		gtk_widget_set_margin_right (GTK_WIDGET (frame->priv->revealer),
 					     SEARCH_POPUP_MARGIN);
 	}
 	else
 	{
-		gtk_widget_set_margin_left (GTK_WIDGET (frame->priv->slider),
+		gtk_widget_set_margin_left (GTK_WIDGET (frame->priv->revealer),
 					    SEARCH_POPUP_MARGIN);
 	}
 }
