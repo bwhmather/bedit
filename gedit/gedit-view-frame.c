@@ -72,7 +72,7 @@ struct _GeditViewFramePrivate
 	GtkWidget *go_up_button;
 	GtkWidget *go_down_button;
 
-	guint typeselect_flush_timeout;
+	guint flush_timeout_id;
 	glong view_scroll_event_id;
 	glong search_entry_focus_out_id;
 	glong search_entry_changed_id;
@@ -119,10 +119,10 @@ gedit_view_frame_dispose (GObject *object)
 {
 	GeditViewFrame *frame = GEDIT_VIEW_FRAME (object);
 
-	if (frame->priv->typeselect_flush_timeout != 0)
+	if (frame->priv->flush_timeout_id != 0)
 	{
-		g_source_remove (frame->priv->typeselect_flush_timeout);
-		frame->priv->typeselect_flush_timeout = 0;
+		g_source_remove (frame->priv->flush_timeout_id);
+		frame->priv->flush_timeout_id = 0;
 	}
 
 	if (frame->priv->idle_update_entry_tag_id != 0)
@@ -181,10 +181,10 @@ hide_search_widget (GeditViewFrame *frame,
 		frame->priv->view_scroll_event_id = 0;
 	}
 
-	if (frame->priv->typeselect_flush_timeout != 0)
+	if (frame->priv->flush_timeout_id != 0)
 	{
-		g_source_remove (frame->priv->typeselect_flush_timeout);
-		frame->priv->typeselect_flush_timeout = 0;
+		g_source_remove (frame->priv->flush_timeout_id);
+		frame->priv->flush_timeout_id = 0;
 	}
 
 	gtk_revealer_set_reveal_child (frame->priv->revealer, FALSE);
@@ -216,7 +216,7 @@ hide_search_widget (GeditViewFrame *frame,
 static gboolean
 search_entry_flush_timeout (GeditViewFrame *frame)
 {
-	frame->priv->typeselect_flush_timeout = 0;
+	frame->priv->flush_timeout_id = 0;
 	hide_search_widget (frame, FALSE);
 
 	return FALSE;
@@ -415,10 +415,10 @@ search_again (GeditViewFrame *frame,
 	g_return_if_fail (frame->priv->search_mode == SEARCH);
 
 	/* renew the flush timeout */
-	if (frame->priv->typeselect_flush_timeout != 0)
+	if (frame->priv->flush_timeout_id != 0)
 	{
-		g_source_remove (frame->priv->typeselect_flush_timeout);
-		frame->priv->typeselect_flush_timeout =
+		g_source_remove (frame->priv->flush_timeout_id);
+		frame->priv->flush_timeout_id =
 			g_timeout_add_seconds (GEDIT_VIEW_FRAME_SEARCH_TIMEOUT,
 					       (GSourceFunc)search_entry_flush_timeout,
 					       frame);
@@ -736,12 +736,12 @@ search_enable_popdown (GtkWidget      *widget,
 		       frame);
 
 	/* renew the flush timeout */
-	if (frame->priv->typeselect_flush_timeout != 0)
+	if (frame->priv->flush_timeout_id != 0)
 	{
-		g_source_remove (frame->priv->typeselect_flush_timeout);
+		g_source_remove (frame->priv->flush_timeout_id);
 	}
 
-	frame->priv->typeselect_flush_timeout =
+	frame->priv->flush_timeout_id =
 		g_timeout_add_seconds (GEDIT_VIEW_FRAME_SEARCH_TIMEOUT,
 				       (GSourceFunc)search_entry_flush_timeout,
 				       frame);
@@ -918,10 +918,10 @@ search_init (GtkWidget      *entry,
 	const gchar *entry_text;
 
 	/* renew the flush timeout */
-	if (frame->priv->typeselect_flush_timeout != 0)
+	if (frame->priv->flush_timeout_id != 0)
 	{
-		g_source_remove (frame->priv->typeselect_flush_timeout);
-		frame->priv->typeselect_flush_timeout =
+		g_source_remove (frame->priv->flush_timeout_id);
+		frame->priv->flush_timeout_id =
 			g_timeout_add_seconds (GEDIT_VIEW_FRAME_SEARCH_TIMEOUT,
 					       (GSourceFunc)search_entry_flush_timeout,
 					       frame);
@@ -1308,7 +1308,7 @@ start_interactive_search_real (GeditViewFrame *frame,
 			          G_CALLBACK (search_widget_scroll_event),
 			          frame);
 
-	frame->priv->typeselect_flush_timeout =
+	frame->priv->flush_timeout_id =
 		g_timeout_add_seconds (GEDIT_VIEW_FRAME_SEARCH_TIMEOUT,
 				       (GSourceFunc) search_entry_flush_timeout,
 				       frame);
@@ -1370,7 +1370,7 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	frame->priv = gedit_view_frame_get_instance_private (frame);
 
-	frame->priv->typeselect_flush_timeout = 0;
+	frame->priv->flush_timeout_id = 0;
 	frame->priv->case_sensitive_search = FALSE;
 	frame->priv->search_at_word_boundaries = FALSE;
 	frame->priv->search_wrap_around = TRUE;
