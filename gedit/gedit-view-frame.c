@@ -45,6 +45,12 @@ typedef enum
 	SEARCH
 } SearchMode;
 
+typedef enum
+{
+	SEARCH_STATE_NORMAL,
+	SEARCH_STATE_NOT_FOUND
+} SearchState;
+
 struct _GeditViewFramePrivate
 {
 	GeditView *view;
@@ -95,12 +101,6 @@ enum
 	PROP_DOCUMENT,
 	PROP_VIEW
 };
-
-typedef enum
-{
-	GEDIT_SEARCH_ENTRY_NORMAL,
-	GEDIT_SEARCH_ENTRY_NOT_FOUND
-} GeditSearchEntryBgColor;
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditViewFrame, gedit_view_frame, GTK_TYPE_OVERLAY)
 
@@ -223,14 +223,14 @@ search_entry_flush_timeout (GeditViewFrame *frame)
 }
 
 static void
-set_entry_background (GeditViewFrame          *frame,
-                      GeditSearchEntryBgColor  color)
+set_search_state (GeditViewFrame *frame,
+		  SearchState     state)
 {
 	GtkStyleContext *context;
 
 	context = gtk_widget_get_style_context (GTK_WIDGET (frame->priv->search_entry));
 
-	if (color == GEDIT_SEARCH_ENTRY_NOT_FOUND)
+	if (state == SEARCH_STATE_NOT_FOUND)
 	{
 		gtk_style_context_add_class (context, "not-found");
 	}
@@ -250,11 +250,11 @@ finish_search (GeditViewFrame    *frame,
 	{
 		gedit_view_scroll_to_cursor (frame->priv->view);
 
-		set_entry_background (frame, GEDIT_SEARCH_ENTRY_NORMAL);
+		set_search_state (frame, SEARCH_STATE_NORMAL);
 	}
 	else
 	{
-		set_entry_background (frame, GEDIT_SEARCH_ENTRY_NOT_FOUND);
+		set_search_state (frame, SEARCH_STATE_NOT_FOUND);
 	}
 }
 
@@ -1000,11 +1000,11 @@ search_init (GtkWidget      *entry,
 
 		if (!moved || !moved_offset)
 		{
-			set_entry_background (frame, GEDIT_SEARCH_ENTRY_NOT_FOUND);
+			set_search_state (frame, SEARCH_STATE_NOT_FOUND);
 		}
 		else
 		{
-			set_entry_background (frame, GEDIT_SEARCH_ENTRY_NORMAL);
+			set_search_state (frame, SEARCH_STATE_NORMAL);
 		}
 	}
 }
