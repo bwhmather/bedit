@@ -35,7 +35,7 @@
 #include <glib/gi18n.h>
 #include <stdlib.h>
 
-#define GEDIT_VIEW_FRAME_SEARCH_TIMEOUT (30) /* in seconds */
+#define FLUSH_TIMEOUT_DURATION 30 /* in seconds */
 
 #define SEARCH_POPUP_MARGIN 12
 
@@ -219,7 +219,21 @@ search_entry_flush_timeout (GeditViewFrame *frame)
 	frame->priv->flush_timeout_id = 0;
 	hide_search_widget (frame, FALSE);
 
-	return FALSE;
+	return G_SOURCE_REMOVE;
+}
+
+static void
+renew_flush_timeout (GeditViewFrame *frame)
+{
+	if (frame->priv->flush_timeout_id != 0)
+	{
+		g_source_remove (frame->priv->flush_timeout_id);
+	}
+
+	frame->priv->flush_timeout_id =
+		g_timeout_add_seconds (FLUSH_TIMEOUT_DURATION,
+				       (GSourceFunc)search_entry_flush_timeout,
+				       frame);
 }
 
 static void
@@ -414,15 +428,7 @@ search_again (GeditViewFrame *frame,
 {
 	g_return_if_fail (frame->priv->search_mode == SEARCH);
 
-	/* renew the flush timeout */
-	if (frame->priv->flush_timeout_id != 0)
-	{
-		g_source_remove (frame->priv->flush_timeout_id);
-		frame->priv->flush_timeout_id =
-			g_timeout_add_seconds (GEDIT_VIEW_FRAME_SEARCH_TIMEOUT,
-					       (GSourceFunc)search_entry_flush_timeout,
-					       frame);
-	}
+	renew_flush_timeout (frame);
 
 	if (search_backward)
 	{
@@ -737,16 +743,7 @@ search_enable_popdown (GtkWidget      *widget,
 		       (GSourceFunc)real_search_enable_popdown,
 		       frame);
 
-	/* renew the flush timeout */
-	if (frame->priv->flush_timeout_id != 0)
-	{
-		g_source_remove (frame->priv->flush_timeout_id);
-	}
-
-	frame->priv->flush_timeout_id =
-		g_timeout_add_seconds (GEDIT_VIEW_FRAME_SEARCH_TIMEOUT,
-				       (GSourceFunc)search_entry_flush_timeout,
-				       frame);
+	renew_flush_timeout (frame);
 }
 
 static void
@@ -916,19 +913,9 @@ static void
 search_init (GtkWidget      *entry,
              GeditViewFrame *frame)
 {
-	const gchar *entry_text;
+	const gchar *entry_text = gtk_entry_get_text (GTK_ENTRY (entry));
 
-	/* renew the flush timeout */
-	if (frame->priv->flush_timeout_id != 0)
-	{
-		g_source_remove (frame->priv->flush_timeout_id);
-		frame->priv->flush_timeout_id =
-			g_timeout_add_seconds (GEDIT_VIEW_FRAME_SEARCH_TIMEOUT,
-					       (GSourceFunc)search_entry_flush_timeout,
-					       frame);
-	}
-
-	entry_text = gtk_entry_get_text (GTK_ENTRY (entry));
+	renew_flush_timeout (frame);
 
 	if (frame->priv->search_mode == SEARCH)
 	{
@@ -1234,10 +1221,7 @@ start_interactive_search_real (GeditViewFrame *frame,
 			          G_CALLBACK (search_widget_scroll_event),
 			          frame);
 
-	frame->priv->flush_timeout_id =
-		g_timeout_add_seconds (GEDIT_VIEW_FRAME_SEARCH_TIMEOUT,
-				       (GSourceFunc) search_entry_flush_timeout,
-				       frame);
+	renew_flush_timeout (frame);
 
 	install_update_entry_tag_idle (frame);
 }
@@ -1363,7 +1347,7 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	                  frame);
 
 	g_signal_connect (frame->priv->search_entry,
-			  "insert_text",
+			  "insert-text",
 	                  G_CALLBACK (search_entry_insert_text),
 	                  frame);
 
