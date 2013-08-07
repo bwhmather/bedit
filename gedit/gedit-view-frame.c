@@ -441,7 +441,7 @@ search_widget_scroll_event (GtkWidget      *widget,
 {
 	if (frame->priv->search_mode == GOTO_LINE)
 	{
-		return FALSE;
+		return GDK_EVENT_PROPAGATE;
 	}
 
 	if (event->state & GDK_CONTROL_MASK)
@@ -449,14 +449,16 @@ search_widget_scroll_event (GtkWidget      *widget,
 		if (event->direction == GDK_SCROLL_UP)
 		{
 			search_again (frame, TRUE);
+			return GDK_EVENT_STOP;
 		}
 		else if (event->direction == GDK_SCROLL_DOWN)
 		{
 			search_again (frame, FALSE);
+			return GDK_EVENT_STOP;
 		}
 	}
 
-	return TRUE;
+	return GDK_EVENT_PROPAGATE;
 }
 
 static gboolean
@@ -470,7 +472,7 @@ search_widget_key_press_event (GtkWidget      *widget,
 	if (event->keyval == GDK_KEY_Tab)
 	{
 		hide_search_widget (frame, FALSE);
-		return TRUE;
+		return GDK_EVENT_STOP;
 	}
 
 	/* Close window and cancel the search */
@@ -493,12 +495,12 @@ search_widget_key_press_event (GtkWidget      *widget,
 		}
 
 		hide_search_widget (frame, TRUE);
-		return TRUE;
+		return GDK_EVENT_STOP;
 	}
 
 	if (frame->priv->search_mode == GOTO_LINE)
 	{
-		return FALSE;
+		return GDK_EVENT_PROPAGATE;
 	}
 
 	/* SEARCH mode */
@@ -507,31 +509,31 @@ search_widget_key_press_event (GtkWidget      *widget,
 	if (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_KP_Up)
 	{
 		search_again (frame, TRUE);
-		return TRUE;
+		return GDK_EVENT_STOP;
 	}
 
 	if (((event->state & modifiers) == (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) &&
 	    (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
 	{
 		search_again (frame, TRUE);
-		return TRUE;
+		return GDK_EVENT_STOP;
 	}
 
 	/* select next matching iter */
 	if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_KP_Down)
 	{
 		search_again (frame, FALSE);
-		return TRUE;
+		return GDK_EVENT_STOP;
 	}
 
 	if (((event->state & modifiers) == GDK_CONTROL_MASK) &&
 	    (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
 	{
 		search_again (frame, FALSE);
-		return TRUE;
+		return GDK_EVENT_STOP;
 	}
 
-	return FALSE;
+	return GDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -1015,7 +1017,7 @@ search_entry_focus_out_event (GtkWidget      *widget,
                               GeditViewFrame *frame)
 {
 	hide_search_widget (frame, FALSE);
-	return FALSE;
+	return GDK_EVENT_PROPAGATE;
 }
 
 static void
