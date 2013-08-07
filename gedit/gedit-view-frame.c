@@ -147,13 +147,13 @@ gedit_view_frame_get_property (GObject    *object,
 	switch (prop_id)
 	{
 		case PROP_DOCUMENT:
-			g_value_set_object (value,
-			                    gedit_view_frame_get_document (frame));
+			g_value_set_object (value, gedit_view_frame_get_document (frame));
 			break;
+
 		case PROP_VIEW:
-			g_value_set_object (value,
-			                    gedit_view_frame_get_view (frame));
+			g_value_set_object (value, gedit_view_frame_get_view (frame));
 			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -1353,8 +1353,8 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 }
 
 static GMountOperation *
-view_frame_mount_operation_factory (GeditDocument   *doc,
-				    gpointer         user_data)
+view_frame_mount_operation_factory (GeditDocument *doc,
+				    gpointer       user_data)
 {
 	GtkWidget *frame = user_data;
 	GtkWidget *window = gtk_widget_get_toplevel (frame);
@@ -1370,7 +1370,6 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	frame->priv = gedit_view_frame_get_instance_private (frame);
 
-	frame->priv->flush_timeout_id = 0;
 	frame->priv->case_sensitive_search = FALSE;
 	frame->priv->search_at_word_boundaries = FALSE;
 	frame->priv->search_wrap_around = TRUE;
