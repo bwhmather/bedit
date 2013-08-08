@@ -353,6 +353,8 @@ forward_search (GeditViewFrame *frame)
 
 	g_return_if_fail (frame->priv->search_mode == SEARCH);
 
+	renew_flush_timeout (frame);
+
 	buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
 
 	gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (buffer),
@@ -399,6 +401,8 @@ backward_search (GeditViewFrame *frame)
 
 	g_return_if_fail (frame->priv->search_mode == SEARCH);
 
+	renew_flush_timeout (frame);
+
 	buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
 
 	gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (buffer),
@@ -410,24 +414,6 @@ backward_search (GeditViewFrame *frame)
 						 NULL,
 						 (GAsyncReadyCallback)backward_search_finished,
 						 frame);
-}
-
-static void
-search_again (GeditViewFrame *frame,
-              gboolean        search_backward)
-{
-	g_return_if_fail (frame->priv->search_mode == SEARCH);
-
-	renew_flush_timeout (frame);
-
-	if (search_backward)
-	{
-		backward_search (frame);
-	}
-	else
-	{
-		forward_search (frame);
-	}
 }
 
 static gboolean
@@ -444,12 +430,12 @@ search_widget_scroll_event (GtkWidget      *widget,
 	{
 		if (event->direction == GDK_SCROLL_UP)
 		{
-			search_again (frame, TRUE);
+			backward_search (frame);
 			return GDK_EVENT_STOP;
 		}
 		else if (event->direction == GDK_SCROLL_DOWN)
 		{
-			search_again (frame, FALSE);
+			forward_search (frame);
 			return GDK_EVENT_STOP;
 		}
 	}
@@ -504,28 +490,28 @@ search_widget_key_press_event (GtkWidget      *widget,
 	/* select previous matching iter */
 	if (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_KP_Up)
 	{
-		search_again (frame, TRUE);
+		backward_search (frame);
 		return GDK_EVENT_STOP;
 	}
 
 	if (((event->state & modifiers) == (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) &&
 	    (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
 	{
-		search_again (frame, TRUE);
+		backward_search (frame);
 		return GDK_EVENT_STOP;
 	}
 
 	/* select next matching iter */
 	if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_KP_Down)
 	{
-		search_again (frame, FALSE);
+		forward_search (frame);
 		return GDK_EVENT_STOP;
 	}
 
 	if (((event->state & modifiers) == GDK_CONTROL_MASK) &&
 	    (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
 	{
-		search_again (frame, FALSE);
+		forward_search (frame);
 		return GDK_EVENT_STOP;
 	}
 
@@ -1012,20 +998,6 @@ search_entry_focus_out_event (GtkWidget      *widget,
 }
 
 static void
-on_go_up_button_clicked (GtkWidget      *button,
-                         GeditViewFrame *frame)
-{
-	search_again (frame, TRUE);
-}
-
-static void
-on_go_down_button_clicked (GtkWidget      *button,
-                           GeditViewFrame *frame)
-{
-	search_again (frame, FALSE);
-}
-
-static void
 mark_set_cb (GtkTextBuffer  *buffer,
 	     GtkTextIter    *location,
 	     GtkTextMark    *mark,
@@ -1368,15 +1340,15 @@ gedit_view_frame_init (GeditViewFrame *frame)
 				  G_CALLBACK (search_entry_focus_out_event),
 				  frame);
 
-	g_signal_connect (frame->priv->go_up_button,
-	                  "clicked",
-	                  G_CALLBACK (on_go_up_button_clicked),
-	                  frame);
+	g_signal_connect_swapped (frame->priv->go_up_button,
+				  "clicked",
+				  G_CALLBACK (backward_search),
+				  frame);
 
-	g_signal_connect (frame->priv->go_down_button,
-	                  "clicked",
-	                  G_CALLBACK (on_go_down_button_clicked),
-	                  frame);
+	g_signal_connect_swapped (frame->priv->go_down_button,
+				  "clicked",
+				  G_CALLBACK (forward_search),
+				  frame);
 }
 
 GeditViewFrame *
