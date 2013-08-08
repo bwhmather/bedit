@@ -789,7 +789,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 				  state_normal &&
 				  editable);
 
-	b = gtk_source_buffer_get_search_text (GTK_SOURCE_BUFFER (doc)) != NULL;
+	b = TRUE;
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
 	gtk_action_set_sensitive (action,
@@ -2873,7 +2873,7 @@ search_text_notify_cb (GeditDocument *doc,
 	if (doc != gedit_window_get_active_document (window))
 		return;
 
-	sensitive = gtk_source_buffer_get_search_text (GTK_SOURCE_BUFFER (doc)) != NULL;
+	sensitive = TRUE;
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");

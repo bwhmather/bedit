@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2005 Paolo Maggi
+ * Copyright (C) 2013 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,14 +49,16 @@ struct _GeditReplaceDialogPrivate
 	GtkWidget *backwards_checkbutton;
 	GtkWidget *wrap_around_checkbutton;
 
-	gboolean   ui_error;
+	GtkSourceSearchSettings *search_settings;
+
+	gboolean ui_error;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
 
 void
 gedit_replace_dialog_present_with_time (GeditReplaceDialog *dialog,
-				       guint32            timestamp)
+					guint32             timestamp)
 {
 	g_return_if_fail (GEDIT_REPLACE_DIALOG (dialog));
 
@@ -113,11 +116,23 @@ gedit_replace_dialog_response (GtkDialog *dialog,
 }
 
 static void
+gedit_replace_dialog_dispose (GObject *object)
+{
+	GeditReplaceDialog *dialog = GEDIT_REPLACE_DIALOG (object);
+
+	g_clear_object (&dialog->priv->search_settings);
+
+	G_OBJECT_CLASS (gedit_replace_dialog_parent_class)->dispose (object);
+}
+
+static void
 gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 {
+	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
+	gobject_class->dispose = gedit_replace_dialog_dispose;
 	widget_class->delete_event = gedit_replace_dialog_delete_event;
 	dialog_class->response = gedit_replace_dialog_response;
 
@@ -140,6 +155,10 @@ insert_text_handler (GtkEditable *editable,
 		     gint        *position,
 		     gpointer     data)
 {
+	/* FIXME: I think we can remove this function. This was a hack in the
+	 * escape_search_text() function. Now there is a bug when inserting '\'
+	 * in the text entry (the '\' is escaped and becomes '\\').
+	 */
 	static gboolean insert_text = FALSE;
 	gchar *escaped_text;
 	gint new_len;
@@ -174,6 +193,7 @@ search_text_entry_changed (GtkEditable        *editable,
 			   GeditReplaceDialog *dialog)
 {
 	const gchar *search_string;
+	gchar *unescaped_search_string;
 
 	search_string = gtk_entry_get_text (GTK_ENTRY (editable));
 	g_return_if_fail (search_string != NULL);
@@ -181,18 +201,55 @@ search_text_entry_changed (GtkEditable        *editable,
 	if (*search_string != '\0')
 	{
 		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-			GEDIT_REPLACE_DIALOG_FIND_RESPONSE, TRUE);
+						   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
+						   TRUE);
+
 		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-			GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE, TRUE);
+						   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
+						   TRUE);
 	}
 	else
 	{
 		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-			GEDIT_REPLACE_DIALOG_FIND_RESPONSE, FALSE);
+						   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
+						   FALSE);
+
 		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-			GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE, FALSE);
+						   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
+						   FALSE);
+
 		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-			GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE, FALSE);
+						   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
+						   FALSE);
+	}
+
+	unescaped_search_string = gtk_source_utils_unescape_search_text (search_string);
+
+	gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
+						    unescaped_search_string);
+
+	g_free (unescaped_search_string);
+}
+
+static void
+search_text_notify_cb (GtkSourceSearchSettings *search_settings,
+		       GParamSpec              *pspec,
+		       GeditReplaceDialog      *dialog)
+{
+	const gchar *search_text = gtk_source_search_settings_get_search_text (search_settings);
+
+	if (search_text == NULL)
+	{
+		gtk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry), "");
+	}
+	else
+	{
+		gchar *escaped_search_text = gtk_source_utils_escape_search_text (search_text);
+
+		gtk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry),
+				    escaped_search_text);
+
+		g_free (escaped_search_text);
 	}
 }
 
@@ -249,13 +306,34 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 			  "insert_text",
 			  G_CALLBACK (insert_text_handler),
 			  NULL);
+
 	g_signal_connect (dlg->priv->replace_text_entry,
 			  "insert_text",
 			  G_CALLBACK (insert_text_handler),
 			  NULL);
+
 	g_signal_connect (dlg->priv->search_text_entry,
 			  "changed",
 			  G_CALLBACK (search_text_entry_changed),
+			  dlg);
+
+	dlg->priv->search_settings = gtk_source_search_settings_new ();
+
+	g_object_bind_property (dlg->priv->match_case_checkbutton, "active",
+				dlg->priv->search_settings, "case-sensitive",
+				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+
+	g_object_bind_property (dlg->priv->entire_word_checkbutton, "active",
+				dlg->priv->search_settings, "at-word-boundaries",
+				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+
+	g_object_bind_property (dlg->priv->wrap_around_checkbutton, "active",
+				dlg->priv->search_settings, "wrap-around",
+				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+
+	g_signal_connect (dlg->priv->search_settings,
+			  "notify::search-text",
+			  G_CALLBACK (search_text_notify_cb),
 			  dlg);
 
 	gtk_widget_show_all (GTK_WIDGET (dlg));
@@ -281,97 +359,12 @@ gedit_replace_dialog_new (GtkWindow *parent)
 	return GTK_WIDGET (dlg);
 }
 
-void
-gedit_replace_dialog_set_search_text (GeditReplaceDialog *dialog,
-				      const gchar        *text)
-{
-	g_return_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog));
-	g_return_if_fail (text != NULL);
-
-	gtk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry),
-			    text);
-
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-					   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
-					   (text != '\0'));
-
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-					   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
-					   (text != '\0'));
-}
-
-/* The text must be unescaped before searching */
-const gchar *
-gedit_replace_dialog_get_search_text (GeditReplaceDialog *dialog)
-{
-	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
-
-	return gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
-}
-
-void
-gedit_replace_dialog_set_replace_text (GeditReplaceDialog *dialog,
-				       const gchar        *text)
-{
-	g_return_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog));
-	g_return_if_fail (text != NULL);
-
-	gtk_entry_set_text (GTK_ENTRY (dialog->priv->replace_text_entry),
-			    text);
-}
-
 const gchar *
 gedit_replace_dialog_get_replace_text (GeditReplaceDialog *dialog)
 {
 	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
 
 	return gtk_entry_get_text (GTK_ENTRY (dialog->priv->replace_text_entry));
-}
-
-void
-gedit_replace_dialog_set_match_case (GeditReplaceDialog *dialog,
-				     gboolean            match_case)
-{
-	g_return_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog));
-
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->match_case_checkbutton),
-				      match_case);
-}
-
-gboolean
-gedit_replace_dialog_get_match_case (GeditReplaceDialog *dialog)
-{
-	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), FALSE);
-
-	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->match_case_checkbutton));
-}
-
-void
-gedit_replace_dialog_set_entire_word (GeditReplaceDialog *dialog,
-				      gboolean            entire_word)
-{
-	g_return_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog));
-
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->entire_word_checkbutton),
-				      entire_word);
-}
-
-gboolean
-gedit_replace_dialog_get_entire_word (GeditReplaceDialog *dialog)
-{
-	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), FALSE);
-
-	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->entire_word_checkbutton));
-}
-
-void
-gedit_replace_dialog_set_backwards (GeditReplaceDialog *dialog,
-				    gboolean            backwards)
-{
-	g_return_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog));
-
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->backwards_checkbutton),
-				      backwards);
 }
 
 gboolean
@@ -382,22 +375,12 @@ gedit_replace_dialog_get_backwards (GeditReplaceDialog *dialog)
 	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->backwards_checkbutton));
 }
 
-void
-gedit_replace_dialog_set_wrap_around (GeditReplaceDialog *dialog,
-				      gboolean            wrap_around)
+GtkSourceSearchSettings *
+gedit_replace_dialog_get_search_settings (GeditReplaceDialog *dialog)
 {
-	g_return_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog));
+	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
 
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->wrap_around_checkbutton),
-				      wrap_around);
-}
-
-gboolean
-gedit_replace_dialog_get_wrap_around (GeditReplaceDialog *dialog)
-{
-	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), FALSE);
-
-	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->wrap_around_checkbutton));
+	return dialog->priv->search_settings;
 }
 
 /* ex:set ts=8 noet: */

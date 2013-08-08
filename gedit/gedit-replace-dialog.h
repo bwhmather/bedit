@@ -32,6 +32,7 @@
 #define __GEDIT_REPLACE_DIALOG_H__
 
 #include <gtk/gtk.h>
+#include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 
@@ -82,36 +83,18 @@ enum
 /*
  * Public methods
  */
-GType 		 gedit_replace_dialog_get_type 		(void) G_GNUC_CONST;
+GType			 gedit_replace_dialog_get_type			(void) G_GNUC_CONST;
 
-GtkWidget	*gedit_replace_dialog_new		(GtkWindow          *parent);
+GtkWidget		*gedit_replace_dialog_new			(GtkWindow          *parent);
 
-void		 gedit_replace_dialog_present_with_time	(GeditReplaceDialog *dialog,
-							 guint32             timestamp);
+void			 gedit_replace_dialog_present_with_time		(GeditReplaceDialog *dialog,
+									 guint32             timestamp);
 
-void		 gedit_replace_dialog_set_search_text	(GeditReplaceDialog *dialog,
-							 const gchar        *text);
-const gchar	*gedit_replace_dialog_get_search_text	(GeditReplaceDialog *dialog);
+const gchar		*gedit_replace_dialog_get_replace_text		(GeditReplaceDialog *dialog);
 
-void		 gedit_replace_dialog_set_replace_text	(GeditReplaceDialog *dialog,
-							 const gchar        *text);
-const gchar	*gedit_replace_dialog_get_replace_text	(GeditReplaceDialog *dialog);
+gboolean		 gedit_replace_dialog_get_backwards		(GeditReplaceDialog *dialog);
 
-void		 gedit_replace_dialog_set_match_case	(GeditReplaceDialog *dialog,
-							 gboolean            match_case);
-gboolean	 gedit_replace_dialog_get_match_case	(GeditReplaceDialog *dialog);
-
-void		 gedit_replace_dialog_set_entire_word	(GeditReplaceDialog *dialog,
-							 gboolean            entire_word);
-gboolean	 gedit_replace_dialog_get_entire_word	(GeditReplaceDialog *dialog);
-
-void		 gedit_replace_dialog_set_backwards	(GeditReplaceDialog *dialog,
-							 gboolean            backwards);
-gboolean	 gedit_replace_dialog_get_backwards	(GeditReplaceDialog *dialog);
-
-void		 gedit_replace_dialog_set_wrap_around	(GeditReplaceDialog *dialog,
-							 gboolean            wrap_around);
-gboolean	 gedit_replace_dialog_get_wrap_around	(GeditReplaceDialog *dialog);
+GtkSourceSearchSettings	*gedit_replace_dialog_get_search_settings	(GeditReplaceDialog *dialog);
 
 G_END_DECLS
 

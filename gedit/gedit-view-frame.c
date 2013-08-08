@@ -61,11 +61,6 @@ struct _GeditViewFramePrivate
 	 */
 	GtkTextMark *start_mark;
 
-	/* Used to restore the search state if an incremental search is
-	 * cancelled.
-	 */
-	gchar *old_search_text;
-
 	GtkRevealer *revealer;
 	GdTaggedEntry *search_entry;
 	GdTaggedEntryTag *entry_tag;
@@ -78,19 +73,12 @@ struct _GeditViewFramePrivate
 	gulong search_entry_focus_out_id;
 	gulong search_entry_changed_id;
 
-	/* Used to remember the state of the last incremental search (the
-	 * buffer search state may be changed by the search and replace dialog).
-	 */
-	guint case_sensitive_search : 1;
-	guint search_at_word_boundaries : 1;
-	guint search_wrap_around : 1;
+	GtkSourceSearchSettings *search_settings;
 
 	/* Used to restore the search state if an incremental search is
 	 * cancelled.
 	 */
-	guint old_case_sensitive_search : 1;
-	guint old_search_at_word_boundaries : 1;
-	guint old_search_wrap_around : 1;
+	GtkSourceSearchSettings *old_search_settings;
 };
 
 enum
@@ -101,16 +89,6 @@ enum
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditViewFrame, gedit_view_frame, GTK_TYPE_OVERLAY)
-
-static void
-gedit_view_frame_finalize (GObject *object)
-{
-	GeditViewFrame *frame = GEDIT_VIEW_FRAME (object);
-
-	g_free (frame->priv->old_search_text);
-
-	G_OBJECT_CLASS (gedit_view_frame_parent_class)->finalize (object);
-}
 
 static void
 gedit_view_frame_dispose (GObject *object)
@@ -130,6 +108,8 @@ gedit_view_frame_dispose (GObject *object)
 	}
 
 	g_clear_object (&frame->priv->entry_tag);
+	g_clear_object (&frame->priv->search_settings);
+	g_clear_object (&frame->priv->old_search_settings);
 
 	G_OBJECT_CLASS (gedit_view_frame_parent_class)->dispose (object);
 }
@@ -226,6 +206,25 @@ renew_flush_timeout (GeditViewFrame *frame)
 				       frame);
 }
 
+static GtkSourceSearchContext *
+get_search_context (GeditViewFrame *frame)
+{
+	GeditDocument *doc;
+	GtkSourceSearchContext *search_context;
+	GtkSourceSearchSettings *search_settings;
+
+	doc = gedit_view_frame_get_document (frame);
+	search_context = _gedit_document_get_search_context (doc);
+	search_settings = gtk_source_search_context_get_settings (search_context);
+
+	if (search_settings == frame->priv->search_settings)
+	{
+		return search_context;
+	}
+
+	return NULL;
+}
+
 static void
 set_search_state (GeditViewFrame *frame,
 		  SearchState     state)
@@ -263,19 +262,22 @@ finish_search (GeditViewFrame    *frame,
 }
 
 static void
-start_search_finished (GtkSourceBuffer *buffer,
-		       GAsyncResult    *result,
-		       GeditViewFrame  *frame)
+start_search_finished (GtkSourceSearchContext *search_context,
+		       GAsyncResult           *result,
+		       GeditViewFrame         *frame)
 {
 	GtkTextIter match_start;
 	GtkTextIter match_end;
 	gboolean found;
+	GtkSourceBuffer *buffer;
 
-	found = gtk_source_buffer_forward_search_finish (buffer,
-							 result,
-							 &match_start,
-							 &match_end,
-							 NULL);
+	found = gtk_source_search_context_forward_finish (search_context,
+							  result,
+							  &match_start,
+							  &match_end,
+							  NULL);
+
+	buffer = gtk_source_search_context_get_buffer (search_context);
 
 	if (found)
 	{
@@ -303,41 +305,51 @@ static void
 start_search (GeditViewFrame *frame)
 {
 	GtkTextIter start_at;
-	GtkSourceBuffer *buffer;
+	GtkTextBuffer *buffer;
+	GtkSourceSearchContext *search_context;
 
 	g_return_if_fail (frame->priv->search_mode == SEARCH);
 
-	buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
+	search_context = get_search_context (frame);
 
-	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (buffer),
+	if (search_context == NULL)
+	{
+		return;
+	}
+
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
+
+	gtk_text_buffer_get_iter_at_mark (buffer,
 					  &start_at,
 					  frame->priv->start_mark);
 
-	gtk_source_buffer_forward_search_async (buffer,
-						&start_at,
-						NULL,
-						(GAsyncReadyCallback)start_search_finished,
-						frame);
+	gtk_source_search_context_forward_async (search_context,
+						 &start_at,
+						 NULL,
+						 (GAsyncReadyCallback)start_search_finished,
+						 frame);
 }
 
 static void
-forward_search_finished (GtkSourceBuffer *buffer,
-			 GAsyncResult    *result,
-			 GeditViewFrame  *frame)
+forward_search_finished (GtkSourceSearchContext *search_context,
+			 GAsyncResult           *result,
+			 GeditViewFrame         *frame)
 {
 	GtkTextIter match_start;
 	GtkTextIter match_end;
 	gboolean found;
 
-	found = gtk_source_buffer_forward_search_finish (buffer,
-							 result,
-							 &match_start,
-							 &match_end,
-							 NULL);
+	found = gtk_source_search_context_forward_finish (search_context,
+							  result,
+							  &match_start,
+							  &match_end,
+							  NULL);
 
 	if (found)
 	{
-		gtk_text_buffer_select_range (GTK_TEXT_BUFFER (buffer),
+		GtkTextBuffer *buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
+
+		gtk_text_buffer_select_range (buffer,
 					      &match_start,
 					      &match_end);
 	}
@@ -349,39 +361,48 @@ static void
 forward_search (GeditViewFrame *frame)
 {
 	GtkTextIter start_at;
-	GtkSourceBuffer *buffer;
+	GtkTextBuffer *buffer;
+	GtkSourceSearchContext *search_context;
 
 	g_return_if_fail (frame->priv->search_mode == SEARCH);
 
+	search_context = get_search_context (frame);
+
+	if (search_context == NULL)
+	{
+		return;
+	}
+
 	renew_flush_timeout (frame);
 
-	buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
 
-	gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (buffer),
-					      NULL,
-					      &start_at);
+	gtk_text_buffer_get_selection_bounds (buffer, NULL, &start_at);
 
-	gtk_source_buffer_forward_search_async (buffer,
-						&start_at,
-						NULL,
-						(GAsyncReadyCallback)forward_search_finished,
-						frame);
+	gtk_source_search_context_forward_async (search_context,
+						 &start_at,
+						 NULL,
+						 (GAsyncReadyCallback)forward_search_finished,
+						 frame);
 }
 
 static void
-backward_search_finished (GtkSourceBuffer *buffer,
-			  GAsyncResult    *result,
-			  GeditViewFrame  *frame)
+backward_search_finished (GtkSourceSearchContext *search_context,
+			  GAsyncResult           *result,
+			  GeditViewFrame         *frame)
 {
 	GtkTextIter match_start;
 	GtkTextIter match_end;
 	gboolean found;
+	GtkSourceBuffer *buffer;
 
-	found = gtk_source_buffer_backward_search_finish (buffer,
-							  result,
-							  &match_start,
-							  &match_end,
-							  NULL);
+	found = gtk_source_search_context_backward_finish (search_context,
+							   result,
+							   &match_start,
+							   &match_end,
+							   NULL);
+
+	buffer = gtk_source_search_context_get_buffer (search_context);
 
 	if (found)
 	{
@@ -397,23 +418,29 @@ static void
 backward_search (GeditViewFrame *frame)
 {
 	GtkTextIter start_at;
-	GtkSourceBuffer *buffer;
+	GtkTextBuffer *buffer;
+	GtkSourceSearchContext *search_context;
 
 	g_return_if_fail (frame->priv->search_mode == SEARCH);
 
+	search_context = get_search_context (frame);
+
+	if (search_context == NULL)
+	{
+		return;
+	}
+
 	renew_flush_timeout (frame);
 
-	buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
 
-	gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (buffer),
-					      &start_at,
-					      NULL);
+	gtk_text_buffer_get_selection_bounds (buffer, &start_at, NULL);
 
-	gtk_source_buffer_backward_search_async (buffer,
-						 &start_at,
-						 NULL,
-						 (GAsyncReadyCallback)backward_search_finished,
-						 frame);
+	gtk_source_search_context_backward_async (search_context,
+						  &start_at,
+						  NULL,
+						  (GAsyncReadyCallback)backward_search_finished,
+						  frame);
 }
 
 static gboolean
@@ -443,6 +470,36 @@ search_widget_scroll_event (GtkWidget      *widget,
 	return GDK_EVENT_PROPAGATE;
 }
 
+static GtkSourceSearchSettings *
+copy_search_settings (GtkSourceSearchSettings *settings)
+{
+	GtkSourceSearchSettings *new_settings = gtk_source_search_settings_new ();
+	gboolean val;
+	const gchar *text;
+
+	if (settings == NULL)
+	{
+		return new_settings;
+	}
+
+	val = gtk_source_search_settings_get_case_sensitive (settings);
+	gtk_source_search_settings_set_case_sensitive (new_settings, val);
+
+	val = gtk_source_search_settings_get_wrap_around (settings);
+	gtk_source_search_settings_set_wrap_around (new_settings, val);
+
+	val = gtk_source_search_settings_get_at_word_boundaries (settings);
+	gtk_source_search_settings_set_at_word_boundaries (new_settings, val);
+
+	val = gtk_source_search_settings_get_regex_enabled (settings);
+	gtk_source_search_settings_set_regex_enabled (new_settings, val);
+
+	text = gtk_source_search_settings_get_search_text (settings);
+	gtk_source_search_settings_set_search_text (new_settings, text);
+
+	return new_settings;
+}
+
 static gboolean
 search_widget_key_press_event (GtkWidget      *widget,
                                GdkEventKey    *event,
@@ -460,20 +517,16 @@ search_widget_key_press_event (GtkWidget      *widget,
 	/* Close window and cancel the search */
 	if (event->keyval == GDK_KEY_Escape)
 	{
-		if (frame->priv->search_mode == SEARCH)
+		GtkSourceSearchContext *search_context = get_search_context (frame);
+
+		if (frame->priv->search_mode == SEARCH &&
+		    search_context != NULL)
 		{
-			GtkSourceBuffer *buffer;
-			gchar *unescaped_search_text;
+			g_clear_object (&frame->priv->search_settings);
+			frame->priv->search_settings = copy_search_settings (frame->priv->old_search_settings);
 
-			/* restore document search so that Find Next does the right thing */
-			buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
-			gtk_source_buffer_set_case_sensitive_search (buffer, frame->priv->old_case_sensitive_search);
-			gtk_source_buffer_set_search_at_word_boundaries (buffer, frame->priv->old_search_at_word_boundaries);
-			gtk_source_buffer_set_search_wrap_around (buffer, frame->priv->old_search_wrap_around);
-
-			unescaped_search_text = gtk_source_utils_unescape_search_text (frame->priv->old_search_text);
-			gtk_source_buffer_set_search_text (buffer, unescaped_search_text);
-			g_free (unescaped_search_text);
+			gtk_source_search_context_set_settings (search_context,
+								frame->priv->search_settings);
 		}
 
 		hide_search_widget (frame, TRUE);
@@ -521,6 +574,7 @@ search_widget_key_press_event (GtkWidget      *widget,
 static void
 update_entry_tag (GeditViewFrame *frame)
 {
+	GtkSourceSearchContext *search_context;
 	GtkTextBuffer *buffer;
 	GtkTextIter select_start;
 	GtkTextIter select_end;
@@ -535,15 +589,21 @@ update_entry_tag (GeditViewFrame *frame)
 		return;
 	}
 
+	search_context = get_search_context (frame);
+
+	if (search_context == NULL)
+	{
+		return;
+	}
+
+	count = gtk_source_search_context_get_occurrences_count (search_context);
+
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
-
-	count = gtk_source_buffer_get_search_occurrences_count (GTK_SOURCE_BUFFER (buffer));
-
 	gtk_text_buffer_get_selection_bounds (buffer, &select_start, &select_end);
 
-	pos = gtk_source_buffer_get_search_occurrence_position (GTK_SOURCE_BUFFER (buffer),
-								&select_start,
-								&select_end);
+	pos = gtk_source_search_context_get_occurrence_position (search_context,
+								 &select_start,
+								 &select_end);
 
 	if (count == -1 || pos == -1)
 	{
@@ -600,56 +660,18 @@ install_update_entry_tag_idle (GeditViewFrame *frame)
 }
 
 static void
-update_search_settings (GeditViewFrame *frame)
+update_search_text (GeditViewFrame *frame)
 {
-	GtkSourceBuffer *buffer;
 	const gchar *entry_text;
 	gchar *unescaped_entry_text;
-
-	buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
 
 	entry_text = gtk_entry_get_text (GTK_ENTRY (frame->priv->search_entry));
 	unescaped_entry_text = gtk_source_utils_unescape_search_text (entry_text);
 
-	gtk_source_buffer_set_search_text (buffer, unescaped_entry_text);
-	gtk_source_buffer_set_case_sensitive_search (buffer, frame->priv->case_sensitive_search);
-	gtk_source_buffer_set_search_at_word_boundaries (buffer, frame->priv->search_at_word_boundaries);
-	gtk_source_buffer_set_search_wrap_around (buffer, frame->priv->search_wrap_around);
+	gtk_source_search_settings_set_search_text (frame->priv->search_settings,
+						    unescaped_entry_text);
 
 	g_free (unescaped_entry_text);
-}
-
-static void
-wrap_around_toggled_cb (GtkCheckMenuItem *menu_item,
-			GeditViewFrame   *frame)
-{
-	GtkSourceBuffer *buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
-
-	frame->priv->search_wrap_around = gtk_check_menu_item_get_active (menu_item);
-
-	gtk_source_buffer_set_search_wrap_around (buffer, frame->priv->search_wrap_around);
-}
-
-static void
-entire_word_toggled_cb (GtkCheckMenuItem *menu_item,
-			GeditViewFrame   *frame)
-{
-	GtkSourceBuffer *buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
-
-	frame->priv->search_at_word_boundaries = gtk_check_menu_item_get_active (menu_item);
-
-	gtk_source_buffer_set_search_at_word_boundaries (buffer, frame->priv->search_at_word_boundaries);
-}
-
-static void
-match_case_toggled_cb (GtkCheckMenuItem *menu_item,
-		       GeditViewFrame   *frame)
-{
-	GtkSourceBuffer *buffer = GTK_SOURCE_BUFFER (gedit_view_frame_get_document (frame));
-
-	frame->priv->case_sensitive_search = gtk_check_menu_item_get_active (menu_item);
-
-	gtk_source_buffer_set_case_sensitive_search (buffer, frame->priv->case_sensitive_search);
 }
 
 static void
@@ -662,46 +684,31 @@ add_popup_menu_items (GeditViewFrame *frame,
 	menu_item = gtk_check_menu_item_new_with_mnemonic (_("_Wrap Around"));
 
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-
-	g_signal_connect (menu_item,
-			  "toggled",
-			  G_CALLBACK (wrap_around_toggled_cb),
-			  frame);
-
-	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
-					frame->priv->search_wrap_around);
-
 	gtk_widget_show (menu_item);
+
+	g_object_bind_property (frame->priv->search_settings, "wrap-around",
+				menu_item, "active",
+				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
 	/* create "Match Entire Word Only" menu item. */
 	menu_item = gtk_check_menu_item_new_with_mnemonic (_("Match _Entire Word Only"));
 
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-
-	g_signal_connect (menu_item,
-			  "toggled",
-			  G_CALLBACK (entire_word_toggled_cb),
-			  frame);
-
-	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
-					frame->priv->search_at_word_boundaries);
-
 	gtk_widget_show (menu_item);
+
+	g_object_bind_property (frame->priv->search_settings, "at-word-boundaries",
+				menu_item, "active",
+				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
 	/* create "Match Case" menu item. */
 	menu_item = gtk_check_menu_item_new_with_mnemonic (_("_Match Case"));
 
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-
-	g_signal_connect (menu_item,
-			  "toggled",
-			  G_CALLBACK (match_case_toggled_cb),
-			  frame);
-
-	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item),
-					frame->priv->case_sensitive_search);
-
 	gtk_widget_show (menu_item);
+
+	g_object_bind_property (frame->priv->search_settings, "case-sensitive",
+				menu_item, "active",
+				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 }
 
 static void
@@ -979,7 +986,7 @@ search_entry_changed_cb (GtkEntry       *entry,
 
 	if (frame->priv->search_mode == SEARCH)
 	{
-		update_search_settings (frame);
+		update_search_text (frame);
 		start_search (frame);
 	}
 	else
@@ -1077,23 +1084,36 @@ init_search_entry (GeditViewFrame *frame)
 		/* SEARCH mode */
 		gboolean selection_exists;
 		gchar *search_text = NULL;
-		const gchar *old_search_text;
 		gint selection_len = 0;
+		const gchar *old_search_text;
+		GtkSourceSearchContext *search_context;
 
-		old_search_text = gtk_source_buffer_get_search_text (GTK_SOURCE_BUFFER (buffer));
+		if (frame->priv->search_settings == NULL)
+		{
+			frame->priv->search_settings = gtk_source_search_settings_new ();
+		}
 
-		frame->priv->old_case_sensitive_search =
-			gtk_source_buffer_get_case_sensitive_search (GTK_SOURCE_BUFFER (buffer));
+		g_clear_object (&frame->priv->old_search_settings);
+		frame->priv->old_search_settings = copy_search_settings (frame->priv->search_settings);
 
-		frame->priv->old_search_at_word_boundaries =
-			gtk_source_buffer_get_search_at_word_boundaries (GTK_SOURCE_BUFFER (buffer));
+		search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (buffer),
+								frame->priv->search_settings);
 
-		frame->priv->old_search_wrap_around =
-			gtk_source_buffer_get_search_wrap_around (GTK_SOURCE_BUFFER (buffer));
+		_gedit_document_set_search_context (GEDIT_DOCUMENT (buffer),
+						    search_context);
+
+		g_signal_connect_swapped (search_context,
+					  "notify::occurrences-count",
+					  G_CALLBACK (install_update_entry_tag_idle),
+					  frame);
+
+		g_object_unref (search_context);
 
 		selection_exists = get_selected_text (buffer,
 		                                      &search_text,
 		                                      &selection_len);
+
+		old_search_text = gtk_source_search_settings_get_search_text (frame->priv->search_settings);
 
 		if (selection_exists && (search_text != NULL) && (selection_len <= 160))
 		{
@@ -1110,9 +1130,6 @@ init_search_entry (GeditViewFrame *frame)
 		else if (old_search_text != NULL)
 		{
 			gchar *old_search_text_escaped = gtk_source_utils_escape_search_text (old_search_text);
-
-			g_free (frame->priv->old_search_text);
-			frame->priv->old_search_text = old_search_text_escaped;
 
 			g_signal_handler_block (frame->priv->search_entry,
 			                        frame->priv->search_entry_changed_id);
@@ -1204,7 +1221,6 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	object_class->finalize = gedit_view_frame_finalize;
 	object_class->dispose = gedit_view_frame_dispose;
 	object_class->get_property = gedit_view_frame_get_property;
 
@@ -1252,10 +1268,6 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	frame->priv = gedit_view_frame_get_instance_private (frame);
 
-	frame->priv->case_sensitive_search = FALSE;
-	frame->priv->search_at_word_boundaries = FALSE;
-	frame->priv->search_wrap_around = TRUE;
-
 	gtk_widget_init_template (GTK_WIDGET (frame));
 
 	gtk_widget_override_background_color (GTK_WIDGET (frame), 0, &transparent);
@@ -1287,11 +1299,6 @@ gedit_view_frame_init (GeditViewFrame *frame)
 			  "mark-set",
 			  G_CALLBACK (mark_set_cb),
 			  frame);
-
-	g_signal_connect_swapped (doc,
-				  "notify::search-occurrences-count",
-				  G_CALLBACK (install_update_entry_tag_idle),
-				  frame);
 
 	g_signal_connect (frame->priv->revealer,
 			  "key-press-event",
@@ -1387,13 +1394,7 @@ gedit_view_frame_popup_goto_line (GeditViewFrame *frame)
 void
 gedit_view_frame_clear_search (GeditViewFrame *frame)
 {
-	GeditDocument *doc;
-
 	g_return_if_fail (GEDIT_IS_VIEW_FRAME (frame));
-
-	doc = gedit_view_frame_get_document (frame);
-
-	gtk_source_buffer_set_search_text (GTK_SOURCE_BUFFER (doc), "");
 
 	g_signal_handler_block (frame->priv->search_entry,
 	                        frame->priv->search_entry_changed_id);

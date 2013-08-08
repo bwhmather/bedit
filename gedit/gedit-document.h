@@ -376,6 +376,11 @@ GMountOperation
 		*_gedit_document_create_mount_operation
 						(GeditDocument	     *doc);
 
+void			 _gedit_document_set_search_context	(GeditDocument          *doc,
+								 GtkSourceSearchContext *search_context);
+
+GtkSourceSearchContext	*_gedit_document_get_search_context	(GeditDocument          *doc);
+
 G_END_DECLS
 
 #endif /* __GEDIT_DOCUMENT_H__ */
