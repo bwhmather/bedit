@@ -1049,15 +1049,11 @@ get_selected_text (GtkTextBuffer  *doc,
 static void
 init_search_entry (GeditViewFrame *frame)
 {
-	GtkTextBuffer *buffer;
-
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
-
-	customize_for_search_mode (frame);
+	GtkTextBuffer *buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
 
 	if (frame->priv->search_mode == GOTO_LINE)
 	{
-		gint   line;
+		gint line;
 		gchar *line_str;
 		GtkTextIter iter;
 
@@ -1117,6 +1113,7 @@ init_search_entry (GeditViewFrame *frame)
 
 			g_free (frame->priv->old_search_text);
 			frame->priv->old_search_text = old_search_text_escaped;
+
 			g_signal_handler_block (frame->priv->search_entry,
 			                        frame->priv->search_entry_changed_id);
 
@@ -1140,7 +1137,6 @@ start_interactive_search_real (GeditViewFrame *frame,
 {
 	GtkTextBuffer *buffer;
 	GtkTextIter iter;
-	GtkTextMark *mark;
 
 	if (gtk_revealer_get_reveal_child (frame->priv->revealer))
 	{
@@ -1166,12 +1162,11 @@ start_interactive_search_real (GeditViewFrame *frame,
 	}
 	else
 	{
-		mark = gtk_text_buffer_get_insert (buffer);
+		GtkTextMark *mark = gtk_text_buffer_get_insert (buffer);
 		gtk_text_buffer_get_iter_at_mark (buffer, &iter, mark);
 	}
 
-	frame->priv->start_mark = gtk_text_buffer_create_mark (buffer, NULL,
-	                                                       &iter, FALSE);
+	frame->priv->start_mark = gtk_text_buffer_create_mark (buffer, NULL, &iter, FALSE);
 
 	gtk_revealer_set_reveal_child (frame->priv->revealer, TRUE);
 
@@ -1187,9 +1182,9 @@ start_interactive_search_real (GeditViewFrame *frame,
 	g_signal_handler_unblock (frame->priv->search_entry,
 	                          frame->priv->search_entry_changed_id);
 
-	/* We need to grab the focus after the widget has been added */
 	gtk_widget_grab_focus (GTK_WIDGET (frame->priv->search_entry));
 
+	customize_for_search_mode (frame);
 	init_search_entry (frame);
 
 	/* Manage the scroll also for the view */
