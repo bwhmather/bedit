@@ -381,6 +381,8 @@ void			 _gedit_document_set_search_context	(GeditDocument          *doc,
 
 GtkSourceSearchContext	*_gedit_document_get_search_context	(GeditDocument          *doc);
 
+gboolean		 _gedit_document_get_empty_search	(GeditDocument		*doc);
+
 G_END_DECLS
 
 #endif /* __GEDIT_DOCUMENT_H__ */

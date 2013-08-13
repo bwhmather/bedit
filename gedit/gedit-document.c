@@ -138,6 +138,12 @@ struct _GeditDocumentPrivate
 	guint language_set_by_user : 1;
 	guint stop_cursor_moved_emission : 1;
 	guint dispose_has_run : 1;
+
+	/* The search is empty if there is no search context, or if the
+	 * search text is empty. It is used for the sensitivity of some menu
+	 * actions.
+	 */
+	guint empty_search : 1;
 };
 
 enum {
@@ -152,7 +158,8 @@ enum {
 	PROP_CAN_SEARCH_AGAIN,
 	PROP_ENABLE_SEARCH_HIGHLIGHTING,
 	PROP_NEWLINE_TYPE,
-	PROP_COMPRESSION_TYPE
+	PROP_COMPRESSION_TYPE,
+	PROP_EMPTY_SEARCH
 };
 
 enum {
@@ -365,6 +372,9 @@ gedit_document_get_property (GObject    *object,
 			break;
 		case PROP_COMPRESSION_TYPE:
 			g_value_set_enum (value, doc->priv->compression_type);
+			break;
+		case PROP_EMPTY_SEARCH:
+			g_value_set_boolean (value, doc->priv->empty_search);
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -591,6 +601,22 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	                                                    G_PARAM_CONSTRUCT |
 	                                                    G_PARAM_STATIC_NAME |
 	                                                    G_PARAM_STATIC_BLURB));
+
+	/**
+	 * GeditDocument:empty-search:
+	 *
+	 * <warning>
+	 * The property is used internally by gedit. It must not be used in a
+	 * gedit plugin. The property can be modified or removed at any time.
+	 * </warning>
+	 */
+	g_object_class_install_property (object_class, PROP_EMPTY_SEARCH,
+					 g_param_spec_boolean ("empty-search",
+							       "Empty search",
+							       "Whether the search is empty",
+							       TRUE,
+							       G_PARAM_READABLE |
+							       G_PARAM_STATIC_STRINGS));
 
 	/* This signal is used to update the cursor position is the statusbar,
 	 * it's emitted either when the insert mark is moved explicitely or
@@ -993,6 +1019,8 @@ gedit_document_init (GeditDocument *doc)
 
 	priv->last_save_was_manually = TRUE;
 	priv->language_set_by_user = FALSE;
+
+	priv->empty_search = TRUE;
 
 	priv->dispose_has_run = FALSE;
 
@@ -2990,24 +3018,88 @@ _gedit_document_apply_error_style (GeditDocument *doc,
 	                           end);
 }
 
+static void
+update_empty_search (GeditDocument *doc)
+{
+	gboolean new_value;
+
+	if (doc->priv->search_context == NULL)
+	{
+		new_value = TRUE;
+	}
+	else
+	{
+		GtkSourceSearchSettings *search_settings;
+
+		search_settings = gtk_source_search_context_get_settings (doc->priv->search_context);
+
+		new_value = gtk_source_search_settings_get_search_text (search_settings) == NULL;
+	}
+
+	if (doc->priv->empty_search != new_value)
+	{
+		doc->priv->empty_search = new_value;
+		g_object_notify (G_OBJECT (doc), "empty-search");
+	}
+}
+
+static void
+connect_search_settings (GeditDocument *doc)
+{
+	GtkSourceSearchSettings *search_settings;
+
+	search_settings = gtk_source_search_context_get_settings (doc->priv->search_context);
+
+	/* Note: the signal handler is never disconnected. If the search context
+	 * changes its search settings, the old search settings will most
+	 * probably be destroyed, anyway. So it shouldn't cause performance
+	 * problems.
+	 */
+	g_signal_connect_object (search_settings,
+				 "notify::search-text",
+				 G_CALLBACK (update_empty_search),
+				 doc,
+				 G_CONNECT_SWAPPED);
+}
+
 void
 _gedit_document_set_search_context (GeditDocument          *doc,
 				    GtkSourceSearchContext *search_context)
 {
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
-	g_clear_object (&doc->priv->search_context);
+	if (doc->priv->search_context != NULL)
+	{
+		g_signal_handlers_disconnect_by_func (doc->priv->search_context,
+						      connect_search_settings,
+						      doc);
+
+		g_object_unref (doc->priv->search_context);
+	}
+
 	doc->priv->search_context = search_context;
 
 	if (search_context != NULL)
 	{
-		gboolean highlight = g_settings_get_boolean (doc->priv->editor_settings,
-							     GEDIT_SETTINGS_SEARCH_HIGHLIGHTING);
+		gboolean highlight;
+
+		g_object_ref (search_context);
+
+		highlight = g_settings_get_boolean (doc->priv->editor_settings,
+						    GEDIT_SETTINGS_SEARCH_HIGHLIGHTING);
 
 		gtk_source_search_context_set_highlight (search_context, highlight);
 
-		g_object_ref (search_context);
+		g_signal_connect_object (search_context,
+					 "notify::settings",
+					 G_CALLBACK (connect_search_settings),
+					 doc,
+					 G_CONNECT_SWAPPED);
+
+		connect_search_settings (doc);
 	}
+
+	update_empty_search (doc);
 }
 
 GtkSourceSearchContext *
@@ -3016,6 +3108,14 @@ _gedit_document_get_search_context (GeditDocument *doc)
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
 	return doc->priv->search_context;
+}
+
+gboolean
+_gedit_document_get_empty_search (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
+
+	return doc->priv->empty_search;
 }
 
 /* ex:set ts=8 noet: */

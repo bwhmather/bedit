@@ -62,6 +62,7 @@
 #include "gedit-status-menu-button.h"
 #include "gedit-settings.h"
 #include "gedit-marshal.h"
+#include "gedit-document.h"
 
 #define LANGUAGE_NONE (const gchar *)"LangNone"
 #define TAB_WIDTH_DATA "GeditWindowTabWidthData"
@@ -789,7 +790,7 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 				  state_normal &&
 				  editable);
 
-	b = TRUE;
+	b = !_gedit_document_get_empty_search (doc);
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
 	gtk_action_set_sensitive (action,
@@ -2863,9 +2864,9 @@ fullscreen_controls_build (GeditWindow *window)
 }
 
 static void
-search_text_notify_cb (GeditDocument *doc,
-		       GParamSpec    *pspec,
-		       GeditWindow   *window)
+empty_search_notify_cb (GeditDocument *doc,
+			GParamSpec    *pspec,
+			GeditWindow   *window)
 {
 	gboolean sensitive;
 	GtkAction *action;
@@ -2873,7 +2874,7 @@ search_text_notify_cb (GeditDocument *doc,
 	if (doc != gedit_window_get_active_document (window))
 		return;
 
-	sensitive = TRUE;
+	sensitive = !_gedit_document_get_empty_search (doc);
 
 	action = gtk_action_group_get_action (window->priv->action_group,
 					      "SearchFindNext");
@@ -3089,8 +3090,8 @@ on_tab_added (GeditMultiNotebook *multi,
 			  G_CALLBACK (update_cursor_position_statusbar),
 			  window);
 	g_signal_connect (doc,
-			  "notify::search-text",
-			  G_CALLBACK (search_text_notify_cb),
+			  "notify::empty-search",
+			  G_CALLBACK (empty_search_notify_cb),
 			  window);
 	g_signal_connect (doc,
 			  "notify::can-undo",
@@ -3167,7 +3168,7 @@ on_tab_removed (GeditMultiNotebook *multi,
 					      G_CALLBACK (update_cursor_position_statusbar),
 					      window);
 	g_signal_handlers_disconnect_by_func (doc,
-					      G_CALLBACK (search_text_notify_cb),
+					      G_CALLBACK (empty_search_notify_cb),
 					      window);
 	g_signal_handlers_disconnect_by_func (doc,
 					      G_CALLBACK (can_undo),
