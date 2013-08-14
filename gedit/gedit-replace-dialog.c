@@ -46,6 +46,7 @@ struct _GeditReplaceDialogPrivate
 	GtkWidget *replace_text_entry;
 	GtkWidget *match_case_checkbutton;
 	GtkWidget *entire_word_checkbutton;
+	GtkWidget *regex_checkbutton;
 	GtkWidget *backwards_checkbutton;
 	GtkWidget *wrap_around_checkbutton;
 
@@ -144,6 +145,7 @@ gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, replace_label);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, match_case_checkbutton);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, entire_word_checkbutton);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, regex_checkbutton);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, backwards_checkbutton);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, wrap_around_checkbutton);
 }
@@ -325,6 +327,10 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 
 	g_object_bind_property (dlg->priv->entire_word_checkbutton, "active",
 				dlg->priv->search_settings, "at-word-boundaries",
+				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+
+	g_object_bind_property (dlg->priv->regex_checkbutton, "active",
+				dlg->priv->search_settings, "regex-enabled",
 				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
 	g_object_bind_property (dlg->priv->wrap_around_checkbutton, "active",
