@@ -690,6 +690,16 @@ add_popup_menu_items (GeditViewFrame *frame,
 				menu_item, "active",
 				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
+	/* create "Match as Regular Expression" menu item. */
+	menu_item = gtk_check_menu_item_new_with_mnemonic (_("Match as _Regular Expression"));
+
+	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
+	gtk_widget_show (menu_item);
+
+	g_object_bind_property (frame->priv->search_settings, "regex-enabled",
+				menu_item, "active",
+				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+
 	/* create "Match Entire Word Only" menu item. */
 	menu_item = gtk_check_menu_item_new_with_mnemonic (_("Match _Entire Word Only"));
 
