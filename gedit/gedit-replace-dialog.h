@@ -96,6 +96,9 @@ gboolean		 gedit_replace_dialog_get_backwards		(GeditReplaceDialog *dialog);
 
 GtkSourceSearchSettings	*gedit_replace_dialog_get_search_settings	(GeditReplaceDialog *dialog);
 
+void			 gedit_replace_dialog_set_search_text		(GeditReplaceDialog *dialog,
+									 const gchar        *search_text);
+
 G_END_DECLS
 
 #endif  /* __GEDIT_REPLACE_DIALOG_H__  */

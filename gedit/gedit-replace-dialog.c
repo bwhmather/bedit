@@ -151,46 +151,6 @@ gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 }
 
 static void
-insert_text_handler (GtkEditable *editable,
-		     const gchar *text,
-		     gint         length,
-		     gint        *position,
-		     gpointer     data)
-{
-	/* FIXME: I think we can remove this function. This was a hack in the
-	 * escape_search_text() function. Now there is a bug when inserting '\'
-	 * in the text entry (the '\' is escaped and becomes '\\').
-	 */
-	static gboolean insert_text = FALSE;
-	gchar *escaped_text;
-	gint new_len;
-
-	/* To avoid recursive behavior */
-	if (insert_text)
-		return;
-
-	escaped_text = gtk_source_utils_escape_search_text (text);
-
-	new_len = strlen (escaped_text);
-
-	if (new_len == length)
-	{
-		g_free (escaped_text);
-		return;
-	}
-
-	insert_text = TRUE;
-
-	g_signal_stop_emission_by_name (editable, "insert_text");
-
-	gtk_editable_insert_text (editable, escaped_text, new_len, position);
-
-	insert_text = FALSE;
-
-	g_free (escaped_text);
-}
-
-static void
 search_text_entry_changed (GtkEditable        *editable,
 			   GeditReplaceDialog *dialog)
 {
@@ -231,28 +191,6 @@ search_text_entry_changed (GtkEditable        *editable,
 						    unescaped_search_string);
 
 	g_free (unescaped_search_string);
-}
-
-static void
-search_text_notify_cb (GtkSourceSearchSettings *search_settings,
-		       GParamSpec              *pspec,
-		       GeditReplaceDialog      *dialog)
-{
-	const gchar *search_text = gtk_source_search_settings_get_search_text (search_settings);
-
-	if (search_text == NULL)
-	{
-		gtk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry), "");
-	}
-	else
-	{
-		gchar *escaped_search_text = gtk_source_utils_escape_search_text (search_text);
-
-		gtk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry),
-				    escaped_search_text);
-
-		g_free (escaped_search_text);
-	}
 }
 
 static void
@@ -305,16 +243,6 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 					   FALSE);
 
 	g_signal_connect (dlg->priv->search_text_entry,
-			  "insert_text",
-			  G_CALLBACK (insert_text_handler),
-			  NULL);
-
-	g_signal_connect (dlg->priv->replace_text_entry,
-			  "insert_text",
-			  G_CALLBACK (insert_text_handler),
-			  NULL);
-
-	g_signal_connect (dlg->priv->search_text_entry,
 			  "changed",
 			  G_CALLBACK (search_text_entry_changed),
 			  dlg);
@@ -336,11 +264,6 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 	g_object_bind_property (dlg->priv->wrap_around_checkbutton, "active",
 				dlg->priv->search_settings, "wrap-around",
 				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-
-	g_signal_connect (dlg->priv->search_settings,
-			  "notify::search-text",
-			  G_CALLBACK (search_text_notify_cb),
-			  dlg);
 
 	gtk_widget_show_all (GTK_WIDGET (dlg));
 }
@@ -387,6 +310,16 @@ gedit_replace_dialog_get_search_settings (GeditReplaceDialog *dialog)
 	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
 
 	return dialog->priv->search_settings;
+}
+
+void
+gedit_replace_dialog_set_search_text (GeditReplaceDialog *dialog,
+				      const gchar        *search_text)
+{
+	g_return_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog));
+
+	gtk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry),
+			    search_text);
 }
 
 /* ex:set ts=8 noet: */

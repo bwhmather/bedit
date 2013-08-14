@@ -661,11 +661,12 @@ _gedit_cmd_search_replace (GtkAction   *action,
 
 	if (selection_exists && find_text != NULL && sel_len < 80)
 	{
-		GtkSourceSearchSettings *search_settings;
+		gchar *escaped_find_text = gtk_source_utils_escape_search_text (find_text);
 
-		search_settings = gedit_replace_dialog_get_search_settings (GEDIT_REPLACE_DIALOG (replace_dialog));
+		gedit_replace_dialog_set_search_text (GEDIT_REPLACE_DIALOG (replace_dialog),
+						      escaped_find_text);
 
-		gtk_source_search_settings_set_search_text (search_settings, find_text);
+		g_free (escaped_find_text);
 	}
 
 	g_free (find_text);
