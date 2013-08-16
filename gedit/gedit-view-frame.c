@@ -215,6 +215,12 @@ get_search_context (GeditViewFrame *frame)
 
 	doc = gedit_view_frame_get_document (frame);
 	search_context = _gedit_document_get_search_context (doc);
+
+	if (search_context == NULL)
+	{
+		return NULL;
+	}
+
 	search_settings = gtk_source_search_context_get_settings (search_context);
 
 	if (search_settings == frame->priv->search_settings)
