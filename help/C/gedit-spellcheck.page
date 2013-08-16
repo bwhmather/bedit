@@ -6,6 +6,7 @@
     <link type="guide" xref="gedit-plugin-guide#gedit-default-plugins" /> 
     <revision pkgversion="3.8" date="2013-02-24" status="review"/>
     <revision pkgversion="3.8" date="2013-03-21" status="review"/>
+
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jwcampbell@gmail.com</email>
@@ -116,11 +117,17 @@
     check your document. If you need to use another language, choose
     <guiseq><gui style="menu">Tools</gui><gui style="menuitem">Set
     Language…</gui></guiseq>, then choose the language you want to use.</p>
-    
-  <note>
-    <p>The list of available languages will vary, depending on the configuration
-    of your system.</p>
-  </note>
   </section>
 
+  <section id="dict">
+    <title>Dictionaries</title>
+
+    <p><link href="http://www.abisource.com/projects/enchant/">Enchant</link>
+    is used for the spell checking in <app>gedit</app>. Enchant uses one or
+    several backends such as Hunspell or Aspell for the dictionaries.</p>
+
+    <p>If the language which you want to use is not available in
+    <app>gedit</app>, install a dictionary for one of the supported
+    backends.</p>
+  </section>
 </page>
