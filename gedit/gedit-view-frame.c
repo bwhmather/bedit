@@ -878,10 +878,13 @@ static void
 customize_for_search_mode (GeditViewFrame *frame)
 {
 	GIcon *icon;
+	gint width_request;
 
 	if (frame->priv->search_mode == SEARCH)
 	{
 		icon = g_themed_icon_new_with_default_fallbacks ("edit-find-symbolic");
+
+		width_request = 260;
 
 		gtk_widget_set_tooltip_text (GTK_WIDGET (frame->priv->search_entry),
 		                             _("String you want to search for"));
@@ -893,6 +896,8 @@ customize_for_search_mode (GeditViewFrame *frame)
 	{
 		icon = g_themed_icon_new_with_default_fallbacks ("go-jump-symbolic");
 
+		width_request = 160;
+
 		gtk_widget_set_tooltip_text (GTK_WIDGET (frame->priv->search_entry),
 		                             _("Line you want to move the cursor to"));
 
@@ -903,6 +908,10 @@ customize_for_search_mode (GeditViewFrame *frame)
 	gtk_entry_set_icon_from_gicon (GTK_ENTRY (frame->priv->search_entry),
 	                               GTK_ENTRY_ICON_PRIMARY,
 	                               icon);
+
+	gtk_widget_set_size_request (GTK_WIDGET (frame->priv->search_entry),
+				     width_request,
+				     -1);
 
 	g_object_unref (icon);
 }
