@@ -322,4 +322,38 @@ gedit_replace_dialog_set_search_text (GeditReplaceDialog *dialog,
 			    search_text);
 }
 
+static void
+set_error (GtkEntry    *entry,
+	   const gchar *error_msg)
+{
+	if (error_msg == NULL || error_msg[0] == '\0')
+	{
+		gtk_entry_set_icon_from_gicon (entry, GTK_ENTRY_ICON_SECONDARY, NULL);
+		gtk_entry_set_icon_tooltip_text (entry, GTK_ENTRY_ICON_SECONDARY, NULL);
+	}
+	else
+	{
+		GIcon *icon = g_themed_icon_new_with_default_fallbacks ("dialog-error-symbolic");
+
+		gtk_entry_set_icon_from_gicon (entry, GTK_ENTRY_ICON_SECONDARY, icon);
+		gtk_entry_set_icon_tooltip_text (entry, GTK_ENTRY_ICON_SECONDARY, error_msg);
+
+		g_object_unref (icon);
+	}
+}
+
+void
+gedit_replace_dialog_set_search_error (GeditReplaceDialog *dialog,
+				       const gchar        *error_msg)
+{
+	set_error (GTK_ENTRY (dialog->priv->search_text_entry), error_msg);
+}
+
+void
+gedit_replace_dialog_set_replace_error (GeditReplaceDialog *dialog,
+					const gchar        *error_msg)
+{
+	set_error (GTK_ENTRY (dialog->priv->replace_text_entry), error_msg);
+}
+
 /* ex:set ts=8 noet: */
