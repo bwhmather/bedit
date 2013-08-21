@@ -1,7 +1,6 @@
 # Brazilian Portuguese translation of gedit.
 # Copyright (C) 1999-2013 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gedit package.
-#
 # Frederic L. W. Meunier <linux@urbi.com.br>, 1999.
 # Evandro Fernandes Giovanini <evandrofg@ig.com.br>, 2000.
 # Francisco Petrucio Cavalcante Junior <fpcj@impa.br>, 2002.
@@ -32,16 +31,16 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-07-29 20:05+0000\n"
-"PO-Revision-Date: 2013-07-30 03:28-0300\n"
-"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"POT-Creation-Date: 2013-08-19 14:03+0000\n"
+"PO-Revision-Date: 2013-08-19 13:29-0300\n"
+"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -756,7 +755,7 @@ msgstr[0] "Carregando %d arquivo..."
 msgstr[1] "Carregando %d arquivos..."
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1174
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1175
 msgid "Open"
 msgstr "Abrir"
 
@@ -954,22 +953,22 @@ msgstr "Uma ocorrência localizada e substituída"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:145
+#: ../gedit/gedit-commands-search.c:152
 #, c-format
 msgid "\"%s\" not found"
 msgstr "\"%s\" não localizado"
 
-#: ../gedit/gedit-document.c:1234 ../gedit/gedit-document.c:1260
+#: ../gedit/gedit-document.c:1266 ../gedit/gedit-document.c:1292
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Documento não-salvo %d"
 
 #: ../gedit/gedit-documents-panel.c:119 ../gedit/gedit-documents-panel.c:133
-#: ../gedit/gedit-window.c:2079 ../gedit/gedit-window.c:2086
+#: ../gedit/gedit-window.c:2080 ../gedit/gedit-window.c:2087
 msgid "Read-Only"
 msgstr "Somente leitura"
 
-#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3458
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3459
 msgid "Documents"
 msgstr "Documentos"
 
@@ -1153,8 +1152,8 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1790
-#: ../gedit/gedit-window.c:2178 ../plugins/externaltools/tools/manager.py:146
+#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1791
+#: ../gedit/gedit-window.c:2179 ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:463
 #: ../plugins/externaltools/tools/manager.py:579
 #: ../plugins/externaltools/tools/manager.py:915
@@ -1893,7 +1892,7 @@ msgid "The preview of a page in the document to be printed"
 msgstr "A visualização da página no documento a ser impresso"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1235
+#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1236
 msgid "Replace"
 msgstr "Substituir"
 
@@ -1918,10 +1917,14 @@ msgid "Match _entire word only"
 msgstr "_Coincidir apenas com palavra completa"
 
 #: ../gedit/gedit-replace-dialog.ui.h:8
+msgid "Match as _regular expression"
+msgstr "Coincidir com expressão _regular"
+
+#: ../gedit/gedit-replace-dialog.ui.h:9
 msgid "Search _backwards"
 msgstr "Pesquisar para _trás"
 
-#: ../gedit/gedit-replace-dialog.ui.h:9
+#: ../gedit/gedit-replace-dialog.ui.h:10
 msgid "_Wrap around"
 msgstr "_Voltar ao início"
 
@@ -2326,81 +2329,86 @@ msgstr "/ em %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:588
+#: ../gedit/gedit-view-frame.c:637
 #, c-format
 msgid "%d of %d"
 msgstr "%d de %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:679
+#: ../gedit/gedit-view-frame.c:690
 msgid "_Wrap Around"
 msgstr "_Voltar ao início"
 
+#. create "Match as Regular Expression" menu item.
+#: ../gedit/gedit-view-frame.c:700
+msgid "Match as _Regular Expression"
+msgstr "Coincidir com expressão _regular"
+
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:694
+#: ../gedit/gedit-view-frame.c:710
 msgid "Match _Entire Word Only"
 msgstr "Coincidir ap_enas com palavra completa"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:709
+#: ../gedit/gedit-view-frame.c:720
 msgid "_Match Case"
 msgstr "Diferenciar _maiúsculas/minúsculas"
 
-#: ../gedit/gedit-view-frame.c:891
+#: ../gedit/gedit-view-frame.c:890
 msgid "String you want to search for"
 msgstr "Expressão que você deseja pesquisar"
 
-#: ../gedit/gedit-view-frame.c:901
+#: ../gedit/gedit-view-frame.c:902
 msgid "Line you want to move the cursor to"
 msgstr "Linha para a qual que você deseja mover o cursor"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1067
+#: ../gedit/gedit-window.c:1068
 #, c-format
 msgid "Open '%s'"
 msgstr "Abrir \\\"%s\\\""
 
-#: ../gedit/gedit-window.c:1229
+#: ../gedit/gedit-window.c:1230
 msgid "Save"
 msgstr "Salvar"
 
-#: ../gedit/gedit-window.c:1231
+#: ../gedit/gedit-window.c:1232
 msgid "Print"
 msgstr "Imprimir"
 
-#: ../gedit/gedit-window.c:1233
+#: ../gedit/gedit-window.c:1234
 msgid "Find"
 msgstr "Localizar"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1397
+#: ../gedit/gedit-window.c:1398
 #, c-format
 msgid "Activate '%s'"
 msgstr "Ativar \\\"%s\\\""
 
-#: ../gedit/gedit-window.c:1743
+#: ../gedit/gedit-window.c:1744
 msgid "Use Spaces"
 msgstr "Usar espaços"
 
-#: ../gedit/gedit-window.c:1936
+#: ../gedit/gedit-window.c:1937
 msgid "Bracket match is out of range"
 msgstr "Parênteses nos resultados que estão fora da faixa"
 
-#: ../gedit/gedit-window.c:1941
+#: ../gedit/gedit-window.c:1942
 msgid "Bracket match not found"
 msgstr "Parênteses no resultado não encontrado"
 
-#: ../gedit/gedit-window.c:1946
+#: ../gedit/gedit-window.c:1947
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Parênteses do resultado encontrado na linha: %d"
 
-#: ../gedit/gedit-window.c:2130
+#: ../gedit/gedit-window.c:2131
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Largura da tabulação: %u"
 
-#: ../gedit/gedit-window.c:2485
+#: ../gedit/gedit-window.c:2486
 msgid "There are unsaved documents"
 msgstr "Há documentos não salvos"
 
@@ -2959,11 +2967,11 @@ msgstr ""
 msgid "If you delete an item, it is permanently lost."
 msgstr "Se você excluir um item, ele será perdido permanentemente."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1777
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1776
 msgid "(Empty)"
 msgstr "(Vazio)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3499
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3498
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2972,11 +2980,11 @@ msgstr ""
 "definições de filtro para tornar o arquivo visível"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3756
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3755
 msgid "Untitled File"
 msgstr "Arquivo sem título"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3784
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3783
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2985,11 +2993,11 @@ msgstr ""
 "definição do filtro para torná-lo visível"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3815
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3814
 msgid "Untitled Folder"
 msgstr "Pasta sem título"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3840
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3839
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -3581,11 +3589,11 @@ msgstr "_Destaque palavras com erros ortográficos"
 msgid "Automatically spell-check the current document"
 msgstr "Verifica automaticamente a ortografia do documento atual"
 
-#: ../plugins/spell/gedit-spell-plugin.c:823
+#: ../plugins/spell/gedit-spell-plugin.c:821
 msgid "The document is empty."
 msgstr "O documento está vazio."
 
-#: ../plugins/spell/gedit-spell-plugin.c:848
+#: ../plugins/spell/gedit-spell-plugin.c:846
 msgid "No misspelled words"
 msgstr "Nenhuma palavra incorreta"
 
