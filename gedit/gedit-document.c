@@ -3081,14 +3081,11 @@ _gedit_document_set_search_context (GeditDocument          *doc,
 
 	if (search_context != NULL)
 	{
-		gboolean highlight;
-
 		g_object_ref (search_context);
 
-		highlight = g_settings_get_boolean (doc->priv->editor_settings,
-						    GEDIT_SETTINGS_SEARCH_HIGHLIGHTING);
-
-		gtk_source_search_context_set_highlight (search_context, highlight);
+		g_settings_bind (doc->priv->editor_settings, GEDIT_SETTINGS_SEARCH_HIGHLIGHTING,
+				 search_context, "highlight",
+				 G_SETTINGS_BIND_GET);
 
 		g_signal_connect_object (search_context,
 					 "notify::settings",
