@@ -135,15 +135,11 @@ static void
 text_not_found (GeditWindow        *window,
 		GeditReplaceDialog *replace_dialog)
 {
-	GtkSourceSearchSettings *search_settings;
 	const gchar *search_text;
-	gchar *escaped_search_text;
 	gchar *truncated_text;
 
-	search_settings = gedit_replace_dialog_get_search_settings (replace_dialog);
-	search_text = gtk_source_search_settings_get_search_text (search_settings);
-	escaped_search_text = gtk_source_utils_escape_search_text (search_text);
-	truncated_text = gedit_utils_str_end_truncate (escaped_search_text, MAX_MSG_LENGTH);
+	search_text = gedit_replace_dialog_get_search_text (replace_dialog);
+	truncated_text = gedit_utils_str_end_truncate (search_text, MAX_MSG_LENGTH);
 
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 				       window->priv->generic_message_cid,
@@ -151,7 +147,6 @@ text_not_found (GeditWindow        *window,
 				          entered by the user in the search box */
 				       _("\"%s\" not found"), truncated_text);
 
-	g_free (escaped_search_text);
 	g_free (truncated_text);
 }
 

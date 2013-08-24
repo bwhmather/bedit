@@ -312,6 +312,18 @@ gedit_replace_dialog_get_search_settings (GeditReplaceDialog *dialog)
 	return dialog->priv->search_settings;
 }
 
+/* This function returns the original search text. The search text from the
+ * search settings has been unescaped, and the escape function is not
+ * reciprocal. So to avoid bugs, we have to deal with the original search text.
+ */
+const gchar *
+gedit_replace_dialog_get_search_text (GeditReplaceDialog *dialog)
+{
+	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
+
+	return gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
+}
+
 void
 gedit_replace_dialog_set_search_text (GeditReplaceDialog *dialog,
 				      const gchar        *search_text)
