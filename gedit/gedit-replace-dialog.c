@@ -55,6 +55,19 @@ struct _GeditReplaceDialogPrivate
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
 
+static GeditWindow *
+get_gedit_window (GeditReplaceDialog *dialog)
+{
+	GtkWindow *transient_for = gtk_window_get_transient_for (GTK_WINDOW (dialog));
+
+	if (transient_for != NULL)
+	{
+		return GEDIT_WINDOW (transient_for);
+	}
+
+	return NULL;
+}
+
 void
 gedit_replace_dialog_present_with_time (GeditReplaceDialog *dialog,
 					guint32             timestamp)
@@ -181,6 +194,77 @@ search_text_entry_changed (GtkEditable        *editable,
 	g_free (unescaped_search_string);
 }
 
+/* TODO: move in gedit-document.c and share it with gedit-view-frame */
+static gboolean
+get_selected_text (GtkTextBuffer  *doc,
+		   gchar         **selected_text,
+		   gint           *len)
+{
+	GtkTextIter start, end;
+
+	g_return_val_if_fail (selected_text != NULL, FALSE);
+	g_return_val_if_fail (*selected_text == NULL, FALSE);
+
+	if (!gtk_text_buffer_get_selection_bounds (doc, &start, &end))
+	{
+		if (len != NULL)
+		{
+			len = 0;
+		}
+
+		return FALSE;
+	}
+
+	*selected_text = gtk_text_buffer_get_slice (doc, &start, &end, TRUE);
+
+	if (len != NULL)
+	{
+		*len = g_utf8_strlen (*selected_text, -1);
+	}
+
+	return TRUE;
+}
+
+static void
+show_cb (GeditReplaceDialog *dialog)
+{
+	GeditWindow *window;
+	GeditDocument *doc;
+	gboolean selection_exists;
+	gchar *selection = NULL;
+	gint selection_length;
+
+	window = get_gedit_window (dialog);
+
+	if (window == NULL)
+	{
+		return;
+	}
+
+	doc = gedit_window_get_active_document (window);
+
+	if (doc == NULL)
+	{
+		return;
+	}
+
+	selection_exists = get_selected_text (GTK_TEXT_BUFFER (doc),
+					      &selection,
+					      &selection_length);
+
+	if (selection_exists && selection != NULL && selection_length < 80)
+	{
+		gchar *escaped_selection = gtk_source_utils_escape_search_text (selection);
+
+		gtk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry),
+				    escaped_selection);
+
+		g_free (escaped_selection);
+	}
+
+	g_free (selection);
+}
+
 static void
 gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 {
@@ -197,6 +281,7 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 				 dlg->priv->search_entry,
 				 dlg->priv->search_label,
 				 GTK_POS_RIGHT, 1, 1);
+	gtk_widget_show_all (dlg->priv->search_entry);
 
 	dlg->priv->replace_entry = gedit_history_entry_new ("replace-with-entry", TRUE);
 	gtk_widget_set_hexpand (GTK_WIDGET (dlg->priv->replace_entry), TRUE);
@@ -206,6 +291,7 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 				 dlg->priv->replace_entry,
 				 dlg->priv->replace_label,
 				 GTK_POS_RIGHT, 1, 1);
+	gtk_widget_show_all (dlg->priv->replace_entry);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (dlg->priv->search_label),
 				       dlg->priv->search_entry);
@@ -249,7 +335,10 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 				dlg->priv->search_settings, "wrap-around",
 				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
-	gtk_widget_show_all (GTK_WIDGET (dlg));
+	g_signal_connect (dlg,
+			  "show",
+			  G_CALLBACK (show_cb),
+			  NULL);
 }
 
 GtkWidget *
@@ -301,16 +390,6 @@ gedit_replace_dialog_get_search_text (GeditReplaceDialog *dialog)
 	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
 
 	return gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
-}
-
-void
-gedit_replace_dialog_set_search_text (GeditReplaceDialog *dialog,
-				      const gchar        *search_text)
-{
-	g_return_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog));
-
-	gtk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry),
-			    search_text);
 }
 
 static void

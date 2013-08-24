@@ -93,9 +93,6 @@ void			 gedit_replace_dialog_present_with_time		(GeditReplaceDialog *dialog,
 
 const gchar		*gedit_replace_dialog_get_search_text		(GeditReplaceDialog *dialog);
 
-void			 gedit_replace_dialog_set_search_text		(GeditReplaceDialog *dialog,
-									 const gchar        *search_text);
-
 const gchar		*gedit_replace_dialog_get_replace_text		(GeditReplaceDialog *dialog);
 
 gboolean		 gedit_replace_dialog_get_backwards		(GeditReplaceDialog *dialog);

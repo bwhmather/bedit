@@ -398,33 +398,6 @@ do_find (GeditReplaceDialog *dialog,
 	}
 }
 
-/* FIXME: move in gedit-document.c and share it with gedit-view-frame */
-static gboolean
-get_selected_text (GtkTextBuffer  *doc,
-		   gchar         **selected_text,
-		   gint           *len)
-{
-	GtkTextIter start, end;
-
-	g_return_val_if_fail (selected_text != NULL, FALSE);
-	g_return_val_if_fail (*selected_text == NULL, FALSE);
-
-	if (!gtk_text_buffer_get_selection_bounds (doc, &start, &end))
-	{
-		if (len != NULL)
-			len = 0;
-
-		return FALSE;
-	}
-
-	*selected_text = gtk_text_buffer_get_slice (doc, &start, &end, TRUE);
-
-	if (len != NULL)
-		*len = g_utf8_strlen (*selected_text, -1);
-
-	return TRUE;
-}
-
 static void
 do_replace (GeditReplaceDialog *dialog,
 	    GeditWindow        *window)
@@ -724,9 +697,6 @@ _gedit_cmd_search_replace (GtkAction   *action,
 	gpointer data;
 	GtkWidget *replace_dialog;
 	GeditDocument *doc;
-	gboolean selection_exists;
-	gchar *find_text = NULL;
-	gint sel_len;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -747,22 +717,6 @@ _gedit_cmd_search_replace (GtkAction   *action,
 	g_return_if_fail (doc != NULL);
 
 	create_search_context (GEDIT_REPLACE_DIALOG (replace_dialog), doc);
-
-	selection_exists = get_selected_text (GTK_TEXT_BUFFER (doc),
-					      &find_text,
-					      &sel_len);
-
-	if (selection_exists && find_text != NULL && sel_len < 80)
-	{
-		gchar *escaped_find_text = gtk_source_utils_escape_search_text (find_text);
-
-		gedit_replace_dialog_set_search_text (GEDIT_REPLACE_DIALOG (replace_dialog),
-						      escaped_find_text);
-
-		g_free (escaped_find_text);
-	}
-
-	g_free (find_text);
 
 	gtk_widget_show (replace_dialog);
 	last_search_data_restore_position (GEDIT_REPLACE_DIALOG (replace_dialog));
