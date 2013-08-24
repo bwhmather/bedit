@@ -491,111 +491,11 @@ do_replace_all (GeditReplaceDialog *dialog,
 }
 
 static void
-update_regex_error (GeditReplaceDialog     *dialog,
-		    GtkSourceSearchContext *search_context)
-{
-	GError *regex_error = gtk_source_search_context_get_regex_error (search_context);
-	GtkSourceRegexSearchState regex_state = gtk_source_search_context_get_regex_state (search_context);
-
-	gedit_replace_dialog_set_search_error (dialog, NULL);
-	gedit_replace_dialog_set_replace_error (dialog, NULL);
-
-	if (regex_error == NULL)
-	{
-		return;
-	}
-
-	switch (regex_state)
-	{
-		case GTK_SOURCE_REGEX_SEARCH_COMPILATION_ERROR:
-		case GTK_SOURCE_REGEX_SEARCH_MATCHING_ERROR:
-			gedit_replace_dialog_set_search_error (dialog, regex_error->message);
-			break;
-
-		case GTK_SOURCE_REGEX_SEARCH_REPLACE_ERROR:
-			gedit_replace_dialog_set_replace_error (dialog, regex_error->message);
-			break;
-
-		default:
-			g_return_if_reached ();
-	}
-
-	g_error_free (regex_error);
-}
-
-static void
-regex_error_notify_cb (GtkSourceSearchContext *search_context,
-		       GParamSpec             *pspec,
-		       GeditReplaceDialog     *dialog)
-{
-	GeditDocument *doc;
-	GtkSourceSearchContext *doc_search_context;
-
-	doc = GEDIT_DOCUMENT (gtk_source_search_context_get_buffer (search_context));
-	doc_search_context = _gedit_document_get_search_context (doc);
-
-	if (search_context == doc_search_context)
-	{
-		update_regex_error (dialog, search_context);
-	}
-}
-
-static void
-search_context_finalized_cb (GeditReplaceDialog *dialog,
-			     GObject            *where_the_object_was)
-{
-	gedit_replace_dialog_set_search_error (dialog, NULL);
-	gedit_replace_dialog_set_replace_error (dialog, NULL);
-}
-
-static void
-create_search_context (GeditReplaceDialog *dialog,
-		       GeditDocument      *doc)
-{
-	GtkSourceSearchContext *search_context;
-	GtkSourceSearchSettings *search_settings;
-
-	search_settings = gedit_replace_dialog_get_search_settings (dialog);
-
-	search_context = _gedit_document_get_search_context (doc);
-
-	if (search_context != NULL &&
-	    search_settings == gtk_source_search_context_get_settings (search_context))
-	{
-		return;
-	}
-
-	search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (doc),
-							search_settings);
-
-	g_signal_connect_object (search_context,
-				 "notify::regex-error",
-				 G_CALLBACK (regex_error_notify_cb),
-				 dialog,
-				 0);
-
-	g_object_weak_ref (G_OBJECT (search_context),
-			   (GWeakNotify)search_context_finalized_cb,
-			   dialog);
-
-	update_regex_error (dialog, search_context);
-
-	_gedit_document_set_search_context (doc, search_context);
-
-	g_object_unref (search_context);
-}
-
-static void
 replace_dialog_response_cb (GeditReplaceDialog *dialog,
 			    gint                response_id,
 			    GeditWindow        *window)
 {
-	GeditDocument *doc;
-
 	gedit_debug (DEBUG_COMMANDS);
-
-	doc = gedit_window_get_active_document (window);
-	create_search_context (dialog, doc);
 
 	switch (response_id)
 	{
@@ -631,18 +531,6 @@ replace_dialog_destroyed (GeditWindow        *window,
 			   NULL);
 }
 
-static void
-active_tab_changed_cb (GeditWindow        *window,
-		       GeditTab           *tab,
-		       GeditReplaceDialog *replace_dialog)
-{
-	if (tab != NULL)
-	{
-		GeditDocument *doc = gedit_tab_get_document (tab);
-		create_search_context (replace_dialog, doc);
-	}
-}
-
 static GtkWidget *
 create_dialog (GeditWindow *window)
 {
@@ -660,12 +548,6 @@ create_dialog (GeditWindow *window)
 	g_object_weak_ref (G_OBJECT (dialog),
 			   (GWeakNotify) replace_dialog_destroyed,
 			   window);
-
-	g_signal_connect_object (window,
-				 "active-tab-changed",
-				 G_CALLBACK (active_tab_changed_cb),
-				 dialog,
-				 0);
 
 	return dialog;
 }
@@ -696,7 +578,6 @@ _gedit_cmd_search_replace (GtkAction   *action,
 {
 	gpointer data;
 	GtkWidget *replace_dialog;
-	GeditDocument *doc;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -712,11 +593,6 @@ _gedit_cmd_search_replace (GtkAction   *action,
 
 		replace_dialog = GTK_WIDGET (data);
 	}
-
-	doc = gedit_window_get_active_document (window);
-	g_return_if_fail (doc != NULL);
-
-	create_search_context (GEDIT_REPLACE_DIALOG (replace_dialog), doc);
 
 	gtk_widget_show (replace_dialog);
 	last_search_data_restore_position (GEDIT_REPLACE_DIALOG (replace_dialog));

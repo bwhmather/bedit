@@ -31,9 +31,7 @@
 
 #include "gedit-replace-dialog.h"
 #include "gedit-history-entry.h"
-#include "gedit-utils.h"
-#include "gedit-marshal.h"
-#include "gedit-dirs.h"
+#include "gedit-document.h"
 
 struct _GeditReplaceDialogPrivate
 {
@@ -68,6 +66,43 @@ get_gedit_window (GeditReplaceDialog *dialog)
 	return NULL;
 }
 
+static GeditDocument *
+get_active_document (GeditReplaceDialog *dialog)
+{
+	GeditWindow *window = get_gedit_window (dialog);
+
+	if (window != NULL)
+	{
+		return gedit_window_get_active_document (window);
+	}
+
+	return NULL;
+}
+
+static GtkSourceSearchContext *
+get_active_search_context (GeditReplaceDialog *dialog)
+{
+	GeditDocument *doc;
+	GtkSourceSearchContext *search_context;
+
+	doc = get_active_document (dialog);
+
+	if (doc == NULL)
+	{
+		return NULL;
+	}
+
+	search_context = _gedit_document_get_search_context (doc);
+
+	if (search_context != NULL &&
+	    dialog->priv->search_settings == gtk_source_search_context_get_settings (search_context))
+	{
+		return search_context;
+	}
+
+	return NULL;
+}
+
 void
 gedit_replace_dialog_present_with_time (GeditReplaceDialog *dialog,
 					guint32             timestamp)
@@ -88,11 +123,118 @@ gedit_replace_dialog_delete_event (GtkWidget   *widget,
 }
 
 static void
+set_error (GtkEntry    *entry,
+	   const gchar *error_msg)
+{
+	if (error_msg == NULL || error_msg[0] == '\0')
+	{
+		gtk_entry_set_icon_from_gicon (entry, GTK_ENTRY_ICON_SECONDARY, NULL);
+		gtk_entry_set_icon_tooltip_text (entry, GTK_ENTRY_ICON_SECONDARY, NULL);
+	}
+	else
+	{
+		GIcon *icon = g_themed_icon_new_with_default_fallbacks ("dialog-error-symbolic");
+
+		gtk_entry_set_icon_from_gicon (entry, GTK_ENTRY_ICON_SECONDARY, icon);
+		gtk_entry_set_icon_tooltip_text (entry, GTK_ENTRY_ICON_SECONDARY, error_msg);
+
+		g_object_unref (icon);
+	}
+}
+
+static void
+set_search_error (GeditReplaceDialog *dialog,
+		  const gchar        *error_msg)
+{
+	set_error (GTK_ENTRY (dialog->priv->search_text_entry), error_msg);
+}
+
+static void
+set_replace_error (GeditReplaceDialog *dialog,
+		   const gchar        *error_msg)
+{
+	set_error (GTK_ENTRY (dialog->priv->replace_text_entry), error_msg);
+}
+
+static void
+update_regex_error (GeditReplaceDialog *dialog)
+{
+	GtkSourceSearchContext *search_context;
+	GError *regex_error;
+	GtkSourceRegexSearchState regex_state;
+
+	set_search_error (dialog, NULL);
+	set_replace_error (dialog, NULL);
+
+	search_context = get_active_search_context (dialog);
+
+	if (search_context == NULL)
+	{
+		return;
+	}
+
+	regex_error = gtk_source_search_context_get_regex_error (search_context);
+	regex_state = gtk_source_search_context_get_regex_state (search_context);
+
+	if (regex_error == NULL)
+	{
+		return;
+	}
+
+	switch (regex_state)
+	{
+		case GTK_SOURCE_REGEX_SEARCH_COMPILATION_ERROR:
+		case GTK_SOURCE_REGEX_SEARCH_MATCHING_ERROR:
+			set_search_error (dialog, regex_error->message);
+			break;
+
+		case GTK_SOURCE_REGEX_SEARCH_REPLACE_ERROR:
+			set_replace_error (dialog, regex_error->message);
+			break;
+
+		default:
+			g_return_if_reached ();
+	}
+
+	g_error_free (regex_error);
+}
+
+static void
+create_search_context (GeditReplaceDialog *dialog)
+{
+	GtkSourceSearchContext *search_context = get_active_search_context (dialog);
+	GeditDocument *doc;
+
+	if (search_context != NULL)
+	{
+		return;
+	}
+
+	doc = get_active_document (dialog);
+	search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (doc),
+							dialog->priv->search_settings);
+
+	g_signal_connect_object (search_context,
+				 "notify::regex-error",
+				 G_CALLBACK (update_regex_error),
+				 dialog,
+				 G_CONNECT_SWAPPED);
+
+	update_regex_error (dialog);
+
+	_gedit_document_set_search_context (doc, search_context);
+
+	g_object_unref (search_context);
+}
+
+static void
 gedit_replace_dialog_response (GtkDialog *dialog,
                                gint       response_id)
 {
 	GeditReplaceDialog *dlg = GEDIT_REPLACE_DIALOG (dialog);
 	const gchar *str;
+
+	create_search_context (GEDIT_REPLACE_DIALOG (dialog));
 
 	switch (response_id)
 	{
@@ -226,6 +368,13 @@ get_selected_text (GtkTextBuffer  *doc,
 }
 
 static void
+active_tab_changed_cb (GeditReplaceDialog *dialog)
+{
+	create_search_context (dialog);
+	update_regex_error (dialog);
+}
+
+static void
 show_cb (GeditReplaceDialog *dialog)
 {
 	GeditWindow *window;
@@ -241,7 +390,13 @@ show_cb (GeditReplaceDialog *dialog)
 		return;
 	}
 
-	doc = gedit_window_get_active_document (window);
+	g_signal_connect_object (window,
+				 "active-tab-changed",
+				 G_CALLBACK (active_tab_changed_cb),
+				 dialog,
+				 G_CONNECT_SWAPPED);
+
+	doc = get_active_document (dialog);
 
 	if (doc == NULL)
 	{
@@ -262,7 +417,17 @@ show_cb (GeditReplaceDialog *dialog)
 		g_free (escaped_selection);
 	}
 
+	create_search_context (dialog);
+
 	g_free (selection);
+}
+
+static void
+hide_cb (GeditReplaceDialog *dialog)
+{
+	GeditWindow *window = get_gedit_window (dialog);
+
+	g_signal_handlers_disconnect_by_func (window, active_tab_changed_cb, dialog);
 }
 
 static void
@@ -339,6 +504,11 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 			  "show",
 			  G_CALLBACK (show_cb),
 			  NULL);
+
+	g_signal_connect (dlg,
+			  "hide",
+			  G_CALLBACK (hide_cb),
+			  NULL);
 }
 
 GtkWidget *
@@ -372,14 +542,6 @@ gedit_replace_dialog_get_backwards (GeditReplaceDialog *dialog)
 	return gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->backwards_checkbutton));
 }
 
-GtkSourceSearchSettings *
-gedit_replace_dialog_get_search_settings (GeditReplaceDialog *dialog)
-{
-	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
-
-	return dialog->priv->search_settings;
-}
-
 /* This function returns the original search text. The search text from the
  * search settings has been unescaped, and the escape function is not
  * reciprocal. So to avoid bugs, we have to deal with the original search text.
@@ -390,40 +552,6 @@ gedit_replace_dialog_get_search_text (GeditReplaceDialog *dialog)
 	g_return_val_if_fail (GEDIT_IS_REPLACE_DIALOG (dialog), NULL);
 
 	return gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
-}
-
-static void
-set_error (GtkEntry    *entry,
-	   const gchar *error_msg)
-{
-	if (error_msg == NULL || error_msg[0] == '\0')
-	{
-		gtk_entry_set_icon_from_gicon (entry, GTK_ENTRY_ICON_SECONDARY, NULL);
-		gtk_entry_set_icon_tooltip_text (entry, GTK_ENTRY_ICON_SECONDARY, NULL);
-	}
-	else
-	{
-		GIcon *icon = g_themed_icon_new_with_default_fallbacks ("dialog-error-symbolic");
-
-		gtk_entry_set_icon_from_gicon (entry, GTK_ENTRY_ICON_SECONDARY, icon);
-		gtk_entry_set_icon_tooltip_text (entry, GTK_ENTRY_ICON_SECONDARY, error_msg);
-
-		g_object_unref (icon);
-	}
-}
-
-void
-gedit_replace_dialog_set_search_error (GeditReplaceDialog *dialog,
-				       const gchar        *error_msg)
-{
-	set_error (GTK_ENTRY (dialog->priv->search_text_entry), error_msg);
-}
-
-void
-gedit_replace_dialog_set_replace_error (GeditReplaceDialog *dialog,
-					const gchar        *error_msg)
-{
-	set_error (GTK_ENTRY (dialog->priv->replace_text_entry), error_msg);
 }
 
 /* ex:set ts=8 noet: */

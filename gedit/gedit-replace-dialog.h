@@ -97,14 +97,6 @@ const gchar		*gedit_replace_dialog_get_replace_text		(GeditReplaceDialog *dialog
 
 gboolean		 gedit_replace_dialog_get_backwards		(GeditReplaceDialog *dialog);
 
-GtkSourceSearchSettings	*gedit_replace_dialog_get_search_settings	(GeditReplaceDialog *dialog);
-
-void			 gedit_replace_dialog_set_search_error		(GeditReplaceDialog *dialog,
-									 const gchar        *error_msg);
-
-void			 gedit_replace_dialog_set_replace_error		(GeditReplaceDialog *dialog,
-									 const gchar        *error_msg);
-
 G_END_DECLS
 
 #endif  /* __GEDIT_REPLACE_DIALOG_H__  */
