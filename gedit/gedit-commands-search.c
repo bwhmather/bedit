@@ -576,11 +576,21 @@ search_context_finalized_cb (GeditReplaceDialog *dialog,
 }
 
 static void
-create_search_context (GeditReplaceDialog      *dialog,
-		       GeditDocument           *doc,
-		       GtkSourceSearchSettings *search_settings)
+create_search_context (GeditReplaceDialog *dialog,
+		       GeditDocument      *doc)
 {
 	GtkSourceSearchContext *search_context;
+	GtkSourceSearchSettings *search_settings;
+
+	search_settings = gedit_replace_dialog_get_search_settings (dialog);
+
+	search_context = _gedit_document_get_search_context (doc);
+
+	if (search_context != NULL &&
+	    search_settings == gtk_source_search_context_get_settings (search_context))
+	{
+		return;
+	}
 
 	search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (doc),
 							search_settings);
@@ -608,21 +618,11 @@ replace_dialog_response_cb (GeditReplaceDialog *dialog,
 			    GeditWindow        *window)
 {
 	GeditDocument *doc;
-	GtkSourceSearchContext *search_context;
-	GtkSourceSearchSettings *search_settings;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	search_settings = gedit_replace_dialog_get_search_settings (dialog);
-
 	doc = gedit_window_get_active_document (window);
-	search_context = _gedit_document_get_search_context (doc);
-
-	if (search_context == NULL ||
-	    search_settings != gtk_source_search_context_get_settings (search_context))
-	{
-		create_search_context (dialog, doc, search_settings);
-	}
+	create_search_context (dialog, doc);
 
 	switch (response_id)
 	{
@@ -658,6 +658,18 @@ replace_dialog_destroyed (GeditWindow        *window,
 			   NULL);
 }
 
+static void
+active_tab_changed_cb (GeditWindow        *window,
+		       GeditTab           *tab,
+		       GeditReplaceDialog *replace_dialog)
+{
+	if (tab != NULL)
+	{
+		GeditDocument *doc = gedit_tab_get_document (tab);
+		create_search_context (replace_dialog, doc);
+	}
+}
+
 static GtkWidget *
 create_dialog (GeditWindow *window)
 {
@@ -677,6 +689,12 @@ create_dialog (GeditWindow *window)
 	g_object_weak_ref (G_OBJECT (dialog),
 			   (GWeakNotify) replace_dialog_destroyed,
 			   window);
+
+	g_signal_connect_object (window,
+				 "active-tab-changed",
+				 G_CALLBACK (active_tab_changed_cb),
+				 dialog,
+				 0);
 
 	return dialog;
 }
@@ -729,6 +747,8 @@ _gedit_cmd_search_replace (GtkAction   *action,
 
 	doc = gedit_window_get_active_document (window);
 	g_return_if_fail (doc != NULL);
+
+	create_search_context (GEDIT_REPLACE_DIALOG (replace_dialog), doc);
 
 	selection_exists = get_selected_text (GTK_TEXT_BUFFER (doc),
 					      &find_text,
