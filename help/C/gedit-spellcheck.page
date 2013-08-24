@@ -122,12 +122,14 @@
   <section id="dict">
     <title>Dictionaries</title>
 
-    <p><link href="http://www.abisource.com/projects/enchant/">Enchant</link>
-    is used for the spell checking in <app>gedit</app>. Enchant uses one or
-    several backends such as Hunspell or Aspell for the dictionaries.</p>
+    <p><app>gedit</app> uses
+    <link href="http://www.abisource.com/projects/enchant/">Enchant</link>,
+    a small system utility, for spell checking. Enchant can use
+    several different dictionaries to check your spelling. Two such
+    dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>.</p>
 
-    <p>If the language which you want to use is not available in
-    <app>gedit</app>, install a dictionary for one of the supported
-    backends.</p>
+    <p>If the language you want to use is not available in <app>gedit</app>,
+    use your computer's software installer or package manager to install the
+    dictionary back-end that you want.</p>
   </section>
 </page>
