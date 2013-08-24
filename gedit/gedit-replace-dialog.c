@@ -51,8 +51,6 @@ struct _GeditReplaceDialogPrivate
 	GtkWidget *wrap_around_checkbutton;
 
 	GtkSourceSearchSettings *search_settings;
-
-	gboolean ui_error;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
@@ -255,23 +253,18 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 }
 
 GtkWidget *
-gedit_replace_dialog_new (GtkWindow *parent)
+gedit_replace_dialog_new (GeditWindow *window)
 {
-	GeditReplaceDialog *dlg;
+	GeditReplaceDialog *dialog;
 
-	dlg = g_object_new (GEDIT_TYPE_REPLACE_DIALOG,
-			    NULL);
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
-	if (parent != NULL)
-	{
-		gtk_window_set_transient_for (GTK_WINDOW (dlg),
-					      parent);
+	dialog = g_object_new (GEDIT_TYPE_REPLACE_DIALOG,
+			       "transient-for", window,
+			       "destroy-with-parent", TRUE,
+			       NULL);
 
-		gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg),
-						    TRUE);
-	}
-
-	return GTK_WIDGET (dlg);
+	return GTK_WIDGET (dialog);
 }
 
 const gchar *

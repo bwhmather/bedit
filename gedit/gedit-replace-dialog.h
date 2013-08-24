@@ -33,6 +33,7 @@
 
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
+#include "gedit-window.h"
 
 G_BEGIN_DECLS
 
@@ -85,17 +86,17 @@ enum
  */
 GType			 gedit_replace_dialog_get_type			(void) G_GNUC_CONST;
 
-GtkWidget		*gedit_replace_dialog_new			(GtkWindow          *parent);
+GtkWidget		*gedit_replace_dialog_new			(GeditWindow        *window);
 
 void			 gedit_replace_dialog_present_with_time		(GeditReplaceDialog *dialog,
 									 guint32             timestamp);
-
-const gchar		*gedit_replace_dialog_get_replace_text		(GeditReplaceDialog *dialog);
 
 const gchar		*gedit_replace_dialog_get_search_text		(GeditReplaceDialog *dialog);
 
 void			 gedit_replace_dialog_set_search_text		(GeditReplaceDialog *dialog,
 									 const gchar        *search_text);
+
+const gchar		*gedit_replace_dialog_get_replace_text		(GeditReplaceDialog *dialog);
 
 gboolean		 gedit_replace_dialog_get_backwards		(GeditReplaceDialog *dialog);
 

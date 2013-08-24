@@ -673,9 +673,7 @@ active_tab_changed_cb (GeditWindow        *window,
 static GtkWidget *
 create_dialog (GeditWindow *window)
 {
-	GtkWidget *dialog;
-
-	dialog = gedit_replace_dialog_new (GTK_WINDOW (window));
+	GtkWidget *dialog = gedit_replace_dialog_new (window);
 
 	g_signal_connect (dialog,
 			  "response",
