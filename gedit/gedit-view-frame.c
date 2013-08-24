@@ -79,6 +79,14 @@ struct _GeditViewFramePrivate
 	 * cancelled.
 	 */
 	GtkSourceSearchSettings *old_search_settings;
+
+	/* The original search texts. In search_settings and
+	 * old_search_settings, the search text is unescaped. Since the escape
+	 * function is not reciprocal, we need to store the original search
+	 * texts.
+	 */
+	gchar *search_text;
+	gchar *old_search_text;
 };
 
 enum
@@ -112,6 +120,17 @@ gedit_view_frame_dispose (GObject *object)
 	g_clear_object (&frame->priv->old_search_settings);
 
 	G_OBJECT_CLASS (gedit_view_frame_parent_class)->dispose (object);
+}
+
+static void
+gedit_view_frame_finalize (GObject *object)
+{
+	GeditViewFrame *frame = GEDIT_VIEW_FRAME (object);
+
+	g_free (frame->priv->search_text);
+	g_free (frame->priv->old_search_text);
+
+	G_OBJECT_CLASS (gedit_view_frame_parent_class)->finalize (object);
 }
 
 static void
@@ -533,6 +552,14 @@ search_widget_key_press_event (GtkWidget      *widget,
 
 			gtk_source_search_context_set_settings (search_context,
 								frame->priv->search_settings);
+
+			g_free (frame->priv->search_text);
+			frame->priv->search_text = NULL;
+
+			if (frame->priv->old_search_text != NULL)
+			{
+				frame->priv->search_text = g_strdup (frame->priv->old_search_text);
+			}
 		}
 
 		hide_search_widget (frame, TRUE);
@@ -672,6 +699,10 @@ update_search_text (GeditViewFrame *frame)
 	gchar *unescaped_entry_text;
 
 	entry_text = gtk_entry_get_text (GTK_ENTRY (frame->priv->search_entry));
+
+	g_free (frame->priv->search_text);
+	frame->priv->search_text = g_strdup (entry_text);
+
 	unescaped_entry_text = gtk_source_utils_unescape_search_text (entry_text);
 
 	gtk_source_search_settings_set_search_text (frame->priv->search_settings,
@@ -1110,7 +1141,6 @@ init_search_entry (GeditViewFrame *frame)
 		gboolean selection_exists;
 		gchar *search_text = NULL;
 		gint selection_len = 0;
-		const gchar *old_search_text;
 		GtkSourceSearchContext *search_context;
 
 		if (frame->priv->search_settings == NULL)
@@ -1120,6 +1150,14 @@ init_search_entry (GeditViewFrame *frame)
 
 		g_clear_object (&frame->priv->old_search_settings);
 		frame->priv->old_search_settings = copy_search_settings (frame->priv->search_settings);
+
+		g_free (frame->priv->old_search_text);
+		frame->priv->old_search_text = NULL;
+
+		if (frame->priv->search_text != NULL)
+		{
+			frame->priv->old_search_text = g_strdup (frame->priv->search_text);
+		}
 
 		search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (buffer),
 								frame->priv->search_settings);
@@ -1138,8 +1176,6 @@ init_search_entry (GeditViewFrame *frame)
 		                                      &search_text,
 		                                      &selection_len);
 
-		old_search_text = gtk_source_search_settings_get_search_text (frame->priv->search_settings);
-
 		if (selection_exists && (search_text != NULL) && (selection_len <= 160))
 		{
 			gchar *search_text_escaped = gtk_source_utils_escape_search_text (search_text);
@@ -1152,15 +1188,13 @@ init_search_entry (GeditViewFrame *frame)
 
 			g_free (search_text_escaped);
 		}
-		else if (old_search_text != NULL)
+		else if (frame->priv->search_text != NULL)
 		{
-			gchar *old_search_text_escaped = gtk_source_utils_escape_search_text (old_search_text);
-
 			g_signal_handler_block (frame->priv->search_entry,
 			                        frame->priv->search_entry_changed_id);
 
 			gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry),
-					    old_search_text_escaped);
+					    frame->priv->search_text);
 
 			gtk_editable_select_region (GTK_EDITABLE (frame->priv->search_entry),
 			                            0, -1);
@@ -1247,6 +1281,7 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->dispose = gedit_view_frame_dispose;
+	object_class->finalize = gedit_view_frame_finalize;
 	object_class->get_property = gedit_view_frame_get_property;
 
 	g_object_class_install_property (object_class, PROP_DOCUMENT,
