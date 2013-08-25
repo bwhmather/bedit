@@ -200,6 +200,50 @@ update_regex_error (GeditReplaceDialog *dialog)
 }
 
 static void
+update_responses_sensitivity (GeditReplaceDialog *dialog)
+{
+	const gchar *search_text;
+	GtkSourceSearchContext *search_context;
+	GtkSourceRegexSearchState regex_state;
+	gboolean sensitive;
+
+	search_text = gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
+
+	if (search_text[0] == '\0')
+	{
+		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+						   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
+						   FALSE);
+
+		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+						   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
+						   FALSE);
+
+		return;
+	}
+
+	search_context = get_active_search_context (dialog);
+	regex_state = gtk_source_search_context_get_regex_state (search_context);
+	sensitive = (regex_state == GTK_SOURCE_REGEX_SEARCH_NO_ERROR ||
+		     regex_state == GTK_SOURCE_REGEX_SEARCH_REPLACE_ERROR);
+
+	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+					   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
+					   sensitive);
+
+	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+					   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
+					   sensitive);
+}
+
+static void
+regex_error_notify_cb (GeditReplaceDialog *dialog)
+{
+	update_regex_error (dialog);
+	update_responses_sensitivity (dialog);
+}
+
+static void
 create_search_context (GeditReplaceDialog *dialog)
 {
 	GtkSourceSearchContext *search_context = get_active_search_context (dialog);
@@ -216,15 +260,15 @@ create_search_context (GeditReplaceDialog *dialog)
 
 	g_signal_connect_object (search_context,
 				 "notify::regex-error",
-				 G_CALLBACK (update_regex_error),
+				 G_CALLBACK (regex_error_notify_cb),
 				 dialog,
 				 G_CONNECT_SWAPPED);
 
-	update_regex_error (dialog);
-
 	_gedit_document_set_search_context (doc, search_context);
-
 	g_object_unref (search_context);
+
+	update_regex_error (dialog);
+	update_responses_sensitivity (dialog);
 }
 
 static void
@@ -297,43 +341,19 @@ static void
 search_text_entry_changed (GtkEditable        *editable,
 			   GeditReplaceDialog *dialog)
 {
-	const gchar *search_string;
-	gchar *unescaped_search_string;
+	const gchar *search_text;
+	gchar *unescaped_search_text;
 
-	search_string = gtk_entry_get_text (GTK_ENTRY (editable));
-	g_return_if_fail (search_string != NULL);
+	search_text = gtk_entry_get_text (GTK_ENTRY (editable));
 
-	if (*search_string != '\0')
-	{
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-						   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
-						   TRUE);
-
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-						   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
-						   TRUE);
-	}
-	else
-	{
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-						   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
-						   FALSE);
-
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-						   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
-						   FALSE);
-
-		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-						   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
-						   FALSE);
-	}
-
-	unescaped_search_string = gtk_source_utils_unescape_search_text (search_string);
+	unescaped_search_text = gtk_source_utils_unescape_search_text (search_text);
 
 	gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
-						    unescaped_search_string);
+						    unescaped_search_text);
 
-	g_free (unescaped_search_string);
+	update_responses_sensitivity (dialog);
+
+	g_free (unescaped_search_text);
 }
 
 /* TODO: move in gedit-document.c and share it with gedit-view-frame */
@@ -372,6 +392,7 @@ active_tab_changed_cb (GeditReplaceDialog *dialog)
 {
 	create_search_context (dialog);
 	update_regex_error (dialog);
+	update_responses_sensitivity (dialog);
 }
 
 static void
@@ -418,6 +439,8 @@ show_cb (GeditReplaceDialog *dialog)
 	}
 
 	create_search_context (dialog);
+	update_regex_error (dialog);
+	update_responses_sensitivity (dialog);
 
 	g_free (selection);
 }
