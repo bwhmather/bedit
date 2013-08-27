@@ -49,6 +49,8 @@ struct _GeditReplaceDialogPrivate
 	GtkWidget *wrap_around_checkbutton;
 
 	GtkSourceSearchSettings *search_settings;
+
+	GeditDocument *active_document;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
@@ -80,12 +82,10 @@ get_active_document (GeditReplaceDialog *dialog)
 }
 
 static GtkSourceSearchContext *
-get_active_search_context (GeditReplaceDialog *dialog)
+get_search_context (GeditReplaceDialog *dialog,
+		    GeditDocument      *doc)
 {
-	GeditDocument *doc;
 	GtkSourceSearchContext *search_context;
-
-	doc = get_active_document (dialog);
 
 	if (doc == NULL)
 	{
@@ -166,7 +166,7 @@ update_regex_error (GeditReplaceDialog *dialog)
 	set_search_error (dialog, NULL);
 	set_replace_error (dialog, NULL);
 
-	search_context = get_active_search_context (dialog);
+	search_context = get_search_context (dialog, dialog->priv->active_document);
 
 	if (search_context == NULL)
 	{
@@ -204,8 +204,7 @@ update_responses_sensitivity (GeditReplaceDialog *dialog)
 {
 	const gchar *search_text;
 	GtkSourceSearchContext *search_context;
-	GtkSourceRegexSearchState regex_state;
-	gboolean sensitive;
+	gboolean sensitive = TRUE;
 
 	search_text = gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
 
@@ -222,10 +221,17 @@ update_responses_sensitivity (GeditReplaceDialog *dialog)
 		return;
 	}
 
-	search_context = get_active_search_context (dialog);
-	regex_state = gtk_source_search_context_get_regex_state (search_context);
-	sensitive = (regex_state == GTK_SOURCE_REGEX_SEARCH_NO_ERROR ||
-		     regex_state == GTK_SOURCE_REGEX_SEARCH_REPLACE_ERROR);
+	search_context = get_search_context (dialog, dialog->priv->active_document);
+
+	if (search_context != NULL)
+	{
+		GtkSourceRegexSearchState regex_state;
+
+		regex_state = gtk_source_search_context_get_regex_state (search_context);
+
+		sensitive = (regex_state == GTK_SOURCE_REGEX_SEARCH_NO_ERROR ||
+			     regex_state == GTK_SOURCE_REGEX_SEARCH_REPLACE_ERROR);
+	}
 
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 					   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
@@ -244,28 +250,50 @@ regex_error_notify_cb (GeditReplaceDialog *dialog)
 }
 
 static void
-create_search_context (GeditReplaceDialog *dialog)
+connect_active_document (GeditReplaceDialog *dialog)
 {
-	GtkSourceSearchContext *search_context = get_active_search_context (dialog);
 	GeditDocument *doc;
+	GtkSourceSearchContext *search_context;
 
-	if (search_context != NULL)
+	doc = get_active_document (dialog);
+
+	if (dialog->priv->active_document != NULL)
+	{
+		search_context = get_search_context (dialog, dialog->priv->active_document);
+
+		if (search_context != NULL)
+		{
+			g_signal_handlers_disconnect_by_func (search_context,
+							      regex_error_notify_cb,
+							      dialog);
+		}
+
+		g_clear_object (&dialog->priv->active_document);
+	}
+
+	if (doc == NULL)
 	{
 		return;
 	}
 
-	doc = get_active_document (dialog);
-	search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (doc),
-							dialog->priv->search_settings);
+	dialog->priv->active_document = g_object_ref (doc);
+
+	search_context = get_search_context (dialog, doc);
+
+	if (search_context == NULL)
+	{
+		search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (doc),
+								dialog->priv->search_settings);
+
+		_gedit_document_set_search_context (doc, search_context);
+		g_object_unref (search_context);
+	}
 
 	g_signal_connect_object (search_context,
 				 "notify::regex-error",
 				 G_CALLBACK (regex_error_notify_cb),
 				 dialog,
 				 G_CONNECT_SWAPPED);
-
-	_gedit_document_set_search_context (doc, search_context);
-	g_object_unref (search_context);
 
 	update_regex_error (dialog);
 	update_responses_sensitivity (dialog);
@@ -278,7 +306,7 @@ gedit_replace_dialog_response (GtkDialog *dialog,
 	GeditReplaceDialog *dlg = GEDIT_REPLACE_DIALOG (dialog);
 	const gchar *str;
 
-	create_search_context (GEDIT_REPLACE_DIALOG (dialog));
+	connect_active_document (GEDIT_REPLACE_DIALOG (dialog));
 
 	switch (response_id)
 	{
@@ -309,6 +337,7 @@ gedit_replace_dialog_dispose (GObject *object)
 	GeditReplaceDialog *dialog = GEDIT_REPLACE_DIALOG (object);
 
 	g_clear_object (&dialog->priv->search_settings);
+	g_clear_object (&dialog->priv->active_document);
 
 	G_OBJECT_CLASS (gedit_replace_dialog_parent_class)->dispose (object);
 }
@@ -388,14 +417,6 @@ get_selected_text (GtkTextBuffer  *doc,
 }
 
 static void
-active_tab_changed_cb (GeditReplaceDialog *dialog)
-{
-	create_search_context (dialog);
-	update_regex_error (dialog);
-	update_responses_sensitivity (dialog);
-}
-
-static void
 show_cb (GeditReplaceDialog *dialog)
 {
 	GeditWindow *window;
@@ -413,7 +434,7 @@ show_cb (GeditReplaceDialog *dialog)
 
 	g_signal_connect_object (window,
 				 "active-tab-changed",
-				 G_CALLBACK (active_tab_changed_cb),
+				 G_CALLBACK (connect_active_document),
 				 dialog,
 				 G_CONNECT_SWAPPED);
 
@@ -438,9 +459,7 @@ show_cb (GeditReplaceDialog *dialog)
 		g_free (escaped_selection);
 	}
 
-	create_search_context (dialog);
-	update_regex_error (dialog);
-	update_responses_sensitivity (dialog);
+	connect_active_document (dialog);
 
 	g_free (selection);
 }
@@ -450,7 +469,7 @@ hide_cb (GeditReplaceDialog *dialog)
 {
 	GeditWindow *window = get_gedit_window (dialog);
 
-	g_signal_handlers_disconnect_by_func (window, active_tab_changed_cb, dialog);
+	g_signal_handlers_disconnect_by_func (window, connect_active_document, dialog);
 }
 
 static void
