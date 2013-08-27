@@ -168,10 +168,6 @@ finish_search_from_dialog (GeditWindow *window,
 	{
 		text_not_found (window, replace_dialog);
 	}
-
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (replace_dialog),
-					   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
-					   found);
 }
 
 static gboolean
@@ -484,10 +480,6 @@ do_replace_all (GeditReplaceDialog *dialog,
 	{
 		text_not_found (window, dialog);
 	}
-
-	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
-					   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
-					   FALSE);
 }
 
 static void

@@ -51,6 +51,8 @@ struct _GeditReplaceDialogPrivate
 	GtkSourceSearchSettings *search_settings;
 
 	GeditDocument *active_document;
+
+	guint idle_update_sensitivity_id;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
@@ -199,12 +201,82 @@ update_regex_error (GeditReplaceDialog *dialog)
 	g_error_free (regex_error);
 }
 
+static gboolean
+update_replace_response_sensitivity_cb (GeditReplaceDialog *dialog)
+{
+	GtkSourceSearchContext *search_context;
+	GtkTextIter start;
+	GtkTextIter end;
+	gint pos;
+
+	search_context = get_search_context (dialog, dialog->priv->active_document);
+
+	if (search_context == NULL)
+	{
+		dialog->priv->idle_update_sensitivity_id = 0;
+		return G_SOURCE_REMOVE;
+	}
+
+	gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (dialog->priv->active_document),
+					      &start,
+					      &end);
+
+	pos = gtk_source_search_context_get_occurrence_position (search_context,
+								 &start,
+								 &end);
+
+	if (pos < 0)
+	{
+		return G_SOURCE_CONTINUE;
+	}
+
+	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+					   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
+					   pos > 0);
+
+	dialog->priv->idle_update_sensitivity_id = 0;
+	return G_SOURCE_REMOVE;
+}
+
+static void
+install_idle_update_sensitivity (GeditReplaceDialog *dialog)
+{
+	if (dialog->priv->idle_update_sensitivity_id != 0)
+	{
+		return;
+	}
+
+	dialog->priv->idle_update_sensitivity_id =
+		g_idle_add ((GSourceFunc)update_replace_response_sensitivity_cb,
+			    dialog);
+}
+
+static void
+mark_set_cb (GtkTextBuffer      *buffer,
+	     GtkTextIter        *location,
+	     GtkTextMark        *mark,
+	     GeditReplaceDialog *dialog)
+{
+	GtkTextMark *insert;
+	GtkTextMark *selection_bound;
+
+	insert = gtk_text_buffer_get_insert (buffer);
+	selection_bound = gtk_text_buffer_get_selection_bound (buffer);
+
+	if (mark == insert || mark == selection_bound)
+	{
+		install_idle_update_sensitivity (dialog);
+	}
+}
+
 static void
 update_responses_sensitivity (GeditReplaceDialog *dialog)
 {
 	const gchar *search_text;
 	GtkSourceSearchContext *search_context;
 	gboolean sensitive = TRUE;
+
+	install_idle_update_sensitivity (dialog);
 
 	search_text = gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
 
@@ -250,26 +322,40 @@ regex_error_notify_cb (GeditReplaceDialog *dialog)
 }
 
 static void
+disconnect_document (GeditReplaceDialog *dialog)
+{
+	GtkSourceSearchContext *search_context;
+
+	if (dialog->priv->active_document == NULL)
+	{
+		return;
+	}
+
+	search_context = get_search_context (dialog, dialog->priv->active_document);
+
+	if (search_context != NULL)
+	{
+		g_signal_handlers_disconnect_by_func (search_context,
+						      regex_error_notify_cb,
+						      dialog);
+	}
+
+	g_signal_handlers_disconnect_by_func (dialog->priv->active_document,
+					      mark_set_cb,
+					      dialog);
+
+	g_clear_object (&dialog->priv->active_document);
+}
+
+static void
 connect_active_document (GeditReplaceDialog *dialog)
 {
 	GeditDocument *doc;
 	GtkSourceSearchContext *search_context;
 
+	disconnect_document (dialog);
+
 	doc = get_active_document (dialog);
-
-	if (dialog->priv->active_document != NULL)
-	{
-		search_context = get_search_context (dialog, dialog->priv->active_document);
-
-		if (search_context != NULL)
-		{
-			g_signal_handlers_disconnect_by_func (search_context,
-							      regex_error_notify_cb,
-							      dialog);
-		}
-
-		g_clear_object (&dialog->priv->active_document);
-	}
 
 	if (doc == NULL)
 	{
@@ -295,6 +381,12 @@ connect_active_document (GeditReplaceDialog *dialog)
 				 dialog,
 				 G_CONNECT_SWAPPED);
 
+	g_signal_connect_object (doc,
+				 "mark-set",
+				 G_CALLBACK (mark_set_cb),
+				 dialog,
+				 0);
+
 	update_regex_error (dialog);
 	update_responses_sensitivity (dialog);
 }
@@ -305,8 +397,6 @@ gedit_replace_dialog_response (GtkDialog *dialog,
 {
 	GeditReplaceDialog *dlg = GEDIT_REPLACE_DIALOG (dialog);
 	const gchar *str;
-
-	connect_active_document (GEDIT_REPLACE_DIALOG (dialog));
 
 	switch (response_id)
 	{
@@ -329,6 +419,14 @@ gedit_replace_dialog_response (GtkDialog *dialog,
 						 str);
 			}
 	}
+
+	switch (response_id)
+	{
+		case GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE:
+		case GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE:
+		case GEDIT_REPLACE_DIALOG_FIND_RESPONSE:
+			connect_active_document (GEDIT_REPLACE_DIALOG (dialog));
+	}
 }
 
 static void
@@ -338,6 +436,12 @@ gedit_replace_dialog_dispose (GObject *object)
 
 	g_clear_object (&dialog->priv->search_settings);
 	g_clear_object (&dialog->priv->active_document);
+
+	if (dialog->priv->idle_update_sensitivity_id != 0)
+	{
+		g_source_remove (dialog->priv->idle_update_sensitivity_id);
+		dialog->priv->idle_update_sensitivity_id = 0;
+	}
 
 	G_OBJECT_CLASS (gedit_replace_dialog_parent_class)->dispose (object);
 }
@@ -470,6 +574,8 @@ hide_cb (GeditReplaceDialog *dialog)
 	GeditWindow *window = get_gedit_window (dialog);
 
 	g_signal_handlers_disconnect_by_func (window, connect_active_document, dialog);
+
+	disconnect_document (dialog);
 }
 
 static void
