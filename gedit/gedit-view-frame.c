@@ -712,10 +712,41 @@ update_search_text (GeditViewFrame *frame)
 }
 
 static void
+regex_toggled_cb (GtkCheckMenuItem *menu_item,
+		  GeditViewFrame   *frame)
+{
+	gtk_source_search_settings_set_regex_enabled (frame->priv->search_settings,
+						      gtk_check_menu_item_get_active (menu_item));
+
+	start_search (frame);
+}
+
+static void
+at_word_boundaries_toggled_cb (GtkCheckMenuItem *menu_item,
+			       GeditViewFrame   *frame)
+{
+	gtk_source_search_settings_set_at_word_boundaries (frame->priv->search_settings,
+							   gtk_check_menu_item_get_active (menu_item));
+
+	start_search (frame);
+}
+
+static void
+case_sensitive_toggled_cb (GtkCheckMenuItem *menu_item,
+			   GeditViewFrame   *frame)
+{
+	gtk_source_search_settings_set_case_sensitive (frame->priv->search_settings,
+						       gtk_check_menu_item_get_active (menu_item));
+
+	start_search (frame);
+}
+
+static void
 add_popup_menu_items (GeditViewFrame *frame,
 		      GtkWidget      *menu)
 {
 	GtkWidget *menu_item;
+	gboolean val;
 
 	/* create "Wrap Around" menu item. */
 	menu_item = gtk_check_menu_item_new_with_mnemonic (_("_Wrap Around"));
@@ -733,9 +764,13 @@ add_popup_menu_items (GeditViewFrame *frame,
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	g_object_bind_property (frame->priv->search_settings, "regex-enabled",
-				menu_item, "active",
-				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+	val = gtk_source_search_settings_get_regex_enabled (frame->priv->search_settings);
+	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item), val);
+
+	g_signal_connect (menu_item,
+			  "toggled",
+			  G_CALLBACK (regex_toggled_cb),
+			  frame);
 
 	/* create "Match Entire Word Only" menu item. */
 	menu_item = gtk_check_menu_item_new_with_mnemonic (_("Match _Entire Word Only"));
@@ -743,9 +778,13 @@ add_popup_menu_items (GeditViewFrame *frame,
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	g_object_bind_property (frame->priv->search_settings, "at-word-boundaries",
-				menu_item, "active",
-				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+	val = gtk_source_search_settings_get_at_word_boundaries (frame->priv->search_settings);
+	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item), val);
+
+	g_signal_connect (menu_item,
+			  "toggled",
+			  G_CALLBACK (at_word_boundaries_toggled_cb),
+			  frame);
 
 	/* create "Match Case" menu item. */
 	menu_item = gtk_check_menu_item_new_with_mnemonic (_("_Match Case"));
@@ -753,9 +792,13 @@ add_popup_menu_items (GeditViewFrame *frame,
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	g_object_bind_property (frame->priv->search_settings, "case-sensitive",
-				menu_item, "active",
-				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+	val = gtk_source_search_settings_get_case_sensitive (frame->priv->search_settings);
+	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menu_item), val);
+
+	g_signal_connect (menu_item,
+			  "toggled",
+			  G_CALLBACK (case_sensitive_toggled_cb),
+			  frame);
 }
 
 static void
