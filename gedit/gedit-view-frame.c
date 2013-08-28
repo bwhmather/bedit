@@ -701,20 +701,25 @@ install_update_entry_tag_idle (GeditViewFrame *frame)
 static void
 update_search_text (GeditViewFrame *frame)
 {
-	const gchar *entry_text;
-	gchar *unescaped_entry_text;
-
-	entry_text = gtk_entry_get_text (GTK_ENTRY (frame->priv->search_entry));
+	const gchar *entry_text = gtk_entry_get_text (GTK_ENTRY (frame->priv->search_entry));
 
 	g_free (frame->priv->search_text);
 	frame->priv->search_text = g_strdup (entry_text);
 
-	unescaped_entry_text = gtk_source_utils_unescape_search_text (entry_text);
+	if (gtk_source_search_settings_get_regex_enabled (frame->priv->search_settings))
+	{
+		gtk_source_search_settings_set_search_text (frame->priv->search_settings,
+							    entry_text);
+	}
+	else
+	{
+		gchar *unescaped_entry_text = gtk_source_utils_unescape_search_text (entry_text);
 
-	gtk_source_search_settings_set_search_text (frame->priv->search_settings,
-						    unescaped_entry_text);
+		gtk_source_search_settings_set_search_text (frame->priv->search_settings,
+							    unescaped_entry_text);
 
-	g_free (unescaped_entry_text);
+		g_free (unescaped_entry_text);
+	}
 }
 
 static void

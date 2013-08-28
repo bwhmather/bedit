@@ -475,18 +475,25 @@ search_text_entry_changed (GtkEditable        *editable,
 			   GeditReplaceDialog *dialog)
 {
 	const gchar *search_text;
-	gchar *unescaped_search_text;
 
 	search_text = gtk_entry_get_text (GTK_ENTRY (editable));
 
-	unescaped_search_text = gtk_source_utils_unescape_search_text (search_text);
+	if (gtk_source_search_settings_get_regex_enabled (dialog->priv->search_settings))
+	{
+		gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
+							    search_text);
+	}
+	else
+	{
+		gchar *unescaped_search_text = gtk_source_utils_unescape_search_text (search_text);
 
-	gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
-						    unescaped_search_text);
+		gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
+							    unescaped_search_text);
+
+		g_free (unescaped_search_text);
+	}
 
 	update_responses_sensitivity (dialog);
-
-	g_free (unescaped_search_text);
 }
 
 /* TODO: move in gedit-document.c and share it with gedit-view-frame */
