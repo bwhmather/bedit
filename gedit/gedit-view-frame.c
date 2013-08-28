@@ -650,25 +650,18 @@ update_entry_tag (GeditViewFrame *frame)
 		return;
 	}
 
-	if (count == 0)
+	if (count == 0 || pos == 0)
 	{
 		gd_tagged_entry_remove_tag (frame->priv->search_entry,
 					    frame->priv->entry_tag);
 		return;
 	}
 
-	if (pos == 0)
-	{
-		label = g_strdup_printf ("%d", count);
-	}
-	else
-	{
-		/* Translators: the first %d is the position of the current search
-		 * occurrence, and the second %d is the total number of search
-		 * occurrences.
-		 */
-		label = g_strdup_printf (_("%d of %d"), pos, count);
-	}
+	/* Translators: the first %d is the position of the current search
+	 * occurrence, and the second %d is the total number of search
+	 * occurrences.
+	 */
+	label = g_strdup_printf (_("%d of %d"), pos, count);
 
 	gd_tagged_entry_tag_set_label (frame->priv->entry_tag, label);
 
