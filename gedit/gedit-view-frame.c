@@ -1232,7 +1232,16 @@ init_search_entry (GeditViewFrame *frame)
 
 		if (selection_exists && (search_text != NULL) && (selection_len <= 160))
 		{
-			gchar *search_text_escaped = gtk_source_utils_escape_search_text (search_text);
+			gchar *search_text_escaped;
+
+			if (gtk_source_search_settings_get_regex_enabled (frame->priv->search_settings))
+			{
+				search_text_escaped = g_regex_escape_string (search_text, -1);
+			}
+			else
+			{
+				search_text_escaped = gtk_source_utils_escape_search_text (search_text);
+			}
 
 			gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry),
 					    search_text_escaped);

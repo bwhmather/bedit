@@ -562,7 +562,16 @@ show_cb (GeditReplaceDialog *dialog)
 
 	if (selection_exists && selection != NULL && selection_length < 80)
 	{
-		gchar *escaped_selection = gtk_source_utils_escape_search_text (selection);
+		gchar *escaped_selection;
+
+		if (gtk_source_search_settings_get_regex_enabled (dialog->priv->search_settings))
+		{
+			escaped_selection = g_regex_escape_string (selection, -1);
+		}
+		else
+		{
+			escaped_selection = gtk_source_utils_escape_search_text (selection);
+		}
 
 		gtk_entry_set_text (GTK_ENTRY (dialog->priv->search_text_entry),
 				    escaped_selection);
