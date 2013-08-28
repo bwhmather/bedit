@@ -261,10 +261,16 @@ set_search_state (GeditViewFrame *frame,
 	if (state == SEARCH_STATE_NOT_FOUND)
 	{
 		gtk_style_context_add_class (context, "not-found");
+
+		gtk_widget_set_sensitive (frame->priv->go_down_button, FALSE);
+		gtk_widget_set_sensitive (frame->priv->go_up_button, FALSE);
 	}
 	else
 	{
 		gtk_style_context_remove_class (context, "not-found");
+
+		gtk_widget_set_sensitive (frame->priv->go_down_button, TRUE);
+		gtk_widget_set_sensitive (frame->priv->go_up_button, TRUE);
 	}
 }
 
