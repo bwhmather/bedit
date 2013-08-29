@@ -437,9 +437,9 @@ class PlaceholderShell(PlaceholderExpand):
 
                         if len(line) > 0:
                                 try:
-                                        line = line
-                                except:
-                                        line = line.encode(locale.getdefaultlocale()[1])
+                                        line = line.decode('utf-8')
+                                except UnicodeDecodeError:
+                                        line = line.decode(locale.getdefaultlocale()[1], errors='replace')
 
                                 self.shell_output += line
                                 self.install_timeout()
