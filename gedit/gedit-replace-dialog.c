@@ -141,11 +141,20 @@ set_search_error (GeditReplaceDialog *dialog,
 	set_error (GTK_ENTRY (dialog->priv->search_text_entry), error_msg);
 }
 
-static void
-set_replace_error (GeditReplaceDialog *dialog,
-		   const gchar        *error_msg)
+void
+gedit_replace_dialog_set_replace_error (GeditReplaceDialog *dialog,
+					const gchar        *error_msg)
 {
 	set_error (GTK_ENTRY (dialog->priv->replace_text_entry), error_msg);
+}
+
+static gboolean
+has_replace_error (GeditReplaceDialog *dialog)
+{
+	GIcon *icon = gtk_entry_get_icon_gicon (GTK_ENTRY (dialog->priv->replace_text_entry),
+						GTK_ENTRY_ICON_SECONDARY);
+
+	return icon != NULL;
 }
 
 static void
@@ -153,10 +162,8 @@ update_regex_error (GeditReplaceDialog *dialog)
 {
 	GtkSourceSearchContext *search_context;
 	GError *regex_error;
-	GtkSourceRegexSearchState regex_state;
 
 	set_search_error (dialog, NULL);
-	set_replace_error (dialog, NULL);
 
 	search_context = get_search_context (dialog, dialog->priv->active_document);
 
@@ -166,29 +173,12 @@ update_regex_error (GeditReplaceDialog *dialog)
 	}
 
 	regex_error = gtk_source_search_context_get_regex_error (search_context);
-	regex_state = gtk_source_search_context_get_regex_state (search_context);
 
-	if (regex_error == NULL)
+	if (regex_error != NULL)
 	{
-		return;
+		set_search_error (dialog, regex_error->message);
+		g_error_free (regex_error);
 	}
-
-	switch (regex_state)
-	{
-		case GTK_SOURCE_REGEX_SEARCH_COMPILATION_ERROR:
-		case GTK_SOURCE_REGEX_SEARCH_MATCHING_ERROR:
-			set_search_error (dialog, regex_error->message);
-			break;
-
-		case GTK_SOURCE_REGEX_SEARCH_REPLACE_ERROR:
-			set_replace_error (dialog, regex_error->message);
-			break;
-
-		default:
-			g_return_if_reached ();
-	}
-
-	g_error_free (regex_error);
 }
 
 static gboolean
@@ -198,6 +188,16 @@ update_replace_response_sensitivity_cb (GeditReplaceDialog *dialog)
 	GtkTextIter start;
 	GtkTextIter end;
 	gint pos;
+
+	if (has_replace_error (dialog))
+	{
+		gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
+						   GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
+						   FALSE);
+
+		dialog->priv->idle_update_sensitivity_id = 0;
+		return G_SOURCE_REMOVE;
+	}
 
 	search_context = get_search_context (dialog, dialog->priv->active_document);
 
@@ -291,13 +291,17 @@ update_responses_sensitivity (GeditReplaceDialog *dialog)
 
 		regex_state = gtk_source_search_context_get_regex_state (search_context);
 
-		sensitive = (regex_state == GTK_SOURCE_REGEX_SEARCH_NO_ERROR ||
-			     regex_state == GTK_SOURCE_REGEX_SEARCH_REPLACE_ERROR);
+		sensitive = regex_state == GTK_SOURCE_REGEX_SEARCH_NO_ERROR;
 	}
 
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 					   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
 					   sensitive);
+
+	if (has_replace_error (dialog))
+	{
+		sensitive = FALSE;
+	}
 
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 					   GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE,
@@ -486,6 +490,15 @@ search_text_entry_changed (GtkEditable        *editable,
 	update_responses_sensitivity (dialog);
 }
 
+static void
+replace_text_entry_changed (GtkEditable        *editable,
+			    GeditReplaceDialog *dialog)
+{
+	gedit_replace_dialog_set_replace_error (dialog, NULL);
+
+	update_responses_sensitivity (dialog);
+}
+
 /* TODO: move in gedit-document.c and share it with gedit-view-frame */
 static gboolean
 get_selected_text (GtkTextBuffer  *doc,
@@ -634,6 +647,11 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 	g_signal_connect (dlg->priv->search_text_entry,
 			  "changed",
 			  G_CALLBACK (search_text_entry_changed),
+			  dlg);
+
+	g_signal_connect (dlg->priv->replace_text_entry,
+			  "changed",
+			  G_CALLBACK (replace_text_entry_changed),
 			  dlg);
 
 	dlg->priv->search_settings = gtk_source_search_settings_new ();

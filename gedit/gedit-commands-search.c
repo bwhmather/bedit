@@ -404,6 +404,7 @@ do_replace (GeditReplaceDialog *dialog,
 	gchar *unescaped_replace_text;
 	GtkTextIter start;
 	GtkTextIter end;
+	GError *error = NULL;
 
 	doc = gedit_window_get_active_document (window);
 
@@ -431,9 +432,16 @@ do_replace (GeditReplaceDialog *dialog,
 					   &start,
 					   &end,
 					   unescaped_replace_text,
-					   -1);
+					   -1,
+					   &error);
 
 	g_free (unescaped_replace_text);
+
+	if (error != NULL)
+	{
+		gedit_replace_dialog_set_replace_error (dialog, error->message);
+		g_error_free (error);
+	}
 
 	do_find (dialog, window);
 }
@@ -447,6 +455,7 @@ do_replace_all (GeditReplaceDialog *dialog,
 	const gchar *replace_entry_text;
 	gchar *unescaped_replace_text;
 	gint count;
+	GError *error = NULL;
 
 	doc = gedit_window_get_active_document (window);
 
@@ -468,7 +477,10 @@ do_replace_all (GeditReplaceDialog *dialog,
 
 	unescaped_replace_text = gtk_source_utils_unescape_search_text (replace_entry_text);
 
-	count = gtk_source_search_context_replace_all (search_context, unescaped_replace_text, -1);
+	count = gtk_source_search_context_replace_all (search_context,
+						       unescaped_replace_text,
+						       -1,
+						       &error);
 
 	g_free (unescaped_replace_text);
 
@@ -476,9 +488,15 @@ do_replace_all (GeditReplaceDialog *dialog,
 	{
 		text_found (window, count);
 	}
-	else
+	else if (error == NULL)
 	{
 		text_not_found (window, dialog);
+	}
+
+	if (error != NULL)
+	{
+		gedit_replace_dialog_set_replace_error (dialog, error->message);
+		g_error_free (error);
 	}
 }
 

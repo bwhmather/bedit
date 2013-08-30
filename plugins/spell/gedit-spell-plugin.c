@@ -701,7 +701,7 @@ change_all_cb (GeditSpellCheckerDialog *dlg,
 
 	gtk_source_search_context_set_highlight (search_context, FALSE);
 
-	gtk_source_search_context_replace_all (search_context, change, -1);
+	gtk_source_search_context_replace_all (search_context, change, -1, NULL);
 
 	update_current (doc, range->mw_start + g_utf8_strlen (change, -1));
 
