@@ -62,12 +62,7 @@ get_gedit_window (GeditReplaceDialog *dialog)
 {
 	GtkWindow *transient_for = gtk_window_get_transient_for (GTK_WINDOW (dialog));
 
-	if (transient_for != NULL)
-	{
-		return GEDIT_WINDOW (transient_for);
-	}
-
-	return NULL;
+	return transient_for != NULL ? GEDIT_WINDOW (transient_for) : NULL;
 }
 
 static GeditDocument *
@@ -75,12 +70,7 @@ get_active_document (GeditReplaceDialog *dialog)
 {
 	GeditWindow *window = get_gedit_window (dialog);
 
-	if (window != NULL)
-	{
-		return gedit_window_get_active_document (window);
-	}
-
-	return NULL;
+	return window != NULL ? gedit_window_get_active_document (window) : NULL;
 }
 
 static GtkSourceSearchContext *
