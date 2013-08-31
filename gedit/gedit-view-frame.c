@@ -69,6 +69,7 @@ struct _GeditViewFramePrivate
 
 	guint flush_timeout_id;
 	guint idle_update_entry_tag_id;
+	guint remove_entry_tag_timeout_id;
 	gulong view_scroll_event_id;
 	gulong search_entry_focus_out_id;
 	gulong search_entry_changed_id;
@@ -113,6 +114,12 @@ gedit_view_frame_dispose (GObject *object)
 	{
 		g_source_remove (frame->priv->idle_update_entry_tag_id);
 		frame->priv->idle_update_entry_tag_id = 0;
+	}
+
+	if (frame->priv->remove_entry_tag_timeout_id != 0)
+	{
+		g_source_remove (frame->priv->remove_entry_tag_timeout_id);
+		frame->priv->remove_entry_tag_timeout_id = 0;
 	}
 
 	g_clear_object (&frame->priv->entry_tag);
@@ -610,6 +617,17 @@ search_widget_key_press_event (GtkWidget      *widget,
 	return GDK_EVENT_PROPAGATE;
 }
 
+static gboolean
+remove_entry_tag_timeout_cb (GeditViewFrame *frame)
+{
+	frame->priv->remove_entry_tag_timeout_id = 0;
+
+	gd_tagged_entry_remove_tag (frame->priv->search_entry,
+				    frame->priv->entry_tag);
+
+	return G_SOURCE_REMOVE;
+}
+
 static void
 update_entry_tag (GeditViewFrame *frame)
 {
@@ -646,7 +664,22 @@ update_entry_tag (GeditViewFrame *frame)
 
 	if (count == -1 || pos == -1)
 	{
-		/* Wait that the buffer is fully scanned. */
+		/* The buffer is not fully scanned. Remove the tag after a short
+		 * delay. If we don't remove the tag at all, the information can
+		 * be outdated during a too long time (for big buffers). And if
+		 * the tag is removed directly, there is some flashing for small
+		 * buffers: the tag disappears and reappear after a really short
+		 * time.
+		 */
+
+		if (frame->priv->remove_entry_tag_timeout_id == 0)
+		{
+			frame->priv->remove_entry_tag_timeout_id =
+				g_timeout_add (500,
+					       (GSourceFunc)remove_entry_tag_timeout_cb,
+					       frame);
+		}
+
 		return;
 	}
 
@@ -655,6 +688,12 @@ update_entry_tag (GeditViewFrame *frame)
 		gd_tagged_entry_remove_tag (frame->priv->search_entry,
 					    frame->priv->entry_tag);
 		return;
+	}
+
+	if (frame->priv->remove_entry_tag_timeout_id != 0)
+	{
+		g_source_remove (frame->priv->remove_entry_tag_timeout_id);
+		frame->priv->remove_entry_tag_timeout_id = 0;
 	}
 
 	/* Translators: the first %d is the position of the current search
