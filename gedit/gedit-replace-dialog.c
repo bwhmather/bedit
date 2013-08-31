@@ -149,6 +149,15 @@ gedit_replace_dialog_set_replace_error (GeditReplaceDialog *dialog,
 }
 
 static gboolean
+has_search_error (GeditReplaceDialog *dialog)
+{
+	GIcon *icon = gtk_entry_get_icon_gicon (GTK_ENTRY (dialog->priv->search_text_entry),
+						GTK_ENTRY_ICON_SECONDARY);
+
+	return icon != NULL;
+}
+
+static gboolean
 has_replace_error (GeditReplaceDialog *dialog)
 {
 	GIcon *icon = gtk_entry_get_icon_gicon (GTK_ENTRY (dialog->priv->replace_text_entry),
@@ -263,7 +272,6 @@ static void
 update_responses_sensitivity (GeditReplaceDialog *dialog)
 {
 	const gchar *search_text;
-	GtkSourceSearchContext *search_context;
 	gboolean sensitive = TRUE;
 
 	install_idle_update_sensitivity (dialog);
@@ -283,16 +291,7 @@ update_responses_sensitivity (GeditReplaceDialog *dialog)
 		return;
 	}
 
-	search_context = get_search_context (dialog, dialog->priv->active_document);
-
-	if (search_context != NULL)
-	{
-		GtkSourceRegexSearchState regex_state;
-
-		regex_state = gtk_source_search_context_get_regex_state (search_context);
-
-		sensitive = regex_state == GTK_SOURCE_REGEX_SEARCH_NO_ERROR;
-	}
+	sensitive = !has_search_error (dialog);
 
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (dialog),
 					   GEDIT_REPLACE_DIALOG_FIND_RESPONSE,
