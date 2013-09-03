@@ -4,7 +4,7 @@ AC_PREREQ(2.63.2)
 
 m4_define(gedit_major_version, 3)
 m4_define(gedit_minor_version, 9)
-m4_define(gedit_micro_version, 90)
+m4_define(gedit_micro_version, 91)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
 AC_INIT([gedit],[gedit_version],[http://bugzilla.gnome.org/enter_bug.cgi?product=gedit],[gedit],[http://projects.gnome.org/gedit/])
@@ -326,7 +326,7 @@ PKG_CHECK_MODULES(GEDIT, [
 	glib-2.0 >= 2.37.5
 	gio-2.0 >= 2.37.0
 	gtk+-3.0 >= 3.9.9
-	gtksourceview-3.0 >= 3.9.5
+	gtksourceview-3.0 >= 3.9.91
 	libpeas-1.0 >= 1.7.0
 	libpeas-gtk-1.0 >= 1.7.0
 	gsettings-desktop-schemas
