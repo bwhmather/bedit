@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 3.3.7\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 10:48+0800\n"
-"PO-Revision-Date: 2013-07-26 21:42+0800\n"
+"POT-Creation-Date: 2013-09-04 14:55+0800\n"
+"PO-Revision-Date: 2013-09-04 14:17+0800\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: 漢語 <>\n"
 "Language: \n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.3\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -670,7 +670,7 @@ msgid_plural "Loading %d files…"
 msgstr[0] "正在載入 %d 個檔案…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1174
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1175
 msgid "Open"
 msgstr "開啟"
 
@@ -823,22 +823,22 @@ msgstr "找到及取代了一個字串"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:145
+#: ../gedit/gedit-commands-search.c:148
 #, c-format
 msgid "\"%s\" not found"
 msgstr "找不到「%s」"
 
-#: ../gedit/gedit-document.c:1234 ../gedit/gedit-document.c:1260
+#: ../gedit/gedit-document.c:1266 ../gedit/gedit-document.c:1292
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "未儲存文件 %d"
 
 #: ../gedit/gedit-documents-panel.c:119 ../gedit/gedit-documents-panel.c:133
-#: ../gedit/gedit-window.c:2079 ../gedit/gedit-window.c:2086
+#: ../gedit/gedit-window.c:2080 ../gedit/gedit-window.c:2087
 msgid "Read-Only"
 msgstr "唯讀"
 
-#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3458
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3459
 msgid "Documents"
 msgstr "文件"
 
@@ -1022,8 +1022,8 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1790
-#: ../gedit/gedit-window.c:2178 ../plugins/externaltools/tools/manager.py:146
+#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1791
+#: ../gedit/gedit-window.c:2179 ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:463
 #: ../plugins/externaltools/tools/manager.py:579
 #: ../plugins/externaltools/tools/manager.py:915
@@ -1722,7 +1722,7 @@ msgid "The preview of a page in the document to be printed"
 msgstr "將會列印的文件的預覽"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1235
+#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1236
 msgid "Replace"
 msgstr "取代"
 
@@ -1747,10 +1747,14 @@ msgid "Match _entire word only"
 msgstr "只符合整個字詞(_E)"
 
 #: ../gedit/gedit-replace-dialog.ui.h:8
+msgid "Match as _regular expression"
+msgstr "以正規表示式比對(_R)"
+
+#: ../gedit/gedit-replace-dialog.ui.h:9
 msgid "Search _backwards"
 msgstr "向上搜尋(_B)"
 
-#: ../gedit/gedit-replace-dialog.ui.h:9
+#: ../gedit/gedit-replace-dialog.ui.h:10
 msgid "_Wrap around"
 msgstr "回到檔案開始部份再搜尋(_W)"
 
@@ -2155,81 +2159,86 @@ msgstr "/ 於 %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:588
+#: ../gedit/gedit-view-frame.c:664
 #, c-format
 msgid "%d of %d"
 msgstr "%d / %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:679
+#: ../gedit/gedit-view-frame.c:756
 msgid "_Wrap Around"
 msgstr "回到檔案開始部份再搜尋(_W)"
 
+#. create "Match as Regular Expression" menu item.
+#: ../gedit/gedit-view-frame.c:766
+msgid "Match as _Regular Expression"
+msgstr "以正規表示式比對(_R)"
+
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:694
+#: ../gedit/gedit-view-frame.c:780
 msgid "Match _Entire Word Only"
 msgstr "只符合整個字詞(_E)"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:709
+#: ../gedit/gedit-view-frame.c:794
 msgid "_Match Case"
 msgstr "符合大小寫(_M)"
 
-#: ../gedit/gedit-view-frame.c:891
+#: ../gedit/gedit-view-frame.c:968
 msgid "String you want to search for"
 msgstr "要搜尋的字串"
 
-#: ../gedit/gedit-view-frame.c:901
+#: ../gedit/gedit-view-frame.c:980
 msgid "Line you want to move the cursor to"
 msgstr "游標要移至的行"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1067
+#: ../gedit/gedit-window.c:1068
 #, c-format
 msgid "Open '%s'"
 msgstr "開啟「%s」"
 
-#: ../gedit/gedit-window.c:1229
+#: ../gedit/gedit-window.c:1230
 msgid "Save"
 msgstr "儲存"
 
-#: ../gedit/gedit-window.c:1231
+#: ../gedit/gedit-window.c:1232
 msgid "Print"
 msgstr "列印"
 
-#: ../gedit/gedit-window.c:1233
+#: ../gedit/gedit-window.c:1234
 msgid "Find"
 msgstr "尋找"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1397
+#: ../gedit/gedit-window.c:1398
 #, c-format
 msgid "Activate '%s'"
 msgstr "開啟‘%s’"
 
-#: ../gedit/gedit-window.c:1743
+#: ../gedit/gedit-window.c:1744
 msgid "Use Spaces"
 msgstr "使用空格"
 
-#: ../gedit/gedit-window.c:1936
+#: ../gedit/gedit-window.c:1937
 msgid "Bracket match is out of range"
 msgstr "對稱括號超出範圍"
 
-#: ../gedit/gedit-window.c:1941
+#: ../gedit/gedit-window.c:1942
 msgid "Bracket match not found"
 msgstr "找不到成對括弧"
 
-#: ../gedit/gedit-window.c:1946
+#: ../gedit/gedit-window.c:1947
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "對稱括弧於行：%d"
 
-#: ../gedit/gedit-window.c:2130
+#: ../gedit/gedit-window.c:2131
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Tab 寬度：%u"
 
-#: ../gedit/gedit-window.c:2485
+#: ../gedit/gedit-window.c:2486
 msgid "There are unsaved documents"
 msgstr "尚有未儲存的文件"
 
@@ -2782,33 +2791,33 @@ msgstr "確定要永久刪除已選的檔案嗎？"
 msgid "If you delete an item, it is permanently lost."
 msgstr "如果將項目刪除，它將會永久失去。"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1777
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1776
 msgid "(Empty)"
 msgstr "（空的）"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3499
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3498
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr "目前重新命名的檔案已被過濾。您需要調整過濾器設定來使檔案重新顯示"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3756
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3755
 msgid "Untitled File"
 msgstr "無標題檔案"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3784
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3783
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr "目前新的檔案已被過濾。您需要調整過濾器設定來使檔案重新顯示"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3815
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3814
 msgid "Untitled Folder"
 msgstr "無標題資料夾"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3840
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3839
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -3386,11 +3395,11 @@ msgstr "標示拼錯字詞(_H)"
 msgid "Automatically spell-check the current document"
 msgstr "自動為目前文件進行拼字檢查"
 
-#: ../plugins/spell/gedit-spell-plugin.c:823
+#: ../plugins/spell/gedit-spell-plugin.c:821
 msgid "The document is empty."
 msgstr "文件是空白的。"
 
-#: ../plugins/spell/gedit-spell-plugin.c:848
+#: ../plugins/spell/gedit-spell-plugin.c:846
 msgid "No misspelled words"
 msgstr "沒有拼錯字詞"
 
