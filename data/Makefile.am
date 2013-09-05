@@ -3,6 +3,9 @@ desktop_in_files = gedit.desktop.in
 desktop_DATA 	 = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
+appdatadir = $(datadir)/appdata
+appdata_DATA = gedit.appdata.xml
+
 servicedir = $(datadir)/dbus-1/services
 service_in_files = org.gnome.gedit.service.in
 service_DATA = $(service_in_files:.service.in=.service)
@@ -40,6 +43,7 @@ endif
 
 EXTRA_DIST = 					\
 	$(desktop_in_files)			\
+	gedit.appdata.xml			\
 	$(service_in_files)			\
 	$(man_MANS)				\
 	gedit.pc.in				\
