@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-03 12:34+0000\n"
-"PO-Revision-Date: 2013-08-04 12:33+0700\n"
+"POT-Creation-Date: 2013-09-04 06:56+0000\n"
+"PO-Revision-Date: 2013-09-05 16:37+0700\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -660,7 +660,7 @@ msgid_plural "Loading %d files…"
 msgstr[0] "กำลังอ่าน %d แฟ้ม…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1174
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1175
 msgid "Open"
 msgstr "เปิด"
 
@@ -811,22 +811,22 @@ msgstr "ค้นพบและแทนที่ไปแห่งเดีย
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:145
+#: ../gedit/gedit-commands-search.c:148
 #, c-format
 msgid "\"%s\" not found"
 msgstr "ไม่พบ \"%s\""
 
-#: ../gedit/gedit-document.c:1234 ../gedit/gedit-document.c:1260
+#: ../gedit/gedit-document.c:1266 ../gedit/gedit-document.c:1292
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "เอกสารยังไม่บันทึก %d"
 
 #: ../gedit/gedit-documents-panel.c:119 ../gedit/gedit-documents-panel.c:133
-#: ../gedit/gedit-window.c:2079 ../gedit/gedit-window.c:2086
+#: ../gedit/gedit-window.c:2080 ../gedit/gedit-window.c:2087
 msgid "Read-Only"
 msgstr "อ่านอย่างเดียว"
 
-#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3458
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3459
 msgid "Documents"
 msgstr "เอกสาร"
 
@@ -1010,8 +1010,8 @@ msgstr "Mac OS แบบฉบับ"
 msgid "Windows"
 msgstr "วินโดวส์"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1790
-#: ../gedit/gedit-window.c:2178 ../plugins/externaltools/tools/manager.py:146
+#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1791
+#: ../gedit/gedit-window.c:2179 ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:463
 #: ../plugins/externaltools/tools/manager.py:579
 #: ../plugins/externaltools/tools/manager.py:915
@@ -1711,7 +1711,7 @@ msgid "The preview of a page in the document to be printed"
 msgstr "ตัวอย่างของหน้าเอกสารที่จะสั่งพิมพ์"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1235
+#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1236
 msgid "Replace"
 msgstr "แทนที่"
 
@@ -1736,10 +1736,14 @@ msgid "Match _entire word only"
 msgstr "ค้นหาทั้_งคำ"
 
 #: ../gedit/gedit-replace-dialog.ui.h:8
+msgid "Match as _regular expression"
+msgstr "ค้นหาด้วยนิพจน์เ_รกิวลาร์"
+
+#: ../gedit/gedit-replace-dialog.ui.h:9
 msgid "Search _backwards"
 msgstr "ค้นหา_ย้อนกลับ"
 
-#: ../gedit/gedit-replace-dialog.ui.h:9
+#: ../gedit/gedit-replace-dialog.ui.h:10
 msgid "_Wrap around"
 msgstr "หมดแล้วเ_ริ่มใหม่"
 
@@ -2143,81 +2147,86 @@ msgstr "/ ที่ %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:588
+#: ../gedit/gedit-view-frame.c:664
 #, c-format
 msgid "%d of %d"
 msgstr "%d จาก %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:679
+#: ../gedit/gedit-view-frame.c:756
 msgid "_Wrap Around"
 msgstr "ห_มดแล้วเริ่มใหม่"
 
+#. create "Match as Regular Expression" menu item.
+#: ../gedit/gedit-view-frame.c:766
+msgid "Match as _Regular Expression"
+msgstr "ค้นหาด้วยนิพจน์เ_รกิวลาร์"
+
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:694
+#: ../gedit/gedit-view-frame.c:780
 msgid "Match _Entire Word Only"
 msgstr "ค้นหาทั้_งคำ"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:709
+#: ../gedit/gedit-view-frame.c:794
 msgid "_Match Case"
 msgstr "ตัวพิมพ์ใหญ่-เ_ล็กตรงกัน"
 
-#: ../gedit/gedit-view-frame.c:891
+#: ../gedit/gedit-view-frame.c:968
 msgid "String you want to search for"
 msgstr "ข้อความที่คุณต้องการค้นหา"
 
-#: ../gedit/gedit-view-frame.c:901
+#: ../gedit/gedit-view-frame.c:980
 msgid "Line you want to move the cursor to"
 msgstr "บรรทัดที่คุณต้องการย้ายเคอร์เซอร์ไป"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1067
+#: ../gedit/gedit-window.c:1068
 #, c-format
 msgid "Open '%s'"
 msgstr "เปิดเอกสาร '%s'"
 
-#: ../gedit/gedit-window.c:1229
+#: ../gedit/gedit-window.c:1230
 msgid "Save"
 msgstr "บันทึก"
 
-#: ../gedit/gedit-window.c:1231
+#: ../gedit/gedit-window.c:1232
 msgid "Print"
 msgstr "พิมพ์"
 
-#: ../gedit/gedit-window.c:1233
+#: ../gedit/gedit-window.c:1234
 msgid "Find"
 msgstr "หา"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1397
+#: ../gedit/gedit-window.c:1398
 #, c-format
 msgid "Activate '%s'"
 msgstr "เริ่มใช้ '%s'"
 
-#: ../gedit/gedit-window.c:1743
+#: ../gedit/gedit-window.c:1744
 msgid "Use Spaces"
 msgstr "แทรกช่องว่าง"
 
-#: ../gedit/gedit-window.c:1936
+#: ../gedit/gedit-window.c:1937
 msgid "Bracket match is out of range"
 msgstr "คู่วงเล็บอยู่นอกช่วง"
 
-#: ../gedit/gedit-window.c:1941
+#: ../gedit/gedit-window.c:1942
 msgid "Bracket match not found"
 msgstr "ไม่พบคู่วงเล็บ"
 
-#: ../gedit/gedit-window.c:1946
+#: ../gedit/gedit-window.c:1947
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "พบคู่วงเล็บที่บรรทัด: %d"
 
-#: ../gedit/gedit-window.c:2130
+#: ../gedit/gedit-window.c:2131
 #, c-format
 msgid "Tab Width: %u"
 msgstr "ความกว้างแท็บ: %u"
 
-#: ../gedit/gedit-window.c:2485
+#: ../gedit/gedit-window.c:2486
 msgid "There are unsaved documents"
 msgstr "มีเอกสารที่ไม่ได้บันทึก"
 
@@ -3380,11 +3389,11 @@ msgstr "เ_น้นคำสะกดผิด"
 msgid "Automatically spell-check the current document"
 msgstr "ตรวจตัวสะกดในเอกสารปัจจุบันโดยอัตโนมัติ"
 
-#: ../plugins/spell/gedit-spell-plugin.c:823
+#: ../plugins/spell/gedit-spell-plugin.c:821
 msgid "The document is empty."
 msgstr "เอกสารว่างเปล่า"
 
-#: ../plugins/spell/gedit-spell-plugin.c:848
+#: ../plugins/spell/gedit-spell-plugin.c:846
 msgid "No misspelled words"
 msgstr "ไม่มีคำสะกดผิด"
 
