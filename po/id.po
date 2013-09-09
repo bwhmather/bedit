@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-07-22 19:02+0000\n"
-"PO-Revision-Date: 2013-07-24 01:06+0800\n"
+"POT-Creation-Date: 2013-08-19 14:03+0000\n"
+"PO-Revision-Date: 2013-09-09 21:20+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:791
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:784
 msgid "Text Editor"
 msgstr "Penyunting Teks"
 
@@ -498,19 +498,19 @@ msgstr ""
 "tersebut. Lihat berkas .gedit-plugin untuk mendapatkan \"Lokasi\" dari "
 "plugin yang diberikan."
 
-#: ../gedit/gedit-app.c:115
+#: ../gedit/gedit-app.c:113
 msgid "Show the application's help"
 msgstr "Tampilkan bantuan aplikasi"
 
-#: ../gedit/gedit-app.c:121
+#: ../gedit/gedit-app.c:119
 msgid "Show the application's version"
 msgstr "Tampilkan versi aplikasi"
 
-#: ../gedit/gedit-app.c:127
+#: ../gedit/gedit-app.c:125
 msgid "Display list of possible values for the encoding option"
 msgstr "Tampilkan daftar nilai yang mungkin bagi pilihan encoding"
 
-#: ../gedit/gedit-app.c:135
+#: ../gedit/gedit-app.c:133
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -518,47 +518,47 @@ msgstr ""
 "Pilih pengkodean karakter yang digunakan untuk membuka berkas yang terdapat "
 "pada baris perintah"
 
-#: ../gedit/gedit-app.c:136
+#: ../gedit/gedit-app.c:134
 msgid "ENCODING"
 msgstr "ENCODING"
 
-#: ../gedit/gedit-app.c:143
+#: ../gedit/gedit-app.c:141
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Buat jendela utama baru pada gedit yang sedang jalan ini"
 
-#: ../gedit/gedit-app.c:151
+#: ../gedit/gedit-app.c:149
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Buat dokumen baru pada gedit ini"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:157
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Menetapkan ukuran dan posisi jendela (LEBARxTINGGI+X+Y)"
 
-#: ../gedit/gedit-app.c:160
+#: ../gedit/gedit-app.c:158
 msgid "GEOMETRY"
 msgstr "GEOMETRI"
 
-#: ../gedit/gedit-app.c:167
+#: ../gedit/gedit-app.c:165
 msgid "Open files and block process until files are closed"
 msgstr "Buka berkas dan tahan proses sampai berkas ditutup"
 
-#: ../gedit/gedit-app.c:175
+#: ../gedit/gedit-app.c:173
 msgid "Run gedit in standalone mode"
 msgstr "Menjalankan gedit dalam mode tersendiri"
 
-#: ../gedit/gedit-app.c:184
+#: ../gedit/gedit-app.c:182
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[BERKAS...][+BARIS[:KOLOM]]"
 
-#: ../gedit/gedit-app.c:283
+#: ../gedit/gedit-app.c:281
 msgid "There was an error displaying the help."
 msgstr "Ada galag saat menampilkan bantuan."
 
-#: ../gedit/gedit-app.c:704
+#: ../gedit/gedit-app.c:702
 msgid "- Edit text files"
 msgstr "- Edit berkas teks"
 
-#: ../gedit/gedit-app.c:813 ../gedit/gedit-app.c:903
+#: ../gedit/gedit-app.c:811 ../gedit/gedit-app.c:901
 #, c-format
 msgid ""
 "%s\n"
@@ -568,7 +568,7 @@ msgstr ""
 "Jalankan '%s --help' untuk melihat daftar lengkap dari pilihan baris "
 "perintah.\n"
 
-#: ../gedit/gedit-app.c:834
+#: ../gedit/gedit-app.c:832
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: salah pengkodean."
@@ -577,15 +577,15 @@ msgstr "%s: salah pengkodean."
 msgid "About gedit"
 msgstr "Tentang gedit"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:151
+#: ../gedit/gedit-close-confirmation-dialog.c:147
 msgid "Question"
 msgstr "Pertanyaan"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:324
+#: ../gedit/gedit-close-confirmation-dialog.c:318
 msgid "Close _without Saving"
 msgstr "Tutup dan Jangan Di_simpan"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:372
+#: ../gedit/gedit-close-confirmation-dialog.c:366
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -594,12 +594,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "Jika tidak disimpan, perubahan dari %ld detik terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:381
+#: ../gedit/gedit-close-confirmation-dialog.c:375
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "Jika tidak disimpan, perubahan dari menit-menit terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:387
+#: ../gedit/gedit-close-confirmation-dialog.c:381
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -610,7 +610,7 @@ msgid_plural ""
 msgstr[0] ""
 "Jika tidak disimpan, perubahan dari menit dan %ld detik terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:397
+#: ../gedit/gedit-close-confirmation-dialog.c:391
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -619,11 +619,11 @@ msgid_plural ""
 "lost."
 msgstr[0] "Jika tidak disimpan, perubahan dari %ld menit terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:412
+#: ../gedit/gedit-close-confirmation-dialog.c:406
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Jika tidak disimpan, perubahan dari jam terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:418
+#: ../gedit/gedit-close-confirmation-dialog.c:412
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -634,7 +634,7 @@ msgid_plural ""
 msgstr[0] ""
 "Jika tidak disimpan, perubahan dari jam dan %d menit terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:433
+#: ../gedit/gedit-close-confirmation-dialog.c:427
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -642,28 +642,28 @@ msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] "Jika tidak disimpan, perubahan dari %d jam terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:481
+#: ../gedit/gedit-close-confirmation-dialog.c:475
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Perubahan pada dokumen \"%s\" akan hilang selamanya."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:486
+#: ../gedit/gedit-close-confirmation-dialog.c:480
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Simpan perubahan ke dokumen \"%s\" sebelum menutup?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:501
-#: ../gedit/gedit-close-confirmation-dialog.c:725
+#: ../gedit/gedit-close-confirmation-dialog.c:495
+#: ../gedit/gedit-close-confirmation-dialog.c:719
 msgid "Saving has been disabled by the system administrator."
 msgstr "Penyimpanan telah di matikan oleh system administrator."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:672
+#: ../gedit/gedit-close-confirmation-dialog.c:666
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Perubahan di %d dokumen akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:680
+#: ../gedit/gedit-close-confirmation-dialog.c:674
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -672,15 +672,15 @@ msgstr[0] ""
 "Ada %d dokumen dengan perubahan yang belum disimpan. Simpan perubahan "
 "sebelum ditutup?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:700
+#: ../gedit/gedit-close-confirmation-dialog.c:694
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_en belum disimpan:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:704
+#: ../gedit/gedit-close-confirmation-dialog.c:698
 msgid "S_elect the documents you want to save:"
 msgstr "Pilih dokum_en yang ingin Anda simpan:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:729
+#: ../gedit/gedit-close-confirmation-dialog.c:723
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Jika tidak disimpan, seluruh perubahan yang Anda buat akan hilang."
 
@@ -696,7 +696,7 @@ msgid_plural "Loading %d files…"
 msgstr[0] "Memuat %d berkas…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1180
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1175
 msgid "Open"
 msgstr "Buka"
 
@@ -857,22 +857,22 @@ msgstr "Gedit telah menemukan dan mengganti satu kejadian"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:145
+#: ../gedit/gedit-commands-search.c:152
 #, c-format
 msgid "\"%s\" not found"
 msgstr "\"%s\" tidak ditemukan"
 
-#: ../gedit/gedit-document.c:1238 ../gedit/gedit-document.c:1264
+#: ../gedit/gedit-document.c:1266 ../gedit/gedit-document.c:1292
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Dokumen Belum Disimpan %d"
 
-#: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2085 ../gedit/gedit-window.c:2092
+#: ../gedit/gedit-documents-panel.c:119 ../gedit/gedit-documents-panel.c:133
+#: ../gedit/gedit-window.c:2080 ../gedit/gedit-window.c:2087
 msgid "Read-Only"
 msgstr "Hanya-Baca"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3464
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3459
 msgid "Documents"
 msgstr "Dokumen"
 
@@ -992,17 +992,17 @@ msgstr "Thailand"
 msgid "Unknown"
 msgstr "Tidak dikenal"
 
-#: ../gedit/gedit-encodings-combo-box.c:299
+#: ../gedit/gedit-encodings-combo-box.c:293
 msgid "Automatically Detected"
 msgstr "Terdeteksi Secara Otomatis"
 
-#: ../gedit/gedit-encodings-combo-box.c:318
-#: ../gedit/gedit-encodings-combo-box.c:334
+#: ../gedit/gedit-encodings-combo-box.c:312
+#: ../gedit/gedit-encodings-combo-box.c:328
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Locale Aktif (%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:386
+#: ../gedit/gedit-encodings-combo-box.c:380
 msgid "Add or Remove..."
 msgstr "Tambah atau Buang..."
 
@@ -1027,37 +1027,37 @@ msgstr "_Enkoding"
 msgid "E_ncodings shown in menu:"
 msgstr "E_nkoding yang ditampilkan pada menu:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:52
-#: ../gedit/gedit-preferences-dialog.c:883
+#: ../gedit/gedit-file-chooser-dialog.c:50
+#: ../gedit/gedit-preferences-dialog.c:874
 msgid "All Files"
 msgstr "Semua Berkas"
 
-#: ../gedit/gedit-file-chooser-dialog.c:53
+#: ../gedit/gedit-file-chooser-dialog.c:51
 msgid "All Text Files"
 msgstr "Semua Berkas Teks"
 
-#: ../gedit/gedit-file-chooser-dialog.c:95
+#: ../gedit/gedit-file-chooser-dialog.c:91
 msgid "C_haracter Encoding:"
 msgstr "Pengkodean _Karater:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:154
+#: ../gedit/gedit-file-chooser-dialog.c:150
 msgid "L_ine Ending:"
 msgstr "Akh_iran Baris:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:173
+#: ../gedit/gedit-file-chooser-dialog.c:169
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-file-chooser-dialog.c:179
+#: ../gedit/gedit-file-chooser-dialog.c:175
 msgid "Mac OS Classic"
 msgstr "Mac OS Klasik"
 
-#: ../gedit/gedit-file-chooser-dialog.c:185
+#: ../gedit/gedit-file-chooser-dialog.c:181
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:307 ../gedit/gedit-window.c:1796
-#: ../gedit/gedit-window.c:2184 ../plugins/externaltools/tools/manager.py:146
+#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1791
+#: ../gedit/gedit-window.c:2179 ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:463
 #: ../plugins/externaltools/tools/manager.py:579
 #: ../plugins/externaltools/tools/manager.py:915
@@ -1300,16 +1300,15 @@ msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "Tidak dapat membuat berkas backup sementara ketika menyimpan \"%s\""
 
 #: ../gedit/gedit-io-error-info-bar.c:972
-#, fuzzy
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"gedit tidak akan membuat salinan yang lama sebelum menyimpan yang baru. Anda "
-"dapat saja mengabaikan peringatan ini dan menyimpan berkasnya, tapi kalau "
-"terjadi kesalahan ketika menyimpan, Anda akan kehilangan salinan yang lama. "
-"Simpan saja?"
+"Tidak bisa membuat salinan yang lama sebelum menyimpan yang baru. Anda dapat "
+"saja mengabaikan peringatan ini dan menyimpan berkasnya, tapi kalau terjadi "
+"kesalahan ketika menyimpan, Anda akan kehilangan salinan yang lama. Simpan "
+"saja?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:1032
@@ -1439,23 +1438,23 @@ msgid "_Quit"
 msgstr "_Keluar"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:171 ../gedit/gedit-ui.h:142
+#: ../gedit/gedit-notebook-popup-menu.c:167 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "Pi_ndah ke Jendela Baru"
 
-#: ../gedit/gedit-notebook-popup-menu.c:182
+#: ../gedit/gedit-notebook-popup-menu.c:178
 msgid "_Save"
 msgstr "_Simpan"
 
-#: ../gedit/gedit-notebook-popup-menu.c:189 ../gedit/gedit-ui.h:78
+#: ../gedit/gedit-notebook-popup-menu.c:185 ../gedit/gedit-ui.h:78
 msgid "Save _As..."
 msgstr "Simpan Seb_agai..."
 
-#: ../gedit/gedit-notebook-popup-menu.c:200 ../gedit/gedit-ui.h:84
+#: ../gedit/gedit-notebook-popup-menu.c:196 ../gedit/gedit-ui.h:84
 msgid "_Print..."
 msgstr "_Cetak..."
 
-#: ../gedit/gedit-notebook-popup-menu.c:211
+#: ../gedit/gedit-notebook-popup-menu.c:207
 msgid "_Close"
 msgstr "_Tutup"
 
@@ -1467,46 +1466,46 @@ msgstr "Membuka berkas"
 msgid "Open a recently used file"
 msgstr "Buka berkas yang baru-baru ini digunakan"
 
-#: ../gedit/gedit-panel.c:411 ../gedit/gedit-panel.c:592
+#: ../gedit/gedit-panel.c:407 ../gedit/gedit-panel.c:588
 msgid "Empty"
 msgstr "Kosong"
 
-#: ../gedit/gedit-panel.c:477
+#: ../gedit/gedit-panel.c:473
 msgid "Hide panel"
 msgstr "Sembunyikan panel"
 
-#: ../gedit/gedit-preferences-dialog.c:405
+#: ../gedit/gedit-preferences-dialog.c:396
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Klik tombol ini untuk memilih fonta yang akan digunakan oleh penyunting"
 
-#: ../gedit/gedit-preferences-dialog.c:418
+#: ../gedit/gedit-preferences-dialog.c:409
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "G_unakan fonta lebar tetap sistem (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:650
+#: ../gedit/gedit-preferences-dialog.c:641
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "Direktori '%s' tidak dapat dibuat: g_mkdir_with_parents() gagal: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:834
+#: ../gedit/gedit-preferences-dialog.c:825
 msgid "The selected color scheme cannot be installed."
 msgstr "Skema warna yang dipilih tak dapat dipasang."
 
-#: ../gedit/gedit-preferences-dialog.c:861
+#: ../gedit/gedit-preferences-dialog.c:852
 msgid "Add Scheme"
 msgstr "Tambah Skema"
 
-#: ../gedit/gedit-preferences-dialog.c:868
+#: ../gedit/gedit-preferences-dialog.c:859
 msgid "A_dd Scheme"
 msgstr "Tam_bah Skema"
 
-#: ../gedit/gedit-preferences-dialog.c:876
+#: ../gedit/gedit-preferences-dialog.c:867
 msgid "Color Scheme Files"
 msgstr "Berkas Skema Warna"
 
-#: ../gedit/gedit-preferences-dialog.c:928
+#: ../gedit/gedit-preferences-dialog.c:919
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Tidak dapat menghapus skema warna \"%s\"."
@@ -1516,7 +1515,7 @@ msgstr "Tidak dapat menghapus skema warna \"%s\"."
 msgid "gedit Preferences"
 msgstr "Preferensi gedit"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:468
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:466
 msgid "_Display line numbers"
 msgstr "Tampilkan _nomor baris"
 
@@ -1637,16 +1636,16 @@ msgstr "Fonta & Warna"
 msgid "Plugins"
 msgstr "Pengaya"
 
-#: ../gedit/gedit-print-job.c:572
+#: ../gedit/gedit-print-job.c:565
 #, c-format
 msgid "File: %s"
 msgstr "Berkas: %s"
 
-#: ../gedit/gedit-print-job.c:581
+#: ../gedit/gedit-print-job.c:574
 msgid "Page %N of %Q"
 msgstr "Halaman %N dari %Q"
 
-#: ../gedit/gedit-print-job.c:843
+#: ../gedit/gedit-print-job.c:836
 msgid "Preparing..."
 msgstr "Mempersiapkan..."
 
@@ -1705,7 +1704,7 @@ msgstr "Kep_ala dan Kaki:"
 msgid "_Restore Default Fonts"
 msgstr "Kembalikan Hu_ruf Standar"
 
-#: ../gedit/gedit-print-preview.c:616
+#: ../gedit/gedit-print-preview.c:614
 #, c-format
 msgid "Page %d of %d"
 msgstr "Halaman %d dari %d"
@@ -1781,7 +1780,7 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Cuplikan halaman pada dokumen yang mau dicetak"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1241
+#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1236
 msgid "Replace"
 msgstr "Ganti"
 
@@ -1806,30 +1805,34 @@ msgid "Match _entire word only"
 msgstr "Cocokkan kes_eluruhan kata"
 
 #: ../gedit/gedit-replace-dialog.ui.h:8
+msgid "Match as _regular expression"
+msgstr "Cocokkan sebagai ekspresi _reguler"
+
+#: ../gedit/gedit-replace-dialog.ui.h:9
 msgid "Search _backwards"
 msgstr "Cari _mundur"
 
-#: ../gedit/gedit-replace-dialog.ui.h:9
+#: ../gedit/gedit-replace-dialog.ui.h:10
 msgid "_Wrap around"
 msgstr "_Penggalan kata"
 
 #. Use spaces to leave padding proportional to the font size
-#: ../gedit/gedit-statusbar.c:70 ../gedit/gedit-statusbar.c:76
+#: ../gedit/gedit-statusbar.c:66 ../gedit/gedit-statusbar.c:72
 msgid "OVR"
 msgstr " TIMPA"
 
-#: ../gedit/gedit-statusbar.c:70 ../gedit/gedit-statusbar.c:76
+#: ../gedit/gedit-statusbar.c:66 ../gedit/gedit-statusbar.c:72
 msgid "INS"
 msgstr "SISIP"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:251
+#: ../gedit/gedit-statusbar.c:245
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Brs %d, Kol %d"
 
-#: ../gedit/gedit-statusbar.c:350
+#: ../gedit/gedit-statusbar.c:344
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1837,77 +1840,77 @@ msgstr[0] "Ada %d tab dengan galat"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:770
+#: ../gedit/gedit-tab.c:766
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Mengembalikan %s dari %s"
 
-#: ../gedit/gedit-tab.c:777
+#: ../gedit/gedit-tab.c:773
 #, c-format
 msgid "Reverting %s"
 msgstr "Mengembalikan %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:793
+#: ../gedit/gedit-tab.c:789
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Memuat %s dari %s"
 
-#: ../gedit/gedit-tab.c:800
+#: ../gedit/gedit-tab.c:796
 #, c-format
 msgid "Loading %s"
 msgstr "Memuat %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:881
+#: ../gedit/gedit-tab.c:877
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Menyimpan %s ke %s"
 
-#: ../gedit/gedit-tab.c:888
+#: ../gedit/gedit-tab.c:884
 #, c-format
 msgid "Saving %s"
 msgstr "Menyimpan %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1873
+#: ../gedit/gedit-tab.c:1869
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1920
+#: ../gedit/gedit-tab.c:1916
 #, c-format
 msgid "Error opening file %s"
 msgstr "Gagal saat membuka berkas %s"
 
-#: ../gedit/gedit-tab.c:1925
+#: ../gedit/gedit-tab.c:1921
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Gagal saat mengulang berkas %s"
 
-#: ../gedit/gedit-tab.c:1930
+#: ../gedit/gedit-tab.c:1926
 #, c-format
 msgid "Error saving file %s"
 msgstr "Gagal saat menyimpan berkas %s"
 
-#: ../gedit/gedit-tab.c:1951
+#: ../gedit/gedit-tab.c:1947
 msgid "Unicode (UTF-8)"
 msgstr "Unikode (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1958
+#: ../gedit/gedit-tab.c:1954
 msgid "Name:"
 msgstr "Nama:"
 
-#: ../gedit/gedit-tab.c:1959
+#: ../gedit/gedit-tab.c:1955
 msgid "MIME Type:"
 msgstr "Jenis MIME:"
 
-#: ../gedit/gedit-tab.c:1960
+#: ../gedit/gedit-tab.c:1956
 msgid "Encoding:"
 msgstr "Enkoding:"
 
-#: ../gedit/gedit-tab-label.c:283
+#: ../gedit/gedit-tab-label.c:279
 msgid "Close document"
 msgstr "Tutup dokumen"
 
@@ -2213,81 +2216,86 @@ msgstr "/ pada %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:590
+#: ../gedit/gedit-view-frame.c:637
 #, c-format
 msgid "%d of %d"
 msgstr "%d dari %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:681
+#: ../gedit/gedit-view-frame.c:690
 msgid "_Wrap Around"
 msgstr "_Penggalan"
 
+#. create "Match as Regular Expression" menu item.
+#: ../gedit/gedit-view-frame.c:700
+msgid "Match as _Regular Expression"
+msgstr "Cocokkan sebagai Ekspresi _Reguler"
+
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:696
+#: ../gedit/gedit-view-frame.c:710
 msgid "Match _Entire Word Only"
 msgstr "Cocokkan Hanya Kata Saja"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:711
+#: ../gedit/gedit-view-frame.c:720
 msgid "_Match Case"
 msgstr "_Cocokkan huruf besar/kecil"
 
-#: ../gedit/gedit-view-frame.c:893
+#: ../gedit/gedit-view-frame.c:890
 msgid "String you want to search for"
 msgstr "Kata untuk dicari"
 
-#: ../gedit/gedit-view-frame.c:903
+#: ../gedit/gedit-view-frame.c:902
 msgid "Line you want to move the cursor to"
 msgstr "Pindahkan kursor ke baris"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1073
+#: ../gedit/gedit-window.c:1068
 #, c-format
 msgid "Open '%s'"
 msgstr "Membuka '%s'"
 
-#: ../gedit/gedit-window.c:1235
+#: ../gedit/gedit-window.c:1230
 msgid "Save"
 msgstr "Simpan"
 
-#: ../gedit/gedit-window.c:1237
+#: ../gedit/gedit-window.c:1232
 msgid "Print"
 msgstr "Cetak"
 
-#: ../gedit/gedit-window.c:1239
+#: ../gedit/gedit-window.c:1234
 msgid "Find"
 msgstr "Cari"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1403
+#: ../gedit/gedit-window.c:1398
 #, c-format
 msgid "Activate '%s'"
 msgstr "Aktifkan '%s'"
 
-#: ../gedit/gedit-window.c:1749
+#: ../gedit/gedit-window.c:1744
 msgid "Use Spaces"
 msgstr "Gunakan Spasi"
 
-#: ../gedit/gedit-window.c:1942
+#: ../gedit/gedit-window.c:1937
 msgid "Bracket match is out of range"
 msgstr "Pencocokan tanda kurung di luar jangkauan"
 
-#: ../gedit/gedit-window.c:1947
+#: ../gedit/gedit-window.c:1942
 msgid "Bracket match not found"
 msgstr "Pasangan tanda kurung tidak ketemua"
 
-#: ../gedit/gedit-window.c:1952
+#: ../gedit/gedit-window.c:1947
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Kurung kurawal yang cocok ditemukan pada baris: %d"
 
-#: ../gedit/gedit-window.c:2136
+#: ../gedit/gedit-window.c:2131
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Lebar Tab: %u"
 
-#: ../gedit/gedit-window.c:2491
+#: ../gedit/gedit-window.c:2486
 msgid "There are unsaved documents"
 msgstr "Ada dokumen yang belum disimpan"
 
@@ -2718,11 +2726,11 @@ msgstr "Panel Peramban Berkas"
 msgid "Easy file access from the side panel"
 msgstr "Akses berkas mudah dari panel samping"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:215
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:206
 msgid "Home"
 msgstr "Rumah"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:232
 msgid "File System"
 msgstr "Sistem Berkas"
 
@@ -2779,43 +2787,43 @@ msgstr "Tampilkan _Sembunyi"
 msgid "Show _Binary"
 msgstr "Tampilkan _Binary"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:539
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:538
 msgid "File Browser"
 msgstr "Penjelajah Berkas"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:685
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:681
 msgid "An error occurred while creating a new directory"
 msgstr "Terjadi galat ketika membuat direktori baru"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:684
 msgid "An error occurred while creating a new file"
 msgstr "Terjadi galat ketika membuat berkas baru"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:687
 msgid "An error occurred while renaming a file or directory"
 msgstr "Terjadi galat ketika mengubah nama berkas atau direktori"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:690
 msgid "An error occurred while deleting a file or directory"
 msgstr "Terjadi galat ketika menghapus berkas atau direktori"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:693
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Terjadi galat ketika membuka direktori pada manajer berkas"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:700
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:696
 msgid "An error occurred while setting a root directory"
 msgstr "Terjadi galat ketika menentukan akar direktori"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:703
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:699
 msgid "An error occurred while loading a directory"
 msgstr "Terjadi galat ketika memuat direktori"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:706
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:702
 msgid "An error occurred"
 msgstr "Terjadi kesalahan"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:920
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2823,33 +2831,33 @@ msgstr ""
 "Tidak dapat memindahkan berkas\n"
 "ke tempat sampah, hapus permanen?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:925
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Berkas \"%s\" tidak dapat dipindahkan ke tempat sampah."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:926
 msgid "The selected files cannot be moved to the trash."
 msgstr "Berkas yang dipilih tidak dapat dipindahkan ke tempat sampah."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Yakin akan menghapus permanen \"%s\"?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:967
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:963
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Anda yakin ingin menghapus berkas yang dipilih secara permanen?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:970
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:966
 msgid "If you delete an item, it is permanently lost."
 msgstr "Jika Anda menghapus objek, ia akan hilang selamanya."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1783
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1776
 msgid "(Empty)"
 msgstr "(Kosong)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3505
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3498
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2858,11 +2866,11 @@ msgstr ""
 "Anda supaya berkasnya nampak"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3762
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3755
 msgid "Untitled File"
 msgstr "Berkas Tanpa Nama"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3790
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3783
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2871,11 +2879,11 @@ msgstr ""
 "supaya berkasnya kelihatan"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3821
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3814
 msgid "Untitled Folder"
 msgstr "Folder Tanpa Nama"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3846
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3839
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -2883,26 +2891,26 @@ msgstr ""
 "Direktori baru kini sedang tersaring. Anda perlu mengubah tatanan saringan "
 "agar direktori nampak"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:788
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:785
 msgid "Bookmarks"
 msgstr "Tanda buku"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1982
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1979
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Tak ada objek kait bagi volume yang dikaitkan: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2059
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2056
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Tidak dapat membuka media: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2106
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2103
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Tidak dapat mengaitkan volume: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2742
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2739
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Terjadi galat ketika memuat '%s': Direktori itu tak ada"
@@ -3002,7 +3010,7 @@ msgstr "Pola Biner Peramban Berkas"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
-msgstr ""
+msgstr "Pola pelengkap untuk dipakai ketika menyaring berkas biner."
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
@@ -3466,11 +3474,11 @@ msgstr "_Tandai Kata-kata Salah Eja"
 msgid "Automatically spell-check the current document"
 msgstr "Memeriksa ejaan pada dokumen aktif secara otomatis"
 
-#: ../plugins/spell/gedit-spell-plugin.c:823
+#: ../plugins/spell/gedit-spell-plugin.c:821
 msgid "The document is empty."
 msgstr "Dokumen masih kosong."
 
-#: ../plugins/spell/gedit-spell-plugin.c:848
+#: ../plugins/spell/gedit-spell-plugin.c:846
 msgid "No misspelled words"
 msgstr "Tiada kata yang salah eja"
 
