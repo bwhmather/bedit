@@ -1193,6 +1193,7 @@ init_search_entry (GeditViewFrame *frame)
 		if (frame->priv->search_settings == NULL)
 		{
 			frame->priv->search_settings = gtk_source_search_settings_new ();
+			gtk_source_search_settings_set_wrap_around (frame->priv->search_settings, TRUE);
 		}
 
 		g_clear_object (&frame->priv->old_search_settings);
