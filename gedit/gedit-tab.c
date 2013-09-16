@@ -1312,9 +1312,6 @@ no_backup_error_info_bar_response (GtkWidget *info_bar,
 
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
-		/* don't bug the user again with this... */
-		tab->priv->save_flags |= GEDIT_DOCUMENT_SAVE_IGNORE_BACKUP;
-
 		g_return_if_fail (tab->priv->auto_save_timeout <= 0);
 
 		/* Force saving */
