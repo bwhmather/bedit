@@ -385,8 +385,8 @@ connect_active_document (GeditReplaceDialog *dialog)
 }
 
 static void
-gedit_replace_dialog_response (GtkDialog *dialog,
-                               gint       response_id)
+response_cb (GtkDialog *dialog,
+	     gint       response_id)
 {
 	GeditReplaceDialog *dlg = GEDIT_REPLACE_DIALOG (dialog);
 	const gchar *str;
@@ -444,11 +444,9 @@ gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
 	gobject_class->dispose = gedit_replace_dialog_dispose;
 	widget_class->delete_event = gedit_replace_dialog_delete_event;
-	dialog_class->response = gedit_replace_dialog_response;
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
@@ -667,6 +665,14 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 	g_signal_connect (dlg,
 			  "hide",
 			  G_CALLBACK (hide_cb),
+			  NULL);
+
+	/* We connect here to make sure this handler runs before the others so
+	 * that the search context is created.
+	 */
+	g_signal_connect (dlg,
+			  "response",
+			  G_CALLBACK (response_cb),
 			  NULL);
 }
 
