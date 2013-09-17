@@ -96,6 +96,11 @@ get_search_context (GeditReplaceDialog *dialog,
  * the SearchContext is created, it's better to be consistent, and therefore we
  * don't want the incremental search: we have to always press a button to
  * execute the search.
+ *
+ * Likewise, each created SearchContext (from the GeditReplaceDialog) contains a
+ * different SearchSettings. When set_search_settings() is called for one
+ * document tab (and thus one SearchSettings), it doesn't have an effect on the
+ * other tabs. But the dialog widgets don't change.
  */
 static void
 set_search_settings (GeditReplaceDialog *dialog)
