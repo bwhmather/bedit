@@ -33,6 +33,8 @@
 #include "gedit-history-entry.h"
 #include "gedit-document.h"
 
+#define GEDIT_SEARCH_CONTEXT_KEY "gedit-search-context-key"
+
 struct _GeditReplaceDialogPrivate
 {
 	GtkWidget *grid;
@@ -48,14 +50,34 @@ struct _GeditReplaceDialogPrivate
 	GtkWidget *backwards_checkbutton;
 	GtkWidget *wrap_around_checkbutton;
 
-	GtkSourceSearchSettings *search_settings;
-
 	GeditDocument *active_document;
 
 	guint idle_update_sensitivity_id;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
+
+static GtkSourceSearchContext *
+get_search_context (GeditReplaceDialog *dialog,
+		    GeditDocument      *doc)
+{
+	GtkSourceSearchContext *search_context;
+
+	if (doc == NULL)
+	{
+		return NULL;
+	}
+
+	search_context = _gedit_document_get_search_context (doc);
+
+	if (search_context != NULL &&
+	    g_object_get_data (G_OBJECT (search_context), GEDIT_SEARCH_CONTEXT_KEY) == dialog)
+	{
+		return search_context;
+	}
+
+	return NULL;
+}
 
 /* The search settings between the dialog's widgets (checkbuttons and the text
  * entry) and the SearchSettings object are not bound. Instead, this function is
@@ -78,38 +100,45 @@ G_DEFINE_TYPE_WITH_PRIVATE (GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_D
 static void
 set_search_settings (GeditReplaceDialog *dialog)
 {
+	GtkSourceSearchContext *search_context;
+	GtkSourceSearchSettings *search_settings;
 	gboolean case_sensitive;
 	gboolean at_word_boundaries;
 	gboolean regex_enabled;
 	gboolean wrap_around;
 	const gchar *search_text;
 
+	search_context = get_search_context (dialog, dialog->priv->active_document);
+
+	if (search_context == NULL)
+	{
+		return;
+	}
+
+	search_settings = gtk_source_search_context_get_settings (search_context);
+
 	case_sensitive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->match_case_checkbutton));
-	gtk_source_search_settings_set_case_sensitive (dialog->priv->search_settings, case_sensitive);
+	gtk_source_search_settings_set_case_sensitive (search_settings, case_sensitive);
 
 	at_word_boundaries = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->entire_word_checkbutton));
-	gtk_source_search_settings_set_at_word_boundaries (dialog->priv->search_settings, at_word_boundaries);
+	gtk_source_search_settings_set_at_word_boundaries (search_settings, at_word_boundaries);
 
 	regex_enabled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->regex_checkbutton));
-	gtk_source_search_settings_set_regex_enabled (dialog->priv->search_settings, regex_enabled);
+	gtk_source_search_settings_set_regex_enabled (search_settings, regex_enabled);
 
 	wrap_around = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->wrap_around_checkbutton));
-	gtk_source_search_settings_set_wrap_around (dialog->priv->search_settings, wrap_around);
+	gtk_source_search_settings_set_wrap_around (search_settings, wrap_around);
 
 	search_text = gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
 
 	if (regex_enabled)
 	{
-		gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
-							    search_text);
+		gtk_source_search_settings_set_search_text (search_settings, search_text);
 	}
 	else
 	{
 		gchar *unescaped_search_text = gtk_source_utils_unescape_search_text (search_text);
-
-		gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
-							    unescaped_search_text);
-
+		gtk_source_search_settings_set_search_text (search_settings, unescaped_search_text);
 		g_free (unescaped_search_text);
 	}
 }
@@ -128,28 +157,6 @@ get_active_document (GeditReplaceDialog *dialog)
 	GeditWindow *window = get_gedit_window (dialog);
 
 	return window != NULL ? gedit_window_get_active_document (window) : NULL;
-}
-
-static GtkSourceSearchContext *
-get_search_context (GeditReplaceDialog *dialog,
-		    GeditDocument      *doc)
-{
-	GtkSourceSearchContext *search_context;
-
-	if (doc == NULL)
-	{
-		return NULL;
-	}
-
-	search_context = _gedit_document_get_search_context (doc);
-
-	if (search_context != NULL &&
-	    dialog->priv->search_settings == gtk_source_search_context_get_settings (search_context))
-	{
-		return search_context;
-	}
-
-	return NULL;
 }
 
 void
@@ -418,10 +425,22 @@ connect_active_document (GeditReplaceDialog *dialog)
 
 	if (search_context == NULL)
 	{
+		GtkSourceSearchSettings *settings = gtk_source_search_settings_new ();
+
 		search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (doc),
-								dialog->priv->search_settings);
+								settings);
+
+		/* Mark the search context that it comes from the search and
+		 * replace dialog. Search contexts can be created also from the
+		 * GeditViewFrame.
+		 */
+		g_object_set_data (G_OBJECT (search_context),
+				   GEDIT_SEARCH_CONTEXT_KEY,
+				   dialog);
 
 		_gedit_document_set_search_context (doc, search_context);
+
+		g_object_unref (settings);
 		g_object_unref (search_context);
 	}
 
@@ -475,8 +494,8 @@ response_cb (GtkDialog *dialog,
 		case GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE:
 		case GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE:
 		case GEDIT_REPLACE_DIALOG_FIND_RESPONSE:
-			set_search_settings (GEDIT_REPLACE_DIALOG (dialog));
 			connect_active_document (GEDIT_REPLACE_DIALOG (dialog));
+			set_search_settings (GEDIT_REPLACE_DIALOG (dialog));
 	}
 }
 
@@ -485,7 +504,6 @@ gedit_replace_dialog_dispose (GObject *object)
 {
 	GeditReplaceDialog *dialog = GEDIT_REPLACE_DIALOG (object);
 
-	g_clear_object (&dialog->priv->search_settings);
 	g_clear_object (&dialog->priv->active_document);
 
 	if (dialog->priv->idle_update_sensitivity_id != 0)
@@ -682,8 +700,6 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 			  "changed",
 			  G_CALLBACK (replace_text_entry_changed),
 			  dlg);
-
-	dlg->priv->search_settings = gtk_source_search_settings_new ();
 
 	g_signal_connect (dlg,
 			  "show",
