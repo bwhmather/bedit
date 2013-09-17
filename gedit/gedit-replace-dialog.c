@@ -545,12 +545,6 @@ show_cb (GeditReplaceDialog *dialog)
 		return;
 	}
 
-	g_signal_connect_object (window,
-				 "active-tab-changed",
-				 G_CALLBACK (connect_active_document),
-				 dialog,
-				 G_CONNECT_SWAPPED);
-
 	doc = get_active_document (dialog);
 
 	if (doc == NULL)
@@ -581,18 +575,12 @@ show_cb (GeditReplaceDialog *dialog)
 		g_free (escaped_selection);
 	}
 
-	connect_active_document (dialog);
-
 	g_free (selection);
 }
 
 static void
 hide_cb (GeditReplaceDialog *dialog)
 {
-	GeditWindow *window = get_gedit_window (dialog);
-
-	g_signal_handlers_disconnect_by_func (window, connect_active_document, dialog);
-
 	disconnect_document (dialog);
 }
 
