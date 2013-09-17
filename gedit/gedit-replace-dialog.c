@@ -57,6 +57,63 @@ struct _GeditReplaceDialogPrivate
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditReplaceDialog, gedit_replace_dialog, GTK_TYPE_DIALOG)
 
+/* The search settings between the dialog's widgets (checkbuttons and the text
+ * entry) and the SearchSettings object are not bound. Instead, this function is
+ * called to set the search settings from the widgets to the SearchSettings
+ * object.
+ *
+ * The reason: the search and replace dialog is not an incremental search. You
+ * have to press the buttons to have an effect. The SearchContext is created
+ * only when a button is pressed, not before. If the SearchContext was created
+ * directly when the dialog window is shown, or when the document tab is
+ * switched, there would be a problem. When we switch betweeen tabs to find on
+ * which tab(s) we want to do the search, we may have older searches (still
+ * highlighted) that we don't want to lose, and we don't want the new search to
+ * appear on each tab that we open. Only when we press a button. So when the
+ * SearchContext is not already created, this is not an incremental search. Once
+ * the SearchContext is created, it's better to be consistent, and therefore we
+ * don't want the incremental search: we have to always press a button to
+ * execute the search.
+ */
+static void
+set_search_settings (GeditReplaceDialog *dialog)
+{
+	gboolean case_sensitive;
+	gboolean at_word_boundaries;
+	gboolean regex_enabled;
+	gboolean wrap_around;
+	const gchar *search_text;
+
+	case_sensitive = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->match_case_checkbutton));
+	gtk_source_search_settings_set_case_sensitive (dialog->priv->search_settings, case_sensitive);
+
+	at_word_boundaries = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->entire_word_checkbutton));
+	gtk_source_search_settings_set_at_word_boundaries (dialog->priv->search_settings, at_word_boundaries);
+
+	regex_enabled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->regex_checkbutton));
+	gtk_source_search_settings_set_regex_enabled (dialog->priv->search_settings, regex_enabled);
+
+	wrap_around = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->wrap_around_checkbutton));
+	gtk_source_search_settings_set_wrap_around (dialog->priv->search_settings, wrap_around);
+
+	search_text = gtk_entry_get_text (GTK_ENTRY (dialog->priv->search_text_entry));
+
+	if (regex_enabled)
+	{
+		gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
+							    search_text);
+	}
+	else
+	{
+		gchar *unescaped_search_text = gtk_source_utils_unescape_search_text (search_text);
+
+		gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
+							    unescaped_search_text);
+
+		g_free (unescaped_search_text);
+	}
+}
+
 static GeditWindow *
 get_gedit_window (GeditReplaceDialog *dialog)
 {
@@ -418,6 +475,7 @@ response_cb (GtkDialog *dialog,
 		case GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE:
 		case GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE:
 		case GEDIT_REPLACE_DIALOG_FIND_RESPONSE:
+			set_search_settings (GEDIT_REPLACE_DIALOG (dialog));
 			connect_active_document (GEDIT_REPLACE_DIALOG (dialog));
 	}
 }
@@ -465,24 +523,7 @@ static void
 search_text_entry_changed (GtkEditable        *editable,
 			   GeditReplaceDialog *dialog)
 {
-	const gchar *search_text;
-
-	search_text = gtk_entry_get_text (GTK_ENTRY (editable));
-
-	if (gtk_source_search_settings_get_regex_enabled (dialog->priv->search_settings))
-	{
-		gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
-							    search_text);
-	}
-	else
-	{
-		gchar *unescaped_search_text = gtk_source_utils_unescape_search_text (search_text);
-
-		gtk_source_search_settings_set_search_text (dialog->priv->search_settings,
-							    unescaped_search_text);
-
-		g_free (unescaped_search_text);
-	}
+	set_search_error (dialog, NULL);
 
 	update_responses_sensitivity (dialog);
 }
@@ -556,9 +597,12 @@ show_cb (GeditReplaceDialog *dialog)
 
 	if (selection_exists && selection != NULL && selection_length < 80)
 	{
+		gboolean regex_enabled;
 		gchar *escaped_selection;
 
-		if (gtk_source_search_settings_get_regex_enabled (dialog->priv->search_settings))
+		regex_enabled = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->regex_checkbutton));
+
+		if (regex_enabled)
 		{
 			escaped_selection = g_regex_escape_string (selection, -1);
 		}
@@ -640,22 +684,6 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 			  dlg);
 
 	dlg->priv->search_settings = gtk_source_search_settings_new ();
-
-	g_object_bind_property (dlg->priv->match_case_checkbutton, "active",
-				dlg->priv->search_settings, "case-sensitive",
-				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-
-	g_object_bind_property (dlg->priv->entire_word_checkbutton, "active",
-				dlg->priv->search_settings, "at-word-boundaries",
-				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-
-	g_object_bind_property (dlg->priv->regex_checkbutton, "active",
-				dlg->priv->search_settings, "regex-enabled",
-				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-
-	g_object_bind_property (dlg->priv->wrap_around_checkbutton, "active",
-				dlg->priv->search_settings, "wrap-around",
-				G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
 	g_signal_connect (dlg,
 			  "show",
