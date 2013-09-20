@@ -104,6 +104,9 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 
 	statusbar->priv = gedit_statusbar_get_instance_private (statusbar);
 
+	gtk_widget_set_margin_top (GTK_WIDGET (statusbar), 0);
+	gtk_widget_set_margin_bottom (GTK_WIDGET (statusbar), 0);
+
 	statusbar->priv->overwrite_mode_label = gtk_label_new (NULL);
 	gtk_label_set_width_chars (GTK_LABEL (statusbar->priv->overwrite_mode_label),
 				   get_overwrite_mode_length ());
