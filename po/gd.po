@@ -1,0 +1,3525 @@
+# Gaelic; Scottish translation for gedit
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the gedit package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+# adc <alexd@garrit.freeserve.co.uk>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: gedit\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-09-14 18:47+0000\n"
+"PO-Revision-Date: 2013-09-17 10:57+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"Language-Team: Sgioba na gàidhlig\n"
+"Language: gd\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : (n > 2 && n < 20) ? 2 : 3;\n"
+"X-Launchpad-Export-Date: 2013-09-15 06:21+0000\n"
+"X-Generator: Launchpad (build 16761)\n"
+
+#: ../data/gedit.desktop.in.in.h:1
+msgid "gedit"
+msgstr "gedit"
+
+#: ../data/gedit.desktop.in.in.h:2
+#: ../gedit/gedit-print-job.c:784
+msgid "Text Editor"
+msgstr "Deasaiche teacsa"
+
+#: ../data/gedit.desktop.in.in.h:3
+msgid "Edit text files"
+msgstr "Deasaich faidhlichean teacsa"
+
+#: ../data/gedit.desktop.in.in.h:4
+msgid "gedit Text Editor"
+msgstr "Deasaiche teacsa gedit"
+
+#: ../data/gedit.desktop.in.in.h:5
+msgid "Text;Editor;"
+msgstr "Deasaiche;teacsa;teagsa;deasaich;"
+
+#: ../data/gedit.desktop.in.in.h:6
+msgid "Open a New Window"
+msgstr "Fosgail uinneag ùr"
+
+#: ../data/gedit.desktop.in.in.h:7
+msgid "Open a New Document"
+msgstr "Fosgail sgrìobhainn ùr"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+msgid "Use Default Font"
+msgstr "Cleachd an cruth-clò bunaiteach"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+msgid "Whether to use the system's default fixed width font for editing text instead of a font specific to gedit. If this option is turned off, then the font named in the \"Editor Font\" option will be used instead of the system font."
+msgstr "An tèid cruth-clò bunaiteach an t-siostaim le leud socraichte a chleachdadh gus teacsa a dheasachadh seach an crùth-clò sònraichte aig gedit. Ma tha an roghainn seo dheth, thèid an cruth-clò ainmichte san roghainn “Cruth-clò an deasaiche” a chleachdadh an àite cruth-clò an t-siostaim."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+msgid "Editor Font"
+msgstr "Cruth-clò an deasaiche"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
+msgid "A custom font that will be used for the editing area. This will only take effect if the \"Use Default Font\" option is turned off."
+msgstr "Cruth-clò gnàthach a thèid a chleachadh airson an raon deasachaidh. Cha tèid seo a chur an sàs ach ma bhios an roghainn “Cleachd an cruth-clò bunaiteach” air a chur dheth."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
+msgid "Style Scheme"
+msgstr "Sgeama stoidhle"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
+msgid "The ID of a GtkSourceView Style Scheme used to color the text."
+msgstr "An ID aig sgeama stoidhle GtkSourceView a thèid a chleachdadh gus dath a chur air an teacsa."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
+msgid "Create Backup Copies"
+msgstr "Cruthaich lethbhreacan-glèidhidh"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+msgid "Whether gedit should create backup copies for the files it saves. You can set the backup file extension with the \"Backup Copy Extension\" option."
+msgstr "An cruthaich gedit lethbhreacan-glèidhidh airson nam faidhlichean a shàbhaileas e. 'S urrainn dhut leudachan an fhaidhle-glèidhidh a shuidheachadh leis an roghainn \"Leudachan nan lethbhreac-glèidhidh\"."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
+msgid "Autosave"
+msgstr "Sàbhaladh fèin-obrachail"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
+msgid "Whether gedit should automatically save modified files after a time interval. You can set the time interval with the \"Autosave Interval\" option."
+msgstr "An sàbhail gedit faidhlichean air an atharrachadh gu fèin-obrachail an ceann ùine. 'S urrainn dhut suidheachadh dè cho tric 's a thèid seo a dhèanamh leis an roghainn \"Earadamh an t-sàbhalaidh fhèin-obrachail\"."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
+msgid "Autosave Interval"
+msgstr "Earadamh an t-sàbhalaidh fhèin-obrachail"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
+msgid "Number of minutes after which gedit will automatically save modified files. This will only take effect if the \"Autosave\" option is turned on."
+msgstr "An ceann co mheud mionaid a thòisicheas gedit le sàbhaladh fèin-obrachail nam faidhlichean air an atharrachadh. Chan eil an roghainn seo an sàs ach nuair a bhios\"Sàbhaladh fèin-obrachail\" air a chur air."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+msgid "Undo Actions Limit (DEPRECATED)"
+msgstr "Neo-dhèan cuingeachadh nan gnìomhan (CHA MHOLAR TUILLEADH)"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+msgid "Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for unlimited number of actions. Deprecated since 2.12.0"
+msgstr "An àireamh as motha dhe ghnìomhan as urrainn dha gedit neo-dhèanamh no ath-dhèanamh. Cleachd \"-1\" airson an gnìomhan gun chuingeachadh. Cha mholar seo tuilleadh o chionn 2.12.0"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+msgid "Maximum Number of Undo Actions"
+msgstr "An àireamh as motha de ghnìomhan neo-dhèanaimh"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+msgid "Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for unlimited number of actions."
+msgstr "An àireamh as motha de ghnìomhan as urrainn dha gedit a neo-dhèanamh no ath-dhèanamh. Cleachd \"-1\" airson an gnìomhan gun chuingeachadh."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+msgid "Line Wrapping Mode"
+msgstr "Modh pasgaidh loidhne"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+msgid "Specifies how to wrap long lines in the editing area. Use \"none\" for no wrapping, \"word\" for wrapping at word boundaries, and \"char\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
+msgstr "Sònraichidh seo mar a thèid loidhnichean fada a phasgadh san raon deasachaidh. Cleachd \"neoni\" mur eil thu airson pasgadh sam bith, \"word\" airson pasgadh eadar dà fhacal is “char” airson pasgadh eadar dà charactar sam bith. Thoir an aire gun toir na luachan an aire do litrichean mòra is beaga 's mar sin dèan cinnteach gu nochd iad dìreach mar a thug sinn iomradh orra an-seo."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+msgid "Tab Size"
+msgstr "Meud nan tabaichean"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+msgid "Specifies the number of spaces that should be displayed instead of Tab characters."
+msgstr "Sònraichidh seo an àireamh de spàsan a thèid a shealltainn an àite caractar taba."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+msgid "Insert spaces"
+msgstr "Cuir a-steach spàsan"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+msgid "Whether gedit should insert spaces instead of tabs."
+msgstr "An cuir gedit spàsan a-steach an àite thabaichean no nach cuir."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+msgid "Automatic indent"
+msgstr "Eag fhèin-obrachail"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+msgid "Whether gedit should enable automatic indentation."
+msgstr "An cleachd gedit eagan fèin-obrachail no nach cleachd."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+msgid "Display Line Numbers"
+msgstr "Seall àireamhan loidhne"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+msgid "Whether gedit should display line numbers in the editing area."
+msgstr "Co-dhiù an seall gedit àireamhan loidhne san raon deasachaidh no nach seall."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+msgid "Highlight Current Line"
+msgstr "Soillsich an loidhne làithreach"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+msgid "Whether gedit should highlight the current line."
+msgstr "Co-dhiù an soillsich gedit an loidhne làithreadh no nach soillsich."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+msgid "Highlight Matching Brackets"
+msgstr "Soillsich camagan a cho-fhreagras"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+msgid "Whether gedit should highlight matching brackets."
+msgstr "Co-dhiù an soillsich gedit camagan a cho-fhreagras no nach soillsich."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
+msgid "Display Right Margin"
+msgstr "Seall am marghan deas"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
+msgid "Whether gedit should display the right margin in the editing area."
+msgstr "Co-dhiù an seall gedit am marghan deas no nach soillsich."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
+msgid "Right Margin Position"
+msgstr "Ionad a' mharghain dheis"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+msgid "Specifies the position of the right margin."
+msgstr "Sònraichidh seo ionad a' mharghain dheis."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
+msgid "Smart Home End"
+msgstr "Home End glic"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
+msgid "Specifies how the cursor moves when the HOME and END keys are pressed. Use \"disabled\" to always move at the start/end of the line, \"after\" to move to the start/end of the line the first time the keys are pressed and to the start/end of the text ignoring whitespaces the second time the keys are pressed, \"before\" to move to the start/end of the text before moving to the start/end of the line and \"always\" to always move to the start/end of the text instead of the start/end of the line."
+msgstr "Sònraichidh seo mar a ghluaiseas an cùrsair nuair a thèid an iuchair HOME agus END a bhrùthadh. Cleachd \"À comas\" airson 's gun gluais e gu toiseach/deireadh na loidhne, \"'Na dhèidh\" airson 's gun gluais e gu toiseach/deireadh na loidhne a' chiad turas a bhrùthar an dà iuchair còmhla agus gu toiseach/deireadh an teacsa (a' leigeil seachad àitichean bàna) an dàrna turas a bhrùthar iad, \"Roimhe\" gus gluasad gu toiseach/deireadh an teacsa mus gluais e gu toiseach/deireadh na loidhne agus \"An-còmhnaidh\" airson 's gun gluais e gu toiseach/deireadh an teacsa seach toiseach/deireadh na loidhne."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+msgid "Restore Previous Cursor Position"
+msgstr "Aisig àite a' chùrsair roimhe"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+msgid "Whether gedit should restore the previous cursor position when a file is loaded."
+msgstr "Co-dhiù an aisig gedit àite a' chùrsair roimhe nuair a thèid faidhle a luchdadh no nach aisig."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+msgid "Enable Syntax Highlighting"
+msgstr "Cuir an comas soillseachadh a' cho-chàraidh"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+msgid "Whether gedit should enable syntax highlighting."
+msgstr "Co-dhiù an cuir gedit soillseachadh a' cho-chàraidh an comas no nach cuir."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+msgid "Enable Search Highlighting"
+msgstr "Cuir an comas soillseachadh an luirg"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
+msgid "Whether gedit should highlight all the occurrences of the searched text."
+msgstr "Co-dhiù an soillsich gedit gach ball-toraidh dhen teacsa a lorg thu no nach soillsich."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
+msgid "Ensure Trailing Newline"
+msgstr "Dèan cinnteach gum bi loidhne ùr aig bonn an teacsa"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
+msgid "Whether gedit will ensure that documents always end with a trailing newline."
+msgstr "Tagh an dèan gedit cinnteach gum bidh loidhne ùr aig deireadh gach teacsa."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
+msgid "Toolbar is Visible"
+msgstr "Am bàr-inneal ri fhaicinn"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
+msgid "Whether the toolbar should be visible in editing windows."
+msgstr "Co-dhiù an tèid am bàr-inneal a shealltainn no nach tèid"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
+msgid "Notebook Show Tabs Mode"
+msgstr "Sealladh tabaichean an leabhair-nòtaichean"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
+msgid "Specifies when to show the notebook tabs. Use \"never\" to never show the tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only when there is more than one tab. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
+msgstr "Sònraichidh seo cuin a thèid tabaichean an leabhair-nòtaichean a shealltainn. Cleachd \"never\" ach nach tèid na tabaichean a shealltainn idir, \"always\" ach an tèid iad a shealltainn an-còmhnaidh is \"auto\" gus nach tèid na tabaichean a shealltainn ach nuair a bhios barrachd air aon dhiubh ann. Thoir an aire gun toir na luachan an aire do litrichean mòra is beaga is mar sin dèan cinnteach gun nochd iad dìreach mar a tha sinn a' toirt iomradh dhaibh an-seo."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+msgid "Status Bar is Visible"
+msgstr "Am bàr-staide ri fhaicinn"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgstr "Co-dhiù an tèid am bàr-staide a shealltainn aig bnon nan uinneagan deasachaidh no nach tèid."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+msgid "Side panel is Visible"
+msgstr "A' phanail-thaoibh ri fhaicinn"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+msgid "Whether the side panel at the left of editing windows should be visible."
+msgstr "Co-dhiù an tèid a' phanail taobh clì nan uinneagan deasachaidh a shealltainn no nach tèid."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+msgid "Maximum Recent Files"
+msgstr "An àireamh as motha de dh'fhaidhlichean o chionn ghoirid"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+msgid "Specifies the maximum number of recently opened files that will be displayed in the \"Recent Files\" submenu."
+msgstr "Sònraichidh seo an àireamh nas motha de dh'fhaidhlichean air am fosgladh o chionn ghoirid a thèid a shealltainn sa fho-chlàr-taice \"Faidhlichean o chionn ghoirid\"."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+msgid "Print Syntax Highlighting"
+msgstr "Clò-bhuail soillseachadh a' cho-chàraidh"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+msgid "Whether gedit should print syntax highlighting when printing documents."
+msgstr "Tagh an clò-bhuail gedit soillseachadh a' cho-chàraidh nuair a thèid sgrìobhainn a chlò-bhualadh."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+msgid "Print Header"
+msgstr "Clò-bhuail bann-cinn"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+msgid "Whether gedit should include a document header when printing documents."
+msgstr "Co-dhiù an tèid bann-cinn sgrìobhainne a ghabhail a-steach no nach tèid nuair a thèid sgrìobhainn a chlò-bhualadh."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+msgid "Printing Line Wrapping Mode"
+msgstr "Pasgadh na loidhne airson clò-bhualadh"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+msgid "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, \"word\" for wrapping at word boundaries, and \"char\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
+msgstr "Sònraichidh seo ciamar a thèid loidhnichean fada a phasgadh airson clò-bhualadh. Cleachd \"none\" ach nach bith pasgadh sam bith ann, \"word\" airson pasgadh eadar da fhacal is \"char\" airson pasgadh eadar dà charactar sam bith. Thoir an aire gun toir na luachan aire do litrichean mòra is beaga is mar sin dèan cinnteach gun nochd iad dìreach mar a tha sinn a' toirt iomradh dhaibh an-seo."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+msgid "Print Line Numbers"
+msgstr "Clò-bhuail àireamhan loidhne"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+msgid "If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, gedit will print line numbers every such number of lines."
+msgstr "Mas e 0 a tha san luach seo, cha tèid àireamh loidhne sam bith a chur a-steach nuair a chlò-bhuaileas tu sgrìobhainn. Mas e luach eile a tha ann, mìnichidh e dè cho tric 's a chlò-bhuaileas gedit àireamh loidhne. Mar eisimpleir, thèid àireamh a chlò-bhualadh gach treas loidhne ma chuireas tu 3 a-steach."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+msgid "Body Font for Printing"
+msgstr "Cruth-clò na bodhaige airson clò-bhualadh"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+msgid "Specifies the font to use for a document's body when printing documents."
+msgstr "Sònraichidh seo an cruth-clò a thèid a chleachdadh airson bodhaig an teacsa nuair a thèid sgrìobhainn a chlò-bhualadh."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+msgid "Header Font for Printing"
+msgstr "Cruth-clò a' bhanna-chinn airson clò-bhualadh"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+msgid "Specifies the font to use for page headers when printing a document. This will only take effect if the \"Print Header\" option is turned on."
+msgstr "Sònraichidh seo an cruth-clò a thèid a chleachdadh airson bannan-cinn na duilleige nuair a thèid sgrìobhainn a chlò-bhualadh. Cha bhith seo an sàs ach ma bhios an roghainn \"Clò-bhuail bann-cinn\" air."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+msgid "Line Number Font for Printing"
+msgstr "Cruth-clò na h-àireamh loidhne airson clò-bhualadh"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+msgid "Specifies the font to use for line numbers when printing. This will only take effect if the \"Print Line Numbers\" option is non-zero."
+msgstr "Sònraichidh seo an cruth-clò a thèid a chleachdadh airson àireamhan loidhne leis a' chlò-bhualadh. Cha bhi seo an sàs ach ma bhios an roghainn \"Clò-bhuail àireamhan loidhne\" nas motha na neoni."
+
+#. Translators: This is the sorted list of encodings used by gedit
+#. for automatic detection of the file encoding. You may want to customize it adding
+#. encodings that are common in your country, for instance the GB18030 encoding
+#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
+#. (covering English and most Western European languages) if you think people
+#. in your country will rarely use it.
+#. "CURRENT" is a magic value used by gedit and it represents the encoding
+#. for the current locale, so please don't translate the "CURRENT" term.
+#. Only recognized encodings are used.
+#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
+#. a list of supported encodings
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+msgid "Automatically Detected Encodings"
+msgstr "Còdachaidhean a thèid fhèin-mhothachadh"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+msgid "Sorted list of encodings used by gedit for automatically detecting the encoding of a file. \"CURRENT\" represents the current locale encoding. Only recognized encodings are used."
+msgstr "Seo liosta air a seòrsachadh de chòdachaidhean a chleachdas gedit airson còdachadh aig faidhle a mhothachadh gu fèin-obrachail. Riochdaichidh \"CURRENT\" còdachadh an sgeama ionadail làithrich. Cha tèid ach còdachaidhean aithnichte a chleachdadh."
+
+#. Translators: This is the list of encodings shown by default in the Character Encoding
+#. menu in open/save file selector. Only recognized encodings are displayed.
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+msgid "['ISO-8859-15']"
+msgstr "['ISO-8859-15']"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+msgid "Encodings shown in menu"
+msgstr "Còdachaidhean gan sealltainn sa chlàr-taice"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+msgid "List of encodings shown in the Character Encoding menu in open/save file selector. Only recognized encodings are used."
+msgstr "Liosta dhe na còdachaidhean a thèid a shealltainn sa chlàr-taice \"Còdachadh charactaran\" san roghnaichear faidhle airson fosgladh/sàbhaladh. Cha tèid ach còdachaidhean aithnichte a chleachdadh."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+msgid "Active plugins"
+msgstr "Plugain ghnìomhach"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+msgid "List of active plugins. It contains the \"Location\" of the active plugins. See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+msgstr "Liosta dhe na plugain ghnìomhach. Tha \"ionad\" nam plugan gnìomhach na bhroinn. Thoir sùil air an fhaidhle .gedit-plugin airson an t-\"Ionad\" aig plugain sònraichte fhaighinn."
+
+#: ../gedit/gedit-app.c:113
+msgid "Show the application's help"
+msgstr "Seall cobhair a' phrògraim"
+
+#: ../gedit/gedit-app.c:119
+msgid "Show the application's version"
+msgstr "Seall tionndadh a' phrògraim"
+
+#: ../gedit/gedit-app.c:125
+msgid "Display list of possible values for the encoding option"
+msgstr "Seall liosta dhe na luachan comasach airson na roghainn còdachaidh"
+
+#: ../gedit/gedit-app.c:133
+msgid "Set the character encoding to be used to open the files listed on the command line"
+msgstr "Suidhich an còdachadh charactaran a thèid a chleachdadh gus na faidhlichean fhosgladh 's liosta dhiubh air an loidhne-àithne"
+
+#: ../gedit/gedit-app.c:134
+msgid "ENCODING"
+msgstr "CÒDACHADH"
+
+#: ../gedit/gedit-app.c:141
+msgid "Create a new top-level window in an existing instance of gedit"
+msgstr "Cruthaich uinneag àrd-ìre ùr ann an ionstans de gedit a tha ann"
+
+#: ../gedit/gedit-app.c:149
+msgid "Create a new document in an existing instance of gedit"
+msgstr "Cruthaich sgrìobhainn ùr ann an ionstans de gedit a tha ann"
+
+#: ../gedit/gedit-app.c:157
+msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+msgstr "Suidhich meud is ionad na h-uinneige (LEUDxÀIRDE+X+Y)"
+
+#: ../gedit/gedit-app.c:158
+msgid "GEOMETRY"
+msgstr "GEOMATRAS"
+
+#: ../gedit/gedit-app.c:165
+msgid "Open files and block process until files are closed"
+msgstr "Fosgail faidhlichean is bac am pròiseas gus am bi na faidhlichean air an dùnadh"
+
+#: ../gedit/gedit-app.c:173
+msgid "Run gedit in standalone mode"
+msgstr "Ruith gedit sa mhodh fa leth"
+
+#: ../gedit/gedit-app.c:182
+msgid "[FILE...] [+LINE[:COLUMN]]"
+msgstr "[FAIDHLE...] [+LOIDHNE[:COLBH]]"
+
+#: ../gedit/gedit-app.c:281
+msgid "There was an error displaying the help."
+msgstr "Tachair mearachd a' sealltainn na cobharach."
+
+#: ../gedit/gedit-app.c:702
+msgid "- Edit text files"
+msgstr "- Deasaich faidhlichean teacsa"
+
+#: ../gedit/gedit-app.c:811
+#: ../gedit/gedit-app.c:901
+#, c-format
+msgid ""
+"%s\n"
+"Run '%s --help' to see a full list of available command line options.\n"
+msgstr ""
+"%s\n"
+"Ruith '%s --help' airson liosta shlàn de roghainnean na loidhne-àithne a shealltainn a tha ri làimh.\n"
+
+#: ../gedit/gedit-app.c:832
+#, c-format
+msgid "%s: invalid encoding."
+msgstr "%s: còdachadh mì-dhligheach."
+
+#: ../gedit/gedit-app-osx.c:260
+msgid "About gedit"
+msgstr "Mu gedit"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:147
+msgid "Question"
+msgstr "Ceist"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:318
+msgid "Close _without Saving"
+msgstr "Dùin _gun a shàbhaladh"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:366
+#, c-format
+msgid "If you don't save, changes from the last %ld second will be permanently lost."
+msgid_plural "If you don't save, changes from the last %ld seconds will be permanently lost."
+msgstr[0] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %ld diog air chall gu buan."
+msgstr[1] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %ld dhiog air chall gu buan."
+msgstr[2] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %ld diogan air chall gu buan."
+msgstr[3] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %ld diog air chall gu buan."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:375
+msgid "If you don't save, changes from the last minute will be permanently lost."
+msgstr "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn mionaid air chall gu buan."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:381
+#, c-format
+msgid "If you don't save, changes from the last minute and %ld second will be permanently lost."
+msgid_plural "If you don't save, changes from the last minute and %ld seconds will be permanently lost."
+msgstr[0] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn mionaid is %ld diog air chall gu buan."
+msgstr[1] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn mionaid is %ld dhiog air chall gu buan."
+msgstr[2] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn mionaid is %ld diogan air chall gu buan."
+msgstr[3] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn mionaid is %ld diog air chall gu buan."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:391
+#, c-format
+msgid "If you don't save, changes from the last %ld minute will be permanently lost."
+msgid_plural "If you don't save, changes from the last %ld minutes will be permanently lost."
+msgstr[0] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %ld mhionaid air chall gu buan."
+msgstr[1] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %ld mhionaid air chall gu buan."
+msgstr[2] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %ld mionaidean air chall gu buan."
+msgstr[3] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %ld mionaid air chall gu buan."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:406
+msgid "If you don't save, changes from the last hour will be permanently lost."
+msgstr "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn uair air chall gu buan."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:412
+#, c-format
+msgid "If you don't save, changes from the last hour and %d minute will be permanently lost."
+msgid_plural "If you don't save, changes from the last hour and %d minutes will be permanently lost."
+msgstr[0] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn uair is %d mhionaid air chall gu buan."
+msgstr[1] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn uair is %d mhionaid air chall gu buan."
+msgstr[2] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn uair is %d mionaidean air chall gu buan."
+msgstr[3] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn uair is %d mionaid air chall gu buan."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:427
+#, c-format
+msgid "If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural "If you don't save, changes from the last %d hours will be permanently lost."
+msgstr[0] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %d uair air chall gu buan."
+msgstr[1] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %d uair air chall gu buan."
+msgstr[2] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %d uairean air chall gu buan."
+msgstr[3] "Mur sàbhail thu, thèid a h-uile atharrachadh chaidh a dhèanamh o chionn %d uair air chall gu buan."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:475
+#, c-format
+msgid "Changes to document “%s” will be permanently lost."
+msgstr "Thèid na h-atharraichean air an sgrìobhainn \"%s\" air chall gu buan."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:480
+#, c-format
+msgid "Save changes to document “%s” before closing?"
+msgstr "A bheil thu airson na h-atharraichean air an sgrìobhainn \"%s\" a shàbhaladh mus dùin thu i?"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:495
+#: ../gedit/gedit-close-confirmation-dialog.c:719
+msgid "Saving has been disabled by the system administrator."
+msgstr "Chaidh sàbhaladh a chur à comas le rianaire an t-siostaim."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:666
+#, c-format
+msgid "Changes to %d document will be permanently lost."
+msgid_plural "Changes to %d documents will be permanently lost."
+msgstr[0] "Thèid na h-atharraichean air %d sgrìobhainn air chall gu buan."
+msgstr[1] "Thèid na h-atharraichean air %d sgrìobhainn air chall gu buan."
+msgstr[2] "Thèid na h-atharraichean air %d sgrìobhainnean air chall gu buan."
+msgstr[3] "Thèid na h-atharraichean air %d sgrìobhainn air chall gu buan."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:674
+#, c-format
+msgid "There is %d document with unsaved changes. Save changes before closing?"
+msgid_plural "There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] "Tha %d sgrìobhainn le atharraichean gun sàbhaladh ann. A bheil thu airson na h-atharraichean a shàbhaladh mus tèid a dùnadh?"
+msgstr[1] "Tha %d sgrìobhainn le atharraichean gun sàbhaladh ann. A bheil thu airson na h-atharraichean a shàbhaladh mus tèid an dùnadh?"
+msgstr[2] "Tha %d sgrìobhainnean le atharraichean gun sàbhaladh ann. A bheil thu airson na h-atharraichean a shàbhaladh mus tèid an dùnadh?"
+msgstr[3] "Tha %d sgrìobhainn le atharraichean gun sàbhaladh ann. A bheil thu airson na h-atharraichean a shàbhaladh mus tèid a dùnadh?"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:694
+msgid "Docum_ents with unsaved changes:"
+msgstr "Sgrìobhainnean l_e atharraichean gun sàbhaladh:"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:698
+msgid "S_elect the documents you want to save:"
+msgstr "T_agh na sgrìobhainnean a tha thu airson sàbhaladh:"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:723
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "Mur dèan thu sàbhaladh, thèid na h-uile atharrachadh agad air chall gu buan."
+
+#: ../gedit/gedit-commands-file.c:268
+#, c-format
+msgid "Loading file '%s'…"
+msgstr "A' luchdadh am faidhle \"%s\"…"
+
+#: ../gedit/gedit-commands-file.c:277
+#, c-format
+msgid "Loading %d file…"
+msgid_plural "Loading %d files…"
+msgstr[0] "A' luchdadh %d fhaidhle..."
+msgstr[1] "A' luchdadh %d fhaidhle..."
+msgstr[2] "A' luchdadh %d faidhlichean..."
+msgstr[3] "A' luchdadh %d faidhle..."
+
+#. Translators: "Open" is the title of the file chooser window
+#: ../gedit/gedit-commands-file.c:442
+#: ../gedit/gedit-window.c:1175
+msgid "Open"
+msgstr "Fosgail"
+
+#: ../gedit/gedit-commands-file.c:553
+#, c-format
+msgid "The file \"%s\" is read-only."
+msgstr "Tha am faidhle \"%s\" ri leughadh a-mhàin"
+
+#: ../gedit/gedit-commands-file.c:558
+msgid "Do you want to try to replace it with the one you are saving?"
+msgstr "A bheil thu airson am fear a tha thu a' sàbhaladh a chur na àite?"
+
+#: ../gedit/gedit-commands-file.c:566
+#: ../gedit/gedit-replace-dialog.ui.h:3
+msgid "_Replace"
+msgstr "Cui_r na àite"
+
+#: ../gedit/gedit-commands-file.c:608
+msgid "Save the file using compression?"
+msgstr "A bheil thu airson am faidhle a shàbhaladh le dùmhlachadh?"
+
+#: ../gedit/gedit-commands-file.c:609
+#, c-format
+msgid "The file \"%s\" was previously saved as plain text and will now be saved using compression."
+msgstr "Chaidh am faidhle \"%s\" a shàbhaladh mar theacsa lom roimhe is thèid a shàbhaladh le dùmhlachadh  a-nis."
+
+#: ../gedit/gedit-commands-file.c:611
+msgid "_Save Using Compression"
+msgstr "Sàbhail le dùmhlachadh"
+
+#: ../gedit/gedit-commands-file.c:615
+msgid "Save the file as plain text?"
+msgstr "A bheil thu airson am faidhle a shàbhaladh mar theacsa lom?"
+
+#: ../gedit/gedit-commands-file.c:616
+#, c-format
+msgid "The file \"%s\" was previously saved using compression and will now be saved as plain text."
+msgstr "Chaidh am faidhle \"%s\" a shàbhaladh le dùmhlachadh roimhe is thèid a shàbhaladh mar theacsa lom a-nis."
+
+#: ../gedit/gedit-commands-file.c:618
+msgid "_Save As Plain Text"
+msgstr "_Sàbhail mar theaca lom"
+
+#: ../gedit/gedit-commands-file.c:738
+#: ../gedit/gedit-commands-file.c:955
+#, c-format
+msgid "Saving file '%s'…"
+msgstr "A' sàbhaladh am faidhle \"%s\"…"
+
+#: ../gedit/gedit-commands-file.c:842
+msgid "Save As"
+msgstr "Sàbhail mar"
+
+#: ../gedit/gedit-commands-file.c:1168
+#, c-format
+msgid "Reverting the document '%s'…"
+msgstr "Ag aiseag na sgrìobhainn \"%s\"…"
+
+#: ../gedit/gedit-commands-file.c:1213
+#, c-format
+msgid "Revert unsaved changes to document '%s'?"
+msgstr "A bheil thu airson na h-atharraichean gun sàbhaladh aiseag dhan sgrìobhainn \"%s\"?"
+
+#: ../gedit/gedit-commands-file.c:1222
+#, c-format
+msgid "Changes made to the document in the last %ld second will be permanently lost."
+msgid_plural "Changes made to the document in the last %ld seconds will be permanently lost."
+msgstr[0] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %ld diog air chall gu buan."
+msgstr[1] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %ld dhiog air chall gu buan."
+msgstr[2] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %ld diogan air chall gu buan."
+msgstr[3] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %ld diog air chall gu buan."
+
+#: ../gedit/gedit-commands-file.c:1231
+msgid "Changes made to the document in the last minute will be permanently lost."
+msgstr "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn mionaid air chall gu buan."
+
+#: ../gedit/gedit-commands-file.c:1237
+#, c-format
+msgid "Changes made to the document in the last minute and %ld second will be permanently lost."
+msgid_plural "Changes made to the document in the last minute and %ld seconds will be permanently lost."
+msgstr[0] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn mionaid is %ld diog air chall gu buan."
+msgstr[1] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn mionaid is %ld dhiog air chall gu buan."
+msgstr[2] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn mionaid is %ld diogan air chall gu buan."
+msgstr[3] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn mionaid is %ld diog air chall gu buan."
+
+#: ../gedit/gedit-commands-file.c:1247
+#, c-format
+msgid "Changes made to the document in the last %ld minute will be permanently lost."
+msgid_plural "Changes made to the document in the last %ld minutes will be permanently lost."
+msgstr[0] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %ld mhionaid air chall gu buan."
+msgstr[1] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %ld mhionaid air chall gu buan."
+msgstr[2] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %ld mionaidean air chall gu buan."
+msgstr[3] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %ld mionaid air chall gu buan."
+
+#: ../gedit/gedit-commands-file.c:1262
+msgid "Changes made to the document in the last hour will be permanently lost."
+msgstr "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn uair air chall gu buan."
+
+#: ../gedit/gedit-commands-file.c:1268
+#, c-format
+msgid "Changes made to the document in the last hour and %d minute will be permanently lost."
+msgid_plural "Changes made to the document in the last hour and %d minutes will be permanently lost."
+msgstr[0] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn uair is %d mhionaid air chall gu buan."
+msgstr[1] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn uair is %d mhionaid air chall gu buan."
+msgstr[2] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn uair is %d mionaidean air chall gu buan."
+msgstr[3] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn uair is %d mionaid air chall gu buan."
+
+#: ../gedit/gedit-commands-file.c:1283
+#, c-format
+msgid "Changes made to the document in the last %d hour will be permanently lost."
+msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
+msgstr[0] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %d uair air chall gu buan."
+msgstr[1] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %d uair air chall gu buan."
+msgstr[2] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %d uairean air chall gu buan."
+msgstr[3] "Thèid a h-uile atharrachadh a chaidh a dhèanamh air an sgrìobhainn o chionn %d uair air chall gu buan."
+
+#: ../gedit/gedit-commands-file.c:1309
+msgid "_Revert"
+msgstr "Ai_sig"
+
+#: ../gedit/gedit-commands-help.c:89
+msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
+msgstr "‘S e deasaiche teacsa beag aotrom airson an deasga Gnome a tha' ann an gedit"
+
+#: ../gedit/gedit-commands-help.c:114
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Akerbeltz https://launchpad.net/~fios\n"
+"  GunChleoc https://launchpad.net/~gunchleoc\n"
+"  alasdair caimbeul https://launchpad.net/~alexd"
+
+#: ../gedit/gedit-commands-search.c:113
+#, c-format
+msgid "Found and replaced %d occurrence"
+msgid_plural "Found and replaced %d occurrences"
+msgstr[0] "Chaidh %d bhall a lorg is a chur na àite"
+msgstr[1] "Chaidh %d bhall a lorg is a chur na àite"
+msgstr[2] "Chaidh %d buill a lorg is a chur na àite"
+msgstr[3] "Chaidh %d ball a lorg is a chur na àite"
+
+#: ../gedit/gedit-commands-search.c:122
+msgid "Found and replaced one occurrence"
+msgstr "Chaidh aon bhall a lorg is a chur na àite"
+
+#. Translators: %s is replaced by the text
+#. entered by the user in the search box
+#: ../gedit/gedit-commands-search.c:148
+#, c-format
+msgid "\"%s\" not found"
+msgstr "Cha deach \"%s\" a lorg"
+
+#: ../gedit/gedit-document.c:1266
+#: ../gedit/gedit-document.c:1292
+#, c-format
+msgid "Unsaved Document %d"
+msgstr "Sgrìobhainn gun sàbhaladh %d"
+
+#: ../gedit/gedit-documents-panel.c:119
+#: ../gedit/gedit-documents-panel.c:133
+#: ../gedit/gedit-window.c:2080
+#: ../gedit/gedit-window.c:2087
+msgid "Read-Only"
+msgstr "Ri leughadh a-mhàin"
+
+#: ../gedit/gedit-documents-panel.c:1140
+#: ../gedit/gedit-window.c:3459
+msgid "Documents"
+msgstr "Sgrìobhainnean"
+
+#: ../gedit/gedit-encodings.c:142
+#: ../gedit/gedit-encodings.c:184
+#: ../gedit/gedit-encodings.c:186
+#: ../gedit/gedit-encodings.c:188
+#: ../gedit/gedit-encodings.c:190
+#: ../gedit/gedit-encodings.c:192
+#: ../gedit/gedit-encodings.c:194
+#: ../gedit/gedit-encodings.c:196
+msgid "Unicode"
+msgstr "Unicode"
+
+#: ../gedit/gedit-encodings.c:155
+#: ../gedit/gedit-encodings.c:179
+#: ../gedit/gedit-encodings.c:229
+#: ../gedit/gedit-encodings.c:272
+msgid "Western"
+msgstr "Siarach"
+
+#: ../gedit/gedit-encodings.c:157
+#: ../gedit/gedit-encodings.c:231
+#: ../gedit/gedit-encodings.c:268
+msgid "Central European"
+msgstr "Meadhan Eòrpach"
+
+#: ../gedit/gedit-encodings.c:159
+msgid "South European"
+msgstr "Eòrpach a Deas"
+
+#: ../gedit/gedit-encodings.c:161
+#: ../gedit/gedit-encodings.c:175
+#: ../gedit/gedit-encodings.c:282
+msgid "Baltic"
+msgstr "Baltach"
+
+#: ../gedit/gedit-encodings.c:163
+#: ../gedit/gedit-encodings.c:233
+#: ../gedit/gedit-encodings.c:246
+#: ../gedit/gedit-encodings.c:250
+#: ../gedit/gedit-encodings.c:252
+#: ../gedit/gedit-encodings.c:270
+msgid "Cyrillic"
+msgstr "Cirileach"
+
+#: ../gedit/gedit-encodings.c:165
+#: ../gedit/gedit-encodings.c:239
+#: ../gedit/gedit-encodings.c:280
+msgid "Arabic"
+msgstr "Arabais"
+
+#: ../gedit/gedit-encodings.c:167
+#: ../gedit/gedit-encodings.c:274
+msgid "Greek"
+msgstr "Greugais"
+
+#: ../gedit/gedit-encodings.c:169
+msgid "Hebrew Visual"
+msgstr "Eabhra lèirsinneach"
+
+#: ../gedit/gedit-encodings.c:171
+#: ../gedit/gedit-encodings.c:235
+#: ../gedit/gedit-encodings.c:276
+msgid "Turkish"
+msgstr "Turcais"
+
+#: ../gedit/gedit-encodings.c:173
+msgid "Nordic"
+msgstr "Lochlannach"
+
+#: ../gedit/gedit-encodings.c:177
+msgid "Celtic"
+msgstr "Ceilteach"
+
+#: ../gedit/gedit-encodings.c:181
+msgid "Romanian"
+msgstr "Romàinis"
+
+#: ../gedit/gedit-encodings.c:199
+msgid "Armenian"
+msgstr "Airmeinis"
+
+#: ../gedit/gedit-encodings.c:201
+#: ../gedit/gedit-encodings.c:203
+#: ../gedit/gedit-encodings.c:217
+msgid "Chinese Traditional"
+msgstr "Sìnis thradaiseanta"
+
+#: ../gedit/gedit-encodings.c:205
+msgid "Cyrillic/Russian"
+msgstr "Cirilis/Ruisis"
+
+#: ../gedit/gedit-encodings.c:208
+#: ../gedit/gedit-encodings.c:210
+#: ../gedit/gedit-encodings.c:212
+#: ../gedit/gedit-encodings.c:242
+#: ../gedit/gedit-encodings.c:257
+msgid "Japanese"
+msgstr "Seapanais"
+
+#: ../gedit/gedit-encodings.c:215
+#: ../gedit/gedit-encodings.c:244
+#: ../gedit/gedit-encodings.c:248
+#: ../gedit/gedit-encodings.c:263
+msgid "Korean"
+msgstr "Coirèanais"
+
+#: ../gedit/gedit-encodings.c:220
+#: ../gedit/gedit-encodings.c:222
+#: ../gedit/gedit-encodings.c:224
+msgid "Chinese Simplified"
+msgstr "Sìnis shimplichte"
+
+#: ../gedit/gedit-encodings.c:226
+msgid "Georgian"
+msgstr "Cairtbheilis"
+
+#: ../gedit/gedit-encodings.c:237
+#: ../gedit/gedit-encodings.c:278
+msgid "Hebrew"
+msgstr "Eabhra"
+
+#: ../gedit/gedit-encodings.c:254
+msgid "Cyrillic/Ukrainian"
+msgstr "Cirilis/Ucràinis"
+
+#: ../gedit/gedit-encodings.c:259
+#: ../gedit/gedit-encodings.c:265
+#: ../gedit/gedit-encodings.c:284
+msgid "Vietnamese"
+msgstr "Bhiet-Namais"
+
+#: ../gedit/gedit-encodings.c:261
+msgid "Thai"
+msgstr "Tàidh"
+
+#: ../gedit/gedit-encodings.c:435
+msgid "Unknown"
+msgstr "Chan eil fhios"
+
+#: ../gedit/gedit-encodings-combo-box.c:293
+msgid "Automatically Detected"
+msgstr "Ga mhothachadh gu fèin-obrachail"
+
+#: ../gedit/gedit-encodings-combo-box.c:312
+#: ../gedit/gedit-encodings-combo-box.c:328
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "An sgeama ionadail làithreach (%s)"
+
+#: ../gedit/gedit-encodings-combo-box.c:380
+msgid "Add or Remove..."
+msgstr "Cuir ris no thoir air falbh..."
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-encodings-dialog.ui.h:1
+msgid "Character encodings"
+msgstr "Còdachadh charactaran"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:2
+msgid "A_vailable encodings:"
+msgstr "Còdachaidhean ri _làimh:"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:3
+msgid "_Description"
+msgstr "_Tuairisgeul"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:4
+msgid "_Encoding"
+msgstr "_Còdachadh"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:5
+msgid "E_ncodings shown in menu:"
+msgstr "Còdachaidhea_n gan shealltainn sa chlàr-taice:"
+
+#: ../gedit/gedit-file-chooser-dialog.c:50
+#: ../gedit/gedit-preferences-dialog.c:874
+msgid "All Files"
+msgstr "Na h-uile faidhle"
+
+#: ../gedit/gedit-file-chooser-dialog.c:51
+msgid "All Text Files"
+msgstr "Na h-uile faidhle teacsa"
+
+#: ../gedit/gedit-file-chooser-dialog.c:91
+msgid "C_haracter Encoding:"
+msgstr "Còdachadh c_haractaran:"
+
+#: ../gedit/gedit-file-chooser-dialog.c:150
+msgid "L_ine Ending:"
+msgstr "Crìochnachadh nan lo_idhne:"
+
+#: ../gedit/gedit-file-chooser-dialog.c:169
+msgid "Unix/Linux"
+msgstr "Unix/Linux"
+
+#: ../gedit/gedit-file-chooser-dialog.c:175
+msgid "Mac OS Classic"
+msgstr "Mac OS Classic"
+
+#: ../gedit/gedit-file-chooser-dialog.c:181
+msgid "Windows"
+msgstr "Windows"
+
+#: ../gedit/gedit-highlight-mode-dialog.c:295
+#: ../gedit/gedit-window.c:1791
+#: ../gedit/gedit-window.c:2179
+#: ../plugins/externaltools/tools/manager.py:146
+#: ../plugins/externaltools/tools/manager.py:463
+#: ../plugins/externaltools/tools/manager.py:579
+#: ../plugins/externaltools/tools/manager.py:915
+msgid "Plain Text"
+msgstr "Teacsa lom"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
+msgid "Highlight Mode"
+msgstr "Modh soillseachaidh"
+
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:2
+msgid "Search highlight mode..."
+msgstr "Modh soillseachaidh an luirg..."
+
+#. Add a cancel button
+#: ../gedit/gedit-io-error-info-bar.c:148
+#: ../gedit/gedit-io-error-info-bar.c:491
+#: ../gedit/gedit-io-error-info-bar.c:1171
+#: ../plugins/filebrowser/gedit-file-browser-utils.c:173
+msgid "_Cancel"
+msgstr "_Sguir dheth"
+
+#: ../gedit/gedit-io-error-info-bar.c:161
+#: ../gedit/gedit-io-error-info-bar.c:471
+msgid "_Retry"
+msgstr "_Feuch ris a-rithist"
+
+#: ../gedit/gedit-io-error-info-bar.c:181
+#, c-format
+msgid "Could not find the file “%s”."
+msgstr "Cha deach am faidhle \"%s\" a lorg."
+
+#: ../gedit/gedit-io-error-info-bar.c:183
+#: ../gedit/gedit-io-error-info-bar.c:223
+#: ../gedit/gedit-io-error-info-bar.c:230
+msgid "Please check that you typed the location correctly and try again."
+msgstr "Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir is feuch ris a-rithist."
+
+#. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
+#: ../gedit/gedit-io-error-info-bar.c:202
+#, c-format
+msgid "Unable to handle “%s:” locations."
+msgstr "Chan urrainn dhuinn ionadan \"%s:\" a làimhseachadh."
+
+#: ../gedit/gedit-io-error-info-bar.c:208
+msgid "Unable to handle this location."
+msgstr "Chan urrainn dhuinn an t-ionad seo a làimhseachadh."
+
+#: ../gedit/gedit-io-error-info-bar.c:217
+msgid "The location of the file cannot be accessed."
+msgstr "Cha ghabh ionad an fhaidhle inntrigeadh."
+
+#: ../gedit/gedit-io-error-info-bar.c:221
+#, c-format
+msgid "“%s” is a directory."
+msgstr "'S e pasgan a th' ann an \"%s\"."
+
+#: ../gedit/gedit-io-error-info-bar.c:228
+#, c-format
+msgid "“%s” is not a valid location."
+msgstr "Chan e ionad dhligheach a th' ann an \"%s\"."
+
+#: ../gedit/gedit-io-error-info-bar.c:264
+#, c-format
+msgid "Host “%s” could not be found. Please check that your proxy settings are correct and try again."
+msgstr "Cha deach an òstair \"%s\" a lorg. Dèan cinnteach gu bheil roghainnean a' phrogsaidh agad mar bu chòir is feuch ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:279
+#, c-format
+msgid "Hostname was invalid. Please check that you typed the location correctly and try again."
+msgstr "Bha ainm an òstair mì-dhligheach. Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir is feuch ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:287
+#, c-format
+msgid "“%s” is not a regular file."
+msgstr "Chan e faidhle àbhaisteach th' ann an \"%s\"."
+
+#: ../gedit/gedit-io-error-info-bar.c:292
+msgid "Connection timed out. Please try again."
+msgstr "Dh'fhalbh an ùine air a' cheangal. Am feuch thu ris a-rithist?"
+
+#: ../gedit/gedit-io-error-info-bar.c:315
+msgid "The file is too big."
+msgstr "Tha am faidhle ro mhòr."
+
+#: ../gedit/gedit-io-error-info-bar.c:356
+#, c-format
+msgid "Unexpected error: %s"
+msgstr "Mearachd air nach robh dùil: %s"
+
+#: ../gedit/gedit-io-error-info-bar.c:392
+msgid "Cannot find the requested file. Perhaps it has recently been deleted."
+msgstr "Chan urrainn dhuinn am faidhle a lorg. 'S dòcha gun deach a sguabadh às o chionn ghoirid."
+
+#: ../gedit/gedit-io-error-info-bar.c:402
+#, c-format
+msgid "Could not revert the file “%s”."
+msgstr "Cha b' urrainn dhuinn am faidhle \"%s\" aiseag."
+
+#: ../gedit/gedit-io-error-info-bar.c:429
+msgid "Ch_aracter Encoding:"
+msgstr "Còdachadh cha_ractaran:"
+
+#. Translators: the access key chosen for this string should be
+#. different from other main menu access keys (Open, Edit, View...)
+#: ../gedit/gedit-io-error-info-bar.c:479
+#: ../gedit/gedit-io-error-info-bar.c:751
+msgid "Edit Any_way"
+msgstr "Deasaich co-_dhiù"
+
+#: ../gedit/gedit-io-error-info-bar.c:577
+msgid "The number of followed links is limited and the actual file could not be found within this limit."
+msgstr "Tha an àireamh de cheanglaichean a thèid a leantainn cuingichte is cha deach leinn am faidhle a lorg taobh a-staigh a' chuingeachaidh seo."
+
+#: ../gedit/gedit-io-error-info-bar.c:581
+msgid "You do not have the permissions necessary to open the file."
+msgstr "Tha cead a dhìth ort gus am faidhle seo fhosgladh."
+
+#: ../gedit/gedit-io-error-info-bar.c:587
+msgid "Unable to detect the character encoding."
+msgstr "Cha deach leinn an còdachadh charactaran aithneachadh."
+
+#: ../gedit/gedit-io-error-info-bar.c:588
+#: ../gedit/gedit-io-error-info-bar.c:610
+msgid "Please check that you are not trying to open a binary file."
+msgstr "Dèan cinnteach nach eil thu a' feuchainn ri faidhle bìnearaidh fhosgladh."
+
+#: ../gedit/gedit-io-error-info-bar.c:589
+msgid "Select a character encoding from the menu and try again."
+msgstr "Tagh còdachadh charactaran on chlàr-taice is feuch ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:595
+#, c-format
+msgid "There was a problem opening the file “%s”."
+msgstr "Bha trioblaid ann a' fosgladh an fhaidhle \"%s\"."
+
+#: ../gedit/gedit-io-error-info-bar.c:597
+msgid "The file you opened has some invalid characters. If you continue editing this file you could corrupt this document."
+msgstr "Tha caractaran mì-dhligheach am broinn an fhaidhle a dh'fhosgail thu. Ma leanas tu air deasachadh an fhaidhle seo, dh'fhaoidte gun coirb thu an sgrìobhainn seo."
+
+#: ../gedit/gedit-io-error-info-bar.c:600
+msgid "You can also choose another character encoding and try again."
+msgstr "'S urrainn dhut còdachadh charactaran eile a thaghadh is feuchainn ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:607
+#, c-format
+msgid "Could not open the file “%s” using the “%s” character encoding."
+msgstr "Cha b' urrainn dhuinn am faidhle \"%s\" fhosgladh leis a' chòdachadh charactaran \"%s\"."
+
+#: ../gedit/gedit-io-error-info-bar.c:611
+#: ../gedit/gedit-io-error-info-bar.c:685
+msgid "Select a different character encoding from the menu and try again."
+msgstr "Tagh còdachadh charactaran eile on chlàr-taice is feuch ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:621
+#, c-format
+msgid "Could not open the file “%s”."
+msgstr "Cha b' urrainn dhuinn am faidhle \"%s\" fhosgladh."
+
+#: ../gedit/gedit-io-error-info-bar.c:680
+#, c-format
+msgid "Could not save the file “%s” using the “%s” character encoding."
+msgstr "Cha b' urrainn dhuinn am faidhle \"%s\" a shàbhaladh leis a' chòdachadh charactaran \"%s\"."
+
+#: ../gedit/gedit-io-error-info-bar.c:683
+msgid "The document contains one or more characters that cannot be encoded using the specified character encoding."
+msgstr "Tha caractar no dhà am broinn na sgrìobhainn seo nach gabh còdachadh leis a' chòdachadh charactaran a thagh thu."
+
+#. Translators: the access key chosen for this string should be
+#. different from other main menu access keys (Open, Edit, View...)
+#: ../gedit/gedit-io-error-info-bar.c:756
+msgid "D_on't Edit"
+msgstr "N_a deasaich"
+
+#: ../gedit/gedit-io-error-info-bar.c:766
+#, c-format
+msgid "This file “%s” is already open in another window."
+msgstr "Tha am faidhle \"%s\" seo fosgailte ann an uinneag eile mar-thà."
+
+#: ../gedit/gedit-io-error-info-bar.c:780
+msgid "Do you want to edit it anyway?"
+msgstr "A bheil thu airson a dheasachadh co-dhiù?"
+
+#: ../gedit/gedit-io-error-info-bar.c:836
+#: ../gedit/gedit-io-error-info-bar.c:928
+#: ../gedit/gedit-io-error-info-bar.c:1219
+msgid "S_ave Anyway"
+msgstr "S_àbhail co-dhiù"
+
+#: ../gedit/gedit-io-error-info-bar.c:839
+#: ../gedit/gedit-io-error-info-bar.c:931
+#: ../gedit/gedit-io-error-info-bar.c:1222
+msgid "D_on't Save"
+msgstr "N_a sàbhail"
+
+#. FIXME: review this message, it's not clear since for the user the "modification"
+#. * could be interpreted as the changes he made in the document. beside "reading" is
+#. * not accurate (since last load/save)
+#.
+#: ../gedit/gedit-io-error-info-bar.c:853
+#, c-format
+msgid "The file “%s” has been modified since reading it."
+msgstr "Chaidh am faidhle \"%s\" atharrachadh on deach a leughadh."
+
+#: ../gedit/gedit-io-error-info-bar.c:868
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
+msgstr "Ma shàbhaileas tu e, dh'fhaoidte gun tèid a h-uile atharrachadh taobh a-muigh air chall. A bheil thu airson a shàbhaladh co-dhiù?"
+
+#: ../gedit/gedit-io-error-info-bar.c:950
+#, c-format
+msgid "Could not create a backup file while saving “%s”"
+msgstr "Cha b' urrainn dhuinn faidhle lethbhric-ghlèidhidh a chruthachadh fad 's a bha sinn a' sàbhaladh \"%s\""
+
+#: ../gedit/gedit-io-error-info-bar.c:955
+#, c-format
+msgid "Could not create a temporary backup file while saving “%s”"
+msgstr "Cha b' urrainn dhuinn faidhle lethbhric-ghlèidhidh sealach a chruthachadh fad 's a bha sinn a' sàbhaladh \"%s\""
+
+#: ../gedit/gedit-io-error-info-bar.c:972
+msgid "Could not back up the old copy of the file before saving the new one. You can ignore this warning and save the file anyway, but if an error occurs while saving, you could lose the old copy of the file. Save anyway?"
+msgstr "Cha b' urrainn dhuinn lethbhreac-glèidhidh dhen t-seann lethbhreac dhen fhaidhle a dhèanamh mus deach am faidhle ùr a shàbhaladh. Faodaidh tu an rabhadh seo a leigeil seachad is am faidhle a shàbhaladh co-dhiù, ach ma thachras mearachd le sàbhaladh an fhaidhle, dh'fhaoidte gun caill thu an t-seann lethbhreac dhen fhaidhle. A bheil thu airson a shàbhaladh co-dhiù?"
+
+#. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
+#: ../gedit/gedit-io-error-info-bar.c:1032
+#, c-format
+msgid "Cannot handle “%s:” locations in write mode. Please check that you typed the location correctly and try again."
+msgstr "Chan urrainn dhuinn ionadan \"%s\" a làimhseachadh sa mhodh sgrìobhaidh. Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir is feuch ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:1040
+msgid "Cannot handle this location in write mode. Please check that you typed the location correctly and try again."
+msgstr "Chan urrainn dhuinn an t-ionad seo a làimhseachadh sa mhodh sgrìobhaidh. Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir is feuch ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:1049
+#, c-format
+msgid "“%s” is not a valid location. Please check that you typed the location correctly and try again."
+msgstr "Chan e ionad dligheach a th' ann an \"%s\". Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir is feuch ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:1056
+msgid "You do not have the permissions necessary to save the file. Please check that you typed the location correctly and try again."
+msgstr "Cha cead a dhìth ort gus am faidhle a shàbhaladh. Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir is feuch ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:1062
+msgid "There is not enough disk space to save the file. Please free some disk space and try again."
+msgstr "Chan eil rum gu leòr air an diosga gus am faidhle a shàbhaladh. Saoraich rum air an diosga is feuch ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:1067
+msgid "You are trying to save the file on a read-only disk. Please check that you typed the location correctly and try again."
+msgstr "Tha thu a' feuchainn ris an fhaidhle a shàbhaladh air diosga a tha ri leughadh a-mhàin. Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir is feuch ris a-rithist."
+
+#: ../gedit/gedit-io-error-info-bar.c:1073
+msgid "A file with the same name already exists. Please use a different name."
+msgstr "Tha faidhle air a bheil an t-ainm seo ann mar-thà. Feuch an cleachd thu ainm eile."
+
+#: ../gedit/gedit-io-error-info-bar.c:1078
+msgid "The disk where you are trying to save the file has a limitation on length of the file names. Please use a shorter name."
+msgstr "Tha cuingeachadh a thaobh faid nan ainmean faidhle air an diosga far a bheil thu a' feuchainn ris an fhaidhle a shàbhaladh. Feuch an cleachd thu ainm nas giorra."
+
+#: ../gedit/gedit-io-error-info-bar.c:1085
+msgid "The disk where you are trying to save the file has a limitation on file sizes. Please try saving a smaller file or saving it to a disk that does not have this limitation."
+msgstr "Tha cuingeachadh a thaobh meud nam faidhlichean air an diosga far a bheil thu a' feuchainn ris an fhaidhle a shàbhaladh. Feuch an sàbhail thu faidhle nas lugha no an sàbhail thu gu diosga air nach eil an cuingeachadh seo."
+
+#: ../gedit/gedit-io-error-info-bar.c:1101
+#, c-format
+msgid "Could not save the file “%s”."
+msgstr "Cha b' urrainn dhuinn am faidhle \"%s\" a shàbhaladh."
+
+#. FIXME: review this message, it's not clear since for the user the "modification"
+#. * could be interpreted as the changes he made in the document. beside "reading" is
+#. * not accurate (since last load/save)
+#.
+#: ../gedit/gedit-io-error-info-bar.c:1145
+#, c-format
+msgid "The file “%s” changed on disk."
+msgstr "Tha am faidhle \"%s\" air atharrachadh air an diosga."
+
+#: ../gedit/gedit-io-error-info-bar.c:1156
+msgid "Drop Changes and _Reload"
+msgstr "Leig seachad na h-atharraichean is _ath-luchdaich"
+
+#: ../gedit/gedit-io-error-info-bar.c:1166
+msgid "_Reload"
+msgstr "_Ath-luchdaich"
+
+#: ../gedit/gedit-io-error-info-bar.c:1232
+#, c-format
+msgid "Some invalid chars have been detected while saving “%s”"
+msgstr "Mhothaich sinn caractaran mì-dhligheach le sàbhaladh \"%s\""
+
+#: ../gedit/gedit-io-error-info-bar.c:1248
+msgid "If you continue saving this file you can corrupt the document.  Save anyway?"
+msgstr "Ma leanas tu air adhart le sàbhaladh an fhaidhle seo, dh'fhaoidte gun coirb sin an sgrìobhainn. A bheil thu airson a shàbhaladh co-dhiù?"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-menu.ui.h:1
+msgid "_New Window"
+msgstr "Uinneag ù_r"
+
+#: ../gedit/gedit-menu.ui.h:2
+msgid "_Preferences"
+msgstr "_Roghainnean"
+
+#: ../gedit/gedit-menu.ui.h:3
+#: ../gedit/gedit-ui.h:49
+msgid "_Help"
+msgstr "_Cobhair"
+
+#: ../gedit/gedit-menu.ui.h:4
+msgid "_About"
+msgstr "_Mu dhèidhinn"
+
+#: ../gedit/gedit-menu.ui.h:5
+msgid "_Quit"
+msgstr "_Fàg an-seo"
+
+#. Keep in sync with the respective GtkActions
+#: ../gedit/gedit-notebook-popup-menu.c:167
+#: ../gedit/gedit-ui.h:142
+msgid "_Move to New Window"
+msgstr "_Gluais gu uinneag ùr"
+
+#: ../gedit/gedit-notebook-popup-menu.c:178
+msgid "_Save"
+msgstr "_Sàbhail"
+
+#: ../gedit/gedit-notebook-popup-menu.c:185
+#: ../gedit/gedit-ui.h:78
+msgid "Save _As..."
+msgstr "Sàbhail m_ar..."
+
+#: ../gedit/gedit-notebook-popup-menu.c:196
+#: ../gedit/gedit-ui.h:84
+msgid "_Print..."
+msgstr "Clò-_bhuail..."
+
+#: ../gedit/gedit-notebook-popup-menu.c:207
+msgid "_Close"
+msgstr "_Dùin"
+
+#: ../gedit/gedit-open-tool-button.c:122
+#: ../gedit/gedit-ui.h:55
+msgid "Open a file"
+msgstr "Fosgail faidhle"
+
+#: ../gedit/gedit-open-tool-button.c:124
+msgid "Open a recently used file"
+msgstr "Fosgail faidhle o chionn ghoirid"
+
+#: ../gedit/gedit-panel.c:407
+#: ../gedit/gedit-panel.c:588
+msgid "Empty"
+msgstr "Falamh"
+
+#: ../gedit/gedit-panel.c:473
+msgid "Hide panel"
+msgstr "Falaich a' phanail"
+
+#: ../gedit/gedit-preferences-dialog.c:396
+msgid "Click on this button to select the font to be used by the editor"
+msgstr "Briog air a' phutan seo gus an cruth-clò a chleachdas an deasaiche a thaghadh"
+
+#: ../gedit/gedit-preferences-dialog.c:409
+#, c-format
+msgid "_Use the system fixed width font (%s)"
+msgstr "Cleachd cr_uth-clò bunaiteach an t-siostaim le leud socraichte (%s)"
+
+#: ../gedit/gedit-preferences-dialog.c:641
+#, c-format
+msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+msgstr "Cha b' urrainn dhuinn am pasgan \"%s\" a chruthachadh: dh'fhàillig le g_mkdir_with_parents(): %s"
+
+#: ../gedit/gedit-preferences-dialog.c:825
+msgid "The selected color scheme cannot be installed."
+msgstr "Cha ghabh an sgeama dhathan a thagh thu a stàladh."
+
+#: ../gedit/gedit-preferences-dialog.c:852
+msgid "Add Scheme"
+msgstr "Cuir sgeama ris"
+
+#: ../gedit/gedit-preferences-dialog.c:859
+msgid "A_dd Scheme"
+msgstr "C_uir sgeama ris"
+
+#: ../gedit/gedit-preferences-dialog.c:867
+msgid "Color Scheme Files"
+msgstr "Faidhlichean sgeama dhathan"
+
+#: ../gedit/gedit-preferences-dialog.c:919
+#, c-format
+msgid "Could not remove color scheme \"%s\"."
+msgstr "Cha b' urrainn dhuinn an sgeama dhathan \"%s\" a sguabadh às."
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-preferences-dialog.ui.h:1
+msgid "gedit Preferences"
+msgstr "Roghainnean gedit"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:2
+#: ../gedit/gedit-view.c:466
+msgid "_Display line numbers"
+msgstr "_Seall àireamhan loidhne"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:3
+msgid "Display right _margin at column:"
+msgstr "Seall am _marghan deas aig colbh:"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:4
+#: ../gedit/gedit-print-preferences.ui.h:9
+msgid "Text Wrapping"
+msgstr "Pasgadh-teacsa"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:5
+#: ../gedit/gedit-print-preferences.ui.h:10
+msgid "Enable text _wrapping"
+msgstr "Cuir _pasgadh-teacsa an comas"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:6
+#: ../gedit/gedit-print-preferences.ui.h:11
+msgid "Do not _split words over two lines"
+msgstr "Na _sgar faclan thairis air dà loidhne"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:7
+msgid "Highlighting"
+msgstr "Soillseachadh"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:8
+msgid "Highlight current _line"
+msgstr "Soillsich an _loidhne làithreach"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:9
+msgid "Highlight matching _brackets"
+msgstr "Soillsich cama_gan a cho-fhreagras"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:10
+msgid "View"
+msgstr "Sealladh"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:11
+msgid "Tab Stops"
+msgstr "Taba-stadan"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:12
+msgid "_Tab width:"
+msgstr "Leud nan _tabaichean:"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:13
+msgid "Insert _spaces instead of tabs"
+msgstr "Cuir a-steach _spàsan an àite thabaichean"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:14
+msgid "_Enable automatic indentation"
+msgstr "Cuir _eagachadh fèin-obrachail an comas"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:15
+msgid "File Saving"
+msgstr "Sàbhaladh nam faidhle"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:16
+msgid "Create a _backup copy of files before saving"
+msgstr "Cruthaich  lethbhreac-_glèidhidh dhe dh'fhaidhlichean mus tèid an sàbhaladh"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:17
+msgid "_Autosave files every"
+msgstr "Sàbhail faidhlichean gu fèin-obrachail gach"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:18
+msgid "_minutes"
+msgstr "_mionaid(ean)"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:19
+msgid "Editor"
+msgstr "Deasaiche"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:20
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+msgid "Font"
+msgstr "Cruth-clò"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:21
+msgid "Editor _font: "
+msgstr "_Cruth-clò an deasaiche: "
+
+#: ../gedit/gedit-preferences-dialog.ui.h:22
+msgid "Pick the editor font"
+msgstr "Tagh cruth-clò an deasaiche"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:23
+msgid "Color Scheme"
+msgstr "Sgeama dhathan"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:24
+msgid "column"
+msgstr "colbh"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:25
+msgid "Install scheme"
+msgstr "Stàlaich sgeama"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:26
+msgid "Install Scheme"
+msgstr "Stàlaich Sgeama"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:27
+msgid "Uninstall scheme"
+msgstr "Dì-stàlaich sgeama"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:28
+msgid "Uninstall Scheme"
+msgstr "Dì-stàlaich Sgeama"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:29
+msgid "Font & Colors"
+msgstr "Cruth-clò ┐ dathan"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:30
+msgid "Plugins"
+msgstr "Plugain"
+
+#: ../gedit/gedit-print-job.c:565
+#, c-format
+msgid "File: %s"
+msgstr "Faidhle: %s"
+
+#: ../gedit/gedit-print-job.c:574
+msgid "Page %N of %Q"
+msgstr "Duilleag %N de %Q"
+
+#: ../gedit/gedit-print-job.c:836
+msgid "Preparing..."
+msgstr "'Ga ullachadh..."
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-print-preferences.ui.h:1
+msgid "Syntax Highlighting"
+msgstr "Soillseachadh a' cho-chàraidh"
+
+#: ../gedit/gedit-print-preferences.ui.h:2
+msgid "Print synta_x highlighting"
+msgstr "Clò-bhuail _soillseachadh a' cho-chàraidh"
+
+#: ../gedit/gedit-print-preferences.ui.h:3
+msgid "Line Numbers"
+msgstr "Àireamhan loidhne"
+
+#: ../gedit/gedit-print-preferences.ui.h:4
+msgid "Print line nu_mbers"
+msgstr "Clò-bhuail àirea_mhan loidhne"
+
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#: ../gedit/gedit-print-preferences.ui.h:6
+msgid "_Number every"
+msgstr "Àireamh _gach"
+
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#: ../gedit/gedit-print-preferences.ui.h:8
+msgid "lines"
+msgstr "loidhne"
+
+#: ../gedit/gedit-print-preferences.ui.h:12
+msgid "Page header"
+msgstr "Bann-cinn na duilleige"
+
+#: ../gedit/gedit-print-preferences.ui.h:13
+msgid "Print page _headers"
+msgstr "Clò-b_huail bannan-cinn na duilleige"
+
+#: ../gedit/gedit-print-preferences.ui.h:14
+msgid "Fonts"
+msgstr "Cruthan-clò"
+
+#: ../gedit/gedit-print-preferences.ui.h:15
+msgid "_Body:"
+msgstr "_Bodhaig:"
+
+#: ../gedit/gedit-print-preferences.ui.h:16
+msgid "_Line numbers:"
+msgstr "Àireamhan _loidhne:"
+
+#: ../gedit/gedit-print-preferences.ui.h:17
+msgid "He_aders and footers:"
+msgstr "B_annan-cinn is bannan-coise:"
+
+#: ../gedit/gedit-print-preferences.ui.h:18
+msgid "_Restore Default Fonts"
+msgstr "Aisig na c_ruthan-clò bunaiteach"
+
+#: ../gedit/gedit-print-preview.c:614
+#, c-format
+msgid "Page %d of %d"
+msgstr "Duilleag %d à %d"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-print-preview.ui.h:1
+msgid "Show the previous page"
+msgstr "Seall an duilleag roimhpe"
+
+#: ../gedit/gedit-print-preview.ui.h:2
+msgid "P_revious Page"
+msgstr "An duilleag _roimhpe"
+
+#: ../gedit/gedit-print-preview.ui.h:3
+msgid "Show the next page"
+msgstr "Seall an ath dhuilleag"
+
+#: ../gedit/gedit-print-preview.ui.h:4
+msgid "_Next Page"
+msgstr "A_n ath dhuilleag"
+
+#: ../gedit/gedit-print-preview.ui.h:5
+msgid "Current page (Alt+P)"
+msgstr "An duilleag làithreach (Alt+P)"
+
+#. the "of" from "1 of 19" in print preview
+#: ../gedit/gedit-print-preview.ui.h:7
+msgid "of"
+msgstr "à"
+
+#: ../gedit/gedit-print-preview.ui.h:8
+msgid "Page total"
+msgstr "Duilleagan gu lèir"
+
+#: ../gedit/gedit-print-preview.ui.h:9
+msgid "The total number of pages in the document"
+msgstr "Àireamh iomlan nan duillegan san sgrìobhainn"
+
+#: ../gedit/gedit-print-preview.ui.h:10
+msgid "Show multiple pages"
+msgstr "Seall iomadh duilleag"
+
+#: ../gedit/gedit-print-preview.ui.h:11
+msgid "Zoom 1:1"
+msgstr "Sùm 1:1"
+
+#: ../gedit/gedit-print-preview.ui.h:12
+msgid "Zoom to fit the whole page"
+msgstr "Sùm ach am freagair an duilleag shlàn"
+
+#: ../gedit/gedit-print-preview.ui.h:13
+msgid "Zoom the page in"
+msgstr "Sùm an duilleag a-steach"
+
+#: ../gedit/gedit-print-preview.ui.h:14
+msgid "Zoom the page out"
+msgstr "Sùm an duilleag a-mach"
+
+#: ../gedit/gedit-print-preview.ui.h:15
+msgid "Close print preview"
+msgstr "Dùin ro-shealladh a' chlò-bhualaidh"
+
+#: ../gedit/gedit-print-preview.ui.h:16
+msgid "_Close Preview"
+msgstr "_Dùin an ro-shealladh"
+
+#: ../gedit/gedit-print-preview.ui.h:17
+msgid "Page Preview"
+msgstr "Ro-shealladh na duilleige"
+
+#: ../gedit/gedit-print-preview.ui.h:18
+msgid "The preview of a page in the document to be printed"
+msgstr "Ro-shealladh na duilleige san sgrìobhainn ri clò-bhualadh"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-replace-dialog.ui.h:1
+#: ../gedit/gedit-window.c:1236
+msgid "Replace"
+msgstr "Cuir 'na àite"
+
+#: ../gedit/gedit-replace-dialog.ui.h:2
+msgid "Replace _All"
+msgstr "Cuir an àite n_a h-uile"
+
+#: ../gedit/gedit-replace-dialog.ui.h:4
+msgid "_Search for: "
+msgstr "Lorg air_son: "
+
+#: ../gedit/gedit-replace-dialog.ui.h:5
+msgid "Replace _with: "
+msgstr "Cuir na _leanas na àite "
+
+#: ../gedit/gedit-replace-dialog.ui.h:6
+msgid "_Match case"
+msgstr "Aire do litrichean _mòra 's beaga"
+
+#: ../gedit/gedit-replace-dialog.ui.h:7
+msgid "Match _entire word only"
+msgstr "Faclan s_làna a-mhàin"
+
+#: ../gedit/gedit-replace-dialog.ui.h:8
+msgid "Match as _regular expression"
+msgstr "Maidsich mar eas-preisean _riaghailteach"
+
+#: ../gedit/gedit-replace-dialog.ui.h:9
+msgid "Search _backwards"
+msgstr "Lorg an comhair a chùil"
+
+#: ../gedit/gedit-replace-dialog.ui.h:10
+msgid "_Wrap around"
+msgstr "_Paisg timcheall"
+
+#. Use spaces to leave padding proportional to the font size
+#: ../gedit/gedit-statusbar.c:66
+#: ../gedit/gedit-statusbar.c:72
+msgid "OVR"
+msgstr "OVR"
+
+#: ../gedit/gedit-statusbar.c:66
+#: ../gedit/gedit-statusbar.c:72
+msgid "INS"
+msgstr "INS"
+
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
+#. use abbreviations if possible to avoid space problems.
+#: ../gedit/gedit-statusbar.c:245
+#, c-format
+msgid "  Ln %d, Col %d"
+msgstr "  Ln %d, Col %d"
+
+#: ../gedit/gedit-statusbar.c:344
+#, c-format
+msgid "There is a tab with errors"
+msgid_plural "There are %d tabs with errors"
+msgstr[0] "Tha taba le mearachdan ann"
+msgstr[1] "Tha %d thaba le mearachdan ann"
+msgstr[2] "Tha %d tabaichean le mearachdan ann"
+msgstr[3] "Tha %d taba le mearachdan ann"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:766
+#, c-format
+msgid "Reverting %s from %s"
+msgstr "Ag aiseag %s o %s"
+
+#: ../gedit/gedit-tab.c:773
+#, c-format
+msgid "Reverting %s"
+msgstr "Ag aiseag %s"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:789
+#, c-format
+msgid "Loading %s from %s"
+msgstr "A' luchdadh %s o %s"
+
+#: ../gedit/gedit-tab.c:796
+#, c-format
+msgid "Loading %s"
+msgstr "A' luchdadh %s"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:877
+#, c-format
+msgid "Saving %s to %s"
+msgstr "A' sàbhaladh %s gu %s"
+
+#: ../gedit/gedit-tab.c:884
+#, c-format
+msgid "Saving %s"
+msgstr "A' sàbhaladh %s"
+
+#. Read only
+#: ../gedit/gedit-tab.c:1869
+msgid "RO"
+msgstr "RO"
+
+#: ../gedit/gedit-tab.c:1916
+#, c-format
+msgid "Error opening file %s"
+msgstr "Mearachd a' fosgail an fhaidhle %s"
+
+#: ../gedit/gedit-tab.c:1921
+#, c-format
+msgid "Error reverting file %s"
+msgstr "Mearachd ag aiseag an fhaidhle %s"
+
+#: ../gedit/gedit-tab.c:1926
+#, c-format
+msgid "Error saving file %s"
+msgstr "Mearachd a' sàbhaladh an fhaidhle %s"
+
+#: ../gedit/gedit-tab.c:1947
+msgid "Unicode (UTF-8)"
+msgstr "Unicode (UTF-8)"
+
+#: ../gedit/gedit-tab.c:1954
+msgid "Name:"
+msgstr "Ainm:"
+
+#: ../gedit/gedit-tab.c:1955
+msgid "MIME Type:"
+msgstr "Seòrsa MIME:"
+
+#: ../gedit/gedit-tab.c:1956
+msgid "Encoding:"
+msgstr "Còdachadh:"
+
+#: ../gedit/gedit-tab-label.c:279
+msgid "Close document"
+msgstr "Dùin an sgrìobhainn"
+
+#. Toplevel
+#: ../gedit/gedit-ui.h:43
+msgid "_File"
+msgstr "_Faidhle"
+
+#: ../gedit/gedit-ui.h:44
+msgid "_Edit"
+msgstr "D_easaich"
+
+#: ../gedit/gedit-ui.h:45
+msgid "_View"
+msgstr "_Sealladh"
+
+#: ../gedit/gedit-ui.h:46
+msgid "_Search"
+msgstr "_Lorg"
+
+#: ../gedit/gedit-ui.h:47
+msgid "_Tools"
+msgstr "_Innealan"
+
+#: ../gedit/gedit-ui.h:48
+msgid "_Documents"
+msgstr "_Sgrìobhainnean"
+
+#: ../gedit/gedit-ui.h:53
+msgid "Create a new document"
+msgstr "Cruthaich sgrìobhainn ùr"
+
+#: ../gedit/gedit-ui.h:54
+msgid "_Open..."
+msgstr "F_osgail..."
+
+#. Edit menu
+#: ../gedit/gedit-ui.h:58
+msgid "Pr_eferences"
+msgstr "R_oghainnean"
+
+#: ../gedit/gedit-ui.h:59
+msgid "Configure the application"
+msgstr "Rèitich am prògram"
+
+#. Help menu
+#: ../gedit/gedit-ui.h:62
+msgid "_Contents"
+msgstr "_Susbaint"
+
+#: ../gedit/gedit-ui.h:63
+msgid "Open the gedit manual"
+msgstr "Fosgail an leabhar-mìneachaidh aig gedit"
+
+#: ../gedit/gedit-ui.h:65
+msgid "About this application"
+msgstr "Mun phrògram seo"
+
+#: ../gedit/gedit-ui.h:69
+msgid "Leave fullscreen mode"
+msgstr "Fàg am modh làn-sgrìn"
+
+#: ../gedit/gedit-ui.h:77
+msgid "Save the current file"
+msgstr "Sàbhail am faidhle làithreach"
+
+#: ../gedit/gedit-ui.h:79
+msgid "Save the current file with a different name"
+msgstr "Sàbhail am faidhle làithreach le ainm eadar-dhealaichte"
+
+#: ../gedit/gedit-ui.h:81
+msgid "Revert to a saved version of the file"
+msgstr "Aisig gu tionndadh dhen fhaidhle air a sàbhaladh"
+
+#: ../gedit/gedit-ui.h:82
+msgid "Print Previe_w"
+msgstr "_Ro-shealladh clò-bhualaidh"
+
+#: ../gedit/gedit-ui.h:83
+msgid "Print preview"
+msgstr "Ro-shealladh clò-bhualaidh"
+
+#: ../gedit/gedit-ui.h:85
+msgid "Print the current page"
+msgstr "Clò-bhuail an duilleag làithreach"
+
+#: ../gedit/gedit-ui.h:89
+msgid "Undo the last action"
+msgstr "Neo-dhèan an gnìomh mu dheireadh"
+
+#: ../gedit/gedit-ui.h:91
+msgid "Redo the last undone action"
+msgstr "Ath-dhèan an gnìomh mu dheireadh a chaidh a neo-dhèanamh"
+
+#: ../gedit/gedit-ui.h:93
+msgid "Cut the selection"
+msgstr "Geàrr às na thagh thu"
+
+#: ../gedit/gedit-ui.h:95
+msgid "Copy the selection"
+msgstr "Dèan lethbhreac dhe na thagh thu"
+
+#: ../gedit/gedit-ui.h:97
+msgid "Paste the clipboard"
+msgstr "Cuir ann an stòr-bhòrd"
+
+#: ../gedit/gedit-ui.h:99
+msgid "Delete the selected text"
+msgstr "Sguab às an teacsa a thagh thu"
+
+#: ../gedit/gedit-ui.h:100
+msgid "Select _All"
+msgstr "Tagh n_a h-uile"
+
+#: ../gedit/gedit-ui.h:101
+msgid "Select the entire document"
+msgstr "Tagh an sgrìobhainn gu lèir"
+
+#. View menu
+#: ../gedit/gedit-ui.h:104
+msgid "_Highlight Mode..."
+msgstr "Mod_h soillseachaidh..."
+
+#: ../gedit/gedit-ui.h:105
+msgid "Changes the highlight mode of the active document"
+msgstr "Atharraichidh seo am modh soillseachaidh aig an sgrìobhainn làithreach"
+
+#. Search menu
+#: ../gedit/gedit-ui.h:109
+msgid "_Find..."
+msgstr "_Lorg..."
+
+#: ../gedit/gedit-ui.h:110
+msgid "Search for text"
+msgstr "Lorg airson teacsa"
+
+#: ../gedit/gedit-ui.h:111
+msgid "Find Ne_xt"
+msgstr "Lorg an ath _fhear"
+
+#: ../gedit/gedit-ui.h:112
+msgid "Search forwards for the same text"
+msgstr "Lorg air adhart airson an aon teacsa"
+
+#: ../gedit/gedit-ui.h:113
+msgid "Find Pre_vious"
+msgstr "Lorg am fear _roimhe"
+
+#: ../gedit/gedit-ui.h:114
+msgid "Search backwards for the same text"
+msgstr "Lorg air ais airson an aon teacsa"
+
+#: ../gedit/gedit-ui.h:116
+#: ../gedit/gedit-ui.h:119
+msgid "_Replace..."
+msgstr "Cui_r 'na àite..."
+
+#: ../gedit/gedit-ui.h:117
+#: ../gedit/gedit-ui.h:120
+msgid "Search for and replace text"
+msgstr "Lorg airson teacsa is cuir 'na àite"
+
+#: ../gedit/gedit-ui.h:122
+msgid "_Clear Highlight"
+msgstr "Falamhai_ch an soillseachadh"
+
+#: ../gedit/gedit-ui.h:123
+msgid "Clear highlighting of search matches"
+msgstr "Falamhaich soillseachadh an teacsa a cho-fhreagras"
+
+#: ../gedit/gedit-ui.h:124
+msgid "Go to _Line..."
+msgstr "Rach gu _loidhne..."
+
+#: ../gedit/gedit-ui.h:125
+msgid "Go to a specific line"
+msgstr "Rach gu loidhne shònraichte"
+
+#. Documents menu
+#: ../gedit/gedit-ui.h:128
+msgid "_Save All"
+msgstr "_Sàbhail na h-uile"
+
+#: ../gedit/gedit-ui.h:129
+msgid "Save all open files"
+msgstr "Sàbhail na faidhlichean fosgailte uile"
+
+#: ../gedit/gedit-ui.h:130
+msgid "_Close All"
+msgstr "_Dùin na h-uile"
+
+#: ../gedit/gedit-ui.h:131
+msgid "Close all open files"
+msgstr "Dùin na h-uile faidhlichean fosgailte"
+
+#: ../gedit/gedit-ui.h:132
+msgid "_New Tab Group"
+msgstr "Buidhea_nn thabaichean ùr"
+
+#: ../gedit/gedit-ui.h:133
+msgid "Create a new tab group"
+msgstr "Cruthaich buidheann thabaichean ùr"
+
+#: ../gedit/gedit-ui.h:134
+msgid "P_revious Tab Group"
+msgstr "Am buidheann thabaichean _roimhe"
+
+#: ../gedit/gedit-ui.h:135
+msgid "Switch to the previous tab group"
+msgstr "Gearr leum dhan bhuidheann thabaichean roimhe"
+
+#: ../gedit/gedit-ui.h:136
+msgid "Nex_t Tab Group"
+msgstr "An a_th bhuidheann thabaichean"
+
+#: ../gedit/gedit-ui.h:137
+msgid "Switch to the next tab group"
+msgstr "Gearr leum dhan ath bhuidheann thabaichean"
+
+#: ../gedit/gedit-ui.h:138
+msgid "_Previous Document"
+msgstr "An sgrìobhainn roimh_pe"
+
+#: ../gedit/gedit-ui.h:139
+msgid "Activate previous document"
+msgstr "Gnìomhaich an sgrìobhainn roimhpe"
+
+#: ../gedit/gedit-ui.h:140
+msgid "N_ext Document"
+msgstr "An a_th sgrìobhainn"
+
+#: ../gedit/gedit-ui.h:141
+msgid "Activate next document"
+msgstr "Gnìomhaich an ath sgròbhainn"
+
+#: ../gedit/gedit-ui.h:143
+msgid "Move the current document to a new window"
+msgstr "Gluais an sgrìobhainn làithreach gu uinneag ùr"
+
+#: ../gedit/gedit-ui.h:150
+msgid "Close the current file"
+msgstr "Dùin am faidhle làithreach"
+
+#: ../gedit/gedit-ui.h:157
+msgid "Quit the program"
+msgstr "Fàg am prògram"
+
+#: ../gedit/gedit-ui.h:162
+msgid "_Toolbar"
+msgstr "Bàr-_inneal"
+
+#: ../gedit/gedit-ui.h:163
+msgid "Show or hide the toolbar in the current window"
+msgstr "Seall no falaich am bàr-inneal san uinneag làithreach"
+
+#: ../gedit/gedit-ui.h:165
+msgid "_Statusbar"
+msgstr "Bàr na staide"
+
+#: ../gedit/gedit-ui.h:166
+msgid "Show or hide the statusbar in the current window"
+msgstr "Seall no falaich bàr na staide san uinneig làithreach"
+
+#: ../gedit/gedit-ui.h:169
+msgid "Edit text in fullscreen"
+msgstr "Deasaich teacsa air làn-sgrìn"
+
+#: ../gedit/gedit-ui.h:176
+msgid "Side _Panel"
+msgstr "_Panail-thaoibh"
+
+#: ../gedit/gedit-ui.h:177
+msgid "Show or hide the side panel in the current window"
+msgstr "Seall no falaich a' phanail-thaoibh san uinneig làithreach"
+
+#: ../gedit/gedit-ui.h:179
+msgid "_Bottom Panel"
+msgstr "_Panail bhuinn"
+
+#: ../gedit/gedit-ui.h:180
+msgid "Show or hide the bottom panel in the current window"
+msgstr "Seall no falaich a' phanail bhuinn san uinneig làithreach"
+
+#: ../gedit/gedit-utils.c:931
+msgid "Please check your installation."
+msgstr "An dearbhaich thu an stàladh agad?"
+
+#: ../gedit/gedit-utils.c:989
+#, c-format
+msgid "Unable to open UI file %s. Error: %s"
+msgstr "Cha b' urrainn dhuinn am faidhle UI %s fhosgladh. Mearachd: %s"
+
+#: ../gedit/gedit-utils.c:1008
+#, c-format
+msgid "Unable to find the object '%s' inside file %s."
+msgstr "Cha b' urrainn dhuinn an oibseact \"%s\" a lorg am broinn na faidhle %s."
+
+#. Translators: '/ on <remote-share>'
+#: ../gedit/gedit-utils.c:1231
+#, c-format
+msgid "/ on %s"
+msgstr "/ air %s"
+
+#. Translators: the first %d is the position of the current search
+#. * occurrence, and the second %d is the total number of search
+#. * occurrences.
+#.
+#: ../gedit/gedit-view-frame.c:664
+#, c-format
+msgid "%d of %d"
+msgstr "%d à %d"
+
+#. create "Wrap Around" menu item.
+#: ../gedit/gedit-view-frame.c:756
+msgid "_Wrap Around"
+msgstr "_Pasgadh timcheall"
+
+#. create "Match as Regular Expression" menu item.
+#: ../gedit/gedit-view-frame.c:766
+msgid "Match as _Regular Expression"
+msgstr "Maidsich mar eas-preisean _riaghailteach"
+
+#. create "Match Entire Word Only" menu item.
+#: ../gedit/gedit-view-frame.c:780
+msgid "Match _Entire Word Only"
+msgstr "Faclan s_làna a-mhàin"
+
+#. create "Match Case" menu item.
+#: ../gedit/gedit-view-frame.c:794
+msgid "_Match Case"
+msgstr "Aire do litrichean _mòra 's beaga"
+
+#: ../gedit/gedit-view-frame.c:968
+msgid "String you want to search for"
+msgstr "An sreang a tha thu airson lorg"
+
+#: ../gedit/gedit-view-frame.c:980
+msgid "Line you want to move the cursor to"
+msgstr "An loidhne dhan a bheil thu airson an cùrsair a ghluasad"
+
+#. Translators: %s is a URI
+#: ../gedit/gedit-window.c:1068
+#, c-format
+msgid "Open '%s'"
+msgstr "Fosgail \"%s\""
+
+#: ../gedit/gedit-window.c:1230
+msgid "Save"
+msgstr "Sàbhail"
+
+#: ../gedit/gedit-window.c:1232
+msgid "Print"
+msgstr "Clò-bhuail"
+
+#: ../gedit/gedit-window.c:1234
+msgid "Find"
+msgstr "Lorg"
+
+#. Translators: %s is a URI
+#: ../gedit/gedit-window.c:1398
+#, c-format
+msgid "Activate '%s'"
+msgstr "Gnìomhaich \"%s\""
+
+#: ../gedit/gedit-window.c:1744
+msgid "Use Spaces"
+msgstr "Cleachd spàsan"
+
+#: ../gedit/gedit-window.c:1937
+msgid "Bracket match is out of range"
+msgstr "Chan eil a' chamag a cho-fhreagras san rainse"
+
+#: ../gedit/gedit-window.c:1942
+msgid "Bracket match not found"
+msgstr "Cha deach a' chamag a cho-fhreagras a lorg"
+
+#: ../gedit/gedit-window.c:1947
+#, c-format
+msgid "Bracket match found on line: %d"
+msgstr "Chaidh a' chamag a cho-fhreagras a lorg air an loidhne %d"
+
+#: ../gedit/gedit-window.c:2131
+#, c-format
+msgid "Tab Width: %u"
+msgstr "Leud nan tabaichean: %u"
+
+#: ../gedit/gedit-window.c:2486
+msgid "There are unsaved documents"
+msgstr "Tha sgrìobhainn gun sàbhaladh ann"
+
+#. ex:set ts=8 noet:
+#: ../plugins/changecase/changecase.plugin.desktop.in.h:1
+msgid "Change Case"
+msgstr "Litrichean mòra/beaga"
+
+#: ../plugins/changecase/changecase.plugin.desktop.in.h:2
+msgid "Changes the case of selected text."
+msgstr "Atharraich an tacsa a thagh thu gu litrichean mòra/beaga."
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:242
+msgid "C_hange Case"
+msgstr "Litric_hean mòra/beaga"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:243
+msgid "All _Upper Case"
+msgstr "Na h-uile nan litrichean mòra"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:244
+msgid "Change selected text to upper case"
+msgstr "Atharraich an teacsa a thagh thu gu litrichean mòra"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:246
+msgid "All _Lower Case"
+msgstr "Na h-uile nan litrichean beaga"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:247
+msgid "Change selected text to lower case"
+msgstr "Atharraich an teacsa a thagh thu gu litrichean beaga"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:249
+msgid "_Invert Case"
+msgstr "_Ais-thionndaidh na litrichean mòra/beaga"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:250
+msgid "Invert the case of selected text"
+msgstr "Ais-thionndaidh na litrichean mòra/beaga aig an teacsa a thagh thu"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:252
+msgid "_Title Case"
+msgstr "A' chiad litir mòr"
+
+#: ../plugins/changecase/gedit-changecase-plugin.c:253
+msgid "Capitalize the first letter of each selected word"
+msgstr "Cuir ceann-litir mhòr air gach facal a thagh thu"
+
+#. ex:set ts=8 noet:
+#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
+msgid "Check update"
+msgstr "Thoir sùil airson ùrachadh"
+
+#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
+msgid "Check for latest version of gedit"
+msgstr "Thòir sùil airson an tionndadh as ùire de gedit"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:257
+msgid "There was an error displaying the URI."
+msgstr "Tachar mearachd le sealladh an URI."
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:294
+msgid "_Download"
+msgstr "Luch_daich a-nuas"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:302
+msgid "_Ignore Version"
+msgstr "Le_ig seachd an tionndadh"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:317
+msgid "There is a new version of gedit"
+msgstr "Tha tionndadh ùr de gedit ann"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:321
+msgid "You can download the new version of gedit by clicking on the download button or ignore that version and wait for a new one"
+msgstr "'S urrainn dhut an tionndadh ùr aig gedit a luchdadh a-nuas 's tu a' briogadh air air a' phutan luchdaidh a-nuas no an tionndadh seo a leigeil seachad is feitheamh airson an ath fhir"
+
+#. ex:set ts=8 noet:
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+msgid "Version to Ignore"
+msgstr "Tionndadh ri leigeil seachad"
+
+#. This is releated to the next gedit version to be released
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+msgid "Version to ignore until a newer version is released."
+msgstr "An tionndadh a thèid a leigeil seachad mus tèid tionndadh nas ùire a sgaoileadh."
+
+#. ex:set ts=8 noet:
+#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:1
+msgid "Document Statistics"
+msgstr "Stadastaireachd na sgrìobhainn"
+
+#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
+msgid "Report the number of words, lines and characters in a document."
+msgstr "Dèan aithris air an àireamh de dh'fhaclan, loidhnichean is caractaran ann an sgrìobhainn."
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:427
+msgid "_Document Statistics"
+msgstr "Sta_dastaireachd na sgrìobhainn"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:429
+msgid "Get statistical information on the current document"
+msgstr "Faigh fiosrachadh stadaistearachd mun sgrìobhainn làithreach"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:2
+msgid "_Update"
+msgstr "Ùraic_h"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:3
+msgid "File Name"
+msgstr "Ainm faidhle"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
+#: ../plugins/externaltools/tools/tools.ui.h:28
+#: ../plugins/snippets/snippets/snippets.ui.h:13
+msgid "    "
+msgstr "    "
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:5
+msgid "Document"
+msgstr "Sgrìobhainn"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:6
+msgid "Selection"
+msgstr "Taghadh"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:7
+msgid "Lines"
+msgstr "Loidhnichean"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:8
+msgid "Words"
+msgstr "Faclan"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:9
+msgid "Characters (with spaces)"
+msgstr "Caractaran (le spàsan)"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:10
+msgid "Characters (no spaces)"
+msgstr "Caractaran (gun spàsan)"
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:11
+msgid "Bytes"
+msgstr "Baidht"
+
+#: ../plugins/externaltools/data/build.desktop.in.h:1
+msgid "Build"
+msgstr "Togail"
+
+#: ../plugins/externaltools/data/build.desktop.in.h:2
+msgid "Run \"make\" in the document directory"
+msgstr "Ruith \"make\" ann am pasgan na sgrìobhainn"
+
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
+#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
+msgid "Open terminal here"
+msgstr "Fosgail tèirmineal an-seo"
+
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:2
+#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:2
+msgid "Open a terminal in the document location"
+msgstr "Fosgail tèirmineal ann an ionad na sgrìobhainn"
+
+#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:1
+msgid "Remove trailing spaces"
+msgstr "Thoir spàsan deiridh air falbh"
+
+#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:2
+msgid "Remove useless trailing spaces in your file"
+msgstr "Thoir air falbh spàsan deiridh gun fheum san fhaidhle agad"
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:1
+msgid "Run command"
+msgstr "Ruith àithne"
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:2
+msgid "Execute a custom command and put its output in a new document"
+msgstr "Gnìomhaich àithne ghnàthaichte is cuir an às-chur aice ann an sgrìobhainn ùr"
+
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
+msgid "External Tools"
+msgstr "Innealan taobh a-muigh"
+
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
+msgid "Execute external commands and shell scripts."
+msgstr "Gnìomhaich àitheantan taobh a-muigh is sgriobtaichean shell."
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+msgid "Whether to use the system font"
+msgstr "Co-dhiù an tèid cruth-clò an t-siostaim a chleachdadh no nach tèid"
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+msgid "If true, the external tools will use the desktop-global standard font if it's monospace (and the most similar font it can come up with otherwise)."
+msgstr "Mas e \"true\" a th' ann, cleachdaidh innealan taobh a-muigh cruth-clò stannardach coitcheann an deasg mas e monospace a th' ann (is mur eil, an cruth-clò as coltaiche ris)."
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgstr "Ainm cruth-clò Pango. Mar eisimpleir, \"Sans 12\" no \"Monospace Bold 14\"."
+
+#: ../plugins/externaltools/tools/capture.py:95
+#, python-format
+msgid "Could not execute command: %s"
+msgstr "Dh'fhàillig le gnìomhachadh na h-àithne: %s"
+
+#: ../plugins/externaltools/tools/functions.py:175
+msgid "You must be inside a word to run this command"
+msgstr "Feumaidh tu a bhith am broinn facail gus an àithne seo a ruith"
+
+#: ../plugins/externaltools/tools/functions.py:310
+msgid "Running tool:"
+msgstr "A' ruith inneal:"
+
+#: ../plugins/externaltools/tools/functions.py:339
+msgid "Done."
+msgstr "Dèanta."
+
+#: ../plugins/externaltools/tools/functions.py:341
+msgid "Exited"
+msgstr "Air fhàgail"
+
+#: ../plugins/externaltools/tools/manager.py:144
+msgid "All languages"
+msgstr "Na h-uile cànan"
+
+#: ../plugins/externaltools/tools/manager.py:568
+#: ../plugins/externaltools/tools/manager.py:572
+#: ../plugins/externaltools/tools/manager.py:913
+#: ../plugins/externaltools/tools/tools.ui.h:29
+msgid "All Languages"
+msgstr "Na h-uile cànan"
+
+#: ../plugins/externaltools/tools/manager.py:685
+msgid "New tool"
+msgstr "Inneal ùr"
+
+#: ../plugins/externaltools/tools/manager.py:816
+#, python-format
+msgid "This accelerator is already bound to %s"
+msgstr "Tha an luathaichear seo ceangailte ri %s mar-thà"
+
+#: ../plugins/externaltools/tools/manager.py:860
+msgid "Type a new accelerator, or press Backspace to clear"
+msgstr "Sgrìobh luathaichear ùr no brùth air backspace gus fhalamhachadh"
+
+#: ../plugins/externaltools/tools/manager.py:862
+msgid "Type a new accelerator"
+msgstr "Sgrìobh luathaichear ùr"
+
+#: ../plugins/externaltools/tools/outputpanel.py:120
+msgid "Stopped."
+msgstr "Air stad."
+
+#. ex:ts=4:et:
+#: ../plugins/externaltools/tools/outputpanel.ui.h:1
+msgid "Stop Tool"
+msgstr "Sguir dhen inneal"
+
+#: ../plugins/externaltools/tools/tools.ui.h:1
+msgid "Always available"
+msgstr "Ri làimh an-còmhnaidh"
+
+#: ../plugins/externaltools/tools/tools.ui.h:2
+msgid "All documents"
+msgstr "Na h-uile sgrìobhainn"
+
+#: ../plugins/externaltools/tools/tools.ui.h:3
+msgid "All documents except untitled ones"
+msgstr "Na h-uile sgrìobhainn ach an feadhainn gun tiotal"
+
+#: ../plugins/externaltools/tools/tools.ui.h:4
+msgid "Local files only"
+msgstr "Faidhlichean ionadail a-mhàin"
+
+#: ../plugins/externaltools/tools/tools.ui.h:5
+msgid "Remote files only"
+msgstr "Faidhlichean cèine a-mhàin"
+
+#: ../plugins/externaltools/tools/tools.ui.h:6
+msgid "Untitled documents only"
+msgstr "Sgrìobhainnean gun tiotal a-mhàin"
+
+#: ../plugins/externaltools/tools/tools.ui.h:7
+msgid "Nothing"
+msgstr "Chan eil gin"
+
+#: ../plugins/externaltools/tools/tools.ui.h:8
+msgid "Current document"
+msgstr "An sgrìobhainn làithreach"
+
+#: ../plugins/externaltools/tools/tools.ui.h:9
+msgid "Current selection"
+msgstr "Na thagh thu an-dràsta"
+
+#: ../plugins/externaltools/tools/tools.ui.h:10
+msgid "Current selection (default to document)"
+msgstr "Na thagh thu an-dràsta (sgrìobhainn o thùs)"
+
+#: ../plugins/externaltools/tools/tools.ui.h:11
+msgid "Current line"
+msgstr "An loidhne làithreach"
+
+#: ../plugins/externaltools/tools/tools.ui.h:12
+msgid "Current word"
+msgstr "Am facal làithreach"
+
+#: ../plugins/externaltools/tools/tools.ui.h:13
+msgid "Display in bottom pane"
+msgstr "Seall san leòsan buinn"
+
+#: ../plugins/externaltools/tools/tools.ui.h:14
+msgid "Create new document"
+msgstr "Cruthaich sgrìobhainn ùr"
+
+#: ../plugins/externaltools/tools/tools.ui.h:15
+msgid "Append to current document"
+msgstr "Cuir ris an sgrìobhainn làithreach"
+
+#: ../plugins/externaltools/tools/tools.ui.h:16
+msgid "Replace current document"
+msgstr "Cuir e an àite na sgrìobhainn làithrich"
+
+#: ../plugins/externaltools/tools/tools.ui.h:17
+msgid "Replace current selection"
+msgstr "Cuir e an àite na thagh thu an-dràsta"
+
+#: ../plugins/externaltools/tools/tools.ui.h:18
+msgid "Insert at cursor position"
+msgstr "Cuir a-steach air àite a' chùrsair"
+
+#: ../plugins/externaltools/tools/tools.ui.h:19
+msgid "Manage External Tools"
+msgstr "Stiùirich innealan taobh a-muigh"
+
+#: ../plugins/externaltools/tools/tools.ui.h:20
+msgid "_Tools:"
+msgstr "_Innealan:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:21
+msgid "Add a new tool"
+msgstr "Cuir inneal ùr ris"
+
+#: ../plugins/externaltools/tools/tools.ui.h:22
+msgid "Add Tool"
+msgstr "Cuir ris inneal"
+
+#: ../plugins/externaltools/tools/tools.ui.h:23
+msgid "Remove selected tool"
+msgstr "Thoir an t-inneal a thagh thu air falbh"
+
+#: ../plugins/externaltools/tools/tools.ui.h:24
+msgid "Remove Tool"
+msgstr "Thoir an t-inneal air falbh"
+
+#: ../plugins/externaltools/tools/tools.ui.h:25
+msgid "Revert tool"
+msgstr "Aisig an t-inneal"
+
+#: ../plugins/externaltools/tools/tools.ui.h:26
+msgid "Revert Tool"
+msgstr "Aisig an t-inneal"
+
+#: ../plugins/externaltools/tools/tools.ui.h:27
+#: ../plugins/snippets/snippets/snippets.ui.h:11
+msgid "_Edit:"
+msgstr "D_easaich:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:30
+msgid "_Applicability:"
+msgstr "Iomch_aidheachd:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:31
+msgid "_Output:"
+msgstr "À_s-chur:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:32
+msgid "_Input:"
+msgstr "_Ion-chur:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:33
+msgid "_Save:"
+msgstr "_Sàbhail:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:34
+msgid "Shortcut _key:"
+msgstr "I_uchair ath-ghoirid:"
+
+#: ../plugins/externaltools/tools/windowactivatable.py:175
+msgid "Manage _External Tools..."
+msgstr "Stiùirich innealan tao_bh a-muigh..."
+
+#: ../plugins/externaltools/tools/windowactivatable.py:176
+msgid "Opens the External Tools Manager"
+msgstr "Fosglaidh seo manaidsear nan inneal taobh a-nuigh"
+
+#: ../plugins/externaltools/tools/windowactivatable.py:179
+msgid "External _Tools"
+msgstr "_Innealan taobh a-muigh"
+
+#: ../plugins/externaltools/tools/windowactivatable.py:180
+msgid "External tools"
+msgstr "Innealan taobh a-muigh"
+
+#: ../plugins/externaltools/tools/windowactivatable.py:214
+msgid "Tool Output"
+msgstr "Às-chur an inneil"
+
+#. ex:ts=4:et:
+#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
+msgid "File Browser Panel"
+msgstr "Panail abrabhsair nam faidhle"
+
+#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
+msgid "Easy file access from the side panel"
+msgstr "Inntrigeadh furasta dha dh'fhaidhlichean on phanail-thaoibh"
+
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:206
+msgid "Home"
+msgstr "Dhachaigh"
+
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:232
+msgid "File System"
+msgstr "Siostam-fhaidhlichean"
+
+#. ex:ts=8:noet:
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
+msgid "_Open"
+msgstr "F_osgail"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:2
+msgid "_Set Root to Active Document"
+msgstr "_Suidhich am freumh air an sgrìobhainn làithreach"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:3
+msgid "_New Folder"
+msgstr "_Pasgan ùr"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:4
+msgid "New F_ile"
+msgstr "_Faidhle ùr"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:5
+msgid "_Rename..."
+msgstr "Thoi_r ainm ùr air..."
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:6
+msgid "_Move to Trash"
+msgstr "_Gluais dhan sgudal"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:7
+msgid "_Delete"
+msgstr "_Sguab às"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:8
+msgid "Re_fresh View"
+msgstr "Ath-_nuadhaich an sealladh"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:9
+msgid "_View Folder"
+msgstr "_Seall am pasgan"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:10
+msgid "_Open in Terminal"
+msgstr "F_osgail san tèirmineal"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:11
+msgid "_Filter"
+msgstr "_Criathrag"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:12
+msgid "Show _Hidden"
+msgstr "Seall an fheadhainn f_halaichte"
+
+#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:13
+msgid "Show _Binary"
+msgstr "Seall _bìnearaidh"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:538
+msgid "File Browser"
+msgstr "Brabhsair nam faidhle"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:681
+msgid "An error occurred while creating a new directory"
+msgstr "Thachair mearachd rè cruthachadh pasgain ùir"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:684
+msgid "An error occurred while creating a new file"
+msgstr "Thachair mearachd rè cruthachadh faidhle ùir"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:687
+msgid "An error occurred while renaming a file or directory"
+msgstr "Thachair mearachd le ainm ùr a thoirt air faidhle no pasgan"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:690
+msgid "An error occurred while deleting a file or directory"
+msgstr "Thachair mearachd a' sguabadh às faidhle no pasgan"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:693
+msgid "An error occurred while opening a directory in the file manager"
+msgstr "Thachair mearachd le fosgladh pasgain ann am manaidsear nam faidhle"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:696
+msgid "An error occurred while setting a root directory"
+msgstr "Thachair mearachd le suidheachadh freumh-phasgain"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:699
+msgid "An error occurred while loading a directory"
+msgstr "Thachair mearachd rè luchdadh pasgain"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:702
+msgid "An error occurred"
+msgstr "Thachair mearachd"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
+msgid ""
+"Cannot move file to trash, do you\n"
+"want to delete permanently?"
+msgstr ""
+"Chan urrainn dhuinn am faidhle a ghluasad dhan sgudal,\n"
+"a bheil thu airson a sguabadh às gu buan?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
+#, c-format
+msgid "The file \"%s\" cannot be moved to the trash."
+msgstr "Cha ghabh am faidhle \"%s\" gluasad dhan sgudal."
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:926
+msgid "The selected files cannot be moved to the trash."
+msgstr "Cha ghabh na faidhlichean a thagh thu gluasad dhan sgudal."
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\"?"
+msgstr "A bheil thu cinnteach gu bheil thu airson \"%s\" a sguabadh às gu buan?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:963
+msgid "Are you sure you want to permanently delete the selected files?"
+msgstr "A bheil thu cinnteach gu bheil thu airson na faidhlichean a thagh thu a sguabadh às gu buan?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:966
+msgid "If you delete an item, it is permanently lost."
+msgstr "Ma sguabas tu às nì, thèid e air chall gu buan."
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1776
+msgid "(Empty)"
+msgstr "(Falamh)"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3498
+msgid "The renamed file is currently filtered out. You need to adjust your filter settings to make the file visible"
+msgstr "Tha am faidhle air ath-ainmeachadh criathraichte air falbh an-dràsta. Feumaidh gleus a chur air roghainnean na criathraige ach an tèid am faidhle a shealltainn"
+
+#. Translators: This is the default name of new files created by the file browser pane.
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3755
+msgid "Untitled File"
+msgstr "Sgrìobhainn gun tiotal"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3783
+msgid "The new file is currently filtered out. You need to adjust your filter settings to make the file visible"
+msgstr "Tha am faidhle ùr criathraichte air falbh an-dràsta. Feumaidh gleus a chur air roghainnean na criathraige ach an tèid am faidhle a shealltainn"
+
+#. Translators: This is the default name of new directories created by the file browser pane.
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3814
+msgid "Untitled Folder"
+msgstr "Pasgan gun tiotal"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3839
+msgid "The new directory is currently filtered out. You need to adjust your filter settings to make the directory visible"
+msgstr "Tha am pasgan ùr air ath-ainmeachadh criathraichte air falbh an-dràsta. Feumaidh gleus a chur air roghainnean na criathraige ach an tèid am pasgan a shealltainn"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:785
+msgid "Bookmarks"
+msgstr "Comharran-lìn"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1979
+#, c-format
+msgid "No mount object for mounted volume: %s"
+msgstr "Chan eil oibseact munntachaidh ann airson an draibh air a mhunntachadh: %s"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2056
+#, c-format
+msgid "Could not open media: %s"
+msgstr "Cha b' urrainn dhuinn am  meadhan %s fhosgladh"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2103
+#, c-format
+msgid "Could not mount volume: %s"
+msgstr "Cha b' urrainn dhuinn an draibh %s a mhunntachadh"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2739
+#, c-format
+msgid "Error when loading '%s': No such directory"
+msgstr "Thachair mearachd rè luchdadh \"%s\": Chan eil am pasgan seo ann"
+
+#. ex:ts=8:noet:
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+msgid "Open With Tree View"
+msgstr "Fosgail le sealladh craoibhe"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+msgid "Open the tree view when the file browser plugin gets loaded instead of the bookmarks view"
+msgstr "Fosgail an t-sealladh craoibhe nuair a thèid plugan brabhsair nam faidhle a luchdadh an àite sealladh nan comharran-leabhair"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+msgid "File Browser Root Directory"
+msgstr "Am freumh-phasgan aig brabhsair nam faidhle"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+msgid "The file browser root directory to use when loading the file browser plugin and onload/tree_view is TRUE."
+msgstr "Am freumh-phasgan a chleachdas brabhsair nam faidhle nuair a thèid plugan brabhsair nam faidhle a luchdadh is onload/tree_view air \"TRUE\"."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+msgid "File Browser Virtual Root Directory"
+msgstr "Am freumh-phasgan biortail air brabhsair nam faidhle"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+msgid "The file browser virtual root directory to use when loading the file browser plugin when onload/tree_view is TRUE. The virtual root must always be below the actual root."
+msgstr "Am freumh-phasgan biortail a chleachdas brabhsair nam faidhle nuair a thèid plugan brabhsair nam faidhle a luchdadh is onload/tree_view air \"TRUE\". Feumaidh am freumh biortail a bhith fon fhìor-fhreumh an-còmhnaidh."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+msgid "Enable Restore of Remote Locations"
+msgstr "Cuir an comas aiseag nan ionadan cèine"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+msgid "Sets whether to enable restoring of remote locations."
+msgstr "Suidhich am bi aiseag nan ionadan cèine air no dheth."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+msgid "Set Location to First Document"
+msgstr "Suidhich an t-ionad air a' chiad sgrìobhainn"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+msgid "If TRUE the file browser plugin will view the directory of the first opened document given that the file browser hasn't been used yet. (Thus this generally applies to opening a document from the command line or opening it with Nautilus, etc.)"
+msgstr "Mas e \"TRUE\" a th' ann, seallaidh plugan brabhsair nam faidhle am pasgan aig a' chiad sgrìobhainn a chaidh fhosgladh mur deach brabhsair nam faidhle a chleachdadh fhathast. (Bidh seo an sàs air fosgladh sgrìobhainnean on loidhne-àithne no le Nautilus agus msaa.)"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+msgid "File Browser Filter Mode"
+msgstr "Modh criathraige aig brabhsair nam faidhle"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+msgid "This value determines what files get filtered from the file browser. Valid values are: none (filter nothing), hide-hidden (filter hidden files) and hide-binary (filter binary files)."
+msgstr "Suidhichidh an luach seo dè na faidhlichean a thèid a chriathradh air falbh o bhrabhsair nam faidhle. Seo na luachan dligheach: none (na criathraich dad), hide-hidden (criathraich faidhlichean falaichte air falbh) is hide-binary (criathraich faidhlichean bìnearaidh air falbh) ."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+msgid "File Browser Filter Pattern"
+msgstr "Pàtran criathraidh aig brabhsair nam faidhle"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+msgid "The filter pattern to filter the file browser with. This filter works on top of the filter_mode."
+msgstr "Am pàtran leis a thèid brabhsair nam faidhle a chriathradh. Obraichidh a' chriathrag seo air barr filter_mode."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+msgid "File Browser Binary Patterns"
+msgstr "Pàtrain bhìnearaidh aig brabhsair nam faidhle"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+msgid "The supplemental patterns to use when filtering binary files."
+msgstr "Na pàtranan foirlionaidh a thèid a chleachdadh le criathradh fhaidhlichean bìnearaidh."
+
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:1
+msgid "Modelines"
+msgstr "Modh-loidhnichean"
+
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:2
+msgid "Emacs, Kate and Vim-style modelines support for gedit."
+msgstr "Taic ri modh-loidhnichean le stoidhle Emacs, Kate is Vim airson gedit."
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+msgid "Command Color Text"
+msgstr "Dath aig teacsa nan àitheantan"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+msgid "The command color text"
+msgstr "An dath a bhios air teacsa nan àitheantan"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+msgid "Error Color Text"
+msgstr "Dath teacsa nam mearachdan"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+msgid "The error color text"
+msgstr "An dath a bhios air teacsa nam mearachdan"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+msgid "If true, the terminal will use the desktop-global standard font if it's monospace (and the most similar font it can come up with otherwise)."
+msgstr "Mas e \"true\" a th' ann, cleachdaidh an tèirmineal cruth-clò stannardach coitcheann an deasg mas e monospace a th' ann (is mur eil, an cruth-clò as coltaiche ris)."
+
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
+msgid "C_ommand color:"
+msgstr "Dath nan à_itheantan:"
+
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:2
+msgid "_Error color:"
+msgstr "Dath nam m_earachdan:"
+
+#. ex:et:ts=4:
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:52
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
+msgid "Python Console"
+msgstr "Consoil Python"
+
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
+msgid "Interactive Python console standing in the bottom panel"
+msgstr "Consoil Python eadar-ghnìomhach a sheasas sa phanail bhuinn"
+
+#: ../plugins/quickopen/quickopen/__init__.py:71
+msgid "Quick Open..."
+msgstr "Fosgladh luath..."
+
+#: ../plugins/quickopen/quickopen/__init__.py:72
+msgid "Quickly open documents"
+msgstr "Fosgail sgrìobhainnean gu luath"
+
+#. ex:ts=4:et:
+#: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
+#: ../plugins/quickopen/quickopen/popup.py:33
+msgid "Quick Open"
+msgstr "Fosgladh luath"
+
+#: ../plugins/quickopen/quickopen.plugin.desktop.in.h:2
+msgid "Quickly open files"
+msgstr "Fosgail faidhlichean gu luath"
+
+#: ../plugins/quickopen/quickopen/popup.py:78
+msgid "Type to search..."
+msgstr "Sgrìobh airson lorg..."
+
+#. ex:ts=8:et:
+#: ../plugins/snippets/snippets/document.py:57
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:1
+msgid "Snippets"
+msgstr "Snippets"
+
+#: ../plugins/snippets/snippets/exporter.py:82
+#, python-format
+msgid "The archive \"%s\" could not be created"
+msgstr "Cha b' urrainn dhuinn an tasglann \"%s\" a chruthachadh"
+
+#: ../plugins/snippets/snippets/exporter.py:99
+#, python-format
+msgid "Target directory \"%s\" does not exist"
+msgstr "Chan eil am pasgan-uidhe \"%s\" ann"
+
+#: ../plugins/snippets/snippets/exporter.py:102
+#, python-format
+msgid "Target directory \"%s\" is not a valid directory"
+msgstr "Chan eil am pasgan-uidhe \"%s\" na phasgan dligheach"
+
+#: ../plugins/snippets/snippets/importer.py:47
+#: ../plugins/snippets/snippets/importer.py:108
+#, python-format
+msgid "File \"%s\" does not exist"
+msgstr "Chan eil am faidhle \"%s\" ann"
+
+#: ../plugins/snippets/snippets/importer.py:50
+#, python-format
+msgid "File \"%s\" is not a valid snippets file"
+msgstr "Chan eil am faidhle \"%s\" na fhaidhle snippets dligheach"
+
+#: ../plugins/snippets/snippets/importer.py:67
+#, python-format
+msgid "Imported file \"%s\" is not a valid snippets file"
+msgstr "Chan eil am faidhle \"%s\" air ion-phortadh na fhaidhle snippets dligheach"
+
+#: ../plugins/snippets/snippets/importer.py:77
+#, python-format
+msgid "The archive \"%s\" could not be extracted"
+msgstr "Cha b' urrainn duinn an tasglann \"%s\" às-tharraing"
+
+#: ../plugins/snippets/snippets/importer.py:95
+#, python-format
+msgid "The following files could not be imported: %s"
+msgstr "Cha b' urrainn dhuinn na faidhlichean seo ion-phortadh: %s"
+
+#: ../plugins/snippets/snippets/importer.py:111
+#: ../plugins/snippets/snippets/importer.py:124
+#, python-format
+msgid "File \"%s\" is not a valid snippets archive"
+msgstr "Chan eil am faidhle \"%s\" na thasglann snippets dhligheach"
+
+#: ../plugins/snippets/snippets/manager.py:43
+msgid "Snippets archive"
+msgstr "Tasglann snippets"
+
+#: ../plugins/snippets/snippets/manager.py:67
+msgid "Add a new snippet..."
+msgstr "Cuir snippet ùr ris..."
+
+#: ../plugins/snippets/snippets/manager.py:119
+msgid "Global"
+msgstr "Uile-choitcheann"
+
+#: ../plugins/snippets/snippets/manager.py:410
+msgid "Revert selected snippet"
+msgstr "Aisig an snippet a thagh thu"
+
+#: ../plugins/snippets/snippets/manager.py:413
+#: ../plugins/snippets/snippets/snippets.ui.h:5
+msgid "Delete selected snippet"
+msgstr "Sguab às an snippet a thagh thu"
+
+#. self['hbox_tab_trigger'].set_spacing(3)
+#: ../plugins/snippets/snippets/manager.py:672
+msgid "This is not a valid Tab trigger. Triggers can either contain alphanumeric characters (or _, : and .) or a single (non-alphanumeric) character like: {, [, etc."
+msgstr "Chan e trigear taba dligheach tha seo. Chan fhaod a bhith am broinn trigeir ach caractaran a tha nan litir no àireamh (no _, : is .) no caractar a-mhàin (nach eil na litir no àireamh) mar : {, [, agus msaa."
+
+#. self['hbox_tab_trigger'].set_spacing(0)
+#: ../plugins/snippets/snippets/manager.py:679
+#: ../plugins/snippets/snippets/snippets.ui.h:16
+msgid "Single word the snippet is activated with after pressing Tab"
+msgstr "Am facal a ghnìomhaicheas an snippet às dèidh brùthadh air Tab"
+
+#: ../plugins/snippets/snippets/manager.py:768
+#, python-format
+msgid "The following error occurred while importing: %s"
+msgstr "Thachair a' mhearachd seo rè an ion-phortaidh: %s"
+
+#: ../plugins/snippets/snippets/manager.py:775
+msgid "Import successfully completed"
+msgstr "Chaidh an t-ion-phortadh a choileanadh"
+
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/snippets.ui.h:7
+msgid "Import snippets"
+msgstr "Ion-phortaich snippets"
+
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
+msgid "All supported archives"
+msgstr "A h-uile tasglannan ris an cuirear taic"
+
+#: ../plugins/snippets/snippets/manager.py:795
+#: ../plugins/snippets/snippets/manager.py:881
+#: ../plugins/snippets/snippets/manager.py:944
+msgid "Gzip compressed archive"
+msgstr "Tasglann dhùmhlaichte Gzip"
+
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
+msgid "Bzip2 compressed archive"
+msgstr "Tasglann dhùmhlaichte Bzip2"
+
+#: ../plugins/snippets/snippets/manager.py:797
+msgid "Single snippets file"
+msgstr "Faidhle snippets singilte"
+
+#: ../plugins/snippets/snippets/manager.py:798
+#: ../plugins/snippets/snippets/manager.py:884
+#: ../plugins/snippets/snippets/manager.py:947
+msgid "All files"
+msgstr "A h-uile faidhle"
+
+#: ../plugins/snippets/snippets/manager.py:810
+#, python-format
+msgid "The following error occurred while exporting: %s"
+msgstr "Thachair a' mhearachd seo rè an às-phortaidh: %s"
+
+#: ../plugins/snippets/snippets/manager.py:814
+msgid "Export successfully completed"
+msgstr "Chaidh an às-phortadh a choileanadh"
+
+#. Ask if system snippets should also be exported
+#: ../plugins/snippets/snippets/manager.py:854
+#: ../plugins/snippets/snippets/manager.py:921
+msgid "Do you want to include selected <b>system</b> snippets in your export?"
+msgstr "A bheil thu airson snippets an t-<b>siostaim</b> a thagh thu a ghabhail a-steach san às-phortadh?"
+
+#: ../plugins/snippets/snippets/manager.py:869
+#: ../plugins/snippets/snippets/manager.py:939
+msgid "There are no snippets selected to be exported"
+msgstr "Cha deach snippet sam bith a thaghadh airson às-phortadh"
+
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
+msgid "Export snippets"
+msgstr "Às-phortaich snippets"
+
+#: ../plugins/snippets/snippets/manager.py:1053
+msgid "Type a new shortcut, or press Backspace to clear"
+msgstr "Sgrìobh ath-ghoirid ùr no brùth air Backspace gus fhalamhachadh"
+
+#: ../plugins/snippets/snippets/manager.py:1055
+msgid "Type a new shortcut"
+msgstr "Sgrìobh ath-ghoirid ùr"
+
+#: ../plugins/snippets/snippets/placeholder.py:601
+#, python-format
+msgid "Execution of the Python command (%s) exceeds the maximum time, execution aborted."
+msgstr "Thug an gnìomhachadh aig an àitne Python (%s) nas fhaide na an ùine as motha, chaidh sgur dhen ghnìomhachadh."
+
+#: ../plugins/snippets/snippets/placeholder.py:609
+#, python-format
+msgid "Execution of the Python command (%s) failed: %s"
+msgstr "Dh'fhàillig le gnìomhachadh na h-àithne Python (%s): %s"
+
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:2
+msgid "Insert often-used pieces of text in a fast way"
+msgstr "Cuir a-steach bloighean teacsa a chleachdas tu gu tric ann an dòigh luath"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:1
+msgid "Manage Snippets"
+msgstr "Stiùir ich snippets"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:2
+msgid "_Snippets:"
+msgstr "_Snippets:"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:3
+msgid "Create new snippet"
+msgstr "Cruthaich snippet ùr"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:4
+msgid "Add Snippet"
+msgstr "Cuir snippet ris"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:6
+msgid "Remove Snippet"
+msgstr "Thoir snippet air falbh"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:8
+msgid "Import Snippets"
+msgstr "Ion-phortaich snippets"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:9
+msgid "Export selected snippets"
+msgstr "Às-phortaich na snippets a thagh thu"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:10
+msgid "Export Snippets"
+msgstr "Às-phortaich snippets"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:12
+msgid "Activation"
+msgstr "Gnìomhachadh"
+
+#. "tab" here means the tab key, not the notebook tab!
+#: ../plugins/snippets/snippets/snippets.ui.h:15
+msgid "_Tab trigger:"
+msgstr "Trigeir _Tab:"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:17
+msgid "S_hortcut key:"
+msgstr "Iuchair at_h-ghoirid:"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:18
+msgid "Shortcut key with which the snippet is activated"
+msgstr "An iuchair ath-ghoirid a chleachdas tu gus an snippet a ghnìomhachadh"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:19
+msgid "_Drop targets:"
+msgstr "_Leig às targaidean:"
+
+#: ../plugins/snippets/snippets/windowactivatable.py:154
+msgid "Manage _Snippets..."
+msgstr "Stiùirich _snippets..."
+
+#: ../plugins/snippets/snippets/windowactivatable.py:155
+msgid "Manage snippets"
+msgstr "Stiùirich snippets"
+
+#: ../plugins/sort/gedit-sort-plugin.c:88
+msgid "S_ort..."
+msgstr "_Seòrsaich..."
+
+#: ../plugins/sort/gedit-sort-plugin.c:90
+msgid "Sort the current document or selection"
+msgstr "Seòrsaich an sgrìobhainn no an taghadh làithreach"
+
+#. ex:ts=8:noet:
+#: ../plugins/sort/gedit-sort-plugin.ui.h:1
+#: ../plugins/sort/sort.plugin.desktop.in.h:1
+msgid "Sort"
+msgstr "Seòrsaich"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:2
+msgid "_Sort"
+msgstr "_Seòrsaich"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:3
+msgid "_Reverse order"
+msgstr "_Cas mu seach"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:4
+msgid "R_emove duplicates"
+msgstr "T_hoir air falbh dùblachaidhean"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:5
+msgid "_Ignore case"
+msgstr "Gun a_ire do litrichean mòra 's beaga"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:6
+msgid "S_tart at column:"
+msgstr "_Tòisich aig colbh:"
+
+#: ../plugins/sort/gedit-sort-plugin.ui.h:7
+msgid "You cannot undo a sort operation"
+msgstr "Chan urrainn dhut obrachadh seòrsachaidh a neo-dhèanamh"
+
+#: ../plugins/sort/sort.plugin.desktop.in.h:2
+msgid "Sorts a document or selected text."
+msgstr "Seòrsaichidh seo sgìobhainn no an teacsa a thagh thu."
+
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
+#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
+#. * for the current misspelled word
+#: ../plugins/spell/gedit-automatic-spell-checker.c:420
+#: ../plugins/spell/gedit-spell-checker-dialog.c:444
+msgid "(no suggested words)"
+msgstr "(chan eil moladh air facal ann)"
+
+#: ../plugins/spell/gedit-automatic-spell-checker.c:444
+msgid "_More..."
+msgstr "_Barrachd..."
+
+#. Ignore all
+#: ../plugins/spell/gedit-automatic-spell-checker.c:499
+msgid "_Ignore All"
+msgstr "Leig seachad na h-uile"
+
+#. + Add to Dictionary
+#: ../plugins/spell/gedit-automatic-spell-checker.c:514
+msgid "_Add"
+msgstr "_Cuir ris"
+
+#: ../plugins/spell/gedit-automatic-spell-checker.c:553
+msgid "_Spelling Suggestions..."
+msgstr "Molaidhean _litreachaidh..."
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:264
+msgid "Check Spelling"
+msgstr "Dearbhaich an litreachadh"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:275
+msgid "Suggestions"
+msgstr "Molaidhean"
+
+#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
+#: ../plugins/spell/gedit-spell-checker-dialog.c:551
+msgid "(correct spelling)"
+msgstr "(litreachadh mar bu chòir)"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:692
+msgid "Completed spell checking"
+msgstr "Chaidh dearbhadh an litreachaidh a choileanadh"
+
+#. Translators: the first %s is the language name, and
+#. * the second %s is the locale name. Example:
+#. * "French (France)"
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:378
+#: ../plugins/spell/gedit-spell-checker-language.c:384
+#, c-format
+msgctxt "language"
+msgid "%s (%s)"
+msgstr "%s (%s)"
+
+#. Translators: this refers to an unknown language code
+#. * (one which isn't in our built-in list).
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:393
+#, c-format
+msgctxt "language"
+msgid "Unknown (%s)"
+msgstr "Neo-aithnichte (%s)"
+
+#. Translators: this refers the Default language used by the
+#. * spell checker
+#.
+#: ../plugins/spell/gedit-spell-checker-language.c:499
+msgctxt "language"
+msgid "Default"
+msgstr "Bun-roghainn"
+
+#: ../plugins/spell/gedit-spell-language-dialog.c:140
+msgid "Set language"
+msgstr "Suidhich an cànan"
+
+#: ../plugins/spell/gedit-spell-language-dialog.c:182
+msgid "Languages"
+msgstr "Cànain"
+
+#: ../plugins/spell/gedit-spell-plugin.c:108
+msgid "_Check Spelling..."
+msgstr "Dearbhaic_h an litreachadh..."
+
+#: ../plugins/spell/gedit-spell-plugin.c:110
+msgid "Check the current document for incorrect spelling"
+msgstr "Thoir sùi air an sgrìobhainn làithreach a bheil mearachdan litreachaidh ann gus nach eil"
+
+#: ../plugins/spell/gedit-spell-plugin.c:116
+msgid "Set _Language..."
+msgstr "Suidhich an _cànan..."
+
+#: ../plugins/spell/gedit-spell-plugin.c:118
+msgid "Set the language of the current document"
+msgstr "Suidhich cànan na sgrìobhainn làithrich"
+
+#: ../plugins/spell/gedit-spell-plugin.c:127
+msgid "_Highlight Misspelled Words"
+msgstr "_Soillsich faclan le litreachadh cearr"
+
+#: ../plugins/spell/gedit-spell-plugin.c:129
+msgid "Automatically spell-check the current document"
+msgstr "Dearbhaich an litreachadh gu fèin-obrachail san sgrìobhainn làithreach"
+
+#: ../plugins/spell/gedit-spell-plugin.c:821
+msgid "The document is empty."
+msgstr "Tha an sgrìobhainn falamh."
+
+#: ../plugins/spell/gedit-spell-plugin.c:846
+msgid "No misspelled words"
+msgstr "Chaidh na h-uile facal a litreachadh mar bu chòir"
+
+#. ex:ts=8:noet:
+#: ../plugins/spell/languages-dialog.ui.h:1
+msgid "Set Language"
+msgstr "Suidhich an cànan"
+
+#: ../plugins/spell/languages-dialog.ui.h:2
+msgid "Select the _language of the current document."
+msgstr "Tagh _cànan na sgrìobhainn làithrich."
+
+#: ../plugins/spell/spell-checker.ui.h:1
+msgid "Check spelling"
+msgstr "Dearbhaich an litreachadh"
+
+#: ../plugins/spell/spell-checker.ui.h:2
+msgid "Misspelled word:"
+msgstr "Facal le mearachd litreachaidh:"
+
+#: ../plugins/spell/spell-checker.ui.h:3
+msgid "word"
+msgstr "facal"
+
+#: ../plugins/spell/spell-checker.ui.h:4
+msgid "Change _to:"
+msgstr "Atharraich _gu:"
+
+#: ../plugins/spell/spell-checker.ui.h:5
+msgid "Check _Word"
+msgstr "Dearbhaich _facal"
+
+#: ../plugins/spell/spell-checker.ui.h:6
+msgid "_Suggestions:"
+msgstr "_Molaidhean:"
+
+#: ../plugins/spell/spell-checker.ui.h:7
+msgid "_Ignore"
+msgstr "_Leig seachad"
+
+#: ../plugins/spell/spell-checker.ui.h:8
+msgid "Cha_nge"
+msgstr "Ath_arraich"
+
+#: ../plugins/spell/spell-checker.ui.h:9
+msgid "Ignore _All"
+msgstr "Leig seachad na h-ui_le"
+
+#: ../plugins/spell/spell-checker.ui.h:10
+msgid "Change A_ll"
+msgstr "Atharraich na h-ui_le"
+
+#: ../plugins/spell/spell-checker.ui.h:11
+msgid "User dictionary:"
+msgstr "Faclair a' chleachdaiche:"
+
+#: ../plugins/spell/spell-checker.ui.h:12
+msgid "Add w_ord"
+msgstr "Cuir _facal ris"
+
+#: ../plugins/spell/spell-checker.ui.h:13
+msgid "Language:"
+msgstr "Cànan:"
+
+#: ../plugins/spell/spell-checker.ui.h:14
+msgid "Language"
+msgstr "Cànan"
+
+#: ../plugins/spell/spell.plugin.desktop.in.h:1
+msgid "Spell Checker"
+msgstr "Dearbhair-litreachaidh"
+
+#: ../plugins/spell/spell.plugin.desktop.in.h:2
+msgid "Checks the spelling of the current document."
+msgstr "Dearbhaidh seo an litreachadh san sgrìobhainn làithreach."
+
+#: ../plugins/time/gedit-time-dialog.ui.h:1
+msgid "Insert Date and Time"
+msgstr "Cuir a-steach ceann-là is àm"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:2
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
+msgid "Use the _selected format"
+msgstr "Cleachd am fòrmat air a _thaghadh"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:3
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
+msgid "_Use custom format"
+msgstr "Cleachd fòrmat _gnàthaichte"
+
+#. Translators: Use the more common date format in your locale
+#: ../plugins/time/gedit-time-dialog.ui.h:5
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:8
+#, no-c-format
+msgid "%d/%m/%Y %H:%M:%S"
+msgstr "%d/%m/%Y %H:%M:%S"
+
+#. Translators: This example should follow the date format defined in the entry above
+#: ../plugins/time/gedit-time-dialog.ui.h:6
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:10
+msgid "01/11/2009 17:52:00"
+msgstr "01/11/2009 17:52:00"
+
+#: ../plugins/time/gedit-time-dialog.ui.h:7
+msgid "_Insert"
+msgstr "Cu_ir a-steach"
+
+#: ../plugins/time/gedit-time-plugin.c:184
+msgid "In_sert Date and Time..."
+msgstr "Cuir a-_steach ceann-là is àm..."
+
+#: ../plugins/time/gedit-time-plugin.c:186
+msgid "Insert current date and time at the cursor position"
+msgstr "Cuir a-steach an ceann-là is àm làithreach air àite a' chùrsair"
+
+#: ../plugins/time/gedit-time-plugin.c:504
+msgid "Available formats"
+msgstr "Fòrmatan ri làimh"
+
+#. ex:ts=8:noet:
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:1
+msgid "Configure date/time plugin"
+msgstr "Rèitich plugan a' chinn-là 's ama"
+
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:2
+msgid "When inserting date/time..."
+msgstr "Nuair a thèid ceann-là 's àm a chur a-steach..."
+
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
+msgid "_Prompt for a format"
+msgstr "Iarr _fòrmat"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+msgid "Prompt Type"
+msgstr "Iarr seòrsa"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+msgid "If the user should be prompted for a format or if the selected or custom format should be used."
+msgstr "An tèid am fòrmat fhaighneachd dhan chleachdaiche no an tèid am fòrmat gnàthaichte no air a thaghadh a chleachdadh."
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+msgid "Selected Format"
+msgstr "Am fòrmat air a thaghadh"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+msgid "The selected format used when inserting the date/time."
+msgstr "Am fòrmat air a thaghadh a thèid a chleachdadh le cur a-steach a' chinn-là 's ama."
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+msgid "Custom Format"
+msgstr "Fòrmat gnàthaichte"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+msgid "The custom format used when inserting the date/time."
+msgstr "Am fòrmat gnàthaichte a thèid a chleachdadh le cur a-steach a' chinn-là 's ama."
+
+#: ../plugins/time/time.plugin.desktop.in.h:1
+msgid "Insert Date/Time"
+msgstr "Cuir a-steach ceann-là 's àm"
+
+#: ../plugins/time/time.plugin.desktop.in.h:2
+msgid "Inserts current date and time at the cursor position."
+msgstr "Cuiridh seo an ceann-là 's àm a-steach air àite a' chùrsair."
+
+#: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:1
+msgid "Zeitgeist dataprovider"
+msgstr "Solaraiche-dàta Zeitgeist"
+
+#: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
+msgid "Logs access and leave event for documents used with gedit"
+msgstr "Cuiridh seo tachartasan inntrigidh is fàgail san loga airson sgrìobhainnean a thèid a chleachdadh le gedit"
+
+#~ msgid "Text;Editor;Plaintext;Write;"
+#~ msgstr "Teacsa;Deasaiche;Teacsa lom;Sgrìobh;"
+
+#~ msgid "Open Files"
+#~ msgstr "Fosgail faidhlichean"
+
+#~ msgid "Character Encodings"
+#~ msgstr "Còdachadh charactaran"
+
+#~ msgid ""
+#~ "The location of the file cannot be accessed because it is not mounted."
+#~ msgstr "Cha ghabh ionad an fhaidhle ruigsinn on nach deach a mhunntachadh."
+
+#~ msgid ""
+#~ "gedit opened this instance of the file in a non-editable way. Do you want "
+#~ "to edit it anyway?"
+#~ msgstr ""
+#~ "Dh'fhosgail gedit an ionstans seo dhen fhaidhle ann an dòigh nach gabh "
+#~ "deasachadh. A bheil thu airson a dheasachadh co-dhiù?"
+
+#~ msgid "Do you want to drop your changes and reload the file?"
+#~ msgstr ""
+#~ "A bheil thu airson na h-atharraichean agad a leigeil seachad is am "
+#~ "faidhle ath-luchdadh?"
+
+#~ msgid "Preferences"
+#~ msgstr "Roghainnean"
+
+#~ msgid "Replace All"
+#~ msgstr "Cuir an àite na h-uile"
+
+#~ msgid "Disable syntax highlighting"
+#~ msgstr "Cuir à comas soillseachadh a' cho-chàraidh"
+
+#~ msgid "Set the root to the active document location"
+#~ msgstr "Suidich am freumh air ionad na sgrìobhainn làithrich"
+
+#~ msgid "Open a terminal at the currently opened directory"
+#~ msgstr "Fosgail tèirmineal aig a' phasgan fhosgailte làithreach"
+
+#~ msgid "file"
+#~ msgstr "faidhle"
+
+#~ msgid "directory"
+#~ msgstr "pasgan"
+
+#~ msgid "Move selected file or folder to trash"
+#~ msgstr "Gluais am faidhle no pasgan a thagh thu dhan sgudal"
+
+#~ msgid "Delete selected file or folder"
+#~ msgstr "Sguab às am faidhle no pasgan a thagh thu"
+
+#~ msgid "Open selected file"
+#~ msgstr "Fosgail am faidhle a thagh thu"
+
+#~ msgid "Up"
+#~ msgstr "Suas"
+
+#~ msgid "Open the parent folder"
+#~ msgstr "Fosgail pàrant a' phasgain"
+
+#~ msgid "Add new empty folder"
+#~ msgstr "Cuir pasgan falamh ùr  ris"
+
+#~ msgid "Add new empty file"
+#~ msgstr "Cuir faidhle falamh ùr ris"
+
+#~ msgid "Rename selected file or folder"
+#~ msgstr "Thoir ainm ùr air an fhaidhle no phasgan a thagh thu"
+
+#~ msgid "_Previous Location"
+#~ msgstr "An t-ionad _roimhe"
+
+#~ msgid "Go to the previous visited location"
+#~ msgstr "Rach gun ionad air an do thadhail thu roimhe"
+
+#~ msgid "_Next Location"
+#~ msgstr "An t-a_th ionad"
+
+#~ msgid "Go to the next visited location"
+#~ msgstr "Rach gun ath-ionad air an do thadhail thu"
+
+#~ msgid "Refresh the view"
+#~ msgstr "Ath-nuadhaich an sealladh"
+
+#~ msgid "View folder in file manager"
+#~ msgstr "Seall am pasgan ann am manaidsear nam faidhle"
+
+#~ msgid "Show hidden files and folders"
+#~ msgstr "Seall na faidhlichean is pasganan falaichte"
+
+#~ msgid "Show binary files"
+#~ msgstr "Seall faidhlichean bìnearaidh"
+
+#~ msgid "Match Filename"
+#~ msgstr "Maidsich an t-ainm faidhle"
+
+#~ msgid "Quick open"
+#~ msgstr "Fosgladh luath"
+
+#~ msgid "Text;Plaintext;Write;"
+#~ msgstr "Teacsa;Teacs-lom;Sgrìobh;"
+
+#~ msgid "Log Out _without Saving"
+#~ msgstr "Log a-steach às _aonais a' sàbhaladh"
+
+#~ msgid "%s: invalid encoding.\n"
+#~ msgstr "%s:ion-chòdachadh neo-dhligheach.\n"
+
+#~ msgid "Run gedit in the background"
+#~ msgstr "Ruith gedit sa chùl-ionad"
