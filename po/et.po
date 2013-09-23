@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gedit MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-11 22:17+0000\n"
-"PO-Revision-Date: 2013-03-12 16:39+0300\n"
+"POT-Creation-Date: 2013-09-19 13:55+0000\n"
+"PO-Revision-Date: 2013-09-20 20:19+0300\n"
 "Last-Translator: Mattias Põldaru <mahfiaz@gmail.com>\n"
 "Language-Team: Estonian <>\n"
 "Language: et\n"
@@ -25,8 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Poedit-Language: Estonian\n"
-"X-Poedit-Country: ESTONIA\n"
+"X-Generator: Poedit 1.5.4\n"
 
 msgid "gedit"
 msgstr "gedit"
@@ -548,12 +547,12 @@ msgstr[1] ""
 "muudatused jäädavalt kaotsi."
 
 #, c-format
-msgid "Changes to document \"%s\" will be permanently lost."
-msgstr "Dokumendile \"%s\" tehtud muudatused lähevad jäädavalt kaotsi."
+msgid "Changes to document “%s” will be permanently lost."
+msgstr "Dokumendile “%s” tehtud muudatused lähevad jäädavalt kaotsi."
 
 #, c-format
-msgid "Save changes to document \"%s\" before closing?"
-msgstr "Kas salvestada dokumenti \"%s\" tehtud muudatused enne sulgemist?"
+msgid "Save changes to document “%s” before closing?"
+msgstr "Kas salvestada dokumenti “%s” tehtud muudatused enne sulgemist?"
 
 msgid "Saving has been disabled by the system administrator."
 msgstr "Salvestamine on süsteemiülema poolt keelatud."
@@ -594,9 +593,9 @@ msgid_plural "Loading %d files…"
 msgstr[0] "%d faili laadimine…"
 msgstr[1] "%d faili laadimine…"
 
-#. Translators: "Open Files" is the title of the file chooser window
-msgid "Open Files"
-msgstr "Failide avamine"
+#. Translators: "Open" is the title of the file chooser window
+msgid "Open"
+msgstr "Ava"
 
 #, c-format
 msgid "The file \"%s\" is read-only."
@@ -850,21 +849,18 @@ msgstr "Käesolev lokaat (%s)"
 msgid "Add or Remove..."
 msgstr "Lisa või eemalda..."
 
-msgid "Character Encodings"
-msgstr "Kooditabelid"
-
-msgid "_Description"
-msgstr "K_irjeldus"
-
-msgid "_Encoding"
-msgstr "_Kodeering"
-
 #. ex:set ts=8 noet:
 msgid "Character encodings"
 msgstr "Kooditabelid"
 
 msgid "A_vailable encodings:"
 msgstr "_Saadaolevad kooditabelid:"
+
+msgid "_Description"
+msgstr "K_irjeldus"
+
+msgid "_Encoding"
+msgstr "_Kodeering"
 
 msgid "E_ncodings shown in menu:"
 msgstr "_Menüüs näidatavad kooditabelid:"
@@ -890,44 +886,55 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
+msgid "Plain Text"
+msgstr "Lihttekst"
+
+#. ex:set ts=8 noet:
+msgid "Highlight Mode"
+msgstr "Esiletõstmise režiim"
+
+msgid "Search highlight mode..."
+msgstr "Otsingu esiletõstmise režiim..."
+
+#. Add a cancel button
+msgid "_Cancel"
+msgstr "_Loobu"
+
 msgid "_Retry"
 msgstr "_Proovi uuesti"
 
 #, c-format
-msgid "Could not find the file %s."
-msgstr "Faili %s pole võimalik leida."
+msgid "Could not find the file “%s”."
+msgstr "Faili “%s” pole võimalik leida."
 
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Palun kontrolli, kas sisestasid asukoha õigesti ja proovi uuesti."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #, c-format
-msgid "gedit cannot handle %s locations."
-msgstr "gedit ei oska %s asukohti käsitleda."
+msgid "Unable to handle “%s:” locations."
+msgstr "“%s:” asukohti pole võimalik käsitleda."
 
-msgid "gedit cannot handle this location."
-msgstr "gedit ei oska seda asukohta käsitleda."
+msgid "Unable to handle this location."
+msgstr "Seda asukohta ei osata käsitleda."
 
-msgid "The location of the file cannot be mounted."
-msgstr "Faili asukohta pole võimalik failisüsteemiga haakida."
-
-msgid "The location of the file cannot be accessed because it is not mounted."
-msgstr "Faili asukohale pole võimalik ligi pääseda, kuna see pole haagitud."
+msgid "The location of the file cannot be accessed."
+msgstr "Faili asukohale pole ligipääsu."
 
 #, c-format
-msgid "%s is a directory."
-msgstr "%s on kataloog."
+msgid "“%s” is a directory."
+msgstr "“%s” on kataloog."
 
 #, c-format
-msgid "%s is not a valid location."
-msgstr "%s on vigane asukoht."
+msgid "“%s” is not a valid location."
+msgstr "“%s” on vigane asukoht."
 
 #, c-format
 msgid ""
-"Host %s could not be found. Please check that your proxy settings are "
+"Host “%s” could not be found. Please check that your proxy settings are "
 "correct and try again."
 msgstr ""
-"Hosti %s pole võimalik leida. Palun veendu, et su proksi on õigesti "
+"Hosti “%s” pole võimalik leida. Palun veendu, et su proksi on õigesti "
 "seadistatud ja proovi uuesti."
 
 #, c-format
@@ -939,8 +946,8 @@ msgstr ""
 "proovi uuesti."
 
 #, c-format
-msgid "%s is not a regular file."
-msgstr "%s pole tavaline fail."
+msgid "“%s” is not a regular file."
+msgstr "“%s” pole tavaline fail."
 
 msgid "Connection timed out. Please try again."
 msgstr "Ühendus ületas ajapiirangu. Palun proovi uuesti."
@@ -952,13 +959,12 @@ msgstr "Fail on liiga suur."
 msgid "Unexpected error: %s"
 msgstr "Ootamatu viga: %s"
 
-msgid "gedit cannot find the file. Perhaps it has recently been deleted."
-msgstr ""
-"gedit'il pole võimalik faili leida. Võib-olla on see fail hiljuti kustutatud."
+msgid "Cannot find the requested file. Perhaps it has recently been deleted."
+msgstr "Päritud faili ei leitud. Võib-olla on see fail hiljuti kustutatud."
 
 #, c-format
-msgid "Could not revert the file %s."
-msgstr "Faili %s pole võimalik taastada."
+msgid "Could not revert the file “%s”."
+msgstr "Faili “%s” pole võimalik taastada."
 
 msgid "Ch_aracter Encoding:"
 msgstr "_Kooditabel:"
@@ -977,8 +983,8 @@ msgstr ""
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Sul pole piisavalt õiguseid selle faili avamiseks."
 
-msgid "gedit has not been able to detect the character encoding."
-msgstr "gedit pole suuteline kooditabelit tuvastama."
+msgid "Unable to detect the character encoding."
+msgstr "Kooditabelit ei suudetud tuvastada."
 
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Palun kontrolli, ega sa ei proovi binaarfaili avada."
@@ -987,8 +993,8 @@ msgid "Select a character encoding from the menu and try again."
 msgstr "Vali menüüst kooditabel ja proovi uuesti."
 
 #, c-format
-msgid "There was a problem opening the file %s."
-msgstr "Faili %s avamisel esines viga."
+msgid "There was a problem opening the file “%s”."
+msgstr "Faili “%s” avamisel esines viga."
 
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
@@ -1001,19 +1007,19 @@ msgid "You can also choose another character encoding and try again."
 msgstr "Võid valida järgmise märgikodeeringu ja proovida uuesti."
 
 #, c-format
-msgid "Could not open the file %s using the %s character encoding."
-msgstr "Faili %s pole võimalik kooditabeliga %s avada."
+msgid "Could not open the file “%s” using the “%s” character encoding."
+msgstr "Faili “%s” pole võimalik kooditabeliga “%s” avada."
 
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Vali menüüst teine kooditabel ja proovi uuesti."
 
 #, c-format
-msgid "Could not open the file %s."
-msgstr "Faili %s pole võimalik avada."
+msgid "Could not open the file “%s”."
+msgstr "Faili “%s” pole võimalik avada."
 
 #, c-format
-msgid "Could not save the file %s using the %s character encoding."
-msgstr "Faili %s pole võimalik kooditabelis %s salvestada."
+msgid "Could not save the file “%s” using the “%s” character encoding."
+msgstr "Faili “%s” pole võimalik kooditabeliga “%s” salvestada."
 
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
@@ -1028,15 +1034,11 @@ msgid "D_on't Edit"
 msgstr "Ära r_edigeeri"
 
 #, c-format
-msgid "This file (%s) is already open in another gedit window."
-msgstr "See fail (%s) on juba ühes gedit'i aknas avatud."
+msgid "This file “%s” is already open in another window."
+msgstr "See fail “%s” on juba ühes aknas avatud."
 
-msgid ""
-"gedit opened this instance of the file in a non-editable way. Do you want to "
-"edit it anyway?"
-msgstr ""
-"gedit avas selle instantsi mittemuudetaval moel. Kas Sa soovid seda ikkagi "
-"redigeerida?"
+msgid "Do you want to edit it anyway?"
+msgstr "Kas soovid faili ikkagi muuta?"
 
 msgid "S_ave Anyway"
 msgstr "_Salvesta ikkagi"
@@ -1049,8 +1051,8 @@ msgstr "Ä_ra salvesta"
 #. * not accurate (since last load/save)
 #.
 #, c-format
-msgid "The file %s has been modified since reading it."
-msgstr "Faili %s on lugemise ajal muudetud."
+msgid "The file “%s” has been modified since reading it."
+msgstr "Faili “%s” on pärast avamist muudetud."
 
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
@@ -1058,45 +1060,45 @@ msgstr ""
 "salvestada ikkagi?"
 
 #, c-format
-msgid "Could not create a backup file while saving %s"
-msgstr "%s salvestamisel pole võimalik varukoopia faili luua"
+msgid "Could not create a backup file while saving “%s”"
+msgstr "“%s” salvestamisel pole võimalik varukoopia faili luua"
 
 #, c-format
-msgid "Could not create a temporary backup file while saving %s"
-msgstr "%s salvestamisel pole ajutist varukoopiafaili võimalik luua"
+msgid "Could not create a temporary backup file while saving “%s”"
+msgstr "“%s” salvestamisel pole võimalik ajutist varukoopiafaili luua"
 
 msgid ""
-"gedit could not back up the old copy of the file before saving the new one. "
-"You can ignore this warning and save the file anyway, but if an error occurs "
+"Could not back up the old copy of the file before saving the new one. You "
+"can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"gedit ei saa enne uue faili salvestamist vana faili varukoopiaks salvestada. "
+"Enne uue faili salvestamist pole võimalik vana faili varukoopiat salvestada. "
 "Sa võid seda hoiatust eirata ja faili siiski salvestada, kuid võimaliku vea "
-"korral läheb vana koopia kaotsi. Kas salvestada siiski?"
+"korral läheb vana koopia kaotsi. Kas siiski salvestada?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #, c-format
 msgid ""
-"gedit cannot handle %s locations in write mode. Please check that you typed "
-"the location correctly and try again."
+"Cannot handle “%s:” locations in write mode. Please check that you typed the "
+"location correctly and try again."
 msgstr ""
-"gedit ei saa %s asukohti kirjutamiseks kasutada. Palun kontrolli, kas "
+"“%s:” asukohti pole võimalik kirjutamiseks kasutada. Palun kontrolli, kas "
 "sisestasid asukoha õigesti ja proovi uuesti."
 
 msgid ""
-"gedit cannot handle this location in write mode. Please check that you typed "
-"the location correctly and try again."
+"Cannot handle this location in write mode. Please check that you typed the "
+"location correctly and try again."
 msgstr ""
-"gedit ei suuda seda asukohta kirjutamiseks kasutada. Palun kontrolli, kas "
+"Seda asukohta pole võimalik kirjutamiseks kasutada. Palun kontrolli, kas "
 "sisestasid faili asukoha õigesti ja proovi uuesti."
 
 #, c-format
 msgid ""
-"%s is not a valid location. Please check that you typed the location "
+"“%s” is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
-"%s pole korrektne asukoht. Palun kontrolli, kas Sa sisestasid faili asukoha "
-"õigesti ja proovi uuesti."
+"“%s” pole korrektne asukoht. Palun kontrolli, kas sa sisestasid faili "
+"asukoha õigesti ja proovi uuesti."
 
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
@@ -1139,29 +1141,26 @@ msgstr ""
 "piirangut pole."
 
 #, c-format
-msgid "Could not save the file %s."
-msgstr "Faili %s pole võimalik salvestada."
+msgid "Could not save the file “%s”."
+msgstr "Faili “%s” pole võimalik salvestada."
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
 #, c-format
-msgid "The file %s changed on disk."
-msgstr "Faili %s on kettal muudetud."
+msgid "The file “%s” changed on disk."
+msgstr "Faili “%s” on kettal muudetud."
 
-msgid "Do you want to drop your changes and reload the file?"
-msgstr "Kas soovid tühistada oma muudatused ja faili uuesti laadida?"
-
-msgid "Do you want to reload the file?"
-msgstr "Kas soovid faili uuesti laadida?"
+msgid "Drop Changes and _Reload"
+msgstr "Unusta muudatused ja _laadi uuesti"
 
 msgid "_Reload"
 msgstr "Laa_di uuesti"
 
 #, c-format
-msgid "Some invalid chars have been detected while saving %s"
-msgstr "%s salvestamise käigus tuvastati mõned vigased märgid"
+msgid "Some invalid chars have been detected while saving “%s”"
+msgstr "“%s” salvestamise käigus tuvastati mõned vigased märgid"
 
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
@@ -1189,11 +1188,17 @@ msgstr "_Lõpeta"
 msgid "_Move to New Window"
 msgstr "_Tõsta uude aknasse"
 
+msgid "_Save"
+msgstr "_Salvesta"
+
 msgid "Save _As..."
 msgstr "Sa_lvesta kui..."
 
 msgid "_Print..."
 msgstr "_Prindi..."
+
+msgid "_Close"
+msgstr "_Sulge"
 
 msgid "Open a file"
 msgstr "Faili avamine"
@@ -1236,12 +1241,9 @@ msgstr "Värviskeemi failid"
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Värviskeemi \"%s\" pole võimalik eemaldada."
 
+#. ex:set ts=8 noet:
 msgid "gedit Preferences"
 msgstr "gedit'i eelistused"
-
-#. ex:set ts=8 noet:
-msgid "Preferences"
-msgstr "Eelistused"
 
 msgid "_Display line numbers"
 msgstr "_Reanumbrid on nähtaval"
@@ -1308,6 +1310,9 @@ msgstr "Redaktori kirjatüübi valimine"
 
 msgid "Color Scheme"
 msgstr "Värviskeem"
+
+msgid "column"
+msgstr "tulp"
 
 msgid "Install scheme"
 msgstr "Skeemi paigaldamine"
@@ -1379,16 +1384,27 @@ msgstr "Päised ja _jalused:"
 msgid "_Restore Default Fonts"
 msgstr "_Taasta vaikimisi kirjatüübid"
 
+#, c-format
+msgid "Page %d of %d"
+msgstr "Lehekülg %d / %d"
+
+#. ex:set ts=8 noet:
 msgid "Show the previous page"
 msgstr "Eelmise lehekülje näitamine"
+
+msgid "P_revious Page"
+msgstr "_Eelmine leht"
 
 msgid "Show the next page"
 msgstr "Järgmise lehekülje näitamine"
 
+msgid "_Next Page"
+msgstr "_Järgmine leht"
+
 msgid "Current page (Alt+P)"
 msgstr "Käesolev lehekülg (Alt+P)"
 
-#. Translators: the "of" from "1 of 19" in print preview.
+#. the "of" from "1 of 19" in print preview
 msgid "of"
 msgstr "/"
 
@@ -1413,15 +1429,11 @@ msgstr "Lehekülje suurendamine"
 msgid "Zoom the page out"
 msgstr "Lehekülje vähendamine"
 
-msgid "_Close Preview"
-msgstr "_Sulge eelvaade"
-
 msgid "Close print preview"
 msgstr "Printimise eelvaate sulgemine"
 
-#, c-format
-msgid "Page %d of %d"
-msgstr "Lehekülg %d (%d-st)"
+msgid "_Close Preview"
+msgstr "_Sulge eelvaade"
 
 msgid "Page Preview"
 msgstr "Lehekülje eelvaade"
@@ -1436,9 +1448,6 @@ msgstr "Asenda"
 msgid "Replace _All"
 msgstr "Asenda _kõik"
 
-msgid "Replace All"
-msgstr "Asenda kõik"
-
 msgid "_Search for: "
 msgstr "_Otsitav tekst:"
 
@@ -1450,6 +1459,9 @@ msgstr "_Tõstutundlik"
 
 msgid "Match _entire word only"
 msgstr "Kogu sõ_na peab vastavuses olema"
+
+msgid "Match as _regular expression"
+msgstr "Otsi _regulaaravaldisena"
 
 msgid "Search _backwards"
 msgstr "Otsitakse tagantpoolt _ettepoole"
@@ -1625,8 +1637,11 @@ msgid "Select the entire document"
 msgstr "Kogu dokumendi valimine"
 
 #. View menu
-msgid "_Highlight Mode"
-msgstr "Esiletõstmise _režiim"
+msgid "_Highlight Mode..."
+msgstr "Esiletõstmise _režiim..."
+
+msgid "Changes the highlight mode of the active document"
+msgstr "Käesoleva dokumendi esiletõstmise režiimi muutmine"
 
 #. Search menu
 msgid "_Find..."
@@ -1760,9 +1775,21 @@ msgstr "Objekti '%s' pole võimalik failist %s leida."
 msgid "/ on %s"
 msgstr "/ kettal %s"
 
+#. Translators: the first %d is the position of the current search
+#. * occurrence, and the second %d is the total number of search
+#. * occurrences.
+#.
+#, c-format
+msgid "%d of %d"
+msgstr "%d / %d"
+
 #. create "Wrap Around" menu item.
 msgid "_Wrap Around"
 msgstr "_Lõppu (või algusese) jõudmisel otsingut ei katkestata\""
+
+#. create "Match as Regular Expression" menu item.
+msgid "Match as _Regular Expression"
+msgstr "Otsi _regulaaravaldisena"
 
 #. create "Match Entire Word Only" menu item.
 msgid "Match _Entire Word Only"
@@ -1778,26 +1805,10 @@ msgstr "Sõne, mida tahad otsida"
 msgid "Line you want to move the cursor to"
 msgstr "Rida, millele tahad kursorit viia"
 
-#, c-format
-msgid "Use %s highlight mode"
-msgstr "%s esiletõstmise kasutamine"
-
-#. add the "Plain Text" item before all the others
-#. Translators: "Plain Text" means that no highlight mode is selected in the
-#. * "View->Highlight Mode" submenu and so syntax highlighting is disabled
-msgid "Plain Text"
-msgstr "Lihttekst"
-
-msgid "Disable syntax highlighting"
-msgstr "Süntaksi esiletõstmise keelamine"
-
 #. Translators: %s is a URI
 #, c-format
 msgid "Open '%s'"
 msgstr "Ava '%s'"
-
-msgid "Open"
-msgstr "Ava"
 
 msgid "Save"
 msgstr "Salvesta"
@@ -1816,9 +1827,6 @@ msgstr "'%s' aktiveerimine"
 msgid "Use Spaces"
 msgstr "Kasutatakse tühikuid"
 
-msgid "Tab Width"
-msgstr "Tabulaatori laius:"
-
 msgid "Bracket match is out of range"
 msgstr "Sulgude vastavus on väljaspool lubatud vahemikku"
 
@@ -1828,6 +1836,10 @@ msgstr "Sulgude vastavusi ei leitud"
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Sulgude vastavus leiti real %d"
+
+#, c-format
+msgid "Tab Width: %u"
+msgstr "Tabulaatori laius: %u"
 
 msgid "There are unsaved documents"
 msgstr "Mõned dokumendid on salvestamata"
@@ -1904,12 +1916,8 @@ msgstr "Kuni uuema versiooni väljastamiseni eiratav versioon"
 msgid "Document Statistics"
 msgstr "Dokumendi statistika"
 
-msgid ""
-"Analyzes the current document and reports the number of words, lines, "
-"characters and non-space characters in it."
-msgstr ""
-"Käesoleva dokumendi analüüsimine, selles sõnade, ridade, märkide ja mitte-"
-"tühik märkide arvu leidmine ning tulemuse väljastamine."
+msgid "Report the number of words, lines and characters in a document."
+msgstr "Dokumendis olevate sõnade, ridade ja märkide loendamine."
 
 msgid "_Document Statistics"
 msgstr "_Dokumendi statistika"
@@ -2029,6 +2037,12 @@ msgid "Stopped."
 msgstr "Seisatud."
 
 #. ex:ts=4:et:
+msgid "Stop Tool"
+msgstr "Tööriista peatamine"
+
+msgid "Always available"
+msgstr "Alati saadaval"
+
 msgid "All documents"
 msgstr "Kõigile dokumentidele"
 
@@ -2119,7 +2133,7 @@ msgstr "S_isend:"
 msgid "_Save:"
 msgstr "_Salvesta:"
 
-msgid "Shortcut _Key:"
+msgid "Shortcut _key:"
 msgstr "_Kiirklahv:"
 
 msgid "Manage _External Tools..."
@@ -2134,8 +2148,8 @@ msgstr "Välised _tööriistad"
 msgid "External tools"
 msgstr "Välised tööriistad"
 
-msgid "Shell Output"
-msgstr "Kestprogrammi väljund"
+msgid "Tool Output"
+msgstr "Tööriista väljund"
 
 #. ex:ts=4:et:
 msgid "File Browser Panel"
@@ -2144,20 +2158,52 @@ msgstr "Failisirvimispaneel"
 msgid "Easy file access from the side panel"
 msgstr "Külgpaneeli kaudu hõlbus ligipääs failidele"
 
+msgid "Home"
+msgstr "Kodu"
+
 msgid "File System"
 msgstr "Failisüsteem"
 
-msgid "_Set root to active document"
+#. ex:ts=8:noet:
+msgid "_Open"
+msgstr "_Ava"
+
+msgid "_Set Root to Active Document"
 msgstr "_Määra juurikas aktiivseks kataloogiks"
 
-msgid "Set the root to the active document location"
-msgstr "Juurkataloogi määramine aktiivse dokumendi asukohale"
+msgid "_New Folder"
+msgstr "Uus _kataloog"
 
-msgid "_Open terminal here"
-msgstr "_Ava terminal siin"
+msgid "New F_ile"
+msgstr "Uus _fail"
 
-msgid "Open a terminal at the currently opened directory"
-msgstr "Terminali avamine käesolevaga avatud kataloogis"
+msgid "_Rename..."
+msgstr "_Muuda nime..."
+
+# #: ../plugins/filebrowser/gedit-file-browser-widget.c:825
+msgid "_Move to Trash"
+msgstr "_Viska prügikasti"
+
+msgid "_Delete"
+msgstr "_Kustuta"
+
+msgid "Re_fresh View"
+msgstr "_Värskenda vaadet"
+
+msgid "_View Folder"
+msgstr "_Vaata kataloogi"
+
+msgid "_Open in Terminal"
+msgstr "_Ava terminalis"
+
+msgid "_Filter"
+msgstr "_Filter"
+
+msgid "Show _Hidden"
+msgstr "Näita _peidetuid"
+
+msgid "Show _Binary"
+msgstr "Näita _binaarseid"
 
 msgid "File Browser"
 msgstr "Failisirvija"
@@ -2221,8 +2267,8 @@ msgstr ""
 "pead sa filtri sätteid muutma."
 
 #. Translators: This is the default name of new files created by the file browser pane.
-msgid "file"
-msgstr "fail"
+msgid "Untitled File"
+msgstr "Nimetu fail"
 
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
@@ -2232,8 +2278,8 @@ msgstr ""
 "filtri sätteid muutma"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-msgid "directory"
-msgstr "kataloog"
+msgid "Untitled Folder"
+msgstr "Nimetu kataloog"
 
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
@@ -2244,88 +2290,6 @@ msgstr ""
 
 msgid "Bookmarks"
 msgstr "Järjehoidjad"
-
-msgid "_Filter"
-msgstr "_Filter"
-
-# #: ../plugins/filebrowser/gedit-file-browser-widget.c:825
-msgid "_Move to Trash"
-msgstr "_Viska prügikasti"
-
-msgid "Move selected file or folder to trash"
-msgstr "Valitud faili või kataloogi prügikasti viskamine"
-
-msgid "_Delete"
-msgstr "_Kustuta"
-
-msgid "Delete selected file or folder"
-msgstr "Valitud faili või kataloogi kustutamine"
-
-msgid "Open selected file"
-msgstr "Valitud faili avamine"
-
-msgid "Up"
-msgstr "Üles"
-
-msgid "Open the parent folder"
-msgstr "Ülemise kataloogi avamine"
-
-msgid "_New Folder"
-msgstr "Uus _kataloog"
-
-msgid "Add new empty folder"
-msgstr "Uue tühja kataloogi lisamine"
-
-msgid "New F_ile"
-msgstr "Uus _fail"
-
-msgid "Add new empty file"
-msgstr "Uue tühja faili lisamine"
-
-msgid "_Rename"
-msgstr "_Muuda nime"
-
-msgid "Rename selected file or folder"
-msgstr "Valitud faili või kataloogi nime muutmine"
-
-msgid "_Previous Location"
-msgstr "_Eelmine asukoht"
-
-msgid "Go to the previous visited location"
-msgstr "Eelmisele külastatud asukohale siirdumine"
-
-msgid "_Next Location"
-msgstr "_Järgmine asukoht"
-
-msgid "Go to the next visited location"
-msgstr "Järgmisele külastatud asukohale siirdumine"
-
-msgid "Re_fresh View"
-msgstr "_Värskenda vaadet"
-
-msgid "Refresh the view"
-msgstr "Vaate värskendamine"
-
-msgid "_View Folder"
-msgstr "_Vaata kataloogi"
-
-msgid "View folder in file manager"
-msgstr "Kataloogi vaatamine failihalduris"
-
-msgid "Show _Hidden"
-msgstr "Näita _peidetuid"
-
-msgid "Show hidden files and folders"
-msgstr "Peidetud failide ja kataloogide näitamine"
-
-msgid "Show _Binary"
-msgstr "Näita _binaarseid"
-
-msgid "Show binary files"
-msgstr "Binaarfailide näitamine"
-
-msgid "Match Filename"
-msgstr "Failinime vastavus"
 
 #, c-format
 msgid "No mount object for mounted volume: %s"
@@ -2338,6 +2302,10 @@ msgstr "Meediumit pole võimalik avada: %s"
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Ketast pole võimalik haakida: %s"
+
+#, c-format
+msgid "Error when loading '%s': No such directory"
+msgstr "'%s' laadimisel tekkis viga: sellist kausta pole"
 
 #. ex:ts=8:noet:
 msgid "Open With Tree View"
@@ -2413,6 +2381,12 @@ msgstr ""
 "Failisirvija filtri muster. See seda filtrit kasutatakse koos filter_mode "
 "võtmes määratud režiimiga."
 
+msgid "File Browser Binary Patterns"
+msgstr "Failisirvija binaarmustrid"
+
+msgid "The supplemental patterns to use when filtering binary files."
+msgstr "Täiendavad mustrid binaarfailide filtreerimisel."
+
 msgid "Modelines"
 msgstr "Režiimiread"
 
@@ -2451,8 +2425,8 @@ msgstr "Pythoni konsool"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Pythoni interaktiivse konsooli avamine alumisel paneelil"
 
-msgid "Quick open"
-msgstr "Kiiravamine"
+msgid "Quick Open..."
+msgstr "Kiiravamine..."
 
 msgid "Quickly open documents"
 msgstr "Failide kiiravamine"
@@ -2736,7 +2710,6 @@ msgctxt "language"
 msgid "Default"
 msgstr "Vaikimisi"
 
-#. ex:ts=8:noet:
 msgid "Set language"
 msgstr "Keele määramine"
 
@@ -2766,6 +2739,10 @@ msgstr "Dokument on tühi."
 
 msgid "No misspelled words"
 msgstr "Probleemseid sõnu pole"
+
+#. ex:ts=8:noet:
+msgid "Set Language"
+msgstr "Keele määramine"
 
 msgid "Select the _language of the current document."
 msgstr "_Vali käesoleva dokumendi keel."
@@ -2892,14 +2869,106 @@ msgstr "Zeitgeisti andmevarustaja"
 msgid "Logs access and leave event for documents used with gedit"
 msgstr "Logib geditiga avatud dokumentide avamise ja sulgemise sündmuseid"
 
+#~ msgid "Open Files"
+#~ msgstr "Failide avamine"
+
+#~ msgid "Character Encodings"
+#~ msgstr "Kooditabelid"
+
+#~ msgid ""
+#~ "The location of the file cannot be accessed because it is not mounted."
+#~ msgstr "Faili asukohale pole võimalik ligi pääseda, kuna see pole haagitud."
+
+#~ msgid ""
+#~ "gedit opened this instance of the file in a non-editable way. Do you want "
+#~ "to edit it anyway?"
+#~ msgstr ""
+#~ "gedit avas selle instantsi mittemuudetaval moel. Kas Sa soovid seda "
+#~ "ikkagi redigeerida?"
+
+#~ msgid "Do you want to drop your changes and reload the file?"
+#~ msgstr "Kas soovid tühistada oma muudatused ja faili uuesti laadida?"
+
+#~ msgid "Preferences"
+#~ msgstr "Eelistused"
+
+#~ msgid "Replace All"
+#~ msgstr "Asenda kõik"
+
+#~ msgid "Disable syntax highlighting"
+#~ msgstr "Süntaksi esiletõstmise keelamine"
+
+#~ msgid "Set the root to the active document location"
+#~ msgstr "Juurkataloogi määramine aktiivse dokumendi asukohale"
+
+#~ msgid "Open a terminal at the currently opened directory"
+#~ msgstr "Terminali avamine käesolevaga avatud kataloogis"
+
+#~ msgid "file"
+#~ msgstr "fail"
+
+#~ msgid "directory"
+#~ msgstr "kataloog"
+
+#~ msgid "Move selected file or folder to trash"
+#~ msgstr "Valitud faili või kataloogi prügikasti viskamine"
+
+#~ msgid "Delete selected file or folder"
+#~ msgstr "Valitud faili või kataloogi kustutamine"
+
+#~ msgid "Open selected file"
+#~ msgstr "Valitud faili avamine"
+
+#~ msgid "Up"
+#~ msgstr "Üles"
+
+#~ msgid "Open the parent folder"
+#~ msgstr "Ülemise kataloogi avamine"
+
+#~ msgid "Add new empty folder"
+#~ msgstr "Uue tühja kataloogi lisamine"
+
+#~ msgid "Add new empty file"
+#~ msgstr "Uue tühja faili lisamine"
+
+#~ msgid "Rename selected file or folder"
+#~ msgstr "Valitud faili või kataloogi nime muutmine"
+
+#~ msgid "_Previous Location"
+#~ msgstr "_Eelmine asukoht"
+
+#~ msgid "Go to the previous visited location"
+#~ msgstr "Eelmisele külastatud asukohale siirdumine"
+
+#~ msgid "_Next Location"
+#~ msgstr "_Järgmine asukoht"
+
+#~ msgid "Go to the next visited location"
+#~ msgstr "Järgmisele külastatud asukohale siirdumine"
+
+#~ msgid "Refresh the view"
+#~ msgstr "Vaate värskendamine"
+
+#~ msgid "View folder in file manager"
+#~ msgstr "Kataloogi vaatamine failihalduris"
+
+#~ msgid "Show hidden files and folders"
+#~ msgstr "Peidetud failide ja kataloogide näitamine"
+
+#~ msgid "Show binary files"
+#~ msgstr "Binaarfailide näitamine"
+
+#~ msgid "Match Filename"
+#~ msgstr "Failinime vastavus"
+
+#~ msgid "Quick open"
+#~ msgstr "Kiiravamine"
+
 #~ msgid "Text;"
 #~ msgstr "Tekst;"
 
 #~ msgid "Log Out _without Saving"
 #~ msgstr "Logi välja _ilma salvestamata"
-
-#~ msgid "_Cancel Logout"
-#~ msgstr "_Tühista väljalogimine"
 
 #~ msgid "Run gedit in the background"
 #~ msgstr "Gediti käivitamine taustal"
