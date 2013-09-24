@@ -1207,18 +1207,23 @@ init_search_entry (GeditViewFrame *frame)
 			frame->priv->old_search_text = g_strdup (frame->priv->search_text);
 		}
 
-		search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (buffer),
-								frame->priv->search_settings);
+		search_context = get_search_context (frame);
 
-		_gedit_document_set_search_context (GEDIT_DOCUMENT (buffer),
-						    search_context);
+		if (search_context == NULL)
+		{
+			search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (buffer),
+									frame->priv->search_settings);
 
-		g_signal_connect_swapped (search_context,
-					  "notify::occurrences-count",
-					  G_CALLBACK (install_update_entry_tag_idle),
-					  frame);
+			_gedit_document_set_search_context (GEDIT_DOCUMENT (buffer),
+							    search_context);
 
-		g_object_unref (search_context);
+			g_signal_connect_swapped (search_context,
+						  "notify::occurrences-count",
+						  G_CALLBACK (install_update_entry_tag_idle),
+						  frame);
+
+			g_object_unref (search_context);
+		}
 
 		selection_exists = get_selected_text (buffer,
 		                                      &search_text,
