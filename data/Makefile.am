@@ -3,7 +3,8 @@ desktop_in_files = gedit.desktop.in
 desktop_DATA 	 = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
-@INTLTOOL_XML_NOMERGE_RULE@
+@INTLTOOL_XML_RULE@
+
 appdatadir = $(datadir)/appdata
 dist_appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 appdata_in_files = gedit.appdata.xml.in
@@ -27,8 +28,6 @@ gsettings_ENUM_NAMESPACE = org.gnome.gedit
 gsettings_ENUM_FILES = $(top_srcdir)/gedit/*.h
 gsettings_SCHEMAS = org.gnome.gedit.gschema.xml
 
-@INTLTOOL_XML_NOMERGE_RULE@
-
 @GSETTINGS_RULES@
 
 if OS_OSX
@@ -45,11 +44,11 @@ endif
 
 EXTRA_DIST = 					\
 	$(desktop_in_files)			\
-	gedit.appdata.xml			\
+	gedit.appdata.xml.in			\
 	$(service_in_files)			\
 	$(man_MANS)				\
 	gedit.pc.in				\
-	org.gnome.gedit.gschema.xml.in.in	\
+	org.gnome.gedit.gschema.xml.in		\
 	gedit.convert				\
 	osx.accels				\
 	osx.css					\

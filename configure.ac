@@ -163,7 +163,7 @@ dnl ================================================================
 dnl Gettext stuff.
 dnl ================================================================
 
-IT_PROG_INTLTOOL([0.40.0])
+IT_PROG_INTLTOOL([0.50.1])
 
 AM_GNU_GETTEXT_VERSION([0.18])
 AM_GNU_GETTEXT([external])
@@ -439,7 +439,7 @@ AC_CONFIG_FILES([
 Makefile
 data/gedit.desktop.in
 data/gedit.pc
-data/org.gnome.gedit.gschema.xml.in
+data/org.gnome.gedit.gschema.xml
 data/Makefile
 docs/Makefile
 docs/reference/Makefile
