@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 3.9.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-22 15:38+0200\n"
-"PO-Revision-Date: 2013-08-22 15:39+0200\n"
+"POT-Creation-Date: 2013-09-25 23:03+0200\n"
+"PO-Revision-Date: 2013-09-25 23:06+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -18,6 +18,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../data/gedit.appdata.xml.in.h:1
+msgid ""
+"gedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"text editor."
+msgstr "gedit er det offisielle tekstredigeringsprogrammet for GNOME skrivebordsmiljøet. Selv om målet er å være enkelt og lett å bruke er gedit et kraftig tekstredigeringsverktøy."
+
+#: ../data/gedit.appdata.xml.in.h:2
+msgid ""
+"Whether you are writing the next bestseller, programming an innovative "
+"application, or simply taking some quick notes, gedit will be a reliable "
+"tool to accomplish your task."
+msgstr "Om du skriver din neste bestselger, programmerer et innovativt program eller bare skriver noen raske notater vil gedit være et pålitelig verktøy til å fullføre oppgaven med."
+
+#: ../data/gedit.appdata.xml.in.h:3
+msgid ""
+"Its flexible plugin system allows you to tailor the application to your "
+"needs and adapt it to your workflow."
+msgstr "Det fleksible systemet for tillegg lar deg skreddersy programmet til dine behov og tilpasse det til din arbeidsflyt."
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -47,11 +67,11 @@ msgstr "Åpne et nytt vindu"
 msgid "Open a New Document"
 msgstr "Åpne et nytt dokument"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+#: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
 msgstr "Bruk forvalgt skrift"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+#: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -62,11 +82,15 @@ msgstr ""
 "tekst i stedet for en spesifikk skrift for gedit. Hvis dette alternativet er "
 "slått av vil skriften som er satt i «Skrift for redigering» brukes i stedet."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+msgid "'Monospace 12'"
+msgstr "Monospace 12"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
 msgstr "Skrift for redigering"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
+#: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -74,19 +98,19 @@ msgstr ""
 "En egendefinert skrift som vil brukes i redigeringsområdet. Denne vil kun "
 "brukes hvis «Bruk forvalgt skrift» er slått av."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
+#: ../data/org.gnome.gedit.gschema.xml.in.h:6
 msgid "Style Scheme"
 msgstr "Stilskjema"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
+#: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "ID for en GtkSourceView stilschema som brukes til å farge teksten."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
+#: ../data/org.gnome.gedit.gschema.xml.in.h:8
 msgid "Create Backup Copies"
 msgstr "Lag sikkerhetskopier"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+#: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -95,11 +119,11 @@ msgstr ""
 "filtypen for sikkerhetskopiene med alternativet «Filtype for "
 "sikkerhetskopier»."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
+#: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
 msgstr "Automatisk lagring"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
+#: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -108,11 +132,11 @@ msgstr ""
 "Om gedit skal lagre endrede filer automatisk etter et tidsintervall. Du kan "
 "sette tidsintervallet med alternativet «Intervall for automatisk lagring»."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
+#: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid "Autosave Interval"
 msgstr "Intervall for automatisk lagring"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
+#: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -120,11 +144,11 @@ msgstr ""
 "Antall minutter før gedit lagrer endrede filer automatisk. Dette vil kun "
 "brukes hvis «Automatisk lagring» er slått på."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+#: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Undo Actions Limit (DEPRECATED)"
 msgstr "Grense for angring av handlinger (UTFASES)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+#: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
@@ -132,11 +156,11 @@ msgstr ""
 "Maksimalt antall handlinger som gedit vil kunne angre eller gjenopprette. "
 "Bruk «-1» for ubegrenset antall handlinger. Fases ut etter 2.12.0"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+#: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid "Maximum Number of Undo Actions"
 msgstr "Maksimalt antall angrehandlinger"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+#: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -144,11 +168,11 @@ msgstr ""
 "Maksimalt antall handlinger som gedit vil kunne angre eller gjenopprette. "
 "Bruk «-1» for ubegrenset antall handlinger."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+#: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid "Line Wrapping Mode"
 msgstr "Modus for linjebryting"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+#: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
 "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
@@ -161,77 +185,77 @@ msgstr ""
 "mellom store og små bokstaver så sørg for at de oppgis eksakt som de "
 "beskrives her."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+#: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Tab Size"
 msgstr "Fanestørrelse"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+#: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Spesifiserer antall mellomrom som vises i stedet for tabulatorer."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+#: ../data/org.gnome.gedit.gschema.xml.in.h:22
 msgid "Insert spaces"
 msgstr "Sett inn mellomrom"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+#: ../data/org.gnome.gedit.gschema.xml.in.h:23
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Om gedit skal sette inn mellomrom i stedet for tabulator."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+#: ../data/org.gnome.gedit.gschema.xml.in.h:24
 msgid "Automatic indent"
 msgstr "Automatisk innrykk"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+#: ../data/org.gnome.gedit.gschema.xml.in.h:25
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Om gedit skal aktivere automatisk innrykk."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+#: ../data/org.gnome.gedit.gschema.xml.in.h:26
 msgid "Display Line Numbers"
 msgstr "Vis linjenummer"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+#: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "Om gedit skal vise linjenummer i redigeringsområdet."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+#: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Highlight Current Line"
 msgstr "Uthev aktiv linje"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+#: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Whether gedit should highlight the current line."
 msgstr "Om gedit skal utheve aktiv linje."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+#: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Highlight Matching Brackets"
 msgstr "Uthev tilhørende hakeparantes"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+#: ../data/org.gnome.gedit.gschema.xml.in.h:31
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Om gedit skal utheve hakeparanteser som hører sammen."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
+#: ../data/org.gnome.gedit.gschema.xml.in.h:32
 msgid "Display Right Margin"
 msgstr "Vis høyre marg"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
+#: ../data/org.gnome.gedit.gschema.xml.in.h:33
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Om gedit skal vise høyre marg i redigeringsområdet."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
+#: ../data/org.gnome.gedit.gschema.xml.in.h:34
 msgid "Right Margin Position"
 msgstr "Plassering av høyre marg"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+#: ../data/org.gnome.gedit.gschema.xml.in.h:35
 msgid "Specifies the position of the right margin."
 msgstr "Spesifiserer posisjonen for høyre marg."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
+#: ../data/org.gnome.gedit.gschema.xml.in.h:36
 msgid "Smart Home End"
 msgstr "Smart home/end"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -248,56 +272,56 @@ msgstr ""
 "start/slutt av teksten før start/slutt av linjen, og «always» for alltid å "
 "gå til start/slutt av teksten i stedet for start/alutt av linjen."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Restore Previous Cursor Position"
 msgstr "Gjenopprett forrige markørposisjon"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr ""
 "Om gedit skal gjenopprette tidligere markørposisjon når et dokument lastes."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Enable Syntax Highlighting"
 msgstr "Aktiver syntaksutheving"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Om gedit skal aktivere automatisk syntaksutheving."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid "Enable Search Highlighting"
 msgstr "Aktiver utheving ved søk"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Om gedit skal utheve tekst i søket."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid "Ensure Trailing Newline"
 msgstr "Sikre slutt med linjeskift"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "Hvorvidt gedit skal sikre at dokumenter alltid slutter med linjeskift."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Toolbar is Visible"
 msgstr "Verktøylinjen er synlig"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Om verktøylinjen i redigeringsvinduet skal være synlig."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid "Notebook Show Tabs Mode"
 msgstr "Vis faner i notisblokk"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -310,29 +334,29 @@ msgstr ""
 "mellom store og små bokstaver, så sørg for at de oppgis eksakt som de "
 "beskrives her."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid "Status Bar is Visible"
 msgstr "Statuslinjen er synlig"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Om statuslinjen nederst i redigeringsvinduet skal være synlig."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Side panel is Visible"
 msgstr "Sidelinjen er synlig"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Om sidelinjen til venstre i redigeringsvinduet skal være synlig."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid "Maximum Recent Files"
 msgstr "Maksimalt antall nylig åpnede filer"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
@@ -340,27 +364,27 @@ msgstr ""
 "Spesifiserer maksimalt antall nylig åpnede filer som vil vises i «Nylig "
 "åpnede filer» undermenyen."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid "Print Syntax Highlighting"
 msgstr "Skriv ut syntaksutheving"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Om gedit skal ta med en syntaksutheving ved utskrift av dokumenter."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid "Print Header"
 msgstr "Skriv ut topptekst"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Om gedig skal ta med en topptekst ved utskrift av dokumenter."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid "Printing Line Wrapping Mode"
 msgstr "Linjebrytingsmodus ved utskrift"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
 "\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
@@ -372,11 +396,11 @@ msgstr ""
 "hvis du ønsker bryting på tegnnivå. Merk at det skilles mellom store og små "
 "bokstaver så sørg for at de oppgis eksakt som de beskrives her."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Print Line Numbers"
 msgstr "Skriv ut linjenummer"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -385,21 +409,29 @@ msgstr ""
 "Hvis verdien er 0 vil ikke linjenummer settes inn ved utskrift av et "
 "dokument. Ellers vil gedit skrive ut linjenummer ved verdiens antall linjer."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+msgid "'Monospace 9'"
+msgstr "Monospace 9"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Body Font for Printing"
 msgstr "Skrift for kropp ved utskrift"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
 "Spesifiserer skriften som skal brukes for et dokuments kropp ved utskrift."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+msgid "'Sans 11'"
+msgstr "Sans 11"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "Header Font for Printing"
 msgstr "Skrift for topptekst ved utskrift"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -407,11 +439,15 @@ msgstr ""
 "Spesifiserer skriften som skal brukes for topptekst ved utskrift av et "
 "dokument. Denne vil kun brukes hvis «Skriv ut topptekst» er slått på."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+msgid "'Sans 8'"
+msgstr "Sans 8"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Line Number Font for Printing"
 msgstr "Skrift for linjenummer ved utskrift"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -430,15 +466,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Automatically Detected Encodings"
 msgstr "Automatisk gjenkjente kodinger"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -450,15 +486,15 @@ msgstr ""
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:89
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-15']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:90
 msgid "Encodings shown in menu"
 msgstr "Kodinger som vises i menyen"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+#: ../data/org.gnome.gedit.gschema.xml.in.h:91
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -466,11 +502,11 @@ msgstr ""
 "Liste med kodinger som vises i menyen Tegnkoding i filvelger for åpning/"
 "lagring. Kun gjenkjente kodinger brukes."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid "Active plugins"
 msgstr "Aktive tillegg"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.h:93
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -853,7 +889,7 @@ msgstr "Fant og erstattet en oppføring"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:152
+#: ../gedit/gedit-commands-search.c:148
 #, c-format
 msgid "\"%s\" not found"
 msgstr "«%s» ikke funnet"
@@ -1825,12 +1861,12 @@ msgstr "SET"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:245
+#: ../gedit/gedit-statusbar.c:248
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Ln. %d, Kol. %d"
 
-#: ../gedit/gedit-statusbar.c:344
+#: ../gedit/gedit-statusbar.c:347
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -2215,36 +2251,36 @@ msgstr "/ på %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:637
+#: ../gedit/gedit-view-frame.c:664
 #, c-format
 msgid "%d of %d"
 msgstr "%d av %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:690
+#: ../gedit/gedit-view-frame.c:756
 msgid "_Wrap Around"
 msgstr "_Bryting"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:700
+#: ../gedit/gedit-view-frame.c:766
 msgid "Match as _Regular Expression"
 msgstr "Søk som _regulært uttrykk"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:710
+#: ../gedit/gedit-view-frame.c:780
 msgid "Match _Entire Word Only"
 msgstr "Kun treff på _hele ord"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:720
+#: ../gedit/gedit-view-frame.c:794
 msgid "_Match Case"
 msgstr "_Skill mellom små/store bokstaver"
 
-#: ../gedit/gedit-view-frame.c:890
+#: ../gedit/gedit-view-frame.c:968
 msgid "String you want to search for"
 msgstr "Streng du vil søke etter"
 
-#: ../gedit/gedit-view-frame.c:902
+#: ../gedit/gedit-view-frame.c:980
 msgid "Line you want to move the cursor to"
 msgstr "Linje du vil flytte markøren til"
 
