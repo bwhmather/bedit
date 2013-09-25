@@ -3,8 +3,10 @@ desktop_in_files = gedit.desktop.in
 desktop_DATA 	 = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
+@INTLTOOL_XML_NOMERGE_RULE@
 appdatadir = $(datadir)/appdata
-appdata_DATA = gedit.appdata.xml
+dist_appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+appdata_in_files = gedit.appdata.xml.in
 
 servicedir = $(datadir)/dbus-1/services
 service_in_files = org.gnome.gedit.service.in
@@ -54,6 +56,7 @@ EXTRA_DIST = 					\
 	gedit-osx.gschema.override
 
 CLEANFILES =	 			\
+	gedit.appdata.xml		\
 	$(desktop_DATA)			\
 	$(service_DATA)			\
 	$(pkgconfig_DATA)		\
