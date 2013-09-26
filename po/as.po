@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: as\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-10 18:03+0000\n"
-"PO-Revision-Date: 2013-09-19 19:30+0530\n"
+"POT-Creation-Date: 2013-09-25 16:23+0000\n"
+"PO-Revision-Date: 2013-09-26 16:55+0530\n"
 "Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
 "Language-Team: Assamese <kde-i18n-doc@kde.org>\n"
 "Language: as_IN\n"
@@ -21,6 +21,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1)\n"
 "X-Generator: Lokalize 1.5\n"
+
+#: ../data/gedit.appdata.xml.in.h:1
+msgid ""
+"gedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"text editor."
+msgstr ""
+"gedit হল GNOME ডেস্কটপ পৰিৱেশৰ অনুমোদিত লিখনী সম্পাদক। gedit সাধাৰণ ব্যৱহাৰৰ "
+"বাবে "
+"এটা শক্তিশালী লিখনী সম্পাদক যাৰ লক্ষ্য সৰলতা আৰু সহজ ব্যৱহাৰ।"
+
+#: ../data/gedit.appdata.xml.in.h:2
+msgid ""
+"Whether you are writing the next bestseller, programming an innovative "
+"application, or simply taking some quick notes, gedit will be a reliable "
+"tool to accomplish your task."
+msgstr ""
+"যদি আপুনি পৰৱৰ্তী জনপ্ৰিয় কিতাপ লিখি আছে, এটা উদ্ভাৱনমূলক এপ্লিকেচন প্ৰগ্ৰাম "
+"কৰি আছে, "
+"অথবা সাধাৰণভাৱে কিছুমান দ্ৰুত টোকা লৈ আছে, gedit আপোনাৰ কাৰ্য্য কৰিবলৈ এটা "
+"ভৰষাবান "
+"সঁজুলি হব।"
+
+#: ../data/gedit.appdata.xml.in.h:3
+msgid ""
+"Its flexible plugin system allows you to tailor the application to your "
+"needs and adapt it to your workflow."
+msgstr ""
+"ইয়াৰ স্থিতিস্থাপক প্লাগিন চিস্টেমে আপোনাৰ প্ৰয়োজন সাপেক্ষে এপ্লিকেচনক "
+"পৰিবৰ্তন কৰি "
+"আপোনাৰ কাৰ্য্যপ্ৰক্ৰিয়ালৈ সংগত কৰাৰ অনুমতি দিয়ে।"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -50,11 +81,11 @@ msgstr "এটা নতুন উইন্ডো খোলক"
 msgid "Open a New Document"
 msgstr "এটা নতুন দস্তাবেজ খোলক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+#: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
 msgstr "অবিকল্পিত আখৰ ব্যৱহাৰ কৰা হ'ব"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+#: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -67,11 +98,16 @@ msgstr ""
 "পৰিবৰ্তে "
 "\"সম্পাদকত ব্যৱহৃত আখৰ\" বিকল্পত চিহ্নিত আখৰ ব্যৱহৃত হ'ব ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+#| msgid "Monospace 12"
+msgid "'Monospace 12'"
+msgstr "'Monospace 12'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
 msgstr "সম্পাদকৰ ফন্ট"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
+#: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -80,19 +116,19 @@ msgstr ""
 "বাবে "
 "\"অবিকল্পিত আখৰ ব্যৱহাৰ কৰক\" বিকল্পটো বন্ধ থকা আৱশ্যক।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
+#: ../data/org.gnome.gedit.gschema.xml.in.h:6
 msgid "Style Scheme"
 msgstr "ধৰণৰ শৈলী"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
+#: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "লিখনীত ৰঙ দিবলৈ ব্যৱহাৰ কৰা এটা GtkSourceView Style Scheme ৰ ID।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
+#: ../data/org.gnome.gedit.gschema.xml.in.h:8
 msgid "Create Backup Copies"
 msgstr "বেকআপ কপি সৃষ্টি কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+#: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -101,11 +137,11 @@ msgstr ""
 "ব্যৱহৃত সম্প্ৰসাৰণ\" বিকল্পৰ সহায়ত আপুনি বেকআপ ফাইলৰ সম্প্ৰসাৰণ নিৰ্ধাৰণ কৰিব "
 "পাৰিব।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
+#: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
 msgstr "স্বসংৰক্ষণ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
+#: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -117,11 +153,11 @@ msgstr ""
 "নিৰ্ধাৰণ "
 "কৰিব পাৰিব।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
+#: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid "Autosave Interval"
 msgstr "অন্তৰাল স্বসংৰক্ষণ কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
+#: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -130,11 +166,11 @@ msgstr ""
 "হ'ব। "
 "এইটো কাৰ্যকৰি কৰাৰ বাবে \"স্বসংৰক্ষণ\" বিকল্পটো সক্ৰিয় অৱস্থাত আৱশ্যক।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+#: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Undo Actions Limit (DEPRECATED)"
 msgstr "কাৰ্য্য বাতিলৰ সীমা (অবচিত)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+#: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
@@ -143,11 +179,11 @@ msgstr ""
 "কৰ্ম "
 "বাতিল কৰাৰ উদ্দেশ্যি \"-1\" মান প্ৰয়োগ কৰক। 2.12.0 সংস্কৰণৰ পৰা হ্ৰাস কৰা হৈছে"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+#: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid "Maximum Number of Undo Actions"
 msgstr "বাতিলৰ আগত সম্পন্ন কৰ্মৰ সৰ্বাধিক সংখ্যা"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+#: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -156,11 +192,11 @@ msgstr ""
 "কৰ্ম "
 "বাতিল কৰাৰ উদ্দেশ্যি \"-1\" মান প্ৰয়োগ কৰক।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+#: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid "Line Wrapping Mode"
 msgstr "শাৰী বিভাজন ধৰণ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+#: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
 "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
@@ -174,78 +210,78 @@ msgstr ""
 "বিভাজন কৰোঁতে \"char\" ব্যৱহাৰ কৰক। উল্লেখ্য এই মানসমূহ ফলা সংবেদ্য, এই কাৰণে "
 "উল্লিখিত বিৱৰণ অনুযায়ী মান লিখা উচিত।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+#: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Tab Size"
 msgstr "টেবৰ আকাৰ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+#: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "টেব আখৰৰ পৰিবৰ্তে যি সংখ্যক শূণ্যস্থান ব্যৱহৃত হ'ব সেইটো উল্লেখ কৰি।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+#: ../data/org.gnome.gedit.gschema.xml.in.h:22
 msgid "Insert spaces"
 msgstr "শূণ্যস্থান সুমুৱাওক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+#: ../data/org.gnome.gedit.gschema.xml.in.h:23
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "টেবৰ পৰিবৰ্তে gedit ৰ দ্বাৰা শূণ্যস্থান সুমুৱাওক নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+#: ../data/org.gnome.gedit.gschema.xml.in.h:24
 msgid "Automatic indent"
 msgstr "স্বচালিত প্ৰান্ত নিৰ্ধাৰণ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+#: ../data/org.gnome.gedit.gschema.xml.in.h:25
 msgid "Whether gedit should enable automatic indentation."
 msgstr ""
 "gedit ৰ দ্বাৰা স্বচালিত প্ৰান্ত নিৰ্ধাৰণ ব্যৱস্থা সক্ৰিয় কৰা হ'ব নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+#: ../data/org.gnome.gedit.gschema.xml.in.h:26
 msgid "Display Line Numbers"
 msgstr "শাৰী সংখ্যা প্ৰদৰ্শন কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+#: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "সম্পাদনাৰ স্থানত gedit ৰ দ্বাৰা শাৰী সংখ্যা প্ৰদৰ্শিত হ'ব নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+#: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Highlight Current Line"
 msgstr "বৰ্তমানৰ শাৰী উজ্জ্বল কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+#: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Whether gedit should highlight the current line."
 msgstr "gedit ৰ দ্বাৰা বৰ্তমান শাৰী উজ্জ্বল কৰা হ'ব নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+#: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Highlight Matching Brackets"
 msgstr "অনুৰূপ ব্ৰেকেট উজ্জ্বল কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+#: ../data/org.gnome.gedit.gschema.xml.in.h:31
 msgid "Whether gedit should highlight matching brackets."
 msgstr "gedit ৰ দ্বাৰা অনুৰূপ ব্ৰেকেট উজ্জ্বল কৰা হ'ব নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
+#: ../data/org.gnome.gedit.gschema.xml.in.h:32
 msgid "Display Right Margin"
 msgstr "সোঁ সীমা দেখাওক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
+#: ../data/org.gnome.gedit.gschema.xml.in.h:33
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "সম্পাদন উইন্ডোত gedit ৰ দ্বাৰা সোঁ ফালৰ প্ৰান্ত প্ৰদৰ্শিত হ'ব নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
+#: ../data/org.gnome.gedit.gschema.xml.in.h:34
 msgid "Right Margin Position"
 msgstr "সোঁ ফালৰ অৱস্থান"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+#: ../data/org.gnome.gedit.gschema.xml.in.h:35
 msgid "Specifies the position of the right margin."
 msgstr "সোঁ ফালৰ অৱস্থান ধাৰ্য্য কৰে।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
+#: ../data/org.gnome.gedit.gschema.xml.in.h:36
 msgid "Smart Home End"
 msgstr "স্মাৰ্ট ঘৰ অন্ত"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -266,11 +302,11 @@ msgstr ""
 "আৰম্ভণি/"
 "অন্তলৈ যাবলৈ।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Restore Previous Cursor Position"
 msgstr "কাৰ্ছাৰক আগৰ অৱস্থাত পুনঃস্থাপন কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
@@ -278,29 +314,29 @@ msgstr ""
 "ফাইল ল'ড কৰা হ'লে gedit দ্বাৰা পূৰ্ববৰ্তী কাৰ্ছাৰৰ অৱস্থালৈ অক্ষুন্ন ৰখা হ'ব "
 "নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Enable Syntax Highlighting"
 msgstr "বাক্যবিন্যাসৰ উজ্জ্বলকৰণ সক্ৰিয় কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid "Whether gedit should enable syntax highlighting."
 msgstr ""
 "gedit ৰ দ্বাৰা বাক্যবিন্যাসৰ বিভিন্ন অংশ পৃথকৰূপে প্ৰদৰ্শিত হ'ব নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid "Enable Search Highlighting"
 msgstr "সন্ধানৰ সময়ত আখৰৰ উজ্জ্বলকৰণ সক্ৰিয় কৰা হ'ব"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "সন্ধান কৰা লিখনীৰ উপস্থিতি gedit দ্বাৰা উজ্জ্বল কৰা হ'ব নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid "Ensure Trailing Newline"
 msgstr "অনুকৰণ কৰা নতুন শাৰী সুনিশ্চিত কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
@@ -308,19 +344,19 @@ msgstr ""
 "সুনিশ্চিত "
 "কৰিব নে।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Toolbar is Visible"
 msgstr "টুল-বাৰ প্ৰদৰ্শন কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "সম্পাদন উইন্ডোৰ উইন্ডোত টুল-বাৰ প্ৰদৰ্শিত হ'ব নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid "Notebook Show Tabs Mode"
 msgstr "বহীয়ে টেব অৱস্থা দেখুৱায়"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -335,29 +371,29 @@ msgstr ""
 "উল্লিখিত "
 "বিৱৰণ অনুযায়ী মান লিখা উচিত।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid "Status Bar is Visible"
 msgstr "অৱস্থাবাৰ দৃশ্যমান"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "সম্পাদন উইন্ডোৰ উইন্ডোৰ তলত অৱস্থাবাৰ প্ৰদৰ্শিত হ'ব নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Side panel is Visible"
 msgstr "কাষৰ পেন দৃশ্যমান"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "সম্পাদন উইন্ডোৰ বাওঁ ফালে কাষৰ পেইন প্ৰদৰ্শিত হ'ব নে নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid "Maximum Recent Files"
 msgstr "শেহতীয়া ফাইলৰ সৰ্বাধিক সংখ্যা"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
@@ -365,32 +401,32 @@ msgstr ""
 "\"শেহতীয়া ফাইল\" উপমেনুত শেহতীয়া সৰ্বাধিক যি সংখ্যক ফাইল প্ৰদৰ্শিত হ'ব সেইটো "
 "ধাৰ্য্য কৰে।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid "Print Syntax Highlighting"
 msgstr "বাক্যবিন্যাসৰ উজ্জ্বলকৰণ প্ৰিন্ট কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
 "দস্তাবেজ প্ৰিন্ট কৰাৰ সময় gedit ৰ দ্বাৰা বাক্যবিন্যাসৰ পৃথক বিন্যাস প্ৰিন্ট "
 "কৰা হ'ব নে "
 "নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid "Print Header"
 msgstr "হেডাৰ প্ৰিন্ট কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid "Whether gedit should include a document header when printing documents."
 msgstr ""
 "দস্তাবেজ প্ৰিন্ট কৰাৰ সময় gedit ৰ দ্বাৰা দস্তাবেজৰ হেডাৰ প্ৰিন্ট কৰা হ'ব নে "
 "নহয়।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid "Printing Line Wrapping Mode"
 msgstr "শাৰী মেৰিওৱা অৱস্থাত প্ৰিন্ট কৰা"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
 "\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
@@ -404,11 +440,11 @@ msgstr ""
 "উল্লিখিত "
 "বিৱৰণ অনুযায়ী মান লিখা উচিত।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Print Line Numbers"
 msgstr "শাৰী সংখ্যা প্ৰিন্ট কৰক"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -418,20 +454,30 @@ msgstr ""
 "প্ৰতি "
 "শাৰীৰ বাবে gedit এ সংখ্যা প্ৰিন্ট কৰিব।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#| msgid "Monospace 9"
+msgid "'Monospace 9'"
+msgstr "'Monospace 9'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Body Font for Printing"
 msgstr "প্ৰিন্টৰ সময়ত ব্যৱহৃত মূল আখৰ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr "ফাইল প্ৰিন্ট কৰাৰ সময় মূল অংশত ব্যৱহৃত আখৰ ধাৰ্য্য কৰে।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#| msgid "Sans 11"
+msgid "'Sans 11'"
+msgstr "'Sans 11'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "Header Font for Printing"
 msgstr "প্ৰিন্টৰ বাবে হেডাৰৰ আখৰ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -440,11 +486,16 @@ msgstr ""
 "কৰে। এইটো "
 "প্ৰয়োগ কৰাৰ বাবে \"হেডাৰ প্ৰিন্ট কৰা হ'ব\" বিকল্পটো সক্ৰিয় অৱস্থাত আৱশ্যক।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#| msgid "Sans 8"
+msgid "'Sans 8'"
+msgstr "'Sans 8'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Line Number Font for Printing"
 msgstr "প্ৰিন্টৰ সময়ত শাৰী সংখ্যাৰ বাবে ব্যৱহৃত আখৰ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -464,15 +515,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Automatically Detected Encodings"
 msgstr "স্বচালিতভাবে চিনাক্ত কৰা এনক'ডিং"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -486,15 +537,15 @@ msgstr ""
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:89
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-15']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:90
 msgid "Encodings shown in menu"
 msgstr "মেনুত প্ৰদৰ্শিত এনক'ডিং"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+#: ../data/org.gnome.gedit.gschema.xml.in.h:91
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -503,11 +554,11 @@ msgstr ""
 "পৰিচিত "
 "এনক'ডিং ব্যৱহৃত হ'ব।"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid "Active plugins"
 msgstr "সক্ৰিয় প্লাগিনসমূহ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.h:93
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -680,13 +731,11 @@ msgstr[1] ""
 
 #: ../gedit/gedit-close-confirmation-dialog.c:475
 #, c-format
-#| msgid "Changes to document \"%s\" will be permanently lost."
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "“%s” দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই যাব।"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:480
 #, c-format
-#| msgid "Save changes to document \"%s\" before closing?"
 msgid "Save changes to document “%s” before closing?"
 msgstr "বন্ধ কৰাৰ আগতে “%s” দস্তাবেজত কৰা পৰিবৰ্তনসমূহ সংৰক্ষণ কৰিব নে?"
 
@@ -1115,12 +1164,10 @@ msgstr "উকা লিখনী "
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:1
-#| msgid "_Highlight Mode"
 msgid "Highlight Mode"
 msgstr "উজ্জ্বল অৱস্থা"
 
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:2
-#| msgid "Use %s highlight mode"
 msgid "Search highlight mode..."
 msgstr "উজ্জ্বল অৱস্থা সন্ধান কৰক..."
 
@@ -1129,7 +1176,6 @@ msgstr "উজ্জ্বল অৱস্থা সন্ধান কৰক...
 #: ../gedit/gedit-io-error-info-bar.c:491
 #: ../gedit/gedit-io-error-info-bar.c:1171
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:173
-#| msgid "_Cancel Logout"
 msgid "_Cancel"
 msgstr "বাতিল কৰক (_C)"
 
@@ -1140,7 +1186,6 @@ msgstr "পুনঃচেষ্টা (_R)"
 
 #: ../gedit/gedit-io-error-info-bar.c:181
 #, c-format
-#| msgid "Could not find the file %s."
 msgid "Could not find the file “%s”."
 msgstr "ফাইল “%s” পোৱা নগল।"
 
@@ -1153,37 +1198,29 @@ msgstr "সঠিক অৱস্থান লিখা হৈছে নে ন�
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:202
 #, c-format
-#| msgid "gedit cannot handle %s locations."
 msgid "Unable to handle “%s:” locations."
 msgstr "“%s:” অৱস্থানসমূহ ব্যৱস্থাপনা কৰিবলৈ অক্ষম।"
 
 #: ../gedit/gedit-io-error-info-bar.c:208
-#| msgid "gedit cannot handle this location."
 msgid "Unable to handle this location."
 msgstr "এই অৱস্থান ব্যৱস্থাপনা কৰিবলৈ অক্ষম।"
 
 #: ../gedit/gedit-io-error-info-bar.c:217
-#| msgid "The location of the file cannot be mounted."
 msgid "The location of the file cannot be accessed."
 msgstr "ফাইলৰ অৱস্থান অভিগম কৰিব নোৱাৰি।"
 
 #: ../gedit/gedit-io-error-info-bar.c:221
 #, c-format
-#| msgid "%s is a directory."
 msgid "“%s” is a directory."
 msgstr "“%s” এটা ডাইৰেকটৰি।"
 
 #: ../gedit/gedit-io-error-info-bar.c:228
 #, c-format
-#| msgid "%s is not a valid location."
 msgid "“%s” is not a valid location."
 msgstr "“%s” এটা বৈধ অৱস্থান নহয়।"
 
 #: ../gedit/gedit-io-error-info-bar.c:264
 #, c-format
-#| msgid ""
-#| "Host %s could not be found. Please check that your proxy settings are "
-#| "correct and try again."
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
 "correct and try again."
@@ -1202,7 +1239,6 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:287
 #, c-format
-#| msgid "%s is not a regular file."
 msgid "“%s” is not a regular file."
 msgstr "“%s” এটা স্বাভাবিক ফাইল নহয়।"
 
@@ -1220,13 +1256,11 @@ msgid "Unexpected error: %s"
 msgstr "অপ্ৰত্যাশিত সমস্যা: %s"
 
 #: ../gedit/gedit-io-error-info-bar.c:392
-#| msgid "gedit cannot find the file. Perhaps it has recently been deleted."
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "অনুৰোধ কৰা ফাইল পোৱা নাযায়। হয়তো ইয়াক অলপতে মচি পেলোৱা হৈছে।"
 
 #: ../gedit/gedit-io-error-info-bar.c:402
 #, c-format
-#| msgid "Could not revert the file %s."
 msgid "Could not revert the file “%s”."
 msgstr "“%s” ফাইলত কৰা পৰিবৰ্তন বাতিল কৰা নাযায়।"
 
@@ -1252,7 +1286,6 @@ msgid "You do not have the permissions necessary to open the file."
 msgstr "ফাইল খোলাৰ বাবে প্ৰয়োজনীয় অনুমতি আপোনাৰ নাই।"
 
 #: ../gedit/gedit-io-error-info-bar.c:587
-#| msgid "gedit has not been able to detect the character encoding."
 msgid "Unable to detect the character encoding."
 msgstr "আখৰ এনক'ডিং চিনাক্ত কৰিবলৈ অক্ষম।"
 
@@ -1268,7 +1301,6 @@ msgstr "মেনুৰ পৰা আখৰ এনক'ডিং নিৰ্ব�
 
 #: ../gedit/gedit-io-error-info-bar.c:595
 #, c-format
-#| msgid "There was a problem opening the file %s."
 msgid "There was a problem opening the file “%s”."
 msgstr "“%s” ফাইল খোলোতে এটা সমস্যা হৈছিল।"
 
@@ -1287,7 +1319,6 @@ msgstr "আপুনি অন্য এখন অাখৰ এনক'ডিং 
 
 #: ../gedit/gedit-io-error-info-bar.c:607
 #, c-format
-#| msgid "Could not open the file %s using the %s character encoding."
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "“%s” ফাইল, “%s” আখৰ এনক'ডিং ব্যৱহাৰ কৰি খোলা নগল।"
 
@@ -1298,13 +1329,11 @@ msgstr "মেনুৰ পৰা পৃথক আখৰ এনক'ডিং ন
 
 #: ../gedit/gedit-io-error-info-bar.c:621
 #, c-format
-#| msgid "Could not open the file %s."
 msgid "Could not open the file “%s”."
 msgstr "“%s” ফাইল খোলিব পৰা নগল।"
 
 #: ../gedit/gedit-io-error-info-bar.c:680
 #, c-format
-#| msgid "Could not save the file %s using the %s character encoding."
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "“%s” ফাইলক “%s” আখৰ এনক'ডিং ব্যৱহাৰ কৰি সংৰক্ষণ কৰিব পৰা নগল।"
 
@@ -1324,12 +1353,10 @@ msgstr "সম্পাদন কৰা নহব (_o)"
 
 #: ../gedit/gedit-io-error-info-bar.c:766
 #, c-format
-#| msgid "This file (%s) is already open in another gedit window."
 msgid "This file “%s” is already open in another window."
 msgstr "এই ফাইল “%s” ইতিমধ্যে অন্য উইন্ডোত খোলা আছে।"
 
 #: ../gedit/gedit-io-error-info-bar.c:780
-#| msgid "Do you want to reload the file?"
 msgid "Do you want to edit it anyway?"
 msgstr "ইয়াক তথাপিও সম্পাদন কৰিব বিচাৰে নে?"
 
@@ -1351,7 +1378,6 @@ msgstr "সংৰক্ষণ নকৰিব (_o)"
 #.
 #: ../gedit/gedit-io-error-info-bar.c:853
 #, c-format
-#| msgid "The file %s has been modified since reading it."
 msgid "The file “%s” has been modified since reading it."
 msgstr "সৰ্বশেষ পঢ়াৰ পিছত “%s”ফাইল পৰিবৰ্তন কৰা হৈছে।"
 
@@ -1363,22 +1389,15 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:950
 #, c-format
-#| msgid "Could not create a backup file while saving %s"
 msgid "Could not create a backup file while saving “%s”"
 msgstr "“%s” সংৰক্ষণৰ সময়ত বেকআপ ফাইল সৃষ্টি কৰিব পৰা নগল।"
 
 #: ../gedit/gedit-io-error-info-bar.c:955
 #, c-format
-#| msgid "Could not create a temporary backup file while saving %s"
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "“%s” সংৰক্ষণৰ সময়ত অস্থায়ী বেকআপ ফাইল সৃষ্টি কৰিব পৰা নগল"
 
 #: ../gedit/gedit-io-error-info-bar.c:972
-#| msgid ""
-#| "gedit could not back up the old copy of the file before saving the new "
-#| "one. You can ignore this warning and save the file anyway, but if an "
-#| "error occurs while saving, you could lose the old copy of the file. Save "
-#| "anyway?"
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1387,44 +1406,38 @@ msgstr ""
 "ফাইলৰ নতুন সংস্কৰণ সংৰক্ষণৰ আগত ফাইলৰ পুৰনি সংস্কৰণ বেকআপ লব পৰা নগল। আপুনি "
 "এই "
 "সতৰ্কবাৰ্তা উপেক্ষা কৰি ফাইল তথাপিও সংৰক্ষণ কৰিব পাৰে, কিন্তু সংৰক্ষণৰ সময়ত "
-"কোনো সমস্যাৰ ফলত ফাইলৰ পুৰনি কপি হেৰুৱাব পাৰে। তথাপিও সংৰক্ষণ কৰিব নে?"
+"কোনো "
+"সমস্যাৰ ফলত ফাইলৰ পুৰনি কপি হেৰুৱাব পাৰে। তথাপিও সংৰক্ষণ কৰিব নে?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:1032
 #, c-format
-#| msgid ""
-#| "gedit cannot handle %s locations in write mode. Please check that you "
-#| "typed the location correctly and try again."
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
-"লিখা অৱস্থাত “%s:” অৱস্থান ব্যৱস্থাপনা কৰা সম্ভৱ নহয়। সঠিক "
-"অৱস্থান লিখা হৈছে নে নাই পৰীক্ষা কৰি অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক।"
+"লিখা অৱস্থাত “%s:” অৱস্থান ব্যৱস্থাপনা কৰা সম্ভৱ নহয়। সঠিক অৱস্থান লিখা হৈছে "
+"নে "
+"নাই পৰীক্ষা কৰি অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক।"
 
 #: ../gedit/gedit-io-error-info-bar.c:1040
-#| msgid ""
-#| "gedit cannot handle this location in write mode. Please check that you "
-#| "typed the location correctly and try again."
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
-"লিখা অৱস্থাত এই অৱস্থান ব্যৱস্থাপনা কৰা সম্ভৱ নহয়। সঠিক "
-"অৱস্থান লিখা হৈছে নে নাই পৰীক্ষা কৰি অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক।"
+"লিখা অৱস্থাত এই অৱস্থান ব্যৱস্থাপনা কৰা সম্ভৱ নহয়। সঠিক অৱস্থান লিখা হৈছে নে "
+"নাই "
+"পৰীক্ষা কৰি অনুগ্ৰহ কৰি পুনঃ চেষ্টা কৰক।"
 
 #: ../gedit/gedit-io-error-info-bar.c:1049
 #, c-format
-#| msgid ""
-#| "%s is not a valid location. Please check that you typed the location "
-#| "correctly and try again."
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
 "“%s” এটা বৈধ অৱস্থান নহয়। সঠিক অৱস্থান লিখা হৈছে নে নাই পৰীক্ষা কৰি অনুগ্ৰহ "
-"কৰি পুনঃ "
-"চেষ্টা কৰক।"
+"কৰি "
+"পুনঃ চেষ্টা কৰক।"
 
 #: ../gedit/gedit-io-error-info-bar.c:1056
 msgid ""
@@ -1478,7 +1491,6 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:1101
 #, c-format
-#| msgid "Could not save the file %s."
 msgid "Could not save the file “%s”."
 msgstr "ফাইল “%s” সংৰক্ষণ কৰিব পৰা নগল।"
 
@@ -1488,7 +1500,6 @@ msgstr "ফাইল “%s” সংৰক্ষণ কৰিব পৰা ন�
 #.
 #: ../gedit/gedit-io-error-info-bar.c:1145
 #, c-format
-#| msgid "The file %s changed on disk."
 msgid "The file “%s” changed on disk."
 msgstr "ফাইল “%s” ডিস্কত পৰিবৰ্তিত হৈছে।"
 
@@ -1502,7 +1513,6 @@ msgstr "পুনঃ ল'ড (_R)"
 
 #: ../gedit/gedit-io-error-info-bar.c:1232
 #, c-format
-#| msgid "Some invalid chars have been detected while saving %s"
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "“%s” সংৰক্ষণ কৰোতে কিছুমান অবৈধ আখৰ পোৱা গৈছে"
 
@@ -1541,7 +1551,6 @@ msgid "_Move to New Window"
 msgstr "নুতন উইন্ডোত স্থানান্তৰ কৰক (_M)"
 
 #: ../gedit/gedit-notebook-popup-menu.c:178
-#| msgid "_Save:"
 msgid "_Save"
 msgstr "সংৰক্ষণ কৰক (_S)"
 
@@ -1554,7 +1563,6 @@ msgid "_Print..."
 msgstr "প্ৰিন্ট কৰক (_P)..."
 
 #: ../gedit/gedit-notebook-popup-menu.c:207
-#| msgid "_Close All"
 msgid "_Close"
 msgstr "বন্ধ কৰক (_C)"
 
@@ -1814,7 +1822,6 @@ msgid "Show the previous page"
 msgstr "পূৰ্ববৰ্তী পৃষ্ঠা প্ৰদৰ্শন কৰক"
 
 #: ../gedit/gedit-print-preview.ui.h:2
-#| msgid "P_revious Tab Group"
 msgid "P_revious Page"
 msgstr "পূৰ্ববৰ্তী পৃষ্ঠা (_r)"
 
@@ -1927,12 +1934,12 @@ msgstr "INS"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:245
+#: ../gedit/gedit-statusbar.c:248
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Ln %d, Col %d"
 
-#: ../gedit/gedit-statusbar.c:344
+#: ../gedit/gedit-statusbar.c:347
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -2132,12 +2139,10 @@ msgstr "সম্পূৰ্ণ দস্তাবেজৰ তথ্য নি
 
 #. View menu
 #: ../gedit/gedit-ui.h:104
-#| msgid "_Highlight Mode"
 msgid "_Highlight Mode..."
 msgstr "উজ্জ্বল অৱস্থা (_H)..."
 
 #: ../gedit/gedit-ui.h:105
-#| msgid "Checks the spelling of the current document."
 msgid "Changes the highlight mode of the active document"
 msgstr "সক্ৰিয় দস্তাবেজৰ উজ্জ্বল অৱস্থা পৰিবৰ্তন কৰে"
 
@@ -2321,7 +2326,6 @@ msgstr "/ %s ৰ ওপৰত"
 #.
 #: ../gedit/gedit-view-frame.c:664
 #, c-format
-#| msgid "Page %d of %d"
 msgid "%d of %d"
 msgstr "%d ৰ %d"
 
@@ -2396,7 +2400,6 @@ msgstr "শাৰী: %d ত ব্ৰেকেট মিল পোৱা গল
 
 #: ../gedit/gedit-window.c:2131
 #, c-format
-#| msgid "Tab Width"
 msgid "Tab Width: %u"
 msgstr "টেবৰ প্ৰস্থ: %u"
 
@@ -2500,9 +2503,6 @@ msgid "Document Statistics"
 msgstr "দস্তাবেজ পৰিসংখ্যা"
 
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
-#| msgid ""
-#| "Analyzes the current document and reports the number of words, lines, "
-#| "characters and non-space characters in it."
 msgid "Report the number of words, lines and characters in a document."
 msgstr "এটা দস্তাবেজত উপস্থিত শব্দ, শাৰী আৰু আখৰৰ সংখ্যা জনাওক।"
 
@@ -2673,7 +2673,6 @@ msgstr "বন্ধ।"
 
 #. ex:ts=4:et:
 #: ../plugins/externaltools/tools/outputpanel.ui.h:1
-#| msgid "Remove Tool"
 msgid "Stop Tool"
 msgstr "সঁজুলি বন্ধ কৰক"
 
@@ -2803,7 +2802,6 @@ msgid "_Save:"
 msgstr "সংৰক্ষণ (_S):"
 
 #: ../plugins/externaltools/tools/tools.ui.h:34
-#| msgid "Shortcut _Key:"
 msgid "Shortcut _key:"
 msgstr "চৰ্টকাট কি (_k):"
 
@@ -2824,7 +2822,6 @@ msgid "External tools"
 msgstr "বহিৰ্তম সঁজুলিসমূহ"
 
 #: ../plugins/externaltools/tools/windowactivatable.py:214
-#| msgid "Shell Output"
 msgid "Tool Output"
 msgstr "সঁজুলিৰ আউটপুট"
 
@@ -3026,7 +3023,6 @@ msgstr "আয়তন মাউন্ট কৰিব নোৱাৰি: %s"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2739
 #, c-format
-#| msgid "An error occurred while loading a directory"
 msgid "Error when loading '%s': No such directory"
 msgstr "'%s' ল'ড কৰোতে ত্ৰুটি: এই নামৰ কোনো ডাইৰেকটৰি নাই"
 
@@ -3127,7 +3123,6 @@ msgstr ""
 "filter_mode ৰ উপৰ সঞ্চালিত হয়।"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
-#| msgid "File Browser Filter Pattern"
 msgid "File Browser Binary Patterns"
 msgstr "ফাইল ব্ৰাউছাৰ বাইনাৰি বিন্যাস"
 
@@ -3611,7 +3606,6 @@ msgstr "ত্ৰুটি বানান নাই"
 
 #. ex:ts=8:noet:
 #: ../plugins/spell/languages-dialog.ui.h:1
-#| msgid "Set language"
 msgid "Set Language"
 msgstr "ভাষা সংহতি কৰক"
 
@@ -3931,18 +3925,6 @@ msgstr "gedit ৰ সৈতে ব্যৱহৃত দস্তাবেজস
 #~ msgstr ""
 #~ "বেকআপ ফাইলৰ নামৰ অন্তত ব্যৱহৃত সম্প্ৰসাৰণ বা উপপদ। এইটো প্ৰয়োগ কৰাৰ বাবে "
 #~ "\"বেকআপ কপি সৃষ্টি কৰা হ'ব\" বিকল্পটো চলি থকা আৱশ্যক।"
-
-#~ msgid "Monospace 12"
-#~ msgstr "Monospace 12"
-
-#~ msgid "Monospace 9"
-#~ msgstr "Monospace 9"
-
-#~ msgid "Sans 11"
-#~ msgstr "Sans 11"
-
-#~ msgid "Sans 8"
-#~ msgstr "Sans 8"
 
 #~ msgid ""
 #~ "Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM"
