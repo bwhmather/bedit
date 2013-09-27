@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-08-19 14:03+0000\n"
-"PO-Revision-Date: 2013-09-09 21:20+0700\n"
+"POT-Creation-Date: 2013-09-26 20:20+0000\n"
+"PO-Revision-Date: 2013-09-27 10:18+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -23,6 +23,34 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.5.7\n"
+
+#: ../data/gedit.appdata.xml.in.h:1
+msgid ""
+"gedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"text editor."
+msgstr ""
+"gedit adalah penyunting teks lingkungan desktop GNOME yang resmi. Walaupun "
+"mengejar kesederhanaan dan kemudahan pemakaian, gedit adalah penyunting teks "
+"tujuan umum yang hebat."
+
+#: ../data/gedit.appdata.xml.in.h:2
+msgid ""
+"Whether you are writing the next bestseller, programming an innovative "
+"application, or simply taking some quick notes, gedit will be a reliable "
+"tool to accomplish your task."
+msgstr ""
+"Apakah Anda sedang menulis buku terlaris berikutnya, memrogram suatu "
+"aplikasi inovatif, atau sekedar hanya menulis cepat catatan, gedit adalah "
+"alat yang dapat diandalkan untuk menyelesaikan tugas Anda."
+
+#: ../data/gedit.appdata.xml.in.h:3
+msgid ""
+"Its flexible plugin system allows you to tailor the application to your "
+"needs and adapt it to your workflow."
+msgstr ""
+"Sistem pluginnya yang luwes memungkinkan Anda menata aplikasi ke kebutuhan "
+"Anda dan menyesuaikannya ke alur kerja Anda."
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -52,11 +80,11 @@ msgstr "Buka Jendela Baru"
 msgid "Open a New Document"
 msgstr "Buka Dokumen Baru"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+#: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
 msgstr "Gunakan Huruf Default"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+#: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -68,11 +96,15 @@ msgstr ""
 "yang dinamai dalam pilihan \"Fonta Penyunting\", akan digunakan daripada "
 "fonta system."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+msgid "'Monospace 12'"
+msgstr "'Monospace 12'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
 msgstr "Pengedit Huruf"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
+#: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -80,19 +112,19 @@ msgstr ""
 "Sebuah font yang akan dipergunakan untuk daerah penyuntingan. Ini hanya akan "
 "berakibat jika pilihan \"Pergunakan Huruf Default\" dimatikan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
+#: ../data/org.gnome.gedit.gschema.xml.in.h:6
 msgid "Style Scheme"
 msgstr "Skema Gaya"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
+#: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "ID dari Skema Gaya GtkSourceView yang dipakai untuk mewarnai teks."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
+#: ../data/org.gnome.gedit.gschema.xml.in.h:8
 msgid "Create Backup Copies"
 msgstr "Buat Salinan Cadangan"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+#: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -101,11 +133,11 @@ msgstr ""
 "Anda dapat menentukan ekstensi berkas cadangan dengan pilihan \"Ekstensi "
 "Salinan Cadangan\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
+#: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
 msgstr "Menyimpan otomatis"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
+#: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -115,11 +147,11 @@ msgstr ""
 "setelah waktu tertentu. Anda dapat menentukan jarak waktu dengan pilihan "
 "\"Interval Penyimpanan Otomatis\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
+#: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid "Autosave Interval"
 msgstr "Selang Waktu Simpan Otomatis"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
+#: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -128,11 +160,11 @@ msgstr ""
 "dimodifikasi. Hal ini hanya akan berakibat jika pilihan \"Simpan Auto\" "
 "dinyalakan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+#: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Undo Actions Limit (DEPRECATED)"
 msgstr "Batas \"Tak Jadi\" (Undo) (TIDAK DIPAKAI)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+#: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
@@ -140,11 +172,11 @@ msgstr ""
 "Jumlah aksi maksimal yang dapat di undo ataupun di redo oleh gedit. Isi "
 "dengan \"-1\" untuk tidak terbatas. Tidak digunakan lagi sejak 2.12.0"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+#: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid "Maximum Number of Undo Actions"
 msgstr "Maksimal Aksi \"Tak Jadi\" (Undo)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+#: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -152,11 +184,11 @@ msgstr ""
 "Jumlah aksi maksimal yang dapat di undo ataupun di redo oleh gedit. Isi "
 "dengan \"-1\" untuk tidak terbatas."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+#: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid "Line Wrapping Mode"
 msgstr "Mode baris wraping"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+#: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
 "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
@@ -169,78 +201,78 @@ msgstr ""
 "case sensitive, jadi pastikan mereka kelihatan pas seperti yang disebutkan "
 "di sini."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+#: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Tab Size"
 msgstr "Ukuran Tab"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+#: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Tentukan jumlah spasi yang harus ditampilkan dari pada karakter tab."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+#: ../data/org.gnome.gedit.gschema.xml.in.h:22
 msgid "Insert spaces"
 msgstr "Masukkan spasi"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+#: ../data/org.gnome.gedit.gschema.xml.in.h:23
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Apakah gedit harus memasukkan spasi daripada tab."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+#: ../data/org.gnome.gedit.gschema.xml.in.h:24
 msgid "Automatic indent"
 msgstr "Inden otomatis"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+#: ../data/org.gnome.gedit.gschema.xml.in.h:25
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Apakah gedit harus mengaktifkan indentasi otomatis."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+#: ../data/org.gnome.gedit.gschema.xml.in.h:26
 msgid "Display Line Numbers"
 msgstr "Tampilkan Nomor Baris"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+#: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr ""
 "Apakah gedit harus menampilkan nomor baris di dalam daerah penyuntingan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+#: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Highlight Current Line"
 msgstr "Tandai Baris Kini"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+#: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Whether gedit should highlight the current line."
 msgstr "Apakah gedit harus menandai baris ini."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+#: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Highlight Matching Brackets"
 msgstr "Sorot Tanda Kurung yang Berpasangan"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+#: ../data/org.gnome.gedit.gschema.xml.in.h:31
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Menentukan gedit untuk menyorot tanda kurung yang berpasangan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
+#: ../data/org.gnome.gedit.gschema.xml.in.h:32
 msgid "Display Right Margin"
 msgstr "Tampilkan Batas Kanan"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
+#: ../data/org.gnome.gedit.gschema.xml.in.h:33
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Apakah gedit harus menampilkan batas kanan dalam daerah penyuntingan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
+#: ../data/org.gnome.gedit.gschema.xml.in.h:34
 msgid "Right Margin Position"
 msgstr "Posis Batas Kanan"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+#: ../data/org.gnome.gedit.gschema.xml.in.h:35
 msgid "Specifies the position of the right margin."
 msgstr "Tentukan posisi dari batas kanan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
+#: ../data/org.gnome.gedit.gschema.xml.in.h:36
 msgid "Smart Home End"
 msgstr "Home End Cerdas"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -258,11 +290,11 @@ msgstr ""
 "baris, dan \"always\" untuk selalu pindah ke awal/akhir teks alih-alih awal/"
 "akhir baris."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Restore Previous Cursor Position"
 msgstr "Kembalikan Posisi Kursor Pada Keadaan Sebelumnya"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
@@ -270,47 +302,47 @@ msgstr ""
 "Apakah gedit harus mengembalikan posisi kursor ketika sebuah berkas telah "
 "dibaca."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Enable Syntax Highlighting"
 msgstr "Aktifkan Pewarnaan Sintaksis"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Apakah gedit harus mengaktifkan penandaan syntax."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid "Enable Search Highlighting"
 msgstr "Aktifkan Pencarian Penandaan"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Apakah gedit harus menandai baris ini dari teks yang telah dicari."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid "Ensure Trailing Newline"
 msgstr "Pastikan Baris Baru Mengikuti"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
 "Apakah gedit harus memastikan bahwa dokumen selalu diakhiri dengan baris "
 "baru."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Toolbar is Visible"
 msgstr "Toolbar Terlihat"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Apakah toolbar harus terlihat di dalam jendela penyuntingan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid "Notebook Show Tabs Mode"
 msgstr "Notebook Menampilkan Mode Tab"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -323,30 +355,30 @@ msgstr ""
 "nilai ini case sensitive, jadi pastikan mereka kelihatan pas seperti yang "
 "disebutkan di sini."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid "Status Bar is Visible"
 msgstr "Batang status terlihat"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 "Apakah batang status pada bagian bawah jendela penyuntingan harus terlihat."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Side panel is Visible"
 msgstr "Panel samping Terlihat"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Menentukan panel samping di kiri jendela sunting untuk terlihat."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid "Maximum Recent Files"
 msgstr "Berkas Terkini Maksimum"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
@@ -354,28 +386,28 @@ msgstr ""
 "Tentukan jumlah maksimal dari berkas yang pernah terbuka yang akan "
 "ditampilkan pada menu \"Berkas Sekarang\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid "Print Syntax Highlighting"
 msgstr "Cetak Pewarnaan Sintaksis"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Apakah gedit harus mencetak penandaan syntax ketika mencetak dokumen."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid "Print Header"
 msgstr "Kepala Cetak"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid "Whether gedit should include a document header when printing documents."
 msgstr ""
 "Apakah gedit harus memasukkan sebuah kepala dokumen ketika mencetak dokumen."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid "Printing Line Wrapping Mode"
 msgstr "Pencetakan dengan Model Baris Wraping"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
 "\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
@@ -388,11 +420,11 @@ msgstr ""
 "sensitive, jadi pastikan mereka kelihatan pas seperti yang disebutkan di "
 "sini."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Print Line Numbers"
 msgstr "Cetak Nomor Baris"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -402,22 +434,30 @@ msgstr ""
 "mencetak sebuah dokumen. Selain itu, gedit akan mencetak nomor baris setiap "
 "nomor baris."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+msgid "'Monospace 9'"
+msgstr "'Monospace 9'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Body Font for Printing"
 msgstr "Tubuh huruf untuk Pencetakan"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
 "Tentukan huruf yang akan digunakan untuk tubuh dokumen ketika mencetak "
 "dokumen."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+msgid "'Sans 11'"
+msgstr "'Sans 11'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "Header Font for Printing"
 msgstr "Huruf kepala untuk Pencetakan"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -426,11 +466,15 @@ msgstr ""
 "dokumen. Hal ini hanya akan berakibat jika pilihan \"Cetak Kepala\" "
 "dihidupkan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+msgid "'Sans 8'"
+msgstr "'Sans 8'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Line Number Font for Printing"
 msgstr "Huruf Nomor baris untuk Pencetakan"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -449,15 +493,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Automatically Detected Encodings"
 msgstr "Encoding Yang Terdeteksi Secara Otomatis"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -469,15 +513,15 @@ msgstr ""
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:89
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-15']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:90
 msgid "Encodings shown in menu"
 msgstr "Encoding terlihat di menu"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+#: ../data/org.gnome.gedit.gschema.xml.in.h:91
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -485,11 +529,11 @@ msgstr ""
 "Daftar dari encoding yang diperlihatkan dalam menu Pengkodean Karakter pada "
 "pemilih buka/simpan berkas. Hanya pengkodean yang dikenali yang dipergunakan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid "Active plugins"
 msgstr "Plugin aktif"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.h:93
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -857,7 +901,7 @@ msgstr "Gedit telah menemukan dan mengganti satu kejadian"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:152
+#: ../gedit/gedit-commands-search.c:148
 #, c-format
 msgid "\"%s\" not found"
 msgstr "\"%s\" tidak ditemukan"
@@ -1827,12 +1871,12 @@ msgstr "SISIP"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:245
+#: ../gedit/gedit-statusbar.c:248
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Brs %d, Kol %d"
 
-#: ../gedit/gedit-statusbar.c:344
+#: ../gedit/gedit-statusbar.c:347
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -2216,36 +2260,36 @@ msgstr "/ pada %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:637
+#: ../gedit/gedit-view-frame.c:664
 #, c-format
 msgid "%d of %d"
 msgstr "%d dari %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:690
+#: ../gedit/gedit-view-frame.c:756
 msgid "_Wrap Around"
 msgstr "_Penggalan"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:700
+#: ../gedit/gedit-view-frame.c:766
 msgid "Match as _Regular Expression"
 msgstr "Cocokkan sebagai Ekspresi _Reguler"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:710
+#: ../gedit/gedit-view-frame.c:780
 msgid "Match _Entire Word Only"
 msgstr "Cocokkan Hanya Kata Saja"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:720
+#: ../gedit/gedit-view-frame.c:794
 msgid "_Match Case"
 msgstr "_Cocokkan huruf besar/kecil"
 
-#: ../gedit/gedit-view-frame.c:890
+#: ../gedit/gedit-view-frame.c:968
 msgid "String you want to search for"
 msgstr "Kata untuk dicari"
 
-#: ../gedit/gedit-view-frame.c:902
+#: ../gedit/gedit-view-frame.c:980
 msgid "Line you want to move the cursor to"
 msgstr "Pindahkan kursor ke baris"
 
