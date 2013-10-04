@@ -615,6 +615,10 @@ gedit_notebook_add_tab (GeditNotebook *nb,
 	gtk_notebook_set_tab_detachable (GTK_NOTEBOOK (nb),
 	                                 GTK_WIDGET (tab),
 	                                 TRUE);
+	gtk_container_child_set (GTK_CONTAINER (nb),
+				 GTK_WIDGET (tab),
+				 "tab-expand", TRUE,
+				 NULL);
 
 	/* The signal handler may have reordered the tabs */
 	position = gtk_notebook_page_num (GTK_NOTEBOOK (nb),
