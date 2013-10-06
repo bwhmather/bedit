@@ -18,7 +18,6 @@
 import os
 import re
 
-import cairo
 from gi.repository import Gtk, Gdk, Gio, GLib, GtkSource, Gedit
 
 from .library import Library
