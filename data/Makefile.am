@@ -6,7 +6,7 @@ desktop_DATA 	 = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_XML_RULE@
 
 appdatadir = $(datadir)/appdata
-dist_appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 appdata_in_files = gedit.appdata.xml.in
 
 servicedir = $(datadir)/dbus-1/services
@@ -44,7 +44,7 @@ endif
 
 EXTRA_DIST = 					\
 	$(desktop_in_files)			\
-	gedit.appdata.xml.in			\
+	$(appdata_in_files)			\
 	$(service_in_files)			\
 	$(man_MANS)				\
 	gedit.pc.in				\
@@ -55,7 +55,7 @@ EXTRA_DIST = 					\
 	gedit-osx.gschema.override
 
 CLEANFILES =	 			\
-	gedit.appdata.xml		\
+	$(appdata_DATA)			\
 	$(desktop_DATA)			\
 	$(service_DATA)			\
 	$(pkgconfig_DATA)		\
