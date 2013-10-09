@@ -257,7 +257,7 @@ class MultipleDocumentsSaver:
             signals[doc] = doc.connect('saving', self.on_document_saving)
 
         if all_docs:
-            Gedit.commands.save_all_documents(window)
+            Gedit.commands_save_all_documents(window)
         else:
             for doc in docs:
                 Gedit.commands_save_document(window, doc)
