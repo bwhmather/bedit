@@ -2017,51 +2017,6 @@ get_stock_icon (GtkIconTheme *theme,
 	return resize_icon (pixbuf, size);
 }
 
-static GdkPixbuf *
-get_icon (GtkIconTheme *theme,
-	  GFile        *location,
-	  gint          size)
-{
-	GdkPixbuf *pixbuf;
-	GtkIconInfo *icon_info;
-	GFileInfo *info;
-	GIcon *gicon;
-
-	if (location == NULL)
-		return get_stock_icon (theme, GTK_STOCK_FILE, size);
-
-	/* FIXME: Doing a sync stat is bad, this should be fixed */
-	info = g_file_query_info (location,
-	                          G_FILE_ATTRIBUTE_STANDARD_ICON,
-	                          G_FILE_QUERY_INFO_NONE,
-	                          NULL,
-	                          NULL);
-	if (info == NULL)
-		return get_stock_icon (theme, GTK_STOCK_FILE, size);
-
-	gicon = g_file_info_get_icon (info);
-
-	if (gicon == NULL)
-	{
-		g_object_unref (info);
-		return get_stock_icon (theme, GTK_STOCK_FILE, size);
-	}
-
-	icon_info = gtk_icon_theme_lookup_by_gicon (theme, gicon, size, 0);
-	g_object_unref (info);
-
-	if (icon_info == NULL)
-		return get_stock_icon (theme, GTK_STOCK_FILE, size);
-
-	pixbuf = gtk_icon_info_load_icon (icon_info, NULL);
-	g_object_unref (icon_info);
-
-	if (pixbuf == NULL)
-		return get_stock_icon (theme, GTK_STOCK_FILE, size);
-
-	return resize_icon (pixbuf, size);
-}
-
 /* FIXME: add support for theme changed. I think it should be as easy as
    call g_object_notify (tab, "name") when the icon theme changes */
 GdkPixbuf *
@@ -2131,16 +2086,7 @@ _gedit_tab_get_icon (GeditTab *tab)
 
 		default:
 		{
-			GFile *location;
-			GeditDocument *doc;
-
-			doc = gedit_tab_get_document (tab);
-
-			location = gedit_document_get_location (doc);
-			pixbuf = get_icon (theme, location, icon_size);
-
-			if (location)
-				g_object_unref (location);
+			pixbuf = NULL;
 		}
 	}
 

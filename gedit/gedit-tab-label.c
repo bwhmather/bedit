@@ -175,12 +175,20 @@ sync_state (GeditTab      *tab,
 		GdkPixbuf *pixbuf;
 
 		pixbuf = _gedit_tab_get_icon (tab);
-		gtk_image_set_from_pixbuf (GTK_IMAGE (tab_label->priv->icon), pixbuf);
 
 		if (pixbuf != NULL)
-			g_object_unref (pixbuf);
+		{
+			gtk_image_set_from_pixbuf (GTK_IMAGE (tab_label->priv->icon),
+			                           pixbuf);
 
-		gtk_widget_show (tab_label->priv->icon);
+			g_clear_object (&pixbuf);
+
+			gtk_widget_show (tab_label->priv->icon);
+		}
+		else
+		{
+			gtk_widget_hide (tab_label->priv->icon);
+		}
 
 		gtk_spinner_stop (GTK_SPINNER (tab_label->priv->spinner));
 		gtk_widget_hide (tab_label->priv->spinner);
