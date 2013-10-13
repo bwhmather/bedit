@@ -1967,111 +1967,53 @@ _gedit_tab_get_tooltip (GeditTab *tab)
 	return tip;
 }
 
-static GdkPixbuf *
-resize_icon (GdkPixbuf *pixbuf,
-	     gint       size)
-{
-	gint width, height;
-
-	width = gdk_pixbuf_get_width (pixbuf);
-	height = gdk_pixbuf_get_height (pixbuf);
-
-	/* if the icon is larger than the nominal size, scale down */
-	if (MAX (width, height) > size)
-	{
-		GdkPixbuf *scaled_pixbuf;
-
-		if (width > height)
-		{
-			height = height * size / width;
-			width = size;
-		}
-		else
-		{
-			width = width * size / height;
-			height = size;
-		}
-
-		scaled_pixbuf = gdk_pixbuf_scale_simple	(pixbuf,
-							 width,
-							 height,
-							 GDK_INTERP_BILINEAR);
-		g_object_unref (pixbuf);
-		pixbuf = scaled_pixbuf;
-	}
-
-	return pixbuf;
-}
-
-static GdkPixbuf *
-get_icon (GtkIconTheme *theme,
-          const gchar  *icon_name,
-          gint          size)
-{
-	GdkPixbuf *pixbuf;
-
-	pixbuf = gtk_icon_theme_load_icon (theme, icon_name, size, 0, NULL);
-	if (pixbuf == NULL)
-	{
-		return NULL;
-	}
-
-	return resize_icon (pixbuf, size);
-}
-
-/* FIXME: add support for theme changed. I think it should be as easy as
-   call g_object_notify (tab, "name") when the icon theme changes */
 GdkPixbuf *
 _gedit_tab_get_icon (GeditTab *tab)
 {
-	GdkPixbuf *pixbuf;
-	GtkIconTheme *theme;
-	GdkScreen *screen;
-	gint icon_size;
+	const gchar *icon_name;
+	GdkPixbuf *pixbuf = NULL;
 
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
-
-	screen = gtk_widget_get_screen (GTK_WIDGET (tab));
-
-	theme = gtk_icon_theme_get_for_screen (screen);
-	g_return_val_if_fail (theme != NULL, NULL);
-
-	gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
 
 	switch (tab->priv->state)
 	{
 		case GEDIT_TAB_STATE_PRINTING:
-			pixbuf = get_icon (theme,
-					   "printer-printing-symbolic",
-					   icon_size);
+			icon_name = "printer-printing-symbolic";
 			break;
 
 		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
 		case GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW:
-			pixbuf = get_icon (theme,
-					   "printer-symbolic",
-					   icon_size);
+			icon_name = "printer-symbolic";
 			break;
 
 		case GEDIT_TAB_STATE_LOADING_ERROR:
 		case GEDIT_TAB_STATE_REVERTING_ERROR:
 		case GEDIT_TAB_STATE_SAVING_ERROR:
 		case GEDIT_TAB_STATE_GENERIC_ERROR:
-			pixbuf = get_icon (theme,
-					   "dialog-error-symbolic",
-					   icon_size);
+			icon_name = "dialog-error-symbolic";
 			break;
 
 		case GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION:
-			pixbuf = get_icon (theme,
-					   "dialog-warning-symbolic",
-					   icon_size);
+			icon_name = "dialog-warning-symbolic";
 			break;
 
 		default:
-		{
-			pixbuf = NULL;
-		}
+			icon_name = NULL;
+	}
+
+	if (icon_name != NULL)
+	{
+		GdkScreen *screen;
+		GtkIconTheme *theme;
+		gint icon_size;
+
+		screen = gtk_widget_get_screen (GTK_WIDGET (tab));
+		theme = gtk_icon_theme_get_for_screen (screen);
+		g_return_val_if_fail (theme != NULL, NULL);
+
+		gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
+
+		pixbuf = gtk_icon_theme_load_icon (theme, icon_name, icon_size, 0, NULL);
 	}
 
 	return pixbuf;
