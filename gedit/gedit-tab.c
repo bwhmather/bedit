@@ -2004,15 +2004,17 @@ resize_icon (GdkPixbuf *pixbuf,
 }
 
 static GdkPixbuf *
-get_stock_icon (GtkIconTheme *theme,
-		const gchar  *stock,
-		gint          size)
+get_icon (GtkIconTheme *theme,
+          const gchar  *icon_name,
+          gint          size)
 {
 	GdkPixbuf *pixbuf;
 
-	pixbuf = gtk_icon_theme_load_icon (theme, stock, size, 0, NULL);
+	pixbuf = gtk_icon_theme_load_icon (theme, icon_name, size, 0, NULL);
 	if (pixbuf == NULL)
+	{
 		return NULL;
+	}
 
 	return resize_icon (pixbuf, size);
 }
@@ -2038,50 +2040,32 @@ _gedit_tab_get_icon (GeditTab *tab)
 
 	switch (tab->priv->state)
 	{
-		case GEDIT_TAB_STATE_LOADING:
-			pixbuf = get_stock_icon (theme,
-						 GTK_STOCK_OPEN,
-						 icon_size);
-			break;
-
-		case GEDIT_TAB_STATE_REVERTING:
-			pixbuf = get_stock_icon (theme,
-						 GTK_STOCK_REVERT_TO_SAVED,
-						 icon_size);
-			break;
-
-		case GEDIT_TAB_STATE_SAVING:
-			pixbuf = get_stock_icon (theme,
-						 GTK_STOCK_SAVE,
-						 icon_size);
-			break;
-
 		case GEDIT_TAB_STATE_PRINTING:
-			pixbuf = get_stock_icon (theme,
-						 GTK_STOCK_PRINT,
-						 icon_size);
+			pixbuf = get_icon (theme,
+					   "printer-printing-symbolic",
+					   icon_size);
 			break;
 
 		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
 		case GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW:
-			pixbuf = get_stock_icon (theme,
-						 GTK_STOCK_PRINT_PREVIEW,
-						 icon_size);
+			pixbuf = get_icon (theme,
+					   "printer-symbolic",
+					   icon_size);
 			break;
 
 		case GEDIT_TAB_STATE_LOADING_ERROR:
 		case GEDIT_TAB_STATE_REVERTING_ERROR:
 		case GEDIT_TAB_STATE_SAVING_ERROR:
 		case GEDIT_TAB_STATE_GENERIC_ERROR:
-			pixbuf = get_stock_icon (theme,
-						 GTK_STOCK_DIALOG_ERROR,
-						 icon_size);
+			pixbuf = get_icon (theme,
+					   "dialog-error-symbolic",
+					   icon_size);
 			break;
 
 		case GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION:
-			pixbuf = get_stock_icon (theme,
-						 GTK_STOCK_DIALOG_WARNING,
-						 icon_size);
+			pixbuf = get_icon (theme,
+					   "dialog-warning-symbolic",
+					   icon_size);
 			break;
 
 		default:
