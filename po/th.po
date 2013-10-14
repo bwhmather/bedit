@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-04 06:56+0000\n"
-"PO-Revision-Date: 2013-09-05 16:37+0700\n"
+"POT-Creation-Date: 2013-10-12 22:47+0000\n"
+"PO-Revision-Date: 2013-10-14 15:47+0700\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -25,6 +25,33 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-Language: Thai\n"
 "X-Poedit-Country: THAILAND\n"
+
+#: ../data/gedit.appdata.xml.in.h:1
+msgid ""
+"gedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"text editor."
+msgstr ""
+"gedit เป็นโปรแกรมแก้ไขข้อความอย่างเป็นทางการของเดสก์ท็อป GNOME ในขณะที่ gedit "
+"มุ่งไปที่ความเรียบง่ายและความสะดวกใช้ "
+"แต่ก็เป็นโปรแกรมแก้ไขข้อความที่มีประสิทธิภาพสำหรับงานทั่วไปเช่นกัน"
+
+#: ../data/gedit.appdata.xml.in.h:2
+msgid ""
+"Whether you are writing the next bestseller, programming an innovative "
+"application, or simply taking some quick notes, gedit will be a reliable "
+"tool to accomplish your task."
+msgstr ""
+"ไม่ว่าคุณจะเขียนหนังสือขายดีเล่มถัดไป หรือเขียนโปรแกรมประยุกต์เปี่ยมนวัตกรรม "
+"หรือเพียงแค่จดบันทึกอย่างเร็ว gedit ก็จะเป็นเครื่องมือที่เชื่อถือได้ที่จะทํางานของคุณให้สำเร็จ"
+
+#: ../data/gedit.appdata.xml.in.h:3
+msgid ""
+"Its flexible plugin system allows you to tailor the application to your "
+"needs and adapt it to your workflow."
+msgstr ""
+"ระบบปลั๊กอินที่ยืดหยุ่นช่วยให้คุณไปตัดประยุกต์เข้ากับความต้องการของคุณ "
+"และทำให้เหมาะกับขั้นตอนการทำงานของคุณ"
 
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -54,11 +81,11 @@ msgstr "เปิดหน้าต่างใหม่"
 msgid "Open a New Document"
 msgstr "สร้างเอกสารใหม่"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+#: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
 msgstr "ใช้แบบอักษรปริยาย"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+#: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -68,11 +95,15 @@ msgstr ""
 "ใช้แบบอักษรความกว้างคงที่ปริยายของระบบในการแก้ไขข้อความหรือไม่ ถ้าปิดตัวเลือกนี้ "
 "แบบอักษรที่ใช้จะเป็นไปตามตัวเลือก \"แบบอักษรของเครื่องมือแก้ไข\" แทนแบบอักษรของระบบ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+msgid "'Monospace 12'"
+msgstr "'Monospace 12'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
 msgstr "แ_บบอักษรของเครื่องมือแก้ไข"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
+#: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -80,19 +111,19 @@ msgstr ""
 "แบบอักษรที่กำหนดเองจะถูกใช้ในพื้นที่การแก้ไขข้อความ ซึ่งจะมีผลใช้ก็ต่อเมื่อไม่ใช้ตัวเลือก "
 "\"ใช้แบบอักษรปริยาย\""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
+#: ../data/org.gnome.gedit.gschema.xml.in.h:6
 msgid "Style Scheme"
 msgstr "ชุดสไตล์"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
+#: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "ชื่อชุดสไตล์ของ GtkSourceView ที่จะใช้เน้นสีข้อความ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
+#: ../data/org.gnome.gedit.gschema.xml.in.h:8
 msgid "Create Backup Copies"
 msgstr "สร้างสำเนาแฟ้มสำรอง"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+#: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -100,11 +131,11 @@ msgstr ""
 "ให้ gedit สร้างสำเนาชุดสำรองของแฟ้มที่บันทึกหรือไม่ "
 "คุณสามารถกำหนดนามสกุลแฟ้มได้โดยตั้งค่าตัวเลือก \"นามสกุลของแฟ้มสำรอง\""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
+#: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
 msgstr "บันทึกข้อมูลอัตโนมัติ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
+#: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -113,21 +144,21 @@ msgstr ""
 "ให้ gedit บันทึกการแก้ไขโดยอัตโนมัติเป็นช่วงๆ หรือไม่ "
 "คุณสามารถกำหนดช่วงเวลาการบันทึกได้โดยตั้งค่าตัวเลือก \"ช่วงเวลาการบันทึกข้อมูลอัตโนมัติ\""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
+#: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid "Autosave Interval"
 msgstr "ช่วงเวลาการบันทึกข้อมูลอัตโนมัติ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
+#: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr "ระยะเวลาเป็นนาทีที่ gedit จะบันทึกแฟ้ม มีผลใช้ต่อเมื่อใช้ตัวเลือก \"บันทึกข้อมูลอัตโนมัติ\""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
+#: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Undo Actions Limit (DEPRECATED)"
 msgstr "จำนวนจำกัดของการเรียกคืนการทำ (เลิกใช้แล้ว)"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
+#: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
@@ -135,11 +166,11 @@ msgstr ""
 "จำนวนครั้งสูงสุดของการปฏิบัติการที่ gedit จะสามารถเรียกคืนการทำหรือทำซ้ำได้  ใช้ค่า \"-1\" "
 "จะหมายถึงไม่จำกัดจำนวน  คีย์นี้เลิกใช้แล้วตั้งแต่รุ่น 2.12.0"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+#: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid "Maximum Number of Undo Actions"
 msgstr "จำนวนปฏิบัติการสูงสุดของการเรียกคืน"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+#: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -147,11 +178,11 @@ msgstr ""
 "จำนวนครั้งสูงสุดของการปฏิบัติการที่ gedit จะสามารถเรียกคืนการทำหรือทำซ้ำได้  ใช้ค่า \"-1\" "
 "จะหมายถึงไม่จำกัดจำนวน"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+#: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid "Line Wrapping Mode"
 msgstr "โหมดการตัดบรรทัด"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+#: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
 "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
@@ -162,77 +193,77 @@ msgstr ""
 "จะตัดบรรทัดที่ขอบเขตคำ, และ \"char\" จะตัดบรรทัดที่ระดับตัวอักษร หมายเหตุ ตัวพิมพ์ใหญ่-"
 "เล็กมีความหมายต่างกัน"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+#: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Tab Size"
 msgstr "ขนาดของแท็บ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+#: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "กำหนดจำนวนช่องว่างเพื่อแสดงแทนอักษรแท็บ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+#: ../data/org.gnome.gedit.gschema.xml.in.h:22
 msgid "Insert spaces"
 msgstr "แทรกช่องว่าง"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+#: ../data/org.gnome.gedit.gschema.xml.in.h:23
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "กำหนดให้ gedit ใส่ช่องว่างแทนแท็บ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+#: ../data/org.gnome.gedit.gschema.xml.in.h:24
 msgid "Automatic indent"
 msgstr "ร่นบรรทัดอัตโนมัติ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+#: ../data/org.gnome.gedit.gschema.xml.in.h:25
 msgid "Whether gedit should enable automatic indentation."
 msgstr "ให้ gedit ร่นบรรทัดให้โดยอัตโนมัติ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+#: ../data/org.gnome.gedit.gschema.xml.in.h:26
 msgid "Display Line Numbers"
 msgstr "แสดงเลขบรรทัด"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+#: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "ให้ gedit แสดงเลขบรรทัดในพื้นที่แก้ไข"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+#: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Highlight Current Line"
 msgstr "เน้นบรรทัดปัจจุบัน"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+#: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Whether gedit should highlight the current line."
 msgstr "กำหนดให้ gedit เน้นบรรทัดปัจจุบัน"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+#: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Highlight Matching Brackets"
 msgstr "เน้นวงเล็บที่เข้าคู่กัน"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+#: ../data/org.gnome.gedit.gschema.xml.in.h:31
 msgid "Whether gedit should highlight matching brackets."
 msgstr "กำหนดให้ gedit เน้นวงเล็บที่เข้าคู่กัน"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
+#: ../data/org.gnome.gedit.gschema.xml.in.h:32
 msgid "Display Right Margin"
 msgstr "แสดงกั้นหน้าขวา"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
+#: ../data/org.gnome.gedit.gschema.xml.in.h:33
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "ให้ gedit แสดงกั้นหน้าขวาในพื้นที่แก้ไข"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
+#: ../data/org.gnome.gedit.gschema.xml.in.h:34
 msgid "Right Margin Position"
 msgstr "ตำแหน่งกั้นหน้าขวา"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+#: ../data/org.gnome.gedit.gschema.xml.in.h:35
 msgid "Specifies the position of the right margin."
 msgstr "กำหนดตำแหน่งของกั้นหน้าขวา"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
+#: ../data/org.gnome.gedit.gschema.xml.in.h:36
 msgid "Smart Home End"
 msgstr "Home End พิเศษ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -249,55 +280,55 @@ msgstr ""
 "แล้วจึงย้ายไปที่ต้น/ท้ายบรรทัดในครั้งต่อมา, และ \"always\" ถ้าต้องการเลื่อนไปที่ต้น/"
 "ท้ายข้อความเสมอ โดยไม่ย้ายไปที่ต้น/ท้ายบรรทัด"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Restore Previous Cursor Position"
 msgstr "คืนค่าตำแหน่งเคอร์เซอร์ล่าสุด"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr "กำหนดให้ gedit คืนค่าตำแหน่งเคอร์เซอร์ล่าสุดเมื่อโหลดแฟ้ม"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Enable Syntax Highlighting"
 msgstr "เปิดใช้งานการเน้นไวยากรณ์"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "ให้ gedit เน้นข้อความตามไวยากรณ์ของเนื้อหา"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid "Enable Search Highlighting"
 msgstr "เปิดใช้งานการเน้นคำค้น"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "กำหนดให้ gedit เน้นคำที่พบทั้งหมดเมื่อค้นข้อความ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid "Ensure Trailing Newline"
 msgstr "ตรวจสอบให้จบแฟ้มด้วยอักขระขึ้นบรรทัดใหม่เสมอ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "กำหนดให้ gedit ตรวจสอบให้แน่ใจว่าเอกสารจบด้วยอักขระขึ้นบรรทัดใหม่เสมอ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Toolbar is Visible"
 msgstr "แสดงแถบเครื่องมือ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "จะแสดงแถบเครื่องมือในหน้าต่างแก้ไขข้อความหรือไม่"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid "Notebook Show Tabs Mode"
 msgstr "โหมดการแสดงแท็บของสมุดบันทึก"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -308,55 +339,55 @@ msgstr ""
 "จะแสดงแท็บเสมอ และ \"auto\" จะแสดงแท็บเฉพาะเมื่อมีแท็บมากกว่าหนึ่งแท็บเท่านั้น หมายเหตุ "
 "ตัวพิมพ์ใหญ่-เล็กมีความหมายต่างกัน"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid "Status Bar is Visible"
 msgstr "แสดงแถบสถานะ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "จะแสดงแถบสถานะที่ด้านล่างของหน้าต่างแก้ไขข้อความหรือไม่"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Side panel is Visible"
 msgstr "แสดงช่องด้านข้าง"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "จะแสดงช่องด้านข้างที่ด้านซ้ายของหน้าต่างแก้ไขข้อความหรือไม่"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid "Maximum Recent Files"
 msgstr "จำนวนสูงสุดของแฟ้มล่าสุด"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
 msgstr "กำหนดจำนวนชื่อแฟ้มที่เคยแก้ไขและแสดงในเมนูย่อย \"แฟ้มล่าสุด\""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid "Print Syntax Highlighting"
 msgstr "พิมพ์แบบเน้นไวยากรณ์"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "กำหนดให้ gedit เน้นไวยากรณ์ในการจัดพิมพ์เอกสาร"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid "Print Header"
 msgstr "พิมพ์หัวกระดาษ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "กำหนดให้ gedit พิมพ์หัวกระดาษด้วย"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid "Printing Line Wrapping Mode"
 msgstr "พิมพ์โดยใช้โหมดตัดบรรทัด"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
 "\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
@@ -367,11 +398,11 @@ msgstr ""
 "จะตัดบรรทัดที่ขอบเขตคำ, และ \"char\" จะตัดบรรทัดที่ระดับตัวอักษร หมายเหตุ ตัวพิมพ์ใหญ่-"
 "เล็กมีความหมายต่างกัน"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Print Line Numbers"
 msgstr "พิมพ์เลขบรรทัด"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -380,30 +411,42 @@ msgstr ""
 "ถ้าตั้งค่านี้เป็น 0 ก็จะไม่แทรกเลขบรรทัดในการพิมพ์เอกสาร ถ้าเป็นค่าอื่น gedit "
 "จะพิมพ์เลขบรรทัดโดยเว้นเป็นช่วงๆ เท่ากับจำนวนบรรทัดที่กำหนด"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+msgid "'Monospace 9'"
+msgstr "'Monospace 9'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Body Font for Printing"
 msgstr "แบบของอักษรเวลาพิมพ์"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr "กำหนดแบบอักษรที่จะใช้สำหรับเวลาพิมพ์"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+msgid "'Sans 11'"
+msgstr "'Sans 11'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "Header Font for Printing"
 msgstr "แบบอักษรของหัวกระดาษในการพิมพ์"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr "เลือกแบบอักษรสำหรับส่วนหัวกระดาษตอนพิมพ์ มีผลเมื่อเลือกใช้ \"พิมพ์หัวกระดาษ\""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+msgid "'Sans 8'"
+msgstr "'Sans 8'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Line Number Font for Printing"
 msgstr "แบบอักษรของเลขเส้นบรรทัดในการพิมพ์"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -422,15 +465,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'TIS-620', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Automatically Detected Encodings"
 msgstr "รหัสอักขระที่จะตรวจหาโดยอัตโนมัติ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -441,15 +484,15 @@ msgstr ""
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:89
 msgid "['ISO-8859-15']"
 msgstr "['TIS-620']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:90
 msgid "Encodings shown in menu"
 msgstr "การเข้ารหัสที่แสดงบนเมนู"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+#: ../data/org.gnome.gedit.gschema.xml.in.h:91
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -457,11 +500,11 @@ msgstr ""
 "รายชื่อรหัสอักขระที่จะแสดงในเมนูรหัสอักขระของกล่องเปิด/บันทึกแฟ้ม gedit "
 "จะแสดงเฉพาะรหัสที่รู้จักเท่านั้น"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid "Active plugins"
 msgstr "ปลั๊กอินที่เปิดใช้"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.h:93
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -1758,12 +1801,12 @@ msgstr "แทรก"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:245
+#: ../gedit/gedit-statusbar.c:248
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  บรรทัด %d, คอลัมน์ %d"
 
-#: ../gedit/gedit-statusbar.c:344
+#: ../gedit/gedit-statusbar.c:347
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1841,7 +1884,7 @@ msgstr "ชนิด MIME:"
 msgid "Encoding:"
 msgstr "รหัสอักขระ:"
 
-#: ../gedit/gedit-tab-label.c:279
+#: ../gedit/gedit-tab-label.c:287
 msgid "Close document"
 msgstr "ปิดเอกสาร"
 
@@ -2147,36 +2190,36 @@ msgstr "/ ที่ %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:664
+#: ../gedit/gedit-view-frame.c:703
 #, c-format
 msgid "%d of %d"
 msgstr "%d จาก %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:756
+#: ../gedit/gedit-view-frame.c:795
 msgid "_Wrap Around"
 msgstr "ห_มดแล้วเริ่มใหม่"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:766
+#: ../gedit/gedit-view-frame.c:805
 msgid "Match as _Regular Expression"
 msgstr "ค้นหาด้วยนิพจน์เ_รกิวลาร์"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:780
+#: ../gedit/gedit-view-frame.c:819
 msgid "Match _Entire Word Only"
 msgstr "ค้นหาทั้_งคำ"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:794
+#: ../gedit/gedit-view-frame.c:833
 msgid "_Match Case"
 msgstr "ตัวพิมพ์ใหญ่-เ_ล็กตรงกัน"
 
-#: ../gedit/gedit-view-frame.c:968
+#: ../gedit/gedit-view-frame.c:1007
 msgid "String you want to search for"
 msgstr "ข้อความที่คุณต้องการค้นหา"
 
-#: ../gedit/gedit-view-frame.c:980
+#: ../gedit/gedit-view-frame.c:1019
 msgid "Line you want to move the cursor to"
 msgstr "บรรทัดที่คุณต้องการย้ายเคอร์เซอร์ไป"
 
@@ -3003,7 +3046,7 @@ msgid "Type to search..."
 msgstr "พิมพ์เพื่อค้นหา..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:57
+#: ../plugins/snippets/snippets/document.py:56
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "ข้อความสั้น"
@@ -5038,9 +5081,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 
 #~ msgid "Recent Files"
 #~ msgstr "แฟ้มล่าสุด"
-
-#~ msgid "Monospace Regular 9"
-#~ msgstr "Monospace Regular 9"
 
 #~ msgid "Sans Regular 11"
 #~ msgstr "Sans Regular 11"
