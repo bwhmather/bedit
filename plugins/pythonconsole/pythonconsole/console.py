@@ -61,7 +61,7 @@ class PythonConsole(Gtk.ScrolledWindow):
         self._profile_settings.connect("changed", self.on_settings_changed)
 
         self.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
-        self.set_shadow_type(Gtk.ShadowType.IN)
+        self.set_shadow_type(Gtk.ShadowType.NONE)
         self.view = Gtk.TextView()
         self.reconfigure()
         self.view.set_editable(True)
