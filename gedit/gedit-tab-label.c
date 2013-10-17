@@ -302,14 +302,14 @@ gedit_tab_label_init (GeditTabLabel *tab_label)
 	gtk_box_pack_start (GTK_BOX (hbox), icon, FALSE, FALSE, 0);
 	tab_label->priv->icon = icon;
 
-	label = gtk_label_new ("");
-	gtk_widget_set_halign (label, GTK_ALIGN_START);
-	gtk_misc_set_padding (GTK_MISC (label), 0, 0);
-	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-	tab_label->priv->label = label;
+	dummy_label = gtk_label_new ("  ");
+	gtk_box_pack_start (GTK_BOX (hbox), dummy_label, FALSE, FALSE, 0);
 
-	dummy_label = gtk_label_new ("");
-	gtk_box_pack_start (GTK_BOX (hbox), dummy_label, TRUE, TRUE, 0);
+	label = gtk_label_new ("");
+	gtk_widget_set_halign (label, GTK_ALIGN_CENTER);
+	gtk_misc_set_padding (GTK_MISC (label), 0, 0);
+	gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
+	tab_label->priv->label = label;
 
 	gtk_widget_show (ebox);
 	gtk_widget_show (hbox);
