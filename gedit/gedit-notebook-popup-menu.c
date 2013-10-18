@@ -129,6 +129,14 @@ on_move_to_new_window_menuitem_activate (GtkMenuItem            *menuitem,
 }
 
 static void
+on_move_to_new_tab_group_menuitem_activate (GtkMenuItem            *menuitem,
+                                            GeditNotebookPopupMenu *menu)
+{
+	_gedit_window_move_tab_to_new_tab_group (menu->priv->window,
+	                                         menu->priv->tab);
+}
+
+static void
 on_file_save_menuitem_activate (GtkMenuItem            *menuitem,
                                 GeditNotebookPopupMenu *menu)
 {
@@ -167,6 +175,13 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move to New Window"));
 	g_signal_connect (menu_item, "activate",
 	                  G_CALLBACK (on_move_to_new_window_menuitem_activate),
+	                  menu);
+	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
+	gtk_widget_show (menu_item);
+
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move to New Tab Group"));
+	g_signal_connect (menu_item, "activate",
+	                  G_CALLBACK (on_move_to_new_tab_group_menuitem_activate),
 	                  menu);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);

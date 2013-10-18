@@ -158,6 +158,8 @@ GtkWidget	*_gedit_window_get_notebook		(GeditWindow         *window);
 
 GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow         *window,
 							 GeditTab            *tab);
+void             _gedit_window_move_tab_to_new_tab_group(GeditWindow         *window,
+                                                         GeditTab            *tab);
 gboolean	 _gedit_window_is_removing_tabs		(GeditWindow         *window);
 
 GFile		*_gedit_window_get_default_location 	(GeditWindow         *window);

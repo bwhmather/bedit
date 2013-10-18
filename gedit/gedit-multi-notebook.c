@@ -835,6 +835,40 @@ gedit_multi_notebook_add_new_notebook (GeditMultiNotebook *mnb)
 }
 
 void
+gedit_multi_notebook_add_new_notebook_with_tab (GeditMultiNotebook *mnb,
+                                                GeditTab           *tab)
+{
+	GtkWidget *notebook;
+	gint page_num;
+	GList *l;
+
+	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+
+	notebook = gedit_notebook_new ();
+	add_notebook (mnb, notebook, FALSE);
+
+	l = mnb->priv->notebooks;
+
+	do
+	{
+		page_num = gtk_notebook_page_num (GTK_NOTEBOOK (l->data),
+						  GTK_WIDGET (tab));
+		if (page_num != -1)
+			break;
+
+		l = g_list_next (l);
+	} while (l != NULL && page_num == -1);
+
+	g_return_if_fail (page_num != -1);
+
+	gedit_notebook_move_tab (GEDIT_NOTEBOOK (l->data),
+	                         GEDIT_NOTEBOOK (notebook),
+	                         tab,
+	                         -1);
+}
+
+void
 gedit_multi_notebook_remove_active_notebook (GeditMultiNotebook *mnb)
 {
 	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));

@@ -4268,6 +4268,17 @@ _gedit_window_move_tab_to_new_window (GeditWindow *window,
 	return new_window;
 }
 
+void
+_gedit_window_move_tab_to_new_tab_group (GeditWindow *window,
+                                         GeditTab    *tab)
+{
+	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+
+	gedit_multi_notebook_add_new_notebook_with_tab (window->priv->multi_notebook,
+	                                                tab);
+}
+
 /**
  * gedit_window_set_active_tab:
  * @window: a #GeditWindow

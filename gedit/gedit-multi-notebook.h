@@ -119,6 +119,9 @@ void			 gedit_multi_notebook_close_all_tabs		(GeditMultiNotebook *mnb);
 
 void			 gedit_multi_notebook_add_new_notebook		(GeditMultiNotebook *mnb);
 
+void			 gedit_multi_notebook_add_new_notebook_with_tab (GeditMultiNotebook *mnb,
+                                                                         GeditTab           *tab);
+
 void			 gedit_multi_notebook_remove_active_notebook	(GeditMultiNotebook *mnb);
 
 void			 gedit_multi_notebook_previous_notebook		(GeditMultiNotebook *mnb);
