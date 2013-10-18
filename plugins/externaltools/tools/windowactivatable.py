@@ -208,7 +208,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
         ui_manager.ensure_update()
 
         bottom = self.window.get_bottom_panel()
-        image = Gtk.Image(stock=Gtk.STOCK_EXECUTE, icon_size=Gtk.IconSize.MENU)
+        image = Gtk.Image.new_from_icon_name("system-run-symbolic", Gtk.IconSize.MENU)
         bottom.add_item(self._output_buffer.panel,
                         "GeditExternalToolsShellOutput",
                         _("Tool Output"),
