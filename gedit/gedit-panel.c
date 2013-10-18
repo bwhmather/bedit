@@ -684,7 +684,10 @@ build_tab_label (GeditPanel  *panel,
 	gtk_container_add (GTK_CONTAINER (label_ebox), label_hbox);
 
 	/* setup icon */
-	gtk_box_pack_start (GTK_BOX (label_hbox), icon, FALSE, FALSE, 0);
+	if (icon != NULL)
+	{
+		gtk_box_pack_start (GTK_BOX (label_hbox), icon, FALSE, FALSE, 0);
+	}
 
 	/* setup label */
 	label = gtk_label_new (name);
@@ -774,20 +777,14 @@ gedit_panel_add_item (GeditPanel  *panel,
 	data = g_slice_new (GeditPanelItem);
 	data->id = g_strdup (id);
 	data->display_name = g_strdup (display_name);
+	data->icon = NULL;
 
-	if (image == NULL)
-	{
-		/* default to empty */
-		data->icon = gtk_image_new_from_icon_name ("text-x-generic",
-						           GTK_ICON_SIZE_MENU);
-	}
-	else
+	if (image != NULL)
 	{
 		data->icon = image;
+		gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &w, &h);
+		gtk_widget_set_size_request (data->icon, w, h);
 	}
-
-	gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &w, &h);
-	gtk_widget_set_size_request (data->icon, w, h);
 
 	g_object_set_data (G_OBJECT (item),
 		           PANEL_ITEM_KEY,

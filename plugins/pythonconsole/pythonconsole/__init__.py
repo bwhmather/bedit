@@ -29,8 +29,6 @@ from gi.repository import GObject, Gtk, Gedit, Peas, PeasGtk
 from .console import PythonConsole
 from .config import PythonConsoleConfigWidget
 
-PYTHON_ICON = 'gnome-mime-text-x-python'
-
 class PythonConsolePlugin(GObject.Object, Gedit.WindowActivatable, PeasGtk.Configurable):
     __gtype_name__ = "PythonConsolePlugin"
 
@@ -46,10 +44,8 @@ class PythonConsolePlugin(GObject.Object, Gedit.WindowActivatable, PeasGtk.Confi
         self._console.eval('print("You can access the main window through ' \
                            '\'window\' :\\n%s" % window)', False)
         bottom = self.window.get_bottom_panel()
-        image = Gtk.Image()
-        image.set_from_icon_name(PYTHON_ICON, Gtk.IconSize.MENU)
         bottom.add_item(self._console, "GeditPythonConsolePanel",
-                        _('Python Console'), image)
+                        _('Python Console'), None)
 
     def do_deactivate(self):
         self._console.stop()
