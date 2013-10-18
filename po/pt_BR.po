@@ -31,9 +31,9 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-25 16:23+0000\n"
-"PO-Revision-Date: 2013-09-25 21:57-0300\n"
-"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
+"POT-Creation-Date: 2013-10-14 16:49+0000\n"
+"PO-Revision-Date: 2013-10-18 15:01-0300\n"
+"Last-Translator: Antonio Fernandes C. Neto <fernandesn@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -248,7 +248,7 @@ msgstr "Se o gedit deve habilitar recuo automático."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:26
 msgid "Display Line Numbers"
-msgstr "Mostrar números de linha"
+msgstr "Exibir números de linha"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Whether gedit should display line numbers in the editing area."
@@ -272,7 +272,7 @@ msgstr "Se o gedit deve destacar correspondência entre parênteses."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:32
 msgid "Display Right Margin"
-msgstr "Mostrar margem direita"
+msgstr "Exibir margem direita"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:33
 msgid "Whether gedit should display the right margin in the editing area."
@@ -572,7 +572,7 @@ msgstr "Mostra a versão do aplicativo"
 # gedit --help
 #: ../gedit/gedit-app.c:125
 msgid "Display list of possible values for the encoding option"
-msgstr "Mostra uma lista de possíveis valores para a opção de codificação"
+msgstr "Exibir uma lista de possíveis valores para a opção de codificação"
 
 # gedit --help
 #: ../gedit/gedit-app.c:133
@@ -608,11 +608,12 @@ msgstr "GEOMETRIA"
 
 #: ../gedit/gedit-app.c:165
 msgid "Open files and block process until files are closed"
-msgstr "Abrir arquivos e processo de bloquear até arquivos que estão fechados"
+msgstr ""
+"Abre os arquivos e bloqueia o processo até que os arquivos sejam fechados"
 
 #: ../gedit/gedit-app.c:173
 msgid "Run gedit in standalone mode"
-msgstr "Rodar o gedit no modo independente"
+msgstr "Executa o gedit no modo independente"
 
 #: ../gedit/gedit-app.c:182
 msgid "[FILE...] [+LINE[:COLUMN]]"
@@ -1677,7 +1678,7 @@ msgstr "Exi_bir números de linha"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:3
 msgid "Display right _margin at column:"
-msgstr "Mostrar a margem_direita da coluna:"
+msgstr "Exibir a _margem direita da coluna:"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:4
 #: ../gedit/gedit-print-preferences.ui.h:9
@@ -2373,36 +2374,36 @@ msgstr "/ em %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:664
+#: ../gedit/gedit-view-frame.c:703
 #, c-format
 msgid "%d of %d"
 msgstr "%d de %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:756
+#: ../gedit/gedit-view-frame.c:795
 msgid "_Wrap Around"
 msgstr "_Voltar ao início"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:766
+#: ../gedit/gedit-view-frame.c:805
 msgid "Match as _Regular Expression"
 msgstr "Coincidir com expressão _regular"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:780
+#: ../gedit/gedit-view-frame.c:819
 msgid "Match _Entire Word Only"
 msgstr "Coincidir ap_enas com palavra completa"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:794
+#: ../gedit/gedit-view-frame.c:833
 msgid "_Match Case"
 msgstr "Diferenciar _maiúsculas/minúsculas"
 
-#: ../gedit/gedit-view-frame.c:968
+#: ../gedit/gedit-view-frame.c:1007
 msgid "String you want to search for"
 msgstr "Expressão que você deseja pesquisar"
 
-#: ../gedit/gedit-view-frame.c:980
+#: ../gedit/gedit-view-frame.c:1019
 msgid "Line you want to move the cursor to"
 msgstr "Linha para a qual que você deseja mover o cursor"
 
@@ -2774,7 +2775,7 @@ msgstr "Palavra atual"
 
 #: ../plugins/externaltools/tools/tools.ui.h:13
 msgid "Display in bottom pane"
-msgstr "Mostrar no painel inferior"
+msgstr "Exibir no painel inferior"
 
 #: ../plugins/externaltools/tools/tools.ui.h:14
 msgid "Create new document"
@@ -2897,7 +2898,7 @@ msgstr "_Abrir"
 
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:2
 msgid "_Set Root to Active Document"
-msgstr "_Definir raíz ao documento ativo"
+msgstr "_Definir raiz ao documento ativo"
 
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:3
 msgid "_New Folder"
@@ -3244,7 +3245,7 @@ msgid "Type to search..."
 msgstr "Digite para pesquisar..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:57
+#: ../plugins/snippets/snippets/document.py:56
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Trechos"
