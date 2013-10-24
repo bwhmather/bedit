@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-26 20:20+0000\n"
-"PO-Revision-Date: 2013-09-26 23:42+0100\n"
+"POT-Creation-Date: 2013-10-23 17:31+0000\n"
+"PO-Revision-Date: 2013-10-24 20:45+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/gedit.appdata.xml.in.h:1
 msgid ""
@@ -30,8 +30,9 @@ msgid ""
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
 "text editor."
 msgstr ""
-"gedit je uradni urejevalnik besedil namiznega okolja GNOME. Ob osredotočenosti na "
-"enostavnost uporabe je gedit spodoben urejevalnik besedil za splošne namene."
+"gedit je uradni urejevalnik besedil namiznega okolja GNOME. Ob "
+"osredotočenosti na enostavnost uporabe je gedit spodoben urejevalnik besedil "
+"za splošne namene."
 
 #: ../data/gedit.appdata.xml.in.h:2
 msgid ""
@@ -997,7 +998,7 @@ msgstr "dokument %d"
 msgid "Read-Only"
 msgstr "Le za branje"
 
-#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3459
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3463
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -1566,23 +1567,27 @@ msgid "_Quit"
 msgstr "_Končaj"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:167 ../gedit/gedit-ui.h:142
+#: ../gedit/gedit-notebook-popup-menu.c:175 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "_Prestavi na naslednje okno"
 
-#: ../gedit/gedit-notebook-popup-menu.c:178
+#: ../gedit/gedit-notebook-popup-menu.c:182
+msgid "_Move to New Tab Group"
+msgstr "_Premakni na novo skupino zavihkov"
+
+#: ../gedit/gedit-notebook-popup-menu.c:193
 msgid "_Save"
 msgstr "_Shrani"
 
-#: ../gedit/gedit-notebook-popup-menu.c:185 ../gedit/gedit-ui.h:78
+#: ../gedit/gedit-notebook-popup-menu.c:200 ../gedit/gedit-ui.h:78
 msgid "Save _As..."
 msgstr "Shrani _kot ..."
 
-#: ../gedit/gedit-notebook-popup-menu.c:196 ../gedit/gedit-ui.h:84
+#: ../gedit/gedit-notebook-popup-menu.c:211 ../gedit/gedit-ui.h:84
 msgid "_Print..."
 msgstr "Na_tisni ..."
 
-#: ../gedit/gedit-notebook-popup-menu.c:207
+#: ../gedit/gedit-notebook-popup-menu.c:222
 msgid "_Close"
 msgstr "_Zapri"
 
@@ -1594,7 +1599,7 @@ msgstr "Odpri datoteko"
 msgid "Open a recently used file"
 msgstr "Odpri nedavno uporabljeno datoteko"
 
-#: ../gedit/gedit-panel.c:407 ../gedit/gedit-panel.c:588
+#: ../gedit/gedit-panel.c:407 ../gedit/gedit-panel.c:590
 msgid "Empty"
 msgstr "Prazno"
 
@@ -2040,7 +2045,7 @@ msgstr "Vrsta MIME:"
 msgid "Encoding:"
 msgstr "Nabor znakov:"
 
-#: ../gedit/gedit-tab-label.c:279
+#: ../gedit/gedit-tab-label.c:287
 msgid "Close document"
 msgstr "Zapri dokument"
 
@@ -2346,36 +2351,36 @@ msgstr "/ na %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:664
+#: ../gedit/gedit-view-frame.c:703
 #, c-format
 msgid "%d of %d"
 msgstr "%d od %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:756
+#: ../gedit/gedit-view-frame.c:795
 msgid "_Wrap Around"
 msgstr "_Prelomi vrstice"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:766
+#: ../gedit/gedit-view-frame.c:805
 msgid "Match as _Regular Expression"
 msgstr "Poišči kot _logični izraz"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:780
+#: ../gedit/gedit-view-frame.c:819
 msgid "Match _Entire Word Only"
 msgstr "Poišči le _cele besede"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:794
+#: ../gedit/gedit-view-frame.c:833
 msgid "_Match Case"
 msgstr "_Upoštevaj velikost črk"
 
-#: ../gedit/gedit-view-frame.c:968
+#: ../gedit/gedit-view-frame.c:1007
 msgid "String you want to search for"
 msgstr "Niz, ki ga želite poiskati"
 
-#: ../gedit/gedit-view-frame.c:980
+#: ../gedit/gedit-view-frame.c:1019
 msgid "Line you want to move the cursor to"
 msgstr "Vrstica, na katero želite premakniti kazalko"
 
@@ -3182,7 +3187,7 @@ msgid "_Error color:"
 msgstr "Barva _napake:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:52
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:48
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Konzola python"
@@ -3214,7 +3219,7 @@ msgid "Type to search..."
 msgstr "Vtipkajte za iskanje ..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:57
+#: ../plugins/snippets/snippets/document.py:56
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Izrezki"
