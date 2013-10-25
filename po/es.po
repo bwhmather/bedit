@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-09-26 20:20+0000\n"
-"PO-Revision-Date: 2013-09-30 11:43+0200\n"
+"POT-Creation-Date: 2013-10-22 09:26+0000\n"
+"PO-Revision-Date: 2013-10-25 11:36+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -104,7 +104,6 @@ msgstr ""
 "vez de la tipografía del sistema."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
-#| msgid "Monospace 12"
 msgid "'Monospace 12'"
 msgstr "«Monospace 12»"
 
@@ -454,7 +453,6 @@ msgstr ""
 "cantidad de líneas."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:64
-#| msgid "Monospace 9"
 msgid "'Monospace 9'"
 msgstr "«Monospace 9»"
 
@@ -470,7 +468,6 @@ msgstr ""
 "imprimen archivos."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:67
-#| msgid "Sans 11"
 msgid "'Sans 11'"
 msgstr "«Sans 11»"
 
@@ -488,7 +485,6 @@ msgstr ""
 "cabecera» se encuentre activada."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
-#| msgid "Sans 8"
 msgid "'Sans 8'"
 msgstr "«Sans 8»"
 
@@ -994,7 +990,7 @@ msgstr "Documento no guardado %d"
 msgid "Read-Only"
 msgstr "Sólo lectura"
 
-#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3459
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3463
 msgid "Documents"
 msgstr "Documentos"
 
@@ -1570,23 +1566,28 @@ msgid "_Quit"
 msgstr "_Salir"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:167 ../gedit/gedit-ui.h:142
+#: ../gedit/gedit-notebook-popup-menu.c:175 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "_Mover a una ventana nueva"
 
-#: ../gedit/gedit-notebook-popup-menu.c:178
+#: ../gedit/gedit-notebook-popup-menu.c:182
+#| msgid "_New Tab Group"
+msgid "_Move to New Tab Group"
+msgstr "_Mover al siguiente grupo de pestañas nuevo"
+
+#: ../gedit/gedit-notebook-popup-menu.c:193
 msgid "_Save"
 msgstr "_Guardar"
 
-#: ../gedit/gedit-notebook-popup-menu.c:185 ../gedit/gedit-ui.h:78
+#: ../gedit/gedit-notebook-popup-menu.c:200 ../gedit/gedit-ui.h:78
 msgid "Save _As..."
 msgstr "Guardar _como…"
 
-#: ../gedit/gedit-notebook-popup-menu.c:196 ../gedit/gedit-ui.h:84
+#: ../gedit/gedit-notebook-popup-menu.c:211 ../gedit/gedit-ui.h:84
 msgid "_Print..."
 msgstr "_Imprimir…"
 
-#: ../gedit/gedit-notebook-popup-menu.c:207
+#: ../gedit/gedit-notebook-popup-menu.c:222
 msgid "_Close"
 msgstr "_Cerrar"
 
@@ -1598,7 +1599,7 @@ msgstr "Abrir un archivo"
 msgid "Open a recently used file"
 msgstr "Abrir un archivo usado recientemente"
 
-#: ../gedit/gedit-panel.c:407 ../gedit/gedit-panel.c:588
+#: ../gedit/gedit-panel.c:407 ../gedit/gedit-panel.c:590
 msgid "Empty"
 msgstr "Vaciar"
 
@@ -2043,7 +2044,7 @@ msgstr "Tipo MIME:"
 msgid "Encoding:"
 msgstr "Codificación:"
 
-#: ../gedit/gedit-tab-label.c:279
+#: ../gedit/gedit-tab-label.c:287
 msgid "Close document"
 msgstr "Cerrar documento"
 
@@ -2349,36 +2350,36 @@ msgstr "/ en %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:664
+#: ../gedit/gedit-view-frame.c:703
 #, c-format
 msgid "%d of %d"
 msgstr "%d de %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:756
+#: ../gedit/gedit-view-frame.c:795
 msgid "_Wrap Around"
 msgstr "_Volver al principio"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:766
+#: ../gedit/gedit-view-frame.c:805
 msgid "Match as _Regular Expression"
 msgstr "Coincidir como expresión _regular"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:780
+#: ../gedit/gedit-view-frame.c:819
 msgid "Match _Entire Word Only"
 msgstr "Coincidir sólo con palabras compl_etas"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:794
+#: ../gedit/gedit-view-frame.c:833
 msgid "_Match Case"
 msgstr "Coi_ncidir con capitalización"
 
-#: ../gedit/gedit-view-frame.c:968
+#: ../gedit/gedit-view-frame.c:1007
 msgid "String you want to search for"
 msgstr "La cadena que quiere buscar"
 
-#: ../gedit/gedit-view-frame.c:980
+#: ../gedit/gedit-view-frame.c:1019
 msgid "Line you want to move the cursor to"
 msgstr "Línea a la que quiere mover el cursor"
 
@@ -3190,7 +3191,7 @@ msgid "_Error color:"
 msgstr "Color del _error:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:52
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:48
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Consola Python"
@@ -3222,7 +3223,7 @@ msgid "Type to search..."
 msgstr "Escriba para buscar…"
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:57
+#: ../plugins/snippets/snippets/document.py:56
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Recortes"
