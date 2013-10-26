@@ -90,7 +90,13 @@ enum
 
 enum
 {
-	TARGET_URI_LIST = 100
+	TARGET_URI_LIST = 100,
+	TARGET_XDNDDIRECTSAVE
+};
+
+static const GtkTargetEntry drop_types [] = {
+	{ "XdndDirectSave0", 0, TARGET_XDNDDIRECTSAVE }, /* XDS Protocol Type */
+	{ "text/uri-list", 0, TARGET_URI_LIST}
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditWindow, gedit_window, GTK_TYPE_APPLICATION_WINDOW)
@@ -2642,11 +2648,91 @@ drag_data_received_cb (GtkWidget        *widget,
 	if (window == NULL)
 		return;
 
-	if (info == TARGET_URI_LIST)
+	switch (info)
 	{
-		uri_list = gedit_utils_drop_get_uris (selection_data);
-		load_uris_from_drop (window, uri_list);
-		g_strfreev (uri_list);
+		case TARGET_URI_LIST:
+			uri_list = gedit_utils_drop_get_uris(selection_data);
+			load_uris_from_drop (window, uri_list);
+			g_strfreev (uri_list);
+
+			gtk_drag_finish (context, TRUE, FALSE, timestamp);
+
+			break;
+
+		case TARGET_XDNDDIRECTSAVE:
+			/* Indicate that we don't provide "F" fallback */
+			if (gtk_selection_data_get_format (selection_data) == 8 &&
+			    gtk_selection_data_get_length (selection_data) == 1 &&
+			    gtk_selection_data_get_data (selection_data)[0] == 'F')
+			{
+				gdk_property_change (gdk_drag_context_get_source_window (context),
+						     gdk_atom_intern ("XdndDirectSave0", FALSE),
+						     gdk_atom_intern ("text/plain", FALSE), 8,
+						     GDK_PROP_MODE_REPLACE, (const guchar *) "", 0);
+			}
+			else if (gtk_selection_data_get_format (selection_data) == 8 &&
+				 gtk_selection_data_get_length (selection_data) == 1 &&
+				 gtk_selection_data_get_data (selection_data)[0] == 'S' &&
+				 window->priv->direct_save_uri != NULL)
+			{
+				gchar **uris;
+
+				uris = g_new (gchar *, 2);
+				uris[0] = window->priv->direct_save_uri;
+				uris[1] = NULL;
+
+				load_uris_from_drop (window, uris);
+				g_free (uris);
+			}
+
+			g_free (window->priv->direct_save_uri);
+			window->priv->direct_save_uri = NULL;
+
+			gtk_drag_finish (context, TRUE, FALSE, timestamp);
+
+			break;
+	}
+}
+
+static void
+drag_drop_cb (GtkWidget      *widget,
+	      GdkDragContext *context,
+	      gint            x,
+	      gint            y,
+	      guint           time,
+	      gpointer        user_data)
+{
+	GeditWindow *window;
+	GtkTargetList *target_list;
+	GdkAtom target;
+
+	window = get_drop_window (widget);
+
+	target_list = gtk_drag_dest_get_target_list (widget);
+	target = gtk_drag_dest_find_target (widget, context, target_list);
+
+	if (target != GDK_NONE)
+	{
+		guint info;
+		gboolean found;
+
+		found = gtk_target_list_find (target_list, target, &info);
+		g_assert (found);
+
+		if (info == TARGET_XDNDDIRECTSAVE)
+		{
+			gchar *uri;
+			uri = gedit_utils_set_direct_save_filename (context);
+
+			if (uri != NULL)
+			{
+				g_free (window->priv->direct_save_uri);
+				window->priv->direct_save_uri = uri;
+			}
+		}
+
+		gtk_drag_get_data (GTK_WIDGET (widget), context,
+				   target, time);
 	}
 }
 
@@ -3697,6 +3783,7 @@ gedit_window_init (GeditWindow *window)
 	window->priv->dispose_has_run = FALSE;
 	window->priv->fullscreen_controls = NULL;
 	window->priv->fullscreen_animation_timeout_id = 0;
+	window->priv->direct_save_uri = NULL;
 	window->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
 	window->priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
 
@@ -3810,14 +3897,13 @@ gedit_window_init (GeditWindow *window)
 	gtk_widget_show (window->priv->hpaned);
 	gtk_widget_show (window->priv->vpaned);
 
-	/* Drag and drop support, set targets to NULL because we add the
-	   default uri_targets below */
+	/* Drag and drop support */
 	gtk_drag_dest_set (GTK_WIDGET (window),
 			   GTK_DEST_DEFAULT_MOTION |
 			   GTK_DEST_DEFAULT_HIGHLIGHT |
 			   GTK_DEST_DEFAULT_DROP,
-			   NULL,
-			   0,
+			   drop_types,
+			   G_N_ELEMENTS (drop_types),
 			   GDK_ACTION_COPY);
 
 	/* Add uri targets */
@@ -3825,7 +3911,7 @@ gedit_window_init (GeditWindow *window)
 
 	if (tl == NULL)
 	{
-		tl = gtk_target_list_new (NULL, 0);
+		tl = gtk_target_list_new (drop_types, G_N_ELEMENTS (drop_types));
 		gtk_drag_dest_set_target_list (GTK_WIDGET (window), tl);
 		gtk_target_list_unref (tl);
 	}
@@ -3837,6 +3923,10 @@ gedit_window_init (GeditWindow *window)
 	g_signal_connect (window,
 			  "drag_data_received",
 	                  G_CALLBACK (drag_data_received_cb),
+	                  NULL);
+	g_signal_connect (window,
+			  "drag_drop",
+	                  G_CALLBACK (drag_drop_cb),
 	                  NULL);
 
 	/* we can get the clipboard only after the widget

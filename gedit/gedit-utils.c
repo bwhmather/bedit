@@ -43,6 +43,7 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
+#include <glib/gstdio.h>
 #include <gio/gio.h>
 
 #include "gedit-utils.h"
@@ -1453,6 +1454,75 @@ gedit_utils_get_compression_type_from_content_type (const gchar *content_type)
 	}
 
 	return GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE;
+}
+
+/* Copied from nautilus */
+static gchar *
+get_direct_save_filename (GdkDragContext *context)
+{
+	guchar *prop_text;
+	gint prop_len;
+
+	if (!gdk_property_get (gdk_drag_context_get_source_window  (context), gdk_atom_intern ("XdndDirectSave0", FALSE),
+			       gdk_atom_intern ("text/plain", FALSE), 0, 1024, FALSE, NULL, NULL,
+			       &prop_len, &prop_text) && prop_text != NULL) {
+		return NULL;
+	}
+
+	/* Zero-terminate the string */
+	prop_text = g_realloc (prop_text, prop_len + 1);
+	prop_text[prop_len] = '\0';
+
+	/* Verify that the file name provided by the source is valid */
+	if (*prop_text == '\0' ||
+	    strchr ((const gchar *) prop_text, G_DIR_SEPARATOR) != NULL) {
+		gedit_debug_message (DEBUG_UTILS, "Invalid filename provided by XDS drag site");
+		g_free (prop_text);
+		return NULL;
+	}
+
+	return (gchar *)prop_text;
+}
+
+gchar *
+gedit_utils_set_direct_save_filename (GdkDragContext *context)
+{
+	gchar *uri;
+	gchar *filename;
+
+	uri = NULL;
+	filename = get_direct_save_filename (context);
+
+	if (filename != NULL)
+	{
+		gchar *tempdir;
+		gchar *path;
+
+		tempdir = g_dir_make_tmp ("gedit-drop-XXXXXX", NULL);
+		if (tempdir == NULL)
+		{
+			tempdir = g_strdup (g_get_tmp_dir ());
+		}
+
+		path = g_build_filename (tempdir,
+					filename,
+					NULL);
+
+		uri = g_filename_to_uri (path, NULL, NULL);
+
+		/* Change the property */
+		gdk_property_change (gdk_drag_context_get_source_window (context),
+				     gdk_atom_intern ("XdndDirectSave0", FALSE),
+				     gdk_atom_intern ("text/plain", FALSE), 8,
+				     GDK_PROP_MODE_REPLACE, (const guchar *) uri,
+				     strlen (uri));
+
+		g_free (tempdir);
+		g_free (path);
+		g_free (filename);
+	}
+
+	return uri;
 }
 
 /* ex:set ts=8 noet: */

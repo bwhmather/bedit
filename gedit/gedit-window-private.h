@@ -119,6 +119,8 @@ struct _GeditWindowPrivate
 
 	GFile          *default_location;
 
+	gchar          *direct_save_uri;
+
 #ifdef OS_OSX
 	GtkOSXApplicationMenuGroup *mac_menu_group;
 #endif

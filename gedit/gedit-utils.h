@@ -152,6 +152,8 @@ GeditDocumentCompressionType
 		 gedit_utils_get_compression_type_from_content_type
 		 					(const gchar      *content_type);
 
+gchar           *gedit_utils_set_direct_save_filename	(GdkDragContext *context);
+
 G_END_DECLS
 
 #endif /* __GEDIT_UTILS_H__ */

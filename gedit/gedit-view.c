@@ -57,6 +57,7 @@
 enum
 {
 	TARGET_URI_LIST = 100,
+	TARGET_XDNDDIRECTSAVE,
 	TARGET_TAB
 };
 
@@ -65,6 +66,7 @@ struct _GeditViewPrivate
 	GSettings *editor_settings;
 	GtkTextBuffer *current_buffer;
 	PeasExtensionSet *extensions;
+	gchar *direct_save_uri;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)
@@ -138,10 +140,15 @@ gedit_view_init (GeditView *view)
 	view->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
 
 	/* Drag and drop support */
+	view->priv->direct_save_uri = NULL;
 	tl = gtk_drag_dest_get_target_list (GTK_WIDGET (view));
 
 	if (tl != NULL)
 	{
+		gtk_target_list_add (tl,
+		                     gdk_atom_intern ("XdndDirectSave0", FALSE),
+		                     0,
+		                     TARGET_XDNDDIRECTSAVE);
 		gtk_target_list_add_uri_targets (tl, TARGET_URI_LIST);
 		gtk_target_list_add (tl,
 		                     gdk_atom_intern_static_string ("GTK_NOTEBOOK_TAB"),
@@ -370,58 +377,98 @@ gedit_view_drag_data_received (GtkWidget        *widget,
 			       guint             timestamp)
 {
 	/* If this is an URL emit DROP_URIS, otherwise chain up the signal */
-	if (info == TARGET_URI_LIST)
+	switch (info)
 	{
-		gchar **uri_list;
+		case TARGET_URI_LIST:
+			gchar **uri_list;
 
-		uri_list = gedit_utils_drop_get_uris (selection_data);
+			uri_list = gedit_utils_drop_get_uris (selection_data);
 
-		if (uri_list != NULL)
-		{
-			g_signal_emit (widget, view_signals[DROP_URIS], 0, uri_list);
-			g_strfreev (uri_list);
+			if (uri_list != NULL)
+			{
+				g_signal_emit (widget, view_signals[DROP_URIS], 0, uri_list);
+				g_strfreev (uri_list);
+
+				gtk_drag_finish (context, TRUE, FALSE, timestamp);
+			}
+
+			break;
+
+		case TARGET_TAB:
+			GtkWidget *notebook;
+			GtkWidget *new_notebook;
+			GtkWidget *page;
+
+			notebook = gtk_drag_get_source_widget (context);
+
+			if (!GTK_IS_WIDGET (notebook))
+			{
+				return;
+			}
+
+			page = *(GtkWidget **) gtk_selection_data_get_data (selection_data);
+			g_return_if_fail (page != NULL);
+
+			/* We need to iterate and get the notebook of the target view
+			   because we can have several notebooks per window */
+			new_notebook = get_notebook_from_view (widget);
+
+			if (notebook != new_notebook)
+			{
+				gedit_notebook_move_tab (GEDIT_NOTEBOOK (notebook),
+							 GEDIT_NOTEBOOK (new_notebook),
+							 GEDIT_TAB (page),
+							 0);
+			}
+
+			gtk_drag_finish (context, TRUE, TRUE, timestamp);
+
+			break;
+
+		case TARGET_XDNDDIRECTSAVE:
+			GeditView *view;
+
+			view = GEDIT_VIEW (widget);
+
+			/* Indicate that we don't provide "F" fallback */
+			if (gtk_selection_data_get_format (selection_data) == 8 &&
+			    gtk_selection_data_get_length (selection_data) == 1 &&
+			    gtk_selection_data_get_data (selection_data)[0] == 'F')
+			{
+				gdk_property_change (gdk_drag_context_get_source_window (context),
+						     gdk_atom_intern ("XdndDirectSave0", FALSE),
+						     gdk_atom_intern ("text/plain", FALSE), 8,
+						     GDK_PROP_MODE_REPLACE, (const guchar *) "", 0);
+			}
+			else if (gtk_selection_data_get_format (selection_data) == 8 &&
+				 gtk_selection_data_get_length (selection_data) == 1 &&
+				 gtk_selection_data_get_data (selection_data)[0] == 'S' &&
+				 view->priv->direct_save_uri != NULL)
+			{
+				gchar **uris;
+
+				uris = g_new (gchar *, 2);
+				uris[0] = view->priv->direct_save_uri;
+				uris[1] = NULL;
+				g_signal_emit (widget, view_signals[DROP_URIS], 0, uris);
+				g_free (uris);
+			}
+
+			g_free (view->priv->direct_save_uri);
+			view->priv->direct_save_uri = NULL;
 
 			gtk_drag_finish (context, TRUE, FALSE, timestamp);
-		}
-	}
-	else if (info == TARGET_TAB)
-	{
-		GtkWidget *notebook;
-		GtkWidget *new_notebook;
-		GtkWidget *page;
 
-		notebook = gtk_drag_get_source_widget (context);
+			break;
 
-		if (!GTK_IS_WIDGET (notebook))
-		{
-			return;
-		}
-
-		page = *(GtkWidget **) gtk_selection_data_get_data (selection_data);
-		g_return_if_fail (page != NULL);
-
-		/* We need to iterate and get the notebook of the target view
-		   because we can have several notebooks per window */
-		new_notebook = get_notebook_from_view (widget);
-
-		if (notebook != new_notebook)
-		{
-			gedit_notebook_move_tab (GEDIT_NOTEBOOK (notebook),
-				                 GEDIT_NOTEBOOK (new_notebook),
-				                 GEDIT_TAB (page),
-				                 0);
-		}
-
-		gtk_drag_finish (context, TRUE, TRUE, timestamp);
-	}
-	else
-	{
-		GTK_WIDGET_CLASS (gedit_view_parent_class)->drag_data_received (widget,
-										context,
-										x, y,
-										selection_data,
-										info,
-										timestamp);
+		default:
+			GTK_WIDGET_CLASS (gedit_view_parent_class)->drag_data_received (widget,
+											context,
+											x, y,
+											selection_data,
+											info,
+											timestamp);
+			break;
 	}
 }
 
@@ -434,12 +481,28 @@ gedit_view_drag_drop (GtkWidget      *widget,
 {
 	gboolean result;
 	GdkAtom target;
+	guint info;
+	gboolean found;
+	GtkTargetList *target_list;
 
-	/* If this is a URL, just get the drag data */
-	target = drag_get_uri_target (widget, context);
+	target_list = gtk_drag_dest_get_target_list (widget);
+	target = gtk_drag_dest_find_target (widget, context, target_list);
+	found = gtk_target_list_find (target_list, target, &info);
 
-	if (target != GDK_NONE)
+	if (found && (info == TARGET_URI_LIST || info == TARGET_XDNDDIRECTSAVE))
 	{
+		if (info == TARGET_XDNDDIRECTSAVE)
+		{
+			gchar *uri;
+			uri = gedit_utils_set_direct_save_filename (context);
+
+			if (uri != NULL)
+			{
+				g_free (GEDIT_VIEW (widget)->priv->direct_save_uri);
+				GEDIT_VIEW (widget)->priv->direct_save_uri = uri;
+			}
+		}
+
 		gtk_drag_get_data (widget, context, target, timestamp);
 		result = TRUE;
 	}
