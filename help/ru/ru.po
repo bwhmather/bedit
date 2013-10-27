@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-22 09:27+0000\n"
-"PO-Revision-Date: 2013-10-22 22:27+0300\n"
+"POT-Creation-Date: 2013-10-25 14:43+0000\n"
+"PO-Revision-Date: 2013-10-23 22:46+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -1758,7 +1758,7 @@ msgstr "В этом примере установлен язык HTML."
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:69
 msgid "Browse the snippets that are available for your language or syntax."
-msgstr "Просмотр фрагментов, доступных для текущего языка или синтаксиса."
+msgstr "Просмотрите фрагменты, доступные для текущего языка или синтаксиса."
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-snippets.page:76
@@ -1912,6 +1912,10 @@ msgid ""
 "where <em>n</em> is replaced with a number that represents the numerical "
 "order of variables included."
 msgstr ""
+"Под надписью <gui style=\"input\">Правка:</gui>, введите нужный текст "
+"фрагмента. Можно использовать <code>${n}</code> для обозначения переменных, "
+"где <em>n</em> заменяется числом, которое представляет порядковый номер "
+"переменной."
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-snippets.page:158
@@ -1925,6 +1929,9 @@ msgid ""
 "<gui style=\"input\">Tab trigger:</gui>. The <gui style=\"input\">Edit:</"
 "gui> textarea contains:"
 msgstr ""
+"Например, вы создали фрагмент текста со словом-термином <var>greetings</var> "
+"в графе <gui style=\"input\">Переключатель вкладок:</gui>. Текстовое поле "
+"под надписью <gui style=\"input\">Правка:</gui> содержит следующее:"
 
 #. (itstool) path: section/code
 #: C/gedit-plugins-snippets.page:164
@@ -1947,6 +1954,9 @@ msgid ""
 "and pressing the <key>Tab</key> key. The following text snippet will be "
 "inserted:"
 msgstr ""
+"Можно вставить этот фрагмент, набрав в документе слово <var>greetings</var> "
+"и нажав на клавиатуре кнопку <key>Tab</key>. Будет вставлен следующий "
+"фрагмент текста:"
 
 #. (itstool) path: section/code
 #: C/gedit-plugins-snippets.page:173
@@ -1968,6 +1978,10 @@ msgid ""
 "\"wonderful\" and \"amazing\" and press <key>Del</key> to delete the least "
 "preferred option."
 msgstr ""
+"Слова \"wonderful\" и \"amazing\" могут быть оставлены или удалены в "
+"зависимости от вашего выбора. Для этого нажмите <key>Tab</key>, чтобы "
+"выбрать между словами \"wonderful\" и \"amazing\", и нажмите <key>Del</key>, "
+"чтобы удалить неподходящий вариант."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-sort.page:21
@@ -2092,12 +2106,12 @@ msgstr ""
 #. (itstool) path: info/desc
 #: C/gedit-plugins-zeitgeist-dataprovider.page:15
 msgid "Log user activity for documents which are opened in gedit"
-msgstr ""
+msgstr "Журналирование документов, открываемых в gedit"
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-zeitgeist-dataprovider.page:18
 msgid "Zeitgeist dataprovider"
-msgstr ""
+msgstr "Источник данных Zietgeist"
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-zeitgeist-dataprovider.page:20
@@ -2108,19 +2122,22 @@ msgid ""
 "user activity for documents used with gedit giving easy access to recently-"
 "used and frequently-used files."
 msgstr ""
+"Zeitgeist — это сервис, который регистрирует события и действия "
+"пользователя. Zeitgeist предоставляет доступ другим приложениям к этой "
+"информации в виде статистики и временных промежутков. Модуль Источник данных "
+"Zietgeist для <app>gedit</app> записывает действия пользователя над "
+"документами в gedit, обеспечивая удобный доступ к недавно использованным и "
+"часто используемым файлам."
 
 #. (itstool) path: steps/title
 #: C/gedit-plugins-zeitgeist-dataprovider.page:27
 msgid "Enable Zeitgeist dataprovider"
-msgstr ""
+msgstr "Включение модуля Источник данных Zietgeist"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-zeitgeist-dataprovider.page:34
-#, fuzzy
-#| msgid "Select <gui style=\"menuitem\">Snippets</gui> to enable the plugin."
 msgid "Select <gui style=\"menuitem\">Zietgeist Dataprovider</gui>."
-msgstr ""
-"Чтобы включить модуль, нажмите на <gui style=\"menuitem\">Фрагменты</gui>."
+msgstr "Нажмите на <gui style=\"menuitem\">Источник данных Zietgeist</gui>."
 
 #. (itstool) path: credit/name
 #: C/gedit-printing-order.page:10 C/gedit-printing-select.page:9
@@ -2798,11 +2815,13 @@ msgstr ""
 #: C/gedit-search.page:92
 msgid "Select <gui>Match Case</gui> to make the search case sensitive."
 msgstr ""
+"Выберите <gui>Учитывать регистр</gui>, чтобы сделать поиск с учётом регистра."
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:95
 msgid "Select <gui>Match Entire Word Only</gui> to search only complete words."
 msgstr ""
+"Выберите <gui> Только полные слова</gui> для поиска только полных слов."
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:99
@@ -2810,6 +2829,8 @@ msgid ""
 "Select <gui>Wrap Around</gui> to search text from top to bottom and cycle "
 "back again."
 msgstr ""
+"Выберите <gui>Автоматически переходить к началу документа</gui> для "
+"цикличного поиска."
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:105
@@ -2845,13 +2866,13 @@ msgid "Ignacio Casal Quinteiro"
 msgstr "Игнасио Касал Куантеро (Ignacio Casal Quinteiro)"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:33 C/gedit-tab-groups.page:13
+#: C/gedit-shortcut-keys.page:33 C/gedit-tab-groups.page:14
 #: C/gedit-tabs-moving.page:24 C/gedit-tabs.page:24
 msgid "Radina Matic"
 msgstr "Радина Матик (Radina Matic)"
 
 #. (itstool) path: credit/years
-#: C/gedit-shortcut-keys.page:35 C/gedit-tab-groups.page:15
+#: C/gedit-shortcut-keys.page:35 C/gedit-tab-groups.page:16
 #: C/gedit-tabs-moving.page:26 C/gedit-tabs.page:26
 msgid "2013"
 msgstr "2013"
@@ -2955,7 +2976,9 @@ msgstr "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:99
-msgid "New Tab Group"
+#, fuzzy
+#| msgid "New Tab Group"
+msgid "New tab group"
 msgstr "Создать группу вкладок"
 
 #. (itstool) path: td/p
@@ -2965,7 +2988,9 @@ msgstr "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:103
-msgid "Previous Tab Group"
+#, fuzzy
+#| msgid "Previous Tab Group"
+msgid "Previous tab group"
 msgstr "Предыдущая группа вкладок"
 
 #. (itstool) path: td/p
@@ -2979,7 +3004,9 @@ msgstr ""
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:107
-msgid "Next Tab Group"
+#, fuzzy
+#| msgid "Next Tab Group"
+msgid "Next tab group"
 msgstr "Следующая группа вкладок"
 
 #. (itstool) path: td/p
@@ -3637,12 +3664,12 @@ msgstr ""
 "нижней части окна <app>gedit</app>."
 
 #. (itstool) path: page/title
-#: C/gedit-tab-groups.page:21
+#: C/gedit-tab-groups.page:22
 msgid "Organize files in grouped tabs"
 msgstr ""
 
 #. (itstool) path: page/p
-#: C/gedit-tab-groups.page:23
+#: C/gedit-tab-groups.page:24
 msgid ""
 "If you are working with multiple tabs in <app>gedit</app> you can group "
 "them, making it easier to keep your opened files organized. Adding a new tab "
@@ -3652,19 +3679,19 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/gedit-tab-groups.page:30
+#: C/gedit-tab-groups.page:31
 #, fuzzy
 #| msgid "Move a tab to another gedit window"
 msgid "Open a new tab group in the gedit window"
 msgstr "Перемещение вкладки в другое окно gedit"
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:32
+#: C/gedit-tab-groups.page:33
 msgid "To open a new tab group you can:"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:36
+#: C/gedit-tab-groups.page:37
 #, fuzzy
 #| msgid ""
 #| "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
@@ -3677,7 +3704,7 @@ msgstr ""
 "диалоговое окно <gui>Открыть файлы</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:40
+#: C/gedit-tab-groups.page:41
 #, fuzzy
 #| msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 msgid ""
@@ -3685,7 +3712,7 @@ msgid ""
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:45
+#: C/gedit-tab-groups.page:46
 msgid ""
 "This action will divide the <app>gedit</app> window in two panes, and the "
 "pane with the new tab group will be placed on the right of the active tab. "
@@ -3694,30 +3721,30 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:50
+#: C/gedit-tab-groups.page:51
 msgid ""
 "You can open as much tab groups in <app>gedit</app> window as your screen "
 "allows, but you will have to move the handle in order to see them correctly."
 msgstr ""
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:54
+#: C/gedit-tab-groups.page:55
 msgid ""
 "To close a tab group pane just close all the tabs that are opened inside it."
 msgstr ""
 
 #. (itstool) path: section/title
-#: C/gedit-tab-groups.page:60
+#: C/gedit-tab-groups.page:61
 msgid "Move through tab groups"
 msgstr ""
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:62
+#: C/gedit-tab-groups.page:63
 msgid "To move forward (on the next) tab group:"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:66
+#: C/gedit-tab-groups.page:67
 #, fuzzy
 #| msgid ""
 #| "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
@@ -3730,7 +3757,7 @@ msgstr ""
 "диалоговое окно <gui>Открыть файлы</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:70
+#: C/gedit-tab-groups.page:71
 #, fuzzy
 #| msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 msgid ""
@@ -3739,12 +3766,12 @@ msgid ""
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:75
+#: C/gedit-tab-groups.page:76
 msgid "To move backward (on the previous) tab group:"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:79
+#: C/gedit-tab-groups.page:80
 #, fuzzy
 #| msgid ""
 #| "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
@@ -3757,7 +3784,7 @@ msgstr ""
 "диалоговое окно <gui>Открыть файлы</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:83
+#: C/gedit-tab-groups.page:84
 msgid ""
 "Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</"
 "key></keyseq> shortcut."
@@ -3766,39 +3793,39 @@ msgstr ""
 "key><key>Alt</key><key>Page up</key></keyseq>."
 
 #. (itstool) path: section/title
-#: C/gedit-tab-groups.page:91
+#: C/gedit-tab-groups.page:92
 msgid "Move a tab to another tab group"
 msgstr "Перемещение вкладки из одной группы вкладок в другую"
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:93
+#: C/gedit-tab-groups.page:94
 msgid "If you want to move a tab from one tab group to another:"
 msgstr "Чтобы переместить вкладку из одной группы вкладок в другую:"
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:97 C/gedit-tabs-moving.page:44
+#: C/gedit-tab-groups.page:98 C/gedit-tabs-moving.page:44
 #: C/gedit-tabs-moving.page:65 C/gedit-tabs-moving.page:91
 msgid "Click and hold the mouse button on the tab."
 msgstr "Нажмите и удерживайте кнопку мыши на вкладке."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:100
+#: C/gedit-tab-groups.page:101
 msgid "Drag the tab to another tab group pane."
 msgstr "Переместите вкладку в другую группу вкладок."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:103
+#: C/gedit-tab-groups.page:104
 msgid "Place it beside other tabs in the tab group."
 msgstr "Поместите её рядом с другими вкладками в группе вкладок."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:106 C/gedit-tabs-moving.page:50
+#: C/gedit-tab-groups.page:107 C/gedit-tabs-moving.page:50
 #: C/gedit-tabs-moving.page:71 C/gedit-tabs-moving.page:100
 msgid "Release the mouse button."
 msgstr "Отпустите кнопку мыши."
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:110
+#: C/gedit-tab-groups.page:111
 msgid ""
 "See the <link xref=\"gedit-shortcut-keys\">tab-related shortcut keys</link> "
 "table to make it easier to manage your tab groups."
