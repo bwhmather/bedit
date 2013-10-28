@@ -380,6 +380,7 @@ gedit_view_drag_data_received (GtkWidget        *widget,
 	switch (info)
 	{
 		case TARGET_URI_LIST:
+		{
 			gchar **uri_list;
 
 			uri_list = gedit_utils_drop_get_uris (selection_data);
@@ -394,7 +395,9 @@ gedit_view_drag_data_received (GtkWidget        *widget,
 
 			break;
 
+		}
 		case TARGET_TAB:
+		{
 			GtkWidget *notebook;
 			GtkWidget *new_notebook;
 			GtkWidget *page;
@@ -424,8 +427,9 @@ gedit_view_drag_data_received (GtkWidget        *widget,
 			gtk_drag_finish (context, TRUE, TRUE, timestamp);
 
 			break;
-
+		}
 		case TARGET_XDNDDIRECTSAVE:
+		{
 			GeditView *view;
 
 			view = GEDIT_VIEW (widget);
@@ -460,8 +464,9 @@ gedit_view_drag_data_received (GtkWidget        *widget,
 			gtk_drag_finish (context, TRUE, FALSE, timestamp);
 
 			break;
-
+		}
 		default:
+		{
 			GTK_WIDGET_CLASS (gedit_view_parent_class)->drag_data_received (widget,
 											context,
 											x, y,
@@ -469,6 +474,7 @@ gedit_view_drag_data_received (GtkWidget        *widget,
 											info,
 											timestamp);
 			break;
+		}
 	}
 }
 
