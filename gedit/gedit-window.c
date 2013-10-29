@@ -63,10 +63,9 @@
 #include "gedit-settings.h"
 #include "gedit-marshal.h"
 #include "gedit-document.h"
+#include "gedit-small-button.h"
 
-#define LANGUAGE_NONE (const gchar *)"LangNone"
 #define TAB_WIDTH_DATA "GeditWindowTabWidthData"
-#define LANGUAGE_DATA "GeditWindowLanguageData"
 #define FULLSCREEN_ANIMATION_SPEED 4
 
 /* Signals */
@@ -1759,82 +1758,41 @@ create_tab_width_combo (GeditWindow *window)
 }
 
 static void
-language_combo_item_activated (GtkMenuItem *item,
-			       GeditWindow *window)
+on_language_button_clicked (GtkButton   *button,
+                            GeditWindow *window)
 {
-	GeditDocument *doc;
-	GtkSourceLanguage *language;
-
-	doc = gedit_window_get_active_document (window);
-
-	if (!doc)
-		return;
-
-	language = GTK_SOURCE_LANGUAGE (g_object_get_data (G_OBJECT (item), LANGUAGE_DATA));
-	gedit_document_set_language (doc, language);
+	_gedit_cmd_view_highlight_mode (NULL, window);
 }
 
 static void
-create_language_combo (GeditWindow *window)
+create_language_button (GeditWindow *window)
 {
-	GtkSourceLanguageManager *lm;
-	const gchar * const *ids;
-	const gchar *name;
-	GtkWidget *item;
-	gint i;
+	GtkWidget *box;
+	GtkWidget *arrow;
 
-	window->priv->language_combo = gedit_status_menu_button_new ();
-	window->priv->language_combo_menu = gtk_menu_new ();
-	gtk_menu_button_set_popup (GTK_MENU_BUTTON (window->priv->language_combo),
-	                           window->priv->language_combo_menu);
-	gtk_widget_show (window->priv->language_combo);
+	window->priv->language_button = gedit_small_button_new ();
+	gtk_widget_show (window->priv->language_button);
 	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
-			  window->priv->language_combo,
+			  window->priv->language_button,
 			  FALSE,
 			  TRUE,
 			  0);
 
-	name = _("Plain Text");
-	item = gtk_menu_item_new_with_label (name);
-	gtk_widget_show (item);
+	box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 3);
+	gtk_widget_show (box);
+	gtk_container_add (GTK_CONTAINER (window->priv->language_button), box);
 
-	g_object_set_data (G_OBJECT (item), LANGUAGE_DATA, NULL);
-	gtk_menu_shell_append (GTK_MENU_SHELL (window->priv->language_combo_menu),
-	                       GTK_WIDGET (item));
-	g_signal_connect (item,
-			  "activate",
-			  G_CALLBACK (language_combo_item_activated),
-			  window);
+	window->priv->language_button_label = gtk_label_new (NULL);
+	gtk_widget_show (window->priv->language_button_label);
+	gtk_box_pack_start (GTK_BOX (box), window->priv->language_button_label,
+	                    FALSE, TRUE, 0);
 
-	lm = gtk_source_language_manager_get_default ();
-	ids = gtk_source_language_manager_get_language_ids (lm);
+	arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE);
+	gtk_widget_show (arrow);
+	gtk_box_pack_start (GTK_BOX (box), arrow, FALSE, FALSE, 0);
 
-	for (i = 0; ids[i] != NULL; i++)
-	{
-		GtkSourceLanguage *lang;
-
-		lang = gtk_source_language_manager_get_language (lm, ids[i]);
-
-		if (!gtk_source_language_get_hidden (lang))
-		{
-			name = gtk_source_language_get_name (lang);
-			item = gtk_menu_item_new_with_label (name);
-			gtk_widget_show (item);
-
-			g_object_set_data_full (G_OBJECT (item),
-			                        LANGUAGE_DATA,
-			                        g_object_ref (lang),
-			                        (GDestroyNotify)g_object_unref);
-
-			gtk_menu_shell_append (GTK_MENU_SHELL (window->priv->language_combo_menu),
-					       GTK_WIDGET (item));
-
-			g_signal_connect (item,
-					  "activate",
-					  G_CALLBACK (language_combo_item_activated),
-					  window);
-		}
-	}
+	g_signal_connect (window->priv->language_button, "clicked",
+	                  G_CALLBACK (on_language_button_clicked), window);
 }
 
 static void
@@ -1859,7 +1817,7 @@ create_statusbar (GeditWindow *window,
 			  0);
 
 	create_tab_width_combo (window);
-	create_language_combo (window);
+	create_language_button (window);
 
 	g_signal_connect_after (G_OBJECT (window->priv->statusbar),
 				"notify::visible",
@@ -2184,7 +2142,7 @@ language_changed (GObject     *object,
 	else
 		label = _("Plain Text");
 
-	gedit_status_menu_button_set_label (GEDIT_STATUS_MENU_BUTTON (window->priv->language_combo), label);
+	gtk_label_set_text (GTK_LABEL (window->priv->language_button_label), label);
 }
 
 static void
@@ -2230,7 +2188,7 @@ update_statusbar (GeditWindow *window,
 				       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (new_view)));
 
 	gtk_widget_show (window->priv->tab_width_combo);
-	gtk_widget_show (window->priv->language_combo);
+	gtk_widget_show (window->priv->language_button);
 
 	/* find the use spaces item */
 	items = gtk_container_get_children (GTK_CONTAINER (window->priv->tab_width_combo_menu));
@@ -3311,7 +3269,7 @@ on_tab_removed (GeditMultiNotebook *multi,
 
 		/* hide the combos */
 		gtk_widget_hide (window->priv->tab_width_combo);
-		gtk_widget_hide (window->priv->language_combo);
+		gtk_widget_hide (window->priv->language_button);
 	}
 
 	if (!window->priv->dispose_has_run)
