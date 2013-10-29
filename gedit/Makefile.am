@@ -97,7 +97,6 @@ BUILT_SOURCES = 			\
 
 NOINST_H_FILES =			\
 	gedit-cell-renderer-button.h	\
-	gedit-close-button.h		\
 	gedit-close-confirmation-dialog.h \
 	gedit-dirs.h			\
 	gedit-document-input-stream.h	\
@@ -120,6 +119,7 @@ NOINST_H_FILES =			\
 	gedit-print-preview.h		\
 	gedit-replace-dialog.h		\
 	gedit-settings.h		\
+	gedit-small-button.h		\
 	gedit-status-menu-button.h	\
 	gedit-tab-label.h		\
 	gedit-ui.h			\
@@ -167,7 +167,6 @@ libgedit_private_la_SOURCES =		\
 libgedit_c_files =			\
 	gedit-app.c               	\
 	gedit-cell-renderer-button.c	\
-	gedit-close-button.c		\
 	gedit-close-confirmation-dialog.c \
 	gedit-commands-documents.c	\
 	gedit-commands-edit.c		\
@@ -205,6 +204,7 @@ libgedit_c_files =			\
 	gedit-progress-info-bar.c	\
 	gedit-replace-dialog.c		\
 	gedit-settings.c		\
+	gedit-small-button.c		\
 	gedit-statusbar.c		\
 	gedit-status-menu-button.c	\
 	gedit-tab.c 			\

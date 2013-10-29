@@ -1,5 +1,5 @@
 /*
- * gedit-close-button.c
+ * gedit-small-button.c
  * This file is part of gedit
  *
  * Copyright (C) 2010 - Paolo Borelli
@@ -20,18 +20,18 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include "gedit-close-button.h"
+#include "gedit-small-button.h"
 
-struct _GeditCloseButtonClassPrivate
+struct _GeditSmallButtonClassPrivate
 {
 	GtkCssProvider *css;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GeditCloseButton, gedit_close_button, GTK_TYPE_BUTTON,
-                         g_type_add_class_private (g_define_type_id, sizeof (GeditCloseButtonClassPrivate)))
+G_DEFINE_TYPE_WITH_CODE (GeditSmallButton, gedit_small_button, GTK_TYPE_BUTTON,
+                         g_type_add_class_private (g_define_type_id, sizeof (GeditSmallButtonClassPrivate)))
 
 static void
-gedit_close_button_class_init (GeditCloseButtonClass *klass)
+gedit_small_button_class_init (GeditSmallButtonClass *klass)
 {
 	static const gchar button_style[] =
 		"* {\n"
@@ -40,7 +40,50 @@ gedit_close_button_class_init (GeditCloseButtonClass *klass)
 		  "-GtkButton-inner-border: 0;\n"
 		  "-GtkWidget-focus-line-width : 0;\n"
 		  "-GtkWidget-focus-padding : 0;\n"
-		  "padding: 0;\n"
+		"}";
+
+	klass->priv = G_TYPE_CLASS_GET_PRIVATE (klass, GEDIT_TYPE_SMALL_BUTTON, GeditSmallButtonClassPrivate);
+
+	klass->priv->css = gtk_css_provider_new ();
+	gtk_css_provider_load_from_data (klass->priv->css, button_style, -1, NULL);
+}
+
+static void
+gedit_small_button_init (GeditSmallButton *button)
+{
+	GtkStyleContext *context;
+
+	/* make it small */
+	context = gtk_widget_get_style_context (GTK_WIDGET (button));
+	gtk_style_context_add_provider (context,
+	                                GTK_STYLE_PROVIDER (GEDIT_SMALL_BUTTON_GET_CLASS (button)->priv->css),
+	                                GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+}
+
+GtkWidget *
+gedit_small_button_new ()
+{
+	return GTK_WIDGET (g_object_new (GEDIT_TYPE_SMALL_BUTTON,
+	                                 "relief", GTK_RELIEF_NONE,
+	                                 "focus-on-click", FALSE,
+	                                 NULL));
+}
+
+struct _GeditCloseButtonClassPrivate
+{
+	GtkCssProvider *css;
+};
+
+G_DEFINE_TYPE_WITH_CODE (GeditCloseButton, gedit_close_button, GEDIT_TYPE_SMALL_BUTTON,
+                         g_type_add_class_private (g_define_type_id, sizeof (GeditCloseButtonClassPrivate)))
+
+
+static void
+gedit_close_button_class_init (GeditCloseButtonClass *klass)
+{
+	static const gchar button_style[] =
+		"* {\n"
+		  "padding : 0;\n"
 		"}";
 
 	klass->priv = G_TYPE_CLASS_GET_PRIVATE (klass, GEDIT_TYPE_CLOSE_BUTTON, GeditCloseButtonClassPrivate);
@@ -63,7 +106,7 @@ gedit_close_button_init (GeditCloseButton *button)
 
 	gtk_container_add (GTK_CONTAINER (button), image);
 
-	/* make it small */
+	/* remove padding */
 	context = gtk_widget_get_style_context (GTK_WIDGET (button));
 	gtk_style_context_add_provider (context,
 	                                GTK_STYLE_PROVIDER (GEDIT_CLOSE_BUTTON_GET_CLASS (button)->priv->css),

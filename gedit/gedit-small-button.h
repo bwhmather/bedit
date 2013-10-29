@@ -1,5 +1,5 @@
 /*
- * gedit-close-button.h
+ * gedit-small-button.h
  * This file is part of gedit
  *
  * Copyright (C) 2010 - Paolo Borelli
@@ -19,12 +19,36 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __GEDIT_CLOSE_BUTTON_H__
-#define __GEDIT_CLOSE_BUTTON_H__
+#ifndef __GEDIT_SMALL_BUTTON_H__
+#define __GEDIT_SMALL_BUTTON_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
+
+#define GEDIT_TYPE_SMALL_BUTTON			(gedit_small_button_get_type ())
+#define GEDIT_SMALL_BUTTON(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_SMALL_BUTTON, GeditSmallButton))
+#define GEDIT_SMALL_BUTTON_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_SMALL_BUTTON, GeditSmallButton const))
+#define GEDIT_SMALL_BUTTON_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_SMALL_BUTTON, GeditSmallButtonClass))
+#define GEDIT_IS_SMALL_BUTTON(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_SMALL_BUTTON))
+#define GEDIT_IS_SMALL_BUTTON_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_SMALL_BUTTON))
+#define GEDIT_SMALL_BUTTON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_SMALL_BUTTON, GeditSmallButtonClass))
+
+typedef struct _GeditSmallButton		GeditSmallButton;
+typedef struct _GeditSmallButtonClass		GeditSmallButtonClass;
+typedef struct _GeditSmallButtonClassPrivate	GeditSmallButtonClassPrivate;
+
+struct _GeditSmallButton
+{
+	GtkButton parent;
+};
+
+struct _GeditSmallButtonClass
+{
+	GtkButtonClass parent_class;
+
+	GeditSmallButtonClassPrivate *priv;
+};
 
 #define GEDIT_TYPE_CLOSE_BUTTON			(gedit_close_button_get_type ())
 #define GEDIT_CLOSE_BUTTON(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_CLOSE_BUTTON, GeditCloseButton))
@@ -40,21 +64,23 @@ typedef struct _GeditCloseButtonClassPrivate	GeditCloseButtonClassPrivate;
 
 struct _GeditCloseButton
 {
-	GtkButton parent;
+	GeditSmallButton parent;
 };
 
 struct _GeditCloseButtonClass
 {
-	GtkButtonClass parent_class;
+	GeditSmallButtonClass parent_class;
 
 	GeditCloseButtonClassPrivate *priv;
 };
 
-GType		  gedit_close_button_get_type (void) G_GNUC_CONST;
+GType		  gedit_small_button_get_type (void) G_GNUC_CONST;
+GtkWidget        *gedit_small_button_new      (void);
 
+GType		  gedit_close_button_get_type (void) G_GNUC_CONST;
 GtkWidget	 *gedit_close_button_new      (void);
 
 G_END_DECLS
 
-#endif /* __GEDIT_CLOSE_BUTTON_H__ */
+#endif /* __GEDIT_SMALL_BUTTON_H__ */
 /* ex:set ts=8 noet: */

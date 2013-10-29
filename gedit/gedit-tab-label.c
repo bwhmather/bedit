@@ -27,7 +27,7 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include "gedit-tab-label.h"
-#include "gedit-close-button.h"
+#include "gedit-small-button.h"
 
 /* Signals */
 enum

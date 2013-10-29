@@ -39,7 +39,7 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "gedit-close-button.h"
+#include "gedit-small-button.h"
 #include "gedit-window.h"
 #include "gedit-debug.h"
 
