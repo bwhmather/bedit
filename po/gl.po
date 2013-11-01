@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit-master-po-gl-116402.merged\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-26 11:58+0200\n"
-"PO-Revision-Date: 2013-09-26 12:03+0200\n"
+"POT-Creation-Date: 2013-11-01 13:45+0100\n"
+"PO-Revision-Date: 2013-11-01 13:46+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -784,7 +784,7 @@ msgstr[0] "Cargando %d ficheiro…"
 msgstr[1] "Cargando %d ficheiros…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1175
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1180
 msgid "Open"
 msgstr "Abrir"
 
@@ -982,11 +982,11 @@ msgid "Unsaved Document %d"
 msgstr "Documento non gardado %d"
 
 #: ../gedit/gedit-documents-panel.c:119 ../gedit/gedit-documents-panel.c:133
-#: ../gedit/gedit-window.c:2080 ../gedit/gedit-window.c:2087
+#: ../gedit/gedit-window.c:2044 ../gedit/gedit-window.c:2051
 msgid "Read-Only"
 msgstr "Só de lectura"
 
-#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3459
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3507
 msgid "Documents"
 msgstr "Documentos"
 
@@ -1170,8 +1170,8 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1791
-#: ../gedit/gedit-window.c:2179 ../plugins/externaltools/tools/manager.py:146
+#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:2143
+#: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:463
 #: ../plugins/externaltools/tools/manager.py:579
 #: ../plugins/externaltools/tools/manager.py:915
@@ -1564,23 +1564,27 @@ msgid "_Quit"
 msgstr "_Saír"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:167 ../gedit/gedit-ui.h:142
+#: ../gedit/gedit-notebook-popup-menu.c:175 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "_Mover a unha xanela nova"
 
-#: ../gedit/gedit-notebook-popup-menu.c:178
+#: ../gedit/gedit-notebook-popup-menu.c:182
+msgid "_Move to New Tab Group"
+msgstr "_Mover a un novo grupo de lapelas"
+
+#: ../gedit/gedit-notebook-popup-menu.c:193
 msgid "_Save"
 msgstr "_Gardar"
 
-#: ../gedit/gedit-notebook-popup-menu.c:185 ../gedit/gedit-ui.h:78
+#: ../gedit/gedit-notebook-popup-menu.c:200 ../gedit/gedit-ui.h:78
 msgid "Save _As..."
 msgstr "Gardar _como…"
 
-#: ../gedit/gedit-notebook-popup-menu.c:196 ../gedit/gedit-ui.h:84
+#: ../gedit/gedit-notebook-popup-menu.c:211 ../gedit/gedit-ui.h:84
 msgid "_Print..."
 msgstr "_Imprimir…"
 
-#: ../gedit/gedit-notebook-popup-menu.c:207
+#: ../gedit/gedit-notebook-popup-menu.c:222
 msgid "_Close"
 msgstr "_Pechar"
 
@@ -1592,7 +1596,7 @@ msgstr "Abrir un ficheiro"
 msgid "Open a recently used file"
 msgstr "Abrir un ficheiro usado recentemente"
 
-#: ../gedit/gedit-panel.c:407 ../gedit/gedit-panel.c:588
+#: ../gedit/gedit-panel.c:407 ../gedit/gedit-panel.c:590
 msgid "Empty"
 msgstr "Baleiro"
 
@@ -1641,7 +1645,7 @@ msgstr "Non foi posíbel eliminar o esquema de cor \"%s\"."
 msgid "gedit Preferences"
 msgstr "Preferencias do gedit"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:466
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:535
 msgid "_Display line numbers"
 msgstr "_Mostrar os números de liña"
 
@@ -1906,7 +1910,7 @@ msgid "The preview of a page in the document to be printed"
 msgstr "Previsualización dunha páxina no documento que se vai imprimir"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1236
+#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1241
 msgid "Replace"
 msgstr "Substituír"
 
@@ -2038,7 +2042,7 @@ msgstr "Tipo MIME:"
 msgid "Encoding:"
 msgstr "Codificación:"
 
-#: ../gedit/gedit-tab-label.c:279
+#: ../gedit/gedit-tab-label.c:287
 msgid "Close document"
 msgstr "Pechar o documento"
 
@@ -2320,22 +2324,22 @@ msgstr "Panel _inferior"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Mostrar ou ocultar o panel inferior na xanela actual"
 
-#: ../gedit/gedit-utils.c:931
+#: ../gedit/gedit-utils.c:932
 msgid "Please check your installation."
 msgstr "Verifique a súa instalación."
 
-#: ../gedit/gedit-utils.c:989
+#: ../gedit/gedit-utils.c:990
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Non é posíbel abrir o ficheiro de IU %s. Erro: %s"
 
-#: ../gedit/gedit-utils.c:1008
+#: ../gedit/gedit-utils.c:1009
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Non é posíbel atopar o obxecto '%s' dentro do ficheiro %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1231
+#: ../gedit/gedit-utils.c:1232
 #, c-format
 msgid "/ on %s"
 msgstr "/ en %s"
@@ -2344,86 +2348,86 @@ msgstr "/ en %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:664
+#: ../gedit/gedit-view-frame.c:703
 #, c-format
 msgid "%d of %d"
 msgstr "%d de %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:756
+#: ../gedit/gedit-view-frame.c:795
 msgid "_Wrap Around"
 msgstr "_Dar a volta"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:766
+#: ../gedit/gedit-view-frame.c:805
 msgid "Match as _Regular Expression"
 msgstr "Coincidir coa expresión _regular"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:780
+#: ../gedit/gedit-view-frame.c:819
 msgid "Match _Entire Word Only"
 msgstr "Coincidir só coa palabra com_pleta"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:794
+#: ../gedit/gedit-view-frame.c:833
 msgid "_Match Case"
 msgstr "Di_ferenciar maiúsculas de minúsculas"
 
-#: ../gedit/gedit-view-frame.c:968
+#: ../gedit/gedit-view-frame.c:1007
 msgid "String you want to search for"
 msgstr "A cadea que quere buscar"
 
-#: ../gedit/gedit-view-frame.c:980
+#: ../gedit/gedit-view-frame.c:1019
 msgid "Line you want to move the cursor to"
 msgstr "A liña á que quere mover o cursor"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1068
+#: ../gedit/gedit-window.c:1073
 #, c-format
 msgid "Open '%s'"
 msgstr "Abrir '%s'"
 
-#: ../gedit/gedit-window.c:1230
+#: ../gedit/gedit-window.c:1235
 msgid "Save"
 msgstr "Gardar"
 
-#: ../gedit/gedit-window.c:1232
+#: ../gedit/gedit-window.c:1237
 msgid "Print"
 msgstr "Imprimir"
 
-#: ../gedit/gedit-window.c:1234
+#: ../gedit/gedit-window.c:1239
 msgid "Find"
 msgstr "Buscar"
 
 #. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1398
+#: ../gedit/gedit-window.c:1403
 #, c-format
 msgid "Activate '%s'"
 msgstr "Activar '%s'"
 
-#: ../gedit/gedit-window.c:1744
+#: ../gedit/gedit-window.c:1749
 msgid "Use Spaces"
 msgstr "Usar espazos"
 
-#: ../gedit/gedit-window.c:1937
+#: ../gedit/gedit-window.c:1901
 msgid "Bracket match is out of range"
 msgstr "O corchete de coincidencia está fora de rango"
 
-#: ../gedit/gedit-window.c:1942
+#: ../gedit/gedit-window.c:1906
 msgid "Bracket match not found"
 msgstr "Non se encontrou o corchete coincidente"
 
-#: ../gedit/gedit-window.c:1947
+#: ../gedit/gedit-window.c:1911
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Corchete coincidente encontrado na liña: %d"
 
-#: ../gedit/gedit-window.c:2131
+#: ../gedit/gedit-window.c:2095
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Largura da tabulación: %u"
 
-#: ../gedit/gedit-window.c:2486
+#: ../gedit/gedit-window.c:2450
 msgid "There are unsaved documents"
 msgstr "Hai documentos sen gardar"
 
@@ -3184,7 +3188,7 @@ msgid "_Error color:"
 msgstr "Cor de _erro:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:52
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:48
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Consola de Python"
@@ -3216,7 +3220,7 @@ msgid "Type to search..."
 msgstr "Escriba para buscar…"
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:57
+#: ../plugins/snippets/snippets/document.py:56
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Fragmentos"
