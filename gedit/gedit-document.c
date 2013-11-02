@@ -2899,10 +2899,18 @@ set_attributes_cb (GObject      *source,
 		   GAsyncResult *res,
 		   gpointer      useless)
 {
+	GError *error = NULL;
+
 	g_file_set_attributes_finish (G_FILE (source),
 				      res,
 				      NULL,
-				      NULL);
+				      &error);
+
+	if (error != NULL)
+	{
+		g_warning ("Set document metadata failed: %s", error->message);
+		g_error_free (error);
+	}
 }
 
 /**
