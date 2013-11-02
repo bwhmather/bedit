@@ -1445,8 +1445,8 @@ document_loader_loaded (GeditDocumentLoader *loader,
 
 		g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
-               doc->priv->externally_modified = FALSE;
-               doc->priv->deleted = FALSE;
+		doc->priv->externally_modified = FALSE;
+		doc->priv->deleted = FALSE;
 
 		set_encoding (doc,
 			      gedit_document_loader_get_encoding (loader),
