@@ -862,10 +862,22 @@ gedit_multi_notebook_add_new_notebook_with_tab (GeditMultiNotebook *mnb,
 
 	g_return_if_fail (page_num != -1);
 
+	/* When gtk_notebook_insert_page is called the focus is set in
+	   the notebook, we don't want this to happen until the page is added.
+	   Also we don't want to call switch_page when we add the tab
+	   but when we switch the notebook. */
+	g_signal_handlers_block_by_func (l->data, notebook_set_focus, mnb);
+	g_signal_handlers_block_by_func (l->data, notebook_switch_page, mnb);
+
 	gedit_notebook_move_tab (GEDIT_NOTEBOOK (l->data),
 	                         GEDIT_NOTEBOOK (notebook),
 	                         tab,
 	                         -1);
+
+	g_signal_handlers_unblock_by_func (l->data, notebook_switch_page, mnb);
+	g_signal_handlers_unblock_by_func (l->data, notebook_set_focus, mnb);
+
+	notebook_set_focus (GTK_CONTAINER (notebook), NULL, mnb);
 }
 
 void
