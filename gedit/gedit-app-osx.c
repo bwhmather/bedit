@@ -420,10 +420,6 @@ gedit_app_osx_init (GeditAppOSX *app)
 	/* This is a singleton */
 	osxapp = g_object_new (GTK_TYPE_OSX_APPLICATION, NULL);
 
-	/* manually set name and icon */
-	g_set_application_name ("gedit");
-	gtk_window_set_default_icon_name ("accessories-text-editor");
-
 	g_signal_connect (osxapp,
 	                  "NSApplicationWillTerminate",
 	                  G_CALLBACK (on_osx_will_terminate),

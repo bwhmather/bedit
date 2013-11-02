@@ -1241,6 +1241,9 @@ static void
 gedit_app_init (GeditApp *app)
 {
 	app->priv = gedit_app_get_instance_private (app);
+
+	g_set_application_name ("gedit");
+	gtk_window_set_default_icon_name ("accessories-text-editor");
 }
 
 /* Generates a unique string for a window role */

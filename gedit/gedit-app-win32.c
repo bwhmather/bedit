@@ -114,10 +114,6 @@ gedit_app_win32_startup (GApplication *application)
 
 	setup_path ();
 	prep_console ();
-
-	/* manually set name and icon */
-	g_set_application_name("gedit");
-	gtk_window_set_default_icon_name ("accessories-text-editor");
 }
 
 static void
