@@ -1502,6 +1502,16 @@ document_loader_loaded (GeditDocumentLoader *loader,
 
 			gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
 		}
+
+		if (!doc->priv->language_set_by_user)
+		{
+			GtkSourceLanguage *language = guess_language (doc, doc->priv->content_type);
+
+			gedit_debug_message (DEBUG_DOCUMENT, "Language: %s",
+					     language != NULL ? gtk_source_language_get_name (language) : "None");
+
+			set_language (doc, language, FALSE);
+		}
 	}
 
 	/* special case creating a named new doc */
