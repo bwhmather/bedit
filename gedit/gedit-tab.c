@@ -2361,6 +2361,11 @@ get_print_settings (GeditTab *tab)
 		settings = gtk_print_settings_copy (GTK_PRINT_SETTINGS (data));
 	}
 
+	/* Be sure the OUTPUT_URI is unset, because otherwise the
+	 * OUTPUT_BASENAME is not taken into account.
+	 */
+	gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_URI, NULL);
+
 	name = gedit_document_get_short_name_for_display (doc);
 	gtk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_BASENAME, name);
 
