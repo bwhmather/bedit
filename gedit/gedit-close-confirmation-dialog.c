@@ -159,11 +159,8 @@ gedit_close_confirmation_dialog_finalize (GObject *object)
 
 	priv = GEDIT_CLOSE_CONFIRMATION_DIALOG (object)->priv;
 
-	if (priv->unsaved_documents != NULL)
-		g_list_free (priv->unsaved_documents);
-
-	if (priv->selected_documents != NULL)
-		g_list_free (priv->selected_documents);
+	g_list_free (priv->unsaved_documents);
+	g_list_free (priv->selected_documents);
 
 	/* Call the parent's destructor */
 	G_OBJECT_CLASS (gedit_close_confirmation_dialog_parent_class)->finalize (object);
