@@ -134,7 +134,6 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);
 	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
 			     14);
-	gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
 	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dlg), TRUE);
 
 	gtk_window_set_title (GTK_WINDOW (dlg), "");
@@ -445,6 +444,8 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	gchar         *str;
 	gchar         *markup_str;
 
+	gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
+
 	g_return_if_fail (dlg->priv->unsaved_documents->data != NULL);
 	doc = GEDIT_DOCUMENT (dlg->priv->unsaved_documents->data);
 
@@ -573,7 +574,6 @@ create_treeview (GeditCloseConfirmationDialogPrivate *priv)
 	GtkTreeViewColumn *column;
 
 	treeview = gtk_tree_view_new ();
-	gtk_widget_set_size_request (treeview, 260, 120);
 	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeview), FALSE);
 	gtk_tree_view_set_enable_search (GTK_TREE_VIEW (treeview), FALSE);
 
@@ -684,7 +684,7 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_box_pack_start (GTK_BOX (vbox), primary_label, FALSE, FALSE, 0);
 
 	vbox2 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-	gtk_box_pack_start (GTK_BOX (vbox), vbox2, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), vbox2, TRUE, TRUE, 0);
 
 	if (priv->disable_save_to_disk)
 	{
@@ -701,11 +701,9 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 
 	scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
 	gtk_box_pack_start (GTK_BOX (vbox2), scrolledwindow, TRUE, TRUE, 0);
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolledwindow),
-					GTK_POLICY_AUTOMATIC,
-					GTK_POLICY_AUTOMATIC);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow),
 					     GTK_SHADOW_IN);
+	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (scrolledwindow), 60);
 
 	treeview = create_treeview (priv);
 	gtk_container_add (GTK_CONTAINER (scrolledwindow), treeview);
