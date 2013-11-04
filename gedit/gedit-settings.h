@@ -78,7 +78,6 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 #define GEDIT_SETTINGS_CREATE_BACKUP_COPY		"create-backup-copy"
 #define GEDIT_SETTINGS_AUTO_SAVE			"auto-save"
 #define GEDIT_SETTINGS_AUTO_SAVE_INTERVAL		"auto-save-interval"
-#define GEDIT_SETTINGS_UNDO_ACTIONS_LIMIT		"undo-actions-limit"
 #define GEDIT_SETTINGS_MAX_UNDO_ACTIONS			"max-undo-actions"
 #define GEDIT_SETTINGS_WRAP_MODE			"wrap-mode"
 #define GEDIT_SETTINGS_TABS_SIZE			"tabs-size"
