@@ -1285,6 +1285,10 @@ invalid_character_info_bar_response (GtkWidget *info_bar,
 		g_return_if_fail (tab->priv->auto_save_timeout <= 0);
 
 		/* Force saving */
+
+		/* FIXME there is a bug here when the action was a "save as".
+		 * See https://bugzilla.gnome.org/show_bug.cgi?id=695107
+		 */
 		gedit_document_save (doc, tab->priv->save_flags);
 	}
 	else
