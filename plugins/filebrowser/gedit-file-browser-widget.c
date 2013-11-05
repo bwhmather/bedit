@@ -802,8 +802,8 @@ set_enable_delete (GeditFileBrowserWidget *obj,
 	GAction *action;
 	obj->priv->enable_delete = enable;
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "delete");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "delete");
 
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enable);
 }
@@ -984,12 +984,12 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 	                                 obj);
 
 	/* set initial sensitivity */
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "previous_location");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "previous_location");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-		                               "next_location");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                             "next_location");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 
 	gtk_widget_insert_action_group (GTK_WIDGET (obj),
@@ -1084,51 +1084,51 @@ update_sensitivity (GeditFileBrowserWidget *obj)
 	{
 		mode = gedit_file_browser_store_get_filter_mode (GEDIT_FILE_BROWSER_STORE (model));
 
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "show_hidden");
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "show_hidden");
 
 		g_action_change_state (action,
 		                       g_variant_new_boolean (!(mode &
 		                                                GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN)));
 
 		/* sensitivity */
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "up");
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "up");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "home");
-		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
-
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "show_hidden");
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "home");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
 
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "show_binary");
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "show_hidden");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
+
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "show_binary");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
 	}
 	else if (GEDIT_IS_FILE_BOOKMARKS_STORE (model))
 	{
 		/* Set the filter toggle to normal up state, just for visual pleasure */
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "show_hidden");
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "show_hidden");
 
 		g_action_change_state (action, g_variant_new_boolean (FALSE));
 
 		/* sensitivity */
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "up");
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "up");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "home");
-		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
-
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "show_hidden");
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "home");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "show_binary");
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "show_hidden");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
+
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "show_binary");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 	}
 
@@ -1542,8 +1542,8 @@ clear_next_locations (GeditFileBrowserWidget *obj)
 
 	g_list_free (children);
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "next_location");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "next_location");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 }
 
@@ -1854,8 +1854,8 @@ gedit_file_browser_widget_set_active_root_enabled (GeditFileBrowserWidget *widge
 
 	g_return_if_fail (GEDIT_IS_FILE_BROWSER_WIDGET (widget));
 
-	action = g_simple_action_group_lookup (widget->priv->action_group,
-	                                       "set_active_root");
+	action = g_action_map_lookup_action (G_ACTION_MAP (widget->priv->action_group),
+	                                     "set_active_root");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
 }
 
@@ -2441,19 +2441,19 @@ on_virtual_root_changed (GeditFileBrowserStore  *model,
 				g_object_ref_sink (obj->priv->current_location_menu_item);
 			}
 
-			action = g_simple_action_group_lookup (obj->priv->action_group,
-			                                       "up");
+			action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+			                                     "up");
 			g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 			                             !virtual_root_is_root (obj, model));
 
-			action = g_simple_action_group_lookup (obj->priv->action_group,
-			                                       "previous_location");
+			action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+			                                     "previous_location");
 			g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 			                             obj->priv->current_location != NULL &&
 			                             obj->priv->current_location->next != NULL);
 
-			action = g_simple_action_group_lookup (obj->priv->action_group,
-			                                       "next_location");
+			action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+			                                     "next_location");
 			g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 			                             obj->priv->current_location != NULL &&
 			                             obj->priv->current_location->prev != NULL);
@@ -2496,8 +2496,8 @@ on_model_set (GObject *gobject, GParamSpec *arg1,
 			obj->priv->current_location = NULL;
 			obj->priv->current_location_menu_item = NULL;
 
-			action = g_simple_action_group_lookup (obj->priv->action_group,
-			                                       "previous_location");
+			action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+			                                     "previous_location");
 			g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
 		}
 
@@ -2819,8 +2819,8 @@ do_change_directory (GeditFileBrowserWidget *obj,
 	    (~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK & ~GDK_MOD1_MASK)) ==
 	     event->state && event->keyval == GDK_KEY_BackSpace)
 	{
-		action = g_simple_action_group_lookup (obj->priv->action_group,
-		                                       "previous_location");
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "previous_location");
 	}
 	else if (!((event->state & GDK_MOD1_MASK) &&
 	    (event->state & (~GDK_CONTROL_MASK & ~GDK_SHIFT_MASK)) == event->state))
@@ -2831,20 +2831,20 @@ do_change_directory (GeditFileBrowserWidget *obj,
 	switch (event->keyval)
 	{
 		case GDK_KEY_Home:
-			action = g_simple_action_group_lookup (obj->priv->action_group,
-			                                       "home");
+			action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+			                                     "home");
 			break;
 		case GDK_KEY_Left:
-			action = g_simple_action_group_lookup (obj->priv->action_group,
-			                                       "previous_location");
+			action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+			                                     "previous_location");
 			break;
 		case GDK_KEY_Right:
-			action = g_simple_action_group_lookup (obj->priv->action_group,
-			                                       "next_location");
+			action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+			                                     "next_location");
 			break;
 		case GDK_KEY_Up:
-			action = g_simple_action_group_lookup (obj->priv->action_group,
-			                                       "up");
+			action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+			                                     "up");
 			break;
 		default:
 			break;
@@ -2947,33 +2947,33 @@ on_selection_changed (GtkTreeSelection       *selection,
 											    &dirs);
 	}
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "move_to_trash");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "move_to_trash");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), selected > 0);
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "delete");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "delete");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), selected > 0);
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "open");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "open");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 	                             (selected > 0) && (selected == files));
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "rename");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "rename");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), selected == 1);
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "open_in_terminal");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "open_in_terminal");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), selected == 1);
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "new_folder");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "new_folder");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), selected <= 1);
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "new_file");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "new_file");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), selected <= 1);
 }
 
@@ -3053,8 +3053,8 @@ on_filter_mode_changed (GeditFileBrowserStore  *model,
 
 	mode = gedit_file_browser_store_get_filter_mode (model);
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "show_hidden");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "show_hidden");
 	active = !(mode & GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_HIDDEN);
 	variant = g_action_get_state (action);
 
@@ -3065,8 +3065,8 @@ on_filter_mode_changed (GeditFileBrowserStore  *model,
 
 	g_variant_unref (variant);
 
-	action = g_simple_action_group_lookup (obj->priv->action_group,
-	                                       "show_binary");
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "show_binary");
 	active = !(mode & GEDIT_FILE_BROWSER_STORE_FILTER_MODE_HIDE_BINARY);
 	variant = g_action_get_state (action);
 
