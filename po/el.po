@@ -30,13 +30,14 @@
 # Michael Kotsarinis <mk73628@gmail.com>, 2011.
 # Ioannis Zampoukas <ioza1964@yahoo.gr>, 2011.
 # Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2012, 2013.
+# Efstathios Iosifidis <iosifidis@opensuse.org>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
 "keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-07-19 16:15+0000\n"
-"PO-Revision-Date: 2013-07-22 17:52+0300\n"
+"POT-Creation-Date: 2013-11-04 18:37+0000\n"
+"PO-Revision-Date: 2013-11-05 10:49+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
@@ -47,11 +48,39 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Project-Style: gnome\n"
 
+#: ../data/gedit.appdata.xml.in.h:1
+msgid ""
+"gedit is the official text editor of the GNOME desktop environment. While "
+"aiming at simplicity and ease of use, gedit is a powerful general purpose "
+"text editor."
+msgstr ""
+"Το gedit είναι ο επίσημος επεξεργαστής κειμένου του GNOME. Αν και στοχεύει "
+"στην απλότητα και στην ευκολία χρήσης, το gedit είναι ένας ισχυρός "
+"επεξεργαστής κειμένου γενικού σκοπού."
+
+#: ../data/gedit.appdata.xml.in.h:2
+msgid ""
+"Whether you are writing the next bestseller, programming an innovative "
+"application, or simply taking some quick notes, gedit will be a reliable "
+"tool to accomplish your task."
+msgstr ""
+"Είτε γράφετε το επόμενο bestseller, είτε προγραμματίζετε μια καινοτόμα "
+"εφαρμογή, ή απλά γράφετε κάποιες γρήγορες σημειώσεις, το gedit θα είναι ένα "
+"αξιόπιστο εργαλείο να πραγματοποιήσετε την εργασία σας."
+
+#: ../data/gedit.appdata.xml.in.h:3
+msgid ""
+"Its flexible plugin system allows you to tailor the application to your "
+"needs and adapt it to your workflow."
+msgstr ""
+"Το ευέλικτο σύστημα προσθέτων του σας επιτρέπει να προσαρμόσετε την εφαρμογή "
+"στις ανάγκες σας και να την χρησιμοποιήτε στις καθημερινές σας εργασίες."
+
 #: ../data/gedit.desktop.in.in.h:1
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:791
+#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:784
 msgid "Text Editor"
 msgstr "Επεξεργαστής κειμένου"
 
@@ -75,11 +104,11 @@ msgstr "Άνοιγμα ενός νέου παραθύρου"
 msgid "Open a New Document"
 msgstr "Άνοιγμα ενός νέου εγγράφου"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:1
+#: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
 msgstr "Χρήση προεπιλεγμένης γραμματοσειράς"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:2
+#: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
 "Whether to use the system's default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
@@ -91,11 +120,15 @@ msgstr ""
 "γραμματοσειρά. Αν αυτή η επιλογή απενεργοποιηθεί τότε θα χρησιμοποιηθεί η "
 "γραμματοσειρά που ορίζεται στην επιλογή \"Γραμματοσειρά Επεξεργαστή\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:3
+#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+msgid "'Monospace 12'"
+msgstr "'Monospace 12'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
 msgstr "Γραμματοσειρά επεξεργαστή"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:4
+#: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
@@ -104,21 +137,21 @@ msgstr ""
 "πραγματοποιείται μόνο όταν είναι απενεργοποιημένη η «Χρήση προεπιλεγμένης "
 "γραμματοσειράς»."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:5
+#: ../data/org.gnome.gedit.gschema.xml.in.h:6
 msgid "Style Scheme"
 msgstr "Στυλ σχήματος"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:6
+#: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr ""
 "Το ID ενός σχήματος στυλ GtkSourceView που χρησιμοποιείται για να χρωματίζει "
 "το κείμενο."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:7
+#: ../data/org.gnome.gedit.gschema.xml.in.h:8
 msgid "Create Backup Copies"
 msgstr "Δημιουργία αντιγράφων ασφαλείας"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:8
+#: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid ""
 "Whether gedit should create backup copies for the files it saves. You can "
 "set the backup file extension with the \"Backup Copy Extension\" option."
@@ -127,11 +160,11 @@ msgstr ""
 "αποθηκεύει. Μπορείτε να ορίσετε την επέκταση των αρχείων ασφαλείας στην "
 "επιλογή \"Επέκταση αρχείου ασφαλείας\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:9
+#: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
 msgstr "Αυτόματη αποθήκευση"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:10
+#: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the \"Autosave Interval\" "
@@ -141,11 +174,11 @@ msgstr ""
 "κάποιο χρονικό διάστημα. Μπορείτε να ορίσετε αυτό το διάστημα στην επιλογή "
 "«Μεσοδιάστημα αυτόματης αποθήκευσης»."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:11
+#: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid "Autosave Interval"
 msgstr "Μεσοδιάστημα αυτόματης αποθήκευσης"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:12
+#: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
@@ -154,23 +187,11 @@ msgstr ""
 "τροποποιημένα αρχεία. Αυτό πραγματοποιείται μόνο όταν είναι ενεργοποιημένη η "
 "«Αυτόματη αποθήκευση»."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:13
-msgid "Undo Actions Limit (DEPRECATED)"
-msgstr "Όριο ενεργειών αναίρεσης (ΞΕΠΕΡΑΣΜΕΝΟ)"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:14
-msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
-msgstr ""
-"Μέγιστος αριθμός ενεργειών για αναίρεση ή ακύρωση αναίρεσης. Χρησιμοποιήστε "
-"το «-1» για απεριόριστο αριθμό ενεργειών. Ξεπερασμένο στο 2.12.0"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:15
+#: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Maximum Number of Undo Actions"
 msgstr "Μέγιστος αριθμός ενεργειών αναίρεσης"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:16
+#: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
@@ -178,11 +199,11 @@ msgstr ""
 "Μέγιστος αριθμός ενεργειών για αναίρεση ή ακύρωση αναίρεσης. Χρησιμοποιήστε "
 "το «-1» για απεριόριστο αριθμό ενεργειών."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:17
+#: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid "Line Wrapping Mode"
 msgstr "Κατάσταση αναδίπλωσης γραμμών"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:18
+#: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
 "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
@@ -195,11 +216,11 @@ msgstr ""
 "Σημειώστε ότι στις τιμές υπάρχει διάκριση πεζών-κεφαλαίων και πρέπει να "
 "εμφανιστούν όπως ακριβώς αναφέρονται εδώ."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:19
+#: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid "Tab Size"
 msgstr "Μέγεθος στηλοθέτη"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:20
+#: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
@@ -207,69 +228,69 @@ msgstr ""
 "Καθορίζει τον αριθμό των διαστημάτων που θα πρέπει να εμφανίζονται αντί για "
 "χαρακτήρες στηλοθέτη."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:21
+#: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Insert spaces"
 msgstr "Εισαγωγή διαστημάτων"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:22
+#: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Αν το gedit θα εισάγει διαστήματα αντί για στηλοθέτες."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:23
+#: ../data/org.gnome.gedit.gschema.xml.in.h:22
 msgid "Automatic indent"
 msgstr "Αυτόματη εσοχή"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:24
+#: ../data/org.gnome.gedit.gschema.xml.in.h:23
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Αν η εφαρμογή θα ενεργοποιεί αυτόματη εσοχή."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:25
+#: ../data/org.gnome.gedit.gschema.xml.in.h:24
 msgid "Display Line Numbers"
 msgstr "Προβολή αριθμών γραμμής"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:26
+#: ../data/org.gnome.gedit.gschema.xml.in.h:25
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr ""
 "Αν η εφαρμογή θα προβάλλει τους αριθμούς γραμμών στην περιοχή επεξεργασίας."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:27
+#: ../data/org.gnome.gedit.gschema.xml.in.h:26
 msgid "Highlight Current Line"
 msgstr "Επισήμανση τρέχουσας γραμμής"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:28
+#: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Whether gedit should highlight the current line."
 msgstr "Αν η εφαρμογή θα επισημαίνει την τρέχουσα γραμμή."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:29
+#: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Highlight Matching Brackets"
 msgstr "Επισήμανση αγκυλών που ταιριάζουν"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:30
+#: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Αν το gedit θα επισημαίνει τις αγκύλες που ταιριάζουν."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:31
+#: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Display Right Margin"
 msgstr "Προβολή δεξιού περιθωρίου"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:32
+#: ../data/org.gnome.gedit.gschema.xml.in.h:31
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr ""
 "Αν η εφαρμογή θα προβάλλει το δεξιό περιθώριο στην περιοχή επεξεργασίας."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:33
+#: ../data/org.gnome.gedit.gschema.xml.in.h:32
 msgid "Right Margin Position"
 msgstr "Θέση δεξιού περιθωρίου"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:34
+#: ../data/org.gnome.gedit.gschema.xml.in.h:33
 msgid "Specifies the position of the right margin."
 msgstr "Καθορίζει την θέση του δεξιού περιθωρίου."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:35
+#: ../data/org.gnome.gedit.gschema.xml.in.h:34
 msgid "Smart Home End"
 msgstr "Έξυπνα Home End"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:36
+#: ../data/org.gnome.gedit.gschema.xml.in.h:35
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -283,16 +304,16 @@ msgstr ""
 "END. Χρησιμοποιήστε την επιλογή \"disabled\" για να κινείται στην αρχή/τέλος "
 "της γραμμής, την επιλογή \"after\" για να μετακινείται στην αρχή/τέλος της "
 "γραμμής, την πρώτη φορά που το πατάτε και στην αρχή/τέλος του κειμένου, "
-"αγνοώντας τα κενά, όταν το πατάτε δεύτερη φορά, την επιλογή \"before\" για να "
-"μετακινείται στην αρχή/τέλος του κειμένου πριν κινηθεί στην αρχή/τέλος της "
-"γραμμής και την επιλογή \"always\" για να κινείται πάντα στην αρχή/τέλος του "
-"κειμένου αντί της αρχής/τέλους της γραμμής."
+"αγνοώντας τα κενά, όταν το πατάτε δεύτερη φορά, την επιλογή \"before\" για "
+"να μετακινείται στην αρχή/τέλος του κειμένου πριν κινηθεί στην αρχή/τέλος "
+"της γραμμής και την επιλογή \"always\" για να κινείται πάντα στην αρχή/τέλος "
+"του κειμένου αντί της αρχής/τέλους της γραμμής."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:36
 msgid "Restore Previous Cursor Position"
 msgstr "Επαναφορά προηγούμενης θέσης δρομέα"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
@@ -300,46 +321,46 @@ msgstr ""
 "Αν το gedit θα επαναφέρει τη προηγούμενη θέση του δρομέα κατά τη φόρτωση "
 "ενός αρχείου."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Enable Syntax Highlighting"
 msgstr "Ενεργοποίηση επισήμανσης σύνταξης"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Αν η εφαρμογή θα ενεργοποιεί την επισήμανση σύνταξης."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Enable Search Highlighting"
 msgstr "Ενεργοποίηση επισήμανσης αναζήτησης"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr ""
 "Αν η εφαρμογή θα επισημαίνει όλες τις επαναλήψεις του κειμένου αναζήτησης."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid "Ensure Trailing Newline"
 msgstr "Εξασφάλισε αλλαγή γραμμής"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "Αν η εφαρμογή θα εξασφαλίσει ώστε να τελειώνει με μια νέα γραμμή."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid "Toolbar is Visible"
 msgstr "Η εργαλειοθήκη είναι ορατή"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Αν η εργαλειοθήκη θα είναι ορατή στα παράθυρα επεξεργασίας."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Notebook Show Tabs Mode"
 msgstr "Σημειωματάριο σε κατάσταση εμφάνισης καρτελών"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -353,31 +374,31 @@ msgstr ""
 "Σημειώστε ότι οι τιμές είναι ευαίσθητες στον τρόπο γραφής, οπότε να είστε "
 "σίγουροι ότι εμφανίζονται όπως ακριβώς αναφέρονται εδώ."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid "Status Bar is Visible"
 msgstr "Η γραμμή κατάστασης είναι ορατή"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 "Αν η γραμμή κατάστασης στο κάτω μέρος του ενεργού παραθύρου θα είναι ορατή."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid "Side panel is Visible"
 msgstr "Η πλευρική στήλη είναι ορατή"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr ""
 "Αν η πλευρική στήλη στα αριστερά του παραθύρων επεξεργασίας θα είναι ορατή."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Maximum Recent Files"
 msgstr "Μέγιστος αριθμός πρόσφατων αρχείων"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
@@ -385,27 +406,27 @@ msgstr ""
 "Καθορίζει το μέγιστο αριθμό των πρόσφατα ανοιγμένων εγγράφων που θα "
 "εμφανίζονται στο υπομενού \"Πρόσφατα έγγραφα\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid "Print Syntax Highlighting"
 msgstr "Εκτύπωση της επισήμανσης σύνταξης"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Αν η εφαρμογή θα εκτυπώνει την επισήμανση σύνταξης κατά την εκτύπωση."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid "Print Header"
 msgstr "Εκτύπωση κεφαλίδας"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Αν η εφαρμογή θα περιλαμβάνει μια κεφαλίδα εγγράφου κατά την εκτύπωση."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid "Printing Line Wrapping Mode"
 msgstr "Κατάσταση αναδίπλωσης γραμμής εκτύπωσης"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
 "\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
@@ -418,11 +439,11 @@ msgstr ""
 "τιμές υπάρχει διάκριση πεζών-κεφαλαίων και πρέπει να εμφανιστούν όπως "
 "ακριβώς αναφέρονται εδώ."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid "Print Line Numbers"
 msgstr "Εκτύπωση αριθμών γραμμής"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -432,22 +453,30 @@ msgstr ""
 "εγγράφου. Στην αντίθετη περίπτωση, το gedit θα εκτυπώνει αριθμούς γραμμών "
 "για κάθε τέτοια γραμμή."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+msgid "'Monospace 9'"
+msgstr "'Monospace 9'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid "Body Font for Printing"
 msgstr "Χρώμα κυρίως κειμένου για εκτύπωση"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
 "Καθορίζει τη χρήση της γραμματοσειράς στο σώμα του εγγράφου κατά την "
 "εκτύπωση."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+msgid "'Sans 11'"
+msgstr "'Sans 11'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid "Header Font for Printing"
 msgstr "Γραμματοσειρά κεφαλίδας για εκτύπωση"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -456,11 +485,15 @@ msgstr ""
 "εκτύπωση. Αυτό πραγματοποιείται μόνο αν είναι ενεργοποιημένη η \"Εκτύπωση "
 "κεφαλίδας\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+msgid "'Sans 8'"
+msgstr "'Sans 8'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid "Line Number Font for Printing"
 msgstr "Γραμματοσειρά αριθμού γραμμής για εκτύπωση"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:68
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -480,15 +513,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:82
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:81
+#: ../data/org.gnome.gedit.gschema.xml.in.h:83
 msgid "Automatically Detected Encodings"
 msgstr "Αυτόματα εντοπιζόμενες κωδικοποιήσεις"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:82
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -501,15 +534,15 @@ msgstr ""
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-15']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid "Encodings shown in menu"
 msgstr "Κωδικοποιήσεις που εμφανίζονται στο μενού"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:87
+#: ../data/org.gnome.gedit.gschema.xml.in.h:89
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -518,11 +551,11 @@ msgstr ""
 "Χαρακτήρων στον επιλογέα άνοιγμα/αποθήκευση. Μόνο αναγνωρισμένες "
 "κωδικοποιήσεις χρησιμοποιούνται."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:88
+#: ../data/org.gnome.gedit.gschema.xml.in.h:90
 msgid "Active plugins"
 msgstr "Ενεργές πρόσθετες λειτουργίες"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.h:91
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -531,19 +564,19 @@ msgstr ""
 "ενεργών πρόσθετων λειτουργιών. Δείτε το αρχείο .gedit-plugin για να μάθετε "
 "την «Τοποθεσία» μιας πρόσθετης λειτουργίας."
 
-#: ../gedit/gedit-app.c:115
+#: ../gedit/gedit-app.c:113
 msgid "Show the application's help"
 msgstr "Εμφάνιση βοήθειας της εφαρμογής"
 
-#: ../gedit/gedit-app.c:121
+#: ../gedit/gedit-app.c:119
 msgid "Show the application's version"
 msgstr "Εμφάνιση του αριθμού έκδοσης της εφαρμογής"
 
-#: ../gedit/gedit-app.c:127
+#: ../gedit/gedit-app.c:125
 msgid "Display list of possible values for the encoding option"
 msgstr "Εμφάνιση λίστα με τις πιθανές τιμές για την επιλογή κωδικοποίησης"
 
-#: ../gedit/gedit-app.c:135
+#: ../gedit/gedit-app.c:133
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -551,47 +584,47 @@ msgstr ""
 "Ορισμός της κωδικοποίησης χαρακτήρων που θα χρησιμοποιείται για το άνοιγμα "
 "αρχείων από τη γραμμή εντολών"
 
-#: ../gedit/gedit-app.c:136
+#: ../gedit/gedit-app.c:134
 msgid "ENCODING"
 msgstr "ΚΩΔΙΚΟΠΟΙΗΣΗ"
 
-#: ../gedit/gedit-app.c:143
+#: ../gedit/gedit-app.c:141
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Δημιουργία νέου παραθύρου σε υπάρχουσα εκτέλεση του gedit"
 
-#: ../gedit/gedit-app.c:151
+#: ../gedit/gedit-app.c:149
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Δημιουργία νέου εγγράφου σε υπάρχουσα εκτέλεση του gedit"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:157
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Θέστε την Χ γεωμετρία του μεγέθους του παραθύρου (ΠΛΑΤΟΣxΥΨΟΣ+X+Y)"
 
-#: ../gedit/gedit-app.c:160
+#: ../gedit/gedit-app.c:158
 msgid "GEOMETRY"
 msgstr "ΓΕΩΜΕΤΡΙΑ"
 
-#: ../gedit/gedit-app.c:167
+#: ../gedit/gedit-app.c:165
 msgid "Open files and block process until files are closed"
 msgstr "Άνοιγμα επεξεργασίας αρχείων και μπλοκ μέχρι να κλείσουν τα αρχεία"
 
-#: ../gedit/gedit-app.c:175
+#: ../gedit/gedit-app.c:173
 msgid "Run gedit in standalone mode"
 msgstr "Εκτέλεση του gedit σε κατάσταση αυτόνομης εφαρμογής"
 
-#: ../gedit/gedit-app.c:184
+#: ../gedit/gedit-app.c:182
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FILE...] [+LINE[:COLUMN]]"
 
-#: ../gedit/gedit-app.c:283
+#: ../gedit/gedit-app.c:281
 msgid "There was an error displaying the help."
 msgstr "Υπήρξε σφάλμα κατά την εμφάνιση της βοήθειας."
 
-#: ../gedit/gedit-app.c:704
+#: ../gedit/gedit-app.c:702
 msgid "- Edit text files"
 msgstr "- Επεξεργασία αρχείων κειμένου"
 
-#: ../gedit/gedit-app.c:813 ../gedit/gedit-app.c:903
+#: ../gedit/gedit-app.c:811 ../gedit/gedit-app.c:901
 #, c-format
 msgid ""
 "%s\n"
@@ -601,7 +634,7 @@ msgstr ""
 "Εκτελέστε '%s --help' για να δείτε μια πλήρη λίστα των διαθέσιμων επιλογών "
 "γραμμής εντολών.\n"
 
-#: ../gedit/gedit-app.c:834
+#: ../gedit/gedit-app.c:832
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: μη έγκυρη κωδικοποίηση."
@@ -610,15 +643,15 @@ msgstr "%s: μη έγκυρη κωδικοποίηση."
 msgid "About gedit"
 msgstr "Περί gedit"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:151
+#: ../gedit/gedit-close-confirmation-dialog.c:146
 msgid "Question"
 msgstr "Ερώτηση"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:324
+#: ../gedit/gedit-close-confirmation-dialog.c:314
 msgid "Close _without Saving"
 msgstr "Κλείσιμο _χωρίς αποθήκευση"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:372
+#: ../gedit/gedit-close-confirmation-dialog.c:362
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -632,14 +665,14 @@ msgstr[1] ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο τα τελευταία %ld "
 "δευτερόλεπτα θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:381
+#: ../gedit/gedit-close-confirmation-dialog.c:371
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο το τελευταίο λεπτό θα "
 "χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:387
+#: ../gedit/gedit-close-confirmation-dialog.c:377
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -654,7 +687,7 @@ msgstr[1] ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο το τελευταίο λεπτό "
 "και %ld δευτερόλεπτα θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:397
+#: ../gedit/gedit-close-confirmation-dialog.c:387
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -668,13 +701,13 @@ msgstr[1] ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο τα τελευταία %ld "
 "λεπτά θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:412
+#: ../gedit/gedit-close-confirmation-dialog.c:402
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο την τελευταία ώρα θα "
 "χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:418
+#: ../gedit/gedit-close-confirmation-dialog.c:408
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -689,7 +722,7 @@ msgstr[1] ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο την τελευταία ώρα και "
 "%d λεπτά θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:433
+#: ../gedit/gedit-close-confirmation-dialog.c:423
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -702,31 +735,29 @@ msgstr[1] ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο τις τελευταίες %d "
 "ώρες θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:480
+#: ../gedit/gedit-close-confirmation-dialog.c:473
 #, c-format
-#| msgid "Changes to document \"%s\" will be permanently lost."
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Οι αλλαγές στο έγγραφο “%s” θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:485
+#: ../gedit/gedit-close-confirmation-dialog.c:478
 #, c-format
-#| msgid "Save changes to document \"%s\" before closing?"
 msgid "Save changes to document “%s” before closing?"
 msgstr "Αποθήκευση των αλλαγών στο έγγραφο “%s” πριν το κλείσιμο;"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:500
-#: ../gedit/gedit-close-confirmation-dialog.c:721
+#: ../gedit/gedit-close-confirmation-dialog.c:493
+#: ../gedit/gedit-close-confirmation-dialog.c:714
 msgid "Saving has been disabled by the system administrator."
 msgstr "Η αποθήκευση έχει απενεργοποιηθεί από το διαχειριστή συστήματος."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:668
+#: ../gedit/gedit-close-confirmation-dialog.c:663
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Οι αλλαγές σε %d έγγραφο θα χαθούν οριστικά."
 msgstr[1] "Οι αλλαγές σε %d έγγραφα θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:676
+#: ../gedit/gedit-close-confirmation-dialog.c:671
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -738,15 +769,15 @@ msgstr[1] ""
 "Υπάρχουν %d έγγραφα με μη αποθηκευμένες αλλαγές. Να αποθηκευτούν οι αλλαγές "
 "πριν το κλείσιμο;"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:696
+#: ../gedit/gedit-close-confirmation-dialog.c:691
 msgid "Docum_ents with unsaved changes:"
 msgstr "Έ_γγραφα με μη-αποθηκευμένες αλλαγές:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:700
+#: ../gedit/gedit-close-confirmation-dialog.c:695
 msgid "S_elect the documents you want to save:"
 msgstr "Επι_λέξτε τα έγγραφα που θέλετε να αποθηκεύσετε:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:725
+#: ../gedit/gedit-close-confirmation-dialog.c:718
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Αν δεν αποθηκεύσετε, όλες οι αλλαγές θα χαθούν."
 
@@ -931,6 +962,7 @@ msgstr ""
 " Δημήτρης Γλέζος <dimitris@glezos.com>\n"
 " Κωνσταντίνος Κουράτορας <kouratoras@gmail.com>\n"
 " Θάνος Λευτέρης <alefteris@gmail.com>\n"
+" Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>\n"
 "\n"
 "Για περισσότερες πληροφορίες, επισκεφθείτε την σελίδα http://www.gnome.gr/"
 
@@ -947,22 +979,22 @@ msgstr "Βρέθηκε και αντικαταστάθηκε μια επανάλ
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:145
+#: ../gedit/gedit-commands-search.c:148
 #, c-format
 msgid "\"%s\" not found"
 msgstr "Το «%s» δε βρέθηκε"
 
-#: ../gedit/gedit-document.c:1238 ../gedit/gedit-document.c:1264
+#: ../gedit/gedit-document.c:1266 ../gedit/gedit-document.c:1292
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Μη αποθηκευμένο έγγραφο %d"
 
-#: ../gedit/gedit-documents-panel.c:123 ../gedit/gedit-documents-panel.c:137
-#: ../gedit/gedit-window.c:2085 ../gedit/gedit-window.c:2092
+#: ../gedit/gedit-documents-panel.c:119 ../gedit/gedit-documents-panel.c:133
+#: ../gedit/gedit-window.c:2044 ../gedit/gedit-window.c:2051
 msgid "Read-Only"
 msgstr "Μόνο για ανάγνωση"
 
-#: ../gedit/gedit-documents-panel.c:1146 ../gedit/gedit-window.c:3464
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3506
 msgid "Documents"
 msgstr "Έγγραφα"
 
@@ -1082,17 +1114,17 @@ msgstr "Ταϊλανδέζικη"
 msgid "Unknown"
 msgstr "Άγνωστο"
 
-#: ../gedit/gedit-encodings-combo-box.c:299
+#: ../gedit/gedit-encodings-combo-box.c:293
 msgid "Automatically Detected"
 msgstr "Αυτόματος εντοπισμός"
 
-#: ../gedit/gedit-encodings-combo-box.c:318
-#: ../gedit/gedit-encodings-combo-box.c:334
+#: ../gedit/gedit-encodings-combo-box.c:312
+#: ../gedit/gedit-encodings-combo-box.c:328
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Τρέχον Locale (%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:386
+#: ../gedit/gedit-encodings-combo-box.c:380
 msgid "Add or Remove..."
 msgstr "Προσθήκη ή Αφαίρεση..."
 
@@ -1117,37 +1149,37 @@ msgstr "Κω_δικοποίηση"
 msgid "E_ncodings shown in menu:"
 msgstr "Κω_δικοποιήσεις που εμφανίζονται στο μενού:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:52
-#: ../gedit/gedit-preferences-dialog.c:883
+#: ../gedit/gedit-file-chooser-dialog.c:50
+#: ../gedit/gedit-preferences-dialog.c:874
 msgid "All Files"
 msgstr "Όλα τα Αρχεία"
 
-#: ../gedit/gedit-file-chooser-dialog.c:53
+#: ../gedit/gedit-file-chooser-dialog.c:51
 msgid "All Text Files"
 msgstr "Όλα τα αρχεία κειμένου"
 
-#: ../gedit/gedit-file-chooser-dialog.c:95
+#: ../gedit/gedit-file-chooser-dialog.c:91
 msgid "C_haracter Encoding:"
 msgstr "Κωδικοποίηση _χαρακτήρων:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:154
+#: ../gedit/gedit-file-chooser-dialog.c:150
 msgid "L_ine Ending:"
 msgstr "Τέ_λος γραμμής:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:173
+#: ../gedit/gedit-file-chooser-dialog.c:169
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-file-chooser-dialog.c:179
+#: ../gedit/gedit-file-chooser-dialog.c:175
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: ../gedit/gedit-file-chooser-dialog.c:185
+#: ../gedit/gedit-file-chooser-dialog.c:181
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:307 ../gedit/gedit-window.c:1796
-#: ../gedit/gedit-window.c:2184 ../plugins/externaltools/tools/manager.py:146
+#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:2143
+#: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:463
 #: ../plugins/externaltools/tools/manager.py:579
 #: ../plugins/externaltools/tools/manager.py:915
@@ -1168,7 +1200,6 @@ msgstr "Αναζήτηση λειτουργίας επισήμανσης..."
 #: ../gedit/gedit-io-error-info-bar.c:491
 #: ../gedit/gedit-io-error-info-bar.c:1171
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:173
-#| msgid "_Cancel Logout"
 msgid "_Cancel"
 msgstr "_Ακύρωση"
 
@@ -1179,7 +1210,6 @@ msgstr "Προσπάθεια _ξανά"
 
 #: ../gedit/gedit-io-error-info-bar.c:181
 #, c-format
-#| msgid "Could not find the file %s."
 msgid "Could not find the file “%s”."
 msgstr "Αδύνατη η εύρεση του αρχείου “%s”."
 
@@ -1193,37 +1223,29 @@ msgstr ""
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:202
 #, c-format
-#| msgid "gedit cannot handle %s locations."
 msgid "Unable to handle “%s:” locations."
 msgstr "Αδύνατος ο χειρισμός του “%s:” τοποθεσίες."
 
 #: ../gedit/gedit-io-error-info-bar.c:208
-#| msgid "gedit cannot handle this location."
 msgid "Unable to handle this location."
 msgstr "Αδύνατος ο χειρισμός αυτής της τοποθεσίας."
 
 #: ../gedit/gedit-io-error-info-bar.c:217
-#| msgid "The location of the file cannot be mounted."
 msgid "The location of the file cannot be accessed."
 msgstr "Η θέση του αρχείου δεν μπορεί να προσπελαστεί."
 
 #: ../gedit/gedit-io-error-info-bar.c:221
 #, c-format
-#| msgid "%s is a directory."
 msgid "“%s” is a directory."
 msgstr "Το “%s” είναι κατάλογος."
 
 #: ../gedit/gedit-io-error-info-bar.c:228
 #, c-format
-#| msgid "%s is not a valid location."
 msgid "“%s” is not a valid location."
 msgstr "Το “%s” δεν είναι έγκυρη τοποθεσία."
 
 #: ../gedit/gedit-io-error-info-bar.c:264
 #, c-format
-#| msgid ""
-#| "Host %s could not be found. Please check that your proxy settings are "
-#| "correct and try again."
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
 "correct and try again."
@@ -1242,7 +1264,6 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:287
 #, c-format
-#| msgid "%s is not a regular file."
 msgid "“%s” is not a regular file."
 msgstr "Το “%s” δεν είναι κανονικό αρχείο."
 
@@ -1260,14 +1281,12 @@ msgid "Unexpected error: %s"
 msgstr "Απρόσμενο σφάλμα: %s"
 
 #: ../gedit/gedit-io-error-info-bar.c:392
-#| msgid "gedit cannot find the file. Perhaps it has recently been deleted."
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr ""
 "Αδύνατη η εύρεση του ζητούμενου αρχείου. Ίσως να έχει διαγραφεί πρόσφατα."
 
 #: ../gedit/gedit-io-error-info-bar.c:402
 #, c-format
-#| msgid "Could not revert the file %s."
 msgid "Could not revert the file “%s”."
 msgstr "Αδυναμία επαναφοράς του αρχείου “%s”."
 
@@ -1295,7 +1314,6 @@ msgid "You do not have the permissions necessary to open the file."
 msgstr "Δεν έχετε τα απαραίτητα δικαιώματα για το άνοιγμα του αρχείου."
 
 #: ../gedit/gedit-io-error-info-bar.c:587
-#| msgid "gedit has not been able to detect the character encoding."
 msgid "Unable to detect the character encoding."
 msgstr "Αδύνατη η αναγνώριση της κωδικοποίησης χαρακτήρων."
 
@@ -1312,7 +1330,6 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:595
 #, c-format
-#| msgid "There was a problem opening the file %s."
 msgid "There was a problem opening the file “%s”."
 msgstr "Υπήρξε πρόβλημα κατά το άνοιγμα του αρχείου “%s”."
 
@@ -1332,7 +1349,6 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:607
 #, c-format
-#| msgid "Could not open the file %s using the %s character encoding."
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr ""
 "Αδύνατο το άνοιγμα του αρχείου “%s” με τη χρήση της κωδικοποίησης χαρακτήρων "
@@ -1347,13 +1363,11 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:621
 #, c-format
-#| msgid "Could not open the file %s."
 msgid "Could not open the file “%s”."
 msgstr "Αδύνατο το άνοιγμα του αρχείου “%s”."
 
 #: ../gedit/gedit-io-error-info-bar.c:680
 #, c-format
-#| msgid "Could not save the file %s using the %s character encoding."
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr ""
 "Αδύνατη η αποθήκευση του αρχείου “%s” με τη χρήση της κωδικοποίησης "
@@ -1375,12 +1389,10 @@ msgstr "Να _μην γίνει επεξεργασία"
 
 #: ../gedit/gedit-io-error-info-bar.c:766
 #, c-format
-#| msgid "This file (%s) is already open in another gedit window."
 msgid "This file “%s” is already open in another window."
 msgstr "Αυτό το αρχείο “%s” είναι ήδη ανοικτό σε άλλο παράθυρο."
 
 #: ../gedit/gedit-io-error-info-bar.c:780
-#| msgid "Do you want to reload the file?"
 msgid "Do you want to edit it anyway?"
 msgstr "Θέλετε να το επεξεργαστείτε οπωσδήποτε;"
 
@@ -1402,7 +1414,6 @@ msgstr "Να μη _γίνει αποθήκευση"
 #.
 #: ../gedit/gedit-io-error-info-bar.c:853
 #, c-format
-#| msgid "The file %s has been modified since reading it."
 msgid "The file “%s” has been modified since reading it."
 msgstr "Το αρχείο “%s” έχει τροποποιηθεί από τότε που το διαβάσατε."
 
@@ -1414,24 +1425,17 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:950
 #, c-format
-#| msgid "Could not create a backup file while saving %s"
 msgid "Could not create a backup file while saving “%s”"
 msgstr "Αδύνατη η δημιουργία αντιγράφου ασφαλείας κατά την αποθήκευση του “%s”"
 
 #: ../gedit/gedit-io-error-info-bar.c:955
 #, c-format
-#| msgid "Could not create a temporary backup file while saving %s"
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
 "Αδύνατη η δημιουργία ενός προσωρινού αντιγράφου ασφαλείας κατά την "
 "αποθήκευση του “%s”"
 
 #: ../gedit/gedit-io-error-info-bar.c:972
-#| msgid ""
-#| "gedit could not back up the old copy of the file before saving the new "
-#| "one. You can ignore this warning and save the file anyway, but if an "
-#| "error occurs while saving, you could lose the old copy of the file. Save "
-#| "anyway?"
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1445,9 +1449,6 @@ msgstr ""
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:1032
 #, c-format
-#| msgid ""
-#| "gedit cannot handle %s locations in write mode. Please check that you "
-#| "typed the location correctly and try again."
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1457,9 +1458,6 @@ msgstr ""
 "προσπαθήστε ξανά."
 
 #: ../gedit/gedit-io-error-info-bar.c:1040
-#| msgid ""
-#| "gedit cannot handle this location in write mode. Please check that you "
-#| "typed the location correctly and try again."
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1470,9 +1468,6 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:1049
 #, c-format
-#| msgid ""
-#| "%s is not a valid location. Please check that you typed the location "
-#| "correctly and try again."
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
 "correctly and try again."
@@ -1533,7 +1528,6 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:1101
 #, c-format
-#| msgid "Could not save the file %s."
 msgid "Could not save the file “%s”."
 msgstr "Αδύνατη η αποθήκευση του αρχείου “%s”."
 
@@ -1543,7 +1537,6 @@ msgstr "Αδύνατη η αποθήκευση του αρχείου “%s”."
 #.
 #: ../gedit/gedit-io-error-info-bar.c:1145
 #, c-format
-#| msgid "The file %s changed on disk."
 msgid "The file “%s” changed on disk."
 msgstr "Το αρχείο “%s” άλλαξε στον δίσκο."
 
@@ -1557,7 +1550,6 @@ msgstr "_Επαναφόρτωση"
 
 #: ../gedit/gedit-io-error-info-bar.c:1232
 #, c-format
-#| msgid "Some invalid chars have been detected while saving %s"
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "Ανιχνεύθηκαν μερικοί άκυροι χαρακτήρες κατά την αποθήκευση του “%s”"
 
@@ -1590,25 +1582,27 @@ msgid "_Quit"
 msgstr "Έ_ξοδος"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:171 ../gedit/gedit-ui.h:142
+#: ../gedit/gedit-notebook-popup-menu.c:175 ../gedit/gedit-ui.h:142
 msgid "_Move to New Window"
 msgstr "_Μετακίνηση σε νέο παράθυρο"
 
 #: ../gedit/gedit-notebook-popup-menu.c:182
-#| msgid "_Save:"
+msgid "_Move to New Tab Group"
+msgstr "_Μετακίνηση σε Νέα Ομάδα Καρτελών"
+
+#: ../gedit/gedit-notebook-popup-menu.c:193
 msgid "_Save"
 msgstr "Απο_θήκευση"
 
-#: ../gedit/gedit-notebook-popup-menu.c:189 ../gedit/gedit-ui.h:78
+#: ../gedit/gedit-notebook-popup-menu.c:200 ../gedit/gedit-ui.h:78
 msgid "Save _As..."
 msgstr "Αποθήκευση _ως..."
 
-#: ../gedit/gedit-notebook-popup-menu.c:200 ../gedit/gedit-ui.h:84
+#: ../gedit/gedit-notebook-popup-menu.c:211 ../gedit/gedit-ui.h:84
 msgid "_Print..."
 msgstr "_Εκτύπωση..."
 
-#: ../gedit/gedit-notebook-popup-menu.c:211
-#| msgid "_Close All"
+#: ../gedit/gedit-notebook-popup-menu.c:222
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
@@ -1620,52 +1614,52 @@ msgstr "Άνοιγμα ενός αρχείου"
 msgid "Open a recently used file"
 msgstr "Άνοιγμα ενός πρόσφατου αρχείου"
 
-#: ../gedit/gedit-panel.c:411 ../gedit/gedit-panel.c:592
+#: ../gedit/gedit-panel.c:407 ../gedit/gedit-panel.c:590
 msgid "Empty"
 msgstr "Κενή"
 
-#: ../gedit/gedit-panel.c:477
+#: ../gedit/gedit-panel.c:473
 msgid "Hide panel"
 msgstr "Απόκρυψη πλαισίου"
 
-#: ../gedit/gedit-preferences-dialog.c:405
+#: ../gedit/gedit-preferences-dialog.c:396
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Πατήστε αυτό το κουμπί για να επιλέξετε τη γραμματοσειρά που θα "
 "χρησιμοποιείται από τον επεξεργαστή"
 
-#: ../gedit/gedit-preferences-dialog.c:418
+#: ../gedit/gedit-preferences-dialog.c:409
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr ""
 "_Χρήση της προκαθορισμένης γραμματοσειράς σταθερού πλάτους του συστήματος "
 "(%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:650
+#: ../gedit/gedit-preferences-dialog.c:641
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Δεν είναι δυνατή η δημιουργία του καταλόγου '%s': g_mkdir_with_parents() "
 "απέτυχε: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:834
+#: ../gedit/gedit-preferences-dialog.c:825
 msgid "The selected color scheme cannot be installed."
 msgstr ""
 "Το επιλεγμένο σχήμα χρώματος δεν μπορεί να μετακινηθεί στα απορρίμματα."
 
-#: ../gedit/gedit-preferences-dialog.c:861
+#: ../gedit/gedit-preferences-dialog.c:852
 msgid "Add Scheme"
 msgstr "Προσθήκη σχήματος"
 
-#: ../gedit/gedit-preferences-dialog.c:868
+#: ../gedit/gedit-preferences-dialog.c:859
 msgid "A_dd Scheme"
 msgstr "Προ_σθήκη σχήματος"
 
-#: ../gedit/gedit-preferences-dialog.c:876
+#: ../gedit/gedit-preferences-dialog.c:867
 msgid "Color Scheme Files"
 msgstr "Αρχεία σχήματος χρώματος"
 
-#: ../gedit/gedit-preferences-dialog.c:928
+#: ../gedit/gedit-preferences-dialog.c:919
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Αδυναμία απομάκρυνσης σχήματος χρώματος \"%s\"."
@@ -1675,7 +1669,7 @@ msgstr "Αδυναμία απομάκρυνσης σχήματος χρώματ�
 msgid "gedit Preferences"
 msgstr "Προτιμήσεις gedit"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:468
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:535
 msgid "_Display line numbers"
 msgstr "_Προβολή αριθμών γραμμής"
 
@@ -1796,16 +1790,16 @@ msgstr "Γραμματοσειρές & χρώματα"
 msgid "Plugins"
 msgstr "Πρόσθετες λειτουργίες"
 
-#: ../gedit/gedit-print-job.c:572
+#: ../gedit/gedit-print-job.c:565
 #, c-format
 msgid "File: %s"
 msgstr "Αρχείο: %s"
 
-#: ../gedit/gedit-print-job.c:581
+#: ../gedit/gedit-print-job.c:574
 msgid "Page %N of %Q"
 msgstr "Σελίδα %N από %Q"
 
-#: ../gedit/gedit-print-job.c:843
+#: ../gedit/gedit-print-job.c:836
 msgid "Preparing..."
 msgstr "Προετοιμασία..."
 
@@ -1864,7 +1858,7 @@ msgstr "Κεφα_λίδες και υποσέλιδα:"
 msgid "_Restore Default Fonts"
 msgstr "Επαναφο_ρά προεπιλεγμένων γραμματοσειρών"
 
-#: ../gedit/gedit-print-preview.c:616
+#: ../gedit/gedit-print-preview.c:614
 #, c-format
 msgid "Page %d of %d"
 msgstr "Σελίδα %d από %d"
@@ -1965,30 +1959,34 @@ msgid "Match _entire word only"
 msgstr "Ταίριασμα ο_λόκληρης λέξης μόνο"
 
 #: ../gedit/gedit-replace-dialog.ui.h:8
+msgid "Match as _regular expression"
+msgstr "Ταίριασμα ως _κανονική έκφραση"
+
+#: ../gedit/gedit-replace-dialog.ui.h:9
 msgid "Search _backwards"
 msgstr "Αναζήτηση προς τα _πίσω"
 
-#: ../gedit/gedit-replace-dialog.ui.h:9
+#: ../gedit/gedit-replace-dialog.ui.h:10
 msgid "_Wrap around"
 msgstr "Αναδίπλ_ωση γύρω"
 
 #. Use spaces to leave padding proportional to the font size
-#: ../gedit/gedit-statusbar.c:70 ../gedit/gedit-statusbar.c:76
+#: ../gedit/gedit-statusbar.c:66 ../gedit/gedit-statusbar.c:72
 msgid "OVR"
 msgstr "ΑΝΤ"
 
-#: ../gedit/gedit-statusbar.c:70 ../gedit/gedit-statusbar.c:76
+#: ../gedit/gedit-statusbar.c:66 ../gedit/gedit-statusbar.c:72
 msgid "INS"
 msgstr "ΕΙΣ"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:251
+#: ../gedit/gedit-statusbar.c:248
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Γρ %d, Στηλ. %d"
 
-#: ../gedit/gedit-statusbar.c:350
+#: ../gedit/gedit-statusbar.c:347
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -1997,36 +1995,36 @@ msgstr[1] "Υπάρχουν %d καρτέλες με σφάλματα"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:770
+#: ../gedit/gedit-tab.c:766
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Γίνεται επαναφορά %s από %s"
 
-#: ../gedit/gedit-tab.c:777
+#: ../gedit/gedit-tab.c:773
 #, c-format
 msgid "Reverting %s"
 msgstr "Γίνεται επαναφορά %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:793
+#: ../gedit/gedit-tab.c:789
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Φόρτωση %s από %s"
 
-#: ../gedit/gedit-tab.c:800
+#: ../gedit/gedit-tab.c:796
 #, c-format
 msgid "Loading %s"
 msgstr "Φόρτωση %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:881
+#: ../gedit/gedit-tab.c:877
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Αποθήκευση %s σε %s"
 
-#: ../gedit/gedit-tab.c:888
+#: ../gedit/gedit-tab.c:884
 #, c-format
 msgid "Saving %s"
 msgstr "Αποθήκευση %s"
@@ -2067,7 +2065,7 @@ msgstr "Τύπος MIME:"
 msgid "Encoding:"
 msgstr "Κωδικοποίηση:"
 
-#: ../gedit/gedit-tab-label.c:283
+#: ../gedit/gedit-tab-label.c:287
 msgid "Close document"
 msgstr "Κλείσιμο εγγράφου"
 
@@ -2349,22 +2347,22 @@ msgstr "_Κάτω πλαίσιο"
 msgid "Show or hide the bottom panel in the current window"
 msgstr "Εμφάνιση ή απόκρυψη του κάτω πλαισίου στο τρέχον παράθυρο"
 
-#: ../gedit/gedit-utils.c:931
+#: ../gedit/gedit-utils.c:932
 msgid "Please check your installation."
 msgstr "Παρακαλώ ελέγξτε την εγκατάσταση σας."
 
-#: ../gedit/gedit-utils.c:989
+#: ../gedit/gedit-utils.c:990
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Αδύνατο το άνοιγμα αρχείου διεπαφής χρήστη %s. Σφάλμα: %s"
 
-#: ../gedit/gedit-utils.c:1008
+#: ../gedit/gedit-utils.c:1009
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Αδυναμία εύρεσης του αντικειμένου '%s' μέσα στο αρχείο %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1231
+#: ../gedit/gedit-utils.c:1232
 #, c-format
 msgid "/ on %s"
 msgstr "/ στο %s"
@@ -2373,32 +2371,36 @@ msgstr "/ στο %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:590
+#: ../gedit/gedit-view-frame.c:703
 #, c-format
-#| msgid "Page %d of %d"
 msgid "%d of %d"
 msgstr "%d από %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:681
+#: ../gedit/gedit-view-frame.c:795
 msgid "_Wrap Around"
 msgstr "Αναδίπλ_ωση γύρω"
 
+#. create "Match as Regular Expression" menu item.
+#: ../gedit/gedit-view-frame.c:805
+msgid "Match as _Regular Expression"
+msgstr "Ταίριασμα ως _Κανονική Έκφραση"
+
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:696
+#: ../gedit/gedit-view-frame.c:819
 msgid "Match _Entire Word Only"
 msgstr "Ταίριασμα ο_λόκληρης λέξης μόνο"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:711
+#: ../gedit/gedit-view-frame.c:833
 msgid "_Match Case"
 msgstr "_Διάκριση πεζών από κεφαλαία"
 
-#: ../gedit/gedit-view-frame.c:893
+#: ../gedit/gedit-view-frame.c:1007
 msgid "String you want to search for"
 msgstr "Αλφαριθμητικό προς αναζήτηση"
 
-#: ../gedit/gedit-view-frame.c:903
+#: ../gedit/gedit-view-frame.c:1019
 msgid "Line you want to move the cursor to"
 msgstr "Η γραμμή στην οποία θέλετε μετακινηθεί ο δρομέας"
 
@@ -2430,25 +2432,25 @@ msgstr "Ενεργοποίηση '%s'"
 msgid "Use Spaces"
 msgstr "Χρήση διαστημάτων"
 
-#: ../gedit/gedit-window.c:1942
+#: ../gedit/gedit-window.c:1901
 msgid "Bracket match is out of range"
 msgstr "Το ταίριασμα των αγκύλων είναι εκτός εύρους"
 
-#: ../gedit/gedit-window.c:1947
+#: ../gedit/gedit-window.c:1906
 msgid "Bracket match not found"
 msgstr "Δεν βρέθηκε ταίριασμα αγκυλών"
 
-#: ../gedit/gedit-window.c:1952
+#: ../gedit/gedit-window.c:1911
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Ταίριασμα αγκυλών βρέθηκε στην γραμμή:%d"
 
-#: ../gedit/gedit-window.c:2136
+#: ../gedit/gedit-window.c:2095
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Πλάτος στηλοθέτη: %u"
 
-#: ../gedit/gedit-window.c:2491
+#: ../gedit/gedit-window.c:2450
 msgid "There are unsaved documents"
 msgstr "Υπάρχουν μη αποθηκευμένα έγγραφα"
 
@@ -2882,7 +2884,11 @@ msgstr "Πλαίσιο περιήγησης αρχείων"
 msgid "Easy file access from the side panel"
 msgstr "Εύκολη πρόσβαση σε αρχείο από την πλευρική στήλη"
 
-#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:241
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:206
+msgid "Home"
+msgstr "Αρχή"
+
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:232
 msgid "File System"
 msgstr "Σύστημα αρχείων"
 
@@ -2939,43 +2945,43 @@ msgstr "Προβολή κρυ_φών"
 msgid "Show _Binary"
 msgstr "Προβολή _Binary"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:539
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:538
 msgid "File Browser"
 msgstr "Περιηγητής αρχείων"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:685
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:681
 msgid "An error occurred while creating a new directory"
 msgstr "Σφάλμα κατά την δημιουργία ενός νέου καταλόγου"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:684
 msgid "An error occurred while creating a new file"
 msgstr "Σφάλμα κατά την δημιουργία ενός νέου αρχείου"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:687
 msgid "An error occurred while renaming a file or directory"
 msgstr "Σφάλμα κατά τη μετονομασία ενός νέου αρχείου ή καταλόγου"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:690
 msgid "An error occurred while deleting a file or directory"
 msgstr "Σφάλμα κατά την διαγραφή ενός νέου αρχείου ή καταλόγου"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:693
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Σφάλμα κατά το άνοιγμα ενός καταλόγου στο περιηγητή αρχείων"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:700
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:696
 msgid "An error occurred while setting a root directory"
 msgstr "Σφάλμα κατά τον καθορισμό ενός ριζικού καταλόγου"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:703
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:699
 msgid "An error occurred while loading a directory"
 msgstr "Σφάλμα κατά την φόρτωση ενός καταλόγου"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:706
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:702
 msgid "An error occurred"
 msgstr "Δημιουργήθηκε ένα σφάλμα"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:920
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2983,33 +2989,33 @@ msgstr ""
 "Αδυναμία μετακίνησης αρχείου στα απορρίμματα,\n"
 "θέλετε να γίνει άμεση διαγραφή του;"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:925
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Το αρχείο \"%s\" δεν μπορεί να μετακινηθεί στα απορρίμματα."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:926
 msgid "The selected files cannot be moved to the trash."
 msgstr "Τα επιλεγμένα αρχεία δεν μπορούν να μετακινηθούν στα απορρίμματα."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε μόνιμα το \"%s\";"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:967
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:963
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε μόνιμα τα επιλεγμένα αρχεία;"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:970
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:966
 msgid "If you delete an item, it is permanently lost."
 msgstr "Αν διαγράψετε ένα αντικείμενο αυτό θα χαθεί οριστικά."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1783
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1776
 msgid "(Empty)"
 msgstr "(Κενό)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3505
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3498
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3018,11 +3024,11 @@ msgstr ""
 "προσαρμόσετε τις ρυθμίσεις του φίλτρου σας για να κάνετε το αρχείο ορατό"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3762
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3755
 msgid "Untitled File"
 msgstr "Ανώνυμο αρχείο"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3790
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3783
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3031,11 +3037,11 @@ msgstr ""
 "προσαρμόσετε τις ρυθμίσεις του φίλτρου σας για να κάνετε το αρχείο ορατό"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3821
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3814
 msgid "Untitled Folder"
 msgstr "Ανώνυμος φάκελος"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3846
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3839
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -3043,28 +3049,27 @@ msgstr ""
 "Ο νέος φάκελος είναι αυτή τη στιγμή φιλτραρισμένος. Θα χρειαστεί να "
 "προσαρμόσετε τις ρυθμίσεις του φίλτρου σας για να κάνετε το φάκελο ορατό"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:788
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:785
 msgid "Bookmarks"
 msgstr "Σελιδοδείκτες"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1982
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1979
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Κανένα αντικείμενο προσάρτησης για τον προσαρτημένο τόμο: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2059
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2056
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Αδυναμία ανοίγματος μέσου: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2106
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2103
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Αδυναμία προσάρτησης τόμου: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2742
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2739
 #, c-format
-#| msgid "An error occurred while loading a directory"
 msgid "Error when loading '%s': No such directory"
 msgstr "Σφάλμα κατά την φόρτωση του '%s': Δεν υπάρχει τέτοιος κατάλογος"
 
@@ -3160,7 +3165,6 @@ msgstr ""
 "λειτουργεί πάνω από το filter_mode."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
-#| msgid "File Browser Filter Pattern"
 msgid "File Browser Binary Patterns"
 msgstr "Μοτίβα δυαδικού περιηγητή αρχείων"
 
@@ -3212,7 +3216,7 @@ msgid "_Error color:"
 msgstr "Χρώμα σ_φαλμάτων:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:52
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:48
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Κονσόλα Python"
@@ -3244,7 +3248,7 @@ msgid "Type to search..."
 msgstr "Πληκτρολογήστε για αναζήτηση..."
 
 #. ex:ts=8:et:
-#: ../plugins/snippets/snippets/document.py:57
+#: ../plugins/snippets/snippets/document.py:56
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Αποσπάσματα"
@@ -3637,11 +3641,11 @@ msgstr "_Επισήμανση ανορθόγραφων λέξεων"
 msgid "Automatically spell-check the current document"
 msgstr "Αυτόματος έλεγχος ορθογραφίας στο τρέχον έγγραφο"
 
-#: ../plugins/spell/gedit-spell-plugin.c:823
+#: ../plugins/spell/gedit-spell-plugin.c:821
 msgid "The document is empty."
 msgstr "Το έγγραφο είναι κενό."
 
-#: ../plugins/spell/gedit-spell-plugin.c:848
+#: ../plugins/spell/gedit-spell-plugin.c:846
 msgid "No misspelled words"
 msgstr "Δεν υπάρχουν ανορθόγραφες λέξεις"
 
@@ -3823,6 +3827,17 @@ msgstr ""
 "Καταγράφει την πρόσβαση και την έξοδο σε έγγραφα που χρησιμοποιούνται με το "
 "gedit"
 
+#~ msgid "Undo Actions Limit (DEPRECATED)"
+#~ msgstr "Όριο ενεργειών αναίρεσης (ΞΕΠΕΡΑΣΜΕΝΟ)"
+
+#~ msgid ""
+#~ "Maximum number of actions that gedit will be able to undo or redo. Use "
+#~ "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
+#~ msgstr ""
+#~ "Μέγιστος αριθμός ενεργειών για αναίρεση ή ακύρωση αναίρεσης. "
+#~ "Χρησιμοποιήστε το «-1» για απεριόριστο αριθμό ενεργειών. Ξεπερασμένο στο "
+#~ "2.12.0"
+
 #~ msgid ""
 #~ "The location of the file cannot be accessed because it is not mounted."
 #~ msgstr ""
@@ -3966,18 +3981,6 @@ msgstr ""
 
 #~ msgid "Bottom Panel is Visible"
 #~ msgstr "Η κάτω εργαλειοθήκη είναι ορατή"
-
-#~ msgid "Monospace 12"
-#~ msgstr "Monospace 12"
-
-#~ msgid "Monospace 9"
-#~ msgstr "Monospace 9"
-
-#~ msgid "Sans 11"
-#~ msgstr "Sans 11"
-
-#~ msgid "Sans 8"
-#~ msgstr "Sans 8"
 
 #~ msgid ""
 #~ "Style for the toolbar buttons. Possible values are \"GEDIT_TOOLBAR_SYSTEM"
