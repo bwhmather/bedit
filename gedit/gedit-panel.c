@@ -51,10 +51,6 @@ struct _GeditPanelPrivate
 
 	GtkWidget *main_box;
 
-	/* Title bar (vertical panel only) */
-	GtkWidget *title_image;
-	GtkWidget *title_label;
-
 	/* Notebook */
 	GtkWidget *notebook;
 };
@@ -320,98 +316,6 @@ gedit_panel_class_init (GeditPanelClass *klass)
 				      0);
 }
 
-/* This is ugly, since it supports only known
- * storage types of GtkImage, otherwise fall back
- * to the empty icon.
- * See http://bugzilla.gnome.org/show_bug.cgi?id=317520.
- */
-static void
-set_gtk_image_from_gtk_image (GtkImage *image,
-			      GtkImage *source)
-{
-	switch (gtk_image_get_storage_type (source))
-	{
-		case GTK_IMAGE_EMPTY:
-			gtk_image_clear (image);
-			break;
-		case GTK_IMAGE_PIXBUF:
-			{
-				GdkPixbuf *pb;
-
-				pb = gtk_image_get_pixbuf (source);
-				gtk_image_set_from_pixbuf (image, pb);
-			}
-			break;
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-		case GTK_IMAGE_STOCK:
-			{
-				gchar *s_id;
-				GtkIconSize s;
-
-				gtk_image_get_stock (source, &s_id, &s);
-				gtk_image_set_from_stock (image, s_id, s);
-			}
-			break;
-		case GTK_IMAGE_ICON_SET:
-			{
-				GtkIconSet *is;
-				GtkIconSize s;
-
-				gtk_image_get_icon_set (source, &is, &s);
-				gtk_image_set_from_icon_set (image, is, s);
-			}
-			break;
-		G_GNUC_END_IGNORE_DEPRECATIONS;
-		case GTK_IMAGE_ANIMATION:
-			{
-				GdkPixbufAnimation *a;
-
-				a = gtk_image_get_animation (source);
-				gtk_image_set_from_animation (image, a);
-			}
-			break;
-		case GTK_IMAGE_ICON_NAME:
-			{
-				const gchar *n;
-				GtkIconSize s;
-
-				gtk_image_get_icon_name (source, &n, &s);
-				gtk_image_set_from_icon_name (image, n, s);
-			}
-			break;
-		default:
-			gtk_image_set_from_icon_name (image,
-						      "text-x-generic",
-						      GTK_ICON_SIZE_MENU);
-	}
-}
-
-static void
-sync_title (GeditPanel     *panel,
-	    GeditPanelItem *item)
-{
-	if (panel->priv->orientation != GTK_ORIENTATION_VERTICAL)
-		return;
-
-	if (item != NULL)
-	{
-		gtk_label_set_text (GTK_LABEL (panel->priv->title_label),
-				    item->display_name);
-
-		set_gtk_image_from_gtk_image (GTK_IMAGE (panel->priv->title_image),
-					      GTK_IMAGE (item->icon));
-	}
-	else
-	{
-		gtk_label_set_text (GTK_LABEL (panel->priv->title_label),
-				    _("Empty"));
-
-		gtk_image_set_from_icon_name (GTK_IMAGE (panel->priv->title_image),
-					      "text-x-generic",
-					      GTK_ICON_SIZE_MENU);
-	}
-}
-
 static void
 notebook_page_changed (GtkNotebook *notebook,
                        GtkWidget   *page,
@@ -427,8 +331,6 @@ notebook_page_changed (GtkNotebook *notebook,
 	data = (GeditPanelItem *)g_object_get_data (G_OBJECT (item),
 						    PANEL_ITEM_KEY);
 	g_return_if_fail (data != NULL);
-
-	sync_title (panel, data);
 }
 
 static void
@@ -547,66 +449,6 @@ build_horizontal_panel (GeditPanel *panel)
 static void
 build_vertical_panel (GeditPanel *panel)
 {
-	GtkStyleContext *context;
-	GtkWidget *title_frame;
-	GtkWidget *title_hbox;
-	GtkWidget *icon_name_hbox;
-	GtkWidget *dummy_label;
-	GtkWidget *close_button;
-
-	/* Create title */
-	title_frame = gtk_frame_new (NULL);
-	context = gtk_widget_get_style_context (GTK_WIDGET (title_frame));
-	gtk_style_context_add_class (context, "title");
-	gtk_box_pack_start (GTK_BOX (panel->priv->main_box), title_frame,
-	                             FALSE, FALSE, 0);
-
-	title_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-	gtk_container_add (GTK_CONTAINER (title_frame), title_hbox);
-
-	icon_name_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-	gtk_box_pack_start (GTK_BOX (title_hbox),
-			    icon_name_hbox,
-			    TRUE,
-			    TRUE,
-			    0);
-
-	panel->priv->title_image = gtk_image_new_from_icon_name ("text-x-generic",
-	                                                         GTK_ICON_SIZE_MENU);
-	gtk_box_pack_start (GTK_BOX (icon_name_hbox),
-			    panel->priv->title_image,
-			    FALSE,
-			    TRUE,
-			    0);
-
-	dummy_label = gtk_label_new (" ");
-
-	gtk_box_pack_start (GTK_BOX (icon_name_hbox),
-			    dummy_label,
-			    FALSE,
-			    FALSE,
-			    0);
-
-	panel->priv->title_label = gtk_label_new (_("Empty"));
-	gtk_widget_set_halign (panel->priv->title_label, GTK_ALIGN_START);
-	gtk_label_set_ellipsize(GTK_LABEL (panel->priv->title_label), PANGO_ELLIPSIZE_END);
-
-	gtk_box_pack_start (GTK_BOX (icon_name_hbox),
-			    panel->priv->title_label,
-			    TRUE,
-			    TRUE,
-			    0);
-
-	close_button = create_close_button (panel);
-
-	gtk_box_pack_start (GTK_BOX (title_hbox),
-			    close_button,
-			    FALSE,
-			    FALSE,
-			    0);
-
-	gtk_widget_show_all (title_frame);
-
 	gtk_box_pack_start (GTK_BOX (panel->priv->main_box),
 			    panel->priv->notebook,
 			    TRUE,
@@ -885,10 +727,6 @@ gedit_panel_remove_item (GeditPanel *panel,
 
 	gtk_notebook_remove_page (GTK_NOTEBOOK (panel->priv->notebook),
 				  page_num);
-
-	/* if we removed all the pages, reset the title */
-	if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (panel->priv->notebook)) == 0)
-		sync_title (panel, NULL);
 
 	g_signal_emit (G_OBJECT (panel), signals[ITEM_REMOVED], 0, item);
 

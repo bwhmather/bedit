@@ -87,6 +87,8 @@ struct _GeditWindowPrivate
 	GtkActionGroup *documents_list_action_group;
 	guint           documents_list_menu_ui_id;
 
+	GtkWidget      *titlebar_paned;
+	GtkWidget      *side_headerbar;
 	GtkWidget      *headerbar;
 	GtkWidget      *open_button;
 	GtkWidget      *open_menu;

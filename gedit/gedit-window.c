@@ -428,6 +428,8 @@ gedit_window_class_init (GeditWindowClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-window.ui");
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, titlebar_paned);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, open_menu);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, hpaned);
@@ -3218,6 +3220,17 @@ gedit_window_init (GeditWindow *window)
 	/* Add menu bar and toolbar bar */
 	// FIXME: kill this, right now it is just not added to the window
 	create_menu_bar_and_toolbar (window);
+
+	g_object_bind_property (window->priv->side_panel,
+	                        "visible",
+	                        window->priv->side_headerbar,
+	                        "visible",
+	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+	g_object_bind_property (window->priv->titlebar_paned,
+	                        "position",
+	                        window->priv->hpaned,
+	                        "position",
+	                        G_BINDING_DEFAULT | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
 	setup_headerbar_open_button (window);
 

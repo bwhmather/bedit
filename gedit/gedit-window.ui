@@ -60,103 +60,114 @@
     <property name="has_focus">False</property>
     <property name="is_focus">False</property>
     <child type="titlebar">
-      <object class="GtkHeaderBar" id="headerbar">
+      <object class="GtkPaned" id="titlebar_paned">
         <property name="visible">True</property>
-        <property name="show_close_button">True</property>
         <child>
-          <object class="GtkBox" id="open_box">
+          <object class="GtkHeaderBar" id="side_headerbar">
             <property name="visible">True</property>
-            <property name="orientation">horizontal</property>
-            <property name="valign">center</property>
-            <style>
-              <class name="linked"/>
-            </style>
+            <property name="title">Documents</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkHeaderBar" id="headerbar">
+            <property name="visible">True</property>
+            <property name="show_close_button">True</property>
             <child>
-              <object class="GtkButton" id="open_button">
+              <object class="GtkBox" id="open_box">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">Open</property>
-                <property name="tooltip_text" translatable="yes">Open a file</property>
-                <property name="action_name">win.open</property>
+                <property name="orientation">horizontal</property>
+                <property name="valign">center</property>
                 <style>
-                  <class name="text-button"/>
+                  <class name="linked"/>
                 </style>
+                <child>
+                  <object class="GtkButton" id="open_button">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">Open</property>
+                    <property name="tooltip_text" translatable="yes">Open a file</property>
+                    <property name="action_name">win.open</property>
+                    <style>
+                      <class name="text-button"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GeditOpenMenuButton" id="open_menu">
+                    <property name="visible">True</property>
+                    <property name="tooltip_text" translatable="yes">Open a recently used file</property>
+                    <style>
+                      <class name="image-button"/>
+                    </style>
+                  </object>
+                </child>
               </object>
+              <packing>
+                <property name="pack_type">start</property>
+              </packing>
             </child>
             <child>
-              <object class="GeditOpenMenuButton" id="open_menu">
+              <object class="GtkButton" id="new_tab_button">
                 <property name="visible">True</property>
-                <property name="tooltip_text" translatable="yes">Open a recently used file</property>
+                <property name="valign">center</property>
+                <property name="tooltip_text" translatable="yes">Create a new document</property>
+                <property name="action_name">win.new_tab</property>
                 <style>
                   <class name="image-button"/>
                 </style>
+                <child>
+                  <object class="GtkImage" id="new_tab_image">
+                    <property name="visible">True</property>
+                    <property name="icon_size">1</property>
+                    <property name="icon_name">tab-new-symbolic</property>
+                  </object>
+                </child>
               </object>
+              <packing>
+                <property name="pack_type">start</property>
+              </packing>
             </child>
-          </object>
-          <packing>
-            <property name="pack_type">start</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="new_tab_button">
-            <property name="visible">True</property>
-            <property name="valign">center</property>
-            <property name="tooltip_text" translatable="yes">Create a new document</property>
-            <property name="action_name">win.new_tab</property>
-            <style>
-              <class name="image-button"/>
-            </style>
             <child>
-              <object class="GtkImage" id="new_tab_image">
+              <object class="GtkButton" id="save_button">
                 <property name="visible">True</property>
-                <property name="icon_size">1</property>
-                <property name="icon_name">tab-new-symbolic</property>
+                <property name="valign">center</property>
+                <property name="tooltip_text" translatable="yes">Save the current file</property>
+                <property name="action_name">win.save</property>
+                <style>
+                  <class name="image-button"/>
+                </style>
+                <child>
+                  <object class="GtkImage" id="save_image">
+                    <property name="visible">True</property>
+                    <property name="icon_size">1</property>
+                    <property name="icon_name">document-save-symbolic</property>
+                  </object>
+                </child>
               </object>
+              <packing>
+                <property name="pack_type">end</property>
+              </packing>
             </child>
-          </object>
-          <packing>
-            <property name="pack_type">start</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="save_button">
-            <property name="visible">True</property>
-            <property name="valign">center</property>
-            <property name="tooltip_text" translatable="yes">Save the current file</property>
-            <property name="action_name">win.save</property>
-            <style>
-              <class name="image-button"/>
-            </style>
             <child>
-              <object class="GtkImage" id="save_image">
+              <object class="GtkMenuButton" id="gear_button">
                 <property name="visible">True</property>
-                <property name="icon_size">1</property>
-                <property name="icon_name">document-save-symbolic</property>
+                <property name="valign">center</property>
+                <property name="menu_model">gear-menu</property>
+                <style>
+                  <class name="image-button"/>
+                </style>
+                <child>
+                  <object class="GtkImage" id="gear_image">
+                    <property name="visible">True</property>
+                    <property name="icon_size">1</property>
+                    <property name="icon_name">emblem-system-symbolic</property>
+                  </object>
+                </child>
               </object>
+              <packing>
+                <property name="pack_type">end</property>
+              </packing>
             </child>
           </object>
-          <packing>
-            <property name="pack_type">end</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkMenuButton" id="gear_button">
-            <property name="visible">True</property>
-            <property name="valign">center</property>
-            <property name="menu_model">gear-menu</property>
-            <style>
-              <class name="image-button"/>
-            </style>
-            <child>
-              <object class="GtkImage" id="gear_image">
-                <property name="visible">True</property>
-                <property name="icon_size">1</property>
-                <property name="icon_name">emblem-system-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="pack_type">end</property>
-          </packing>
         </child>
       </object>
     </child>
