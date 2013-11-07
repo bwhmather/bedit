@@ -66,12 +66,20 @@
           <object class="GtkHeaderBar" id="side_headerbar">
             <property name="visible">True</property>
             <property name="title">Documents</property>
+            <style>
+              <class name="gedit-titlebar-left"/>
+              <class name="titlebar"/>
+            </style>
           </object>
         </child>
         <child>
           <object class="GtkHeaderBar" id="headerbar">
             <property name="visible">True</property>
             <property name="show_close_button">True</property>
+            <style>
+              <class name="gedit-titlebar-right"/>
+              <class name="titlebar"/>
+            </style>
             <child>
               <object class="GtkBox" id="open_box">
                 <property name="visible">True</property>
