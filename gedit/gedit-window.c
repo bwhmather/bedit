@@ -3226,6 +3226,11 @@ gedit_window_init (GeditWindow *window)
 	                        window->priv->side_headerbar,
 	                        "visible",
 	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+	g_object_bind_property (window->priv->side_panel,
+	                        "active-item-label",
+	                        window->priv->side_headerbar,
+	                        "title",
+	                        G_BINDING_DEFAULT);
 	g_object_bind_property (window->priv->titlebar_paned,
 	                        "position",
 	                        window->priv->hpaned,

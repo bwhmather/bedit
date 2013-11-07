@@ -67,7 +67,8 @@ struct _GeditPanelItem
 /* Properties */
 enum {
 	PROP_0,
-	PROP_ORIENTATION
+	PROP_ORIENTATION,
+	PROP_ACTIVE_ITEM_LABEL
 };
 
 /* Signals */
@@ -104,6 +105,21 @@ gedit_panel_get_property (GObject    *object,
 		case PROP_ORIENTATION:
 			g_value_set_enum (value, panel->priv->orientation);
 			break;
+		case PROP_ACTIVE_ITEM_LABEL:
+		{
+			GtkWidget *item;
+			gint page_num;
+			GeditPanelItem *data;
+
+			page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (panel->priv->notebook));
+			item = gtk_notebook_get_nth_page (GTK_NOTEBOOK (panel->priv->notebook), page_num);
+			g_return_if_fail (item != NULL);
+
+			data = (GeditPanelItem *)g_object_get_data (G_OBJECT (item),
+			                                            PANEL_ITEM_KEY);
+			g_value_set_string (value, data ? data->display_name : "");
+			break;
+		}
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -264,6 +280,15 @@ gedit_panel_class_init (GeditPanelClass *klass)
 	                                                    G_PARAM_CONSTRUCT_ONLY |
 	                                                    G_PARAM_STATIC_STRINGS));
 
+	g_object_class_install_property (object_class,
+	                                 PROP_ACTIVE_ITEM_LABEL,
+	                                 g_param_spec_string ("active-item-label",
+	                                                      "Active item label",
+	                                                      "Active item label",
+	                                                      NULL,
+	                                                      G_PARAM_READABLE |
+	                                                      G_PARAM_STATIC_STRINGS));
+
 	signals[ITEM_ADDED] =
 		g_signal_new ("item_added",
 			      G_OBJECT_CLASS_TYPE (klass),
@@ -322,15 +347,7 @@ notebook_page_changed (GtkNotebook *notebook,
                        guint        page_num,
                        GeditPanel  *panel)
 {
-	GtkWidget *item;
-	GeditPanelItem *data;
-
-	item = gtk_notebook_get_nth_page (notebook, page_num);
-	g_return_if_fail (item != NULL);
-
-	data = (GeditPanelItem *)g_object_get_data (G_OBJECT (item),
-						    PANEL_ITEM_KEY);
-	g_return_if_fail (data != NULL);
+	g_object_notify (G_OBJECT (panel), "active-item-label");
 }
 
 static void
@@ -398,10 +415,10 @@ build_notebook_for_panel (GeditPanel *panel)
 
 	gtk_widget_show (GTK_WIDGET (panel->priv->notebook));
 
-	g_signal_connect (panel->priv->notebook,
-			  "switch-page",
-			  G_CALLBACK (notebook_page_changed),
-			  panel);
+	g_signal_connect_after (panel->priv->notebook,
+	                        "switch-page",
+	                        G_CALLBACK (notebook_page_changed),
+	                        panel);
 }
 
 static void
