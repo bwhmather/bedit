@@ -20,6 +20,7 @@
 
 
 #include "gedit-notebook-popup-menu.h"
+#include "gedit-multi-notebook.h"
 #include "gedit-commands.h"
 #include <glib/gi18n.h>
 
@@ -121,11 +122,10 @@ gedit_notebook_popup_menu_class_init (GeditNotebookPopupMenuClass *klass)
 }
 
 static void
-on_move_to_new_window_menuitem_activate (GtkMenuItem            *menuitem,
-                                         GeditNotebookPopupMenu *menu)
+on_file_close_menuitem_activate (GtkMenuItem            *menuitem,
+                                 GeditNotebookPopupMenu *menu)
 {
-	_gedit_window_move_tab_to_new_window (menu->priv->window,
-	                                      menu->priv->tab);
+	_gedit_cmd_file_close_tab (menu->priv->tab, menu->priv->window);
 }
 
 static void
@@ -137,31 +137,53 @@ on_move_to_new_tab_group_menuitem_activate (GtkMenuItem            *menuitem,
 }
 
 static void
-on_file_save_menuitem_activate (GtkMenuItem            *menuitem,
+on_move_to_new_window_menuitem_activate (GtkMenuItem            *menuitem,
+                                         GeditNotebookPopupMenu *menu)
+{
+	_gedit_window_move_tab_to_new_window (menu->priv->window,
+	                                      menu->priv->tab);
+}
+
+static void
+on_move_right_menuitem_activate (GtkMenuItem            *menuitem,
+                                 GeditNotebookPopupMenu *menu)
+{
+	GeditMultiNotebook *mnb;
+	GtkNotebook *notebook;
+	gint page_num;
+	gint n_pages;
+
+	mnb = GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (menu->priv->window));
+
+	notebook = GTK_NOTEBOOK (gedit_multi_notebook_get_notebook_for_tab (mnb, menu->priv->tab));
+	n_pages = gtk_notebook_get_n_pages (notebook);
+	page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (menu->priv->tab));
+
+	if (page_num <  (n_pages - 1))
+	{
+		gtk_notebook_reorder_child (notebook, GTK_WIDGET (menu->priv->tab),
+		                            page_num + 1);
+	}
+}
+
+static void
+on_move_left_menuitem_activate (GtkMenuItem            *menuitem,
                                 GeditNotebookPopupMenu *menu)
 {
-	_gedit_cmd_file_save_tab (menu->priv->tab, menu->priv->window);
-}
+	GeditMultiNotebook *mnb;
+	GtkNotebook *notebook;
+	gint page_num;
 
-static void
-on_file_save_as_menuitem_activate (GtkMenuItem            *menuitem,
-                                   GeditNotebookPopupMenu *menu)
-{
-	_gedit_cmd_file_save_as_tab (menu->priv->tab, menu->priv->window);
-}
+	mnb = GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (menu->priv->window));
 
-static void
-on_file_print_menuitem_activate (GtkMenuItem            *menuitem,
-                                 GeditNotebookPopupMenu *menu)
-{
-	_gedit_tab_print (menu->priv->tab);
-}
+	notebook = GTK_NOTEBOOK (gedit_multi_notebook_get_notebook_for_tab (mnb, menu->priv->tab));
+	page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (menu->priv->tab));
 
-static void
-on_file_close_menuitem_activate (GtkMenuItem            *menuitem,
-                                 GeditNotebookPopupMenu *menu)
-{
-	_gedit_cmd_file_close_tab (menu->priv->tab, menu->priv->window);
+	if (page_num > 0)
+	{
+		gtk_notebook_reorder_child (notebook, GTK_WIDGET (menu->priv->tab),
+		                            page_num - 1);
+	}
 }
 
 static void
@@ -172,10 +194,14 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 	menu->priv = gedit_notebook_popup_menu_get_instance_private (menu);
 
 	/* Keep in sync with the respective GtkActions */
-	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move to New Window"));
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Close"));
 	g_signal_connect (menu_item, "activate",
-	                  G_CALLBACK (on_move_to_new_window_menuitem_activate),
+	                  G_CALLBACK (on_file_close_menuitem_activate),
 	                  menu);
+	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
+	gtk_widget_show (menu_item);
+
+	menu_item = gtk_separator_menu_item_new ();
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
@@ -186,20 +212,9 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	menu_item = gtk_separator_menu_item_new ();
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	gtk_widget_show (menu_item);
-
-	menu_item = gtk_menu_item_new_with_mnemonic (_("_Save"));
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move to New Window"));
 	g_signal_connect (menu_item, "activate",
-	                  G_CALLBACK (on_file_save_menuitem_activate),
-	                  menu);
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	gtk_widget_show (menu_item);
-
-	menu_item = gtk_menu_item_new_with_mnemonic (_("Save _As..."));
-	g_signal_connect (menu_item, "activate",
-	                  G_CALLBACK (on_file_save_as_menuitem_activate),
+	                  G_CALLBACK (on_move_to_new_window_menuitem_activate),
 	                  menu);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
@@ -208,20 +223,16 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	menu_item = gtk_menu_item_new_with_mnemonic (_("_Print..."));
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move Right"));
 	g_signal_connect (menu_item, "activate",
-	                  G_CALLBACK (on_file_print_menuitem_activate),
+	                  G_CALLBACK (on_move_right_menuitem_activate),
 	                  menu);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
 
-	menu_item = gtk_separator_menu_item_new ();
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	gtk_widget_show (menu_item);
-
-	menu_item = gtk_menu_item_new_with_mnemonic (_("_Close"));
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move Left"));
 	g_signal_connect (menu_item, "activate",
-	                  G_CALLBACK (on_file_close_menuitem_activate),
+	                  G_CALLBACK (on_move_left_menuitem_activate),
 	                  menu);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
