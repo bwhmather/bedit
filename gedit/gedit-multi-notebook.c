@@ -598,6 +598,33 @@ gedit_multi_notebook_get_nth_notebook (GeditMultiNotebook *mnb,
 	return g_list_nth_data (mnb->priv->notebooks, notebook_num);
 }
 
+GeditNotebook *
+gedit_multi_notebook_get_notebook_for_tab (GeditMultiNotebook *mnb,
+                                           GeditTab           *tab)
+{
+	GList *l;
+	gint page_num;
+
+	g_return_val_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb), NULL);
+	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
+
+	l = mnb->priv->notebooks;
+
+	do
+	{
+		page_num = gtk_notebook_page_num (GTK_NOTEBOOK (l->data),
+		                                  GTK_WIDGET (tab));
+		if (page_num != -1)
+			break;
+
+		l = g_list_next (l);
+	} while (l != NULL && page_num == -1);
+
+	g_return_val_if_fail (page_num != -1, NULL);
+
+	return GEDIT_NOTEBOOK (l->data);
+}
+
 gint
 gedit_multi_notebook_get_notebook_num (GeditMultiNotebook *mnb,
 				       GeditNotebook      *notebook)
@@ -669,7 +696,7 @@ gedit_multi_notebook_set_active_tab (GeditMultiNotebook *mnb,
 	do
 	{
 		page_num = gtk_notebook_page_num (GTK_NOTEBOOK (l->data),
-						  GTK_WIDGET (tab));
+		                                  GTK_WIDGET (tab));
 		if (page_num != -1)
 			break;
 
@@ -678,8 +705,7 @@ gedit_multi_notebook_set_active_tab (GeditMultiNotebook *mnb,
 
 	g_return_if_fail (page_num != -1);
 
-	gtk_notebook_set_current_page (GTK_NOTEBOOK (l->data),
-				       page_num);
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (l->data), page_num);
 
 	if (GTK_WIDGET (l->data) != mnb->priv->active_notebook)
 	{
@@ -839,8 +865,7 @@ gedit_multi_notebook_add_new_notebook_with_tab (GeditMultiNotebook *mnb,
                                                 GeditTab           *tab)
 {
 	GtkWidget *notebook;
-	gint page_num;
-	GList *l;
+	GeditNotebook *old_notebook;
 
 	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));
 	g_return_if_fail (GEDIT_IS_TAB (tab));
@@ -848,34 +873,22 @@ gedit_multi_notebook_add_new_notebook_with_tab (GeditMultiNotebook *mnb,
 	notebook = gedit_notebook_new ();
 	add_notebook (mnb, notebook, FALSE);
 
-	l = mnb->priv->notebooks;
-
-	do
-	{
-		page_num = gtk_notebook_page_num (GTK_NOTEBOOK (l->data),
-						  GTK_WIDGET (tab));
-		if (page_num != -1)
-			break;
-
-		l = g_list_next (l);
-	} while (l != NULL && page_num == -1);
-
-	g_return_if_fail (page_num != -1);
+	old_notebook = gedit_multi_notebook_get_notebook_for_tab (mnb, tab);
 
 	/* When gtk_notebook_insert_page is called the focus is set in
 	   the notebook, we don't want this to happen until the page is added.
 	   Also we don't want to call switch_page when we add the tab
 	   but when we switch the notebook. */
-	g_signal_handlers_block_by_func (l->data, notebook_set_focus, mnb);
-	g_signal_handlers_block_by_func (l->data, notebook_switch_page, mnb);
+	g_signal_handlers_block_by_func (old_notebook, notebook_set_focus, mnb);
+	g_signal_handlers_block_by_func (old_notebook, notebook_switch_page, mnb);
 
-	gedit_notebook_move_tab (GEDIT_NOTEBOOK (l->data),
+	gedit_notebook_move_tab (old_notebook,
 	                         GEDIT_NOTEBOOK (notebook),
 	                         tab,
 	                         -1);
 
-	g_signal_handlers_unblock_by_func (l->data, notebook_switch_page, mnb);
-	g_signal_handlers_unblock_by_func (l->data, notebook_set_focus, mnb);
+	g_signal_handlers_unblock_by_func (old_notebook, notebook_switch_page, mnb);
+	g_signal_handlers_unblock_by_func (old_notebook, notebook_set_focus, mnb);
 
 	notebook_set_focus (GTK_CONTAINER (notebook), NULL, mnb);
 }

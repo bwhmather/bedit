@@ -95,6 +95,9 @@ gint			 gedit_multi_notebook_get_n_notebooks		(GeditMultiNotebook *mnb);
 GeditNotebook		*gedit_multi_notebook_get_nth_notebook		(GeditMultiNotebook *mnb,
 									 gint                notebook_num);
 
+GeditNotebook           *gedit_multi_notebook_get_notebook_for_tab	(GeditMultiNotebook *mnb,
+                                                                         GeditTab           *tab);
+
 gint			 gedit_multi_notebook_get_notebook_num		(GeditMultiNotebook *mnb,
 									 GeditNotebook      *notebook);
 
