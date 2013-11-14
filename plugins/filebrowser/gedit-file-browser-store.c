@@ -1052,39 +1052,45 @@ model_node_update_visibility (GeditFileBrowserStore *model,
 	    NODE_IS_HIDDEN (node))
 	{
 		node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
+		return;
 	}
-	else if (FILTER_BINARY (model->priv->filter_mode) &&
-		 (!NODE_IS_TEXT (node) && !NODE_IS_DIR (node)))
-	{
-		node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
-	}
-	else if (FILTER_BINARY (model->priv->filter_mode) &&
-	         model->priv->binary_patterns != NULL)
-	{
-		gint i;
-		gssize name_length;
-		gchar *name_reversed;
 
-		name_length = strlen (node->name);
-		name_reversed = g_utf8_strreverse (node->name, name_length);
-
-		for (i = 0; i < model->priv->binary_pattern_specs->len; ++i)
+	if (FILTER_BINARY (model->priv->filter_mode) && !NODE_IS_DIR (node))
+	{
+		if (!NODE_IS_TEXT (node))
 		{
-			GPatternSpec *spec;
-
-			spec = g_ptr_array_index (model->priv->binary_pattern_specs, i);
-
-			if (g_pattern_match (spec, name_length,
-			                     node->name, name_reversed))
-			{
-				node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
-				break;
-			}
+			node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
+			return;
 		}
+		else if (model->priv->binary_patterns != NULL)
+		{
+			gint i;
+			gssize name_length;
+			gchar *name_reversed;
 
-		g_free (name_reversed);
+			name_length = strlen (node->name);
+			name_reversed = g_utf8_strreverse (node->name, name_length);
+
+			for (i = 0; i < model->priv->binary_pattern_specs->len; ++i)
+			{
+				GPatternSpec *spec;
+
+				spec = g_ptr_array_index (model->priv->binary_pattern_specs, i);
+
+				if (g_pattern_match (spec, name_length,
+				                     node->name, name_reversed))
+				{
+					node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_FILTERED;
+					g_free (name_reversed);
+					return;
+				}
+			}
+
+			g_free (name_reversed);
+		}
 	}
-	else if (model->priv->filter_func)
+
+	if (model->priv->filter_func)
 	{
 		iter.user_data = node;
 
