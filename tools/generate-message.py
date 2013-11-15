@@ -182,7 +182,7 @@ class ParamSpecDouble(ParamSpecNumeric):
 
 class ParamSpecEnum(ParamSpecTyped):
     def __init__(self, name, nick, desc, flags, **kwargs):
-        ParamSpec.__init__(self, name, nick, desc, flags, **kwargs)
+        ParamSpecTyped.__init__(self, name, nick, desc, flags, **kwargs)
 
         if 'default' in kwargs:
             default = kwargs['default']
