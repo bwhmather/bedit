@@ -31,21 +31,22 @@
 # Ioannis Zampoukas <ioza1964@yahoo.gr>, 2011.
 # Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2012, 2013.
 # Efstathios Iosifidis <iosifidis@opensuse.org>, 2013.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
-"keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-11-04 18:37+0000\n"
-"PO-Revision-Date: 2013-11-05 10:49+0300\n"
-"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
-"Language-Team: team@gnome.gr\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-11-13 09:28+0000\n"
+"PO-Revision-Date: 2013-11-15 00:24+0200\n"
+"Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
+"Language-Team: Ελληνικά <opensuse-translation-el@opensuse.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Gtranslator 2.91.6\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/gedit.appdata.xml.in.h:1
@@ -1582,29 +1583,25 @@ msgid "_Quit"
 msgstr "Έ_ξοδος"
 
 #. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:175 ../gedit/gedit-ui.h:142
-msgid "_Move to New Window"
-msgstr "_Μετακίνηση σε νέο παράθυρο"
+#: ../gedit/gedit-notebook-popup-menu.c:197
+msgid "_Close"
+msgstr "_Κλείσιμο"
 
-#: ../gedit/gedit-notebook-popup-menu.c:182
+#: ../gedit/gedit-notebook-popup-menu.c:208
 msgid "_Move to New Tab Group"
 msgstr "_Μετακίνηση σε Νέα Ομάδα Καρτελών"
 
-#: ../gedit/gedit-notebook-popup-menu.c:193
-msgid "_Save"
-msgstr "Απο_θήκευση"
+#: ../gedit/gedit-notebook-popup-menu.c:215 ../gedit/gedit-ui.h:142
+msgid "_Move to New Window"
+msgstr "_Μετακίνηση σε νέο παράθυρο"
 
-#: ../gedit/gedit-notebook-popup-menu.c:200 ../gedit/gedit-ui.h:78
-msgid "Save _As..."
-msgstr "Αποθήκευση _ως..."
+#: ../gedit/gedit-notebook-popup-menu.c:226
+msgid "_Move Right"
+msgstr "_Μετακίνηση Δεξιά"
 
-#: ../gedit/gedit-notebook-popup-menu.c:211 ../gedit/gedit-ui.h:84
-msgid "_Print..."
-msgstr "_Εκτύπωση..."
-
-#: ../gedit/gedit-notebook-popup-menu.c:222
-msgid "_Close"
-msgstr "_Κλείσιμο"
+#: ../gedit/gedit-notebook-popup-menu.c:233
+msgid "_Move Left"
+msgstr "_Μετακίνηση Αριστερά"
 
 #: ../gedit/gedit-open-tool-button.c:122 ../gedit/gedit-ui.h:55
 msgid "Open a file"
@@ -2132,6 +2129,10 @@ msgstr "Έξοδος από την πλήρη οθόνη"
 msgid "Save the current file"
 msgstr "Αποθήκευση του τρέχοντος αρχείου"
 
+#: ../gedit/gedit-ui.h:78
+msgid "Save _As..."
+msgstr "Αποθήκευση _ως..."
+
 #: ../gedit/gedit-ui.h:79
 msgid "Save the current file with a different name"
 msgstr "Αποθήκευση του τρέχοντος αρχείου με διαφορετικό όνομα"
@@ -2147,6 +2148,10 @@ msgstr "Προε_πισκόπηση εκτύπωσης"
 #: ../gedit/gedit-ui.h:83
 msgid "Print preview"
 msgstr "Προεπισκόπηση εκτύπωσης"
+
+#: ../gedit/gedit-ui.h:84
+msgid "_Print..."
+msgstr "_Εκτύπωση..."
 
 #: ../gedit/gedit-ui.h:85
 msgid "Print the current page"
@@ -3826,6 +3831,9 @@ msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Καταγράφει την πρόσβαση και την έξοδο σε έγγραφα που χρησιμοποιούνται με το "
 "gedit"
+
+#~ msgid "_Save"
+#~ msgstr "Απο_θήκευση"
 
 #~ msgid "Undo Actions Limit (DEPRECATED)"
 #~ msgstr "Όριο ενεργειών αναίρεσης (ΞΕΠΕΡΑΣΜΕΝΟ)"
