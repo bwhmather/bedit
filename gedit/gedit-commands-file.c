@@ -1026,20 +1026,20 @@ _gedit_cmd_file_save_documents_list (GeditWindow *window,
 		    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
 		    (state == GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE))
 		{
-			/* FIXME: manage the case of local readonly files owned by the
-			   user is running gedit - Paolo (Dec. 8, 2005) */
-			if (gedit_document_is_untitled (doc) ||
-			    gedit_document_get_readonly (doc))
+			if (_gedit_document_needs_saving (doc))
 			{
-				if (_gedit_document_needs_saving (doc))
-			     	{
-				     	tabs_to_save_as = g_slist_prepend (tabs_to_save_as,
+				/* FIXME: manage the case of local readonly files owned by the
+				   user is running gedit - Paolo (Dec. 8, 2005) */
+				if (gedit_document_is_untitled (doc) ||
+				    gedit_document_get_readonly (doc))
+				{
+					tabs_to_save_as = g_slist_prepend (tabs_to_save_as,
 									   t);
-			     	}
-			}
-			else
-			{
-				_gedit_cmd_file_save_tab (t, window);
+				}
+				else
+				{
+					_gedit_cmd_file_save_tab (t, window);
+				}
 			}
 		}
 		else
