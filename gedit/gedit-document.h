@@ -347,6 +347,8 @@ void		 _gedit_document_apply_error_style
 gboolean	_gedit_document_check_externally_modified
 						(GeditDocument       *doc);
 
+gboolean	 _gedit_document_needs_saving	(GeditDocument       *doc);
+
 /* Search macros */
 #define GEDIT_SEARCH_IS_DONT_SET_FLAGS(sflags) ((sflags & GEDIT_SEARCH_DONT_SET_FLAGS) != 0)
 #define GEDIT_SEARCH_SET_DONT_SET_FLAGS(sflags,state) ((state == TRUE) ? \

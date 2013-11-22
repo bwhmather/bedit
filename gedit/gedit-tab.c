@@ -2760,14 +2760,7 @@ _gedit_tab_get_can_close (GeditTab *tab)
 
 	doc = gedit_tab_get_document (tab);
 
-	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
-	{
-		return FALSE;
-	}
-
-	if (gedit_document_is_local (doc) &&
-	    (gedit_document_get_deleted (doc) ||
-	    _gedit_document_check_externally_modified (doc)))
+	if (_gedit_document_needs_saving (doc))
 	{
 		return FALSE;
 	}

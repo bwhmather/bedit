@@ -2031,6 +2031,39 @@ gedit_document_get_deleted (GeditDocument *doc)
 }
 
 /*
+ * Deletion and external modification is only checked for local files.
+ */
+gboolean
+_gedit_document_needs_saving (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+
+	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	{
+		return TRUE;
+	}
+
+	if (doc->priv->externally_modified ||
+	    doc->priv->deleted)
+	{
+		return TRUE;
+	}
+
+	if (gedit_document_is_local (doc))
+	{
+		check_file_on_disk (doc);
+
+		if (doc->priv->externally_modified ||
+		    doc->priv->deleted)
+		{
+			return TRUE;
+		}
+	}
+
+	return FALSE;
+}
+
+/*
  * If @line is bigger than the lines of the document, the cursor is moved
  * to the last line and FALSE is returned.
  */
