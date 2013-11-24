@@ -67,13 +67,10 @@ change_case (GeditWindow             *window,
 	doc = gedit_window_get_active_document (window);
 	g_return_if_fail (doc != NULL);
 
-	if (!gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc),
-						   &start, &end))
+	if (gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc), &start, &end))
 	{
-		return;
+		gtk_source_buffer_change_case (GTK_SOURCE_BUFFER (doc), choice, &start, &end);
 	}
-
-	gtk_source_buffer_change_case (GTK_SOURCE_BUFFER (doc), choice, &start, &end);
 }
 
 static void
