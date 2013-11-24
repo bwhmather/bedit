@@ -32,13 +32,6 @@
 #include <gedit/gedit-window-activatable.h>
 #include <gedit/gedit-debug.h>
 
-typedef enum {
-	TO_UPPER_CASE,
-	TO_LOWER_CASE,
-	INVERT_CASE,
-	TO_TITLE_CASE,
-} ChangeCaseChoice;
-
 struct _GeditChangecasePluginPrivate
 {
 	GeditWindow    *window;
@@ -63,114 +56,8 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditChangecasePlugin,
 							       gedit_window_activatable_iface_init))
 
 static void
-do_upper_case (GtkTextBuffer *buffer,
-               GtkTextIter   *start,
-               GtkTextIter   *end)
-{
-	GString *s = g_string_new (NULL);
-
-	while (!gtk_text_iter_is_end (start) &&
-	       !gtk_text_iter_equal (start, end))
-	{
-		gunichar c, nc;
-
-		c = gtk_text_iter_get_char (start);
-		nc = g_unichar_toupper (c);
-		g_string_append_unichar (s, nc);
-
-		gtk_text_iter_forward_char (start);
-	}
-
-	gtk_text_buffer_delete_selection (buffer, TRUE, TRUE);
-	gtk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
-
-	g_string_free (s, TRUE);
-}
-
-static void
-do_lower_case (GtkTextBuffer *buffer,
-               GtkTextIter   *start,
-               GtkTextIter   *end)
-{
-	GString *s = g_string_new (NULL);
-
-	while (!gtk_text_iter_is_end (start) &&
-	       !gtk_text_iter_equal (start, end))
-	{
-		gunichar c, nc;
-
-		c = gtk_text_iter_get_char (start);
-		nc = g_unichar_tolower (c);
-		g_string_append_unichar (s, nc);
-
-		gtk_text_iter_forward_char (start);
-	}
-
-	gtk_text_buffer_delete_selection (buffer, TRUE, TRUE);
-	gtk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
-
-	g_string_free (s, TRUE);
-}
-
-static void
-do_invert_case (GtkTextBuffer *buffer,
-                GtkTextIter   *start,
-                GtkTextIter   *end)
-{
-	GString *s = g_string_new (NULL);
-
-	while (!gtk_text_iter_is_end (start) &&
-	       !gtk_text_iter_equal (start, end))
-	{
-		gunichar c, nc;
-
-		c = gtk_text_iter_get_char (start);
-		if (g_unichar_islower (c))
-			nc = g_unichar_toupper (c);
-		else
-			nc = g_unichar_tolower (c);
-		g_string_append_unichar (s, nc);
-
-		gtk_text_iter_forward_char (start);
-	}
-
-	gtk_text_buffer_delete_selection (buffer, TRUE, TRUE);
-	gtk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
-
-	g_string_free (s, TRUE);
-}
-
-static void
-do_title_case (GtkTextBuffer *buffer,
-               GtkTextIter   *start,
-               GtkTextIter   *end)
-{
-	GString *s = g_string_new (NULL);
-
-	while (!gtk_text_iter_is_end (start) &&
-	       !gtk_text_iter_equal (start, end))
-	{
-		gunichar c, nc;
-
-		c = gtk_text_iter_get_char (start);
-		if (gtk_text_iter_starts_word (start))
-			nc = g_unichar_totitle (c);
-		else
-			nc = g_unichar_tolower (c);
-		g_string_append_unichar (s, nc);
-
-		gtk_text_iter_forward_char (start);
-	}
-
-	gtk_text_buffer_delete_selection (buffer, TRUE, TRUE);
-	gtk_text_buffer_insert_at_cursor (buffer, s->str, s->len);
-
-	g_string_free (s, TRUE);
-}
-
-static void
-change_case (GeditWindow      *window,
-             ChangeCaseChoice  choice)
+change_case (GeditWindow             *window,
+             GtkSourceChangeCaseType  choice)
 {
 	GeditDocument *doc;
 	GtkTextIter start, end;
@@ -186,55 +73,35 @@ change_case (GeditWindow      *window,
 		return;
 	}
 
-	gtk_text_buffer_begin_user_action (GTK_TEXT_BUFFER (doc));
-
-	switch (choice)
-	{
-	case TO_UPPER_CASE:
-		do_upper_case (GTK_TEXT_BUFFER (doc), &start, &end);
-		break;
-	case TO_LOWER_CASE:
-		do_lower_case (GTK_TEXT_BUFFER (doc), &start, &end);
-		break;
-	case INVERT_CASE:
-		do_invert_case (GTK_TEXT_BUFFER (doc), &start, &end);
-		break;
-	case TO_TITLE_CASE:
-		do_title_case (GTK_TEXT_BUFFER (doc), &start, &end);
-		break;
-	default:
-		g_return_if_reached ();
-	}
-
-	gtk_text_buffer_end_user_action (GTK_TEXT_BUFFER (doc));
+	gtk_source_buffer_change_case (GTK_SOURCE_BUFFER (doc), choice, &start, &end);
 }
 
 static void
 upper_case_cb (GtkAction   *action,
                GeditWindow *window)
 {
-	change_case (window, TO_UPPER_CASE);
+	change_case (window, GTK_SOURCE_CHANGE_CASE_UPPER);
 }
 
 static void
 lower_case_cb (GtkAction   *action,
                GeditWindow *window)
 {
-	change_case (window, TO_LOWER_CASE);
+	change_case (window, GTK_SOURCE_CHANGE_CASE_LOWER);
 }
 
 static void
 invert_case_cb (GtkAction   *action,
                 GeditWindow *window)
 {
-	change_case (window, INVERT_CASE);
+	change_case (window, GTK_SOURCE_CHANGE_CASE_TOGGLE);
 }
 
 static void
 title_case_cb (GtkAction   *action,
                GeditWindow *window)
 {
-	change_case (window, TO_TITLE_CASE);
+	change_case (window, GTK_SOURCE_CHANGE_CASE_TITLE);
 }
 
 static const GtkActionEntry action_entries[] =
