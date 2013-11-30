@@ -2,7 +2,6 @@
 <interface>
   <!-- interface-requires gtk+ 3.6 -->
   <template class="GeditProgressInfoBar" parent="GtkInfoBar">
-    <property name="visible">True</property>
     <property name="app_paintable">True</property>
     <property name="can_focus">False</property>
     <child internal-child="content_area">

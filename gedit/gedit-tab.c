@@ -55,8 +55,8 @@ struct _GeditTabPrivate
 
 	GeditViewFrame         *frame;
 
-	GtkWidget	       *info_bar_revealer;
 	GtkWidget	       *info_bar;
+	GtkWidget	       *info_bar_hidden;
 	GtkWidget	       *print_preview;
 
 	GeditPrintJob          *print_job;
@@ -525,43 +525,47 @@ static void
 set_info_bar (GeditTab  *tab,
 	      GtkWidget *info_bar)
 {
+	gedit_debug (DEBUG_TAB);
+
 	if (tab->priv->info_bar == info_bar)
 		return;
 
-	tab->priv->info_bar = info_bar;
-
 	if (info_bar == NULL)
 	{
-		gtk_revealer_set_reveal_child (GTK_REVEALER (tab->priv->info_bar_revealer), FALSE);
-		tab->priv->info_bar = NULL;
+		if (tab->priv->info_bar != NULL)
+		{
+			/* Don't destroy the old info_bar right away,
+			   we want the hide animation. */
+			if (tab->priv->info_bar_hidden != NULL)
+			{
+				gtk_widget_destroy (tab->priv->info_bar_hidden);
+			}
+
+			tab->priv->info_bar_hidden = tab->priv->info_bar;
+			gtk_widget_hide (tab->priv->info_bar_hidden);
+
+			tab->priv->info_bar = NULL;
+		}
 	}
 	else
 	{
-		/* lazy init the reveler */
-		if (tab->priv->info_bar_revealer == NULL)
+		if (tab->priv->info_bar != NULL)
 		{
-			tab->priv->info_bar_revealer = gtk_revealer_new ();
-			gtk_widget_show (tab->priv->info_bar_revealer);
-			gtk_box_pack_start (GTK_BOX (tab), tab->priv->info_bar_revealer, FALSE, FALSE, 0);
-		}
-		else
-		{
-			GtkWidget *old;
-
-			old = gtk_bin_get_child (GTK_BIN (tab->priv->info_bar_revealer));
-			if (old != NULL)
-			{
-				g_object_remove_weak_pointer (G_OBJECT (old),
-				                              (gpointer *)&tab->priv->info_bar);
-				gtk_container_remove (GTK_CONTAINER (tab->priv->info_bar_revealer), old);
-			}
+			gedit_debug_message (DEBUG_TAB, "Replacing existing notification");
+			gtk_widget_destroy (tab->priv->info_bar);
 		}
 
-		gtk_container_add (GTK_CONTAINER (tab->priv->info_bar_revealer), info_bar);
-		gtk_revealer_set_reveal_child (GTK_REVEALER (tab->priv->info_bar_revealer), TRUE);
+		/* Make sure to stop a possibly still ongoing hiding animation. */
+		if (tab->priv->info_bar_hidden != NULL)
+		{
+			gtk_widget_destroy (tab->priv->info_bar_hidden);
+			tab->priv->info_bar_hidden = NULL;
+		}
 
-		g_object_add_weak_pointer (G_OBJECT (info_bar),
-					   (gpointer *)&tab->priv->info_bar);
+		tab->priv->info_bar = info_bar;
+
+		gtk_box_pack_start (GTK_BOX (tab), info_bar, FALSE, FALSE, 0);
+		gtk_widget_show (info_bar);
 	}
 }
 
@@ -657,7 +661,7 @@ file_already_open_warning_info_bar_response (GtkWidget   *info_bar,
 					    TRUE);
 	}
 
-	gtk_widget_destroy (info_bar);
+	set_info_bar (tab, NULL);
 
 	gtk_widget_grab_focus (GTK_WIDGET (view));
 }
@@ -807,8 +811,6 @@ show_loading_info_bar (GeditTab *tab)
 			  G_CALLBACK (load_cancelled),
 			  tab);
 
-	gtk_widget_show (bar);
-
 	set_info_bar (tab, bar);
 
 	g_free (msg);
@@ -887,8 +889,6 @@ show_saving_info_bar (GeditTab *tab)
 	bar = gedit_progress_info_bar_new (GTK_STOCK_SAVE,
 					   msg,
 					   FALSE);
-
-	gtk_widget_show (bar);
 
 	set_info_bar (tab, bar);
 
@@ -1054,13 +1054,10 @@ document_loaded (GeditDocument *document,
 						  tab);
 			}
 
+			gtk_info_bar_set_default_response (GTK_INFO_BAR (emsg),
+							   GTK_RESPONSE_CANCEL);
 			set_info_bar (tab, emsg);
 		}
-
-		gtk_info_bar_set_default_response (GTK_INFO_BAR (emsg),
-						   GTK_RESPONSE_CANCEL);
-
-		gtk_widget_show (emsg);
 
 		if (location)
 		{
@@ -1096,8 +1093,6 @@ document_loaded (GeditDocument *document,
 								    tab->priv->tmp_encoding,
 								    error);
 
-			set_info_bar (tab, emsg);
-
 			g_signal_connect (emsg,
 					  "response",
 					  G_CALLBACK (io_loading_error_info_bar_response),
@@ -1106,7 +1101,7 @@ document_loaded (GeditDocument *document,
 			gtk_info_bar_set_default_response (GTK_INFO_BAR (emsg),
 							   GTK_RESPONSE_CANCEL);
 
-			gtk_widget_show (emsg);
+			set_info_bar (tab, emsg);
 		}
 
 		/* Scroll to the cursor when the document is loaded, we need
@@ -1142,17 +1137,16 @@ document_loaded (GeditDocument *document,
 
 						w = gedit_file_already_open_warning_info_bar_new (location);
 
-						set_info_bar (tab, w);
 
 						gtk_info_bar_set_default_response (GTK_INFO_BAR (w),
 										   GTK_RESPONSE_CANCEL);
-
-						gtk_widget_show (w);
 
 						g_signal_connect (w,
 								  "response",
 								  G_CALLBACK (file_already_open_warning_info_bar_response),
 								  tab);
+
+						set_info_bar (tab, w);
 
 						g_object_unref (loc);
 						break;
@@ -1452,8 +1446,6 @@ document_saved (GeditDocument *document,
 							error);
 			g_return_if_fail (emsg != NULL);
 
-			set_info_bar (tab, emsg);
-
 			g_signal_connect (emsg,
 					  "response",
 					  G_CALLBACK (externally_modified_error_info_bar_response),
@@ -1470,8 +1462,6 @@ document_saved (GeditDocument *document,
 							error);
 			g_return_if_fail (emsg != NULL);
 
-			set_info_bar (tab, emsg);
-
 			g_signal_connect (emsg,
 					  "response",
 					  G_CALLBACK (no_backup_error_info_bar_response),
@@ -1484,8 +1474,6 @@ document_saved (GeditDocument *document,
 			   as it can make the document useless if it is saved */
 			emsg = gedit_invalid_character_info_bar_new (tab->priv->tmp_save_location);
 			g_return_if_fail (emsg != NULL);
-
-			set_info_bar (tab, emsg);
 
 			g_signal_connect (emsg,
 			                  "response",
@@ -1505,8 +1493,6 @@ document_saved (GeditDocument *document,
 								  error);
 			g_return_if_fail (emsg != NULL);
 
-			set_info_bar (tab, emsg);
-
 			g_signal_connect (emsg,
 					  "response",
 					  G_CALLBACK (unrecoverable_saving_error_info_bar_response),
@@ -1522,8 +1508,7 @@ document_saved (GeditDocument *document,
 									tab->priv->tmp_save_location,
 									tab->priv->tmp_encoding,
 									error);
-
-			set_info_bar (tab, emsg);
+			g_return_if_fail (emsg != NULL);
 
 			g_signal_connect (emsg,
 					  "response",
@@ -1534,7 +1519,7 @@ document_saved (GeditDocument *document,
 		gtk_info_bar_set_default_response (GTK_INFO_BAR (emsg),
 						   GTK_RESPONSE_CANCEL);
 
-		gtk_widget_show (emsg);
+		set_info_bar (tab, emsg);
 	}
 	else
 	{
@@ -1600,9 +1585,7 @@ display_externally_modified_notification (GeditTab *tab)
 	info_bar = gedit_externally_modified_info_bar_new (location, document_modified);
 	g_object_unref (location);
 
-	tab->priv->info_bar = NULL;
 	set_info_bar (tab, info_bar);
-	gtk_widget_show (info_bar);
 
 	g_signal_connect (info_bar,
 			  "response",
