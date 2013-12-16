@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2013-09-26 20:20+0000\n"
-"PO-Revision-Date: 2013-12-07 20:17+0700\n"
+"PO-Revision-Date: 2013-12-16 18:02+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -392,7 +392,7 @@ msgstr "Cetak Pewarnaan Sintaksis"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid "Whether gedit should print syntax highlighting when printing documents."
-msgstr "Apakah gedit harus mencetak penandaan syntax ketika mencetak dokumen."
+msgstr "Apakah gedit harus mencetak penandaan sintaks ketika mencetak dokumen."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid "Print Header"
@@ -531,16 +531,16 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid "Active plugins"
-msgstr "Plugin aktif"
+msgstr "Pengaya aktif"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:93
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Daftar plugins yang aktif. Berisi \"Lokasi\" dari plugins yang aktif "
+"Daftar pengaya yang aktif. Berisi \"Lokasi\" dari pengaya yang aktif "
 "tersebut. Lihat berkas .gedit-plugin untuk mendapatkan \"Lokasi\" dari "
-"plugin yang diberikan."
+"pengaya yang diberikan."
 
 #: ../gedit/gedit-app.c:113
 msgid "Show the application's help"
@@ -596,7 +596,7 @@ msgstr "[BERKAS...][+BARIS[:KOLOM]]"
 
 #: ../gedit/gedit-app.c:281
 msgid "There was an error displaying the help."
-msgstr "Ada galag saat menampilkan bantuan."
+msgstr "Ada galat saat menampilkan bantuan."
 
 #: ../gedit/gedit-app.c:702
 msgid "- Edit text files"
@@ -641,7 +641,7 @@ msgstr[0] "Jika tidak disimpan, perubahan dari %ld detik terakhir akan hilang."
 #: ../gedit/gedit-close-confirmation-dialog.c:375
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
-msgstr "Jika tidak disimpan, perubahan dari menit-menit terakhir akan hilang."
+msgstr "Jika tidak disimpan, perubahan dari menit terakhir akan hilang."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:381
 #, c-format
@@ -652,7 +652,7 @@ msgid_plural ""
 "If you don't save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"Jika tidak disimpan, perubahan dari menit dan %ld detik terakhir akan hilang."
+"Jika tidak disimpan, perubahan dari menit %ld detik terakhir akan hilang."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:391
 #, c-format
@@ -676,7 +676,7 @@ msgid_plural ""
 "If you don't save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-"Jika tidak disimpan, perubahan dari jam dan %d menit terakhir akan hilang."
+"Jika tidak disimpan, perubahan dari satu jam %d menit terakhir akan hilang."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:427
 #, c-format
@@ -699,7 +699,7 @@ msgstr "Simpan perubahan ke dokumen \"%s\" sebelum menutup?"
 #: ../gedit/gedit-close-confirmation-dialog.c:495
 #: ../gedit/gedit-close-confirmation-dialog.c:719
 msgid "Saving has been disabled by the system administrator."
-msgstr "Penyimpanan telah di matikan oleh system administrator."
+msgstr "Penyimpanan telah dimatikan oleh administrator sistem."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:666
 #, c-format
@@ -944,7 +944,7 @@ msgstr "Eropa Selatan"
 #: ../gedit/gedit-encodings.c:161 ../gedit/gedit-encodings.c:175
 #: ../gedit/gedit-encodings.c:282
 msgid "Baltic"
-msgstr "Balkan"
+msgstr "Baltik"
 
 #: ../gedit/gedit-encodings.c:163 ../gedit/gedit-encodings.c:233
 #: ../gedit/gedit-encodings.c:246 ../gedit/gedit-encodings.c:250
@@ -1624,7 +1624,7 @@ msgstr "_Buat cadangan salinan berkas sebelum menyimpan"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:17
 msgid "_Autosave files every"
-msgstr "Simpan _otomatis berkas setiap"
+msgstr "Simpan otom_atis berkas setiap"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:18
 msgid "_minutes"
@@ -1742,7 +1742,7 @@ msgstr "No_mor baris:"
 
 #: ../gedit/gedit-print-preferences.ui.h:17
 msgid "He_aders and footers:"
-msgstr "Kep_ala dan Kaki:"
+msgstr "Kep_ala dan kaki:"
 
 #: ../gedit/gedit-print-preferences.ui.h:18
 msgid "_Restore Default Fonts"
@@ -1809,7 +1809,7 @@ msgstr "Perkecil halaman"
 
 #: ../gedit/gedit-print-preview.ui.h:15
 msgid "Close print preview"
-msgstr "Tutup tampilan cetak"
+msgstr "Tutup pratilik cetak"
 
 #: ../gedit/gedit-print-preview.ui.h:16
 msgid "_Close Preview"
@@ -1817,11 +1817,11 @@ msgstr "_Tutup Pratilik"
 
 #: ../gedit/gedit-print-preview.ui.h:17
 msgid "Page Preview"
-msgstr "Tampilan Cetak"
+msgstr "Pratilik Halaman"
 
 #: ../gedit/gedit-print-preview.ui.h:18
 msgid "The preview of a page in the document to be printed"
-msgstr "Cuplikan halaman pada dokumen yang mau dicetak"
+msgstr "Pratilik halaman pada dokumen yang akan dicetak"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1236
@@ -1834,7 +1834,7 @@ msgstr "G_anti Semua"
 
 #: ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Search for: "
-msgstr "Menc_ari : "
+msgstr "Menc_ari: "
 
 #: ../gedit/gedit-replace-dialog.ui.h:5
 msgid "Replace _with: "
@@ -1858,16 +1858,16 @@ msgstr "Cari _mundur"
 
 #: ../gedit/gedit-replace-dialog.ui.h:10
 msgid "_Wrap around"
-msgstr "_Penggalan kata"
+msgstr "_Putar balik"
 
 #. Use spaces to leave padding proportional to the font size
 #: ../gedit/gedit-statusbar.c:66 ../gedit/gedit-statusbar.c:72
 msgid "OVR"
-msgstr " TIMPA"
+msgstr "TPA"
 
 #: ../gedit/gedit-statusbar.c:66 ../gedit/gedit-statusbar.c:72
 msgid "INS"
-msgstr "SISIP"
+msgstr "SSP"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
@@ -2085,7 +2085,7 @@ msgstr "Ubah mode penyorotan dari dokumen yang aktif."
 #. Search menu
 #: ../gedit/gedit-ui.h:109
 msgid "_Find..."
-msgstr "_Cari..."
+msgstr "_Temukan..."
 
 #: ../gedit/gedit-ui.h:110
 msgid "Search for text"
@@ -2109,7 +2109,7 @@ msgstr "Cari ke belakang untuk teks yang sama"
 
 #: ../gedit/gedit-ui.h:116 ../gedit/gedit-ui.h:119
 msgid "_Replace..."
-msgstr "_Ganti Kata..."
+msgstr "_Ganti..."
 
 #: ../gedit/gedit-ui.h:117 ../gedit/gedit-ui.h:120
 msgid "Search for and replace text"
@@ -2117,11 +2117,11 @@ msgstr "Cari dan ganti teks"
 
 #: ../gedit/gedit-ui.h:122
 msgid "_Clear Highlight"
-msgstr "_Bersihkan Penandaan"
+msgstr "_Bersihkan Penyorotan"
 
 #: ../gedit/gedit-ui.h:123
 msgid "Clear highlighting of search matches"
-msgstr "Bersihkan penandaan dari pencarian yang cocok"
+msgstr "Bersihkan penyorotan dari pencarian yang cocok"
 
 #: ../gedit/gedit-ui.h:124
 msgid "Go to _Line..."
@@ -2278,12 +2278,12 @@ msgstr "Cocokkan sebagai Ekspresi _Reguler"
 #. create "Match Entire Word Only" menu item.
 #: ../gedit/gedit-view-frame.c:780
 msgid "Match _Entire Word Only"
-msgstr "Cocokkan Hanya Kata Saja"
+msgstr "Cocok S_eluruh Kata"
 
 #. create "Match Case" menu item.
 #: ../gedit/gedit-view-frame.c:794
 msgid "_Match Case"
-msgstr "_Cocokkan huruf besar/kecil"
+msgstr "_Cocok Huruf Besar/Kecil"
 
 #: ../gedit/gedit-view-frame.c:968
 msgid "String you want to search for"
@@ -3512,7 +3512,7 @@ msgstr "Pilih bahasa dokumen yang aktif"
 
 #: ../plugins/spell/gedit-spell-plugin.c:127
 msgid "_Highlight Misspelled Words"
-msgstr "_Tandai Kata-kata Salah Eja"
+msgstr "_Sorot Kata-kata Salah Eja"
 
 #: ../plugins/spell/gedit-spell-plugin.c:129
 msgid "Automatically spell-check the current document"
