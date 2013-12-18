@@ -7,7 +7,7 @@ m4_define(gedit_minor_version, 11)
 m4_define(gedit_micro_version, 1)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
-AC_INIT([gedit],[gedit_version],[http://bugzilla.gnome.org/enter_bug.cgi?product=gedit],[gedit],[http://projects.gnome.org/gedit/])
+AC_INIT([gedit],[gedit_version],[http://bugzilla.gnome.org/enter_bug.cgi?product=gedit],[gedit],[https://wiki.gnome.org/Apps/Gedit])
 
 AC_CONFIG_HEADERS(config.h)
 AC_CONFIG_SRCDIR(gedit/gedit.c)
