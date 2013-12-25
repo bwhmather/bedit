@@ -432,6 +432,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, open_menu);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_menu);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, hpaned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, vpaned);
@@ -4118,6 +4119,22 @@ gedit_window_get_message_bus (GeditWindow *window)
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
 	return window->priv->message_bus;
+}
+
+/**
+ * _gedit_window_get_gear_menu:
+ * @window: a #GeditWindow.
+ *
+ * Gets the gear menu.
+ *
+ * Returns: (transfer none): the #GMenuModel of the gear menu button.
+ */
+GMenuModel *
+_gedit_window_get_gear_menu (GeditWindow *window)
+{
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+
+	return window->priv->gear_menu;
 }
 
 /* ex:set ts=8 noet: */

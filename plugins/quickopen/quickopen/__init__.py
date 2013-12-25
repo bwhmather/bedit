@@ -19,20 +19,21 @@
 
 from .popup import Popup
 import os
-from gi.repository import GObject, Gio, Gtk, Gedit
+from gi.repository import GObject, Gio, GLib, Gtk, Gedit
 from .virtualdirs import RecentDocumentsDirectory
 from .virtualdirs import CurrentDocumentsDirectory
 
-ui_str = """<ui>
-  <menubar name="MenuBar">
-    <menu name="FileMenu" action="File">
-      <placeholder name="FileOps_2">
-        <menuitem name="QuickOpen" action="QuickOpen"/>
-      </placeholder>
-    </menu>
-  </menubar>
-</ui>
-"""
+class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
+    app = GObject.property(type=Gedit.App)
+
+    def __init__(self):
+        GObject.Object.__init__(self)
+
+    def do_activate(self):
+        self.app.add_accelerator("<Primary><Alt>O", "win.quickopen", None)
+
+    def do_deactivate(self):
+        self.app.remove_accelerator("win.quickopen", None)
 
 class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
     __gtype_name__ = "QuickOpenPlugin"
@@ -57,24 +58,18 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         self._popup_size = size
 
     def _uninstall_menu(self):
-        manager = self.window.get_ui_manager()
-
-        manager.remove_ui(self._ui_id)
-        manager.remove_action_group(self._action_group)
-
-        manager.ensure_update()
+        self.window.remove_action("quickopen")
 
     def _install_menu(self):
-        manager = self.window.get_ui_manager()
-        self._action_group = Gtk.ActionGroup(name="GeditQuickOpenPluginActions")
-        self._action_group.add_actions([
-            ("QuickOpen", Gtk.STOCK_OPEN, _("Quick Open..."),
-             '<Primary><Alt>o', _("Quickly open documents"),
-             self.on_quick_open_activate)
-        ])
+        action = Gio.SimpleAction(name="quickopen")
+        action.connect('activate', self.on_quick_open_activate)
+        self.window.add_action(action)
 
-        manager.insert_action_group(self._action_group)
-        self._ui_id = manager.add_ui_from_string(ui_str)
+        item = Gio.MenuItem.new(_("Quick Open..."), "win.quickopen")
+        item.set_attribute_value("accel", GLib.Variant.new_string("<Primary><Alt>O"))
+
+        self.menu = self.extend_gear_menu("ext2")
+        self.menu.prepend_menu_item(item)
 
     def _create_popup(self):
         paths = []
@@ -174,7 +169,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         return desktopdir
 
     # Callbacks
-    def on_quick_open_activate(self, action, user_data=None):
+    def on_quick_open_activate(self, action, parameter, user_data=None):
         if not self._popup:
             self._create_popup()
 

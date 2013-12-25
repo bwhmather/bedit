@@ -25,6 +25,7 @@
 
 #include "gedit-window-activatable.h"
 #include "gedit-window.h"
+#include <string.h>
 
 /**
  * SECTION:gedit-window-activatable
@@ -122,5 +123,42 @@ gedit_window_activatable_update_state (GeditWindowActivatable *activatable)
 	{
 		iface->update_state (activatable);
 	}
+}
+
+GeditMenuExtension *
+gedit_window_activatable_extend_gear_menu (GeditWindowActivatable *activatable,
+                                           const gchar            *extension_point)
+{
+	GeditMenuExtension *menu = NULL;
+	GeditWindow *window;
+	GMenuModel *model;
+	gint i, n_items;
+
+	g_return_val_if_fail (GEDIT_IS_WINDOW_ACTIVATABLE (activatable), NULL);
+	g_return_val_if_fail (extension_point != NULL, NULL);
+
+	g_object_get (G_OBJECT (activatable), "window", &window, NULL);
+	model = _gedit_window_get_gear_menu (window);
+	g_object_unref (window);
+
+	n_items = g_menu_model_get_n_items (model);
+
+	for (i = 0; i < n_items; i++)
+	{
+		gchar *id = NULL;
+
+		if (g_menu_model_get_item_attribute (model, i, "id", "s", &id) &&
+		    strcmp (id, extension_point) == 0)
+		{
+			GMenuModel *section;
+
+			section = g_menu_model_get_item_link (model, i, G_MENU_LINK_SECTION);
+			menu = _gedit_menu_extension_new (G_MENU (section));
+		}
+
+		g_free (id);
+	}
+
+	return menu;
 }
 

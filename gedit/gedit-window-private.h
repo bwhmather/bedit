@@ -92,6 +92,7 @@ struct _GeditWindowPrivate
 	GtkWidget      *headerbar;
 	GtkWidget      *open_button;
 	GtkWidget      *open_menu;
+	GMenuModel     *gear_menu;
 
 	/* recent files */
 	guint           update_documents_list_menu_id;

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.8 -->
-  <menu id="gear-menu">
+  <menu id="gear_menu">
     <section>
+      <attribute name="id">ext1</attribute>
+    </section>
+    <section>
+      <attribute name="id">ext2</attribute>
       <item>
         <attribute name="label" translatable="yes">_Save As…</attribute>
         <attribute name="action">win.save_as</attribute>
@@ -13,18 +17,30 @@
       </item>
     </section>
     <section>
+      <attribute name="id">ext3</attribute>
+    </section>
+    <section>
+      <attribute name="id">ext4</attribute>
       <item>
         <attribute name="label" translatable="yes">_Print…</attribute>
         <attribute name="action">win.print</attribute>
       </item>
     </section>
     <section>
+      <attribute name="id">ext5</attribute>
+    </section>
+    <section>
+      <attribute name="id">ext6</attribute>
       <item>
         <attribute name="label" translatable="yes">_Fullscreen</attribute>
         <attribute name="action">win.fullscreen</attribute>
       </item>
     </section>
     <section>
+      <attribute name="id">ext7</attribute>
+    </section>
+    <section>
+      <attribute name="id">ext8</attribute>
       <item>
         <attribute name="label" translatable="yes">_Find…</attribute>
         <attribute name="action">win.find</attribute>
@@ -43,12 +59,20 @@
       </item>
     </section>
     <section>
+      <attribute name="id">ext9</attribute>
+    </section>
+    <section>
+      <attribute name="id">ext10</attribute>
       <item>
         <attribute name="label" translatable="yes">_Highlight Mode…</attribute>
         <attribute name="action">win.highlight_mode</attribute>
       </item>
     </section>
     <section>
+      <attribute name="id">ext11</attribute>
+    </section>
+    <section>
+      <attribute name="id">ext12</attribute>
       <item>
         <attribute name="label" translatable="yes">_Close</attribute>
         <attribute name="action">win.close</attribute>
@@ -159,7 +183,7 @@
               <object class="GtkMenuButton" id="gear_button">
                 <property name="visible">True</property>
                 <property name="valign">center</property>
-                <property name="menu_model">gear-menu</property>
+                <property name="menu_model">gear_menu</property>
                 <style>
                   <class name="image-button"/>
                 </style>
@@ -359,7 +383,7 @@
           <object class="GtkMenuButton" id="fullscreen_gear_button">
             <property name="visible">True</property>
             <property name="valign">center</property>
-            <property name="menu_model">gear-menu</property>
+            <property name="menu_model">gear_menu</property>
             <style>
               <class name="image-button"/>
             </style>

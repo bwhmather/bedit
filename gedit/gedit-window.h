@@ -150,6 +150,8 @@ GeditTab        *gedit_window_get_tab_from_location	(GeditWindow         *window
 /* Message bus */
 GeditMessageBus	*gedit_window_get_message_bus		(GeditWindow         *window);
 
+GMenuModel       *_gedit_window_get_gear_menu           (GeditWindow         *window);
+
 /*
  * Non exported functions
  */

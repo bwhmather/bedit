@@ -133,6 +133,7 @@ INST_H_FILES =				\
 	gedit-document.h 		\
 	gedit-encodings.h		\
 	gedit-encodings-combo-box.h	\
+	gedit-menu-extension.h		\
 	gedit-message-bus.h		\
 	gedit-message.h			\
 	gedit-panel.h			\
@@ -161,6 +162,7 @@ libgedit_private_la_SOURCES =		\
 	gedit-app-activatable.c		\
 	gedit-view-activatable.c	\
 	gedit-window-activatable.c	\
+	gedit-menu-extension.c		\
 	gedit-resources.c
 
 libgedit_c_files =			\

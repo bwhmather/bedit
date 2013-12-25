@@ -23,6 +23,7 @@
 #define __GEDIT_WINDOW_ACTIVATABLE_H__
 
 #include <glib-object.h>
+#include <gedit/gedit-menu-extension.h>
 
 G_BEGIN_DECLS
 
@@ -56,6 +57,18 @@ GType	 gedit_window_activatable_get_type	(void)  G_GNUC_CONST;
 void	 gedit_window_activatable_activate	(GeditWindowActivatable *activatable);
 void	 gedit_window_activatable_deactivate	(GeditWindowActivatable *activatable);
 void	 gedit_window_activatable_update_state	(GeditWindowActivatable *activatable);
+
+/**
+ * gedit_window_activatable_extend_gear_menu:
+ * @activatable: A #GeditWindowActivatable.
+ * @extension_point: the extension point section of the menu to get.
+ *
+ * Gets the #GeditMenuExtension for the gear menu @extension_point.
+ *
+ * Returns: (transfer full): a #GeditMenuExtension for the specific section or %NULL if not found.
+ */
+GeditMenuExtension *gedit_window_activatable_extend_gear_menu (GeditWindowActivatable *activatable,
+                                                                const gchar            *extension_point);
 
 G_END_DECLS
 
