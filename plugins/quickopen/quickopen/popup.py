@@ -31,11 +31,12 @@ class Popup(Gtk.Dialog):
     def __init__(self, window, paths, handler):
         Gtk.Dialog.__init__(self,
                     title=_('Quick Open'),
-                    parent=window,
-                    flags=Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
-                    buttons=(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL))
+                    transient_for=window,
+                    modal=True,
+                    destroy_with_parent=True)
 
-        self._open_button = self.add_button(Gtk.STOCK_OPEN, Gtk.ResponseType.ACCEPT)
+        self.add_button(_("_Cancel"), Gtk.ResponseType.CANCEL)
+        self._open_button = self.add_button(_("_Open"), Gtk.ResponseType.ACCEPT)
 
         self._handler = handler
         self._build_ui()
