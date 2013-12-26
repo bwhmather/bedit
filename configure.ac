@@ -448,7 +448,6 @@ help/Makefile
 libgd/Makefile
 pixmaps/Makefile
 plugins/Makefile
-plugins/changecase/Makefile
 plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in
 plugins/checkupdate/Makefile
 plugins/externaltools/data/Makefile

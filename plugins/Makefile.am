@@ -1,5 +1,4 @@
 DIST_SUBDIRS = \
-	changecase	\
 	checkupdate	\
 	docinfo		\
 	externaltools	\
@@ -14,7 +13,6 @@ DIST_SUBDIRS = \
 	zeitgeist
 
 SUBDIRS = \
-	changecase	\
 	docinfo		\
 	filebrowser	\
 	modelines	\
