@@ -21,30 +21,33 @@
 #ifndef __GEDIT_ENCODINGS_H__
 #define __GEDIT_ENCODINGS_H__
 
-#include <glib.h>
-#include <glib-object.h>
+#include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 
-typedef struct _GeditEncoding GeditEncoding;
+typedef GtkSourceEncoding GeditEncoding;
 
 #define GEDIT_TYPE_ENCODING     (gedit_encoding_get_type ())
 
 GType              	 gedit_encoding_get_type	 (void) G_GNUC_CONST;
 
 const GeditEncoding	*gedit_encoding_get_from_charset (const gchar         *charset);
+
 const GeditEncoding	*gedit_encoding_get_from_index	 (gint                 index);
 
 gchar 			*gedit_encoding_to_string	 (const GeditEncoding *enc);
 
 const gchar		*gedit_encoding_get_name	 (const GeditEncoding *enc);
+
 const gchar		*gedit_encoding_get_charset	 (const GeditEncoding *enc);
 
 const GeditEncoding 	*gedit_encoding_get_utf8	 (void);
+
 const GeditEncoding 	*gedit_encoding_get_current	 (void);
 
 /* These should not be used, they are just to make python bindings happy */
 GeditEncoding		*gedit_encoding_copy		 (const GeditEncoding *enc);
+
 void               	 gedit_encoding_free		 (GeditEncoding       *enc);
 
 GSList			*_gedit_encoding_strv_to_list    (const gchar * const *enc_str);
