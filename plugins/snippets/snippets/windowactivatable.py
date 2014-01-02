@@ -19,7 +19,7 @@ import re
 import os
 import gettext
 
-from gi.repository import Gtk, Gdk, Gedit, GObject
+from gi.repository import Gtk, Gdk, Gedit, GObject, Gio
 
 from .document import Document
 from .library import Library
@@ -146,25 +146,16 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
                 controller.parse_and_run_snippet(message.props.snippet, iter)
 
         def insert_menu(self):
-                manager = self.window.get_ui_manager()
+                action = Gio.SimpleAction(name="snippets")
+                action.connect('activate', self.on_action_snippets_activate)
+                self.window.add_action(action)
 
-                self.action_group = Gtk.ActionGroup("GeditSnippetPluginActions")
-                self.action_group.set_translation_domain('gedit')
-                self.action_group.add_actions([('ManageSnippets', None,
-                                _('Manage _Snippets...'), \
-                                None, _('Manage snippets'), \
-                                self.on_action_snippets_activate)])
-
-                self.merge_id = manager.new_merge_id()
-                manager.insert_action_group(self.action_group, -1)
-                manager.add_ui(self.merge_id, '/MenuBar/ToolsMenu/ToolsOps_5', \
-                                'ManageSnippets', 'ManageSnippets', Gtk.UIManagerItemType.MENUITEM, False)
+                item = Gio.MenuItem.new(_("Manage _Snippets..."), "win.snippets")
+                self.menu = self.extend_gear_menu("ext9")
+                self.menu.append_menu_item(item)
 
         def remove_menu(self):
-                manager = self.window.get_ui_manager()
-                manager.remove_ui(self.merge_id)
-                manager.remove_action_group(self.action_group)
-                self.action_group = None
+                self.window.remove_action("snippets")
 
         def find_snippet(self, snippets, tag):
                 result = []
@@ -205,7 +196,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
         def create_configure_dialog(self):
                 SharedData().show_manager(self.window, self.plugin_info.get_data_dir())
 
-        def on_action_snippets_activate(self, action):
+        def on_action_snippets_activate(self, action, parameter):
                 self.create_configure_dialog()
 
         def accelerator_activated(self, group, obj, keyval, mod):
