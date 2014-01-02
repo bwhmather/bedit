@@ -35,15 +35,14 @@
 #include <gedit/gedit-window-activatable.h>
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-utils.h>
-
-#define MENU_PATH "/MenuBar/ToolsMenu/ToolsOps_2"
+#include <gedit/gedit-menu-extension.h>
 
 struct _GeditDocinfoPluginPrivate
 {
 	GeditWindow *window;
 
-	GtkActionGroup *action_group;
-	guint ui_id;
+	GSimpleAction *action;
+	GeditMenuExtension *menu;
 
 	GtkWidget *dialog;
 	GtkWidget *file_name_label;
@@ -393,8 +392,9 @@ create_docinfo_dialog (GeditDocinfoPlugin *plugin)
 }
 
 static void
-docinfo_cb (GtkAction          *action,
-	    GeditDocinfoPlugin *plugin)
+docinfo_cb (GAction            *action,
+            GVariant           *parameter,
+            GeditDocinfoPlugin *plugin)
 {
 	GeditDocinfoPluginPrivate *priv;
 	GeditDocument *doc;
@@ -420,16 +420,6 @@ docinfo_cb (GtkAction          *action,
 	update_selection_info (plugin, doc);
 }
 
-static const GtkActionEntry action_entries[] =
-{
-	{ "DocumentStatistics",
-	  NULL,
-	  N_("_Document Statistics"),
-	  NULL,
-	  N_("Get statistical information on the current document"),
-	  G_CALLBACK (docinfo_cb) }
-};
-
 static void
 gedit_docinfo_plugin_init (GeditDocinfoPlugin *plugin)
 {
@@ -447,7 +437,8 @@ gedit_docinfo_plugin_dispose (GObject *object)
 
 	gedit_debug_message (DEBUG_PLUGINS, "GeditDocinfoPlugin dispose");
 
-	g_clear_object (&plugin->priv->action_group);
+	g_clear_object (&plugin->priv->action);
+	g_clear_object (&plugin->priv->menu);
 	g_clear_object (&plugin->priv->window);
 
 	G_OBJECT_CLASS (gedit_docinfo_plugin_parent_class)->dispose (object);
@@ -514,8 +505,7 @@ update_ui (GeditDocinfoPlugin *plugin)
 
 	view = gedit_window_get_active_view (priv->window);
 
-	gtk_action_group_set_sensitive (priv->action_group,
-					(view != NULL));
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (priv->action), view != NULL);
 
 	if (priv->dialog != NULL)
 	{
@@ -529,33 +519,23 @@ static void
 gedit_docinfo_plugin_activate (GeditWindowActivatable *activatable)
 {
 	GeditDocinfoPluginPrivate *priv;
-	GtkUIManager *manager;
+	GMenuItem *item;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_DOCINFO_PLUGIN (activatable)->priv;
 
-	manager = gedit_window_get_ui_manager (priv->window);
+	priv->action = g_simple_action_new ("docinfo", NULL);
+	g_signal_connect (priv->action, "activate",
+	                  G_CALLBACK (docinfo_cb), activatable);
+	g_action_map_add_action (G_ACTION_MAP (priv->window),
+	                         G_ACTION (priv->action));
 
-	priv->action_group = gtk_action_group_new ("GeditDocinfoPluginActions");
-	gtk_action_group_set_translation_domain (priv->action_group,
-						 GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (priv->action_group,
-				      action_entries,
-				      G_N_ELEMENTS (action_entries),
-				      activatable);
-
-	gtk_ui_manager_insert_action_group (manager, priv->action_group, -1);
-
-	priv->ui_id = gtk_ui_manager_new_merge_id (manager);
-
-	gtk_ui_manager_add_ui (manager,
-			       priv->ui_id,
-			       MENU_PATH,
-			       "DocumentStatistics",
-			       "DocumentStatistics",
-			       GTK_UI_MANAGER_MENUITEM,
-			       FALSE);
+	priv->menu = gedit_window_activatable_extend_gear_menu (activatable,
+	                                                        "ext9");
+	item = g_menu_item_new (_("_Document Statistics"), "win.docinfo");
+	gedit_menu_extension_append_menu_item (priv->menu, item);
+	g_object_unref (item);
 
 	update_ui (GEDIT_DOCINFO_PLUGIN (activatable));
 }
@@ -564,16 +544,12 @@ static void
 gedit_docinfo_plugin_deactivate (GeditWindowActivatable *activatable)
 {
 	GeditDocinfoPluginPrivate *priv;
-	GtkUIManager *manager;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_DOCINFO_PLUGIN (activatable)->priv;
 
-	manager = gedit_window_get_ui_manager (priv->window);
-
-	gtk_ui_manager_remove_ui (manager, priv->ui_id);
-	gtk_ui_manager_remove_action_group (manager, priv->action_group);
+	g_action_map_remove_action (G_ACTION_MAP (priv->window), "docinfo");
 }
 
 static void
