@@ -299,8 +299,8 @@ class Manager(GObject.Object):
 
     def build(self):
         callbacks = {
-            'on_action_add_tool_activated'    : self.on_action_add_tool_activated,
-            'on_action_remove_tool_activated' : self.on_action_remove_tool_activated,
+            'on_add_tool_button_clicked'    : self.on_add_tool_button_clicked,
+            'on_remove_tool_button_clicked' : self.on_remove_tool_button_clicked,
             'on_tool_manager_dialog_response' : self.on_tool_manager_dialog_response,
             'on_tool_manager_dialog_focus_out': self.on_tool_manager_dialog_focus_out,
             'on_tool_manager_dialog_configure_event': self.on_tool_manager_dialog_configure_event,
@@ -629,8 +629,8 @@ class Manager(GObject.Object):
 
         removable = node is not None and node.is_local()
 
-        self['remove-tool-action'].set_sensitive(removable)
-        self['revert-tool-action'].set_sensitive(removable)
+        self['remove-tool-button'].set_sensitive(removable)
+        self['revert-tool-button'].set_sensitive(removable)
 
         if node is not None and node.is_global():
             self['remove-tool-button'].hide()
@@ -675,7 +675,7 @@ class Manager(GObject.Object):
 
         return self.language_id_from_iter(piter)
 
-    def on_action_add_tool_activated(self, action):
+    def on_add_tool_button_clicked(self, button):
         self.save_current_tool()
 
         # block handlers while inserting a new item
@@ -707,7 +707,7 @@ class Manager(GObject.Object):
 
         self.update_remove_revert()
 
-    def on_action_remove_tool_activated(self, action):
+    def on_remove_tool_button_clicked(self, button):
         piter, node = self.get_selected_tool()
 
         if not node:
@@ -720,7 +720,7 @@ class Manager(GObject.Object):
                 self.remove_accelerator(node, shortcut)
                 self.add_accelerator(node)
 
-                self['revert-tool-action'].set_sensitive(False)
+                self['revert-tool-button'].set_sensitive(False)
                 self.fill_fields()
 
                 self.tool_changed(node)

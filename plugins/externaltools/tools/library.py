@@ -477,6 +477,7 @@ class Tool(object):
 
 if __name__ == '__main__':
     library = ToolLibrary()
+    library.set_locations(os.path.expanduser("~/.config/gedit/tools"))
 
     def print_tool(t, indent):
         print(indent * "  " + "%s: %s" % (t.filename, t.name))
@@ -484,9 +485,9 @@ if __name__ == '__main__':
     def print_dir(d, indent):
         print(indent * "  " + d.dirname + '/')
         for i in d.subdirs:
-            print_dir(i, indent+1)
+            print_dir(i, indent + 1)
         for i in d.tools:
-            print_tool(i, indent+1)
+            print_tool(i, indent + 1)
 
     print_dir(library.tree, 0)
 

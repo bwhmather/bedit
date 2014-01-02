@@ -286,7 +286,7 @@ class MultipleDocumentsSaver:
         if self._counter == 0 and not self._error:
             run_external_tool(self._window, self._panel, self._node)
 
-def capture_menu_action(action, window, panel, node):
+def capture_menu_action(action, parameter, window, panel, node):
     if node.save_files == 'document' and window.get_active_document():
         MultipleDocumentsSaver(window, panel, False, node)
         return
