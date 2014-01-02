@@ -43,8 +43,6 @@
 					      GEDIT_TYPE_TIME_PLUGIN, \
 					      GeditTimePluginPrivate))
 
-#define MENU_PATH "/MenuBar/EditMenu/EditOps_4"
-
 /* gsettings keys */
 #define TIME_BASE_SETTINGS	"org.gnome.gedit.plugins.time"
 #define PROMPT_TYPE_KEY		"prompt-type"
@@ -152,8 +150,8 @@ struct _GeditTimePluginPrivate
 
 	GeditWindow    *window;
 
-	GtkActionGroup *action_group;
-	guint           ui_id;
+	GSimpleAction *action;
+	GeditMenuExtension *menu;
 };
 
 enum
@@ -174,19 +172,7 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditTimePlugin,
 				G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_GTK_TYPE_CONFIGURABLE,
 							       peas_gtk_configurable_iface_init))
 
-static void time_cb (GtkAction *action, GeditTimePlugin *plugin);
-
-static const GtkActionEntry action_entries[] =
-{
-	{
-		"InsertDateAndTime",
-		NULL,
-		N_("In_sert Date and Time..."),
-		NULL,
-		N_("Insert current date and time at the cursor position"),
-		G_CALLBACK (time_cb)
-	},
-};
+static void time_cb (GAction *action, GVariant *parameter, GeditTimePlugin *plugin);
 
 static void
 gedit_time_plugin_init (GeditTimePlugin *plugin)
@@ -206,7 +192,8 @@ gedit_time_plugin_dispose (GObject *object)
 	gedit_debug_message (DEBUG_PLUGINS, "GeditTimePlugin disposing");
 
 	g_clear_object (&plugin->priv->settings);
-	g_clear_object (&plugin->priv->action_group);
+	g_clear_object (&plugin->priv->action);
+	g_clear_object (&plugin->priv->menu);
 	g_clear_object (&plugin->priv->window);
 
 	G_OBJECT_CLASS (gedit_time_plugin_parent_class)->dispose (object);
@@ -256,7 +243,6 @@ static void
 update_ui (GeditTimePlugin *plugin)
 {
 	GeditView *view;
-	GtkAction *action;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -264,44 +250,32 @@ update_ui (GeditTimePlugin *plugin)
 
 	gedit_debug_message (DEBUG_PLUGINS, "View: %p", view);
 
-	action = gtk_action_group_get_action (plugin->priv->action_group,
-					      "InsertDateAndTime");
-	gtk_action_set_sensitive (action,
-				  (view != NULL) &&
-				  gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+	g_simple_action_set_enabled (plugin->priv->action,
+	                             (view != NULL) &&
+	                             gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 }
 
 static void
 gedit_time_plugin_activate (GeditWindowActivatable *activatable)
 {
 	GeditTimePluginPrivate *priv;
-	GtkUIManager *manager;
+	GMenuItem *item;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_TIME_PLUGIN (activatable)->priv;
 
-	manager = gedit_window_get_ui_manager (priv->window);
+	priv->action = g_simple_action_new ("time", NULL);
+	g_signal_connect (priv->action, "activate",
+	                  G_CALLBACK (time_cb), activatable);
+	g_action_map_add_action (G_ACTION_MAP (priv->window),
+	                         G_ACTION (priv->action));
 
-	priv->action_group = gtk_action_group_new ("GeditTimePluginActions");
-	gtk_action_group_set_translation_domain (priv->action_group,
-						 GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (priv->action_group,
-				      action_entries,
-				      G_N_ELEMENTS (action_entries),
-				      activatable);
-
-	gtk_ui_manager_insert_action_group (manager, priv->action_group, -1);
-
-	priv->ui_id = gtk_ui_manager_new_merge_id (manager);
-
-	gtk_ui_manager_add_ui (manager,
-			       priv->ui_id,
-			       MENU_PATH,
-			       "InsertDateAndTime",
-			       "InsertDateAndTime",
-			       GTK_UI_MANAGER_MENUITEM,
-			       FALSE);
+	priv->menu = gedit_window_activatable_extend_gear_menu (activatable,
+	                                                        "ext3");
+	item = g_menu_item_new (_("In_sert Date and Time..."), "win.time");
+	gedit_menu_extension_append_menu_item (priv->menu, item);
+	g_object_unref (item);
 
 	update_ui (GEDIT_TIME_PLUGIN (activatable));
 }
@@ -310,16 +284,12 @@ static void
 gedit_time_plugin_deactivate (GeditWindowActivatable *activatable)
 {
 	GeditTimePluginPrivate *priv;
-	GtkUIManager *manager;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_TIME_PLUGIN (activatable)->priv;
 
-	manager = gedit_window_get_ui_manager (priv->window);
-
-	gtk_ui_manager_remove_ui (manager, priv->ui_id);
-	gtk_ui_manager_remove_action_group (manager, priv->action_group);
+	g_action_map_remove_action (G_ACTION_MAP (priv->window), "time");
 }
 
 static void
@@ -964,8 +934,9 @@ choose_format_dialog_response_cb (GtkWidget          *widget,
 }
 
 static void
-time_cb (GtkAction       *action,
-	 GeditTimePlugin *plugin)
+time_cb (GAction         *action,
+         GVariant        *parameter,
+         GeditTimePlugin *plugin)
 {
 	GeditTimePluginPrivate *priv;
 	GtkTextBuffer *buffer;
