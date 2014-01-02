@@ -36,8 +36,6 @@
 
 #define GEDIT_SORT_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_SORT_PLUGIN, GeditSortPluginPrivate))
 
-#define MENU_PATH "/MenuBar/EditMenu/EditOps_6"
-
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSortPlugin,
@@ -51,8 +49,8 @@ struct _GeditSortPluginPrivate
 {
 	GeditWindow *window;
 
-	GtkActionGroup *ui_action_group;
-	guint ui_id;
+	GSimpleAction *action;
+	GeditMenuExtension *menu;
 
 	GtkWidget *dialog;
 	GtkWidget *col_num_spinbutton;
@@ -78,18 +76,7 @@ enum
 	PROP_WINDOW
 };
 
-static void sort_cb (GtkAction *action, GeditSortPlugin *plugin);
 static void sort_real (GeditSortPlugin *plugin);
-
-static const GtkActionEntry action_entries[] =
-{
-	{ "Sort",
-	  GTK_STOCK_SORT_ASCENDING,
-	  N_("S_ort..."),
-	  NULL,
-	  N_("Sort the current document or selection"),
-	  G_CALLBACK (sort_cb) }
-};
 
 static void
 sort_dialog_response_handler (GtkDialog       *dlg,
@@ -180,7 +167,8 @@ create_sort_dialog (GeditSortPlugin *plugin)
 }
 
 static void
-sort_cb (GtkAction       *action,
+sort_cb (GAction         *action,
+         GVariant        *parameter,
 	 GeditSortPlugin *plugin)
 {
 	GeditSortPluginPrivate *priv;
@@ -420,44 +408,32 @@ update_ui (GeditSortPlugin *plugin)
 
 	view = gedit_window_get_active_view (plugin->priv->window);
 
-	gtk_action_group_set_sensitive (plugin->priv->ui_action_group,
-					(view != NULL) &&
-					gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+	g_simple_action_set_enabled (plugin->priv->action,
+	                             (view != NULL) &&
+	                             gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 }
 
 static void
 gedit_sort_plugin_activate (GeditWindowActivatable *activatable)
 {
 	GeditSortPluginPrivate *priv;
-	GtkUIManager *manager;
+	GMenuItem *item;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_SORT_PLUGIN (activatable)->priv;
 
-	manager = gedit_window_get_ui_manager (priv->window);
+	priv->action = g_simple_action_new ("sort", NULL);
+	g_signal_connect (priv->action, "activate",
+	                  G_CALLBACK (sort_cb), activatable);
+	g_action_map_add_action (G_ACTION_MAP (priv->window),
+	                         G_ACTION (priv->action));
 
-	priv->ui_action_group = gtk_action_group_new ("GeditSortPluginActions");
-	gtk_action_group_set_translation_domain (priv->ui_action_group,
-						 GETTEXT_PACKAGE);
-	gtk_action_group_add_actions (priv->ui_action_group,
-				      action_entries,
-				      G_N_ELEMENTS (action_entries),
-				      activatable);
-
-	gtk_ui_manager_insert_action_group (manager,
-					    priv->ui_action_group,
-					    -1);
-
-	priv->ui_id = gtk_ui_manager_new_merge_id (manager);
-
-	gtk_ui_manager_add_ui (manager,
-			       priv->ui_id,
-			       MENU_PATH,
-			       "Sort",
-			       "Sort",
-			       GTK_UI_MANAGER_MENUITEM,
-			       FALSE);
+	priv->menu = gedit_window_activatable_extend_gear_menu (activatable,
+	                                                        "ext9");
+	item = g_menu_item_new (_("S_ort..."), "win.sort");
+	gedit_menu_extension_append_menu_item (priv->menu, item);
+	g_object_unref (item);
 
 	update_ui (GEDIT_SORT_PLUGIN (activatable));
 }
@@ -466,18 +442,11 @@ static void
 gedit_sort_plugin_deactivate (GeditWindowActivatable *activatable)
 {
 	GeditSortPluginPrivate *priv;
-	GtkUIManager *manager;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	priv = GEDIT_SORT_PLUGIN (activatable)->priv;
-
-	manager = gedit_window_get_ui_manager (priv->window);
-
-	gtk_ui_manager_remove_ui (manager,
-				  priv->ui_id);
-	gtk_ui_manager_remove_action_group (manager,
-					    priv->ui_action_group);
+	g_action_map_remove_action (G_ACTION_MAP (priv->window), "sort");
 }
 
 static void
@@ -505,7 +474,8 @@ gedit_sort_plugin_dispose (GObject *object)
 
 	gedit_debug_message (DEBUG_PLUGINS, "GeditSortPlugin disposing");
 
-	g_clear_object (&plugin->priv->ui_action_group);
+	g_clear_object (&plugin->priv->action);
+	g_clear_object (&plugin->priv->menu);
 	g_clear_object (&plugin->priv->window);
 
 	G_OBJECT_CLASS (gedit_sort_plugin_parent_class)->dispose (object);
