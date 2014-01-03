@@ -79,6 +79,7 @@ enum
 {
 	TAB_CLOSE_REQUEST,
 	SHOW_POPUP_MENU,
+	CHANGE_TO_PAGE,
 	LAST_SIGNAL
 };
 
@@ -475,6 +476,25 @@ gedit_notebook_remove (GtkContainer *container,
 	nb->priv->ignore_focused_page_update = FALSE;
 }
 
+static gboolean
+gedit_notebook_change_to_page (GeditNotebook *notebook,
+                               gint           page_num)
+{
+	gint n_pages;
+
+	n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook));
+
+	if (page_num > n_pages - 1)
+	{
+		return FALSE;
+	}
+
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook),
+	                               page_num);
+
+	return TRUE;
+}
+
 static void
 gedit_notebook_class_init (GeditNotebookClass *klass)
 {
@@ -482,6 +502,8 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 	GtkWidgetClass *gtkwidget_class = GTK_WIDGET_CLASS (klass);
 	GtkNotebookClass *notebook_class = GTK_NOTEBOOK_CLASS (klass);
 	GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
+	GtkBindingSet *binding_set;
+	gint i;
 
 	object_class->dispose = gedit_notebook_dispose;
 	object_class->finalize = gedit_notebook_finalize;
@@ -497,6 +519,8 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 	notebook_class->page_added = gedit_notebook_page_added;
 
 	container_class->remove = gedit_notebook_remove;
+
+	klass->change_to_page = gedit_notebook_change_to_page;
 
 	g_object_class_install_property (object_class, PROP_SHOW_TABS_MODE,
 					 g_param_spec_enum ("show-tabs-mode",
@@ -528,6 +552,24 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 			      2,
 			      GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE,
 			      GEDIT_TYPE_TAB);
+	signals[CHANGE_TO_PAGE] =
+		g_signal_new ("change-to-page",
+		              G_TYPE_FROM_CLASS (object_class),
+		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+		              G_STRUCT_OFFSET (GeditNotebookClass, change_to_page),
+		              NULL, NULL,
+		              gedit_marshal_BOOLEAN__INT,
+		              G_TYPE_BOOLEAN, 1,
+		              G_TYPE_INT);
+
+	binding_set = gtk_binding_set_by_class (klass);
+	for (i = 1; i < 10; i++)
+	{
+		gtk_binding_entry_add_signal (binding_set,
+		                              GDK_KEY_0 + i, GDK_MOD1_MASK,
+		                              "change-to-page", 1,
+		                              G_TYPE_INT, i - 1);
+	}
 }
 
 /**

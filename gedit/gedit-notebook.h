@@ -92,6 +92,8 @@ struct _GeditNotebookClass
 	void	(* show_popup_menu)	(GeditNotebook *notebook,
 					 GdkEvent      *event,
 					 GeditTab      *tab);
+	gboolean(* change_to_page)      (GeditNotebook *notebook,
+	                                 gint           page_num);
 };
 
 /*
