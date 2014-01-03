@@ -2916,19 +2916,23 @@ side_panel_visibility_changed (GSettings   *settings,
                                const gchar *key,
                                GeditWindow *window)
 {
+	GtkStyleContext *context;
 	gboolean visible;
 
+	context = gtk_widget_get_style_context (window->priv->headerbar);
 	visible = g_settings_get_boolean (settings, key);
 
 	gtk_widget_set_visible (window->priv->side_panel, visible);
 
-	/* focus the right widget */
+	/* focus the right widget and set the right styles */
 	if (visible)
 	{
+		gtk_style_context_add_class (context, "gedit-titlebar-right");
 		gtk_widget_grab_focus (window->priv->side_panel);
 	}
 	else
 	{
+		gtk_style_context_remove_class (context, "gedit-titlebar-right");
 		gtk_widget_grab_focus (GTK_WIDGET (window->priv->multi_notebook));
 	}
 }
@@ -2956,6 +2960,8 @@ setup_side_panel (GeditWindow *window)
 			      _("Documents"),
 			      image);
 }
+
+
 
 static void
 bottom_panel_visibility_changed (GSettings   *settings,
