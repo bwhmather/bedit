@@ -1,0 +1,9 @@
+.gedit-titlebar-left:dir(ltr),
+.gedit-titlebar-right:dir(rtl) {
+    border-top-right-radius: 0;
+}
+
+.gedit-titlebar-right:dir(ltr),
+.gedit-titlebar-left:dir(rtl) {
+    border-top-left-radius: 0;
+}

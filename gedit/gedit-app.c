@@ -415,6 +415,9 @@ gedit_app_startup (GApplication *application)
 	const gchar *cache_dir;
 	gchar *metadata_filename;
 #endif
+	GError *error = NULL;
+	GFile *css_file;
+	GtkCssProvider *provider;
 
 	G_APPLICATION_CLASS (gedit_app_parent_class)->startup (application);
 
@@ -465,7 +468,6 @@ gedit_app_startup (GApplication *application)
 	{
 		GtkBuilder *builder;
 		GAction *action;
-		GError *error = NULL;
 
 		g_action_map_add_action_entries (G_ACTION_MAP (app),
 		                                 app_entries,
@@ -556,6 +558,22 @@ gedit_app_startup (GApplication *application)
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
 	                                 "<Control><Alt>Page_Down",
 	                                 "win.next_document", NULL);
+
+	/* Load custom css */
+	error = NULL;
+	css_file = g_file_new_for_uri ("resource:///org/gnome/gedit/ui/gedit-style.css");
+	provider = gtk_css_provider_new ();
+	if (gtk_css_provider_load_from_file (provider, css_file, &error))
+	{
+		gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+		                                           GTK_STYLE_PROVIDER (provider),
+		                                           GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+	}
+	else
+	{
+		g_warning ("Could not load css provider: %s", error->message);
+		g_error_free (error);
+	}
 
 	/*
 	 * We use the default gtksourceview style scheme manager so that plugins
