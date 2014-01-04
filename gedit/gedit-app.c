@@ -475,11 +475,6 @@ gedit_app_startup (GApplication *application)
 		                                 app);
 
 		action = g_settings_create_action (app->priv->ui_settings,
-		                                   "statusbar-visible");
-		g_action_map_add_action (G_ACTION_MAP (app), action);
-		g_object_unref (action);
-
-		action = g_settings_create_action (app->priv->ui_settings,
 		                                   "side-panel-visible");
 		g_action_map_add_action (G_ACTION_MAP (app), action);
 		g_object_unref (action);

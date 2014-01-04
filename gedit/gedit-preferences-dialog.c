@@ -73,6 +73,7 @@ enum
 struct _GeditPreferencesDialogPrivate
 {
 	GSettings	*editor;
+	GSettings	*uisettings; /* unfortunately our settings are split for historical reasons */
 
 	GtkWidget	*notebook;
 
@@ -110,6 +111,7 @@ struct _GeditPreferencesDialogPrivate
 	GtkWidget	*auto_save_spinbutton;
 
 	GtkWidget	*display_line_numbers_checkbutton;
+	GtkWidget	*display_statusbar_checkbutton;
 
 	/* Right margin */
 	GtkWidget	*right_margin_checkbutton;
@@ -132,6 +134,7 @@ gedit_preferences_dialog_dispose (GObject *object)
 	GeditPreferencesDialog *dlg = GEDIT_PREFERENCES_DIALOG (object);
 
 	g_clear_object (&dlg->priv->editor);
+	g_clear_object (&dlg->priv->uisettings);
 
 	G_OBJECT_CLASS (gedit_preferences_dialog_parent_class)->dispose (object);
 }
@@ -172,6 +175,7 @@ gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 	                                             "/org/gnome/gedit/ui/gedit-preferences-dialog.ui");
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, notebook);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, display_line_numbers_checkbutton);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, display_statusbar_checkbutton);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, right_margin_checkbutton);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, right_margin_position_grid);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, right_margin_position_spinbutton);
@@ -332,7 +336,6 @@ setup_view_page (GeditPreferencesDialog *dlg)
 				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), split_button_state);
 			gtk_toggle_button_set_inconsistent (
 				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
-
 	}
 
 	gtk_toggle_button_set_active (
@@ -353,6 +356,11 @@ setup_view_page (GeditPreferencesDialog *dlg)
 			 dlg->priv->highlight_current_line_checkbutton,
 			 "active",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+	g_settings_bind (dlg->priv->uisettings,
+	                 GEDIT_SETTINGS_STATUSBAR_VISIBLE,
+	                 dlg->priv->display_statusbar_checkbutton,
+	                 "active",
+	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 	g_settings_bind (dlg->priv->editor,
 	                 GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN,
 	                 dlg->priv->right_margin_checkbutton,
@@ -1098,6 +1106,7 @@ gedit_preferences_dialog_init (GeditPreferencesDialog *dlg)
 
 	dlg->priv = gedit_preferences_dialog_get_instance_private (dlg);
 	dlg->priv->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
+	dlg->priv->uisettings = g_settings_new ("org.gnome.gedit.preferences.ui");
 
 	gtk_widget_init_template (GTK_WIDGET (dlg));
 
