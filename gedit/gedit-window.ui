@@ -94,6 +94,9 @@
     <child type="titlebar">
       <object class="GtkPaned" id="titlebar_paned">
         <property name="visible">True</property>
+        <style>
+          <class name="gedit-headerbar-paned"/>
+        </style>
         <child>
           <object class="GtkHeaderBar" id="side_headerbar">
             <property name="visible">True</property>
@@ -220,6 +223,9 @@
             <property name="can_focus">True</property>
             <property name="has_focus">False</property>
             <property name="is_focus">False</property>
+            <style>
+              <class name="gedit-sidepanel-paned"/>
+            </style>
             <child>
               <object class="GeditPanel" id="side_panel">
                 <property name="visible">False</property>
