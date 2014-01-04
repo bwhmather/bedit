@@ -3208,7 +3208,7 @@ static GActionEntry win_entries[] = {
 	{ "close", _gedit_cmd_file_close },
 	{ "side_panel", activate_toggle, NULL, "false", _gedit_cmd_view_toggle_side_panel },
 	{ "bottom_panel", activate_toggle, NULL, "false", _gedit_cmd_view_toggle_bottom_panel },
-	{ "fullscreen", _gedit_cmd_view_toggle_fullscreen_mode },
+	{ "fullscreen", activate_toggle, NULL, "false", _gedit_cmd_view_toggle_fullscreen_mode },
 	{ "leave_fullscreen", _gedit_cmd_view_leave_fullscreen_mode },
 	{ "find", _gedit_cmd_search_find },
 	{ "find_next", _gedit_cmd_search_find_next },

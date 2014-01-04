@@ -137,7 +137,7 @@ void		_gedit_cmd_view_toggle_bottom_panel	(GSimpleAction *action,
                                                          GVariant      *state,
                                                          gpointer       user_data);
 void		_gedit_cmd_view_toggle_fullscreen_mode	(GSimpleAction *action,
-                                                         GVariant      *parameter,
+                                                         GVariant      *state,
                                                          gpointer       user_data);
 void		_gedit_cmd_view_leave_fullscreen_mode	(GSimpleAction *action,
                                                          GVariant      *parameter,

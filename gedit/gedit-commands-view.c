@@ -92,17 +92,23 @@ _gedit_cmd_view_toggle_bottom_panel (GSimpleAction *action,
 
 void
 _gedit_cmd_view_toggle_fullscreen_mode (GSimpleAction *action,
-                                        GVariant      *parameter,
+                                        GVariant      *state,
                                         gpointer       user_data)
 {
 	GeditWindow *window = GEDIT_WINDOW (user_data);
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	if (_gedit_window_is_fullscreen (window))
-		_gedit_window_unfullscreen (window);
-	else
+	if (g_variant_get_boolean (state))
+	{
 		_gedit_window_fullscreen (window);
+	}
+	else
+	{
+		_gedit_window_unfullscreen (window);
+	}
+
+	g_simple_action_set_state (action, state);
 }
 
 void
