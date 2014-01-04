@@ -1284,6 +1284,11 @@ clone_window (GeditWindow *origin)
 	_gedit_panel_set_active_item_by_id (GEDIT_PANEL (window->priv->bottom_panel),
 					    panel_page);
 
+	gtk_widget_set_visible (window->priv->side_panel,
+	                        gtk_widget_get_visible (origin->priv->side_panel));
+	gtk_widget_set_visible (window->priv->bottom_panel,
+	                        gtk_widget_get_visible (origin->priv->bottom_panel));
+
 	return window;
 }
 
@@ -2912,19 +2917,26 @@ vpaned_restore_position (GtkWidget   *widget,
 }
 
 static void
-side_panel_visibility_changed (GSettings   *settings,
-                               const gchar *key,
+side_panel_visibility_changed (GtkWidget   *panel,
+                               GParamSpec  *pspec,
                                GeditWindow *window)
 {
-	GtkStyleContext *context;
 	gboolean visible;
+	GAction *action;
+	GtkStyleContext *context;
 
-	context = gtk_widget_get_style_context (window->priv->headerbar);
-	visible = g_settings_get_boolean (settings, key);
+	visible = gtk_widget_get_visible (panel);
 
-	gtk_widget_set_visible (window->priv->side_panel, visible);
+	g_settings_set_boolean (window->priv->ui_settings,
+				GEDIT_SETTINGS_SIDE_PANEL_VISIBLE,
+				visible);
+
+	/* sync the action state if the panel visibility was changed programmatically */
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "side_panel");
+	g_simple_action_set_state (G_SIMPLE_ACTION (action), g_variant_new_boolean (visible));
 
 	/* focus the right widget and set the right styles */
+	context = gtk_widget_get_style_context (window->priv->headerbar);
 	if (visible)
 	{
 		gtk_style_context_add_class (context, "gedit-titlebar-right");
@@ -2945,10 +2957,10 @@ setup_side_panel (GeditWindow *window)
 
 	gedit_debug (DEBUG_WINDOW);
 
-	g_signal_connect (window->priv->ui_settings,
-	                  "changed::side-panel-visible",
-	                  G_CALLBACK (side_panel_visibility_changed),
-	                  window);
+	g_signal_connect_after (window->priv->side_panel,
+	                        "notify::visible",
+	                        G_CALLBACK (side_panel_visibility_changed),
+	                        window);
 
 	documents_panel = gedit_documents_panel_new (window);
 	image = gtk_image_new_from_icon_name ("view-list-symbolic",
@@ -2961,24 +2973,28 @@ setup_side_panel (GeditWindow *window)
 			      image);
 }
 
-
-
 static void
-bottom_panel_visibility_changed (GSettings   *settings,
-				 const gchar *key,
-				 GeditWindow *window)
+bottom_panel_visibility_changed (GtkWidget   *panel,
+                                 GParamSpec  *pspec,
+                                 GeditWindow *window)
 {
 	gboolean visible;
+	GAction *action;
 
-	visible = g_settings_get_boolean (settings, key) &&
-	          gedit_panel_get_n_items (GEDIT_PANEL (window->priv->bottom_panel)) > 0;
+	visible = gtk_widget_get_visible (panel);
 
-	gtk_widget_set_visible (window->priv->bottom_panel, visible);
+	g_settings_set_boolean (window->priv->ui_settings,
+				GEDIT_SETTINGS_BOTTOM_PANEL_VISIBLE,
+				visible);
+
+	/* sync the action state if the panel visibility was changed programmatically */
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom_panel");
+	g_simple_action_set_state (G_SIMPLE_ACTION (action), g_variant_new_boolean (visible));
 
 	/* focus the right widget */
 	if (visible)
 	{
-		gtk_widget_grab_focus (window->priv->bottom_panel);
+		gtk_widget_grab_focus (window->priv->side_panel);
 	}
 	else
 	{
@@ -2991,10 +3007,15 @@ bottom_panel_item_removed (GeditPanel  *panel,
 			   GtkWidget   *item,
 			   GeditWindow *window)
 {
-	if (gedit_panel_get_n_items (panel) == 0)
-	{
-		gtk_widget_hide (GTK_WIDGET (panel));
-	}
+	gboolean empty;
+	GAction *action;
+
+	empty = gedit_panel_get_n_items (panel) == 0;
+
+	gtk_widget_set_visible (GTK_WIDGET (panel), !empty);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom_panel");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), !empty);
 }
 
 static void
@@ -3007,6 +3028,7 @@ bottom_panel_item_added (GeditPanel  *panel,
 	if (gedit_panel_get_n_items (panel) == 1)
 	{
 		gboolean show;
+		GAction *action;
 
 		show = g_settings_get_boolean (window->priv->ui_settings,
 		                               "bottom-panel-visible");
@@ -3014,6 +3036,9 @@ bottom_panel_item_added (GeditPanel  *panel,
 		{
 			gtk_widget_show (GTK_WIDGET (panel));
 		}
+
+		action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom_panel");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
 	}
 }
 
@@ -3022,10 +3047,10 @@ setup_bottom_panel (GeditWindow *window)
 {
 	gedit_debug (DEBUG_WINDOW);
 
-	g_signal_connect_after (window->priv->ui_settings,
-				"changed::bottom-panel-visible",
-				G_CALLBACK (bottom_panel_visibility_changed),
-				window);
+	g_signal_connect_after (window->priv->bottom_panel,
+	                        "notify::visible",
+	                        G_CALLBACK (bottom_panel_visibility_changed),
+	                        window);
 }
 
 static void
@@ -3065,6 +3090,13 @@ init_panels_visibility (GeditWindow *window)
 		{
 			gtk_widget_show (window->priv->bottom_panel);
 		}
+	}
+	else
+	{
+		GAction *action;
+
+		action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom_panel");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 	}
 
 	/* start track sensitivity after the initial state is set */
@@ -3154,6 +3186,18 @@ extension_removed (PeasExtensionSet *extensions,
 	gtk_ui_manager_ensure_update (window->priv->manager);
 }
 
+static void
+activate_toggle (GSimpleAction *action,
+                 GVariant      *parameter,
+                 gpointer       user_data)
+{
+	GVariant *state;
+
+	state = g_action_get_state (G_ACTION (action));
+	g_action_change_state (G_ACTION (action), g_variant_new_boolean (!g_variant_get_boolean (state)));
+	g_variant_unref (state);
+}
+
 static GActionEntry win_entries[] = {
 	{ "open", _gedit_cmd_file_open },
 	{ "new_tab", _gedit_cmd_file_new },
@@ -3162,6 +3206,8 @@ static GActionEntry win_entries[] = {
 	{ "print", _gedit_cmd_file_print },
 	{ "revert", _gedit_cmd_file_revert },
 	{ "close", _gedit_cmd_file_close },
+	{ "side_panel", activate_toggle, NULL, "false", _gedit_cmd_view_toggle_side_panel },
+	{ "bottom_panel", activate_toggle, NULL, "false", _gedit_cmd_view_toggle_bottom_panel },
 	{ "fullscreen", _gedit_cmd_view_toggle_fullscreen_mode },
 	{ "leave_fullscreen", _gedit_cmd_view_leave_fullscreen_mode },
 	{ "find", _gedit_cmd_search_find },
@@ -3380,7 +3426,6 @@ gedit_window_init (GeditWindow *window)
 	peas_extension_set_foreach (window->priv->extensions,
 	                            (PeasExtensionSetForeachFunc) extension_added,
 	                            window);
-
 
 	/* set visibility of panels.
 	 * This needs to be done after plugins activatation */

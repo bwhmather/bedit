@@ -43,6 +43,54 @@
 #include "gedit-highlight-mode-dialog.h"
 
 void
+_gedit_cmd_view_toggle_side_panel (GSimpleAction *action,
+                                   GVariant      *state,
+                                   gpointer       user_data)
+{
+	GeditWindow *window = GEDIT_WINDOW (user_data);
+	GeditPanel *panel;
+	gboolean visible;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	panel = gedit_window_get_side_panel (window);
+
+	visible = g_variant_get_boolean (state);
+	gtk_widget_set_visible (GTK_WIDGET (panel), visible);
+
+	if (visible)
+	{
+		gtk_widget_grab_focus (GTK_WIDGET (panel));
+	}
+
+	g_simple_action_set_state (action, state);
+}
+
+void
+_gedit_cmd_view_toggle_bottom_panel (GSimpleAction *action,
+                                     GVariant      *state,
+                                     gpointer       user_data)
+{
+	GeditWindow *window = GEDIT_WINDOW (user_data);
+	GeditPanel *panel;
+	gboolean visible;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	panel = gedit_window_get_bottom_panel (window);
+
+	visible = g_variant_get_boolean (state);
+	gtk_widget_set_visible (GTK_WIDGET (panel), visible);
+
+	if (visible)
+	{
+		gtk_widget_grab_focus (GTK_WIDGET (panel));
+	}
+
+	g_simple_action_set_state (action, state);
+}
+
+void
 _gedit_cmd_view_toggle_fullscreen_mode (GSimpleAction *action,
                                         GVariant      *parameter,
                                         gpointer       user_data)

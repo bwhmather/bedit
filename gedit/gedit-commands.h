@@ -130,7 +130,12 @@ void		_gedit_cmd_edit_select_all		(GSimpleAction *action,
 void		_gedit_cmd_edit_preferences		(GSimpleAction *action,
                                                          GVariant      *parameter,
                                                          gpointer       user_data);
-
+void		_gedit_cmd_view_toggle_side_panel	(GSimpleAction *action,
+                                                         GVariant      *state,
+                                                         gpointer       user_data);
+void		_gedit_cmd_view_toggle_bottom_panel	(GSimpleAction *action,
+                                                         GVariant      *state,
+                                                         gpointer       user_data);
 void		_gedit_cmd_view_toggle_fullscreen_mode	(GSimpleAction *action,
                                                          GVariant      *parameter,
                                                          gpointer       user_data);

@@ -32,6 +32,14 @@
     <section>
       <attribute name="id">ext6</attribute>
       <item>
+        <attribute name="label" translatable="yes">Side _Panel</attribute>
+        <attribute name="action">win.side_panel</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Bottom Panel</attribute>
+        <attribute name="action">win.bottom_panel</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">_Fullscreen</attribute>
         <attribute name="action">win.fullscreen</attribute>
       </item>

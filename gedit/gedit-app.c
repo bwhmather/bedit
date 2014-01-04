@@ -467,22 +467,11 @@ gedit_app_startup (GApplication *application)
 	if (_gedit_app_has_app_menu (app))
 	{
 		GtkBuilder *builder;
-		GAction *action;
 
 		g_action_map_add_action_entries (G_ACTION_MAP (app),
 		                                 app_entries,
 		                                 G_N_ELEMENTS (app_entries),
 		                                 app);
-
-		action = g_settings_create_action (app->priv->ui_settings,
-		                                   "side-panel-visible");
-		g_action_map_add_action (G_ACTION_MAP (app), action);
-		g_object_unref (action);
-
-		action = g_settings_create_action (app->priv->ui_settings,
-		                                   "bottom-panel-visible");
-		g_action_map_add_action (G_ACTION_MAP (app), action);
-		g_object_unref (action);
 
 		builder = gtk_builder_new ();
 		if (!gtk_builder_add_from_resource (builder,
