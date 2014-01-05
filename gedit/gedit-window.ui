@@ -8,12 +8,17 @@
     <section>
       <attribute name="id">ext2</attribute>
       <item>
+        <attribute name="label" translatable="yes">_Reload</attribute>
+        <attribute name="action">win.revert</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">_Save As…</attribute>
         <attribute name="action">win.save_as</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_Reload</attribute>
-        <attribute name="action">win.revert</attribute>
+        <attribute name="label" translatable="yes">Save _All</attribute>
+        <attribute name="action">win.save_all</attribute>
+        <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;l</attribute>
       </item>
     </section>
     <section>
@@ -81,6 +86,11 @@
     </section>
     <section>
       <attribute name="id">ext12</attribute>
+      <item>
+        <attribute name="label" translatable="yes">_Close All</attribute>
+        <attribute name="action">win.close_all</attribute>
+        <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;w</attribute>
+      </item>
       <item>
         <attribute name="label" translatable="yes">_Close</attribute>
         <attribute name="action">win.close</attribute>
