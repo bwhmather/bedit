@@ -368,27 +368,6 @@
             </child>
           </object>
           <packing>
-            <property name="pack_type">start</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="fullscreen_find_button">
-            <property name="visible">True</property>
-            <property name="valign">center</property>
-            <property name="tooltip_text" translatable="yes">Search for text</property>
-            <property name="action_name">win.find</property>
-            <style>
-              <class name="image-button"/>
-            </style>
-            <child>
-              <object class="GtkImage" id="fullscreen_find_image">
-                <property name="visible">True</property>
-                <property name="icon_size">1</property>
-                <property name="icon_name">edit-find-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
             <property name="pack_type">end</property>
           </packing>
         </child>
