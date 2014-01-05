@@ -140,8 +140,6 @@ GeditPanel	*gedit_window_get_bottom_panel		(GeditWindow         *window);
 
 GtkWidget	*gedit_window_get_statusbar		(GeditWindow         *window);
 
-GtkUIManager	*gedit_window_get_ui_manager		(GeditWindow         *window);
-
 GeditWindowState gedit_window_get_state 		(GeditWindow         *window);
 
 GeditTab        *gedit_window_get_tab_from_location	(GeditWindow         *window,

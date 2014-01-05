@@ -82,11 +82,7 @@ struct _GeditWindowPrivate
 	guint 	        tab_width_id;
 	guint 	        language_changed_id;
 
-	/* Menus & Toolbars */
-	GtkUIManager   *manager;
-	GtkActionGroup *documents_list_action_group;
-	guint           documents_list_menu_ui_id;
-
+	/* Headerbars */
 	GtkWidget      *titlebar_paned;
 	GtkWidget      *side_headerbar;
 	GtkWidget      *headerbar;
@@ -95,7 +91,6 @@ struct _GeditWindowPrivate
 	GMenuModel     *gear_menu;
 
 	/* recent files */
-	guint           update_documents_list_menu_id;
 
 	gint            num_tabs_with_error;
 
