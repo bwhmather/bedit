@@ -2030,6 +2030,12 @@ fullscreen_controls_setup (GeditWindow *window)
 				      GTK_WINDOW (&window->window));
 	gtk_window_set_attached_to (GTK_WINDOW (window), priv->fullscreen_controls);
 
+	/* this is a hack to make the fullscreen control see the window actions.
+	 * GTK should grow something better to do this */
+	gtk_widget_insert_action_group (priv->fullscreen_controls,
+	                                "win",
+	                                G_ACTION_GROUP (window));
+
 	g_signal_connect (priv->fullscreen_controls, "enter-notify-event",
 			  G_CALLBACK (on_fullscreen_controls_enter_notify_event),
 			  window);
