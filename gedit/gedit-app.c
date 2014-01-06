@@ -495,57 +495,57 @@ gedit_app_startup (GApplication *application)
 
 	/* Accelerators */
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>Q", "app.quit", NULL);
+	                                 "<Primary>Q", "app.quit", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
 	                                 "F1", "app.help", NULL);
 
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>O", "win.open", NULL);
+	                                 "<Primary>O", "win.open", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>S", "win.save", NULL);
+	                                 "<Primary>S", "win.save", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control><Shift>S", "win.save_as", NULL);
+	                                 "<Primary><Shift>S", "win.save_as", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control><Shift>L", "win.save_all", NULL);
+	                                 "<Primary><Shift>L", "win.save_all", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>T", "win.new_tab", NULL);
+	                                 "<Primary>T", "win.new_tab", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>W", "win.close", NULL);
+	                                 "<Primary>W", "win.close", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control><Shift>W", "win.close_all", NULL);
+	                                 "<Primary><Shift>W", "win.close_all", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>P", "win.print", NULL);
+	                                 "<Primary>P", "win.print", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>F", "win.find", NULL);
+	                                 "<Primary>F", "win.find", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>G", "win.find_next", NULL);
+	                                 "<Primary>G", "win.find_next", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control><Shift>G", "win.find_prev", NULL);
+	                                 "<Primary><Shift>G", "win.find_prev", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>H", "win.replace", NULL);
+	                                 "<Primary>H", "win.replace", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control><Shift>K", "win.clear_highlight", NULL);
+	                                 "<Primary><Shift>K", "win.clear_highlight", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>I", "win.goto_line", NULL);
+	                                 "<Primary>I", "win.goto_line", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
 	                                 "F9", "win.side_panel", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control>F9", "win.bottom_panel", NULL);
+	                                 "<Primary>F9", "win.bottom_panel", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
 	                                 "F11", "win.fullscreen", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control><Alt>N", "win.new_tab_group", NULL);
+	                                 "<Primary><Alt>N", "win.new_tab_group", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control><Shift><Alt>Page_Up",
+	                                 "<Primary><Shift><Alt>Page_Up",
 	                                 "win.previous_tab_group", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control><Shift><Alt>Page_Down",
+	                                 "<Primary><Shift><Alt>Page_Down",
 	                                 "win.next_tab_group", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control><Alt>Page_Up",
+	                                 "<Primary><Alt>Page_Up",
 	                                 "win.previous_document", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Control><Alt>Page_Down",
+	                                 "<Primary><Alt>Page_Down",
 	                                 "win.next_document", NULL);
 
 	/* Load custom css */
