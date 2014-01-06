@@ -241,7 +241,8 @@ gedit-marshal.c: gedit-marshal.list $(GLIB_GENMARSHAL)
 	$(AM_V_GEN) echo "#include \"gedit-marshal.h\"" > $@ && \
 	$(GLIB_GENMARSHAL) $< --body --prefix=gedit_marshal >> $@
 
-gedit-resources.c: gedit.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/gedit.gresource.xml)
+resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/gedit.gresource.xml)
+gedit-resources.c: gedit.gresource.xml $(resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $(srcdir)/gedit.gresource.xml
 
 if ENABLE_PYTHON
@@ -256,18 +257,7 @@ EXTRA_DIST = 				\
 	gedit-marshal.list		\
 	gedit.rc			\
 	gedit.gresource.xml		\
-	gedit-ui.xml			\
-	gedit-ui-fallback.xml		\
-	gedit-menu.ui			\
-	gedit-encodings-dialog.ui	\
-	gedit-preferences-dialog.ui	\
-	gedit-replace-dialog.ui		\
-	gedit-print-preview.ui		\
-	gedit-print-preferences.ui	\
-	gedit-progress-info-bar.ui	\
-	gedit-status-menu-button.ui	\
-	gedit-view-frame.ui		\
-	gedit-highlight-mode-dialog.ui
+	$(resource_files)
 
 CLEANFILES = $(BUILT_SOURCES) $(BUILT_SOURCES_PRIVATE)
 
