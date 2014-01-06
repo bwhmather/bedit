@@ -2609,6 +2609,7 @@ side_panel_visibility_changed (GtkWidget   *panel,
 	gboolean visible;
 	GAction *action;
 	GtkStyleContext *context;
+	gchar *layout_desc;
 
 	visible = gtk_widget_get_visible (panel);
 
@@ -2632,6 +2633,34 @@ side_panel_visibility_changed (GtkWidget   *panel,
 		gtk_style_context_remove_class (context, "gedit-titlebar-right");
 		gtk_widget_grab_focus (GTK_WIDGET (window->priv->multi_notebook));
 	}
+
+	g_object_get (gtk_settings_get_default (),
+		      "gtk-decoration-layout", &layout_desc,
+		      NULL);
+	if (visible)
+	{
+		gchar **tokens;
+
+		tokens = g_strsplit (layout_desc, ":", 2);
+		if (tokens)
+		{
+			gchar *layout_headerbar;
+
+			layout_headerbar = g_strdup_printf ("%c%s", ':', tokens[1]);
+			gtk_header_bar_set_decoration_layout (GTK_HEADER_BAR (window->priv->headerbar), layout_headerbar);
+			gtk_header_bar_set_decoration_layout (GTK_HEADER_BAR (window->priv->side_headerbar), tokens[0]);
+
+			g_free (layout_headerbar);
+			g_strfreev (tokens);
+		}
+	}
+	else
+	{
+		gtk_header_bar_set_decoration_layout (GTK_HEADER_BAR (window->priv->headerbar), layout_desc);
+		gtk_header_bar_set_decoration_layout (GTK_HEADER_BAR (window->priv->side_headerbar), NULL);
+	}
+
+	g_free (layout_desc);
 }
 
 static void
