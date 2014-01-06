@@ -65,6 +65,7 @@ struct _GeditWindowPrivate
 
 	/* Widgets for fullscreen mode */
 	GtkWidget      *fullscreen_controls;
+	GtkMenuButton  *fullscreen_gear_button;
 	gboolean        fullscreen_controls_setup;
 	guint           fullscreen_animation_timeout_id;
 	gboolean        fullscreen_animation_enter;
@@ -88,7 +89,10 @@ struct _GeditWindowPrivate
 	GtkWidget      *headerbar;
 	GtkWidget      *open_button;
 	GtkWidget      *open_menu;
+	GtkMenuButton  *gear_button;
 	GMenuModel     *gear_menu;
+	GMenuModel     *gear_menu_win;
+	GMenuModel     *gear_menu_app;
 
 	/* recent files */
 

@@ -425,7 +425,9 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, open_menu);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_menu);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_menu_win);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_menu_app);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, hpaned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, vpaned);
@@ -433,6 +435,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, bottom_panel);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, statusbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_controls);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_gear_button);
 }
 
 static void
@@ -2995,6 +2998,20 @@ gedit_window_init (GeditWindow *window)
 	                        G_BINDING_DEFAULT | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
 	setup_headerbar_open_button (window);
+
+	if (_gedit_app_has_app_menu (GEDIT_APP (g_application_get_default ())))
+	{
+		window->priv->gear_menu = window->priv->gear_menu_win;
+	}
+	else
+	{
+		window->priv->gear_menu = window->priv->gear_menu_app;
+	}
+
+	gtk_menu_button_set_menu_model (window->priv->gear_button,
+	                                window->priv->gear_menu);
+	gtk_menu_button_set_menu_model (window->priv->fullscreen_gear_button,
+	                                window->priv->gear_menu);
 
 	/* Setup status bar */
 	setup_statusbar (window);
