@@ -495,6 +495,11 @@ gedit_app_startup (GApplication *application)
 
 	/* Accelerators */
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
+	                                 "<Control>Q", "app.quit", NULL);
+	gtk_application_add_accelerator (GTK_APPLICATION (application),
+	                                 "F1", "app.help", NULL);
+
+	gtk_application_add_accelerator (GTK_APPLICATION (application),
 	                                 "<Control>O", "win.open", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
 	                                 "<Control>S", "win.save", NULL);
