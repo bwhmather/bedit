@@ -463,15 +463,15 @@ gedit_app_startup (GApplication *application)
 	/* initial lockdown state */
 	app->priv->lockdown = gedit_settings_get_lockdown (GEDIT_SETTINGS (app->priv->settings));
 
+	g_action_map_add_action_entries (G_ACTION_MAP (app),
+	                                 app_entries,
+	                                 G_N_ELEMENTS (app_entries),
+	                                 app);
+
 	/* app menu */
 	if (_gedit_app_has_app_menu (app))
 	{
 		GtkBuilder *builder;
-
-		g_action_map_add_action_entries (G_ACTION_MAP (app),
-		                                 app_entries,
-		                                 G_N_ELEMENTS (app_entries),
-		                                 app);
 
 		builder = gtk_builder_new ();
 		if (!gtk_builder_add_from_resource (builder,
