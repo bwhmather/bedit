@@ -23,6 +23,7 @@
 #endif
 
 #include "gedit-spell-plugin.h"
+#include "gedit-spell-app-activatable.h"
 #include "gedit-spell-utils.h"
 
 #include <string.h> /* For strlen */
@@ -1229,6 +1230,7 @@ G_MODULE_EXPORT void
 peas_register_types (PeasObjectModule *module)
 {
 	gedit_spell_plugin_register_type (G_TYPE_MODULE (module));
+	gedit_spell_app_activatable_register (G_TYPE_MODULE (module));
 
 	peas_object_module_register_extension_type (module,
 						    GEDIT_TYPE_WINDOW_ACTIVATABLE,

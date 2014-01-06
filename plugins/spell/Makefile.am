@@ -18,6 +18,8 @@ plugin_LTLIBRARIES = libspell.la
 libspell_la_SOURCES = \
 	gedit-spell-plugin.c 				\
 	gedit-spell-plugin.h 				\
+	gedit-spell-app-activatable.c			\
+	gedit-spell-app-activatable.h			\
 	gedit-spell-checker.c 				\
 	gedit-spell-checker.h				\
 	gedit-spell-checker-dialog.c			\
