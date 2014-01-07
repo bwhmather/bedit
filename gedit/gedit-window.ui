@@ -42,6 +42,7 @@
       <item>
         <attribute name="label" translatable="yes">_Bottom Panel</attribute>
         <attribute name="action">win.bottom_panel</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Fullscreen</attribute>
@@ -139,6 +140,7 @@
       <item>
         <attribute name="label" translatable="yes">_Bottom Panel</attribute>
         <attribute name="action">win.bottom_panel</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Fullscreen</attribute>
