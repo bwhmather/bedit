@@ -1137,12 +1137,15 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 
 	item = g_menu_item_new (_("_Check Spelling..."), "win.check_spell");
 	gedit_menu_extension_append_menu_item (priv->menu, item);
+	g_object_unref (item);
 
 	item = g_menu_item_new (_("Set _Language..."), "win.config_spell");
 	gedit_menu_extension_append_menu_item (priv->menu, item);
+	g_object_unref (item);
 
 	item = g_menu_item_new (_("_Highlight Misspelled Words"), "win.auto_spell");
 	gedit_menu_extension_append_menu_item (priv->menu, item);
+	g_object_unref (item);
 
 	priv->message_cid = gtk_statusbar_get_context_id (GTK_STATUSBAR (gedit_window_get_statusbar (priv->window)),
 	                                                  "spell_plugin_message");
