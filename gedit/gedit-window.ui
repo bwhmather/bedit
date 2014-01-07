@@ -233,6 +233,10 @@
               <class name="titlebar"/>
             </style>
           </object>
+          <packing>
+            <property name="resize">False</property>
+            <property name="shrink">False</property>
+          </packing>
         </child>
         <child>
           <object class="GtkHeaderBar" id="headerbar">
@@ -550,6 +554,13 @@
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkSizeGroup">
+    <property name="mode">horizontal</property>
+    <widgets>
+      <widget name="side_headerbar"/>
+      <widget name="side_panel"/>
+    </widgets>
   </object>
 </interface>
 
