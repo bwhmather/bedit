@@ -117,8 +117,15 @@ _gedit_cmd_view_leave_fullscreen_mode (GSimpleAction *action,
                                        gpointer       user_data)
 {
 	GeditWindow *window = GEDIT_WINDOW (user_data);
+	GAction *fullscreen_action;
 
 	_gedit_window_unfullscreen (window);
+
+	fullscreen_action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                                "fullscreen");
+
+	g_simple_action_set_state (G_SIMPLE_ACTION (fullscreen_action),
+	                           g_variant_new_boolean (FALSE));
 }
 
 static void
