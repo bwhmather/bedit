@@ -110,8 +110,8 @@ gedit_window_get_property (GObject    *object,
 	switch (prop_id)
 	{
 		case PROP_STATE:
-			g_value_set_enum (value,
-					  gedit_window_get_state (window));
+			g_value_set_flags (value,
+					   gedit_window_get_state (window));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
