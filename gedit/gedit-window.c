@@ -435,6 +435,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, bottom_panel);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, statusbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_controls);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_open_menu);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_gear_button);
 }
 
@@ -2038,6 +2039,12 @@ fullscreen_controls_setup (GeditWindow *window)
 	gtk_widget_insert_action_group (priv->fullscreen_controls,
 	                                "win",
 	                                G_ACTION_GROUP (window));
+
+	g_settings_bind (window->priv->ui_settings,
+	                 GEDIT_SETTINGS_MAX_RECENTS,
+	                 window->priv->fullscreen_open_menu,
+	                 "limit",
+	                 G_SETTINGS_BIND_GET);
 
 	g_signal_connect (priv->fullscreen_controls, "enter-notify-event",
 			  G_CALLBACK (on_fullscreen_controls_enter_notify_event),

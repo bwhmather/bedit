@@ -106,21 +106,12 @@ gedit_open_menu_button_set_property (GObject      *object,
 	{
 		case PROP_LIMIT:
 			priv->limit = g_value_get_int (value);
+			set_recent_menu (button);
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
 	}
-}
-
-static void
-gedit_open_menu_button_constructed (GObject *object)
-{
-	GeditOpenMenuButton *button = GEDIT_OPEN_MENU_BUTTON (object);
-
-	set_recent_menu (button);
-
-	G_OBJECT_CLASS (gedit_open_menu_button_parent_class)->constructed (object);
 }
 
 static void
@@ -140,7 +131,6 @@ gedit_open_menu_button_class_init (GeditOpenMenuButtonClass *klass)
 	object_class->dispose = gedit_open_menu_button_dispose;
 	object_class->get_property = gedit_open_menu_button_get_property;
 	object_class->set_property = gedit_open_menu_button_set_property;
-	object_class->constructed = gedit_open_menu_button_constructed;
 
 	g_object_class_install_property (object_class, PROP_LIMIT,
 	                                 g_param_spec_int ("limit",
