@@ -296,6 +296,25 @@
               </packing>
             </child>
             <child>
+              <object class="GtkMenuButton" id="gear_button">
+                <property name="visible">True</property>
+                <property name="valign">center</property>
+                <style>
+                  <class name="image-button"/>
+                </style>
+                <child>
+                  <object class="GtkImage" id="gear_image">
+                    <property name="visible">True</property>
+                    <property name="icon_size">1</property>
+                    <property name="icon_name">emblem-system-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="pack_type">end</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkButton" id="save_button">
                 <property name="visible">True</property>
                 <property name="valign">center</property>
@@ -309,25 +328,6 @@
                     <property name="visible">True</property>
                     <property name="icon_size">1</property>
                     <property name="icon_name">document-save-symbolic</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="pack_type">end</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkMenuButton" id="gear_button">
-                <property name="visible">True</property>
-                <property name="valign">center</property>
-                <style>
-                  <class name="image-button"/>
-                </style>
-                <child>
-                  <object class="GtkImage" id="gear_image">
-                    <property name="visible">True</property>
-                    <property name="icon_size">1</property>
-                    <property name="icon_name">emblem-system-symbolic</property>
                   </object>
                 </child>
               </object>
@@ -477,19 +477,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="fullscreen_save_button">
+          <object class="GtkButton" id="leave_fullscreen_button">
             <property name="visible">True</property>
             <property name="valign">center</property>
-            <property name="tooltip_text" translatable="yes">Save the current file</property>
-            <property name="action_name">win.save</property>
+            <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
+            <property name="action_name">win.leave_fullscreen</property>
             <style>
               <class name="image-button"/>
             </style>
             <child>
-              <object class="GtkImage" id="fullscreen_save_image">
+              <object class="GtkImage" id="leave_fullscreen_image">
                 <property name="visible">True</property>
                 <property name="icon_size">1</property>
-                <property name="icon_name">document-save-symbolic</property>
+                <property name="icon_name">view-restore-symbolic</property>
               </object>
             </child>
           </object>
@@ -517,19 +517,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="leave_fullscreen_button">
+          <object class="GtkButton" id="fullscreen_save_button">
             <property name="visible">True</property>
             <property name="valign">center</property>
-            <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
-            <property name="action_name">win.leave_fullscreen</property>
+            <property name="tooltip_text" translatable="yes">Save the current file</property>
+            <property name="action_name">win.save</property>
             <style>
               <class name="image-button"/>
             </style>
             <child>
-              <object class="GtkImage" id="leave_fullscreen_image">
+              <object class="GtkImage" id="fullscreen_save_image">
                 <property name="visible">True</property>
                 <property name="icon_size">1</property>
-                <property name="icon_name">view-restore-symbolic</property>
+                <property name="icon_name">document-save-symbolic</property>
               </object>
             </child>
           </object>
@@ -541,3 +541,4 @@
     </child>
   </object>
 </interface>
+
