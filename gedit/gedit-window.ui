@@ -363,29 +363,50 @@
               </packing>
             </child>
             <child>
-              <object class="GtkPaned" id="vpaned">
+              <object class="GtkBox" id="content_box">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="has_focus">False</property>
-                <property name="is_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GeditMultiNotebook" id="multi_notebook">
+                  <object class="GtkPaned" id="vpaned">
                     <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="has_focus">False</property>
+                    <property name="is_focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GeditMultiNotebook" id="multi_notebook">
+                        <property name="visible">True</property>
+                      </object>
+                      <packing>
+                        <property name="resize">True</property>
+                        <property name="shrink">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GeditPanel" id="bottom_panel">
+                        <property name="visible">False</property>
+                        <property name="orientation">horizontal</property>
+                      </object>
+                      <packing>
+                        <property name="resize">False</property>
+                        <property name="shrink">False</property>
+                      </packing>
+                    </child>
                   </object>
                   <packing>
-                    <property name="resize">True</property>
-                    <property name="shrink">False</property>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GeditPanel" id="bottom_panel">
-                    <property name="visible">False</property>
-                    <property name="orientation">horizontal</property>
+                  <object class="GeditStatusbar" id="statusbar">
+                    <property name="visible">True</property>
                   </object>
                   <packing>
-                    <property name="resize">False</property>
-                    <property name="shrink">False</property>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
                   </packing>
                 </child>
               </object>
@@ -399,16 +420,6 @@
             <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GeditStatusbar" id="statusbar">
-            <property name="visible">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
           </packing>
         </child>
       </object>
