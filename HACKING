@@ -84,6 +84,33 @@ tracker reference if applicable) and so forth. Be concise but not too brief.
     git commit -a --author "Joe Coder <joe@coder.org>" and --signoff.
 
 
+Code conventions
+================
+
+You may encounter old code that doesn't follow all the following code
+conventions, but for new code it is better to follow them, for consistency.
+
+  - Avoid trailing whitespace.
+
+  - Indent the C code with tabulations with a width of eight characters.
+
+  - The files should have a modeline for the indentation style.
+
+  - All blocks should be surrounded by curly braces, even one-line blocks. It
+    spaces out the code, and it is more convenient when some code must be added
+    or removed without the need to add or remove the curly braces.
+
+  - Follow the C89 standard. In particular, no "//"-style comments.
+
+
+See also
+========
+
+https://wiki.gnome.org/Apps/Gedit/DevGettingStarted
+https://wiki.gnome.org/Projects/GTK%2B/BestPractices
+ftp://ftp.gnome.org/pub/GNOME/teams/docs/devel/guides/programming_guidelines/
+
+
 Thanks,
 
   The gedit team.
