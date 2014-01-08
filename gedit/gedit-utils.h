@@ -88,12 +88,6 @@ void		 gedit_utils_set_atk_relation		(GtkWidget        *obj1,
 							 GtkWidget        *obj2,
 							 AtkRelationType   rel_type);
 
-G_DEPRECATED_FOR (gtk_source_utils_escape_search_text)
-gchar		*gedit_utils_escape_search_text		(const gchar      *text);
-
-G_DEPRECATED_FOR (gtk_source_utils_unescape_search_text)
-gchar		*gedit_utils_unescape_search_text	(const gchar      *text);
-
 void		 gedit_warning				(GtkWindow        *parent,
 							 const gchar      *format,
 							 ...) G_GNUC_PRINTF(2, 3);

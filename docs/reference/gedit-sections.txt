@@ -35,7 +35,6 @@ gedit_app_activatable_get_type
 
 <SECTION>
 <FILE>gedit-document</FILE>
-GeditSearchFlags
 GeditDocumentPrivate
 <TITLE>GeditDocument</TITLE>
 GeditDocument
@@ -57,21 +56,7 @@ gedit_document_is_untouched
 gedit_document_is_untitled
 gedit_document_get_deleted
 gedit_document_goto_line
-gedit_document_set_search_text
-gedit_document_get_search_text
-gedit_document_get_can_search_again
-gedit_document_search_forward
-gedit_document_search_backward
-gedit_document_replace_all
 gedit_document_set_language
-gedit_document_set_enable_search_highlighting
-gedit_document_get_enable_search_highlighting
-GEDIT_SEARCH_IS_DONT_SET_FLAGS
-GEDIT_SEARCH_SET_DONT_SET_FLAGS
-GEDIT_SEARCH_IS_ENTIRE_WORD
-GEDIT_SEARCH_SET_ENTIRE_WORD
-GEDIT_SEARCH_IS_CASE_SENSITIVE
-GEDIT_SEARCH_SET_CASE_SENSITIVE
 <SUBSECTION Standard>
 GEDIT_DOCUMENT
 GEDIT_IS_DOCUMENT
@@ -510,8 +495,6 @@ g_utf8_caselessnmatch
 gedit_utils_set_atk_name_description
 gedit_utils_set_atk_relation
 gedit_utils_uri_exists
-gedit_utils_escape_search_text
-gedit_utils_unescape_search_text
 gedit_utils_get_stdin
 gedit_warning
 gedit_utils_make_valid_utf8

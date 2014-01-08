@@ -74,21 +74,6 @@ typedef enum
 #define GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT GEDIT_DOCUMENT_NEWLINE_TYPE_LF
 #endif
 
-/**
- * GeditSearchFlags:
- * @GEDIT_SEARCH_DONT_SET_FLAGS:
- * @GEDIT_SEARCH_ENTIRE_WORD:
- * @GEDIT_SEARCH_CASE_SENSITIVE:
- *
- * Deprecated: 3.10: Use the search and replace API in #GtkSourceBuffer.
- */
-typedef enum
-{
-	GEDIT_SEARCH_DONT_SET_FLAGS	= 1 << 0,
-	GEDIT_SEARCH_ENTIRE_WORD	= 1 << 1,
-	GEDIT_SEARCH_CASE_SENSITIVE	= 1 << 2
-} GeditSearchFlags;
-
 /*
  * NOTE: when adding a new compression type, make sure to update:
  *   1) The document loader to support it
@@ -145,7 +130,7 @@ struct _GeditDocumentClass
 {
 	GtkSourceBufferClass parent_class;
 
-	/* Signals */ // CHECK: ancora da rivedere
+	/* Signals */
 
 	void (* cursor_moved)		(GeditDocument    *document);
 
@@ -178,11 +163,6 @@ struct _GeditDocumentClass
 
 	void (* saved)  		(GeditDocument    *document,
 					 const GError     *error);
-
-	void (* search_highlight_updated)
-					(GeditDocument    *document,
-					 GtkTextIter      *start,
-					 GtkTextIter      *end);
 };
 
 
@@ -267,38 +247,6 @@ gboolean	 gedit_document_goto_line_offset(GeditDocument       *doc,
 						 gint                 line,
 						 gint                 line_offset);
 
-G_DEPRECATED_FOR (gtk_source_buffer_set_search_text)
-void		 gedit_document_set_search_text	(GeditDocument       *doc,
-						 const gchar         *text,
-						 guint                flags);
-
-G_DEPRECATED_FOR (gtk_source_buffer_get_search_text)
-gchar		*gedit_document_get_search_text	(GeditDocument       *doc,
-						 guint               *flags);
-
-gboolean	 gedit_document_get_can_search_again
-						(GeditDocument       *doc);
-
-G_DEPRECATED_FOR (gtk_source_buffer_forward_search_async)
-gboolean	 gedit_document_search_forward	(GeditDocument       *doc,
-						 const GtkTextIter   *start,
-						 const GtkTextIter   *end,
-						 GtkTextIter         *match_start,
-						 GtkTextIter         *match_end);
-
-G_DEPRECATED_FOR (gtk_source_buffer_backward_search_async)
-gboolean	 gedit_document_search_backward	(GeditDocument       *doc,
-						 const GtkTextIter   *start,
-						 const GtkTextIter   *end,
-						 GtkTextIter         *match_start,
-						 GtkTextIter         *match_end);
-
-G_DEPRECATED_FOR (gtk_source_buffer_search_replace_all)
-gint		 gedit_document_replace_all 	(GeditDocument       *doc,
-				            	 const gchar         *find,
-						 const gchar         *replace,
-					    	 guint                flags);
-
 void 		 gedit_document_set_language 	(GeditDocument       *doc,
 						 GtkSourceLanguage   *lang);
 GtkSourceLanguage
@@ -306,15 +254,6 @@ GtkSourceLanguage
 
 const GeditEncoding
 		*gedit_document_get_encoding	(GeditDocument       *doc);
-
-G_DEPRECATED_FOR (gtk_source_buffer_set_highlight_search)
-void		 gedit_document_set_enable_search_highlighting
-						(GeditDocument       *doc,
-						 gboolean             enable);
-
-G_DEPRECATED_FOR (gtk_source_buffer_get_highlight_search)
-gboolean	 gedit_document_get_enable_search_highlighting
-						(GeditDocument       *doc);
 
 GeditDocumentNewlineType
 		 gedit_document_get_newline_type (GeditDocument      *doc);
@@ -348,19 +287,6 @@ gboolean	_gedit_document_check_externally_modified
 						(GeditDocument       *doc);
 
 gboolean	 _gedit_document_needs_saving	(GeditDocument       *doc);
-
-/* Search macros */
-#define GEDIT_SEARCH_IS_DONT_SET_FLAGS(sflags) ((sflags & GEDIT_SEARCH_DONT_SET_FLAGS) != 0)
-#define GEDIT_SEARCH_SET_DONT_SET_FLAGS(sflags,state) ((state == TRUE) ? \
-(sflags |= GEDIT_SEARCH_DONT_SET_FLAGS) : (sflags &= ~GEDIT_SEARCH_DONT_SET_FLAGS))
-
-#define GEDIT_SEARCH_IS_ENTIRE_WORD(sflags) ((sflags & GEDIT_SEARCH_ENTIRE_WORD) != 0)
-#define GEDIT_SEARCH_SET_ENTIRE_WORD(sflags,state) ((state == TRUE) ? \
-(sflags |= GEDIT_SEARCH_ENTIRE_WORD) : (sflags &= ~GEDIT_SEARCH_ENTIRE_WORD))
-
-#define GEDIT_SEARCH_IS_CASE_SENSITIVE(sflags) ((sflags &  GEDIT_SEARCH_CASE_SENSITIVE) != 0)
-#define GEDIT_SEARCH_SET_CASE_SENSITIVE(sflags,state) ((state == TRUE) ? \
-(sflags |= GEDIT_SEARCH_CASE_SENSITIVE) : (sflags &= ~GEDIT_SEARCH_CASE_SENSITIVE))
 
 /**
  * GeditMountOperationFactory: (skip)

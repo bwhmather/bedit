@@ -109,8 +109,6 @@ struct _GeditDocumentPrivate
 	 */
 	GtkSourceSearchContext *search_context;
 
-	GtkSourceSearchSettings *deprecated_search_settings;
-
 	GeditDocumentNewlineType newline_type;
 	GeditDocumentCompressionType compression_type;
 
@@ -155,8 +153,6 @@ enum {
 	PROP_MIME_TYPE,
 	PROP_READ_ONLY,
 	PROP_ENCODING,
-	PROP_CAN_SEARCH_AGAIN,
-	PROP_ENABLE_SEARCH_HIGHLIGHTING,
 	PROP_NEWLINE_TYPE,
 	PROP_COMPRESSION_TYPE,
 	PROP_EMPTY_SEARCH
@@ -170,7 +166,6 @@ enum {
 	SAVE,
 	SAVING,
 	SAVED,
-	SEARCH_HIGHLIGHT_UPDATED,
 	LAST_SIGNAL
 };
 
@@ -305,7 +300,6 @@ gedit_document_dispose (GObject *object)
 	g_clear_object (&doc->priv->metadata_info);
 	g_clear_object (&doc->priv->location);
 	g_clear_object (&doc->priv->search_context);
-	g_clear_object (&doc->priv->deprecated_search_settings);
 
 	doc->priv->dispose_has_run = TRUE;
 
@@ -357,16 +351,6 @@ gedit_document_get_property (GObject    *object,
 		case PROP_ENCODING:
 			g_value_set_boxed (value, doc->priv->encoding);
 			break;
-		case PROP_CAN_SEARCH_AGAIN:
-			G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-			g_value_set_boolean (value, gedit_document_get_can_search_again (doc));
-			G_GNUC_END_IGNORE_DEPRECATIONS;
-			break;
-		case PROP_ENABLE_SEARCH_HIGHLIGHTING:
-			g_value_set_boolean (value,
-					     doc->priv->search_context != NULL &&
-					     gtk_source_search_context_get_highlight (doc->priv->search_context));
-			break;
 		case PROP_NEWLINE_TYPE:
 			g_value_set_enum (value, doc->priv->newline_type);
 			break;
@@ -412,13 +396,6 @@ gedit_document_set_property (GObject      *object,
 		case PROP_CONTENT_TYPE:
 			gedit_document_set_content_type (doc,
 			                                 g_value_get_string (value));
-			break;
-		case PROP_ENABLE_SEARCH_HIGHLIGHTING:
-			if (doc->priv->search_context != NULL)
-			{
-				gtk_source_search_context_set_highlight (doc->priv->search_context,
-									 g_value_get_boolean (value));
-			}
 			break;
 		case PROP_NEWLINE_TYPE:
 			set_newline_type (doc,
@@ -537,36 +514,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 							     GEDIT_TYPE_ENCODING,
 							     G_PARAM_READABLE |
 							     G_PARAM_STATIC_STRINGS));
-
-	/**
-	 * GeditDocument:can-search-again:
-	 *
-	 * Deprecated: 3.10: Use the search and replace API of GtkSourceView
-	 * instead.
-	 */
-	g_object_class_install_property (object_class, PROP_CAN_SEARCH_AGAIN,
-					 g_param_spec_boolean ("can-search-again",
-							       "Can search again",
-							       "Wheter it's possible to search again in the document",
-							       FALSE,
-							       G_PARAM_READABLE |
-							       G_PARAM_STATIC_STRINGS |
-							       G_PARAM_DEPRECATED));
-
-	/**
-	 * GeditDocument:enable-search-highlighting:
-	 *
-	 * Deprecated: 3.10: Use the search and replace API of GtkSourceView
-	 * instead.
-	 */
-	g_object_class_install_property (object_class, PROP_ENABLE_SEARCH_HIGHLIGHTING,
-					 g_param_spec_boolean ("enable-search-highlighting",
-							       "Enable Search Highlighting",
-							       "Whether all the occurences of the searched string must be highlighted",
-							       FALSE,
-							       G_PARAM_READWRITE |
-							       G_PARAM_STATIC_STRINGS |
-							       G_PARAM_DEPRECATED));
 
 	/**
 	 * GeditDocument:newline-type:
@@ -740,27 +687,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_TYPE_NONE,
 			      1,
 			      G_TYPE_ERROR);
-
-	/**
-	 * GeditDocument::search-highlight-updated:
-	 * @document:
-	 * @start:
-	 * @end:
-	 * @user_data:
-	 *
-	 * Deprecated: 3.10: Use the #GtkSourceBuffer::highlight-updated signal instead.
-	 */
-	document_signals[SEARCH_HIGHLIGHT_UPDATED] =
-		g_signal_new ("search-highlight-updated",
-			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST | G_SIGNAL_DEPRECATED,
-			      G_STRUCT_OFFSET (GeditDocumentClass, search_highlight_updated),
-			      NULL, NULL,
-			      gedit_marshal_VOID__BOXED_BOXED,
-			      G_TYPE_NONE,
-			      2,
-			      GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
-			      GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE);
 }
 
 static void
@@ -982,18 +908,6 @@ get_default_content_type (void)
 }
 
 static void
-on_highlight_updated (GeditDocument *doc,
-		      GtkTextIter   *start,
-		      GtkTextIter   *end)
-{
-	g_signal_emit (doc,
-		       document_signals[SEARCH_HIGHLIGHT_UPDATED],
-		       0,
-		       start,
-		       end);
-}
-
-static void
 gedit_document_init (GeditDocument *doc)
 {
 	GeditDocumentPrivate *priv;
@@ -1056,11 +970,6 @@ gedit_document_init (GeditDocument *doc)
 	g_signal_connect (doc,
 			  "notify::location",
 			  G_CALLBACK (on_location_changed),
-			  NULL);
-
-	g_signal_connect (doc,
-			  "highlight-updated",
-			  G_CALLBACK (on_highlight_updated),
 			  NULL);
 }
 
@@ -2137,438 +2046,6 @@ gedit_document_goto_line_offset (GeditDocument *doc,
 	return ret;
 }
 
-static GtkSourceSearchContext *
-get_deprecated_search_context (GeditDocument *doc)
-{
-	GtkSourceSearchSettings *search_settings;
-
-	if (doc->priv->search_context == NULL)
-	{
-		return NULL;
-	}
-
-	search_settings = gtk_source_search_context_get_settings (doc->priv->search_context);
-
-	if (search_settings == doc->priv->deprecated_search_settings)
-	{
-		return doc->priv->search_context;
-	}
-
-	return NULL;
-}
-
-/**
- * gedit_document_set_search_text:
- * @doc:
- * @text: (allow-none):
- * @flags:
- *
- * Deprecated: 3.10: Use the search and replace API of GtkSourceView instead.
- **/
-
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
-void
-gedit_document_set_search_text (GeditDocument *doc,
-				const gchar   *text,
-				guint          flags)
-{
-	gchar *converted_text;
-	gboolean notify = FALSE;
-	GtkSourceSearchContext *search_context;
-
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail ((text == NULL) || g_utf8_validate (text, -1, NULL));
-
-	gedit_debug_message (DEBUG_DOCUMENT, "text = %s", text);
-
-	if (text != NULL)
-	{
-		if (*text != '\0')
-		{
-			converted_text = gtk_source_utils_unescape_search_text (text);
-			notify = !gedit_document_get_can_search_again (doc);
-		}
-		else
-		{
-			converted_text = g_strdup ("");
-			notify = gedit_document_get_can_search_again (doc);
-		}
-
-		gtk_source_search_settings_set_search_text (doc->priv->deprecated_search_settings,
-							    converted_text);
-
-		g_free (converted_text);
-	}
-
-	if (!GEDIT_SEARCH_IS_DONT_SET_FLAGS (flags))
-	{
-		gtk_source_search_settings_set_case_sensitive (doc->priv->deprecated_search_settings,
-							       GEDIT_SEARCH_IS_CASE_SENSITIVE (flags));
-
-		gtk_source_search_settings_set_at_word_boundaries (doc->priv->deprecated_search_settings,
-								   GEDIT_SEARCH_IS_ENTIRE_WORD (flags));
-	}
-
-	search_context = get_deprecated_search_context (doc);
-
-	if (search_context == NULL)
-	{
-		search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (doc),
-								doc->priv->deprecated_search_settings);
-
-		_gedit_document_set_search_context (doc, search_context);
-
-		g_object_unref (search_context);
-	}
-
-	if (notify)
-	{
-		g_object_notify (G_OBJECT (doc), "can-search-again");
-	}
-}
-
-G_GNUC_END_IGNORE_DEPRECATIONS;
-
-/**
- * gedit_document_get_search_text:
- * @doc:
- * @flags: (allow-none):
- *
- * Deprecated: 3.10: Use the search and replace API of GtkSourceView instead.
- */
-gchar *
-gedit_document_get_search_text (GeditDocument *doc,
-				guint         *flags)
-{
-	const gchar *search_text;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
-
-	if (flags != NULL)
-	{
-		*flags = 0;
-
-		if (gtk_source_search_settings_get_case_sensitive (doc->priv->deprecated_search_settings))
-		{
-			*flags |= GEDIT_SEARCH_CASE_SENSITIVE;
-		}
-
-		if (gtk_source_search_settings_get_at_word_boundaries (doc->priv->deprecated_search_settings))
-		{
-			*flags |= GEDIT_SEARCH_ENTIRE_WORD;
-		}
-	}
-
-	search_text = gtk_source_search_settings_get_search_text (doc->priv->deprecated_search_settings);
-
-	return gtk_source_utils_escape_search_text (search_text);
-}
-
-/**
- * gedit_document_get_can_search_again:
- * @doc:
- *
- * Deprecated: 3.10: Use the search and replace API of GtkSourceView instead.
- */
-gboolean
-gedit_document_get_can_search_again (GeditDocument *doc)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-
-	return gtk_source_search_settings_get_search_text (doc->priv->deprecated_search_settings) != NULL;
-}
-
-/**
- * gedit_document_search_forward:
- * @doc:
- * @start: (allow-none):
- * @end: (allow-none):
- * @match_start: (allow-none):
- * @match_end: (allow-none):
- *
- * Deprecated: 3.10: Use the search and replace API of GtkSourceView instead.
- **/
-gboolean
-gedit_document_search_forward (GeditDocument     *doc,
-			       const GtkTextIter *start,
-			       const GtkTextIter *end,
-			       GtkTextIter       *match_start,
-			       GtkTextIter       *match_end)
-{
-	const gchar *search_text;
-	GtkTextIter iter;
-	GtkTextSearchFlags search_flags;
-	gboolean found = FALSE;
-	GtkTextIter m_start;
-	GtkTextIter m_end;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-	g_return_val_if_fail ((start == NULL) ||
-			      (gtk_text_iter_get_buffer (start) ==  GTK_TEXT_BUFFER (doc)), FALSE);
-	g_return_val_if_fail ((end == NULL) ||
-			      (gtk_text_iter_get_buffer (end) ==  GTK_TEXT_BUFFER (doc)), FALSE);
-
-	search_text = gtk_source_search_settings_get_search_text (doc->priv->deprecated_search_settings);
-
-	if (search_text == NULL)
-	{
-		return FALSE;
-	}
-
-	if (start == NULL)
-		gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc), &iter);
-	else
-		iter = *start;
-
-	search_flags = GTK_TEXT_SEARCH_VISIBLE_ONLY | GTK_TEXT_SEARCH_TEXT_ONLY;
-
-	if (!gtk_source_search_settings_get_case_sensitive (doc->priv->deprecated_search_settings))
-	{
-		search_flags |= GTK_TEXT_SEARCH_CASE_INSENSITIVE;
-	}
-
-	while (!found)
-	{
-		found = gtk_text_iter_forward_search (&iter,
-		                                      search_text,
-		                                      search_flags,
-		                                      &m_start,
-		                                      &m_end,
-		                                      end);
-
-		if (found &&
-		    gtk_source_search_settings_get_at_word_boundaries (doc->priv->deprecated_search_settings))
-		{
-			found = gtk_text_iter_starts_word (&m_start) &&
-					gtk_text_iter_ends_word (&m_end);
-
-			if (!found)
-				iter = m_end;
-		}
-		else
-		{
-			break;
-		}
-	}
-
-	if (found && (match_start != NULL))
-		*match_start = m_start;
-
-	if (found && (match_end != NULL))
-		*match_end = m_end;
-
-	return found;
-}
-
-/**
- * gedit_document_search_backward:
- * @doc:
- * @start: (allow-none):
- * @end: (allow-none):
- * @match_start: (allow-none):
- * @match_end: (allow-none):
- *
- * Deprecated: 3.10: Use the search and replace API of GtkSourceView instead.
- **/
-gboolean
-gedit_document_search_backward (GeditDocument     *doc,
-				const GtkTextIter *start,
-				const GtkTextIter *end,
-				GtkTextIter       *match_start,
-				GtkTextIter       *match_end)
-{
-	const gchar *search_text;
-	GtkTextIter iter;
-	GtkTextSearchFlags search_flags;
-	gboolean found = FALSE;
-	GtkTextIter m_start;
-	GtkTextIter m_end;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-	g_return_val_if_fail ((start == NULL) ||
-			      (gtk_text_iter_get_buffer (start) ==  GTK_TEXT_BUFFER (doc)), FALSE);
-	g_return_val_if_fail ((end == NULL) ||
-			      (gtk_text_iter_get_buffer (end) ==  GTK_TEXT_BUFFER (doc)), FALSE);
-
-	search_text = gtk_source_search_settings_get_search_text (doc->priv->deprecated_search_settings);
-
-	if (search_text == NULL)
-	{
-		return FALSE;
-	}
-
-	if (end == NULL)
-		gtk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &iter);
-	else
-		iter = *end;
-
-	search_flags = GTK_TEXT_SEARCH_VISIBLE_ONLY | GTK_TEXT_SEARCH_TEXT_ONLY;
-
-	if (!gtk_source_search_settings_get_case_sensitive (doc->priv->deprecated_search_settings))
-	{
-		search_flags |= GTK_TEXT_SEARCH_CASE_INSENSITIVE;
-	}
-
-	while (!found)
-	{
-		found = gtk_text_iter_backward_search (&iter,
-		                                       search_text,
-		                                       search_flags,
-		                                       &m_start,
-		                                       &m_end,
-		                                       start);
-
-		if (found &&
-		    gtk_source_search_settings_get_at_word_boundaries (doc->priv->deprecated_search_settings))
-		{
-			found = gtk_text_iter_starts_word (&m_start) &&
-					gtk_text_iter_ends_word (&m_end);
-
-			if (!found)
-				iter = m_start;
-		}
-		else
-		{
-			break;
-		}
-	}
-
-	if (found && (match_start != NULL))
-		*match_start = m_start;
-
-	if (found && (match_end != NULL))
-		*match_end = m_end;
-
-	return found;
-}
-
-/**
- * gedit_document_replace_all:
- * @doc:
- * @find:
- * @replace:
- * @flags:
- *
- * Deprecated: 3.10: Use the search and replace API of GtkSourceView instead.
- */
-
-/* FIXME this is an issue for introspection regardning @find */
-gint
-gedit_document_replace_all (GeditDocument       *doc,
-			    const gchar         *find,
-			    const gchar         *replace,
-			    guint                flags)
-{
-	GtkTextIter iter;
-	GtkTextIter m_start;
-	GtkTextIter m_end;
-	GtkTextSearchFlags search_flags = 0;
-	gboolean found = TRUE;
-	gint cont = 0;
-	const gchar *search_text_from_settings;
-	gchar *search_text;
-	gchar *replace_text;
-	gint replace_text_len;
-	GtkTextBuffer *buffer;
-	gboolean brackets_highlighting;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), 0);
-	g_return_val_if_fail (replace != NULL, 0);
-
-	search_text_from_settings = gtk_source_search_settings_get_search_text (doc->priv->deprecated_search_settings);
-
-	g_return_val_if_fail ((find != NULL) || (search_text_from_settings != NULL), 0);
-
-	buffer = GTK_TEXT_BUFFER (doc);
-
-	if (find == NULL)
-		search_text = g_strdup (search_text_from_settings);
-	else
-		search_text = gtk_source_utils_unescape_search_text (find);
-
-	replace_text = gtk_source_utils_unescape_search_text (replace);
-
-	gtk_text_buffer_get_start_iter (buffer, &iter);
-
-	search_flags = GTK_TEXT_SEARCH_VISIBLE_ONLY | GTK_TEXT_SEARCH_TEXT_ONLY;
-
-	if (!GEDIT_SEARCH_IS_CASE_SENSITIVE (flags))
-	{
-		search_flags = search_flags | GTK_TEXT_SEARCH_CASE_INSENSITIVE;
-	}
-
-	replace_text_len = strlen (replace_text);
-
-	/* disable cursor_moved emission until the end of the
-	 * replace_all so that we don't spend all the time
-	 * updating the position in the statusbar
-	 */
-	doc->priv->stop_cursor_moved_emission = TRUE;
-
-	/* also avoid spending time matching brackets */
-	brackets_highlighting = gtk_source_buffer_get_highlight_matching_brackets (GTK_SOURCE_BUFFER (buffer));
-	gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (buffer), FALSE);
-
-	gtk_text_buffer_begin_user_action (buffer);
-
-	do
-	{
-		found = gtk_text_iter_forward_search (&iter,
-		                                      search_text,
-		                                      search_flags,
-		                                      &m_start,
-		                                      &m_end,
-		                                      NULL);
-
-		if (found && GEDIT_SEARCH_IS_ENTIRE_WORD (flags))
-		{
-			gboolean word;
-
-			word = gtk_text_iter_starts_word (&m_start) &&
-			       gtk_text_iter_ends_word (&m_end);
-
-			if (!word)
-			{
-				iter = m_end;
-				continue;
-			}
-		}
-
-		if (found)
-		{
-			++cont;
-
-			gtk_text_buffer_delete (buffer,
-						&m_start,
-						&m_end);
-			gtk_text_buffer_insert (buffer,
-						&m_start,
-						replace_text,
-						replace_text_len);
-
-			iter = m_start;
-		}
-
-	} while (found);
-
-	gtk_text_buffer_end_user_action (buffer);
-
-	/* re-enable cursor_moved emission and notify
-	 * the current position
-	 */
-	doc->priv->stop_cursor_moved_emission = FALSE;
-	emit_cursor_moved (doc);
-
-	gtk_source_buffer_set_highlight_matching_brackets (GTK_SOURCE_BUFFER (buffer),
-							   brackets_highlighting);
-
-	g_free (search_text);
-	g_free (replace_text);
-
-	return cont;
-}
-
 static void
 get_style_colors (GeditDocument *doc,
                   const gchar   *style_name,
@@ -2772,45 +2249,6 @@ _gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
 	g_get_current_time (&current_time);
 
 	return (current_time.tv_sec - doc->priv->time_of_last_save_or_load.tv_sec);
-}
-
-/**
- * gedit_document_set_enable_search_highlighting:
- * @doc:
- * @enable:
- *
- * Deprecated: 3.10: Use the search and replace API of GtkSourceView instead.
- */
-void
-gedit_document_set_enable_search_highlighting (GeditDocument *doc,
-					       gboolean       enable)
-{
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-	if (doc->priv->search_context != NULL)
-	{
-		gtk_source_search_context_set_highlight (doc->priv->search_context,
-							 enable);
-	}
-}
-
-/**
- * gedit_document_get_enable_search_highlighting:
- * @doc:
- *
- * Deprecated: 3.10: Use the search and replace API of GtkSourceView instead.
- */
-gboolean
-gedit_document_get_enable_search_highlighting (GeditDocument *doc)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-
-	if (doc->priv->search_context == NULL)
-	{
-		return FALSE;
-	}
-
-	return gtk_source_search_context_get_highlight (doc->priv->search_context);
 }
 
 GeditDocumentNewlineType
