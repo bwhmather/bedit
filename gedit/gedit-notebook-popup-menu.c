@@ -31,6 +31,7 @@ struct _GeditNotebookPopupMenuPrivate
 
 	GtkWidget *move_left_item;
 	GtkWidget *move_right_item;
+	GtkWidget *move_to_new_tab_group_item;
 	GtkWidget *close_item;
 };
 
@@ -121,6 +122,8 @@ update_sensitivity (GeditNotebookPopupMenu *menu)
 				  (state != GEDIT_TAB_STATE_PRINTING) &&
 				  (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
 				  (state != GEDIT_TAB_STATE_SAVING_ERROR));
+
+	gtk_widget_set_sensitive (menu->priv->move_to_new_tab_group_item, n_pages > 1);
 
 	gtk_widget_set_sensitive (menu->priv->move_left_item, page_num > 0);
 	gtk_widget_set_sensitive (menu->priv->move_right_item, page_num < n_pages - 1);
@@ -256,6 +259,7 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 	                  menu);
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 	gtk_widget_show (menu_item);
+	menu->priv->move_to_new_tab_group_item = menu_item;
 
 	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move to New Window"));
 	g_signal_connect (menu_item, "activate",
