@@ -482,7 +482,6 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 	GeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN (activatable);
 	GeditFileBrowserPluginPrivate *priv;
 	GeditPanel *panel;
-	GtkWidget *image;
 	GeditFileBrowserStore *store;
 
 	priv = plugin->priv;
@@ -524,14 +523,11 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 
 	panel = gedit_window_get_side_panel (priv->window);
 
-	image = gtk_image_new_from_icon_name ("system-file-manager-symbolic",
-	                                      GTK_ICON_SIZE_MENU);
-	gtk_widget_show (image);
 	gedit_panel_add_item (panel,
 	                      GTK_WIDGET (priv->tree_widget),
 	                      "GeditFileBrowserPanel",
 	                      _("File Browser"),
-	                      image);
+	                      "system-file-manager-symbolic");
 
 	gtk_widget_show (GTK_WIDGET (priv->tree_widget));
 

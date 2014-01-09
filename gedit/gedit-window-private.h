@@ -87,6 +87,7 @@ struct _GeditWindowPrivate
 	/* Headerbars */
 	GtkWidget      *titlebar_paned;
 	GtkWidget      *side_headerbar;
+	GtkWidget      *side_stack_switcher;
 	GtkWidget      *headerbar;
 	GtkWidget      *open_button;
 	GtkWidget      *open_menu;

@@ -45,7 +45,7 @@ class PythonConsolePlugin(GObject.Object, Gedit.WindowActivatable, PeasGtk.Confi
                            '\'window\' :\\n%s" % window)', False)
         bottom = self.window.get_bottom_panel()
         bottom.add_item(self._console, "GeditPythonConsolePanel",
-                        _('Python Console'), None)
+                        _('Python Console'), "system-run-symbolic")
 
     def do_deactivate(self):
         self._console.stop()

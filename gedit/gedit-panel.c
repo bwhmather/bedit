@@ -43,8 +43,6 @@
 #include "gedit-window.h"
 #include "gedit-debug.h"
 
-#define PANEL_ITEM_KEY "GeditPanelItemKey"
-
 struct _GeditPanelPrivate
 {
 	GtkOrientation orientation;
@@ -52,23 +50,13 @@ struct _GeditPanelPrivate
 	GtkWidget *main_box;
 
 	/* Notebook */
-	GtkWidget *notebook;
-};
-
-typedef struct _GeditPanelItem GeditPanelItem;
-
-struct _GeditPanelItem
-{
-	gchar *id;
-	gchar *display_name;
-	GtkWidget *icon;
+	GtkWidget *stack;
 };
 
 /* Properties */
 enum {
 	PROP_0,
 	PROP_ORIENTATION,
-	PROP_ACTIVE_ITEM_LABEL
 };
 
 /* Signals */
@@ -105,21 +93,6 @@ gedit_panel_get_property (GObject    *object,
 		case PROP_ORIENTATION:
 			g_value_set_enum (value, panel->priv->orientation);
 			break;
-		case PROP_ACTIVE_ITEM_LABEL:
-		{
-			GtkWidget *item;
-			gint page_num;
-			GeditPanelItem *data;
-
-			page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (panel->priv->notebook));
-			item = gtk_notebook_get_nth_page (GTK_NOTEBOOK (panel->priv->notebook), page_num);
-			g_return_if_fail (item != NULL);
-
-			data = (GeditPanelItem *)g_object_get_data (G_OBJECT (item),
-			                                            PANEL_ITEM_KEY);
-			g_value_set_string (value, data ? data->display_name : "");
-			break;
-		}
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -236,14 +209,8 @@ gedit_panel_grab_focus (GtkWidget *w)
 {
 	GeditPanel *panel = GEDIT_PANEL (w);
 	GtkWidget *tab;
-	gint n;
 
-	n = gtk_notebook_get_current_page (GTK_NOTEBOOK (panel->priv->notebook));
-	if (n == -1)
-		return;
-
-	tab = gtk_notebook_get_nth_page (GTK_NOTEBOOK (panel->priv->notebook),
-					 n);
+	tab = gtk_stack_get_visible_child (GTK_STACK (panel->priv->stack));
 	g_return_if_fail (tab != NULL);
 
 	gtk_widget_grab_focus (tab);
@@ -279,15 +246,6 @@ gedit_panel_class_init (GeditPanelClass *klass)
 	                                                    G_PARAM_READWRITE |
 	                                                    G_PARAM_CONSTRUCT_ONLY |
 	                                                    G_PARAM_STATIC_STRINGS));
-
-	g_object_class_install_property (object_class,
-	                                 PROP_ACTIVE_ITEM_LABEL,
-	                                 g_param_spec_string ("active-item-label",
-	                                                      "Active item label",
-	                                                      "Active item label",
-	                                                      NULL,
-	                                                      G_PARAM_READABLE |
-	                                                      G_PARAM_STATIC_STRINGS));
 
 	signals[ITEM_ADDED] =
 		g_signal_new ("item_added",
@@ -342,30 +300,6 @@ gedit_panel_class_init (GeditPanelClass *klass)
 }
 
 static void
-notebook_page_changed (GtkNotebook *notebook,
-                       GtkWidget   *page,
-                       guint        page_num,
-                       GeditPanel  *panel)
-{
-	g_object_notify (G_OBJECT (panel), "active-item-label");
-}
-
-static void
-panel_show (GeditPanel *panel,
-	    gpointer    user_data)
-{
-	GtkNotebook *nb;
-	gint page;
-
-	nb = GTK_NOTEBOOK (panel->priv->notebook);
-
-	page = gtk_notebook_get_current_page (nb);
-
-	if (page != -1)
-		notebook_page_changed (nb, NULL, page, panel);
-}
-
-static void
 gedit_panel_init (GeditPanel *panel)
 {
 	panel->priv = gedit_panel_get_instance_private (panel);
@@ -400,41 +334,38 @@ create_close_button (GeditPanel *panel)
 }
 
 static void
-build_notebook_for_panel (GeditPanel *panel)
-{
-	/* Create the panel notebook */
-	panel->priv->notebook = gtk_notebook_new ();
-
-	gtk_notebook_set_show_border (GTK_NOTEBOOK (panel->priv->notebook),
-	                              FALSE);
-	gtk_notebook_set_tab_pos (GTK_NOTEBOOK (panel->priv->notebook),
-				  GTK_POS_BOTTOM);
-	gtk_notebook_set_scrollable (GTK_NOTEBOOK (panel->priv->notebook),
-				     TRUE);
-	gtk_notebook_popup_enable (GTK_NOTEBOOK (panel->priv->notebook));
-
-	gtk_widget_show (GTK_WIDGET (panel->priv->notebook));
-
-	g_signal_connect_after (panel->priv->notebook,
-	                        "switch-page",
-	                        G_CALLBACK (notebook_page_changed),
-	                        panel);
-}
-
-static void
 build_horizontal_panel (GeditPanel *panel)
 {
 	GtkWidget *box;
+	GtkWidget *stack_box;
+	GtkWidget *switcher;
 	GtkWidget *sidebar;
 	GtkWidget *close_button;
 
 	box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
+	stack_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	gtk_box_pack_start (GTK_BOX (box),
-			    panel->priv->notebook,
+			    stack_box,
 			    TRUE,
 			    TRUE,
 			    0);
+
+	gtk_box_pack_start (GTK_BOX (stack_box),
+			    panel->priv->stack,
+			    TRUE,
+			    TRUE,
+			    0);
+
+	switcher = gtk_stack_switcher_new ();
+	gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER (switcher),
+				      GTK_STACK (panel->priv->stack));
+
+	gtk_box_pack_end (GTK_BOX (stack_box),
+			  switcher,
+			  FALSE,
+			  FALSE,
+			  0);
 
 	/* Toolbar, close button and first separator */
 	sidebar = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
@@ -467,7 +398,7 @@ static void
 build_vertical_panel (GeditPanel *panel)
 {
 	gtk_box_pack_start (GTK_BOX (panel->priv->main_box),
-			    panel->priv->notebook,
+			    panel->priv->stack,
 			    TRUE,
 			    TRUE,
 			    0);
@@ -484,7 +415,10 @@ gedit_panel_constructed (GObject *object)
 
 	context = gtk_widget_get_style_context (GTK_WIDGET (panel));
 
-	build_notebook_for_panel (panel);
+	/* Create the panel stack */
+	panel->priv->stack = gtk_stack_new ();
+	gtk_widget_show (panel->priv->stack);
+
 	if (panel->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
 	{
 		build_horizontal_panel (panel);
@@ -495,11 +429,6 @@ gedit_panel_constructed (GObject *object)
 		build_vertical_panel (panel);
 		gtk_style_context_add_class (context, GTK_STYLE_CLASS_VERTICAL);
 	}
-
-	g_signal_connect (panel,
-			  "show",
-			  G_CALLBACK (panel_show),
-			  NULL);
 
 	G_OBJECT_CLASS (gedit_panel_parent_class)->constructed (object);
 }
@@ -522,74 +451,27 @@ gedit_panel_new (GtkOrientation orientation)
 					 NULL));
 }
 
-static GtkWidget *
-build_tab_label (GeditPanel  *panel,
-		 GtkWidget   *item,
-		 const gchar *name,
-		 GtkWidget   *icon)
-{
-	GtkWidget *hbox, *label_hbox, *label_ebox;
-	GtkWidget *label;
-
-	/* set hbox spacing and label padding (see below) so that there's an
-	 * equal amount of space around the label */
-	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-
-	label_ebox = gtk_event_box_new ();
-	gtk_event_box_set_visible_window (GTK_EVENT_BOX (label_ebox), FALSE);
-	gtk_box_pack_start (GTK_BOX (hbox), label_ebox, TRUE, TRUE, 0);
-
-	label_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-	gtk_container_add (GTK_CONTAINER (label_ebox), label_hbox);
-
-	/* setup icon */
-	if (icon != NULL)
-	{
-		gtk_box_pack_start (GTK_BOX (label_hbox), icon, FALSE, FALSE, 0);
-	}
-
-	/* setup label */
-	label = gtk_label_new (name);
-	gtk_widget_set_halign (label, GTK_ALIGN_START);
-	gtk_misc_set_padding (GTK_MISC (label), 0, 0);
-	gtk_box_pack_start (GTK_BOX (label_hbox), label, TRUE, TRUE, 0);
-
-	gtk_widget_set_tooltip_text (label_ebox, name);
-
-	gtk_widget_show_all (hbox);
-
-	if (panel->priv->orientation == GTK_ORIENTATION_VERTICAL)
-	{
-		gtk_widget_hide(label);
-	}
-
-	g_object_set_data (G_OBJECT (item), "label", label);
-	g_object_set_data (G_OBJECT (item), "hbox", hbox);
-
-	return hbox;
-}
-
 static gboolean
 item_exists (GeditPanel  *panel,
 	     const gchar *id)
 {
-	GeditPanelItem *data;
+	gchar *child_id;
 	GList *items, *l;
 	gboolean exists = FALSE;
 
-	items = gtk_container_get_children (GTK_CONTAINER (panel->priv->notebook));
+	items = gtk_container_get_children (GTK_CONTAINER (panel->priv->stack));
 
-	for (l = items; l != NULL; l = g_list_next (l))
+	for (l = items; !exists && l != NULL; l = g_list_next (l))
 	{
-		data = (GeditPanelItem *)g_object_get_data (G_OBJECT (l->data),
-						            PANEL_ITEM_KEY);
-		g_return_val_if_fail (data != NULL, FALSE);
+		gtk_container_child_get (GTK_CONTAINER (panel->priv->stack),
+					 GTK_WIDGET (l->data),
+					 "name", &child_id,
+					 NULL);
 
-		if (strcmp (data->id, id) == 0)
-		{
+		if (strcmp (child_id, id) == 0)
 			exists = TRUE;
-			break;
-		}
+
+		g_free (child_id);
 	}
 
 	g_list_free (items);
@@ -603,7 +485,7 @@ item_exists (GeditPanel  *panel,
  * @item: the #GtkWidget to add to the @panel
  * @id: unique name for the new item
  * @display_name: the name to be shown in the @panel
- * @image: (allow-none): the image to be shown in the @panel, or %NULL
+ * @icon_name: (allow-none): the name of the icon to be shown in the @panel
  *
  * Adds a new item to the @panel.
  *
@@ -614,18 +496,12 @@ gedit_panel_add_item (GeditPanel  *panel,
 		      GtkWidget   *item,
 		      const gchar *id,
 		      const gchar *display_name,
-		      GtkWidget   *image)
+		      const gchar *icon_name)
 {
-	GeditPanelItem *data;
-	GtkWidget *tab_label;
-	GtkWidget *menu_label;
-	gint w, h;
-
 	g_return_val_if_fail (GEDIT_IS_PANEL (panel), FALSE);
 	g_return_val_if_fail (GTK_IS_WIDGET (item), FALSE);
 	g_return_val_if_fail (id != NULL, FALSE);
 	g_return_val_if_fail (display_name != NULL, FALSE);
-	g_return_val_if_fail (image == NULL || GTK_IS_IMAGE (image), FALSE);
 
 	if (item_exists (panel, id))
 	{
@@ -633,72 +509,21 @@ gedit_panel_add_item (GeditPanel  *panel,
 		return FALSE;
 	}
 
-	data = g_slice_new (GeditPanelItem);
-	data->id = g_strdup (id);
-	data->display_name = g_strdup (display_name);
-	data->icon = NULL;
-
-	if (image != NULL)
-	{
-		data->icon = image;
-		gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &w, &h);
-		gtk_widget_set_size_request (data->icon, w, h);
-	}
-
-	g_object_set_data (G_OBJECT (item),
-		           PANEL_ITEM_KEY,
-		           data);
-
-	tab_label = build_tab_label (panel, item, data->display_name, data->icon);
-
-	menu_label = gtk_label_new (display_name);
-	gtk_widget_set_halign (menu_label, GTK_ALIGN_START);
-
 	if (!gtk_widget_get_visible (item))
 	{
 		gtk_widget_show (item);
 	}
 
-	gtk_notebook_append_page_menu (GTK_NOTEBOOK (panel->priv->notebook),
-				       item,
-				       tab_label,
-				       menu_label);
+	gtk_container_add_with_properties (GTK_CONTAINER (panel->priv->stack),
+					   item,
+					   "name", id,
+					   "icon-name", panel->priv->orientation == GTK_ORIENTATION_VERTICAL ? icon_name : NULL,
+					   "title", display_name,
+					   NULL);
 
 	g_signal_emit (G_OBJECT (panel), signals[ITEM_ADDED], 0, item);
 
 	return TRUE;
-}
-
-/**
- * gedit_panel_add_item_with_stock_icon:
- * @panel: a #GeditPanel
- * @item: the #GtkWidget to add to the @panel
- * @id: unique name for the new item
- * @display_name: the name to be shown in the @panel
- * @stock_id: (allow-none): a stock id, or %NULL
- *
- * Same as gedit_panel_add_item() but using an image from stock.
- *
- * Returns: %TRUE is the item was successfully added.
- */
-gboolean
-gedit_panel_add_item_with_stock_icon (GeditPanel  *panel,
-				      GtkWidget   *item,
-				      const gchar *id,
-				      const gchar *display_name,
-				      const gchar *stock_id)
-{
-	GtkWidget *icon = NULL;
-
-	if (stock_id != NULL)
-	{
-		G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-		icon = gtk_image_new_from_stock (stock_id,
-						 GTK_ICON_SIZE_MENU);
-		G_GNUC_END_IGNORE_DEPRECATIONS;
-	}
-
-	return gedit_panel_add_item (panel, item, id, display_name, icon);
 }
 
 /**
@@ -715,35 +540,13 @@ gboolean
 gedit_panel_remove_item (GeditPanel *panel,
 			 GtkWidget  *item)
 {
-	GeditPanelItem *data;
-	gint page_num;
-
 	g_return_val_if_fail (GEDIT_IS_PANEL (panel), FALSE);
 	g_return_val_if_fail (GTK_IS_WIDGET (item), FALSE);
-
-	page_num = gtk_notebook_page_num (GTK_NOTEBOOK (panel->priv->notebook),
-					  item);
-
-	if (page_num == -1)
-		return FALSE;
-
-	data = (GeditPanelItem *)g_object_get_data (G_OBJECT (item),
-					            PANEL_ITEM_KEY);
-	g_return_val_if_fail (data != NULL, FALSE);
-
-	g_free (data->id);
-	g_free (data->display_name);
-	g_slice_free (GeditPanelItem, data);
-
-	g_object_set_data (G_OBJECT (item),
-		           PANEL_ITEM_KEY,
-		           NULL);
 
 	/* ref the item to keep it alive during signal emission */
 	g_object_ref (G_OBJECT (item));
 
-	gtk_notebook_remove_page (GTK_NOTEBOOK (panel->priv->notebook),
-				  page_num);
+	gtk_container_remove (GTK_CONTAINER (panel->priv->stack), item);
 
 	g_signal_emit (G_OBJECT (panel), signals[ITEM_REMOVED], 0, item);
 
@@ -765,19 +568,10 @@ gboolean
 gedit_panel_activate_item (GeditPanel *panel,
 			   GtkWidget  *item)
 {
-	gint page_num;
-
 	g_return_val_if_fail (GEDIT_IS_PANEL (panel), FALSE);
 	g_return_val_if_fail (GTK_IS_WIDGET (item), FALSE);
 
-	page_num = gtk_notebook_page_num (GTK_NOTEBOOK (panel->priv->notebook),
-					  item);
-
-	if (page_num == -1)
-		return FALSE;
-
-	gtk_notebook_set_current_page (GTK_NOTEBOOK (panel->priv->notebook),
-				       page_num);
+	gtk_stack_set_visible_child (GTK_STACK (panel->priv->stack), item);
 
 	return TRUE;
 }
@@ -793,18 +587,9 @@ gedit_panel_activate_item (GeditPanel *panel,
 GtkWidget *
 gedit_panel_get_active (GeditPanel *panel)
 {
-	gint current;
-
 	g_return_val_if_fail (GEDIT_IS_PANEL (panel), NULL);
 
-	current = gtk_notebook_get_current_page (GTK_NOTEBOOK (panel->priv->notebook));
-
-	if (current == -1)
-	{
-		return NULL;
-	}
-
-	return gtk_notebook_get_nth_page (GTK_NOTEBOOK (panel->priv->notebook), current);
+	return gtk_stack_get_visible_child (GTK_STACK (panel->priv->stack));
 }
 
 /**
@@ -820,22 +605,10 @@ gboolean
 gedit_panel_item_is_active (GeditPanel *panel,
 			    GtkWidget  *item)
 {
-	gint cur_page;
-	gint page_num;
-
 	g_return_val_if_fail (GEDIT_IS_PANEL (panel), FALSE);
 	g_return_val_if_fail (GTK_IS_WIDGET (item), FALSE);
 
-	page_num = gtk_notebook_page_num (GTK_NOTEBOOK (panel->priv->notebook),
-					  item);
-
-	if (page_num == -1)
-		return FALSE;
-
-	cur_page = gtk_notebook_get_current_page (
-				GTK_NOTEBOOK (panel->priv->notebook));
-
-	return (page_num == cur_page);
+	return item == gtk_stack_get_visible_child (GTK_STACK (panel->priv->stack));
 }
 
 /**
@@ -865,70 +638,73 @@ gedit_panel_get_orientation (GeditPanel *panel)
 gint
 gedit_panel_get_n_items (GeditPanel *panel)
 {
+	GList *children;
+	int n;
+
 	g_return_val_if_fail (GEDIT_IS_PANEL (panel), -1);
 
-	return gtk_notebook_get_n_pages (GTK_NOTEBOOK (panel->priv->notebook));
+	children = gtk_container_get_children (GTK_CONTAINER (panel->priv->stack));
+	n = g_list_length (children);
+	g_list_free (children);
+
+	return n;
 }
 
 gint
 _gedit_panel_get_active_item_id (GeditPanel *panel)
 {
-	gint cur_page;
-	GtkWidget *item;
-	GeditPanelItem *data;
+	const gchar *child_name;
 
 	g_return_val_if_fail (GEDIT_IS_PANEL (panel), 0);
 
-	cur_page = gtk_notebook_get_current_page (
-				GTK_NOTEBOOK (panel->priv->notebook));
-	if (cur_page == -1)
+	child_name = gtk_stack_get_visible_child_name (GTK_STACK (panel->priv->stack));
+
+	if (!child_name)
 		return 0;
 
-	item = gtk_notebook_get_nth_page (
-				GTK_NOTEBOOK (panel->priv->notebook),
-				cur_page);
-
-	data = (GeditPanelItem *)g_object_get_data (G_OBJECT (item),
-					            PANEL_ITEM_KEY);
-	g_return_val_if_fail (data != NULL, 0);
-
-	return g_str_hash (data->id);
+	return g_str_hash (child_name);
 }
 
 void
 _gedit_panel_set_active_item_by_id (GeditPanel *panel,
 				    gint        id)
 {
-	gint n, i;
+	GList *items, *l;
+	gboolean found = FALSE;
 
 	g_return_if_fail (GEDIT_IS_PANEL (panel));
 
 	if (id == 0)
 		return;
 
-	n = gtk_notebook_get_n_pages (
-				GTK_NOTEBOOK (panel->priv->notebook));
+	items = gtk_container_get_children (GTK_CONTAINER (panel->priv->stack));
 
-	for (i = 0; i < n; i++)
+	for (l = items; !found && l != NULL; l = g_list_next (l))
 	{
-		GtkWidget *item;
-		GeditPanelItem *data;
+		gchar *child_id;
 
-		item = gtk_notebook_get_nth_page (
-				GTK_NOTEBOOK (panel->priv->notebook), i);
+		gtk_container_child_get (GTK_CONTAINER (panel->priv->stack),
+					 GTK_WIDGET (l->data),
+					 "name", &child_id,
+					 NULL);
 
-		data = (GeditPanelItem *)g_object_get_data (G_OBJECT (item),
-						            PANEL_ITEM_KEY);
-		g_return_if_fail (data != NULL);
-
-		if (g_str_hash (data->id) == id)
+		if (child_id && g_str_hash (child_id) == id)
 		{
-			gtk_notebook_set_current_page (
-				GTK_NOTEBOOK (panel->priv->notebook), i);
-
-			return;
+			found = TRUE;
+			gtk_stack_set_visible_child_name (GTK_STACK (panel->priv->stack),
+							  child_id);
 		}
+
+		g_free (child_id);
 	}
+
+	g_list_free (items);
+}
+
+GtkWidget
+*_gedit_panel_get_stack (GeditPanel *panel)
+{
+	return panel->priv->stack;
 }
 
 /* ex:set ts=8 noet: */

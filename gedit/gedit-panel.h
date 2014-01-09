@@ -97,13 +97,7 @@ gboolean	 gedit_panel_add_item			(GeditPanel     *panel,
 							 GtkWidget      *item,
 							 const gchar    *id,
 							 const gchar    *display_name,
-							 GtkWidget      *image);
-
-gboolean	 gedit_panel_add_item_with_stock_icon	(GeditPanel     *panel,
-							 GtkWidget      *item,
-							 const gchar    *id,
-						      	 const gchar    *display_name,
-						      	 const gchar    *stock_id);
+							 const gchar    *icon_name);
 
 gboolean	 gedit_panel_remove_item		(GeditPanel     *panel,
 					  		 GtkWidget      *item);
@@ -128,6 +122,7 @@ gint		 _gedit_panel_get_active_item_id	(GeditPanel	*panel);
 
 void		 _gedit_panel_set_active_item_by_id	(GeditPanel	*panel,
 							 gint		 id);
+GtkWidget	*_gedit_panel_get_stack			(GeditPanel	*panel);
 
 G_END_DECLS
 

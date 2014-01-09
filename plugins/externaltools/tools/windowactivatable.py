@@ -153,11 +153,10 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
         self.menu = ToolMenu(self._library, self.window, self._output_buffer, external_tools_submenu_section)
 
         bottom = self.window.get_bottom_panel()
-        image = Gtk.Image.new_from_icon_name("system-run-symbolic", Gtk.IconSize.MENU)
         bottom.add_item(self._output_buffer.panel,
                         "GeditExternalToolsShellOutput",
                         _("Tool Output"),
-                        image)
+                        "system-run-symbolic")
 
     def do_update_state(self):
         if self.menu is not None:

@@ -2674,7 +2674,6 @@ static void
 setup_side_panel (GeditWindow *window)
 {
 	GtkWidget *documents_panel;
-	GtkWidget *image;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -2684,14 +2683,11 @@ setup_side_panel (GeditWindow *window)
 	                        window);
 
 	documents_panel = gedit_documents_panel_new (window);
-	image = gtk_image_new_from_icon_name ("view-list-symbolic",
-	                                      GTK_ICON_SIZE_MENU);
-	gtk_widget_show (image);
 	gedit_panel_add_item (GEDIT_PANEL (window->priv->side_panel),
 			      documents_panel,
 			      "GeditWindowDocumentsPanel",
 			      _("Documents"),
-			      image);
+			      "view-list-symbolic");
 }
 
 static void
@@ -2990,16 +2986,20 @@ gedit_window_init (GeditWindow *window)
 	                        window->priv->side_headerbar,
 	                        "visible",
 	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
-	g_object_bind_property (window->priv->side_panel,
-	                        "active-item-label",
-	                        window->priv->side_headerbar,
-	                        "title",
-	                        G_BINDING_DEFAULT);
 	g_object_bind_property (window->priv->titlebar_paned,
 	                        "position",
 	                        window->priv->hpaned,
 	                        "position",
 	                        G_BINDING_DEFAULT | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+
+
+	window->priv->side_stack_switcher = gtk_stack_switcher_new ();
+	gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER (window->priv->side_stack_switcher),
+				      GTK_STACK (_gedit_panel_get_stack (GEDIT_PANEL (window->priv->side_panel))));
+
+	gtk_header_bar_set_custom_title (GTK_HEADER_BAR (window->priv->side_headerbar),
+					 window->priv->side_stack_switcher);
+	gtk_widget_show (window->priv->side_stack_switcher);
 
 	setup_headerbar_open_button (window);
 
