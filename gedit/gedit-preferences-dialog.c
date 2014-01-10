@@ -1121,11 +1121,11 @@ gedit_show_preferences_dialog (GeditWindow *parent)
 {
 	gedit_debug (DEBUG_PREFS);
 
-	g_return_if_fail (GEDIT_IS_WINDOW (parent));
-
 	if (preferences_dialog == NULL)
 	{
-		preferences_dialog = GTK_WIDGET (g_object_new (GEDIT_TYPE_PREFERENCES_DIALOG, NULL));
+		preferences_dialog = GTK_WIDGET (g_object_new (GEDIT_TYPE_PREFERENCES_DIALOG,
+							       "application", g_application_get_default (),
+							       NULL));
 		g_signal_connect (preferences_dialog,
 				  "destroy",
 				  G_CALLBACK (gtk_widget_destroyed),

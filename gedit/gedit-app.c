@@ -681,7 +681,7 @@ get_active_window (GtkApplication *app)
 	{
 		GtkWindow *window = l->data;
 
-		if (is_in_viewport (window, screen, workspace, viewport_x, viewport_y))
+		if (GEDIT_IS_WINDOW (window) && is_in_viewport (window, screen, workspace, viewport_x, viewport_y))
 		{
 			return GEDIT_WINDOW (window);
 		}
