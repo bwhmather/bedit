@@ -32,7 +32,6 @@ typedef struct
 {
 	const gchar   *in_buffer;
 	gint           newline_type;
-	GFile         *file;
 } LoaderTestData;
 
 static GFile *
@@ -59,8 +58,6 @@ delete_document (GFile *location)
 		g_file_delete (location, NULL, &err);
 		g_assert_no_error (err);
 	}
-
-	test_completed = TRUE;
 }
 
 static void
@@ -91,7 +88,7 @@ on_document_loaded (GeditDocument  *document,
 		                 data->newline_type);
 	}
 
-	delete_document (data->file);
+	test_completed = TRUE;
 }
 
 static void
@@ -110,7 +107,6 @@ test_loader (const gchar *filename,
 	LoaderTestData *data = g_slice_new (LoaderTestData);
 	data->in_buffer = in_buffer;
 	data->newline_type = newline_type;
-	data->file = file;
 
 	test_completed = FALSE;
 
@@ -127,8 +123,10 @@ test_loader (const gchar *filename,
 	}
 
 	g_slice_free (LoaderTestData, data);
-	g_object_unref (file);
 	g_object_unref (document);
+
+	delete_document (file);
+	g_object_unref (file);
 }
 
 static void
