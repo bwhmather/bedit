@@ -97,6 +97,7 @@ static gboolean new_window = FALSE;
 static gboolean new_document = FALSE;
 static gchar *geometry = NULL;
 static gboolean wait = FALSE;
+static gboolean gapplication_service = FALSE;
 static gboolean standalone = FALSE;
 static gchar **remaining_args = NULL;
 static const GeditEncoding *encoding = NULL;
@@ -157,6 +158,14 @@ static const GOptionEntry options[] =
 		&geometry,
 		N_("Set the size and position of the window (WIDTHxHEIGHT+X+Y)"),
 		N_("GEOMETRY")
+	},
+
+	/* GApplication service mode */
+	{
+		"gapplication-service", '\0', 0, G_OPTION_ARG_NONE,
+		&gapplication_service,
+		N_("Enter GApplication service mode"),
+		NULL
 	},
 
 	/* Wait for closing documents */
@@ -953,6 +962,13 @@ gedit_app_local_command_line (GApplication   *application,
 		g_error_free (error);
 		*exit_status = 1;
 		ret = TRUE;
+	}
+	else if (gapplication_service)
+	{
+		GApplicationFlags old_flags;
+
+		old_flags = g_application_get_flags (application);
+		g_application_set_flags (application, old_flags | G_APPLICATION_IS_SERVICE);
 	}
 	else if (version)
 	{
