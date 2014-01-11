@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.8 -->
+  <menu id="menu_model">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Move _Left</attribute>
+        <attribute name="action">move_left</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Move _Right</attribute>
+        <attribute name="action">move_right</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Move to New _Window</attribute>
+        <attribute name="action">move_to_new_window</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Move to New Tab _Group</attribute>
+        <attribute name="action">move_to_new_tab_group</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Close</attribute>
+        <attribute name="action">close</attribute>
+      </item>
+    </section>
+  </menu>
+  <template class="GeditNotebookPopupMenu" parent="GtkMenu">
+    <property name="visible">True</property>
+  </template>
+</interface>

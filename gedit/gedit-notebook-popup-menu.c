@@ -29,11 +29,8 @@ struct _GeditNotebookPopupMenuPrivate
 	GeditWindow *window;
 	GeditTab *tab;
 
-	GtkWidget *move_left_item;
-	GtkWidget *move_right_item;
-	GtkWidget *move_to_new_tab_group_item;
-	GtkWidget *move_to_new_window_item;
-	GtkWidget *close_item;
+	GSimpleActionGroup *action_group;
+	GMenuModel *menu_model;
 };
 
 enum
@@ -108,6 +105,7 @@ update_sensitivity (GeditNotebookPopupMenu *menu)
 	gint page_num;
 	gint n_pages;
 	guint n_tabs;
+	GAction *action;
 
 	state = gedit_tab_get_state (menu->priv->tab);
 
@@ -115,23 +113,34 @@ update_sensitivity (GeditNotebookPopupMenu *menu)
 
 	notebook = GTK_NOTEBOOK (gedit_multi_notebook_get_notebook_for_tab (mnb, menu->priv->tab));
 	n_pages = gtk_notebook_get_n_pages (notebook);
+	n_tabs = gedit_multi_notebook_get_n_tabs(mnb);
 	page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (menu->priv->tab));
 
-	gtk_widget_set_sensitive (menu->priv->close_item,
-				  (state != GEDIT_TAB_STATE_CLOSING) &&
-				  (state != GEDIT_TAB_STATE_SAVING) &&
-				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
-				  (state != GEDIT_TAB_STATE_PRINTING) &&
-				  (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
-				  (state != GEDIT_TAB_STATE_SAVING_ERROR));
+	action = g_action_map_lookup_action (G_ACTION_MAP (menu->priv->action_group),
+	                                     "close");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+				     (state != GEDIT_TAB_STATE_CLOSING) &&
+				     (state != GEDIT_TAB_STATE_SAVING) &&
+				     (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+				     (state != GEDIT_TAB_STATE_PRINTING) &&
+				     (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
+				     (state != GEDIT_TAB_STATE_SAVING_ERROR));
 
-	gtk_widget_set_sensitive (menu->priv->move_to_new_tab_group_item, n_pages > 1);
+	action = g_action_map_lookup_action (G_ACTION_MAP (menu->priv->action_group),
+	                                     "move_to_new_window");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), n_tabs > 1);
 
-	n_tabs = gedit_multi_notebook_get_n_tabs(mnb);
-	gtk_widget_set_sensitive (menu->priv->move_to_new_window_item, n_tabs > 1);
+	action = g_action_map_lookup_action (G_ACTION_MAP (menu->priv->action_group),
+	                                     "move_to_new_tab_group");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), n_pages > 1);
 
-	gtk_widget_set_sensitive (menu->priv->move_left_item, page_num > 0);
-	gtk_widget_set_sensitive (menu->priv->move_right_item, page_num < n_pages - 1);
+	action = g_action_map_lookup_action (G_ACTION_MAP (menu->priv->action_group),
+	                                     "move_left");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), page_num > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (menu->priv->action_group),
+	                                     "move_right");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), page_num < n_pages - 1);
 }
 
 static void
@@ -148,6 +157,7 @@ static void
 gedit_notebook_popup_menu_class_init (GeditNotebookPopupMenuClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->get_property = gedit_notebook_popup_menu_get_property;
 	object_class->set_property = gedit_notebook_popup_menu_set_property;
@@ -171,35 +181,41 @@ gedit_notebook_popup_menu_class_init (GeditNotebookPopupMenuClass *klass)
 	                                                      GEDIT_TYPE_TAB,
 	                                                      G_PARAM_READWRITE |
 	                                                      G_PARAM_CONSTRUCT_ONLY));
+
+	gtk_widget_class_set_template_from_resource (widget_class,
+	                                             "/org/gnome/gedit/ui/gedit-notebook-popup-menu.ui");
+
+	gtk_widget_class_bind_template_child_private (widget_class, GeditNotebookPopupMenu, menu_model);
 }
 
 static void
-on_file_close_menuitem_activate (GtkMenuItem            *menuitem,
-                                 GeditNotebookPopupMenu *menu)
+on_move_left_activate (GSimpleAction *action,
+                       GVariant      *parameter,
+                       gpointer       user_data)
 {
-	_gedit_cmd_file_close_tab (menu->priv->tab, menu->priv->window);
+	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
+	GeditMultiNotebook *mnb;
+	GtkNotebook *notebook;
+	gint page_num;
+
+	mnb = GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (menu->priv->window));
+
+	notebook = GTK_NOTEBOOK (gedit_multi_notebook_get_notebook_for_tab (mnb, menu->priv->tab));
+	page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (menu->priv->tab));
+
+	if (page_num > 0)
+	{
+		gtk_notebook_reorder_child (notebook, GTK_WIDGET (menu->priv->tab),
+		                            page_num - 1);
+	}
 }
 
 static void
-on_move_to_new_tab_group_menuitem_activate (GtkMenuItem            *menuitem,
-                                            GeditNotebookPopupMenu *menu)
+on_move_right_activate (GSimpleAction *action,
+                        GVariant      *parameter,
+                        gpointer       user_data)
 {
-	_gedit_window_move_tab_to_new_tab_group (menu->priv->window,
-	                                         menu->priv->tab);
-}
-
-static void
-on_move_to_new_window_menuitem_activate (GtkMenuItem            *menuitem,
-                                         GeditNotebookPopupMenu *menu)
-{
-	_gedit_window_move_tab_to_new_window (menu->priv->window,
-	                                      menu->priv->tab);
-}
-
-static void
-on_move_right_menuitem_activate (GtkMenuItem            *menuitem,
-                                 GeditNotebookPopupMenu *menu)
-{
+	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
 	GeditMultiNotebook *mnb;
 	GtkNotebook *notebook;
 	gint page_num;
@@ -219,80 +235,66 @@ on_move_right_menuitem_activate (GtkMenuItem            *menuitem,
 }
 
 static void
-on_move_left_menuitem_activate (GtkMenuItem            *menuitem,
-                                GeditNotebookPopupMenu *menu)
+on_move_to_new_window_activate (GSimpleAction *action,
+                                GVariant      *parameter,
+                                gpointer       user_data)
 {
-	GeditMultiNotebook *mnb;
-	GtkNotebook *notebook;
-	gint page_num;
+	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
 
-	mnb = GEDIT_MULTI_NOTEBOOK (_gedit_window_get_multi_notebook (menu->priv->window));
-
-	notebook = GTK_NOTEBOOK (gedit_multi_notebook_get_notebook_for_tab (mnb, menu->priv->tab));
-	page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (menu->priv->tab));
-
-	if (page_num > 0)
-	{
-		gtk_notebook_reorder_child (notebook, GTK_WIDGET (menu->priv->tab),
-		                            page_num - 1);
-	}
+	_gedit_window_move_tab_to_new_window (menu->priv->window,
+	                                      menu->priv->tab);
 }
+
+static void
+on_move_to_new_tab_group_activate (GSimpleAction *action,
+                                   GVariant      *parameter,
+                                   gpointer       user_data)
+{
+	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
+
+	_gedit_window_move_tab_to_new_tab_group (menu->priv->window,
+	                                         menu->priv->tab);
+}
+
+static void
+on_close_activate (GSimpleAction *action,
+                   GVariant      *parameter,
+                   gpointer       user_data)
+{
+	GeditNotebookPopupMenu *menu = GEDIT_NOTEBOOK_POPUP_MENU (user_data);
+
+	_gedit_cmd_file_close_tab (menu->priv->tab, menu->priv->window);
+}
+
+static GActionEntry action_entries[] = {
+	{ "move_left", on_move_left_activate },
+	{ "move_right", on_move_right_activate },
+	{ "move_to_new_window", on_move_to_new_window_activate },
+	{ "move_to_new_tab_group", on_move_to_new_tab_group_activate },
+	{ "close", on_close_activate }
+};
 
 static void
 gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 {
-	GtkWidget *menu_item;
-
 	menu->priv = gedit_notebook_popup_menu_get_instance_private (menu);
 
-	/* Keep in sync with the respective GtkActions */
-	menu_item = gtk_menu_item_new_with_mnemonic (_("_Close"));
-	g_signal_connect (menu_item, "activate",
-	                  G_CALLBACK (on_file_close_menuitem_activate),
-	                  menu);
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	gtk_widget_show (menu_item);
-	menu->priv->close_item = menu_item;
+	gtk_widget_init_template (GTK_WIDGET (menu));
 
-	menu_item = gtk_separator_menu_item_new ();
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	gtk_widget_show (menu_item);
+	gtk_menu_shell_bind_model (GTK_MENU_SHELL (menu),
+	                           menu->priv->menu_model,
+	                           "popup",
+	                           TRUE);
 
-	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move to New Tab Group"));
-	g_signal_connect (menu_item, "activate",
-	                  G_CALLBACK (on_move_to_new_tab_group_menuitem_activate),
-	                  menu);
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	gtk_widget_show (menu_item);
-	menu->priv->move_to_new_tab_group_item = menu_item;
+	menu->priv->action_group = g_simple_action_group_new ();
+	g_action_map_add_action_entries (G_ACTION_MAP (menu->priv->action_group),
+	                                 action_entries,
+	                                 G_N_ELEMENTS (action_entries),
+	                                 menu);
 
-	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move to New Window"));
-	g_signal_connect (menu_item, "activate",
-	                  G_CALLBACK (on_move_to_new_window_menuitem_activate),
-	                  menu);
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	gtk_widget_show (menu_item);
-	menu->priv->move_to_new_window_item = menu_item;
-
-	menu_item = gtk_separator_menu_item_new ();
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	gtk_widget_show (menu_item);
-
-	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move Right"));
-	g_signal_connect (menu_item, "activate",
-	                  G_CALLBACK (on_move_right_menuitem_activate),
-	                  menu);
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	gtk_widget_show (menu_item);
-	menu->priv->move_right_item = menu_item;
-
-	menu_item = gtk_menu_item_new_with_mnemonic (_("_Move Left"));
-	g_signal_connect (menu_item, "activate",
-	                  G_CALLBACK (on_move_left_menuitem_activate),
-	                  menu);
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	gtk_widget_show (menu_item);
-	menu->priv->move_left_item = menu_item;
+	gtk_widget_insert_action_group (GTK_WIDGET (menu),
+	                                "popup",
+	                                G_ACTION_GROUP (menu->priv->action_group));
 }
 
 GtkWidget *
