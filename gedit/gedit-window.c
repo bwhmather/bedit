@@ -1687,7 +1687,7 @@ sync_name (GeditTab    *tab,
 		set_title (window);
 
 		doc = gedit_tab_get_document (tab);
-		
+
 		gaction = g_action_map_lookup_action (G_ACTION_MAP (window),
 		                                      "revert");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (gaction),
@@ -2200,9 +2200,6 @@ update_sensitivity_according_to_open_tabs (GeditWindow *window,
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save_as");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "revert");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "print");
