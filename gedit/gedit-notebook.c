@@ -20,12 +20,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-/*
- * Modified by the gedit Team, 2005. See the AUTHORS file for a
- * list of people on the gedit Team.
- * See the ChangeLog files for a list of changes.
- */
-
 /* This file is a modified version of the epiphany file ephy-notebook.c
  * Here the relevant copyright:
  *
@@ -85,9 +79,23 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
+static void update_tabs_visibility (GeditNotebook *notebook);
+
 static void
-update_tabs_visibility (GeditNotebook *notebook,
-			gboolean       before_inserting)
+show_tabs_changed (GObject     *object,
+		   GParamSpec  *pspec,
+		   gpointer    *data)
+{
+	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
+
+	if (gtk_notebook_get_show_tabs (GTK_NOTEBOOK (notebook)))
+	{
+		update_tabs_visibility (notebook);
+	}
+}
+
+static void
+update_tabs_visibility (GeditNotebook *notebook)
 {
 	gboolean show_tabs;
 
@@ -97,16 +105,7 @@ update_tabs_visibility (GeditNotebook *notebook,
 			show_tabs = FALSE;
 			break;
 		case GEDIT_NOTEBOOK_SHOW_TABS_AUTO:
-			{
-				guint num;
-
-				num = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook));
-
-				if (before_inserting)
-					++num;
-
-				show_tabs = num > 1;
-			}
+			show_tabs = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) > 1;
 			break;
 		case GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS:
 		default:
@@ -114,7 +113,9 @@ update_tabs_visibility (GeditNotebook *notebook,
 			break;
 	}
 
+	g_signal_handlers_block_by_func (notebook, show_tabs_changed, NULL);
 	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (notebook), show_tabs);
+	g_signal_handlers_unblock_by_func (notebook, show_tabs_changed, NULL);
 }
 
 static void
@@ -149,7 +150,7 @@ gedit_notebook_set_property (GObject      *object,
 	{
 		case PROP_SHOW_TABS_MODE:
 			notebook->priv->show_tabs_mode = g_value_get_enum (value);
-			update_tabs_visibility (notebook, FALSE);
+			update_tabs_visibility (notebook);
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -397,7 +398,6 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
                              guint        page_num)
 {
 	GeditNotebook *nb = GEDIT_NOTEBOOK (notebook);
-	gint num_pages;
 	gint curr;
 	GtkWidget *tab_label;
 
@@ -424,13 +424,7 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
 		smart_tab_switching_on_closure (nb, GEDIT_TAB (page));
 	}
 
-	num_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (nb));
-
-	/* If there is no tabs, calling this is pointless */
-	if (num_pages > 0)
-	{
-		update_tabs_visibility (nb, FALSE);
-	}
+	update_tabs_visibility (nb);
 }
 
 static void
@@ -453,7 +447,7 @@ gedit_notebook_page_added (GtkNotebook *notebook,
 	                  G_CALLBACK (close_button_clicked_cb),
 	                  nb);
 
-	update_tabs_visibility (GEDIT_NOTEBOOK (notebook), FALSE);
+	update_tabs_visibility (GEDIT_NOTEBOOK (notebook));
 }
 
 static void
@@ -596,6 +590,7 @@ gedit_notebook_init (GeditNotebook *notebook)
 	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
 
 	priv->show_tabs_mode = GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS;
+
 	priv->close_buttons_sensitive = TRUE;
 
 	gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
@@ -610,6 +605,11 @@ gedit_notebook_init (GeditNotebook *notebook)
 			 notebook,
 			 "show-tabs-mode",
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+
+	g_signal_connect (notebook,
+			  "notify::show-tabs",
+			  G_CALLBACK (show_tabs_changed),
+			  NULL);
 }
 
 static GtkWidget *
