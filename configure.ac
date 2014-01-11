@@ -309,7 +309,7 @@ if test "x$enable_python" = "xyes"; then
 	AM_PATH_PYTHON(3.2.3)
 	PKG_CHECK_MODULES(PYTHON, [pygobject-3.0 >= $PYGOBJECT_REQUIRED])
 
-	pyoverridesdir=`$PYTHON -c "import gi; print(gi._overridesdir)"`
+	pyoverridesdir="\$(pyexecdir)/gi/overrides"
 	AC_SUBST(pyoverridesdir)
 fi
 
