@@ -61,7 +61,7 @@ main (int argc, char *argv[])
 #endif
 
 	app = g_object_new (type,
-	                    "application-id", "org.gnome.Gedit",
+	                    "application-id", "org.gnome.gedit",
 	                    "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
 	                    NULL);
 
