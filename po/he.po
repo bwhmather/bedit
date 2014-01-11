@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-08 00:52+0200\n"
-"PO-Revision-Date: 2014-01-08 00:55+0200\n"
+"POT-Creation-Date: 2014-01-12 01:31+0200\n"
+"PO-Revision-Date: 2014-01-12 01:31+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -522,19 +522,19 @@ msgstr ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 
-#: ../gedit/gedit-app.c:114
+#: ../gedit/gedit-app.c:115
 msgid "Show the application's help"
 msgstr "Show the application's help"
 
-#: ../gedit/gedit-app.c:120
+#: ../gedit/gedit-app.c:121
 msgid "Show the application's version"
 msgstr "Show the application's version"
 
-#: ../gedit/gedit-app.c:126
+#: ../gedit/gedit-app.c:127
 msgid "Display list of possible values for the encoding option"
 msgstr "Display list of possible values for the encoding option"
 
-#: ../gedit/gedit-app.c:134
+#: ../gedit/gedit-app.c:135
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -542,47 +542,51 @@ msgstr ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 
-#: ../gedit/gedit-app.c:135
+#: ../gedit/gedit-app.c:136
 msgid "ENCODING"
 msgstr "ENCODING"
 
-#: ../gedit/gedit-app.c:142
+#: ../gedit/gedit-app.c:143
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Create a new top-level window in an existing instance of gedit"
 
-#: ../gedit/gedit-app.c:150
+#: ../gedit/gedit-app.c:151
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Create a new document in an existing instance of gedit"
 
-#: ../gedit/gedit-app.c:158
+#: ../gedit/gedit-app.c:159
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:160
 msgid "GEOMETRY"
 msgstr "GEOMETRY"
 
-#: ../gedit/gedit-app.c:166
+#: ../gedit/gedit-app.c:167
+msgid "Enter GApplication service mode"
+msgstr "Enter GApplication service mode"
+
+#: ../gedit/gedit-app.c:175
 msgid "Open files and block process until files are closed"
 msgstr "Open files and block process until files are closed"
 
-#: ../gedit/gedit-app.c:174
+#: ../gedit/gedit-app.c:183
 msgid "Run gedit in standalone mode"
 msgstr "Run gedit in standalone mode"
 
-#: ../gedit/gedit-app.c:183
+#: ../gedit/gedit-app.c:192
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FILE...] [+LINE[:COLUMN]]"
 
-#: ../gedit/gedit-app.c:283
+#: ../gedit/gedit-app.c:292
 msgid "There was an error displaying the help."
 msgstr "ארעה שגיאה בהצגת העזרה."
 
-#: ../gedit/gedit-app.c:778
+#: ../gedit/gedit-app.c:787
 msgid "- Edit text files"
 msgstr "- Edit text files"
 
-#: ../gedit/gedit-app.c:887 ../gedit/gedit-app.c:977
+#: ../gedit/gedit-app.c:869 ../gedit/gedit-app.c:959
 #, c-format
 msgid ""
 "%s\n"
@@ -591,7 +595,7 @@ msgstr ""
 "%s\n"
 "Run '%s --help' to see a full list of available command line options.\n"
 
-#: ../gedit/gedit-app.c:908
+#: ../gedit/gedit-app.c:890
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: invalid encoding."
@@ -890,18 +894,18 @@ msgstr "מופע אחד נמצא והוחלף"
 msgid "\"%s\" not found"
 msgstr "‏\"%s\" לא נמצא"
 
-#: ../gedit/gedit-document.c:1266 ../gedit/gedit-document.c:1292
+#: ../gedit/gedit-document.c:1175 ../gedit/gedit-document.c:1201
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "מסמך שלא נשמר %d"
 
 #: ../gedit/gedit-documents-panel.c:119 ../gedit/gedit-documents-panel.c:133
-#: ../gedit/gedit-window.c:1198 ../gedit/gedit-window.c:1204
-#: ../gedit/gedit-window.c:1212
+#: ../gedit/gedit-window.c:1199 ../gedit/gedit-window.c:1205
+#: ../gedit/gedit-window.c:1213
 msgid "Read-Only"
 msgstr "(קריאה בלבד)"
 
-#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:2689
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:2693
 msgid "Documents"
 msgstr "מסמכים"
 
@@ -1085,7 +1089,7 @@ msgstr "Mac OS קלסי"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1313
+#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1314
 #: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:463
 #: ../plugins/externaltools/tools/manager.py:579
@@ -1458,26 +1462,25 @@ msgstr "על _אודות"
 msgid "_Quit"
 msgstr "י_ציאה"
 
-#. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:241 ../gedit/gedit-window.ui.h:14
-msgid "_Close"
-msgstr "_סגירה"
+#: ../gedit/gedit-notebook-popup-menu.ui.h:1
+msgid "Move _Left"
+msgstr "ה_עברה לשמאל"
 
-#: ../gedit/gedit-notebook-popup-menu.c:253
-msgid "_Move to New Tab Group"
-msgstr "ה_עברה לקבוצת לשוניות חדשה"
-
-#: ../gedit/gedit-notebook-popup-menu.c:260
-msgid "_Move to New Window"
-msgstr "ה_עברה לחלון חדש"
-
-#: ../gedit/gedit-notebook-popup-menu.c:271
-msgid "_Move Right"
+#: ../gedit/gedit-notebook-popup-menu.ui.h:2
+msgid "Move _Right"
 msgstr "ה_עברה לימין"
 
-#: ../gedit/gedit-notebook-popup-menu.c:279
-msgid "_Move Left"
-msgstr "ה_עברה לשמאל"
+#: ../gedit/gedit-notebook-popup-menu.ui.h:3
+msgid "Move to New _Window"
+msgstr "ה_עברה לחלון חדש"
+
+#: ../gedit/gedit-notebook-popup-menu.ui.h:4
+msgid "Move to New Tab _Group"
+msgstr "ה_עברה לקבוצת לשוניות חדשה"
+
+#: ../gedit/gedit-notebook-popup-menu.ui.h:5 ../gedit/gedit-window.ui.h:14
+msgid "_Close"
+msgstr "_סגירה"
 
 #: ../gedit/gedit-panel.c:392
 msgid "Hide panel"
@@ -1924,22 +1927,22 @@ msgstr "קידוד:"
 msgid "Close document"
 msgstr "סגירת המסמך"
 
-#: ../gedit/gedit-utils.c:932
+#: ../gedit/gedit-utils.c:906
 msgid "Please check your installation."
 msgstr "נא לבדוק את ההתקנה שלך."
 
-#: ../gedit/gedit-utils.c:990
+#: ../gedit/gedit-utils.c:964
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "לא ניתן לפתוח את קובץ המנשק %s. שגיאה: %s"
 
-#: ../gedit/gedit-utils.c:1009
+#: ../gedit/gedit-utils.c:983
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "לא ניתן למצוא את הפריט '%s' בתוך הקובץ %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1232
+#: ../gedit/gedit-utils.c:1206
 #, c-format
 msgid "/ on %s"
 msgstr "/ תחת %s"
@@ -1981,29 +1984,29 @@ msgstr "המחרוזת שברצונך לחפש"
 msgid "Line you want to move the cursor to"
 msgstr "השורה אליה להעביר את הסמן"
 
-#: ../gedit/gedit-window.c:913
+#: ../gedit/gedit-window.c:914
 msgid "Use Spaces"
 msgstr "שימוש ברווחים"
 
-#: ../gedit/gedit-window.c:1052
+#: ../gedit/gedit-window.c:1053
 msgid "Bracket match is out of range"
 msgstr "הסוגר התואם הוא מחוץ לטווח"
 
-#: ../gedit/gedit-window.c:1057
+#: ../gedit/gedit-window.c:1058
 msgid "Bracket match not found"
 msgstr "הסוגר התואם לא נמצא"
 
-#: ../gedit/gedit-window.c:1062
+#: ../gedit/gedit-window.c:1063
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "הסוגר התואם נמצא בשורה: %d"
 
-#: ../gedit/gedit-window.c:1265
+#: ../gedit/gedit-window.c:1266
 #, c-format
 msgid "Tab Width: %u"
 msgstr "רוחב טאב: %u"
 
-#: ../gedit/gedit-window.c:1652
+#: ../gedit/gedit-window.c:1653
 msgid "There are unsaved documents"
 msgstr "ישנם מסמכים שלא נשמרו"
 
@@ -2238,19 +2241,19 @@ msgstr "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgid "Could not execute command: %s"
 msgstr "לא ניתן להריץ את הפקודה: %s"
 
-#: ../plugins/externaltools/tools/functions.py:175
+#: ../plugins/externaltools/tools/functions.py:178
 msgid "You must be inside a word to run this command"
 msgstr "עליך להיות בתוך מילה כדי להריץ את פקודה זו"
 
-#: ../plugins/externaltools/tools/functions.py:310
+#: ../plugins/externaltools/tools/functions.py:313
 msgid "Running tool:"
 msgstr "הכלי הפעיל:"
 
-#: ../plugins/externaltools/tools/functions.py:339
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Done."
 msgstr "הסתיים."
 
-#: ../plugins/externaltools/tools/functions.py:341
+#: ../plugins/externaltools/tools/functions.py:344
 msgid "Exited"
 msgstr "נסגר"
 
