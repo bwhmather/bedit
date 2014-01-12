@@ -474,7 +474,6 @@ plugins/zeitgeist/Makefile
 po/Makefile.in
 tests/Makefile
 win32/gedit.iss
-win32/Makefile
 osx/Info.plist
 osx/Makefile])
 
