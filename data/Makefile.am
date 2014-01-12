@@ -21,8 +21,10 @@ data_pkgconfig_DATA = data/gedit.pc
 data_bugreportdir = $(libexecdir)/gedit
 dist_data_bugreport_SCRIPTS = data/gedit-bugreport.sh
 
-gsettings_ENUM_NAMESPACE = org.gnome.gedit
-gsettings_ENUM_FILES = $(top_srcdir)/gedit/*.h
+gsettings_ENUMS += data/org.gnome.gedit.enums.xml
+
+data/org.gnome.gedit.enums.xml: $(top_srcdir)/gedit/*.h
+	$(GSETTINGS_ENUMS_GEN)
 
 gsettings_SCHEMAS += data/org.gnome.gedit.gschema.xml
 
@@ -35,7 +37,9 @@ dist_data_convert_DATA = data/gedit.convert
 
 if OS_OSX
 data_geditdatadir = $(datadir)/gedit
-dist_data_geditdata_DATA = osx.accels osx.css
+dist_data_geditdata_DATA =	\
+	data/osx.accels		\
+	data/osx.css
 endif
 
 EXTRA_DIST += 					\
