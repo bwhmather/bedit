@@ -440,7 +440,6 @@ Makefile
 data/gedit.desktop.in
 data/gedit.pc
 data/org.gnome.gedit.gschema.xml
-data/Makefile
 docs/Makefile
 docs/reference/Makefile
 gedit/Makefile

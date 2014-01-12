@@ -1,72 +1,56 @@
-desktopdir 	 = $(datadir)/applications
-desktop_in_files = gedit.desktop.in
-desktop_DATA 	 = $(desktop_in_files:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
+data_desktopdir = $(datadir)/applications
+data_desktop_in_files = data/gedit.desktop.in
+data_desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
-@INTLTOOL_XML_RULE@
+data_appdatadir = $(datadir)/appdata
+data_appdata_in_files = data/gedit.appdata.xml.in
+data_appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 
-appdatadir = $(datadir)/appdata
-appdata_DATA = $(appdata_in_files:.xml.in=.xml)
-appdata_in_files = gedit.appdata.xml.in
+data_servicedir = $(datadir)/dbus-1/services
+data_service_in_files = data/org.gnome.gedit.service.in
+data_service_DATA = $(service_in_files:.service.in=.service)
 
-servicedir = $(datadir)/dbus-1/services
-service_in_files = org.gnome.gedit.service.in
-service_DATA = $(service_in_files:.service.in=.service)
-
-$(service_DATA): $(service_in_files) Makefile
+$(data_service_DATA): $(data_service_in_files) Makefile
 	@sed -e "s|\@bindir\@|$(bindir)|" $<> $@
 
-man_MANS = gedit.1
+dist_man_MANS = data/gedit.1
 
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = gedit.pc
+data_pkgconfigdir = $(libdir)/pkgconfig
+data_pkgconfig_DATA = data/gedit.pc
 
-bugreportdir = $(libexecdir)/gedit
-dist_bugreport_SCRIPTS = gedit-bugreport.sh
+data_bugreportdir = $(libexecdir)/gedit
+dist_data_bugreport_SCRIPTS = data/gedit-bugreport.sh
 
 gsettings_ENUM_NAMESPACE = org.gnome.gedit
 gsettings_ENUM_FILES = $(top_srcdir)/gedit/*.h
-gsettings_SCHEMAS = org.gnome.gedit.gschema.xml
 
-@GSETTINGS_RULES@
-
-if OS_OSX
-gsettingsschema_DATA = gedit-osx.gschema.override
-endif
-
-convertdir = $(datadir)/GConf/gsettings
-convert_DATA = gedit.convert
+gsettings_SCHEMAS += data/org.gnome.gedit.gschema.xml
 
 if OS_OSX
-geditdatadir = $(datadir)/gedit
-geditdata_DATA = osx.accels osx.css
+dist_gsettingsschema_DATA += data/gedit-osx.gschema.override
 endif
 
-EXTRA_DIST = 					\
-	$(desktop_in_files)			\
-	$(appdata_in_files)			\
-	$(service_in_files)			\
-	$(man_MANS)				\
-	gedit.pc.in				\
-	org.gnome.gedit.gschema.xml.in		\
-	gedit.convert				\
-	osx.accels				\
-	osx.css					\
-	gedit-osx.gschema.override
+data_convertdir = $(datadir)/GConf/gsettings
+dist_data_convert_DATA = data/gedit.convert
 
-CLEANFILES =	 			\
-	$(appdata_DATA)			\
-	$(desktop_DATA)			\
-	$(service_DATA)			\
-	$(pkgconfig_DATA)		\
-	$(gsettings_SCHEMAS)
+if OS_OSX
+data_geditdatadir = $(datadir)/gedit
+dist_data_geditdata_DATA = osx.accels osx.css
+endif
 
-DISTCLEANFILES =	 		\
-	$(desktop_DATA)			\
-	$(service_DATA)			\
-	$(pkgconfig_DATA)		\
-	$(gsettings_SCHEMAS)
+EXTRA_DIST += 					\
+	$(data_desktop_in_files)		\
+	$(data_appdata_in_files)		\
+	$(data_service_in_files)		\
+	data/gedit.pc.in
 
-MAINTAINERCLEANFILES = $(gsettings_SCHEMAS:.xml=.valid)
+CLEANFILES +=	 			\
+	$(data_appdata_DATA)		\
+	$(data_desktop_DATA)		\
+	$(data_service_DATA)		\
+	$(data_pkgconfig_DATA)
 
--include $(top_srcdir)/git.mk
+DISTCLEANFILES +=	 		\
+	$(data_desktop_DATA)		\
+	$(data_service_DATA)		\
+	$(data_pkgconfig_DATA)
