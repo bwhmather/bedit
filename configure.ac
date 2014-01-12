@@ -442,7 +442,6 @@ data/gedit.pc
 data/org.gnome.gedit.gschema.xml
 docs/Makefile
 docs/reference/Makefile
-gedit/Makefile
 help/Makefile
 libgd/Makefile
 plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in

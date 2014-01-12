@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 ACLOCAL_AMFLAGS = -I m4 -I libgd ${ACLOCAL_FLAGS}
 
-SUBDIRS = libgd gedit po docs
+SUBDIRS = libgd po docs
 
 if !OS_OSX
 SUBDIRS += help
@@ -87,6 +87,8 @@ GSETTINGS_ENUMS_GEN = $(AM_V_GEN) $(GLIB_MKENUMS) --comments "<!-- @comment@ -->
 
 noinst_LTLIBRARIES        =
 noinst_PROGRAMS	          =
+bin_PROGRAMS              =
+pkglib_LTLIBRARIES        =
 gsettings_SCHEMAS         =
 gsettings_ENUMS           =
 dist_gsettingsschema_DATA =
@@ -102,6 +104,7 @@ include win32/Makefile.am
 include osx/Makefile.am
 include tests/Makefile.am
 include plugins/Makefile.am
+include gedit/Makefile.am
 
 override gsettings__enum_file = $(gsettings_ENUMS)
 BUILT_SOURCES += $(gsettings_ENUMS)
