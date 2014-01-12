@@ -474,8 +474,7 @@ plugins/zeitgeist/Makefile
 po/Makefile.in
 tests/Makefile
 win32/gedit.iss
-osx/Info.plist
-osx/Makefile])
+osx/Info.plist])
 
 AC_OUTPUT
 

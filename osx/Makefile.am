@@ -1,3 +1,1 @@
-EXTRA_DIST = Info.plist.in
-
--include $(top_srcdir)/git.mk
+EXTRA_DIST += osx/Info.plist.in
