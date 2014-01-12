@@ -119,7 +119,12 @@ noinst_PROGRAMS += $(TESTS)
 
 CHANGELOG_START = GEDIT_2_26_1
 
-dist-hook:
+dist-hook: dist-hook-changelog dist-hook-cleanup
+
+dist-hook-cleanup:
+	cd $(distdir); rm -f $(BUILT_SOURCES)
+
+dist-hook-changelog:
 	@if test -d "$(srcdir)/.git"; \
 	then \
 		echo Creating ChangeLog && \
@@ -132,5 +137,7 @@ dist-hook:
 	else \
 		echo A git clone is required to generate a ChangeLog >&2; \
 	fi
+
+.PHONY: dist-hook-cleanup dist-hook-changelog
 
 -include $(top_srcdir)/git.mk

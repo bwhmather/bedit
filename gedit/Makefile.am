@@ -165,8 +165,6 @@ endif
 gedit_headerdir = $(prefix)/include/gedit-$(GEDIT_API_VERSION)/gedit
 gedit_header_HEADERS = $(gedit_INST_H_FILES)
 
-gedit_BUILT_SOURCES_PRIVATE = gedit/gedit-resources.c
-
 gedit_libgedit_private_la_SOURCES =		\
 	gedit/gedit-app-activatable.c		\
 	gedit/gedit-view-activatable.c		\
@@ -267,8 +265,6 @@ EXTRA_DIST += 					\
 	gedit/gedit.rc				\
 	$(gedit_resource_deps)
 
-CLEANFILES += $(gedit_BUILT_SOURCES_PRIVATE)
-
 if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = gedit/Gedit-3.0.gir
@@ -305,4 +301,4 @@ else
 	ln -s gedit $(DESTDIR)$(bindir)/gnome-text-editor
 endif
 
-BUILT_SOURCES += $(gedit_built_sources)
+BUILT_SOURCES += $(gedit_built_sources) gedit/gedit-resources.c
