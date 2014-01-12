@@ -1,30 +1,26 @@
-plugindir = $(GEDIT_PLUGINS_LIBS_DIR)
+if ENABLE_ZEITGEIST
 
-AM_CPPFLAGS = \
-	-I$(top_srcdir) 				\
+plugin_LTLIBRARIES += plugins/zeitgeist/libzeitgeist.la
+
+plugins_zeitgeist_libzeitgeist_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
+plugins_zeitgeist_libzeitgeist_la_LIBADD = $(GEDIT_LIBS) $(ZEITGEIST_LIBS)
+plugins_zeitgeist_libzeitgeist_la_CPPFLAGS = -I$(top_srcdir)
+plugins_zeitgeist_libzeitgeist_la_CFLAGS =			\
 	$(GEDIT_CFLAGS) 				\
 	$(ZEITGEIST_CFLAGS)				\
 	$(WARN_CFLAGS)					\
 	$(DISABLE_DEPRECATED_CFLAGS)
 
-plugin_LTLIBRARIES = libzeitgeistplugin.la
+plugins_zeitgeist_libzeitgeist_la_SOURCES =		\
+	plugins/zeitgeist/gedit-zeitgeist-plugin.h	\
+	plugins/zeitgeist/gedit-zeitgeist-plugin.c
 
-libzeitgeistplugin_la_SOURCES = \
-	gedit-zeitgeist-plugin.h	\
-	gedit-zeitgeist-plugin.c
+EXTRA_DIST += $(zeitgeist_resource_deps)
 
-libzeitgeistplugin_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-libzeitgeistplugin_la_LIBADD = $(GEDIT_LIBS) $(ZEITGEIST_LIBS)
+plugin_in_files += plugins/zeitgeist/zeitgeist.plugin.desktop.in
 
-plugin_in_files = zeitgeist.plugin.desktop.in
+else
 
-%.plugin: %.plugin.desktop.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+dist_plugin_in_files += plugins/zeitgeist/zeitgeist.plugin.desktop.in
 
-plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)
-
-EXTRA_DIST = $(plugin_in_files)
-
-CLEANFILES = $(plugin_DATA)
-DISTCLEANFILES = $(plugin_DATA)
-
--include $(top_srcdir)/git.mk
+endif

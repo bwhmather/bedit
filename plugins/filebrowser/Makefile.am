@@ -1,121 +1,118 @@
-plugindir = $(GEDIT_PLUGINS_LIBS_DIR)
+plugin_LTLIBRARIES += plugins/filebrowser/libfilebrowser.la
 
-AM_CPPFLAGS = \
-	-I$(top_srcdir) 						\
+plugins_filebrowser_libfilebrowser_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
+plugins_filebrowser_libfilebrowser_la_LIBADD = $(GEDIT_LIBS)
+plugins_filebrowser_libfilebrowser_la_CPPFLAGS =			\
+	-I$(top_srcdir)							\
+	-I$(top_builddir)/plugins/filebrowser
+
+plugins_filebrowser_libfilebrowser_la_CFLAGS =				\
 	$(GEDIT_CFLAGS) 						\
 	$(WARN_CFLAGS)							\
 	$(DISABLE_DEPRECATED_CFLAGS)
 
-BUILT_SOURCES = \
-	gedit-file-browser-resources.c		\
-	gedit-file-browser-enum-types.h		\
-	gedit-file-browser-enum-types.c		\
-	gedit-file-browser-marshal.h 		\
-	gedit-file-browser-marshal.c
+plugins_filebrowser_BUILTSOURCES =				\
+	plugins/filebrowser/gedit-file-browser-enum-types.h	\
+	plugins/filebrowser/gedit-file-browser-enum-types.c	\
+	plugins/filebrowser/gedit-file-browser-marshal.h	\
+	plugins/filebrowser/gedit-file-browser-marshal.c	\
+	plugins/filebrowser/gedit-file-browser-resources.c
 
-plugin_LTLIBRARIES = libfilebrowser.la
+plugins_filebrowser_messages_NOINST_H_FILES =						\
+	plugins/filebrowser/messages/gedit-file-browser-message-activation.h		\
+	plugins/filebrowser/messages/gedit-file-browser-message-add-context-item.h	\
+	plugins/filebrowser/messages/gedit-file-browser-message-add-filter.h		\
+	plugins/filebrowser/messages/gedit-file-browser-message-get-root.h		\
+	plugins/filebrowser/messages/gedit-file-browser-message-get-view.h		\
+	plugins/filebrowser/messages/gedit-file-browser-message-id.h			\
+	plugins/filebrowser/messages/gedit-file-browser-message-id-location.h		\
+	plugins/filebrowser/messages/gedit-file-browser-message-set-emblem.h		\
+	plugins/filebrowser/messages/gedit-file-browser-message-set-markup.h		\
+	plugins/filebrowser/messages/gedit-file-browser-message-set-root.h		\
+	plugins/filebrowser/messages/messages.h
 
-NOINST_H_FILES = \
-	gedit-file-bookmarks-store.h 		\
-	gedit-file-browser-store.h 		\
-	gedit-file-browser-view.h 		\
-	gedit-file-browser-widget.h 		\
-	gedit-file-browser-error.h		\
-	gedit-file-browser-utils.h		\
-	gedit-file-browser-plugin.h		\
-	gedit-file-browser-messages.h		\
-	messages/gedit-file-browser-message-activation.h \
-	messages/gedit-file-browser-message-add-context-item.h \
-	messages/gedit-file-browser-message-add-filter.h \
-	messages/gedit-file-browser-message-get-root.h \
-	messages/gedit-file-browser-message-get-view.h \
-	messages/gedit-file-browser-message-id.h \
-	messages/gedit-file-browser-message-id-location.h \
-	messages/gedit-file-browser-message-set-emblem.h \
-	messages/gedit-file-browser-message-set-markup.h \
-	messages/gedit-file-browser-message-set-root.h \
-	messages/messages.h
+plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES =		\
+	plugins/filebrowser/gedit-file-bookmarks-store.h	\
+	plugins/filebrowser/gedit-file-browser-error.h		\
+	plugins/filebrowser/gedit-file-browser-store.h		\
+	plugins/filebrowser/gedit-file-browser-view.h		\
+	plugins/filebrowser/gedit-file-browser-widget.h		\
+	plugins/filebrowser/gedit-file-browser-utils.h		\
+	plugins/filebrowser/gedit-file-browser-plugin.h		\
+	plugins/filebrowser/gedit-file-browser-messages.h	\
+	$(plugins_filebrowser_messages_NOINST_H_FILES)
 
-libfilebrowser_la_SOURCES = \
-	$(BUILT_SOURCES) 			\
-	gedit-file-bookmarks-store.c 		\
-	gedit-file-browser-store.c 		\
-	gedit-file-browser-view.c 		\
-	gedit-file-browser-widget.c 		\
-	gedit-file-browser-utils.c 		\
-	gedit-file-browser-plugin.c		\
-	gedit-file-browser-messages.c		\
-	messages/gedit-file-browser-message-activation.c \
-	messages/gedit-file-browser-message-add-context-item.c \
-	messages/gedit-file-browser-message-add-filter.c \
-	messages/gedit-file-browser-message-get-root.c \
-	messages/gedit-file-browser-message-get-view.c \
-	messages/gedit-file-browser-message-id.c \
-	messages/gedit-file-browser-message-id-location.c \
-	messages/gedit-file-browser-message-set-emblem.c \
-	messages/gedit-file-browser-message-set-markup.c \
-	messages/gedit-file-browser-message-set-root.c \
-	$(NOINST_H_FILES)
+plugins_filebrowser_messages_sources =							\
+	plugins/filebrowser/messages/gedit-file-browser-message-activation.c		\
+	plugins/filebrowser/messages/gedit-file-browser-message-add-context-item.c	\
+	plugins/filebrowser/messages/gedit-file-browser-message-add-filter.c		\
+	plugins/filebrowser/messages/gedit-file-browser-message-get-root.c		\
+	plugins/filebrowser/messages/gedit-file-browser-message-get-view.c		\
+	plugins/filebrowser/messages/gedit-file-browser-message-id.c			\
+	plugins/filebrowser/messages/gedit-file-browser-message-id-location.c		\
+	plugins/filebrowser/messages/gedit-file-browser-message-set-emblem.c		\
+	plugins/filebrowser/messages/gedit-file-browser-message-set-markup.c		\
+	plugins/filebrowser/messages/gedit-file-browser-message-set-root.c
 
-libfilebrowser_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-libfilebrowser_la_LIBADD = $(GEDIT_LIBS)
+plugins_filebrowser_libfilebrowser_la_SOURCES =			\
+	$(plugins_filebrowser_BUILTSOURCES) 			\
+	plugins/filebrowser/gedit-file-bookmarks-store.c	\
+	plugins/filebrowser/gedit-file-browser-store.c 		\
+	plugins/filebrowser/gedit-file-browser-view.c 		\
+	plugins/filebrowser/gedit-file-browser-widget.c		\
+	plugins/filebrowser/gedit-file-browser-utils.c		\
+	plugins/filebrowser/gedit-file-browser-plugin.c		\
+	plugins/filebrowser/gedit-file-browser-messages.c	\
+	$(plugins_filebrowser_messages_sources)			\
+	$(plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES)
 
-plugin_in_files = filebrowser.plugin.desktop.in
+plugin_in_files += plugins/filebrowser/filebrowser.plugin.desktop.in
 
-%.plugin: %.plugin.desktop.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+filebrowser_resources_deps = $(call GRESDEPS,plugins/filebrowser/gedit-file-browser.gresource.xml)
+plugins/filebrowser/gedit-file-browser-resources.c: $(filebrowser_resources_deps)
+	$(GRESGEN)
 
-gedit-file-browser-resources.c: gedit-file-browser.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/gedit-file-browser.gresource.xml)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $(srcdir)/gedit-file-browser.gresource.xml
+filebrowser_enum_c_template = plugins/filebrowser/gedit-file-browser-enum-types.c.template
+filebrowser_enum_register_c_template = plugins/filebrowser/gedit-file-browser-enum-register.c.template
+filebrowser_enum_h_template = plugins/filebrowser/gedit-file-browser-enum-types.h.template
 
-gedit-file-browser-enum-types.h: gedit-file-browser-enum-types.h.template $(NOINST_H_FILES) $(GLIB_MKENUMS)
-	(cd $(srcdir) && $(GLIB_MKENUMS) --template gedit-file-browser-enum-types.h.template $(NOINST_H_FILES)) > $@
+plugins/filebrowser/gedit-file-browser-enum-types.h: $(filebrowser_enum_h_template) $(plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES) $(GLIB_MKENUMS)
+	$(AM_V_GEN) (cd $(srcdir) &&						\
+	 $(GLIB_MKENUMS)							\
+		--template $(filebrowser_enum_h_template)			\
+		$(plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES)) > $@
 
-gedit-file-browser-enum-types.c: gedit-file-browser-enum-types.c.template gedit-file-browser-enum-register.c.template $(NOINST_H_FILES) $(GLIB_MKENUMS)
-	$(AM_V_GEN) (cd $(srcdir) && \
-	$(GLIB_MKENUMS) --template gedit-file-browser-enum-types.c.template $(NOINST_H_FILES) && \
-	$(GLIB_MKENUMS) --template gedit-file-browser-enum-register.c.template $(NOINST_H_FILES)) > $@
+plugins/filebrowser/gedit-file-browser-enum-types.c: $(filebrowser_enum_c_template) $(filebrowser_enum_register_c_template) $(plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES) $(GLIB_MKENUMS)
+	$(AM_V_GEN) 								\
+	(cd $(srcdir) &&							\
+	 $(GLIB_MKENUMS)							\
+		--template $(filebrowser_enum_c_template) 			\
+		$(plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES) &&	\
+	 $(GLIB_MKENUMS)							\
+		--template $(filebrowser_enum_register_c_template)		\
+		$(plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES)) > $@
 
-gedit-file-browser-marshal.h: gedit-file-browser-marshal.list $(GLIB_GENMARSHAL)
+plugins/filebrowser/gedit-file-browser-marshal.h: plugins/filebrowser/gedit-file-browser-marshal.list $(GLIB_GENMARSHAL)
 	$(AM_V_GEN) $(GLIB_GENMARSHAL) $< --header --prefix=gedit_file_browser_marshal > $@
 
-gedit-file-browser-marshal.c: gedit-file-browser-marshal.list $(GLIB_GENMARSHAL)
+plugins/filebrowser/gedit-file-browser-marshal.c: plugins/filebrowser/gedit-file-browser-marshal.list $(GLIB_GENMARSHAL)
 	$(AM_V_GEN) echo "#include \"gedit-file-browser-marshal.h\"" > $@ && \
 	$(GLIB_GENMARSHAL) $< --body --prefix=gedit_file_browser_marshal >> $@
 
-plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)
+plugin_gsettings_SCHEMAS += plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml
+gsettings_ENUMS += plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.enums.xml
 
-gsettings_ENUM_NAMESPACE = org.gnome.gedit.plugins.filebrowser
-gsettings_ENUM_FILES = $(top_srcdir)/plugins/filebrowser/*.h
-gsettings_SCHEMAS = org.gnome.gedit.plugins.filebrowser.gschema.xml
+plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.enums.xml: $(plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES)
+	$(GSETTINGS_ENUMS_GEN)
 
-@INTLTOOL_XML_NOMERGE_RULE@
+plugins-filebrowser-update-messages:
+	$(top_srcdir)/tools/generate-message.py --output-directory $(builddir)/plugins/filebrowser/messages/  --gpl --program gedit $(srcdir)/plugins/filebrowser/messages.xml
 
-@GSETTINGS_RULES@
+BUILT_SOURCES += $(plugins_filebrowser_BUILTSOURCES)
 
-update-messages:
-	$(top_srcdir)/tools/generate-message.py --output-directory $(builddir)/messages/  --gpl --program gedit $(srcdir)/messages.xml
-
-EXTRA_DIST = \
-	$(plugin_in_files)				\
-	gedit-file-browser.gresource.xml		\
-	gedit-file-browser-enum-types.h.template	\
-	gedit-file-browser-enum-types.c.template	\
-	gedit-file-browser-enum-register.c.template	\
-	gedit-file-browser-marshal.list			\
-	org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in \
-	gedit-file-browser-menus.ui			\
-	gedit-file-browser-widget.ui
-
-CLEANFILES = \
-	$(plugin_DATA)		\
-	$(BUILT_SOURCES)	\
-	$(gsettings_SCHEMAS)
-
-DISTCLEANFILES = \
-	$(plugin_DATA)		\
-	$(BUILT_SOURCES)	\
-	$(gsettings_SCHEMAS)
-
-MAINTAINERCLEANFILES = $(gsettings_SCHEMAS:.xml=.valid)
-
--include $(top_srcdir)/git.mk
+EXTRA_DIST +=								\
+	$(filebrowser_resources_deps)					\
+	plugins/filebrowser/gedit-file-browser-enum-types.h.template	\
+	plugins/filebrowser/gedit-file-browser-enum-types.c.template	\
+	plugins/filebrowser/gedit-file-browser-enum-register.c.template	\
+	plugins/filebrowser/gedit-file-browser-marshal.list

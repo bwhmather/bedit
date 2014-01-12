@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 ACLOCAL_AMFLAGS = -I m4 -I libgd ${ACLOCAL_FLAGS}
 
-SUBDIRS = libgd gedit po plugins docs
+SUBDIRS = libgd gedit po docs
 
 if !OS_OSX
 SUBDIRS += help
@@ -77,30 +77,44 @@ MAINTAINERCLEANFILES = 		\
 	po/*.header		\
 	po/*.sin
 
-CLEANFILES =
-
 DISTCHECK_CONFIGURE_FLAGS = --disable-scrollkeeper --enable-gtk-doc
 
-gsettings_SCHEMAS =
+GRESDEPS = $(srcdir)/$1 $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir)/$(dir $1) $(srcdir)/$1)
+
+GRESGEN = $(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target="$@" --sourcedir="$(dir $<)" --generate-source "$<"
+
+GSETTINGS_ENUMS_GEN = $(AM_V_GEN) $(GLIB_MKENUMS) --comments "<!-- @comment@ -->" --fhead "<schemalist>" --vhead "  <@type@ id='$(subst .enums.xml,,$(notdir $@)).@EnumName@'>" --vprod "    <value nick='@valuenick@' value='@valuenum@'/>" --vtail "  </@type@>" --ftail "</schemalist>" $^ > $@
+
+noinst_LTLIBRARIES        =
+noinst_PROGRAMS	          =
+gsettings_SCHEMAS         =
+gsettings_ENUMS           =
 dist_gsettingsschema_DATA =
-TESTS =
-noinst_PROGRAMS	=
+TESTS                     =
+BUILT_SOURCES             =
+CLEANFILES                =
+
+@GSETTINGS_RULES@
 
 include data/Makefile.am
 include pixmaps/Makefile.am
 include win32/Makefile.am
 include osx/Makefile.am
 include tests/Makefile.am
+include plugins/Makefile.am
+
+override gsettings__enum_file = $(gsettings_ENUMS)
+BUILT_SOURCES += $(gsettings_ENUMS)
 
 EXTRA_DIST += $(gsettings_SCHEMAS:.gschema.xml=.gschema.xml.in)
-CLEANFILES += $(gsettings_SCHEMAS)
-DISTCLEANFILES += $(gsettings_SCHEMAS)
+CLEANFILES += $(gsettings_SCHEMAS) $(BUILT_SOURCES)
+DISTCLEANFILES += $(gsettings_SCHEMAS) $(BUILT_SOURCES)
 MAINTAINERCLEANFILES += $(gsettings_SCHEMAS:.xml=.valid)
+
 noinst_PROGRAMS += $(TESTS)
 
 @INTLTOOL_DESKTOP_RULE@
 @INTLTOOL_XML_RULE@
-@GSETTINGS_RULES@
 
 CHANGELOG_START = GEDIT_2_26_1
 

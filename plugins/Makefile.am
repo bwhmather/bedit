@@ -1,47 +1,43 @@
-DIST_SUBDIRS = \
-	checkupdate	\
-	docinfo		\
-	externaltools	\
-	filebrowser	\
-	modelines	\
-	pythonconsole	\
-	quickopen	\
-	snippets	\
-	sort		\
-	spell 		\
-	time		\
-	zeitgeist
+plugindir = $(GEDIT_PLUGINS_LIBS_DIR)
 
-SUBDIRS = \
-	docinfo		\
-	filebrowser	\
-	modelines	\
-	sort		\
-	time
+plugin_in_files               =
+dist_plugin_in_files          =
+plugin_LTLIBRARIES            =
+plugin_gsettings_SCHEMAS      =
+dist_plugin_gsettings_SCHEMAS =
 
-if ENABLE_PYTHON
-SUBDIRS += \
-	pythonconsole	\
-	quickopen	\
-	snippets
-endif
+include plugins/checkupdate/Makefile.am
+include plugins/docinfo/Makefile.am
+include plugins/externaltools/Makefile.am
+include plugins/filebrowser/Makefile.am
+include plugins/modelines/Makefile.am
+include plugins/pythonconsole/Makefile.am
+include plugins/quickopen/Makefile.am
+include plugins/snippets/Makefile.am
+include plugins/sort/Makefile.am
+include plugins/spell/Makefile.am
+include plugins/time/Makefile.am
+include plugins/zeitgeist/Makefile.am
 
-if !OS_WIN32
-if ENABLE_PYTHON
-SUBDIRS      += externaltools
-endif
-endif
+gsettings_SCHEMAS += $(plugin_gsettings_SCHEMAS)
 
-if ENABLE_ENCHANT
-SUBDIRS      += spell
-endif
+%.plugin: %.plugin.desktop.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po)
+	$(AM_V_GEN) \
+	$(MKDIR_P) "$(dir $@)"; \
+	$(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
 
-if ENABLE_UPDATER
-SUBDIRS      += checkupdate
-endif
+GENERATED_PLUGIN_FILES = $(plugin_in_files:.plugin.desktop.in=.plugin)
 
-if ENABLE_ZEITGEIST
-SUBDIRS      += zeitgeist
-endif
+plugin_DATA = $(GENERATED_PLUGIN_FILES)
 
--include $(top_srcdir)/git.mk
+DISTCLEANFILES +=			\
+	$(GENERATED_PLUGIN_FILES)
+
+CLEANFILES +=				\
+	$(GENERATED_PLUGIN_FILES)
+
+EXTRA_DIST +=									\
+	$(plugin_in_files)							\
+	$(dist_plugin_in_files)							\
+	$(plugin_gsettings_SCHEMAS:%.gschema.xml=%.gschema.xml.in.in)		\
+	$(dist_plugin_gsettings_SCHEMAS:%.gschema.xml=%.gschema.xml.in.in)

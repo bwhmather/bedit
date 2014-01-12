@@ -1,50 +1,30 @@
-plugindir = $(GEDIT_PLUGINS_LIBS_DIR)
+plugin_LTLIBRARIES += plugins/time/libtime.la
 
-AM_CPPFLAGS = \
-	-I$(top_srcdir) 				\
+plugins_time_libtime_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
+plugins_time_libtime_la_LIBADD = $(GEDIT_LIBS)
+plugins_time_libtime_la_CPPFLAGS = -I$(top_srcdir)
+plugins_time_libtime_la_CFLAGS =			\
 	$(GEDIT_CFLAGS) 				\
 	$(WARN_CFLAGS)					\
-	$(DISABLE_DEPRECATED_CFLAGS)			
+	$(DISABLE_DEPRECATED_CFLAGS)
 
-plugin_LTLIBRARIES = libtime.la
+time_resource_deps = $(call GRESDEPS,plugins/time/gedit-time.gresource.xml)
+plugins/time/gedit-time-resources.c: $(time_resource_deps)
+	$(GRESGEN)
 
-BUILT_SOURCES = \
-	gedit-time-resources.c
+BUILT_SOURCES += plugins/time/gedit-time-resources.c
 
-libtime_la_SOURCES = \
-	gedit-time-plugin.h	\
-	gedit-time-plugin.c	\
-	$(BUILT_SOURCES)
+plugins_time_libtime_la_SOURCES =		\
+	plugins/time/gedit-time-plugin.h	\
+	plugins/time/gedit-time-plugin.c	\
+	plugins/time/gedit-time-resources.c
 
-libtime_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-libtime_la_LIBADD  = $(GEDIT_LIBS)
+EXTRA_DIST += $(time_resource_deps)
 
-gedit-time-resources.c: gedit-time.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies $(srcdir)/gedit-time.gresource.xml)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $(srcdir)/gedit-time.gresource.xml
+plugin_gsettings_SCHEMAS += plugins/time/org.gnome.gedit.plugins.time.gschema.xml
+gsettings_ENUMS += plugins/time/org.gnome.gedit.plugins.time.enums.xml
 
-plugin_in_files = time.plugin.desktop.in
+plugins/time/org.gnome.gedit.plugins.time.enums.xml: plugins/time/gedit-time-plugin.c
+	$(GSETTINGS_ENUMS_GEN)
 
-%.plugin: %.plugin.desktop.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
-
-plugin_DATA = $(plugin_in_files:.plugin.desktop.in=.plugin)
-
-gsettings_ENUM_NAMESPACE = org.gnome.gedit.plugins.time
-gsettings_ENUM_FILES = $(top_srcdir)/plugins/time/gedit-time-plugin.c
-gsettings_SCHEMAS = org.gnome.gedit.plugins.time.gschema.xml
-
-@INTLTOOL_XML_NOMERGE_RULE@
-@GSETTINGS_RULES@
-
-EXTRA_DIST =					\
-	$(plugin_in_files)			\
-	org.gnome.gedit.plugins.time.gschema.xml.in.in \
-	gedit-time.gresource.xml		\
-	gedit-time-dialog.ui			\
-	gedit-time-setup-dialog.ui
-
-CLEANFILES = $(plugin_DATA) $(gsettings_SCHEMAS) $(BUILT_SOURCES)
-DISTCLEANFILES = $(plugin_DATA) $(gsettings_SCHEMAS) $(BUILT_SOURCES)
-
-MAINTAINERCLEANFILES = $(gsettings_SCHEMAS:.xml=.valid)
-
--include $(top_srcdir)/git.mk
+plugin_in_files += plugins/time/time.plugin.desktop.in
