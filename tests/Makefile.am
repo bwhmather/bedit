@@ -1,29 +1,32 @@
-AM_CPPFLAGS = \
-	-I$(top_srcdir) \
-	-I$(top_srcdir)/gedit \
-	$(GEDIT_CFLAGS)
+tests_progs_cppflags =		\
+	-I$(top_srcdir)		\
+	-I$(top_srcdir)/gedit
 
-noinst_PROGRAMS	= $(TEST_PROGS) $(TEST_GTK_PROGS)
-progs_ldadd	= $(top_builddir)/gedit/libgedit.la
+tests_progs_cflags = $(GEDIT_CFLAGS)
+tests_progs_ldadd = $(top_builddir)/gedit/libgedit.la
 
-TEST_PROGS			= document-input-stream
-document_input_stream_SOURCES	= document-input-stream.c
-document_input_stream_LDADD	= $(progs_ldadd)
+TESTS                                += tests/document-input-stream
+tests_document_input_stream_SOURCES   = tests/document-input-stream.c
+tests_document_input_stream_LDADD     = $(tests_progs_ldadd)
+tests_document_input_stream_CPPFLAGS  = $(tests_progs_cppflags)
+tests_document_input_stream_CFLAGS    = $(tests_progs_cflags)
 
-TEST_PROGS			+= document-output-stream
-document_output_stream_SOURCES	= document-output-stream.c
-document_output_stream_LDADD	= $(progs_ldadd)
+TESTS                                 += tests/document-output-stream
+tests_document_output_stream_SOURCES   = tests/document-output-stream.c
+tests_document_output_stream_LDADD     = $(tests_progs_ldadd)
+tests_document_output_stream_CPPFLAGS  = $(tests_progs_cppflags)
+tests_document_output_stream_CFLAGS    = $(tests_progs_cflags)
 
-TEST_PROGS			+= document-loader
-document_loader_SOURCES		= document-loader.c
-document_loader_LDADD		= $(progs_ldadd)
+TESTS                          += tests/document-loader
+tests_document_loader_SOURCES   = tests/document-loader.c
+tests_document_loader_LDADD     = $(tests_progs_ldadd)
+tests_document_loader_CPPFLAGS  = $(tests_progs_cppflags)
+tests_document_loader_CFLAGS    = $(tests_progs_cflags)
 
-TEST_PROGS			+= document-saver
-document_saver_SOURCES		= document-saver.c
-document_saver_LDADD		= $(progs_ldadd)
+TESTS                         += tests/document-saver
+tests_document_saver_SOURCES   = tests/document-saver.c
+tests_document_saver_LDADD     = $(tests_progs_ldadd)
+tests_document_saver_CPPFLAGS  = $(tests_progs_cppflags)
+tests_document_saver_CFLAGS    = $(tests_progs_cflags)
 
-TESTS = $(TEST_PROGS)
-
-EXTRA_DIST = setup-document-saver.sh
-
--include $(top_srcdir)/git.mk
+EXTRA_DIST += tests/setup-document-saver.sh

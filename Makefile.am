@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 ACLOCAL_AMFLAGS = -I m4 -I libgd ${ACLOCAL_FLAGS}
 
-SUBDIRS = libgd gedit po plugins docs tests
+SUBDIRS = libgd gedit po plugins docs
 
 if !OS_OSX
 SUBDIRS += help
@@ -83,16 +83,20 @@ DISTCHECK_CONFIGURE_FLAGS = --disable-scrollkeeper --enable-gtk-doc
 
 gsettings_SCHEMAS =
 dist_gsettingsschema_DATA =
+TESTS =
+noinst_PROGRAMS	=
 
 include data/Makefile.am
 include pixmaps/Makefile.am
 include win32/Makefile.am
 include osx/Makefile.am
+include tests/Makefile.am
 
 EXTRA_DIST += $(gsettings_SCHEMAS:.gschema.xml=.gschema.xml.in)
 CLEANFILES += $(gsettings_SCHEMAS)
 DISTCLEANFILES += $(gsettings_SCHEMAS)
 MAINTAINERCLEANFILES += $(gsettings_SCHEMAS:.xml=.valid)
+noinst_PROGRAMS += $(TESTS)
 
 @INTLTOOL_DESKTOP_RULE@
 @INTLTOOL_XML_RULE@

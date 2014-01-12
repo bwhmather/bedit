@@ -472,7 +472,6 @@ plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in
 plugins/time/Makefile
 plugins/zeitgeist/Makefile
 po/Makefile.in
-tests/Makefile
 win32/gedit.iss
 osx/Info.plist])
 
