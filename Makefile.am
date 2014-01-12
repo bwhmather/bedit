@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 ACLOCAL_AMFLAGS = -I m4 -I libgd ${ACLOCAL_FLAGS}
 
-SUBDIRS = libgd gedit pixmaps po plugins docs tests win32 osx
+SUBDIRS = libgd gedit po plugins docs tests win32 osx
 
 if !OS_OSX
 SUBDIRS += help
@@ -85,6 +85,7 @@ gsettings_SCHEMAS =
 dist_gsettingsschema_DATA =
 
 include data/Makefile.am
+include pixmaps/Makefile.am
 
 EXTRA_DIST += $(gsettings_SCHEMAS:.gschema.xml=.gschema.xml.in)
 CLEANFILES += $(gsettings_SCHEMAS)

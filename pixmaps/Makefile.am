@@ -1,9 +1,4 @@
-logodir = $(datadir)/gedit/logo
-logo_DATA = gedit-logo.png
+pixmaps_logodir = $(datadir)/gedit/logo
+dist_pixmaps_logo_DATA = pixmaps/gedit-logo.png
 
-EXTRA_DIST = \
-	$(icon_DATA) \
-	$(logo_DATA) \
-	gedit.ico
-
--include $(top_srcdir)/git.mk
+EXTRA_DIST += pixmaps/gedit.ico

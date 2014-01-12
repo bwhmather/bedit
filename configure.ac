@@ -445,7 +445,6 @@ docs/reference/Makefile
 gedit/Makefile
 help/Makefile
 libgd/Makefile
-pixmaps/Makefile
 plugins/Makefile
 plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in
 plugins/checkupdate/Makefile
