@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 ACLOCAL_AMFLAGS = -I m4 -I libgd ${ACLOCAL_FLAGS}
 
-SUBDIRS = libgd po docs
+SUBDIRS = libgd . po docs
 
 if !OS_OSX
 SUBDIRS += help
