@@ -7,8 +7,6 @@ if !OS_OSX
 SUBDIRS += help
 endif
 
-distuninstallcheck_listfiles = find . -type f -print | grep -v scrollkeeper
-
 EXTRA_DIST = 			\
 	BUGS			\
 	ChangeLog-20011116	\
@@ -77,7 +75,7 @@ MAINTAINERCLEANFILES = 		\
 	po/*.header		\
 	po/*.sin
 
-DISTCHECK_CONFIGURE_FLAGS = --disable-scrollkeeper --enable-gtk-doc
+DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
 GRESDEPS = $(srcdir)/$1 $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir)/$(dir $1) $(srcdir)/$1)
 
