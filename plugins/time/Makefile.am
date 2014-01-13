@@ -25,6 +25,5 @@ plugin_gsettings_SCHEMAS += plugins/time/org.gnome.gedit.plugins.time.gschema.xm
 gsettings_ENUMS += plugins/time/org.gnome.gedit.plugins.time.enums.xml
 
 plugins/time/org.gnome.gedit.plugins.time.enums.xml: plugins/time/gedit-time-plugin.c
-	$(GSETTINGS_ENUMS_GEN)
 
 plugin_in_files += plugins/time/time.plugin.desktop.in

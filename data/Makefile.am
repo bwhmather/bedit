@@ -21,12 +21,9 @@ data_pkgconfig_DATA = data/gedit.pc
 data_bugreportdir = $(libexecdir)/gedit
 dist_data_bugreport_SCRIPTS = data/gedit-bugreport.sh
 
-gsettings_ENUMS += data/org.gnome.gedit.enums.xml
-
-data/org.gnome.gedit.enums.xml: $(top_srcdir)/gedit/*.h
-	$(GSETTINGS_ENUMS_GEN)
-
 gsettings_SCHEMAS += data/org.gnome.gedit.gschema.xml
+gsettings_ENUMS += data/org.gnome.gedit.enums.xml
+data/org.gnome.gedit.enums.xml: $(top_srcdir)/gedit/*.h
 
 if OS_OSX
 dist_gsettingsschema_DATA += data/gedit-osx.gschema.override
@@ -46,6 +43,7 @@ EXTRA_DIST += 					\
 	$(data_desktop_in_files)		\
 	$(data_appdata_in_files)		\
 	$(data_service_in_files)		\
+	data/org.gnome.gedit.gschema.xml.in	\
 	data/gedit.pc.in
 
 CLEANFILES +=	 			\

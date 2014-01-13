@@ -103,7 +103,6 @@ plugin_gsettings_SCHEMAS += plugins/filebrowser/org.gnome.gedit.plugins.filebrow
 gsettings_ENUMS += plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.enums.xml
 
 plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.enums.xml: $(plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES)
-	$(GSETTINGS_ENUMS_GEN)
 
 plugins-filebrowser-update-messages:
 	$(top_srcdir)/tools/generate-message.py --output-directory $(builddir)/plugins/filebrowser/messages/  --gpl --program gedit $(srcdir)/plugins/filebrowser/messages.xml
