@@ -1408,8 +1408,11 @@ gedit_app_get_documents	(GeditApp *app)
 	windows = gtk_application_get_windows (GTK_APPLICATION (app));
 	for (l = windows; l != NULL; l = g_list_next (l))
 	{
-		res = g_list_concat (res,
-				     gedit_window_get_documents (GEDIT_WINDOW (l->data)));
+		if (GEDIT_IS_WINDOW (l->data))
+		{
+			res = g_list_concat (res,
+			                     gedit_window_get_documents (GEDIT_WINDOW (l->data)));
+		}
 	}
 
 	return res;
@@ -1435,8 +1438,11 @@ gedit_app_get_views (GeditApp *app)
 	windows = gtk_application_get_windows (GTK_APPLICATION (app));
 	for (l = windows; l != NULL; l = g_list_next (l))
 	{
-		res = g_list_concat (res,
-				     gedit_window_get_views (GEDIT_WINDOW (l->data)));
+		if (GEDIT_IS_WINDOW (l->data))
+		{
+			res = g_list_concat (res,
+			                     gedit_window_get_views (GEDIT_WINDOW (l->data)));
+		}
 	}
 
 	return res;
