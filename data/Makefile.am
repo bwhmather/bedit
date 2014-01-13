@@ -1,14 +1,14 @@
 data_desktopdir = $(datadir)/applications
 data_desktop_in_files = data/gedit.desktop.in
-data_desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+data_desktop_DATA = $(data_desktop_in_files:.desktop.in=.desktop)
 
 data_appdatadir = $(datadir)/appdata
 data_appdata_in_files = data/gedit.appdata.xml.in
-data_appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+data_appdata_DATA = $(data_appdata_in_files:.xml.in=.xml)
 
 data_servicedir = $(datadir)/dbus-1/services
 data_service_in_files = data/org.gnome.gedit.service.in
-data_service_DATA = $(service_in_files:.service.in=.service)
+data_service_DATA = $(data_service_in_files:.service.in=.service)
 
 $(data_service_DATA): $(data_service_in_files) Makefile
 	@sed -e "s|\@bindir\@|$(bindir)|" $<> $@
