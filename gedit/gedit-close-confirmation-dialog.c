@@ -114,6 +114,7 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 {
 	GeditLockdownMask lockdown;
 	AtkObject *atk_obj;
+	GtkWidget *action_area;
 
 	dlg->priv = gedit_close_confirmation_dialog_get_instance_private (dlg);
 
@@ -121,7 +122,6 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 
 	dlg->priv->disable_save_to_disk = lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK;
 
-	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);
 	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
 			     14);
 	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dlg), TRUE);
@@ -134,6 +134,10 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 	atk_obj = gtk_widget_get_accessible (GTK_WIDGET (dlg));
 	atk_object_set_role (atk_obj, ATK_ROLE_ALERT);
 	atk_object_set_name (atk_obj, _("Question"));
+
+	action_area = gtk_dialog_get_action_area (GTK_DIALOG (dlg));
+	gtk_button_box_set_layout (GTK_BUTTON_BOX (action_area), GTK_BUTTONBOX_EXPAND);
+	gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (dlg)), "prompt");
 
 	g_signal_connect (dlg,
 			  "response",
@@ -425,7 +429,6 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	GtkWidget     *vbox;
 	GtkWidget     *primary_label;
 	GtkWidget     *secondary_label;
-	GtkWidget     *image;
 	GeditDocument *doc;
 	gchar         *doc_name;
 	gchar         *str;
@@ -437,12 +440,6 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	doc = GEDIT_DOCUMENT (dlg->priv->unsaved_documents->data);
 
 	add_buttons (dlg);
-
-	/* Image */
-	image = gtk_image_new_from_icon_name ("dialog-warning-symbolic",
-					      GTK_ICON_SIZE_DIALOG);
-	gtk_widget_set_halign (image, GTK_ALIGN_START);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	/* Primary label */
 	primary_label = gtk_label_new (NULL);
@@ -493,9 +490,9 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_widget_set_can_focus (secondary_label, FALSE);
 
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-	gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
-
-	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
+	gtk_widget_set_margin_start (hbox, 30);
+	gtk_widget_set_margin_end (hbox, 30);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
 	gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 0);
@@ -605,7 +602,6 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 {
 	GeditCloseConfirmationDialogPrivate *priv;
 	GtkWidget *hbox;
-	GtkWidget *image;
 	GtkWidget *vbox;
 	GtkWidget *primary_label;
 	GtkWidget *vbox2;
@@ -621,16 +617,12 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	add_buttons (dlg);
 
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-	gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
+	gtk_widget_set_margin_start (hbox, 30);
+	gtk_widget_set_margin_end (hbox, 30);
+
 	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
 			    hbox, TRUE, TRUE, 0);
-
-	/* Image */
-	image = gtk_image_new_from_icon_name ("dialog-warning-symbolic",
-					      GTK_ICON_SIZE_DIALOG);
-	gtk_widget_set_halign (image, GTK_ALIGN_START);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
-	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
 	gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
