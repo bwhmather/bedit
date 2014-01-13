@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-01-07 22:47+0000\n"
-"PO-Revision-Date: 2014-01-08 10:38+0100\n"
+"POT-Creation-Date: 2014-01-12 18:18+0000\n"
+"PO-Revision-Date: 2014-01-13 13:37+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -552,20 +552,20 @@ msgstr ""
 "activos. Vea el archivo .gedit-plugin para obtener la «Ubicación» de un "
 "complemento dado."
 
-#: ../gedit/gedit-app.c:114
+#: ../gedit/gedit-app.c:115
 msgid "Show the application's help"
 msgstr "Mostrar la ayuda de la aplicación"
 
-#: ../gedit/gedit-app.c:120
+#: ../gedit/gedit-app.c:121
 msgid "Show the application's version"
 msgstr "Mostrar la versión de la aplicación"
 
-#: ../gedit/gedit-app.c:126
+#: ../gedit/gedit-app.c:127
 msgid "Display list of possible values for the encoding option"
 msgstr ""
 "Mostrar una lista de los valores posibles para la opción de codificación"
 
-#: ../gedit/gedit-app.c:134
+#: ../gedit/gedit-app.c:135
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -573,50 +573,54 @@ msgstr ""
 "Establecer la codificación de caracteres que usar al abrir los archivos "
 "listados en la línea de comandos"
 
-#: ../gedit/gedit-app.c:135
+#: ../gedit/gedit-app.c:136
 msgid "ENCODING"
 msgstr "CODIFICACIÓN"
 
-#: ../gedit/gedit-app.c:142
+#: ../gedit/gedit-app.c:143
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr ""
 "Crea una ventana nueva en el nivel superior de una instancia existente de "
 "gedit"
 
-#: ../gedit/gedit-app.c:150
+#: ../gedit/gedit-app.c:151
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Crea un documento nuevo en una instancia existente de gedit"
 
-#: ../gedit/gedit-app.c:158
+#: ../gedit/gedit-app.c:159
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Establecer el tamaño y la posición de la ventana (ANCHURAxALTURA+X+Y)"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:160
 msgid "GEOMETRY"
 msgstr "GEOMETRÍA"
 
-#: ../gedit/gedit-app.c:166
+#: ../gedit/gedit-app.c:167
+msgid "Enter GApplication service mode"
+msgstr "Entrar en modo de servicio de GApplication"
+
+#: ../gedit/gedit-app.c:175
 msgid "Open files and block process until files are closed"
 msgstr ""
 "Abrir los archivos y bloquear los procesos hasta que se cierren los archivos"
 
-#: ../gedit/gedit-app.c:174
+#: ../gedit/gedit-app.c:183
 msgid "Run gedit in standalone mode"
 msgstr "Ejecutar gedit en modo independiente"
 
-#: ../gedit/gedit-app.c:183
+#: ../gedit/gedit-app.c:192
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[ARCHIVO...] [+LÍNEA[:COLUMNA]]"
 
-#: ../gedit/gedit-app.c:283
+#: ../gedit/gedit-app.c:292
 msgid "There was an error displaying the help."
 msgstr "Hubo un error al mostrar la ayuda."
 
-#: ../gedit/gedit-app.c:778
+#: ../gedit/gedit-app.c:787
 msgid "- Edit text files"
 msgstr "- Edite archivos de texto"
 
-#: ../gedit/gedit-app.c:887 ../gedit/gedit-app.c:977
+#: ../gedit/gedit-app.c:869 ../gedit/gedit-app.c:959
 #, c-format
 msgid ""
 "%s\n"
@@ -626,7 +630,7 @@ msgstr ""
 "Ejecute «%s --help» para ver una lista completa de las opciones disponibles "
 "de los comandos en línea.\n"
 
-#: ../gedit/gedit-app.c:908
+#: ../gedit/gedit-app.c:890
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codificación no válida."
@@ -969,18 +973,18 @@ msgstr "Se encontró y reemplazó una aparición"
 msgid "\"%s\" not found"
 msgstr "No se encontró «%s»"
 
-#: ../gedit/gedit-document.c:1266 ../gedit/gedit-document.c:1292
+#: ../gedit/gedit-document.c:1175 ../gedit/gedit-document.c:1201
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Documento no guardado %d"
 
 #: ../gedit/gedit-documents-panel.c:119 ../gedit/gedit-documents-panel.c:133
-#: ../gedit/gedit-window.c:1198 ../gedit/gedit-window.c:1204
-#: ../gedit/gedit-window.c:1212
+#: ../gedit/gedit-window.c:1199 ../gedit/gedit-window.c:1205
+#: ../gedit/gedit-window.c:1213
 msgid "Read-Only"
 msgstr "Sólo lectura"
 
-#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:2689
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:2693
 msgid "Documents"
 msgstr "Documentos"
 
@@ -1164,7 +1168,7 @@ msgstr "Mac OS clásico"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1313
+#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1314
 #: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:463
 #: ../plugins/externaltools/tools/manager.py:579
@@ -1557,26 +1561,29 @@ msgstr "Acerca _de"
 msgid "_Quit"
 msgstr "_Salir"
 
-#. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:241 ../gedit/gedit-window.ui.h:14
+#: ../gedit/gedit-notebook-popup-menu.ui.h:1
+#| msgid "_Move Left"
+msgid "Move _Left"
+msgstr "Mover a la _izquierda"
+
+#: ../gedit/gedit-notebook-popup-menu.ui.h:2
+#| msgid "_Move Right"
+msgid "Move _Right"
+msgstr "Mover a la _derecha"
+
+#: ../gedit/gedit-notebook-popup-menu.ui.h:3
+#| msgid "_Move to New Window"
+msgid "Move to New _Window"
+msgstr "Mover a una ventana _nueva"
+
+#: ../gedit/gedit-notebook-popup-menu.ui.h:4
+#| msgid "_Move to New Tab Group"
+msgid "Move to New Tab _Group"
+msgstr "Mover al _siguiente grupo de pestañas nuevo"
+
+#: ../gedit/gedit-notebook-popup-menu.ui.h:5 ../gedit/gedit-window.ui.h:14
 msgid "_Close"
 msgstr "_Cerrar"
-
-#: ../gedit/gedit-notebook-popup-menu.c:253
-msgid "_Move to New Tab Group"
-msgstr "_Mover al siguiente grupo de pestañas nuevo"
-
-#: ../gedit/gedit-notebook-popup-menu.c:260
-msgid "_Move to New Window"
-msgstr "_Mover a una ventana nueva"
-
-#: ../gedit/gedit-notebook-popup-menu.c:271
-msgid "_Move Right"
-msgstr "_Mover a la derecha"
-
-#: ../gedit/gedit-notebook-popup-menu.c:279
-msgid "_Move Left"
-msgstr "_Mover a la izquierda"
 
 #: ../gedit/gedit-panel.c:392
 msgid "Hide panel"
@@ -1632,7 +1639,6 @@ msgid "Display right _margin at column:"
 msgstr "Mostrar margen _derecho en la columna:"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:4
-#| msgid "_Statusbar"
 msgid "Display _statusbar"
 msgstr "Mostrar barra de _estado"
 
@@ -2024,22 +2030,22 @@ msgstr "Codificación:"
 msgid "Close document"
 msgstr "Cerrar documento"
 
-#: ../gedit/gedit-utils.c:932
+#: ../gedit/gedit-utils.c:906
 msgid "Please check your installation."
 msgstr "Compruebe su instalación."
 
-#: ../gedit/gedit-utils.c:990
+#: ../gedit/gedit-utils.c:964
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "No se pudo abrir el archivo de IU %s. Error: %s"
 
-#: ../gedit/gedit-utils.c:1009
+#: ../gedit/gedit-utils.c:983
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "No se pudo encontrar el objeto «%s» en el archivo %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1232
+#: ../gedit/gedit-utils.c:1206
 #, c-format
 msgid "/ on %s"
 msgstr "/ en %s"
@@ -2081,44 +2087,41 @@ msgstr "La cadena que quiere buscar"
 msgid "Line you want to move the cursor to"
 msgstr "Línea a la que quiere mover el cursor"
 
-#: ../gedit/gedit-window.c:913
+#: ../gedit/gedit-window.c:914
 msgid "Use Spaces"
 msgstr "Usar espacios"
 
-#: ../gedit/gedit-window.c:1052
+#: ../gedit/gedit-window.c:1053
 msgid "Bracket match is out of range"
 msgstr "El corchete de coincidencia está fuera de rango"
 
-#: ../gedit/gedit-window.c:1057
+#: ../gedit/gedit-window.c:1058
 msgid "Bracket match not found"
 msgstr "No se encontró el corchete coincidente"
 
-#: ../gedit/gedit-window.c:1062
+#: ../gedit/gedit-window.c:1063
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Corchete coincidente encontrado en la línea: %d"
 
-#: ../gedit/gedit-window.c:1265
+#: ../gedit/gedit-window.c:1266
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Anchura de la pestaña: %u"
 
-#: ../gedit/gedit-window.c:1652
+#: ../gedit/gedit-window.c:1653
 msgid "There are unsaved documents"
 msgstr "Hay documentos sin guardar"
 
 #: ../gedit/gedit-window.ui.h:2
-#| msgid "Save As"
 msgid "_Save As…"
 msgstr "Guardar _como"
 
 #: ../gedit/gedit-window.ui.h:3
-#| msgid "_Save All"
 msgid "Save _All"
 msgstr "Guardar _todo"
 
 #: ../gedit/gedit-window.ui.h:4
-#| msgid "Print"
 msgid "_Print…"
 msgstr "_Imprimir…"
 
@@ -2135,7 +2138,6 @@ msgid "_Fullscreen"
 msgstr "Pantalla _completa"
 
 #: ../gedit/gedit-window.ui.h:8
-#| msgid "Find"
 msgid "_Find…"
 msgstr "_Buscar…"
 
@@ -2148,12 +2150,10 @@ msgid "_Clear Highlight"
 msgstr "_Quitar resaltado"
 
 #: ../gedit/gedit-window.ui.h:11
-#| msgid "Go to _Line..."
 msgid "_Go to Line…"
 msgstr "Ir a la _línea…"
 
 #: ../gedit/gedit-window.ui.h:12
-#| msgid "Highlight Mode"
 msgid "_Highlight Mode…"
 msgstr "Modo _resaltado…"
 
@@ -2178,7 +2178,6 @@ msgid "Save the current file"
 msgstr "Guardar el archivo actual"
 
 #: ../gedit/gedit-window.ui.h:24
-#| msgid "Leave fullscreen mode"
 msgid "Leave Fullscreen"
 msgstr "Salir del modo a pantalla completa"
 
@@ -2350,19 +2349,19 @@ msgstr ""
 msgid "Could not execute command: %s"
 msgstr "No se pudo ejecutar el comando: %s"
 
-#: ../plugins/externaltools/tools/functions.py:175
+#: ../plugins/externaltools/tools/functions.py:178
 msgid "You must be inside a word to run this command"
 msgstr "Debe estar dentro de una palabra para ejecutar este comando"
 
-#: ../plugins/externaltools/tools/functions.py:310
+#: ../plugins/externaltools/tools/functions.py:313
 msgid "Running tool:"
 msgstr "Ejecutando herramienta:"
 
-#: ../plugins/externaltools/tools/functions.py:339
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Done."
 msgstr "Hecho."
 
-#: ../plugins/externaltools/tools/functions.py:341
+#: ../plugins/externaltools/tools/functions.py:344
 msgid "Exited"
 msgstr "Salió"
 
