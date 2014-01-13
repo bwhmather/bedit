@@ -77,12 +77,6 @@ endif
 ifdef gsettings_ENUMS
 $(gsettings_ENUMS):
 	$(AM_V_GEN) glib-mkenums --comments '\''<!-- @comment@ -->'\'' --fhead "<schemalist>" --vhead "  <@type@ id='\''$(patsubst %.enums.xml,%,$(notdir $[@])).@EnumName@'\''>" --vprod "    <value nick='\''@valuenick@'\'' value='\''@valuenum@'\''/>" --vtail "  </@type@>" --ftail "</schemalist>" [$]^ > [$]@.tmp && mv [$]@.tmp [$]@
-
-ifdef BUILT_SOURCES
-BUILT_SOURCES += $(gsettings_ENUMS)
-else
-BUILT_SOURCES = $(gsettings_ENUMS)
-endif
 endif
 
 '

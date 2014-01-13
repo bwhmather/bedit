@@ -102,8 +102,8 @@ include gedit/Makefile.am
 
 @GSETTINGS_RULES@
 
-CLEANFILES += $(gsettings_SCHEMAS) $(BUILT_SOURCES)
-DISTCLEANFILES += $(gsettings_SCHEMAS) $(BUILT_SOURCES)
+CLEANFILES += $(gsettings_SCHEMAS) $(gsettings_ENUMS) $(BUILT_SOURCES)
+DISTCLEANFILES += $(gsettings_SCHEMAS) $(gsettings_ENUMS) $(BUILT_SOURCES)
 MAINTAINERCLEANFILES += $(gsettings_SCHEMAS:.xml=.valid)
 
 noinst_PROGRAMS += $(TESTS)
