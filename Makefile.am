@@ -105,6 +105,8 @@ include plugins/Makefile.am
 include gedit/Makefile.am
 
 override gsettings__enum_file = $(gsettings_ENUMS)
+install-gsettings-schemas: $(gsettings_ENUMS)
+
 BUILT_SOURCES += $(gsettings_ENUMS)
 
 EXTRA_DIST += $(gsettings_SCHEMAS:.gschema.xml=.gschema.xml.in)
