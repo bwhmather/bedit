@@ -306,7 +306,8 @@ def capture_stderr_line_panel(capture, line, panel):
     panel.write(line, panel.error_tag)
 
 def capture_begin_execute_panel(capture, panel, view, label):
-    view.get_window(Gtk.TextWindowType.TEXT).set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
+    if view:
+        view.get_window(Gtk.TextWindowType.TEXT).set_cursor(Gdk.Cursor.new(Gdk.CursorType.WATCH))
 
     panel['stop'].set_sensitive(True)
     panel.clear()
@@ -316,27 +317,28 @@ def capture_begin_execute_panel(capture, panel, view, label):
 def capture_end_execute_panel(capture, exit_code, panel, view, output_type):
     panel['stop'].set_sensitive(False)
 
-    if output_type in ('new-document','replace-document'):
-        doc = view.get_buffer()
-        start = doc.get_start_iter()
-        end = start.copy()
-        end.forward_chars(300)
-        uri = ''
+    if view:
+        if output_type in ('new-document','replace-document'):
+            doc = view.get_buffer()
+            start = doc.get_start_iter()
+            end = start.copy()
+            end.forward_chars(300)
+            uri = ''
 
-        mtype, uncertain = Gio.content_type_guess(None, doc.get_text(start, end, False).encode('utf-8'))
-        lmanager = GtkSource.LanguageManager.get_default()
+            mtype, uncertain = Gio.content_type_guess(None, doc.get_text(start, end, False).encode('utf-8'))
+            lmanager = GtkSource.LanguageManager.get_default()
 
-        location = doc.get_location()
-        if location:
-            uri = location.get_uri()
-        language = lmanager.guess_language(uri, mtype)
-        
-        if language is not None:
-            doc.set_language(language)
+            location = doc.get_location()
+            if location:
+                uri = location.get_uri()
+            language = lmanager.guess_language(uri, mtype)
 
-    view.get_window(Gtk.TextWindowType.TEXT).set_cursor(Gdk.Cursor.new(Gdk.CursorType.XTERM))
-    view.set_cursor_visible(True)
-    view.set_editable(True)
+            if language is not None:
+                doc.set_language(language)
+
+        view.get_window(Gtk.TextWindowType.TEXT).set_cursor(Gdk.Cursor.new(Gdk.CursorType.XTERM))
+        view.set_cursor_visible(True)
+        view.set_editable(True)
 
     if exit_code == 0:
         panel.write("\n" + _("Done.") + "\n", panel.italic_tag)
