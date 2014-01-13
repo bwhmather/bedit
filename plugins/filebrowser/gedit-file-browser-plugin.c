@@ -129,25 +129,20 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBrowserPlugin,
 )
 
 static GSettings *
-settings_try_new (const gchar *schema)
+settings_try_new (const gchar *schema_id)
 {
-	const gchar * const * schemas;
 	GSettings *settings = NULL;
+	GSettingsSchemaSource *source;
+	GSettingsSchema *schema;
 
-	schemas = g_settings_list_schemas ();
+	source = g_settings_schema_source_get_default ();
 
-	if (schemas == NULL)
+	schema = g_settings_schema_source_lookup (source, schema_id, TRUE);
+
+	if (schema != NULL)
 	{
-		return NULL;
-	}
-
-	for (; *schemas != NULL; schemas++)
-	{
-		if (g_strcmp0 (*schemas, schema) == 0)
-		{
-			settings = g_settings_new (schema);
-			break;
-		}
+		settings = g_settings_new_full (schema, NULL, NULL);
+		g_object_unref (schema);
 	}
 
 	return settings;
