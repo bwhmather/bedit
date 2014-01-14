@@ -211,6 +211,12 @@ hide_search_widget (GeditViewFrame *frame,
 		gedit_view_scroll_to_cursor (frame->priv->view);
 	}
 
+	if (frame->priv->start_mark != NULL)
+	{
+		gtk_text_buffer_delete_mark (buffer, frame->priv->start_mark);
+		frame->priv->start_mark = NULL;
+	}
+
 	gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
 }
 
