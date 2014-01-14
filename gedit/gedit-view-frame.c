@@ -104,6 +104,14 @@ gedit_view_frame_dispose (GObject *object)
 {
 	GeditViewFrame *frame = GEDIT_VIEW_FRAME (object);
 
+	if (frame->priv->start_mark != NULL && frame->priv->view != NULL)
+	{
+		GtkTextBuffer *buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
+
+		gtk_text_buffer_delete_mark (buffer, frame->priv->start_mark);
+		frame->priv->start_mark = NULL;
+	}
+
 	if (frame->priv->flush_timeout_id != 0)
 	{
 		g_source_remove (frame->priv->flush_timeout_id);
@@ -192,7 +200,7 @@ hide_search_widget (GeditViewFrame *frame,
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
 
-	if (cancel)
+	if (cancel && frame->priv->start_mark != NULL)
 	{
 		GtkTextIter iter;
 
@@ -202,9 +210,6 @@ hide_search_widget (GeditViewFrame *frame,
 
 		gedit_view_scroll_to_cursor (frame->priv->view);
 	}
-
-	gtk_text_buffer_delete_mark (buffer, frame->priv->start_mark);
-	frame->priv->start_mark = NULL;
 
 	gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
 }
@@ -323,7 +328,7 @@ start_search_finished (GtkSourceSearchContext *search_context,
 					      &match_start,
 					      &match_end);
 	}
-	else
+	else if (frame->priv->start_mark != NULL)
 	{
 		GtkTextIter start_at;
 
@@ -1341,6 +1346,11 @@ start_interactive_search_real (GeditViewFrame *frame,
 	{
 		GtkTextMark *mark = gtk_text_buffer_get_insert (buffer);
 		gtk_text_buffer_get_iter_at_mark (buffer, &iter, mark);
+	}
+
+	if (frame->priv->start_mark != NULL)
+	{
+		gtk_text_buffer_delete_mark (buffer, frame->priv->start_mark);
 	}
 
 	frame->priv->start_mark = gtk_text_buffer_create_mark (buffer, NULL, &iter, FALSE);
