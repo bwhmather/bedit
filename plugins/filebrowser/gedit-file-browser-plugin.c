@@ -142,7 +142,7 @@ settings_try_new (const gchar *schema_id)
 	if (schema != NULL)
 	{
 		settings = g_settings_new_full (schema, NULL, NULL);
-		g_object_unref (schema);
+		g_settings_schema_unref (schema);
 	}
 
 	return settings;
