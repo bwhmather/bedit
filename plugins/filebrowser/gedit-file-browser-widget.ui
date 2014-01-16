@@ -227,4 +227,12 @@
       </packing>
     </child>
   </template>
+  <object class="GtkSizeGroup" id="toolbar_size_group">
+      <property name="mode">vertical</property>
+      <widgets>
+        <widget name="toolbutton1"/>
+        <widget name="toolbutton2"/>
+        <widget name="toolbutton3"/>
+      </widgets>
+  </object>
 </interface>
