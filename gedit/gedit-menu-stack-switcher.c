@@ -36,7 +36,6 @@ struct _GeditMenuStackSwitcherPrivate
 
   GtkStack *stack;
   GSimpleActionGroup *action_group;
-
   GMenu *menu;
 };
 
@@ -122,12 +121,9 @@ add_menu_entry (GtkWidget              *widget,
 }
 
 static gboolean
-destroy_menu (GtkWidget *switcher)
+reset_menu (GeditMenuStackSwitcher *switcher)
 {
-  gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (switcher), NULL);
-
-  /* GtkMenuButton makes the widget insensitive when we remove the model... */
-  gtk_widget_set_sensitive (switcher, TRUE);
+  g_menu_remove_all (switcher->priv->menu);
 
   return FALSE;
 }
@@ -142,20 +138,12 @@ gedit_menu_stack_switcher_toggled (GtkToggleButton *button)
     return;
 
   if (gtk_toggle_button_get_active (button))
-    {
-      priv->menu = g_menu_new ();
-      gtk_container_foreach (GTK_CONTAINER (priv->stack), (GtkCallback) add_menu_entry, switcher);
-
-      gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (switcher), G_MENU_MODEL (priv->menu));
-    }
+    gtk_container_foreach (GTK_CONTAINER (priv->stack), (GtkCallback) add_menu_entry, switcher);
 
   GTK_TOGGLE_BUTTON_CLASS (gedit_menu_stack_switcher_parent_class)->toggled (button);
 
   if (!gtk_toggle_button_get_active (button))
-    {
-      g_idle_add ((GSourceFunc) destroy_menu, switcher);
-      priv->menu = NULL;
-    }
+    g_idle_add ((GSourceFunc) reset_menu, switcher);
 }
 
 static void
@@ -250,12 +238,13 @@ gedit_menu_stack_switcher_set_stack (GeditMenuStackSwitcher *switcher,
       gtk_widget_insert_action_group (GTK_WIDGET (switcher), "switcher", NULL);
       g_clear_object (&priv->action_group);
       g_clear_object (&priv->stack);
+      priv->menu = NULL;
     }
 
   if (stack)
     {
       priv->stack = g_object_ref (stack);
-      g_signal_connect (priv->stack, "notify::visible-child",
+      g_signal_connect (priv->stack, "notify::visible-child-name",
                         G_CALLBACK (on_visible_child_changed), switcher);
 
       priv->action_group = g_simple_action_group_new ();
@@ -264,10 +253,12 @@ gedit_menu_stack_switcher_set_stack (GeditMenuStackSwitcher *switcher,
       action = g_property_action_new ("set-visible-child", priv->stack, "visible-child-name");
       g_action_map_add_action (G_ACTION_MAP (priv->action_group), G_ACTION (action));
       g_object_unref (action);
+
+      priv->menu = g_menu_new ();
     }
 
+  gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (switcher), G_MENU_MODEL (priv->menu));
   update_label (switcher);
-  gtk_widget_set_sensitive (GTK_WIDGET (switcher), stack != NULL);
 
   g_object_notify (G_OBJECT (switcher), "stack");
 }
