@@ -63,6 +63,7 @@
 #include "gedit-marshal.h"
 #include "gedit-document.h"
 #include "gedit-small-button.h"
+#include "gedit-menu-stack-switcher.h"
 
 #define TAB_WIDTH_DATA "GeditWindowTabWidthData"
 #define FULLSCREEN_ANIMATION_SPEED 4
@@ -2993,9 +2994,9 @@ gedit_window_init (GeditWindow *window)
 	                        G_BINDING_DEFAULT | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
 
-	window->priv->side_stack_switcher = gtk_stack_switcher_new ();
-	gtk_stack_switcher_set_stack (GTK_STACK_SWITCHER (window->priv->side_stack_switcher),
-				      GTK_STACK (_gedit_panel_get_stack (GEDIT_PANEL (window->priv->side_panel))));
+	window->priv->side_stack_switcher = gedit_menu_stack_switcher_new ();
+	gedit_menu_stack_switcher_set_stack (GEDIT_MENU_STACK_SWITCHER (window->priv->side_stack_switcher),
+	                                     GTK_STACK (_gedit_panel_get_stack (GEDIT_PANEL (window->priv->side_panel))));
 
 	gtk_header_bar_set_custom_title (GTK_HEADER_BAR (window->priv->side_headerbar),
 					 window->priv->side_stack_switcher);
