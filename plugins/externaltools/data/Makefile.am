@@ -2,7 +2,7 @@ EXTERNALTOOLS_TOOL_MERGE = $(top_srcdir)/plugins/externaltools/scripts/gedit-too
 
 externaltools_tools_in_files =						\
 	plugins/externaltools/data/build.tool.in			\
-	plugins/externaltools/data/remove-trailing-spaces.tool.in
+	plugins/externaltools/data/remove-trailing-spaces.tool.in	\
 	plugins/externaltools/data/send-to-fpaste.tool.in
 
 externaltools_tools_in_linux =						\
