@@ -1,5 +1,5 @@
 # Thai translation of gedit.
-# Copyright (C) 2004-2013 Free Software Foundation, Inc.
+# Copyright (C) 2004-2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gedit package.
 #
 # Supakorn Siddhichai <supakorn.siddhichai@nectec.or.th>, 2003, 2004.
@@ -7,15 +7,15 @@
 # Chanchai Junlouchai <taz@opentle.org>, 2004.
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2004-2010, 2012.
 # Kittiphong Meesawat <ktphong@yahoo.com>, 2010.
-# Akom Chotiphantawanon <knight2000@gmail.com>, 2009, 2011-2013.
+# Akom Chotiphantawanon <knight2000@gmail.com>, 2009, 2011-2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-11-12 19:56+0000\n"
-"PO-Revision-Date: 2013-11-13 16:25+0700\n"
+"POT-Creation-Date: 2014-01-15 15:29+0000\n"
+"PO-Revision-Date: 2014-01-18 20:15+0700\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -499,65 +499,69 @@ msgstr ""
 "รายการปลั๊กอินที่เลือกใช้ คีย์นี้เก็บ \"ตำแหน่ง\" ของปลั๊กอินทั้งหลายที่เลือกกรุณาดูแฟ้ม .gedit-"
 "plugin เพื่อดู \"ตำแหน่ง\" ของปลั๊กอินที่ต้องการ"
 
-#: ../gedit/gedit-app.c:113
+#: ../gedit/gedit-app.c:115
 msgid "Show the application's help"
 msgstr "แสดงวิธีใช้โปรแกรม"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:121
 msgid "Show the application's version"
 msgstr "แสดงรุ่นของโปรแกรม"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:127
 msgid "Display list of possible values for the encoding option"
 msgstr "แสดงค่าที่เป็นไปได้ทั้งหมดสำหรับตัวเลือกรหัสอักขระ"
 
-#: ../gedit/gedit-app.c:133
+#: ../gedit/gedit-app.c:135
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr "กำหนดรหัสอักขระที่จะใช้เปิดแฟ้มที่ระบุในบรรทัดคำสั่ง"
 
-#: ../gedit/gedit-app.c:134
+#: ../gedit/gedit-app.c:136
 msgid "ENCODING"
 msgstr "ENCODING"
 
-#: ../gedit/gedit-app.c:141
+#: ../gedit/gedit-app.c:143
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "เปิดหน้าต่างใหม่โดยใช้ gedit ตัวที่กำลังทำงานอยู่"
 
-#: ../gedit/gedit-app.c:149
+#: ../gedit/gedit-app.c:151
 msgid "Create a new document in an existing instance of gedit"
 msgstr "สร้างเอกสารใหม่ในหน้าต่าง gedit ที่ใช้งานอยู่"
 
-#: ../gedit/gedit-app.c:157
+#: ../gedit/gedit-app.c:159
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "กำหนดขนาดและตำแหน่งของหน้าต่าง (กว้างxสูง+X+Y)"
 
-#: ../gedit/gedit-app.c:158
+#: ../gedit/gedit-app.c:160
 msgid "GEOMETRY"
 msgstr "เรขาคณิต"
 
-#: ../gedit/gedit-app.c:165
+#: ../gedit/gedit-app.c:167
+msgid "Enter GApplication service mode"
+msgstr "เข้าสู่โหมดบริการ GApplication"
+
+#: ../gedit/gedit-app.c:175
 msgid "Open files and block process until files are closed"
 msgstr "เปิดแฟ้มแล้วบล็อคโพรเซสจนกระทั่งแฟ้มต่างๆ ถูกปิด"
 
-#: ../gedit/gedit-app.c:173
+#: ../gedit/gedit-app.c:183
 msgid "Run gedit in standalone mode"
 msgstr "เรียกทำงาน gedit ในโหมด standalone"
 
-#: ../gedit/gedit-app.c:182
+#: ../gedit/gedit-app.c:192
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[แฟ้ม...] [+บรรทัด[:คอลัมน์]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:292
 msgid "There was an error displaying the help."
 msgstr "เกิดข้อผิดพลาดในการแสดงคำแนะนำ"
 
-#: ../gedit/gedit-app.c:702
+#: ../gedit/gedit-app.c:787
 msgid "- Edit text files"
 msgstr "- แก้ไขแฟ้มข้อความ"
 
-#: ../gedit/gedit-app.c:811 ../gedit/gedit-app.c:901
+#: ../gedit/gedit-app.c:869 ../gedit/gedit-app.c:959
 #, c-format
 msgid ""
 "%s\n"
@@ -566,7 +570,7 @@ msgstr ""
 "%s\n"
 "เรียก '%s --help' เพื่อดูตัวเลือกที่เป็นไปได้ทั้งหมดสำหรับบรรทัดคำสั่ง\n"
 
-#: ../gedit/gedit-app.c:832
+#: ../gedit/gedit-app.c:890
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: ไม่ใช่รหัสอักขระที่ใช้ได้"
@@ -678,85 +682,85 @@ msgstr "เ_ลือกเอกสารที่คุณต้องกา�
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "ถ้าคุณไม่บันทึก การแก้ไขที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:268
+#: ../gedit/gedit-commands-file.c:271
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "กำลังอ่านแฟ้ม '%s'…"
 
-#: ../gedit/gedit-commands-file.c:277
+#: ../gedit/gedit-commands-file.c:280
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
 msgstr[0] "กำลังอ่าน %d แฟ้ม…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-window.c:1180
+#: ../gedit/gedit-commands-file.c:447 ../gedit/gedit-window.ui.h:19
 msgid "Open"
 msgstr "เปิด"
 
-#: ../gedit/gedit-commands-file.c:553
+#: ../gedit/gedit-commands-file.c:558
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "แฟ้ม \"%s\" อ่านได้อย่างเดียว"
 
-#: ../gedit/gedit-commands-file.c:558
+#: ../gedit/gedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "คุณต้องการพยายามเขียนทับแฟ้มดังกล่าวด้วยข้อมูลที่กำลังจะบันทึกนี้หรือไม่?"
 
-#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.ui.h:3
+#: ../gedit/gedit-commands-file.c:571 ../gedit/gedit-replace-dialog.ui.h:3
 msgid "_Replace"
 msgstr "แ_ทนที่"
 
-#: ../gedit/gedit-commands-file.c:608
+#: ../gedit/gedit-commands-file.c:613
 msgid "Save the file using compression?"
 msgstr "บันทึกแฟ้มโดยใช้การบีบอัดหรือไม่?"
 
-#: ../gedit/gedit-commands-file.c:609
+#: ../gedit/gedit-commands-file.c:614
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr "แฟ้ม \"%s\" ถูกบันทึกเป็นข้อความเปล่าไว้ก่อนหน้านี้ และขณะนี้จะบันทึกโดยใช้การบีบอัด"
 
-#: ../gedit/gedit-commands-file.c:611
+#: ../gedit/gedit-commands-file.c:616
 msgid "_Save Using Compression"
 msgstr "_บันทึกโดยใช้การบีบอัด"
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:620
 msgid "Save the file as plain text?"
 msgstr "บันทึกแฟ้มเป็นข้อความเปล่าหรือไม่?"
 
-#: ../gedit/gedit-commands-file.c:616
+#: ../gedit/gedit-commands-file.c:621
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr "แฟ้ม \"%s\" ถูกบันทึกไว้ก่อนหน้านี้โดยมีการบีบอัด และขณะนี้จะบันทึกเป็นข้อความเปล่า"
 
-#: ../gedit/gedit-commands-file.c:618
+#: ../gedit/gedit-commands-file.c:623
 msgid "_Save As Plain Text"
 msgstr "_บันทึกเป็นข้อความเปล่า"
 
-#: ../gedit/gedit-commands-file.c:738 ../gedit/gedit-commands-file.c:955
+#: ../gedit/gedit-commands-file.c:743 ../gedit/gedit-commands-file.c:960
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "กำลังบันทึกแฟ้ม '%s'…"
 
-#: ../gedit/gedit-commands-file.c:842
+#: ../gedit/gedit-commands-file.c:847
 msgid "Save As"
 msgstr "บันทึกเป็น"
 
-#: ../gedit/gedit-commands-file.c:1168
+#: ../gedit/gedit-commands-file.c:1164
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "กำลังคืนข้อมูลแฟ้ม '%s' กลับ…"
 
-#: ../gedit/gedit-commands-file.c:1213
+#: ../gedit/gedit-commands-file.c:1209
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "ยกเลิกการแก้ไขที่ยังไม่บันทึกของเอกสาร '%s' เพื่อย้อนกลับสู่สภาพเดิมหรือไม่?"
 
-#: ../gedit/gedit-commands-file.c:1222
+#: ../gedit/gedit-commands-file.c:1218
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -765,12 +769,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสารใน %ld วินาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1231
+#: ../gedit/gedit-commands-file.c:1227
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "การแก้ไขทั้งหมดในเอกสารในช่วงนาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1237
+#: ../gedit/gedit-commands-file.c:1233
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -780,7 +784,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสารในนาทีกับอีก %ld วินาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1247
+#: ../gedit/gedit-commands-file.c:1243
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -789,11 +793,11 @@ msgid_plural ""
 "lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสารใน %ld นาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1262
+#: ../gedit/gedit-commands-file.c:1258
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "การแก้ไขทั้งหมดในเอกสารในชั่วโมงที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1268
+#: ../gedit/gedit-commands-file.c:1264
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -803,7 +807,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสารในช่วงชั่วโมงกับอีก %d นาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1283
+#: ../gedit/gedit-commands-file.c:1279
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -811,7 +815,7 @@ msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสารใน %d ชั่วโมงที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1309
+#: ../gedit/gedit-commands-file.c:1305
 msgid "_Revert"
 msgstr "คืน_กลับ"
 
@@ -846,17 +850,18 @@ msgstr "ค้นพบและแทนที่ไปแห่งเดีย
 msgid "\"%s\" not found"
 msgstr "ไม่พบ \"%s\""
 
-#: ../gedit/gedit-document.c:1266 ../gedit/gedit-document.c:1292
+#: ../gedit/gedit-document.c:1175 ../gedit/gedit-document.c:1201
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "เอกสารยังไม่บันทึก %d"
 
 #: ../gedit/gedit-documents-panel.c:119 ../gedit/gedit-documents-panel.c:133
-#: ../gedit/gedit-window.c:2044 ../gedit/gedit-window.c:2051
+#: ../gedit/gedit-window.c:1199 ../gedit/gedit-window.c:1205
+#: ../gedit/gedit-window.c:1213
 msgid "Read-Only"
 msgstr "อ่านอย่างเดียว"
 
-#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:3506
+#: ../gedit/gedit-documents-panel.c:1140 ../gedit/gedit-window.c:2693
 msgid "Documents"
 msgstr "เอกสาร"
 
@@ -1012,7 +1017,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "รหัสอักขระที่แ_สดงในเมนู"
 
 #: ../gedit/gedit-file-chooser-dialog.c:50
-#: ../gedit/gedit-preferences-dialog.c:874
+#: ../gedit/gedit-preferences-dialog.c:882
 msgid "All Files"
 msgstr "ทุกแฟ้ม"
 
@@ -1040,7 +1045,7 @@ msgstr "Mac OS แบบฉบับ"
 msgid "Windows"
 msgstr "วินโดวส์"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:2143
+#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1314
 #: ../plugins/externaltools/tools/manager.py:146
 #: ../plugins/externaltools/tools/manager.py:463
 #: ../plugins/externaltools/tools/manager.py:579
@@ -1062,6 +1067,7 @@ msgstr "ค้นหาโหมดเน้น..."
 #: ../gedit/gedit-io-error-info-bar.c:491
 #: ../gedit/gedit-io-error-info-bar.c:1171
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:173
+#: ../plugins/quickopen/quickopen/popup.py:38
 msgid "_Cancel"
 msgstr "_ยกเลิก"
 
@@ -1364,7 +1370,8 @@ msgstr "แฟ้ม “%s” มีการเปลี่ยนแปลง�
 msgid "Drop Changes and _Reload"
 msgstr "เลิกการเปลี่ยนแปลง แล้ว_อ่านใหม่"
 
-#: ../gedit/gedit-io-error-info-bar.c:1166
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-io-error-info-bar.c:1166 ../gedit/gedit-window.ui.h:1
 msgid "_Reload"
 msgstr "_อ่านใหม่"
 
@@ -1383,90 +1390,77 @@ msgstr "ถ้าคุณยังคงบันทึกแฟ้มนี้
 msgid "_New Window"
 msgstr "หน้า_ต่างใหม่"
 
-#: ../gedit/gedit-menu.ui.h:2
+#: ../gedit/gedit-menu.ui.h:2 ../gedit/gedit-window.ui.h:15
 msgid "_Preferences"
 msgstr "_ปรับแต่ง"
 
-#: ../gedit/gedit-menu.ui.h:3 ../gedit/gedit-ui.h:49
+#: ../gedit/gedit-menu.ui.h:3 ../gedit/gedit-window.ui.h:16
 msgid "_Help"
 msgstr "_วิธีใช้"
 
-#: ../gedit/gedit-menu.ui.h:4
+#: ../gedit/gedit-menu.ui.h:4 ../gedit/gedit-window.ui.h:17
 msgid "_About"
 msgstr "เ_กี่ยวกับ"
 
-#: ../gedit/gedit-menu.ui.h:5
+#: ../gedit/gedit-menu.ui.h:5 ../gedit/gedit-window.ui.h:18
 msgid "_Quit"
 msgstr "_ออก"
 
-#. Keep in sync with the respective GtkActions
-#: ../gedit/gedit-notebook-popup-menu.c:197
+#: ../gedit/gedit-notebook-popup-menu.ui.h:1
+msgid "Move _Left"
+msgstr "ย้ายไปทางซ้า_ย"
+
+#: ../gedit/gedit-notebook-popup-menu.ui.h:2
+msgid "Move _Right"
+msgstr "ย้ายไปทางขว_า"
+
+#: ../gedit/gedit-notebook-popup-menu.ui.h:3
+msgid "Move to New _Window"
+msgstr "ย้ายไปหน้า_ต่างใหม่"
+
+#: ../gedit/gedit-notebook-popup-menu.ui.h:4
+msgid "Move to New Tab _Group"
+msgstr "ย้ายไป_กลุ่มแท็บใหม่"
+
+#: ../gedit/gedit-notebook-popup-menu.ui.h:5 ../gedit/gedit-window.ui.h:14
 msgid "_Close"
 msgstr "ปิ_ด"
 
-#: ../gedit/gedit-notebook-popup-menu.c:208
-msgid "_Move to New Tab Group"
-msgstr "_ย้ายไปยังกลุ่มแท็บใหม่"
-
-#: ../gedit/gedit-notebook-popup-menu.c:215 ../gedit/gedit-ui.h:142
-msgid "_Move to New Window"
-msgstr "_ย้ายไปหน้าต่างใหม่"
-
-#: ../gedit/gedit-notebook-popup-menu.c:226
-msgid "_Move Right"
-msgstr "_ย้ายไปทางขวา"
-
-#: ../gedit/gedit-notebook-popup-menu.c:233
-msgid "_Move Left"
-msgstr "_ย้ายไปทางซ้าย"
-
-#: ../gedit/gedit-open-tool-button.c:122 ../gedit/gedit-ui.h:55
-msgid "Open a file"
-msgstr "เปิดแฟ้ม"
-
-#: ../gedit/gedit-open-tool-button.c:124
-msgid "Open a recently used file"
-msgstr "เปิดแฟ้มที่เพิ่งถูกเปิด"
-
-#: ../gedit/gedit-panel.c:407 ../gedit/gedit-panel.c:590
-msgid "Empty"
-msgstr "ว่างเปล่า"
-
-#: ../gedit/gedit-panel.c:473
+#: ../gedit/gedit-panel.c:392
 msgid "Hide panel"
 msgstr "ซ่อนช่องทำงาน"
 
-#: ../gedit/gedit-preferences-dialog.c:396
+#: ../gedit/gedit-preferences-dialog.c:404
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "กดปุ่มนี้เพื่อเลือกแบบอักษรที่จะใช้ใน gedit"
 
-#: ../gedit/gedit-preferences-dialog.c:409
+#: ../gedit/gedit-preferences-dialog.c:417
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "ใ_ช้แบบอักษรความกว้างคงที่ของระบบ (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:641
+#: ../gedit/gedit-preferences-dialog.c:649
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "ไม่สามารถสร้างไดเรกทอรี '%s' ได้: g_mkdir_with_parents() ล้มเหลว: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:825
+#: ../gedit/gedit-preferences-dialog.c:833
 msgid "The selected color scheme cannot be installed."
 msgstr "ไม่สามารถติดตั้งชุดสีที่เลือกได้"
 
-#: ../gedit/gedit-preferences-dialog.c:852
+#: ../gedit/gedit-preferences-dialog.c:860
 msgid "Add Scheme"
 msgstr "เพิ่มชุดสี"
 
-#: ../gedit/gedit-preferences-dialog.c:859
+#: ../gedit/gedit-preferences-dialog.c:867
 msgid "A_dd Scheme"
 msgstr "เ_พิ่มชุดสี"
 
-#: ../gedit/gedit-preferences-dialog.c:867
+#: ../gedit/gedit-preferences-dialog.c:875
 msgid "Color Scheme Files"
 msgstr "แฟ้มชุดสี"
 
-#: ../gedit/gedit-preferences-dialog.c:919
+#: ../gedit/gedit-preferences-dialog.c:927
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "ไม่สามารถลบชุดสี \"%s\" ได้"
@@ -1485,93 +1479,93 @@ msgid "Display right _margin at column:"
 msgstr "แสดง_กั้นขวาที่คอลัมน์:"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:4
+msgid "Display _statusbar"
+msgstr "แสดงแถบ_สถานะ"
+
+#: ../gedit/gedit-preferences-dialog.ui.h:5
 #: ../gedit/gedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "การตัดบรรทัด"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:5
+#: ../gedit/gedit-preferences-dialog.ui.h:6
 #: ../gedit/gedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
 msgstr "เปิดใช้การ_ตัดบรรทัด"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:6
+#: ../gedit/gedit-preferences-dialog.ui.h:7
 #: ../gedit/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
 msgstr "ไ_ม่แยกคำคำเดียวเป็นสองบรรทัด"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:7
+#: ../gedit/gedit-preferences-dialog.ui.h:8
 msgid "Highlighting"
 msgstr "การเน้น"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:8
+#: ../gedit/gedit-preferences-dialog.ui.h:9
 msgid "Highlight current _line"
 msgstr "เ_น้นบรรทัดปัจจุบัน"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:9
+#: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "Highlight matching _brackets"
 msgstr "เน้นว_งเล็บที่เข้าคู่กัน"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:10
+#: ../gedit/gedit-preferences-dialog.ui.h:11
 msgid "View"
 msgstr "มุมมอง"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:11
+#: ../gedit/gedit-preferences-dialog.ui.h:12
 msgid "Tab Stops"
 msgstr "ตำแหน่งแท็บ"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:12
+#: ../gedit/gedit-preferences-dialog.ui.h:13
 msgid "_Tab width:"
 msgstr "ความกว้างแ_ท็บ:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:13
+#: ../gedit/gedit-preferences-dialog.ui.h:14
 msgid "Insert _spaces instead of tabs"
 msgstr "แทนที่แท็บด้วย_ช่องว่าง"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:14
+#: ../gedit/gedit-preferences-dialog.ui.h:15
 msgid "_Enable automatic indentation"
 msgstr "เปิดใช้การ_ร่นบรรทัดอัตโนมัติ"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:15
+#: ../gedit/gedit-preferences-dialog.ui.h:16
 msgid "File Saving"
 msgstr "การบันทึกข้อมูลลงแฟ้ม"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:16
+#: ../gedit/gedit-preferences-dialog.ui.h:17
 msgid "Create a _backup copy of files before saving"
 msgstr "สร้างสำเนาแฟ้ม_สำรองก่อนที่จะบันทึกข้อมูล"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:17
+#: ../gedit/gedit-preferences-dialog.ui.h:18
 msgid "_Autosave files every"
 msgstr "_บันทึกแฟ้มปัจจุบันโดยอัตโนมัติทุกๆ"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:18
+#: ../gedit/gedit-preferences-dialog.ui.h:19
 msgid "_minutes"
 msgstr "_นาที"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:19
+#: ../gedit/gedit-preferences-dialog.ui.h:20
 msgid "Editor"
 msgstr "เครื่องมือแก้ไข"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:20
+#: ../gedit/gedit-preferences-dialog.ui.h:21
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
 msgid "Font"
 msgstr "แบบอักษร"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:21
+#: ../gedit/gedit-preferences-dialog.ui.h:22
 msgid "Editor _font: "
 msgstr "แ_บบอักษรของเครื่องมือแก้ไข:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:22
+#: ../gedit/gedit-preferences-dialog.ui.h:23
 msgid "Pick the editor font"
 msgstr "เลือกฟอนต์สำหรับพื้นที่แก้ไข"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:23
+#: ../gedit/gedit-preferences-dialog.ui.h:24
 msgid "Color Scheme"
 msgstr "ชุดสี"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:24
-msgid "column"
-msgstr "คอลัมน์"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
@@ -1741,7 +1735,7 @@ msgid "The preview of a page in the document to be printed"
 msgstr "ตัวอย่างของหน้าเอกสารที่จะสั่งพิมพ์"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.ui.h:1 ../gedit/gedit-window.c:1241
+#: ../gedit/gedit-replace-dialog.ui.h:1
 msgid "Replace"
 msgstr "แทนที่"
 
@@ -1801,73 +1795,73 @@ msgstr[0] "มี %d แท็บมีปัญหา"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:766
+#: ../gedit/gedit-tab.c:770
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "กำลังย้อนคืนข้อมูลแฟ้ม %s จาก %s"
 
-#: ../gedit/gedit-tab.c:773
+#: ../gedit/gedit-tab.c:777
 #, c-format
 msgid "Reverting %s"
 msgstr "กำลังคืนข้อมูลแฟ้ม %s กลับ"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:789
+#: ../gedit/gedit-tab.c:793
 #, c-format
 msgid "Loading %s from %s"
 msgstr "กำลังโหลดแฟ้ม %s จาก %s"
 
-#: ../gedit/gedit-tab.c:796
+#: ../gedit/gedit-tab.c:800
 #, c-format
 msgid "Loading %s"
 msgstr "กำลังโหลดแฟ้ม %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:877
+#: ../gedit/gedit-tab.c:879
 #, c-format
 msgid "Saving %s to %s"
 msgstr "กำลังบันทึกแฟ้ม %s ที่ %s"
 
-#: ../gedit/gedit-tab.c:884
+#: ../gedit/gedit-tab.c:886
 #, c-format
 msgid "Saving %s"
 msgstr "กำลังบันทึกแฟ้ม %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1873
+#: ../gedit/gedit-tab.c:1853
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1920
+#: ../gedit/gedit-tab.c:1900
 #, c-format
 msgid "Error opening file %s"
 msgstr "เกิดข้อผิดพลาดขณะเปิดแฟ้ม %s"
 
-#: ../gedit/gedit-tab.c:1925
+#: ../gedit/gedit-tab.c:1905
 #, c-format
 msgid "Error reverting file %s"
 msgstr "เกิดข้อผิดพลาดขณะคืนข้อมูลแฟ้ม %s กลับ"
 
-#: ../gedit/gedit-tab.c:1930
+#: ../gedit/gedit-tab.c:1910
 #, c-format
 msgid "Error saving file %s"
 msgstr "เกิดข้อผิดพลาดขณะบันทึกแฟ้ม %s"
 
-#: ../gedit/gedit-tab.c:1951
+#: ../gedit/gedit-tab.c:1931
 msgid "Unicode (UTF-8)"
 msgstr "ยูนิโค้ด (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1958
+#: ../gedit/gedit-tab.c:1938
 msgid "Name:"
 msgstr "ชื่อ:"
 
-#: ../gedit/gedit-tab.c:1959
+#: ../gedit/gedit-tab.c:1939
 msgid "MIME Type:"
 msgstr "ชนิด MIME:"
 
-#: ../gedit/gedit-tab.c:1960
+#: ../gedit/gedit-tab.c:1940
 msgid "Encoding:"
 msgstr "รหัสอักขระ:"
 
@@ -1875,308 +1869,22 @@ msgstr "รหัสอักขระ:"
 msgid "Close document"
 msgstr "ปิดเอกสาร"
 
-#. Toplevel
-#: ../gedit/gedit-ui.h:43
-msgid "_File"
-msgstr "แ_ฟ้ม"
-
-#: ../gedit/gedit-ui.h:44
-msgid "_Edit"
-msgstr "แ_ก้ไข"
-
-#: ../gedit/gedit-ui.h:45
-msgid "_View"
-msgstr "มุ_มมอง"
-
-#: ../gedit/gedit-ui.h:46
-msgid "_Search"
-msgstr "_ค้นหา"
-
-#: ../gedit/gedit-ui.h:47
-msgid "_Tools"
-msgstr "เครื่อ_งมือ"
-
-#: ../gedit/gedit-ui.h:48
-msgid "_Documents"
-msgstr "เ_อกสาร"
-
-#: ../gedit/gedit-ui.h:53
-msgid "Create a new document"
-msgstr "สร้างเอกสารใหม่"
-
-#: ../gedit/gedit-ui.h:54
-msgid "_Open..."
-msgstr "_เปิด..."
-
-#. Edit menu
-#: ../gedit/gedit-ui.h:58
-msgid "Pr_eferences"
-msgstr "_ปรับแต่ง"
-
-#: ../gedit/gedit-ui.h:59
-msgid "Configure the application"
-msgstr "กำหนดค่าโปรแกรม"
-
-#. Help menu
-#: ../gedit/gedit-ui.h:62
-msgid "_Contents"
-msgstr "เนื้อ_หา"
-
-#: ../gedit/gedit-ui.h:63
-msgid "Open the gedit manual"
-msgstr "เปิดคู่มือ gedit"
-
-#: ../gedit/gedit-ui.h:65
-msgid "About this application"
-msgstr "เกี่ยวกับ gedit"
-
-#: ../gedit/gedit-ui.h:69
-msgid "Leave fullscreen mode"
-msgstr "เลิกแสดงเต็มจอ"
-
-#: ../gedit/gedit-ui.h:77
-msgid "Save the current file"
-msgstr "บันทึกแฟ้มปัจจุบัน"
-
-#: ../gedit/gedit-ui.h:78
-msgid "Save _As..."
-msgstr "บันทึกเป็_น..."
-
-#: ../gedit/gedit-ui.h:79
-msgid "Save the current file with a different name"
-msgstr "บันทึกแฟ้มปัจจุบันโดยตั้งชื่อใหม่"
-
-#: ../gedit/gedit-ui.h:81
-msgid "Revert to a saved version of the file"
-msgstr "คืนข้อมูลกลับเป็นรุ่นที่บันทึกไว้แล้ว"
-
-#: ../gedit/gedit-ui.h:82
-msgid "Print Previe_w"
-msgstr "_ตัวอย่างก่อนพิมพ์"
-
-#: ../gedit/gedit-ui.h:83
-msgid "Print preview"
-msgstr "แสดงตัวอย่างก่อนพิมพ์"
-
-#: ../gedit/gedit-ui.h:84
-msgid "_Print..."
-msgstr "_พิมพ์..."
-
-#: ../gedit/gedit-ui.h:85
-msgid "Print the current page"
-msgstr "พิมพ์หน้าปัจจุบัน"
-
-#: ../gedit/gedit-ui.h:89
-msgid "Undo the last action"
-msgstr "เรียกคืนการทำคำสั่งสุดท้าย"
-
-#: ../gedit/gedit-ui.h:91
-msgid "Redo the last undone action"
-msgstr "ทำซ้ำคำสั่งที่เรียกคืนล่าสุด"
-
-#: ../gedit/gedit-ui.h:93
-msgid "Cut the selection"
-msgstr "ตัดส่วนที่เลือก"
-
-#: ../gedit/gedit-ui.h:95
-msgid "Copy the selection"
-msgstr "คัดลอกส่วนที่เลือก"
-
-#: ../gedit/gedit-ui.h:97
-msgid "Paste the clipboard"
-msgstr "แปะจากคลิปบอร์ด"
-
-#: ../gedit/gedit-ui.h:99
-msgid "Delete the selected text"
-msgstr "ลบข้อความที่เลือก"
-
-#: ../gedit/gedit-ui.h:100
-msgid "Select _All"
-msgstr "เลือกทั้ง_หมด"
-
-#: ../gedit/gedit-ui.h:101
-msgid "Select the entire document"
-msgstr "เลือกทั้งเอกสาร"
-
-#. View menu
-#: ../gedit/gedit-ui.h:104
-msgid "_Highlight Mode..."
-msgstr "โห_มดเน้น..."
-
-#: ../gedit/gedit-ui.h:105
-msgid "Changes the highlight mode of the active document"
-msgstr "เปลี่ยนโหมดเน้นของเอกสารที่ทำงานอยู่"
-
-#. Search menu
-#: ../gedit/gedit-ui.h:109
-msgid "_Find..."
-msgstr "_หา..."
-
-#: ../gedit/gedit-ui.h:110
-msgid "Search for text"
-msgstr "ค้นหา"
-
-#: ../gedit/gedit-ui.h:111
-msgid "Find Ne_xt"
-msgstr "หา_ต่อ"
-
-#: ../gedit/gedit-ui.h:112
-msgid "Search forwards for the same text"
-msgstr "ค้นหาต่อไป"
-
-#: ../gedit/gedit-ui.h:113
-msgid "Find Pre_vious"
-msgstr "หา_ก่อนหน้า"
-
-#: ../gedit/gedit-ui.h:114
-msgid "Search backwards for the same text"
-msgstr "ค้นหาคำเดิมแบบถอยหลังอีกครั้ง"
-
-#: ../gedit/gedit-ui.h:116 ../gedit/gedit-ui.h:119
-msgid "_Replace..."
-msgstr "แ_ทนที่..."
-
-#: ../gedit/gedit-ui.h:117 ../gedit/gedit-ui.h:120
-msgid "Search for and replace text"
-msgstr "ค้นหาและแทนที่คำ"
-
-#: ../gedit/gedit-ui.h:122
-msgid "_Clear Highlight"
-msgstr "เ_ลิกเน้นคำค้น"
-
-#: ../gedit/gedit-ui.h:123
-msgid "Clear highlighting of search matches"
-msgstr "ลบการเน้นคำค้นที่หาพบ"
-
-#: ../gedit/gedit-ui.h:124
-msgid "Go to _Line..."
-msgstr "ไป_บรรทัดที่..."
-
-#: ../gedit/gedit-ui.h:125
-msgid "Go to a specific line"
-msgstr "ไปเลขบรรทัดที่กำหนด"
-
-#. Documents menu
-#: ../gedit/gedit-ui.h:128
-msgid "_Save All"
-msgstr "_บันทึกทุกเอกสาร"
-
-#: ../gedit/gedit-ui.h:129
-msgid "Save all open files"
-msgstr "บันทึกทุกแฟ้มที่เปิด"
-
-#: ../gedit/gedit-ui.h:130
-msgid "_Close All"
-msgstr "ปิ_ดทั้งหมด"
-
-#: ../gedit/gedit-ui.h:131
-msgid "Close all open files"
-msgstr "ปิดแฟ้มทั้งหมด"
-
-#: ../gedit/gedit-ui.h:132
-msgid "_New Tab Group"
-msgstr "กลุ่มแท็บใ_หม่"
-
-#: ../gedit/gedit-ui.h:133
-msgid "Create a new tab group"
-msgstr "สร้างกลุ่มแท็บใหม่"
-
-#: ../gedit/gedit-ui.h:134
-msgid "P_revious Tab Group"
-msgstr "กลุ่มแท็บ_ก่อนหน้า"
-
-#: ../gedit/gedit-ui.h:135
-msgid "Switch to the previous tab group"
-msgstr "ย้ายไปยังกลุ่มแท็บก่อนหน้า"
-
-#: ../gedit/gedit-ui.h:136
-msgid "Nex_t Tab Group"
-msgstr "กลุ่มแท็บ_ถัดไป"
-
-#: ../gedit/gedit-ui.h:137
-msgid "Switch to the next tab group"
-msgstr "ย้ายไปยังกลุ่มแท็บถัดไป"
-
-#: ../gedit/gedit-ui.h:138
-msgid "_Previous Document"
-msgstr "เอกสารก่อนห_น้า"
-
-#: ../gedit/gedit-ui.h:139
-msgid "Activate previous document"
-msgstr "ไปยังเอกสารก่อนหน้า"
-
-#: ../gedit/gedit-ui.h:140
-msgid "N_ext Document"
-msgstr "เอกสารถัดไ_ป"
-
-#: ../gedit/gedit-ui.h:141
-msgid "Activate next document"
-msgstr "ไปยังเอกสารถัดไป"
-
-#: ../gedit/gedit-ui.h:143
-msgid "Move the current document to a new window"
-msgstr "ย้ายเอกสารนี้ไปยังหน้าต่างใหม่"
-
-#: ../gedit/gedit-ui.h:150
-msgid "Close the current file"
-msgstr "ปิดแฟ้มปัจจุบัน"
-
-#: ../gedit/gedit-ui.h:157
-msgid "Quit the program"
-msgstr "ออกจากโปรแกรม"
-
-#: ../gedit/gedit-ui.h:162
-msgid "_Toolbar"
-msgstr "แถบเ_ครื่องมือ"
-
-#: ../gedit/gedit-ui.h:163
-msgid "Show or hide the toolbar in the current window"
-msgstr "ซ่อนหรือแสดงแถบเครื่องมือในหน้าต่างปัจจุบัน"
-
-#: ../gedit/gedit-ui.h:165
-msgid "_Statusbar"
-msgstr "แถบ_สถานะ"
-
-#: ../gedit/gedit-ui.h:166
-msgid "Show or hide the statusbar in the current window"
-msgstr "ซ่อนหรือแสดงแถบสถานะในหน้าต่างปัจจุบัน"
-
-#: ../gedit/gedit-ui.h:169
-msgid "Edit text in fullscreen"
-msgstr "แก้ไขข้อความแบบเต็มจอ"
-
-#: ../gedit/gedit-ui.h:176
-msgid "Side _Panel"
-msgstr "ช่องด้าน_ข้าง"
-
-#: ../gedit/gedit-ui.h:177
-msgid "Show or hide the side panel in the current window"
-msgstr "ซ่อนหรือแสดงช่องด้านข้างในหน้าต่างปัจจุบัน"
-
-#: ../gedit/gedit-ui.h:179
-msgid "_Bottom Panel"
-msgstr "ช่องด้าน_ล่าง"
-
-#: ../gedit/gedit-ui.h:180
-msgid "Show or hide the bottom panel in the current window"
-msgstr "ซ่อนหรือแสดงช่องด้านล่างในหน้าต่างปัจจุบัน"
-
-#: ../gedit/gedit-utils.c:932
+#: ../gedit/gedit-utils.c:906
 msgid "Please check your installation."
 msgstr "กรุณาตรวจสอบว่าคุณติดตั้งโปรแกรมถูกต้องหรือไม่"
 
-#: ../gedit/gedit-utils.c:990
+#: ../gedit/gedit-utils.c:964
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "ไม่สามารถเปิดแฟ้มส่วนติดต่อผู้ใช้ %s ข้อผิดพลาด: %s"
 
-#: ../gedit/gedit-utils.c:1009
+#: ../gedit/gedit-utils.c:983
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "หาอ็อบเจกต์ '%s' ภายในแฟ้ม %s ไม่พบ"
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1232
+#: ../gedit/gedit-utils.c:1206
 #, c-format
 msgid "/ on %s"
 msgstr "/ ที่ %s"
@@ -2185,135 +1893,133 @@ msgstr "/ ที่ %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:703
+#: ../gedit/gedit-view-frame.c:714
 #, c-format
 msgid "%d of %d"
 msgstr "%d จาก %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:795
+#: ../gedit/gedit-view-frame.c:806
 msgid "_Wrap Around"
 msgstr "ห_มดแล้วเริ่มใหม่"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:805
+#: ../gedit/gedit-view-frame.c:816
 msgid "Match as _Regular Expression"
 msgstr "ค้นหาด้วยนิพจน์เ_รกิวลาร์"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:819
+#: ../gedit/gedit-view-frame.c:830
 msgid "Match _Entire Word Only"
 msgstr "ค้นหาทั้_งคำ"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:833
+#: ../gedit/gedit-view-frame.c:844
 msgid "_Match Case"
 msgstr "ตัวพิมพ์ใหญ่-เ_ล็กตรงกัน"
 
-#: ../gedit/gedit-view-frame.c:1007
+#: ../gedit/gedit-view-frame.c:1018
 msgid "String you want to search for"
 msgstr "ข้อความที่คุณต้องการค้นหา"
 
-#: ../gedit/gedit-view-frame.c:1019
+#: ../gedit/gedit-view-frame.c:1030
 msgid "Line you want to move the cursor to"
 msgstr "บรรทัดที่คุณต้องการย้ายเคอร์เซอร์ไป"
 
-#. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1073
-#, c-format
-msgid "Open '%s'"
-msgstr "เปิดเอกสาร '%s'"
-
-#: ../gedit/gedit-window.c:1235
-msgid "Save"
-msgstr "บันทึก"
-
-#: ../gedit/gedit-window.c:1237
-msgid "Print"
-msgstr "พิมพ์"
-
-#: ../gedit/gedit-window.c:1239
-msgid "Find"
-msgstr "หา"
-
-#. Translators: %s is a URI
-#: ../gedit/gedit-window.c:1403
-#, c-format
-msgid "Activate '%s'"
-msgstr "เริ่มใช้ '%s'"
-
-#: ../gedit/gedit-window.c:1749
+#: ../gedit/gedit-window.c:914
 msgid "Use Spaces"
 msgstr "แทรกช่องว่าง"
 
-#: ../gedit/gedit-window.c:1901
+#: ../gedit/gedit-window.c:1053
 msgid "Bracket match is out of range"
 msgstr "คู่วงเล็บอยู่นอกช่วง"
 
-#: ../gedit/gedit-window.c:1906
+#: ../gedit/gedit-window.c:1058
 msgid "Bracket match not found"
 msgstr "ไม่พบคู่วงเล็บ"
 
-#: ../gedit/gedit-window.c:1911
+#: ../gedit/gedit-window.c:1063
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "พบคู่วงเล็บที่บรรทัด: %d"
 
-#: ../gedit/gedit-window.c:2095
+#: ../gedit/gedit-window.c:1266
 #, c-format
 msgid "Tab Width: %u"
 msgstr "ความกว้างแท็บ: %u"
 
-#: ../gedit/gedit-window.c:2450
+#: ../gedit/gedit-window.c:1653
 msgid "There are unsaved documents"
 msgstr "มีเอกสารที่ไม่ได้บันทึก"
 
-#. ex:set ts=8 noet:
-#: ../plugins/changecase/changecase.plugin.desktop.in.h:1
-msgid "Change Case"
-msgstr "เปลี่ยนตัวพิมพ์ใหญ่-เล็ก"
+#: ../gedit/gedit-window.ui.h:2
+msgid "_Save As…"
+msgstr "_บันทึกเป็น…"
 
-#: ../plugins/changecase/changecase.plugin.desktop.in.h:2
-msgid "Changes the case of selected text."
-msgstr "เปลี่ยนตัวพิมพ์ใหญ่-เล็กของข้อความที่เลือก"
+#: ../gedit/gedit-window.ui.h:3
+msgid "Save _All"
+msgstr "บันทึก_ทั้งหมด"
 
-#: ../plugins/changecase/gedit-changecase-plugin.c:242
-msgid "C_hange Case"
-msgstr "เปลี่ยนตัว_พิมพ์ใหญ่-เล็ก"
+#: ../gedit/gedit-window.ui.h:4
+msgid "_Print…"
+msgstr "_พิมพ์…"
 
-#: ../plugins/changecase/gedit-changecase-plugin.c:243
-msgid "All _Upper Case"
-msgstr "ตัวพิมพ์ใ_หญ่ทั้งหมด"
+#: ../gedit/gedit-window.ui.h:5
+msgid "Side _Panel"
+msgstr "ช่องด้าน_ข้าง"
 
-#: ../plugins/changecase/gedit-changecase-plugin.c:244
-msgid "Change selected text to upper case"
-msgstr "เปลี่ยนข้อความที่เลือกเป็นตัวพิมพ์ใหญ่ทั้งหมด"
+#: ../gedit/gedit-window.ui.h:6
+msgid "_Bottom Panel"
+msgstr "ช่องด้าน_ล่าง"
 
-#: ../plugins/changecase/gedit-changecase-plugin.c:246
-msgid "All _Lower Case"
-msgstr "ตัวพิมพ์เ_ล็กทั้งหมด"
+#: ../gedit/gedit-window.ui.h:7
+msgid "_Fullscreen"
+msgstr "เ_ต็มจอ"
 
-#: ../plugins/changecase/gedit-changecase-plugin.c:247
-msgid "Change selected text to lower case"
-msgstr "เปลี่ยนข้อความที่เลือกเป็นตัวพิมพ์เล็กทั้งหมด"
+#: ../gedit/gedit-window.ui.h:8
+msgid "_Find…"
+msgstr "_หา…"
 
-#: ../plugins/changecase/gedit-changecase-plugin.c:249
-msgid "_Invert Case"
-msgstr "_กลับตัวพิมพ์ใหญ่-เล็ก"
+#: ../gedit/gedit-window.ui.h:9
+msgid "_Find and Replace…"
+msgstr "หาและแ_ทนที่…"
 
-#: ../plugins/changecase/gedit-changecase-plugin.c:250
-msgid "Invert the case of selected text"
-msgstr "กลับตัวพิมพ์ใหญ่-เล็กของข้อความที่เลือก"
+#: ../gedit/gedit-window.ui.h:10
+msgid "_Clear Highlight"
+msgstr "เ_ลิกเน้นคำค้น"
 
-#: ../plugins/changecase/gedit-changecase-plugin.c:252
-msgid "_Title Case"
-msgstr "ตัวพิมพ์ใหญ่-เล็กสำหรับหัวเ_รื่อง"
+#: ../gedit/gedit-window.ui.h:11
+msgid "_Go to Line…"
+msgstr "ไ_ปที่บรรทัด…"
 
-#: ../plugins/changecase/gedit-changecase-plugin.c:253
-msgid "Capitalize the first letter of each selected word"
-msgstr "เปลี่ยนอักษรตัวแรกของทุกคำที่เลือกให้เป็นตัวพิมพ์ใหญ่"
+#: ../gedit/gedit-window.ui.h:12
+msgid "_Highlight Mode…"
+msgstr "โหมดเ_น้น…"
 
-#. ex:set ts=8 noet:
+#: ../gedit/gedit-window.ui.h:13
+msgid "_Close All"
+msgstr "ปิ_ดทั้งหมด"
+
+#: ../gedit/gedit-window.ui.h:20
+msgid "Open a file"
+msgstr "เปิดแฟ้ม"
+
+#: ../gedit/gedit-window.ui.h:21
+msgid "Open a recently used file"
+msgstr "เปิดแฟ้มที่เพิ่งถูกเปิด"
+
+#: ../gedit/gedit-window.ui.h:22
+msgid "Create a new document"
+msgstr "สร้างเอกสารใหม่"
+
+#: ../gedit/gedit-window.ui.h:23
+msgid "Save the current file"
+msgstr "บันทึกแฟ้มปัจจุบัน"
+
+#: ../gedit/gedit-window.ui.h:24
+msgid "Leave Fullscreen"
+msgstr "เลิกแสดงเต็มจอ"
+
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
 msgid "Check update"
 msgstr "ตรวจสอบรุ่นออกใหม่"
@@ -2366,13 +2072,9 @@ msgstr "สถิติต่างๆ ของเอกสาร"
 msgid "Report the number of words, lines and characters in a document."
 msgstr "รายงานจำนวนคำ จำนวนบรรทัด และจำนวนอักขระในเอกสาร"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:427
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:536
 msgid "_Document Statistics"
 msgstr "ส_ถิติของเอกสาร"
-
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:429
-msgid "Get statistical information on the current document"
-msgstr "ดูค่าสถิติต่างๆ ของเอกสารปัจจุบัน"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:2
 msgid "_Update"
@@ -2481,19 +2183,19 @@ msgstr "ชื่อแบบอักษร Pango ตัวอย่างเ�
 msgid "Could not execute command: %s"
 msgstr "ไม่สามารถเรียกทำงานคำสั่ง: %s"
 
-#: ../plugins/externaltools/tools/functions.py:175
+#: ../plugins/externaltools/tools/functions.py:178
 msgid "You must be inside a word to run this command"
 msgstr "คุณต้องอยู่ภายในคำเพื่อจะเรียกคำสั่งนี้"
 
-#: ../plugins/externaltools/tools/functions.py:310
+#: ../plugins/externaltools/tools/functions.py:314
 msgid "Running tool:"
 msgstr "กำลังเรียกใช้เครื่องมือ:"
 
-#: ../plugins/externaltools/tools/functions.py:339
+#: ../plugins/externaltools/tools/functions.py:344
 msgid "Done."
 msgstr "เสร็จสิ้น"
 
-#: ../plugins/externaltools/tools/functions.py:341
+#: ../plugins/externaltools/tools/functions.py:346
 msgid "Exited"
 msgstr "ออกจากโปรแกรม"
 
@@ -2663,23 +2365,15 @@ msgstr "_บันทึก:"
 msgid "Shortcut _key:"
 msgstr "ปุ่ม_ลัด:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:175
+#: ../plugins/externaltools/tools/windowactivatable.py:142
 msgid "Manage _External Tools..."
 msgstr "จัดการเครื่องมือภาย_นอก..."
 
-#: ../plugins/externaltools/tools/windowactivatable.py:176
-msgid "Opens the External Tools Manager"
-msgstr "เปิดเครื่องมือจัดการเครื่องมือภายนอก"
-
-#: ../plugins/externaltools/tools/windowactivatable.py:179
+#: ../plugins/externaltools/tools/windowactivatable.py:145
 msgid "External _Tools"
 msgstr "เ_ครื่องมือภายนอก"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:180
-msgid "External tools"
-msgstr "เครื่องมือภายนอก"
-
-#: ../plugins/externaltools/tools/windowactivatable.py:214
+#: ../plugins/externaltools/tools/windowactivatable.py:159
 msgid "Tool Output"
 msgstr "ผลลัพธ์เครื่องมือ"
 
@@ -2702,6 +2396,7 @@ msgstr "ระบบแฟ้ม"
 
 #. ex:ts=8:noet:
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
+#: ../plugins/quickopen/quickopen/popup.py:39
 msgid "_Open"
 msgstr "_เปิด"
 
@@ -2753,43 +2448,43 @@ msgstr "แสดงแฟ้มซ่อ_น"
 msgid "Show _Binary"
 msgstr "แสดงแฟ้มไ_บนารี"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:538
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:533
 msgid "File Browser"
 msgstr "ช่องเรียกดูแฟ้ม"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:681
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:676
 msgid "An error occurred while creating a new directory"
 msgstr "เกิดข้อผิดพลาดขณะสร้างไดเรกทอรีใหม่"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:684
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:679
 msgid "An error occurred while creating a new file"
 msgstr "เกิดข้อผิดพลาดขณะสร้างแฟ้มใหม่"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:687
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:682
 msgid "An error occurred while renaming a file or directory"
 msgstr "เกิดข้อผิดพลาดขณะเปลี่ยนชื่อแฟ้มหรือไดเรกทอรี"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:690
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:685
 msgid "An error occurred while deleting a file or directory"
 msgstr "เกิดข้อผิดพลาดขณะลบแฟ้มหรือไดเรกทอรี"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:693
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "เกิดข้อผิดพลาดขณะเปิดไดเรกทอรีในโปรแกรมจัดการแฟ้ม"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:696
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
 msgid "An error occurred while setting a root directory"
 msgstr "เกิดข้อผิดพลาดขณะกำหนดไดเรกทอรีราก"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:699
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
 msgid "An error occurred while loading a directory"
 msgstr "เกิดข้อผิดพลาดขณะเรียกข้อมูลไดเรกทอรี"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:702
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
 msgid "An error occurred"
 msgstr "เกิดข้อผิดพลาด"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:911
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2797,81 +2492,81 @@ msgstr ""
 "ไม่สามารถย้ายแฟ้มไปลงถังขยะได้\n"
 "คุณต้องการจะลบอย่างถาวรเลยหรือไม่?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "ไม่สามารถย้ายแฟ้ม \"%s\" ไปลงถังขยะได้"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:926
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
 msgid "The selected files cannot be moved to the trash."
 msgstr "ไม่สามารถย้ายแฟ้มที่เลือกไว้ไปลงถังขยะได้"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบ \"%s\" อย่างถาวร?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:963
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบแฟ้มที่เลือกไว้อย่างถาวร?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:966
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:961
 msgid "If you delete an item, it is permanently lost."
 msgstr "ถ้าคุณลบรายการนี้ มันจะสูญหายอย่างถาวร"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1776
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1782
 msgid "(Empty)"
 msgstr "(ว่างเปล่า)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3498
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3504
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr "แฟ้มที่เปลี่ยนชื่อถูกกรองออกอยู่ คุณต้องปรับกฎการกรองของคุณเพื่อให้มองเห็นแฟ้มได้"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3755
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3761
 msgid "Untitled File"
 msgstr "แฟ้มไม่มีชื่อ"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3783
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3789
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr "แฟ้มใหม่ที่สร้างถูกกรองออกอยู่ คุณต้องปรับกฎการกรองของคุณเพื่อให้มองเห็นแฟ้มได้"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3814
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3820
 msgid "Untitled Folder"
 msgstr "โฟลเดอร์ไม่มีชื่อ"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3839
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3845
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
 "ไดเรกทอรีใหม่ที่สร้างถูกกรองออกอยู่ คุณต้องปรับกฎการกรองของคุณเพื่อให้มองเห็นไดเรกทอรีได้"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:785
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
 msgid "Bookmarks"
 msgstr "ที่คั่นหน้า"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1979
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1993
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "ไม่มีอ็อบเจกต์การเมานท์สำหรับโวลุมที่เมานท์: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2056
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2070
 #, c-format
 msgid "Could not open media: %s"
 msgstr "ไม่สามารถเปิดสื่อ: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2103
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2117
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "ไม่สามารถเมานท์โวลุม: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2739
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2753
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "ข้อผิดพลาดขณะโหลด '%s': ไม่มีไดเรกทอรีนี้"
@@ -3018,13 +2713,9 @@ msgstr "คอนโซลไพธอน"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "คอนโซลไพธอนโต้ตอบในแถบด้านล่าง"
 
-#: ../plugins/quickopen/quickopen/__init__.py:71
+#: ../plugins/quickopen/quickopen/__init__.py:68
 msgid "Quick Open..."
 msgstr "เปิดอย่างเร็ว..."
-
-#: ../plugins/quickopen/quickopen/__init__.py:72
-msgid "Quickly open documents"
-msgstr "เปิดเอกสารอย่างเร็ว"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
@@ -3036,7 +2727,7 @@ msgstr "เปิดอย่างเร็ว"
 msgid "Quickly open files"
 msgstr "เปิดแฟ้มอย่างเร็ว"
 
-#: ../plugins/quickopen/quickopen/popup.py:78
+#: ../plugins/quickopen/quickopen/popup.py:79
 msgid "Type to search..."
 msgstr "พิมพ์เพื่อค้นหา..."
 
@@ -3105,17 +2796,17 @@ msgstr "เพิ่มข้อความสั้น..."
 msgid "Global"
 msgstr "ทั่วไป"
 
-#: ../plugins/snippets/snippets/manager.py:410
+#: ../plugins/snippets/snippets/manager.py:409
 msgid "Revert selected snippet"
 msgstr "เรียกข้อความสั้นเดิมกลับมา"
 
-#: ../plugins/snippets/snippets/manager.py:413
+#: ../plugins/snippets/snippets/manager.py:412
 #: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Delete selected snippet"
 msgstr "ลบข้อความสั้นที่เลือก"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:672
+#: ../plugins/snippets/snippets/manager.py:671
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3125,83 +2816,83 @@ msgstr ""
 "_, : และ .) หรืออักขระเดี่ยวๆ ที่ไม่ใช่พยัญชนะหรือตัวเลข เช่น {, [ เป็นต้น"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:679
+#: ../plugins/snippets/snippets/manager.py:678
 #: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "คำเดี่ยวๆ ที่จะใช้เรียกข้อความสั้นหลังจากกดปุ่มแท็บ"
 
-#: ../plugins/snippets/snippets/manager.py:768
+#: ../plugins/snippets/snippets/manager.py:767
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "เกิดข้อผิดพลาดขณะนำเข้า: %s"
 
-#: ../plugins/snippets/snippets/manager.py:775
+#: ../plugins/snippets/snippets/manager.py:774
 msgid "Import successfully completed"
 msgstr "นำเข้าเรียบร้อย"
 
-#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:788
 #: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr "นำเข้าข้อความสั้น"
 
+#: ../plugins/snippets/snippets/manager.py:793
+#: ../plugins/snippets/snippets/manager.py:879
+#: ../plugins/snippets/snippets/manager.py:942
+msgid "All supported archives"
+msgstr "แฟ้มจัดเก็บทุกชนิดที่รองรับ"
+
 #: ../plugins/snippets/snippets/manager.py:794
 #: ../plugins/snippets/snippets/manager.py:880
 #: ../plugins/snippets/snippets/manager.py:943
-msgid "All supported archives"
-msgstr "แฟ้มจัดเก็บทุกชนิดที่รองรับ"
+msgid "Gzip compressed archive"
+msgstr "แฟ้มบีบอัด gzip"
 
 #: ../plugins/snippets/snippets/manager.py:795
 #: ../plugins/snippets/snippets/manager.py:881
 #: ../plugins/snippets/snippets/manager.py:944
-msgid "Gzip compressed archive"
-msgstr "แฟ้มบีบอัด gzip"
-
-#: ../plugins/snippets/snippets/manager.py:796
-#: ../plugins/snippets/snippets/manager.py:882
-#: ../plugins/snippets/snippets/manager.py:945
 msgid "Bzip2 compressed archive"
 msgstr "แฟ้มบีบอัด bzip2"
 
-#: ../plugins/snippets/snippets/manager.py:797
+#: ../plugins/snippets/snippets/manager.py:796
 msgid "Single snippets file"
 msgstr "แฟ้มข้อความสั้นเดี่ยวๆ"
 
-#: ../plugins/snippets/snippets/manager.py:798
-#: ../plugins/snippets/snippets/manager.py:884
-#: ../plugins/snippets/snippets/manager.py:947
+#: ../plugins/snippets/snippets/manager.py:797
+#: ../plugins/snippets/snippets/manager.py:883
+#: ../plugins/snippets/snippets/manager.py:946
 msgid "All files"
 msgstr "ทุกแฟ้ม"
 
-#: ../plugins/snippets/snippets/manager.py:810
+#: ../plugins/snippets/snippets/manager.py:809
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "เกิดข้อผิดพลาดขณะส่งออก: %s"
 
-#: ../plugins/snippets/snippets/manager.py:814
+#: ../plugins/snippets/snippets/manager.py:813
 msgid "Export successfully completed"
 msgstr "ส่งออกเรียบร้อย"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:854
-#: ../plugins/snippets/snippets/manager.py:921
+#: ../plugins/snippets/snippets/manager.py:853
+#: ../plugins/snippets/snippets/manager.py:920
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "ต้องการเพิ่มข้อความสั้นของ <b>ระบบ</b> ในแฟ้มส่งออกหรือไม่?"
 
-#: ../plugins/snippets/snippets/manager.py:869
-#: ../plugins/snippets/snippets/manager.py:939
+#: ../plugins/snippets/snippets/manager.py:868
+#: ../plugins/snippets/snippets/manager.py:938
 msgid "There are no snippets selected to be exported"
 msgstr "ไม่ได้เลือกข้อความสั้นสำหรับส่งออกไว้"
 
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:912
+#: ../plugins/snippets/snippets/manager.py:873
+#: ../plugins/snippets/snippets/manager.py:911
 msgid "Export snippets"
 msgstr "ส่งออกข้อความสั้น"
 
-#: ../plugins/snippets/snippets/manager.py:1053
+#: ../plugins/snippets/snippets/manager.py:1052
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "กดปุ่มลัดที่จะใช้ หรือกด Backspace เพื่อล้างค่า"
 
-#: ../plugins/snippets/snippets/manager.py:1055
+#: ../plugins/snippets/snippets/manager.py:1054
 msgid "Type a new shortcut"
 msgstr "กดปุ่มลัดที่จะใช้"
 
@@ -3274,21 +2965,13 @@ msgstr "ปุ่มลัดที่จะใช้เรียกข้อค
 msgid "_Drop targets:"
 msgstr "เ_ป้าหมายการวาง:"
 
-#: ../plugins/snippets/snippets/windowactivatable.py:154
+#: ../plugins/snippets/snippets/windowactivatable.py:153
 msgid "Manage _Snippets..."
 msgstr "จัดการ_ข้อความสั้น..."
 
-#: ../plugins/snippets/snippets/windowactivatable.py:155
-msgid "Manage snippets"
-msgstr "จัดการข้อความสั้น"
-
-#: ../plugins/sort/gedit-sort-plugin.c:88
+#: ../plugins/sort/gedit-sort-plugin.c:434
 msgid "S_ort..."
 msgstr "เ_รียงลำดับ..."
-
-#: ../plugins/sort/gedit-sort-plugin.c:90
-msgid "Sort the current document or selection"
-msgstr "เรียงลำดับข้อมูลในเอกสารปัจจุบันหรือส่วนที่เลือก"
 
 #. ex:ts=8:noet:
 #: ../plugins/sort/gedit-sort-plugin.ui.h:1
@@ -3403,37 +3086,25 @@ msgstr "กำหนดภาษา"
 msgid "Languages"
 msgstr "ภาษา"
 
-#: ../plugins/spell/gedit-spell-plugin.c:108
-msgid "_Check Spelling..."
-msgstr "ตรวจตัว_สะกด..."
-
-#: ../plugins/spell/gedit-spell-plugin.c:110
-msgid "Check the current document for incorrect spelling"
-msgstr "ตรวจตัวสะกดในเอกสารปัจจุบัน"
-
-#: ../plugins/spell/gedit-spell-plugin.c:116
-msgid "Set _Language..."
-msgstr "กำหนด_ภาษา..."
-
-#: ../plugins/spell/gedit-spell-plugin.c:118
-msgid "Set the language of the current document"
-msgstr "กำหนดภาษาของเอกสารปัจจุบัน"
-
-#: ../plugins/spell/gedit-spell-plugin.c:127
-msgid "_Highlight Misspelled Words"
-msgstr "เ_น้นคำสะกดผิด"
-
-#: ../plugins/spell/gedit-spell-plugin.c:129
-msgid "Automatically spell-check the current document"
-msgstr "ตรวจตัวสะกดในเอกสารปัจจุบันโดยอัตโนมัติ"
-
-#: ../plugins/spell/gedit-spell-plugin.c:821
+#: ../plugins/spell/gedit-spell-plugin.c:811
 msgid "The document is empty."
 msgstr "เอกสารว่างเปล่า"
 
-#: ../plugins/spell/gedit-spell-plugin.c:846
+#: ../plugins/spell/gedit-spell-plugin.c:836
 msgid "No misspelled words"
 msgstr "ไม่มีคำสะกดผิด"
+
+#: ../plugins/spell/gedit-spell-plugin.c:1138
+msgid "_Check Spelling..."
+msgstr "ตรวจตัว_สะกด..."
+
+#: ../plugins/spell/gedit-spell-plugin.c:1142
+msgid "Set _Language..."
+msgstr "กำหนด_ภาษา..."
+
+#: ../plugins/spell/gedit-spell-plugin.c:1146
+msgid "_Highlight Misspelled Words"
+msgstr "เ_น้นคำสะกดผิด"
 
 #. ex:ts=8:noet:
 #: ../plugins/spell/languages-dialog.ui.h:1
@@ -3539,15 +3210,11 @@ msgstr "01/11/2552 17:52:00"
 msgid "_Insert"
 msgstr "แ_ทรก"
 
-#: ../plugins/time/gedit-time-plugin.c:184
+#: ../plugins/time/gedit-time-plugin.c:276
 msgid "In_sert Date and Time..."
 msgstr "แทรก_วันที่และเวลา..."
 
-#: ../plugins/time/gedit-time-plugin.c:186
-msgid "Insert current date and time at the cursor position"
-msgstr "แทรกวันที่และเวลาปัจจุบันที่ตำแหน่งเคอร์เซอร์"
-
-#: ../plugins/time/gedit-time-plugin.c:504
+#: ../plugins/time/gedit-time-plugin.c:474
 msgid "Available formats"
 msgstr "รูปแบบที่มีให้เลือก"
 
@@ -3605,6 +3272,267 @@ msgstr "ตัวจัดเตรียมข้อมูล Zeitgeist"
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
 msgstr "บันทึกปูมเหตุการณ์การเข้าถึงและออกสำหรับเอกสารที่ใช้กับ gedit"
+
+#~ msgid "Empty"
+#~ msgstr "ว่างเปล่า"
+
+#~ msgid "column"
+#~ msgstr "คอลัมน์"
+
+#~ msgid "_File"
+#~ msgstr "แ_ฟ้ม"
+
+#~ msgid "_Edit"
+#~ msgstr "แ_ก้ไข"
+
+#~ msgid "_View"
+#~ msgstr "มุ_มมอง"
+
+#~ msgid "_Search"
+#~ msgstr "_ค้นหา"
+
+#~ msgid "_Tools"
+#~ msgstr "เครื่อ_งมือ"
+
+#~ msgid "_Documents"
+#~ msgstr "เ_อกสาร"
+
+#~ msgid "_Open..."
+#~ msgstr "_เปิด..."
+
+#~ msgid "Pr_eferences"
+#~ msgstr "_ปรับแต่ง"
+
+#~ msgid "Configure the application"
+#~ msgstr "กำหนดค่าโปรแกรม"
+
+#~ msgid "_Contents"
+#~ msgstr "เนื้อ_หา"
+
+#~ msgid "Open the gedit manual"
+#~ msgstr "เปิดคู่มือ gedit"
+
+#~ msgid "About this application"
+#~ msgstr "เกี่ยวกับ gedit"
+
+#~ msgid "Save _As..."
+#~ msgstr "บันทึกเป็_น..."
+
+#~ msgid "Save the current file with a different name"
+#~ msgstr "บันทึกแฟ้มปัจจุบันโดยตั้งชื่อใหม่"
+
+#~ msgid "Revert to a saved version of the file"
+#~ msgstr "คืนข้อมูลกลับเป็นรุ่นที่บันทึกไว้แล้ว"
+
+#~ msgid "Print Previe_w"
+#~ msgstr "_ตัวอย่างก่อนพิมพ์"
+
+#~ msgid "Print preview"
+#~ msgstr "แสดงตัวอย่างก่อนพิมพ์"
+
+#~ msgid "_Print..."
+#~ msgstr "_พิมพ์..."
+
+#~ msgid "Print the current page"
+#~ msgstr "พิมพ์หน้าปัจจุบัน"
+
+#~ msgid "Undo the last action"
+#~ msgstr "เรียกคืนการทำคำสั่งสุดท้าย"
+
+#~ msgid "Redo the last undone action"
+#~ msgstr "ทำซ้ำคำสั่งที่เรียกคืนล่าสุด"
+
+#~ msgid "Cut the selection"
+#~ msgstr "ตัดส่วนที่เลือก"
+
+#~ msgid "Copy the selection"
+#~ msgstr "คัดลอกส่วนที่เลือก"
+
+#~ msgid "Paste the clipboard"
+#~ msgstr "แปะจากคลิปบอร์ด"
+
+#~ msgid "Delete the selected text"
+#~ msgstr "ลบข้อความที่เลือก"
+
+#~ msgid "Select _All"
+#~ msgstr "เลือกทั้ง_หมด"
+
+#~ msgid "Select the entire document"
+#~ msgstr "เลือกทั้งเอกสาร"
+
+#~ msgid "_Highlight Mode..."
+#~ msgstr "โห_มดเน้น..."
+
+#~ msgid "Changes the highlight mode of the active document"
+#~ msgstr "เปลี่ยนโหมดเน้นของเอกสารที่ทำงานอยู่"
+
+#~ msgid "_Find..."
+#~ msgstr "_หา..."
+
+#~ msgid "Search for text"
+#~ msgstr "ค้นหา"
+
+#~ msgid "Find Ne_xt"
+#~ msgstr "หา_ต่อ"
+
+#~ msgid "Search forwards for the same text"
+#~ msgstr "ค้นหาต่อไป"
+
+#~ msgid "Find Pre_vious"
+#~ msgstr "หา_ก่อนหน้า"
+
+#~ msgid "Search backwards for the same text"
+#~ msgstr "ค้นหาคำเดิมแบบถอยหลังอีกครั้ง"
+
+#~ msgid "_Replace..."
+#~ msgstr "แ_ทนที่..."
+
+#~ msgid "Search for and replace text"
+#~ msgstr "ค้นหาและแทนที่คำ"
+
+#~ msgid "Clear highlighting of search matches"
+#~ msgstr "ลบการเน้นคำค้นที่หาพบ"
+
+#~ msgid "Go to _Line..."
+#~ msgstr "ไป_บรรทัดที่..."
+
+#~ msgid "Go to a specific line"
+#~ msgstr "ไปเลขบรรทัดที่กำหนด"
+
+#~ msgid "Save all open files"
+#~ msgstr "บันทึกทุกแฟ้มที่เปิด"
+
+#~ msgid "Close all open files"
+#~ msgstr "ปิดแฟ้มทั้งหมด"
+
+#~ msgid "_New Tab Group"
+#~ msgstr "กลุ่มแท็บใ_หม่"
+
+#~ msgid "Create a new tab group"
+#~ msgstr "สร้างกลุ่มแท็บใหม่"
+
+#~ msgid "P_revious Tab Group"
+#~ msgstr "กลุ่มแท็บ_ก่อนหน้า"
+
+#~ msgid "Switch to the previous tab group"
+#~ msgstr "ย้ายไปยังกลุ่มแท็บก่อนหน้า"
+
+#~ msgid "Nex_t Tab Group"
+#~ msgstr "กลุ่มแท็บ_ถัดไป"
+
+#~ msgid "Switch to the next tab group"
+#~ msgstr "ย้ายไปยังกลุ่มแท็บถัดไป"
+
+#~ msgid "_Previous Document"
+#~ msgstr "เอกสารก่อนห_น้า"
+
+#~ msgid "Activate previous document"
+#~ msgstr "ไปยังเอกสารก่อนหน้า"
+
+#~ msgid "N_ext Document"
+#~ msgstr "เอกสารถัดไ_ป"
+
+#~ msgid "Activate next document"
+#~ msgstr "ไปยังเอกสารถัดไป"
+
+#~ msgid "Move the current document to a new window"
+#~ msgstr "ย้ายเอกสารนี้ไปยังหน้าต่างใหม่"
+
+#~ msgid "Close the current file"
+#~ msgstr "ปิดแฟ้มปัจจุบัน"
+
+#~ msgid "Quit the program"
+#~ msgstr "ออกจากโปรแกรม"
+
+#~ msgid "_Toolbar"
+#~ msgstr "แถบเ_ครื่องมือ"
+
+#~ msgid "Show or hide the toolbar in the current window"
+#~ msgstr "ซ่อนหรือแสดงแถบเครื่องมือในหน้าต่างปัจจุบัน"
+
+#~ msgid "Show or hide the statusbar in the current window"
+#~ msgstr "ซ่อนหรือแสดงแถบสถานะในหน้าต่างปัจจุบัน"
+
+#~ msgid "Edit text in fullscreen"
+#~ msgstr "แก้ไขข้อความแบบเต็มจอ"
+
+#~ msgid "Show or hide the side panel in the current window"
+#~ msgstr "ซ่อนหรือแสดงช่องด้านข้างในหน้าต่างปัจจุบัน"
+
+#~ msgid "Show or hide the bottom panel in the current window"
+#~ msgstr "ซ่อนหรือแสดงช่องด้านล่างในหน้าต่างปัจจุบัน"
+
+#~ msgid "Open '%s'"
+#~ msgstr "เปิดเอกสาร '%s'"
+
+#~ msgid "Save"
+#~ msgstr "บันทึก"
+
+#~ msgid "Activate '%s'"
+#~ msgstr "เริ่มใช้ '%s'"
+
+#~ msgid "Change Case"
+#~ msgstr "เปลี่ยนตัวพิมพ์ใหญ่-เล็ก"
+
+#~ msgid "Changes the case of selected text."
+#~ msgstr "เปลี่ยนตัวพิมพ์ใหญ่-เล็กของข้อความที่เลือก"
+
+#~ msgid "C_hange Case"
+#~ msgstr "เปลี่ยนตัว_พิมพ์ใหญ่-เล็ก"
+
+#~ msgid "All _Upper Case"
+#~ msgstr "ตัวพิมพ์ใ_หญ่ทั้งหมด"
+
+#~ msgid "Change selected text to upper case"
+#~ msgstr "เปลี่ยนข้อความที่เลือกเป็นตัวพิมพ์ใหญ่ทั้งหมด"
+
+#~ msgid "All _Lower Case"
+#~ msgstr "ตัวพิมพ์เ_ล็กทั้งหมด"
+
+#~ msgid "Change selected text to lower case"
+#~ msgstr "เปลี่ยนข้อความที่เลือกเป็นตัวพิมพ์เล็กทั้งหมด"
+
+#~ msgid "_Invert Case"
+#~ msgstr "_กลับตัวพิมพ์ใหญ่-เล็ก"
+
+#~ msgid "Invert the case of selected text"
+#~ msgstr "กลับตัวพิมพ์ใหญ่-เล็กของข้อความที่เลือก"
+
+#~ msgid "_Title Case"
+#~ msgstr "ตัวพิมพ์ใหญ่-เล็กสำหรับหัวเ_รื่อง"
+
+#~ msgid "Capitalize the first letter of each selected word"
+#~ msgstr "เปลี่ยนอักษรตัวแรกของทุกคำที่เลือกให้เป็นตัวพิมพ์ใหญ่"
+
+#~ msgid "Get statistical information on the current document"
+#~ msgstr "ดูค่าสถิติต่างๆ ของเอกสารปัจจุบัน"
+
+#~ msgid "Opens the External Tools Manager"
+#~ msgstr "เปิดเครื่องมือจัดการเครื่องมือภายนอก"
+
+#~ msgid "External tools"
+#~ msgstr "เครื่องมือภายนอก"
+
+#~ msgid "Quickly open documents"
+#~ msgstr "เปิดเอกสารอย่างเร็ว"
+
+#~ msgid "Manage snippets"
+#~ msgstr "จัดการข้อความสั้น"
+
+#~ msgid "Sort the current document or selection"
+#~ msgstr "เรียงลำดับข้อมูลในเอกสารปัจจุบันหรือส่วนที่เลือก"
+
+#~ msgid "Check the current document for incorrect spelling"
+#~ msgstr "ตรวจตัวสะกดในเอกสารปัจจุบัน"
+
+#~ msgid "Set the language of the current document"
+#~ msgstr "กำหนดภาษาของเอกสารปัจจุบัน"
+
+#~ msgid "Automatically spell-check the current document"
+#~ msgstr "ตรวจตัวสะกดในเอกสารปัจจุบันโดยอัตโนมัติ"
+
+#~ msgid "Insert current date and time at the cursor position"
+#~ msgstr "แทรกวันที่และเวลาปัจจุบันที่ตำแหน่งเคอร์เซอร์"
 
 #~ msgid "_Save"
 #~ msgstr "_บันทึก"
@@ -5400,9 +5328,6 @@ msgstr "บันทึกปูมเหตุการณ์การเข้
 
 #~ msgid "Go to Line"
 #~ msgstr "ไปที่บรรทัด"
-
-#~ msgid "_Go to Line"
-#~ msgstr "ไ_ปที่บรรทัด"
 
 #~ msgid "The text \"%s\" was not found."
 #~ msgstr "ค้นหาข้อความ \"%s\" ไม่เจอ"
