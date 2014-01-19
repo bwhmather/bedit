@@ -226,12 +226,17 @@
         <child>
           <object class="GtkHeaderBar" id="side_headerbar">
             <property name="visible">True</property>
-            <property name="title">Documents</property>
             <property name="show_close_button">True</property>
             <style>
               <class name="gedit-titlebar-left"/>
               <class name="titlebar"/>
             </style>
+            <child type="title">
+              <object class="GeditMenuStackSwitcher" id="side_stack_switcher">
+                <property name="visible">True</property>
+                <property name="stack">side_panel</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="resize">False</property>
@@ -357,9 +362,8 @@
               <class name="gedit-sidepanel-paned"/>
             </style>
             <child>
-              <object class="GeditPanel" id="side_panel">
+              <object class="GtkStack" id="side_panel">
                 <property name="visible">False</property>
-                <property name="orientation">vertical</property>
               </object>
               <packing>
                 <property name="resize">False</property>
@@ -387,9 +391,65 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GeditPanel" id="bottom_panel">
+                      <object class="GtkBox" id="bottom_panel_box">
                         <property name="visible">False</property>
                         <property name="orientation">horizontal</property>
+                        <child>
+                          <object class="GtkBox" id="bottom_panel_stack_box">
+                            <property name="visible">True</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <object class="GtkStack" id="bottom_panel">
+                                <property name="visible">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkStackSwitcher" id="bottom_panel_stack_switcher">
+                                <property name="visible">True</property>
+                                <property name="stack">bottom_panel</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox" id="bottom_panel_sidebar">
+                            <property name="visible">True</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <object class="GeditCloseButton" id="bottom_panel_close_button">
+                                <property name="visible">True</property>
+                                <property name="relief">none</property>
+                                <property name="tooltip-text" translatable="True">Hide panel</property>
+                                <property name="action_name">win.bottom_panel</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="position">2</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="resize">False</property>

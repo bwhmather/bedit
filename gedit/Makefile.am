@@ -149,7 +149,6 @@ gedit_INST_H_FILES =				\
 	gedit/gedit-menu-extension.h		\
 	gedit/gedit-message-bus.h		\
 	gedit/gedit-message.h			\
-	gedit/gedit-panel.h			\
 	gedit/gedit-progress-info-bar.h		\
 	gedit/gedit-statusbar.h			\
 	gedit/gedit-tab.h 			\
@@ -206,7 +205,6 @@ gedit_libgedit_c_files =			\
 	gedit/gedit-notebook.c			\
 	gedit/gedit-notebook-popup-menu.c	\
 	gedit/gedit-open-menu-button.c		\
-	gedit/gedit-panel.c			\
 	gedit/gedit-plugins-engine.c		\
 	gedit/gedit-preferences-dialog.c	\
 	gedit/gedit-print-job.c			\

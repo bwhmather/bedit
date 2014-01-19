@@ -55,6 +55,7 @@ struct _GeditWindowPrivate
 	GeditMultiNotebook *multi_notebook;
 
 	GtkWidget      *side_panel;
+	GtkWidget      *bottom_panel_box;
 	GtkWidget      *bottom_panel;
 
 	GtkWidget      *hpaned;
@@ -87,7 +88,6 @@ struct _GeditWindowPrivate
 	/* Headerbars */
 	GtkWidget      *titlebar_paned;
 	GtkWidget      *side_headerbar;
-	GtkWidget      *side_stack_switcher;
 	GtkWidget      *headerbar;
 	GtkWidget      *open_button;
 	GtkWidget      *open_menu;

@@ -7,7 +7,6 @@
 #include "gedit-message.h"
 #include "gedit-message-bus.h"
 #include "gedit-notebook.h"
-#include "gedit-panel.h"
 #include "gedit-progress-info-bar.h"
 #include "gedit-statusbar.h"
 #include "gedit-tab.h"
@@ -24,7 +23,6 @@ gedit_file_chooser_dialog_get_type
 gedit_message_get_type
 gedit_message_bus_get_type
 gedit_notebook_get_type
-gedit_panel_get_type
 gedit_progress_info_bar_get_type
 gedit_statusbar_get_type
 gedit_tab_get_type

@@ -153,10 +153,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
         self.menu = ToolMenu(self._library, self.window, self._output_buffer, external_tools_submenu_section)
 
         bottom = self.window.get_bottom_panel()
-        bottom.add_item(self._output_buffer.panel,
-                        "GeditExternalToolsShellOutput",
-                        _("Tool Output"),
-                        "system-run-symbolic")
+        bottom.add_titled(self._output_buffer.panel, "GeditExternalToolsShellOutput", _("Tool Output"))
 
     def do_update_state(self):
         if self.menu is not None:
@@ -168,7 +165,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
         self.window.remove_action("manage_tools")
 
         bottom = self.window.get_bottom_panel()
-        bottom.remove_item(self._output_buffer.panel)
+        bottom.remove(self._output_buffer.panel)
 
     def open_dialog(self):
         if not self._manager:

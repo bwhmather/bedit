@@ -44,13 +44,13 @@ class PythonConsolePlugin(GObject.Object, Gedit.WindowActivatable, PeasGtk.Confi
         self._console.eval('print("You can access the main window through ' \
                            '\'window\' :\\n%s" % window)', False)
         bottom = self.window.get_bottom_panel()
-        bottom.add_item(self._console, "GeditPythonConsolePanel",
-                        _('Python Console'), "system-run-symbolic")
+        self._console.show_all()
+        bottom.add_titled(self._console, "GeditPythonConsolePanel", _('Python Console'))
 
     def do_deactivate(self):
         self._console.stop()
         bottom = self.window.get_bottom_panel()
-        bottom.remove_item(self._console)
+        bottom.remove(self._console)
 
     def do_update_state(self):
         pass

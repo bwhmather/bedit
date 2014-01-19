@@ -481,7 +481,7 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 {
 	GeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN (activatable);
 	GeditFileBrowserPluginPrivate *priv;
-	GeditPanel *panel;
+	GtkWidget *panel;
 	GeditFileBrowserStore *store;
 
 	priv = plugin->priv;
@@ -523,11 +523,12 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 
 	panel = gedit_window_get_side_panel (priv->window);
 
-	gedit_panel_add_item (panel,
-	                      GTK_WIDGET (priv->tree_widget),
-	                      "GeditFileBrowserPanel",
-	                      _("File Browser"),
-	                      "system-file-manager-symbolic");
+	gtk_container_add_with_properties (GTK_CONTAINER (panel),
+	                                   GTK_WIDGET (priv->tree_widget),
+	                                   "name", "GeditFileBrowserPanel",
+	                                   "title", _("File Browser"),
+	                                   "icon-name", "system-file-manager-symbolic",
+	                                   NULL);
 
 	gtk_widget_show (GTK_WIDGET (priv->tree_widget));
 
@@ -580,7 +581,7 @@ gedit_file_browser_plugin_deactivate (GeditWindowActivatable *activatable)
 {
 	GeditFileBrowserPlugin *plugin = GEDIT_FILE_BROWSER_PLUGIN (activatable);
 	GeditFileBrowserPluginPrivate *priv = plugin->priv;
-	GeditPanel *panel;
+	GtkWidget *panel;
 
 
 	/* Unregister messages from the bus */
@@ -610,7 +611,7 @@ gedit_file_browser_plugin_deactivate (GeditWindowActivatable *activatable)
 	}
 
 	panel = gedit_window_get_side_panel (priv->window);
-	gedit_panel_remove_item (panel, GTK_WIDGET (priv->tree_widget));
+	gtk_container_remove (GTK_CONTAINER (panel), GTK_WIDGET (priv->tree_widget));
 }
 
 static void

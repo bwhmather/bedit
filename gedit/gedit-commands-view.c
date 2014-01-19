@@ -48,7 +48,7 @@ _gedit_cmd_view_toggle_side_panel (GSimpleAction *action,
                                    gpointer       user_data)
 {
 	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GeditPanel *panel;
+	GtkWidget *panel;
 	gboolean visible;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -56,11 +56,11 @@ _gedit_cmd_view_toggle_side_panel (GSimpleAction *action,
 	panel = gedit_window_get_side_panel (window);
 
 	visible = g_variant_get_boolean (state);
-	gtk_widget_set_visible (GTK_WIDGET (panel), visible);
+	gtk_widget_set_visible (panel, visible);
 
 	if (visible)
 	{
-		gtk_widget_grab_focus (GTK_WIDGET (panel));
+		gtk_widget_grab_focus (panel);
 	}
 
 	g_simple_action_set_state (action, state);
@@ -72,19 +72,19 @@ _gedit_cmd_view_toggle_bottom_panel (GSimpleAction *action,
                                      gpointer       user_data)
 {
 	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GeditPanel *panel;
+	GtkWidget *panel_box;
 	gboolean visible;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	panel = gedit_window_get_bottom_panel (window);
+	panel_box = window->priv->bottom_panel_box;
 
 	visible = g_variant_get_boolean (state);
-	gtk_widget_set_visible (GTK_WIDGET (panel), visible);
+	gtk_widget_set_visible (panel_box, visible);
 
 	if (visible)
 	{
-		gtk_widget_grab_focus (GTK_WIDGET (panel));
+		gtk_widget_grab_focus (window->priv->bottom_panel);
 	}
 
 	g_simple_action_set_state (action, state);

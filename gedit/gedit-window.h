@@ -35,7 +35,6 @@
 #include <gtk/gtk.h>
 
 #include <gedit/gedit-tab.h>
-#include <gedit/gedit-panel.h>
 #include <gedit/gedit-message-bus.h>
 
 G_BEGIN_DECLS
@@ -134,9 +133,9 @@ GList		*gedit_window_get_views			(GeditWindow         *window);
 
 GtkWindowGroup  *gedit_window_get_group			(GeditWindow         *window);
 
-GeditPanel	*gedit_window_get_side_panel		(GeditWindow         *window);
+GtkWidget	*gedit_window_get_side_panel		(GeditWindow         *window);
 
-GeditPanel	*gedit_window_get_bottom_panel		(GeditWindow         *window);
+GtkWidget	*gedit_window_get_bottom_panel		(GeditWindow         *window);
 
 GtkWidget	*gedit_window_get_statusbar		(GeditWindow         *window);
 
