@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-01-12 18:18+0000\n"
-"PO-Revision-Date: 2014-01-13 13:37+0100\n"
+"POT-Creation-Date: 2014-01-19 23:12+0000\n"
+"PO-Revision-Date: 2014-01-20 12:25+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -1562,22 +1562,18 @@ msgid "_Quit"
 msgstr "_Salir"
 
 #: ../gedit/gedit-notebook-popup-menu.ui.h:1
-#| msgid "_Move Left"
 msgid "Move _Left"
 msgstr "Mover a la _izquierda"
 
 #: ../gedit/gedit-notebook-popup-menu.ui.h:2
-#| msgid "_Move Right"
 msgid "Move _Right"
 msgstr "Mover a la _derecha"
 
 #: ../gedit/gedit-notebook-popup-menu.ui.h:3
-#| msgid "_Move to New Window"
 msgid "Move to New _Window"
 msgstr "Mover a una ventana _nueva"
 
 #: ../gedit/gedit-notebook-popup-menu.ui.h:4
-#| msgid "_Move to New Tab Group"
 msgid "Move to New Tab _Group"
 msgstr "Mover al _siguiente grupo de pestañas nuevo"
 
@@ -2054,36 +2050,36 @@ msgstr "/ en %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:703
+#: ../gedit/gedit-view-frame.c:714
 #, c-format
 msgid "%d of %d"
 msgstr "%d de %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:795
+#: ../gedit/gedit-view-frame.c:806
 msgid "_Wrap Around"
 msgstr "_Volver al principio"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:805
+#: ../gedit/gedit-view-frame.c:816
 msgid "Match as _Regular Expression"
 msgstr "Coincidir como expresión _regular"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:819
+#: ../gedit/gedit-view-frame.c:830
 msgid "Match _Entire Word Only"
 msgstr "Coincidir sólo con palabras compl_etas"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:833
+#: ../gedit/gedit-view-frame.c:844
 msgid "_Match Case"
 msgstr "Coi_ncidir con capitalización"
 
-#: ../gedit/gedit-view-frame.c:1007
+#: ../gedit/gedit-view-frame.c:1018
 msgid "String you want to search for"
 msgstr "La cadena que quiere buscar"
 
-#: ../gedit/gedit-view-frame.c:1019
+#: ../gedit/gedit-view-frame.c:1030
 msgid "Line you want to move the cursor to"
 msgstr "Línea a la que quiere mover el cursor"
 
@@ -2316,6 +2312,15 @@ msgid "Execute a custom command and put its output in a new document"
 msgstr ""
 "Ejecutar un comando personalizado y poner su salida en un documento nuevo"
 
+#: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:1
+msgid "Send to fpaste"
+msgstr "Enviar a fpaste"
+
+#: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
+#| msgid "Change selected text to upper case"
+msgid "Paste selected text or current document to fpaste"
+msgstr "Pegar el texto seleccionado o el documento actual en fpaste"
+
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
 msgstr "Herramientas externas"
@@ -2353,15 +2358,15 @@ msgstr "No se pudo ejecutar el comando: %s"
 msgid "You must be inside a word to run this command"
 msgstr "Debe estar dentro de una palabra para ejecutar este comando"
 
-#: ../plugins/externaltools/tools/functions.py:313
+#: ../plugins/externaltools/tools/functions.py:314
 msgid "Running tool:"
 msgstr "Ejecutando herramienta:"
 
-#: ../plugins/externaltools/tools/functions.py:342
+#: ../plugins/externaltools/tools/functions.py:344
 msgid "Done."
 msgstr "Hecho."
 
-#: ../plugins/externaltools/tools/functions.py:344
+#: ../plugins/externaltools/tools/functions.py:346
 msgid "Exited"
 msgstr "Salió"
 
@@ -2614,43 +2619,43 @@ msgstr "Mostrar _ocultos"
 msgid "Show _Binary"
 msgstr "Mostrar _binarios"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:538
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:533
 msgid "File Browser"
 msgstr "Examinador de archivos"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:681
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:676
 msgid "An error occurred while creating a new directory"
 msgstr "Ocurrió un error al crear la carpeta nueva"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:684
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:679
 msgid "An error occurred while creating a new file"
 msgstr "Ocurrió un error al crear un archivo nuevo"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:687
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:682
 msgid "An error occurred while renaming a file or directory"
 msgstr "Ocurrió un error al renombrar un archivo o carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:690
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:685
 msgid "An error occurred while deleting a file or directory"
 msgstr "Ocurrió un error al eliminar un archivo o carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:693
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Ocurrió un error al abrir una carpeta en el gestor de archivos"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:696
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
 msgid "An error occurred while setting a root directory"
 msgstr "Ocurrió un error al establecer la carpeta raíz"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:699
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
 msgid "An error occurred while loading a directory"
 msgstr "Ocurrió un error al cargar una carpeta"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:702
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
 msgid "An error occurred"
 msgstr "Ocurrió un error"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:911
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2659,26 +2664,26 @@ msgstr ""
 "a la papelera, ¿quiere eliminarlo\n"
 "permanentemente?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "El archivo %s no se puede mover a la papelera."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:926
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
 msgid "The selected files cannot be moved to the trash."
 msgstr "Los archivos seleccionados no se pueden mover a la papelera."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "¿Seguro que quiere eliminar permanentemente «%s»?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:963
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr ""
 "¿Seguro que quiere eliminar permanentemente los archivos seleccionados?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:966
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:961
 msgid "If you delete an item, it is permanently lost."
 msgstr "Si elimina un elemento, se pierde permanentemente."
 
@@ -2720,26 +2725,26 @@ msgstr ""
 "La carpeta nuevo esta actualmente filtrada. Necesita ajustar los filtros "
 "para hacerlo visible."
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:785
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1979
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1993
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "No existe el objeto montado para el volumen montado: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2056
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2070
 #, c-format
 msgid "Could not open media: %s"
 msgstr "No se pudo abrir el soporte: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2103
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2117
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "No se pudo abrir el volumen: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2739
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2753
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Error al cargar una carpeta «%s»: no existe la carpeta"
@@ -3666,9 +3671,6 @@ msgstr ""
 
 #~ msgid "All _Upper Case"
 #~ msgstr "Todo en _mayúsculas"
-
-#~ msgid "Change selected text to upper case"
-#~ msgstr "Cambiar el texto seleccionado a mayúsculas"
 
 #~ msgid "All _Lower Case"
 #~ msgstr "Todo en m_inúsculas"
