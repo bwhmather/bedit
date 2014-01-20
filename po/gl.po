@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit-master-po-gl-116402.merged\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-13 00:57+0100\n"
-"PO-Revision-Date: 2014-01-13 00:58+0200\n"
+"POT-Creation-Date: 2014-01-20 23:26+0100\n"
+"PO-Revision-Date: 2014-01-20 23:29+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -2048,36 +2048,36 @@ msgstr "/ en %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:703
+#: ../gedit/gedit-view-frame.c:714
 #, c-format
 msgid "%d of %d"
 msgstr "%d de %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:795
+#: ../gedit/gedit-view-frame.c:806
 msgid "_Wrap Around"
 msgstr "_Dar a volta"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:805
+#: ../gedit/gedit-view-frame.c:816
 msgid "Match as _Regular Expression"
 msgstr "Coincidir coa expresión _regular"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:819
+#: ../gedit/gedit-view-frame.c:830
 msgid "Match _Entire Word Only"
 msgstr "Coincidir só coa palabra com_pleta"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:833
+#: ../gedit/gedit-view-frame.c:844
 msgid "_Match Case"
 msgstr "Di_ferenciar maiúsculas de minúsculas"
 
-#: ../gedit/gedit-view-frame.c:1007
+#: ../gedit/gedit-view-frame.c:1018
 msgid "String you want to search for"
 msgstr "A cadea que quere buscar"
 
-#: ../gedit/gedit-view-frame.c:1019
+#: ../gedit/gedit-view-frame.c:1030
 msgid "Line you want to move the cursor to"
 msgstr "A liña á que quere mover o cursor"
 
@@ -2307,6 +2307,14 @@ msgstr "Executar orde"
 msgid "Execute a custom command and put its output in a new document"
 msgstr "Executar unha orde personalizada e pór a súa saída nun documento novo"
 
+#: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:1
+msgid "Send to fpaste"
+msgstr "Enviar a fpaste"
+
+#: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
+msgid "Paste selected text or current document to fpaste"
+msgstr "Pega o texto seleccionado ou o documento actual en fpaste"
+
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
 msgstr "Ferramentas externas"
@@ -2345,15 +2353,15 @@ msgstr "Non foi posíbel executar a orde: %s"
 msgid "You must be inside a word to run this command"
 msgstr "Debe introducir unha palabra para executar esta orde"
 
-#: ../plugins/externaltools/tools/functions.py:313
+#: ../plugins/externaltools/tools/functions.py:314
 msgid "Running tool:"
 msgstr "Ferramenta en execución:"
 
-#: ../plugins/externaltools/tools/functions.py:342
+#: ../plugins/externaltools/tools/functions.py:344
 msgid "Done."
 msgstr "Feito."
 
-#: ../plugins/externaltools/tools/functions.py:344
+#: ../plugins/externaltools/tools/functions.py:346
 msgid "Exited"
 msgstr "Saíu"
 
@@ -2606,43 +2614,43 @@ msgstr "Mostrar os _ocultos"
 msgid "Show _Binary"
 msgstr "Mostrar os _binarios"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:538
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:533
 msgid "File Browser"
 msgstr "Navegador de ficheiros"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:681
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:676
 msgid "An error occurred while creating a new directory"
 msgstr "Produciuse un erro ao cargar o cartafol novo"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:684
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:679
 msgid "An error occurred while creating a new file"
 msgstr "Produciuse un erro ao crear un ficheiro novo"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:687
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:682
 msgid "An error occurred while renaming a file or directory"
 msgstr "Produciuse un erro ao renomear un ficheiro ou cartafol"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:690
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:685
 msgid "An error occurred while deleting a file or directory"
 msgstr "Produciuse un erro ao eliminar un ficheiro ou cartafol"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:693
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Produciuse un erro ao abrir un cartafol no xestor de ficheiros"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:696
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
 msgid "An error occurred while setting a root directory"
 msgstr "Produciuse un erro ao configurar o cartafol raíz"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:699
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
 msgid "An error occurred while loading a directory"
 msgstr "Produciuse un erro ao cargar un cartafol"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:702
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
 msgid "An error occurred"
 msgstr "Produciuse un erro"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:911
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2650,26 +2658,26 @@ msgstr ""
 "Non é posíbel mover o ficheiro ao lixo.\n"
 "Quere eliminalo permanentemente?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Non é posíbel mover ao lixo o ficheiro \"%s\"."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:926
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
 msgid "The selected files cannot be moved to the trash."
 msgstr "Non é posíbel mover os ficheiros seleccionados ao lixo."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Está seguro de que quere eliminar \"%s\" para sempre?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:963
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr ""
 "Está seguro de que quere eliminar para sempre os ficheiros seleccionados?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:966
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:961
 msgid "If you delete an item, it is permanently lost."
 msgstr "Se elimina un elemento perderase para sempre."
 
@@ -2711,26 +2719,26 @@ msgstr ""
 "O cartafol novo está agora oculto polo filtro. É necesario axustar as "
 "definicións do filtro para facelo visíbel"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:785
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1979
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1993
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Non hai un obxecto montado para o volume montado: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2056
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2070
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Non foi posíbel abrir o soporte: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2103
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2117
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Non foi posíbel montar o volume: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2739
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2753
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Produciuse un erro ao cargar «%s»: Non existe o cartafol"
@@ -3655,9 +3663,6 @@ msgstr "Rexistra o acceso e saída dos documentos usados en gedit"
 
 #~ msgid "All _Upper Case"
 #~ msgstr "Todo en _maiúsculas"
-
-#~ msgid "Change selected text to upper case"
-#~ msgstr "Cambia o texto seleccionado a maiúsculas"
 
 #~ msgid "All _Lower Case"
 #~ msgstr "Todo en m_inúsculas"
