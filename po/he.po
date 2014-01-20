@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-12 01:31+0200\n"
-"PO-Revision-Date: 2014-01-12 01:31+0200\n"
+"POT-Creation-Date: 2014-01-20 17:40+0200\n"
+"PO-Revision-Date: 2014-01-20 17:40+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -1951,36 +1951,36 @@ msgstr "/ תחת %s"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:703
+#: ../gedit/gedit-view-frame.c:714
 #, c-format
 msgid "%d of %d"
 msgstr "%d מתוך %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:795
+#: ../gedit/gedit-view-frame.c:806
 msgid "_Wrap Around"
 msgstr "_גלישה מסביב"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:805
+#: ../gedit/gedit-view-frame.c:816
 msgid "Match as _Regular Expression"
 msgstr "התאמה כ_ביטוי רגולרי"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:819
+#: ../gedit/gedit-view-frame.c:830
 msgid "Match _Entire Word Only"
 msgstr "התאמת מילים _שלמות בלבד"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:833
+#: ../gedit/gedit-view-frame.c:844
 msgid "_Match Case"
 msgstr "הת_אמת רישיות"
 
-#: ../gedit/gedit-view-frame.c:1007
+#: ../gedit/gedit-view-frame.c:1018
 msgid "String you want to search for"
 msgstr "המחרוזת שברצונך לחפש"
 
-#: ../gedit/gedit-view-frame.c:1019
+#: ../gedit/gedit-view-frame.c:1030
 msgid "Line you want to move the cursor to"
 msgstr "השורה אליה להעביר את הסמן"
 
@@ -2210,6 +2210,14 @@ msgstr "הפעלת פקודה"
 msgid "Execute a custom command and put its output in a new document"
 msgstr "הפעלת פקודה והצבת הפלט שלה במסמך חדש"
 
+#: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:1
+msgid "Send to fpaste"
+msgstr "שליחה ל־fpaste"
+
+#: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
+msgid "Paste selected text or current document to fpaste"
+msgstr "הדבקת הטקסט הנבחר או המסמך הנוכחי ל־fpaste"
+
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
 msgstr "כלים חיצוניים"
@@ -2245,15 +2253,15 @@ msgstr "לא ניתן להריץ את הפקודה: %s"
 msgid "You must be inside a word to run this command"
 msgstr "עליך להיות בתוך מילה כדי להריץ את פקודה זו"
 
-#: ../plugins/externaltools/tools/functions.py:313
+#: ../plugins/externaltools/tools/functions.py:314
 msgid "Running tool:"
 msgstr "הכלי הפעיל:"
 
-#: ../plugins/externaltools/tools/functions.py:342
+#: ../plugins/externaltools/tools/functions.py:344
 msgid "Done."
 msgstr "הסתיים."
 
-#: ../plugins/externaltools/tools/functions.py:344
+#: ../plugins/externaltools/tools/functions.py:346
 msgid "Exited"
 msgstr "נסגר"
 
@@ -2506,43 +2514,43 @@ msgstr "הצגת _נסתרים"
 msgid "Show _Binary"
 msgstr "הצגה _בינרית"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:538
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:533
 msgid "File Browser"
 msgstr "דפדפן קבצים"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:681
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:676
 msgid "An error occurred while creating a new directory"
 msgstr "ארעה שגיאה בעת יצירת תיקייה חדשה"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:684
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:679
 msgid "An error occurred while creating a new file"
 msgstr "ארעה שגיאה בעת יצירת קובץ חדש"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:687
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:682
 msgid "An error occurred while renaming a file or directory"
 msgstr "ארעה שגיאה בעת החלפת שם קובץ או ספרייה"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:690
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:685
 msgid "An error occurred while deleting a file or directory"
 msgstr "ארעה שגיאה בעת מחיקת קובץ או ספרייה"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:693
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "ארעה שגיאה בעת פתיחת תיקייה במנהל הקבצים"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:696
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
 msgid "An error occurred while setting a root directory"
 msgstr "ארעה שגיאה בעת הגדרת תיקיית השורש"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:699
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:694
 msgid "An error occurred while loading a directory"
 msgstr "ארעה שגיאה בעת טעינת תיקייה"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:702
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:697
 msgid "An error occurred"
 msgstr "ארעה שגיאה"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:911
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2550,25 +2558,25 @@ msgstr ""
 "לא ניתן להעביר לאשפה\n"
 "האם למחוק לצמיתות?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:916
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "לא ניתן להעביר את הקובץ ״%s״ לאשפה."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:926
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:921
 msgid "The selected files cannot be moved to the trash."
 msgstr "לא ניתן להעביר את הקבצים הנבחרים לאשפה."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "האם למחוק את ״%s״ לצמיתות?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:963
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:958
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "האם למחוק את הקבצים המסומנים?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:966
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:961
 msgid "If you delete an item, it is permanently lost."
 msgstr "אם פריט ימחק, הוא יאבד."
 
@@ -2610,26 +2618,26 @@ msgstr ""
 "התיקייה החדשה לא נכללת עקב סינון. יהיה עליך להתאים את הגדרות המסנן שלך כך "
 "שהתיקייה תופיע"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:785
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
 msgid "Bookmarks"
 msgstr "סימניות"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1979
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1993
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "אין פריט עגינה עבור הכרך שעוגן: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2056
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2070
 #, c-format
 msgid "Could not open media: %s"
 msgstr "לא ניתן לפתוח את המדיה: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2103
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2117
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "לא ניתן לעגון את הכרך: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2739
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2753
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "אירעה שגיאה בעת טעינת '%s': אין כזאת תיקייה"
@@ -3550,9 +3558,6 @@ msgstr "רישום אירועי הגישה והעזיבה עבור מסמכים 
 
 #~ msgid "All _Upper Case"
 #~ msgstr "הכול לאותיות _רישיות"
-
-#~ msgid "Change selected text to upper case"
-#~ msgstr "שינוי הטקסט הנבחר לאותיות רישיות"
 
 #~ msgid "All _Lower Case"
 #~ msgstr "הכול לאותיות _קטנות"
