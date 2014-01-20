@@ -2684,12 +2684,10 @@ setup_side_panel (GeditWindow *window)
 
 	documents_panel = gedit_documents_panel_new (window);
 	gtk_widget_show_all (documents_panel);
-	gtk_container_add_with_properties (GTK_CONTAINER (window->priv->side_panel),
-	                                   documents_panel,
-	                                   "name", "GeditWindowDocumentsPanel",
-					   "title", _("Documents"),
-					   "icon-name", "view-list-symbolic",
-					   NULL);
+	gtk_stack_add_titled (GTK_STACK (window->priv->side_panel),
+	                      documents_panel,
+	                      "GeditWindowDocumentsPanel",
+	                      _("Documents"));
 }
 
 static void

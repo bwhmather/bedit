@@ -523,12 +523,10 @@ gedit_file_browser_plugin_activate (GeditWindowActivatable *activatable)
 
 	panel = gedit_window_get_side_panel (priv->window);
 
-	gtk_container_add_with_properties (GTK_CONTAINER (panel),
-	                                   GTK_WIDGET (priv->tree_widget),
-	                                   "name", "GeditFileBrowserPanel",
-	                                   "title", _("File Browser"),
-	                                   "icon-name", "system-file-manager-symbolic",
-	                                   NULL);
+	gtk_stack_add_titled (GTK_STACK (panel),
+	                      GTK_WIDGET (priv->tree_widget),
+	                      "GeditFileBrowserPanel",
+	                      _("File Browser"));
 
 	gtk_widget_show (GTK_WIDGET (priv->tree_widget));
 
