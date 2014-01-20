@@ -110,6 +110,9 @@ add_menu_entry (GtkWidget              *widget,
   gchar *title, *name;
   GMenuItem *item;
 
+  if (!gtk_widget_get_visible(widget))
+    return;
+
   gtk_container_child_get (GTK_CONTAINER (priv->stack), widget,
                            "title", &title,
                            "name", &name,
