@@ -413,6 +413,9 @@
                               <object class="GtkStackSwitcher" id="bottom_panel_stack_switcher">
                                 <property name="visible">True</property>
                                 <property name="stack">bottom_panel</property>
+                                <style>
+                                  <class name="gedit-bottom-panel-stack-switcher"/>
+                                </style>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
