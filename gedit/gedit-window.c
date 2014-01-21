@@ -2781,6 +2781,7 @@ static void
 init_panels_visibility (GeditWindow *window)
 {
 	gchar *panel_page;
+	GtkWidget *panel_child;
 	gboolean side_panel_visible;
 	gboolean bottom_panel_visible;
 
@@ -2789,8 +2790,14 @@ init_panels_visibility (GeditWindow *window)
 	/* side panel */
 	panel_page = g_settings_get_string (window->priv->window_settings,
 	                                    GEDIT_SETTINGS_SIDE_PANEL_ACTIVE_PAGE);
-	gtk_stack_set_visible_child_name (GTK_STACK (window->priv->side_panel),
-					  panel_page);
+	panel_child = gtk_stack_get_child_by_name (GTK_STACK (window->priv->side_panel),
+	                                           panel_page);
+	if (panel_child != NULL)
+	{
+		gtk_stack_set_visible_child (GTK_STACK (window->priv->side_panel),
+		                             panel_child);
+	}
+
 	g_free (panel_page);
 
 	side_panel_visible = g_settings_get_boolean (window->priv->ui_settings,
@@ -2808,8 +2815,13 @@ init_panels_visibility (GeditWindow *window)
 	{
 		panel_page = g_settings_get_string (window->priv->window_settings,
 		                                    GEDIT_SETTINGS_BOTTOM_PANEL_ACTIVE_PAGE);
-		gtk_stack_set_visible_child_name (GTK_STACK (window->priv->bottom_panel),
-		                                  panel_page);
+		panel_child = gtk_stack_get_child_by_name (GTK_STACK (window->priv->side_panel),
+		                                           panel_page);
+		if (panel_child)
+		{
+			gtk_stack_set_visible_child (GTK_STACK (window->priv->bottom_panel),
+			                             panel_child);
+		}
 
 		if (bottom_panel_visible)
 		{
