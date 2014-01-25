@@ -84,7 +84,6 @@ struct _GeditAppPrivate
 	GNetworkMonitor   *monitor;
 };
 
-static gboolean help = FALSE;
 static gboolean version = FALSE;
 static gboolean list_encodings = FALSE;
 static gchar *encoding_charset = NULL;
@@ -104,12 +103,6 @@ static GApplicationCommandLine *command_line = NULL;
 
 static const GOptionEntry options[] =
 {
-	/* Help */
-	{
-		"help", '?', 0, G_OPTION_ARG_NONE, &help,
-		N_("Show the application's help"), NULL
-	},
-
 	/* Version */
 	{
 		"version", 'V', 0, G_OPTION_ARG_NONE, &version,
@@ -854,7 +847,6 @@ clear_options (void)
 	g_clear_object (&stdin_stream);
 	g_slist_free_full (file_list, g_object_unref);
 
-	help = FALSE;
 	version = FALSE;
 	list_encodings = FALSE;
 	encoding_charset = NULL;
