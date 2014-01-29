@@ -44,7 +44,6 @@ struct _GeditTabLabelPrivate
 {
 	GeditTab *tab;
 
-	GtkWidget *ebox;
 	GtkWidget *close_button;
 	GtkWidget *spinner;
 	GtkWidget *icon;
@@ -119,7 +118,7 @@ sync_tip (GeditTab *tab,
 	str = _gedit_tab_get_tooltip (tab);
 	g_return_if_fail (str != NULL);
 
-	gtk_widget_set_tooltip_markup (tab_label->priv->ebox, str);
+	gtk_widget_set_tooltip_markup (GTK_WIDGET (tab_label), str);
 	g_free (str);
 }
 
@@ -229,6 +228,7 @@ static void
 gedit_tab_label_class_init (GeditTabLabelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->finalize = gedit_tab_label_finalize;
 	object_class->set_property = gedit_tab_label_set_property;
@@ -253,68 +253,29 @@ gedit_tab_label_class_init (GeditTabLabelClass *klass)
 							      GEDIT_TYPE_TAB,
 							      G_PARAM_READWRITE |
 							      G_PARAM_CONSTRUCT_ONLY));
+
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+	                                             "/org/gnome/gedit/ui/gedit-tab-label.ui");
+	gtk_widget_class_bind_template_child_private (widget_class, GeditTabLabel, spinner);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditTabLabel, close_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditTabLabel, icon);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditTabLabel, label);
 }
 
 static void
 gedit_tab_label_init (GeditTabLabel *tab_label)
 {
-	GtkWidget *ebox;
-	GtkWidget *hbox;
-	GtkWidget *close_button;
-	GtkWidget *spinner;
-	GtkWidget *icon;
-	GtkWidget *label;
-	GtkWidget *dummy_label;
-
 	tab_label->priv = gedit_tab_label_get_instance_private (tab_label);
 
 	tab_label->priv->close_button_sensitive = TRUE;
 
-	gtk_orientable_set_orientation (GTK_ORIENTABLE (tab_label),
-	                                GTK_ORIENTATION_HORIZONTAL);
+	gtk_widget_init_template (GTK_WIDGET (tab_label));
 
-	ebox = gtk_event_box_new ();
-	gtk_event_box_set_visible_window (GTK_EVENT_BOX (ebox), FALSE);
-	gtk_box_pack_start (GTK_BOX (tab_label), ebox, TRUE, TRUE, 0);
-	tab_label->priv->ebox = ebox;
-
-	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-	gtk_container_add (GTK_CONTAINER (ebox), hbox);
-
-	close_button = gedit_close_button_new ();
-	gtk_widget_set_tooltip_text (close_button, _("Close document"));
-	gtk_box_pack_start (GTK_BOX (tab_label), close_button, FALSE, FALSE, 0);
-	tab_label->priv->close_button = close_button;
-
-	g_signal_connect (close_button,
-			  "clicked",
-			  G_CALLBACK (close_button_clicked_cb),
-			  tab_label);
-
-	spinner = gtk_spinner_new ();
-	gtk_box_pack_start (GTK_BOX (hbox), spinner, FALSE, FALSE, 0);
-	tab_label->priv->spinner = spinner;
-
-	/* setup icon, empty by default */
-	icon = gtk_image_new ();
-	gtk_box_pack_start (GTK_BOX (hbox), icon, FALSE, FALSE, 0);
-	tab_label->priv->icon = icon;
-
-	dummy_label = gtk_label_new ("  ");
-	gtk_box_pack_start (GTK_BOX (hbox), dummy_label, FALSE, FALSE, 0);
-
-	label = gtk_label_new ("");
-	gtk_widget_set_halign (label, GTK_ALIGN_CENTER);
-	gtk_misc_set_padding (GTK_MISC (label), 0, 0);
-	gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
-	tab_label->priv->label = label;
-
-	gtk_widget_show (ebox);
-	gtk_widget_show (hbox);
-	gtk_widget_show (close_button);
-	gtk_widget_show (icon);
-	gtk_widget_show (label);
-	gtk_widget_show (dummy_label);
+	g_signal_connect (tab_label->priv->close_button,
+	                  "clicked",
+	                  G_CALLBACK (close_button_clicked_cb),
+	                  tab_label);
 }
 
 void
@@ -358,7 +319,6 @@ gedit_tab_label_new (GeditTab *tab)
 	GeditTabLabel *tab_label;
 
 	tab_label = g_object_new (GEDIT_TYPE_TAB_LABEL,
-				  "homogeneous", FALSE,
 				  "tab", tab,
 				  NULL);
 

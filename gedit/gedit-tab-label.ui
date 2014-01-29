@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.10 -->
+  <template class="GeditTabLabel" parent="GtkBox">
+    <property name="can_focus">False</property>
+    <property name="has_focus">False</property>
+    <property name="orientation">horizontal</property>
+    <child type="center">
+      <object class="GtkLabel" id="label">
+        <property name="visible">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkImage" id="icon">
+        <property name="visible">False</property>
+      </object>
+      <packing>
+        <property name="pack_type">start</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkSpinner" id="spinner">
+        <property name="visible">False</property>
+      </object>
+      <packing>
+        <property name="pack_type">start</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GeditCloseButton" id="close_button">
+        <property name="visible">True</property>
+        <property name="tooltip_text" translatable="yes">Close Document</property>
+      </object>
+      <packing>
+        <property name="pack_type">end</property>
+      </packing>
+    </child>
+  </template>
+</interface>
