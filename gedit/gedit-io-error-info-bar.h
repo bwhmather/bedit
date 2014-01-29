@@ -63,6 +63,8 @@ GtkWidget	*gedit_externally_modified_info_bar_new		 	(GFile               *locat
 
 GtkWidget	*gedit_invalid_character_info_bar_new			(GFile               *location);
 
+GtkWidget	*gedit_network_unavailable_info_bar_new			(GFile               *location);
+
 G_END_DECLS
 
 #endif  /* __GEDIT_IO_ERROR_INFO_BAR_H__  */

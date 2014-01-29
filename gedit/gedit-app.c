@@ -36,6 +36,7 @@
 #include <locale.h>
 
 #include <glib/gi18n.h>
+#include <gio/gio.h>
 #include <libpeas/peas-extension-set.h>
 #include <gtksourceview/gtksource.h>
 
@@ -55,6 +56,7 @@
 #include "gedit-plugins-engine.h"
 #include "gedit-commands.h"
 #include "gedit-preferences-dialog.h"
+#include "gedit-tab.h"
 
 #ifndef ENABLE_GVFS_METADATA
 #include "gedit-metadata-manager.h"
@@ -85,6 +87,7 @@ struct _GeditAppPrivate
 	GSettings         *window_settings;
 
 	PeasExtensionSet  *extensions;
+	GNetworkMonitor   *monitor;
 };
 
 static gboolean help = FALSE;
@@ -1328,12 +1331,51 @@ load_print_settings (GeditApp *app)
 }
 
 static void
+get_network_available (GNetworkMonitor *monitor,
+		       gboolean         available,
+		       GeditApp        *app)
+{
+	gboolean enable;
+	GList *windows, *w;
+
+	enable = g_network_monitor_get_network_available (monitor);
+
+	windows = gtk_application_get_windows (GTK_APPLICATION (app));
+
+	for (w = windows; w != NULL; w = w->next)
+	{
+		GeditWindow *window = GEDIT_WINDOW (w->data);
+
+		if (GEDIT_IS_WINDOW (window))
+		{
+			GList *tabs, *t;
+
+			tabs = _gedit_window_get_all_tabs (window);
+
+			for (t = tabs; t != NULL; t = t->next)
+			{
+				_gedit_tab_set_network_available (GEDIT_TAB (t->data),
+					                          enable);
+			}
+
+			g_list_free (tabs);
+		}
+	}
+}
+
+static void
 gedit_app_init (GeditApp *app)
 {
 	app->priv = gedit_app_get_instance_private (app);
 
 	g_set_application_name ("gedit");
 	gtk_window_set_default_icon_name ("accessories-text-editor");
+
+	app->priv->monitor = g_network_monitor_get_default ();
+	g_signal_connect (app->priv->monitor,
+			  "network-changed",
+			  G_CALLBACK (get_network_available),
+			  app);
 }
 
 /* Generates a unique string for a window role */

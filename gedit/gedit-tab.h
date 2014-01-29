@@ -30,7 +30,6 @@
 #define __GEDIT_TAB_H__
 
 #include <gtk/gtk.h>
-
 #include <gedit/gedit-view.h>
 #include <gedit/gedit-document.h>
 
@@ -174,6 +173,10 @@ void		 _gedit_tab_mark_for_closing	(GeditTab	     *tab);
 gboolean	 _gedit_tab_get_can_close	(GeditTab	     *tab);
 
 GtkWidget	*_gedit_tab_get_view_frame	(GeditTab            *tab);
+
+void		 _gedit_tab_set_network_available
+						(GeditTab	     *tab,
+						 gboolean	     enable);
 
 G_END_DECLS
 
