@@ -793,6 +793,33 @@ get_option_context (void)
 	return context;
 }
 
+static gboolean
+option_context_parse (GOptionContext  *context,
+                      gchar          **arguments,
+                      GError         **error)
+{
+	gint argc;
+	gchar **argv;
+	gint i;
+	gboolean ret;
+
+	/* We have to make an extra copy of the array, since g_option_context_parse()
+	 * assumes that it can remove strings from the array without freeing them.
+	 */
+	argc = g_strv_length (arguments);
+	argv = g_new (gchar *, argc);
+	for (i = 0; i < argc; i++)
+	{
+		argv[i] = arguments[i];
+	}
+
+	ret = g_option_context_parse (context, &argc, &argv, error);
+
+	g_free (argv);
+
+	return ret;
+}
+
 static void
 clear_options (void)
 {
@@ -859,7 +886,7 @@ gedit_app_command_line (GApplication            *application,
 	/* Avoid exit() on the main instance */
 	g_option_context_set_help_enabled (context, FALSE);
 
-	if (!g_option_context_parse_strv (context, &arguments, &error))
+	if (!option_context_parse (context, arguments, &error))
 	{
 		/* We should never get here since parsing would have
 		 * failed on the client side... */
@@ -952,7 +979,7 @@ gedit_app_local_command_line (GApplication   *application,
 	/* Handle some of the option without contacting the main instance */
 	context = get_option_context ();
 
-	if (!g_option_context_parse_strv (context, arguments, &error))
+	if (!option_context_parse (context, *arguments, &error))
 	{
 		g_printerr (_("%s\nRun '%s --help' to see a full list of available command line options.\n"),
 		           error->message, (*arguments)[0]);
