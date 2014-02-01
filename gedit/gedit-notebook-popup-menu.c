@@ -127,19 +127,19 @@ update_sensitivity (GeditNotebookPopupMenu *menu)
 				     (state != GEDIT_TAB_STATE_SAVING_ERROR));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (menu->priv->action_group),
-	                                     "move_to_new_window");
+	                                     "move-to-new-window");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), n_tabs > 1);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (menu->priv->action_group),
-	                                     "move_to_new_tab_group");
+	                                     "move-to-new-tab-group");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), n_pages > 1);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (menu->priv->action_group),
-	                                     "move_left");
+	                                     "move-left");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), page_num > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (menu->priv->action_group),
-	                                     "move_right");
+	                                     "move-right");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), page_num < n_pages - 1);
 }
 
@@ -267,10 +267,10 @@ on_close_activate (GSimpleAction *action,
 }
 
 static GActionEntry action_entries[] = {
-	{ "move_left", on_move_left_activate },
-	{ "move_right", on_move_right_activate },
-	{ "move_to_new_window", on_move_to_new_window_activate },
-	{ "move_to_new_tab_group", on_move_to_new_tab_group_activate },
+	{ "move-left", on_move_left_activate },
+	{ "move-right", on_move_right_activate },
+	{ "move-to-new-window", on_move_to_new_window_activate },
+	{ "move-to-new-tab-group", on_move_to_new_tab_group_activate },
 	{ "close", on_close_activate }
 };
 

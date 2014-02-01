@@ -13,11 +13,11 @@
       </item>
       <item>
         <attribute name="label" translatable="yes">_Save As…</attribute>
-        <attribute name="action">win.save_as</attribute>
+        <attribute name="action">win.save-as</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">Save _All</attribute>
-        <attribute name="action">win.save_all</attribute>
+        <attribute name="action">win.save-all</attribute>
       </item>
     </section>
     <section>
@@ -37,11 +37,11 @@
       <attribute name="id">ext6</attribute>
       <item>
         <attribute name="label" translatable="yes">Side _Panel</attribute>
-        <attribute name="action">win.side_panel</attribute>
+        <attribute name="action">win.side-panel</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Bottom Panel</attribute>
-        <attribute name="action">win.bottom_panel</attribute>
+        <attribute name="action">win.bottom-panel</attribute>
         <attribute name="hidden-when">action-disabled</attribute>
       </item>
       <item>
@@ -64,11 +64,11 @@
       </item>
       <item>
         <attribute name="label" translatable="yes">_Clear Highlight</attribute>
-        <attribute name="action">win.clear_highlight</attribute>
+        <attribute name="action">win.clear-highlight</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Go to Line…</attribute>
-        <attribute name="action">win.goto_line</attribute>
+        <attribute name="action">win.goto-line</attribute>
       </item>
     </section>
     <section>
@@ -78,7 +78,7 @@
       <attribute name="id">ext10</attribute>
       <item>
         <attribute name="label" translatable="yes">_Highlight Mode…</attribute>
-        <attribute name="action">win.highlight_mode</attribute>
+        <attribute name="action">win.highlight-mode</attribute>
       </item>
     </section>
     <section>
@@ -91,7 +91,7 @@
       <attribute name="id">ext13</attribute>
       <item>
         <attribute name="label" translatable="yes">_Close All</attribute>
-        <attribute name="action">win.close_all</attribute>
+        <attribute name="action">win.close-all</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Close</attribute>
@@ -111,11 +111,11 @@
       </item>
       <item>
         <attribute name="label" translatable="yes">_Save As…</attribute>
-        <attribute name="action">win.save_as</attribute>
+        <attribute name="action">win.save-as</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">Save _All</attribute>
-        <attribute name="action">win.save_all</attribute>
+        <attribute name="action">win.save-all</attribute>
       </item>
     </section>
     <section>
@@ -135,11 +135,11 @@
       <attribute name="id">ext6</attribute>
       <item>
         <attribute name="label" translatable="yes">Side _Panel</attribute>
-        <attribute name="action">win.side_panel</attribute>
+        <attribute name="action">win.side-panel</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Bottom Panel</attribute>
-        <attribute name="action">win.bottom_panel</attribute>
+        <attribute name="action">win.bottom-panel</attribute>
         <attribute name="hidden-when">action-disabled</attribute>
       </item>
       <item>
@@ -162,11 +162,11 @@
       </item>
       <item>
         <attribute name="label" translatable="yes">_Clear Highlight</attribute>
-        <attribute name="action">win.clear_highlight</attribute>
+        <attribute name="action">win.clear-highlight</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Go to Line…</attribute>
-        <attribute name="action">win.goto_line</attribute>
+        <attribute name="action">win.goto-line</attribute>
       </item>
     </section>
     <section>
@@ -176,7 +176,7 @@
       <attribute name="id">ext10</attribute>
       <item>
         <attribute name="label" translatable="yes">_Highlight Mode…</attribute>
-        <attribute name="action">win.highlight_mode</attribute>
+        <attribute name="action">win.highlight-mode</attribute>
       </item>
     </section>
     <section>
@@ -201,7 +201,7 @@
       <attribute name="id">ext13</attribute>
       <item>
         <attribute name="label" translatable="yes">_Close All</attribute>
-        <attribute name="action">win.close_all</attribute>
+        <attribute name="action">win.close-all</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">_Close</attribute>
@@ -289,7 +289,7 @@
                 <property name="visible">True</property>
                 <property name="valign">center</property>
                 <property name="tooltip_text" translatable="yes">Create a new document</property>
-                <property name="action_name">win.new_tab</property>
+                <property name="action_name">win.new-tab</property>
                 <style>
                   <class name="image-button"/>
                 </style>
@@ -439,7 +439,7 @@
                                 <property name="visible">True</property>
                                 <property name="relief">none</property>
                                 <property name="tooltip-text" translatable="True">Hide panel</property>
-                                <property name="action_name">win.bottom_panel</property>
+                                <property name="action_name">win.bottom-panel</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -560,7 +560,7 @@
             <property name="visible">True</property>
             <property name="valign">center</property>
             <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
-            <property name="action_name">win.leave_fullscreen</property>
+            <property name="action_name">win.leave-fullscreen</property>
             <style>
               <class name="image-button"/>
             </style>

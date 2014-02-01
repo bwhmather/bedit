@@ -326,7 +326,7 @@ on_syntax_highlighting_changed (GSettings     *settings,
 	{
 		GAction *action;
 
-		action = g_action_map_lookup_action (G_ACTION_MAP (l->data), "highlight_mode");
+		action = g_action_map_lookup_action (G_ACTION_MAP (l->data), "highlight-mode");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enable);
 	}
 }
