@@ -2915,18 +2915,6 @@ extension_removed (PeasExtensionSet *extensions,
 	gedit_window_activatable_deactivate (GEDIT_WINDOW_ACTIVATABLE (exten));
 }
 
-static void
-activate_toggle (GSimpleAction *action,
-                 GVariant      *parameter,
-                 gpointer       user_data)
-{
-	GVariant *state;
-
-	state = g_action_get_state (G_ACTION (action));
-	g_action_change_state (G_ACTION (action), g_variant_new_boolean (!g_variant_get_boolean (state)));
-	g_variant_unref (state);
-}
-
 static GActionEntry win_entries[] = {
 	{ "new_tab", _gedit_cmd_file_new },
 	{ "open", _gedit_cmd_file_open },
@@ -2937,9 +2925,9 @@ static GActionEntry win_entries[] = {
 	{ "close", _gedit_cmd_file_close },
 	{ "close_all", _gedit_cmd_file_close_all },
 	{ "print", _gedit_cmd_file_print },
-	{ "side_panel", activate_toggle, NULL, "false", _gedit_cmd_view_toggle_side_panel },
-	{ "bottom_panel", activate_toggle, NULL, "false", _gedit_cmd_view_toggle_bottom_panel },
-	{ "fullscreen", activate_toggle, NULL, "false", _gedit_cmd_view_toggle_fullscreen_mode },
+	{ "side_panel", NULL, NULL, "false", _gedit_cmd_view_toggle_side_panel },
+	{ "bottom_panel", NULL, NULL, "false", _gedit_cmd_view_toggle_bottom_panel },
+	{ "fullscreen", NULL, NULL, "false", _gedit_cmd_view_toggle_fullscreen_mode },
 	{ "leave_fullscreen", _gedit_cmd_view_leave_fullscreen_mode },
 	{ "find", _gedit_cmd_search_find },
 	{ "find_next", _gedit_cmd_search_find_next },
