@@ -1292,11 +1292,17 @@ init_search_entry (GeditViewFrame *frame)
 				search_text_escaped = gtk_source_utils_escape_search_text (search_text);
 			}
 
+			g_signal_handler_block (frame->priv->search_entry,
+			                        frame->priv->search_entry_changed_id);
+
 			gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry),
 					    search_text_escaped);
 
-			gtk_editable_set_position (GTK_EDITABLE (frame->priv->search_entry),
-			                           -1);
+			gtk_editable_select_region (GTK_EDITABLE (frame->priv->search_entry),
+			                            0, -1);
+
+			g_signal_handler_unblock (frame->priv->search_entry,
+			                          frame->priv->search_entry_changed_id);
 
 			g_free (search_text_escaped);
 		}
