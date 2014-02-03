@@ -21,7 +21,9 @@
  */
 
 #include "gedit-multi-notebook.h"
+#include "gedit-enum-types.h"
 #include "gedit-marshal.h"
+#include "gedit-settings.h"
 
 struct _GeditMultiNotebookPrivate
 {
@@ -31,6 +33,10 @@ struct _GeditMultiNotebookPrivate
 
 	GeditTab  *active_tab;
 
+	GeditNotebookShowTabsModeType show_tabs_mode;
+	GSettings *ui_settings;
+
+	guint      show_tabs : 1;
 	guint      removing_notebook : 1;
 };
 
@@ -38,7 +44,8 @@ enum
 {
 	PROP_0,
 	PROP_ACTIVE_NOTEBOOK,
-	PROP_ACTIVE_TAB
+	PROP_ACTIVE_TAB,
+	PROP_SHOW_TABS_MODE
 };
 
 /* Signals */
@@ -63,6 +70,8 @@ G_DEFINE_TYPE_WITH_PRIVATE (GeditMultiNotebook, gedit_multi_notebook, GTK_TYPE_G
 static void	remove_notebook		(GeditMultiNotebook *mnb,
 					 GtkWidget          *notebook);
 
+static void	update_tabs_visibility	(GeditMultiNotebook *mnb);
+
 static void
 gedit_multi_notebook_get_property (GObject    *object,
 				   guint       prop_id,
@@ -81,10 +90,44 @@ gedit_multi_notebook_get_property (GObject    *object,
 			g_value_set_object (value,
 					    mnb->priv->active_tab);
 			break;
+		case PROP_SHOW_TABS_MODE:
+			g_value_set_enum (value,
+					  mnb->priv->show_tabs_mode);
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
 	}
+}
+
+static void
+gedit_multi_notebook_set_property (GObject      *object,
+				   guint         prop_id,
+				   const GValue *value,
+				   GParamSpec   *pspec)
+{
+	GeditMultiNotebook *mnb = GEDIT_MULTI_NOTEBOOK (object);
+
+	switch (prop_id)
+	{
+		case PROP_SHOW_TABS_MODE:
+			mnb->priv->show_tabs_mode = g_value_get_enum (value);
+			update_tabs_visibility (mnb);
+			break;
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
+gedit_multi_notebook_dispose (GObject *object)
+{
+	GeditMultiNotebook *mnb = GEDIT_MULTI_NOTEBOOK (object);
+
+	g_clear_object (&mnb->priv->ui_settings);
+
+	G_OBJECT_CLASS (gedit_multi_notebook_parent_class)->dispose (object);
 }
 
 static void
@@ -102,8 +145,10 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
+	object_class->dispose = gedit_multi_notebook_dispose;
 	object_class->finalize = gedit_multi_notebook_finalize;
 	object_class->get_property = gedit_multi_notebook_get_property;
+	object_class->set_property = gedit_multi_notebook_set_property;
 
 	signals[NOTEBOOK_ADDED] =
 		g_signal_new ("notebook-added",
@@ -220,6 +265,14 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 							      GEDIT_TYPE_TAB,
 							      G_PARAM_READABLE |
 							      G_PARAM_STATIC_STRINGS));
+	g_object_class_install_property (object_class,
+					 PROP_SHOW_TABS_MODE,
+					 g_param_spec_enum ("show-tabs-mode",
+							    "Show Tabs Mode",
+							    "When tabs should be shown",
+							    GEDIT_TYPE_NOTEBOOK_SHOW_TABS_MODE_TYPE,
+							    GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS,
+							    G_PARAM_READWRITE));
 }
 
 static void
@@ -295,6 +348,8 @@ notebook_page_removed (GtkNotebook        *notebook,
 	{
 		remove_notebook (mnb, GTK_WIDGET (notebook));
 	}
+
+	update_tabs_visibility (mnb);
 }
 
 static void
@@ -306,6 +361,8 @@ notebook_page_added (GtkNotebook        *notebook,
 	GeditTab *tab = GEDIT_TAB (child);
 
 	++mnb->priv->total_tabs;
+
+	update_tabs_visibility (mnb);
 
 	g_signal_emit (G_OBJECT (mnb), signals[TAB_ADDED], 0, notebook, tab);
 }
@@ -367,6 +424,58 @@ notebook_set_focus (GtkContainer       *container,
 }
 
 static void
+show_tabs_changed (GObject     *object,
+		   GParamSpec  *pspec,
+		   gpointer    *data)
+{
+	update_tabs_visibility (GEDIT_MULTI_NOTEBOOK (data));
+}
+
+static void
+update_tabs_visibility (GeditMultiNotebook *mnb)
+{
+	gboolean show_tabs;
+	GList *l;
+
+	if (mnb->priv->notebooks == NULL)
+		return;
+
+	if (!mnb->priv->show_tabs)
+	{
+		show_tabs = FALSE;
+	}
+	else if (mnb->priv->notebooks->next == NULL) /* only one notebook */
+	{
+		switch (mnb->priv->show_tabs_mode)
+		{
+			case GEDIT_NOTEBOOK_SHOW_TABS_NEVER:
+				show_tabs = FALSE;
+				break;
+			case GEDIT_NOTEBOOK_SHOW_TABS_AUTO:
+				show_tabs = gtk_notebook_get_n_pages (GTK_NOTEBOOK (mnb->priv->notebooks->data)) > 1;
+				break;
+			case GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS:
+			default:
+				show_tabs = TRUE;
+				break;
+		}
+	}
+	else
+	{
+		show_tabs = (mnb->priv->show_tabs_mode != GEDIT_NOTEBOOK_SHOW_TABS_NEVER);
+	}
+
+	g_signal_handlers_block_by_func (mnb, show_tabs_changed, NULL);
+
+	for (l = mnb->priv->notebooks; l != NULL; l = l->next)
+	{
+		gtk_notebook_set_show_tabs (GTK_NOTEBOOK (l->data), show_tabs);
+	}
+
+	g_signal_handlers_unblock_by_func (mnb, show_tabs_changed, NULL);
+}
+
+static void
 connect_notebook_signals (GeditMultiNotebook *mnb,
 			  GtkWidget          *notebook)
 {
@@ -402,6 +511,10 @@ connect_notebook_signals (GeditMultiNotebook *mnb,
 			  "show-popup-menu",
 			  G_CALLBACK (notebook_show_popup_menu),
 			  mnb);
+	g_signal_connect (notebook,
+			  "notify::show-tabs",
+			  G_CALLBACK (show_tabs_changed),
+			  mnb);
 }
 
 static void
@@ -423,6 +536,8 @@ disconnect_notebook_signals (GeditMultiNotebook *mnb,
 	g_signal_handlers_disconnect_by_func (notebook, notebook_tab_close_request,
 					      mnb);
 	g_signal_handlers_disconnect_by_func (notebook, notebook_show_popup_menu,
+					      mnb);
+	g_signal_handlers_disconnect_by_func (notebook, show_tabs_changed,
 					      mnb);
 }
 
@@ -556,15 +671,28 @@ remove_notebook (GeditMultiNotebook *mnb,
 static void
 gedit_multi_notebook_init (GeditMultiNotebook *mnb)
 {
-	mnb->priv = gedit_multi_notebook_get_instance_private (mnb);
+	GeditMultiNotebookPrivate *priv;
 
-	mnb->priv->removing_notebook = FALSE;
+	mnb->priv = gedit_multi_notebook_get_instance_private (mnb);
+	priv = mnb->priv;
+
+	priv->removing_notebook = FALSE;
 
 	gtk_orientable_set_orientation (GTK_ORIENTABLE (mnb),
 	                                GTK_ORIENTATION_VERTICAL);
 
-	mnb->priv->active_notebook = gedit_notebook_new ();
-	add_notebook (mnb, mnb->priv->active_notebook, TRUE);
+	priv->show_tabs_mode = GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS;
+	priv->show_tabs = TRUE;
+
+	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
+	g_settings_bind (priv->ui_settings,
+			 GEDIT_SETTINGS_SHOW_TABS_MODE,
+			 mnb,
+			 "show-tabs-mode",
+			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
+
+	priv->active_notebook = gedit_notebook_new ();
+	add_notebook (mnb, priv->active_notebook, TRUE);
 }
 
 GeditMultiNotebook *
@@ -977,3 +1105,19 @@ gedit_multi_notebook_foreach_tab (GeditMultiNotebook *mnb,
 		g_list_free (children);
 	}
 }
+
+/* We only use this to hide tabs in fullscreen mode so for now
+ * we do not have a real property etc.
+ */
+void
+_gedit_multi_notebook_set_show_tabs (GeditMultiNotebook *mnb,
+				     gboolean           show)
+{
+	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));
+
+	mnb->priv->show_tabs = show != FALSE;
+
+	update_tabs_visibility (mnb);
+}
+
+/* ex:set ts=8 noet: */

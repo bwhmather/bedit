@@ -53,7 +53,10 @@ G_BEGIN_DECLS
 #define GEDIT_IS_NOTEBOOK_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_NOTEBOOK))
 #define GEDIT_NOTEBOOK_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_NOTEBOOK, GeditNotebookClass))
 
-typedef enum {
+/* This is now used in multi-notebook but we keep the same enum for
+ * backward compatibility since it is used in the gsettings schema */
+typedef enum
+{
 	GEDIT_NOTEBOOK_SHOW_TABS_NEVER,
 	GEDIT_NOTEBOOK_SHOW_TABS_AUTO,
 	GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS

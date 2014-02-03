@@ -3727,24 +3727,6 @@ _gedit_window_get_all_tabs (GeditWindow *window)
 	return gedit_multi_notebook_get_all_tabs (window->priv->multi_notebook);
 }
 
-static void
-hide_notebook_tabs_on_fullscreen (GtkNotebook	*notebook,
-				  GParamSpec	*pspec,
-				  GeditWindow	*window)
-{
-	gtk_notebook_set_show_tabs (notebook, FALSE);
-}
-
-static void
-hide_notebook_tabs (GtkNotebook *notebook,
-		    GeditWindow *window)
-{
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (notebook), FALSE);
-	g_signal_connect (notebook, "notify::show-tabs",
-			  G_CALLBACK (hide_notebook_tabs_on_fullscreen),
-			  window);
-}
-
 void
 _gedit_window_fullscreen (GeditWindow *window)
 {
@@ -3755,25 +3737,10 @@ _gedit_window_fullscreen (GeditWindow *window)
 
 	/* Go to fullscreen mode and hide bars */
 	gtk_window_fullscreen (GTK_WINDOW (&window->window));
-
-	gedit_multi_notebook_foreach_notebook (window->priv->multi_notebook,
-					       (GtkCallback)hide_notebook_tabs,
-					       window);
-
+	_gedit_multi_notebook_set_show_tabs (window->priv->multi_notebook, FALSE);
 	gtk_widget_hide (window->priv->statusbar);
-
 	fullscreen_controls_setup (window);
 	fullscreen_controls_show (window);
-}
-
-static void
-show_notebook_tabs (GtkNotebook *notebook,
-		    GeditWindow *window)
-{
-	g_signal_handlers_disconnect_by_func (notebook,
-					      hide_notebook_tabs_on_fullscreen,
-					      window);
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (notebook), TRUE);
 }
 
 void
@@ -3786,10 +3753,7 @@ _gedit_window_unfullscreen (GeditWindow *window)
 
 	/* Unfullscreen and show bars */
 	gtk_window_unfullscreen (GTK_WINDOW (&window->window));
-
-	gedit_multi_notebook_foreach_notebook (window->priv->multi_notebook,
-					       (GtkCallback)show_notebook_tabs,
-					       window);
+	_gedit_multi_notebook_set_show_tabs (window->priv->multi_notebook, TRUE);
 
 	if (g_settings_get_boolean (window->priv->ui_settings, "statusbar-visible"))
 	{

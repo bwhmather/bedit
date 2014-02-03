@@ -39,32 +39,19 @@
 #include "gedit-tab.h"
 #include "gedit-tab-label.h"
 #include "gedit-window.h"
-#include "gedit-enum-types.h"
-#include "gedit-settings.h"
 #include "gedit-marshal.h"
 
 #define GEDIT_NOTEBOOK_GROUP_NAME "GeditNotebookGroup"
 
 struct _GeditNotebookPrivate
 {
-	GSettings     *ui_settings;
-
 	GList         *focused_pages;
-
-	GeditNotebookShowTabsModeType show_tabs_mode;
 
 	guint close_buttons_sensitive : 1;
 	guint ignore_focused_page_update : 1;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
-
-/* Properties */
-enum
-{
-	PROP_0,
-	PROP_SHOW_TABS_MODE
-};
 
 /* Signals */
 enum
@@ -76,95 +63,6 @@ enum
 };
 
 static guint signals[LAST_SIGNAL] = { 0 };
-
-static void update_tabs_visibility (GeditNotebook *notebook);
-
-static void
-show_tabs_changed (GObject     *object,
-		   GParamSpec  *pspec,
-		   gpointer    *data)
-{
-	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
-
-	if (gtk_notebook_get_show_tabs (GTK_NOTEBOOK (notebook)))
-	{
-		update_tabs_visibility (notebook);
-	}
-}
-
-static void
-update_tabs_visibility (GeditNotebook *notebook)
-{
-	gboolean show_tabs;
-
-	switch (notebook->priv->show_tabs_mode)
-	{
-		case GEDIT_NOTEBOOK_SHOW_TABS_NEVER:
-			show_tabs = FALSE;
-			break;
-		case GEDIT_NOTEBOOK_SHOW_TABS_AUTO:
-			show_tabs = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) > 1;
-			break;
-		case GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS:
-		default:
-			show_tabs = TRUE;
-			break;
-	}
-
-	g_signal_handlers_block_by_func (notebook, show_tabs_changed, NULL);
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK (notebook), show_tabs);
-	g_signal_handlers_unblock_by_func (notebook, show_tabs_changed, NULL);
-}
-
-static void
-gedit_notebook_get_property (GObject    *object,
-			     guint       prop_id,
-			     GValue     *value,
-			     GParamSpec *pspec)
-{
-	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
-
-	switch (prop_id)
-	{
-		case PROP_SHOW_TABS_MODE:
-			g_value_set_enum (value,
-					  notebook->priv->show_tabs_mode);
-			break;
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
-
-static void
-gedit_notebook_set_property (GObject      *object,
-			     guint         prop_id,
-			     const GValue *value,
-			     GParamSpec   *pspec)
-{
-	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
-
-	switch (prop_id)
-	{
-		case PROP_SHOW_TABS_MODE:
-			notebook->priv->show_tabs_mode = g_value_get_enum (value);
-			update_tabs_visibility (notebook);
-			break;
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
-
-static void
-gedit_notebook_dispose (GObject *object)
-{
-	GeditNotebook *notebook = GEDIT_NOTEBOOK (object);
-
-	g_clear_object (&notebook->priv->ui_settings);
-
-	G_OBJECT_CLASS (gedit_notebook_parent_class)->dispose (object);
-}
 
 static void
 gedit_notebook_finalize (GObject *object)
@@ -421,8 +319,6 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
 	{
 		smart_tab_switching_on_closure (nb, GEDIT_TAB (page));
 	}
-
-	update_tabs_visibility (nb);
 }
 
 static void
@@ -444,8 +340,6 @@ gedit_notebook_page_added (GtkNotebook *notebook,
 	                  "close-clicked",
 	                  G_CALLBACK (close_button_clicked_cb),
 	                  nb);
-
-	update_tabs_visibility (GEDIT_NOTEBOOK (notebook));
 }
 
 static void
@@ -497,10 +391,7 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 	GtkBindingSet *binding_set;
 	gint i;
 
-	object_class->dispose = gedit_notebook_dispose;
 	object_class->finalize = gedit_notebook_finalize;
-	object_class->get_property = gedit_notebook_get_property;
-	object_class->set_property = gedit_notebook_set_property;
 
 	gtkwidget_class->grab_focus = gedit_notebook_grab_focus;
 	gtkwidget_class->button_press_event = gedit_notebook_button_press;
@@ -513,14 +404,6 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 	container_class->remove = gedit_notebook_remove;
 
 	klass->change_to_page = gedit_notebook_change_to_page;
-
-	g_object_class_install_property (object_class, PROP_SHOW_TABS_MODE,
-					 g_param_spec_enum ("show-tabs-mode",
-							    "Show Tabs Mode",
-							    "When tabs should be shown",
-							    GEDIT_TYPE_NOTEBOOK_SHOW_TABS_MODE_TYPE,
-							    GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS,
-							    G_PARAM_READWRITE));
 
 	signals[TAB_CLOSE_REQUEST] =
 		g_signal_new ("tab-close-request",
@@ -585,10 +468,6 @@ gedit_notebook_init (GeditNotebook *notebook)
 	notebook->priv = gedit_notebook_get_instance_private (notebook);
 	priv = notebook->priv;
 
-	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
-
-	priv->show_tabs_mode = GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS;
-
 	priv->close_buttons_sensitive = TRUE;
 
 	gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
@@ -597,17 +476,6 @@ gedit_notebook_init (GeditNotebook *notebook)
 	gtk_notebook_set_group_name (GTK_NOTEBOOK (notebook),
 	                             GEDIT_NOTEBOOK_GROUP_NAME);
 	gtk_container_set_border_width (GTK_CONTAINER (notebook), 0);
-
-	g_settings_bind (priv->ui_settings,
-			 GEDIT_SETTINGS_SHOW_TABS_MODE,
-			 notebook,
-			 "show-tabs-mode",
-			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-
-	g_signal_connect (notebook,
-			  "notify::show-tabs",
-			  G_CALLBACK (show_tabs_changed),
-			  NULL);
 }
 
 static GtkWidget *
