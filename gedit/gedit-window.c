@@ -2757,7 +2757,7 @@ bottom_panel_item_added (GtkStack    *panel,
 			gtk_widget_show (window->priv->bottom_panel_box);
 		}
 
-		action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom_panel");
+		action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom-panel");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
 	}
 }
