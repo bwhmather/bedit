@@ -124,40 +124,61 @@ gedit_window_activatable_update_state (GeditWindowActivatable *activatable)
 	}
 }
 
-GeditMenuExtension *
-gedit_window_activatable_extend_gear_menu (GeditWindowActivatable *activatable,
-                                           const gchar            *extension_point)
+static GMenuModel *
+find_extension_point_section (GMenuModel  *model,
+                              const gchar *extension_point)
 {
-	GeditMenuExtension *menu = NULL;
-	GeditWindow *window;
-	GMenuModel *model;
 	gint i, n_items;
-
-	g_return_val_if_fail (GEDIT_IS_WINDOW_ACTIVATABLE (activatable), NULL);
-	g_return_val_if_fail (extension_point != NULL, NULL);
-
-	g_object_get (G_OBJECT (activatable), "window", &window, NULL);
-	model = _gedit_window_get_gear_menu (window);
-	g_object_unref (window);
+	GMenuModel *section = NULL;
 
 	n_items = g_menu_model_get_n_items (model);
 
-	for (i = 0; i < n_items; i++)
+	for (i = 0; i < n_items && !section; i++)
 	{
 		gchar *id = NULL;
 
 		if (g_menu_model_get_item_attribute (model, i, "id", "s", &id) &&
 		    strcmp (id, extension_point) == 0)
 		{
-			GMenuModel *section;
-
 			section = g_menu_model_get_item_link (model, i, G_MENU_LINK_SECTION);
-			menu = _gedit_menu_extension_new (G_MENU (section));
 		}
 
 		g_free (id);
 	}
 
-	return menu;
+	return section;
 }
 
+GeditMenuExtension *
+gedit_window_activatable_extend_menu (GeditWindowActivatable *activatable,
+                                      const gchar            *extension_point)
+{
+	GeditWindow *window;
+	GMenuModel *model;
+	GMenuModel *section;
+
+	g_return_val_if_fail (GEDIT_IS_WINDOW_ACTIVATABLE (activatable), NULL);
+	g_return_val_if_fail (extension_point != NULL, NULL);
+
+	/* First look in the gear menu */
+	g_object_get (G_OBJECT (activatable), "window", &window, NULL);
+	model = _gedit_window_get_gear_menu (window);
+	g_object_unref (window);
+
+	section = find_extension_point_section (model, extension_point);
+
+	/* otherwise look in the app menu */
+	if (section == NULL)
+	{
+		model = gtk_application_get_app_menu (GTK_APPLICATION (g_application_get_default ()));
+
+		if (model != NULL)
+		{
+			section = find_extension_point_section (model, extension_point);
+		}
+	}
+
+	return section != NULL ? _gedit_menu_extension_new (G_MENU (section)) : NULL;
+}
+
+/* ex:set ts=8 noet: */

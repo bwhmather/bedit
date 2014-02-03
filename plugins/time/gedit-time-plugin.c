@@ -270,8 +270,8 @@ gedit_time_plugin_activate (GeditWindowActivatable *activatable)
 	g_action_map_add_action (G_ACTION_MAP (priv->window),
 	                         G_ACTION (priv->action));
 
-	priv->menu = gedit_window_activatable_extend_gear_menu (activatable,
-	                                                        "ext5");
+	priv->menu = gedit_window_activatable_extend_menu (activatable,
+	                                                   "ext5");
 	item = g_menu_item_new (_("In_sert Date and Time..."), "win.time");
 	gedit_menu_extension_append_menu_item (priv->menu, item);
 	g_object_unref (item);

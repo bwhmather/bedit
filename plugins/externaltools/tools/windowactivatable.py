@@ -134,16 +134,18 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
         self.window._external_tools_window_activatable = self
         self._library = ToolLibrary()
 
-        action = Gio.SimpleAction(name="manage_tools")
+        action = Gio.SimpleAction(name="manage-tools")
         action.connect("activate", lambda action, parameter: self.open_dialog())
         self.window.add_action(action)
 
-        self.gear_menu = self.extend_gear_menu("ext9")
-        item = Gio.MenuItem.new(_("Manage _External Tools..."), "win.manage_tools")
-        self.gear_menu.append_menu_item(item)
+        self.menu_ext = self.extend_menu("appmenuext2")
+        item = Gio.MenuItem.new(_("Manage _External Tools..."), "win.manage-tools")
+        self.menu_ext.append_menu_item(item)
+
+        self.submenu_ext = self.extend_menu("ext9")
         external_tools_submenu = Gio.Menu()
         item = Gio.MenuItem.new_submenu(_("External _Tools"), external_tools_submenu)
-        self.gear_menu.append_menu_item(item)
+        self.submenu_ext.append_menu_item(item)
         external_tools_submenu_section = Gio.Menu()
         external_tools_submenu.append_section(None, external_tools_submenu_section)
 
@@ -162,7 +164,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
     def do_deactivate(self):
         self.window._external_tools_window_activatable = None
         self.menu.deactivate()
-        self.window.remove_action("manage_tools")
+        self.window.remove_action("manage-tools")
 
         bottom = self.window.get_bottom_panel()
         bottom.remove(self._output_buffer.panel)

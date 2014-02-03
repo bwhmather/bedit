@@ -151,7 +151,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
                 self.window.add_action(action)
 
                 item = Gio.MenuItem.new(_("Manage _Snippets..."), "win.snippets")
-                self.menu = self.extend_gear_menu("ext9")
+                self.menu = self.extend_menu("appmenuext2")
                 self.menu.append_menu_item(item)
 
         def remove_menu(self):

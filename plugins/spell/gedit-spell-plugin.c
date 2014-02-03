@@ -1131,8 +1131,8 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 	                                 G_N_ELEMENTS (action_entries),
 	                                 activatable);
 
-	priv->menu = gedit_window_activatable_extend_gear_menu (activatable,
-	                                                        "ext5");
+	priv->menu = gedit_window_activatable_extend_menu (activatable,
+	                                                   "ext5");
 
 	item = g_menu_item_new (_("_Check Spelling..."), "win.check_spell");
 	gedit_menu_extension_append_menu_item (priv->menu, item);

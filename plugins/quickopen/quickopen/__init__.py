@@ -66,7 +66,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         item = Gio.MenuItem.new(_("Quick Open..."), "win.quickopen")
         item.set_attribute_value("accel", GLib.Variant.new_string("<Primary><Alt>O"))
 
-        self.menu = self.extend_gear_menu("ext2")
+        self.menu = self.extend_menu("ext2")
         self.menu.prepend_menu_item(item)
 
     def _create_popup(self):
