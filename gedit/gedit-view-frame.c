@@ -1286,17 +1286,38 @@ init_search_entry (GeditViewFrame *frame)
 				search_text_escaped = gtk_source_utils_escape_search_text (search_text);
 			}
 
-			g_signal_handler_block (frame->priv->search_entry,
-			                        frame->priv->search_entry_changed_id);
+			if (g_strcmp0 (search_text_escaped, frame->priv->search_text) == 0)
+			{
+				/* The search text is the same, no need to
+				 * trigger the search again. We prefer to select
+				 * the text in the search entry, so the user can
+				 * easily search something else.
+				 */
+				g_signal_handler_block (frame->priv->search_entry,
+							frame->priv->search_entry_changed_id);
 
-			gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry),
-					    search_text_escaped);
+				gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry),
+						    search_text_escaped);
 
-			gtk_editable_select_region (GTK_EDITABLE (frame->priv->search_entry),
-			                            0, -1);
+				gtk_editable_select_region (GTK_EDITABLE (frame->priv->search_entry),
+							    0, -1);
 
-			g_signal_handler_unblock (frame->priv->search_entry,
-			                          frame->priv->search_entry_changed_id);
+				g_signal_handler_unblock (frame->priv->search_entry,
+							  frame->priv->search_entry_changed_id);
+			}
+			else
+			{
+				/* search_text_escaped is new, so we trigger the
+				 * search (by not blocking the signal), and we
+				 * don't select the text in the search entry
+				 * because the user wants to search for
+				 * search_text_escaped, not for something else.
+				 */
+				gtk_entry_set_text (GTK_ENTRY (frame->priv->search_entry),
+						    search_text_escaped);
+
+				gtk_editable_set_position (GTK_EDITABLE (frame->priv->search_entry), -1);
+			}
 
 			g_free (search_text_escaped);
 		}
