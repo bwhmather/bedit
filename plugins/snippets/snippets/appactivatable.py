@@ -19,11 +19,12 @@ import sys
 import os
 import shutil
 
-from gi.repository import Gedit, GLib, GObject, Gtk
+from gi.repository import Gedit, Gtk, GObject, Gio, GLib
 import platform
 
 from .library import Library
 from .manager import Manager
+from .shareddata import SharedData
 
 class AppActivatable(GObject.Object, Gedit.AppActivatable):
         __gtype_name__ = "GeditSnippetsAppActivatable"
@@ -43,6 +44,17 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
                         snippetsdir = os.path.join(GLib.get_user_config_dir(), 'gedit/snippets')
 
                 library.set_dirs(snippetsdir, self.system_dirs())
+
+                action = Gio.SimpleAction(name="snippets")
+                action.connect('activate', self.on_action_snippets_activate)
+                self.app.add_action(action)
+
+                item = Gio.MenuItem.new(_("Manage _Snippets..."), "app.snippets")
+                self.menu = self.extend_menu("appmenuext2")
+                self.menu.append_menu_item(item)
+
+        def do_deactivate(self):
+                self.window.remove_action("snippets")
 
         def system_dirs(self):
                 if platform.system() != 'Windows':
@@ -71,5 +83,11 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
                         ret = activatable.accelerator_activated(keyval, mod)
 
                 return ret
+
+        def create_configure_dialog(self):
+                SharedData().show_manager(self.app.get_active_window(), self.plugin_info.get_data_dir())
+
+        def on_action_snippets_activate(self, action, parameter):
+                self.create_configure_dialog()
 
 # vi:ex:ts=8:et

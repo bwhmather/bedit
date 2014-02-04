@@ -31,16 +31,20 @@
 #include <gedit/gedit-utils.h>
 #include <gedit/gedit-app.h>
 #include <gedit/gedit-window.h>
+#include <gedit/gedit-app-activatable.h>
 #include <gedit/gedit-window-activatable.h>
 
 #define GEDIT_SORT_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_SORT_PLUGIN, GeditSortPluginPrivate))
 
+static void gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface);
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSortPlugin,
 				gedit_sort_plugin,
 				PEAS_TYPE_EXTENSION_BASE,
 				0,
+				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_APP_ACTIVATABLE,
+							       gedit_app_activatable_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
 							       gedit_window_activatable_iface_init))
 
@@ -49,13 +53,14 @@ struct _GeditSortPluginPrivate
 	GeditWindow *window;
 
 	GSimpleAction *action;
-	GeditMenuExtension *menu;
-
 	GtkWidget *dialog;
 	GtkWidget *col_num_spinbutton;
 	GtkWidget *reverse_order_checkbutton;
 	GtkWidget *ignore_case_checkbutton;
 	GtkWidget *remove_dups_checkbutton;
+
+	GeditApp *app;
+	GeditMenuExtension *menu_ext;
 
 	GtkTextIter start, end; /* selection */
 };
@@ -72,7 +77,8 @@ typedef struct
 enum
 {
 	PROP_0,
-	PROP_WINDOW
+	PROP_WINDOW,
+	PROP_APP
 };
 
 static void sort_real (GeditSortPlugin *plugin);
@@ -413,10 +419,40 @@ update_ui (GeditSortPlugin *plugin)
 }
 
 static void
-gedit_sort_plugin_activate (GeditWindowActivatable *activatable)
+gedit_sort_plugin_app_activate (GeditAppActivatable *activatable)
 {
 	GeditSortPluginPrivate *priv;
 	GMenuItem *item;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	priv = GEDIT_SORT_PLUGIN (activatable)->priv;
+
+	priv->menu_ext = gedit_app_activatable_extend_menu (activatable,
+	                                                    "ext9");
+	item = g_menu_item_new (_("S_ort..."), "win.sort");
+	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
+	g_object_unref (item);
+
+	update_ui (GEDIT_SORT_PLUGIN (activatable));
+}
+
+static void
+gedit_sort_plugin_app_deactivate (GeditAppActivatable *activatable)
+{
+	GeditSortPluginPrivate *priv;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	priv = GEDIT_SORT_PLUGIN (activatable)->priv;
+
+	g_clear_object (&priv->menu_ext);
+}
+
+static void
+gedit_sort_plugin_window_activate (GeditWindowActivatable *activatable)
+{
+	GeditSortPluginPrivate *priv;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -428,17 +464,11 @@ gedit_sort_plugin_activate (GeditWindowActivatable *activatable)
 	g_action_map_add_action (G_ACTION_MAP (priv->window),
 	                         G_ACTION (priv->action));
 
-	priv->menu = gedit_window_activatable_extend_menu (activatable,
-	                                                   "ext9");
-	item = g_menu_item_new (_("S_ort..."), "win.sort");
-	gedit_menu_extension_append_menu_item (priv->menu, item);
-	g_object_unref (item);
-
 	update_ui (GEDIT_SORT_PLUGIN (activatable));
 }
 
 static void
-gedit_sort_plugin_deactivate (GeditWindowActivatable *activatable)
+gedit_sort_plugin_window_deactivate (GeditWindowActivatable *activatable)
 {
 	GeditSortPluginPrivate *priv;
 
@@ -449,7 +479,7 @@ gedit_sort_plugin_deactivate (GeditWindowActivatable *activatable)
 }
 
 static void
-gedit_sort_plugin_update_state (GeditWindowActivatable *activatable)
+gedit_sort_plugin_window_update_state (GeditWindowActivatable *activatable)
 {
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -474,8 +504,9 @@ gedit_sort_plugin_dispose (GObject *object)
 	gedit_debug_message (DEBUG_PLUGINS, "GeditSortPlugin disposing");
 
 	g_clear_object (&plugin->priv->action);
-	g_clear_object (&plugin->priv->menu);
 	g_clear_object (&plugin->priv->window);
+	g_clear_object (&plugin->priv->menu_ext);
+	g_clear_object (&plugin->priv->app);
 
 	G_OBJECT_CLASS (gedit_sort_plugin_parent_class)->dispose (object);
 }
@@ -502,7 +533,9 @@ gedit_sort_plugin_set_property (GObject      *object,
 		case PROP_WINDOW:
 			plugin->priv->window = GEDIT_WINDOW (g_value_dup_object (value));
 			break;
-
+		case PROP_APP:
+			plugin->priv->app = GEDIT_APP (g_value_dup_object (value));
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -522,7 +555,9 @@ gedit_sort_plugin_get_property (GObject    *object,
 		case PROP_WINDOW:
 			g_value_set_object (value, plugin->priv->window);
 			break;
-
+		case PROP_APP:
+			g_value_set_object (value, plugin->priv->app);
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -540,6 +575,7 @@ gedit_sort_plugin_class_init (GeditSortPluginClass *klass)
 	object_class->get_property = gedit_sort_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
+	g_object_class_override_property (object_class, PROP_APP, "app");
 
 	g_type_class_add_private (klass, sizeof (GeditSortPluginPrivate));
 }
@@ -550,11 +586,18 @@ gedit_sort_plugin_class_finalize (GeditSortPluginClass *klass)
 }
 
 static void
+gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface)
+{
+	iface->activate = gedit_sort_plugin_app_activate;
+	iface->deactivate = gedit_sort_plugin_app_deactivate;
+}
+
+static void
 gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface)
 {
-	iface->activate = gedit_sort_plugin_activate;
-	iface->deactivate = gedit_sort_plugin_deactivate;
-	iface->update_state = gedit_sort_plugin_update_state;
+	iface->activate = gedit_sort_plugin_window_activate;
+	iface->deactivate = gedit_sort_plugin_window_deactivate;
+	iface->update_state = gedit_sort_plugin_window_update_state;
 }
 
 G_MODULE_EXPORT void
@@ -562,6 +605,9 @@ peas_register_types (PeasObjectModule *module)
 {
 	gedit_sort_plugin_register_type (G_TYPE_MODULE (module));
 
+	peas_object_module_register_extension_type (module,
+						    GEDIT_TYPE_APP_ACTIVATABLE,
+						    GEDIT_TYPE_SORT_PLUGIN);
 	peas_object_module_register_extension_type (module,
 						    GEDIT_TYPE_WINDOW_ACTIVATABLE,
 						    GEDIT_TYPE_SORT_PLUGIN);

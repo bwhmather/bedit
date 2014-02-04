@@ -86,6 +86,8 @@ struct _GeditAppPrivate
 	GSettings         *ui_settings;
 	GSettings         *window_settings;
 
+	GMenuModel        *window_menu;
+
 	PeasExtensionSet  *extensions;
 	GNetworkMonitor   *monitor;
 };
@@ -215,6 +217,8 @@ gedit_app_dispose (GObject *object)
 	g_clear_object (&app->priv->extensions);
 
 	g_clear_object (&app->priv->engine);
+
+	g_clear_object (&app->priv->window_menu);
 
 	G_OBJECT_CLASS (gedit_app_parent_class)->dispose (object);
 }
@@ -414,6 +418,27 @@ extension_removed (PeasExtensionSet *extensions,
 	gedit_app_activatable_deactivate (GEDIT_APP_ACTIVATABLE (exten));
 }
 
+static gboolean
+gedit_app_has_app_menu (GeditApp *app)
+{
+	GtkSettings *gtk_settings;
+	gboolean show_app_menu;
+	gboolean show_menubar;
+
+	/* We have three cases:
+	 * - GNOME 3: show-app-menu true, show-menubar false -> use the app menu
+	 * - Unity, OSX: show-app-menu and show-menubar true -> use the normal menu
+	 * - Other WM, Windows: show-app-menu and show-menubar false -> use the normal menu
+	 */
+	gtk_settings = gtk_settings_get_default ();
+	g_object_get (G_OBJECT (gtk_settings),
+	              "gtk-shell-shows-app-menu", &show_app_menu,
+	              "gtk-shell-shows-menubar", &show_menubar,
+	              NULL);
+
+	return show_app_menu && !show_menubar;
+}
+
 static void
 gedit_app_startup (GApplication *application)
 {
@@ -428,6 +453,7 @@ gedit_app_startup (GApplication *application)
 	GError *error = NULL;
 	GFile *css_file;
 	GtkCssProvider *provider;
+	GtkBuilder *builder;
 
 	G_APPLICATION_CLASS (gedit_app_parent_class)->startup (application);
 
@@ -478,30 +504,34 @@ gedit_app_startup (GApplication *application)
 	                                 G_N_ELEMENTS (app_entries),
 	                                 app);
 
-	/* app menu */
-	if (_gedit_app_has_app_menu (app))
+	/* load menu model */
+	builder = gtk_builder_new ();
+	if (!gtk_builder_add_from_resource (builder,
+	                                    "/org/gnome/gedit/ui/gedit-menu.ui",
+	                                    &error))
 	{
-		GtkBuilder *builder;
+		g_warning ("loading menu builder file: %s", error->message);
+		g_error_free (error);
+	}
+	else
+	{
 
-		builder = gtk_builder_new ();
-		if (!gtk_builder_add_from_resource (builder,
-		                                    "/org/gnome/gedit/ui/gedit-menu.ui",
-		                                    &error))
+		if (gedit_app_has_app_menu (app))
 		{
-			g_warning ("loading menu builder file: %s", error->message);
-			g_error_free (error);
+			GMenuModel *appmenu;
+
+			appmenu = G_MENU_MODEL (gtk_builder_get_object (builder, "appmenu"));
+			gtk_application_set_app_menu (GTK_APPLICATION (application), appmenu);
+
+			app->priv->window_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "gear_menu_withappmenu"));
 		}
 		else
 		{
-			GMenuModel *app_menu;
-
-			app_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "appmenu"));
-			gtk_application_set_app_menu (GTK_APPLICATION (application),
-			                              app_menu);
+			app->priv->window_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "gear_menu_noappmenu"));
 		}
-
-		g_object_unref (builder);
 	}
+
+	g_object_unref (builder);
 
 	/* Accelerators */
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
@@ -1570,6 +1600,32 @@ gedit_app_process_window_event (GeditApp    *app,
     return FALSE;
 }
 
+
+static GMenuModel *
+find_extension_point_section (GMenuModel  *model,
+                              const gchar *extension_point)
+{
+	gint i, n_items;
+	GMenuModel *section = NULL;
+
+	n_items = g_menu_model_get_n_items (model);
+
+	for (i = 0; i < n_items && !section; i++)
+	{
+		gchar *id = NULL;
+
+		if (g_menu_model_get_item_attribute (model, i, "id", "s", &id) &&
+		    strcmp (id, extension_point) == 0)
+		{
+			section = g_menu_model_get_item_link (model, i, G_MENU_LINK_SECTION);
+		}
+
+		g_free (id);
+	}
+
+	return section;
+}
+
 static void
 app_lockdown_changed (GeditApp *app)
 {
@@ -1669,27 +1725,39 @@ _gedit_app_get_settings (GeditApp *app)
 	return app->priv->settings;
 }
 
-gboolean
-_gedit_app_has_app_menu (GeditApp *app)
+GMenuModel *
+_gedit_app_get_window_menu (GeditApp *app)
 {
-	GtkSettings *gtk_settings;
-	gboolean show_app_menu;
-	gboolean show_menubar;
+	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
-	g_return_val_if_fail (GEDIT_IS_APP (app), FALSE);
+	return app->priv->window_menu;
+}
 
-	/* We have three cases:
-	 * - GNOME 3: show-app-menu true, show-menubar false -> use the app menu
-	 * - Unity, OSX: show-app-menu and show-menubar true -> use the normal menu
-	 * - Other WM, Windows: show-app-menu and show-menubar false -> use the normal menu
-	 */
-	gtk_settings = gtk_settings_get_default ();
-	g_object_get (G_OBJECT (gtk_settings),
-	              "gtk-shell-shows-app-menu", &show_app_menu,
-	              "gtk-shell-shows-menubar", &show_menubar,
-	              NULL);
+GeditMenuExtension *
+_gedit_app_extend_menu (GeditApp    *app,
+                       const gchar *extension_point)
+{
+	GMenuModel *model;
+	GMenuModel *section;
 
-	return show_app_menu && !show_menubar;
+	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
+	g_return_val_if_fail (extension_point != NULL, NULL);
+
+	/* First look in the window menu */
+	section = find_extension_point_section (app->priv->window_menu, extension_point);
+
+	/* otherwise look in the app menu */
+	if (section == NULL)
+	{
+		model = gtk_application_get_app_menu (GTK_APPLICATION (app));
+
+		if (model != NULL)
+		{
+			section = find_extension_point_section (model, extension_point);
+		}
+	}
+
+	return section != NULL ? _gedit_menu_extension_new (G_MENU (section)) : NULL;
 }
 
 /* ex:set ts=8 noet: */

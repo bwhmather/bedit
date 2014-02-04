@@ -16,20 +16,7 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from gi.repository import GObject, Gedit
+from .appactivatable import AppActivatable
 from .windowactivatable import WindowActivatable
-from .library import ToolLibrary
-import os
-
-class AppActivatable(GObject.Object, Gedit.AppActivatable):
-    __gtype_name__ = "ExternalToolsAppActivatable"
-
-    app = GObject.property(type=Gedit.App)
-
-    def __init__(self):
-        GObject.Object.__init__(self)
-
-    def do_activate(self):
-        ToolLibrary().set_locations(os.path.join(self.plugin_info.get_data_dir(), 'tools'))
 
 # ex:ts=4:et:

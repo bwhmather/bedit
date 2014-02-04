@@ -48,7 +48,6 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
                 self.current_language_accel_group = None
 
         def do_activate(self):
-                self.insert_menu()
                 self.register_messages()
 
                 library = Library()
@@ -73,7 +72,6 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
 
                 self.accel_group = None
 
-                self.remove_menu()
                 self.unregister_messages()
 
                 library = Library()
@@ -145,18 +143,6 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
 
                 controller.parse_and_run_snippet(message.props.snippet, iter)
 
-        def insert_menu(self):
-                action = Gio.SimpleAction(name="snippets")
-                action.connect('activate', self.on_action_snippets_activate)
-                self.window.add_action(action)
-
-                item = Gio.MenuItem.new(_("Manage _Snippets..."), "win.snippets")
-                self.menu = self.extend_menu("appmenuext2")
-                self.menu.append_menu_item(item)
-
-        def remove_menu(self):
-                self.window.remove_action("snippets")
-
         def find_snippet(self, snippets, tag):
                 result = []
 
@@ -191,13 +177,6 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
 
         def on_active_tab_changed(self, window, tab):
                 self.update_language(SharedData().get_controller(tab.get_view()))
-
-        # Callbacks
-        def create_configure_dialog(self):
-                SharedData().show_manager(self.window, self.plugin_info.get_data_dir())
-
-        def on_action_snippets_activate(self, action, parameter):
-                self.create_configure_dialog()
 
         def accelerator_activated(self, group, obj, keyval, mod):
                 if obj == self.window:

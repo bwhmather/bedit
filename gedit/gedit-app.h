@@ -32,6 +32,7 @@
 #include <gtk/gtk.h>
 
 #include <gedit/gedit-window.h>
+#include <gedit/gedit-menu-extension.h>
 
 G_BEGIN_DECLS
 
@@ -142,7 +143,10 @@ void			 _gedit_app_set_default_print_settings	(GeditApp         *app,
 
 GObject			*_gedit_app_get_settings		(GeditApp  *app);
 
-gboolean		 _gedit_app_has_app_menu		(GeditApp  *app);
+GMenuModel		*_gedit_app_get_window_menu		(GeditApp  *app);
+
+GeditMenuExtension	*_gedit_app_extend_menu			(GeditApp    *app,
+								 const gchar *extension_point);
 
 G_END_DECLS
 

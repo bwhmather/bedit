@@ -30,6 +30,10 @@ class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
     def do_activate(self):
         self.app.add_accelerator("<Primary><Alt>O", "win.quickopen", None)
 
+        self.menu_ext = self.extend_menu("ext2")
+        item = Gio.MenuItem.new(_("Quick Open..."), "win.quickopen")
+        self.menu_ext.prepend_menu_item(item)
+
     def do_deactivate(self):
         self.app.remove_accelerator("win.quickopen", None)
 
@@ -44,30 +48,19 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
     def do_activate(self):
         self._popup_size = (450, 300)
         self._popup = None
-        self._install_menu()
+
+        action = Gio.SimpleAction(name="quickopen")
+        action.connect('activate', self.on_quick_open_activate)
+        self.window.add_action(action)
 
     def do_deactivate(self):
-        self._uninstall_menu()
+        self.window.remove_action("quickopen")
 
     def get_popup_size(self):
         return self._popup_size
 
     def set_popup_size(self, size):
         self._popup_size = size
-
-    def _uninstall_menu(self):
-        self.window.remove_action("quickopen")
-
-    def _install_menu(self):
-        action = Gio.SimpleAction(name="quickopen")
-        action.connect('activate', self.on_quick_open_activate)
-        self.window.add_action(action)
-
-        item = Gio.MenuItem.new(_("Quick Open..."), "win.quickopen")
-        item.set_attribute_value("accel", GLib.Variant.new_string("<Primary><Alt>O"))
-
-        self.menu = self.extend_menu("ext2")
-        self.menu.prepend_menu_item(item)
 
     def _create_popup(self):
         paths = []

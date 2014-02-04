@@ -33,6 +33,7 @@
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-utils.h>
 #include <gedit/gedit-window.h>
+#include <gedit/gedit-app-activatable.h>
 #include <gedit/gedit-window-activatable.h>
 #include <libpeas-gtk/peas-gtk-configurable.h>
 #include <gedit/gedit-app.h>
@@ -44,7 +45,7 @@
 
 /* gsettings keys */
 #define TIME_BASE_SETTINGS	"org.gnome.gedit.plugins.time"
-#define PROMPT_TYPE_KEY		"prompt-type"
+#define PROMPT_TYPE_KEY	"prompt-type"
 #define SELECTED_FORMAT_KEY	"selected-format"
 #define CUSTOM_FORMAT_KEY	"custom-format"
 
@@ -147,18 +148,21 @@ struct _GeditTimePluginPrivate
 {
 	GSettings      *settings;
 
+	GSimpleAction  *action;
 	GeditWindow    *window;
 
-	GSimpleAction *action;
-	GeditMenuExtension *menu;
+	GeditApp *app;
+	GeditMenuExtension *menu_ext;
 };
 
 enum
 {
 	PROP_0,
-	PROP_WINDOW
+	PROP_WINDOW,
+	PROP_APP
 };
 
+static void gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface);
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
 static void peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface);
 
@@ -166,6 +170,8 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditTimePlugin,
 				gedit_time_plugin,
 				PEAS_TYPE_EXTENSION_BASE,
 				0,
+				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_APP_ACTIVATABLE,
+							       gedit_app_activatable_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
 							       gedit_window_activatable_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_GTK_TYPE_CONFIGURABLE,
@@ -192,8 +198,9 @@ gedit_time_plugin_dispose (GObject *object)
 
 	g_clear_object (&plugin->priv->settings);
 	g_clear_object (&plugin->priv->action);
-	g_clear_object (&plugin->priv->menu);
 	g_clear_object (&plugin->priv->window);
+	g_clear_object (&plugin->priv->menu_ext);
+	g_clear_object (&plugin->priv->app);
 
 	G_OBJECT_CLASS (gedit_time_plugin_parent_class)->dispose (object);
 }
@@ -211,7 +218,9 @@ gedit_time_plugin_set_property (GObject      *object,
 		case PROP_WINDOW:
 			plugin->priv->window = GEDIT_WINDOW (g_value_dup_object (value));
 			break;
-
+		case PROP_APP:
+			plugin->priv->app = GEDIT_APP (g_value_dup_object (value));
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -231,7 +240,9 @@ gedit_time_plugin_get_property (GObject    *object,
 		case PROP_WINDOW:
 			g_value_set_object (value, plugin->priv->window);
 			break;
-
+		case PROP_APP:
+			g_value_set_object (value, plugin->priv->app);
+			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -255,10 +266,40 @@ update_ui (GeditTimePlugin *plugin)
 }
 
 static void
-gedit_time_plugin_activate (GeditWindowActivatable *activatable)
+gedit_time_plugin_app_activate (GeditAppActivatable *activatable)
 {
 	GeditTimePluginPrivate *priv;
 	GMenuItem *item;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	priv = GEDIT_TIME_PLUGIN (activatable)->priv;
+
+	priv->menu_ext = gedit_app_activatable_extend_menu (activatable,
+	                                                    "ext5");
+	item = g_menu_item_new (_("In_sert Date and Time..."), "win.time");
+	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
+	g_object_unref (item);
+
+	update_ui (GEDIT_TIME_PLUGIN (activatable));
+}
+
+static void
+gedit_time_plugin_app_deactivate (GeditAppActivatable *activatable)
+{
+	GeditTimePluginPrivate *priv;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	priv = GEDIT_TIME_PLUGIN (activatable)->priv;
+
+	g_clear_object (&priv->menu_ext);
+}
+
+static void
+gedit_time_plugin_window_activate (GeditWindowActivatable *activatable)
+{
+	GeditTimePluginPrivate *priv;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -270,17 +311,11 @@ gedit_time_plugin_activate (GeditWindowActivatable *activatable)
 	g_action_map_add_action (G_ACTION_MAP (priv->window),
 	                         G_ACTION (priv->action));
 
-	priv->menu = gedit_window_activatable_extend_menu (activatable,
-	                                                   "ext5");
-	item = g_menu_item_new (_("In_sert Date and Time..."), "win.time");
-	gedit_menu_extension_append_menu_item (priv->menu, item);
-	g_object_unref (item);
-
 	update_ui (GEDIT_TIME_PLUGIN (activatable));
 }
 
 static void
-gedit_time_plugin_deactivate (GeditWindowActivatable *activatable)
+gedit_time_plugin_window_deactivate (GeditWindowActivatable *activatable)
 {
 	GeditTimePluginPrivate *priv;
 
@@ -292,7 +327,7 @@ gedit_time_plugin_deactivate (GeditWindowActivatable *activatable)
 }
 
 static void
-gedit_time_plugin_update_state (GeditWindowActivatable *activatable)
+gedit_time_plugin_window_update_state (GeditWindowActivatable *activatable)
 {
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -1014,6 +1049,7 @@ gedit_time_plugin_class_init (GeditTimePluginClass *klass)
 	object_class->get_property = gedit_time_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
+	g_object_class_override_property (object_class, PROP_APP, "app");
 
 	g_type_class_add_private (object_class, sizeof (GeditTimePluginPrivate));
 }
@@ -1030,11 +1066,18 @@ peas_gtk_configurable_iface_init (PeasGtkConfigurableInterface *iface)
 }
 
 static void
+gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface)
+{
+	iface->activate = gedit_time_plugin_app_activate;
+	iface->deactivate = gedit_time_plugin_app_deactivate;
+}
+
+static void
 gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface)
 {
-	iface->activate = gedit_time_plugin_activate;
-	iface->deactivate = gedit_time_plugin_deactivate;
-	iface->update_state = gedit_time_plugin_update_state;
+	iface->activate = gedit_time_plugin_window_activate;
+	iface->deactivate = gedit_time_plugin_window_deactivate;
+	iface->update_state = gedit_time_plugin_window_update_state;
 }
 
 G_MODULE_EXPORT void
@@ -1042,6 +1085,9 @@ peas_register_types (PeasObjectModule *module)
 {
 	gedit_time_plugin_register_type (G_TYPE_MODULE (module));
 
+	peas_object_module_register_extension_type (module,
+						    GEDIT_TYPE_APP_ACTIVATABLE,
+						    GEDIT_TYPE_TIME_PLUGIN);
 	peas_object_module_register_extension_type (module,
 						    GEDIT_TYPE_WINDOW_ACTIVATABLE,
 						    GEDIT_TYPE_TIME_PLUGIN);

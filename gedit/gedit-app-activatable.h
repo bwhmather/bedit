@@ -23,6 +23,7 @@
 #define __GEDIT_APP_ACTIVATABLE_H__
 
 #include <glib-object.h>
+#include <gedit/gedit-menu-extension.h>
 
 G_BEGIN_DECLS
 
@@ -52,9 +53,25 @@ struct _GeditAppActivatableInterface
  */
 GType	 gedit_app_activatable_get_type	(void)  G_GNUC_CONST;
 
-void	 gedit_app_activatable_activate	(GeditAppActivatable *activatable);
-void	 gedit_app_activatable_deactivate	(GeditAppActivatable *activatable);
+void	 gedit_app_activatable_activate			(GeditAppActivatable *activatable);
+void	 gedit_app_activatable_deactivate		(GeditAppActivatable *activatable);
+
+/**
+ * gedit_app_activatable_extend_menu:
+ * @activatable: A #GeditAppActivatable.
+ * @extension_point: the extension point section of the menu to get.
+ *
+ * Gets the #GeditMenuExtension for the menu @extension_point. Note that
+ * the extension point could be in different menus (gear menu, app menu, etc)
+ * depending on the platform.
+ *
+ * Returns: (transfer full): a #GeditMenuExtension for the specific section
+ * or %NULL if not found.
+ */
+GeditMenuExtension	*gedit_app_activatable_extend_menu	(GeditAppActivatable *activatable,
+								 const gchar *extension_point);
 
 G_END_DECLS
 
 #endif /* __GEDIT_APP_ACTIVATABLE_H__ */
+/* ex:set ts=8 noet: */

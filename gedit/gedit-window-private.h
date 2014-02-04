@@ -90,9 +90,6 @@ struct _GeditWindowPrivate
 	GtkWidget      *open_button;
 	GtkWidget      *open_menu;
 	GtkMenuButton  *gear_button;
-	GMenuModel     *gear_menu;
-	GMenuModel     *gear_menu_win;
-	GMenuModel     *gear_menu_app;
 
 	/* recent files */
 

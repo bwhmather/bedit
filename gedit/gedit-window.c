@@ -425,8 +425,6 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, open_menu);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_menu_win);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_menu_app);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, hpaned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, vpaned);
@@ -2953,6 +2951,7 @@ static void
 gedit_window_init (GeditWindow *window)
 {
 	GtkTargetList *tl;
+	GMenuModel *gear_menu;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -2998,19 +2997,9 @@ gedit_window_init (GeditWindow *window)
 
 	setup_headerbar_open_button (window);
 
-	if (_gedit_app_has_app_menu (GEDIT_APP (g_application_get_default ())))
-	{
-		window->priv->gear_menu = window->priv->gear_menu_win;
-	}
-	else
-	{
-		window->priv->gear_menu = window->priv->gear_menu_app;
-	}
-
-	gtk_menu_button_set_menu_model (window->priv->gear_button,
-	                                window->priv->gear_menu);
-	gtk_menu_button_set_menu_model (window->priv->fullscreen_gear_button,
-	                                window->priv->gear_menu);
+	gear_menu = _gedit_app_get_window_menu (GEDIT_APP (g_application_get_default ())),
+	gtk_menu_button_set_menu_model (window->priv->gear_button, gear_menu);
+	gtk_menu_button_set_menu_model (window->priv->fullscreen_gear_button, gear_menu);
 
 	/* Setup status bar */
 	setup_statusbar (window);
@@ -3838,22 +3827,6 @@ gedit_window_get_message_bus (GeditWindow *window)
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
 	return window->priv->message_bus;
-}
-
-/**
- * _gedit_window_get_gear_menu:
- * @window: a #GeditWindow.
- *
- * Gets the gear menu.
- *
- * Returns: (transfer none): the #GMenuModel of the gear menu button.
- */
-GMenuModel *
-_gedit_window_get_gear_menu (GeditWindow *window)
-{
-	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
-
-	return window->priv->gear_menu;
 }
 
 /* ex:set ts=8 noet: */

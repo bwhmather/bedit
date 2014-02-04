@@ -31,6 +31,7 @@
 
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-statusbar.h>
+#include <gedit/gedit-app.h>
 #include <gedit/gedit-window.h>
 #include <gedit/gedit-window-activatable.h>
 #include <gtksourceview/gtksource.h>
@@ -68,7 +69,6 @@ struct _GeditSpellPluginPrivate
 {
 	GeditWindow    *window;
 
-	GeditMenuExtension *menu;
 	guint           message_cid;
 	gulong          tab_added_id;
 	gulong          tab_removed_id;
@@ -137,7 +137,6 @@ gedit_spell_plugin_dispose (GObject *object)
 
 	gedit_debug_message (DEBUG_PLUGINS, "GeditSpellPlugin disposing");
 
-	g_clear_object (&plugin->priv->menu);
 	g_clear_object (&plugin->priv->window);
 
 	G_OBJECT_CLASS (gedit_spell_plugin_parent_class)->dispose (object);
@@ -1118,7 +1117,6 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 {
 	GeditSpellPlugin *plugin;
 	GeditSpellPluginPrivate *priv;
-	GMenuItem *item;
 	GList *views, *l;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -1130,21 +1128,6 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 	                                 action_entries,
 	                                 G_N_ELEMENTS (action_entries),
 	                                 activatable);
-
-	priv->menu = gedit_window_activatable_extend_menu (activatable,
-	                                                   "ext5");
-
-	item = g_menu_item_new (_("_Check Spelling..."), "win.check_spell");
-	gedit_menu_extension_append_menu_item (priv->menu, item);
-	g_object_unref (item);
-
-	item = g_menu_item_new (_("Set _Language..."), "win.config_spell");
-	gedit_menu_extension_append_menu_item (priv->menu, item);
-	g_object_unref (item);
-
-	item = g_menu_item_new (_("_Highlight Misspelled Words"), "win.auto_spell");
-	gedit_menu_extension_append_menu_item (priv->menu, item);
-	g_object_unref (item);
 
 	priv->message_cid = gtk_statusbar_get_context_id (GTK_STATUSBAR (gedit_window_get_statusbar (priv->window)),
 	                                                  "spell_plugin_message");

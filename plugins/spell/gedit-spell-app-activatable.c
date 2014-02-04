@@ -18,16 +18,16 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#include "gedit-spell-app-activatable.h"
+#include <glib/gi18n.h>
+#include <libpeas/peas-object-module.h>
 #include <gedit/gedit-app-activatable.h>
 #include <gedit/gedit-app.h>
-#include <libpeas/peas-object-module.h>
-
+#include "gedit-spell-app-activatable.h"
 
 typedef struct _GeditSpellAppActivatablePrivate
 {
 	GeditApp *app;
+	GeditMenuExtension *menu_ext;
 } GeditSpellAppActivatablePrivate;
 
 enum
@@ -53,6 +53,7 @@ gedit_spell_app_activatable_dispose (GObject *object)
 	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (activatable);
 
 	g_clear_object (&priv->app);
+	g_clear_object (&priv->menu_ext);
 
 	G_OBJECT_CLASS (gedit_spell_app_activatable_parent_class)->dispose (object);
 }
@@ -126,8 +127,23 @@ gedit_spell_app_activatable_activate (GeditAppActivatable *activatable)
 {
 	GeditSpellAppActivatable *app_activatable = GEDIT_SPELL_APP_ACTIVATABLE (activatable);
 	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (app_activatable);
+	GMenuItem *item;
 
 	gtk_application_add_accelerator (GTK_APPLICATION (priv->app), "<Shift>F7", "win.check_spell", NULL);
+	priv->menu_ext = gedit_app_activatable_extend_menu (activatable,
+	                                                    "ext5");
+
+	item = g_menu_item_new (_("_Check Spelling..."), "win.check_spell");
+	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
+	g_object_unref (item);
+
+	item = g_menu_item_new (_("Set _Language..."), "win.config_spell");
+	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
+	g_object_unref (item);
+
+	item = g_menu_item_new (_("_Highlight Misspelled Words"), "win.auto_spell");
+	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
+	g_object_unref (item);
 }
 
 static void
@@ -137,6 +153,7 @@ gedit_spell_app_activatable_deactivate (GeditAppActivatable *activatable)
 	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (app_activatable);
 
 	gtk_application_remove_accelerator (GTK_APPLICATION (priv->app), "win.check_spell", NULL);
+	g_clear_object (&priv->menu_ext);
 }
 
 static void

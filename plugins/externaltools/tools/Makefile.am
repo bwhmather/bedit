@@ -8,6 +8,7 @@ externaltools_PYTHON =						\
 	plugins/externaltools/tools/outputpanel.py		\
 	plugins/externaltools/tools/filelookup.py		\
 	plugins/externaltools/tools/linkparsing.py		\
+	plugins/externaltools/tools/appactivatable.py	\
 	plugins/externaltools/tools/windowactivatable.py
 
 externaltools_uidir = $(GEDIT_PLUGINS_DATA_DIR)/externaltools/ui

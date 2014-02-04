@@ -105,3 +105,21 @@ gedit_app_activatable_deactivate (GeditAppActivatable *activatable)
 		iface->deactivate (activatable);
 	}
 }
+
+GeditMenuExtension *
+gedit_app_activatable_extend_menu (GeditAppActivatable *activatable,
+				   const gchar *extension_point)
+{
+	GeditApp *app;
+	GeditMenuExtension *ext;
+
+	g_return_val_if_fail (GEDIT_IS_APP_ACTIVATABLE (activatable), NULL);
+
+	g_object_get (G_OBJECT (activatable), "app", &app, NULL);
+	ext = _gedit_app_extend_menu (app, extension_point);
+	g_object_unref (app);
+
+	return ext;
+}
+
+/* ex:set ts=8 noet: */
