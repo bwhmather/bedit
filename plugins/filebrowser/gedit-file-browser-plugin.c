@@ -919,8 +919,7 @@ on_confirm_no_trash_cb (GeditFileBrowserWidget *widget,
 	                                                       GTK_MESSAGE_QUESTION,
 	                                                       message,
 	                                                       secondary,
-	                                                       GTK_STOCK_DELETE,
-	                                                       NULL);
+	                                                       _("_Delete"));
 	g_free (secondary);
 
 	return result;
@@ -958,8 +957,7 @@ on_confirm_delete_cb (GeditFileBrowserWidget *widget,
 	                                                       GTK_MESSAGE_QUESTION,
 	                                                       message,
 	                                                       secondary,
-	                                                       GTK_STOCK_DELETE,
-	                                                       NULL);
+	                                                       _("_Delete"));
 
 	g_free (message);
 
