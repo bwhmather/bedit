@@ -9,9 +9,6 @@ endif
 
 EXTRA_DIST = 			\
 	BUGS			\
-	ChangeLog-20011116	\
-	ChangeLog-20051212	\
-	ChangeLog-20090418	\
 	HACKING			\
 	MAINTAINERS		\
 	gedit.doap		\
@@ -111,27 +108,11 @@ noinst_PROGRAMS += $(TESTS)
 @INTLTOOL_DESKTOP_RULE@
 @INTLTOOL_XML_RULE@
 
-CHANGELOG_START = GEDIT_2_26_1
-
-dist-hook: dist-hook-changelog dist-hook-cleanup
+dist-hook: dist-hook-cleanup
 
 dist-hook-cleanup:
 	cd $(distdir); rm -f $(BUILT_SOURCES)
 
-dist-hook-changelog:
-	@if test -d "$(srcdir)/.git"; \
-	then \
-		echo Creating ChangeLog && \
-		(GIT_DIR=$(top_srcdir)/.git \
-		  ./missing --run git log $(CHANGELOG_START)^^.. --stat -M -C --name-status  --date=short --no-color) | \
-		  fmt --split-only > ChangeLog.tmp \
-		&& mv -f ChangeLog.tmp $(top_distdir)/ChangeLog \
-		|| ( rm -f ChangeLog.tmp ; \
-		  echo Failed to generate ChangeLog >&2 ); \
-	else \
-		echo A git clone is required to generate a ChangeLog >&2; \
-	fi
-
-.PHONY: dist-hook-cleanup dist-hook-changelog
+.PHONY: dist-hook-cleanup
 
 -include $(top_srcdir)/git.mk
