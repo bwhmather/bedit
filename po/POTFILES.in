@@ -58,6 +58,7 @@ plugins/externaltools/data/run-command.desktop.in
 plugins/externaltools/data/send-to-fpaste.desktop.in
 plugins/externaltools/externaltools.plugin.desktop.in
 plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in
+plugins/externaltools/tools/appactivatable.py
 plugins/externaltools/tools/capture.py
 plugins/externaltools/tools/functions.py
 plugins/externaltools/tools/__init__.py
@@ -83,6 +84,7 @@ plugins/pythonconsole/pythonconsole.plugin.desktop.in
 plugins/quickopen/quickopen/__init__.py
 plugins/quickopen/quickopen.plugin.desktop.in
 plugins/quickopen/quickopen/popup.py
+plugins/snippets/snippets/appactivatable.py
 plugins/snippets/snippets/document.py
 plugins/snippets/snippets/exporter.py
 plugins/snippets/snippets/importer.py
@@ -95,6 +97,7 @@ plugins/sort/gedit-sort-plugin.c
 [type: gettext/glade]plugins/sort/gedit-sort-plugin.ui
 plugins/sort/sort.plugin.desktop.in
 plugins/spell/gedit-automatic-spell-checker.c
+plugins/spell/gedit-spell-app-activatable.c
 plugins/spell/gedit-spell-checker.c
 plugins/spell/gedit-spell-checker-dialog.c
 plugins/spell/gedit-spell-checker-language.c
