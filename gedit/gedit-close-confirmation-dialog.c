@@ -300,12 +300,10 @@ gedit_close_confirmation_dialog_new_single (GtkWindow     *parent,
 static void
 add_buttons (GeditCloseConfirmationDialog *dlg)
 {
-	gtk_dialog_add_button (GTK_DIALOG (dlg),
-			       _("Close _without Saving"),
-			       GTK_RESPONSE_NO);
-
-	gtk_dialog_add_button (GTK_DIALOG (dlg),
-			       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
+	                        _("Close _without Saving"), GTK_RESPONSE_NO,
+	                        _("_Cancel"), GTK_RESPONSE_CANCEL,
+	                        NULL);
 
 	if (dlg->priv->disable_save_to_disk)
 	{
@@ -314,7 +312,7 @@ add_buttons (GeditCloseConfirmationDialog *dlg)
 	}
 	else
 	{
-		const gchar *stock_id = GTK_STOCK_SAVE;
+		gboolean save_as = FALSE;
 
 		if (GET_MODE (dlg->priv) == SINGLE_DOC_MODE)
 		{
@@ -325,14 +323,13 @@ add_buttons (GeditCloseConfirmationDialog *dlg)
 			if (gedit_document_get_readonly (doc) ||
 			    gedit_document_is_untitled (doc))
 			{
-				stock_id = GTK_STOCK_SAVE_AS;
+				save_as = TRUE;
 			}
 		}
 
 		gtk_dialog_add_button (GTK_DIALOG (dlg),
-				       stock_id,
+				       save_as ? _("_Save As…") : _("_Save"),
 				       GTK_RESPONSE_YES);
-
 		gtk_dialog_set_default_response	(GTK_DIALOG (dlg),
 						 GTK_RESPONSE_YES);
 	}
