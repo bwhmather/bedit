@@ -859,12 +859,8 @@ install_scheme_clicked (GtkButton              *button,
 					       GTK_WINDOW (dlg),
 					       GTK_FILE_CHOOSER_ACTION_OPEN,
 					       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					       _("A_dd Scheme"), GTK_RESPONSE_ACCEPT,
 					       NULL);
-
-	gedit_dialog_add_button (GTK_DIALOG (chooser),
-				 _("A_dd Scheme"),
-				 GTK_STOCK_ADD,
-				 GTK_RESPONSE_ACCEPT);
 
 	gtk_window_set_destroy_with_parent (GTK_WINDOW (chooser), TRUE);
 

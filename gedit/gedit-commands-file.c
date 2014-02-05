@@ -561,14 +561,10 @@ replace_read_only_file (GtkWindow *parent,
 						  _("Do you want to try to replace it "
 						    "with the one you are saving?"));
 
-	gtk_dialog_add_button (GTK_DIALOG (dialog),
-			       GTK_STOCK_CANCEL,
-			       GTK_RESPONSE_CANCEL);
-
-	gedit_dialog_add_button (GTK_DIALOG (dialog),
-				 _("_Replace"),
-			  	 GTK_STOCK_SAVE_AS,
-			  	 GTK_RESPONSE_YES);
+	gtk_dialog_add_buttons (GTK_DIALOG (dialog),
+			        _("_Cancel"), GTK_RESPONSE_CANCEL,
+				_("_Replace"), GTK_RESPONSE_YES,
+				NULL);
 
 	gtk_dialog_set_default_response	(GTK_DIALOG (dialog),
 					 GTK_RESPONSE_CANCEL);
@@ -634,14 +630,10 @@ change_compression (GtkWindow *parent,
 
 	g_free (name_for_display);
 
-	gtk_dialog_add_button (GTK_DIALOG (dialog),
-			       GTK_STOCK_CANCEL,
-			       GTK_RESPONSE_CANCEL);
-
-	gedit_dialog_add_button (GTK_DIALOG (dialog),
-				 button_label,
-			  	 GTK_STOCK_SAVE_AS,
-			  	 GTK_RESPONSE_YES);
+	gtk_dialog_add_buttons (GTK_DIALOG (dialog),
+			        _("_Cancel"), GTK_RESPONSE_CANCEL,
+				button_label, GTK_RESPONSE_YES,
+				NULL);
 
 	gtk_dialog_set_default_response	(GTK_DIALOG (dialog),
 					 GTK_RESPONSE_CANCEL);
@@ -1295,14 +1287,10 @@ revert_dialog (GeditWindow   *window,
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
-	gtk_dialog_add_button (GTK_DIALOG (dialog),
-			       GTK_STOCK_CANCEL,
-			       GTK_RESPONSE_CANCEL);
-
-	gedit_dialog_add_button (GTK_DIALOG (dialog),
-				 _("_Revert"),
-				 GTK_STOCK_REVERT_TO_SAVED,
-				 GTK_RESPONSE_OK);
+	gtk_dialog_add_buttons (GTK_DIALOG (dialog),
+			        _("_Cancel"), GTK_RESPONSE_CANCEL,
+				_("_Revert"), GTK_RESPONSE_OK,
+				NULL);
 
 	gtk_dialog_set_default_response	(GTK_DIALOG (dialog),
 					 GTK_RESPONSE_CANCEL);

@@ -159,62 +159,6 @@ gedit_utils_menu_position_under_tree_view (GtkMenu  *menu,
 }
 
 /**
- * gedit_gtk_button_new_with_stock_icon:
- * @label:
- * @stock_id:
- *
- * Returns: (transfer full):
- */
-GtkWidget *
-gedit_gtk_button_new_with_stock_icon (const gchar *label,
-				      const gchar *stock_id)
-{
-	GtkWidget *button;
-
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-	button = gtk_button_new_with_mnemonic (label);
-	gtk_button_set_image (GTK_BUTTON (button),
-			      gtk_image_new_from_stock (stock_id,
-							GTK_ICON_SIZE_BUTTON));
-	G_GNUC_END_IGNORE_DEPRECATIONS;
-
-	return button;
-}
-
-/**
- * gedit_dialog_add_button:
- * @dialog:
- * @text:
- * @stock_id:
- * @response_id:
- *
- * Returns: (transfer none):
- */
-GtkWidget *
-gedit_dialog_add_button (GtkDialog   *dialog,
-			 const gchar *text,
-			 const gchar *stock_id,
-			 gint         response_id)
-{
-	GtkWidget *button;
-
-	g_return_val_if_fail (GTK_IS_DIALOG (dialog), NULL);
-	g_return_val_if_fail (text != NULL, NULL);
-	g_return_val_if_fail (stock_id != NULL, NULL);
-
-	button = gedit_gtk_button_new_with_stock_icon (text, stock_id);
-	g_return_val_if_fail (button != NULL, NULL);
-
-	gtk_widget_set_can_default (button, TRUE);
-
-	gtk_widget_show (button);
-
-	gtk_dialog_add_action_widget (dialog, button, response_id);
-
-	return button;
-}
-
-/**
  * gedit_utils_set_atk_name_description:
  * @widget: The Gtk widget for which name/description to be set
  * @name: Atk name string

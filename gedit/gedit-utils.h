@@ -61,14 +61,6 @@ void		 gedit_utils_menu_position_under_tree_view
 							 gboolean         *push_in,
 							 gpointer          user_data);
 
-GtkWidget	*gedit_gtk_button_new_with_stock_icon	(const gchar      *label,
-							 const gchar      *stock_id);
-
-GtkWidget	*gedit_dialog_add_button		(GtkDialog        *dialog,
-							 const gchar      *text,
-							 const gchar      *stock_id,
-							 gint              response_id);
-
 gchar		*gedit_utils_escape_underscores		(const gchar      *text,
 							 gssize            length);
 
