@@ -290,28 +290,12 @@ create_infobar (GeditWindow *window,
 
 	infobar = gtk_info_bar_new ();
 
-	button = gedit_gtk_button_new_with_stock_icon (_("_Download"),
-						       GTK_STOCK_SAVE);
-	gtk_widget_show (button);
-
-	gtk_info_bar_add_action_widget (GTK_INFO_BAR (infobar),
-					button,
-					GTK_RESPONSE_YES);
-
-	button = gedit_gtk_button_new_with_stock_icon (_("_Ignore Version"),
-						       GTK_STOCK_DISCARD);
-	gtk_widget_show (button);
-
-	gtk_info_bar_add_action_widget (GTK_INFO_BAR (infobar),
-					button,
-					GTK_RESPONSE_NO);
-
-	gtk_info_bar_add_button (GTK_INFO_BAR (infobar),
-				 GTK_STOCK_CANCEL,
-				 GTK_RESPONSE_CANCEL);
-
-	gtk_info_bar_set_message_type (GTK_INFO_BAR (infobar),
-				       GTK_MESSAGE_INFO);
+	gtk_info_bar_add_buttons (GTK_INFO_BAR (infobar),
+				  _("_Download"), GTK_RESPONSE_YES,
+				  _("_Ignore Version"), GTK_RESPONSE_NO,
+				  NULL);
+	gtk_info_bar_set_show_close_button (GTK_INFO_BAR (infobar), TRUE);
+	gtk_info_bar_set_message_type (GTK_INFO_BAR (infobar), GTK_MESSAGE_INFO);
 
 	message = g_strdup_printf ("%s (%s)", _("There is a new version of gedit"), version);
 	set_message_area_text_and_icon (infobar,
