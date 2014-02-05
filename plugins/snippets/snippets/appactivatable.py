@@ -54,7 +54,8 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
                 self.menu.append_menu_item(item)
 
         def do_deactivate(self):
-                self.window.remove_action("snippets")
+                self.app.remove_action("snippets")
+                self.menu = None
 
         def system_dirs(self):
                 if platform.system() != 'Windows':
