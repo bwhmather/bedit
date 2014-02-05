@@ -280,8 +280,6 @@ gedit_time_plugin_app_activate (GeditAppActivatable *activatable)
 	item = g_menu_item_new (_("In_sert Date and Time..."), "win.time");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
-
-	update_ui (GEDIT_TIME_PLUGIN (activatable));
 }
 
 static void
