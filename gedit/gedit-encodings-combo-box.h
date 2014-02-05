@@ -19,14 +19,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Modified by the gedit Team, 2003-2005. See the AUTHORS file for a
- * list of people on the gedit Team.
- * See the ChangeLog files for a list of changes.
- *
- * $Id: gedit-encodings-option-menu.h 4429 2005-12-12 17:28:04Z pborelli $
- */
-
 #ifndef __GEDIT_ENCODINGS_COMBO_BOX_H__
 #define __GEDIT_ENCODINGS_COMBO_BOX_H__
 

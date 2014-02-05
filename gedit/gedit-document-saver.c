@@ -20,12 +20,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Modified by the gedit Team, 2005-2006. See the AUTHORS file for a
- * list of people on the gedit Team.
- * See the ChangeLog files for a list of changes.
- */
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

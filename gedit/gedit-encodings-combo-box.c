@@ -19,14 +19,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Modified by the gedit Team, 2003-2005. See the AUTHORS file for a
- * list of people on the gedit Team.
- * See the ChangeLog files for a list of changes.
- *
- * $Id: gedit-encodings-combo-box.c 6112 2008-01-23 08:26:24Z sfre $
- */
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

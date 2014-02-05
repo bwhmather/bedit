@@ -19,12 +19,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Modified by the gedit Team, 2003-2007. See the AUTHORS file for a
- * list of people on the gedit Team.
- * See the ChangeLog files for a list of changes.
- */
-
 #include <time.h>
 #include <stdlib.h>
 #include <libxml/xmlreader.h>

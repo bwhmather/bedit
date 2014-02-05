@@ -19,14 +19,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Modified by the gedit Team, 1998-2005. See the AUTHORS file for a
- * list of people on the gedit Team.
- * See the ChangeLog files for a list of changes.
- *
- * $Id$
- */
-
 #ifndef __GEDIT_PRINT_JOB_H__
 #define __GEDIT_PRINT_JOB_H__
 

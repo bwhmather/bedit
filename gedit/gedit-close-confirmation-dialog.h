@@ -18,12 +18,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Modified by the gedit Team, 2004-2005. See the AUTHORS file for a
- * list of people on the gedit Team.
- * See the ChangeLog files for a list of changes.
- */
-
 #ifndef __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__
 #define __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__
 

@@ -19,12 +19,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Modified by the gedit Team, 2006. See the AUTHORS file for a
- * list of people on the gedit Team.
- * See the ChangeLog files for a list of changes.
- */
-
 #ifndef __GEDIT_SPELL_CHECKER_LANGUAGE_H__
 #define __GEDIT_SPELL_CHECKER_LANGUAGE_H__
 

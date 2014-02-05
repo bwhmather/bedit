@@ -17,15 +17,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * Modified by the gedit Team, 1998-2006. See the AUTHORS file for a
- * list of people on the gedit Team.
- * See the ChangeLog files for a list of changes.
- *
- * $Id: gedit-commands-search.c 5931 2007-09-25 20:05:40Z pborelli $
- */
-
-
 #ifndef __GEDIT_PRINT_PREVIEW_H__
 #define __GEDIT_PRINT_PREVIEW_H__
 
