@@ -542,8 +542,6 @@ gedit_docinfo_plugin_app_activate (GeditAppActivatable *activatable)
 	item = g_menu_item_new (_("_Document Statistics"), "win.docinfo");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
-
-	update_ui (GEDIT_DOCINFO_PLUGIN (activatable));
 }
 
 static void
