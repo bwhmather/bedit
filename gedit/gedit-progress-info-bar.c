@@ -109,40 +109,35 @@ gedit_progress_info_bar_init (GeditProgressInfoBar *bar)
 }
 
 GtkWidget *
-gedit_progress_info_bar_new (const gchar *stock_id,
+gedit_progress_info_bar_new (const gchar *icon_name,
 			     const gchar *markup,
 			     gboolean     has_cancel)
 {
 	GeditProgressInfoBar *bar;
 
-	g_return_val_if_fail (stock_id != NULL, NULL);
+	g_return_val_if_fail (icon_name != NULL, NULL);
 	g_return_val_if_fail (markup != NULL, NULL);
 
 	bar = GEDIT_PROGRESS_INFO_BAR (g_object_new (GEDIT_TYPE_PROGRESS_INFO_BAR,
 						     "has-cancel-button", has_cancel,
 						     NULL));
 
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-	gedit_progress_info_bar_set_stock_image (bar, stock_id);
-	G_GNUC_END_IGNORE_DEPRECATIONS;
-
+	gedit_progress_info_bar_set_icon_name (bar, icon_name);
 	gedit_progress_info_bar_set_markup (bar, markup);
 
 	return GTK_WIDGET (bar);
 }
 
 void
-gedit_progress_info_bar_set_stock_image (GeditProgressInfoBar *bar,
-					 const gchar          *stock_id)
+gedit_progress_info_bar_set_icon_name (GeditProgressInfoBar *bar,
+				       const gchar          *icon_name)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
-	g_return_if_fail (stock_id != NULL);
+	g_return_if_fail (icon_name != NULL);
 
-	G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-	gtk_image_set_from_stock (GTK_IMAGE (bar->priv->image),
-				  stock_id,
-				  GTK_ICON_SIZE_SMALL_TOOLBAR);
-	G_GNUC_END_IGNORE_DEPRECATIONS;
+	gtk_image_set_from_icon_name (GTK_IMAGE (bar->priv->image),
+				      icon_name,
+				      GTK_ICON_SIZE_SMALL_TOOLBAR);
 }
 
 void
@@ -152,8 +147,7 @@ gedit_progress_info_bar_set_markup (GeditProgressInfoBar *bar,
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 	g_return_if_fail (markup != NULL);
 
-	gtk_label_set_markup (GTK_LABEL (bar->priv->label),
-			      markup);
+	gtk_label_set_markup (GTK_LABEL (bar->priv->label), markup);
 }
 
 void
@@ -163,8 +157,7 @@ gedit_progress_info_bar_set_text (GeditProgressInfoBar *bar,
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 	g_return_if_fail (text != NULL);
 
-	gtk_label_set_text (GTK_LABEL (bar->priv->label),
-			    text);
+	gtk_label_set_text (GTK_LABEL (bar->priv->label), text);
 }
 
 void

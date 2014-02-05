@@ -74,12 +74,12 @@ struct _GeditProgressInfoBarClass
  */
 GType 		 gedit_progress_info_bar_get_type 		(void) G_GNUC_CONST;
 
-GtkWidget	*gedit_progress_info_bar_new      		(const gchar          *stock_id,
+GtkWidget	*gedit_progress_info_bar_new      		(const gchar          *icon_name,
 								 const gchar          *markup,
 								 gboolean              has_cancel);
 
-void		 gedit_progress_info_bar_set_stock_image	(GeditProgressInfoBar *bar,
-								 const gchar          *stock_id);
+void		 gedit_progress_info_bar_set_icon_name		(GeditProgressInfoBar *bar,
+								 const gchar          *icon_name);
 
 void		 gedit_progress_info_bar_set_markup		(GeditProgressInfoBar *bar,
 								 const gchar          *markup);

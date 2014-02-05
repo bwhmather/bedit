@@ -455,7 +455,6 @@ gedit_network_unavailable_info_bar_new (GFile *location)
 {
 	GtkWidget *info_bar;
 	GtkWidget *hbox_content;
-	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -482,10 +481,6 @@ gedit_network_unavailable_info_bar_new (GFile *location)
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-
-	image = gtk_image_new_from_stock ("gtk-dialog-warning", GTK_ICON_SIZE_DIALOG);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_halign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);

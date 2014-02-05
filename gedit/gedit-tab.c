@@ -776,7 +776,7 @@ show_loading_info_bar (GeditTab *tab)
 					       name_markup);
 		}
 
-		bar = gedit_progress_info_bar_new (GTK_STOCK_REVERT_TO_SAVED,
+		bar = gedit_progress_info_bar_new ("document-revert",
 						   msg,
 						   TRUE);
 	}
@@ -799,7 +799,7 @@ show_loading_info_bar (GeditTab *tab)
 					       name_markup);
 		}
 
-		bar = gedit_progress_info_bar_new (GTK_STOCK_OPEN,
+		bar = gedit_progress_info_bar_new ("document-open",
 						   msg,
 						   TRUE);
 	}
@@ -884,7 +884,7 @@ show_saving_info_bar (GeditTab *tab)
 		msg = g_strdup_printf (_("Saving %s"), from_markup);
 	}
 
-	bar = gedit_progress_info_bar_new (GTK_STOCK_SAVE,
+	bar = gedit_progress_info_bar_new ("document-save",
 					   msg,
 					   FALSE);
 
@@ -2634,22 +2634,13 @@ print_cancelled (GtkWidget        *bar,
 }
 
 static void
-show_printing_info_bar (GeditTab *tab, gboolean preview)
+show_printing_info_bar (GeditTab *tab)
 {
 	GtkWidget *bar;
 
-	if (preview)
-	{
-		bar = gedit_progress_info_bar_new (GTK_STOCK_PRINT_PREVIEW,
-							"",
-							TRUE);
-	}
-	else
-	{
-		bar = gedit_progress_info_bar_new (GTK_STOCK_PRINT,
-							"",
-							TRUE);
-	}
+	bar = gedit_progress_info_bar_new ("document-print",
+					   "",
+					   TRUE);
 
 	g_signal_connect (bar,
 			  "response",
@@ -2664,7 +2655,6 @@ gedit_tab_print_or_print_preview (GeditTab                *tab,
 				  GtkPrintOperationAction  print_action)
 {
 	GeditView *view;
-	gboolean is_preview;
 	GtkPageSetup *setup;
 	GtkPrintSettings *settings;
 	GtkPrintOperationResult res;
@@ -2675,13 +2665,12 @@ gedit_tab_print_or_print_preview (GeditTab                *tab,
 
 	view = gedit_tab_get_view (tab);
 
-	is_preview = (print_action == GTK_PRINT_OPERATION_ACTION_PREVIEW);
 
 	tab->priv->print_job = gedit_print_job_new (view);
 	g_object_add_weak_pointer (G_OBJECT (tab->priv->print_job),
 				   (gpointer *) &tab->priv->print_job);
 
-	show_printing_info_bar (tab, is_preview);
+	show_printing_info_bar (tab);
 
 	g_signal_connect (tab->priv->print_job,
 			  "printing",
@@ -2696,10 +2685,14 @@ gedit_tab_print_or_print_preview (GeditTab                *tab,
 			  G_CALLBACK (done_printing_cb),
 			  tab);
 
-	if (is_preview)
+	if (print_action == GTK_PRINT_OPERATION_ACTION_PREVIEW)
+	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_PRINT_PREVIEWING);
+	}
 	else
+	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_PRINTING);
+	}
 
 	setup = get_page_setup (tab);
 	settings = get_print_settings (tab);
