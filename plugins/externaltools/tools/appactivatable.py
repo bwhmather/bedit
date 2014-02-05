@@ -78,11 +78,11 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
         self._library = ToolLibrary()
         self._library.set_locations(os.path.join(self.plugin_info.get_data_dir(), 'tools'))
 
-        self.menu_ext = self.extend_menu("appmenuext2")
+        self.menu_ext = self.extend_menu("preferences-section")
         item = Gio.MenuItem.new(_("Manage _External Tools..."), "win.manage-tools")
         self.menu_ext.append_menu_item(item)
 
-        self.submenu_ext = self.extend_menu("ext9")
+        self.submenu_ext = self.extend_menu("tools-section-1")
         external_tools_submenu = Gio.Menu()
         item = Gio.MenuItem.new_submenu(_("External _Tools"), external_tools_submenu)
         self.submenu_ext.append_menu_item(item)

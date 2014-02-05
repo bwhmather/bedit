@@ -269,8 +269,7 @@ gedit_time_plugin_app_activate (GeditAppActivatable *activatable)
 
 	priv = GEDIT_TIME_PLUGIN (activatable)->priv;
 
-	priv->menu_ext = gedit_app_activatable_extend_menu (activatable,
-	                                                    "ext5");
+	priv->menu_ext = gedit_app_activatable_extend_menu (activatable, "tools-section");
 	item = g_menu_item_new (_("In_sert Date and Time..."), "win.time");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);

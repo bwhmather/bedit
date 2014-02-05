@@ -3,21 +3,21 @@
   <!-- interface-requires gtk+ 3.0 -->
   <menu id="appmenu">
     <section>
-      <attribute name="id">appmenuext1</attribute>
+      <attribute name="id">app-commands-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_New Window</attribute>
         <attribute name="action">app.new-window</attribute>
       </item>
     </section>
     <section>
-      <attribute name="id">appmenuext2</attribute>
+      <attribute name="id">preferences-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Preferences</attribute>
         <attribute name="action">app.preferences</attribute>
       </item>
     </section>
     <section>
-      <attribute name="id">appmenuext3</attribute>
+      <attribute name="id">help-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Help</attribute>
         <attribute name="action">app.help</attribute>
@@ -34,10 +34,10 @@
   </menu>
   <menu id="gear_menu_withappmenu">
     <section>
-      <attribute name="id">ext1</attribute>
+      <attribute name="id">file-section</attribute>
     </section>
     <section>
-      <attribute name="id">ext2</attribute>
+      <attribute name="id">file-section-1</attribute>
       <item>
         <attribute name="label" translatable="yes">_Reload</attribute>
         <attribute name="action">win.revert</attribute>
@@ -52,39 +52,14 @@
       </item>
     </section>
     <section>
-      <attribute name="id">ext3</attribute>
-    </section>
-    <section>
-      <attribute name="id">ext4</attribute>
+      <attribute name="id">print-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Print…</attribute>
         <attribute name="action">win.print</attribute>
       </item>
     </section>
     <section>
-      <attribute name="id">ext5</attribute>
-    </section>
-    <section>
-      <attribute name="id">ext6</attribute>
-      <item>
-        <attribute name="label" translatable="yes">Side _Panel</attribute>
-        <attribute name="action">win.side-panel</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Bottom Panel</attribute>
-        <attribute name="action">win.bottom-panel</attribute>
-        <attribute name="hidden-when">action-disabled</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Fullscreen</attribute>
-        <attribute name="action">win.fullscreen</attribute>
-      </item>
-    </section>
-    <section>
-      <attribute name="id">ext7</attribute>
-    </section>
-    <section>
-      <attribute name="id">ext8</attribute>
+      <attribute name="id">search-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Find…</attribute>
         <attribute name="action">win.find</attribute>
@@ -103,23 +78,48 @@
       </item>
     </section>
     <section>
-      <attribute name="id">ext9</attribute>
+      <attribute name="id">edit-section</attribute>
     </section>
     <section>
-      <attribute name="id">ext10</attribute>
+      <attribute name="id">edit-section-1</attribute>
+    </section>
+    <section>
+      <attribute name="id">view-section</attribute>
+      <item>
+        <attribute name="label" translatable="yes">Side _Panel</attribute>
+        <attribute name="action">win.side-panel</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Bottom Panel</attribute>
+        <attribute name="action">win.bottom-panel</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Fullscreen</attribute>
+        <attribute name="action">win.fullscreen</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="id">view-section-1</attribute>
+    </section>
+    <section>
+      <attribute name="id">view-section-2</attribute>
       <item>
         <attribute name="label" translatable="yes">_Highlight Mode…</attribute>
         <attribute name="action">win.highlight-mode</attribute>
       </item>
     </section>
     <section>
-      <attribute name="id">ext11</attribute>
+      <attribute name="id">spell-section</attribute>
     </section>
     <section>
-      <attribute name="id">ext12</attribute>
+      <attribute name="id">tools-section</attribute>
     </section>
     <section>
-      <attribute name="id">ext13</attribute>
+      <attribute name="id">tools-section-1</attribute>
+    </section>
+    <section>
+      <attribute name="id">close-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Close All</attribute>
         <attribute name="action">win.close-all</attribute>
@@ -132,10 +132,10 @@
   </menu>
   <menu id="gear_menu_noappmenu">
     <section>
-      <attribute name="id">ext1</attribute>
+      <attribute name="id">file-section</attribute>
     </section>
     <section>
-      <attribute name="id">ext2</attribute>
+      <attribute name="id">file-section-1</attribute>
       <item>
         <attribute name="label" translatable="yes">_Reload</attribute>
         <attribute name="action">win.revert</attribute>
@@ -150,39 +150,14 @@
       </item>
     </section>
     <section>
-      <attribute name="id">ext3</attribute>
-    </section>
-    <section>
-      <attribute name="id">ext4</attribute>
+      <attribute name="id">print-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Print…</attribute>
         <attribute name="action">win.print</attribute>
       </item>
     </section>
     <section>
-      <attribute name="id">ext5</attribute>
-    </section>
-    <section>
-      <attribute name="id">ext6</attribute>
-      <item>
-        <attribute name="label" translatable="yes">Side _Panel</attribute>
-        <attribute name="action">win.side-panel</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Bottom Panel</attribute>
-        <attribute name="action">win.bottom-panel</attribute>
-        <attribute name="hidden-when">action-disabled</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Fullscreen</attribute>
-        <attribute name="action">win.fullscreen</attribute>
-      </item>
-    </section>
-    <section>
-      <attribute name="id">ext7</attribute>
-    </section>
-    <section>
-      <attribute name="id">ext8</attribute>
+      <attribute name="id">search-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Find…</attribute>
         <attribute name="action">win.find</attribute>
@@ -201,30 +176,55 @@
       </item>
     </section>
     <section>
-      <attribute name="id">ext9</attribute>
+      <attribute name="id">edit-section</attribute>
     </section>
     <section>
-      <attribute name="id">ext10</attribute>
+      <attribute name="id">edit-section-1</attribute>
+    </section>
+    <section>
+      <attribute name="id">view-section</attribute>
+      <item>
+        <attribute name="label" translatable="yes">Side _Panel</attribute>
+        <attribute name="action">win.side-panel</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Bottom Panel</attribute>
+        <attribute name="action">win.bottom-panel</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Fullscreen</attribute>
+        <attribute name="action">win.fullscreen</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="id">view-section-1</attribute>
+    </section>
+    <section>
+      <attribute name="id">view-section-2</attribute>
       <item>
         <attribute name="label" translatable="yes">_Highlight Mode…</attribute>
         <attribute name="action">win.highlight-mode</attribute>
       </item>
     </section>
     <section>
-      <attribute name="id">ext11</attribute>
+      <attribute name="id">spell-section</attribute>
     </section>
     <section>
-      <attribute name="id">ext12</attribute>
+      <attribute name="id">tools-section</attribute>
     </section>
     <section>
-      <attribute name="id">appmenuext2</attribute>
+      <attribute name="id">tools-section-1</attribute>
+    </section>
+    <section>
+      <attribute name="id">preferences-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Preferences</attribute>
         <attribute name="action">app.preferences</attribute>
       </item>
     </section>
     <section>
-      <attribute name="id">appmenuext3</attribute>
+      <attribute name="id">help-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Help</attribute>
         <attribute name="action">app.help</attribute>
@@ -235,7 +235,7 @@
       </item>
     </section>
     <section>
-      <attribute name="id">ext13</attribute>
+      <attribute name="id">close-section</attribute>
       <item>
         <attribute name="label" translatable="yes">_Close All</attribute>
         <attribute name="action">win.close-all</attribute>

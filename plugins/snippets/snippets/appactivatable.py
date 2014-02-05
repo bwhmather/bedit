@@ -50,7 +50,7 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
                 self.app.add_action(action)
 
                 item = Gio.MenuItem.new(_("Manage _Snippets..."), "app.snippets")
-                self.menu = self.extend_menu("appmenuext2")
+                self.menu = self.extend_menu("preferences-section")
                 self.menu.append_menu_item(item)
 
         def do_deactivate(self):

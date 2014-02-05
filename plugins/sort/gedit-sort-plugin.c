@@ -428,8 +428,7 @@ gedit_sort_plugin_app_activate (GeditAppActivatable *activatable)
 
 	priv = GEDIT_SORT_PLUGIN (activatable)->priv;
 
-	priv->menu_ext = gedit_app_activatable_extend_menu (activatable,
-	                                                    "ext9");
+	priv->menu_ext = gedit_app_activatable_extend_menu (activatable, "tools-section");
 	item = g_menu_item_new (_("S_ort..."), "win.sort");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);

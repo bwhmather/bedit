@@ -130,8 +130,7 @@ gedit_spell_app_activatable_activate (GeditAppActivatable *activatable)
 	GMenuItem *item;
 
 	gtk_application_add_accelerator (GTK_APPLICATION (priv->app), "<Shift>F7", "win.check_spell", NULL);
-	priv->menu_ext = gedit_app_activatable_extend_menu (activatable,
-	                                                    "ext5");
+	priv->menu_ext = gedit_app_activatable_extend_menu (activatable, "spell-section");
 
 	item = g_menu_item_new (_("_Check Spelling..."), "win.check_spell");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);

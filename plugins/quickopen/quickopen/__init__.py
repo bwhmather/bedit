@@ -30,7 +30,7 @@ class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
     def do_activate(self):
         self.app.add_accelerator("<Primary><Alt>O", "win.quickopen", None)
 
-        self.menu_ext = self.extend_menu("ext2")
+        self.menu_ext = self.extend_menu("file-section")
         item = Gio.MenuItem.new(_("Quick Open..."), "win.quickopen")
         self.menu_ext.prepend_menu_item(item)
 
