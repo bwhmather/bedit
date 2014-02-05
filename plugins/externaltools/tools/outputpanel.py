@@ -132,7 +132,7 @@ class OutputPanel(UniqueById):
 
     def visible(self):
         panel = self.window.get_bottom_panel()
-        return panel.props.visible and panel.item_is_active(self.panel)
+        return panel.props.visible and panel.props.visible_child == self.panel
 
     def write(self, text, tag = None):
         buffer = self['view'].get_buffer()
