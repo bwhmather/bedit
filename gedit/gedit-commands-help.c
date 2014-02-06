@@ -49,15 +49,18 @@ _gedit_cmd_help_about (GtkAction   *action,
 		       GeditWindow *window)
 {
 	static const gchar * const authors[] = {
-		"Paolo Maggi <paolo@gnome.org>",
-		"Paolo Borelli <pborelli@katamail.com>",
-		"Steve Fr\303\251cinaux  <steve@istique.net>",
-		"Jesse van den Kieboom  <jessevdk@gnome.org>",
-		"Ignacio Casal Quinteiro <icq@gnome.org>",
-		"Garrett Regier <garrettregier@gmail.com>",
-		"James Willcox <jwillcox@gnome.org>",
+		"Alex Roberts",
 		"Chema Celorio",
+		"Evan Lawrence",
 		"Federico Mena Quintero <federico@novell.com>",
+		"Garrett Regier <garrettregier@gmail.com>",
+		"Ignacio Casal Quinteiro <icq@gnome.org>",
+		"James Willcox <jwillcox@gnome.org>",
+		"Jesse van den Kieboom <jessevdk@gnome.org>",
+		"Paolo Borelli <pborelli@katamail.com>",
+		"Paolo Maggi <paolo@gnome.org>",
+		"S\303\251bastien Wilmet <swilmet@gnome.org>",
+		"Steve Fr\303\251cinaux <steve@istique.net>",
 		NULL
 	};
 
@@ -69,15 +72,10 @@ _gedit_cmd_help_about (GtkAction   *action,
 		NULL
 	};
 
-	static const gchar copyright[] = \
-		"Copyright \xc2\xa9 1998-2000 Evan Lawrence, Alex Roberts\n"
-		"Copyright \xc2\xa9 2000-2002 Chema Celorio, Paolo Maggi\n"
-		"Copyright \xc2\xa9 2003-2006 Paolo Maggi\n"
-		"Copyright \xc2\xa9 2004-2011 Paolo Borelli, Jesse van den Kieboom\nSteve Fr\303\251cinaux, Ignacio Casal Quinteiro";
+	static const gchar copyright[] = "Copyright \xc2\xa9 1998-2014 - the gedit team";
 
 	static const gchar comments[] = \
-		N_("gedit is a small and lightweight text editor for the "
-		   "GNOME Desktop");
+		N_("gedit is a small and lightweight text editor for the GNOME Desktop");
 
 	GdkPixbuf *logo;
 	const gchar *data_dir;
