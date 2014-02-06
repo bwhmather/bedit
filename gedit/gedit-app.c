@@ -1284,7 +1284,6 @@ gedit_app_init (GeditApp *app)
 			  app);
 
 	g_application_add_main_option_entries (G_APPLICATION (app), options);
-	g_application_add_option_group (G_APPLICATION (app), gtk_get_option_group (FALSE));
 
 #ifdef ENABLE_INTROSPECTION
 	g_application_add_option_group (G_APPLICATION (app), g_irepository_get_option_group ());
