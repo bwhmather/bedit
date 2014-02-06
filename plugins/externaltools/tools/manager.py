@@ -46,10 +46,10 @@ class LanguagesPopup(Gtk.Popover):
         self.model = Gtk.ListStore(str, str, bool)
 
         self.sw = Gtk.ScrolledWindow()
-        self.sw.set_size_request(200, 200)
+        self.sw.set_size_request(-1, 200)
         self.sw.show()
 
-        self.sw.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        self.sw.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         self.sw.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
 
         self.view = Gtk.TreeView(model=self.model)
