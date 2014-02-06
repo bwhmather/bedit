@@ -18,6 +18,7 @@
 import sys
 import os
 import shutil
+import gettext
 
 from gi.repository import Gedit, Gtk, GObject, Gio, GLib
 import platform
