@@ -291,7 +291,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                         'on_add_snippet_button_clicked': self.on_add_snippet_button_clicked,
                         'on_remove_snippet_button_clicked': self.on_remove_snippet_button_clicked,
                         'on_import_snippets_button_clicked': self.on_import_snippets_button_clicked,
-                        'on_export_snippets_button_clickded': self.on_export_snippets_button_clicked,
+                        'on_export_snippets_button_clicked': self.on_export_snippets_button_clicked,
                         'on_entry_tab_trigger_focus_out': self.on_entry_tab_trigger_focus_out,
                         'on_entry_tab_trigger_changed': self.on_entry_tab_trigger_changed,
                         'on_entry_accelerator_focus_out': self.on_entry_accelerator_focus_out,
