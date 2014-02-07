@@ -159,7 +159,7 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
         self._manager = None
 
     def on_manager_tools_updated(self, manager):
-        for window in Gio.Application.get_default().get_windows():
+        for window in Gio.Application.get_default().get_main_windows():
             window._external_tools_window_activatable.actions.update()
 
 # ex:ts=4:et:

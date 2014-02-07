@@ -1376,6 +1376,37 @@ gedit_app_create_window (GeditApp  *app,
 }
 
 /**
+ * gedit_app_get_main_windows:
+ * @app: the #GeditApp
+ *
+ * Returns all #GeditWindows currently open in #GeditApp.
+ * This differs from gtk_application_get_windows() since it does not
+ * include the preferences dialog and other auxiliary windows.
+ *
+ * Return value: (element-type Gedit.Window) (transfer container):
+ * a newly allocated list of #GeditWindow objects
+ */
+GList *
+gedit_app_get_main_windows (GeditApp *app)
+{
+	GList *res = NULL;
+	GList *windows, *l;
+
+	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
+
+	windows = gtk_application_get_windows (GTK_APPLICATION (app));
+	for (l = windows; l != NULL; l = g_list_next (l))
+	{
+		if (GEDIT_IS_WINDOW (l->data))
+		{
+			res = g_list_prepend (res, l->data);
+		}
+	}
+
+	return g_list_reverse (res);
+}
+
+/**
  * gedit_app_get_documents:
  * @app: the #GeditApp
  *
@@ -1490,7 +1521,6 @@ gedit_app_process_window_event (GeditApp    *app,
     return FALSE;
 }
 
-
 static GMenuModel *
 find_extension_point_section (GMenuModel  *model,
                               const gchar *extension_point)
@@ -1524,8 +1554,13 @@ app_lockdown_changed (GeditApp *app)
 	windows = gtk_application_get_windows (GTK_APPLICATION (app));
 	for (l = windows; l != NULL; l = g_list_next (l))
 	{
-		_gedit_window_set_lockdown (GEDIT_WINDOW (l->data),
-		                            app->priv->lockdown);
+		GtkWindow *window = l->data;
+
+		if (GEDIT_IS_WINDOW (window))
+		{
+			_gedit_window_set_lockdown (GEDIT_WINDOW (window),
+				                    app->priv->lockdown);
+		}
 	}
 
 	g_object_notify (G_OBJECT (app), "lockdown");

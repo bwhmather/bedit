@@ -1904,23 +1904,20 @@ static void
 quit_all (void)
 {
 	GList *windows;
-	GList *item;
-	GeditApp *app;
+	GList *l;
 
-	app = GEDIT_APP (g_application_get_default ());
-	windows = g_list_copy (gtk_application_get_windows (GTK_APPLICATION (app)));
+	windows = gedit_app_get_main_windows (GEDIT_APP (g_application_get_default ()));
 
-	for (item = windows; item; item = g_list_next (item))
+	for (l = windows; l != NULL; l = g_list_next (l))
 	{
-		GeditWindow *window = GEDIT_WINDOW (item->data);
+		GeditWindow *window = l->data;
 
 		g_object_set_data (G_OBJECT (window),
 		                   GEDIT_IS_QUITTING_ALL,
 		                   GINT_TO_POINTER (TRUE));
 
 		if (!(gedit_window_get_state (window) &
-		                    (GEDIT_WINDOW_STATE_SAVING |
-		                     GEDIT_WINDOW_STATE_PRINTING)))
+		      (GEDIT_WINDOW_STATE_SAVING | GEDIT_WINDOW_STATE_PRINTING)))
 		{
 			file_close_all (window, TRUE);
 		}

@@ -91,10 +91,10 @@ GType 		 gedit_app_get_type 			(void) G_GNUC_CONST;
 GeditWindow	*gedit_app_create_window		(GeditApp    *app,
 							 GdkScreen   *screen);
 
-/* Returns a newly allocated list with all the documents */
+GList		*gedit_app_get_main_windows		(GeditApp    *app);
+
 GList		*gedit_app_get_documents		(GeditApp    *app);
 
-/* Returns a newly allocated list with all the views */
 GList		*gedit_app_get_views			(GeditApp    *app);
 
 /* Lockdown state */

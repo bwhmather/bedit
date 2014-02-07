@@ -321,7 +321,8 @@ on_syntax_highlighting_changed (GSettings     *settings,
 	g_list_free (docs);
 
 	/* update the sensitivity of the Higlight Mode menu item */
-	windows = gtk_application_get_windows (GTK_APPLICATION (g_application_get_default ()));
+	windows = gedit_app_get_main_windows (GEDIT_APP (g_application_get_default ()));
+
 	for (l = windows; l != NULL; l = g_list_next (l))
 	{
 		GAction *action;
@@ -329,6 +330,8 @@ on_syntax_highlighting_changed (GSettings     *settings,
 		action = g_action_map_lookup_action (G_ACTION_MAP (l->data), "highlight-mode");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enable);
 	}
+
+	g_list_free (windows);
 }
 
 static void
