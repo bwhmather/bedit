@@ -247,25 +247,19 @@ class MultipleDocumentsSaver:
         else:
             docs = [window.get_active_document()]
 
-        for i in range(len(docs)):
-            doc = docs[i]
-
-            if doc.get_modified():
-                all_docs = False
-                docs.remove(doc)
-            
+        docs_to_save = [ doc for doc in docs if doc.get_modified() ]
         signals = {}
 
-        for doc in docs:
+        for doc in docs_to_save:
             signals[doc] = doc.connect('saving', self.on_document_saving)
 
-        if all_docs:
+        if len(docs_to_save) == len(docs) and len(docs) != 0:
             Gedit.commands_save_all_documents(window)
         else:
-            for doc in docs:
+            for doc in docs_to_save:
                 Gedit.commands_save_document(window, doc)
 
-        for doc in docs:
+        for doc in docs_to_save:
             doc.disconnect(signals[doc])
 
         self.run_tool()
