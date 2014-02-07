@@ -152,7 +152,7 @@ class Manager(GObject.Object):
         callbacks = {
             'on_add_tool_button_clicked'    : self.on_add_tool_button_clicked,
             'on_remove_tool_button_clicked' : self.on_remove_tool_button_clicked,
-            'on_tool_manager_dialog_response' : self.on_tool_manager_dialog_response,
+            'on_tool_manager_dialog_delete_event' : self.on_tool_manager_dialog_delete_event,
             'on_tool_manager_dialog_focus_out': self.on_tool_manager_dialog_focus_out,
             'on_tool_manager_dialog_configure_event': self.on_tool_manager_dialog_configure_event,
             'on_accelerator_key_press'        : self.on_accelerator_key_press,
@@ -179,6 +179,9 @@ class Manager(GObject.Object):
         context.set_junction_sides(Gtk.JunctionSides.BOTTOM)
         context = self['toolbar1'].get_style_context()
         context.set_junction_sides(Gtk.JunctionSides.TOP)
+        context.set_junction_sides(Gtk.JunctionSides.BOTTOM)
+
+        self['help_button'].connect("clicked", lambda b: Gio.Application.get_default().show_help(self.dialog, 'gedit', 'gedit-plugins-external-tools'))
 
         for name in ['input', 'output', 'applicability', 'save-files']:
             self.__init_combobox(name)
@@ -723,18 +726,10 @@ class Manager(GObject.Object):
         self.current_node.shortcut = None
         self['commands'].grab_focus()
 
-    def on_tool_manager_dialog_response(self, dialog, response):
-        if response == Gtk.ResponseType.HELP:
-            Gio.Application.get_default().show_help(self.dialog, 'gedit', 'gedit-plugins-external-tools')
-            return
-
+    def on_tool_manager_dialog_delete_event(self, dialog, event):
         self.save_current_tool()
-        self.emit('tools-updated')
-
-        self.dialog.destroy()
-        self.dialog = None
-        self.tools = None
-
+        return False
+    
     def on_tool_manager_dialog_focus_out(self, dialog, event):
         self.save_current_tool()
         self.emit('tools-updated')
