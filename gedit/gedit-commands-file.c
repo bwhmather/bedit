@@ -438,8 +438,8 @@ _gedit_cmd_file_open (GSimpleAction *action,
 						     GTK_WINDOW (window),
 						     GTK_FILE_CHOOSER_ACTION_OPEN,
 						     NULL,
-						     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-						     GTK_STOCK_OPEN, GTK_RESPONSE_OK,
+						     _("_Cancel"), GTK_RESPONSE_CANCEL,
+						     _("_Open"), GTK_RESPONSE_OK,
 						     NULL);
 
 	g_object_set_data (G_OBJECT (window),
@@ -830,8 +830,8 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 						     GTK_WINDOW (window),
 						     GTK_FILE_CHOOSER_ACTION_SAVE,
 						     NULL,
-						     GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-						     GTK_STOCK_SAVE, GTK_RESPONSE_OK,
+						     _("_Cancel"), GTK_RESPONSE_CANCEL,
+						     _("_Save"), GTK_RESPONSE_OK,
 						     NULL);
 
 	gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (save_dialog),

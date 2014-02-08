@@ -174,12 +174,10 @@ set_contents (GtkWidget *infobar,
 
 static void
 set_message_area_text_and_icon (GtkWidget        *message_area,
-				const gchar      *icon_stock_id,
 				const gchar      *primary_text,
 				const gchar      *secondary_text)
 {
 	GtkWidget *hbox_content;
-	GtkWidget *image;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
@@ -188,11 +186,6 @@ set_message_area_text_and_icon (GtkWidget        *message_area,
 
 	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
 	gtk_widget_show (hbox_content);
-
-	image = gtk_image_new_from_stock (icon_stock_id, GTK_ICON_SIZE_DIALOG);
-	gtk_widget_show (image);
-	gtk_box_pack_start (GTK_BOX (hbox_content), image, FALSE, FALSE, 0);
-	gtk_widget_set_valign (image, GTK_ALIGN_START);
 
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 	gtk_widget_show (vbox);
@@ -299,7 +292,6 @@ create_infobar (GeditWindow *window,
 
 	message = g_strdup_printf ("%s (%s)", _("There is a new version of gedit"), version);
 	set_message_area_text_and_icon (infobar,
-					"gtk-dialog-info",
 					message,
 					_("You can download the new version of gedit"
 					  " by clicking on the download button or"

@@ -138,13 +138,6 @@ class Popup(Gtk.Dialog):
             cell.set_property('cell-background-set', False)
             cell.set_property('style-set', False)
 
-    def _icon_from_stock(self, stock):
-        theme = Gtk.icon_theme_get_default()
-        size = Gtk.icon_size_lookup(Gtk.IconSize.MENU)
-        pixbuf = theme.load_icon(stock, size[0], Gtk.IconLookupFlags.USE_BUILTIN)
-
-        return pixbuf
-
     def _is_text(self, entry):
         content_type = entry.get_content_type()
 

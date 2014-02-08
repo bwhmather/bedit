@@ -121,12 +121,9 @@ create_dialog (GeditSpellLanguageDialog *dlg,
 	};
 
 	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
-				GTK_STOCK_CANCEL,
-				GTK_RESPONSE_CANCEL,
-				GTK_STOCK_OK,
-				GTK_RESPONSE_OK,
-				GTK_STOCK_HELP,
-				GTK_RESPONSE_HELP,
+				_("_Cancel"), GTK_RESPONSE_CANCEL,
+				_("_OK"), GTK_RESPONSE_CANCEL,
+				_("_Help"), GTK_RESPONSE_HELP,
 				NULL);
 
 	gtk_window_set_title (GTK_WINDOW (dlg), _("Set language"));

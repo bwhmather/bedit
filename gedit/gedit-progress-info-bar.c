@@ -47,9 +47,9 @@ gedit_progress_info_bar_set_has_cancel_button (GeditProgressInfoBar *bar,
 					       gboolean              has_button)
 {
 	if (has_button)
-		gtk_info_bar_add_button (GTK_INFO_BAR (bar),
-					 GTK_STOCK_CANCEL,
-					 GTK_RESPONSE_CANCEL);
+	{
+		gtk_info_bar_add_button (GTK_INFO_BAR (bar), _("_Cancel"), GTK_RESPONSE_CANCEL);
+	}
 }
 
 static void

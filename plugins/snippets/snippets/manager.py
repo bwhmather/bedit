@@ -163,9 +163,9 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                 snippet = model.get_value(iter, self.SNIPPET_COLUMN)
 
                 if snippet and not snippet.valid:
-                        cell.set_property('stock-id', Gtk.STOCK_DIALOG_ERROR)
+                        cell.set_property('icon-name', 'dialog-error')
                 else:
-                        cell.set_property('stock-id', None)
+                        cell.set_property('icon-name', None)
 
                 cell.set_property('xalign', 1.0)
 
@@ -664,7 +664,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
 
                 if text and not Library().valid_tab_trigger(text):
                         img = self['image_tab_trigger']
-                        img.set_from_stock(Gtk.STOCK_DIALOG_ERROR, Gtk.IconSize.BUTTON)
+                        img.set_from_icon_name('dialog-error', Gtk.IconSize.BUTTON)
                         img.show()
 
                         #self['hbox_tab_trigger'].set_spacing(3)
@@ -787,8 +787,8 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
         def on_import_snippets_button_clicked(self, button):
                 dlg = Gtk.FileChooserDialog(parent=self.get_toplevel(), title=_("Import snippets"),
                                 action=Gtk.FileChooserAction.OPEN,
-                                buttons=(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                                         Gtk.STOCK_OPEN, Gtk.ResponseType.OK))
+                                buttons=(_("_Cancel"), Gtk.ResponseType.CANCEL,
+                                         _("_Open"), Gtk.ResponseType.OK))
 
                 dlg.add_filter(self.file_filter(_('All supported archives'), ('*.gz','*.bz2','*.tar', '*.xml')))
                 dlg.add_filter(self.file_filter(_('Gzip compressed archive'), ('*.tar.gz',)))
@@ -872,8 +872,8 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                 if not filename:
                         dlg = Gtk.FileChooserDialog(parent=self.get_toplevel(), title=_('Export snippets'),
                                         action=Gtk.FileChooserAction.SAVE,
-                                        buttons=(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                                                 Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+                                        buttons=(_("_Cancel"), Gtk.ResponseType.CANCEL,
+                                                 _("_Save"), Gtk.ResponseType.OK))
 
                         dlg._export_snippets = export_snippets
                         dlg.add_filter(self.file_filter(_('All supported archives'), ('*.gz','*.bz2','*.tar')))
@@ -910,8 +910,8 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
 
                 dlg = Gtk.FileChooserDialog(parent=self.get_toplevel(), title=_('Export snippets'),
                                 action=Gtk.FileChooserAction.SAVE,
-                                buttons=(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
-                                         Gtk.STOCK_SAVE, Gtk.ResponseType.OK))
+                                buttons=(_('_Cancel'), Gtk.ResponseType.CANCEL,
+                                         _('_Save'), Gtk.ResponseType.OK))
 
                 dlg._export_snippets = snippets
 

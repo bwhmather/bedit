@@ -850,7 +850,7 @@ install_scheme_clicked (GtkButton              *button,
 	chooser = gtk_file_chooser_dialog_new (_("Add Scheme"),
 					       GTK_WINDOW (dlg),
 					       GTK_FILE_CHOOSER_ACTION_OPEN,
-					       GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+					       _("_Cancel"), GTK_RESPONSE_CANCEL,
 					       _("A_dd Scheme"), GTK_RESPONSE_ACCEPT,
 					       NULL);
 
