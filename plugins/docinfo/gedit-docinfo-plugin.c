@@ -45,7 +45,7 @@ struct _GeditDocinfoPluginPrivate
 	GSimpleAction *action;
 
 	GtkWidget *dialog;
-	GtkWidget *file_name_label;
+	GtkWidget *header_bar;
 	GtkWidget *lines_label;
 	GtkWidget *words_label;
 	GtkWidget *chars_label;
@@ -153,8 +153,8 @@ update_document_info (GeditDocinfoPlugin *plugin,
 	gint white_chars = 0;
 	gint lines = 0;
 	gint bytes = 0;
-	gchar *tmp_str;
 	gchar *doc_name;
+	gchar *tmp_str;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -182,10 +182,8 @@ update_document_info (GeditDocinfoPlugin *plugin,
 	gedit_debug_message (DEBUG_PLUGINS, "Bytes: %d", bytes);
 
 	doc_name = gedit_document_get_short_name_for_display (doc);
-	tmp_str = g_strdup_printf ("<span weight=\"bold\">%s</span>", doc_name);
-	gtk_label_set_markup (GTK_LABEL (priv->file_name_label), tmp_str);
+	gtk_header_bar_set_subtitle (GTK_HEADER_BAR (priv->header_bar), doc_name);
 	g_free (doc_name);
-	g_free (tmp_str);
 
 	tmp_str = g_strdup_printf("%d", lines);
 	gtk_label_set_text (GTK_LABEL (priv->document_lines_label), tmp_str);
@@ -338,7 +336,7 @@ create_docinfo_dialog (GeditDocinfoPlugin *plugin)
 	builder = gtk_builder_new ();
 	gtk_builder_add_from_resource (builder, "/org/gnome/gedit/plugins/docinfo/ui/gedit-docinfo-plugin.ui", NULL);
 	priv->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "dialog"));
-	priv->file_name_label = GTK_WIDGET (gtk_builder_get_object (builder, "file_name_label"));
+	priv->header_bar = GTK_WIDGET (gtk_builder_get_object (builder, "header_bar"));
 	priv->words_label = GTK_WIDGET (gtk_builder_get_object (builder, "words_label"));
 	priv->bytes_label = GTK_WIDGET (gtk_builder_get_object (builder, "bytes_label"));
 	priv->lines_label = GTK_WIDGET (gtk_builder_get_object (builder, "lines_label"));
@@ -378,7 +376,6 @@ create_docinfo_dialog (GeditDocinfoPlugin *plugin)
 	 * prevent loosing the selection in the document when
 	 * creating the dialog.
 	 */
-	gtk_widget_set_can_focus (priv->file_name_label, FALSE);
 	gtk_widget_set_can_focus (priv->words_label, FALSE);
 	gtk_widget_set_can_focus (priv->bytes_label, FALSE);
 	gtk_widget_set_can_focus (priv->lines_label, FALSE);
