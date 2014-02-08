@@ -52,8 +52,8 @@
             <property name="border_width">5</property>
             <property name="spacing">6</property>
             <child>
-              <object class="GtkButton" id="helpbutton1">
-                <property name="label">gtk-help</property>
+              <object class="GtkButton" id="help_button">
+                <property name="label" translatable="yes">_Help</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -61,7 +61,7 @@
                 <property name="is_focus">False</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -70,8 +70,8 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="closebutton1">
-                <property name="label">gtk-cancel</property>
+              <object class="GtkButton" id="close_button">
+                <property name="label" translatable="yes">_Cancel</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -79,7 +79,7 @@
                 <property name="is_focus">False</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -88,8 +88,8 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button1">
-                <property name="label">gtk-ok</property>
+              <object class="GtkButton" id="ok_button">
+                <property name="label" translatable="yes">_OK</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -97,7 +97,7 @@
                 <property name="is_focus">False</property>
                 <property name="can_default">True</property>
                 <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -200,7 +200,7 @@
             </child>
             <child>
               <object class="GtkButton" id="add_button">
-                <property name="label">gtk-add</property>
+                <property name="label" translatable="yes">_Add</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -209,7 +209,7 @@
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
                 <property name="valign">start</property>
-                <property name="use_stock">True</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -220,7 +220,7 @@
             </child>
             <child>
               <object class="GtkButton" id="remove_button">
-                <property name="label">gtk-remove</property>
+                <property name="label" translatable="yes">_Remove</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -229,7 +229,7 @@
                 <property name="receives_default">True</property>
                 <property name="halign">start</property>
                 <property name="valign">start</property>
-                <property name="use_stock">True</property>
+                <property name="use_underline">True</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
@@ -323,9 +323,9 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-11">helpbutton1</action-widget>
-      <action-widget response="-6">closebutton1</action-widget>
-      <action-widget response="-5">button1</action-widget>
+      <action-widget response="-11">help_button</action-widget>
+      <action-widget response="-6">close_button</action-widget>
+      <action-widget response="-5">ok_button</action-widget>
     </action-widgets>
   </template>
 </interface>
