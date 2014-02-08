@@ -84,7 +84,10 @@ gedit_notebook_grab_focus (GtkWidget *widget)
 	current_page = gtk_notebook_get_current_page (nb);
 	tab = gtk_notebook_get_nth_page (nb, current_page);
 
-	gtk_widget_grab_focus (tab);
+	if (tab)
+	{
+		gtk_widget_grab_focus (tab);
+	}
 }
 
 static gint

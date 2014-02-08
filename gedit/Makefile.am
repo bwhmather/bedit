@@ -108,7 +108,6 @@ gedit_built_sources =			\
 	gedit/gedit-marshal.h
 
 gedit_NOINST_H_FILES =				\
-	gedit/gedit-cell-renderer-button.h	\
 	gedit/gedit-close-confirmation-dialog.h \
 	gedit/gedit-dirs.h			\
 	gedit/gedit-document-input-stream.h	\
@@ -174,7 +173,6 @@ gedit_libgedit_private_la_SOURCES =		\
 
 gedit_libgedit_c_files =			\
 	gedit/gedit-app.c               	\
-	gedit/gedit-cell-renderer-button.c	\
 	gedit/gedit-close-confirmation-dialog.c \
 	gedit/gedit-commands-documents.c	\
 	gedit/gedit-commands-edit.c		\
