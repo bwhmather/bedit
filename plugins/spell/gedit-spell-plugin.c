@@ -97,24 +97,11 @@ static void	spell_cb	(GSimpleAction *action, GVariant *parameter, gpointer data)
 static void	set_language_cb	(GSimpleAction *action, GVariant *parameter, gpointer data);
 static void	auto_spell_cb	(GSimpleAction *action, GVariant *state, gpointer data);
 
-static void
-activate_toggle (GSimpleAction *action,
-                 GVariant      *parameter,
-                 gpointer       user_data)
-{
-	GVariant *state;
-
-	state = g_action_get_state (G_ACTION (action));
-	g_action_change_state (G_ACTION (action),
-	                       g_variant_new_boolean (!g_variant_get_boolean (state)));
-	g_variant_unref (state);
-}
-
 static GActionEntry action_entries[] =
 {
-	{ "check_spell", spell_cb },
-	{ "config_spell", set_language_cb },
-	{ "auto_spell", activate_toggle, NULL, "false", auto_spell_cb }
+	{ "check-spell", spell_cb },
+	{ "config-spell", set_language_cb },
+	{ "auto-spell", NULL, NULL, "false", auto_spell_cb }
 };
 
 static GQuark spell_checker_id = 0;
@@ -899,7 +886,6 @@ auto_spell_cb (GSimpleAction  *action,
 {
 	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (data);
 	GeditSpellPluginPrivate *priv = plugin->priv;
-	GeditDocument *doc;
 	GeditView *view;
 	gboolean active;
 
@@ -910,17 +896,19 @@ auto_spell_cb (GSimpleAction  *action,
 	gedit_debug_message (DEBUG_PLUGINS, active ? "Auto Spell activated" : "Auto Spell deactivated");
 
 	view = gedit_window_get_active_view (priv->window);
-	if (view == NULL)
-		return;
+	if (view != NULL)
+	{
+		GeditDocument *doc;
 
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+		doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
-	gedit_document_set_metadata (doc,
-				     GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-				     active ? "1" : NULL, NULL);
+		gedit_document_set_metadata (doc,
+					     GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
+					     active ? "1" : NULL, NULL);
 
-	set_auto_spell (priv->window, view, active);
-	g_simple_action_set_state (action, g_variant_new_boolean (active));
+		set_auto_spell (priv->window, view, active);
+		g_simple_action_set_state (action, g_variant_new_boolean (active));
+	}
 }
 
 static void
@@ -939,19 +927,19 @@ update_ui (GeditSpellPlugin *plugin)
 	view = gedit_window_get_active_view (priv->window);
 
 	check_spell_action = g_action_map_lookup_action (G_ACTION_MAP (priv->window),
-	                                                 "check_spell");
+	                                                 "check-spell");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (check_spell_action),
 	                             (view != NULL) &&
 	                             gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 
 	config_spell_action = g_action_map_lookup_action (G_ACTION_MAP (priv->window),
-	                                                  "config_spell");
+	                                                  "config-spell");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (config_spell_action),
 	                             (view != NULL) &&
 	                             gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 
 	auto_spell_action = g_action_map_lookup_action (G_ACTION_MAP (priv->window),
-	                                                "auto_spell");
+	                                                "auto-spell");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (auto_spell_action),
 	                             (view != NULL) &&
 	                             gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
@@ -1011,7 +999,7 @@ set_auto_spell_from_metadata (GeditSpellPlugin *plugin,
 		GAction *action;
 
 		action = g_action_map_lookup_action (G_ACTION_MAP (plugin->priv->window),
-		                                     "auto_spell");
+		                                     "auto-spell");
 		g_action_change_state (action, g_variant_new_boolean (active));
 	}
 }
@@ -1089,11 +1077,12 @@ tab_added_cb (GeditWindow      *window,
 	   attach the view to the automatic spell checker. */
 	g_object_set_data (G_OBJECT (doc), GEDIT_AUTOMATIC_SPELL_VIEW, view);
 
-	g_signal_connect (doc, "loaded",
+	g_signal_connect (doc,
+			  "loaded",
 			  G_CALLBACK (on_document_loaded),
 			  plugin);
-
-	g_signal_connect (doc, "saved",
+	g_signal_connect (doc,
+			  "saved",
 			  G_CALLBACK (on_document_saved),
 			  plugin);
 }
@@ -1160,11 +1149,11 @@ gedit_spell_plugin_deactivate (GeditWindowActivatable *activatable)
 	priv = GEDIT_SPELL_PLUGIN (activatable)->priv;
 
 	g_action_map_remove_action (G_ACTION_MAP (priv->window),
-	                            "check_spell");
+	                            "check-spell");
 	g_action_map_remove_action (G_ACTION_MAP (priv->window),
-	                            "config_spell");
+	                            "config-spell");
 	g_action_map_remove_action (G_ACTION_MAP (priv->window),
-	                            "auto_spell");
+	                            "auto-spell");
 
 	g_signal_handler_disconnect (priv->window, priv->tab_added_id);
 	g_signal_handler_disconnect (priv->window, priv->tab_removed_id);

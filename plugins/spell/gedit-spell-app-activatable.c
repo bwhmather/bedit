@@ -129,18 +129,18 @@ gedit_spell_app_activatable_activate (GeditAppActivatable *activatable)
 	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (app_activatable);
 	GMenuItem *item;
 
-	gtk_application_add_accelerator (GTK_APPLICATION (priv->app), "<Shift>F7", "win.check_spell", NULL);
+	gtk_application_add_accelerator (GTK_APPLICATION (priv->app), "<Shift>F7", "win.check-spell", NULL);
 	priv->menu_ext = gedit_app_activatable_extend_menu (activatable, "spell-section");
 
-	item = g_menu_item_new (_("_Check Spelling..."), "win.check_spell");
+	item = g_menu_item_new (_("_Check Spelling..."), "win.check-spell");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
 
-	item = g_menu_item_new (_("Set _Language..."), "win.config_spell");
+	item = g_menu_item_new (_("Set _Language..."), "win.config-spell");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
 
-	item = g_menu_item_new (_("_Highlight Misspelled Words"), "win.auto_spell");
+	item = g_menu_item_new (_("_Highlight Misspelled Words"), "win.auto-spell");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
 }
@@ -151,7 +151,7 @@ gedit_spell_app_activatable_deactivate (GeditAppActivatable *activatable)
 	GeditSpellAppActivatable *app_activatable = GEDIT_SPELL_APP_ACTIVATABLE (activatable);
 	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (app_activatable);
 
-	gtk_application_remove_accelerator (GTK_APPLICATION (priv->app), "win.check_spell", NULL);
+	gtk_application_remove_accelerator (GTK_APPLICATION (priv->app), "win.check-spell", NULL);
 	g_clear_object (&priv->menu_ext);
 }
 
