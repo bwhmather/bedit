@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 2.12 -->
-  <object class="GtkImage" id="add_word_image">
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-add</property>
-  </object>
-  <object class="GtkImage" id="change_all_image">
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-convert</property>
-  </object>
-  <object class="GtkImage" id="change_image">
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-convert</property>
-  </object>
+  <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkWindow" id="check_spelling_window">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -113,7 +101,6 @@
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
                     <property name="use_action_appearance">False</property>
-                    <property name="image">check_word_image</property>
                     <property name="use_underline">True</property>
                   </object>
                   <packing>
@@ -206,7 +193,6 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="image">ignore_image</property>
                         <property name="use_underline">True</property>
                       </object>
                       <packing>
@@ -220,7 +206,6 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="image">change_image</property>
                         <property name="use_underline">True</property>
                       </object>
                       <packing>
@@ -236,7 +221,6 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="image">ignore_all_image</property>
                         <property name="use_underline">True</property>
                       </object>
                       <packing>
@@ -252,7 +236,6 @@
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="use_action_appearance">False</property>
-                        <property name="image">change_all_image</property>
                         <property name="use_underline">True</property>
                       </object>
                       <packing>
@@ -303,7 +286,6 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="use_action_appearance">False</property>
-                            <property name="image">add_word_image</property>
                             <property name="use_underline">True</property>
                           </object>
                           <packing>
@@ -343,17 +325,5 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkImage" id="check_word_image">
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-spell-check</property>
-  </object>
-  <object class="GtkImage" id="ignore_all_image">
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-goto-bottom</property>
-  </object>
-  <object class="GtkImage" id="ignore_image">
-    <property name="can_focus">False</property>
-    <property name="stock">gtk-go-down</property>
   </object>
 </interface>
