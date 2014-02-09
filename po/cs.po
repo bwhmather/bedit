@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-02-08 10:16+0000\n"
-"PO-Revision-Date: 2014-02-08 11:26+0100\n"
+"POT-Creation-Date: 2014-02-09 06:14+0000\n"
+"PO-Revision-Date: 2014-02-09 09:44+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -600,16 +600,22 @@ msgstr "Zavřít _bez uložení"
 #: ../gedit/gedit-close-confirmation-dialog.c:305
 #: ../gedit/gedit-commands-file.c:441 ../gedit/gedit-commands-file.c:557
 #: ../gedit/gedit-commands-file.c:626 ../gedit/gedit-commands-file.c:833
-#: ../gedit/gedit-commands-file.c:1283 ../gedit/gedit-io-error-info-bar.c:138
+#: ../gedit/gedit-commands-file.c:1283 ../gedit/gedit-encodings-dialog.ui.h:3
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:2
+#: ../gedit/gedit-io-error-info-bar.c:138
 #: ../gedit/gedit-io-error-info-bar.c:550
 #: ../gedit/gedit-io-error-info-bar.c:1230
 #: ../gedit/gedit-preferences-dialog.c:853
+#: ../gedit/gedit-progress-info-bar.c:51
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
 #: ../plugins/quickopen/quickopen/popup.py:36
 #: ../plugins/snippets/snippets/manager.py:790
 #: ../plugins/snippets/snippets/manager.py:875
 #: ../plugins/snippets/snippets/manager.py:913
+#: ../plugins/sort/gedit-sort-plugin.ui.h:2
 #: ../plugins/spell/gedit-spell-language-dialog.c:124
+#: ../plugins/spell/languages-dialog.ui.h:3
+#: ../plugins/time/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_Zrušit"
 
@@ -801,7 +807,7 @@ msgstr "Soubor „%s“ je pouze pro čtení."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Chcete se pokusit nahradit jej souborem, který ukládáte?"
 
-#: ../gedit/gedit-commands-file.c:558 ../gedit/gedit-replace-dialog.ui.h:3
+#: ../gedit/gedit-commands-file.c:558 ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "Nah_radit"
 
@@ -989,15 +995,16 @@ msgstr "„%s“ nenalezeno"
 msgid "Unsaved Document %d"
 msgstr "Neuložený dokument %d"
 
-#: ../gedit/gedit-documents-panel.c:109 ../gedit/gedit-documents-panel.c:123
+#: ../gedit/gedit-documents-panel.c:456
+#, c-format
+msgid "Tab Group %i"
+msgstr "Skupina karet %i"
+
+#: ../gedit/gedit-documents-panel.c:947 ../gedit/gedit-documents-panel.c:961
 #: ../gedit/gedit-window.c:1187 ../gedit/gedit-window.c:1193
 #: ../gedit/gedit-window.c:1201
 msgid "Read-Only"
 msgstr "Pouze ke čtení"
-
-#: ../gedit/gedit-documents-panel.c:1130 ../gedit/gedit-window.c:2676
-msgid "Documents"
-msgstr "Dokumenty"
 
 #: ../gedit/gedit-encodings.c:132 ../gedit/gedit-encodings.c:174
 #: ../gedit/gedit-encodings.c:176 ../gedit/gedit-encodings.c:178
@@ -1134,19 +1141,47 @@ msgstr "Přidat nebo odstranit…"
 msgid "Character encodings"
 msgstr "Kódování znaků"
 
-#: ../gedit/gedit-encodings-dialog.ui.h:2
+#: ../gedit/gedit-encodings-dialog.ui.h:2 ../gedit/gedit-menu.ui.h:3
+#: ../gedit/gedit-preferences-dialog.ui.h:2
+#: ../plugins/snippets/snippets/snippets.ui.h:3
+#: ../plugins/sort/gedit-sort-plugin.ui.h:4
+#: ../plugins/spell/gedit-spell-language-dialog.c:126
+#: ../plugins/spell/languages-dialog.ui.h:2
+#: ../plugins/time/gedit-time-dialog.ui.h:7
+msgid "_Help"
+msgstr "_Nápověda"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:4
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:3
+#: ../plugins/spell/gedit-spell-language-dialog.c:125
+#: ../plugins/spell/languages-dialog.ui.h:4
+msgid "_OK"
+msgstr "_Budiž"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:5
 msgid "A_vailable encodings:"
 msgstr "_Dostupná kódování:"
 
-#: ../gedit/gedit-encodings-dialog.ui.h:3
+#: ../gedit/gedit-encodings-dialog.ui.h:6
 msgid "_Description"
 msgstr "_Popis"
 
-#: ../gedit/gedit-encodings-dialog.ui.h:4
+#: ../gedit/gedit-encodings-dialog.ui.h:7
 msgid "_Encoding"
 msgstr "_Kódování"
 
-#: ../gedit/gedit-encodings-dialog.ui.h:5
+#. Add to Dictionary
+#: ../gedit/gedit-encodings-dialog.ui.h:8
+#: ../plugins/spell/gedit-automatic-spell-checker.c:506
+msgid "_Add"
+msgstr "Přid_at"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:9
+#| msgid "Remove Tool"
+msgid "_Remove"
+msgstr "Odeb_rat"
+
+#: ../gedit/gedit-encodings-dialog.ui.h:10
 msgid "E_ncodings shown in menu:"
 msgstr "Kódová_ní zobrazovaná v nabídce:"
 
@@ -1192,7 +1227,7 @@ msgstr "Prostý text"
 msgid "Highlight Mode"
 msgstr "Režim zvýrazňování"
 
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:2
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:4
 msgid "Search highlight mode..."
 msgstr "Režim zvýrazňování při hledání…"
 
@@ -1549,11 +1584,6 @@ msgstr "_Nové okno"
 msgid "_Preferences"
 msgstr "_Předvolby"
 
-#: ../gedit/gedit-menu.ui.h:3
-#: ../plugins/spell/gedit-spell-language-dialog.c:126
-msgid "_Help"
-msgstr "_Nápověda"
-
 #: ../gedit/gedit-menu.ui.h:4
 msgid "_About"
 msgstr "O _aplikaci"
@@ -1607,6 +1637,11 @@ msgid "_Close All"
 msgstr "Zavřít vš_e"
 
 #: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-notebook-popup-menu.ui.h:5
+#: ../gedit/gedit-preferences-dialog.ui.h:3
+#: ../gedit/gedit-replace-dialog.ui.h:2
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
+#: ../plugins/snippets/snippets/snippets.ui.h:2
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Zavřít"
 
@@ -1668,124 +1703,124 @@ msgstr "Nelze odstranit schéma barev „%s“."
 msgid "gedit Preferences"
 msgstr "Předvolby gedit"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:525
+#: ../gedit/gedit-preferences-dialog.ui.h:4 ../gedit/gedit-view.c:525
 msgid "_Display line numbers"
 msgstr "Zobrazovat čísla řá_dků"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:3
+#: ../gedit/gedit-preferences-dialog.ui.h:5
 msgid "Display right _margin at column:"
 msgstr "Zobrazovat pravý _okraj na sloupci:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:4
+#: ../gedit/gedit-preferences-dialog.ui.h:6
 msgid "Display _statusbar"
 msgstr "Zobrazovat _stavovou lištu"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:5
+#: ../gedit/gedit-preferences-dialog.ui.h:7
 #: ../gedit/gedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "Zalamování textu"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:6
+#: ../gedit/gedit-preferences-dialog.ui.h:8
 #: ../gedit/gedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
 msgstr "Povolit zalamování _textu"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:7
+#: ../gedit/gedit-preferences-dialog.ui.h:9
 #: ../gedit/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
 msgstr "Nerozdělovat _slova na dva řádky"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:8
+#: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "Highlighting"
 msgstr "Zvýrazňování"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:9
+#: ../gedit/gedit-preferences-dialog.ui.h:11
 msgid "Highlight current _line"
 msgstr "Zvýrazňovat _aktuální řádek"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:10
+#: ../gedit/gedit-preferences-dialog.ui.h:12
 msgid "Highlight matching _brackets"
 msgstr "Zvýrazňovat _odpovídající závorky"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:11
+#: ../gedit/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Zobrazit"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:12
+#: ../gedit/gedit-preferences-dialog.ui.h:14
 msgid "Tab Stops"
 msgstr "Tabulační zarážky"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:13
+#: ../gedit/gedit-preferences-dialog.ui.h:15
 msgid "_Tab width:"
 msgstr "Šířka _tabulátorů:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:14
+#: ../gedit/gedit-preferences-dialog.ui.h:16
 msgid "Insert _spaces instead of tabs"
 msgstr "Vkládat _mezery místo tabulátorů"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:15
+#: ../gedit/gedit-preferences-dialog.ui.h:17
 msgid "_Enable automatic indentation"
 msgstr "Povolit a_utomatické odsazování"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:16
+#: ../gedit/gedit-preferences-dialog.ui.h:18
 msgid "File Saving"
 msgstr "Ukládání souborů"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:17
+#: ../gedit/gedit-preferences-dialog.ui.h:19
 msgid "Create a _backup copy of files before saving"
 msgstr "Vytvářet záložní _kopii souborů před uložením"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:18
+#: ../gedit/gedit-preferences-dialog.ui.h:20
 msgid "_Autosave files every"
 msgstr "_Automaticky ukládat soubory každých"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:19
+#: ../gedit/gedit-preferences-dialog.ui.h:21
 msgid "_minutes"
 msgstr "_minut"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:20
+#: ../gedit/gedit-preferences-dialog.ui.h:22
 msgid "Editor"
 msgstr "Editor"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:21
+#: ../gedit/gedit-preferences-dialog.ui.h:23
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
 msgid "Font"
 msgstr "Písmo"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:22
+#: ../gedit/gedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
 msgstr "_Písmo editoru: "
 
-#: ../gedit/gedit-preferences-dialog.ui.h:23
+#: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
 msgstr "Zvolte písmo editoru"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:24
+#: ../gedit/gedit-preferences-dialog.ui.h:26
 msgid "Color Scheme"
 msgstr "Barevné schéma"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
+#: ../gedit/gedit-preferences-dialog.ui.h:27
 msgid "Install scheme"
 msgstr "Instalovat schéma"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26
+#: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Install Scheme"
 msgstr "Instalovat schéma"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:27
+#: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Uninstall scheme"
 msgstr "Odinstalovat schéma"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:30
 msgid "Uninstall Scheme"
 msgstr "Odinstalovat schéma"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:31
 msgid "Font & Colors"
 msgstr "Písma a barvy"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:30
+#: ../gedit/gedit-preferences-dialog.ui.h:32
 msgid "Plugins"
 msgstr "Zásuvné moduly"
 
@@ -1937,35 +1972,40 @@ msgstr "Náhled stránky dokumentu, který se má tisknout"
 msgid "Replace"
 msgstr "Nahradit"
 
-#: ../gedit/gedit-replace-dialog.ui.h:2
+#: ../gedit/gedit-replace-dialog.ui.h:3
 msgid "Replace _All"
 msgstr "Nahradit _vše"
 
-#: ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-replace-dialog.ui.h:5
+#| msgid "_Find…"
+msgid "_Find"
+msgstr "_Najít"
+
+#: ../gedit/gedit-replace-dialog.ui.h:6
 msgid "_Search for: "
 msgstr "_Hledat: "
 
-#: ../gedit/gedit-replace-dialog.ui.h:5
+#: ../gedit/gedit-replace-dialog.ui.h:7
 msgid "Replace _with: "
 msgstr "Nahradit z_a: "
 
-#: ../gedit/gedit-replace-dialog.ui.h:6
+#: ../gedit/gedit-replace-dialog.ui.h:8
 msgid "_Match case"
 msgstr "Rozlišovat velikost pís_men"
 
-#: ../gedit/gedit-replace-dialog.ui.h:7
+#: ../gedit/gedit-replace-dialog.ui.h:9
 msgid "Match _entire word only"
 msgstr "Hledat pouze _celá slova"
 
-#: ../gedit/gedit-replace-dialog.ui.h:8
+#: ../gedit/gedit-replace-dialog.ui.h:10
 msgid "Match as _regular expression"
 msgstr "Hledat jako _regulární výraz"
 
-#: ../gedit/gedit-replace-dialog.ui.h:9
+#: ../gedit/gedit-replace-dialog.ui.h:11
 msgid "Search _backwards"
 msgstr "Hledat _pozpátku"
 
-#: ../gedit/gedit-replace-dialog.ui.h:10
+#: ../gedit/gedit-replace-dialog.ui.h:12
 msgid "_Wrap around"
 msgstr "P_okračovat od začátku"
 
@@ -2152,6 +2192,10 @@ msgstr "Šířka tabulátoru: %u"
 msgid "There are unsaved documents"
 msgstr "Některé dokumenty nejsou uložené"
 
+#: ../gedit/gedit-window.c:2676
+msgid "Documents"
+msgstr "Dokumenty"
+
 #: ../gedit/gedit-window.ui.h:2
 msgid "Open a file"
 msgstr "Otevřít soubor"
@@ -2224,44 +2268,35 @@ msgstr "Statistika dokumentu"
 msgid "Report the number of words, lines and characters in a document."
 msgstr "Informuje o počtu slov, řádků a znaků v dokumentu."
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:541
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:538
 msgid "_Document Statistics"
 msgstr "_Statistika dokumentu"
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:2
-msgid "File Name"
-msgstr "Název souboru"
-
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:3
-#: ../plugins/snippets/snippets/snippets.ui.h:13
-msgid "    "
-msgstr "    "
-
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
 msgid "Document"
 msgstr "Dokument"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:5
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:3
 msgid "Selection"
 msgstr "Výběr"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:6
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
 msgstr "Řádek"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:7
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:5
 msgid "Words"
 msgstr "Slov"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:8
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:6
 msgid "Characters (with spaces)"
 msgstr "Znaků (s mezerami)"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:9
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:7
 msgid "Characters (no spaces)"
 msgstr "Znaků (bez mezer)"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:10
+#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:8
 msgid "Bytes"
 msgstr "Bajtů"
 
@@ -2964,7 +2999,7 @@ msgid "Revert selected snippet"
 msgstr "Vrátit vybraný úryvek do původního stavu"
 
 #: ../plugins/snippets/snippets/manager.py:412
-#: ../plugins/snippets/snippets/snippets.ui.h:5
+#: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Delete selected snippet"
 msgstr "Smazat vybraný úryvek"
 
@@ -2981,7 +3016,7 @@ msgstr ""
 
 #. self['hbox_tab_trigger'].set_spacing(0)
 #: ../plugins/snippets/snippets/manager.py:678
-#: ../plugins/snippets/snippets/snippets.ui.h:16
+#: ../plugins/snippets/snippets/snippets.ui.h:18
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Jedno slovo, kterým se po stisknutí tabulátoru úryvek aktivuje"
 
@@ -2995,7 +3030,7 @@ msgid "Import successfully completed"
 msgstr "Import úspěšně dokončen"
 
 #: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/snippets.ui.h:7
+#: ../plugins/snippets/snippets/snippets.ui.h:9
 msgid "Import snippets"
 msgstr "Importovat úryvky"
 
@@ -3083,56 +3118,60 @@ msgstr "Rychle vkládá často používané kusy textu"
 msgid "Manage Snippets"
 msgstr "Správa úryvků"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:2
+#: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "_Snippets:"
 msgstr "Ú_ryvky:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:3
+#: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Create new snippet"
 msgstr "Vytvořit nový úryvek"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:4
+#: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Add Snippet"
 msgstr "Přidat úryvek"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:6
+#: ../plugins/snippets/snippets/snippets.ui.h:8
 msgid "Remove Snippet"
 msgstr "Odstranit úryvek"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:8
+#: ../plugins/snippets/snippets/snippets.ui.h:10
 msgid "Import Snippets"
 msgstr "Importovat úryvky"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:9
+#: ../plugins/snippets/snippets/snippets.ui.h:11
 msgid "Export selected snippets"
 msgstr "Exportovat vybrané úryvky"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:10
+#: ../plugins/snippets/snippets/snippets.ui.h:12
 msgid "Export Snippets"
 msgstr "Exportovat úryvky"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:11
+#: ../plugins/snippets/snippets/snippets.ui.h:13
 msgid "_Edit:"
 msgstr "_Upravit:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:12
+#: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Activation"
 msgstr "Aktivace"
 
-#. "tab" here means the tab key, not the notebook tab!
 #: ../plugins/snippets/snippets/snippets.ui.h:15
+msgid "    "
+msgstr "    "
+
+#. "tab" here means the tab key, not the notebook tab!
+#: ../plugins/snippets/snippets/snippets.ui.h:17
 msgid "_Tab trigger:"
 msgstr "Spouštěč _tabulátoru:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:17
+#: ../plugins/snippets/snippets/snippets.ui.h:19
 msgid "S_hortcut key:"
 msgstr "_Klávesová zkratka:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:18
+#: ../plugins/snippets/snippets/snippets.ui.h:20
 msgid "Shortcut key with which the snippet is activated"
 msgstr "Klávesová zkratka, kterou se úryvek aktivuje"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:19
+#: ../plugins/snippets/snippets/snippets.ui.h:21
 msgid "_Drop targets:"
 msgstr "_Vynechat cíle:"
 
@@ -3146,27 +3185,27 @@ msgstr "_Seřadit…"
 msgid "Sort"
 msgstr "Řadit"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:2
+#: ../plugins/sort/gedit-sort-plugin.ui.h:3
 msgid "_Sort"
 msgstr "_Seřadit"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:3
+#: ../plugins/sort/gedit-sort-plugin.ui.h:5
 msgid "_Reverse order"
 msgstr "_Obrácené pořadí"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:4
+#: ../plugins/sort/gedit-sort-plugin.ui.h:6
 msgid "R_emove duplicates"
 msgstr "Odstranit _duplikáty"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:5
+#: ../plugins/sort/gedit-sort-plugin.ui.h:7
 msgid "_Ignore case"
 msgstr "_Ignorovat velikost písmen"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:6
+#: ../plugins/sort/gedit-sort-plugin.ui.h:8
 msgid "S_tart at column:"
 msgstr "Začít ve _sloupci:"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:7
+#: ../plugins/sort/gedit-sort-plugin.ui.h:9
 msgid "You cannot undo a sort operation"
 msgstr "Operaci řazení nemůžete vrátit zpět"
 
@@ -3178,7 +3217,7 @@ msgstr "Seřadí dokument nebo vybraný text."
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: ../plugins/spell/gedit-automatic-spell-checker.c:412
-#: ../plugins/spell/gedit-spell-checker-dialog.c:436
+#: ../plugins/spell/gedit-spell-checker-dialog.c:424
 msgid "(no suggested words)"
 msgstr "(žádná navrhovaná slova)"
 
@@ -3190,11 +3229,6 @@ msgstr "Ví_ce…"
 #: ../plugins/spell/gedit-automatic-spell-checker.c:491
 msgid "_Ignore All"
 msgstr "_Ignorovat vše"
-
-#. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:506
-msgid "_Add"
-msgstr "Přid_at"
 
 #: ../plugins/spell/gedit-automatic-spell-checker.c:545
 msgid "_Spelling Suggestions..."
@@ -3212,20 +3246,16 @@ msgstr "Nastavit _jazyk…"
 msgid "_Highlight Misspelled Words"
 msgstr "_Zvýrazňovat pravopisné chyby"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:256
-msgid "Check Spelling"
-msgstr "Kontrolovat pravopis"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:267
+#: ../plugins/spell/gedit-spell-checker-dialog.c:262
 msgid "Suggestions"
 msgstr "Návrhy"
 
 #. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: ../plugins/spell/gedit-spell-checker-dialog.c:543
+#: ../plugins/spell/gedit-spell-checker-dialog.c:523
 msgid "(correct spelling)"
 msgstr "(správný tvar)"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:684
+#: ../plugins/spell/gedit-spell-checker-dialog.c:664
 msgid "Completed spell checking"
 msgstr "Kontrola pravopisu dokončena"
 
@@ -3257,10 +3287,6 @@ msgctxt "language"
 msgid "Default"
 msgstr "Výchozí"
 
-#: ../plugins/spell/gedit-spell-language-dialog.c:125
-msgid "_OK"
-msgstr "_Budiž"
-
 #: ../plugins/spell/gedit-spell-language-dialog.c:129
 msgid "Set language"
 msgstr "Nastavit jazyk"
@@ -3269,11 +3295,11 @@ msgstr "Nastavit jazyk"
 msgid "Languages"
 msgstr "Jazyky"
 
-#: ../plugins/spell/gedit-spell-plugin.c:809
+#: ../plugins/spell/gedit-spell-plugin.c:796
 msgid "The document is empty."
 msgstr "Dokument je prázdný."
 
-#: ../plugins/spell/gedit-spell-plugin.c:834
+#: ../plugins/spell/gedit-spell-plugin.c:821
 msgid "No misspelled words"
 msgstr "Žádná chybná slova"
 
@@ -3282,7 +3308,7 @@ msgstr "Žádná chybná slova"
 msgid "Set Language"
 msgstr "Nastavení jazyka"
 
-#: ../plugins/spell/languages-dialog.ui.h:2
+#: ../plugins/spell/languages-dialog.ui.h:5
 msgid "Select the _language of the current document."
 msgstr "Vyberte _jazyk aktuálního dokumentu."
 
@@ -3334,14 +3360,6 @@ msgstr "Uživatelský slovník:"
 msgid "Add w_ord"
 msgstr "Přidat sl_ovo"
 
-#: ../plugins/spell/spell-checker.ui.h:13
-msgid "Language:"
-msgstr "Jazyk:"
-
-#: ../plugins/spell/spell-checker.ui.h:14
-msgid "Language"
-msgstr "Jazyk"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Kontrola pravopisu"
@@ -3355,29 +3373,29 @@ msgid "Insert Date and Time"
 msgstr "Vložit datum a čas"
 
 #: ../plugins/time/gedit-time-dialog.ui.h:2
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
 msgid "Use the _selected format"
 msgstr "Použít _vybraný formát"
 
 #: ../plugins/time/gedit-time-dialog.ui.h:3
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:6
 msgid "_Use custom format"
 msgstr "Použít vlastní _formát"
 
 #. Translators: Use the more common date format in your locale
 #: ../plugins/time/gedit-time-dialog.ui.h:5
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:8
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:9
 #, no-c-format
 msgid "%d/%m/%Y %H:%M:%S"
 msgstr "%e.%m.%Y %k:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
 #: ../plugins/time/gedit-time-dialog.ui.h:6
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:10
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:11
 msgid "01/11/2009 17:52:00"
 msgstr "1.11.2009 7:52:00"
 
-#: ../plugins/time/gedit-time-dialog.ui.h:7
+#: ../plugins/time/gedit-time-dialog.ui.h:9
 msgid "_Insert"
 msgstr "_Vložit"
 
@@ -3394,11 +3412,11 @@ msgstr "Dostupné formáty"
 msgid "Configure date/time plugin"
 msgstr "Nastavit zásuvný modul pro vkládání data a času"
 
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:2
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
 msgid "When inserting date/time..."
 msgstr "Při vkládání data a času…"
 
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
+#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
 msgstr "Ze_ptat se na formát"
 
@@ -3446,3 +3464,15 @@ msgstr "Poskytovatel dat Zeitgeist"
 msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Evidovat přístup a odesílat události pro dokumenty použité v aplikaci gedit"
+
+#~ msgid "File Name"
+#~ msgstr "Název souboru"
+
+#~ msgid "Check Spelling"
+#~ msgstr "Kontrolovat pravopis"
+
+#~ msgid "Language:"
+#~ msgstr "Jazyk:"
+
+#~ msgid "Language"
+#~ msgstr "Jazyk"
