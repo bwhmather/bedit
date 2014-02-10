@@ -22,14 +22,15 @@
 #include <config.h>
 #endif
 
+#include <glib/gi18n.h>
+
 #include "gedit-documents-panel.h"
 #include "gedit-debug.h"
-#include "gedit-utils.h"
 #include "gedit-multi-notebook.h"
 #include "gedit-notebook.h"
 #include "gedit-notebook-popup-menu.h"
-
-#include <glib/gi18n.h>
+#include "gedit-small-button.h"
+#include "gedit-utils.h"
 
 typedef struct _GeditDocumentsGenericRow GeditDocumentsGenericRow;
 typedef struct _GeditDocumentsGenericRow GeditDocumentsGroupRow;
@@ -41,20 +42,14 @@ struct _GeditDocumentsGenericRow
 
 	GeditDocumentsPanel *panel;
 	GtkWidget           *ref;
-	gchar               *name;
 
-	GtkWidget           *row_event_box;
-	GtkWidget           *row_box;
+	GtkWidget           *box;
 	GtkWidget           *label;
-
-	gint                 row_min_height;
-
-	GtkWidget           *close_button_image;
-	GtkWidget           *close_button_event_box;
+	GtkWidget           *close_button;
 
 	/* Not used in GeditDocumentsGroupRow */
-	GtkWidget           *pixbuf_box;
 	GtkWidget           *image;
+	GtkWidget           *status_label;
 };
 
 #define GEDIT_TYPE_DOCUMENTS_GROUP_ROW            (gedit_documents_group_row_get_type ())
@@ -93,8 +88,10 @@ GType gedit_documents_document_row_get_type (void) G_GNUC_CONST;
 
 G_DEFINE_TYPE (GeditDocumentsDocumentRow, gedit_documents_document_row, GTK_TYPE_LIST_BOX_ROW)
 
-static GtkWidget * gedit_documents_document_row_new (GeditDocumentsPanel *panel, GeditTab *tab);
-static GtkWidget * gedit_documents_group_row_new    (GeditDocumentsPanel *panel, GeditNotebook *notebook);
+static GtkWidget *gedit_documents_document_row_new (GeditDocumentsPanel *panel,
+                                                    GeditTab            *tab);
+static GtkWidget *gedit_documents_group_row_new    (GeditDocumentsPanel *panel,
+                                                    GeditNotebook       *notebook);
 
 struct _GeditDocumentsPanelPrivate
 {
@@ -124,11 +121,6 @@ enum
 };
 
 #define MAX_DOC_NAME_LENGTH 60
-
-#define ROW_HEADER_SIZE 24
-
-/* Same size as GTK_ICON_SIZE_MENU used to define the close_button_image */
-#define ROW_MIN_HEIGHT 16
 
 static guint
 get_nb_visible_rows (GeditDocumentsPanel *panel)
@@ -237,12 +229,12 @@ listbox_search_function (gconstpointer row,
 	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
 	gpointer *searched_item = (gpointer *)generic_row->ref;
 
-	return (searched_item == item) ? 0 : -1;
+	return searched_item == item ? 0 : -1;
 }
 
 static GtkListBoxRow *
-get_row_from_notebook (GeditDocumentsPanel *panel,
-                       GeditNotebook       *notebook)
+get_row_from_widget (GeditDocumentsPanel *panel,
+                     GtkWidget           *widget)
 {
 	GList *children;
 	GList *item;
@@ -250,28 +242,11 @@ get_row_from_notebook (GeditDocumentsPanel *panel,
 
 	children = gtk_container_get_children (GTK_CONTAINER (panel->priv->listbox));
 
-	item = g_list_find_custom (children, notebook, listbox_search_function);
-	row = item ? (item->data) : NULL;
+	item = g_list_find_custom (children, widget, listbox_search_function);
+	row = item ? item->data : NULL;
 
 	g_list_free (children);
 
-	return row;
-}
-
-static GtkListBoxRow *
-get_row_from_tab (GeditDocumentsPanel *panel,
-                  GeditTab            *tab)
-{
-	GList *children;
-	GList *item;
-	GtkListBoxRow *row;
-
-	children = gtk_container_get_children (GTK_CONTAINER (panel->priv->listbox));
-
-	item = g_list_find_custom (children, tab, listbox_search_function);
-	row = item ? (item->data) : NULL;
-
-	g_list_free (children);
 	return row;
 }
 
@@ -293,48 +268,16 @@ row_select (GeditDocumentsPanel *panel,
 }
 
 static void
-menu_position (GtkMenu   *menu,
-               gint      *x,
-               gint      *y,
-               gboolean  *push_in,
-               GtkWidget *row)
-{
-	gint menu_y;
-	GtkRequisition requisition;
-	GtkAllocation allocation;
-
-	gdk_window_get_origin (gtk_widget_get_window (row), x, y);
-	gtk_widget_get_preferred_size (GTK_WIDGET (menu), &requisition, NULL);
-	gtk_widget_get_allocation (row, &allocation);
-
-	if (gtk_widget_get_direction (row) == GTK_TEXT_DIR_RTL)
-	{
-		*x += allocation.x + allocation.width - requisition.width - 10;
-	}
-	else
-	{
-		*x += allocation.x + 10;
-	}
-
-	menu_y = *y + (allocation.y) + 5;
-	menu_y = MIN (menu_y, *y + allocation.height - requisition.height - 5);
-
-	*y = menu_y;
-
-	*push_in = TRUE;
-}
-
-static void
 row_state_changed (GtkWidget           *row,
                    GtkStateFlags        previous_flags,
                    GeditDocumentsPanel *panel)
 {
-	GtkStateFlags flags;
 	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
+	GtkStateFlags flags;
 
 	flags = gtk_widget_get_state_flags (row);
 
-	gtk_widget_set_visible (generic_row->close_button_image,
+	gtk_widget_set_visible (generic_row->close_button,
 	                        flags & GTK_STATE_FLAG_PRELIGHT);
 
 	if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
@@ -378,7 +321,7 @@ select_active_tab (GeditDocumentsPanel *panel)
 
 	if (notebook != NULL && tab != NULL && have_tabs)
 	{
-		GtkListBoxRow *row = get_row_from_tab (panel, tab);
+		GtkListBoxRow *row = get_row_from_widget (panel, GTK_WIDGET (tab));
 
 		if (row)
 		{
@@ -421,13 +364,13 @@ multi_notebook_tab_switched (GeditMultiNotebook  *mnb,
 	gedit_debug (DEBUG_PANEL);
 
 	if (!_gedit_window_is_removing_tabs (panel->priv->window) &&
-	    (panel->priv->is_in_tab_switched == FALSE))
+	    panel->priv->is_in_tab_switched == FALSE)
 	{
 		GtkListBoxRow *row;
 
 		panel->priv->is_in_tab_switched = TRUE;
 
-		row = get_row_from_tab (panel, new_tab);
+		row = get_row_from_widget (panel, GTK_WIDGET (new_tab));
 
 		if (row)
 		{
@@ -445,7 +388,6 @@ group_row_set_notebook_name (GtkWidget *row)
 	GeditMultiNotebook *mnb;
 	guint num;
 	gchar *name;
-
 	GeditDocumentsGroupRow *group_row = GEDIT_DOCUMENTS_GROUP_ROW (row);
 
 	notebook = GEDIT_NOTEBOOK (group_row->ref);
@@ -455,10 +397,9 @@ group_row_set_notebook_name (GtkWidget *row)
 
 	name = g_strdup_printf (_("Tab Group %i"), num + 1);
 
-	gtk_label_set_markup (GTK_LABEL (group_row->label), name);
+	gtk_label_set_text (GTK_LABEL (group_row->label), name);
 
-	g_free (group_row->name);
-	group_row->name = name;
+	g_free (name);
 }
 
 static void
@@ -487,7 +428,7 @@ group_row_update_names (GeditDocumentsPanel *panel,
 static void
 group_row_refresh_visibility (GeditDocumentsPanel *panel)
 {
-	gint notebook_is_unique;
+	gboolean notebook_is_unique;
 	GtkWidget *first_group_row;
 
 	notebook_is_unique = gedit_multi_notebook_get_n_notebooks (panel->priv->mnb) <= 1;
@@ -545,6 +486,7 @@ refresh_list (GeditDocumentsPanel *panel)
 	{
 		gtk_widget_destroy (GTK_WIDGET (l->data));
 	}
+
 	g_list_free (children);
 
 	gedit_multi_notebook_foreach_notebook (panel->priv->mnb,
@@ -563,7 +505,7 @@ multi_notebook_tab_removed (GeditMultiNotebook  *mnb,
 
 	gedit_debug (DEBUG_PANEL);
 
-	row = get_row_from_tab (panel, tab);
+	row = get_row_from_widget (panel, GTK_WIDGET (tab));
 	gtk_widget_destroy (GTK_WIDGET (row));
 	panel->priv->nb_row_tab -= 1;
 }
@@ -585,6 +527,7 @@ get_dest_position_for_tab (GeditDocumentsPanel *panel,
 
 	children = gtk_container_get_children (GTK_CONTAINER (panel->priv->listbox));
 	item = g_list_find_custom (children, notebook, listbox_search_function);
+
 	if (item)
 	{
 		res = 1 + page_num + g_list_position (children, item);
@@ -640,7 +583,7 @@ multi_notebook_notebook_removed (GeditMultiNotebook  *mnb,
 
 	gedit_debug (DEBUG_PANEL);
 
-	row = get_row_from_notebook (panel, notebook);
+	row = get_row_from_widget (panel, GTK_WIDGET (notebook));
 	gtk_container_remove (GTK_CONTAINER (panel->priv->listbox), GTK_WIDGET (row));
 
 	panel->priv->nb_row_notebook -= 1;
@@ -684,7 +627,7 @@ multi_notebook_tabs_reordered (GeditMultiNotebook  *mnb,
 
 	gedit_debug (DEBUG_PANEL);
 
-	row = get_row_from_tab (panel, GEDIT_TAB (page));
+	row = get_row_from_widget (panel, GTK_WIDGET (page));
 
 	row_move (panel, notebook, page, GTK_WIDGET (row));
 
@@ -746,31 +689,25 @@ listbox_selection_changed (GtkListBox          *listbox,
 		group_row_refresh_visibility (panel);
 	}
 
+	g_signal_handler_block (panel->priv->mnb,
+	                        panel->priv->tab_switched_handler_id);
+
 	if (GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
 	{
-		g_signal_handler_block (panel->priv->mnb,
-		                        panel->priv->tab_switched_handler_id);
-
 		gedit_multi_notebook_set_active_tab (panel->priv->mnb,
 		                                     GEDIT_TAB (GEDIT_DOCUMENTS_DOCUMENT_ROW (row)->ref));
-
-		g_signal_handler_unblock (panel->priv->mnb,
-		                          panel->priv->tab_switched_handler_id);
 	}
 	else if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
 	{
-		g_signal_handler_block (panel->priv->mnb,
-		                        panel->priv->tab_switched_handler_id);
-
 		gtk_widget_grab_focus (GTK_WIDGET (GEDIT_DOCUMENTS_GROUP_ROW (row)->ref));
-
-		g_signal_handler_unblock (panel->priv->mnb,
-		                          panel->priv->tab_switched_handler_id);
 	}
 	else
 	{
 		g_assert_not_reached ();
 	}
+
+	g_signal_handler_unblock (panel->priv->mnb,
+	                          panel->priv->tab_switched_handler_id);
 }
 
 static void
@@ -902,7 +839,7 @@ gedit_documents_panel_init (GeditDocumentsPanel *panel)
 
 	/* Css style */
 	context = gtk_widget_get_style_context (panel->priv->listbox);
-	gtk_style_context_add_class(context, "gedit-document-panel");
+	gtk_style_context_add_class (context, "gedit-document-panel");
 
 	panel->priv->selection_changed_handler_id = g_signal_connect (panel->priv->listbox,
 	                                                              "row-selected",
@@ -924,100 +861,47 @@ gedit_documents_panel_new (GeditWindow *window)
 }
 
 static gchar *
-tab_get_name (GeditTab *tab)
+doc_get_name (GeditDocument *doc)
 {
-	GeditDocument *doc;
 	gchar *name;
 	gchar *docname;
-	gchar *tab_name;
-
-	doc = gedit_tab_get_document (tab);
 
 	name = gedit_document_get_short_name_for_display (doc);
 
 	/* Truncate the name so it doesn't get insanely wide. */
 	docname = gedit_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
 
-	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	g_free (name);
+
+	return docname;
+}
+
+static void
+row_on_close_button_clicked (GtkWidget *close_button,
+                             GtkWidget *row)
+{
+	GtkWidget *ref;
+	GeditNotebook *notebook;
+
+	if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
 	{
-		if (gedit_document_get_readonly (doc))
-		{
-			tab_name = g_markup_printf_escaped ("<i>%s</i> [<i>%s</i>]",
-			                                    docname,
-			                                    _("Read-Only"));
-		}
-		else
-		{
-			tab_name = g_markup_printf_escaped ("<i>%s</i>",
-			                                    docname);
-		}
+		/* Removes all tabs, then the tab group */
+		ref = GEDIT_DOCUMENTS_GROUP_ROW (row)->ref;
+
+		gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (ref));
+	}
+	else if (GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
+	{
+		/* Removes the tab */
+		ref = GEDIT_DOCUMENTS_DOCUMENT_ROW (row)->ref;
+
+		notebook = GEDIT_NOTEBOOK (gtk_widget_get_parent (GTK_WIDGET (ref)));
+		gtk_container_remove (GTK_CONTAINER (notebook), GTK_WIDGET (ref));
 	}
 	else
 	{
-		if (gedit_document_get_readonly (doc))
-		{
-			tab_name = g_markup_printf_escaped ("%s [<i>%s</i>]",
-			                                    docname,
-			                                    _("Read-Only"));
-		}
-		else
-		{
-			tab_name = g_markup_escape_text (docname, -1);
-		}
+		g_assert_not_reached ();
 	}
-
-	g_free (docname);
-	g_free (name);
-
-	return tab_name;
-}
-
-static gboolean
-row_on_close_button_clicked (GtkWidget *close_button_event_box,
-                             GdkEvent  *event,
-                             GtkWidget *row)
-{
-	guint button_number;
-
-	if (!gdk_event_get_button (event, &button_number))
-	{
-		return FALSE;
-	}
-
-	if (gdk_event_get_event_type (event) == GDK_BUTTON_PRESS &&
-	    button_number == GDK_BUTTON_PRIMARY)
-	{
-		GtkWidget *ref;
-		GeditNotebook *notebook;
-
-		if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
-		{
-			/* Removes all tabs, then the tab group */
-			ref = GEDIT_DOCUMENTS_GROUP_ROW (row)->ref;
-
-			gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (ref));
-
-			return TRUE;
-		}
-		else if (GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
-		{
-			/* Removes the tab */
-			ref = GEDIT_DOCUMENTS_DOCUMENT_ROW (row)->ref;
-
-			notebook = GEDIT_NOTEBOOK (gtk_widget_get_parent (GTK_WIDGET (ref)));
-			gtk_container_remove (GTK_CONTAINER (notebook), GTK_WIDGET (ref));
-
-			return TRUE;
-		}
-		else
-		{
-			g_assert_not_reached ();
-		}
-
-		return TRUE;
-	}
-
-	return FALSE;
 }
 
 static gboolean
@@ -1025,38 +909,21 @@ row_on_button_pressed (GtkWidget      *row_event_box,
                        GdkEventButton *event,
                        GtkWidget      *row)
 {
-	if ((event->type == GDK_BUTTON_PRESS) &&
-	    (gdk_event_triggers_context_menu ((GdkEvent *)event)) &&
-	    GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row) )
+	if (event->type == GDK_BUTTON_PRESS &&
+	    gdk_event_triggers_context_menu ((GdkEvent *)event) &&
+	    GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
 	{
 		GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
 		GeditWindow *window = generic_row->panel->priv->window;
-
 		GeditTab *tab = GEDIT_TAB (generic_row->ref);
 		GtkWidget *menu = gedit_notebook_popup_menu_new (window, tab);
 
-		if (event != NULL)
-		{
-			gtk_menu_popup (GTK_MENU (menu),
-			                NULL,
-			                NULL,
-			                NULL,
-			                NULL,
-			                event->button,
-			                event->time);
-		}
-		else
-		{
-			gtk_menu_popup (GTK_MENU (menu),
-			                NULL,
-			                NULL,
-			                (GtkMenuPositionFunc)menu_position,
-			                row,
-			                0,
-			                gtk_get_current_event_time ());
-
-			gtk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
-		}
+		gtk_menu_popup_for_device (GTK_MENU (menu),
+		                           gdk_event_get_device ((GdkEvent *)event),
+		                           NULL, NULL,
+		                           NULL, NULL, NULL,
+		                           event->button,
+		                           event->time);
 
 		return TRUE;
 	}
@@ -1069,14 +936,46 @@ document_row_sync_tab_name_and_icon (GeditTab   *tab,
                                      GParamSpec *pspec,
                                      GtkWidget  *row)
 {
-	gchar *name;
 	GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
+	GeditDocument *doc;
+	gchar *name;
 	GdkPixbuf *pixbuf;
 
-	name = tab_get_name (tab);
-	gtk_label_set_markup (GTK_LABEL (document_row->label), name);
-	g_free (document_row->name);
-	document_row->name = name;
+	doc = gedit_tab_get_document (tab);
+	name = doc_get_name (doc);
+
+	if (!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	{
+		gtk_label_set_text (GTK_LABEL (document_row->label), name);
+	}
+	else
+	{
+		gchar *markup;
+
+		markup = g_markup_printf_escaped ("<b>%s</b>", name);
+		gtk_label_set_markup (GTK_LABEL (document_row->label), markup);
+
+		g_free (markup);
+	}
+
+	g_free (name);
+
+	/* The status has as separate label to prevent ellipsizing */
+	if (!gedit_document_get_readonly (doc))
+	{
+		gtk_widget_hide (GTK_WIDGET (document_row->status_label));
+	}
+	else
+	{
+		gchar *status;
+
+		status = g_strdup_printf ("[%s]", _("Read-Only"));
+
+		gtk_label_set_text (GTK_LABEL (document_row->status_label), status);
+		gtk_widget_show (GTK_WIDGET (document_row->status_label));
+
+		g_free (status);
+	}
 
 	/* Update header of the row */
 	pixbuf = _gedit_tab_get_icon (tab);
@@ -1095,200 +994,103 @@ static void
 document_row_create_header (GtkWidget *row)
 {
 	GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
+	GtkWidget *image_box;
+	gint width, height;
 
-	document_row->pixbuf_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-	gtk_widget_set_size_request (document_row->pixbuf_box, ROW_HEADER_SIZE, -1);
+	gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &width, &height);
+
+	image_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	gtk_widget_set_size_request (image_box, width, height);
 
 	document_row->image = gtk_image_new ();
-	gtk_widget_set_halign (document_row->image, GTK_ALIGN_CENTER);
 
-	gtk_box_pack_start (GTK_BOX (document_row->pixbuf_box),
-	                    document_row->image, FALSE, FALSE, 0);
+	gtk_container_add (GTK_CONTAINER (image_box), document_row->image);
 
-	gtk_box_pack_start (GTK_BOX (document_row->row_box),
-	                    document_row->pixbuf_box, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (document_row->box),
+	                    image_box, FALSE, FALSE, 0);
 
 	/* Set the header on front of all other widget in the row */
-	gtk_box_reorder_child (GTK_BOX (document_row->row_box),
-	                       document_row->pixbuf_box, 0);
+	gtk_box_reorder_child (GTK_BOX (document_row->box),
+	                       image_box, 0);
 
-	gtk_widget_show_all (document_row->pixbuf_box);
+	gtk_widget_show_all (image_box);
 }
 
 static GtkWidget *
 row_create (GtkWidget *row)
 {
 	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
-	GIcon *close_button_icon;
+	GtkWidget *event_box;
 
 	gedit_debug (DEBUG_PANEL);
 
-	generic_row->row_event_box = gtk_event_box_new ();
-	generic_row->row_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	event_box = gtk_event_box_new ();
+	generic_row->box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
 
-	gtk_container_add (GTK_CONTAINER (generic_row->row_event_box), generic_row->row_box);
+	gtk_container_add (GTK_CONTAINER (event_box), generic_row->box);
 
 	generic_row->label = gtk_label_new (NULL);
 	gtk_label_set_ellipsize (GTK_LABEL (generic_row->label), PANGO_ELLIPSIZE_END);
+	gtk_widget_set_halign (generic_row->label, GTK_ALIGN_START);
+	gtk_misc_set_alignment (GTK_MISC (generic_row->label), 0.0, 0.5);
 
-	/* setup close button */
-	close_button_icon = g_themed_icon_new_with_default_fallbacks ("window-close-symbolic");
+	generic_row->status_label = gtk_label_new (NULL);
+	gtk_widget_set_halign (generic_row->status_label, GTK_ALIGN_END);
+	gtk_misc_set_alignment (GTK_MISC (generic_row->status_label), 1.0, 0.5);
 
-	generic_row->close_button_image = gtk_image_new_from_gicon (G_ICON (close_button_icon),
-	                                                            GTK_ICON_SIZE_MENU);
-	g_object_unref (close_button_icon);
+	generic_row->close_button = gedit_close_button_new ();
 
-	generic_row->close_button_event_box = gtk_event_box_new ();
-
-	gtk_container_add (GTK_CONTAINER (generic_row->close_button_event_box),
-	                                  generic_row->close_button_image);
-
-	gtk_box_pack_start (GTK_BOX (generic_row->row_box),
+	gtk_box_pack_start (GTK_BOX (generic_row->box),
 	                    generic_row->label, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (generic_row->box),
+	                    generic_row->status_label, FALSE, FALSE, 0);
 
-	gtk_box_pack_end (GTK_BOX (generic_row->row_box),
-	                  generic_row->close_button_event_box, FALSE, FALSE, 0);
+	gtk_box_pack_end (GTK_BOX (generic_row->box),
+	                  generic_row->close_button, FALSE, FALSE, 0);
 
-	g_signal_connect (generic_row->row_event_box,
+	g_signal_connect (event_box,
 	                  "button-press-event",
 	                  G_CALLBACK (row_on_button_pressed),
 	                  row);
-
-	g_signal_connect (generic_row->close_button_event_box,
-	                  "button-press-event",
+	g_signal_connect (generic_row->close_button,
+	                  "clicked",
 	                  G_CALLBACK (row_on_close_button_clicked),
 	                  row);
 
-	gtk_widget_set_no_show_all (generic_row->close_button_image, TRUE);
-	gtk_widget_show_all (generic_row->row_event_box);
+	gtk_widget_set_no_show_all (generic_row->status_label, TRUE);
+	gtk_widget_set_no_show_all (generic_row->close_button, TRUE);
+	gtk_widget_show_all (event_box);
 
-	return generic_row->row_event_box;
-}
-
-static gchar *
-notebook_get_tooltip (GtkWidget     *row,
-                      GeditNotebook *notebook)
-{
-	const gchar *notebook_name;
-	gint num_pages;
-	gchar *tooltip;
-
-	notebook_name = GEDIT_DOCUMENTS_GROUP_ROW (row)->name;
-
-	num_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook));
-
-	tooltip = g_markup_printf_escaped ("<b>Name:</b> %s\n\n"
-	                                   "<b>Number of Tabs:</b> %i",
-	                                   notebook_name,
-	                                   num_pages);
-	return tooltip;
+	return event_box;
 }
 
 static gboolean
-row_query_tooltip (GtkWidget   *row,
-                   gint         x,
-                   gint         y,
-                   gboolean     keyboard_tip,
-                   GtkTooltip  *tooltip,
-                   gpointer   **adr_ref)
+document_row_query_tooltip (GtkWidget   *row,
+                            gint         x,
+                            gint         y,
+                            gboolean     keyboard_tip,
+                            GtkTooltip  *tooltip)
 {
-	gchar *tip;
-	gpointer ref = *adr_ref;
+	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
+	gchar *markup;
 
-	if (GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
+	if (!GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
 	{
-		tip = _gedit_tab_get_tooltip (GEDIT_TAB (ref));
-	}
-	else if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
-	{
-		tip = notebook_get_tooltip (GTK_WIDGET (row), GEDIT_NOTEBOOK (ref));
-	}
-	else
-	{
-		g_assert_not_reached();
+		return FALSE;
 	}
 
-	gtk_tooltip_set_markup (tooltip, tip);
+	markup = _gedit_tab_get_tooltip (GEDIT_TAB (generic_row->ref));
+	gtk_tooltip_set_markup (tooltip, markup);
 
-	g_free (tip);
+	g_free (markup);
 
 	return TRUE;
 }
 
-static void
-get_padding_and_border (GtkWidget *widget,
-                        GtkBorder *border)
-{
-	GtkStyleContext *context;
-	GtkStateFlags state;
-	GtkBorder tmp;
-
-	context = gtk_widget_get_style_context (widget);
-	state = gtk_widget_get_state_flags (widget);
-
-	gtk_style_context_get_padding (context, state, border);
-	gtk_style_context_get_border (context, state, &tmp);
-
-	border->top += tmp.top;
-	border->right += tmp.right;
-	border->bottom += tmp.bottom;
-	border->left += tmp.left;
-}
-
 /* Gedit Document Row */
-static void
-gedit_documents_document_row_get_preferred_height (GtkWidget *widget,
-                                                   gint      *minimum_height,
-                                                   gint      *natural_height)
-{
-	GeditDocumentsDocumentRow *row;
-	GtkBorder border;
-	gint used_min_height;
-	gint used_nat_height;
-	gint row_min_height;
-
-	get_padding_and_border (widget, &border);
-
-	GTK_WIDGET_CLASS (gedit_documents_document_row_parent_class)->get_preferred_height (widget,
-	                                                                                    minimum_height,
-	                                                                                    natural_height);
-
-	row = GEDIT_DOCUMENTS_DOCUMENT_ROW (widget);
-	row_min_height = row->row_min_height;
-
-	if (!row_min_height)
-	{
-		row_min_height = ROW_MIN_HEIGHT + border.top + border.bottom + 6;
-	}
-
-	used_min_height = MAX (row_min_height, *minimum_height);
-	used_nat_height = used_min_height;
-
-	row->row_min_height = used_min_height;
-
-	*minimum_height = used_min_height;
-	*natural_height = used_nat_height;
-}
-
-static void
-gedit_documents_document_row_finalize (GObject *object)
-{
-	GeditDocumentsDocumentRow *row = GEDIT_DOCUMENTS_DOCUMENT_ROW (object);
-
-	g_free (row->name);
-
-	G_OBJECT_CLASS (gedit_documents_document_row_parent_class)->finalize (object);
-}
-
 static void
 gedit_documents_document_row_class_init (GeditDocumentsDocumentRowClass *klass)
 {
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-	object_class->finalize = gedit_documents_document_row_finalize;
-
-	widget_class->get_preferred_height = gedit_documents_document_row_get_preferred_height;
 }
 
 static void
@@ -1298,9 +1100,6 @@ gedit_documents_document_row_init (GeditDocumentsDocumentRow *row)
 	GtkStyleContext *context;
 
 	gedit_debug (DEBUG_PANEL);
-
-	row->row_min_height = 0;
-	row->name = NULL;
 
 	row_widget = row_create (GTK_WIDGET (row));
 	gtk_container_add (GTK_CONTAINER (row), row_widget);
@@ -1314,65 +1113,15 @@ gedit_documents_document_row_init (GeditDocumentsDocumentRow *row)
 	gtk_style_context_add_class (context, "gedit-document-panel-document-row");
 
 	gtk_widget_show_all (GTK_WIDGET (row));
-	gtk_widget_hide (row->close_button_image);
+	gtk_widget_hide (row->close_button);
 
 	gtk_widget_set_can_focus (GTK_WIDGET (row), FALSE);
 }
 
 /* Gedit Group Row */
 static void
-gedit_documents_group_row_get_preferred_height (GtkWidget *widget,
-                                                gint      *minimum_height,
-                                                gint      *natural_height)
-{
-	GtkBorder border;
-	GeditDocumentsGroupRow *row;
-	gint row_min_height;
-	gint used_min_height;
-	gint used_nat_height;
-
-	get_padding_and_border (widget, &border);
-
-	GTK_WIDGET_CLASS (gedit_documents_group_row_parent_class)->get_preferred_height (widget,
-	                                                                                 minimum_height,
-	                                                                                 natural_height);
-
-	row = GEDIT_DOCUMENTS_GROUP_ROW (widget);
-	row_min_height = row->row_min_height;
-
-	if (!row_min_height)
-	{
-		row_min_height = ROW_MIN_HEIGHT + border.top + border.bottom + 6;
-	}
-
-	used_min_height = MAX (row_min_height, *minimum_height);
-	used_nat_height = used_min_height;
-
-	row->row_min_height = used_min_height;
-
-	*minimum_height = used_min_height;
-	*natural_height = used_nat_height;
-}
-
-static void
-gedit_documents_group_row_finalize (GObject *object)
-{
-	GeditDocumentsGroupRow *row = GEDIT_DOCUMENTS_GROUP_ROW (object);
-
-	g_free (row->name);
-
-	G_OBJECT_CLASS (gedit_documents_group_row_parent_class)->finalize (object);
-}
-
-static void
 gedit_documents_group_row_class_init (GeditDocumentsGroupRowClass *klass)
 {
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-	object_class->finalize = gedit_documents_group_row_finalize;
-
-	widget_class->get_preferred_height = gedit_documents_group_row_get_preferred_height;
 }
 
 static void
@@ -1383,20 +1132,15 @@ gedit_documents_group_row_init (GeditDocumentsGroupRow *row)
 
 	gedit_debug (DEBUG_PANEL);
 
-	row->row_min_height = 0;
-	row->name = NULL;
-
 	row_widget = row_create (GTK_WIDGET (row));
 	gtk_container_add (GTK_CONTAINER (row), row_widget);
-
-	gtk_widget_set_has_tooltip (GTK_WIDGET (row), TRUE);
 
 	/* Css style */
 	context = gtk_widget_get_style_context (GTK_WIDGET (row));
 	gtk_style_context_add_class (context, "gedit-document-panel-group-row");
 
 	gtk_widget_show_all (GTK_WIDGET (row));
-	gtk_widget_hide (row->close_button_image);
+	gtk_widget_hide (row->close_button);
 
 	gtk_widget_set_can_focus (GTK_WIDGET (row), FALSE);
 }
@@ -1405,28 +1149,29 @@ static GtkWidget *
 gedit_documents_document_row_new (GeditDocumentsPanel *panel,
                                   GeditTab *tab)
 {
-	GeditDocumentsDocumentRow *row = g_object_new (GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, NULL);
-
-	gedit_debug (DEBUG_PANEL);
+	GeditDocumentsDocumentRow *row;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENTS_PANEL (panel), NULL);
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
+	gedit_debug (DEBUG_PANEL);
+
+	row = g_object_new (GEDIT_TYPE_DOCUMENTS_DOCUMENT_ROW, NULL);
 	row->ref = GTK_WIDGET (tab);
 	row->panel = panel;
 
 	g_signal_connect (row->ref,
 	                  "notify::name",
-	                  G_CALLBACK (document_row_sync_tab_name_and_icon), row);
-
+	                  G_CALLBACK (document_row_sync_tab_name_and_icon),
+	                  row);
 	g_signal_connect (row->ref,
 	                  "notify::state",
-	                  G_CALLBACK (document_row_sync_tab_name_and_icon), row);
-
+	                  G_CALLBACK (document_row_sync_tab_name_and_icon),
+	                  row);
 	g_signal_connect (row,
 	                  "query-tooltip",
-	                  G_CALLBACK (row_query_tooltip),
-	                  &(row->ref));
+	                  G_CALLBACK (document_row_query_tooltip),
+	                  NULL);
 
 	document_row_sync_tab_name_and_icon (GEDIT_TAB (row->ref), NULL, GTK_WIDGET (row));
 
@@ -1435,24 +1180,20 @@ gedit_documents_document_row_new (GeditDocumentsPanel *panel,
 
 static GtkWidget *
 gedit_documents_group_row_new (GeditDocumentsPanel *panel,
-                               GeditNotebook *notebook)
+                               GeditNotebook       *notebook)
 {
-	GeditDocumentsGroupRow *row = g_object_new (GEDIT_TYPE_DOCUMENTS_GROUP_ROW, NULL);
-
-	gedit_debug (DEBUG_PANEL);
+	GeditDocumentsGroupRow *row;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENTS_PANEL (panel), NULL);
 	g_return_val_if_fail (GEDIT_IS_NOTEBOOK (notebook), NULL);
 
+	gedit_debug (DEBUG_PANEL);
+
+	row = g_object_new (GEDIT_TYPE_DOCUMENTS_GROUP_ROW, NULL);
 	row->ref = GTK_WIDGET (notebook);
 	row->panel = panel;
 
 	group_row_set_notebook_name (GTK_WIDGET (row));
-
-	g_signal_connect (row,
-	                  "query-tooltip",
-	                  G_CALLBACK (row_query_tooltip),
-	                  &(row->ref));
 
 	return GTK_WIDGET (row);
 }
