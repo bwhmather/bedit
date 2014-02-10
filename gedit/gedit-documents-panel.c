@@ -31,6 +31,7 @@
 #include "gedit-notebook-popup-menu.h"
 #include "gedit-small-button.h"
 #include "gedit-utils.h"
+#include "gedit-commands.h"
 
 typedef struct _GeditDocumentsGenericRow GeditDocumentsGenericRow;
 typedef struct _GeditDocumentsGenericRow GeditDocumentsGroupRow;
@@ -954,23 +955,19 @@ static void
 row_on_close_button_clicked (GtkWidget *close_button,
                              GtkWidget *row)
 {
+	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
+	GeditWindow *window = generic_row->panel->priv->window;
 	GtkWidget *ref;
-	GeditNotebook *notebook;
 
 	if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
 	{
-		/* Removes all tabs, then the tab group */
 		ref = GEDIT_DOCUMENTS_GROUP_ROW (row)->ref;
-
-		gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (ref));
+		_gedit_cmd_file_close_notebook (window, GEDIT_NOTEBOOK (ref));
 	}
 	else if (GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
 	{
-		/* Removes the tab */
 		ref = GEDIT_DOCUMENTS_DOCUMENT_ROW (row)->ref;
-
-		notebook = GEDIT_NOTEBOOK (gtk_widget_get_parent (GTK_WIDGET (ref)));
-		gtk_container_remove (GTK_CONTAINER (notebook), GTK_WIDGET (ref));
+		_gedit_cmd_file_close_tab (GEDIT_TAB (ref), window);
 	}
 	else
 	{

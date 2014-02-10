@@ -26,6 +26,7 @@
 
 #include <gtk/gtk.h>
 #include <gedit/gedit-window.h>
+#include <gedit/gedit-notebook.h>
 
 G_BEGIN_DECLS
 
@@ -185,6 +186,8 @@ void		_gedit_cmd_file_close_tab 		(GeditTab    *tab,
 void		_gedit_cmd_file_save_documents_list	(GeditWindow *window,
 							 GList       *docs);
 
+void		_gedit_cmd_file_close_notebook		(GeditWindow   *window,
+							 GeditNotebook *notebook);
 
 G_END_DECLS
 

@@ -33,21 +33,22 @@
 #include "gedit-commands.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
+#include "gedit-notebook.h"
+#include "gedit-document.h"
 #include "gedit-statusbar.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "gedit-file-chooser-dialog.h"
 #include "gedit-close-confirmation-dialog.h"
 
-
-/* Defined constants */
-#define GEDIT_OPEN_DIALOG_KEY 		"gedit-open-dialog-key"
-#define GEDIT_TAB_TO_SAVE_AS  		"gedit-tab-to-save-as"
-#define GEDIT_LIST_OF_TABS_TO_SAVE_AS   "gedit-list-of-tabs-to-save-as"
-#define GEDIT_IS_CLOSING_ALL            "gedit-is-closing-all"
-#define GEDIT_IS_QUITTING 	        "gedit-is-quitting"
-#define GEDIT_IS_CLOSING_TAB		"gedit-is-closing-tab"
-#define GEDIT_IS_QUITTING_ALL		"gedit-is-quitting-all"
+#define GEDIT_OPEN_DIALOG_KEY "gedit-open-dialog-key"
+#define GEDIT_TAB_TO_SAVE_AS "gedit-tab-to-save-as"
+#define GEDIT_LIST_OF_TABS_TO_SAVE_AS "gedit-list-of-tabs-to-save-as"
+#define GEDIT_IS_CLOSING_ALL "gedit-is-closing-all"
+#define GEDIT_NOTEBOOK_TO_CLOSE "gedit-notebook-to-close"
+#define GEDIT_IS_QUITTING "gedit-is-quitting"
+#define GEDIT_IS_CLOSING_TAB "gedit-is-closing-tab"
+#define GEDIT_IS_QUITTING_ALL "gedit-is-quitting-all"
 
 static void tab_state_changed_while_saving (GeditTab    *tab,
 					    GParamSpec  *pspec,
@@ -1447,8 +1448,9 @@ save_as_and_close (GeditTab    *tab,
 }
 
 static void
-save_and_close_all_documents (const GList  *docs,
-			      GeditWindow  *window)
+save_and_close_documents (GList         *docs,
+                          GeditWindow   *window,
+                          GeditNotebook *notebook)
 {
 	GList *tabs;
 	GList *l;
@@ -1461,7 +1463,14 @@ save_and_close_all_documents (const GList  *docs,
 
 	g_return_if_fail (!(gedit_window_get_state (window) & GEDIT_WINDOW_STATE_PRINTING));
 
-	tabs = _gedit_window_get_all_tabs (window);
+	if (notebook != NULL)
+	{
+		tabs = gtk_container_get_children (GTK_CONTAINER (notebook));
+	}
+	else
+	{
+		tabs = _gedit_window_get_all_tabs (window);
+	}
 
 	tabs_to_save_as = NULL;
 	tabs_to_save_and_close = NULL;
@@ -1636,16 +1645,19 @@ close_document (GeditWindow   *window,
 
 static void
 close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
-					    gint                          response_id,
-					    GeditWindow                  *window)
+                                            gint                          response_id,
+                                            GeditWindow                  *window)
 {
 	GList *selected_documents;
 	gboolean is_closing_all;
+	GeditNotebook *notebook_to_close;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	is_closing_all = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-					    			 GEDIT_IS_CLOSING_ALL));
+	                                                         GEDIT_IS_CLOSING_ALL));
+
+	notebook_to_close = g_object_get_data (G_OBJECT (window), GEDIT_NOTEBOOK_TO_CLOSE);
 
 	gtk_widget_hide (GTK_WIDGET (dlg));
 
@@ -1653,6 +1665,7 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 	{
 		case GTK_RESPONSE_YES: /* Save and Close */
 			selected_documents = gedit_close_confirmation_dialog_get_selected_documents (dlg);
+
 			if (selected_documents == NULL)
 			{
 				if (is_closing_all)
@@ -1666,6 +1679,10 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 
 					return;
 				}
+				else if (notebook_to_close)
+				{
+					gedit_notebook_remove_all_tabs (notebook_to_close);
+				}
 				else
 				{
 					g_return_if_reached ();
@@ -1673,15 +1690,15 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 			}
 			else
 			{
-				if (is_closing_all)
+				if (is_closing_all || notebook_to_close)
 				{
-					save_and_close_all_documents (selected_documents,
-								      window);
+					GeditNotebook *nb = is_closing_all ? NULL : notebook_to_close;
+
+					save_and_close_documents (selected_documents, window, nb);
 				}
 				else
 				{
-					save_and_close_document (selected_documents,
-								 window);
+					save_and_close_document (selected_documents, window);
 				}
 			}
 
@@ -1700,6 +1717,10 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 
 				return;
 			}
+			else if (notebook_to_close)
+			{
+				gedit_notebook_remove_all_tabs (notebook_to_close);
+			}
 			else
 			{
 				const GList *unsaved_documents;
@@ -1707,8 +1728,7 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 				unsaved_documents = gedit_close_confirmation_dialog_get_unsaved_documents (dlg);
 				g_return_if_fail (unsaved_documents->next == NULL);
 
-				close_document (window,
-						GEDIT_DOCUMENT (unsaved_documents->data));
+				close_document (window, GEDIT_DOCUMENT (unsaved_documents->data));
 			}
 
 			break;
@@ -1717,8 +1737,8 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 
 			/* Reset is_quitting flag */
 			g_object_set_data (G_OBJECT (window),
-					   GEDIT_IS_QUITTING,
-					   GBOOLEAN_TO_POINTER (FALSE));
+			                   GEDIT_IS_QUITTING,
+			                   GBOOLEAN_TO_POINTER (FALSE));
 
 #ifdef OS_OSX
 			g_object_set_data (G_OBJECT (window),
@@ -1727,6 +1747,8 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 #endif
 			break;
 	}
+
+	g_object_set_data (G_OBJECT (window), GEDIT_NOTEBOOK_TO_CLOSE, NULL);
 
 	gtk_widget_destroy (GTK_WIDGET (dlg));
 }
@@ -1786,9 +1808,10 @@ _gedit_cmd_file_close_tab (GeditTab    *tab,
 	                   GEDIT_IS_QUITTING_ALL,
 	                   GINT_TO_POINTER (FALSE));
 
-
 	if (tab_can_close (tab, GTK_WINDOW (window)))
+	{
 		gedit_window_close_tab (window, tab);
+	}
 }
 
 void
@@ -1815,13 +1838,98 @@ _gedit_cmd_file_close (GSimpleAction *action,
 	_gedit_cmd_file_close_tab (active_tab, window);
 }
 
+static void
+file_close_dialog (GeditWindow *window,
+                   GList       *unsaved_docs)
+{
+	GtkWidget *dlg;
+
+	if (unsaved_docs->next == NULL)
+	{
+		/* There is only one unsaved document */
+		GeditTab      *tab;
+		GeditDocument *doc;
+
+		doc = GEDIT_DOCUMENT (unsaved_docs->data);
+
+		tab = gedit_tab_get_from_document (doc);
+		g_return_if_fail (tab != NULL);
+
+		gedit_window_set_active_tab (window, tab);
+
+		dlg = gedit_close_confirmation_dialog_new_single (GTK_WINDOW (window), doc);
+	}
+	else
+	{
+		dlg = gedit_close_confirmation_dialog_new (GTK_WINDOW (window), unsaved_docs);
+	}
+
+	g_signal_connect (dlg,
+	                  "response",
+	                  G_CALLBACK (close_confirmation_dialog_response_handler),
+	                  window);
+
+	gtk_widget_show (dlg);
+}
+
+static GList *
+notebook_get_unsaved_documents (GeditNotebook *notebook)
+{
+	GList *children, *l;
+	GList *unsaved_docs = NULL;
+
+	children = gtk_container_get_children (GTK_CONTAINER (notebook));
+
+	for (l = children; l != NULL; l = g_list_next (l))
+	{
+		if (!_gedit_tab_get_can_close (l->data))
+		{
+			GeditDocument *doc;
+
+			doc = gedit_tab_get_document (l->data);
+			unsaved_docs = g_list_prepend (unsaved_docs, doc);
+		}
+	}
+
+	g_list_free (children);
+
+	return g_list_reverse (unsaved_docs);
+}
+
+/* Close a notebook */
+void
+_gedit_cmd_file_close_notebook (GeditWindow   *window,
+                                GeditNotebook *notebook)
+{
+	GList *unsaved_docs;
+
+	g_object_set_data (G_OBJECT (window), GEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER (FALSE));
+	g_object_set_data (G_OBJECT (window), GEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER (FALSE));
+	g_object_set_data (G_OBJECT (window), GEDIT_IS_QUITTING_ALL, GINT_TO_POINTER (FALSE));
+
+	g_object_set_data (G_OBJECT (window), GEDIT_NOTEBOOK_TO_CLOSE, notebook);
+
+	unsaved_docs = notebook_get_unsaved_documents (notebook);
+
+	if (unsaved_docs == NULL)
+	{
+		/* There is no document to save -> close the notebook */
+		gedit_notebook_remove_all_tabs (GEDIT_NOTEBOOK (notebook));
+	}
+	else
+	{
+		file_close_dialog (window, unsaved_docs);
+
+		g_list_free (unsaved_docs);
+	}
+}
+
 /* Close all tabs */
 static void
 file_close_all (GeditWindow *window,
-		gboolean     is_quitting)
+                gboolean     is_quitting)
 {
 	GList     *unsaved_docs;
-	GtkWidget *dlg;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1839,48 +1947,22 @@ file_close_all (GeditWindow *window,
 
 	unsaved_docs = gedit_window_get_unsaved_documents (window);
 
-	if (unsaved_docs == NULL)
+	if (unsaved_docs != NULL)
+	{
+		file_close_dialog (window, unsaved_docs);
+
+		g_list_free (unsaved_docs);
+	}
+	else
 	{
 		/* There is no document to save -> close all tabs */
 		gedit_window_close_all_tabs (window);
 
 		if (is_quitting)
+		{
 			gtk_widget_destroy (GTK_WIDGET (window));
-
-		return;
+		}
 	}
-
-	if (unsaved_docs->next == NULL)
-	{
-		/* There is only one unsaved document */
-		GeditTab      *tab;
-		GeditDocument *doc;
-
-		doc = GEDIT_DOCUMENT (unsaved_docs->data);
-
-		tab = gedit_tab_get_from_document (doc);
-		g_return_if_fail (tab != NULL);
-
-		gedit_window_set_active_tab (window, tab);
-
-		dlg = gedit_close_confirmation_dialog_new_single (
-						GTK_WINDOW (window),
-						doc);
-	}
-	else
-	{
-		dlg = gedit_close_confirmation_dialog_new (GTK_WINDOW (window),
-							   unsaved_docs);
-	}
-
-	g_list_free (unsaved_docs);
-
-	g_signal_connect (dlg,
-			  "response",
-			  G_CALLBACK (close_confirmation_dialog_response_handler),
-			  window);
-
-	gtk_widget_show (dlg);
 }
 
 void
