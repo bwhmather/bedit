@@ -815,104 +815,6 @@ setup_headerbar_open_button (GeditWindow *window)
 }
 
 static void
-tab_width_combo_item_activated (GtkMenuItem *item,
-				GeditWindow *window)
-{
-	GeditView *view;
-	guint width_data = 0;
-
-	view = gedit_window_get_active_view (window);
-	if (!view)
-		return;
-
-	width_data = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (item), TAB_WIDTH_DATA));
-	if (width_data == 0)
-		return;
-
-	gtk_source_view_set_tab_width (GTK_SOURCE_VIEW (view), width_data);
-}
-
-static void
-use_spaces_toggled (GtkCheckMenuItem *item,
-		    GeditWindow      *window)
-{
-	GeditView *view;
-	gboolean active;
-
-	view = gedit_window_get_active_view (window);
-	if (!view)
-		return;
-
-	active = gtk_check_menu_item_get_active (item);
-
-	gtk_source_view_set_insert_spaces_instead_of_tabs (GTK_SOURCE_VIEW (view),
-	                                                   active);
-}
-
-static void
-create_tab_width_combo (GeditWindow *window)
-{
-	static guint tab_widths[] = { 2, 4, 8 };
-
-	guint i = 0;
-	GtkWidget *item;
-
-	window->priv->tab_width_combo = gedit_status_menu_button_new ();
-	window->priv->tab_width_combo_menu = gtk_menu_new ();
-	gtk_menu_button_set_popup (GTK_MENU_BUTTON (window->priv->tab_width_combo),
-	                           window->priv->tab_width_combo_menu);
-	gtk_widget_show (window->priv->tab_width_combo);
-	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
-			  window->priv->tab_width_combo,
-			  FALSE,
-			  TRUE,
-			  0);
-
-	for (i = 0; i < G_N_ELEMENTS (tab_widths); i++)
-	{
-		gchar *label = g_strdup_printf ("%u", tab_widths[i]);
-		item = gtk_menu_item_new_with_label (label);
-		g_free (label);
-
-		g_object_set_data (G_OBJECT (item), TAB_WIDTH_DATA, GINT_TO_POINTER (tab_widths[i]));
-
-		g_signal_connect (item,
-				  "activate",
-				  G_CALLBACK (tab_width_combo_item_activated),
-				  window);
-
-		gtk_menu_shell_append (GTK_MENU_SHELL (window->priv->tab_width_combo_menu),
-		                       GTK_WIDGET (item));
-		gtk_widget_show (item);
-	}
-
-	/* Add a hidden item for custom values */
-	item = gtk_menu_item_new ();
-	gtk_menu_shell_append (GTK_MENU_SHELL (window->priv->tab_width_combo_menu),
-	                       GTK_WIDGET (item));
-
-	g_signal_connect (item,
-			  "activate",
-			  G_CALLBACK (tab_width_combo_item_activated),
-			  window);
-
-	item = gtk_separator_menu_item_new ();
-	gtk_menu_shell_append (GTK_MENU_SHELL (window->priv->tab_width_combo_menu),
-	                       GTK_WIDGET (item));
-	gtk_widget_show (item);
-
-	item = gtk_check_menu_item_new_with_label (_("Use Spaces"));
-	gtk_menu_shell_append (GTK_MENU_SHELL (window->priv->tab_width_combo_menu),
-	                       GTK_WIDGET (item));
-	gtk_widget_show (item);
-
-	g_signal_connect (item,
-			  "toggled",
-			  G_CALLBACK (use_spaces_toggled),
-			  window);
-}
-
-static void
 on_language_button_clicked (GtkButton   *button,
                             GeditWindow *window)
 {
@@ -962,7 +864,17 @@ setup_statusbar (GeditWindow *window)
 	window->priv->bracket_match_message_cid = gtk_statusbar_get_context_id
 		(GTK_STATUSBAR (window->priv->statusbar), "bracket_match_message");
 
-	create_tab_width_combo (window);
+	window->priv->tab_width_combo = gedit_status_menu_button_new ();
+	gtk_menu_button_set_use_popover (GTK_MENU_BUTTON (window->priv->tab_width_combo), TRUE);
+	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (window->priv->tab_width_combo),
+	                                _gedit_app_get_tab_width_menu (GEDIT_APP (g_application_get_default ())));
+	gtk_widget_show (window->priv->tab_width_combo);
+	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
+	                  window->priv->tab_width_combo,
+	                  FALSE,
+	                  TRUE,
+	                  0);
+
 	create_language_button (window);
 
 	g_settings_bind (window->priv->ui_settings,
@@ -1241,49 +1153,14 @@ tab_width_changed (GObject     *object,
 		   GParamSpec  *pspec,
 		   GeditWindow *window)
 {
-	GList *items;
-	GList *item;
 	guint new_tab_width;
 	gchar *label;
-	gboolean found = FALSE;
-
-	items = gtk_container_get_children (GTK_CONTAINER (window->priv->tab_width_combo_menu));
 
 	new_tab_width = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (object));
 
 	label = g_strdup_printf (_("Tab Width: %u"), new_tab_width);
 	gedit_status_menu_button_set_label (GEDIT_STATUS_MENU_BUTTON (window->priv->tab_width_combo), label);
 	g_free (label);
-
-	for (item = items; item; item = item->next)
-	{
-		guint tab_width = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (item->data), TAB_WIDTH_DATA));
-
-		if (tab_width == new_tab_width)
-		{
-			found = TRUE;
-		}
-
-		if (GTK_IS_SEPARATOR_MENU_ITEM (item->next->data))
-		{
-			if (!found)
-			{
-				/* Show the last menu item with a custom value */
-				label = g_strdup_printf ("%u", new_tab_width);
-				gtk_menu_item_set_label (GTK_MENU_ITEM (item->data), label);
-				g_free (label);
-				gtk_widget_show (GTK_WIDGET (item->data));
-			}
-			else
-			{
-				gtk_widget_hide (GTK_WIDGET (item->data));
-			}
-
-			break;
-		}
-	}
-
-	g_list_free (items);
 }
 
 static void
@@ -1309,18 +1186,37 @@ language_changed (GObject     *object,
 }
 
 static void
+sync_current_tab_actions (GeditWindow *window,
+			  GeditView   *old_view,
+			  GeditView   *new_view)
+{
+	GPropertyAction *action;
+
+	if (old_view)
+	{
+		g_action_map_remove_action (G_ACTION_MAP (window), "tab-width");
+		g_action_map_remove_action (G_ACTION_MAP (window), "use-spaces");
+	}
+
+	if (new_view)
+	{
+		action = g_property_action_new ("tab-width", new_view, "tab-width");
+		g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
+		g_object_unref (action);
+
+		action = g_property_action_new ("use-spaces", new_view, "insert-spaces-instead-of-tabs");
+		g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
+		g_object_unref (action);
+	}
+}
+
+static void
 update_statusbar (GeditWindow *window,
 		  GeditView   *old_view,
 		  GeditView   *new_view)
 {
-	GeditDocument *doc;
-	GList *items;
-	GtkCheckMenuItem *item;
-
 	if (old_view)
 	{
-		g_clear_object (&window->priv->spaces_instead_of_tabs_binding);
-
 		if (window->priv->tab_width_id)
 		{
 			g_signal_handler_disconnect (old_view,
@@ -1338,46 +1234,36 @@ update_statusbar (GeditWindow *window,
 		}
 	}
 
-	if (new_view == NULL)
-		return;
+	if (new_view)
+	{
+		GeditDocument *doc;
 
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (new_view)));
+		doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (new_view)));
 
-	/* sync the statusbar */
-	update_cursor_position_statusbar (GTK_TEXT_BUFFER (doc),
-					  window);
+		/* sync the statusbar */
+		update_cursor_position_statusbar (GTK_TEXT_BUFFER (doc),
+						  window);
 
-	gedit_statusbar_set_overwrite (GEDIT_STATUSBAR (window->priv->statusbar),
-				       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (new_view)));
+		gedit_statusbar_set_overwrite (GEDIT_STATUSBAR (window->priv->statusbar),
+					       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (new_view)));
 
-	gtk_widget_show (window->priv->tab_width_combo);
-	gtk_widget_show (window->priv->language_button);
+		gtk_widget_show (window->priv->tab_width_combo);
+		gtk_widget_show (window->priv->language_button);
 
-	/* find the use spaces item */
-	items = gtk_container_get_children (GTK_CONTAINER (window->priv->tab_width_combo_menu));
-	item = GTK_CHECK_MENU_ITEM (g_list_last (items)->data);
-	g_list_free (items);
+		window->priv->tab_width_id = g_signal_connect (new_view,
+							       "notify::tab-width",
+							       G_CALLBACK (tab_width_changed),
+							       window);
 
-	window->priv->spaces_instead_of_tabs_binding =
-		g_object_bind_property (new_view,
-		                        "insert-spaces-instead-of-tabs",
-		                        item,
-		                        "active",
-		                         G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+		window->priv->language_changed_id = g_signal_connect (doc,
+								      "notify::language",
+								      G_CALLBACK (language_changed),
+								      window);
 
-	window->priv->tab_width_id = g_signal_connect (new_view,
-						       "notify::tab-width",
-						       G_CALLBACK (tab_width_changed),
-						       window);
-
-	window->priv->language_changed_id = g_signal_connect (doc,
-							      "notify::language",
-							      G_CALLBACK (language_changed),
-							      window);
-
-	/* call it for the first time */
-	tab_width_changed (G_OBJECT (new_view), NULL, window);
-	language_changed (G_OBJECT (doc), NULL, window);
+		/* call it for the first time */
+		tab_width_changed (G_OBJECT (new_view), NULL, window);
+		language_changed (G_OBJECT (doc), NULL, window);
+	}
 }
 
 static void
@@ -1393,6 +1279,7 @@ tab_switched (GeditMultiNotebook *mnb,
 	old_view = old_tab ? gedit_tab_get_view (old_tab) : NULL;
 	new_view = new_tab ? gedit_tab_get_view (new_tab) : NULL;
 
+	sync_current_tab_actions (window, old_view, new_view);
 	update_statusbar (window, old_view, new_view);
 
 	if (new_tab == NULL || window->priv->dispose_has_run)
@@ -2386,8 +2273,6 @@ on_tab_removed (GeditMultiNotebook *multi,
 
 	if (tab == gedit_multi_notebook_get_active_tab (multi))
 	{
-		g_clear_object (&window->priv->spaces_instead_of_tabs_binding);
-
 		if (window->priv->tab_width_id)
 		{
 			g_signal_handler_disconnect (view, window->priv->tab_width_id);
