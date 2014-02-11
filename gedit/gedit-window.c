@@ -53,6 +53,7 @@
 #include "gedit-document.h"
 #include "gedit-small-button.h"
 #include "gedit-menu-stack-switcher.h"
+#include "gedit-highlight-mode-selector.h"
 
 #define TAB_WIDTH_DATA "GeditWindowTabWidthData"
 #define FULLSCREEN_ANIMATION_SPEED 4
@@ -815,46 +816,38 @@ setup_headerbar_open_button (GeditWindow *window)
 }
 
 static void
-on_language_button_clicked (GtkButton   *button,
-                            GeditWindow *window)
+on_language_selector_shown (GeditHighlightModeSelector *sel,
+                            GeditWindow                *window)
 {
-	_gedit_cmd_view_highlight_mode (NULL, NULL, window);
+	GeditDocument *doc;
+
+	doc = gedit_window_get_active_document (window);
+	if (doc)
+	{
+		gedit_highlight_mode_selector_select_language (sel,
+		                                               gedit_document_get_language (doc));
+	}
 }
 
 static void
-create_language_button (GeditWindow *window)
+on_language_selected (GeditHighlightModeSelector *sel,
+                      GtkSourceLanguage          *language,
+                      GeditWindow                *window)
 {
-	GtkWidget *box;
-	GtkWidget *arrow;
+	GeditDocument *doc;
 
-	window->priv->language_button = gedit_small_button_new ();
-	gtk_widget_show (window->priv->language_button);
-	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
-			  window->priv->language_button,
-			  FALSE,
-			  TRUE,
-			  0);
-
-	box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 3);
-	gtk_widget_show (box);
-	gtk_container_add (GTK_CONTAINER (window->priv->language_button), box);
-
-	window->priv->language_button_label = gtk_label_new (NULL);
-	gtk_widget_show (window->priv->language_button_label);
-	gtk_box_pack_start (GTK_BOX (box), window->priv->language_button_label,
-	                    FALSE, TRUE, 0);
-
-	arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_NONE);
-	gtk_widget_show (arrow);
-	gtk_box_pack_start (GTK_BOX (box), arrow, FALSE, FALSE, 0);
-
-	g_signal_connect (window->priv->language_button, "clicked",
-	                  G_CALLBACK (on_language_button_clicked), window);
+	doc = gedit_window_get_active_document (window);
+	if (doc)
+	{
+		gedit_document_set_language (doc, language);
+	}
 }
 
 static void
 setup_statusbar (GeditWindow *window)
 {
+	GeditHighlightModeSelector *sel;
+
 	gedit_debug (DEBUG_WINDOW);
 
 	window->priv->generic_message_cid = gtk_statusbar_get_context_id
@@ -864,6 +857,13 @@ setup_statusbar (GeditWindow *window)
 	window->priv->bracket_match_message_cid = gtk_statusbar_get_context_id
 		(GTK_STATUSBAR (window->priv->statusbar), "bracket_match_message");
 
+	g_settings_bind (window->priv->ui_settings,
+	                 "statusbar-visible",
+	                 window->priv->statusbar,
+	                 "visible",
+	                 G_SETTINGS_BIND_GET);
+
+	/* Tab Width button */
 	window->priv->tab_width_combo = gedit_status_menu_button_new ();
 	gtk_menu_button_set_use_popover (GTK_MENU_BUTTON (window->priv->tab_width_combo), TRUE);
 	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (window->priv->tab_width_combo),
@@ -875,13 +875,30 @@ setup_statusbar (GeditWindow *window)
 	                  TRUE,
 	                  0);
 
-	create_language_button (window);
+	/* Language button */
+	window->priv->language_button = gedit_status_menu_button_new ();
+	window->priv->language_popover = gtk_popover_new (window->priv->language_button);
+	gtk_menu_button_set_popover (GTK_MENU_BUTTON (window->priv->language_button),
+	                             window->priv->language_popover);
+	gtk_widget_show (window->priv->language_button);
+	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
+	                  window->priv->language_button,
+	                  FALSE,
+	                  TRUE,
+	                  0);
 
-	g_settings_bind (window->priv->ui_settings,
-	                 "statusbar-visible",
-	                 window->priv->statusbar,
-	                 "visible",
-	                 G_SETTINGS_BIND_GET);
+	sel = gedit_highlight_mode_selector_new ();
+	g_signal_connect (sel,
+	                  "show",
+	                  G_CALLBACK (on_language_selector_shown),
+	                  window);
+	g_signal_connect (sel,
+	                  "language-selected",
+	                  G_CALLBACK (on_language_selected),
+	                  window);
+
+	gtk_container_add (GTK_CONTAINER (window->priv->language_popover), GTK_WIDGET (sel));
+	gtk_widget_show (GTK_WIDGET (sel));
 }
 
 static GeditWindow *
@@ -1178,7 +1195,7 @@ language_changed (GObject     *object,
 	else
 		label = _("Plain Text");
 
-	gtk_label_set_text (GTK_LABEL (window->priv->language_button_label), label);
+	gedit_status_menu_button_set_label (GEDIT_STATUS_MENU_BUTTON (window->priv->language_button), label);
 
 	peas_extension_set_foreach (window->priv->extensions,
 	                            (PeasExtensionSetForeachFunc) extension_update_state,

@@ -67,6 +67,7 @@ struct _GeditWindowPrivate
 	GtkWidget      *tab_width_combo;
 	GtkWidget      *language_button;
 	GtkWidget      *language_button_label;
+	GtkWidget      *language_popover;
 	guint           generic_message_cid;
 	guint           tip_message_cid;
 	guint 	        bracket_match_message_cid;
