@@ -22,9 +22,8 @@
 #ifndef __GEDIT_HIGHLIGHT_MODE_DIALOG_H__
 #define __GEDIT_HIGHLIGHT_MODE_DIALOG_H__
 
-#include <glib-object.h>
-#include <gtksourceview/gtksource.h>
-#include "gedit-window.h"
+#include <glib.h>
+#include "gedit-highlight-mode-selector.h"
 
 G_BEGIN_DECLS
 
@@ -50,17 +49,13 @@ struct _GeditHighlightModeDialog
 struct _GeditHighlightModeDialogClass
 {
 	GtkDialogClass parent_class;
-
-	void (* language_selected) (GeditHighlightModeDialog *dialog,
-	                            GtkSourceLanguage        *language);
 };
 
-GType                    gedit_highlight_mode_dialog_get_type        (void) G_GNUC_CONST;
+GType                       gedit_highlight_mode_dialog_get_type        (void) G_GNUC_CONST;
 
-GtkWidget               *gedit_highlight_mode_dialog_new             (GtkWindow *parent);
+GtkWidget                  *gedit_highlight_mode_dialog_new             (GtkWindow *parent);
 
-void                     gedit_highlight_mode_dialog_select_language (GeditHighlightModeDialog *dlg,
-                                                                      GtkSourceLanguage        *language);
+GeditHighlightModeSelector *gedit_highlight_mode_dialog_get_selector    (GeditHighlightModeDialog *dlg);
 
 G_END_DECLS
 

@@ -31,6 +31,7 @@
 #include "gedit-window.h"
 #include "gedit-window-private.h"
 #include "gedit-highlight-mode-dialog.h"
+#include "gedit-highlight-mode-selector.h"
 
 void
 _gedit_cmd_view_toggle_side_panel (GSimpleAction *action,
@@ -119,18 +120,17 @@ _gedit_cmd_view_leave_fullscreen_mode (GSimpleAction *action,
 }
 
 static void
-on_language_selected (GeditHighlightModeDialog *dlg,
-                      GtkSourceLanguage        *language,
-                      GeditWindow              *window)
+on_language_selected (GeditHighlightModeSelector *sel,
+                      GtkSourceLanguage          *language,
+                      GeditWindow                *window)
 {
 	GeditDocument *doc;
 
 	doc = gedit_window_get_active_document (window);
-
-	if (!doc)
-		return;
-
-	gedit_document_set_language (doc, language);
+	if (doc)
+	{
+		gedit_document_set_language (doc, language);
+	}
 }
 
 void
@@ -140,18 +140,20 @@ _gedit_cmd_view_highlight_mode (GSimpleAction *action,
 {
 	GtkWindow *window = GTK_WINDOW (user_data);
 	GtkWidget *dlg;
+	GeditHighlightModeSelector *sel;
 	GeditDocument *doc;
 
 	dlg = gedit_highlight_mode_dialog_new (window);
+	sel = gedit_highlight_mode_dialog_get_selector (GEDIT_HIGHLIGHT_MODE_DIALOG (dlg));
 
 	doc = gedit_window_get_active_document (GEDIT_WINDOW (window));
 	if (doc)
 	{
-		gedit_highlight_mode_dialog_select_language (GEDIT_HIGHLIGHT_MODE_DIALOG (dlg),
-		                                             gedit_document_get_language (doc));
+		gedit_highlight_mode_selector_select_language (sel,
+		                                               gedit_document_get_language (doc));
 	}
 
-	g_signal_connect (dlg, "language-selected",
+	g_signal_connect (sel, "language-selected",
 	                  G_CALLBACK (on_language_selected), window);
 
 	gtk_widget_show (GTK_WIDGET (dlg));
