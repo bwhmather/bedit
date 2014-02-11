@@ -495,6 +495,81 @@ refresh_list (GeditDocumentsPanel *panel)
 	select_active_tab (panel);
 }
 
+static gchar *
+doc_get_name (GeditDocument *doc)
+{
+	gchar *name;
+	gchar *docname;
+
+	name = gedit_document_get_short_name_for_display (doc);
+
+	/* Truncate the name so it doesn't get insanely wide. */
+	docname = gedit_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
+
+	g_free (name);
+
+	return docname;
+}
+
+static void
+document_row_sync_tab_name_and_icon (GeditTab   *tab,
+                                     GParamSpec *pspec,
+                                     GtkWidget  *row)
+{
+	GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
+	GeditDocument *doc;
+	gchar *name;
+	GdkPixbuf *pixbuf;
+
+	doc = gedit_tab_get_document (tab);
+	name = doc_get_name (doc);
+
+	if (!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
+	{
+		gtk_label_set_text (GTK_LABEL (document_row->label), name);
+	}
+	else
+	{
+		gchar *markup;
+
+		markup = g_markup_printf_escaped ("<b>%s</b>", name);
+		gtk_label_set_markup (GTK_LABEL (document_row->label), markup);
+
+		g_free (markup);
+	}
+
+	g_free (name);
+
+	/* The status has as separate label to prevent ellipsizing */
+	if (!gedit_document_get_readonly (doc))
+	{
+		gtk_widget_hide (GTK_WIDGET (document_row->status_label));
+	}
+	else
+	{
+		gchar *status;
+
+		status = g_strdup_printf ("[%s]", _("Read-Only"));
+
+		gtk_label_set_text (GTK_LABEL (document_row->status_label), status);
+		gtk_widget_show (GTK_WIDGET (document_row->status_label));
+
+		g_free (status);
+	}
+
+	/* Update header of the row */
+	pixbuf = _gedit_tab_get_icon (tab);
+
+	if (pixbuf)
+	{
+		gtk_image_set_from_pixbuf (GTK_IMAGE (document_row->image), pixbuf);
+	}
+	else
+	{
+		gtk_image_clear (GTK_IMAGE (document_row->image));
+	}
+}
+
 static void
 multi_notebook_tab_removed (GeditMultiNotebook  *mnb,
                             GeditNotebook       *notebook,
@@ -506,6 +581,13 @@ multi_notebook_tab_removed (GeditMultiNotebook  *mnb,
 	gedit_debug (DEBUG_PANEL);
 
 	row = get_row_from_widget (panel, GTK_WIDGET (tab));
+
+	/* Disconnect before destroy it so document_row_sync_tab_name_and_icon()
+	 * don't get invalid data */
+	g_signal_handlers_disconnect_by_func (GEDIT_DOCUMENTS_DOCUMENT_ROW (row)->ref,
+	                                      G_CALLBACK (document_row_sync_tab_name_and_icon),
+	                                      row);
+
 	gtk_widget_destroy (GTK_WIDGET (row));
 	panel->priv->nb_row_tab -= 1;
 }
@@ -860,22 +942,6 @@ gedit_documents_panel_new (GeditWindow *window)
 	                     NULL);
 }
 
-static gchar *
-doc_get_name (GeditDocument *doc)
-{
-	gchar *name;
-	gchar *docname;
-
-	name = gedit_document_get_short_name_for_display (doc);
-
-	/* Truncate the name so it doesn't get insanely wide. */
-	docname = gedit_utils_str_middle_truncate (name, MAX_DOC_NAME_LENGTH);
-
-	g_free (name);
-
-	return docname;
-}
-
 static void
 row_on_close_button_clicked (GtkWidget *close_button,
                              GtkWidget *row)
@@ -929,65 +995,6 @@ row_on_button_pressed (GtkWidget      *row_event_box,
 	}
 
 	return FALSE;
-}
-
-static void
-document_row_sync_tab_name_and_icon (GeditTab   *tab,
-                                     GParamSpec *pspec,
-                                     GtkWidget  *row)
-{
-	GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
-	GeditDocument *doc;
-	gchar *name;
-	GdkPixbuf *pixbuf;
-
-	doc = gedit_tab_get_document (tab);
-	name = doc_get_name (doc);
-
-	if (!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
-	{
-		gtk_label_set_text (GTK_LABEL (document_row->label), name);
-	}
-	else
-	{
-		gchar *markup;
-
-		markup = g_markup_printf_escaped ("<b>%s</b>", name);
-		gtk_label_set_markup (GTK_LABEL (document_row->label), markup);
-
-		g_free (markup);
-	}
-
-	g_free (name);
-
-	/* The status has as separate label to prevent ellipsizing */
-	if (!gedit_document_get_readonly (doc))
-	{
-		gtk_widget_hide (GTK_WIDGET (document_row->status_label));
-	}
-	else
-	{
-		gchar *status;
-
-		status = g_strdup_printf ("[%s]", _("Read-Only"));
-
-		gtk_label_set_text (GTK_LABEL (document_row->status_label), status);
-		gtk_widget_show (GTK_WIDGET (document_row->status_label));
-
-		g_free (status);
-	}
-
-	/* Update header of the row */
-	pixbuf = _gedit_tab_get_icon (tab);
-
-	if (pixbuf)
-	{
-		gtk_image_set_from_pixbuf (GTK_IMAGE (document_row->image), pixbuf);
-	}
-	else
-	{
-		gtk_image_clear (GTK_IMAGE (document_row->image));
-	}
 }
 
 static void
