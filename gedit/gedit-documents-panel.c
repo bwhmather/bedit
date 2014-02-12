@@ -105,6 +105,7 @@ struct _GeditDocumentsPanelPrivate
 
 	/* Flag to workaround first GroupRow selection at start ( we don't want to show it ) */
 	gboolean            first_selection;
+	GtkWidget          *current_selection;
 
 	GtkAdjustment      *adjustment;
 
@@ -264,6 +265,7 @@ row_select (GeditDocumentsPanel *panel,
 		g_signal_handler_unblock (listbox, panel->priv->selection_changed_handler_id);
 	}
 
+	panel->priv->current_selection = GTK_WIDGET (row);
 	make_row_visible (panel, GTK_WIDGET (row));
 }
 
@@ -778,10 +780,15 @@ listbox_selection_changed (GtkListBox          *listbox,
 	{
 		gedit_multi_notebook_set_active_tab (panel->priv->mnb,
 		                                     GEDIT_TAB (GEDIT_DOCUMENTS_DOCUMENT_ROW (row)->ref));
+
+		panel->priv->current_selection = GTK_WIDGET (row);
 	}
-	else if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
+	else if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row) && panel->priv->current_selection)
 	{
-		gtk_widget_grab_focus (GTK_WIDGET (GEDIT_DOCUMENTS_GROUP_ROW (row)->ref));
+		row_select (panel,
+		            GTK_LIST_BOX (panel->priv->listbox),
+		            GTK_LIST_BOX_ROW (panel->priv->current_selection));
+
 	}
 	else
 	{
@@ -928,6 +935,7 @@ gedit_documents_panel_init (GeditDocumentsPanel *panel)
 	                                                              G_CALLBACK (listbox_selection_changed),
 	                                                              panel);
 	panel->priv->is_in_tab_switched = FALSE;
+	panel->priv->current_selection = NULL;
 	panel->priv->nb_row_notebook = 0;
 	panel->priv->nb_row_tab = 0;
 }
