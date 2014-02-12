@@ -3518,6 +3518,8 @@ _gedit_window_move_tab_to_new_window (GeditWindow *window,
 
 	gtk_widget_show (GTK_WIDGET (new_window));
 
+	gedit_multi_notebook_set_active_tab (window->priv->multi_notebook, tab);
+
 	return new_window;
 }
 
