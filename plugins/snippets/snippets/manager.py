@@ -29,7 +29,7 @@ from .exporter import *
 from .document import Document
 from .languagemanager import get_language_manager
 
-class Manager(Gtk.Dialog, Gtk.Buildable):
+class Manager(Gtk.Window, Gtk.Buildable):
         NAME_COLUMN = 0
         SORT_COLUMN = 1
         LANG_COLUMN = 2
@@ -311,6 +311,7 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                 context.set_junction_sides(Gtk.JunctionSides.BOTTOM)
                 context = self['toolbar'].get_style_context()
                 context.set_junction_sides(Gtk.JunctionSides.TOP)
+                context.set_junction_sides(Gtk.JunctionSides.BOTTOM)
 
                 source_view = self['source_view_snippet']
                 manager = get_language_manager()
@@ -605,12 +606,6 @@ class Manager(Gtk.Dialog, Gtk.Buildable):
                 self.unref_languages()
                 self.snippet = None
                 self.model = None
-
-        def do_response(self, resp):
-                if resp == Gtk.ResponseType.HELP:
-                        Gio.Application.get_default().show_help(self, 'gedit', 'gedit-plugins-snippets')
-                else:
-                        self.destroy()
 
         def on_cell_editing_started(self, renderer, editable, path):
                 piter = self.model.get_iter(path)
