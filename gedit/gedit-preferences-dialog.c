@@ -135,18 +135,7 @@ gedit_preferences_dialog_response (GtkDialog *dlg,
 {
 	gedit_debug (DEBUG_PREFS);
 
-	switch (res_id)
-	{
-		case GTK_RESPONSE_HELP:
-			gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
-			                     GTK_WINDOW (dlg),
-			                     NULL,
-			                     "index#configure-gedit");
-			break;
-
-		default:
-			gtk_widget_destroy (GTK_WIDGET (dlg));
-	}
+	gtk_widget_destroy (GTK_WIDGET (dlg));
 }
 
 static void
@@ -1111,6 +1100,7 @@ gedit_show_preferences_dialog (GeditWindow *parent)
 	{
 		preferences_dialog = GTK_WIDGET (g_object_new (GEDIT_TYPE_PREFERENCES_DIALOG,
 							       "application", g_application_get_default (),
+							       "use-header-bar", TRUE,
 							       NULL));
 		g_signal_connect (preferences_dialog,
 				  "destroy",

@@ -24,11 +24,19 @@
   </object>
   <template class="GeditPreferencesDialog" parent="GtkDialog">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes">gedit Preferences</property>
+    <property name="title" translatable="yes">Preferences</property>
     <property name="resizable">True</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">dialog</property>
     <property name="border_width">5</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="header_bar">
+        <property name="title" translatable="yes">Preferences</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="show-close-button">True</property>
+       </object>
+    </child>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox">
         <property name="visible">True</property>
@@ -42,36 +50,6 @@
             <property name="layout_style">end</property>
             <property name="border_width">5</property>
             <property name="spacing">6</property>
-            <child>
-              <object class="GtkButton" id="helpbutton1">
-                <property name="label" translatable="yes">_Help</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="closebutton1">
-                <property name="label" translatable="yes">_Close</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -936,10 +914,6 @@
         </child>
       </object>
     </child>
-    <action-widgets>
-      <action-widget response="-11">helpbutton1</action-widget>
-      <action-widget response="-7">closebutton1</action-widget>
-    </action-widgets>
   </template>
   <object class="GtkListStore" id="schemes_treeview_model">
     <columns>
