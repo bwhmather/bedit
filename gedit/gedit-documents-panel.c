@@ -280,8 +280,14 @@ row_state_changed (GtkWidget           *row,
 
 	flags = gtk_widget_get_state_flags (row);
 
-	gtk_widget_set_visible (generic_row->close_button,
-	                        flags & GTK_STATE_FLAG_PRELIGHT);
+	if (flags & GTK_STATE_FLAG_PRELIGHT)
+	{
+		gtk_style_context_add_class (gtk_widget_get_style_context (row), "prelight-row");
+	}
+	else
+	{
+		gtk_style_context_remove_class (gtk_widget_get_style_context (row), "prelight-row");
+	}
 
 	if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
 	{
@@ -1070,7 +1076,6 @@ row_create (GtkWidget *row)
 	                  row);
 
 	gtk_widget_set_no_show_all (generic_row->status_label, TRUE);
-	gtk_widget_set_no_show_all (generic_row->close_button, TRUE);
 	gtk_widget_show_all (event_box);
 
 	return event_box;
@@ -1125,7 +1130,6 @@ gedit_documents_document_row_init (GeditDocumentsDocumentRow *row)
 	gtk_style_context_add_class (context, "gedit-document-panel-document-row");
 
 	gtk_widget_show_all (GTK_WIDGET (row));
-	gtk_widget_hide (row->close_button);
 
 	gtk_widget_set_can_focus (GTK_WIDGET (row), FALSE);
 }
@@ -1152,7 +1156,6 @@ gedit_documents_group_row_init (GeditDocumentsGroupRow *row)
 	gtk_style_context_add_class (context, "gedit-document-panel-group-row");
 
 	gtk_widget_show_all (GTK_WIDGET (row));
-	gtk_widget_hide (row->close_button);
 
 	gtk_widget_set_can_focus (GTK_WIDGET (row), FALSE);
 }
