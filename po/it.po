@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-02-09 06:14+0000\n"
-"PO-Revision-Date: 2014-02-09 15:38+0100\n"
-"Last-Translator: Milo Casagrande <milo@ubuntu.com>\n"
+"POT-Creation-Date: 2014-02-16 06:16+0000\n"
+"PO-Revision-Date: 2014-02-16 12:25+0100\n"
+"Last-Translator: Milo Casagrande <milo@milo.name>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -620,25 +620,25 @@ msgstr "Informazioni sul programma"
 msgid "Question"
 msgstr "Domanda"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:304
+#: ../gedit/gedit-close-confirmation-dialog.c:308
 msgid "Close _without Saving"
 msgstr "Chiudi senza sal_vare"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:305
-#: ../gedit/gedit-commands-file.c:441 ../gedit/gedit-commands-file.c:557
-#: ../gedit/gedit-commands-file.c:626 ../gedit/gedit-commands-file.c:833
-#: ../gedit/gedit-commands-file.c:1283 ../gedit/gedit-encodings-dialog.ui.h:3
+#: ../gedit/gedit-close-confirmation-dialog.c:309
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-commands-file.c:558
+#: ../gedit/gedit-commands-file.c:627 ../gedit/gedit-commands-file.c:834
+#: ../gedit/gedit-commands-file.c:1284 ../gedit/gedit-encodings-dialog.ui.h:3
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:2
 #: ../gedit/gedit-io-error-info-bar.c:138
 #: ../gedit/gedit-io-error-info-bar.c:550
 #: ../gedit/gedit-io-error-info-bar.c:1230
-#: ../gedit/gedit-preferences-dialog.c:853
+#: ../gedit/gedit-preferences-dialog.c:842
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
 #: ../plugins/quickopen/quickopen/popup.py:36
-#: ../plugins/snippets/snippets/manager.py:790
-#: ../plugins/snippets/snippets/manager.py:875
-#: ../plugins/snippets/snippets/manager.py:913
+#: ../plugins/snippets/snippets/manager.py:785
+#: ../plugins/snippets/snippets/manager.py:870
+#: ../plugins/snippets/snippets/manager.py:908
 #: ../plugins/sort/gedit-sort-plugin.ui.h:2
 #: ../plugins/spell/gedit-spell-language-dialog.c:124
 #: ../plugins/spell/languages-dialog.ui.h:3
@@ -646,19 +646,18 @@ msgstr "Chiudi senza sal_vare"
 msgid "_Cancel"
 msgstr "A_nnulla"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:331 ../gedit/gedit-menu.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:335 ../gedit/gedit-menu.ui.h:7
 msgid "_Save As…"
 msgstr "Sa_lva come…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:331
-#: ../gedit/gedit-commands-file.c:834
-#: ../plugins/snippets/snippets/manager.py:876
-#: ../plugins/snippets/snippets/manager.py:914
-#| msgid "_Save:"
+#: ../gedit/gedit-close-confirmation-dialog.c:335
+#: ../gedit/gedit-commands-file.c:835
+#: ../plugins/snippets/snippets/manager.py:871
+#: ../plugins/snippets/snippets/manager.py:909
 msgid "_Save"
 msgstr "_Salva"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:349
+#: ../gedit/gedit-close-confirmation-dialog.c:353
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -672,14 +671,14 @@ msgstr[1] ""
 "Se non si salva, le modifiche apportate negli ultimi %ld secondi andranno "
 "perse per sempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:358
+#: ../gedit/gedit-close-confirmation-dialog.c:362
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Se non si salva, le modifiche apportate nell'ultimo minuto andranno perse "
 "per sempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:368
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -694,7 +693,7 @@ msgstr[1] ""
 "Se non si salva, le modifiche apportate nell'ultimo minuto e %ld secondi "
 "andranno perse per sempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:374
+#: ../gedit/gedit-close-confirmation-dialog.c:378
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -708,13 +707,13 @@ msgstr[1] ""
 "Se non si salva, le modifiche apportate negli ultimi %ld minuti andranno "
 "perse per sempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:393
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Se non si salva, le modifiche apportate nell'ultima ora andranno perse per "
 "sempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:395
+#: ../gedit/gedit-close-confirmation-dialog.c:399
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -729,7 +728,7 @@ msgstr[1] ""
 "Se non si salva, le modifiche apportate nell'ultima ora e %d minuti andranno "
 "perse per sempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -742,29 +741,29 @@ msgstr[1] ""
 "Se non si salva, le modifiche apportate nelle ultime %d ore andranno perse "
 "per sempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:460
+#: ../gedit/gedit-close-confirmation-dialog.c:457
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Le modifiche apportate al documento «%s» andranno perse per sempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:465
+#: ../gedit/gedit-close-confirmation-dialog.c:462
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Salvare le modifiche al documento «%s» prima di chiudere?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:480
-#: ../gedit/gedit-close-confirmation-dialog.c:701
+#: ../gedit/gedit-close-confirmation-dialog.c:477
+#: ../gedit/gedit-close-confirmation-dialog.c:693
 msgid "Saving has been disabled by the system administrator."
 msgstr "Il salvataggio è stato disabilitato dall'amministratore di sistema."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:650
+#: ../gedit/gedit-close-confirmation-dialog.c:642
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Le modifiche apportate a %d documento andranno perse per sempre."
 msgstr[1] "Le modifiche apportate a %d documenti andranno perse per sempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:658
+#: ../gedit/gedit-close-confirmation-dialog.c:650
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -776,24 +775,24 @@ msgstr[1] ""
 "Ci sono %d documenti con modifiche non salvate. Salvare le modifiche prima "
 "di chiudere?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:678
+#: ../gedit/gedit-close-confirmation-dialog.c:670
 msgid "Docum_ents with unsaved changes:"
 msgstr "Docum_enti con modifiche non salvate:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:682
+#: ../gedit/gedit-close-confirmation-dialog.c:674
 msgid "S_elect the documents you want to save:"
 msgstr "S_elezionare i documenti da salvare:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:705
+#: ../gedit/gedit-close-confirmation-dialog.c:697
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Se non si salva, tutte le modifiche andranno perse per sempre."
 
-#: ../gedit/gedit-commands-file.c:261
+#: ../gedit/gedit-commands-file.c:262
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "Caricamento del file «%s»..."
 
-#: ../gedit/gedit-commands-file.c:270
+#: ../gedit/gedit-commands-file.c:271
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -802,36 +801,36 @@ msgstr[1] "Caricamento di %d file..."
 
 #. Translators: "Open" is the title of the file chooser window
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-commands-file.c:437 ../gedit/gedit-window.ui.h:1
+#: ../gedit/gedit-commands-file.c:438 ../gedit/gedit-window.ui.h:1
 msgid "Open"
 msgstr "Apri"
 
 #. ex:ts=8:noet:
-#: ../gedit/gedit-commands-file.c:442
+#: ../gedit/gedit-commands-file.c:443
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:37
-#: ../plugins/snippets/snippets/manager.py:791
+#: ../plugins/snippets/snippets/manager.py:786
 msgid "_Open"
 msgstr "_Apri"
 
-#: ../gedit/gedit-commands-file.c:548
+#: ../gedit/gedit-commands-file.c:549
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Il file «%s» è in modalità sola lettura."
 
-#: ../gedit/gedit-commands-file.c:553
+#: ../gedit/gedit-commands-file.c:554
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Tentare di sostituirlo con quello che si sta per salvare?"
 
-#: ../gedit/gedit-commands-file.c:558 ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-commands-file.c:559 ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "Sostit_uisci"
 
-#: ../gedit/gedit-commands-file.c:599
+#: ../gedit/gedit-commands-file.c:600
 msgid "Save the file using compression?"
 msgstr "Salvare il file comprimendo i dati?"
 
-#: ../gedit/gedit-commands-file.c:600
+#: ../gedit/gedit-commands-file.c:601
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -841,15 +840,15 @@ msgstr ""
 "salvato utilizzando una compressione dati."
 
 # (ndt) oppure "Salva e comprimi" ?
-#: ../gedit/gedit-commands-file.c:602
+#: ../gedit/gedit-commands-file.c:603
 msgid "_Save Using Compression"
 msgstr "_Salva con compressione"
 
-#: ../gedit/gedit-commands-file.c:606
+#: ../gedit/gedit-commands-file.c:607
 msgid "Save the file as plain text?"
 msgstr "Salvare il file come testo normale?"
 
-#: ../gedit/gedit-commands-file.c:607
+#: ../gedit/gedit-commands-file.c:608
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -858,31 +857,31 @@ msgstr ""
 "Il file «%s» è stato precedentemente salvato utilizzando una compressione "
 "dati e verrà ora salvato come testo normale."
 
-#: ../gedit/gedit-commands-file.c:609
+#: ../gedit/gedit-commands-file.c:610
 msgid "_Save As Plain Text"
 msgstr "_Salva come testo semplice"
 
-#: ../gedit/gedit-commands-file.c:725 ../gedit/gedit-commands-file.c:942
+#: ../gedit/gedit-commands-file.c:726 ../gedit/gedit-commands-file.c:943
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Salvataggio del file «%s»..."
 
-#: ../gedit/gedit-commands-file.c:829
+#: ../gedit/gedit-commands-file.c:830
 msgid "Save As"
 msgstr "Salva come"
 
-#: ../gedit/gedit-commands-file.c:1146
+#: ../gedit/gedit-commands-file.c:1147
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Ripristino del documento «%s»..."
 
 # (ndt) l'azione annulla effettivamente le modifiche che non sono state salvate.
-#: ../gedit/gedit-commands-file.c:1191
+#: ../gedit/gedit-commands-file.c:1192
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Annullare le modifiche non salvate al documento «%s»?"
 
-#: ../gedit/gedit-commands-file.c:1200
+#: ../gedit/gedit-commands-file.c:1201
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -896,14 +895,14 @@ msgstr[1] ""
 "Le modifiche apportate al documento negli ultimi %ld secondi andranno perse "
 "per sempre."
 
-#: ../gedit/gedit-commands-file.c:1209
+#: ../gedit/gedit-commands-file.c:1210
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Le modifiche apportate al documento nell'ultimo minuto andranno perse per "
 "sempre."
 
-#: ../gedit/gedit-commands-file.c:1215
+#: ../gedit/gedit-commands-file.c:1216
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -918,7 +917,7 @@ msgstr[1] ""
 "Le modifiche apportate al documento nell'ultimo minuto e %ld secondi "
 "andranno perse per sempre."
 
-#: ../gedit/gedit-commands-file.c:1225
+#: ../gedit/gedit-commands-file.c:1226
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -932,13 +931,13 @@ msgstr[1] ""
 "Le modifiche apportate al documento negli ultimi %ld minuti andranno perse "
 "per sempre."
 
-#: ../gedit/gedit-commands-file.c:1240
+#: ../gedit/gedit-commands-file.c:1241
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Le modifiche apportate al documento nell'ultima ora andranno perse per "
 "sempre."
 
-#: ../gedit/gedit-commands-file.c:1246
+#: ../gedit/gedit-commands-file.c:1247
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -953,7 +952,7 @@ msgstr[1] ""
 "Le modifiche apportate al documento nell'ultima ora e %d minuti andranno "
 "perse per sempre."
 
-#: ../gedit/gedit-commands-file.c:1261
+#: ../gedit/gedit-commands-file.c:1262
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -966,7 +965,7 @@ msgstr[1] ""
 "Le modifiche apportate al documento nelle ultime %d ore andranno perse per "
 "sempre."
 
-#: ../gedit/gedit-commands-file.c:1284
+#: ../gedit/gedit-commands-file.c:1285
 msgid "_Revert"
 msgstr "_Ripristina"
 
@@ -1003,14 +1002,13 @@ msgstr "«%s» non trovato"
 msgid "Unsaved Document %d"
 msgstr "Documento %d non salvato"
 
-#: ../gedit/gedit-documents-panel.c:456
+#: ../gedit/gedit-documents-panel.c:407
 #, c-format
 msgid "Tab Group %i"
 msgstr "Gruppo schede %i"
 
-#: ../gedit/gedit-documents-panel.c:947 ../gedit/gedit-documents-panel.c:961
-#: ../gedit/gedit-window.c:1187 ../gedit/gedit-window.c:1193
-#: ../gedit/gedit-window.c:1201
+#: ../gedit/gedit-documents-panel.c:561 ../gedit/gedit-window.c:1187
+#: ../gedit/gedit-window.c:1193 ../gedit/gedit-window.c:1201
 msgid "Read-Only"
 msgstr "Sola lettura"
 
@@ -1150,8 +1148,6 @@ msgid "Character encodings"
 msgstr "Codifiche caratteri"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:2 ../gedit/gedit-menu.ui.h:3
-#: ../gedit/gedit-preferences-dialog.ui.h:2
-#: ../plugins/snippets/snippets/snippets.ui.h:3
 #: ../plugins/sort/gedit-sort-plugin.ui.h:4
 #: ../plugins/spell/gedit-spell-language-dialog.c:126
 #: ../plugins/spell/languages-dialog.ui.h:2
@@ -1185,7 +1181,6 @@ msgid "_Add"
 msgstr "A_ggiungi"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:9
-#| msgid "Remove Tool"
 msgid "_Remove"
 msgstr "_Rimuovi"
 
@@ -1194,7 +1189,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "_Codifiche mostrate nel menù:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:40
-#: ../gedit/gedit-preferences-dialog.c:868
+#: ../gedit/gedit-preferences-dialog.c:857
 msgid "All Files"
 msgstr "Tutti i file"
 
@@ -1654,199 +1649,194 @@ msgid "_Close All"
 msgstr "_Chiudi tutti"
 
 #: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-notebook-popup-menu.ui.h:5
-#: ../gedit/gedit-preferences-dialog.ui.h:3
 #: ../gedit/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
-#: ../plugins/snippets/snippets/snippets.ui.h:2
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Chiudi"
 
 #: ../gedit/gedit-notebook-popup-menu.ui.h:1
-#| msgid "_Move Left"
 msgid "Move _Left"
 msgstr "Sposta a _sinistra"
 
 #: ../gedit/gedit-notebook-popup-menu.ui.h:2
-#| msgid "_Move Right"
 msgid "Move _Right"
 msgstr "Sposta a _destra"
 
 #: ../gedit/gedit-notebook-popup-menu.ui.h:3
-#| msgid "_Move to New Window"
 msgid "Move to New _Window"
 msgstr "_Sposta in nuova finestra"
 
 #: ../gedit/gedit-notebook-popup-menu.ui.h:4
-#| msgid "_Move to New Tab Group"
 msgid "Move to New Tab _Group"
 msgstr "Sposta in nuovo _gruppo di schede"
 
-#: ../gedit/gedit-preferences-dialog.c:394
+#: ../gedit/gedit-preferences-dialog.c:383
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Fare clic su questo pulsante per selezionare il carattere che verrà usato "
 "dall'editor"
 
-#: ../gedit/gedit-preferences-dialog.c:407
+#: ../gedit/gedit-preferences-dialog.c:396
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "_Usare il carattere a spaziatura fissa di sistema (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:639
+#: ../gedit/gedit-preferences-dialog.c:628
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "La directory «%s» non può essere creata: g_mkdir_with_parents() non "
 "riuscito: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:823
+#: ../gedit/gedit-preferences-dialog.c:812
 msgid "The selected color scheme cannot be installed."
 msgstr "Lo schema colore selezionato non può essere installato."
 
-#: ../gedit/gedit-preferences-dialog.c:850
+#: ../gedit/gedit-preferences-dialog.c:839
 msgid "Add Scheme"
 msgstr "Aggiungi schema"
 
 # (ndt) pulsante
-#: ../gedit/gedit-preferences-dialog.c:854
+#: ../gedit/gedit-preferences-dialog.c:843
 msgid "A_dd Scheme"
 msgstr "A_ggiungi schema"
 
-#: ../gedit/gedit-preferences-dialog.c:861
+#: ../gedit/gedit-preferences-dialog.c:850
 msgid "Color Scheme Files"
 msgstr "File schema colore"
 
-#: ../gedit/gedit-preferences-dialog.c:913
+#: ../gedit/gedit-preferences-dialog.c:902
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Impossibile rimuovere lo schema colore «%s»."
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-preferences-dialog.ui.h:1
-msgid "gedit Preferences"
-msgstr "Preferenze di gedit"
+#| msgid "_Preferences"
+msgid "Preferences"
+msgstr "Preferenze"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:4 ../gedit/gedit-view.c:525
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:525
 msgid "_Display line numbers"
 msgstr "Mostrare i numeri di _riga"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:5
+#: ../gedit/gedit-preferences-dialog.ui.h:3
 msgid "Display right _margin at column:"
 msgstr "Mostrare _il margine destro alla colonna:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:6
+#: ../gedit/gedit-preferences-dialog.ui.h:4
 msgid "Display _statusbar"
 msgstr "Visualizza barra di _stato"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:7
+#: ../gedit/gedit-preferences-dialog.ui.h:5
 #: ../gedit/gedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "A capo automatico"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:8
+#: ../gedit/gedit-preferences-dialog.ui.h:6
 #: ../gedit/gedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
 msgstr "_Attivare a capo automatico"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:9
+#: ../gedit/gedit-preferences-dialog.ui.h:7
 #: ../gedit/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
 msgstr "Non _dividere le parole su due righe"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:10
+#: ../gedit/gedit-preferences-dialog.ui.h:8
 msgid "Highlighting"
 msgstr "Evidenziazione"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:11
+#: ../gedit/gedit-preferences-dialog.ui.h:9
 msgid "Highlight current _line"
 msgstr "Evidenziare la ri_ga corrente"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:12
+#: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "Highlight matching _brackets"
 msgstr "Evidenziare le _parentesi corrispondenti"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:13
+#: ../gedit/gedit-preferences-dialog.ui.h:11
 msgid "View"
 msgstr "Vista"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:14
+#: ../gedit/gedit-preferences-dialog.ui.h:12
 msgid "Tab Stops"
 msgstr "Tabulazioni"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:15
+#: ../gedit/gedit-preferences-dialog.ui.h:13
 msgid "_Tab width:"
 msgstr "Ampiezza _tabulazione:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:16
+#: ../gedit/gedit-preferences-dialog.ui.h:14
 msgid "Insert _spaces instead of tabs"
 msgstr "Inserire _spazi invece di tabulazioni"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:17
+#: ../gedit/gedit-preferences-dialog.ui.h:15
 msgid "_Enable automatic indentation"
 msgstr "_Attivare rientro automatico"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:18
+#: ../gedit/gedit-preferences-dialog.ui.h:16
 msgid "File Saving"
 msgstr "Salvataggio file"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:19
+#: ../gedit/gedit-preferences-dialog.ui.h:17
 msgid "Create a _backup copy of files before saving"
 msgstr "Creare una copia di _backup dei file prima di salvare"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:20
+#: ../gedit/gedit-preferences-dialog.ui.h:18
 msgid "_Autosave files every"
 msgstr "Salvare _automaticamente il file corrente ogni"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:21
+#: ../gedit/gedit-preferences-dialog.ui.h:19
 msgid "_minutes"
 msgstr "_minuti"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:22
+#: ../gedit/gedit-preferences-dialog.ui.h:20
 msgid "Editor"
 msgstr "Editor"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:23
+#: ../gedit/gedit-preferences-dialog.ui.h:21
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
 msgid "Font"
 msgstr "Carattere"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:24
+#: ../gedit/gedit-preferences-dialog.ui.h:22
 msgid "Editor _font: "
 msgstr "_Carattere dell'editor:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
+#: ../gedit/gedit-preferences-dialog.ui.h:23
 msgid "Pick the editor font"
 msgstr "Scelta del carattere dell'editor"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26
+#: ../gedit/gedit-preferences-dialog.ui.h:24
 msgid "Color Scheme"
 msgstr "Schema colore"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:27
+#: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
 msgstr "Installa uno schema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
 msgstr "Installa schema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
 msgstr "Rimuove uno schema"
 
 # (NdT) o Schema dello stile?
 # Ho messo così perché c'è anche Schema colore
-#: ../gedit/gedit-preferences-dialog.ui.h:30
+#: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Uninstall Scheme"
 msgstr "Rimuovi schema"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:31
+#: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Font & Colors"
 msgstr "Caratteri e colori"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:32
+#: ../gedit/gedit-preferences-dialog.ui.h:30
 msgid "Plugins"
 msgstr "Plugin"
 
@@ -2004,7 +1994,6 @@ msgid "Replace _All"
 msgstr "Sostituisci _tutti"
 
 #: ../gedit/gedit-replace-dialog.ui.h:5
-#| msgid "_Find…"
 msgid "_Find"
 msgstr "_Trova"
 
@@ -2549,6 +2538,7 @@ msgid "Manage External Tools"
 msgstr "Gestione strumenti esterni"
 
 #: ../plugins/externaltools/tools/tools.ui.h:20
+#: ../plugins/snippets/snippets/snippets.ui.h:2
 msgid "Need help?"
 msgstr "Serve aiuto?"
 
@@ -3034,17 +3024,17 @@ msgstr "Aggiungi una nuova snippet..."
 msgid "Global"
 msgstr "Globale"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:410
 msgid "Revert selected snippet"
 msgstr "Ripristina snippet selezionata"
 
-#: ../plugins/snippets/snippets/manager.py:412
-#: ../plugins/snippets/snippets/snippets.ui.h:7
+#: ../plugins/snippets/snippets/manager.py:413
+#: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Delete selected snippet"
 msgstr "Elimina snippet selezionata"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:671
+#: ../plugins/snippets/snippets/manager.py:666
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3055,85 +3045,85 @@ msgstr ""
 "{, [, ecc..."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:678
-#: ../plugins/snippets/snippets/snippets.ui.h:18
+#: ../plugins/snippets/snippets/manager.py:673
+#: ../plugins/snippets/snippets/snippets.ui.h:15
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr ""
 "Singola parola con cui la snippet è attivata dopo la pressione del tasto "
 "tabulatore"
 
-#: ../plugins/snippets/snippets/manager.py:767
+#: ../plugins/snippets/snippets/manager.py:762
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Si è verificato il seguente errore durante l'importazione: %s"
 
-#: ../plugins/snippets/snippets/manager.py:774
+#: ../plugins/snippets/snippets/manager.py:769
 msgid "Import successfully completed"
 msgstr "Importazione completata con successo"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/snippets.ui.h:9
+#: ../plugins/snippets/snippets/manager.py:783
+#: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr "Importa snippet"
 
-#: ../plugins/snippets/snippets/manager.py:793
-#: ../plugins/snippets/snippets/manager.py:879
-#: ../plugins/snippets/snippets/manager.py:942
+#: ../plugins/snippets/snippets/manager.py:788
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "All supported archives"
 msgstr "Tutti gli archivi supportati"
 
-#: ../plugins/snippets/snippets/manager.py:794
-#: ../plugins/snippets/snippets/manager.py:880
-#: ../plugins/snippets/snippets/manager.py:943
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:938
 msgid "Gzip compressed archive"
 msgstr "Archivio compresso con gzip"
 
-#: ../plugins/snippets/snippets/manager.py:795
-#: ../plugins/snippets/snippets/manager.py:881
-#: ../plugins/snippets/snippets/manager.py:944
+#: ../plugins/snippets/snippets/manager.py:790
+#: ../plugins/snippets/snippets/manager.py:876
+#: ../plugins/snippets/snippets/manager.py:939
 msgid "Bzip2 compressed archive"
 msgstr "Archivio compresso con bzip2"
 
-#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:791
 msgid "Single snippets file"
 msgstr "File snippet singola"
 
-#: ../plugins/snippets/snippets/manager.py:797
-#: ../plugins/snippets/snippets/manager.py:883
-#: ../plugins/snippets/snippets/manager.py:946
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All files"
 msgstr "Tutti i file"
 
-#: ../plugins/snippets/snippets/manager.py:809
+#: ../plugins/snippets/snippets/manager.py:804
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Si è verificato il seguente errore durante l'esportazione: %s"
 
-#: ../plugins/snippets/snippets/manager.py:813
+#: ../plugins/snippets/snippets/manager.py:808
 msgid "Export successfully completed"
 msgstr "Esportazione completata con successo"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:853
-#: ../plugins/snippets/snippets/manager.py:920
+#: ../plugins/snippets/snippets/manager.py:848
+#: ../plugins/snippets/snippets/manager.py:915
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "Includere nell'esportazione le snippet di <b>sistema</b> selezionate?"
 
-#: ../plugins/snippets/snippets/manager.py:868
-#: ../plugins/snippets/snippets/manager.py:938
+#: ../plugins/snippets/snippets/manager.py:863
+#: ../plugins/snippets/snippets/manager.py:933
 msgid "There are no snippets selected to be exported"
 msgstr "Non ci sono snippet selezionate per l'esportazione"
 
-#: ../plugins/snippets/snippets/manager.py:873
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:868
+#: ../plugins/snippets/snippets/manager.py:906
 msgid "Export snippets"
 msgstr "Esporta snippet"
 
-#: ../plugins/snippets/snippets/manager.py:1052
+#: ../plugins/snippets/snippets/manager.py:1047
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Inserire una nuova scorciatoia o premere Backspace per pulire"
 
-#: ../plugins/snippets/snippets/manager.py:1054
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut"
 msgstr "Inserire una nuova scorciatoia"
 
@@ -3159,60 +3149,52 @@ msgstr "Inserisce velocemente parti di testo molto usate"
 msgid "Manage Snippets"
 msgstr "Gestione snippet"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:4
-msgid "_Snippets:"
-msgstr "_Snippet:"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:5
+#: ../plugins/snippets/snippets/snippets.ui.h:3
 msgid "Create new snippet"
 msgstr "Crea una nuova snippet"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:6
+#: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Add Snippet"
 msgstr "Aggiungi snippet"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:8
+#: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Remove Snippet"
 msgstr "Rimuovi snippet"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:10
+#: ../plugins/snippets/snippets/snippets.ui.h:8
 msgid "Import Snippets"
 msgstr "Importa snippet"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:11
+#: ../plugins/snippets/snippets/snippets.ui.h:9
 msgid "Export selected snippets"
 msgstr "Esporta snippet selezionate"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:12
+#: ../plugins/snippets/snippets/snippets.ui.h:10
 msgid "Export Snippets"
 msgstr "Esporta snippet"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:13
-msgid "_Edit:"
-msgstr "_Modifica:"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:14
+#: ../plugins/snippets/snippets/snippets.ui.h:11
 msgid "Activation"
 msgstr "Attivazione"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:15
+#: ../plugins/snippets/snippets/snippets.ui.h:12
 msgid "    "
 msgstr "    "
 
 #. "tab" here means the tab key, not the notebook tab!
-#: ../plugins/snippets/snippets/snippets.ui.h:17
+#: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "_Tab trigger:"
 msgstr "_Tab trigger:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:19
+#: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "S_hortcut key:"
 msgstr "Tasto _scorciatoia:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:20
+#: ../plugins/snippets/snippets/snippets.ui.h:17
 msgid "Shortcut key with which the snippet is activated"
 msgstr "Tasto scorciatoia con cui la snippet è attivata"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:21
+#: ../plugins/snippets/snippets/snippets.ui.h:18
 msgid "_Drop targets:"
 msgstr "_Rilascia destinazioni:"
 
