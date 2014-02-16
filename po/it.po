@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-02-16 06:16+0000\n"
-"PO-Revision-Date: 2014-02-16 12:25+0100\n"
-"Last-Translator: Milo Casagrande <milo@milo.name>\n"
+"POT-Creation-Date: 2014-02-16 14:02+0000\n"
+"PO-Revision-Date: 2014-02-16 17:34+0100\n"
+"Last-Translator: Milo Casagrande <milo@ubuntu.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -554,15 +554,15 @@ msgstr ""
 "Consultare il file .gedit-plugin per conoscere la \"Collocazione\" di un "
 "dato plugin."
 
-#: ../gedit/gedit-app.c:105
+#: ../gedit/gedit-app.c:104
 msgid "Show the application's version"
 msgstr "Mostra la versione dell'applicazione"
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:110
 msgid "Display list of possible values for the encoding option"
 msgstr "Visualizza l'elenco dei possibili valori per l'opzione di codifica"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:117
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -570,44 +570,44 @@ msgstr ""
 "Imposta la codifica dei caratteri da usare per aprire i file elencati nella "
 "riga di comando"
 
-#: ../gedit/gedit-app.c:120
+#: ../gedit/gedit-app.c:118
 msgid "ENCODING"
 msgstr "CODIFICA"
 
-#: ../gedit/gedit-app.c:127
+#: ../gedit/gedit-app.c:124
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Crea una nuova finestra toplevel in un'istanza esistente del programma"
 
-#: ../gedit/gedit-app.c:135
+#: ../gedit/gedit-app.c:131
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Crea un nuovo documento in un'istanza esistente del programma"
 
-#: ../gedit/gedit-app.c:143
+#: ../gedit/gedit-app.c:138
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr ""
 "Imposta la dimensione e la posizione della finestra (LARGHEZZA×ALTEZZA+X+Y)"
 
-#: ../gedit/gedit-app.c:144
+#: ../gedit/gedit-app.c:139
 msgid "GEOMETRY"
 msgstr "GEOMETRIA"
 
-#: ../gedit/gedit-app.c:151
+#: ../gedit/gedit-app.c:145
 msgid "Open files and block process until files are closed"
 msgstr "Apre i file e blocca il processo fino alla chiusura dei file"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:152
 msgid "Run gedit in standalone mode"
 msgstr "Esegue il programma in modalità standalone"
 
-#: ../gedit/gedit-app.c:168
+#: ../gedit/gedit-app.c:159
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FILE...] [+RIGA[:COLONNA]]"
 
-#: ../gedit/gedit-app.c:270
+#: ../gedit/gedit-app.c:261
 msgid "There was an error displaying the help."
 msgstr "Si è verificato un errore nel mostrare l'aiuto."
 
-#: ../gedit/gedit-app.c:854
+#: ../gedit/gedit-app.c:848
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codifica non valida."
@@ -1002,13 +1002,13 @@ msgstr "«%s» non trovato"
 msgid "Unsaved Document %d"
 msgstr "Documento %d non salvato"
 
-#: ../gedit/gedit-documents-panel.c:407
+#: ../gedit/gedit-documents-panel.c:406
 #, c-format
 msgid "Tab Group %i"
 msgstr "Gruppo schede %i"
 
-#: ../gedit/gedit-documents-panel.c:561 ../gedit/gedit-window.c:1187
-#: ../gedit/gedit-window.c:1193 ../gedit/gedit-window.c:1201
+#: ../gedit/gedit-documents-panel.c:560 ../gedit/gedit-window.c:1099
+#: ../gedit/gedit-window.c:1105 ../gedit/gedit-window.c:1113
 msgid "Read-Only"
 msgstr "Sola lettura"
 
@@ -1217,7 +1217,12 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1302
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
+msgid "Highlight Mode"
+msgstr "Modalità evidenziazione"
+
+#: ../gedit/gedit-highlight-mode-selector.c:247 ../gedit/gedit-window.c:1179
 #: ../plugins/externaltools/tools/manager.py:107
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1226,11 +1231,7 @@ msgid "Plain Text"
 msgstr "Testo semplice"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
-msgid "Highlight Mode"
-msgstr "Modalità evidenziazione"
-
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:4
+#: ../gedit/gedit-highlight-mode-selector.ui.h:1
 msgid "Search highlight mode..."
 msgstr "Modalità ricerca evidenziazione..."
 
@@ -1648,28 +1649,38 @@ msgstr "Modalità e_videnziazione…"
 msgid "_Close All"
 msgstr "_Chiudi tutti"
 
-#: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-notebook-popup-menu.ui.h:5
-#: ../gedit/gedit-replace-dialog.ui.h:2
+#: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Chiudi"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:1
+#: ../gedit/gedit-menu.ui.h:20
 msgid "Move _Left"
 msgstr "Sposta a _sinistra"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:2
+#: ../gedit/gedit-menu.ui.h:21
 msgid "Move _Right"
 msgstr "Sposta a _destra"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:3
+#: ../gedit/gedit-menu.ui.h:22
 msgid "Move to New _Window"
 msgstr "_Sposta in nuova finestra"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:4
+#: ../gedit/gedit-menu.ui.h:23
 msgid "Move to New Tab _Group"
 msgstr "Sposta in nuovo _gruppo di schede"
+
+#: ../gedit/gedit-menu.ui.h:24
+#| msgid "Automatic indent"
+msgid "Automatic Indentation"
+msgstr "Rientro automatico"
+
+# (ndt) opzione quando si seleziona la dimensione
+# della tabulazione
+#: ../gedit/gedit-menu.ui.h:25
+msgid "Use Spaces"
+msgstr "Usare spazi"
 
 #: ../gedit/gedit-preferences-dialog.c:383
 msgid "Click on this button to select the font to be used by the editor"
@@ -1713,7 +1724,6 @@ msgstr "Impossibile rimuovere lo schema colore «%s»."
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-preferences-dialog.ui.h:1
-#| msgid "_Preferences"
 msgid "Preferences"
 msgstr "Preferenze"
 
@@ -2181,37 +2191,31 @@ msgstr "Stringa da cercare"
 msgid "Line you want to move the cursor to"
 msgstr "Riga su cui spostare il cursore"
 
-# (ndt) opzione quando si seleziona la dimensione
-# della tabulazione
-#: ../gedit/gedit-window.c:904
-msgid "Use Spaces"
-msgstr "Usare spazi"
-
-#: ../gedit/gedit-window.c:1041
+#: ../gedit/gedit-window.c:953
 msgid "Bracket match is out of range"
 msgstr "Corrispondenza parentesi oltre l'intervallo"
 
-#: ../gedit/gedit-window.c:1046
+#: ../gedit/gedit-window.c:958
 msgid "Bracket match not found"
 msgstr "Corrispondenza parentesi non trovata"
 
-#: ../gedit/gedit-window.c:1051
+#: ../gedit/gedit-window.c:963
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Corrispondenza parentesi trovata alla riga: %d"
 
 # (ndt) è un po' lunghetta...
 # Larg. tabul.
-#: ../gedit/gedit-window.c:1254
+#: ../gedit/gedit-window.c:1161
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Larghezza tabulazione: %u"
 
-#: ../gedit/gedit-window.c:1641
+#: ../gedit/gedit-window.c:1533
 msgid "There are unsaved documents"
 msgstr "Sono presenti documenti non salvati"
 
-#: ../gedit/gedit-window.c:2676
+#: ../gedit/gedit-window.c:2566
 msgid "Documents"
 msgstr "Documenti"
 
