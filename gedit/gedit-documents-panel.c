@@ -275,7 +275,6 @@ row_state_changed (GtkWidget           *row,
                    GtkStateFlags        previous_flags,
                    GeditDocumentsPanel *panel)
 {
-	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
 	GtkStateFlags flags;
 
 	flags = gtk_widget_get_state_flags (row);
