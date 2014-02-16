@@ -79,6 +79,7 @@ struct _GeditAppPrivate
 	GSettings         *window_settings;
 
 	GMenuModel        *window_menu;
+	GMenuModel        *notebook_menu;
 	GMenuModel        *tab_width_menu;
 
 	PeasExtensionSet  *extensions;
@@ -492,6 +493,8 @@ gedit_app_startup (GApplication *application)
 		{
 			app->priv->window_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "gear_menu_noappmenu"));
 		}
+
+		app->priv->notebook_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "notebook_menu"));
 		app->priv->tab_width_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "tab_width_menu"));
 	}
 
@@ -1647,6 +1650,14 @@ _gedit_app_get_window_menu (GeditApp *app)
 	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
 
 	return app->priv->window_menu;
+}
+
+GMenuModel *
+_gedit_app_get_notebook_menu (GeditApp *app)
+{
+	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
+
+	return app->priv->notebook_menu;
 }
 
 GMenuModel *

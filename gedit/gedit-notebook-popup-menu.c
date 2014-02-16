@@ -18,11 +18,11 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-#include "gedit-notebook-popup-menu.h"
-#include "gedit-multi-notebook.h"
-#include "gedit-commands.h"
 #include <glib/gi18n.h>
+#include "gedit-app.h"
+#include "gedit-commands.h"
+#include "gedit-multi-notebook.h"
+#include "gedit-notebook-popup-menu.h"
 
 struct _GeditNotebookPopupMenuPrivate
 {
@@ -30,7 +30,6 @@ struct _GeditNotebookPopupMenuPrivate
 	GeditTab *tab;
 
 	GSimpleActionGroup *action_group;
-	GMenuModel *menu_model;
 };
 
 enum
@@ -157,7 +156,6 @@ static void
 gedit_notebook_popup_menu_class_init (GeditNotebookPopupMenuClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->get_property = gedit_notebook_popup_menu_get_property;
 	object_class->set_property = gedit_notebook_popup_menu_set_property;
@@ -181,11 +179,6 @@ gedit_notebook_popup_menu_class_init (GeditNotebookPopupMenuClass *klass)
 	                                                      GEDIT_TYPE_TAB,
 	                                                      G_PARAM_READWRITE |
 	                                                      G_PARAM_CONSTRUCT_ONLY));
-
-	gtk_widget_class_set_template_from_resource (widget_class,
-	                                             "/org/gnome/gedit/ui/gedit-notebook-popup-menu.ui");
-
-	gtk_widget_class_bind_template_child_private (widget_class, GeditNotebookPopupMenu, menu_model);
 }
 
 static void
@@ -279,10 +272,8 @@ gedit_notebook_popup_menu_init (GeditNotebookPopupMenu *menu)
 {
 	menu->priv = gedit_notebook_popup_menu_get_instance_private (menu);
 
-	gtk_widget_init_template (GTK_WIDGET (menu));
-
 	gtk_menu_shell_bind_model (GTK_MENU_SHELL (menu),
-	                           menu->priv->menu_model,
+	                           _gedit_app_get_notebook_menu (GEDIT_APP (g_application_get_default ())),
 	                           "popup",
 	                           TRUE);
 

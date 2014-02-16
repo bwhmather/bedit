@@ -250,6 +250,34 @@
       </item>
     </section>
   </menu>
+  <menu id="notebook_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Move _Left</attribute>
+        <attribute name="action">move-left</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Move _Right</attribute>
+        <attribute name="action">move-right</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Move to New _Window</attribute>
+        <attribute name="action">move-to-new-window</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Move to New Tab _Group</attribute>
+        <attribute name="action">move-to-new-tab-group</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Close</attribute>
+        <attribute name="action">close</attribute>
+      </item>
+    </section>
+  </menu>
   <menu id="tab_width_menu">
     <section>
       <item>
