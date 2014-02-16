@@ -25,21 +25,18 @@
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-
 #include "gedit-statusbar.h"
 
 struct _GeditStatusbarPrivate
 {
-	GtkWidget     *overwrite_mode_label;
-	GtkWidget     *cursor_position_label;
-
+	GtkWidget     *error_frame;
+	GtkWidget     *error_image;
 	GtkWidget     *state_frame;
 	GtkWidget     *load_image;
 	GtkWidget     *save_image;
 	GtkWidget     *print_image;
-
-	GtkWidget     *error_frame;
-	GtkWidget     *error_event_box;
+	GtkWidget     *cursor_position_label;
+	GtkWidget     *overwrite_mode_label;
 
 	/* tmp flash timeout data */
 	guint          flash_timeout;
@@ -80,95 +77,32 @@ static void
 gedit_statusbar_class_init (GeditStatusbarClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->dispose = gedit_statusbar_dispose;
-}
 
-#define CURSOR_POSITION_LABEL_WIDTH_CHARS 18
+	gtk_widget_class_set_template_from_resource (widget_class,
+		                                    "/org/gnome/gedit/ui/gedit-statusbar.ui");
+
+	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, error_frame);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, error_image);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, state_frame);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, load_image);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, save_image);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, print_image);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, cursor_position_label);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, overwrite_mode_label);
+}
 
 static void
 gedit_statusbar_init (GeditStatusbar *statusbar)
 {
-	GtkWidget *hbox;
-	GtkWidget *error_image;
-
 	statusbar->priv = gedit_statusbar_get_instance_private (statusbar);
 
-	gtk_widget_set_margin_top (GTK_WIDGET (statusbar), 0);
-	gtk_widget_set_margin_bottom (GTK_WIDGET (statusbar), 0);
+	gtk_widget_init_template (GTK_WIDGET (statusbar));
 
-	statusbar->priv->overwrite_mode_label = gtk_label_new (NULL);
 	gtk_label_set_width_chars (GTK_LABEL (statusbar->priv->overwrite_mode_label),
 				   get_overwrite_mode_length ());
-	gtk_widget_show (statusbar->priv->overwrite_mode_label);
-	gtk_box_pack_end (GTK_BOX (statusbar),
-			  statusbar->priv->overwrite_mode_label,
-			  FALSE, TRUE, 0);
-
-	statusbar->priv->cursor_position_label = gtk_label_new (NULL);
-	gtk_label_set_width_chars (GTK_LABEL (statusbar->priv->cursor_position_label),
-				  CURSOR_POSITION_LABEL_WIDTH_CHARS);
-	gtk_widget_show (statusbar->priv->cursor_position_label);
-	gtk_box_pack_end (GTK_BOX (statusbar),
-			  statusbar->priv->cursor_position_label,
-			  FALSE, TRUE, 0);
-
-	statusbar->priv->state_frame = gtk_frame_new (NULL);
-	gtk_frame_set_shadow_type (GTK_FRAME (statusbar->priv->state_frame),
-				   GTK_SHADOW_IN);
-
-	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-	gtk_container_add (GTK_CONTAINER (statusbar->priv->state_frame), hbox);
-
-	statusbar->priv->load_image = gtk_image_new_from_icon_name ("document-open",
-	                                                            GTK_ICON_SIZE_MENU);
-	statusbar->priv->save_image = gtk_image_new_from_icon_name ("document-save",
-	                                                            GTK_ICON_SIZE_MENU);
-	statusbar->priv->print_image = gtk_image_new_from_icon_name ("document-print",
-	                                                             GTK_ICON_SIZE_MENU);
-
-	gtk_widget_show (hbox);
-
-	gtk_box_pack_start (GTK_BOX (hbox),
-			    statusbar->priv->load_image,
-			    FALSE, TRUE, 4);
-	gtk_box_pack_start (GTK_BOX (hbox),
-			    statusbar->priv->save_image,
-			    FALSE, TRUE, 4);
-	gtk_box_pack_start (GTK_BOX (hbox),
-			    statusbar->priv->print_image,
-			    FALSE, TRUE, 4);
-
-	gtk_box_pack_start (GTK_BOX (statusbar),
-			    statusbar->priv->state_frame,
-			    FALSE, TRUE, 0);
-
-	statusbar->priv->error_frame = gtk_frame_new (NULL);
-	gtk_frame_set_shadow_type (GTK_FRAME (statusbar->priv->error_frame),
-				   GTK_SHADOW_IN);
-
-	error_image = gtk_image_new_from_icon_name ("dialog-error",
-					            GTK_ICON_SIZE_MENU);
-	gtk_misc_set_padding (GTK_MISC (error_image), 4, 0);
-	gtk_widget_show (error_image);
-
-	statusbar->priv->error_event_box = gtk_event_box_new ();
-	gtk_event_box_set_visible_window  (GTK_EVENT_BOX (statusbar->priv->error_event_box),
-					   FALSE);
-	gtk_widget_show (statusbar->priv->error_event_box);
-
-	gtk_container_add (GTK_CONTAINER (statusbar->priv->error_frame),
-			   statusbar->priv->error_event_box);
-	gtk_container_add (GTK_CONTAINER (statusbar->priv->error_event_box),
-			   error_image);
-
-	gtk_box_pack_start (GTK_BOX (statusbar),
-			    statusbar->priv->error_frame,
-			    FALSE, TRUE, 0);
-
-	gtk_box_reorder_child (GTK_BOX (statusbar),
-			       statusbar->priv->error_frame,
-			       0);
 }
 
 /**
@@ -200,9 +134,7 @@ gedit_statusbar_set_overwrite (GeditStatusbar *statusbar,
 	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));
 
 	msg = get_overwrite_mode_string (overwrite);
-
 	gtk_label_set_text (GTK_LABEL (statusbar->priv->overwrite_mode_label), msg);
-
 	g_free (msg);
 }
 
@@ -339,7 +271,7 @@ gedit_statusbar_set_window_state (GeditStatusbar   *statusbar,
 						num_of_errors),
 			       		num_of_errors);
 
-		gtk_widget_set_tooltip_text (statusbar->priv->error_event_box,
+		gtk_widget_set_tooltip_text (statusbar->priv->error_image,
 					     tip);
 		g_free (tip);
 
