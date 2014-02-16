@@ -70,6 +70,7 @@ gedit_highlight_mode_dialog_new (GtkWindow *parent)
 {
 	return GTK_WIDGET (g_object_new (GEDIT_TYPE_HIGHLIGHT_MODE_DIALOG,
 	                                 "transient-for", parent,
+	                                 "use-header-bar", TRUE,
 	                                 NULL));
 }
 
