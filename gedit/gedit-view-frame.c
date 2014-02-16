@@ -921,7 +921,7 @@ search_entry_icon_release (GtkEntry             *entry,
 
 	gtk_menu_popup (GTK_MENU (menu),
 	                NULL, NULL,
-	                NULL, NULL,
+	                gedit_utils_menu_position_under_widget, entry,
 	                event->button, event->time);
 }
 
