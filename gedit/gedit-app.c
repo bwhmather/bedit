@@ -84,12 +84,9 @@ struct _GeditAppPrivate
 	GNetworkMonitor   *monitor;
 };
 
-static gboolean version = FALSE;
-static gboolean list_encodings = FALSE;
 static gboolean new_window = FALSE;
 static gboolean new_document = FALSE;
 static gchar *geometry = NULL;
-static gboolean standalone = FALSE;
 static const GeditEncoding *encoding = NULL;
 static GInputStream *stdin_stream = NULL;
 static GSList *file_list = NULL;
@@ -101,70 +98,62 @@ static const GOptionEntry options[] =
 {
 	/* Version */
 	{
-		"version", 'V', 0, G_OPTION_ARG_NONE, &version,
+		"version", 'V', 0, G_OPTION_ARG_NONE, NULL,
 		N_("Show the application's version"), NULL
 	},
 
 	/* List available encodings */
 	{
-		"list-encodings", '\0', 0, G_OPTION_ARG_NONE, &list_encodings,
+		"list-encodings", '\0', 0, G_OPTION_ARG_NONE, NULL,
 		N_("Display list of possible values for the encoding option"),
 		NULL
 	},
 
 	/* Encoding */
 	{
-		"encoding", '\0', 0, G_OPTION_ARG_STRING,
-		NULL,
+		"encoding", '\0', 0, G_OPTION_ARG_STRING, NULL,
 		N_("Set the character encoding to be used to open the files listed on the command line"),
 		N_("ENCODING")
 	},
 
 	/* Open a new window */
 	{
-		"new-window", '\0', 0, G_OPTION_ARG_NONE,
-		NULL,
+		"new-window", '\0', 0, G_OPTION_ARG_NONE, NULL,
 		N_("Create a new top-level window in an existing instance of gedit"),
 		NULL
 	},
 
 	/* Create a new empty document */
 	{
-		"new-document", '\0', 0, G_OPTION_ARG_NONE,
-		NULL,
+		"new-document", '\0', 0, G_OPTION_ARG_NONE, NULL,
 		N_("Create a new document in an existing instance of gedit"),
 		NULL
 	},
 
 	/* Window geometry */
 	{
-		"geometry", 'g', 0, G_OPTION_ARG_STRING,
-		NULL,
+		"geometry", 'g', 0, G_OPTION_ARG_STRING, NULL,
 		N_("Set the size and position of the window (WIDTHxHEIGHT+X+Y)"),
 		N_("GEOMETRY")
 	},
 
 	/* Wait for closing documents */
 	{
-		"wait", 'w', 0, G_OPTION_ARG_NONE,
-		NULL,
+		"wait", 'w', 0, G_OPTION_ARG_NONE, NULL,
 		N_("Open files and block process until files are closed"),
 		NULL
 	},
 
 	/* New instance */
 	{
-		"standalone", 's', 0, G_OPTION_ARG_NONE,
-		&standalone,
+		"standalone", 's', 0, G_OPTION_ARG_NONE, NULL,
 		N_("Run gedit in standalone mode"),
 		NULL
 	},
 
 	/* collects file arguments */
 	{
-		G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY,
-		NULL,
-		NULL,
+		G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, NULL, NULL,
 		N_("[FILE...] [+LINE[:COLUMN]]")
 	},
 
@@ -905,13 +894,13 @@ static gint
 gedit_app_handle_local_options (GApplication *application,
                                 GVariantDict *options)
 {
-	if (version)
+	if (g_variant_dict_contains (options, "version"))
 	{
 		g_print ("%s - Version %s\n", g_get_application_name (), VERSION);
 		return 0;
 	}
 
-	if (list_encodings)
+	if (g_variant_dict_contains (options, "list-encodings"))
 	{
 		gint i = 0;
 		const GeditEncoding *enc;
@@ -926,7 +915,7 @@ gedit_app_handle_local_options (GApplication *application,
 		return 0;
 	}
 
-	if (standalone)
+	if (g_variant_dict_contains (options, "standalone"))
 	{
 		GApplicationFlags old_flags;
 
