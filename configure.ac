@@ -435,6 +435,9 @@ else
 	enable_introspection=no
 fi
 
+# Vala
+VAPIGEN_CHECK
+
 AC_CONFIG_FILES([
 Makefile
 data/gedit.desktop.in
@@ -468,6 +471,7 @@ Configuration:
 	GDK Backend:            $gdk_windowing
 	Zeitgeist support:      $enable_zeitgeist
 	Python support:         $enable_python
+	Vala support:           $enable_vala
 "
 
 if expr ${GEDIT_MINOR_VERSION} % 2 > /dev/null; then
