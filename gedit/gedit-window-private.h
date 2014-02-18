@@ -56,11 +56,11 @@ struct _GeditWindowPrivate
 
 	/* Widgets for fullscreen mode */
 	GtkWidget      *fullscreen_controls;
+	GtkWidget      *fullscreen_eventbox;
+	GtkWidget      *fullscreen_headerbar;
 	GtkWidget      *fullscreen_open_menu;
 	GtkMenuButton  *fullscreen_gear_button;
 	gboolean        fullscreen_controls_setup;
-	guint           fullscreen_animation_timeout_id;
-	gboolean        fullscreen_animation_enter;
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;

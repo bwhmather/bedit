@@ -56,7 +56,7 @@
 #include "gedit-highlight-mode-selector.h"
 
 #define TAB_WIDTH_DATA "GeditWindowTabWidthData"
-#define FULLSCREEN_ANIMATION_SPEED 4
+#define FULLSCREEN_ANIMATION_SPEED 500
 
 /* Signals */
 enum
@@ -208,19 +208,6 @@ gedit_window_dispose (GObject *object)
 		peas_engine_garbage_collect (PEAS_ENGINE (gedit_plugins_engine_get_default ()));
 
 		window->priv->dispose_has_run = TRUE;
-	}
-
-	if (window->priv->fullscreen_animation_timeout_id != 0)
-	{
-		g_source_remove (window->priv->fullscreen_animation_timeout_id);
-		window->priv->fullscreen_animation_timeout_id = 0;
-	}
-
-	if (window->priv->fullscreen_controls != NULL)
-	{
-		gtk_widget_destroy (window->priv->fullscreen_controls);
-
-		window->priv->fullscreen_controls = NULL;
 	}
 
 	g_clear_object (&window->priv->message_bus);
@@ -426,6 +413,8 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, bottom_panel);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, statusbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_controls);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_eventbox);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_open_menu);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_gear_button);
 }
@@ -1758,163 +1747,22 @@ drop_uris_cb (GtkWidget    *widget,
 	load_uris_from_drop (window, uri_list);
 }
 
-static void
-fullscreen_controls_show (GeditWindow *window)
-{
-	GdkScreen *screen;
-	GdkRectangle fs_rect;
-	gint w, h;
-
-	screen = gtk_window_get_screen (GTK_WINDOW (window));
-	gdk_screen_get_monitor_geometry (screen,
-					 gdk_screen_get_monitor_at_window (screen,
-									   gtk_widget_get_window (GTK_WIDGET (window))),
-					 &fs_rect);
-
-	gtk_widget_show_all (window->priv->fullscreen_controls);
-	gtk_window_get_size (GTK_WINDOW (window->priv->fullscreen_controls), &w, &h);
-
-	gtk_window_resize (GTK_WINDOW (window->priv->fullscreen_controls),
-			   fs_rect.width, h);
-
-	gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
-			 fs_rect.x, fs_rect.y - h + 1);
-}
-
-static gboolean
-run_fullscreen_animation (gpointer data)
-{
-	GeditWindow *window = GEDIT_WINDOW (data);
-	GdkScreen *screen;
-	GdkRectangle fs_rect;
-	gint x, y;
-
-	screen = gtk_window_get_screen (GTK_WINDOW (window));
-	gdk_screen_get_monitor_geometry (screen,
-					 gdk_screen_get_monitor_at_window (screen,
-									   gtk_widget_get_window (GTK_WIDGET (window))),
-					 &fs_rect);
-
-	gtk_window_get_position (GTK_WINDOW (window->priv->fullscreen_controls),
-				 &x, &y);
-
-	if (window->priv->fullscreen_animation_enter)
-	{
-		if (y == fs_rect.y)
-		{
-			window->priv->fullscreen_animation_timeout_id = 0;
-			return FALSE;
-		}
-		else
-		{
-			gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
-					 x, y + 1);
-			return TRUE;
-		}
-	}
-	else
-	{
-		gint w, h;
-
-		gtk_window_get_size (GTK_WINDOW (window->priv->fullscreen_controls),
-				     &w, &h);
-
-		if (y == fs_rect.y - h + 1)
-		{
-			window->priv->fullscreen_animation_timeout_id = 0;
-			return FALSE;
-		}
-		else
-		{
-			gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
-					 x, y - 1);
-			return TRUE;
-		}
-	}
-}
-
-static void
-show_hide_fullscreen_controls (GeditWindow *window,
-			       gboolean     show,
-			       gint         height)
-{
-	GtkSettings *settings;
-	gboolean enable_animations;
-
-	settings = gtk_widget_get_settings (GTK_WIDGET (window));
-	g_object_get (G_OBJECT (settings),
-		      "gtk-enable-animations",
-		      &enable_animations,
-		      NULL);
-
-	if (enable_animations)
-	{
-		window->priv->fullscreen_animation_enter = show;
-
-		if (window->priv->fullscreen_animation_timeout_id == 0)
-		{
-			window->priv->fullscreen_animation_timeout_id =
-				g_timeout_add (FULLSCREEN_ANIMATION_SPEED,
-					       (GSourceFunc) run_fullscreen_animation,
-					       window);
-		}
-	}
-	else
-	{
-		GdkRectangle fs_rect;
-		GdkScreen *screen;
-
-		screen = gtk_window_get_screen (GTK_WINDOW (window));
-		gdk_screen_get_monitor_geometry (screen,
-						 gdk_screen_get_monitor_at_window (screen,
-										   gtk_widget_get_window (GTK_WIDGET (window))),
-						 &fs_rect);
-
-		if (show)
-		{
-			gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
-				 fs_rect.x, fs_rect.y);
-		}
-		else
-		{
-			gtk_window_move (GTK_WINDOW (window->priv->fullscreen_controls),
-					 fs_rect.x, fs_rect.y - height + 1);
-		}
-	}
-
-}
-
 static gboolean
 on_fullscreen_controls_enter_notify_event (GtkWidget        *widget,
-					   GdkEventCrossing *event,
-					   GeditWindow      *window)
+                                           GdkEventCrossing *event,
+                                           GeditWindow      *window)
 {
-	show_hide_fullscreen_controls (window, TRUE, 0);
+	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), TRUE);
 
 	return FALSE;
 }
 
 static gboolean
 on_fullscreen_controls_leave_notify_event (GtkWidget        *widget,
-					   GdkEventCrossing *event,
-					   GeditWindow      *window)
+                                           GdkEventCrossing *event,
+                                           GeditWindow      *window)
 {
-	GdkDevice *device;
-	gint w, h;
-	gint x, y;
-
-	device = gdk_event_get_device ((GdkEvent *)event);
-
-	gtk_window_get_size (GTK_WINDOW (window->priv->fullscreen_controls), &w, &h);
-	gdk_device_get_position (device, NULL, &x, &y);
-
-	/* gtk seems to emit leave notify when clicking on tool items,
-	 * work around it by checking the coordinates
-	 */
-	if (y >= h)
-	{
-		show_hide_fullscreen_controls (window, FALSE, h);
-	}
+	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
 
 	return FALSE;
 }
@@ -1927,28 +1775,23 @@ fullscreen_controls_setup (GeditWindow *window)
 	if (priv->fullscreen_controls_setup)
 		return;
 
-	gtk_window_set_transient_for (GTK_WINDOW (priv->fullscreen_controls),
-				      GTK_WINDOW (&window->window));
-	gtk_window_set_attached_to (GTK_WINDOW (window), priv->fullscreen_controls);
-
-	/* this is a hack to make the fullscreen control see the window actions.
-	 * GTK should grow something better to do this */
-	gtk_widget_insert_action_group (priv->fullscreen_controls,
-	                                "win",
-	                                G_ACTION_GROUP (window));
-
 	g_settings_bind (window->priv->ui_settings,
 	                 GEDIT_SETTINGS_MAX_RECENTS,
 	                 window->priv->fullscreen_open_menu,
 	                 "limit",
 	                 G_SETTINGS_BIND_GET);
 
-	g_signal_connect (priv->fullscreen_controls, "enter-notify-event",
-			  G_CALLBACK (on_fullscreen_controls_enter_notify_event),
-			  window);
-	g_signal_connect (priv->fullscreen_controls, "leave-notify-event",
-			  G_CALLBACK (on_fullscreen_controls_leave_notify_event),
-			  window);
+	g_signal_connect (priv->fullscreen_eventbox,
+	                  "enter-notify-event",
+	                  G_CALLBACK (on_fullscreen_controls_enter_notify_event),
+	                  window);
+	g_signal_connect (priv->fullscreen_eventbox,
+	                  "leave-notify-event",
+	                  G_CALLBACK (on_fullscreen_controls_leave_notify_event),
+	                  window);
+
+	gtk_widget_set_size_request (GTK_WIDGET (window->priv->fullscreen_eventbox), -1, 1);
+
 	priv->fullscreen_controls_setup = TRUE;
 }
 
@@ -2787,7 +2630,7 @@ check_window_is_active (GeditWindow *window,
 {
 	if (window->priv->window_state & GDK_WINDOW_STATE_FULLSCREEN)
 	{
-		gtk_widget_set_visible (window->priv->fullscreen_controls,
+		gtk_widget_set_visible (window->priv->fullscreen_eventbox,
 					gtk_window_is_active (GTK_WINDOW (window)));
 	}
 }
@@ -2861,7 +2704,6 @@ gedit_window_init (GeditWindow *window)
 	window->priv->inhibition_cookie = 0;
 	window->priv->dispose_has_run = FALSE;
 	window->priv->fullscreen_controls = NULL;
-	window->priv->fullscreen_animation_timeout_id = 0;
 	window->priv->direct_save_uri = NULL;
 	window->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
 	window->priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
@@ -3629,8 +3471,10 @@ _gedit_window_fullscreen (GeditWindow *window)
 	gtk_window_fullscreen (GTK_WINDOW (&window->window));
 	_gedit_multi_notebook_set_show_tabs (window->priv->multi_notebook, FALSE);
 	gtk_widget_hide (window->priv->statusbar);
+
 	fullscreen_controls_setup (window);
-	fullscreen_controls_show (window);
+
+	gtk_widget_show_all (window->priv->fullscreen_eventbox);
 }
 
 void
@@ -3650,7 +3494,7 @@ _gedit_window_unfullscreen (GeditWindow *window)
 		gtk_widget_show (window->priv->statusbar);
 	}
 
-	gtk_widget_hide (window->priv->fullscreen_controls);
+	gtk_widget_hide (window->priv->fullscreen_eventbox);
 }
 
 gboolean
