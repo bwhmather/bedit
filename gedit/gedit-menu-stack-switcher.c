@@ -50,6 +50,7 @@ gedit_menu_stack_switcher_init (GeditMenuStackSwitcher *switcher)
   GeditMenuStackSwitcherPrivate *priv;
   GtkWidget *box;
   GtkWidget *arrow;
+  GtkStyleContext *context;
 
   priv = gedit_menu_stack_switcher_get_instance_private (switcher);
   switcher->priv = priv;
@@ -68,15 +69,10 @@ gedit_menu_stack_switcher_init (GeditMenuStackSwitcher *switcher)
 
   priv->popover = gtk_popover_new (GTK_WIDGET (switcher));
   gtk_popover_set_position (GTK_POPOVER (priv->popover), GTK_POS_BOTTOM);
+  context = gtk_widget_get_style_context (priv->popover);
+  gtk_style_context_add_class (context, "gedit-stack-switcher");
 
-  priv->button_box = gtk_button_box_new (GTK_ORIENTATION_VERTICAL);
-
-  g_object_set (priv->button_box,
-                "margin-start", 12,
-                "margin-end", 12,
-                "margin-top", 12,
-                "margin-bottom", 12,
-                NULL);
+  priv->button_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 
   gtk_widget_show (priv->button_box);
 
@@ -174,11 +170,6 @@ add_child (GeditMenuStackSwitcher *switcher,
   button = gtk_radio_button_new (NULL);
   gtk_toggle_button_set_mode (GTK_TOGGLE_BUTTON (button), FALSE);
   gtk_widget_set_valign (button, GTK_ALIGN_CENTER);
-
-  g_object_set (button,
-                "margin-top", 3,
-                "margin-bottom", 3,
-                NULL);
 
   update_button (switcher, widget, button);
 
