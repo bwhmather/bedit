@@ -111,22 +111,33 @@ update_button (GeditMenuStackSwitcher *switcher,
                GtkWidget              *button)
 {
   GeditMenuStackSwitcherPrivate *priv = switcher->priv;
-  gchar *title;
+  GList *children;
 
-  gtk_container_child_get (GTK_CONTAINER (priv->stack), widget,
-                           "title", &title,
-                           NULL);
-
-  gtk_button_set_label (GTK_BUTTON (button), title);
-  gtk_widget_set_visible (button, gtk_widget_get_visible (widget) && (title != NULL));
-  gtk_widget_set_size_request (button, 100, -1);
-
-  if (widget == gtk_stack_get_visible_child (priv->stack))
+  /* We get spurious notifications while the stack is being
+   * destroyed, so for now check the child actually exists
+   */
+  children = gtk_container_get_children (GTK_CONTAINER (priv->stack));
+  if (g_list_index (children, widget) >= 0)
     {
-      gtk_label_set_label (GTK_LABEL (priv->label), title);
+      gchar *title;
+
+      gtk_container_child_get (GTK_CONTAINER (priv->stack), widget,
+                               "title", &title,
+                               NULL);
+
+      gtk_button_set_label (GTK_BUTTON (button), title);
+      gtk_widget_set_visible (button, gtk_widget_get_visible (widget) && (title != NULL));
+      gtk_widget_set_size_request (button, 100, -1);
+
+      if (widget == gtk_stack_get_visible_child (priv->stack))
+        {
+          gtk_label_set_label (GTK_LABEL (priv->label), title);
+        }
+
+      g_free (title);
     }
 
-  g_free (title);
+   g_list_free (children);
 }
 
 static void
