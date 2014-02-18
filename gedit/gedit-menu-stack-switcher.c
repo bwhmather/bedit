@@ -70,7 +70,7 @@ gedit_menu_stack_switcher_init (GeditMenuStackSwitcher *switcher)
   priv->popover = gtk_popover_new (GTK_WIDGET (switcher));
   gtk_popover_set_position (GTK_POPOVER (priv->popover), GTK_POS_BOTTOM);
   context = gtk_widget_get_style_context (priv->popover);
-  gtk_style_context_add_class (context, "gedit-stack-switcher");
+  gtk_style_context_add_class (context, "gedit-menu-stack-switcher");
 
   priv->button_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
 

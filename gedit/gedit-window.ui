@@ -148,7 +148,7 @@
             <property name="has_focus">False</property>
             <property name="is_focus">False</property>
             <style>
-              <class name="gedit-sidepanel-paned"/>
+              <class name="gedit-side-panel-paned"/>
             </style>
             <child>
               <object class="GtkStack" id="side_panel">
@@ -170,6 +170,9 @@
                     <property name="has_focus">False</property>
                     <property name="is_focus">False</property>
                     <property name="orientation">vertical</property>
+                    <style>
+                      <class name="gedit-bottom-panel-paned"/>
+                    </style>
                     <child>
                       <object class="GeditMultiNotebook" id="multi_notebook">
                         <property name="visible">True</property>
@@ -183,6 +186,9 @@
                       <object class="GtkBox" id="bottom_panel_box">
                         <property name="visible">False</property>
                         <property name="orientation">horizontal</property>
+                        <style>
+                          <class name="gedit-bottom-panel"/>
+                        </style>
                         <child>
                           <object class="GtkBox" id="bottom_panel_stack_box">
                             <property name="visible">True</property>
