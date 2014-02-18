@@ -116,7 +116,7 @@ struct _GeditPreferencesDialogPrivate
 	GtkWidget	*plugin_manager_place_holder;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditPreferencesDialog, gedit_preferences_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditPreferencesDialog, gedit_preferences_dialog, GTK_TYPE_WINDOW)
 
 static void
 gedit_preferences_dialog_dispose (GObject *object)
@@ -130,24 +130,12 @@ gedit_preferences_dialog_dispose (GObject *object)
 }
 
 static void
-gedit_preferences_dialog_response (GtkDialog *dlg,
-                                   gint       res_id)
-{
-	gedit_debug (DEBUG_PREFS);
-
-	gtk_widget_destroy (GTK_WIDGET (dlg));
-}
-
-static void
 gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
 	object_class->dispose = gedit_preferences_dialog_dispose;
-
-	dialog_class->response = gedit_preferences_dialog_response;
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
@@ -1100,7 +1088,6 @@ gedit_show_preferences_dialog (GeditWindow *parent)
 	{
 		preferences_dialog = GTK_WIDGET (g_object_new (GEDIT_TYPE_PREFERENCES_DIALOG,
 							       "application", g_application_get_default (),
-							       "use-header-bar", TRUE,
 							       NULL));
 		g_signal_connect (preferences_dialog,
 				  "destroy",

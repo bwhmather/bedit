@@ -48,7 +48,7 @@ typedef struct _GeditPreferencesDialog GeditPreferencesDialog;
 
 struct _GeditPreferencesDialog
 {
-	GtkDialog dialog;
+	GtkWindow dialog;
 
 	/*< private > */
 	GeditPreferencesDialogPrivate *priv;
@@ -61,7 +61,7 @@ typedef struct _GeditPreferencesDialogClass GeditPreferencesDialogClass;
 
 struct _GeditPreferencesDialogClass
 {
-	GtkDialogClass parent_class;
+	GtkWindowClass parent_class;
 };
 
 /*
