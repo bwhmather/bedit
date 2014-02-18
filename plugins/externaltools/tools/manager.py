@@ -858,6 +858,6 @@ class Manager(GObject.Object):
     def on_languages_button_clicked(self, button):
         popup = LanguagesPopup(button, self.current_node.languages)
         popup.show()
-        popup.connect('hide', self.update_languages)
+        popup.connect('closed', self.update_languages)
 
 # ex:et:ts=4:
