@@ -1043,6 +1043,10 @@ set_title (GeditWindow *window)
 		                          "gedit");
 		gtk_header_bar_set_subtitle (GTK_HEADER_BAR (window->priv->headerbar),
 		                             NULL);
+		gtk_header_bar_set_title (GTK_HEADER_BAR (window->priv->fullscreen_headerbar),
+		                          "gedit");
+		gtk_header_bar_set_subtitle (GTK_HEADER_BAR (window->priv->fullscreen_headerbar),
+		                             NULL);
 		return;
 	}
 
@@ -1144,6 +1148,10 @@ set_title (GeditWindow *window)
 	gtk_header_bar_set_title (GTK_HEADER_BAR (window->priv->headerbar),
 	                          title);
 	gtk_header_bar_set_subtitle (GTK_HEADER_BAR (window->priv->headerbar),
+	                             subtitle);
+	gtk_header_bar_set_title (GTK_HEADER_BAR (window->priv->fullscreen_headerbar),
+	                          title);
+	gtk_header_bar_set_subtitle (GTK_HEADER_BAR (window->priv->fullscreen_headerbar),
 	                             subtitle);
 
 	g_free (dirname);
