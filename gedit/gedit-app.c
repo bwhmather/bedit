@@ -52,7 +52,6 @@
 
 #ifndef ENABLE_GVFS_METADATA
 #include "gedit-metadata-manager.h"
-#define METADATA_FILE "gedit-metadata.xml"
 #endif
 
 #define GEDIT_PAGE_SETUP_FILE		"gedit-page-setup"
@@ -410,10 +409,6 @@ gedit_app_startup (GApplication *application)
 	GtkSourceStyleSchemeManager *manager;
 	const gchar *dir;
 	gchar *icon_dir;
-#ifndef ENABLE_GVFS_METADATA
-	const gchar *cache_dir;
-	gchar *metadata_filename;
-#endif
 	GError *error = NULL;
 	GFile *css_file;
 	GtkCssProvider *provider;
@@ -445,14 +440,7 @@ gedit_app_startup (GApplication *application)
 	g_free (icon_dir);
 
 #ifndef ENABLE_GVFS_METADATA
-	/* Setup metadata-manager */
-	cache_dir = gedit_dirs_get_user_cache_dir ();
-
-	metadata_filename = g_build_filename (cache_dir, METADATA_FILE, NULL);
-
 	gedit_metadata_manager_init (metadata_filename);
-
-	g_free (metadata_filename);
 #endif
 
 	/* Load settings */

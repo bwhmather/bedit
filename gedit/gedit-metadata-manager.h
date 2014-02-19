@@ -27,7 +27,7 @@
 
 G_BEGIN_DECLS
 
-void		 gedit_metadata_manager_init		(const gchar *metadata_filename);
+void		 gedit_metadata_manager_init		(void);
 
 void		 gedit_metadata_manager_shutdown 	(void);
 

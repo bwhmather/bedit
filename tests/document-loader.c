@@ -20,11 +20,19 @@
  * Boston, MA  02110-1301  USA
  */
 
-#include "gedit-document-loader.h"
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <string.h>
+#include "gedit-dirs.h"
+#include "gedit-document-loader.h"
+#ifndef ENABLE_GVFS_METADATA
+#include "gedit-metadata-manager.h"
+#endif
 
 static gboolean test_completed;
 
@@ -229,12 +237,29 @@ test_begin_new_line_detection ()
 int main (int   argc,
           char *argv[])
 {
+	int ret;
+
 	g_test_init (&argc, &argv, NULL);
+
+	gedit_dirs_init ();
+
+#ifndef ENABLE_GVFS_METADATA
+	gedit_metadata_manager_init (metadata_filename);
+#endif
 
 	g_test_add_func ("/document-loader/end-line-stripping", test_end_line_stripping);
 	g_test_add_func ("/document-loader/end-new-line-detection", test_end_new_line_detection);
 	g_test_add_func ("/document-loader/begin-new-line-detection", test_begin_new_line_detection);
 
-	return g_test_run ();
+	ret = g_test_run ();
+
+#ifndef ENABLE_GVFS_METADATA
+	gedit_metadata_manager_shutdown ();
+#endif
+
+	gedit_dirs_shutdown ();
+
+	return ret;
 }
-/* ex:ts=8:noet: */
+
+/* ex:set ts=8 noet: */

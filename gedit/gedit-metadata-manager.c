@@ -22,14 +22,16 @@
 #include <time.h>
 #include <stdlib.h>
 #include <libxml/xmlreader.h>
-#include "gedit-metadata-manager.h"
 #include "gedit-debug.h"
+#include "gedit-dirs.h"
+#include "gedit-metadata-manager.h"
 
 /*
 #define GEDIT_METADATA_VERBOSE_DEBUG	1
 */
 
-#define MAX_ITEMS	50
+#define MAX_ITEM 50
+#define METADATA_FILE "gedit-metadata.xml"
 
 typedef struct _GeditMetadataManager GeditMetadataManager;
 
@@ -100,8 +102,10 @@ gedit_metadata_manager_arm_timeout (void)
  * See also gedit_metadata_manager_shutdown().
  */
 void
-gedit_metadata_manager_init (const gchar *metadata_filename)
+gedit_metadata_manager_init (void)
 {
+	const gchar *cache_dir;
+
 	gedit_debug (DEBUG_METADATA);
 
 	if (gedit_metadata_manager != NULL)
@@ -117,9 +121,8 @@ gedit_metadata_manager_init (const gchar *metadata_filename)
 				       g_free,
 				       item_free);
 
-	gedit_metadata_manager->metadata_filename = g_strdup (metadata_filename);
-
-	return;
+	cache_dir = gedit_dirs_get_user_cache_dir ();
+	gedit_metadata_manager->metadata_filename = g_build_filename (cache_dir, METADATA_FILE, NULL);
 }
 
 /**
