@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-09 14:04+0200\n"
-"PO-Revision-Date: 2014-02-08 20:11+0200\n"
+"POT-Creation-Date: 2014-02-19 13:05+0200\n"
+"PO-Revision-Date: 2014-02-19 13:06+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -522,15 +522,15 @@ msgstr ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 
-#: ../gedit/gedit-app.c:105
+#: ../gedit/gedit-app.c:103
 msgid "Show the application's version"
 msgstr "Show the application's version"
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:109
 msgid "Display list of possible values for the encoding option"
 msgstr "Display list of possible values for the encoding option"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:116
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -538,43 +538,43 @@ msgstr ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 
-#: ../gedit/gedit-app.c:120
+#: ../gedit/gedit-app.c:117
 msgid "ENCODING"
 msgstr "ENCODING"
 
-#: ../gedit/gedit-app.c:127
+#: ../gedit/gedit-app.c:123
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Create a new top-level window in an existing instance of gedit"
 
-#: ../gedit/gedit-app.c:135
+#: ../gedit/gedit-app.c:130
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Create a new document in an existing instance of gedit"
 
-#: ../gedit/gedit-app.c:143
+#: ../gedit/gedit-app.c:137
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 
-#: ../gedit/gedit-app.c:144
+#: ../gedit/gedit-app.c:138
 msgid "GEOMETRY"
 msgstr "GEOMETRY"
 
-#: ../gedit/gedit-app.c:151
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr "Open files and block process until files are closed"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "Run gedit in standalone mode"
 
-#: ../gedit/gedit-app.c:168
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FILE...] [+LINE[:COLUMN]]"
 
-#: ../gedit/gedit-app.c:270
+#: ../gedit/gedit-app.c:260
 msgid "There was an error displaying the help."
 msgstr "ארעה שגיאה בהצגת העזרה."
 
-#: ../gedit/gedit-app.c:854
+#: ../gedit/gedit-app.c:836
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: invalid encoding."
@@ -587,25 +587,25 @@ msgstr "על אודות gedit"
 msgid "Question"
 msgstr "שאלה"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:304
+#: ../gedit/gedit-close-confirmation-dialog.c:308
 msgid "Close _without Saving"
 msgstr "סגירה _ללא שמירה"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:305
-#: ../gedit/gedit-commands-file.c:441 ../gedit/gedit-commands-file.c:557
-#: ../gedit/gedit-commands-file.c:626 ../gedit/gedit-commands-file.c:833
-#: ../gedit/gedit-commands-file.c:1283 ../gedit/gedit-encodings-dialog.ui.h:3
+#: ../gedit/gedit-close-confirmation-dialog.c:309
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-commands-file.c:558
+#: ../gedit/gedit-commands-file.c:627 ../gedit/gedit-commands-file.c:834
+#: ../gedit/gedit-commands-file.c:1284 ../gedit/gedit-encodings-dialog.ui.h:3
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:2
 #: ../gedit/gedit-io-error-info-bar.c:138
 #: ../gedit/gedit-io-error-info-bar.c:550
 #: ../gedit/gedit-io-error-info-bar.c:1230
-#: ../gedit/gedit-preferences-dialog.c:853
+#: ../gedit/gedit-preferences-dialog.c:830
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
 #: ../plugins/quickopen/quickopen/popup.py:36
-#: ../plugins/snippets/snippets/manager.py:790
-#: ../plugins/snippets/snippets/manager.py:875
-#: ../plugins/snippets/snippets/manager.py:913
+#: ../plugins/snippets/snippets/manager.py:785
+#: ../plugins/snippets/snippets/manager.py:870
+#: ../plugins/snippets/snippets/manager.py:908
 #: ../plugins/sort/gedit-sort-plugin.ui.h:2
 #: ../plugins/spell/gedit-spell-language-dialog.c:124
 #: ../plugins/spell/languages-dialog.ui.h:3
@@ -613,18 +613,18 @@ msgstr "סגירה _ללא שמירה"
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:331 ../gedit/gedit-menu.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:335 ../gedit/gedit-menu.ui.h:7
 msgid "_Save As…"
 msgstr "שמירה _בשם…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:331
-#: ../gedit/gedit-commands-file.c:834
-#: ../plugins/snippets/snippets/manager.py:876
-#: ../plugins/snippets/snippets/manager.py:914
+#: ../gedit/gedit-close-confirmation-dialog.c:335
+#: ../gedit/gedit-commands-file.c:835
+#: ../plugins/snippets/snippets/manager.py:871
+#: ../plugins/snippets/snippets/manager.py:909
 msgid "_Save"
 msgstr "_שמירה"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:349
+#: ../gedit/gedit-close-confirmation-dialog.c:353
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -634,12 +634,12 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, כל השינויים מהשנייה האחרונה יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, כל השינויים מ־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:358
+#: ../gedit/gedit-close-confirmation-dialog.c:362
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "אם לא תתבצע שמירה, שינויים מהדקה האחרונה יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:368
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -650,7 +650,7 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, כל השינויים מהדקה והשנייה האחרונות יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, כל השינויים מהדקה ו־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:374
+#: ../gedit/gedit-close-confirmation-dialog.c:378
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -660,11 +660,11 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, השינויים מהדקה האחרונה יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, השינויים מ־%ld הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:393
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "אם לא תתבצע שמירה, השינויים מהשעה האחרונה יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:395
+#: ../gedit/gedit-close-confirmation-dialog.c:399
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -675,7 +675,7 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, שינויים מהשעה והדקה האחרונות יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, השינויים מהשעה ו־%d הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -684,29 +684,29 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, השינויים מהשעה האחרונה יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, השינויים מ־%d השעות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:460
+#: ../gedit/gedit-close-confirmation-dialog.c:457
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "השינויים שנערכו במסמך „%s“ ילכו לאיבוד."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:465
+#: ../gedit/gedit-close-confirmation-dialog.c:462
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "האם לשמור את השינויים למסמך „%s“ לפני הסגירה?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:480
-#: ../gedit/gedit-close-confirmation-dialog.c:701
+#: ../gedit/gedit-close-confirmation-dialog.c:477
+#: ../gedit/gedit-close-confirmation-dialog.c:693
 msgid "Saving has been disabled by the system administrator."
 msgstr "אפשרות השמירה בוטלה על ידי מנהל מערכת."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:650
+#: ../gedit/gedit-close-confirmation-dialog.c:642
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "השינויים למסמך אחד יאבדו."
 msgstr[1] "השינויים ל־%d מסמכים יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:658
+#: ../gedit/gedit-close-confirmation-dialog.c:650
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -715,25 +715,25 @@ msgstr[0] "יש מסמך עם שינויים לא שמורים. האם לשמו�
 msgstr[1] ""
 "יש %d מסמכים עם שינויים לא שמורים. האם לשמור את השינויים לפני הסגירה?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:678
+#: ../gedit/gedit-close-confirmation-dialog.c:670
 msgid "Docum_ents with unsaved changes:"
 msgstr "מסמכים עם _שינויים לא שמורים:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:682
+#: ../gedit/gedit-close-confirmation-dialog.c:674
 msgid "S_elect the documents you want to save:"
 msgstr "נא ל_בחור את הקובץ שברצונך לשמור:"
 
 #  Secondary label
-#: ../gedit/gedit-close-confirmation-dialog.c:705
+#: ../gedit/gedit-close-confirmation-dialog.c:697
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "אם לא תתבצע שמירה, כל השינויים יאבדו."
 
-#: ../gedit/gedit-commands-file.c:261
+#: ../gedit/gedit-commands-file.c:262
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "נטען הקובץ  '%s'…"
 
-#: ../gedit/gedit-commands-file.c:270
+#: ../gedit/gedit-commands-file.c:271
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -742,81 +742,81 @@ msgstr[1] "נטענים %d קבצים…"
 
 #. Translators: "Open" is the title of the file chooser window
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-commands-file.c:437 ../gedit/gedit-window.ui.h:1
+#: ../gedit/gedit-commands-file.c:438 ../gedit/gedit-window.ui.h:1
 msgid "Open"
 msgstr "פתיחה"
 
 #. ex:ts=8:noet:
-#: ../gedit/gedit-commands-file.c:442
+#: ../gedit/gedit-commands-file.c:443
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:37
-#: ../plugins/snippets/snippets/manager.py:791
+#: ../plugins/snippets/snippets/manager.py:786
 msgid "_Open"
 msgstr "_פתיחה"
 
-#: ../gedit/gedit-commands-file.c:548
+#: ../gedit/gedit-commands-file.c:549
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "הקובץ \"%s\" הנו לקריאה בלבד."
 
-#: ../gedit/gedit-commands-file.c:553
+#: ../gedit/gedit-commands-file.c:554
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "האם ברצונך לנסות להחליפו עם הקובץ שנשמר?"
 
-#: ../gedit/gedit-commands-file.c:558 ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-commands-file.c:559 ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "ה_חלפה"
 
-#: ../gedit/gedit-commands-file.c:599
+#: ../gedit/gedit-commands-file.c:600
 msgid "Save the file using compression?"
 msgstr "האם לשמור את הקובץ באמצעות דחיסה?"
 
-#: ../gedit/gedit-commands-file.c:600
+#: ../gedit/gedit-commands-file.c:601
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr "הקובץ \"%s\" נשמר בעבר כקובץ טקסט פשוט וכעת ישמר באמצעות דחיסה."
 
-#: ../gedit/gedit-commands-file.c:602
+#: ../gedit/gedit-commands-file.c:603
 msgid "_Save Using Compression"
 msgstr "שמירה באמצעות _דחיסה"
 
-#: ../gedit/gedit-commands-file.c:606
+#: ../gedit/gedit-commands-file.c:607
 msgid "Save the file as plain text?"
 msgstr "האם לשמור את הקובץ כקובץ טקסט פשוט?"
 
-#: ../gedit/gedit-commands-file.c:607
+#: ../gedit/gedit-commands-file.c:608
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr "הקובץ \"%s\" נשמר בעבר באמצעות דחיסה וכעת ישמר כקובץ טקסט פשוט."
 
-#: ../gedit/gedit-commands-file.c:609
+#: ../gedit/gedit-commands-file.c:610
 msgid "_Save As Plain Text"
 msgstr "שמירה כ_טקסט פשוט"
 
-#: ../gedit/gedit-commands-file.c:725 ../gedit/gedit-commands-file.c:942
+#: ../gedit/gedit-commands-file.c:726 ../gedit/gedit-commands-file.c:943
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "נשמר קובץ  '%s'…"
 
-#: ../gedit/gedit-commands-file.c:829
+#: ../gedit/gedit-commands-file.c:830
 msgid "Save As"
 msgstr "שמירה בשם"
 
-#: ../gedit/gedit-commands-file.c:1146
+#: ../gedit/gedit-commands-file.c:1147
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "המסמך '%s' משוחזר…"
 
-#: ../gedit/gedit-commands-file.c:1191
+#: ../gedit/gedit-commands-file.c:1192
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "האם לבטל את השינויים שלא נשמרו במסמך '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1200
+#: ../gedit/gedit-commands-file.c:1201
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -826,12 +826,12 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשנייה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1209
+#: ../gedit/gedit-commands-file.c:1210
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "השינויים שנערכו במסמך בדקה האחרונה יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1215
+#: ../gedit/gedit-commands-file.c:1216
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -842,7 +842,7 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בדקה והשנייה האחרונות יאבדו."
 msgstr[1] "השינויים שנערכו במסמך בדקה ו־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1225
+#: ../gedit/gedit-commands-file.c:1226
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -852,11 +852,11 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בדקה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%ld הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1240
+#: ../gedit/gedit-commands-file.c:1241
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "השינויים שנערכו במסמך בשעה האחרונה יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1246
+#: ../gedit/gedit-commands-file.c:1247
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -867,7 +867,7 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשעה ובדקה האחרונות יאבדו."
 msgstr[1] "השינויים שנערכו במסמך בשעה וב־%d הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1261
+#: ../gedit/gedit-commands-file.c:1262
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -876,7 +876,7 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשעה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%d השעות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1284
+#: ../gedit/gedit-commands-file.c:1285
 msgid "_Revert"
 msgstr "_שחזור"
 
@@ -920,14 +920,13 @@ msgstr "‏\"%s\" לא נמצא"
 msgid "Unsaved Document %d"
 msgstr "מסמך שלא נשמר %d"
 
-#: ../gedit/gedit-documents-panel.c:456
+#: ../gedit/gedit-documents-panel.c:406
 #, c-format
 msgid "Tab Group %i"
 msgstr "קבוצת לשוניות %i"
 
-#: ../gedit/gedit-documents-panel.c:947 ../gedit/gedit-documents-panel.c:961
-#: ../gedit/gedit-window.c:1187 ../gedit/gedit-window.c:1193
-#: ../gedit/gedit-window.c:1201
+#: ../gedit/gedit-documents-panel.c:560 ../gedit/gedit-window.c:1109
+#: ../gedit/gedit-window.c:1115 ../gedit/gedit-window.c:1123
 msgid "Read-Only"
 msgstr "(קריאה בלבד)"
 
@@ -1067,8 +1066,6 @@ msgid "Character encodings"
 msgstr "קידוד תווים"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:2 ../gedit/gedit-menu.ui.h:3
-#: ../gedit/gedit-preferences-dialog.ui.h:2
-#: ../plugins/snippets/snippets/snippets.ui.h:3
 #: ../plugins/sort/gedit-sort-plugin.ui.h:4
 #: ../plugins/spell/gedit-spell-language-dialog.c:126
 #: ../plugins/spell/languages-dialog.ui.h:2
@@ -1077,7 +1074,6 @@ msgid "_Help"
 msgstr "ע_זרה"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:4
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:3
 #: ../plugins/spell/gedit-spell-language-dialog.c:125
 #: ../plugins/spell/languages-dialog.ui.h:4
 msgid "_OK"
@@ -1110,7 +1106,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "ק_ידודים המופיעים בתפריט:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:40
-#: ../gedit/gedit-preferences-dialog.c:868
+#: ../gedit/gedit-preferences-dialog.c:845
 msgid "All Files"
 msgstr "כל הקבצים"
 
@@ -1138,7 +1134,16 @@ msgstr "Mac OS קלסי"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1302
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
+msgid "Highlight Mode"
+msgstr "מצב הדגשה"
+
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:3
+msgid "_Select"
+msgstr "_בחירה"
+
+#: ../gedit/gedit-highlight-mode-selector.c:247 ../gedit/gedit-window.c:1193
 #: ../plugins/externaltools/tools/manager.py:107
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1147,11 +1152,7 @@ msgid "Plain Text"
 msgstr "טקסט פשוט"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
-msgid "Highlight Mode"
-msgstr "מצב הדגשה"
-
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:4
+#: ../gedit/gedit-highlight-mode-selector.ui.h:1
 msgid "Search highlight mode..."
 msgstr "חיפוש במצב הדגשה…"
 
@@ -1550,189 +1551,194 @@ msgstr "מצב הד_גשה…"
 msgid "_Close All"
 msgstr "_סגירת הכל"
 
-#: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-notebook-popup-menu.ui.h:5
-#: ../gedit/gedit-preferences-dialog.ui.h:3
-#: ../gedit/gedit-replace-dialog.ui.h:2
+#: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
-#: ../plugins/snippets/snippets/snippets.ui.h:2
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
 msgstr "_סגירה"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:1
+#: ../gedit/gedit-menu.ui.h:20
 msgid "Move _Left"
 msgstr "ה_עברה לשמאל"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:2
+#: ../gedit/gedit-menu.ui.h:21
 msgid "Move _Right"
 msgstr "ה_עברה לימין"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:3
+#: ../gedit/gedit-menu.ui.h:22
 msgid "Move to New _Window"
 msgstr "ה_עברה לחלון חדש"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:4
+#: ../gedit/gedit-menu.ui.h:23
 msgid "Move to New Tab _Group"
 msgstr "ה_עברה לקבוצת לשוניות חדשה"
 
-#: ../gedit/gedit-preferences-dialog.c:394
+#: ../gedit/gedit-menu.ui.h:24
+msgid "Automatic Indentation"
+msgstr "הזחה אוטומטית"
+
+#: ../gedit/gedit-menu.ui.h:25
+msgid "Use Spaces"
+msgstr "שימוש ברווחים"
+
+#: ../gedit/gedit-preferences-dialog.c:371
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "יש ללחוץ על כפתור זה כדי לבחור גופן לשימוש על־ידי העורך"
 
-#: ../gedit/gedit-preferences-dialog.c:407
+#: ../gedit/gedit-preferences-dialog.c:384
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "יש ל_השתמש בגופן המערכת בעל רוחב קבוע (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:639
+#: ../gedit/gedit-preferences-dialog.c:616
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "לא ניתן ליצור את התיקייה '%s'‏:‏ ()g_mkdir_with_parents נכשלה: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:823
+#: ../gedit/gedit-preferences-dialog.c:800
 msgid "The selected color scheme cannot be installed."
 msgstr "לא ניתן להתקין את סכימת הצבעים שנבחרה."
 
-#: ../gedit/gedit-preferences-dialog.c:850
+#: ../gedit/gedit-preferences-dialog.c:827
 msgid "Add Scheme"
 msgstr "הוספת סכימה"
 
-#: ../gedit/gedit-preferences-dialog.c:854
+#: ../gedit/gedit-preferences-dialog.c:831
 msgid "A_dd Scheme"
 msgstr "ה_וספת סכימה"
 
-#: ../gedit/gedit-preferences-dialog.c:861
+#: ../gedit/gedit-preferences-dialog.c:838
 msgid "Color Scheme Files"
 msgstr "קובצי סכימת צבעים"
 
-#: ../gedit/gedit-preferences-dialog.c:913
+#: ../gedit/gedit-preferences-dialog.c:890
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "לא ניתן להסיר את סכימת הצבעים \"%s\"."
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-preferences-dialog.ui.h:1
-msgid "gedit Preferences"
-msgstr "העדפות gedit"
+msgid "Preferences"
+msgstr "העדפות"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:4 ../gedit/gedit-view.c:525
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:525
 msgid "_Display line numbers"
 msgstr "_הצגת מספרי שורות"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:5
+#: ../gedit/gedit-preferences-dialog.ui.h:3
 msgid "Display right _margin at column:"
 msgstr "_הצגת השוליים הימניים בעמודה:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:6
+#: ../gedit/gedit-preferences-dialog.ui.h:4
 msgid "Display _statusbar"
 msgstr "הצגת _שורת מצב"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:7
+#: ../gedit/gedit-preferences-dialog.ui.h:5
 #: ../gedit/gedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "גלישת טקסט"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:8
+#: ../gedit/gedit-preferences-dialog.ui.h:6
 #: ../gedit/gedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
 msgstr "אפשור _גלישת טקסט"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:9
+#: ../gedit/gedit-preferences-dialog.ui.h:7
 #: ../gedit/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
 msgstr "אין ל_פצל מילים ליותר משתי שורות"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:10
+#: ../gedit/gedit-preferences-dialog.ui.h:8
 msgid "Highlighting"
 msgstr "הדגשה"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:11
+#: ../gedit/gedit-preferences-dialog.ui.h:9
 msgid "Highlight current _line"
 msgstr "ה_דגשת את השורה הנוכחית"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:12
+#: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "Highlight matching _brackets"
 msgstr "הדגשת ה_סוגר התואם"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:13
+#: ../gedit/gedit-preferences-dialog.ui.h:11
 msgid "View"
 msgstr "תצוגה"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:14
+#: ../gedit/gedit-preferences-dialog.ui.h:12
 msgid "Tab Stops"
 msgstr "עצירות טאב"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:15
+#: ../gedit/gedit-preferences-dialog.ui.h:13
 msgid "_Tab width:"
 msgstr "_רוחב טאב:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:16
+#: ../gedit/gedit-preferences-dialog.ui.h:14
 msgid "Insert _spaces instead of tabs"
 msgstr "הוספת _רווחים במקום טאבים"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:17
+#: ../gedit/gedit-preferences-dialog.ui.h:15
 msgid "_Enable automatic indentation"
 msgstr "_אפשור הזחה אוטומטית"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:18
+#: ../gedit/gedit-preferences-dialog.ui.h:16
 msgid "File Saving"
 msgstr "שמירת קובץ"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:19
+#: ../gedit/gedit-preferences-dialog.ui.h:17
 msgid "Create a _backup copy of files before saving"
 msgstr "יש ליצור עותק _גיבוי של הקבצים לפני השמירה"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:20
+#: ../gedit/gedit-preferences-dialog.ui.h:18
 msgid "_Autosave files every"
 msgstr "שמירה _אוטומטית בכול"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:21
+#: ../gedit/gedit-preferences-dialog.ui.h:19
 msgid "_minutes"
 msgstr "_דקות"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:22
+#: ../gedit/gedit-preferences-dialog.ui.h:20
 msgid "Editor"
 msgstr "עורך"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:23
+#: ../gedit/gedit-preferences-dialog.ui.h:21
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
 msgid "Font"
 msgstr "גופן"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:24
+#: ../gedit/gedit-preferences-dialog.ui.h:22
 msgid "Editor _font: "
 msgstr "_גופן העורך: "
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
+#: ../gedit/gedit-preferences-dialog.ui.h:23
 msgid "Pick the editor font"
 msgstr "בחירת גופן לעורך"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26
+#: ../gedit/gedit-preferences-dialog.ui.h:24
 msgid "Color Scheme"
 msgstr "סכימת צבעים"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:27
+#: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
 msgstr "התקנת ערכה"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
 msgstr "התקנת ערכה"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
 msgstr "הסרת ערכה"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:30
+#: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Uninstall Scheme"
 msgstr "הסרת ערכה"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:31
+#: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Font & Colors"
 msgstr "גופן וצבעים"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:32
+#: ../gedit/gedit-preferences-dialog.ui.h:30
 msgid "Plugins"
 msgstr "תוספים"
 
@@ -1921,22 +1927,22 @@ msgid "_Wrap around"
 msgstr "_גלישה מסביב"
 
 #. Use spaces to leave padding proportional to the font size
-#: ../gedit/gedit-statusbar.c:56 ../gedit/gedit-statusbar.c:62
+#: ../gedit/gedit-statusbar.c:53 ../gedit/gedit-statusbar.c:59
 msgid "OVR"
 msgstr "  OVR"
 
-#: ../gedit/gedit-statusbar.c:56 ../gedit/gedit-statusbar.c:62
+#: ../gedit/gedit-statusbar.c:53 ../gedit/gedit-statusbar.c:59
 msgid "INS"
 msgstr "  INS"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:238
+#: ../gedit/gedit-statusbar.c:170
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  שורה %d, עמודה %d"
 
-#: ../gedit/gedit-statusbar.c:337
+#: ../gedit/gedit-statusbar.c:269
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -2016,9 +2022,10 @@ msgstr "סוג MIME:"
 msgid "Encoding:"
 msgstr "קידוד:"
 
-#: ../gedit/gedit-tab-label.c:285
-msgid "Close document"
-msgstr "סגירת המסמך"
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-tab-label.ui.h:1
+msgid "Close Document"
+msgstr "סגירת מסמך"
 
 #: ../gedit/gedit-utils.c:840
 msgid "Please check your installation."
@@ -2077,33 +2084,29 @@ msgstr "המחרוזת שברצונך לחפש"
 msgid "Line you want to move the cursor to"
 msgstr "השורה אליה להעביר את הסמן"
 
-#: ../gedit/gedit-window.c:904
-msgid "Use Spaces"
-msgstr "שימוש ברווחים"
-
-#: ../gedit/gedit-window.c:1041
+#: ../gedit/gedit-window.c:959
 msgid "Bracket match is out of range"
 msgstr "הסוגר התואם הוא מחוץ לטווח"
 
-#: ../gedit/gedit-window.c:1046
+#: ../gedit/gedit-window.c:964
 msgid "Bracket match not found"
 msgstr "הסוגר התואם לא נמצא"
 
-#: ../gedit/gedit-window.c:1051
+#: ../gedit/gedit-window.c:969
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "הסוגר התואם נמצא בשורה: %d"
 
-#: ../gedit/gedit-window.c:1254
+#: ../gedit/gedit-window.c:1175
 #, c-format
 msgid "Tab Width: %u"
 msgstr "רוחב טאב: %u"
 
-#: ../gedit/gedit-window.c:1641
+#: ../gedit/gedit-window.c:1547
 msgid "There are unsaved documents"
 msgstr "ישנם מסמכים שלא נשמרו"
 
-#: ../gedit/gedit-window.c:2676
+#: ../gedit/gedit-window.c:2434
 msgid "Documents"
 msgstr "מסמכים"
 
@@ -2422,6 +2425,7 @@ msgid "Manage External Tools"
 msgstr "ניהול כלים חיצוניים"
 
 #: ../plugins/externaltools/tools/tools.ui.h:20
+#: ../plugins/snippets/snippets/snippets.ui.h:2
 msgid "Need help?"
 msgstr "יש צורך בעזרה?"
 
@@ -2902,17 +2906,17 @@ msgstr "הוספת מקטע חדש..."
 msgid "Global"
 msgstr "כללי"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:410
 msgid "Revert selected snippet"
 msgstr "שחזור המקטע הנבחר"
 
-#: ../plugins/snippets/snippets/manager.py:412
-#: ../plugins/snippets/snippets/snippets.ui.h:7
+#: ../plugins/snippets/snippets/manager.py:413
+#: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Delete selected snippet"
 msgstr "מחיקת המקטע הנבחר"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:671
+#: ../plugins/snippets/snippets/manager.py:666
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -2922,83 +2926,83 @@ msgstr ""
 "תו יחיד (שאינו אות או מספר) כגון: {, [, וכו׳."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:678
-#: ../plugins/snippets/snippets/snippets.ui.h:18
+#: ../plugins/snippets/snippets/manager.py:673
+#: ../plugins/snippets/snippets/snippets.ui.h:15
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "מילה בודדה המפעילה את המקטע לאחר לחיצה על Tab."
 
-#: ../plugins/snippets/snippets/manager.py:767
+#: ../plugins/snippets/snippets/manager.py:762
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "ארעה שגיאה בעת הייבוא: %s"
 
-#: ../plugins/snippets/snippets/manager.py:774
+#: ../plugins/snippets/snippets/manager.py:769
 msgid "Import successfully completed"
 msgstr "הייבוא הסתיים בהצלחה"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/snippets.ui.h:9
+#: ../plugins/snippets/snippets/manager.py:783
+#: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr "ייבוא מקטעים"
 
-#: ../plugins/snippets/snippets/manager.py:793
-#: ../plugins/snippets/snippets/manager.py:879
-#: ../plugins/snippets/snippets/manager.py:942
+#: ../plugins/snippets/snippets/manager.py:788
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "All supported archives"
 msgstr "כל הארכיונים הנתמכים"
 
-#: ../plugins/snippets/snippets/manager.py:794
-#: ../plugins/snippets/snippets/manager.py:880
-#: ../plugins/snippets/snippets/manager.py:943
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:938
 msgid "Gzip compressed archive"
 msgstr "ארכיון מכווץ Gzip"
 
-#: ../plugins/snippets/snippets/manager.py:795
-#: ../plugins/snippets/snippets/manager.py:881
-#: ../plugins/snippets/snippets/manager.py:944
+#: ../plugins/snippets/snippets/manager.py:790
+#: ../plugins/snippets/snippets/manager.py:876
+#: ../plugins/snippets/snippets/manager.py:939
 msgid "Bzip2 compressed archive"
 msgstr "ארכיון מכווץ Bzip2"
 
-#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:791
 msgid "Single snippets file"
 msgstr "קובץ מקטעים יחיד"
 
-#: ../plugins/snippets/snippets/manager.py:797
-#: ../plugins/snippets/snippets/manager.py:883
-#: ../plugins/snippets/snippets/manager.py:946
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: ../plugins/snippets/snippets/manager.py:809
+#: ../plugins/snippets/snippets/manager.py:804
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "ארעה שגיאה בעת הייצוא: %s"
 
-#: ../plugins/snippets/snippets/manager.py:813
+#: ../plugins/snippets/snippets/manager.py:808
 msgid "Export successfully completed"
 msgstr "הייצוא הסתיים בהצלחה"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:853
-#: ../plugins/snippets/snippets/manager.py:920
+#: ../plugins/snippets/snippets/manager.py:848
+#: ../plugins/snippets/snippets/manager.py:915
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "האם ברצונך לכלול את מקטעי ה<b>מערכת</b> הנבחרים בייצוא?"
 
-#: ../plugins/snippets/snippets/manager.py:868
-#: ../plugins/snippets/snippets/manager.py:938
+#: ../plugins/snippets/snippets/manager.py:863
+#: ../plugins/snippets/snippets/manager.py:933
 msgid "There are no snippets selected to be exported"
 msgstr "אין מקטעים שנבחרו לייצוא"
 
-#: ../plugins/snippets/snippets/manager.py:873
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:868
+#: ../plugins/snippets/snippets/manager.py:906
 msgid "Export snippets"
 msgstr "ייצוא מקטעים"
 
-#: ../plugins/snippets/snippets/manager.py:1052
+#: ../plugins/snippets/snippets/manager.py:1047
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "יש להקליד קיצור חדש או ללחוץ על Backspace לניקוי"
 
-#: ../plugins/snippets/snippets/manager.py:1054
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut"
 msgstr "הקלדת קיצור חדש"
 
@@ -3022,60 +3026,52 @@ msgstr "הוספת קטעי טקסט נפוצים בדרך מהירה"
 msgid "Manage Snippets"
 msgstr "ניהול המקטעים"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:4
-msgid "_Snippets:"
-msgstr "מ_קטעים:"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:5
+#: ../plugins/snippets/snippets/snippets.ui.h:3
 msgid "Create new snippet"
 msgstr "יצירת מקטע חדש"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:6
+#: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Add Snippet"
 msgstr "הוספת מקטע"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:8
+#: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Remove Snippet"
 msgstr "הסרת מקטע"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:10
+#: ../plugins/snippets/snippets/snippets.ui.h:8
 msgid "Import Snippets"
 msgstr "ייבוא מקטעים"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:11
+#: ../plugins/snippets/snippets/snippets.ui.h:9
 msgid "Export selected snippets"
 msgstr "ייצוא המקטעים הנבחרים"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:12
+#: ../plugins/snippets/snippets/snippets.ui.h:10
 msgid "Export Snippets"
 msgstr "ייצוא מקטעים"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:13
-msgid "_Edit:"
-msgstr "_עריכה:"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:14
+#: ../plugins/snippets/snippets/snippets.ui.h:11
 msgid "Activation"
 msgstr "הפעלה"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:15
+#: ../plugins/snippets/snippets/snippets.ui.h:12
 msgid "    "
 msgstr "    "
 
 #. "tab" here means the tab key, not the notebook tab!
-#: ../plugins/snippets/snippets/snippets.ui.h:17
+#: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "_Tab trigger:"
 msgstr "ה_זנקה עם Tab:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:19
+#: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "S_hortcut key:"
 msgstr "מקש _קיצור:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:20
+#: ../plugins/snippets/snippets/snippets.ui.h:17
 msgid "Shortcut key with which the snippet is activated"
 msgstr "מקש קיצור להפעלת המקטע"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:21
+#: ../plugins/snippets/snippets/snippets.ui.h:18
 msgid "_Drop targets:"
 msgstr "י_עדי השלכה:"
 
@@ -3367,6 +3363,15 @@ msgstr "ספק נתוני שימוש"
 #: ../plugins/zeitgeist/zeitgeist.plugin.desktop.in.h:2
 msgid "Logs access and leave event for documents used with gedit"
 msgstr "רישום אירועי הגישה והעזיבה עבור מסמכים בהם נעשה שימוש ב־gedit"
+
+#~ msgid "gedit Preferences"
+#~ msgstr "העדפות gedit"
+
+#~ msgid "_Snippets:"
+#~ msgstr "מ_קטעים:"
+
+#~ msgid "_Edit:"
+#~ msgstr "_עריכה:"
 
 #~ msgid "Show the application's help"
 #~ msgstr "Show the application's help"
@@ -3686,9 +3691,6 @@ msgstr "רישום אירועי הגישה והעזיבה עבור מסמכים 
 
 #~ msgid "Character Encodings"
 #~ msgstr "קידוד תווים"
-
-#~ msgid "Preferences"
-#~ msgstr "העדפות"
 
 #~ msgid "Replace All"
 #~ msgstr "החלפת הכול"
@@ -4493,9 +4495,6 @@ msgstr "רישום אירועי הגישה והעזיבה עבור מסמכים 
 #~ msgid "Selectable option"
 #~ msgstr "Selectable option"
 
-#~ msgid "Selected"
-#~ msgstr "Selected"
-
 #~ msgid "Server-side image map"
 #~ msgstr "Server-side image map"
 
@@ -4977,9 +4976,6 @@ msgstr "רישום אירועי הגישה והעזיבה עבור מסמכים 
 #~ msgstr ""
 #~ "Whether the bottom panel at the bottom of editing windows should be "
 #~ "visible."
-
-#~ msgid "Automatic Indentation"
-#~ msgstr "הזחה אוטומטית"
 
 #~ msgid "Bracket Matching"
 #~ msgstr "התאמת סוגריים"
