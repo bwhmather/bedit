@@ -20,7 +20,7 @@ import os
 import shutil
 import gettext
 
-from gi.repository import Gedit, Gtk, GObject, Gio, GLib
+from gi.repository import Gedit, Gtk, Gdk, GObject, Gio, GLib
 import platform
 
 from .library import Library
@@ -46,6 +46,39 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
 
                 library.set_dirs(snippetsdir, self.system_dirs())
 
+                self.css = Gtk.CssProvider()
+                self.css.load_from_data("""
+.gedit-snippet-manager-paned {
+  border-style: solid;
+  border-color: @borders;
+}
+.gedit-snippet-manager-paned:dir(ltr) {
+  border-width: 0 1px 0 0;
+}
+
+.gedit-snippet-manager-paned:dir(rtl) {
+  border-width: 0 0 0 1px;
+}
+
+.gedit-snippet-manager-view {
+  border-width: 0 0 1px 0;
+}
+
+.gedit-snippet-manager-treeview {
+  border-top-width: 0;
+}
+
+.gedit-snippet-manager-treeview:dir(ltr) {
+  border-left-width: 0;
+}
+
+.gedit-snippet-manager-treeview:dir(rtl) {
+  border-right-width: 0;
+}
+""".encode('utf-8'))
+                Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
+                                                         self.css, 600)
+
                 action = Gio.SimpleAction(name="snippets")
                 action.connect('activate', self.on_action_snippets_activate)
                 self.app.add_action(action)
@@ -57,6 +90,8 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
         def do_deactivate(self):
                 self.app.remove_action("snippets")
                 self.menu = None
+                Gtk.StyleContext.remove_for_screen(Gdk.Screen.get_default(),
+                                                   self.css)
 
         def system_dirs(self):
                 if platform.system() != 'Windows':
