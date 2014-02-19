@@ -164,6 +164,8 @@ gboolean	 _gedit_window_is_fullscreen		(GeditWindow         *window);
 
 GList		*_gedit_window_get_all_tabs		(GeditWindow         *window);
 
+GFile		*_gedit_window_pop_last_closed_doc	(GeditWindow         *window);
+
 /* these are in gedit-window because of screen safety */
 void		 _gedit_recent_add			(GeditWindow	     *window,
 							 GFile               *location,

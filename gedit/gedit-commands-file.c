@@ -489,6 +489,21 @@ _gedit_cmd_file_open (GSimpleAction *action,
 	gtk_widget_show (open_dialog);
 }
 
+void
+_gedit_cmd_file_reopen_closed_tab (GSimpleAction *action,
+                                   GVariant      *parameter,
+                                   gpointer      user_data)
+{
+	GeditWindow *window = GEDIT_WINDOW (user_data);
+	GFile *file;
+
+	file = _gedit_window_pop_last_closed_doc (window);
+	if (file != NULL)
+	{
+		gedit_commands_load_location (window, file, NULL, 0, 0);
+	}
+}
+
 /* File saving */
 
 static gboolean

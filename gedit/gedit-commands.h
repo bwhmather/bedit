@@ -70,6 +70,9 @@ void		_gedit_cmd_file_save_tab		(GeditTab    *tab,
 							 GeditWindow *window);
 void		_gedit_cmd_file_save_as_tab		(GeditTab    *tab,
 							 GeditWindow *window);
+void		_gedit_cmd_file_reopen_closed_tab	(GSimpleAction *action,
+							 GVariant      *parameter,
+							 gpointer       user_data);
 void		_gedit_cmd_file_save			(GSimpleAction *action,
                                                          GVariant      *parameter,
                                                          gpointer       user_data);

@@ -1948,6 +1948,9 @@ update_sensitivity_according_to_open_tabs (GeditWindow *window,
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-as");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "reopen-closed-tab");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), (window->priv->closed_docs_stack != NULL));
+
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "print");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
@@ -2086,12 +2089,41 @@ on_tab_added (GeditMultiNotebook *multi,
 }
 
 static void
+push_last_closed_doc (GeditWindow   *window,
+                      GeditDocument *doc)
+{
+	GeditWindowPrivate *priv = window->priv;
+	GFile *f;
+
+	f = gedit_document_get_location (doc);
+	if (f != NULL)
+	{
+		priv->closed_docs_stack = g_slist_prepend (priv->closed_docs_stack, f);
+	}
+}
+
+GFile *
+_gedit_window_pop_last_closed_doc (GeditWindow *window)
+{
+	GeditWindowPrivate *priv = window->priv;
+	GFile *f = NULL;
+
+	if (window->priv->closed_docs_stack != NULL)
+	{
+		f = priv->closed_docs_stack->data;
+		priv->closed_docs_stack = g_slist_remove (priv->closed_docs_stack, f);
+	}
+
+	return f;
+}
+
+static void
 on_tab_removed (GeditMultiNotebook *multi,
 		GeditNotebook      *notebook,
 		GeditTab           *tab,
 		GeditWindow        *window)
 {
-	GeditView     *view;
+	GeditView *view;
 	GeditDocument *doc;
 	gint num_notebooks;
 	gint num_tabs;
@@ -2180,6 +2212,8 @@ on_tab_removed (GeditMultiNotebook *multi,
 
 	if (!window->priv->dispose_has_run)
 	{
+		push_last_closed_doc (window, doc);
+
 		if ((!window->priv->removing_tabs &&
 		    gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) > 0) ||
 		    num_tabs == 0)
@@ -2667,6 +2701,7 @@ static GActionEntry win_entries[] = {
 	{ "new-tab", _gedit_cmd_file_new },
 	{ "open", _gedit_cmd_file_open },
 	{ "revert", _gedit_cmd_file_revert },
+	{ "reopen-closed-tab", _gedit_cmd_file_reopen_closed_tab },
 	{ "save", _gedit_cmd_file_save },
 	{ "save-as", _gedit_cmd_file_save_as },
 	{ "save-all", _gedit_cmd_file_save_all },
@@ -2715,6 +2750,7 @@ gedit_window_init (GeditWindow *window)
 	window->priv->dispose_has_run = FALSE;
 	window->priv->fullscreen_controls = NULL;
 	window->priv->direct_save_uri = NULL;
+	window->priv->closed_docs_stack = NULL;
 	window->priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
 	window->priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
 

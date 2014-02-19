@@ -505,6 +505,8 @@ gedit_app_startup (GApplication *application)
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
 	                                 "<Primary>T", "win.new-tab", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
+	                                 "<Primary><Shift>T", "win.reopen-closed-tab", NULL);
+	gtk_application_add_accelerator (GTK_APPLICATION (application),
 	                                 "<Primary>W", "win.close", NULL);
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
 	                                 "<Primary><Shift>W", "win.close-all", NULL);

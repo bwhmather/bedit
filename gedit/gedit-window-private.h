@@ -105,6 +105,8 @@ struct _GeditWindowPrivate
 
 	gchar          *direct_save_uri;
 
+	GSList         *closed_docs_stack;
+
 #ifdef OS_OSX
 	GtkOSXApplicationMenuGroup *mac_menu_group;
 #endif
