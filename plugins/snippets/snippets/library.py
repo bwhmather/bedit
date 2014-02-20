@@ -453,7 +453,7 @@ class SnippetsSystemFile:
                                 lambda node: elements.append((node, True)), \
                                 lambda node: elements.append((node, False)))
 
-                parser = et.XMLTreeBuilder(target=builder)
+                parser = et.XMLParser(target=builder)
                 self.insnippet = False
 
                 try:
