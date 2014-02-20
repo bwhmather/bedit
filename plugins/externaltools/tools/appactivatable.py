@@ -16,7 +16,7 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from gi.repository import GLib, Gio, GObject, Gtk, Gedit
+from gi.repository import GLib, Gio, GObject, Gtk, Gdk, Gedit
 from .library import ToolLibrary
 import os
 
@@ -78,6 +78,41 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
         self._library = ToolLibrary()
         self._library.set_locations(os.path.join(self.plugin_info.get_data_dir(), 'tools'))
 
+        self.css = Gtk.CssProvider()
+        self.css.load_from_data("""
+.gedit-tool-manager-paned {
+  border-style: solid;
+  border-color: @borders;
+}
+
+.gedit-tool-manager-paned:dir(ltr) {
+  border-width: 0 1px 0 0;
+}
+
+.gedit-tool-manager-paned:dir(rtl) {
+  border-width: 0 0 0 1px;
+}
+
+.gedit-tool-manager-view {
+  border-width: 0 0 1px 0;
+}
+
+.gedit-tool-manager-treeview {
+  border-top-width: 0;
+}
+
+.gedit-tool-manager-treeview:dir(ltr) {
+  border-left-width: 0;
+}
+
+.gedit-tool-manager-treeview:dir(rtl) {
+  border-right-width: 0;
+}
+""".encode('utf-8'))
+
+        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
+                                                 self.css, 600)
+
         self.menu_ext = self.extend_menu("preferences-section")
         item = Gio.MenuItem.new(_("Manage _External Tools..."), "win.manage-tools")
         self.menu_ext.append_menu_item(item)
@@ -95,5 +130,7 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
         self.menu.deactivate()
         self.menu_ext = None
         self.submenu_ext = None
+        Gtk.StyleContext.remove_for_screen(Gdk.Screen.get_default(),
+                                           self.css)
 
 # ex:ts=4:et:
