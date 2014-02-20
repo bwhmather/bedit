@@ -2659,7 +2659,6 @@ gedit_tab_print_or_print_preview (GeditTab                *tab,
 
 	view = gedit_tab_get_view (tab);
 
-
 	tab->priv->print_job = gedit_print_job_new (view);
 	g_object_add_weak_pointer (G_OBJECT (tab->priv->print_job),
 				   (gpointer *) &tab->priv->print_job);
@@ -2685,6 +2684,8 @@ gedit_tab_print_or_print_preview (GeditTab                *tab,
 	}
 	else
 	{
+		/* hide until we start printing */
+		gtk_widget_hide (tab->priv->info_bar);
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_PRINTING);
 	}
 
