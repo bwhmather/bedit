@@ -2571,6 +2571,8 @@ init_panels_visibility (GeditWindow *window)
 		{
 			gtk_widget_show (window->priv->bottom_panel_box);
 		}
+
+		g_free (panel_page);
 	}
 	else
 	{
