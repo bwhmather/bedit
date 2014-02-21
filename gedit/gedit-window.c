@@ -224,6 +224,8 @@ gedit_window_dispose (GObject *object)
 	 */
 	peas_engine_garbage_collect (PEAS_ENGINE (gedit_plugins_engine_get_default ()));
 
+	g_clear_object (&window->priv->side_stack_switcher);
+
 	G_OBJECT_CLASS (gedit_window_parent_class)->dispose (object);
 }
 
@@ -2449,20 +2451,61 @@ side_panel_visibility_changed (GtkWidget   *panel,
 }
 
 static void
+on_side_panel_stack_children_number_changed (GtkStack    *stack,
+                                             GtkWidget   *widget,
+                                             GeditWindow *window)
+{
+	GeditWindowPrivate *priv = window->priv;
+	GList *children;
+
+	children = gtk_container_get_children (GTK_CONTAINER (priv->side_panel));
+
+	if (children != NULL && children->next != NULL)
+	{
+		gtk_widget_show (priv->side_stack_switcher);
+		gtk_header_bar_set_custom_title (GTK_HEADER_BAR (priv->side_headerbar), priv->side_stack_switcher);
+	}
+	else
+	{
+		gtk_header_bar_set_custom_title (GTK_HEADER_BAR (priv->side_headerbar), NULL);
+	}
+
+	g_list_free (children);
+}
+
+static void
 setup_side_panel (GeditWindow *window)
 {
+	GeditWindowPrivate *priv = window->priv;
 	GtkWidget *documents_panel;
 
 	gedit_debug (DEBUG_WINDOW);
 
-	g_signal_connect_after (window->priv->side_panel,
+	g_signal_connect_after (priv->side_panel,
 	                        "notify::visible",
 	                        G_CALLBACK (side_panel_visibility_changed),
 	                        window);
 
+	priv->side_stack_switcher = gedit_menu_stack_switcher_new ();
+	gtk_button_set_relief (GTK_BUTTON (priv->side_stack_switcher), GTK_RELIEF_NONE);
+	g_object_ref_sink (priv->side_stack_switcher);
+
+	gedit_menu_stack_switcher_set_stack (GEDIT_MENU_STACK_SWITCHER (priv->side_stack_switcher),
+	                                     GTK_STACK (priv->side_panel));
+
+	g_signal_connect (priv->side_panel,
+	                  "add",
+	                  G_CALLBACK (on_side_panel_stack_children_number_changed),
+	                  window);
+
+	g_signal_connect (priv->side_panel,
+	                  "remove",
+	                  G_CALLBACK (on_side_panel_stack_children_number_changed),
+	                  window);
+
 	documents_panel = gedit_documents_panel_new (window);
 	gtk_widget_show_all (documents_panel);
-	gtk_stack_add_titled (GTK_STACK (window->priv->side_panel),
+	gtk_stack_add_titled (GTK_STACK (priv->side_panel),
 	                      documents_panel,
 	                      "GeditWindowDocumentsPanel",
 	                      _("Documents"));
