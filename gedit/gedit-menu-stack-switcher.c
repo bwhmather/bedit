@@ -102,6 +102,7 @@ on_button_clicked (GtkWidget              *widget,
     {
       child = g_object_get_data (G_OBJECT (widget), "stack-child");
       gtk_stack_set_visible_child (priv->stack, child);
+      gtk_widget_hide (priv->popover);
     }
 }
 
