@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-02-09 06:14+0000\n"
-"PO-Revision-Date: 2014-02-09 09:44+0100\n"
+"POT-Creation-Date: 2014-02-21 18:15+0000\n"
+"PO-Revision-Date: 2014-02-21 23:15+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -527,15 +527,15 @@ msgstr ""
 "Seznam aktivních zásuvných modulů. Obsahuje „Umístění“ aktivních modulů. Pro "
 "získání „Umístění“ daného modulu viz soubor .gedit-plugin."
 
-#: ../gedit/gedit-app.c:105
+#: ../gedit/gedit-app.c:103
 msgid "Show the application's version"
 msgstr "Zobrazit verzi aplikace"
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:109
 msgid "Display list of possible values for the encoding option"
 msgstr "Zobrazit seznam možných hodnot pro volbu kódování"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:116
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -543,44 +543,44 @@ msgstr ""
 "Nastavit kódování znaků, které bude používáno pro otevření souborů vypsaných "
 "na příkazovém řádku"
 
-#: ../gedit/gedit-app.c:120
+#: ../gedit/gedit-app.c:117
 msgid "ENCODING"
 msgstr "KÓDOVÁNÍ"
 
-#: ../gedit/gedit-app.c:127
+#: ../gedit/gedit-app.c:123
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr ""
 "Vytvořit nové okno nejvyšší úrovně v existující instanci aplikace gedit"
 
-#: ../gedit/gedit-app.c:135
+#: ../gedit/gedit-app.c:130
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Vytvořit nový dokument v existující instanci aplikace gedit"
 
-#: ../gedit/gedit-app.c:143
+#: ../gedit/gedit-app.c:137
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Nastavit velikost a polohu okna (ŠÍŘKAxVÝŠKA+X+Y)"
 
-#: ../gedit/gedit-app.c:144
+#: ../gedit/gedit-app.c:138
 msgid "GEOMETRY"
 msgstr "GEOMETRIE"
 
-#: ../gedit/gedit-app.c:151
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr "Otevřít soubory a blokovat zpracování, dokud nejsou zavřeny"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "Spustit gedit v samostatném režimu"
 
-#: ../gedit/gedit-app.c:168
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[SOUBOR…] [+ŘÁDEK[:SLOUPEC]]"
 
-#: ../gedit/gedit-app.c:270
+#: ../gedit/gedit-app.c:260
 msgid "There was an error displaying the help."
 msgstr "Při zobrazování nápovědy došlo k chybě."
 
-#: ../gedit/gedit-app.c:854
+#: ../gedit/gedit-app.c:836
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: neplatné kódování."
@@ -593,25 +593,25 @@ msgstr "O aplikaci gedit"
 msgid "Question"
 msgstr "Otázka"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:304
+#: ../gedit/gedit-close-confirmation-dialog.c:308
 msgid "Close _without Saving"
 msgstr "Zavřít _bez uložení"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:305
-#: ../gedit/gedit-commands-file.c:441 ../gedit/gedit-commands-file.c:557
-#: ../gedit/gedit-commands-file.c:626 ../gedit/gedit-commands-file.c:833
-#: ../gedit/gedit-commands-file.c:1283 ../gedit/gedit-encodings-dialog.ui.h:3
+#: ../gedit/gedit-close-confirmation-dialog.c:309
+#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-commands-file.c:558
+#: ../gedit/gedit-commands-file.c:627 ../gedit/gedit-commands-file.c:834
+#: ../gedit/gedit-commands-file.c:1284 ../gedit/gedit-encodings-dialog.ui.h:3
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:2
 #: ../gedit/gedit-io-error-info-bar.c:138
 #: ../gedit/gedit-io-error-info-bar.c:550
 #: ../gedit/gedit-io-error-info-bar.c:1230
-#: ../gedit/gedit-preferences-dialog.c:853
+#: ../gedit/gedit-preferences-dialog.c:830
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
 #: ../plugins/quickopen/quickopen/popup.py:36
-#: ../plugins/snippets/snippets/manager.py:790
-#: ../plugins/snippets/snippets/manager.py:875
-#: ../plugins/snippets/snippets/manager.py:913
+#: ../plugins/snippets/snippets/manager.py:785
+#: ../plugins/snippets/snippets/manager.py:870
+#: ../plugins/snippets/snippets/manager.py:908
 #: ../plugins/sort/gedit-sort-plugin.ui.h:2
 #: ../plugins/spell/gedit-spell-language-dialog.c:124
 #: ../plugins/spell/languages-dialog.ui.h:3
@@ -619,18 +619,18 @@ msgstr "Zavřít _bez uložení"
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:331 ../gedit/gedit-menu.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:335 ../gedit/gedit-menu.ui.h:7
 msgid "_Save As…"
 msgstr "_Uložit jako…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:331
-#: ../gedit/gedit-commands-file.c:834
-#: ../plugins/snippets/snippets/manager.py:876
-#: ../plugins/snippets/snippets/manager.py:914
+#: ../gedit/gedit-close-confirmation-dialog.c:335
+#: ../gedit/gedit-commands-file.c:835
+#: ../plugins/snippets/snippets/manager.py:871
+#: ../plugins/snippets/snippets/manager.py:909
 msgid "_Save"
 msgstr "_Uložit"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:349
+#: ../gedit/gedit-close-confirmation-dialog.c:353
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -647,13 +647,13 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za posledních %ld sekund navždy "
 "ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:358
+#: ../gedit/gedit-close-confirmation-dialog.c:362
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Pokud je neuložíte, budou změny provedené za poslední minutu navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:368
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -671,7 +671,7 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za poslední minutu a %ld sekund "
 "navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:374
+#: ../gedit/gedit-close-confirmation-dialog.c:378
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -688,12 +688,12 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za posledních %ld minut navždy "
 "ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:393
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Pokud je neuložíte, budou změny provedené za poslední hodinu navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:395
+#: ../gedit/gedit-close-confirmation-dialog.c:399
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -711,7 +711,7 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za poslední hodinu a %d minut "
 "navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -727,22 +727,22 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za posledních %d hodin navždy "
 "ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:460
+#: ../gedit/gedit-close-confirmation-dialog.c:457
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Změny v dokumentu „%s“ budou navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:465
+#: ../gedit/gedit-close-confirmation-dialog.c:462
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Uložit před zavřením změny v dokumentu „%s“?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:480
-#: ../gedit/gedit-close-confirmation-dialog.c:701
+#: ../gedit/gedit-close-confirmation-dialog.c:477
+#: ../gedit/gedit-close-confirmation-dialog.c:693
 msgid "Saving has been disabled by the system administrator."
 msgstr "Ukládání bylo správcem systému zakázáno."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:650
+#: ../gedit/gedit-close-confirmation-dialog.c:642
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -750,7 +750,7 @@ msgstr[0] "Změny v %d dokumentu budou navždy ztraceny."
 msgstr[1] "Změny ve %d dokumentech budou navždy ztraceny."
 msgstr[2] "Změny v %d dokumentech budou navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:658
+#: ../gedit/gedit-close-confirmation-dialog.c:650
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -759,24 +759,24 @@ msgstr[0] "V %d dokumentu jsou neuložené změny. Uložit změny před zavřen�
 msgstr[1] "Ve %d dokumentech jsou neuložené změny. Uložit změny před zavřením?"
 msgstr[2] "V %d dokumentech jsou neuložené změny. Uložit změny před zavřením?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:678
+#: ../gedit/gedit-close-confirmation-dialog.c:670
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_enty s neuloženými změnami:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:682
+#: ../gedit/gedit-close-confirmation-dialog.c:674
 msgid "S_elect the documents you want to save:"
 msgstr "_Vyberte dokumenty, které chcete uložit:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:705
+#: ../gedit/gedit-close-confirmation-dialog.c:697
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Pokud je neuložíte, budou všechny vaše změny navždy ztraceny."
 
-#: ../gedit/gedit-commands-file.c:261
+#: ../gedit/gedit-commands-file.c:262
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "Načítá se soubor „%s“…"
 
-#: ../gedit/gedit-commands-file.c:270
+#: ../gedit/gedit-commands-file.c:271
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -786,36 +786,36 @@ msgstr[2] "Načítá se %d souborů…"
 
 #. Translators: "Open" is the title of the file chooser window
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-commands-file.c:437 ../gedit/gedit-window.ui.h:1
+#: ../gedit/gedit-commands-file.c:438 ../gedit/gedit-window.ui.h:1
 msgid "Open"
 msgstr "Otevřít"
 
 #. ex:ts=8:noet:
-#: ../gedit/gedit-commands-file.c:442
+#: ../gedit/gedit-commands-file.c:443
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:37
-#: ../plugins/snippets/snippets/manager.py:791
+#: ../plugins/snippets/snippets/manager.py:786
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: ../gedit/gedit-commands-file.c:548
+#: ../gedit/gedit-commands-file.c:549
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Soubor „%s“ je pouze pro čtení."
 
-#: ../gedit/gedit-commands-file.c:553
+#: ../gedit/gedit-commands-file.c:554
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Chcete se pokusit nahradit jej souborem, který ukládáte?"
 
-#: ../gedit/gedit-commands-file.c:558 ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-commands-file.c:559 ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "Nah_radit"
 
-#: ../gedit/gedit-commands-file.c:599
+#: ../gedit/gedit-commands-file.c:600
 msgid "Save the file using compression?"
 msgstr "Uložit soubor v komprimované podobě?"
 
-#: ../gedit/gedit-commands-file.c:600
+#: ../gedit/gedit-commands-file.c:601
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -824,15 +824,15 @@ msgstr ""
 "Soubor „%s“ byl dříve uložen jako prostý text a nyní bude uložen jako "
 "komprimovaný."
 
-#: ../gedit/gedit-commands-file.c:602
+#: ../gedit/gedit-commands-file.c:603
 msgid "_Save Using Compression"
 msgstr "_Uložit jako komprimovaný"
 
-#: ../gedit/gedit-commands-file.c:606
+#: ../gedit/gedit-commands-file.c:607
 msgid "Save the file as plain text?"
 msgstr "Uložit soubor jako prostý text?"
 
-#: ../gedit/gedit-commands-file.c:607
+#: ../gedit/gedit-commands-file.c:608
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -841,30 +841,30 @@ msgstr ""
 "Soubor „%s“ byl dříve uložen jako komprimovaný a nyní bude uložen jako "
 "prostý text."
 
-#: ../gedit/gedit-commands-file.c:609
+#: ../gedit/gedit-commands-file.c:610
 msgid "_Save As Plain Text"
 msgstr "_Uložit jako prostý text"
 
-#: ../gedit/gedit-commands-file.c:725 ../gedit/gedit-commands-file.c:942
+#: ../gedit/gedit-commands-file.c:726 ../gedit/gedit-commands-file.c:943
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Ukládá se soubor „%s“…"
 
-#: ../gedit/gedit-commands-file.c:829
+#: ../gedit/gedit-commands-file.c:830
 msgid "Save As"
 msgstr "Uložení jako"
 
-#: ../gedit/gedit-commands-file.c:1146
+#: ../gedit/gedit-commands-file.c:1147
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Vrací se původní stav dokumentu „%s“…"
 
-#: ../gedit/gedit-commands-file.c:1191
+#: ../gedit/gedit-commands-file.c:1192
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Vrátit neuložené změny v dokumentu „%s“?"
 
-#: ../gedit/gedit-commands-file.c:1200
+#: ../gedit/gedit-commands-file.c:1201
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -878,12 +878,12 @@ msgstr[1] ""
 msgstr[2] ""
 "Změny provedené v dokumentu za posledních %ld sekund budou navždy ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1209
+#: ../gedit/gedit-commands-file.c:1210
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "Změny provedené v dokumentu za poslední minutu budou navždy ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1215
+#: ../gedit/gedit-commands-file.c:1216
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -901,7 +901,7 @@ msgstr[2] ""
 "Změny provedené v dokumentu za poslední minutu a %ld sekund budou navždy "
 "ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1225
+#: ../gedit/gedit-commands-file.c:1226
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -915,11 +915,11 @@ msgstr[1] ""
 msgstr[2] ""
 "Změny provedené v dokumentu za posledních %ld minut budou navždy ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1240
+#: ../gedit/gedit-commands-file.c:1241
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Změny provedené v dokumentu za poslední hodinu budou navždy ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1246
+#: ../gedit/gedit-commands-file.c:1247
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -937,7 +937,7 @@ msgstr[2] ""
 "Změny provedené v dokumentu za poslední hodinu a %d minut budou navždy "
 "ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1261
+#: ../gedit/gedit-commands-file.c:1262
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -950,7 +950,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Změny provedené v dokumentu za posledních %d hodin budou navždy ztraceny."
 
-#: ../gedit/gedit-commands-file.c:1284
+#: ../gedit/gedit-commands-file.c:1285
 msgid "_Revert"
 msgstr "V_rátit"
 
@@ -995,14 +995,13 @@ msgstr "„%s“ nenalezeno"
 msgid "Unsaved Document %d"
 msgstr "Neuložený dokument %d"
 
-#: ../gedit/gedit-documents-panel.c:456
+#: ../gedit/gedit-documents-panel.c:406
 #, c-format
 msgid "Tab Group %i"
 msgstr "Skupina karet %i"
 
-#: ../gedit/gedit-documents-panel.c:947 ../gedit/gedit-documents-panel.c:961
-#: ../gedit/gedit-window.c:1187 ../gedit/gedit-window.c:1193
-#: ../gedit/gedit-window.c:1201
+#: ../gedit/gedit-documents-panel.c:560 ../gedit/gedit-window.c:1109
+#: ../gedit/gedit-window.c:1115 ../gedit/gedit-window.c:1123
 msgid "Read-Only"
 msgstr "Pouze ke čtení"
 
@@ -1142,8 +1141,6 @@ msgid "Character encodings"
 msgstr "Kódování znaků"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:2 ../gedit/gedit-menu.ui.h:3
-#: ../gedit/gedit-preferences-dialog.ui.h:2
-#: ../plugins/snippets/snippets/snippets.ui.h:3
 #: ../plugins/sort/gedit-sort-plugin.ui.h:4
 #: ../plugins/spell/gedit-spell-language-dialog.c:126
 #: ../plugins/spell/languages-dialog.ui.h:2
@@ -1152,7 +1149,6 @@ msgid "_Help"
 msgstr "_Nápověda"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:4
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:3
 #: ../plugins/spell/gedit-spell-language-dialog.c:125
 #: ../plugins/spell/languages-dialog.ui.h:4
 msgid "_OK"
@@ -1177,7 +1173,6 @@ msgid "_Add"
 msgstr "Přid_at"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:9
-#| msgid "Remove Tool"
 msgid "_Remove"
 msgstr "Odeb_rat"
 
@@ -1186,7 +1181,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "Kódová_ní zobrazovaná v nabídce:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:40
-#: ../gedit/gedit-preferences-dialog.c:868
+#: ../gedit/gedit-preferences-dialog.c:845
 msgid "All Files"
 msgstr "Všechny soubory"
 
@@ -1214,7 +1209,16 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-dialog.c:295 ../gedit/gedit-window.c:1302
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
+msgid "Highlight Mode"
+msgstr "Režim zvýrazňování"
+
+#: ../gedit/gedit-highlight-mode-dialog.ui.h:3
+msgid "_Select"
+msgstr "_Vybrat"
+
+#: ../gedit/gedit-highlight-mode-selector.c:247 ../gedit/gedit-window.c:1193
 #: ../plugins/externaltools/tools/manager.py:107
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1223,11 +1227,7 @@ msgid "Plain Text"
 msgstr "Prostý text"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
-msgid "Highlight Mode"
-msgstr "Režim zvýrazňování"
-
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:4
+#: ../gedit/gedit-highlight-mode-selector.ui.h:1
 msgid "Search highlight mode..."
 msgstr "Režim zvýrazňování při hledání…"
 
@@ -1636,191 +1636,196 @@ msgstr "Režim _zvýrazňování…"
 msgid "_Close All"
 msgstr "Zavřít vš_e"
 
-#: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-notebook-popup-menu.ui.h:5
-#: ../gedit/gedit-preferences-dialog.ui.h:3
-#: ../gedit/gedit-replace-dialog.ui.h:2
+#: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
-#: ../plugins/snippets/snippets/snippets.ui.h:2
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Zavřít"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:1
+#: ../gedit/gedit-menu.ui.h:20
 msgid "Move _Left"
 msgstr "Přesunout v_levo"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:2
+#: ../gedit/gedit-menu.ui.h:21
 msgid "Move _Right"
 msgstr "Přesunout vp_ravo"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:3
+#: ../gedit/gedit-menu.ui.h:22
 msgid "Move to New _Window"
 msgstr "Přesunout do no_vého okna"
 
-#: ../gedit/gedit-notebook-popup-menu.ui.h:4
+#: ../gedit/gedit-menu.ui.h:23
 msgid "Move to New Tab _Group"
 msgstr "Přesunout do nové s_kupiny karet"
 
-#: ../gedit/gedit-preferences-dialog.c:394
+#: ../gedit/gedit-menu.ui.h:24
+msgid "Automatic Indentation"
+msgstr "Automatické odsazování"
+
+#: ../gedit/gedit-menu.ui.h:25
+msgid "Use Spaces"
+msgstr "Použít mezery"
+
+#: ../gedit/gedit-preferences-dialog.c:371
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Chcete-li vybrat písmo, které má editor používat, klikněte na toto tlačítko"
 
-#: ../gedit/gedit-preferences-dialog.c:407
+#: ../gedit/gedit-preferences-dialog.c:384
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Po_užít systémové písmo s pevnou šířkou (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:639
+#: ../gedit/gedit-preferences-dialog.c:616
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Složka „%s“ nemůže být vytvořena: funkce g_mkdir_with_parents() selhala: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:823
+#: ../gedit/gedit-preferences-dialog.c:800
 msgid "The selected color scheme cannot be installed."
 msgstr "Vybrané schéma barev nelze nainstalovat"
 
-#: ../gedit/gedit-preferences-dialog.c:850
+#: ../gedit/gedit-preferences-dialog.c:827
 msgid "Add Scheme"
 msgstr "Přidat schéma"
 
-#: ../gedit/gedit-preferences-dialog.c:854
+#: ../gedit/gedit-preferences-dialog.c:831
 msgid "A_dd Scheme"
 msgstr "Při_dat schéma"
 
-#: ../gedit/gedit-preferences-dialog.c:861
+#: ../gedit/gedit-preferences-dialog.c:838
 msgid "Color Scheme Files"
 msgstr "Soubory s barevnými schématy"
 
-#: ../gedit/gedit-preferences-dialog.c:913
+#: ../gedit/gedit-preferences-dialog.c:890
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nelze odstranit schéma barev „%s“."
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-preferences-dialog.ui.h:1
-msgid "gedit Preferences"
-msgstr "Předvolby gedit"
+msgid "Preferences"
+msgstr "Předvolby"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:4 ../gedit/gedit-view.c:525
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:525
 msgid "_Display line numbers"
 msgstr "Zobrazovat čísla řá_dků"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:5
+#: ../gedit/gedit-preferences-dialog.ui.h:3
 msgid "Display right _margin at column:"
 msgstr "Zobrazovat pravý _okraj na sloupci:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:6
+#: ../gedit/gedit-preferences-dialog.ui.h:4
 msgid "Display _statusbar"
 msgstr "Zobrazovat _stavovou lištu"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:7
+#: ../gedit/gedit-preferences-dialog.ui.h:5
 #: ../gedit/gedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "Zalamování textu"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:8
+#: ../gedit/gedit-preferences-dialog.ui.h:6
 #: ../gedit/gedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
 msgstr "Povolit zalamování _textu"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:9
+#: ../gedit/gedit-preferences-dialog.ui.h:7
 #: ../gedit/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
 msgstr "Nerozdělovat _slova na dva řádky"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:10
+#: ../gedit/gedit-preferences-dialog.ui.h:8
 msgid "Highlighting"
 msgstr "Zvýrazňování"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:11
+#: ../gedit/gedit-preferences-dialog.ui.h:9
 msgid "Highlight current _line"
 msgstr "Zvýrazňovat _aktuální řádek"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:12
+#: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "Highlight matching _brackets"
 msgstr "Zvýrazňovat _odpovídající závorky"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:13
+#: ../gedit/gedit-preferences-dialog.ui.h:11
 msgid "View"
 msgstr "Zobrazit"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:14
+#: ../gedit/gedit-preferences-dialog.ui.h:12
 msgid "Tab Stops"
 msgstr "Tabulační zarážky"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:15
+#: ../gedit/gedit-preferences-dialog.ui.h:13
 msgid "_Tab width:"
 msgstr "Šířka _tabulátorů:"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:16
+#: ../gedit/gedit-preferences-dialog.ui.h:14
 msgid "Insert _spaces instead of tabs"
 msgstr "Vkládat _mezery místo tabulátorů"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:17
+#: ../gedit/gedit-preferences-dialog.ui.h:15
 msgid "_Enable automatic indentation"
 msgstr "Povolit a_utomatické odsazování"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:18
+#: ../gedit/gedit-preferences-dialog.ui.h:16
 msgid "File Saving"
 msgstr "Ukládání souborů"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:19
+#: ../gedit/gedit-preferences-dialog.ui.h:17
 msgid "Create a _backup copy of files before saving"
 msgstr "Vytvářet záložní _kopii souborů před uložením"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:20
+#: ../gedit/gedit-preferences-dialog.ui.h:18
 msgid "_Autosave files every"
 msgstr "_Automaticky ukládat soubory každých"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:21
+#: ../gedit/gedit-preferences-dialog.ui.h:19
 msgid "_minutes"
 msgstr "_minut"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:22
+#: ../gedit/gedit-preferences-dialog.ui.h:20
 msgid "Editor"
 msgstr "Editor"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:23
+#: ../gedit/gedit-preferences-dialog.ui.h:21
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
 msgid "Font"
 msgstr "Písmo"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:24
+#: ../gedit/gedit-preferences-dialog.ui.h:22
 msgid "Editor _font: "
 msgstr "_Písmo editoru: "
 
-#: ../gedit/gedit-preferences-dialog.ui.h:25
+#: ../gedit/gedit-preferences-dialog.ui.h:23
 msgid "Pick the editor font"
 msgstr "Zvolte písmo editoru"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:26
+#: ../gedit/gedit-preferences-dialog.ui.h:24
 msgid "Color Scheme"
 msgstr "Barevné schéma"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:27
+#: ../gedit/gedit-preferences-dialog.ui.h:25
 msgid "Install scheme"
 msgstr "Instalovat schéma"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:28
+#: ../gedit/gedit-preferences-dialog.ui.h:26
 msgid "Install Scheme"
 msgstr "Instalovat schéma"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:29
+#: ../gedit/gedit-preferences-dialog.ui.h:27
 msgid "Uninstall scheme"
 msgstr "Odinstalovat schéma"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:30
+#: ../gedit/gedit-preferences-dialog.ui.h:28
 msgid "Uninstall Scheme"
 msgstr "Odinstalovat schéma"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:31
+#: ../gedit/gedit-preferences-dialog.ui.h:29
 msgid "Font & Colors"
 msgstr "Písma a barvy"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:32
+#: ../gedit/gedit-preferences-dialog.ui.h:30
 msgid "Plugins"
 msgstr "Zásuvné moduly"
 
@@ -1977,7 +1982,6 @@ msgid "Replace _All"
 msgstr "Nahradit _vše"
 
 #: ../gedit/gedit-replace-dialog.ui.h:5
-#| msgid "_Find…"
 msgid "_Find"
 msgstr "_Najít"
 
@@ -2010,22 +2014,22 @@ msgid "_Wrap around"
 msgstr "P_okračovat od začátku"
 
 #. Use spaces to leave padding proportional to the font size
-#: ../gedit/gedit-statusbar.c:56 ../gedit/gedit-statusbar.c:62
+#: ../gedit/gedit-statusbar.c:53 ../gedit/gedit-statusbar.c:59
 msgid "OVR"
 msgstr "PŘE"
 
-#: ../gedit/gedit-statusbar.c:56 ../gedit/gedit-statusbar.c:62
+#: ../gedit/gedit-statusbar.c:53 ../gedit/gedit-statusbar.c:59
 msgid "INS"
 msgstr "VKL"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:238
+#: ../gedit/gedit-statusbar.c:170
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  ř %d, sl %d"
 
-#: ../gedit/gedit-statusbar.c:337
+#: ../gedit/gedit-statusbar.c:269
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -2105,8 +2109,9 @@ msgstr "Typ MIME:"
 msgid "Encoding:"
 msgstr "Kódování:"
 
-#: ../gedit/gedit-tab-label.c:285
-msgid "Close document"
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-tab-label.ui.h:1
+msgid "Close Document"
 msgstr "Zavřít dokument"
 
 #: ../gedit/gedit-utils.c:840
@@ -2166,33 +2171,29 @@ msgstr "Řetězec, který chcete hledat"
 msgid "Line you want to move the cursor to"
 msgstr "Řádek, na který chcete přesunout kurzor"
 
-#: ../gedit/gedit-window.c:904
-msgid "Use Spaces"
-msgstr "Použít mezery"
-
-#: ../gedit/gedit-window.c:1041
+#: ../gedit/gedit-window.c:959
 msgid "Bracket match is out of range"
 msgstr "Odpovídající závorka je mimo rozsah"
 
-#: ../gedit/gedit-window.c:1046
+#: ../gedit/gedit-window.c:964
 msgid "Bracket match not found"
 msgstr "Odpovídající závorka nenalezena"
 
-#: ../gedit/gedit-window.c:1051
+#: ../gedit/gedit-window.c:969
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Odpovídající závorka nalezena na řádku: %d"
 
-#: ../gedit/gedit-window.c:1254
+#: ../gedit/gedit-window.c:1175
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Šířka tabulátoru: %u"
 
-#: ../gedit/gedit-window.c:1641
+#: ../gedit/gedit-window.c:1547
 msgid "There are unsaved documents"
 msgstr "Některé dokumenty nejsou uložené"
 
-#: ../gedit/gedit-window.c:2676
+#: ../gedit/gedit-window.c:2434
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -2370,11 +2371,11 @@ msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr ""
 "Název písma v systému Pango. Například „Sans 12“ nebo „Monospace Bold 14“."
 
-#: ../plugins/externaltools/tools/appactivatable.py:82
+#: ../plugins/externaltools/tools/appactivatable.py:117
 msgid "Manage _External Tools..."
 msgstr "Spravovat _externí nástroje…"
 
-#: ../plugins/externaltools/tools/appactivatable.py:87
+#: ../plugins/externaltools/tools/appactivatable.py:122
 msgid "External _Tools"
 msgstr "Ex_terní nástroje"
 
@@ -2514,6 +2515,7 @@ msgid "Manage External Tools"
 msgstr "Správa externích nástrojů"
 
 #: ../plugins/externaltools/tools/tools.ui.h:20
+#: ../plugins/snippets/snippets/snippets.ui.h:2
 msgid "Need help?"
 msgstr "Potřebujete pomoc?"
 
@@ -2925,7 +2927,7 @@ msgstr "Rychle otevřít soubory"
 msgid "Type to search..."
 msgstr "Pište, co chcete najít…"
 
-#: ../plugins/snippets/snippets/appactivatable.py:53
+#: ../plugins/snippets/snippets/appactivatable.py:86
 msgid "Manage _Snippets..."
 msgstr "Spravovat úr_yvky…"
 
@@ -2994,17 +2996,17 @@ msgstr "Přidat nový úryvek…"
 msgid "Global"
 msgstr "Globální"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:410
 msgid "Revert selected snippet"
 msgstr "Vrátit vybraný úryvek do původního stavu"
 
-#: ../plugins/snippets/snippets/manager.py:412
-#: ../plugins/snippets/snippets/snippets.ui.h:7
+#: ../plugins/snippets/snippets/manager.py:413
+#: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Delete selected snippet"
 msgstr "Smazat vybraný úryvek"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:671
+#: ../plugins/snippets/snippets/manager.py:666
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3015,84 +3017,84 @@ msgstr ""
 "apod."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:678
-#: ../plugins/snippets/snippets/snippets.ui.h:18
+#: ../plugins/snippets/snippets/manager.py:673
+#: ../plugins/snippets/snippets/snippets.ui.h:15
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Jedno slovo, kterým se po stisknutí tabulátoru úryvek aktivuje"
 
-#: ../plugins/snippets/snippets/manager.py:767
+#: ../plugins/snippets/snippets/manager.py:762
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Během importu došlo k následující chybě: %s"
 
-#: ../plugins/snippets/snippets/manager.py:774
+#: ../plugins/snippets/snippets/manager.py:769
 msgid "Import successfully completed"
 msgstr "Import úspěšně dokončen"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/snippets.ui.h:9
+#: ../plugins/snippets/snippets/manager.py:783
+#: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import snippets"
 msgstr "Importovat úryvky"
 
-#: ../plugins/snippets/snippets/manager.py:793
-#: ../plugins/snippets/snippets/manager.py:879
-#: ../plugins/snippets/snippets/manager.py:942
+#: ../plugins/snippets/snippets/manager.py:788
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "All supported archives"
 msgstr "Všechny podporované archivy"
 
-#: ../plugins/snippets/snippets/manager.py:794
-#: ../plugins/snippets/snippets/manager.py:880
-#: ../plugins/snippets/snippets/manager.py:943
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:938
 msgid "Gzip compressed archive"
 msgstr "Komprimovaný archiv GZIP"
 
-#: ../plugins/snippets/snippets/manager.py:795
-#: ../plugins/snippets/snippets/manager.py:881
-#: ../plugins/snippets/snippets/manager.py:944
+#: ../plugins/snippets/snippets/manager.py:790
+#: ../plugins/snippets/snippets/manager.py:876
+#: ../plugins/snippets/snippets/manager.py:939
 msgid "Bzip2 compressed archive"
 msgstr "Komprimovaný archiv BZIP2"
 
-#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:791
 msgid "Single snippets file"
 msgstr "Soubor úryvků"
 
-#: ../plugins/snippets/snippets/manager.py:797
-#: ../plugins/snippets/snippets/manager.py:883
-#: ../plugins/snippets/snippets/manager.py:946
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All files"
 msgstr "Všechny soubory"
 
-#: ../plugins/snippets/snippets/manager.py:809
+#: ../plugins/snippets/snippets/manager.py:804
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Během exportu došlo k následující chybě: %s"
 
-#: ../plugins/snippets/snippets/manager.py:813
+#: ../plugins/snippets/snippets/manager.py:808
 msgid "Export successfully completed"
 msgstr "Export úspěšně dokončen"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:853
-#: ../plugins/snippets/snippets/manager.py:920
+#: ../plugins/snippets/snippets/manager.py:848
+#: ../plugins/snippets/snippets/manager.py:915
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "Chcete zahrnout vybrané <b>systémové</b> úryvky do svého exportu?"
 
-#: ../plugins/snippets/snippets/manager.py:868
-#: ../plugins/snippets/snippets/manager.py:938
+#: ../plugins/snippets/snippets/manager.py:863
+#: ../plugins/snippets/snippets/manager.py:933
 msgid "There are no snippets selected to be exported"
 msgstr "Pro export nejsou vybrány žádné úryvky"
 
-#: ../plugins/snippets/snippets/manager.py:873
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:868
+#: ../plugins/snippets/snippets/manager.py:906
 msgid "Export snippets"
 msgstr "Exportovat úryvky"
 
-#: ../plugins/snippets/snippets/manager.py:1052
+#: ../plugins/snippets/snippets/manager.py:1047
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
 "Stiskněte novou klávesovou zkratku, nebo ji vymažte stisknutím Backspace"
 
-#: ../plugins/snippets/snippets/manager.py:1054
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut"
 msgstr "Stiskněte novou klávesovou zkratku"
 
@@ -3118,60 +3120,52 @@ msgstr "Rychle vkládá často používané kusy textu"
 msgid "Manage Snippets"
 msgstr "Správa úryvků"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:4
-msgid "_Snippets:"
-msgstr "Ú_ryvky:"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:5
+#: ../plugins/snippets/snippets/snippets.ui.h:3
 msgid "Create new snippet"
 msgstr "Vytvořit nový úryvek"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:6
+#: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Add Snippet"
 msgstr "Přidat úryvek"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:8
+#: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Remove Snippet"
 msgstr "Odstranit úryvek"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:10
+#: ../plugins/snippets/snippets/snippets.ui.h:8
 msgid "Import Snippets"
 msgstr "Importovat úryvky"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:11
+#: ../plugins/snippets/snippets/snippets.ui.h:9
 msgid "Export selected snippets"
 msgstr "Exportovat vybrané úryvky"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:12
+#: ../plugins/snippets/snippets/snippets.ui.h:10
 msgid "Export Snippets"
 msgstr "Exportovat úryvky"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:13
-msgid "_Edit:"
-msgstr "_Upravit:"
-
-#: ../plugins/snippets/snippets/snippets.ui.h:14
+#: ../plugins/snippets/snippets/snippets.ui.h:11
 msgid "Activation"
 msgstr "Aktivace"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:15
+#: ../plugins/snippets/snippets/snippets.ui.h:12
 msgid "    "
 msgstr "    "
 
 #. "tab" here means the tab key, not the notebook tab!
-#: ../plugins/snippets/snippets/snippets.ui.h:17
+#: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "_Tab trigger:"
 msgstr "Spouštěč _tabulátoru:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:19
+#: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "S_hortcut key:"
 msgstr "_Klávesová zkratka:"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:20
+#: ../plugins/snippets/snippets/snippets.ui.h:17
 msgid "Shortcut key with which the snippet is activated"
 msgstr "Klávesová zkratka, kterou se úryvek aktivuje"
 
-#: ../plugins/snippets/snippets/snippets.ui.h:21
+#: ../plugins/snippets/snippets/snippets.ui.h:18
 msgid "_Drop targets:"
 msgstr "_Vynechat cíle:"
 
@@ -3464,15 +3458,3 @@ msgstr "Poskytovatel dat Zeitgeist"
 msgid "Logs access and leave event for documents used with gedit"
 msgstr ""
 "Evidovat přístup a odesílat události pro dokumenty použité v aplikaci gedit"
-
-#~ msgid "File Name"
-#~ msgstr "Název souboru"
-
-#~ msgid "Check Spelling"
-#~ msgstr "Kontrolovat pravopis"
-
-#~ msgid "Language:"
-#~ msgstr "Jazyk:"
-
-#~ msgid "Language"
-#~ msgstr "Jazyk"
