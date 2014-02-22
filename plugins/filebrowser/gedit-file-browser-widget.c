@@ -129,6 +129,7 @@ struct _GeditFileBrowserWidgetPrivate
 
 	GtkWidget *location_entry;
 
+	GtkWidget *filter_entry_revealer;
 	GtkWidget *filter_entry;
 
 	GSimpleActionGroup *action_group;
@@ -254,6 +255,9 @@ static void change_show_hidden_state           (GSimpleAction          *action,
                                                 GVariant               *state,
                                                 gpointer                user_data);
 static void change_show_binary_state           (GSimpleAction          *action,
+                                                GVariant               *state,
+                                                gpointer                user_data);
+static void change_show_match_filename         (GSimpleAction          *action,
                                                 GVariant               *state,
                                                 gpointer                user_data);
 static void open_in_terminal_activated         (GSimpleAction          *action,
@@ -565,6 +569,7 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, combo_model);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, location_entry);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, treeview);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, filter_entry_revealer);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, filter_entry);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, location_previous_menu);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, location_next_menu);
@@ -915,19 +920,6 @@ on_end_loading (GeditFileBrowserStore  *model,
 	gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (obj)), NULL);
 }
 
-static void
-activate_toggle (GSimpleAction *action,
-                 GVariant      *parameter,
-                 gpointer       user_data)
-{
-	GVariant *state;
-
-	state = g_action_get_state (G_ACTION (action));
-	g_action_change_state (G_ACTION (action),
-	                       g_variant_new_boolean (!g_variant_get_boolean (state)));
-	g_variant_unref (state);
-}
-
 static GActionEntry browser_entries[] = {
 	{ "open", open_activated },
 	{ "set_active_root", set_active_root_activated },
@@ -939,8 +931,9 @@ static GActionEntry browser_entries[] = {
 	{ "refresh_view", refresh_view_activated },
 	{ "view_folder", view_folder_activated },
 	{ "open_in_terminal", open_in_terminal_activated },
-	{ "show_hidden", activate_toggle, NULL, "false", change_show_hidden_state },
-	{ "show_binary", activate_toggle, NULL, "false", change_show_binary_state },
+	{ "show_hidden", NULL, NULL, "false", change_show_hidden_state },
+	{ "show_binary", NULL, NULL, "false", change_show_binary_state },
+	{ "show_match_filename", NULL, NULL, "false", change_show_match_filename },
 	{ "previous_location", previous_location_activated },
 	{ "next_location", next_location_activated },
 	{ "up", up_activated },
@@ -1119,6 +1112,10 @@ update_sensitivity (GeditFileBrowserWidget *obj)
 		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
 		                                     "show_binary");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
+
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "show_match_filename");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
 	}
 	else if (GEDIT_IS_FILE_BOOKMARKS_STORE (model))
 	{
@@ -1142,6 +1139,10 @@ update_sensitivity (GeditFileBrowserWidget *obj)
 
 		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
 		                                     "show_binary");
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
+
+		action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+		                                     "show_match_filename");
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
 	}
 
@@ -1824,6 +1825,15 @@ void
 gedit_file_browser_widget_set_filter_pattern (GeditFileBrowserWidget *obj,
                                               gchar const            *pattern)
 {
+	gboolean show;
+	GAction *action;
+
+	/* if pattern is not null, reveal the entry */
+	show = pattern != NULL && *pattern != '\0';
+	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
+	                                     "show_match_filename");
+	g_action_change_state (action, g_variant_new_boolean (show));
+
 	set_filter_pattern_real (obj, pattern, TRUE);
 }
 
@@ -2514,7 +2524,7 @@ on_model_set (GObject *gobject, GParamSpec *arg1,
 			g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
 		}
 
-		gtk_widget_hide (obj->priv->filter_entry);
+		gtk_widget_hide (obj->priv->filter_entry_revealer);
 
 		add_signal (obj, gobject,
 			    g_signal_connect (gobject, "bookmark-activated",
@@ -2536,7 +2546,7 @@ on_model_set (GObject *gobject, GParamSpec *arg1,
 		                              G_CALLBACK (on_file_store_no_trash),
 		                              obj));
 
-		gtk_widget_show (obj->priv->filter_entry);
+		gtk_widget_show (obj->priv->filter_entry_revealer);
 	}
 
 	update_sensitivity (obj);
@@ -3340,6 +3350,30 @@ change_show_binary_state (GSimpleAction *action,
 }
 
 static void
+change_show_match_filename (GSimpleAction *action,
+                            GVariant      *state,
+                            gpointer       user_data)
+{
+	GeditFileBrowserWidget *widget = GEDIT_FILE_BROWSER_WIDGET (user_data);
+	gboolean visible;
+
+	visible = g_variant_get_boolean (state);
+	gtk_revealer_set_reveal_child (GTK_REVEALER (widget->priv->filter_entry_revealer), visible);
+
+	if (visible)
+	{
+		gtk_widget_grab_focus (widget->priv->filter_entry);
+	}
+	else
+	{
+		/* clear the filter */
+		set_filter_pattern_real (widget, NULL, TRUE);
+	}
+
+	g_simple_action_set_state (action, state);
+}
+
+static void
 open_in_terminal_activated (GSimpleAction *action,
                             GVariant      *parameter,
                             gpointer       user_data)
@@ -3379,4 +3413,4 @@ _gedit_file_browser_widget_register_type (GTypeModule *type_module)
 	gedit_file_browser_widget_register_type (type_module);
 }
 
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */
