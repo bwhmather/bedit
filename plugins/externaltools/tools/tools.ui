@@ -145,25 +145,6 @@
         <property name="visible">True</property>
         <property name="title" translatable="yes">Manage External Tools</property>
         <property name="show_close_button">True</property>
-        <child>
-          <object class="GtkButton" id="help_button">
-            <property name="valign">center</property>
-            <property name="tooltip_text" translatable="yes">Need help?</property>
-            <style>
-              <class name="image-button"/>
-            </style>
-            <child>
-              <object class="GtkImage" id="help_image">
-                <property name="visible">True</property>
-                <property name="icon_size">1</property>
-                <property name="icon_name">help-browser-symbolic</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="pack_type">start</property>
-          </packing>
-        </child>
       </object>
     </child>
     <child>

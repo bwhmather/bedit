@@ -181,8 +181,6 @@ class Manager(GObject.Object):
         context.set_junction_sides(Gtk.JunctionSides.TOP)
         context.set_junction_sides(Gtk.JunctionSides.BOTTOM)
 
-        self['help_button'].connect("clicked", lambda b: Gio.Application.get_default().show_help(self.dialog, 'gedit', 'gedit-plugins-external-tools'))
-
         for name in ['input', 'output', 'applicability', 'save-files']:
             self.__init_combobox(name)
 
