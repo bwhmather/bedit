@@ -64,6 +64,12 @@ gedit_menu_stack_switcher_init (GeditMenuStackSwitcher *switcher)
   priv->label = gtk_label_new (NULL);
   gtk_box_pack_start (GTK_BOX (box), priv->label, TRUE, TRUE, 6);
 
+  // FIXME: this is not correct if this widget becomes more generic
+  // and used also outside the header bar, but for now we just want
+  // the same style as title labels
+  context = gtk_widget_get_style_context (priv->label);
+  gtk_style_context_add_class (context, "title");
+
   gtk_widget_show_all (box);
   gtk_container_add (GTK_CONTAINER (switcher), box);
 
