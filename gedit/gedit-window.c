@@ -801,9 +801,9 @@ setup_headerbar_open_button (GeditWindow *window)
 	recent_menu = gtk_menu_button_get_popup (GTK_MENU_BUTTON (window->priv->open_menu));
 
 	g_signal_connect (recent_menu,
-			  "item-activated",
-			  G_CALLBACK (recent_chooser_item_activated),
-			  window);
+	                  "item-activated",
+	                  G_CALLBACK (recent_chooser_item_activated),
+	                  window);
 }
 
 static void
@@ -1781,6 +1781,7 @@ static void
 fullscreen_controls_setup (GeditWindow *window)
 {
 	GeditWindowPrivate *priv = window->priv;
+	GtkMenu *recent_menu;
 
 	if (priv->fullscreen_controls_setup)
 		return;
@@ -1790,6 +1791,13 @@ fullscreen_controls_setup (GeditWindow *window)
 	                 window->priv->fullscreen_open_menu,
 	                 "limit",
 	                 G_SETTINGS_BIND_GET);
+
+	recent_menu = gtk_menu_button_get_popup (GTK_MENU_BUTTON (window->priv->fullscreen_open_menu));
+
+	g_signal_connect (recent_menu,
+	                  "item-activated",
+	                  G_CALLBACK (recent_chooser_item_activated),
+	                  window);
 
 	g_signal_connect (priv->fullscreen_eventbox,
 	                  "enter-notify-event",
