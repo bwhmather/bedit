@@ -425,7 +425,8 @@ parse_emacs_modeline (gchar           *s,
 				options->set |= MODELINE_SET_TAB_WIDTH;
 			}
 		}
-		else if (strcmp (key->str, "indent-offset") == 0)
+		else if (strcmp (key->str, "indent-offset") == 0 ||
+		         strcmp (key->str, "c-basic-offset") == 0)
 		{
 			intval = atoi (value->str);
 
