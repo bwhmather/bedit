@@ -1197,10 +1197,6 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
-	/* FIXME: review this message, it's not clear since for the user the "modification"
-	 * could be interpreted as the changes he made in the document. beside "reading" is
-	 * not accurate (since last load/save)
-	 */
 	primary_text = g_strdup_printf (_("The file “%s” changed on disk."),
 					uri_for_display);
 	g_free (uri_for_display);
