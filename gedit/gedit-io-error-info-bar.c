@@ -88,17 +88,13 @@ set_info_bar_text (GtkWidget   *info_bar,
 		   const gchar *primary_text,
 		   const gchar *secondary_text)
 {
-	GtkWidget *hbox_content;
 	GtkWidget *vbox;
 	gchar *primary_markup;
 	gchar *secondary_markup;
 	GtkWidget *primary_label;
 	GtkWidget *secondary_label;
 
-	hbox_content = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 8);
-
 	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-	gtk_box_pack_start (GTK_BOX (hbox_content), vbox, TRUE, TRUE, 0);
 
 	primary_markup = g_strdup_printf ("<b>%s</b>", primary_text);
 	primary_label = gtk_label_new (primary_markup);
@@ -124,8 +120,8 @@ set_info_bar_text (GtkWidget   *info_bar,
 		gtk_widget_set_halign (secondary_label, GTK_ALIGN_START);
 	}
 
-	gtk_widget_show_all (hbox_content);
-	set_contents (info_bar, hbox_content);
+	gtk_widget_show_all (vbox);
+	set_contents (info_bar, vbox);
 }
 
 static GtkWidget *
