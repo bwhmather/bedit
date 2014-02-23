@@ -92,4 +92,4 @@ gedit_spell_utils_skip_no_spell_check (GtkTextIter *start,
 	return TRUE;
 }
 
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

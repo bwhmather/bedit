@@ -450,4 +450,4 @@ to pick something that is actually invalid utf8
 
 	return g_test_run ();
 }
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

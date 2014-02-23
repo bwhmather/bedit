@@ -522,4 +522,4 @@ gedit_spell_checker_language_from_key (const gchar *key)
 
 	return NULL;
 }
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

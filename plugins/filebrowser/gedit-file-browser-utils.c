@@ -179,4 +179,4 @@ gedit_file_browser_utils_confirmation_dialog (GeditWindow    *window,
 	return (ret == GTK_RESPONSE_OK);
 }
 
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

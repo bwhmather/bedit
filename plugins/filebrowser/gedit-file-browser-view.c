@@ -1363,4 +1363,4 @@ _gedit_file_browser_view_register_type (GTypeModule *type_module)
 	gedit_file_browser_view_register_type (type_module);
 }
 
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

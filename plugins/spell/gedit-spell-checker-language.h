@@ -41,4 +41,4 @@ const GSList 			*gedit_spell_checker_get_available_languages
 G_END_DECLS
 
 #endif /* __GEDIT_SPELL_CHECKER_LANGUAGE_H__ */
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

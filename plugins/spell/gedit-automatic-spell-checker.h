@@ -57,4 +57,4 @@ void				 gedit_automatic_spell_checker_recheck_all (
 
 #endif  /* __GEDIT_AUTOMATIC_SPELL_CHECKER_H__ */
 
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

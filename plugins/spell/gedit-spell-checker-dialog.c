@@ -679,4 +679,4 @@ gedit_spell_checker_dialog_set_completed (GeditSpellCheckerDialog *dlg)
 	gtk_widget_set_sensitive (dlg->suggestions_list, FALSE);
 }
 
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

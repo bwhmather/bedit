@@ -58,4 +58,4 @@ G_MODULE_EXPORT void	peas_register_types		(PeasObjectModule *module);
 G_END_DECLS
 
 #endif /* __GEDIT_TIME_PLUGIN_H__ */
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

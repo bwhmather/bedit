@@ -974,4 +974,4 @@ peas_register_types (PeasObjectModule *module)
 						    GEDIT_TYPE_FILE_BROWSER_PLUGIN);
 }
 
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

@@ -205,4 +205,4 @@ void		 _gedit_file_browser_store_register_type	(GTypeModule                     
 G_END_DECLS
 
 #endif /* __GEDIT_FILE_BROWSER_STORE_H__ */
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

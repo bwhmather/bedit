@@ -172,4 +172,4 @@ gedit_spell_app_activatable_register (GTypeModule *module)
 						    GEDIT_TYPE_SPELL_APP_ACTIVATABLE);
 }
 
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */

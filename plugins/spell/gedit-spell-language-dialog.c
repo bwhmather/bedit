@@ -282,4 +282,4 @@ gedit_spell_language_get_selected_language (GeditSpellLanguageDialog *dlg)
 	return lang;
 }
 
-/* ex:ts=8:noet: */
+/* ex:set ts=8 noet: */
