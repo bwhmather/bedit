@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2014-02-14 06:16+0000\n"
-"PO-Revision-Date: 2014-02-14 09:58+0100\n"
+"POT-Creation-Date: 2014-02-24 06:16+0000\n"
+"PO-Revision-Date: 2014-02-24 14:40+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -32,7 +32,7 @@ msgstr ""
 #: C/gedit-change-color-scheme.page:9 C/gedit-change-default-font.page:9
 #: C/gedit-close-file.page:9 C/gedit-create-new-file.page:11
 #: C/gedit-edit-as-root.page:9 C/gedit-files-basic.page:9
-#: C/gedit-full-screen.page:9 C/gedit-open-files-from-sidepane.page:10
+#: C/gedit-full-screen.page:11 C/gedit-open-files-from-sidepane.page:10
 #: C/gedit-open-files.page:16 C/gedit-open-on-server.page:9
 #: C/gedit-open-recent.page:9 C/gedit-plugin-guide.page:9
 #: C/gedit-plugins-change-case.page:14 C/gedit-plugins-doc-stats.page:14
@@ -41,11 +41,11 @@ msgstr ""
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:9
 #: C/gedit-plugins-quick-open.page:10 C/gedit-plugins-snippets.page:9
 #: C/gedit-plugins-sort.page:13 C/gedit-printing.page:9
-#: C/gedit-quickstart.page:11 C/gedit-replace.page:11 C/gedit-save-file.page:9
-#: C/gedit-search.page:10 C/gedit-shortcut-keys.page:13
-#: C/gedit-spellcheck.page:11 C/gedit-syntax-highlighting.page:9
-#: C/gedit-tabs-moving.page:12 C/gedit-tabs.page:12
-#: C/gedit-undo-recent-action.page:9
+#: C/gedit-quickstart.page:11 C/gedit-replace.page:11
+#: C/gedit-save-file.page:11 C/gedit-search.page:10
+#: C/gedit-shortcut-keys.page:13 C/gedit-spellcheck.page:11
+#: C/gedit-syntax-highlighting.page:9 C/gedit-tabs-moving.page:12
+#: C/gedit-tabs.page:13 C/gedit-undo-recent-action.page:11
 #: C/gedit-view-open-files-in-sidepane.page:10 C/index.page:13
 msgid "Jim Campbell"
 msgstr "Jim Campbell"
@@ -202,9 +202,11 @@ msgstr ""
 "preguntará si quiere guardarlos antes de cerrar el archivo."
 
 #. (itstool) path: credit/name
-#: C/gedit-create-new-file.page:15 C/gedit-open-files.page:20
-#: C/gedit-plugins-quick-open.page:14
-#: C/gedit-plugins-zeitgeist-dataprovider.page:10 C/gedit-search.page:22
+#: C/gedit-create-new-file.page:15 C/gedit-full-screen.page:15
+#: C/gedit-open-files.page:20 C/gedit-plugins-quick-open.page:14
+#: C/gedit-plugins-zeitgeist-dataprovider.page:10 C/gedit-save-file.page:19
+#: C/gedit-search.page:22 C/gedit-tabs.page:30
+#: C/gedit-undo-recent-action.page:23
 msgid "Shobha Tyagi"
 msgstr "Shobha Tyagi"
 
@@ -215,9 +217,6 @@ msgstr "Crear un archivo nuevo"
 
 #. (itstool) path: page/p
 #: C/gedit-create-new-file.page:23
-#| msgid ""
-#| "To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or "
-#| "press <keyseq><key>Ctrl</key><key>O</key></keyseq>."
 msgid ""
 "The easiest way to create a new file in <app>gedit</app>, is to click the "
 "<gui>Create a new document</gui> button on the left side of the toolbar, or "
@@ -323,12 +322,12 @@ msgstr ""
 "abrir y cerrar archivos."
 
 #. (itstool) path: page/title
-#: C/gedit-full-screen.page:14
+#: C/gedit-full-screen.page:21
 msgid "Use fullscreen mode"
 msgstr "Usar el modo a pantalla completa"
 
 #. (itstool) path: page/p
-#: C/gedit-full-screen.page:16
+#: C/gedit-full-screen.page:23
 msgid ""
 "When working with a large document, you may find it helpful to work in "
 "<app>gedit's</app> fullscreen mode. Using fullscreen mode will hide the "
@@ -343,25 +342,28 @@ msgstr ""
 "y permitiéndole centrarse mejor en sus tareas."
 
 #. (itstool) path: section/title
-#: C/gedit-full-screen.page:23
+#: C/gedit-full-screen.page:30
 msgid "Turn on fullscreen mode"
 msgstr "Abrir en modo a pantalla completa"
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:24
+#: C/gedit-full-screen.page:31
+#| msgid ""
+#| "To turn on fullscreen mode, select <guiseq><gui>View</gui> "
+#| "<gui>Fullscreen</gui></guiseq>, or press <key>F11</key>. <app>gedit's</"
+#| "app> menu, title, and tab-bars will hide, and you will only be presented "
+#| "with the text of your current file."
 msgid ""
-"To turn on fullscreen mode, select <guiseq><gui>View</gui> <gui>Fullscreen</"
-"gui></guiseq>, or press <key>F11</key>. <app>gedit's</app> menu, title, and "
-"tab-bars will hide, and you will only be presented with the text of your "
-"current file."
+"To turn on fullscreen mode, press <key>F11</key>. <app>gedit's</app> menu, "
+"title, and tab-bars will hide, and you will only be presented with the text "
+"of your current file."
 msgstr ""
-"Para activar el modo a pantalla completa, seleccione <guiseq><gui>Ver</"
-"gui><gui>Pantalla completa</gui></guiseq>, o pulse <key>F11</key>. El menú, "
-"el título y las barras de pestañas de <app>gedit</app> se ocultarán, y sólo "
-"se mostrará el texto de su archivo actual."
+"Para activar el modo a pantalla completa, pulse <key>F11</key>. El menú, el "
+"título y las barras de pestañas de <app>gedit</app> se ocultarán, y sólo se "
+"mostrará el texto de su archivo actual."
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:28
+#: C/gedit-full-screen.page:34
 msgid ""
 "If you need to perform an action from the <app>gedit</app> menu while "
 "working in fullscreen mode, move your mouse pointer to the top of the "
@@ -374,7 +376,7 @@ msgstr ""
 "reaparecerá, y podrá seleccionar la acción que quiera."
 
 #. (itstool) path: note/p
-#: C/gedit-full-screen.page:34
+#: C/gedit-full-screen.page:40
 msgid ""
 "To switch between open tabs while in fullscreen mode, press either "
 "<keyseq><key>Ctrl</key><key>Alt</key><key>PgUp</key></keyseq> or "
@@ -385,12 +387,12 @@ msgstr ""
 "<keyseq><key>Ctrl</key><key>Alt</key><key>Av Pág</key></keyseq>."
 
 #. (itstool) path: section/title
-#: C/gedit-full-screen.page:42
+#: C/gedit-full-screen.page:48
 msgid "Turn off fullscreen mode"
 msgstr "Desactivar el modo a pantalla completa"
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:43
+#: C/gedit-full-screen.page:49
 msgid ""
 "To turn off fullscreen mode and return to the standard <app>gedit</app> "
 "window, press <key>F11</key>."
@@ -399,7 +401,7 @@ msgstr ""
 "<app>gedit</app>, pulse <key>F11</key>."
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:45
+#: C/gedit-full-screen.page:51
 msgid ""
 "You can also move your mouse cursor to the top of the screen, and wait for "
 "the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui> appears, "
@@ -521,11 +523,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-open-files.page:30
-#| msgid ""
-#| "This will cause the <gui>Open Files</gui> dialog to appear. Use your "
-#| "mouse or keyboard to select the file that you wish to open, and then "
-#| "click <gui>Open</gui>. The file that you've selected will open in a new "
-#| "tab."
 msgid ""
 "This will cause the <gui>Open</gui> dialog to appear. Use your mouse or "
 "keyboard to select the file that you wish to open, and then click <gui>Open</"
@@ -537,9 +534,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-open-files.page:33
-#| msgid ""
-#| "To close the <gui>Open Files</gui> dialog without opening a file, click "
-#| "<gui>Cancel</gui>."
 msgid ""
 "To close the <gui>Open</gui> dialog without opening a file, click "
 "<gui>Cancel</gui>."
@@ -783,7 +777,7 @@ msgstr "Complementos adicionales de gedit"
 #: C/gedit-plugins-insert-date-time.page:9 C/gedit-plugins-install.page:12
 #: C/gedit-plugins-modelines.page:9 C/gedit-plugins-sort.page:9
 #: C/gedit-replace.page:15 C/gedit-search.page:14 C/gedit-tabs-moving.page:16
-#: C/gedit-tabs.page:16 C/gedit-undo-recent-action.page:13
+#: C/gedit-tabs.page:17 C/gedit-undo-recent-action.page:15
 #: C/gedit-view-open-files-in-sidepane.page:14
 msgid "Daniel Neel"
 msgstr "Daniel Neel"
@@ -1616,10 +1610,10 @@ msgstr ""
 #: C/gedit-plugins-snippets.page:13 C/gedit-plugins-sort.page:17
 #: C/gedit-printing-order.page:14 C/gedit-printing.page:13
 #: C/gedit-printing-select.page:13 C/gedit-quickstart.page:15
-#: C/gedit-replace.page:19 C/gedit-save-file.page:13 C/gedit-search.page:18
+#: C/gedit-replace.page:19 C/gedit-save-file.page:15 C/gedit-search.page:18
 #: C/gedit-shortcut-keys.page:29 C/gedit-spellcheck.page:19
 #: C/gedit-syntax-highlighting.page:13 C/gedit-tabs-moving.page:20
-#: C/gedit-tabs.page:20 C/gedit-undo-recent-action.page:17
+#: C/gedit-tabs.page:21 C/gedit-undo-recent-action.page:19
 #: C/gedit-view-open-files-in-sidepane.page:18 C/index.page:17
 msgid "Sindhu S"
 msgstr "Sindhu S"
@@ -2699,30 +2693,36 @@ msgstr ""
 "\\n</input>, use el término <input>\\\\n</input>."
 
 #. (itstool) path: page/title
-#: C/gedit-save-file.page:20
+#: C/gedit-save-file.page:26
 msgid "Save a file"
 msgstr "Guardar un archivo"
 
 #. (itstool) path: page/p
-#: C/gedit-save-file.page:22
+#: C/gedit-save-file.page:28
+#| msgid ""
+#| "The easiest way to create a new file in <app>gedit</app>, is to click the "
+#| "<gui>Create a new document</gui> button on the left side of the toolbar, "
+#| "or press <keyseq><key>Ctrl</key><key>T</key></keyseq>."
 msgid ""
-"To save a file in <app>gedit</app>, click on the disk-drive icon with the "
-"word <gui style=\"button\">Save</gui> next to it. You may also select "
-"<guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Save</gui></"
-"guiseq>, or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
+"To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save "
+"the current file</gui> button with the disk-drive icon on the right side of "
+"the toolbar or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
 msgstr ""
-"Para guardar un archivo en <app>gedit</app>, pulse en el icono de la unidad "
-"de disco con la palabra <gui style=\"button\">Guardar</gui> junto a él. "
-"También puede seleccionar <guiseq><gui style=\"menu\">Archivo</gui> <gui "
-"style=\"menuitem\">Guardar</gui></guiseq>, o simplemente pulsar "
+"Para guardar un archivo en <app>gedit</app>, pulse el botón <gui style="
+"\"button\">Guardar el archivo actual</gui> con el icono de una unidad de "
+"disco en la parte derecha de la barra de herramientas o simplemente pulse "
 "<keyseq><key>Ctrl</key><key>S</key></keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-save-file.page:26
+#: C/gedit-save-file.page:31
+#| msgid ""
+#| "If you are saving a new file, the <gui>Save File</gui> dialog will "
+#| "appear, and you can select a name for the file, as well as the directory "
+#| "where you would like the file to be saved."
 msgid ""
-"If you are saving a new file, the <gui>Save File</gui> dialog will appear, "
-"and you can select a name for the file, as well as the directory where you "
-"would like the file to be saved."
+"If you are saving a new file, the <gui>Save As</gui> dialog will appear, and "
+"you can select a name for the file, as well as the directory where you would "
+"like the file to be saved."
 msgstr ""
 "Si está guardando un archivo nuevo, aparecerá el diálogo <gui>Guardar "
 "archivo</gui>, y podrá seleccionar un nombre para el archivo, así como la "
@@ -2916,13 +2916,13 @@ msgstr "Ignacio Casal Quinteiro"
 
 #. (itstool) path: credit/name
 #: C/gedit-shortcut-keys.page:33 C/gedit-tab-groups.page:14
-#: C/gedit-tabs-moving.page:24 C/gedit-tabs.page:24
+#: C/gedit-tabs-moving.page:24 C/gedit-tabs.page:25
 msgid "Radina Matic"
 msgstr "Radina Matic"
 
 #. (itstool) path: credit/years
 #: C/gedit-shortcut-keys.page:35 C/gedit-tab-groups.page:16
-#: C/gedit-tabs-moving.page:26 C/gedit-tabs.page:26
+#: C/gedit-tabs-moving.page:26 C/gedit-tabs.page:27
 msgid "2013"
 msgstr "2013"
 
@@ -3996,12 +3996,12 @@ msgstr ""
 "pestañas</link> que simplifican la gestión de sus pestañas."
 
 #. (itstool) path: page/title
-#: C/gedit-tabs.page:31
+#: C/gedit-tabs.page:37
 msgid "Add and remove tabs"
 msgstr "Añadir y quitar pestañas"
 
 #. (itstool) path: page/p
-#: C/gedit-tabs.page:32
+#: C/gedit-tabs.page:38
 msgid ""
 "Working with tabs in <app>gedit</app> allows you to keep an eye on several "
 "files in a single window. The tab that is larger than the other tabs "
@@ -4014,27 +4014,30 @@ msgstr ""
 "indican otros archivos que están disponibles para trabajar en ellos."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs.page:38
+#: C/gedit-tabs.page:44
 msgid "Adding tabs"
 msgstr "Añadir pestañas"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs.page:39
+#: C/gedit-tabs.page:45
+#| msgid ""
+#| "To add a new tab, create a new file with <keyseq><key>Ctrl</key> <key>N</"
+#| "key></keyseq>. The tab will be added to the right side of any other tabs."
 msgid ""
-"To add a new tab, create a new file with <keyseq><key>Ctrl</key> <key>N</"
+"To add a new tab, create a new file with <keyseq><key>Ctrl</key> <key>T</"
 "key></keyseq>. The tab will be added to the right side of any other tabs."
 msgstr ""
 "Para añadir una pestaña nueva, cree un archivo nuevo con <keyseq><key>Ctrl</"
-"key><key>N</key></keyseq>. Se añadirá la pestaña a la derecha de cualquier "
+"key><key>T</key></keyseq>. Se añadirá la pestaña a la derecha de cualquier "
 "otra pestaña."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs.page:45
+#: C/gedit-tabs.page:51
 msgid "Removing tabs"
 msgstr "Quitar pestañas"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs.page:46
+#: C/gedit-tabs.page:52
 msgid ""
 "To remove a tab, click the <gui style=\"button\">×</gui> on the tab's right "
 "side. To remove all open tabs, press <keyseq><key>Ctrl</key> <key>Shift</"
@@ -4045,41 +4048,29 @@ msgstr ""
 "<keyseq><key>Ctrl</key><key>Mayús</key><key>W</key></keyseq>."
 
 #. (itstool) path: page/title
-#: C/gedit-undo-recent-action.page:23
+#: C/gedit-undo-recent-action.page:30
 msgid "Undo a recent action"
 msgstr "Deshacer una acción reciente"
 
 #. (itstool) path: page/p
-#: C/gedit-undo-recent-action.page:25
+#: C/gedit-undo-recent-action.page:32
+#| msgid ""
+#| "To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or "
+#| "press <keyseq><key>Ctrl</key><key>O</key></keyseq>."
 msgid ""
 "If you make a mistake while using <app>gedit</app>, you can undo it by "
-"pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
-"<guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem\">Undo</gui></"
-"guiseq>. Doing so will cause <app>gedit</app> to undo one set of similar "
-"actions."
+"pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>."
 msgstr ""
-"Si comete un error mientras usa <app>gedit</app>, puede deshacerlo pulsando "
-"<keyseq><key>Ctrl</key><key>Z</key></keyseq>, o pulsando <guiseq><gui style="
-"\"menu\">gedit</gui><gui>Deshacer</gui></guiseq>. Esto hará que <app>gedit</"
-"app> deshaga un conjunto de acciones similares."
+"Si comete un error al usar <app>gedit</app>, puede deshacerlo pulsando "
+"<keyseq><key>Ctrl</key><key>Z</key></keyseq>."
 
 #. (itstool) path: note/p
-#: C/gedit-undo-recent-action.page:32
-msgid ""
-"Undoing a \"set of similar actions\" means, for example, that <app>gedit</"
-"app> will remove an entire word rather than removing each character in the "
-"word one at a time. This makes <app>gedit</app>'s <em>undo</em> feature more "
-"efficient."
+#: C/gedit-undo-recent-action.page:36
+#| msgid "You cannot undo a change after you have saved it."
+msgid "You cannot undo a change after you have closed a <app>gedit</app> file."
 msgstr ""
-"Deshacer «un conjunto de acciones similares» significa que, por ejemplo, "
-"<app>gedit</app> quitará una palabra completa en lugar de quitar cada "
-"carácter de la palabra de uno en uno. Esto hace que la característica "
-"<em>deshacer</em> de <app>gedit</app> sea más eficiente."
-
-#. (itstool) path: note/p
-#: C/gedit-undo-recent-action.page:39
-msgid "You cannot undo a change after you have saved it."
-msgstr "No puede deshacer un cambio después de haberlo guardado."
+"No puede deshacer un cambio después de cerrar una archivo de <app>gedit</"
+"app>."
 
 #. (itstool) path: page/title
 #: C/gedit-view-open-files-in-sidepane.page:24
@@ -4220,6 +4211,41 @@ msgstr ""
 "sin soporte 3.0. Para ver una copia de esta licencia, visite <_:link-1/> o "
 "envíe una carta a Creative Commons, 444 Castro Street, Suite 900, Mountain "
 "View, California, 94041, USA."
+
+#~ msgid ""
+#~ "To save a file in <app>gedit</app>, click on the disk-drive icon with the "
+#~ "word <gui style=\"button\">Save</gui> next to it. You may also select "
+#~ "<guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Save</"
+#~ "gui></guiseq>, or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
+#~ msgstr ""
+#~ "Para guardar un archivo en <app>gedit</app>, pulse en el icono de la "
+#~ "unidad de disco con la palabra <gui style=\"button\">Guardar</gui> junto "
+#~ "a él. También puede seleccionar <guiseq><gui style=\"menu\">Archivo</gui> "
+#~ "<gui style=\"menuitem\">Guardar</gui></guiseq>, o simplemente pulsar "
+#~ "<keyseq><key>Ctrl</key><key>S</key></keyseq>."
+
+#~ msgid ""
+#~ "If you make a mistake while using <app>gedit</app>, you can undo it by "
+#~ "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
+#~ "<guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem\">Undo</"
+#~ "gui></guiseq>. Doing so will cause <app>gedit</app> to undo one set of "
+#~ "similar actions."
+#~ msgstr ""
+#~ "Si comete un error mientras usa <app>gedit</app>, puede deshacerlo "
+#~ "pulsando <keyseq><key>Ctrl</key><key>Z</key></keyseq>, o pulsando "
+#~ "<guiseq><gui style=\"menu\">gedit</gui><gui>Deshacer</gui></guiseq>. Esto "
+#~ "hará que <app>gedit</app> deshaga un conjunto de acciones similares."
+
+#~ msgid ""
+#~ "Undoing a \"set of similar actions\" means, for example, that <app>gedit</"
+#~ "app> will remove an entire word rather than removing each character in "
+#~ "the word one at a time. This makes <app>gedit</app>'s <em>undo</em> "
+#~ "feature more efficient."
+#~ msgstr ""
+#~ "Deshacer «un conjunto de acciones similares» significa que, por ejemplo, "
+#~ "<app>gedit</app> quitará una palabra completa en lugar de quitar cada "
+#~ "carácter de la palabra de uno en uno. Esto hace que la característica "
+#~ "<em>deshacer</em> de <app>gedit</app> sea más eficiente."
 
 #~ msgid ""
 #~ "The easiest way to create a new file in <app>gedit</app>, is to click the "
