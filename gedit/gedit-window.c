@@ -2498,6 +2498,8 @@ setup_side_panel (GeditWindow *window)
 	gtk_button_set_relief (GTK_BUTTON (priv->side_stack_switcher), GTK_RELIEF_NONE);
 	g_object_ref_sink (priv->side_stack_switcher);
 
+	gedit_utils_set_atk_name_description (priv->side_stack_switcher, _("Change side panel page"),  NULL);
+
 	gedit_menu_stack_switcher_set_stack (GEDIT_MENU_STACK_SWITCHER (priv->side_stack_switcher),
 	                                     GTK_STACK (priv->side_panel));
 
