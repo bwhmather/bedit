@@ -1658,6 +1658,7 @@ document_saver_saving (GeditDocumentSaver *saver,
 
 			doc->priv->externally_modified = FALSE;
 			doc->priv->deleted = FALSE;
+			doc->priv->create = FALSE;
 
 			_gedit_document_set_readonly (doc, FALSE);
 
@@ -1942,24 +1943,12 @@ _gedit_document_needs_saving (GeditDocument *doc)
 		return TRUE;
 	}
 
-	if (doc->priv->externally_modified ||
-	    doc->priv->deleted)
-	{
-		return TRUE;
-	}
-
 	if (gedit_document_is_local (doc))
 	{
 		check_file_on_disk (doc);
-
-		if (doc->priv->externally_modified ||
-		    doc->priv->deleted)
-		{
-			return TRUE;
-		}
 	}
 
-	return FALSE;
+	return (doc->priv->externally_modified || doc->priv->deleted) && !doc->priv->create;
 }
 
 /*
