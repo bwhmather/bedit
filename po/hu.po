@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-02-23 06:14+0000\n"
-"PO-Revision-Date: 2014-02-23 16:54+0100\n"
+"POT-Creation-Date: 2014-02-28 18:15+0000\n"
+"PO-Revision-Date: 2014-02-28 22:12+0100\n"
 "Last-Translator: Balázs Úr <urbalazs at gmail dot com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -593,9 +593,9 @@ msgstr "Bezárás mentés _nélkül"
 #: ../gedit/gedit-commands-file.c:642 ../gedit/gedit-commands-file.c:849
 #: ../gedit/gedit-commands-file.c:1299 ../gedit/gedit-encodings-dialog.ui.h:3
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:2
-#: ../gedit/gedit-io-error-info-bar.c:138
-#: ../gedit/gedit-io-error-info-bar.c:550
-#: ../gedit/gedit-io-error-info-bar.c:1230
+#: ../gedit/gedit-io-error-info-bar.c:134
+#: ../gedit/gedit-io-error-info-bar.c:546
+#: ../gedit/gedit-io-error-info-bar.c:1222
 #: ../gedit/gedit-preferences-dialog.c:830
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
@@ -611,7 +611,6 @@ msgid "_Cancel"
 msgstr "Mé_gse"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:335 ../gedit/gedit-menu.ui.h:7
-#| msgid "Save As"
 msgid "_Save As…"
 msgstr "M_entés másként…"
 
@@ -764,7 +763,7 @@ msgstr[1] "%d fájl betöltése…"
 msgid "Open"
 msgstr "Megnyitás"
 
-#. ex:ts=8:noet:
+#. ex:set ts=8 noet:
 #: ../gedit/gedit-commands-file.c:443
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:37
@@ -958,7 +957,6 @@ msgstr "Mentetlen dokumentum %d"
 
 #: ../gedit/gedit-documents-panel.c:406
 #, c-format
-#| msgid "_New Tab Group"
 msgid "Tab Group %i"
 msgstr "%i. lapcsoport"
 
@@ -1135,7 +1133,6 @@ msgid "_Add"
 msgstr "Hozzá_adás"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:9
-#| msgid "Remove Tool"
 msgid "_Remove"
 msgstr "_Eltávolítás"
 
@@ -1178,7 +1175,6 @@ msgid "Highlight Mode"
 msgstr "Kiemelési üzemmód"
 
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:3
-#| msgid "Selection"
 msgid "_Select"
 msgstr "_Kijelölés"
 
@@ -1195,47 +1191,47 @@ msgstr "Egyszerű szöveg"
 msgid "Search highlight mode..."
 msgstr "Kiemelési üzemmód keresése…"
 
-#: ../gedit/gedit-io-error-info-bar.c:151
-#: ../gedit/gedit-io-error-info-bar.c:530
+#: ../gedit/gedit-io-error-info-bar.c:147
+#: ../gedit/gedit-io-error-info-bar.c:526
 msgid "_Retry"
 msgstr "Új_ra"
 
-#: ../gedit/gedit-io-error-info-bar.c:171
+#: ../gedit/gedit-io-error-info-bar.c:167
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Nem található a(z) „%s” fájl."
 
-#: ../gedit/gedit-io-error-info-bar.c:173
-#: ../gedit/gedit-io-error-info-bar.c:213
-#: ../gedit/gedit-io-error-info-bar.c:220
+#: ../gedit/gedit-io-error-info-bar.c:169
+#: ../gedit/gedit-io-error-info-bar.c:209
+#: ../gedit/gedit-io-error-info-bar.c:216
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Ellenőrizze, hogy pontosan írta-e be a helyet, és próbálja újra."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:192
+#: ../gedit/gedit-io-error-info-bar.c:188
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "Nem lehet a(z) „%s:” típusú helyeket kezelni."
 
-#: ../gedit/gedit-io-error-info-bar.c:198
+#: ../gedit/gedit-io-error-info-bar.c:194
 msgid "Unable to handle this location."
 msgstr "Ez a hely nem kezelhető."
 
-#: ../gedit/gedit-io-error-info-bar.c:207
+#: ../gedit/gedit-io-error-info-bar.c:203
 msgid "The location of the file cannot be accessed."
 msgstr "A fájl helye nem érhető el."
 
-#: ../gedit/gedit-io-error-info-bar.c:211
+#: ../gedit/gedit-io-error-info-bar.c:207
 #, c-format
 msgid "“%s” is a directory."
 msgstr "„%s” egy könyvtár."
 
-#: ../gedit/gedit-io-error-info-bar.c:218
+#: ../gedit/gedit-io-error-info-bar.c:214
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "„%s” érvénytelen hely."
 
-#: ../gedit/gedit-io-error-info-bar.c:254
+#: ../gedit/gedit-io-error-info-bar.c:250
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1244,7 +1240,7 @@ msgstr ""
 "„%s” nevű gép nem található. Ellenőrizze a proxy beállítások helyességét, és "
 "próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:269
+#: ../gedit/gedit-io-error-info-bar.c:265
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1253,54 +1249,54 @@ msgstr ""
 "A gépnév érvénytelen. Ellenőrizze, hogy pontosan írta-e be a helyet, és "
 "próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:277
+#: ../gedit/gedit-io-error-info-bar.c:273
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "A(z) „%s” nem egy szabályos fájl."
 
-#: ../gedit/gedit-io-error-info-bar.c:282
+#: ../gedit/gedit-io-error-info-bar.c:278
 msgid "Connection timed out. Please try again."
 msgstr "Időtúllépés a kapcsolatban. Próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:305
+#: ../gedit/gedit-io-error-info-bar.c:301
 msgid "The file is too big."
 msgstr "A fájl túl nagy."
 
-#: ../gedit/gedit-io-error-info-bar.c:346
+#: ../gedit/gedit-io-error-info-bar.c:342
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Váratlan hiba: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:382
+#: ../gedit/gedit-io-error-info-bar.c:378
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "A kért fájl nem található. Lehet, hogy nemrég le lett törölve."
 
-#: ../gedit/gedit-io-error-info-bar.c:392
+#: ../gedit/gedit-io-error-info-bar.c:388
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "Nem sikerült visszaállítani a(z) „%s” fájlt."
 
-#: ../gedit/gedit-io-error-info-bar.c:419
+#: ../gedit/gedit-io-error-info-bar.c:415
 msgid "Ch_aracter Encoding:"
 msgstr "_Karakterkódolás:"
 
-#: ../gedit/gedit-io-error-info-bar.c:480
+#: ../gedit/gedit-io-error-info-bar.c:476
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "A(z) „%s” hely jelenleg nem érhető el."
 
-#: ../gedit/gedit-io-error-info-bar.c:495
+#: ../gedit/gedit-io-error-info-bar.c:491
 msgid "Your system is offline. Check your network."
 msgstr "A rendszere kapcsolat nélküli módban van. Ellenőrizze a hálózatot."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:538
-#: ../gedit/gedit-io-error-info-bar.c:810
+#: ../gedit/gedit-io-error-info-bar.c:534
+#: ../gedit/gedit-io-error-info-bar.c:806
 msgid "Edit Any_way"
 msgstr "Szerkesztés _mindenképp"
 
-#: ../gedit/gedit-io-error-info-bar.c:636
+#: ../gedit/gedit-io-error-info-bar.c:632
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1308,29 +1304,29 @@ msgstr ""
 "A követett hivatkozások száma korlátozott és a tényleges fájl nem található "
 "ezen a korláton belül."
 
-#: ../gedit/gedit-io-error-info-bar.c:640
+#: ../gedit/gedit-io-error-info-bar.c:636
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Nincs jogosultsága a fájl megnyitásához."
 
-#: ../gedit/gedit-io-error-info-bar.c:646
+#: ../gedit/gedit-io-error-info-bar.c:642
 msgid "Unable to detect the character encoding."
 msgstr "Nem lehet megállapítani a karakterkódolást."
 
-#: ../gedit/gedit-io-error-info-bar.c:647
-#: ../gedit/gedit-io-error-info-bar.c:669
+#: ../gedit/gedit-io-error-info-bar.c:643
+#: ../gedit/gedit-io-error-info-bar.c:665
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Ellenőrizze, hogy nem egy bináris fájlt próbált megnyitni."
 
-#: ../gedit/gedit-io-error-info-bar.c:648
+#: ../gedit/gedit-io-error-info-bar.c:644
 msgid "Select a character encoding from the menu and try again."
 msgstr "Válasszon egy karakterkódolást a menüből, és próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:654
+#: ../gedit/gedit-io-error-info-bar.c:650
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "Hiba történt a fájl („%s”) megnyitásakor."
 
-#: ../gedit/gedit-io-error-info-bar.c:656
+#: ../gedit/gedit-io-error-info-bar.c:652
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1338,31 +1334,31 @@ msgstr ""
 "A megnyitott fájl érvénytelen karaktereket tartalmazott. Ha folytatja a fájl "
 "szerkesztését, azzal kárt okozhat a dokumentumban."
 
-#: ../gedit/gedit-io-error-info-bar.c:659
+#: ../gedit/gedit-io-error-info-bar.c:655
 msgid "You can also choose another character encoding and try again."
 msgstr "Választhat másik karakterkódolást a menüből, és újra próbálhatja."
 
-#: ../gedit/gedit-io-error-info-bar.c:666
+#: ../gedit/gedit-io-error-info-bar.c:662
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "A fájl („%s”) nem nyitható meg „%s” karakterkódolás használatával."
 
-#: ../gedit/gedit-io-error-info-bar.c:670
-#: ../gedit/gedit-io-error-info-bar.c:744
+#: ../gedit/gedit-io-error-info-bar.c:666
+#: ../gedit/gedit-io-error-info-bar.c:740
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Válasszon másik karakterkódolást a menüből, és próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:680
+#: ../gedit/gedit-io-error-info-bar.c:676
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "A(z) „%s” fájl nem nyitható meg."
 
-#: ../gedit/gedit-io-error-info-bar.c:739
+#: ../gedit/gedit-io-error-info-bar.c:735
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "A fájl („%s”) nem menthető „%s” karakterkódolás használatával."
 
-#: ../gedit/gedit-io-error-info-bar.c:742
+#: ../gedit/gedit-io-error-info-bar.c:738
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1372,28 +1368,28 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:815
+#: ../gedit/gedit-io-error-info-bar.c:811
 msgid "D_on't Edit"
 msgstr "Ne _legyen szerkesztve"
 
-#: ../gedit/gedit-io-error-info-bar.c:825
+#: ../gedit/gedit-io-error-info-bar.c:821
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Ez a fájl („%s”) már meg van nyitva egy másik ablakban."
 
-#: ../gedit/gedit-io-error-info-bar.c:839
+#: ../gedit/gedit-io-error-info-bar.c:835
 msgid "Do you want to edit it anyway?"
 msgstr "Mindenképpen szerkeszti?"
 
-#: ../gedit/gedit-io-error-info-bar.c:895
-#: ../gedit/gedit-io-error-info-bar.c:987
-#: ../gedit/gedit-io-error-info-bar.c:1278
+#: ../gedit/gedit-io-error-info-bar.c:891
+#: ../gedit/gedit-io-error-info-bar.c:983
+#: ../gedit/gedit-io-error-info-bar.c:1270
 msgid "S_ave Anyway"
 msgstr "_Mentés mindenképp"
 
-#: ../gedit/gedit-io-error-info-bar.c:898
-#: ../gedit/gedit-io-error-info-bar.c:990
-#: ../gedit/gedit-io-error-info-bar.c:1281
+#: ../gedit/gedit-io-error-info-bar.c:894
+#: ../gedit/gedit-io-error-info-bar.c:986
+#: ../gedit/gedit-io-error-info-bar.c:1273
 msgid "D_on't Save"
 msgstr "Ne _legyen mentve"
 
@@ -1401,28 +1397,28 @@ msgstr "Ne _legyen mentve"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:912
+#: ../gedit/gedit-io-error-info-bar.c:908
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "A(z) „%s” fájl megváltozott az utolsó beolvasása óta."
 
-#: ../gedit/gedit-io-error-info-bar.c:927
+#: ../gedit/gedit-io-error-info-bar.c:923
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Ha most elmenti ezt a változatot, minden külső módosítás el fog veszni. "
 "Biztosan menti?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1009
+#: ../gedit/gedit-io-error-info-bar.c:1005
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "Nem sikerült biztonsági mentést készíteni „%s” mentésekor"
 
-#: ../gedit/gedit-io-error-info-bar.c:1014
+#: ../gedit/gedit-io-error-info-bar.c:1010
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "Nem sikerült ideiglenes biztonsági mentést készíteni „%s” mentésekor"
 
-#: ../gedit/gedit-io-error-info-bar.c:1031
+#: ../gedit/gedit-io-error-info-bar.c:1027
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1434,7 +1430,7 @@ msgstr ""
 "Mindenképp menti?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1091
+#: ../gedit/gedit-io-error-info-bar.c:1087
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1443,7 +1439,7 @@ msgstr ""
 "Nem lehet kezelni a(z) „%s:” típusú helyeket írás módban. Ellenőrizze, hogy "
 "pontosan írta-e be a helyet, és próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:1099
+#: ../gedit/gedit-io-error-info-bar.c:1095
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1451,7 +1447,7 @@ msgstr ""
 "Nem lehet ezt a helyet írás módban kezelni. Ellenőrizze, hogy pontosan írta-"
 "e be a helyet, és próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:1108
+#: ../gedit/gedit-io-error-info-bar.c:1104
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1460,7 +1456,7 @@ msgstr ""
 "A(z) „%s” egy érvénytelen hely. Ellenőrizze, hogy pontosan írta-e be a "
 "helyet, és próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:1115
+#: ../gedit/gedit-io-error-info-bar.c:1111
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1468,7 +1464,7 @@ msgstr ""
 "Nincs jogosultsága a fájl mentéséhez erre a helyre. Ellenőrizze, hogy "
 "pontosan írta-e be a helyet, és próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1117
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1476,7 +1472,7 @@ msgstr ""
 "Nincs elég hely a lemezen a fájl mentéséhez. Szabadítson fel egy kis helyet, "
 "és próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:1126
+#: ../gedit/gedit-io-error-info-bar.c:1122
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1484,11 +1480,11 @@ msgstr ""
 "Egy csak olvasható lemezre próbált fájlt menteni. Ellenőrizze, hogy pontosan "
 "írta-e be a helyet, és próbálja újra."
 
-#: ../gedit/gedit-io-error-info-bar.c:1132
+#: ../gedit/gedit-io-error-info-bar.c:1128
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Egy ugyanilyen nevű fájl már létezik. Használjon más nevet."
 
-#: ../gedit/gedit-io-error-info-bar.c:1137
+#: ../gedit/gedit-io-error-info-bar.c:1133
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1496,7 +1492,7 @@ msgstr ""
 "Az a lemez, amire a fájlt próbálja menteni, nem kezeli a hosszú fájlneveket. "
 "Használjon rövidebb nevet."
 
-#: ../gedit/gedit-io-error-info-bar.c:1144
+#: ../gedit/gedit-io-error-info-bar.c:1140
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1506,34 +1502,30 @@ msgstr ""
 "rendelkezik. Próbáljon meg kisebb fájlt menteni, vagy egy olyan lemezre "
 "mentsen, amelyen nincs korlátozás."
 
-#: ../gedit/gedit-io-error-info-bar.c:1160
+#: ../gedit/gedit-io-error-info-bar.c:1156
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Nem sikerült elmenteni a(z) „%s” fájlt."
 
-#. FIXME: review this message, it's not clear since for the user the "modification"
-#. * could be interpreted as the changes he made in the document. beside "reading" is
-#. * not accurate (since last load/save)
-#.
-#: ../gedit/gedit-io-error-info-bar.c:1204
+#: ../gedit/gedit-io-error-info-bar.c:1196
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "A(z) „%s” fájl megváltozott a lemezen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1215
+#: ../gedit/gedit-io-error-info-bar.c:1207
 msgid "Drop Changes and _Reload"
 msgstr "_Változások eldobása és újratöltés"
 
-#: ../gedit/gedit-io-error-info-bar.c:1225 ../gedit/gedit-menu.ui.h:6
+#: ../gedit/gedit-io-error-info-bar.c:1217 ../gedit/gedit-menu.ui.h:6
 msgid "_Reload"
 msgstr "Újr_atöltés"
 
-#: ../gedit/gedit-io-error-info-bar.c:1291
+#: ../gedit/gedit-io-error-info-bar.c:1283
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "Érvénytelen karakterek észlelve a következő mentésekor: „%s”"
 
-#: ../gedit/gedit-io-error-info-bar.c:1307
+#: ../gedit/gedit-io-error-info-bar.c:1299
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1558,17 +1550,14 @@ msgid "_Quit"
 msgstr "_Kilépés"
 
 #: ../gedit/gedit-menu.ui.h:8
-#| msgid "_Save All"
 msgid "Save _All"
 msgstr "Összes _mentése"
 
 #: ../gedit/gedit-menu.ui.h:9
-#| msgid "Print"
 msgid "_Print…"
 msgstr "_Nyomtatás…"
 
 #: ../gedit/gedit-menu.ui.h:10
-#| msgid "Find"
 msgid "_Find…"
 msgstr "_Keresés…"
 
@@ -1581,7 +1570,6 @@ msgid "_Clear Highlight"
 msgstr "Kiemelés _törlése"
 
 #: ../gedit/gedit-menu.ui.h:13
-#| msgid "Go to _Line..."
 msgid "_Go to Line…"
 msgstr "_Ugrás sorra…"
 
@@ -1598,7 +1586,6 @@ msgid "_Fullscreen"
 msgstr "_Teljes képernyő"
 
 #: ../gedit/gedit-menu.ui.h:17
-#| msgid "Highlight Mode"
 msgid "_Highlight Mode…"
 msgstr "Kiemelési ü_zemmód…"
 
@@ -1621,17 +1608,14 @@ msgid "Move _Right"
 msgstr "Mozgatás j_obbra"
 
 #: ../gedit/gedit-menu.ui.h:22
-#| msgid "_Move to New Window"
 msgid "Move to New _Window"
 msgstr "Áthelyezés új _ablakba"
 
 #: ../gedit/gedit-menu.ui.h:23
-#| msgid "_New Tab Group"
 msgid "Move to New Tab _Group"
 msgstr "Áthelyezés új lap_csoportba"
 
 #: ../gedit/gedit-menu.ui.h:24
-#| msgid "Automatic indent"
 msgid "Automatic Indentation"
 msgstr "Automatikus behúzás"
 
@@ -1691,7 +1675,6 @@ msgid "Display right _margin at column:"
 msgstr "Jobb mar_gó ebben az oszlopban:"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:4
-#| msgid "_Statusbar"
 msgid "Display _statusbar"
 msgstr "Á_llapotsor megjelenítése"
 
@@ -1957,7 +1940,6 @@ msgid "Replace _All"
 msgstr "Öss_zes cseréje"
 
 #: ../gedit/gedit-replace-dialog.ui.h:5
-#| msgid "Find"
 msgid "_Find"
 msgstr "_Keresés"
 
@@ -2086,7 +2068,6 @@ msgstr "Kódolás:"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-tab-label.ui.h:1
-#| msgid "Close document"
 msgid "Close Document"
 msgstr "Dokumentum bezárása"
 
@@ -2169,8 +2150,12 @@ msgstr "Tabulátorszélesség: %u"
 msgid "There are unsaved documents"
 msgstr "Mentetlen dokumentumok találhatók"
 
+#: ../gedit/gedit-window.c:2501
+msgid "Change side panel page"
+msgstr "Oldalpanel oldal megváltoztatása"
+
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-window.c:2519 ../gedit/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2521 ../gedit/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumentumok"
 
@@ -2183,15 +2168,27 @@ msgid "Open a recently used file"
 msgstr "Nemrég használt fájl megnyitása"
 
 #: ../gedit/gedit-window.ui.h:5
+#| msgid "Maximum Recent Files"
+msgid "Recent files"
+msgstr "Legutóbbi fájlok"
+
+#: ../gedit/gedit-window.ui.h:6
 msgid "Create a new document"
 msgstr "Új dokumentum létrehozása"
 
-#: ../gedit/gedit-window.ui.h:6
+#: ../gedit/gedit-window.ui.h:7
+msgid "New"
+msgstr "Új"
+
+#: ../gedit/gedit-window.ui.h:8
 msgid "Save the current file"
 msgstr "A jelenlegi fájl mentése"
 
-#: ../gedit/gedit-window.ui.h:7
-#| msgid "Leave fullscreen mode"
+#: ../gedit/gedit-window.ui.h:9
+msgid "Save"
+msgstr "Mentés"
+
+#: ../gedit/gedit-window.ui.h:10
 msgid "Leave Fullscreen"
 msgstr "Teljes képernyő elhagyása"
 
@@ -2319,10 +2316,10 @@ msgid "Send to fpaste"
 msgstr "Küldés az fpaste programnak"
 
 #: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
-#| msgid "Change selected text to upper case"
 msgid "Paste selected text or current document to fpaste"
 msgstr ""
-"A kijelölt szöveg vagy a jelenlegi dokumentum beillesztése az fpaste programba"
+"A kijelölt szöveg vagy a jelenlegi dokumentum beillesztése az fpaste "
+"programba"
 
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
@@ -3152,7 +3149,7 @@ msgstr "_Célok:"
 msgid "S_ort..."
 msgstr "_Rendezés…"
 
-#. ex:ts=8:noet:
+#. ex:set ts=8 noet:
 #: ../plugins/sort/gedit-sort-plugin.ui.h:1
 #: ../plugins/sort/sort.plugin.desktop.in.h:1
 msgid "Sort"
@@ -3276,7 +3273,7 @@ msgstr "A dokumentum üres."
 msgid "No misspelled words"
 msgstr "Nincs hibás szó"
 
-#. ex:ts=8:noet:
+#. ex:set ts=8 noet:
 #: ../plugins/spell/languages-dialog.ui.h:1
 msgid "Set Language"
 msgstr "Nyelv megadása"
@@ -3380,7 +3377,7 @@ msgstr "Dátum és idő _beszúrása…"
 msgid "Available formats"
 msgstr "Elérhető formátumok"
 
-#. ex:ts=8:noet:
+#. ex:set ts=8 noet:
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:1
 msgid "Configure date/time plugin"
 msgstr "A dátum/idő bővítmény beállítása"
@@ -3654,9 +3651,6 @@ msgstr ""
 
 #~ msgid "Open '%s'"
 #~ msgstr "„%s” megnyitása"
-
-#~ msgid "Save"
-#~ msgstr "Mentés"
 
 #~ msgid "Activate '%s'"
 #~ msgstr "„%s” aktiválása"
