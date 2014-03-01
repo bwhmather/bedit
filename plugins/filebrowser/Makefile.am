@@ -20,8 +20,8 @@ plugins_filebrowser_BUILTSOURCES =				\
 
 plugins_filebrowser_messages_NOINST_H_FILES =						\
 	plugins/filebrowser/messages/gedit-file-browser-message-activation.h		\
-	plugins/filebrowser/messages/gedit-file-browser-message-add-context-item.h	\
 	plugins/filebrowser/messages/gedit-file-browser-message-add-filter.h		\
+	plugins/filebrowser/messages/gedit-file-browser-message-extend-context-menu.h	\
 	plugins/filebrowser/messages/gedit-file-browser-message-get-root.h		\
 	plugins/filebrowser/messages/gedit-file-browser-message-get-view.h		\
 	plugins/filebrowser/messages/gedit-file-browser-message-id.h			\
@@ -44,8 +44,8 @@ plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES =		\
 
 plugins_filebrowser_messages_sources =							\
 	plugins/filebrowser/messages/gedit-file-browser-message-activation.c		\
-	plugins/filebrowser/messages/gedit-file-browser-message-add-context-item.c	\
 	plugins/filebrowser/messages/gedit-file-browser-message-add-filter.c		\
+	plugins/filebrowser/messages/gedit-file-browser-message-extend-context-menu.c	\
 	plugins/filebrowser/messages/gedit-file-browser-message-get-root.c		\
 	plugins/filebrowser/messages/gedit-file-browser-message-get-view.c		\
 	plugins/filebrowser/messages/gedit-file-browser-message-id.c			\

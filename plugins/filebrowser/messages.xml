@@ -25,11 +25,9 @@
   <message namespace="Gedit" name="FileBrowserMessageId">
     <property name="id" type="uint"/>
   </message>
-  <message namespace="Gedit" name="FileBrowserMessageAddContextItem">
-    <include system="yes">gtk/gtk.h</include>
-    <property name="action" type="object" gtype="GTK_TYPE_ACTION"/>
-    <property name="path" type="string"/>
-    <property name="id" type="uint"/>
+  <message namespace="Gedit" name="FileBrowserMessageExtendContextMenu">
+    <include system="yes">gedit/gedit-menu-extension.h</include>
+    <property name="extension" type="object" gtype="GEDIT_TYPE_MENU_EXTENSION"/>
   </message>
     <message namespace="Gedit" name="FileBrowserMessageActivation">
     <property name="active" type="boolean"/>

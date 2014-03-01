@@ -22,6 +22,7 @@
 #define __GEDIT_FILE_BROWSER_WIDGET_H__
 
 #include <gtk/gtk.h>
+#include <gedit/gedit-menu-extension.h>
 #include "gedit-file-browser-store.h"
 #include "gedit-file-bookmarks-store.h"
 #include "gedit-file-browser-view.h"
@@ -111,7 +112,8 @@ void		 gedit_file_browser_widget_remove_filter	(GeditFileBrowserWidget *obj,
 								 gulong                  id);
 void		 gedit_file_browser_widget_set_filter_pattern	(GeditFileBrowserWidget *obj,
 								 gchar const            *pattern);
-
+GeditMenuExtension *
+		 gedit_file_browser_widget_extend_context_menu	(GeditFileBrowserWidget *obj);
 void		 gedit_file_browser_widget_refresh		(GeditFileBrowserWidget *obj);
 void		 gedit_file_browser_widget_history_back		(GeditFileBrowserWidget *obj);
 void		 gedit_file_browser_widget_history_forward	(GeditFileBrowserWidget *obj);

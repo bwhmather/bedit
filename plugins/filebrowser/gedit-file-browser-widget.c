@@ -2221,6 +2221,32 @@ gedit_file_browser_widget_refresh (GeditFileBrowserWidget *obj)
 	}
 }
 
+GeditMenuExtension *
+gedit_file_browser_widget_extend_context_menu (GeditFileBrowserWidget *obj)
+{
+	gint i, n_items;
+	GMenuModel *section = NULL;
+
+	g_return_val_if_fail (GEDIT_IS_FILE_BROWSER_WIDGET (obj), NULL);
+
+	n_items = g_menu_model_get_n_items (obj->priv->dir_menu);
+
+	for (i = 0; i < n_items && !section; i++)
+	{
+		gchar *id = NULL;
+
+		if (g_menu_model_get_item_attribute (obj->priv->dir_menu, i, "id", "s", &id) &&
+		    strcmp (id, "extension-section") == 0)
+		{
+			section = g_menu_model_get_item_link (obj->priv->dir_menu, i, G_MENU_LINK_SECTION);
+		}
+
+		g_free (id);
+	}
+
+	return section != NULL ? gedit_menu_extension_new (G_MENU (section)) : NULL;
+}
+
 void
 gedit_file_browser_widget_history_back (GeditFileBrowserWidget *obj)
 {

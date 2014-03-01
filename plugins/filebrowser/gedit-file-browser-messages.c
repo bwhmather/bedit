@@ -533,6 +533,22 @@ message_remove_filter_cb (GeditMessageBus *bus,
 }
 
 static void
+message_extend_context_menu_cb (GeditMessageBus *bus,
+				GeditMessage    *message,
+				GeditWindow     *window)
+{
+	WindowData *data;
+	GeditMenuExtension *ext;
+
+	data = get_window_data (window);
+
+	ext = gedit_file_browser_widget_extend_context_menu (data->widget);
+
+	g_object_set (message, "extension", ext, NULL);
+	g_object_unref (ext);
+}
+
+static void
 message_up_cb (GeditMessageBus *bus,
 	       GeditMessage    *message,
 	       WindowData      *data)
@@ -676,6 +692,11 @@ register_methods (GeditWindow            *window,
 	                            "remove_filter");
 
 	gedit_message_bus_register (bus,
+	                            GEDIT_TYPE_FILE_BROWSER_MESSAGE_EXTEND_CONTEXT_MENU,
+	                            MESSAGE_OBJECT_PATH,
+	                            "extend_context_menu");
+
+	gedit_message_bus_register (bus,
 	                            GEDIT_TYPE_MESSAGE,
 	                            MESSAGE_OBJECT_PATH,
 	                            "up");
@@ -726,6 +747,7 @@ register_methods (GeditWindow            *window,
 	BUS_CONNECT (bus, set_markup, data);
 	BUS_CONNECT (bus, add_filter, window);
 	BUS_CONNECT (bus, remove_filter, data);
+	BUS_CONNECT (bus, extend_context_menu, window);
 
 	BUS_CONNECT (bus, up, data);
 	BUS_CONNECT (bus, history_back, data);
