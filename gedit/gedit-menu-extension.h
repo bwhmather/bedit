@@ -18,7 +18,6 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #ifndef __GEDIT_MENU_EXTENSION_H__
 #define __GEDIT_MENU_EXTENSION_H__
 
@@ -27,13 +26,13 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MENU				(gedit_menu_extension_get_type ())
-#define GEDIT_MENU_EXTENSION(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MENU, GeditMenuExtension))
-#define GEDIT_MENU_EXTENSION_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MENU, GeditMenuExtension const))
-#define GEDIT_MENU_EXTENSION_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_MENU, GeditMenuExtensionClass))
-#define GEDIT_IS_MENU(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_MENU))
-#define GEDIT_IS_MENU_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_MENU))
-#define GEDIT_MENU_EXTENSION_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_MENU, GeditMenuExtensionClass))
+#define GEDIT_TYPE_MENU_EXTENSION		(gedit_menu_extension_get_type ())
+#define GEDIT_MENU_EXTENSION(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MENU_EXTENSION, GeditMenuExtension))
+#define GEDIT_MENU_EXTENSION_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MENU_EXTENSION, GeditMenuExtension const))
+#define GEDIT_MENU_EXTENSION_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_MENU_EXTENSION, GeditMenuExtensionClass))
+#define GEDIT_IS_MENU_EXTENSION(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_MENU_EXTENSION))
+#define GEDIT_IS_MENU_EXTENSION_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_MENU_EXTENSION))
+#define GEDIT_MENU_EXTENSION_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_MENU_EXTENSION, GeditMenuExtensionClass))
 
 typedef struct _GeditMenuExtension	 GeditMenuExtension;
 typedef struct _GeditMenuExtensionClass	 GeditMenuExtensionClass;
@@ -50,7 +49,7 @@ struct _GeditMenuExtensionClass
 
 GType                     gedit_menu_extension_get_type            (void) G_GNUC_CONST;
 
-GeditMenuExtension      *_gedit_menu_extension_new                 (GMenu                *menu);
+GeditMenuExtension       *gedit_menu_extension_new                 (GMenu                *menu);
 
 void                      gedit_menu_extension_append_menu_item    (GeditMenuExtension   *menu,
                                                                     GMenuItem            *item);
@@ -63,3 +62,5 @@ void                      gedit_menu_extension_remove_items        (GeditMenuExt
 G_END_DECLS
 
 #endif /* __GEDIT_MENU_EXTENSION_H__ */
+
+/* ex:set ts=8 noet: */

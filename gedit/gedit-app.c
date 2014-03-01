@@ -1682,7 +1682,7 @@ _gedit_app_extend_menu (GeditApp    *app,
 		}
 	}
 
-	return section != NULL ? _gedit_menu_extension_new (G_MENU (section)) : NULL;
+	return section != NULL ? gedit_menu_extension_new (G_MENU (section)) : NULL;
 }
 
 /* ex:set ts=8 noet: */

@@ -128,9 +128,9 @@ gedit_menu_extension_init (GeditMenuExtension *menu)
 }
 
 GeditMenuExtension *
-_gedit_menu_extension_new (GMenu *menu)
+gedit_menu_extension_new (GMenu *menu)
 {
-	return g_object_new (GEDIT_TYPE_MENU, "menu", menu, NULL);
+	return g_object_new (GEDIT_TYPE_MENU_EXTENSION, "menu", menu, NULL);
 }
 
 void
@@ -139,7 +139,7 @@ gedit_menu_extension_append_menu_item (GeditMenuExtension *menu,
 {
 	GeditMenuExtensionPrivate *priv;
 
-	g_return_if_fail (GEDIT_IS_MENU (menu));
+	g_return_if_fail (GEDIT_IS_MENU_EXTENSION (menu));
 	g_return_if_fail (G_IS_MENU_ITEM (item));
 
 	priv = gedit_menu_extension_get_instance_private (menu);
@@ -157,7 +157,7 @@ gedit_menu_extension_prepend_menu_item (GeditMenuExtension *menu,
 {
 	GeditMenuExtensionPrivate *priv;
 
-	g_return_if_fail (GEDIT_IS_MENU (menu));
+	g_return_if_fail (GEDIT_IS_MENU_EXTENSION (menu));
 	g_return_if_fail (G_IS_MENU_ITEM (item));
 
 	priv = gedit_menu_extension_get_instance_private (menu);
@@ -174,6 +174,8 @@ gedit_menu_extension_remove_items (GeditMenuExtension *menu)
 {
 	GeditMenuExtensionPrivate *priv;
 	gint i, n_items;
+
+	g_return_if_fail (GEDIT_IS_MENU_EXTENSION (menu));
 
 	priv = gedit_menu_extension_get_instance_private (menu);
 
