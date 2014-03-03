@@ -65,10 +65,10 @@ struct _GeditViewClass
 {
 	GtkSourceViewClass parent_class;
 
-	/* FIXME: Do we need placeholders ? */
-
 	void	 (* drop_uris)			(GeditView	 *view,
 						 gchar          **uri_list);
+	void	 (* change_case)		(GeditView               *view,
+						 GtkSourceChangeCaseType  case_type);
 };
 
 /*
