@@ -90,8 +90,8 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
         def do_deactivate(self):
                 self.app.remove_action("snippets")
                 self.menu = None
-                Gtk.StyleContext.remove_for_screen(Gdk.Screen.get_default(),
-                                                   self.css)
+                Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(),
+                                                            self.css)
 
         def system_dirs(self):
                 if platform.system() != 'Windows':

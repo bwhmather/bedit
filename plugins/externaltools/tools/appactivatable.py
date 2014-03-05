@@ -130,7 +130,7 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
         self.menu.deactivate()
         self.menu_ext = None
         self.submenu_ext = None
-        Gtk.StyleContext.remove_for_screen(Gdk.Screen.get_default(),
-                                           self.css)
+        Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(),
+                                                    self.css)
 
 # ex:ts=4:et:
