@@ -832,6 +832,8 @@ on_language_selected (GeditHighlightModeSelector *sel,
 	{
 		gedit_document_set_language (doc, language);
 	}
+
+	gtk_widget_hide (GTK_WIDGET (window->priv->language_popover));
 }
 
 static void
