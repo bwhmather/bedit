@@ -929,10 +929,18 @@ clone_window (GeditWindow *origin)
 	window->priv->bottom_panel_size = origin->priv->bottom_panel_size;
 
 	panel_page = gtk_stack_get_visible_child_name (GTK_STACK (origin->priv->side_panel));
-	gtk_stack_set_visible_child_name (GTK_STACK (window->priv->side_panel), panel_page);
 
+	if (panel_page)
+	{
+		gtk_stack_set_visible_child_name (GTK_STACK (window->priv->side_panel), panel_page);
+	}
+	
 	panel_page = gtk_stack_get_visible_child_name (GTK_STACK (origin->priv->bottom_panel));
-	gtk_stack_set_visible_child_name (GTK_STACK (window->priv->bottom_panel), panel_page);
+	
+	if (panel_page)
+	{
+		gtk_stack_set_visible_child_name (GTK_STACK (window->priv->bottom_panel), panel_page);
+	}
 
 	gtk_widget_set_visible (window->priv->side_panel,
 	                        gtk_widget_get_visible (origin->priv->side_panel));
