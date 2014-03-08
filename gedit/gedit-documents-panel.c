@@ -643,25 +643,20 @@ multi_notebook_tab_added (GeditMultiNotebook  *mnb,
 
 	if (position == -1)
 	{
-		/* Notebook doesn't exit in GtkListBox, so create it */
-		row = gedit_documents_group_row_new (panel, notebook);
-		insert_row (panel, GTK_LIST_BOX (panel->priv->listbox), row, -1);
+		panel->priv->nb_row_tab = 0;
+		panel->priv->nb_row_notebook = 0;
 
-		panel->priv->nb_row_notebook += 1;
-
-		/* Now, we have a correct position */
-		position = get_dest_position_for_tab (panel, notebook, tab);
-
-		group_row_refresh_visibility (panel);
+		refresh_list (panel);
 	}
+	else
+	{
+		/* Add a new tab's row to the listbox */
+		row = gedit_documents_document_row_new (panel, tab);
+		insert_row (panel, GTK_LIST_BOX (panel->priv->listbox), row, position);
 
-	/* Add a new tab's row to the listbox */
-	row = gedit_documents_document_row_new (panel, tab);
-	insert_row (panel, GTK_LIST_BOX (panel->priv->listbox), row, position);
-
-	panel->priv->nb_row_tab += 1;
-
-	row_select (panel, GTK_LIST_BOX (panel->priv->listbox), GTK_LIST_BOX_ROW (row));
+		panel->priv->nb_row_tab += 1;
+		row_select (panel, GTK_LIST_BOX (panel->priv->listbox), GTK_LIST_BOX_ROW (row));
+	}
 }
 
 static void
