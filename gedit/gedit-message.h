@@ -35,10 +35,9 @@ G_BEGIN_DECLS
 #define GEDIT_IS_MESSAGE_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_MESSAGE))
 #define GEDIT_MESSAGE_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_MESSAGE, GeditMessageClass))
 
-typedef struct _GeditMessage             GeditMessage;
-typedef struct _GeditMessageClass        GeditMessageClass;
-typedef struct _GeditMessagePrivate      GeditMessagePrivate;
-typedef struct _GeditMessageClassPrivate GeditMessageClassPrivate;
+typedef struct _GeditMessage        GeditMessage;
+typedef struct _GeditMessageClass   GeditMessageClass;
+typedef struct _GeditMessagePrivate GeditMessagePrivate;
 
 struct _GeditMessage
 {

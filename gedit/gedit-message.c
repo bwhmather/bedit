@@ -38,8 +38,7 @@
  * who is the sender and who is the receiver. There is no explicit distinction
  * between methods and signals.
  *
- * Since: 2.25.3
- *
+ * Since: 2.26
  */
 
 enum

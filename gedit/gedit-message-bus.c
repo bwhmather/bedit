@@ -1183,13 +1183,13 @@ create_message (GeditMessageBus *bus,
  * @bus: a #GeditMessageBus
  * @object_path: the object path
  * @method: the method
+ * @first_property: the first property
  * @...: NULL terminated list of key/value pairs
  *
  * This provides a convenient way to quickly send a message @method at
  * @object_path asynchronously over the bus. The variable argument list
  * specifies key (string) value pairs used to construct the message arguments.
  * To send a message synchronously use gedit_message_bus_send_sync().
- *
  */
 void
 gedit_message_bus_send (GeditMessageBus *bus,
@@ -1227,6 +1227,7 @@ gedit_message_bus_send (GeditMessageBus *bus,
  * @bus: a #GeditMessageBus
  * @object_path: the object path
  * @method: the method
+ * @first_property: the first property
  * @...: (allow-none): %NULL terminated list of key/value pairs
  *
  * This provides a convenient way to quickly send a message @method at

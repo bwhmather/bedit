@@ -1151,7 +1151,7 @@ gedit_document_set_location (GeditDocument *doc,
 
 /**
  * gedit_document_get_uri_for_display:
- * @doc:
+ * @doc: a #GeditDocument.
  *
  * Note: this never returns %NULL.
  **/
@@ -1173,7 +1173,7 @@ gedit_document_get_uri_for_display (GeditDocument *doc)
 
 /**
  * gedit_document_get_short_name_for_display:
- * @doc:
+ * @doc: a #GeditDocument.
  *
  * Note: this never returns %NULL.
  **/
@@ -1224,7 +1224,7 @@ gedit_document_get_content_type (GeditDocument *doc)
 
 /**
  * gedit_document_get_mime_type:
- * @doc:
+ * @doc: a #GeditDocument.
  *
  * Note: this never returns %NULL.
  **/
@@ -1778,6 +1778,7 @@ gedit_document_save (GeditDocument          *doc,
  * @location: the location where to save the document.
  * @encoding: the #GeditEncoding to encode the document.
  * @newline_type: the #GeditDocumentNewlineType for the document.
+ * @compression_type: the compression type for the file.
  * @flags: optionnal #GeditDocumentSaveFlags.
  *
  * Save the document to a new location. This results in the "save" signal

@@ -450,6 +450,7 @@ gedit_file_chooser_dialog_new_valist (const gchar          *title,
  * @title: (allow-none): Title of the dialog, or %NULL
  * @parent: (allow-none): Transient parent of the dialog, or %NULL
  * @action: Open or save mode for the dialog
+ * @encoding: the encoding
  * @first_button_text: (allow-none): text to go in the first button, or %NULL
  * @...: (allow-none): response ID for the first button, then
  * additional (button, id) pairs, ending with %NULL
@@ -458,8 +459,7 @@ gedit_file_chooser_dialog_new_valist (const gchar          *title,
  * gtk_dialog_new_with_buttons().
  *
  * Return value: a new #GeditFileChooserDialog
- *
- **/
+ */
 GtkWidget *
 gedit_file_chooser_dialog_new (const gchar          *title,
 			       GtkWindow            *parent,

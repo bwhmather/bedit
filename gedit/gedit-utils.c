@@ -416,8 +416,11 @@ gedit_utils_make_valid_utf8 (const char *name)
 
 /**
  * gedit_utils_uri_get_dirname:
+ * @uri: the URI.
  *
  * Note: this function replace home dir with ~
+ *
+ * Returns: the directory name.
  */
 gchar *
 gedit_utils_uri_get_dirname (const gchar *uri)
@@ -623,12 +626,15 @@ gedit_utils_get_current_workspace (GdkScreen *screen)
 
 /**
  * gedit_utils_get_window_workspace:
+ * @gtkwindow: a #GtkWindow.
  *
- * Get the workspace the window is on
+ * Get the workspace the window is on.
  *
  * This function gets the workspace that the #GtkWindow is visible on,
  * it returns GEDIT_ALL_WORKSPACES if the window is sticky, or if
- * the window manager doesn support this function
+ * the window manager doesn't support this function.
+ *
+ * Returns: the workspace the window is on.
  */
 guint
 gedit_utils_get_window_workspace (GtkWindow *gtkwindow)

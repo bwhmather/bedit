@@ -86,6 +86,7 @@ typedef enum
  * @GEDIT_DOCUMENT_SAVE_IGNORE_MTIME: save file despite external modifications.
  * @GEDIT_DOCUMENT_SAVE_IGNORE_BACKUP: write the file directly without attempting to backup.
  * @GEDIT_DOCUMENT_SAVE_PRESERVE_BACKUP: preserve previous backup file, needed to support autosaving.
+ * @GEDIT_DOCUMENT_SAVE_IGNORE_INVALID_CHARS: do not save invalid characters.
  */
 typedef enum
 {

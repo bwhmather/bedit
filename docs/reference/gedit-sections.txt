@@ -49,7 +49,6 @@ gedit_document_get_short_name_for_display
 gedit_document_get_mime_type
 gedit_document_get_readonly
 gedit_document_load
-gedit_document_insert_file
 gedit_document_load_cancel
 gedit_document_save
 gedit_document_save_as
@@ -138,45 +137,11 @@ GEDIT_MESSAGE_BUS_GET_CLASS
 </SECTION>
 
 <SECTION>
-<FILE>gedit-message-type</FILE>
-<TITLE>GeditMessageType</TITLE>
-GeditMessageType
-gedit_message_type_get_type
-gedit_message_type_is_supported
-gedit_message_type_identifier
-gedit_message_type_is_valid_object_path
-gedit_message_type_new
-gedit_message_type_new_valist
-gedit_message_type_ref
-gedit_message_type_unref
-gedit_message_type_set
-gedit_message_type_set_valist
-gedit_message_type_instantiate
-gedit_message_type_instantiate_valist
-gedit_message_type_get_object_path
-gedit_message_type_get_method
-gedit_message_type_lookup
-gedit_message_type_foreach
-<SUBSECTION Standard>
-GEDIT_TYPE_MESSAGE_TYPE
-</SECTION>
-
-<SECTION>
 <FILE>gedit-message</FILE>
 <TITLE>GeditMessage</TITLE>
 GeditMessage
-gedit_message_get
-gedit_message_get_valist
-gedit_message_get_value
-gedit_message_set
-gedit_message_set_valist
-gedit_message_set_value
-gedit_message_set_valuesv
 gedit_message_get_object_path
 gedit_message_get_method
-gedit_message_has_key
-gedit_message_get_key_type
-gedit_message_validate
 <SUBSECTION Standard>
 GEDIT_MESSAGE
 GEDIT_IS_MESSAGE
@@ -195,13 +160,9 @@ GeditNotebook
 gedit_notebook_new
 gedit_notebook_add_tab
 gedit_notebook_remove_all_tabs
-gedit_notebook_reorder_tab
 gedit_notebook_move_tab
-gedit_notebook_set_always_show_tabs
 gedit_notebook_set_close_buttons_sensitive
 gedit_notebook_get_close_buttons_sensitive
-gedit_notebook_set_tab_drag_and_drop_enabled
-gedit_notebook_get_tab_drag_and_drop_enabled
 <SUBSECTION Standard>
 GEDIT_NOTEBOOK
 GEDIT_IS_NOTEBOOK
@@ -213,28 +174,10 @@ GEDIT_NOTEBOOK_GET_CLASS
 </SECTION>
 
 <SECTION>
-<FILE>gedit-print-job-preview</FILE>
-GeditPrintJobPreviewPrivate
-<TITLE>GeditPrintJobPreview</TITLE>
-GeditPrintJobPreview
-gedit_print_job_preview_new
-<SUBSECTION Standard>
-GEDIT_PRINT_JOB_PREVIEW
-GEDIT_IS_PRINT_JOB_PREVIEW
-GEDIT_TYPE_PRINT_JOB_PREVIEW
-gedit_print_job_preview_get_type
-GEDIT_PRINT_JOB_PREVIEW_CLASS
-GEDIT_IS_PRINT_JOB_PREVIEW_CLASS
-GEDIT_PRINT_JOB_PREVIEW_GET_CLASS
-</SECTION>
-
-<SECTION>
 <FILE>gedit-print-job</FILE>
 <TITLE>GeditPrintJob</TITLE>
 GeditPrintJob
 gedit_print_job_new
-gedit_print_job_save_config
-gedit_print_dialog_new
 <SUBSECTION Standard>
 GEDIT_PRINT_JOB
 GEDIT_IS_PRINT_JOB
@@ -323,7 +266,6 @@ gedit_view_paste_clipboard
 gedit_view_delete_selection
 gedit_view_select_all
 gedit_view_scroll_to_cursor
-gedit_view_set_colors
 gedit_view_set_font
 <SUBSECTION Standard>
 GEDIT_VIEW
@@ -341,7 +283,6 @@ GEDIT_VIEW_GET_CLASS
 GeditViewActivatable
 gedit_view_activatable_activate
 gedit_view_activatable_deactivate
-gedit_view_activatable_update_state
 <SUBSECTION Standard>
 GEDIT_TYPE_VIEW_ACTIVATABLE
 GEDIT_VIEW_ACTIVATABLE
@@ -373,7 +314,6 @@ gedit_window_get_group
 gedit_window_get_side_panel
 gedit_window_get_bottom_panel
 gedit_window_get_statusbar
-gedit_window_get_ui_manager
 gedit_window_get_state
 gedit_window_get_tab_from_location
 gedit_window_get_message_bus
@@ -446,11 +386,6 @@ gedit_encoding_get_current
 </SECTION>
 
 <SECTION>
-<FILE>gedit-help</FILE>
-gedit_help_display
-</SECTION>
-
-<SECTION>
 <FILE>gedit-metadata-manager</FILE>
 gedit_metadata_manager_shutdown
 gedit_metadata_manager_get
@@ -465,24 +400,16 @@ IS_VALID_BOOLEAN
 gedit_utils_menu_position_under_widget
 gedit_utils_menu_position_under_tree_view
 gedit_utils_escape_underscores
-gedit_utils_escape_slashes
 gedit_utils_str_middle_truncate
-g_utf8_caselessnmatch
 gedit_utils_set_atk_name_description
 gedit_utils_set_atk_relation
-gedit_utils_uri_exists
-gedit_utils_get_stdin
 gedit_warning
 gedit_utils_make_valid_utf8
 gedit_utils_uri_get_dirname
 gedit_utils_replace_home_dir_with_tilde
 gedit_utils_get_current_workspace
 gedit_utils_get_window_workspace
-gedit_utils_activate_url
-gedit_utils_is_valid_uri
-gedit_utils_get_glade_widgets
 gedit_utils_make_canonical_uri_from_shell_arg
-gedit_utils_format_uri_for_display
 </SECTION>
 
 <SECTION>

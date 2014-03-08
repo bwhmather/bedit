@@ -193,13 +193,15 @@ remove_message_timeout (GeditStatusbar *statusbar)
  * @statusbar: a #GeditStatusbar
  * @context_id: message context_id
  * @format: message to flash on the statusbar
+ * @...: the arguments to insert in @format
  *
  * Flash a temporary message on the statusbar.
  */
 void
 gedit_statusbar_flash_message (GeditStatusbar *statusbar,
 			       guint           context_id,
-			       const gchar    *format, ...)
+			       const gchar    *format,
+			       ...)
 {
 	const guint32 flash_length = 3000; /* three seconds */
 	va_list args;
