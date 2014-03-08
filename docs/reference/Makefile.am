@@ -16,7 +16,7 @@ DOC_SOURCE_DIR = ../../gedit
 
 # Extra options to supply to gtkdoc-scan.
 # e.g. SCAN_OPTIONS = --deprecated-guards="GTK_DISABLE_DEPRECATED" 
-SCAN_OPTIONS =
+SCAN_OPTIONS = --rebuild-types
 
 # Extra options to supply to gtkdoc-mkdb.
 MKDB_OPTIONS = --sgml-mode --output-format=xml
@@ -27,6 +27,9 @@ CFILE_GLOB = $(top_srcdir)/gedit/*.c
 
 # Header files to ignore when scanning (These are internal to gedit).
 IGNORE_HFILES =					\
+	gedit-app-osx.h				\
+	gedit-app-win32.h			\
+	gedit-app-x11.h				\
 	gedit-close-confirmation-dialog.h 	\
 	gedit-dirs.h				\
 	gedit-document-input-stream.h		\
@@ -79,6 +82,8 @@ GTKDOC_LIBS =						\
 	$(top_builddir)/gedit/libgedit.la		\
 	$(top_builddir)/gedit/libgedit-private.la	\
 	$(GEDIT_LIBS)
+
+MAINTAINERCLEANFILES = gedit.types
 
 # This includes the standard gtk-doc make rules, copied by gtkdocize.
 include $(top_srcdir)/gtk-doc.make
