@@ -347,6 +347,25 @@ gedit_encoding_get_current
 </SECTION>
 
 <SECTION>
+<FILE>gedit-menu-extension</FILE>
+GeditMenuExtension
+gedit_menu_extension_new
+gedit_menu_extension_append_menu_item
+gedit_menu_extension_prepend_menu_item
+gedit_menu_extension_remove_items
+<SUBSECTION Standard>
+GEDIT_IS_MENU_EXTENSION
+GEDIT_IS_MENU_EXTENSION_CLASS
+GEDIT_MENU_EXTENSION
+GEDIT_MENU_EXTENSION_CLASS
+GEDIT_MENU_EXTENSION_CONST
+GEDIT_MENU_EXTENSION_GET_CLASS
+GEDIT_TYPE_MENU_EXTENSION
+GeditMenuExtensionClass
+gedit_menu_extension_get_type
+</SECTION>
+
+<SECTION>
 <FILE>gedit-metadata-manager</FILE>
 gedit_metadata_manager_shutdown
 gedit_metadata_manager_get
