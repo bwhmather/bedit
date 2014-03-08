@@ -8,8 +8,8 @@ AUTOMAKE_OPTIONS = 1.6
 # The name of the module
 DOC_MODULE = gedit
 
-# The top-level SGML file.
-DOC_MAIN_SGML_FILE = $(DOC_MODULE)-docs.sgml
+# The top-level XML file (SGML in the past).
+DOC_MAIN_SGML_FILE = gedit-docs.xml
 
 # The directory containing the source code. Relative to $(srcdir).
 DOC_SOURCE_DIR = ../../gedit
@@ -19,7 +19,7 @@ DOC_SOURCE_DIR = ../../gedit
 SCAN_OPTIONS = --rebuild-types
 
 # Extra options to supply to gtkdoc-mkdb.
-MKDB_OPTIONS = --sgml-mode --output-format=xml
+MKDB_OPTIONS = --xml-mode --output-format=xml
 
 # Used for dependencies. The docs will be rebuilt if any of these change.
 HFILE_GLOB = $(top_srcdir)/gedit/*.h
