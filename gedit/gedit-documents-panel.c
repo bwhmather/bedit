@@ -112,6 +112,20 @@ struct _GeditDocumentsPanelPrivate
 
 	guint               nb_row_notebook;
 	guint               nb_row_tab;
+
+	GtkTargetList      *source_targets;
+	GtkWidget          *dnd_window;
+	GtkWidget          *row_placeholder;
+	guint               row_placeholder_index;
+	guint               row_destination_index;
+	GtkWidget          *drag_document_row;
+	gint                row_source_row_offset;
+	gint                document_row_height;
+	gint                drag_document_row_x;
+	gint                drag_document_row_y;
+	gint                drag_root_x;
+	gint                drag_root_y;
+	gboolean            is_on_drag;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditDocumentsPanel, gedit_documents_panel, GTK_TYPE_BOX)
@@ -122,7 +136,13 @@ enum
 	PROP_WINDOW
 };
 
+static const GtkTargetEntry panel_targets [] = {
+	{"GEDIT_DOCUMENTS_DOCUMENT_ROW", GTK_TARGET_SAME_APP, 0},
+};
+
 #define MAX_DOC_NAME_LENGTH 60
+
+#define ROW_OUTSIDE_LISTBOX -1
 
 static guint
 get_nb_visible_rows (GeditDocumentsPanel *panel)
@@ -871,18 +891,460 @@ gedit_documents_panel_dispose (GObject *object)
 
 	g_clear_object (&panel->priv->window);
 
+	if (panel->priv->source_targets)
+	{
+		gtk_target_list_unref (panel->priv->source_targets);
+		panel->priv->source_targets = NULL;
+	}
+
 	G_OBJECT_CLASS (gedit_documents_panel_parent_class)->dispose (object);
+}
+
+static GtkWidget *
+create_placerholder_row (gint height)
+{
+	GtkStyleContext *context;
+
+	GtkWidget *placeholder_row = gtk_list_box_row_new ();
+
+	context = gtk_widget_get_style_context (placeholder_row);
+	gtk_style_context_add_class (context, "gedit-document-panel-placeholder-row");
+
+	gtk_widget_set_size_request (placeholder_row, -1, height);
+
+	return placeholder_row;
+}
+
+static void
+panel_on_drag_begin (GtkWidget      *widget,
+                     GdkDragContext *context)
+{
+	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	GeditDocumentsPanelPrivate *priv = panel->priv;
+	GtkWidget *drag_document_row;
+	GtkAllocation allocation;
+	const gchar *name;
+	GtkWidget *label;
+	gint width, height;
+	GtkWidget *image_box;
+	GtkWidget *box;
+	GtkStyleContext *style_context;
+
+	drag_document_row = priv->drag_document_row;
+	gtk_widget_get_allocation (drag_document_row, &allocation);
+	gtk_widget_hide (drag_document_row);
+
+	priv->document_row_height = allocation.height;
+
+	name = gtk_label_get_label (GTK_LABEL (GEDIT_DOCUMENTS_DOCUMENT_ROW (drag_document_row)->label));
+
+	label = gtk_label_new (name);
+	gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
+	gtk_widget_set_halign (label, GTK_ALIGN_START);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+
+	gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &width, &height);
+	image_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	gtk_widget_set_size_request (image_box, width, height);
+
+	box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
+
+	gtk_box_pack_start (GTK_BOX (box), image_box, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
+
+	priv->dnd_window = gtk_window_new (GTK_WINDOW_POPUP);
+	gtk_widget_set_size_request (priv->dnd_window, allocation.width, allocation.height);
+	gtk_window_set_screen (GTK_WINDOW (priv->dnd_window),
+	                       gtk_widget_get_screen (drag_document_row));
+
+	style_context = gtk_widget_get_style_context (priv->dnd_window);
+	gtk_style_context_add_class (style_context, "gedit-document-panel-dragged-row");
+
+	gtk_container_add (GTK_CONTAINER (priv->dnd_window), box);
+	gtk_widget_show_all (priv->dnd_window);
+	gtk_widget_set_opacity (priv->dnd_window, 0.8);
+
+	gtk_drag_set_icon_widget (context,
+	                          priv->dnd_window,
+	                          priv->drag_document_row_x,
+	                          priv->drag_document_row_y);
+}
+
+static gboolean
+panel_on_drag_motion (GtkWidget      *widget,
+                      GdkDragContext *context,
+                      gint            x,
+                      gint            y,
+                      guint           time)
+{
+	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	GeditDocumentsPanelPrivate *priv = panel->priv;
+	GeditDocumentsGenericRow *generic_row;
+	GtkWidget *source_panel;
+	gint dest_x, dest_y;
+	gint row_placeholder_index;
+	gint row_index;
+
+	GdkAtom target = gtk_drag_dest_find_target (widget, context, NULL);
+
+	if (target != gdk_atom_intern_static_string ("GEDIT_DOCUMENTS_DOCUMENT_ROW"))
+	{
+		gdk_drag_status (context, 0, time);
+		return FALSE;
+	}
+
+	gtk_widget_translate_coordinates (widget, priv->listbox,
+	                                  x, y,
+	                                  &dest_x, &dest_y);
+
+	generic_row = (GeditDocumentsGenericRow *)gtk_list_box_get_row_at_y (GTK_LIST_BOX (priv->listbox), dest_y);
+	source_panel = gtk_drag_get_source_widget (context);
+
+	if (!priv->row_placeholder)
+	{
+		if (!generic_row)
+		{
+			/* We don't have a row height to use, so use the source one */
+			priv->document_row_height = GEDIT_DOCUMENTS_PANEL (source_panel)->priv->document_row_height;
+		}
+		else
+		{
+			GtkAllocation allocation;
+
+			gtk_widget_get_allocation (GTK_WIDGET (generic_row), &allocation);
+			priv->document_row_height = allocation.height;
+		}
+
+		priv->row_placeholder = create_placerholder_row (priv->document_row_height);
+		gtk_widget_show (priv->row_placeholder);
+		g_object_ref_sink (priv->row_placeholder);
+	}
+	else if (GTK_WIDGET (generic_row) == priv->row_placeholder)
+	{
+		/* cursor on placeholder */
+		gdk_drag_status (context, GDK_ACTION_MOVE, time);
+
+		return TRUE;
+	}
+
+	if (!generic_row)
+	{
+		/* cursor on empty space => put the placeholder at end of list */
+		GList *children = gtk_container_get_children (GTK_CONTAINER (panel->priv->listbox));
+
+		row_placeholder_index = g_list_length (children);
+		g_list_free (children);
+	}
+	else
+	{
+		row_index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (generic_row));
+
+		gtk_widget_translate_coordinates (widget, GTK_WIDGET (generic_row),
+		                                  x, y,
+		                                  &dest_x, &dest_y);
+
+		if (dest_y <= priv->document_row_height / 2 && row_index > 0)
+		{
+			row_placeholder_index = row_index;
+		}
+		else
+		{
+			row_placeholder_index = row_index + 1;
+		}
+	}
+
+	if (source_panel == widget)
+	{
+		/* Adjustment because of hidden source row */
+		gint source_row_index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (priv->drag_document_row));
+		priv->row_source_row_offset = source_row_index <  row_placeholder_index ? -1 : 0;
+	}
+
+	if (priv->row_placeholder_index != row_placeholder_index)
+	{
+		if (priv->row_placeholder_index != ROW_OUTSIDE_LISTBOX)
+		{
+			gtk_container_remove (GTK_CONTAINER (priv->listbox),
+			                      priv->row_placeholder);
+
+			if (priv->row_placeholder_index < row_placeholder_index)
+			{
+				/* Ajustment because of existing placeholder row */
+				row_placeholder_index -= 1;
+			}
+		}
+
+		priv->row_destination_index = priv->row_placeholder_index = row_placeholder_index;
+
+		gtk_list_box_insert (GTK_LIST_BOX (priv->listbox),
+		                     priv->row_placeholder,
+		                     priv->row_placeholder_index);
+	}
+
+	gdk_drag_status (context, GDK_ACTION_MOVE, time);
+
+	return TRUE;
+}
+
+static void
+panel_on_drag_leave (GtkWidget      *widget,
+                     GdkDragContext *context,
+                     guint           time)
+{
+	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	GeditDocumentsPanelPrivate *priv = panel->priv;
+
+	if (priv->row_placeholder_index != ROW_OUTSIDE_LISTBOX)
+	{
+		gtk_container_remove (GTK_CONTAINER (priv->listbox), priv->row_placeholder);
+		priv->row_placeholder_index = ROW_OUTSIDE_LISTBOX;
+	}
+}
+
+static gboolean
+panel_on_drag_drop (GtkWidget        *widget,
+                    GdkDragContext   *context,
+                    gint              x,
+                    gint              y,
+                    guint             time)
+{
+	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	GeditDocumentsPanelPrivate *priv = panel->priv;
+
+	GdkAtom target = gtk_drag_dest_find_target (widget, context, NULL);
+	GtkWidget *source_widget = gtk_drag_get_source_widget (context);
+
+	if (GEDIT_IS_DOCUMENTS_PANEL (source_widget))
+	{
+		gtk_widget_show (GEDIT_DOCUMENTS_PANEL (source_widget)->priv->drag_document_row);
+	}
+
+	if (target == gdk_atom_intern_static_string ("GEDIT_DOCUMENTS_DOCUMENT_ROW"))
+	{
+		gtk_drag_get_data (widget, context, target, time);
+		return TRUE;
+	}
+
+	priv->row_placeholder_index = ROW_OUTSIDE_LISTBOX;
+	return FALSE;
+}
+
+static void
+panel_on_drag_data_get (GtkWidget        *widget,
+                        GdkDragContext   *context,
+                        GtkSelectionData *data,
+                        guint             info,
+                        guint             time)
+{
+	GdkAtom target = gtk_selection_data_get_target (data);
+
+	if (target == gdk_atom_intern_static_string ("GEDIT_DOCUMENTS_DOCUMENT_ROW"))
+	{
+		GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+		GeditDocumentsPanelPrivate *priv = panel->priv;
+
+		gtk_selection_data_set (data,
+		                        target,
+		                        8,
+		                        (void*)&priv->drag_document_row,
+		                        sizeof (gpointer));
+	}
+}
+
+static GeditNotebook *
+get_notebook_and_position_from_document_row (GeditDocumentsPanel *panel,
+                                             gint                 row_index,
+                                             gint                *position)
+{
+	GList *l;
+	gint index = 0;
+	GeditDocumentsGroupRow *row;
+
+	GList *children = gtk_container_get_children (GTK_CONTAINER (panel->priv->listbox));
+	gint nb_elements = g_list_length (children);
+
+	if (nb_elements == 1)
+	{
+		row = children->data;
+	}
+	else
+	{
+		l = g_list_nth (children, row_index - 1);
+
+		while (TRUE)
+		{
+			row = l->data;
+
+			if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
+			{
+				break;
+			}
+
+			l = g_list_previous (l);
+			index += 1;
+		}
+	}
+
+	g_list_free (children);
+
+	*position = index;
+	return GEDIT_NOTEBOOK (row->ref);
+}
+
+static void
+panel_on_drag_data_received (GtkWidget        *widget,
+                             GdkDragContext   *context,
+                             gint              x,
+                             gint              y,
+                             GtkSelectionData *data,
+                             guint             info,
+                             guint             time)
+{
+	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	GeditDocumentsPanelPrivate *priv = panel->priv;
+	GeditDocumentsPanel *source_panel = NULL;
+
+	GtkWidget *source_widget = gtk_drag_get_source_widget (context);
+
+	if (GEDIT_IS_DOCUMENTS_PANEL (source_widget))
+	{
+		source_panel = GEDIT_DOCUMENTS_PANEL (source_widget);
+	}
+
+	GtkWidget **source_row = (void*) gtk_selection_data_get_data (data);
+
+	if (source_panel &&
+	    gtk_selection_data_get_target (data) == gdk_atom_intern_static_string ("GEDIT_DOCUMENTS_DOCUMENT_ROW"))
+	{
+		gint source_index = gtk_list_box_row_get_index (GTK_LIST_BOX_ROW (*source_row));
+
+		/* And finally, we can move the row */
+		if (source_panel != panel ||
+		    (priv->row_destination_index != source_index &&
+		    priv->row_destination_index != source_index + 1))
+		{
+			GeditNotebook *old_notebook, *new_notebook;
+			gint position;
+
+			GeditTab *tab = GEDIT_TAB (GEDIT_DOCUMENTS_DOCUMENT_ROW (*source_row)->ref);
+
+			old_notebook = gedit_multi_notebook_get_notebook_for_tab (source_panel->priv->mnb, tab);
+			new_notebook = get_notebook_and_position_from_document_row (panel,
+			                                                            priv->row_destination_index,
+			                                                            &position);
+			if (old_notebook == new_notebook)
+			{
+				gtk_widget_show (*source_row);
+
+				gtk_notebook_reorder_child (GTK_NOTEBOOK (new_notebook),
+				                            GTK_WIDGET (tab),
+				                            position + priv->row_source_row_offset);
+			}
+			else
+			{
+				gedit_notebook_move_tab (old_notebook, new_notebook, tab, position);
+			}
+		}
+
+		gtk_drag_finish (context, TRUE, FALSE, time);
+	}
+	else
+	{
+		gtk_drag_finish (context, FALSE, FALSE, time);
+	}
+
+	priv->row_destination_index = priv->row_placeholder_index = ROW_OUTSIDE_LISTBOX;
+
+	if (priv->row_placeholder)
+	{
+		gtk_widget_destroy (priv->row_placeholder);
+		priv->row_placeholder = NULL;
+	}
+}
+
+static void
+panel_on_drag_end (GtkWidget      *widget,
+                   GdkDragContext *context)
+{
+	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	GeditDocumentsPanelPrivate *priv = panel->priv;
+
+	priv->drag_document_row = NULL;
+	priv->is_on_drag = FALSE;
+
+	gtk_widget_destroy (priv->dnd_window);
+	priv->dnd_window = NULL;
+}
+
+static gboolean
+panel_on_drag_failed (GtkWidget      *widget,
+                      GdkDragContext *context,
+                      GtkDragResult   result)
+{
+	GtkWidget *source_widget = gtk_drag_get_source_widget (context);
+
+	if (GEDIT_IS_DOCUMENTS_PANEL (source_widget))
+	{
+		gtk_widget_show (GEDIT_DOCUMENTS_PANEL (source_widget)->priv->drag_document_row);
+	}
+
+	return FALSE;
+}
+
+static gboolean
+panel_on_motion_notify (GtkWidget      *widget,
+                        GdkEventMotion *event)
+{
+	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	GeditDocumentsPanelPrivate *priv = panel->priv;
+
+	if (priv->drag_document_row == NULL || priv->is_on_drag)
+	{
+		return FALSE;
+	}
+
+	if (!(event->state & GDK_BUTTON1_MASK))
+	{
+		priv->drag_document_row = NULL;
+
+		return FALSE;
+	}
+
+	if (gtk_drag_check_threshold (widget,
+	                              priv->drag_root_x, priv->drag_root_y,
+	                              event->x_root, event->y_root))
+	{
+		priv->is_on_drag = TRUE;
+
+		gtk_drag_begin_with_coordinates (widget, priv->source_targets, GDK_ACTION_MOVE,
+		                                 GDK_BUTTON_PRIMARY, (GdkEvent*)event,
+		                                 -1, -1);
+	}
+
+	return FALSE;
 }
 
 static void
 gedit_documents_panel_class_init (GeditDocumentsPanelClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->finalize = gedit_documents_panel_finalize;
 	object_class->dispose = gedit_documents_panel_dispose;
 	object_class->get_property = gedit_documents_panel_get_property;
 	object_class->set_property = gedit_documents_panel_set_property;
+
+	widget_class->motion_notify_event = panel_on_motion_notify;
+
+	widget_class->drag_begin = panel_on_drag_begin;
+	widget_class->drag_end = panel_on_drag_end;
+	widget_class->drag_failed = panel_on_drag_failed;
+	widget_class->drag_motion = panel_on_drag_motion;
+	widget_class->drag_leave = panel_on_drag_leave;
+	widget_class->drag_drop = panel_on_drag_drop;
+	widget_class->drag_data_get = panel_on_drag_data_get;
+	widget_class->drag_data_received = panel_on_drag_data_received;
 
 	g_object_class_install_property (object_class,
 	                                 PROP_WINDOW,
@@ -939,6 +1401,22 @@ gedit_documents_panel_init (GeditDocumentsPanel *panel)
 	panel->priv->current_selection = NULL;
 	panel->priv->nb_row_notebook = 0;
 	panel->priv->nb_row_tab = 0;
+
+	/* Drag and drop support */
+	panel->priv->source_targets = gtk_target_list_new (panel_targets, G_N_ELEMENTS (panel_targets));
+
+	gtk_drag_dest_set (GTK_WIDGET (panel), 0,
+	                   panel_targets, G_N_ELEMENTS (panel_targets),
+	                   GDK_ACTION_MOVE);
+
+	gtk_drag_dest_set_track_motion (GTK_WIDGET (panel), TRUE);
+
+	panel->priv->drag_document_row = NULL;
+	panel->priv->row_placeholder = NULL;
+	panel->priv->row_placeholder_index = ROW_OUTSIDE_LISTBOX;
+	panel->priv->row_destination_index = ROW_OUTSIDE_LISTBOX;
+	panel->priv->row_source_row_offset = 0;
+	panel->priv->is_on_drag = FALSE;
 }
 
 GtkWidget *
@@ -980,23 +1458,42 @@ row_on_button_pressed (GtkWidget      *row_event_box,
                        GdkEventButton *event,
                        GtkWidget      *row)
 {
-	if (event->type == GDK_BUTTON_PRESS &&
-	    gdk_event_triggers_context_menu ((GdkEvent *)event) &&
+	if (gdk_event_get_event_type ((GdkEvent *)event) == GDK_BUTTON_PRESS &&
 	    GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
 	{
-		GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
-		GeditWindow *window = generic_row->panel->priv->window;
-		GeditTab *tab = GEDIT_TAB (generic_row->ref);
-		GtkWidget *menu = gedit_notebook_popup_menu_new (window, tab);
+		GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
+		GeditDocumentsPanelPrivate *panel_priv = document_row->panel->priv;
 
-		gtk_menu_popup_for_device (GTK_MENU (menu),
-		                           gdk_event_get_device ((GdkEvent *)event),
-		                           NULL, NULL,
-		                           NULL, NULL, NULL,
-		                           event->button,
-		                           event->time);
+		if (event->button == GDK_BUTTON_PRIMARY)
+		{
+			/* memorize row and clicked position for possible drag'n drop */
+			panel_priv->drag_document_row = row;
+			panel_priv->drag_document_row_x = (gint)event->x;
+			panel_priv->drag_document_row_y = (gint)event->y;
 
-		return TRUE;
+			panel_priv->drag_root_x = event->x_root;
+			panel_priv->drag_root_y = event->y_root;
+
+			return FALSE;
+		}
+
+		panel_priv->drag_document_row = NULL;
+
+		if (gdk_event_triggers_context_menu ((GdkEvent *)event))
+		{
+			GeditWindow *window = panel_priv->window;
+			GeditTab *tab = GEDIT_TAB (document_row->ref);
+			GtkWidget *menu = gedit_notebook_popup_menu_new (window, tab);
+
+			gtk_menu_popup_for_device (GTK_MENU (menu),
+			                           gdk_event_get_device ((GdkEvent *)event),
+			                           NULL, NULL,
+			                           NULL, NULL, NULL,
+			                           event->button,
+			                           event->time);
+
+			return TRUE;
+		}
 	}
 
 	return FALSE;
