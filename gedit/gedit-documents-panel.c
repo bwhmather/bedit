@@ -26,6 +26,7 @@
 
 #include "gedit-documents-panel.h"
 #include "gedit-debug.h"
+#include "gedit-document.h"
 #include "gedit-multi-notebook.h"
 #include "gedit-notebook.h"
 #include "gedit-notebook-popup-menu.h"
@@ -1136,19 +1137,48 @@ panel_on_drag_data_get (GtkWidget        *widget,
                         guint             info,
                         guint             time)
 {
+	GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
+	GeditDocumentsPanelPrivate *priv = panel->priv;
 	GdkAtom target = gtk_selection_data_get_target (data);
+	GdkAtom result;
 
 	if (target == gdk_atom_intern_static_string ("GEDIT_DOCUMENTS_DOCUMENT_ROW"))
 	{
-		GeditDocumentsPanel *panel = GEDIT_DOCUMENTS_PANEL (widget);
-		GeditDocumentsPanelPrivate *priv = panel->priv;
-
 		gtk_selection_data_set (data,
 		                        target,
 		                        8,
 		                        (void*)&priv->drag_document_row,
 		                        sizeof (gpointer));
+		return;
 	}
+
+	result = gtk_drag_dest_find_target (widget, context, priv->source_targets);
+
+	if (result != GDK_NONE)
+	{
+		GeditTab *tab;
+		GeditDocument *doc;
+		gchar *full_name;
+
+		tab = GEDIT_TAB (GEDIT_DOCUMENTS_DOCUMENT_ROW (priv->drag_document_row)->ref);
+		doc = gedit_tab_get_document (tab);
+
+		if (!gedit_document_is_untitled (doc))
+		{
+			GFile *file = gedit_document_get_location (doc);
+			full_name = g_file_get_parse_name (file);
+			g_object_unref (file);
+
+			gtk_selection_data_set (data,
+			                        target,
+			                        8,
+			                        (guchar *)full_name,
+			                        strlen (full_name));
+			g_free (full_name);
+		}
+	}
+
+	gtk_widget_show (priv->drag_document_row);
 }
 
 static GeditNotebook *
@@ -1404,6 +1434,7 @@ gedit_documents_panel_init (GeditDocumentsPanel *panel)
 
 	/* Drag and drop support */
 	panel->priv->source_targets = gtk_target_list_new (panel_targets, G_N_ELEMENTS (panel_targets));
+	gtk_target_list_add_text_targets (panel->priv->source_targets, 0);
 
 	gtk_drag_dest_set (GTK_WIDGET (panel), 0,
 	                   panel_targets, G_N_ELEMENTS (panel_targets),
