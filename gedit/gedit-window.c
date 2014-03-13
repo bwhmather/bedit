@@ -944,8 +944,8 @@ clone_window (GeditWindow *origin)
 
 	gtk_widget_set_visible (window->priv->side_panel,
 	                        gtk_widget_get_visible (origin->priv->side_panel));
-	gtk_widget_set_visible (window->priv->bottom_panel_box,
-	                        gtk_widget_get_visible (origin->priv->bottom_panel_box));
+	gtk_widget_set_visible (window->priv->bottom_panel,
+	                        gtk_widget_get_visible (origin->priv->bottom_panel));
 
 	return window;
 }
@@ -2570,7 +2570,7 @@ bottom_panel_item_removed (GtkStack    *panel,
 
 	empty = gtk_stack_get_visible_child (GTK_STACK (panel)) == NULL;
 
-	gtk_widget_set_visible (window->priv->bottom_panel_box, !empty);
+	gtk_widget_set_visible (window->priv->bottom_panel, !empty);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom-panel");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), !empty);
@@ -2599,7 +2599,7 @@ bottom_panel_item_added (GtkStack    *panel,
 		                               "bottom-panel-visible");
 		if (show)
 		{
-			gtk_widget_show (window->priv->bottom_panel_box);
+			gtk_widget_show (window->priv->bottom_panel);
 		}
 
 		action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom-panel");
@@ -2612,7 +2612,13 @@ setup_bottom_panel (GeditWindow *window)
 {
 	gedit_debug (DEBUG_WINDOW);
 
-	g_signal_connect_after (window->priv->bottom_panel_box,
+	g_object_bind_property (window->priv->bottom_panel,
+	                        "visible",
+	                        window->priv->bottom_panel_box,
+	                        "visible",
+	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+
+	g_signal_connect_after (window->priv->bottom_panel,
 	                        "notify::visible",
 	                        G_CALLBACK (bottom_panel_visibility_changed),
 	                        window);
@@ -2666,7 +2672,7 @@ init_panels_visibility (GeditWindow *window)
 
 		if (bottom_panel_visible)
 		{
-			gtk_widget_show (window->priv->bottom_panel_box);
+			gtk_widget_show (window->priv->bottom_panel);
 		}
 
 		g_free (panel_page);

@@ -29,7 +29,6 @@
 #include "gedit-commands.h"
 #include "gedit-debug.h"
 #include "gedit-window.h"
-#include "gedit-window-private.h"
 #include "gedit-highlight-mode-dialog.h"
 #include "gedit-highlight-mode-selector.h"
 
@@ -63,19 +62,19 @@ _gedit_cmd_view_toggle_bottom_panel (GSimpleAction *action,
                                      gpointer       user_data)
 {
 	GeditWindow *window = GEDIT_WINDOW (user_data);
-	GtkWidget *panel_box;
+	GtkWidget *panel;
 	gboolean visible;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	panel_box = window->priv->bottom_panel_box;
+	panel = gedit_window_get_bottom_panel (window);
 
 	visible = g_variant_get_boolean (state);
-	gtk_widget_set_visible (panel_box, visible);
+	gtk_widget_set_visible (panel, visible);
 
 	if (visible)
 	{
-		gtk_widget_grab_focus (window->priv->bottom_panel);
+		gtk_widget_grab_focus (panel);
 	}
 
 	g_simple_action_set_state (action, state);

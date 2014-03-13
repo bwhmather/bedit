@@ -205,7 +205,7 @@
                         </child>
                         <child>
                           <object class="GtkBox" id="bottom_panel_box">
-                            <property name="visible">False</property>
+                            <property name="visible">True</property>
                             <property name="orientation">horizontal</property>
                             <style>
                               <class name="gedit-bottom-panel"/>
@@ -216,7 +216,7 @@
                                 <property name="orientation">vertical</property>
                                 <child>
                                   <object class="GtkStack" id="bottom_panel">
-                                    <property name="visible">True</property>
+                                    <property name="visible">False</property>
                                   </object>
                                   <packing>
                                     <property name="expand">True</property>
