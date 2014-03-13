@@ -1274,6 +1274,13 @@ panel_on_drag_data_received (GtkWidget        *widget,
 			{
 				gedit_notebook_move_tab (old_notebook, new_notebook, tab, position);
 			}
+
+			if (tab != gedit_multi_notebook_get_active_tab (panel->priv->mnb))
+			{
+				g_signal_handler_block (panel->priv->mnb, panel->priv->tab_switched_handler_id);
+				gedit_multi_notebook_set_active_tab (panel->priv->mnb, tab);
+				g_signal_handler_unblock (panel->priv->mnb, panel->priv->tab_switched_handler_id);
+			}
 		}
 
 		gtk_drag_finish (context, TRUE, FALSE, time);
