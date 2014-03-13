@@ -18,7 +18,9 @@
 
 from gi.repository import GLib, Gio, GObject, Gtk, Gdk, Gedit
 from .library import ToolLibrary
+from .manager import Manager
 import os
+
 
 class ToolMenu(object):
     def __init__(self, library, menu):
@@ -65,6 +67,7 @@ class ToolMenu(object):
         self._insert_directory(self._library.tree, self._menu)
 
 
+# FIXME: restore the launch of the manager on configure using PeasGtk.Configurable
 class AppActivatable(GObject.Object, Gedit.AppActivatable):
     __gtype_name__ = "ExternalToolsAppActivatable"
 
@@ -73,10 +76,16 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
     def __init__(self):
         GObject.Object.__init__(self)
         self.menu = None
+        self._manager = None
+        self._manager_default_size = None
 
     def do_activate(self):
         self._library = ToolLibrary()
         self._library.set_locations(os.path.join(self.plugin_info.get_data_dir(), 'tools'))
+
+        action = Gio.SimpleAction(name="manage-tools")
+        action.connect("activate", lambda action, parameter: self._open_dialog())
+        self.app.add_action(action)
 
         self.css = Gtk.CssProvider()
         self.css.load_from_data("""
@@ -114,7 +123,7 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
                                                  self.css, 600)
 
         self.menu_ext = self.extend_menu("preferences-section")
-        item = Gio.MenuItem.new(_("Manage _External Tools..."), "win.manage-tools")
+        item = Gio.MenuItem.new(_("Manage _External Tools..."), "app.manage-tools")
         self.menu_ext.append_menu_item(item)
 
         self.submenu_ext = self.extend_menu("tools-section-1")
@@ -130,7 +139,33 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
         self.menu.deactivate()
         self.menu_ext = None
         self.submenu_ext = None
+
+        self.app.remove_action("manage-tools")
+
         Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(),
                                                     self.css)
+
+    def _open_dialog(self):
+        if not self._manager:
+            self._manager = Manager(self.plugin_info.get_data_dir())
+
+            if self._manager_default_size:
+                self._manager.dialog.set_default_size(*self._manager_default_size)
+
+            self._manager.dialog.connect('destroy', self._on_manager_destroy)
+            self._manager.connect('tools-updated', self._on_manager_tools_updated)
+
+        self._manager.run(self.app.get_active_window())
+
+        return self._manager.dialog
+
+    def _on_manager_destroy(self, dialog):
+        self._manager_default_size = self._manager.get_final_size()
+        self._manager = None
+
+    def _on_manager_tools_updated(self, manager):
+        for window in self.app.get_main_windows():
+            window.external_tools_window_activatable.update_actions()
+        self.menu.update()
 
 # ex:ts=4:et:

@@ -16,14 +16,14 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-__all__ = ('ExternalToolsPlugin', 'Manager', 'OutputPanel', 'Capture', 'UniqueById')
+__all__ = ('ExternalToolsPlugin', 'OutputPanel', 'Capture', 'UniqueById')
 
 from gi.repository import GLib, Gio, GObject, Gtk, Gedit, PeasGtk
-from .manager import Manager
 from .library import ToolLibrary
 from .outputpanel import OutputPanel
 from .capture import Capture
 from .functions import *
+
 
 class ToolActions(object):
     def __init__(self, library, window, panel):
@@ -60,10 +60,10 @@ class ToolActions(object):
     def filter_language(self, language, item):
         if not item.languages:
             return True
-        
+
         if not language and 'plain' in item.languages:
             return True
-        
+
         if language and (language.get_id() in item.languages):
             return True
         else:
@@ -81,7 +81,7 @@ class ToolActions(object):
 
         states = {
             'always': True,
-            'all' : document is not None,
+            'all': document is not None,
             'local': titled and not remote,
             'remote': titled and remote,
             'titled': titled,
@@ -94,7 +94,7 @@ class ToolActions(object):
                 action.set_enabled(states[tool.applicability] and
                                    self.filter_language(language, tool))
 
-# FIXME: restore the launch of the manager on configure using PeasGtk.Configurable
+
 class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
     __gtype_name__ = "ExternalToolsWindowActivatable"
 
@@ -102,18 +102,12 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
 
     def __init__(self):
         GObject.Object.__init__(self)
-        self._manager = None
-        self._manager_default_size = None
         self.actions = None
 
     def do_activate(self):
-        # Ugly hack... we need to get access to the activatable to update the menu actions
-        self.window._external_tools_window_activatable = self
-        self._library = ToolLibrary()
+        self.window.external_tools_window_activatable = self
 
-        action = Gio.SimpleAction(name="manage-tools")
-        action.connect("activate", lambda action, parameter: self.open_dialog())
-        self.window.add_action(action)
+        self._library = ToolLibrary()
 
         # Create output console
         self._output_buffer = OutputPanel(self.plugin_info.get_data_dir(), self.window)
@@ -128,38 +122,12 @@ class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
             self.actions.filter(self.window.get_active_document())
 
     def do_deactivate(self):
-        self.window._external_tools_window_activatable = None
         self.actions.deactivate()
-        self.window.remove_action("manage-tools")
-
         bottom = self.window.get_bottom_panel()
         bottom.remove(self._output_buffer.panel)
+        self.window.external_tools_window_activatable = None
 
-    def open_dialog(self):
-        if not self._manager:
-            self._manager = Manager(self.plugin_info.get_data_dir())
-
-            if self._manager_default_size:
-                self._manager.dialog.set_default_size(*self._manager_default_size)
-
-            self._manager.dialog.connect('destroy', self.on_manager_destroy)
-            self._manager.connect('tools-updated', self.on_manager_tools_updated)
-
-        window = Gio.Application.get_default().get_active_window()
-        self._manager.run(window)
-
-        return self._manager.dialog
-
-    def update_manager(self, tool):
-        if self._manager:
-            self._manager.tool_changed(tool, True)
-
-    def on_manager_destroy(self, dialog):
-        self._manager_default_size = self._manager.get_final_size()
-        self._manager = None
-
-    def on_manager_tools_updated(self, manager):
-        for window in Gio.Application.get_default().get_main_windows():
-            window._external_tools_window_activatable.actions.update()
+    def update_actions(self):
+        self.actions.update()
 
 # ex:ts=4:et:
