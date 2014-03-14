@@ -814,7 +814,14 @@ gedit_multi_notebook_set_active_tab (GeditMultiNotebook *mnb,
 	gint page_num;
 
 	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));
-	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail (GEDIT_IS_TAB (tab) || tab == NULL);
+
+	if (tab == NULL)
+	{
+		mnb->priv->active_tab = NULL;
+
+		return;
+	}
 
 	if (tab == GEDIT_TAB (mnb->priv->active_tab))
 		return;

@@ -456,6 +456,7 @@ update_next_prev_doc_sensitivity_per_window (GeditWindow *window)
 	gedit_debug (DEBUG_WINDOW);
 
 	tab = gedit_window_get_active_tab (window);
+
 	if (tab != NULL)
 	{
 		update_next_prev_doc_sensitivity (window, tab);
@@ -2209,6 +2210,8 @@ on_tab_removed (GeditMultiNotebook *multi,
 			g_signal_handler_disconnect (doc, window->priv->language_changed_id);
 			window->priv->language_changed_id = 0;
 		}
+
+		gedit_multi_notebook_set_active_tab (multi, NULL);
 	}
 
 	g_return_if_fail (num_tabs >= 0);
