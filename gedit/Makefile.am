@@ -125,7 +125,6 @@ gedit_NOINST_H_FILES =				\
 	gedit/gedit-multi-notebook.h		\
 	gedit/gedit-notebook.h			\
 	gedit/gedit-notebook-popup-menu.h	\
-	gedit/gedit-open-menu-button.h		\
 	gedit/gedit-plugins-engine.h		\
 	gedit/gedit-preferences-dialog.h	\
 	gedit/gedit-print-job.h			\
@@ -204,7 +203,6 @@ gedit_libgedit_c_files =			\
 	gedit/gedit-multi-notebook.c		\
 	gedit/gedit-notebook.c			\
 	gedit/gedit-notebook-popup-menu.c	\
-	gedit/gedit-open-menu-button.c		\
 	gedit/gedit-plugins-engine.c		\
 	gedit/gedit-preferences-dialog.c	\
 	gedit/gedit-print-job.c			\

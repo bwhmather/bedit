@@ -53,9 +53,10 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GeditOpenMenuButton" id="open_menu">
+                  <object class="GtkMenuButton" id="open_menu">
                     <property name="visible">True</property>
                     <property name="tooltip_text" translatable="yes">Open a recently used file</property>
+                    <property name="popup">recent_menu</property>
                     <style>
                       <class name="image-button"/>
                     </style>
@@ -341,12 +342,19 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GeditOpenMenuButton" id="fullscreen_open_menu">
+                          <object class="GtkMenuButton" id="fullscreen_open_menu">
                             <property name="visible">True</property>
                             <property name="tooltip_text" translatable="yes">Open a recently used file</property>
+                            <property name="popup">fullscreen_recent_menu</property>
                             <style>
                               <class name="image-button"/>
                             </style>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="fullscreen_open_menu_a11y">
+                                <property name="accessible-name" translatable="yes">Recent files</property>
+                                <property name="accessible-description" translatable="yes">Open a recently used file</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -451,6 +459,23 @@
       <widget name="side_headerbar"/>
       <widget name="side_panel"/>
     </widgets>
+  </object>
+  <object class="GtkRecentFilter" id="recent_filter">
+    <applications>
+      <application>gedit</application>
+    </applications>
+  </object>
+  <object class="GtkRecentChooserMenu" id="recent_menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="filter">recent_filter</property>
+    <property name="limit">10</property>
+  </object>
+  <object class="GtkRecentChooserMenu" id="fullscreen_recent_menu">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="filter">recent_filter</property>
+    <property name="limit">10</property>
   </object>
 </interface>
 

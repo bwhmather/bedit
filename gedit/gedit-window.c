@@ -41,7 +41,6 @@
 #include "gedit-utils.h"
 #include "gedit-commands.h"
 #include "gedit-debug.h"
-#include "gedit-open-menu-button.h"
 #include "gedit-documents-panel.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-window-activatable.h"
@@ -405,7 +404,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, titlebar_paned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_headerbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, headerbar);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, open_menu);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, recent_menu);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, hpaned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel);
@@ -417,7 +416,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_controls);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_eventbox);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_headerbar);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_open_menu);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_recent_menu);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_gear_button);
 }
 
@@ -786,25 +785,6 @@ recent_chooser_item_activated (GtkRecentChooser *chooser,
 	}
 
 	g_free (uri);
-}
-
-static void
-setup_headerbar_open_button (GeditWindow *window)
-{
-	GtkMenu *recent_menu;
-
-	g_settings_bind (window->priv->ui_settings,
-	                 GEDIT_SETTINGS_MAX_RECENTS,
-	                 window->priv->open_menu,
-	                 "limit",
-	                 G_SETTINGS_BIND_GET);
-
-	recent_menu = gtk_menu_button_get_popup (GTK_MENU_BUTTON (window->priv->open_menu));
-
-	g_signal_connect (recent_menu,
-	                  "item-activated",
-	                  G_CALLBACK (recent_chooser_item_activated),
-	                  window);
 }
 
 static void
@@ -1792,20 +1772,17 @@ static void
 fullscreen_controls_setup (GeditWindow *window)
 {
 	GeditWindowPrivate *priv = window->priv;
-	GtkMenu *recent_menu;
 
 	if (priv->fullscreen_controls_setup)
 		return;
 
 	g_settings_bind (window->priv->ui_settings,
 	                 GEDIT_SETTINGS_MAX_RECENTS,
-	                 window->priv->fullscreen_open_menu,
+	                 window->priv->fullscreen_recent_menu,
 	                 "limit",
 	                 G_SETTINGS_BIND_GET);
 
-	recent_menu = gtk_menu_button_get_popup (GTK_MENU_BUTTON (window->priv->fullscreen_open_menu));
-
-	g_signal_connect (recent_menu,
+	g_signal_connect (window->priv->fullscreen_recent_menu,
 	                  "item-activated",
 	                  G_CALLBACK (recent_chooser_item_activated),
 	                  window);
@@ -2854,7 +2831,16 @@ gedit_window_init (GeditWindow *window)
 	                        "position",
 	                        G_BINDING_DEFAULT | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
-	setup_headerbar_open_button (window);
+	g_settings_bind (window->priv->ui_settings,
+	                 GEDIT_SETTINGS_MAX_RECENTS,
+	                 window->priv->recent_menu,
+	                 "limit",
+	                 G_SETTINGS_BIND_GET);
+
+	g_signal_connect (window->priv->recent_menu,
+	                  "item-activated",
+	                  G_CALLBACK (recent_chooser_item_activated),
+	                  window);
 
 	gear_menu = _gedit_app_get_window_menu (GEDIT_APP (g_application_get_default ())),
 	gtk_menu_button_set_menu_model (window->priv->gear_button, gear_menu);

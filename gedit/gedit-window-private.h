@@ -59,7 +59,7 @@ struct _GeditWindowPrivate
 	GtkWidget      *fullscreen_controls;
 	GtkWidget      *fullscreen_eventbox;
 	GtkWidget      *fullscreen_headerbar;
-	GtkWidget      *fullscreen_open_menu;
+	GtkWidget      *fullscreen_recent_menu;
 	GtkMenuButton  *fullscreen_gear_button;
 	gboolean        fullscreen_controls_setup;
 
@@ -80,10 +80,8 @@ struct _GeditWindowPrivate
 	GtkWidget      *side_headerbar;
 	GtkWidget      *headerbar;
 	GtkWidget      *open_button;
-	GtkWidget      *open_menu;
+	GtkWidget      *recent_menu;
 	GtkMenuButton  *gear_button;
-
-	/* recent files */
 
 	gint            num_tabs_with_error;
 
