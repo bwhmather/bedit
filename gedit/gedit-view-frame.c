@@ -251,7 +251,7 @@ get_search_context (GeditViewFrame *frame)
 	GtkSourceSearchSettings *search_settings;
 
 	doc = gedit_view_frame_get_document (frame);
-	search_context = _gedit_document_get_search_context (doc);
+	search_context = gedit_document_get_search_context (doc);
 
 	if (search_context == NULL)
 	{
@@ -1258,8 +1258,8 @@ init_search_entry (GeditViewFrame *frame)
 			search_context = gtk_source_search_context_new (GTK_SOURCE_BUFFER (buffer),
 									frame->priv->search_settings);
 
-			_gedit_document_set_search_context (GEDIT_DOCUMENT (buffer),
-							    search_context);
+			gedit_document_set_search_context (GEDIT_DOCUMENT (buffer),
+							   search_context);
 
 			g_signal_connect_swapped (search_context,
 						  "notify::occurrences-count",

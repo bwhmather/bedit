@@ -2529,9 +2529,16 @@ connect_search_settings (GeditDocument *doc)
 				 G_CONNECT_SWAPPED);
 }
 
+/**
+ * gedit_document_set_search_context:
+ * @doc: a #GeditDocument
+ * @search_context: (allow-none): the new #GtkSourceSearchContext
+ *
+ * Sets the new search context for the document.
+ */
 void
-_gedit_document_set_search_context (GeditDocument          *doc,
-				    GtkSourceSearchContext *search_context)
+gedit_document_set_search_context (GeditDocument          *doc,
+				   GtkSourceSearchContext *search_context)
 {
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
@@ -2566,8 +2573,15 @@ _gedit_document_set_search_context (GeditDocument          *doc,
 	update_empty_search (doc);
 }
 
+/**
+ * gedit_document_get_search_context:
+ * @doc: a #GeditDocument
+ *
+ * Returns: the current search context of the document,
+ * or NULL if there is no current search context
+ */
 GtkSourceSearchContext *
-_gedit_document_get_search_context (GeditDocument *doc)
+gedit_document_get_search_context (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 

@@ -66,7 +66,7 @@ get_search_context (GeditReplaceDialog *dialog,
 		return NULL;
 	}
 
-	search_context = _gedit_document_get_search_context (doc);
+	search_context = gedit_document_get_search_context (doc);
 
 	if (search_context != NULL &&
 	    g_object_get_data (G_OBJECT (search_context), GEDIT_SEARCH_CONTEXT_KEY) == dialog)
@@ -441,7 +441,7 @@ connect_active_document (GeditReplaceDialog *dialog)
 				   GEDIT_SEARCH_CONTEXT_KEY,
 				   dialog);
 
-		_gedit_document_set_search_context (doc, search_context);
+		gedit_document_set_search_context (doc, search_context);
 
 		g_object_unref (settings);
 		g_object_unref (search_context);

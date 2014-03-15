@@ -295,10 +295,10 @@ GMountOperation
 		*_gedit_document_create_mount_operation
 						(GeditDocument	     *doc);
 
-void			 _gedit_document_set_search_context	(GeditDocument          *doc,
+void			 gedit_document_set_search_context	(GeditDocument          *doc,
 								 GtkSourceSearchContext *search_context);
 
-GtkSourceSearchContext	*_gedit_document_get_search_context	(GeditDocument          *doc);
+GtkSourceSearchContext	*gedit_document_get_search_context	(GeditDocument          *doc);
 
 gboolean		 _gedit_document_get_empty_search	(GeditDocument		*doc);
 

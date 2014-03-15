@@ -238,7 +238,7 @@ run_forward_search (GeditWindow *window,
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
-	search_context = _gedit_document_get_search_context (GEDIT_DOCUMENT (buffer));
+	search_context = gedit_document_get_search_context (GEDIT_DOCUMENT (buffer));
 
 	if (search_context == NULL)
 	{
@@ -343,7 +343,7 @@ run_backward_search (GeditWindow *window,
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
-	search_context = _gedit_document_get_search_context (GEDIT_DOCUMENT (buffer));
+	search_context = gedit_document_get_search_context (GEDIT_DOCUMENT (buffer));
 
 	if (search_context == NULL)
 	{
@@ -403,7 +403,7 @@ do_replace (GeditReplaceDialog *dialog,
 		return;
 	}
 
-	search_context = _gedit_document_get_search_context (doc);
+	search_context = gedit_document_get_search_context (doc);
 
 	if (search_context == NULL)
 	{
@@ -454,7 +454,7 @@ do_replace_all (GeditReplaceDialog *dialog,
 		return;
 	}
 
-	search_context = _gedit_document_get_search_context (doc);
+	search_context = gedit_document_get_search_context (doc);
 
 	if (search_context == NULL)
 	{
@@ -651,7 +651,7 @@ _gedit_cmd_search_clear_highlight (GSimpleAction *action,
 	gedit_view_frame_clear_search (frame);
 
 	doc = gedit_view_frame_get_document (frame);
-	_gedit_document_set_search_context (doc, NULL);
+	gedit_document_set_search_context (doc, NULL);
 }
 
 void
