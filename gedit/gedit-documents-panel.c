@@ -467,63 +467,6 @@ group_row_refresh_visibility (GeditDocumentsPanel *panel)
 	gtk_widget_set_visible (first_group_row, !notebook_is_unique);
 }
 
-static void
-refresh_notebook (GeditDocumentsPanel *panel,
-                  GeditNotebook       *notebook)
-{
-	GList *tabs;
-	GList *l;
-
-	tabs = gtk_container_get_children (GTK_CONTAINER (notebook));
-
-	for (l = tabs; l != NULL; l = g_list_next (l))
-	{
-		GtkWidget *row;
-
-		row = gedit_documents_document_row_new (panel, GEDIT_TAB (l->data));
-		insert_row (panel, GTK_LIST_BOX (panel->priv->listbox), row, -1);
-		panel->priv->nb_row_tab += 1;
-	}
-
-	g_list_free (tabs);
-}
-
-static void
-refresh_notebook_foreach (GeditNotebook       *notebook,
-                          GeditDocumentsPanel *panel)
-{
-	GtkWidget *row;
-
-	row = gedit_documents_group_row_new (panel, notebook);
-	insert_row (panel, GTK_LIST_BOX (panel->priv->listbox), row, -1);
-	panel->priv->nb_row_notebook += 1;
-
-	group_row_refresh_visibility (panel);
-	refresh_notebook (panel, notebook);
-}
-
-static void
-refresh_list (GeditDocumentsPanel *panel)
-{
-	GList *children;
-	GList *l;
-
-	/* Clear the listbox */
-	children = gtk_container_get_children (GTK_CONTAINER (panel->priv->listbox));
-
-	for (l = children; l != NULL; l = g_list_next (l))
-	{
-		gtk_widget_destroy (GTK_WIDGET (l->data));
-	}
-
-	g_list_free (children);
-
-	gedit_multi_notebook_foreach_notebook (panel->priv->mnb,
-	                                       (GtkCallback)refresh_notebook_foreach,
-	                                       panel);
-	select_active_tab (panel);
-}
-
 static gchar *
 doc_get_name (GeditDocument *doc)
 {
@@ -597,6 +540,77 @@ document_row_sync_tab_name_and_icon (GeditTab   *tab,
 	{
 		gtk_image_clear (GTK_IMAGE (document_row->image));
 	}
+}
+
+static void
+refresh_notebook (GeditDocumentsPanel *panel,
+                  GeditNotebook       *notebook)
+{
+	GList *tabs;
+	GList *l;
+
+	tabs = gtk_container_get_children (GTK_CONTAINER (notebook));
+
+	for (l = tabs; l != NULL; l = g_list_next (l))
+	{
+		GtkWidget *row;
+
+		row = gedit_documents_document_row_new (panel, GEDIT_TAB (l->data));
+		insert_row (panel, GTK_LIST_BOX (panel->priv->listbox), row, -1);
+		panel->priv->nb_row_tab += 1;
+	}
+
+	g_list_free (tabs);
+}
+
+static void
+refresh_notebook_foreach (GeditNotebook       *notebook,
+                          GeditDocumentsPanel *panel)
+{
+	GtkWidget *row;
+
+	row = gedit_documents_group_row_new (panel, notebook);
+	insert_row (panel, GTK_LIST_BOX (panel->priv->listbox), row, -1);
+	panel->priv->nb_row_notebook += 1;
+
+	group_row_refresh_visibility (panel);
+	refresh_notebook (panel, notebook);
+}
+
+static void
+refresh_list (GeditDocumentsPanel *panel)
+{
+	GList *children;
+	GList *l;
+
+	/* Clear the listbox */
+	children = gtk_container_get_children (GTK_CONTAINER (panel->priv->listbox));
+
+	for (l = children; l != NULL; l = g_list_next (l))
+	{
+		GeditDocumentsGenericRow *row = l->data;
+
+		if (GEDIT_IS_DOCUMENTS_DOCUMENT_ROW (row))
+		{
+			GeditTab *tab = GEDIT_TAB (row->ref);
+			g_signal_handlers_disconnect_matched (tab,
+			                                      G_SIGNAL_MATCH_FUNC,
+			                                      0,
+			                                      0,
+			                                      NULL,
+			                                      G_CALLBACK (document_row_sync_tab_name_and_icon),
+			                                      NULL);
+		}
+
+		gtk_widget_destroy (GTK_WIDGET (row));
+	}
+
+	g_list_free (children);
+
+	gedit_multi_notebook_foreach_notebook (panel->priv->mnb,
+	                                       (GtkCallback)refresh_notebook_foreach,
+	                                       panel);
+	select_active_tab (panel);
 }
 
 static void
