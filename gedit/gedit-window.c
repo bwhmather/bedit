@@ -3361,7 +3361,7 @@ _gedit_window_move_tab_to_new_window (GeditWindow *window,
 
 	new_window = clone_window (window);
 
-	old_notebook = gedit_multi_notebook_get_active_notebook (window->priv->multi_notebook);
+	old_notebook = GEDIT_NOTEBOOK (gtk_widget_get_parent (GTK_WIDGET (tab)));
 	new_notebook = gedit_multi_notebook_get_active_notebook (new_window->priv->multi_notebook);
 
 	gedit_notebook_move_tab (old_notebook,
