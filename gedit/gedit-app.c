@@ -440,7 +440,7 @@ gedit_app_startup (GApplication *application)
 	g_free (icon_dir);
 
 #ifndef ENABLE_GVFS_METADATA
-	gedit_metadata_manager_init (metadata_filename);
+	gedit_metadata_manager_init ();
 #endif
 
 	/* Load settings */

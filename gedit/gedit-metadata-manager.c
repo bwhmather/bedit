@@ -30,7 +30,7 @@
 #define GEDIT_METADATA_VERBOSE_DEBUG	1
 */
 
-#define MAX_ITEM 50
+#define MAX_ITEMS 50
 #define METADATA_FILE "gedit-metadata.xml"
 
 typedef struct _GeditMetadataManager GeditMetadataManager;
@@ -96,7 +96,6 @@ gedit_metadata_manager_arm_timeout (void)
 
 /**
  * gedit_metadata_manager_init:
- * @metadata_filename: the filename where the metadata is.
  *
  * This function initializes the metadata manager.
  * See also gedit_metadata_manager_shutdown().

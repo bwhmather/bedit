@@ -244,7 +244,7 @@ int main (int   argc,
 	gedit_dirs_init ();
 
 #ifndef ENABLE_GVFS_METADATA
-	gedit_metadata_manager_init (metadata_filename);
+	gedit_metadata_manager_init ();
 #endif
 
 	g_test_add_func ("/document-loader/end-line-stripping", test_end_line_stripping);
