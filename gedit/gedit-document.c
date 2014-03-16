@@ -2534,7 +2534,15 @@ connect_search_settings (GeditDocument *doc)
  * @doc: a #GeditDocument
  * @search_context: (allow-none): the new #GtkSourceSearchContext
  *
- * Sets the new search context for the document.
+ * Sets the new search context for the document. Use this function only when the
+ * search occurrences are highlighted. So this function should not be used for
+ * background searches. The purpose is to have only one highlighted search
+ * context at a time in the document.
+ *
+ * After using this function, you should unref the @search_context. The @doc
+ * should be the only owner of the @search_context, so that the Clear Highlight
+ * action works. If you need the @search_context after calling this function,
+ * use gedit_document_get_search_context().
  */
 void
 gedit_document_set_search_context (GeditDocument          *doc,
@@ -2577,8 +2585,14 @@ gedit_document_set_search_context (GeditDocument          *doc,
  * gedit_document_get_search_context:
  * @doc: a #GeditDocument
  *
- * Returns: the current search context of the document,
- * or NULL if there is no current search context
+ * Gets the search context. Use this function only if you have used
+ * gedit_document_set_search_context() before. You should not alter other search
+ * contexts, so you have to verify that the returned search context is yours.
+ * One way to verify that is to compare the search settings object, or to mark
+ * the search context with g_object_set_data().
+ *
+ * Returns: (transfer none): the current search context of the document, or NULL
+ * if there is no current search context.
  */
 GtkSourceSearchContext *
 gedit_document_get_search_context (GeditDocument *doc)
