@@ -158,7 +158,7 @@ gedit_INST_H_FILES =				\
 	gedit/gedit-window-activatable.h
 
 if !ENABLE_GVFS_METADATA
-gedit_INST_H_FILES += gedit/gedit-metadata-manager.h
+gedit_NOINST_H_FILES += gedit/gedit-metadata-manager.h
 endif
 
 gedit_headerdir = $(prefix)/include/gedit-$(GEDIT_API_VERSION)/gedit
