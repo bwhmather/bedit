@@ -19,7 +19,7 @@ fi
 mkdir "$UNOWNED_DIRECTORY"
 touch "$UNOWNED_FILE"
 
-sudo chown nobody "$UNOWNED_DIRECTORY"
+sudo chown nobody:nobody "$UNOWNED_DIRECTORY"
 
 sudo touch "$UNOWNED_GROUP"
 sudo chgrp root "$UNOWNED_GROUP"
