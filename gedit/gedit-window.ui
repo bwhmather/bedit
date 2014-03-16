@@ -286,6 +286,28 @@
                     <child>
                       <object class="GeditStatusbar" id="statusbar">
                         <property name="visible">True</property>
+                        <child>
+                          <object class="GeditStatusMenuButton" id="tab_width_combo">
+                            <property name="visible">True</property>
+                            <property name="use_popover">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="pack_type">end</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GeditStatusMenuButton" id="language_button">
+                            <property name="visible">True</property>
+                            <property name="use_popover">True</property>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">False</property>
+                            <property name="pack_type">end</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>

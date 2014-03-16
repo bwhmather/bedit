@@ -413,6 +413,8 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, bottom_panel_box);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, bottom_panel);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, statusbar);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, language_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, tab_width_combo);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_controls);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_eventbox);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_headerbar);
@@ -832,28 +834,13 @@ setup_statusbar (GeditWindow *window)
 	                 G_SETTINGS_BIND_GET);
 
 	/* Tab Width button */
-	window->priv->tab_width_combo = gedit_status_menu_button_new ();
-	gtk_menu_button_set_use_popover (GTK_MENU_BUTTON (window->priv->tab_width_combo), TRUE);
 	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (window->priv->tab_width_combo),
 	                                _gedit_app_get_tab_width_menu (GEDIT_APP (g_application_get_default ())));
-	gtk_widget_show (window->priv->tab_width_combo);
-	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
-	                  window->priv->tab_width_combo,
-	                  FALSE,
-	                  TRUE,
-	                  0);
 
 	/* Language button */
-	window->priv->language_button = gedit_status_menu_button_new ();
 	window->priv->language_popover = gtk_popover_new (window->priv->language_button);
 	gtk_menu_button_set_popover (GTK_MENU_BUTTON (window->priv->language_button),
 	                             window->priv->language_popover);
-	gtk_widget_show (window->priv->language_button);
-	gtk_box_pack_end (GTK_BOX (window->priv->statusbar),
-	                  window->priv->language_button,
-	                  FALSE,
-	                  TRUE,
-	                  0);
 
 	sel = gedit_highlight_mode_selector_new ();
 	g_signal_connect (sel,
