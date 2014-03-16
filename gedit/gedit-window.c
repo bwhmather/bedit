@@ -749,25 +749,6 @@ _gedit_recent_remove (GeditWindow *window,
 }
 
 static void
-open_recent_file (GFile       *location,
-		  GeditWindow *window)
-{
-	GSList *locations = NULL;
-	GSList *loaded = NULL;
-
-	locations = g_slist_prepend (locations, (gpointer) location);
-	loaded = gedit_commands_load_locations (window, locations, NULL, 0, 0);
-
-	if (!loaded || loaded->next) /* if it doesn't contain just 1 element */
-	{
-		_gedit_recent_remove (window, location);
-	}
-
-	g_slist_free (locations);
-	g_slist_free (loaded);
-}
-
-static void
 recent_chooser_item_activated (GtkRecentChooser *chooser,
 			       GeditWindow      *window)
 {
@@ -780,7 +761,20 @@ recent_chooser_item_activated (GtkRecentChooser *chooser,
 
 	if (location)
 	{
-		open_recent_file (location, window);
+		GSList *locations = NULL;
+		GSList *loaded = NULL;
+
+		locations = g_slist_prepend (locations, (gpointer) location);
+		loaded = gedit_commands_load_locations (window, locations, NULL, 0, 0);
+
+		if (!loaded || loaded->next) /* if it doesn't contain just 1 element */
+		{
+			_gedit_recent_remove (window, location);
+		}
+
+		g_slist_free (locations);
+		g_slist_free (loaded);
+
 		g_object_unref (location);
 	}
 
