@@ -558,6 +558,18 @@ replace_text_entry_changed (GtkEditable        *editable,
 	update_responses_sensitivity (dialog);
 }
 
+static void
+regex_checkbutton_toggled (GtkToggleButton    *checkbutton,
+			   GeditReplaceDialog *dialog)
+{
+	if (!gtk_toggle_button_get_active (checkbutton))
+	{
+		/* Remove the regex error state so the user can search again */
+		set_search_error (dialog, NULL);
+		update_responses_sensitivity (dialog);
+	}
+}
+
 /* TODO: move in gedit-document.c and share it with gedit-view-frame */
 static gboolean
 get_selected_text (GtkTextBuffer  *doc,
@@ -702,6 +714,11 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 	g_signal_connect (dlg->priv->replace_text_entry,
 			  "changed",
 			  G_CALLBACK (replace_text_entry_changed),
+			  dlg);
+
+	g_signal_connect (dlg->priv->regex_checkbutton,
+			  "toggled",
+			  G_CALLBACK (regex_checkbutton_toggled),
 			  dlg);
 
 	g_signal_connect (dlg,
