@@ -554,12 +554,14 @@ gedit_app_startup (GApplication *application)
 		gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
 		                                           GTK_STYLE_PROVIDER (provider),
 		                                           GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+		g_object_unref (provider);
 	}
 	else
 	{
 		g_warning ("Could not load css provider: %s", error->message);
 		g_error_free (error);
 	}
+	g_object_unref (css_file);
 
 	/*
 	 * We use the default gtksourceview style scheme manager so that plugins
