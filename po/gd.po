@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
 "keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-02-23 06:14+0000\n"
-"PO-Revision-Date: 2014-02-23 13:37+0100\n"
+"POT-Creation-Date: 2014-03-20 06:14+0000\n"
+"PO-Revision-Date: 2014-03-20 09:17+0200\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
@@ -630,9 +630,9 @@ msgstr "Dùin _gun a shàbhaladh"
 #: ../gedit/gedit-commands-file.c:642 ../gedit/gedit-commands-file.c:849
 #: ../gedit/gedit-commands-file.c:1299 ../gedit/gedit-encodings-dialog.ui.h:3
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:2
-#: ../gedit/gedit-io-error-info-bar.c:138
-#: ../gedit/gedit-io-error-info-bar.c:550
-#: ../gedit/gedit-io-error-info-bar.c:1230
+#: ../gedit/gedit-io-error-info-bar.c:134
+#: ../gedit/gedit-io-error-info-bar.c:546
+#: ../gedit/gedit-io-error-info-bar.c:1222
 #: ../gedit/gedit-preferences-dialog.c:830
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
@@ -848,7 +848,7 @@ msgstr[3] "A' luchdadh %d faidhle..."
 msgid "Open"
 msgstr "Fosgail"
 
-#. ex:ts=8:noet:
+#. ex:set ts=8 noet:
 #: ../gedit/gedit-commands-file.c:443
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:37
@@ -1080,14 +1080,13 @@ msgstr "Cha deach \"%s\" a lorg"
 msgid "Unsaved Document %d"
 msgstr "Sgrìobhainn gun sàbhaladh %d"
 
-#: ../gedit/gedit-documents-panel.c:406
+#: ../gedit/gedit-documents-panel.c:427
 #, c-format
-#| msgid "Nex_t Tab Group"
 msgid "Tab Group %i"
 msgstr "Buidheann taba %i"
 
-#: ../gedit/gedit-documents-panel.c:560 ../gedit/gedit-window.c:1111
-#: ../gedit/gedit-window.c:1117 ../gedit/gedit-window.c:1125
+#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1083
+#: ../gedit/gedit-window.c:1089 ../gedit/gedit-window.c:1097
 msgid "Read-Only"
 msgstr "Ri leughadh a-mhàin"
 
@@ -1259,7 +1258,6 @@ msgid "_Add"
 msgstr "_Cuir ris"
 
 #: ../gedit/gedit-encodings-dialog.ui.h:9
-#| msgid "Remove Tool"
 msgid "_Remove"
 msgstr "Thoi_r air falbh"
 
@@ -1302,11 +1300,10 @@ msgid "Highlight Mode"
 msgstr "Modh soillseachaidh"
 
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:3
-#| msgid "Selection"
 msgid "_Select"
 msgstr "_Tagh"
 
-#: ../gedit/gedit-highlight-mode-selector.c:247 ../gedit/gedit-window.c:1195
+#: ../gedit/gedit-highlight-mode-selector.c:247 ../gedit/gedit-window.c:1167
 #: ../plugins/externaltools/tools/manager.py:107
 #: ../plugins/externaltools/tools/manager.py:315
 #: ../plugins/externaltools/tools/manager.py:431
@@ -1319,49 +1316,49 @@ msgstr "Teacsa lom"
 msgid "Search highlight mode..."
 msgstr "Modh soillseachaidh an luirg..."
 
-#: ../gedit/gedit-io-error-info-bar.c:151
-#: ../gedit/gedit-io-error-info-bar.c:530
+#: ../gedit/gedit-io-error-info-bar.c:147
+#: ../gedit/gedit-io-error-info-bar.c:526
 msgid "_Retry"
 msgstr "_Feuch ris a-rithist"
 
-#: ../gedit/gedit-io-error-info-bar.c:171
+#: ../gedit/gedit-io-error-info-bar.c:167
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Cha deach am faidhle \"%s\" a lorg."
 
-#: ../gedit/gedit-io-error-info-bar.c:173
-#: ../gedit/gedit-io-error-info-bar.c:213
-#: ../gedit/gedit-io-error-info-bar.c:220
+#: ../gedit/gedit-io-error-info-bar.c:169
+#: ../gedit/gedit-io-error-info-bar.c:209
+#: ../gedit/gedit-io-error-info-bar.c:216
 msgid "Please check that you typed the location correctly and try again."
 msgstr ""
 "Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir is feuch ris a-"
 "rithist."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:192
+#: ../gedit/gedit-io-error-info-bar.c:188
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "Chan urrainn dhuinn ionadan \"%s:\" a làimhseachadh."
 
-#: ../gedit/gedit-io-error-info-bar.c:198
+#: ../gedit/gedit-io-error-info-bar.c:194
 msgid "Unable to handle this location."
 msgstr "Chan urrainn dhuinn an t-ionad seo a làimhseachadh."
 
-#: ../gedit/gedit-io-error-info-bar.c:207
+#: ../gedit/gedit-io-error-info-bar.c:203
 msgid "The location of the file cannot be accessed."
 msgstr "Cha ghabh ionad an fhaidhle inntrigeadh."
 
-#: ../gedit/gedit-io-error-info-bar.c:211
+#: ../gedit/gedit-io-error-info-bar.c:207
 #, c-format
 msgid "“%s” is a directory."
 msgstr "'S e pasgan a th' ann an \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:218
+#: ../gedit/gedit-io-error-info-bar.c:214
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "Chan e ionad dhligheach a th' ann an \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:254
+#: ../gedit/gedit-io-error-info-bar.c:250
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1370,7 +1367,7 @@ msgstr ""
 "Cha deach an òstair \"%s\" a lorg. Dèan cinnteach gu bheil roghainnean a' "
 "phrogsaidh agad mar bu chòir is feuch ris a-rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:269
+#: ../gedit/gedit-io-error-info-bar.c:265
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1379,56 +1376,56 @@ msgstr ""
 "Bha ainm an òstair mì-dhligheach. Dèan cinnteach gun do sgrìobh thu an t-"
 "ionad mar bu chòir is feuch ris a-rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:277
+#: ../gedit/gedit-io-error-info-bar.c:273
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "Chan e faidhle àbhaisteach th' ann an \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:282
+#: ../gedit/gedit-io-error-info-bar.c:278
 msgid "Connection timed out. Please try again."
 msgstr "Dh'fhalbh an ùine air a' cheangal. Am feuch thu ris a-rithist?"
 
-#: ../gedit/gedit-io-error-info-bar.c:305
+#: ../gedit/gedit-io-error-info-bar.c:301
 msgid "The file is too big."
 msgstr "Tha am faidhle ro mhòr."
 
-#: ../gedit/gedit-io-error-info-bar.c:346
+#: ../gedit/gedit-io-error-info-bar.c:342
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Mearachd air nach robh dùil: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:382
+#: ../gedit/gedit-io-error-info-bar.c:378
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr ""
 "Chan urrainn dhuinn am faidhle a lorg. 'S dòcha gun deach a sguabadh às o "
 "chionn ghoirid."
 
-#: ../gedit/gedit-io-error-info-bar.c:392
+#: ../gedit/gedit-io-error-info-bar.c:388
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "Cha b' urrainn dhuinn am faidhle \"%s\" aiseag."
 
-#: ../gedit/gedit-io-error-info-bar.c:419
+#: ../gedit/gedit-io-error-info-bar.c:415
 msgid "Ch_aracter Encoding:"
 msgstr "Còdachadh cha_ractaran:"
 
-#: ../gedit/gedit-io-error-info-bar.c:480
+#: ../gedit/gedit-io-error-info-bar.c:476
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "Cha ghabh an t-ionad \"%s\" ruigsinn aig an àm seo."
 
-#: ../gedit/gedit-io-error-info-bar.c:495
+#: ../gedit/gedit-io-error-info-bar.c:491
 msgid "Your system is offline. Check your network."
 msgstr "Tha an siostam agad far loidhne. Thoir sùil air an lìonra agad."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:538
-#: ../gedit/gedit-io-error-info-bar.c:810
+#: ../gedit/gedit-io-error-info-bar.c:534
+#: ../gedit/gedit-io-error-info-bar.c:806
 msgid "Edit Any_way"
 msgstr "Deasaich co-_dhiù"
 
-#: ../gedit/gedit-io-error-info-bar.c:636
+#: ../gedit/gedit-io-error-info-bar.c:632
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1436,30 +1433,30 @@ msgstr ""
 "Tha an àireamh de cheanglaichean a thèid a leantainn cuingichte is cha deach "
 "leinn am faidhle a lorg taobh a-staigh a' chuingeachaidh seo."
 
-#: ../gedit/gedit-io-error-info-bar.c:640
+#: ../gedit/gedit-io-error-info-bar.c:636
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Tha cead a dhìth ort gus am faidhle seo fhosgladh."
 
-#: ../gedit/gedit-io-error-info-bar.c:646
+#: ../gedit/gedit-io-error-info-bar.c:642
 msgid "Unable to detect the character encoding."
 msgstr "Cha deach leinn an còdachadh charactaran aithneachadh."
 
-#: ../gedit/gedit-io-error-info-bar.c:647
-#: ../gedit/gedit-io-error-info-bar.c:669
+#: ../gedit/gedit-io-error-info-bar.c:643
+#: ../gedit/gedit-io-error-info-bar.c:665
 msgid "Please check that you are not trying to open a binary file."
 msgstr ""
 "Dèan cinnteach nach eil thu a' feuchainn ri faidhle bìnearaidh fhosgladh."
 
-#: ../gedit/gedit-io-error-info-bar.c:648
+#: ../gedit/gedit-io-error-info-bar.c:644
 msgid "Select a character encoding from the menu and try again."
 msgstr "Tagh còdachadh charactaran on chlàr-taice is feuch ris a-rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:654
+#: ../gedit/gedit-io-error-info-bar.c:650
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "Bha trioblaid ann a' fosgladh an fhaidhle \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:656
+#: ../gedit/gedit-io-error-info-bar.c:652
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1468,37 +1465,37 @@ msgstr ""
 "leanas tu air deasachadh an fhaidhle seo, dh'fhaoidte gun coirb thu an "
 "sgrìobhainn seo."
 
-#: ../gedit/gedit-io-error-info-bar.c:659
+#: ../gedit/gedit-io-error-info-bar.c:655
 msgid "You can also choose another character encoding and try again."
 msgstr ""
 "'S urrainn dhut còdachadh charactaran eile a thaghadh is feuchainn ris a-"
 "rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:666
+#: ../gedit/gedit-io-error-info-bar.c:662
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr ""
 "Cha b' urrainn dhuinn am faidhle \"%s\" fhosgladh leis a' chòdachadh "
 "charactaran \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:670
-#: ../gedit/gedit-io-error-info-bar.c:744
+#: ../gedit/gedit-io-error-info-bar.c:666
+#: ../gedit/gedit-io-error-info-bar.c:740
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Tagh còdachadh charactaran eile on chlàr-taice is feuch ris a-rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:680
+#: ../gedit/gedit-io-error-info-bar.c:676
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "Cha b' urrainn dhuinn am faidhle \"%s\" fhosgladh."
 
-#: ../gedit/gedit-io-error-info-bar.c:739
+#: ../gedit/gedit-io-error-info-bar.c:735
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr ""
 "Cha b' urrainn dhuinn am faidhle \"%s\" a shàbhaladh leis a' chòdachadh "
 "charactaran \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:742
+#: ../gedit/gedit-io-error-info-bar.c:738
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1508,28 +1505,28 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:815
+#: ../gedit/gedit-io-error-info-bar.c:811
 msgid "D_on't Edit"
 msgstr "N_a deasaich"
 
-#: ../gedit/gedit-io-error-info-bar.c:825
+#: ../gedit/gedit-io-error-info-bar.c:821
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Tha am faidhle \"%s\" seo fosgailte ann an uinneag eile mar-thà."
 
-#: ../gedit/gedit-io-error-info-bar.c:839
+#: ../gedit/gedit-io-error-info-bar.c:835
 msgid "Do you want to edit it anyway?"
 msgstr "A bheil thu airson a dheasachadh co-dhiù?"
 
-#: ../gedit/gedit-io-error-info-bar.c:895
-#: ../gedit/gedit-io-error-info-bar.c:987
-#: ../gedit/gedit-io-error-info-bar.c:1278
+#: ../gedit/gedit-io-error-info-bar.c:891
+#: ../gedit/gedit-io-error-info-bar.c:983
+#: ../gedit/gedit-io-error-info-bar.c:1270
 msgid "S_ave Anyway"
 msgstr "S_àbhail co-dhiù"
 
-#: ../gedit/gedit-io-error-info-bar.c:898
-#: ../gedit/gedit-io-error-info-bar.c:990
-#: ../gedit/gedit-io-error-info-bar.c:1281
+#: ../gedit/gedit-io-error-info-bar.c:894
+#: ../gedit/gedit-io-error-info-bar.c:986
+#: ../gedit/gedit-io-error-info-bar.c:1273
 msgid "D_on't Save"
 msgstr "N_a sàbhail"
 
@@ -1537,32 +1534,32 @@ msgstr "N_a sàbhail"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:912
+#: ../gedit/gedit-io-error-info-bar.c:908
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "Chaidh am faidhle \"%s\" atharrachadh on deach a leughadh."
 
-#: ../gedit/gedit-io-error-info-bar.c:927
+#: ../gedit/gedit-io-error-info-bar.c:923
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Ma shàbhaileas tu e, dh'fhaoidte gun tèid a h-uile atharrachadh taobh a-"
 "muigh air chall. A bheil thu airson a shàbhaladh co-dhiù?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1009
+#: ../gedit/gedit-io-error-info-bar.c:1005
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr ""
 "Cha b' urrainn dhuinn faidhle lethbhric-ghlèidhidh a chruthachadh fad 's a "
 "bha sinn a' sàbhaladh \"%s\""
 
-#: ../gedit/gedit-io-error-info-bar.c:1014
+#: ../gedit/gedit-io-error-info-bar.c:1010
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
 "Cha b' urrainn dhuinn faidhle lethbhric-ghlèidhidh sealach a chruthachadh "
 "fad 's a bha sinn a' sàbhaladh \"%s\""
 
-#: ../gedit/gedit-io-error-info-bar.c:1031
+#: ../gedit/gedit-io-error-info-bar.c:1027
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1575,7 +1572,7 @@ msgstr ""
 "seann lethbhreac dhen fhaidhle. A bheil thu airson a shàbhaladh co-dhiù?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1091
+#: ../gedit/gedit-io-error-info-bar.c:1087
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1585,7 +1582,7 @@ msgstr ""
 "Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir is feuch ris a-"
 "rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:1099
+#: ../gedit/gedit-io-error-info-bar.c:1095
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1594,7 +1591,7 @@ msgstr ""
 "Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir is feuch ris a-"
 "rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:1108
+#: ../gedit/gedit-io-error-info-bar.c:1104
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1603,7 +1600,7 @@ msgstr ""
 "Chan e ionad dligheach a th' ann an \"%s\". Dèan cinnteach gun do sgrìobh "
 "thu an t-ionad mar bu chòir is feuch ris a-rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:1115
+#: ../gedit/gedit-io-error-info-bar.c:1111
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1611,7 +1608,7 @@ msgstr ""
 "Cha cead a dhìth ort gus am faidhle a shàbhaladh. Dèan cinnteach gun do "
 "sgrìobh thu an t-ionad mar bu chòir is feuch ris a-rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1117
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1619,7 +1616,7 @@ msgstr ""
 "Chan eil rum gu leòr air an diosga gus am faidhle a shàbhaladh. Saoraich rum "
 "air an diosga is feuch ris a-rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:1126
+#: ../gedit/gedit-io-error-info-bar.c:1122
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1628,13 +1625,13 @@ msgstr ""
 "leughadh a-mhàin. Dèan cinnteach gun do sgrìobh thu an t-ionad mar bu chòir "
 "is feuch ris a-rithist."
 
-#: ../gedit/gedit-io-error-info-bar.c:1132
+#: ../gedit/gedit-io-error-info-bar.c:1128
 msgid "A file with the same name already exists. Please use a different name."
 msgstr ""
 "Tha faidhle air a bheil an t-ainm seo ann mar-thà. Feuch an cleachd thu ainm "
 "eile."
 
-#: ../gedit/gedit-io-error-info-bar.c:1137
+#: ../gedit/gedit-io-error-info-bar.c:1133
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1643,7 +1640,7 @@ msgstr ""
 "thu a' feuchainn ris an fhaidhle a shàbhaladh. Feuch an cleachd thu ainm nas "
 "giorra."
 
-#: ../gedit/gedit-io-error-info-bar.c:1144
+#: ../gedit/gedit-io-error-info-bar.c:1140
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1653,34 +1650,30 @@ msgstr ""
 "thu a' feuchainn ris an fhaidhle a shàbhaladh. Feuch an sàbhail thu faidhle "
 "nas lugha no an sàbhail thu gu diosga air nach eil an cuingeachadh seo."
 
-#: ../gedit/gedit-io-error-info-bar.c:1160
+#: ../gedit/gedit-io-error-info-bar.c:1156
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Cha b' urrainn dhuinn am faidhle \"%s\" a shàbhaladh."
 
-#. FIXME: review this message, it's not clear since for the user the "modification"
-#. * could be interpreted as the changes he made in the document. beside "reading" is
-#. * not accurate (since last load/save)
-#.
-#: ../gedit/gedit-io-error-info-bar.c:1204
+#: ../gedit/gedit-io-error-info-bar.c:1196
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "Tha am faidhle \"%s\" air atharrachadh air an diosga."
 
-#: ../gedit/gedit-io-error-info-bar.c:1215
+#: ../gedit/gedit-io-error-info-bar.c:1207
 msgid "Drop Changes and _Reload"
 msgstr "Leig seachad na h-atharraichean is _ath-luchdaich"
 
-#: ../gedit/gedit-io-error-info-bar.c:1225 ../gedit/gedit-menu.ui.h:6
+#: ../gedit/gedit-io-error-info-bar.c:1217 ../gedit/gedit-menu.ui.h:6
 msgid "_Reload"
 msgstr "_Ath-luchdaich"
 
-#: ../gedit/gedit-io-error-info-bar.c:1291
+#: ../gedit/gedit-io-error-info-bar.c:1283
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "Mhothaich sinn caractaran mì-dhligheach le sàbhaladh \"%s\""
 
-#: ../gedit/gedit-io-error-info-bar.c:1307
+#: ../gedit/gedit-io-error-info-bar.c:1299
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1771,7 +1764,6 @@ msgid "Move to New Tab _Group"
 msgstr "Gluais gu buidhea_nn thabaichean ùr"
 
 #: ../gedit/gedit-menu.ui.h:24
-#| msgid "Automatic indent"
 msgid "Automatic Indentation"
 msgstr "Eag fhèin-obrachail"
 
@@ -1822,7 +1814,7 @@ msgstr "Cha b' urrainn dhuinn an sgeama dhathan \"%s\" a sguabadh às."
 msgid "Preferences"
 msgstr "Roghainnean"
 
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:525
+#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:526
 msgid "_Display line numbers"
 msgstr "_Seall àireamhan loidhne"
 
@@ -2097,7 +2089,6 @@ msgid "Replace _All"
 msgstr "Cuir an àite n_a h-uile"
 
 #: ../gedit/gedit-replace-dialog.ui.h:5
-#| msgid "_Find…"
 msgid "_Find"
 msgstr "_Lorg"
 
@@ -2145,7 +2136,7 @@ msgstr "INS"
 msgid "  Ln %d, Col %d"
 msgstr "  Ln %d, Col %d"
 
-#: ../gedit/gedit-statusbar.c:269
+#: ../gedit/gedit-statusbar.c:271
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -2156,99 +2147,98 @@ msgstr[3] "Tha %d taba le mearachdan ann"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:762
+#: ../gedit/gedit-tab.c:764
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Ag aiseag %s o %s"
 
-#: ../gedit/gedit-tab.c:769
+#: ../gedit/gedit-tab.c:771
 #, c-format
 msgid "Reverting %s"
 msgstr "Ag aiseag %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:785
+#: ../gedit/gedit-tab.c:787
 #, c-format
 msgid "Loading %s from %s"
 msgstr "A' luchdadh %s o %s"
 
-#: ../gedit/gedit-tab.c:792
+#: ../gedit/gedit-tab.c:794
 #, c-format
 msgid "Loading %s"
 msgstr "A' luchdadh %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:871
+#: ../gedit/gedit-tab.c:872
 #, c-format
 msgid "Saving %s to %s"
 msgstr "A' sàbhaladh %s gu %s"
 
-#: ../gedit/gedit-tab.c:878
+#: ../gedit/gedit-tab.c:879
 #, c-format
 msgid "Saving %s"
 msgstr "A' sàbhaladh %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1891
+#: ../gedit/gedit-tab.c:1890
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1938
+#: ../gedit/gedit-tab.c:1937
 #, c-format
 msgid "Error opening file %s"
 msgstr "Mearachd a' fosgail an fhaidhle %s"
 
-#: ../gedit/gedit-tab.c:1943
+#: ../gedit/gedit-tab.c:1942
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Mearachd ag aiseag an fhaidhle %s"
 
-#: ../gedit/gedit-tab.c:1948
+#: ../gedit/gedit-tab.c:1947
 #, c-format
 msgid "Error saving file %s"
 msgstr "Mearachd a' sàbhaladh an fhaidhle %s"
 
-#: ../gedit/gedit-tab.c:1969
+#: ../gedit/gedit-tab.c:1968
 msgid "Unicode (UTF-8)"
 msgstr "Unicode (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1976
+#: ../gedit/gedit-tab.c:1975
 msgid "Name:"
 msgstr "Ainm:"
 
-#: ../gedit/gedit-tab.c:1977
+#: ../gedit/gedit-tab.c:1976
 msgid "MIME Type:"
 msgstr "Seòrsa MIME:"
 
-#: ../gedit/gedit-tab.c:1978
+#: ../gedit/gedit-tab.c:1977
 msgid "Encoding:"
 msgstr "Còdachadh:"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-tab-label.ui.h:1
-#| msgid "Close document"
 msgid "Close Document"
 msgstr "Dùin an sgrìobhainn"
 
-#: ../gedit/gedit-utils.c:840
+#: ../gedit/gedit-utils.c:846
 msgid "Please check your installation."
 msgstr "An dearbhaich thu an stàladh agad?"
 
-#: ../gedit/gedit-utils.c:898
+#: ../gedit/gedit-utils.c:904
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Cha b' urrainn dhuinn am faidhle UI %s fhosgladh. Mearachd: %s"
 
-#: ../gedit/gedit-utils.c:917
+#: ../gedit/gedit-utils.c:923
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr ""
 "Cha b' urrainn dhuinn an oibseact \"%s\" a lorg am broinn na faidhle %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1140
+#: ../gedit/gedit-utils.c:1146
 #, c-format
 msgid "/ on %s"
 msgstr "/ air %s"
@@ -2290,30 +2280,34 @@ msgstr "An sreang a tha thu airson lorg"
 msgid "Line you want to move the cursor to"
 msgstr "An loidhne dhan a bheil thu airson an cùrsair a ghluasad"
 
-#: ../gedit/gedit-window.c:961
+#: ../gedit/gedit-window.c:933
 msgid "Bracket match is out of range"
 msgstr "Chan eil a' chamag a cho-fhreagras san rainse"
 
-#: ../gedit/gedit-window.c:966
+#: ../gedit/gedit-window.c:938
 msgid "Bracket match not found"
 msgstr "Cha deach a' chamag a cho-fhreagras a lorg"
 
-#: ../gedit/gedit-window.c:971
+#: ../gedit/gedit-window.c:943
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Chaidh a' chamag a cho-fhreagras a lorg air an loidhne %d"
 
-#: ../gedit/gedit-window.c:1177
+#: ../gedit/gedit-window.c:1149
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Leud nan tabaichean: %u"
 
-#: ../gedit/gedit-window.c:1549
+#: ../gedit/gedit-window.c:1521
 msgid "There are unsaved documents"
 msgstr "Tha sgrìobhainn gun sàbhaladh ann"
 
+#: ../gedit/gedit-window.c:2472
+msgid "Change side panel page"
+msgstr "Atharraich duilleig na panail-taoibh"
+
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-window.c:2519 ../gedit/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2492 ../gedit/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Sgrìobhainnean"
 
@@ -2326,14 +2320,28 @@ msgid "Open a recently used file"
 msgstr "Fosgail faidhle o chionn ghoirid"
 
 #: ../gedit/gedit-window.ui.h:5
+#| msgid "Maximum Recent Files"
+msgid "Recent files"
+msgstr "Faidhlichean o chionn ghoirid"
+
+#: ../gedit/gedit-window.ui.h:6
 msgid "Create a new document"
 msgstr "Cruthaich sgrìobhainn ùr"
 
-#: ../gedit/gedit-window.ui.h:6
+#. "New" is for creating a new document.
+#: ../gedit/gedit-window.ui.h:8
+msgid "New"
+msgstr "Ùr"
+
+#: ../gedit/gedit-window.ui.h:9
 msgid "Save the current file"
 msgstr "Sàbhail am faidhle làithreach"
 
-#: ../gedit/gedit-window.ui.h:7
+#: ../gedit/gedit-window.ui.h:10
+msgid "Save"
+msgstr "Sàbhail"
+
+#: ../gedit/gedit-window.ui.h:11
 msgid "Leave Fullscreen"
 msgstr "Fàg an làn-sgrìn"
 
@@ -2497,11 +2505,11 @@ msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr ""
 "Ainm cruth-clò Pango. Mar eisimpleir, \"Sans 12\" no \"Monospace Bold 14\"."
 
-#: ../plugins/externaltools/tools/appactivatable.py:117
+#: ../plugins/externaltools/tools/appactivatable.py:126
 msgid "Manage _External Tools..."
 msgstr "Stiùirich innealan tao_bh a-muigh..."
 
-#: ../plugins/externaltools/tools/appactivatable.py:122
+#: ../plugins/externaltools/tools/appactivatable.py:131
 msgid "External _Tools"
 msgstr "_Innealan taobh a-muigh"
 
@@ -2554,7 +2562,7 @@ msgstr "Sgrìobh luathaichear ùr no brùth air backspace gus fhalamhachadh"
 msgid "Type a new accelerator"
 msgstr "Sgrìobh luathaichear ùr"
 
-#: ../plugins/externaltools/tools/outputpanel.py:120
+#: ../plugins/externaltools/tools/outputpanel.py:122
 msgid "Stopped."
 msgstr "Air stad."
 
@@ -2683,7 +2691,7 @@ msgstr "À_s-chur:"
 msgid "_Applicability:"
 msgstr "Iomch_aidheachd:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:124
+#: ../plugins/externaltools/tools/windowactivatable.py:118
 msgid "Tool Output"
 msgstr "Às-chur an inneil"
 
@@ -2887,7 +2895,7 @@ msgstr "Cha b' urrainn dhuinn am  meadhan %s fhosgladh"
 msgid "Could not mount volume: %s"
 msgstr "Cha b' urrainn dhuinn an draibh %s a mhunntachadh"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2762
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2788
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Thachair mearachd rè luchdadh \"%s\": Chan eil am pasgan seo ann"
@@ -3310,7 +3318,7 @@ msgstr "_Leig às targaidean:"
 msgid "S_ort..."
 msgstr "_Seòrsaich..."
 
-#. ex:ts=8:noet:
+#. ex:set ts=8 noet:
 #: ../plugins/sort/gedit-sort-plugin.ui.h:1
 #: ../plugins/sort/sort.plugin.desktop.in.h:1
 msgid "Sort"
@@ -3434,7 +3442,7 @@ msgstr "Tha an sgrìobhainn falamh."
 msgid "No misspelled words"
 msgstr "Chaidh na h-uile facal a litreachadh mar bu chòir"
 
-#. ex:ts=8:noet:
+#. ex:set ts=8 noet:
 #: ../plugins/spell/languages-dialog.ui.h:1
 msgid "Set Language"
 msgstr "Suidhich an cànan"
@@ -3538,7 +3546,7 @@ msgstr "Cuir a-_steach ceann-là is àm..."
 msgid "Available formats"
 msgstr "Fòrmatan ri làimh"
 
-#. ex:ts=8:noet:
+#. ex:set ts=8 noet:
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:1
 msgid "Configure date/time plugin"
 msgstr "Rèitich plugan a' chinn-là 's ama"
@@ -3842,9 +3850,6 @@ msgstr ""
 
 #~ msgid "Open '%s'"
 #~ msgstr "Fosgail \"%s\""
-
-#~ msgid "Save"
-#~ msgstr "Sàbhail"
 
 #~ msgid "Activate '%s'"
 #~ msgstr "Gnìomhaich \"%s\""
