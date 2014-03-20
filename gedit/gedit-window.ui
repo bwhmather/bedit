@@ -492,12 +492,14 @@
     <property name="can_focus">False</property>
     <property name="filter">recent_filter</property>
     <property name="limit">10</property>
+    <property name="sort-type">mru</property>
   </object>
   <object class="GtkRecentChooserMenu" id="fullscreen_recent_menu">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="filter">recent_filter</property>
     <property name="limit">10</property>
+    <property name="sort-type">mru</property>
   </object>
 </interface>
 
