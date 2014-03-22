@@ -35,9 +35,9 @@
   bind "<shift><alt>Left"     { "move-cursor" (words, -1, 1) };
   bind "<shift><alt>KP_Left"  { "move-cursor" (words, -1, 1) };
 
-  bind "<alt>delete"          { "delete-from-cursor" (word-ends, 1) };
-  bind "<alt>KP_delete"       { "delete-from-cursor" (word-ends, 1) };
-  bind "<alt>backspace"       { "delete-from-cursor" (word-ends, -1) };
+  bind "<alt>Delete"          { "delete-from-cursor" (word-ends, 1) };
+  bind "<alt>KP_Delete"       { "delete-from-cursor" (word-ends, 1) };
+  bind "<alt>BackSpace"       { "delete-from-cursor" (word-ends, -1) };
 
   bind "<primary>Down"           { "move-cursor" (buffer-ends, 1, 0) };
   bind "<primary><shift>Down"    { "move-cursor" (buffer-ends, 1, 1) };
