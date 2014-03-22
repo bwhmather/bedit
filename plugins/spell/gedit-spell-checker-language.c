@@ -74,9 +74,9 @@ get_iso_codes_locale_dir (void)
 				       NULL);
 #else
 #if OS_OSX
-	if (quartz_application_get_bundle_id ())
+	if (gtkosx_application_get_bundle_id () != NULL)
 	{
-		const gchar *bundle_resource_dir = quartz_application_get_resource_path ();
+		const gchar *bundle_resource_dir = gtkosx_application_get_resource_path ();
 
 		locale_dir = g_build_filename (bundle_resource_dir,
 		                               "share",
@@ -113,9 +113,9 @@ get_iso_codes_xml_name (gint iso)
 				      NULL);
 #else
 #if OS_OSX
-	if (quartz_application_get_bundle_id ())
+	if (gtkosx_application_get_bundle_id () != NULL)
 	{
-		const gchar *bundle_resource_dir = quartz_application_get_resource_path ();
+		const gchar *bundle_resource_dir = gtkosx_application_get_resource_path ();
 
 		share_dir = g_build_filename (bundle_resource_dir,
 		                               "share",
