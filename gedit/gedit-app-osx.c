@@ -418,6 +418,13 @@ gedit_app_osx_init (GeditAppOSX *app)
 {
 	GtkOSXApplication *osxapp;
 
+	/* This is required so that Cocoa is not going to parse the
+	   command line arguments by itself and generate OpenFile events.
+	   We already parse the command line ourselves, so this is needed
+	   to prevent opening files twice, etc. */
+	[[NSUserDefaults standardUserDefaults] setObject:@"NO"
+	                                       forKey:@"NSTreatUnknownArgumentsAsOpen"];
+
 	/* This is a singleton */
 	osxapp = g_object_new (GTK_TYPE_OSX_APPLICATION, NULL);
 
