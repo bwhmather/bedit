@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"POT-Creation-Date: 2014-03-13 06:14+0000\n"
-"PO-Revision-Date: 2014-03-18 19:50+0100\n"
+"POT-Creation-Date: 2014-03-25 08:54+0000\n"
+"PO-Revision-Date: 2014-03-25 11:00+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -110,10 +110,10 @@ msgid ""
 "color schemes that you can download and use, are available on the <link href="
 "\"http://live.gnome.org/GtkSourceView/StyleSchemes\">gedit wiki</link>."
 msgstr ""
-"Návod, jak si nainstalovat vlastní schéma barev, stejně jako ukázka "
-"schématu barev, kterou si můžete stáhnout a použít, jsou dostupné na <link "
-"href=\"http://live.gnome.org/GtkSourceView/StyleSchemes\">wiki editoru "
-"gedit</link> (odkazovaný text je v angličtině)."
+"Návod, jak si nainstalovat vlastní schéma barev, stejně jako ukázka schématu "
+"barev, kterou si můžete stáhnout a použít, jsou dostupné na <link href="
+"\"http://live.gnome.org/GtkSourceView/StyleSchemes\">wiki editoru gedit</"
+"link> (odkazovaný text je v angličtině)."
 
 #. (itstool) path: credit/years
 #: C/gedit-change-default-font.page:11
@@ -248,8 +248,8 @@ msgid ""
 "system in bad ways. Take great care when editing files as the root user."
 msgstr ""
 "Upravovat soubory jako uživatel root je potenciálně rizikové a může vést k "
-"narušení vašeho operačního systému. Proto při takovéto práci dávejte obvzlášť "
-"pozor, co děláte."
+"narušení vašeho operačního systému. Proto při takovéto práci dávejte "
+"obvzlášť pozor, co děláte."
 
 #. (itstool) path: page/p
 #: C/gedit-edit-as-root.page:22
@@ -801,8 +801,8 @@ msgid ""
 "Once the <em>Change Case</em> plugin is enabled, you can use it by "
 "completing the following steps:"
 msgstr ""
-"Až máte zásuvný modul <em>Změnit velikosti písmen</em> povolený, můžete "
-"jej používat následujícím postupem:"
+"Až máte zásuvný modul <em>Změnit velikosti písmen</em> povolený, můžete jej "
+"používat následujícím postupem:"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-change-case.page:32
@@ -989,8 +989,8 @@ msgid ""
 msgstr ""
 "V závislosti na tom, k čemu <app>gedit</app> používáte, se vám může někdy "
 "hodit využít <app>Panel prohlížeče souborů</app>. Tento zásuvný modul "
-"zabuduje do postranního panelu <app>prohlížeč souborů</app>, který vám poskytne "
-"přístup k často používaným souborům."
+"zabuduje do postranního panelu <app>prohlížeč souborů</app>, který vám "
+"poskytne přístup k často používaným souborům."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-file-browser.page:27
@@ -2835,9 +2835,9 @@ msgid ""
 "<keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>."
 msgstr ""
 "Text, který jste vyhledali, zůstane zvýrazněný, i po dokončení hledání. "
-"Pokud budete chtít zvýraznění odstranit, klikněte na <guiseq><gui>Hledat</gui> "
-"<gui>Zrušit zvýrazňování</gui></guiseq> nebo zmáčkněte <keyseq><key>Ctrl</"
-"key> <key>Shift</key> <key>K</key></keyseq>."
+"Pokud budete chtít zvýraznění odstranit, klikněte na <guiseq><gui>Hledat</"
+"gui> <gui>Zrušit zvýrazňování</gui></guiseq> nebo zmáčkněte "
+"<keyseq><key>Ctrl</key> <key>Shift</key> <key>K</key></keyseq>."
 
 #. (itstool) path: credit/name
 #: C/gedit-shortcut-keys.page:17
@@ -3278,8 +3278,8 @@ msgstr "Převést vybraný text na velká písmena"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:243
-msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>L</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>L</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:246
@@ -3287,7 +3287,7 @@ msgid "Convert the selected text to lower case"
 msgstr "Převést vybraný text na malá písmena"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:247 C/gedit-shortcut-keys.page:251
+#: C/gedit-shortcut-keys.page:247
 msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 
@@ -3295,6 +3295,11 @@ msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 #: C/gedit-shortcut-keys.page:250
 msgid "Toggle case of the selected text"
 msgstr "Přepnout velikost písmen ve vybraném textu"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:251
+msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 
 #. (itstool) path: table/title
 #: C/gedit-shortcut-keys.page:257
@@ -3524,9 +3529,9 @@ msgid ""
 "displayed in bold style next to <gui>Misspelled word:</gui>. You can choose "
 "from the following corrective actions:"
 msgstr ""
-"V dialogovém okně kontroly pravopisu můžete chybné slovo nechat nahradit jeho "
-"správnou alternativou. Odhalené chybné slovo je zobrazeno tučně vedle <gui>Chybné "
-"slovo:</gui>. Při opravě můžete použít následující postupy:"
+"V dialogovém okně kontroly pravopisu můžete chybné slovo nechat nahradit "
+"jeho správnou alternativou. Odhalené chybné slovo je zobrazeno tučně vedle "
+"<gui>Chybné slovo:</gui>. Při opravě můžete použít následující postupy:"
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:77
@@ -3534,9 +3539,9 @@ msgid ""
 "<gui style=\"input\">Change to:</gui> allows you to input a word and use "
 "<gui style=\"button\">Check Word</gui> to check the validity of the spelling."
 msgstr ""
-"Do pole <gui style=\"input\">Změnit na:</gui> můžete zadat "
-"nové slovo a pomocí <gui style=\"button\">Zkontrolovat slovo</gui> ověřit, "
-"jestli jste ho zadali správně."
+"Do pole <gui style=\"input\">Změnit na:</gui> můžete zadat nové slovo a "
+"pomocí <gui style=\"button\">Zkontrolovat slovo</gui> ověřit, jestli jste ho "
+"zadali správně."
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:82
