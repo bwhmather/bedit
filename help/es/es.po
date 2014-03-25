@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2014-03-06 06:16+0000\n"
-"PO-Revision-Date: 2014-03-07 13:21+0100\n"
+"POT-Creation-Date: 2014-03-25 08:54+0000\n"
+"PO-Revision-Date: 2014-03-25 10:15+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -2997,19 +2997,16 @@ msgstr "Cerrar todas las pestañas."
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:90
-#| msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>W</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key><key>W</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:93
-#| msgid "Reopen a recently-used file"
 msgid "Reopen the most recently closed tab"
 msgstr "Reabrir la pestaña cerrada más recientemente"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:94
-#| msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Mayús</key><key>T</key></keyseq>"
 
@@ -3318,33 +3315,35 @@ msgstr "<keyseq><key>Mayús</key><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:242
-#| msgid "Move the selected line up one line"
 msgid "Convert the selected text to upper case"
 msgstr "Convertir el texto seleccionado a mayúsculas"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:243
-#| msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
-msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>L</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Mayús</key><key>L</key></keyseq>"
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:246
-#| msgid "Move the selected line down one line"
 msgid "Convert the selected text to lower case"
 msgstr "Convertir el texto seleccionado a minúsculas"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:247 C/gedit-shortcut-keys.page:251
-#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+#: C/gedit-shortcut-keys.page:247
 msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:250
-#| msgid "Change the case of selected text"
 msgid "Toggle case of the selected text"
 msgstr "Cambiar la capitalización del texto seleccionado"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:251
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 
 #. (itstool) path: table/title
 #: C/gedit-shortcut-keys.page:257
@@ -4234,6 +4233,10 @@ msgstr ""
 "sin soporte 3.0. Para ver una copia de esta licencia, visite <_:link-1/> o "
 "envíe una carta a Creative Commons, 444 Castro Street, Suite 900, Mountain "
 "View, California, 94041, USA."
+
+#~| msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
+#~ msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>L</key></keyseq>"
+#~ msgstr "<keyseq><key>Ctrl</key><key>Mayús</key><key>L</key></keyseq>"
 
 #~ msgid ""
 #~ "To save a file in <app>gedit</app>, click on the disk-drive icon with the "
