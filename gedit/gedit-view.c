@@ -840,8 +840,8 @@ gedit_view_class_init (GeditViewClass *klass)
 	                              G_TYPE_INT, 1);
 
 	gtk_binding_entry_add_signal (binding_set,
-	                              GDK_KEY_l,
-	                              GDK_CONTROL_MASK | GDK_SHIFT_MASK,
+	                              GDK_KEY_u,
+	                              GDK_CONTROL_MASK,
 	                              "change_case", 1,
 	                              G_TYPE_ENUM, GTK_SOURCE_CHANGE_CASE_UPPER);
 	gtk_binding_entry_add_signal (binding_set,
