@@ -34,14 +34,29 @@
   </menu>
   <menu id="gear_menu_withappmenu">
     <section>
+      <attribute name="id">juntion-section</attribute>
+      <attribute name="display-hint">horizontal-buttons</attribute>
+      <item>
+        <attribute name="label" translatable="yes">_Reload</attribute>
+        <attribute name="action">win.revert</attribute>
+        <attribute name="verb-icon">view-refresh-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Print…</attribute>
+        <attribute name="action">win.print</attribute>
+        <attribute name="verb-icon">printer-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Fullscreen</attribute>
+        <attribute name="action">win.fullscreen</attribute>
+        <attribute name="verb-icon">view-fullscreen-symbolic</attribute>
+      </item>
+    </section>
+    <section>
       <attribute name="id">file-section</attribute>
     </section>
     <section>
       <attribute name="id">file-section-1</attribute>
-      <item>
-        <attribute name="label" translatable="yes">_Reload</attribute>
-        <attribute name="action">win.revert</attribute>
-      </item>
       <item>
         <attribute name="label" translatable="yes">_Save As…</attribute>
         <attribute name="action">win.save-as</attribute>
@@ -52,11 +67,10 @@
       </item>
     </section>
     <section>
-      <attribute name="id">print-section</attribute>
-      <item>
-        <attribute name="label" translatable="yes">_Print…</attribute>
-        <attribute name="action">win.print</attribute>
-      </item>
+      <attribute name="id">edit-section</attribute>
+    </section>
+    <section>
+      <attribute name="id">edit-section-1</attribute>
     </section>
     <section>
       <attribute name="id">search-section</attribute>
@@ -78,45 +92,43 @@
       </item>
     </section>
     <section>
-      <attribute name="id">edit-section</attribute>
-    </section>
-    <section>
-      <attribute name="id">edit-section-1</attribute>
-    </section>
-    <section>
-      <attribute name="id">view-section</attribute>
-      <item>
-        <attribute name="label" translatable="yes">Side _Panel</attribute>
-        <attribute name="action">win.side-panel</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Bottom Panel</attribute>
-        <attribute name="action">win.bottom-panel</attribute>
-        <attribute name="hidden-when">action-disabled</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Fullscreen</attribute>
-        <attribute name="action">win.fullscreen</attribute>
-      </item>
-    </section>
-    <section>
-      <attribute name="id">view-section-1</attribute>
-    </section>
-    <section>
-      <attribute name="id">view-section-2</attribute>
-      <item>
-        <attribute name="label" translatable="yes">_Highlight Mode…</attribute>
-        <attribute name="action">win.highlight-mode</attribute>
-      </item>
-    </section>
-    <section>
-      <attribute name="id">spell-section</attribute>
-    </section>
-    <section>
-      <attribute name="id">tools-section</attribute>
-    </section>
-    <section>
-      <attribute name="id">tools-section-1</attribute>
+      <submenu>
+        <attribute name="label">View</attribute>
+        <section>
+          <attribute name="id">view-section</attribute>
+          <item>
+            <attribute name="label" translatable="yes">Side _Panel</attribute>
+            <attribute name="action">win.side-panel</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">_Bottom Panel</attribute>
+            <attribute name="action">win.bottom-panel</attribute>
+            <attribute name="hidden-when">action-disabled</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">view-section-1</attribute>
+        </section>
+        <section>
+          <attribute name="id">view-section-2</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Highlight Mode…</attribute>
+            <attribute name="action">win.highlight-mode</attribute>
+          </item>
+        </section>
+      </submenu>
+      <submenu>
+        <attribute name="label">Tools</attribute>
+        <section>
+          <attribute name="id">spell-section</attribute>
+        </section>
+        <section>
+          <attribute name="id">tools-section</attribute>
+        </section>
+        <section>
+          <attribute name="id">tools-section-1</attribute>
+        </section>
+      </submenu>
     </section>
     <section>
       <attribute name="id">close-section</attribute>
@@ -132,14 +144,29 @@
   </menu>
   <menu id="gear_menu_noappmenu">
     <section>
+      <attribute name="id">juntion-section</attribute>
+      <attribute name="display-hint">horizontal-buttons</attribute>
+      <item>
+        <attribute name="label" translatable="yes">_Reload</attribute>
+        <attribute name="action">win.revert</attribute>
+        <attribute name="verb-icon">view-refresh-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Print…</attribute>
+        <attribute name="action">win.print</attribute>
+        <attribute name="verb-icon">printer-symbolic</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Fullscreen</attribute>
+        <attribute name="action">win.fullscreen</attribute>
+        <attribute name="verb-icon">view-fullscreen-symbolic</attribute>
+      </item>
+    </section>
+    <section>
       <attribute name="id">file-section</attribute>
     </section>
     <section>
       <attribute name="id">file-section-1</attribute>
-      <item>
-        <attribute name="label" translatable="yes">_Reload</attribute>
-        <attribute name="action">win.revert</attribute>
-      </item>
       <item>
         <attribute name="label" translatable="yes">_Save As…</attribute>
         <attribute name="action">win.save-as</attribute>
@@ -150,11 +177,10 @@
       </item>
     </section>
     <section>
-      <attribute name="id">print-section</attribute>
-      <item>
-        <attribute name="label" translatable="yes">_Print…</attribute>
-        <attribute name="action">win.print</attribute>
-      </item>
+      <attribute name="id">edit-section</attribute>
+    </section>
+    <section>
+      <attribute name="id">edit-section-1</attribute>
     </section>
     <section>
       <attribute name="id">search-section</attribute>
@@ -176,12 +202,6 @@
       </item>
     </section>
     <section>
-      <attribute name="id">edit-section</attribute>
-    </section>
-    <section>
-      <attribute name="id">edit-section-1</attribute>
-    </section>
-    <section>
       <attribute name="id">view-section</attribute>
       <item>
         <attribute name="label" translatable="yes">Side _Panel</attribute>
@@ -191,10 +211,6 @@
         <attribute name="label" translatable="yes">_Bottom Panel</attribute>
         <attribute name="action">win.bottom-panel</attribute>
         <attribute name="hidden-when">action-disabled</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Fullscreen</attribute>
-        <attribute name="action">win.fullscreen</attribute>
       </item>
     </section>
     <section>
