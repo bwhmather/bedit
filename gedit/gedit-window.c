@@ -1322,16 +1322,22 @@ set_sensitivity_according_to_window_state (GeditWindow *window)
 	                             num_tabs > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
+	                             num_tabs > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-as");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
+	                             num_tabs > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "revert");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "print");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             !(lockdown & GEDIT_LOCKDOWN_PRINTING) &&
+	                             num_tabs > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
@@ -1927,10 +1933,14 @@ update_sensitivity_according_to_open_tabs (GeditWindow *window,
 	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
+	                             num_tabs > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-as");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
+	                             num_tabs > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close-all");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
@@ -1951,7 +1961,9 @@ update_sensitivity_according_to_open_tabs (GeditWindow *window,
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), (window->priv->closed_docs_stack != NULL));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "print");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             !(lockdown & GEDIT_LOCKDOWN_PRINTING) &&
+	                             num_tabs > 0);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
