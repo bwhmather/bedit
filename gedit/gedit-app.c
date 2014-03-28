@@ -1523,6 +1523,26 @@ find_extension_point_section (GMenuModel  *model,
 		{
 			section = g_menu_model_get_item_link (model, i, G_MENU_LINK_SECTION);
 		}
+		/* unamed sections are to be checked recursively */
+		else if (id == NULL)
+		{
+			GMenuModel *subsection;
+			GMenuModel *submenu;
+			gint j, j_items;
+
+			subsection = g_menu_model_get_item_link (model, i, G_MENU_LINK_SECTION);
+
+			j_items = g_menu_model_get_n_items (subsection);
+
+			for (j = 0; j < j_items && !section; j++)
+			{
+				submenu = g_menu_model_get_item_link (subsection, j, G_MENU_LINK_SUBMENU);
+				if (submenu)
+				{
+					section = find_extension_point_section (submenu, extension_point);
+				}
+			}
+		}
 
 		g_free (id);
 	}
