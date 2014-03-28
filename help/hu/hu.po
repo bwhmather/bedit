@@ -7,15 +7,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit_help master\n"
-"POT-Creation-Date: 2014-03-09 06:16+0000\n"
-"PO-Revision-Date: 2014-03-22 04:45+0100\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"POT-Creation-Date: 2014-03-25 18:23+0000\n"
+"PO-Revision-Date: 2014-03-26 06:53+0100\n"
+"Last-Translator: Attila Hammer <hammera at pickup dot hu>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Poedit 1.5.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -23,8 +23,8 @@ msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Hammer Attila <hammera at pickup dot hu>, 2014.\n"
-"Kelemen Gábor <kelemeng at gnome dot hu>, 2007, 2008, 2009, 2010, 2011, 2012, "
-"2013.\n"
+"Kelemen Gábor <kelemeng at gnome dot hu>, 2007, 2008, 2009, 2010, 2011, "
+"2012, 2013.\n"
 "Őry Máté <orymate at gmail dot com>, 2007, 2008."
 
 #. (itstool) path: credit/name
@@ -1086,8 +1086,8 @@ msgstr ""
 "Harmadik féltől származó bővítmények telepítése olyan extra funkciókat "
 "biztosít, amelyeket sem a <app>gedit</app> alaptelepítése, sem a <app>gedit-"
 "plugins</app> csomag nem tartalmaz. A harmadik féltől származó bővítmények "
-"online listája elérhető <link href=\"https://wiki.gnome.org/Apps/Gedit/Plugins"
-"#third_party\">itt</link>."
+"online listája elérhető <link href=\"https://wiki.gnome.org/Apps/Gedit/"
+"Plugins#third_party\">itt</link>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-install.page:27
@@ -1544,8 +1544,8 @@ msgid ""
 "Recent documents which are also shown in the <file>Recent</file> folder in "
 "<app>Files</app>"
 msgstr ""
-"A legutóbbi dokumentumok, amelyek a <app>Fájlok</app> alkalmazás <file>Nemrég "
-"használt</file> mappájában is megjelennek"
+"A legutóbbi dokumentumok, amelyek a <app>Fájlok</app> alkalmazás "
+"<file>Nemrég használt</file> mappájában is megjelennek"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-quick-open.page:55
@@ -1740,16 +1740,14 @@ msgstr ""
 msgid ""
 "\n"
 "      &lt;head&gt;\n"
-"      &lt;meta http-equiv=\"Content-type\" content=\"text/html; "
-"charset=utf-8\" /&gt;\n"
+"      &lt;meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" /&gt;\n"
 "      &lt;title&gt;Page Title&lt;/title&gt;\n"
 "      &lt;/head&gt;\n"
 "    "
 msgstr ""
 "\n"
 "      &lt;head&gt;\n"
-"      &lt;meta http-equiv=\"Content-type\" content=\"text/html; "
-"charset=utf-8\" /&gt;\n"
+"      &lt;meta http-equiv=\"Content-type\" content=\"text/html; charset=utf-8\" /&gt;\n"
 "      &lt;title&gt;Oldalcím&lt;/title&gt;\n"
 "      &lt;/head&gt;\n"
 "    "
@@ -2482,8 +2480,7 @@ msgid ""
 "<keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgstr ""
 "A <gui>Csere</gui> eszközt a <guiseq><gui style=\"menu\">Keresés</gui><gui "
-"style="
-"\"menuitem\">Csere</gui></guiseq> menüpont kiválasztásával, vagy a "
+"style=\"menuitem\">Csere</gui></guiseq> menüpont kiválasztásával, vagy a "
 "<keyseq><key>Ctrl</key><key>H</key></keyseq> billentyűkombináció "
 "megnyomásával indíthatja el."
 
@@ -2506,16 +2503,15 @@ msgid ""
 "Once you have entered the original and replacement text, you can add extra "
 "parameters to the search. You can also choose what you want to replace:"
 msgstr ""
-"Az eredeti és helyettesítő szöveg megadása után további paramétereket adhat a "
-"kereséshez. Kiválaszthatja azt is, mit kíván cserélni:"
+"Az eredeti és helyettesítő szöveg megadása után további paramétereket adhat "
+"a kereséshez. Kiválaszthatja azt is, mit kíván cserélni:"
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:56
 msgid "To replace <em>only</em> the next match, click <gui>Replace</gui>."
 msgstr ""
-"<em>Csak</em> a következő előfordulás cseréjéhez kattintson a <gui>Csere</gui>"
-" "
-"gombra."
+"<em>Csak</em> a következő előfordulás cseréjéhez kattintson a <gui>Csere</"
+"gui> gombra."
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:60
@@ -2668,13 +2664,11 @@ msgid ""
 "<input>\\n</input>, use the <input>\\\\n</input> term."
 msgstr ""
 "Ha egy <output>\\</output> (fordított osztásjelet) vagy egy más escape "
-"sorozatot szeretne "
-"keresni a szövegben, a fordított osztásjelet egy extra \\ jellel kell "
-"védenie. Például, "
-"a <input>\\</input> jelek kereséséhez a <input>\\\\</input> szöveget kell "
-"beírnia a keresés vagy csere mezőbe. A különböző escape jelöléseket hasonló "
-"módon keresheti: A <input>\\n</input> kereséséhez vagy cseréjéhez használja "
-"a <input>\\\\n</input> kifejezést."
+"sorozatot szeretne keresni a szövegben, a fordított osztásjelet egy extra \\ "
+"jellel kell védenie. Például, a <input>\\</input> jelek kereséséhez a <input>"
+"\\\\</input> szöveget kell beírnia a keresés vagy csere mezőbe. A különböző "
+"escape jelöléseket hasonló módon keresheti: A <input>\\n</input> kereséséhez "
+"vagy cseréjéhez használja a <input>\\\\n</input> kifejezést."
 
 #. (itstool) path: page/title
 #: C/gedit-save-file.page:26
@@ -2688,10 +2682,10 @@ msgid ""
 "the current file</gui> button with the disk-drive icon on the right side of "
 "the toolbar or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
 msgstr ""
-"Egy fájl mentéséhez a <app>gedit</app> alkalmazással kattintson az "
-"eszköztár jobb oldalán található, lemezmeghajtó ikonnal jelölt <gui "
-"style=\"button\">A jelenlegi fájl mentése</gui> gombra, vagy nyomja le a "
-"<keyseq><key>Ctrl</key><key>S</key></keyseq> billentyűkombinációt."
+"Egy fájl mentéséhez a <app>gedit</app> alkalmazással kattintson az eszköztár "
+"jobb oldalán található, lemezmeghajtó ikonnal jelölt <gui style=\"button\">A "
+"jelenlegi fájl mentése</gui> gombra, vagy nyomja le a <keyseq><key>Ctrl</"
+"key><key>S</key></keyseq> billentyűkombinációt."
 
 #. (itstool) path: page/p
 #: C/gedit-save-file.page:31
@@ -3304,8 +3298,9 @@ msgstr "A kijelölt szöveg nagybetűssé alakítása"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:243
-msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>L</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>L</key></keyseq>"
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:246
@@ -3313,7 +3308,7 @@ msgid "Convert the selected text to lower case"
 msgstr "A kijelölt szöveg kisbetűssé alakítása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:247 C/gedit-shortcut-keys.page:251
+#: C/gedit-shortcut-keys.page:247
 msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 
@@ -3321,6 +3316,12 @@ msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 #: C/gedit-shortcut-keys.page:250
 msgid "Toggle case of the selected text"
 msgstr "A kijelölt szöveg kis- és nagybetűsségének átváltása"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:251
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 
 #. (itstool) path: table/title
 #: C/gedit-shortcut-keys.page:257
@@ -3881,9 +3882,8 @@ msgid ""
 "See the <link xref=\"gedit-shortcut-keys\">tab-related shortcut keys</link> "
 "table to make it easier to manage your tab groups."
 msgstr ""
-"A lapcsoportok kezelésének megkönnyítéséhez nézze meg a <link "
-"xref=\"gedit-shortcut-"
-"keys\">lapokkal kapcsolatos gyorsbillentyűk</link> táblázatát."
+"A lapcsoportok kezelésének megkönnyítéséhez nézze meg a <link xref=\"gedit-"
+"shortcut-keys\">lapokkal kapcsolatos gyorsbillentyűk</link> táblázatát."
 
 #. (itstool) path: page/title
 #: C/gedit-tabs-moving.page:31
@@ -4210,6 +4210,9 @@ msgstr ""
 "alatt érhető el. A licenc másolatának megjelenítéséhez keresse fel a <_:"
 "link-1/> oldalt, vagy küldjön levelet a következő címre: Creative Commons, "
 "444 Castro Street, Suite 900, Mountain View, California, 94041, USA."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>L</key></keyseq>"
+#~ msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>L</key></keyseq>"
 
 #~ msgid ""
 #~ "The easiest way to create a new file in <app>gedit</app>, is to click the "
