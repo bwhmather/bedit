@@ -25,6 +25,7 @@ import hashlib
 from xml.sax import saxutils
 from gi.repository import Gio, GObject, Gtk, GtkSource, Gedit
 
+
 class LanguagesPopup(Gtk.Popover):
     __gtype_name__ = "LanguagePopup"
 
@@ -127,9 +128,10 @@ class LanguagesPopup(Gtk.Popover):
         else:
             self.model.set_value(self.model.get_iter_first(), self.COLUMN_ENABLED, False)
 
+
 class Manager(GObject.Object):
-    TOOL_COLUMN = 0 # For Tree
-    NAME_COLUMN = 1 # For Combo
+    TOOL_COLUMN = 0  # For Tree
+    NAME_COLUMN = 1  # For Combo
 
     __gsignals__ = {
         'tools-updated': (GObject.SignalFlags.RUN_LAST, None, ())
@@ -150,17 +152,17 @@ class Manager(GObject.Object):
 
     def build(self):
         callbacks = {
-            'on_add_tool_button_clicked'    : self.on_add_tool_button_clicked,
-            'on_remove_tool_button_clicked' : self.on_remove_tool_button_clicked,
-            'on_tool_manager_dialog_delete_event' : self.on_tool_manager_dialog_delete_event,
+            'on_add_tool_button_clicked': self.on_add_tool_button_clicked,
+            'on_remove_tool_button_clicked': self.on_remove_tool_button_clicked,
+            'on_tool_manager_dialog_delete_event': self.on_tool_manager_dialog_delete_event,
             'on_tool_manager_dialog_focus_out': self.on_tool_manager_dialog_focus_out,
             'on_tool_manager_dialog_configure_event': self.on_tool_manager_dialog_configure_event,
-            'on_accelerator_key_press'        : self.on_accelerator_key_press,
-            'on_accelerator_focus_in'         : self.on_accelerator_focus_in,
-            'on_accelerator_focus_out'        : self.on_accelerator_focus_out,
-            'on_accelerator_backspace'        : self.on_accelerator_backspace,
-            'on_applicability_changed'        : self.on_applicability_changed,
-            'on_languages_button_clicked'     : self.on_languages_button_clicked
+            'on_accelerator_key_press': self.on_accelerator_key_press,
+            'on_accelerator_focus_in': self.on_accelerator_focus_in,
+            'on_accelerator_focus_out': self.on_accelerator_focus_out,
+            'on_accelerator_backspace': self.on_accelerator_backspace,
+            'on_applicability_changed': self.on_applicability_changed,
+            'on_languages_button_clicked': self.on_languages_button_clicked
         }
 
         # Load the "main-window" widget from the ui file.
@@ -208,7 +210,7 @@ class Manager(GObject.Object):
         self.view.get_selection().select_path(row.get_path())
 
     def run(self, window):
-        if self.dialog == None:
+        if self.dialog is None:
             self.build()
 
         # Open up language
@@ -379,7 +381,7 @@ class Manager(GObject.Object):
 
     def save_current_tool(self):
         if self.current_node is None:
-             return
+            return
 
         if self.current_node.filename is None:
             self.current_node.autoset_filename()
@@ -544,7 +546,9 @@ class Manager(GObject.Object):
 
         piter = self.add_tool(self.current_node)
 
-        self.view.set_cursor(self.model.get_path(piter), self.view.get_column(self.TOOL_COLUMN), True)
+        self.view.set_cursor(self.model.get_path(piter),
+                             self.view.get_column(self.TOOL_COLUMN),
+                             True)
         self.fill_fields()
 
         self['tool-grid'].set_sensitive(True)
@@ -552,7 +556,9 @@ class Manager(GObject.Object):
 
     def tool_changed(self, tool, refresh=False):
         for row in self._tool_rows[tool]:
-            self.model.set_value(self.model.get_iter(row.get_path()), self.TOOL_COLUMN, tool)
+            self.model.set_value(self.model.get_iter(row.get_path()),
+                                 self.TOOL_COLUMN,
+                                 tool)
 
         if refresh and tool == self.current_node:
             self.fill_fields()
@@ -596,7 +602,9 @@ class Manager(GObject.Object):
                     self.script_hash = None
 
                     if self.model.iter_is_valid(piter):
-                        self.view.set_cursor(self.model.get_path(piter), self.view.get_column(self.TOOL_COLUMN), False)
+                        self.view.set_cursor(self.model.get_path(piter),
+                                             self.view.get_column(self.TOOL_COLUMN),
+                                             False)
 
                 self.view.grab_focus()
 
@@ -727,7 +735,7 @@ class Manager(GObject.Object):
     def on_tool_manager_dialog_delete_event(self, dialog, event):
         self.save_current_tool()
         return False
-    
+
     def on_tool_manager_dialog_focus_out(self, dialog, event):
         self.save_current_tool()
         self.emit('tools-updated')

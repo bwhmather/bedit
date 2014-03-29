@@ -22,21 +22,22 @@ import locale
 import platform
 from gi.repository import GLib
 
+
 class Singleton(object):
     _instance = None
 
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
-            cls._instance = super(Singleton, cls).__new__(
-                             cls, *args, **kwargs)
+            cls._instance = super(Singleton, cls).__new__(cls, *args, **kwargs)
             cls._instance.__init_once__()
 
         return cls._instance
 
+
 class ToolLibrary(Singleton):
     def __init_once__(self):
         self.locations = []
-    
+
     def set_locations(self, datadir):
         self.locations = []
 
@@ -56,7 +57,7 @@ class ToolLibrary(Singleton):
             else:
                 toolsdir = os.path.join(GLib.get_user_config_dir(), 'gedit/tools')
 
-        self.locations.insert(0, toolsdir);
+        self.locations.insert(0, toolsdir)
 
         if not os.path.isdir(self.locations[0]):
             os.makedirs(self.locations[0])
@@ -111,7 +112,7 @@ class ToolLibrary(Singleton):
 
             tool.save_with_script(xtool.text)
 
-    def get_full_path(self, path, mode='r', system = True, local = True):
+    def get_full_path(self, path, mode='r', system=True, local=True):
         assert (system or local)
         if path is None:
             return None
@@ -136,6 +137,7 @@ class ToolLibrary(Singleton):
             if not os.path.isdir(dirname):
                 os.mkdir(dirname)
             return path
+
 
 class ToolDirectory(object):
     def __init__(self, parent, dirname):
@@ -209,7 +211,7 @@ class ToolDirectory(object):
 class Tool(object):
     RE_KEY = re.compile('^([a-zA-Z_][a-zA-Z0-9_.\-]*)(\[([a-zA-Z_@]+)\])?$')
 
-    def __init__(self, parent, filename = None):
+    def __init__(self, parent, filename=None):
         super(Tool, self).__init__()
         self.parent = parent
         self.library = parent.library
@@ -226,7 +228,7 @@ class Tool(object):
             return []
         else:
             return [x.strip() for x in value.split(',')]
-    
+
     def _from_list(self, value):
         return ','.join(value)
 
@@ -252,8 +254,10 @@ class Tool(object):
             if not in_block:
                 in_block = line.startswith('# [Gedit Tool]')
                 continue
-            if line.startswith('##') or line.startswith('# #'): continue
-            if not line.startswith('# '): break
+            if line.startswith('##') or line.startswith('# #'):
+                continue
+            if not line.startswith('# '):
+                break
 
             try:
                 (key, value) = [i.strip() for i in line[2:].split('=', 1)]
@@ -266,7 +270,7 @@ class Tool(object):
                 break
         fp.close()
         self.changed = False
-        
+
     def _set_property_if_changed(self, key, value):
         if value != self._properties.get(key):
             self._properties[key] = value
@@ -297,66 +301,90 @@ class Tool(object):
 
     def get_applicability(self):
         applicability = self._properties.get('Applicability')
-        if applicability: return applicability
+        if applicability:
+            return applicability
         return 'all'
+
     def set_applicability(self, value):
         self._set_property_if_changed('Applicability', value)
+
     applicability = property(get_applicability, set_applicability)
 
     def get_name(self):
         name = self._properties.get('Name')
-        if name: return name
+        if name:
+            return name
         return os.path.basename(self.filename)
+
     def set_name(self, value):
         self._set_property_if_changed('Name', value)
+
     name = property(get_name, set_name)
 
     def get_shortcut(self):
         shortcut = self._properties.get('Shortcut')
-        if shortcut: return shortcut
+        if shortcut:
+            return shortcut
         return None
+
     def set_shortcut(self, value):
         self._set_property_if_changed('Shortcut', value)
+
     shortcut = property(get_shortcut, set_shortcut)
 
     def get_comment(self):
         comment = self._properties.get('Comment')
-        if comment: return comment
+        if comment:
+            return comment
         return self.filename
+
     def set_comment(self, value):
         self._set_property_if_changed('Comment', value)
+
     comment = property(get_comment, set_comment)
 
     def get_input(self):
         input = self._properties.get('Input')
-        if input: return input
+        if input:
+            return input
         return 'nothing'
+
     def set_input(self, value):
         self._set_property_if_changed('Input', value)
+
     input = property(get_input, set_input)
 
     def get_output(self):
         output = self._properties.get('Output')
-        if output: return output
+        if output:
+            return output
         return 'output-panel'
+
     def set_output(self, value):
         self._set_property_if_changed('Output', value)
+
     output = property(get_output, set_output)
 
     def get_save_files(self):
         save_files = self._properties.get('Save-files')
-        if save_files: return save_files
+        if save_files:
+            return save_files
         return 'nothing'
+
     def set_save_files(self, value):
         self._set_property_if_changed('Save-files', value)
+
     save_files = property(get_save_files, set_save_files)
-    
+
     def get_languages(self):
         languages = self._properties.get('Languages')
-        if languages: return languages
+        if languages:
+            return languages
         return []
+
     def set_languages(self, value):
         self._set_property_if_changed('Languages', value)
+
     languages = property(get_languages, set_languages)
 
     def has_hash_bang(self):
@@ -371,7 +399,6 @@ class Tool(object):
         for line in fp:
             if line.strip() == '':
                 continue
-            
             return line.startswith('#!')
 
     # There is no property for this one because this function is quite
@@ -394,7 +421,8 @@ class Tool(object):
             lines.append(line)
         # in the block:
         for line in fp:
-            if line.startswith('##'): continue
+            if line.startswith('##'):
+                continue
             if not (line.startswith('# ') and '=' in line):
                 # after the block: strip one emtpy line (if present)
                 if line.strip() != '':
@@ -417,7 +445,6 @@ class Tool(object):
 
     def save_with_script(self, script):
         filename = self.library.get_full_path(self.filename, 'w')
-        
         fp = open(filename, 'w', 1)
 
         # Make sure to first print header (shebang, modeline), then
@@ -429,7 +456,6 @@ class Tool(object):
         # Parse
         for line in script:
             line = line.rstrip("\n")
-            
             if not inheader:
                 content.append(line)
             elif line.startswith('#!'):
@@ -444,10 +470,10 @@ class Tool(object):
         # Write out header
         for line in header:
             fp.write(line + "\n")
-        
+
         fp.write(self._dump_properties())
         fp.write("\n")
-        
+
         for line in content:
             fp.write(line + "\n")
 

@@ -18,6 +18,7 @@
 
 import re
 
+
 class Link:
     """
     This class represents a file link from within a string given by the
@@ -34,15 +35,16 @@ class Link:
         start -- the index within the string that the link starts at
         end -- the index within the string where the link ends at
         """
-        self.path    = path
+        self.path = path
         self.line_nr = int(line_nr)
-        self.col_nr  = int(col_nr)
-        self.start   = start
-        self.end     = end
+        self.col_nr = int(col_nr)
+        self.start = start
+        self.end = end
 
     def __repr__(self):
         return "%s[%s][%s](%s:%s)" % (self.path, self.line_nr, self.col_nr,
                                       self.start, self.end)
+
 
 class LinkParser:
     """
@@ -103,6 +105,7 @@ class LinkParser:
 
         return links
 
+
 class AbstractLinkParser(object):
     """The "abstract" base class for link parses"""
 
@@ -117,6 +120,7 @@ class AbstractLinkParser(object):
         text -- the text to parse. This argument is never None.
         """
         raise NotImplementedError("need to implement a parse method")
+
 
 class RegexpLinkParser(AbstractLinkParser):
     """

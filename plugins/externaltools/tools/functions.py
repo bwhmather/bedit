@@ -20,23 +20,26 @@ import os
 from gi.repository import Gio, Gtk, Gdk, GtkSource, Gedit
 from .capture import *
 
+
 def default(val, d):
     if val is not None:
         return val
     else:
         return d
 
+
 def current_word(document):
     piter = document.get_iter_at_mark(document.get_insert())
     start = piter.copy()
-    
+
     if not piter.starts_word() and (piter.inside_word() or piter.ends_word()):
         start.backward_word_start()
-    
+
     if not piter.ends_word() and piter.inside_word():
         piter.forward_word_end()
-            
+
     return (start, piter)
+
 
 def file_browser_root(window):
     bus = window.get_message_bus()
@@ -49,8 +52,9 @@ def file_browser_root(window):
 
             if browser_root and browser_root.is_native():
                 return browser_root.get_path()
-                
+
     return None
+
 
 # ==== Capture related functions ====
 def run_external_tool(window, panel, node):
@@ -58,58 +62,58 @@ def run_external_tool(window, panel, node):
     try:
         cwd = os.getcwd()
     except OSError:
-        cwd = os.getenv('HOME');
+        cwd = os.getenv('HOME')
 
     capture = Capture(node.command, cwd)
     capture.env = os.environ.copy()
-    capture.set_env(GEDIT_CWD = cwd)
+    capture.set_env(GEDIT_CWD=cwd)
 
     view = window.get_active_view()
     if view is not None:
         # Environment vars relative to current document
         document = view.get_buffer()
         location = document.get_location()
-        
+
         # Current line number
         piter = document.get_iter_at_mark(document.get_insert())
         capture.set_env(GEDIT_CURRENT_LINE_NUMBER=str(piter.get_line() + 1))
-        
+
         # Current line text
         piter.set_line_offset(0)
         end = piter.copy()
-        
+
         if not end.ends_line():
             end.forward_to_line_end()
-        
+
         capture.set_env(GEDIT_CURRENT_LINE=piter.get_text(end))
-        
+
         if document.get_language() is not None:
             capture.set_env(GEDIT_CURRRENT_DOCUMENT_LANGUAGE=document.get_language().get_id())
 
         # Selected text (only if input is not selection)
         if node.input != 'selection' and node.input != 'selection-document':
             bounds = document.get_selection_bounds()
-            
+
             if bounds:
                 capture.set_env(GEDIT_SELECTED_TEXT=bounds[0].get_text(bounds[1]))
-        
+
         bounds = current_word(document)
         capture.set_env(GEDIT_CURRENT_WORD=bounds[0].get_text(bounds[1]))
-        
+
         capture.set_env(GEDIT_CURRENT_DOCUMENT_TYPE=document.get_mime_type())
-        
+
         if location is not None:
             scheme = location.get_uri_scheme()
             name = location.get_basename()
-            capture.set_env(GEDIT_CURRENT_DOCUMENT_URI    = location.get_uri(),
-                            GEDIT_CURRENT_DOCUMENT_NAME   = name,
-                            GEDIT_CURRENT_DOCUMENT_SCHEME = scheme)
+            capture.set_env(GEDIT_CURRENT_DOCUMENT_URI=location.get_uri(),
+                            GEDIT_CURRENT_DOCUMENT_NAME=name,
+                            GEDIT_CURRENT_DOCUMENT_SCHEME=scheme)
             if location.has_uri_scheme('file'):
                 path = location.get_path()
                 cwd = os.path.dirname(path)
                 capture.set_cwd(cwd)
-                capture.set_env(GEDIT_CURRENT_DOCUMENT_PATH = path,
-                                GEDIT_CURRENT_DOCUMENT_DIR  = cwd)
+                capture.set_env(GEDIT_CURRENT_DOCUMENT_PATH=path,
+                                GEDIT_CURRENT_DOCUMENT_DIR=cwd)
 
         documents_location = [doc.get_location()
                               for doc in window.get_documents()
@@ -120,16 +124,16 @@ def run_external_tool(window, panel, node):
         documents_path = [location.get_path()
                           for location in documents_location
                           if location.has_uri_scheme('file')]
-        capture.set_env(GEDIT_DOCUMENTS_URI  = ' '.join(documents_uri),
-                        GEDIT_DOCUMENTS_PATH = ' '.join(documents_path))
+        capture.set_env(GEDIT_DOCUMENTS_URI=' '.join(documents_uri),
+                        GEDIT_DOCUMENTS_PATH=' '.join(documents_path))
 
     # set file browser root env var if possible
     browser_root = file_browser_root(window)
     if browser_root:
-        capture.set_env(GEDIT_FILE_BROWSER_ROOT = browser_root)
+        capture.set_env(GEDIT_FILE_BROWSER_ROOT=browser_root)
 
     flags = capture.CAPTURE_BOTH
-    
+
     if not node.has_hash_bang():
         flags |= capture.CAPTURE_NEEDS_SHELL
 
@@ -163,7 +167,7 @@ def run_external_tool(window, panel, node):
                 else:
                     start = document.get_iter_at_mark(document.get_insert())
                     end = start.copy()
-                    
+
         elif input_type == 'line':
             start = document.get_iter_at_mark(document.get_insert())
             end = start.copy()
@@ -232,6 +236,7 @@ def run_external_tool(window, panel, node):
     if output_type != 'nothing':
         document.end_user_action()
 
+
 class MultipleDocumentsSaver:
     def __init__(self, window, panel, all_docs, node):
         self._window = window
@@ -247,7 +252,7 @@ class MultipleDocumentsSaver:
         else:
             docs = [window.get_active_document()]
 
-        docs_to_save = [ doc for doc in docs if doc.get_modified() ]
+        docs_to_save = [doc for doc in docs if doc.get_modified()]
         signals = {}
 
         for doc in docs_to_save:
@@ -271,10 +276,10 @@ class MultipleDocumentsSaver:
     def on_document_saved(self, doc, error):
         if error:
             self._error = True
-        
+
         doc.disconnect(self._signal_ids[doc])
         del self._signal_ids[doc]
-        
+
         self._counter -= 1
 
         self.run_tool()
@@ -282,6 +287,7 @@ class MultipleDocumentsSaver:
     def run_tool(self):
         if self._counter == 0 and not self._error:
             run_external_tool(self._window, self._panel, self._node)
+
 
 def capture_menu_action(action, parameter, window, panel, node):
     if node.save_files == 'document' and window.get_active_document():
@@ -293,11 +299,13 @@ def capture_menu_action(action, parameter, window, panel, node):
 
     run_external_tool(window, panel, node)
 
+
 def capture_stderr_line_panel(capture, line, panel):
     if not panel.visible():
         panel.show()
 
     panel.write(line, panel.error_tag)
+
 
 def capture_begin_execute_panel(capture, panel, view, label):
     if view:
@@ -305,14 +313,15 @@ def capture_begin_execute_panel(capture, panel, view, label):
 
     panel['stop'].set_sensitive(True)
     panel.clear()
-    panel.write(_("Running tool:"), panel.italic_tag);
-    panel.write(" %s\n\n" % label, panel.bold_tag);
+    panel.write(_("Running tool:"), panel.italic_tag)
+    panel.write(" %s\n\n" % label, panel.bold_tag)
+
 
 def capture_end_execute_panel(capture, exit_code, panel, view, output_type):
     panel['stop'].set_sensitive(False)
 
     if view:
-        if output_type in ('new-document','replace-document'):
+        if output_type in ('new-document', 'replace-document'):
             doc = view.get_buffer()
             start = doc.get_start_iter()
             end = start.copy()
@@ -340,11 +349,14 @@ def capture_end_execute_panel(capture, exit_code, panel, view, output_type):
         panel.write("\n" + _("Exited") + ":", panel.italic_tag)
         panel.write(" %d\n" % exit_code, panel.bold_tag)
 
+
 def capture_stdout_line_panel(capture, line, panel):
     panel.write(line)
 
+
 def capture_stdout_line_document(capture, line, document, pos):
     document.insert(pos, line)
+
 
 def capture_delayed_replace(capture, line, document, start_iter, end_iter):
     document.delete(start_iter, end_iter)

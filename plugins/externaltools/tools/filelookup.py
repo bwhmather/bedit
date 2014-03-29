@@ -20,11 +20,12 @@ import os
 from gi.repository import Gio, Gedit
 from .functions import *
 
+
 class FileLookup:
     """
     This class is responsible for looking up files given a part or the whole
-    path of a real file. The lookup is delegated to providers wich use different
-    methods of trying to find the real file.
+    path of a real file. The lookup is delegated to providers wich use
+    different methods of trying to find the real file.
     """
 
     def __init__(self, window):
@@ -78,6 +79,7 @@ class AbsoluteFileLookupProvider(FileLookupProvider):
         else:
             return None
 
+
 class BrowserRootFileLookupProvider(FileLookupProvider):
     """
     This lookup provider tries to find a file specified by the path relative to
@@ -92,7 +94,7 @@ class BrowserRootFileLookupProvider(FileLookupProvider):
             real_path = os.path.join(root, path)
             if os.path.isfile(real_path):
                 return Gio.file_new_for_path(real_path)
-            
+
         return None
 
 

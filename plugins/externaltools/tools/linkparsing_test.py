@@ -19,6 +19,7 @@
 import unittest
 from linkparsing import LinkParser
 
+
 class LinkParserTest(unittest.TestCase):
 
     def setUp(self):
