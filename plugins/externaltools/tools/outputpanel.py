@@ -173,7 +173,7 @@ class OutputPanel(UniqueById):
 
     def show(self):
         panel = self.window.get_bottom_panel()
-        panel.visible_child = self.panel
+        panel.props.visible_child = self.panel
         panel.show()
 
     def update_cursor_style(self, view, x, y):
