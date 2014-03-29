@@ -18,28 +18,31 @@
 
 __all__ = ('Capture', )
 
-import os, sys, signal
+import os
+import sys
+import signal
 import locale
 import subprocess
 import fcntl
 from gi.repository import GLib, GObject
 
+
 class Capture(GObject.Object):
     CAPTURE_STDOUT = 0x01
     CAPTURE_STDERR = 0x02
-    CAPTURE_BOTH   = 0x03
+    CAPTURE_BOTH = 0x03
     CAPTURE_NEEDS_SHELL = 0x04
-    
+
     WRITE_BUFFER_SIZE = 0x4000
 
     __gsignals__ = {
-        'stdout-line'  : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_STRING,)),
-        'stderr-line'  : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_STRING,)),
+        'stdout-line': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_STRING,)),
+        'stderr-line': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_STRING,)),
         'begin-execute': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, tuple()),
-        'end-execute'  : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_INT,))
+        'end-execute': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_INT,))
     }
 
-    def __init__(self, command, cwd = None, env = {}):
+    def __init__(self, command, cwd=None, env={}):
         GObject.GObject.__init__(self)
         self.pipe = None
         self.env = env
@@ -58,7 +61,7 @@ class Capture(GObject.Object):
         self.flags = flags
 
     def set_input(self, text):
-        self.input_text = text
+        self.input_text = text.encode("UTF-8") if text else None
 
     def set_cwd(self, cwd):
         self.cwd = cwd
@@ -69,11 +72,11 @@ class Capture(GObject.Object):
 
         # Initialize pipe
         popen_args = {
-            'cwd'  : self.cwd,
+            'cwd': self.cwd,
             'shell': self.flags & self.CAPTURE_NEEDS_SHELL,
-            'env'  : self.env
+            'env': self.env
         }
-        
+
         if self.input_text is not None:
             popen_args['stdin'] = subprocess.PIPE
         if self.flags & self.CAPTURE_STDOUT:
@@ -82,9 +85,10 @@ class Capture(GObject.Object):
             popen_args['stderr'] = subprocess.PIPE
 
         self.tried_killing = False
-        self.idle_write_id = 0
+        self.in_channel = None
         self.out_channel = None
         self.err_channel = None
+        self.in_channel_id = 0
         self.out_channel_id = 0
         self.err_channel_id = 0
 
@@ -94,69 +98,80 @@ class Capture(GObject.Object):
             self.pipe = None
             self.emit('stderr-line', _('Could not execute command: %s') % (e, ))
             return
-        
-        # Signal
-        self.emit('begin-execute')
-        
-        if self.flags & self.CAPTURE_STDOUT:
-            # Set non blocking
-            flags = fcntl.fcntl(self.pipe.stdout.fileno(), fcntl.F_GETFL) | os.O_NONBLOCK
-            fcntl.fcntl(self.pipe.stdout.fileno(), fcntl.F_SETFL, flags)
 
-            self.out_channel = GLib.IOChannel.unix_new(self.pipe.stdout.fileno())
-            self.out_channel_id = GLib.io_add_watch(self.out_channel,
-                                                    GLib.PRIORITY_DEFAULT,
-                                                    GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
-                                                    self.on_output)
+        self.emit('begin-execute')
+
+        if self.input_text is not None:
+            self.in_channel, self.in_channel_id = self.add_in_watch(self.pipe.stdin.fileno(),
+                                                                    self.on_in_writable)
+
+        if self.flags & self.CAPTURE_STDOUT:
+            self.out_channel, self.out_channel_id = self.add_out_watch(self.pipe.stdout.fileno(),
+                                                                       self.on_output)
 
         if self.flags & self.CAPTURE_STDERR:
-            # Set non blocking
-            flags = fcntl.fcntl(self.pipe.stderr.fileno(), fcntl.F_GETFL) | os.O_NONBLOCK
-            fcntl.fcntl(self.pipe.stderr.fileno(), fcntl.F_SETFL, flags)
-
-            self.err_channel = GLib.IOChannel.unix_new(self.pipe.stderr.fileno())
-            self.err_channel_id = GLib.io_add_watch(self.err_channel,
-                                                    GLib.PRIORITY_DEFAULT,
-                                                    GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
-                                                    self.on_err_output)
-
-        # IO
-        if self.input_text is not None:
-            # Write async, in chunks of something
-            self.write_buffer = self.input_text.encode('utf-8')
-
-            if self.idle_write_chunk():
-                self.idle_write_id = GLib.idle_add(self.idle_write_chunk)
+            self.err_channel, self.err_channel_id = self.add_out_watch(self.pipe.stderr.fileno(),
+                                                                       self.on_err_output)
 
         # Wait for the process to complete
-        GLib.child_watch_add(GLib.PRIORITY_DEFAULT, self.pipe.pid, self.on_child_end)
+        GLib.child_watch_add(GLib.PRIORITY_DEFAULT,
+                             self.pipe.pid,
+                             self.on_child_end)
 
-    def idle_write_chunk(self):
-        if not self.pipe:
-            self.idle_write_id = 0
-            return False
+    def add_in_watch(self, fd, io_func):
+        channel = GLib.IOChannel.unix_new(fd)
+        channel.set_flags(channel.get_flags() | GLib.IOFlags.NONBLOCK)
+        channel.set_encoding(None)
+        channel_id = GLib.io_add_watch(channel,
+                                       GLib.PRIORITY_DEFAULT,
+                                       GLib.IOCondition.OUT | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
+                                       io_func)
+        return (channel, channel_id)
 
-        try:
-            l = len(self.write_buffer)
-            m = min(l, self.WRITE_BUFFER_SIZE)
+    def add_out_watch(self, fd, io_func):
+        channel = GLib.IOChannel.unix_new(fd)
+        channel.set_flags(channel.get_flags() | GLib.IOFlags.NONBLOCK)
+        channel_id = GLib.io_add_watch(channel,
+                                       GLib.PRIORITY_DEFAULT,
+                                       GLib.IOCondition.IN | GLib.IOCondition.HUP | GLib.IOCondition.ERR,
+                                       io_func)
+        return (channel, channel_id)
 
-            self.pipe.stdin.write(self.write_buffer[:m])
-
-            if m == l:
-                self.write_buffer = b''
-                self.pipe.stdin.close()
-
-                self.idle_write_id = 0
-
+    def write_chunk(self, dest, condition):
+        if condition & (GObject.IO_OUT):
+            status = GLib.IOStatus.NORMAL
+            l = len(self.input_text)
+            while status == GLib.IOStatus.NORMAL:
+                if l == 0:
+                    return False
+                m = min(l, self.WRITE_BUFFER_SIZE)
+                try:
+                    (status, length) = dest.write_chars(self.input_text, m)
+                    self.input_text = self.input_text[length:]
+                    l -= length
+                except Exception as e:
+                    return False
+            if status != GLib.IOStatus.AGAIN:
                 return False
-            else:
-                self.write_buffer = self.write_buffer[m:]
-                return True
-        except IOError:
-            self.pipe.stdin.close()
-            self.idle_write_id = 0
 
+        if condition & ~(GObject.IO_OUT):
             return False
+
+        return True
+
+    def on_in_writable(self, dest, condition):
+        ret = self.write_chunk(dest, condition)
+        if ret is False:
+            self.input_text = None
+            try:
+                self.in_channel.shutdown(True)
+            except:
+                pass
+            self.in_channel = None
+            self.in_channel_id = 0
+            self.cleanup_pipe()
+
+        return ret
 
     def handle_source(self, source, condition, signalname):
         if condition & (GObject.IO_IN | GObject.IO_PRI):
@@ -165,8 +180,6 @@ class Capture(GObject.Object):
                 try:
                     (status, buf, length, terminator_pos) = source.read_line()
                 except Exception as e:
-                    # FIXME: why do we get here? read_line should not raise, should it?
-                    # print(e)
                     return False
                 if buf:
                     self.emit(signalname, buf)
@@ -181,33 +194,39 @@ class Capture(GObject.Object):
     def on_output(self, source, condition):
         ret = self.handle_source(source, condition, 'stdout-line')
         if ret is False and self.out_channel:
-            self.out_channel.shutdown(True)
+            try:
+                self.out_channel.shutdown(True)
+            except:
+                pass
             self.out_channel = None
             self.out_channel_id = 0
-            # pipe should be set to None only if the err has finished too
-            if self.err_channel is None:
-                self.pipe = None
+            self.cleanup_pipe()
 
         return ret
 
     def on_err_output(self, source, condition):
         ret = self.handle_source(source, condition, 'stderr-line')
         if ret is False and self.err_channel:
-            self.err_channel.shutdown(True)
+            try:
+                self.err_channel.shutdown(True)
+            except:
+                pass
             self.err_channel = None
-            self.err_channel = 0
-            # pipe should be set to None only if the out has finished too
-            if self.out_channel is None:
-                self.pipe = None
+            self.err_channel_id = 0
+            self.cleanup_pipe()
 
         return ret
 
-    def stop(self, error_code = -1):
-        if self.idle_write_id:
-            GLib.source_remove(self.idle_write_id)
-            self.idle_write_id = 0
-            if self.pipe:
-                self.pipe.stdin.close()
+    def cleanup_pipe(self):
+        if self.in_channel is None and self.out_channel is None and self.err_channel is None:
+            self.pipe = None
+
+    def stop(self, error_code=-1):
+        if self.in_channel_id:
+            GLib.source_remove(self.in_channel_id)
+            self.in_channel.shutdown(True)
+            self.in_channel = None
+            self.in_channel_id = 0
 
         if self.out_channel_id:
             GLib.source_remove(self.out_channel_id)
