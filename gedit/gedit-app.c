@@ -182,6 +182,8 @@ gedit_app_dispose (GObject *object)
 	g_clear_object (&app->priv->engine);
 
 	g_clear_object (&app->priv->window_menu);
+	g_clear_object (&app->priv->notebook_menu);
+	g_clear_object (&app->priv->tab_width_menu);
 
 	G_OBJECT_CLASS (gedit_app_parent_class)->dispose (object);
 }
@@ -467,7 +469,6 @@ gedit_app_startup (GApplication *application)
 	}
 	else
 	{
-
 		if (gedit_app_has_app_menu (app))
 		{
 			GMenuModel *appmenu;
