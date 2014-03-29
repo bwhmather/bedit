@@ -396,6 +396,17 @@ gedit_menu_stack_switcher_dispose (GObject *object)
 }
 
 static void
+gedit_menu_stack_switcher_finalize (GObject *object)
+{
+  GeditMenuStackSwitcher *switcher = GEDIT_MENU_STACK_SWITCHER (object);
+  GeditMenuStackSwitcherPrivate *priv = switcher->priv;
+
+  g_hash_table_destroy (priv->buttons);
+
+  G_OBJECT_CLASS (gedit_menu_stack_switcher_parent_class)->finalize (object);
+}
+
+static void
 gedit_menu_stack_switcher_class_init (GeditMenuStackSwitcherClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -403,6 +414,7 @@ gedit_menu_stack_switcher_class_init (GeditMenuStackSwitcherClass *klass)
   object_class->get_property = gedit_menu_stack_switcher_get_property;
   object_class->set_property = gedit_menu_stack_switcher_set_property;
   object_class->dispose = gedit_menu_stack_switcher_dispose;
+  object_class->finalize = gedit_menu_stack_switcher_finalize;
 
   g_object_class_install_property (object_class,
                                    PROP_STACK,
