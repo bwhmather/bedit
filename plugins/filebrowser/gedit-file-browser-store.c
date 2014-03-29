@@ -2973,7 +2973,7 @@ gedit_file_browser_store_set_value (GeditFileBrowserStore *tree_model,
 			data = g_strdup (node->name);
 
 		g_free (node->markup);
-		node->markup = g_strdup (data);
+		node->markup = data;
 	}
 	else if (column == GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM)
 	{
