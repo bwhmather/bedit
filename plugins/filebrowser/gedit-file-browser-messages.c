@@ -330,6 +330,8 @@ message_set_markup_cb (GeditMessageBus *bus,
 
 			g_value_unset (&value);
 		}
+
+		gtk_tree_path_free (path);
 	}
 
 	g_free (id);
