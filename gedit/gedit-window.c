@@ -231,7 +231,9 @@ gedit_window_dispose (GObject *object)
 static void
 gedit_window_finalize (GObject *object)
 {
-	gedit_debug (DEBUG_WINDOW);
+	GeditWindow *window = GEDIT_WINDOW (object);
+
+	g_slist_free_full (window->priv->closed_docs_stack, (GDestroyNotify)g_object_unref);
 
 	G_OBJECT_CLASS (gedit_window_parent_class)->finalize (object);
 }
