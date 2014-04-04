@@ -1,7 +1,6 @@
 bin_PROGRAMS += gedit/gedit
 
-noinst_LTLIBRARIES += gedit/libgedit.la
-pkglib_LTLIBRARIES += gedit/libgedit-private.la
+pkglib_LTLIBRARIES += gedit/libgedit.la
 
 gedit_common_cppflags =							\
 	-I$(top_srcdir)							\
@@ -23,7 +22,6 @@ gedit_gedit_CFLAGS = $(gedit_common_cflags)
 
 gedit_gedit_LDADD =			\
 	gedit/libgedit.la		\
-	gedit/libgedit-private.la	\
 	$(GEDIT_LIBS)			\
 	$(GTK_MAC_LIBS)			\
 	$(INTROSPECTION_LIBS)
@@ -38,18 +36,13 @@ endif
 
 gedit_libgedit_la_CPPFLAGS = $(gedit_common_cppflags)
 gedit_libgedit_la_CFLAGS = $(gedit_common_cflags)
-gedit_libgedit_la_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
+gedit_libgedit_la_LDFLAGS = -avoid-version -export-dynamic -no-undefined -export-symbols-regex "^[^_].*"
 
 # GEDIT_LIBS must be the last to ensure correct order on some platforms
 gedit_libgedit_la_LIBADD = 			\
 	$(top_builddir)/libgd/libgd.la		\
 	$(GEDIT_LIBS)				\
 	$(GTK_MAC_LIBS)
-
-gedit_libgedit_private_la_LIBADD = gedit/libgedit.la $(GEDIT_LIBS)
-gedit_libgedit_private_la_LDFLAGS = -avoid-version
-gedit_libgedit_private_la_CPPFLAGS = $(gedit_common_cppflags)
-gedit_libgedit_private_la_CFLAGS = $(gedit_common_cflags)
 
 # Mac OSX convenience library and ldflags
 if OS_OSX
@@ -164,15 +157,13 @@ endif
 gedit_headerdir = $(prefix)/include/gedit-$(GEDIT_API_VERSION)/gedit
 gedit_header_HEADERS = $(gedit_INST_H_FILES)
 
-gedit_libgedit_private_la_SOURCES =		\
+gedit_libgedit_c_files =			\
+	gedit/gedit-app.c			\
 	gedit/gedit-app-activatable.c		\
 	gedit/gedit-view-activatable.c		\
 	gedit/gedit-window-activatable.c	\
 	gedit/gedit-menu-extension.c		\
-	gedit/gedit-resources.c
-
-gedit_libgedit_c_files =			\
-	gedit/gedit-app.c               	\
+	gedit/gedit-resources.c			\
 	gedit/gedit-close-confirmation-dialog.c \
 	gedit/gedit-commands-documents.c	\
 	gedit/gedit-commands-edit.c		\
