@@ -259,12 +259,12 @@ if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = gedit/Gedit-3.0.gir
 
-gedit/Gedit-3.0.gir: gedit/gedit
+gedit/Gedit-3.0.gir: gedit/gedit$(EXEEXT)
 INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) --warn-all
 
 gedit_Gedit_3_0_gir_NAMESPACE = Gedit
 gedit_Gedit_3_0_gir_VERSION = 3.0
-gedit_Gedit_3_0_gir_PROGRAM = $(builddir)/gedit/gedit
+gedit_Gedit_3_0_gir_PROGRAM = $(builddir)/gedit/gedit$(EXEEXT)
 gedit_Gedit_3_0_gir_INCLUDES = Gtk-3.0 GtkSource-3.0
 gedit_Gedit_3_0_gir_EXPORT_PACKAGES = gedit
 gedit_Gedit_3_0_gir_SCANNERFLAGS = $(foreach header,$(gedit_INST_H_FILES),--c-include="$(header)")
