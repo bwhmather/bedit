@@ -1,7 +1,9 @@
 plugin_LTLIBRARIES += plugins/sort/libsort.la
 
 plugins_sort_libsort_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-plugins_sort_libsort_la_LIBADD = $(GEDIT_LIBS)
+plugins_sort_libsort_la_LIBADD =		\
+	$(top_builddir)/gedit/libgedit.la	\
+	$(GEDIT_LIBS)
 plugins_sort_libsort_la_CPPFLAGS = -I$(top_srcdir)
 plugins_sort_libsort_la_CFLAGS =			\
 	$(GEDIT_CFLAGS) 				\

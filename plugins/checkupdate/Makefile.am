@@ -7,7 +7,10 @@ plugins_checkupdate_libcheckupdate_la_SOURCES =			\
 	plugins/checkupdate/gedit-check-update-plugin.c
 
 plugins_checkupdate_libcheckupdate_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-plugins_checkupdate_libcheckupdate_la_LIBADD = $(GEDIT_LIBS) $(LIBSOUP_LIBS)
+plugins_checkupdate_libcheckupdate_la_LIBADD =	\
+	$(top_builddir)/gedit/libgedit.la	\
+	$(GEDIT_LIBS)				\
+	$(LIBSOUP_LIBS)
 plugins_checkupdate_libcheckupdate_la_CPPFLAGS = -I$(top_srcdir)
 plugins_checkupdate_libcheckupdate_la_CFLAGS =	\
 	$(GEDIT_CFLAGS) 			\

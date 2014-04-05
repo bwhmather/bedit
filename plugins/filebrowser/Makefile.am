@@ -1,7 +1,9 @@
 plugin_LTLIBRARIES += plugins/filebrowser/libfilebrowser.la
 
 plugins_filebrowser_libfilebrowser_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-plugins_filebrowser_libfilebrowser_la_LIBADD = $(GEDIT_LIBS)
+plugins_filebrowser_libfilebrowser_la_LIBADD =	\
+	$(top_builddir)/gedit/libgedit.la	\
+	$(GEDIT_LIBS)
 plugins_filebrowser_libfilebrowser_la_CPPFLAGS =			\
 	-I$(top_srcdir)							\
 	-I$(top_builddir)/plugins/filebrowser

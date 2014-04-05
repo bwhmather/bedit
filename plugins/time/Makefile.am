@@ -1,7 +1,9 @@
 plugin_LTLIBRARIES += plugins/time/libtime.la
 
 plugins_time_libtime_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-plugins_time_libtime_la_LIBADD = $(GEDIT_LIBS)
+plugins_time_libtime_la_LIBADD =		\
+	$(top_builddir)/gedit/libgedit.la	\
+	$(GEDIT_LIBS)
 plugins_time_libtime_la_CPPFLAGS = -I$(top_srcdir)
 plugins_time_libtime_la_CFLAGS =			\
 	$(GEDIT_CFLAGS) 				\

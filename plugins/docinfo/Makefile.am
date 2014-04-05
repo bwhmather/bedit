@@ -6,7 +6,9 @@ plugins_docinfo_libdocinfo_la_SOURCES =			\
 	plugins/docinfo/gedit-docinfo-resources.c
 
 plugins_docinfo_libdocinfo_la_LDFLAGS  = $(PLUGIN_LIBTOOL_FLAGS)
-plugins_docinfo_libdocinfo_la_LIBADD   = $(GEDIT_LIBS)
+plugins_docinfo_libdocinfo_la_LIBADD   = 	\
+	$(top_builddir)/gedit/libgedit.la	\
+	$(GEDIT_LIBS)
 plugins_docinfo_libdocinfo_la_CPPFLAGS = -I$(top_srcdir)
 plugins_docinfo_libdocinfo_la_CFLAGS   =		\
 	$(GEDIT_CFLAGS) 				\

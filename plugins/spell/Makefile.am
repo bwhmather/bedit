@@ -3,7 +3,10 @@ if ENABLE_ENCHANT
 plugin_LTLIBRARIES += plugins/spell/libspell.la
 
 plugins_spell_libspell_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
-plugins_spell_libspell_la_LIBADD  = $(GEDIT_LIBS) $(ENCHANT_LIBS)
+plugins_spell_libspell_la_LIBADD  =		\
+	$(top_builddir)/gedit/libgedit.la	\
+	$(GEDIT_LIBS)				\
+	$(ENCHANT_LIBS)
 
 plugins_spell_libspell_la_CPPFLAGS =				\
 	-I$(top_srcdir)						\
