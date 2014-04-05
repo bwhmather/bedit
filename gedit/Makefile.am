@@ -28,11 +28,7 @@ gedit_gedit_LDADD =			\
 
 gedit_gedit_SOURCES = gedit/gedit.c
 
-if PLATFORM_WIN32
-gedit_gedit_LDFLAGS = -Wl,--export-all-symbols -Wl,--out-implib,libgedit.a
-else
 gedit_gedit_LDFLAGS = -export-dynamic -no-undefined -export-symbols-regex "^[[^_]].*"
-endif
 
 gedit_libgedit_la_CPPFLAGS = $(gedit_common_cppflags)
 gedit_libgedit_la_CFLAGS = $(gedit_common_cflags)
@@ -308,7 +304,6 @@ endif # ENABLE_VAPIGEN
 install-exec-hook:
 if PLATFORM_WIN32
 	$(mkinstalldirs) "$(DESTDIR)$(libdir)"
-	$(INSTALL_DATA) gedit/libgedit.a "$(DESTDIR)$(libdir)"
 else
 	rm -f $(DESTDIR)$(bindir)/gnome-text-editor
 	ln -s gedit $(DESTDIR)$(bindir)/gnome-text-editor
