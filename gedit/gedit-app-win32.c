@@ -26,7 +26,9 @@
 #undef DATADIR
 #include <io.h>
 #include <conio.h>
+#ifndef _WIN32_WINNT
 #define _WIN32_WINNT 0x0501
+#endif
 #include <windows.h>
 #define DATADIR SAVE_DATADIR
 #undef SAVE_DATADIR
