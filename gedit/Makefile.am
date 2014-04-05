@@ -75,7 +75,7 @@ gedit_libwin32_la_CFLAGS = $(gedit_common_cflags)
 
 gedit_libgedit_la_LIBADD += gedit/libwin32.la
 gedit/gedit-res.o: gedit/gedit.rc
-	$(WINDRES) -i gedit/gedit.rc --input-format=rc -o gedit/gedit-res.o -O coff
+	$(WINDRES) -i $(top_srcdir)/gedit/gedit.rc --input-format=rc -o gedit/gedit-res.o -O coff
 
 gedit_gedit_LDADD += gedit/gedit-res.o
 endif
