@@ -416,7 +416,7 @@ fi
 # on win32 plugins must be able to resolve all symbols at link time
 # so we create a lib
 if test "$platform_win32" = yes; then
-	GEDIT_IMPLIB="-lgedit-$GEDIT_API_VERSION"
+	GEDIT_IMPLIB='-L${libdir}/gedit -lgedit'
 	PLUGIN_LIBTOOL_FLAGS="-module -avoid-version -no-undefined"
 	if test "$os_win32" = yes; then
 		PLUGIN_LIBTOOL_FLAGS="${PLUGIN_LIBTOOL_FLAGS} -mwindows"
