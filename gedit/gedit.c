@@ -33,6 +33,62 @@
 #endif
 #endif
 
+#ifdef G_OS_WIN32
+#include <gmodule.h>
+static GModule *libgedit_dll = NULL;
+
+/* This code must live in gedit.exe, not in libgedit.dll, since the whole
+ * point is to find and load libgedit.dll.
+ */
+static void
+gedit_w32_load_private_dll (GType *type)
+{
+	gchar *dllpath;
+	gchar *prefix;
+
+	prefix = g_win32_get_package_installation_directory_of_module (NULL);
+
+	if (prefix != NULL)
+	{
+		/* Instead of g_module_open () it may be possible to do any of the
+		 * following:
+		 * A) Change PATH to "${dllpath}/lib/gedit;$PATH"
+		 * B) Call SetDllDirectory ("${dllpath}/lib/gedit")
+		 * C) Call AddDllDirectory ("${dllpath}/lib/gedit")
+		 * But since we only have one library, and its name is known, may as well
+		 * use gmodule.
+		 */
+		dllpath = g_build_filename (prefix, "lib", "gedit", "libgedit.dll", NULL);
+		g_free (prefix);
+		libgedit_dll = g_module_open (dllpath, 0);
+		g_free (dllpath);
+	}
+
+	if (libgedit_dll == NULL)
+	{
+		libgedit_dll = g_module_open ("libgedit.dll", 0);
+	}
+
+	if (libgedit_dll != NULL)
+	{
+		/* Now that we did everything we could to make the DLL available, we can
+		 * implicitly call the *_get_type() function from it.
+		 */
+		*type = GEDIT_TYPE_APP_WIN32;
+	}
+}
+
+static void
+gedit_w32_unload_private_dll ()
+{
+	if (libgedit_dll)
+	{
+		g_module_close (libgedit_dll);
+		libgedit_dll = NULL;
+	}
+}
+#endif
+
 int
 main (int argc, char *argv[])
 {
@@ -44,7 +100,7 @@ main (int argc, char *argv[])
 	type = GEDIT_TYPE_APP_OSX;
 #else
 #ifdef G_OS_WIN32
-	type = GEDIT_TYPE_APP_WIN32;
+	gedit_w32_load_private_dll (&type);
 #else
 	type = GEDIT_TYPE_APP_X11;
 #endif
@@ -58,6 +114,10 @@ main (int argc, char *argv[])
 	status = g_application_run (G_APPLICATION (app), argc, argv);
 
 	g_object_unref (app);
+
+#ifdef G_OS_WIN32
+	gedit_w32_unload_private_dll ();
+#endif
 
 	return status;
 }
