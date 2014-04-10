@@ -1,5 +1,5 @@
 data_desktopdir = $(datadir)/applications
-data_desktop_in_files = data/gedit.desktop.in
+data_desktop_in_files = data/org.gnome.gedit.desktop.in
 data_desktop_DATA = $(data_desktop_in_files:.desktop.in=.desktop)
 
 data_appdatadir = $(datadir)/appdata

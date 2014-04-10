@@ -166,7 +166,7 @@ AC_DEFUN([GEDIT_FULLPATH], [
 ])
 
 dnl FULL_LIBEXECDIR is used for X-GNOME-Bugzilla-ExtraInfoScript expansion
-dnl in data/gedit.desktop.in.in
+dnl in data/org.gnome.gedit.desktop.in.in
 GEDIT_FULLPATH(libexecdir, NONE, FULL_LIBEXECDIR)
 AC_SUBST(FULL_LIBEXECDIR)
 
@@ -429,7 +429,7 @@ VAPIGEN_CHECK
 
 AC_CONFIG_FILES([
 Makefile
-data/gedit.desktop.in
+data/org.gnome.gedit.desktop.in
 data/gedit.pc
 data/org.gnome.gedit.gschema.xml
 docs/Makefile
