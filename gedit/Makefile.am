@@ -303,7 +303,9 @@ endif # ENABLE_VAPIGEN
 
 install-exec-hook:
 if PLATFORM_WIN32
-	$(mkinstalldirs) "$(DESTDIR)$(libdir)"
+	$(mkinstalldirs) "$(DESTDIR)$(libdir)/gedit"
+	mv -t $(DESTDIR)$(libdir)/gedit $(DESTDIR)$(libdir)/bin/*
+	rm -rf $(DESTDIR)$(libdir)/bin
 else
 	rm -f $(DESTDIR)$(bindir)/gnome-text-editor
 	ln -s gedit $(DESTDIR)$(bindir)/gnome-text-editor
