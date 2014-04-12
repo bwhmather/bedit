@@ -166,13 +166,6 @@ GList		*_gedit_window_get_all_tabs		(GeditWindow         *window);
 
 GFile		*_gedit_window_pop_last_closed_doc	(GeditWindow         *window);
 
-/* these are in gedit-window because of screen safety */
-void		 _gedit_recent_add			(GeditWindow	     *window,
-							 GFile               *location,
-							 const gchar         *mime);
-void		 _gedit_recent_remove			(GeditWindow         *window,
-							 GFile               *location);
-
 G_END_DECLS
 
 #endif  /* __GEDIT_WINDOW_H__  */

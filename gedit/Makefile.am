@@ -118,6 +118,7 @@ gedit_NOINST_H_FILES =				\
 	gedit/gedit-preferences-dialog.h	\
 	gedit/gedit-print-job.h			\
 	gedit/gedit-print-preview.h		\
+	gedit/gedit-recent.h			\
 	gedit/gedit-replace-dialog.h		\
 	gedit/gedit-settings.h			\
 	gedit/gedit-small-button.h		\
@@ -195,6 +196,7 @@ gedit_libgedit_c_files =			\
 	gedit/gedit-print-job.c			\
 	gedit/gedit-print-preview.c		\
 	gedit/gedit-progress-info-bar.c		\
+	gedit/gedit-recent.c			\
 	gedit/gedit-replace-dialog.c		\
 	gedit/gedit-settings.c			\
 	gedit/gedit-small-button.c		\

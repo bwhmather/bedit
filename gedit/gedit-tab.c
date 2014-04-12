@@ -28,6 +28,7 @@
 #include "gedit-app.h"
 #include "gedit-notebook.h"
 #include "gedit-tab.h"
+#include "gedit-recent.h"
 #include "gedit-utils.h"
 #include "gedit-io-error-info-bar.h"
 #include "gedit-print-job.h"
@@ -623,7 +624,7 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 		default:
 			if (location != NULL)
 			{
-				_gedit_recent_remove (GEDIT_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (tab))), location);
+				gedit_recent_remove_if_local (location);
 			}
 
 			remove_tab (tab);
@@ -1024,7 +1025,7 @@ document_loaded (GeditDocument *document,
 		{
 			if (location)
 			{
-				_gedit_recent_remove (GEDIT_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (tab))), location);
+				gedit_recent_remove_if_local (location);
 			}
 
 			if (tab->priv->state == GEDIT_TAB_STATE_LOADING_ERROR)
@@ -1064,16 +1065,7 @@ document_loaded (GeditDocument *document,
 	}
 	else
 	{
-		if (location != NULL)
-		{
-			gchar *mime;
-			mime = gedit_document_get_mime_type (document);
-
-			_gedit_recent_add (GEDIT_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (tab))),
-					   location,
-					   mime);
-			g_free (mime);
-		}
+		gedit_recent_add_document (document);
 
 		if (error &&
 		    error->domain == GEDIT_DOCUMENT_ERROR &&
@@ -1476,8 +1468,7 @@ document_saved (GeditDocument *document,
 			  error->code != G_IO_ERROR_PARTIAL_INPUT))
 		{
 			/* These errors are _NOT_ recoverable */
-			_gedit_recent_remove  (GEDIT_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (tab))),
-					       tab->priv->tmp_save_location);
+			gedit_recent_remove_if_local (tab->priv->tmp_save_location);
 
 			emsg = gedit_unrecoverable_saving_error_info_bar_new (tab->priv->tmp_save_location,
 								  error);
@@ -1513,12 +1504,7 @@ document_saved (GeditDocument *document,
 	}
 	else
 	{
-		gchar *mime = gedit_document_get_mime_type (document);
-
-		_gedit_recent_add (GEDIT_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (tab))),
-				   tab->priv->tmp_save_location,
-				   mime);
-		g_free (mime);
+		gedit_recent_add_document (document);
 
 		if (tab->priv->print_preview != NULL)
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);

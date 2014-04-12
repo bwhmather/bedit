@@ -34,6 +34,7 @@
 #include "gedit-window.h"
 #include "gedit-window-private.h"
 #include "gedit-app.h"
+#include "gedit-recent.h"
 #include "gedit-notebook.h"
 #include "gedit-notebook-popup-menu.h"
 #include "gedit-multi-notebook.h"
@@ -701,57 +702,6 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 	                            window);
 }
 
-void
-_gedit_recent_add (GeditWindow *window,
-		   GFile       *location,
-		   const gchar *mime)
-{
-	GtkRecentManager *recent_manager;
-	GtkRecentData *recent_data;
-	gchar *uri;
-
-	static gchar *groups[2] = {
-		"gedit",
-		NULL
-	};
-
-	recent_manager =  gtk_recent_manager_get_default ();
-
-	recent_data = g_slice_new (GtkRecentData);
-
-	recent_data->display_name = NULL;
-	recent_data->description = NULL;
-	recent_data->mime_type = (gchar *) mime;
-	recent_data->app_name = (gchar *) g_get_application_name ();
-	recent_data->app_exec = g_strjoin (" ", g_get_prgname (), "%u", NULL);
-	recent_data->groups = groups;
-	recent_data->is_private = FALSE;
-
-	uri = g_file_get_uri (location);
-	gtk_recent_manager_add_full (recent_manager,
-				     uri,
-				     recent_data);
-
-	g_free (uri);
-	g_free (recent_data->app_exec);
-
-	g_slice_free (GtkRecentData, recent_data);
-}
-
-void
-_gedit_recent_remove (GeditWindow *window,
-		      GFile       *location)
-{
-	GtkRecentManager *recent_manager;
-	gchar *uri;
-
-	recent_manager =  gtk_recent_manager_get_default ();
-
-	uri = g_file_get_uri (location);
-	gtk_recent_manager_remove_item (recent_manager, uri, NULL);
-	g_free (uri);
-}
-
 static void
 recent_chooser_item_activated (GtkRecentChooser *chooser,
 			       GeditWindow      *window)
@@ -773,7 +723,7 @@ recent_chooser_item_activated (GtkRecentChooser *chooser,
 
 		if (!loaded || loaded->next) /* if it doesn't contain just 1 element */
 		{
-			_gedit_recent_remove (window, location);
+			gedit_recent_remove_if_local (location);
 		}
 
 		g_slist_free (locations);
