@@ -246,7 +246,7 @@ class Tool(object):
         if filename is None:
             return
 
-        fp = open(filename, 'r', 1)
+        fp = open(filename, 'r', 1, encoding='utf-8')
         in_block = False
         lang = locale.getlocale(locale.LC_MESSAGES)[0]
 
@@ -395,7 +395,7 @@ class Tool(object):
         if filename is None:
             return True
 
-        fp = open(filename, 'r', 1)
+        fp = open(filename, 'r', 1, encoding='utf-8')
         for line in fp:
             if line.strip() == '':
                 continue
@@ -411,7 +411,7 @@ class Tool(object):
         if filename is None:
             return ["#!/bin/sh\n"]
 
-        fp = open(filename, 'r', 1)
+        fp = open(filename, 'r', 1, encoding='utf-8')
         lines = list()
 
         # before entering the data block
@@ -445,7 +445,7 @@ class Tool(object):
 
     def save_with_script(self, script):
         filename = self.library.get_full_path(self.filename, 'w')
-        fp = open(filename, 'w', 1)
+        fp = open(filename, 'w', 1, encoding='utf-8')
 
         # Make sure to first print header (shebang, modeline), then
         # properties, and then actual content

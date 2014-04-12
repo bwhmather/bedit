@@ -453,7 +453,7 @@ class SnippetsSystemFile:
         self.insnippet = False
 
         try:
-            f = open(self.path, "r")
+            f = open(self.path, "r", encoding='utf-8')
         except IOError:
             self.ok = False
             return

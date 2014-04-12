@@ -119,7 +119,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
 
         paths = []
 
-        for line in open(filename, 'r'):
+        for line in open(filename, 'r', encoding='utf-8'):
             uri = line.strip().split(" ")[0]
             f = Gio.file_new_for_uri(uri)
 
@@ -146,7 +146,7 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         desktopdir = None
 
         if os.path.isfile(config):
-            for line in open(config, 'r'):
+            for line in open(config, 'r', encoding='utf-8'):
                 line = line.strip()
 
                 if line.startswith('XDG_DESKTOP_DIR'):
