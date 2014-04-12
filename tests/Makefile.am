@@ -3,7 +3,7 @@ tests_progs_cppflags =		\
 	-I$(top_srcdir)/gedit
 
 tests_progs_cflags = $(GEDIT_CFLAGS)
-tests_progs_ldadd = $(top_builddir)/gedit/libgedit.la
+tests_progs_ldadd = $(top_builddir)/gedit/libgedit.la $(GEDIT_LIBS)
 
 TESTS                                += tests/document-input-stream
 tests_document_input_stream_SOURCES   = tests/document-input-stream.c
