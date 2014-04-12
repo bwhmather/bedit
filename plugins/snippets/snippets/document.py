@@ -54,7 +54,6 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
         self.timeout_update_id = 0
 
         self.provider = completion.Provider(_('Snippets'), self.language_id, self.on_proposal_activated)
-        self.defaults_provider = completion.Defaults(self.on_default_activated)
 
     def do_activate(self):
         # Always have a reference to the global snippets
@@ -71,11 +70,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
         self.update_language()
 
         completion = self.view.get_completion()
-
         completion.add_provider(self.provider)
-        completion.add_provider(self.defaults_provider)
-
-        self.connect_signal(completion, 'hide', self.on_completion_hide)
 
         SharedData().register_controller(self.view, self)
 
@@ -102,7 +97,6 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
 
         if completion:
             completion.remove_provider(self.provider)
-            completion.remove_provider(self.defaults_provider)
 
         if self.language_id != 0:
             Library().unref(self.language_id)
@@ -148,9 +142,11 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
             self.apply_snippet(snippets[0])
         else:
             # Do the fancy completion dialog
-            self.provider.set_proposals(snippets)
+            provider = completion.Provider(_('Snippets'), self.language_id, self.on_proposal_activated)
+            provider.set_proposals(snippets)
+
             cm = self.view.get_completion()
-            cm.show([self.provider], cm.create_context(None))
+            cm.show([provider], cm.create_context(None))
 
         return True
 
@@ -284,10 +280,11 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
             if next.__class__ == PlaceholderEnd:
                 last = next
             elif len(next.defaults) > 1 and next.get_text() == next.default:
-                self.defaults_provider.set_defaults(next.defaults)
+                provider = completion.Defaults(self.on_default_activated)
+                provider.set_defaults(next.defaults)
 
                 cm = self.view.get_completion()
-                cm.show([self.defaults_provider], cm.create_context(None))
+                cm.show([provider], cm.create_context(None))
 
         if last:
             # This is the end of the placeholder, remove the snippet etc
@@ -659,10 +656,12 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                 return self.apply_snippet(snippets[0], bounds[0], bounds[1])
             else:
                 # Do the fancy completion dialog
-                self.provider.set_proposals(snippets)
-                cm = self.view.get_completion()
+                provider = completion.Provider(_('Snippets'), self.language_id, self.on_proposal_activated)
+                provider.set_proposals(snippets)
 
-                cm.show([self.provider], cm.create_context(None))
+                cm = self.view.get_completion()
+                cm.show([provider], cm.create_context(None))
+
                 return True
 
         return False
@@ -935,9 +934,6 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
         lst = Gtk.target_list_add_uri_targets((), 0)
 
         return self.view.drag_dest_find_target(context, lst)
-
-    def on_completion_hide(self, completion):
-        self.provider.set_proposals(None)
 
     def on_proposal_activated(self, proposal, piter):
         if not self.view.get_editable():

@@ -182,6 +182,6 @@ class Defaults(GObject.Object, GtkSource.CompletionProvider):
         context.add_proposals(self, self.proposals, True)
 
     def do_get_activation(self):
-        return GtkSource.CompletionActivation.NONE
+        return GtkSource.CompletionActivation.USER_REQUESTED
 
 # ex:ts=4:et:
