@@ -553,6 +553,9 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
         if current and current.__class__ == PlaceholderEnd:
             self.goto_placeholder(current, None)
 
+        if len(self.active_snippets) > 0:
+            self.block_signal(buf, 'cursor-moved')
+
         buf.begin_user_action()
 
         # Remove the tag, selection or current word
@@ -561,6 +564,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
         # Insert the snippet
         if len(self.active_snippets) == 0:
             self.first_snippet_inserted()
+            self.block_signal(buf, 'cursor-moved')
 
         sn = s.insert_into(self, start)
         self.active_snippets.append(sn)
@@ -575,6 +579,8 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
                 buf.place_cursor(sn.begin_iter())
         else:
             self.goto_placeholder(self.active_placeholder, sn.placeholders[keys[0]])
+
+        self.unblock_signal(buf, 'cursor-moved')
 
         if sn in self.active_snippets:
             # Check if we can get end_iter in view without moving the
