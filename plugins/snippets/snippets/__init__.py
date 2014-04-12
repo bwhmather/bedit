@@ -19,4 +19,4 @@ from .appactivatable import AppActivatable
 from .windowactivatable import WindowActivatable
 from .document import Document
 
-# ex:ts=8:et:
+# ex:ts=4:et:

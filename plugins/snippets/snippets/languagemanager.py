@@ -24,17 +24,17 @@ global manager
 manager = None
 
 def get_language_manager():
-        global manager
+    global manager
 
-        if not manager:
-                dirs = []
+    if not manager:
+        dirs = []
 
-                for d in Library().systemdirs:
-                        dirs.append(os.path.join(d, 'lang'))
+        for d in Library().systemdirs:
+            dirs.append(os.path.join(d, 'lang'))
 
-                manager = GtkSource.LanguageManager()
-                manager.set_search_path(dirs + manager.get_search_path())
+        manager = GtkSource.LanguageManager()
+        manager.set_search_path(dirs + manager.get_search_path())
 
-        return manager
+    return manager
 
-# ex:ts=8:et:
+# ex:ts=4:et:

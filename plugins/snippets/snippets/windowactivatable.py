@@ -15,176 +15,172 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-import re
-import os
-import gettext
+from gi.repository import Gtk, Gedit, GObject
 
-from gi.repository import Gtk, Gdk, Gedit, GObject, Gio
-
-from .document import Document
+from .snippet import Snippet
 from .library import Library
 from .shareddata import SharedData
 from .signals import Signals
 
 class Message(Gedit.Message):
-        view = GObject.property(type=Gedit.View)
-        iter = GObject.property(type=Gtk.TextIter)
+    view = GObject.property(type=Gedit.View)
+    iter = GObject.property(type=Gtk.TextIter)
 
 class Activate(Message):
-        trigger = GObject.property(type=str)
+    trigger = GObject.property(type=str)
 
 class ParseAndActivate(Message):
-        snippet = GObject.property(type=str)
+    snippet = GObject.property(type=str)
 
 class WindowActivatable(GObject.Object, Gedit.WindowActivatable, Signals):
-        __gtype_name__ = "GeditSnippetsWindowActivatable"
+    __gtype_name__ = "GeditSnippetsWindowActivatable"
 
-        window = GObject.property(type=Gedit.Window)
+    window = GObject.property(type=Gedit.Window)
 
-        def __init__(self):
-                GObject.Object.__init__(self)
-                Signals.__init__(self)
+    def __init__(self):
+        GObject.Object.__init__(self)
+        Signals.__init__(self)
 
-                self.current_language_accel_group = None
+        self.current_language_accel_group = None
 
-        def do_activate(self):
-                self.register_messages()
+    def do_activate(self):
+        self.register_messages()
 
-                library = Library()
-                library.add_accelerator_callback(self.accelerator_activated)
+        library = Library()
+        library.add_accelerator_callback(self.accelerator_activated)
 
-                self.accel_group = Library().get_accel_group(None)
+        self.accel_group = Library().get_accel_group(None)
 
-                if self.accel_group:
-                        self.window.add_accel_group(self.accel_group)
+        if self.accel_group:
+            self.window.add_accel_group(self.accel_group)
 
-                self.connect_signal(self.window,
-                                    'active-tab-changed',
-                                    self.on_active_tab_changed)
+        self.connect_signal(self.window,
+                    'active-tab-changed',
+                    self.on_active_tab_changed)
 
-                self.do_update_state()
+        self.do_update_state()
 
-                SharedData().register_window(self)
+        SharedData().register_window(self)
 
-        def do_deactivate(self):
-                if self.accel_group:
-                        self.window.remove_accel_group(self.accel_group)
+    def do_deactivate(self):
+        if self.accel_group:
+            self.window.remove_accel_group(self.accel_group)
 
-                self.accel_group = None
+        self.accel_group = None
 
-                self.unregister_messages()
+        self.unregister_messages()
 
-                library = Library()
-                library.remove_accelerator_callback(self.accelerator_activated)
+        library = Library()
+        library.remove_accelerator_callback(self.accelerator_activated)
 
-                self.disconnect_signals(self.window)
+        self.disconnect_signals(self.window)
 
-                SharedData().unregister_window(self)
+        SharedData().unregister_window(self)
 
-        def do_update_state(self):
-                controller = SharedData().get_active_controller(self.window)
+    def do_update_state(self):
+        controller = SharedData().get_active_controller(self.window)
 
-                self.update_language(controller)
+        self.update_language(controller)
 
-        def register_messages(self):
-                bus = self.window.get_message_bus()
+    def register_messages(self):
+        bus = self.window.get_message_bus()
 
-                bus.register(Activate, '/plugins/snippets', 'activate')
-                bus.register(ParseAndActivate, '/plugins/snippets', 'parse-and-activate')
+        bus.register(Activate, '/plugins/snippets', 'activate')
+        bus.register(ParseAndActivate, '/plugins/snippets', 'parse-and-activate')
 
-                self.signal_ids = set()
+        self.signal_ids = set()
 
-                sid = bus.connect('/plugins/snippets', 'activate', self.on_message_activate, None)
-                self.signal_ids.add(sid)
+        sid = bus.connect('/plugins/snippets', 'activate', self.on_message_activate, None)
+        self.signal_ids.add(sid)
 
-                sid = bus.connect('/plugins/snippets', 'parse-and-activate', self.on_message_parse_and_activate, None)
-                self.signal_ids.add(sid)
+        sid = bus.connect('/plugins/snippets', 'parse-and-activate', self.on_message_parse_and_activate, None)
+        self.signal_ids.add(sid)
 
-        def unregister_messages(self):
-                bus = self.window.get_message_bus()
-                for sid in self.signal_ids:
-                    bus.disconnect(sid)
-                signal_ids = None
-                bus.unregister_all('/plugins/snippets')
+    def unregister_messages(self):
+        bus = self.window.get_message_bus()
+        for sid in self.signal_ids:
+            bus.disconnect(sid)
+        self.signal_ids = set()
+        bus.unregister_all('/plugins/snippets')
 
-        def on_message_activate(self, bus, message, userdata):
-                view = message.props.view
+    def on_message_activate(self, bus, message, userdata):
+        view = message.props.view
 
-                if not view:
-                        view = self.window.get_active_view()
+        if not view:
+            view = self.window.get_active_view()
 
-                controller = SharedData().get_controller(view)
+        controller = SharedData().get_controller(view)
 
-                if not controller:
-                        return
+        if not controller:
+            return
 
-                iter = message.props.iter
+        iter = message.props.iter
 
-                if not iter:
-                        iter = view.get_buffer().get_iter_at_mark(view.get_buffer().get_insert())
+        if not iter:
+            iter = view.get_buffer().get_iter_at_mark(view.get_buffer().get_insert())
 
-                controller.run_snippet_trigger(message.props.trigger, (iter, iter))
+        controller.run_snippet_trigger(message.props.trigger, (iter, iter))
 
-        def on_message_parse_and_activate(self, bus, message, userdata):
-                view = message.props.view
+    def on_message_parse_and_activate(self, bus, message, userdata):
+        view = message.props.view
 
-                if not view:
-                        view = self.window.get_active_view()
+        if not view:
+            view = self.window.get_active_view()
 
-                controller = SharedData().get_controller(view)
+        controller = SharedData().get_controller(view)
 
-                if not controller:
-                        return
+        if not controller:
+            return
 
-                iter = message.props.iter
-                
-                if not iter:
-                        iter = view.get_buffer().get_iter_at_mark(view.get_buffer().get_insert())
+        iter = message.props.iter
+        
+        if not iter:
+            iter = view.get_buffer().get_iter_at_mark(view.get_buffer().get_insert())
 
-                controller.parse_and_run_snippet(message.props.snippet, iter)
+        controller.parse_and_run_snippet(message.props.snippet, iter)
 
-        def find_snippet(self, snippets, tag):
-                result = []
+    def find_snippet(self, snippets, tag):
+        result = []
 
-                for snippet in snippets:
-                        if Snippet(snippet)['tag'] == tag:
-                                result.append(snippet)
+        for snippet in snippets:
+            if Snippet(snippet)['tag'] == tag:
+                result.append(snippet)
 
-                return result
+        return result
 
-        def update_language(self, controller):
-                if not self.window:
-                        return
+    def update_language(self, controller):
+        if not self.window:
+            return
 
-                if controller:
-                        langid = controller.language_id
-                else:
-                        langid = None
+        if controller:
+            langid = controller.language_id
+        else:
+            langid = None
 
-                if langid != None:
-                        accelgroup = Library().get_accel_group(langid)
-                else:
-                        accelgroup = None
+        if langid != None:
+            accelgroup = Library().get_accel_group(langid)
+        else:
+            accelgroup = None
 
-                if accelgroup != self.current_language_accel_group:
-                        if self.current_language_accel_group:
-                                self.window.remove_accel_group(self.current_language_accel_group)
+        if accelgroup != self.current_language_accel_group:
+            if self.current_language_accel_group:
+                self.window.remove_accel_group(self.current_language_accel_group)
 
-                        if accelgroup:
-                                self.window.add_accel_group(accelgroup)
+            if accelgroup:
+                self.window.add_accel_group(accelgroup)
 
-                self.current_language_accel_group = accelgroup
+        self.current_language_accel_group = accelgroup
 
-        def on_active_tab_changed(self, window, tab):
-                self.update_language(SharedData().get_controller(tab.get_view()))
+    def on_active_tab_changed(self, window, tab):
+        self.update_language(SharedData().get_controller(tab.get_view()))
 
-        def accelerator_activated(self, group, obj, keyval, mod):
-                if obj == self.window:
-                        controller = SharedData().get_active_controller(self.window)
+    def accelerator_activated(self, group, obj, keyval, mod):
+        if obj == self.window:
+            controller = SharedData().get_active_controller(self.window)
 
-                        if controller:
-                                return controller.accelerator_activate(keyval, mod)
-                else:
-                        return False
+            if controller:
+                return controller.accelerator_activate(keyval, mod)
+        else:
+            return False
 
-# ex:ts=8:et:
+# ex:ts=4:et:

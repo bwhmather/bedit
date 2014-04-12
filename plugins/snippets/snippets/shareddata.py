@@ -20,6 +20,9 @@ import os
 
 from gi.repository import Gtk
 
+# To register the GeditSnippetsManager type
+from .manager import Manager
+
 class SharedData(object, metaclass=Singleton):
     def __init__(self):
         self.dlg = None

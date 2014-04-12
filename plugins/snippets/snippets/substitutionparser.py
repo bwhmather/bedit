@@ -18,186 +18,186 @@
 import re
 
 class ParseError(Exception):
-        def __str__(self):
-                return 'Parse error, resume next'
+    def __str__(self):
+        return 'Parse error, resume next'
 
 class Modifiers:
-        def _first_char(s):
-                first = (s != '' and s[0]) or ''
-                rest = (len(s) > 1 and s[1:]) or ''
+    def _first_char(s):
+        first = (s != '' and s[0]) or ''
+        rest = (len(s) > 1 and s[1:]) or ''
 
-                return first, rest
+        return first, rest
 
-        def upper_first(s):
-                first, rest = Modifiers._first_char(s)
+    def upper_first(s):
+        first, rest = Modifiers._first_char(s)
 
-                return '%s%s' % (first.upper(), rest)
+        return '%s%s' % (first.upper(), rest)
 
-        def upper(s):
-                return s.upper()
+    def upper(s):
+        return s.upper()
 
-        def lower_first(s):
-                first, rest = Modifiers._first_char(s)
+    def lower_first(s):
+        first, rest = Modifiers._first_char(s)
 
-                return '%s%s' % (first.lower(), rest)
+        return '%s%s' % (first.lower(), rest)
 
-        def lower(s):
-                return s.lower()
+    def lower(s):
+        return s.lower()
 
-        def title(s):
-                return s.title()
+    def title(s):
+        return s.title()
 
-        upper_first = staticmethod(upper_first)
-        upper = staticmethod(upper)
-        lower_first = staticmethod(lower_first)
-        lower = staticmethod(lower)
-        title = staticmethod(title)
-        _first_char = staticmethod(_first_char)
+    upper_first = staticmethod(upper_first)
+    upper = staticmethod(upper)
+    lower_first = staticmethod(lower_first)
+    lower = staticmethod(lower)
+    title = staticmethod(title)
+    _first_char = staticmethod(_first_char)
 
 class SubstitutionParser:
-        REG_ID = '[0-9]+'
-        REG_NAME = '[a-zA-Z_]+'
-        REG_MOD = '[a-zA-Z]+'
-        REG_ESCAPE = '\\\\|\\(\\?|,|\\)'
+    REG_ID = '[0-9]+'
+    REG_NAME = '[a-zA-Z_]+'
+    REG_MOD = '[a-zA-Z]+'
+    REG_ESCAPE = '\\\\|\\(\\?|,|\\)'
 
-        def __init__(self, pattern, groups = {}, modifiers = {}):
-                self.pattern = pattern
-                self.groups = groups
+    REG_GROUP = '(?:(%s)|<(%s|%s)(?:,(%s))?>)' % (REG_ID, REG_ID, REG_NAME, REG_MOD)
 
-                self.REG_GROUP = '(?:(%s)|<(%s|%s)(?:,(%s))?>)' % (self.REG_ID, self.REG_ID, self.REG_NAME, self.REG_MOD)
-                self.modifiers = {'u': Modifiers.upper_first,
-                                  'U': Modifiers.upper,
-                                  'l': Modifiers.lower_first,
-                                  'L': Modifiers.lower,
-                                  't': Modifiers.title}
+    def __init__(self, pattern, groups = {}, modifiers = {}):
+        self.pattern = pattern
+        self.groups = groups
 
-                for k, v in modifiers.items():
-                        self.modifiers[k] = v
+        self.modifiers = {'u': Modifiers.upper_first,
+                  'U': Modifiers.upper,
+                  'l': Modifiers.lower_first,
+                  'L': Modifiers.lower,
+                  't': Modifiers.title}
 
-        def parse(self):
-                result, tokens = self._parse(self.pattern, None)
+        for k, v in modifiers.items():
+            self.modifiers[k] = v
 
-                return result
+    def parse(self):
+        result, tokens = self._parse(self.pattern, None)
 
-        def _parse(self, tokens, terminator):
-                result = ''
+        return result
 
-                while tokens != '':
-                        if self._peek(tokens) == '' or self._peek(tokens) == terminator:
-                                tokens = self._remains(tokens)
-                                break
+    def _parse(self, tokens, terminator):
+        result = ''
 
-                        try:
-                                res, tokens = self._expr(tokens, terminator)
-                        except ParseError:
-                                res, tokens = self._text(tokens)
+        while tokens != '':
+            if self._peek(tokens) == '' or self._peek(tokens) == terminator:
+                tokens = self._remains(tokens)
+                break
 
-                        result += res
+            try:
+                res, tokens = self._expr(tokens, terminator)
+            except ParseError:
+                res, tokens = self._text(tokens)
 
-                return result, tokens
+            result += res
 
-        def _peek(self, tokens, num = 0):
-                return (num < len(tokens) and tokens[num])
+        return result, tokens
 
-        def _token(self, tokens):
-                if tokens == '':
-                        return '', '';
+    def _peek(self, tokens, num = 0):
+        return (num < len(tokens) and tokens[num])
 
-                return tokens[0], (len(tokens) > 1 and tokens[1:]) or ''
+    def _token(self, tokens):
+        if tokens == '':
+            return '', '';
 
-        def _remains(self, tokens, num = 1):
-                return (num < len(tokens) and tokens[num:]) or ''
+        return tokens[0], (len(tokens) > 1 and tokens[1:]) or ''
 
-        def _expr(self, tokens, terminator):
-                if tokens == '':
-                        return ''
+    def _remains(self, tokens, num = 1):
+        return (num < len(tokens) and tokens[num:]) or ''
 
-                try:
-                        return {'\\': self._escape,
-                                '(': self._condition}[self._peek(tokens)](tokens, terminator)
-                except KeyError:
-                        raise ParseError
+    def _expr(self, tokens, terminator):
+        if tokens == '':
+            return ''
 
-        def _text(self, tokens):
-                return self._token(tokens)
+        try:
+            return {'\\': self._escape,
+                '(': self._condition}[self._peek(tokens)](tokens, terminator)
+        except KeyError:
+            raise ParseError
 
-        def _substitute(self, group, modifiers = ''):
-                result = (self.groups.has_key(group) and self.groups[group]) or ''
+    def _text(self, tokens):
+        return self._token(tokens)
 
-                for modifier in modifiers:
-                        if self.modifiers.has_key(modifier):
-                                result = self.modifiers[modifier](result)
+    def _substitute(self, group, modifiers = ''):
+        result = (self.groups.has_key(group) and self.groups[group]) or ''
 
-                return result
+        for modifier in modifiers:
+            if self.modifiers.has_key(modifier):
+                result = self.modifiers[modifier](result)
 
-        def _match_group(self, tokens):
-                match = re.match('\\\\%s' % self.REG_GROUP, tokens)
+        return result
 
-                if not match:
-                        return None, tokens
+    def _match_group(self, tokens):
+        match = re.match('\\\\%s' % self.REG_GROUP, tokens)
 
-                return self._substitute(match.group(1) or match.group(2), match.group(3) or ''), tokens[match.end():]
+        if not match:
+            return None, tokens
 
-        def _escape(self, tokens, terminator):
-                # Try to match a group
-                result, tokens = self._match_group(tokens)
+        return self._substitute(match.group(1) or match.group(2), match.group(3) or ''), tokens[match.end():]
 
-                if result != None:
-                        return result, tokens
+    def _escape(self, tokens, terminator):
+        # Try to match a group
+        result, tokens = self._match_group(tokens)
 
-                s = self.REG_GROUP
+        if result != None:
+            return result, tokens
 
-                if terminator:
-                        s += '|%s' % re.escape(terminator)
+        s = self.REG_GROUP
 
-                match = re.match('\\\\(\\\\%s|%s)' % (s, self.REG_ESCAPE), tokens)
+        if terminator:
+            s += '|%s' % re.escape(terminator)
 
-                if not match:
-                        raise ParseError
+        match = re.match('\\\\(\\\\%s|%s)' % (s, self.REG_ESCAPE), tokens)
 
-                return match.group(1), tokens[match.end():]
+        if not match:
+            raise ParseError
 
-        def _condition_value(self, tokens):
-                match = re.match('\\\\?%s\s*' % self.REG_GROUP, tokens)
+        return match.group(1), tokens[match.end():]
 
-                if not match:
-                        return None, tokens
+    def _condition_value(self, tokens):
+        match = re.match('\\\\?%s\s*' % self.REG_GROUP, tokens)
 
-                groups = match.groups()
-                name = groups[0] or groups[1]
+        if not match:
+            return None, tokens
 
-                return self.groups.has_key(name) and self.groups[name] != None, tokens[match.end():]
+        groups = match.groups()
+        name = groups[0] or groups[1]
 
-        def _condition(self, tokens, terminator):
-                # Match ? after (
-                if self._peek(tokens, 1) != '?':
-                        raise ParseError
+        return self.groups.has_key(name) and self.groups[name] != None, tokens[match.end():]
 
-                # Remove initial (? token
-                tokens = self._remains(tokens, 2)
-                condition, tokens = self._condition_value(tokens)
+    def _condition(self, tokens, terminator):
+        # Match ? after (
+        if self._peek(tokens, 1) != '?':
+            raise ParseError
 
-                if condition == None or self._peek(tokens) != ',':
-                        raise ParseError
+        # Remove initial (? token
+        tokens = self._remains(tokens, 2)
+        condition, tokens = self._condition_value(tokens)
 
-                truepart, tokens = self._parse(self._remains(tokens), ',')
+        if condition == None or self._peek(tokens) != ',':
+            raise ParseError
 
-                if truepart == None:
-                        raise ParseError
+        truepart, tokens = self._parse(self._remains(tokens), ',')
 
-                falsepart, tokens = self._parse(tokens, ')')
+        if truepart == None:
+            raise ParseError
 
-                if falsepart == None:
-                        raise ParseError
+        falsepart, tokens = self._parse(tokens, ')')
 
-                if condition:
-                        return truepart, tokens
-                else:
-                        return falsepart, tokens
+        if falsepart == None:
+            raise ParseError
 
-        def escape_substitution(substitution):
-                return re.sub('(%s|%s)' % (self.REG_GROUP, self.REG_ESCAPE), '\\\\\\1', substitution)
+        if condition:
+            return truepart, tokens
+        else:
+            return falsepart, tokens
 
-        escapesubstitution = staticmethod(escape_substitution)
+    @staticmethod
+    def escape_substitution(substitution):
+        return re.sub('(%s|%s)' % (SubstitutionParser.REG_GROUP, SubstitutionParser.REG_ESCAPE), '\\\\\\1', substitution)
 
-# ex:ts=8:et:
+# ex:ts=4:et:

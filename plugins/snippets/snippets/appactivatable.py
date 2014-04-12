@@ -15,39 +15,35 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-import sys
 import os
-import shutil
-import gettext
 
 from gi.repository import Gedit, Gtk, Gdk, GObject, Gio, GLib
 import platform
 
 from .library import Library
-from .manager import Manager
 from .shareddata import SharedData
 
 class AppActivatable(GObject.Object, Gedit.AppActivatable):
-        __gtype_name__ = "GeditSnippetsAppActivatable"
+    __gtype_name__ = "GeditSnippetsAppActivatable"
 
-        app = GObject.property(type=Gedit.App)
+    app = GObject.property(type=Gedit.App)
 
-        def __init__(self):
-                GObject.Object.__init__(self)
+    def __init__(self):
+        GObject.Object.__init__(self)
 
-        def do_activate(self):
-                # Initialize snippets library
-                library = Library()
+    def do_activate(self):
+        # Initialize snippets library
+        library = Library()
 
-                if platform.system() == 'Windows':
-                        snippetsdir = os.path.expanduser('~/gedit/snippets')
-                else:
-                        snippetsdir = os.path.join(GLib.get_user_config_dir(), 'gedit/snippets')
+        if platform.system() == 'Windows':
+            snippetsdir = os.path.expanduser('~/gedit/snippets')
+        else:
+            snippetsdir = os.path.join(GLib.get_user_config_dir(), 'gedit/snippets')
 
-                library.set_dirs(snippetsdir, self.system_dirs())
+        library.set_dirs(snippetsdir, self.system_dirs())
 
-                self.css = Gtk.CssProvider()
-                self.css.load_from_data("""
+        self.css = Gtk.CssProvider()
+        self.css.load_from_data("""
 .gedit-snippet-manager-paned {
   border-style: solid;
   border-color: @borders;
@@ -76,55 +72,55 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
   border-right-width: 0;
 }
 """.encode('utf-8'))
-                Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
-                                                         self.css, 600)
+        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(),
+                             self.css, 600)
 
-                action = Gio.SimpleAction(name="snippets")
-                action.connect('activate', self.on_action_snippets_activate)
-                self.app.add_action(action)
+        action = Gio.SimpleAction(name="snippets")
+        action.connect('activate', self.on_action_snippets_activate)
+        self.app.add_action(action)
 
-                item = Gio.MenuItem.new(_("Manage _Snippets..."), "app.snippets")
-                self.menu = self.extend_menu("preferences-section")
-                self.menu.append_menu_item(item)
+        item = Gio.MenuItem.new(_("Manage _Snippets..."), "app.snippets")
+        self.menu = self.extend_menu("preferences-section")
+        self.menu.append_menu_item(item)
 
-        def do_deactivate(self):
-                self.app.remove_action("snippets")
-                self.menu = None
-                Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(),
-                                                            self.css)
+    def do_deactivate(self):
+        self.app.remove_action("snippets")
+        self.menu = None
+        Gtk.StyleContext.remove_provider_for_screen(Gdk.Screen.get_default(),
+                                self.css)
 
-        def system_dirs(self):
-                if platform.system() != 'Windows':
-                        if 'XDG_DATA_DIRS' in os.environ:
-                                datadirs = os.environ['XDG_DATA_DIRS']
-                        else:
-                                datadirs = '/usr/local/share' + os.pathsep + '/usr/share'
+    def system_dirs(self):
+        if platform.system() != 'Windows':
+            if 'XDG_DATA_DIRS' in os.environ:
+                datadirs = os.environ['XDG_DATA_DIRS']
+            else:
+                datadirs = '/usr/local/share' + os.pathsep + '/usr/share'
 
-                        dirs = []
+            dirs = []
 
-                        for d in datadirs.split(os.pathsep):
-                                d = os.path.join(d, 'gedit', 'plugins', 'snippets')
+            for d in datadirs.split(os.pathsep):
+                d = os.path.join(d, 'gedit', 'plugins', 'snippets')
 
-                                if os.path.isdir(d):
-                                        dirs.append(d)
+                if os.path.isdir(d):
+                    dirs.append(d)
 
-                dirs.append(self.plugin_info.get_data_dir())
-                return dirs
+        dirs.append(self.plugin_info.get_data_dir())
+        return dirs
 
-        def accelerator_activated(self, group, obj, keyval, mod):
-                activatable = SharedData().lookup_window_activatable(obj)
+    def accelerator_activated(self, group, obj, keyval, mod):
+        activatable = SharedData().lookup_window_activatable(obj)
 
-                ret = False
+        ret = False
 
-                if activatable:
-                        ret = activatable.accelerator_activated(keyval, mod)
+        if activatable:
+            ret = activatable.accelerator_activated(keyval, mod)
 
-                return ret
+        return ret
 
-        def create_configure_dialog(self):
-                SharedData().show_manager(self.app.get_active_window(), self.plugin_info.get_data_dir())
+    def create_configure_dialog(self):
+        SharedData().show_manager(self.app.get_active_window(), self.plugin_info.get_data_dir())
 
-        def on_action_snippets_activate(self, action, parameter):
-                self.create_configure_dialog()
+    def on_action_snippets_activate(self, action, parameter):
+        self.create_configure_dialog()
 
-# vi:ex:ts=8:et
+# vi:ex:ts=4:et
