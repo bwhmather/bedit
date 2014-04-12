@@ -25,7 +25,7 @@ class Proposal(GObject.Object, GtkSource.CompletionProposal):
     __gtype_name__ = "GeditSnippetsProposal"
 
     def __init__(self, snippet):
-        GObject.Object.__init__(self)
+        super(Proposal, self).__init__()
         self._snippet = Snippet(snippet)
 
     def snippet(self):
@@ -42,7 +42,7 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
     __gtype_name__ = "GeditSnippetsProvider"
 
     def __init__(self, name, language_id, handler):
-        GObject.Object.__init__(self)
+        super(Provider, self).__init__()
 
         self.name = name
         self.info_widget = None
