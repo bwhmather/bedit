@@ -445,8 +445,9 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	primary_label = gtk_label_new (NULL);
 	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
 	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	gtk_widget_set_halign (primary_label, GTK_ALIGN_START);
-	gtk_misc_set_alignment (GTK_MISC (primary_label), 0, 0.5);
+	gtk_widget_set_halign (primary_label, GTK_ALIGN_CENTER);
+	gtk_widget_set_valign (primary_label, GTK_ALIGN_START);
+	gtk_misc_set_alignment (GTK_MISC (primary_label), 0.5, 0);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 	gtk_widget_set_can_focus (primary_label, FALSE);
 
@@ -484,8 +485,9 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	secondary_label = gtk_label_new (str);
 	g_free (str);
 	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-	gtk_widget_set_halign (secondary_label, GTK_ALIGN_START);
-	gtk_misc_set_alignment (GTK_MISC (secondary_label), 0, 0.5);
+	gtk_widget_set_halign (secondary_label, GTK_ALIGN_CENTER);
+	gtk_widget_set_valign (secondary_label, GTK_ALIGN_START);
+	gtk_misc_set_alignment (GTK_MISC (secondary_label), 0.5, 0);
 	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
 	gtk_widget_set_can_focus (secondary_label, FALSE);
 
@@ -632,7 +634,9 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
 	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
 	gtk_misc_set_alignment (GTK_MISC (primary_label), 0, 0.5);
-	gtk_widget_set_halign (primary_label, GTK_ALIGN_START);
+	gtk_widget_set_halign (primary_label, GTK_ALIGN_CENTER);
+	gtk_widget_set_valign (primary_label, GTK_ALIGN_START);
+	gtk_misc_set_alignment (GTK_MISC (primary_label), 0.5, 0);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 	gtk_widget_set_can_focus (primary_label, FALSE);
 
@@ -700,8 +704,9 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 
 	gtk_box_pack_start (GTK_BOX (vbox2), secondary_label, FALSE, FALSE, 0);
 	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-	gtk_widget_set_halign (secondary_label, GTK_ALIGN_START);
-	gtk_misc_set_alignment (GTK_MISC (secondary_label), 0, 0.5);
+	gtk_widget_set_halign (secondary_label, GTK_ALIGN_CENTER);
+	gtk_widget_set_valign (secondary_label, GTK_ALIGN_START);
+	gtk_misc_set_alignment (GTK_MISC (secondary_label), 0.5, 0);
 	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (select_label), treeview);
