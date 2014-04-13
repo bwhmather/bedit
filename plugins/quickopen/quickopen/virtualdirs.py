@@ -17,6 +17,7 @@
 
 from gi.repository import Gio, Gtk
 
+
 class VirtualDirectory(object):
     def __init__(self, name):
         self._name = name
@@ -45,6 +46,7 @@ class VirtualDirectory(object):
         except Exception as e:
             pass
 
+
 class RecentDocumentsDirectory(VirtualDirectory):
     def __init__(self, maxitems=200):
         VirtualDirectory.__init__(self, 'recent')
@@ -67,6 +69,7 @@ class RecentDocumentsDirectory(VirtualDirectory):
 
                 if added >= self._maxitems:
                     break
+
 
 class CurrentDocumentsDirectory(VirtualDirectory):
     def __init__(self, window):

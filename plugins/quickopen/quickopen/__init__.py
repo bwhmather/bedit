@@ -21,6 +21,7 @@ from gi.repository import GObject, Gio, GLib, Gtk, Gedit
 from .virtualdirs import RecentDocumentsDirectory
 from .virtualdirs import CurrentDocumentsDirectory
 
+
 class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
     app = GObject.property(type=Gedit.App)
 
@@ -36,6 +37,7 @@ class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
 
     def do_deactivate(self):
         self.app.remove_accelerator("win.quickopen", None)
+
 
 class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
     __gtype_name__ = "QuickOpenPlugin"
@@ -151,7 +153,8 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
 
                 if line.startswith('XDG_DESKTOP_DIR'):
                     parts = line.split('=', 1)
-                    desktopdir = os.path.expandvars(parts[1].strip('"').strip("'"))
+                    desktopdir = parts[1].strip('"').strip("'")
+                    desktopdir = os.path.expandvars(desktopdir)
                     break
 
         if not desktopdir:

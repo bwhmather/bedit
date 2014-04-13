@@ -23,18 +23,20 @@ from gi.repository import Gio, GObject, Pango, Gtk, Gdk, Gedit
 import xml.sax.saxutils
 from .virtualdirs import VirtualDirectory
 
+
 class Popup(Gtk.Dialog):
     __gtype_name__ = "QuickOpenPopup"
 
     def __init__(self, window, paths, handler):
         Gtk.Dialog.__init__(self,
-                    title=_('Quick Open'),
-                    transient_for=window,
-                    modal=True,
-                    destroy_with_parent=True)
+                            title=_('Quick Open'),
+                            transient_for=window,
+                            modal=True,
+                            destroy_with_parent=True)
 
         self.add_button(_("_Cancel"), Gtk.ResponseType.CANCEL)
-        self._open_button = self.add_button(_("_Open"), Gtk.ResponseType.ACCEPT)
+        self._open_button = self.add_button(_("_Open"),
+                                            Gtk.ResponseType.ACCEPT)
 
         self._handler = handler
         self._build_ui()
@@ -49,7 +51,10 @@ class Popup(Gtk.Dialog):
         self._busy_cursor = Gdk.Cursor(Gdk.CursorType.WATCH)
 
         accel_group = Gtk.AccelGroup()
-        accel_group.connect(Gdk.KEY_l, Gdk.ModifierType.CONTROL_MASK, 0, self.on_focus_entry)
+        accel_group.connect(Gdk.KEY_l,
+                            Gdk.ModifierType.CONTROL_MASK,
+                            0,
+                            self.on_focus_entry)
 
         self.add_accel_group(accel_group)
 
@@ -86,7 +91,10 @@ class Popup(Gtk.Dialog):
         tv = Gtk.TreeView()
         tv.set_headers_visible(False)
 
-        self._store = Gtk.ListStore(Gio.Icon, str, GObject.Object, Gio.FileType)
+        self._store = Gtk.ListStore(Gio.Icon,
+                                    str,
+                                    GObject.Object,
+                                    Gio.FileType)
         tv.set_model(self._store)
 
         self._treeview = tv
@@ -162,7 +170,9 @@ class Popup(Gtk.Dialog):
         entries = []
 
         try:
-            ret = gfile.enumerate_children("standard::*", Gio.FileQueryInfoFlags.NONE, None)
+            ret = gfile.enumerate_children("standard::*",
+                                           Gio.FileQueryInfoFlags.NONE,
+                                           None)
         except GObject.Error as e:
             pass
 
@@ -245,7 +255,7 @@ class Popup(Gtk.Dialog):
                     else:
                         found.append(entry)
                 elif entry[2] == Gio.FileType.REGULAR and \
-                     (not lpart or len(parts) == 1):
+                        (not lpart or len(parts) == 1):
                     found.append(entry)
 
         found.sort(key=functools.cmp_to_key(lambda a, b: self._compare_entries(a[1].lower(), b[1].lower(), lpart)))
@@ -277,7 +287,6 @@ class Popup(Gtk.Dialog):
                 last = m + len(find)
 
         return out + xml.sax.saxutils.escape(s[last:])
-
 
     def make_markup(self, parts, path):
         out = []
@@ -345,7 +354,10 @@ class Popup(Gtk.Dialog):
         for d in self._dirs:
             if isinstance(d, VirtualDirectory):
                 for entry in d.enumerate_children("standard::*", 0, None):
-                    self._append_to_store((entry[1].get_icon(), xml.sax.saxutils.escape(entry[1].get_name()), entry[0], entry[1].get_file_type()))
+                    self._append_to_store((entry[1].get_icon(),
+                                          xml.sax.saxutils.escape(entry[1].get_name()),
+                                          entry[0],
+                                          entry[1].get_file_type()))
 
     def _set_busy(self, busy):
         if busy:
@@ -377,18 +389,22 @@ class Popup(Gtk.Dialog):
             for d in self._dirs:
                 for entry in self.do_search_dir(parts, d):
                     pathparts = self._make_parts(d, entry[0], parts)
-                    self._append_to_store((entry[3], self.make_markup(parts, pathparts), entry[0], entry[2]))
+                    self._append_to_store((entry[3],
+                                          self.make_markup(parts, pathparts),
+                                          entry[0],
+                                          entry[2]))
 
         piter = self._store.get_iter_first()
         if piter:
-            self._treeview.get_selection().select_path(self._store.get_path(piter))
+            path = self._store.get_path(piter)
+            self._treeview.get_selection().select_path(path)
 
         self._set_busy(False)
 
-    #FIXME: override doesn't work anymore for some reason, if we override
+    # FIXME: override doesn't work anymore for some reason, if we override
     # the widget is not realized
     def on_show(self, data=None):
-        #Gtk.Window.do_show(self)
+        # Gtk.Window.do_show(self)
 
         self._entry.grab_focus()
         self._entry.set_text("")
@@ -582,7 +598,7 @@ class Popup(Gtk.Dialog):
             else:
                 fname = xml.sax.saxutils.escape(gfile.get_uri())
 
-        self._open_button.set_sensitive(fname != None)
+        self._open_button.set_sensitive(fname is not None)
         self._info_label.set_markup(fname or '')
 
     def on_focus_entry(self, group, accel, keyval, modifier):
