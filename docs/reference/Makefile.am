@@ -81,7 +81,6 @@ GTKDOC_CFLAGS =			\
 
 GTKDOC_LIBS =						\
 	$(top_builddir)/gedit/libgedit.la		\
-	$(top_builddir)/gedit/libgedit-private.la	\
 	$(GEDIT_LIBS)
 
 MAINTAINERCLEANFILES = gedit.types
