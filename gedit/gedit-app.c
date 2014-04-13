@@ -405,6 +405,22 @@ gedit_app_has_app_menu (GeditApp *app)
 }
 
 static void
+load_accels (void)
+{
+	gchar *filename;
+
+	filename = g_build_filename (gedit_dirs_get_user_config_dir (),
+				     "accels",
+				     NULL);
+	if (filename != NULL)
+	{
+		gedit_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);
+		gtk_accel_map_load (filename);
+		g_free (filename);
+	}
+}
+
+static void
 gedit_app_startup (GApplication *application)
 {
 	GeditApp *app = GEDIT_APP (application);
@@ -547,6 +563,8 @@ gedit_app_startup (GApplication *application)
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
 	                                 "<Primary><Alt>Page_Down",
 	                                 "win.next-document", NULL);
+
+	load_accels ();
 
 	/* Load custom css */
 	error = NULL;
@@ -1077,30 +1095,6 @@ gedit_app_shutdown (GApplication *app)
 	G_APPLICATION_CLASS (gedit_app_parent_class)->shutdown (app);
 }
 
-static void
-load_accels (void)
-{
-	gchar *filename;
-
-	filename = g_build_filename (gedit_dirs_get_user_config_dir (),
-				     "accels",
-				     NULL);
-	if (filename != NULL)
-	{
-		gedit_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);
-		gtk_accel_map_load (filename);
-		g_free (filename);
-	}
-}
-
-static void
-gedit_app_constructed (GObject *object)
-{
-	G_OBJECT_CLASS (gedit_app_parent_class)->constructed (object);
-
-	load_accels ();
-}
-
 static gboolean
 window_delete_event (GeditWindow *window,
                      GdkEvent    *event,
@@ -1147,7 +1141,6 @@ gedit_app_class_init (GeditAppClass *klass)
 
 	object_class->dispose = gedit_app_dispose;
 	object_class->get_property = gedit_app_get_property;
-	object_class->constructed = gedit_app_constructed;
 
 	app_class->startup = gedit_app_startup;
 	app_class->activate = gedit_app_activate;
