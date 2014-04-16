@@ -217,8 +217,6 @@ setup_editor_page (GeditPreferencesDialog *dlg)
 			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
 }
 
-static gboolean split_button_state = TRUE;
-
 static void
 wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 			       GeditPreferencesDialog *dlg)
@@ -245,13 +243,17 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 
 		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton)))
 		{
-			split_button_state = TRUE;
+			g_settings_set_enum (dlg->priv->editor,
+			                     GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
+			                     GTK_WRAP_WORD);
 
 			mode = GTK_WRAP_WORD;
 		}
 		else
 		{
-			split_button_state = FALSE;
+			g_settings_set_enum (dlg->priv->editor,
+			                     GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
+			                     GTK_WRAP_CHAR);
 
 			mode = GTK_WRAP_CHAR;
 		}
@@ -266,6 +268,7 @@ static void
 setup_view_page (GeditPreferencesDialog *dlg)
 {
 	GtkWrapMode wrap_mode;
+	GtkWrapMode last_split_mode;
 	gboolean display_right_margin;
 	guint right_margin_position;
 
@@ -288,18 +291,30 @@ setup_view_page (GeditPreferencesDialog *dlg)
 				GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), TRUE);
 			gtk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
+
+			g_settings_set_enum (dlg->priv->editor,
+			                     GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
+			                     GTK_WRAP_WORD);
 			break;
 		case GTK_WRAP_CHAR:
 			gtk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), TRUE);
 			gtk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), FALSE);
+
+			g_settings_set_enum (dlg->priv->editor,
+			                     GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE,
+			                     GTK_WRAP_CHAR);
 			break;
 		default:
 			gtk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (dlg->priv->wrap_text_checkbutton), FALSE);
-			gtk_toggle_button_set_active (
-				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), split_button_state);
+
+			last_split_mode = g_settings_get_enum (dlg->priv->editor,
+			                                       GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE);
+			gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton),
+			                              last_split_mode == GTK_WRAP_WORD);
+
 			gtk_toggle_button_set_inconsistent (
 				GTK_TOGGLE_BUTTON (dlg->priv->split_checkbutton), TRUE);
 	}

@@ -80,6 +80,7 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 #define GEDIT_SETTINGS_AUTO_SAVE_INTERVAL		"auto-save-interval"
 #define GEDIT_SETTINGS_MAX_UNDO_ACTIONS			"max-undo-actions"
 #define GEDIT_SETTINGS_WRAP_MODE			"wrap-mode"
+#define GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE		"wrap-last-split-mode"
 #define GEDIT_SETTINGS_TABS_SIZE			"tabs-size"
 #define GEDIT_SETTINGS_INSERT_SPACES			"insert-spaces"
 #define GEDIT_SETTINGS_AUTO_INDENT			"auto-indent"
