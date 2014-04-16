@@ -1126,6 +1126,67 @@ language_changed (GObject     *object,
 }
 
 static void
+update_statusbar_wrap_mode_checkbox_from_view (GeditWindow *window,
+                                               GeditView   *view)
+{
+	GtkWrapMode wrap_mode;
+	GSimpleAction *simple_action;
+
+	wrap_mode = gtk_text_view_get_wrap_mode (GTK_TEXT_VIEW (view));
+
+	simple_action = G_SIMPLE_ACTION (g_action_map_lookup_action (G_ACTION_MAP (window), "wrap-mode"));
+	g_simple_action_set_state (simple_action, g_variant_new_boolean (wrap_mode != GTK_WRAP_NONE));
+}
+static void
+on_view_wrap_mode_changed (GObject     *object,
+                           GParamSpec  *pspec,
+                           GeditWindow *window)
+{
+	GeditView *view = gedit_window_get_active_view (window);
+
+	update_statusbar_wrap_mode_checkbox_from_view (window, view);
+}
+
+static void
+_gedit_window_text_wrapping_change_state (GSimpleAction *simple,
+                                          GVariant      *value,
+                                          gpointer       window)
+{
+	gboolean result;
+	GeditView *view;
+	GtkWrapMode wrap_mode;
+	GtkWrapMode current_wrap_mode;
+
+	g_simple_action_set_state (simple, value);
+
+	wrap_mode = g_settings_get_enum (GEDIT_WINDOW (window)->priv->editor_settings,
+	                                 GEDIT_SETTINGS_WRAP_MODE);
+
+	current_wrap_mode = wrap_mode;
+	result = g_variant_get_boolean (value);
+
+	if (result && wrap_mode == GTK_WRAP_NONE)
+	{
+		current_wrap_mode = g_settings_get_enum (GEDIT_WINDOW (window)->priv->editor_settings,
+		                                         GEDIT_SETTINGS_WRAP_LAST_SPLIT_MODE);
+	}
+	else if (!result)
+	{
+		current_wrap_mode = GTK_WRAP_NONE;
+	}
+
+	view = gedit_window_get_active_view (GEDIT_WINDOW (window));
+
+	g_signal_handler_block (view, GEDIT_WINDOW (window)->priv->wrap_mode_changed_id);
+	gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view), current_wrap_mode);
+	g_signal_handler_unblock (view, GEDIT_WINDOW (window)->priv->wrap_mode_changed_id);
+}
+
+static GActionEntry text_wrapping_entrie[] = {
+	{"wrap-mode", NULL, NULL, "false", _gedit_window_text_wrapping_change_state},
+};
+
+static void
 sync_current_tab_actions (GeditWindow *window,
 			  GeditView   *old_view,
 			  GeditView   *new_view)
@@ -1135,6 +1196,11 @@ sync_current_tab_actions (GeditWindow *window,
 		g_action_map_remove_action (G_ACTION_MAP (window), "auto-indent");
 		g_action_map_remove_action (G_ACTION_MAP (window), "tab-width");
 		g_action_map_remove_action (G_ACTION_MAP (window), "use-spaces");
+		g_action_map_remove_action (G_ACTION_MAP (window), "show-line-numbers");
+		g_action_map_remove_action (G_ACTION_MAP (window), "display-right-margin");
+		g_action_map_remove_action (G_ACTION_MAP (window), "wrap-mode");
+
+		g_signal_handler_disconnect (old_view, window->priv->wrap_mode_changed_id);
 	}
 
 	if (new_view)
@@ -1152,6 +1218,30 @@ sync_current_tab_actions (GeditWindow *window,
 		action = g_property_action_new ("use-spaces", new_view, "insert-spaces-instead-of-tabs");
 		g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
 		g_object_unref (action);
+
+		action = g_property_action_new ("show-line-numbers", new_view, "show-line-numbers");
+		g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
+		g_object_unref (action);
+
+		action = g_property_action_new ("display-right-margin", new_view, "show-right-margin");
+		g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
+		g_object_unref (action);
+
+		action = g_property_action_new ("highlight-current-line", new_view, "highlight-current-line");
+		g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
+		g_object_unref (action);
+
+		g_action_map_add_action_entries (G_ACTION_MAP (window),
+		                                 text_wrapping_entrie,
+		                                 G_N_ELEMENTS (text_wrapping_entrie),
+		                                 window);
+
+		update_statusbar_wrap_mode_checkbox_from_view (window, new_view);
+
+		window->priv->wrap_mode_changed_id = g_signal_connect (new_view,
+		                                                       "notify::wrap-mode",
+		                                                       G_CALLBACK (on_view_wrap_mode_changed),
+		                                                       window);
 	}
 }
 
@@ -1194,6 +1284,8 @@ update_statusbar (GeditWindow *window,
 
 		gtk_widget_show (window->priv->tab_width_combo);
 		gtk_widget_show (window->priv->language_button);
+		_gedit_statusbar_line_col_button_set_visible (GEDIT_STATUSBAR (window->priv->statusbar),
+		                                              TRUE);
 
 		window->priv->tab_width_id = g_signal_connect (new_view,
 							       "notify::tab-width",
@@ -2161,18 +2253,15 @@ on_tab_removed (GeditMultiNotebook *multi,
 	{
 		set_title (window);
 
-		/* Remove line and col info */
-		gedit_statusbar_set_cursor_position (
-				GEDIT_STATUSBAR (window->priv->statusbar),
-				-1,
-				-1);
-
 		gedit_statusbar_clear_overwrite (
 				GEDIT_STATUSBAR (window->priv->statusbar));
 
 		/* hide the combos */
 		gtk_widget_hide (window->priv->tab_width_combo);
 		gtk_widget_hide (window->priv->language_button);
+
+		_gedit_statusbar_line_col_button_set_visible (GEDIT_STATUSBAR (window->priv->statusbar),
+		                                              FALSE);
 	}
 
 	if (!window->priv->dispose_has_run)

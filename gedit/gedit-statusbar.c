@@ -26,6 +26,8 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include "gedit-statusbar.h"
+#include "gedit-app.h"
+#include "gedit-status-menu-button.h"
 
 struct _GeditStatusbarPrivate
 {
@@ -35,7 +37,7 @@ struct _GeditStatusbarPrivate
 	GtkWidget     *load_image;
 	GtkWidget     *save_image;
 	GtkWidget     *print_image;
-	GtkWidget     *cursor_position_label;
+	GtkWidget     *line_col_button;
 	GtkWidget     *overwrite_mode_label;
 
 	/* tmp flash timeout data */
@@ -90,7 +92,7 @@ gedit_statusbar_class_init (GeditStatusbarClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, load_image);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, save_image);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, print_image);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, cursor_position_label);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, line_col_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, overwrite_mode_label);
 }
 
@@ -103,6 +105,10 @@ gedit_statusbar_init (GeditStatusbar *statusbar)
 
 	gtk_label_set_width_chars (GTK_LABEL (statusbar->priv->overwrite_mode_label),
 				   get_overwrite_mode_length ());
+
+	/* Line Col button */
+	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (statusbar->priv->line_col_button),
+	                                _gedit_app_get_line_col_menu (GEDIT_APP (g_application_get_default ())));
 }
 
 /**
@@ -116,6 +122,13 @@ GtkWidget *
 gedit_statusbar_new (void)
 {
 	return GTK_WIDGET (g_object_new (GEDIT_TYPE_STATUSBAR, NULL));
+}
+
+void
+_gedit_statusbar_line_col_button_set_visible (GeditStatusbar *statusbar,
+                                              gboolean        visible)
+{
+	gtk_widget_set_visible (statusbar->priv->line_col_button, visible);
 }
 
 /**
@@ -170,7 +183,7 @@ gedit_statusbar_set_cursor_position (GeditStatusbar *statusbar,
 		msg = g_strdup_printf (_("  Ln %d, Col %d"), line, col);
 	}
 
-	gtk_label_set_text (GTK_LABEL (statusbar->priv->cursor_position_label), msg);
+	gedit_status_menu_button_set_label (GEDIT_STATUS_MENU_BUTTON (statusbar->priv->line_col_button), msg);
 
 	g_free (msg);
 }

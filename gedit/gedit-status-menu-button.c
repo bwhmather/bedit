@@ -104,7 +104,7 @@ gedit_status_menu_button_class_init (GeditStatusMenuButtonClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-status-menu-button.ui");
-	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusMenuButton, label);
+	gtk_widget_class_bind_template_child_internal_private (widget_class, GeditStatusMenuButton, label);
 
 	klass->priv = G_TYPE_CLASS_GET_PRIVATE (klass, GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButtonClassPrivate);
 

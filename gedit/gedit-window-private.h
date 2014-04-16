@@ -74,6 +74,7 @@ struct _GeditWindowPrivate
 	guint 	        bracket_match_message_cid;
 	guint 	        tab_width_id;
 	guint 	        language_changed_id;
+	guint           wrap_mode_changed_id;
 
 	/* Headerbars */
 	GtkWidget      *titlebar_paned;

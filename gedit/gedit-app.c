@@ -80,6 +80,7 @@ struct _GeditAppPrivate
 	GMenuModel        *window_menu;
 	GMenuModel        *notebook_menu;
 	GMenuModel        *tab_width_menu;
+	GMenuModel        *line_col_menu;
 
 	PeasExtensionSet  *extensions;
 	GNetworkMonitor   *monitor;
@@ -501,6 +502,7 @@ gedit_app_startup (GApplication *application)
 
 		app->priv->notebook_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "notebook_menu"));
 		app->priv->tab_width_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "tab_width_menu"));
+		app->priv->line_col_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "line_col_menu"));
 	}
 
 	g_object_unref (builder);
@@ -1655,6 +1657,15 @@ _gedit_app_get_tab_width_menu (GeditApp *app)
 
 	return app->priv->tab_width_menu;
 }
+
+GMenuModel *
+_gedit_app_get_line_col_menu (GeditApp *app)
+{
+	g_return_val_if_fail (GEDIT_IS_APP (app), NULL);
+
+	return app->priv->line_col_menu;
+}
+
 
 GeditMenuExtension *
 _gedit_app_extend_menu (GeditApp    *app,
