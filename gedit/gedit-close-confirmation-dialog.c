@@ -43,33 +43,54 @@ enum
 	MULTIPLE_DOCS_MODE
 };
 
-/* Columns */
-enum
-{
-	SAVE_COLUMN,
-	NAME_COLUMN,
-	DOC_COLUMN, /* a handy pointer to the document */
-	N_COLUMNS
-};
+#define GET_MODE(priv) (((priv->unsaved_documents != NULL) && \
+			 (priv->unsaved_documents->next == NULL)) ? \
+			  SINGLE_DOC_MODE : MULTIPLE_DOCS_MODE)
+
+#define GEDIT_SAVE_DOCUMENT_KEY "gedit-save-document"
 
 struct _GeditCloseConfirmationDialogPrivate
 {
 	GList       *unsaved_documents;
 	GList       *selected_documents;
-	GtkTreeModel *list_store;
+	GtkWidget   *list_box;
 	gboolean     disable_save_to_disk;
 };
-
-#define GET_MODE(priv) (((priv->unsaved_documents != NULL) && \
-			 (priv->unsaved_documents->next == NULL)) ? \
-			  SINGLE_DOC_MODE : MULTIPLE_DOCS_MODE)
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GTK_TYPE_DIALOG)
 
 static void 	 set_unsaved_document 		(GeditCloseConfirmationDialog *dlg,
 						 const GList                  *list);
 
-static GList 	*get_selected_docs 		(GtkTreeModel                 *store);
+static GList *
+get_selected_docs (GtkWidget *list_box)
+{
+	GList *rows;
+	GList *l;
+	GList *ret = NULL;
+
+	rows = gtk_container_get_children (GTK_CONTAINER (list_box));
+	for (l = rows; l != NULL; l = l->next)
+	{
+		GtkWidget *row = l->data;
+		GtkWidget *check_button;
+
+		check_button = gtk_bin_get_child (GTK_BIN (row));
+		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check_button)))
+		{
+			GeditDocument *doc;
+
+			doc = g_object_get_data (G_OBJECT (row), GEDIT_SAVE_DOCUMENT_KEY);
+			g_return_val_if_fail (doc != NULL, NULL);
+
+			ret = g_list_prepend (ret, doc);
+		}
+	}
+
+	g_list_free (rows);
+
+	return g_list_reverse (ret);
+}
 
 /*  Since we connect in the costructor we are sure this handler will be called
  *  before the user ones
@@ -86,26 +107,21 @@ response_cb (GeditCloseConfirmationDialog *dlg,
 	priv = dlg->priv;
 
 	if (priv->selected_documents != NULL)
+	{
 		g_list_free (priv->selected_documents);
+		priv->selected_documents = NULL;
+	}
 
 	if (response_id == GTK_RESPONSE_YES)
 	{
 		if (GET_MODE (priv) == SINGLE_DOC_MODE)
 		{
-			priv->selected_documents =
-				g_list_copy (priv->unsaved_documents);
+			priv->selected_documents = g_list_copy (priv->unsaved_documents);
 		}
 		else
 		{
-			g_return_if_fail (priv->list_store);
-
-			priv->selected_documents =
-				get_selected_docs (priv->list_store);
+			priv->selected_documents = get_selected_docs (priv->list_box);
 		}
-	}
-	else
-	{
-		priv->selected_documents = NULL;
 	}
 }
 
@@ -219,36 +235,6 @@ gedit_close_confirmation_dialog_class_init (GeditCloseConfirmationDialogClass *k
 							       "List of Unsaved Documents",
 							       (G_PARAM_READWRITE |
 							        G_PARAM_CONSTRUCT_ONLY)));
-}
-
-static GList *
-get_selected_docs (GtkTreeModel *store)
-{
-	GList      *list;
-	gboolean     valid;
-	GtkTreeIter  iter;
-
-	list = NULL;
-	valid = gtk_tree_model_get_iter_first (store, &iter);
-
-	while (valid)
-	{
-		gboolean       to_save;
-		GeditDocument *doc;
-
-		gtk_tree_model_get (store, &iter,
-				    SAVE_COLUMN, &to_save,
-				    DOC_COLUMN, &doc,
-				    -1);
-		if (to_save)
-			list = g_list_prepend (list, doc);
-
-		valid = gtk_tree_model_iter_next (store, &iter);
-	}
-
-	list = g_list_reverse (list);
-
-	return list;
 }
 
 GList *
@@ -506,97 +492,40 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_widget_show_all (hbox);
 }
 
-static void
-populate_model (GtkTreeModel *store, GList *docs)
+static GtkWidget *
+create_list_box (GeditCloseConfirmationDialogPrivate *priv)
 {
-	GtkTreeIter iter;
+	GtkWidget *list_box;
+	GList *l;
 
-	while (docs != NULL)
+	list_box = gtk_list_box_new ();
+
+	for (l = priv->unsaved_documents; l != NULL; l = l->next)
 	{
-		GeditDocument *doc;
+		GeditDocument *doc = l->data;
 		gchar *name;
-
-		doc = GEDIT_DOCUMENT (docs->data);
+		GtkWidget *check_button;
+		GtkWidget *row;
 
 		name = gedit_document_get_short_name_for_display (doc);
-
-		gtk_list_store_append (GTK_LIST_STORE (store), &iter);
-		gtk_list_store_set (GTK_LIST_STORE (store), &iter,
-				    SAVE_COLUMN, TRUE,
-				    NAME_COLUMN, name,
-				    DOC_COLUMN, doc,
-			            -1);
-
+		check_button = gtk_check_button_new_with_label (name);
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_button), TRUE);
+		gtk_widget_set_halign (check_button, GTK_ALIGN_START);
 		g_free (name);
 
-		docs = g_list_next (docs);
-	}
-}
+		row = gtk_list_box_row_new ();
+		gtk_container_add (GTK_CONTAINER (row), check_button);
+		gtk_widget_show_all (row);
 
-static void
-save_toggled (GtkCellRendererToggle *renderer, gchar *path_str, GtkTreeModel *store)
-{
-	GtkTreePath *path = gtk_tree_path_new_from_string (path_str);
-	GtkTreeIter iter;
-	gboolean active;
+		g_object_set_data_full (G_OBJECT (row),
+		                        GEDIT_SAVE_DOCUMENT_KEY,
+		                        g_object_ref (doc),
+		                        (GDestroyNotify) g_object_unref);
 
-	gtk_tree_model_get_iter (store, &iter, path);
-	gtk_tree_model_get (store, &iter, SAVE_COLUMN, &active, -1);
-
-	active ^= 1;
-
-	gtk_list_store_set (GTK_LIST_STORE (store), &iter,
-			    SAVE_COLUMN, active, -1);
-
-	gtk_tree_path_free (path);
-}
-
-static GtkWidget *
-create_treeview (GeditCloseConfirmationDialogPrivate *priv)
-{
-	GtkListStore *store;
-	GtkWidget *treeview;
-	GtkCellRenderer *renderer;
-	GtkTreeViewColumn *column;
-
-	treeview = gtk_tree_view_new ();
-	gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeview), FALSE);
-	gtk_tree_view_set_enable_search (GTK_TREE_VIEW (treeview), FALSE);
-
-	/* Create and populate the model */
-	store = gtk_list_store_new (N_COLUMNS, G_TYPE_BOOLEAN, G_TYPE_STRING, G_TYPE_POINTER);
-	populate_model (GTK_TREE_MODEL (store), priv->unsaved_documents);
-
-	/* Set model to the treeview */
-	gtk_tree_view_set_model (GTK_TREE_VIEW (treeview), GTK_TREE_MODEL (store));
-	g_object_unref (store);
-
-	priv->list_store = GTK_TREE_MODEL (store);
-
-	/* Add columns */
-	if (!priv->disable_save_to_disk)
-	{
-		renderer = gtk_cell_renderer_toggle_new ();
-		g_signal_connect (renderer, "toggled",
-				  G_CALLBACK (save_toggled), store);
-
-		column = gtk_tree_view_column_new_with_attributes ("Save?",
-								   renderer,
-								   "active",
-								   SAVE_COLUMN,
-								   NULL);
-		gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+		gtk_list_box_insert (GTK_LIST_BOX (list_box), row, -1);
 	}
 
-	renderer = gtk_cell_renderer_text_new ();
-	column = gtk_tree_view_column_new_with_attributes ("Name",
-							   renderer,
-							   "text",
-							   NAME_COLUMN,
-							   NULL);
-	gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
-
-	return treeview;
+	return list_box;
 }
 
 static void
@@ -609,7 +538,6 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	GtkWidget *vbox2;
 	GtkWidget *select_label;
 	GtkWidget *scrolledwindow;
-	GtkWidget *treeview;
 	GtkWidget *secondary_label;
 	gchar     *str;
 	gchar     *markup_str;
@@ -688,8 +616,8 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 					     GTK_SHADOW_IN);
 	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (scrolledwindow), 60);
 
-	treeview = create_treeview (priv);
-	gtk_container_add (GTK_CONTAINER (scrolledwindow), treeview);
+	priv->list_box = create_list_box (priv);
+	gtk_container_add (GTK_CONTAINER (scrolledwindow), priv->list_box);
 
 	/* Secondary label */
 	if (priv->disable_save_to_disk)
@@ -709,7 +637,7 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_misc_set_alignment (GTK_MISC (secondary_label), 0.5, 0);
 	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
 
-	gtk_label_set_mnemonic_widget (GTK_LABEL (select_label), treeview);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (select_label), priv->list_box);
 
 	gtk_widget_show_all (hbox);
 }
