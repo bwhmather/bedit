@@ -50,6 +50,7 @@
 
 static GtkWidget *preferences_dialog = NULL;
 
+#define GEDIT_SCHEME_ROW_ID_KEY "gedit-scheme-row-id"
 
 enum
 {
@@ -72,10 +73,7 @@ struct _GeditPreferencesDialogPrivate
 	GtkWidget	*font_grid;
 
 	/* Style Scheme */
-	GtkListStore	*schemes_treeview_model;
-	GtkWidget	*schemes_treeview;
-	GtkTreeViewColumn *schemes_column;
-	GtkCellRenderer *schemes_renderer;
+	GtkWidget	*schemes_list;
 	GtkWidget	*install_scheme_button;
 	GtkWidget	*uninstall_scheme_button;
 	GtkWidget	*schemes_scrolled_window;
@@ -158,10 +156,7 @@ gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, default_font_checkbutton);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, font_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, font_grid);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, schemes_treeview_model);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, schemes_treeview);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, schemes_column);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, schemes_renderer);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, schemes_list);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, schemes_scrolled_window);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, install_scheme_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditPreferencesDialog, uninstall_scheme_button);
@@ -456,28 +451,19 @@ set_buttons_sensisitivity_according_to_scheme (GeditPreferencesDialog *dlg,
 }
 
 static void
-style_scheme_changed (GtkWidget              *treeview,
-		      GeditPreferencesDialog *dlg)
+style_scheme_changed (GtkListBox             *list_box,
+                      GtkListBoxRow          *row,
+                      GeditPreferencesDialog *dlg)
 {
-	GtkTreePath *path;
-
-	gtk_tree_view_get_cursor (GTK_TREE_VIEW (dlg->priv->schemes_treeview), &path, NULL);
-	if (path != NULL)
+	if (row != NULL)
 	{
-		GtkTreeIter iter;
-		gchar *id;
+		const gchar *id;
 
-		gtk_tree_model_get_iter (GTK_TREE_MODEL (dlg->priv->schemes_treeview_model),
-					 &iter, path);
-		gtk_tree_path_free (path);
-		gtk_tree_model_get (GTK_TREE_MODEL (dlg->priv->schemes_treeview_model),
-				    &iter, ID_COLUMN, &id, -1);
+		id = g_object_get_data (G_OBJECT (row), GEDIT_SCHEME_ROW_ID_KEY);
+		g_return_if_fail (id != NULL);
 
 		g_settings_set_string (dlg->priv->editor, GEDIT_SETTINGS_SCHEME, id);
-
 		set_buttons_sensisitivity_according_to_scheme (dlg, id);
-
-		g_free (id);
 	}
 }
 
@@ -529,7 +515,9 @@ populate_color_scheme_list (GeditPreferencesDialog *dlg, const gchar *def_id)
 	const gchar * const *ids;
 	gint i;
 
-	gtk_list_store_clear (dlg->priv->schemes_treeview_model);
+	gtk_container_foreach (GTK_CONTAINER (dlg->priv->schemes_list),
+	                       (GtkCallback) gtk_widget_destroy,
+	                       NULL);
 
 	def_id = ensure_color_scheme_id (dlg, def_id);
 	if (def_id == NULL)
@@ -546,28 +534,47 @@ populate_color_scheme_list (GeditPreferencesDialog *dlg, const gchar *def_id)
 		GtkSourceStyleScheme *scheme;
 		const gchar *name;
 		const gchar *description;
-		GtkTreeIter iter;
+		gchar *text;
+		GtkWidget *label;
+		GtkWidget *row;
 
 		scheme = gtk_source_style_scheme_manager_get_scheme (manager, ids[i]);
 
 		name = gtk_source_style_scheme_get_name (scheme);
 		description = gtk_source_style_scheme_get_description (scheme);
 
-		gtk_list_store_append (dlg->priv->schemes_treeview_model, &iter);
-		gtk_list_store_set (dlg->priv->schemes_treeview_model,
-				    &iter,
-				    ID_COLUMN, ids[i],
-				    NAME_COLUMN, name,
-				    DESC_COLUMN, description,
-				    -1);
+		if (description != NULL)
+		{
+			text = g_markup_printf_escaped ("<b>%s</b> - %s",
+							name,
+							description);
+		}
+		else
+		{
+			text = g_markup_printf_escaped ("<b>%s</b>", name);
+		}
 
-		g_return_val_if_fail (def_id != NULL, NULL);
+		label = gtk_label_new (text);
+		g_free (text);
+
+		gtk_widget_set_halign (label, GTK_ALIGN_START);
+		gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+
+		row = gtk_list_box_row_new ();
+		gtk_container_add (GTK_CONTAINER (row), label);
+		gtk_widget_show_all (row);
+
+		g_object_set_data_full (G_OBJECT (row),
+		                        GEDIT_SCHEME_ROW_ID_KEY,
+		                        g_strdup (ids[i]),
+		                        (GDestroyNotify) g_free);
+
+		gtk_list_box_insert (GTK_LIST_BOX (dlg->priv->schemes_list), row, i);
+
 		if (strcmp (ids[i], def_id) == 0)
 		{
-			GtkTreeSelection *selection;
-
-			selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->schemes_treeview));
-			gtk_tree_selection_select_iter (selection, &iter);
+			gtk_list_box_select_row (GTK_LIST_BOX (dlg->priv->schemes_list),
+						 GTK_LIST_BOX_ROW (row));
 		}
 	}
 
@@ -879,151 +886,53 @@ static void
 uninstall_scheme_clicked (GtkButton              *button,
 			  GeditPreferencesDialog *dlg)
 {
-	GtkTreeSelection *selection;
-	GtkTreeModel *model;
-	GtkTreeIter iter;
+	GtkListBoxRow *row;
 
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->schemes_treeview));
-	model = GTK_TREE_MODEL (dlg->priv->schemes_treeview_model);
-
-	if (gtk_tree_selection_get_selected (selection,
-					     &model,
-					     &iter))
+	row = gtk_list_box_get_selected_row (GTK_LIST_BOX (dlg->priv->schemes_list));
+	if (row != NULL)
 	{
-		gchar *id;
-		gchar *name;
+		const gchar *id;
 
-		gtk_tree_model_get (model, &iter,
-				    ID_COLUMN, &id,
-				    NAME_COLUMN, &name,
-				    -1);
+		id = g_object_get_data (G_OBJECT (row), GEDIT_SCHEME_ROW_ID_KEY);
+		g_return_if_fail (id != NULL);
 
 		if (!uninstall_style_scheme (id))
 		{
 			gedit_warning (GTK_WINDOW (dlg),
 				       _("Could not remove color scheme \"%s\"."),
-				       name);
+				       id);
 		}
 		else
 		{
-			const gchar *real_new_id;
-			gchar *new_id = NULL;
-			GtkTreePath *path;
-			GtkTreeIter new_iter;
-			gboolean new_iter_set = FALSE;
+			gint i;
 
-			/* If the removed style scheme is the last of the list,
-			 * set as new default style scheme the previous one,
-			 * otherwise set the next one.
-			 * To make this possible, we need to get the id of the
-			 * new default style scheme before re-populating the list.
-			 * Fall back to "classic" if it is not possible to get
-			 * the id
+			/* select the next item or the previous one if
+			 * this is the last row
 			 */
-			path = gtk_tree_model_get_path (model, &iter);
+			i = gtk_list_box_row_get_index (row);
 
-			/* Try to move to the next path */
-			gtk_tree_path_next (path);
-			if (!gtk_tree_model_get_iter (model, &new_iter, path))
+			gtk_widget_destroy (GTK_WIDGET (row));
+
+			row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (dlg->priv->schemes_list), i);
+			if (row == NULL && i > 0)
 			{
-				/* It seems the removed style scheme was the
-				 * last of the list. Try to move to the
-				 * previous one */
-				gtk_tree_path_free (path);
-
-				path = gtk_tree_model_get_path (model, &iter);
-
-				gtk_tree_path_prev (path);
-				if (gtk_tree_model_get_iter (model, &new_iter, path))
-					new_iter_set = TRUE;
-			}
-			else
-			{
-				new_iter_set = TRUE;
+				row = gtk_list_box_get_row_at_index (GTK_LIST_BOX (dlg->priv->schemes_list),
+				                                    i - 1);
 			}
 
-			gtk_tree_path_free (path);
-
-			if (new_iter_set)
-				gtk_tree_model_get (model, &new_iter,
-						    ID_COLUMN, &new_id,
-						    -1);
-
-			real_new_id = populate_color_scheme_list (dlg, new_id);
-			g_free (new_id);
-
-			set_buttons_sensisitivity_according_to_scheme (dlg, real_new_id);
-
-			if (real_new_id != NULL)
-			{
-				g_settings_set_string (dlg->priv->editor,
-						       GEDIT_SETTINGS_SCHEME,
-						       real_new_id);
-			}
+			/* Select the row and let it trigger the scheme change */
+			gtk_list_box_select_row (GTK_LIST_BOX (dlg->priv->schemes_list), row);
 		}
-
-		g_free (id);
-		g_free (name);
 	}
-}
-
-static void
-scheme_description_cell_data_func (GtkTreeViewColumn *column,
-				   GtkCellRenderer   *renderer,
-				   GtkTreeModel      *model,
-				   GtkTreeIter       *iter,
-				   gpointer           data)
-{
-	gchar *name;
-	gchar *desc;
-	gchar *text;
-
-	gtk_tree_model_get (model, iter,
-			    NAME_COLUMN, &name,
-			    DESC_COLUMN, &desc,
-			    -1);
-
-	if (desc != NULL)
-	{
-		text = g_markup_printf_escaped ("<b>%s</b> - %s",
-						name,
-						desc);
-	}
-	else
-	{
-		text = g_markup_printf_escaped ("<b>%s</b>",
-						name);
-	}
-
-	g_free (name);
-	g_free (desc);
-
-	g_object_set (G_OBJECT (renderer),
-		      "markup",
-		      text,
-		      NULL);
-
-	g_free (text);
 }
 
 static void
 setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
 {
-	GeditPreferencesDialogPrivate *priv = dlg->priv;
-	GtkTreeSelection *selection;
 	GtkStyleContext *context;
 	const gchar *def_id;
 
 	gedit_debug (DEBUG_PREFS);
-
-	gtk_tree_view_column_set_cell_data_func (priv->schemes_column,
-						 priv->schemes_renderer,
-						 scheme_description_cell_data_func,
-						 dlg,
-						 NULL);
-
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->priv->schemes_treeview));
-	gtk_tree_selection_set_mode (selection, GTK_SELECTION_BROWSE);
 
 	def_id = populate_color_scheme_list (dlg, NULL);
 
@@ -1034,8 +943,8 @@ setup_font_colors_page_style_scheme_section (GeditPreferencesDialog *dlg)
 	gtk_style_context_set_junction_sides (context, GTK_JUNCTION_TOP);
 
 	/* Connect signals */
-	g_signal_connect (dlg->priv->schemes_treeview,
-			  "cursor-changed",
+	g_signal_connect (dlg->priv->schemes_list,
+			  "row-selected",
 			  G_CALLBACK (style_scheme_changed),
 			  dlg);
 	g_signal_connect (dlg->priv->install_scheme_button,

@@ -747,27 +747,10 @@
                         <property name="shadow_type">etched-in</property>
                         <property name="min_content_height">140</property>
                         <child>
-                          <object class="GtkTreeView" id="schemes_treeview">
+                          <object class="GtkListBox" id="schemes_list">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                            <property name="model">schemes_treeview_model</property>
-                            <property name="headers_visible">False</property>
-                            <property name="headers_clickable">False</property>
-                            <property name="rules_hint">True</property>
-                            <property name="search_column">0</property>
-                            <child internal-child="selection">
-                              <object class="GtkTreeSelection" id="treeview-selection"/>
-                            </child>
-                            <child>
-                              <object class="GtkTreeViewColumn" id="schemes_column">
-                                <child>
-                                  <object class="GtkCellRendererText" id="schemes_renderer">
-                                    <property name="ellipsize">end</property>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
+                            <property name="selection_mode">browse</property>
                           </object>
                         </child>
                       </object>
