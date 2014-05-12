@@ -690,7 +690,11 @@ multi_notebook_tab_added (GeditMultiNotebook  *mnb,
 		insert_row (panel, GTK_LIST_BOX (panel->priv->listbox), row, position);
 
 		panel->priv->nb_row_tab += 1;
-		row_select (panel, GTK_LIST_BOX (panel->priv->listbox), GTK_LIST_BOX_ROW (row));
+
+		if (tab == gedit_multi_notebook_get_active_tab (mnb))
+		{
+			row_select (panel, GTK_LIST_BOX (panel->priv->listbox), GTK_LIST_BOX_ROW (row));
+		}
 	}
 }
 
