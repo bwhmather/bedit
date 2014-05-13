@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-04-23 17:06+0000\n"
-"PO-Revision-Date: 2014-04-23 22:10+0200\n"
+"POT-Creation-Date: 2014-05-13 17:10+0000\n"
+"PO-Revision-Date: 2014-05-13 21:20+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -605,15 +605,15 @@ msgstr "%s: neplatné kódování."
 msgid "About gedit"
 msgstr "O aplikaci gedit"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:136
+#: ../gedit/gedit-close-confirmation-dialog.c:152
 msgid "Question"
 msgstr "Otázka"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:308
+#: ../gedit/gedit-close-confirmation-dialog.c:294
 msgid "Close _without Saving"
 msgstr "Zavřít _bez uložení"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:309
+#: ../gedit/gedit-close-confirmation-dialog.c:295
 #: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-commands-file.c:573
 #: ../gedit/gedit-commands-file.c:642 ../gedit/gedit-commands-file.c:849
 #: ../gedit/gedit-commands-file.c:1299 ../gedit/gedit-encodings-dialog.ui.h:3
@@ -621,7 +621,7 @@ msgstr "Zavřít _bez uložení"
 #: ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:546
 #: ../gedit/gedit-io-error-info-bar.c:1222
-#: ../gedit/gedit-preferences-dialog.c:844
+#: ../gedit/gedit-preferences-dialog.c:851
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
 #: ../plugins/quickopen/quickopen/popup.py:37
@@ -635,18 +635,18 @@ msgstr "Zavřít _bez uložení"
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:335 ../gedit/gedit-menu.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:321 ../gedit/gedit-menu.ui.h:9
 msgid "_Save As…"
 msgstr "_Uložit jako…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:335
+#: ../gedit/gedit-close-confirmation-dialog.c:321
 #: ../gedit/gedit-commands-file.c:850
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "_Uložit"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:353
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -663,13 +663,13 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za posledních %ld sekund navždy "
 "ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:362
+#: ../gedit/gedit-close-confirmation-dialog.c:348
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Pokud je neuložíte, budou změny provedené za poslední minutu navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:368
+#: ../gedit/gedit-close-confirmation-dialog.c:354
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -687,7 +687,7 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za poslední minutu a %ld sekund "
 "navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:378
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -704,12 +704,12 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za posledních %ld minut navždy "
 "ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:393
+#: ../gedit/gedit-close-confirmation-dialog.c:379
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Pokud je neuložíte, budou změny provedené za poslední hodinu navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:399
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -727,7 +727,7 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za poslední hodinu a %d minut "
 "navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:414
+#: ../gedit/gedit-close-confirmation-dialog.c:400
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -743,22 +743,22 @@ msgstr[2] ""
 "Pokud je neuložíte, budou změny provedené za posledních %d hodin navždy "
 "ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:458
+#: ../gedit/gedit-close-confirmation-dialog.c:444
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Změny v dokumentu „%s“ budou navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:463
+#: ../gedit/gedit-close-confirmation-dialog.c:449
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Uložit před zavřením změny v dokumentu „%s“?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:478
-#: ../gedit/gedit-close-confirmation-dialog.c:697
+#: ../gedit/gedit-close-confirmation-dialog.c:464
+#: ../gedit/gedit-close-confirmation-dialog.c:625
 msgid "Saving has been disabled by the system administrator."
 msgstr "Ukládání bylo správcem systému zakázáno."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:646
+#: ../gedit/gedit-close-confirmation-dialog.c:574
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -766,7 +766,7 @@ msgstr[0] "Změny v %d dokumentu budou navždy ztraceny."
 msgstr[1] "Změny ve %d dokumentech budou navždy ztraceny."
 msgstr[2] "Změny v %d dokumentech budou navždy ztraceny."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:654
+#: ../gedit/gedit-close-confirmation-dialog.c:582
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -775,15 +775,15 @@ msgstr[0] "V %d dokumentu jsou neuložené změny. Uložit změny před zavřen�
 msgstr[1] "Ve %d dokumentech jsou neuložené změny. Uložit změny před zavřením?"
 msgstr[2] "V %d dokumentech jsou neuložené změny. Uložit změny před zavřením?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:674
+#: ../gedit/gedit-close-confirmation-dialog.c:602
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_enty s neuloženými změnami:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:678
+#: ../gedit/gedit-close-confirmation-dialog.c:606
 msgid "S_elect the documents you want to save:"
 msgstr "_Vyberte dokumenty, které chcete uložit:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:701
+#: ../gedit/gedit-close-confirmation-dialog.c:629
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Pokud je neuložíte, budou všechny vaše změny navždy ztraceny."
 
@@ -1196,7 +1196,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "Kódová_ní zobrazovaná v nabídce:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:40
-#: ../gedit/gedit-preferences-dialog.c:859
+#: ../gedit/gedit-preferences-dialog.c:866
 msgid "All Files"
 msgstr "Všechny soubory"
 
@@ -1603,129 +1603,137 @@ msgstr "O _aplikaci"
 msgid "_Quit"
 msgstr "U_končit"
 
-#: ../gedit/gedit-menu.ui.h:8
-msgid "Save _All"
-msgstr "Uložit _vše"
-
-#: ../gedit/gedit-menu.ui.h:9
+#: ../gedit/gedit-menu.ui.h:7
 msgid "_Print…"
 msgstr "_Tisk…"
 
-#: ../gedit/gedit-menu.ui.h:10
-msgid "_Find…"
-msgstr "_Hledat…"
-
-#: ../gedit/gedit-menu.ui.h:11
-msgid "_Find and Replace…"
-msgstr "_Hledat a nahradit…"
-
-#: ../gedit/gedit-menu.ui.h:12
-msgid "_Clear Highlight"
-msgstr "_Zrušit zvýrazňování"
-
-#: ../gedit/gedit-menu.ui.h:13
-msgid "_Go to Line…"
-msgstr "Přejít na řá_dek…"
-
-#: ../gedit/gedit-menu.ui.h:14
-msgid "Side _Panel"
-msgstr "Postranní _panel"
-
-#: ../gedit/gedit-menu.ui.h:15
-msgid "_Bottom Panel"
-msgstr "_Spodní panel"
-
-#: ../gedit/gedit-menu.ui.h:16
+#: ../gedit/gedit-menu.ui.h:8
 msgid "_Fullscreen"
 msgstr "_Celá obrazovka"
 
+#: ../gedit/gedit-menu.ui.h:10
+msgid "Save _All"
+msgstr "Uložit _vše"
+
+#: ../gedit/gedit-menu.ui.h:11
+msgid "_Find…"
+msgstr "_Hledat…"
+
+#: ../gedit/gedit-menu.ui.h:12
+msgid "_Find and Replace…"
+msgstr "_Hledat a nahradit…"
+
+#: ../gedit/gedit-menu.ui.h:13
+msgid "_Clear Highlight"
+msgstr "_Zrušit zvýrazňování"
+
+#: ../gedit/gedit-menu.ui.h:14
+msgid "_Go to Line…"
+msgstr "Přejít na řá_dek…"
+
+#: ../gedit/gedit-menu.ui.h:15 ../gedit/gedit-preferences-dialog.ui.h:11
+msgid "View"
+msgstr "Zobrazit"
+
+#: ../gedit/gedit-menu.ui.h:16
+msgid "Side _Panel"
+msgstr "Postranní _panel"
+
 #: ../gedit/gedit-menu.ui.h:17
+msgid "_Bottom Panel"
+msgstr "_Spodní panel"
+
+#: ../gedit/gedit-menu.ui.h:18
 msgid "_Highlight Mode…"
 msgstr "Režim _zvýrazňování…"
 
-#: ../gedit/gedit-menu.ui.h:18
+#: ../gedit/gedit-menu.ui.h:19
+msgid "Tools"
+msgstr "Nástroje"
+
+#: ../gedit/gedit-menu.ui.h:20
 msgid "_Close All"
 msgstr "Zavřít vš_e"
 
-#: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-replace-dialog.ui.h:2
+#: ../gedit/gedit-menu.ui.h:21 ../gedit/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Zavřít"
 
-#: ../gedit/gedit-menu.ui.h:20
+#: ../gedit/gedit-menu.ui.h:22
 msgid "Move _Left"
 msgstr "Přesunout v_levo"
 
-#: ../gedit/gedit-menu.ui.h:21
+#: ../gedit/gedit-menu.ui.h:23
 msgid "Move _Right"
 msgstr "Přesunout vp_ravo"
 
-#: ../gedit/gedit-menu.ui.h:22
+#: ../gedit/gedit-menu.ui.h:24
 msgid "Move to New _Window"
 msgstr "Přesunout do no_vého okna"
 
-#: ../gedit/gedit-menu.ui.h:23
+#: ../gedit/gedit-menu.ui.h:25
 msgid "Move to New Tab _Group"
 msgstr "Přesunout do nové s_kupiny karet"
 
-#: ../gedit/gedit-menu.ui.h:24
+#: ../gedit/gedit-menu.ui.h:26
 msgid "Automatic Indentation"
 msgstr "Automatické odsazování"
 
-#: ../gedit/gedit-menu.ui.h:25
+#: ../gedit/gedit-menu.ui.h:27
 msgid "Use Spaces"
 msgstr "Použít mezery"
 
-#: ../gedit/gedit-menu.ui.h:26
+#: ../gedit/gedit-menu.ui.h:28
 msgid "Display line numbers"
 msgstr "Zobrazovat čísla řádků"
 
-#: ../gedit/gedit-menu.ui.h:27
+#: ../gedit/gedit-menu.ui.h:29
 msgid "Display right margin"
 msgstr "Zobrazovat pravý okraj"
 
-#: ../gedit/gedit-menu.ui.h:28
+#: ../gedit/gedit-menu.ui.h:30
 msgid "Highlight current line"
 msgstr "Zvýrazňovat aktuální řádek"
 
-#: ../gedit/gedit-menu.ui.h:29
+#: ../gedit/gedit-menu.ui.h:31
 msgid "Text wrapping"
 msgstr "Zalamování textu"
 
-#: ../gedit/gedit-preferences-dialog.c:385
+#: ../gedit/gedit-preferences-dialog.c:380
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Chcete-li vybrat písmo, které má editor používat, klikněte na toto tlačítko"
 
-#: ../gedit/gedit-preferences-dialog.c:398
+#: ../gedit/gedit-preferences-dialog.c:393
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Po_užít systémové písmo s pevnou šířkou (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:630
+#: ../gedit/gedit-preferences-dialog.c:637
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Složka „%s“ nemůže být vytvořena: funkce g_mkdir_with_parents() selhala: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:814
+#: ../gedit/gedit-preferences-dialog.c:821
 msgid "The selected color scheme cannot be installed."
 msgstr "Vybrané schéma barev nelze nainstalovat"
 
-#: ../gedit/gedit-preferences-dialog.c:841
+#: ../gedit/gedit-preferences-dialog.c:848
 msgid "Add Scheme"
 msgstr "Přidat schéma"
 
-#: ../gedit/gedit-preferences-dialog.c:845
+#: ../gedit/gedit-preferences-dialog.c:852
 msgid "A_dd Scheme"
 msgstr "Při_dat schéma"
 
-#: ../gedit/gedit-preferences-dialog.c:852
+#: ../gedit/gedit-preferences-dialog.c:859
 msgid "Color Scheme Files"
 msgstr "Soubory s barevnými schématy"
 
-#: ../gedit/gedit-preferences-dialog.c:904
+#: ../gedit/gedit-preferences-dialog.c:902
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nelze odstranit schéma barev „%s“."
@@ -1773,10 +1781,6 @@ msgstr "Zvýrazňovat _aktuální řádek"
 #: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "Highlight matching _brackets"
 msgstr "Zvýrazňovat _odpovídající závorky"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:11
-msgid "View"
-msgstr "Zobrazit"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:12
 msgid "Tab Stops"
@@ -2029,8 +2033,8 @@ msgid "Match _entire word only"
 msgstr "Hledat pouze _celá slova"
 
 #: ../gedit/gedit-replace-dialog.ui.h:10
-msgid "Match as _regular expression"
-msgstr "Hledat jako _regulární výraz"
+msgid "Match as re_gular expression"
+msgstr "Hledat jako re_gulární výraz"
 
 #: ../gedit/gedit-replace-dialog.ui.h:11
 msgid "Search _backwards"
@@ -2259,6 +2263,10 @@ msgid "Save"
 msgstr "Uložit"
 
 #: ../gedit/gedit-window.ui.h:11
+msgid "Hide panel"
+msgstr "Skrýt panel"
+
+#: ../gedit/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
 msgstr "Opustit celou obrazovku"
 
