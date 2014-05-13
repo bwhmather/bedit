@@ -851,7 +851,10 @@ handle_builder_error (const gchar *message, ...)
 	g_free (msg_plain);
 	g_free (msg);
 
-	gtk_misc_set_padding (GTK_MISC (label), 5, 5);
+	gtk_widget_set_margin_start (label, 6);
+	gtk_widget_set_margin_end (label, 6);
+	gtk_widget_set_margin_top (label, 6);
+	gtk_widget_set_margin_bottom (label, 6);
 
 	return label;
 }

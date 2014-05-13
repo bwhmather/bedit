@@ -960,7 +960,7 @@ panel_on_drag_begin (GtkWidget      *widget,
 	label = gtk_label_new (name);
 	gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
 	gtk_widget_set_halign (label, GTK_ALIGN_START);
-	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
 
 	gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &width, &height);
 	image_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
@@ -1597,11 +1597,11 @@ row_create (GtkWidget *row)
 	generic_row->label = gtk_label_new (NULL);
 	gtk_label_set_ellipsize (GTK_LABEL (generic_row->label), PANGO_ELLIPSIZE_END);
 	gtk_widget_set_halign (generic_row->label, GTK_ALIGN_START);
-	gtk_misc_set_alignment (GTK_MISC (generic_row->label), 0.0, 0.5);
+	gtk_widget_set_valign (generic_row->label, GTK_ALIGN_CENTER);
 
 	generic_row->status_label = gtk_label_new (NULL);
 	gtk_widget_set_halign (generic_row->status_label, GTK_ALIGN_END);
-	gtk_misc_set_alignment (GTK_MISC (generic_row->status_label), 1.0, 0.5);
+	gtk_widget_set_valign (generic_row->status_label, GTK_ALIGN_CENTER);
 
 	generic_row->close_button = gedit_close_button_new ();
 
