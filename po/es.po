@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-05-08 17:09+0000\n"
-"PO-Revision-Date: 2014-05-10 18:26+0200\n"
+"POT-Creation-Date: 2014-05-20 05:09+0000\n"
+"PO-Revision-Date: 2014-05-20 18:49+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -201,7 +201,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid "Last split mode choice for line wrapping mode"
-msgstr ""
+msgstr "Último modo de división de líneas para el modo de ajuste de líneas"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid ""
@@ -210,6 +210,11 @@ msgid ""
 "for wrapping at word boundaries, and \"char\" for wrapping at individual "
 "character boundaries."
 msgstr ""
+"Especifica el último modo de división de líneas usado en el modo de ajuste "
+"de líneas, por lo que cuando este modo está desactivado se seguirá "
+"recordando la elección del modo de división de líneas. Use «word» para "
+"separar en los límites de las palabras y «char» para separar en el límite de "
+"caracteres individuales."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Tab Size"
@@ -659,7 +664,7 @@ msgstr "Cerrar _sin guardar"
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:321 ../gedit/gedit-menu.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:321 ../gedit/gedit-menu.ui.h:9
 msgid "_Save As…"
 msgstr "Guardar _como"
 
@@ -747,29 +752,29 @@ msgstr[0] ""
 msgstr[1] ""
 "Si no guarda, los cambios de la últimas %d horas se perderán para siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:444
+#: ../gedit/gedit-close-confirmation-dialog.c:443
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Los cambios del documento «%s» se perderán para siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:449
+#: ../gedit/gedit-close-confirmation-dialog.c:448
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "¿Guardar los cambios del documento «%s» antes de cerrar?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:464
-#: ../gedit/gedit-close-confirmation-dialog.c:625
+#: ../gedit/gedit-close-confirmation-dialog.c:463
+#: ../gedit/gedit-close-confirmation-dialog.c:621
 msgid "Saving has been disabled by the system administrator."
 msgstr "El guardado se ha desactivado por el administrador del sistema."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:574
+#: ../gedit/gedit-close-confirmation-dialog.c:570
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Los cambios realizados a %d documento se perderán para siempre."
 msgstr[1] "Los cambios realizados a %d documentos se perderán para siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:582
+#: ../gedit/gedit-close-confirmation-dialog.c:578
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -781,15 +786,15 @@ msgstr[1] ""
 "Hay %d documentos con cambios sin guardar. ¿Quiere guardar los cambios antes "
 "de cerrar?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:602
+#: ../gedit/gedit-close-confirmation-dialog.c:598
 msgid "Docum_ents with unsaved changes:"
 msgstr "_Documentos con cambios no guardados:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:606
+#: ../gedit/gedit-close-confirmation-dialog.c:602
 msgid "S_elect the documents you want to save:"
 msgstr "S_eleccione los documentos que quiere guardar:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:629
+#: ../gedit/gedit-close-confirmation-dialog.c:625
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Si no guarda, todos sus cambios se perderán para siempre."
 
@@ -1612,97 +1617,102 @@ msgstr "Acerca _de"
 msgid "_Quit"
 msgstr "_Salir"
 
-#: ../gedit/gedit-menu.ui.h:8
-msgid "Save _All"
-msgstr "Guardar _todo"
-
-#: ../gedit/gedit-menu.ui.h:9
+#: ../gedit/gedit-menu.ui.h:7
 msgid "_Print…"
 msgstr "_Imprimir…"
 
-#: ../gedit/gedit-menu.ui.h:10
-msgid "_Find…"
-msgstr "_Buscar…"
-
-#: ../gedit/gedit-menu.ui.h:11
-msgid "_Find and Replace…"
-msgstr "Buscar y _reemplazar"
-
-#: ../gedit/gedit-menu.ui.h:12
-msgid "_Clear Highlight"
-msgstr "_Quitar resaltado"
-
-#: ../gedit/gedit-menu.ui.h:13
-msgid "_Go to Line…"
-msgstr "Ir a la _línea…"
-
-#: ../gedit/gedit-menu.ui.h:14
-msgid "Side _Panel"
-msgstr "Panel _lateral"
-
-#: ../gedit/gedit-menu.ui.h:15
-msgid "_Bottom Panel"
-msgstr "Panel _inferior"
-
-#: ../gedit/gedit-menu.ui.h:16
+#: ../gedit/gedit-menu.ui.h:8
 msgid "_Fullscreen"
 msgstr "Pantalla _completa"
 
+#: ../gedit/gedit-menu.ui.h:10
+msgid "Save _All"
+msgstr "Guardar _todo"
+
+#: ../gedit/gedit-menu.ui.h:11
+msgid "_Find…"
+msgstr "_Buscar…"
+
+#: ../gedit/gedit-menu.ui.h:12
+msgid "_Find and Replace…"
+msgstr "Buscar y _reemplazar"
+
+#: ../gedit/gedit-menu.ui.h:13
+msgid "_Clear Highlight"
+msgstr "_Quitar resaltado"
+
+#: ../gedit/gedit-menu.ui.h:14
+msgid "_Go to Line…"
+msgstr "Ir a la _línea…"
+
+#: ../gedit/gedit-menu.ui.h:15 ../gedit/gedit-preferences-dialog.ui.h:11
+msgid "View"
+msgstr "Ver"
+
+#: ../gedit/gedit-menu.ui.h:16
+msgid "Side _Panel"
+msgstr "Panel _lateral"
+
 #: ../gedit/gedit-menu.ui.h:17
+msgid "_Bottom Panel"
+msgstr "Panel _inferior"
+
+#: ../gedit/gedit-menu.ui.h:18
 msgid "_Highlight Mode…"
 msgstr "Modo _resaltado…"
 
-#: ../gedit/gedit-menu.ui.h:18
+#: ../gedit/gedit-menu.ui.h:19
+#| msgid "_Tools"
+msgid "Tools"
+msgstr "Herramientas"
+
+#: ../gedit/gedit-menu.ui.h:20
 msgid "_Close All"
 msgstr "_Cerrar todo"
 
-#: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-replace-dialog.ui.h:2
+#: ../gedit/gedit-menu.ui.h:21 ../gedit/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: ../gedit/gedit-menu.ui.h:20
+#: ../gedit/gedit-menu.ui.h:22
 msgid "Move _Left"
 msgstr "Mover a la _izquierda"
 
-#: ../gedit/gedit-menu.ui.h:21
+#: ../gedit/gedit-menu.ui.h:23
 msgid "Move _Right"
 msgstr "Mover a la _derecha"
 
-#: ../gedit/gedit-menu.ui.h:22
+#: ../gedit/gedit-menu.ui.h:24
 msgid "Move to New _Window"
 msgstr "Mover a una ventana _nueva"
 
-#: ../gedit/gedit-menu.ui.h:23
+#: ../gedit/gedit-menu.ui.h:25
 msgid "Move to New Tab _Group"
 msgstr "Mover al _siguiente grupo de pestañas nuevo"
 
-#: ../gedit/gedit-menu.ui.h:24
+#: ../gedit/gedit-menu.ui.h:26
 msgid "Automatic Indentation"
 msgstr "Sangría automática"
 
-#: ../gedit/gedit-menu.ui.h:25
+#: ../gedit/gedit-menu.ui.h:27
 msgid "Use Spaces"
 msgstr "Usar espacios"
 
-#: ../gedit/gedit-menu.ui.h:26
-#| msgid "_Display line numbers"
+#: ../gedit/gedit-menu.ui.h:28
 msgid "Display line numbers"
 msgstr "Mostrar números de línea"
 
-#: ../gedit/gedit-menu.ui.h:27
-#| msgid "Display Right Margin"
+#: ../gedit/gedit-menu.ui.h:29
 msgid "Display right margin"
 msgstr "Mostrar el margen derecho"
 
-#: ../gedit/gedit-menu.ui.h:28
-#| msgid "Highlight current _line"
+#: ../gedit/gedit-menu.ui.h:30
 msgid "Highlight current line"
 msgstr "Resaltar la línea actual"
 
-#: ../gedit/gedit-menu.ui.h:29
-#| msgid "Text Wrapping"
+#: ../gedit/gedit-menu.ui.h:31
 msgid "Text wrapping"
 msgstr "Ajuste del texto"
 
@@ -1785,10 +1795,6 @@ msgstr "Resaltar la _línea actual"
 #: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "Highlight matching _brackets"
 msgstr "Resaltar parejas de _corchetes"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:11
-msgid "View"
-msgstr "Ver"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:12
 msgid "Tab Stops"
@@ -2041,7 +2047,6 @@ msgid "Match _entire word only"
 msgstr "Coincidir sólo con la palabra compl_eta"
 
 #: ../gedit/gedit-replace-dialog.ui.h:10
-#| msgid "Match as _regular expression"
 msgid "Match as re_gular expression"
 msgstr "Coincidir como expresión _regular"
 
@@ -2157,18 +2162,18 @@ msgstr "Cerrar documento"
 msgid "Please check your installation."
 msgstr "Compruebe su instalación."
 
-#: ../gedit/gedit-utils.c:904
+#: ../gedit/gedit-utils.c:907
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "No se pudo abrir el archivo de IU %s. Error: %s"
 
-#: ../gedit/gedit-utils.c:923
+#: ../gedit/gedit-utils.c:926
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "No se pudo encontrar el objeto «%s» en el archivo %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1146
+#: ../gedit/gedit-utils.c:1149
 #, c-format
 msgid "/ on %s"
 msgstr "/ en %s"
@@ -2271,6 +2276,10 @@ msgid "Save"
 msgstr "Guardar"
 
 #: ../gedit/gedit-window.ui.h:11
+msgid "Hide panel"
+msgstr "Ocultar panel"
+
+#: ../gedit/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
 msgstr "Salir del modo a pantalla completa"
 
@@ -3571,9 +3580,6 @@ msgstr ""
 #~ msgid "Language"
 #~ msgstr "Idioma"
 
-#~ msgid "Hide panel"
-#~ msgstr "Ocultar panel"
-
 #~ msgid "Empty"
 #~ msgstr "Vaciar"
 
@@ -3591,9 +3597,6 @@ msgstr ""
 
 #~ msgid "_Search"
 #~ msgstr "_Buscar"
-
-#~ msgid "_Tools"
-#~ msgstr "_Herramientas"
 
 #~ msgid "_Documents"
 #~ msgstr "_Documentos"
