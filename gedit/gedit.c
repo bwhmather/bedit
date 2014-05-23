@@ -79,7 +79,7 @@ gedit_w32_load_private_dll (GType *type)
 }
 
 static void
-gedit_w32_unload_private_dll ()
+gedit_w32_unload_private_dll (void)
 {
 	if (libgedit_dll)
 	{
