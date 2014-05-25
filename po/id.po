@@ -12,9 +12,9 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-04-23 09:19+0000\n"
-"PO-Revision-Date: 2014-04-23 10:45+0700\n"
-"Last-Translator: Dirgita <dirgitadevina@yahoo.co.id>\n"
+"POT-Creation-Date: 2014-05-25 05:08+0000\n"
+"PO-Revision-Date: 2014-05-25 17:27+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #: ../data/gedit.appdata.xml.in.h:1
 msgid ""
@@ -200,10 +200,10 @@ msgid ""
 "for wrapping at word boundaries, and \"char\" for wrapping at individual "
 "character boundaries."
 msgstr ""
-"Menentukan mode pelipatan terakhir kali yang digunakan untuk mode pelipatan baris, "
-"sehingga saat mode pelipatan tidak aktif, aplikasi masih bisa mengingat  mode "
-"pelipatan yang dipilih. Gunakan nilai \"word\" untuk pelipatan kata, dan \"char\" "
-"untuk pelipatan karakter."
+"Menentukan mode pelipatan terakhir kali yang digunakan untuk mode pelipatan "
+"baris, sehingga saat mode pelipatan tidak aktif, aplikasi masih bisa "
+"mengingat  mode pelipatan yang dipilih. Gunakan nilai \"word\" untuk "
+"pelipatan kata, dan \"char\" untuk pelipatan karakter."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Tab Size"
@@ -607,15 +607,15 @@ msgstr "%s: salah pengkodean."
 msgid "About gedit"
 msgstr "Tentang gedit"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:136
+#: ../gedit/gedit-close-confirmation-dialog.c:152
 msgid "Question"
 msgstr "Pertanyaan"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:308
+#: ../gedit/gedit-close-confirmation-dialog.c:294
 msgid "Close _without Saving"
 msgstr "Tutup dan Jangan Di_simpan"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:309
+#: ../gedit/gedit-close-confirmation-dialog.c:295
 #: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-commands-file.c:573
 #: ../gedit/gedit-commands-file.c:642 ../gedit/gedit-commands-file.c:849
 #: ../gedit/gedit-commands-file.c:1299 ../gedit/gedit-encodings-dialog.ui.h:3
@@ -623,7 +623,7 @@ msgstr "Tutup dan Jangan Di_simpan"
 #: ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:546
 #: ../gedit/gedit-io-error-info-bar.c:1222
-#: ../gedit/gedit-preferences-dialog.c:844
+#: ../gedit/gedit-preferences-dialog.c:851
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
 #: ../plugins/quickopen/quickopen/popup.py:37
@@ -637,18 +637,18 @@ msgstr "Tutup dan Jangan Di_simpan"
 msgid "_Cancel"
 msgstr "_Batal"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:335 ../gedit/gedit-menu.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:321 ../gedit/gedit-menu.ui.h:9
 msgid "_Save As…"
 msgstr "_Simpan Sebagai…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:335
+#: ../gedit/gedit-close-confirmation-dialog.c:321
 #: ../gedit/gedit-commands-file.c:850
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "_Simpan"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:353
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -657,12 +657,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "Jika tidak disimpan, perubahan dari %ld detik terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:362
+#: ../gedit/gedit-close-confirmation-dialog.c:348
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "Jika tidak disimpan, perubahan dari menit terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:368
+#: ../gedit/gedit-close-confirmation-dialog.c:354
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -673,7 +673,7 @@ msgid_plural ""
 msgstr[0] ""
 "Jika tidak disimpan, perubahan dari menit %ld detik terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:378
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -682,11 +682,11 @@ msgid_plural ""
 "lost."
 msgstr[0] "Jika tidak disimpan, perubahan dari %ld menit terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:393
+#: ../gedit/gedit-close-confirmation-dialog.c:379
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Jika tidak disimpan, perubahan dari jam terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:399
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -697,7 +697,7 @@ msgid_plural ""
 msgstr[0] ""
 "Jika tidak disimpan, perubahan dari satu jam %d menit terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:414
+#: ../gedit/gedit-close-confirmation-dialog.c:400
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -705,28 +705,28 @@ msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] "Jika tidak disimpan, perubahan dari %d jam terakhir akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:458
+#: ../gedit/gedit-close-confirmation-dialog.c:443
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Perubahan pada dokumen \"%s\" akan hilang selamanya."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:463
+#: ../gedit/gedit-close-confirmation-dialog.c:448
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Simpan perubahan ke dokumen \"%s\" sebelum menutup?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:478
-#: ../gedit/gedit-close-confirmation-dialog.c:697
+#: ../gedit/gedit-close-confirmation-dialog.c:463
+#: ../gedit/gedit-close-confirmation-dialog.c:621
 msgid "Saving has been disabled by the system administrator."
 msgstr "Penyimpanan telah dimatikan oleh administrator sistem."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:646
+#: ../gedit/gedit-close-confirmation-dialog.c:570
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Perubahan di %d dokumen akan hilang."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:654
+#: ../gedit/gedit-close-confirmation-dialog.c:578
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -735,15 +735,15 @@ msgstr[0] ""
 "Ada %d dokumen dengan perubahan yang belum disimpan. Simpan perubahan "
 "sebelum ditutup?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:674
+#: ../gedit/gedit-close-confirmation-dialog.c:598
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_en belum disimpan:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:678
+#: ../gedit/gedit-close-confirmation-dialog.c:602
 msgid "S_elect the documents you want to save:"
 msgstr "Pilih dokum_en yang ingin Anda simpan:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:701
+#: ../gedit/gedit-close-confirmation-dialog.c:625
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Jika tidak disimpan, seluruh perubahan yang Anda buat akan hilang."
 
@@ -1124,7 +1124,7 @@ msgid "E_ncodings shown in menu:"
 msgstr "E_nkoding yang ditampilkan pada menu:"
 
 #: ../gedit/gedit-file-chooser-dialog.c:40
-#: ../gedit/gedit-preferences-dialog.c:859
+#: ../gedit/gedit-preferences-dialog.c:866
 msgid "All Files"
 msgstr "Semua Berkas"
 
@@ -1531,132 +1531,136 @@ msgstr "Ihw_al"
 msgid "_Quit"
 msgstr "_Keluar"
 
-#: ../gedit/gedit-menu.ui.h:8
-msgid "Save _All"
-msgstr "Simpan Semu_a"
-
-#: ../gedit/gedit-menu.ui.h:9
+#: ../gedit/gedit-menu.ui.h:7
 msgid "_Print…"
 msgstr "_Cetak…"
 
-#: ../gedit/gedit-menu.ui.h:10
-msgid "_Find…"
-msgstr "_Cari…"
-
-#: ../gedit/gedit-menu.ui.h:11
-msgid "_Find and Replace…"
-msgstr "_Cari dan Ganti…"
-
-#: ../gedit/gedit-menu.ui.h:12
-msgid "_Clear Highlight"
-msgstr "_Bersihkan Penyorotan"
-
-#: ../gedit/gedit-menu.ui.h:13
-msgid "_Go to Line…"
-msgstr "_Menuju Baris…"
-
-#: ../gedit/gedit-menu.ui.h:14
-msgid "Side _Panel"
-msgstr "_Panel Sisi"
-
-#: ../gedit/gedit-menu.ui.h:15
-msgid "_Bottom Panel"
-msgstr "Panel _Bawah"
-
-#: ../gedit/gedit-menu.ui.h:16
+#: ../gedit/gedit-menu.ui.h:8
 msgid "_Fullscreen"
 msgstr "Layar _Penuh"
 
+#: ../gedit/gedit-menu.ui.h:10
+msgid "Save _All"
+msgstr "Simpan Semu_a"
+
+#: ../gedit/gedit-menu.ui.h:11
+msgid "_Find…"
+msgstr "_Cari…"
+
+#: ../gedit/gedit-menu.ui.h:12
+msgid "_Find and Replace…"
+msgstr "_Cari dan Ganti…"
+
+#: ../gedit/gedit-menu.ui.h:13
+msgid "_Clear Highlight"
+msgstr "_Bersihkan Penyorotan"
+
+#: ../gedit/gedit-menu.ui.h:14
+msgid "_Go to Line…"
+msgstr "_Menuju Baris…"
+
+#: ../gedit/gedit-menu.ui.h:15 ../gedit/gedit-preferences-dialog.ui.h:11
+msgid "View"
+msgstr "Tilik"
+
+#: ../gedit/gedit-menu.ui.h:16
+msgid "Side _Panel"
+msgstr "_Panel Sisi"
+
 #: ../gedit/gedit-menu.ui.h:17
+msgid "_Bottom Panel"
+msgstr "Panel _Bawah"
+
+#: ../gedit/gedit-menu.ui.h:18
 msgid "_Highlight Mode…"
 msgstr "Moda _Penandaan…"
 
-#: ../gedit/gedit-menu.ui.h:18
+#: ../gedit/gedit-menu.ui.h:19
+msgid "Tools"
+msgstr "Perkakas"
+
+#: ../gedit/gedit-menu.ui.h:20
 msgid "_Close All"
 msgstr "_Tutup Semua"
 
-#: ../gedit/gedit-menu.ui.h:19 ../gedit/gedit-replace-dialog.ui.h:2
+#: ../gedit/gedit-menu.ui.h:21 ../gedit/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
 #: ../plugins/time/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
 msgstr "_Tutup"
 
-#: ../gedit/gedit-menu.ui.h:20
+#: ../gedit/gedit-menu.ui.h:22
 msgid "Move _Left"
 msgstr "Pindah Ke K_iri"
 
-#: ../gedit/gedit-menu.ui.h:21
+#: ../gedit/gedit-menu.ui.h:23
 msgid "Move _Right"
 msgstr "Pindah Ke K_anan"
 
-#: ../gedit/gedit-menu.ui.h:22
+#: ../gedit/gedit-menu.ui.h:24
 msgid "Move to New _Window"
 msgstr "Pindah Ke _Jendela Baru"
 
-#: ../gedit/gedit-menu.ui.h:23
+#: ../gedit/gedit-menu.ui.h:25
 msgid "Move to New Tab _Group"
 msgstr "Pindah ke _Grup Tab Baru"
 
-#: ../gedit/gedit-menu.ui.h:24
+#: ../gedit/gedit-menu.ui.h:26
 msgid "Automatic Indentation"
 msgstr "Indentasi Otomatis"
 
-#: ../gedit/gedit-menu.ui.h:25
+#: ../gedit/gedit-menu.ui.h:27
 msgid "Use Spaces"
 msgstr "Gunakan Spasi"
 
-#: ../gedit/gedit-menu.ui.h:26
-#| msgid "_Display line numbers"
+#: ../gedit/gedit-menu.ui.h:28
 msgid "Display line numbers"
 msgstr "Tampilkan nomor baris"
 
-#: ../gedit/gedit-menu.ui.h:27
-#| msgid "Display Right Margin"
+#: ../gedit/gedit-menu.ui.h:29
 msgid "Display right margin"
 msgstr "Tampilkan batas kanan"
 
-#: ../gedit/gedit-menu.ui.h:28
-#| msgid "Highlight current _line"
+#: ../gedit/gedit-menu.ui.h:30
 msgid "Highlight current line"
 msgstr "Tandai baris kini"
 
-#: ../gedit/gedit-menu.ui.h:29
-#| msgid "Text Wrapping"
+#: ../gedit/gedit-menu.ui.h:31
 msgid "Text wrapping"
 msgstr "Pelipatan teks"
 
-#: ../gedit/gedit-preferences-dialog.c:385
+#: ../gedit/gedit-preferences-dialog.c:380
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Klik tombol ini untuk memilih fonta yang akan digunakan oleh penyunting"
 
-#: ../gedit/gedit-preferences-dialog.c:398
+#: ../gedit/gedit-preferences-dialog.c:393
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "G_unakan fonta lebar tetap sistem (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:630
+#: ../gedit/gedit-preferences-dialog.c:637
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "Direktori '%s' tidak dapat dibuat: g_mkdir_with_parents() gagal: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:814
+#: ../gedit/gedit-preferences-dialog.c:821
 msgid "The selected color scheme cannot be installed."
 msgstr "Skema warna yang dipilih tak dapat dipasang."
 
-#: ../gedit/gedit-preferences-dialog.c:841
+#: ../gedit/gedit-preferences-dialog.c:848
 msgid "Add Scheme"
 msgstr "Tambah Skema"
 
-#: ../gedit/gedit-preferences-dialog.c:845
+#: ../gedit/gedit-preferences-dialog.c:852
 msgid "A_dd Scheme"
 msgstr "Tam_bah Skema"
 
-#: ../gedit/gedit-preferences-dialog.c:852
+#: ../gedit/gedit-preferences-dialog.c:859
 msgid "Color Scheme Files"
 msgstr "Berkas Skema Warna"
 
-#: ../gedit/gedit-preferences-dialog.c:904
+#: ../gedit/gedit-preferences-dialog.c:902
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Tak dapat menghapus skema warna \"%s\"."
@@ -1704,10 +1708,6 @@ msgstr "Ta_ndai baris kini"
 #: ../gedit/gedit-preferences-dialog.ui.h:10
 msgid "Highlight matching _brackets"
 msgstr "Sorot tanda kurung _berpasangan"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:11
-msgid "View"
-msgstr "Tilik"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:12
 msgid "Tab Stops"
@@ -1960,8 +1960,8 @@ msgid "Match _entire word only"
 msgstr "Cocokkan kes_eluruhan kata"
 
 #: ../gedit/gedit-replace-dialog.ui.h:10
-msgid "Match as _regular expression"
-msgstr "Cocokkan sebagai ekspresi _reguler"
+msgid "Match as re_gular expression"
+msgstr "Cocokkan sebagai ekspresi re_guler"
 
 #: ../gedit/gedit-replace-dialog.ui.h:11
 msgid "Search _backwards"
@@ -2074,18 +2074,18 @@ msgstr "Tutup Dokumen"
 msgid "Please check your installation."
 msgstr "Coba periksa pemasangan Anda."
 
-#: ../gedit/gedit-utils.c:904
+#: ../gedit/gedit-utils.c:907
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Tak dapat membuka berkas UI %s. Galat: %s"
 
-#: ../gedit/gedit-utils.c:923
+#: ../gedit/gedit-utils.c:926
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Tak bisa temukan objek '%s' di dalam berkas %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1146
+#: ../gedit/gedit-utils.c:1149
 #, c-format
 msgid "/ on %s"
 msgstr "/ pada %s"
@@ -2188,6 +2188,10 @@ msgid "Save"
 msgstr "Simpan"
 
 #: ../gedit/gedit-window.ui.h:11
+msgid "Hide panel"
+msgstr "Sembunyikan panel"
+
+#: ../gedit/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
 msgstr "Tinggalkan Layar Penuh"
 
