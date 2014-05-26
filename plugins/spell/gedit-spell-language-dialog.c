@@ -122,7 +122,7 @@ create_dialog (GeditSpellLanguageDialog *dlg,
 
 	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
 				_("_Cancel"), GTK_RESPONSE_CANCEL,
-				_("_OK"), GTK_RESPONSE_CANCEL,
+				_("_OK"), GTK_RESPONSE_OK,
 				_("_Help"), GTK_RESPONSE_HELP,
 				NULL);
 
