@@ -435,6 +435,7 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_widget_set_valign (primary_label, GTK_ALIGN_START);
 	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
 	gtk_widget_set_can_focus (primary_label, FALSE);
+	gtk_label_set_max_width_chars (GTK_LABEL (primary_label), 72);
 
 	doc_name = gedit_document_get_short_name_for_display (doc);
 
@@ -474,6 +475,7 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_widget_set_valign (secondary_label, GTK_ALIGN_START);
 	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
 	gtk_widget_set_can_focus (secondary_label, FALSE);
+	gtk_label_set_max_width_chars (GTK_LABEL (secondary_label), 72);
 
 	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
 	gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
