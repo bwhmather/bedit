@@ -580,21 +580,16 @@ button_press_event (GtkWidget      *widget,
 
 		if (event->type == GDK_2BUTTON_PRESS)
 		{
-			/* Chain up, must be before activating the selected
-			   items because this will cause the view to grab focus */
-			widget_parent->button_press_event (widget, event);
-
-			if (view->priv->double_click_path[1] &&
-			    gtk_tree_path_compare (view->priv->double_click_path[0], view->priv->double_click_path[1]) == 0)
-			{
-				activate_selected_items (view);
-			}
+			/* Do not chain up. The row-activated signal is normally
+			 * already sent, which will activate the selected item
+			 * and open the file.
+			 */
 		}
 		else
 		{
 			/* We're going to filter out some situations where
 			 * we can't let the default code run because all
-			 * but one row would be would be deselected. We don't
+			 * but one row would be deselected. We don't
 			 * want that; we want the right click menu or single
 			 * click to apply to everything that's currently selected. */
 			selected = gtk_tree_selection_path_is_selected (selection, path);
