@@ -30,6 +30,7 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gtksourceview/gtksource.h>
+#include <libpeas-gtk/peas-gtk.h>
 
 #include "gedit-preferences-dialog.h"
 #include "gedit-utils.h"
@@ -131,6 +132,9 @@ gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+
+	/* Otherwise libpeas-gtk might not be linked */
+	g_type_ensure (PEAS_GTK_TYPE_PLUGIN_MANAGER);
 
 	object_class->dispose = gedit_preferences_dialog_dispose;
 
