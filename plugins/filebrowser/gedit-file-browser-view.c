@@ -1180,6 +1180,10 @@ gedit_file_browser_view_start_rename (GeditFileBrowserView *tree_view,
 	tree_view->priv->orig_markup = markup;
 	tree_view->priv->editable = rowref;
 
+	/* grab focus on the text cell which is editable */
+	gtk_tree_view_column_focus_cell (tree_view->priv->column,
+					 tree_view->priv->text_renderer);
+
 	gtk_tree_view_set_cursor (GTK_TREE_VIEW (tree_view),
 				  gtk_tree_row_reference_get_path (tree_view->priv->editable),
 				  tree_view->priv->column, TRUE);
