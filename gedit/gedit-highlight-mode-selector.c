@@ -113,6 +113,13 @@ visible_func (GtkTreeModel               *model,
 }
 
 static void
+on_entry_activate (GtkEntry                   *entry,
+                   GeditHighlightModeSelector *selector)
+{
+	gedit_highlight_mode_selector_activate_selected_language (selector);
+}
+
+static void
 on_entry_changed (GtkEntry                   *entry,
                   GeditHighlightModeSelector *selector)
 {
@@ -233,6 +240,8 @@ gedit_highlight_mode_selector_init (GeditHighlightModeSelector *selector)
 	                                        selector,
 	                                        NULL);
 
+	g_signal_connect (priv->entry, "activate",
+	                  G_CALLBACK (on_entry_activate), selector);
 	g_signal_connect (priv->entry, "changed",
 	                  G_CALLBACK (on_entry_changed), selector);
 	g_signal_connect (priv->entry, "key-press-event",
@@ -332,24 +341,23 @@ void
 gedit_highlight_mode_selector_activate_selected_language (GeditHighlightModeSelector *selector)
 {
 	GeditHighlightModeSelectorPrivate *priv = selector->priv;
-	GtkSourceLanguage *lang = NULL;
+	GtkSourceLanguage *lang;
 	GtkTreeIter iter;
 
 	g_return_if_fail (GEDIT_IS_HIGHLIGHT_MODE_SELECTOR (selector));
 
-	if (gtk_tree_selection_get_selected (priv->treeview_selection, NULL, &iter))
+	if (!gtk_tree_selection_get_selected (priv->treeview_selection, NULL, &iter))
 	{
-		gtk_tree_model_get (GTK_TREE_MODEL (priv->treemodelfilter), &iter,
-		                    COLUMN_LANG, &lang,
-		                    -1);
+		return;
 	}
+
+	gtk_tree_model_get (GTK_TREE_MODEL (priv->treemodelfilter), &iter,
+	                    COLUMN_LANG, &lang,
+	                    -1);
 
 	g_signal_emit (G_OBJECT (selector), signals[LANGUAGE_SELECTED], 0, lang);
 
-	if (lang)
-	{
-		g_object_unref (lang);
-	}
+	g_object_unref (lang);
 }
 
 /* ex:set ts=8 noet: */

@@ -36,9 +36,20 @@ gedit_highlight_mode_dialog_response (GtkDialog *dialog,
 
 	if (response_id == GTK_RESPONSE_OK)
 	{
+		/* The dialog will be destroyed if a language is selected */
 		gedit_highlight_mode_selector_activate_selected_language (priv->selector);
 	}
+	else
+	{
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+	}
+}
 
+static void
+on_language_selected (GeditHighlightModeSelector *sel,
+                      GtkSourceLanguage          *language,
+                      GtkDialog                  *dialog)
+{
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
@@ -63,6 +74,9 @@ gedit_highlight_mode_dialog_init (GeditHighlightModeDialog *dlg)
 
 	gtk_widget_init_template (GTK_WIDGET (dlg));
 	gtk_dialog_set_default_response (GTK_DIALOG (dlg), GTK_RESPONSE_OK);
+
+	g_signal_connect (dlg->priv->selector, "language-selected",
+	                  G_CALLBACK (on_language_selected), dlg);
 }
 
 GtkWidget *
