@@ -122,9 +122,7 @@ struct _GeditDocumentPrivate
 	guint readonly : 1;
 	guint externally_modified : 1;
 	guint deleted : 1;
-	guint last_save_was_manually : 1;
 	guint language_set_by_user : 1;
-	guint stop_cursor_moved_emission : 1;
 	guint dispose_has_run : 1;
 
 	/* The search is empty if there is no search context, or if the
@@ -402,17 +400,6 @@ gedit_document_set_property (GObject      *object,
 }
 
 static void
-emit_cursor_moved (GeditDocument *doc)
-{
-	if (!doc->priv->stop_cursor_moved_emission)
-	{
-		g_signal_emit (doc,
-			       document_signals[CURSOR_MOVED],
-			       0);
-	}
-}
-
-static void
 gedit_document_mark_set (GtkTextBuffer     *buffer,
                          const GtkTextIter *iter,
                          GtkTextMark       *mark)
@@ -428,14 +415,14 @@ gedit_document_mark_set (GtkTextBuffer     *buffer,
 
 	if (mark == gtk_text_buffer_get_insert (buffer))
 	{
-		emit_cursor_moved (doc);
+		g_signal_emit (doc, document_signals[CURSOR_MOVED], 0);
 	}
 }
 
 static void
 gedit_document_changed (GtkTextBuffer *buffer)
 {
-	emit_cursor_moved (GEDIT_DOCUMENT (buffer));
+	g_signal_emit (GEDIT_DOCUMENT (buffer), document_signals[CURSOR_MOVED], 0);
 
 	GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->changed (buffer);
 }
@@ -919,9 +906,6 @@ gedit_document_init (GeditDocument *doc)
 
 	priv->readonly = FALSE;
 
-	priv->stop_cursor_moved_emission = FALSE;
-
-	priv->last_save_was_manually = TRUE;
 	priv->language_set_by_user = FALSE;
 
 	priv->empty_search = TRUE;
