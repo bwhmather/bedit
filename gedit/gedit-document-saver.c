@@ -745,7 +745,7 @@ async_replace_ready_callback (GFile        *source,
 	}
 
 	ensure_trailing_newline = g_settings_get_boolean (saver->priv->editor_settings,
-	                                                  "ensure-trailing-newline");
+	                                                  GEDIT_SETTINGS_ENSURE_TRAILING_NEWLINE);
 
 
 	saver->priv->input = gedit_document_input_stream_new (GTK_TEXT_BUFFER (saver->priv->document),

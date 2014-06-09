@@ -109,6 +109,7 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 #define GEDIT_SETTINGS_ENCODING_AUTO_DETECTED		"auto-detected"
 #define GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU		"shown-in-menu"
 #define GEDIT_SETTINGS_ACTIVE_PLUGINS			"active-plugins"
+#define GEDIT_SETTINGS_ENSURE_TRAILING_NEWLINE		"ensure-trailing-newline"
 
 /* window state keys */
 #define GEDIT_SETTINGS_WINDOW_STATE			"state"

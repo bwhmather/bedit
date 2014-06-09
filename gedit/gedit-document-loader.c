@@ -703,7 +703,7 @@ start_stream_read (AsyncData *async)
 	}
 
 	ensure_trailing_newline = g_settings_get_boolean (loader->priv->editor_settings,
-	                                                  "ensure-trailing-newline");
+	                                                  GEDIT_SETTINGS_ENSURE_TRAILING_NEWLINE);
 
 	/* Output stream */
 	loader->priv->output = gedit_document_output_stream_new (loader->priv->document,
