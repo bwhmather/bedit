@@ -28,8 +28,6 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
-#include <gtksourceview/gtksource.h>
 
 #include "gedit-file-chooser-dialog.h"
 #include "gedit-encodings-combo-box.h"
@@ -350,12 +348,12 @@ gedit_file_chooser_dialog_init (GeditFileChooserDialog *dialog)
 }
 
 static GtkWidget *
-gedit_file_chooser_dialog_new_valist (const gchar          *title,
-				      GtkWindow            *parent,
-				      GtkFileChooserAction  action,
-				      const GeditEncoding  *encoding,
-				      const gchar          *first_button_text,
-				      va_list               varargs)
+gedit_file_chooser_dialog_new_valist (const gchar             *title,
+				      GtkWindow               *parent,
+				      GtkFileChooserAction     action,
+				      const GtkSourceEncoding *encoding,
+				      const gchar             *first_button_text,
+				      va_list                  varargs)
 {
 	GtkWidget *result;
 	const char *button_text = first_button_text;
@@ -461,11 +459,11 @@ gedit_file_chooser_dialog_new_valist (const gchar          *title,
  * Return value: a new #GeditFileChooserDialog
  */
 GtkWidget *
-gedit_file_chooser_dialog_new (const gchar          *title,
-			       GtkWindow            *parent,
-			       GtkFileChooserAction  action,
-			       const GeditEncoding  *encoding,
-			       const gchar          *first_button_text,
+gedit_file_chooser_dialog_new (const gchar             *title,
+			       GtkWindow               *parent,
+			       GtkFileChooserAction     action,
+			       const GtkSourceEncoding *encoding,
+			       const gchar             *first_button_text,
 			       ...)
 {
 	GtkWidget *result;
@@ -481,8 +479,8 @@ gedit_file_chooser_dialog_new (const gchar          *title,
 }
 
 void
-gedit_file_chooser_dialog_set_encoding (GeditFileChooserDialog *dialog,
-					const GeditEncoding    *encoding)
+gedit_file_chooser_dialog_set_encoding (GeditFileChooserDialog  *dialog,
+					const GtkSourceEncoding *encoding)
 {
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 	g_return_if_fail (GEDIT_IS_ENCODINGS_COMBO_BOX (dialog->priv->option_menu));
@@ -492,7 +490,7 @@ gedit_file_chooser_dialog_set_encoding (GeditFileChooserDialog *dialog,
 				encoding);
 }
 
-const GeditEncoding *
+const GtkSourceEncoding *
 gedit_file_chooser_dialog_get_encoding (GeditFileChooserDialog *dialog)
 {
 	g_return_val_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog), NULL);

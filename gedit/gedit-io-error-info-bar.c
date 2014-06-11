@@ -583,9 +583,9 @@ create_conversion_error_info_bar (const gchar *primary_text,
 }
 
 GtkWidget *
-gedit_io_loading_error_info_bar_new (GFile               *location,
-				     const GeditEncoding *encoding,
-				     const GError        *error)
+gedit_io_loading_error_info_bar_new (GFile                   *location,
+				     const GtkSourceEncoding *encoding,
+				     const GError            *error)
 {
 	gchar *error_message = NULL;
 	gchar *message_details = NULL;
@@ -623,7 +623,7 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 	g_free (temp_uri_for_display);
 
 	if (encoding != NULL)
-		encoding_name = gedit_encoding_to_string (encoding);
+		encoding_name = gtk_source_encoding_to_string (encoding);
 	else
 		encoding_name = g_strdup ("UTF-8");
 
@@ -699,9 +699,9 @@ gedit_io_loading_error_info_bar_new (GFile               *location,
 }
 
 GtkWidget *
-gedit_conversion_error_while_saving_info_bar_new (GFile               *location,
-						  const GeditEncoding *encoding,
-						  const GError        *error)
+gedit_conversion_error_while_saving_info_bar_new (GFile                   *location,
+						  const GtkSourceEncoding *encoding,
+						  const GError            *error)
 {
 	gchar *error_message = NULL;
 	gchar *message_details = NULL;
@@ -730,7 +730,7 @@ gedit_conversion_error_while_saving_info_bar_new (GFile               *location,
 	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
-	encoding_name = gedit_encoding_to_string (encoding);
+	encoding_name = gtk_source_encoding_to_string (encoding);
 
 	error_message = g_strdup_printf (_("Could not save the file “%s” using the “%s” character encoding."),
 					 uri_for_display,
@@ -751,7 +751,7 @@ gedit_conversion_error_while_saving_info_bar_new (GFile               *location,
 	return info_bar;
 }
 
-const GeditEncoding *
+const GtkSourceEncoding *
 gedit_conversion_error_info_bar_get_encoding (GtkWidget *info_bar)
 {
 	gpointer menu;

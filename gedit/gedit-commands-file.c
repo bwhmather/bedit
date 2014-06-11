@@ -24,8 +24,6 @@
 #include <config.h>
 #endif
 
-#include <string.h> /* For strlen and strcmp */
-
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
@@ -115,12 +113,12 @@ is_duplicated_file (GSList *files,
 
 /* File loading */
 static GSList *
-load_file_list (GeditWindow         *window,
-		const GSList        *files,
-		const GeditEncoding *encoding,
-		gint                 line_pos,
-		gint                 column_pos,
-		gboolean             create)
+load_file_list (GeditWindow             *window,
+		const GSList            *files,
+		const GtkSourceEncoding *encoding,
+		gint                     line_pos,
+		gint                     column_pos,
+		gboolean                 create)
 {
 	GeditTab *tab;
 	GSList *loaded_files = NULL; /* Number of files to load */
@@ -284,18 +282,18 @@ load_file_list (GeditWindow         *window,
  * gedit_commands_load_location:
  * @window: a #GeditWindow
  * @location: a #GFile to be loaded
- * @encoding: (allow-none): the #GeditEncoding of @location
+ * @encoding: (allow-none): the #GtkSourceEncoding of @location
  * @line_pos: the line position to place the cursor when @location is loaded
  * @column_pos: the line column to place the cursor when @location is loaded
  *
  * Loads @location. Ignores non-existing locations
  */
 void
-gedit_commands_load_location (GeditWindow         *window,
-			      GFile               *location,
-			      const GeditEncoding *encoding,
-			      gint                 line_pos,
-			      gint                 column_pos)
+gedit_commands_load_location (GeditWindow             *window,
+			      GFile                   *location,
+			      const GtkSourceEncoding *encoding,
+			      gint                     line_pos,
+			      gint                     column_pos)
 {
 	GSList *locations = NULL;
 	gchar *uri;
@@ -321,7 +319,7 @@ gedit_commands_load_location (GeditWindow         *window,
  * gedit_commands_load_locations:
  * @window: a #GeditWindow
  * @locations: (element-type Gio.File): the locations to be loaded
- * @encoding: (allow-none): the #GeditEncoding of @location
+ * @encoding: (allow-none): the #GtkSourceEncoding of @location
  * @line_pos: the line position to place the cursor when @location is loaded
  * @column_pos: the line column to place the cursor when @location is loaded
  *
@@ -330,11 +328,11 @@ gedit_commands_load_location (GeditWindow         *window,
  * Returns: (element-type Gedit.Document) (transfer container): the locations that were loaded
  */
 GSList *
-gedit_commands_load_locations (GeditWindow         *window,
-			       const GSList        *locations,
-			       const GeditEncoding *encoding,
-			       gint                 line_pos,
-			       gint                 column_pos)
+gedit_commands_load_locations (GeditWindow             *window,
+			       const GSList            *locations,
+			       const GtkSourceEncoding *encoding,
+			       gint                     line_pos,
+			       gint                     column_pos)
 {
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
 	g_return_val_if_fail ((locations != NULL) && (locations->data != NULL), 0);
@@ -350,11 +348,11 @@ gedit_commands_load_locations (GeditWindow         *window,
  * titled document.
  */
 GSList *
-_gedit_cmd_load_files_from_prompt (GeditWindow         *window,
-				   GSList              *files,
-				   const GeditEncoding *encoding,
-				   gint                 line_pos,
-				   gint                 column_pos)
+_gedit_cmd_load_files_from_prompt (GeditWindow             *window,
+				   GSList                  *files,
+				   const GtkSourceEncoding *encoding,
+				   gint                     line_pos,
+				   gint                     column_pos)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -378,7 +376,7 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
                          GeditWindow            *window)
 {
 	GSList *files;
-	const GeditEncoding *encoding;
+	const GtkSourceEncoding *encoding;
 	GSList *loaded;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -702,7 +700,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		GeditDocumentNewlineType newline_type;
 		GeditDocumentCompressionType compression_type;
 		GeditDocumentCompressionType current_compression_type;
-		const GeditEncoding *encoding;
+		const GtkSourceEncoding *encoding;
 
 		doc = gedit_tab_get_document (tab);
 
@@ -834,7 +832,7 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 	GtkWindowGroup *wg;
 	GeditDocument *doc;
 	GFile *file;
-	const GeditEncoding *encoding;
+	const GtkSourceEncoding *encoding;
 	GeditDocumentNewlineType newline_type;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));

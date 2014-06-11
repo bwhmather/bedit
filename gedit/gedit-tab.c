@@ -59,7 +59,7 @@ struct _GeditTabPrivate
 	/* tmp data for loading */
 	gint                    tmp_line_pos;
 	gint                    tmp_column_pos;
-	const GeditEncoding    *tmp_encoding;
+	const GtkSourceEncoding *tmp_encoding;
 
 	GTimer 		       *timer;
 
@@ -562,7 +562,7 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 	GeditDocument *doc;
 	GeditView *view;
 	GFile *location;
-	const GeditEncoding *encoding;
+	const GtkSourceEncoding *encoding;
 
 	doc = gedit_tab_get_document (tab);
 	view = gedit_tab_get_view (tab);
@@ -1297,7 +1297,7 @@ recoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 
 	if (response_id == GTK_RESPONSE_OK)
 	{
-		const GeditEncoding *encoding;
+		const GtkSourceEncoding *encoding;
 		gchar *tmp_uri;
 
 		encoding = gedit_conversion_error_info_bar_get_encoding (GTK_WIDGET (info_bar));
@@ -1702,11 +1702,11 @@ _gedit_tab_new (void)
 /* Whether create is TRUE, creates a new empty document if location does
    not refer to an existing location */
 GtkWidget *
-_gedit_tab_new_from_location (GFile               *location,
-			      const GeditEncoding *encoding,
-			      gint                 line_pos,
-			      gint                 column_pos,
-			      gboolean             create)
+_gedit_tab_new_from_location (GFile                   *location,
+			      const GtkSourceEncoding *encoding,
+			      gint                     line_pos,
+			      gint                     column_pos,
+			      gboolean                 create)
 {
 	GtkWidget *tab;
 
@@ -1725,10 +1725,10 @@ _gedit_tab_new_from_location (GFile               *location,
 }
 
 GtkWidget *
-_gedit_tab_new_from_stream (GInputStream        *stream,
-                            const GeditEncoding *encoding,
-                            gint                 line_pos,
-                            gint                 column_pos)
+_gedit_tab_new_from_stream (GInputStream            *stream,
+			    const GtkSourceEncoding *encoding,
+			    gint                     line_pos,
+			    gint                     column_pos)
 {
 	GtkWidget *tab;
 
@@ -1850,7 +1850,7 @@ _gedit_tab_get_tooltip (GeditTab *tab)
 		gchar *content_description;
 		gchar *content_full_description;
 		gchar *encoding;
-		const GeditEncoding *enc;
+		const GtkSourceEncoding *enc;
 
 		case GEDIT_TAB_STATE_LOADING_ERROR:
 			tip = g_strdup_printf (_("Error opening file %s"),
@@ -1886,7 +1886,7 @@ _gedit_tab_get_tooltip (GeditTab *tab)
 			if (enc == NULL)
 				encoding = g_strdup (_("Unicode (UTF-8)"));
 			else
-				encoding = gedit_encoding_to_string (enc);
+				encoding = gtk_source_encoding_to_string (enc);
 
 			tip =  g_markup_printf_escaped ("<b>%s</b> %s\n\n"
 						        "<b>%s</b> %s\n"
@@ -1976,12 +1976,12 @@ gedit_tab_get_from_document (GeditDocument *doc)
 }
 
 void
-_gedit_tab_load (GeditTab            *tab,
-		 GFile               *location,
-		 const GeditEncoding *encoding,
-		 gint                 line_pos,
-		 gint                 column_pos,
-		 gboolean             create)
+_gedit_tab_load (GeditTab                *tab,
+		 GFile                   *location,
+		 const GtkSourceEncoding *encoding,
+		 gint                     line_pos,
+		 gint                     column_pos,
+		 gboolean                 create)
 {
 	GeditDocument *doc;
 
@@ -2006,11 +2006,11 @@ _gedit_tab_load (GeditTab            *tab,
 }
 
 void
-_gedit_tab_load_stream (GeditTab            *tab,
-                        GInputStream        *stream,
-                        const GeditEncoding *encoding,
-                        gint                 line_pos,
-                        gint                 column_pos)
+_gedit_tab_load_stream (GeditTab                *tab,
+			GInputStream            *stream,
+			const GtkSourceEncoding *encoding,
+			gint                     line_pos,
+			gint                     column_pos)
 {
 	GeditDocument *doc;
 
@@ -2163,10 +2163,10 @@ gedit_tab_auto_save (GeditTab *tab)
 
 void
 _gedit_tab_save_as (GeditTab                     *tab,
-                    GFile                        *location,
-                    const GeditEncoding          *encoding,
-                    GeditDocumentNewlineType      newline_type,
-                    GeditDocumentCompressionType  compression_type)
+		    GFile                        *location,
+		    const GtkSourceEncoding      *encoding,
+		    GeditDocumentNewlineType      newline_type,
+		    GeditDocumentCompressionType  compression_type)
 {
 	GeditDocument *doc;
 	GeditDocumentSaveFlags save_flags;

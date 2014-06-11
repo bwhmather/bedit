@@ -89,7 +89,7 @@ struct _GeditAppPrivate
 static gboolean new_window = FALSE;
 static gboolean new_document = FALSE;
 static gchar *geometry = NULL;
-static const GeditEncoding *encoding = NULL;
+static const GtkSourceEncoding *encoding = NULL;
 static GInputStream *stdin_stream = NULL;
 static GSList *file_list = NULL;
 static gint line_position = 0;
@@ -872,7 +872,7 @@ gedit_app_command_line (GApplication            *application,
 
 	if (g_variant_dict_lookup (options, "encoding", "&s", &encoding_charset))
 	{
-		encoding = gedit_encoding_get_from_charset (encoding_charset);
+		encoding = gtk_source_encoding_get_from_charset (encoding_charset);
 
 		if (encoding == NULL)
 		{
@@ -927,6 +927,13 @@ gedit_app_command_line (GApplication            *application,
 	return 0;
 }
 
+static void
+encoding_foreach_cb (const GtkSourceEncoding *encoding,
+		     gpointer                 user_data)
+{
+	g_print ("%s\n", gtk_source_encoding_get_charset (encoding));
+}
+
 static gint
 gedit_app_handle_local_options (GApplication *application,
                                 GVariantDict *options)
@@ -939,16 +946,7 @@ gedit_app_handle_local_options (GApplication *application,
 
 	if (g_variant_dict_contains (options, "list-encodings"))
 	{
-		gint i = 0;
-		const GeditEncoding *enc;
-
-		while ((enc = gedit_encoding_get_from_index (i)) != NULL)
-		{
-			g_print ("%s\n", gedit_encoding_get_charset (enc));
-
-			++i;
-		}
-
+		gtk_source_encoding_foreach (encoding_foreach_cb, NULL);
 		return 0;
 	}
 

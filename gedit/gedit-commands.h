@@ -24,25 +24,25 @@
 #ifndef __GEDIT_COMMANDS_H__
 #define __GEDIT_COMMANDS_H__
 
-#include <gtk/gtk.h>
+#include <gtksourceview/gtksource.h>
 #include <gedit/gedit-window.h>
 #include <gedit/gedit-notebook.h>
 
 G_BEGIN_DECLS
 
 /* Do nothing if URI does not exist */
-void		 gedit_commands_load_location		(GeditWindow         *window,
-							 GFile               *location,
-							 const GeditEncoding *encoding,
-							 gint                 line_pos,
-							 gint                 column_pos);
+void		 gedit_commands_load_location		(GeditWindow             *window,
+							 GFile                   *location,
+							 const GtkSourceEncoding *encoding,
+							 gint                     line_pos,
+							 gint                     column_pos);
 
 /* Ignore non-existing URIs */
-GSList		*gedit_commands_load_locations		(GeditWindow         *window,
-							 const GSList        *locations,
-							 const GeditEncoding *encoding,
-							 gint                 line_pos,
-							 gint                 column_pos) G_GNUC_WARN_UNUSED_RESULT;
+GSList		*gedit_commands_load_locations		(GeditWindow             *window,
+							 const GSList            *locations,
+							 const GtkSourceEncoding *encoding,
+							 gint                     line_pos,
+							 gint                     column_pos) G_GNUC_WARN_UNUSED_RESULT;
 
 void		 gedit_commands_save_document		(GeditWindow         *window,
                                                          GeditDocument       *document);
@@ -54,11 +54,11 @@ void		 gedit_commands_save_all_documents 	(GeditWindow         *window);
  */
 
 /* Create titled documens for non-existing URIs */
-GSList	        *_gedit_cmd_load_files_from_prompt	(GeditWindow         *window,
-							 GSList              *files,
-							 const GeditEncoding *encoding,
-							 gint                 line_pos,
-							 gint                 column_pos) G_GNUC_WARN_UNUSED_RESULT;
+GSList	        *_gedit_cmd_load_files_from_prompt	(GeditWindow             *window,
+							 GSList                  *files,
+							 const GtkSourceEncoding *encoding,
+							 gint                     line_pos,
+							 gint                     column_pos) G_GNUC_WARN_UNUSED_RESULT;
 
 void		_gedit_cmd_file_new			(GSimpleAction *action,
                                                          GVariant      *parameter,

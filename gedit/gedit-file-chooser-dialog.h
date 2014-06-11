@@ -21,9 +21,8 @@
 #ifndef __GEDIT_FILE_CHOOSER_DIALOG_H__
 #define __GEDIT_FILE_CHOOSER_DIALOG_H__
 
-#include <gtk/gtk.h>
+#include <gtksourceview/gtksource.h>
 
-#include <gedit/gedit-encodings.h>
 #include <gedit/gedit-enum-types.h>
 #include <gedit/gedit-document.h>
 
@@ -57,14 +56,14 @@ GType		 gedit_file_chooser_dialog_get_type		(void) G_GNUC_CONST;
 GtkWidget	*gedit_file_chooser_dialog_new			(const gchar              *title,
 								 GtkWindow                *parent,
 								 GtkFileChooserAction      action,
-								 const GeditEncoding      *encoding,
+								 const GtkSourceEncoding  *encoding,
 								 const gchar              *first_button_text,
 								 ...);
 
 void		 gedit_file_chooser_dialog_set_encoding		(GeditFileChooserDialog   *dialog,
-								 const GeditEncoding      *encoding);
+								 const GtkSourceEncoding  *encoding);
 
-const GeditEncoding
+const GtkSourceEncoding
 		*gedit_file_chooser_dialog_get_encoding		(GeditFileChooserDialog   *dialog);
 
 void		 gedit_file_chooser_dialog_set_newline_type	(GeditFileChooserDialog   *dialog,

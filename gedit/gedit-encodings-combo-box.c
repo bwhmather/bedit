@@ -24,10 +24,10 @@
 #endif
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <gtksourceview/gtksource.h>
 
-#include <gedit/gedit-encodings-combo-box.h>
-#include <gedit/gedit-encodings-dialog.h>
+#include "gedit-encodings-combo-box.h"
+#include "gedit-encodings-dialog.h"
 #include "gedit-settings.h"
 #include "gedit-utils.h"
 
@@ -261,8 +261,8 @@ update_menu (GeditEncodingsComboBox *menu)
 	GtkTreeIter iter;
 	GSList *encodings, *l;
 	gchar *str;
-	const GeditEncoding *utf8_encoding;
-	const GeditEncoding *current_encoding;
+	const GtkSourceEncoding *utf8_encoding;
+	const GtkSourceEncoding *current_encoding;
 	gchar **enc_strv;
 
 	store = menu->priv->store;
@@ -273,8 +273,8 @@ update_menu (GeditEncodingsComboBox *menu)
 	gtk_combo_box_set_model (GTK_COMBO_BOX (menu),
 				 NULL);
 
-	utf8_encoding = gedit_encoding_get_utf8 ();
-	current_encoding = gedit_encoding_get_current ();
+	utf8_encoding = gtk_source_encoding_get_utf8 ();
+	current_encoding = gtk_source_encoding_get_current ();
 
 	if (!menu->priv->save_mode)
 	{
@@ -295,12 +295,12 @@ update_menu (GeditEncodingsComboBox *menu)
 
 	if (current_encoding != utf8_encoding)
 	{
-		str = gedit_encoding_to_string (utf8_encoding);
+		str = gtk_source_encoding_to_string (utf8_encoding);
 	}
 	else
 	{
 		str = g_strdup_printf (_("Current Locale (%s)"),
-				       gedit_encoding_get_charset (utf8_encoding));
+				       gtk_source_encoding_get_charset (utf8_encoding));
 	}
 
 	gtk_list_store_append (store, &iter);
@@ -316,7 +316,7 @@ update_menu (GeditEncodingsComboBox *menu)
 	    (current_encoding != NULL))
 	{
 		str = g_strdup_printf (_("Current Locale (%s)"),
-				       gedit_encoding_get_charset (current_encoding));
+				       gtk_source_encoding_get_charset (current_encoding));
 
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
@@ -336,13 +336,13 @@ update_menu (GeditEncodingsComboBox *menu)
 
 	for (l = encodings; l != NULL; l = g_slist_next (l))
 	{
-		const GeditEncoding *enc = (const GeditEncoding *)l->data;
+		const GtkSourceEncoding *enc = l->data;
 
 		if ((enc != current_encoding) &&
 		    (enc != utf8_encoding) &&
 		    (enc != NULL))
 		{
-			str = gedit_encoding_to_string (enc);
+			str = gtk_source_encoding_to_string (enc);
 
 			gtk_list_store_append (store, &iter);
 			gtk_list_store_set (store, &iter,
@@ -409,7 +409,7 @@ gedit_encodings_combo_box_new (gboolean save_mode)
 			     NULL);
 }
 
-const GeditEncoding *
+const GtkSourceEncoding *
 gedit_encodings_combo_box_get_selected_encoding (GeditEncodingsComboBox *menu)
 {
 	GtkTreeIter iter;
@@ -418,7 +418,7 @@ gedit_encodings_combo_box_get_selected_encoding (GeditEncodingsComboBox *menu)
 
 	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
 	{
-		const GeditEncoding *ret;
+		const GtkSourceEncoding *ret;
 		GtkTreeModel *model;
 
 		model = gtk_combo_box_get_model (GTK_COMBO_BOX (menu));
@@ -439,8 +439,8 @@ gedit_encodings_combo_box_get_selected_encoding (GeditEncodingsComboBox *menu)
  * @encoding: (allow-none):
  **/
 void
-gedit_encodings_combo_box_set_selected_encoding (GeditEncodingsComboBox *menu,
-						 const GeditEncoding    *encoding)
+gedit_encodings_combo_box_set_selected_encoding (GeditEncodingsComboBox  *menu,
+						 const GtkSourceEncoding *encoding)
 {
 	GtkTreeIter iter;
 	GtkTreeModel *model;
@@ -453,7 +453,7 @@ gedit_encodings_combo_box_set_selected_encoding (GeditEncodingsComboBox *menu,
 
 	while (b)
 	{
-		const GeditEncoding *enc;
+		const GtkSourceEncoding *enc;
 
 		gtk_tree_model_get (model, &iter,
 				    ENCODING_COLUMN, &enc,

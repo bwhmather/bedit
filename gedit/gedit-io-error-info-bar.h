@@ -21,22 +21,22 @@
 #ifndef __GEDIT_IO_ERROR_INFO_BAR_H__
 #define __GEDIT_IO_ERROR_INFO_BAR_H__
 
-#include <glib.h>
+#include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 
-GtkWidget	*gedit_io_loading_error_info_bar_new			(GFile               *location,
-									 const GeditEncoding *encoding,
-									 const GError        *error);
+GtkWidget	*gedit_io_loading_error_info_bar_new			(GFile                   *location,
+									 const GtkSourceEncoding *encoding,
+									 const GError            *error);
 
 GtkWidget	*gedit_unrecoverable_reverting_error_info_bar_new	(GFile               *location,
 									 const GError        *error);
 
-GtkWidget	*gedit_conversion_error_while_saving_info_bar_new	(GFile               *location,
-									 const GeditEncoding *encoding,
-									 const GError        *error);
+GtkWidget	*gedit_conversion_error_while_saving_info_bar_new	(GFile                   *location,
+									 const GtkSourceEncoding *encoding,
+									 const GError            *error);
 
-const GeditEncoding
+const GtkSourceEncoding
 		*gedit_conversion_error_info_bar_get_encoding		(GtkWidget           *info_bar);
 
 GtkWidget	*gedit_file_already_open_warning_info_bar_new		(GFile               *location);

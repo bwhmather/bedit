@@ -27,8 +27,6 @@
 #include <string.h>
 
 #include <glib/gi18n.h>
-#include <gio/gio.h>
-#include <gtksourceview/gtksource.h>
 #include <libpeas/peas-extension-set.h>
 
 #include "gedit-window.h"
@@ -3226,7 +3224,7 @@ gedit_window_create_tab (GeditWindow *window,
  * gedit_window_create_tab_from_location:
  * @window: a #GeditWindow
  * @location: the location of the document
- * @encoding: (allow-none): a #GeditEncoding, or %NULL
+ * @encoding: (allow-none): a #GtkSourceEncoding, or %NULL
  * @line_pos: the line position to visualize
  * @column_pos: the column position to visualize
  * @create: %TRUE to create a new document in case @uri does exist
@@ -3240,13 +3238,13 @@ gedit_window_create_tab (GeditWindow *window,
  * Returns: (transfer none): a new #GeditTab
  */
 GeditTab *
-gedit_window_create_tab_from_location (GeditWindow         *window,
-				       GFile               *location,
-				       const GeditEncoding *encoding,
-				       gint                 line_pos,
-				       gint                 column_pos,
-				       gboolean             create,
-				       gboolean             jump_to)
+gedit_window_create_tab_from_location (GeditWindow             *window,
+				       GFile                   *location,
+				       const GtkSourceEncoding *encoding,
+				       gint                     line_pos,
+				       gint                     column_pos,
+				       gboolean                 create,
+				       gboolean                 jump_to)
 {
 	GtkWidget *notebook;
 	GtkWidget *tab;
@@ -3270,7 +3268,7 @@ gedit_window_create_tab_from_location (GeditWindow         *window,
  * gedit_window_create_tab_from_stream:
  * @window: a #GeditWindow
  * @stream: a #GInputStream
- * @encoding: (allow-none): a #GeditEncoding, or %NULL
+ * @encoding: (allow-none): a #GtkSourceEncoding, or %NULL
  * @line_pos: the line position to visualize
  * @column_pos: the column position to visualize
  * @jump_to: %TRUE to set the new #GeditTab as active
@@ -3278,12 +3276,12 @@ gedit_window_create_tab_from_location (GeditWindow         *window,
  * Returns: (transfer none): a new #GeditTab
  */
 GeditTab *
-gedit_window_create_tab_from_stream (GeditWindow         *window,
-                                     GInputStream        *stream,
-                                     const GeditEncoding *encoding,
-                                     gint                 line_pos,
-                                     gint                 column_pos,
-                                     gboolean             jump_to)
+gedit_window_create_tab_from_stream (GeditWindow             *window,
+				     GInputStream            *stream,
+				     const GtkSourceEncoding *encoding,
+				     gint                     line_pos,
+				     gint                     column_pos,
+				     gboolean                 jump_to)
 {
 	GtkWidget *notebook;
 	GtkWidget *tab;
