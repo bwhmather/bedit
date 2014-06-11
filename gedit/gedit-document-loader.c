@@ -626,7 +626,7 @@ get_candidate_encodings (GeditDocumentLoader *loader)
 	enc_strv = g_settings_get_strv (loader->priv->enc_settings,
 					GEDIT_SETTINGS_ENCODING_AUTO_DETECTED);
 
-	encodings = _gedit_encoding_strv_to_list ((const gchar * const *)enc_strv);
+	encodings = _gedit_utils_encoding_strv_to_list ((const gchar * const *)enc_strv);
 	g_strfreev (enc_strv);
 
 	metadata = get_metadata_encoding (loader);

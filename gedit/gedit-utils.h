@@ -26,7 +26,6 @@
 #include <glib.h>
 #include <gtk/gtk.h>
 #include <atk/atk.h>
-#include <gedit/gedit-encodings.h>
 #include <gedit/gedit-document.h>
 #include <gtksourceview/gtksource.h>
 
@@ -129,6 +128,11 @@ GeditDocumentCompressionType
 		 					(const gchar      *content_type);
 
 gchar           *gedit_utils_set_direct_save_filename	(GdkDragContext *context);
+
+/* Private */
+GSList		*_gedit_utils_encoding_strv_to_list	(const gchar * const *enc_str);
+
+gchar	       **_gedit_utils_encoding_list_to_strv	(const GSList *enc_list);
 
 G_END_DECLS
 

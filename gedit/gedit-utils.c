@@ -1442,4 +1442,71 @@ gedit_utils_set_direct_save_filename (GdkDragContext *context)
 	return uri;
 }
 
+static gboolean
+data_exists (GSList         *list,
+	     const gpointer  data)
+{
+	for (; list != NULL; list = g_slist_next (list))
+	{
+		if (list->data == data)
+		{
+			return TRUE;
+		}
+	}
+
+	return FALSE;
+}
+
+GSList *
+_gedit_utils_encoding_strv_to_list (const gchar * const *enc_str)
+{
+	GSList *res = NULL;
+	gchar **p;
+
+	for (p = (gchar **)enc_str; p != NULL && *p != NULL; p++)
+	{
+		const gchar *charset = *p;
+		const GtkSourceEncoding *enc;
+
+		if (g_str_equal (charset, "CURRENT"))
+		{
+			g_get_charset (&charset);
+		}
+
+		g_return_val_if_fail (charset != NULL, NULL);
+		enc = gtk_source_encoding_get_from_charset (charset);
+
+		if (enc != NULL &&
+		    !data_exists (res, (gpointer)enc))
+		{
+			res = g_slist_prepend (res, (gpointer)enc);
+		}
+	}
+
+	return g_slist_reverse (res);
+}
+
+gchar **
+_gedit_utils_encoding_list_to_strv (const GSList *enc_list)
+{
+	GSList *l;
+	GPtrArray *array;
+
+	array = g_ptr_array_sized_new (g_slist_length ((GSList *)enc_list) + 1);
+
+	for (l = (GSList *)enc_list; l != NULL; l = g_slist_next (l))
+	{
+		const GtkSourceEncoding *enc = l->data;
+		const gchar *charset = gtk_source_encoding_get_charset (enc);
+
+		g_return_val_if_fail (charset != NULL, NULL);
+
+		g_ptr_array_add (array, g_strdup (charset));
+	}
+
+	g_ptr_array_add (array, NULL);
+
+	return (gchar **)g_ptr_array_free (array, FALSE);
+}
+
 /* ex:set ts=8 noet: */

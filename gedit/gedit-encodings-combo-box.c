@@ -331,7 +331,7 @@ update_menu (GeditEncodingsComboBox *menu)
 	enc_strv = g_settings_get_strv (menu->priv->enc_settings,
 					GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU);
 
-	encodings = _gedit_encoding_strv_to_list ((const gchar * const *)enc_strv);
+	encodings = _gedit_utils_encoding_strv_to_list ((const gchar * const *)enc_strv);
 	g_strfreev (enc_strv);
 
 	for (l = encodings; l != NULL; l = g_slist_next (l))
