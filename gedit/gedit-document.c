@@ -62,6 +62,8 @@ static void	gedit_document_save_real	(GeditDocument                *doc,
 
 struct _GeditDocumentPrivate
 {
+	GtkSourceFile *file;
+
 	GSettings   *editor_settings;
 
 	GFile       *location;
@@ -280,6 +282,7 @@ gedit_document_dispose (GObject *object)
 	g_clear_object (&doc->priv->editor_settings);
 	g_clear_object (&doc->priv->metadata_info);
 	g_clear_object (&doc->priv->search_context);
+	g_clear_object (&doc->priv->file);
 
 	G_OBJECT_CLASS (gedit_document_parent_class)->dispose (object);
 }
@@ -916,6 +919,8 @@ gedit_document_init (GeditDocument *doc)
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
 	priv->encoding = gedit_encoding_get_utf8 ();
+
+	priv->file = gtk_source_file_new (GTK_SOURCE_BUFFER (doc));
 
 	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_MAX_UNDO_ACTIONS,
@@ -2553,6 +2558,30 @@ _gedit_document_get_empty_search (GeditDocument *doc)
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
 	return doc->priv->empty_search;
+}
+
+/**
+ * gedit_document_get_file:
+ * @doc: a #GeditDocument.
+ *
+ * Gets the associated #GtkSourceFile. You should use it only for reading
+ * purposes, not for creating a #GtkSourceFileLoader or #GtkSourceFileSaver,
+ * because gedit does some extra work when loading or saving a file and
+ * maintains an internal state. If you use in a plugin a file loader or saver on
+ * the returned #GtkSourceFile, the internal state of gedit won't be updated.
+ *
+ * If you want to save the #GeditDocument to a secondary file, you can create a
+ * new #GtkSourceFile and use a #GtkSourceFileSaver.
+ *
+ * Returns: (transfer none): the associated #GtkSourceFile.
+ * Since: 3.14
+ */
+GtkSourceFile *
+gedit_document_get_file (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
+
+	return doc->priv->file;
 }
 
 /* ex:set ts=8 noet: */

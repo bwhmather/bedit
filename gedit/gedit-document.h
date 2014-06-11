@@ -285,6 +285,8 @@ GMountOperation
 
 gboolean		 _gedit_document_get_empty_search	(GeditDocument		*doc);
 
+GtkSourceFile		*gedit_document_get_file		(GeditDocument *doc);
+
 G_END_DECLS
 
 #endif /* __GEDIT_DOCUMENT_H__ */
