@@ -153,7 +153,8 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 
 	action_area = gtk_dialog_get_action_area (GTK_DIALOG (dlg));
 	gtk_button_box_set_layout (GTK_BUTTON_BOX (action_area), GTK_BUTTONBOX_EXPAND);
-	gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (dlg)), "prompt");
+	gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (dlg)),
+	                                                           GTK_STYLE_CLASS_MESSAGE_DIALOG);
 
 	g_signal_connect (dlg,
 			  "response",
