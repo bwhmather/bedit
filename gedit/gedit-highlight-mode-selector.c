@@ -357,7 +357,10 @@ gedit_highlight_mode_selector_activate_selected_language (GeditHighlightModeSele
 
 	g_signal_emit (G_OBJECT (selector), signals[LANGUAGE_SELECTED], 0, lang);
 
-	g_object_unref (lang);
+	if (lang != NULL)
+	{
+		g_object_unref (lang);
+	}
 }
 
 /* ex:set ts=8 noet: */
