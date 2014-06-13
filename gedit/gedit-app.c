@@ -439,6 +439,58 @@ get_builder_object_ref (GtkBuilder  *builder,
 }
 
 static void
+theme_changed (GtkSettings *settings,
+	       GParamSpec  *pspec,
+	       gpointer     data)
+{
+	static GtkCssProvider *provider;
+
+	if (pspec == NULL || g_str_equal (pspec->name, "gtk-theme-name"))
+	{
+		gchar *theme;
+		GdkScreen *screen;
+
+		g_object_get (settings, "gtk-theme-name", &theme, NULL);
+		screen = gdk_screen_get_default ();
+
+		if (g_str_equal (theme, "Adwaita"))
+		{
+			if (provider == NULL)
+			{
+				GFile *file;
+
+				provider = gtk_css_provider_new ();
+				file = g_file_new_for_uri ("resource:///org/gnome/gedit/ui/gedit.adwaita.css");
+				gtk_css_provider_load_from_file (provider, file, NULL);
+				g_object_unref (file);
+			}
+
+			gtk_style_context_add_provider_for_screen (screen,
+								   GTK_STYLE_PROVIDER (provider),
+								   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+		}
+		else if (provider != NULL)
+		{
+			gtk_style_context_remove_provider_for_screen (screen,
+								      GTK_STYLE_PROVIDER (provider));
+			g_clear_object (&provider);
+		}
+
+		g_free (theme);
+	}
+}
+
+static void
+setup_theme_extensions (void)
+{
+	GtkSettings *settings;
+
+	settings = gtk_settings_get_default ();
+	g_signal_connect (settings, "notify", G_CALLBACK (theme_changed), NULL);
+	theme_changed (settings, NULL, NULL);
+}
+
+static void
 gedit_app_startup (GApplication *application)
 {
 	GeditApp *app = GEDIT_APP (application);
@@ -474,6 +526,8 @@ gedit_app_startup (GApplication *application)
 
 	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (), icon_dir);
 	g_free (icon_dir);
+
+        setup_theme_extensions ();
 
 #ifndef ENABLE_GVFS_METADATA
 	gedit_metadata_manager_init ();
