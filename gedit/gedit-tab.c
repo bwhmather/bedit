@@ -63,7 +63,6 @@ struct _GeditTabPrivate
 	const GeditEncoding    *tmp_encoding;
 
 	GTimer 		       *timer;
-	guint		        times_called;
 
 	GeditDocumentSaveFlags	save_flags;
 
@@ -950,7 +949,6 @@ document_loading (GeditDocument *document,
 
 	if (tab->priv->timer == NULL)
 	{
-		g_return_if_fail (tab->priv->times_called == 0);
 		tab->priv->timer = g_timer_new ();
 	}
 
@@ -1003,7 +1001,6 @@ document_loaded (GeditDocument *document,
 		g_timer_destroy (tab->priv->timer);
 		tab->priv->timer = NULL;
 	}
-	tab->priv->times_called = 0;
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
@@ -1186,10 +1183,8 @@ document_saving (GeditDocument *document,
 
 	gedit_debug_message (DEBUG_TAB, "%" G_GUINT64_FORMAT "/%" G_GUINT64_FORMAT, size, total_size);
 
-
 	if (tab->priv->timer == NULL)
 	{
-		g_return_if_fail (tab->priv->times_called == 0);
 		tab->priv->timer = g_timer_new ();
 	}
 
@@ -1204,8 +1199,6 @@ document_saving (GeditDocument *document,
 	}
 
 	info_bar_set_progress (tab, size, total_size);
-
-	tab->priv->times_called++;
 }
 
 static void
@@ -1410,7 +1403,6 @@ document_saved (GeditDocument *document,
 		g_timer_destroy (tab->priv->timer);
 		tab->priv->timer = NULL;
 	}
-	tab->priv->times_called = 0;
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
