@@ -586,8 +586,6 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
 
-			g_return_if_fail (tab->priv->auto_save_timeout <= 0);
-
 			gedit_document_load (doc,
 					     location,
 					     tab->priv->tmp_encoding,
@@ -965,7 +963,6 @@ document_loaded (GeditDocument *document,
 
 	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_LOADING) ||
 			  (tab->priv->state == GEDIT_TAB_STATE_REVERTING));
-	g_return_if_fail (tab->priv->auto_save_timeout <= 0);
 
 	if (tab->priv->timer != NULL)
 	{
@@ -1224,8 +1221,6 @@ invalid_character_info_bar_response (GtkWidget *info_bar,
 		/* don't bug the user again with this... */
 		tab->priv->save_flags |= GEDIT_DOCUMENT_SAVE_IGNORE_INVALID_CHARS;
 
-		g_return_if_fail (tab->priv->auto_save_timeout <= 0);
-
 		/* Force saving */
 
 		/* FIXME there is a bug here when the action was a "save as".
@@ -1257,8 +1252,6 @@ no_backup_error_info_bar_response (GtkWidget *info_bar,
 
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
-		g_return_if_fail (tab->priv->auto_save_timeout <= 0);
-
 		/* Force saving */
 		gedit_document_save (doc, tab->priv->save_flags);
 	}
@@ -1285,8 +1278,6 @@ externally_modified_error_info_bar_response (GtkWidget *info_bar,
 		g_return_if_fail (tab->priv->tmp_encoding != NULL);
 
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
-
-		g_return_if_fail (tab->priv->auto_save_timeout <= 0);
 
 		/* ignore mtime should not be persisted in save flags across saves */
 
@@ -1330,8 +1321,6 @@ recoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 		gedit_debug_message (DEBUG_TAB, "Force saving with URI '%s'", tmp_uri);
 		g_free (tmp_uri);
 
-		g_return_if_fail (tab->priv->auto_save_timeout <= 0);
-
 		gedit_document_save_as (doc,
 					tab->priv->tmp_save_location,
 					tab->priv->tmp_encoding,
@@ -1358,7 +1347,6 @@ document_saved (GeditDocument *document,
 
 	g_return_if_fail (tab->priv->tmp_save_location != NULL);
 	g_return_if_fail (tab->priv->tmp_encoding != NULL);
-	g_return_if_fail (tab->priv->auto_save_timeout <= 0);
 
 	if (tab->priv->timer != NULL)
 	{
@@ -2138,10 +2126,6 @@ gedit_tab_auto_save (GeditTab *tab)
 	doc = gedit_tab_get_document (tab);
 	g_return_val_if_fail (!gedit_document_is_untitled (doc), FALSE);
 	g_return_val_if_fail (!gedit_document_get_readonly (doc), FALSE);
-
-	g_return_val_if_fail (tab->priv->auto_save_timeout > 0, FALSE);
-	g_return_val_if_fail (tab->priv->auto_save, FALSE);
-	g_return_val_if_fail (tab->priv->auto_save_interval > 0, FALSE);
 
 	if (!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER(doc)))
 	{
