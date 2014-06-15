@@ -23,11 +23,9 @@
 #endif
 
 #include <glib/gi18n.h>
-#include <gio/gio.h>
 
-#include "gedit-app.h"
-#include "gedit-notebook.h"
 #include "gedit-tab.h"
+#include "gedit-app.h"
 #include "gedit-recent.h"
 #include "gedit-utils.h"
 #include "gedit-io-error-info-bar.h"
