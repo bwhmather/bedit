@@ -908,8 +908,9 @@ document_loading (GeditDocument *document,
 		  goffset        total_size,
 		  GeditTab      *tab)
 {
-	gdouble et;
+	gdouble elapsed_time;
 	gdouble total_time;
+	gdouble remaining_time;
 
 	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_LOADING) ||
 		 	  (tab->priv->state == GEDIT_TAB_STATE_REVERTING));
@@ -919,12 +920,15 @@ document_loading (GeditDocument *document,
 		tab->priv->timer = g_timer_new ();
 	}
 
-	et = g_timer_elapsed (tab->priv->timer, NULL);
+	elapsed_time = g_timer_elapsed (tab->priv->timer, NULL);
 
-	/* et : total_time = size : total_size */
-	total_time = (et * total_size) / size;
+	/* elapsed_time / total_time = size / total_size */
+	total_time = (elapsed_time * total_size) / size;
 
-	if ((total_time - et) > 3.0)
+	remaining_time = total_time - elapsed_time;
+
+	/* Approximately more than 3 seconds remaining. */
+	if (remaining_time > 3.0)
 	{
 		show_loading_info_bar (tab);
 	}
@@ -1140,8 +1144,9 @@ document_saving (GeditDocument *document,
 		 goffset        total_size,
 		 GeditTab      *tab)
 {
-	gdouble et;
+	gdouble elapsed_time;
 	gdouble total_time;
+	gdouble remaining_time;
 
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
 
@@ -1150,12 +1155,15 @@ document_saving (GeditDocument *document,
 		tab->priv->timer = g_timer_new ();
 	}
 
-	et = g_timer_elapsed (tab->priv->timer, NULL);
+	elapsed_time = g_timer_elapsed (tab->priv->timer, NULL);
 
-	/* et : total_time = size : total_size */
-	total_time = (et * total_size)/size;
+	/* elapsed_time / total_time = size / total_size */
+	total_time = (elapsed_time * total_size) / size;
 
-	if ((total_time - et) > 3.0)
+	remaining_time = total_time - elapsed_time;
+
+	/* Approximately more than 3 seconds remaining. */
+	if (remaining_time > 3.0)
 	{
 		show_saving_info_bar (tab);
 	}
