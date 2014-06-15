@@ -2153,14 +2153,14 @@ gedit_tab_auto_save (GeditTab *tab)
 		return FALSE;
 	}
 
+	/* Set auto_save_timeout to 0 since the timeout is going to be destroyed */
+	tab->priv->auto_save_timeout = 0;
+
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
 	/* uri used in error messages, will be freed in document_saved */
 	tab->priv->tmp_save_location = gedit_document_get_location (doc);
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc);
-
-	/* Set auto_save_timeout to 0 since the timeout is going to be destroyed */
-	tab->priv->auto_save_timeout = 0;
 
 	/* Since we are autosaving, we need to preserve the backup that was produced
 	   the last time the user "manually" saved the file. In the case a recoverable
