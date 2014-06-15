@@ -46,9 +46,6 @@ typedef enum
 	GEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
 } GeditTabState;
 
-/*
- * Type checking and casting macros
- */
 #define GEDIT_TYPE_TAB              (gedit_tab_get_type())
 #define GEDIT_TAB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_TAB, GeditTab))
 #define GEDIT_TAB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_TAB, GeditTabClass))
@@ -56,26 +53,17 @@ typedef enum
 #define GEDIT_IS_TAB_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_TAB))
 #define GEDIT_TAB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_TAB, GeditTabClass))
 
-/* Private structure type */
-typedef struct _GeditTabPrivate GeditTabPrivate;
-
-/*
- * Main object structure
- */
-typedef struct _GeditTab GeditTab;
+typedef struct _GeditTab	GeditTab;
+typedef struct _GeditTabClass	GeditTabClass;
+typedef struct _GeditTabPrivate	GeditTabPrivate;
 
 struct _GeditTab
 {
 	GtkBox vbox;
 
-	/*< private > */
+	/*< private >*/
 	GeditTabPrivate *priv;
 };
-
-/*
- * Class definition
- */
-typedef struct _GeditTabClass GeditTabClass;
 
 struct _GeditTabClass
 {
@@ -85,9 +73,6 @@ struct _GeditTabClass
 				 gchar    **uri_list);
 };
 
-/*
- * Public methods
- */
 GType 		 gedit_tab_get_type 		(void) G_GNUC_CONST;
 
 GeditView	*gedit_tab_get_view		(GeditTab            *tab);
