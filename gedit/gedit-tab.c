@@ -1660,11 +1660,8 @@ gedit_tab_init (GeditTab *tab)
 	gtk_box_pack_end (GTK_BOX (tab), GTK_WIDGET (tab->priv->frame),
 	                  TRUE, TRUE, 0);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 	g_object_set_data (G_OBJECT (doc), GEDIT_TAB_KEY, tab);
-
-	view = gedit_view_frame_get_view (tab->priv->frame);
-	g_object_set_data (G_OBJECT (view), GEDIT_TAB_KEY, tab);
 
 	g_signal_connect (doc,
 			  "notify::location",
@@ -1694,6 +1691,8 @@ gedit_tab_init (GeditTab *tab)
 			  "saved",
 			  G_CALLBACK (document_saved),
 			  tab);
+
+	view = gedit_tab_get_view (tab);
 
 	g_signal_connect_after (view,
 				"focus-in-event",
