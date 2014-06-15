@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2005 - Paolo Maggi
+ * Copyright (C) 2014 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -85,7 +86,6 @@ enum
 	PROP_CAN_CLOSE
 };
 
-/* Signals */
 enum
 {
 	DROP_URIS,
@@ -158,25 +158,25 @@ gedit_tab_get_property (GObject    *object,
 	switch (prop_id)
 	{
 		case PROP_NAME:
-			g_value_take_string (value,
-					     _gedit_tab_get_name (tab));
+			g_value_take_string (value, _gedit_tab_get_name (tab));
 			break;
+
 		case PROP_STATE:
-			g_value_set_enum (value,
-					  gedit_tab_get_state (tab));
+			g_value_set_enum (value, gedit_tab_get_state (tab));
 			break;
+
 		case PROP_AUTO_SAVE:
-			g_value_set_boolean (value,
-					     gedit_tab_get_auto_save_enabled (tab));
+			g_value_set_boolean (value, gedit_tab_get_auto_save_enabled (tab));
 			break;
+
 		case PROP_AUTO_SAVE_INTERVAL:
-			g_value_set_int (value,
-					 gedit_tab_get_auto_save_interval (tab));
+			g_value_set_int (value, gedit_tab_get_auto_save_interval (tab));
 			break;
+
 		case PROP_CAN_CLOSE:
-			g_value_set_boolean (value,
-					     _gedit_tab_get_can_close (tab));
+			g_value_set_boolean (value, _gedit_tab_get_can_close (tab));
 			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -194,13 +194,13 @@ gedit_tab_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_AUTO_SAVE:
-			gedit_tab_set_auto_save_enabled (tab,
-							 g_value_get_boolean (value));
+			gedit_tab_set_auto_save_enabled (tab, g_value_get_boolean (value));
 			break;
+
 		case PROP_AUTO_SAVE_INTERVAL:
-			gedit_tab_set_auto_save_interval (tab,
-							  g_value_get_int (value));
+			gedit_tab_set_auto_save_interval (tab, g_value_get_int (value));
 			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -430,11 +430,12 @@ static void
 gedit_tab_set_state (GeditTab      *tab,
 		     GeditTabState  state)
 {
-	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail ((state >= 0) && (state < GEDIT_TAB_NUM_OF_STATES));
 
 	if (tab->priv->state == state)
+	{
 		return;
+	}
 
 	tab->priv->state = state;
 
@@ -445,13 +446,12 @@ gedit_tab_set_state (GeditTab      *tab,
 	{
 		gtk_widget_hide (GTK_WIDGET (tab->priv->frame));
 	}
-	else
+	else if (tab->priv->print_preview == NULL)
 	{
-		if (tab->priv->print_preview == NULL)
-			gtk_widget_show (GTK_WIDGET (tab->priv->frame));
+		gtk_widget_show (GTK_WIDGET (tab->priv->frame));
 	}
 
-	set_cursor_according_to_state (GTK_TEXT_VIEW (gedit_view_frame_get_view (tab->priv->frame)),
+	set_cursor_according_to_state (GTK_TEXT_VIEW (gedit_tab_get_view (tab)),
 				       state);
 
 	update_auto_save_timeout (tab);
@@ -498,24 +498,23 @@ set_info_bar (GeditTab        *tab,
 	gedit_debug (DEBUG_TAB);
 
 	if (tab->priv->info_bar == info_bar)
+	{
 		return;
+	}
 
 	if (info_bar == NULL)
 	{
-		if (tab->priv->info_bar != NULL)
+		/* Don't destroy the old info_bar right away,
+		   we want the hide animation. */
+		if (tab->priv->info_bar_hidden != NULL)
 		{
-			/* Don't destroy the old info_bar right away,
-			   we want the hide animation. */
-			if (tab->priv->info_bar_hidden != NULL)
-			{
-				gtk_widget_destroy (tab->priv->info_bar_hidden);
-			}
-
-			tab->priv->info_bar_hidden = tab->priv->info_bar;
-			gtk_widget_hide (tab->priv->info_bar_hidden);
-
-			tab->priv->info_bar = NULL;
+			gtk_widget_destroy (tab->priv->info_bar_hidden);
 		}
+
+		tab->priv->info_bar_hidden = tab->priv->info_bar;
+		gtk_widget_hide (tab->priv->info_bar_hidden);
+
+		tab->priv->info_bar = NULL;
 	}
 	else
 	{
@@ -575,8 +574,7 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 		case GTK_RESPONSE_OK:
 			g_return_if_fail (location != NULL);
 
-			encoding = gedit_conversion_error_info_bar_get_encoding (
-					GTK_WIDGET (info_bar));
+			encoding = gedit_conversion_error_info_bar_get_encoding (GTK_WIDGET (info_bar));
 
 			if (encoding != NULL)
 			{
@@ -593,12 +591,14 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 					     tab->priv->tmp_column_pos,
 					     FALSE);
 			break;
+
 		case GTK_RESPONSE_YES:
 			/* This means that we want to edit the document anyway */
 			tab->priv->editable = TRUE;
 			gtk_text_view_set_editable (GTK_TEXT_VIEW (view), TRUE);
 			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 			break;
+
 		default:
 			if (location != NULL)
 			{
@@ -616,9 +616,9 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 }
 
 static void
-file_already_open_warning_info_bar_response (GtkWidget   *info_bar,
-					     gint         response_id,
-					     GeditTab    *tab)
+file_already_open_warning_info_bar_response (GtkWidget *info_bar,
+					     gint       response_id,
+					     GeditTab  *tab)
 {
 	GeditView *view = gedit_tab_get_view (tab);
 
@@ -634,9 +634,9 @@ file_already_open_warning_info_bar_response (GtkWidget   *info_bar,
 }
 
 static void
-load_cancelled (GtkWidget        *bar,
-                gint              response_id,
-                GeditTab         *tab)
+load_cancelled (GtkWidget *bar,
+		gint       response_id,
+		GeditTab  *tab)
 {
 	GeditDocument *doc;
 
@@ -650,14 +650,13 @@ load_cancelled (GtkWidget        *bar,
 }
 
 static void
-unrecoverable_reverting_error_info_bar_response (GtkWidget        *info_bar,
-						 gint              response_id,
-						 GeditTab         *tab)
+unrecoverable_reverting_error_info_bar_response (GtkWidget *info_bar,
+						 gint       response_id,
+						 GeditTab  *tab)
 {
 	GeditView *view;
 
-	gedit_tab_set_state (tab,
-			     GEDIT_TAB_STATE_NORMAL);
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
@@ -870,8 +869,8 @@ show_saving_info_bar (GeditTab *tab)
 
 static void
 info_bar_set_progress (GeditTab *tab,
-			   goffset   size,
-			   goffset   total_size)
+		       goffset   size,
+		       goffset   total_size)
 {
 	if (tab->priv->info_bar == NULL)
 		return;
@@ -1186,9 +1185,9 @@ end_saving (GeditTab *tab)
 }
 
 static void
-unrecoverable_saving_error_info_bar_response (GtkWidget        *info_bar,
-                                              gint              response_id,
-                                              GeditTab         *tab)
+unrecoverable_saving_error_info_bar_response (GtkWidget *info_bar,
+					      gint       response_id,
+					      GeditTab  *tab)
 {
 	GeditView *view;
 
@@ -1245,8 +1244,8 @@ invalid_character_info_bar_response (GtkWidget *info_bar,
 
 static void
 no_backup_error_info_bar_response (GtkWidget *info_bar,
-				       gint       response_id,
-				       GeditTab  *tab)
+				   gint       response_id,
+				   GeditTab  *tab)
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
@@ -1272,8 +1271,8 @@ no_backup_error_info_bar_response (GtkWidget *info_bar,
 
 static void
 externally_modified_error_info_bar_response (GtkWidget *info_bar,
-						 gint       response_id,
-						 GeditTab  *tab)
+					     gint       response_id,
+					     GeditTab  *tab)
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
@@ -1301,8 +1300,8 @@ externally_modified_error_info_bar_response (GtkWidget *info_bar,
 
 static void
 recoverable_saving_error_info_bar_response (GtkWidget *info_bar,
-						gint       response_id,
-						GeditTab  *tab)
+					    gint       response_id,
+					    GeditTab  *tab)
 {
 	GeditDocument *doc = gedit_tab_get_document (tab);
 
@@ -1462,8 +1461,8 @@ document_saved (GeditDocument *document,
 
 static void
 externally_modified_notification_info_bar_response (GtkWidget *info_bar,
-							gint       response_id,
-							GeditTab  *tab)
+						    gint       response_id,
+						    GeditTab  *tab)
 {
 	GeditView *view;
 
@@ -1554,9 +1553,9 @@ view_focused_in (GtkWidget     *widget,
 }
 
 static void
-on_drop_uris (GeditView *view,
-	      gchar    **uri_list,
-	      GeditTab  *tab)
+on_drop_uris (GeditView  *view,
+	      gchar     **uri_list,
+	      GeditTab   *tab)
 {
 	g_signal_emit (G_OBJECT (tab), signals[DROP_URIS], 0, uri_list);
 }
@@ -1574,7 +1573,7 @@ network_available_warning_info_bar_response (GtkWidget *info_bar,
 
 void
 _gedit_tab_set_network_available (GeditTab *tab,
-			          gboolean enable)
+				  gboolean  enable)
 {
 	GeditDocument *doc;
 	GFile *location;
@@ -2305,10 +2304,10 @@ printing_cb (GeditPrintJob       *job,
 	gtk_widget_show (tab->priv->info_bar);
 
 	gedit_progress_info_bar_set_text (GEDIT_PROGRESS_INFO_BAR (tab->priv->info_bar),
-					      gedit_print_job_get_status_string (job));
+					  gedit_print_job_get_status_string (job));
 
 	gedit_progress_info_bar_set_fraction (GEDIT_PROGRESS_INFO_BAR (tab->priv->info_bar),
-						  gedit_print_job_get_progress (job));
+					      gedit_print_job_get_progress (job));
 }
 
 static void
@@ -2514,9 +2513,9 @@ preview_finished_cb (GtkSourcePrintJob *pjob, GeditTab *tab)
 #endif
 
 static void
-print_cancelled (GtkWidget        *bar,
-                 gint              response_id,
-                 GeditTab         *tab)
+print_cancelled (GtkWidget *bar,
+		 gint       response_id,
+		 GeditTab  *tab)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->priv->info_bar));
 
