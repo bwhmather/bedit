@@ -881,7 +881,7 @@ info_bar_set_progress (GeditTab *tab,
 	if (tab->priv->info_bar == NULL)
 		return;
 
-	gedit_debug_message (DEBUG_TAB, "%" G_GUINT64_FORMAT "/%" G_GUINT64_FORMAT, size, total_size);
+	gedit_debug_message (DEBUG_TAB, "%" G_GOFFSET_FORMAT "/%" G_GOFFSET_FORMAT, size, total_size);
 
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->priv->info_bar));
 
@@ -918,8 +918,6 @@ document_loading (GeditDocument *document,
 
 	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_LOADING) ||
 		 	  (tab->priv->state == GEDIT_TAB_STATE_REVERTING));
-
-	gedit_debug_message (DEBUG_TAB, "%" G_GUINT64_FORMAT "/%" G_GUINT64_FORMAT, size, total_size);
 
 	if (tab->priv->timer == NULL)
 	{
@@ -1152,8 +1150,6 @@ document_saving (GeditDocument *document,
 	gdouble total_time;
 
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
-
-	gedit_debug_message (DEBUG_TAB, "%" G_GUINT64_FORMAT "/%" G_GUINT64_FORMAT, size, total_size);
 
 	if (tab->priv->timer == NULL)
 	{
