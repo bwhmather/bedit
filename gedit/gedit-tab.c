@@ -102,56 +102,36 @@ static void done_printing_cb        (GeditPrintJob       *job,
                                      GeditTab            *tab);
 
 static void
-install_auto_save_timeout (GeditTab *tab)
-{
-	gint timeout;
-
-	gedit_debug (DEBUG_TAB);
-
-	g_return_if_fail (tab->priv->auto_save_timeout <= 0);
-	g_return_if_fail (tab->priv->auto_save);
-	g_return_if_fail (tab->priv->auto_save_interval > 0);
-
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_LOADING);
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_SAVING);
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_REVERTING);
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_LOADING_ERROR);
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_SAVING_ERROR);
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_SAVING_ERROR);
-	g_return_if_fail (tab->priv->state != GEDIT_TAB_STATE_REVERTING_ERROR);
-
-	/* Add a new timeout */
-	timeout = g_timeout_add_seconds (tab->priv->auto_save_interval * 60,
-					 (GSourceFunc) gedit_tab_auto_save,
-					 tab);
-
-	tab->priv->auto_save_timeout = timeout;
-}
-
-static void
 install_auto_save_timeout_if_needed (GeditTab *tab)
 {
 	GeditDocument *doc;
 
 	gedit_debug (DEBUG_TAB);
 
-	g_return_if_fail (tab->priv->auto_save_timeout <= 0);
-	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_NORMAL) ||
-			  (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
-			  (tab->priv->state == GEDIT_TAB_STATE_CLOSING));
-
-	if (tab->priv->state == GEDIT_TAB_STATE_CLOSING)
+	if (tab->priv->auto_save_timeout > 0)
 	{
+		/* Already installed. */
 		return;
 	}
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	if (tab->priv->state != GEDIT_TAB_STATE_NORMAL &&
+	    tab->priv->state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
+	{
+		/* The tab is in a state where auto save is not needed. */
+		return;
+	}
+
+	doc = gedit_tab_get_document (tab);
 
  	if (tab->priv->auto_save &&
  	    !gedit_document_is_untitled (doc) &&
  	    !gedit_document_get_readonly (doc))
  	{
- 		install_auto_save_timeout (tab);
+		g_return_if_fail (tab->priv->auto_save_interval > 0);
+
+		tab->priv->auto_save_timeout = g_timeout_add_seconds (tab->priv->auto_save_interval * 60,
+								      (GSourceFunc) gedit_tab_auto_save,
+								      tab);
  	}
 }
 
@@ -2768,7 +2748,6 @@ void
 gedit_tab_set_auto_save_enabled	(GeditTab *tab,
 				 gboolean  enable)
 {
-	GeditDocument *doc = NULL;
 	GeditLockdownMask lockdown;
 
 	gedit_debug (DEBUG_TAB);
@@ -2782,42 +2761,19 @@ gedit_tab_set_auto_save_enabled	(GeditTab *tab,
 		enable = FALSE;
 	}
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
-
 	if (tab->priv->auto_save == enable)
+	{
 		return;
+	}
 
 	tab->priv->auto_save = enable;
 
- 	if (enable &&
- 	    (tab->priv->auto_save_timeout <=0) &&
- 	    !gedit_document_is_untitled (doc) &&
- 	    !gedit_document_get_readonly (doc))
- 	{
- 		if ((tab->priv->state != GEDIT_TAB_STATE_LOADING) &&
-		    (tab->priv->state != GEDIT_TAB_STATE_SAVING) &&
-		    (tab->priv->state != GEDIT_TAB_STATE_REVERTING) &&
-		    (tab->priv->state != GEDIT_TAB_STATE_LOADING_ERROR) &&
-		    (tab->priv->state != GEDIT_TAB_STATE_SAVING_ERROR) &&
-		    (tab->priv->state != GEDIT_TAB_STATE_REVERTING_ERROR))
-		{
-			install_auto_save_timeout (tab);
-		}
-		/* else: the timeout will be installed when loading/saving/reverting
-		         will terminate */
-
-		return;
-	}
+	install_auto_save_timeout_if_needed (tab);
 
  	if (!enable && (tab->priv->auto_save_timeout > 0))
  	{
 		remove_auto_save_timeout (tab);
-
- 		return;
  	}
-
- 	g_return_if_fail ((!enable && (tab->priv->auto_save_timeout <= 0)) ||
- 			  gedit_document_is_untitled (doc) || gedit_document_get_readonly (doc));
 }
 
 /**
@@ -2843,40 +2799,33 @@ gedit_tab_get_auto_save_interval (GeditTab *tab)
  * @tab: a #GeditTab
  * @interval: the new interval
  *
- * Sets the interval for the autosave feature. It does nothing if the
- * interval is the same as the one already present. It removes the old
- * interval timeout and adds a new one with the autosave passed as
- * argument.
- **/
+ * Sets the interval for the autosave feature.
+ */
 void
 gedit_tab_set_auto_save_interval (GeditTab *tab,
 				  gint      interval)
 {
-	GeditDocument *doc = NULL;
-
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (interval > 0);
 
 	gedit_debug (DEBUG_TAB);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
-
 	if (tab->priv->auto_save_interval == interval)
+	{
 		return;
+	}
 
 	tab->priv->auto_save_interval = interval;
 
 	if (!tab->priv->auto_save)
+	{
 		return;
+	}
 
 	if (tab->priv->auto_save_timeout > 0)
 	{
-		g_return_if_fail (!gedit_document_is_untitled (doc));
-		g_return_if_fail (!gedit_document_get_readonly (doc));
-
 		remove_auto_save_timeout (tab);
-
-		install_auto_save_timeout (tab);
+		install_auto_save_timeout_if_needed (tab);
 	}
 }
 
