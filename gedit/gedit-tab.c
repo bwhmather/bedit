@@ -960,7 +960,6 @@ document_loaded (GeditDocument *document,
 		 const GError  *error,
 		 GeditTab      *tab)
 {
-	GtkWidget *emsg;
 	GFile *location;
 
 	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_LOADING) ||
@@ -981,9 +980,13 @@ document_loaded (GeditDocument *document,
 	    (error->domain != GEDIT_DOCUMENT_ERROR || error->code != GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK))
 	{
 		if (tab->priv->state == GEDIT_TAB_STATE_LOADING)
+		{
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
+		}
 		else
+		{
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING_ERROR);
+		}
 
 		if (error->domain == G_IO_ERROR &&
 		    error->code == G_IO_ERROR_CANCELLED)
@@ -998,17 +1001,19 @@ document_loaded (GeditDocument *document,
 		}
 		else
 		{
-			if (location)
+			GtkWidget *info_bar;
+
+			if (location != NULL)
 			{
 				gedit_recent_remove_if_local (location);
 			}
 
 			if (tab->priv->state == GEDIT_TAB_STATE_LOADING_ERROR)
 			{
-				emsg = gedit_io_loading_error_info_bar_new (location,
-									    tab->priv->tmp_encoding,
-									    error);
-				g_signal_connect (emsg,
+				info_bar = gedit_io_loading_error_info_bar_new (location,
+										tab->priv->tmp_encoding,
+										error);
+				g_signal_connect (info_bar,
 						  "response",
 						  G_CALLBACK (io_loading_error_info_bar_response),
 						  tab);
@@ -1017,16 +1022,15 @@ document_loaded (GeditDocument *document,
 			{
 				g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_REVERTING_ERROR);
 
-				emsg = gedit_unrecoverable_reverting_error_info_bar_new (location,
-											 error);
+				info_bar = gedit_unrecoverable_reverting_error_info_bar_new (location, error);
 
-				g_signal_connect (emsg,
+				g_signal_connect (info_bar,
 						  "response",
 						  G_CALLBACK (unrecoverable_reverting_error_info_bar_response),
 						  tab);
 			}
 
-			set_info_bar (tab, emsg, GTK_RESPONSE_CANCEL);
+			set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
 		}
 
 		if (location)
@@ -1036,100 +1040,100 @@ document_loaded (GeditDocument *document,
 
 		return;
 	}
-	else
+
+	gedit_recent_add_document (document);
+
+	if (error != NULL &&
+	    error->domain == GEDIT_DOCUMENT_ERROR &&
+	    error->code == GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK)
 	{
-		gedit_recent_add_document (document);
+		GtkWidget *info_bar;
 
-		if (error &&
-		    error->domain == GEDIT_DOCUMENT_ERROR &&
-		    error->code == GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK)
-		{
-			GtkWidget *emsg;
+		/* Set the tab as not editable as we have an error, the
+		   user can decide to make it editable again */
+		tab->priv->editable = FALSE;
 
-			/* Set the tab as not editable as we have an error, the
-			   user can decide to make it editable again */
-			tab->priv->editable = FALSE;
+		info_bar = gedit_io_loading_error_info_bar_new (location,
+								tab->priv->tmp_encoding,
+								error);
 
-			emsg = gedit_io_loading_error_info_bar_new (location,
-								    tab->priv->tmp_encoding,
-								    error);
+		g_signal_connect (info_bar,
+				  "response",
+				  G_CALLBACK (io_loading_error_info_bar_response),
+				  tab);
 
-			g_signal_connect (emsg,
-					  "response",
-					  G_CALLBACK (io_loading_error_info_bar_response),
-					  tab);
-
-			set_info_bar (tab, emsg, GTK_RESPONSE_CANCEL);
-		}
-
-		/* Scroll to the cursor when the document is loaded, we need
-		   to do it in an idle as after the document is loaded the
-		   textview is still redrawing and relocating its internals */
-		g_idle_add ((GSourceFunc)scroll_to_cursor, tab);
-
-		/* if the document is readonly we don't care how many times the document
-		   is opened */
-		if (!gedit_document_get_readonly (document))
-		{
-			GList *all_documents;
-			GList *l;
-
-			all_documents = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
-
-			for (l = all_documents; l != NULL; l = g_list_next (l))
-			{
-				GeditDocument *d = GEDIT_DOCUMENT (l->data);
-
-				if (d != document)
-				{
-					GFile *loc;
-
-					loc = gedit_document_get_location (d);
-
-					if (loc != NULL && location != NULL &&
-					    g_file_equal (location, loc))
-					{
-						GtkWidget *w;
-
-						tab->priv->editable = FALSE;
-
-						w = gedit_file_already_open_warning_info_bar_new (location);
-
-						g_signal_connect (w,
-								  "response",
-								  G_CALLBACK (file_already_open_warning_info_bar_response),
-								  tab);
-
-						set_info_bar (tab, w, GTK_RESPONSE_CANCEL);
-
-						g_object_unref (loc);
-						break;
-					}
-
-					if (loc != NULL)
-						g_object_unref (loc);
-				}
-			}
-
-			g_list_free (all_documents);
-		}
-
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
-
-		if (location == NULL)
-		{
-			GeditDocument *d;
-
-			/* FIXME: hackish */
-			d = gedit_tab_get_document (tab);
-			gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (d), TRUE);
-		}
-
-		tab->priv->ask_if_externally_modified = TRUE;
+		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
 	}
 
- end:
- 	if (location)
+	/* Scroll to the cursor when the document is loaded, we need
+	   to do it in an idle as after the document is loaded the
+	   textview is still redrawing and relocating its internals */
+	g_idle_add ((GSourceFunc)scroll_to_cursor, tab);
+
+	/* if the document is readonly we don't care how many times the document
+	   is opened */
+	if (!gedit_document_get_readonly (document))
+	{
+		GList *all_documents;
+		GList *l;
+
+		all_documents = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+
+		for (l = all_documents; l != NULL; l = g_list_next (l))
+		{
+			GeditDocument *cur_doc = l->data;
+
+			if (cur_doc != document)
+			{
+				GFile *cur_location;
+
+				cur_location = gedit_document_get_location (cur_doc);
+
+				if (cur_location != NULL && location != NULL &&
+				    g_file_equal (location, cur_location))
+				{
+					GtkWidget *info_bar;
+
+					tab->priv->editable = FALSE;
+
+					info_bar = gedit_file_already_open_warning_info_bar_new (location);
+
+					g_signal_connect (info_bar,
+							  "response",
+							  G_CALLBACK (file_already_open_warning_info_bar_response),
+							  tab);
+
+					set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
+
+					g_object_unref (cur_location);
+					break;
+				}
+
+				if (cur_location != NULL)
+				{
+					g_object_unref (cur_location);
+				}
+			}
+		}
+
+		g_list_free (all_documents);
+	}
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+
+	if (location == NULL)
+	{
+		GeditDocument *d;
+
+		/* FIXME: hackish */
+		d = gedit_tab_get_document (tab);
+		gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (d), TRUE);
+	}
+
+	tab->priv->ask_if_externally_modified = TRUE;
+
+end:
+	if (location != NULL)
  	{
 		g_object_unref (location);
 	}
