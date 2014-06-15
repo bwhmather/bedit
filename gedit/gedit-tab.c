@@ -1123,11 +1123,8 @@ document_loaded (GeditDocument *document,
 
 	if (location == NULL)
 	{
-		GeditDocument *d;
-
 		/* FIXME: hackish */
-		d = gedit_tab_get_document (tab);
-		gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (d), TRUE);
+		gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (document), TRUE);
 	}
 
 	tab->priv->ask_if_externally_modified = TRUE;
