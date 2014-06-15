@@ -67,7 +67,7 @@ struct _GeditTabPrivate
 	gint                    auto_save_interval;
 	guint                   auto_save_timeout;
 
-	gint	                not_editable : 1;
+	gint	                editable : 1;
 	gint                    auto_save : 1;
 
 	gint                    ask_if_externally_modified : 1;
@@ -413,7 +413,7 @@ set_view_properties_according_to_state (GeditTab      *tab,
 
 	val = ((state == GEDIT_TAB_STATE_NORMAL) &&
 	       (tab->priv->print_preview == NULL) &&
-	       !tab->priv->not_editable);
+	       tab->priv->editable);
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), val);
 
 	val = ((state != GEDIT_TAB_STATE_LOADING) &&
@@ -595,9 +595,8 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 			break;
 		case GTK_RESPONSE_YES:
 			/* This means that we want to edit the document anyway */
-			tab->priv->not_editable = FALSE;
-			gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
-			                            TRUE);
+			tab->priv->editable = TRUE;
+			gtk_text_view_set_editable (GTK_TEXT_VIEW (view), TRUE);
 			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 			break;
 		default:
@@ -625,8 +624,7 @@ file_already_open_warning_info_bar_response (GtkWidget   *info_bar,
 
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		/* FIXME copy/paste error? */
-		tab->priv->not_editable = FALSE;
+		tab->priv->editable = TRUE;
 		gtk_text_view_set_editable (GTK_TEXT_VIEW (view), TRUE);
 	}
 
@@ -1046,7 +1044,7 @@ document_loaded (GeditDocument *document,
 
 			/* Set the tab as not editable as we have an error, the
 			   user can decide to make it editable again */
-			tab->priv->not_editable = TRUE;
+			tab->priv->editable = FALSE;
 
 			emsg = gedit_io_loading_error_info_bar_new (location,
 								    tab->priv->tmp_encoding,
@@ -1089,7 +1087,7 @@ document_loaded (GeditDocument *document,
 					{
 						GtkWidget *w;
 
-						tab->priv->not_editable = TRUE;
+						tab->priv->editable = FALSE;
 
 						w = gedit_file_already_open_warning_info_bar_new (location);
 
@@ -1613,7 +1611,7 @@ gedit_tab_init (GeditTab *tab)
 
 	tab->priv->state = GEDIT_TAB_STATE_NORMAL;
 
-	tab->priv->not_editable = FALSE;
+	tab->priv->editable = TRUE;
 
 	tab->priv->save_flags = 0;
 
