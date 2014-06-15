@@ -140,12 +140,11 @@ remove_auto_save_timeout (GeditTab *tab)
 {
 	gedit_debug (DEBUG_TAB);
 
-	/* FIXME: check sugli stati */
-
-	g_return_if_fail (tab->priv->auto_save_timeout > 0);
-
-	g_source_remove (tab->priv->auto_save_timeout);
-	tab->priv->auto_save_timeout = 0;
+	if (tab->priv->auto_save_timeout > 0)
+	{
+		g_source_remove (tab->priv->auto_save_timeout);
+		tab->priv->auto_save_timeout = 0;
+	}
 }
 
 static void
@@ -234,10 +233,11 @@ gedit_tab_finalize (GObject *object)
 	GeditTab *tab = GEDIT_TAB (object);
 
 	if (tab->priv->timer != NULL)
+	{
 		g_timer_destroy (tab->priv->timer);
+	}
 
-	if (tab->priv->auto_save_timeout > 0)
-		remove_auto_save_timeout (tab);
+	remove_auto_save_timeout (tab);
 
 	G_OBJECT_CLASS (gedit_tab_parent_class)->finalize (object);
 }
@@ -2029,8 +2029,7 @@ _gedit_tab_load (GeditTab            *tab,
 	tab->priv->tmp_column_pos = column_pos;
 	tab->priv->tmp_encoding = encoding;
 
-	if (tab->priv->auto_save_timeout > 0)
-		remove_auto_save_timeout (tab);
+	remove_auto_save_timeout (tab);
 
 	gedit_document_load (doc,
 			     location,
@@ -2061,10 +2060,7 @@ _gedit_tab_load_stream (GeditTab            *tab,
 	tab->priv->tmp_column_pos = column_pos;
 	tab->priv->tmp_encoding = encoding;
 
-	if (tab->priv->auto_save_timeout > 0)
-	{
-		remove_auto_save_timeout (tab);
-	}
+	remove_auto_save_timeout (tab);
 
 	gedit_document_load_stream (doc,
 	                            stream,
@@ -2098,8 +2094,7 @@ _gedit_tab_revert (GeditTab *tab)
 	tab->priv->tmp_line_pos = 0;
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc);
 
-	if (tab->priv->auto_save_timeout > 0)
-		remove_auto_save_timeout (tab);
+	remove_auto_save_timeout (tab);
 
 	gedit_document_load (doc,
 			     location,
@@ -2147,8 +2142,7 @@ _gedit_tab_save (GeditTab *tab)
 	tab->priv->tmp_save_location = gedit_document_get_location (doc);
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc);
 
-	if (tab->priv->auto_save_timeout > 0)
-		remove_auto_save_timeout (tab);
+	remove_auto_save_timeout (tab);
 
 	gedit_document_save (doc, save_flags);
 }
@@ -2264,8 +2258,7 @@ _gedit_tab_save_as (GeditTab                     *tab,
 	tab->priv->tmp_save_location = g_file_dup (location);
 	tab->priv->tmp_encoding = encoding;
 
-	if (tab->priv->auto_save_timeout > 0)
-		remove_auto_save_timeout (tab);
+	remove_auto_save_timeout (tab);
 
 	gedit_document_save_as (doc,
 	                        location,
@@ -2768,12 +2761,14 @@ gedit_tab_set_auto_save_enabled	(GeditTab *tab,
 
 	tab->priv->auto_save = enable;
 
-	install_auto_save_timeout_if_needed (tab);
-
- 	if (!enable && (tab->priv->auto_save_timeout > 0))
+	if (enable)
  	{
-		remove_auto_save_timeout (tab);
+		install_auto_save_timeout_if_needed (tab);
  	}
+	else
+	{
+		remove_auto_save_timeout (tab);
+	}
 }
 
 /**
@@ -2817,16 +2812,8 @@ gedit_tab_set_auto_save_interval (GeditTab *tab,
 
 	tab->priv->auto_save_interval = interval;
 
-	if (!tab->priv->auto_save)
-	{
-		return;
-	}
-
-	if (tab->priv->auto_save_timeout > 0)
-	{
-		remove_auto_save_timeout (tab);
-		install_auto_save_timeout_if_needed (tab);
-	}
+	remove_auto_save_timeout (tab);
+	install_auto_save_timeout_if_needed (tab);
 }
 
 void
