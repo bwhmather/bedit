@@ -253,9 +253,7 @@ gedit_tab_grab_focus (GtkWidget *widget)
 	}
 	else
 	{
-		GeditView *view;
-
-		view = gedit_view_frame_get_view (tab->priv->frame);
+		GeditView *view = gedit_tab_get_view (tab);
 		gtk_widget_grab_focus (GTK_WIDGET (view));
 	}
 }
@@ -411,7 +409,7 @@ set_view_properties_according_to_state (GeditTab      *tab,
 	hl_current_line = g_settings_get_boolean (tab->priv->editor,
 						  GEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE);
 
-	view = gedit_view_frame_get_view (tab->priv->frame);
+	view = gedit_tab_get_view (tab);
 
 	val = ((state == GEDIT_TAB_STATE_NORMAL) &&
 	       (tab->priv->print_preview == NULL) &&
@@ -567,8 +565,8 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 	GFile *location;
 	const GeditEncoding *encoding;
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
-	view = gedit_view_frame_get_view (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
+	view = gedit_tab_get_view (tab);
 
 	location = gedit_document_get_location (doc);
 
@@ -625,16 +623,13 @@ file_already_open_warning_info_bar_response (GtkWidget   *info_bar,
 					     gint         response_id,
 					     GeditTab    *tab)
 {
-	GeditView *view;
-
-	view = gedit_view_frame_get_view (tab->priv->frame);
+	GeditView *view = gedit_tab_get_view (tab);
 
 	if (response_id == GTK_RESPONSE_YES)
 	{
+		/* FIXME copy/paste error? */
 		tab->priv->not_editable = FALSE;
-
-		gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
-					    TRUE);
+		gtk_text_view_set_editable (GTK_TEXT_VIEW (view), TRUE);
 	}
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
@@ -647,11 +642,11 @@ load_cancelled (GtkWidget        *bar,
                 gint              response_id,
                 GeditTab         *tab)
 {
-	GeditDocument *doc = NULL;
+	GeditDocument *doc;
 
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->priv->info_bar));
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	g_object_ref (tab);
 	gedit_document_load_cancel (doc);
@@ -670,7 +665,7 @@ unrecoverable_reverting_error_info_bar_response (GtkWidget        *info_bar,
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
-	view = gedit_view_frame_get_view (tab->priv->frame);
+	view = gedit_tab_get_view (tab);
 	gtk_widget_grab_focus (GTK_WIDGET (view));
 }
 
@@ -680,7 +675,7 @@ static void
 show_loading_info_bar (GeditTab *tab)
 {
 	GtkWidget *bar;
-	GeditDocument *doc = NULL;
+	GeditDocument *doc;
 	gchar *name;
 	gchar *dirname = NULL;
 	gchar *msg = NULL;
@@ -689,11 +684,13 @@ show_loading_info_bar (GeditTab *tab)
 	gint len;
 
 	if (tab->priv->info_bar != NULL)
+	{
 		return;
+	}
 
 	gedit_debug (DEBUG_TAB);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	name = gedit_document_get_short_name_for_display (doc);
 	len = g_utf8_strlen (name, -1);
@@ -799,7 +796,7 @@ static void
 show_saving_info_bar (GeditTab *tab)
 {
 	GtkWidget *bar;
-	GeditDocument *doc = NULL;
+	GeditDocument *doc;
 	gchar *short_name;
 	gchar *from;
 	gchar *to = NULL;
@@ -811,11 +808,13 @@ show_saving_info_bar (GeditTab *tab)
 	g_return_if_fail (tab->priv->tmp_save_location != NULL);
 
 	if (tab->priv->info_bar != NULL)
+	{
 		return;
+	}
 
 	gedit_debug (DEBUG_TAB);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	short_name = gedit_document_get_short_name_for_display (doc);
 
@@ -950,7 +949,7 @@ scroll_to_cursor (GeditTab *tab)
 {
 	GeditView *view;
 
-	view = gedit_view_frame_get_view (tab->priv->frame);
+	view = gedit_tab_get_view (tab);
 	gedit_view_scroll_to_cursor (view);
 
 	return FALSE;
@@ -1123,7 +1122,7 @@ document_loaded (GeditDocument *document,
 			GeditDocument *d;
 
 			/* FIXME: hackish */
-			d = gedit_view_frame_get_document (tab->priv->frame);
+			d = gedit_tab_get_document (tab);
 			gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (d), TRUE);
 		}
 
@@ -1190,15 +1189,19 @@ unrecoverable_saving_error_info_bar_response (GtkWidget        *info_bar,
 	GeditView *view;
 
 	if (tab->priv->print_preview != NULL)
+	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
+	}
 	else
+	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+	}
 
 	end_saving (tab);
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
-	view = gedit_view_frame_get_view (tab->priv->frame);
+	view = gedit_tab_get_view (tab);
 	gtk_widget_grab_focus (GTK_WIDGET (view));
 }
 
@@ -1209,9 +1212,7 @@ invalid_character_info_bar_response (GtkWidget *info_bar,
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		GeditDocument *doc;
-
-		doc = gedit_view_frame_get_document (tab->priv->frame);
+		GeditDocument *doc = gedit_tab_get_document (tab);
 
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
@@ -1247,9 +1248,7 @@ no_backup_error_info_bar_response (GtkWidget *info_bar,
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		GeditDocument *doc;
-
-		doc = gedit_view_frame_get_document (tab->priv->frame);
+		GeditDocument *doc = gedit_tab_get_document (tab);
 
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
@@ -1278,9 +1277,7 @@ externally_modified_error_info_bar_response (GtkWidget *info_bar,
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		GeditDocument *doc;
-
-		doc = gedit_view_frame_get_document (tab->priv->frame);
+		GeditDocument *doc = gedit_tab_get_document (tab);
 
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
@@ -1309,9 +1306,7 @@ recoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 						gint       response_id,
 						GeditTab  *tab)
 {
-	GeditDocument *doc;
-
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	GeditDocument *doc = gedit_tab_get_document (tab);
 
 	if (response_id == GTK_RESPONSE_OK)
 	{
@@ -1478,7 +1473,8 @@ externally_modified_notification_info_bar_response (GtkWidget *info_bar,
 	GeditView *view;
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
-	view = gedit_view_frame_get_view (tab->priv->frame);
+
+	view = gedit_tab_get_view (tab);
 
 	if (response_id == GTK_RESPONSE_OK)
 	{
@@ -1503,7 +1499,7 @@ display_externally_modified_notification (GeditTab *tab)
 	GFile *location;
 	gboolean document_modified;
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	/* we're here because the file we're editing changed on disk */
 	location = gedit_document_get_location (doc);
@@ -1542,7 +1538,7 @@ view_focused_in (GtkWidget     *widget,
 		return FALSE;
 	}
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	/* If file was never saved or is remote we do not check */
 	if (!gedit_document_is_local (doc))
@@ -1590,7 +1586,7 @@ _gedit_tab_set_network_available (GeditTab *tab,
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	location = gedit_document_get_location (doc);
 
@@ -1807,7 +1803,7 @@ _gedit_tab_get_name (GeditTab *tab)
 
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	name = gedit_document_get_short_name_for_display (doc);
 
@@ -1851,7 +1847,7 @@ _gedit_tab_get_tooltip (GeditTab *tab)
 
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	uri = gedit_document_get_uri_for_display (doc);
 	g_return_val_if_fail (uri != NULL, NULL);
@@ -2011,7 +2007,7 @@ _gedit_tab_load (GeditTab            *tab,
 	g_return_if_fail (G_IS_FILE (location));
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
 
@@ -2040,7 +2036,7 @@ _gedit_tab_load_stream (GeditTab            *tab,
 	g_return_if_fail (G_IS_INPUT_STREAM (stream));
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
 
@@ -2070,7 +2066,7 @@ _gedit_tab_revert (GeditTab *tab)
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 	}
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING);
 
@@ -2103,7 +2099,7 @@ _gedit_tab_save (GeditTab *tab)
 	g_return_if_fail (tab->priv->tmp_save_location == NULL);
 	g_return_if_fail (tab->priv->tmp_encoding == NULL);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (!gedit_document_is_untitled (doc));
 
 	if (tab->priv->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
@@ -2139,7 +2135,7 @@ gedit_tab_auto_save (GeditTab *tab)
 	g_return_val_if_fail (tab->priv->tmp_save_location == NULL, FALSE);
 	g_return_val_if_fail (tab->priv->tmp_encoding == NULL, FALSE);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 	g_return_val_if_fail (!gedit_document_is_untitled (doc), FALSE);
 	g_return_val_if_fail (!gedit_document_get_readonly (doc), FALSE);
 
@@ -2214,7 +2210,7 @@ _gedit_tab_save_as (GeditTab                     *tab,
 	g_return_if_fail (tab->priv->tmp_save_location == NULL);
 	g_return_if_fail (tab->priv->tmp_encoding == NULL);
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	/* reset the save flags, when saving as */
 	tab->priv->save_flags = 0;
@@ -2257,7 +2253,7 @@ get_page_setup (GeditTab *tab)
 	gpointer data;
 	GeditDocument *doc;
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	data = g_object_get_data (G_OBJECT (doc),
 				  GEDIT_PAGE_SETUP_KEY);
@@ -2280,7 +2276,7 @@ get_print_settings (GeditTab *tab)
 	GtkPrintSettings *settings;
 	gchar *name;
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	data = g_object_get_data (G_OBJECT (doc),
 				  GEDIT_PRINT_SETTINGS_KEY);
@@ -2332,7 +2328,7 @@ store_print_settings (GeditTab      *tab,
 	GtkPrintSettings *settings;
 	GtkPageSetup *page_setup;
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	settings = gedit_print_job_get_print_settings (job);
 
@@ -2407,7 +2403,7 @@ done_printing_cb (GeditPrintJob       *job,
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 
-	view = gedit_view_frame_get_view (tab->priv->frame);
+	view = gedit_tab_get_view (tab);
 	gtk_widget_grab_focus (GTK_WIDGET (view));
 
 	if (tab->priv->print_job != NULL)
@@ -2430,7 +2426,7 @@ print_preview_destroyed (GtkWidget *preview,
 
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 
-		view = gedit_view_frame_get_view (tab->priv->frame);
+		view = gedit_tab_get_view (tab);
 		gtk_widget_grab_focus (GTK_WIDGET (view));
 	}
 	else
@@ -2568,7 +2564,7 @@ gedit_tab_print_or_print_preview (GeditTab                *tab,
 	g_return_if_fail (tab->priv->print_job == NULL);
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
 
-	view = gedit_view_frame_get_view (tab->priv->frame);
+	view = gedit_tab_get_view (tab);
 
 	tab->priv->print_job = gedit_print_job_new (view);
 	g_object_add_weak_pointer (G_OBJECT (tab->priv->print_job),
@@ -2686,7 +2682,7 @@ _gedit_tab_get_can_close (GeditTab *tab)
 		return FALSE;
 	}
 
-	doc = gedit_view_frame_get_document (tab->priv->frame);
+	doc = gedit_tab_get_document (tab);
 
 	if (_gedit_document_needs_saving (doc))
 	{
