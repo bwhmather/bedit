@@ -102,37 +102,16 @@ static void done_printing_cb        (GeditPrintJob       *job,
                                      GeditTab            *tab);
 
 static void
-install_auto_save_timeout_if_needed (GeditTab *tab)
+install_auto_save_timeout (GeditTab *tab)
 {
-	GeditDocument *doc;
-
-	gedit_debug (DEBUG_TAB);
-
-	if (tab->priv->auto_save_timeout > 0)
+	if (tab->priv->auto_save_timeout == 0)
 	{
-		/* Already installed. */
-		return;
-	}
-
-	if (tab->priv->state != GEDIT_TAB_STATE_NORMAL &&
-	    tab->priv->state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
-	{
-		/* The tab is in a state where auto save is not needed. */
-		return;
-	}
-
-	doc = gedit_tab_get_document (tab);
-
- 	if (tab->priv->auto_save &&
- 	    !gedit_document_is_untitled (doc) &&
- 	    !gedit_document_get_readonly (doc))
- 	{
 		g_return_if_fail (tab->priv->auto_save_interval > 0);
 
 		tab->priv->auto_save_timeout = g_timeout_add_seconds (tab->priv->auto_save_interval * 60,
 								      (GSourceFunc) gedit_tab_auto_save,
 								      tab);
- 	}
+	}
 }
 
 static void
@@ -144,6 +123,32 @@ remove_auto_save_timeout (GeditTab *tab)
 	{
 		g_source_remove (tab->priv->auto_save_timeout);
 		tab->priv->auto_save_timeout = 0;
+	}
+}
+
+static void
+update_auto_save_timeout (GeditTab *tab)
+{
+	gboolean good_state;
+	GeditDocument *doc;
+
+	gedit_debug (DEBUG_TAB);
+
+	good_state = (tab->priv->state == GEDIT_TAB_STATE_NORMAL ||
+		      tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
+
+	doc = gedit_tab_get_document (tab);
+
+	if (good_state &&
+	    tab->priv->auto_save &&
+	    !gedit_document_is_untitled (doc) &&
+	    !gedit_document_get_readonly (doc))
+	{
+		install_auto_save_timeout (tab);
+	}
+	else
+	{
+		remove_auto_save_timeout (tab);
 	}
 }
 
@@ -458,6 +463,8 @@ gedit_tab_set_state (GeditTab      *tab,
 	set_cursor_according_to_state (GTK_TEXT_VIEW (gedit_view_frame_get_view (tab->priv->frame)),
 				       state);
 
+	update_auto_save_timeout (tab);
+
 	g_object_notify (G_OBJECT (tab), "state");
 	g_object_notify (G_OBJECT (tab), "can-close");
 }
@@ -672,8 +679,6 @@ unrecoverable_reverting_error_info_bar_response (GtkWidget        *info_bar,
 
 	view = gedit_view_frame_get_view (tab->priv->frame);
 	gtk_widget_grab_focus (GTK_WIDGET (view));
-
-	install_auto_save_timeout_if_needed (tab);
 }
 
 #define MAX_MSG_LENGTH 100
@@ -1131,8 +1136,6 @@ document_loaded (GeditDocument *document,
 			gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (d), TRUE);
 		}
 
-		install_auto_save_timeout_if_needed (tab);
-
 		tab->priv->ask_if_externally_modified = TRUE;
 	}
 
@@ -1186,9 +1189,8 @@ end_saving (GeditTab *tab)
 		g_object_unref (tab->priv->tmp_save_location);
 		tab->priv->tmp_save_location = NULL;
 	}
-	tab->priv->tmp_encoding = NULL;
 
-	install_auto_save_timeout_if_needed (tab);
+	tab->priv->tmp_encoding = NULL;
 }
 
 static void
@@ -2029,8 +2031,6 @@ _gedit_tab_load (GeditTab            *tab,
 	tab->priv->tmp_column_pos = column_pos;
 	tab->priv->tmp_encoding = encoding;
 
-	remove_auto_save_timeout (tab);
-
 	gedit_document_load (doc,
 			     location,
 			     encoding,
@@ -2059,8 +2059,6 @@ _gedit_tab_load_stream (GeditTab            *tab,
 	tab->priv->tmp_line_pos = line_pos;
 	tab->priv->tmp_column_pos = column_pos;
 	tab->priv->tmp_encoding = encoding;
-
-	remove_auto_save_timeout (tab);
 
 	gedit_document_load_stream (doc,
 	                            stream,
@@ -2093,8 +2091,6 @@ _gedit_tab_revert (GeditTab *tab)
 
 	tab->priv->tmp_line_pos = 0;
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc);
-
-	remove_auto_save_timeout (tab);
 
 	gedit_document_load (doc,
 			     location,
@@ -2141,8 +2137,6 @@ _gedit_tab_save (GeditTab *tab)
 	/* uri used in error messages, will be freed in document_saved */
 	tab->priv->tmp_save_location = gedit_document_get_location (doc);
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc);
-
-	remove_auto_save_timeout (tab);
 
 	gedit_document_save (doc, save_flags);
 }
@@ -2257,8 +2251,6 @@ _gedit_tab_save_as (GeditTab                     *tab,
 	 * and the string can go away, will be freed in document_saved */
 	tab->priv->tmp_save_location = g_file_dup (location);
 	tab->priv->tmp_encoding = encoding;
-
-	remove_auto_save_timeout (tab);
 
 	gedit_document_save_as (doc,
 	                        location,
@@ -2747,6 +2739,8 @@ gedit_tab_set_auto_save_enabled	(GeditTab *tab,
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
+	enable = enable != FALSE;
+
 	/* Force disabling when lockdown is active */
 	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 	if (lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK)
@@ -2754,20 +2748,11 @@ gedit_tab_set_auto_save_enabled	(GeditTab *tab,
 		enable = FALSE;
 	}
 
-	if (tab->priv->auto_save == enable)
+	if (tab->priv->auto_save != enable)
 	{
+		tab->priv->auto_save = enable;
+		update_auto_save_timeout (tab);
 		return;
-	}
-
-	tab->priv->auto_save = enable;
-
-	if (enable)
- 	{
-		install_auto_save_timeout_if_needed (tab);
- 	}
-	else
-	{
-		remove_auto_save_timeout (tab);
 	}
 }
 
@@ -2805,15 +2790,12 @@ gedit_tab_set_auto_save_interval (GeditTab *tab,
 
 	gedit_debug (DEBUG_TAB);
 
-	if (tab->priv->auto_save_interval == interval)
+	if (tab->priv->auto_save_interval != interval)
 	{
-		return;
+		tab->priv->auto_save_interval = interval;
+		remove_auto_save_timeout (tab);
+		update_auto_save_timeout (tab);
 	}
-
-	tab->priv->auto_save_interval = interval;
-
-	remove_auto_save_timeout (tab);
-	install_auto_save_timeout_if_needed (tab);
 }
 
 void
