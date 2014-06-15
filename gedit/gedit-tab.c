@@ -128,20 +128,22 @@ install_auto_save_timeout (GeditTab *tab)
 	tab->priv->auto_save_timeout = timeout;
 }
 
-static gboolean
+static void
 install_auto_save_timeout_if_needed (GeditTab *tab)
 {
 	GeditDocument *doc;
 
 	gedit_debug (DEBUG_TAB);
 
-	g_return_val_if_fail (tab->priv->auto_save_timeout <= 0, FALSE);
-	g_return_val_if_fail ((tab->priv->state == GEDIT_TAB_STATE_NORMAL) ||
-			      (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
-			      (tab->priv->state == GEDIT_TAB_STATE_CLOSING), FALSE);
+	g_return_if_fail (tab->priv->auto_save_timeout <= 0);
+	g_return_if_fail ((tab->priv->state == GEDIT_TAB_STATE_NORMAL) ||
+			  (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) ||
+			  (tab->priv->state == GEDIT_TAB_STATE_CLOSING));
 
 	if (tab->priv->state == GEDIT_TAB_STATE_CLOSING)
-		return FALSE;
+	{
+		return;
+	}
 
 	doc = gedit_view_frame_get_document (tab->priv->frame);
 
@@ -150,11 +152,7 @@ install_auto_save_timeout_if_needed (GeditTab *tab)
  	    !gedit_document_get_readonly (doc))
  	{
  		install_auto_save_timeout (tab);
-
- 		return TRUE;
  	}
-
- 	return FALSE;
 }
 
 static void
