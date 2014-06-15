@@ -96,11 +96,6 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 static gboolean gedit_tab_auto_save (GeditTab *tab);
 
-static void done_printing_cb        (GeditPrintJob       *job,
-                                     GeditPrintJobResult  result,
-                                     const GError        *error,
-                                     GeditTab            *tab);
-
 static void
 install_auto_save_timeout (GeditTab *tab)
 {
@@ -219,8 +214,6 @@ gedit_tab_dispose (GObject *object)
 
 	if (tab->priv->print_job != NULL)
 	{
-		g_signal_handlers_disconnect_by_func (tab->priv->print_job,
-		                                      done_printing_cb, tab);
 		g_object_unref (tab->priv->print_job);
 		tab->priv->print_job = NULL;
 		tab->priv->print_preview = NULL;
@@ -2458,9 +2451,9 @@ print_preview_destroyed (GtkWidget *preview,
 #endif
 
 static void
-show_preview_cb (GeditPrintJob       *job,
-		 GeditPrintPreview   *preview,
-		 GeditTab            *tab)
+show_preview_cb (GeditPrintJob     *job,
+		 GeditPrintPreview *preview,
+		 GeditTab          *tab)
 {
 	/* g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_PRINT_PREVIEWING); */
 	g_return_if_fail (tab->priv->print_preview == NULL);
@@ -2588,18 +2581,23 @@ gedit_tab_print_or_print_preview (GeditTab                *tab,
 
 	show_printing_info_bar (tab);
 
-	g_signal_connect (tab->priv->print_job,
-			  "printing",
-			  G_CALLBACK (printing_cb),
-			  tab);
-	g_signal_connect (tab->priv->print_job,
-			  "show-preview",
-			  G_CALLBACK (show_preview_cb),
-			  tab);
-	g_signal_connect (tab->priv->print_job,
-			  "done",
-			  G_CALLBACK (done_printing_cb),
-			  tab);
+	g_signal_connect_object (tab->priv->print_job,
+				 "printing",
+				 G_CALLBACK (printing_cb),
+				 tab,
+				 0);
+
+	g_signal_connect_object (tab->priv->print_job,
+				 "show-preview",
+				 G_CALLBACK (show_preview_cb),
+				 tab,
+				 0);
+
+	g_signal_connect_object (tab->priv->print_job,
+				 "done",
+				 G_CALLBACK (done_printing_cb),
+				 tab,
+				 0);
 
 	if (print_action == GTK_PRINT_OPERATION_ACTION_PREVIEW)
 	{
