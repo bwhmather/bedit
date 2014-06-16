@@ -158,7 +158,6 @@ $<[1]:
 items = [ \
 ['typedef struct _' + camel_str, camel_str + ';'], \
 ['typedef struct _' + camel_str + 'Class', camel_str + 'Class;'], \
-['typedef struct _' + camel_str + 'Private', camel_str + 'Private;'] \
 ]
 
 return align(items) >
@@ -166,8 +165,6 @@ return align(items) >
 struct _$<[1]: return camel_str >
 {
 	${7:GObject} parent;
-
-	$<[1]: return camel_str >Private *priv;
 };
 
 struct _$<[1]: return camel_str >Class

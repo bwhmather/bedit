@@ -165,13 +165,11 @@ for t in components:
   camel_str += t.capitalize()
 >
 
-#define $<[1]: return up_str >_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), $<[1]: return type_str >, $<[1]: return camel_str >Private))
-
-struct _$<[1]: return camel_str >Private
+typedef struct _$<[1]: return camel_str >Private
 {
-};
+} $<[1]: return camel_str >Private;
 
-G_DEFINE_TYPE ($<[1]: return camel_str >, $<[1]: return low_str >, ${2:G_TYPE_OBJECT})
+G_DEFINE_TYPE_WITH_PRIVATE ($<[1]: return camel_str >, $<[1]: return low_str >, ${2:G_TYPE_OBJECT})
 
 static void
 $<[1]: return low_str>_finalize (GObject *object)
@@ -185,14 +183,11 @@ $<[1]: return low_str >_class_init ($<[1]: return camel_str >Class *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->finalize = $<[1]: return low_str >_finalize;
-
-	g_type_class_add_private (object_class, sizeof ($<[1]: return camel_str >Private));
 }
 
 static void
 $<[1]: return low_str >_init ($<[1]: return camel_str> *self)
 {
-	self->priv = $<[1]: return up_str >_GET_PRIVATE (self);
 }
 
 $<[1]: return camel_str > *
