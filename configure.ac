@@ -281,29 +281,6 @@ fi
 
 AM_CONDITIONAL(ENABLE_ENCHANT, test x"$enable_enchant" = "xyes")
 
-dnl ================================================================
-dnl libzeitgeit check: for zeitgeist plugin
-dnl ================================================================
-
-LIBZEITGEIST_REQUIRED=0.9.12
-
-AC_ARG_ENABLE([zeitgeist],
-	AS_HELP_STRING([--enable-zeitgeist[=@<:@no/auto/yes@:>@]],[Build with zeitgeist support]),
-	[enable_zeitgeist=$enableval],
-	[enable_zeitgeist="auto"])
-
-if test "x$enable_zeitgeist" = "xauto" ; then
-	PKG_CHECK_EXISTS([zeitgeist-2.0 >= $LIBZEITGEIST_REQUIRED], \
-			  enable_zeitgeist="yes", enable_zeitgeist="no")
-fi
-
-if test "x$enable_zeitgeist" = "xyes" ; then
-	PKG_CHECK_MODULES(ZEITGEIST, \
-			  [zeitgeist-2.0 >= $LIBZEITGEIST_REQUIRED])
-fi
-
-AM_CONDITIONAL(ENABLE_ZEITGEIST, test x"$enable_zeitgeist" = "xyes")
-
 PYGOBJECT_REQUIRED=3.0.0
 
 AC_ARG_ENABLE([python],
@@ -481,7 +458,6 @@ Configuration:
 	Deprecations enabled:	$enable_deprecations
 	GObject Introspection:	$enable_introspection
 	GDK Backend:            $gdk_windowing
-	Zeitgeist support:      $enable_zeitgeist
 	Python support:         $enable_python
 	Vala support:           $enable_vala
 "

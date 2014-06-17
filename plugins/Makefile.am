@@ -17,7 +17,6 @@ include plugins/snippets/Makefile.am
 include plugins/sort/Makefile.am
 include plugins/spell/Makefile.am
 include plugins/time/Makefile.am
-include plugins/zeitgeist/Makefile.am
 
 gsettings_SCHEMAS += $(plugin_gsettings_SCHEMAS)
 

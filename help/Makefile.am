@@ -35,7 +35,6 @@ HELP_FILES = \
 	gedit-plugins-quick-open.page \
 	gedit-plugins-snippets.page \
 	gedit-plugins-sort.page \
-	gedit-plugins-zeitgeist-dataprovider.page \
 	gedit-printing-order.page \
 	gedit-printing.page \
 	gedit-printing-select.page \
