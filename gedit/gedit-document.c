@@ -307,6 +307,7 @@ gedit_document_finalize (GObject *object)
 	}
 
 	g_free (doc->priv->content_type);
+	g_free (doc->priv->short_name);
 
 	G_OBJECT_CLASS (gedit_document_parent_class)->finalize (object);
 }
