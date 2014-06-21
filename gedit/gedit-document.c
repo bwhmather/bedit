@@ -1010,10 +1010,17 @@ set_content_type_no_guess (GeditDocument *doc,
 	g_object_notify (G_OBJECT (doc), "content-type");
 }
 
-static void
-set_content_type (GeditDocument *doc,
-		  const gchar   *content_type)
+/**
+ * gedit_document_set_content_type:
+ * @doc:
+ * @content_type: (allow-none):
+ */
+void
+gedit_document_set_content_type (GeditDocument *doc,
+                                 const gchar   *content_type)
 {
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
 	gedit_debug (DEBUG_DOCUMENT);
 
 	if (content_type == NULL)
@@ -1042,20 +1049,6 @@ set_content_type (GeditDocument *doc,
 	{
 		set_content_type_no_guess (doc, content_type);
 	}
-}
-
-/**
- * gedit_document_set_content_type:
- * @doc:
- * @content_type: (allow-none):
- */
-void
-gedit_document_set_content_type (GeditDocument *doc,
-                                 const gchar   *content_type)
-{
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-	set_content_type (doc, content_type);
 }
 
 static void
@@ -1116,7 +1109,7 @@ gedit_document_set_location (GeditDocument *doc,
 	g_return_if_fail (G_IS_FILE (location));
 
 	set_location (doc, location);
-	set_content_type (doc, NULL);
+	gedit_document_set_content_type (doc, NULL);
 }
 
 /**
@@ -1321,7 +1314,7 @@ document_loader_loaded (GeditDocumentLoader *loader,
 			      gedit_document_loader_get_encoding (loader),
 			      (doc->priv->requested_encoding != NULL));
 
-		set_content_type (doc, content_type);
+		gedit_document_set_content_type (doc, content_type);
 
 		set_newline_type (doc,
 		                  gedit_document_loader_get_newline_type (loader));
@@ -1470,7 +1463,7 @@ gedit_document_load_real (GeditDocument       *doc,
 	doc->priv->requested_column_pos = column_pos;
 
 	set_location (doc, location);
-	set_content_type (doc, NULL);
+	gedit_document_set_content_type (doc, NULL);
 
 	gedit_document_loader_load (doc->priv->loader);
 }
@@ -1510,7 +1503,7 @@ gedit_document_load_stream (GeditDocument       *doc,
 	doc->priv->requested_column_pos = column_pos;
 
 	set_location (doc, NULL);
-	set_content_type (doc, NULL);
+	gedit_document_set_content_type (doc, NULL);
 
 	gedit_document_loader_load (doc->priv->loader);
 }
@@ -1621,7 +1614,7 @@ document_saver_saving (GeditDocumentSaver *saver,
 					g_file_info_get_modification_time (info, &mtime);
 			}
 
-			set_content_type (doc, content_type);
+			gedit_document_set_content_type (doc, content_type);
 			doc->priv->mtime = mtime;
 
 			g_get_current_time (&doc->priv->time_of_last_save_or_load);
