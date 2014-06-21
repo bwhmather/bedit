@@ -44,6 +44,8 @@
 #define METADATA_QUERY "metadata::*"
 #endif
 
+#define NO_LANGUAGE_NAME "_NORMAL_"
+
 static void	gedit_document_load_real	(GeditDocument                *doc,
 						 GFile                        *location,
 						 const GeditEncoding          *encoding,
@@ -216,7 +218,7 @@ get_language_metadata (GeditDocument *doc)
 {
 	GtkSourceLanguage *lang = gedit_document_get_language (doc);
 
-	return lang != NULL ? gtk_source_language_get_id (lang) : "_NORMAL_";
+	return lang != NULL ? gtk_source_language_get_id (lang) : NO_LANGUAGE_NAME;
 }
 
 static void
@@ -809,7 +811,7 @@ guess_language (GeditDocument *doc)
 	{
 		gedit_debug_message (DEBUG_DOCUMENT, "Language from metadata: %s", data);
 
-		if (strcmp (data, "_NORMAL_") != 0)
+		if (strcmp (data, NO_LANGUAGE_NAME) != 0)
 		{
 			language = gtk_source_language_manager_get_language (manager, data);
 		}
