@@ -213,55 +213,55 @@ set_compression_type (GeditDocument *doc,
 }
 
 static void
+save_metadata (GeditDocument *doc)
+{
+	const gchar *language = NULL;
+	GtkTextIter iter;
+	gchar *position;
+
+	if (doc->priv->language_set_by_user)
+	{
+		GtkSourceLanguage *lang = gedit_document_get_language (doc);
+
+		language = lang != NULL ? gtk_source_language_get_id (lang) : "_NORMAL_";
+	}
+
+	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
+					  &iter,
+					  gtk_text_buffer_get_insert (GTK_TEXT_BUFFER (doc)));
+
+	position = g_strdup_printf ("%d", gtk_text_iter_get_offset (&iter));
+
+	if (language == NULL)
+	{
+		gedit_document_set_metadata (doc,
+					     GEDIT_METADATA_ATTRIBUTE_POSITION, position,
+					     NULL);
+	}
+	else
+	{
+		gedit_document_set_metadata (doc,
+					     GEDIT_METADATA_ATTRIBUTE_POSITION, position,
+					     GEDIT_METADATA_ATTRIBUTE_LANGUAGE, language,
+					     NULL);
+	}
+
+	g_free (position);
+}
+
+static void
 gedit_document_dispose (GObject *object)
 {
 	GeditDocument *doc = GEDIT_DOCUMENT (object);
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	/* Metadata must be saved here and not in finalize
-	 * because the language is gone by the time finalize runs.
-	 * beside if some plugin prevents proper finalization by
-	 * holding a ref to the doc, we still save the metadata */
+	/* Metadata must be saved here and not in finalize because the language
+	 * is gone by the time finalize runs.
+	 */
 	if ((!doc->priv->dispose_has_run) && (doc->priv->location != NULL))
 	{
-		GtkTextIter iter;
-		gchar *position;
-		const gchar *language = NULL;
-
-		if (doc->priv->language_set_by_user)
-		{
-			GtkSourceLanguage *lang;
-
-			lang = gedit_document_get_language (doc);
-
-			if (lang == NULL)
-				language = "_NORMAL_";
-			else
-				language = gtk_source_language_get_id (lang);
-		}
-
-		gtk_text_buffer_get_iter_at_mark (
-				GTK_TEXT_BUFFER (doc),
-				&iter,
-				gtk_text_buffer_get_insert (GTK_TEXT_BUFFER (doc)));
-
-		position = g_strdup_printf ("%d",
-					    gtk_text_iter_get_offset (&iter));
-
-		if (language == NULL)
-		{
-			gedit_document_set_metadata (doc, GEDIT_METADATA_ATTRIBUTE_POSITION,
-						     position, NULL);
-		}
-		else
-		{
-			gedit_document_set_metadata (doc, GEDIT_METADATA_ATTRIBUTE_POSITION,
-						     position, GEDIT_METADATA_ATTRIBUTE_LANGUAGE,
-						     language, NULL);
-		}
-
-		g_free (position);
+		save_metadata (doc);
 	}
 
 	g_clear_object (&doc->priv->loader);
