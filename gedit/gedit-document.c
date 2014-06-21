@@ -44,24 +44,6 @@
 #define METADATA_QUERY "metadata::*"
 #endif
 
-#undef ENABLE_PROFILE
-
-#ifdef ENABLE_PROFILE
-#define PROFILE(x) x
-#else
-#define PROFILE(x)
-#endif
-
-PROFILE (static GTimer *timer = NULL)
-
-#ifdef MAXPATHLEN
-#define GEDIT_MAX_PATH_LEN  MAXPATHLEN
-#elif defined (PATH_MAX)
-#define GEDIT_MAX_PATH_LEN  PATH_MAX
-#else
-#define GEDIT_MAX_PATH_LEN  2048
-#endif
-
 static void	gedit_document_load_real	(GeditDocument                *doc,
 						 GFile                        *location,
 						 const GeditEncoding          *encoding,
