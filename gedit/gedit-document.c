@@ -211,6 +211,14 @@ set_compression_type (GeditDocument *doc,
 	}
 }
 
+static const gchar *
+get_language_metadata (GeditDocument *doc)
+{
+	GtkSourceLanguage *lang = gedit_document_get_language (doc);
+
+	return lang != NULL ? gtk_source_language_get_id (lang) : "_NORMAL_";
+}
+
 static void
 save_metadata (GeditDocument *doc)
 {
@@ -220,9 +228,7 @@ save_metadata (GeditDocument *doc)
 
 	if (doc->priv->language_set_by_user)
 	{
-		GtkSourceLanguage *lang = gedit_document_get_language (doc);
-
-		language = lang != NULL ? gtk_source_language_get_id (lang) : "_NORMAL_";
+		language = get_language_metadata (doc);
 	}
 
 	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
@@ -659,7 +665,9 @@ set_language (GeditDocument     *doc,
 	old_lang = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (doc));
 
 	if (old_lang == lang)
+	{
 		return;
+	}
 
 	gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (doc), lang);
 
@@ -681,9 +689,11 @@ set_language (GeditDocument     *doc,
 
 	if (set_by_user)
 	{
-		gedit_document_set_metadata (doc, GEDIT_METADATA_ATTRIBUTE_LANGUAGE,
-			(lang == NULL) ? "_NORMAL_" : gtk_source_language_get_id (lang),
-			NULL);
+		const gchar *language = get_language_metadata (doc);
+
+		gedit_document_set_metadata (doc,
+					     GEDIT_METADATA_ATTRIBUTE_LANGUAGE, language,
+					     NULL);
 	}
 
 	doc->priv->language_set_by_user = set_by_user;
