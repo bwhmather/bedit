@@ -797,10 +797,10 @@ on_location_changed (GeditDocument *doc,
 }
 
 static GtkSourceLanguage *
-guess_language (GeditDocument *doc,
-		const gchar   *content_type)
+guess_language (GeditDocument *doc)
 {
 	gchar *data;
+	GtkSourceLanguageManager *manager = gtk_source_language_manager_get_default ();
 	GtkSourceLanguage *language = NULL;
 
 	data = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_LANGUAGE);
@@ -811,9 +811,7 @@ guess_language (GeditDocument *doc,
 
 		if (strcmp (data, "_NORMAL_") != 0)
 		{
-			language = gtk_source_language_manager_get_language (
-						gtk_source_language_manager_get_default (),
-						data);
+			language = gtk_source_language_manager_get_language (manager, data);
 		}
 
 		g_free (data);
@@ -835,10 +833,9 @@ guess_language (GeditDocument *doc,
 			basename = g_strdup (doc->priv->short_name);
 		}
 
-		language = gtk_source_language_manager_guess_language (
-					gtk_source_language_manager_get_default (),
-					basename,
-					content_type);
+		language = gtk_source_language_manager_guess_language (manager,
+								       basename,
+								       doc->priv->content_type);
 
 		g_free (basename);
 
@@ -858,9 +855,7 @@ on_content_type_changed (GeditDocument *doc,
 {
 	if (!doc->priv->language_set_by_user)
 	{
-		GtkSourceLanguage *language;
-
-		language = guess_language (doc, doc->priv->content_type);
+		GtkSourceLanguage *language = guess_language (doc);
 
 		gedit_debug_message (DEBUG_DOCUMENT, "Language: %s",
 				     language != NULL ? gtk_source_language_get_name (language) : "None");
@@ -1377,7 +1372,7 @@ document_loader_loaded (GeditDocumentLoader *loader,
 
 		if (!doc->priv->language_set_by_user)
 		{
-			GtkSourceLanguage *language = guess_language (doc, doc->priv->content_type);
+			GtkSourceLanguage *language = guess_language (doc);
 
 			gedit_debug_message (DEBUG_DOCUMENT, "Language: %s",
 					     language != NULL ? gtk_source_language_get_name (language) : "None");
