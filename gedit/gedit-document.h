@@ -23,8 +23,6 @@
 #ifndef __GEDIT_DOCUMENT_H__
 #define __GEDIT_DOCUMENT_H__
 
-#include <gio/gio.h>
-#include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
 
 #include <gedit/gedit-encodings.h>

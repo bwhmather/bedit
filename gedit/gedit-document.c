@@ -28,10 +28,9 @@
 #include <stdlib.h>
 
 #include <glib/gi18n.h>
-#include <gtksourceview/gtksource.h>
 
-#include "gedit-settings.h"
 #include "gedit-document.h"
+#include "gedit-settings.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "gedit-document-loader.h"
