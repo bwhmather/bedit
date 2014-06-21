@@ -31,15 +31,16 @@
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
 #define GEDIT_TYPE_DOCUMENT              (gedit_document_get_type())
 #define GEDIT_DOCUMENT(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_DOCUMENT, GeditDocument))
 #define GEDIT_DOCUMENT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_DOCUMENT, GeditDocumentClass))
 #define GEDIT_IS_DOCUMENT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_DOCUMENT))
 #define GEDIT_IS_DOCUMENT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_DOCUMENT))
 #define GEDIT_DOCUMENT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_DOCUMENT, GeditDocumentClass))
+
+typedef struct _GeditDocument		GeditDocument;
+typedef struct _GeditDocumentClass	GeditDocumentClass;
+typedef struct _GeditDocumentPrivate	GeditDocumentPrivate;
 
 #ifdef G_OS_WIN32
 #define GEDIT_METADATA_ATTRIBUTE_POSITION "position"
@@ -96,14 +97,6 @@ typedef enum
 	GEDIT_DOCUMENT_SAVE_IGNORE_INVALID_CHARS= 1 << 3
 } GeditDocumentSaveFlags;
 
-/* Private structure type */
-typedef struct _GeditDocumentPrivate    GeditDocumentPrivate;
-
-/*
- * Main object structure
- */
-typedef struct _GeditDocument           GeditDocument;
-
 struct _GeditDocument
 {
 	GtkSourceBuffer buffer;
@@ -111,11 +104,6 @@ struct _GeditDocument
 	/*< private > */
 	GeditDocumentPrivate *priv;
 };
-
-/*
- * Class definition
- */
-typedef struct _GeditDocumentClass 	GeditDocumentClass;
 
 struct _GeditDocumentClass
 {
@@ -125,7 +113,6 @@ struct _GeditDocumentClass
 
 	void (* cursor_moved)		(GeditDocument    *document);
 
-	/* Document load */
 	void (* load)			(GeditDocument       *doc,
 					 GFile               *location,
 					 const GeditEncoding *encoding,
@@ -140,7 +127,6 @@ struct _GeditDocumentClass
 	void (* loaded)			(GeditDocument    *document,
 					 const GError     *error);
 
-	/* Document save */
 	void (* save)			(GeditDocument                *document,
 					 GFile                        *location,
 					 const GeditEncoding          *encoding,
@@ -155,7 +141,6 @@ struct _GeditDocumentClass
 	void (* saved)  		(GeditDocument    *document,
 					 const GError     *error);
 };
-
 
 #define GEDIT_DOCUMENT_ERROR gedit_document_error_quark ()
 
@@ -259,6 +244,11 @@ void		 gedit_document_set_metadata	(GeditDocument       *doc,
 						 const gchar         *first_key,
 						 ...);
 
+void			 gedit_document_set_search_context	(GeditDocument          *doc,
+								 GtkSourceSearchContext *search_context);
+
+GtkSourceSearchContext	*gedit_document_get_search_context	(GeditDocument          *doc);
+
 /*
  * Non exported functions
  */
@@ -294,11 +284,6 @@ void		 _gedit_document_set_mount_operation_factory
 GMountOperation
 		*_gedit_document_create_mount_operation
 						(GeditDocument	     *doc);
-
-void			 gedit_document_set_search_context	(GeditDocument          *doc,
-								 GtkSourceSearchContext *search_context);
-
-GtkSourceSearchContext	*gedit_document_get_search_context	(GeditDocument          *doc);
 
 gboolean		 _gedit_document_get_empty_search	(GeditDocument		*doc);
 
