@@ -104,7 +104,6 @@ struct _GeditDocumentPrivate
 	guint externally_modified : 1;
 	guint deleted : 1;
 	guint language_set_by_user : 1;
-	guint dispose_has_run : 1;
 
 	/* The search is empty if there is no search context, or if the
 	 * search text is empty. It is used for the sensitivity of some menu
@@ -259,18 +258,18 @@ gedit_document_dispose (GObject *object)
 	/* Metadata must be saved here and not in finalize because the language
 	 * is gone by the time finalize runs.
 	 */
-	if ((!doc->priv->dispose_has_run) && (doc->priv->location != NULL))
+	if (doc->priv->location != NULL)
 	{
 		save_metadata (doc);
+
+		g_object_unref (doc->priv->location);
+		doc->priv->location = NULL;
 	}
 
 	g_clear_object (&doc->priv->loader);
 	g_clear_object (&doc->priv->editor_settings);
 	g_clear_object (&doc->priv->metadata_info);
-	g_clear_object (&doc->priv->location);
 	g_clear_object (&doc->priv->search_context);
-
-	doc->priv->dispose_has_run = TRUE;
 
 	G_OBJECT_CLASS (gedit_document_parent_class)->dispose (object);
 }
@@ -891,8 +890,6 @@ gedit_document_init (GeditDocument *doc)
 	priv->language_set_by_user = FALSE;
 
 	priv->empty_search = TRUE;
-
-	priv->dispose_has_run = FALSE;
 
 	priv->mtime.tv_sec = 0;
 	priv->mtime.tv_usec = 0;
