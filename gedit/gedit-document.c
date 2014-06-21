@@ -52,6 +52,7 @@ static void	gedit_document_load_real	(GeditDocument                *doc,
 						 gint                          line_pos,
 						 gint                          column_pos,
 						 gboolean                      create);
+
 static void	gedit_document_save_real	(GeditDocument                *doc,
 						 GFile                        *location,
 						 const GeditEncoding          *encoding,
@@ -114,9 +115,9 @@ struct _GeditDocumentPrivate
 	guint empty_search : 1;
 };
 
-enum {
+enum
+{
 	PROP_0,
-
 	PROP_LOCATION,
 	PROP_SHORTNAME,
 	PROP_CONTENT_TYPE,
@@ -128,7 +129,8 @@ enum {
 	PROP_EMPTY_SEARCH
 };
 
-enum {
+enum
+{
 	CURSOR_MOVED,
 	LOAD,
 	LOADING,
@@ -140,6 +142,8 @@ enum {
 };
 
 static guint document_signals[LAST_SIGNAL] = { 0 };
+
+static GHashTable *allocated_untitled_numbers = NULL;
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditDocument, gedit_document, GTK_SOURCE_TYPE_BUFFER)
 
@@ -153,8 +157,6 @@ gedit_document_error_quark (void)
 
 	return quark;
 }
-
-static GHashTable *allocated_untitled_numbers = NULL;
 
 static gint
 get_untitled_number (void)
@@ -313,30 +315,39 @@ gedit_document_get_property (GObject    *object,
 		case PROP_LOCATION:
 			g_value_set_object (value, doc->priv->location);
 			break;
+
 		case PROP_SHORTNAME:
 			g_value_take_string (value, gedit_document_get_short_name_for_display (doc));
 			break;
+
 		case PROP_CONTENT_TYPE:
 			g_value_take_string (value, gedit_document_get_content_type (doc));
 			break;
+
 		case PROP_MIME_TYPE:
 			g_value_take_string (value, gedit_document_get_mime_type (doc));
 			break;
+
 		case PROP_READ_ONLY:
 			g_value_set_boolean (value, doc->priv->readonly);
 			break;
+
 		case PROP_ENCODING:
 			g_value_set_boxed (value, doc->priv->encoding);
 			break;
+
 		case PROP_NEWLINE_TYPE:
 			g_value_set_enum (value, doc->priv->newline_type);
 			break;
+
 		case PROP_COMPRESSION_TYPE:
 			g_value_set_enum (value, doc->priv->compression_type);
 			break;
+
 		case PROP_EMPTY_SEARCH:
 			g_value_set_boolean (value, doc->priv->empty_search);
 			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -366,22 +377,23 @@ gedit_document_set_property (GObject      *object,
 
 			break;
 		}
+
 		case PROP_SHORTNAME:
-			gedit_document_set_short_name_for_display (doc,
-			                                           g_value_get_string (value));
+			gedit_document_set_short_name_for_display (doc, g_value_get_string (value));
 			break;
+
 		case PROP_CONTENT_TYPE:
-			gedit_document_set_content_type (doc,
-			                                 g_value_get_string (value));
+			gedit_document_set_content_type (doc, g_value_get_string (value));
 			break;
+
 		case PROP_NEWLINE_TYPE:
-			set_newline_type (doc,
-					  g_value_get_enum (value));
+			set_newline_type (doc, g_value_get_enum (value));
 			break;
+
 		case PROP_COMPRESSION_TYPE:
-			set_compression_type (doc,
-			                      g_value_get_enum (value));
+			set_compression_type (doc, g_value_get_enum (value));
 			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -395,11 +407,9 @@ gedit_document_mark_set (GtkTextBuffer     *buffer,
 {
 	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
 
-	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set)
+	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set != NULL)
 	{
-		GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set (buffer,
-									       iter,
-									       mark);
+		GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set (buffer, iter, mark);
 	}
 
 	if (mark == gtk_text_buffer_get_insert (buffer))
@@ -738,11 +748,13 @@ get_default_style_scheme (GSettings *editor_settings)
 	manager = gtk_source_style_scheme_manager_get_default ();
 	scheme_id = g_settings_get_string (editor_settings, GEDIT_SETTINGS_SCHEME);
 	def_style = gtk_source_style_scheme_manager_get_scheme (manager, scheme_id);
+
 	if (def_style == NULL)
 	{
 		g_warning ("Default style scheme '%s' cannot be found, falling back to 'classic' style scheme ", scheme_id);
 
 		def_style = gtk_source_style_scheme_manager_get_scheme (manager, "classic");
+
 		if (def_style == NULL)
 		{
 			g_warning ("Style scheme 'classic' cannot be found, check your GtkSourceView installation.");
@@ -936,9 +948,7 @@ gedit_document_init (GeditDocument *doc)
 GeditDocument *
 gedit_document_new (void)
 {
-	gedit_debug (DEBUG_DOCUMENT);
-
-	return GEDIT_DOCUMENT (g_object_new (GEDIT_TYPE_DOCUMENT, NULL));
+	return g_object_new (GEDIT_TYPE_DOCUMENT, NULL);
 }
 
 static gchar *
@@ -946,22 +956,21 @@ get_content_type_from_content (GeditDocument *doc)
 {
 	gchar *content_type;
 	gchar *data;
-	gsize datalen;
-	GtkTextBuffer *buf;
-	GtkTextIter start, end;
+	GtkTextBuffer *buffer;
+	GtkTextIter start;
+	GtkTextIter end;
 
-	buf = GTK_TEXT_BUFFER (doc);
+	buffer = GTK_TEXT_BUFFER (doc);
 
-	gtk_text_buffer_get_start_iter (buf, &start);
+	gtk_text_buffer_get_start_iter (buffer, &start);
 	end = start;
 	gtk_text_iter_forward_chars (&end, 255);
 
-	data = gtk_text_buffer_get_text (buf, &start, &end, TRUE);
-	datalen = strlen (data);
+	data = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
 
 	content_type = g_content_type_guess (NULL,
 	                                     (const guchar *)data,
-	                                     datalen,
+	                                     strlen (data),
 	                                     NULL);
 
 	g_free (data);
@@ -977,8 +986,9 @@ set_content_type_no_guess (GeditDocument *doc,
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	if (doc->priv->content_type != NULL && content_type != NULL &&
-	    (0 == strcmp (doc->priv->content_type, content_type)))
+	if (doc->priv->content_type != NULL &&
+	    content_type != NULL &&
+	    g_str_equal (doc->priv->content_type, content_type))
 	{
 		return;
 	}
@@ -1060,13 +1070,11 @@ set_location (GeditDocument *doc,
 	g_return_if_fail ((location == NULL) || gedit_utils_is_valid_location (location));
 
 	if (doc->priv->location == location)
-		return;
-
-	if (doc->priv->location != NULL)
 	{
-		g_object_unref (doc->priv->location);
-		doc->priv->location = NULL;
+		return;
 	}
+
+	g_clear_object (&doc->priv->location);
 
 	if (location != NULL)
 	{
@@ -1198,8 +1206,8 @@ gedit_document_get_mime_type (GeditDocument *doc)
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), g_strdup ("text/plain"));
 
-	if ((doc->priv->content_type != NULL) &&
-	    (!g_content_type_is_unknown (doc->priv->content_type)))
+	if (doc->priv->content_type != NULL &&
+	    !g_content_type_is_unknown (doc->priv->content_type))
 	{
 		mime_type = g_content_type_get_mime_type (doc->priv->content_type);
 	}
@@ -1207,29 +1215,12 @@ gedit_document_get_mime_type (GeditDocument *doc)
  	return mime_type != NULL ? mime_type : g_strdup ("text/plain");
 }
 
-/* Note: do not emit the notify::read-only signal */
-static gboolean
-set_readonly (GeditDocument *doc,
-	      gboolean       readonly)
-{
-	gedit_debug (DEBUG_DOCUMENT);
-
-	readonly = (readonly != FALSE);
-
-	if (doc->priv->readonly == readonly)
-		return FALSE;
-
-	doc->priv->readonly = readonly;
-
-	return TRUE;
-}
-
 /**
  * _gedit_document_set_readonly:
  * @doc: a #GeditDocument
- * @readonly: %TRUE to set the document as read-only
+ * @readonly: the new setting.
  *
- * If @readonly is %TRUE sets @doc as read-only.
+ * Sets whether the document is read-only.
  */
 void
 _gedit_document_set_readonly (GeditDocument *doc,
@@ -1239,8 +1230,11 @@ _gedit_document_set_readonly (GeditDocument *doc,
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
-	if (set_readonly (doc, readonly))
+	readonly = readonly != FALSE;
+
+	if (doc->priv->readonly != readonly)
 	{
+		doc->priv->readonly = readonly;
 		g_object_notify (G_OBJECT (doc), "read-only");
 	}
 }
@@ -1254,7 +1248,7 @@ gedit_document_get_readonly (GeditDocument *doc)
 }
 
 static void
-reset_temp_loading_data (GeditDocument       *doc)
+reset_temp_loading_data (GeditDocument *doc)
 {
 	/* the loader has been used, throw it away */
 	g_object_unref (doc->priv->loader);
@@ -1302,8 +1296,7 @@ document_loader_loaded (GeditDocumentLoader *loader,
 		}
 
 		doc->priv->mtime = mtime;
-
-		set_readonly (doc, read_only);
+		doc->priv->readonly = read_only;
 
 		g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
@@ -1462,8 +1455,7 @@ gedit_document_load_real (GeditDocument       *doc,
 	doc->priv->requested_line_pos = line_pos;
 	doc->priv->requested_column_pos = column_pos;
 
-	set_location (doc, location);
-	gedit_document_set_content_type (doc, NULL);
+	gedit_document_set_location (doc, location);
 
 	gedit_document_loader_load (doc->priv->loader);
 }
@@ -1502,8 +1494,7 @@ gedit_document_load_stream (GeditDocument       *doc,
 	doc->priv->requested_line_pos = line_pos;
 	doc->priv->requested_column_pos = column_pos;
 
-	set_location (doc, NULL);
-	gedit_document_set_content_type (doc, NULL);
+	gedit_document_set_location (doc, NULL);
 
 	gedit_document_loader_load (doc->priv->loader);
 }
@@ -1792,8 +1783,8 @@ gedit_document_is_untouched (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
-	return (doc->priv->location == NULL) &&
-		(!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)));
+	return (doc->priv->location == NULL &&
+		!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)));
 }
 
 gboolean
@@ -1801,7 +1792,7 @@ gedit_document_is_untitled (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
-	return (doc->priv->location == NULL);
+	return doc->priv->location == NULL;
 }
 
 gboolean
@@ -1915,8 +1906,7 @@ _gedit_document_needs_saving (GeditDocument *doc)
 	return (doc->priv->externally_modified || doc->priv->deleted) && !doc->priv->create;
 }
 
-/*
- * If @line is bigger than the lines of the document, the cursor is moved
+/* If @line is bigger than the lines of the document, the cursor is moved
  * to the last line and FALSE is returned.
  */
 gboolean
@@ -2242,17 +2232,15 @@ gchar *
 gedit_document_get_metadata (GeditDocument *doc,
 			     const gchar   *key)
 {
-	gchar *value = NULL;
-
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 	g_return_val_if_fail (key != NULL, NULL);
 
-	if (!gedit_document_is_untitled (doc))
+	if (doc->priv->location != NULL)
 	{
-		value = gedit_metadata_manager_get (doc->priv->location, key);
+		return gedit_metadata_manager_get (doc->priv->location, key);
 	}
 
-	return value;
+	return NULL;
 }
 
 void
@@ -2267,7 +2255,7 @@ gedit_document_set_metadata (GeditDocument *doc,
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (first_key != NULL);
 
-	if (gedit_document_is_untitled (doc))
+	if (doc->priv->location == NULL)
 	{
 		/* Can't set metadata for untitled documents */
 		return;
@@ -2303,32 +2291,25 @@ gchar *
 gedit_document_get_metadata (GeditDocument *doc,
 			     const gchar   *key)
 {
-	gchar *value = NULL;
-
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 	g_return_val_if_fail (key != NULL, NULL);
 
-	if (doc->priv->metadata_info && g_file_info_has_attribute (doc->priv->metadata_info,
-								   key))
+	if (doc->priv->metadata_info != NULL &&
+	    g_file_info_has_attribute (doc->priv->metadata_info, key))
 	{
-		value = g_strdup (g_file_info_get_attribute_string (doc->priv->metadata_info,
-								    key));
+		return g_strdup (g_file_info_get_attribute_string (doc->priv->metadata_info, key));
 	}
 
-	return value;
+	return NULL;
 }
 
 static void
-set_attributes_cb (GObject      *source,
-		   GAsyncResult *res,
-		   gpointer      useless)
+set_attributes_cb (GFile        *location,
+		   GAsyncResult *result)
 {
 	GError *error = NULL;
 
-	g_file_set_attributes_finish (G_FILE (source),
-				      res,
-				      NULL,
-				      &error);
+	g_file_set_attributes_finish (location, result, NULL, &error);
 
 	if (error != NULL)
 	{
@@ -2370,8 +2351,7 @@ gedit_document_set_metadata (GeditDocument *doc,
 
 		if (value != NULL)
 		{
-			g_file_info_set_attribute_string (info,
-							  key, value);
+			g_file_info_set_attribute_string (info, key, value);
 		}
 		else
 		{
@@ -2383,7 +2363,9 @@ gedit_document_set_metadata (GeditDocument *doc,
 	va_end (var_args);
 
 	if (doc->priv->metadata_info != NULL)
+	{
 		g_file_info_copy_into (info, doc->priv->metadata_info);
+	}
 
 	location = gedit_document_get_location (doc);
 
@@ -2394,7 +2376,7 @@ gedit_document_set_metadata (GeditDocument *doc,
 					     G_FILE_QUERY_INFO_NONE,
 					     G_PRIORITY_DEFAULT,
 					     NULL,
-					     set_attributes_cb,
+					     (GAsyncReadyCallback) set_attributes_cb,
 					     NULL);
 
 		g_object_unref (location);
