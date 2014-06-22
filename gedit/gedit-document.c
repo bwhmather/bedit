@@ -1465,20 +1465,12 @@ gedit_document_load_real (GeditDocument       *doc,
 	gedit_document_loader_load (doc->priv->loader);
 }
 
-/**
- * gedit_document_load_stream:
- * @doc:
- * @stream:
- * @encoding: (allow-none):
- * @line_pos:
- * @column_pos:
- **/
 void
-gedit_document_load_stream (GeditDocument       *doc,
-                            GInputStream        *stream,
-                            const GeditEncoding *encoding,
-                            gint                 line_pos,
-                            gint                 column_pos)
+_gedit_document_load_stream (GeditDocument       *doc,
+			     GInputStream        *stream,
+			     const GeditEncoding *encoding,
+			     gint                 line_pos,
+			     gint                 column_pos)
 {
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (G_IS_INPUT_STREAM (stream));
@@ -1504,8 +1496,8 @@ gedit_document_load_stream (GeditDocument       *doc,
 	gedit_document_loader_load (doc->priv->loader);
 }
 
-/**
- * gedit_document_load:
+/*
+ * _gedit_document_load:
  * @doc: the #GeditDocument.
  * @location: the location where to load the document from.
  * @encoding: (allow-none): the #GeditEncoding to encode the document, or %NULL.
@@ -1516,12 +1508,12 @@ gedit_document_load_stream (GeditDocument       *doc,
  * Load a document. This results in the "load" signal to be emitted.
  */
 void
-gedit_document_load (GeditDocument       *doc,
-		     GFile               *location,
-		     const GeditEncoding *encoding,
-		     gint                 line_pos,
-		     gint                 column_pos,
-		     gboolean             create)
+_gedit_document_load (GeditDocument       *doc,
+		      GFile               *location,
+		      const GeditEncoding *encoding,
+		      gint                 line_pos,
+		      gint                 column_pos,
+		      gboolean             create)
 {
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (location != NULL);
@@ -1531,14 +1523,14 @@ gedit_document_load (GeditDocument       *doc,
 	               line_pos, column_pos, create);
 }
 
-/**
- * gedit_document_load_cancel:
+/*
+ * _gedit_document_load_cancel:
  * @doc: the #GeditDocument.
  *
  * Cancel load of a document.
  */
 gboolean
-gedit_document_load_cancel (GeditDocument *doc)
+_gedit_document_load_cancel (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 
@@ -1706,8 +1698,8 @@ gedit_document_save_real (GeditDocument                *doc,
 	}
 }
 
-/**
- * gedit_document_save:
+/*
+ * _gedit_document_save:
  * @doc: the #GeditDocument.
  * @flags: optionnal #GeditDocumentSaveFlags.
  *
@@ -1715,8 +1707,8 @@ gedit_document_save_real (GeditDocument                *doc,
  * signal to be emitted.
  */
 void
-gedit_document_save (GeditDocument          *doc,
-		     GeditDocumentSaveFlags  flags)
+_gedit_document_save (GeditDocument          *doc,
+		      GeditDocumentSaveFlags  flags)
 {
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (G_IS_FILE (doc->priv->location));
@@ -1731,8 +1723,8 @@ gedit_document_save (GeditDocument          *doc,
 		       flags);
 }
 
-/**
- * gedit_document_save_as:
+/*
+ * _gedit_document_save_as:
  * @doc: the #GeditDocument.
  * @location: the location where to save the document.
  * @encoding: the #GeditEncoding to encode the document.
@@ -1744,12 +1736,12 @@ gedit_document_save (GeditDocument          *doc,
  * to be emitted.
  */
 void
-gedit_document_save_as (GeditDocument                *doc,
-			GFile                        *location,
-			const GeditEncoding          *encoding,
-			GeditDocumentNewlineType      newline_type,
-			GeditDocumentCompressionType  compression_type,
-			GeditDocumentSaveFlags        flags)
+_gedit_document_save_as (GeditDocument                *doc,
+			 GFile                        *location,
+			 const GeditEncoding          *encoding,
+			 GeditDocumentNewlineType      newline_type,
+			 GeditDocumentCompressionType  compression_type,
+			 GeditDocumentSaveFlags        flags)
 {
 	GError *error = NULL;
 

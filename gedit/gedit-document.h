@@ -182,31 +182,6 @@ gchar		*gedit_document_get_mime_type 	(GeditDocument       *doc);
 
 gboolean	 gedit_document_get_readonly 	(GeditDocument       *doc);
 
-void		 gedit_document_load 		(GeditDocument       *doc,
-						 GFile               *location,
-						 const GeditEncoding *encoding,
-						 gint                 line_pos,
-						 gint                 column_pos,
-						 gboolean             create);
-
-void		 gedit_document_load_stream	(GeditDocument       *doc,
-						 GInputStream        *stream,
-						 const GeditEncoding *encoding,
-						 gint                 line_pos,
-						 gint                 column_pos);
-
-gboolean	 gedit_document_load_cancel	(GeditDocument       *doc);
-
-void		 gedit_document_save 		(GeditDocument       *doc,
-						 GeditDocumentSaveFlags flags);
-
-void		 gedit_document_save_as 	(GeditDocument                *doc,
-						 GFile                        *location,
-						 const GeditEncoding          *encoding,
-						 GeditDocumentNewlineType      newline_type,
-						 GeditDocumentCompressionType  compression_type,
-						 GeditDocumentSaveFlags        flags);
-
 gboolean	 gedit_document_is_untouched 	(GeditDocument       *doc);
 gboolean	 gedit_document_is_untitled 	(GeditDocument       *doc);
 
@@ -247,9 +222,33 @@ void			 gedit_document_set_search_context	(GeditDocument          *doc,
 
 GtkSourceSearchContext	*gedit_document_get_search_context	(GeditDocument          *doc);
 
-/*
- * Non exported functions
- */
+/* Non exported functions */
+
+void		 _gedit_document_load 		(GeditDocument       *doc,
+						 GFile               *location,
+						 const GeditEncoding *encoding,
+						 gint                 line_pos,
+						 gint                 column_pos,
+						 gboolean             create);
+
+void		 _gedit_document_load_stream	(GeditDocument       *doc,
+						 GInputStream        *stream,
+						 const GeditEncoding *encoding,
+						 gint                 line_pos,
+						 gint                 column_pos);
+
+gboolean	 _gedit_document_load_cancel	(GeditDocument       *doc);
+
+void		 _gedit_document_save 		(GeditDocument       *doc,
+						 GeditDocumentSaveFlags flags);
+
+void		 _gedit_document_save_as 	(GeditDocument                *doc,
+						 GFile                        *location,
+						 const GeditEncoding          *encoding,
+						 GeditDocumentNewlineType      newline_type,
+						 GeditDocumentCompressionType  compression_type,
+						 GeditDocumentSaveFlags        flags);
+
 void		 _gedit_document_set_readonly 	(GeditDocument       *doc,
 						 gboolean             readonly);
 

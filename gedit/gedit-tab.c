@@ -584,12 +584,12 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
 
-			gedit_document_load (doc,
-					     location,
-					     tab->priv->tmp_encoding,
-					     tab->priv->tmp_line_pos,
-					     tab->priv->tmp_column_pos,
-					     FALSE);
+			_gedit_document_load (doc,
+					      location,
+					      tab->priv->tmp_encoding,
+					      tab->priv->tmp_line_pos,
+					      tab->priv->tmp_column_pos,
+					      FALSE);
 			break;
 
 		case GTK_RESPONSE_YES:
@@ -645,7 +645,7 @@ load_cancelled (GtkWidget *bar,
 	doc = gedit_tab_get_document (tab);
 
 	g_object_ref (tab);
-	gedit_document_load_cancel (doc);
+	_gedit_document_load_cancel (doc);
 	g_object_unref (tab);
 }
 
@@ -1228,7 +1228,7 @@ invalid_character_info_bar_response (GtkWidget *info_bar,
 		/* FIXME there is a bug here when the action was a "save as".
 		 * See https://bugzilla.gnome.org/show_bug.cgi?id=695107
 		 */
-		gedit_document_save (doc, tab->priv->save_flags);
+		_gedit_document_save (doc, tab->priv->save_flags);
 	}
 	else
 	{
@@ -1253,7 +1253,7 @@ no_backup_error_info_bar_response (GtkWidget *info_bar,
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
 
 		/* Force saving */
-		gedit_document_save (doc, tab->priv->save_flags);
+		_gedit_document_save (doc, tab->priv->save_flags);
 	}
 	else
 	{
@@ -1280,7 +1280,7 @@ externally_modified_error_info_bar_response (GtkWidget *info_bar,
 		/* ignore mtime should not be persisted in save flags across saves */
 
 		/* Force saving */
-		gedit_document_save (doc, tab->priv->save_flags | GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
+		_gedit_document_save (doc, tab->priv->save_flags | GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
 	}
 	else
 	{
@@ -1316,12 +1316,12 @@ recoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 		gedit_debug_message (DEBUG_TAB, "Force saving with URI '%s'", tmp_uri);
 		g_free (tmp_uri);
 
-		gedit_document_save_as (doc,
-					tab->priv->tmp_save_location,
-					tab->priv->tmp_encoding,
-					gedit_document_get_newline_type (doc),
-					gedit_document_get_compression_type (doc),
-					tab->priv->save_flags);
+		_gedit_document_save_as (doc,
+					 tab->priv->tmp_save_location,
+					 tab->priv->tmp_encoding,
+					 gedit_document_get_newline_type (doc),
+					 gedit_document_get_compression_type (doc),
+					 tab->priv->save_flags);
 	}
 	else
 	{
@@ -1997,12 +1997,12 @@ _gedit_tab_load (GeditTab                *tab,
 	tab->priv->tmp_column_pos = column_pos;
 	tab->priv->tmp_encoding = encoding;
 
-	gedit_document_load (doc,
-			     location,
-			     encoding,
-			     line_pos,
-			     column_pos,
-			     create);
+	_gedit_document_load (doc,
+			      location,
+			      encoding,
+			      line_pos,
+			      column_pos,
+			      create);
 }
 
 void
@@ -2026,11 +2026,11 @@ _gedit_tab_load_stream (GeditTab                *tab,
 	tab->priv->tmp_column_pos = column_pos;
 	tab->priv->tmp_encoding = encoding;
 
-	gedit_document_load_stream (doc,
-	                            stream,
-	                            encoding,
-	                            line_pos,
-	                            column_pos);
+	_gedit_document_load_stream (doc,
+				     stream,
+				     encoding,
+				     line_pos,
+				     column_pos);
 }
 
 void
@@ -2058,12 +2058,12 @@ _gedit_tab_revert (GeditTab *tab)
 	tab->priv->tmp_line_pos = 0;
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc);
 
-	gedit_document_load (doc,
-			     location,
-			     tab->priv->tmp_encoding,
-			     0,
-			     0,
-			     FALSE);
+	_gedit_document_load (doc,
+			      location,
+			      tab->priv->tmp_encoding,
+			      0,
+			      0,
+			      FALSE);
 
 	g_object_unref (location);
 }
@@ -2104,7 +2104,7 @@ _gedit_tab_save (GeditTab *tab)
 	tab->priv->tmp_save_location = gedit_document_get_location (doc);
 	tab->priv->tmp_encoding = gedit_document_get_encoding (doc);
 
-	gedit_document_save (doc, save_flags);
+	_gedit_document_save (doc, save_flags);
 }
 
 static gboolean
@@ -2154,7 +2154,7 @@ gedit_tab_auto_save (GeditTab *tab)
 	   the last time the user "manually" saved the file. In the case a recoverable
 	   error happens while saving, the last backup is not preserved since the user
 	   expressed his willing of saving the file */
-	gedit_document_save (doc, tab->priv->save_flags | GEDIT_DOCUMENT_SAVE_PRESERVE_BACKUP);
+	_gedit_document_save (doc, tab->priv->save_flags | GEDIT_DOCUMENT_SAVE_PRESERVE_BACKUP);
 
 	gedit_debug_message (DEBUG_TAB, "Done");
 
@@ -2207,12 +2207,12 @@ _gedit_tab_save_as (GeditTab                     *tab,
 	tab->priv->tmp_save_location = g_file_dup (location);
 	tab->priv->tmp_encoding = encoding;
 
-	gedit_document_save_as (doc,
-	                        location,
-	                        encoding,
-	                        newline_type,
-	                        compression_type,
-	                        save_flags);
+	_gedit_document_save_as (doc,
+				 location,
+				 encoding,
+				 newline_type,
+				 compression_type,
+				 save_flags);
 }
 
 #define GEDIT_PAGE_SETUP_KEY "gedit-page-setup-key"
