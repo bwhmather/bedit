@@ -346,7 +346,7 @@ parse_error (const GError *error,
 
 GtkWidget *
 gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
-						      const GError *error)
+						  const GError *error)
 {
 	gchar *error_message = NULL;
 	gchar *message_details = NULL;
@@ -357,8 +357,8 @@ gedit_unrecoverable_reverting_error_info_bar_new (GFile        *location,
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail ((error->domain == GEDIT_DOCUMENT_ERROR) ||
-			      (error->domain == G_IO_ERROR), NULL);
+	g_return_val_if_fail (error->domain == GTK_SOURCE_FILE_LOADER_ERROR ||
+			      error->domain == G_IO_ERROR, NULL);
 
 	full_formatted_uri = g_file_get_parse_name (location);
 
@@ -590,7 +590,6 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 	gchar *error_message = NULL;
 	gchar *message_details = NULL;
 	gchar *full_formatted_uri;
-	gchar *encoding_name;
 	gchar *uri_for_display;
 	gchar *temp_uri_for_display;
 	GtkWidget *info_bar;
@@ -598,11 +597,11 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 	gboolean convert_error = FALSE;
 
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail ((error->domain == G_CONVERT_ERROR) ||
-			      (error->domain == GEDIT_DOCUMENT_ERROR) ||
-			      (error->domain == G_IO_ERROR), NULL);
+	g_return_val_if_fail (error->domain == GTK_SOURCE_FILE_LOADER_ERROR ||
+			      error->domain == G_IO_ERROR ||
+			      error->domain == G_CONVERT_ERROR, NULL);
 
-	if (location)
+	if (location != NULL)
 	{
 		full_formatted_uri = g_file_get_parse_name (location);
 	}
@@ -622,11 +621,6 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 	uri_for_display = g_markup_escape_text (temp_uri_for_display, -1);
 	g_free (temp_uri_for_display);
 
-	if (encoding != NULL)
-		encoding_name = gtk_source_encoding_to_string (encoding);
-	else
-		encoding_name = g_strdup ("UTF-8");
-
 	if (is_gio_error (error, G_IO_ERROR_TOO_MANY_LINKS))
 	{
 		message_details = g_strdup (_("The number of followed links is limited and the actual file could not be found within this limit."));
@@ -636,16 +630,16 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 		message_details = g_strdup (_("You do not have the permissions necessary to open the file."));
 	}
 	else if ((is_gio_error (error, G_IO_ERROR_INVALID_DATA) && encoding == NULL) ||
-	         (error->domain == GEDIT_DOCUMENT_ERROR &&
-	         error->code == GEDIT_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED))
+		 (error->domain == GTK_SOURCE_FILE_LOADER_ERROR &&
+		  error->code == GTK_SOURCE_FILE_LOADER_ERROR_ENCODING_AUTO_DETECTION_FAILED))
 	{
 		message_details = g_strconcat (_("Unable to detect the character encoding."), "\n",
 					       _("Please check that you are not trying to open a binary file."), "\n",
 					       _("Select a character encoding from the menu and try again."), NULL);
 		convert_error = TRUE;
 	}
-	else if (error->domain == GEDIT_DOCUMENT_ERROR &&
-	         error->code == GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK)
+	else if (error->domain == GTK_SOURCE_FILE_LOADER_ERROR &&
+		 error->code == GTK_SOURCE_FILE_LOADER_ERROR_CONVERSION_FALLBACK)
 	{
 		error_message = g_strdup_printf (_("There was a problem opening the file “%s”."),
 						 uri_for_display);
@@ -659,12 +653,16 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 	}
 	else if (is_gio_error (error, G_IO_ERROR_INVALID_DATA) && encoding != NULL)
 	{
+		gchar *encoding_name = gtk_source_encoding_to_string (encoding);
+
 		error_message = g_strdup_printf (_("Could not open the file “%s” using the “%s” character encoding."),
 						 uri_for_display,
 						 encoding_name);
 		message_details = g_strconcat (_("Please check that you are not trying to open a binary file."), "\n",
 					       _("Select a different character encoding from the menu and try again."), NULL);
 		convert_error = TRUE;
+
+		g_free (encoding_name);
 	}
 	else
 	{
@@ -691,7 +689,6 @@ gedit_io_loading_error_info_bar_new (GFile                   *location,
 	}
 
 	g_free (uri_for_display);
-	g_free (encoding_name);
 	g_free (error_message);
 	g_free (message_details);
 

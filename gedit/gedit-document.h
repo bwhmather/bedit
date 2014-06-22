@@ -118,10 +118,6 @@ struct _GeditDocumentClass
 					 gint                 column_pos,
 					 gboolean             create);
 
-	void (* loading)		(GeditDocument    *document,
-					 goffset	   size,
-					 goffset	   total_size);
-
 	void (* loaded)			(GeditDocument    *document,
 					 const GError     *error);
 
@@ -223,21 +219,6 @@ void			 gedit_document_set_search_context	(GeditDocument          *doc,
 GtkSourceSearchContext	*gedit_document_get_search_context	(GeditDocument          *doc);
 
 /* Non exported functions */
-
-void		 _gedit_document_load 		(GeditDocument       *doc,
-						 GFile               *location,
-						 const GeditEncoding *encoding,
-						 gint                 line_pos,
-						 gint                 column_pos,
-						 gboolean             create);
-
-void		 _gedit_document_load_stream	(GeditDocument       *doc,
-						 GInputStream        *stream,
-						 const GeditEncoding *encoding,
-						 gint                 line_pos,
-						 gint                 column_pos);
-
-gboolean	 _gedit_document_load_cancel	(GeditDocument       *doc);
 
 void		 _gedit_document_save 		(GeditDocument       *doc,
 						 GeditDocumentSaveFlags flags);

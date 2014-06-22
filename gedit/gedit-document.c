@@ -46,12 +46,8 @@
 
 #define NO_LANGUAGE_NAME "_NORMAL_"
 
-static void	gedit_document_load_real	(GeditDocument                *doc,
-						 GFile                        *location,
-						 const GeditEncoding          *encoding,
-						 gint                          line_pos,
-						 gint                          column_pos,
-						 gboolean                      create);
+static void	gedit_document_loaded_real	(GeditDocument *doc,
+						 const GError  *error);
 
 static void	gedit_document_save_real	(GeditDocument                *doc,
 						 GFile                        *location,
@@ -89,12 +85,9 @@ struct _GeditDocumentPrivate
 	GeditDocumentCompressionType compression_type;
 
 	/* Temp data while loading */
-	GeditDocumentLoader *loader;
 	gboolean             create; /* Create file if uri points
 	                              * to a non existing file */
 	const GeditEncoding *requested_encoding;
-	gint                 requested_line_pos;
-	gint                 requested_column_pos;
 
 	/* Saving stuff */
 	GeditDocumentSaver *saver;
@@ -135,7 +128,6 @@ enum
 {
 	CURSOR_MOVED,
 	LOAD,
-	LOADING,
 	LOADED,
 	SAVE,
 	SAVING,
@@ -278,7 +270,6 @@ gedit_document_dispose (GObject *object)
 		doc->priv->location = NULL;
 	}
 
-	g_clear_object (&doc->priv->loader);
 	g_clear_object (&doc->priv->editor_settings);
 	g_clear_object (&doc->priv->metadata_info);
 	g_clear_object (&doc->priv->search_context);
@@ -443,7 +434,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	buf_class->mark_set = gedit_document_mark_set;
 	buf_class->changed = gedit_document_changed;
 
-	klass->load = gedit_document_load_real;
+	klass->loaded = gedit_document_loaded_real;
 	klass->save = gedit_document_save_real;
 
 	g_object_class_install_property (object_class, PROP_LOCATION,
@@ -589,19 +580,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_TYPE_INT,
 			      G_TYPE_INT,
 			      G_TYPE_BOOLEAN);
-
-
-	document_signals[LOADING] =
-		g_signal_new ("loading",
-			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, loading),
-			      NULL, NULL,
-			      gedit_marshal_VOID__UINT64_UINT64,
-			      G_TYPE_NONE,
-			      2,
-			      G_TYPE_UINT64,
-			      G_TYPE_UINT64);
 
 	document_signals[LOADED] =
 		g_signal_new ("loaded",
@@ -1253,291 +1231,79 @@ gedit_document_get_readonly (GeditDocument *doc)
 }
 
 static void
-reset_temp_loading_data (GeditDocument *doc)
+query_info_cb (GFile         *location,
+	       GAsyncResult  *result,
+	       GeditDocument *doc)
 {
-	/* the loader has been used, throw it away */
-	g_object_unref (doc->priv->loader);
-	doc->priv->loader = NULL;
+	GFileInfo *info;
+	const gchar *content_type = NULL;
+	gboolean read_only = FALSE;
+	GError *error = NULL;
 
-	doc->priv->requested_encoding = NULL;
-	doc->priv->requested_line_pos = 0;
-	doc->priv->requested_column_pos = 0;
+	info = g_file_query_info_finish (location, result, &error);
+
+	if (error != NULL)
+	{
+		g_warning ("Document loading: query info error: %s", error->message);
+		g_error_free (error);
+		error = NULL;
+	}
+
+	if (info != NULL)
+	{
+		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
+		{
+			content_type = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+		}
+
+		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
+		{
+			read_only = !g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+		}
+
+		g_object_unref (info);
+	}
+
+	_gedit_document_set_readonly (doc, read_only);
+
+	g_get_current_time (&doc->priv->time_of_last_save_or_load);
+
+	doc->priv->externally_modified = FALSE;
+	doc->priv->deleted = FALSE;
+
+	gedit_document_set_content_type (doc, content_type);
+
+	if (!doc->priv->language_set_by_user)
+	{
+		GtkSourceLanguage *language = guess_language (doc);
+
+		gedit_debug_message (DEBUG_DOCUMENT, "Language: %s",
+				     language != NULL ? gtk_source_language_get_name (language) : "None");
+
+		set_language (doc, language, FALSE);
+	}
+
+	/* Async operation finished. */
+	g_object_unref (doc);
 }
 
 static void
-document_loader_loaded (GeditDocumentLoader *loader,
-			const GError        *error,
-			GeditDocument       *doc)
+gedit_document_loaded_real (GeditDocument *doc,
+			    const GError  *error)
 {
-	/* load was successful */
-	if (error == NULL ||
-	    (error->domain == GEDIT_DOCUMENT_ERROR &&
-	     error->code == GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK))
-	{
-		GtkTextIter iter;
-		GFileInfo *info;
-		const gchar *content_type = NULL;
-		gboolean read_only = FALSE;
-		GTimeVal mtime = {0, 0};
+	GFile *location = gtk_source_file_get_location (doc->priv->file);
 
-		info = gedit_document_loader_get_info (loader);
+	/* Keep the doc alive during the async operation. */
+	g_object_ref (doc);
 
-		if (info)
-		{
-			if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
-			{
-				content_type = g_file_info_get_attribute_string (info,
-										 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
-			}
-
-			if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
-				g_file_info_get_modification_time (info, &mtime);
-
-			if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-			{
-				read_only = !g_file_info_get_attribute_boolean (info,
-										G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
-			}
-		}
-
-		doc->priv->mtime = mtime;
-		doc->priv->readonly = read_only;
-
-		g_get_current_time (&doc->priv->time_of_last_save_or_load);
-
-		doc->priv->externally_modified = FALSE;
-		doc->priv->deleted = FALSE;
-
-		set_encoding (doc,
-			      gedit_document_loader_get_encoding (loader),
-			      (doc->priv->requested_encoding != NULL));
-
-		gedit_document_set_content_type (doc, content_type);
-
-		set_newline_type (doc,
-		                  gedit_document_loader_get_newline_type (loader));
-
-		set_compression_type (doc,
-		                      gedit_document_loader_get_compression_type (loader));
-
-		/* move the cursor at the requested line if any */
-		if (doc->priv->requested_line_pos > 0)
-		{
-			gedit_document_goto_line_offset (doc,
-							 doc->priv->requested_line_pos - 1,
-							 doc->priv->requested_column_pos < 1 ? 0 : doc->priv->requested_column_pos - 1);
-		}
-		else
-		{
-			/* if enabled, move to the position stored in the metadata */
-			if (g_settings_get_boolean (doc->priv->editor_settings, GEDIT_SETTINGS_RESTORE_CURSOR_POSITION))
-			{
-				gchar *pos;
-				gint offset;
-
-				pos = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_POSITION);
-
-				offset = pos ? atoi (pos) : 0;
-				g_free (pos);
-
-				gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc),
-								    &iter,
-								    MAX (offset, 0));
-
-				/* make sure it's a valid position, if the file
-				 * changed we may have ended up in the middle of
-				 * a utf8 character cluster */
-				if (!gtk_text_iter_is_cursor_position (&iter))
-				{
-					gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
-									&iter);
-				}
-			}
-			/* otherwise to the top */
-			else
-			{
-				gtk_text_buffer_get_start_iter (GTK_TEXT_BUFFER (doc),
-								&iter);
-			}
-
-			gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
-		}
-
-		if (!doc->priv->language_set_by_user)
-		{
-			GtkSourceLanguage *language = guess_language (doc);
-
-			gedit_debug_message (DEBUG_DOCUMENT, "Language: %s",
-					     language != NULL ? gtk_source_language_get_name (language) : "None");
-
-			set_language (doc, language, FALSE);
-		}
-	}
-
-	/* special case creating a named new doc */
-	else if (doc->priv->create &&
-	         (error->domain == G_IO_ERROR && error->code == G_IO_ERROR_NOT_FOUND) &&
-	         (g_file_has_uri_scheme (doc->priv->location, "file")))
-	{
-		reset_temp_loading_data (doc);
-
-		g_signal_emit (doc,
-			       document_signals[LOADED],
-			       0,
-			       NULL);
-
-		return;
-	}
-
-	g_signal_emit (doc,
-		       document_signals[LOADED],
-		       0,
-		       error);
-
-	reset_temp_loading_data (doc);
-}
-
-static void
-document_loader_loading (GeditDocumentLoader *loader,
-			 gboolean             completed,
-			 const GError        *error,
-			 GeditDocument       *doc)
-{
-	if (completed)
-	{
-		document_loader_loaded (loader, error, doc);
-	}
-	else
-	{
-		goffset size = 0;
-		goffset read;
-		GFileInfo *info;
-
-		info = gedit_document_loader_get_info (loader);
-
-		if (info && g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_SIZE))
-		{
-			size = g_file_info_get_attribute_uint64 (info,
-								 G_FILE_ATTRIBUTE_STANDARD_SIZE);
-		}
-
-		read = gedit_document_loader_get_bytes_read (loader);
-
-		g_signal_emit (doc,
-			       document_signals[LOADING],
-			       0,
-			       read,
-			       size);
-	}
-}
-
-static void
-gedit_document_load_real (GeditDocument       *doc,
-			  GFile               *location,
-			  const GeditEncoding *encoding,
-			  gint                 line_pos,
-			  gint                 column_pos,
-			  gboolean             create)
-{
-	gchar *uri;
-
-	g_return_if_fail (doc->priv->loader == NULL);
-
-	uri = g_file_get_uri (location);
-	gedit_debug_message (DEBUG_DOCUMENT, "load_real: uri = %s", uri);
-	g_free (uri);
-
-	/* create a loader. It will be destroyed when loading is completed */
-	doc->priv->loader = gedit_document_loader_new (doc, location, encoding);
-
-	g_signal_connect (doc->priv->loader,
-			  "loading",
-			  G_CALLBACK (document_loader_loading),
-			  doc);
-
-	doc->priv->create = create;
-	doc->priv->requested_encoding = encoding;
-	doc->priv->requested_line_pos = line_pos;
-	doc->priv->requested_column_pos = column_pos;
-
-	gedit_document_set_location (doc, location);
-
-	gedit_document_loader_load (doc->priv->loader);
-}
-
-void
-_gedit_document_load_stream (GeditDocument       *doc,
-			     GInputStream        *stream,
-			     const GeditEncoding *encoding,
-			     gint                 line_pos,
-			     gint                 column_pos)
-{
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail (G_IS_INPUT_STREAM (stream));
-	g_return_if_fail (doc->priv->loader == NULL);
-
-	gedit_debug_message (DEBUG_DOCUMENT, "load stream");
-
-	/* create a loader. It will be destroyed when loading is completed */
-	doc->priv->loader = gedit_document_loader_new_from_stream (doc, stream, encoding);
-
-	g_signal_connect (doc->priv->loader,
-			  "loading",
-			  G_CALLBACK (document_loader_loading),
-			  doc);
-
-	doc->priv->create = FALSE;
-	doc->priv->requested_encoding = encoding;
-	doc->priv->requested_line_pos = line_pos;
-	doc->priv->requested_column_pos = column_pos;
-
-	gedit_document_set_location (doc, NULL);
-
-	gedit_document_loader_load (doc->priv->loader);
-}
-
-/*
- * _gedit_document_load:
- * @doc: the #GeditDocument.
- * @location: the location where to load the document from.
- * @encoding: (allow-none): the #GeditEncoding to encode the document, or %NULL.
- * @line_pos: the line to show.
- * @column_pos: the column to show.
- * @create: whether the document should be created if it doesn't exist.
- *
- * Load a document. This results in the "load" signal to be emitted.
- */
-void
-_gedit_document_load (GeditDocument       *doc,
-		      GFile               *location,
-		      const GeditEncoding *encoding,
-		      gint                 line_pos,
-		      gint                 column_pos,
-		      gboolean             create)
-{
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail (location != NULL);
-	g_return_if_fail (gedit_utils_is_valid_location (location));
-
-	g_signal_emit (doc, document_signals[LOAD], 0, location, encoding,
-	               line_pos, column_pos, create);
-}
-
-/*
- * _gedit_document_load_cancel:
- * @doc: the #GeditDocument.
- *
- * Cancel load of a document.
- */
-gboolean
-_gedit_document_load_cancel (GeditDocument *doc)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-
-	if (doc->priv->loader == NULL)
-		return FALSE;
-
-	return gedit_document_loader_cancel (doc->priv->loader);
+	g_file_query_info_async (location,
+				 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","
+				 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
+				 G_FILE_QUERY_INFO_NONE,
+				 G_PRIORITY_DEFAULT,
+				 NULL,
+				 (GAsyncReadyCallback) query_info_cb,
+				 doc);
 }
 
 static gboolean
