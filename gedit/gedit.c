@@ -21,7 +21,9 @@
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
+
 #include <glib.h>
+
 #include "gedit-app.h"
 #ifdef OS_OSX
 #include "gedit-app-osx.h"
@@ -32,6 +34,8 @@
 #include "gedit-app-x11.h"
 #endif
 #endif
+
+#include "gedit-debug.h"
 
 #ifdef G_OS_WIN32
 #include <gmodule.h>
@@ -113,7 +117,19 @@ main (int argc, char *argv[])
 
 	status = g_application_run (G_APPLICATION (app), argc, argv);
 
+	/* Break reference cycles caused by the PeasExtensionSet
+	 * for GeditAppActivatable which holds a ref on the GeditApp
+	 */
+	g_object_run_dispose (G_OBJECT (app));
+
+	g_object_add_weak_pointer (G_OBJECT (app), (gpointer *) &app);
 	g_object_unref (app);
+
+	if (app != NULL)
+	{
+		gedit_debug_message (DEBUG_APP, "Leaking with %i refs",
+		                     G_OBJECT (app)->ref_count);
+	}
 
 #ifdef G_OS_WIN32
 	gedit_w32_unload_private_dll ();
