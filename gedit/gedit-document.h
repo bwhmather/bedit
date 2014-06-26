@@ -25,8 +25,6 @@
 
 #include <gtksourceview/gtksource.h>
 
-#include <gedit/gedit-encodings.h>
-
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_DOCUMENT              (gedit_document_get_type())
@@ -122,7 +120,7 @@ void 		 gedit_document_set_language 	(GeditDocument       *doc,
 GtkSourceLanguage
 		*gedit_document_get_language 	(GeditDocument       *doc);
 
-const GeditEncoding
+const GtkSourceEncoding
 		*gedit_document_get_encoding	(GeditDocument       *doc);
 
 GtkSourceNewlineType

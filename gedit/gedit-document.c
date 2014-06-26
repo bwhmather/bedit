@@ -60,8 +60,6 @@ struct _GeditDocumentPrivate
 
 	GFileInfo   *metadata_info;
 
-	const GeditEncoding *encoding;
-
 	gchar	    *content_type;
 
 	GTimeVal     mtime;
@@ -100,7 +98,6 @@ enum
 	PROP_CONTENT_TYPE,
 	PROP_MIME_TYPE,
 	PROP_READ_ONLY,
-	PROP_ENCODING,
 	PROP_EMPTY_SEARCH
 };
 
@@ -270,10 +267,6 @@ gedit_document_get_property (GObject    *object,
 			g_value_set_boolean (value, doc->priv->readonly);
 			break;
 
-		case PROP_ENCODING:
-			g_value_set_boxed (value, doc->priv->encoding);
-			break;
-
 		case PROP_EMPTY_SEARCH:
 			g_value_set_boolean (value, doc->priv->empty_search);
 			break;
@@ -405,14 +398,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 							       G_PARAM_READABLE |
 							       G_PARAM_STATIC_STRINGS));
 
-	g_object_class_install_property (object_class, PROP_ENCODING,
-					 g_param_spec_boxed ("encoding",
-							     "Encoding",
-							     "The GeditEncoding used for the document",
-							     GEDIT_TYPE_ENCODING,
-							     G_PARAM_READABLE |
-							     G_PARAM_STATIC_STRINGS));
-
 	/**
 	 * GeditDocument:empty-search:
 	 *
@@ -541,30 +526,19 @@ set_language (GeditDocument     *doc,
 }
 
 static void
-set_encoding (GeditDocument       *doc,
-	      const GeditEncoding *encoding,
-	      gboolean             set_by_user)
+save_encoding_metadata (GeditDocument *doc)
 {
-	g_return_if_fail (encoding != NULL);
+	const GtkSourceEncoding *encoding;
+	const gchar *charset;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	if (doc->priv->encoding == encoding)
-		return;
+	encoding = gtk_source_file_get_encoding (doc->priv->file);
+	charset = gtk_source_encoding_get_charset (encoding);
 
-	doc->priv->encoding = encoding;
-
-	if (set_by_user)
-	{
-		const gchar *charset;
-
-		charset = gedit_encoding_get_charset (encoding);
-
-		gedit_document_set_metadata (doc, GEDIT_METADATA_ATTRIBUTE_ENCODING,
-					     charset, NULL);
-	}
-
-	g_object_notify (G_OBJECT (doc), "encoding");
+	gedit_document_set_metadata (doc,
+				     GEDIT_METADATA_ATTRIBUTE_ENCODING, charset,
+				     NULL);
 }
 
 static GtkSourceStyleScheme *
@@ -743,8 +717,6 @@ gedit_document_init (GeditDocument *doc)
 	priv->mtime.tv_usec = 0;
 
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
-
-	priv->encoding = gedit_encoding_get_utf8 ();
 
 	priv->file = gtk_source_file_new (GTK_SOURCE_BUFFER (doc));
 
@@ -1180,9 +1152,7 @@ saved_query_info_cb (GFile         *location,
 
 	set_readonly (doc, FALSE);
 
-	set_encoding (doc,
-		      gtk_source_file_get_encoding (doc->priv->file),
-		      TRUE);
+	save_encoding_metadata (doc);
 
 	/* Async operation finished. */
 	g_object_unref (doc);
@@ -1434,12 +1404,12 @@ gedit_document_get_language (GeditDocument *doc)
 	return gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (doc));
 }
 
-const GeditEncoding *
+const GtkSourceEncoding *
 gedit_document_get_encoding (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
-	return doc->priv->encoding;
+	return gtk_source_file_get_encoding (doc->priv->file);
 }
 
 glong
