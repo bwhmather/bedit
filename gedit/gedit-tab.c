@@ -495,7 +495,7 @@ gedit_tab_set_state (GeditTab      *tab,
 }
 
 static void
-document_location_notify_handler (GeditDocument *document,
+document_location_notify_handler (GtkSourceFile *file,
 				  GParamSpec    *pspec,
 				  GeditTab      *tab)
 {
@@ -1216,6 +1216,7 @@ gedit_tab_init (GeditTab *tab)
 	GeditDocument *doc;
 	GeditView *view;
 	GeditApp *app;
+	GtkSourceFile *file;
 
 	tab->priv = gedit_tab_get_instance_private (tab);
 
@@ -1255,10 +1256,13 @@ gedit_tab_init (GeditTab *tab)
 	doc = gedit_tab_get_document (tab);
 	g_object_set_data (G_OBJECT (doc), GEDIT_TAB_KEY, tab);
 
-	g_signal_connect (doc,
-			  "notify::location",
-			  G_CALLBACK (document_location_notify_handler),
-			  tab);
+	file = gedit_document_get_file (doc);
+
+	g_signal_connect_object (file,
+				 "notify::location",
+				 G_CALLBACK (document_location_notify_handler),
+				 tab,
+				 0);
 
 	g_signal_connect (doc,
 			  "notify::shortname",
