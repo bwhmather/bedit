@@ -26,8 +26,6 @@
 #endif
 
 #include <string.h>
-#include <stdlib.h>
-
 #include <glib/gi18n.h>
 
 #include "gedit-document.h"
@@ -75,7 +73,6 @@ struct _GeditDocumentPrivate
 	GtkSourceSearchContext *search_context;
 
 	GtkSourceNewlineType newline_type;
-	GtkSourceCompressionType compression_type;
 
 	/* Temp data while loading */
 	gboolean             create; /* Create file if uri points
@@ -107,7 +104,6 @@ enum
 	PROP_READ_ONLY,
 	PROP_ENCODING,
 	PROP_NEWLINE_TYPE,
-	PROP_COMPRESSION_TYPE,
 	PROP_EMPTY_SEARCH
 };
 
@@ -169,18 +165,6 @@ set_newline_type (GeditDocument        *doc,
 		doc->priv->newline_type = newline_type;
 
 		g_object_notify (G_OBJECT (doc), "newline-type");
-	}
-}
-
-static void
-set_compression_type (GeditDocument            *doc,
-		      GtkSourceCompressionType  compression_type)
-{
-	if (doc->priv->compression_type != compression_type)
-	{
-		doc->priv->compression_type = compression_type;
-
-		g_object_notify (G_OBJECT (doc), "compression-type");
 	}
 }
 
@@ -309,10 +293,6 @@ gedit_document_get_property (GObject    *object,
 			g_value_set_enum (value, doc->priv->newline_type);
 			break;
 
-		case PROP_COMPRESSION_TYPE:
-			g_value_set_enum (value, doc->priv->compression_type);
-			break;
-
 		case PROP_EMPTY_SEARCH:
 			g_value_set_boolean (value, doc->priv->empty_search);
 			break;
@@ -357,10 +337,6 @@ gedit_document_set_property (GObject      *object,
 
 		case PROP_NEWLINE_TYPE:
 			set_newline_type (doc, g_value_get_enum (value));
-			break;
-
-		case PROP_COMPRESSION_TYPE:
-			set_compression_type (doc, g_value_get_enum (value));
 			break;
 
 		default:
@@ -472,23 +448,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	                                                    "The accepted types of line ending",
 	                                                    GTK_SOURCE_TYPE_NEWLINE_TYPE,
 	                                                    GTK_SOURCE_NEWLINE_TYPE_LF,
-	                                                    G_PARAM_READWRITE |
-	                                                    G_PARAM_CONSTRUCT |
-	                                                    G_PARAM_STATIC_NAME |
-	                                                    G_PARAM_STATIC_BLURB));
-
-	/**
-	 * GeditDocument:compression-type:
-	 *
-	 * The :compression-type property determines how to compress the
-	 * document when saving
-	 */
-	g_object_class_install_property (object_class, PROP_COMPRESSION_TYPE,
-	                                 g_param_spec_enum ("compression-type",
-	                                                    "Compression type",
-	                                                    "The save compression type",
-	                                                    GTK_SOURCE_TYPE_COMPRESSION_TYPE,
-	                                                    GTK_SOURCE_COMPRESSION_TYPE_NONE,
 	                                                    G_PARAM_READWRITE |
 	                                                    G_PARAM_CONSTRUCT |
 	                                                    G_PARAM_STATIC_NAME |
@@ -1550,7 +1509,7 @@ gedit_document_get_compression_type (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), 0);
 
-	return doc->priv->compression_type;
+	return gtk_source_file_get_compression_type (doc->priv->file);
 }
 
 void
