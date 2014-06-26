@@ -136,10 +136,11 @@ void		 _gedit_tab_load_stream		(GeditTab                *tab,
 
 void		 _gedit_tab_revert		(GeditTab            *tab);
 void		 _gedit_tab_save		(GeditTab            *tab);
-void		 _gedit_tab_save_as		(GeditTab            *tab,
-						 GFile               *location,
+
+void		 _gedit_tab_save_as		(GeditTab                *tab,
+						 GFile                   *location,
 						 const GtkSourceEncoding *encoding,
-						 GeditDocumentNewlineType newline_type,
+						 GtkSourceNewlineType     newline_type,
 						 GtkSourceCompressionType compression_type);
 
 void		 _gedit_tab_print		(GeditTab            *tab);

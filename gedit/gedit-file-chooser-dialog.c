@@ -112,16 +112,16 @@ update_newline_visibility (GeditFileChooserDialog *dialog)
 }
 
 static void
-newline_combo_append (GtkComboBox              *combo,
-                      GtkListStore             *store,
-                      GtkTreeIter              *iter,
-                      const gchar              *label,
-                      GeditDocumentNewlineType  newline_type)
+newline_combo_append (GtkComboBox          *combo,
+		      GtkListStore         *store,
+		      GtkTreeIter          *iter,
+		      const gchar          *label,
+		      GtkSourceNewlineType  newline_type)
 {
 	gtk_list_store_append (store, iter);
 	gtk_list_store_set (store, iter, 0, label, 1, newline_type, -1);
 
-	if (newline_type == GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT)
+	if (newline_type == GTK_SOURCE_NEWLINE_TYPE_DEFAULT)
 	{
 		gtk_combo_box_set_active_iter (combo, iter);
 	}
@@ -138,7 +138,7 @@ create_newline_combo (GeditFileChooserDialog *dialog)
 	label = gtk_label_new_with_mnemonic (_("L_ine Ending:"));
 	gtk_widget_set_halign (label, GTK_ALIGN_START);
 
-	store = gtk_list_store_new (2, G_TYPE_STRING, GEDIT_TYPE_DOCUMENT_NEWLINE_TYPE);
+	store = gtk_list_store_new (2, G_TYPE_STRING, GTK_SOURCE_TYPE_NEWLINE_TYPE);
 	combo = gtk_combo_box_new_with_model (GTK_TREE_MODEL (store));
 	renderer = gtk_cell_renderer_text_new ();
 
@@ -155,19 +155,19 @@ create_newline_combo (GeditFileChooserDialog *dialog)
 	                      store,
 	                      &iter,
 	                      _("Unix/Linux"),
-	                      GEDIT_DOCUMENT_NEWLINE_TYPE_LF);
+	                      GTK_SOURCE_NEWLINE_TYPE_LF);
 
 	newline_combo_append (GTK_COMBO_BOX (combo),
 	                      store,
 	                      &iter,
 	                      _("Mac OS Classic"),
-	                      GEDIT_DOCUMENT_NEWLINE_TYPE_CR);
+	                      GTK_SOURCE_NEWLINE_TYPE_CR);
 
 	newline_combo_append (GTK_COMBO_BOX (combo),
 	                      store,
 	                      &iter,
 	                      _("Windows"),
-	                      GEDIT_DOCUMENT_NEWLINE_TYPE_CR_LF);
+	                      GTK_SOURCE_NEWLINE_TYPE_CR_LF);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
 
@@ -531,8 +531,8 @@ set_enum_combo (GtkComboBox *combo,
 }
 
 void
-gedit_file_chooser_dialog_set_newline_type (GeditFileChooserDialog   *dialog,
-					    GeditDocumentNewlineType  newline_type)
+gedit_file_chooser_dialog_set_newline_type (GeditFileChooserDialog *dialog,
+					    GtkSourceNewlineType    newline_type)
 {
 	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
 	g_return_if_fail (gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE);
@@ -541,15 +541,15 @@ gedit_file_chooser_dialog_set_newline_type (GeditFileChooserDialog   *dialog,
 	                newline_type);
 }
 
-GeditDocumentNewlineType
+GtkSourceNewlineType
 gedit_file_chooser_dialog_get_newline_type (GeditFileChooserDialog *dialog)
 {
 	GtkTreeIter iter;
-	GeditDocumentNewlineType newline_type;
+	GtkSourceNewlineType newline_type;
 
-	g_return_val_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog), GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT);
+	g_return_val_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog), GTK_SOURCE_NEWLINE_TYPE_DEFAULT);
 	g_return_val_if_fail (gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE,
-	                      GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT);
+	                      GTK_SOURCE_NEWLINE_TYPE_DEFAULT);
 
 	gtk_combo_box_get_active_iter (GTK_COMBO_BOX (dialog->priv->newline_combo),
 	                               &iter);

@@ -50,19 +50,6 @@ typedef struct _GeditDocumentPrivate	GeditDocumentPrivate;
 #define GEDIT_METADATA_ATTRIBUTE_LANGUAGE "metadata::gedit-language"
 #endif
 
-typedef enum
-{
-	GEDIT_DOCUMENT_NEWLINE_TYPE_LF,
-	GEDIT_DOCUMENT_NEWLINE_TYPE_CR,
-	GEDIT_DOCUMENT_NEWLINE_TYPE_CR_LF
-} GeditDocumentNewlineType;
-
-#ifdef G_OS_WIN32
-#define GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT GEDIT_DOCUMENT_NEWLINE_TYPE_CR_LF
-#else
-#define GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT GEDIT_DOCUMENT_NEWLINE_TYPE_LF
-#endif
-
 struct _GeditDocument
 {
 	GtkSourceBuffer buffer;
@@ -138,7 +125,7 @@ GtkSourceLanguage
 const GeditEncoding
 		*gedit_document_get_encoding	(GeditDocument       *doc);
 
-GeditDocumentNewlineType
+GtkSourceNewlineType
 		 gedit_document_get_newline_type (GeditDocument      *doc);
 
 GtkSourceCompressionType

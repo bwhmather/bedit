@@ -74,7 +74,7 @@ struct _GeditDocumentPrivate
 	 */
 	GtkSourceSearchContext *search_context;
 
-	GeditDocumentNewlineType newline_type;
+	GtkSourceNewlineType newline_type;
 	GtkSourceCompressionType compression_type;
 
 	/* Temp data while loading */
@@ -161,8 +161,8 @@ release_untitled_number (gint n)
 }
 
 static void
-set_newline_type (GeditDocument           *doc,
-		  GeditDocumentNewlineType newline_type)
+set_newline_type (GeditDocument        *doc,
+		  GtkSourceNewlineType  newline_type)
 {
 	if (doc->priv->newline_type != newline_type)
 	{
@@ -470,8 +470,8 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	                                 g_param_spec_enum ("newline-type",
 	                                                    "Newline type",
 	                                                    "The accepted types of line ending",
-	                                                    GEDIT_TYPE_DOCUMENT_NEWLINE_TYPE,
-	                                                    GEDIT_DOCUMENT_NEWLINE_TYPE_LF,
+	                                                    GTK_SOURCE_TYPE_NEWLINE_TYPE,
+	                                                    GTK_SOURCE_NEWLINE_TYPE_LF,
 	                                                    G_PARAM_READWRITE |
 	                                                    G_PARAM_CONSTRUCT |
 	                                                    G_PARAM_STATIC_NAME |
@@ -1537,7 +1537,7 @@ _gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
 	return (current_time.tv_sec - doc->priv->time_of_last_save_or_load.tv_sec);
 }
 
-GeditDocumentNewlineType
+GtkSourceNewlineType
 gedit_document_get_newline_type (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), 0);

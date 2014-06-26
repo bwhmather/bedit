@@ -67,9 +67,9 @@ const GtkSourceEncoding
 		*gedit_file_chooser_dialog_get_encoding		(GeditFileChooserDialog   *dialog);
 
 void		 gedit_file_chooser_dialog_set_newline_type	(GeditFileChooserDialog   *dialog,
-								 GeditDocumentNewlineType  newline_type);
+								 GtkSourceNewlineType      newline_type);
 
-GeditDocumentNewlineType
+GtkSourceNewlineType
 		 gedit_file_chooser_dialog_get_newline_type	(GeditFileChooserDialog   *dialog);
 
 G_END_DECLS

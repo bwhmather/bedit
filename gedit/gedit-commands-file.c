@@ -697,7 +697,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		GFile *file;
 		GeditDocument *doc;
 		gchar *parse_name;
-		GeditDocumentNewlineType newline_type;
+		GtkSourceNewlineType newline_type;
 		GtkSourceCompressionType compression_type;
 		GtkSourceCompressionType current_compression_type;
 		const GtkSourceEncoding *encoding;
@@ -833,7 +833,7 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 	GeditDocument *doc;
 	GFile *file;
 	const GtkSourceEncoding *encoding;
-	GeditDocumentNewlineType newline_type;
+	GtkSourceNewlineType newline_type;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
