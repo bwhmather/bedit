@@ -653,12 +653,12 @@ change_compression (GtkWindow *parent,
 	return (ret == GTK_RESPONSE_YES);
 }
 
-static GeditDocumentCompressionType
+static GtkSourceCompressionType
 get_compression_type_from_file (GFile *file)
 {
 	gchar *name;
 	gchar *content_type;
-	GeditDocumentCompressionType type;
+	GtkSourceCompressionType type;
 
 	name = g_file_get_basename (file);
 	content_type = g_content_type_guess (name, NULL, 0, NULL);
@@ -698,8 +698,8 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		GeditDocument *doc;
 		gchar *parse_name;
 		GeditDocumentNewlineType newline_type;
-		GeditDocumentCompressionType compression_type;
-		GeditDocumentCompressionType current_compression_type;
+		GtkSourceCompressionType compression_type;
+		GtkSourceCompressionType current_compression_type;
 		const GtkSourceEncoding *encoding;
 
 		doc = gedit_tab_get_document (tab);
@@ -710,12 +710,12 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		compression_type = get_compression_type_from_file (file);
 		current_compression_type = gedit_document_get_compression_type (doc);
 
-		if ((compression_type == GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE) !=
-		    (current_compression_type == GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE))
+		if ((compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE) !=
+		    (current_compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE))
 		{
 			if (!change_compression (GTK_WINDOW (dialog),
 			                         file,
-			                         compression_type != GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE))
+			                         compression_type != GTK_SOURCE_COMPRESSION_TYPE_NONE))
 			{
 				gtk_widget_destroy (GTK_WIDGET (dialog));
 				g_object_unref (file);

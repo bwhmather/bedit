@@ -63,23 +63,6 @@ typedef enum
 #define GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT GEDIT_DOCUMENT_NEWLINE_TYPE_LF
 #endif
 
-/*
- * NOTE: when adding a new compression type, make sure to update:
- *   1) The document loader to support it
- *   2) gedit_document_compression_type_for_display
- */
-
-/**
- * GeditDocumentCompressionType:
- * @GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE: save file in plain text.
- * @GEDIT_DOCUMENT_COMPRESSION_TYPE_GZIP: save file using gzip compression.
- */
-typedef enum
-{
-	GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE,
-	GEDIT_DOCUMENT_COMPRESSION_TYPE_GZIP
-} GeditDocumentCompressionType;
-
 /**
  * GeditDocumentSaveFlags:
  * @GEDIT_DOCUMENT_SAVE_IGNORE_MTIME: save file despite external modifications.
@@ -121,12 +104,12 @@ struct _GeditDocumentClass
 	void (* loaded)			(GeditDocument    *document,
 					 const GError     *error);
 
-	void (* save)			(GeditDocument                *document,
-					 GFile                        *location,
-					 const GeditEncoding          *encoding,
-					 GeditDocumentNewlineType      newline_type,
-					 GeditDocumentCompressionType  compression_type,
-					 GeditDocumentSaveFlags        flags);
+	void (* save)			(GeditDocument            *document,
+					 GFile                    *location,
+					 const GeditEncoding      *encoding,
+					 GeditDocumentNewlineType  newline_type,
+					 GtkSourceCompressionType  compression_type,
+					 GeditDocumentSaveFlags    flags);
 
 	void (* saved)  		(GeditDocument    *document,
 					 const GError     *error);
@@ -199,7 +182,7 @@ const GeditEncoding
 GeditDocumentNewlineType
 		 gedit_document_get_newline_type (GeditDocument      *doc);
 
-GeditDocumentCompressionType
+GtkSourceCompressionType
 		 gedit_document_get_compression_type (GeditDocument  *doc);
 
 gchar		*gedit_document_get_metadata	(GeditDocument       *doc,

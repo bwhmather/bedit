@@ -2315,13 +2315,13 @@ gedit_tab_auto_save (GeditTab *tab)
 	return G_SOURCE_REMOVE;
 }
 
-/* TODO port to GtkSourceNewlineType and GtkSourceCompressionType */
+/* TODO port to GtkSourceNewlineType */
 void
-_gedit_tab_save_as (GeditTab                     *tab,
-		    GFile                        *location,
-		    const GtkSourceEncoding      *encoding,
-		    GeditDocumentNewlineType      newline_type,
-		    GeditDocumentCompressionType  compression_type)
+_gedit_tab_save_as (GeditTab                 *tab,
+		    GFile                    *location,
+		    const GtkSourceEncoding  *encoding,
+		    GeditDocumentNewlineType  newline_type,
+		    GtkSourceCompressionType  compression_type)
 {
 	GeditDocument *doc;
 	GtkSourceFile *file;

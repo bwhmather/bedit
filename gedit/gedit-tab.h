@@ -140,7 +140,7 @@ void		 _gedit_tab_save_as		(GeditTab            *tab,
 						 GFile               *location,
 						 const GtkSourceEncoding *encoding,
 						 GeditDocumentNewlineType newline_type,
-						 GeditDocumentCompressionType compression_type);
+						 GtkSourceCompressionType compression_type);
 
 void		 _gedit_tab_print		(GeditTab            *tab);
 void		 _gedit_tab_print_preview	(GeditTab            *tab);

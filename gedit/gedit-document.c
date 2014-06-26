@@ -77,7 +77,7 @@ struct _GeditDocumentPrivate
 	GtkSourceSearchContext *search_context;
 
 	GeditDocumentNewlineType newline_type;
-	GeditDocumentCompressionType compression_type;
+	GtkSourceCompressionType compression_type;
 
 	/* Temp data while loading */
 	gboolean             create; /* Create file if uri points
@@ -186,8 +186,8 @@ set_newline_type (GeditDocument           *doc,
 }
 
 static void
-set_compression_type (GeditDocument *doc,
-                      GeditDocumentCompressionType compression_type)
+set_compression_type (GeditDocument            *doc,
+		      GtkSourceCompressionType  compression_type)
 {
 	if (doc->priv->compression_type != compression_type)
 	{
@@ -500,8 +500,8 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	                                 g_param_spec_enum ("compression-type",
 	                                                    "Compression type",
 	                                                    "The save compression type",
-	                                                    GEDIT_TYPE_DOCUMENT_COMPRESSION_TYPE,
-	                                                    GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE,
+	                                                    GTK_SOURCE_TYPE_COMPRESSION_TYPE,
+	                                                    GTK_SOURCE_COMPRESSION_TYPE_NONE,
 	                                                    G_PARAM_READWRITE |
 	                                                    G_PARAM_CONSTRUCT |
 	                                                    G_PARAM_STATIC_NAME |
@@ -586,7 +586,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	 * @location: the location where the document is about to be saved.
 	 * @encoding: the #GeditEncoding used to save the document.
 	 * @newline_type: the #GeditDocumentNewlineType used to save the document.
-	 * @compression_type: the #GeditDocumentCompressionType used to save the document.
+	 * @compression_type: the #GtkSourceCompressionType used to save the document.
 	 * @flags: the #GeditDocumentSaveFlags for the save operation.
 	 *
 	 * The "save" signal is emitted when the document is saved.
@@ -607,7 +607,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			       * the same forever */
 			      GEDIT_TYPE_ENCODING | G_SIGNAL_TYPE_STATIC_SCOPE,
 			      GEDIT_TYPE_DOCUMENT_NEWLINE_TYPE,
-			      GEDIT_TYPE_DOCUMENT_COMPRESSION_TYPE,
+			      GTK_SOURCE_TYPE_COMPRESSION_TYPE,
 			      GEDIT_TYPE_DOCUMENT_SAVE_FLAGS);
 
 	document_signals[SAVED] =
@@ -956,7 +956,7 @@ set_content_type_no_guess (GeditDocument *doc,
 
 	/* For compression types, we try to just guess from the content */
 	if (gedit_utils_get_compression_type_from_content_type (content_type) !=
-	    GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE)
+	    GTK_SOURCE_COMPRESSION_TYPE_NONE)
 	{
 		dupped_content_type = get_content_type_from_content (doc);
 	}
@@ -1594,7 +1594,7 @@ gedit_document_get_newline_type (GeditDocument *doc)
 	return doc->priv->newline_type;
 }
 
-GeditDocumentCompressionType
+GtkSourceCompressionType
 gedit_document_get_compression_type (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), 0);

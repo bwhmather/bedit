@@ -1357,20 +1357,20 @@ gedit_utils_decode_uri (const gchar  *uri,
 	return TRUE;
 }
 
-GeditDocumentCompressionType
+GtkSourceCompressionType
 gedit_utils_get_compression_type_from_content_type (const gchar *content_type)
 {
 	if (content_type == NULL)
 	{
-		return GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE;
+		return GTK_SOURCE_COMPRESSION_TYPE_NONE;
 	}
 
 	if (g_content_type_is_a (content_type, "application/x-gzip"))
 	{
-		return GEDIT_DOCUMENT_COMPRESSION_TYPE_GZIP;
+		return GTK_SOURCE_COMPRESSION_TYPE_GZIP;
 	}
 
-	return GEDIT_DOCUMENT_COMPRESSION_TYPE_NONE;
+	return GTK_SOURCE_COMPRESSION_TYPE_NONE;
 }
 
 /* Copied from nautilus */
