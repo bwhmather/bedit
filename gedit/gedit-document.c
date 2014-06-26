@@ -83,8 +83,6 @@ struct _GeditDocumentPrivate
 	gboolean             create; /* Create file if uri points
 	                              * to a non existing file */
 
-	GtkTextTag *error_tag;
-
 	/* Mount operation factory */
 	GeditMountOperationFactory  mount_operation_factory;
 	gpointer		    mount_operation_userdata;
@@ -1545,161 +1543,6 @@ gedit_document_goto_line_offset (GeditDocument *doc,
 	return ret;
 }
 
-static void
-get_style_colors (GeditDocument *doc,
-                  const gchar   *style_name,
-                  gboolean      *foreground_set,
-                  GdkRGBA       *foreground,
-                  gboolean      *background_set,
-                  GdkRGBA       *background,
-                  gboolean      *line_background_set,
-                  GdkRGBA       *line_background,
-                  gboolean      *bold_set,
-                  gboolean      *bold,
-                  gboolean      *italic_set,
-                  gboolean      *italic,
-                  gboolean      *underline_set,
-                  gboolean      *underline,
-                  gboolean      *strikethrough_set,
-                  gboolean      *strikethrough)
-{
-	GtkSourceStyleScheme *style_scheme;
-	GtkSourceStyle *style;
-	gchar *line_bg;
-	gchar *bg;
-	gchar *fg;
-
-	style_scheme = gtk_source_buffer_get_style_scheme (GTK_SOURCE_BUFFER (doc));
-	if (style_scheme == NULL)
-		goto fallback;
-
-	style = gtk_source_style_scheme_get_style (style_scheme,
-						   style_name);
-	if (style == NULL)
-		goto fallback;
-
-	g_object_get (style,
-		      "foreground-set", foreground_set,
-		      "foreground", &fg,
-		      "background-set", background_set,
-		      "background", &bg,
-		      "line-background-set", line_background_set,
-		      "line-background", &line_bg,
-		      "bold-set", bold_set,
-		      "bold", bold,
-		      "italic-set", italic_set,
-		      "italic", italic,
-		      "underline-set", underline_set,
-		      "underline", underline,
-		      "strikethrough-set", strikethrough_set,
-		      "strikethrough", strikethrough,
-		      NULL);
-
-	if (*foreground_set)
-	{
-		if (fg == NULL || !gdk_rgba_parse (foreground, fg))
-		{
-			*foreground_set = FALSE;
-		}
-	}
-
-	if (*background_set)
-	{
-		if (bg == NULL ||
-		    !gdk_rgba_parse (background, bg))
-		{
-			*background_set = FALSE;
-		}
-	}
-
-	if (*line_background_set)
-	{
-		if (line_bg == NULL ||
-		    !gdk_rgba_parse (line_background, line_bg))
-		{
-			*line_background_set = FALSE;
-		}
-	}
-
-	g_free (fg);
-	g_free (bg);
-	g_free (line_bg);
-
-	return;
-
- fallback:
-	gedit_debug_message (DEBUG_DOCUMENT,
-			     "Falling back to hard-coded colors "
-			     "for the \"found\" text tag.");
-
-	gdk_rgba_parse (background, "#FFFF78");
-	*background_set = TRUE;
-	*foreground_set = FALSE;
-
-	return;
-}
-
-static void
-sync_tag_style (GeditDocument *doc,
-                GtkTextTag    *tag,
-                const gchar   *style_name)
-{
-	GdkRGBA fg;
-	GdkRGBA bg;
-	GdkRGBA line_bg;
-	gboolean fg_set;
-	gboolean bg_set;
-	gboolean line_bg_set;
-	gboolean bold;
-	gboolean italic;
-	gboolean underline;
-	gboolean strikethrough;
-	gboolean bold_set;
-	gboolean italic_set;
-	gboolean underline_set;
-	gboolean strikethrough_set;
-
-	gedit_debug (DEBUG_DOCUMENT);
-
-	g_return_if_fail (tag != NULL);
-
-	get_style_colors (doc,
-	                  style_name,
-	                  &fg_set, &fg,
-	                  &bg_set, &bg,
-	                  &line_bg_set, &line_bg,
-	                  &bold_set, &bold,
-	                  &italic_set, &italic,
-	                  &underline_set, &underline,
-	                  &strikethrough_set, &strikethrough);
-
-	g_object_freeze_notify (G_OBJECT (tag));
-
-	g_object_set (tag,
-	              "foreground-rgba", fg_set ? &fg : NULL,
-	              "background-rgba", bg_set ? &bg : NULL,
-	              "paragraph-background-rgba", line_bg_set ? &line_bg : NULL,
-	              "weight", bold_set && bold ? PANGO_WEIGHT_BOLD : PANGO_WEIGHT_NORMAL,
-	              "style", italic_set && italic ? PANGO_STYLE_ITALIC : PANGO_STYLE_NORMAL,
-	              "underline", underline_set && underline ? PANGO_UNDERLINE_SINGLE : PANGO_UNDERLINE_NONE,
-	              "strikethrough", strikethrough_set && strikethrough,
-	              NULL);
-
-	g_object_thaw_notify (G_OBJECT (tag));
-}
-
-static void
-text_tag_set_highest_priority (GtkTextTag    *tag,
-			       GtkTextBuffer *buffer)
-{
-	GtkTextTagTable *table;
-	gint n;
-
-	table = gtk_text_buffer_get_tag_table (buffer);
-	n = gtk_text_tag_table_get_size (table);
-	gtk_text_tag_set_priority (tag, n - 1);
-}
-
 /**
  * gedit_document_set_language:
  * @doc:
@@ -1775,22 +1618,6 @@ _gedit_document_set_mount_operation_factory (GeditDocument 	       *doc,
 
 	doc->priv->mount_operation_factory = callback;
 	doc->priv->mount_operation_userdata = userdata;
-}
-
-GMountOperation *
-_gedit_document_create_mount_operation (GeditDocument *doc)
-{
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
-
-	if (doc->priv->mount_operation_factory == NULL)
-	{
-		return g_mount_operation_new ();
-	}
-	else
-	{
-		return doc->priv->mount_operation_factory (doc,
-						           doc->priv->mount_operation_userdata);
-	}
 }
 
 #ifndef ENABLE_GVFS_METADATA
@@ -1951,50 +1778,6 @@ gedit_document_set_metadata (GeditDocument *doc,
 	g_object_unref (info);
 }
 #endif
-
-static void
-sync_error_tag (GeditDocument *doc,
-                GParamSpec    *pspec,
-                gpointer       data)
-{
-	sync_tag_style (doc, doc->priv->error_tag, "def:error");
-}
-
-void
-_gedit_document_apply_error_style (GeditDocument *doc,
-                                   GtkTextIter   *start,
-                                   GtkTextIter   *end)
-{
-	GtkTextBuffer *buffer;
-
-	gedit_debug (DEBUG_DOCUMENT);
-
-	buffer = GTK_TEXT_BUFFER (doc);
-
-	if (doc->priv->error_tag == NULL)
-	{
-		doc->priv->error_tag = gtk_text_buffer_create_tag (GTK_TEXT_BUFFER (doc),
-		                                                   "invalid-char-style",
-		                                                   NULL);
-
-		sync_error_tag (doc, NULL, NULL);
-
-		g_signal_connect (doc,
-		                  "notify::style-scheme",
-		                  G_CALLBACK (sync_error_tag),
-		                  NULL);
-	}
-
-	/* make sure the 'error' tag has the priority over
-	 * syntax highlighting tags */
-	text_tag_set_highest_priority (doc->priv->error_tag,
-	                               GTK_TEXT_BUFFER (doc));
-
-	gtk_text_buffer_apply_tag (buffer,
-	                           doc->priv->error_tag,
-	                           start,
-	                           end);
-}
 
 static void
 update_empty_search (GeditDocument *doc)

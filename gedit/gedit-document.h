@@ -222,11 +222,6 @@ void		 _gedit_document_set_readonly 	(GeditDocument       *doc,
 glong		 _gedit_document_get_seconds_since_last_save_or_load
 						(GeditDocument       *doc);
 
-void		 _gedit_document_apply_error_style
-                                                (GeditDocument *doc,
-                                                 GtkTextIter   *start,
-                                                 GtkTextIter   *end);
-
 /* Note: this is a sync stat: use only on local files */
 gboolean	_gedit_document_check_externally_modified
 						(GeditDocument       *doc);
@@ -245,9 +240,6 @@ void		 _gedit_document_set_mount_operation_factory
 						(GeditDocument	            *doc,
 						 GeditMountOperationFactory  callback,
 						 gpointer	             userdata);
-GMountOperation
-		*_gedit_document_create_mount_operation
-						(GeditDocument	     *doc);
 
 gboolean		 _gedit_document_get_empty_search	(GeditDocument		*doc);
 
