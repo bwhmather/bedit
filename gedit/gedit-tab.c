@@ -1874,7 +1874,7 @@ load_cb (GtkSourceFileLoader *loader,
 		clear_loading (tab);
 	}
 
-	g_signal_emit_by_name (doc, "loaded", NULL);
+	g_signal_emit_by_name (doc, "loaded");
 
 end:
 	/* Async operation finished. */
@@ -2181,7 +2181,7 @@ save_cb (GtkSourceFileSaver *saver,
 
 		clear_saving (tab);
 
-		g_signal_emit_by_name (doc, "saved", NULL);
+		g_signal_emit_by_name (doc, "saved");
 	}
 
 	/* Async operation finished. */

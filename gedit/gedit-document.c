@@ -45,11 +45,9 @@
 
 #define NO_LANGUAGE_NAME "_NORMAL_"
 
-static void	gedit_document_loaded_real	(GeditDocument *doc,
-						 const GError  *error);
+static void	gedit_document_loaded_real	(GeditDocument *doc);
 
-static void	gedit_document_saved_real	(GeditDocument *doc,
-						 const GError  *error);
+static void	gedit_document_saved_real	(GeditDocument *doc);
 
 struct _GeditDocumentPrivate
 {
@@ -560,11 +558,8 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditDocumentClass, loaded),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__BOXED,
-			      G_TYPE_NONE,
-			      1,
-			      G_TYPE_ERROR);
+			      NULL, NULL, NULL,
+			      G_TYPE_NONE, 0);
 
 	/**
 	 * GeditDocument::save:
@@ -587,11 +582,8 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditDocumentClass, saved),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__BOXED,
-			      G_TYPE_NONE,
-			      1,
-			      G_TYPE_ERROR);
+			      NULL, NULL, NULL,
+			      G_TYPE_NONE, 0);
 }
 
 static void
@@ -1229,8 +1221,7 @@ loaded_query_info_cb (GFile         *location,
 }
 
 static void
-gedit_document_loaded_real (GeditDocument *doc,
-			    const GError  *error)
+gedit_document_loaded_real (GeditDocument *doc)
 {
 	GFile *location = gtk_source_file_get_location (doc->priv->file);
 
@@ -1290,8 +1281,7 @@ saved_query_info_cb (GFile         *location,
 }
 
 static void
-gedit_document_saved_real (GeditDocument *doc,
-			   const GError  *error)
+gedit_document_saved_real (GeditDocument *doc)
 {
 	GFile *location = gtk_source_file_get_location (doc->priv->file);
 

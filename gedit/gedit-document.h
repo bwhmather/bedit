@@ -96,13 +96,11 @@ struct _GeditDocumentClass
 
 	void (* load)			(GeditDocument *document);
 
-	void (* loaded)			(GeditDocument *document,
-					 const GError  *error);
+	void (* loaded)			(GeditDocument *document);
 
 	void (* save)			(GeditDocument *document);
 
-	void (* saved)  		(GeditDocument *document,
-					 const GError  *error);
+	void (* saved)  		(GeditDocument *document);
 };
 
 #define GEDIT_DOCUMENT_ERROR gedit_document_error_quark ()

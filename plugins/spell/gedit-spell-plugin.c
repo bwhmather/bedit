@@ -1006,40 +1006,30 @@ set_auto_spell_from_metadata (GeditSpellPlugin *plugin,
 
 static void
 on_document_loaded (GeditDocument    *doc,
-		    const GError     *error,
 		    GeditSpellPlugin *plugin)
 {
-	if (error == NULL)
+	GeditSpellChecker *spell;
+	GeditView *view;
+
+	spell = GEDIT_SPELL_CHECKER (g_object_get_qdata (G_OBJECT (doc),
+							 spell_checker_id));
+	if (spell != NULL)
 	{
-		GeditSpellChecker *spell;
-		GeditView *view;
-
-		spell = GEDIT_SPELL_CHECKER (g_object_get_qdata (G_OBJECT (doc),
-								 spell_checker_id));
-		if (spell != NULL)
-		{
-			set_language_from_metadata (spell, doc);
-		}
-
-		view = GEDIT_VIEW (g_object_get_data (G_OBJECT (doc), GEDIT_AUTOMATIC_SPELL_VIEW));
-
-		set_auto_spell_from_metadata (plugin, view);
+		set_language_from_metadata (spell, doc);
 	}
+
+	view = GEDIT_VIEW (g_object_get_data (G_OBJECT (doc), GEDIT_AUTOMATIC_SPELL_VIEW));
+
+	set_auto_spell_from_metadata (plugin, view);
 }
 
 static void
 on_document_saved (GeditDocument    *doc,
-		   const GError     *error,
 		   GeditSpellPlugin *plugin)
 {
 	GeditAutomaticSpellChecker *autospell;
 	GeditSpellChecker *spell;
 	const gchar *key;
-
-	if (error != NULL)
-	{
-		return;
-	}
 
 	/* Make sure to save the metadata here too */
 	autospell = gedit_automatic_spell_checker_get_from_document (doc);
@@ -1081,6 +1071,7 @@ tab_added_cb (GeditWindow      *window,
 			  "loaded",
 			  G_CALLBACK (on_document_loaded),
 			  plugin);
+
 	g_signal_connect (doc,
 			  "saved",
 			  G_CALLBACK (on_document_saved),
