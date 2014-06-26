@@ -286,29 +286,6 @@ parse_gio_error (gint          code,
 	return ret;
 }
 
-static gboolean
-parse_gedit_error (gint          code,
-	           gchar       **error_message,
-	           gchar       **message_details,
-	           GFile        *location,
-	           const gchar  *uri_for_display)
-{
-	gboolean ret = TRUE;
-
-	switch (code)
-	{
-		case GEDIT_DOCUMENT_ERROR_TOO_BIG:
-			*message_details = g_strdup (_("The file is too big."));
-			break;
-
-		default:
-			ret = FALSE;
-			break;
-	}
-
-	return ret;
-}
-
 static void
 parse_error (const GError *error,
 	     gchar       **error_message,
@@ -325,14 +302,6 @@ parse_error (const GError *error,
 				       message_details,
 				       location,
 				       uri_for_display);
-	}
-	else if (error->domain == GEDIT_DOCUMENT_ERROR)
-	{
-		ret = parse_gedit_error (error->code,
-					 error_message,
-					 message_details,
-					 location,
-					 uri_for_display);
 	}
 
 	if (!ret)
@@ -866,8 +835,8 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail (error->domain == GEDIT_DOCUMENT_ERROR, NULL);
-	g_return_val_if_fail (error->code == GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED, NULL);
+	g_return_val_if_fail (error->domain == GTK_SOURCE_FILE_SAVER_ERROR, NULL);
+	g_return_val_if_fail (error->code == GTK_SOURCE_FILE_SAVER_ERROR_EXTERNALLY_MODIFIED, NULL);
 
 	full_formatted_uri = g_file_get_parse_name (location);
 
@@ -1054,8 +1023,8 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 	g_return_val_if_fail (error != NULL, NULL);
-	g_return_val_if_fail ((error->domain == GEDIT_DOCUMENT_ERROR) ||
-			      (error->domain == G_IO_ERROR), NULL);
+	g_return_val_if_fail (error->domain == GTK_SOURCE_FILE_SAVER_ERROR ||
+			      error->domain == G_IO_ERROR, NULL);
 
 	full_formatted_uri = g_file_get_parse_name (location);
 
@@ -1129,6 +1098,10 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 					      "a limitation on length of the file names. "
 					      "Please use a shorter name."));
 	}
+#if 0
+	/* FIXME this error can not occur for a file saving. Either remove the
+	 * code here, or improve the GtkSourceFileSaver so this error can occur.
+	 */
 	else if (error->domain == GEDIT_DOCUMENT_ERROR &&
 		 error->code == GEDIT_DOCUMENT_ERROR_TOO_BIG)
 	{
@@ -1137,6 +1110,7 @@ gedit_unrecoverable_saving_error_info_bar_new (GFile        *location,
 					      "a smaller file or saving it to a disk that does not "
 					      "have this limitation."));
 	}
+#endif
 	else
 	{
 		parse_error (error,

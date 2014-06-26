@@ -128,10 +128,6 @@ struct _GeditDocumentClass
 					 GeditDocumentCompressionType  compression_type,
 					 GeditDocumentSaveFlags        flags);
 
-	void (* saving)			(GeditDocument    *document,
-					 goffset	   size,
-					 goffset	   total_size);
-
 	void (* saved)  		(GeditDocument    *document,
 					 const GError     *error);
 };
@@ -219,16 +215,6 @@ void			 gedit_document_set_search_context	(GeditDocument          *doc,
 GtkSourceSearchContext	*gedit_document_get_search_context	(GeditDocument          *doc);
 
 /* Non exported functions */
-
-void		 _gedit_document_save 		(GeditDocument       *doc,
-						 GeditDocumentSaveFlags flags);
-
-void		 _gedit_document_save_as 	(GeditDocument                *doc,
-						 GFile                        *location,
-						 const GeditEncoding          *encoding,
-						 GeditDocumentNewlineType      newline_type,
-						 GeditDocumentCompressionType  compression_type,
-						 GeditDocumentSaveFlags        flags);
 
 void		 _gedit_document_set_readonly 	(GeditDocument       *doc,
 						 gboolean             readonly);

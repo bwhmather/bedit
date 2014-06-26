@@ -5,6 +5,7 @@
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
  * Copyright (C) 2002-2005 Paolo Maggi
+ * Copyright (C) 2014 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,12 +50,8 @@
 static void	gedit_document_loaded_real	(GeditDocument *doc,
 						 const GError  *error);
 
-static void	gedit_document_save_real	(GeditDocument                *doc,
-						 GFile                        *location,
-						 const GeditEncoding          *encoding,
-						 GeditDocumentNewlineType      newline_type,
-						 GeditDocumentCompressionType  compression_type,
-						 GeditDocumentSaveFlags        flags);
+static void	gedit_document_saved_real	(GeditDocument *doc,
+						 const GError  *error);
 
 struct _GeditDocumentPrivate
 {
@@ -87,10 +84,6 @@ struct _GeditDocumentPrivate
 	/* Temp data while loading */
 	gboolean             create; /* Create file if uri points
 	                              * to a non existing file */
-	const GeditEncoding *requested_encoding;
-
-	/* Saving stuff */
-	GeditDocumentSaver *saver;
 
 	GtkTextTag *error_tag;
 
@@ -130,7 +123,6 @@ enum
 	LOAD,
 	LOADED,
 	SAVE,
-	SAVING,
 	SAVED,
 	LAST_SIGNAL
 };
@@ -435,7 +427,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	buf_class->changed = gedit_document_changed;
 
 	klass->loaded = gedit_document_loaded_real;
-	klass->save = gedit_document_save_real;
+	klass->saved = gedit_document_saved_real;
 
 	g_object_class_install_property (object_class, PROP_LOCATION,
 					 g_param_spec_object ("location",
@@ -621,18 +613,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      GEDIT_TYPE_DOCUMENT_NEWLINE_TYPE,
 			      GEDIT_TYPE_DOCUMENT_COMPRESSION_TYPE,
 			      GEDIT_TYPE_DOCUMENT_SAVE_FLAGS);
-
-	document_signals[SAVING] =
-		g_signal_new ("saving",
-			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditDocumentClass, saving),
-			      NULL, NULL,
-			      gedit_marshal_VOID__UINT64_UINT64,
-			      G_TYPE_NONE,
-			      2,
-			      G_TYPE_UINT64,
-			      G_TYPE_UINT64);
 
 	document_signals[SAVED] =
 		g_signal_new ("saved",
@@ -1231,9 +1211,9 @@ gedit_document_get_readonly (GeditDocument *doc)
 }
 
 static void
-query_info_cb (GFile         *location,
-	       GAsyncResult  *result,
-	       GeditDocument *doc)
+loaded_query_info_cb (GFile         *location,
+		      GAsyncResult  *result,
+		      GeditDocument *doc)
 {
 	GFileInfo *info;
 	const gchar *content_type = NULL;
@@ -1302,243 +1282,68 @@ gedit_document_loaded_real (GeditDocument *doc,
 				 G_FILE_QUERY_INFO_NONE,
 				 G_PRIORITY_DEFAULT,
 				 NULL,
-				 (GAsyncReadyCallback) query_info_cb,
+				 (GAsyncReadyCallback) loaded_query_info_cb,
 				 doc);
 }
 
-static gboolean
-has_invalid_chars (GeditDocument *doc)
-{
-	GtkTextBuffer *buffer;
-	GtkTextIter start;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-
-	gedit_debug (DEBUG_DOCUMENT);
-
-	if (doc->priv->error_tag == NULL)
-	{
-		return FALSE;
-	}
-
-	buffer = GTK_TEXT_BUFFER (doc);
-
-	gtk_text_buffer_get_start_iter (buffer, &start);
-
-	if (gtk_text_iter_begins_tag (&start, doc->priv->error_tag) ||
-	    gtk_text_iter_forward_to_tag_toggle (&start, doc->priv->error_tag))
-	{
-		return TRUE;
-	}
-
-	return FALSE;
-}
-
 static void
-document_saver_saving (GeditDocumentSaver *saver,
-		       gboolean            completed,
-		       const GError       *error,
-		       GeditDocument      *doc)
+saved_query_info_cb (GFile         *location,
+		     GAsyncResult  *result,
+		     GeditDocument *doc)
 {
-	gedit_debug (DEBUG_DOCUMENT);
-
-	if (completed)
-	{
-		/* save was successful */
-		if (error == NULL)
-		{
-			GFile *location;
-			const gchar *content_type = NULL;
-			GTimeVal mtime = {0, 0};
-			GFileInfo *info;
-
-			location = gedit_document_saver_get_location (saver);
-			set_location (doc, location);
-			g_object_unref (location);
-
-			info = gedit_document_saver_get_info (saver);
-
-			if (info != NULL)
-			{
-				if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
-					content_type = g_file_info_get_attribute_string (info,
-											 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
-
-				if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
-					g_file_info_get_modification_time (info, &mtime);
-			}
-
-			gedit_document_set_content_type (doc, content_type);
-			doc->priv->mtime = mtime;
-
-			g_get_current_time (&doc->priv->time_of_last_save_or_load);
-
-			doc->priv->externally_modified = FALSE;
-			doc->priv->deleted = FALSE;
-			doc->priv->create = FALSE;
-
-			_gedit_document_set_readonly (doc, FALSE);
-
-			gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc),
-						      FALSE);
-
-			set_encoding (doc,
-				      doc->priv->requested_encoding,
-				      TRUE);
-		}
-
-		g_signal_emit (doc,
-			       document_signals[SAVED],
-			       0,
-			       error);
-
-		/* the saver has been used, throw it away */
-		g_object_unref (doc->priv->saver);
-		doc->priv->saver = NULL;
-	}
-	else
-	{
-		goffset size = 0;
-		goffset written = 0;
-
-		size = gedit_document_saver_get_file_size (saver);
-		written = gedit_document_saver_get_bytes_written (saver);
-
-		gedit_debug_message (DEBUG_DOCUMENT, "save progress: %" G_GINT64_FORMAT " of %" G_GINT64_FORMAT, written, size);
-
-		g_signal_emit (doc,
-			       document_signals[SAVING],
-			       0,
-			       written,
-			       size);
-	}
-}
-
-static void
-gedit_document_save_real (GeditDocument                *doc,
-			  GFile                        *location,
-			  const GeditEncoding          *encoding,
-			  GeditDocumentNewlineType      newline_type,
-			  GeditDocumentCompressionType  compression_type,
-			  GeditDocumentSaveFlags        flags)
-{
-	g_return_if_fail (doc->priv->saver == NULL);
-
-	if (!(flags & GEDIT_DOCUMENT_SAVE_IGNORE_INVALID_CHARS) && has_invalid_chars (doc))
-	{
-		GError *error = NULL;
-
-		g_set_error_literal (&error,
-		                     GEDIT_DOCUMENT_ERROR,
-		                     GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK,
-		                     "The document contains invalid characters");
-
-		g_signal_emit (doc,
-		               document_signals[SAVED],
-		               0,
-		               error);
-
-		g_error_free (error);
-	}
-	else
-	{
-		/* create a saver, it will be destroyed once saving is complete */
-		doc->priv->saver = gedit_document_saver_new (doc,
-		                                             location,
-		                                             encoding,
-		                                             newline_type,
-		                                             compression_type,
-		                                             flags);
-
-		g_signal_connect (doc->priv->saver,
-		                  "saving",
-		                  G_CALLBACK (document_saver_saving),
-		                  doc);
-
-		doc->priv->requested_encoding = encoding;
-		doc->priv->newline_type = newline_type;
-		doc->priv->compression_type = compression_type;
-
-		gedit_document_saver_save (doc->priv->saver,
-		                           &doc->priv->mtime);
-	}
-}
-
-/*
- * _gedit_document_save:
- * @doc: the #GeditDocument.
- * @flags: optionnal #GeditDocumentSaveFlags.
- *
- * Save the document to its previous location. This results in the "save"
- * signal to be emitted.
- */
-void
-_gedit_document_save (GeditDocument          *doc,
-		      GeditDocumentSaveFlags  flags)
-{
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail (G_IS_FILE (doc->priv->location));
-
-	g_signal_emit (doc,
-		       document_signals[SAVE],
-		       0,
-		       doc->priv->location,
-		       doc->priv->encoding,
-		       doc->priv->newline_type,
-		       doc->priv->compression_type,
-		       flags);
-}
-
-/*
- * _gedit_document_save_as:
- * @doc: the #GeditDocument.
- * @location: the location where to save the document.
- * @encoding: the #GeditEncoding to encode the document.
- * @newline_type: the #GeditDocumentNewlineType for the document.
- * @compression_type: the compression type for the file.
- * @flags: optionnal #GeditDocumentSaveFlags.
- *
- * Save the document to a new location. This results in the "save" signal
- * to be emitted.
- */
-void
-_gedit_document_save_as (GeditDocument                *doc,
-			 GFile                        *location,
-			 const GeditEncoding          *encoding,
-			 GeditDocumentNewlineType      newline_type,
-			 GeditDocumentCompressionType  compression_type,
-			 GeditDocumentSaveFlags        flags)
-{
+	GFileInfo *info;
+	const gchar *content_type = NULL;
 	GError *error = NULL;
 
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-	g_return_if_fail (G_IS_FILE (location));
-	g_return_if_fail (encoding != NULL);
-
-	if (has_invalid_chars (doc))
-	{
-		g_set_error_literal (&error,
-		                     GEDIT_DOCUMENT_ERROR,
-		                     GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK,
-		                     "The document contains invalid chars");
-	}
-
-	/* priv->mtime refers to the the old location (if any). Thus, it should be
-	 * ignored when saving as. */
-	g_signal_emit (doc,
-		       document_signals[SAVE],
-		       0,
-		       location,
-		       encoding,
-		       newline_type,
-		       compression_type,
-		       flags | GEDIT_DOCUMENT_SAVE_IGNORE_MTIME,
-		       error);
+	info = g_file_query_info_finish (location, result, &error);
 
 	if (error != NULL)
 	{
+		g_warning ("Document saving: query info error: %s", error->message);
 		g_error_free (error);
+		error = NULL;
 	}
+
+	if (info != NULL &&
+	    g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
+	{
+		content_type = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+	}
+
+	gedit_document_set_content_type (doc, content_type);
+
+	g_get_current_time (&doc->priv->time_of_last_save_or_load);
+
+	doc->priv->externally_modified = FALSE;
+	doc->priv->deleted = FALSE;
+	doc->priv->create = FALSE;
+
+	_gedit_document_set_readonly (doc, FALSE);
+
+	set_encoding (doc,
+		      gtk_source_file_get_encoding (doc->priv->file),
+		      TRUE);
+
+	/* Async operation finished. */
+	g_object_unref (doc);
+}
+
+static void
+gedit_document_saved_real (GeditDocument *doc,
+			   const GError  *error)
+{
+	GFile *location = gtk_source_file_get_location (doc->priv->file);
+
+	/* Keep the doc alive during the async operation. */
+	g_object_ref (doc);
+
+	g_file_query_info_async (location,
+				 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+				 G_FILE_QUERY_INFO_NONE,
+				 G_PRIORITY_DEFAULT,
+				 NULL,
+				 (GAsyncReadyCallback) saved_query_info_cb,
+				 doc);
 }
 
 gboolean

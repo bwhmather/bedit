@@ -54,20 +54,17 @@ struct _GeditTabPrivate
 
 	GeditPrintJob          *print_job;
 
-	/* tmp data for saving */
-	GFile		       *tmp_save_location;
+	GtkSourceFileSaver     *saver;
+	GtkSourceFileSaverFlags save_flags;
 
 	/* tmp data for loading */
 	GtkSourceFileLoader    *loader;
 	GCancellable           *cancellable;
 	gint                    tmp_line_pos;
 	gint                    tmp_column_pos;
-	const GtkSourceEncoding *tmp_encoding; /* TODO remove */
 	guint			idle_scroll;
 
 	GTimer 		       *timer;
-
-	GeditDocumentSaveFlags	save_flags;
 
 	gint                    auto_save_interval;
 	guint                   auto_save_timeout;
@@ -108,6 +105,8 @@ static void load (GeditTab                *tab,
 		  const GtkSourceEncoding *encoding,
 		  gint                     line_pos,
 		  gint                     column_pos);
+
+static void save (GeditTab *tab);
 
 static void
 install_auto_save_timeout (GeditTab *tab)
@@ -229,6 +228,12 @@ clear_loading (GeditTab *tab)
 }
 
 static void
+clear_saving (GeditTab *tab)
+{
+	g_clear_object (&tab->priv->saver);
+}
+
+static void
 gedit_tab_dispose (GObject *object)
 {
 	GeditTab *tab = GEDIT_TAB (object);
@@ -240,10 +245,10 @@ gedit_tab_dispose (GObject *object)
 		tab->priv->print_preview = NULL;
 	}
 
-	g_clear_object (&tab->priv->tmp_save_location);
 	g_clear_object (&tab->priv->editor);
 
 	clear_loading (tab);
+	clear_saving (tab);
 
 	G_OBJECT_CLASS (gedit_tab_parent_class)->dispose (object);
 }
@@ -809,7 +814,7 @@ show_saving_info_bar (GeditTab *tab)
 	gchar *msg = NULL;
 	gint len;
 
-	g_return_if_fail (tab->priv->tmp_save_location != NULL);
+	g_return_if_fail (tab->priv->saver != NULL);
 
 	if (tab->priv->info_bar != NULL)
 	{
@@ -829,18 +834,17 @@ show_saving_info_bar (GeditTab *tab)
 	 */
 	if (len > MAX_MSG_LENGTH)
 	{
-		from = gedit_utils_str_middle_truncate (short_name,
-							MAX_MSG_LENGTH);
+		from = gedit_utils_str_middle_truncate (short_name, MAX_MSG_LENGTH);
 		g_free (short_name);
 	}
 	else
 	{
 		gchar *str;
+		GFile *location = gtk_source_file_saver_get_location (tab->priv->saver);
 
 		from = short_name;
-		to = g_file_get_parse_name (tab->priv->tmp_save_location);
-		str = gedit_utils_str_middle_truncate (to,
-						       MAX (20, MAX_MSG_LENGTH - len));
+		to = g_file_get_parse_name (location);
+		str = gedit_utils_str_middle_truncate (to, MAX (20, MAX_MSG_LENGTH - len));
 		g_free (to);
 
 		to = str;
@@ -854,9 +858,7 @@ show_saving_info_bar (GeditTab *tab)
 
 		/* Translators: the first %s is a file name (e.g. test.txt) the second one
 		   is a directory (e.g. ssh://master.gnome.org/home/users/paolo) */
-		msg = g_strdup_printf (_("Saving %s to %s"),
-				       from_markup,
-				       to_markup);
+		msg = g_strdup_printf (_("Saving %s to %s"), from_markup, to_markup);
 		g_free (to_markup);
 	}
 	else
@@ -864,9 +866,7 @@ show_saving_info_bar (GeditTab *tab)
 		msg = g_strdup_printf (_("Saving %s"), from_markup);
 	}
 
-	bar = gedit_progress_info_bar_new ("document-save",
-					   msg,
-					   FALSE);
+	bar = gedit_progress_info_bar_new ("document-save", msg, FALSE);
 
 	set_info_bar (tab, bar, GTK_RESPONSE_NONE);
 
@@ -931,48 +931,6 @@ scroll_to_cursor (GeditTab *tab)
 }
 
 static void
-document_saving (GeditDocument *document,
-		 goffset        size,
-		 goffset        total_size,
-		 GeditTab      *tab)
-{
-	gdouble elapsed_time;
-	gdouble total_time;
-	gdouble remaining_time;
-
-	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
-
-	if (tab->priv->timer == NULL)
-	{
-		tab->priv->timer = g_timer_new ();
-	}
-
-	elapsed_time = g_timer_elapsed (tab->priv->timer, NULL);
-
-	/* elapsed_time / total_time = size / total_size */
-	total_time = (elapsed_time * total_size) / size;
-
-	remaining_time = total_time - elapsed_time;
-
-	/* Approximately more than 3 seconds remaining. */
-	if (remaining_time > 3.0)
-	{
-		show_saving_info_bar (tab);
-	}
-
-	info_bar_set_progress (tab, size, total_size);
-}
-
-static void
-end_saving (GeditTab *tab)
-{
-	/* Reset tmp data for saving */
-	g_clear_object (&tab->priv->tmp_save_location);
-
-	tab->priv->tmp_encoding = NULL;
-}
-
-static void
 unrecoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 					      gint       response_id,
 					      GeditTab  *tab)
@@ -988,7 +946,7 @@ unrecoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 	}
 
-	end_saving (tab);
+	clear_saving (tab);
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
@@ -1003,24 +961,21 @@ invalid_character_info_bar_response (GtkWidget *info_bar,
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		GeditDocument *doc = gedit_tab_get_document (tab);
+		GtkSourceFileSaverFlags save_flags;
 
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
-		g_return_if_fail (tab->priv->tmp_save_location != NULL);
-		g_return_if_fail (tab->priv->tmp_encoding != NULL);
+		g_return_if_fail (tab->priv->saver != NULL);
 
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+		/* Don't bug the user again with this... */
+		tab->priv->save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_INVALID_CHARS;
 
-		/* don't bug the user again with this... */
-		tab->priv->save_flags |= GEDIT_DOCUMENT_SAVE_IGNORE_INVALID_CHARS;
+		save_flags = gtk_source_file_saver_get_flags (tab->priv->saver);
+		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_INVALID_CHARS;
+		gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
 
 		/* Force saving */
-
-		/* FIXME there is a bug here when the action was a "save as".
-		 * See https://bugzilla.gnome.org/show_bug.cgi?id=695107
-		 */
-		_gedit_document_save (doc, tab->priv->save_flags);
+		save (tab);
 	}
 	else
 	{
@@ -1035,17 +990,18 @@ no_backup_error_info_bar_response (GtkWidget *info_bar,
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		GeditDocument *doc = gedit_tab_get_document (tab);
+		GtkSourceFileSaverFlags save_flags;
 
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
-		g_return_if_fail (tab->priv->tmp_save_location != NULL);
-		g_return_if_fail (tab->priv->tmp_encoding != NULL);
+		g_return_if_fail (tab->priv->saver != NULL);
 
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+		save_flags = gtk_source_file_saver_get_flags (tab->priv->saver);
+		save_flags &= ~GTK_SOURCE_FILE_SAVER_FLAGS_CREATE_BACKUP;
+		gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
 
 		/* Force saving */
-		_gedit_document_save (doc, tab->priv->save_flags);
+		save (tab);
 	}
 	else
 	{
@@ -1060,19 +1016,22 @@ externally_modified_error_info_bar_response (GtkWidget *info_bar,
 {
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		GeditDocument *doc = gedit_tab_get_document (tab);
+		GtkSourceFileSaverFlags save_flags;
 
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
-		g_return_if_fail (tab->priv->tmp_save_location != NULL);
-		g_return_if_fail (tab->priv->tmp_encoding != NULL);
+		g_return_if_fail (tab->priv->saver != NULL);
 
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+		/* ignore_modification_time should not be persisted in save
+		 * flags across saves (i.e. priv->save_flags is not modified).
+		 */
 
-		/* ignore mtime should not be persisted in save flags across saves */
+		save_flags = gtk_source_file_saver_get_flags (tab->priv->saver);
+		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME;
+		gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
 
 		/* Force saving */
-		_gedit_document_save (doc, tab->priv->save_flags | GEDIT_DOCUMENT_SAVE_IGNORE_MTIME);
+		save (tab);
 	}
 	else
 	{
@@ -1085,157 +1044,23 @@ recoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 					    gint       response_id,
 					    GeditTab  *tab)
 {
-	GeditDocument *doc = gedit_tab_get_document (tab);
-
 	if (response_id == GTK_RESPONSE_OK)
 	{
 		const GtkSourceEncoding *encoding;
-		gchar *tmp_uri;
-
-		encoding = gedit_conversion_error_info_bar_get_encoding (GTK_WIDGET (info_bar));
-
-		g_return_if_fail (encoding != NULL);
 
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
-		g_return_if_fail (tab->priv->tmp_save_location != NULL);
+		g_return_if_fail (tab->priv->saver != NULL);
 
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+		encoding = gedit_conversion_error_info_bar_get_encoding (GTK_WIDGET (info_bar));
+		g_return_if_fail (encoding != NULL);
 
-		tab->priv->tmp_encoding = encoding;
-
-		tmp_uri = g_file_get_uri (tab->priv->tmp_save_location);
-		gedit_debug_message (DEBUG_TAB, "Force saving with URI '%s'", tmp_uri);
-		g_free (tmp_uri);
-
-		_gedit_document_save_as (doc,
-					 tab->priv->tmp_save_location,
-					 tab->priv->tmp_encoding,
-					 gedit_document_get_newline_type (doc),
-					 gedit_document_get_compression_type (doc),
-					 tab->priv->save_flags);
+		gtk_source_file_saver_set_encoding (tab->priv->saver, encoding);
+		save (tab);
 	}
 	else
 	{
 		unrecoverable_saving_error_info_bar_response (info_bar, response_id, tab);
-	}
-}
-
-static void
-document_saved (GeditDocument *document,
-		const GError  *error,
-		GeditTab      *tab)
-{
-	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
-
-	g_return_if_fail (tab->priv->tmp_save_location != NULL);
-	g_return_if_fail (tab->priv->tmp_encoding != NULL);
-
-	if (tab->priv->timer != NULL)
-	{
-		g_timer_destroy (tab->priv->timer);
-		tab->priv->timer = NULL;
-	}
-
-	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
-
-	if (error != NULL)
-	{
-		GtkWidget *info_bar;
-
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING_ERROR);
-
-		if (error->domain == GEDIT_DOCUMENT_ERROR &&
-		    error->code == GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED)
-		{
-			/* This error is recoverable */
-			info_bar = gedit_externally_modified_saving_error_info_bar_new (tab->priv->tmp_save_location,
-											error);
-			g_return_if_fail (info_bar != NULL);
-
-			g_signal_connect (info_bar,
-					  "response",
-					  G_CALLBACK (externally_modified_error_info_bar_response),
-					  tab);
-		}
-		else if (error->domain == G_IO_ERROR &&
-			 error->code == G_IO_ERROR_CANT_CREATE_BACKUP)
-		{
-			/* This error is recoverable */
-			info_bar = gedit_no_backup_saving_error_info_bar_new (tab->priv->tmp_save_location,
-									      error);
-			g_return_if_fail (info_bar != NULL);
-
-			g_signal_connect (info_bar,
-					  "response",
-					  G_CALLBACK (no_backup_error_info_bar_response),
-					  tab);
-		}
-		else if (error->domain == GEDIT_DOCUMENT_ERROR &&
-		         error->code == GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK)
-		{
-			/* If we have any invalid char in the document we must warn the user
-			   as it can make the document useless if it is saved */
-			info_bar = gedit_invalid_character_info_bar_new (tab->priv->tmp_save_location);
-			g_return_if_fail (info_bar != NULL);
-
-			g_signal_connect (info_bar,
-			                  "response",
-			                  G_CALLBACK (invalid_character_info_bar_response),
-			                  tab);
-		}
-		else if (error->domain == GEDIT_DOCUMENT_ERROR ||
-			 (error->domain == G_IO_ERROR &&
-			  error->code != G_IO_ERROR_INVALID_DATA &&
-			  error->code != G_IO_ERROR_PARTIAL_INPUT))
-		{
-			/* These errors are _NOT_ recoverable */
-			gedit_recent_remove_if_local (tab->priv->tmp_save_location);
-
-			info_bar = gedit_unrecoverable_saving_error_info_bar_new (tab->priv->tmp_save_location,
-										  error);
-			g_return_if_fail (info_bar != NULL);
-
-			g_signal_connect (info_bar,
-					  "response",
-					  G_CALLBACK (unrecoverable_saving_error_info_bar_response),
-					  tab);
-		}
-		else
-		{
-			/* This error is recoverable */
-			g_return_if_fail (error->domain == G_CONVERT_ERROR ||
-			                  error->domain == G_IO_ERROR);
-
-			info_bar = gedit_conversion_error_while_saving_info_bar_new (tab->priv->tmp_save_location,
-										     tab->priv->tmp_encoding,
-										     error);
-			g_return_if_fail (info_bar != NULL);
-
-			g_signal_connect (info_bar,
-					  "response",
-					  G_CALLBACK (recoverable_saving_error_info_bar_response),
-					  tab);
-		}
-
-		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
-	}
-	else
-	{
-		gedit_recent_add_document (document);
-
-		if (tab->priv->print_preview != NULL)
-		{
-			gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
-		}
-		else
-		{
-			gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
-		}
-
-		tab->priv->ask_if_externally_modified = TRUE;
-
-		end_saving (tab);
 	}
 }
 
@@ -1400,8 +1225,6 @@ gedit_tab_init (GeditTab *tab)
 
 	tab->priv->editable = TRUE;
 
-	tab->priv->save_flags = 0;
-
 	tab->priv->ask_if_externally_modified = TRUE;
 
 	gtk_orientable_set_orientation (GTK_ORIENTABLE (tab),
@@ -1445,16 +1268,6 @@ gedit_tab_init (GeditTab *tab)
 	g_signal_connect (doc,
 			  "modified_changed",
 			  G_CALLBACK (document_modified_changed),
-			  tab);
-
-	g_signal_connect (doc,
-			  "saving",
-			  G_CALLBACK (document_saving),
-			  tab);
-
-	g_signal_connect (doc,
-			  "saved",
-			  G_CALLBACK (document_saved),
 			  tab);
 
 	view = gedit_tab_get_view (tab);
@@ -1758,9 +1571,9 @@ gedit_tab_get_from_document (GeditDocument *doc)
 }
 
 static void
-progress_cb (goffset   size,
-	     goffset   total_size,
-	     GeditTab *tab)
+loader_progress_cb (goffset   size,
+		    goffset   total_size,
+		    GeditTab *tab)
 {
 	gdouble elapsed_time;
 	gdouble total_time;
@@ -1854,6 +1667,7 @@ load_cb (GtkSourceFileLoader *loader,
 
 	if (error != NULL)
 	{
+		/* TODO remove when no longer needed. */
 		g_warning ("File loading error: %s", error->message);
 	}
 
@@ -2106,7 +1920,7 @@ load (GeditTab                *tab,
 	gtk_source_file_loader_load_async (tab->priv->loader,
 					   G_PRIORITY_DEFAULT,
 					   tab->priv->cancellable,
-					   (GFileProgressCallback) progress_cb,
+					   (GFileProgressCallback) loader_progress_cb,
 					   tab,
 					   NULL,
 					   (GAsyncReadyCallback) load_cb,
@@ -2210,54 +2024,243 @@ _gedit_tab_revert (GeditTab *tab)
 	load (tab, NULL, 0, 0);
 }
 
+static void
+saver_progress_cb (goffset   size,
+		   goffset   total_size,
+		   GeditTab *tab)
+{
+	gdouble elapsed_time;
+	gdouble total_time;
+	gdouble remaining_time;
+
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
+
+	if (tab->priv->timer == NULL)
+	{
+		tab->priv->timer = g_timer_new ();
+	}
+
+	elapsed_time = g_timer_elapsed (tab->priv->timer, NULL);
+
+	/* elapsed_time / total_time = size / total_size */
+	total_time = (elapsed_time * total_size) / size;
+
+	remaining_time = total_time - elapsed_time;
+
+	/* Approximately more than 3 seconds remaining. */
+	if (remaining_time > 3.0)
+	{
+		show_saving_info_bar (tab);
+	}
+
+	info_bar_set_progress (tab, size, total_size);
+}
+
+static void
+save_cb (GtkSourceFileSaver *saver,
+	 GAsyncResult       *result,
+	 GeditTab           *tab)
+{
+	GeditDocument *doc = gedit_tab_get_document (tab);
+	GFile *location = gtk_source_file_saver_get_location (saver);
+	GError *error = NULL;
+
+	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_SAVING);
+
+	gtk_source_file_saver_save_finish (saver, result, &error);
+
+	if (error != NULL)
+	{
+		/* TODO remove when no longer needed. */
+		g_warning ("File saving error: %s", error->message);
+	}
+
+	if (tab->priv->timer != NULL)
+	{
+		g_timer_destroy (tab->priv->timer);
+		tab->priv->timer = NULL;
+	}
+
+	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
+
+	if (error != NULL)
+	{
+		GtkWidget *info_bar;
+
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING_ERROR);
+
+		if (error->domain == GTK_SOURCE_FILE_SAVER_ERROR &&
+		    error->code == GTK_SOURCE_FILE_SAVER_ERROR_EXTERNALLY_MODIFIED)
+		{
+			/* This error is recoverable */
+			info_bar = gedit_externally_modified_saving_error_info_bar_new (location, error);
+			g_return_if_fail (info_bar != NULL);
+
+			g_signal_connect (info_bar,
+					  "response",
+					  G_CALLBACK (externally_modified_error_info_bar_response),
+					  tab);
+		}
+		else if (error->domain == G_IO_ERROR &&
+			 error->code == G_IO_ERROR_CANT_CREATE_BACKUP)
+		{
+			/* This error is recoverable */
+			info_bar = gedit_no_backup_saving_error_info_bar_new (location, error);
+			g_return_if_fail (info_bar != NULL);
+
+			g_signal_connect (info_bar,
+					  "response",
+					  G_CALLBACK (no_backup_error_info_bar_response),
+					  tab);
+		}
+		else if (error->domain == GTK_SOURCE_FILE_SAVER_ERROR &&
+			 error->code == GTK_SOURCE_FILE_SAVER_ERROR_INVALID_CHARS)
+		{
+			/* If we have any invalid char in the document we must warn the user
+			 * as it can make the document useless if it is saved.
+			 */
+			info_bar = gedit_invalid_character_info_bar_new (location);
+			g_return_if_fail (info_bar != NULL);
+
+			g_signal_connect (info_bar,
+			                  "response",
+			                  G_CALLBACK (invalid_character_info_bar_response),
+			                  tab);
+		}
+		else if (error->domain == GTK_SOURCE_FILE_SAVER_ERROR ||
+			 (error->domain == G_IO_ERROR &&
+			  error->code != G_IO_ERROR_INVALID_DATA &&
+			  error->code != G_IO_ERROR_PARTIAL_INPUT))
+		{
+			/* These errors are _NOT_ recoverable */
+			gedit_recent_remove_if_local (location);
+
+			info_bar = gedit_unrecoverable_saving_error_info_bar_new (location, error);
+			g_return_if_fail (info_bar != NULL);
+
+			g_signal_connect (info_bar,
+					  "response",
+					  G_CALLBACK (unrecoverable_saving_error_info_bar_response),
+					  tab);
+		}
+		else
+		{
+			const GtkSourceEncoding *encoding;
+
+			/* This error is recoverable */
+			g_return_if_fail (error->domain == G_CONVERT_ERROR ||
+			                  error->domain == G_IO_ERROR);
+
+			encoding = gtk_source_file_saver_get_encoding (saver);
+
+			info_bar = gedit_conversion_error_while_saving_info_bar_new (location, encoding, error);
+			g_return_if_fail (info_bar != NULL);
+
+			g_signal_connect (info_bar,
+					  "response",
+					  G_CALLBACK (recoverable_saving_error_info_bar_response),
+					  tab);
+		}
+
+		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
+	}
+	else
+	{
+		gedit_recent_add_document (doc);
+
+		if (tab->priv->print_preview != NULL)
+		{
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
+		}
+		else
+		{
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+		}
+
+		tab->priv->ask_if_externally_modified = TRUE;
+
+		clear_saving (tab);
+
+		g_signal_emit_by_name (doc, "saved", NULL);
+	}
+
+	/* Async operation finished. */
+	g_object_unref (tab);
+
+	if (error != NULL)
+	{
+		g_error_free (error);
+	}
+}
+
+static void
+save (GeditTab *tab)
+{
+	g_return_if_fail (GTK_SOURCE_IS_FILE_SAVER (tab->priv->saver));
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+
+	/* Keep the tab alive during the async operation. */
+	g_object_ref (tab);
+
+	gtk_source_file_saver_save_async (tab->priv->saver,
+					  G_PRIORITY_DEFAULT,
+					  NULL, /* TODO add a cancellable */
+					  (GFileProgressCallback) saver_progress_cb,
+					  tab,
+					  NULL,
+					  (GAsyncReadyCallback) save_cb,
+					  tab);
+}
+
 void
 _gedit_tab_save (GeditTab *tab)
 {
 	GeditDocument *doc;
-	GeditDocumentSaveFlags save_flags;
+	GtkSourceFile *file;
+	GFile *location;
+	GtkSourceFileSaverFlags save_flags = tab->priv->save_flags;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL ||
 			  tab->priv->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
 			  tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
-	g_return_if_fail (tab->priv->tmp_save_location == NULL);
-	g_return_if_fail (tab->priv->tmp_encoding == NULL);
 
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (!gedit_document_is_untitled (doc));
 
 	if (tab->priv->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
 	{
-		/* We already told the user about the external
-		 * modification: hide the message bar and set
-		 * the save flag.
+		/* We already told the user about the external modification:
+		 * hide the message bar and set the save flag.
 		 */
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
-		save_flags = tab->priv->save_flags | GEDIT_DOCUMENT_SAVE_IGNORE_MTIME;
+		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME;
 	}
-	else
+
+	file = gedit_document_get_file (doc);
+	location = gtk_source_file_get_location (file);
+
+	if (tab->priv->saver != NULL)
 	{
-		save_flags = tab->priv->save_flags;
+		g_warning ("GeditTab: file saver already exists.");
+		g_object_unref (tab->priv->saver);
 	}
 
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+	tab->priv->saver = gtk_source_file_saver_new (file, location);
+	gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
 
-	/* location used in error messages, will be freed in document_saved */
-	tab->priv->tmp_save_location = gedit_document_get_location (doc);
-	tab->priv->tmp_encoding = gedit_document_get_encoding (doc);
-
-	_gedit_document_save (doc, save_flags);
+	save (tab);
 }
 
 static gboolean
 gedit_tab_auto_save (GeditTab *tab)
 {
 	GeditDocument *doc;
+	GtkSourceFile *file;
+	GFile *location;
 
 	gedit_debug (DEBUG_TAB);
-
-	g_return_val_if_fail (tab->priv->tmp_save_location == NULL, G_SOURCE_REMOVE);
-	g_return_val_if_fail (tab->priv->tmp_encoding == NULL, G_SOURCE_REMOVE);
 
 	doc = gedit_tab_get_document (tab);
 	g_return_val_if_fail (!gedit_document_is_untitled (doc), G_SOURCE_REMOVE);
@@ -2270,8 +2273,8 @@ gedit_tab_auto_save (GeditTab *tab)
 		return G_SOURCE_CONTINUE;
 	}
 
-	if ((tab->priv->state != GEDIT_TAB_STATE_NORMAL) &&
-	    (tab->priv->state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW))
+	if (tab->priv->state != GEDIT_TAB_STATE_NORMAL &&
+	    tab->priv->state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
 	{
 		gedit_debug_message (DEBUG_TAB, "Retry after 30 seconds");
 
@@ -2286,23 +2289,33 @@ gedit_tab_auto_save (GeditTab *tab)
 	/* Set auto_save_timeout to 0 since the timeout is going to be destroyed */
 	tab->priv->auto_save_timeout = 0;
 
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+	file = gedit_document_get_file (doc);
+	location = gtk_source_file_get_location (file);
 
-	/* location used in error messages, will be freed in document_saved */
-	tab->priv->tmp_save_location = gedit_document_get_location (doc);
-	tab->priv->tmp_encoding = gedit_document_get_encoding (doc);
+	if (tab->priv->saver != NULL)
+	{
+		g_warning ("GeditTab: file saver already exists.");
+		g_object_unref (tab->priv->saver);
+	}
+
+	tab->priv->saver = gtk_source_file_saver_new (file, location);
 
 	/* Since we are autosaving, we need to preserve the backup that was produced
-	   the last time the user "manually" saved the file. In the case a recoverable
-	   error happens while saving, the last backup is not preserved since the user
-	   expressed his willing of saving the file */
-	_gedit_document_save (doc, tab->priv->save_flags | GEDIT_DOCUMENT_SAVE_PRESERVE_BACKUP);
+	 * the last time the user "manually" saved the file. So we don't set the
+	 * CREATE_BACKUP flag for an automatic file saving.
+	 * TODO In the case a recoverable error happens while saving, set the
+	 * CREATE_BACKUP flag since the user expressed his willing of saving the
+	 * file.
+	 */
+	gtk_source_file_saver_set_flags (tab->priv->saver,
+					 tab->priv->save_flags);
 
-	gedit_debug_message (DEBUG_TAB, "Done");
+	save (tab);
 
 	return G_SOURCE_REMOVE;
 }
 
+/* TODO port to GtkSourceNewlineType and GtkSourceCompressionType */
 void
 _gedit_tab_save_as (GeditTab                     *tab,
 		    GFile                        *location,
@@ -2311,7 +2324,9 @@ _gedit_tab_save_as (GeditTab                     *tab,
 		    GeditDocumentCompressionType  compression_type)
 {
 	GeditDocument *doc;
-	GeditDocumentSaveFlags save_flags;
+	GtkSourceFile *file;
+	GtkSourceFileSaverFlags save_flags;
+	GFile *prev_location;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL ||
@@ -2320,41 +2335,46 @@ _gedit_tab_save_as (GeditTab                     *tab,
 	g_return_if_fail (G_IS_FILE (location));
 	g_return_if_fail (encoding != NULL);
 
-	g_return_if_fail (tab->priv->tmp_save_location == NULL);
-	g_return_if_fail (tab->priv->tmp_encoding == NULL);
-
 	doc = gedit_tab_get_document (tab);
 
 	/* reset the save flags, when saving as */
-	tab->priv->save_flags = 0;
+	tab->priv->save_flags = GTK_SOURCE_FILE_SAVER_FLAGS_NONE;
+	save_flags = tab->priv->save_flags;
 
 	if (tab->priv->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
 	{
-		/* We already told the user about the external
-		 * modification: hide the message bar and set
-		 * the save flag.
+		/* We already told the user about the external modification:
+		 * hide the message bar and set the save flag.
 		 */
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
-		save_flags = tab->priv->save_flags | GEDIT_DOCUMENT_SAVE_IGNORE_MTIME;
+		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME;
 	}
-	else
+
+	file = gedit_document_get_file (doc);
+
+	prev_location = gtk_source_file_get_location (file);
+
+	if (!g_file_equal (prev_location, location))
 	{
-		save_flags = tab->priv->save_flags;
+		/* Ignore modification time for a save to another location. */
+		/* TODO do that in GtkSourceFileSaver. */
+		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME;
 	}
 
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+	if (tab->priv->saver != NULL)
+	{
+		g_warning ("GeditTab: file saver already exists.");
+		g_object_unref (tab->priv->saver);
+	}
 
-	/* location used in error messages... dup because errors are async
-	 * and the location can go away. Will be freed in document_saved. */
-	tab->priv->tmp_save_location = g_file_dup (location);
-	tab->priv->tmp_encoding = encoding;
+	tab->priv->saver = gtk_source_file_saver_new (file, location);
 
-	_gedit_document_save_as (doc,
-				 location,
-				 encoding,
-				 newline_type,
-				 compression_type,
-				 save_flags);
+	gtk_source_file_saver_set_encoding (tab->priv->saver, encoding);
+	gtk_source_file_saver_set_newline_type (tab->priv->saver, newline_type);
+	gtk_source_file_saver_set_compression_type (tab->priv->saver, compression_type);
+	gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
+
+	save (tab);
 }
 
 #define GEDIT_PAGE_SETUP_KEY "gedit-page-setup-key"
