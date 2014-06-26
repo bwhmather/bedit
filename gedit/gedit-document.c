@@ -1174,16 +1174,9 @@ gedit_document_get_mime_type (GeditDocument *doc)
  	return mime_type != NULL ? mime_type : g_strdup ("text/plain");
 }
 
-/**
- * _gedit_document_set_readonly:
- * @doc: a #GeditDocument
- * @readonly: the new setting.
- *
- * Sets whether the document is read-only.
- */
-void
-_gedit_document_set_readonly (GeditDocument *doc,
-                              gboolean       readonly)
+static void
+set_readonly (GeditDocument *doc,
+	      gboolean       readonly)
 {
 	gedit_debug (DEBUG_DOCUMENT);
 
@@ -1240,7 +1233,7 @@ loaded_query_info_cb (GFile         *location,
 		g_object_unref (info);
 	}
 
-	_gedit_document_set_readonly (doc, read_only);
+	set_readonly (doc, read_only);
 
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
@@ -1314,7 +1307,7 @@ saved_query_info_cb (GFile         *location,
 	doc->priv->deleted = FALSE;
 	doc->priv->create = FALSE;
 
-	_gedit_document_set_readonly (doc, FALSE);
+	set_readonly (doc, FALSE);
 
 	set_encoding (doc,
 		      gtk_source_file_get_encoding (doc->priv->file),
@@ -1398,7 +1391,7 @@ check_file_on_disk (GeditDocument *doc)
 			read_only = !g_file_info_get_attribute_boolean (info,
 									G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
 
-			_gedit_document_set_readonly (doc, read_only);
+			set_readonly (doc, read_only);
 		}
 
 		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))

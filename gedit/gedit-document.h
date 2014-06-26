@@ -216,9 +216,6 @@ GtkSourceSearchContext	*gedit_document_get_search_context	(GeditDocument        
 
 /* Non exported functions */
 
-void		 _gedit_document_set_readonly 	(GeditDocument       *doc,
-						 gboolean             readonly);
-
 glong		 _gedit_document_get_seconds_since_last_save_or_load
 						(GeditDocument       *doc);
 
