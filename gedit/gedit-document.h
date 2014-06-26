@@ -63,21 +63,6 @@ typedef enum
 #define GEDIT_DOCUMENT_NEWLINE_TYPE_DEFAULT GEDIT_DOCUMENT_NEWLINE_TYPE_LF
 #endif
 
-/**
- * GeditDocumentSaveFlags:
- * @GEDIT_DOCUMENT_SAVE_IGNORE_MTIME: save file despite external modifications.
- * @GEDIT_DOCUMENT_SAVE_IGNORE_BACKUP: write the file directly without attempting to backup.
- * @GEDIT_DOCUMENT_SAVE_PRESERVE_BACKUP: preserve previous backup file, needed to support autosaving.
- * @GEDIT_DOCUMENT_SAVE_IGNORE_INVALID_CHARS: do not save invalid characters.
- */
-typedef enum
-{
-	GEDIT_DOCUMENT_SAVE_IGNORE_MTIME 	= 1 << 0,
-	GEDIT_DOCUMENT_SAVE_IGNORE_BACKUP	= 1 << 1,
-	GEDIT_DOCUMENT_SAVE_PRESERVE_BACKUP	= 1 << 2,
-	GEDIT_DOCUMENT_SAVE_IGNORE_INVALID_CHARS= 1 << 3
-} GeditDocumentSaveFlags;
-
 struct _GeditDocument
 {
 	GtkSourceBuffer buffer;
@@ -102,20 +87,6 @@ struct _GeditDocumentClass
 
 	void (* saved)  		(GeditDocument *document);
 };
-
-#define GEDIT_DOCUMENT_ERROR gedit_document_error_quark ()
-
-enum
-{
-	GEDIT_DOCUMENT_ERROR_EXTERNALLY_MODIFIED,
-	GEDIT_DOCUMENT_ERROR_CANT_CREATE_BACKUP, /* unused */
-	GEDIT_DOCUMENT_ERROR_TOO_BIG,
-	GEDIT_DOCUMENT_ERROR_ENCODING_AUTO_DETECTION_FAILED,
-	GEDIT_DOCUMENT_ERROR_CONVERSION_FALLBACK,
-	GEDIT_DOCUMENT_NUM_ERRORS
-};
-
-GQuark		 gedit_document_error_quark	(void);
 
 GType		 gedit_document_get_type      	(void) G_GNUC_CONST;
 
