@@ -92,27 +92,17 @@ struct _GeditDocumentClass
 
 	/* Signals */
 
-	void (* cursor_moved)		(GeditDocument    *document);
+	void (* cursor_moved)		(GeditDocument *document);
 
-	void (* load)			(GeditDocument       *doc,
-					 GFile               *location,
-					 const GeditEncoding *encoding,
-					 gint                 line_pos,
-					 gint                 column_pos,
-					 gboolean             create);
+	void (* load)			(GeditDocument *document);
 
-	void (* loaded)			(GeditDocument    *document,
-					 const GError     *error);
+	void (* loaded)			(GeditDocument *document,
+					 const GError  *error);
 
-	void (* save)			(GeditDocument            *document,
-					 GFile                    *location,
-					 const GeditEncoding      *encoding,
-					 GeditDocumentNewlineType  newline_type,
-					 GtkSourceCompressionType  compression_type,
-					 GeditDocumentSaveFlags    flags);
+	void (* save)			(GeditDocument *document);
 
-	void (* saved)  		(GeditDocument    *document,
-					 const GError     *error);
+	void (* saved)  		(GeditDocument *document,
+					 const GError  *error);
 };
 
 #define GEDIT_DOCUMENT_ERROR gedit_document_error_quark ()

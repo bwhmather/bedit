@@ -542,13 +542,8 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	/**
 	 * GeditDocument::load:
 	 * @document: the #GeditDocument.
-	 * @location: the location where to load the document from.
-	 * @encoding: the #GeditEncoding to encode the document.
-	 * @line_pos: the line to show.
-	 * @column_pos: the column to show.
-	 * @create: whether the document should be created if it doesn't exist.
 	 *
-	 * The "load" signal is emitted when a document is loaded.
+	 * The "load" signal is emitted at the beginning of a file loading.
 	 *
 	 * Since: 2.22
 	 */
@@ -557,17 +552,8 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditDocumentClass, load),
-			      NULL, NULL,
-			      gedit_marshal_VOID__OBJECT_BOXED_INT_BOOLEAN,
-			      G_TYPE_NONE,
-			      4,
-			      G_TYPE_FILE,
-			      /* we rely on the fact that the GeditEncoding pointer stays
-			       * the same forever */
-			      GEDIT_TYPE_ENCODING | G_SIGNAL_TYPE_STATIC_SCOPE,
-			      G_TYPE_INT,
-			      G_TYPE_INT,
-			      G_TYPE_BOOLEAN);
+			      NULL, NULL, NULL,
+			      G_TYPE_NONE, 0);
 
 	document_signals[LOADED] =
 		g_signal_new ("loaded",
@@ -583,13 +569,8 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	/**
 	 * GeditDocument::save:
 	 * @document: the #GeditDocument.
-	 * @location: the location where the document is about to be saved.
-	 * @encoding: the #GeditEncoding used to save the document.
-	 * @newline_type: the #GeditDocumentNewlineType used to save the document.
-	 * @compression_type: the #GtkSourceCompressionType used to save the document.
-	 * @flags: the #GeditDocumentSaveFlags for the save operation.
 	 *
-	 * The "save" signal is emitted when the document is saved.
+	 * The "save" signal is emitted at the beginning of a file saving.
 	 *
 	 * Since: 2.20
 	 */
@@ -598,17 +579,8 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditDocumentClass, save),
-			      NULL, NULL,
-			      gedit_marshal_VOID__OBJECT_BOXED_ENUM_ENUM_FLAGS,
-			      G_TYPE_NONE,
-			      5,
-			      G_TYPE_FILE,
-			      /* we rely on the fact that the GeditEncoding pointer stays
-			       * the same forever */
-			      GEDIT_TYPE_ENCODING | G_SIGNAL_TYPE_STATIC_SCOPE,
-			      GEDIT_TYPE_DOCUMENT_NEWLINE_TYPE,
-			      GTK_SOURCE_TYPE_COMPRESSION_TYPE,
-			      GEDIT_TYPE_DOCUMENT_SAVE_FLAGS);
+			      NULL, NULL, NULL,
+			      G_TYPE_NONE, 0);
 
 	document_signals[SAVED] =
 		g_signal_new ("saved",
