@@ -72,8 +72,6 @@ struct _GeditDocumentPrivate
 	 */
 	GtkSourceSearchContext *search_context;
 
-	GtkSourceNewlineType newline_type;
-
 	/* Temp data while loading */
 	gboolean             create; /* Create file if uri points
 	                              * to a non existing file */
@@ -103,7 +101,6 @@ enum
 	PROP_MIME_TYPE,
 	PROP_READ_ONLY,
 	PROP_ENCODING,
-	PROP_NEWLINE_TYPE,
 	PROP_EMPTY_SEARCH
 };
 
@@ -154,18 +151,6 @@ release_untitled_number (gint n)
 	g_return_if_fail (allocated_untitled_numbers != NULL);
 
 	g_hash_table_remove (allocated_untitled_numbers, GINT_TO_POINTER (n));
-}
-
-static void
-set_newline_type (GeditDocument        *doc,
-		  GtkSourceNewlineType  newline_type)
-{
-	if (doc->priv->newline_type != newline_type)
-	{
-		doc->priv->newline_type = newline_type;
-
-		g_object_notify (G_OBJECT (doc), "newline-type");
-	}
 }
 
 static const gchar *
@@ -289,10 +274,6 @@ gedit_document_get_property (GObject    *object,
 			g_value_set_boxed (value, doc->priv->encoding);
 			break;
 
-		case PROP_NEWLINE_TYPE:
-			g_value_set_enum (value, doc->priv->newline_type);
-			break;
-
 		case PROP_EMPTY_SEARCH:
 			g_value_set_boolean (value, doc->priv->empty_search);
 			break;
@@ -333,10 +314,6 @@ gedit_document_set_property (GObject      *object,
 
 		case PROP_CONTENT_TYPE:
 			gedit_document_set_content_type (doc, g_value_get_string (value));
-			break;
-
-		case PROP_NEWLINE_TYPE:
-			set_newline_type (doc, g_value_get_enum (value));
 			break;
 
 		default:
@@ -435,23 +412,6 @@ gedit_document_class_init (GeditDocumentClass *klass)
 							     GEDIT_TYPE_ENCODING,
 							     G_PARAM_READABLE |
 							     G_PARAM_STATIC_STRINGS));
-
-	/**
-	 * GeditDocument:newline-type:
-	 *
-	 * The :newline-type property determines what is considered
-	 * as a line ending when saving the document
-	 */
-	g_object_class_install_property (object_class, PROP_NEWLINE_TYPE,
-	                                 g_param_spec_enum ("newline-type",
-	                                                    "Newline type",
-	                                                    "The accepted types of line ending",
-	                                                    GTK_SOURCE_TYPE_NEWLINE_TYPE,
-	                                                    GTK_SOURCE_NEWLINE_TYPE_LF,
-	                                                    G_PARAM_READWRITE |
-	                                                    G_PARAM_CONSTRUCT |
-	                                                    G_PARAM_STATIC_NAME |
-	                                                    G_PARAM_STATIC_BLURB));
 
 	/**
 	 * GeditDocument:empty-search:
@@ -1501,7 +1461,7 @@ gedit_document_get_newline_type (GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), 0);
 
-	return doc->priv->newline_type;
+	return gtk_source_file_get_newline_type (doc->priv->file);
 }
 
 GtkSourceCompressionType
