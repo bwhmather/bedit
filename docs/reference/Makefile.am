@@ -32,10 +32,6 @@ IGNORE_HFILES =					\
 	gedit-app-x11.h				\
 	gedit-close-confirmation-dialog.h 	\
 	gedit-dirs.h				\
-	gedit-document-input-stream.h		\
-	gedit-document-loader.h			\
-	gedit-document-output-stream.h		\
-	gedit-document-saver.h			\
 	gedit-documents-panel.h			\
 	gedit-encodings-dialog.h		\
 	gedit-enum-types.h			\

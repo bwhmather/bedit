@@ -99,10 +99,6 @@ gedit_built_sources =			\
 gedit_NOINST_H_FILES =				\
 	gedit/gedit-close-confirmation-dialog.h \
 	gedit/gedit-dirs.h			\
-	gedit/gedit-document-input-stream.h	\
-	gedit/gedit-document-loader.h		\
-	gedit/gedit-document-output-stream.h	\
-	gedit/gedit-document-saver.h		\
 	gedit/gedit-documents-panel.h		\
 	gedit/gedit-encodings-dialog.h		\
 	gedit/gedit-file-chooser-dialog.h	\
@@ -173,10 +169,6 @@ gedit_libgedit_c_files =			\
 	gedit/gedit-debug.c			\
 	gedit/gedit-dirs.c			\
 	gedit/gedit-document.c 			\
-	gedit/gedit-document-input-stream.c	\
-	gedit/gedit-document-loader.c		\
-	gedit/gedit-document-output-stream.c	\
-	gedit/gedit-document-saver.c		\
 	gedit/gedit-documents-panel.c		\
 	gedit/gedit-encodings.c			\
 	gedit/gedit-encodings-combo-box.c	\
