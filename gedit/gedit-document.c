@@ -144,7 +144,7 @@ release_untitled_number (gint n)
 }
 
 static const gchar *
-get_language_metadata (GeditDocument *doc)
+get_language_string (GeditDocument *doc)
 {
 	GtkSourceLanguage *lang = gedit_document_get_language (doc);
 
@@ -160,7 +160,7 @@ save_metadata (GeditDocument *doc)
 
 	if (doc->priv->language_set_by_user)
 	{
-		language = get_language_metadata (doc);
+		language = get_language_string (doc);
 	}
 
 	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
@@ -481,7 +481,7 @@ set_language (GeditDocument     *doc,
 
 	if (set_by_user)
 	{
-		const gchar *language = get_language_metadata (doc);
+		const gchar *language = get_language_string (doc);
 
 		gedit_document_set_metadata (doc,
 					     GEDIT_METADATA_ATTRIBUTE_LANGUAGE, language,
