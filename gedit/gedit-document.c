@@ -1043,6 +1043,7 @@ loaded_query_info_cb (GFile         *location,
 	GFileInfo *info;
 	const gchar *content_type = NULL;
 	gboolean read_only = FALSE;
+	GTimeVal mtime = {0, 0};
 	GError *error = NULL;
 
 	info = g_file_query_info_finish (location, result, &error);
@@ -1066,11 +1067,17 @@ loaded_query_info_cb (GFile         *location,
 			read_only = !g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
 		}
 
+		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
+		{
+			g_file_info_get_modification_time (info, &mtime);
+		}
+
 		g_object_unref (info);
 	}
 
 	set_readonly (doc, read_only);
 
+	doc->priv->mtime = mtime;
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
 	doc->priv->externally_modified = FALSE;
@@ -1102,7 +1109,8 @@ gedit_document_loaded_real (GeditDocument *doc)
 
 	g_file_query_info_async (location,
 				 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","
-				 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
+				 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE ","
+				 G_FILE_ATTRIBUTE_TIME_MODIFIED,
 				 G_FILE_QUERY_INFO_NONE,
 				 G_PRIORITY_DEFAULT,
 				 NULL,
@@ -1117,6 +1125,7 @@ saved_query_info_cb (GFile         *location,
 {
 	GFileInfo *info;
 	const gchar *content_type = NULL;
+	GTimeVal mtime = {0, 0};
 	GError *error = NULL;
 
 	info = g_file_query_info_finish (location, result, &error);
@@ -1128,14 +1137,24 @@ saved_query_info_cb (GFile         *location,
 		error = NULL;
 	}
 
-	if (info != NULL &&
-	    g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
+	if (info != NULL)
 	{
-		content_type = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
+		{
+			content_type = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+		}
+
+		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
+		{
+			g_file_info_get_modification_time (info, &mtime);
+		}
+
+		g_object_unref (info);
 	}
 
 	gedit_document_set_content_type (doc, content_type);
 
+	doc->priv->mtime = mtime;
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
 	doc->priv->externally_modified = FALSE;
@@ -1159,7 +1178,8 @@ gedit_document_saved_real (GeditDocument *doc)
 	g_object_ref (doc);
 
 	g_file_query_info_async (location,
-				 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+				 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","
+				 G_FILE_ATTRIBUTE_TIME_MODIFIED,
 				 G_FILE_QUERY_INFO_NONE,
 				 G_PRIORITY_DEFAULT,
 				 NULL,
