@@ -103,11 +103,15 @@ static void
 gedit_view_frame_dispose (GObject *object)
 {
 	GeditViewFrame *frame = GEDIT_VIEW_FRAME (object);
+	GtkTextBuffer *buffer = NULL;
 
-	if (frame->priv->start_mark != NULL && frame->priv->view != NULL)
+	if (frame->priv->view != NULL)
 	{
-		GtkTextBuffer *buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
+		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->priv->view));
+	}
 
+	if (frame->priv->start_mark != NULL && buffer != NULL)
+	{
 		gtk_text_buffer_delete_mark (buffer, frame->priv->start_mark);
 		frame->priv->start_mark = NULL;
 	}
@@ -128,6 +132,12 @@ gedit_view_frame_dispose (GObject *object)
 	{
 		g_source_remove (frame->priv->remove_entry_tag_timeout_id);
 		frame->priv->remove_entry_tag_timeout_id = 0;
+	}
+
+	if (buffer != NULL)
+	{
+		GtkSourceFile *file = gedit_document_get_file (GEDIT_DOCUMENT (buffer));
+		gtk_source_file_set_mount_operation_factory (file, NULL, NULL, NULL);
 	}
 
 	g_clear_object (&frame->priv->entry_tag);
@@ -1449,11 +1459,11 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 }
 
 static GMountOperation *
-view_frame_mount_operation_factory (GeditDocument *doc,
+view_frame_mount_operation_factory (GtkSourceFile *file,
 				    gpointer       user_data)
 {
-	GtkWidget *frame = user_data;
-	GtkWidget *window = gtk_widget_get_toplevel (frame);
+	GtkWidget *view_frame = user_data;
+	GtkWidget *window = gtk_widget_get_toplevel (view_frame);
 
 	return gtk_mount_operation_new (GTK_WINDOW (window));
 }
@@ -1462,6 +1472,7 @@ static void
 gedit_view_frame_init (GeditViewFrame *frame)
 {
 	GeditDocument *doc;
+	GtkSourceFile *file;
 	GdkRGBA transparent = {0, 0, 0, 0};
 
 	frame->priv = gedit_view_frame_get_instance_private (frame);
@@ -1471,9 +1482,12 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	gtk_widget_override_background_color (GTK_WIDGET (frame), 0, &transparent);
 
 	doc = gedit_view_frame_get_document (frame);
-	_gedit_document_set_mount_operation_factory (doc,
+	file = gedit_document_get_file (doc);
+
+	gtk_source_file_set_mount_operation_factory (file,
 						     view_frame_mount_operation_factory,
-						     frame);
+						     frame,
+						     NULL);
 
 	frame->priv->entry_tag = gd_tagged_entry_tag_new ("");
 

@@ -5,6 +5,7 @@
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
  * Copyright (C) 2002-2005 Paolo Maggi
+ * Copyright (C) 2014 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -77,6 +78,8 @@ GType		 gedit_document_get_type      	(void) G_GNUC_CONST;
 
 GeditDocument   *gedit_document_new 		(void);
 
+GtkSourceFile	*gedit_document_get_file	(GeditDocument       *doc);
+
 GFile		*gedit_document_get_location	(GeditDocument       *doc);
 void		 gedit_document_set_location	(GeditDocument       *doc,
 						 GFile               *location);
@@ -136,10 +139,13 @@ void		 gedit_document_set_metadata	(GeditDocument       *doc,
 						 const gchar         *first_key,
 						 ...);
 
-void			 gedit_document_set_search_context	(GeditDocument          *doc,
-								 GtkSourceSearchContext *search_context);
+void		 gedit_document_set_search_context
+						(GeditDocument          *doc,
+						 GtkSourceSearchContext *search_context);
 
-GtkSourceSearchContext	*gedit_document_get_search_context	(GeditDocument          *doc);
+GtkSourceSearchContext
+		*gedit_document_get_search_context
+						(GeditDocument       *doc);
 
 /* Non exported functions */
 
@@ -147,27 +153,13 @@ glong		 _gedit_document_get_seconds_since_last_save_or_load
 						(GeditDocument       *doc);
 
 /* Note: this is a sync stat: use only on local files */
-gboolean	_gedit_document_check_externally_modified
+gboolean	 _gedit_document_check_externally_modified
 						(GeditDocument       *doc);
 
 gboolean	 _gedit_document_needs_saving	(GeditDocument       *doc);
 
-/**
- * GeditMountOperationFactory: (skip)
- * @doc:
- * @userdata:
- */
-typedef GMountOperation *(*GeditMountOperationFactory)(GeditDocument *doc,
-						       gpointer       userdata);
-
-void		 _gedit_document_set_mount_operation_factory
-						(GeditDocument	            *doc,
-						 GeditMountOperationFactory  callback,
-						 gpointer	             userdata);
-
-gboolean		 _gedit_document_get_empty_search	(GeditDocument		*doc);
-
-GtkSourceFile		*gedit_document_get_file		(GeditDocument *doc);
+gboolean	 _gedit_document_get_empty_search
+						(GeditDocument       *doc);
 
 G_END_DECLS
 

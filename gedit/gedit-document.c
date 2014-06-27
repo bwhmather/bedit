@@ -72,10 +72,6 @@ struct _GeditDocumentPrivate
 	gboolean             create; /* Create file if uri points
 	                              * to a non existing file */
 
-	/* Mount operation factory */
-	GeditMountOperationFactory  mount_operation_factory;
-	gpointer		    mount_operation_userdata;
-
 	guint readonly : 1;
 	guint externally_modified : 1;
 	guint deleted : 1;
@@ -1412,17 +1408,6 @@ gedit_document_get_compression_type (GeditDocument *doc)
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), 0);
 
 	return gtk_source_file_get_compression_type (doc->priv->file);
-}
-
-void
-_gedit_document_set_mount_operation_factory (GeditDocument 	       *doc,
-					    GeditMountOperationFactory	callback,
-					    gpointer	                userdata)
-{
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-	doc->priv->mount_operation_factory = callback;
-	doc->priv->mount_operation_userdata = userdata;
 }
 
 #ifndef ENABLE_GVFS_METADATA
