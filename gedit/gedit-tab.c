@@ -908,14 +908,6 @@ info_bar_set_progress (GeditTab *tab,
 }
 
 static gboolean
-remove_tab_idle (GeditTab *tab)
-{
-	remove_tab (tab);
-
-	return FALSE;
-}
-
-static gboolean
 scroll_to_cursor (GeditTab *tab)
 {
 	GeditView *view;
@@ -1728,15 +1720,7 @@ load_cb (GtkSourceFileLoader *loader,
 		if (error->domain == G_IO_ERROR &&
 		    error->code == G_IO_ERROR_CANCELLED)
 		{
-			/* remove the tab, but in an idle handler, since
-			 * we are in the handler of doc loaded and we
-			 * don't want doc and tab to be finalized now.
-			 */
-			/* FIXME idle still needed? */
-			/* FIXME if an idle is still needed, it's safer to
-			 * remove the idle source during dispose().
-			 */
-			g_idle_add ((GSourceFunc) remove_tab_idle, tab);
+			remove_tab (tab);
 		}
 		else
 		{
