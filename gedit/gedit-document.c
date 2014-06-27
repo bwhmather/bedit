@@ -874,6 +874,10 @@ gedit_document_set_content_type (GeditDocument *doc,
  * @doc: a #GeditDocument
  *
  * Returns: (allow-none) (transfer full): a copy of the internal #GFile
+ *
+ * Deprecated: 3.14: use gtk_source_file_get_location() instead. Attention,
+ * gedit_document_get_location() has a transfer full for the return value, while
+ * gtk_source_file_get_location() has a transfer none.
  */
 GFile *
 gedit_document_get_location (GeditDocument *doc)
@@ -887,6 +891,13 @@ gedit_document_get_location (GeditDocument *doc)
 	return location != NULL ? g_object_ref (location) : NULL;
 }
 
+/**
+ * gedit_document_set_location:
+ * @doc: a #GeditDocument.
+ * @location: the new location.
+ *
+ * Deprecated: 3.14: use gtk_source_file_set_location() instead.
+ */
 void
 gedit_document_set_location (GeditDocument *doc,
 			     GFile         *location)
@@ -1394,6 +1405,13 @@ gedit_document_get_language (GeditDocument *doc)
 	return gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (doc));
 }
 
+/**
+ * gedit_document_get_encoding:
+ * @doc: a #GeditDocument.
+ *
+ * Returns: the encoding.
+ * Deprecated: 3.14: use gtk_source_file_get_encoding() instead.
+ */
 const GtkSourceEncoding *
 gedit_document_get_encoding (GeditDocument *doc)
 {
@@ -1416,6 +1434,13 @@ _gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
 	return (current_time.tv_sec - doc->priv->time_of_last_save_or_load.tv_sec);
 }
 
+/**
+ * gedit_document_get_newline_type:
+ * @doc: a #GeditDocument.
+ *
+ * Returns: the newline type.
+ * Deprecated: 3.14: use gtk_source_file_get_newline_type() instead.
+ */
 GtkSourceNewlineType
 gedit_document_get_newline_type (GeditDocument *doc)
 {
@@ -1424,6 +1449,13 @@ gedit_document_get_newline_type (GeditDocument *doc)
 	return gtk_source_file_get_newline_type (doc->priv->file);
 }
 
+/**
+ * gedit_document_get_compression_type:
+ * @doc: a #GeditDocument.
+ *
+ * Returns: the compression type.
+ * Deprecated: 3.14: use gtk_source_file_get_compression_type() instead.
+ */
 GtkSourceCompressionType
 gedit_document_get_compression_type (GeditDocument *doc)
 {
