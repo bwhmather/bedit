@@ -379,17 +379,23 @@ set_root_from_doc (GeditFileBrowserPlugin *plugin,
                    GeditDocument          *doc)
 {
 	GeditFileBrowserPluginPrivate *priv = plugin->priv;
-	GFile *file;
+	GtkSourceFile *file;
+	GFile *location;
 	GFile *parent;
 
 	if (doc == NULL)
+	{
 		return;
+	}
 
-	file = gedit_document_get_location (doc);
-	if (file == NULL)
+	file = gedit_document_get_file (doc);
+	location = gtk_source_file_get_location (file);
+	if (location == NULL)
+	{
 		return;
+	}
 
-	parent = g_file_get_parent (file);
+	parent = g_file_get_parent (location);
 
 	if (parent != NULL)
 	{
@@ -399,8 +405,6 @@ set_root_from_doc (GeditFileBrowserPlugin *plugin,
 
 		g_object_unref (parent);
 	}
-
-	g_object_unref (file);
 }
 
 static void
@@ -730,23 +734,28 @@ on_rename_cb (GeditFileBrowserStore *store,
 {
 	GList *documents;
 	GList *item;
-	GeditDocument *doc;
-	GFile *docfile;
 
 	/* Find all documents and set its uri to newuri where it matches olduri */
 	documents = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
 
 	for (item = documents; item; item = item->next)
 	{
-		doc = GEDIT_DOCUMENT (item->data);
-		docfile = gedit_document_get_location (doc);
+		GeditDocument *doc;
+		GtkSourceFile *source_file;
+		GFile *docfile;
 
-		if (!docfile)
+		doc = GEDIT_DOCUMENT (item->data);
+		source_file = gedit_document_get_file (doc);
+		docfile = gtk_source_file_get_location (source_file);
+
+		if (docfile == NULL)
+		{
 			continue;
+		}
 
 		if (g_file_equal (docfile, oldfile))
 		{
-			gedit_document_set_location (doc, newfile);
+			gtk_source_file_set_location (source_file, newfile);
 		}
 		else
 		{
@@ -754,21 +763,20 @@ on_rename_cb (GeditFileBrowserStore *store,
 
 			relative = g_file_get_relative_path (oldfile, docfile);
 
-			if (relative)
+			if (relative != NULL)
 			{
 				/* Relative now contains the part in docfile without
 				   the prefix oldfile */
 
-				g_object_unref (docfile);
 				docfile = g_file_get_child (newfile, relative);
 
-				gedit_document_set_location (doc, docfile);
+				gtk_source_file_set_location (source_file, docfile);
+
+				g_object_unref (docfile);
 			}
 
 			g_free (relative);
 		}
-
-		g_object_unref (docfile);
 	}
 
 	g_list_free (documents);
@@ -843,11 +851,12 @@ on_tab_added_cb (GeditWindow            *window,
 	if (open)
 	{
 		GeditDocument *doc;
+		GtkSourceFile *file;
 		GFile *location;
 
 		doc = gedit_tab_get_document (tab);
-
-		location = gedit_document_get_location (doc);
+		file = gedit_document_get_file (doc);
+		location = gtk_source_file_get_location (file);
 
 		if (location != NULL)
 		{
@@ -857,7 +866,6 @@ on_tab_added_cb (GeditWindow            *window,
 				set_root_from_doc (plugin, doc);
 				load_default = FALSE;
 			}
-			g_object_unref (location);
 		}
 	}
 
