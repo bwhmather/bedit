@@ -380,11 +380,13 @@ gedit_document_class_init (GeditDocumentClass *klass)
 							       G_PARAM_READABLE |
 							       G_PARAM_STATIC_STRINGS));
 
-	/* This signal is used to update the cursor position is the statusbar,
+	/* This signal is used to update the cursor position in the statusbar,
 	 * it's emitted either when the insert mark is moved explicitely or
 	 * when the buffer changes (insert/delete).
-	 * We prevent the emission of the signal during replace_all to
-	 * improve performance.
+	 * FIXME When the replace_all was implemented in gedit, this signal was
+	 * not emitted during the replace_all to improve performance. Now the
+	 * replace_all is implemented in GtkSourceView, so the signal is
+	 * emitted.
 	 */
 	document_signals[CURSOR_MOVED] =
 		g_signal_new ("cursor-moved",
@@ -402,6 +404,10 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	 *
 	 * The "load" signal is emitted at the beginning of a file loading.
 	 *
+	 * Before gedit 3.14 this signal contained parameters to configure the
+	 * file loading (the location, encoding, etc). Plugins should not need
+	 * those parameters.
+	 *
 	 * Since: 2.22
 	 */
 	document_signals[LOAD] =
@@ -412,6 +418,17 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE, 0);
 
+	/**
+	 * GeditDocument::loaded:
+	 * @document: the #GeditDocument.
+	 *
+	 * The "loaded" signal is emitted at the end of a successful file
+	 * loading.
+	 *
+	 * Before gedit 3.14 this signal contained a #GError parameter, and the
+	 * signal was also emitted if an error occurred. Plugins should not need
+	 * the error parameter.
+	 */
 	document_signals[LOADED] =
 		g_signal_new ("loaded",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -426,6 +443,10 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	 *
 	 * The "save" signal is emitted at the beginning of a file saving.
 	 *
+	 * Before gedit 3.14 this signal contained parameters to configure the
+	 * file saving (the location, encoding, etc). Plugins should not need
+	 * those parameters.
+	 *
 	 * Since: 2.20
 	 */
 	document_signals[SAVE] =
@@ -436,6 +457,16 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE, 0);
 
+	/**
+	 * GeditDocument::saved:
+	 * @document: the #GeditDocument.
+	 *
+	 * The "saved" signal is emitted at the end of a successful file saving.
+	 *
+	 * Before gedit 3.14 this signal contained a #GError parameter, and the
+	 * signal was also emitted if an error occurred. Plugins should not need
+	 * the error parameter.
+	 */
 	document_signals[SAVED] =
 		g_signal_new ("saved",
 			      G_OBJECT_CLASS_TYPE (object_class),
