@@ -27,6 +27,7 @@ gedit_recent_add_document (GeditDocument *document)
 {
 	GtkRecentManager *recent_manager;
 	GtkRecentData *recent_data;
+	GtkSourceFile *file;
 	GFile *location;
 	gchar *uri;
 
@@ -37,8 +38,10 @@ gedit_recent_add_document (GeditDocument *document)
 		NULL
 	};
 
-	location = gedit_document_get_location (document);
-	if (location !=  NULL)
+	file = gedit_document_get_file (document);
+	location = gtk_source_file_get_location (file);
+
+	if (location != NULL)
 	{
 		recent_manager = gtk_recent_manager_get_default ();
 
@@ -63,7 +66,6 @@ gedit_recent_add_document (GeditDocument *document)
 		g_free (recent_data->app_exec);
 		g_free (recent_data->mime_type);
 		g_slice_free (GtkRecentData, recent_data);
-		g_object_unref (location);
 	}
 }
 

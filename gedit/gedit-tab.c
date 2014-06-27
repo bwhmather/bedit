@@ -723,15 +723,12 @@ show_loading_info_bar (GeditTab *tab)
 	}
 	else
 	{
-		GFile *location;
+		GtkSourceFile *file = gedit_document_get_file (doc);
+		GFile *location = gtk_source_file_get_location (file);
 
-		location = gedit_document_get_location (doc);
 		if (location != NULL)
 		{
-			gchar *str;
-
-			str = gedit_utils_location_get_dirname_for_display (location);
-			g_object_unref (location);
+			gchar *str = gedit_utils_location_get_dirname_for_display (location);
 
 			/* use the remaining space for the dir, but use a min of 20 chars
 			 * so that we do not end up with a dirname like "(a...b)".
@@ -1095,18 +1092,19 @@ display_externally_modified_notification (GeditTab *tab)
 {
 	GtkWidget *info_bar;
 	GeditDocument *doc;
+	GtkSourceFile *file;
 	GFile *location;
 	gboolean document_modified;
 
 	doc = gedit_tab_get_document (tab);
+	file = gedit_document_get_file (doc);
 
 	/* we're here because the file we're editing changed on disk */
-	location = gedit_document_get_location (doc);
+	location = gtk_source_file_get_location (file);
 	g_return_if_fail (location != NULL);
 
 	document_modified = gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc));
 	info_bar = gedit_externally_modified_info_bar_new (location, document_modified);
-	g_object_unref (location);
 
 	set_info_bar (tab, info_bar, GTK_RESPONSE_OK);
 
@@ -1179,31 +1177,32 @@ _gedit_tab_set_network_available (GeditTab *tab,
 				  gboolean  enable)
 {
 	GeditDocument *doc;
-	GFile *location;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
 	doc = gedit_tab_get_document (tab);
 
-	location = gedit_document_get_location (doc);
-
-	if (!gedit_document_is_local (doc))
+	if (gedit_document_is_local (doc))
 	{
-		if (enable)
-		{
-			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
-		}
-		else
-		{
-			GtkWidget *bar = gedit_network_unavailable_info_bar_new (location);
+		return;
+	}
 
-			g_signal_connect (bar,
-					  "response",
-					  G_CALLBACK (network_available_warning_info_bar_response),
-					  tab);
+	if (enable)
+	{
+		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
+	}
+	else
+	{
+		GtkSourceFile *file = gedit_document_get_file (doc);
+		GFile *location = gtk_source_file_get_location (file);
+		GtkWidget *bar = gedit_network_unavailable_info_bar_new (location);
 
-			set_info_bar (tab, bar, GTK_RESPONSE_CLOSE);
-		}
+		g_signal_connect (bar,
+				  "response",
+				  G_CALLBACK (network_available_warning_info_bar_response),
+				  tab);
+
+		set_info_bar (tab, bar, GTK_RESPONSE_CLOSE);
 	}
 }
 
@@ -1449,6 +1448,7 @@ _gedit_tab_get_tooltip (GeditTab *tab)
 		gchar *content_description;
 		gchar *content_full_description;
 		gchar *encoding;
+		GtkSourceFile *file;
 		const GtkSourceEncoding *enc;
 
 		case GEDIT_TAB_STATE_LOADING_ERROR:
@@ -1480,7 +1480,8 @@ _gedit_tab_get_tooltip (GeditTab *tab)
 			g_free (mime_type);
 			g_free (content_description);
 
-			enc = gedit_document_get_encoding (doc);
+			file = gedit_document_get_file (doc);
+			enc = gtk_source_file_get_encoding (file);
 
 			if (enc == NULL)
 				encoding = g_strdup (_("Unicode (UTF-8)"));
@@ -1496,7 +1497,6 @@ _gedit_tab_get_tooltip (GeditTab *tab)
 
 			g_free (encoding);
 			g_free (content_full_description);
-
 			break;
 	}
 
@@ -1829,9 +1829,8 @@ load_cb (GtkSourceFileLoader *loader,
 
 			if (cur_doc != doc)
 			{
-				GFile *cur_location;
-
-				cur_location = gedit_document_get_location (cur_doc);
+				GtkSourceFile *cur_file = gedit_document_get_file (cur_doc);
+				GFile *cur_location = gtk_source_file_get_location (cur_file);
 
 				if (cur_location != NULL && location != NULL &&
 				    g_file_equal (location, cur_location))
@@ -1849,13 +1848,7 @@ load_cb (GtkSourceFileLoader *loader,
 
 					set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
 
-					g_object_unref (cur_location);
 					break;
-				}
-
-				if (cur_location != NULL)
-				{
-					g_object_unref (cur_location);
 				}
 			}
 		}
@@ -2357,7 +2350,8 @@ _gedit_tab_save_as (GeditTab                 *tab,
 
 	prev_location = gtk_source_file_get_location (file);
 
-	if (!g_file_equal (prev_location, location))
+	if (prev_location == NULL ||
+	    !g_file_equal (prev_location, location))
 	{
 		/* Ignore modification time for a save to another location. */
 		/* TODO do that in GtkSourceFileSaver. */

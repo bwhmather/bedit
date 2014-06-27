@@ -73,21 +73,17 @@ get_tab_from_file (GList *docs,
 	while (docs != NULL)
 	{
 		GeditDocument *d;
+		GtkSourceFile *source_file;
 		GFile *l;
 
 		d = GEDIT_DOCUMENT (docs->data);
+		source_file = gedit_document_get_file (d);
 
-		l = gedit_document_get_location (d);
-		if (l != NULL)
+		l = gtk_source_file_get_location (source_file);
+		if (l != NULL && g_file_equal (l, file))
 		{
-			if (g_file_equal (l, file))
-			{
-				tab = gedit_tab_get_from_document (d);
-				g_object_unref (l);
-				break;
-			}
-
-			g_object_unref (l);
+			tab = gedit_tab_get_from_document (d);
+			break;
 		}
 
 		docs = g_list_next (docs);
@@ -453,14 +449,12 @@ _gedit_cmd_file_open (GSimpleAction *action,
 	doc = gedit_window_get_active_document (window);
 	if (doc != NULL)
 	{
-		GFile *file;
+		GtkSourceFile *file = gedit_document_get_file (doc);
+		GFile *location = gtk_source_file_get_location (file);
 
-		file = gedit_document_get_location (doc);
-
-		if (file != NULL)
+		if (location != NULL)
 		{
-			default_path = g_file_get_parent (file);
-			g_object_unref (file);
+			default_path = g_file_get_parent (location);
 		}
 	}
 
@@ -694,8 +688,9 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 	if (tab != NULL)
 	{
-		GFile *file;
+		GFile *location;
 		GeditDocument *doc;
+		GtkSourceFile *file;
 		gchar *parse_name;
 		GtkSourceNewlineType newline_type;
 		GtkSourceCompressionType compression_type;
@@ -703,22 +698,23 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		const GtkSourceEncoding *encoding;
 
 		doc = gedit_tab_get_document (tab);
+		file = gedit_document_get_file (doc);
 
-		file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
-		g_return_if_fail (file != NULL);
+		location = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
+		g_return_if_fail (location != NULL);
 
-		compression_type = get_compression_type_from_file (file);
-		current_compression_type = gedit_document_get_compression_type (doc);
+		compression_type = get_compression_type_from_file (location);
+		current_compression_type = gtk_source_file_get_compression_type (file);
 
 		if ((compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE) !=
 		    (current_compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE))
 		{
 			if (!change_compression (GTK_WINDOW (dialog),
-			                         file,
+			                         location,
 			                         compression_type != GTK_SOURCE_COMPRESSION_TYPE_NONE))
 			{
 				gtk_widget_destroy (GTK_WIDGET (dialog));
-				g_object_unref (file);
+				g_object_unref (location);
 
 				goto save_next_tab;
 			}
@@ -732,7 +728,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		doc = gedit_tab_get_document (tab);
 		g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
-		parse_name = g_file_get_parse_name (file);
+		parse_name = g_file_get_parse_name (location);
 
 		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 					        window->priv->generic_message_cid,
@@ -743,11 +739,11 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 		/* let's remember the dir we navigated too,
 		 * even if the saving fails... */
-		 _gedit_window_set_default_location (window, file);
+		_gedit_window_set_default_location (window, location);
 
-		_gedit_tab_save_as (tab, file, encoding, newline_type, compression_type);
+		_gedit_tab_save_as (tab, location, encoding, newline_type, compression_type);
 
-		g_object_unref (file);
+		g_object_unref (location);
 	}
 
 save_next_tab:
@@ -831,7 +827,8 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 	GtkWidget *save_dialog;
 	GtkWindowGroup *wg;
 	GeditDocument *doc;
-	GFile *file;
+	GtkSourceFile *file;
+	GFile *location;
 	const GtkSourceEncoding *encoding;
 	GtkSourceNewlineType newline_type;
 
@@ -857,23 +854,21 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 
 	wg = gedit_window_get_group (window);
 
-	gtk_window_group_add_window (wg,
-				     GTK_WINDOW (save_dialog));
+	gtk_window_group_add_window (wg, GTK_WINDOW (save_dialog));
 
 	/* Save As dialog is modal to its main window */
 	gtk_window_set_modal (GTK_WINDOW (save_dialog), TRUE);
 
 	/* Set the suggested file name */
 	doc = gedit_tab_get_document (tab);
-	file = gedit_document_get_location (doc);
+	file = gedit_document_get_file (doc);
+	location = gtk_source_file_get_location (file);
 
-	if (file != NULL)
+	if (location != NULL)
 	{
 		gtk_file_chooser_set_file (GTK_FILE_CHOOSER (save_dialog),
-					   file,
+					   location,
 					   NULL);
-
-		g_object_unref (file);
 	}
 	else
 	{
@@ -902,10 +897,10 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 	}
 
 	/* Set suggested encoding */
-	encoding = gedit_document_get_encoding (doc);
+	encoding = gtk_source_file_get_encoding (file);
 	g_return_if_fail (encoding != NULL);
 
-	newline_type = gedit_document_get_newline_type (doc);
+	newline_type = gtk_source_file_get_newline_type (file);
 
 	gedit_file_chooser_dialog_set_encoding (GEDIT_FILE_CHOOSER_DIALOG (save_dialog),
 						encoding);

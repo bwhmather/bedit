@@ -1183,9 +1183,9 @@ panel_on_drag_data_get (GtkWidget        *widget,
 
 		if (!gedit_document_is_untitled (doc))
 		{
-			GFile *file = gedit_document_get_location (doc);
-			full_name = g_file_get_parse_name (file);
-			g_object_unref (file);
+			GtkSourceFile *file = gedit_document_get_file (doc);
+			GFile *location = gtk_source_file_get_location (file);
+			full_name = g_file_get_parse_name (location);
 
 			gtk_selection_data_set (data,
 			                        target,

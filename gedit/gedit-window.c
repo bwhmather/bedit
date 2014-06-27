@@ -1007,15 +1007,12 @@ set_title (GeditWindow *window)
 	}
 	else
 	{
-		GFile *file;
+		GtkSourceFile *file = gedit_document_get_file (doc);
+		GFile *location = gtk_source_file_get_location (file);
 
-		file = gedit_document_get_location (doc);
-		if (file != NULL)
+		if (location != NULL)
 		{
-			gchar *str;
-
-			str = gedit_utils_location_get_dirname_for_display (file);
-			g_object_unref (file);
+			gchar *str = gedit_utils_location_get_dirname_for_display (location);
 
 			/* use the remaining space for the dir, but use a min of 20 chars
 			 * so that we do not end up with a dirname like "(a...b)".
@@ -2187,12 +2184,13 @@ push_last_closed_doc (GeditWindow   *window,
                       GeditDocument *doc)
 {
 	GeditWindowPrivate *priv = window->priv;
-	GFile *f;
+	GtkSourceFile *file = gedit_document_get_file (doc);
+	GFile *location = gtk_source_file_get_location (file);
 
-	f = gedit_document_get_location (doc);
-	if (f != NULL)
+	if (location != NULL)
 	{
-		priv->closed_docs_stack = g_slist_prepend (priv->closed_docs_stack, f);
+		priv->closed_docs_stack = g_slist_prepend (priv->closed_docs_stack, location);
+		g_object_ref (location);
 	}
 }
 
@@ -3741,24 +3739,23 @@ gedit_window_get_tab_from_location (GeditWindow *window,
 
 	for (l = tabs; l != NULL; l = g_list_next (l))
 	{
-		GeditDocument *d;
-		GeditTab *t;
-		GFile *f;
+		GeditDocument *doc;
+		GtkSourceFile *file;
+		GeditTab *tab;
+		GFile *cur_location;
 
-		t = GEDIT_TAB (l->data);
-		d = gedit_tab_get_document (t);
+		tab = GEDIT_TAB (l->data);
+		doc = gedit_tab_get_document (tab);
+		file = gedit_document_get_file (doc);
+		cur_location = gtk_source_file_get_location (file);
 
-		f = gedit_document_get_location (d);
-
-		if ((f != NULL))
+		if (cur_location != NULL)
 		{
-			gboolean found = g_file_equal (location, f);
-
-			g_object_unref (f);
+			gboolean found = g_file_equal (location, cur_location);
 
 			if (found)
 			{
-				ret = t;
+				ret = tab;
 				break;
 			}
 		}

@@ -110,14 +110,15 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 		}
 		else
 		{
+			GtkSourceFile *file;
 			GFile *location;
 			gchar *uri;
 
-			location = gedit_document_get_location (document);
+			file = gedit_document_get_file (document);
+			location = gtk_source_file_get_location (file);
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 			uri = g_file_get_uri (location);
-			g_object_unref (location);
 
 			NSURL *nsurl = [NSURL URLWithString:[NSString stringWithUTF8String:uri]];
 
