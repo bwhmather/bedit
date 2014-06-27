@@ -579,7 +579,7 @@ guess_language (GeditDocument *doc)
 	{
 		gedit_debug_message (DEBUG_DOCUMENT, "Language from metadata: %s", data);
 
-		if (strcmp (data, NO_LANGUAGE_NAME) != 0)
+		if (!g_str_equal (data, NO_LANGUAGE_NAME))
 		{
 			language = gtk_source_language_manager_get_language (manager, data);
 		}
@@ -591,10 +591,10 @@ guess_language (GeditDocument *doc)
 		GFile *location;
 		gchar *basename = NULL;
 
-		location = gedit_document_get_location (doc);
+		location = gtk_source_file_get_location (doc->priv->file);
 		gedit_debug_message (DEBUG_DOCUMENT, "Sniffing Language");
 
-		if (location)
+		if (location != NULL)
 		{
 			basename = g_file_get_basename (location);
 		}
@@ -608,11 +608,6 @@ guess_language (GeditDocument *doc)
 								       doc->priv->content_type);
 
 		g_free (basename);
-
-		if (location != NULL)
-		{
-			g_object_unref (location);
-		}
 	}
 
 	return language;
@@ -686,9 +681,13 @@ on_location_changed (GtkSourceFile *file,
 
 		if (error != NULL)
 		{
-			if (error->code != G_FILE_ERROR_ISDIR &&
-			    error->code != G_FILE_ERROR_NOTDIR &&
-			    error->code != G_FILE_ERROR_NOENT)
+			/* TODO document why the warning is not displayed in
+			 * certain cases.
+			 */
+			if (error->domain != G_FILE_ERROR ||
+			    (error->code != G_FILE_ERROR_ISDIR &&
+			     error->code != G_FILE_ERROR_NOTDIR &&
+			     error->code != G_FILE_ERROR_NOENT))
 			{
 				g_warning ("%s", error->message);
 			}
@@ -714,8 +713,6 @@ gedit_document_init (GeditDocument *doc)
 
 	priv->untitled_number = get_untitled_number ();
 
-	priv->metadata_info = NULL;
-
 	priv->content_type = get_default_content_type ();
 
 	priv->readonly = FALSE;
@@ -723,9 +720,6 @@ gedit_document_init (GeditDocument *doc)
 	priv->language_set_by_user = FALSE;
 
 	priv->empty_search = TRUE;
-
-	priv->mtime.tv_sec = 0;
-	priv->mtime.tv_usec = 0;
 
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
@@ -751,8 +745,9 @@ gedit_document_init (GeditDocument *doc)
 
 	style_scheme = get_default_style_scheme (priv->editor_settings);
 	if (style_scheme != NULL)
-		gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (doc),
-						    style_scheme);
+	{
+		gtk_source_buffer_set_style_scheme (GTK_SOURCE_BUFFER (doc), style_scheme);
+	}
 
 	g_signal_connect (doc,
 			  "notify::content-type",
@@ -854,7 +849,7 @@ gedit_document_set_content_type (GeditDocument *doc,
 		gchar *guessed_type = NULL;
 
 		/* If content type is null, we guess from the filename */
-		location = gedit_document_get_location (doc);
+		location = gtk_source_file_get_location (doc->priv->file);
 		if (location != NULL)
 		{
 			gchar *basename;
@@ -863,11 +858,9 @@ gedit_document_set_content_type (GeditDocument *doc,
 			guessed_type = g_content_type_guess (basename, NULL, 0, NULL);
 
 			g_free (basename);
-			g_object_unref (location);
 		}
 
 		set_content_type_no_guess (doc, guessed_type);
-
 		g_free (guessed_type);
 	}
 	else
@@ -995,17 +988,15 @@ gedit_document_get_content_type (GeditDocument *doc)
 gchar *
 gedit_document_get_mime_type (GeditDocument *doc)
 {
-	gchar *mime_type = NULL;
-
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), g_strdup ("text/plain"));
 
 	if (doc->priv->content_type != NULL &&
 	    !g_content_type_is_unknown (doc->priv->content_type))
 	{
-		mime_type = g_content_type_get_mime_type (doc->priv->content_type);
+		return g_content_type_get_mime_type (doc->priv->content_type);
 	}
 
- 	return mime_type != NULL ? mime_type : g_strdup ("text/plain");
+	return g_strdup ("text/plain");
 }
 
 static void
@@ -1584,7 +1575,7 @@ gedit_document_set_metadata (GeditDocument *doc,
 		g_file_info_copy_into (info, doc->priv->metadata_info);
 	}
 
-	location = gedit_document_get_location (doc);
+	location = gtk_source_file_get_location (doc->priv->file);
 
 	if (location != NULL)
 	{
@@ -1595,8 +1586,6 @@ gedit_document_set_metadata (GeditDocument *doc,
 					     NULL,
 					     (GAsyncReadyCallback) set_attributes_cb,
 					     NULL);
-
-		g_object_unref (location);
 	}
 
 	g_object_unref (info);
