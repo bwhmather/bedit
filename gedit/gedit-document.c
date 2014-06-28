@@ -1167,6 +1167,8 @@ saved_query_info_cb (GFile         *location,
 
 	set_readonly (doc, FALSE);
 
+	gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc), FALSE);
+
 	save_encoding_metadata (doc);
 
 	/* Async operation finished. */
