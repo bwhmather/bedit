@@ -53,9 +53,11 @@ gedit_recent_add_document (GeditDocument *document)
 		recent_data->is_private = FALSE;
 
 		uri = g_file_get_uri (location);
-		gtk_recent_manager_add_full (recent_manager,
-					     uri,
-					     recent_data);
+
+		if (!gtk_recent_manager_add_full (recent_manager, uri, recent_data))
+		{
+			g_warning ("Failed to add uri '%s' to the recent manager.", uri);
+		}
 
 		g_free (uri);
 		g_free (recent_data->app_exec);
