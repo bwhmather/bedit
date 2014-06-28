@@ -1051,7 +1051,15 @@ loaded_query_info_cb (GFile         *location,
 
 	if (error != NULL)
 	{
-		g_warning ("Document loading: query info error: %s", error->message);
+		/* Ignore not found error as it can happen when opening a
+		 * non-existent file from the command line.
+		 */
+		if (error->domain != G_IO_ERROR ||
+		    error->code != G_IO_ERROR_NOT_FOUND)
+		{
+			g_warning ("Document loading: query info error: %s", error->message);
+		}
+
 		g_error_free (error);
 		error = NULL;
 	}
