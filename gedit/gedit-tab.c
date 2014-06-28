@@ -75,7 +75,6 @@ struct _GeditTabPrivate
 	gint                    ask_if_externally_modified : 1;
 
 	/* tmp data for loading */
-	guint			load_create : 1;
 	guint			user_requested_encoding : 1;
 };
 
@@ -224,7 +223,6 @@ clear_loading (GeditTab *tab)
 {
 	g_clear_object (&tab->priv->loader);
 	g_clear_object (&tab->priv->cancellable);
-	tab->priv->load_create = FALSE;
 }
 
 static void
@@ -610,8 +608,6 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 
 			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
-
-			tab->priv->load_create = FALSE;
 
 			load (tab,
 			      encoding,
@@ -1694,7 +1690,7 @@ load_cb (GtkSourceFileLoader *loader,
 	}
 
 	/* Special case creating a named new doc. */
-	else if (tab->priv->load_create &&
+	else if (_gedit_document_get_create (doc) &&
 	         error->domain == G_IO_ERROR &&
 		 error->code == G_IO_ERROR_NOT_FOUND &&
 	         g_file_has_uri_scheme (location, "file"))
@@ -1990,7 +1986,7 @@ _gedit_tab_load (GeditTab                *tab,
 
 	tab->priv->loader = gtk_source_file_loader_new (file, location);
 
-	tab->priv->load_create = create != FALSE;
+	_gedit_document_set_create (doc, create);
 
 	load (tab, encoding, line_pos, column_pos);
 }
@@ -2021,6 +2017,8 @@ _gedit_tab_load_stream (GeditTab                *tab,
 	}
 
 	tab->priv->loader = gtk_source_file_loader_new_from_stream (file, stream);
+
+	_gedit_document_set_create (doc, FALSE);
 
 	load (tab, encoding, line_pos, column_pos);
 }

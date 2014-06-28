@@ -167,6 +167,11 @@ gboolean	 _gedit_document_needs_saving	(GeditDocument       *doc);
 gboolean	 _gedit_document_get_empty_search
 						(GeditDocument       *doc);
 
+void		 _gedit_document_set_create	(GeditDocument       *doc,
+						 gboolean             create);
+
+gboolean	 _gedit_document_get_create	(GeditDocument       *doc);
+
 G_END_DECLS
 
 #endif /* __GEDIT_DOCUMENT_H__ */

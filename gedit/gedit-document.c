@@ -68,14 +68,11 @@ struct _GeditDocumentPrivate
 	 */
 	GtkSourceSearchContext *search_context;
 
-	/* Temp data while loading */
-	gboolean             create; /* Create file if uri points
-	                              * to a non existing file */
-
 	guint readonly : 1;
 	guint externally_modified : 1;
 	guint deleted : 1;
 	guint language_set_by_user : 1;
+	guint mtime_set : 1;
 
 	/* The search is empty if there is no search context, or if the
 	 * search text is empty. It is used for the sensitivity of some menu
@@ -83,7 +80,10 @@ struct _GeditDocumentPrivate
 	 */
 	guint empty_search : 1;
 
-	guint mtime_set : 1;
+	/* Create file if location points to a non existing file (for example
+	 * when opened from the command line).
+	 */
+	guint create : 1;
 };
 
 enum
@@ -1814,6 +1814,23 @@ gedit_document_get_file (GeditDocument *doc)
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
 	return doc->priv->file;
+}
+
+void
+_gedit_document_set_create (GeditDocument *doc,
+			    gboolean       create)
+{
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+	doc->priv->create = create != FALSE;
+}
+
+gboolean
+_gedit_document_get_create (GeditDocument *doc)
+{
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+
+	return doc->priv->create;
 }
 
 /* ex:set ts=8 noet: */
