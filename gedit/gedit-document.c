@@ -1045,7 +1045,6 @@ loaded_query_info_cb (GFile         *location,
 	GFileInfo *info;
 	const gchar *content_type = NULL;
 	gboolean read_only = FALSE;
-	GTimeVal mtime = {0, 0};
 	GError *error = NULL;
 
 	info = g_file_query_info_finish (location, result, &error);
@@ -1056,6 +1055,8 @@ loaded_query_info_cb (GFile         *location,
 		g_error_free (error);
 		error = NULL;
 	}
+
+	doc->priv->mtime_set = FALSE;
 
 	if (info != NULL)
 	{
@@ -1071,22 +1072,25 @@ loaded_query_info_cb (GFile         *location,
 
 		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
 		{
-			g_file_info_get_modification_time (info, &mtime);
+			g_file_info_get_modification_time (info, &doc->priv->mtime);
+			doc->priv->mtime_set = TRUE;
 		}
-
-		g_object_unref (info);
 	}
 
 	set_readonly (doc, read_only);
 
-	doc->priv->mtime = mtime;
-	doc->priv->mtime_set = TRUE;
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
 	doc->priv->externally_modified = FALSE;
 	doc->priv->deleted = FALSE;
 
 	gedit_document_set_content_type (doc, content_type);
+
+	if (info != NULL)
+	{
+		/* content_type (owned by info) is no longer needed. */
+		g_object_unref (info);
+	}
 
 	if (!doc->priv->language_set_by_user)
 	{
@@ -1128,7 +1132,6 @@ saved_query_info_cb (GFile         *location,
 {
 	GFileInfo *info;
 	const gchar *content_type = NULL;
-	GTimeVal mtime = {0, 0};
 	GError *error = NULL;
 
 	info = g_file_query_info_finish (location, result, &error);
@@ -1140,6 +1143,8 @@ saved_query_info_cb (GFile         *location,
 		error = NULL;
 	}
 
+	doc->priv->mtime_set = FALSE;
+
 	if (info != NULL)
 	{
 		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
@@ -1149,16 +1154,19 @@ saved_query_info_cb (GFile         *location,
 
 		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
 		{
-			g_file_info_get_modification_time (info, &mtime);
+			g_file_info_get_modification_time (info, &doc->priv->mtime);
+			doc->priv->mtime_set = TRUE;
 		}
-
-		g_object_unref (info);
 	}
 
 	gedit_document_set_content_type (doc, content_type);
 
-	doc->priv->mtime = mtime;
-	doc->priv->mtime_set = TRUE;
+	if (info != NULL)
+	{
+		/* content_type (owned by info) is no longer needed. */
+		g_object_unref (info);
+	}
+
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
 	doc->priv->externally_modified = FALSE;
