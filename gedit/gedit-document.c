@@ -82,6 +82,8 @@ struct _GeditDocumentPrivate
 	 * actions.
 	 */
 	guint empty_search : 1;
+
+	guint mtime_set : 1;
 };
 
 enum
@@ -1078,6 +1080,7 @@ loaded_query_info_cb (GFile         *location,
 	set_readonly (doc, read_only);
 
 	doc->priv->mtime = mtime;
+	doc->priv->mtime_set = TRUE;
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
 	doc->priv->externally_modified = FALSE;
@@ -1155,6 +1158,7 @@ saved_query_info_cb (GFile         *location,
 	gedit_document_set_content_type (doc, content_type);
 
 	doc->priv->mtime = mtime;
+	doc->priv->mtime_set = TRUE;
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
 	doc->priv->externally_modified = FALSE;
@@ -1255,7 +1259,8 @@ check_file_on_disk (GeditDocument *doc)
 			set_readonly (doc, read_only);
 		}
 
-		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
+		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED) &&
+		    doc->priv->mtime_set)
 		{
 			GTimeVal timeval;
 
