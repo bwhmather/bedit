@@ -1867,27 +1867,81 @@ end:
 	}
 }
 
+static GSList *
+get_candidate_encodings (GeditTab *tab)
+{
+	GeditDocument *doc;
+	GSettings *enc_settings;
+	gchar **enc_strv;
+	gchar *metadata_charset;
+	GSList *encodings;
+
+	enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
+
+	enc_strv = g_settings_get_strv (enc_settings, GEDIT_SETTINGS_ENCODING_AUTO_DETECTED);
+
+	encodings = _gedit_utils_encoding_strv_to_list ((const gchar * const *)enc_strv);
+
+	doc = gedit_tab_get_document (tab);
+	metadata_charset = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_ENCODING);
+
+	if (metadata_charset != NULL)
+	{
+		const GtkSourceEncoding *metadata_enc;
+
+		metadata_enc = gtk_source_encoding_get_from_charset (metadata_charset);
+
+		if (metadata_enc != NULL)
+		{
+			encodings = g_slist_prepend (encodings, (gpointer)metadata_enc);
+		}
+
+		g_free (metadata_charset);
+	}
+
+	g_strfreev (enc_strv);
+	g_object_unref (enc_settings);
+
+	return encodings;
+}
+
 static void
 load (GeditTab                *tab,
       const GtkSourceEncoding *encoding,
       gint                     line_pos,
       gint                     column_pos)
 {
+	GSList *candidate_encodings = NULL;
+	GtkSourceFile *file;
+	GFile *location;
+
 	g_return_if_fail (GTK_SOURCE_IS_FILE_LOADER (tab->priv->loader));
+
+	file = gtk_source_file_loader_get_file (tab->priv->loader);
+	location = gtk_source_file_loader_get_location (tab->priv->loader);
+
+	/* Sets the location directly, before launching the actual load, so
+	 * GeditDocument functions relying on the location work correctly (e.g.
+	 * get the metadata encoding with gedit_document_get_metadata(), used in
+	 * get_candidate_encodings()).
+	 * The previous location is anyway not needed, even if the load fails,
+	 * since the buffer contents is first removed.
+	 */
+	gtk_source_file_set_location (file, location);
 
 	if (encoding != NULL)
 	{
 		tab->priv->user_requested_encoding = TRUE;
-
-		GSList *list = g_slist_append (NULL, (gpointer) encoding);
-		gtk_source_file_loader_set_candidate_encodings (tab->priv->loader, list);
-		g_slist_free (list);
+		candidate_encodings = g_slist_append (NULL, (gpointer) encoding);
 	}
 	else
 	{
 		tab->priv->user_requested_encoding = FALSE;
-		/* TODO */
+		candidate_encodings = get_candidate_encodings (tab);
 	}
+
+	gtk_source_file_loader_set_candidate_encodings (tab->priv->loader, candidate_encodings);
+	g_slist_free (candidate_encodings);
 
 	tab->priv->tmp_line_pos = line_pos;
 	tab->priv->tmp_column_pos = column_pos;
