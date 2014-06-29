@@ -98,6 +98,9 @@ struct _GeditWindowPrivate
 	guint           inhibition_cookie;
 
 	gint            bottom_panel_item_removed_handler_id;
+	gint            fullscreen_eventbox_handler_id;
+
+	gboolean        fullscreen_eventbox_leave_state;
 
 	GtkWindowGroup *window_group;
 

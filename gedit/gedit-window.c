@@ -1786,17 +1786,39 @@ on_fullscreen_controls_enter_notify_event (GtkWidget        *widget,
                                            GdkEventCrossing *event,
                                            GeditWindow      *window)
 {
+	window->priv->fullscreen_eventbox_leave_state = FALSE;
+
 	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), TRUE);
 
 	return FALSE;
 }
 
 static gboolean
+real_fullscreen_controls_leave_notify_event (gpointer data)
+{
+	GeditWindow *window = (GeditWindow *)data;
+
+	gboolean gear_menu_state = gtk_toggle_button_get_active ((GtkToggleButton *)window->priv->fullscreen_gear_button);
+
+	window->priv->fullscreen_eventbox_leave_state = TRUE;
+
+	if (gear_menu_state == FALSE)
+	{
+		gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
+	}
+
+	return FALSE;
+}
+
+/* this timeout is needed because the toggled signal from gear button is received
+ * after the leave event from the event box ( which is automatically triggered when user
+ * bring up the gear menu */
+static gboolean
 on_fullscreen_controls_leave_notify_event (GtkWidget        *widget,
                                            GdkEventCrossing *event,
                                            GeditWindow      *window)
 {
-	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
+	g_timeout_add (5, real_fullscreen_controls_leave_notify_event, window);
 
 	return FALSE;
 }
@@ -1824,10 +1846,12 @@ fullscreen_controls_setup (GeditWindow *window)
 	                  "enter-notify-event",
 	                  G_CALLBACK (on_fullscreen_controls_enter_notify_event),
 	                  window);
-	g_signal_connect (priv->fullscreen_eventbox,
-	                  "leave-notify-event",
-	                  G_CALLBACK (on_fullscreen_controls_leave_notify_event),
-	                  window);
+
+	priv->fullscreen_eventbox_handler_id =
+		g_signal_connect (priv->fullscreen_eventbox,
+		                  "leave-notify-event",
+		                  G_CALLBACK (on_fullscreen_controls_leave_notify_event),
+		                  window);
 
 	gtk_widget_set_size_request (GTK_WIDGET (window->priv->fullscreen_eventbox), -1, 1);
 
@@ -2376,6 +2400,18 @@ on_notebook_removed (GeditMultiNotebook *mnb,
 }
 
 static void
+on_fullscreen_gear_button_toggled (GtkToggleButton *fullscreen_gear_button,
+                                   GeditWindow     *window)
+{
+	gboolean gear_menu_state = gtk_toggle_button_get_active (fullscreen_gear_button);
+
+	if (!gear_menu_state && window->priv->fullscreen_eventbox_leave_state == TRUE)
+	{
+		gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
+	}
+}
+
+static void
 side_panel_size_allocate (GtkWidget     *widget,
 			  GtkAllocation *allocation,
 			  GeditWindow   *window)
@@ -2899,6 +2935,11 @@ gedit_window_init (GeditWindow *window)
 	gear_menu = _gedit_app_get_window_menu (GEDIT_APP (g_application_get_default ())),
 	gtk_menu_button_set_menu_model (window->priv->gear_button, gear_menu);
 	gtk_menu_button_set_menu_model (window->priv->fullscreen_gear_button, gear_menu);
+
+	g_signal_connect ((GtkToggleButton *)window->priv->fullscreen_gear_button,
+	                  "toggled",
+	                  G_CALLBACK (on_fullscreen_gear_button_toggled),
+	                  window);
 
 	/* Setup status bar */
 	setup_statusbar (window);
