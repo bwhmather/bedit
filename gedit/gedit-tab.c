@@ -1958,6 +1958,7 @@ load (GeditTab                *tab,
 	GSList *candidate_encodings = NULL;
 	GtkSourceFile *file;
 	GFile *location;
+	GeditDocument *doc;
 
 	g_return_if_fail (GTK_SOURCE_IS_FILE_LOADER (tab->priv->loader));
 
@@ -1992,6 +1993,9 @@ load (GeditTab                *tab,
 
 	g_clear_object (&tab->priv->cancellable);
 	tab->priv->cancellable = g_cancellable_new ();
+
+	doc = gedit_tab_get_document (tab);
+	g_signal_emit_by_name (doc, "load");
 
 	/* Keep the tab alive during the async operation. */
 	g_object_ref (tab);
@@ -2277,9 +2281,14 @@ save_cb (GtkSourceFileSaver *saver,
 static void
 save (GeditTab *tab)
 {
+	GeditDocument *doc;
+
 	g_return_if_fail (GTK_SOURCE_IS_FILE_SAVER (tab->priv->saver));
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SAVING);
+
+	doc = gedit_tab_get_document (tab);
+	g_signal_emit_by_name (doc, "save");
 
 	/* Keep the tab alive during the async operation. */
 	g_object_ref (tab);
