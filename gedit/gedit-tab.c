@@ -74,6 +74,26 @@ struct _GeditTabPrivate
 
 	gint                    ask_if_externally_modified : 1;
 
+	/* Notes about the create_backup saver flag:
+	 * - At the beginning of a new file saving, force_no_backup is reset to
+	 *   FALSE. The create_backup flag is set to the saver if it is enabled
+	 *   in GSettings and if it isn't an auto-save.
+	 * - If creating the backup gives an error, and if the user wants to
+	 *   save the file without the backup, force_no_backup is set to TRUE
+	 *   and the create_backup flag is removed from the saver.
+	 *   force_no_backup as TRUE means that the create_backup flag should
+	 *   never be added again to the saver (for the current file saving).
+	 * - When another error occurs and if the user explicitly retry again
+	 *   the file saving, the create_backup flag is added to the saver if
+	 *   (1) it is enabled in GSettings, (2) if force_no_backup is FALSE.
+	 * - The create_backup flag is added when the user expressed his or her
+	 *   willing to save the file, by pressing a button for example. For an
+	 *   auto-save, the create_backup flag is thus not added initially, but
+	 *   can be added later when an error occurs and the user clicks on a
+	 *   button in the info bar to retry the file saving.
+	 */
+	guint			force_no_backup : 1;
+
 	/* tmp data for loading */
 	guint			user_requested_encoding : 1;
 };
@@ -229,6 +249,7 @@ static void
 clear_saving (GeditTab *tab)
 {
 	g_clear_object (&tab->priv->saver);
+	tab->priv->force_no_backup = FALSE;
 }
 
 static void
@@ -939,6 +960,33 @@ unrecoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 	gtk_widget_grab_focus (GTK_WIDGET (view));
 }
 
+/* Sets the save flags after an info bar response. */
+static void
+response_set_save_flags (GeditTab                *tab,
+			 GtkSourceFileSaverFlags  save_flags)
+{
+	gboolean create_backup;
+
+	create_backup = g_settings_get_boolean (tab->priv->editor,
+						GEDIT_SETTINGS_CREATE_BACKUP_COPY);
+
+	/* If we are here, it means that the user expressed his or her willing
+	 * to save the file, by pressing a button in the info bar. So even if
+	 * the file saving was initially an auto-save, we set the create_backup
+	 * flag (if the conditions are met).
+	 */
+	if (create_backup && !tab->priv->force_no_backup)
+	{
+		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_CREATE_BACKUP;
+	}
+	else
+	{
+		save_flags &= ~GTK_SOURCE_FILE_SAVER_FLAGS_CREATE_BACKUP;
+	}
+
+	gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
+}
+
 static void
 invalid_character_info_bar_response (GtkWidget *info_bar,
                                      gint       response_id,
@@ -957,7 +1005,7 @@ invalid_character_info_bar_response (GtkWidget *info_bar,
 
 		save_flags = gtk_source_file_saver_get_flags (tab->priv->saver);
 		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_INVALID_CHARS;
-		gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
+		response_set_save_flags (tab, save_flags);
 
 		/* Force saving */
 		save (tab);
@@ -981,9 +1029,9 @@ no_backup_error_info_bar_response (GtkWidget *info_bar,
 
 		g_return_if_fail (tab->priv->saver != NULL);
 
+		tab->priv->force_no_backup = TRUE;
 		save_flags = gtk_source_file_saver_get_flags (tab->priv->saver);
-		save_flags &= ~GTK_SOURCE_FILE_SAVER_FLAGS_CREATE_BACKUP;
-		gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
+		response_set_save_flags (tab, save_flags);
 
 		/* Force saving */
 		save (tab);
@@ -1013,7 +1061,7 @@ externally_modified_error_info_bar_response (GtkWidget *info_bar,
 
 		save_flags = gtk_source_file_saver_get_flags (tab->priv->saver);
 		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME;
-		gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
+		response_set_save_flags (tab, save_flags);
 
 		/* Force saving */
 		save (tab);
@@ -2246,21 +2294,60 @@ save (GeditTab *tab)
 					  tab);
 }
 
+/* Gets the initial save flags, when launching a new FileSaver. */
+static GtkSourceFileSaverFlags
+get_initial_save_flags (GeditTab *tab,
+			gboolean  auto_save)
+{
+	GtkSourceFileSaverFlags save_flags;
+	gboolean create_backup;
+
+	save_flags = tab->priv->save_flags;
+
+	/* force_no_backup must have been reset to FALSE for a new file saving. */
+	g_return_val_if_fail (!tab->priv->force_no_backup, save_flags);
+
+	create_backup = g_settings_get_boolean (tab->priv->editor,
+						GEDIT_SETTINGS_CREATE_BACKUP_COPY);
+
+	/* In case of autosaving, we need to preserve the backup that was produced
+	 * the last time the user "manually" saved the file. So we don't set the
+	 * CREATE_BACKUP flag for an automatic file saving.
+	 */
+	if (create_backup && !auto_save)
+	{
+		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_CREATE_BACKUP;
+	}
+
+	return save_flags;
+}
+
 void
 _gedit_tab_save (GeditTab *tab)
 {
 	GeditDocument *doc;
 	GtkSourceFile *file;
 	GFile *location;
-	GtkSourceFileSaverFlags save_flags = tab->priv->save_flags;
+	GtkSourceFileSaverFlags save_flags;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL ||
 			  tab->priv->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION ||
 			  tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
 
+	if (tab->priv->saver != NULL)
+	{
+		g_warning ("GeditTab: file saver already exists.");
+		g_object_unref (tab->priv->saver);
+		tab->priv->saver = NULL;
+	}
+
+	clear_saving (tab);
+
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (!gedit_document_is_untitled (doc));
+
+	save_flags = get_initial_save_flags (tab, FALSE);
 
 	if (tab->priv->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
 	{
@@ -2274,12 +2361,6 @@ _gedit_tab_save (GeditTab *tab)
 	file = gedit_document_get_file (doc);
 	location = gtk_source_file_get_location (file);
 
-	if (tab->priv->saver != NULL)
-	{
-		g_warning ("GeditTab: file saver already exists.");
-		g_object_unref (tab->priv->saver);
-	}
-
 	tab->priv->saver = gtk_source_file_saver_new (file, location);
 	gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
 
@@ -2292,6 +2373,7 @@ gedit_tab_auto_save (GeditTab *tab)
 	GeditDocument *doc;
 	GtkSourceFile *file;
 	GFile *location;
+	GtkSourceFileSaverFlags save_flags;
 
 	gedit_debug (DEBUG_TAB);
 
@@ -2322,26 +2404,22 @@ gedit_tab_auto_save (GeditTab *tab)
 	/* Set auto_save_timeout to 0 since the timeout is going to be destroyed */
 	tab->priv->auto_save_timeout = 0;
 
-	file = gedit_document_get_file (doc);
-	location = gtk_source_file_get_location (file);
-
 	if (tab->priv->saver != NULL)
 	{
 		g_warning ("GeditTab: file saver already exists.");
 		g_object_unref (tab->priv->saver);
+		tab->priv->saver = NULL;
 	}
+
+	clear_saving (tab);
+
+	file = gedit_document_get_file (doc);
+	location = gtk_source_file_get_location (file);
 
 	tab->priv->saver = gtk_source_file_saver_new (file, location);
 
-	/* Since we are autosaving, we need to preserve the backup that was produced
-	 * the last time the user "manually" saved the file. So we don't set the
-	 * CREATE_BACKUP flag for an automatic file saving.
-	 * TODO In the case a recoverable error happens while saving, set the
-	 * CREATE_BACKUP flag since the user expressed his willing of saving the
-	 * file.
-	 */
-	gtk_source_file_saver_set_flags (tab->priv->saver,
-					 tab->priv->save_flags);
+	save_flags = get_initial_save_flags (tab, TRUE);
+	gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
 
 	save (tab);
 
@@ -2367,11 +2445,21 @@ _gedit_tab_save_as (GeditTab                 *tab,
 	g_return_if_fail (G_IS_FILE (location));
 	g_return_if_fail (encoding != NULL);
 
+	if (tab->priv->saver != NULL)
+	{
+		g_warning ("GeditTab: file saver already exists.");
+		g_object_unref (tab->priv->saver);
+		tab->priv->saver = NULL;
+	}
+
+	clear_saving (tab);
+
 	doc = gedit_tab_get_document (tab);
 
 	/* reset the save flags, when saving as */
 	tab->priv->save_flags = GTK_SOURCE_FILE_SAVER_FLAGS_NONE;
-	save_flags = tab->priv->save_flags;
+
+	save_flags = get_initial_save_flags (tab, FALSE);
 
 	if (tab->priv->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)
 	{
@@ -2392,12 +2480,6 @@ _gedit_tab_save_as (GeditTab                 *tab,
 		/* Ignore modification time for a save to another location. */
 		/* TODO do that in GtkSourceFileSaver. */
 		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME;
-	}
-
-	if (tab->priv->saver != NULL)
-	{
-		g_warning ("GeditTab: file saver already exists.");
-		g_object_unref (tab->priv->saver);
 	}
 
 	tab->priv->saver = gtk_source_file_saver_new (file, location);
