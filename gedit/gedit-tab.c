@@ -1707,8 +1707,7 @@ load_cb (GtkSourceFileLoader *loader,
 
 	if (error != NULL)
 	{
-		/* TODO remove when no longer needed. */
-		g_warning ("File loading error: %s", error->message);
+		gedit_debug_message (DEBUG_TAB, "File loading error: %s", error->message);
 	}
 
 	if (tab->priv->timer != NULL)
@@ -2156,8 +2155,7 @@ save_cb (GtkSourceFileSaver *saver,
 
 	if (error != NULL)
 	{
-		/* TODO remove when no longer needed. */
-		g_warning ("File saving error: %s", error->message);
+		gedit_debug_message (DEBUG_TAB, "File saving error: %s", error->message);
 	}
 
 	if (tab->priv->timer != NULL)
