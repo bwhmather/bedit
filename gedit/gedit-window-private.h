@@ -61,7 +61,6 @@ struct _GeditWindowPrivate
 	GtkWidget      *fullscreen_headerbar;
 	GtkWidget      *fullscreen_recent_menu;
 	GtkMenuButton  *fullscreen_gear_button;
-	gboolean        fullscreen_controls_setup;
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;
@@ -98,9 +97,6 @@ struct _GeditWindowPrivate
 	guint           inhibition_cookie;
 
 	gint            bottom_panel_item_removed_handler_id;
-	gint            fullscreen_eventbox_handler_id;
-
-	gboolean        fullscreen_eventbox_leave_state;
 
 	GtkWindowGroup *window_group;
 
@@ -114,8 +110,11 @@ struct _GeditWindowPrivate
 	GtkOSXApplicationMenuGroup *mac_menu_group;
 #endif
 
-	gboolean        removing_tabs : 1;
-	gboolean        dispose_has_run : 1;
+	guint           removing_tabs : 1;
+	guint           dispose_has_run : 1;
+
+	guint           fullscreen_controls_setup : 1;
+	guint           fullscreen_eventbox_leave_state : 1;
 };
 
 G_END_DECLS
