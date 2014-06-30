@@ -730,6 +730,12 @@ gedit_view_delete_from_cursor (GtkTextView   *text_view,
 	}
 }
 
+static GtkTextBuffer *
+gedit_view_create_buffer (GtkTextView *text_view)
+{
+	return GTK_TEXT_BUFFER (gedit_document_new ());
+}
+
 static void
 gedit_view_change_case (GeditView               *view,
 			GtkSourceChangeCaseType  case_type)
@@ -785,6 +791,8 @@ gedit_view_class_init (GeditViewClass *klass)
 	widget_class->unrealize = gedit_view_unrealize;
 
 	text_view_class->delete_from_cursor = gedit_view_delete_from_cursor;
+	text_view_class->create_buffer = gedit_view_create_buffer;
+
 	klass->change_case = gedit_view_change_case;
 
 	/* A new signal DROP_URIS has been added to allow plugins to intercept
