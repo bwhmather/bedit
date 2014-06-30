@@ -318,6 +318,21 @@ gedit_document_changed (GtkTextBuffer *buffer)
 }
 
 static void
+gedit_document_constructed (GObject *object)
+{
+	GeditDocument *doc = GEDIT_DOCUMENT (object);
+
+	/* Bind construct properties. */
+	g_settings_bind (doc->priv->editor_settings,
+			 GEDIT_SETTINGS_ENSURE_TRAILING_NEWLINE,
+			 doc,
+			 "implicit-trailing-newline",
+			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
+
+	G_OBJECT_CLASS (gedit_document_parent_class)->constructed (object);
+}
+
+static void
 gedit_document_class_init (GeditDocumentClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -327,6 +342,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	object_class->finalize = gedit_document_finalize;
 	object_class->get_property = gedit_document_get_property;
 	object_class->set_property = gedit_document_set_property;
+	object_class->constructed = gedit_document_constructed;
 
 	buf_class->mark_set = gedit_document_mark_set;
 	buf_class->changed = gedit_document_changed;
