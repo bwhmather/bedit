@@ -421,6 +421,22 @@ load_accels (void)
 	}
 }
 
+static gpointer
+get_builder_object_ref (GtkBuilder  *builder,
+                        const gchar *name)
+{
+	gpointer ret;
+
+	ret = gtk_builder_get_object (builder, name);
+
+	if (ret != NULL)
+	{
+		g_object_ref_sink (ret);
+	}
+
+	return ret;
+}
+
 static void
 gedit_app_startup (GApplication *application)
 {
@@ -493,16 +509,16 @@ gedit_app_startup (GApplication *application)
 			appmenu = G_MENU_MODEL (gtk_builder_get_object (builder, "appmenu"));
 			gtk_application_set_app_menu (GTK_APPLICATION (application), appmenu);
 
-			app->priv->window_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "gear_menu_withappmenu"));
+			app->priv->window_menu = G_MENU_MODEL (get_builder_object_ref (builder, "gear_menu_withappmenu"));
 		}
 		else
 		{
-			app->priv->window_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "gear_menu_noappmenu"));
+			app->priv->window_menu = G_MENU_MODEL (get_builder_object_ref (builder, "gear_menu_noappmenu"));
 		}
 
-		app->priv->notebook_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "notebook_menu"));
-		app->priv->tab_width_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "tab_width_menu"));
-		app->priv->line_col_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "line_col_menu"));
+		app->priv->notebook_menu = G_MENU_MODEL (get_builder_object_ref (builder, "notebook_menu"));
+		app->priv->tab_width_menu = G_MENU_MODEL (get_builder_object_ref (builder, "tab_width_menu"));
+		app->priv->line_col_menu = G_MENU_MODEL (get_builder_object_ref (builder, "line_col_menu"));
 	}
 
 	g_object_unref (builder);
