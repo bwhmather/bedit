@@ -23,7 +23,6 @@
 #define __GEDIT_ENCODINGS_COMBO_BOX_H__
 
 #include <gtk/gtk.h>
-#include <gedit/gedit-encodings.h>
 
 G_BEGIN_DECLS
 

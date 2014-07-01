@@ -130,7 +130,6 @@ gedit_INST_H_FILES =				\
 	gedit/gedit-commands.h			\
 	gedit/gedit-debug.h			\
 	gedit/gedit-document.h 			\
-	gedit/gedit-encodings.h			\
 	gedit/gedit-encodings-combo-box.h	\
 	gedit/gedit-menu-extension.h		\
 	gedit/gedit-message-bus.h		\
@@ -170,7 +169,6 @@ gedit_libgedit_c_files =			\
 	gedit/gedit-dirs.c			\
 	gedit/gedit-document.c 			\
 	gedit/gedit-documents-panel.c		\
-	gedit/gedit-encodings.c			\
 	gedit/gedit-encodings-combo-box.c	\
 	gedit/gedit-encodings-dialog.c		\
 	gedit/gedit-file-chooser-dialog.c	\
