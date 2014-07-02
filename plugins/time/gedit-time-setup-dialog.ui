@@ -69,7 +69,7 @@
               <object class="GtkGrid" id="grid1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">12</property>
+                <property name="margin_start">12</property>
                 <child>
                   <object class="GtkRadioButton" id="always_prompt">
                     <property name="label" translatable="yes">_Prompt for a format</property>
@@ -115,7 +115,7 @@
                   <object class="GtkScrolledWindow" id="formats_viewport">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="margin_left">12</property>
+                    <property name="margin_start">12</property>
                     <property name="margin_bottom">8</property>
                     <property name="shadow_type">in</property>
                     <child>
@@ -166,7 +166,7 @@
                     <property name="hexpand">True</property>
                     <property name="invisible_char">●</property>
                     <property name="text" translatable="yes" comments="Translators: Use the more common date format in your locale">%d/%m/%Y %H:%M:%S</property>
-                    <property name="margin_left">6</property>
+                    <property name="margin_start">6</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>

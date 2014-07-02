@@ -1484,13 +1484,13 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	if (gtk_widget_get_direction (GTK_WIDGET (frame->priv->revealer)) == GTK_TEXT_DIR_LTR)
 	{
-		gtk_widget_set_margin_right (GTK_WIDGET (frame->priv->revealer),
-					     SEARCH_POPUP_MARGIN);
+		gtk_widget_set_margin_end (GTK_WIDGET (frame->priv->revealer),
+					   SEARCH_POPUP_MARGIN);
 	}
 	else
 	{
-		gtk_widget_set_margin_left (GTK_WIDGET (frame->priv->revealer),
-					    SEARCH_POPUP_MARGIN);
+		gtk_widget_set_margin_start (GTK_WIDGET (frame->priv->revealer),
+					     SEARCH_POPUP_MARGIN);
 	}
 
 	g_signal_connect (doc,
