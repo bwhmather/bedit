@@ -2035,7 +2035,9 @@ _gedit_tab_load (GeditTab                *tab,
 		g_object_unref (tab->priv->loader);
 	}
 
-	tab->priv->loader = gtk_source_file_loader_new (file, location);
+	tab->priv->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc),
+							file,
+							location);
 
 	_gedit_document_set_create (doc, create);
 
@@ -2067,7 +2069,9 @@ _gedit_tab_load_stream (GeditTab                *tab,
 		g_object_unref (tab->priv->loader);
 	}
 
-	tab->priv->loader = gtk_source_file_loader_new_from_stream (file, stream);
+	tab->priv->loader = gtk_source_file_loader_new_from_stream (GTK_SOURCE_BUFFER (doc),
+								    file,
+								    stream);
 
 	_gedit_document_set_create (doc, FALSE);
 
@@ -2103,7 +2107,9 @@ _gedit_tab_revert (GeditTab *tab)
 		g_object_unref (tab->priv->loader);
 	}
 
-	tab->priv->loader = gtk_source_file_loader_new (file, location);
+	tab->priv->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc),
+							file,
+							location);
 
 	load (tab, NULL, 0, 0);
 }
@@ -2368,7 +2374,10 @@ _gedit_tab_save (GeditTab *tab)
 	file = gedit_document_get_file (doc);
 	location = gtk_source_file_get_location (file);
 
-	tab->priv->saver = gtk_source_file_saver_new (file, location);
+	tab->priv->saver = gtk_source_file_saver_new (GTK_SOURCE_BUFFER (doc),
+						      file,
+						      location);
+
 	gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
 
 	save (tab);
@@ -2423,7 +2432,9 @@ gedit_tab_auto_save (GeditTab *tab)
 	file = gedit_document_get_file (doc);
 	location = gtk_source_file_get_location (file);
 
-	tab->priv->saver = gtk_source_file_saver_new (file, location);
+	tab->priv->saver = gtk_source_file_saver_new (GTK_SOURCE_BUFFER (doc),
+						      file,
+						      location);
 
 	save_flags = get_initial_save_flags (tab, TRUE);
 	gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
@@ -2489,7 +2500,9 @@ _gedit_tab_save_as (GeditTab                 *tab,
 		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME;
 	}
 
-	tab->priv->saver = gtk_source_file_saver_new (file, location);
+	tab->priv->saver = gtk_source_file_saver_new (GTK_SOURCE_BUFFER (doc),
+						      file,
+						      location);
 
 	gtk_source_file_saver_set_encoding (tab->priv->saver, encoding);
 	gtk_source_file_saver_set_newline_type (tab->priv->saver, newline_type);

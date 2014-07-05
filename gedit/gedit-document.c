@@ -741,7 +741,7 @@ gedit_document_init (GeditDocument *doc)
 
 	g_get_current_time (&doc->priv->time_of_last_save_or_load);
 
-	priv->file = gtk_source_file_new (GTK_SOURCE_BUFFER (doc));
+	priv->file = gtk_source_file_new ();
 
 	g_signal_connect_object (priv->file,
 				 "notify::location",
