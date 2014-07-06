@@ -1,17 +1,16 @@
 <page xmlns="http://projectmallard.org/1.0/"
-      xmlns:ui="http://projectmallard.org/experimental/ui/"
       xmlns:its="http://www.w3.org/2005/11/its"
-      type="guide" style="tip"
+      xmlns:ui="http://projectmallard.org/ui/1.0/"
+      type="guide" style="tip" version="1.0 ui/1.0"
       id="gedit-shortcut-keys">
 
   <info>
     <link type="guide" xref="index"/>
-    <revision pkgversion="3.8" date="2013-06-18" status="review"/>
-    <revision pkgversion="3.10" date="2013-08-23" status="review"/>
+    <revision pkgversion="3.14" date="2014-07-06" status="review"/>
 
     <credit type="author">
       <name>Jim Campbell</name>
-      <email>jwcampbell@gmail.com</email>
+      <email its:translate="no">jcampbell@gnome.org</email>
     </credit>
     <credit type="author">
       <name>Paolo Borelli</name>
@@ -27,7 +26,7 @@
     </credit>
     <credit type="editor">
       <name>Sindhu S</name>
-      <email>sindhus@live.in</email>
+      <email its:translate="no">sindhus@live.in</email>
     </credit>
     <credit type="author copyright">
       <name>Radina Matic</name>
@@ -43,21 +42,7 @@
   the mouse and menus. The following tables list all of <app>gedit's</app>
   shortcut keys.</p>
 
-<!--  
-Please skip this list for now. I'm not sure if it is needed.
-  <list>
-    <title>Types of shortcut keys</title>
-    <item><p><link xref="#gedit-tab-shortcuts">Tab-related shortcut keys</link></p></item>
-    <item><p><link xref="#gedit-file-shortcuts">Shortcuts for working working with files</link></p></item>
-    <item><p><link xref="#gedit-editing-shortcuts">Shortcuts for editing</link></p></item>
-    <item><p><link xref="#gedit-pane-shortcuts">Shortcut keys for showing and hiding panes</link></p></item>
-    <item><p><link xref="#gedit-searching-shortcuts">Shortcuts for searching through text</link></p></item>
-    <item><p><link xref="#gedit-tools-shortcuts">gedit tool and plugin shortcuts</link></p></item>
-    <item><p><link xref="#gedit-help-shortcuts">User-help shortcuts</link></p></item>
-  </list>
--->
-
-    <table rules="rows" frame="top bottom" ui:expanded="yes">
+    <table rules="rows" frame="top bottom" ui:expanded="true">
     <title>Tab-related Shortcut keys</title>
       <thead>
         <tr>
@@ -113,7 +98,7 @@ Please skip this list for now. I'm not sure if it is needed.
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom"  ui:expanded="no">
+    <table rules="rows" frame="top bottom"  ui:expanded="false">
     <title>Shortcut keys for working with files</title>
       <thead>
         <tr>
@@ -159,7 +144,7 @@ Please skip this list for now. I'm not sure if it is needed.
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="no">
+    <table rules="rows" frame="top bottom" ui:expanded="false">
     <title>Shortcut keys for editing files</title>
       <thead>
         <tr>
@@ -253,7 +238,7 @@ Please skip this list for now. I'm not sure if it is needed.
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="no">
+    <table rules="rows" frame="top bottom" ui:expanded="false">
     <title>Shortcut keys for showing and hiding panes</title>
       <thead>
         <tr>
@@ -274,7 +259,7 @@ Please skip this list for now. I'm not sure if it is needed.
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="no">
+    <table rules="rows" frame="top bottom" ui:expanded="false">
     <title>Shortcut keys for searching</title>
       <thead>
         <tr>
@@ -311,7 +296,7 @@ Please skip this list for now. I'm not sure if it is needed.
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="no">
+    <table rules="rows" frame="top bottom" ui:expanded="false">
     <title>Shortcut keys for tools</title>
       <thead>
         <tr>
@@ -340,7 +325,7 @@ Please skip this list for now. I'm not sure if it is needed.
       </tbody>
     </table>
 
-    <table rules="rows" frame="top bottom" ui:expanded="no">
+    <table rules="rows" frame="top bottom" ui:expanded="false">
     <title>Shortcut keys for user help</title>
       <thead>
         <tr>
