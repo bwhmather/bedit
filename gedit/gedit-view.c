@@ -85,7 +85,7 @@ document_read_only_notify_handler (GeditDocument *document,
 static void
 current_buffer_removed (GeditView *view)
 {
-	if (view->priv->current_buffer)
+	if (view->priv->current_buffer != NULL)
 	{
 		g_signal_handlers_disconnect_by_func (view->priv->current_buffer,
 						      document_read_only_notify_handler,
@@ -161,20 +161,6 @@ gedit_view_init (GeditView *view)
 }
 
 static void
-gedit_view_destroy (GtkWidget *widget)
-{
-	GeditView *view = GEDIT_VIEW (widget);
-
-	/* Disconnect notify buffer because the destroy of the textview will
-	   set the buffer to NULL, and we call get_buffer in the notify which
-	   would reinstate a GtkTextBuffer which we don't want */
-	current_buffer_removed (view);
-	g_signal_handlers_disconnect_by_func (view, on_notify_buffer_cb, NULL);
-
-	GTK_WIDGET_CLASS (gedit_view_parent_class)->destroy (widget);
-}
-
-static void
 gedit_view_dispose (GObject *object)
 {
 	GeditView *view = GEDIT_VIEW (object);
@@ -182,17 +168,17 @@ gedit_view_dispose (GObject *object)
 	g_clear_object (&view->priv->extensions);
 	g_clear_object (&view->priv->editor_settings);
 
-	G_OBJECT_CLASS (gedit_view_parent_class)->dispose (object);
-}
-
-static void
-gedit_view_finalize (GObject *object)
-{
-	GeditView *view = GEDIT_VIEW (object);
-
 	current_buffer_removed (view);
 
-	G_OBJECT_CLASS (gedit_view_parent_class)->finalize (object);
+	/* Disconnect notify buffer because the destroy of the textview will set
+	 * the buffer to NULL, and we call get_buffer in the notify which would
+	 * reinstate a buffer which we don't want.
+	 * There is no problem calling g_signal_handlers_disconnect_by_func()
+	 * several times (if dispose() is called several times).
+	 */
+	g_signal_handlers_disconnect_by_func (view, on_notify_buffer_cb, NULL);
+
+	G_OBJECT_CLASS (gedit_view_parent_class)->dispose (object);
 }
 
 static void
@@ -773,10 +759,8 @@ gedit_view_class_init (GeditViewClass *klass)
 	GtkBindingSet    *binding_set;
 
 	object_class->dispose = gedit_view_dispose;
-	object_class->finalize = gedit_view_finalize;
 	object_class->constructed = gedit_view_constructed;
 
-	widget_class->destroy = gedit_view_destroy;
 	widget_class->focus_out_event = gedit_view_focus_out;
 
 	/*
