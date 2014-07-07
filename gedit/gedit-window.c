@@ -1198,6 +1198,7 @@ sync_current_tab_actions (GeditWindow *window,
 		g_action_map_remove_action (G_ACTION_MAP (window), "use-spaces");
 		g_action_map_remove_action (G_ACTION_MAP (window), "show-line-numbers");
 		g_action_map_remove_action (G_ACTION_MAP (window), "display-right-margin");
+		g_action_map_remove_action (G_ACTION_MAP (window), "highlight-current-line");
 		g_action_map_remove_action (G_ACTION_MAP (window), "wrap-mode");
 
 		g_signal_handler_disconnect (old_view, window->priv->wrap_mode_changed_id);
