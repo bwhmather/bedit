@@ -251,13 +251,18 @@ gedit_close_confirmation_dialog_new (GtkWindow *parent,
 				     GList     *unsaved_documents)
 {
 	GtkWidget *dlg;
+	gboolean use_header_bar;
 
 	g_return_val_if_fail (unsaved_documents != NULL, NULL);
 
+	g_object_get (gtk_settings_get_default (),
+	              "gtk-dialogs-use-header", &use_header_bar,
+	              NULL);
+
 	dlg = GTK_WIDGET (g_object_new (GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG,
-				        "unsaved_documents", unsaved_documents,
-				        NULL));
-	g_return_val_if_fail (dlg != NULL, NULL);
+	                                "use-header-bar", use_header_bar,
+	                                "unsaved_documents", unsaved_documents,
+	                                NULL));
 
 	if (parent != NULL)
 	{
