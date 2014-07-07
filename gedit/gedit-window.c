@@ -90,6 +90,9 @@ static const GtkTargetEntry drop_types [] = {
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditWindow, gedit_window, GTK_TYPE_APPLICATION_WINDOW)
 
+/* Prototypes */
+static void remove_actions (GeditWindow *window);
+
 static void
 gedit_window_get_property (GObject    *object,
 			   guint       prop_id,
@@ -225,6 +228,15 @@ gedit_window_dispose (GObject *object)
 	peas_engine_garbage_collect (PEAS_ENGINE (gedit_plugins_engine_get_default ()));
 
 	g_clear_object (&window->priv->side_stack_switcher);
+
+	/* GTK+/GIO unref the action map in an idle. For the last GeditWindow,
+	 * the application quits before the idle, so the action map is not
+	 * unreffed, and some objects are not finalized on application shutdown
+	 * (GeditView for example).
+	 * So this is just for making the debugging of object references a bit
+	 * nicer.
+	 */
+	remove_actions (window);
 
 	G_OBJECT_CLASS (gedit_window_parent_class)->dispose (object);
 }
@@ -1187,24 +1199,29 @@ static GActionEntry text_wrapping_entrie[] = {
 };
 
 static void
+remove_actions (GeditWindow *window)
+{
+	g_action_map_remove_action (G_ACTION_MAP (window), "auto-indent");
+	g_action_map_remove_action (G_ACTION_MAP (window), "tab-width");
+	g_action_map_remove_action (G_ACTION_MAP (window), "use-spaces");
+	g_action_map_remove_action (G_ACTION_MAP (window), "show-line-numbers");
+	g_action_map_remove_action (G_ACTION_MAP (window), "display-right-margin");
+	g_action_map_remove_action (G_ACTION_MAP (window), "highlight-current-line");
+	g_action_map_remove_action (G_ACTION_MAP (window), "wrap-mode");
+}
+
+static void
 sync_current_tab_actions (GeditWindow *window,
 			  GeditView   *old_view,
 			  GeditView   *new_view)
 {
-	if (old_view)
+	if (old_view != NULL)
 	{
-		g_action_map_remove_action (G_ACTION_MAP (window), "auto-indent");
-		g_action_map_remove_action (G_ACTION_MAP (window), "tab-width");
-		g_action_map_remove_action (G_ACTION_MAP (window), "use-spaces");
-		g_action_map_remove_action (G_ACTION_MAP (window), "show-line-numbers");
-		g_action_map_remove_action (G_ACTION_MAP (window), "display-right-margin");
-		g_action_map_remove_action (G_ACTION_MAP (window), "highlight-current-line");
-		g_action_map_remove_action (G_ACTION_MAP (window), "wrap-mode");
-
+		remove_actions (window);
 		g_signal_handler_disconnect (old_view, window->priv->wrap_mode_changed_id);
 	}
 
-	if (new_view)
+	if (new_view != NULL)
 	{
 		GPropertyAction *action;
 
