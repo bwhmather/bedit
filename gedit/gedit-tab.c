@@ -1955,23 +1955,9 @@ load (GeditTab                *tab,
       gint                     column_pos)
 {
 	GSList *candidate_encodings = NULL;
-	GtkSourceFile *file;
-	GFile *location;
 	GeditDocument *doc;
 
 	g_return_if_fail (GTK_SOURCE_IS_FILE_LOADER (tab->priv->loader));
-
-	file = gtk_source_file_loader_get_file (tab->priv->loader);
-	location = gtk_source_file_loader_get_location (tab->priv->loader);
-
-	/* Sets the location directly, before launching the actual load, so
-	 * GeditDocument functions relying on the location work correctly (e.g.
-	 * get the metadata encoding with gedit_document_get_metadata(), used in
-	 * get_candidate_encodings()).
-	 * The previous location is anyway not needed, even if the load fails,
-	 * since the buffer contents is first removed.
-	 */
-	gtk_source_file_set_location (file, location);
 
 	if (encoding != NULL)
 	{
@@ -2035,9 +2021,9 @@ _gedit_tab_load (GeditTab                *tab,
 		g_object_unref (tab->priv->loader);
 	}
 
-	tab->priv->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc),
-							file,
-							location);
+	gtk_source_file_set_location (file, location);
+
+	tab->priv->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc), file);
 
 	_gedit_document_set_create (doc, create);
 
@@ -2069,6 +2055,8 @@ _gedit_tab_load_stream (GeditTab                *tab,
 		g_object_unref (tab->priv->loader);
 	}
 
+	gtk_source_file_set_location (file, NULL);
+
 	tab->priv->loader = gtk_source_file_loader_new_from_stream (GTK_SOURCE_BUFFER (doc),
 								    file,
 								    stream);
@@ -2094,12 +2082,12 @@ _gedit_tab_revert (GeditTab *tab)
 		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 	}
 
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING);
-
 	doc = gedit_tab_get_document (tab);
 	file = gedit_document_get_file (doc);
 	location = gtk_source_file_get_location (file);
 	g_return_if_fail (location != NULL);
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING);
 
 	if (tab->priv->loader != NULL)
 	{
@@ -2107,9 +2095,7 @@ _gedit_tab_revert (GeditTab *tab)
 		g_object_unref (tab->priv->loader);
 	}
 
-	tab->priv->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc),
-							file,
-							location);
+	tab->priv->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc), file);
 
 	load (tab, NULL, 0, 0);
 }
