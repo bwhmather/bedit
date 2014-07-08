@@ -2340,7 +2340,6 @@ _gedit_tab_save (GeditTab *tab)
 {
 	GeditDocument *doc;
 	GtkSourceFile *file;
-	GFile *location;
 	GtkSourceFileSaverFlags save_flags;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
@@ -2372,11 +2371,8 @@ _gedit_tab_save (GeditTab *tab)
 	}
 
 	file = gedit_document_get_file (doc);
-	location = gtk_source_file_get_location (file);
 
-	tab->priv->saver = gtk_source_file_saver_new (GTK_SOURCE_BUFFER (doc),
-						      file,
-						      location);
+	tab->priv->saver = gtk_source_file_saver_new (GTK_SOURCE_BUFFER (doc), file);
 
 	gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
 
@@ -2388,7 +2384,6 @@ gedit_tab_auto_save (GeditTab *tab)
 {
 	GeditDocument *doc;
 	GtkSourceFile *file;
-	GFile *location;
 	GtkSourceFileSaverFlags save_flags;
 
 	gedit_debug (DEBUG_TAB);
@@ -2430,11 +2425,8 @@ gedit_tab_auto_save (GeditTab *tab)
 	clear_saving (tab);
 
 	file = gedit_document_get_file (doc);
-	location = gtk_source_file_get_location (file);
 
-	tab->priv->saver = gtk_source_file_saver_new (GTK_SOURCE_BUFFER (doc),
-						      file,
-						      location);
+	tab->priv->saver = gtk_source_file_saver_new (GTK_SOURCE_BUFFER (doc), file);
 
 	save_flags = get_initial_save_flags (tab, TRUE);
 	gtk_source_file_saver_set_flags (tab->priv->saver, save_flags);
@@ -2500,9 +2492,9 @@ _gedit_tab_save_as (GeditTab                 *tab,
 		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME;
 	}
 
-	tab->priv->saver = gtk_source_file_saver_new (GTK_SOURCE_BUFFER (doc),
-						      file,
-						      location);
+	tab->priv->saver = gtk_source_file_saver_new_with_target (GTK_SOURCE_BUFFER (doc),
+								  file,
+								  location);
 
 	gtk_source_file_saver_set_encoding (tab->priv->saver, encoding);
 	gtk_source_file_saver_set_newline_type (tab->priv->saver, newline_type);
