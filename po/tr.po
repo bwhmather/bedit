@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-07-07 05:12+0000\n"
-"PO-Revision-Date: 2014-07-07 21:13+0000\n"
+"POT-Creation-Date: 2014-07-10 05:10+0000\n"
+"PO-Revision-Date: 2014-07-10 16:20+0000\n"
 "Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -527,7 +527,7 @@ msgstr "Yardım görüntülenirken bir hata oluştu."
 msgid "%s: invalid encoding."
 msgstr "%s: geçersiz kodlama."
 
-#: ../gedit/gedit-app-osx.c:260
+#: ../gedit/gedit-app-osx.c:261
 msgid "About gedit"
 msgstr "Gedit Hakkında"
 
@@ -535,18 +535,18 @@ msgstr "Gedit Hakkında"
 msgid "Question"
 msgstr "Soru"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:295
+#: ../gedit/gedit-close-confirmation-dialog.c:300
 msgid "Close _without Saving"
 msgstr "Kaydetmeden _Kapat"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:296
-#: ../gedit/gedit-commands-file.c:442 ../gedit/gedit-commands-file.c:573
-#: ../gedit/gedit-commands-file.c:642 ../gedit/gedit-commands-file.c:849
-#: ../gedit/gedit-commands-file.c:1299 ../gedit/gedit-encodings-dialog.ui.h:3
+#: ../gedit/gedit-close-confirmation-dialog.c:301
+#: ../gedit/gedit-commands-file.c:436 ../gedit/gedit-commands-file.c:565
+#: ../gedit/gedit-commands-file.c:634 ../gedit/gedit-commands-file.c:844
+#: ../gedit/gedit-commands-file.c:1292 ../gedit/gedit-encodings-dialog.ui.h:3
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:2
 #: ../gedit/gedit-io-error-info-bar.c:134
-#: ../gedit/gedit-io-error-info-bar.c:546
-#: ../gedit/gedit-io-error-info-bar.c:1220
+#: ../gedit/gedit-io-error-info-bar.c:515
+#: ../gedit/gedit-io-error-info-bar.c:1191
 #: ../gedit/gedit-preferences-dialog.c:855
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
@@ -561,18 +561,18 @@ msgstr "Kaydetmeden _Kapat"
 msgid "_Cancel"
 msgstr "_İptal"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:322 ../gedit/gedit-menu.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:327 ../gedit/gedit-menu.ui.h:9
 msgid "_Save As…"
 msgstr "Farklı _Kaydet…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:322
-#: ../gedit/gedit-commands-file.c:850
+#: ../gedit/gedit-close-confirmation-dialog.c:327
+#: ../gedit/gedit-commands-file.c:845
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "_Kaydet"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:340
+#: ../gedit/gedit-close-confirmation-dialog.c:345
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently "
@@ -582,12 +582,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "Kaydetmediğiniz takdirde, son %ld saatte yaptığınız değişiklikler kalıcı olarak kaybolacak."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:349
+#: ../gedit/gedit-close-confirmation-dialog.c:354
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "Kaydetmediğiniz takdirde, son bir dakika içerisinde yaptığınız değişiklikler kaybolacak."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:355
+#: ../gedit/gedit-close-confirmation-dialog.c:360
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -597,7 +597,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "Kaydetmediğiniz takdirde, son bir dakika ve %ld saniye içerisinde yaptığınız değişiklikler kaybolacak."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:365
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently "
@@ -607,12 +607,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "Kaydetmediğiniz takdirde, son %ld dakika içerisinde yaptığınız değişiklikler kaybolacak."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:380
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 msgid ""
 "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Kaydetmediğiniz takdirde, son %d saatte yaptığınız değişiklikler kalıcı olarak kaybolacak."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:386
+#: ../gedit/gedit-close-confirmation-dialog.c:391
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -622,7 +622,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "Kaydetmediğiniz takdirde, son %d dakika içerisinde yaptığınız değişiklikler kaybolacak."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:401
+#: ../gedit/gedit-close-confirmation-dialog.c:406
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -630,28 +630,28 @@ msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] "Kaydetmediğiniz takdirde, son %d saatte yaptığınız değişiklikler kalıcı olarak kaybolacak."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:445
+#: ../gedit/gedit-close-confirmation-dialog.c:450
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr ""
 
-#: ../gedit/gedit-close-confirmation-dialog.c:450
+#: ../gedit/gedit-close-confirmation-dialog.c:455
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr ""
 
-#: ../gedit/gedit-close-confirmation-dialog.c:465
-#: ../gedit/gedit-close-confirmation-dialog.c:626
+#: ../gedit/gedit-close-confirmation-dialog.c:470
+#: ../gedit/gedit-close-confirmation-dialog.c:631
 msgid "Saving has been disabled by the system administrator."
 msgstr "Sistem yöneticisi tarafından kaydetme kapatıldı."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:574
+#: ../gedit/gedit-close-confirmation-dialog.c:579
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Belge içerisinde son %d saat içerisinde yapılan değişiklikler kaybolacak."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:582
+#: ../gedit/gedit-close-confirmation-dialog.c:587
 #, c-format
 msgid ""
 "There is %d document with unsaved changes. Save changes before closing?"
@@ -659,105 +659,105 @@ msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] "Kaydedilmemiş değişikliklerin bulunduğu %d belge var. Kapatmadan önce kaydetmek ister misiniz?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:602
+#: ../gedit/gedit-close-confirmation-dialog.c:607
 msgid "Docum_ents with unsaved changes:"
 msgstr "Kaydedilmemiş değişiklikleri olan _belgeler:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:606
+#: ../gedit/gedit-close-confirmation-dialog.c:611
 msgid "S_elect the documents you want to save:"
 msgstr "Kaydetmek istediğiniz _belgeleri seçin:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:630
+#: ../gedit/gedit-close-confirmation-dialog.c:635
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Kaydetmediğiniz takdirde, yaptığınız tüm değişiklikler kaybolacak."
 
-#: ../gedit/gedit-commands-file.c:262
+#: ../gedit/gedit-commands-file.c:256
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "'%s' dosyası yükleniyor..."
 
-#: ../gedit/gedit-commands-file.c:271
+#: ../gedit/gedit-commands-file.c:265
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
 msgstr[0] "%d dosya yükleniyor..."
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:438 ../gedit/gedit-window.ui.h:2
+#: ../gedit/gedit-commands-file.c:432 ../gedit/gedit-window.ui.h:2
 msgid "Open"
 msgstr "Aç"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-commands-file.c:443
+#: ../gedit/gedit-commands-file.c:437
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:38
 #: ../plugins/snippets/snippets/manager.py:782
 msgid "_Open"
 msgstr "_Aç"
 
-#: ../gedit/gedit-commands-file.c:564
+#: ../gedit/gedit-commands-file.c:556
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "\"%s\" dosyası salt-okunur."
 
-#: ../gedit/gedit-commands-file.c:569
+#: ../gedit/gedit-commands-file.c:561
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Onu kaydettiğiniz ile değiştirmeyi denemek ister misiniz?"
 
-#: ../gedit/gedit-commands-file.c:574 ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "_Değiştir"
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:607
 msgid "Save the file using compression?"
 msgstr "Dosya sıkıştırılarak kaydedilsin mi ?"
 
-#: ../gedit/gedit-commands-file.c:616
+#: ../gedit/gedit-commands-file.c:608
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr "\"%s\" dosyası daha önce düz metin olarak kaydedildi ve şimdisıkıştırılarak kaydedilecek"
 
-#: ../gedit/gedit-commands-file.c:618
+#: ../gedit/gedit-commands-file.c:610
 msgid "_Save Using Compression"
 msgstr "_Sıkıştırarak Kaydet"
 
-#: ../gedit/gedit-commands-file.c:622
+#: ../gedit/gedit-commands-file.c:614
 msgid "Save the file as plain text?"
 msgstr "Düz yazı olarak kaydedilsin mi?"
 
-#: ../gedit/gedit-commands-file.c:623
+#: ../gedit/gedit-commands-file.c:615
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved"
 " as plain text."
 msgstr "\"%s\" dosyası  daha önce sıkıştırılarak kaydedilmiş ve şimdi düz metin olarak kaydedilecek."
 
-#: ../gedit/gedit-commands-file.c:625
+#: ../gedit/gedit-commands-file.c:617
 msgid "_Save As Plain Text"
 msgstr "Düz Metin Olarak _Kaydet"
 
-#: ../gedit/gedit-commands-file.c:741 ../gedit/gedit-commands-file.c:958
+#: ../gedit/gedit-commands-file.c:735 ../gedit/gedit-commands-file.c:951
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "'%s' dosyası kaydediliyor..."
 
-#: ../gedit/gedit-commands-file.c:845
+#: ../gedit/gedit-commands-file.c:840
 msgid "Save As"
 msgstr "Farklı Kaydet"
 
-#: ../gedit/gedit-commands-file.c:1162
+#: ../gedit/gedit-commands-file.c:1155
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "'%s' belgesi ilk haline getiriliyor..."
 
-#: ../gedit/gedit-commands-file.c:1207
+#: ../gedit/gedit-commands-file.c:1200
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "'%s' belgesi içerisinde yapılan değişiklikler eski haline getirilsin mi?"
 
-#: ../gedit/gedit-commands-file.c:1216
+#: ../gedit/gedit-commands-file.c:1209
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently "
@@ -767,12 +767,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "Belge içerisinde son %ld saat içerisinde yapılan değişiklikler kaybolacak."
 
-#: ../gedit/gedit-commands-file.c:1225
+#: ../gedit/gedit-commands-file.c:1218
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "Belge içerisinde son bir dakikada yapılan değişiklikler kaybolacak."
 
-#: ../gedit/gedit-commands-file.c:1231
+#: ../gedit/gedit-commands-file.c:1224
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -782,7 +782,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "Belge içerisinde son bir dakikada ve %ld saniyede yapılan değişiklikler kaybolacak."
 
-#: ../gedit/gedit-commands-file.c:1241
+#: ../gedit/gedit-commands-file.c:1234
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently "
@@ -792,12 +792,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "Belge içerisinde son %ld dakikada yapılan değişiklikler kaybolacak."
 
-#: ../gedit/gedit-commands-file.c:1256
+#: ../gedit/gedit-commands-file.c:1249
 msgid ""
 "Changes made to the document in the last hour will be permanently lost."
 msgstr "Belge içerisinde son %d saat içerisinde yapılan değişiklikler kaybolacak."
 
-#: ../gedit/gedit-commands-file.c:1262
+#: ../gedit/gedit-commands-file.c:1255
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -807,7 +807,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "Belge içerisinde son bir saatte ve son %d dakikada yapılan değişiklikler kaybolacak."
 
-#: ../gedit/gedit-commands-file.c:1277
+#: ../gedit/gedit-commands-file.c:1270
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -815,7 +815,7 @@ msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "Belge içerisinde son %d saat içerisinde yapılan değişiklikler kaybolacak."
 
-#: ../gedit/gedit-commands-file.c:1300
+#: ../gedit/gedit-commands-file.c:1293
 msgid "_Revert"
 msgstr "_Eski Durumuna Getir"
 
@@ -844,7 +844,7 @@ msgstr "Bir eşleşme bulundu ve değiştirildi"
 msgid "\"%s\" not found"
 msgstr "\"%s\" bulunamadı"
 
-#: ../gedit/gedit-document.c:1136 ../gedit/gedit-document.c:1162
+#: ../gedit/gedit-document.c:947 ../gedit/gedit-document.c:977
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Kaydedilmemiş Belge %d"
@@ -852,128 +852,12 @@ msgstr "Kaydedilmemiş Belge %d"
 #: ../gedit/gedit-documents-panel.c:427
 #, c-format
 msgid "Tab Group %i"
-msgstr ""
+msgstr "Sekme Grubu %i"
 
-#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1035
-#: ../gedit/gedit-window.c:1041 ../gedit/gedit-window.c:1049
+#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1042
+#: ../gedit/gedit-window.c:1048 ../gedit/gedit-window.c:1056
 msgid "Read-Only"
 msgstr "Salt Okunur"
-
-#: ../gedit/gedit-encodings.c:132 ../gedit/gedit-encodings.c:174
-#: ../gedit/gedit-encodings.c:176 ../gedit/gedit-encodings.c:178
-#: ../gedit/gedit-encodings.c:180 ../gedit/gedit-encodings.c:182
-#: ../gedit/gedit-encodings.c:184 ../gedit/gedit-encodings.c:186
-msgid "Unicode"
-msgstr "Unikod"
-
-#: ../gedit/gedit-encodings.c:145 ../gedit/gedit-encodings.c:169
-#: ../gedit/gedit-encodings.c:219 ../gedit/gedit-encodings.c:262
-msgid "Western"
-msgstr "Batı"
-
-#: ../gedit/gedit-encodings.c:147 ../gedit/gedit-encodings.c:221
-#: ../gedit/gedit-encodings.c:258
-msgid "Central European"
-msgstr "Orta Avrupa"
-
-#: ../gedit/gedit-encodings.c:149
-msgid "South European"
-msgstr "Güney Avrupa"
-
-#: ../gedit/gedit-encodings.c:151 ../gedit/gedit-encodings.c:165
-#: ../gedit/gedit-encodings.c:272
-msgid "Baltic"
-msgstr "Baltık"
-
-#: ../gedit/gedit-encodings.c:153 ../gedit/gedit-encodings.c:223
-#: ../gedit/gedit-encodings.c:236 ../gedit/gedit-encodings.c:240
-#: ../gedit/gedit-encodings.c:242 ../gedit/gedit-encodings.c:260
-msgid "Cyrillic"
-msgstr "Kiril"
-
-#: ../gedit/gedit-encodings.c:155 ../gedit/gedit-encodings.c:229
-#: ../gedit/gedit-encodings.c:270
-msgid "Arabic"
-msgstr "Arapça"
-
-#: ../gedit/gedit-encodings.c:157 ../gedit/gedit-encodings.c:264
-msgid "Greek"
-msgstr "Yunanca"
-
-#: ../gedit/gedit-encodings.c:159
-msgid "Hebrew Visual"
-msgstr "İbranice Görünümsel"
-
-#: ../gedit/gedit-encodings.c:161 ../gedit/gedit-encodings.c:225
-#: ../gedit/gedit-encodings.c:266
-msgid "Turkish"
-msgstr "Türkçe"
-
-#: ../gedit/gedit-encodings.c:163
-msgid "Nordic"
-msgstr "İskandinav"
-
-#: ../gedit/gedit-encodings.c:167
-msgid "Celtic"
-msgstr "Kelt"
-
-#: ../gedit/gedit-encodings.c:171
-msgid "Romanian"
-msgstr "Romence"
-
-#: ../gedit/gedit-encodings.c:189
-msgid "Armenian"
-msgstr "Ermenice"
-
-#: ../gedit/gedit-encodings.c:191 ../gedit/gedit-encodings.c:193
-#: ../gedit/gedit-encodings.c:207
-msgid "Chinese Traditional"
-msgstr "Geleneksel Çince"
-
-#: ../gedit/gedit-encodings.c:195
-msgid "Cyrillic/Russian"
-msgstr "Kiril/Rusça"
-
-#: ../gedit/gedit-encodings.c:198 ../gedit/gedit-encodings.c:200
-#: ../gedit/gedit-encodings.c:202 ../gedit/gedit-encodings.c:232
-#: ../gedit/gedit-encodings.c:247
-msgid "Japanese"
-msgstr "Japonca"
-
-#: ../gedit/gedit-encodings.c:205 ../gedit/gedit-encodings.c:234
-#: ../gedit/gedit-encodings.c:238 ../gedit/gedit-encodings.c:253
-msgid "Korean"
-msgstr "Kore Dili"
-
-#: ../gedit/gedit-encodings.c:210 ../gedit/gedit-encodings.c:212
-#: ../gedit/gedit-encodings.c:214
-msgid "Chinese Simplified"
-msgstr "Basitleştirilmiş Çince"
-
-#: ../gedit/gedit-encodings.c:216
-msgid "Georgian"
-msgstr "Gürcüce"
-
-#: ../gedit/gedit-encodings.c:227 ../gedit/gedit-encodings.c:268
-msgid "Hebrew"
-msgstr "İbranice"
-
-#: ../gedit/gedit-encodings.c:244
-msgid "Cyrillic/Ukrainian"
-msgstr "Kiril/Ukrayna Dili"
-
-#: ../gedit/gedit-encodings.c:249 ../gedit/gedit-encodings.c:255
-#: ../gedit/gedit-encodings.c:274
-msgid "Vietnamese"
-msgstr "Vietnamca"
-
-#: ../gedit/gedit-encodings.c:251
-msgid "Thai"
-msgstr "Tayland Dili"
-
-#: ../gedit/gedit-encodings.c:425
-msgid "Unknown"
-msgstr "Bilinmeyen"
 
 #: ../gedit/gedit-encodings-combo-box.c:283
 msgid "Automatically Detected"
@@ -1034,32 +918,32 @@ msgstr "Kaldı_r"
 msgid "E_ncodings shown in menu:"
 msgstr "Menüde gösterilen _kodlamalar:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:40
+#: ../gedit/gedit-file-chooser-dialog.c:38
 #: ../gedit/gedit-preferences-dialog.c:870
 msgid "All Files"
 msgstr "Tüm Dosyalar"
 
-#: ../gedit/gedit-file-chooser-dialog.c:41
+#: ../gedit/gedit-file-chooser-dialog.c:39
 msgid "All Text Files"
 msgstr "Tüm Metin Dosyaları"
 
-#: ../gedit/gedit-file-chooser-dialog.c:81
+#: ../gedit/gedit-file-chooser-dialog.c:79
 msgid "C_haracter Encoding:"
 msgstr "Karakter _Kodlaması:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:140
+#: ../gedit/gedit-file-chooser-dialog.c:138
 msgid "L_ine Ending:"
 msgstr "Sat_ır Kodlaması:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:159
+#: ../gedit/gedit-file-chooser-dialog.c:157
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-file-chooser-dialog.c:165
+#: ../gedit/gedit-file-chooser-dialog.c:163
 msgid "Mac OS Classic"
 msgstr "Klasik Mac OS"
 
-#: ../gedit/gedit-file-chooser-dialog.c:171
+#: ../gedit/gedit-file-chooser-dialog.c:169
 msgid "Windows"
 msgstr "Windows"
 
@@ -1072,7 +956,7 @@ msgstr "Vurgu Kipi"
 msgid "_Select"
 msgstr "_Seç"
 
-#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1119
+#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1126
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1086,7 +970,7 @@ msgid "Search highlight mode..."
 msgstr "Arama vurgulama kipi..."
 
 #: ../gedit/gedit-io-error-info-bar.c:147
-#: ../gedit/gedit-io-error-info-bar.c:526
+#: ../gedit/gedit-io-error-info-bar.c:495
 msgid "_Retry"
 msgstr "_Tekrar Dene"
 
@@ -1148,103 +1032,99 @@ msgstr "\"%s\" normal bir dosya değil."
 msgid "Connection timed out. Please try again."
 msgstr "Bağlantı zaman aşımına uğradı. Lütfen tekrar deneyin."
 
-#: ../gedit/gedit-io-error-info-bar.c:301
-msgid "The file is too big."
-msgstr "Dosya çok büyük."
-
-#: ../gedit/gedit-io-error-info-bar.c:342
+#: ../gedit/gedit-io-error-info-bar.c:311
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Beklenmeyen hata: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:378
+#: ../gedit/gedit-io-error-info-bar.c:347
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:388
+#: ../gedit/gedit-io-error-info-bar.c:357
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:415
+#: ../gedit/gedit-io-error-info-bar.c:384
 msgid "Ch_aracter Encoding:"
 msgstr "Karakter _Kodlaması:"
 
-#: ../gedit/gedit-io-error-info-bar.c:476
+#: ../gedit/gedit-io-error-info-bar.c:445
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "\"%s\" konumuna şu anda erişilemiyor."
 
-#: ../gedit/gedit-io-error-info-bar.c:491
+#: ../gedit/gedit-io-error-info-bar.c:460
 msgid "Your system is offline. Check your network."
 msgstr "Sisteminiz çevrimdışı. Ağınızı kontrol edin."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:534
-#: ../gedit/gedit-io-error-info-bar.c:806
+#: ../gedit/gedit-io-error-info-bar.c:503
+#: ../gedit/gedit-io-error-info-bar.c:772
 msgid "Edit Any_way"
 msgstr "_Gene de Düzenle"
 
-#: ../gedit/gedit-io-error-info-bar.c:632
+#: ../gedit/gedit-io-error-info-bar.c:595
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr "Takip edilen bağların sayısı sınırlı ve asıl dosya bu sınırlar içinde bulunamadı."
 
-#: ../gedit/gedit-io-error-info-bar.c:636
+#: ../gedit/gedit-io-error-info-bar.c:599
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Dosyayı açmak için gerekli izinlere sahip değilsiniz."
 
-#: ../gedit/gedit-io-error-info-bar.c:642
+#: ../gedit/gedit-io-error-info-bar.c:605
 msgid "Unable to detect the character encoding."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:643
-#: ../gedit/gedit-io-error-info-bar.c:665
+#: ../gedit/gedit-io-error-info-bar.c:606
+#: ../gedit/gedit-io-error-info-bar.c:630
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Lütfen bir ikili dosya açmadığınızdan emin olun."
 
-#: ../gedit/gedit-io-error-info-bar.c:644
+#: ../gedit/gedit-io-error-info-bar.c:607
 msgid "Select a character encoding from the menu and try again."
 msgstr "Menüden bir karakter kodlaması seçin ve tekrar deneyin."
 
-#: ../gedit/gedit-io-error-info-bar.c:650
+#: ../gedit/gedit-io-error-info-bar.c:613
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:652
+#: ../gedit/gedit-io-error-info-bar.c:615
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
 msgstr "Açtığınız dosya geçersiz karakterler içeriyor. Düzenlemeye devam ederseniz bu dosya, bu belgeye zarar verebilir"
 
-#: ../gedit/gedit-io-error-info-bar.c:655
+#: ../gedit/gedit-io-error-info-bar.c:618
 msgid "You can also choose another character encoding and try again."
 msgstr "Ayrıca başka bir karakter kodlaması seçip tekrar deneyebilirsiniz."
 
-#: ../gedit/gedit-io-error-info-bar.c:662
+#: ../gedit/gedit-io-error-info-bar.c:627
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:666
-#: ../gedit/gedit-io-error-info-bar.c:740
+#: ../gedit/gedit-io-error-info-bar.c:631
+#: ../gedit/gedit-io-error-info-bar.c:706
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Menüden başka bir karakter kodlaması seçin ve tekrar deneyin."
 
-#: ../gedit/gedit-io-error-info-bar.c:676
+#: ../gedit/gedit-io-error-info-bar.c:643
 #, c-format
 msgid "Could not open the file “%s”."
-msgstr ""
+msgstr "“%s” dosyası açılamadı."
 
-#: ../gedit/gedit-io-error-info-bar.c:735
+#: ../gedit/gedit-io-error-info-bar.c:701
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:738
+#: ../gedit/gedit-io-error-info-bar.c:704
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1252,28 +1132,28 @@ msgstr "Belge, belirtilen karakter kodlaması kullanarak kodlanamayacak bir ya d
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:811
+#: ../gedit/gedit-io-error-info-bar.c:777
 msgid "D_on't Edit"
 msgstr "_Düzenleme"
 
-#: ../gedit/gedit-io-error-info-bar.c:821
+#: ../gedit/gedit-io-error-info-bar.c:787
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:835
+#: ../gedit/gedit-io-error-info-bar.c:801
 msgid "Do you want to edit it anyway?"
 msgstr "Yine de düzenlemek istiyor musunuz?"
 
-#: ../gedit/gedit-io-error-info-bar.c:891
-#: ../gedit/gedit-io-error-info-bar.c:981
-#: ../gedit/gedit-io-error-info-bar.c:1268
+#: ../gedit/gedit-io-error-info-bar.c:857
+#: ../gedit/gedit-io-error-info-bar.c:947
+#: ../gedit/gedit-io-error-info-bar.c:1239
 msgid "S_ave Anyway"
 msgstr "_Gene de Kaydet"
 
-#: ../gedit/gedit-io-error-info-bar.c:894
-#: ../gedit/gedit-io-error-info-bar.c:984
-#: ../gedit/gedit-io-error-info-bar.c:1271
+#: ../gedit/gedit-io-error-info-bar.c:860
+#: ../gedit/gedit-io-error-info-bar.c:950
+#: ../gedit/gedit-io-error-info-bar.c:1242
 msgid "D_on't Save"
 msgstr "_Kaydetme"
 
@@ -1282,27 +1162,27 @@ msgstr "_Kaydetme"
 #. * could be interpreted as the changes he made in the document. beside
 #. "reading" is
 #. * not accurate (since last load/save)
-#: ../gedit/gedit-io-error-info-bar.c:908
+#: ../gedit/gedit-io-error-info-bar.c:874
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:923
+#: ../gedit/gedit-io-error-info-bar.c:889
 msgid ""
 "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr "Eğer kaydederseniz, yapılan tüm harici değişiklikler kaybolacak. Gene de kaydedilsin mi?"
 
-#: ../gedit/gedit-io-error-info-bar.c:1003
+#: ../gedit/gedit-io-error-info-bar.c:969
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1008
+#: ../gedit/gedit-io-error-info-bar.c:974
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1025
+#: ../gedit/gedit-io-error-info-bar.c:991
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1310,85 +1190,85 @@ msgid ""
 msgstr ""
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1085
+#: ../gedit/gedit-io-error-info-bar.c:1051
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the"
 " location correctly and try again."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1093
+#: ../gedit/gedit-io-error-info-bar.c:1059
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1102
+#: ../gedit/gedit-io-error-info-bar.c:1068
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1109
+#: ../gedit/gedit-io-error-info-bar.c:1075
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr "Dosyayı kaydetmek için gerekli izinlere sahip değilsiniz. Lütfen konumu doğru yazdığınıza emin olun ve tekrar deneyin."
 
-#: ../gedit/gedit-io-error-info-bar.c:1115
+#: ../gedit/gedit-io-error-info-bar.c:1081
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space"
 " and try again."
 msgstr "Dosyayı kaydetmek için yeterli disk alanı yok. Lütfen diskinizde yer açıp tekrar deneyin."
 
-#: ../gedit/gedit-io-error-info-bar.c:1120
+#: ../gedit/gedit-io-error-info-bar.c:1086
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr "Dosyayı salt okunur bir diske kaydetmeye çalışıyorsunuz. Lütfen konumu doğru yazdığınıza emin olun ve tekrar deneyin."
 
-#: ../gedit/gedit-io-error-info-bar.c:1126
+#: ../gedit/gedit-io-error-info-bar.c:1092
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Aynı isimde başka bir dosya zaten var. Lütfen başka bir isim kullanın."
 
-#: ../gedit/gedit-io-error-info-bar.c:1131
+#: ../gedit/gedit-io-error-info-bar.c:1097
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of"
 " the file names. Please use a shorter name."
 msgstr "Dosyayı kaydetmeye çalıştığınız diskte dosya boyutu sınırı var. Lütfen daha kısa bir isim kullanın."
 
-#: ../gedit/gedit-io-error-info-bar.c:1138
+#: ../gedit/gedit-io-error-info-bar.c:1108
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not"
 " have this limitation."
 msgstr "Dosyayı kaydetmeye çalıştığınız diskte dosya boyutu sınırı var. Lütfen daha küçük bir dosyayı kaydetmeye çalışın ya da sınırlaması olmayan bir disk kullanın."
 
-#: ../gedit/gedit-io-error-info-bar.c:1154
+#: ../gedit/gedit-io-error-info-bar.c:1125
 #, c-format
 msgid "Could not save the file “%s”."
-msgstr ""
+msgstr "“%s” dosyası kaydedilemedi."
 
-#: ../gedit/gedit-io-error-info-bar.c:1194
+#: ../gedit/gedit-io-error-info-bar.c:1165
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1205
+#: ../gedit/gedit-io-error-info-bar.c:1176
 msgid "Drop Changes and _Reload"
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1215 ../gedit/gedit-menu.ui.h:6
+#: ../gedit/gedit-io-error-info-bar.c:1186 ../gedit/gedit-menu.ui.h:6
 msgid "_Reload"
 msgstr "_Yeniden Yükle"
 
-#: ../gedit/gedit-io-error-info-bar.c:1281
+#: ../gedit/gedit-io-error-info-bar.c:1252
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1297
+#: ../gedit/gedit-io-error-info-bar.c:1268
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr "Bu dosyayı kaydetmeye devam ederseniz, belgeye zarar verebilirsiniz. Buna rağmen kayıt edilsinmi ?"
@@ -1478,15 +1358,15 @@ msgstr "_Sağa Taşı"
 
 #: ../gedit/gedit-menu.ui.h:24
 msgid "Move to New _Window"
-msgstr ""
+msgstr "Yeni _Pencereye Taşı"
 
 #: ../gedit/gedit-menu.ui.h:25
 msgid "Move to New Tab _Group"
-msgstr ""
+msgstr "Yeni Sekme _Grubuna Taşı"
 
 #: ../gedit/gedit-menu.ui.h:26
 msgid "Automatic Indentation"
-msgstr ""
+msgstr "Otomatik Girinti"
 
 #: ../gedit/gedit-menu.ui.h:27
 msgid "Use Spaces"
@@ -1494,19 +1374,19 @@ msgstr "Boşlukları Kullan"
 
 #: ../gedit/gedit-menu.ui.h:28
 msgid "Display line numbers"
-msgstr ""
+msgstr "Satır numaralarını görüntüle"
 
 #: ../gedit/gedit-menu.ui.h:29
 msgid "Display right margin"
-msgstr ""
+msgstr "Sağ kenar boşluğunu göster"
 
 #: ../gedit/gedit-menu.ui.h:30
 msgid "Highlight current line"
-msgstr ""
+msgstr "Geçerli satırı vurgula"
 
 #: ../gedit/gedit-menu.ui.h:31
 msgid "Text wrapping"
-msgstr ""
+msgstr "Metin kaydırma"
 
 #: ../gedit/gedit-preferences-dialog.c:384
 msgid "Click on this button to select the font to be used by the editor"
@@ -1558,7 +1438,7 @@ msgstr "Sağ kenar boşluğunu sütunda _göster:"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:4
 msgid "Display _statusbar"
-msgstr ""
+msgstr "_Durum çubuğunu göster"
 
 #: ../gedit/gedit-preferences-dialog.ui.h:5
 #: ../gedit/gedit-print-preferences.ui.h:9
@@ -1747,7 +1627,7 @@ msgstr "Önceki sayfayı göster"
 
 #: ../gedit/gedit-print-preview.ui.h:2
 msgid "P_revious Page"
-msgstr ""
+msgstr "_Önceki Sayfa"
 
 #: ../gedit/gedit-print-preview.ui.h:3
 msgid "Show the next page"
@@ -1755,7 +1635,7 @@ msgstr "Sonraki sayfayı göster"
 
 #: ../gedit/gedit-print-preview.ui.h:4
 msgid "_Next Page"
-msgstr ""
+msgstr "So_nraki Sayfa"
 
 #: ../gedit/gedit-print-preview.ui.h:5
 msgid "Current page (Alt+P)"
@@ -1821,7 +1701,7 @@ msgstr "_Hepsini Değiştir"
 
 #: ../gedit/gedit-replace-dialog.ui.h:5
 msgid "_Find"
-msgstr ""
+msgstr "_Bul"
 
 #: ../gedit/gedit-replace-dialog.ui.h:6
 msgid "_Search for: "
@@ -1876,80 +1756,80 @@ msgstr[0] "Hatalar içeren %d sekme var"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:738
+#: ../gedit/gedit-tab.c:772
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "%s dosyası %s konumundan eski haline getiriliyor"
 
-#: ../gedit/gedit-tab.c:745
+#: ../gedit/gedit-tab.c:779
 #, c-format
 msgid "Reverting %s"
 msgstr "%s ilk haline getiriliyor"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:761
+#: ../gedit/gedit-tab.c:792
 #, c-format
 msgid "Loading %s from %s"
 msgstr "%s dosyası %s konumundan yükleniyor"
 
-#: ../gedit/gedit-tab.c:768
+#: ../gedit/gedit-tab.c:799
 #, c-format
 msgid "Loading %s"
 msgstr "%s yükleniyor"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:848
+#: ../gedit/gedit-tab.c:875
 #, c-format
 msgid "Saving %s to %s"
 msgstr "%s, %s konumuna kaydediliyor"
 
-#: ../gedit/gedit-tab.c:855
+#: ../gedit/gedit-tab.c:880
 #, c-format
 msgid "Saving %s"
 msgstr "%s kaydediliyor"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1809
+#: ../gedit/gedit-tab.c:1443
 msgid "RO"
 msgstr "SO"
 
-#: ../gedit/gedit-tab.c:1856
+#: ../gedit/gedit-tab.c:1491
 #, c-format
 msgid "Error opening file %s"
 msgstr "%s dosyası açılırken hata"
 
-#: ../gedit/gedit-tab.c:1861
+#: ../gedit/gedit-tab.c:1496
 #, c-format
 msgid "Error reverting file %s"
 msgstr "%s dosyası ilk haline getirilirken hata"
 
-#: ../gedit/gedit-tab.c:1866
+#: ../gedit/gedit-tab.c:1501
 #, c-format
 msgid "Error saving file %s"
 msgstr "%s dosyası kaydedilirken hata"
 
-#: ../gedit/gedit-tab.c:1887
+#: ../gedit/gedit-tab.c:1523
 msgid "Unicode (UTF-8)"
 msgstr "Unikod (UTF-8)"
 
-#: ../gedit/gedit-tab.c:1894
+#: ../gedit/gedit-tab.c:1530
 msgid "Name:"
 msgstr "İsim:"
 
-#: ../gedit/gedit-tab.c:1895
+#: ../gedit/gedit-tab.c:1531
 msgid "MIME Type:"
 msgstr "MIME Türü:"
 
-#: ../gedit/gedit-tab.c:1896
+#: ../gedit/gedit-tab.c:1532
 msgid "Encoding:"
 msgstr "Kodlama:"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-tab-label.ui.h:1
 msgid "Close Document"
-msgstr ""
+msgstr "Belgeyi Kapat"
 
 #: ../gedit/gedit-utils.c:846
 msgid "Please check your installation."
@@ -1974,67 +1854,67 @@ msgstr "%s üzerinde /"
 #. Translators: the first %d is the position of the current search
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
-#: ../gedit/gedit-view-frame.c:708
+#: ../gedit/gedit-view-frame.c:718
 #, c-format
 msgid "%d of %d"
-msgstr ""
+msgstr "%d / %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:800
+#: ../gedit/gedit-view-frame.c:810
 msgid "_Wrap Around"
 msgstr "_Satır Bölme"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:810
+#: ../gedit/gedit-view-frame.c:820
 msgid "Match as _Regular Expression"
-msgstr ""
+msgstr "_Düzenli İfade olarak Eşleştir"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:824
+#: ../gedit/gedit-view-frame.c:834
 msgid "Match _Entire Word Only"
 msgstr "Sadece Tüm _Kelimeyi Eşleştir"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:838
+#: ../gedit/gedit-view-frame.c:848
 msgid "_Match Case"
 msgstr "Büyük/Küçük _Harf Eşleştir"
 
-#: ../gedit/gedit-view-frame.c:1012
+#: ../gedit/gedit-view-frame.c:1022
 msgid "String you want to search for"
 msgstr "Arama yapılacak dizgi"
 
-#: ../gedit/gedit-view-frame.c:1024
+#: ../gedit/gedit-view-frame.c:1034
 msgid "Line you want to move the cursor to"
 msgstr "İmleci taşımak istediğiniz satır"
 
-#: ../gedit/gedit-window.c:885
+#: ../gedit/gedit-window.c:895
 msgid "Bracket match is out of range"
 msgstr "Parantez eşlemesi erişim dışı"
 
-#: ../gedit/gedit-window.c:890
+#: ../gedit/gedit-window.c:900
 msgid "Bracket match not found"
 msgstr "Parantez eşleşmesi bulunamadı"
 
-#: ../gedit/gedit-window.c:895
+#: ../gedit/gedit-window.c:905
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "%d satırında parantez eşleşmesi bulundu."
 
-#: ../gedit/gedit-window.c:1101
+#: ../gedit/gedit-window.c:1108
 #, c-format
 msgid "Tab Width: %u"
-msgstr ""
+msgstr "Etiket Genişliği: %u"
 
-#: ../gedit/gedit-window.c:1573
+#: ../gedit/gedit-window.c:1586
 msgid "There are unsaved documents"
 msgstr "Kaydedilmemiş belgeler var"
 
-#: ../gedit/gedit-window.c:2580
+#: ../gedit/gedit-window.c:2594
 msgid "Change side panel page"
-msgstr ""
+msgstr "Yan panel sayfasını değiştir"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-window.c:2600 ../gedit/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2614 ../gedit/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Belgeler"
 
@@ -2048,7 +1928,7 @@ msgstr "En son kullanılan dosyayı aç"
 
 #: ../gedit/gedit-window.ui.h:5
 msgid "Recent files"
-msgstr ""
+msgstr "Son kullanılan dosyalar"
 
 #: ../gedit/gedit-window.ui.h:6
 msgid "Create a new document"
@@ -2073,7 +1953,7 @@ msgstr "Paneli gizle"
 
 #: ../gedit/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
-msgstr ""
+msgstr "Tam Ekrandan Çık"
 
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
 msgid "Check update"
@@ -2424,7 +2304,7 @@ msgstr "Yan panelden kolay dosya erişimi"
 
 #: ../plugins/filebrowser/gedit-file-bookmarks-store.c:205
 msgid "Home"
-msgstr ""
+msgstr "Ev"
 
 #: ../plugins/filebrowser/gedit-file-bookmarks-store.c:231
 msgid "File System"
@@ -2451,8 +2331,8 @@ msgid "_Move to Trash"
 msgstr "Çö_pe Taşı"
 
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:7
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:922
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:960
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
 msgid "_Delete"
 msgstr "_Sil"
 
@@ -2484,67 +2364,67 @@ msgstr "İ_kilileri Göster"
 msgid "Match Filename"
 msgstr "Dosya Adını Eşleştir"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:528
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:532
 msgid "File Browser"
 msgstr "Dosya Yöneticisi"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:670
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
 msgid "An error occurred while creating a new directory"
 msgstr "Yeni bir dizin oluşturulurken bir hata oluştu"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:673
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
 msgid "An error occurred while creating a new file"
 msgstr "Yeni bir dosya oluşturulurken bir hata oluştu"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:676
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
 msgid "An error occurred while renaming a file or directory"
 msgstr "Bir dosyanın ya da dizinin adı değiştirilirken hata oluştu"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:679
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:683
 msgid "An error occurred while deleting a file or directory"
 msgstr "Bir dosya ya da dizin silinirken hata oluştu"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:682
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:686
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Bir dizin dosya yöneticisinde açılırken hata oluştu"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:685
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:689
 msgid "An error occurred while setting a root directory"
 msgstr "Başlangıç dizini atanırken bir hata oluştu"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:688
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:692
 msgid "An error occurred while loading a directory"
 msgstr "Bir dizin yüklenirken hata oluştu"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:691
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
 msgid "An error occurred"
 msgstr "Bir hata oluştu"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:905
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:913
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
 msgstr "Dosya çöpe taşınamıyor, \n kalıcı olarak silmek ister misiniz?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:910
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:918
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Dosya \"%s\" çöpe taşınamıyor."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
 msgid "The selected files cannot be moved to the trash."
 msgstr "Seçilen dosyalar çöpe taşınamıyor"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:946
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "\"%s\" dosyayı kalıcı olarak silmek istediğinizden emin misiniz?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:959
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Seçili dosyaları kalıcı olarak silmek istediğinizden emin misiniz?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
 msgid "If you delete an item, it is permanently lost."
 msgstr "Eğer bir öğeyi silerseniz, kalıcı bir şekilde kaybolur."
 
