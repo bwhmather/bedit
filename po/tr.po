@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2014-07-10 05:10+0000\n"
-"PO-Revision-Date: 2014-07-10 16:20+0000\n"
+"PO-Revision-Date: 2014-07-11 07:11+0000\n"
 "Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -633,12 +633,12 @@ msgstr[0] "Kaydetmediğiniz takdirde, son %d saatte yaptığınız değişiklikl
 #: ../gedit/gedit-close-confirmation-dialog.c:450
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
-msgstr ""
+msgstr "“%s” belgesinde yapılan değişiklikler kalıcı olarak kaybolacak."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:455
 #, c-format
 msgid "Save changes to document “%s” before closing?"
-msgstr ""
+msgstr "“%s” belgesinde yapılan değişiklikler kapatmadan önce kaydedilsin mi?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:470
 #: ../gedit/gedit-close-confirmation-dialog.c:631
@@ -989,7 +989,7 @@ msgstr "Lütfen konumu doğru yazdığınıza emin olun ve tekrar deneyin."
 #: ../gedit/gedit-io-error-info-bar.c:188
 #, c-format
 msgid "Unable to handle “%s:” locations."
-msgstr ""
+msgstr "“%s:” konumları işlenemiyor."
 
 #: ../gedit/gedit-io-error-info-bar.c:194
 msgid "Unable to handle this location."
@@ -1014,7 +1014,7 @@ msgstr "\"%s\" geçerli bir konum değil."
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
 "correct and try again."
-msgstr ""
+msgstr "Ana bilgisayar “%s” bulunamadı. Lütfen vekil sunucu ayarlarınızın doğru olduğundan emin olun ve tekrar deneyin."
 
 #: ../gedit/gedit-io-error-info-bar.c:265
 #, c-format
@@ -1039,12 +1039,12 @@ msgstr "Beklenmeyen hata: %s"
 
 #: ../gedit/gedit-io-error-info-bar.c:347
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
-msgstr ""
+msgstr "İstenen dosya bulunamıyor. Yakın zamanda silinmiş olabilir."
 
 #: ../gedit/gedit-io-error-info-bar.c:357
 #, c-format
 msgid "Could not revert the file “%s”."
-msgstr ""
+msgstr "\"“%s” dosyası eski haline döndürülemedi."
 
 #: ../gedit/gedit-io-error-info-bar.c:384
 msgid "Ch_aracter Encoding:"
@@ -1078,7 +1078,7 @@ msgstr "Dosyayı açmak için gerekli izinlere sahip değilsiniz."
 
 #: ../gedit/gedit-io-error-info-bar.c:605
 msgid "Unable to detect the character encoding."
-msgstr ""
+msgstr "Karakter kodlaması tespit edilemiyor."
 
 #: ../gedit/gedit-io-error-info-bar.c:606
 #: ../gedit/gedit-io-error-info-bar.c:630
@@ -1092,7 +1092,7 @@ msgstr "Menüden bir karakter kodlaması seçin ve tekrar deneyin."
 #: ../gedit/gedit-io-error-info-bar.c:613
 #, c-format
 msgid "There was a problem opening the file “%s”."
-msgstr ""
+msgstr "“%s” dosyası açılırken bir sorun oluştu."
 
 #: ../gedit/gedit-io-error-info-bar.c:615
 msgid ""
@@ -1107,7 +1107,7 @@ msgstr "Ayrıca başka bir karakter kodlaması seçip tekrar deneyebilirsiniz."
 #: ../gedit/gedit-io-error-info-bar.c:627
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
-msgstr ""
+msgstr "“%s” dosyası, “%s” karakter kodlaması kullanılarak açılamadı."
 
 #: ../gedit/gedit-io-error-info-bar.c:631
 #: ../gedit/gedit-io-error-info-bar.c:706
@@ -1122,7 +1122,7 @@ msgstr "“%s” dosyası açılamadı."
 #: ../gedit/gedit-io-error-info-bar.c:701
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
-msgstr ""
+msgstr "“%s” dosyası, “%s” karakter kodlaması kullanılarak kaydedilemedi."
 
 #: ../gedit/gedit-io-error-info-bar.c:704
 msgid ""
@@ -1139,7 +1139,7 @@ msgstr "_Düzenleme"
 #: ../gedit/gedit-io-error-info-bar.c:787
 #, c-format
 msgid "This file “%s” is already open in another window."
-msgstr ""
+msgstr "“%s” dosyası zaten başka bir pencerede açık."
 
 #: ../gedit/gedit-io-error-info-bar.c:801
 msgid "Do you want to edit it anyway?"
@@ -1165,7 +1165,7 @@ msgstr "_Kaydetme"
 #: ../gedit/gedit-io-error-info-bar.c:874
 #, c-format
 msgid "The file “%s” has been modified since reading it."
-msgstr ""
+msgstr "“%s” dosyası diskten okunduktan sonra değişikliğe uğradı."
 
 #: ../gedit/gedit-io-error-info-bar.c:889
 msgid ""
@@ -1175,12 +1175,12 @@ msgstr "Eğer kaydederseniz, yapılan tüm harici değişiklikler kaybolacak. Ge
 #: ../gedit/gedit-io-error-info-bar.c:969
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
-msgstr ""
+msgstr "“%s” kaydedilirken yedek dosyası oluşturulamadı"
 
 #: ../gedit/gedit-io-error-info-bar.c:974
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
-msgstr ""
+msgstr "“%s” kaydedilirken geçici yedek dosyası oluşturulamadı"
 
 #: ../gedit/gedit-io-error-info-bar.c:991
 msgid ""
@@ -1208,7 +1208,7 @@ msgstr ""
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
 "correctly and try again."
-msgstr ""
+msgstr "“%s” geçerli bir konum değil. Lütfen konumu doğru yazdığınızdan emin olun ve yeniden deneyin."
 
 #: ../gedit/gedit-io-error-info-bar.c:1075
 msgid ""
@@ -1253,11 +1253,11 @@ msgstr "“%s” dosyası kaydedilemedi."
 #: ../gedit/gedit-io-error-info-bar.c:1165
 #, c-format
 msgid "The file “%s” changed on disk."
-msgstr ""
+msgstr "“%s” dosyası diskte değişmiş."
 
 #: ../gedit/gedit-io-error-info-bar.c:1176
 msgid "Drop Changes and _Reload"
-msgstr ""
+msgstr "Değişiklikleri Sil ve Yeniden Y_ükle"
 
 #: ../gedit/gedit-io-error-info-bar.c:1186 ../gedit/gedit-menu.ui.h:6
 msgid "_Reload"
@@ -1266,7 +1266,7 @@ msgstr "_Yeniden Yükle"
 #: ../gedit/gedit-io-error-info-bar.c:1252
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
-msgstr ""
+msgstr "“%s” kaydedilirken bazı geçersiz karakterler algılandı"
 
 #: ../gedit/gedit-io-error-info-bar.c:1268
 msgid ""
@@ -1721,7 +1721,7 @@ msgstr "Sadece tüm _kelimeyi eşleştir"
 
 #: ../gedit/gedit-replace-dialog.ui.h:10
 msgid "Match as re_gular expression"
-msgstr ""
+msgstr "_Düzenli ifade olarak eşleştir"
 
 #: ../gedit/gedit-replace-dialog.ui.h:11
 msgid "Search _backwards"
@@ -2003,7 +2003,7 @@ msgstr "Belge İstatistikleri"
 
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
 msgid "Report the number of words, lines and characters in a document."
-msgstr ""
+msgstr "Belgedeki sözcük, satır ve karakter sayısını verir."
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:538
 msgid "_Document Statistics"
@@ -2073,11 +2073,11 @@ msgstr "Harici bir özel komut çalıştır ve çıktıyı yeni bir belgeye koy"
 
 #: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:1
 msgid "Send to fpaste"
-msgstr ""
+msgstr "Fpaste'e gönder"
 
 #: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
 msgid "Paste selected text or current document to fpaste"
-msgstr ""
+msgstr "Seçili metni ya da geçerli belgeyi fpaste'e yapıştır"
 
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
@@ -2167,11 +2167,11 @@ msgstr "Durduruldu."
 #. ex:ts=4:et:
 #: ../plugins/externaltools/tools/outputpanel.ui.h:1
 msgid "Stop Tool"
-msgstr ""
+msgstr "Aracı Durdur"
 
 #: ../plugins/externaltools/tools/tools.ui.h:1
 msgid "Always available"
-msgstr ""
+msgstr "Her zaman kullanılabilir"
 
 #: ../plugins/externaltools/tools/tools.ui.h:2
 msgid "All documents"
@@ -2271,7 +2271,7 @@ msgstr "Aracı Eski Durumuna Getir"
 
 #: ../plugins/externaltools/tools/tools.ui.h:26
 msgid "Shortcut _key:"
-msgstr ""
+msgstr "_Kısayol tuşu:"
 
 #: ../plugins/externaltools/tools/tools.ui.h:27
 msgid "_Save:"
@@ -2484,7 +2484,7 @@ msgstr "Sistem bağlanamadı: %s"
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2788
 #, c-format
 msgid "Error when loading '%s': No such directory"
-msgstr ""
+msgstr "'%s' yüklenirken hata oluştu: Böyle bir dizin yok"
 
 #. ex:set ts=8 noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
@@ -2561,11 +2561,11 @@ msgstr "Dosya tarayıcısının kullanacaği filtre dokusu. Bu filtre filter_mod
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
 msgid "File Browser Binary Patterns"
-msgstr ""
+msgstr "Dosya Tarayıcısı İkili Desenleri"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
-msgstr ""
+msgstr "İkili dosyalar süzerken kullanılacak ek desenler."
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
@@ -2617,7 +2617,7 @@ msgstr "Alt panelde duran etkileşimli Python uçbirimi"
 
 #: ../plugins/quickopen/quickopen/__init__.py:35
 msgid "Quick Open..."
-msgstr ""
+msgstr "Hızlı Aç..."
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
@@ -3003,7 +3003,7 @@ msgstr "Hatalı yazılmış sözcük yok"
 #. ex:set ts=8 noet:
 #: ../plugins/spell/languages-dialog.ui.h:1
 msgid "Set Language"
-msgstr ""
+msgstr "Dili Ayarla"
 
 #: ../plugins/spell/languages-dialog.ui.h:5
 msgid "Select the _language of the current document."
