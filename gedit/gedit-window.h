@@ -22,6 +22,8 @@
 #define __GEDIT_WINDOW_H__
 
 #include <gtksourceview/gtksource.h>
+#include <gio/gio.h>
+#include <gtk/gtk.h>
 
 #include <gedit/gedit-tab.h>
 #include <gedit/gedit-message-bus.h>

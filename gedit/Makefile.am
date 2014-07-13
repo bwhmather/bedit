@@ -101,6 +101,7 @@ gedit_NOINST_H_FILES =				\
 	gedit/gedit-dirs.h			\
 	gedit/gedit-documents-panel.h		\
 	gedit/gedit-encodings-dialog.h		\
+	gedit/gedit-open-document-selector.h	\
 	gedit/gedit-file-chooser-dialog.h	\
 	gedit/gedit-highlight-mode-dialog.h	\
 	gedit/gedit-highlight-mode-selector.h	\
@@ -171,6 +172,7 @@ gedit_libgedit_c_files =			\
 	gedit/gedit-documents-panel.c		\
 	gedit/gedit-encodings-combo-box.c	\
 	gedit/gedit-encodings-dialog.c		\
+	gedit/gedit-open-document-selector.c	\
 	gedit/gedit-file-chooser-dialog.c	\
 	gedit/gedit-highlight-mode-dialog.c	\
 	gedit/gedit-highlight-mode-selector.c	\

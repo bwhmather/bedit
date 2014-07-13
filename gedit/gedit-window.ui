@@ -34,65 +34,43 @@
               <class name="titlebar"/>
             </style>
             <child>
-              <object class="GtkBox" id="open_box">
+              <object class="GtkButton" id="new_button">
+                <property name="label" translatable="yes">New</property>
                 <property name="visible">True</property>
-                <property name="orientation">horizontal</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Create a new document</property>
                 <property name="valign">center</property>
-                <style>
-                  <class name="linked"/>
-                </style>
-                <child>
-                  <object class="GtkButton" id="open_button">
-                    <property name="visible">True</property>
-                    <property name="label" translatable="yes">Open</property>
-                    <property name="tooltip_text" translatable="yes">Open a file</property>
-                    <property name="action_name">win.open</property>
-                    <style>
-                      <class name="text-button"/>
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkMenuButton" id="open_menu">
-                    <property name="visible">True</property>
-                    <property name="tooltip_text" translatable="yes">Open a recently used file</property>
-                    <property name="popup">recent_menu</property>
-                    <style>
-                      <class name="image-button"/>
-                    </style>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="open_menu_a11y">
-                        <property name="accessible-name" translatable="yes">Recent files</property>
-                        <property name="accessible-description" translatable="yes">Open a recently used file</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
+                <property name="action_name">win.new-tab</property>
               </object>
-              <packing>
-                <property name="pack_type">start</property>
-              </packing>
             </child>
             <child>
-              <object class="GtkButton" id="new_tab_button">
+              <object class="GtkMenuButton" id="open_button">
                 <property name="visible">True</property>
+                <property name="tooltip_text" translatable="yes">Open a file dialog</property>
                 <property name="valign">center</property>
-                <property name="tooltip_text" translatable="yes">Create a new document</property>
-                <property name="action_name">win.new-tab</property>
-                <style>
-                  <class name="image-button"/>
-                </style>
+                <property name="use_popover">True</property>
                 <child>
-                  <object class="GtkImage" id="new_tab_image">
+                  <object class="GtkBox" id="open_button_box">
                     <property name="visible">True</property>
-                    <property name="icon_size">1</property>
-                    <property name="icon_name">tab-new-symbolic</property>
-                  </object>
-                </child>
-                <child internal-child="accessible">
-                  <object class="AtkObject" id="new_tab_a11y">
-                    <property name="accessible-name" translatable="yes" comments="&quot;New&quot; is for creating a new document.">New</property>
-                    <property name="accessible-description" translatable="yes">Create a new document</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_focus">False</property>
+                    <property name="is_focus">False</property>
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkLabel" id="open_button_name">
+                        <property name="label" translatable="yes">Open</property>
+                        <property name="visible">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="open_button_arrow">
+                        <property name="visible">True</property>
+                        <property name="icon_size">1</property>
+                        <property name="icon_name">go-down-symbolic</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -105,9 +83,6 @@
                 <property name="visible">True</property>
                 <property name="valign">center</property>
                 <property name="use_popover">True</property>
-                <style>
-                  <class name="image-button"/>
-                </style>
                 <child>
                   <object class="GtkImage" id="gear_image">
                     <property name="visible">True</property>
@@ -126,9 +101,6 @@
                 <property name="valign">center</property>
                 <property name="tooltip_text" translatable="yes">Save the current file</property>
                 <property name="action_name">win.save</property>
-                <style>
-                  <class name="image-button"/>
-                </style>
                 <child>
                   <object class="GtkImage" id="save_image">
                     <property name="visible">True</property>
@@ -346,59 +318,43 @@
                   <object class="GtkHeaderBar" id="fullscreen_headerbar">
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkBox" id="fullscreen_open_box">
+                      <object class="GtkButton" id="fullscreen_new_button">
+                        <property name="label" translatable="yes">New</property>
                         <property name="visible">True</property>
-                        <property name="orientation">horizontal</property>
+                        <property name="can_focus">True</property>
+                        <property name="can_default">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip_text" translatable="yes">Create a new document</property>
                         <property name="valign">center</property>
-                        <style>
-                          <class name="linked"/>
-                        </style>
-                        <child>
-                          <object class="GtkButton" id="fullscreen_open_button">
-                            <property name="visible">True</property>
-                            <property name="label" translatable="yes">Open</property>
-                            <property name="tooltip_text" translatable="yes">Open a file</property>
-                            <property name="action_name">win.open</property>
-                            <style>
-                              <class name="text-button"/>
-                            </style>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkMenuButton" id="fullscreen_open_menu">
-                            <property name="visible">True</property>
-                            <property name="tooltip_text" translatable="yes">Open a recently used file</property>
-                            <property name="popup">fullscreen_recent_menu</property>
-                            <style>
-                              <class name="image-button"/>
-                            </style>
-                            <child internal-child="accessible">
-                              <object class="AtkObject" id="fullscreen_open_menu_a11y">
-                                <property name="accessible-name" translatable="yes">Recent files</property>
-                                <property name="accessible-description" translatable="yes">Open a recently used file</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
+                        <property name="action_name">win.new-tab</property>
                       </object>
-                      <packing>
-                        <property name="pack_type">start</property>
-                      </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="fullscreen_new_tab_button">
+                      <object class="GtkMenuButton" id="fullscreen_open_button">
                         <property name="visible">True</property>
+                        <property name="tooltip_text" translatable="yes">Open a file dialog</property>
                         <property name="valign">center</property>
-                        <property name="tooltip_text" translatable="yes">Create a new document</property>
-                        <property name="action_name">win.new-tab</property>
-                        <style>
-                          <class name="image-button"/>
-                        </style>
+                        <property name="use_popover">True</property>
                         <child>
-                          <object class="GtkImage" id="fullscreen_new_tab_image">
+                          <object class="GtkBox" id="fullscreen_open_button_box">
                             <property name="visible">True</property>
-                            <property name="icon_size">1</property>
-                            <property name="icon_name">tab-new-symbolic</property>
+                            <property name="can_focus">False</property>
+                            <property name="has_focus">False</property>
+                            <property name="is_focus">False</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <object class="GtkLabel" id="fullscreen_open_button_name">
+                                <property name="label" translatable="yes">Open</property>
+                                <property name="visible">True</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkArrow" id="fullscreen_open_button_arrow">
+                                <property name="visible">True</property>
+                                <property name="arrow_type">down</property>
+                                <property name="shadow_type">none</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -412,9 +368,6 @@
                         <property name="valign">center</property>
                         <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
                         <property name="action_name">win.leave-fullscreen</property>
-                        <style>
-                          <class name="image-button"/>
-                        </style>
                         <child>
                           <object class="GtkImage" id="leave_fullscreen_image">
                             <property name="visible">True</property>
@@ -431,9 +384,6 @@
                       <object class="GtkMenuButton" id="fullscreen_gear_button">
                         <property name="visible">True</property>
                         <property name="valign">center</property>
-                        <style>
-                          <class name="image-button"/>
-                        </style>
                         <child>
                           <object class="GtkImage" id="fullscreen_gear_image">
                             <property name="visible">True</property>
@@ -452,9 +402,6 @@
                         <property name="valign">center</property>
                         <property name="tooltip_text" translatable="yes">Save the current file</property>
                         <property name="action_name">win.save</property>
-                        <style>
-                          <class name="image-button"/>
-                        </style>
                         <child>
                           <object class="GtkImage" id="fullscreen_save_image">
                             <property name="visible">True</property>
@@ -487,20 +434,6 @@
     <applications>
       <application>gedit</application>
     </applications>
-  </object>
-  <object class="GtkRecentChooserMenu" id="recent_menu">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="filter">recent_filter</property>
-    <property name="limit">10</property>
-    <property name="sort-type">mru</property>
-  </object>
-  <object class="GtkRecentChooserMenu" id="fullscreen_recent_menu">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="filter">recent_filter</property>
-    <property name="limit">10</property>
-    <property name="sort-type">mru</property>
   </object>
 </interface>
 

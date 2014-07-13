@@ -27,6 +27,7 @@
 #include "gedit-message-bus.h"
 #include "gedit-settings.h"
 #include "gedit-multi-notebook.h"
+#include "gedit-open-document-selector.h"
 
 #ifdef OS_OSX
 #include <gtkosxapplication.h>
@@ -59,8 +60,12 @@ struct _GeditWindowPrivate
 	GtkWidget      *fullscreen_controls;
 	GtkWidget      *fullscreen_eventbox;
 	GtkWidget      *fullscreen_headerbar;
-	GtkWidget      *fullscreen_recent_menu;
 	GtkMenuButton  *fullscreen_gear_button;
+
+	GtkWidget       *fullscreen_new_button;
+	GtkWidget       *fullscreen_open_button;
+	GtkWidget       *fullscreen_open_document_popover;
+	GeditOpenDocumentSelector *fullscreen_open_document_selector;
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;
@@ -79,8 +84,12 @@ struct _GeditWindowPrivate
 	GtkWidget      *titlebar_paned;
 	GtkWidget      *side_headerbar;
 	GtkWidget      *headerbar;
-	GtkWidget      *open_button;
-	GtkWidget      *recent_menu;
+
+	GtkWidget       *open_document_popover;
+	GtkWidget       *new_button;
+	GtkWidget       *open_button;
+	GeditOpenDocumentSelector *open_document_selector;
+
 	GtkMenuButton  *gear_button;
 
 	gint            num_tabs_with_error;
@@ -113,7 +122,6 @@ struct _GeditWindowPrivate
 	guint           removing_tabs : 1;
 	guint           dispose_has_run : 1;
 
-	guint           fullscreen_controls_setup : 1;
 	guint           fullscreen_eventbox_leave_state : 1;
 };
 

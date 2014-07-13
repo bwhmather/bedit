@@ -10,6 +10,20 @@ GeditWindow .pane-separator:hover {
     color: @borders;
 }
 
+.gedit-open-document-selector-listbox .list-row {
+    border-bottom: 1px solid shade(@theme_bg_color, 0.95);
+    padding: 6px;
+}
+
+.gedit-open-document-selector-listbox .name-label {
+    color: @theme_fg_color;
+}
+
+.gedit-open-document-selector-listbox .path-label {
+    font-size: 80%;
+    color: @insensitive_fg_color;
+}
+
 .gedit-document-panel {
     background-color: @sidebar_bg;
 }

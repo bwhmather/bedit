@@ -428,6 +428,9 @@ _gedit_cmd_file_open (GSimpleAction *action,
 		return;
 	}
 
+	gtk_widget_hide (GTK_WIDGET (window->priv->open_document_popover));
+	gtk_widget_hide (GTK_WIDGET (window->priv->fullscreen_open_document_popover));
+
 	/* Translators: "Open" is the title of the file chooser window */
 	open_dialog = gedit_file_chooser_dialog_new (_("Open"),
 						     GTK_WINDOW (window),
