@@ -68,7 +68,7 @@
                       <object class="GtkImage" id="open_button_arrow">
                         <property name="visible">True</property>
                         <property name="icon_size">1</property>
-                        <property name="icon_name">go-down-symbolic</property>
+                        <property name="icon_name">pan-down-symbolic</property>
                       </object>
                     </child>
                   </object>
@@ -349,10 +349,10 @@
                               </object>
                             </child>
                             <child>
-                              <object class="GtkArrow" id="fullscreen_open_button_arrow">
+                              <object class="GtkImage" id="fullscreen_open_button_arrow">
                                 <property name="visible">True</property>
-                                <property name="arrow_type">down</property>
-                                <property name="shadow_type">none</property>
+                                <property name="icon_size">1</property>
+                                <property name="icon_name">pan-down-symbolic</property>
                               </object>
                             </child>
                           </object>
@@ -429,11 +429,6 @@
       <widget name="side_headerbar"/>
       <widget name="side_panel"/>
     </widgets>
-  </object>
-  <object class="GtkRecentFilter" id="recent_filter">
-    <applications>
-      <application>gedit</application>
-    </applications>
   </object>
 </interface>
 

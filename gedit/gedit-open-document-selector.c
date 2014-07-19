@@ -46,6 +46,7 @@ struct _GeditOpenDocumentSelectorPrivate
 	GDestroyNotify sort_data_destroy;
 
 	GtkRecentFilter *current_filter;
+	GtkRecentFilter *gedit_app_filter;
 
 	guint populate_listbox_id;
 	gulong recent_manager_changed_id;
@@ -408,6 +409,11 @@ gedit_open_document_selector_get_items (GtkRecentChooser *chooser)
 			remove_item = TRUE;
 		}
 
+		if (get_is_recent_filtered (priv->gedit_app_filter, info))
+		{
+			remove_item = TRUE;
+		}
+
 		if (local_only && !gtk_recent_info_is_local (info))
 		{
 			remove_item = TRUE;
@@ -649,6 +655,7 @@ gedit_open_document_selector_dispose (GObject *object)
 
 	g_clear_object (&priv->ui_settings);
 	g_clear_object (&priv->current_filter);
+	g_clear_object (&priv->gedit_app_filter);
 
 	if (priv->sort_data_destroy)
 	{
@@ -922,6 +929,11 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 	priv->current_filter = NULL;
 	priv->sort_func = NULL;
 	priv->sort_data = NULL;
+
+	/* Setting gedit application filter */
+	priv->gedit_app_filter = gtk_recent_filter_new ();
+	gtk_recent_filter_add_application (priv->gedit_app_filter, "gedit");
+	g_object_ref_sink (priv->gedit_app_filter);
 
 	priv->populate_listbox_id = 0;
 	priv->recent_manager_changed_id = 0;
