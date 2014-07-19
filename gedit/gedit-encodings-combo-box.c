@@ -124,6 +124,8 @@ gedit_encodings_combo_box_constructed (GObject *object)
 	GeditEncodingsComboBox *combo = GEDIT_ENCODINGS_COMBO_BOX (object);
 	GtkCellRenderer *text_renderer;
 
+	G_OBJECT_CLASS (gedit_encodings_combo_box_parent_class)->constructed (object);
+
 	/* Setup up the cells */
 	text_renderer = gtk_cell_renderer_text_new ();
 	gtk_cell_layout_pack_end (GTK_CELL_LAYOUT (combo),
@@ -136,8 +138,6 @@ gedit_encodings_combo_box_constructed (GObject *object)
 					NULL);
 
 	update_menu (combo);
-
-	G_OBJECT_CLASS (gedit_encodings_combo_box_parent_class)->constructed (object);
 }
 
 static void
