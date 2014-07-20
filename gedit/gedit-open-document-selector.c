@@ -40,42 +40,15 @@ struct _GeditOpenDocumentSelectorPrivate
 	GtkWidget *listbox;
 	GtkWidget *scrolled_window;
 
-	GtkRecentSortType sort_type;
-	GtkRecentSortFunc sort_func;
-	gpointer sort_data;
-	GDestroyNotify sort_data_destroy;
-
-	GtkRecentFilter *current_filter;
 	GtkRecentFilter *gedit_app_filter;
 	gchar *substring_filter;
 
 	guint populate_listbox_id;
 	gulong recent_manager_changed_id;
 
-	/* RecentChooser properties */
 	guint show_private : 1;
 	guint show_not_found : 1;
-	guint show_tips : 1;
-	guint show_icons : 1;
 	guint local_only : 1;
-};
-
-static void gtk_recent_chooser_iface_init (GtkRecentChooserIface *iface);
-
-/* Properties,  gtkrecentchooserutils.h defines PROP_FIRST at this value */
-enum {
-	GTK_RECENT_CHOOSER_PROP_FIRST = 0x3000,
-	GTK_RECENT_CHOOSER_PROP_RECENT_MANAGER,
-	GTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE,
-	GTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND,
-	GTK_RECENT_CHOOSER_PROP_SHOW_TIPS,
-	GTK_RECENT_CHOOSER_PROP_SHOW_ICONS,
-	GTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE,
-	GTK_RECENT_CHOOSER_PROP_LIMIT,
-	GTK_RECENT_CHOOSER_PROP_LOCAL_ONLY,
-	GTK_RECENT_CHOOSER_PROP_SORT_TYPE,
-	GTK_RECENT_CHOOSER_PROP_FILTER,
-	GTK_RECENT_CHOOSER_PROP_LAST
 };
 
 /* Signals */
@@ -90,12 +63,7 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_CODE (GeditOpenDocumentSelector,
-                         gedit_open_document_selector,
-                         GTK_TYPE_BOX,
-                         G_ADD_PRIVATE (GeditOpenDocumentSelector)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
-                                                gtk_recent_chooser_iface_init))
+G_DEFINE_TYPE_WITH_PRIVATE (GeditOpenDocumentSelector, gedit_open_document_selector, GTK_TYPE_BOX)
 
 static GtkWidget *
 create_row (GeditOpenDocumentSelector *open_document_selector,
@@ -165,85 +133,6 @@ dispose_row (GeditOpenDocumentSelector *open_document_selector,
 	g_free (uri);
 }
 
-static gboolean
-real_populate_listbox (gpointer data)
-{
-	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (data);
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-	GtkWidget *row = NULL;
-	GtkRecentInfo *info;
-	GList *children, *l, *items;
-
-	g_assert (priv->manager != NULL);
-
-	/* Clear the listbox */
-	children = gtk_container_get_children (GTK_CONTAINER (priv->listbox));
-
-	for (l = children; l != NULL; l = l->next)
-	{
-		row = l->data;
-		dispose_row (open_document_selector, row);
-	}
-
-	g_list_free (children);
-
-	items = gtk_recent_chooser_get_items (GTK_RECENT_CHOOSER (open_document_selector));
-
-	for (l = items; l != NULL; l = l->next)
-	{
-		info = l->data;
-		row = create_row (open_document_selector, info);
-		gtk_recent_info_unref(info);
-
-		gtk_list_box_insert (GTK_LIST_BOX (priv->listbox), row, -1);
-	}
-
-	g_list_free (items);
-	priv->populate_listbox_id = 0;
-
-	return FALSE;
-}
-
-static void
-populate_listbox (GeditOpenDocumentSelector *open_document_selector)
-{
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-
-	if (priv->populate_listbox_id)
-	{
-		return;
-	}
-
-	priv->populate_listbox_id = gdk_threads_add_idle_full (G_PRIORITY_HIGH_IDLE + 30,
-	                                                       real_populate_listbox,
-	                                                       open_document_selector,
-	                                                       NULL);
-}
-
-static void
-on_entry_changed (GtkEntry                  *entry,
-                  GeditOpenDocumentSelector *open_document_selector)
-{
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-	const gchar *entry_text;
-
-	entry_text = gtk_entry_get_text (entry);
-
-	g_free (priv->substring_filter);
-	priv->substring_filter = g_utf8_strdown (entry_text, -1);
-
-	populate_listbox (open_document_selector);
-}
-
-static GtkRecentManager *
-gedit_open_document_selector_get_recent_manager (GtkRecentChooser *chooser)
-{
-	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (chooser);
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-
-	return priv->manager;
-}
-
 static gint
 sort_recent_items_mru (GtkRecentInfo *a,
                        GtkRecentInfo *b,
@@ -252,35 +141,6 @@ sort_recent_items_mru (GtkRecentInfo *a,
   g_assert (a != NULL && b != NULL);
 
   return gtk_recent_info_get_modified (b) - gtk_recent_info_get_modified (a);
-}
-
-static void
-gedit_open_document_selector_set_sort_func (GtkRecentChooser  *chooser,
-                                            GtkRecentSortFunc  sort_func,
-                                            gpointer           sort_data,
-                                            GDestroyNotify     data_destroy)
-{
-	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (chooser);
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-
-	if (priv->sort_data_destroy)
-	{
-		priv->sort_data_destroy (priv->sort_data);
-		priv->sort_data_destroy = NULL;
-	}
-
-	if (sort_func)
-	{
-		priv->sort_func = sort_func;
-		priv->sort_data = sort_data;
-		priv->sort_data_destroy = data_destroy;
-	}
-	else
-	{
-		priv->sort_func = NULL;
-		priv->sort_data = NULL;
-		priv->sort_data_destroy = NULL;
-	}
 }
 
 static gboolean
@@ -357,42 +217,26 @@ get_is_recent_filtered (GtkRecentFilter *filter,
 }
 
 static GList *
-gedit_open_document_selector_get_items (GtkRecentChooser *chooser)
+gedit_open_document_selector_get_items (GeditOpenDocumentSelector *open_document_selector)
 {
-	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (chooser);
 	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-	GtkRecentManager *manager;
-	GtkRecentSortType sort_type;
 	GList *items;
 	GList *filter_items = NULL, *l;
-	GCompareDataFunc compare_func;
 	gint limit;
 	gint length;
-	gboolean local_only = FALSE;
-	gboolean show_private = FALSE;
-	gboolean show_not_found = FALSE;
 
-	g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), NULL);
-
-	manager = gedit_open_document_selector_get_recent_manager (chooser);
-
-	items = gtk_recent_manager_get_items (manager);
+	items = gtk_recent_manager_get_items (priv->manager);
 	if (!items)
 	{
 		return NULL;
 	}
 
-	limit = gtk_recent_chooser_get_limit (chooser);
+	limit  = priv->limit;
+
 	if (limit == 0)
 	{
 		return NULL;
 	}
-
-	g_object_get (G_OBJECT (chooser),
-	              "local-only", &local_only,
-	              "show-private", &show_private,
-	              "show-not-found", &show_not_found,
-	              NULL);
 
 	for (l = items; l != NULL; l = l->next)
 	{
@@ -417,15 +261,15 @@ gedit_open_document_selector_get_items (GtkRecentChooser *chooser)
 		{
 			remove_item = TRUE;
 		}
-		else if (local_only && !gtk_recent_info_is_local (info))
+		else if (priv->local_only && !gtk_recent_info_is_local (info))
 		{
 			remove_item = TRUE;
 		}
-		else if (!show_private && gtk_recent_info_get_private_hint (info))
+		else if (!priv->show_private && gtk_recent_info_get_private_hint (info))
 		{
 			remove_item = TRUE;
 		}
-		else if (!show_not_found && !gtk_recent_info_exists (info))
+		else if (!priv->show_not_found && !gtk_recent_info_exists (info))
 		{
 			remove_item = TRUE;
 		}
@@ -448,29 +292,7 @@ gedit_open_document_selector_get_items (GtkRecentChooser *chooser)
 		return NULL;
 	}
 
-	sort_type = gtk_recent_chooser_get_sort_type (chooser);
-	switch (sort_type)
-	{
-		case GTK_RECENT_SORT_NONE:
-			compare_func = NULL;
-			break;
-		case GTK_RECENT_SORT_MRU:
-			compare_func = (GCompareDataFunc) sort_recent_items_mru;
-			break;
-		default:
-			g_assert_not_reached ();
-			break;
-	}
-
-	if (compare_func)
-	{
-		SortRecentData sort_recent;
-
-		sort_recent.func = priv->sort_func;
-		sort_recent.data = priv->sort_data;
-
-		items = g_list_sort_with_data (items, compare_func, &sort_recent);
-	}
+	items = g_list_sort_with_data (items, (GCompareDataFunc) sort_recent_items_mru, NULL);
 
 	length = g_list_length (items);
 	if ((limit != -1) && (length > limit))
@@ -492,118 +314,74 @@ gedit_open_document_selector_get_items (GtkRecentChooser *chooser)
 	return items;
 }
 
-static void
-gedit_open_document_selector_select_all (GtkRecentChooser *chooser)
-{
-	g_warning ("This function is not implemented for widgets of class '%s'",
-	           g_type_name (G_OBJECT_TYPE (chooser)));
-}
-
-static void
-gedit_open_document_selector_unselect_all (GtkRecentChooser *chooser)
-{
-	g_warning ("This function is not implemented for widgets of class '%s'",
-	           g_type_name (G_OBJECT_TYPE (chooser)));
-}
-
 static gboolean
-gedit_open_document_selector_set_current_uri (GtkRecentChooser  *chooser,
-                                   const gchar       *uri,
-                                   GError           **error)
+real_populate_listbox (gpointer data)
 {
-	g_warning ("This function is not implemented for widgets of class '%s'",
-	           g_type_name (G_OBJECT_TYPE (chooser)));
+	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (data);
+	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
+	GtkWidget *row = NULL;
+	GtkRecentInfo *info;
+	GList *children, *l, *items;
 
-	return FALSE;
-}
+	g_assert (priv->manager != NULL);
 
-static gchar *
-gedit_open_document_selector_get_current_uri (GtkRecentChooser  *chooser)
-{
-	g_warning ("This function is not implemented for widgets of class '%s'",
-	           g_type_name (G_OBJECT_TYPE (chooser)));
+	/* Clear the listbox */
+	children = gtk_container_get_children (GTK_CONTAINER (priv->listbox));
 
-	return NULL;
-}
+	for (l = children; l != NULL; l = l->next)
+	{
+		row = l->data;
+		dispose_row (open_document_selector, row);
+	}
 
-static gboolean
-gedit_open_document_selector_select_uri (GtkRecentChooser  *chooser,
-                              const gchar       *uri,
-                              GError           **error)
-{
-	g_warning ("This function is not implemented for widgets of class '%s'",
-	           g_type_name (G_OBJECT_TYPE (chooser)));
+	g_list_free (children);
+
+	items = gedit_open_document_selector_get_items (open_document_selector);
+
+	for (l = items; l != NULL; l = l->next)
+	{
+		info = l->data;
+		row = create_row (open_document_selector, info);
+		gtk_recent_info_unref(info);
+
+		gtk_list_box_insert (GTK_LIST_BOX (priv->listbox), row, -1);
+	}
+
+	g_list_free (items);
+	priv->populate_listbox_id = 0;
 
 	return FALSE;
 }
 
 static void
-gedit_open_document_selector_unselect_uri (GtkRecentChooser *chooser,
-				       const gchar     *uri)
-{
-	g_warning ("This function is not implemented for widgets of class '%s'",
-	           g_type_name (G_OBJECT_TYPE (chooser)));
-}
-
-static void
-set_current_filter (GeditOpenDocumentSelector *open_document_selector,
-                    GtkRecentFilter           *filter)
+populate_listbox (GeditOpenDocumentSelector *open_document_selector)
 {
 	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
 
-	if (priv->current_filter)
+	if (priv->populate_listbox_id)
 	{
-		g_object_unref (G_OBJECT (priv->current_filter));
+		return;
 	}
 
-	priv->current_filter = filter;
+	priv->populate_listbox_id = gdk_threads_add_idle_full (G_PRIORITY_HIGH_IDLE + 30,
+	                                                       real_populate_listbox,
+	                                                       open_document_selector,
+	                                                       NULL);
+}
 
-	if (priv->current_filter)
-	{
-		g_object_ref_sink (priv->current_filter);
-	}
+static void
+on_entry_changed (GtkEntry                  *entry,
+                  GeditOpenDocumentSelector *open_document_selector)
+{
+	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
+	const gchar *entry_text;
+
+	entry_text = gtk_entry_get_text (entry);
+
+	g_free (priv->substring_filter);
+	priv->substring_filter = g_utf8_strdown (entry_text, -1);
 
 	populate_listbox (open_document_selector);
-
-	g_object_notify (G_OBJECT (open_document_selector), "filter");
-}
-
-static void
-gedit_open_document_selector_add_filter (GtkRecentChooser *chooser,
-                                         GtkRecentFilter  *filter)
-{
-	set_current_filter (GEDIT_OPEN_DOCUMENT_SELECTOR (chooser), filter);
-}
-
-static void
-gedit_open_document_selector_remove_filter (GtkRecentChooser *chooser,
-                                            GtkRecentFilter  *filter)
-{
-	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (chooser);
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-
-	if (filter == priv->current_filter)
-	{
-		g_object_unref (priv->current_filter);
-		priv->current_filter = NULL;
-
-		g_object_notify (G_OBJECT (open_document_selector), "filter");
-	}
-}
-
-static GSList *
-gedit_open_document_selector_list_filters (GtkRecentChooser *chooser)
-{
-	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (chooser);
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-	GSList *retval = NULL;
-
-	if (priv->current_filter)
-	{
-		retval = g_slist_prepend (retval, priv->current_filter);
-	}
-
-	return retval;
 }
 
 static void
@@ -616,34 +394,13 @@ on_recent_manager_changed (GtkRecentManager *manager,
 }
 
 static void
-set_recent_manager (GeditOpenDocumentSelector  *open_document_selector,
-                    GtkRecentManager           *manager)
-{
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-
-	g_return_if_fail (GTK_IS_RECENT_MANAGER (manager) || manager == NULL);
-
-	if (priv->recent_manager_changed_id)
-	{
-		g_signal_handler_disconnect (priv->manager, priv->recent_manager_changed_id);
-		priv->recent_manager_changed_id = 0;
-	}
-
-	priv->manager = manager ? manager : gtk_recent_manager_get_default ();
-
-	priv->recent_manager_changed_id = g_signal_connect (priv->manager,
-	                                                    "changed",
-	                                                    G_CALLBACK (on_recent_manager_changed),
-	                                                    open_document_selector);
-}
-
-static void
 gedit_open_document_selector_finalize (GObject *object)
 {
 	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (object);
 	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
 
 	priv->manager = NULL;
+	g_free (priv->substring_filter);
 
 	G_OBJECT_CLASS (gedit_open_document_selector_parent_class)->finalize (object);
 }
@@ -655,19 +412,7 @@ gedit_open_document_selector_dispose (GObject *object)
 	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
 
 	g_clear_object (&priv->ui_settings);
-	g_clear_object (&priv->current_filter);
 	g_clear_object (&priv->gedit_app_filter);
-
-	if (priv->sort_data_destroy)
-	{
-		priv->sort_data_destroy (priv->sort_data);
-		priv->sort_data_destroy = NULL;
-	}
-
-	g_free (priv->substring_filter);
-
-	priv->sort_data = NULL;
-	priv->sort_func = NULL;
 
 	if (priv->recent_manager_changed_id)
 	{
@@ -711,123 +456,6 @@ gedit_open_document_selector_constructed (GObject *object)
 	populate_listbox (open_document_selector);
 }
 
-static void
-gedit_open_document_selector_set_property (GObject      *object,
-                                           guint         prop_id,
-                                           const GValue *value,
-                                           GParamSpec   *pspec)
-{
-	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (object);
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-
-	switch (prop_id)
-	{
-		case GTK_RECENT_CHOOSER_PROP_RECENT_MANAGER:
-			set_recent_manager (open_document_selector, g_value_get_object (value));
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE:
-			if (priv->show_private != g_value_get_boolean (value))
-			{
-				priv->show_private = g_value_get_boolean (value);
-				g_object_notify_by_pspec (object, pspec);
-			}
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND:
-			if (priv->show_not_found != g_value_get_boolean (value))
-			{
-				priv->show_not_found = g_value_get_boolean (value);
-				g_object_notify_by_pspec (object, pspec);
-			}
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SHOW_TIPS:
-			g_warning ("%s: Choosers of type `%s' do not support tooltips.",
-			           G_STRFUNC,
-			           G_OBJECT_TYPE_NAME (object));
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SHOW_ICONS:
-			g_warning ("%s: Choosers of type `%s' do not support icons.",
-			           G_STRFUNC,
-			           G_OBJECT_TYPE_NAME (object));
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE:
-			g_warning ("%s: Choosers of type `%s' do not support selecting multiple items.",
-			           G_STRFUNC,
-			           G_OBJECT_TYPE_NAME (object));
-			break;
-		case GTK_RECENT_CHOOSER_PROP_LOCAL_ONLY:
-			if (priv->local_only != g_value_get_boolean (value))
-			{
-				priv->local_only = g_value_get_boolean (value);
-				g_object_notify_by_pspec (object, pspec);
-			}
-			break;
-		case GTK_RECENT_CHOOSER_PROP_LIMIT:
-			if (priv->limit != g_value_get_int (value))
-			{
-				priv->limit = g_value_get_int (value);
-				g_object_notify_by_pspec (object, pspec);
-			}
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SORT_TYPE:
-			if (priv->sort_type != g_value_get_enum (value))
-			{
-				priv->sort_type = g_value_get_enum (value);
-				g_object_notify_by_pspec (object, pspec);
-			}
-			break;
-		case GTK_RECENT_CHOOSER_PROP_FILTER:
-			set_current_filter (open_document_selector, g_value_get_object (value));
-			break;
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
-
-static void
-gedit_open_document_selector_get_property (GObject    *object,
-                                           guint       prop_id,
-                                           GValue     *value,
-                                           GParamSpec *pspec)
-{
-	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (object);
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-
-	switch (prop_id)
-	{
-		case GTK_RECENT_CHOOSER_PROP_SHOW_TIPS:
-			g_value_set_boolean (value, FALSE);
-			break;
-		case GTK_RECENT_CHOOSER_PROP_LIMIT:
-			g_value_set_int (value, priv->limit);
-			break;
-		case GTK_RECENT_CHOOSER_PROP_LOCAL_ONLY:
-			g_value_set_boolean (value, priv->local_only);
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SORT_TYPE:
-			g_value_set_enum (value, priv->sort_type);
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE:
-			g_value_set_boolean (value, priv->show_private);
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND:
-			g_value_set_boolean (value, priv->show_not_found);
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SHOW_ICONS:
-			g_value_set_boolean (value, FALSE);
-			break;
-		case GTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE:
-			g_value_set_boolean (value, FALSE);
-			break;
-		case GTK_RECENT_CHOOSER_PROP_FILTER:
-			g_value_set_object (value, priv->current_filter);
-			break;
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
-
 static GtkSizeRequestMode
 gedit_open_document_selector_get_request_mode (GtkWidget *widget)
 {
@@ -843,23 +471,6 @@ gedit_open_document_selector_get_preferred_width (GtkWidget *widget,
 }
 
 static void
-gtk_recent_chooser_iface_init (GtkRecentChooserIface *iface)
-{
-	iface->set_current_uri = gedit_open_document_selector_set_current_uri;
-	iface->get_current_uri = gedit_open_document_selector_get_current_uri;
-	iface->select_uri = gedit_open_document_selector_select_uri;
-	iface->unselect_uri = gedit_open_document_selector_unselect_uri;
-	iface->select_all = gedit_open_document_selector_select_all;
-	iface->unselect_all = gedit_open_document_selector_unselect_all;
-	iface->set_sort_func = gedit_open_document_selector_set_sort_func;
-	iface->get_recent_manager = gedit_open_document_selector_get_recent_manager;
-	iface->add_filter = gedit_open_document_selector_add_filter;
-	iface->remove_filter = gedit_open_document_selector_remove_filter;
-	iface->list_filters = gedit_open_document_selector_list_filters;
-	iface->get_items = gedit_open_document_selector_get_items;
-}
-
-static void
 gedit_open_document_selector_class_init (GeditOpenDocumentSelectorClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
@@ -868,22 +479,9 @@ gedit_open_document_selector_class_init (GeditOpenDocumentSelectorClass *klass)
 	gobject_class->constructed = gedit_open_document_selector_constructed;
 	gobject_class->finalize = gedit_open_document_selector_finalize;
 	gobject_class->dispose = gedit_open_document_selector_dispose;
-	gobject_class->set_property = gedit_open_document_selector_set_property;
-	gobject_class->get_property = gedit_open_document_selector_get_property;
 
 	widget_class->get_request_mode = gedit_open_document_selector_get_request_mode;
 	widget_class->get_preferred_width = gedit_open_document_selector_get_preferred_width;
-
-	g_object_class_override_property (gobject_class, GTK_RECENT_CHOOSER_PROP_RECENT_MANAGER, "recent-manager");
-	g_object_class_override_property (gobject_class, GTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE, "show-private");
-	g_object_class_override_property (gobject_class, GTK_RECENT_CHOOSER_PROP_SHOW_TIPS, "show-tips");
-	g_object_class_override_property (gobject_class, GTK_RECENT_CHOOSER_PROP_SHOW_ICONS, "show-icons");
-	g_object_class_override_property (gobject_class, GTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND, "show-not-found");
-	g_object_class_override_property (gobject_class, GTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE, "select-multiple");
-	g_object_class_override_property (gobject_class, GTK_RECENT_CHOOSER_PROP_LIMIT, "limit");
-	g_object_class_override_property (gobject_class, GTK_RECENT_CHOOSER_PROP_LOCAL_ONLY, "local-only");
-	g_object_class_override_property (gobject_class, GTK_RECENT_CHOOSER_PROP_SORT_TYPE, "sort-type");
-	g_object_class_override_property (gobject_class, GTK_RECENT_CHOOSER_PROP_FILTER, "filter");
 
 	signals[RECENT_FILE_ACTIVATED] =
 		g_signal_new ("recent-file-activated",
@@ -921,17 +519,16 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
 
 	/* gedit-open-document-selector initial state */
-	priv->show_icons= FALSE;
-	priv->show_tips = FALSE;
 	priv->show_not_found = TRUE;
 	priv->show_private = FALSE;
 	priv->local_only = FALSE;
 
-	priv->sort_type = GTK_RECENT_SORT_MRU;
+	priv->manager = gtk_recent_manager_get_default ();
 
-	priv->current_filter = NULL;
-	priv->sort_func = NULL;
-	priv->sort_data = NULL;
+	priv->recent_manager_changed_id = g_signal_connect (priv->manager,
+	                                                    "changed",
+	                                                    G_CALLBACK (on_recent_manager_changed),
+	                                                    open_document_selector);
 
 	priv->substring_filter = g_strdup ("\0");
 
@@ -943,11 +540,10 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 	priv->populate_listbox_id = 0;
 	priv->recent_manager_changed_id = 0;
 
-	g_settings_bind (priv->ui_settings,
-	                 GEDIT_SETTINGS_MAX_RECENTS,
-	                 open_document_selector,
-	                 "limit",
-	                 G_SETTINGS_BIND_GET);
+	g_settings_get (priv->ui_settings,
+	                GEDIT_SETTINGS_MAX_RECENTS,
+	                "u",
+	                &priv->limit);
 
 	g_signal_connect (open_document_selector->recent_search_entry,
 	                  "changed",
@@ -978,17 +574,6 @@ GeditOpenDocumentSelector *
 gedit_open_document_selector_new (void)
 {
 	return g_object_new (GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR,
-	                     "recent-manager", NULL,
-	                     NULL);
-}
-
-GeditOpenDocumentSelector *
-gedit_open_document_selector_new_for_manager (GtkRecentManager *manager)
-{
-	g_return_val_if_fail (manager == NULL || GTK_IS_RECENT_MANAGER (manager), NULL);
-
-	return g_object_new (GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR,
-	                     "recent-manager", manager,
 	                     NULL);
 }
 

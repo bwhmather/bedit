@@ -40,12 +40,6 @@ typedef struct _GeditOpenDocumentSelector		GeditOpenDocumentSelector;
 typedef struct _GeditOpenDocumentSelectorClass		GeditOpenDocumentSelectorClass;
 typedef struct _GeditOpenDocumentSelectorPrivate	GeditOpenDocumentSelectorPrivate;
 
-typedef struct
-{
-	GtkRecentSortFunc func;
-	gpointer data;
-} SortRecentData;
-
 struct _GeditOpenDocumentSelector
 {
 	GtkBox parent;
@@ -66,7 +60,6 @@ struct _GeditOpenDocumentSelectorClass
 GType gedit_open_document_selector_get_type		(void) G_GNUC_CONST;
 
 GeditOpenDocumentSelector * gedit_open_document_selector_new			(void);
-GeditOpenDocumentSelector * gedit_open_document_selector_new_for_manager	(GtkRecentManager *recent_manager);
 
 G_END_DECLS
 
