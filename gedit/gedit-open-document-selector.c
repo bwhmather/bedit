@@ -47,6 +47,7 @@ struct _GeditOpenDocumentSelectorPrivate
 
 	GtkRecentFilter *current_filter;
 	GtkRecentFilter *gedit_app_filter;
+	gchar *substring_filter;
 
 	guint populate_listbox_id;
 	gulong recent_manager_changed_id;
@@ -95,27 +96,6 @@ G_DEFINE_TYPE_WITH_CODE (GeditOpenDocumentSelector,
                          G_ADD_PRIVATE (GeditOpenDocumentSelector)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
                                                 gtk_recent_chooser_iface_init))
-
-static void
-on_entry_changed (GtkEntry                  *entry,
-                  GeditOpenDocumentSelector *open_document_selector)
-{
-	GtkRecentFilter *filter;
-	gchar *pattern;
-
-	pattern = g_strdup (gtk_entry_get_text (entry));
-
-	if (*pattern == '\0')
-	{
-		g_free (pattern);
-		pattern = g_strdup ("*");
-	}
-
-	filter = gtk_recent_filter_new ();
-	gtk_recent_filter_add_pattern (filter, pattern);
-
-	gtk_recent_chooser_set_filter (GTK_RECENT_CHOOSER (open_document_selector), filter);
-}
 
 static GtkWidget *
 create_row (GeditOpenDocumentSelector *open_document_selector,
@@ -238,6 +218,21 @@ populate_listbox (GeditOpenDocumentSelector *open_document_selector)
 	                                                       real_populate_listbox,
 	                                                       open_document_selector,
 	                                                       NULL);
+}
+
+static void
+on_entry_changed (GtkEntry                  *entry,
+                  GeditOpenDocumentSelector *open_document_selector)
+{
+	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
+	const gchar *entry_text;
+
+	entry_text = gtk_entry_get_text (entry);
+
+	g_free (priv->substring_filter);
+	priv->substring_filter = g_utf8_strdown (entry_text, -1);
+
+	populate_listbox (open_document_selector);
 }
 
 static GtkRecentManager *
@@ -404,27 +399,33 @@ gedit_open_document_selector_get_items (GtkRecentChooser *chooser)
 		GtkRecentInfo *info = l->data;
 		gboolean remove_item = FALSE;
 
-		if (priv->current_filter && get_is_recent_filtered (priv->current_filter, info))
+		if (*priv->substring_filter != '\0')
 		{
-			remove_item = TRUE;
+			gchar *uri_lower;
+
+			uri_lower = g_utf8_strdown (gtk_recent_info_get_uri (info), -1);
+
+			if (g_strrstr (uri_lower, priv->substring_filter) == NULL)
+			{
+				remove_item = TRUE;
+			}
+
+			g_free (uri_lower);
 		}
 
 		if (get_is_recent_filtered (priv->gedit_app_filter, info))
 		{
 			remove_item = TRUE;
 		}
-
-		if (local_only && !gtk_recent_info_is_local (info))
+		else if (local_only && !gtk_recent_info_is_local (info))
 		{
 			remove_item = TRUE;
 		}
-
-		if (!show_private && gtk_recent_info_get_private_hint (info))
+		else if (!show_private && gtk_recent_info_get_private_hint (info))
 		{
 			remove_item = TRUE;
 		}
-
-		if (!show_not_found && !gtk_recent_info_exists (info))
+		else if (!show_not_found && !gtk_recent_info_exists (info))
 		{
 			remove_item = TRUE;
 		}
@@ -662,6 +663,8 @@ gedit_open_document_selector_dispose (GObject *object)
 		priv->sort_data_destroy (priv->sort_data);
 		priv->sort_data_destroy = NULL;
 	}
+
+	g_free (priv->substring_filter);
 
 	priv->sort_data = NULL;
 	priv->sort_func = NULL;
@@ -929,6 +932,8 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 	priv->current_filter = NULL;
 	priv->sort_func = NULL;
 	priv->sort_data = NULL;
+
+	priv->substring_filter = g_strdup ("\0");
 
 	/* Setting gedit application filter */
 	priv->gedit_app_filter = gtk_recent_filter_new ();
