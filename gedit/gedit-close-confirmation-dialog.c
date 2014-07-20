@@ -251,18 +251,38 @@ gedit_close_confirmation_dialog_new (GtkWindow *parent,
 				     GList     *unsaved_documents)
 {
 	GtkWidget *dlg;
-	gboolean use_header_bar;
+	gboolean use_header;
 
 	g_return_val_if_fail (unsaved_documents != NULL, NULL);
 
-	g_object_get (gtk_settings_get_default (),
-	              "gtk-dialogs-use-header", &use_header_bar,
-	              NULL);
-
 	dlg = GTK_WIDGET (g_object_new (GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG,
-	                                "use-header-bar", use_header_bar,
+	                                "use-header-bar", FALSE,
 	                                "unsaved_documents", unsaved_documents,
 	                                NULL));
+
+	/* As GtkMessageDialog we look at the setting to check
+	 * whether to set a CSD header, but we actually force the
+	 * buttons at the bottom
+	 */
+	g_object_get (gtk_settings_get_default (),
+	              "gtk-dialogs-use-header", &use_header,
+	              NULL);
+
+	if (use_header)
+	{
+		GtkWidget *box;
+		GtkWidget *label;
+
+		box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+		gtk_widget_show (box);
+		gtk_widget_set_size_request (box, -1, 16);
+		label = gtk_label_new ("");
+		gtk_widget_set_margin_top (label, 6);
+		gtk_widget_set_margin_bottom (label, 6);
+		gtk_style_context_add_class (gtk_widget_get_style_context (label), "title");
+		gtk_box_set_center_widget (GTK_BOX (box), label);
+		gtk_window_set_titlebar (GTK_WINDOW (dlg), box);
+	}
 
 	if (parent != NULL)
 	{
