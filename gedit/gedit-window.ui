@@ -84,13 +84,7 @@
                 <property name="visible">True</property>
                 <property name="valign">center</property>
                 <property name="use_popover">True</property>
-                <child>
-                  <object class="GtkImage" id="gear_image">
-                    <property name="visible">True</property>
-                    <property name="icon_size">1</property>
-                    <property name="icon_name">open-menu-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">menu_image</property>
               </object>
               <packing>
                 <property name="pack_type">end</property>
@@ -102,13 +96,7 @@
                 <property name="valign">center</property>
                 <property name="tooltip_text" translatable="yes">Save the current file</property>
                 <property name="action_name">win.save</property>
-                <child>
-                  <object class="GtkImage" id="save_image">
-                    <property name="visible">True</property>
-                    <property name="icon_size">1</property>
-                    <property name="icon_name">document-save-symbolic</property>
-                  </object>
-                </child>
+                <property name="image">save_image</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="save_button_a11y">
                     <property name="accessible-name" translatable="yes">Save</property>
@@ -368,13 +356,7 @@
                         <property name="valign">center</property>
                         <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
                         <property name="action_name">win.leave-fullscreen</property>
-                        <child>
-                          <object class="GtkImage" id="leave_fullscreen_image">
-                            <property name="visible">True</property>
-                            <property name="icon_size">1</property>
-                            <property name="icon_name">view-restore-symbolic</property>
-                          </object>
-                        </child>
+                        <property name="image">leave_fullscreen_image</property>
                       </object>
                       <packing>
                         <property name="pack_type">end</property>
@@ -384,13 +366,7 @@
                       <object class="GtkMenuButton" id="fullscreen_gear_button">
                         <property name="visible">True</property>
                         <property name="valign">center</property>
-                        <child>
-                          <object class="GtkImage" id="fullscreen_gear_image">
-                            <property name="visible">True</property>
-                            <property name="icon_size">1</property>
-                            <property name="icon_name">open-menu-symbolic</property>
-                          </object>
-                        </child>
+                        <property name="image">fullscreen_menu_image</property>
                       </object>
                       <packing>
                         <property name="pack_type">end</property>
@@ -402,13 +378,7 @@
                         <property name="valign">center</property>
                         <property name="tooltip_text" translatable="yes">Save the current file</property>
                         <property name="action_name">win.save</property>
-                        <child>
-                          <object class="GtkImage" id="fullscreen_save_image">
-                            <property name="visible">True</property>
-                            <property name="icon_size">1</property>
-                            <property name="icon_name">document-save-symbolic</property>
-                          </object>
-                        </child>
+                        <property name="image">fullscreen_save_image</property>
                       </object>
                       <packing>
                         <property name="pack_type">end</property>
@@ -423,6 +393,26 @@
       </object>
     </child>
   </template>
+  <object class="GtkImage" id="save_image">
+    <property name="visible">True</property>
+    <property name="icon_name">document-save-symbolic</property>
+  </object>
+  <object class="GtkImage" id="menu_image">
+    <property name="visible">True</property>
+    <property name="icon_name">open-menu-symbolic</property>
+  </object>
+  <object class="GtkImage" id="fullscreen_save_image">
+    <property name="visible">True</property>
+    <property name="icon_name">document-save-symbolic</property>
+  </object>
+  <object class="GtkImage" id="fullscreen_menu_image">
+    <property name="visible">True</property>
+    <property name="icon_name">open-menu-symbolic</property>
+  </object>
+  <object class="GtkImage" id="leave_fullscreen_image">
+    <property name="visible">True</property>
+    <property name="icon_name">view-restore-symbolic</property>
+  </object>
   <object class="GtkSizeGroup">
     <property name="mode">horizontal</property>
     <widgets>
