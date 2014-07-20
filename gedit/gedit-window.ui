@@ -62,11 +62,13 @@
                       <object class="GtkLabel" id="open_button_name">
                         <property name="label" translatable="yes">Open</property>
                         <property name="visible">True</property>
+                        <property name="valign">baseline</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkImage" id="open_button_arrow">
                         <property name="visible">True</property>
+                        <property name="valign">baseline</property>
                         <property name="icon_name">pan-down-symbolic</property>
                       </object>
                     </child>

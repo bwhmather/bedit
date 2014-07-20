@@ -23,6 +23,7 @@
             <property name="has_focus">False</property>
             <property name="is_focus">False</property>
             <property name="halign">start</property>
+            <property name="valign">baseline</property>
             <property name="label">label</property>
             <property name="single_line_mode">True</property>
           </object>
@@ -35,6 +36,7 @@
         <child>
           <object class="GtkImage" id="arrow">
             <property name="visible">True</property>
+            <property name="valign">baseline</property>
             <property name="icon_name">pan-down-symbolic</property>
           </object>
           <packing>
