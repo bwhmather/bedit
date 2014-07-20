@@ -945,12 +945,9 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 {
 	GtkBuilder *builder;
 	GAction *action;
-	gboolean rtl;
 	GError *error = NULL;
 
 	obj->priv = gedit_file_browser_widget_get_instance_private (obj);
-
-	rtl = gtk_widget_get_direction (GTK_WIDGET (obj)) == GTK_TEXT_DIR_RTL;
 
 	obj->priv->filter_pattern_str = g_strdup ("");
 	obj->priv->bookmarks_hash = g_hash_table_new_full (g_file_hash,
@@ -1000,10 +997,10 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 	gtk_widget_init_template (GTK_WIDGET (obj));
 
 	gtk_image_set_from_icon_name (GTK_IMAGE (obj->priv->previous_image),
-				      rtl ? "go-previous-rtl-symbolic" : "go-previous-symbolic",
+				      "go-previous-symbolic",
 				      GTK_ICON_SIZE_MENU);
 	gtk_image_set_from_icon_name (GTK_IMAGE (obj->priv->next_image),
-				      rtl ? "go-next-rtl-symbolic" : "go-next-symbolic",
+				      "go-next-symbolic",
 				      GTK_ICON_SIZE_MENU);
 
 	g_signal_connect (obj->priv->previous_button, "button-press-event",
