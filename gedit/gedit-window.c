@@ -439,58 +439,6 @@ gedit_window_class_init (GeditWindowClass *klass)
 }
 
 static void
-update_next_prev_doc_sensitivity (GeditWindow *window,
-				  GeditTab    *tab)
-{
-	GeditNotebook *notebook;
-	gint tab_number;
-	GAction *action;
-
-	gedit_debug (DEBUG_WINDOW);
-
-	notebook = gedit_multi_notebook_get_active_notebook (window->priv->multi_notebook);
-	tab_number = gtk_notebook_page_num (GTK_NOTEBOOK (notebook), GTK_WIDGET (tab));
-
-	g_return_if_fail (tab_number >= 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window),
-	                                     "previous-document");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             tab_number != 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window),
-	                                     "next-document");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             tab_number < gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) - 1);
-}
-
-static void
-update_next_prev_doc_sensitivity_per_window (GeditWindow *window)
-{
-	GeditTab *tab;
-	GAction *action;
-
-	gedit_debug (DEBUG_WINDOW);
-
-	tab = gedit_window_get_active_tab (window);
-
-	if (tab != NULL)
-	{
-		update_next_prev_doc_sensitivity (window, tab);
-
-		return;
-	}
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window),
-	                                     "previous-document");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window),
-	                                     "next-document");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), FALSE);
-}
-
-static void
 received_clipboard_contents (GtkClipboard     *clipboard,
 			     GtkSelectionData *selection_data,
 			     GeditWindow      *window)
@@ -562,104 +510,118 @@ extension_update_state (PeasExtensionSet *extensions,
 }
 
 static void
-set_sensitivity_according_to_tab (GeditWindow *window,
-				  GeditTab    *tab)
+update_actions_sensitivity (GeditWindow *window)
 {
-	GeditDocument *doc;
-	GeditView *view;
+	GeditNotebook *notebook;
+	GeditTab *tab;
+	gint num_notebooks;
+	gint num_tabs;
+	GeditTabState state = GEDIT_TAB_STATE_NORMAL;
+	GeditDocument *doc = NULL;
+	GeditView *view = NULL;
+	gint tab_number = -1;
 	GAction *action;
-	gboolean b;
-	gboolean state_normal;
-	gboolean editable;
-	GeditTabState state;
+	gboolean editable = FALSE;
+	gboolean empty_search = FALSE;
 	GtkClipboard *clipboard;
 	GeditLockdownMask lockdown;
 	gboolean enable_syntax_highlighting;
 
-	g_return_if_fail (GEDIT_TAB (tab));
-
 	gedit_debug (DEBUG_WINDOW);
 
-	enable_syntax_highlighting = g_settings_get_boolean (window->priv->editor_settings,
-							     GEDIT_SETTINGS_SYNTAX_HIGHLIGHTING);
+	notebook = gedit_multi_notebook_get_active_notebook (window->priv->multi_notebook);
+	tab = gedit_multi_notebook_get_active_tab (window->priv->multi_notebook);
+	num_notebooks = gedit_multi_notebook_get_n_notebooks (window->priv->multi_notebook);
+	num_tabs = gedit_multi_notebook_get_n_tabs (window->priv->multi_notebook);
+
+	if (notebook != NULL && tab != NULL)
+	{
+		state = gedit_tab_get_state (tab);
+		view = gedit_tab_get_view (tab);
+		doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+		tab_number = gtk_notebook_page_num (GTK_NOTEBOOK (notebook), GTK_WIDGET (tab));
+		editable = gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
+		empty_search = _gedit_document_get_empty_search (doc);
+	}
 
 	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 
-	state = gedit_tab_get_state (tab);
-	state_normal = (state == GEDIT_TAB_STATE_NORMAL);
-
-	view = gedit_tab_get_view (tab);
-	editable = gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
-
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-
-	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (window),
-					      GDK_SELECTION_CLIPBOARD);
+	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (window), GDK_SELECTION_CLIPBOARD);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				      (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
-				      (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
-				     !gedit_document_get_readonly (doc) &&
-				     !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
+	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
+	                              (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+	                             (doc != NULL) && !gedit_document_get_readonly (doc) &&
+	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-as");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				      (state == GEDIT_TAB_STATE_SAVING_ERROR) ||
-				      (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
-				      (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
-				     !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
+	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
+	                              (state == GEDIT_TAB_STATE_SAVING_ERROR) ||
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
+	                              (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+	                             (doc != NULL) &&
+	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "revert");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				      (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-				     !gedit_document_is_untitled (doc));
+	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+	                             (doc != NULL) && !gedit_document_is_untitled (doc));
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "reopen-closed-tab");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), (window->priv->closed_docs_stack != NULL));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "print");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				     (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
-				     !(lockdown & GEDIT_LOCKDOWN_PRINTING));
+	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
+	                              (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+	                             (doc != NULL) &&
+	                             !(lockdown & GEDIT_LOCKDOWN_PRINTING));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close");
+#ifdef OS_OSX
+	/* On OS X, File Close is always sensitive */
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
+#else
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state != GEDIT_TAB_STATE_CLOSING) &&
-				     (state != GEDIT_TAB_STATE_SAVING) &&
-				     (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
-				     (state != GEDIT_TAB_STATE_PRINTING) &&
-				     (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
-				     (state != GEDIT_TAB_STATE_SAVING_ERROR));
+	                             (tab != NULL) &&
+	                             (state != GEDIT_TAB_STATE_CLOSING) &&
+	                             (state != GEDIT_TAB_STATE_SAVING) &&
+	                             (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+	                             (state != GEDIT_TAB_STATE_PRINTING) &&
+	                             (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
+	                             (state != GEDIT_TAB_STATE_SAVING_ERROR));
+#endif
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "undo");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     state_normal &&
-				     gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc)));
+	                             (state == GEDIT_TAB_STATE_NORMAL) &&
+	                             (doc != NULL) && gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc)));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "redo");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     state_normal &&
-				     gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc)));
+	                             (state == GEDIT_TAB_STATE_NORMAL) &&
+	                             (doc != NULL) && gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc)));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "cut");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     state_normal &&
-				     editable &&
-				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+	                             (state == GEDIT_TAB_STATE_NORMAL) &&
+	                             editable &&
+	                             (doc != NULL) && gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "copy");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) &&
-				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+	                             (doc != NULL) && gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "paste");
-	if (state_normal && editable)
+	if (num_tabs > 0 && (state == GEDIT_TAB_STATE_NORMAL) && editable)
 	{
-		set_paste_sensitivity_according_to_clipboard (window,
-							      clipboard);
+		set_paste_sensitivity_according_to_clipboard (window, clipboard);
 	}
 	else
 	{
@@ -668,47 +630,107 @@ set_sensitivity_according_to_tab (GeditWindow *window,
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "delete");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     state_normal &&
-				     editable &&
-				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
+	                             (state == GEDIT_TAB_STATE_NORMAL) &&
+	                             editable &&
+	                             (doc != NULL) && gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION));
+	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+	                             (doc != NULL));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "replace");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     state_normal &&
-				     editable);
+	                             (state == GEDIT_TAB_STATE_NORMAL) &&
+	                             (doc != NULL) && editable);
 
-	b = !_gedit_document_get_empty_search (doc);
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find-next");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
+	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+	                              (doc != NULL) && !empty_search);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find-prev");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
+	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+	                              (doc != NULL) && !empty_search);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "clear-highlight");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) && b);
+	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+	                              (doc != NULL) && !empty_search);
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "goto-line");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION));
+	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
+	                             (doc != NULL));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "highlight-mode");
+	enable_syntax_highlighting = g_settings_get_boolean (window->priv->editor_settings,
+	                                                     GEDIT_SETTINGS_SYNTAX_HIGHLIGHTING);
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state != GEDIT_TAB_STATE_CLOSING) &&
-				     enable_syntax_highlighting);
+	                             (state != GEDIT_TAB_STATE_CLOSING) &&
+	                             (doc != NULL) && enable_syntax_highlighting);
 
-	update_next_prev_doc_sensitivity (window, tab);
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "move-to-new-window");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             num_tabs > 1);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                     "previous-document");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             tab_number > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                     "next-document");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             tab_number >= 0 &&
+	                             tab_number < gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) - 1);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "new-tab-group");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "previous-tab-group");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             num_notebooks > 1);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "next-tab-group");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             num_notebooks > 1);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom-panel");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             gtk_stack_get_visible_child (GTK_STACK (window->priv->bottom_panel)) != NULL);
+
+	/* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have two
+	   operations (save and print/print preview) that uses the message area at
+	   the same time (may be we can remove this limitation in the future) */
+	/* We disable File->Quit/CloseAll if state is saving since saving cannot be
+	   cancelled (may be we can remove this limitation in the future) */
+	action = g_action_map_lookup_action (G_ACTION_MAP (g_application_get_default ()),
+	                                     "quit");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
+	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
+	                             num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-all");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
+	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
+	                             num_tabs > 0);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close-all");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
+	                             num_tabs > 0 &&
+	                             !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
+	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
+	                             num_tabs > 0);
 
 	peas_extension_set_foreach (window->priv->extensions,
 	                            (PeasExtensionSetForeachFunc) extension_update_state,
@@ -1346,109 +1368,12 @@ tab_switched (GeditMultiNotebook *mnb,
 		return;
 
 	set_title (window);
-	set_sensitivity_according_to_tab (window, new_tab);
+	update_actions_sensitivity (window);
 
 	g_signal_emit (G_OBJECT (window),
 		       signals[ACTIVE_TAB_CHANGED],
 		       0,
 		       new_tab);
-}
-
-static void
-set_sensitivity_according_to_window_state (GeditWindow *window)
-{
-	GAction *action;
-	GeditLockdownMask lockdown;
-	gint num_tabs;
-
-	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
-	num_tabs = gedit_multi_notebook_get_n_tabs (window->priv->multi_notebook);
-
-	/* We disable File->Quit/SaveAll/CloseAll while printing to avoid to have two
-	   operations (save and print/print preview) that uses the message area at
-	   the same time (may be we can remove this limitation in the future) */
-	/* We disable File->Quit/CloseAll if state is saving since saving cannot be
-	   cancelled (may be we can remove this limitation in the future) */
-	action = g_action_map_lookup_action (G_ACTION_MAP (g_application_get_default ()),
-	                                     "quit");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close-all");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-all");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
-	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-as");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "revert");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "print");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(lockdown & GEDIT_LOCKDOWN_PRINTING) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "replace");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find-next");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find-prev");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "clear-highlight");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "goto-line");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "new-tab-group");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "previous-document");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "next-document");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "move-to-new-window");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 1);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "highlight-mode");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close");
-	if (!g_action_get_enabled (action))
-	{
-#ifdef OS_OSX
-		/* On OS X, File Close is always sensitive */
-		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
-#else
-		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-#endif
-	}
 }
 
 static void
@@ -1462,8 +1387,6 @@ void
 _gedit_window_set_lockdown (GeditWindow       *window,
 			    GeditLockdownMask  lockdown)
 {
-	GeditTab *tab;
-	GAction *action;
 	gboolean autosave;
 
 	/* start/stop autosave in each existing tab */
@@ -1474,15 +1397,7 @@ _gedit_window_set_lockdown (GeditWindow       *window,
 					  (GtkCallback)set_auto_save_enabled,
 					  &autosave);
 
-	/* update menues wrt the current active tab */
-	tab = gedit_window_get_active_tab (window);
-
-	set_sensitivity_according_to_tab (window, tab);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-all");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
-				     !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
+	update_actions_sensitivity (window);
 }
 
 static void
@@ -1543,7 +1458,7 @@ update_window_state (GeditWindow *window)
 
 	if (old_ws != window->priv->state)
 	{
-		set_sensitivity_according_to_window_state (window);
+		update_actions_sensitivity (window);
 
 		gedit_statusbar_set_window_state (GEDIT_STATUSBAR (window->priv->statusbar),
 						  window->priv->state,
@@ -1608,12 +1523,12 @@ sync_state (GeditTab    *tab,
 
 	update_window_state (window);
 
-	if (tab != gedit_window_get_active_tab (window))
-		return;
+	if (tab == gedit_window_get_active_tab (window))
+	{
+		update_actions_sensitivity (window);
 
-	set_sensitivity_according_to_tab (window, tab);
-
-	g_signal_emit (G_OBJECT (window), signals[ACTIVE_TAB_STATE_CHANGED], 0);
+		g_signal_emit (G_OBJECT (window), signals[ACTIVE_TAB_STATE_CHANGED], 0);
+	}
 }
 
 static void
@@ -1621,25 +1536,11 @@ sync_name (GeditTab    *tab,
 	   GParamSpec  *pspec,
 	   GeditWindow *window)
 {
-	GeditDocument *doc;
-
 	if (tab == gedit_window_get_active_tab (window))
 	{
-		GAction *gaction;
-
 		set_title (window);
-
-		doc = gedit_tab_get_document (tab);
-
-		gaction = g_action_map_lookup_action (G_ACTION_MAP (window),
-		                                      "revert");
-		g_simple_action_set_enabled (G_SIMPLE_ACTION (gaction),
-		                             !gedit_document_is_untitled (doc));
+		update_actions_sensitivity (window);
 	}
-
-	peas_extension_set_foreach (window->priv->extensions,
-	                            (PeasExtensionSetForeachFunc) extension_update_state,
-	                            window);
 }
 
 static void
@@ -1890,25 +1791,10 @@ empty_search_notify_cb (GeditDocument *doc,
 			GParamSpec    *pspec,
 			GeditWindow   *window)
 {
-	GAction *action;
-	gboolean enabled;
-
-	if (doc != gedit_window_get_active_document (window))
-		return;
-
-	enabled = !_gedit_document_get_empty_search (doc);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window),
-	                                     "clear-highlight");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window),
-	                                     "find-next");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window),
-	                                     "find-prev");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
+	if (doc == gedit_window_get_active_document (window))
+	{
+		update_actions_sensitivity (window);
+	}
 }
 
 static void
@@ -1916,16 +1802,10 @@ can_undo (GeditDocument *doc,
 	  GParamSpec    *pspec,
 	  GeditWindow   *window)
 {
-	GAction *action;
-	gboolean enabled;
-
-	enabled = gtk_source_buffer_can_undo (GTK_SOURCE_BUFFER (doc));
-
-	if (doc != gedit_window_get_active_document (window))
-		return;
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "undo");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
+	if (doc == gedit_window_get_active_document (window))
+	{
+		update_actions_sensitivity (window);
+	}
 }
 
 static void
@@ -1933,16 +1813,10 @@ can_redo (GeditDocument *doc,
 	  GParamSpec    *pspec,
 	  GeditWindow   *window)
 {
-	GAction *action;
-	gboolean enabled;
-
-	enabled = gtk_source_buffer_can_redo (GTK_SOURCE_BUFFER (doc));
-
-	if (doc != gedit_window_get_active_document (window))
-		return;
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "redo");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
+	if (doc == gedit_window_get_active_document (window))
+	{
+		update_actions_sensitivity (window);
+	}
 }
 
 static void
@@ -1950,46 +1824,10 @@ selection_changed (GeditDocument *doc,
 		   GParamSpec    *pspec,
 		   GeditWindow   *window)
 {
-	GeditTab *tab;
-	GeditView *view;
-	GAction *action;
-	GeditTabState state;
-	gboolean state_normal;
-	gboolean editable;
-
-	gedit_debug (DEBUG_WINDOW);
-
-	if (doc != gedit_window_get_active_document (window))
-		return;
-
-	tab = gedit_tab_get_from_document (doc);
-	state = gedit_tab_get_state (tab);
-	state_normal = (state == GEDIT_TAB_STATE_NORMAL);
-
-	view = gedit_tab_get_view (tab);
-	editable = gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "cut");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     state_normal &&
-				     editable &&
-				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "copy");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     (state_normal ||
-				      state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) &&
-				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "delete");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-				     state_normal &&
-				     editable &&
-				     gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
-
-	peas_extension_set_foreach (window->priv->extensions,
-	                            (PeasExtensionSetForeachFunc) extension_update_state,
-	                            window);
+	if (doc == gedit_window_get_active_document (window))
+	{
+		update_actions_sensitivity (window);
+	}
 }
 
 static void
@@ -1997,8 +1835,7 @@ readonly_changed (GeditDocument *doc,
 		  GParamSpec    *pspec,
 		  GeditWindow   *window)
 {
-	set_sensitivity_according_to_tab (window,
-					  gedit_window_get_active_tab (window));
+	update_actions_sensitivity (window);
 
 	sync_name (gedit_window_get_active_tab (window), NULL, window);
 
@@ -2018,99 +1855,6 @@ editable_changed (GeditView  *view,
 }
 
 static void
-update_sensitivity_according_to_open_tabs (GeditWindow *window,
-					   gint         num_notebooks,
-					   gint         num_tabs)
-{
-	GAction *action;
-	GeditLockdownMask lockdown;
-
-	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-as");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close-all");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-all");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
-	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "revert");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "reopen-closed-tab");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), (window->priv->closed_docs_stack != NULL));
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "print");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             !(lockdown & GEDIT_LOCKDOWN_PRINTING) &&
-	                             num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find-next");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "replace");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find-prev");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "clear-highlight");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "goto-line");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "new-tab-group");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "previous-document");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "next-document");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "move-to-new-window");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             num_tabs > 1);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "previous-tab-group");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             num_notebooks > 1);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "next-tab-group");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             num_notebooks > 1);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "highlight-mode");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), num_tabs > 0);
-
-	/* Do not set close action insensitive on OS X */
-#ifndef OS_OSX
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             num_tabs != 0);
-#endif
-}
-
-static void
 on_tab_added (GeditMultiNotebook *multi,
 	      GeditNotebook      *notebook,
 	      GeditTab           *tab,
@@ -2118,16 +1862,10 @@ on_tab_added (GeditMultiNotebook *multi,
 {
 	GeditView *view;
 	GeditDocument *doc;
-	gint num_tabs;
-	gint num_notebooks;
 
 	gedit_debug (DEBUG_WINDOW);
 
-	num_notebooks = gedit_multi_notebook_get_n_notebooks (multi);
-	num_tabs = gedit_multi_notebook_get_n_tabs (multi);
-
-	update_sensitivity_according_to_open_tabs (window, num_notebooks,
-						   num_tabs);
+	update_actions_sensitivity (window);
 
 	view = gedit_tab_get_view (tab);
 	doc = gedit_tab_get_document (tab);
@@ -2232,12 +1970,10 @@ on_tab_removed (GeditMultiNotebook *multi,
 {
 	GeditView *view;
 	GeditDocument *doc;
-	gint num_notebooks;
 	gint num_tabs;
 
 	gedit_debug (DEBUG_WINDOW);
 
-	num_notebooks = gedit_multi_notebook_get_n_notebooks (multi);
 	num_tabs = gedit_multi_notebook_get_n_tabs (multi);
 
 	view = gedit_tab_get_view (tab);
@@ -2324,17 +2060,7 @@ on_tab_removed (GeditMultiNotebook *multi,
 		    gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) > 0) ||
 		    num_tabs == 0)
 		{
-			update_next_prev_doc_sensitivity_per_window (window);
-			update_sensitivity_according_to_open_tabs (window,
-								   num_notebooks,
-								   num_tabs);
-		}
-
-		if (num_tabs == 0)
-		{
-			peas_extension_set_foreach (window->priv->extensions,
-					            (PeasExtensionSetForeachFunc) extension_update_state,
-					            window);
+			update_actions_sensitivity (window);
 		}
 	}
 
@@ -2351,7 +2077,7 @@ on_page_reordered (GeditMultiNotebook *multi,
                    gint                page_num,
                    GeditWindow        *window)
 {
-	update_next_prev_doc_sensitivity_per_window (window);
+	update_actions_sensitivity (window);
 
 	g_signal_emit (G_OBJECT (window), signals[TABS_REORDERED], 0);
 }
@@ -2412,9 +2138,7 @@ on_notebook_changed (GeditMultiNotebook *mnb,
 		     GParamSpec         *pspec,
 		     GeditWindow        *window)
 {
-	update_sensitivity_according_to_open_tabs (window,
-						   gedit_multi_notebook_get_n_notebooks (mnb),
-						   gedit_multi_notebook_get_n_tabs (mnb));
+	update_actions_sensitivity (window);
 }
 
 static void
@@ -2422,9 +2146,7 @@ on_notebook_removed (GeditMultiNotebook *mnb,
 		     GeditNotebook      *notebook,
 		     GeditWindow        *window)
 {
-	update_sensitivity_according_to_open_tabs (window,
-						   gedit_multi_notebook_get_n_notebooks (mnb),
-						   gedit_multi_notebook_get_n_tabs (mnb));
+	update_actions_sensitivity (window);
 }
 
 static void
@@ -2675,15 +2397,10 @@ bottom_panel_item_removed (GtkStack    *panel,
 			   GtkWidget   *item,
 			   GeditWindow *window)
 {
-	gboolean empty;
-	GAction *action;
+	gtk_widget_set_visible (window->priv->bottom_panel,
+				gtk_stack_get_visible_child (panel) != NULL);
 
-	empty = gtk_stack_get_visible_child (GTK_STACK (panel)) == NULL;
-
-	gtk_widget_set_visible (window->priv->bottom_panel, !empty);
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom-panel");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), !empty);
+	update_actions_sensitivity (window);
 }
 
 static void
@@ -2703,7 +2420,6 @@ bottom_panel_item_added (GtkStack    *panel,
 	if (n_children == 1)
 	{
 		gboolean show;
-		GAction *action;
 
 		show = g_settings_get_boolean (window->priv->ui_settings,
 		                               "bottom-panel-visible");
@@ -2712,8 +2428,7 @@ bottom_panel_item_added (GtkStack    *panel,
 			gtk_widget_show (window->priv->bottom_panel);
 		}
 
-		action = g_action_map_lookup_action (G_ACTION_MAP (window), "bottom-panel");
-		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
+		update_actions_sensitivity (window);
 	}
 }
 
@@ -3139,8 +2854,7 @@ gedit_window_init (GeditWindow *window)
 	 * This needs to be done after plugins activatation */
 	init_panels_visibility (window);
 
-	/* When we initiate we have 1 notebook and 1 tab */
-	update_sensitivity_according_to_open_tabs (window, 1, 1);
+	update_actions_sensitivity (window);
 
 	gedit_debug_message (DEBUG_WINDOW, "END");
 }
