@@ -21,6 +21,7 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
+#include <string.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>
 
@@ -249,7 +250,7 @@ gedit_open_document_selector_get_items (GeditOpenDocumentSelector *open_document
 
 			uri_lower = g_utf8_strdown (gtk_recent_info_get_uri (info), -1);
 
-			if (g_strrstr (uri_lower, priv->substring_filter) == NULL)
+			if (strstr (uri_lower, priv->substring_filter) == NULL)
 			{
 				remove_item = TRUE;
 			}
