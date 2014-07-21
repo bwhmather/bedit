@@ -3431,6 +3431,10 @@ _gedit_window_get_all_tabs (GeditWindow *window)
 void
 _gedit_window_fullscreen (GeditWindow *window)
 {
+	GeditView *active_view;
+	gint left_margin;
+	gint right_margin;
+
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
 	if (_gedit_window_is_fullscreen (window))
@@ -3442,6 +3446,14 @@ _gedit_window_fullscreen (GeditWindow *window)
 	gtk_widget_hide (window->priv->statusbar);
 
 	gtk_widget_show_all (window->priv->fullscreen_eventbox);
+
+	active_view = gedit_window_get_active_view (window);
+	left_margin = gtk_text_view_get_left_margin (GTK_TEXT_VIEW (active_view));
+	right_margin = gtk_text_view_get_right_margin (GTK_TEXT_VIEW (active_view));
+
+	gtk_text_view_set_left_margin (GTK_TEXT_VIEW (active_view), 100);
+
+	gedit_debug_message (DEBUG_WINDOW, "left margin:%i, right margin:%i", left_margin, right_margin);
 }
 
 void
