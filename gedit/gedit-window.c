@@ -716,8 +716,7 @@ update_actions_sensitivity (GeditWindow *window)
 	                                     "quit");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 	                             !(window->priv->state & GEDIT_WINDOW_STATE_SAVING) &&
-	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING) &&
-	                             num_tabs > 0);
+	                             !(window->priv->state & GEDIT_WINDOW_STATE_PRINTING));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-all");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
