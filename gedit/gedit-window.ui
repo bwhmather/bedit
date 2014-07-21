@@ -51,6 +51,9 @@
                 <property name="tooltip_text" translatable="yes">Open a file dialog</property>
                 <property name="valign">center</property>
                 <property name="use_popover">True</property>
+                <style>
+                  <class name="text-button"/>
+                </style>
                 <child>
                   <object class="GtkBox" id="open_button_box">
                     <property name="visible">True</property>
@@ -324,6 +327,9 @@
                         <property name="tooltip_text" translatable="yes">Open a file dialog</property>
                         <property name="valign">center</property>
                         <property name="use_popover">True</property>
+                        <style>
+                          <class name="text-button"/>
+                        </style>
                         <child>
                           <object class="GtkBox" id="fullscreen_open_button_box">
                             <property name="visible">True</property>
