@@ -544,7 +544,7 @@ gedit_utils_replace_home_dir_with_tilde (const gchar *uri)
 	{
 		g_free (home);
 
-		return g_strdup ("~");
+		return g_strdup ("~/");
 	}
 
 	tmp = home;
