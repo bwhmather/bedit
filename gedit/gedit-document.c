@@ -1306,9 +1306,11 @@ check_file_on_disk (GeditDocument *doc)
 
 			g_file_info_get_modification_time (info, &timeval);
 
-			if (timeval.tv_sec > doc->priv->mtime.tv_sec ||
-			    (timeval.tv_sec == doc->priv->mtime.tv_sec &&
-			     timeval.tv_usec > doc->priv->mtime.tv_usec))
+			/* Note that mtime can even go backwards if the
+			 * user is copying over a file with an old mtime
+			 */
+			if (timeval.tv_sec != doc->priv->mtime.tv_sec ||
+			    timeval.tv_usec != doc->priv->mtime.tv_usec)
 			{
 				doc->priv->externally_modified = TRUE;
 			}
