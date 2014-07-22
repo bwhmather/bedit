@@ -426,5 +426,26 @@
       <widget name="side_panel"/>
     </widgets>
   </object>
+  <object class="GtkSizeGroup">
+    <property name="mode">vertical</property>
+    <widgets>
+      <widget name="new_button"/>
+      <widget name="open_button"/>
+      <widget name="gear_button"/>
+      <widget name="save_button"/>
+      <widget name="open_button"/>
+    </widgets>
+  </object>
+  <object class="GtkSizeGroup">
+    <property name="mode">vertical</property>
+    <widgets>
+      <widget name="fullscreen_new_button"/>
+      <widget name="fullscreen_open_button"/>
+      <widget name="fullscreen_gear_button"/>
+      <widget name="fullscreen_save_button"/>
+      <widget name="fullscreen_open_button"/>
+      <widget name="leave_fullscreen_button"/>
+    </widgets>
+  </object>
 </interface>
 
