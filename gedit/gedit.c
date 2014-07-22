@@ -45,7 +45,7 @@ static GModule *libgedit_dll = NULL;
  * point is to find and load libgedit.dll.
  */
 static void
-gedit_w32_load_private_dll (GType *type)
+gedit_w32_load_private_dll (void)
 {
 	gchar *dllpath;
 	gchar *prefix;
@@ -73,13 +73,7 @@ gedit_w32_load_private_dll (GType *type)
 		libgedit_dll = g_module_open ("libgedit.dll", 0);
 	}
 
-	if (libgedit_dll != NULL)
-	{
-		/* Now that we did everything we could to make the DLL available, we can
-		 * implicitly call the *_get_type() function from it.
-		 */
-		*type = GEDIT_TYPE_APP_WIN32;
-	}
+	return (libgedit_dll != NULL)
 }
 
 static void
@@ -104,7 +98,13 @@ main (int argc, char *argv[])
 	type = GEDIT_TYPE_APP_OSX;
 #else
 #ifdef G_OS_WIN32
-	gedit_w32_load_private_dll (&type);
+	if (!gedit_w32_load_private_dll ())
+	{
+		g_printerr ("Failed to load libgedit DLL\n")
+		return 1;
+	}
+
+	type = GEDIT_TYPE_APP_WIN32;
 #else
 	type = GEDIT_TYPE_APP_X11;
 #endif
