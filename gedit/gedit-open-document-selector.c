@@ -47,6 +47,8 @@ struct _GeditOpenDocumentSelectorPrivate
 	guint populate_listbox_id;
 	gulong recent_manager_changed_id;
 
+	gint row_height;
+
 	guint show_private : 1;
 	guint show_not_found : 1;
 	guint local_only : 1;
@@ -59,38 +61,32 @@ enum
 	LAST_SIGNAL
 };
 
+#define OPEN_DOCUMENT_SELECTOR_ROW_BOX_SPACING 4
 #define OPEN_DOCUMENT_SELECTOR_WIDTH 400
-#define OPEN_DOCUMENT_SELECTOR_LISTBOX_HEIGHT 300
+#define OPEN_DOCUMENT_SELECTOR_MAX_VISIBLE_ROWS 10
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditOpenDocumentSelector, gedit_open_document_selector, GTK_TYPE_BOX)
 
+
 static GtkWidget *
-create_row (GeditOpenDocumentSelector *open_document_selector,
-            GtkRecentInfo             *info)
+create_row_layout (GeditOpenDocumentSelector *open_document_selector,
+                   const gchar               *name,
+                   const gchar               *path)
 {
 	GtkWidget *row;
 	GtkWidget *vbox;
-	gchar *name;
 	GtkWidget *name_label;
-	gchar *path;
 	GtkWidget *path_label;
-	gchar *uri;
 	GtkStyleContext *context;
-	GFile *location;
 
 	row = gtk_list_box_row_new ();
-	gtk_widget_set_has_tooltip (row, TRUE);
 
-	uri = g_strdup (gtk_recent_info_get_uri (info));
-	location = g_file_new_for_uri (uri);
+	context = gtk_widget_get_style_context (GTK_WIDGET (row));
+	gtk_style_context_add_class (context, "open-document-selector-listbox-row");
 
-	g_object_set_data (G_OBJECT(row), "uri", uri);
-
-	name = gedit_utils_basename_for_display (location);
 	name_label = gtk_label_new (name);
-	g_free (name);
 
 	context = gtk_widget_get_style_context (GTK_WIDGET (name_label));
 	gtk_style_context_add_class (context, "name-label");
@@ -99,11 +95,7 @@ create_row (GeditOpenDocumentSelector *open_document_selector,
 	gtk_widget_set_halign (name_label, GTK_ALIGN_START);
 	gtk_widget_set_valign (name_label, GTK_ALIGN_CENTER);
 
-	path = gedit_utils_location_get_dirname_for_display (location);
 	path_label = gtk_label_new (path);
-
-	g_free (path);
-	g_object_unref (location);
 
 	context = gtk_widget_get_style_context (GTK_WIDGET (path_label));
 	gtk_style_context_add_class (context, "path-label");
@@ -112,13 +104,55 @@ create_row (GeditOpenDocumentSelector *open_document_selector,
 	gtk_widget_set_halign (path_label, GTK_ALIGN_START);
 	gtk_widget_set_valign (path_label, GTK_ALIGN_CENTER);
 
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 4);
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, OPEN_DOCUMENT_SELECTOR_ROW_BOX_SPACING);
 	gtk_container_add (GTK_CONTAINER (row), vbox);
 
 	gtk_box_pack_start (GTK_BOX (vbox), name_label, FALSE, FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (vbox), path_label, FALSE, FALSE, 0);
 
 	gtk_widget_show_all (row);
+
+	return row;
+}
+
+static gint
+calculate_row_height (GeditOpenDocumentSelector *open_document_selector)
+{
+	GtkWidget *row;
+	gint minimum_height;
+	gint natural_height;
+
+	/* Creating a fake row to mesure its height */
+	row = create_row_layout (open_document_selector, "Fake name", "Fake Path");
+
+	gtk_widget_get_preferred_height (row, &minimum_height, &natural_height);
+	gtk_widget_destroy (row);
+
+	return natural_height;
+}
+
+static GtkWidget *
+create_row (GeditOpenDocumentSelector *open_document_selector,
+            GtkRecentInfo             *info)
+{
+	GtkWidget *row;
+	gchar *name;
+	gchar *path;
+	gchar *uri;
+	GFile *location;
+
+	uri = g_strdup (gtk_recent_info_get_uri (info));
+	location = g_file_new_for_uri (uri);
+
+	name = gedit_utils_basename_for_display (location);
+	path = gedit_utils_location_get_dirname_for_display (location);
+
+	row = create_row_layout (open_document_selector, (const gchar*)name, (const gchar*)path);
+
+	g_object_set_data (G_OBJECT(row), "uri", uri);
+	g_free (name);
+	g_free (path);
+	g_object_unref (location);
 
 	return row;
 }
@@ -509,6 +543,9 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 	GeditOpenDocumentSelectorPrivate *priv;
 	GtkWidget *placeholder_label;
 	GtkStyleContext *context;
+	gint row_height;
+	gint limit_capped;
+	gint listbox_height;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -563,9 +600,14 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 	gtk_widget_show (placeholder_label);
 	gtk_list_box_set_placeholder (GTK_LIST_BOX (priv->listbox), placeholder_label);
 
-	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (priv->scrolled_window),
-	                                            OPEN_DOCUMENT_SELECTOR_LISTBOX_HEIGHT);
+	row_height = calculate_row_height (open_document_selector);
 
+	limit_capped = MIN (priv->limit, OPEN_DOCUMENT_SELECTOR_MAX_VISIBLE_ROWS);
+	listbox_height = row_height * limit_capped;
+
+	/* We substract 2px, no idea where they come from */
+	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (priv->scrolled_window),
+	                                            listbox_height - 2);
 
 	context = gtk_widget_get_style_context (GTK_WIDGET (priv->listbox));
 	gtk_style_context_add_class (context, "gedit-open-document-selector-listbox");
