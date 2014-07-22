@@ -1,4 +1,33 @@
 ============
+gedit 3.13.3
+============
+
+New Features and Fixes
+======================
+- File loading and saving based on a new API in GtkSourceView.
+  GeditEncoding is replaced by GtkSourceEncoding, and there
+  are changes in GeditDocument. To port plugins, see:
+  https://wiki.gnome.org/Apps/Gedit/API-Changes
+
+- Include Adwaita theming
+- New selector to open documents in the header bar
+- Various improvements and bug fixes
+- Some work to build gedit on Windows
+
+New and updated translations
+============================
+- bg (Alexander Shopov)
+- el (Tom Tryfonidis)
+- es (Daniel Mustieles)
+- gd (GunChleoc)
+- gl (Fran Dieguez)
+- he (Yosef Or Boczko)
+- nb (Kjartan Maraas)
+- ru (Yuri Myasoedov)
+- sv (Anders Jonsson)
+- tr (Muhammet Kara)
+
+============
 gedit 3.13.2
 ============
 
