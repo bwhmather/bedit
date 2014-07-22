@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-09 15:37+0300\n"
-"PO-Revision-Date: 2014-07-09 15:42+0300\n"
+"POT-Creation-Date: 2014-07-23 00:40+0300\n"
+"PO-Revision-Date: 2014-07-23 00:43+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -49,31 +49,31 @@ msgstr ""
 "תוספי מערכת גמישים מאפשרים לך להתאים את היישום לצרכיך ולסגל אותו למהלך "
 "העבודה שלך."
 
-#: ../data/gedit.desktop.in.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:1
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:774
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:774
 msgid "Text Editor"
 msgstr "עורך טקסט"
 
-#: ../data/gedit.desktop.in.in.h:3
+#: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "Edit text files"
 msgstr "עריכת קובצי טקסט"
 
-#: ../data/gedit.desktop.in.in.h:4
+#: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "gedit Text Editor"
 msgstr "עורך הטקסט gedit"
 
-#: ../data/gedit.desktop.in.in.h:5
+#: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "Text;Editor;"
 msgstr "טקסט;עורך;עריכה;"
 
-#: ../data/gedit.desktop.in.in.h:6
+#: ../data/org.gnome.gedit.desktop.in.in.h:6
 msgid "Open a New Window"
 msgstr "פתיחת חלון חדש"
 
-#: ../data/gedit.desktop.in.in.h:7
+#: ../data/org.gnome.gedit.desktop.in.in.h:7
 msgid "Open a New Document"
 msgstr "יצירת מסמך חדש"
 
@@ -590,7 +590,7 @@ msgstr "[FILE...] [+LINE[:COLUMN]]"
 msgid "There was an error displaying the help."
 msgstr "ארעה שגיאה בהצגת העזרה."
 
-#: ../gedit/gedit-app.c:880
+#: ../gedit/gedit-app.c:934
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: invalid encoding."
@@ -603,14 +603,14 @@ msgstr "על אודות gedit"
 msgid "Question"
 msgstr "שאלה"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:300
+#: ../gedit/gedit-close-confirmation-dialog.c:320
 msgid "Close _without Saving"
 msgstr "סגירה _ללא שמירה"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:301
-#: ../gedit/gedit-commands-file.c:436 ../gedit/gedit-commands-file.c:565
-#: ../gedit/gedit-commands-file.c:634 ../gedit/gedit-commands-file.c:844
-#: ../gedit/gedit-commands-file.c:1292 ../gedit/gedit-encodings-dialog.ui.h:3
+#: ../gedit/gedit-close-confirmation-dialog.c:321
+#: ../gedit/gedit-commands-file.c:439 ../gedit/gedit-commands-file.c:568
+#: ../gedit/gedit-commands-file.c:637 ../gedit/gedit-commands-file.c:847
+#: ../gedit/gedit-commands-file.c:1295 ../gedit/gedit-encodings-dialog.ui.h:3
 #: ../gedit/gedit-highlight-mode-dialog.ui.h:2
 #: ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:515
@@ -629,18 +629,18 @@ msgstr "סגירה _ללא שמירה"
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:327 ../gedit/gedit-menu.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:347 ../gedit/gedit-menu.ui.h:9
 msgid "_Save As…"
 msgstr "שמירה _בשם…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:327
-#: ../gedit/gedit-commands-file.c:845
+#: ../gedit/gedit-close-confirmation-dialog.c:347
+#: ../gedit/gedit-commands-file.c:848
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "_שמירה"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:345
+#: ../gedit/gedit-close-confirmation-dialog.c:365
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -650,12 +650,12 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, כל השינויים מהשנייה האחרונה יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, כל השינויים מ־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:354
+#: ../gedit/gedit-close-confirmation-dialog.c:374
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "אם לא תתבצע שמירה, שינויים מהדקה האחרונה יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:360
+#: ../gedit/gedit-close-confirmation-dialog.c:380
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -666,7 +666,7 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, כל השינויים מהדקה והשנייה האחרונות יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, כל השינויים מהדקה ו־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:370
+#: ../gedit/gedit-close-confirmation-dialog.c:390
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -676,11 +676,11 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, השינויים מהדקה האחרונה יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, השינויים מ־%ld הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:385
+#: ../gedit/gedit-close-confirmation-dialog.c:405
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "אם לא תתבצע שמירה, השינויים מהשעה האחרונה יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:391
+#: ../gedit/gedit-close-confirmation-dialog.c:411
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -691,7 +691,7 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, שינויים מהשעה והדקה האחרונות יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, השינויים מהשעה ו־%d הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:406
+#: ../gedit/gedit-close-confirmation-dialog.c:426
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -700,29 +700,29 @@ msgid_plural ""
 msgstr[0] "אם לא תתבצע שמירה, השינויים מהשעה האחרונה יאבדו."
 msgstr[1] "אם לא תתבצע שמירה, השינויים מ־%d השעות האחרונות יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:450
+#: ../gedit/gedit-close-confirmation-dialog.c:470
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "השינויים שנערכו במסמך „%s“ ילכו לאיבוד."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:455
+#: ../gedit/gedit-close-confirmation-dialog.c:475
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "האם לשמור את השינויים למסמך „%s“ לפני הסגירה?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:470
-#: ../gedit/gedit-close-confirmation-dialog.c:631
+#: ../gedit/gedit-close-confirmation-dialog.c:490
+#: ../gedit/gedit-close-confirmation-dialog.c:651
 msgid "Saving has been disabled by the system administrator."
 msgstr "אפשרות השמירה בוטלה על ידי מנהל מערכת."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:579
+#: ../gedit/gedit-close-confirmation-dialog.c:599
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "השינויים למסמך אחד יאבדו."
 msgstr[1] "השינויים ל־%d מסמכים יאבדו."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:587
+#: ../gedit/gedit-close-confirmation-dialog.c:607
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -731,16 +731,16 @@ msgstr[0] "יש מסמך עם שינויים לא שמורים. האם לשמו�
 msgstr[1] ""
 "יש %d מסמכים עם שינויים לא שמורים. האם לשמור את השינויים לפני הסגירה?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:607
+#: ../gedit/gedit-close-confirmation-dialog.c:627
 msgid "Docum_ents with unsaved changes:"
 msgstr "מסמכים עם _שינויים לא שמורים:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:611
+#: ../gedit/gedit-close-confirmation-dialog.c:631
 msgid "S_elect the documents you want to save:"
 msgstr "נא ל_בחור את הקובץ שברצונך לשמור:"
 
 #  Secondary label
-#: ../gedit/gedit-close-confirmation-dialog.c:635
+#: ../gedit/gedit-close-confirmation-dialog.c:655
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "אם לא תתבצע שמירה, כל השינויים יאבדו."
 
@@ -757,81 +757,81 @@ msgstr[0] "נטען קובץ אחד…"
 msgstr[1] "נטענים %d קבצים…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:432 ../gedit/gedit-window.ui.h:2
+#: ../gedit/gedit-commands-file.c:435 ../gedit/gedit-window.ui.h:5
 msgid "Open"
 msgstr "פתיחה"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-commands-file.c:437
+#: ../gedit/gedit-commands-file.c:440
 #: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:38
 #: ../plugins/snippets/snippets/manager.py:782
 msgid "_Open"
 msgstr "_פתיחה"
 
-#: ../gedit/gedit-commands-file.c:556
+#: ../gedit/gedit-commands-file.c:559
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "הקובץ \"%s\" הנו לקריאה בלבד."
 
-#: ../gedit/gedit-commands-file.c:561
+#: ../gedit/gedit-commands-file.c:564
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "האם ברצונך לנסות להחליפו עם הקובץ שנשמר?"
 
-#: ../gedit/gedit-commands-file.c:566 ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-commands-file.c:569 ../gedit/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "ה_חלפה"
 
-#: ../gedit/gedit-commands-file.c:607
+#: ../gedit/gedit-commands-file.c:610
 msgid "Save the file using compression?"
 msgstr "האם לשמור את הקובץ באמצעות דחיסה?"
 
-#: ../gedit/gedit-commands-file.c:608
+#: ../gedit/gedit-commands-file.c:611
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr "הקובץ \"%s\" נשמר בעבר כקובץ טקסט פשוט וכעת ישמר באמצעות דחיסה."
 
-#: ../gedit/gedit-commands-file.c:610
+#: ../gedit/gedit-commands-file.c:613
 msgid "_Save Using Compression"
 msgstr "שמירה באמצעות _דחיסה"
 
-#: ../gedit/gedit-commands-file.c:614
+#: ../gedit/gedit-commands-file.c:617
 msgid "Save the file as plain text?"
 msgstr "האם לשמור את הקובץ כקובץ טקסט פשוט?"
 
-#: ../gedit/gedit-commands-file.c:615
+#: ../gedit/gedit-commands-file.c:618
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr "הקובץ \"%s\" נשמר בעבר באמצעות דחיסה וכעת ישמר כקובץ טקסט פשוט."
 
-#: ../gedit/gedit-commands-file.c:617
+#: ../gedit/gedit-commands-file.c:620
 msgid "_Save As Plain Text"
 msgstr "שמירה כ_טקסט פשוט"
 
-#: ../gedit/gedit-commands-file.c:735 ../gedit/gedit-commands-file.c:951
+#: ../gedit/gedit-commands-file.c:738 ../gedit/gedit-commands-file.c:954
 #, c-format
 msgid "Saving file '%s'ے"
 msgstr "נשמר קובץ  '%s'…"
 
-#: ../gedit/gedit-commands-file.c:840
+#: ../gedit/gedit-commands-file.c:843
 msgid "Save As"
 msgstr "שמירה בשם"
 
-#: ../gedit/gedit-commands-file.c:1155
+#: ../gedit/gedit-commands-file.c:1158
 #, c-format
 msgid "Reverting the document '%s'ے"
 msgstr "המסמך '%s' משוחזר…"
 
-#: ../gedit/gedit-commands-file.c:1200
+#: ../gedit/gedit-commands-file.c:1203
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "האם לבטל את השינויים שלא נשמרו במסמך '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1209
+#: ../gedit/gedit-commands-file.c:1212
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -841,12 +841,12 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשנייה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1218
+#: ../gedit/gedit-commands-file.c:1221
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "השינויים שנערכו במסמך בדקה האחרונה יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1224
+#: ../gedit/gedit-commands-file.c:1227
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -857,7 +857,7 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בדקה והשנייה האחרונות יאבדו."
 msgstr[1] "השינויים שנערכו במסמך בדקה ו־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1234
+#: ../gedit/gedit-commands-file.c:1237
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -867,11 +867,11 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בדקה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%ld הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1249
+#: ../gedit/gedit-commands-file.c:1252
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "השינויים שנערכו במסמך בשעה האחרונה יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1255
+#: ../gedit/gedit-commands-file.c:1258
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -882,7 +882,7 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשעה ובדקה האחרונות יאבדו."
 msgstr[1] "השינויים שנערכו במסמך בשעה וב־%d הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1270
+#: ../gedit/gedit-commands-file.c:1273
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -891,7 +891,7 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשעה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%d השעות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1293
+#: ../gedit/gedit-commands-file.c:1296
 msgid "_Revert"
 msgstr "_שחזור"
 
@@ -940,8 +940,8 @@ msgstr "מסמך שלא נשמר %d"
 msgid "Tab Group %i"
 msgstr "קבוצת לשוניות %i"
 
-#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1042
-#: ../gedit/gedit-window.c:1048 ../gedit/gedit-window.c:1056
+#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1072
+#: ../gedit/gedit-window.c:1078 ../gedit/gedit-window.c:1086
 msgid "Read-Only"
 msgstr "(קריאה בלבד)"
 
@@ -1004,6 +1004,19 @@ msgstr "ה_סרה"
 msgid "E_ncodings shown in menu:"
 msgstr "ק_ידודים המופיעים בתפריט:"
 
+#: ../gedit/gedit-open-document-selector.c:559
+msgid "No results"
+msgstr "לא נמצאו תוצאות"
+
+#. ex:set ts=8 noet:
+#: ../gedit/gedit-open-document-selector.ui.h:1
+msgid "Other Documents…"
+msgstr "מסמכים אחרים…"
+
+#: ../gedit/gedit-open-document-selector.ui.h:2
+msgid "Open a another file"
+msgstr "פתיחת קובץ אחר"
+
 #: ../gedit/gedit-file-chooser-dialog.c:38
 #: ../gedit/gedit-preferences-dialog.c:870
 msgid "All Files"
@@ -1042,7 +1055,7 @@ msgstr "מצב הדגשה"
 msgid "_Select"
 msgstr "_בחירה"
 
-#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1126
+#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1156
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1995,71 +2008,62 @@ msgstr "המחרוזת שברצונך לחפש"
 msgid "Line you want to move the cursor to"
 msgstr "השורה אליה להעביר את הסמן"
 
-#: ../gedit/gedit-window.c:895
+#: ../gedit/gedit-window.c:925
 msgid "Bracket match is out of range"
 msgstr "הסוגר התואם הוא מחוץ לטווח"
 
-#: ../gedit/gedit-window.c:900
+#: ../gedit/gedit-window.c:930
 msgid "Bracket match not found"
 msgstr "הסוגר התואם לא נמצא"
 
-#: ../gedit/gedit-window.c:905
+#: ../gedit/gedit-window.c:935
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "הסוגר התואם נמצא בשורה: %d"
 
-#: ../gedit/gedit-window.c:1108
+#: ../gedit/gedit-window.c:1138
 #, c-format
 msgid "Tab Width: %u"
 msgstr "רוחב טאב: %u"
 
-#: ../gedit/gedit-window.c:1586
+#: ../gedit/gedit-window.c:1510
 msgid "There are unsaved documents"
 msgstr "ישנם מסמכים שלא נשמרו"
 
-#: ../gedit/gedit-window.c:2594
+#: ../gedit/gedit-window.c:2342
 msgid "Change side panel page"
 msgstr "שינוי דף הסרגל הצדי"
 
 #. ex:set ts=8 noet:
-#: ../gedit/gedit-window.c:2614 ../gedit/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2362 ../gedit/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "מסמכים"
 
-#: ../gedit/gedit-window.ui.h:3
-msgid "Open a file"
-msgstr "פתיחת קובץ"
-
-#: ../gedit/gedit-window.ui.h:4
-msgid "Open a recently used file"
-msgstr "פתיחת קובץ שהיה בשימוש לאחרונה"
-
-#: ../gedit/gedit-window.ui.h:5
-msgid "Recent files"
-msgstr "קבצים אחרונים"
-
-#: ../gedit/gedit-window.ui.h:6
-msgid "Create a new document"
-msgstr "יצירת מסמך חדש"
-
-#. "New" is for creating a new document.
-#: ../gedit/gedit-window.ui.h:8
+#: ../gedit/gedit-window.ui.h:2
 msgid "New"
 msgstr "חדש"
 
-#: ../gedit/gedit-window.ui.h:9
+#: ../gedit/gedit-window.ui.h:3
+msgid "Create a new document"
+msgstr "יצירת מסמך חדש"
+
+#: ../gedit/gedit-window.ui.h:4
+msgid "Open a file dialog"
+msgstr "דו שיח לפתיחת קובץ"
+
+#: ../gedit/gedit-window.ui.h:6
 msgid "Save the current file"
 msgstr "שמירת הקובץ הנוכחי"
 
-#: ../gedit/gedit-window.ui.h:10
+#: ../gedit/gedit-window.ui.h:7
 msgid "Save"
 msgstr "שמירה"
 
-#: ../gedit/gedit-window.ui.h:11
+#: ../gedit/gedit-window.ui.h:8
 msgid "Hide panel"
 msgstr "הסתרת הלוח"
 
-#: ../gedit/gedit-window.ui.h:12
+#: ../gedit/gedit-window.ui.h:9
 msgid "Leave Fullscreen"
 msgstr "יציאה ממצב מסך מלא"
 
@@ -2584,22 +2588,22 @@ msgstr ""
 msgid "Bookmarks"
 msgstr "סימניות"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2002
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1999
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "אין פריט עגינה עבור הכרך שעוגן: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2079
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2076
 #, c-format
 msgid "Could not open media: %s"
 msgstr "לא ניתן לפתוח את המדיה: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2126
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2123
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "לא ניתן לעגון את הכרך: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2788
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2785
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "אירעה שגיאה בעת טעינת '%s': אין כזאת תיקייה"
@@ -3290,6 +3294,12 @@ msgstr "הוספת תאריך/שעה"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמן."
+
+#~ msgid "Open a recently used file"
+#~ msgstr "פתיחת קובץ שהיה בשימוש לאחרונה"
+
+#~ msgid "Recent files"
+#~ msgstr "קבצים אחרונים"
 
 #~ msgid "Unicode"
 #~ msgstr "יוניקוד"
@@ -4325,9 +4335,6 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 
 #~ msgid "No line break"
 #~ msgstr "No line break"
-
-#~ msgid "No resize"
-#~ msgstr "No resize"
 
 #~ msgid "No script"
 #~ msgstr "No script"
