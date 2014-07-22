@@ -38,7 +38,7 @@ typedef struct _Item Item;
 
 struct _Item
 {
-	guint64	 	 atime; /* time of last access */
+	gint64	 	 atime; /* time of last access in seconds since January 1, 1970 UTC */
 
 	GHashTable	*values;
 };
@@ -181,7 +181,7 @@ parseItem (xmlDocPtr doc, xmlNodePtr cur)
 
 	item = g_new0 (Item, 1);
 
-	item->atime = g_ascii_strtoull ((char *)atime, NULL, 0);
+	item->atime = g_ascii_strtoll ((char *)atime, NULL, 0);
 
 	item->values = g_hash_table_new_full (g_str_hash,
 					      g_str_equal,
@@ -330,7 +330,7 @@ gedit_metadata_manager_get (GFile       *location,
 	if (item == NULL)
 		return NULL;
 
-	item->atime = g_date_time_to_unix ();
+	item->atime = g_get_real_time () / 1000;
 
 	if (item->values == NULL)
 		return NULL;
@@ -408,7 +408,7 @@ gedit_metadata_manager_set (GFile       *location,
 				     key);
 	}
 
-	item->atime = g_date_time_to_unix ();
+	item->atime = g_get_real_time () / 1000;
 
 	g_free (uri);
 
