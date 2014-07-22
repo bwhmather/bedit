@@ -250,6 +250,7 @@ EXTRA_DIST += 					\
 if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS = gedit/Gedit-3.0.gir
+INTROSPECTION_SCANNER_ENV = CC="$(CC)"
 
 gedit/Gedit-3.0.gir: gedit/gedit$(EXEEXT)
 INTROSPECTION_SCANNER_ARGS = -I$(top_srcdir) --warn-all
