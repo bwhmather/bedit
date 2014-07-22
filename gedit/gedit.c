@@ -44,7 +44,7 @@ static GModule *libgedit_dll = NULL;
 /* This code must live in gedit.exe, not in libgedit.dll, since the whole
  * point is to find and load libgedit.dll.
  */
-static void
+static gboolean
 gedit_w32_load_private_dll (void)
 {
 	gchar *dllpath;
@@ -73,7 +73,7 @@ gedit_w32_load_private_dll (void)
 		libgedit_dll = g_module_open ("libgedit.dll", 0);
 	}
 
-	return (libgedit_dll != NULL)
+	return (libgedit_dll != NULL);
 }
 
 static void
@@ -100,7 +100,7 @@ main (int argc, char *argv[])
 #ifdef G_OS_WIN32
 	if (!gedit_w32_load_private_dll ())
 	{
-		g_printerr ("Failed to load libgedit DLL\n")
+		g_printerr ("Failed to load libgedit DLL\n");
 		return 1;
 	}
 
