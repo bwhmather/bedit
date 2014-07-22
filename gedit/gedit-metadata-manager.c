@@ -470,7 +470,7 @@ save_item (const gchar *key, const gpointer *data, xmlNodePtr parent)
 	gedit_debug_message (DEBUG_METADATA, "uri: %s", key);
 #endif
 
-	atime = g_strdup_printf ("%" G_GUINT64_FORMAT, item->atime);
+	atime = g_strdup_printf ("%" G_GINT64_FORMAT, item->atime);
 	xmlSetProp (xml_node, (const xmlChar *)"atime", (const xmlChar *)atime);
 
 #ifdef GEDIT_METADATA_VERBOSE_DEBUG
