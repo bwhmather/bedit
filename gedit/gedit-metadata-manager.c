@@ -19,7 +19,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <time.h>
 #include <stdlib.h>
 #include <libxml/xmlreader.h>
 #include "gedit-debug.h"
@@ -39,7 +38,7 @@ typedef struct _Item Item;
 
 struct _Item
 {
-	time_t	 	 atime; /* time of last access */
+	guint64	 	 atime; /* time of last access */
 
 	GHashTable	*values;
 };
@@ -331,7 +330,7 @@ gedit_metadata_manager_get (GFile       *location,
 	if (item == NULL)
 		return NULL;
 
-	item->atime = time (NULL);
+	item->atime = g_date_time_to_unix ();
 
 	if (item->values == NULL)
 		return NULL;
@@ -409,7 +408,7 @@ gedit_metadata_manager_set (GFile       *location,
 				     key);
 	}
 
-	item->atime = time (NULL);
+	item->atime = g_date_time_to_unix ();
 
 	g_free (uri);
 
@@ -471,7 +470,7 @@ save_item (const gchar *key, const gpointer *data, xmlNodePtr parent)
 	gedit_debug_message (DEBUG_METADATA, "uri: %s", key);
 #endif
 
-	atime = g_strdup_printf ("%ld", item->atime);
+	atime = g_strdup_printf ("%" G_GUINT64_FORMAT, item->atime);
 	xmlSetProp (xml_node, (const xmlChar *)"atime", (const xmlChar *)atime);
 
 #ifdef GEDIT_METADATA_VERBOSE_DEBUG
