@@ -425,7 +425,7 @@ else
 fi
 
 # Vala
-VAPIGEN_CHECK
+VAPIGEN_CHECK([0.25.1])
 
 AC_CONFIG_FILES([
 Makefile
