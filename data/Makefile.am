@@ -3,7 +3,7 @@ data_desktop_in_files = data/org.gnome.gedit.desktop.in
 data_desktop_DATA = $(data_desktop_in_files:.desktop.in=.desktop)
 
 data_appdatadir = $(datadir)/appdata
-data_appdata_in_files = data/gedit.appdata.xml.in
+data_appdata_in_files = data/org.gnome.gedit.appdata.xml.in
 data_appdata_DATA = $(data_appdata_in_files:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
 
