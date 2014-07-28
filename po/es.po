@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-07-22 05:12+0000\n"
-"PO-Revision-Date: 2014-07-22 10:55+0200\n"
+"POT-Creation-Date: 2014-07-28 05:11+0000\n"
+"PO-Revision-Date: 2014-07-28 17:35+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -31,7 +31,7 @@ msgstr ""
 "X-Generator: Gtranslator 2.91.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -41,7 +41,7 @@ msgstr ""
 "es sencillo y fácil de usar, gedit es un editor de texto de propósito "
 "general muy potente."
 
-#: ../data/gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -51,7 +51,7 @@ msgstr ""
 "innovadora aplicación o simplemente tomando notas rápidas, gedit será una "
 "herramienta de confianza para realizar el trabajo."
 
-#: ../data/gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -1083,20 +1083,18 @@ msgstr "_Quitar"
 msgid "E_ncodings shown in menu:"
 msgstr "Co_dificaciones mostradas en el menú:"
 
-#: ../gedit/gedit-open-document-selector.c:559
-#| msgid "No resize"
+#: ../gedit/gedit-open-document-selector.c:596
 msgid "No results"
 msgstr "No hay resultados"
 
 #. ex:set ts=8 noet:
 #: ../gedit/gedit-open-document-selector.ui.h:1
-#| msgid "Documents"
 msgid "Other Documents…"
 msgstr "Otros documentos…"
 
 #: ../gedit/gedit-open-document-selector.ui.h:2
-#| msgid "Open a file"
-msgid "Open a another file"
+#| msgid "Open a another file"
+msgid "Open another file"
 msgstr "Abrir otro archivo"
 
 #: ../gedit/gedit-file-chooser-dialog.c:38
@@ -2150,7 +2148,6 @@ msgid "Create a new document"
 msgstr "Crear un documento nuevo"
 
 #: ../gedit/gedit-window.ui.h:4
-#| msgid "Open a file"
 msgid "Open a file dialog"
 msgstr "Abrir un diálogo de archivo"
 
