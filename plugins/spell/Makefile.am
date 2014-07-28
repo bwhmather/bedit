@@ -66,7 +66,7 @@ plugins/spell/gedit-spell-marshal.c: plugins/spell/gedit-spell-marshal.list $(GL
 	$(AM_V_GEN) echo "#include \"gedit-spell-marshal.h\"" > $@ && \
 	$(GLIB_GENMARSHAL) $< --body --prefix=gedit_marshal >> $@
 
-spell_resource_deps = $(call GRESDEPS,plugins/spell/gedit-spell.gresource.xml)
+spell_resource_deps = $(call GRESDEPS,plugins/spell/resources/gedit-spell.gresource.xml)
 plugins/spell/gedit-spell-resources.c: $(spell_resource_deps)
 	$(GRESGEN)
 

@@ -10,7 +10,7 @@ plugins_sort_libsort_la_CFLAGS =			\
 	$(WARN_CFLAGS)					\
 	$(DISABLE_DEPRECATED_CFLAGS)
 
-sort_resource_deps = $(call GRESDEPS,plugins/sort/gedit-sort.gresource.xml)
+sort_resource_deps = $(call GRESDEPS,plugins/sort/resources/gedit-sort.gresource.xml)
 plugins/sort/gedit-sort-resources.c: $(sort_resource_deps)
 	$(GRESGEN)
 

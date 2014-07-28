@@ -10,7 +10,7 @@ plugins_time_libtime_la_CFLAGS =			\
 	$(WARN_CFLAGS)					\
 	$(DISABLE_DEPRECATED_CFLAGS)
 
-time_resource_deps = $(call GRESDEPS,plugins/time/gedit-time.gresource.xml)
+time_resource_deps = $(call GRESDEPS,plugins/time/resources/gedit-time.gresource.xml)
 plugins/time/gedit-time-resources.c: $(time_resource_deps)
 	$(GRESGEN)
 

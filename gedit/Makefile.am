@@ -230,7 +230,7 @@ gedit/gedit-marshal.c: gedit/gedit-marshal.list $(GLIB_GENMARSHAL)
 	$(AM_V_GEN) echo "#include \"gedit-marshal.h\"" > $@ && \
 	$(GLIB_GENMARSHAL) $< --body --prefix=gedit_marshal >> $@
 
-gedit_resource_deps = $(call GRESDEPS,gedit/gedit.gresource.xml)
+gedit_resource_deps = $(call GRESDEPS,gedit/resources/gedit.gresource.xml)
 gedit/gedit-resources.c: $(gedit_resource_deps)
 	$(GRESGEN)
 

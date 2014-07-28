@@ -70,7 +70,7 @@ plugins_filebrowser_libfilebrowser_la_SOURCES =			\
 
 plugin_in_files += plugins/filebrowser/filebrowser.plugin.desktop.in
 
-filebrowser_resources_deps = $(call GRESDEPS,plugins/filebrowser/gedit-file-browser.gresource.xml)
+filebrowser_resources_deps = $(call GRESDEPS,plugins/filebrowser/resources/gedit-file-browser.gresource.xml)
 plugins/filebrowser/gedit-file-browser-resources.c: $(filebrowser_resources_deps)
 	$(GRESGEN)
 

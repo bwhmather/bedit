@@ -460,7 +460,7 @@ theme_changed (GtkSettings *settings,
 				GFile *file;
 
 				provider = gtk_css_provider_new ();
-				file = g_file_new_for_uri ("resource:///org/gnome/gedit/ui/gedit.adwaita.css");
+				file = g_file_new_for_uri ("resource:///org/gnome/gedit/css/gedit.adwaita.css");
 				gtk_css_provider_load_from_file (provider, file, NULL);
 				g_object_unref (file);
 			}
@@ -641,7 +641,7 @@ gedit_app_startup (GApplication *application)
 
 	/* Load custom css */
 	error = NULL;
-	css_file = g_file_new_for_uri ("resource:///org/gnome/gedit/ui/gedit-style.css");
+	css_file = g_file_new_for_uri ("resource:///org/gnome/gedit/css/gedit-style.css");
 	provider = gtk_css_provider_new ();
 	if (gtk_css_provider_load_from_file (provider, css_file, &error))
 	{

@@ -15,7 +15,7 @@ plugins_docinfo_libdocinfo_la_CFLAGS   =		\
 	$(WARN_CFLAGS)					\
 	$(DISABLE_DEPRECATED_CFLAGS)
 
-docinfo_resources_deps = $(call GRESDEPS,plugins/docinfo/gedit-docinfo.gresource.xml)
+docinfo_resources_deps = $(call GRESDEPS,plugins/docinfo/resources/gedit-docinfo.gresource.xml)
 plugins/docinfo/gedit-docinfo-resources.c: $(docinfo_resources_deps)
 	$(GRESGEN)
 
