@@ -2432,7 +2432,6 @@ _gedit_tab_save_as (GeditTab                 *tab,
 	GeditDocument *doc;
 	GtkSourceFile *file;
 	GtkSourceFileSaverFlags save_flags;
-	GFile *prev_location;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL ||
@@ -2467,16 +2466,6 @@ _gedit_tab_save_as (GeditTab                 *tab,
 	}
 
 	file = gedit_document_get_file (doc);
-
-	prev_location = gtk_source_file_get_location (file);
-
-	if (prev_location == NULL ||
-	    !g_file_equal (prev_location, location))
-	{
-		/* Ignore modification time for a save to another location. */
-		/* TODO do that in GtkSourceFileSaver. */
-		save_flags |= GTK_SOURCE_FILE_SAVER_FLAGS_IGNORE_MODIFICATION_TIME;
-	}
 
 	tab->priv->saver = gtk_source_file_saver_new_with_target (GTK_SOURCE_BUFFER (doc),
 								  file,
