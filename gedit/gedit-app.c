@@ -422,22 +422,6 @@ load_accels (void)
 	}
 }
 
-static gpointer
-get_builder_object_ref (GtkBuilder  *builder,
-                        const gchar *name)
-{
-	gpointer ret;
-
-	ret = gtk_builder_get_object (builder, name);
-
-	if (ret != NULL)
-	{
-		g_object_ref_sink (ret);
-	}
-
-	return ret;
-}
-
 static void
 theme_changed (GtkSettings *settings,
 	       GParamSpec  *pspec,
@@ -490,6 +474,17 @@ setup_theme_extensions (void)
 	theme_changed (settings, NULL, NULL);
 }
 
+static GMenuModel *
+get_menu_model (GeditApp   *app,
+                const char *id)
+{
+	GMenu *menu;
+
+	menu = gtk_application_get_menu_by_id (GTK_APPLICATION (app), id);
+
+	return menu ? G_MENU_MODEL (g_object_ref_sink (menu)) : NULL;
+}
+
 static void
 gedit_app_startup (GApplication *application)
 {
@@ -500,7 +495,6 @@ gedit_app_startup (GApplication *application)
 	GError *error = NULL;
 	GFile *css_file;
 	GtkCssProvider *provider;
-	GtkBuilder *builder;
 
 	G_APPLICATION_CLASS (gedit_app_parent_class)->startup (application);
 
@@ -527,7 +521,7 @@ gedit_app_startup (GApplication *application)
 	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (), icon_dir);
 	g_free (icon_dir);
 
-        setup_theme_extensions ();
+	setup_theme_extensions ();
 
 #ifndef ENABLE_GVFS_METADATA
 	gedit_metadata_manager_init ();
@@ -546,37 +540,19 @@ gedit_app_startup (GApplication *application)
 	                                 G_N_ELEMENTS (app_entries),
 	                                 app);
 
-	/* load menu model */
-	builder = gtk_builder_new ();
-	if (!gtk_builder_add_from_resource (builder,
-	                                    "/org/gnome/gedit/ui/gedit-menu.ui",
-	                                    &error))
+	/* menus */
+	if (gedit_app_has_app_menu (app))
 	{
-		g_warning ("loading menu builder file: %s", error->message);
-		g_error_free (error);
+		app->priv->window_menu = get_menu_model (app, "gear_menu_withappmenu");
 	}
 	else
 	{
-		if (gedit_app_has_app_menu (app))
-		{
-			GMenuModel *appmenu;
-
-			appmenu = G_MENU_MODEL (gtk_builder_get_object (builder, "appmenu"));
-			gtk_application_set_app_menu (GTK_APPLICATION (application), appmenu);
-
-			app->priv->window_menu = G_MENU_MODEL (get_builder_object_ref (builder, "gear_menu_withappmenu"));
-		}
-		else
-		{
-			app->priv->window_menu = G_MENU_MODEL (get_builder_object_ref (builder, "gear_menu_noappmenu"));
-		}
-
-		app->priv->notebook_menu = G_MENU_MODEL (get_builder_object_ref (builder, "notebook_menu"));
-		app->priv->tab_width_menu = G_MENU_MODEL (get_builder_object_ref (builder, "tab_width_menu"));
-		app->priv->line_col_menu = G_MENU_MODEL (get_builder_object_ref (builder, "line_col_menu"));
+		app->priv->window_menu = get_menu_model (app, "gear_menu_noappmenu");
 	}
 
-	g_object_unref (builder);
+	app->priv->notebook_menu = get_menu_model (app, "notebook_menu");
+	app->priv->tab_width_menu = get_menu_model (app, "tab_width_menu");
+	app->priv->line_col_menu = get_menu_model (app, "line_col_menu");
 
 	/* Accelerators */
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
