@@ -16,43 +16,43 @@ gedit/gedit-document.c
 gedit/gedit-documents-panel.c
 gedit/gedit-encodings-combo-box.c
 gedit/gedit-encodings-dialog.c
-[type: gettext/glade]gedit/gedit-encodings-dialog.ui
-gedit/gedit-open-document-selector.c
-[type: gettext/glade]gedit/gedit-open-document-selector.ui
 gedit/gedit-file-chooser-dialog.c
 gedit/gedit-highlight-mode-dialog.c
-[type: gettext/glade]gedit/gedit-highlight-mode-dialog.ui
 gedit/gedit-highlight-mode-selector.c
-[type: gettext/glade]gedit/gedit-highlight-mode-selector.ui
 gedit/gedit-io-error-info-bar.c
-[type: gettext/glade]gedit/gedit-menu.ui
 gedit/gedit-notebook.c
 gedit/gedit-notebook-popup-menu.c
+gedit/gedit-open-document-selector.c
 gedit/gedit-plugins-engine.c
 gedit/gedit-preferences-dialog.c
-[type: gettext/glade]gedit/gedit-preferences-dialog.ui
 gedit/gedit-print-job.c
-[type: gettext/glade]gedit/gedit-print-preferences.ui
 gedit/gedit-print-preview.c
-[type: gettext/glade]gedit/gedit-print-preview.ui
 gedit/gedit-progress-info-bar.c
 gedit/gedit-replace-dialog.c
-[type: gettext/glade]gedit/gedit-replace-dialog.ui
 gedit/gedit-statusbar.c
 gedit/gedit-tab.c
 gedit/gedit-tab-label.c
-[type: gettext/glade]gedit/gedit-tab-label.ui
 gedit/gedit-utils.c
 gedit/gedit-view.c
 gedit/gedit-view-frame.c
 gedit/gedit-window.c
-[type: gettext/glade]gedit/gedit-window.ui
+[type: gettext/glade]gedit/resources/ui/gedit-encodings-dialog.ui
+[type: gettext/glade]gedit/resources/ui/gedit-highlight-mode-dialog.ui
+[type: gettext/glade]gedit/resources/ui/gedit-highlight-mode-selector.ui
+[type: gettext/glade]gedit/resources/ui/gedit-menu.ui
+[type: gettext/glade]gedit/resources/ui/gedit-open-document-selector.ui
+[type: gettext/glade]gedit/resources/ui/gedit-preferences-dialog.ui
+[type: gettext/glade]gedit/resources/ui/gedit-print-preferences.ui
+[type: gettext/glade]gedit/resources/ui/gedit-print-preview.ui
+[type: gettext/glade]gedit/resources/ui/gedit-replace-dialog.ui
+[type: gettext/glade]gedit/resources/ui/gedit-tab-label.ui
+[type: gettext/glade]gedit/resources/ui/gedit-window.ui
 plugins/checkupdate/checkupdate.plugin.desktop.in
 plugins/checkupdate/gedit-check-update-plugin.c
 plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in
 plugins/docinfo/docinfo.plugin.desktop.in
 plugins/docinfo/gedit-docinfo-plugin.c
-[type: gettext/glade]plugins/docinfo/gedit-docinfo-plugin.ui
+[type: gettext/glade]plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui
 plugins/externaltools/data/build.desktop.in
 plugins/externaltools/data/open-terminal-here.desktop.in
 plugins/externaltools/data/open-terminal-here-osx.desktop.in
@@ -72,13 +72,13 @@ plugins/externaltools/tools/outputpanel.py
 plugins/externaltools/tools/windowactivatable.py
 plugins/filebrowser/filebrowser.plugin.desktop.in
 plugins/filebrowser/gedit-file-bookmarks-store.c
-[type: gettext/glade]plugins/filebrowser/gedit-file-browser-menus.ui
 plugins/filebrowser/gedit-file-browser-plugin.c
 plugins/filebrowser/gedit-file-browser-store.c
 plugins/filebrowser/gedit-file-browser-utils.c
 plugins/filebrowser/gedit-file-browser-view.c
 plugins/filebrowser/gedit-file-browser-widget.c
 plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in
+[type: gettext/glade]plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui
 plugins/modelines/modelines.plugin.desktop.in
 plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in
 [type: gettext/glade]plugins/pythonconsole/pythonconsole/config.ui
@@ -97,7 +97,7 @@ plugins/snippets/snippets.plugin.desktop.in
 [type: gettext/glade]plugins/snippets/snippets/snippets.ui
 plugins/snippets/snippets/windowactivatable.py
 plugins/sort/gedit-sort-plugin.c
-[type: gettext/glade]plugins/sort/gedit-sort-plugin.ui
+[type: gettext/glade]plugins/sort/resources/ui/gedit-sort-plugin.ui
 plugins/sort/sort.plugin.desktop.in
 plugins/spell/gedit-automatic-spell-checker.c
 plugins/spell/gedit-spell-app-activatable.c
@@ -106,11 +106,11 @@ plugins/spell/gedit-spell-checker-dialog.c
 plugins/spell/gedit-spell-checker-language.c
 plugins/spell/gedit-spell-language-dialog.c
 plugins/spell/gedit-spell-plugin.c
-[type: gettext/glade]plugins/spell/languages-dialog.ui
-[type: gettext/glade]plugins/spell/spell-checker.ui
+[type: gettext/glade]plugins/spell/resources/ui/languages-dialog.ui
+[type: gettext/glade]plugins/spell/resources/ui/spell-checker.ui
 plugins/spell/spell.plugin.desktop.in
-[type: gettext/glade]plugins/time/gedit-time-dialog.ui
 plugins/time/gedit-time-plugin.c
-[type: gettext/glade]plugins/time/gedit-time-setup-dialog.ui
 plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in
+[type: gettext/glade]plugins/time/resources/ui/gedit-time-dialog.ui
+[type: gettext/glade]plugins/time/resources/ui/gedit-time-setup-dialog.ui
 plugins/time/time.plugin.desktop.in
