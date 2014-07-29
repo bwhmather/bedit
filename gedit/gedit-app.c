@@ -385,27 +385,6 @@ extension_removed (PeasExtensionSet *extensions,
 	gedit_app_activatable_deactivate (GEDIT_APP_ACTIVATABLE (exten));
 }
 
-static gboolean
-gedit_app_has_app_menu (GeditApp *app)
-{
-	GtkSettings *gtk_settings;
-	gboolean show_app_menu;
-	gboolean show_menubar;
-
-	/* We have three cases:
-	 * - GNOME 3: show-app-menu true, show-menubar false -> use the app menu
-	 * - Unity, OSX: show-app-menu and show-menubar true -> use the normal menu
-	 * - Other WM, Windows: show-app-menu and show-menubar false -> use the normal menu
-	 */
-	gtk_settings = gtk_settings_get_default ();
-	g_object_get (G_OBJECT (gtk_settings),
-	              "gtk-shell-shows-app-menu", &show_app_menu,
-	              "gtk-shell-shows-menubar", &show_menubar,
-	              NULL);
-
-	return show_app_menu && !show_menubar;
-}
-
 static void
 load_accels (void)
 {
@@ -541,7 +520,7 @@ gedit_app_startup (GApplication *application)
 	                                 app);
 
 	/* menus */
-	if (gedit_app_has_app_menu (app))
+	if (gtk_application_prefers_app_menu (GTK_APPLICATION (app)))
 	{
 		app->priv->window_menu = get_menu_model (app, "gear_menu_withappmenu");
 	}
