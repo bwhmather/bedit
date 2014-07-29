@@ -120,9 +120,7 @@ struct _GeditFileBrowserWidgetPrivate
 	GMenuModel *bookmarks_menu;
 
 	GtkWidget *previous_button;
-	GtkWidget *previous_image;
 	GtkWidget *next_button;
-	GtkWidget *next_image;
 
 	GtkWidget *combo;
 	GtkTreeStore *combo_model;
@@ -562,9 +560,7 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/plugins/file-browser/ui/gedit-file-browser-widget.ui");
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, previous_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, previous_image);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, next_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, next_image);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, combo);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, combo_model);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, location_entry);
@@ -995,13 +991,6 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 	set_enable_delete (obj, obj->priv->enable_delete);
 
 	gtk_widget_init_template (GTK_WIDGET (obj));
-
-	gtk_image_set_from_icon_name (GTK_IMAGE (obj->priv->previous_image),
-				      "go-previous-symbolic",
-				      GTK_ICON_SIZE_MENU);
-	gtk_image_set_from_icon_name (GTK_IMAGE (obj->priv->next_image),
-				      "go-next-symbolic",
-				      GTK_ICON_SIZE_MENU);
 
 	g_signal_connect (obj->priv->previous_button, "button-press-event",
 	                  G_CALLBACK (on_location_button_press_event), obj);
