@@ -108,54 +108,8 @@ GeditStatusbar {
     border-top: 1px solid @borders;
 }
 
-GeditStatusbar GeditSmallButton,
-GeditStatusMenuButton {
-    text-shadow: none;
-}
-
-GeditStatusbar GeditSmallButton.button:backdrop,
-GeditStatusbar GeditSmallButton.button:backdrop:hover,
-GeditStatusbar GeditSmallButton.button,
-GeditStatusbar GeditSmallButton.button:hover,
-GeditStatusbar GeditSmallButton.button:active,
-GeditStatusbar GeditSmallButton.button:active:hover,
-GeditStatusMenuButton.button:backdrop,
-GeditStatusMenuButton.button:backdrop:hover,
-GeditStatusMenuButton.button,
-GeditStatusMenuButton.button:hover,
-GeditStatusMenuButton.button:active,
-GeditStatusMenuButton.button:active:hover {
-    border-image: none;
-    border-style: solid;
-    border-width: 0 1px;
+GeditStatusbar .button.flat {
     border-radius: 0;
-    padding: 1px 8px 2px 4px;
-}
-
-GeditStatusbar GeditSmallButton.button:hover,
-GeditStatusbar GeditSmallButton.button:active,
-GeditStatusbar GeditSmallButton.button:active:hover,
-GeditStatusMenuButton.button:hover,
-GeditStatusMenuButton.button:active,
-GeditStatusMenuButton.button:active:hover {
-    border-color: @borders;
-}
-
-GeditStatusbar GeditSmallButton.button:active,
-GeditStatusMenuButton.button:active {
-    background-image: linear-gradient(to bottom,
-                                      @borders,
-                                      shade(@theme_bg_color, 0.95));
-    background-color: transparent;
-    color: @theme_selected_fg_color;
-    text-shadow: 0 1px @button_text_shadow;
-}
-
-GeditStatusbar GeditSmallButton.button:backdrop,
-GeditStatusbar GeditSmallButton.button:backdrop:hover,
-GeditStatusMenuButton.button:backdrop,
-GeditStatusMenuButton.button:backdrop:hover {
-    border-color: @unfocused_borders;
 }
 
 GeditViewFrame .gedit-search-slider {
