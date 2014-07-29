@@ -520,18 +520,10 @@ gedit_app_startup (GApplication *application)
 	                                 app);
 
 	/* menus */
-	if (gtk_application_prefers_app_menu (GTK_APPLICATION (app)))
-	{
-		app->priv->window_menu = get_menu_model (app, "gear_menu_withappmenu");
-	}
-	else
-	{
-		app->priv->window_menu = get_menu_model (app, "gear_menu_noappmenu");
-	}
-
-	app->priv->notebook_menu = get_menu_model (app, "notebook_menu");
-	app->priv->tab_width_menu = get_menu_model (app, "tab_width_menu");
-	app->priv->line_col_menu = get_menu_model (app, "line_col_menu");
+	app->priv->window_menu = get_menu_model (app, "gear-menu");
+	app->priv->notebook_menu = get_menu_model (app, "notebook-menu");
+	app->priv->tab_width_menu = get_menu_model (app, "tab-width-menu");
+	app->priv->line_col_menu = get_menu_model (app, "line-col-menu");
 
 	/* Accelerators */
 	gtk_application_add_accelerator (GTK_APPLICATION (application),
