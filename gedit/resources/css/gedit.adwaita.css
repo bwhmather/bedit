@@ -1,6 +1,3 @@
-@define-color gedit_not_found_bg rgb (237, 54, 54);
-@define-color gedit_not_found_fg white;
-
 GeditWindow .pane-separator,
 GeditWindow .pane-separator:hover {
     border-width: 0 1px 1px 1px;
@@ -119,17 +116,6 @@ GeditViewFrame .gedit-search-slider {
     border-radius: 0 0 3px 3px;
     border-width: 0 1px 1px 1px;
     border-style: solid;
-}
-
-GeditViewFrame .gedit-search-slider .not-found {
-    color: @gedit_not_found_fg;
-    background-image: none;
-    background-color: @gedit_not_found_bg;
-}
-
-GeditViewFrame .gedit-search-slider .not-found:selected {
-    background-color: @theme_selected_bg_color;
-    color: @theme_selected_fg_color;
 }
 
 GeditFileBrowserWidget .toolbar {

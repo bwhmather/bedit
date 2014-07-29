@@ -288,11 +288,11 @@ set_search_state (GeditViewFrame *frame,
 
 	if (state == SEARCH_STATE_NOT_FOUND)
 	{
-		gtk_style_context_add_class (context, "not-found");
+		gtk_style_context_add_class (context, GTK_STYLE_CLASS_ERROR);
 	}
 	else
 	{
-		gtk_style_context_remove_class (context, "not-found");
+		gtk_style_context_remove_class (context, GTK_STYLE_CLASS_ERROR);
 	}
 }
 
