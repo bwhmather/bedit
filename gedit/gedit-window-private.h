@@ -69,7 +69,8 @@ struct _GeditWindowPrivate
 
 	/* statusbar and context ids for statusbar messages */
 	GtkWidget      *statusbar;
-	GtkWidget      *tab_width_combo;
+	GtkWidget      *line_col_button;
+	GtkWidget      *tab_width_button;
 	GtkWidget      *language_button;
 	GtkWidget      *language_button_label;
 	GtkWidget      *language_popover;

@@ -429,7 +429,8 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, bottom_panel);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, statusbar);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, language_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, tab_width_combo);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, tab_width_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, line_col_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_controls);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_eventbox);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, fullscreen_headerbar);
@@ -825,8 +826,12 @@ setup_statusbar (GeditWindow *window)
 	                 "visible",
 	                 G_SETTINGS_BIND_GET);
 
+	/* Line Col button */
+	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (window->priv->line_col_button),
+	                                _gedit_app_get_line_col_menu (GEDIT_APP (g_application_get_default ())));
+
 	/* Tab Width button */
-	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (window->priv->tab_width_combo),
+	gtk_menu_button_set_menu_model (GTK_MENU_BUTTON (window->priv->tab_width_button),
 	                                _gedit_app_get_tab_width_menu (GEDIT_APP (g_application_get_default ())));
 
 	/* Language button */
@@ -944,9 +949,10 @@ static void
 update_cursor_position_statusbar (GtkTextBuffer *buffer,
 				  GeditWindow   *window)
 {
-	gint row, col;
+	gint line, col;
 	GtkTextIter iter;
 	GeditView *view;
+	gchar *msg = NULL;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -959,13 +965,19 @@ update_cursor_position_statusbar (GtkTextBuffer *buffer,
 					  &iter,
 					  gtk_text_buffer_get_insert (buffer));
 
-	row = gtk_text_iter_get_line (&iter);
-	col = gtk_source_view_get_visual_column (GTK_SOURCE_VIEW (view), &iter);
+	line = 1 + gtk_text_iter_get_line (&iter);
+	col = 1 + gtk_source_view_get_visual_column (GTK_SOURCE_VIEW (view), &iter);
 
-	gedit_statusbar_set_cursor_position (
-				GEDIT_STATUSBAR (window->priv->statusbar),
-				row + 1,
-				col + 1);
+	if ((line >= 0) || (col >= 0))
+	{
+		/* Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
+		use abbreviations if possible to avoid space problems. */
+		msg = g_strdup_printf (_("  Ln %d, Col %d"), line, col);
+	}
+
+	gedit_status_menu_button_set_label (GEDIT_STATUS_MENU_BUTTON (window->priv->line_col_button), msg);
+
+	g_free (msg);
 }
 
 static void
@@ -1136,7 +1148,7 @@ tab_width_changed (GObject     *object,
 	new_tab_width = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (object));
 
 	label = g_strdup_printf (_("Tab Width: %u"), new_tab_width);
-	gedit_status_menu_button_set_label (GEDIT_STATUS_MENU_BUTTON (window->priv->tab_width_combo), label);
+	gedit_status_menu_button_set_label (GEDIT_STATUS_MENU_BUTTON (window->priv->tab_width_button), label);
 	g_free (label);
 }
 
@@ -1326,10 +1338,9 @@ update_statusbar (GeditWindow *window,
 		gedit_statusbar_set_overwrite (GEDIT_STATUSBAR (window->priv->statusbar),
 					       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (new_view)));
 
-		gtk_widget_show (window->priv->tab_width_combo);
+		gtk_widget_show (window->priv->line_col_button);
+		gtk_widget_show (window->priv->tab_width_button);
 		gtk_widget_show (window->priv->language_button);
-		_gedit_statusbar_line_col_button_set_visible (GEDIT_STATUSBAR (window->priv->statusbar),
-		                                              TRUE);
 
 		window->priv->tab_width_id = g_signal_connect (new_view,
 							       "notify::tab-width",
@@ -2044,11 +2055,9 @@ on_tab_removed (GeditMultiNotebook *multi,
 				GEDIT_STATUSBAR (window->priv->statusbar));
 
 		/* hide the combos */
-		gtk_widget_hide (window->priv->tab_width_combo);
+		gtk_widget_hide (window->priv->line_col_button);
+		gtk_widget_hide (window->priv->tab_width_button);
 		gtk_widget_hide (window->priv->language_button);
-
-		_gedit_statusbar_line_col_button_set_visible (GEDIT_STATUSBAR (window->priv->statusbar),
-		                                              FALSE);
 	}
 
 	if (!window->priv->dispose_has_run)

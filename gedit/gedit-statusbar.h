@@ -61,10 +61,6 @@ void		 gedit_statusbar_set_window_state	(GeditStatusbar   *statusbar,
 void		 gedit_statusbar_set_overwrite		(GeditStatusbar   *statusbar,
 							 gboolean          overwrite);
 
-void		 gedit_statusbar_set_cursor_position	(GeditStatusbar   *statusbar,
-							 gint              line,
-							 gint              col);
-
 void		 gedit_statusbar_clear_overwrite 	(GeditStatusbar   *statusbar);
 
 void		 gedit_statusbar_flash_message		(GeditStatusbar   *statusbar,
@@ -72,8 +68,6 @@ void		 gedit_statusbar_flash_message		(GeditStatusbar   *statusbar,
 							 const gchar      *format,
 							 ...) G_GNUC_PRINTF(3, 4);
 
-void _gedit_statusbar_line_col_button_set_visible	(GeditStatusbar *statusbar,
-                                                         gboolean        visible);
 G_END_DECLS
 
 #endif
