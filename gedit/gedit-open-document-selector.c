@@ -538,6 +538,24 @@ gedit_open_document_selector_class_init (GeditOpenDocumentSelectorClass *klass)
 }
 
 static void
+on_listbox_allocate (GtkWidget                 *widget,
+                     GdkRectangle              *allocation,
+                     GeditOpenDocumentSelector *open_document_selector)
+{
+	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
+	gint row_height;
+	gint limit_capped;
+	gint listbox_height;
+
+	row_height = calculate_row_height (open_document_selector);
+	limit_capped = MIN (priv->limit, OPEN_DOCUMENT_SELECTOR_MAX_VISIBLE_ROWS);
+	listbox_height = row_height * limit_capped;
+
+	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (priv->scrolled_window),
+	                                            listbox_height - 2);
+}
+
+static void
 gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_selector)
 {
 	GeditOpenDocumentSelectorPrivate *priv;
@@ -611,6 +629,11 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 
 	context = gtk_widget_get_style_context (GTK_WIDGET (priv->listbox));
 	gtk_style_context_add_class (context, "gedit-open-document-selector-listbox");
+
+	g_signal_connect (priv->listbox,
+	                  "size-allocate",
+	                  G_CALLBACK (on_listbox_allocate),
+	                  open_document_selector);
 }
 
 GeditOpenDocumentSelector *
