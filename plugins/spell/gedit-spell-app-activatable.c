@@ -129,7 +129,8 @@ gedit_spell_app_activatable_activate (GeditAppActivatable *activatable)
 	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (app_activatable);
 	GMenuItem *item;
 
-	gtk_application_add_accelerator (GTK_APPLICATION (priv->app), "<Shift>F7", "win.check-spell", NULL);
+	const gchar *accels[] = { "<Shift>F7", NULL };
+	gtk_application_set_accels_for_action (GTK_APPLICATION (priv->app),"win.check-spell", accels);
 	priv->menu_ext = gedit_app_activatable_extend_menu (activatable, "spell-section");
 
 	item = g_menu_item_new (_("_Check Spelling..."), "win.check-spell");
@@ -151,7 +152,8 @@ gedit_spell_app_activatable_deactivate (GeditAppActivatable *activatable)
 	GeditSpellAppActivatable *app_activatable = GEDIT_SPELL_APP_ACTIVATABLE (activatable);
 	GeditSpellAppActivatablePrivate *priv = gedit_spell_app_activatable_get_instance_private (app_activatable);
 
-	gtk_application_remove_accelerator (GTK_APPLICATION (priv->app), "win.check-spell", NULL);
+	const gchar *accels[] = { NULL };
+	gtk_application_set_accels_for_action (GTK_APPLICATION (priv->app),"win.check-spell", accels);
 	g_clear_object (&priv->menu_ext);
 }
 
