@@ -26,6 +26,8 @@
 #endif
 
 #include "gedit-view-frame.h"
+#include "gedit-window.h"
+#include "gedit-view-holder.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "libgd/gd.h"
@@ -54,6 +56,9 @@ typedef enum
 struct _GeditViewFramePrivate
 {
 	GeditView *view;
+	GeditViewHolder *view_holder;
+	GtkWidget *window;
+
 	SearchMode search_mode;
 
 	/* Where the search has started. When the user presses escape in the
@@ -88,6 +93,8 @@ struct _GeditViewFramePrivate
 	 */
 	gchar *search_text;
 	gchar *old_search_text;
+
+	gint window_state_changed_handler_id;
 };
 
 enum
@@ -151,9 +158,17 @@ static void
 gedit_view_frame_finalize (GObject *object)
 {
 	GeditViewFrame *frame = GEDIT_VIEW_FRAME (object);
+	GeditViewFramePrivate *priv = frame->priv;
 
-	g_free (frame->priv->search_text);
-	g_free (frame->priv->old_search_text);
+	g_free (priv->search_text);
+	g_free (priv->old_search_text);
+
+	if (priv->window_state_changed_handler_id != 0)
+	{
+		g_signal_handler_disconnect (priv->window,
+		                             priv->window_state_changed_handler_id);
+		priv->window_state_changed_handler_id = 0;
+	}
 
 	G_OBJECT_CLASS (gedit_view_frame_parent_class)->finalize (object);
 }
@@ -1452,6 +1467,7 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-view-frame.ui");
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, view);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, view_holder);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, revealer);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, search_entry);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditViewFrame, go_up_button);
@@ -1468,12 +1484,57 @@ view_frame_mount_operation_factory (GtkSourceFile *file,
 	return gtk_mount_operation_new (GTK_WINDOW (window));
 }
 
+static gboolean
+on_window_state_changed (GtkWidget           *widget,
+                         GdkEventWindowState *event,
+                         GeditViewFrame      *frame)
+{
+	GeditViewFramePrivate *priv = frame->priv;
+	gboolean fullscreen_state;
+
+	fullscreen_state = event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN;
+
+	gedit_view_holder_set_centering (priv->view_holder, fullscreen_state);
+
+	return FALSE;
+}
+
+static void
+on_toplevel_window_changed (GtkWidget      *widget,
+                            GtkWidget      *previous_toplevel,
+                            GeditViewFrame *frame)
+{
+	GeditViewFramePrivate *priv = frame->priv;
+	GeditWindow *gedit_window;
+
+	if (priv->window_state_changed_handler_id != 0)
+	{
+		g_signal_handler_disconnect (priv->window,
+		                             priv->window_state_changed_handler_id);
+		priv->window_state_changed_handler_id = 0;
+	}
+
+	gedit_window = GEDIT_WINDOW (gtk_widget_get_ancestor (GTK_WIDGET (frame), GEDIT_TYPE_WINDOW));
+
+	if (gedit_window)
+	{
+		priv->window = GTK_WIDGET (&gedit_window->window);
+
+		priv->window_state_changed_handler_id = g_signal_connect (priv->window,
+		                                                          "window-state-event",
+		                                                          G_CALLBACK (on_window_state_changed),
+		                                                          frame);
+	}
+}
+
 static void
 gedit_view_frame_init (GeditViewFrame *frame)
 {
 	GeditDocument *doc;
 	GtkSourceFile *file;
 	GdkRGBA transparent = {0, 0, 0, 0};
+
+	gedit_debug (DEBUG_WINDOW);
 
 	frame->priv = gedit_view_frame_get_instance_private (frame);
 
@@ -1483,6 +1544,8 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	doc = gedit_view_frame_get_document (frame);
 	file = gedit_document_get_file (doc);
+
+	frame->priv->window_state_changed_handler_id = 0;
 
 	gtk_source_file_set_mount_operation_factory (file,
 						     view_frame_mount_operation_factory,
@@ -1555,6 +1618,11 @@ gedit_view_frame_init (GeditViewFrame *frame)
 				  "clicked",
 				  G_CALLBACK (forward_search),
 				  frame);
+
+	g_signal_connect (frame,
+	                  "hierarchy-changed",
+	                  G_CALLBACK (on_toplevel_window_changed),
+	                  frame);
 }
 
 GeditViewFrame *

@@ -123,6 +123,7 @@ gedit_NOINST_H_FILES =				\
 	gedit/gedit-status-menu-button.h	\
 	gedit/gedit-tab-label.h			\
 	gedit/gedit-view-frame.h		\
+	gedit/gedit-view-holder.h		\
 	gedit/gedit-window-private.h
 
 gedit_INST_H_FILES =				\
@@ -201,6 +202,7 @@ gedit_libgedit_c_files =			\
 	gedit/gedit-utils.c 			\
 	gedit/gedit-view.c 			\
 	gedit/gedit-view-frame.c		\
+	gedit/gedit-view-holder.c		\
 	gedit/gedit-window.c
 
 gedit_libgedit_la_SOURCES = 		\
