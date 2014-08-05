@@ -25,7 +25,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <locale.h>
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
@@ -480,17 +479,6 @@ gedit_app_startup (GApplication *application)
 	/* Setup debugging */
 	gedit_debug_init ();
 	gedit_debug_message (DEBUG_APP, "Startup");
-
-	gedit_dirs_init ();
-
-	/* Setup locale/gettext */
-	setlocale (LC_ALL, "");
-
-	dir = gedit_dirs_get_gedit_locale_dir ();
-	bindtextdomain (GETTEXT_PACKAGE, dir);
-
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	textdomain (GETTEXT_PACKAGE);
 
 	gedit_debug_message (DEBUG_APP, "Set icon");
 

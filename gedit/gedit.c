@@ -23,7 +23,10 @@
 #endif
 
 #include <glib.h>
+#include <locale.h>
+#include <libintl.h>
 
+#include "gedit-dirs.h"
 #include "gedit-app.h"
 #ifdef OS_OSX
 #include "gedit-app-osx.h"
@@ -93,6 +96,18 @@ main (int argc, char *argv[])
 	GType type;
 	GeditApp *app;
 	gint status;
+	const gchar *dir;
+
+	gedit_dirs_init ();
+
+	/* Setup locale/gettext */
+	setlocale (LC_ALL, "");
+
+	dir = gedit_dirs_get_gedit_locale_dir ();
+	bindtextdomain (GETTEXT_PACKAGE, dir);
+
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
 
 #ifdef OS_OSX
 	type = GEDIT_TYPE_APP_OSX;
