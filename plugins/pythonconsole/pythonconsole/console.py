@@ -225,14 +225,14 @@ class PythonConsole(Gtk.ScrolledWindow):
 
         elif event.keyval == Gdk.KEY_KP_Down or event.keyval == Gdk.KEY_Down:
             # Next entry from history
-            view.emit_stop_by_name("key_press_event")
+            view.stop_emission_by_name("key_press_event")
             self.history_down()
             GLib.idle_add(self.scroll_to_end)
             return True
 
         elif event.keyval == Gdk.KEY_KP_Up or event.keyval == Gdk.KEY_Up:
             # Previous entry from history
-            view.emit_stop_by_name("key_press_event")
+            view.stop_emission_by_name("key_press_event")
             self.history_up()
             GLib.idle_add(self.scroll_to_end)
             return True
