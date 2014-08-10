@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * gedit-encodings-combo-box.h
  * This file is part of gedit
@@ -22,7 +21,7 @@
 #ifndef __GEDIT_ENCODINGS_COMBO_BOX_H__
 #define __GEDIT_ENCODINGS_COMBO_BOX_H__
 
-#include <gtk/gtk.h>
+#include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS
 
@@ -33,10 +32,8 @@ G_BEGIN_DECLS
 #define GEDIT_IS_ENCODINGS_COMBO_BOX_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_ENCODINGS_COMBO_BOX))
 #define GEDIT_ENCODINGS_COMBO_BOX_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_ENCODINGS_COMBO_BOX, GeditEncodingsComboBoxClass))
 
-
-typedef struct _GeditEncodingsComboBox 	GeditEncodingsComboBox;
-typedef struct _GeditEncodingsComboBoxClass 	GeditEncodingsComboBoxClass;
-
+typedef struct _GeditEncodingsComboBox		GeditEncodingsComboBox;
+typedef struct _GeditEncodingsComboBoxClass	GeditEncodingsComboBoxClass;
 typedef struct _GeditEncodingsComboBoxPrivate	GeditEncodingsComboBoxPrivate;
 
 struct _GeditEncodingsComboBox

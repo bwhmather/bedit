@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * gedit-encodings-combo-box.c
  * This file is part of gedit
@@ -23,15 +22,13 @@
 #include <config.h>
 #endif
 
-#include <glib/gi18n.h>
-#include <gtksourceview/gtksource.h>
-
 #include "gedit-encodings-combo-box.h"
+
+#include <glib/gi18n.h>
+
 #include "gedit-encodings-dialog.h"
 #include "gedit-settings.h"
 #include "gedit-utils.h"
-
-#define ENCODING_KEY "Enconding"
 
 struct _GeditEncodingsComboBoxPrivate
 {
@@ -53,13 +50,11 @@ enum
 	N_COLUMNS
 };
 
-/* Properties */
 enum
 {
 	PROP_0,
 	PROP_SAVE_MODE
 };
-
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditEncodingsComboBox, gedit_encodings_combo_box, GTK_TYPE_COMBO_BOX)
 
@@ -150,6 +145,16 @@ gedit_encodings_combo_box_class_init (GeditEncodingsComboBoxClass *klass)
 	object_class->dispose = gedit_encodings_combo_box_dispose;
 	object_class->constructed = gedit_encodings_combo_box_constructed;
 
+	/**
+	 * GeditEncodingsComboBox:save-mode:
+	 *
+	 * Whether the combo box should be used for saving a content. If
+	 * %FALSE, the combo box is used for loading a content (e.g. a file)
+	 * and the row "Automatically Detected" is added.
+	 */
+	/* TODO It'd be clearer if "save-mode" is renamed as "mode" with an
+	 * enum: loading, saving. Or something like that.
+	 */
 	g_object_class_install_property (object_class,
 					 PROP_SAVE_MODE,
 					 g_param_spec_boolean ("save-mode",
@@ -173,69 +178,75 @@ dialog_response_cb (GtkDialog              *dialog,
 }
 
 static void
-add_or_remove (GeditEncodingsComboBox *menu,
-	       GtkTreeModel           *model)
+configure_encodings (GeditEncodingsComboBox *menu)
+{
+	GtkWidget *dialog;
+
+	GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (menu));
+
+	if (!gtk_widget_is_toplevel (toplevel))
+	{
+		toplevel = NULL;
+	}
+
+	g_signal_handler_block (menu, menu->priv->changed_id);
+	gtk_combo_box_set_active (GTK_COMBO_BOX (menu),
+				  menu->priv->activated_item);
+	g_signal_handler_unblock (menu, menu->priv->changed_id);
+
+	dialog = gedit_encodings_dialog_new ();
+
+	if (toplevel != NULL)
+	{
+		GtkWindowGroup *wg;
+
+		gtk_window_set_transient_for (GTK_WINDOW (dialog),
+					      GTK_WINDOW (toplevel));
+
+		if (gtk_window_has_group (GTK_WINDOW (toplevel)))
+		{
+			wg = gtk_window_get_group (GTK_WINDOW (toplevel));
+		}
+		else
+		{
+			wg = gtk_window_group_new ();
+			gtk_window_group_add_window (wg, GTK_WINDOW (toplevel));
+		}
+
+		gtk_window_group_add_window (wg, GTK_WINDOW (dialog));
+	}
+
+	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+
+	g_signal_connect (dialog,
+			  "response",
+			  G_CALLBACK (dialog_response_cb),
+			  menu);
+
+	gtk_widget_show (dialog);
+}
+
+static void
+changed_cb (GeditEncodingsComboBox *menu,
+	    GtkTreeModel           *model)
 {
 	GtkTreeIter iter;
-	gboolean add_item = FALSE;
+	gboolean configure = FALSE;
 
 	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
 	{
 		gtk_tree_model_get (model, &iter,
-				    COLUMN_ADD, &add_item,
+				    COLUMN_ADD, &configure,
 				    -1);
 	}
 
-	if (!add_item)
+	if (configure)
 	{
-		menu->priv->activated_item = gtk_combo_box_get_active (GTK_COMBO_BOX (menu));
+		configure_encodings (menu);
 	}
 	else
 	{
-		GtkWidget *dialog;
-
-		GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (menu));
-
-		if (!gtk_widget_is_toplevel (toplevel))
-			toplevel = NULL;
-
-		g_signal_handler_block (menu, menu->priv->changed_id);
-		gtk_combo_box_set_active (GTK_COMBO_BOX (menu),
-					  menu->priv->activated_item);
-		g_signal_handler_unblock (menu, menu->priv->changed_id);
-
-		dialog = gedit_encodings_dialog_new();
-
-		if (toplevel != NULL)
-		{
-			GtkWindowGroup *wg;
-
-			gtk_window_set_transient_for (GTK_WINDOW (dialog),
-						      GTK_WINDOW (toplevel));
-
-			if (gtk_window_has_group (GTK_WINDOW (toplevel)))
-			{
-				wg = gtk_window_get_group (GTK_WINDOW (toplevel));
-			}
-			else
-			{
-				wg = gtk_window_group_new ();
-				gtk_window_group_add_window (wg,
-							     GTK_WINDOW (toplevel));
-			}
-
-			gtk_window_group_add_window (wg,
-						     GTK_WINDOW (dialog));
-		}
-
-		gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
-
-		g_signal_connect (dialog,
-				  "response",
-				  G_CALLBACK (dialog_response_cb),
-				  menu);
-
-		gtk_widget_show (dialog);
+		menu->priv->activated_item = gtk_combo_box_get_active (GTK_COMBO_BOX (menu));
 	}
 }
 
@@ -248,10 +259,23 @@ separator_func (GtkTreeModel *model,
 	gboolean ret;
 
 	gtk_tree_model_get (model, iter, COLUMN_NAME, &str, -1);
-	ret = (str == NULL || *str == '\0');
+	ret = (str == NULL || str[0] == '\0');
 	g_free (str);
 
 	return ret;
+}
+
+static void
+add_separator (GtkListStore *store)
+{
+	GtkTreeIter iter;
+
+	gtk_list_store_append (store, &iter);
+	gtk_list_store_set (store, &iter,
+			    COLUMN_NAME, "",
+			    COLUMN_ENCODING, NULL,
+			    COLUMN_ADD, FALSE,
+			    -1);
 }
 
 static void
@@ -270,11 +294,7 @@ update_menu (GeditEncodingsComboBox *menu)
 	/* Unset the previous model */
 	g_signal_handler_block (menu, menu->priv->changed_id);
 	gtk_list_store_clear (store);
-	gtk_combo_box_set_model (GTK_COMBO_BOX (menu),
-				 NULL);
-
-	utf8_encoding = gtk_source_encoding_get_utf8 ();
-	current_encoding = gtk_source_encoding_get_current ();
+	gtk_combo_box_set_model (GTK_COMBO_BOX (menu), NULL);
 
 	if (!menu->priv->save_mode)
 	{
@@ -285,15 +305,13 @@ update_menu (GeditEncodingsComboBox *menu)
 				    COLUMN_ADD, FALSE,
 				    -1);
 
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter,
-				    COLUMN_NAME, "",
-				    COLUMN_ENCODING, NULL,
-				    COLUMN_ADD, FALSE,
-				    -1);
+		add_separator (store);
 	}
 
-	if (current_encoding != utf8_encoding)
+	utf8_encoding = gtk_source_encoding_get_utf8 ();
+	current_encoding = gtk_source_encoding_get_current ();
+
+	if (utf8_encoding != current_encoding)
 	{
 		str = gtk_source_encoding_to_string (utf8_encoding);
 	}
@@ -312,8 +330,8 @@ update_menu (GeditEncodingsComboBox *menu)
 
 	g_free (str);
 
-	if ((utf8_encoding != current_encoding) &&
-	    (current_encoding != NULL))
+	if (current_encoding != utf8_encoding &&
+	    current_encoding != NULL)
 	{
 		str = g_strdup_printf (_("Current Locale (%s)"),
 				       gtk_source_encoding_get_charset (current_encoding));
@@ -338,9 +356,9 @@ update_menu (GeditEncodingsComboBox *menu)
 	{
 		const GtkSourceEncoding *enc = l->data;
 
-		if ((enc != current_encoding) &&
-		    (enc != utf8_encoding) &&
-		    (enc != NULL))
+		if (enc != current_encoding &&
+		    enc != utf8_encoding &&
+		    enc != NULL)
 		{
 			str = gtk_source_encoding_to_string (enc);
 
@@ -357,13 +375,7 @@ update_menu (GeditEncodingsComboBox *menu)
 
 	g_slist_free (encodings);
 
-	gtk_list_store_append (store, &iter);
-	/* separator */
-	gtk_list_store_set (store, &iter,
-			    COLUMN_NAME, "",
-			    COLUMN_ENCODING, NULL,
-			    COLUMN_ADD, FALSE,
-			    -1);
+	add_separator (store);
 
 	gtk_list_store_append (store, &iter);
 	gtk_list_store_set (store, &iter,
@@ -396,11 +408,23 @@ gedit_encodings_combo_box_init (GeditEncodingsComboBox *menu)
 					      separator_func, NULL,
 					      NULL);
 
-	menu->priv->changed_id = g_signal_connect (menu, "changed",
-						   G_CALLBACK (add_or_remove),
+	menu->priv->changed_id = g_signal_connect (menu,
+						   "changed",
+						   G_CALLBACK (changed_cb),
 						   menu->priv->store);
 }
 
+/**
+ * gedit_encodings_combo_box_new:
+ * @save_mode: whether the combo box is used for saving a content.
+ *
+ * Creates a new encodings combo box object. If @save_mode is %FALSE, it means
+ * that the combo box is used for loading a content (e.g. a file), so the row
+ * "Automatically Detected" is added. For saving a content, the encoding must be
+ * provided.
+ *
+ * Returns: a new #GeditEncodingsComboBox object.
+ */
 GtkWidget *
 gedit_encodings_combo_box_new (gboolean save_mode)
 {
@@ -409,6 +433,12 @@ gedit_encodings_combo_box_new (gboolean save_mode)
 			     NULL);
 }
 
+/**
+ * gedit_encodings_combo_box_get_selected_encoding:
+ * @menu: a #GeditEncodingsComboBox.
+ *
+ * Returns: the selected #GtkSourceEncoding.
+ */
 const GtkSourceEncoding *
 gedit_encodings_combo_box_get_selected_encoding (GeditEncodingsComboBox *menu)
 {
@@ -435,9 +465,11 @@ gedit_encodings_combo_box_get_selected_encoding (GeditEncodingsComboBox *menu)
 
 /**
  * gedit_encodings_combo_box_set_selected_encoding:
- * @menu:
- * @encoding: (allow-none):
- **/
+ * @menu: a #GeditEncodingsComboBox.
+ * @encoding: the #GtkSourceEncoding.
+ *
+ * Sets the selected encoding.
+ */
 void
 gedit_encodings_combo_box_set_selected_encoding (GeditEncodingsComboBox  *menu,
 						 const GtkSourceEncoding *encoding)
@@ -445,8 +477,8 @@ gedit_encodings_combo_box_set_selected_encoding (GeditEncodingsComboBox  *menu,
 	GtkTreeIter iter;
 	GtkTreeModel *model;
 	gboolean b;
+
 	g_return_if_fail (GEDIT_IS_ENCODINGS_COMBO_BOX (menu));
-	g_return_if_fail (GTK_IS_COMBO_BOX (menu));
 
 	model = gtk_combo_box_get_model (GTK_COMBO_BOX (menu));
 	b = gtk_tree_model_get_iter_first (model, &iter);
@@ -461,9 +493,7 @@ gedit_encodings_combo_box_set_selected_encoding (GeditEncodingsComboBox  *menu,
 
 		if (enc == encoding)
 		{
-			gtk_combo_box_set_active_iter (GTK_COMBO_BOX (menu),
-						       &iter);
-
+			gtk_combo_box_set_active_iter (GTK_COMBO_BOX (menu), &iter);
 			return;
 		}
 
