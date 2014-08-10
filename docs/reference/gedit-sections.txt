@@ -39,6 +39,15 @@ gedit_app_activatable_get_type
 </SECTION>
 
 <SECTION>
+<FILE>gedit-commands</FILE>
+<TITLE>GeditCommands</TITLE>
+gedit_commands_load_location
+gedit_commands_load_locations
+gedit_commands_save_document
+gedit_commands_save_all_documents
+</SECTION>
+
+<SECTION>
 <FILE>gedit-document</FILE>
 GeditDocumentPrivate
 <TITLE>GeditDocument</TITLE>
@@ -100,6 +109,7 @@ GEDIT_ENCODINGS_COMBO_BOX_GET_CLASS
 <TITLE>GeditMessageBus</TITLE>
 GeditMessageBus
 GeditMessageCallback
+GeditMessageBusForeach
 gedit_message_bus_get_default
 gedit_message_bus_new
 gedit_message_bus_lookup
@@ -121,12 +131,14 @@ gedit_message_bus_send
 gedit_message_bus_send_sync
 <SUBSECTION Standard>
 GEDIT_MESSAGE_BUS
+GEDIT_MESSAGE_BUS_CONST
 GEDIT_IS_MESSAGE_BUS
 GEDIT_TYPE_MESSAGE_BUS
 gedit_message_bus_get_type
 GEDIT_MESSAGE_BUS_CLASS
 GEDIT_IS_MESSAGE_BUS_CLASS
 GEDIT_MESSAGE_BUS_GET_CLASS
+GeditMessageBusPrivate
 </SECTION>
 
 <SECTION>
@@ -135,14 +147,21 @@ GEDIT_MESSAGE_BUS_GET_CLASS
 GeditMessage
 gedit_message_get_object_path
 gedit_message_get_method
+gedit_message_type_has
+gedit_message_type_check
+gedit_message_has
+gedit_message_is_valid_object_path
+gedit_message_type_identifier
 <SUBSECTION Standard>
 GEDIT_MESSAGE
+GEDIT_MESSAGE_CONST
 GEDIT_IS_MESSAGE
 GEDIT_TYPE_MESSAGE
 gedit_message_get_type
 GEDIT_MESSAGE_CLASS
 GEDIT_IS_MESSAGE_CLASS
 GEDIT_MESSAGE_GET_CLASS
+GeditMessagePrivate
 </SECTION>
 
 <SECTION>
@@ -174,7 +193,6 @@ GeditStatusbar
 gedit_statusbar_new
 gedit_statusbar_set_window_state
 gedit_statusbar_set_overwrite
-gedit_statusbar_set_cursor_position
 gedit_statusbar_clear_overwrite
 gedit_statusbar_flash_message
 <SUBSECTION Standard>

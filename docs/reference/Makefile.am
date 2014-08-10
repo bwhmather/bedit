@@ -46,17 +46,21 @@ IGNORE_HFILES =					\
 	gedit-multi-notebook.h			\
 	gedit-notebook.h			\
 	gedit-notebook-popup-menu.h		\
+	gedit-notebook-stack-switcher.h		\
+	gedit-open-document-selector.h		\
 	gedit-open-menu-button.h		\
 	gedit-plugins-engine.h			\
 	gedit-preferences-dialog.h		\
 	gedit-print-job.h			\
 	gedit-print-preview.h			\
+	gedit-recent.h				\
 	gedit-replace-dialog.h			\
 	gedit-settings.h			\
 	gedit-small-button.h			\
 	gedit-status-menu-button.h		\
 	gedit-tab-label.h			\
 	gedit-view-frame.h			\
+	gedit-view-holder.h			\
 	gedit-window-private.h
 
 # Images to copy into HTML directory.

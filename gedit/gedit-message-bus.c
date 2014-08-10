@@ -886,7 +886,7 @@ foreach_type (MessageIdentifier *identifier,
 
 /**
  * gedit_message_bus_foreach:
- * @bus: the #GeditMessagebus
+ * @bus: the #GeditMessageBus
  * @func: (scope call): the callback function
  * @user_data: the user data to supply to the callback function
  *

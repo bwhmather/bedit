@@ -149,8 +149,8 @@ void		 gedit_document_set_search_context
 						(GeditDocument          *doc,
 						 GtkSourceSearchContext *search_context);
 
-GtkSourceSearchContext
-		*gedit_document_get_search_context
+GtkSourceSearchContext *
+		 gedit_document_get_search_context
 						(GeditDocument       *doc);
 
 /* Non exported functions */
