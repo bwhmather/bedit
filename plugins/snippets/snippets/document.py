@@ -306,7 +306,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
         return self.goto_placeholder(current, prev)
 
     def string_in_native_doc_encoding(self, buf, s):
-        enc = buf.get_encoding()
+        enc = buf.get_file().get_encoding()
 
         if not enc or enc.get_charset() == 'UTF-8':
             return s
