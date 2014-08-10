@@ -901,7 +901,11 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 
 	/* Set suggested encoding */
 	encoding = gtk_source_file_get_encoding (file);
-	g_return_if_fail (encoding != NULL);
+
+	if (encoding == NULL)
+	{
+		encoding = gtk_source_encoding_get_utf8 ();
+	}
 
 	newline_type = gtk_source_file_get_newline_type (file);
 

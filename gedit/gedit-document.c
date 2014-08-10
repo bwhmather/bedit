@@ -549,6 +549,12 @@ save_encoding_metadata (GeditDocument *doc)
 	gedit_debug (DEBUG_DOCUMENT);
 
 	encoding = gtk_source_file_get_encoding (doc->priv->file);
+
+	if (encoding == NULL)
+	{
+		encoding = gtk_source_encoding_get_utf8 ();
+	}
+
 	charset = gtk_source_encoding_get_charset (encoding);
 
 	gedit_document_set_metadata (doc,

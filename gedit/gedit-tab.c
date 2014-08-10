@@ -1520,9 +1520,11 @@ _gedit_tab_get_tooltip (GeditTab *tab)
 			enc = gtk_source_file_get_encoding (file);
 
 			if (enc == NULL)
-				encoding = g_strdup (_("Unicode (UTF-8)"));
-			else
-				encoding = gtk_source_encoding_to_string (enc);
+			{
+				enc = gtk_source_encoding_get_utf8 ();
+			}
+
+			encoding = gtk_source_encoding_to_string (enc);
 
 			tip =  g_markup_printf_escaped ("<b>%s</b> %s\n\n"
 						        "<b>%s</b> %s\n"
