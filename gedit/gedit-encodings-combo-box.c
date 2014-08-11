@@ -46,7 +46,7 @@ enum
 {
 	COLUMN_NAME,
 	COLUMN_ENCODING,
-	COLUMN_ADD,
+	COLUMN_CONFIGURE_ROW, /* TRUE for the "Add or Remove..." row. */
 	N_COLUMNS
 };
 
@@ -236,7 +236,7 @@ changed_cb (GeditEncodingsComboBox *menu,
 	if (gtk_combo_box_get_active_iter (GTK_COMBO_BOX (menu), &iter))
 	{
 		gtk_tree_model_get (model, &iter,
-				    COLUMN_ADD, &configure,
+				    COLUMN_CONFIGURE_ROW, &configure,
 				    -1);
 	}
 
@@ -274,7 +274,7 @@ add_separator (GtkListStore *store)
 	gtk_list_store_set (store, &iter,
 			    COLUMN_NAME, "",
 			    COLUMN_ENCODING, NULL,
-			    COLUMN_ADD, FALSE,
+			    COLUMN_CONFIGURE_ROW, FALSE,
 			    -1);
 }
 
@@ -302,7 +302,7 @@ update_menu (GeditEncodingsComboBox *menu)
 		gtk_list_store_set (store, &iter,
 				    COLUMN_NAME, _("Automatically Detected"),
 				    COLUMN_ENCODING, NULL,
-				    COLUMN_ADD, FALSE,
+				    COLUMN_CONFIGURE_ROW, FALSE,
 				    -1);
 
 		add_separator (store);
@@ -325,7 +325,7 @@ update_menu (GeditEncodingsComboBox *menu)
 	gtk_list_store_set (store, &iter,
 			    COLUMN_NAME, str,
 			    COLUMN_ENCODING, utf8_encoding,
-			    COLUMN_ADD, FALSE,
+			    COLUMN_CONFIGURE_ROW, FALSE,
 			    -1);
 
 	g_free (str);
@@ -340,7 +340,7 @@ update_menu (GeditEncodingsComboBox *menu)
 		gtk_list_store_set (store, &iter,
 				    COLUMN_NAME, str,
 				    COLUMN_ENCODING, current_encoding,
-				    COLUMN_ADD, FALSE,
+				    COLUMN_CONFIGURE_ROW, FALSE,
 				    -1);
 
 		g_free (str);
@@ -366,7 +366,7 @@ update_menu (GeditEncodingsComboBox *menu)
 			gtk_list_store_set (store, &iter,
 					    COLUMN_NAME, str,
 					    COLUMN_ENCODING, enc,
-					    COLUMN_ADD, FALSE,
+					    COLUMN_CONFIGURE_ROW, FALSE,
 					    -1);
 
 			g_free (str);
@@ -381,7 +381,7 @@ update_menu (GeditEncodingsComboBox *menu)
 	gtk_list_store_set (store, &iter,
 			    COLUMN_NAME, _("Add or Remove..."),
 			    COLUMN_ENCODING, NULL,
-			    COLUMN_ADD, TRUE,
+			    COLUMN_CONFIGURE_ROW, TRUE,
 			    -1);
 
 	/* set the model back */
