@@ -101,9 +101,8 @@ gedit_encodings_dialog_response (GtkDialog *dialog,
 			                     (const gchar * const *)enc_strv);
 
 			g_strfreev (enc_strv);
+			break;
 		}
-		default:
-			gtk_widget_destroy (GTK_WIDGET (dialog));
 	}
 }
 

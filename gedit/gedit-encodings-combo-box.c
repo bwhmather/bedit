@@ -175,6 +175,11 @@ dialog_response_cb (GtkDialog              *dialog,
 	{
 		update_menu (menu);
 	}
+
+	if (response_id != GTK_RESPONSE_HELP)
+	{
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+	}
 }
 
 static void
@@ -218,10 +223,10 @@ configure_encodings (GeditEncodingsComboBox *menu)
 
 	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
-	g_signal_connect (dialog,
-			  "response",
-			  G_CALLBACK (dialog_response_cb),
-			  menu);
+	g_signal_connect_after (dialog,
+				"response",
+				G_CALLBACK (dialog_response_cb),
+				menu);
 
 	gtk_widget_show (dialog);
 }
