@@ -133,25 +133,12 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 }
 
 static void
-count_selected_items_func (GtkTreeModel *model,
-			   GtkTreePath  *path,
-			   GtkTreeIter  *iter,
-			   gpointer      data)
-{
-	gint *count = data;
-	*count += 1;
-}
-
-static void
 available_selection_changed_cb (GtkTreeSelection     *selection,
 				GeditEncodingsDialog *dialogs)
 {
-	gint count = 0;
+	gint count;
 
-	/* TODO use gtk_tree_selection_count_selected_rows() instead. */
-	gtk_tree_selection_selected_foreach (selection,
-					     count_selected_items_func,
-					     &count);
+	count = gtk_tree_selection_count_selected_rows (selection);
 
 	gtk_widget_set_sensitive (dialogs->priv->add_button, count > 0);
 }
@@ -160,12 +147,9 @@ static void
 displayed_selection_changed_cb (GtkTreeSelection     *selection,
 				GeditEncodingsDialog *dialogs)
 {
-	gint count = 0;
+	gint count;
 
-	/* TODO use gtk_tree_selection_count_selected_rows() instead. */
-	gtk_tree_selection_selected_foreach (selection,
-					     count_selected_items_func,
-					     &count);
+	count = gtk_tree_selection_count_selected_rows (selection);
 
 	gtk_widget_set_sensitive (dialogs->priv->remove_button, count > 0);
 }
