@@ -174,6 +174,22 @@ get_selected_encodings_func (GtkTreeModel *model,
 	*list = g_slist_prepend (*list, (gpointer)enc);
 }
 
+/* Returns a list of GtkSourceEncoding's. */
+static GSList *
+get_selected_encodings (GtkTreeView *treeview)
+{
+	GtkTreeSelection *selection;
+	GSList *encodings = NULL;
+
+	selection = gtk_tree_view_get_selection (treeview);
+
+	gtk_tree_selection_selected_foreach (selection,
+					     get_selected_encodings_func,
+					     &encodings);
+
+	return encodings;
+}
+
 static void
 update_shown_in_menu_tree_model (GtkListStore *store,
 				 GSList       *list)
@@ -198,16 +214,10 @@ static void
 add_button_clicked_cb (GtkWidget            *button,
 		       GeditEncodingsDialog *dialog)
 {
-	GtkTreeSelection *selection;
 	GSList *encodings;
 	GSList *l;
 
-	selection = gtk_tree_view_get_selection (dialog->priv->treeview_available);
-
-	encodings = NULL;
-	gtk_tree_selection_selected_foreach (selection,
-					     get_selected_encodings_func,
-					     &encodings);
+	encodings = get_selected_encodings (dialog->priv->treeview_available);
 
 	for (l = encodings; l != NULL; l = l->next)
 	{
@@ -230,16 +240,10 @@ static void
 remove_button_clicked_cb (GtkWidget            *button,
 			  GeditEncodingsDialog *dialog)
 {
-	GtkTreeSelection *selection;
 	GSList *encodings;
 	GSList *l;
 
-	selection = gtk_tree_view_get_selection (dialog->priv->treeview_displayed);
-
-	encodings = NULL;
-	gtk_tree_selection_selected_foreach (selection,
-					     get_selected_encodings_func,
-					     &encodings);
+	encodings = get_selected_encodings (dialog->priv->treeview_displayed);
 
 	for (l = encodings; l != NULL; l = l->next)
 	{
