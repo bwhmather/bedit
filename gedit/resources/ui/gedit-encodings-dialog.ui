@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.8 -->
-  <object class="GtkListStore" id="available_liststore">
+  <object class="GtkListStore" id="liststore_available">
     <columns>
       <!-- column-name name -->
       <column type="gchararray"/>
@@ -9,7 +9,7 @@
       <column type="gchararray"/>
     </columns>
   </object>
-  <object class="GtkListStore" id="displayed_liststore">
+  <object class="GtkListStore" id="liststore_displayed">
     <columns>
       <!-- column-name name -->
       <column type="gchararray"/>
@@ -18,10 +18,10 @@
     </columns>
   </object>
   <object class="GtkTreeModelSort" id="sort_available">
-    <property name="model">available_liststore</property>
+    <property name="model">liststore_available</property>
   </object>
   <object class="GtkTreeModelSort" id="sort_displayed">
-    <property name="model">displayed_liststore</property>
+    <property name="model">liststore_displayed</property>
   </object>
   <template class="GeditEncodingsDialog" parent="GtkDialog">
     <property name="width_request">650</property>
@@ -133,7 +133,7 @@
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes">A_vailable encodings:</property>
                 <property name="use_underline">True</property>
-                <property name="mnemonic_widget">available_treeview</property>
+                <property name="mnemonic_widget">treeview_available</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -152,7 +152,7 @@
                 <property name="vexpand">True</property>
                 <property name="shadow_type">etched-in</property>
                 <child>
-                  <object class="GtkTreeView" id="available_treeview">
+                  <object class="GtkTreeView" id="treeview_available">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="has_focus">False</property>
@@ -246,7 +246,7 @@
                 <property name="is_focus">False</property>
                 <property name="shadow_type">etched-in</property>
                 <child>
-                  <object class="GtkTreeView" id="displayed_treeview">
+                  <object class="GtkTreeView" id="treeview_displayed">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="has_focus">False</property>
@@ -304,7 +304,7 @@
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes">E_ncodings shown in menu:</property>
                 <property name="use_underline">True</property>
-                <property name="mnemonic_widget">displayed_treeview</property>
+                <property name="mnemonic_widget">treeview_displayed</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
