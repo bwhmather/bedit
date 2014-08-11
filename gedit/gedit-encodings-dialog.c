@@ -191,19 +191,22 @@ get_selected_encodings (GtkTreeView *treeview)
 }
 
 static void
-update_shown_in_menu_tree_model (GtkListStore *store,
-				 GSList       *list)
+update_liststore_displayed (GeditEncodingsDialog *dialog)
 {
-	GtkTreeIter iter;
+	GSList *l;
 
-	gtk_list_store_clear (store);
+	gtk_list_store_clear (dialog->priv->liststore_displayed);
 
-	for (; list != NULL; list = list->next)
+	for (l = dialog->priv->show_in_menu_list; l != NULL; l = l->next)
 	{
-		const GtkSourceEncoding *enc = list->data;
+		const GtkSourceEncoding *enc = l->data;
+		GtkTreeIter iter;
 
-		gtk_list_store_append (store, &iter);
-		gtk_list_store_set (store, &iter,
+		gtk_list_store_append (dialog->priv->liststore_displayed,
+				       &iter);
+
+		gtk_list_store_set (dialog->priv->liststore_displayed,
+				    &iter,
 				    COLUMN_CHARSET, gtk_source_encoding_get_charset (enc),
 				    COLUMN_NAME, gtk_source_encoding_get_name (enc),
 				    -1);
@@ -232,8 +235,7 @@ add_button_clicked_cb (GtkWidget            *button,
 
 	g_slist_free (encodings);
 
-	update_shown_in_menu_tree_model (dialog->priv->liststore_displayed,
-					 dialog->priv->show_in_menu_list);
+	update_liststore_displayed (dialog);
 }
 
 static void
@@ -255,8 +257,7 @@ remove_button_clicked_cb (GtkWidget            *button,
 
 	g_slist_free (encodings);
 
-	update_shown_in_menu_tree_model (dialog->priv->liststore_displayed,
-					 dialog->priv->show_in_menu_list);
+	update_liststore_displayed (dialog);
 }
 
 static void
