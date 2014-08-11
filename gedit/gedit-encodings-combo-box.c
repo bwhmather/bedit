@@ -437,7 +437,8 @@ gedit_encodings_combo_box_new (gboolean save_mode)
  * gedit_encodings_combo_box_get_selected_encoding:
  * @menu: a #GeditEncodingsComboBox.
  *
- * Returns: the selected #GtkSourceEncoding.
+ * Returns: the selected #GtkSourceEncoding, or %NULL if the encoding should be
+ * auto-detected (only for loading mode, not for saving).
  */
 const GtkSourceEncoding *
 gedit_encodings_combo_box_get_selected_encoding (GeditEncodingsComboBox *menu)
