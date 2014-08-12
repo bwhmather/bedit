@@ -992,6 +992,42 @@ gedit_app_handle_local_options (GApplication *application,
 	return -1;
 }
 
+/* Note: when launched from command line we do not reach this method
+ * since we manually handle the command line parameters in order to
+ * parse +LINE:COL, stdin, etc.
+ * However this method is called when open() is called via dbus, for
+ * instance when double clicking on a file in nautilus
+ */
+static void
+gedit_app_open (GApplication  *application,
+                GFile        **files,
+                gint           n_files,
+                const gchar   *hint)
+{
+	gint i;
+	GSList *file_list = NULL;
+
+	for (i = 0; i < n_files; i++)
+	{
+		file_list = g_slist_prepend (file_list, files[i]);
+	}
+
+	file_list = g_slist_reverse (file_list);
+
+	open_files (application,
+	            FALSE,
+	            FALSE,
+	            NULL,
+	            0,
+	            0,
+	            NULL,
+	            NULL,
+	            file_list,
+	            NULL);
+
+	g_slist_free (file_list);
+}
+
 static gboolean
 ensure_user_config_dir (void)
 {
@@ -1186,6 +1222,7 @@ gedit_app_class_init (GeditAppClass *klass)
 	app_class->activate = gedit_app_activate;
 	app_class->command_line = gedit_app_command_line;
 	app_class->handle_local_options = gedit_app_handle_local_options;
+	app_class->open = gedit_app_open;
 	app_class->shutdown = gedit_app_shutdown;
 
 	klass->show_help = gedit_app_show_help_impl;
