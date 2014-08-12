@@ -301,12 +301,6 @@ init_liststore_available (GeditEncodingsDialog *dialog)
 		const GtkSourceEncoding *encoding = l->data;
 		GtkTreeIter iter;
 
-		if (encoding == gtk_source_encoding_get_utf8 ())
-		{
-			/* The UTF-8 encoding is always added to the combobox. */
-			continue;
-		}
-
 		gtk_list_store_append (dialog->priv->liststore_available, &iter);
 
 		gtk_list_store_set (dialog->priv->liststore_available,
