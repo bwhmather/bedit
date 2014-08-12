@@ -38,7 +38,6 @@ struct _GeditEncodingsDialogPrivate
 	GtkListStore *liststore_available;
 	GtkListStore *liststore_displayed;
 	GtkTreeModelSort *sort_available;
-	GtkTreeModelSort *sort_displayed;
 	GtkTreeView *treeview_available;
 	GtkTreeView *treeview_displayed;
 	GtkWidget *add_button;
@@ -124,7 +123,6 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, liststore_available);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, liststore_displayed);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, sort_available);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, sort_displayed);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, treeview_available);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, treeview_displayed);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, add_button);
@@ -366,11 +364,6 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 
 	/* Add the data */
 	init_shown_in_menu_tree_model (dlg);
-
-	/* Sort model */
-	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dlg->priv->sort_displayed),
-					      COLUMN_NAME,
-					      GTK_SORT_ASCENDING);
 
 	selection = gtk_tree_view_get_selection (dlg->priv->treeview_displayed);
 
