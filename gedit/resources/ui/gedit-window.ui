@@ -34,21 +34,9 @@
               <class name="titlebar"/>
             </style>
             <child>
-              <object class="GtkButton" id="new_button">
-                <property name="label" translatable="yes">New</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="receives_default">False</property>
-                <property name="tooltip_text" translatable="yes">Create a new document</property>
-                <property name="valign">center</property>
-                <property name="action_name">win.new-tab</property>
-              </object>
-            </child>
-            <child>
               <object class="GtkMenuButton" id="open_button">
                 <property name="visible">True</property>
-                <property name="tooltip_text" translatable="yes">Open a file dialog</property>
+                <property name="tooltip_text" translatable="yes">Open a file</property>
                 <property name="valign">center</property>
                 <property name="use_popover">True</property>
                 <style>
@@ -77,10 +65,34 @@
                     </child>
                   </object>
                 </child>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="open_button_a11y">
+                    <property name="accessible-name" translatable="yes">Open</property>
+                    <property name="accessible-description" translatable="yes">Open a file</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="pack_type">start</property>
               </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="new_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="receives_default">False</property>
+                <property name="tooltip_text" translatable="yes">Create a new document</property>
+                <property name="valign">center</property>
+                <property name="action_name">win.new-tab</property>
+                <property name="image">new_tab_image</property>
+                <child internal-child="accessible">
+                  <object class="AtkObject" id="new_button_a11y">
+                    <property name="accessible-name" translatable="yes">New</property>
+                    <property name="accessible-description" translatable="yes">Create a new document</property>
+                  </object>
+                </child>
+              </object>
             </child>
             <child>
               <object class="GtkMenuButton" id="gear_button">
@@ -95,11 +107,11 @@
             </child>
             <child>
               <object class="GtkButton" id="save_button">
+                <property name="label" translatable="yes">Save</property>
                 <property name="visible">True</property>
                 <property name="valign">center</property>
                 <property name="tooltip_text" translatable="yes">Save the current file</property>
                 <property name="action_name">win.save</property>
-                <property name="image">save_image</property>
                 <child internal-child="accessible">
                   <object class="AtkObject" id="save_button_a11y">
                     <property name="accessible-name" translatable="yes">Save</property>
@@ -327,18 +339,6 @@
                   <object class="GtkHeaderBar" id="fullscreen_headerbar">
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkButton" id="fullscreen_new_button">
-                        <property name="label" translatable="yes">New</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="can_default">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="tooltip_text" translatable="yes">Create a new document</property>
-                        <property name="valign">center</property>
-                        <property name="action_name">win.new-tab</property>
-                      </object>
-                    </child>
-                    <child>
                       <object class="GtkMenuButton" id="fullscreen_open_button">
                         <property name="visible">True</property>
                         <property name="tooltip_text" translatable="yes">Open a file dialog</property>
@@ -368,10 +368,34 @@
                             </child>
                           </object>
                         </child>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="fullscreen_open_button_a11y">
+                            <property name="accessible-name" translatable="yes">Open</property>
+                            <property name="accessible-description" translatable="yes">Open a file</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="pack_type">start</property>
                       </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="fullscreen_new_button">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="can_default">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="tooltip_text" translatable="yes">Create a new document</property>
+                        <property name="valign">center</property>
+                        <property name="action_name">win.new-tab</property>
+                        <property name="image">fullscreen_new_tab_image</property>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="fullscreen_new_button_a11y">
+                            <property name="accessible-name" translatable="yes">New</property>
+                            <property name="accessible-description" translatable="yes">Create a new document</property>
+                          </object>
+                        </child>
+                      </object>
                     </child>
                     <child>
                       <object class="GtkButton" id="leave_fullscreen_button">
@@ -380,6 +404,12 @@
                         <property name="tooltip_text" translatable="yes">Leave Fullscreen</property>
                         <property name="action_name">win.leave-fullscreen</property>
                         <property name="image">leave_fullscreen_image</property>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="leave_fullscreen_button_a11y">
+                            <property name="accessible-name" translatable="yes">Leave Fullscreen</property>
+                            <property name="accessible-description" translatable="yes">Leave Fullscreen</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="pack_type">end</property>
@@ -397,11 +427,17 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="fullscreen_save_button">
+                        <property name="label" translatable="yes">Save</property>
                         <property name="visible">True</property>
                         <property name="valign">center</property>
                         <property name="tooltip_text" translatable="yes">Save the current file</property>
                         <property name="action_name">win.save</property>
-                        <property name="image">fullscreen_save_image</property>
+                        <child internal-child="accessible">
+                          <object class="AtkObject" id="fullscreen_save_button_a11y">
+                            <property name="accessible-name" translatable="yes">Save</property>
+                            <property name="accessible-description" translatable="yes">Save the current file</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="pack_type">end</property>
@@ -416,17 +452,17 @@
       </object>
     </child>
   </template>
-  <object class="GtkImage" id="save_image">
+  <object class="GtkImage" id="new_tab_image">
     <property name="visible">True</property>
-    <property name="icon_name">document-save-symbolic</property>
+    <property name="icon_name">tab-new-symbolic</property>
   </object>
   <object class="GtkImage" id="menu_image">
     <property name="visible">True</property>
     <property name="icon_name">open-menu-symbolic</property>
   </object>
-  <object class="GtkImage" id="fullscreen_save_image">
+  <object class="GtkImage" id="fullscreen_new_tab_image">
     <property name="visible">True</property>
-    <property name="icon_name">document-save-symbolic</property>
+    <property name="icon_name">tab-new-symbolic</property>
   </object>
   <object class="GtkImage" id="fullscreen_menu_image">
     <property name="visible">True</property>
