@@ -158,7 +158,6 @@
                     <property name="has_focus">False</property>
                     <property name="is_focus">False</property>
                     <property name="model">sort_available</property>
-                    <property name="rules_hint">True</property>
                     <child internal-child="selection">
                       <object class="GtkTreeSelection" id="treeview_selection">
                         <property name="mode">multiple</property>
@@ -254,7 +253,6 @@
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="model">sort_displayed</property>
-                    <property name="rules_hint">True</property>
                     <child internal-child="selection">
                       <object class="GtkTreeSelection" id="treeview-selection1">
                         <property name="mode">multiple</property>
