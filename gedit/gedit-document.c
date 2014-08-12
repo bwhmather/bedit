@@ -1598,7 +1598,7 @@ gedit_document_set_metadata (GeditDocument *doc,
  *
  * Gets the metadata assigned to @key.
  *
- * Returns: the value assigned to @key.
+ * Returns: the value assigned to @key. Free with g_free().
  */
 gchar *
 gedit_document_get_metadata (GeditDocument *doc,
