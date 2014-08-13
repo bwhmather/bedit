@@ -1700,6 +1700,7 @@ load_cb (GtkSourceFileLoader *loader,
 {
 	GeditDocument *doc = gedit_tab_get_document (tab);
 	GFile *location = gtk_source_file_loader_get_location (loader);
+	gboolean create_named_new_doc;
 	GError *error = NULL;
 
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_LOADING ||
@@ -1739,10 +1740,12 @@ load_cb (GtkSourceFileLoader *loader,
 	}
 
 	/* Special case creating a named new doc. */
-	else if (_gedit_document_get_create (doc) &&
-	         error->domain == G_IO_ERROR &&
-		 error->code == G_IO_ERROR_NOT_FOUND &&
-	         g_file_has_uri_scheme (location, "file"))
+	create_named_new_doc = (_gedit_document_get_create (doc) &&
+				error->domain == G_IO_ERROR &&
+				error->code == G_IO_ERROR_NOT_FOUND &&
+				g_file_has_uri_scheme (location, "file"));
+
+	if (create_named_new_doc)
 	{
 		g_error_free (error);
 		error = NULL;
@@ -1807,7 +1810,10 @@ load_cb (GtkSourceFileLoader *loader,
 		goto end;
 	}
 
-	gedit_recent_add_document (doc);
+	if (!create_named_new_doc)
+	{
+		gedit_recent_add_document (doc);
+	}
 
 	if (error != NULL &&
 	    error->domain == GTK_SOURCE_FILE_LOADER_ERROR &&
