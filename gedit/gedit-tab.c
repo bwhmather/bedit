@@ -1919,6 +1919,8 @@ get_candidate_encodings (GeditTab *tab)
 	GSettings *enc_settings;
 	gchar **enc_strv;
 	gchar *metadata_charset;
+	GtkSourceFile *file;
+	const GtkSourceEncoding *file_encoding;
 	GSList *encodings;
 
 	enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
@@ -1940,12 +1942,19 @@ get_candidate_encodings (GeditTab *tab)
 		{
 			encodings = g_slist_prepend (encodings, (gpointer)metadata_enc);
 		}
-
-		g_free (metadata_charset);
 	}
 
-	g_strfreev (enc_strv);
+	file = gedit_document_get_file (doc);
+	file_encoding = gtk_source_file_get_encoding (file);
+
+	if (file_encoding != NULL)
+	{
+		encodings = g_slist_prepend (encodings, (gpointer)file_encoding);
+	}
+
 	g_object_unref (enc_settings);
+	g_strfreev (enc_strv);
+	g_free (metadata_charset);
 
 	return encodings;
 }
