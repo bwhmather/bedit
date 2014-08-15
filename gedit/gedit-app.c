@@ -951,10 +951,20 @@ gedit_app_command_line (GApplication            *application,
 }
 
 static void
-encoding_foreach_cb (const GtkSourceEncoding *encoding,
-		     gpointer                 user_data)
+print_all_encodings (void)
 {
-	g_print ("%s\n", gtk_source_encoding_get_charset (encoding));
+	GSList *all_encodings;
+	GSList *l;
+
+	all_encodings = gtk_source_encoding_get_all ();
+
+	for (l = all_encodings; l != NULL; l = l->next)
+	{
+		const GtkSourceEncoding *encoding = l->data;
+		g_print ("%s\n", gtk_source_encoding_get_charset (encoding));
+	}
+
+	g_slist_free (all_encodings);
 }
 
 static gint
@@ -969,7 +979,7 @@ gedit_app_handle_local_options (GApplication *application,
 
 	if (g_variant_dict_contains (options, "list-encodings"))
 	{
-		gtk_source_encoding_foreach (encoding_foreach_cb, NULL);
+		print_all_encodings ();
 		return 0;
 	}
 

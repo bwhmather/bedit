@@ -291,24 +291,34 @@ init_shown_in_menu_tree_model (GeditEncodingsDialog *dialog)
 }
 
 static void
-insert_encoding_foreach_cb (const GtkSourceEncoding *encoding,
-			    GeditEncodingsDialog    *dlg)
+init_liststore_available (GeditEncodingsDialog *dialog)
 {
-	GtkTreeIter iter;
+	GSList *all_encodings;
+	GSList *l;
 
-	if (encoding == gtk_source_encoding_get_utf8 ())
+	all_encodings = gtk_source_encoding_get_all ();
+
+	for (l = all_encodings; l != NULL; l = l->next)
 	{
-		/* The UTF-8 encoding is always added to the combobox. */
-		return;
+		const GtkSourceEncoding *encoding = l->data;
+		GtkTreeIter iter;
+
+		if (encoding == gtk_source_encoding_get_utf8 ())
+		{
+			/* The UTF-8 encoding is always added to the combobox. */
+			continue;
+		}
+
+		gtk_list_store_append (dialog->priv->liststore_available, &iter);
+
+		gtk_list_store_set (dialog->priv->liststore_available,
+				    &iter,
+				    COLUMN_CHARSET, gtk_source_encoding_get_charset (encoding),
+				    COLUMN_NAME, gtk_source_encoding_get_name (encoding),
+				    -1);
 	}
 
-	gtk_list_store_append (dlg->priv->liststore_available, &iter);
-
-	gtk_list_store_set (dlg->priv->liststore_available,
-			    &iter,
-			    COLUMN_CHARSET, gtk_source_encoding_get_charset (encoding),
-			    COLUMN_NAME, gtk_source_encoding_get_name (encoding),
-			    -1);
+	g_slist_free (all_encodings);
 }
 
 static void
@@ -337,8 +347,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 	/* Tree view of available encodings */
 
 	/* Add the data */
-	gtk_source_encoding_foreach ((GtkSourceEncodingForeachFunc) insert_encoding_foreach_cb,
-				     dlg);
+	init_liststore_available (dlg);
 
 	/* Sort model */
 	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dlg->priv->sort_available),
