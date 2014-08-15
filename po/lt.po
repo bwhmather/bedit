@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-07-25 18:52+0000\n"
-"PO-Revision-Date: 2014-07-25 23:23+0300\n"
+"POT-Creation-Date: 2014-08-15 17:10+0000\n"
+"PO-Revision-Date: 2014-08-15 23:23+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -28,7 +28,7 @@ msgstr ""
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 2.91.6\n"
 
-#: ../data/gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -38,7 +38,7 @@ msgstr ""
 "siekia būti paprastu ir lengvai naudojama, gedit yra galingas bendrosios "
 "paskirties teksto redaktorius."
 
-#: ../data/gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -48,7 +48,7 @@ msgstr ""
 "programą ar paprasčiausiai rašote paprasčiausius užrašus, gedit bus "
 "patikimas įrankis užduočiai atlikti."
 
-#: ../data/gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -128,13 +128,11 @@ msgid "Create Backup Copies"
 msgstr "Kurti atsargines kopijas"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:9
-msgid ""
-"Whether gedit should create backup copies for the files it saves. You can "
-"set the backup file extension with the \"Backup Copy Extension\" option."
-msgstr ""
-"Ar gedit turėtų kurti įrašomų failų atsargines kopijas. Atsarginės failo "
-"kopijos plėtinį galima nustatyti naudojant „Atsarginės kopijos plėtinys“ "
-"parinktį."
+#| msgid ""
+#| "Whether gedit should restore the previous cursor position when a file is "
+#| "loaded."
+msgid "Whether gedit should create backup copies for the files it saves."
+msgstr "Ar gedit įkėlus failą turėtų sukurti įrašomų failų atsargines kopijas."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
@@ -587,7 +585,7 @@ msgstr "[FAILAS...] [+EILUTĖ[:STULPELIS]]"
 msgid "There was an error displaying the help."
 msgstr "Įvyko klaida rodant žinyną."
 
-#: ../gedit/gedit-app.c:934
+#: ../gedit/gedit-app.c:903
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: netinkama koduotė."
@@ -607,31 +605,34 @@ msgstr "Uždaryti _neišsaugant"
 #: ../gedit/gedit-close-confirmation-dialog.c:321
 #: ../gedit/gedit-commands-file.c:439 ../gedit/gedit-commands-file.c:568
 #: ../gedit/gedit-commands-file.c:637 ../gedit/gedit-commands-file.c:847
-#: ../gedit/gedit-commands-file.c:1295 ../gedit/gedit-encodings-dialog.ui.h:3
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:2
-#: ../gedit/gedit-io-error-info-bar.c:134
+#: ../gedit/gedit-commands-file.c:1299 ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:515
 #: ../gedit/gedit-io-error-info-bar.c:1191
 #: ../gedit/gedit-preferences-dialog.c:855
 #: ../gedit/gedit-progress-info-bar.c:51
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
+#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
 #: ../plugins/quickopen/quickopen/popup.py:37
 #: ../plugins/snippets/snippets/manager.py:781
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
-#: ../plugins/sort/gedit-sort-plugin.ui.h:2
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:2
 #: ../plugins/spell/gedit-spell-language-dialog.c:124
-#: ../plugins/spell/languages-dialog.ui.h:3
-#: ../plugins/time/gedit-time-dialog.ui.h:8
+#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:347 ../gedit/gedit-menu.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:347
+#: ../gedit/resources/gtk/menus-traditional.ui.h:4
+#: ../gedit/resources/gtk/menus.ui.h:9
 msgid "_Save As…"
 msgstr "Įrašyti _taip…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:347
 #: ../gedit/gedit-commands-file.c:848
+#: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
@@ -796,13 +797,14 @@ msgstr[1] "Įkeliama %d failai…"
 msgstr[2] "Įkeliama %d failų…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:435 ../gedit/gedit-window.ui.h:5
+#: ../gedit/gedit-commands-file.c:435
+#: ../gedit/resources/ui/gedit-window.ui.h:4
 msgid "Open"
 msgstr "Atverti"
 
-#. ex:set ts=8 noet:
 #: ../gedit/gedit-commands-file.c:440
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:1
+#: ../gedit/resources/ui/gedit-window.ui.h:3
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:38
 #: ../plugins/snippets/snippets/manager.py:782
 msgid "_Open"
@@ -817,7 +819,8 @@ msgstr "Failas „%s“ yra tik skaitymui."
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Ar norite jį pakeisti tuo, kurį dabar norite įrašyti?"
 
-#: ../gedit/gedit-commands-file.c:569 ../gedit/gedit-replace-dialog.ui.h:4
+#: ../gedit/gedit-commands-file.c:569
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "_Pakeisti"
 
@@ -855,7 +858,7 @@ msgstr ""
 msgid "_Save As Plain Text"
 msgstr "Į_rašyti kaip grynąjį tekstą"
 
-#: ../gedit/gedit-commands-file.c:738 ../gedit/gedit-commands-file.c:954
+#: ../gedit/gedit-commands-file.c:738 ../gedit/gedit-commands-file.c:958
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Rašomas failas „%s“…"
@@ -864,17 +867,17 @@ msgstr "Rašomas failas „%s“…"
 msgid "Save As"
 msgstr "Įrašyti kaip"
 
-#: ../gedit/gedit-commands-file.c:1158
+#: ../gedit/gedit-commands-file.c:1162
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Atkuriamas dokumentas „%s“…"
 
-#: ../gedit/gedit-commands-file.c:1203
+#: ../gedit/gedit-commands-file.c:1207
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Atkurti neįrašytus pakeitimus dokumente „%s“?"
 
-#: ../gedit/gedit-commands-file.c:1212
+#: ../gedit/gedit-commands-file.c:1216
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -885,12 +888,12 @@ msgstr[0] "Pakeitimai, atlikti per paskutinę %ld sekundę, bus prarasti."
 msgstr[1] "Pakeitimai, atlikti per paskutines %ld sekundes, bus prarasti."
 msgstr[2] "Pakeitimai, atlikti per paskutines %ld sekundžių, bus prarasti."
 
-#: ../gedit/gedit-commands-file.c:1221
+#: ../gedit/gedit-commands-file.c:1225
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "Pakeitimai, atlikti per paskutinę minutę, bus prarasti."
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1231
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -905,7 +908,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Pakeitimai, atlikti per paskutinę minutę ir %ld sekundžių, bus prarasti."
 
-#: ../gedit/gedit-commands-file.c:1237
+#: ../gedit/gedit-commands-file.c:1241
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -916,11 +919,11 @@ msgstr[0] "Pakeitimai, atlikti per paskutinę %ld minutę, bus prarasti."
 msgstr[1] "Pakeitimai, atlikti per paskutines %ld minutes, bus prarasti."
 msgstr[2] "Pakeitimai, atlikti per paskutines %ld minučių, bus prarasti."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1256
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Pakeitimai, atlikti per paskutinę valandą, bus prarasti."
 
-#: ../gedit/gedit-commands-file.c:1258
+#: ../gedit/gedit-commands-file.c:1262
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -935,7 +938,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Pakeitimai, atlikti per paskutinę valandą ir %d minučių, bus prarasti."
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1277
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -945,7 +948,7 @@ msgstr[0] "Pakeitimai, atlikti per paskutinę %d valandą, bus prarasti."
 msgstr[1] "Pakeitimai, atlikti per paskutines %d valandas, bus prarasti."
 msgstr[2] "Pakeitimai, atlikti per paskutines %d valandų, bus prarasti."
 
-#: ../gedit/gedit-commands-file.c:1296
+#: ../gedit/gedit-commands-file.c:1300
 msgid "_Revert"
 msgstr "A_tstatyti"
 
@@ -983,7 +986,7 @@ msgstr "Rastas ir pakeistas vienas pasitaikymas"
 msgid "\"%s\" not found"
 msgstr "„%s“ nerasta"
 
-#: ../gedit/gedit-document.c:947 ../gedit/gedit-document.c:977
+#: ../gedit/gedit-document.c:953 ../gedit/gedit-document.c:983
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Neįrašytas dokumentas %d"
@@ -993,84 +996,24 @@ msgstr "Neįrašytas dokumentas %d"
 msgid "Tab Group %i"
 msgstr "Kortelių grupę %i"
 
-#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1072
-#: ../gedit/gedit-window.c:1078 ../gedit/gedit-window.c:1086
+#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1084
+#: ../gedit/gedit-window.c:1090 ../gedit/gedit-window.c:1098
 msgid "Read-Only"
 msgstr "Tik skaitymui"
 
-#: ../gedit/gedit-encodings-combo-box.c:283
+#: ../gedit/gedit-encodings-combo-box.c:308
 msgid "Automatically Detected"
 msgstr "Automatiškai nustatyta"
 
-#: ../gedit/gedit-encodings-combo-box.c:302
-#: ../gedit/gedit-encodings-combo-box.c:318
+#: ../gedit/gedit-encodings-combo-box.c:325
+#: ../gedit/gedit-encodings-combo-box.c:341
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Esama lokalė (%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:370
+#: ../gedit/gedit-encodings-combo-box.c:387
 msgid "Add or Remove..."
 msgstr "Pridėti arba pašalinti..."
-
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-encodings-dialog.ui.h:1
-msgid "Character encodings"
-msgstr "Simbolių koduotės"
-
-#: ../gedit/gedit-encodings-dialog.ui.h:2 ../gedit/gedit-menu.ui.h:3
-#: ../plugins/sort/gedit-sort-plugin.ui.h:4
-#: ../plugins/spell/gedit-spell-language-dialog.c:126
-#: ../plugins/spell/languages-dialog.ui.h:2
-#: ../plugins/time/gedit-time-dialog.ui.h:7
-msgid "_Help"
-msgstr "_Žinynas"
-
-#: ../gedit/gedit-encodings-dialog.ui.h:4
-#: ../plugins/spell/gedit-spell-language-dialog.c:125
-#: ../plugins/spell/languages-dialog.ui.h:4
-msgid "_OK"
-msgstr "_Gerai"
-
-#: ../gedit/gedit-encodings-dialog.ui.h:5
-msgid "A_vailable encodings:"
-msgstr "E_samos koduotės"
-
-#: ../gedit/gedit-encodings-dialog.ui.h:6
-msgid "_Description"
-msgstr "_Aprašymas"
-
-#: ../gedit/gedit-encodings-dialog.ui.h:7
-msgid "_Encoding"
-msgstr "_Koduotė"
-
-#. Add to Dictionary
-#: ../gedit/gedit-encodings-dialog.ui.h:8
-#: ../plugins/spell/gedit-automatic-spell-checker.c:506
-msgid "_Add"
-msgstr "_Pridėti"
-
-#: ../gedit/gedit-encodings-dialog.ui.h:9
-msgid "_Remove"
-msgstr "_Pašalinti"
-
-#: ../gedit/gedit-encodings-dialog.ui.h:10
-msgid "E_ncodings shown in menu:"
-msgstr "K_oduotės matomos meniu:"
-
-#: ../gedit/gedit-open-document-selector.c:596
-msgid "No results"
-msgstr "Nė rezultatų"
-
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-open-document-selector.ui.h:1
-#| msgid "Documents"
-msgid "Other Documents…"
-msgstr "Kiti dokumentai…"
-
-#: ../gedit/gedit-open-document-selector.ui.h:2
-#| msgid "Open a file"
-msgid "Open another file"
-msgstr "Atverti kitą failą"
 
 #: ../gedit/gedit-file-chooser-dialog.c:38
 #: ../gedit/gedit-preferences-dialog.c:870
@@ -1101,27 +1044,13 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:1
-msgid "Highlight Mode"
-msgstr "Paryškinimo veiksena"
-
-#: ../gedit/gedit-highlight-mode-dialog.ui.h:3
-msgid "_Select"
-msgstr "_Pasirinkti"
-
-#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1156
+#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1168
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
 #: ../plugins/externaltools/tools/manager.py:767
 msgid "Plain Text"
 msgstr "Grynasis tekstas"
-
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-highlight-mode-selector.ui.h:1
-msgid "Search highlight mode..."
-msgstr "Paieškos paryškinimo veiksena..."
 
 #: ../gedit/gedit-io-error-info-bar.c:147
 #: ../gedit/gedit-io-error-info-bar.c:495
@@ -1444,7 +1373,9 @@ msgstr "Failas „%s“ pakeistas diske."
 msgid "Drop Changes and _Reload"
 msgstr "Panaikinti pakeitimus ir įkelti iš _naujo"
 
-#: ../gedit/gedit-io-error-info-bar.c:1186 ../gedit/gedit-menu.ui.h:6
+#: ../gedit/gedit-io-error-info-bar.c:1186
+#: ../gedit/resources/gtk/menus-traditional.ui.h:1
+#: ../gedit/resources/gtk/menus.ui.h:6
 msgid "_Reload"
 msgstr "_Atverti iš naujo"
 
@@ -1459,125 +1390,9 @@ msgid ""
 msgstr ""
 "Jei tęsite šio failo įrašymą, galite sugadinti dokumentą.  Vistiek įrašyti?"
 
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-menu.ui.h:1
-msgid "_New Window"
-msgstr "_Naujas langas"
-
-#: ../gedit/gedit-menu.ui.h:2
-msgid "_Preferences"
-msgstr "_Nustatymai"
-
-#: ../gedit/gedit-menu.ui.h:4
-msgid "_About"
-msgstr "_Apie"
-
-#: ../gedit/gedit-menu.ui.h:5
-msgid "_Quit"
-msgstr "Iš_eiti"
-
-#: ../gedit/gedit-menu.ui.h:7
-msgid "_Print…"
-msgstr "S_pausdinti…"
-
-#: ../gedit/gedit-menu.ui.h:8
-msgid "_Fullscreen"
-msgstr "_Visame ekrane"
-
-#: ../gedit/gedit-menu.ui.h:10
-msgid "Save _All"
-msgstr "Įrašyti _visus"
-
-#: ../gedit/gedit-menu.ui.h:11
-msgid "_Find…"
-msgstr "_Ieškoti…"
-
-#: ../gedit/gedit-menu.ui.h:12
-msgid "_Find and Replace…"
-msgstr "_Surasti ir pakeisti…"
-
-#: ../gedit/gedit-menu.ui.h:13
-msgid "_Clear Highlight"
-msgstr "Iš_valyti paryškinimą"
-
-#: ../gedit/gedit-menu.ui.h:14
-msgid "_Go to Line…"
-msgstr "Eiti į _eilutę…"
-
-#: ../gedit/gedit-menu.ui.h:15 ../gedit/gedit-preferences-dialog.ui.h:11
-msgid "View"
-msgstr "Rodyti"
-
-#: ../gedit/gedit-menu.ui.h:16
-msgid "Side _Panel"
-msgstr "Šoninis _polangis"
-
-#: ../gedit/gedit-menu.ui.h:17
-msgid "_Bottom Panel"
-msgstr "_Apatinis polangis"
-
-#: ../gedit/gedit-menu.ui.h:18
-msgid "_Highlight Mode…"
-msgstr "Pa_ryškinimo veiksena…"
-
-#: ../gedit/gedit-menu.ui.h:19
-#| msgid "Add Tool"
-msgid "Tools"
-msgstr "Įrankiai"
-
-#: ../gedit/gedit-menu.ui.h:20
-msgid "_Close All"
-msgstr "_Užverti visus"
-
-#: ../gedit/gedit-menu.ui.h:21 ../gedit/gedit-replace-dialog.ui.h:2
-#: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:2
-msgid "_Close"
-msgstr "_Užverti"
-
-#: ../gedit/gedit-menu.ui.h:22
-msgid "Move _Left"
-msgstr "Perkelti _kairėn"
-
-#: ../gedit/gedit-menu.ui.h:23
-msgid "Move _Right"
-msgstr "Perkelti _dešinėn"
-
-#: ../gedit/gedit-menu.ui.h:24
-msgid "Move to New _Window"
-msgstr "_Perkelti į naują langą"
-
-#: ../gedit/gedit-menu.ui.h:25
-msgid "Move to New Tab _Group"
-msgstr "Perkelti į _naują kortelių grupę"
-
-#: ../gedit/gedit-menu.ui.h:26
-msgid "Automatic Indentation"
-msgstr "Automatinis įtraukimas"
-
-#: ../gedit/gedit-menu.ui.h:27
-msgid "Use Spaces"
-msgstr "Naudoti tarpus"
-
-#: ../gedit/gedit-menu.ui.h:28
-#| msgid "_Display line numbers"
-msgid "Display line numbers"
-msgstr "Rodyti eilučių numerius"
-
-#: ../gedit/gedit-menu.ui.h:29
-#| msgid "Display Right Margin"
-msgid "Display right margin"
-msgstr "Rodyti dešinę paraštę"
-
-#: ../gedit/gedit-menu.ui.h:30
-#| msgid "Highlight current _line"
-msgid "Highlight current line"
-msgstr "Paryškinti dabartinę eilutę"
-
-#: ../gedit/gedit-menu.ui.h:31
-#| msgid "Text Wrapping"
-msgid "Text wrapping"
-msgstr "Teksto laužymas"
+#: ../gedit/gedit-open-document-selector.c:614
+msgid "No results"
+msgstr "Nė rezultatų"
 
 #: ../gedit/gedit-preferences-dialog.c:384
 msgid "Click on this button to select the font to be used by the editor"
@@ -1615,128 +1430,6 @@ msgstr "Spalvų schemos failai:"
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nepavyko pašalinti spalvų schemos „%s“."
 
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-preferences-dialog.ui.h:1
-msgid "Preferences"
-msgstr "Nustatymai"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:2 ../gedit/gedit-view.c:512
-msgid "_Display line numbers"
-msgstr "_Rodyti eilučių numerius"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:3
-msgid "Display right _margin at column:"
-msgstr "Rodyti dešinę _paraštę stulpelyje"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:4
-msgid "Display _statusbar"
-msgstr "Rodyti _būsenos juostą"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:5
-#: ../gedit/gedit-print-preferences.ui.h:9
-msgid "Text Wrapping"
-msgstr "Teksto laužymas"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:6
-#: ../gedit/gedit-print-preferences.ui.h:10
-msgid "Enable text _wrapping"
-msgstr "Įjungti teksto _laužymą"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:7
-#: ../gedit/gedit-print-preferences.ui.h:11
-msgid "Do not _split words over two lines"
-msgstr "Ne_laužyti žodžių per dvi eilutes"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:8
-msgid "Highlighting"
-msgstr "Paryškinimas"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:9
-msgid "Highlight current _line"
-msgstr "Paryškinti _esamą eilutę"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:10
-msgid "Highlight matching _brackets"
-msgstr "Paryškinti porinį _skliaustelį"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:12
-msgid "Tab Stops"
-msgstr "Tabuliacijos sustojimai"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:13
-msgid "_Tab width:"
-msgstr "_Tabuliacijos plotis:"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:14
-msgid "Insert _spaces instead of tabs"
-msgstr "Įterpti _tarpus vietoje tabuliacijos"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:15
-msgid "_Enable automatic indentation"
-msgstr "Įjungti _automatinį atitraukimą"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:16
-msgid "File Saving"
-msgstr "Failų įrašymas"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:17
-msgid "Create a _backup copy of files before saving"
-msgstr "Prieš įrašant sukurti atsarginę _failo kopiją"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:18
-msgid "_Autosave files every"
-msgstr "_Įrašyti failus kas"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:19
-msgid "_minutes"
-msgstr "_minučių"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:20
-msgid "Editor"
-msgstr "Redaktorius"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:21
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
-msgid "Font"
-msgstr "Šriftas"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:22
-msgid "Editor _font: "
-msgstr "Redaktoriaus šri_ftas:"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:23
-msgid "Pick the editor font"
-msgstr "Pasirinkite redaktoriaus šriftą"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:24
-msgid "Color Scheme"
-msgstr "Spalvų schema"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:25
-msgid "Install scheme"
-msgstr "Įdiegti schemą"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:26
-msgid "Install Scheme"
-msgstr "Įdiegti schemą"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:27
-msgid "Uninstall scheme"
-msgstr "Pašalinti schemą"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:28
-msgid "Uninstall Scheme"
-msgstr "Pašalinti schemą"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:29
-msgid "Font & Colors"
-msgstr "Šriftai ir spalvos"
-
-#: ../gedit/gedit-preferences-dialog.ui.h:30
-msgid "Plugins"
-msgstr "Įskiepiai"
-
 #: ../gedit/gedit-print-job.c:555
 #, c-format
 msgid "File: %s"
@@ -1750,195 +1443,21 @@ msgstr "%N puslapis iš %Q"
 msgid "Preparing..."
 msgstr "Ruošiama..."
 
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-print-preferences.ui.h:1
-msgid "Syntax Highlighting"
-msgstr "Sintaksės paryškinimas"
-
-#: ../gedit/gedit-print-preferences.ui.h:2
-msgid "Print synta_x highlighting"
-msgstr "Spausdinti s_intaksės paryškinimus"
-
-#: ../gedit/gedit-print-preferences.ui.h:3
-msgid "Line Numbers"
-msgstr "Eilučių numeriai"
-
-#: ../gedit/gedit-print-preferences.ui.h:4
-msgid "Print line nu_mbers"
-msgstr "Spausdinti e_ilučių numerius"
-
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: ../gedit/gedit-print-preferences.ui.h:6
-msgid "_Number every"
-msgstr "_Numeruoti kiekvieną"
-
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
-#: ../gedit/gedit-print-preferences.ui.h:8
-msgid "lines"
-msgstr "eilutės"
-
-#: ../gedit/gedit-print-preferences.ui.h:12
-msgid "Page header"
-msgstr "Puslapio antraštė"
-
-#: ../gedit/gedit-print-preferences.ui.h:13
-msgid "Print page _headers"
-msgstr "Spausdinti puslapių _antraštes"
-
-#: ../gedit/gedit-print-preferences.ui.h:14
-msgid "Fonts"
-msgstr "Šriftai"
-
-#: ../gedit/gedit-print-preferences.ui.h:15
-msgid "_Body:"
-msgstr "_Tekstas:"
-
-#: ../gedit/gedit-print-preferences.ui.h:16
-msgid "_Line numbers:"
-msgstr "_Eilučių numeriai:"
-
-#: ../gedit/gedit-print-preferences.ui.h:17
-msgid "He_aders and footers:"
-msgstr "Antr_aštės ir poraštės:"
-
-#: ../gedit/gedit-print-preferences.ui.h:18
-msgid "_Restore Default Fonts"
-msgstr "_Atstatyti numatytuosius šriftus "
-
 #: ../gedit/gedit-print-preview.c:604
 #, c-format
 msgid "Page %d of %d"
 msgstr "%d iš %d"
 
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-print-preview.ui.h:1
-msgid "Show the previous page"
-msgstr "Rodyti ankstesnį puslapį"
-
-#: ../gedit/gedit-print-preview.ui.h:2
-msgid "P_revious Page"
-msgstr "_Ankstesnė puslapis"
-
-#: ../gedit/gedit-print-preview.ui.h:3
-msgid "Show the next page"
-msgstr "Rodyti sekantį puslapį"
-
-#: ../gedit/gedit-print-preview.ui.h:4
-msgid "_Next Page"
-msgstr "_Kitas puslapis"
-
-#: ../gedit/gedit-print-preview.ui.h:5
-msgid "Current page (Alt+P)"
-msgstr "Esamas puslapis (Alt+P)"
-
-#. the "of" from "1 of 19" in print preview
-#: ../gedit/gedit-print-preview.ui.h:7
-msgid "of"
-msgstr "iš"
-
-#: ../gedit/gedit-print-preview.ui.h:8
-msgid "Page total"
-msgstr "Viso puslapių"
-
-#: ../gedit/gedit-print-preview.ui.h:9
-msgid "The total number of pages in the document"
-msgstr "Viso puslapių šiame dokumente"
-
-#: ../gedit/gedit-print-preview.ui.h:10
-msgid "Show multiple pages"
-msgstr "Rodyti keletą puslapių"
-
-#: ../gedit/gedit-print-preview.ui.h:11
-msgid "Zoom 1:1"
-msgstr "Mastelis 1:1"
-
-#: ../gedit/gedit-print-preview.ui.h:12
-msgid "Zoom to fit the whole page"
-msgstr "Pritraukti, kad tilptų visas puslapis"
-
-#: ../gedit/gedit-print-preview.ui.h:13
-msgid "Zoom the page in"
-msgstr "Pritraukti"
-
-#: ../gedit/gedit-print-preview.ui.h:14
-msgid "Zoom the page out"
-msgstr "Atitraukti"
-
-#: ../gedit/gedit-print-preview.ui.h:15
-msgid "Close print preview"
-msgstr "Užverti spaudinio peržiūrą"
-
-#: ../gedit/gedit-print-preview.ui.h:16
-msgid "_Close Preview"
-msgstr "_Užverti spaudinio peržiūrą"
-
-#: ../gedit/gedit-print-preview.ui.h:17
-msgid "Page Preview"
-msgstr "Puslapio peržiūra"
-
-#: ../gedit/gedit-print-preview.ui.h:18
-msgid "The preview of a page in the document to be printed"
-msgstr "Spausdintino dokumento puslapio peržiūra"
-
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-replace-dialog.ui.h:1
-msgid "Replace"
-msgstr "Pakeisti"
-
-#: ../gedit/gedit-replace-dialog.ui.h:3
-msgid "Replace _All"
-msgstr "Pakeisti _visus"
-
-#: ../gedit/gedit-replace-dialog.ui.h:5
-msgid "_Find"
-msgstr "_Rasti"
-
-#: ../gedit/gedit-replace-dialog.ui.h:6
-msgid "_Search for: "
-msgstr "_Ieškoti ko: "
-
-#: ../gedit/gedit-replace-dialog.ui.h:7
-msgid "Replace _with: "
-msgstr "Pa_keisti kuo: "
-
-#: ../gedit/gedit-replace-dialog.ui.h:8
-msgid "_Match case"
-msgstr "Skirti raidžių _dydį"
-
-#: ../gedit/gedit-replace-dialog.ui.h:9
-msgid "Match _entire word only"
-msgstr "Tenkina tik _visas žodis"
-
-#: ../gedit/gedit-replace-dialog.ui.h:10
-#| msgid "Match as _regular expression"
-msgid "Match as re_gular expression"
-msgstr "Atitikti re_guliarią išraišką"
-
-#: ../gedit/gedit-replace-dialog.ui.h:11
-msgid "Search _backwards"
-msgstr "Ieškoti _atgal"
-
-#: ../gedit/gedit-replace-dialog.ui.h:12
-msgid "_Wrap around"
-msgstr "_Priėjus pabaigą, ieškoti nuo pradžios"
-
 #. Use spaces to leave padding proportional to the font size
-#: ../gedit/gedit-statusbar.c:55 ../gedit/gedit-statusbar.c:61
+#: ../gedit/gedit-statusbar.c:54 ../gedit/gedit-statusbar.c:60
 msgid "OVR"
 msgstr "OVR"
 
-#: ../gedit/gedit-statusbar.c:55 ../gedit/gedit-statusbar.c:61
+#: ../gedit/gedit-statusbar.c:54 ../gedit/gedit-statusbar.c:60
 msgid "INS"
 msgstr "INS"
 
-#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
-#. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-statusbar.c:183
-#, c-format
-msgid "  Ln %d, Col %d"
-msgstr " Eil %d, Stl %d"
-
-#: ../gedit/gedit-statusbar.c:284
+#: ../gedit/gedit-statusbar.c:242
 #, c-format
 msgid "There is a tab with errors"
 msgid_plural "There are %d tabs with errors"
@@ -2002,26 +1521,17 @@ msgstr "Klaida atstatant failą %s"
 msgid "Error saving file %s"
 msgstr "Klaida įrašant failą %s"
 
-#: ../gedit/gedit-tab.c:1523
-msgid "Unicode (UTF-8)"
-msgstr "Unikodas (UTF-8)"
-
-#: ../gedit/gedit-tab.c:1530
+#: ../gedit/gedit-tab.c:1532
 msgid "Name:"
 msgstr "Vardas:"
 
-#: ../gedit/gedit-tab.c:1531
+#: ../gedit/gedit-tab.c:1533
 msgid "MIME Type:"
 msgstr "MIME tipas:"
 
-#: ../gedit/gedit-tab.c:1532
+#: ../gedit/gedit-tab.c:1534
 msgid "Encoding:"
 msgstr "Koduotė:"
-
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-tab-label.ui.h:1
-msgid "Close Document"
-msgstr "Užverti dokumentą"
 
 #: ../gedit/gedit-utils.c:846
 msgid "Please check your installation."
@@ -2043,101 +1553,600 @@ msgstr "Nepavyko rasti objekto „%s“ faile %s."
 msgid "/ on %s"
 msgstr "%s: /"
 
+#: ../gedit/gedit-view.c:512
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
+msgid "_Display line numbers"
+msgstr "_Rodyti eilučių numerius"
+
 #. Translators: the first %d is the position of the current search
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:718
+#: ../gedit/gedit-view-frame.c:733
 #, c-format
 msgid "%d of %d"
 msgstr "%d iš %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:810
+#: ../gedit/gedit-view-frame.c:825
 msgid "_Wrap Around"
 msgstr "_Apvesti"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:820
+#: ../gedit/gedit-view-frame.c:835
 msgid "Match as _Regular Expression"
 msgstr "Tenkina kaip _reguliari išraiška"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:834
+#: ../gedit/gedit-view-frame.c:849
 msgid "Match _Entire Word Only"
 msgstr "Tenkina tik _visas žodis"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:848
+#: ../gedit/gedit-view-frame.c:863
 msgid "_Match Case"
 msgstr "Skirti raidžių _dydį"
 
-#: ../gedit/gedit-view-frame.c:1022
+#: ../gedit/gedit-view-frame.c:1037
 msgid "String you want to search for"
 msgstr "Jūsų norimas rasti užrašas"
 
-#: ../gedit/gedit-view-frame.c:1034
+#: ../gedit/gedit-view-frame.c:1049
 msgid "Line you want to move the cursor to"
 msgstr "Eilutė į kurią norite perkelti žymeklį"
 
-#: ../gedit/gedit-window.c:925
+#: ../gedit/gedit-window.c:930
 msgid "Bracket match is out of range"
 msgstr "Porinis skliaustas yra už ribų"
 
-#: ../gedit/gedit-window.c:930
+#: ../gedit/gedit-window.c:935
 msgid "Bracket match not found"
 msgstr "Porinis skliaustas nerastas"
 
-#: ../gedit/gedit-window.c:935
+#: ../gedit/gedit-window.c:940
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Porinis skliaustas rastas eilutėje: %d"
 
-#: ../gedit/gedit-window.c:1138
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
+#. use abbreviations if possible to avoid space problems.
+#: ../gedit/gedit-window.c:975
+#, c-format
+msgid "  Ln %d, Col %d"
+msgstr " Eil %d, Stl %d"
+
+#: ../gedit/gedit-window.c:1150
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Tabuliacijos plotis: %u"
 
-#: ../gedit/gedit-window.c:1510
+#: ../gedit/gedit-window.c:1521
 msgid "There are unsaved documents"
 msgstr "Yra neįrašytų dokumentų"
 
-#: ../gedit/gedit-window.c:2342
+#: ../gedit/gedit-window.c:2351
 msgid "Change side panel page"
 msgstr "Pakeisti šoninio skydelio puslapį"
 
-#. ex:set ts=8 noet:
-#: ../gedit/gedit-window.c:2362 ../gedit/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2371 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumentai"
 
-#: ../gedit/gedit-window.ui.h:2
-msgid "New"
-msgstr "Naujas"
+#. ex:set ts=8 noet:
+#: ../gedit/resources/gtk/menus-common.ui.h:1
+msgid "Move _Left"
+msgstr "Perkelti _kairėn"
 
-#: ../gedit/gedit-window.ui.h:3
+#: ../gedit/resources/gtk/menus-common.ui.h:2
+msgid "Move _Right"
+msgstr "Perkelti _dešinėn"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:3
+msgid "Move to New _Window"
+msgstr "_Perkelti į naują langą"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:4
+msgid "Move to New Tab _Group"
+msgstr "Perkelti į _naują kortelių grupę"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
+msgid "_Close"
+msgstr "_Užverti"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:6
+msgid "Automatic Indentation"
+msgstr "Automatinis įtraukimas"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:7
+msgid "Use Spaces"
+msgstr "Naudoti tarpus"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:8
+msgid "Display line numbers"
+msgstr "Rodyti eilučių numerius"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:9
+msgid "Display right margin"
+msgstr "Rodyti dešinę paraštę"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:10
+msgid "Highlight current line"
+msgstr "Paryškinti dabartinę eilutę"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:11
+msgid "Text wrapping"
+msgstr "Teksto laužymas"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:2
+#: ../gedit/resources/gtk/menus.ui.h:7
+msgid "_Print…"
+msgstr "S_pausdinti…"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+#: ../gedit/resources/gtk/menus.ui.h:8
+msgid "_Fullscreen"
+msgstr "_Visame ekrane"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+#: ../gedit/resources/gtk/menus.ui.h:10
+msgid "Save _All"
+msgstr "Įrašyti _visus"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+#: ../gedit/resources/gtk/menus.ui.h:11
+msgid "_Find…"
+msgstr "_Ieškoti…"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+#: ../gedit/resources/gtk/menus.ui.h:12
+msgid "_Find and Replace…"
+msgstr "_Surasti ir pakeisti…"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+#: ../gedit/resources/gtk/menus.ui.h:13
+msgid "_Clear Highlight"
+msgstr "Iš_valyti paryškinimą"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+#: ../gedit/resources/gtk/menus.ui.h:14
+msgid "_Go to Line…"
+msgstr "Eiti į _eilutę…"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
+#: ../gedit/resources/gtk/menus.ui.h:15
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
+msgid "View"
+msgstr "Rodyti"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+#: ../gedit/resources/gtk/menus.ui.h:16
+msgid "Side _Panel"
+msgstr "Šoninis _polangis"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+#: ../gedit/resources/gtk/menus.ui.h:17
+msgid "_Bottom Panel"
+msgstr "_Apatinis polangis"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+#: ../gedit/resources/gtk/menus.ui.h:18
+msgid "_Highlight Mode…"
+msgstr "Pa_ryškinimo veiksena…"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+#: ../gedit/resources/gtk/menus.ui.h:19
+msgid "Tools"
+msgstr "Įrankiai"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+#: ../gedit/resources/gtk/menus.ui.h:2
+msgid "_Preferences"
+msgstr "_Nustatymai"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:16
+#: ../gedit/resources/gtk/menus.ui.h:3
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
+#: ../plugins/spell/gedit-spell-language-dialog.c:126
+#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
+msgid "_Help"
+msgstr "_Žinynas"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus.ui.h:4
+msgid "_About"
+msgstr "_Apie"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus.ui.h:20
+msgid "_Close All"
+msgstr "_Užverti visus"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../gedit/resources/gtk/menus.ui.h:5
+msgid "_Quit"
+msgstr "Iš_eiti"
+
+#: ../gedit/resources/gtk/menus.ui.h:1
+msgid "_New Window"
+msgstr "_Naujas langas"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
+msgid "Character encodings"
+msgstr "Simbolių koduotės"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
+#: ../plugins/spell/gedit-spell-language-dialog.c:125
+#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
+msgid "_OK"
+msgstr "_Gerai"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
+msgid "A_vailable encodings:"
+msgstr "E_samos koduotės"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
+msgid "_Description"
+msgstr "_Aprašymas"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:7
+msgid "_Encoding"
+msgstr "_Koduotė"
+
+#. Add to Dictionary
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:8
+#: ../plugins/spell/gedit-automatic-spell-checker.c:506
+msgid "_Add"
+msgstr "_Pridėti"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:9
+msgid "_Remove"
+msgstr "_Pašalinti"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:10
+msgid "E_ncodings shown in menu:"
+msgstr "K_oduotės matomos meniu:"
+
+#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:1
+msgid "Highlight Mode"
+msgstr "Paryškinimo veiksena"
+
+#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
+msgid "_Select"
+msgstr "_Pasirinkti"
+
+#: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
+msgid "Search highlight mode..."
+msgstr "Paieškos paryškinimo veiksena..."
+
+#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
+msgid "Other Documents…"
+msgstr "Kiti dokumentai…"
+
+#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
+msgid "Open another file"
+msgstr "Atverti kitą failą"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:1
+msgid "Preferences"
+msgstr "Nustatymai"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:3
+msgid "Display right _margin at column:"
+msgstr "Rodyti dešinę _paraštę stulpelyje"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:4
+msgid "Display _statusbar"
+msgstr "Rodyti _būsenos juostą"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:9
+msgid "Text Wrapping"
+msgstr "Teksto laužymas"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:10
+msgid "Enable text _wrapping"
+msgstr "Įjungti teksto _laužymą"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:11
+msgid "Do not _split words over two lines"
+msgstr "Ne_laužyti žodžių per dvi eilutes"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
+msgid "Highlighting"
+msgstr "Paryškinimas"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
+msgid "Highlight current _line"
+msgstr "Paryškinti _esamą eilutę"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
+msgid "Highlight matching _brackets"
+msgstr "Paryškinti porinį _skliaustelį"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
+msgid "Tab Stops"
+msgstr "Tabuliacijos sustojimai"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+msgid "_Tab width:"
+msgstr "_Tabuliacijos plotis:"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
+msgid "Insert _spaces instead of tabs"
+msgstr "Įterpti _tarpus vietoje tabuliacijos"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
+msgid "_Enable automatic indentation"
+msgstr "Įjungti _automatinį atitraukimą"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
+msgid "File Saving"
+msgstr "Failų įrašymas"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
+msgid "Create a _backup copy of files before saving"
+msgstr "Prieš įrašant sukurti atsarginę _failo kopiją"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
+msgid "_Autosave files every"
+msgstr "_Įrašyti failus kas"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
+msgid "_minutes"
+msgstr "_minučių"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
+msgid "Editor"
+msgstr "Redaktorius"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+msgid "Font"
+msgstr "Šriftas"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
+msgid "Editor _font: "
+msgstr "Redaktoriaus šri_ftas:"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
+msgid "Pick the editor font"
+msgstr "Pasirinkite redaktoriaus šriftą"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
+msgid "Color Scheme"
+msgstr "Spalvų schema"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
+msgid "Install scheme"
+msgstr "Įdiegti schemą"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
+msgid "Install Scheme"
+msgstr "Įdiegti schemą"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
+msgid "Uninstall scheme"
+msgstr "Pašalinti schemą"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
+msgid "Uninstall Scheme"
+msgstr "Pašalinti schemą"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
+msgid "Font & Colors"
+msgstr "Šriftai ir spalvos"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
+msgid "Plugins"
+msgstr "Įskiepiai"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:1
+msgid "Syntax Highlighting"
+msgstr "Sintaksės paryškinimas"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:2
+msgid "Print synta_x highlighting"
+msgstr "Spausdinti s_intaksės paryškinimus"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:3
+msgid "Line Numbers"
+msgstr "Eilučių numeriai"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:4
+msgid "Print line nu_mbers"
+msgstr "Spausdinti e_ilučių numerius"
+
+#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
+msgid "_Number every"
+msgstr "_Numeruoti kiekvieną"
+
+#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
+msgid "lines"
+msgstr "eilutės"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:12
+msgid "Page header"
+msgstr "Puslapio antraštė"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:13
+msgid "Print page _headers"
+msgstr "Spausdinti puslapių _antraštes"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:14
+msgid "Fonts"
+msgstr "Šriftai"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:15
+msgid "_Body:"
+msgstr "_Tekstas:"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:16
+msgid "_Line numbers:"
+msgstr "_Eilučių numeriai:"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:17
+msgid "He_aders and footers:"
+msgstr "Antr_aštės ir poraštės:"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:18
+msgid "_Restore Default Fonts"
+msgstr "_Atstatyti numatytuosius šriftus "
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:1
+msgid "Show the previous page"
+msgstr "Rodyti ankstesnį puslapį"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:2
+msgid "P_revious Page"
+msgstr "_Ankstesnė puslapis"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
+msgid "Show the next page"
+msgstr "Rodyti sekantį puslapį"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:4
+msgid "_Next Page"
+msgstr "_Kitas puslapis"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
+msgid "Current page (Alt+P)"
+msgstr "Esamas puslapis (Alt+P)"
+
+#. the "of" from "1 of 19" in print preview
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
+msgid "of"
+msgstr "iš"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
+msgid "Page total"
+msgstr "Viso puslapių"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
+msgid "The total number of pages in the document"
+msgstr "Viso puslapių šiame dokumente"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
+msgid "Show multiple pages"
+msgstr "Rodyti keletą puslapių"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
+msgid "Zoom 1:1"
+msgstr "Mastelis 1:1"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
+msgid "Zoom to fit the whole page"
+msgstr "Pritraukti, kad tilptų visas puslapis"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
+msgid "Zoom the page in"
+msgstr "Pritraukti"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
+msgid "Zoom the page out"
+msgstr "Atitraukti"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
+msgid "Close print preview"
+msgstr "Užverti spaudinio peržiūrą"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
+msgid "_Close Preview"
+msgstr "_Užverti spaudinio peržiūrą"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:17
+msgid "Page Preview"
+msgstr "Puslapio peržiūra"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:18
+msgid "The preview of a page in the document to be printed"
+msgstr "Spausdintino dokumento puslapio peržiūra"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+msgid "Replace"
+msgstr "Pakeisti"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:3
+msgid "Replace _All"
+msgstr "Pakeisti _visus"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:5
+msgid "_Find"
+msgstr "_Rasti"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
+msgid "_Search for: "
+msgstr "_Ieškoti ko: "
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
+msgid "Replace _with: "
+msgstr "Pa_keisti kuo: "
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:8
+msgid "_Match case"
+msgstr "Skirti raidžių _dydį"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:9
+msgid "Match _entire word only"
+msgstr "Tenkina tik _visas žodis"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
+msgid "Match as re_gular expression"
+msgstr "Atitikti re_guliarią išraišką"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:11
+msgid "Search _backwards"
+msgstr "Ieškoti _atgal"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
+msgid "_Wrap around"
+msgstr "_Priėjus pabaigą, ieškoti nuo pradžios"
+
+#: ../gedit/resources/ui/gedit-tab-label.ui.h:1
+msgid "Close Document"
+msgstr "Užverti dokumentą"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:2
+#| msgid "Open another file"
+msgid "Open a file"
+msgstr "Atverti failą"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:5
 msgid "Create a new document"
 msgstr "Sukurti naują dokumentą"
 
-#: ../gedit/gedit-window.ui.h:4
-#| msgid "Open a file"
-msgid "Open a file dialog"
-msgstr "Atverti failų dialogą"
+#: ../gedit/resources/ui/gedit-window.ui.h:6
+msgid "New"
+msgstr "Naujas"
 
-#: ../gedit/gedit-window.ui.h:6
+#: ../gedit/resources/ui/gedit-window.ui.h:8
 msgid "Save the current file"
 msgstr "Įrašyti esamą failą"
 
-#: ../gedit/gedit-window.ui.h:7
+#: ../gedit/resources/ui/gedit-window.ui.h:9
 msgid "Save"
 msgstr "Įrašyti"
 
-#: ../gedit/gedit-window.ui.h:8
-#| msgid "Side _Panel"
+#: ../gedit/resources/ui/gedit-window.ui.h:10
 msgid "Hide panel"
 msgstr "Slėpti polangį"
 
-#: ../gedit/gedit-window.ui.h:9
+#: ../gedit/resources/ui/gedit-window.ui.h:11
+msgid "Open a file dialog"
+msgstr "Atverti failų dialogą"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
 msgstr "Išeiti iš viso ekrano veiksenos"
 
@@ -2185,7 +2194,7 @@ msgstr "Nepaisoma versija iki kitos versijos išleidimo"
 
 #. ex:set ts=8 noet:
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:1
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:1
 msgid "Document Statistics"
 msgstr "Dokumento Statistika"
 
@@ -2197,31 +2206,31 @@ msgstr "Praneša žodžių, eilučių ir simbolių dokumente skaičių."
 msgid "_Document Statistics"
 msgstr "_Dokumento statistika"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:2
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Dokumentas"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:3
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
 msgid "Selection"
 msgstr "Pasirinkimas"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:4
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
 msgstr "Eilučių"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:5
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:5
 msgid "Words"
 msgstr "Žodžių"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:6
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:6
 msgid "Characters (with spaces)"
 msgstr "Simbolių (su tarpais)"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:7
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:7
 msgid "Characters (no spaces)"
 msgstr "Simbolių (be tarpų)"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.ui.h:8
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:8
 msgid "Bytes"
 msgstr "Baitų"
 
@@ -2501,60 +2510,6 @@ msgstr "Namai"
 msgid "File System"
 msgstr "Failų sistema"
 
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:2
-msgid "_Set Root to Active Document"
-msgstr "_Nustatyti šakninę vietą į aktyvaus dokumento"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:3
-msgid "_New Folder"
-msgstr "_Naujas aplankas"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:4
-msgid "New F_ile"
-msgstr "Naujas f_ailas"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:5
-msgid "_Rename..."
-msgstr "_Pervadinti..."
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:6
-msgid "_Move to Trash"
-msgstr "_Perkelti į šiukšlinę"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:7
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
-msgid "_Delete"
-msgstr "_Ištrinti"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:8
-msgid "Re_fresh View"
-msgstr "Atnaujinti _vaizdą"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:9
-msgid "_View Folder"
-msgstr "_Rodyti aplanką"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:10
-msgid "_Open in Terminal"
-msgstr "_Atverti terminale"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:11
-msgid "_Filter"
-msgstr "_Filtruoti"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:12
-msgid "Show _Hidden"
-msgstr "Rodyti _paslėptus"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:13
-msgid "Show _Binary"
-msgstr "Rodyti _dvejetainius"
-
-#: ../plugins/filebrowser/gedit-file-browser-menus.ui.h:14
-msgid "Match Filename"
-msgstr "Ieškoti failo pavadinime"
-
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:532
 msgid "File Browser"
 msgstr "Failų naršyklė"
@@ -2608,6 +2563,12 @@ msgstr "Failo „%s“ nepavyko perkelti į šiukšlinę."
 msgid "The selected files cannot be moved to the trash."
 msgstr "Pažymėtų failų nepavyko perkelti į šiukšlinę."
 
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
+msgid "_Delete"
+msgstr "_Ištrinti"
+
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
@@ -2659,26 +2620,26 @@ msgstr ""
 "Naujas aplankas šiuo metu yra atfiltruojamas. Reikės pakoreguoti filtravimo "
 "nustatymus, kad aplankas taptų matomas"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:793
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:789
 msgid "Bookmarks"
 msgstr "Žymelės"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1999
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1988
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Nėra prijungimo objekto prijungtam skirsniui: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2076
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2065
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Nepavyko atverti laikmenos: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2123
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2112
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Nepavyko prijungti skirsnio: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2785
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2774
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Klaida įkeliant „%s“: nėra tokio aplanko"
@@ -2779,6 +2740,54 @@ msgstr "Failų naršyklės dvejetainiai šablonai"
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Papildomi šablonai, naudojami filtruojant dvejetainius failus."
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:2
+msgid "_Set Root to Active Document"
+msgstr "_Nustatyti šakninę vietą į aktyvaus dokumento"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:3
+msgid "_New Folder"
+msgstr "_Naujas aplankas"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:4
+msgid "New F_ile"
+msgstr "Naujas f_ailas"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
+msgid "_Rename..."
+msgstr "_Pervadinti..."
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
+msgid "_Move to Trash"
+msgstr "_Perkelti į šiukšlinę"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:8
+msgid "Re_fresh View"
+msgstr "Atnaujinti _vaizdą"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:9
+msgid "_View Folder"
+msgstr "_Rodyti aplanką"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:10
+msgid "_Open in Terminal"
+msgstr "_Atverti terminale"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:11
+msgid "_Filter"
+msgstr "_Filtruoti"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:12
+msgid "Show _Hidden"
+msgstr "Rodyti _paslėptus"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:13
+msgid "Show _Binary"
+msgstr "Rodyti _dvejetainius"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:14
+msgid "Match Filename"
+msgstr "Ieškoti failo pavadinime"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
@@ -3097,32 +3106,32 @@ msgid "S_ort..."
 msgstr "Rikiu_oti..."
 
 #. ex:set ts=8 noet:
-#: ../plugins/sort/gedit-sort-plugin.ui.h:1
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
 #: ../plugins/sort/sort.plugin.desktop.in.h:1
 msgid "Sort"
 msgstr "Rikiuoti"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:3
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:3
 msgid "_Sort"
 msgstr "_Rikiuoti"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:5
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
 msgid "_Reverse order"
 msgstr "_Atvirkščia tvarka"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:6
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 msgid "R_emove duplicates"
 msgstr "P_ašalinti pasikartojančias"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:7
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
 msgid "_Ignore case"
 msgstr "_Nekreipti dėmesio į raidžių dydį"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:8
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:8
 msgid "S_tart at column:"
 msgstr "P_radėti stulpelyje"
 
-#: ../plugins/sort/gedit-sort-plugin.ui.h:9
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:9
 msgid "You cannot undo a sort operation"
 msgstr "Rikiavimo operacijos atšaukti negalima"
 
@@ -3151,15 +3160,15 @@ msgstr "_Ignoruoti visus"
 msgid "_Spelling Suggestions..."
 msgstr "_Rašybos pasiūlymai..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:135
+#: ../plugins/spell/gedit-spell-app-activatable.c:136
 msgid "_Check Spelling..."
 msgstr "_Tikrinti rašybą..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:139
+#: ../plugins/spell/gedit-spell-app-activatable.c:140
 msgid "Set _Language..."
 msgstr "Nurodyti _kalbą..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:143
+#: ../plugins/spell/gedit-spell-app-activatable.c:144
 msgid "_Highlight Misspelled Words"
 msgstr "_Paryškinti klaidingus žodžius"
 
@@ -3221,59 +3230,59 @@ msgid "No misspelled words"
 msgstr "Nėra neteisingai parašytų žodžių"
 
 #. ex:set ts=8 noet:
-#: ../plugins/spell/languages-dialog.ui.h:1
+#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
 msgid "Set Language"
 msgstr "Nustatyti kalbą"
 
-#: ../plugins/spell/languages-dialog.ui.h:5
+#: ../plugins/spell/resources/ui/languages-dialog.ui.h:5
 msgid "Select the _language of the current document."
 msgstr "Pasirinkti esamo dokumento _kalbą."
 
-#: ../plugins/spell/spell-checker.ui.h:1
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
 msgid "Check spelling"
 msgstr "Patikrinti rašybą"
 
-#: ../plugins/spell/spell-checker.ui.h:2
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
 msgid "Misspelled word:"
 msgstr "Klaidingas žodis:"
 
-#: ../plugins/spell/spell-checker.ui.h:3
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
 msgid "word"
 msgstr "žodis"
 
-#: ../plugins/spell/spell-checker.ui.h:4
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
 msgid "Change _to:"
 msgstr "Keis_ti į"
 
-#: ../plugins/spell/spell-checker.ui.h:5
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
 msgid "Check _Word"
 msgstr "Patikrinti žo_dį"
 
-#: ../plugins/spell/spell-checker.ui.h:6
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
 msgid "_Suggestions:"
 msgstr "_Pasiūlymai"
 
-#: ../plugins/spell/spell-checker.ui.h:7
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "_Ignoruoti"
 
-#: ../plugins/spell/spell-checker.ui.h:8
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
 msgid "Cha_nge"
 msgstr "Pakei_sti"
 
-#: ../plugins/spell/spell-checker.ui.h:9
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
 msgid "Ignore _All"
 msgstr "Ignoruoti _visus"
 
-#: ../plugins/spell/spell-checker.ui.h:10
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
 msgid "Change A_ll"
 msgstr "Įrašyti v_isus"
 
-#: ../plugins/spell/spell-checker.ui.h:11
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
 msgid "User dictionary:"
 msgstr "Vartotojo žodynas:"
 
-#: ../plugins/spell/spell-checker.ui.h:12
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
 msgid "Add w_ord"
 msgstr "Pridėti ž_odį"
 
@@ -3285,37 +3294,6 @@ msgstr "Rašybos tikrinimas"
 msgid "Checks the spelling of the current document."
 msgstr "Patikrina esamo dokumento rašybą"
 
-#: ../plugins/time/gedit-time-dialog.ui.h:1
-msgid "Insert Date and Time"
-msgstr "Įterpti datą ir laiką"
-
-#: ../plugins/time/gedit-time-dialog.ui.h:2
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:5
-msgid "Use the _selected format"
-msgstr "Naudoti _pasirinktą formatą"
-
-#: ../plugins/time/gedit-time-dialog.ui.h:3
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:6
-msgid "_Use custom format"
-msgstr "Na_udoti pasirinktinį formatą"
-
-#. Translators: Use the more common date format in your locale
-#: ../plugins/time/gedit-time-dialog.ui.h:5
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:9
-#, no-c-format
-msgid "%d/%m/%Y %H:%M:%S"
-msgstr "%Y-%m-%d %H:%M:%S"
-
-#. Translators: This example should follow the date format defined in the entry above
-#: ../plugins/time/gedit-time-dialog.ui.h:6
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:11
-msgid "01/11/2009 17:52:00"
-msgstr "2009-11-01 07:52:00"
-
-#: ../plugins/time/gedit-time-dialog.ui.h:9
-msgid "_Insert"
-msgstr "Į_terpti"
-
 #: ../plugins/time/gedit-time-plugin.c:273
 msgid "In_sert Date and Time..."
 msgstr "Į_terpti datą ir laiką..."
@@ -3325,18 +3303,6 @@ msgid "Available formats"
 msgstr "Galimi formatai"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:1
-msgid "Configure date/time plugin"
-msgstr "Konfigūruoti datos / laiko įskiepį"
-
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:3
-msgid "When inserting date/time..."
-msgstr "Įterpiant datą / laiką..."
-
-#: ../plugins/time/gedit-time-setup-dialog.ui.h:4
-msgid "_Prompt for a format"
-msgstr "_Paklausti formato"
-
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
 msgid "Prompt Type"
 msgstr "Klausti tipo"
@@ -3364,6 +3330,49 @@ msgstr "Pasirinktinis formatas"
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "Pasirinktinis formatas, naudojamas įterpiant datą ir laiką."
+
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
+msgid "Insert Date and Time"
+msgstr "Įterpti datą ir laiką"
+
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:2
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:5
+msgid "Use the _selected format"
+msgstr "Naudoti _pasirinktą formatą"
+
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:3
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:6
+msgid "_Use custom format"
+msgstr "Na_udoti pasirinktinį formatą"
+
+#. Translators: Use the more common date format in your locale
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:5
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:9
+#, no-c-format
+msgid "%d/%m/%Y %H:%M:%S"
+msgstr "%Y-%m-%d %H:%M:%S"
+
+#. Translators: This example should follow the date format defined in the entry above
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:6
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:11
+msgid "01/11/2009 17:52:00"
+msgstr "2009-11-01 07:52:00"
+
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:9
+msgid "_Insert"
+msgstr "Į_terpti"
+
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:1
+msgid "Configure date/time plugin"
+msgstr "Konfigūruoti datos / laiko įskiepį"
+
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
+msgid "When inserting date/time..."
+msgstr "Įterpiant datą / laiką..."
+
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
+msgid "_Prompt for a format"
+msgstr "_Paklausti formato"
 
 #: ../plugins/time/time.plugin.desktop.in.h:1
 msgid "Insert Date/Time"
