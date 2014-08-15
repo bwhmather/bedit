@@ -107,7 +107,8 @@
             </child>
             <child>
               <object class="GtkButton" id="save_button">
-                <property name="label" translatable="yes">Save</property>
+                <property name="label" translatable="yes">_Save</property>
+                <property name="use-underline">True</property>
                 <property name="visible">True</property>
                 <property name="valign">center</property>
                 <property name="tooltip_text" translatable="yes">Save the current file</property>
