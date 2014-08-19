@@ -1741,6 +1741,7 @@ load_cb (GtkSourceFileLoader *loader,
 
 	/* Special case creating a named new doc. */
 	create_named_new_doc = (_gedit_document_get_create (doc) &&
+				error != NULL &&
 				error->domain == G_IO_ERROR &&
 				error->code == G_IO_ERROR_NOT_FOUND &&
 				g_file_has_uri_scheme (location, "file"));
