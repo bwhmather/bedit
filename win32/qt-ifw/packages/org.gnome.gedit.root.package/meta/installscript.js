@@ -20,7 +20,7 @@ function createShortcuts()
     var cmdLocation = windir + "\\system32\\cmd.exe";
     component.addOperation("CreateShortcut",
                            cmdLocation,
-                           "@StartMenuDir@/gedit Text Editor",
+                           "@StartMenuDir@/gedit.exe",
                            "/A /Q /K " + installer.value("TargetDir") + "\\bin\\gedit.exe");
 
     component.addOperation("Execute",
