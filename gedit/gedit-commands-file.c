@@ -591,7 +591,6 @@ change_compression (GtkWindow *parent,
 	gchar *parse_name;
 	gchar *name_for_display;
 	const gchar *primary_message;
-	const gchar *secondary_message;
 	const gchar *button_label;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -608,16 +607,10 @@ change_compression (GtkWindow *parent,
 	if (compressed)
 	{
 		primary_message = _("Save the file using compression?");
-		secondary_message = _("The file \"%s\" was previously saved as plain "
-		                      "text and will now be saved using compression.");
-		button_label = _("_Save Using Compression");
 	}
 	else
 	{
 		primary_message = _("Save the file as plain text?");
-		secondary_message = _("The file \"%s\" was previously saved "
-		                      "using compression and will now be saved as plain text.");
-		button_label = _("_Save As Plain Text");
 	}
 
 	dialog = gtk_message_dialog_new (parent,
@@ -627,9 +620,24 @@ change_compression (GtkWindow *parent,
 					 "%s",
 					 primary_message);
 
-	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-						  secondary_message,
-						  name_for_display);
+	if (compressed)
+	{
+		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+							  _("The file \"%s\" was previously saved as plain "
+		                      "text and will now be saved using compression."),
+							  name_for_display);
+
+		button_label = _("_Save Using Compression");
+	}
+	else
+	{
+		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+							  _("The file \"%s\" was previously saved "
+		                      "using compression and will now be saved as plain text."),
+							  name_for_display);
+		button_label = _("_Save As Plain Text");
+	}
+
 
 	g_free (name_for_display);
 

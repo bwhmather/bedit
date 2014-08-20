@@ -826,6 +826,8 @@ gedit_utils_is_valid_location (GFile *location)
 	return is_valid;
 }
 
+static GtkWidget *handle_builder_error (const gchar *message, ...) G_GNUC_PRINTF (1, 2);
+
 static GtkWidget *
 handle_builder_error (const gchar *message, ...)
 {
