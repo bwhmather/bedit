@@ -1,5 +1,12 @@
 #include "gedit-spell-osx.h"
-#include <Cocoa/Cocoa.h>
+#include <gtkosxapplication.h>
+#import <Cocoa/Cocoa.h>
+
+gchar *
+gedit_spell_osx_get_resource_path (void)
+{
+	return gtkosx_application_get_resource_path ();
+}
 
 gchar *
 gedit_spell_osx_get_preferred_spell_language ()
@@ -9,7 +16,7 @@ gedit_spell_osx_get_preferred_spell_language ()
 
 	pool = [[NSAutoreleasePool alloc] init];
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5
+#if defined(MAC_OS_X_VERSION_10_5) && MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5
 	NSArray *langs;
 
 	langs = [[NSSpellChecker sharedSpellChecker] userPreferredLanguages];

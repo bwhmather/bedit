@@ -29,7 +29,7 @@
 #endif
 
 #ifdef OS_OSX
-#include <gtkosxapplication.h>
+#include "gedit-spell-osx.h"
 #endif
 
 #include <string.h>
@@ -74,14 +74,12 @@ get_iso_codes_locale_dir (void)
 				       NULL);
 #else
 #if OS_OSX
-	if (gtkosx_application_get_bundle_id () != NULL)
-	{
-		const gchar *bundle_resource_dir = gtkosx_application_get_resource_path ();
+	gchar *res_dir = gedit_spell_osx_get_resource_path ();
 
-		locale_dir = g_build_filename (bundle_resource_dir,
-		                               "share",
-		                               "locale",
-		                               NULL);
+	if (res_dir != NULL)
+	{
+		locale_dir = g_build_filename (res_dir, "share", "locale", NULL);
+		g_free (res_dir);
 	}
 #endif
 	if (locale_dir == NULL)
@@ -113,13 +111,12 @@ get_iso_codes_xml_name (gint iso)
 				      NULL);
 #else
 #if OS_OSX
-	if (gtkosx_application_get_bundle_id () != NULL)
-	{
-		const gchar *bundle_resource_dir = gtkosx_application_get_resource_path ();
+	gchar *res_dir = gedit_spell_osx_get_resource_path ();
 
-		share_dir = g_build_filename (bundle_resource_dir,
-		                               "share",
-		                               NULL);
+	if (res_dir != NULL)
+	{
+		share_dir = g_build_filename (res_dir, "share", NULL);
+		g_free (res_dir);
 	}
 #endif
 	if (share_dir == NULL)

@@ -46,17 +46,14 @@ plugins_spell_libspell_la_SOURCES =			\
 if OS_OSX
 noinst_LTLIBRARIES += plugins/spell/libosx.la
 
-plugins_spell_libosx_la_LDFLAGS = -framework Cocoa
-plugins_spell_libosx_la_LIBADD = -lobjc
-plugins_spell_libosx_la_CFLAGS = -xobjective-c
+plugins_spell_libosx_la_LDFLAGS = -framework Cocoa $(GTK_MAC_LIBS)
+plugins_spell_libosx_la_CFLAGS = $(GEDIT_CFLAGS) $(GTK_MAC_CFLAGS) -xobjective-c
 
 plugins_spell_libosx_la_SOURCES = 		\
 	plugins/spell/gedit-spell-osx.c		\
 	plugins/spell/gedit-spell-osx.h
 
 plugins_spell_libspell_la_LIBADD += plugins/spell/libosx.la
-plugins_spell_libspell_la_LDFLAGS += $(GTK_MAC_LIBS)
-plugins_spell_libspell_la_CFLAGS += $(GTK_MAC_CFLAGS)
 endif
 
 plugins/spell/gedit-spell-marshal.h: plugins/spell/gedit-spell-marshal.list $(GLIB_GENMARSHAL)
