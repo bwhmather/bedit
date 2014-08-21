@@ -200,25 +200,6 @@ gedit_app_osx_startup (GApplication *application)
 	load_keybindings ();
 }
 
-static gboolean
-gedit_app_osx_process_window_event_impl (GeditApp    *app,
-                                         GeditWindow *window,
-                                         GdkEvent    *event)
-{
-	NSEvent *nsevent;
-
-	/* For OS X we will propagate the event to NSApp, which handles some OS X
-	 * specific keybindings and the accelerators for the menu
-	 */
-	nsevent = gdk_quartz_event_get_nsevent (event);
-	[NSApp sendEvent:nsevent];
-
-	/* It does not really matter what we return here since it's the last thing
-	 * in the chain. Also we can't get from sendEvent whether the event was
-	 * actually handled by NSApp anyway
-	 */
-	return TRUE;
-}
 
 static void
 gedit_app_osx_class_init (GeditAppOSXClass *klass)
@@ -232,7 +213,6 @@ gedit_app_osx_class_init (GeditAppOSXClass *klass)
 
 	app_class->show_help = gedit_app_osx_show_help_impl;
 	app_class->set_window_title = gedit_app_osx_set_window_title_impl;
-	app_class->process_window_event = gedit_app_osx_process_window_event_impl;
 }
 
 static void
