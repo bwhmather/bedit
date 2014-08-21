@@ -102,11 +102,7 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 
 		if (gedit_document_is_untitled (document))
 		{
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 			[native setRepresentedURL:nil];
-#else
-			[native setRepresentedFilename:@""];
-#endif
 		}
 		else
 		{
@@ -117,22 +113,12 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 			file = gedit_document_get_file (document);
 			location = gtk_source_file_get_location (file);
 
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 			uri = g_file_get_uri (location);
 
 			NSURL *nsurl = [NSURL URLWithString:[NSString stringWithUTF8String:uri]];
 
 			[native setRepresentedURL:nsurl];
 			g_free (uri);
-#else
-			if (g_file_has_uri_scheme (location, "file"))
-			{
-				uri = g_file_get_path (location);
-				[native setRepresentedFilename:[NSString stringWithUTF8String:uri]];
-
-				g_free (uri);
-			}
-#endif
 		}
 
 		ismodified = !gedit_document_is_untouched (document);
@@ -140,11 +126,7 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 	}
 	else
 	{
-#if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_5
 		[native setRepresentedURL:nil];
-#else
-		[native setRepresentedFilename:@""];
-#endif
 		[native setDocumentEdited:false];
 	}
 
