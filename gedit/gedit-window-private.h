@@ -29,10 +29,6 @@
 #include "gedit-multi-notebook.h"
 #include "gedit-open-document-selector.h"
 
-#ifdef OS_OSX
-#include <gtkosxapplication.h>
-#endif
-
 G_BEGIN_DECLS
 
 /* WindowPrivate is in a separate .h so that we can access it from gedit-commands */
@@ -115,10 +111,6 @@ struct _GeditWindowPrivate
 	gchar          *direct_save_uri;
 
 	GSList         *closed_docs_stack;
-
-#ifdef OS_OSX
-	GtkOSXApplicationMenuGroup *mac_menu_group;
-#endif
 
 	guint           removing_tabs : 1;
 	guint           dispose_has_run : 1;

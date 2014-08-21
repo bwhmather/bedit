@@ -62,9 +62,9 @@ gedit_dirs_init ()
 	g_free (win32_dir);
 #else /* !G_OS_WIN32 */
 #ifdef OS_OSX
-	if (quartz_application_get_bundle_id ())
+	if (gtkosx_application_get_bundle_id () != NULL)
 	{
-		const gchar *bundle_resource_dir = quartz_application_get_resource_path ();
+		const gchar *bundle_resource_dir = gtkosx_application_get_resource_path ();
 
 		gedit_data_dir = g_build_filename (bundle_resource_dir,
 						   "share",

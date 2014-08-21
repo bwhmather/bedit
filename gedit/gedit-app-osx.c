@@ -24,7 +24,6 @@
 #include <gedit/gedit-dirs.h>
 #include <gedit/gedit-debug.h>
 #include <gdk/gdkquartz.h>
-#include <gtkosxapplication.h>
 #include <string.h>
 #include <glib/gi18n.h>
 
@@ -134,17 +133,6 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 }
 
 static void
-gedit_app_osx_quit_impl (GeditApp *app)
-{
-	GtkOSXApplication *osxapp;
-
-	osxapp = g_object_new (GTK_TYPE_OSX_APPLICATION, NULL);
-	gtk_osxapplication_cleanup (osxapp);
-
-	GEDIT_APP_CLASS (gedit_app_osx_parent_class)->quit (app);
-}
-
-static void
 load_accels (void)
 {
 	gchar *filename;
@@ -203,86 +191,13 @@ load_keybindings (void)
 }
 
 static void
-gedit_app_osx_constructed (GObject *object)
+gedit_app_osx_startup (GApplication *application)
 {
-	/* First load the osx specific accel overrides */
+	G_APPLICATION_CLASS (gedit_app_osx_parent_class)->startup (application);
+
+	/* Load the osx specific accel overrides */
 	load_accels ();
 	load_keybindings ();
-
-	if (G_OBJECT_CLASS (gedit_app_osx_parent_class)->constructed)
-	{
-		/* Then chain up to load the user specific accels */
-		G_OBJECT_CLASS (gedit_app_osx_parent_class)->constructed (object);
-	}
-}
-
-static GtkMenuItem *
-ui_manager_menu_item (GtkUIManager *uimanager,
-                      const gchar  *path)
-{
-	return GTK_MENU_ITEM (gtk_ui_manager_get_widget (uimanager, path));
-}
-
-static void
-setup_mac_menu (GeditWindow *window)
-{
-	GtkAction *action;
-	GtkOSXApplication *osxapp;
-	GtkUIManager *manager;
-	GtkWidget *menu;
-
-	manager = gedit_window_get_ui_manager (window);
-
-	/* Hide the menu bar */
-	menu = gtk_ui_manager_get_widget (manager, "/MenuBar");
-	gtk_widget_hide (menu);
-
-	osxapp = g_object_new (GTK_TYPE_OSX_APPLICATION, NULL);
-
-	action = gtk_ui_manager_get_action (manager, "/ui/MenuBar/HelpMenu/HelpAboutMenu");
-	gtk_action_set_label (action, _("About gedit"));
-
-	gtk_widget_hide (GTK_WIDGET (ui_manager_menu_item (manager,
-	                             "/ui/MenuBar/FileMenu/FileQuitMenu")));
-
-	gtk_osxapplication_set_menu_bar (osxapp,
-	                                 GTK_MENU_SHELL (menu));
-
-	gtk_osxapplication_set_help_menu (osxapp,
-	                                  ui_manager_menu_item (manager,
-	                                                        "/ui/MenuBar/HelpMenu"));
-
-	gtk_osxapplication_set_window_menu (osxapp, NULL);
-
-	gtk_osxapplication_insert_app_menu_item (osxapp,
-	                                         GTK_WIDGET (ui_manager_menu_item (manager,
-	                                                                           "/ui/MenuBar/HelpMenu/HelpAboutMenu")),
-	                                         0);
-
-	gtk_osxapplication_insert_app_menu_item (osxapp,
-	                                         g_object_ref (gtk_separator_menu_item_new ()),
-	                                         1);
-
-	gtk_osxapplication_insert_app_menu_item (osxapp,
-	                                         GTK_WIDGET (ui_manager_menu_item (manager,
-	                                                                           "/ui/MenuBar/EditMenu/EditPreferencesMenu")),
-	                                         2);
-
-	/* We remove the accel group of the uimanager from the window */
-	gtk_window_remove_accel_group (GTK_WINDOW (window),
-	                               gtk_ui_manager_get_accel_group (manager));
-}
-
-static GeditWindow *
-gedit_app_osx_create_window_impl (GeditApp *app)
-{
-	GeditWindow *window;
-
-	window = GEDIT_APP_CLASS (gedit_app_osx_parent_class)->create_window (app);
-
-	setup_mac_menu (window);
-
-	return window;
 }
 
 static gboolean
@@ -306,126 +221,29 @@ gedit_app_osx_process_window_event_impl (GeditApp    *app,
 }
 
 static void
-gedit_app_osx_ready_impl (GeditApp *app)
-{
-	GtkOSXApplication *osxapp;
-
-	osxapp = g_object_new (GTK_TYPE_OSX_APPLICATION, NULL);
-	gtk_osxapplication_ready (osxapp);
-
-	GEDIT_APP_CLASS (gedit_app_osx_parent_class)->ready (app);
-}
-
-static void
 gedit_app_osx_class_init (GeditAppOSXClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GeditAppClass *app_class = GEDIT_APP_CLASS (klass);
+	GApplicationClass *application_class = G_APPLICATION_CLASS (klass);
 
 	object_class->finalize = gedit_app_osx_finalize;
-	object_class->constructed = gedit_app_osx_constructed;
+	application_class->startup = gedit_app_osx_startup;
 
 	app_class->show_help = gedit_app_osx_show_help_impl;
 	app_class->set_window_title = gedit_app_osx_set_window_title_impl;
-	app_class->quit = gedit_app_osx_quit_impl;
-	app_class->create_window = gedit_app_osx_create_window_impl;
 	app_class->process_window_event = gedit_app_osx_process_window_event_impl;
-	app_class->ready = gedit_app_osx_ready_impl;
-}
-
-static void
-on_osx_will_terminate (GtkOSXApplication *osxapp,
-                       GeditAppOSX       *app)
-{
-	g_application_quit (G_APPLICATION (app));
-}
-
-static gboolean
-on_osx_block_termination (GtkOSXApplication *osxapp,
-                          GeditAppOSX       *app)
-{
-	GtkUIManager *manager;
-	GtkAction *action;
-	GeditWindow *window;
-
-	window = gtk_appliction_get_active_window (GTK_APPLICATION (app));
-
-	// Synthesize quit-all
-	manager = gedit_window_get_ui_manager (window);
-
-	action = gtk_ui_manager_get_action (manager,
-	                                    "/ui/MenuBar/FileMenu/FileQuitMenu");
-
-	_gedit_cmd_file_quit (action, window);
-	return TRUE;
-}
-
-static gboolean
-on_osx_open_files (GtkOSXApplication  *osxapp,
-                   gchar const       **paths,
-                   GeditAppOSX        *app)
-{
-	GSList *locations = NULL;
-
-	while (paths && *paths)
-	{
-		locations = g_slist_prepend (locations,
-		                             g_file_new_for_path (*paths));
-		++paths;
-	}
-
-	locations = g_slist_reverse (locations);
-
-	if (locations != NULL)
-	{
-		GSList *files;
-		GeditWindow *window;
-
-		window = gtk_application_get_active_window (GTK_APPLICATION (app));
-
-		files = gedit_commands_load_locations (window,
-		                                       locations,
-		                                       NULL,
-		                                       0,
-		                                       0);
-
-		g_slist_free_full (locations, g_object_unref);
-	}
-
-	return TRUE;
 }
 
 static void
 gedit_app_osx_init (GeditAppOSX *app)
 {
-	GtkOSXApplication *osxapp;
-
 	/* This is required so that Cocoa is not going to parse the
 	   command line arguments by itself and generate OpenFile events.
 	   We already parse the command line ourselves, so this is needed
 	   to prevent opening files twice, etc. */
 	[[NSUserDefaults standardUserDefaults] setObject:@"NO"
 	                                       forKey:@"NSTreatUnknownArgumentsAsOpen"];
-
-	/* This is a singleton */
-	osxapp = g_object_new (GTK_TYPE_OSX_APPLICATION, NULL);
-
-	g_signal_connect (osxapp,
-	                  "NSApplicationWillTerminate",
-	                  G_CALLBACK (on_osx_will_terminate),
-	                  app);
-
-	g_signal_connect (osxapp,
-	                  "NSApplicationBlockTermination",
-	                  G_CALLBACK (on_osx_block_termination),
-	                  app);
-
-	g_signal_connect (osxapp,
-	                  "NSApplicationOpenFiles",
-	                  G_CALLBACK (on_osx_open_files),
-	                  app);
-
-	gtk_osxapplication_set_use_quartz_accelerators (osxapp, FALSE);
 }
 
 /* ex:set ts=8 noet: */
