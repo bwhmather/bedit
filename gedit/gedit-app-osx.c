@@ -200,6 +200,18 @@ gedit_app_osx_startup (GApplication *application)
 	load_keybindings ();
 }
 
+static GeditWindow *
+gedit_app_osx_create_window_impl (GeditApp *app)
+{
+	GeditWindow *window;
+
+	window = GEDIT_APP_CLASS (gedit_app_osx_parent_class)->create_window (app);
+
+	gtk_window_set_titlebar (GTK_WINDOW (window), NULL);
+
+	return window;
+}
+
 
 static void
 gedit_app_osx_class_init (GeditAppOSXClass *klass)
@@ -213,6 +225,7 @@ gedit_app_osx_class_init (GeditAppOSXClass *klass)
 
 	app_class->show_help = gedit_app_osx_show_help_impl;
 	app_class->set_window_title = gedit_app_osx_set_window_title_impl;
+	app_class->create_window = gedit_app_osx_create_window_impl;
 }
 
 static void
