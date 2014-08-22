@@ -5,7 +5,18 @@
 gchar *
 gedit_spell_osx_get_resource_path (void)
 {
-	return gtkosx_application_get_resource_path ();
+	gchar *id;
+	gchar *ret = NULL;
+
+	id = gtkosx_application_get_bundle_id ();
+
+	if (id != NULL)
+	{
+		ret = gtkosx_application_get_resource_path ();
+	}
+
+	g_free (id);
+	return ret;
 }
 
 gchar *
