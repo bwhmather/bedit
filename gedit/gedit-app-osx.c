@@ -175,8 +175,18 @@ load_keybindings (void)
 static void
 gedit_app_osx_startup (GApplication *application)
 {
+	const gchar *replace_accels[] = {
+		"<Primary><Alt>F",
+		NULL
+	};
+
 	G_APPLICATION_CLASS (gedit_app_osx_parent_class)->startup (application);
 
+	gtk_application_set_accels_for_action (GTK_APPLICATION (application),
+	                                       "win.replace",
+	                                       replace_accels);
+
+	/* Load the osx specific keybinding overrides */
 	load_keybindings ();
 }
 
