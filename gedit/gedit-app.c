@@ -465,6 +465,19 @@ get_menu_model (GeditApp   *app,
 }
 
 static void
+add_accelerator (GeditApp    *app,
+                 const gchar *action_name,
+                 const gchar *accel)
+{
+	const gchar *vaccels[] = {
+		accel,
+		NULL
+	};
+
+	gtk_application_set_accels_for_action (GTK_APPLICATION (app), action_name, vaccels);
+}
+
+static void
 gedit_app_startup (GApplication *application)
 {
 	GeditApp *app = GEDIT_APP (application);
@@ -515,63 +528,33 @@ gedit_app_startup (GApplication *application)
 	app->priv->line_col_menu = get_menu_model (app, "line-col-menu");
 
 	/* Accelerators */
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-					 "<Primary>N", "app.new-window", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>Q", "app.quit", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "F1", "app.help", NULL);
+	add_accelerator (app, "app.new-window", "<Primary>N");
+	add_accelerator (app, "app.quit", "<Primary>Q");
+	add_accelerator (app, "app.help", "F1");
 
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>O", "win.open", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>S", "win.save", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Shift>S", "win.save-as", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Shift>L", "win.save-all", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>T", "win.new-tab", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Shift>T", "win.reopen-closed-tab", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>W", "win.close", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Shift>W", "win.close-all", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>P", "win.print", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>F", "win.find", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>G", "win.find-next", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Shift>G", "win.find-prev", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>H", "win.replace", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Shift>K", "win.clear-highlight", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>I", "win.goto-line", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "F9", "win.side-panel", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary>F9", "win.bottom-panel", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "F11", "win.fullscreen", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Alt>N", "win.new-tab-group", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Shift><Alt>Page_Up",
-	                                 "win.previous-tab-group", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Shift><Alt>Page_Down",
-	                                 "win.next-tab-group", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Alt>Page_Up",
-	                                 "win.previous-document", NULL);
-	gtk_application_add_accelerator (GTK_APPLICATION (application),
-	                                 "<Primary><Alt>Page_Down",
-	                                 "win.next-document", NULL);
+	add_accelerator (app, "win.open", "<Primary>O");
+	add_accelerator (app, "win.save", "<Primary>S");
+	add_accelerator (app, "win.save-as", "<Primary><Shift>S");
+	add_accelerator (app, "win.save-all", "<Primary><Shift>L");
+	add_accelerator (app, "win.new-tab", "<Primary>T");
+	add_accelerator (app, "win.reopen-closed-tab", "<Primary><Shift>T");
+	add_accelerator (app, "win.close", "<Primary>W");
+	add_accelerator (app, "win.close-all", "<Primary><Shift>W");
+	add_accelerator (app, "win.print", "<Primary>P");
+	add_accelerator (app, "win.find", "<Primary>F");
+	add_accelerator (app, "win.find-next", "<Primary>G");
+	add_accelerator (app, "win.find-prev", "<Primary><Shift>G");
+	add_accelerator (app, "win.replace", "<Primary>H");
+	add_accelerator (app, "win.clear-highlight", "<Primary><Shift>K");
+	add_accelerator (app, "win.goto-line", "<Primary>I");
+	add_accelerator (app, "win.side-panel", "F9");
+	add_accelerator (app, "win.bottom-panel", "<Primary>F9");
+	add_accelerator (app, "win.fullscreen", "F11");
+	add_accelerator (app, "win.new-tab-group", "<Primary><Alt>N");
+	add_accelerator (app, "win.previous-tab-group", "<Primary><Shift><Alt>Page_Up");
+	add_accelerator (app, "win.next-tab-group", "<Primary><Shift><Alt>Page_Down");
+	add_accelerator (app, "win.previous-document", "<Primary><Alt>Page_Up");
+	add_accelerator (app, "win.next-document", "<Primary><Alt>Page_Down");
 
 	load_accels ();
 
