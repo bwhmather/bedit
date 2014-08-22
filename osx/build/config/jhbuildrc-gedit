@@ -31,3 +31,5 @@ setup_sdk(target=_gsdk, sdk_version=_gsdk, architectures=['x86_64'])
 modulesets_dir = os.path.join(_sourcedir, "modulesets")
 moduleset = "gedit.modules"
 modules = ["gedit"]
+
+os.environ['HOME'] = os.environ['__GEDIT_OSX_OLD_HOME']

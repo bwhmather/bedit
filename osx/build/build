@@ -101,6 +101,7 @@ function cmd_jh() {
 	# Setup our jhbuild environment
 	export GEDIT_OSX_SOURCE_BASE="$D"
 	export GEDIT_OSX_BUILD_BASE="$BASED"
+	export __GEDIT_OSX_OLD_HOME="$HOME"
 	export HOME="$HOMED"
 	export JHB=gedit
 
