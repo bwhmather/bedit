@@ -522,7 +522,17 @@ gedit_app_startup (GApplication *application)
 	                                 app);
 
 	/* menus */
-	app->priv->window_menu = get_menu_model (app, "gear-menu");
+	app->priv->window_menu = gtk_application_get_menubar (GTK_APPLICATION (app));
+
+	if (app->priv->window_menu == NULL)
+	{
+		app->priv->window_menu = get_menu_model (app, "gear-menu");
+	}
+	else
+	{
+		g_object_ref (app->priv->window_menu);
+	}
+
 	app->priv->notebook_menu = get_menu_model (app, "notebook-menu");
 	app->priv->tab_width_menu = get_menu_model (app, "tab-width-menu");
 	app->priv->line_col_menu = get_menu_model (app, "line-col-menu");
