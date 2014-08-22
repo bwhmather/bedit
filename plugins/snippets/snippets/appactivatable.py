@@ -92,17 +92,18 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
     def system_dirs(self):
         dirs = []
 
-        if platform.system() != 'Windows':
-            if 'XDG_DATA_DIRS' in os.environ:
-                datadirs = os.environ['XDG_DATA_DIRS']
-            else:
-                datadirs = '/usr/local/share' + os.pathsep + '/usr/share'
+        if 'XDG_DATA_DIRS' in os.environ:
+            datadirs = os.environ['XDG_DATA_DIRS']
+        elif platform.system() != 'Windows':
+            datadirs = '/usr/local/share' + os.pathsep + '/usr/share'
+        else:
+            datadirs = GLib.win32_get_package_installation_directory_of_module(None)
 
-            for d in datadirs.split(os.pathsep):
-                d = os.path.join(d, 'gedit', 'plugins', 'snippets')
+        for d in datadirs.split(os.pathsep):
+            d = os.path.join(d, 'gedit', 'plugins', 'snippets')
 
-                if os.path.isdir(d):
-                    dirs.append(d)
+            if os.path.isdir(d):
+                dirs.append(d)
 
         dirs.append(self.plugin_info.get_data_dir())
         return dirs
