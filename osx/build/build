@@ -116,6 +116,10 @@ function cmd_make() {
 	cd "$BASED/$GEDIT_SDK/source/$1" && cmd_jh make
 }
 
+function cmd_run() {
+	cmd_jh run "$@"
+}
+
 function cmd_all() {
 	if [ ! -d "$JHBUILD_SOURCED" ]; then
 		echo "init..."
