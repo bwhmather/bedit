@@ -98,17 +98,6 @@ main (int argc, char *argv[])
 	gint status;
 	const gchar *dir;
 
-	gedit_dirs_init ();
-
-	/* Setup locale/gettext */
-	setlocale (LC_ALL, "");
-
-	dir = gedit_dirs_get_gedit_locale_dir ();
-	bindtextdomain (GETTEXT_PACKAGE, dir);
-
-	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-	textdomain (GETTEXT_PACKAGE);
-
 #ifdef OS_OSX
 	type = GEDIT_TYPE_APP_OSX;
 #else
@@ -124,6 +113,19 @@ main (int argc, char *argv[])
 	type = GEDIT_TYPE_APP_X11;
 #endif
 #endif
+
+	/* NOTE: we should not make any calls to the gedit api before the
+	 * private library is loaded */
+	gedit_dirs_init ();
+
+	/* Setup locale/gettext */
+	setlocale (LC_ALL, "");
+
+	dir = gedit_dirs_get_gedit_locale_dir ();
+	bindtextdomain (GETTEXT_PACKAGE, dir);
+
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
 
 	app = g_object_new (type,
 	                    "application-id", "org.gnome.gedit",
