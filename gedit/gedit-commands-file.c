@@ -624,7 +624,7 @@ change_compression (GtkWindow *parent,
 	{
 		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 							  _("The file \"%s\" was previously saved as plain "
-		                      "text and will now be saved using compression."),
+							    "text and will now be saved using compression."),
 							  name_for_display);
 
 		button_label = _("_Save Using Compression");
@@ -633,7 +633,7 @@ change_compression (GtkWindow *parent,
 	{
 		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
 							  _("The file \"%s\" was previously saved "
-		                      "using compression and will now be saved as plain text."),
+							    "using compression and will now be saved as plain text."),
 							  name_for_display);
 		button_label = _("_Save As Plain Text");
 	}
