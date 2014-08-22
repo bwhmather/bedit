@@ -94,7 +94,7 @@
   </autotools>
 
   <autotools id="libpeas" autogenargs="PYTHON=python3 --disable-python2 --enable-python3">
-    <branch module="libpeas" revision="3403cbe36922517be8e19fdf506274d54d29fd92" repo="git.gnome.org">
+    <branch module="libpeas" tag="3403cbe36922517be8e19fdf506274d54d29fd92" repo="git.gnome.org">
     </branch>
     <dependencies>
       <dep package="python3"/>
@@ -116,8 +116,8 @@
     </dependencies>
   </autotools>
 
-   <autotools id="gtksourceview3">
-    <branch module="gtksourceview" revision="4bf401661a4ca1b204a62bddfc99aacb56f429ce" repo="git.gnome.org">
+  <autotools id="gtksourceview3">
+    <branch module="gtksourceview" tag="4bf401661a4ca1b204a62bddfc99aacb56f429ce" repo="git.gnome.org">
     </branch>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
