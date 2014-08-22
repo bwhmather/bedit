@@ -133,24 +133,6 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 }
 
 static void
-load_accels (void)
-{
-	gchar *filename;
-
-	filename = g_build_filename (gedit_dirs_get_gedit_data_dir (),
-	                             "osx.accels",
-	                             NULL);
-
-	if (filename != NULL)
-	{
-		gedit_debug_message (DEBUG_APP, "Loading accels from %s\n", filename);
-
-		gtk_accel_map_load (filename);
-		g_free (filename);
-	}
-}
-
-static void
 load_keybindings (void)
 {
 	gchar *filename;
@@ -195,8 +177,6 @@ gedit_app_osx_startup (GApplication *application)
 {
 	G_APPLICATION_CLASS (gedit_app_osx_parent_class)->startup (application);
 
-	/* Load the osx specific accel overrides */
-	load_accels ();
 	load_keybindings ();
 }
 

@@ -36,7 +36,6 @@ dist_data_convert_DATA = data/gedit.convert
 if OS_OSX
 data_geditdatadir = $(datadir)/gedit
 dist_data_geditdata_DATA =	\
-	data/osx.accels		\
 	data/osx.css
 endif
 
