@@ -13,6 +13,18 @@
   <repository type="tarball" name="abisource/enchant"
               href="http://www.abisource.com/downloads/enchant/" />
 
+  <autotools id="enchant"
+       autogenargs="--disable-myspell --disable-ispell">
+    <branch module="1.6.0/enchant-1.6.0.tar.gz" version="1.6.0"
+      repo="abisource/enchant">
+      <patch file="http://git.gnome.org/browse/gtk-osx/plain/patches/enchant-gsize.patch" strip="1"/>
+      <patch file="patches/enchant-applespell.patch" strip="1"/>
+    </branch>
+    <dependencies>
+      <dep package="glib"/>
+    </dependencies>
+  </autotools>
+
   <autotools id="gtk+-3.0"
        autogenargs="--enable-quartz-backend --enable-quartz-relocation --disable-colord --without-atk-bridge">
     <branch module="gtk+" checkoutdir="gtk+-3.0" repo="git.gnome.org"/>
