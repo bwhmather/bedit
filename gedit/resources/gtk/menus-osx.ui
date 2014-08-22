@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <menu id="menubar">
+    <section>
+      <submenu>
+        <attribute name="label" translatable="yes">File</attribute>
+        <section>
+          <attribute name="id">file-section</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_New</attribute>
+            <attribute name="action">win.new-tab</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">_Open</attribute>
+            <attribute name="action">win.open</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">file-section-1</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Save</attribute>
+            <attribute name="action">win.save</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">Save _As…</attribute>
+            <attribute name="action">win.save-as</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">app-commands-section</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_New Window</attribute>
+            <attribute name="action">app.new-window</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">file-section-2</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Reload</attribute>
+            <attribute name="action">win.revert</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">Reopen Closed _Tab</attribute>
+            <attribute name="action">win.reopen-closed-tab</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">file-section-3</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Print…</attribute>
+            <attribute name="action">win.print</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">close-section</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Close</attribute>
+            <attribute name="action">win.close</attribute>
+          </item>
+        </section>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="yes">Edit</attribute>
+        <section>
+          <attribute name="id">edit-section</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Undo</attribute>
+            <attribute name="action">win.undo</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">_Redo</attribute>
+            <attribute name="action">win.undo</attribute>
+          </item>
+        </section>
+        <section>
+          <item>
+            <attribute name="label" translatable="yes">C_ut</attribute>
+            <attribute name="action">win.cut</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">_Copy</attribute>
+            <attribute name="action">win.copy</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">_Paste</attribute>
+            <attribute name="action">win.paste</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">_Delete</attribute>
+            <attribute name="action">win.delete</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">edit-section-1</attribute>
+        </section>
+        <section>
+          <attribute name="id">edit-section-2</attribute>
+          <item>
+            <attribute name="label" translatable="yes">Select _All</attribute>
+            <attribute name="action">win.select-all</attribute>
+          </item>
+        </section>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="yes">View</attribute>
+        <section>
+          <attribute name="id">view-section</attribute>
+          <item>
+            <attribute name="label" translatable="yes">Side _Panel</attribute>
+            <attribute name="action">win.side-panel</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">_Bottom Panel</attribute>
+            <attribute name="action">win.bottom-panel</attribute>
+            <attribute name="hidden-when">action-disabled</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">view-section-1</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Fullscreen</attribute>
+            <attribute name="action">win.fullscreen</attribute>
+            <attribute name="verb-icon">view-fullscreen-symbolic</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">view-section-2</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Highlight Mode…</attribute>
+            <attribute name="action">win.highlight-mode</attribute>
+          </item>
+        </section>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="yes">Search</attribute>
+        <section>
+          <attribute name="id">search-section</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Find…</attribute>
+            <attribute name="action">win.find</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">Find Ne_xt</attribute>
+            <attribute name="action">win.find-next</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">Find Pre_vious</attribute>
+            <attribute name="action">win.find-prev</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">search-section-1</attribute>
+          <item>
+            <attribute name="label" translatable="yes">Find and _Replace…</attribute>
+            <attribute name="action">win.replace</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">search-section-2</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Clear Highlight</attribute>
+            <attribute name="action">win.clear-highlight</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">search-section-3</attribute>
+          <item>
+            <attribute name="label" translatable="yes">Go to _Line…</attribute>
+            <attribute name="action">win.goto-line</attribute>
+          </item>
+        </section>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="yes">Tools</attribute>
+        <section>
+          <attribute name="id">spell-section</attribute>
+        </section>
+        <section>
+          <attribute name="id">tools-section</attribute>
+        </section>
+        <section>
+          <attribute name="id">tools-section-1</attribute>
+        </section>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="yes">Documents</attribute>
+        <section>
+          <attribute name="id">documents-section</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Save All</attribute>
+            <attribute name="action">win.save-all</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">_Close All</attribute>
+            <attribute name="action">win.close-all</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">documents-section-1</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_New Tab Group</attribute>
+            <attribute name="action">win.new-tab-group</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">P_revious Tab Group</attribute>
+            <attribute name="action">win.previous-tab-group</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">Nex_t Tab Group</attribute>
+            <attribute name="action">win.next-tab-group</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">documents-section-2</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Previous Document</attribute>
+            <attribute name="action">win.previous-document</attribute>
+          </item>
+          <item>
+            <attribute name="label" translatable="yes">N_ext Document</attribute>
+            <attribute name="action">win.next-document</attribute>
+          </item>
+        </section>
+        <section>
+          <attribute name="id">documents-section-3</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Move To New Window</attribute>
+            <attribute name="action">win.move-to-new-window</attribute>
+          </item>
+        </section>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="yes">Help</attribute>
+        <section>
+          <attribute name="id">help-section</attribute>
+          <item>
+            <attribute name="label" translatable="yes">_Help</attribute>
+            <attribute name="action">app.help</attribute>
+          </item>
+        </section>
+      </submenu>
+    </section>
+  </menu>
+  <!--<menu id="gear-menu">
+    <section>
+      <attribute name="id">edit-section</attribute>
+    </section>
+    <section>
+      <attribute name="id">edit-section-1</attribute>
+    </section>
+
+  </menu>-->
+</interface>

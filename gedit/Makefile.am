@@ -241,13 +241,18 @@ gedit_overridesdir = $(pyoverridesdir)
 gedit_overrides_PYTHON = gedit/Gedit.py
 endif
 
+gedit_dist_resource_deps = 							\
+	$(filter-out gedit/resources/gtk/menus.ui,$(gedit_resource_deps))	\
+	gedit/resources/gtk/menus-traditional.ui
+
 EXTRA_DIST += 					\
 	gedit/gedit-enum-types.h.template	\
 	gedit/gedit-enum-types.c.template	\
 	gedit/gedit-marshal.list		\
 	gedit/gedit.rc				\
 	gedit/Gedit-3.0.metadata		\
-	$(gedit_resource_deps)
+	gedit/resources/gedit.gresource.xml.in	\
+	$(gedit_dist_resource_deps)
 
 if HAVE_INTROSPECTION
 -include $(INTROSPECTION_MAKEFILE)

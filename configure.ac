@@ -427,8 +427,22 @@ fi
 # Vala
 VAPIGEN_CHECK([0.25.1])
 
+if test "$os_osx" = "yes"; then
+	os_menus_ui=menus-osx.ui
+	RESOURCE_TRADITIONAL_MENUS_UI=
+else
+	os_menus_ui=menus-default.ui
+	RESOURCE_TRADITIONAL_MENUS_UI='<file preprocess="xml-stripblanks">gtk/menus-traditional.ui</file>'
+fi
+
+AC_SUBST(RESOURCE_TRADITIONAL_MENUS_UI)
+
+
+AC_CONFIG_LINKS(gedit/resources/gtk/menus.ui:gedit/resources/gtk/$os_menus_ui)
+
 AC_CONFIG_FILES([
 Makefile
+gedit/resources/gedit.gresource.xml
 data/org.gnome.gedit.desktop.in
 data/gedit.pc
 data/org.gnome.gedit.gschema.xml
