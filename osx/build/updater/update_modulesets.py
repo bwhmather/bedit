@@ -100,7 +100,7 @@ class Merger:
             if f.startswith(locc):
                 shutil.copyfile('.gtk-osx/' + f[len(locc):], dname + '/' + pname)
             elif f.startswith('patches/'):
-                shutil.copyfile('../' + f, dname + '/' + pname)
+                shutil.copyfile(f, dname + '/' + pname)
             else:
                 content = self.from_cache_or_url(os.path.join('patches', mod.attrib['id'], pname), f)
 
