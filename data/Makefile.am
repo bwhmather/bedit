@@ -33,12 +33,6 @@ endif
 data_convertdir = $(datadir)/GConf/gsettings
 dist_data_convert_DATA = data/gedit.convert
 
-if OS_OSX
-data_geditdatadir = $(datadir)/gedit
-dist_data_geditdata_DATA =	\
-	data/osx.css
-endif
-
 EXTRA_DIST += 					\
 	$(data_desktop_in_files)		\
 	$(data_appdata_in_files)		\

@@ -429,15 +429,20 @@ VAPIGEN_CHECK([0.25.1])
 
 if test "$os_osx" = "yes"; then
 	os_menus_ui=menus-osx.ui
-	RESOURCE_TRADITIONAL_MENUS_UI=
+	os_style_css=gedit-style-osx.css
 else
 	os_menus_ui=menus-default.ui
-	RESOURCE_TRADITIONAL_MENUS_UI='<file preprocess="xml-stripblanks">gtk/menus-traditional.ui</file>'
+	os_style_css=
+
+	OS_DEPENDENT_RESOURCE_FILES='<file preprocess="xml-stripblanks">gtk/menus-traditional.ui</file>'
 fi
 
-AC_SUBST(RESOURCE_TRADITIONAL_MENUS_UI)
+if test "x$os_style_css" != "x"; then
+	OS_DEPENDENT_RESOURCE_FILES+="<file>css/gedit-style-os.css</file>"
+	AC_CONFIG_LINKS(gedit/resources/css/gedit-style-os.css:gedit/resources/css/$os_style_css)
+fi
 
-
+AC_SUBST(OS_DEPENDENT_RESOURCE_FILES)
 AC_CONFIG_LINKS(gedit/resources/gtk/menus.ui:gedit/resources/gtk/$os_menus_ui)
 
 AC_CONFIG_FILES([

@@ -478,15 +478,47 @@ add_accelerator (GeditApp    *app,
 }
 
 static void
+load_css_from_resource (const gchar *filename,
+                        gboolean     required)
+{
+	GError *error = NULL;
+	GFile *css_file;
+	GtkCssProvider *provider;
+	gchar *resource_name;
+
+	resource_name = g_strdup_printf ("resource:///org/gnome/gedit/css/%s", filename);
+	css_file = g_file_new_for_uri (resource_name);
+	g_free (resource_name);
+
+	provider = gtk_css_provider_new ();
+
+	if (gtk_css_provider_load_from_file (provider, css_file, &error))
+	{
+		gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+		                                           GTK_STYLE_PROVIDER (provider),
+		                                           GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+		g_object_unref (provider);
+	}
+	else
+	{
+		if (required)
+		{
+			g_warning ("Could not load css provider: %s", error->message);
+		}
+
+		g_error_free (error);
+	}
+
+	g_object_unref (css_file);
+}
+
+static void
 gedit_app_startup (GApplication *application)
 {
 	GeditApp *app = GEDIT_APP (application);
 	GtkSourceStyleSchemeManager *manager;
 	const gchar *dir;
 	gchar *icon_dir;
-	GError *error = NULL;
-	GFile *css_file;
-	GtkCssProvider *provider;
 
 	G_APPLICATION_CLASS (gedit_app_parent_class)->startup (application);
 
@@ -569,22 +601,8 @@ gedit_app_startup (GApplication *application)
 	load_accels ();
 
 	/* Load custom css */
-	error = NULL;
-	css_file = g_file_new_for_uri ("resource:///org/gnome/gedit/css/gedit-style.css");
-	provider = gtk_css_provider_new ();
-	if (gtk_css_provider_load_from_file (provider, css_file, &error))
-	{
-		gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-		                                           GTK_STYLE_PROVIDER (provider),
-		                                           GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-		g_object_unref (provider);
-	}
-	else
-	{
-		g_warning ("Could not load css provider: %s", error->message);
-		g_error_free (error);
-	}
-	g_object_unref (css_file);
+	load_css_from_resource ("gedit-style.css", TRUE);
+	load_css_from_resource ("gedit-style-os.css", FALSE);
 
 	/*
 	 * We use the default gtksourceview style scheme manager so that plugins

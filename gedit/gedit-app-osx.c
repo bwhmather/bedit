@@ -169,46 +169,6 @@ gedit_app_osx_set_window_title_impl (GeditApp    *app,
 	GEDIT_APP_CLASS (gedit_app_osx_parent_class)->set_window_title (app, window, title);
 }
 
-static void
-load_keybindings (void)
-{
-	gchar *filename;
-
-	filename = g_build_filename (gedit_dirs_get_gedit_data_dir (),
-	                             "osx.css",
-	                             NULL);
-
-	if (filename != NULL)
-	{
-		GtkCssProvider *provider;
-		GError *error = NULL;
-
-		gedit_debug_message (DEBUG_APP, "Loading keybindings from %s\n", filename);
-
-		provider = gtk_css_provider_new ();
-
-		if (!gtk_css_provider_load_from_path (provider,
-		                                      filename,
-		                                      &error))
-		{
-			g_warning ("Failed to load osx keybindings from `%s':\n%s",
-			           filename,
-			           error->message);
-
-			g_error_free (error);
-		}
-		else
-		{
-			gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-			                                           GTK_STYLE_PROVIDER (provider),
-			                                           GTK_STYLE_PROVIDER_PRIORITY_SETTINGS);
-		}
-
-		g_object_unref (provider);
-		g_free (filename);
-	}
-}
-
 typedef struct
 {
 	GeditAppOSX   *app;
@@ -324,9 +284,6 @@ gedit_app_osx_startup (GApplication *application)
 	gtk_application_set_accels_for_action (GTK_APPLICATION (application),
 	                                       "win.replace",
 	                                       replace_accels);
-
-	/* Load the osx specific keybinding overrides */
-	load_keybindings ();
 
 	app_osx = GEDIT_APP_OSX (application);
 
