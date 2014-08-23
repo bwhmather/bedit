@@ -306,7 +306,7 @@ bs = [x for x in allf if os.path.basename(x) == 'bootstrap.modules']
 
 m = Merger()
 
-m.merge(nobs, 'gedit', 'gedit-overrides.modules')
+m.merge(nobs, 'gedit-meta', 'gedit-overrides.modules')
 m.write('modulesets/gedit.modules')
 
 m.merge(bs, 'meta-bootstrap', 'gedit-bootstrap-overrides.modules')

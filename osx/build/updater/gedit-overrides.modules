@@ -12,6 +12,8 @@
               href="http://pkg-isocodes.alioth.debian.org/downloads/"/>
   <repository type="tarball" name="abisource/enchant"
               href="http://www.abisource.com/downloads/enchant/" />
+  <repository type="tarball" name="tarball.github.com"
+              href="https://github.com/"/>
 
   <autotools id="enchant"
        autogenargs="--disable-myspell --disable-ispell">
@@ -27,7 +29,7 @@
 
   <autotools id="gtk+-3.0"
        autogenargs="--enable-quartz-backend --enable-quartz-relocation --disable-colord --without-atk-bridge">
-    <branch module="gtk+" checkoutdir="gtk+-3.0" repo="git.gnome.org"/>
+    <branch module="gtk+" checkoutdir="gtk+-3.0" repo="git.gnome.org" tag="c304d71a9b02d767348950d980a7605560420cc4"/>
     <dependencies>
       <dep package="gobject-introspection"/>
       <dep package="pango"/>
@@ -39,10 +41,8 @@
     </after>
   </autotools>
 
-  <autotools id="pygobject3" autogen-sh="configure --with-python=python3">
-    <branch version="3.13.4" module="pygobject/3.13/pygobject-3.13.4.tar.xz" hash="sha256:7efcbe8248da067a8ffd99ca2f09d6301b99a4aef2f92c1425c768c32142ed75" repo="ftp.gnome.org">
-      <patch file="patches/pygobject-Merge-multiple-platform-case-statements.patch" strip="1"/>
-    </branch>
+  <autotools id="pygobject3" autogenargs="--with-python=python3">
+    <branch module="pygobject" repo="git.gnome.org" tag="983276fb1cbc261d062ef93ba2266d08a5a6f423"/>
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
     </dependencies>
@@ -64,21 +64,6 @@
     </after>
   </waf>
 
-  <autotools id="gtk+-3.0" autogen-sh="autogen.sh" autogenargs="--enable-quartz-backend --enable-quartz-relocation">
-    <branch module="gtk+/3.13/gtk+-3.13.7.tar.xz" version="3.13.7" hash="sha256:23db0fb9b8b8213dbfd5a5f4077904b778145ca37f622bd73961529e69878bb4" repo="ftp.gnome.org">
-    </branch>
-    <dependencies>
-      <dep package="glib"/>
-      <dep package="pango"/>
-      <dep package="atk"/>
-      <dep package="gdk-pixbuf"/>
-      <dep package="gobject-introspection"/>
-    </dependencies>
-    <after>
-      <dep package="meta-gtk-osx-bootstrap"/>
-    </after>
-  </autotools>
-
   <autotools id="pango" autogen-sh="autoreconf">
     <branch version="1.36.6" module="pango/1.36/pango-1.36.6.tar.xz" hash="sha256:4c53c752823723875078b91340f32136aadb99e91c0f6483f024f978a02c8624" repo="ftp.gnome.org">
     </branch>
@@ -94,7 +79,7 @@
   </autotools>
 
   <autotools id="libpeas" autogenargs="PYTHON=python3 --disable-python2 --enable-python3">
-    <branch module="libpeas" tag="3403cbe36922517be8e19fdf506274d54d29fd92" repo="git.gnome.org">
+    <branch module="libpeas" tag="c44c8baa50482919bc5d753d58faf27b12bc1092" repo="git.gnome.org">
     </branch>
     <dependencies>
       <dep package="python3"/>
@@ -117,25 +102,12 @@
   </autotools>
 
   <autotools id="gtksourceview3">
-    <branch module="gtksourceview" tag="4bf401661a4ca1b204a62bddfc99aacb56f429ce" repo="git.gnome.org">
-    </branch>
+    <branch module="gtksourceview" tag="d625f3807a615771746aa765cc68fcabfdf515ed" repo="git.gnome.org"/>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-gtk3"/>
     </after>
   </autotools>
-
-<!--  <autotools id="gedit-plugins" autogenargs="DATADIRNAME=share" autogen="autogen.sh">-->
-<!--    <branch module="gedit-plugins/3.2/gedit-plugins-3.2.1.tar.bz2"-->
-<!--            version="3.2.1"-->
-<!--            hash="sha256:8f6b5bc88ca61d8f0bc4dd54b2dc82473acfefd90453e4d4ffc3ca88d4182f4d">-->
-<!--      <patch file="http://git.gnome.org/browse/gedit/plain/osx/jhbuild/patches/gedit-plugins-disable-terminal.patch" strip="1"/>-->
-<!--    </branch>-->
-<!--    <dependencies>-->
-<!--      <dep package="meta-gtk-osx-bootstrap"/>-->
-<!--      <dep package="gedit"/>-->
-<!--    </dependencies>-->
-<!--  </autotools>-->
 
   <autotools id="adwaita-icon-theme" autogen-sh="configure">
     <branch module="adwaita-icon-theme/3.13/adwaita-icon-theme-3.13.5.tar.xz"
@@ -155,6 +127,35 @@
     </dependencies>
   </metamodule>
 
+  <cmake id="libgit2"
+         cmakeargs="-DTHREADSAFE:BOOL=1">
+    <branch repo="tarball.github.com"
+            module="libgit2/libgit2/archive/v${version}.tar.gz"
+            version="0.21.0"
+            hash="ae2afb5729ab6dcf6f690e5d66cb876372eaaedd37dc4fb072ad8da92338e099"
+            checkoutdir="libgit2-${version}">
+    </branch>
+  </cmake>
+
+  <autotools id="libgit2-glib">
+    <branch module="libgit2-glib/0.0/libgit2-glib-0.0.20.tar.xz"
+            version="0.0.20" hash="sha256:f8a10c8d3fcad14eed080dff6b8db0c72866c11a05b9731af31cb7258bcc8d95"/>
+    <dependencies>
+      <dep package="libgit2"/>
+      <dep package="glib"/>
+      <dep package="gobject-introspection"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="gedit-plugins">
+    <branch module="gedit-plugins" repo="git.gnome.org" tag="f06b3b18df5b76ab277059d7a94af4d1d40de435"/>
+    <dependencies>
+      <dep package="meta-gtk-osx-bootstrap"/>
+      <dep package="gedit"/>
+      <dep package="libgit2-glib"/>
+    </dependencies>
+  </autotools>
+
   <metamodule id="gedit-deps">
     <dependencies>
       <dep package="meta-gtk-osx-bootstrap"/>
@@ -168,19 +169,20 @@
     </dependencies>
   </metamodule>
 
-  <metamodule id="gedit-meta">
-    <dependencies>
-      <dep package="gedit-deps"/>
-      <!--<dep package="gedit-plugins"/>-->
-    </dependencies>
-  </metamodule>
-
   <autotools id="gedit" autogenargs="PYTHON=python3">
     <branch repo="git.gnome.org" module="gedit" revision="wip/3.14-osx"/>
     <dependencies>
-      <dep package="gedit-meta"/>
+      <dep package="gedit-deps"/>
     </dependencies>
   </autotools>
+
+  <metamodule id="gedit-meta">
+    <dependencies>
+      <dep package="gedit"/>
+      <dep package="gedit-plugins"/>
+    </dependencies>
+  </metamodule>
+
 </moduleset>
 
 <!-- vi:ex:ts=2:et -->

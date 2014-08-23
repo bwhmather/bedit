@@ -5,6 +5,8 @@
   <repository type="tarball" name="harfbuzz" href="http://www.freedesktop.org/software/harfbuzz/release/"/>
   <repository type="tarball" name="cups" href="http://ftp.easysw.com/pub/"/>
 
+  <repository type="tarball" name="tarball.github.com" href="https://github.com/"/>
+
   <repository type="tarball" name="iso-codes" href="http://pkg-isocodes.alioth.debian.org/downloads/"/>
   <repository type="tarball" name="python" href="https://www.python.org/ftp/python/"/>
   <repository type="tarball" name="libtiff" href="http://download.osgeo.org/"/>
@@ -23,10 +25,6 @@
   <repository type="tarball" name="sourceforge" href="http://downloads.sourceforge.net/sourceforge/"/>
   <repository type="tarball" name="sourceware.org" href="ftp://sourceware.org/pub/"/>
 
-  <autotools id="zlib" autogen-sh="configure" skip-autogen="never" supports-non-srcdir-builds="no">
-    <branch repo="sourceforge" version="1.2.7" module="libpng/zlib-1.2.7.tar.gz"/>
-  </autotools>
-
   <autotools id="libcroco" autogenargs="--disable-Bsymbolic" autogen-sh="configure">
     <branch module="libcroco/0.6/libcroco-0.6.8.tar.xz" version="0.6.8" hash="sha256:ea6e1b858c55219cefd7109756bff5bc1a774ba7a55f7d3ccd734d6b871b8570" repo="ftp.gnome.org"/>
   </autotools>
@@ -40,26 +38,8 @@
     </dependencies>
   </autotools>
 
-  <autotools id="freetype" autogen-sh="configure" skip-autogen="never" autogenargs="--without-bzip2">
-    <branch module="freetype/freetype-2.5.2.tar.gz" version="2.5.2" repo="sourceforge">
-    </branch>
-    <dependencies>
-      <dep package="zlib"/>
-    </dependencies>
-  </autotools>
-
-  <autotools id="fontconfig" autogen-sh="autoreconf" autogenargs="--disable-docs">
-    <branch repo="fontconfig" version="2.11.0" module="fontconfig-2.11.0.tar.gz"/>
-    <dependencies>
-      <dep package="freetype"/>
-    </dependencies>
-  </autotools>
-
-<autotools id="pixman" autogenargs="--disable-gtk" autogen-sh="configure">
-    <branch version="0.30.2" module="pixman-0.30.2.tar.gz" repo="cairographics" hash="sha1:59cc9cd91a2394b7c0aa90ffc7c141f06d75f066"/>
-    <after>
-      <dep package="meta-gtk-osx-bootstrap"/>
-    </after>
+  <autotools id="zlib" autogen-sh="configure" skip-autogen="never" supports-non-srcdir-builds="no">
+    <branch repo="sourceforge" version="1.2.7" module="libpng/zlib-1.2.7.tar.gz"/>
   </autotools>
 
   <autotools id="gnome-icon-theme" autogen-sh="configure">
@@ -85,43 +65,35 @@
     </dependencies>
   </metamodule>
 
-<autotools id="libxml2" autogen-sh="configure" autogenargs="--with-python">
+<autotools id="freetype" autogen-sh="configure" skip-autogen="never" autogenargs="--without-bzip2">
+    <branch module="freetype/freetype-2.5.2.tar.gz" version="2.5.2" repo="sourceforge">
+    </branch>
+    <dependencies>
+      <dep package="zlib"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="fontconfig" autogen-sh="autoreconf" autogenargs="--disable-docs">
+    <branch repo="fontconfig" version="2.11.0" module="fontconfig-2.11.0.tar.gz"/>
+    <dependencies>
+      <dep package="freetype"/>
+    </dependencies>
+  </autotools>
+
+<autotools id="pixman" autogenargs="--disable-gtk" autogen-sh="configure">
+    <branch version="0.30.2" module="pixman-0.30.2.tar.gz" repo="cairographics" hash="sha1:59cc9cd91a2394b7c0aa90ffc7c141f06d75f066"/>
+    <after>
+      <dep package="meta-gtk-osx-bootstrap"/>
+    </after>
+  </autotools>
+
+  <autotools id="libxml2" autogen-sh="configure" autogenargs="--with-python">
     <branch version="2.9.0" module="libxml2-2.9.0.tar.gz" repo="xmlsoft.org">
       <patch file="libxml2/libxml2-Bug-686118-pthreads_once_init.patch" strip="1"/>
     </branch>
     <after>
       <dep package="python"/>
       <dep package="python3"/>
-    </after>
-  </autotools>
-
-  <autotools id="libffi" autogenargs="--disable-builddir" autogen-sh="configure">
-    <branch module="libffi/libffi-3.0.13.tar.gz" repo="sourceware.org" version="3.0.13" checkoutdir="atgreen-libffi-873d687"/>
-  </autotools>
-
-<autotools id="python" autogenargs="--enable-shared" autogen-sh="configure">
-    <branch repo="python" module="2.7.6/Python-2.7.6.tar.xz" version="2.7.6">
-    </branch>
-    <dependencies>
-      <dep package="gettext-runtime"/>
-      <dep package="readline"/>
-    </dependencies>
-    <after>
-      <dep package="berkeleydb"/>
-      <dep package="berkeleydb-nonsrctree"/>
-    </after>
-  </autotools>
-
-  <autotools id="cairo" autogen-sh="configure" autogenargs="--enable-pdf --enable-quartz --enable-xlib=no --without-x">
-    <branch module="cairo-1.12.16.tar.xz" version="1.12.16" repo="cairographics" hash="sha1:4f6e337d5d3edd7ea79d1426f575331552b003ec">
-    </branch>
-    <dependencies>
-      <dep package="pixman"/>
-    </dependencies>
-    <after>
-      <dep package="meta-gtk-osx-bootstrap"/>
-      <dep package="fontconfig"/>
-      <dep package="freetype"/>
     </after>
   </autotools>
 
@@ -182,26 +154,6 @@
     </after>
   </autotools>
 
-  <autotools id="gobject-introspection" autogen-sh="configure">
-    <branch module="gobject-introspection/1.41/gobject-introspection-1.41.4.tar.xz" version="1.41.4" hash="sha256:b26b41283073d8890afab6a64796d164d2a07bfa220daa554285ba0ad240acf9" repo="ftp.gnome.org">
-      <patch file="gobject-introspection/girscanner-objc.patch" strip="1"/>
-    </branch>
-    <dependencies>
-      <dep package="glib"/>
-      <dep package="cairo"/>
-    </dependencies>
-    <after>
-      <dep package="python"/>
-    </after>
-  </autotools>
-
- <autotools id="gdk-pixbuf" autogen-sh="configure">
-    <branch module="gdk-pixbuf/2.31/gdk-pixbuf-2.31.0.tar.xz" version="2.31.0" hash="sha256:4121f4258af1a3fde70029396314d31ae54cf8fa2b4ea0bff842acf8f195bd78" repo="ftp.gnome.org"/>
-    <after>
-      <dep package="pango"/>
-    </after>
-  </autotools>
-
   <autotools id="atk" autogen-sh="configure">
     <branch module="atk/2.13/atk-2.13.90.tar.xz" version="2.13.90" hash="sha256:66a1ddf2ee3e8251012d428740549d7ac176135451927bcc4c332e3ed12dfc47" repo="ftp.gnome.org"/>
     <dependencies>
@@ -210,6 +162,13 @@
       <dep package="glib"/>
       <dep package="glib"/>
       <dep package="meta-gtk-osx-bootstrap"/>
+    </after>
+  </autotools>
+
+  <autotools id="gdk-pixbuf" autogen-sh="configure">
+    <branch module="gdk-pixbuf/2.31/gdk-pixbuf-2.31.0.tar.xz" version="2.31.0" hash="sha256:4121f4258af1a3fde70029396314d31ae54cf8fa2b4ea0bff842acf8f195bd78" repo="ftp.gnome.org"/>
+    <after>
+      <dep package="pango"/>
     </after>
   </autotools>
 
@@ -227,29 +186,45 @@
     </after>
   </autotools>
 
-  <autotools id="libxslt" autogen-sh="configure">
+  <autotools id="python" autogenargs="--enable-shared" autogen-sh="configure">
+    <branch repo="python" module="2.7.6/Python-2.7.6.tar.xz" version="2.7.6">
+    </branch>
+    <dependencies>
+      <dep package="gettext-runtime"/>
+      <dep package="readline"/>
+    </dependencies>
+    <after>
+      <dep package="berkeleydb"/>
+      <dep package="berkeleydb-nonsrctree"/>
+    </after>
+  </autotools>
+
+  <autotools id="cairo" autogen-sh="configure" autogenargs="--enable-pdf --enable-quartz --enable-xlib=no --without-x">
+    <branch module="cairo-1.12.16.tar.xz" version="1.12.16" repo="cairographics" hash="sha1:4f6e337d5d3edd7ea79d1426f575331552b003ec">
+    </branch>
+    <dependencies>
+      <dep package="pixman"/>
+    </dependencies>
+    <after>
+      <dep package="meta-gtk-osx-bootstrap"/>
+      <dep package="fontconfig"/>
+      <dep package="freetype"/>
+    </after>
+  </autotools>
+
+  <autotools id="libffi" autogenargs="--disable-builddir" autogen-sh="configure">
+    <branch module="libffi/libffi-3.0.13.tar.gz" repo="sourceware.org" version="3.0.13" checkoutdir="atgreen-libffi-873d687"/>
+  </autotools>
+
+<autotools id="libxslt" autogen-sh="configure">
     <branch version="1.1.27" module="libxslt-1.1.27.tar.gz" repo="xmlsoft.org"/>
     <dependencies>
       <dep package="libxml2"/>
     </dependencies>
   </autotools>
 
-<autotools id="glib" autogen-sh="autoreconf">
-    <branch module="glib/2.41/glib-2.41.3.tar.xz" version="2.41.3" hash="sha256:10ab9bdeb5c0bbe8ef0ce26ec79ce1887b6967b6ffcce86ee685e86c7c9c7b4f" repo="ftp.gnome.org">
-      <patch file="glib/0001-Bug-724590-GSlice-slab_stack-corruption.patch" strip="1"/>
-    </branch>
-    <dependencies>
-      <dep package="libffi"/>
-    </dependencies>
-    <after>
-      <dep package="meta-gtk-osx-bootstrap"/>
-    </after>
-  </autotools>
-
-  <autotools id="pygobject3" autogen-sh="configure --with-python=python3">
-    <branch version="3.13.90" module="pygobject/3.13/pygobject-3.13.90.tar.xz" hash="sha256:c4c8c62ba5e8c2444d39f501cf8c65ac7c866a73b69348384c9d5567c11d09e9" repo="ftp.gnome.org">
-      <patch file="pygobject3/pygobject-Merge-multiple-platform-case-statements.patch" strip="1"/>
-    </branch>
+<autotools id="pygobject3" autogenargs="--with-python=python3">
+    <branch module="pygobject" repo="git.gnome.org" tag="983276fb1cbc261d062ef93ba2266d08a5a6f423"/>
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
     </dependencies>
@@ -304,20 +279,48 @@
     </after>
   </autotools>
 
-<autotools id="gtk+-3.0" autogen-sh="autogen.sh" autogenargs="--enable-quartz-backend --enable-quartz-relocation">
-    <branch module="gtk+/3.13/gtk+-3.13.7.tar.xz" version="3.13.7" hash="sha256:23db0fb9b8b8213dbfd5a5f4077904b778145ca37f622bd73961529e69878bb4" repo="ftp.gnome.org">
-    </branch>
+<autotools id="gtk+-3.0" autogenargs="--enable-quartz-backend --enable-quartz-relocation --disable-colord --without-atk-bridge">
+    <branch module="gtk+" checkoutdir="gtk+-3.0" repo="git.gnome.org" tag="c304d71a9b02d767348950d980a7605560420cc4"/>
     <dependencies>
-      <dep package="glib"/>
-      <dep package="pango"/>
-      <dep package="atk"/>
-      <dep package="gdk-pixbuf"/>
       <dep package="gobject-introspection"/>
+      <dep package="pango"/>
+      <dep package="gdk-pixbuf"/>
+      <dep package="atk"/>
     </dependencies>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
     </after>
   </autotools>
+
+  <autotools id="gobject-introspection" autogen-sh="configure">
+    <branch module="gobject-introspection/1.41/gobject-introspection-1.41.4.tar.xz" version="1.41.4" hash="sha256:b26b41283073d8890afab6a64796d164d2a07bfa220daa554285ba0ad240acf9" repo="ftp.gnome.org">
+      <patch file="gobject-introspection/girscanner-objc.patch" strip="1"/>
+    </branch>
+    <dependencies>
+      <dep package="glib"/>
+      <dep package="cairo"/>
+    </dependencies>
+    <after>
+      <dep package="python"/>
+    </after>
+  </autotools>
+
+ <autotools id="glib" autogen-sh="autoreconf">
+    <branch module="glib/2.41/glib-2.41.3.tar.xz" version="2.41.3" hash="sha256:10ab9bdeb5c0bbe8ef0ce26ec79ce1887b6967b6ffcce86ee685e86c7c9c7b4f" repo="ftp.gnome.org">
+      <patch file="glib/0001-Bug-724590-GSlice-slab_stack-corruption.patch" strip="1"/>
+    </branch>
+    <dependencies>
+      <dep package="libffi"/>
+    </dependencies>
+    <after>
+      <dep package="meta-gtk-osx-bootstrap"/>
+    </after>
+  </autotools>
+
+  <cmake id="libgit2" cmakeargs="-DTHREADSAFE:BOOL=1">
+    <branch repo="tarball.github.com" module="libgit2/libgit2/archive/v${version}.tar.gz" version="0.21.0" hash="ae2afb5729ab6dcf6f690e5d66cb876372eaaedd37dc4fb072ad8da92338e099" checkoutdir="libgit2-${version}">
+    </branch>
+  </cmake>
 
   <autotools id="hicolor-icon-theme" autogen-sh="configure" supports-non-srcdir-builds="no">
     <branch module="hicolor-icon-theme-0.11.tar.gz" repo="icon-theme" version="0.11"/>
@@ -391,12 +394,10 @@
     </dependencies>
   </autotools>
 
-  <autotools id="enchant"
-       autogenargs="--disable-myspell --disable-ispell">
-    <branch module="1.6.0/enchant-1.6.0.tar.gz" version="1.6.0"
-      repo="abisource/enchant">
-      <patch file="http://git.gnome.org/browse/gtk-osx/plain/patches/enchant-gsize.patch" strip="1"/>
-      <patch file="patches/enchant-applespell.patch" strip="1"/>
+  <autotools id="enchant" autogenargs="--disable-myspell --disable-ispell">
+    <branch module="1.6.0/enchant-1.6.0.tar.gz" version="1.6.0" repo="abisource/enchant">
+      <patch file="enchant/enchant-gsize.patch" strip="1"/>
+      <patch file="enchant/enchant-applespell.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="glib"/>
@@ -404,16 +405,15 @@
   </autotools>
 
   <autotools id="gtksourceview3">
-    <branch module="gtksourceview" tag="4bf401661a4ca1b204a62bddfc99aacb56f429ce" repo="git.gnome.org">
-    </branch>
+    <branch module="gtksourceview" tag="d625f3807a615771746aa765cc68fcabfdf515ed" repo="git.gnome.org"/>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-gtk3"/>
     </after>
   </autotools>
 
-<autotools id="libpeas" autogenargs="PYTHON=python3 --disable-python2 --enable-python3">
-    <branch module="libpeas" tag="3403cbe36922517be8e19fdf506274d54d29fd92" repo="git.gnome.org">
+  <autotools id="libpeas" autogenargs="PYTHON=python3 --disable-python2 --enable-python3">
+    <branch module="libpeas" tag="c44c8baa50482919bc5d753d58faf27b12bc1092" repo="git.gnome.org">
     </branch>
     <dependencies>
       <dep package="python3"/>
@@ -434,6 +434,15 @@
       <dep package="meta-gtk-osx-bootstrap"/>
     </after>
   </metamodule>
+
+  <autotools id="libgit2-glib">
+    <branch module="libgit2-glib/0.0/libgit2-glib-0.0.20.tar.xz" version="0.0.20" hash="sha256:f8a10c8d3fcad14eed080dff6b8db0c72866c11a05b9731af31cb7258bcc8d95" repo="ftp.gnome.org"/>
+    <dependencies>
+      <dep package="libgit2"/>
+      <dep package="glib"/>
+      <dep package="gobject-introspection"/>
+    </dependencies>
+  </autotools>
 
   <metamodule id="meta-gtk-osx-bootstrap">
     <dependencies>
@@ -461,17 +470,27 @@
     </dependencies>
   </metamodule>
 
-  <metamodule id="gedit-meta">
+  <autotools id="gedit-plugins">
+    <branch module="gedit-plugins" repo="git.gnome.org" tag="f06b3b18df5b76ab277059d7a94af4d1d40de435"/>
     <dependencies>
-      <dep package="gedit-deps"/>
-      <!--<dep package="gedit-plugins"/>-->
+      <dep package="meta-gtk-osx-bootstrap"/>
+      <dep package="gedit"/>
+      <dep package="libgit2-glib"/>
     </dependencies>
-  </metamodule>
+  </autotools>
 
   <autotools id="gedit" autogenargs="PYTHON=python3">
     <branch repo="git.gnome.org" module="gedit" revision="wip/3.14-osx"/>
     <dependencies>
-      <dep package="gedit-meta"/>
+      <dep package="gedit-deps"/>
     </dependencies>
   </autotools>
+
+  <metamodule id="gedit-meta">
+    <dependencies>
+      <dep package="gedit"/>
+      <dep package="gedit-plugins"/>
+    </dependencies>
+  </metamodule>
+
 </moduleset>
