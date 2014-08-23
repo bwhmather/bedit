@@ -501,7 +501,7 @@ load_css_from_resource (const gchar *filename,
 	}
 	else
 	{
-		if (required)
+		if (required || error->domain == GTK_CSS_PROVIDER_ERROR)
 		{
 			g_warning ("Could not load css provider: %s", error->message);
 		}
