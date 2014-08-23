@@ -680,6 +680,9 @@ update_actions_sensitivity (GeditWindow *window)
 	                             editable &&
 	                             (doc != NULL) && gtk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (doc)));
 
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "overwrite-mode");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), doc != NULL);
+
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "find");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
@@ -1026,19 +1029,26 @@ update_cursor_position_statusbar (GtkTextBuffer *buffer,
 }
 
 static void
-update_overwrite_mode_statusbar (GtkTextView *view,
-				 GeditWindow *window)
+set_overwrite_mode (GeditWindow *window,
+                    gboolean     overwrite)
+{
+	GAction *action;
+
+	gedit_statusbar_set_overwrite (GEDIT_STATUSBAR (window->priv->statusbar), overwrite);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (window), "overwrite-mode");
+	g_simple_action_set_state (G_SIMPLE_ACTION (action), g_variant_new_boolean (overwrite));
+}
+
+static void
+overwrite_mode_changed (GtkTextView *view,
+			GParamSpec  *pspec,
+			GeditWindow *window)
 {
 	if (view != GTK_TEXT_VIEW (gedit_window_get_active_view (window)))
 		return;
 
-	/* Note that we have to use !gtk_text_view_get_overwrite since we
-	   are in the in the signal handler of "toggle overwrite" that is
-	   G_SIGNAL_RUN_LAST
-	*/
-	gedit_statusbar_set_overwrite (
-			GEDIT_STATUSBAR (window->priv->statusbar),
-			!gtk_text_view_get_overwrite (view));
+	set_overwrite_mode (window, gtk_text_view_get_overwrite (view));
 }
 
 #define MAX_TITLE_LENGTH 100
@@ -1380,8 +1390,7 @@ update_statusbar (GeditWindow *window,
 		update_cursor_position_statusbar (GTK_TEXT_BUFFER (doc),
 						  window);
 
-		gedit_statusbar_set_overwrite (GEDIT_STATUSBAR (window->priv->statusbar),
-					       gtk_text_view_get_overwrite (GTK_TEXT_VIEW (new_view)));
+		set_overwrite_mode (window, gtk_text_view_get_overwrite (GTK_TEXT_VIEW (new_view)));
 
 		gtk_widget_show (window->priv->line_col_button);
 		gtk_widget_show (window->priv->tab_width_button);
@@ -1973,8 +1982,8 @@ on_tab_added (GeditMultiNotebook *multi,
 			  G_CALLBACK (readonly_changed),
 			  window);
 	g_signal_connect (view,
-			  "toggle_overwrite",
-			  G_CALLBACK (update_overwrite_mode_statusbar),
+			  "notify::overwrite",
+			  G_CALLBACK (overwrite_mode_changed),
 			  window);
 	g_signal_connect (view,
 			  "notify::editable",
@@ -2068,7 +2077,7 @@ on_tab_removed (GeditMultiNotebook *multi,
 					      G_CALLBACK (readonly_changed),
 					      window);
 	g_signal_handlers_disconnect_by_func (view,
-					      G_CALLBACK (update_overwrite_mode_statusbar),
+					      G_CALLBACK (overwrite_mode_changed),
 					      window);
 	g_signal_handlers_disconnect_by_func (view,
 					      G_CALLBACK (editable_changed),
@@ -2692,7 +2701,8 @@ static GActionEntry win_entries[] = {
 	{ "paste", _gedit_cmd_edit_paste },
 	{ "delete", _gedit_cmd_edit_delete },
 	{ "select-all", _gedit_cmd_edit_select_all },
-	{ "highlight-mode", _gedit_cmd_view_highlight_mode }
+	{ "highlight-mode", _gedit_cmd_view_highlight_mode },
+	{ "overwrite-mode", NULL, NULL, "false", _gedit_cmd_edit_overwrite_mode }
 };
 
 static void

@@ -180,4 +180,26 @@ _gedit_cmd_edit_preferences (GSimpleAction *action,
 	gedit_show_preferences_dialog (window);
 }
 
+void
+_gedit_cmd_edit_overwrite_mode (GSimpleAction *action,
+                                GVariant      *state,
+                                gpointer       user_data)
+{
+	GeditWindow *window = GEDIT_WINDOW (user_data);
+	GeditView *active_view;
+	gboolean overwrite;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	active_view = gedit_window_get_active_view (window);
+	g_return_if_fail (active_view);
+
+	overwrite = g_variant_get_boolean (state);
+	g_simple_action_set_state (action, state);
+
+	gtk_text_view_set_overwrite (GTK_TEXT_VIEW (active_view), overwrite);
+	gtk_widget_grab_focus (GTK_WIDGET (active_view));
+}
+
+
 /* ex:set ts=8 noet: */
