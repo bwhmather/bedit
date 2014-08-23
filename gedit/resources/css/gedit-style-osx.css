@@ -49,6 +49,9 @@
   bind "<primary>KP_Up"          { "move-cursor" (buffer-ends, -1, 0) };
   bind "<primary><shift>KP_Up"   { "move-cursor" (buffer-ends, -1, 1) };
 
+  bind "<primary><alt>I" { "toggle-overwrite" () };
+  unbind "Insert";
+
   unbind "<control>Down";
   unbind "<control>KP_Down";
   unbind "<control><shift>Down";
