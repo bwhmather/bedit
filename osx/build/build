@@ -105,6 +105,12 @@ function cmd_jh() {
 	export HOME="$HOMED"
 	export JHB=gedit
 
+	# We set this because without it, GNU gettext intltool or whatever the cause
+	# may be, will set DATADIRNAME=lib during configure because gettext is not part
+	# of libc on OS X. The result is that translations would be installed in lib/
+	# instead of share/ and would not get picked up.
+	export DATADIRNAME=share
+
 	"$INSTALLD/bin/jhbuild" -f "$HOMED/.jhbuildrc" "$@"
 }
 
