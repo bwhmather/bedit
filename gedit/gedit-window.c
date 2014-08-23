@@ -250,6 +250,44 @@ gedit_window_finalize (GObject *object)
 	G_OBJECT_CLASS (gedit_window_parent_class)->finalize (object);
 }
 
+static void
+update_fullscreen (GeditWindow *window,
+                   gboolean     is_fullscreen)
+{
+	GAction *fullscreen_action;
+
+	_gedit_multi_notebook_set_show_tabs (window->priv->multi_notebook, !is_fullscreen);
+
+	if (is_fullscreen)
+	{
+		gtk_widget_hide (window->priv->statusbar);
+	}
+	else
+	{
+		if (g_settings_get_boolean (window->priv->ui_settings, "statusbar-visible"))
+		{
+			gtk_widget_show (window->priv->statusbar);
+		}
+	}
+
+#ifndef OS_OSX
+	if (is_fullscreen)
+	{
+		gtk_widget_show_all (window->priv->fullscreen_eventbox);
+	}
+	else
+	{
+		gtk_widget_hide (window->priv->fullscreen_eventbox);
+	}
+#endif
+
+	fullscreen_action = g_action_map_lookup_action (G_ACTION_MAP (window),
+	                                                "fullscreen");
+
+	g_simple_action_set_state (G_SIMPLE_ACTION (fullscreen_action),
+	                           g_variant_new_boolean (is_fullscreen));
+}
+
 static gboolean
 gedit_window_window_state_event (GtkWidget           *widget,
 				 GdkEventWindowState *event)
@@ -260,6 +298,11 @@ gedit_window_window_state_event (GtkWidget           *widget,
 
 	g_settings_set_int (window->priv->window_settings, GEDIT_SETTINGS_WINDOW_STATE,
 			    window->priv->window_state);
+
+	if ((event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN) != 0)
+	{
+		update_fullscreen (window, (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0);
+	}
 
 	return GTK_WIDGET_CLASS (gedit_window_parent_class)->window_state_event (widget, event);
 }
@@ -3447,10 +3490,6 @@ _gedit_window_fullscreen (GeditWindow *window)
 
 	/* Go to fullscreen mode and hide bars */
 	gtk_window_fullscreen (GTK_WINDOW (&window->window));
-	_gedit_multi_notebook_set_show_tabs (window->priv->multi_notebook, FALSE);
-	gtk_widget_hide (window->priv->statusbar);
-
-	gtk_widget_show_all (window->priv->fullscreen_eventbox);
 }
 
 void
@@ -3463,14 +3502,6 @@ _gedit_window_unfullscreen (GeditWindow *window)
 
 	/* Unfullscreen and show bars */
 	gtk_window_unfullscreen (GTK_WINDOW (&window->window));
-	_gedit_multi_notebook_set_show_tabs (window->priv->multi_notebook, TRUE);
-
-	if (g_settings_get_boolean (window->priv->ui_settings, "statusbar-visible"))
-	{
-		gtk_widget_show (window->priv->statusbar);
-	}
-
-	gtk_widget_hide (window->priv->fullscreen_eventbox);
 }
 
 gboolean
