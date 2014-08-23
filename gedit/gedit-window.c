@@ -465,7 +465,9 @@ gedit_window_class_init (GeditWindowClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, open_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, gear_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, hpaned);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel_box);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, side_panel_inline_stack_switcher);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, vpaned);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, multi_notebook);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditWindow, bottom_panel_box);
@@ -2364,7 +2366,10 @@ on_side_panel_stack_children_number_changed (GtkStack    *stack,
 	if (children != NULL && children->next != NULL)
 	{
 		gtk_widget_show (priv->side_stack_switcher);
+
+#ifndef OS_OSX
 		gtk_header_bar_set_custom_title (GTK_HEADER_BAR (priv->side_headerbar), priv->side_stack_switcher);
+#endif
 	}
 	else
 	{
@@ -2382,12 +2387,23 @@ setup_side_panel (GeditWindow *window)
 
 	gedit_debug (DEBUG_WINDOW);
 
+	g_object_bind_property (window->priv->side_panel,
+	                        "visible",
+	                        window->priv->side_panel_box,
+	                        "visible",
+	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
+
 	g_signal_connect_after (priv->side_panel,
 	                        "notify::visible",
 	                        G_CALLBACK (side_panel_visibility_changed),
 	                        window);
 
+#ifdef OS_OSX
+	priv->side_stack_switcher = priv->side_panel_inline_stack_switcher;
+#else
 	priv->side_stack_switcher = gedit_menu_stack_switcher_new ();
+#endif
+
 	gtk_button_set_relief (GTK_BUTTON (priv->side_stack_switcher), GTK_RELIEF_NONE);
 	g_object_ref_sink (priv->side_stack_switcher);
 
