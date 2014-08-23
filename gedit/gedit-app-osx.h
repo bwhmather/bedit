@@ -42,6 +42,9 @@ typedef struct _GeditAppOSXPrivate	GeditAppOSXPrivate;
 struct _GeditAppOSX
 {
 	GeditApp parent;
+
+	/*< private > */
+	GeditAppOSXPrivate *priv;
 };
 
 struct _GeditAppOSXClass

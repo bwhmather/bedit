@@ -6,15 +6,30 @@
       <submenu>
         <attribute name="label" translatable="yes">File</attribute>
         <section>
-          <attribute name="id">file-section</attribute>
+          <attribute name="id">file-section-0</attribute>
           <item>
             <attribute name="label" translatable="yes">_New</attribute>
             <attribute name="action">win.new-tab</attribute>
           </item>
+        </section>
+        <section>
+          <attribute name="id">file-section</attribute>
           <item>
             <attribute name="label" translatable="yes">_Open</attribute>
             <attribute name="action">win.open</attribute>
           </item>
+          <submenu>
+            <attribute name="label" translatable="yes">Open _Recent</attribute>
+            <section>
+              <item>
+                <attribute name="label" translatable="yes">Reopen Closed _Tab</attribute>
+                <attribute name="action">win.reopen-closed-tab</attribute>
+              </item>
+            </section>
+            <section>
+              <attribute name="id">recent-files-section</attribute>
+            </section>
+          </submenu>
         </section>
         <section>
           <attribute name="id">file-section-1</attribute>
@@ -39,10 +54,6 @@
           <item>
             <attribute name="label" translatable="yes">_Reload</attribute>
             <attribute name="action">win.revert</attribute>
-          </item>
-          <item>
-            <attribute name="label" translatable="yes">Reopen Closed _Tab</attribute>
-            <attribute name="action">win.reopen-closed-tab</attribute>
           </item>
         </section>
         <section>
