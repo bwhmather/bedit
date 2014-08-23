@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 3.13.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-16 11:59+0200\n"
+"POT-Creation-Date: 2014-08-23 11:19+0200\n"
 "PO-Revision-Date: 2014-08-16 12:01+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
@@ -568,7 +568,7 @@ msgstr "[FIL …] [+LINJE[:KOLONNE]]"
 msgid "There was an error displaying the help."
 msgstr "Det oppsto en feil under visning av hjelp."
 
-#: ../gedit/gedit-app.c:903
+#: ../gedit/gedit-app.c:886
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: ugyldig koding."
@@ -587,8 +587,8 @@ msgstr "Lukk _uten å lagre"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:321
 #: ../gedit/gedit-commands-file.c:439 ../gedit/gedit-commands-file.c:568
-#: ../gedit/gedit-commands-file.c:637 ../gedit/gedit-commands-file.c:847
-#: ../gedit/gedit-commands-file.c:1299 ../gedit/gedit-io-error-info-bar.c:134
+#: ../gedit/gedit-commands-file.c:645 ../gedit/gedit-commands-file.c:855
+#: ../gedit/gedit-commands-file.c:1307 ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:515
 #: ../gedit/gedit-io-error-info-bar.c:1191
 #: ../gedit/gedit-preferences-dialog.c:855
@@ -614,7 +614,7 @@ msgid "_Save As…"
 msgstr "Lagre _som …"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/gedit-commands-file.c:848
+#: ../gedit/gedit-commands-file.c:856
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -779,11 +779,15 @@ msgstr "Vil du prøve å erstatte den med filen du lagrer?"
 msgid "_Replace"
 msgstr "E_rstatt"
 
-#: ../gedit/gedit-commands-file.c:610
+#: ../gedit/gedit-commands-file.c:609
 msgid "Save the file using compression?"
 msgstr "Lagre filen med komprimering?"
 
-#: ../gedit/gedit-commands-file.c:611
+#: ../gedit/gedit-commands-file.c:613
+msgid "Save the file as plain text?"
+msgstr "Lagre filen som ren tekst?"
+
+#: ../gedit/gedit-commands-file.c:626
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -791,15 +795,11 @@ msgid ""
 msgstr ""
 "Filen «%s» var lagret som ren tekst og vil nå bli lagret med komprimering."
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:630
 msgid "_Save Using Compression"
 msgstr "_Lagre med komprimering"
 
-#: ../gedit/gedit-commands-file.c:617
-msgid "Save the file as plain text?"
-msgstr "Lagre filen som ren tekst?"
-
-#: ../gedit/gedit-commands-file.c:618
+#: ../gedit/gedit-commands-file.c:635
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -807,30 +807,30 @@ msgid ""
 msgstr ""
 "Filen «%s» var lagret med komprimering og vil nå bli lagret som ren tekst."
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:638
 msgid "_Save As Plain Text"
 msgstr "_Lagre som vanlig tekst"
 
-#: ../gedit/gedit-commands-file.c:738 ../gedit/gedit-commands-file.c:958
+#: ../gedit/gedit-commands-file.c:746 ../gedit/gedit-commands-file.c:966
 #, c-format
 msgid "Saving file '%s'ے"
 msgstr "Lagrer fil «%s»ے"
 
-#: ../gedit/gedit-commands-file.c:843
+#: ../gedit/gedit-commands-file.c:851
 msgid "Save As"
 msgstr "Lagre som"
 
-#: ../gedit/gedit-commands-file.c:1162
+#: ../gedit/gedit-commands-file.c:1170
 #, c-format
 msgid "Reverting the document '%s'ے"
 msgstr "Forkaster endringer i dokument «%s»ے"
 
-#: ../gedit/gedit-commands-file.c:1207
+#: ../gedit/gedit-commands-file.c:1215
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Forkast ikke-lagrede endringer i dokumentet «%s»?"
 
-#: ../gedit/gedit-commands-file.c:1216
+#: ../gedit/gedit-commands-file.c:1224
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -840,12 +840,12 @@ msgid_plural ""
 msgstr[0] "Endringer gjort i dokumentet det siste %ld sekundet vil å tapt."
 msgstr[1] "Endringer gjort i dokumentet de siste %ld sekundene vil gå tapt."
 
-#: ../gedit/gedit-commands-file.c:1225
+#: ../gedit/gedit-commands-file.c:1233
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "Endringer gjort i dokumentet det siste minuttet vil gå tapt."
 
-#: ../gedit/gedit-commands-file.c:1231
+#: ../gedit/gedit-commands-file.c:1239
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -858,7 +858,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Endringer gjort i dokumentet det siste minuttet og %ld sekundene vil gå tapt."
 
-#: ../gedit/gedit-commands-file.c:1241
+#: ../gedit/gedit-commands-file.c:1249
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -868,11 +868,11 @@ msgid_plural ""
 msgstr[0] "Endringer gjort i dokumentet det siste %ld minuttet vil gå tapt."
 msgstr[1] "Endringer gjort i dokumentet de siste %ld minuttene vil gå tapt."
 
-#: ../gedit/gedit-commands-file.c:1256
+#: ../gedit/gedit-commands-file.c:1264
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Endringer gjort i dokumentet den siste timen vil gå tapt."
 
-#: ../gedit/gedit-commands-file.c:1262
+#: ../gedit/gedit-commands-file.c:1270
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -885,7 +885,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Endringer gjort i dokumentet den siste timen og %d minuttene vil gå tapt."
 
-#: ../gedit/gedit-commands-file.c:1277
+#: ../gedit/gedit-commands-file.c:1285
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -894,7 +894,7 @@ msgid_plural ""
 msgstr[0] "Endringer gjort i dokumentet den siste %d timen vil gå tapt."
 msgstr[1] "Endringer gjort i dokumentet de siste %d timene vil gå tapt."
 
-#: ../gedit/gedit-commands-file.c:1300
+#: ../gedit/gedit-commands-file.c:1308
 msgid "_Revert"
 msgstr "Fo_rkast"
 
@@ -1474,22 +1474,22 @@ msgstr "MIME-type:"
 msgid "Encoding:"
 msgstr "Koding:"
 
-#: ../gedit/gedit-utils.c:846
+#: ../gedit/gedit-utils.c:848
 msgid "Please check your installation."
 msgstr "Vennligst sjekk din installasjon."
 
-#: ../gedit/gedit-utils.c:907
+#: ../gedit/gedit-utils.c:909
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Kunne ikke åpne fil for brukergrensesnitt %s. Feil: %s"
 
-#: ../gedit/gedit-utils.c:926
+#: ../gedit/gedit-utils.c:928
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Kunne ikke finne objekt «%s» i fil %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1149
+#: ../gedit/gedit-utils.c:1151
 #, c-format
 msgid "/ on %s"
 msgstr "/ på %s"
