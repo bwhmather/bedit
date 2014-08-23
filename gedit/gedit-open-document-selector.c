@@ -21,37 +21,27 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include <string.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>
 
 #include "gedit-open-document-selector.h"
-#include "gedit-settings.h"
+#include "gedit-recent.h"
 #include "gedit-utils.h"
 #include "gedit-window.h"
 #include "gedit-debug.h"
 
 struct _GeditOpenDocumentSelectorPrivate
 {
-	GSettings *ui_settings;
-	GtkRecentManager *manager;
-	gint limit;
-
 	GtkWidget *open_button;
 	GtkWidget *listbox;
 	GtkWidget *scrolled_window;
-
-	GtkRecentFilter *gedit_app_filter;
-	gchar *substring_filter;
 
 	guint populate_listbox_id;
 	gulong recent_manager_changed_id;
 
 	gint row_height;
 
-	guint show_private : 1;
-	guint show_not_found : 1;
-	guint local_only : 1;
+	GeditRecentConfiguration recent_config;
 };
 
 /* Signals */
@@ -168,187 +158,6 @@ dispose_row (GeditOpenDocumentSelector *open_document_selector,
 	g_free (uri);
 }
 
-static gint
-sort_recent_items_mru (GtkRecentInfo *a,
-                       GtkRecentInfo *b,
-                       gpointer       unused)
-{
-  g_assert (a != NULL && b != NULL);
-
-  return gtk_recent_info_get_modified (b) - gtk_recent_info_get_modified (a);
-}
-
-static gboolean
-get_is_recent_filtered (GtkRecentFilter *filter,
-                        GtkRecentInfo   *info)
-{
-	GtkRecentFilterInfo filter_info;
-	GtkRecentFilterFlags needed;
-	gboolean retval;
-
-	g_assert (info != NULL);
-
-	needed = gtk_recent_filter_get_needed (filter);
-
-	filter_info.contains = GTK_RECENT_FILTER_URI | GTK_RECENT_FILTER_MIME_TYPE;
-
-	filter_info.uri = gtk_recent_info_get_uri (info);
-	filter_info.mime_type = gtk_recent_info_get_mime_type (info);
-
-	if (needed & GTK_RECENT_FILTER_DISPLAY_NAME)
-	{
-		filter_info.display_name = gtk_recent_info_get_display_name (info);
-		filter_info.contains |= GTK_RECENT_FILTER_DISPLAY_NAME;
-	}
-	else
-	{
-		filter_info.uri = NULL;
-	}
-
-	if (needed & GTK_RECENT_FILTER_APPLICATION)
-	{
-		filter_info.applications = (const gchar **) gtk_recent_info_get_applications (info, NULL);
-		filter_info.contains |= GTK_RECENT_FILTER_APPLICATION;
-	}
-	else
-	{
-		filter_info.applications = NULL;
-	}
-
-	if (needed & GTK_RECENT_FILTER_GROUP)
-	{
-		filter_info.groups = (const gchar **) gtk_recent_info_get_groups (info, NULL);
-		filter_info.contains |= GTK_RECENT_FILTER_GROUP;
-	}
-	else
-	{
-		filter_info.groups = NULL;
-	}
-
-	if (needed & GTK_RECENT_FILTER_AGE)
-	{
-		filter_info.age = gtk_recent_info_get_age (info);
-		filter_info.contains |= GTK_RECENT_FILTER_AGE;
-	}
-	else
-	{
-		filter_info.age = -1;
-	}
-
-	retval = gtk_recent_filter_filter (filter, &filter_info);
-
-	/* these we own */
-	if (filter_info.applications)
-	{
-		g_strfreev ((gchar **) filter_info.applications);
-	}
-
-	if (filter_info.groups)
-	{
-		g_strfreev ((gchar **) filter_info.groups);
-	}
-
-	return !retval;
-}
-
-static GList *
-gedit_open_document_selector_get_items (GeditOpenDocumentSelector *open_document_selector)
-{
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-	GList *items;
-	GList *filter_items = NULL, *l;
-	gint limit;
-	gint length;
-
-	items = gtk_recent_manager_get_items (priv->manager);
-	if (!items)
-	{
-		return NULL;
-	}
-
-	limit  = priv->limit;
-
-	if (limit == 0)
-	{
-		return NULL;
-	}
-
-	for (l = items; l != NULL; l = l->next)
-	{
-		GtkRecentInfo *info = l->data;
-		gboolean remove_item = FALSE;
-
-		if (*priv->substring_filter != '\0')
-		{
-			gchar *uri_lower;
-
-			uri_lower = g_utf8_strdown (gtk_recent_info_get_uri (info), -1);
-
-			if (strstr (uri_lower, priv->substring_filter) == NULL)
-			{
-				remove_item = TRUE;
-			}
-
-			g_free (uri_lower);
-		}
-
-		if (get_is_recent_filtered (priv->gedit_app_filter, info))
-		{
-			remove_item = TRUE;
-		}
-		else if (priv->local_only && !gtk_recent_info_is_local (info))
-		{
-			remove_item = TRUE;
-		}
-		else if (!priv->show_private && gtk_recent_info_get_private_hint (info))
-		{
-			remove_item = TRUE;
-		}
-		else if (!priv->show_not_found && !gtk_recent_info_exists (info))
-		{
-			remove_item = TRUE;
-		}
-
-		if (!remove_item)
-		{
-			filter_items = g_list_prepend (filter_items, info);
-		}
-		else
-		{
-			gtk_recent_info_unref (info);
-		}
-	}
-
-	g_list_free (items);
-	items = filter_items;
-
-	if (!items)
-	{
-		return NULL;
-	}
-
-	items = g_list_sort_with_data (items, (GCompareDataFunc) sort_recent_items_mru, NULL);
-
-	length = g_list_length (items);
-	if ((limit != -1) && (length > limit))
-	{
-		GList *clamp, *l;
-
-		clamp = g_list_nth (items, limit - 1);
-		if (!clamp)
-		{
-			return items;
-		}
-
-		l = clamp->next;
-		clamp->next = NULL;
-
-		g_list_free_full (l, (GDestroyNotify) gtk_recent_info_unref);
-	}
-
-	return items;
-}
-
 static gboolean
 real_populate_listbox (gpointer data)
 {
@@ -358,7 +167,7 @@ real_populate_listbox (gpointer data)
 	GtkRecentInfo *info;
 	GList *children, *l, *items;
 
-	g_assert (priv->manager != NULL);
+	g_assert (priv->recent_config.manager != NULL);
 
 	/* Clear the listbox */
 	children = gtk_container_get_children (GTK_CONTAINER (priv->listbox));
@@ -371,7 +180,7 @@ real_populate_listbox (gpointer data)
 
 	g_list_free (children);
 
-	items = gedit_open_document_selector_get_items (open_document_selector);
+	items = gedit_recent_get_items (&priv->recent_config);
 
 	for (l = items; l != NULL; l = l->next)
 	{
@@ -413,8 +222,8 @@ on_entry_changed (GtkEntry                  *entry,
 
 	entry_text = gtk_entry_get_text (entry);
 
-	g_free (priv->substring_filter);
-	priv->substring_filter = g_utf8_strdown (entry_text, -1);
+	g_free (priv->recent_config.substring_filter);
+	priv->recent_config.substring_filter = g_utf8_strdown (entry_text, -1);
 
 	populate_listbox (open_document_selector);
 }
@@ -434,8 +243,7 @@ gedit_open_document_selector_finalize (GObject *object)
 	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (object);
 	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
 
-	priv->manager = NULL;
-	g_free (priv->substring_filter);
+	gedit_recent_configuration_destroy (&priv->recent_config);
 
 	G_OBJECT_CLASS (gedit_open_document_selector_parent_class)->finalize (object);
 }
@@ -446,12 +254,9 @@ gedit_open_document_selector_dispose (GObject *object)
 	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (object);
 	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
 
-	g_clear_object (&priv->ui_settings);
-	g_clear_object (&priv->gedit_app_filter);
-
 	if (priv->recent_manager_changed_id)
 	{
-		g_signal_handler_disconnect (priv->manager, priv->recent_manager_changed_id);
+		g_signal_handler_disconnect (priv->recent_config.manager, priv->recent_manager_changed_id);
 		priv->recent_manager_changed_id = 0;
 	}
 
@@ -486,7 +291,7 @@ gedit_open_document_selector_constructed (GObject *object)
 
 	G_OBJECT_CLASS (gedit_open_document_selector_parent_class)->constructed (object);
 
-	g_assert (priv->manager);
+	g_assert (priv->recent_config.manager);
 
 	populate_listbox (open_document_selector);
 }
@@ -548,7 +353,7 @@ on_listbox_allocate (GtkWidget                 *widget,
 	gint listbox_height;
 
 	row_height = calculate_row_height (open_document_selector);
-	limit_capped = MIN (priv->limit, OPEN_DOCUMENT_SELECTOR_MAX_VISIBLE_ROWS);
+	limit_capped = MIN (priv->recent_config.limit, OPEN_DOCUMENT_SELECTOR_MAX_VISIBLE_ROWS);
 	listbox_height = row_height * limit_capped;
 
 	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (priv->scrolled_window),
@@ -572,34 +377,16 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 
 	gtk_widget_init_template (GTK_WIDGET (open_document_selector));
 
-	priv->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
-
 	/* gedit-open-document-selector initial state */
-	priv->show_not_found = TRUE;
-	priv->show_private = FALSE;
-	priv->local_only = FALSE;
+	gedit_recent_configuration_init_default (&priv->recent_config);
 
-	priv->manager = gtk_recent_manager_get_default ();
-
-	priv->recent_manager_changed_id = g_signal_connect (priv->manager,
+	priv->recent_manager_changed_id = g_signal_connect (priv->recent_config.manager,
 	                                                    "changed",
 	                                                    G_CALLBACK (on_recent_manager_changed),
 	                                                    open_document_selector);
 
-	priv->substring_filter = g_strdup ("\0");
-
-	/* Setting gedit application filter */
-	priv->gedit_app_filter = gtk_recent_filter_new ();
-	gtk_recent_filter_add_application (priv->gedit_app_filter, "gedit");
-	g_object_ref_sink (priv->gedit_app_filter);
-
 	priv->populate_listbox_id = 0;
 	priv->recent_manager_changed_id = 0;
-
-	g_settings_get (priv->ui_settings,
-	                GEDIT_SETTINGS_MAX_RECENTS,
-	                "u",
-	                &priv->limit);
 
 	g_signal_connect (open_document_selector->recent_search_entry,
 	                  "changed",
@@ -620,7 +407,7 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 
 	row_height = calculate_row_height (open_document_selector);
 
-	limit_capped = MIN (priv->limit, OPEN_DOCUMENT_SELECTOR_MAX_VISIBLE_ROWS);
+	limit_capped = MIN (priv->recent_config.limit, OPEN_DOCUMENT_SELECTOR_MAX_VISIBLE_ROWS);
 	listbox_height = row_height * limit_capped;
 
 	/* We substract 2px, no idea where they come from */

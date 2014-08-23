@@ -20,7 +20,10 @@
 
 #include <gtk/gtk.h>
 #include <gedit/gedit-document.h>
+#include <string.h>
+
 #include "gedit-recent.h"
+#include "gedit-settings.h"
 
 void
 gedit_recent_add_document (GeditDocument *document)
@@ -90,6 +93,224 @@ gedit_recent_remove_if_local (GFile *location)
 		gtk_recent_manager_remove_item (recent_manager, uri, NULL);
 		g_free (uri);
 	}
+}
+
+static gint
+sort_recent_items_mru (GtkRecentInfo *a,
+                       GtkRecentInfo *b,
+                       gpointer       unused)
+{
+	g_assert (a != NULL && b != NULL);
+	return gtk_recent_info_get_modified (b) - gtk_recent_info_get_modified (a);
+}
+
+static void
+populate_filter_info (GtkRecentInfo        *info,
+                      GtkRecentFilterInfo  *filter_info,
+                      GtkRecentFilterFlags  needed)
+{
+	filter_info->uri = gtk_recent_info_get_uri (info);
+	filter_info->mime_type = gtk_recent_info_get_mime_type (info);
+
+	filter_info->contains = GTK_RECENT_FILTER_URI | GTK_RECENT_FILTER_MIME_TYPE;
+
+	if (needed & GTK_RECENT_FILTER_DISPLAY_NAME)
+	{
+		filter_info->display_name = gtk_recent_info_get_display_name (info);
+		filter_info->contains |= GTK_RECENT_FILTER_DISPLAY_NAME;
+	}
+	else
+	{
+		filter_info->uri = NULL;
+	}
+
+	if (needed & GTK_RECENT_FILTER_APPLICATION)
+	{
+		filter_info->applications = (const gchar **) gtk_recent_info_get_applications (info, NULL);
+		filter_info->contains |= GTK_RECENT_FILTER_APPLICATION;
+	}
+	else
+	{
+		filter_info->applications = NULL;
+	}
+
+	if (needed & GTK_RECENT_FILTER_GROUP)
+	{
+		filter_info->groups = (const gchar **) gtk_recent_info_get_groups (info, NULL);
+		filter_info->contains |= GTK_RECENT_FILTER_GROUP;
+	}
+	else
+	{
+		filter_info->groups = NULL;
+	}
+
+	if (needed & GTK_RECENT_FILTER_AGE)
+	{
+		filter_info->age = gtk_recent_info_get_age (info);
+		filter_info->contains |= GTK_RECENT_FILTER_AGE;
+	}
+	else
+	{
+		filter_info->age = -1;
+	}
+}
+
+void
+gedit_recent_configuration_init_default (GeditRecentConfiguration *config)
+{
+	GSettings *settings;
+
+	config->manager = gtk_recent_manager_get_default ();
+
+	if (config->filter != NULL)
+	{
+		g_object_unref (config->filter);
+	}
+
+	config->filter = gtk_recent_filter_new ();
+	gtk_recent_filter_add_application (config->filter, g_get_application_name ());
+	g_object_ref_sink (config->filter);
+
+	settings = g_settings_new ("org.gnome.gedit.preferences.ui");
+
+	g_settings_get (settings,
+	                GEDIT_SETTINGS_MAX_RECENTS,
+	                "u",
+	                &config->limit);
+
+	g_object_unref (settings);
+
+	config->show_not_found = TRUE;
+	config->show_private = FALSE;
+	config->local_only = FALSE;
+
+	config->substring_filter = NULL;
+}
+
+void
+gedit_recent_configuration_destroy (GeditRecentConfiguration *config)
+{
+	g_clear_object (&config->filter);
+	config->manager = NULL;
+
+	g_clear_pointer (&config->substring_filter, (GDestroyNotify)g_free);
+}
+
+GList *
+gedit_recent_get_items (GeditRecentConfiguration *config)
+{
+	GtkRecentFilterFlags needed;
+	GList *items;
+	GList *retitems = NULL;
+	gint length;
+
+	if (config->limit == 0)
+	{
+		return NULL;
+	}
+
+	items = gtk_recent_manager_get_items (config->manager);
+
+	if (!items)
+	{
+		return NULL;
+	}
+
+	needed = gtk_recent_filter_get_needed (config->filter);
+
+	while (items)
+	{
+		GtkRecentInfo *info;
+		GtkRecentFilterInfo filter_info;
+		gboolean is_filtered;
+
+		info = items->data;
+		is_filtered = FALSE;
+
+		if (config->local_only && !gtk_recent_info_is_local (info))
+		{
+			is_filtered = TRUE;
+		}
+		else if (!config->show_private && gtk_recent_info_get_private_hint (info))
+		{
+			is_filtered = TRUE;
+		}
+		else if (!config->show_not_found && !gtk_recent_info_exists (info))
+		{
+			is_filtered = TRUE;
+		}
+		else
+		{
+			if (config->substring_filter && *config->substring_filter != '\0')
+			{
+				gchar *uri_lower;
+
+				uri_lower = g_utf8_strdown (gtk_recent_info_get_uri (info), -1);
+
+				if (strstr (uri_lower, config->substring_filter) == NULL)
+				{
+					is_filtered = TRUE;
+				}
+
+				g_free (uri_lower);
+			}
+
+			if (!is_filtered)
+			{
+				populate_filter_info (info, &filter_info, needed);
+				is_filtered = !gtk_recent_filter_filter (config->filter, &filter_info);
+
+				/* these we own */
+				if (filter_info.applications)
+				{
+					g_strfreev ((gchar **) filter_info.applications);
+				}
+
+				if (filter_info.groups)
+				{
+					g_strfreev ((gchar **) filter_info.groups);
+				}
+			}
+		}
+
+		if (!is_filtered)
+		{
+			retitems = g_list_prepend (retitems, info);
+		}
+		else
+		{
+			gtk_recent_info_unref (info);
+		}
+
+		items = g_list_delete_link (items, items);
+	}
+
+	if (!retitems)
+	{
+		return NULL;
+	}
+
+	retitems = g_list_sort_with_data (retitems, (GCompareDataFunc) sort_recent_items_mru, NULL);
+	length = g_list_length (retitems);
+
+	if ((config->limit != -1) && (length > config->limit))
+	{
+		GList *clamp, *l;
+
+		clamp = g_list_nth (retitems, config->limit - 1);
+
+		if (!clamp)
+		{
+			return retitems;
+		}
+
+		l = clamp->next;
+		clamp->next = NULL;
+
+		g_list_free_full (l, (GDestroyNotify) gtk_recent_info_unref);
+	}
+
+	return retitems;
 }
 
 /* ex:set ts=8 noet: */
