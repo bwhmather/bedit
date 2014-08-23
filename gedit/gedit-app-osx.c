@@ -344,6 +344,27 @@ gedit_app_osx_startup (GApplication *application)
 	recent_files_menu_populate (app_osx);
 }
 
+static void
+set_window_allow_fullscreen (GeditWindow *window)
+{
+	GdkWindow *wnd;
+	NSWindow *native;
+
+	wnd = gtk_widget_get_window (GTK_WIDGET (window));
+
+	if (wnd != NULL)
+	{
+		native = gdk_quartz_window_get_nswindow (wnd);
+		[native setCollectionBehavior: [native collectionBehavior] | NSWindowCollectionBehaviorFullScreenPrimary];
+	}
+}
+
+static void
+on_window_realized (GtkWidget *widget)
+{
+	set_window_allow_fullscreen (GEDIT_WINDOW (widget));
+}
+
 static GeditWindow *
 gedit_app_osx_create_window_impl (GeditApp *app)
 {
@@ -352,6 +373,15 @@ gedit_app_osx_create_window_impl (GeditApp *app)
 	window = GEDIT_APP_CLASS (gedit_app_osx_parent_class)->create_window (app);
 
 	gtk_window_set_titlebar (GTK_WINDOW (window), NULL);
+
+	if (gtk_widget_get_realized (GTK_WIDGET (window)))
+	{
+		set_window_allow_fullscreen (window);
+	}
+	else
+	{
+		g_signal_connect (window, "realize", G_CALLBACK (on_window_realized), NULL);
+	}
 
 	return window;
 }
