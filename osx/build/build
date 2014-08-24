@@ -114,6 +114,11 @@ function cmd_jh() {
 	"$INSTALLD/bin/jhbuild" -f "$HOMED/.jhbuildrc" "$@"
 }
 
+function cmd_jhdbg() {
+	export GEDIT_OSX_DEBUG=1
+	cmd_jh "$@"
+}
+
 function cmd_shell() {
 	cmd_jh shell
 }

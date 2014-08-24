@@ -27,6 +27,11 @@ tarballdir = os.path.join(_basedir, "pkgs")
 # Main setup
 setup_sdk(target=_gsdk, sdk_version=_gsdk, architectures=['x86_64'])
 
+if 'GEDIT_OSX_DEBUG' in os.environ:
+    setup_debug()
+else:
+    setup_release()
+
 # Main module set
 modulesets_dir = os.path.join(_sourcedir, "modulesets")
 moduleset = "gedit.modules"
