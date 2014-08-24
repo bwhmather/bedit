@@ -20,7 +20,7 @@
          used. Note the usage of an environment variable here again.
     <destination overwrite="yes">${env:HOME}/Desktop</destination>
     -->
-    
+
     <image>
       <!-- Not implemented yet (DMG image). -->
     </image>
@@ -129,8 +129,6 @@
 
   <!-- gsettings schema -->
   <data>${prefix}/share/glib-2.0/schemas/gschemas.compiled</data>
-
-  <data dest="${bundle}/Contents/Resources/etc/gtk-3.0/settings.ini">${project}/settings.ini</data>
 
   <!-- Icon theme -->
   <icon-theme icons="auto">gnome</icon-theme>
