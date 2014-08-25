@@ -185,6 +185,45 @@ function cmd_run() {
 	cmd_jh run "$@"
 }
 
+function env_help_short() {
+	echo "Obtain certain environment paths"
+}
+
+function cmd_env() {
+	vars=(source inst bin home local-bin)
+
+	case "$1" in
+	source)
+		echo "$BASED/$GEDIT_SDK/source"
+		;;
+	inst)
+		echo "$BASED/$GEDIT_SDK/inst"
+		;;
+	bin)
+		echo "$BASED/$GEDIT_SDK/inst/bin"
+		;;
+	home)
+		echo "$HOMED"
+		;;
+	local-bin)
+		echo "$HOMED/.local/bin"
+		;;
+	"")
+		for v in "${vars[@]}"; do
+			u=$(echo -n "$v" | tr '-' '_')
+			echo -n "$u="
+			cmd_env "$v"
+		done
+		;;
+	*)
+		varnames=$(printf ", \033[1m%s\033[0m" "${vars[@]}")
+		varnames=${varnames:2}
+
+		do_exit "Unknown environment variable \033[1m$1\033[0m, available variables are: $varnames"
+		;;
+	esac
+}
+
 function all_help_short() {
 	echo "Runs the init, bootstrap and build commands"
 }
