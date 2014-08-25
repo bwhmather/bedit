@@ -273,7 +273,7 @@ function cmd_help() {
 		cmd="cmd_$1"
 
 		if [[ $(type -t "$cmd") != "function" ]]; then
-			do_exit "Invalid command \033[1m$1\033[0m, available commands are: $cmds\n"
+			do_exit "Invalid command \033[1m$1\033[0m, available commands are: $cmds"
 		fi
 
 		printf "Usage: $ME \033[1m$1\033[0m "
