@@ -1,45 +1,33 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE moduleset SYSTEM "moduleset.dtd">
-<moduleset><repository type="tarball" name="xmlsoft.org" href="ftp://xmlsoft.org/libxml2/"/>
-  <repository type="tarball" name="icon-theme" href="http://icon-theme.freedesktop.org/releases/"/>
-  <repository type="tarball" name="harfbuzz" href="http://www.freedesktop.org/software/harfbuzz/release/"/>
-  <repository type="tarball" name="cups" href="http://ftp.easysw.com/pub/"/>
-
-  <repository type="tarball" name="tarball.github.com" href="https://github.com/"/>
-
-  <repository type="tarball" name="iso-codes" href="http://pkg-isocodes.alioth.debian.org/downloads/"/>
-  <repository type="tarball" name="python" href="https://www.python.org/ftp/python/"/>
-  <repository type="tarball" name="libtiff" href="http://download.osgeo.org/"/>
-  <repository type="tarball" name="cairographics.org" href="http://cairographics.org/releases/"/>
-  <repository type="tarball" name="cairographics" href="http://cairographics.org/releases/"/>
-
-  <repository type="tarball" name="fontconfig" href="http://www.freedesktop.org/software/fontconfig/release/"/>
-  <repository type="tarball" name="tango.freedesktop.org" href="http://tango.freedesktop.org/releases/"/>
+<moduleset><repository type="tarball" name="libtiff" href="http://download.osgeo.org/"/>
+  <repository type="tarball" name="abisource/enchant" href="http://www.abisource.com/downloads/enchant/"/>
   <repository type="tarball" name="ftp.gnu.org" href="ftp://ftp.gnu.org/gnu/"/>
   <repository type="git" name="git.gnome.org" href="git://git.gnome.org/"/>
   <repository type="tarball" name="hadess" href="http://freedesktop.org/~hadess/"/>
-  <repository type="tarball" name="ftp.gnome.org" default="yes" href="ftp://ftp.gnome.org/pub/gnome/sources/"/>
-  <repository type="tarball" name="abisource/enchant" href="http://www.abisource.com/downloads/enchant/"/>
-  <repository type="tarball" name="oracle" href="http://download.oracle.com/"/>
-  <repository type="tarball" name="jpeg" href="http://www.ijg.org/files/"/>
+  <repository type="tarball" name="cups" href="http://ftp.easysw.com/pub/"/>
+
   <repository type="tarball" name="sourceforge" href="http://downloads.sourceforge.net/sourceforge/"/>
+  <repository type="tarball" name="fontconfig" href="http://www.freedesktop.org/software/fontconfig/release/"/>
+  <repository type="tarball" name="xmlsoft.org" href="ftp://xmlsoft.org/libxml2/"/>
+  <repository type="tarball" name="icon-theme" href="http://icon-theme.freedesktop.org/releases/"/>
+  <repository type="tarball" name="cairographics.org" href="http://cairographics.org/releases/"/>
+  <repository type="tarball" name="python" href="https://www.python.org/ftp/python/"/>
+  <repository type="tarball" name="jpeg" href="http://www.ijg.org/files/"/>
+  <repository type="tarball" name="iso-codes" href="http://pkg-isocodes.alioth.debian.org/downloads/"/>
+  <repository type="git" name="git.github.com" href="https://github.com/"/>
+
+  <repository type="tarball" name="tango.freedesktop.org" href="http://tango.freedesktop.org/releases/"/>
+  <repository type="tarball" name="ftp.gnome.org" default="yes" href="ftp://ftp.gnome.org/pub/gnome/sources/"/>
+  <repository type="tarball" name="oracle" href="http://download.oracle.com/"/>
   <repository type="tarball" name="sourceware.org" href="ftp://sourceware.org/pub/"/>
 
+  <repository type="tarball" name="cairographics" href="http://cairographics.org/releases/"/>
+
+  <repository type="tarball" name="tarball.github.com" href="https://github.com/"/>
+  <repository type="tarball" name="harfbuzz" href="http://www.freedesktop.org/software/harfbuzz/release/"/>
   <autotools id="libcroco" autogenargs="--disable-Bsymbolic" autogen-sh="configure">
     <branch module="libcroco/0.6/libcroco-0.6.8.tar.xz" version="0.6.8" hash="sha256:ea6e1b858c55219cefd7109756bff5bc1a774ba7a55f7d3ccd734d6b871b8570" repo="ftp.gnome.org"/>
-  </autotools>
-
-  <autotools id="harfbuzz" autogen-sh="configure" autogenargs="--with-coretext">
-    <branch repo="harfbuzz" module="harfbuzz-0.9.26.tar.bz2" version="0.9.26"/>
-    <dependencies>
-      <dep package="freetype"/>
-      <dep package="fontconfig"/>
-      <dep package="glib"/>
-    </dependencies>
-  </autotools>
-
-  <autotools id="zlib" autogen-sh="configure" skip-autogen="never" supports-non-srcdir-builds="no">
-    <branch repo="sourceforge" version="1.2.7" module="libpng/zlib-1.2.7.tar.gz"/>
   </autotools>
 
   <autotools id="gnome-icon-theme" autogen-sh="configure">
@@ -57,30 +45,7 @@
     </dependencies>
   </autotools>
 
-  <metamodule id="meta-gtk-osx-freetype">
-    <dependencies>
-      <dep package="freetype"/>
-      <dep package="fontconfig"/>
-      <dep package="harfbuzz"/>
-    </dependencies>
-  </metamodule>
-
-<autotools id="freetype" autogen-sh="configure" skip-autogen="never" autogenargs="--without-bzip2">
-    <branch module="freetype/freetype-2.5.2.tar.gz" version="2.5.2" repo="sourceforge">
-    </branch>
-    <dependencies>
-      <dep package="zlib"/>
-    </dependencies>
-  </autotools>
-
-  <autotools id="fontconfig" autogen-sh="autoreconf" autogenargs="--disable-docs">
-    <branch repo="fontconfig" version="2.11.0" module="fontconfig-2.11.0.tar.gz"/>
-    <dependencies>
-      <dep package="freetype"/>
-    </dependencies>
-  </autotools>
-
-<autotools id="pixman" autogenargs="--disable-gtk" autogen-sh="configure">
+  <autotools id="pixman" autogenargs="--disable-gtk" autogen-sh="configure">
     <branch version="0.30.2" module="pixman-0.30.2.tar.gz" repo="cairographics" hash="sha1:59cc9cd91a2394b7c0aa90ffc7c141f06d75f066"/>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
@@ -186,6 +151,10 @@
     </after>
   </autotools>
 
+  <autotools id="zlib" autogen-sh="configure" skip-autogen="never" supports-non-srcdir-builds="no">
+    <branch repo="sourceforge" version="1.2.7" module="libpng/zlib-1.2.7.tar.gz"/>
+  </autotools>
+
   <autotools id="python" autogenargs="--enable-shared" autogen-sh="configure">
     <branch repo="python" module="2.7.6/Python-2.7.6.tar.xz" version="2.7.6">
     </branch>
@@ -280,7 +249,7 @@
   </autotools>
 
 <autotools id="gtk+-3.0" autogenargs="--enable-quartz-backend --enable-quartz-relocation --disable-colord --without-atk-bridge">
-    <branch module="gtk+" checkoutdir="gtk+-3.0" repo="git.gnome.org" tag="c304d71a9b02d767348950d980a7605560420cc4"/>
+    <branch module="jessevdk/gtk" checkoutdir="gtk+-3.0" repo="git.github.com" tag="97ed4f71252d40a417f112637ba9b9a8ca25a3ac"/>
     <dependencies>
       <dep package="gobject-introspection"/>
       <dep package="pango"/>
@@ -290,6 +259,30 @@
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
     </after>
+  </autotools>
+
+  <autotools id="harfbuzz" autogen-sh="configure" autogenargs="--with-coretext">
+    <branch repo="harfbuzz" module="harfbuzz-0.9.26.tar.bz2" version="0.9.26"/>
+    <dependencies>
+      <dep package="freetype"/>
+      <dep package="fontconfig"/>
+      <dep package="glib"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="fontconfig" autogen-sh="autoreconf" autogenargs="--disable-docs">
+    <branch repo="fontconfig" version="2.11.0" module="fontconfig-2.11.0.tar.gz"/>
+    <dependencies>
+      <dep package="freetype"/>
+    </dependencies>
+  </autotools>
+
+<autotools id="freetype" autogen-sh="configure" skip-autogen="never" autogenargs="--without-bzip2">
+    <branch module="freetype/freetype-2.5.2.tar.gz" version="2.5.2" repo="sourceforge">
+    </branch>
+    <dependencies>
+      <dep package="zlib"/>
+    </dependencies>
   </autotools>
 
   <autotools id="gobject-introspection" autogen-sh="configure">
@@ -436,7 +429,15 @@
     </after>
   </metamodule>
 
-  <autotools id="libgit2-glib">
+  <metamodule id="meta-gtk-osx-freetype">
+    <dependencies>
+      <dep package="freetype"/>
+      <dep package="fontconfig"/>
+      <dep package="harfbuzz"/>
+    </dependencies>
+  </metamodule>
+
+<autotools id="libgit2-glib">
     <branch module="libgit2-glib/0.0/libgit2-glib-0.0.20.tar.xz" version="0.0.20" hash="sha256:f8a10c8d3fcad14eed080dff6b8db0c72866c11a05b9731af31cb7258bcc8d95" repo="ftp.gnome.org"/>
     <dependencies>
       <dep package="libgit2"/>
@@ -461,6 +462,7 @@
   <metamodule id="gedit-deps">
     <dependencies>
       <dep package="meta-gtk-osx-bootstrap"/>
+      <dep package="meta-gtk-osx-freetype"/>
       <dep package="meta-gtk-osx-gtk3"/>
       <dep package="libpeas"/>
       <dep package="gtksourceview3"/>
