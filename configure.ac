@@ -461,7 +461,7 @@ plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in
 plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in
 plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in
 po/Makefile.in
-osx/Info.plist])
+osx/bundle/data/Info.plist])
 
 AC_OUTPUT
 

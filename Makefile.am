@@ -92,7 +92,7 @@ CLEANFILES                =
 include data/Makefile.am
 include pixmaps/Makefile.am
 include win32/Makefile.am
-include osx/Makefile.am
+include osx/bundle/data/Makefile.am
 include tests/Makefile.am
 include plugins/Makefile.am
 include gedit/Makefile.am

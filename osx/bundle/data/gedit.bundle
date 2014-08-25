@@ -21,17 +21,14 @@
     <destination overwrite="yes">${env:HOME}/Desktop</destination>
     -->
 
-    <image>
-      <!-- Not implemented yet (DMG image). -->
-    </image>
-
     <!-- Optionally specify a launcher script to use. If the
          application sets up everything needed itself, like
          environment variable, linker paths, etc, a launcher script is
          not needed. If the source path is left out, the default
          script will be used.
     -->
-    <launcher-script>${project}/launcher.sh</launcher-script>
+    <launcher-script>${project}/gedit</launcher-script>
+    <run-install-name-tool/>
   </meta>
 
   <!-- The special macro "${project}" refers to the directory where
@@ -48,9 +45,6 @@
   <!-- Copy in GTK+ im modules -->
   <binary>${prefix}/lib/gtk-3.0/${pkg:gtk+-3.0:gtk_binary_version}/immodules/*.so</binary>
 
-  <!-- Copy in GTK+ theming engines -->
-  <binary>${prefix}/lib/gtk-3.0/${pkg:gtk+-3.0:gtk_binary_version}/theming-engines/*.so</binary>
-
   <!-- Copy in pango modules -->
   <binary>${prefix}/lib/pango/${pkg:pango:pango_module_version}/modules/*.so</binary>
 
@@ -64,46 +58,31 @@
   <!-- Take the applespell enchant provider -->
   <binary>${prefix}/lib/enchant/libenchant_applespell.so</binary>
 
-  <!-- Copy in gio modules -->
-  <binary>${prefix}/lib/gio/modules/*.so</binary>
+  <!-- Copy in peas modules -->
+  <binary>${prefix}/lib/libpeas-1.0/loaders/*.so</binary>
 
   <!-- Copy in girepository typelibs -->
   <data>${prefix}/lib/girepository-1.0</data>
 
-  <!-- DBUS -->
-  <binary>${prefix}/bin/dbus-*</binary>
-  <data>${prefix}/etc/dbus-1</data>
-  <data>${prefix}/share/dbus-1</data>
-  <binary>${prefix}/libexec/dbus-daemon-launch-helper</binary>
+  <!-- Copy in gedit private girepository typelibs -->
+  <data>${prefix}/lib/gedit/girepository-1.0</data>
 
-  <!-- Copy in peas modules -->
-  <binary>${prefix}/lib/libpeas-1.0/loaders/*.so</binary>
 
   <!-- python -->
-  <binary>${prefix}/lib/python2.7/site-packages/cairo/*.so</binary>
-  <binary>${prefix}/lib/python2.7/site-packages/gi/*.so</binary>
-  <binary>${prefix}/lib/python2.7/site-packages/gi/_glib/*.so</binary>
-  <binary>${prefix}/lib/python2.7/site-packages/gi/_gobject/*.so</binary>
-  <binary>${prefix}/lib/python2.7/site-packages/libxml2mod.so</binary>
+  <binary>${prefix}/lib/python3.3/site-packages/cairo/*.so</binary>
+  <binary>${prefix}/lib/python3.3/site-packages/gi/*.so</binary>
 
-  <data>${prefix}/lib/python2.7/site-packages/cairo</data>
-  <data>${prefix}/lib/python2.7/site-packages/gi</data>
-  <data>${prefix}/lib/python2.7/site-packages/libxml2.py</data>
-  <data>${prefix}/include/python2.7/pyconfig.h</data>
+  <!--<data>${prefix}/lib/python3.3/site-packages/cairo</data>
+  <data>${prefix}/lib/python2.3/site-packages/gi</data>-->
 
-  <binary>${prefix}/lib/python2.7/lib-dynload/*.so</binary>
-  <data>${prefix}/lib/python2.7</data>
-  <binary>${prefix}/bin/python*</binary>
+  <data>${prefix}/include/python3.3m/pyconfig.h</data>
+
+  <binary>${prefix}/lib/python3.3/lib-dynload/*.so</binary>
+  <data>${prefix}/lib/python3.3</data>
+  <binary>${prefix}/bin/python3</binary>
 
   <!-- GTK+3 data -->
   <data>${prefix}/etc/gtk-3.0/*</data>
-
-  <!-- dconf -->
-  <binary>${prefix}/libexec/dconf-service</binary>
-
-  <!-- gvfs -->
-  <binary>${prefix}/libexec/gvfsd-*</binary>
-  <data>${prefix}/share/gvfs</data>
 
   <!-- gtksourceview -->
   <data>${prefix}/share/gtksourceview-3.0</data>
@@ -122,6 +101,8 @@
   <!-- Themes -->
   <data>${prefix}/share/themes/Default</data>
   <data>${prefix}/share/themes/Adwaita</data>
+  <data>${prefix}/share/themes/HighContrast</data>
+  <data>${prefix}/share/themes/Mac</data>
 
   <!-- App icon -->
   <data dest="${bundle}/Contents/Resources">${project}/gedit.icns</data>
@@ -131,10 +112,6 @@
   <data>${prefix}/share/glib-2.0/schemas/gschemas.compiled</data>
 
   <!-- Icon theme -->
+  <icon-theme icons="auto">Adwaita</icon-theme>
   <icon-theme icons="auto">gnome</icon-theme>
-  <!--<data>${prefix}/share/icons/gnome/16x16/apps/system-file-manager.png</data>
-  <data>${prefix}/share/icons/gnome/22x22/apps/system-file-manager.png</data>
-  <data>${prefix}/share/icons/gnome/24x24/apps/system-file-manager.png</data>
-  <data>${prefix}/share/icons/gnome/32x32/apps/system-file-manager.png</data>
-  <data>${prefix}/share/icons/gnome/scalable/apps/system-file-manager.svg</data>-->
 </app-bundle>
