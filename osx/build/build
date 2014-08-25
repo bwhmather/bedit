@@ -23,6 +23,7 @@ export PATH="$INSTALLD/bin:$PATH"
 
 function do_exit() {
 	printf "$@"
+	echo ""
 	exit 1
 }
 
