@@ -95,6 +95,7 @@ function cmd_init() {
 	setup_jhbuildrc
 
 	rm -f "$BASED/$GEDIT_SDK/source/gedit"
+	mkdir -p "$BASED/$GEDIT_SDK/source"
 	ln -s $(cd "$D/../../" && pwd) "$BASED/$GEDIT_SDK/source/gedit"
 }
 
