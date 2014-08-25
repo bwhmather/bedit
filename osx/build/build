@@ -35,6 +35,13 @@ if [ ! xcodebuild -version &>/dev/null ]; then
 	do_exit "You need to have Xcode installed to build gedit for OS X"
 fi
 
+xcodebase=$(xcode-select -p)
+sdkdir="$xcodebase/Platforms/MacOSX.platform/Developer/SDKs/MacOSX$GEDIT_SDK.sdk"
+
+if [ ! -d "$sdkdir" ]; then
+	do_exit "SDK base directory for $GEDIT_SDK not found. Please make sure to install the SDK at $sdkdir"
+fi
+
 function checkout_jhbuild() {
 	#JHBUILD_REVISION=$(curl -ks "$GTK_OSX_BASE_URL/jhbuild-revision")
 
