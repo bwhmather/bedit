@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pushd $(dirname $(dirname "$0")) > /dev/null
+pushd $(dirname "$0") > /dev/null
 D=$(pwd -P)
 popd > /dev/null
 
