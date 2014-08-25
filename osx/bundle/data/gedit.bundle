@@ -36,8 +36,10 @@
        identifier are taken from the plist file.
   -->
   <plist>${project}/Info.plist</plist>
-
   <main-binary>${prefix}/bin/gedit</main-binary>
+
+  <!-- Copy in dependencies of python plugins -->
+  <binary>${prefix}/lib/libgit2-glib*.dylib</binary>
 
   <!-- Copy in GTK+ printer backends -->
   <binary>${prefix}/lib/gtk-3.0/${pkg:gtk+-3.0:gtk_binary_version}/printbackends/*.so</binary>
