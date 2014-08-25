@@ -90,8 +90,16 @@ function cmd_make() {
 	echo "Removing unneeded files from bundle"
 
 	# Remove pyc and pyo files
-	for i in $(find "$BUNDLE/Contents/Resources/lib/python3"* -type f -regex '.*\.py[oc]' 2>/dev/null); do
-	    rm -f "$i"
+	for i in $(find "$BUNDLE/Contents/Resources/lib/"* -type f -regex '.*\.py[oc]' 2>/dev/null); do
+		rm -f "$i"
+	done
+
+	for i in $(find "$BUNDLE/Contents/Resources/lib/"* -type d -name '__pycache__' 2>/dev/null); do
+		rmdir "$i" 2>/dev/null
+	done
+
+	for i in $(find "$BUNDLE/Contents/Resources/lib/"* -type f -regex '.*\.py[oc]' 2>/dev/null); do
+		rm -f "$i"
 	done
 
 	echo "Strip debug symbols from bundle binaries"
