@@ -283,8 +283,11 @@ class Merger:
         with open(f, 'w') as f:
             root = ET.Element('moduleset')
 
-            for repo in needed_repos:
-                root.append(needed_repos[repo])
+            repos = needed_repos.values()
+            repos.sort(lambda a, b: cmp(a.attrib['name'], b.attrib['name']))
+
+            for repo in repos:
+                root.append(repo)
 
             for mod in self.required_modules:
                 root.append(mod)

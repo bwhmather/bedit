@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE moduleset SYSTEM "moduleset.dtd">
-<moduleset><repository type="tarball" name="xmlsoft.org" href="ftp://xmlsoft.org/libxml2/"/>
-  <repository type="tarball" name="intltool" href="http://launchpad.net/intltool/trunk/"/>
-
+<moduleset><repository type="tarball" name="apache.org" href="http://archive.apache.org/dist/"/>
   <repository type="tarball" name="cmake" href="http://www.cmake.org/files/"/>
-  <repository type="tarball" name="python" href="http://www.python.org/ftp/python/"/>
-  <repository type="tarball" name="apache.org" href="http://archive.apache.org/dist/"/>
-  <repository type="tarball" name="pkgconfig" href="http://pkgconfig.freedesktop.org/releases/"/>
-  <repository type="tarball" name="tukaani.org" href="http://tukaani.org/"/>
-  <repository type="tarball" name="itstool.org" href="http://files.itstool.org/itstool/"/>
-  <repository type="tarball" name="sourceforge" href="http://downloads.sourceforge.net/sourceforge/"/>
   <repository type="tarball" name="cpan" href="http://search.cpan.org/CPAN/"/>
   <repository type="tarball" name="ftp.gnome.org" default="yes" href="ftp://ftp.gnome.org/pub/gnome/sources/"/>
+  <repository type="tarball" name="ftp.gnu.org" href="ftp://ftp.gnu.org/gnu/"/>
+  <repository type="tarball" name="intltool" href="http://launchpad.net/intltool/trunk/"/>
+
+  <repository type="tarball" name="itstool.org" href="http://files.itstool.org/itstool/"/>
   <repository type="tarball" name="oracle" href="http://download.oracle.com/"/>
 
-  <repository type="tarball" name="ftp.gnu.org" href="ftp://ftp.gnu.org/gnu/"/>
+  <repository type="tarball" name="pkgconfig" href="http://pkgconfig.freedesktop.org/releases/"/>
+  <repository type="tarball" name="python" href="http://www.python.org/ftp/python/"/>
+  <repository type="tarball" name="sourceforge" href="http://downloads.sourceforge.net/sourceforge/"/>
+  <repository type="tarball" name="tukaani.org" href="http://tukaani.org/"/>
+  <repository type="tarball" name="xmlsoft.org" href="ftp://xmlsoft.org/libxml2/"/>
   <autotools id="berkeleydb-nonsrctree" autogen-sh="configure" autogen-template="%(srcdir)s/dist/%(autogen-sh)s --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s">
 
     <branch module="berkeley-db/db-4.8.30.NC.tar.gz" version="4.8.30" repo="oracle">

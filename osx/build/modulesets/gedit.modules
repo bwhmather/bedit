@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE moduleset SYSTEM "moduleset.dtd">
-<moduleset><repository type="tarball" name="libtiff" href="http://download.osgeo.org/"/>
-  <repository type="tarball" name="abisource/enchant" href="http://www.abisource.com/downloads/enchant/"/>
-  <repository type="tarball" name="ftp.gnu.org" href="ftp://ftp.gnu.org/gnu/"/>
-  <repository type="git" name="git.gnome.org" href="git://git.gnome.org/"/>
-  <repository type="tarball" name="hadess" href="http://freedesktop.org/~hadess/"/>
-  <repository type="tarball" name="cups" href="http://ftp.easysw.com/pub/"/>
-
-  <repository type="tarball" name="sourceforge" href="http://downloads.sourceforge.net/sourceforge/"/>
-  <repository type="tarball" name="fontconfig" href="http://www.freedesktop.org/software/fontconfig/release/"/>
-  <repository type="tarball" name="xmlsoft.org" href="ftp://xmlsoft.org/libxml2/"/>
-  <repository type="tarball" name="icon-theme" href="http://icon-theme.freedesktop.org/releases/"/>
-  <repository type="tarball" name="cairographics.org" href="http://cairographics.org/releases/"/>
-  <repository type="tarball" name="python" href="https://www.python.org/ftp/python/"/>
-  <repository type="tarball" name="jpeg" href="http://www.ijg.org/files/"/>
-  <repository type="tarball" name="iso-codes" href="http://pkg-isocodes.alioth.debian.org/downloads/"/>
-  <repository type="git" name="git.github.com" href="https://github.com/"/>
-
-  <repository type="tarball" name="tango.freedesktop.org" href="http://tango.freedesktop.org/releases/"/>
-  <repository type="tarball" name="ftp.gnome.org" default="yes" href="ftp://ftp.gnome.org/pub/gnome/sources/"/>
-  <repository type="tarball" name="oracle" href="http://download.oracle.com/"/>
-  <repository type="tarball" name="sourceware.org" href="ftp://sourceware.org/pub/"/>
-
+<moduleset><repository type="tarball" name="abisource/enchant" href="http://www.abisource.com/downloads/enchant/"/>
   <repository type="tarball" name="cairographics" href="http://cairographics.org/releases/"/>
 
-  <repository type="tarball" name="tarball.github.com" href="https://github.com/"/>
+  <repository type="tarball" name="cairographics.org" href="http://cairographics.org/releases/"/>
+  <repository type="tarball" name="cups" href="http://ftp.easysw.com/pub/"/>
+
+  <repository type="tarball" name="fontconfig" href="http://www.freedesktop.org/software/fontconfig/release/"/>
+  <repository type="tarball" name="ftp.gnome.org" default="yes" href="ftp://ftp.gnome.org/pub/gnome/sources/"/>
+  <repository type="tarball" name="ftp.gnu.org" href="ftp://ftp.gnu.org/gnu/"/>
+  <repository type="git" name="git.github.com" href="https://github.com/"/>
+
+  <repository type="git" name="git.gnome.org" href="git://git.gnome.org/"/>
+  <repository type="tarball" name="hadess" href="http://freedesktop.org/~hadess/"/>
   <repository type="tarball" name="harfbuzz" href="http://www.freedesktop.org/software/harfbuzz/release/"/>
+  <repository type="tarball" name="icon-theme" href="http://icon-theme.freedesktop.org/releases/"/>
+  <repository type="tarball" name="iso-codes" href="http://pkg-isocodes.alioth.debian.org/downloads/"/>
+  <repository type="tarball" name="jpeg" href="http://www.ijg.org/files/"/>
+  <repository type="tarball" name="libtiff" href="http://download.osgeo.org/"/>
+  <repository type="tarball" name="oracle" href="http://download.oracle.com/"/>
+  <repository type="tarball" name="python" href="https://www.python.org/ftp/python/"/>
+  <repository type="tarball" name="sourceforge" href="http://downloads.sourceforge.net/sourceforge/"/>
+  <repository type="tarball" name="sourceware.org" href="ftp://sourceware.org/pub/"/>
+
+  <repository type="tarball" name="tango.freedesktop.org" href="http://tango.freedesktop.org/releases/"/>
+  <repository type="tarball" name="tarball.github.com" href="https://github.com/"/>
+  <repository type="tarball" name="xmlsoft.org" href="ftp://xmlsoft.org/libxml2/"/>
   <autotools id="libcroco" autogenargs="--disable-Bsymbolic" autogen-sh="configure">
     <branch module="libcroco/0.6/libcroco-0.6.8.tar.xz" version="0.6.8" hash="sha256:ea6e1b858c55219cefd7109756bff5bc1a774ba7a55f7d3ccd734d6b871b8570" repo="ftp.gnome.org"/>
   </autotools>
