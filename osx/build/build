@@ -235,7 +235,6 @@ function cmd_all() {
 	fi
 
 	if [ ! -f "$BASED/$GEDIT_SDK/inst/bin/python" ]; then
-		echo "bootstrap"
 		cmd_bootstrap || exit 1
 	fi
 
