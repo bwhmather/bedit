@@ -1,81 +1,24 @@
-This is a guide to building gedit on OS X. This guide assumes that you are
-already familiar with building gtk+ software on OS X (natively) using jhbuild.
-Please make sure to read https://live.gnome.org/GTK%2B/OSX/Building
-before proceeding.
+This document briefly describes how to build and package gedit for OS X.
 
-Note: Terminal commands are preceded by dollar signs.
-
-1) Building gedit for OS X
+Building gedit for OS X
 =============================================================================
+Please see build/README for more details on building gedit
 
-Get and install the gtk-osx-build-setup.sh from:
-http://git.gnome.org/browse/gtk-osx/plain/gtk-osx-build-setup.sh
 
-$ curl -O http://git.gnome.org/browse/gtk-osx/plain/gtk-osx-build-setup.sh
-$ sh gtk-osx-build-setup.sh
-
-Some of the newer releases of gnome software are only providing .xz packages.
-To be able to extract the contents of these packages, you will need to install
-xz utils. The easiest way to install is to use a dmg package available on:
-
-http://macpkg.sourceforge.net/
-
-Make sure to include /usr/local/bin in your PATH and alsothat you are not
-conflicting anything from fink/macports. If you are using fink/macports, you
-can add the following to your ~/.bashrc to remove any PATHS related to 
-fink/macports when using jhbuild:
-
-    # Add /usr/local/bin
-    export PATH="$PATH:/usr/local/bin"
-
-    # Remove fink/macports path from PATH and store in local var origpath
-    origpath=$(echo $PATH | sed -E -e 's;:?/opt/local/bin;;' -e 's;:?/opt/local/sbin;;')
-
-    # Alias jhbuild
-    alias jhbuild="PATH=$origpath:$HOME/.local/bin jhbuild"
-
-For gedit we need to modify some configuration for jhbuild. A special
-jhbuildrc is provided in the gedit source (osx/jhbuild/jhbuildrc-gedit). Copy
-this file to your home.
-
-$ curl -o ~/.jhbuildrc-gedit http://git.gnome.org/browse/gedit/plain/osx/jhbuild/jhbuildrc-gedit
-
-gedit provides a custom moduleset for jhbuild that you can use to built gedit. This moduleset is specified in jhbuildrc-gedit (together with some other
-configurations for jhbuild specific for gedit).
-
-To use the special gedit jhbuild configuration you will have to set the
-environment variables JHB=gedit and GEDIT_SDK=<sdk>. Where <sdk> is the SDK
-version you want to built for (i.e. 10.4, 10.5, 10.6, etc.).
-
-IMPORTANT: jhbuildrc-gedit will call setup_sdk for the right sdk. However, by
-default setup_sdk is already called from ~/.jhbuildrc-custom. Please make sure
-to comment out the call to setup_sdk in ~/.jhbuildrc-custom!
-
-Finally we are ready to built gedit:
-
-$ JHB=gedit GEDIT_SDK=10.6 jhbuild bootstrap --ignore-system
-$ JHB=gedit GEDIT_SDK=10.6 jhbuild build gedit-meta
-
-Note that it's perfectly possible that something might fail during the built,
-as the OS X (quartz) port of gedit, gtk+, glib etc. is under development.
-Please feel free to drop by on IRC or send an e-mail to the gedit mailing list
-(or gtk-osx-users mailing list) if you are not able to make things work.
-
-Packages will be downloaded in ~/gedit/pkgs. Sources are extracted in ~/gedit/<sdk>/source and installation of the binaries is in ~/gedit/<sdk>/inst.
- 
-
-2) Making a gedit bundle
+Making a gedit bundle
 =============================================================================
 
 You can make a gedit bundle (i.e. a gedit.app) with a script provided by
-gedit. Note that you have to execute script from within the jhbuild shell:
+gedit.
 
-$ JHB=gedit GEDIT_SDK=10.6 jhbuild shell
+    ./make bundle
 
-Then, go to the osx directory in the gedit source and execute:
+Note that in order for this to succeed, you will need to have built gedit
+successfully before. If successful, you will now have a gedit.app bundle
+in this directory. Similarly, if you want to build the final dmg image,
+you can use:
 
-$ sh makebundle.sh
+    ./make dmg
 
-If succeeded, you will now have a gedit.app bundle in the osx directory.
-Similarly, if you want to built the final dmg image, you can use the script
-makedmg.sh
+Again, for this to succeed you first need to have successfully built the
+bundle.
