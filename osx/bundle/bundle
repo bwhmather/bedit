@@ -80,9 +80,9 @@ function cmd_make() {
 		lbin=$("$b" env local-bin)
 
 		echo "Generating bundle from gedit.bundle specification..."
-	    "$b" run "$lbin/gtk-mac-bundler" "$D/data/gedit.bundle" || exit 1
+		"$b" run "$lbin/gtk-mac-bundler" "$D/data/gedit.bundle" || exit 1
 
-	    mv "$D/data/gedit.app" "$BUNDLE"
+		mv "$D/data/gedit.app" "$BUNDLE"
 	else
 		echo "$BUNDLE bundle already exists, only stripping it..."
 	fi
@@ -98,14 +98,14 @@ function cmd_make() {
 
 	# Strip debug symbols from libraries/modules
 	for i in $(find -E "$BUNDLE/Contents/Resources" -type f -regex '.*\.(so|dylib)$' 2>/dev/null); do
-	    do_strip "$i"
+		do_strip "$i"
 	done
 
 	# Strip debug symbols from binaries
 	for i in $(find "$BUNDLE/Contents/Resources/bin" -type f 2>/dev/null); do
-	    if [ -x "$i" ]; then
-	        do_strip "$i"
-	    fi
+		if [ -x "$i" ]; then
+			do_strip "$i"
+		fi
 	done
 
 	# Strip debug symbols from main binary
