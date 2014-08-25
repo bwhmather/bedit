@@ -398,6 +398,7 @@
     <branch module="1.6.0/enchant-1.6.0.tar.gz" version="1.6.0" repo="abisource/enchant">
       <patch file="enchant/enchant-gsize.patch" strip="1"/>
       <patch file="enchant/enchant-applespell.patch" strip="1"/>
+      <patch file="enchant/enchant-relocatable.patch" strip="1"/>
     </branch>
     <dependencies>
       <dep package="glib"/>
