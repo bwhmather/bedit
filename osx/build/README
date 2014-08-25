@@ -27,6 +27,11 @@ all its dependencies. Each of these stages can also be invoked manually:
     ./build bootstrap
     ./build build
 
+Note that at the moment of writing, ./build bootstrap is not entirely
+equivalent to ./build jh bootstrap. The reason is that there is a problem
+when building python as part of the bootstrap process. As a workaround,
+python is actually built twice during bootstrap.
+
 By default, ./build will build against the 10.7 (Lion) OS X SDK, which
 has to be already installed and available at
 
@@ -35,8 +40,10 @@ $(xcode-select -p)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
 Although Xcode 5 does not distribute the 10.7 SDK by default, it can be
 easily obtained from previous Xcode versions. To do so, find the last
 version of Xcode to support a given SDK and download it from apple
-developer downloads. Open the package, and without installing, extract
-the SDK directory and copy it to the right location.
+developer downloads [1]. Open the package, and without installing,
+extract the SDK directory and copy it to the right location. For 10.7,
+the latest Xcode version to support it is 4.3.3, which can be downloaded
+at [2] (links subject to change).
 
 It is also possible to build gedit against a different SDK by exporting
 the GEDIT_SDK environment variable (defaults to 10.7). For example:
@@ -114,3 +121,11 @@ The general structure is as follows:
        which is a self-contained modulesets/patches jhbuild configuration.
        It can be copied to the parent directory to replace the previous
        modulesets (which were generated in the same manner).
+
+       Versions queried from GNOME ftp and downloaded patches are cached by
+       default in /.cache. Make sure to remove this directory (or parts of
+       it) to get up-to-date.
+
+
+[1] https://developer.apple.com/downloads
+[2] http://adcdownload.apple.com/Developer_Tools/xcode_4.3.3_for_lion/xcode_4.3.3_for_lion.dmg
