@@ -217,7 +217,7 @@ if test "x$enable_updater" != "xno"; then
 		libsoup-2.4,
 		have_libsoup=yes,
 		have_libsoup=no)
-	
+
 	if test "x$have_libsoup" = "xyes"; then
 		if test "x$os_win32" = "xyes"; then
 			enable_updater=yes
@@ -239,7 +239,7 @@ dnl ================================================================
 
 ENCHANT_REQUIRED=1.2.0
 ISO_CODES_REQUIRED=0.35
-	
+
 AC_ARG_ENABLE([spell],
 	AS_HELP_STRING([--disable-spell],[Disable spell plugin (default: enabled)]),
 	[enable_enchant=$enableval],
@@ -484,9 +484,9 @@ if expr ${GEDIT_MINOR_VERSION} % 2 > /dev/null; then
 	stable_version=`expr ${GEDIT_MINOR_VERSION} - 1`
 
 cat << EOF
- *** IMPORTANT *** 
+ *** IMPORTANT ***
 
-This is an unstable version of gedit. 
+This is an unstable version of gedit.
 It is for test purposes only.
 
 Please, DO NOT use it in a production environment.
