@@ -275,7 +275,6 @@ create_infobar (GeditWindow *window,
 {
 	GtkWidget *infobar;
 	gchar *message;
-	GtkWidget *button;
 
 	infobar = gtk_info_bar_new ();
 
