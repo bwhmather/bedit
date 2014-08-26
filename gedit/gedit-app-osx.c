@@ -263,14 +263,23 @@ recent_file_activated (GAction        *action,
                        GVariant       *parameter,
                        RecentFileInfo *info)
 {
-	GtkWindow *window;
+	GeditWindow *window;
 	const gchar *uri;
 	GFile *file;
 
 	uri = gtk_recent_info_get_uri (info->info);
 	file = g_file_new_for_uri (uri);
 
-	window = gtk_application_get_active_window (GTK_APPLICATION (info->app));
+	window = GEDIT_WINDOW (gtk_application_get_active_window (GTK_APPLICATION (info->app)));
+
+	if (window == NULL)
+	{
+		window = gedit_app_create_window (GEDIT_APP (info->app), NULL);
+
+		gtk_widget_show (GTK_WIDGET (window));
+		gtk_window_present (GTK_WINDOW (window));
+	}
+
 	gedit_commands_load_location (GEDIT_WINDOW (window), file, NULL, 0, 0);
 
 	g_object_unref (file);
