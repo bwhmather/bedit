@@ -1361,6 +1361,34 @@ _gedit_cmd_file_revert (GSimpleAction *action,
 	gtk_widget_show (dialog);
 }
 
+static void
+quit_if_needed (GeditWindow *window)
+{
+	gboolean is_quitting;
+	gboolean is_quitting_all;
+
+	is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
+							      GEDIT_IS_QUITTING));
+
+	if (is_quitting)
+		gtk_widget_destroy (GTK_WIDGET (window));
+
+	is_quitting_all = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
+							          GEDIT_IS_QUITTING_ALL));
+
+	if (is_quitting_all)
+	{
+		GtkApplication *app;
+
+		app = GTK_APPLICATION (g_application_get_default ());
+
+		if (gtk_application_get_windows (app) == NULL)
+		{
+			g_application_quit (G_APPLICATION (app));
+		}
+	}
+}
+
 /* Close tab */
 static gboolean
 really_close_tab (GeditTab *tab)
@@ -1382,13 +1410,7 @@ really_close_tab (GeditTab *tab)
 
 	if (gedit_window_get_active_tab (window) == NULL)
 	{
-		gboolean is_quitting;
-
-		is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-								      GEDIT_IS_QUITTING));
-
-		if (is_quitting)
-			gtk_widget_destroy (GTK_WIDGET (window));
+		quit_if_needed (window);
 	}
 
 	return FALSE;
@@ -1636,20 +1658,12 @@ save_and_close_document (const GList  *docs,
 static void
 close_all_tabs (GeditWindow *window)
 {
-	gboolean is_quitting;
-
 	gedit_debug (DEBUG_COMMANDS);
 
 	/* There is no document to save -> close all tabs */
 	gedit_window_close_all_tabs (window);
 
-	is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-							      GEDIT_IS_QUITTING));
-
-	if (is_quitting)
-		gtk_widget_destroy (GTK_WIDGET (window));
-
-	return;
+	quit_if_needed (window);
 }
 
 static void
@@ -1763,11 +1777,9 @@ close_confirmation_dialog_response_handler (GeditCloseConfirmationDialog *dlg,
 			                   GEDIT_IS_QUITTING,
 			                   GBOOLEAN_TO_POINTER (FALSE));
 
-#ifdef OS_OSX
 			g_object_set_data (G_OBJECT (window),
 			                   GEDIT_IS_QUITTING_ALL,
-			                   GINT_TO_POINTER (FALSE));
-#endif
+			                   GBOOLEAN_TO_POINTER (FALSE));
 			break;
 	}
 
@@ -1829,7 +1841,7 @@ _gedit_cmd_file_close_tab (GeditTab    *tab,
 
 	g_object_set_data (G_OBJECT (window),
 	                   GEDIT_IS_QUITTING_ALL,
-	                   GINT_TO_POINTER (FALSE));
+	                   GBOOLEAN_TO_POINTER (FALSE));
 
 	if (tab_can_close (tab, GTK_WINDOW (window)))
 	{
@@ -1928,7 +1940,7 @@ _gedit_cmd_file_close_notebook (GeditWindow   *window,
 
 	g_object_set_data (G_OBJECT (window), GEDIT_IS_CLOSING_ALL, GBOOLEAN_TO_POINTER (FALSE));
 	g_object_set_data (G_OBJECT (window), GEDIT_IS_QUITTING, GBOOLEAN_TO_POINTER (FALSE));
-	g_object_set_data (G_OBJECT (window), GEDIT_IS_QUITTING_ALL, GINT_TO_POINTER (FALSE));
+	g_object_set_data (G_OBJECT (window), GEDIT_IS_QUITTING_ALL, GBOOLEAN_TO_POINTER (FALSE));
 
 	g_object_set_data (G_OBJECT (window), GEDIT_NOTEBOOK_TO_CLOSE, notebook);
 
@@ -1980,11 +1992,7 @@ file_close_all (GeditWindow *window,
 	{
 		/* There is no document to save -> close all tabs */
 		gedit_window_close_all_tabs (window);
-
-		if (is_quitting)
-		{
-			gtk_widget_destroy (GTK_WIDGET (window));
-		}
+		quit_if_needed (window);
 	}
 }
 
@@ -2010,8 +2018,16 @@ quit_all (void)
 {
 	GList *windows;
 	GList *l;
+	GApplication *app;
 
-	windows = gedit_app_get_main_windows (GEDIT_APP (g_application_get_default ()));
+	app = g_application_get_default ();
+	windows = gedit_app_get_main_windows (GEDIT_APP (app));
+
+	if (windows == NULL)
+	{
+		g_application_quit (app);
+		return;
+	}
 
 	for (l = windows; l != NULL; l = g_list_next (l))
 	{
@@ -2019,7 +2035,7 @@ quit_all (void)
 
 		g_object_set_data (G_OBJECT (window),
 		                   GEDIT_IS_QUITTING_ALL,
-		                   GINT_TO_POINTER (TRUE));
+		                   GBOOLEAN_TO_POINTER (TRUE));
 
 		if (!(gedit_window_get_state (window) &
 		      (GEDIT_WINDOW_STATE_SAVING | GEDIT_WINDOW_STATE_PRINTING)))
