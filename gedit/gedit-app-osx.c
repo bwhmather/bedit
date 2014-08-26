@@ -30,10 +30,79 @@
 #include "gedit-commands.h"
 #include "gedit-recent.h"
 
+@interface GeditAppOSXDelegate : NSObject
+{
+	GeditAppOSX *app;
+	id<NSApplicationDelegate> orig;
+}
+
+- (id)initWithApp:(GeditAppOSX *)theApp;
+- (void)release;
+
+- (id)forwardingTargetForSelector:(SEL)aSelector;
+- (BOOL)respondsToSelector:(SEL)aSelector;
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag;
+
+@end
+
+@implementation GeditAppOSXDelegate
+- (id)initWithApp:(GeditAppOSX *)theApp
+{
+	[super init];
+	app = theApp;
+
+	orig = [NSApp delegate];
+	[NSApp setDelegate:self];
+
+	return self;
+}
+
+- (void)release
+{
+	[NSApp setDelegate:orig];
+	[super release];
+}
+
+- (id)forwardingTargetForSelector:(SEL)aSelector
+{
+	return orig;
+}
+
+- (BOOL)respondsToSelector:(SEL)aSelector
+{
+    return [super respondsToSelector:aSelector] || [orig respondsToSelector:aSelector];
+}
+
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
+{
+	GeditWindow *window = NULL;
+
+	window = GEDIT_WINDOW (gtk_application_get_active_window (GTK_APPLICATION (app)));
+
+	if (!flag || !window)
+	{
+		// Simply create a new window with an empty doc
+		window = gedit_app_create_window (GEDIT_APP (app), NULL);
+
+		gedit_debug_message (DEBUG_APP, "Show window");
+		gtk_widget_show (GTK_WIDGET (window));
+
+		gedit_window_create_tab (window, TRUE);
+	}
+
+	gtk_window_present (GTK_WINDOW (window));
+	return NO;
+}
+
+@end
+
 struct _GeditAppOSXPrivate
 {
 	GeditMenuExtension *recent_files_menu;
 	gulong recent_manager_changed_id;
+
+	GeditAppOSXDelegate *app_delegate;
 
 	GList *recent_actions;
 	GeditRecentConfiguration recent_config;
@@ -71,6 +140,8 @@ gedit_app_osx_finalize (GObject *object)
 	                             app_osx->priv->recent_manager_changed_id);
 
 	gedit_recent_configuration_destroy (&app_osx->priv->recent_config);
+
+	[app_osx->priv->app_delegate release];
 
 	G_OBJECT_CLASS (gedit_app_osx_parent_class)->finalize (object);
 }
@@ -273,6 +344,7 @@ static void
 gedit_app_osx_startup (GApplication *application)
 {
 	GeditAppOSX *app_osx;
+	id delegate;
 
 	const gchar *replace_accels[] = {
 		"<Primary><Alt>F",
@@ -281,11 +353,13 @@ gedit_app_osx_startup (GApplication *application)
 
 	G_APPLICATION_CLASS (gedit_app_osx_parent_class)->startup (application);
 
+	app_osx = GEDIT_APP_OSX (application);
+
+	app_osx->priv->app_delegate = [[[GeditAppOSXDelegate alloc] initWithApp:app_osx] retain];
+
 	gtk_application_set_accels_for_action (GTK_APPLICATION (application),
 	                                       "win.replace",
 	                                       replace_accels);
-
-	app_osx = GEDIT_APP_OSX (application);
 
 	gedit_recent_configuration_init_default (&app_osx->priv->recent_config);
 
@@ -301,6 +375,8 @@ gedit_app_osx_startup (GApplication *application)
 	recent_files_menu_populate (app_osx);
 
 	g_application_hold (application);
+
+	delegate = [NSApp delegate];
 }
 
 static void
