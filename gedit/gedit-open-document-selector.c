@@ -386,7 +386,6 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 	                                                    open_document_selector);
 
 	priv->populate_listbox_id = 0;
-	priv->recent_manager_changed_id = 0;
 
 	g_signal_connect (open_document_selector->recent_search_entry,
 	                  "changed",
