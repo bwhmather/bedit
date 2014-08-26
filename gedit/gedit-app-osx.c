@@ -341,25 +341,61 @@ recent_manager_changed (GtkRecentManager *manager,
 }
 
 static void
+open_activated (GSimpleAction *action,
+                GVariant      *parameter,
+                gpointer       userdata)
+{
+	_gedit_cmd_file_open (NULL, NULL, NULL);
+}
+
+static GActionEntry app_entries[] = {
+	{ "open", open_activated, NULL, NULL, NULL }
+};
+
+static void
+update_open_sensitivity (GeditAppOSX *app)
+{
+	GAction *action;
+	gboolean has_windows;
+
+	has_windows = (gtk_application_get_windows (GTK_APPLICATION (app)) != NULL);
+
+	action = g_action_map_lookup_action (G_ACTION_MAP (app), "open");
+	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), !has_windows);
+}
+
+static void
 gedit_app_osx_startup (GApplication *application)
 {
 	GeditAppOSX *app_osx;
-	id delegate;
 
 	const gchar *replace_accels[] = {
 		"<Primary><Alt>F",
 		NULL
 	};
 
+	const gchar *open_accels[] = {
+		"<Primary>O",
+		NULL
+	};
+
 	G_APPLICATION_CLASS (gedit_app_osx_parent_class)->startup (application);
 
 	app_osx = GEDIT_APP_OSX (application);
-
 	app_osx->priv->app_delegate = [[[GeditAppOSXDelegate alloc] initWithApp:app_osx] retain];
+
+	g_action_map_add_action_entries (G_ACTION_MAP (application),
+	                                 app_entries,
+	                                 G_N_ELEMENTS (app_entries),
+	                                 application);
 
 	gtk_application_set_accels_for_action (GTK_APPLICATION (application),
 	                                       "win.replace",
 	                                       replace_accels);
+
+	gtk_application_set_accels_for_action (GTK_APPLICATION (application),
+	                                       "app.open",
+	                                       open_accels);
 
 	gedit_recent_configuration_init_default (&app_osx->priv->recent_config);
 
@@ -375,8 +411,7 @@ gedit_app_osx_startup (GApplication *application)
 	recent_files_menu_populate (app_osx);
 
 	g_application_hold (application);
-
-	delegate = [NSApp delegate];
+	update_open_sensitivity (app_osx);
 }
 
 static void
@@ -450,16 +485,38 @@ gedit_app_osx_constructed (GObject *object)
 }
 
 static void
+gedit_app_osx_window_added (GtkApplication *application,
+                            GtkWindow      *window)
+{
+	GTK_APPLICATION_CLASS (gedit_app_osx_parent_class)->window_added (application, window);
+
+	update_open_sensitivity (GEDIT_APP_OSX (application));
+}
+
+static void
+gedit_app_osx_window_removed (GtkApplication *application,
+                              GtkWindow      *window)
+{
+	GTK_APPLICATION_CLASS (gedit_app_osx_parent_class)->window_removed (application, window);
+
+	update_open_sensitivity (GEDIT_APP_OSX (application));
+}
+
+static void
 gedit_app_osx_class_init (GeditAppOSXClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GeditAppClass *app_class = GEDIT_APP_CLASS (klass);
 	GApplicationClass *application_class = G_APPLICATION_CLASS (klass);
+	GtkApplicationClass *gtkapplication_class = GTK_APPLICATION_CLASS (klass);
 
 	object_class->finalize = gedit_app_osx_finalize;
 	object_class->constructed = gedit_app_osx_constructed;
 
 	application_class->startup = gedit_app_osx_startup;
+
+	gtkapplication_class->window_added = gedit_app_osx_window_added;
+	gtkapplication_class->window_removed = gedit_app_osx_window_removed;
 
 	app_class->show_help = gedit_app_osx_show_help_impl;
 	app_class->set_window_title = gedit_app_osx_set_window_title_impl;
