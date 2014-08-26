@@ -361,8 +361,6 @@ gedit_file_chooser_dialog_new_valist (const gchar             *title,
 	GtkFileFilter *filter;
 	gint active_filter;
 
-	g_return_val_if_fail (parent != NULL, NULL);
-
 	result = g_object_new (GEDIT_TYPE_FILE_CHOOSER_DIALOG,
 			       "title", title,
 			       "local-only", FALSE,
@@ -421,8 +419,11 @@ gedit_file_chooser_dialog_new_valist (const gchar             *title,
 			  G_CALLBACK (filter_changed),
 			  NULL);
 
-	gtk_window_set_transient_for (GTK_WINDOW (result), parent);
-	gtk_window_set_destroy_with_parent (GTK_WINDOW (result), TRUE);
+	if (parent != NULL)
+	{
+		gtk_window_set_transient_for (GTK_WINDOW (result), parent);
+		gtk_window_set_destroy_with_parent (GTK_WINDOW (result), TRUE);
+	}
 
 	while (button_text)
 	{

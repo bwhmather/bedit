@@ -391,6 +391,15 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 
+	if (window == NULL)
+	{
+		window = gedit_app_create_window (GEDIT_APP (g_application_get_default ()),
+		                                  NULL);
+
+		gtk_widget_show (GTK_WIDGET (window));
+		gtk_window_present (GTK_WINDOW (window));
+	}
+
 	/* Remember the folder we navigated to */
 	 _gedit_window_set_default_location (window, files->data);
 
@@ -409,71 +418,85 @@ _gedit_cmd_file_open (GSimpleAction *action,
                       GVariant      *parameter,
                       gpointer       user_data)
 {
-	GeditWindow *window = GEDIT_WINDOW (user_data);
+	GeditWindow *window = NULL;
 	GtkWidget *open_dialog;
-	gpointer data;
-	GeditDocument *doc;
-	GFile *default_path = NULL;
+
+	if (GEDIT_IS_WINDOW (user_data))
+	{
+		window = GEDIT_WINDOW (user_data);
+	}
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_DIALOG_KEY);
-
-	if (data != NULL)
+	if (window != NULL)
 	{
-		g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (data));
+		gpointer data;
 
-		gtk_window_present (GTK_WINDOW (data));
+		data = g_object_get_data (G_OBJECT (window), GEDIT_OPEN_DIALOG_KEY);
 
-		return;
+		if (data != NULL)
+		{
+			g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (data));
+
+			gtk_window_present (GTK_WINDOW (data));
+
+			return;
+		}
+
+		gtk_widget_hide (GTK_WIDGET (window->priv->open_document_popover));
+		gtk_widget_hide (GTK_WIDGET (window->priv->fullscreen_open_document_popover));
 	}
-
-	gtk_widget_hide (GTK_WIDGET (window->priv->open_document_popover));
-	gtk_widget_hide (GTK_WIDGET (window->priv->fullscreen_open_document_popover));
 
 	/* Translators: "Open" is the title of the file chooser window */
 	open_dialog = gedit_file_chooser_dialog_new (_("Open"),
-						     GTK_WINDOW (window),
+						     window ? GTK_WINDOW (window) : NULL,
 						     GTK_FILE_CHOOSER_ACTION_OPEN,
 						     NULL,
 						     _("_Cancel"), GTK_RESPONSE_CANCEL,
 						     _("_Open"), GTK_RESPONSE_OK,
 						     NULL);
 
-	g_object_set_data (G_OBJECT (window),
-			   GEDIT_OPEN_DIALOG_KEY,
-			   open_dialog);
-
-	g_object_weak_ref (G_OBJECT (open_dialog),
-			   (GWeakNotify) open_dialog_destroyed,
-			   window);
-
-	/* Set the curret folder uri */
-	doc = gedit_window_get_active_document (window);
-	if (doc != NULL)
+	if (window != NULL)
 	{
-		GtkSourceFile *file = gedit_document_get_file (doc);
-		GFile *location = gtk_source_file_get_location (file);
+		GeditDocument *doc;
+		GFile *default_path = NULL;
 
-		if (location != NULL)
+		g_object_set_data (G_OBJECT (window),
+				   GEDIT_OPEN_DIALOG_KEY,
+				   open_dialog);
+
+		g_object_weak_ref (G_OBJECT (open_dialog),
+				   (GWeakNotify) open_dialog_destroyed,
+				   window);
+
+		/* Set the current folder uri */
+		doc = gedit_window_get_active_document (window);
+
+		if (doc != NULL)
 		{
-			default_path = g_file_get_parent (location);
+			GtkSourceFile *file = gedit_document_get_file (doc);
+			GFile *location = gtk_source_file_get_location (file);
+
+			if (location != NULL)
+			{
+				default_path = g_file_get_parent (location);
+			}
 		}
-	}
 
-	if (default_path == NULL)
-		default_path = _gedit_window_get_default_location (window);
+		if (default_path == NULL)
+			default_path = _gedit_window_get_default_location (window);
 
-	if (default_path != NULL)
-	{
-		gchar *uri;
+		if (default_path != NULL)
+		{
+			gchar *uri;
 
-		uri = g_file_get_uri (default_path);
-		gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (open_dialog),
-							 uri);
+			uri = g_file_get_uri (default_path);
+			gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (open_dialog),
+								 uri);
 
-		g_free (uri);
-		g_object_unref (default_path);
+			g_free (uri);
+			g_object_unref (default_path);
+		}
 	}
 
 	g_signal_connect (open_dialog,
