@@ -34,19 +34,8 @@
 #include <gedit/gedit-app-activatable.h>
 #include <gedit/gedit-window-activatable.h>
 
-#define GEDIT_SORT_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GEDIT_TYPE_SORT_PLUGIN, GeditSortPluginPrivate))
-
 static void gedit_app_activatable_iface_init (GeditAppActivatableInterface *iface);
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
-
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSortPlugin,
-				gedit_sort_plugin,
-				PEAS_TYPE_EXTENSION_BASE,
-				0,
-				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_APP_ACTIVATABLE,
-							       gedit_app_activatable_iface_init)
-				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
-							       gedit_window_activatable_iface_init))
 
 struct _GeditSortPluginPrivate
 {
@@ -80,6 +69,16 @@ enum
 	PROP_WINDOW,
 	PROP_APP
 };
+
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSortPlugin,
+				gedit_sort_plugin,
+				PEAS_TYPE_EXTENSION_BASE,
+				0,
+				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_APP_ACTIVATABLE,
+							       gedit_app_activatable_iface_init)
+				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
+							       gedit_window_activatable_iface_init)
+				G_ADD_PRIVATE_DYNAMIC (GeditSortPlugin))
 
 static void sort_real (GeditSortPlugin *plugin);
 
@@ -488,9 +487,7 @@ gedit_sort_plugin_init (GeditSortPlugin *plugin)
 {
 	gedit_debug_message (DEBUG_PLUGINS, "GeditSortPlugin initializing");
 
-	plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-						    GEDIT_TYPE_SORT_PLUGIN,
-						    GeditSortPluginPrivate);
+	plugin->priv = gedit_sort_plugin_get_instance_private (plugin);
 }
 
 static void
@@ -573,8 +570,6 @@ gedit_sort_plugin_class_init (GeditSortPluginClass *klass)
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
 	g_object_class_override_property (object_class, PROP_APP, "app");
-
-	g_type_class_add_private (klass, sizeof (GeditSortPluginPrivate));
 }
 
 static void

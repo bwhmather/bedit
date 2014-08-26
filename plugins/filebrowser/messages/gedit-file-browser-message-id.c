@@ -3,7 +3,7 @@
  * gedit-file-browser-message-id.c
  * This file is part of gedit
  *
- * Copyright (C) 2011 - Jesse van den Kieboom
+ * Copyright (C) 2014 - Jesse van den Kieboom
  *
  * gedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,8 +27,6 @@
 
 #include "gedit-file-browser-message-id.h"
 
-#define GEDIT_FILE_BROWSER_MESSAGE_ID_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID, GeditFileBrowserMessageIdPrivate))
-
 enum
 {
 	PROP_0,
@@ -41,7 +39,11 @@ struct _GeditFileBrowserMessageIdPrivate
 	guint id;
 };
 
-G_DEFINE_TYPE (GeditFileBrowserMessageId, gedit_file_browser_message_id, GEDIT_TYPE_MESSAGE)
+G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageId,
+                        gedit_file_browser_message_id,
+                        GEDIT_TYPE_MESSAGE,
+                        0,
+                        G_ADD_PRIVATE (GeditFileBrowserMessageId))
 
 static void
 gedit_file_browser_message_id_get_property (GObject    *obj,
@@ -98,12 +100,10 @@ gedit_file_browser_message_id_class_init (GeditFileBrowserMessageIdClass *klass)
 	                                                    G_PARAM_READWRITE |
 	                                                    G_PARAM_CONSTRUCT |
 	                                                    G_PARAM_STATIC_STRINGS));
-
-	g_type_class_add_private (object_class, sizeof (GeditFileBrowserMessageIdPrivate));
 }
 
 static void
 gedit_file_browser_message_id_init (GeditFileBrowserMessageId *message)
 {
-	message->priv = GEDIT_FILE_BROWSER_MESSAGE_ID_GET_PRIVATE (message);
+	message->priv = gedit_file_browser_message_id_get_instance_private (message);
 }

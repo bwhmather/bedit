@@ -85,7 +85,8 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditDocinfoPlugin,
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_APP_ACTIVATABLE,
 							       gedit_app_activatable_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
-							       gedit_window_activatable_iface_init))
+							       gedit_window_activatable_iface_init)
+				G_ADD_PRIVATE_DYNAMIC (GeditDocinfoPlugin))
 
 static void
 calculate_info (GeditDocument *doc,
@@ -429,9 +430,7 @@ gedit_docinfo_plugin_init (GeditDocinfoPlugin *plugin)
 {
 	gedit_debug_message (DEBUG_PLUGINS, "GeditDocinfoPlugin initializing");
 
-	plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-						    GEDIT_TYPE_DOCINFO_PLUGIN,
-						    GeditDocinfoPluginPrivate);
+	plugin->priv = gedit_docinfo_plugin_get_instance_private (plugin);
 }
 
 static void
@@ -602,8 +601,6 @@ gedit_docinfo_plugin_class_init (GeditDocinfoPluginClass *klass)
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
 	g_object_class_override_property (object_class, PROP_APP, "app");
-
-	g_type_class_add_private (klass, sizeof (GeditDocinfoPluginPrivate));
 }
 
 static void

@@ -47,19 +47,7 @@
 #include "gedit/gedit-app-osx.h"
 #endif
 
-#define GEDIT_CHECK_UPDATE_PLUGIN_GET_PRIVATE(object) \
-				(G_TYPE_INSTANCE_GET_PRIVATE ((object),	\
-				GEDIT_TYPE_CHECK_UPDATE_PLUGIN,		\
-				GeditCheckUpdatePluginPrivate))
-
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
-
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditCheckUpdatePlugin,
-				gedit_check_update_plugin,
-				PEAS_TYPE_EXTENSION_BASE,
-				0,
-				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
-							       gedit_window_activatable_iface_init))
 
 
 struct _GeditCheckUpdatePluginPrivate
@@ -80,10 +68,18 @@ enum
 	PROP_WINDOW
 };
 
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditCheckUpdatePlugin,
+				gedit_check_update_plugin,
+				PEAS_TYPE_EXTENSION_BASE,
+				0,
+				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
+							       gedit_window_activatable_iface_init)
+				G_ADD_PRIVATE_DYNAMIC (GeditCheckUpdatePlugin))
+
 static void
 gedit_check_update_plugin_init (GeditCheckUpdatePlugin *plugin)
 {
-	plugin->priv = GEDIT_CHECK_UPDATE_PLUGIN_GET_PRIVATE (plugin);
+	plugin->priv = gedit_check_update_plugin_get_instance_private (plugin);
 
 	gedit_debug_message (DEBUG_PLUGINS,
 			     "GeditCheckUpdatePlugin initializing");
@@ -623,8 +619,6 @@ gedit_check_update_plugin_class_init (GeditCheckUpdatePluginClass *klass)
 	object_class->get_property = gedit_check_update_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
-
-	g_type_class_add_private (object_class, sizeof (GeditCheckUpdatePluginPrivate));
 }
 
 static void

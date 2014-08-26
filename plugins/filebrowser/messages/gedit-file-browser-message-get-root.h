@@ -3,7 +3,7 @@
  * gedit-file-browser-message-get-root.h
  * This file is part of gedit
  *
- * Copyright (C) 2011 - Jesse van den Kieboom
+ * Copyright (C) 2014 - Jesse van den Kieboom
  *
  * gedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

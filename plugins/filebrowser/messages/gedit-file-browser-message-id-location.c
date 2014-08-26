@@ -3,8 +3,8 @@
  * gedit-file-browser-message-id-location.c
  * This file is part of gedit
  *
- * Copyright (C) 2011 - Jesse van den Kieboom
  * Copyright (C) 2013 - Garrett Regier
+ * Copyright (C) 2014 - Jesse van den Kieboom
  *
  * gedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,8 +29,6 @@
 #include "gedit-file-browser-message-id-location.h"
 #include "gio/gio.h"
 
-#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_FILE_BROWSER_MESSAGE_ID_LOCATION, GeditFileBrowserMessageIdLocationPrivate))
-
 enum
 {
 	PROP_0,
@@ -49,7 +47,11 @@ struct _GeditFileBrowserMessageIdLocationPrivate
 	gboolean is_directory;
 };
 
-G_DEFINE_TYPE (GeditFileBrowserMessageIdLocation, gedit_file_browser_message_id_location, GEDIT_TYPE_MESSAGE)
+G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageIdLocation,
+                        gedit_file_browser_message_id_location,
+                        GEDIT_TYPE_MESSAGE,
+                        0,
+                        G_ADD_PRIVATE (GeditFileBrowserMessageIdLocation))
 
 static void
 gedit_file_browser_message_id_location_finalize (GObject *obj)
@@ -181,12 +183,10 @@ gedit_file_browser_message_id_location_class_init (GeditFileBrowserMessageIdLoca
 	                                                       G_PARAM_READWRITE |
 	                                                       G_PARAM_CONSTRUCT |
 	                                                       G_PARAM_STATIC_STRINGS));
-
-	g_type_class_add_private (object_class, sizeof (GeditFileBrowserMessageIdLocationPrivate));
 }
 
 static void
 gedit_file_browser_message_id_location_init (GeditFileBrowserMessageIdLocation *message)
 {
-	message->priv = GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_GET_PRIVATE (message);
+	message->priv = gedit_file_browser_message_id_location_get_instance_private (message);
 }

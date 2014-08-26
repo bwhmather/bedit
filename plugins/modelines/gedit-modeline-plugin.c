@@ -52,7 +52,8 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditModelinePlugin,
 				PEAS_TYPE_EXTENSION_BASE,
 				0,
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_VIEW_ACTIVATABLE,
-							       gedit_view_activatable_iface_init))
+							       gedit_view_activatable_iface_init)
+				G_ADD_PRIVATE_DYNAMIC (GeditModelinePlugin))
 
 static void
 gedit_modeline_plugin_constructed (GObject *object)
@@ -73,9 +74,7 @@ gedit_modeline_plugin_init (GeditModelinePlugin *plugin)
 {
 	gedit_debug_message (DEBUG_PLUGINS, "GeditModelinePlugin initializing");
 
-	plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-						    GEDIT_TYPE_MODELINE_PLUGIN,
-						    GeditModelinePluginPrivate);
+	plugin->priv = gedit_modeline_plugin_get_instance_private (plugin);
 
 }
 
@@ -200,8 +199,6 @@ gedit_modeline_plugin_class_init (GeditModelinePluginClass *klass)
 	object_class->get_property = gedit_modeline_plugin_get_property;
 
 	g_object_class_override_property (object_class, PROP_VIEW, "view");
-
-	g_type_class_add_private (klass, sizeof (GeditModelinePluginPrivate));
 }
 
 static void

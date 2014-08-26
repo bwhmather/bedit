@@ -596,9 +596,6 @@ class Message:
             self._write('%s', inc)
 
         self._write()
-        self._write('#define %s_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), %s, %sPrivate))',
-                    self.cname_upper, self.ctype, self.cobj)
-        self._write()
 
         self._write('enum')
         self._write('{')
@@ -623,10 +620,14 @@ class Message:
             self._write('\t%s%s;', ct, prop.cname())
 
         self._write('};')
-        self._write()
 
-        self._write('G_DEFINE_TYPE (%s, %s, GEDIT_TYPE_MESSAGE)', self.cobj, self.cname_lower)
-        self._write()
+        self._write('''
+G_DEFINE_TYPE_EXTENDED ({0},
+                        {1},
+                        GEDIT_TYPE_MESSAGE,
+                        0,
+                        G_ADD_PRIVATE ({0}))
+'''.format(self.cobj, self.cname_lower))
 
         if self.needs_finalize():
             self._write('static void')
@@ -719,27 +720,29 @@ class Message:
 
         self._write('\tobject_class->get_property = %s_get_property;', self.cname_lower)
         self._write('\tobject_class->set_property = %s_set_property;', self.cname_lower)
-        self._write()
 
         pp = 'g_object_class_install_property ('
         prefix = '\t%s' % (' ' * len(pp),)
 
         for prop in self.properties:
+            self._write()
+
             out = str(prop)
             out = ("\n%s" % (prefix,)).join(out.splitlines())
 
             self._write('\tg_object_class_install_property (object_class,\n%s%s,', prefix, prop.prop_enum())
             self._write('%s%s);', prefix, out)
+
+        if len(self.properties) == 0:
             self._write()
 
-        self._write('\tg_type_class_add_private (object_class, sizeof (%sPrivate));', self.cobj)
         self._write('}')
         self._write()
 
         self._write('static void')
         self._write('%s_init (%s *message)', self.cname_lower, self.cobj)
         self._write('{')
-        self._write('\tmessage->priv = %s_GET_PRIVATE (message);', self.cname_upper)
+        self._write('\tmessage->priv = %s_get_instance_private (message);', self.cname_lower)
         self._write('}')
 
         self.f.close()

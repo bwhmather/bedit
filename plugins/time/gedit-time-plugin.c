@@ -33,10 +33,6 @@
 #include <gedit/gedit-app.h>
 #include "gedit-time-plugin.h"
 
-#define GEDIT_TIME_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-					      GEDIT_TYPE_TIME_PLUGIN, \
-					      GeditTimePluginPrivate))
-
 /* gsettings keys */
 #define TIME_BASE_SETTINGS	"org.gnome.gedit.plugins.time"
 #define PROMPT_TYPE_KEY	"prompt-type"
@@ -169,7 +165,8 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditTimePlugin,
 				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
 							       gedit_window_activatable_iface_init)
 				G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_GTK_TYPE_CONFIGURABLE,
-							       peas_gtk_configurable_iface_init))
+							       peas_gtk_configurable_iface_init)
+				G_ADD_PRIVATE_DYNAMIC (GeditTimePlugin))
 
 static void time_cb (GAction *action, GVariant *parameter, GeditTimePlugin *plugin);
 
@@ -178,7 +175,7 @@ gedit_time_plugin_init (GeditTimePlugin *plugin)
 {
 	gedit_debug_message (DEBUG_PLUGINS, "GeditTimePlugin initializing");
 
-	plugin->priv = GEDIT_TIME_PLUGIN_GET_PRIVATE (plugin);
+	plugin->priv = gedit_time_plugin_get_instance_private (plugin);
 
 	plugin->priv->settings = g_settings_new (TIME_BASE_SETTINGS);
 }
@@ -1041,8 +1038,6 @@ gedit_time_plugin_class_init (GeditTimePluginClass *klass)
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
 	g_object_class_override_property (object_class, PROP_APP, "app");
-
-	g_type_class_add_private (object_class, sizeof (GeditTimePluginPrivate));
 }
 
 static void

@@ -3,7 +3,7 @@
  * gedit-file-browser-message-set-root.c
  * This file is part of gedit
  *
- * Copyright (C) 2011 - Jesse van den Kieboom
+ * Copyright (C) 2014 - Jesse van den Kieboom
  *
  * gedit is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -28,8 +28,6 @@
 #include "gedit-file-browser-message-set-root.h"
 #include "gio/gio.h"
 
-#define GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE((object), GEDIT_TYPE_FILE_BROWSER_MESSAGE_SET_ROOT, GeditFileBrowserMessageSetRootPrivate))
-
 enum
 {
 	PROP_0,
@@ -44,7 +42,11 @@ struct _GeditFileBrowserMessageSetRootPrivate
 	gchar *virtual;
 };
 
-G_DEFINE_TYPE (GeditFileBrowserMessageSetRoot, gedit_file_browser_message_set_root, GEDIT_TYPE_MESSAGE)
+G_DEFINE_TYPE_EXTENDED (GeditFileBrowserMessageSetRoot,
+                        gedit_file_browser_message_set_root,
+                        GEDIT_TYPE_MESSAGE,
+                        0,
+                        G_ADD_PRIVATE (GeditFileBrowserMessageSetRoot))
 
 static void
 gedit_file_browser_message_set_root_finalize (GObject *obj)
@@ -140,12 +142,10 @@ gedit_file_browser_message_set_root_class_init (GeditFileBrowserMessageSetRootCl
 	                                                      G_PARAM_READWRITE |
 	                                                      G_PARAM_CONSTRUCT |
 	                                                      G_PARAM_STATIC_STRINGS));
-
-	g_type_class_add_private (object_class, sizeof (GeditFileBrowserMessageSetRootPrivate));
 }
 
 static void
 gedit_file_browser_message_set_root_init (GeditFileBrowserMessageSetRoot *message)
 {
-	message->priv = GEDIT_FILE_BROWSER_MESSAGE_SET_ROOT_GET_PRIVATE (message);
+	message->priv = gedit_file_browser_message_set_root_get_instance_private (message);
 }

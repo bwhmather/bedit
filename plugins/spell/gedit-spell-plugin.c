@@ -52,18 +52,7 @@
 
 #define GEDIT_AUTOMATIC_SPELL_VIEW "GeditAutomaticSpellView"
 
-#define GEDIT_SPELL_PLUGIN_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-					       GEDIT_TYPE_SPELL_PLUGIN, \
-					       GeditSpellPluginPrivate))
-
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
-
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSpellPlugin,
-				gedit_spell_plugin,
-				PEAS_TYPE_EXTENSION_BASE,
-				0,
-				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
-							       gedit_window_activatable_iface_init))
 
 struct _GeditSpellPluginPrivate
 {
@@ -93,6 +82,14 @@ enum
 	PROP_WINDOW
 };
 
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSpellPlugin,
+				gedit_spell_plugin,
+				PEAS_TYPE_EXTENSION_BASE,
+				0,
+				G_IMPLEMENT_INTERFACE_DYNAMIC (GEDIT_TYPE_WINDOW_ACTIVATABLE,
+							       gedit_window_activatable_iface_init)
+				G_ADD_PRIVATE_DYNAMIC (GeditSpellPlugin))
+
 static void	spell_cb	(GSimpleAction *action, GVariant *parameter, gpointer data);
 static void	set_language_cb	(GSimpleAction *action, GVariant *parameter, gpointer data);
 static void	auto_spell_cb	(GSimpleAction *action, GVariant *state, gpointer data);
@@ -112,9 +109,7 @@ gedit_spell_plugin_init (GeditSpellPlugin *plugin)
 {
 	gedit_debug_message (DEBUG_PLUGINS, "GeditSpellPlugin initializing");
 
-	plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-						    GEDIT_TYPE_SPELL_PLUGIN,
-						    GeditSpellPluginPrivate);
+	plugin->priv = gedit_spell_plugin_get_instance_private (plugin);
 }
 
 static void
@@ -1174,8 +1169,6 @@ gedit_spell_plugin_class_init (GeditSpellPluginClass *klass)
 		check_range_id = g_quark_from_string ("CheckRangeID");
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
-
-	g_type_class_add_private (klass, sizeof (GeditSpellPluginPrivate));
 }
 
 static void
