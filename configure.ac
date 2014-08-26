@@ -186,7 +186,7 @@ dnl ================================================================
 dnl Use gvfs metadata or the old xml file store.
 dnl ================================================================
 
-if test "x$os_win32" != "xno"; then
+if test "x$os_win32" != "xno" || test "x$os_osx" != "xno"; then
 	gvfs_metadata_default="no"
 else
 	gvfs_metadata_default="yes"
