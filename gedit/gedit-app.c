@@ -490,6 +490,11 @@ load_css_from_resource (const gchar *filename,
 	css_file = g_file_new_for_uri (resource_name);
 	g_free (resource_name);
 
+	if (!required && !g_file_query_exists (css_file, NULL))
+	{
+		return;
+	}
+
 	provider = gtk_css_provider_new ();
 
 	if (gtk_css_provider_load_from_file (provider, css_file, &error))
@@ -501,11 +506,7 @@ load_css_from_resource (const gchar *filename,
 	}
 	else
 	{
-		if (required || error->domain == GTK_CSS_PROVIDER_ERROR)
-		{
-			g_warning ("Could not load css provider: %s", error->message);
-		}
-
+		g_warning ("Could not load css provider: %s", error->message);
 		g_error_free (error);
 	}
 
