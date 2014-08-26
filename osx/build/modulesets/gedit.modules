@@ -9,6 +9,7 @@
   <repository type="tarball" name="fontconfig" href="http://www.freedesktop.org/software/fontconfig/release/"/>
   <repository type="tarball" name="ftp.gnome.org" default="yes" href="ftp://ftp.gnome.org/pub/gnome/sources/"/>
   <repository type="tarball" name="ftp.gnu.org" href="ftp://ftp.gnu.org/gnu/"/>
+  <repository type="tarball" name="ftp.gnupg.org" href="ftp://ftp.gnupg.org/"/>
   <repository type="git" name="git.github.com" href="https://github.com/"/>
 
   <repository type="git" name="git.gnome.org" href="git://git.gnome.org/"/>
@@ -23,6 +24,7 @@
   <repository type="tarball" name="sourceforge" href="http://downloads.sourceforge.net/sourceforge/"/>
   <repository type="tarball" name="sourceware.org" href="ftp://sourceware.org/pub/"/>
 
+  <repository type="tarball" name="sqlite" href="http://www.sqlite.org/"/>
   <repository type="tarball" name="tango.freedesktop.org" href="http://tango.freedesktop.org/releases/"/>
   <repository type="tarball" name="tarball.github.com" href="https://github.com/"/>
   <repository type="tarball" name="xmlsoft.org" href="ftp://xmlsoft.org/libxml2/"/>
@@ -30,7 +32,15 @@
     <branch module="libcroco/0.6/libcroco-0.6.8.tar.xz" version="0.6.8" hash="sha256:ea6e1b858c55219cefd7109756bff5bc1a774ba7a55f7d3ccd734d6b871b8570" repo="ftp.gnome.org"/>
   </autotools>
 
-  <autotools id="gnome-icon-theme" autogen-sh="configure">
+  <autotools id="libgpg-error" autogen-sh="configure" supports-non-srdir-builds="no">
+    <branch repo="ftp.gnupg.org" version="1.10" module="gcrypt/libgpg-error/libgpg-error-1.10.tar.bz2"/>
+  </autotools>
+
+  <autotools id="libtasn1" supports-non-srcdir-builds="no" autogen-sh="configure">
+    <branch repo="ftp.gnu.org" version="2.14" module="libtasn1/libtasn1-2.14.tar.gz"/>
+  </autotools>
+
+   <autotools id="gnome-icon-theme" autogen-sh="configure">
     <branch module="gnome-icon-theme/3.12/gnome-icon-theme-3.12.0.tar.xz" version="3.12.0" hash="sha256:359e720b9202d3aba8d477752c4cd11eced368182281d51ffd64c8572b4e503a" repo="ftp.gnome.org"/>
     <dependencies>
       <dep package="hicolor-icon-theme"/>
@@ -60,6 +70,24 @@
       <dep package="python"/>
       <dep package="python3"/>
     </after>
+  </autotools>
+
+  <autotools id="libgcrypt" autogen-sh="configure" autogenargs="--disable-asm">
+    <branch repo="ftp.gnupg.org" version="1.5.3" module="gcrypt/libgcrypt/libgcrypt-1.5.3.tar.bz2">
+      <patch file="libgcrypt/libgcrypt-build-clang.patch" strip="1"/>
+    </branch>
+    <dependencies>
+      <dep package="libgpg-error"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="gnutls" autogen-sh="configure" autogenargs="--with-libgcrypt --without-p11-kit">
+    <branch repo="ftp.gnu.org" version="2.12.20" module="gnutls/gnutls-2.12.20.tar.bz2"/>
+    <dependencies>
+      <dep package="libgcrypt"/>
+      <dep package="libtasn1"/>
+      <dep package="zlib"/>
+    </dependencies>
   </autotools>
 
   <autotools id="berkeleydb-nonsrctree" autogen-sh="configure" autogen-template="%(srcdir)s/dist/%(autogen-sh)s --prefix %(prefix)s --libdir %(libdir)s %(autogenargs)s">
@@ -192,7 +220,19 @@
     </dependencies>
   </autotools>
 
-<autotools id="pygobject3" autogenargs="--with-python=python3">
+<autotools id="sqlite" autogenargs="--disable-tcl --enable-threadsafe" autogen-sh="configure">
+    <branch module="sqlite-autoconf-3071401.tar.gz" version="3.7.14" repo="sqlite"/>
+  </autotools>
+
+<autotools id="glib-networking" autogen-sh="configure" autogenargs="--without-ca-certificates set_more_warnings=no">
+    <branch module="glib-networking/2.41/glib-networking-2.41.4.tar.xz" version="2.41.4" hash="sha256:930ad618865dcf81765d0f48cb6f13e22d76203efa59d30604aed0384ce80fd7" repo="ftp.gnome.org"/>
+    <dependencies>
+      <dep package="gnutls"/>
+      <dep package="libgcrypt"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="pygobject3" autogenargs="--with-python=python3">
     <branch module="pygobject" repo="git.gnome.org" tag="983276fb1cbc261d062ef93ba2266d08a5a6f423"/>
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
@@ -365,6 +405,15 @@
     </branch>
   </autotools>
 
+  <autotools id="libsoup" autogen-sh="configure" autogenargs="set_more_warnings=no">
+    <branch module="libsoup/2.46/libsoup-2.46.0.tar.xz" version="2.46.0" hash="sha256:fa3d5574c1a2df521242e2ca624a2b3057121798cab9f8f40525aa186a7b15a3" repo="ftp.gnome.org"/>
+    <dependencies>
+      <dep package="glib"/>
+      <dep package="glib-networking"/>
+      <dep package="sqlite"/>
+    </dependencies>
+  </autotools>
+
   <autotools id="shared-mime-info" autogen-sh="configure" supports-non-srcdir-builds="no">
     <branch module="shared-mime-info-1.2.tar.xz" version="1.2" repo="hadess">
       <patch file="shared-mime-info/0001-Bug-70255-Build-fails-with-glib-2.38.patch" strip="1"/>
@@ -470,6 +519,7 @@
       <dep package="gsettings-desktop-schemas"/>
       <dep package="iso-codes"/>
       <dep package="shared-mime-info"/>
+      <dep package="libsoup"/>
     </dependencies>
   </metamodule>
 

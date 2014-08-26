@@ -159,6 +159,16 @@
     </dependencies>
   </autotools>
 
+  <autotools id="libsoup" autogen-sh="configure" autogenargs="set_more_warnings=no">
+    <branch module="libsoup/2.40/libsoup-2.40.1.tar.xz"
+            version="2.40.1" hash="sha256:77a55d57e7e8055acd2f44e0cc889b9ba48052e8b7f07e829157d57417ac650a" />
+    <dependencies>
+      <dep package="glib"/>
+      <dep package="glib-networking"/>
+      <dep package='sqlite'/>
+    </dependencies>
+  </autotools>
+
   <metamodule id="gedit-deps">
     <dependencies>
       <dep package="meta-gtk-osx-bootstrap"/>
@@ -170,6 +180,7 @@
       <dep package="gsettings-desktop-schemas"/>
       <dep package="iso-codes"/>
       <dep package="shared-mime-info"/>
+      <dep package="libsoup"/>
     </dependencies>
   </metamodule>
 
