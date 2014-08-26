@@ -232,9 +232,16 @@ gedit/gedit-marshal.c: gedit/gedit-marshal.list $(GLIB_GENMARSHAL)
 	$(AM_V_GEN) echo "#include \"gedit-marshal.h\"" > $@ && \
 	$(GLIB_GENMARSHAL) $< --body --prefix=gedit_marshal >> $@
 
-gedit_resource_deps = $(call GRESDEPS,gedit/resources/gedit.gresource.xml)
-gedit/gedit-resources.c: $(gedit_resource_deps)
-	$(GRESGEN)
+gedit_resource_deps = $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir)/gedit/resources --sourcedir $(builddir)/gedit/resources $(builddir)/gedit/resources/gedit.gresource.xml)
+
+gedit_resources_c_deps = $(builddir)/gedit/resources/gedit.gresource.xml $(gedit_resource_deps)
+
+gedit/gedit-resources.c: $(gedit_resources_c_deps)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES)				\
+		--target="$@"						\
+		--sourcedir="$(srcdir)/gedit/resources"			\
+		--sourcedir="$(builddir)/gedit/resources"		\
+		--generate-source "$(builddir)/gedit/resources/gedit.gresource.xml"
 
 if ENABLE_PYTHON
 gedit_overridesdir = $(pyoverridesdir)
