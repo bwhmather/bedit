@@ -32,7 +32,7 @@
 
   <autotools id="gtk+-3.0"
        autogenargs="--enable-quartz-backend --enable-quartz-relocation --disable-colord --without-atk-bridge">
-    <branch module="jessevdk/gtk" checkoutdir="gtk+-3.0" repo="git.github.com" tag="97ed4f71252d40a417f112637ba9b9a8ca25a3ac"/>
+    <branch module="jessevdk/gtk" checkoutdir="gtk+-3.0" repo="git.github.com" revision="wip/app-osx-int"/>
     <dependencies>
       <dep package="gobject-introspection"/>
       <dep package="pango"/>
