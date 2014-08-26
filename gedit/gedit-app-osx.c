@@ -364,6 +364,14 @@ gedit_app_osx_process_window_event_impl (GeditApp    *app,
 }
 
 static void
+gedit_app_osx_constructed (GObject *object)
+{
+	/* FIXME: should we do this on all platforms? */
+	g_object_set (object, "register-session", TRUE, NULL);
+	G_OBJECT_CLASS (gedit_app_osx_parent_class)->constructed (object);
+}
+
+static void
 gedit_app_osx_class_init (GeditAppOSXClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -371,6 +379,8 @@ gedit_app_osx_class_init (GeditAppOSXClass *klass)
 	GApplicationClass *application_class = G_APPLICATION_CLASS (klass);
 
 	object_class->finalize = gedit_app_osx_finalize;
+	object_class->constructed = gedit_app_osx_constructed;
+
 	application_class->startup = gedit_app_osx_startup;
 
 	app_class->show_help = gedit_app_osx_show_help_impl;
