@@ -299,6 +299,8 @@ gedit_app_osx_startup (GApplication *application)
 		                  app_osx);
 
 	recent_files_menu_populate (app_osx);
+
+	g_application_hold (application);
 }
 
 static void
