@@ -118,7 +118,7 @@ function build_gtk_mac_bundler() {
 
 		(
 			cd gtk-mac-bundler
-			git checkout -b stable f1a829521fabda2266f346dfe86bf09c9401f87d || exit 1
+			git checkout -b stable 5994aa557ebb24687ed07e74910e4007521a53b4 || exit 1
 			HOME="$home" make install
 		) || exit 1
 	) || exit 1
