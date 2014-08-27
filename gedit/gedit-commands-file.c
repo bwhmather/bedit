@@ -1393,11 +1393,11 @@ quit_if_needed (GeditWindow *window)
 	is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
 							      GEDIT_IS_QUITTING));
 
-	if (is_quitting)
-		gtk_widget_destroy (GTK_WIDGET (window));
-
 	is_quitting_all = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
 							          GEDIT_IS_QUITTING_ALL));
+
+	if (is_quitting)
+		gtk_widget_destroy (GTK_WIDGET (window));
 
 	if (is_quitting_all)
 	{
