@@ -14,15 +14,15 @@ externaltools_tools_in_osx =						\
 
 externaltools_tools_in_win32 =
 
-externaltools_install_tools_in_files = $(tools_in_files)
+externaltools_install_tools_in_files = $(externaltools_tools_in_files)
 
 if PLATFORM_OSX
-externaltools_install_tools_in_files += $(tools_in_osx)
+externaltools_install_tools_in_files += $(externaltools_tools_in_osx)
 else
 if PLATFORM_WIN32
-externaltools_install_tools_in_files += $(tools_in_win32)
+externaltools_install_tools_in_files += $(externaltools_tools_in_win32)
 else
-externaltools_install_tools_in_files += $(tools_in_linux)
+externaltools_install_tools_in_files += $(externaltools_tools_in_linux)
 endif
 endif
 
