@@ -156,6 +156,14 @@ function cmd_make() {
 		rmdir "$i" 2>/dev/null
 	done
 
+	for i in $(find "$BUNDLE/Contents/Resources/share/gedit/plugins/"* -type f -regex '.*\.py[oc]' 2>/dev/null); do
+		rm -f "$i"
+	done
+
+	for i in $(find "$BUNDLE/Contents/Resources/share/gedit/plugins/"* -type d -name '__pycache__' 2>/dev/null); do
+		rmdir "$i" 2>/dev/null
+	done
+
 	echo "Creating localized names..."
 	locales=$(find "$inst/share/locale" -name gedit.mo | sed 's/.*locale\/\([^\/]*\)\/.*/\1/g' | /usr/bin/grep -v @)
 
