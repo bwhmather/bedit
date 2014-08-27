@@ -117,7 +117,7 @@ struct _GeditWindowPrivate
 	guint           removing_tabs : 1;
 	guint           dispose_has_run : 1;
 
-	guint           fullscreen_eventbox_leave_state : 1;
+	guint           in_fullscreen_eventbox : 1;
 };
 
 G_END_DECLS

@@ -1774,7 +1774,7 @@ on_fullscreen_controls_enter_notify_event (GtkWidget        *widget,
                                            GdkEventCrossing *event,
                                            GeditWindow      *window)
 {
-	window->priv->fullscreen_eventbox_leave_state = FALSE;
+	window->priv->in_fullscreen_eventbox = TRUE;
 
 	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), TRUE);
 
@@ -1792,7 +1792,7 @@ real_fullscreen_controls_leave_notify_event (gpointer data)
 	fullscreen_open_button_state =
 	                  gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_button));
 
-	window->priv->fullscreen_eventbox_leave_state = TRUE;
+	window->priv->in_fullscreen_eventbox = FALSE;
 
 	if (!gear_menu_state && !fullscreen_open_button_state)
 	{
@@ -2215,24 +2215,20 @@ static void
 on_fullscreen_gear_button_toggled (GtkToggleButton *fullscreen_gear_button,
                                    GeditWindow     *window)
 {
-	gboolean gear_menu_state = gtk_toggle_button_get_active (fullscreen_gear_button);
+	gboolean button_active = gtk_toggle_button_get_active (fullscreen_gear_button);
 
-	if (!gear_menu_state && window->priv->fullscreen_eventbox_leave_state)
-	{
-		gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
-	}
+	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls),
+				       button_active || window->priv->in_fullscreen_eventbox);
 }
 
 static void
 on_fullscreen_file_menu_button_toggled (GtkMenuButton *fullscreen_open_button,
                                         GeditWindow   *window)
 {
-	gboolean fullscreen_open_button_state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (fullscreen_open_button));
+	gboolean button_active = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (fullscreen_open_button));
 
-	if (!fullscreen_open_button_state && window->priv->fullscreen_eventbox_leave_state)
-	{
-		gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
-	}
+	gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls),
+				       button_active || window->priv->in_fullscreen_eventbox);
 }
 
 static void
@@ -2707,6 +2703,20 @@ static GActionEntry win_entries[] = {
 };
 
 static void
+sync_fullscreen_actions (GeditWindow *window,
+			 gboolean     fullscreen)
+{
+	GtkMenuButton *button;
+	GPropertyAction *action;
+
+	button = fullscreen ? window->priv->fullscreen_gear_button : window->priv->gear_button;
+	g_action_map_remove_action (G_ACTION_MAP (window), "gear-menu");
+	action = g_property_action_new ("gear-menu", button, "active");
+	g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
+	g_object_unref (action);
+}
+
+static void
 gedit_window_init (GeditWindow *window)
 {
 	GtkTargetList *tl;
@@ -2772,6 +2782,7 @@ gedit_window_init (GeditWindow *window)
 	                  window);
 
 	fullscreen_controls_setup (window);
+	sync_fullscreen_actions (window, FALSE);
 
 	g_object_bind_property (window->priv->open_document_selector->recent_search_entry,
 	                        "text",
@@ -3515,6 +3526,8 @@ _gedit_window_fullscreen (GeditWindow *window)
 	if (_gedit_window_is_fullscreen (window))
 		return;
 
+	sync_fullscreen_actions (window, TRUE);
+
 	/* Go to fullscreen mode and hide bars */
 	gtk_window_fullscreen (GTK_WINDOW (&window->window));
 }
@@ -3526,6 +3539,8 @@ _gedit_window_unfullscreen (GeditWindow *window)
 
 	if (!_gedit_window_is_fullscreen (window))
 		return;
+
+	sync_fullscreen_actions (window, FALSE);
 
 	/* Unfullscreen and show bars */
 	gtk_window_unfullscreen (GTK_WINDOW (&window->window));

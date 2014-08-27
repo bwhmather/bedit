@@ -575,6 +575,7 @@ gedit_app_startup (GApplication *application)
 	add_accelerator (app, "app.quit", "<Primary>Q");
 	add_accelerator (app, "app.help", "F1");
 
+	add_accelerator (app, "win.gear-menu", "F10");
 	add_accelerator (app, "win.open", "<Primary>O");
 	add_accelerator (app, "win.save", "<Primary>S");
 	add_accelerator (app, "win.save-as", "<Primary><Shift>S");
