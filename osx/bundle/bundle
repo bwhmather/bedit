@@ -54,7 +54,9 @@ function cmd_dmg() {
 
 	TMPNAME="${DMG_FILE%.dmg}_tmp.dmg"
 
-	cp "$D/data/template.dmg" "$TMPNAME"
+	cp "$D/data/template.dmg.bz2" "$TMPNAME.bz2"
+	bunzip2 "$TMPNAME.bz2"
+
 	hdiutil resize -size ${image_size}m "$TMPNAME" || exit 1
 
 	echo "Attaching to disk image..."
