@@ -141,17 +141,17 @@ function cmd_jh() {
 	"$INSTALLD/bin/jhbuild" -f "$HOMED/.jhbuildrc" "$@"
 }
 
-function jhdbg_help_usage() {
-	echo "jhbuild command ..."
+function dbg_help_usage() {
+	echo "build command ..."
 }
 
-function jhdbg_help_short() {
-	echo "Run jhbuild commands in a debug environment"
+function dbg_help_short() {
+	echo "Run remaining build commands in a debug environment"
 }
 
-function cmd_jhdbg() {
+function cmd_dbg() {
 	export GEDIT_OSX_DEBUG=1
-	cmd_jh "$@"
+	_process "$@"
 }
 
 function shell_help_short() {
@@ -317,16 +317,20 @@ done < <(declare -F)
 cmds=$(printf ", \033[1m%s\033[0m" "${commands[@]}")
 cmds=${cmds:2}
 
-if [ -z "$1" ]; then
-	cmd_help
-	exit 0
-fi
+function _process() {
+	if [ -z "$1" ]; then
+		cmd_help
+		exit 0
+	fi
 
-cmd="cmd_$1"
+	cmd="cmd_$1"
 
-if [[ $(type -t "$cmd") != "function" ]]; then
-	do_exit "Invalid command $1, available commands are: $cmds"
-fi
+	if [[ $(type -t "$cmd") != "function" ]]; then
+		do_exit "Invalid command $1, available commands are: $cmds"
+	fi
 
-shift 1
-"$cmd" "$@"
+	shift 1
+	"$cmd" "$@"
+}
+
+_process "$@"
