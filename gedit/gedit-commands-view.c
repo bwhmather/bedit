@@ -46,7 +46,7 @@ _gedit_cmd_view_focus_active (GSimpleAction *action,
 
 	if (active_view)
 	{
-		gtk_widget_grab_focus (active_view);
+		gtk_widget_grab_focus (GTK_WIDGET (active_view));
 	}
 }
 
