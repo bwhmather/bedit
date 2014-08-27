@@ -5,7 +5,8 @@ D=$(pwd -P)
 popd > /dev/null
 
 ME="$0"
-BUNDLE="$D/gedit.app"
+BUNDLE_NAME="Gedit"
+BUNDLE="$D/$BUNDLE_NAME.app"
 
 function do_strip {
 	tp=$(file -b --mime-type "$1")
@@ -24,12 +25,71 @@ function do_strip {
 	chmod u+w "$1"
 }
 
+function cmd_dmg() {
+	# Copied and modified from Banshee
+	if [ ! -d "$BUNDLE" ]; then
+		cmd_make
+	fi
+
+	VOLUME_NAME="$BUNDLE_NAME"
+
+	if [ -z "$1" ]; then
+		DMG_FILE="$D/$VOLUME_NAME.dmg"
+	else
+		DMG_FILE="$1.dmg"
+	fi
+
+	DMG_APP="$BUNDLE"
+	TMP_MOUNT_POINT="$D/$VOLUME_NAME.mounted"
+	FINAL_MOUNT_POINT="/Volumes/$VOLUME_NAME"
+
+	rm -f $DMG_FILE
+	rm -f $DMG_FILE.master
+
+	# Compute an approximated image size in MB, and bloat by 30 MB
+	image_size=$(du -ck "$DMG_APP" | tail -n1 | cut -f1)
+	image_size=$((($image_size + 30000) / 1000))
+
+	echo "Creating disk image (${image_size}MB)..."
+
+	TMPNAME="${DMG_FILE%.dmg}_tmp.dmg"
+
+	cp "$D/data/template.dmg" "$TMPNAME"
+	hdiutil resize -size ${image_size}m "$TMPNAME" || exit 1
+
+	echo "Attaching to disk image..."
+	hdiutil attach "$TMPNAME" -readwrite -noautoopen -mountpoint "$TMP_MOUNT_POINT" -quiet || exit 1
+
+	echo "Populating image..."
+	rsync -az "$DMG_APP" "$TMP_MOUNT_POINT/" || exit 1
+
+	echo "Ensuring permissions"
+	chmod -Rf go-w "$TMP_MOUNT_POINT" 2>/dev/null
+
+	echo "Blessing image..."
+	bless --folder "$TMP_MOUNT_POINT" --openfolder "$TMP_MOUNT_POINT" || exit 1
+
+	echo "Detaching from disk image..."
+	hdiutil detach "$TMP_MOUNT_POINT" -quiet || exit 1
+
+	echo "Converting to final image..."
+	hdiutil convert -quiet -format UDBZ -o "$DMG_FILE" "$TMPNAME" || exit 1
+
+	# Make internet-enable
+	hdiutil internet-enable -yes "$DMG_FILE" || exit 1
+
+	rm -f "$TMPNAME"
+
+	n=$(basename "$DMG_FILE")
+	echo "Done $n."
+}
+
 function make_help_usage() {
 	echo "[-f]"
 }
 
 function make_help_short() {
-	echo "Make the gedit.app bundle"
+	echo "Make the $BUNDLE_NAME.app bundle"
 }
 
 function build_gtk_mac_bundler() {
@@ -65,7 +125,7 @@ function build_gtk_mac_bundler() {
 function cmd_make() {
 	build_gtk_mac_bundler
 
-	if [ -d "$BUNDLE" ] && [ "$1x" = "-fx" ]; then
+	if [ -d "$BUNDLE" ]; then
 		rm -rf "$BUNDLE"
 	fi
 
@@ -76,16 +136,12 @@ function cmd_make() {
 	inst=$("$b" env inst)
 	chmod u+w "$inst/lib/libpython3.3m.dylib"
 
-	if [ ! -d "$BUNDLE" ]; then
-		lbin=$("$b" env local-bin)
+	lbin=$("$b" env local-bin)
 
-		echo "Generating bundle from gedit.bundle specification..."
-		"$b" run "$lbin/gtk-mac-bundler" "$D/data/gedit.bundle" || exit 1
+	echo "Generating bundle from Gedit.bundle specification..."
+	"$b" run "$lbin/gtk-mac-bundler" "$D/data/Gedit.bundle" || exit 1
 
-		mv "$D/data/gedit.app" "$BUNDLE"
-	else
-		echo "$BUNDLE bundle already exists, only stripping it..."
-	fi
+	mv "$D/data/$BUNDLE_NAME.app" "$BUNDLE"
 
 	echo "Removing unneeded files from bundle"
 
@@ -98,26 +154,42 @@ function cmd_make() {
 		rmdir "$i" 2>/dev/null
 	done
 
-	for i in $(find "$BUNDLE/Contents/Resources/lib/"* -type f -regex '.*\.py[oc]' 2>/dev/null); do
-		rm -f "$i"
+	echo "Creating localized names..."
+	locales=$(find "$inst/share/locale" -name gedit.mo | sed 's/.*locale\/\([^\/]*\)\/.*/\1/g' | /usr/bin/grep -v @)
+
+	for locale in en $locales; do
+		printf "$locale "
+		ldir="$BUNDLE/Contents/Resources/$locale.lproj"
+
+		lname=$(LANG=$locale "$b" run gettext gedit "Text Editor")
+
+		mkdir -p "$ldir"
+
+		echo "CFBundleName = \"Gedit\";" > "$ldir/InfoPlist.strings"
+		echo "CFBundleDisplayName = \"Gedit $lname\";" >> "$ldir/InfoPlist.strings"
 	done
 
-	echo "Strip debug symbols from bundle binaries"
+	printf ", done...\n\nDo you want to strip debug symbols? [\033[1myes\033[0m/no] "
+	read strip
 
-	# Strip debug symbols from libraries/modules
-	for i in $(find -E "$BUNDLE/Contents/Resources" -type f -regex '.*\.(so|dylib)$' 2>/dev/null); do
-		do_strip "$i"
-	done
+	if [ "$strip" = "yes" ]; then
+		echo "Strip debug symbols from bundle binaries"
 
-	# Strip debug symbols from binaries
-	for i in $(find "$BUNDLE/Contents/Resources/bin" -type f 2>/dev/null); do
-		if [ -x "$i" ]; then
+		# Strip debug symbols from libraries/modules
+		for i in $(find -E "$BUNDLE/Contents/Resources" -type f -regex '.*\.(so|dylib)$' 2>/dev/null); do
 			do_strip "$i"
-		fi
-	done
+		done
 
-	# Strip debug symbols from main binary
-	do_strip "$BUNDLE/Contents/MacOS/gedit-bin"
+		# Strip debug symbols from binaries
+		for i in $(find "$BUNDLE/Contents/Resources/bin" -type f 2>/dev/null); do
+			if [ -x "$i" ]; then
+				do_strip "$i"
+			fi
+		done
+
+		# Strip debug symbols from main binary
+		do_strip "$BUNDLE/Contents/MacOS/gedit-bin"
+	fi
 }
 
 function help_help_short() {
