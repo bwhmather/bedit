@@ -128,6 +128,9 @@ void		_gedit_cmd_edit_overwrite_mode		(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
 
+void		_gedit_cmd_view_focus_active		(GSimpleAction *action,
+                                                         GVariant      *state,
+                                                         gpointer       user_data);
 void		_gedit_cmd_view_toggle_side_panel	(GSimpleAction *action,
                                                          GVariant      *state,
                                                          gpointer       user_data);

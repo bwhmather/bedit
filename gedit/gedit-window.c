@@ -2678,6 +2678,7 @@ static GActionEntry win_entries[] = {
 	{ "close", _gedit_cmd_file_close },
 	{ "close-all", _gedit_cmd_file_close_all },
 	{ "print", _gedit_cmd_file_print },
+	{ "focus-active-view", NULL, NULL, "false", _gedit_cmd_view_focus_active },
 	{ "side-panel", NULL, NULL, "false", _gedit_cmd_view_toggle_side_panel },
 	{ "bottom-panel", NULL, NULL, "false", _gedit_cmd_view_toggle_bottom_panel },
 	{ "fullscreen", NULL, NULL, "false", _gedit_cmd_view_toggle_fullscreen_mode },

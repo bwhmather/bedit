@@ -590,6 +590,7 @@ gedit_app_startup (GApplication *application)
 	add_accelerator (app, "win.replace", "<Primary>H");
 	add_accelerator (app, "win.clear-highlight", "<Primary><Shift>K");
 	add_accelerator (app, "win.goto-line", "<Primary>I");
+	add_accelerator (app, "win.focus-active-view", "Escape");
 	add_accelerator (app, "win.side-panel", "F9");
 	add_accelerator (app, "win.bottom-panel", "<Primary>F9");
 	add_accelerator (app, "win.fullscreen", "F11");

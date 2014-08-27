@@ -33,6 +33,24 @@
 #include "gedit-highlight-mode-selector.h"
 
 void
+_gedit_cmd_view_focus_active (GSimpleAction *action,
+                              GVariant      *state,
+                              gpointer       user_data)
+{
+	GeditView *active_view;
+	GeditWindow *window = GEDIT_WINDOW (user_data);
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	active_view = gedit_window_get_active_view (window);
+
+	if (active_view)
+	{
+		gtk_widget_grab_focus (active_view);
+	}
+}
+
+void
 _gedit_cmd_view_toggle_side_panel (GSimpleAction *action,
                                    GVariant      *state,
                                    gpointer       user_data)
