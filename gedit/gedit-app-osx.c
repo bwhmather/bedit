@@ -30,6 +30,54 @@
 #include "gedit-commands.h"
 #include "gedit-recent.h"
 
+static GeditWindow *
+ensure_window (GeditAppOSX *app,
+               gboolean     with_empty_document)
+{
+	GList *windows;
+	GeditWindow *ret = NULL;
+
+	windows = gtk_application_get_windows (GTK_APPLICATION (app));
+
+	while (windows)
+	{
+		GtkWindow *window;
+		GdkWindow *win;
+		NSWindow *nswin;
+
+		window = windows->data;
+		windows = g_list_next (windows);
+
+		if (!gtk_widget_get_realized (GTK_WIDGET (window)))
+		{
+			continue;
+		}
+
+		win = gtk_widget_get_window (GTK_WIDGET (window));
+		nswin = gdk_quartz_window_get_nswindow (win);
+
+		if ([nswin isOnActiveSpace])
+		{
+			ret = GEDIT_WINDOW (window);
+			break;
+		}
+	}
+
+	if (!ret)
+	{
+		ret = gedit_app_create_window (GEDIT_APP (app), NULL);
+		gtk_widget_show (GTK_WIDGET (ret));
+	}
+
+	if (with_empty_document && gedit_window_get_active_document (ret) == NULL)
+	{
+		gedit_window_create_tab (ret, TRUE);
+	}
+
+	gtk_window_present (GTK_WINDOW (ret));
+	return ret;
+}
+
 @interface GeditAppOSXDelegate : NSObject
 {
 	GeditAppOSX *app;
@@ -43,6 +91,8 @@
 - (BOOL)respondsToSelector:(SEL)aSelector;
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag;
+- (void)applicationWillBecomeActive:(NSNotification *)aNotification;
+- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames;
 
 @end
 
@@ -76,23 +126,19 @@
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
 {
-	GeditWindow *window = NULL;
-
-	window = GEDIT_WINDOW (gtk_application_get_active_window (GTK_APPLICATION (app)));
-
-	if (!flag || !window)
-	{
-		// Simply create a new window with an empty doc
-		window = gedit_app_create_window (GEDIT_APP (app), NULL);
-
-		gedit_debug_message (DEBUG_APP, "Show window");
-		gtk_widget_show (GTK_WIDGET (window));
-
-		gedit_window_create_tab (window, TRUE);
-	}
-
-	gtk_window_present (GTK_WINDOW (window));
+	ensure_window (app, TRUE);
 	return NO;
+}
+
+- (void)applicationWillBecomeActive:(NSNotification *)aNotification
+{
+	ensure_window (app, TRUE);
+}
+
+- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
+{
+	ensure_window (app, FALSE);
+	[orig application:sender openFiles:filenames];
 }
 
 @end
@@ -270,18 +316,9 @@ recent_file_activated (GAction        *action,
 	uri = gtk_recent_info_get_uri (info->info);
 	file = g_file_new_for_uri (uri);
 
-	window = GEDIT_WINDOW (gtk_application_get_active_window (GTK_APPLICATION (info->app)));
-
-	if (window == NULL)
-	{
-		window = gedit_app_create_window (GEDIT_APP (info->app), NULL);
-
-		gtk_widget_show (GTK_WIDGET (window));
-		gtk_window_present (GTK_WINDOW (window));
-	}
+	window = ensure_window (info->app, FALSE);
 
 	gedit_commands_load_location (GEDIT_WINDOW (window), file, NULL, 0, 0);
-
 	g_object_unref (file);
 }
 
