@@ -188,6 +188,15 @@ real_populate_listbox (gpointer data)
 		row = create_row (open_document_selector, info);
 		gtk_recent_info_unref(info);
 
+		/* add a class until gtk implements :last-child */
+		if (l->next == NULL)
+		{
+			GtkStyleContext *context;
+
+			context = gtk_widget_get_style_context (row);
+			gtk_style_context_add_class (context, "last-child");
+		}
+
 		gtk_list_box_insert (GTK_LIST_BOX (priv->listbox), row, -1);
 	}
 
