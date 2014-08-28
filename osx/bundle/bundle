@@ -25,6 +25,10 @@ function do_strip {
 	chmod u+w "$1"
 }
 
+function dmg_help_short() {
+	echo "Create a dmg from a bundle"
+}
+
 function cmd_dmg() {
 	# Copied and modified from Banshee
 	if [ ! -d "$BUNDLE" ]; then
@@ -33,11 +37,7 @@ function cmd_dmg() {
 
 	VOLUME_NAME="$BUNDLE_NAME"
 
-	if [ -z "$1" ]; then
-		DMG_FILE="$D/$VOLUME_NAME.dmg"
-	else
-		DMG_FILE="$1.dmg"
-	fi
+	DMG_FILE="$1.dmg"
 
 	DMG_APP="$BUNDLE"
 	TMP_MOUNT_POINT="$D/$VOLUME_NAME.mounted"
@@ -122,6 +122,43 @@ function build_gtk_mac_bundler() {
 			HOME="$home" make install
 		) || exit 1
 	) || exit 1
+}
+
+function make_fake_help_long() {
+	echo "Create a fake bundle pointing towards files in the build. This is useful mostly to test bundle support."
+}
+
+function make_fake_help_short() {
+	echo "Create a fake bundle"
+}
+
+function cmd_make_fake() {
+	fake="$D/Gedit-fake.app"
+
+	rm -rf "$fake"
+	mkdir -p "$fake/Contents"
+
+	b="$D/../build/build"
+	inst=$("$b" env inst)
+	source=$("$b" env source)
+
+	mkdir -p "$fake/Contents/Resources"
+
+	for d in share lib; do
+		ln -s "$inst/$d" "$fake/Contents/Resources/$d"
+	done
+
+	mkdir "$fake/Contents/MacOS"
+
+	bin="$fake/Contents/MacOS/Gedit"
+
+	printf "#!/bin/bash\n\nexec $b run \"$source/gedit/gedit/gedit\"\n" > "$bin"
+	chmod u+x "$bin"
+
+	echo "APPL????" > "$fake/Contents/PkgInfo"
+
+	cp "$D/data/Info.plist" "$fake/Contents/"
+	cp "$D/data/gedit.icns" "$fake/Contents/Resources/"
 }
 
 function cmd_make() {
@@ -222,8 +259,10 @@ function cmd_help() {
 			printf "%${d}s" ""
 			echo -n "- "
 
-			if [[ $(type -t "${cmd}_help_short") = "function" ]]; then
-				"${cmd}_help_short"
+			icmd=${cmd/-/_}
+
+			if [[ $(type -t "${icmd}_help_short") = "function" ]]; then
+				"${icmd}_help_short"
 			else
 				echo ""
 			fi
@@ -231,7 +270,7 @@ function cmd_help() {
 
 		echo ""
 	else
-		cmd="cmd_$1"
+		cmd="cmd_${1/-/_}"
 
 		if [[ $(type -t "$cmd") != "function" ]]; then
 			printf "Invalid command \033[1m$1\033[0m, available commands are: $cmds\n"
@@ -240,18 +279,18 @@ function cmd_help() {
 
 		printf "Usage: $ME \033[1m$1\033[0m "
 
-		if [[ $(type -t "$1_help_usage") = "function" ]]; then
-			"$1_help_usage"
+		if [[ $(type -t "${1/-/_}_help_usage") = "function" ]]; then
+			"${1/-/_}_help_usage"
 		else
 			echo ""
 		fi
 
 		echo ""
 
-		if [[ $(type -t "$1_help_long") != "function" ]]; then
-			"$1_help_short"
+		if [[ $(type -t "${1/-/_}_help_long") != "function" ]]; then
+			"${1/-/_}_help_short"
 		else
-			"$1_help_long"
+			"${1/-/_}_help_long"
 		fi
 	fi
 }
@@ -266,7 +305,7 @@ do
 	if [[ "$cmd" = cmd_* ]]; then
 		cname=${cmd#cmd_}
 
-		commands+=($cname)
+		commands+=(${cname/_/-})
 
 		l=${#cname}
 
@@ -284,7 +323,7 @@ if [ -z "$1" ]; then
 	exit 0
 fi
 
-cmd="cmd_$1"
+cmd="cmd_${1/-/_}"
 
 if [[ $(type -t "$cmd") != "function" ]]; then
 	printf "Invalid command $1, available commands are: $cmds\n"
