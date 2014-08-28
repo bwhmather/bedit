@@ -1886,10 +1886,7 @@ _gedit_cmd_file_close (GSimpleAction *action,
 
 	if (active_tab == NULL)
 	{
-#ifdef OS_OSX
-		/* Close the window on OS X */
 		gtk_widget_destroy (GTK_WIDGET (window));
-#endif
 		return;
 	}
 

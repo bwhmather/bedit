@@ -628,19 +628,13 @@ update_actions_sensitivity (GeditWindow *window)
 	                             !(lockdown & GEDIT_LOCKDOWN_PRINTING));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "close");
-#ifdef OS_OSX
-	/* On OS X, File Close is always sensitive */
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), TRUE);
-#else
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
-	                             (tab != NULL) &&
 	                             (state != GEDIT_TAB_STATE_CLOSING) &&
 	                             (state != GEDIT_TAB_STATE_SAVING) &&
 	                             (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
 	                             (state != GEDIT_TAB_STATE_PRINTING) &&
 	                             (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
 	                             (state != GEDIT_TAB_STATE_SAVING_ERROR));
-#endif
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "undo");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
