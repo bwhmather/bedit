@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gedit 3.3.7\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-20 17:10+0000\n"
-"PO-Revision-Date: 2014-08-21 11:28+0800\n"
+"POT-Creation-Date: 2014-08-30 17:11+0000\n"
+"PO-Revision-Date: 2014-08-31 13:54+0800\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: 漢語 <>\n"
 "Language: zh_TW\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.3\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -118,9 +118,6 @@ msgid "Create Backup Copies"
 msgstr "製作備份"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:9
-#| msgid ""
-#| "Whether gedit should restore the previous cursor position when a file is "
-#| "loaded."
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "gedit 儲存檔案時是否建立備份複本。"
 
@@ -571,14 +568,10 @@ msgstr "[FILE…] [+LINE[:COLUMN]]"
 msgid "There was an error displaying the help."
 msgstr "顯示說明文件時發生錯誤。"
 
-#: ../gedit/gedit-app.c:903
+#: ../gedit/gedit-app.c:917
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s：無效的編碼。"
-
-#: ../gedit/gedit-app-osx.c:261
-msgid "About gedit"
-msgstr "關於 gedit"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:152
 msgid "Question"
@@ -589,9 +582,9 @@ msgid "Close _without Saving"
 msgstr "關閉但不儲存(_W)"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:321
-#: ../gedit/gedit-commands-file.c:439 ../gedit/gedit-commands-file.c:568
-#: ../gedit/gedit-commands-file.c:637 ../gedit/gedit-commands-file.c:847
-#: ../gedit/gedit-commands-file.c:1299 ../gedit/gedit-io-error-info-bar.c:134
+#: ../gedit/gedit-commands-file.c:455 ../gedit/gedit-commands-file.c:591
+#: ../gedit/gedit-commands-file.c:668 ../gedit/gedit-commands-file.c:878
+#: ../gedit/gedit-commands-file.c:1330 ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:515
 #: ../gedit/gedit-io-error-info-bar.c:1191
 #: ../gedit/gedit-preferences-dialog.c:855
@@ -611,13 +604,13 @@ msgid "_Cancel"
 msgstr "取消(_C)"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:347
+#: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
-#: ../gedit/resources/gtk/menus.ui.h:9
 msgid "_Save As…"
 msgstr "另存為(_S)…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/gedit-commands-file.c:848
+#: ../gedit/gedit-commands-file.c:879 ../gedit/resources/gtk/menus-osx.ui.h:6
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -731,12 +724,12 @@ msgid_plural "Loading %d files…"
 msgstr[0] "正在載入 %d 個檔案…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:435
+#: ../gedit/gedit-commands-file.c:451
 #: ../gedit/resources/ui/gedit-window.ui.h:4
 msgid "Open"
 msgstr "開啟"
 
-#: ../gedit/gedit-commands-file.c:440
+#: ../gedit/gedit-commands-file.c:456 ../gedit/resources/gtk/menus-osx.ui.h:3
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:38
@@ -744,70 +737,70 @@ msgstr "開啟"
 msgid "_Open"
 msgstr "開啟(_O)"
 
-#: ../gedit/gedit-commands-file.c:559
+#: ../gedit/gedit-commands-file.c:582
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "檔案“%s”是唯讀檔案。"
 
-#: ../gedit/gedit-commands-file.c:564
+#: ../gedit/gedit-commands-file.c:587
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "您是否嘗試以準備儲存的版本覆寫該檔案？"
 
-#: ../gedit/gedit-commands-file.c:569
+#: ../gedit/gedit-commands-file.c:592
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "取代(_R)"
 
-#: ../gedit/gedit-commands-file.c:610
+#: ../gedit/gedit-commands-file.c:632
 msgid "Save the file using compression?"
 msgstr "是否使用壓縮儲存檔案？"
 
-#: ../gedit/gedit-commands-file.c:611
+#: ../gedit/gedit-commands-file.c:636
+msgid "Save the file as plain text?"
+msgstr "是否使用純文字儲存檔案？"
+
+#: ../gedit/gedit-commands-file.c:649
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr "檔案「%s」原先是儲存為純文字，現在將以壓縮的方式儲存。"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:653
 msgid "_Save Using Compression"
 msgstr "使用壓縮儲存(_S)"
 
-#: ../gedit/gedit-commands-file.c:617
-msgid "Save the file as plain text?"
-msgstr "是否使用純文字儲存檔案？"
-
-#: ../gedit/gedit-commands-file.c:618
+#: ../gedit/gedit-commands-file.c:658
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr "檔案「%s」原先是以壓縮的方式儲存，現在將儲存為純文字。"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:661
 msgid "_Save As Plain Text"
 msgstr "儲存為純文字(_S)"
 
-#: ../gedit/gedit-commands-file.c:738 ../gedit/gedit-commands-file.c:958
+#: ../gedit/gedit-commands-file.c:769 ../gedit/gedit-commands-file.c:989
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "正在儲存檔案‘%s’…"
 
-#: ../gedit/gedit-commands-file.c:843
+#: ../gedit/gedit-commands-file.c:874
 msgid "Save As"
 msgstr "儲存為"
 
-#: ../gedit/gedit-commands-file.c:1162
+#: ../gedit/gedit-commands-file.c:1193
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "正在還原文件‘%s’…"
 
-#: ../gedit/gedit-commands-file.c:1207
+#: ../gedit/gedit-commands-file.c:1238
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "是否將未儲存的文件‘%s’還原？"
 
-#: ../gedit/gedit-commands-file.c:1216
+#: ../gedit/gedit-commands-file.c:1247
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -816,12 +809,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "將會永久地失去 %ld 秒前對文件所作的修改。 "
 
-#: ../gedit/gedit-commands-file.c:1225
+#: ../gedit/gedit-commands-file.c:1256
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "將會永久地失去 1 分鐘秒前對文件所作的修改。"
 
-#: ../gedit/gedit-commands-file.c:1231
+#: ../gedit/gedit-commands-file.c:1262
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -831,7 +824,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "將會永久地失去 1 分 %ld 秒前對文件所作的修改。"
 
-#: ../gedit/gedit-commands-file.c:1241
+#: ../gedit/gedit-commands-file.c:1272
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -840,11 +833,11 @@ msgid_plural ""
 "lost."
 msgstr[0] "將會永久地失去 %ld 分鐘前對文件所作的修改。"
 
-#: ../gedit/gedit-commands-file.c:1256
+#: ../gedit/gedit-commands-file.c:1287
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "將會永久地失去 1 小時前對文件所作的修改。"
 
-#: ../gedit/gedit-commands-file.c:1262
+#: ../gedit/gedit-commands-file.c:1293
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -854,7 +847,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "將會永久地失去 %d 分鐘前對文件所作的修改。"
 
-#: ../gedit/gedit-commands-file.c:1277
+#: ../gedit/gedit-commands-file.c:1308
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -862,7 +855,7 @@ msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "將會永久地失去 %d 小時前對文件所作的修改。"
 
-#: ../gedit/gedit-commands-file.c:1300
+#: ../gedit/gedit-commands-file.c:1331
 msgid "_Revert"
 msgstr "還原(_R)"
 
@@ -909,8 +902,8 @@ msgstr "未儲存文件 %d"
 msgid "Tab Group %i"
 msgstr "分頁群組 %i"
 
-#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1084
-#: ../gedit/gedit-window.c:1090 ../gedit/gedit-window.c:1098
+#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1133
+#: ../gedit/gedit-window.c:1139 ../gedit/gedit-window.c:1147
 msgid "Read-Only"
 msgstr "唯讀"
 
@@ -957,7 +950,7 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1168
+#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1217
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1259,8 +1252,9 @@ msgid "Drop Changes and _Reload"
 msgstr "放棄變更並重新載入(_R)"
 
 #: ../gedit/gedit-io-error-info-bar.c:1186
+#: ../gedit/resources/gtk/menus-default.ui.h:6
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus.ui.h:6
+#: ../gedit/resources/gtk/menus-osx.ui.h:9
 msgid "_Reload"
 msgstr "重新載入(_R)"
 
@@ -1274,7 +1268,7 @@ msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr "如果您繼續儲存這個檔案可能會損毀這份文件。要強制儲存嗎？"
 
-#: ../gedit/gedit-open-document-selector.c:614
+#: ../gedit/gedit-open-document-selector.c:409
 msgid "No results"
 msgstr "沒有結果"
 
@@ -1414,22 +1408,22 @@ msgstr "MIME 類型："
 msgid "Encoding:"
 msgstr "編碼："
 
-#: ../gedit/gedit-utils.c:846
+#: ../gedit/gedit-utils.c:848
 msgid "Please check your installation."
 msgstr "請檢查安裝是否正確。"
 
-#: ../gedit/gedit-utils.c:907
+#: ../gedit/gedit-utils.c:909
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "無法開啟 UI 檔案 %s。錯誤：%s"
 
-#: ../gedit/gedit-utils.c:926
+#: ../gedit/gedit-utils.c:928
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "無法在檔案 %2$s 中找到物件「%1$s」。"
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1149
+#: ../gedit/gedit-utils.c:1151
 #, c-format
 msgid "/ on %s"
 msgstr "/ 於 %s"
@@ -1476,40 +1470,41 @@ msgstr "要搜尋的字串"
 msgid "Line you want to move the cursor to"
 msgstr "游標要移至的行"
 
-#: ../gedit/gedit-window.c:930
+#: ../gedit/gedit-window.c:972
 msgid "Bracket match is out of range"
 msgstr "對稱括號超出範圍"
 
-#: ../gedit/gedit-window.c:935
+#: ../gedit/gedit-window.c:977
 msgid "Bracket match not found"
 msgstr "找不到成對括弧"
 
-#: ../gedit/gedit-window.c:940
+#: ../gedit/gedit-window.c:982
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "對稱括弧於行：%d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:975
+#: ../gedit/gedit-window.c:1017
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "第 %d 行第 %d 字"
 
-#: ../gedit/gedit-window.c:1150
+#: ../gedit/gedit-window.c:1199
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Tab 寬度：%u"
 
-#: ../gedit/gedit-window.c:1521
+#: ../gedit/gedit-window.c:1569
 msgid "There are unsaved documents"
 msgstr "尚有未儲存的文件"
 
-#: ../gedit/gedit-window.c:2351
+#: ../gedit/gedit-window.c:2409
 msgid "Change side panel page"
 msgstr "改變側面窗格頁面"
 
-#: ../gedit/gedit-window.c:2371 ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2429 ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "文件"
 
@@ -1531,8 +1526,9 @@ msgid "Move to New Tab _Group"
 msgstr "移至新的分頁群組(_G)"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
+#: ../gedit/resources/gtk/menus-default.ui.h:21
 #: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-osx.ui.h:11
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
@@ -1548,94 +1544,34 @@ msgid "Use Spaces"
 msgstr "使用空格"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:8
-#| msgid "_Display line numbers"
 msgid "Display line numbers"
 msgstr "顯示列號"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:9
-#| msgid "Display Right Margin"
 msgid "Display right margin"
 msgstr "顯示右邊邊界"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:10
-#| msgid "Highlight current _line"
 msgid "Highlight current line"
 msgstr "標示目前的行"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:11
-#| msgid "Text Wrapping"
 msgid "Text wrapping"
 msgstr "文字換列"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus.ui.h:7
-msgid "_Print…"
-msgstr "列印(_P)…"
+#: ../gedit/resources/gtk/menus-default.ui.h:1
+#: ../gedit/resources/gtk/menus-osx.ui.h:8
+msgid "_New Window"
+msgstr "新增視窗(_N)"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus.ui.h:8
-msgid "_Fullscreen"
-msgstr "全螢幕(_F)"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
-#: ../gedit/resources/gtk/menus.ui.h:10
-msgid "Save _All"
-msgstr "全部儲存(_A)"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus.ui.h:11
-msgid "_Find…"
-msgstr "尋找(_F)…"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
-#: ../gedit/resources/gtk/menus.ui.h:12
-msgid "_Find and Replace…"
-msgstr "尋找並取代(_F)…"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus.ui.h:13
-msgid "_Clear Highlight"
-msgstr "清除標示(_C)"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
-#: ../gedit/resources/gtk/menus.ui.h:14
-msgid "_Go to Line…"
-msgstr "移至行(_G)…"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus.ui.h:15
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
-msgid "View"
-msgstr "檢視"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus.ui.h:16
-msgid "Side _Panel"
-msgstr "側邊面板(_P)"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus.ui.h:17
-msgid "_Bottom Panel"
-msgstr "底部面板(_B)"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus.ui.h:18
-msgid "_Highlight Mode…"
-msgstr "語法標示模式(_H)…"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus.ui.h:19
-#| msgid "_Tools"
-msgid "Tools"
-msgstr "工具"
-
+#: ../gedit/resources/gtk/menus-default.ui.h:2
 #: ../gedit/resources/gtk/menus-traditional.ui.h:15
-#: ../gedit/resources/gtk/menus.ui.h:2
 msgid "_Preferences"
 msgstr "偏好設定(_P)"
 
+#: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus.ui.h:3
+#: ../gedit/resources/gtk/menus-osx.ui.h:44
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
 #: ../plugins/spell/gedit-spell-language-dialog.c:126
@@ -1644,24 +1580,219 @@ msgstr "偏好設定(_P)"
 msgid "_Help"
 msgstr "求助(_H)"
 
+#: ../gedit/resources/gtk/menus-default.ui.h:4
 #: ../gedit/resources/gtk/menus-traditional.ui.h:17
-#: ../gedit/resources/gtk/menus.ui.h:4
 msgid "_About"
 msgstr "關於(_A)"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus.ui.h:20
-msgid "_Close All"
-msgstr "全部關閉(_C)"
-
+#: ../gedit/resources/gtk/menus-default.ui.h:5
 #: ../gedit/resources/gtk/menus-traditional.ui.h:20
-#: ../gedit/resources/gtk/menus.ui.h:5
 msgid "_Quit"
 msgstr "結束(_Q)"
 
-#: ../gedit/resources/gtk/menus.ui.h:1
-msgid "_New Window"
-msgstr "新增視窗(_N)"
+#: ../gedit/resources/gtk/menus-default.ui.h:7
+#: ../gedit/resources/gtk/menus-traditional.ui.h:2
+#: ../gedit/resources/gtk/menus-osx.ui.h:10
+msgid "_Print…"
+msgstr "列印(_P)…"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+#: ../gedit/resources/gtk/menus-osx.ui.h:24
+msgid "_Fullscreen"
+msgstr "全螢幕(_F)"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:10
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+msgid "Save _All"
+msgstr "全部儲存(_A)"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:11
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+#: ../gedit/resources/gtk/menus-osx.ui.h:27
+msgid "_Find…"
+msgstr "尋找(_F)…"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+msgid "_Find and Replace…"
+msgstr "尋找並取代(_F)…"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:13
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+#: ../gedit/resources/gtk/menus-osx.ui.h:31
+msgid "_Clear Highlight"
+msgstr "清除標示(_C)"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+msgid "_Go to Line…"
+msgstr "移至行(_G)…"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:15
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
+#: ../gedit/resources/gtk/menus-osx.ui.h:21
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
+msgid "View"
+msgstr "檢視"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:16
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+#: ../gedit/resources/gtk/menus-osx.ui.h:22
+msgid "Side _Panel"
+msgstr "側邊面板(_P)"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+#: ../gedit/resources/gtk/menus-osx.ui.h:23
+msgid "_Bottom Panel"
+msgstr "底部面板(_B)"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+#: ../gedit/resources/gtk/menus-osx.ui.h:25
+msgid "_Highlight Mode…"
+msgstr "語法標示模式(_H)…"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+#: ../gedit/resources/gtk/menus-osx.ui.h:33
+msgid "Tools"
+msgstr "工具"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:20
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus-osx.ui.h:36
+msgid "_Close All"
+msgstr "全部關閉(_C)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:1
+#| msgid "File: %s"
+msgid "File"
+msgstr "檔案"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:2
+msgid "_New"
+msgstr "新增(_N)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:4
+#| msgid "Open a New Document"
+msgid "Open _Recent"
+msgstr "最近開啟(_R)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:5
+msgid "Reopen Closed _Tab"
+msgstr "重新開啟關閉的分頁(_T)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:7
+#| msgid "_Save As…"
+msgid "Save _As…"
+msgstr "另存為(_A)…"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:12
+#| msgid "Editor"
+msgid "Edit"
+msgstr "編輯"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:13
+msgid "_Undo"
+msgstr "復原(_U)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:14
+msgid "_Redo"
+msgstr "取消復原(_R)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:15
+msgid "C_ut"
+msgstr "剪下(_U)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:16
+msgid "_Copy"
+msgstr "複製(_C)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:17
+msgid "_Paste"
+msgstr "貼上(_P)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:18
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
+msgid "_Delete"
+msgstr "刪除(_D)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:19
+#| msgid "File Browser Filter Mode"
+msgid "Overwrite _Mode"
+msgstr "覆寫模式(_M)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:20
+#| msgid "Save _All"
+msgid "Select _All"
+msgstr "全部選取(_A)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:26
+#| msgid "_Search for: "
+msgid "Search"
+msgstr "搜尋"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:28
+msgid "Find Ne_xt"
+msgstr "找下一個(_X)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:29
+msgid "Find Pre_vious"
+msgstr "找上一個(_V)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:30
+#| msgid "_Find and Replace…"
+msgid "Find and _Replace…"
+msgstr "尋找與取代(_R)…"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:32
+#| msgid "_Go to Line…"
+msgid "Go to _Line…"
+msgstr "前往列號(_L)…"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:35
+#| msgid "Save _All"
+msgid "_Save All"
+msgstr "全部儲存(_A)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:37
+#| msgid "Move to New Tab _Group"
+msgid "_New Tab Group"
+msgstr "新增分頁群組(_N)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:38
+#| msgid "P_revious Page"
+msgid "P_revious Tab Group"
+msgstr "上一個分頁群組(_R)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:39
+#| msgid "Tab Group %i"
+msgid "Nex_t Tab Group"
+msgstr "下一個分頁群組(_T)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:40
+#| msgid "Close Document"
+msgid "_Previous Document"
+msgstr "上一個文件(_P)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:41
+#| msgid "Document"
+msgid "N_ext Document"
+msgstr "下一個文件(_E)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:42
+#| msgid "Move to New _Window"
+msgid "_Move To New Window"
+msgstr "移至新的視窗(_M)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:43
+#| msgid "_Help"
+msgid "Help"
+msgstr "求助"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character encodings"
@@ -1712,12 +1843,10 @@ msgid "Search highlight mode..."
 msgstr "搜尋標示模式…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
-#| msgid "Documents"
 msgid "Other Documents…"
 msgstr "其他的文件…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
-#| msgid "Open a file"
 msgid "Open another file"
 msgstr "開啟另一個檔案"
 
@@ -1996,7 +2125,6 @@ msgid "Match _entire word only"
 msgstr "只符合整個字詞(_E)"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
-#| msgid "Match as _regular expression"
 msgid "Match as re_gular expression"
 msgstr "以正規表示式比對(_G)"
 
@@ -2037,7 +2165,6 @@ msgid "Hide panel"
 msgstr "隱藏面板"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:11
-#| msgid "Open a file"
 msgid "Open a file dialog"
 msgstr "開啟檔案對話盒"
 
@@ -2053,23 +2180,23 @@ msgstr "檢查更新"
 msgid "Check for latest version of gedit"
 msgstr "檢查 gedit 的最新版本"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:249
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:245
 msgid "There was an error displaying the URI."
 msgstr "顯示這個 URI 時發生錯誤。"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:287
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:282
 msgid "_Download"
 msgstr "下載(_D)"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:288
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:283
 msgid "_Ignore Version"
 msgstr "忽略版本(_I)"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:293
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:288
 msgid "There is a new version of gedit"
 msgstr "已有新版本的 gedit"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:296
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:291
 msgid ""
 "You can download the new version of gedit by clicking on the download button "
 "or ignore that version and wait for a new one"
@@ -2095,7 +2222,7 @@ msgstr "文件統計"
 msgid "Report the number of words, lines and characters in a document."
 msgstr "回報文件中的字數、列數、字元數目。"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:538
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:537
 msgid "_Document Statistics"
 msgstr "文件統計(_D)"
 
@@ -2454,12 +2581,6 @@ msgstr "檔案“%s”無法移至回收筒。"
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
 msgid "The selected files cannot be moved to the trash."
 msgstr "所選的檔案無法移至回收筒。"
-
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
-msgid "_Delete"
-msgstr "刪除(_D)"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
 #, c-format
@@ -2976,7 +3097,7 @@ msgstr "該文字片段的捷徑鍵已在使用中"
 msgid "_Drop targets:"
 msgstr "拖放目標(_D):"
 
-#: ../plugins/sort/gedit-sort-plugin.c:432
+#: ../plugins/sort/gedit-sort-plugin.c:431
 msgid "S_ort..."
 msgstr "排序(_O)…"
 
@@ -3064,8 +3185,8 @@ msgstr "拼字檢查完成"
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:370
-#: ../plugins/spell/gedit-spell-checker-language.c:376
+#: ../plugins/spell/gedit-spell-checker-language.c:367
+#: ../plugins/spell/gedit-spell-checker-language.c:373
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -3074,7 +3195,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:385
+#: ../plugins/spell/gedit-spell-checker-language.c:382
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -3083,7 +3204,7 @@ msgstr "不明 (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:491
+#: ../plugins/spell/gedit-spell-checker-language.c:488
 msgctxt "language"
 msgid "Default"
 msgstr "預設值"
@@ -3096,11 +3217,11 @@ msgstr "設定語言"
 msgid "Languages"
 msgstr "語言"
 
-#: ../plugins/spell/gedit-spell-plugin.c:796
+#: ../plugins/spell/gedit-spell-plugin.c:791
 msgid "The document is empty."
 msgstr "文件是空白的。"
 
-#: ../plugins/spell/gedit-spell-plugin.c:821
+#: ../plugins/spell/gedit-spell-plugin.c:816
 msgid "No misspelled words"
 msgstr "沒有拼錯字詞"
 
@@ -3169,11 +3290,11 @@ msgstr "拼字檢查程式"
 msgid "Checks the spelling of the current document."
 msgstr "檢查目前文件中的拼字。"
 
-#: ../plugins/time/gedit-time-plugin.c:273
+#: ../plugins/time/gedit-time-plugin.c:270
 msgid "In_sert Date and Time..."
 msgstr "插入日期及時間(_S)…"
 
-#: ../plugins/time/gedit-time-plugin.c:499
+#: ../plugins/time/gedit-time-plugin.c:496
 msgid "Available formats"
 msgstr "可用的格式"
 
@@ -3254,3 +3375,6 @@ msgstr "插入日期/時間"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "在游標目前的位置插入現在的日期及時間。"
+
+#~ msgid "About gedit"
+#~ msgstr "關於 gedit"
