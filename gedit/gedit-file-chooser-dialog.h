@@ -2,7 +2,7 @@
  * gedit-file-chooser-dialog.h
  * This file is part of gedit
  *
- * Copyright (C) 2005 - Paolo Maggi
+ * Copyright (C) 2014 - Jesse van den Kieboom
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,56 +21,126 @@
 #ifndef __GEDIT_FILE_CHOOSER_DIALOG_H__
 #define __GEDIT_FILE_CHOOSER_DIALOG_H__
 
+#include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
-
-#include <gedit/gedit-enum-types.h>
-#include <gedit/gedit-document.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_CHOOSER_DIALOG             (gedit_file_chooser_dialog_get_type ())
-#define GEDIT_FILE_CHOOSER_DIALOG(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialog))
-#define GEDIT_FILE_CHOOSER_DIALOG_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialogClass))
-#define GEDIT_IS_FILE_CHOOSER_DIALOG(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG))
-#define GEDIT_IS_FILE_CHOOSER_DIALOG_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_FILE_CHOOSER_DIALOG))
-#define GEDIT_FILE_CHOOSER_DIALOG_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialogClass))
+/*
+ * Type checking and casting macros
+ */
+#define GEDIT_TYPE_FILE_CHOOSER_DIALOG			(gedit_file_chooser_dialog_get_type ())
+#define GEDIT_FILE_CHOOSER_DIALOG(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialog))
+#define GEDIT_FILE_CHOOSER_DIALOG_IFACE(obj)		(G_TYPE_CHECK_CLASS_CAST ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialogInterface))
+#define GEDIT_IS_FILE_CHOOSER_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG))
+#define GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(obj)	(G_TYPE_INSTANCE_GET_INTERFACE ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialogInterface))
 
-typedef struct _GeditFileChooserDialog		GeditFileChooserDialog;
-typedef struct _GeditFileChooserDialogClass	GeditFileChooserDialogClass;
-typedef struct _GeditFileChooserDialogPrivate	GeditFileChooserDialogPrivate;
+typedef struct _GeditFileChooserDialog           GeditFileChooserDialog; /* dummy typedef */
+typedef struct _GeditFileChooserDialogInterface  GeditFileChooserDialogInterface;
 
-struct _GeditFileChooserDialogClass
+struct _GeditFileChooserDialogInterface
 {
-	GtkFileChooserDialogClass parent_class;
+	GTypeInterface g_iface;
+
+	/* Virtual public methods */
+	void	(*set_encoding)		(GeditFileChooserDialog  *dialog,
+					 const GtkSourceEncoding *encoding);
+
+	const GtkSourceEncoding *
+		(*get_encoding)		(GeditFileChooserDialog *dialog);
+
+	void	(*set_newline_type)	(GeditFileChooserDialog  *dialog,
+					 GtkSourceNewlineType     newline_type);
+
+	GtkSourceNewlineType
+		(*get_newline_type)	(GeditFileChooserDialog *dialog);
+
+	void	(*set_current_folder)	(GeditFileChooserDialog *dialog,
+					 GFile                  *folder);
+
+	void	(*set_current_name)	(GeditFileChooserDialog *dialog,
+					 const gchar            *name);
+
+	void	(*set_file)		(GeditFileChooserDialog *dialog,
+					 GFile                  *file);
+
+	GFile *	(*get_file)		(GeditFileChooserDialog *dialog);
+
+	GSList *(*get_files)		(GeditFileChooserDialog *dialog);
+
+	void	(*set_do_overwrite_confirmation)
+					(GeditFileChooserDialog *dialog,
+					 gboolean                overwrite_confirmation);
+
+	void	(*show)			(GeditFileChooserDialog *dialog);
+
+	void    (*destroy)		(GeditFileChooserDialog *dialog);
+
+	void	(*set_modal)		(GeditFileChooserDialog *dialog,
+					 gboolean                is_modal);
+
+	GtkWindow *
+		(*get_window)		(GeditFileChooserDialog *dialog);
 };
 
-struct _GeditFileChooserDialog
+typedef enum
 {
-	GtkFileChooserDialog parent_instance;
+	GEDIT_FILE_CHOOSER_SAVE               = 1 << 0,
+	GEDIT_FILE_CHOOSER_OPEN               = 1 << 1,
+	GEDIT_FILE_CHOOSER_ENABLE_ENCODING    = 1 << 2,
+	GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING = 1 << 3
+} GeditFileChooserFlags;
 
-	GeditFileChooserDialogPrivate *priv;
-};
+/*
+ * Public methods
+ */
+GType		gedit_file_chooser_dialog_get_type		(void)  G_GNUC_CONST;
 
-GType		 gedit_file_chooser_dialog_get_type		(void) G_GNUC_CONST;
-
-GtkWidget	*gedit_file_chooser_dialog_new			(const gchar              *title,
+GeditFileChooserDialog *
+		gedit_file_chooser_dialog_create		(const gchar              *title,
 								 GtkWindow                *parent,
-								 GtkFileChooserAction      action,
-								 const GtkSourceEncoding  *encoding,
-								 const gchar              *first_button_text,
-								 ...);
+								 GeditFileChooserFlags     flags,
+								 const GtkSourceEncoding  *encoding);
+
+void		 gedit_file_chooser_dialog_destroy		(GeditFileChooserDialog   *dialog);
 
 void		 gedit_file_chooser_dialog_set_encoding		(GeditFileChooserDialog   *dialog,
 								 const GtkSourceEncoding  *encoding);
 
-const GtkSourceEncoding
-		*gedit_file_chooser_dialog_get_encoding		(GeditFileChooserDialog   *dialog);
+const GtkSourceEncoding *
+		 gedit_file_chooser_dialog_get_encoding		(GeditFileChooserDialog   *dialog);
 
 void		 gedit_file_chooser_dialog_set_newline_type	(GeditFileChooserDialog   *dialog,
 								 GtkSourceNewlineType      newline_type);
 
 GtkSourceNewlineType
 		 gedit_file_chooser_dialog_get_newline_type	(GeditFileChooserDialog   *dialog);
+
+void		 gedit_file_chooser_dialog_set_current_folder	(GeditFileChooserDialog   *dialog,
+								 GFile                    *folder);
+
+void		 gedit_file_chooser_dialog_set_current_name	(GeditFileChooserDialog   *dialog,
+								 const gchar              *name);
+
+void		 gedit_file_chooser_dialog_set_file		(GeditFileChooserDialog   *dialog,
+								 GFile                    *file);
+
+GFile		*gedit_file_chooser_dialog_get_file		(GeditFileChooserDialog   *dialog);
+
+GSList		*gedit_file_chooser_dialog_get_files		(GeditFileChooserDialog   *dialog);
+
+
+void		 gedit_file_chooser_dialog_set_do_overwrite_confirmation (
+								 GeditFileChooserDialog   *dialog,
+								 gboolean                  overwrite_confirmation);
+
+void		 gedit_file_chooser_dialog_show			(GeditFileChooserDialog   *dialog);
+
+void		 gedit_file_chooser_dialog_set_modal		(GeditFileChooserDialog   *dialog,
+								 gboolean                  is_modal);
+
+GtkWindow	*gedit_file_chooser_dialog_get_window		(GeditFileChooserDialog   *dialog);
+
 
 G_END_DECLS
 

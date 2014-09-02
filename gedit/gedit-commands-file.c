@@ -379,17 +379,17 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 	if (response_id != GTK_RESPONSE_OK)
 	{
-		gtk_widget_destroy (GTK_WIDGET (dialog));
+		gedit_file_chooser_dialog_destroy (dialog);
 
 		return;
 	}
 
-	files = gtk_file_chooser_get_files (GTK_FILE_CHOOSER (dialog));
+	files = gedit_file_chooser_dialog_get_files (dialog);
 	g_return_if_fail (files != NULL);
 
 	encoding = gedit_file_chooser_dialog_get_encoding (dialog);
 
-	gtk_widget_destroy (GTK_WIDGET (dialog));
+	gedit_file_chooser_dialog_destroy (dialog);
 
 	if (window == NULL)
 	{
@@ -419,7 +419,7 @@ _gedit_cmd_file_open (GSimpleAction *action,
                       gpointer       user_data)
 {
 	GeditWindow *window = NULL;
-	GtkWidget *open_dialog;
+	GeditFileChooserDialog *open_dialog;
 
 	if (GEDIT_IS_WINDOW (user_data))
 	{
@@ -448,13 +448,11 @@ _gedit_cmd_file_open (GSimpleAction *action,
 	}
 
 	/* Translators: "Open" is the title of the file chooser window */
-	open_dialog = gedit_file_chooser_dialog_new (_("Open"),
-						     window ? GTK_WINDOW (window) : NULL,
-						     GTK_FILE_CHOOSER_ACTION_OPEN,
-						     NULL,
-						     _("_Cancel"), GTK_RESPONSE_CANCEL,
-						     _("_Open"), GTK_RESPONSE_OK,
-						     NULL);
+	open_dialog = gedit_file_chooser_dialog_create (_("Open"),
+							window ? GTK_WINDOW (window) : NULL,
+							GEDIT_FILE_CHOOSER_OPEN |
+							GEDIT_FILE_CHOOSER_ENABLE_ENCODING,
+							NULL);
 
 	if (window != NULL)
 	{
@@ -488,13 +486,7 @@ _gedit_cmd_file_open (GSimpleAction *action,
 
 		if (default_path != NULL)
 		{
-			gchar *uri;
-
-			uri = g_file_get_uri (default_path);
-			gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (open_dialog),
-								 uri);
-
-			g_free (uri);
+			gedit_file_chooser_dialog_set_current_folder (open_dialog, default_path);
 			g_object_unref (default_path);
 		}
 	}
@@ -504,7 +496,7 @@ _gedit_cmd_file_open (GSimpleAction *action,
 			  G_CALLBACK (open_dialog_response_cb),
 			  window);
 
-	gtk_widget_show (open_dialog);
+	gedit_file_chooser_dialog_show (open_dialog);
 }
 
 void
@@ -715,7 +707,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 	if (response_id != GTK_RESPONSE_OK)
 	{
-		gtk_widget_destroy (GTK_WIDGET (dialog));
+		gedit_file_chooser_dialog_destroy (dialog);
 
 		goto save_next_tab;
 	}
@@ -734,7 +726,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		doc = gedit_tab_get_document (tab);
 		file = gedit_document_get_file (doc);
 
-		location = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
+		location = gedit_file_chooser_dialog_get_file (dialog);
 		g_return_if_fail (location != NULL);
 
 		compression_type = get_compression_type_from_file (location);
@@ -747,7 +739,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 			                         location,
 			                         compression_type != GTK_SOURCE_COMPRESSION_TYPE_NONE))
 			{
-				gtk_widget_destroy (GTK_WIDGET (dialog));
+				gedit_file_chooser_dialog_destroy (dialog);
 				g_object_unref (location);
 
 				goto save_next_tab;
@@ -757,7 +749,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		encoding = gedit_file_chooser_dialog_get_encoding (dialog);
 		newline_type = gedit_file_chooser_dialog_get_newline_type (dialog);
 
-		gtk_widget_destroy (GTK_WIDGET (dialog));
+		gedit_file_chooser_dialog_destroy (dialog);
 
 		doc = gedit_tab_get_document (tab);
 		g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
@@ -823,25 +815,30 @@ save_next_tab:
 }
 
 static GtkFileChooserConfirmation
-confirm_overwrite_callback (GtkFileChooser *dialog,
-			    gpointer        data)
+confirm_overwrite_callback (GeditFileChooserDialog *dialog,
+			    gpointer                data)
 {
-	gchar *uri;
 	GFile *file;
 	GtkFileChooserConfirmation res;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	uri = gtk_file_chooser_get_uri (dialog);
-	file = g_file_new_for_uri (uri);
-	g_free (uri);
+	file = gedit_file_chooser_dialog_get_file (dialog);
 
 	if (is_read_only (file))
 	{
-		if (replace_read_only_file (GTK_WINDOW (dialog), file))
+		GtkWindow *win;
+
+		win = gedit_file_chooser_dialog_get_window (dialog);
+
+		if (replace_read_only_file (win, file))
+		{
 			res = GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
+		}
 		else
+		{
 			res = GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
+		}
 	}
 	else
 	{
@@ -858,29 +855,29 @@ void
 _gedit_cmd_file_save_as_tab (GeditTab    *tab,
                              GeditWindow *window)
 {
-	GtkWidget *save_dialog;
+	GeditFileChooserDialog *save_dialog;
 	GtkWindowGroup *wg;
 	GeditDocument *doc;
 	GtkSourceFile *file;
 	GFile *location;
 	const GtkSourceEncoding *encoding;
 	GtkSourceNewlineType newline_type;
+	GtkWindow *win;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	save_dialog = gedit_file_chooser_dialog_new (_("Save As"),
-						     GTK_WINDOW (window),
-						     GTK_FILE_CHOOSER_ACTION_SAVE,
-						     NULL,
-						     _("_Cancel"), GTK_RESPONSE_CANCEL,
-						     _("_Save"), GTK_RESPONSE_OK,
-						     NULL);
+	save_dialog = gedit_file_chooser_dialog_create (_("Save As"),
+							GTK_WINDOW (window),
+							GEDIT_FILE_CHOOSER_SAVE |
+							GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
+							GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING,
+							NULL);
 
-	gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (save_dialog),
-							TRUE);
+	gedit_file_chooser_dialog_set_do_overwrite_confirmation (save_dialog, TRUE);
+
 	g_signal_connect (save_dialog,
 			  "confirm-overwrite",
 			  G_CALLBACK (confirm_overwrite_callback),
@@ -888,10 +885,15 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 
 	wg = gedit_window_get_group (window);
 
-	gtk_window_group_add_window (wg, GTK_WINDOW (save_dialog));
+	win = gedit_file_chooser_dialog_get_window (save_dialog);
+
+	if (win != NULL)
+	{
+		gtk_window_group_add_window (wg, win);
+	}
 
 	/* Save As dialog is modal to its main window */
-	gtk_window_set_modal (GTK_WINDOW (save_dialog), TRUE);
+	gedit_file_chooser_dialog_set_modal (save_dialog, TRUE);
 
 	/* Set the suggested file name */
 	doc = gedit_tab_get_document (tab);
@@ -900,9 +902,7 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 
 	if (location != NULL)
 	{
-		gtk_file_chooser_set_file (GTK_FILE_CHOOSER (save_dialog),
-					   location,
-					   NULL);
+		gedit_file_chooser_dialog_set_file (save_dialog, location);
 	}
 	else
 	{
@@ -914,18 +914,14 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 
 		if (default_path != NULL)
 		{
-			gchar *uri;
+			gedit_file_chooser_dialog_set_current_folder (save_dialog,
+								      default_path);
 
-			uri = g_file_get_uri (default_path);
-			gtk_file_chooser_set_current_folder_uri (GTK_FILE_CHOOSER (save_dialog),
-								 uri);
-
-			g_free (uri);
 			g_object_unref (default_path);
 		}
 
-		gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (save_dialog),
-						   docname);
+		gedit_file_chooser_dialog_set_current_name (save_dialog,
+							    docname);
 
 		g_free (docname);
 	}
@@ -955,7 +951,7 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 			  G_CALLBACK (save_dialog_response_cb),
 			  window);
 
-	gtk_widget_show (save_dialog);
+	gedit_file_chooser_dialog_show (save_dialog);
 }
 
 void

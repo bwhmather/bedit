@@ -49,9 +49,11 @@ gedit_libosx_la_LIBADD = -lobjc
 gedit_libosx_la_CPPFLAGS = $(gedit_common_cppflags)
 gedit_libosx_la_CFLAGS = -xobjective-c $(gedit_common_cflags)
 
-gedit_libosx_la_SOURCES = 	\
-	gedit/gedit-app-osx.c	\
-	gedit/gedit-app-osx.h
+gedit_libosx_la_SOURCES = 			\
+	gedit/gedit-app-osx.c			\
+	gedit/gedit-app-osx.h			\
+	gedit/gedit-file-chooser-dialog-osx.c	\
+	gedit/gedit-file-chooser-dialog-osx.h
 
 gedit_libgedit_la_LIBADD += gedit/libosx.la
 endif
@@ -101,8 +103,10 @@ gedit_NOINST_H_FILES =				\
 	gedit/gedit-dirs.h			\
 	gedit/gedit-documents-panel.h		\
 	gedit/gedit-encodings-dialog.h		\
+	gedit/gedit-encoding-items.h		\
 	gedit/gedit-open-document-selector.h	\
 	gedit/gedit-file-chooser-dialog.h	\
+	gedit/gedit-file-chooser-dialog-gtk.h	\
 	gedit/gedit-highlight-mode-dialog.h	\
 	gedit/gedit-highlight-mode-selector.h	\
 	gedit/gedit-history-entry.h		\
@@ -173,8 +177,10 @@ gedit_libgedit_c_files =			\
 	gedit/gedit-documents-panel.c		\
 	gedit/gedit-encodings-combo-box.c	\
 	gedit/gedit-encodings-dialog.c		\
+	gedit/gedit-encoding-items.c		\
 	gedit/gedit-open-document-selector.c	\
 	gedit/gedit-file-chooser-dialog.c	\
+	gedit/gedit-file-chooser-dialog-gtk.c	\
 	gedit/gedit-highlight-mode-dialog.c	\
 	gedit/gedit-highlight-mode-selector.c	\
 	gedit/gedit-history-entry.c		\

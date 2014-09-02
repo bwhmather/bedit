@@ -29,11 +29,10 @@
 #include "gedit-encodings-dialog.h"
 #include "gedit-settings.h"
 #include "gedit-utils.h"
+#include "gedit-encoding-items.h"
 
 struct _GeditEncodingsComboBoxPrivate
 {
-	GSettings *enc_settings;
-
 	GtkListStore *store;
 	glong changed_id;
 
@@ -108,7 +107,6 @@ gedit_encodings_combo_box_dispose (GObject *object)
 	GeditEncodingsComboBox *combo = GEDIT_ENCODINGS_COMBO_BOX (object);
 
 	g_clear_object (&combo->priv->store);
-	g_clear_object (&combo->priv->enc_settings);
 
 	G_OBJECT_CLASS (gedit_encodings_combo_box_parent_class)->dispose (object);
 }
@@ -288,11 +286,7 @@ update_menu (GeditEncodingsComboBox *menu)
 {
 	GtkListStore *store;
 	GtkTreeIter iter;
-	GSList *encodings, *l;
-	gchar *str;
-	const GtkSourceEncoding *utf8_encoding;
-	const GtkSourceEncoding *current_encoding;
-	gchar **enc_strv;
+	GSList *encodings;
 
 	store = menu->priv->store;
 
@@ -313,72 +307,22 @@ update_menu (GeditEncodingsComboBox *menu)
 		add_separator (store);
 	}
 
-	utf8_encoding = gtk_source_encoding_get_utf8 ();
-	current_encoding = gtk_source_encoding_get_current ();
+	encodings = gedit_encoding_items_get ();
 
-	if (utf8_encoding != current_encoding)
+	while (encodings)
 	{
-		str = gtk_source_encoding_to_string (utf8_encoding);
-	}
-	else
-	{
-		str = g_strdup_printf (_("Current Locale (%s)"),
-				       gtk_source_encoding_get_charset (utf8_encoding));
-	}
-
-	gtk_list_store_append (store, &iter);
-	gtk_list_store_set (store, &iter,
-			    COLUMN_NAME, str,
-			    COLUMN_ENCODING, utf8_encoding,
-			    COLUMN_CONFIGURE_ROW, FALSE,
-			    -1);
-
-	g_free (str);
-
-	if (current_encoding != utf8_encoding &&
-	    current_encoding != NULL)
-	{
-		str = g_strdup_printf (_("Current Locale (%s)"),
-				       gtk_source_encoding_get_charset (current_encoding));
+		GeditEncodingItem *item = encodings->data;
 
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
-				    COLUMN_NAME, str,
-				    COLUMN_ENCODING, current_encoding,
+				    COLUMN_NAME, gedit_encoding_item_get_name (item),
+				    COLUMN_ENCODING, gedit_encoding_item_get_encoding (item),
 				    COLUMN_CONFIGURE_ROW, FALSE,
 				    -1);
 
-		g_free (str);
+		gedit_encoding_item_free (item);
+		encodings = g_slist_delete_link (encodings, encodings);
 	}
-
-	enc_strv = g_settings_get_strv (menu->priv->enc_settings,
-					GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU);
-
-	encodings = _gedit_utils_encoding_strv_to_list ((const gchar * const *)enc_strv);
-	g_strfreev (enc_strv);
-
-	for (l = encodings; l != NULL; l = g_slist_next (l))
-	{
-		const GtkSourceEncoding *enc = l->data;
-
-		if (enc != current_encoding &&
-		    enc != utf8_encoding &&
-		    enc != NULL)
-		{
-			str = gtk_source_encoding_to_string (enc);
-
-			gtk_list_store_append (store, &iter);
-			gtk_list_store_set (store, &iter,
-					    COLUMN_NAME, str,
-					    COLUMN_ENCODING, enc,
-					    COLUMN_CONFIGURE_ROW, FALSE,
-					    -1);
-
-			g_free (str);
-		}
-	}
-
-	g_slist_free (encodings);
 
 	add_separator (store);
 
@@ -401,8 +345,6 @@ static void
 gedit_encodings_combo_box_init (GeditEncodingsComboBox *menu)
 {
 	menu->priv = gedit_encodings_combo_box_get_instance_private (menu);
-
-	menu->priv->enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
 
 	menu->priv->store = gtk_list_store_new (N_COLUMNS,
 						G_TYPE_STRING,
