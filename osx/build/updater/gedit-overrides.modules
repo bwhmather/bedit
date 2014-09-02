@@ -185,7 +185,7 @@
   </metamodule>
 
   <autotools id="gedit" autogenargs="PYTHON=python3">
-    <branch repo="git.gnome.org" module="gedit" revision="wip/3.14-osx"/>
+    <branch repo="git.gnome.org" module="gedit"/>
     <dependencies>
       <dep package="gedit-deps"/>
     </dependencies>
