@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: as\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-08-27 05:10+0000\n"
-"PO-Revision-Date: 2014-08-27 16:49+0530\n"
+"POT-Creation-Date: 2014-09-03 05:11+0000\n"
+"PO-Revision-Date: 2014-09-03 13:11+0530\n"
 "Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
 "Language-Team: Assamese <kde-i18n-doc@kde.org>\n"
 "Language: as_IN\n"
@@ -613,7 +613,7 @@ msgstr "[FILE...] [+LINE[:COLUMN]]"
 msgid "There was an error displaying the help."
 msgstr "সহায় প্ৰদৰ্শনত এটা ত্ৰুটি হৈছিল।"
 
-#: ../gedit/gedit-app.c:915
+#: ../gedit/gedit-app.c:917
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: অবৈধ এনক'ডিং।"
@@ -627,9 +627,10 @@ msgid "Close _without Saving"
 msgstr "সংৰক্ষণ নকৰি বন্ধ কৰক (_w)"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:321
-#: ../gedit/gedit-commands-file.c:455 ../gedit/gedit-commands-file.c:591
-#: ../gedit/gedit-commands-file.c:668 ../gedit/gedit-commands-file.c:878
-#: ../gedit/gedit-commands-file.c:1330 ../gedit/gedit-io-error-info-bar.c:134
+#: ../gedit/gedit-commands-file.c:583 ../gedit/gedit-commands-file.c:660
+#: ../gedit/gedit-commands-file.c:1326
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:605
+#: ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:515
 #: ../gedit/gedit-io-error-info-bar.c:1191
 #: ../gedit/gedit-preferences-dialog.c:855
@@ -655,7 +656,8 @@ msgid "_Save As…"
 msgstr "এই ধৰণে সংৰক্ষণ কৰক (_S)…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/gedit-commands-file.c:879 ../gedit/resources/gtk/menus-osx.ui.h:6
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:609
+#: ../gedit/resources/gtk/menus-osx.ui.h:6
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -803,38 +805,30 @@ msgstr[1] "%d ফাইল ল'ড কৰা হৈছে..."
 msgid "Open"
 msgstr "খোলক"
 
-#: ../gedit/gedit-commands-file.c:456 ../gedit/resources/gtk/menus-osx.ui.h:3
-#: ../gedit/resources/ui/gedit-window.ui.h:3
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:782
-msgid "_Open"
-msgstr "খোলক (_O)"
-
-#: ../gedit/gedit-commands-file.c:582
+#: ../gedit/gedit-commands-file.c:574
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "\"%s\" ফাইল কেৱল পঢ়িব পৰা।"
 
-#: ../gedit/gedit-commands-file.c:587
+#: ../gedit/gedit-commands-file.c:579
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr ""
 "আপুনি উপস্থিত ফাইলৰ পৰিবৰ্তে নতুন ফাইলত সংৰক্ষণ কৰাৰ চেষ্টা কৰিব বিচাৰে নে ?"
 
-#: ../gedit/gedit-commands-file.c:592
+#: ../gedit/gedit-commands-file.c:584
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "প্ৰতিস্থাপন (_R)"
 
-#: ../gedit/gedit-commands-file.c:632
+#: ../gedit/gedit-commands-file.c:624
 msgid "Save the file using compression?"
 msgstr "সংকোচন ব্যৱহাৰ কৰি ফাইল সংৰক্ষণ কৰিব নে?"
 
-#: ../gedit/gedit-commands-file.c:636
+#: ../gedit/gedit-commands-file.c:628
 msgid "Save the file as plain text?"
 msgstr "ফাইলটোক সমতল লিখনি হিচাপে সংৰক্ষণ কৰিব নে?"
 
-#: ../gedit/gedit-commands-file.c:649
+#: ../gedit/gedit-commands-file.c:641
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -843,11 +837,11 @@ msgstr ""
 "\"%s\" ফাইলটো পূৰ্বতে সমতল লিখনি হিচাপে সংৰক্ষণ কৰা হৈছিল আৰু এতিয়া সংকোচন "
 "ব্যৱহাৰ কৰি সংৰক্ষণ কৰা হ'ব।"
 
-#: ../gedit/gedit-commands-file.c:653
+#: ../gedit/gedit-commands-file.c:645
 msgid "_Save Using Compression"
 msgstr "সংকোচন ব্যৱহাৰ কৰি সংৰক্ষণ কৰক (_S)"
 
-#: ../gedit/gedit-commands-file.c:658
+#: ../gedit/gedit-commands-file.c:650
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -857,30 +851,30 @@ msgstr ""
 "লিখনি "
 "হিচাপে সংৰক্ষণ কৰা হ'ব।"
 
-#: ../gedit/gedit-commands-file.c:661
+#: ../gedit/gedit-commands-file.c:653
 msgid "_Save As Plain Text"
 msgstr "সমতল লিখনি হিচাপে সংৰক্ষণ কৰক (_S)"
 
-#: ../gedit/gedit-commands-file.c:769 ../gedit/gedit-commands-file.c:989
+#: ../gedit/gedit-commands-file.c:761 ../gedit/gedit-commands-file.c:985
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "'%s' ফাইল সংৰক্ষণ কৰা হৈছে..."
 
-#: ../gedit/gedit-commands-file.c:874
+#: ../gedit/gedit-commands-file.c:872
 msgid "Save As"
 msgstr "নতুন ৰূপে সংৰক্ষণ কৰক"
 
-#: ../gedit/gedit-commands-file.c:1193
+#: ../gedit/gedit-commands-file.c:1189
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "'%s' দস্তাবেজত কৰা পৰিবৰ্তন বাতিল কৰা হৈছে…"
 
-#: ../gedit/gedit-commands-file.c:1238
+#: ../gedit/gedit-commands-file.c:1234
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "'%s' দস্তাবেজত কৰা পৰিবৰ্তন বাতিল কৰা হ'ব নেকি ?"
 
-#: ../gedit/gedit-commands-file.c:1247
+#: ../gedit/gedit-commands-file.c:1243
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -890,12 +884,12 @@ msgid_plural ""
 msgstr[0] "যোৱা %ld ছেকেণ্ডত দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই যাব।"
 msgstr[1] "যোৱা %ld ছেকেণ্ডত দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই যাব।"
 
-#: ../gedit/gedit-commands-file.c:1256
+#: ../gedit/gedit-commands-file.c:1252
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "যোৱা এক মিনিটত দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই যাব।"
 
-#: ../gedit/gedit-commands-file.c:1262
+#: ../gedit/gedit-commands-file.c:1258
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -910,7 +904,7 @@ msgstr[1] ""
 "যোৱা এক মিনিট আৰু %ld ছেকেণ্ডত দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই "
 "যাব।"
 
-#: ../gedit/gedit-commands-file.c:1272
+#: ../gedit/gedit-commands-file.c:1268
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -920,11 +914,11 @@ msgid_plural ""
 msgstr[0] "যোৱা %ld মিনিটত দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই যাব।"
 msgstr[1] "যোৱা %ld মিনিটত দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই যাব।"
 
-#: ../gedit/gedit-commands-file.c:1287
+#: ../gedit/gedit-commands-file.c:1283
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "যোৱা এক ঘন্টাত দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই যাব।"
 
-#: ../gedit/gedit-commands-file.c:1293
+#: ../gedit/gedit-commands-file.c:1289
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -937,7 +931,7 @@ msgstr[0] ""
 msgstr[1] ""
 "যোৱা এক ঘন্টা আৰু %d মিনিটত দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই যাব।"
 
-#: ../gedit/gedit-commands-file.c:1308
+#: ../gedit/gedit-commands-file.c:1304
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -946,7 +940,7 @@ msgid_plural ""
 msgstr[0] "যোৱা %d ঘন্টাত দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই যাব।"
 msgstr[1] "যোৱা %d ঘন্টাত দস্তাবেজত কৰা সকলো পৰিবৰ্তন স্থায়ীৰূপে হেৰাই যাব।"
 
-#: ../gedit/gedit-commands-file.c:1331
+#: ../gedit/gedit-commands-file.c:1327
 msgid "_Revert"
 msgstr "পৰিবৰ্তন বাতিল কৰক (_R)"
 
@@ -989,55 +983,78 @@ msgstr "অসংৰক্ষিত দস্তাবেজ %d"
 msgid "Tab Group %i"
 msgstr "টেব দল %i"
 
-#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1139
-#: ../gedit/gedit-window.c:1145 ../gedit/gedit-window.c:1153
+#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1133
+#: ../gedit/gedit-window.c:1139 ../gedit/gedit-window.c:1147
 msgid "Read-Only"
 msgstr "কেৱল পঢ়িব পৰা"
 
-#: ../gedit/gedit-encodings-combo-box.c:308
+#: ../gedit/gedit-encodings-combo-box.c:302
+#: ../gedit/gedit-file-chooser-dialog-osx.c:568
 msgid "Automatically Detected"
 msgstr "স্বচালিতভাবে চিনাক্ত"
 
-#: ../gedit/gedit-encodings-combo-box.c:325
-#: ../gedit/gedit-encodings-combo-box.c:341
+#: ../gedit/gedit-encodings-combo-box.c:331
+#: ../gedit/gedit-file-chooser-dialog-osx.c:577
+msgid "Add or Remove..."
+msgstr "যোগ কৰক বা আতৰাওক..."
+
+#: ../gedit/gedit-encoding-items.c:95 ../gedit/gedit-encoding-items.c:104
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "বৰ্তমান স্থানীয় (%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:387
-msgid "Add or Remove..."
-msgstr "যোগ কৰক বা আতৰাওক..."
-
-#: ../gedit/gedit-file-chooser-dialog.c:38
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:39
 #: ../gedit/gedit-preferences-dialog.c:870
 msgid "All Files"
 msgstr "সকলো ফাইল"
 
-#: ../gedit/gedit-file-chooser-dialog.c:39
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:40
 msgid "All Text Files"
 msgstr "সকলো লিখনি ফাইল"
 
-#: ../gedit/gedit-file-chooser-dialog.c:79
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:275
 msgid "C_haracter Encoding:"
 msgstr "আখৰ এনক'ডিং (_h):"
 
-#: ../gedit/gedit-file-chooser-dialog.c:138
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:325
 msgid "L_ine Ending:"
 msgstr "শাৰী সমাপ্তি (_i):"
 
-#: ../gedit/gedit-file-chooser-dialog.c:157
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:344
+#: ../gedit/gedit-file-chooser-dialog-osx.c:74
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-file-chooser-dialog.c:163
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:350
+#: ../gedit/gedit-file-chooser-dialog-osx.c:77
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: ../gedit/gedit-file-chooser-dialog.c:169
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:356
+#: ../gedit/gedit-file-chooser-dialog-osx.c:80
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1223
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:613
+#: ../gedit/resources/gtk/menus-osx.ui.h:3
+#: ../gedit/resources/ui/gedit-window.ui.h:3
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
+#: ../plugins/quickopen/quickopen/popup.py:38
+#: ../plugins/snippets/snippets/manager.py:782
+msgid "_Open"
+msgstr "খোলক (_O)"
+
+#: ../gedit/gedit-file-chooser-dialog-osx.c:550
+#| msgid "C_haracter Encoding:"
+msgid "Character Encoding:"
+msgstr "আখৰ এনক'ডিং:"
+
+#: ../gedit/gedit-file-chooser-dialog-osx.c:623
+#| msgid "L_ine Ending:"
+msgid "Line Ending:"
+msgstr "শাৰী সমাপ্তি:"
+
+#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1217
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1394,7 +1411,7 @@ msgstr ""
 "দস্তাবেজখন "
 "ক্ষতিগ্ৰস্থ হ'ব পাৰে।  তথাপিও সংৰক্ষণ কৰিব?"
 
-#: ../gedit/gedit-open-document-selector.c:400
+#: ../gedit/gedit-open-document-selector.c:409
 msgid "No results"
 msgstr "কোনো ফলাফল নাই"
 
@@ -1597,40 +1614,40 @@ msgstr "আপুনি সন্ধান কৰিব বিচৰা শা�
 msgid "Line you want to move the cursor to"
 msgstr "কাৰ্ছাৰ স্থানান্তৰণৰ বাবে চিহ্নিত শাৰী সংখ্যা"
 
-#: ../gedit/gedit-window.c:978
+#: ../gedit/gedit-window.c:972
 msgid "Bracket match is out of range"
 msgstr "ব্ৰেকেট মিল সীমাৰ বাহিৰ"
 
-#: ../gedit/gedit-window.c:983
+#: ../gedit/gedit-window.c:977
 msgid "Bracket match not found"
 msgstr "ব্ৰেকেট মিল পোৱা নগল"
 
-#: ../gedit/gedit-window.c:988
+#: ../gedit/gedit-window.c:982
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "শাৰী: %d ত ব্ৰেকেট মিল পোৱা গল"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1023
+#: ../gedit/gedit-window.c:1017
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Ln %d, Col %d"
 
-#: ../gedit/gedit-window.c:1205
+#: ../gedit/gedit-window.c:1199
 #, c-format
 msgid "Tab Width: %u"
 msgstr "টেবৰ প্ৰস্থ: %u"
 
-#: ../gedit/gedit-window.c:1575
+#: ../gedit/gedit-window.c:1569
 msgid "There are unsaved documents"
 msgstr "অসংৰক্ষিত দস্তাবেজসমূহ আছে"
 
-#: ../gedit/gedit-window.c:2419
+#: ../gedit/gedit-window.c:2409
 msgid "Change side panel page"
 msgstr "কাষ পেনেল পৃষ্ঠা পৰিবৰ্তন কৰক"
 
-#: ../gedit/gedit-window.c:2439 ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/gedit-window.c:2429 ../gedit/resources/gtk/menus-osx.ui.h:34
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "দস্তাবেজসমূহ"
@@ -1794,7 +1811,6 @@ msgid "_Close All"
 msgstr "সকলো বন্ধ কৰক (_C)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:1
-#| msgid "_File"
 msgid "File"
 msgstr "ফাইল"
 
@@ -1803,7 +1819,6 @@ msgid "_New"
 msgstr "নতুন (_N)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:4
-#| msgid "Open a New Document"
 msgid "Open _Recent"
 msgstr "শেহতীয়াক খোলক (_R)"
 
@@ -1812,12 +1827,10 @@ msgid "Reopen Closed _Tab"
 msgstr "বন্ধ টেব পুনৰ খোলক (_T)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:7
-#| msgid "_Save As…"
 msgid "Save _As…"
 msgstr "এই ধৰণে সংৰক্ষণ কৰক (_A)…"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:12
-#| msgid "_Edit"
 msgid "Edit"
 msgstr "সম্পাদনা"
 
@@ -1849,7 +1862,6 @@ msgid "_Delete"
 msgstr "মচি পেলাওক (_D)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:19
-#| msgid "File Browser Filter Mode"
 msgid "Overwrite _Mode"
 msgstr "অভাৰৰাইট অৱস্থা (_M)"
 
@@ -1858,7 +1870,6 @@ msgid "Select _All"
 msgstr "সকলো নিৰ্বাচন কৰক (_A)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:26
-#| msgid "_Search"
 msgid "Search"
 msgstr "সন্ধান কৰক"
 
@@ -1871,22 +1882,18 @@ msgid "Find Pre_vious"
 msgstr "পূৰ্ববৰ্তী উপস্থিতি সন্ধান কৰক (_v)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:30
-#| msgid "_Find and Replace…"
 msgid "Find and _Replace…"
 msgstr "সন্ধান কৰি প্ৰতিস্থাপন কৰক (_R)…"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:32
-#| msgid "_Go to Line…"
 msgid "Go to _Line…"
 msgstr "উল্লেখিত শাৰীলৈ যাওক (_L)…"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:35
-#| msgid "Save _All"
 msgid "_Save All"
 msgstr "সকলো সংৰক্ষণ কৰক (_S)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:37
-#| msgid "P_revious Tab Group"
 msgid "_New Tab Group"
 msgstr "নতুন টেব দল (_N)"
 
@@ -1895,7 +1902,6 @@ msgid "P_revious Tab Group"
 msgstr "পূৰ্ববৰ্তী টেব দল (_r)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:39
-#| msgid "Tab Group %i"
 msgid "Nex_t Tab Group"
 msgstr "পৰৱৰ্তী টেব দল (_t)"
 
@@ -1908,12 +1914,10 @@ msgid "N_ext Document"
 msgstr "পৰবৰ্তী দস্তাবেজ (_e)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:42
-#| msgid "Move to New _Window"
 msgid "_Move To New Window"
 msgstr "নতুন উইন্ডোলৈ যাওক (_M)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:43
-#| msgid "_Help"
 msgid "Help"
 msgstr "সহায়"
 
