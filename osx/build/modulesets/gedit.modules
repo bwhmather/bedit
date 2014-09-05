@@ -233,7 +233,7 @@
   </autotools>
 
   <autotools id="pygobject3" autogenargs="--with-python=python3">
-    <branch module="pygobject" repo="git.gnome.org" tag="983276fb1cbc261d062ef93ba2266d08a5a6f423"/>
+    <branch module="pygobject" repo="git.gnome.org" tag="68d34721a21bfac1a43252bd92612c2460ea60dd"/>
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
     </dependencies>
@@ -448,7 +448,7 @@
   </autotools>
 
   <autotools id="gtksourceview3">
-    <branch module="gtksourceview" tag="3e30d95e74b191c12cfa28bbf7d6116cc15313dd" repo="git.gnome.org"/>
+    <branch module="gtksourceview" tag="c70c4dac9ca1b164efd62e930aa4dfb71c52f15a" repo="git.gnome.org"/>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-gtk3"/>
