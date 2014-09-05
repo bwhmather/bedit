@@ -45,7 +45,8 @@
     </child>
     <child>
       <object class="GtkButton" id="open_button">
-        <property name="label" translatable="yes">Other Documents…</property>
+        <property name="label" translatable="yes">Other _Documents…</property>
+        <property name="use-underline">True</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="tooltip_text" translatable="yes">Open another file</property>
