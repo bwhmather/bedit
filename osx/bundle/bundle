@@ -52,7 +52,7 @@ function cmd_dmg() {
 
 	# Compute an approximated image size in MB, and bloat by 30 MB
 	image_size=$(du -ck "$DMG_APP" | tail -n1 | cut -f1)
-	image_size=$((($image_size + 30000) / 1000))
+	image_size=$((($image_size * 11) / 10000))
 
 	echo "Creating disk image (${image_size}MB)..."
 
