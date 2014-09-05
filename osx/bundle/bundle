@@ -37,7 +37,11 @@ function cmd_dmg() {
 
 	VOLUME_NAME="$BUNDLE_NAME"
 
-	DMG_FILE="$1.dmg"
+	if [ ! -z "$1" ]; then
+		DMG_FILE="$1.dmg"
+	else
+		DMG_FILE="$D/$BUNDLE_NAME.dmg"
+	fi
 
 	DMG_APP="$BUNDLE"
 	TMP_MOUNT_POINT="$D/$VOLUME_NAME.mounted"
