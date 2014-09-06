@@ -42,6 +42,9 @@ struct _GeditFileChooserDialogOSXPrivate
 	gboolean is_open;
 	gboolean is_modal;
 
+	GtkResponseType cancel_response;
+	GtkResponseType accept_response;
+
 	GeditFileChooserFlags flags;
 };
 
@@ -728,11 +731,11 @@ chooser_show (GeditFileChooserDialog *dialog)
 
 		if (result == NSFileHandlingPanelOKButton)
 		{
-			response = GTK_RESPONSE_OK;
+			response = priv->accept_response;
 		}
 		else
 		{
-			response = GTK_RESPONSE_CANCEL;
+			response = priv->cancel_response;
 		}
 
 		g_signal_emit_by_name (dialog, "response", response);
@@ -831,15 +834,42 @@ gedit_file_chooser_dialog_osx_init (GeditFileChooserDialogOSX *dialog)
 - (void)setShowsTagField:(BOOL)val;
 @end
 
+static gchar *
+strip_mnemonic (const gchar *s)
+{
+	gchar *escaped;
+	gchar *ret = NULL;
+
+	escaped = g_markup_escape_text (s, -1);
+	pango_parse_markup (escaped, -1, '_', NULL, &ret, NULL, NULL);
+
+	if (ret != NULL)
+	{
+		return ret;
+	}
+	else
+	{
+		return g_strdup (s);
+	}
+}
+
 GeditFileChooserDialog *
 gedit_file_chooser_dialog_osx_create (const gchar             *title,
 			              GtkWindow               *parent,
 			              GeditFileChooserFlags    flags,
-			              const GtkSourceEncoding *encoding)
+			              const GtkSourceEncoding *encoding,
+			              const gchar             *cancel_label,
+			              GtkResponseType          cancel_response,
+			              const gchar             *accept_label,
+			              GtkResponseType          accept_response)
 {
 	GeditFileChooserDialogOSX *ret;
+	gchar *nomnem;
 
 	ret = g_object_new (GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX, NULL);
+
+	ret->priv->cancel_response = cancel_response;
+	ret->priv->accept_response = accept_response;
 
 	if ((flags & GEDIT_FILE_CHOOSER_SAVE) != 0)
 	{
@@ -863,6 +893,10 @@ gedit_file_chooser_dialog_osx_create (const gchar             *title,
 		ret->priv->panel = panel;
 		ret->priv->is_open = TRUE;
 	}
+
+	nomnem = strip_mnemonic (accept_label);
+	[ret->priv->panel setPrompt:[NSString stringWithUTF8String:nomnem]];
+	g_free (nomnem);
 
 	if (parent != NULL)
 	{

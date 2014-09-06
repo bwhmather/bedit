@@ -100,7 +100,11 @@ GeditFileChooserDialog *
 		gedit_file_chooser_dialog_create		(const gchar              *title,
 								 GtkWindow                *parent,
 								 GeditFileChooserFlags     flags,
-								 const GtkSourceEncoding  *encoding);
+								 const GtkSourceEncoding  *encoding,
+								 const gchar              *cancel_label,
+								 GtkResponseType           cancel_response,
+								 const gchar              *accept_label,
+								 GtkResponseType           accept_response);
 
 void		 gedit_file_chooser_dialog_destroy		(GeditFileChooserDialog   *dialog);
 

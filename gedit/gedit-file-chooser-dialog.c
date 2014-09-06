@@ -83,18 +83,30 @@ GeditFileChooserDialog *
 gedit_file_chooser_dialog_create (const gchar              *title,
                                   GtkWindow                *parent,
                                   GeditFileChooserFlags    flags,
-                                  const GtkSourceEncoding *encoding)
+                                  const GtkSourceEncoding *encoding,
+                                  const gchar              *cancel_label,
+                                  GtkResponseType           cancel_response,
+                                  const gchar              *accept_label,
+                                  GtkResponseType           accept_response)
 {
 #ifdef OS_OSX
 	return gedit_file_chooser_dialog_osx_create (title,
 	                                             parent,
 	                                             flags,
-	                                             encoding);
+	                                             encoding,
+	                                             cancel_label,
+	                                             cancel_response,
+	                                             accept_label,
+	                                             accept_response);
 #else
 	return gedit_file_chooser_dialog_gtk_create (title,
 	                                             parent,
 	                                             flags,
-	                                             encoding);
+	                                             encoding,
+	                                             cancel_label,
+	                                             cancel_response,
+	                                             accept_label,
+	                                             accept_response);
 #endif
 }
 

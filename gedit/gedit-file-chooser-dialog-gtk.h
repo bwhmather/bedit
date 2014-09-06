@@ -55,7 +55,11 @@ GType		 	 gedit_file_chooser_dialog_gtk_get_type		(void) G_GNUC_CONST;
 GeditFileChooserDialog	*gedit_file_chooser_dialog_gtk_create		(const gchar             *title,
 									 GtkWindow               *parent,
 									 GeditFileChooserFlags    flags,
-									 const GtkSourceEncoding *encoding);
+									 const GtkSourceEncoding *encoding,
+									 const gchar             *cancel_label,
+									 GtkResponseType          cancel_response,
+									 const gchar             *accept_label,
+									 GtkResponseType          accept_response);
 
 G_END_DECLS
 
