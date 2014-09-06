@@ -47,6 +47,8 @@ struct _GeditFileChooserDialogOSXPrivate
 	GtkResponseType cancel_response;
 	GtkResponseType accept_response;
 
+	gulong destroy_id;
+
 	GeditFileChooserFlags flags;
 };
 
@@ -714,8 +716,6 @@ chooser_show (GeditFileChooserDialog *dialog)
 {
 	GeditFileChooserDialogOSXPrivate *priv = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog)->priv;
 
-	// Keep alive for the handler
-	g_object_ref (dialog);
 	if (priv->is_running)
 	{
 		// Just show it again
@@ -738,7 +738,6 @@ chooser_show (GeditFileChooserDialog *dialog)
 		}
 
 		g_signal_emit_by_name (dialog, "response", response);
-		g_object_unref (dialog);
 	};
 
 	if (priv->parent != NULL && priv->is_modal)
@@ -776,6 +775,26 @@ chooser_hide (GeditFileChooserDialog *dialog)
 static void
 chooser_destroy (GeditFileChooserDialog *dialog)
 {
+	GeditFileChooserDialogOSXPrivate *priv = GEDIT_FILE_CHOOSER_DIALOG_OSX (dialog)->priv;
+
+	if (priv->parent != NULL)
+	{
+		g_object_remove_weak_pointer (G_OBJECT (priv->parent),
+		                              (gpointer *)&priv->parent);
+
+		if (priv->destroy_id != 0)
+		{
+			g_signal_handler_disconnect (priv->parent, priv->destroy_id);
+			priv->destroy_id = 0;
+		}
+	}
+
+	if (priv->panel != NULL)
+	{
+		[priv->panel close];
+		priv->panel = NULL;
+	}
+
 	g_object_unref (dialog);
 }
 
@@ -819,7 +838,7 @@ gedit_file_chooser_dialog_osx_dispose (GObject *object)
 
 	if (priv->panel != NULL)
 	{
-		[priv->panel release];
+		[priv->panel close];
 		priv->panel = NULL;
 	}
 
@@ -866,6 +885,13 @@ strip_mnemonic (const gchar *s)
 	}
 }
 
+static void
+on_parent_destroyed (GtkWindow                 *parent,
+                     GeditFileChooserDialogOSX *dialog)
+{
+	chooser_destroy (GEDIT_FILE_CHOOSER_DIALOG (dialog));
+}
+
 GeditFileChooserDialog *
 gedit_file_chooser_dialog_osx_create (const gchar             *title,
 			              GtkWindow               *parent,
@@ -907,13 +933,21 @@ gedit_file_chooser_dialog_osx_create (const gchar             *title,
 		ret->priv->is_open = TRUE;
 	}
 
+	[ret->priv->panel setReleasedWhenClosed:YES];
+
 	nomnem = strip_mnemonic (accept_label);
 	[ret->priv->panel setPrompt:[NSString stringWithUTF8String:nomnem]];
 	g_free (nomnem);
 
 	if (parent != NULL)
 	{
-		ret->priv->parent = g_object_ref (parent);
+		ret->priv->parent = parent;
+		g_object_add_weak_pointer (G_OBJECT (parent), (gpointer *)&ret->priv->parent);
+
+		ret->priv->destroy_id = g_signal_connect (parent,
+		                                          "destroy",
+		                                          G_CALLBACK (on_parent_destroyed),
+		                                          ret);
 	}
 
 	ret->priv->flags = flags;
