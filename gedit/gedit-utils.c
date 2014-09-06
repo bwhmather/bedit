@@ -1444,6 +1444,22 @@ gedit_utils_set_direct_save_filename (GdkDragContext *context)
 	return uri;
 }
 
+const gchar *
+gedit_utils_newline_type_to_string (GtkSourceNewlineType newline_type)
+{
+	switch (newline_type)
+	{
+	case GTK_SOURCE_NEWLINE_TYPE_LF:
+		return _("Unix/Linux");
+	case GTK_SOURCE_NEWLINE_TYPE_CR:
+		return _("Mac OS Classic");
+	case GTK_SOURCE_NEWLINE_TYPE_CR_LF:
+		return _("Windows");
+	}
+
+	return NULL;
+}
+
 static gboolean
 data_exists (GSList         *list,
 	     const gpointer  data)

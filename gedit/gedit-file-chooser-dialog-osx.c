@@ -29,6 +29,7 @@
 #include "gedit-file-chooser-dialog-osx.h"
 #include "gedit-encoding-items.h"
 #include "gedit-encodings-dialog.h"
+#include "gedit-utils.h"
 
 struct _GeditFileChooserDialogOSXPrivate
 {
@@ -71,18 +72,7 @@ G_DEFINE_TYPE_EXTENDED (GeditFileChooserDialogOSX,
 {
 	NSString *title;
 
-	switch (type)
-	{
-	case GTK_SOURCE_NEWLINE_TYPE_LF:
-		title = [NSString stringWithUTF8String:_("Unix/Linux")];
-		break;
-	case GTK_SOURCE_NEWLINE_TYPE_CR:
-		title = [NSString stringWithUTF8String:_("Mac OS Classic")];
-		break;
-	case GTK_SOURCE_NEWLINE_TYPE_CR_LF:
-		title = [NSString stringWithUTF8String:_("Windows")];
-		break;
-	}
+	title = [NSString stringWithUTF8String:gedit_utils_newline_type_to_string (type)];
 
 	self = [super initWithTitle:title action:nil keyEquivalent:@""];
 

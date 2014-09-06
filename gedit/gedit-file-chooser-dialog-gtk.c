@@ -35,6 +35,7 @@
 #include "gedit-debug.h"
 #include "gedit-enum-types.h"
 #include "gedit-settings.h"
+#include "gedit-utils.h"
 
 #define ALL_FILES		_("All Files")
 #define ALL_TEXT_FILES		_("All Text Files")
@@ -341,19 +342,19 @@ create_newline_combo (GeditFileChooserDialogGtk *dialog)
 	newline_combo_append (GTK_COMBO_BOX (combo),
 	                      store,
 	                      &iter,
-	                      _("Unix/Linux"),
+	                      gedit_utils_newline_type_to_string (GTK_SOURCE_NEWLINE_TYPE_LF),
 	                      GTK_SOURCE_NEWLINE_TYPE_LF);
 
 	newline_combo_append (GTK_COMBO_BOX (combo),
 	                      store,
 	                      &iter,
-	                      _("Mac OS Classic"),
+	                      gedit_utils_newline_type_to_string (GTK_SOURCE_NEWLINE_TYPE_CR),
 	                      GTK_SOURCE_NEWLINE_TYPE_CR);
 
 	newline_combo_append (GTK_COMBO_BOX (combo),
 	                      store,
 	                      &iter,
-	                      _("Windows"),
+	                      gedit_utils_newline_type_to_string (GTK_SOURCE_NEWLINE_TYPE_CR_LF),
 	                      GTK_SOURCE_NEWLINE_TYPE_CR_LF);
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
