@@ -305,4 +305,21 @@ gedit_file_chooser_dialog_get_window (GeditFileChooserDialog *dialog)
 	return NULL;
 }
 
+void
+gedit_file_chooser_dialog_add_pattern_filter (GeditFileChooserDialog   *dialog,
+                                              const gchar              *name,
+                                              const gchar              *pattern)
+{
+	GeditFileChooserDialogInterface *iface;
+
+	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
+
+	iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE (dialog);
+
+	if (iface->add_pattern_filter)
+	{
+		iface->add_pattern_filter (dialog, name, pattern);
+	}
+}
+
 /* ex:set ts=8 noet: */

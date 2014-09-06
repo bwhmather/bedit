@@ -224,6 +224,26 @@ chooser_get_window (GeditFileChooserDialog *dialog)
 }
 
 static void
+chooser_add_pattern_filter (GeditFileChooserDialog *dialog,
+                            const gchar            *name,
+                            const gchar            *pattern)
+{
+	GtkFileFilter *filter;
+
+	filter = gtk_file_filter_new ();
+
+	gtk_file_filter_set_name (filter, name);
+	gtk_file_filter_add_pattern (filter, pattern);
+
+	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+
+	if (gtk_file_chooser_get_filter (GTK_FILE_CHOOSER (dialog)) == NULL)
+	{
+		gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), filter);
+	}
+}
+
+static void
 gedit_file_chooser_dialog_gtk_chooser_init (gpointer g_iface,
                                             gpointer iface_data)
 {
@@ -245,6 +265,7 @@ gedit_file_chooser_dialog_gtk_chooser_init (gpointer g_iface,
 	iface->destroy = chooser_destroy;
 	iface->set_modal = chooser_set_modal;
 	iface->get_window = chooser_get_window;
+	iface->add_pattern_filter = chooser_add_pattern_filter;
 }
 
 static void
@@ -568,38 +589,41 @@ gedit_file_chooser_dialog_gtk_create (const gchar             *title,
 					    GEDIT_SETTINGS_ACTIVE_FILE_FILTER);
 	gedit_debug_message (DEBUG_COMMANDS, "Active filter: %d", active_filter);
 
-	/* Filters */
-	filter = gtk_file_filter_new ();
-
-	gtk_file_filter_set_name (filter, ALL_FILES);
-	gtk_file_filter_add_pattern (filter, "*");
-	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (result), filter);
-
-	if (active_filter != 1)
+	if ((flags & GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS) != 0)
 	{
-		/* Make this filter the default */
-		gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (result), filter);
+		/* Filters */
+		filter = gtk_file_filter_new ();
+
+		gtk_file_filter_set_name (filter, ALL_FILES);
+		gtk_file_filter_add_pattern (filter, "*");
+		gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (result), filter);
+
+		if (active_filter != 1)
+		{
+			/* Make this filter the default */
+			gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (result), filter);
+		}
+
+		filter = gtk_file_filter_new ();
+		gtk_file_filter_set_name (filter, ALL_TEXT_FILES);
+		gtk_file_filter_add_custom (filter,
+					    GTK_FILE_FILTER_MIME_TYPE,
+					    all_text_files_filter,
+					    NULL,
+					    NULL);
+		gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (result), filter);
+
+		if (active_filter == 1)
+		{
+			/* Make this filter the default */
+			gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (result), filter);
+		}
+
+		g_signal_connect (result,
+				  "notify::filter",
+				  G_CALLBACK (filter_changed),
+				  NULL);
 	}
-
-	filter = gtk_file_filter_new ();
-	gtk_file_filter_set_name (filter, ALL_TEXT_FILES);
-	gtk_file_filter_add_custom (filter,
-				    GTK_FILE_FILTER_MIME_TYPE,
-				    all_text_files_filter,
-				    NULL,
-				    NULL);
-	gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (result), filter);
-
-	if (active_filter == 1)
-	{
-		/* Make this filter the default */
-		gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (result), filter);
-	}
-
-	g_signal_connect (result,
-			  "notify::filter",
-			  G_CALLBACK (filter_changed),
-			  NULL);
 
 	if (parent != NULL)
 	{

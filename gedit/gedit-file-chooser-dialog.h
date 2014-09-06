@@ -81,14 +81,19 @@ struct _GeditFileChooserDialogInterface
 
 	GtkWindow *
 		(*get_window)		(GeditFileChooserDialog *dialog);
+
+	void	(*add_pattern_filter)	(GeditFileChooserDialog *dilaog,
+					 const gchar            *name,
+					 const gchar            *pattern);
 };
 
 typedef enum
 {
-	GEDIT_FILE_CHOOSER_SAVE               = 1 << 0,
-	GEDIT_FILE_CHOOSER_OPEN               = 1 << 1,
-	GEDIT_FILE_CHOOSER_ENABLE_ENCODING    = 1 << 2,
-	GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING = 1 << 3
+	GEDIT_FILE_CHOOSER_SAVE                   = 1 << 0,
+	GEDIT_FILE_CHOOSER_OPEN                   = 1 << 1,
+	GEDIT_FILE_CHOOSER_ENABLE_ENCODING        = 1 << 2,
+	GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING     = 1 << 3,
+	GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS = 1 << 4
 } GeditFileChooserFlags;
 
 /*
@@ -145,6 +150,9 @@ void		 gedit_file_chooser_dialog_set_modal		(GeditFileChooserDialog   *dialog,
 
 GtkWindow	*gedit_file_chooser_dialog_get_window		(GeditFileChooserDialog   *dialog);
 
+void             gedit_file_chooser_dialog_add_pattern_filter   (GeditFileChooserDialog   *dialog,
+								 const gchar              *name,
+								 const gchar              *pattern);
 
 G_END_DECLS
 

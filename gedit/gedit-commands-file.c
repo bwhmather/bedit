@@ -451,7 +451,8 @@ _gedit_cmd_file_open (GSimpleAction *action,
 	open_dialog = gedit_file_chooser_dialog_create (_("Open"),
 							window ? GTK_WINDOW (window) : NULL,
 							GEDIT_FILE_CHOOSER_OPEN |
-							GEDIT_FILE_CHOOSER_ENABLE_ENCODING,
+							GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
+							GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
 							NULL,
 							_("_Cancel"), GTK_RESPONSE_CANCEL,
 							_("_Open"), GTK_RESPONSE_OK);
@@ -875,7 +876,8 @@ _gedit_cmd_file_save_as_tab (GeditTab    *tab,
 							GTK_WINDOW (window),
 							GEDIT_FILE_CHOOSER_SAVE |
 							GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
-							GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING,
+							GEDIT_FILE_CHOOSER_ENABLE_LINE_ENDING |
+							GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
 							NULL,
 							_("_Cancel"), GTK_RESPONSE_CANCEL,
 							_("_Save"), GTK_RESPONSE_OK);
