@@ -201,7 +201,8 @@ chooser_set_do_overwrite_confirmation (GeditFileChooserDialog *dialog,
 static void
 chooser_show (GeditFileChooserDialog *dialog)
 {
-	gtk_widget_show (GTK_WIDGET (dialog));
+	gtk_window_present (GTK_WINDOW (dialog));
+	gtk_widget_grab_focus (GTK_WIDGET (dialog));
 }
 
 static void

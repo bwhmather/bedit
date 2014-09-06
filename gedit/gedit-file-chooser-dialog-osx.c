@@ -42,6 +42,7 @@ struct _GeditFileChooserDialogOSXPrivate
 
 	gboolean is_open;
 	gboolean is_modal;
+	gboolean is_running;
 
 	GtkResponseType cancel_response;
 	GtkResponseType accept_response;
@@ -715,6 +716,14 @@ chooser_show (GeditFileChooserDialog *dialog)
 
 	// Keep alive for the handler
 	g_object_ref (dialog);
+	if (priv->is_running)
+	{
+		// Just show it again
+		[priv->panel makeKeyAndOrderFront:nil];
+		return;
+	}
+
+	priv->is_running = TRUE;
 
 	void (^handler)(NSInteger ret) = ^(NSInteger result) {
 		GtkResponseType response;
