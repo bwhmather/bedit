@@ -205,6 +205,12 @@ chooser_show (GeditFileChooserDialog *dialog)
 }
 
 static void
+chooser_hide (GeditFileChooserDialog *dialog)
+{
+	gtk_widget_hide (GTK_WIDGET (dialog));
+}
+
+static void
 chooser_destroy (GeditFileChooserDialog *dialog)
 {
 	gtk_widget_destroy (GTK_WIDGET (dialog));
@@ -262,6 +268,7 @@ gedit_file_chooser_dialog_gtk_chooser_init (gpointer g_iface,
 	iface->get_files = chooser_get_files;
 	iface->set_do_overwrite_confirmation = chooser_set_do_overwrite_confirmation;
 	iface->show = chooser_show;
+	iface->hide = chooser_hide;
 	iface->destroy = chooser_destroy;
 	iface->set_modal = chooser_set_modal;
 	iface->get_window = chooser_get_window;

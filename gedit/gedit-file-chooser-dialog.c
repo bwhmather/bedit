@@ -262,6 +262,19 @@ gedit_file_chooser_dialog_show (GeditFileChooserDialog *dialog)
 }
 
 void
+gedit_file_chooser_dialog_hide (GeditFileChooserDialog *dialog)
+{
+	GeditFileChooserDialogInterface *iface;
+
+	g_return_if_fail (GEDIT_IS_FILE_CHOOSER_DIALOG (dialog));
+
+	iface = GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE (dialog);
+	g_return_if_fail (iface->hide != NULL);
+
+	iface->hide (dialog);
+}
+
+void
 gedit_file_chooser_dialog_destroy (GeditFileChooserDialog *dialog)
 {
 	GeditFileChooserDialogInterface *iface;
