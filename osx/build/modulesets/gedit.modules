@@ -105,7 +105,7 @@
   </autotools>
 
   <autotools id="adwaita-icon-theme" autogen-sh="configure">
-    <branch module="adwaita-icon-theme/3.13/adwaita-icon-theme-3.13.5.tar.xz" version="3.13.5" hash="sha256:e163f5f7e205b5f5345dd7f2c30d4104f19376217ca90def83b61a9459a62dbc" repo="ftp.gnome.org"/>
+    <branch module="adwaita-icon-theme/3.13/adwaita-icon-theme-3.13.91.tar.xz" version="3.13.91" hash="sha256:d0cf4705d3439c68d344431b62cca5fe6fcf91bd38c745c48b2476d0aa41b8ad" repo="ftp.gnome.org"/>
     <dependencies>
       <dep package="hicolor-icon-theme"/>
       <dep package="icon-naming-utils"/>
@@ -114,7 +114,7 @@
   </autotools>
 
   <autotools id="gnome-themes-standard" autogen-sh="configure" autogenargs="--disable-gtk2-engine">
-    <branch module="gnome-themes-standard/3.13/gnome-themes-standard-3.13.4.tar.xz" version="3.13.4" hash="sha256:a1b55eb37c290f406b799572f0f3455fca7af1ec058b7ce36650a2e27af316b3" repo="ftp.gnome.org"/>
+    <branch module="gnome-themes-standard/3.13/gnome-themes-standard-3.13.90.tar.xz" version="3.13.90" hash="sha256:76bfbf25cdd6f86fdbf15b085c5bcfbe0abf4715510a917ec023a4d780fb5f53" repo="ftp.gnome.org"/>
     <dependencies>
       <dep package="librsvg"/>
       <dep package="gnome-icon-theme"/>
@@ -159,14 +159,14 @@
   </autotools>
 
   <autotools id="gdk-pixbuf" autogen-sh="configure">
-    <branch module="gdk-pixbuf/2.31/gdk-pixbuf-2.31.0.tar.xz" version="2.31.0" hash="sha256:4121f4258af1a3fde70029396314d31ae54cf8fa2b4ea0bff842acf8f195bd78" repo="ftp.gnome.org"/>
+    <branch module="gdk-pixbuf/2.31/gdk-pixbuf-2.31.1.tar.xz" version="2.31.1" hash="sha256:25a75e3c61dac11e6ff6416ad846951ccafac6486b1c6a1bfb0b213b99db52cd" repo="ftp.gnome.org"/>
     <after>
       <dep package="pango"/>
     </after>
   </autotools>
 
   <autotools id="pango" autogen-sh="autoreconf">
-    <branch version="1.36.6" module="pango/1.36/pango-1.36.6.tar.xz" hash="sha256:4c53c752823723875078b91340f32136aadb99e91c0f6483f024f978a02c8624" repo="ftp.gnome.org">
+    <branch version="1.36.7" module="pango/1.36/pango-1.36.7.tar.xz" hash="sha256:1f7b527423a1b3044fd9ae7fbe054107b06723ff1c73e0b5f7bf9b84358d404a" repo="ftp.gnome.org">
     </branch>
     <dependencies>
       <dep package="cairo"/>
@@ -326,7 +326,7 @@
   </autotools>
 
   <autotools id="gobject-introspection" autogen-sh="configure">
-    <branch module="gobject-introspection/1.41/gobject-introspection-1.41.4.tar.xz" version="1.41.4" hash="sha256:b26b41283073d8890afab6a64796d164d2a07bfa220daa554285ba0ad240acf9" repo="ftp.gnome.org">
+    <branch module="gobject-introspection/1.41/gobject-introspection-1.41.91.tar.xz" version="1.41.91" hash="sha256:a1ea708eeaa13dcc5a3078b1ae5aae178f22410023a56c699560f4e068722d9e" repo="ftp.gnome.org">
       <patch file="gobject-introspection/girscanner-objc.patch" strip="1"/>
     </branch>
     <dependencies>
@@ -339,7 +339,7 @@
   </autotools>
 
  <autotools id="glib" autogen-sh="autoreconf">
-    <branch module="glib/2.41/glib-2.41.3.tar.xz" version="2.41.3" hash="sha256:10ab9bdeb5c0bbe8ef0ce26ec79ce1887b6967b6ffcce86ee685e86c7c9c7b4f" repo="ftp.gnome.org">
+    <branch module="glib/2.41/glib-2.41.4.tar.xz" version="2.41.4" hash="sha256:1661bc4abfd1b0b59ae7abbef9d6a60c32192a7a65122753d5d8cc2db110fbf7" repo="ftp.gnome.org">
       <patch file="glib/0001-Bug-724590-GSlice-slab_stack-corruption.patch" strip="1"/>
     </branch>
     <dependencies>
@@ -397,11 +397,7 @@
   </autotools>
 
   <autotools id="readline" autogen-sh="configure">
-    <branch repo="ftp.gnu.org" module="readline/readline-6.2.tar.gz" version="6.2">
-      <patch file="readline/readline62-001" strip="0"/>
-      <patch file="readline/readline62-002" strip="0"/>
-      <patch file="readline/readline62-003" strip="0"/>
-      <patch file="readline/readline62-004" strip="0"/>
+    <branch repo="ftp.gnu.org" module="readline/readline-6.3.tar.gz" version="6.3">
     </branch>
   </autotools>
 
@@ -428,7 +424,7 @@
   </autotools>
 
   <autotools id="gsettings-desktop-schemas">
-    <branch module="gsettings-desktop-schemas/3.13/gsettings-desktop-schemas-3.13.91.tar.xz" version="3.13.91" hash="sha256:dee7c4977cc19a1324451cfa0696da8a2ff7a591c6d5e4afb910c540de8a2562" repo="ftp.gnome.org">
+    <branch module="gsettings-desktop-schemas/3.13/gsettings-desktop-schemas-3.13.92.tar.xz" version="3.13.92" hash="sha256:82338a066b48cf39f190ef7a82db46bc6a6a451cbe08d43dca7d03364bf9c034" repo="ftp.gnome.org">
     </branch>
     <dependencies>
       <dep package="meta-gtk-osx-bootstrap"/>
