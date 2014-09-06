@@ -486,7 +486,14 @@
     </dependencies>
   </metamodule>
 
-<autotools id="libgit2-glib">
+  <autotools id="vte" autogenargs="--disable-Bsymbolic --disable-vala --disable-gnome-pty-helper">
+    <branch module="jessevdk/vte" repo="git.github.com"/>
+    <dependencies>
+      <dep package="meta-gtk-osx-gtk3"/>
+    </dependencies>
+  </autotools>
+
+  <autotools id="libgit2-glib">
     <branch module="libgit2-glib/0.0/libgit2-glib-0.0.20.tar.xz" version="0.0.20" hash="sha256:f8a10c8d3fcad14eed080dff6b8db0c72866c11a05b9731af31cb7258bcc8d95" repo="ftp.gnome.org"/>
     <dependencies>
       <dep package="libgit2"/>
@@ -529,6 +536,7 @@
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="gedit"/>
       <dep package="libgit2-glib"/>
+      <dep package="vte"/>
     </dependencies>
   </autotools>
 

@@ -150,12 +150,20 @@
     </dependencies>
   </autotools>
 
+  <autotools id="vte" autogenargs="--disable-Bsymbolic --disable-vala --disable-gnome-pty-helper">
+    <branch module="jessevdk/vte" repo="git.github.com"/>
+    <dependencies>
+      <dep package="meta-gtk-osx-gtk3"/>
+    </dependencies>
+  </autotools>
+
   <autotools id="gedit-plugins">
     <branch module="gedit-plugins" repo="git.gnome.org" tag="f06b3b18df5b76ab277059d7a94af4d1d40de435"/>
     <dependencies>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="gedit"/>
       <dep package="libgit2-glib"/>
+      <dep package="vte"/>
     </dependencies>
   </autotools>
 
