@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-02 17:07+0000\n"
-"PO-Revision-Date: 2014-09-03 09:41+0700\n"
+"POT-Creation-Date: 2014-09-06 08:22+0000\n"
+"PO-Revision-Date: 2014-09-06 22:07+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -609,10 +609,9 @@ msgid "Close _without Saving"
 msgstr "Tutup dan Jangan Di_simpan"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:321
-#: ../gedit/gedit-commands-file.c:583 ../gedit/gedit-commands-file.c:660
-#: ../gedit/gedit-commands-file.c:1326
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:605
-#: ../gedit/gedit-io-error-info-bar.c:134
+#: ../gedit/gedit-commands-file.c:456 ../gedit/gedit-commands-file.c:585
+#: ../gedit/gedit-commands-file.c:662 ../gedit/gedit-commands-file.c:880
+#: ../gedit/gedit-commands-file.c:1330 ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:515
 #: ../gedit/gedit-io-error-info-bar.c:1191
 #: ../gedit/gedit-preferences-dialog.c:855
@@ -638,8 +637,7 @@ msgid "_Save As…"
 msgstr "_Simpan Sebagai…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:609
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
+#: ../gedit/gedit-commands-file.c:881 ../gedit/resources/gtk/menus-osx.ui.h:6
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -762,29 +760,37 @@ msgstr[0] "Memuat %d berkas…"
 msgid "Open"
 msgstr "Buka"
 
-#: ../gedit/gedit-commands-file.c:574
+#: ../gedit/gedit-commands-file.c:457 ../gedit/resources/gtk/menus-osx.ui.h:3
+#: ../gedit/resources/ui/gedit-window.ui.h:3
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
+#: ../plugins/quickopen/quickopen/popup.py:38
+#: ../plugins/snippets/snippets/manager.py:782
+msgid "_Open"
+msgstr "_Buka"
+
+#: ../gedit/gedit-commands-file.c:576
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Berkas \"%s\" hanya dapat dibaca saja."
 
-#: ../gedit/gedit-commands-file.c:579
+#: ../gedit/gedit-commands-file.c:581
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Apakah Anda ingin menimpa dengan ini?"
 
-#: ../gedit/gedit-commands-file.c:584
+#: ../gedit/gedit-commands-file.c:586
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "_Ganti"
 
-#: ../gedit/gedit-commands-file.c:624
+#: ../gedit/gedit-commands-file.c:626
 msgid "Save the file using compression?"
 msgstr "Simpan berkas dengan kompresi?"
 
-#: ../gedit/gedit-commands-file.c:628
+#: ../gedit/gedit-commands-file.c:630
 msgid "Save the file as plain text?"
 msgstr "Simpan sebagai teks biasa?"
 
-#: ../gedit/gedit-commands-file.c:641
+#: ../gedit/gedit-commands-file.c:643
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -793,11 +799,11 @@ msgstr ""
 "Berkas \"%s\" sebelumnya disimpan sebagai teks biasa dan kini akan disimpan "
 "dengan kompresi."
 
-#: ../gedit/gedit-commands-file.c:645
+#: ../gedit/gedit-commands-file.c:647
 msgid "_Save Using Compression"
 msgstr "_Simpan Dengan Kompresi"
 
-#: ../gedit/gedit-commands-file.c:650
+#: ../gedit/gedit-commands-file.c:652
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -806,30 +812,30 @@ msgstr ""
 "Berkas \"%s\" sebelumnya disimpan dengan kompresi dan kini aka disimpan "
 "sebagai teks biasa."
 
-#: ../gedit/gedit-commands-file.c:653
+#: ../gedit/gedit-commands-file.c:655
 msgid "_Save As Plain Text"
 msgstr "_Simpan Sebagai Teks Biasa"
 
-#: ../gedit/gedit-commands-file.c:761 ../gedit/gedit-commands-file.c:985
+#: ../gedit/gedit-commands-file.c:763 ../gedit/gedit-commands-file.c:989
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Menyimpan berkas '%s'…"
 
-#: ../gedit/gedit-commands-file.c:872
+#: ../gedit/gedit-commands-file.c:874
 msgid "Save As"
 msgstr "Simpan Sebagai"
 
-#: ../gedit/gedit-commands-file.c:1189
+#: ../gedit/gedit-commands-file.c:1193
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Mengembalikan dokumen '%s'…"
 
-#: ../gedit/gedit-commands-file.c:1234
+#: ../gedit/gedit-commands-file.c:1238
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Kembalikan perubahan yang belum tersimpan ke dokumen \"%s\"?"
 
-#: ../gedit/gedit-commands-file.c:1243
+#: ../gedit/gedit-commands-file.c:1247
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -839,12 +845,12 @@ msgid_plural ""
 msgstr[0] ""
 "Perubahan di dokumen dalam %ld detik terakhir akan hilang secara permanen."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1256
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "Perubahan di dokumen pada menit terakhir akan hilang."
 
-#: ../gedit/gedit-commands-file.c:1258
+#: ../gedit/gedit-commands-file.c:1262
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -856,7 +862,7 @@ msgstr[0] ""
 "Perubahan di dokumen dalam menit dan %ld detik terakhir akan hilang secara "
 "permanen."
 
-#: ../gedit/gedit-commands-file.c:1268
+#: ../gedit/gedit-commands-file.c:1272
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -866,11 +872,11 @@ msgid_plural ""
 msgstr[0] ""
 "Perubahan di dokumen dalam %ld menit terakhir akan hilang secara permanen."
 
-#: ../gedit/gedit-commands-file.c:1283
+#: ../gedit/gedit-commands-file.c:1287
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "Perubahan di dokumen dalam jam terakhir akan hilang secara permanen."
 
-#: ../gedit/gedit-commands-file.c:1289
+#: ../gedit/gedit-commands-file.c:1293
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -882,7 +888,7 @@ msgstr[0] ""
 "Perubahan di dokumen dalam jam dan %d menit terakhir akan hilang secara "
 "permanen."
 
-#: ../gedit/gedit-commands-file.c:1304
+#: ../gedit/gedit-commands-file.c:1308
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -891,7 +897,7 @@ msgid_plural ""
 msgstr[0] ""
 "Perubahan di dokumen dalam %d jam terakhir akan hilang secara permanen."
 
-#: ../gedit/gedit-commands-file.c:1327
+#: ../gedit/gedit-commands-file.c:1331
 msgid "_Revert"
 msgstr "_Kembalikan"
 
@@ -941,12 +947,12 @@ msgid "Read-Only"
 msgstr "Hanya-Baca"
 
 #: ../gedit/gedit-encodings-combo-box.c:302
-#: ../gedit/gedit-file-chooser-dialog-osx.c:568
+#: ../gedit/gedit-file-chooser-dialog-osx.c:561
 msgid "Automatically Detected"
 msgstr "Terdeteksi Secara Otomatis"
 
 #: ../gedit/gedit-encodings-combo-box.c:331
-#: ../gedit/gedit-file-chooser-dialog-osx.c:577
+#: ../gedit/gedit-file-chooser-dialog-osx.c:570
 msgid "Add or Remove..."
 msgstr "Tambah atau Buang..."
 
@@ -955,52 +961,28 @@ msgstr "Tambah atau Buang..."
 msgid "Current Locale (%s)"
 msgstr "Locale Aktif (%s)"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:39
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:40
 #: ../gedit/gedit-preferences-dialog.c:870
 msgid "All Files"
 msgstr "Semua Berkas"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:40
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
 msgid "All Text Files"
 msgstr "Semua Berkas Teks"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:275
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:276
 msgid "C_haracter Encoding:"
 msgstr "Pengkodean _Karater:"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:325
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:326
 msgid "L_ine Ending:"
 msgstr "Akh_iran Baris:"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:344
-#: ../gedit/gedit-file-chooser-dialog-osx.c:74
-msgid "Unix/Linux"
-msgstr "Unix/Linux"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:350
-#: ../gedit/gedit-file-chooser-dialog-osx.c:77
-msgid "Mac OS Classic"
-msgstr "Mac OS Klasik"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:356
-#: ../gedit/gedit-file-chooser-dialog-osx.c:80
-msgid "Windows"
-msgstr "Windows"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:613
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
-#: ../gedit/resources/ui/gedit-window.ui.h:3
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:782
-msgid "_Open"
-msgstr "_Buka"
-
-#: ../gedit/gedit-file-chooser-dialog-osx.c:550
+#: ../gedit/gedit-file-chooser-dialog-osx.c:543
 msgid "Character Encoding:"
 msgstr "Pengkodean Karakter:"
 
-#: ../gedit/gedit-file-chooser-dialog-osx.c:623
+#: ../gedit/gedit-file-chooser-dialog-osx.c:616
 msgid "Line Ending:"
 msgstr "Akhiran Baris:"
 
@@ -1512,6 +1494,18 @@ msgstr "Tak bisa temukan objek '%s' di dalam berkas %s."
 msgid "/ on %s"
 msgstr "/ pada %s"
 
+#: ../gedit/gedit-utils.c:1453
+msgid "Unix/Linux"
+msgstr "Unix/Linux"
+
+#: ../gedit/gedit-utils.c:1455
+msgid "Mac OS Classic"
+msgstr "Mac OS Klasik"
+
+#: ../gedit/gedit-utils.c:1457
+msgid "Windows"
+msgstr "Windows"
+
 #: ../gedit/gedit-view.c:512
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
@@ -1910,8 +1904,8 @@ msgid "Search highlight mode..."
 msgstr "Mode penandaan pencarian..."
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
-msgid "Other Documents…"
-msgstr "Dokumen Lain..."
+msgid "Other _Documents…"
+msgstr "_Dokumen Lain…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
 msgid "Open another file"
