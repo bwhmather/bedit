@@ -45,7 +45,7 @@
   </autotools>
 
   <autotools id="pygobject3" autogenargs="--with-python=python3">
-    <branch module="pygobject" repo="git.gnome.org" tag="68d34721a21bfac1a43252bd92612c2460ea60dd"/>
+    <branch module="pygobject" repo="git.gnome.org"/>
     <dependencies>
       <dep package="meta-gtk-osx-gtk3"/>
     </dependencies>
@@ -82,7 +82,7 @@
   </autotools>
 
   <autotools id="libpeas" autogenargs="PYTHON=python3 --disable-python2 --enable-python3">
-    <branch module="libpeas" tag="93fbe1658b1aee8ac8b84d5a28cc8eb3d1aac0e6" repo="git.gnome.org">
+    <branch module="libpeas" repo="git.gnome.org">
     </branch>
     <dependencies>
       <dep package="python3"/>
@@ -105,7 +105,7 @@
   </autotools>
 
   <autotools id="gtksourceview3">
-    <branch module="gtksourceview" tag="c70c4dac9ca1b164efd62e930aa4dfb71c52f15a" repo="git.gnome.org"/>
+    <branch module="gtksourceview" repo="git.gnome.org"/>
     <after>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="meta-gtk-osx-gtk3"/>
@@ -158,7 +158,7 @@
   </autotools>
 
   <autotools id="gedit-plugins">
-    <branch module="gedit-plugins" repo="git.gnome.org" tag="f06b3b18df5b76ab277059d7a94af4d1d40de435"/>
+    <branch module="gedit-plugins" repo="git.gnome.org"/>
     <dependencies>
       <dep package="meta-gtk-osx-bootstrap"/>
       <dep package="gedit"/>
