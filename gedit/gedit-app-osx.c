@@ -425,6 +425,11 @@ gedit_app_osx_startup (GApplication *application)
 		NULL
 	};
 
+	const gchar *fullscreen_accels[] = {
+		"<Primary><Control>F",
+		NULL
+	};
+
 	G_APPLICATION_CLASS (gedit_app_osx_parent_class)->startup (application);
 
 	app_osx = GEDIT_APP_OSX (application);
@@ -442,6 +447,10 @@ gedit_app_osx_startup (GApplication *application)
 	gtk_application_set_accels_for_action (GTK_APPLICATION (application),
 	                                       "app.open",
 	                                       open_accels);
+
+	gtk_application_set_accels_for_action (GTK_APPLICATION (application),
+	                                       "win.fullscreen",
+	                                       fullscreen_accels);
 
 	gedit_recent_configuration_init_default (&app_osx->priv->recent_config);
 
