@@ -26,9 +26,6 @@
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
 #define GEDIT_TYPE_FILE_CHOOSER_DIALOG			(gedit_file_chooser_dialog_get_type ())
 #define GEDIT_FILE_CHOOSER_DIALOG(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialog))
 #define GEDIT_FILE_CHOOSER_DIALOG_IFACE(obj)		(G_TYPE_CHECK_CLASS_CAST ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialogInterface))
@@ -97,9 +94,6 @@ typedef enum
 	GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS = 1 << 4
 } GeditFileChooserFlags;
 
-/*
- * Public methods
- */
 GType		gedit_file_chooser_dialog_get_type		(void)  G_GNUC_CONST;
 
 GeditFileChooserDialog *
