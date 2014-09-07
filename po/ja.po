@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-07-31 10:48+0000\n"
-"PO-Revision-Date: 2014-08-03 13:34+0900\n"
+"POT-Creation-Date: 2014-09-07 09:52+0000\n"
+"PO-Revision-Date: 2014-09-07 19:38+0900\n"
 "Last-Translator: Jiro Matsuzawa <jmatsuzawa@gnome.org>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -96,11 +96,11 @@ msgstr "文字列に色を付ける際に使用する GtkSourceView のスタイ
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:8
 msgid "Create Backup Copies"
-msgstr "パックアップコピーの作成"
+msgstr "パックアップコピーを作成する"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:9
-msgid "Whether gedit should create backup copies for the files it saves. You can set the backup file extension with the \"Backup Copy Extension\" option."
-msgstr "ファイルを保存する時にバックアップコピーを作成するかどうかを指定します。\"バックアップコピーの拡張子\" オプションでバックアップファイルの拡張子を設定することができます。"
+msgid "Whether gedit should create backup copies for the files it saves."
+msgstr "ファイルを保存する時にバックアップコピーを作成するかどうか指定します。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
@@ -447,14 +447,10 @@ msgstr "[FILE...] [+LINE[:COLUMN]]"
 msgid "There was an error displaying the help."
 msgstr "ヘルプを表示する際にエラーが発生しました。"
 
-#: ../gedit/gedit-app.c:881
+#: ../gedit/gedit-app.c:917
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: 指定したエンコーディングは無効です。"
-
-#: ../gedit/gedit-app-osx.c:261
-msgid "About gedit"
-msgstr "このアプリケーションについて"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:152
 msgid "Question"
@@ -465,12 +461,12 @@ msgid "Close _without Saving"
 msgstr "保存せずに閉じる(_W)"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:321
-#: ../gedit/gedit-commands-file.c:439 ../gedit/gedit-commands-file.c:568
-#: ../gedit/gedit-commands-file.c:637 ../gedit/gedit-commands-file.c:847
-#: ../gedit/gedit-commands-file.c:1295 ../gedit/gedit-io-error-info-bar.c:134
+#: ../gedit/gedit-commands-file.c:457 ../gedit/gedit-commands-file.c:586
+#: ../gedit/gedit-commands-file.c:663 ../gedit/gedit-commands-file.c:882
+#: ../gedit/gedit-commands-file.c:1332 ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:515
 #: ../gedit/gedit-io-error-info-bar.c:1191
-#: ../gedit/gedit-preferences-dialog.c:855
+#: ../gedit/gedit-preferences-dialog.c:868
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
@@ -487,13 +483,14 @@ msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:347
+#: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
-#: ../gedit/resources/gtk/menus.ui.h:9
 msgid "_Save As…"
 msgstr "名前を付けて保存(_S)…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/gedit-commands-file.c:848
+#: ../gedit/gedit-commands-file.c:883 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
@@ -588,116 +585,117 @@ msgid_plural "Loading %d files…"
 msgstr[0] "%d 個のファイルを読み込んでいます…"
 
 #. Translators: "Open" is the title of the file chooser window
-#: ../gedit/gedit-commands-file.c:435
-#: ../gedit/resources/ui/gedit-window.ui.h:5
+#: ../gedit/gedit-commands-file.c:451
+#: ../gedit/resources/ui/gedit-window.ui.h:4
 msgid "Open"
 msgstr "開く"
 
-#: ../gedit/gedit-commands-file.c:440
+#: ../gedit/gedit-commands-file.c:458 ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:38
 #: ../plugins/snippets/snippets/manager.py:782
 msgid "_Open"
 msgstr "開く(_O)"
 
-#: ../gedit/gedit-commands-file.c:559
+#: ../gedit/gedit-commands-file.c:577
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "ファイル \"%s\" は読み込み専用です。"
 
-#: ../gedit/gedit-commands-file.c:564
+#: ../gedit/gedit-commands-file.c:582
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "このファイルで上書きしてみますか?"
 
-#: ../gedit/gedit-commands-file.c:569
+#: ../gedit/gedit-commands-file.c:587
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "置換(_R)"
 
-#: ../gedit/gedit-commands-file.c:610
+#: ../gedit/gedit-commands-file.c:627
 msgid "Save the file using compression?"
 msgstr "ファイルを保存する時に圧縮をかけますか?"
 
-#: ../gedit/gedit-commands-file.c:611
+#: ../gedit/gedit-commands-file.c:631
+msgid "Save the file as plain text?"
+msgstr "ファイルをプレーンテキストで保存しますか?"
+
+#: ../gedit/gedit-commands-file.c:644
 #, c-format
 msgid "The file \"%s\" was previously saved as plain text and will now be saved using compression."
 msgstr "ファイル %s は以前プレーンテキストで保存されていましたが、今回は圧縮をかけて保存しました。"
 
-#: ../gedit/gedit-commands-file.c:613
+#: ../gedit/gedit-commands-file.c:648
 msgid "_Save Using Compression"
 msgstr "圧縮をかけて保存(_S)"
 
-#: ../gedit/gedit-commands-file.c:617
-msgid "Save the file as plain text?"
-msgstr "ファイルをプレーンテキストで保存しますか?"
-
-#: ../gedit/gedit-commands-file.c:618
+#: ../gedit/gedit-commands-file.c:653
 #, c-format
 msgid "The file \"%s\" was previously saved using compression and will now be saved as plain text."
 msgstr "ファイル \"%s\" は圧縮されていますが、プレーンテキストとして保存しなおします。"
 
-#: ../gedit/gedit-commands-file.c:620
+#: ../gedit/gedit-commands-file.c:656
 msgid "_Save As Plain Text"
 msgstr "プレーンテキストで保存(_S)"
 
-#: ../gedit/gedit-commands-file.c:738 ../gedit/gedit-commands-file.c:954
+#: ../gedit/gedit-commands-file.c:764 ../gedit/gedit-commands-file.c:991
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "ファイル \"%s\" を保存しています…"
 
-#: ../gedit/gedit-commands-file.c:843
+#: ../gedit/gedit-commands-file.c:875
 msgid "Save As"
 msgstr "名前を付けて保存"
 
-#: ../gedit/gedit-commands-file.c:1158
+#: ../gedit/gedit-commands-file.c:1195
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "ドキュメント \"%s\" を戻しています…"
 
-#: ../gedit/gedit-commands-file.c:1203
+#: ../gedit/gedit-commands-file.c:1240
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "変更部分を保存しないで、元のドキュメント '%s' に戻しますか?"
 
-#: ../gedit/gedit-commands-file.c:1212
+#: ../gedit/gedit-commands-file.c:1249
 #, c-format
 msgid "Changes made to the document in the last %ld second will be permanently lost."
 msgid_plural "Changes made to the document in the last %ld seconds will be permanently lost."
 msgstr[0] "%ld秒前に編集したドキュメントへの変更が完全に失われます。"
 
-#: ../gedit/gedit-commands-file.c:1221
+#: ../gedit/gedit-commands-file.c:1258
 msgid "Changes made to the document in the last minute will be permanently lost."
 msgstr "1分前に編集したドキュメントへの変更が完全に失われます。"
 
-#: ../gedit/gedit-commands-file.c:1227
+#: ../gedit/gedit-commands-file.c:1264
 #, c-format
 msgid "Changes made to the document in the last minute and %ld second will be permanently lost."
 msgid_plural "Changes made to the document in the last minute and %ld seconds will be permanently lost."
 msgstr[0] "1分 %ld秒前に編集したドキュメントへの変更が完全に失われます。"
 
-#: ../gedit/gedit-commands-file.c:1237
+#: ../gedit/gedit-commands-file.c:1274
 #, c-format
 msgid "Changes made to the document in the last %ld minute will be permanently lost."
 msgid_plural "Changes made to the document in the last %ld minutes will be permanently lost."
 msgstr[0] "%ld分前に編集したドキュメントへの変更が完全に失われます。"
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1289
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "1時間前に編集したドキュメントへの変更が完全に失われます。"
 
-#: ../gedit/gedit-commands-file.c:1258
+#: ../gedit/gedit-commands-file.c:1295
 #, c-format
 msgid "Changes made to the document in the last hour and %d minute will be permanently lost."
 msgid_plural "Changes made to the document in the last hour and %d minutes will be permanently lost."
 msgstr[0] "1時間 %d分前に編集したドキュメントへの変更が完全に失われます。"
 
-#: ../gedit/gedit-commands-file.c:1273
+#: ../gedit/gedit-commands-file.c:1310
 #, c-format
 msgid "Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "%d時間前に編集したドキュメントへの変更が完全に失われます。"
 
-#: ../gedit/gedit-commands-file.c:1296
+#: ../gedit/gedit-commands-file.c:1333
 msgid "_Revert"
 msgstr "戻す(_R)"
 
@@ -737,7 +735,7 @@ msgstr "1 ヶ所で検索と置換を行いました。"
 msgid "\"%s\" not found"
 msgstr "\"%s\" は見つかりませんでした"
 
-#: ../gedit/gedit-document.c:947 ../gedit/gedit-document.c:977
+#: ../gedit/gedit-document.c:953 ../gedit/gedit-document.c:983
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "編集中のドキュメント %d"
@@ -747,55 +745,52 @@ msgstr "編集中のドキュメント %d"
 msgid "Tab Group %i"
 msgstr "新しいタブグループ %i"
 
-#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1084
-#: ../gedit/gedit-window.c:1090 ../gedit/gedit-window.c:1098
+#: ../gedit/gedit-documents-panel.c:524 ../gedit/gedit-window.c:1133
+#: ../gedit/gedit-window.c:1139 ../gedit/gedit-window.c:1147
 msgid "Read-Only"
 msgstr "読み取りのみ"
 
-#: ../gedit/gedit-encodings-combo-box.c:283
+#: ../gedit/gedit-encodings-combo-box.c:302
+#: ../gedit/gedit-file-chooser-dialog-osx.c:564
 msgid "Automatically Detected"
 msgstr "自動検出"
 
-#: ../gedit/gedit-encodings-combo-box.c:302
-#: ../gedit/gedit-encodings-combo-box.c:318
+#: ../gedit/gedit-encodings-combo-box.c:331
+#: ../gedit/gedit-file-chooser-dialog-osx.c:573
+msgid "Add or Remove..."
+msgstr "追加と削除..."
+
+#: ../gedit/gedit-encoding-items.c:95 ../gedit/gedit-encoding-items.c:104
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "現在のロケール (%s)"
 
-#: ../gedit/gedit-encodings-combo-box.c:370
-msgid "Add or Remove..."
-msgstr "追加と削除..."
-
-#: ../gedit/gedit-file-chooser-dialog.c:38
-#: ../gedit/gedit-preferences-dialog.c:870
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:40
+#: ../gedit/gedit-preferences-dialog.c:877
 msgid "All Files"
 msgstr "すべてのファイル"
 
-#: ../gedit/gedit-file-chooser-dialog.c:39
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
 msgid "All Text Files"
 msgstr "すべてのテキストファイル"
 
-#: ../gedit/gedit-file-chooser-dialog.c:79
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:305
 msgid "C_haracter Encoding:"
-msgstr "エンコーディング(_H):"
+msgstr "文字エンコーディング(_H):"
 
-#: ../gedit/gedit-file-chooser-dialog.c:138
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:355
 msgid "L_ine Ending:"
-msgstr "行末(_I):"
+msgstr "改行文字(_I):"
 
-#: ../gedit/gedit-file-chooser-dialog.c:157
-msgid "Unix/Linux"
-msgstr "Unix/Linux"
+#: ../gedit/gedit-file-chooser-dialog-osx.c:546
+msgid "Character Encoding:"
+msgstr "文字エンコーディング:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:163
-msgid "Mac OS Classic"
-msgstr "Mac OS Classic"
+#: ../gedit/gedit-file-chooser-dialog-osx.c:619
+msgid "Line Ending:"
+msgstr "改行文字:"
 
-#: ../gedit/gedit-file-chooser-dialog.c:169
-msgid "Windows"
-msgstr "Windows"
-
-#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1168
+#: ../gedit/gedit-highlight-mode-selector.c:256 ../gedit/gedit-window.c:1217
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -883,7 +878,7 @@ msgstr "エンコーディング(_A):"
 #: ../gedit/gedit-io-error-info-bar.c:445
 #, c-format
 msgid "The location “%s” is not currently reachable."
-msgstr ""
+msgstr "“%s”に現在アクセスできません。"
 
 #: ../gedit/gedit-io-error-info-bar.c:460
 msgid "Your system is offline. Check your network."
@@ -1062,8 +1057,9 @@ msgid "Drop Changes and _Reload"
 msgstr "手元の編集内容を破棄して再読み込み(_R)"
 
 #: ../gedit/gedit-io-error-info-bar.c:1186
+#: ../gedit/resources/gtk/menus-default.ui.h:6
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus.ui.h:6
+#: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "再読み込み(_R)"
 
@@ -1076,41 +1072,41 @@ msgstr "“%s”を保存する際に不正な文字を検出しました"
 msgid "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr "このファイルの保存を続行すると、文書が壊れてしまうかもしれません。続けますか?"
 
-#: ../gedit/gedit-open-document-selector.c:596
+#: ../gedit/gedit-open-document-selector.c:409
 msgid "No results"
 msgstr "一致なし"
 
-#: ../gedit/gedit-preferences-dialog.c:384
+#: ../gedit/gedit-preferences-dialog.c:386
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "エディターで使用するフォントを選択する場合は、このボタンをクリックしてください"
 
-#: ../gedit/gedit-preferences-dialog.c:397
+#: ../gedit/gedit-preferences-dialog.c:399
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "システムの固定幅フォント (%s) を使う(_U)"
 
-#: ../gedit/gedit-preferences-dialog.c:641
+#: ../gedit/gedit-preferences-dialog.c:643
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "'%s' というフォルダーを生成できませんでした: g_mkdir_with_parents() に失敗: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:825
+#: ../gedit/gedit-preferences-dialog.c:839
 msgid "The selected color scheme cannot be installed."
 msgstr "指定した色のスキームをインストールできません。"
 
-#: ../gedit/gedit-preferences-dialog.c:852
+#: ../gedit/gedit-preferences-dialog.c:864
 msgid "Add Scheme"
 msgstr "スキームの追加"
 
-#: ../gedit/gedit-preferences-dialog.c:856
+#: ../gedit/gedit-preferences-dialog.c:869
 msgid "A_dd Scheme"
 msgstr "スキームの追加(_D)"
 
-#: ../gedit/gedit-preferences-dialog.c:863
+#: ../gedit/gedit-preferences-dialog.c:873
 msgid "Color Scheme Files"
 msgstr "色のスキーム"
 
-#: ../gedit/gedit-preferences-dialog.c:906
+#: ../gedit/gedit-preferences-dialog.c:910
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "色のスキーム \"%s\" を削除できませんでした。"
@@ -1204,41 +1200,49 @@ msgstr "ファイル %s に戻す際にエラー"
 msgid "Error saving file %s"
 msgstr "ファイル %s を保存する際にエラー"
 
-#: ../gedit/gedit-tab.c:1523
-msgid "Unicode (UTF-8)"
-msgstr "Unicode (UTF-8)"
-
-#: ../gedit/gedit-tab.c:1530
+#: ../gedit/gedit-tab.c:1532
 msgid "Name:"
 msgstr "名前:"
 
-#: ../gedit/gedit-tab.c:1531
+#: ../gedit/gedit-tab.c:1533
 msgid "MIME Type:"
 msgstr "MIME 型:"
 
-#: ../gedit/gedit-tab.c:1532
+#: ../gedit/gedit-tab.c:1534
 msgid "Encoding:"
 msgstr "エンコーディング:"
 
-#: ../gedit/gedit-utils.c:846
+#: ../gedit/gedit-utils.c:848
 msgid "Please check your installation."
 msgstr "gedit のインストールを確認してください。"
 
-#: ../gedit/gedit-utils.c:907
+#: ../gedit/gedit-utils.c:909
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "UI ファイル %s を開けません。エラー: %s"
 
-#: ../gedit/gedit-utils.c:926
+#: ../gedit/gedit-utils.c:928
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "オブジェクトの '%s' は %s というファイルの中にありませんでした。"
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1149
+#: ../gedit/gedit-utils.c:1151
 #, c-format
 msgid "/ on %s"
 msgstr "%s の / (ルート)"
+
+#: ../gedit/gedit-utils.c:1453
+msgid "Unix/Linux"
+msgstr "Unix/Linux"
+
+#: ../gedit/gedit-utils.c:1455
+msgid "Mac OS Classic"
+msgstr "Mac OS Classic"
+
+#: ../gedit/gedit-utils.c:1457
+msgid "Windows"
+msgstr "Windows"
 
 #: ../gedit/gedit-view.c:512
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
@@ -1249,73 +1253,74 @@ msgstr "行番号を表示する(_D)"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:718
+#: ../gedit/gedit-view-frame.c:733
 #, c-format
 msgid "%d of %d"
 msgstr "%d / %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:810
+#: ../gedit/gedit-view-frame.c:825
 msgid "_Wrap Around"
 msgstr "折り返しも検索する(_W)"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:820
+#: ../gedit/gedit-view-frame.c:835
 msgid "Match as _Regular Expression"
 msgstr "正規表現でマッチさせる(_R)"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:834
+#: ../gedit/gedit-view-frame.c:849
 msgid "Match _Entire Word Only"
 msgstr "単語全体にマッチさせる(_E)"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:848
+#: ../gedit/gedit-view-frame.c:863
 msgid "_Match Case"
 msgstr "大/小文字を区別する(_M)"
 
-#: ../gedit/gedit-view-frame.c:1022
+#: ../gedit/gedit-view-frame.c:1037
 msgid "String you want to search for"
 msgstr "検索する文字列"
 
-#: ../gedit/gedit-view-frame.c:1034
+#: ../gedit/gedit-view-frame.c:1049
 msgid "Line you want to move the cursor to"
 msgstr "カーソルを移動する行を入力してください"
 
-#: ../gedit/gedit-window.c:930
+#: ../gedit/gedit-window.c:972
 msgid "Bracket match is out of range"
 msgstr "対応する括弧は対象範囲から外れています。"
 
-#: ../gedit/gedit-window.c:935
+#: ../gedit/gedit-window.c:977
 msgid "Bracket match not found"
 msgstr "対応する括弧は見つかりません。"
 
-#: ../gedit/gedit-window.c:940
+#: ../gedit/gedit-window.c:982
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "対応する括弧が %d 行目に見つかりました。"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:975
+#: ../gedit/gedit-window.c:1017
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr " (%d行、%d列)"
 
-#: ../gedit/gedit-window.c:1150
+#: ../gedit/gedit-window.c:1199
 #, c-format
 msgid "Tab Width: %u"
 msgstr "タブ幅: %u"
 
-#: ../gedit/gedit-window.c:1521
+#: ../gedit/gedit-window.c:1569
 msgid "There are unsaved documents"
 msgstr "保存していないドキュメントがあります"
 
-#: ../gedit/gedit-window.c:2351
+#: ../gedit/gedit-window.c:2413
 msgid "Change side panel page"
 msgstr "サイドパネルのページを変更する"
 
-#: ../gedit/gedit-window.c:2371 ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2433 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "ドキュメントの一覧"
 
@@ -1337,8 +1342,9 @@ msgid "Move to New Tab _Group"
 msgstr "新しいタブグループへ移動(_G)"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
+#: ../gedit/resources/gtk/menus-default.ui.h:21
 #: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
@@ -1369,75 +1375,19 @@ msgstr "カーソル行を強調表示する"
 msgid "Text wrapping"
 msgstr "テキストを折り返す"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus.ui.h:7
-msgid "_Print…"
-msgstr "印刷(_P)…"
+#: ../gedit/resources/gtk/menus-default.ui.h:1
+#: ../gedit/resources/gtk/menus-osx.ui.h:9
+msgid "_New Window"
+msgstr "新しいウィンドウ(_N)"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus.ui.h:8
-msgid "_Fullscreen"
-msgstr "フルスクリーン(_F)"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
-#: ../gedit/resources/gtk/menus.ui.h:10
-msgid "Save _All"
-msgstr "すべて保存(_A)"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus.ui.h:11
-msgid "_Find…"
-msgstr "検索(_F)…"
-
-# 置換だけでも十分理解可能
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
-#: ../gedit/resources/gtk/menus.ui.h:12
-msgid "_Find and Replace…"
-msgstr "置換(_F)…"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus.ui.h:13
-msgid "_Clear Highlight"
-msgstr "強調表示のクリア(_C)"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
-#: ../gedit/resources/gtk/menus.ui.h:14
-msgid "_Go to Line…"
-msgstr "指定行へ移動(_G)…"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus.ui.h:15
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
-msgid "View"
-msgstr "表示"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus.ui.h:16
-msgid "Side _Panel"
-msgstr "サイドパネル(_P)"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus.ui.h:17
-msgid "_Bottom Panel"
-msgstr "ボトムパネル(_B)"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus.ui.h:18
-msgid "_Highlight Mode…"
-msgstr "ハイライトモード(_H)…"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus.ui.h:19
-msgid "Tools"
-msgstr "ツール"
-
+#: ../gedit/resources/gtk/menus-default.ui.h:2
 #: ../gedit/resources/gtk/menus-traditional.ui.h:15
-#: ../gedit/resources/gtk/menus.ui.h:2
 msgid "_Preferences"
 msgstr "設定(_P)"
 
+#: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus.ui.h:3
+#: ../gedit/resources/gtk/menus-osx.ui.h:45
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
 #: ../plugins/spell/gedit-spell-language-dialog.c:126
@@ -1446,24 +1396,205 @@ msgstr "設定(_P)"
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
+#: ../gedit/resources/gtk/menus-default.ui.h:4
 #: ../gedit/resources/gtk/menus-traditional.ui.h:17
-#: ../gedit/resources/gtk/menus.ui.h:4
 msgid "_About"
 msgstr "このアプリケーションについて(_A)"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus.ui.h:20
-msgid "_Close All"
-msgstr "すべて閉じる(_C)"
-
+#: ../gedit/resources/gtk/menus-default.ui.h:5
 #: ../gedit/resources/gtk/menus-traditional.ui.h:20
-#: ../gedit/resources/gtk/menus.ui.h:5
 msgid "_Quit"
 msgstr "終了(_Q)"
 
-#: ../gedit/resources/gtk/menus.ui.h:1
-msgid "_New Window"
-msgstr "新しいウィンドウ(_N)"
+#: ../gedit/resources/gtk/menus-default.ui.h:7
+#: ../gedit/resources/gtk/menus-traditional.ui.h:2
+#: ../gedit/resources/gtk/menus-osx.ui.h:11
+msgid "_Print…"
+msgstr "印刷(_P)…"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+#: ../gedit/resources/gtk/menus-osx.ui.h:25
+msgid "_Fullscreen"
+msgstr "フルスクリーン(_F)"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:10
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+msgid "Save _All"
+msgstr "すべて保存(_A)"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:11
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+#: ../gedit/resources/gtk/menus-osx.ui.h:28
+msgid "_Find…"
+msgstr "検索(_F)…"
+
+# 置換だけでも十分理解可能
+#: ../gedit/resources/gtk/menus-default.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+msgid "_Find and Replace…"
+msgstr "置換(_F)…"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:13
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+#: ../gedit/resources/gtk/menus-osx.ui.h:32
+msgid "_Clear Highlight"
+msgstr "強調表示のクリア(_C)"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+msgid "_Go to Line…"
+msgstr "指定行へ移動(_G)…"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:15
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
+#: ../gedit/resources/gtk/menus-osx.ui.h:22
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
+msgid "View"
+msgstr "表示"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:16
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+#: ../gedit/resources/gtk/menus-osx.ui.h:23
+msgid "Side _Panel"
+msgstr "サイドパネル(_P)"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+#: ../gedit/resources/gtk/menus-osx.ui.h:24
+msgid "_Bottom Panel"
+msgstr "ボトムパネル(_B)"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+#: ../gedit/resources/gtk/menus-osx.ui.h:26
+msgid "_Highlight Mode…"
+msgstr "ハイライトモード(_H)…"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+#: ../gedit/resources/gtk/menus-osx.ui.h:34
+msgid "Tools"
+msgstr "ツール"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:20
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus-osx.ui.h:37
+msgid "_Close All"
+msgstr "すべて閉じる(_C)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:1
+msgid "File"
+msgstr "ファイル"
+
+#. _New is the menu item under the File menu on OS X which creates a new empty document.
+#: ../gedit/resources/gtk/menus-osx.ui.h:3
+msgid "_New"
+msgstr "新規(_N)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:5
+msgid "Open _Recent"
+msgstr "最近のファイルを開く(_R)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:6
+msgid "Reopen Closed _Tab"
+msgstr "閉じたタブを開き直す(_T)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:8
+msgid "Save _As…"
+msgstr "名前を付けて保存(_A)…"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:13
+msgid "Edit"
+msgstr "編集"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:14
+msgid "_Undo"
+msgstr "取り消す(_U)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:15
+msgid "_Redo"
+msgstr "やり直す(_R)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:16
+msgid "C_ut"
+msgstr "カット(_U)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:17
+msgid "_Copy"
+msgstr "コピー(_C)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:18
+msgid "_Paste"
+msgstr "ペースト(_P)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:19
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
+msgid "_Delete"
+msgstr "削除(_D)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:20
+msgid "Overwrite _Mode"
+msgstr "上書きモード(_M)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:21
+msgid "Select _All"
+msgstr "すべて選択(_A)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:27
+msgid "Search"
+msgstr "検索"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:29
+msgid "Find Ne_xt"
+msgstr "次を検索(_X)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:30
+msgid "Find Pre_vious"
+msgstr "前を検索(_V)"
+
+# 置換だけでも十分理解可能
+#: ../gedit/resources/gtk/menus-osx.ui.h:31
+msgid "Find and _Replace…"
+msgstr "置換(_R)…"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:33
+msgid "Go to _Line…"
+msgstr "指定行へ移動(_L)…"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:36
+msgid "_Save All"
+msgstr "すべて保存(_S)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:38
+msgid "_New Tab Group"
+msgstr "新しいタブグループ(_N)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:39
+msgid "P_revious Tab Group"
+msgstr "前のタブグループ(_R)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:40
+msgid "Nex_t Tab Group"
+msgstr "次のタブグループ(_T)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:41
+msgid "_Previous Document"
+msgstr "前のドキュメント(_P)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:42
+msgid "N_ext Document"
+msgstr "次のドキュメント(_E)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:43
+msgid "_Move To New Window"
+msgstr "新しいウィンドウへ移動(_M)"
+
+#: ../gedit/resources/gtk/menus-osx.ui.h:44
+msgid "Help"
+msgstr "ヘルプ"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character encodings"
@@ -1514,8 +1645,8 @@ msgid "Search highlight mode..."
 msgstr "ハイライトモードを検索します..."
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
-msgid "Other Documents…"
-msgstr "他のドキュメント…"
+msgid "Other _Documents…"
+msgstr "他のドキュメント(_D)…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
 msgid "Open another file"
@@ -1806,30 +1937,34 @@ msgid "Close Document"
 msgstr "このドキュメントを閉じます"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:2
-msgid "New"
-msgstr "新規"
+msgid "Open a file"
+msgstr "ファイルを開きます"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:3
+#: ../gedit/resources/ui/gedit-window.ui.h:5
 msgid "Create a new document"
 msgstr "新しいドキュメントを作成します"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:4
-msgid "Open a file dialog"
-msgstr "ファイルダイアログを開きます"
-
 #: ../gedit/resources/ui/gedit-window.ui.h:6
+msgid "New"
+msgstr "新規"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:8
 msgid "Save the current file"
 msgstr "このファイルを保存します"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:7
+#: ../gedit/resources/ui/gedit-window.ui.h:9
 msgid "Save"
 msgstr "保存"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:8
+#: ../gedit/resources/ui/gedit-window.ui.h:10
 msgid "Hide panel"
 msgstr "このペインを隠します"
 
-#: ../gedit/resources/ui/gedit-window.ui.h:9
+#: ../gedit/resources/ui/gedit-window.ui.h:11
+msgid "Open a file dialog"
+msgstr "ファイルダイアログを開きます"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
 msgstr "フルスクリーンを解除します"
 
@@ -1841,23 +1976,23 @@ msgstr "更新のチェック"
 msgid "Check for latest version of gedit"
 msgstr "最新版の gedit をチェックします"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:249
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:245
 msgid "There was an error displaying the URI."
 msgstr "URI を表示する際にエラーが発生しました。"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:287
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:282
 msgid "_Download"
 msgstr "ダウンロード(_D)"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:288
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:283
 msgid "_Ignore Version"
 msgstr "バージョンを無視(_I)"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:293
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:288
 msgid "There is a new version of gedit"
 msgstr "gedit の新しいバージョンがあります"
 
-#: ../plugins/checkupdate/gedit-check-update-plugin.c:296
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:291
 msgid "You can download the new version of gedit by clicking on the download button or ignore that version and wait for a new one"
 msgstr "ダウンロードボタンを押せば新しいバージョンの gedit をダウンロードできます。そのバージョンを無視して新しいのを待つこともできます。"
 
@@ -1881,7 +2016,7 @@ msgstr "ドキュメントの統計"
 msgid "Report the number of words, lines and characters in a document."
 msgstr "ドキュメントの単語数、行数、文字数を表示します。"
 
-#: ../plugins/docinfo/gedit-docinfo-plugin.c:538
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:537
 msgid "_Document Statistics"
 msgstr "ドキュメントの統計情報(_D)"
 
@@ -2237,12 +2372,6 @@ msgstr "ファイル \"%s\" をゴミ箱へ移動できません。"
 msgid "The selected files cannot be moved to the trash."
 msgstr "選択したファイルをゴミ箱へ移動できません。"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
-msgid "_Delete"
-msgstr "削除(_D)"
-
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
@@ -2516,7 +2645,7 @@ msgstr "対象ディレクトリ \"%s\" は妥当なディレクトリではあ�
 #: ../plugins/snippets/snippets/importer.py:108
 #, python-format
 msgid "File \"%s\" does not exist"
-msgstr "ファイル \"%s\" は存在しませんでした"
+msgstr "ファイル \"%s\" は存在しません"
 
 #: ../plugins/snippets/snippets/importer.py:50
 #, python-format
@@ -2725,7 +2854,7 @@ msgstr "スニペットを実行するためのショートカットキーです
 msgid "_Drop targets:"
 msgstr "挿入する対象(_D):"
 
-#: ../plugins/sort/gedit-sort-plugin.c:432
+#: ../plugins/sort/gedit-sort-plugin.c:431
 msgid "S_ort..."
 msgstr "並び替え(_O)..."
 
@@ -2784,15 +2913,15 @@ msgstr "すべて無視(_I)"
 msgid "_Spelling Suggestions..."
 msgstr "スペルの提示(_S)..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:135
+#: ../plugins/spell/gedit-spell-app-activatable.c:136
 msgid "_Check Spelling..."
 msgstr "スペルチェック(_C)..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:139
+#: ../plugins/spell/gedit-spell-app-activatable.c:140
 msgid "Set _Language..."
 msgstr "言語の設定(_L)..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:143
+#: ../plugins/spell/gedit-spell-app-activatable.c:144
 msgid "_Highlight Misspelled Words"
 msgstr "スペルミスの強調表示(_H)"
 
@@ -2813,8 +2942,8 @@ msgstr "スペルチェック完了"
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:370
-#: ../plugins/spell/gedit-spell-checker-language.c:376
+#: ../plugins/spell/gedit-spell-checker-language.c:367
+#: ../plugins/spell/gedit-spell-checker-language.c:373
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -2823,7 +2952,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:385
+#: ../plugins/spell/gedit-spell-checker-language.c:382
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -2832,7 +2961,7 @@ msgstr "不明 (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:491
+#: ../plugins/spell/gedit-spell-checker-language.c:488
 msgctxt "language"
 msgid "Default"
 msgstr "デフォルト"
@@ -2845,11 +2974,11 @@ msgstr "言語の設定"
 msgid "Languages"
 msgstr "言語"
 
-#: ../plugins/spell/gedit-spell-plugin.c:796
+#: ../plugins/spell/gedit-spell-plugin.c:791
 msgid "The document is empty."
 msgstr "ドキュメントは空です。"
 
-#: ../plugins/spell/gedit-spell-plugin.c:821
+#: ../plugins/spell/gedit-spell-plugin.c:816
 msgid "No misspelled words"
 msgstr "スペルミスと思われる単語はありません"
 
@@ -2918,11 +3047,11 @@ msgstr "スペルチェッカー"
 msgid "Checks the spelling of the current document."
 msgstr "このドキュメントのスペルをチェックします。"
 
-#: ../plugins/time/gedit-time-plugin.c:273
+#: ../plugins/time/gedit-time-plugin.c:270
 msgid "In_sert Date and Time..."
 msgstr "日付/時刻の挿入(_S)"
 
-#: ../plugins/time/gedit-time-plugin.c:499
+#: ../plugins/time/gedit-time-plugin.c:496
 msgid "Available formats"
 msgstr "利用可能な書式"
 
@@ -3001,1835 +3130,3 @@ msgstr "日付/時刻の挿入"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "カーソル位置に現在の日付と時刻を挿入します。"
-
-#~ msgid "Open a recently used file"
-#~ msgstr "最近使用したファイルを開きます"
-
-#~ msgid "Recent files"
-#~ msgstr "最近使ったファイル"
-
-#~ msgid "Undo Actions Limit (DEPRECATED)"
-#~ msgstr "\"元に戻す\" 動作の限度 (非推奨)"
-
-#~ msgid "Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for unlimited number of actions. Deprecated since 2.12.0"
-#~ msgstr "gedit で \"元に戻す\" や \"やり直す\" ことができる動作の最大数を指定します (無制限にする場合は \"-1\") (このキーは GNOME 2.12.0 から非推奨になりました)。"
-
-#~ msgid "Show the application's help"
-#~ msgstr "アプリケーションのヘルプを表示する"
-
-#~ msgid "- Edit text files"
-#~ msgstr "- テキストファイルを編集する"
-
-#~ msgid ""
-#~ "%s\n"
-#~ "Run '%s --help' to see a full list of available command line options.\n"
-#~ msgstr ""
-#~ "%s\n"
-#~ "'%s --help' で利用可能なすべてのコマンドラインオプションの一覧が表示されます\n"
-
-#~ msgid "Unicode"
-#~ msgstr "Unicode"
-
-#~ msgid "Western"
-#~ msgstr "西欧"
-
-#~ msgid "Central European"
-#~ msgstr "中央ヨーロッパ"
-
-#~ msgid "South European"
-#~ msgstr "南欧"
-
-#~ msgid "Baltic"
-#~ msgstr "バルト語"
-
-#~ msgid "Cyrillic"
-#~ msgstr "キリル文字"
-
-#~ msgid "Arabic"
-#~ msgstr "アラビア語"
-
-#~ msgid "Greek"
-#~ msgstr "ギリシア語"
-
-#~ msgid "Hebrew Visual"
-#~ msgstr "ヘブライ語 (論理表記)"
-
-#~ msgid "Turkish"
-#~ msgstr "トルコ語"
-
-#~ msgid "Nordic"
-#~ msgstr "北欧"
-
-#~ msgid "Celtic"
-#~ msgstr "ケルト語"
-
-#~ msgid "Romanian"
-#~ msgstr "ルーマニア語"
-
-#~ msgid "Armenian"
-#~ msgstr "アルメニア語"
-
-#~ msgid "Chinese Traditional"
-#~ msgstr "中国語 (繁体字)"
-
-#~ msgid "Cyrillic/Russian"
-#~ msgstr "キリル/ロシア語"
-
-#~ msgid "Japanese"
-#~ msgstr "日本語"
-
-#~ msgid "Korean"
-#~ msgstr "韓国語"
-
-#~ msgid "Chinese Simplified"
-#~ msgstr "中国語 (簡体字)"
-
-#~ msgid "Georgian"
-#~ msgstr "グルジア語"
-
-#~ msgid "Hebrew"
-#~ msgstr "ヘブライ語"
-
-#~ msgid "Cyrillic/Ukrainian"
-#~ msgstr "キリル/ウクライナ語"
-
-#~ msgid "Vietnamese"
-#~ msgstr "ベトナム語"
-
-#~ msgid "Thai"
-#~ msgstr "タイ語"
-
-#~ msgid "Unknown"
-#~ msgstr "不明"
-
-#~ msgid "The file is too big."
-#~ msgstr "ファイルサイズが大きすぎます。"
-
-#~ msgid "Save _As..."
-#~ msgstr "名前を付けて保存(_A)..."
-
-#~ msgid "_Print..."
-#~ msgstr "印刷(_P)..."
-
-#~ msgid "Empty"
-#~ msgstr "履歴なし"
-
-#~ msgid "gedit Preferences"
-#~ msgstr "gedit の設定"
-
-#~ msgid "column"
-#~ msgstr "列"
-
-#~ msgid "_File"
-#~ msgstr "ファイル(_F)"
-
-#~ msgid "_Edit"
-#~ msgstr "編集(_E)"
-
-#~ msgid "_View"
-#~ msgstr "表示(_V)"
-
-#~ msgid "_Search"
-#~ msgstr "検索(_S)"
-
-#~ msgid "_Documents"
-#~ msgstr "ドキュメント(_D)"
-
-#~ msgid "_Open..."
-#~ msgstr "開く(_O)..."
-
-#~ msgid "Pr_eferences"
-#~ msgstr "設定(_E)"
-
-#~ msgid "Configure the application"
-#~ msgstr "gedit を設定します"
-
-#~ msgid "_Contents"
-#~ msgstr "目次(_C)"
-
-#~ msgid "Open the gedit manual"
-#~ msgstr "gedit のマニュアルを開きます"
-
-#~ msgid "About this application"
-#~ msgstr "このアプリケーションの情報を表示します"
-
-#~ msgid "Save the current file with a different name"
-#~ msgstr "このファイルに名前を付けて保存します"
-
-#~ msgid "Revert to a saved version of the file"
-#~ msgstr "保存してある元のファイルに戻します"
-
-#~ msgid "Print Previe_w"
-#~ msgstr "印刷プレビュー(_W)"
-
-#~ msgid "Print preview"
-#~ msgstr "印刷プレビューを表示します"
-
-#~ msgid "Print the current page"
-#~ msgstr "このドキュメントを印刷します"
-
-#~ msgid "Undo the last action"
-#~ msgstr "最後に実行した操作を元に戻します"
-
-#~ msgid "Redo the last undone action"
-#~ msgstr "最後に実行しようとした操作をやり直します"
-
-#~ msgid "Cut the selection"
-#~ msgstr "選択範囲を切り取ります"
-
-#~ msgid "Copy the selection"
-#~ msgstr "選択範囲をコピーします"
-
-#~ msgid "Paste the clipboard"
-#~ msgstr "クリップボードから貼り付けます"
-
-#~ msgid "Delete the selected text"
-#~ msgstr "選択したテキストを削除します"
-
-#~ msgid "Select _All"
-#~ msgstr "すべて選択(_A)"
-
-#~ msgid "Select the entire document"
-#~ msgstr "ドキュメント全体を選択します"
-
-#~ msgid "_Highlight Mode..."
-#~ msgstr "ハイライトモード(_H)..."
-
-#~ msgid "Changes the highlight mode of the active document"
-#~ msgstr "表示中のドキュメントのハイライトモードを変更します。"
-
-#~ msgid "_Find..."
-#~ msgstr "検索(_F)..."
-
-#~ msgid "Search for text"
-#~ msgstr "文字列を検索します"
-
-#~ msgid "Find Ne_xt"
-#~ msgstr "次を検索(_X)"
-
-#~ msgid "Search forwards for the same text"
-#~ msgstr "同じ文字列を前方検索します"
-
-#~ msgid "Find Pre_vious"
-#~ msgstr "前を検索(_V)"
-
-#~ msgid "Search backwards for the same text"
-#~ msgstr "同じ文字列を後方検索します"
-
-#~ msgid "_Replace..."
-#~ msgstr "置換(_R)..."
-
-#~ msgid "Search for and replace text"
-#~ msgstr "文字列を検索し置換します"
-
-#~ msgid "Clear highlighting of search matches"
-#~ msgstr "検索時にマッチした文字列の強調表示をクリアします"
-
-#~ msgid "Go to a specific line"
-#~ msgstr "指定した行に移動します"
-
-#~ msgid "Save all open files"
-#~ msgstr "開いているすべてのファイルを保存します"
-
-#~ msgid "Close all open files"
-#~ msgstr "開いているすべてのファイルを閉じます"
-
-#~ msgid "Create a new tab group"
-#~ msgstr "新しいタブグループを作成します。"
-
-#~ msgid "P_revious Tab Group"
-#~ msgstr "前のタブグループ(_R)"
-
-#~ msgid "Switch to the previous tab group"
-#~ msgstr "前のタブグループへ切り替えます"
-
-#~ msgid "Nex_t Tab Group"
-#~ msgstr "次のタブグループ(_T)"
-
-#~ msgid "Switch to the next tab group"
-#~ msgstr "次のタブグループへ切り替えます"
-
-#~ msgid "_Previous Document"
-#~ msgstr "前のドキュメント(_P)"
-
-#~ msgid "Activate previous document"
-#~ msgstr "前のドキュメントをアクティブにします"
-
-#~ msgid "N_ext Document"
-#~ msgstr "次のドキュメント(_E)"
-
-#~ msgid "Activate next document"
-#~ msgstr "次のドキュメントをアクティブにします"
-
-#~ msgid "Move the current document to a new window"
-#~ msgstr "このドキュメントを新しいウィンドウへ移動します"
-
-#~ msgid "Close the current file"
-#~ msgstr "このファイルを閉じます"
-
-#~ msgid "Quit the program"
-#~ msgstr "gedit を終了します"
-
-#~ msgid "_Toolbar"
-#~ msgstr "ツールバー(_T)"
-
-#~ msgid "Show or hide the toolbar in the current window"
-#~ msgstr "このウィンドウでツールバーの表示/非表示を切り替えます"
-
-#~ msgid "Show or hide the statusbar in the current window"
-#~ msgstr "このウィンドウでステータスバーの表示/非表示を切り替えます"
-
-#~ msgid "Edit text in fullscreen"
-#~ msgstr "フルスクリーンで編集します"
-
-#~ msgid "Show or hide the side panel in the current window"
-#~ msgstr "このウィンドウでサイドパネルの表示/非表示を切り替えます"
-
-#~ msgid "Show or hide the bottom panel in the current window"
-#~ msgstr "このウィンドウでボトムパネルの表示/非表示を切り替えます"
-
-#~ msgid "Open '%s'"
-#~ msgstr "'%s' を開きます"
-
-#~ msgid "Activate '%s'"
-#~ msgstr "'%s' に切り替えます"
-
-#~ msgid "Change Case"
-#~ msgstr "大/小文字の変更"
-
-#~ msgid "Changes the case of selected text."
-#~ msgstr "選択したテキストの大/小文字を変更します。"
-
-#~ msgid "C_hange Case"
-#~ msgstr "大/小文字の変更(_H)"
-
-#~ msgid "All _Upper Case"
-#~ msgstr "すべて大文字にする(_U)"
-
-#~ msgid "All _Lower Case"
-#~ msgstr "すべて小文字にする(_L)"
-
-#~ msgid "Change selected text to lower case"
-#~ msgstr "選択したテキストを小文字に変更します"
-
-#~ msgid "_Invert Case"
-#~ msgstr "大/小文字を逆にする(_I)"
-
-#~ msgid "Invert the case of selected text"
-#~ msgstr "選択したテキストの大/小文字を逆にします"
-
-#~ msgid "_Title Case"
-#~ msgstr "先頭文字を大文字にする(_T)"
-
-#~ msgid "Capitalize the first letter of each selected word"
-#~ msgstr "選択した単語の先頭文字を大文字にします"
-
-#~ msgid "Get statistical information on the current document"
-#~ msgstr "このドキュメントから統計情報を取得"
-
-#~ msgid "_Update"
-#~ msgstr "更新(_U)"
-
-#~ msgid "File Name"
-#~ msgstr "ファイル名"
-
-#~ msgid "_Tools:"
-#~ msgstr "ツール(_T):"
-
-#~ msgid "_Edit:"
-#~ msgstr "編集(_E):"
-
-#~ msgid "Opens the External Tools Manager"
-#~ msgstr "外部ツールを管理するマネージャーを開きます"
-
-#~ msgid "External tools"
-#~ msgstr "外部ツール"
-
-#~ msgid "Quickly open documents"
-#~ msgstr "ドキュメントを素早く開きます"
-
-#~ msgid "_Snippets:"
-#~ msgstr "スニペット(_S):"
-
-#~ msgid "Manage snippets"
-#~ msgstr "スニペットを管理します"
-
-#~ msgid "Sort the current document or selection"
-#~ msgstr "このドキュメントまたは選択範囲を並べ替えます"
-
-#~ msgid "Check Spelling"
-#~ msgstr "スペルチェック"
-
-#~ msgid "Check the current document for incorrect spelling"
-#~ msgstr "このドキュメントにある間違ったスペルをチェックします"
-
-#~ msgid "Set the language of the current document"
-#~ msgstr "このドキュメントの言語を設定します"
-
-#~ msgid "Automatically spell-check the current document"
-#~ msgstr "このドキュメントを自動的にスペルチェックします"
-
-#~ msgid "Language:"
-#~ msgstr "言語:"
-
-#~ msgid "Language"
-#~ msgstr "言語"
-
-#~ msgid "Insert current date and time at the cursor position"
-#~ msgstr "カーソル位置に現在の日付と時刻を挿入します"
-
-#~ msgid "Zeitgeist dataprovider"
-#~ msgstr "Zeitgeist データプロバイダー"
-
-#~ msgid "Logs access and leave event for documents used with gedit"
-#~ msgstr "アクセスを記録し、gedit で使用された文書のイベントを残します"
-
-#~ msgid "The location of the file cannot be accessed because it is not mounted."
-#~ msgstr "ファイルが格納されている場所がマウントされていないのでファイルにアクセスできません。"
-
-#~ msgid "gedit opened this instance of the file in a non-editable way. Do you want to edit it anyway?"
-#~ msgstr "このファイルのインスタンスを編集不可モードで開きました。編集を続行しますか?"
-
-#~ msgid "Do you want to drop your changes and reload the file?"
-#~ msgstr "変更を破棄して、もう一度ファイルを読み込み直してみますか?"
-
-#~ msgid "Open Files"
-#~ msgstr "ファイルを開く"
-
-#~ msgid "Character Encodings"
-#~ msgstr "文字エンコーディング"
-
-#~ msgid "Replace All"
-#~ msgstr "すべて置換"
-
-#~ msgid "Disable syntax highlighting"
-#~ msgstr "構文の強調表示を無効にします"
-
-#~ msgid "Set the root to the active document location"
-#~ msgstr "ドキュメントを格納しているルートフォルダーに指定します"
-
-#~ msgid "Open a terminal at the currently opened directory"
-#~ msgstr "このフォルダーで端末を開きます"
-
-#~ msgid "file"
-#~ msgstr "ファイル"
-
-#~ msgid "directory"
-#~ msgstr "フォルダー"
-
-#~ msgid "Move selected file or folder to trash"
-#~ msgstr "選択したファイルやフォルダーをゴミ箱へ移動します"
-
-#~ msgid "Delete selected file or folder"
-#~ msgstr "選択したファイルやフォルダーを削除します"
-
-#~ msgid "Open selected file"
-#~ msgstr "選択したファイルを開く"
-
-#~ msgid "Up"
-#~ msgstr "上へ"
-
-#~ msgid "Open the parent folder"
-#~ msgstr "親フォルダーを開きます"
-
-#~ msgid "Add new empty folder"
-#~ msgstr "新しい空のフォルダーを追加します"
-
-#~ msgid "Add new empty file"
-#~ msgstr "新しい空のファイルを追加します"
-
-#~ msgid "Rename selected file or folder"
-#~ msgstr "選択したファイルやフォルダーの名前を変更します"
-
-#~ msgid "_Previous Location"
-#~ msgstr "前の場所(_P)"
-
-#~ msgid "Go to the previous visited location"
-#~ msgstr "前に表示した場所へ戻ります"
-
-#~ msgid "_Next Location"
-#~ msgstr "次の場所(_N)"
-
-#~ msgid "Go to the next visited location"
-#~ msgstr "次に表示した場所へ進みます"
-
-#~ msgid "Refresh the view"
-#~ msgstr "表示を更新します"
-
-#~ msgid "View folder in file manager"
-#~ msgstr "指定したフォルダーをファイルマネージャーで開きます"
-
-#~ msgid "Show hidden files and folders"
-#~ msgstr "隠しファイルやフォルダーを表示します"
-
-#~ msgid "Show binary files"
-#~ msgstr "バイナリファイルを表示します"
-
-#~ msgid "Quick open"
-#~ msgstr "クイック・オープン"
-
-#~ msgid "Text;"
-#~ msgstr "Text;テキスト;"
-
-#~ msgid "Log Out _without Saving"
-#~ msgstr "保存せずにログアウト(_W)"
-
-#~ msgid "Run gedit in the background"
-#~ msgstr "geditをバックグラウンドで動かす"
-
-#~ msgid "_Add..."
-#~ msgstr "追加(_A)..."
-
-#~ msgid "Previous location"
-#~ msgstr "前の場所"
-
-#~ msgid "Go to previous location"
-#~ msgstr "前の場所へ戻ります"
-
-#~ msgid "Go to a previously opened location"
-#~ msgstr "前に表示した場所へ戻ります"
-
-#~ msgid "Next location"
-#~ msgstr "次の場所"
-
-#~ msgid "Go to next location"
-#~ msgstr "次の場所へ進みます"
-
-#~ msgid "External Tools Manager"
-#~ msgstr "外部ツール・マネージャ"
-
-#~ msgid "List of VFS schemes gedit supports in write mode. The 'file' scheme is writable by default."
-#~ msgstr "gedit が書き込みモードでサポートする VFS の並びです。'file' のスキームはデフォルトで書き込み可能です。"
-
-#~ msgid "Writable VFS schemes"
-#~ msgstr "書き込み可能な VFS スキーム"
-
-#~ msgid "Style for the toolbar buttons. Possible values are \"system\" to use the system's default style, \"icons\" to display icons only, \"icons-and-text\" to display both icons and text, and \"icons-both-horiz\" to display prioritized text beside icons. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
-#~ msgstr "ツールバー・ボタンのスタイルを指定します。可能な値はシステムのデフォルト・スタイルを使う \"system\" とアイコンのみを表示する \"icons\"、アイコンとテキスト両方を表示する \"icons-and-text\"、そしてアイコンのそばに優先的なテキストを表示する \"icons-both-horiz\" があります。値は大文字小文字を区別することに注意してください。そしてここで記述したとおりに表示されるか確認してください。"
-
-#~ msgid "Toolbar Buttons Style"
-#~ msgstr "ツールバーボタンのスタイル"
-
-#~ msgid "It is not possible to detect the encoding automatically"
-#~ msgstr "自動的にエンコーディングを検出できません"
-
-#~ msgid "_Incremental Search..."
-#~ msgstr "インクリメンタル検索(_I)..."
-
-#~ msgid "Incrementally search for text"
-#~ msgstr "文字を入力しながら逐次検索します"
-
-# snippet=断片,抜粋,...
-# とりあえず訳してはおくがあやしい。動作を見るかコードを読む必要あり。
-#
-# (2006-02-22) T.Aihana
-# "snippet" (スニペット) はコード・エディタにある機能で
-# 従来の "コード補間" 機能を発展させたものです。
-# (例) http://www.microsoft.com/japan/msdn/vs05/vbasic/vbnet2005_preview.asp#vbnetwhidbey_updated%20v2_topic2
-#~ msgid "Snippets Manager"
-#~ msgstr "スニペットの管理"
-
-#~ msgid "Tags"
-#~ msgstr "タグ"
-
-#~ msgid "Select the group of tags you want to use"
-#~ msgstr "使用するタグのグループを選択してください"
-
-#~ msgid "_Preview"
-#~ msgstr "プレビュー(_P)"
-
-#~ msgid "Available Tag Lists"
-#~ msgstr "利用可能なタグの一覧"
-
-#~ msgid "Abbreviated form"
-#~ msgstr "abbr 要素 (略語/頭文字を表す)"
-
-#~ msgid "Abbreviation"
-#~ msgstr "abbr 属性 (tr, th 要素の内容の省略形)"
-
-#~ msgid "Above"
-#~ msgstr "above (上の枠だけを表示する)"
-
-#~ msgid "Accessibility key character"
-#~ msgstr "accesskey 属性 (ショートカット・キーの割り当て)"
-
-#~ msgid "Acronym"
-#~ msgstr "acronym 要素 (略語/頭文字を表す)"
-
-#~ msgid "Align"
-#~ msgstr "align 属性 (要素内容の配置方向)"
-
-#~ msgid "Alignment character"
-#~ msgstr "char 属性 (表で位置揃えする文字)"
-
-#~ msgid "Alternative"
-#~ msgstr "alt 属性 (代替テキスト)"
-
-#~ msgid "Anchor"
-#~ msgstr "a 要素 (アンカー)"
-
-#~ msgid "Anchor URI"
-#~ msgstr "a 要素 href 属性付き (ハイパーリンク)"
-
-#~ msgid "Applet class file code"
-#~ msgstr "code 属性 (アプレット・クラスのファイル)"
-
-#~ msgid "Applet class file code (deprecated)"
-#~ msgstr "code 属性 (アプレットのクラス・ファイル [非推奨])"
-
-#~ msgid "Array"
-#~ msgstr "array 要素"
-
-#~ msgid "Associated information"
-#~ msgstr "content 属性 (meta 要素の値)"
-
-#~ msgid "Author info"
-#~ msgstr "address 要素 (ドキュメントの著者の情報)"
-
-#~ msgid "Axis related headers"
-#~ msgstr "axis 属性 (表のセルの分類)"
-
-#~ msgid "Background color"
-#~ msgstr "bgcolor 属性 (背景の色)"
-
-#~ msgid "Background color (deprecated)"
-#~ msgstr "bgcolor 属性 (背景の色 [非推奨])"
-
-#~ msgid "Background texture tile"
-#~ msgstr "background 属性 (背景画像)"
-
-#~ msgid "Background texture tile (deprecated)"
-#~ msgstr "background 属性 (背景画像 [非推奨])"
-
-#~ msgid "Base URI"
-#~ msgstr "codebase 属性 (code 属性等の基準 URI)"
-
-#~ msgid "Base font"
-#~ msgstr "basefont 要素 (font 要素の基準指定)"
-
-#~ msgid "Base font (deprecated)"
-#~ msgstr "basefont 要素 (font 要素の基準指定 [非推奨])"
-
-#~ msgid "Bold"
-#~ msgstr "b 要素 (太字)"
-
-#~ msgid "Border"
-#~ msgstr "border 属性 (画像や表の枠線の太さ)"
-
-#~ msgid "Border (deprecated)"
-#~ msgstr "border 属性 (画像や表の枠線の太さ [非推奨])"
-
-#~ msgid "Border color"
-#~ msgstr "bordercolor 属性 (枠線の色)"
-
-#~ msgid "Cell rowspan"
-#~ msgstr "rowspan 属性 (セルの縦方向の連結)"
-
-#~ msgid "Center"
-#~ msgstr "center 要素 (中央揃え)"
-
-#~ msgid "Center (deprecated)"
-#~ msgstr "center 要素 (中央揃え [非推奨])"
-
-#~ msgid "Character encoding of linked resource"
-#~ msgstr "charset 属性 (リンク先のリソースの文字コード)"
-
-#~ msgid "Checked (state)"
-#~ msgstr "checked 属性 (状態)"
-
-#~ msgid "Checked state"
-#~ msgstr "checked 属性 (状態)"
-
-#~ msgid "Citation"
-#~ msgstr "cite 要素 (引用、参照)"
-
-#~ msgid "Cite reason for change"
-#~ msgstr "cite 属性 (ins、del 要素で変更理由を説明する情報の URI)"
-
-#~ msgid "Class implementation ID"
-#~ msgstr "classid 属性 (object の実装を指す URI)"
-
-#~ msgid "Class list"
-#~ msgstr "class 属性 (クラス名のリスト)"
-
-#~ msgid "Clear text flow control"
-#~ msgstr "clear 属性 (br で回り込みの解除の指定)"
-
-#~ msgid "Code content type"
-#~ msgstr "codetype 属性 (classid 属性で指定したオブジェクトの型)"
-
-#~ msgid "Color of selected links"
-#~ msgstr "alink 属性 (ユーザが選択したリンクの色)"
-
-#~ msgid "Color of selected links (deprecated)"
-#~ msgstr "alink 属性 (ユーザが選択したリンクの色 [非推奨])"
-
-#~ msgid "Column span"
-#~ msgstr "colspan 属性 (セルの横方向の連結)"
-
-#~ msgid "Comment"
-#~ msgstr "<!--  --> (コメント) あるいは comment 要素"
-
-#~ msgid "Computer code fragment"
-#~ msgstr "code 要素 (コンピュータのコード断片)"
-
-#~ msgid "Content type"
-#~ msgstr "type 属性 (コンテンツのMIME型)"
-
-#~ msgid "Content type (deprecated)"
-#~ msgstr "type 属性 (コンテンツのMIME型 [非推奨])"
-
-#~ msgid "Coordinates"
-#~ msgstr "coords 属性 (座標)"
-
-#~ msgid "DIV Style container"
-#~ msgstr "div 要素 style 属性付き (コンテナ)"
-
-#~ msgid "DIV container"
-#~ msgstr "div 要素 (コンテナ)"
-
-#~ msgid "Date and time of change"
-#~ msgstr "datetime 属性 (ins、del 要素で変更した日時)"
-
-#~ msgid "Declare flag"
-#~ msgstr "declare 属性 (object 要素のフラグ)"
-
-#~ msgid "Defer attribute"
-#~ msgstr "defer 属性 (script 要素でドキュメントを生成しないことを宣言)"
-
-#~ msgid "Definition description"
-#~ msgstr "dd 要素 (定義型リストでの定義)"
-
-#~ msgid "Definition list"
-#~ msgstr "dl 要素 (定義型リスト)>"
-
-#~ msgid "Definition term"
-#~ msgstr "dt 要素 (定義型リストでの用語)"
-
-#~ msgid "Deleted text"
-#~ msgstr "del 要素 (削除したテキスト)"
-
-#~ msgid "Direction"
-#~ msgstr "direction 属性 (marquee 要素でのスクロール方向)"
-
-#~ msgid "Directionality"
-#~ msgstr "dir 属性 (テキストや表の基本方向)"
-
-#~ msgid "Directionality (deprecated)"
-#~ msgstr "dir 属性 (テキストや表の基本方向 [非推奨])"
-
-#~ msgid "Directory list"
-#~ msgstr "dir 要素 (ディレクトリリスト)"
-
-#~ msgid "Disabled"
-#~ msgstr "disabled 属性 (ユーザ入力を受け付けない)"
-
-#~ msgid "Document base"
-#~ msgstr "base 要素 (相対URIの基準URI)"
-
-#~ msgid "Document body"
-#~ msgstr "body 要素 (ドキュメントの本文)"
-
-#~ msgid "Document head"
-#~ msgstr "head 要素 (ドキュメントのヘッダ)"
-
-#~ msgid "Document title"
-#~ msgstr "title 要素 (ドキュメントのタイトル)"
-
-#~ msgid "Document type"
-#~ msgstr "DOCTYPE 宣言 (文書型宣言)"
-
-#~ msgid "Element ID"
-#~ msgstr "id 属性 (要素に一意の名前を指定)"
-
-#~ msgid "Embedded object"
-#~ msgstr "embed 要素 (埋め込みオブジェクト)"
-
-#~ msgid "Emphasis"
-#~ msgstr "em 要素 (文字の強調)"
-
-#~ msgid "Encode type"
-#~ msgstr "enctype 属性 (form で送信する時の型)"
-
-#~ msgid "Figure"
-#~ msgstr "fig 要素 (図表)"
-
-#~ msgid "Font face"
-#~ msgstr "face 属性 (フォント名)"
-
-#~ msgid "Font face (deprecated)"
-#~ msgstr "face 属性 (フォント名 [非推奨])"
-
-#~ msgid "For label"
-#~ msgstr "for 属性 (label 要素とコントロールの関連付け)"
-
-#~ msgid "Forced line break"
-#~ msgstr "br 要素 (強制行区切り)"
-
-#~ msgid "Form"
-#~ msgstr "form 要素 (フォーム)"
-
-#~ msgid "Form action handler"
-#~ msgstr "action 属性 (フォームのアクションハンドラ)"
-
-#~ msgid "Form control group"
-#~ msgstr "fieldset 要素 (コントロールとラベルのグループ化)"
-
-#~ msgid "Form field label text"
-#~ msgstr "label 要素 (コントロールの追加情報)"
-
-#~ msgid "Form input"
-#~ msgstr "input 要素 (入力コントロール)"
-
-#~ msgid "Form input type"
-#~ msgstr "input 要素 type 属性付き (type 属性付き入力コントロール)"
-
-#~ msgid "Form method"
-#~ msgstr "form 要素 method 属性付き あるいは method 属性"
-
-#~ msgid "Forward link"
-#~ msgstr "rel 属性 (正方向リンクの関係性)"
-
-#~ msgid "Frame"
-#~ msgstr "frame 要素 (フレーム)"
-
-#~ msgid "Frame border"
-#~ msgstr "frameborder 属性 (フレームの枠を描画するかどうか)"
-
-#~ msgid "Frame render parts"
-#~ msgstr "frame 属性 (表の枠のどれを表示するか)"
-
-#~ msgid "Frame source"
-#~ msgstr "frame 要素 src 属性付き (src 属性付きフレーム)"
-
-#~ msgid "Frame spacing"
-#~ msgstr "framespacing 属性"
-
-#~ msgid "Frame target"
-#~ msgstr "target 属性 (文書を開くフレームの名称)"
-
-#~ msgid "Frameborder"
-#~ msgstr "frameborder 属性 (フレームの枠を描画するかどうか)"
-
-#~ msgid "Frameset"
-#~ msgstr "frameset 要素 (フレームの割り付け)"
-
-#~ msgid "Frameset columns"
-#~ msgstr "frameset 要素 cols 属性付き (cols 属性付きフレームの割り付け)"
-
-#~ msgid "Frameset rows"
-#~ msgstr "frameset 要素 rows 属性付き (rows 属性付きフレームの割り付け)"
-
-#~ msgid "Framespacing"
-#~ msgstr "framespacing 属性"
-
-#~ msgid "Generic embedded object"
-#~ msgstr "object 要素 (汎用埋め込みオブジェクト)"
-
-#~ msgid "Generic metainformation"
-#~ msgstr "meta 要素 (汎用メタ情報)"
-
-#~ msgid "Generic span"
-#~ msgstr "span 要素 (汎用の構造化要素)"
-
-#~ msgid "HREF URI"
-#~ msgstr "href 属性 (ハイパーリンクでURIを指定)"
-
-#~ msgid "HTML root element"
-#~ msgstr "html 要素 (ルート要素)"
-
-#~ msgid "HTML version"
-#~ msgstr "version 属性 (HTML のバージョン)"
-
-#~ msgid "HTML — Special Characters"
-#~ msgstr "HTML — 特殊文字"
-
-#~ msgid "HTML — Tags"
-#~ msgstr "HTML — タグ"
-
-#~ msgid "HTTP header name"
-#~ msgstr "http-equiv 属性 (HTTP 応答ヘッダ名)"
-
-#~ msgid "Header cell IDs"
-#~ msgstr "headers 属性 (見出しセルの id のリスト)"
-
-#~ msgid "Heading"
-#~ msgstr "h 要素"
-
-#~ msgid "Heading 1"
-#~ msgstr "h1 要素 (見出し1)"
-
-#~ msgid "Heading 2"
-#~ msgstr "h2 要素 (見出し2)"
-
-#~ msgid "Heading 3"
-#~ msgstr "h3 要素 (見出し3)"
-
-#~ msgid "Heading 4"
-#~ msgstr "h4 要素 (見出し4)"
-
-#~ msgid "Heading 5"
-#~ msgstr "h5 要素 (見出し5)"
-
-#~ msgid "Heading 6"
-#~ msgstr "h6 要素 (見出し6)"
-
-#~ msgid "Height"
-#~ msgstr "height 属性 (高さ)"
-
-#~ msgid "Horizontal rule"
-#~ msgstr "hr 要素 (罫線)"
-
-#~ msgid "Horizontal space"
-#~ msgstr "hspace 属性 (左右の空白の量)"
-
-#~ msgid "Horizontal space (deprecated)"
-#~ msgstr "hspace 属性 (左右の空白の量 [非推奨])"
-
-#~ msgid "I18N BiDi override"
-#~ msgstr "bdo 要素 (文字固有の方向を上書き)"
-
-#~ msgid "Image"
-#~ msgstr "img 要素 (画像)"
-
-#~ msgid "Image map"
-#~ msgstr "map 要素 (クライアント側イメージマップ)"
-
-#~ msgid "Image map area"
-#~ msgstr "area 要素 (クライアント側イメージマップの区割り)"
-
-#~ msgid "Image map name"
-#~ msgstr "map 要素 name 属性付き (name 属性付きクライアント側イメージマップ)"
-
-#~ msgid "Image source"
-#~ msgstr "img 要素 src 属性付き (src 属性付き画像)"
-
-#~ msgid "Inline frame"
-#~ msgstr "iframe 要素 (インラインフレーム)"
-
-#~ msgid "Inline layer"
-#~ msgstr "ilayer 要素 (インラインレイヤー)"
-
-#~ msgid "Inserted text"
-#~ msgstr "ins 要素 (挿入したテキスト)"
-
-#~ msgid "Instance definition"
-#~ msgstr "dfn 要素 (用語の定義)"
-
-#~ msgid "Italic text"
-#~ msgstr "i 要素 (イタリック)"
-
-#~ msgid "Java applet"
-#~ msgstr "applet 要素 (Java アプレット)"
-
-#~ msgid "Java applet (deprecated)"
-#~ msgstr "applet 要素 (Java アプレット [非推奨])"
-
-#~ msgid "Label"
-#~ msgstr "label 属性 (ラベル指定)"
-
-#~ msgid "Language code"
-#~ msgstr "hreflang または lang 属性 (言語情報)"
-
-#~ msgid "Large text style"
-#~ msgstr "big 要素 (大きい文字)"
-
-#~ msgid "Layer"
-#~ msgstr "layer 要素"
-
-#~ msgid "Link color"
-#~ msgstr "link 属性 (未訪問のリンクの色)"
-
-#~ msgid "Link color (deprecated)"
-#~ msgstr "link 属性 (未訪問のリンクの色 [非推奨])"
-
-#~ msgid "List item"
-#~ msgstr "li 要素 (リスト項目)"
-
-#~ msgid "List of MIME types for file upload"
-#~ msgstr "accept 属性 (アップロードで受け付けることのできるファイルのMIME型)"
-
-#~ msgid "List of supported character sets"
-#~ msgstr "accept-charset 属性 (フォーム処理サーバが受け付け能な文字符号化のリスト)"
-
-#~ msgid "Listing"
-#~ msgstr "listing 要素"
-
-#~ msgid "Local change to font"
-#~ msgstr "font 要素 (テキストのフォントや色等を局所的に変更)"
-
-#~ msgid "Long description link"
-#~ msgstr "longdesc 属性 (詳細を説明した文章へのリンクのURI)"
-
-#~ msgid "Long quotation"
-#~ msgstr "blockquote 要素 (長い引用)"
-
-#~ msgid "Mail link"
-#~ msgstr "mailto 属性"
-
-#~ msgid "Margin pixel height"
-#~ msgstr "marginheight 属性 (フレーム内容の上下のマージン量)"
-
-#~ msgid "Margin pixel width"
-#~ msgstr "marginwidth 属性 (フレーム内容の左右のマージン量)"
-
-#~ msgid "Marquee"
-#~ msgstr "marquee 要素"
-
-#~ msgid "Maximum length of text field"
-#~ msgstr "maxlength 属性 (コントロールに入力できる最大文字数)"
-
-#~ msgid "Media-independent link"
-#~ msgstr "link 要素 rel 属性付き (メディア独立なリンク)"
-
-#~ msgid "Menu list"
-#~ msgstr "menu 要素 (メニューリスト)"
-
-#~ msgid "Menu list (deprecated)"
-#~ msgstr "menu 要素 (メニューリスト [非推奨])"
-
-#~ msgid "Multi-line text field"
-#~ msgstr "textarea 要素 (複数行のテキスト入力コントロール)"
-
-#~ msgid "Multicolumn"
-#~ msgstr "multicol 要素"
-
-#~ msgid "Multiple"
-#~ msgstr "multiple 属性 (select 要素で複数選択を許容)"
-
-#~ msgid "Name"
-#~ msgstr "name 属性 (名前の指定)"
-
-#~ msgid "Named property value"
-#~ msgstr "param 要素 (オブジェクトに指定する値)"
-
-#~ msgid "Next ID"
-#~ msgstr "nextid 要素"
-
-#~ msgid "No URI"
-#~ msgstr "nohref 属性 (area 要素が関連リンクを持たない)"
-
-#~ msgid "No embedded objects"
-#~ msgstr "noembed 要素 (embed 要素の代替コンテンツ)"
-
-#~ msgid "No frames"
-#~ msgstr "noframes 要素 (フレームの代替コンテンツ)"
-
-#~ msgid "No layers"
-#~ msgstr "nolayer 要素"
-
-#~ msgid "No line break"
-#~ msgstr "nobr 要素"
-
-#~ msgid "No script"
-#~ msgstr "noscript 要素 (スクリプト代替コンテンツ)"
-
-#~ msgid "No shade"
-#~ msgstr "noshade 属性 (溝ではなく塗り潰しで罫線を表示)"
-
-#~ msgid "No shade (deprecated)"
-#~ msgstr "noshade 属性 (溝ではなく塗り潰しで罫線を表示 [非推奨])"
-
-#~ msgid "No word wrap"
-#~ msgstr "nowrap 属性 (表のセルにおいてテキスト折り返し不可)"
-
-#~ msgid "No word wrap (deprecated)"
-#~ msgstr "nowrap 属性 (表のセルにおいてテキスト折り返し不可 [非推奨])"
-
-#~ msgid "Non-breaking space"
-#~ msgstr "ノーブレークスペース"
-
-#~ msgid "Note"
-#~ msgstr "note 要素"
-
-#~ msgid "Object applet file"
-#~ msgstr "object 属性"
-
-#~ msgid "Object applet file (deprecated)"
-#~ msgstr "object 属性 [非推奨]"
-
-#~ msgid "Object data reference"
-#~ msgstr "data 属性 (オブジェクトへの参照の URI)"
-
-#~ msgid "Offset for alignment character"
-#~ msgstr "charoff 属性 (表において桁揃え文字のオフセットを指定)"
-
-#~ msgid "OnBlur event"
-#~ msgstr "onblur 属性 (OnBlur イベント)"
-
-#~ msgid "OnChange event"
-#~ msgstr "onchange 属性 (OnChange イベント)"
-
-#~ msgid "OnClick event"
-#~ msgstr "onlick 属性 (OnClick イベント)"
-
-#~ msgid "OnDblClick event"
-#~ msgstr "ondblclick 属性 (OnDblClick イベント)"
-
-#~ msgid "OnFocus event"
-#~ msgstr "onfocus 属性 (OnFoucs イベント)"
-
-#~ msgid "OnKeyDown event"
-#~ msgstr "onkeydown 属性 (OnKeyDown イベント)"
-
-#~ msgid "OnKeyPress event"
-#~ msgstr "onkeypress 属性 (OnKeyPress イベント)"
-
-#~ msgid "OnKeyUp event"
-#~ msgstr "onkeyup 属性 (OnKeyUp イベント)"
-
-#~ msgid "OnLoad event"
-#~ msgstr "onload 属性 (OnLoad イベント)"
-
-#~ msgid "OnMouseDown event"
-#~ msgstr "onmousedown 属性 (OnMouseDown イベント)"
-
-#~ msgid "OnMouseMove event"
-#~ msgstr "onmousemove 属性 (OnMouseMove イベント)"
-
-#~ msgid "OnMouseOut event"
-#~ msgstr "onmouseout 属性 (OnMouseOut イベント)"
-
-#~ msgid "OnMouseOver event"
-#~ msgstr "onmouseover 属性 (OnMouseOver イベント)"
-
-#~ msgid "OnMouseUp event"
-#~ msgstr "onmouseup 属性 (OnMouseUp イベント)"
-
-#~ msgid "OnReset event"
-#~ msgstr "onreset 属性 (OnReset イベント)"
-
-#~ msgid "OnSelect event"
-#~ msgstr "onselect 属性 (OnSelect イベント)"
-
-#~ msgid "OnSubmit event"
-#~ msgstr "onsubmit 属性 (OnSubmit イベント)"
-
-#~ msgid "OnUnload event"
-#~ msgstr "onunload 属性 (OnUnload イベント)"
-
-#~ msgid "Option group"
-#~ msgstr "optgroup 要素 (option 要素の論理的グループ)"
-
-#~ msgid "Option selector"
-#~ msgstr "select 要素 (option による選択肢を選択するメニューを生成)"
-
-#~ msgid "Ordered list"
-#~ msgstr "ol 要素 (序列リスト)"
-
-#~ msgid "Output media"
-#~ msgstr "media 属性 (出力メディアを指定)"
-
-#~ msgid "Paragraph"
-#~ msgstr "p 要素 (段落)"
-
-#~ msgid "Paragraph class"
-#~ msgstr "p 要素 class 属性付き (class 属性付き段落)"
-
-#~ msgid "Paragraph style"
-#~ msgstr "p 要素 style 属性付き (style 属性付き段落)"
-
-#~ msgid "Preformatted listing"
-#~ msgstr "xmp 要素"
-
-#~ msgid "Preformatted text"
-#~ msgstr "pre 要素 (整形済みテキスト)"
-
-#~ msgid "Profile metainfo dictionary"
-#~ msgstr "profile 属性 (メタデータプロファイルを表わす URI)"
-
-#~ msgid "Prompt message"
-#~ msgstr "prompt 属性 (isindex 要素のプロンプト)"
-
-#~ msgid "Push button"
-#~ msgstr "button 要素 (押しボタン)"
-
-#~ msgid "Quote"
-#~ msgstr "quote 要素"
-
-#~ msgid "Range"
-#~ msgstr "range 要素"
-
-#~ msgid "ReadOnly text and password"
-#~ msgstr "readonly 属性 (コントロール内容の変更を禁止)"
-
-#~ msgid "Reduced spacing"
-#~ msgstr "compact 属性 (間隔を減らす)"
-
-#~ msgid "Reduced spacing (deprecated)"
-#~ msgstr "compact 属性 (間隔を減らす [非推奨])"
-
-#~ msgid "Reverse link"
-#~ msgstr "rev 属性 (逆方向リンク)"
-
-#~ msgid "Root"
-#~ msgstr "root 要素"
-
-#~ msgid "Rows"
-#~ msgstr "rows 属性 (textarea の行数、フレームの水平方向の割り付け)"
-
-#~ msgid "Rulings between rows and columns"
-#~ msgstr "rules 属性 (表においてどの罫線が出現するか)"
-
-#~ msgid "Sample program output, scripts"
-#~ msgstr "samp 要素 (プログラムやスクリプトの出力例)"
-
-#~ msgid "Scope covered by header cells"
-#~ msgstr "scope 属性 (ヘッダセルでカバーするスコープ)"
-
-#~ msgid "Script language name"
-#~ msgstr "language 属性 (スクリプト言語名)"
-
-#~ msgid "Script statements"
-#~ msgstr "script 要素 (スクリプト)"
-
-#~ msgid "Scrollbar"
-#~ msgstr "scrolling 属性 (フレームのスクロール情報)"
-
-#~ msgid "Selectable option"
-#~ msgstr "option 要素 (select 要素内での選択肢)"
-
-#~ msgid "Server-side image map"
-#~ msgstr "ismap 属性 (サーバサイドイメージマップ)"
-
-#~ msgid "Shape"
-#~ msgstr "shape 属性 (領域の形状)"
-
-#~ msgid "Short inline quotation"
-#~ msgstr "q 要素 (短かいインラインの引用)"
-
-#~ msgid "Single line prompt"
-#~ msgstr "isindex 要素 (1行テキスト入力)"
-
-#~ msgid "Size"
-#~ msgstr "size 属性 (大きさ)"
-
-#~ msgid "Size (deprecated)"
-#~ msgstr "size 属性 (大きさ [非推奨])"
-
-#~ msgid "Small text style"
-#~ msgstr "small 要素 (小さい文字)"
-
-#~ msgid "Soft line break"
-#~ msgstr "wbr 要素 (ソフト行区切り)"
-
-#~ msgid "Sound"
-#~ msgstr "sound 要素"
-
-#~ msgid "Source"
-#~ msgstr "src 属性 (ソースの URI)"
-
-#~ msgid "Space-separated archive list"
-#~ msgstr "archive 属性 (空白区切りのアーカイブの URI のリスト)"
-
-#~ msgid "Spacer"
-#~ msgstr "spacer 要素"
-
-#~ msgid "Spacing between cells"
-#~ msgstr "cellspacing 属性 (表とセル、およびセル間の間隔)"
-
-#~ msgid "Spacing within cells"
-#~ msgstr "cellpadding 属性 (セルの枠線とセルの内容の間隔)"
-
-#~ msgid "Span"
-#~ msgstr "span 属性 (col 要素が仕切る列の数、colgroup に属する列の数)"
-
-#~ msgid "Square root"
-#~ msgstr "sqrt 要素"
-
-#~ msgid "Standby load message"
-#~ msgstr "standby 属性 (object 要素がロード中にレンダリングに使用できるメッセージ)"
-
-#~ msgid "Starting sequence number"
-#~ msgstr "start 属性 (ol 要素の属性。最初の項目の番号)"
-
-#~ msgid "Starting sequence number (deprecated)"
-#~ msgstr "start 属性 (ol 要素の属性。最初の項目の番号 [非推奨])"
-
-#~ msgid "Strike-through text"
-#~ msgstr "strike 要素 (取り消し線を引く)"
-
-#~ msgid "Strike-through text (deprecated)"
-#~ msgstr "strike 要素 (取り消し線を引く [非推奨])"
-
-#~ msgid "Strike-through text style"
-#~ msgstr "s 要素 (取り消し線を引く)"
-
-#~ msgid "Strike-through text style (deprecated)"
-#~ msgstr "s 要素 (取り消し線を引く [非推奨])"
-
-#~ msgid "Strong emphasis"
-#~ msgstr "strong 要素 (より強い強調)"
-
-#~ msgid "Style info"
-#~ msgstr "style 要素 または 属性 (スタイルシート情報)"
-
-#~ msgid "Subscript"
-#~ msgstr "sub 要素 (下付き)"
-
-#~ msgid "Superscript"
-#~ msgstr "sup 要素 (上付き)"
-
-#~ msgid "Tab order position"
-#~ msgstr "tabindex 属性 (タブ移動順位)"
-
-#~ msgid "Table"
-#~ msgstr "table 要素 (表)"
-
-#~ msgid "Table body"
-#~ msgstr "tbody 要素 (表本体)"
-
-#~ msgid "Table caption"
-#~ msgstr "caption 要素 (表のキャプション)"
-
-#~ msgid "Table column group properties"
-#~ msgstr "colgroup 要素 (列の構造的グループ化)"
-
-#~ msgid "Table column properties"
-#~ msgstr "col 要素 (列の属性指定のグループ化)"
-
-#~ msgid "Table data cell"
-#~ msgstr "td 要素 (表のデータセル)"
-
-#~ msgid "Table footer"
-#~ msgstr "tfoot 要素 (表のフッタ)"
-
-#~ msgid "Table header"
-#~ msgstr "thead 要素 (表のヘッダ)"
-
-#~ msgid "Table header cell"
-#~ msgstr "th 要素 (表の見出しセル)"
-
-#~ msgid "Table row"
-#~ msgstr "tr 要素 (th および td から構成される行のコンテナ)"
-
-#~ msgid "Table summary"
-#~ msgstr "summary 属性 (表の目的と構造についての要約)"
-
-#~ msgid "Target — Blank"
-#~ msgstr "a 要素 (target 属性 が \"_blank\")"
-
-#~ msgid "Target — Parent"
-#~ msgstr "a 要素 (target 属性 が \"_parent\")"
-
-#~ msgid "Target — Self"
-#~ msgstr "a 要素 (target 属性 が \"_self\")"
-
-#~ msgid "Target — Top"
-#~ msgstr "a 要素 (target 属性 が \"_top\")"
-
-#~ msgid "Teletype or monospace text style"
-#~ msgstr "tt 要素 (テレタイプあるいは等幅)"
-
-#~ msgid "Text"
-#~ msgstr "text 要素"
-
-#~ msgid "Text color"
-#~ msgstr "text または color 属性 (テキストの文字色)"
-
-#~ msgid "Text color (deprecated)"
-#~ msgstr "text または color 属性 (テキストの文字色 [非推奨])"
-
-#~ msgid "Text entered by user"
-#~ msgstr "kbd 要素 (ユーザが入力すべきテキスト)"
-
-#~ msgid "Title"
-#~ msgstr "title 属性 (助言的情報)"
-
-#~ msgid "Top margin in pixels"
-#~ msgstr "topmargin 属性"
-
-#~ msgid "URL"
-#~ msgstr "url 属性"
-
-#~ msgid "Underlined text style"
-#~ msgstr "u 要素 (下線を引く)"
-
-#~ msgid "Unordered list"
-#~ msgstr "ul 要素 (順不同リスト)"
-
-#~ msgid "Use image map"
-#~ msgstr "usemap 属性 (要素とクライアント側イメージマップの関連付け)"
-
-#~ msgid "Value"
-#~ msgstr "value 属性 (コントロールの初期値、パラメータの値)"
-
-#~ msgid "Value interpretation"
-#~ msgstr "valuetype 属性 (param 要素での value 属性の型)"
-
-#~ msgid "Variable or program argument"
-#~ msgstr "var 要素 (変数またはプログラム引数のインスタンス)"
-
-#~ msgid "Vertical cell alignment"
-#~ msgstr "valign 属性 (セル内での垂直方向の配置)"
-
-#~ msgid "Vertical space"
-#~ msgstr "vspace 属性 (上下に挿入すべき空白の量)"
-
-#~ msgid "Vertical space (deprecated)"
-#~ msgstr "vspace 属性 (上下に挿入すべき空白の量 [非推奨])"
-
-#~ msgid "Visited link color"
-#~ msgstr "vlink 属性 (訪問済のリンクの色)"
-
-#~ msgid "Visited link color (deprecated)"
-#~ msgstr "vlink 属性 (訪問済のリンクの色 [非推奨])"
-
-#~ msgid "Width"
-#~ msgstr "width 属性 (幅)"
-
-#~ msgid "XHTML 1.0 — Tags"
-#~ msgstr "XHTML 1.0 — タグ"
-
-#~ msgid "Bibliography (cite)"
-#~ msgstr "Bibliography (cite)"
-
-#~ msgid "Bibliography (item)"
-#~ msgstr "Bibliography (item)"
-
-#~ msgid "Bibliography (shortcite)"
-#~ msgstr "Bibliography (shortcite)"
-
-#~ msgid "Bibliography (thebibliography)"
-#~ msgstr "Bibliography (thebibliography)"
-
-#~ msgid "Brackets ()"
-#~ msgstr "カッコ ()"
-
-#~ msgid "Brackets <>"
-#~ msgstr "カッコ <>"
-
-#~ msgid "Brackets []"
-#~ msgstr "カッコ []"
-
-#~ msgid "Brackets {}"
-#~ msgstr "カッコ {}"
-
-#~ msgid "File input"
-#~ msgstr "ファイル入力"
-
-#~ msgid "Footnote"
-#~ msgstr "注釈"
-
-#~ msgid "Function cosine"
-#~ msgstr "関数 cosine"
-
-#~ msgid "Function e^"
-#~ msgstr "関数 e^"
-
-#~ msgid "Function exp"
-#~ msgstr "関数 exp"
-
-#~ msgid "Function log"
-#~ msgstr "関数 log"
-
-#~ msgid "Function log10"
-#~ msgstr "関数 log10"
-
-#~ msgid "Function sine"
-#~ msgstr "関数 sine"
-
-#~ msgid "Greek alpha"
-#~ msgstr "ギリシア文字 α"
-
-#~ msgid "Greek beta"
-#~ msgstr "ギリシア文字 β"
-
-#~ msgid "Greek epsilon"
-#~ msgstr "ギリシア文字 ε"
-
-#~ msgid "Greek gamma"
-#~ msgstr "ギリシア文字 γ"
-
-#~ msgid "Greek lambda"
-#~ msgstr "ギリシア文字 λ"
-
-#~ msgid "Greek rho"
-#~ msgstr "ギリシア文字 ρ"
-
-#~ msgid "Greek tau"
-#~ msgstr "ギリシア文字 τ"
-
-#~ msgid "Header 0 (chapter)"
-#~ msgstr "ヘッダ 0 (chapter)"
-
-#~ msgid "Header 0 (chapter*)"
-#~ msgstr "ヘッダ 0 (chpter*)"
-
-#~ msgid "Header 1 (section)"
-#~ msgstr "ヘッダ 1 (section)"
-
-#~ msgid "Header 1 (section*)"
-#~ msgstr "ヘッダ 1 (section*)"
-
-#~ msgid "Header 2 (subsection)"
-#~ msgstr "ヘッダ 2 (subsection)"
-
-#~ msgid "Header 2 (subsection*)"
-#~ msgstr "ヘッダ 2 (subsection*)"
-
-#~ msgid "Header 3 (subsubsection)"
-#~ msgstr "ヘッダ 3 (subsubsection)"
-
-#~ msgid "Header 3 (subsubsection*)"
-#~ msgstr "ヘッダ 3 (subsubsection*)"
-
-#~ msgid "Header 4 (paragraph)"
-#~ msgstr "ヘッダ 4 (paragraph)"
-
-#~ msgid "Header appendix"
-#~ msgstr "ヘッダの目次"
-
-#~ msgid "Item"
-#~ msgstr "アイテム"
-
-#~ msgid "Item with label"
-#~ msgstr "ラベル付きアイテム"
-
-#~ msgid "Latex — Tags"
-#~ msgstr "Latex — タグ"
-
-#~ msgid "List description"
-#~ msgstr "List description"
-
-#~ msgid "List enumerate"
-#~ msgstr "List enumerate"
-
-#~ msgid "List itemize"
-#~ msgstr "List itemize"
-
-#~ msgid "Maths (display)"
-#~ msgstr "数式 (display)"
-
-#~ msgid "Maths (inline)"
-#~ msgstr "数式 (inline)"
-
-#~ msgid "Operator fraction"
-#~ msgstr "Operator fraction"
-
-#~ msgid "Operator integral (display)"
-#~ msgstr "Operator integral (display)"
-
-#~ msgid "Operator integral (inline)"
-#~ msgstr "Operator integral (inline)"
-
-#~ msgid "Operator sum (display)"
-#~ msgstr "Operator sum (display)"
-
-#~ msgid "Operator sum (inline)"
-#~ msgstr "Operator sum (inline)"
-
-#~ msgid "Reference label"
-#~ msgstr "Reference label"
-
-#~ msgid "Reference ref"
-#~ msgstr "Reference ref"
-
-#~ msgid "Symbol <<"
-#~ msgstr "記号 <<"
-
-#~ msgid "Symbol <="
-#~ msgstr "記号 <="
-
-#~ msgid "Symbol >="
-#~ msgstr "記号 >="
-
-#~ msgid "Symbol >>"
-#~ msgstr "記号 >>"
-
-#~ msgid "Symbol and"
-#~ msgstr "記号 and"
-
-#~ msgid "Symbol const"
-#~ msgstr "記号 const"
-
-#~ msgid "Symbol d-by-dt"
-#~ msgstr "記号 d-by-dt"
-
-#~ msgid "Symbol d-by-dt-partial"
-#~ msgstr "記号 d-by-dt-partial"
-
-#~ msgid "Symbol d2-by-dt2-partial"
-#~ msgstr "記号 d2-by-dt2-partial"
-
-#~ msgid "Symbol dagger"
-#~ msgstr "記号 dagger"
-
-#~ msgid "Symbol em-dash ---"
-#~ msgstr "記号 em-dash ---"
-
-#~ msgid "Symbol en-dash --"
-#~ msgstr "記号 en-dash --"
-
-#~ msgid "Symbol equiv"
-#~ msgstr "記号 equiv"
-
-#~ msgid "Symbol infinity"
-#~ msgstr "記号 infinity"
-
-#~ msgid "Symbol mathspace ,"
-#~ msgstr "記号 mathspace ,"
-
-#~ msgid "Symbol mathspace ."
-#~ msgstr "記号 mathspace ."
-
-#~ msgid "Symbol mathspace _"
-#~ msgstr "記号 mathspace _"
-
-#~ msgid "Symbol mathspace __"
-#~ msgstr "記号 mathspace __"
-
-#~ msgid "Symbol simeq"
-#~ msgstr "記号 simeq"
-
-#~ msgid "Symbol star"
-#~ msgstr "記号 star"
-
-#~ msgid "Typeface bold"
-#~ msgstr "Typeface bold"
-
-#~ msgid "Typeface italic"
-#~ msgstr "Typeface italic"
-
-#~ msgid "Typeface slanted"
-#~ msgstr "Typeface slanted"
-
-#~ msgid "Typeface type"
-#~ msgstr "Typeface type"
-
-#~ msgid "Unbreakable text"
-#~ msgstr "Unbreakable text"
-
-#~ msgid "Provides a method to easily insert commonly used tags/strings into a document without having to type them."
-#~ msgstr "よく利用するタグや文字列をキーボードを使わずにドキュメントに挿入する機能を提供します。"
-
-#~ msgid "Tag list"
-#~ msgstr "タグの一覧"
-
-#~ msgid "XSLT — Axes"
-#~ msgstr "XSLT — Axes"
-
-#~ msgid "XSLT — Elements"
-#~ msgstr "XSLT — 要素"
-
-#~ msgid "XSLT — Functions"
-#~ msgstr "XSLT — 関数"
-
-#~ msgid "ancestor"
-#~ msgstr "ancestor"
-
-#~ msgid "ancestor-or-self"
-#~ msgstr "ancestor-or-self"
-
-#~ msgid "attribute"
-#~ msgstr "attribute"
-
-#~ msgid "child"
-#~ msgstr "child"
-
-#~ msgid "descendant"
-#~ msgstr "descendant"
-
-#~ msgid "descendant-or-self"
-#~ msgstr "descendant-or-self"
-
-#~ msgid "following"
-#~ msgstr "following"
-
-#~ msgid "following-sibling"
-#~ msgstr "following-sibling"
-
-#~ msgid "namespace"
-#~ msgstr "namespace"
-
-#~ msgid "parent"
-#~ msgstr "parent"
-
-#~ msgid "preceding"
-#~ msgstr "preceding"
-
-#~ msgid "preceding-sibling"
-#~ msgstr "preceding-sibling"
-
-#~ msgid "self"
-#~ msgstr "self"
-
-#~ msgid "XUL — Tags"
-#~ msgstr "XUL — タグ"
-
-#~ msgid "Bottom Panel is Visible"
-#~ msgstr "ボトム・ペインの表示可否"
-
-#~ msgid "Whether gedit should highlight the bracket matching the selected one."
-#~ msgstr "gedit が選択した文字に対応する括弧を強調表示するかどうかです。"
-
-#~ msgid "Whether the bottom panel at the bottom of editing windows should be visible."
-#~ msgstr "編集ウインドウの下側にボトム・ペインを表示するかどうかを指定します。"
-
-#~ msgid "Current Line"
-#~ msgstr "カーソルがある行"
-
-#~ msgid "Right Margin"
-#~ msgstr "右マージン"
-
-#~ msgid "_Right margin at column:"
-#~ msgstr "右マージンを表す列番号(_R):"
-
-#~ msgid "[FILE...]"
-#~ msgstr "[ファイル...]"
-
-#~ msgid "Plugin"
-#~ msgstr "プラグイン"
-
-#~ msgid "Enabled"
-#~ msgstr "有効"
-
-#~ msgid "C_onfigure"
-#~ msgstr "設定(_O)"
-
-#~ msgid "A_ctivate"
-#~ msgstr "有効にする(_C)"
-
-#~ msgid "Ac_tivate All"
-#~ msgstr "すべて有効にする(_T)"
-
-#~ msgid "_Deactivate All"
-#~ msgstr "すべて無効にする(_D)"
-
-#~ msgid "Active _Plugins:"
-#~ msgstr "利用可能なプラグイン(_P):"
-
-#~ msgid "_About Plugin"
-#~ msgstr "プラグインについて(_A)"
-
-#~ msgid "C_onfigure Plugin"
-#~ msgstr "プラグインの設定(_O)"
-
-#~ msgid "Cannot initialize preferences manager."
-#~ msgstr "設定マネージャを初期化できません。"
-
-#~ msgid "Expected `%s', got `%s' for key %s"
-#~ msgstr "キー %3$s の '%1$s' を期待しましたが '%2$s' を得ました"
-
-#~ msgid "Page Set_up..."
-#~ msgstr "ページ設定(_U)..."
-
-#~ msgid "Set up the page settings"
-#~ msgstr "ページを設定します"
-
-#~ msgid "_Autocheck Spelling"
-#~ msgstr "自動スペル・チェック(_A)"
-
-#~ msgid "Configure insert date/time plugin..."
-#~ msgstr "日付/時刻挿入プラグインの設定..."
-
-#~ msgid "Backup Copy Extension"
-#~ msgstr "バックアップコピーの拡張子"
-
-#~ msgid "Extension or suffix to use for backup file names. This will only take effect if the \"Create Backup Copies\" option is turned on."
-#~ msgstr "バックアップファイル名に使われる拡張子を指定します。これは \"バックアップコピーの作成\" オプションが有効になっている場合のみ効果があります。"
-
-#~ msgid "Character Codings"
-#~ msgstr "エンコーディング"
-
-#~ msgid "Ch_aracter Coding:"
-#~ msgstr "エンコーディング(_A):"
-
-#~ msgid "Could not obtain backup filename"
-#~ msgstr "バックアップ・ファイルを取得できませんでした"
-
-#~ msgid "0"
-#~ msgstr "0"
-
-#~ msgid "<span weight=\"bold\">File Name</span>"
-#~ msgstr "<span weight=\"bold\">ファイル名</span>"
-
-#~ msgid "*"
-#~ msgstr "*"
-
-#~ msgid "<b>Language</b>"
-#~ msgstr "<b>言語</b>"
-
-#~ msgid "<b>word</b>"
-#~ msgstr "<b>単語</b>"
-
-#~ msgid "HttP header name"
-#~ msgstr "HttP header name"
-
-#~ msgid "<span size=\"small\">01/11/2002 17:52:00</span>"
-#~ msgstr "<span size=\"small\">01/11/2002 17:52:00</span>"
-
-#~ msgid "<span weight=\"bold\"> When inserting date/time...</span>"
-#~ msgstr "<span weight=\"bold\">日付/時刻の挿入...</span>"
-
-#~ msgid "Open Location"
-#~ msgstr "場所を開く"
-
-#~ msgid "Enter the _location (URI) of the file you would like to open:"
-#~ msgstr "開くファイルの格納場所 (URI) を入力してください(_L):"
-
-#~ msgid "<b>Current Line</b>"
-#~ msgstr "<b>カーソルがある行</b>"
-
-#~ msgid "<b>Font</b>"
-#~ msgstr "<b>フォント</b>"
-
-#~ msgid "<b>Line Numbers</b>"
-#~ msgstr "<b>行番号</b>"
-
-#~ msgid "<span weight=\"bold\">Color Scheme</span>"
-#~ msgstr "<span weight=\"bold\">色のスキーム</span>"
-
-#~ msgid "<b>Fonts</b>"
-#~ msgstr "<b>フォント</b>"
-
-#~ msgid "<b>Page header</b>"
-#~ msgstr "<b>ページのヘッダ</b>"
-
-#~ msgid "<b>Syntax Highlighting</b>"
-#~ msgstr "<b>構文の強調表示</b>"
-
-#~ msgid "Open _Location..."
-#~ msgstr "場所を開く(_L)..."
-
-#~ msgid "Open a file from a specified location"
-#~ msgstr "指定した場所にあるファイルを開きます"
-
-#~ msgid "Edit tool <i>%s</i>:"
-#~ msgstr "<i>%s</i> ツールの編集:"
-
-#~ msgid "Co_mmand(s):"
-#~ msgstr "コマンド(_M):"
-
-#~ msgid "Edit tool <i>make</i>:"
-#~ msgstr "<i>make</i> ツールの編集:"
-
-#~ msgid "_Description:"
-#~ msgstr "説明(_D):"
-
-#~ msgid "_Indent"
-#~ msgstr "インデント(_I)"
-
-#~ msgid "U_nindent"
-#~ msgstr "インデント解除(_N)"
-
-#~ msgid "Unindent selected lines"
-#~ msgstr "指定した行のインデントを解除します"
-
-#~ msgid "Indent Lines"
-#~ msgstr "行のインデント"
-
-#~ msgid "Indents or un-indents selected lines."
-#~ msgstr "指定した行をインデントしたりインデントを解除します。"
-
-#~ msgid "Insert User Na_me"
-#~ msgstr "ユーザ名の挿入(_M)"
-
-#~ msgid "Insert the user name at the cursor position"
-#~ msgstr "カーソル位置にユーザ名を挿入します"
-
-#~ msgid "Inserts the user name at the cursor position."
-#~ msgstr "カーソル位置にユーザ名を挿入します。"
-
-#~ msgid "User name"
-#~ msgstr "ユーザ名"
