@@ -935,9 +935,9 @@ clone_window (GeditWindow *origin)
 	{
 		gtk_stack_set_visible_child_name (GTK_STACK (window->priv->side_panel), panel_page);
 	}
-	
+
 	panel_page = gtk_stack_get_visible_child_name (GTK_STACK (origin->priv->bottom_panel));
-	
+
 	if (panel_page)
 	{
 		gtk_stack_set_visible_child_name (GTK_STACK (window->priv->bottom_panel), panel_page);
