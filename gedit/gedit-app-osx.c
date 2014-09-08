@@ -53,6 +53,11 @@ ensure_window (GeditAppOSX *app,
 			continue;
 		}
 
+		if (!GEDIT_IS_WINDOW (window))
+		{
+			continue;
+		}
+
 		win = gtk_widget_get_window (GTK_WIDGET (window));
 		nswin = gdk_quartz_window_get_nswindow (win);
 
