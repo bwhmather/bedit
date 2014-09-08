@@ -2372,7 +2372,12 @@ on_side_panel_stack_children_number_changed (GtkStack    *stack,
 	}
 	else
 	{
-		gtk_widget_hide (priv->side_stack_switcher);
+		/* side_stack_switcher can get NULL in dispose, before stack children
+		   are being removed */
+		if (priv->side_stack_switcher != NULL)
+		{
+			gtk_widget_hide (priv->side_stack_switcher);
+		}
 
 #ifndef OS_OSX
 		gtk_header_bar_set_custom_title (GTK_HEADER_BAR (priv->side_headerbar), NULL);
