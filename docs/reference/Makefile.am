@@ -15,7 +15,7 @@ DOC_MAIN_SGML_FILE = gedit-docs.xml
 DOC_SOURCE_DIR = ../../gedit
 
 # Extra options to supply to gtkdoc-scan.
-# e.g. SCAN_OPTIONS = --deprecated-guards="GTK_DISABLE_DEPRECATED" 
+# e.g. SCAN_OPTIONS = --deprecated-guards="GTK_DISABLE_DEPRECATED"
 SCAN_OPTIONS = --rebuild-types
 
 # Extra options to supply to gtkdoc-mkdb.
@@ -36,6 +36,8 @@ IGNORE_HFILES =					\
 	gedit-encodings-dialog.h		\
 	gedit-enum-types.h			\
 	gedit-file-chooser-dialog.h		\
+	gedit-file-chooser-dialog-osx.h		\
+	gedit-file-chooser-dialog-gtk.h		\
 	gedit-highlight-mode-dialog.h		\
 	gedit-highlight-mode-selector.h		\
 	gedit-history-entry.h			\
