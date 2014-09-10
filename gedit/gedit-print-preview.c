@@ -32,6 +32,7 @@
 #include "gedit-print-preview.h"
 
 #define PRINTER_DPI (72.)
+#define TOOLTIP_THRESHOLD 20
 
 struct _GeditPrintPreviewPrivate
 {
@@ -70,6 +71,11 @@ struct _GeditPrintPreviewPrivate
 
 	guint n_pages;
 	guint cur_page;
+	gint cursor_x;
+	gint cursor_y;
+
+	gboolean has_tooltip;
+
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
@@ -587,6 +593,39 @@ get_page_at_coords (GeditPrintPreview *preview,
 }
 
 static gboolean
+on_preview_layout_motion_notify (GtkWidget         *widget,
+                                 GdkEvent          *event,
+                                 GeditPrintPreview *preview)
+{
+	GeditPrintPreviewPrivate *priv;
+	gint temp_x;
+	gint temp_y;
+	gint diff_x;
+	gint diff_y;
+	priv = preview->priv;
+
+	temp_x = ((GdkEventMotion*)event)->x;
+	temp_y = ((GdkEventMotion*)event)->y;
+	diff_x = abs (temp_x - priv->cursor_x);
+	diff_y = abs (temp_y - priv->cursor_y);
+
+	if ((diff_x >= TOOLTIP_THRESHOLD) || (diff_y >= TOOLTIP_THRESHOLD))
+
+	{
+		priv->has_tooltip = FALSE;
+		priv->cursor_x = temp_x;
+		priv->cursor_y = temp_y;
+	}
+	else
+	{
+		priv->has_tooltip = TRUE;
+
+	}
+
+	return GDK_EVENT_STOP;
+}
+
+static gboolean
 preview_layout_query_tooltip (GtkWidget         *widget,
 			      gint               x,
 			      gint               y,
@@ -594,18 +633,30 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 			      GtkTooltip        *tooltip,
 			      GeditPrintPreview *preview)
 {
+	GeditPrintPreviewPrivate *priv;
 	gint pg;
 	gchar *tip;
 
-	pg = get_page_at_coords (preview, x, y);
-	if (pg < 0)
+	priv = preview->priv;
+
+	if (priv->has_tooltip == TRUE)
+	{
+		pg = get_page_at_coords (preview, x, y);
+		if (pg < 0)
+			return FALSE;
+
+		tip = g_strdup_printf (_("Page %d of %d"), pg + 1, preview->priv->n_pages);
+		gtk_tooltip_set_text (tooltip, tip);
+		g_free (tip);
+
+		return TRUE;
+	}
+	else
+	{
+		priv->has_tooltip = TRUE;
 		return FALSE;
+	}
 
-	tip = g_strdup_printf (_("Page %d of %d"), pg + 1, preview->priv->n_pages);
-	gtk_tooltip_set_text (tooltip, tip);
-	g_free (tip);
-
-	return TRUE;
 }
 
 static gint
@@ -842,6 +893,11 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 			  G_CALLBACK (preview_layout_key_press),
 			  preview);
 
+	/* hide the tooltip once we move the cursor, since gtk does not do it for us */
+	g_signal_connect (priv->layout,
+			  "motion-notify-event",
+			  G_CALLBACK (on_preview_layout_motion_notify),
+			  preview);
 	gtk_widget_grab_focus (GTK_WIDGET (priv->layout));
 
 	/* FIXME */
@@ -852,6 +908,9 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 	priv->scale = 1.0;
 	priv->rows = 1;
 	priv->cols = 1;
+	priv->cursor_x = 0;
+	priv->cursor_y = 0;
+	priv->has_tooltip = TRUE;
 }
 
 static void
