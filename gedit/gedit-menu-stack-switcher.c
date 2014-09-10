@@ -273,6 +273,11 @@ on_stack_child_removed (GtkStack               *stack,
   GeditMenuStackSwitcherPrivate *priv = switcher->priv;
   GtkWidget *button;
 
+  g_signal_handlers_disconnect_by_func (widget, on_title_icon_visible_updated, switcher);
+  g_signal_handlers_disconnect_by_func (widget, on_title_icon_visible_updated, switcher);
+  g_signal_handlers_disconnect_by_func (widget, on_title_icon_visible_updated, switcher);
+  g_signal_handlers_disconnect_by_func (widget, on_position_updated, switcher);
+
   button = g_hash_table_lookup (priv->buttons, widget);
   gtk_container_remove (GTK_CONTAINER (priv->button_box), button);
   g_hash_table_remove (priv->buttons, widget);
