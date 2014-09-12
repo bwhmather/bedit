@@ -1,5 +1,5 @@
 # French translation of gedit.
-# Copyright (C) 1998-2012 Free Software Foundation, Inc.
+# Copyright (C) 1998-2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gedit package.
 #
 #
@@ -32,16 +32,15 @@ msgstr ""
 "Project-Id-Version: gedit HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-02 16:57+0000\n"
-"PO-Revision-Date: 2014-09-01 09:48+0100\n"
+"POT-Creation-Date: 2014-09-12 05:10+0000\n"
+"PO-Revision-Date: 2014-09-12 08:19+0200\n"
 "Last-Translator: Alain Lojewski <allomervan@gmail.com>\n"
-"Language-Team: français <gnomefr@traduc.org>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -648,13 +647,12 @@ msgid "Close _without Saving"
 msgstr "_Fermer sans enregistrer"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:321
-#: ../gedit/gedit-commands-file.c:583 ../gedit/gedit-commands-file.c:660
-#: ../gedit/gedit-commands-file.c:1326
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:605
-#: ../gedit/gedit-io-error-info-bar.c:134
+#: ../gedit/gedit-commands-file.c:457 ../gedit/gedit-commands-file.c:586
+#: ../gedit/gedit-commands-file.c:663 ../gedit/gedit-commands-file.c:882
+#: ../gedit/gedit-commands-file.c:1332 ../gedit/gedit-io-error-info-bar.c:134
 #: ../gedit/gedit-io-error-info-bar.c:515
 #: ../gedit/gedit-io-error-info-bar.c:1191
-#: ../gedit/gedit-preferences-dialog.c:855
+#: ../gedit/gedit-preferences-dialog.c:868
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
@@ -677,8 +675,7 @@ msgid "_Save As…"
 msgstr "Enregistrer _sous…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:609
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
+#: ../gedit/gedit-commands-file.c:883 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -839,29 +836,37 @@ msgstr[1] "Chargement de %d fichiers…"
 msgid "Open"
 msgstr "Ouvrir"
 
-#: ../gedit/gedit-commands-file.c:574
+#: ../gedit/gedit-commands-file.c:458 ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/resources/ui/gedit-window.ui.h:3
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
+#: ../plugins/quickopen/quickopen/popup.py:38
+#: ../plugins/snippets/snippets/manager.py:782
+msgid "_Open"
+msgstr "_Ouvrir"
+
+#: ../gedit/gedit-commands-file.c:577
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Le fichier « %s » est en lecture seule."
 
-#: ../gedit/gedit-commands-file.c:579
+#: ../gedit/gedit-commands-file.c:582
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Voulez-vous le remplacer par celui que vous essayez d'enregistrer ?"
 
-#: ../gedit/gedit-commands-file.c:584
+#: ../gedit/gedit-commands-file.c:587
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "R_emplacer"
 
-#: ../gedit/gedit-commands-file.c:624
+#: ../gedit/gedit-commands-file.c:627
 msgid "Save the file using compression?"
 msgstr "Enregistrer le fichier en le compressant ?"
 
-#: ../gedit/gedit-commands-file.c:628
+#: ../gedit/gedit-commands-file.c:631
 msgid "Save the file as plain text?"
 msgstr "Enregistrer le fichier en texte brut ?"
 
-#: ../gedit/gedit-commands-file.c:641
+#: ../gedit/gedit-commands-file.c:644
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -870,11 +875,11 @@ msgstr ""
 "Le fichier « %s » avait précédemment été enregistré en texte brut ; il sera "
 "maintenant enregistré en utilisant la compression."
 
-#: ../gedit/gedit-commands-file.c:645
+#: ../gedit/gedit-commands-file.c:648
 msgid "_Save Using Compression"
 msgstr "Enregi_strer avec compression"
 
-#: ../gedit/gedit-commands-file.c:650
+#: ../gedit/gedit-commands-file.c:653
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -883,30 +888,30 @@ msgstr ""
 "Le fichier « %s » avait précédemment été enregistré en utilisant la "
 "compression ; il sera maintenant enregistré en texte brut."
 
-#: ../gedit/gedit-commands-file.c:653
+#: ../gedit/gedit-commands-file.c:656
 msgid "_Save As Plain Text"
 msgstr "Enregi_strer en texte brut"
 
-#: ../gedit/gedit-commands-file.c:761 ../gedit/gedit-commands-file.c:985
+#: ../gedit/gedit-commands-file.c:764 ../gedit/gedit-commands-file.c:991
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Enregistrement du fichier « %s »…"
 
-#: ../gedit/gedit-commands-file.c:872
+#: ../gedit/gedit-commands-file.c:875
 msgid "Save As"
 msgstr "Enregistrer sous"
 
-#: ../gedit/gedit-commands-file.c:1189
+#: ../gedit/gedit-commands-file.c:1195
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Récupération du document « %s »…"
 
-#: ../gedit/gedit-commands-file.c:1234
+#: ../gedit/gedit-commands-file.c:1240
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Annuler les modifications non enregistrées du document « %s » ?"
 
-#: ../gedit/gedit-commands-file.c:1243
+#: ../gedit/gedit-commands-file.c:1249
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -920,14 +925,14 @@ msgstr[1] ""
 "Les modifications effectuées au document depuis %ld secondes seront "
 "définitivement perdues."
 
-#: ../gedit/gedit-commands-file.c:1252
+#: ../gedit/gedit-commands-file.c:1258
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Les modifications effectuées au document depuis une minute seront "
 "définitivement perdues."
 
-#: ../gedit/gedit-commands-file.c:1258
+#: ../gedit/gedit-commands-file.c:1264
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -942,7 +947,7 @@ msgstr[1] ""
 "Les modifications effectuées au document depuis une minute et %ld secondes "
 "seront définitivement perdues."
 
-#: ../gedit/gedit-commands-file.c:1268
+#: ../gedit/gedit-commands-file.c:1274
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -956,13 +961,13 @@ msgstr[1] ""
 "Les modifications effectuées au document depuis %ld minutes seront "
 "définitivement perdues."
 
-#: ../gedit/gedit-commands-file.c:1283
+#: ../gedit/gedit-commands-file.c:1289
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Les modifications apportées au document durant la dernière heure seront "
 "définitivement perdues."
 
-#: ../gedit/gedit-commands-file.c:1289
+#: ../gedit/gedit-commands-file.c:1295
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -977,7 +982,7 @@ msgstr[1] ""
 "Les modifications effectuées au document depuis une heure et %d minutes "
 "seront définitivement perdues."
 
-#: ../gedit/gedit-commands-file.c:1304
+#: ../gedit/gedit-commands-file.c:1310
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -990,7 +995,7 @@ msgstr[1] ""
 "Les modifications effectuées au document durant les %d dernières heures "
 "seront définitivement perdues."
 
-#: ../gedit/gedit-commands-file.c:1327
+#: ../gedit/gedit-commands-file.c:1333
 msgid "_Revert"
 msgstr "_Rétablir"
 
@@ -1053,12 +1058,12 @@ msgid "Read-Only"
 msgstr "Lecture seule"
 
 #: ../gedit/gedit-encodings-combo-box.c:302
-#: ../gedit/gedit-file-chooser-dialog-osx.c:568
+#: ../gedit/gedit-file-chooser-dialog-osx.c:564
 msgid "Automatically Detected"
 msgstr "Détecté automatiquement"
 
 #: ../gedit/gedit-encodings-combo-box.c:331
-#: ../gedit/gedit-file-chooser-dialog-osx.c:577
+#: ../gedit/gedit-file-chooser-dialog-osx.c:573
 msgid "Add or Remove..."
 msgstr "Ajouter ou supprimer..."
 
@@ -1067,52 +1072,28 @@ msgstr "Ajouter ou supprimer..."
 msgid "Current Locale (%s)"
 msgstr "Locale actuelle (%s)"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:39
-#: ../gedit/gedit-preferences-dialog.c:870
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:40
+#: ../gedit/gedit-preferences-dialog.c:877
 msgid "All Files"
 msgstr "Tous les fichiers"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:40
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
 msgid "All Text Files"
 msgstr "Tous les fichiers texte"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:275
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:305
 msgid "C_haracter Encoding:"
 msgstr "_Codage de caractères :"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:325
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:355
 msgid "L_ine Ending:"
 msgstr "Fin de _ligne :"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:344
-#: ../gedit/gedit-file-chooser-dialog-osx.c:74
-msgid "Unix/Linux"
-msgstr "Unix/Linux"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:350
-#: ../gedit/gedit-file-chooser-dialog-osx.c:77
-msgid "Mac OS Classic"
-msgstr "Mac OS Classic"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:356
-#: ../gedit/gedit-file-chooser-dialog-osx.c:80
-msgid "Windows"
-msgstr "Windows"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:613
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
-#: ../gedit/resources/ui/gedit-window.ui.h:3
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:782
-msgid "_Open"
-msgstr "_Ouvrir"
-
-#: ../gedit/gedit-file-chooser-dialog-osx.c:550
+#: ../gedit/gedit-file-chooser-dialog-osx.c:546
 msgid "Character Encoding:"
 msgstr "Codage de caractères :"
 
-#: ../gedit/gedit-file-chooser-dialog-osx.c:623
+#: ../gedit/gedit-file-chooser-dialog-osx.c:619
 msgid "Line Ending:"
 msgstr "Fin de ligne :"
 
@@ -1460,7 +1441,7 @@ msgstr "Arrêter les modifications et _recharger"
 #: ../gedit/gedit-io-error-info-bar.c:1186
 #: ../gedit/resources/gtk/menus-default.ui.h:6
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
+#: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "Rec_harger"
 
@@ -1482,39 +1463,39 @@ msgstr ""
 msgid "No results"
 msgstr "Aucun résultat"
 
-#: ../gedit/gedit-preferences-dialog.c:384
+#: ../gedit/gedit-preferences-dialog.c:386
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Cliquez sur ce bouton pour choisir la police à utiliser par l'éditeur"
 
-#: ../gedit/gedit-preferences-dialog.c:397
+#: ../gedit/gedit-preferences-dialog.c:399
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "_Utiliser la police système à chasse fixe (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:641
+#: ../gedit/gedit-preferences-dialog.c:643
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Impossible de créer le répertoire « %s » : g_mkdir_with_parents() a échoué : "
 "%s"
 
-#: ../gedit/gedit-preferences-dialog.c:825
+#: ../gedit/gedit-preferences-dialog.c:839
 msgid "The selected color scheme cannot be installed."
 msgstr "Le jeu de couleurs sélectionné ne peut pas être installé."
 
-#: ../gedit/gedit-preferences-dialog.c:852
+#: ../gedit/gedit-preferences-dialog.c:864
 msgid "Add Scheme"
 msgstr "Ajout d'un jeu"
 
-#: ../gedit/gedit-preferences-dialog.c:856
+#: ../gedit/gedit-preferences-dialog.c:869
 msgid "A_dd Scheme"
 msgstr "A_jouter un jeu"
 
-#: ../gedit/gedit-preferences-dialog.c:863
+#: ../gedit/gedit-preferences-dialog.c:873
 msgid "Color Scheme Files"
 msgstr "Fichiers de jeux de couleurs"
 
-#: ../gedit/gedit-preferences-dialog.c:906
+#: ../gedit/gedit-preferences-dialog.c:910
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Impossible de supprimer le jeu de couleurs « %s »."
@@ -1532,7 +1513,7 @@ msgstr "Page %N sur %Q"
 msgid "Preparing..."
 msgstr "Préparation..."
 
-#: ../gedit/gedit-print-preview.c:604
+#: ../gedit/gedit-print-preview.c:648
 #, c-format
 msgid "Page %d of %d"
 msgstr "Page %d sur %d"
@@ -1641,6 +1622,18 @@ msgstr "Impossible de trouver l'objet « %s » dans le fichier %s."
 msgid "/ on %s"
 msgstr "/ sur %s"
 
+#: ../gedit/gedit-utils.c:1453
+msgid "Unix/Linux"
+msgstr "Unix/Linux"
+
+#: ../gedit/gedit-utils.c:1455
+msgid "Mac OS Classic"
+msgstr "Mac OS Classic"
+
+#: ../gedit/gedit-utils.c:1457
+msgid "Windows"
+msgstr "Windows"
+
 #: ../gedit/gedit-view.c:512
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
@@ -1712,11 +1705,11 @@ msgstr "Largeur des tabulations : %u"
 msgid "There are unsaved documents"
 msgstr "Il y a des documents non enregistrés"
 
-#: ../gedit/gedit-window.c:2409
+#: ../gedit/gedit-window.c:2418
 msgid "Change side panel page"
 msgstr "Changer la page du panneau latéral"
 
-#: ../gedit/gedit-window.c:2429 ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/gedit-window.c:2438 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Documents"
@@ -1741,7 +1734,7 @@ msgstr "Déplacer dans un nouveau _groupe d'onglets"
 #: ../gedit/resources/gtk/menus-common.ui.h:5
 #: ../gedit/resources/gtk/menus-default.ui.h:21
 #: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
+#: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
@@ -1773,7 +1766,7 @@ msgid "Text wrapping"
 msgstr "Longues lignes"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
+#: ../gedit/resources/gtk/menus-osx.ui.h:9
 msgid "_New Window"
 msgstr "_Nouvelle fenêtre"
 
@@ -1784,7 +1777,7 @@ msgstr "_Préférences"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
+#: ../gedit/resources/gtk/menus-osx.ui.h:45
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
 #: ../plugins/spell/gedit-spell-language-dialog.c:126
@@ -1805,13 +1798,13 @@ msgstr "_Quitter"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
+#: ../gedit/resources/gtk/menus-osx.ui.h:11
 msgid "_Print…"
 msgstr "_Imprimer"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
+#: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "_Plein écran"
 
@@ -1822,7 +1815,7 @@ msgstr "_Tout enregistrer"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:11
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
+#: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "_Find…"
 msgstr "_Rechercher…"
 
@@ -1833,7 +1826,7 @@ msgstr "_Rechercher et remplacer…"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
+#: ../gedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "Supprimer la _coloration"
 
@@ -1844,38 +1837,38 @@ msgstr "Aller à la _ligne…"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
+#: ../gedit/resources/gtk/menus-osx.ui.h:22
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
 msgid "View"
 msgstr "Affichage"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
+#: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "Panneau _latéral"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
+#: ../gedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "Panneau _inférieur"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:18
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
+#: ../gedit/resources/gtk/menus-osx.ui.h:26
 msgid "_Highlight Mode…"
 msgstr "Mode de _coloration"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
+#: ../gedit/resources/gtk/menus-osx.ui.h:34
 msgid "Tools"
 msgstr "Outils"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
+#: ../gedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "Tout _fermer"
 
@@ -1883,110 +1876,111 @@ msgstr "Tout _fermer"
 msgid "File"
 msgstr "Fichier"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:2
+#. _New is the menu item under the File menu on OS X which creates a new empty document.
+#: ../gedit/resources/gtk/menus-osx.ui.h:3
 msgid "_New"
 msgstr "_Nouveau"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/resources/gtk/menus-osx.ui.h:5
 msgid "Open _Recent"
 msgstr "Ouvrir les _récents"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
+#: ../gedit/resources/gtk/menus-osx.ui.h:6
 msgid "Reopen Closed _Tab"
 msgstr "Réouvrir l'_onglet fermé"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/resources/gtk/menus-osx.ui.h:8
 msgid "Save _As…"
 msgstr "Enregistrer _sous…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
+#: ../gedit/resources/gtk/menus-osx.ui.h:13
 msgid "Edit"
 msgstr "Édition"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
+#: ../gedit/resources/gtk/menus-osx.ui.h:14
 msgid "_Undo"
 msgstr "_Annuler"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
+#: ../gedit/resources/gtk/menus-osx.ui.h:15
 msgid "_Redo"
 msgstr "_Rétablir"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
+#: ../gedit/resources/gtk/menus-osx.ui.h:16
 msgid "C_ut"
 msgstr "Co_uper"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
+#: ../gedit/resources/gtk/menus-osx.ui.h:17
 msgid "_Copy"
 msgstr "C_opier"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
+#: ../gedit/resources/gtk/menus-osx.ui.h:18
 msgid "_Paste"
 msgstr "_Coller"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
+#: ../gedit/resources/gtk/menus-osx.ui.h:19
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Supprimer"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
+#: ../gedit/resources/gtk/menus-osx.ui.h:20
 msgid "Overwrite _Mode"
 msgstr "_Mode écrasement"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
+#: ../gedit/resources/gtk/menus-osx.ui.h:21
 msgid "Select _All"
 msgstr "_Tout sélectionner"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
+#: ../gedit/resources/gtk/menus-osx.ui.h:27
 msgid "Search"
 msgstr "Rechercher"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
+#: ../gedit/resources/gtk/menus-osx.ui.h:29
 msgid "Find Ne_xt"
 msgstr "Rechercher le _suivant"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
+#: ../gedit/resources/gtk/menus-osx.ui.h:30
 msgid "Find Pre_vious"
 msgstr "Rechercher le _précédent"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
+#: ../gedit/resources/gtk/menus-osx.ui.h:31
 msgid "Find and _Replace…"
 msgstr "Rechercher et _remplacer…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
+#: ../gedit/resources/gtk/menus-osx.ui.h:33
 msgid "Go to _Line…"
 msgstr "Aller à la _ligne…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/resources/gtk/menus-osx.ui.h:36
 msgid "_Save All"
 msgstr "_Tout enregistrer"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
+#: ../gedit/resources/gtk/menus-osx.ui.h:38
 msgid "_New Tab Group"
 msgstr "_Nouveau groupe d'onglets"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
+#: ../gedit/resources/gtk/menus-osx.ui.h:39
 msgid "P_revious Tab Group"
 msgstr "Groupe d'onglets p_récédent"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
+#: ../gedit/resources/gtk/menus-osx.ui.h:40
 msgid "Nex_t Tab Group"
 msgstr "Groupe d'onglets sui_vant"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
+#: ../gedit/resources/gtk/menus-osx.ui.h:41
 msgid "_Previous Document"
 msgstr "Document _précédent"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
+#: ../gedit/resources/gtk/menus-osx.ui.h:42
 msgid "N_ext Document"
 msgstr "Docum_ent suivant"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
+#: ../gedit/resources/gtk/menus-osx.ui.h:43
 msgid "_Move To New Window"
 msgstr "_Déplacer vers la nouvelle fenêtre"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
+#: ../gedit/resources/gtk/menus-osx.ui.h:44
 msgid "Help"
 msgstr "Aide"
 
@@ -2039,8 +2033,8 @@ msgid "Search highlight mode..."
 msgstr "Recherche du mode de coloration..."
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
-msgid "Other Documents…"
-msgstr "Autres documents…"
+msgid "Other _Documents…"
+msgstr "Autres _documents…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
 msgid "Open another file"
@@ -3608,477 +3602,3 @@ msgstr "Insérer la date et l'heure"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Insère la date et l'heure actuelles à l'emplacement du curseur."
-
-#~ msgid "About gedit"
-#~ msgstr "À propos de gedit"
-
-#~ msgid ""
-#~ "Whether gedit should create backup copies for the files it saves. You can "
-#~ "set the backup file extension with the \"Backup Copy Extension\" option."
-#~ msgstr ""
-#~ "Indique si gedit doit activer la création de copies de sauvegarde pour "
-#~ "les fichiers que gedit enregistre. Vous pouvez définir l'extension du "
-#~ "fichier de sauvegarde avec l'option « Extension de la copie de "
-#~ "sauvegarde »."
-
-#~ msgid "Unicode"
-#~ msgstr "Unicode"
-
-#~ msgid "Western"
-#~ msgstr "Occidental"
-
-#~ msgid "Central European"
-#~ msgstr "Europe centrale"
-
-#~ msgid "South European"
-#~ msgstr "Europe du Sud"
-
-#~ msgid "Baltic"
-#~ msgstr "Balte"
-
-#~ msgid "Cyrillic"
-#~ msgstr "Cyrillique"
-
-#~ msgid "Arabic"
-#~ msgstr "Arabe"
-
-#~ msgid "Greek"
-#~ msgstr "Grec"
-
-#~ msgid "Hebrew Visual"
-#~ msgstr "Hébreu visuel"
-
-#~ msgid "Turkish"
-#~ msgstr "Turc"
-
-#~ msgid "Nordic"
-#~ msgstr "Nordique"
-
-#~ msgid "Celtic"
-#~ msgstr "Celtique"
-
-#~ msgid "Romanian"
-#~ msgstr "Roumain"
-
-#~ msgid "Armenian"
-#~ msgstr "Arménien"
-
-#~ msgid "Chinese Traditional"
-#~ msgstr "Chinois traditionnel"
-
-#~ msgid "Cyrillic/Russian"
-#~ msgstr "Cyrillique/Russe"
-
-#~ msgid "Japanese"
-#~ msgstr "Japonais"
-
-#~ msgid "Korean"
-#~ msgstr "Coréen"
-
-#~ msgid "Chinese Simplified"
-#~ msgstr "Chinois simplifié"
-
-#~ msgid "Georgian"
-#~ msgstr "Géorgien"
-
-#~ msgid "Hebrew"
-#~ msgstr "Hébreu"
-
-#~ msgid "Cyrillic/Ukrainian"
-#~ msgstr "Cyrillique/Ukrainien"
-
-#~ msgid "Vietnamese"
-#~ msgstr "Vietnamien"
-
-#~ msgid "Thai"
-#~ msgstr "Thaï"
-
-#~ msgid "Unknown"
-#~ msgstr "Inconnu"
-
-#~ msgid "The file is too big."
-#~ msgstr "La taille du fichier est trop importante."
-
-#~ msgid "Unicode (UTF-8)"
-#~ msgstr "Unicode (UTF-8)"
-
-#~ msgid "Open a recently used file"
-#~ msgstr "Ouvre un fichier récemment utilisé"
-
-#~ msgid "Recent files"
-#~ msgstr "Fichiers récents"
-
-#~ msgid "Zeitgeist dataprovider"
-#~ msgstr "Fournisseur de données Zeitgeist"
-
-#~ msgid "Logs access and leave event for documents used with gedit"
-#~ msgstr ""
-#~ "Journalise les événements accéder et quitter relatifs aux documents "
-#~ "traités par gedit"
-
-#~ msgid "Show the application's help"
-#~ msgstr "Affiche l'aide de l'application"
-
-#~ msgid "- Edit text files"
-#~ msgstr "- Édite des fichiers texte"
-
-#~ msgid ""
-#~ "%s\n"
-#~ "Run '%s --help' to see a full list of available command line options.\n"
-#~ msgstr ""
-#~ "%s\n"
-#~ "Lancez « %s --help » pour voir la liste complète des options en ligne de "
-#~ "commande disponibles.\n"
-
-#~ msgid "Empty"
-#~ msgstr "Vide"
-
-#~ msgid "gedit Preferences"
-#~ msgstr "Préférences de gedit"
-
-#~ msgid "column"
-#~ msgstr "colonne"
-
-#~ msgid "_View"
-#~ msgstr "_Affichage"
-
-#~ msgid "_Documents"
-#~ msgstr "Do_cuments"
-
-#~ msgid "_Open..."
-#~ msgstr "_Ouvrir..."
-
-#~ msgid "Pr_eferences"
-#~ msgstr "_Préférences"
-
-#~ msgid "Configure the application"
-#~ msgstr "Configure l'application"
-
-#~ msgid "_Contents"
-#~ msgstr "_Sommaire"
-
-#~ msgid "Open the gedit manual"
-#~ msgstr "Ouvre le manuel de gedit"
-
-#~ msgid "About this application"
-#~ msgstr "À propos de cette application"
-
-#~ msgid "Save _As..."
-#~ msgstr "Enregistrer _sous..."
-
-#~ msgid "Save the current file with a different name"
-#~ msgstr "Enregistre le fichier actuel sous un nom différent"
-
-#~ msgid "Revert to a saved version of the file"
-#~ msgstr "Récupère une version enregistrée du fichier"
-
-#~ msgid "Print Previe_w"
-#~ msgstr "A_perçu avant impression"
-
-#~ msgid "Print preview"
-#~ msgstr "Aperçu avant impression"
-
-#~ msgid "_Print..."
-#~ msgstr "_Imprimer..."
-
-#~ msgid "Print the current page"
-#~ msgstr "Imprime la page actuelle"
-
-#~ msgid "Undo the last action"
-#~ msgstr "Annule la dernière action"
-
-#~ msgid "Redo the last undone action"
-#~ msgstr "Refait la dernière opération annulée"
-
-#~ msgid "Cut the selection"
-#~ msgstr "Coupe la sélection"
-
-#~ msgid "Copy the selection"
-#~ msgstr "Copie la sélection"
-
-#~ msgid "Paste the clipboard"
-#~ msgstr "Colle le contenu du presse-papiers"
-
-#~ msgid "Delete the selected text"
-#~ msgstr "Supprime le texte sélectionné"
-
-#~ msgid "Select the entire document"
-#~ msgstr "Sélectionne le document entier"
-
-#~ msgid "_Highlight Mode..."
-#~ msgstr "Mode de _coloration..."
-
-#~ msgid "Changes the highlight mode of the active document"
-#~ msgstr "Modifie le mode de coloration du document actif"
-
-#~ msgid "_Find..."
-#~ msgstr "_Rechercher..."
-
-#~ msgid "Search for text"
-#~ msgstr "Recherche un texte"
-
-#~ msgid "Search forwards for the same text"
-#~ msgstr "Recherche en avant le même texte"
-
-#~ msgid "Search backwards for the same text"
-#~ msgstr "Recherche en arrière le même texte"
-
-#~ msgid "_Replace..."
-#~ msgstr "_Remplacer..."
-
-#~ msgid "Search for and replace text"
-#~ msgstr "Recherche un texte et le remplace"
-
-#~ msgid "Clear highlighting of search matches"
-#~ msgstr "Supprime la coloration des résultats de la recherche"
-
-#~ msgid "Go to a specific line"
-#~ msgstr "Va à une ligne spécifique"
-
-#~ msgid "Save all open files"
-#~ msgstr "Enregistre tous les fichiers ouverts"
-
-#~ msgid "Close all open files"
-#~ msgstr "Ferme tous les fichiers ouverts"
-
-#~ msgid "Create a new tab group"
-#~ msgstr "Crée un nouveau groupe d'onglets"
-
-#~ msgid "Switch to the previous tab group"
-#~ msgstr "Basculer au groupe d'onglets précédent"
-
-#~ msgid "Switch to the next tab group"
-#~ msgstr "Basculer au groupe d'onglets suivant"
-
-#~ msgid "Activate previous document"
-#~ msgstr "Active le document précédent"
-
-#~ msgid "Activate next document"
-#~ msgstr "Active le document suivant"
-
-#~ msgid "Move the current document to a new window"
-#~ msgstr "Déplace le document actuel dans une nouvelle fenêtre"
-
-#~ msgid "Close the current file"
-#~ msgstr "Ferme le fichier actuel"
-
-#~ msgid "Quit the program"
-#~ msgstr "Quitte le programme"
-
-#~ msgid "_Toolbar"
-#~ msgstr "Barre d'_outils"
-
-#~ msgid "Show or hide the toolbar in the current window"
-#~ msgstr "Affiche ou masque la barre d'outils dans la fenêtre actuelle"
-
-#~ msgid "Show or hide the statusbar in the current window"
-#~ msgstr "Affiche ou masque la barre d'état dans la fenêtre actuelle"
-
-#~ msgid "Edit text in fullscreen"
-#~ msgstr "Modifie le texte en plein écran"
-
-#~ msgid "Show or hide the side panel in the current window"
-#~ msgstr "Affiche ou masque le panneau latéral dans la fenêtre actuelle"
-
-#~ msgid "Show or hide the bottom panel in the current window"
-#~ msgstr "Affiche ou masque le panneau inférieur dans la fenêtre actuelle"
-
-#~ msgid "Open '%s'"
-#~ msgstr "Ouvre « %s »"
-
-#~ msgid "Activate '%s'"
-#~ msgstr "Active « %s »"
-
-#~ msgid "Change Case"
-#~ msgstr "Modifier la casse"
-
-#~ msgid "Changes the case of selected text."
-#~ msgstr "Modifie la casse du texte sélectionné."
-
-#~ msgid "C_hange Case"
-#~ msgstr "_Modifier la casse"
-
-#~ msgid "All _Upper Case"
-#~ msgstr "Tout en m_ajuscule"
-
-#~ msgid "All _Lower Case"
-#~ msgstr "Tout en m_inuscule"
-
-#~ msgid "Change selected text to lower case"
-#~ msgstr "Change le texte sélectionné en minuscule"
-
-#~ msgid "_Invert Case"
-#~ msgstr "_Inverser la casse"
-
-#~ msgid "Invert the case of selected text"
-#~ msgstr "Inverse la casse du texte sélectionné"
-
-#~ msgid "_Title Case"
-#~ msgstr "Casse de _titre"
-
-#~ msgid "Capitalize the first letter of each selected word"
-#~ msgstr "Met en majuscule la première lettre de chaque mot sélectionné"
-
-#~ msgid "Get statistical information on the current document"
-#~ msgstr "Obtenir des statistiques sur le document actuel"
-
-#~ msgid "_Update"
-#~ msgstr "_Mettre à jour"
-
-#~ msgid "File Name"
-#~ msgstr "Nom du fichier"
-
-#~ msgid "_Tools:"
-#~ msgstr "_Outils :"
-
-#~ msgid "_Edit:"
-#~ msgstr "É_dition :"
-
-#~ msgid "Opens the External Tools Manager"
-#~ msgstr "Ouvre le gestionnaire d'outils externes"
-
-#~ msgid "External tools"
-#~ msgstr "Outils externes"
-
-#~ msgid "Quickly open documents"
-#~ msgstr "Ouvre rapidement des documents"
-
-#~ msgid "_Snippets:"
-#~ msgstr "_Fragments de code :"
-
-#~ msgid "Manage snippets"
-#~ msgstr "Gérer les fragments de code"
-
-#~ msgid "Sort the current document or selection"
-#~ msgstr "Trie le document actuel ou la sélection"
-
-#~ msgid "Check Spelling"
-#~ msgstr "Vérifier l'orthographe"
-
-#~ msgid "Check the current document for incorrect spelling"
-#~ msgstr "Vérifie l'orthographe du document actuel"
-
-#~ msgid "Set the language of the current document"
-#~ msgstr "Définit la langue du document actuel"
-
-#~ msgid "Automatically spell-check the current document"
-#~ msgstr "Vérifie automatiquement l'orthographe du document actuel"
-
-#~ msgid "Language:"
-#~ msgstr "Langue :"
-
-#~ msgid "Language"
-#~ msgstr "Langue"
-
-#~ msgid "Insert current date and time at the cursor position"
-#~ msgstr "Insère la date et l'heure actuelles à l'emplacement du curseur"
-
-#~ msgid "Undo Actions Limit (DEPRECATED)"
-#~ msgstr "Limiter l'action annuler (DÉCONSEILLÉ)"
-
-#~ msgid ""
-#~ "Maximum number of actions that gedit will be able to undo or redo. Use "
-#~ "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
-#~ msgstr ""
-#~ "Nombre maximum d'actions que gedit sera en mesure d'annuler ou de "
-#~ "réintégrer. Indiquez « -1 » si vous ne voulez pas indiquer de limite. "
-#~ "Déconseillé depuis 2.12.0"
-
-#~ msgid "Open Files"
-#~ msgstr "Ouverture de fichiers"
-
-#~ msgid "Character Encodings"
-#~ msgstr "Codages des caractères"
-
-#~ msgid ""
-#~ "The location of the file cannot be accessed because it is not mounted."
-#~ msgstr ""
-#~ "L'emplacement du fichier n'est pas accessible car il n'est pas monté."
-
-#~ msgid ""
-#~ "gedit opened this instance of the file in a non-editable way. Do you want "
-#~ "to edit it anyway?"
-#~ msgstr ""
-#~ "gedit a ouvert cette instance du fichier en lecture seule. Souhaitez-vous "
-#~ "l'éditer quand même ?"
-
-#~ msgid "Do you want to drop your changes and reload the file?"
-#~ msgstr "Voulez-vous abandonner vos modifications et recharger le fichier ?"
-
-#~ msgid "Replace All"
-#~ msgstr "Tout remplacer"
-
-#~ msgid "Disable syntax highlighting"
-#~ msgstr "Désactive la coloration syntaxique"
-
-#~ msgid "Set the root to the active document location"
-#~ msgstr "Définit la racine à l'emplacement du document actif"
-
-#~ msgid "Open a terminal at the currently opened directory"
-#~ msgstr "Ouvre un terminal à partir du répertoire ouvert actuel"
-
-#~ msgid "file"
-#~ msgstr "fichier"
-
-#~ msgid "directory"
-#~ msgstr "dossier"
-
-#~ msgid "Move selected file or folder to trash"
-#~ msgstr "Met le fichier ou dossier sélectionné à la corbeille"
-
-#~ msgid "Delete selected file or folder"
-#~ msgstr "Supprime le fichier ou dossier sélectionné"
-
-#~ msgid "Open selected file"
-#~ msgstr "Ouvre le fichier sélectionné"
-
-#~ msgid "Up"
-#~ msgstr "Haut"
-
-#~ msgid "Open the parent folder"
-#~ msgstr "Ouvre le dossier parent"
-
-#~ msgid "Add new empty folder"
-#~ msgstr "Ajoute un nouveau dossier vide"
-
-#~ msgid "Add new empty file"
-#~ msgstr "Ajoute un nouveau fichier vide"
-
-#~ msgid "Rename selected file or folder"
-#~ msgstr "Renomme le fichier ou le dossier sélectionné"
-
-#~ msgid "_Previous Location"
-#~ msgstr "Emplacement _précédent"
-
-#~ msgid "Go to the previous visited location"
-#~ msgstr "Va à l'emplacement visité précédent"
-
-#~ msgid "_Next Location"
-#~ msgstr "Emplacement _suivant"
-
-#~ msgid "Go to the next visited location"
-#~ msgstr "Va à l'emplacement visité suivant"
-
-#~ msgid "Refresh the view"
-#~ msgstr "Actualise l'affichage"
-
-#~ msgid "View folder in file manager"
-#~ msgstr "Affiche le répertoire dans le gestionnaire de fichiers"
-
-#~ msgid "Show hidden files and folders"
-#~ msgstr "Affiche les fichiers et dossiers cachés"
-
-#~ msgid "Show binary files"
-#~ msgstr "Affiche les fichiers binaires"
-
-#~ msgid "Quick open"
-#~ msgstr "Ouverture rapide"
-
-#~ msgid "Text"
-#~ msgstr "Texte"
-
-#~ msgid "Log Out _without Saving"
-#~ msgstr "Se déconnecter _sans enregistrer"
-
-#~ msgid "Run gedit in the background"
-#~ msgstr "Exécute gedit en arrière-plan"
