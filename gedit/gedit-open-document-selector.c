@@ -407,6 +407,9 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 	                  open_document_selector);
 
 	placeholder_label = gtk_label_new (_("No results"));
+	context = gtk_widget_get_style_context (GTK_WIDGET (placeholder_label));
+	gtk_style_context_add_class (context, "dim-label");
+
 	gtk_widget_set_halign (placeholder_label, GTK_ALIGN_CENTER);
 	gtk_widget_set_valign (placeholder_label, GTK_ALIGN_CENTER);
 
