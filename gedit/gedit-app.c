@@ -1186,13 +1186,17 @@ gedit_app_shutdown (GApplication *app)
 	save_page_setup (GEDIT_APP (app));
 	save_print_settings (GEDIT_APP (app));
 
+	/* GTK+ can still hold references to some gedit objects, for example
+	 * GeditDocument for the clipboard. So the metadata-manager should be
+	 * shutdown after.
+	 */
+	G_APPLICATION_CLASS (gedit_app_parent_class)->shutdown (app);
+
 #ifndef ENABLE_GVFS_METADATA
 	gedit_metadata_manager_shutdown ();
 #endif
 
 	gedit_dirs_shutdown ();
-
-	G_APPLICATION_CLASS (gedit_app_parent_class)->shutdown (app);
 }
 
 static gboolean
