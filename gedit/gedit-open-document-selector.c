@@ -89,6 +89,7 @@ create_row_layout (GeditOpenDocumentSelector *open_document_selector,
 
 	context = gtk_widget_get_style_context (GTK_WIDGET (path_label));
 	gtk_style_context_add_class (context, "path-label");
+	gtk_style_context_add_class (context, "dim-label");
 
 	gtk_label_set_ellipsize (GTK_LABEL (path_label), PANGO_ELLIPSIZE_START);
 	gtk_widget_set_halign (path_label, GTK_ALIGN_START);

@@ -17,8 +17,11 @@ GeditWindow .pane-separator:hover {
 }
 
 .open-document-selector-listbox-row .path-label {
-    font-size: 80%;
-    color: @insensitive_fg_color;
+    font-size: smaller;
+}
+
+.open-document-selector-listbox-row:selected .path-label {
+    font-size: smaller;
 }
 
 .gedit-document-panel {
