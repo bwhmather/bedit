@@ -190,6 +190,7 @@ real_populate_listbox (gpointer data)
 		gtk_recent_info_unref(info);
 
 		/* add a class until gtk implements :last-child */
+		/* see https://bugzilla.gnome.org/show_bug.cgi?id=732050 */
 		if (l->next == NULL)
 		{
 			GtkStyleContext *context;
