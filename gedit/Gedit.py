@@ -49,7 +49,10 @@ def get_trace_info(num_back_frames=0):
     frame = inspect.currentframe().f_back
     try:
         for i in range(num_back_frames):
-            frame = frame.f_back
+            back_frame = frame.f_back
+            if back_frame == None:
+                break
+            frame = back_frame
 
         filename = frame.f_code.co_filename
 
@@ -73,7 +76,7 @@ orig_debug_plugin_message_func = Gedit.debug_plugin_message
 
 @override(Gedit.debug_plugin_message)
 def debug_plugin_message(format, *format_args):
-    filename, lineno, func_name = get_trace_info(2)
+    filename, lineno, func_name = get_trace_info(1)
     orig_debug_plugin_message_func(filename, lineno, func_name, format % format_args)
 __all__.append(debug_plugin_message)
 
