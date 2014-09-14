@@ -69,6 +69,8 @@ def run_external_tool(window, panel, node):
     capture.set_env(GEDIT_CWD=cwd)
 
     view = window.get_active_view()
+    document = None
+
     if view is not None:
         # Environment vars relative to current document
         document = view.get_buffer()
@@ -224,7 +226,9 @@ def run_external_tool(window, panel, node):
             capture.connect('stdout-line', capture_stdout_line_document, document, pos)
     elif output_type != 'nothing':
         capture.connect('stdout-line', capture_stdout_line_panel, panel)
-        document.begin_user_action()
+
+        if not document is None:
+            document.begin_user_action()
 
     capture.connect('stderr-line', capture_stderr_line_panel, panel)
     capture.connect('begin-execute', capture_begin_execute_panel, panel, view, node.name)
@@ -234,8 +238,8 @@ def run_external_tool(window, panel, node):
     capture.execute()
 
     if output_type != 'nothing':
-        document.end_user_action()
-
+        if not document is None:
+            document.end_user_action()
 
 class MultipleDocumentsSaver:
     def __init__(self, window, panel, all_docs, node):
