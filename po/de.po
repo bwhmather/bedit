@@ -20,16 +20,16 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-09-07 09:52+0000\n"
-"PO-Revision-Date: 2014-09-07 20:34+0100\n"
-"Last-Translator: Benjamin Steinwender <b@stbe.at>\n"
+"POT-Creation-Date: 2014-09-15 17:07+0000\n"
+"PO-Revision-Date: 2014-09-15 20:41+0100\n"
+"Last-Translator:  <dev@hmt.im>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -37,7 +37,7 @@ msgid ""
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
 "text editor."
 msgstr ""
-"gedit ist der offizielle Texteditor der GNOME Arbeitsumgebung. Während auf "
+"gedit ist der offizielle Texteditor der GNOME Arbeitsumgebung. Obwohl auf "
 "Einfachheit und Bedienkomfort Wert gelegt wird, ist gedit ein mächtiger und "
 "universeller Texteditor."
 
@@ -47,8 +47,8 @@ msgid ""
 "application, or simply taking some quick notes, gedit will be a reliable "
 "tool to accomplish your task."
 msgstr ""
-"Egal ob Sie den nächsten Bestseller schreiben, eine innovative Anwendung "
-"entwickeln oder einfach schnell Notizen festhalten – gedit wird ein "
+"Egal, ob Sie den nächsten Bestseller schreiben, eine innovative Anwendung "
+"entwickeln oder einfach nur Notizen festhalten wollen – gedit wird ein "
 "verlässliches Werkzeug sein, um Ihre Aufgabe zu erledigen."
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:3
@@ -56,7 +56,7 @@ msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
 msgstr ""
-"Sein flexibles Plugin-System erlaubt es Ihnen die Anwendung auf Ihre "
+"Sein flexibles Plugin-System erlaubt es Ihnen, die Anwendung auf Ihre "
 "Bedürfnisse und Arbeitsweise anzupassen."
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:1
@@ -163,8 +163,8 @@ msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"Minuten, nach denen gedit automatisch veränderte Dateien speichert. Dies "
-"wird nur passieren, wenn die »Automatisch speichern«-Option aktiviert ist."
+"Minuten, nach denen gedit automatisch veränderte Dateien speichert. Nur "
+"gültig, wenn die »Automatisch speichern«-Option aktiviert ist."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Maximum Number of Undo Actions"
@@ -1068,12 +1068,10 @@ msgid "L_ine Ending:"
 msgstr "Ze_ilenende:"
 
 #: ../gedit/gedit-file-chooser-dialog-osx.c:546
-#| msgid "C_haracter Encoding:"
 msgid "Character Encoding:"
 msgstr "Zeichenkodierung:"
 
 #: ../gedit/gedit-file-chooser-dialog-osx.c:619
-#| msgid "L_ine Ending:"
 msgid "Line Ending:"
 msgstr "Zeilenende:"
 
@@ -1449,7 +1447,7 @@ msgstr ""
 "Wenn Sie das Speichern fortsetzen, könnten Sie das Dokument unbrauchbar "
 "machen. Trotzdem speichern?"
 
-#: ../gedit/gedit-open-document-selector.c:409
+#: ../gedit/gedit-open-document-selector.c:411
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
@@ -1505,7 +1503,7 @@ msgstr "Seite %N von %Q"
 msgid "Preparing..."
 msgstr "Vorbereiten …"
 
-#: ../gedit/gedit-print-preview.c:604
+#: ../gedit/gedit-print-preview.c:648
 #, c-format
 msgid "Page %d of %d"
 msgstr "Seite %d von %d"
@@ -1697,11 +1695,11 @@ msgstr "Tabulatorbreite: %u"
 msgid "There are unsaved documents"
 msgstr "Es gibt ungespeicherte Dokumente"
 
-#: ../gedit/gedit-window.c:2413
+#: ../gedit/gedit-window.c:2418
 msgid "Change side panel page"
 msgstr "Seite der Seitenleiste ändern"
 
-#: ../gedit/gedit-window.c:2433 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2438 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumente"
@@ -1865,7 +1863,6 @@ msgid "_Close All"
 msgstr "Alle s_chließen"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:1
-#| msgid "File: %s"
 msgid "File"
 msgstr "Datei"
 
@@ -1875,7 +1872,6 @@ msgid "_New"
 msgstr "_Neu"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:5
-#, fuzzy
 #| msgid "Open a New Document"
 msgid "Open _Recent"
 msgstr "_Zuletzt geöffnete Dateien öffnen"
@@ -1885,12 +1881,10 @@ msgid "Reopen Closed _Tab"
 msgstr "_Geschlossenen Reiter wieder öffnen"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:8
-#| msgid "_Save As…"
 msgid "Save _As…"
 msgstr "Speichern _unter …"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:13
-#| msgid "Editor"
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -1922,17 +1916,14 @@ msgid "_Delete"
 msgstr "_Löschen"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:20
-#| msgid "File Browser Filter Mode"
 msgid "Overwrite _Mode"
 msgstr "Überschreib_modus"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:21
-#| msgid "Save _All"
 msgid "Select _All"
 msgstr "Alles au_swählen"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:27
-#| msgid "_Search for: "
 msgid "Search"
 msgstr "Suchen"
 
@@ -1945,52 +1936,42 @@ msgid "Find Pre_vious"
 msgstr "_Vorheriges Vorkommen suchen"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:31
-#| msgid "_Find and Replace…"
 msgid "Find and _Replace…"
 msgstr "Suchen und _Ersetzen …"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:33
-#| msgid "_Go to Line…"
 msgid "Go to _Line…"
 msgstr "_Gehe zu Zeile …"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:36
-#| msgid "Save _All"
 msgid "_Save All"
 msgstr "A_lle speichern"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:38
-#| msgid "Move to New Tab _Group"
 msgid "_New Tab Group"
 msgstr "Neue _Reitergruppe"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:39
-#| msgid "P_revious Page"
 msgid "P_revious Tab Group"
 msgstr "_Vorherige Reitergruppe"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:40
-#| msgid "Tab Group %i"
 msgid "Nex_t Tab Group"
 msgstr "_Nächste Reitergruppe"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:41
-#| msgid "Close Document"
 msgid "_Previous Document"
 msgstr "_Vorheriges Dokument"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:42
-#| msgid "Document"
 msgid "N_ext Document"
 msgstr "_Nächstes Dokument"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:43
-#| msgid "Move to New _Window"
 msgid "_Move To New Window"
 msgstr "In neues Fenster _verschieben"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:44
-#| msgid "_Help"
 msgid "Help"
 msgstr "Hilfe"
 
@@ -2043,7 +2024,6 @@ msgid "Search highlight mode..."
 msgstr "Hervorhebungsmodus suchen …"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
-#| msgid "Other Documents…"
 msgid "Other _Documents…"
 msgstr "Weitere _Dokumente …"
 
@@ -2539,20 +2519,20 @@ msgstr "Externe _Werkzeuge"
 msgid "Could not execute command: %s"
 msgstr "Befehl konnte nicht ausgeführt werden: »%s«"
 
-#: ../plugins/externaltools/tools/functions.py:182
+#: ../plugins/externaltools/tools/functions.py:184
 msgid "You must be inside a word to run this command"
 msgstr ""
 "Um diesen Befehl auszuführen, müssen Sie sich innerhalb eines Worts befinden"
 
-#: ../plugins/externaltools/tools/functions.py:316
+#: ../plugins/externaltools/tools/functions.py:320
 msgid "Running tool:"
 msgstr "Ausgeführtes Werkzeug:"
 
-#: ../plugins/externaltools/tools/functions.py:347
+#: ../plugins/externaltools/tools/functions.py:351
 msgid "Done."
 msgstr "Fertig."
 
-#: ../plugins/externaltools/tools/functions.py:349
+#: ../plugins/externaltools/tools/functions.py:353
 msgid "Exited"
 msgstr "Beendet"
 
@@ -3075,7 +3055,7 @@ msgstr "Python-Konsole"
 
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
 msgid "Interactive Python console standing in the bottom panel"
-msgstr "Eine interaktive Python-Konsole in der Fußleiste öffnen"
+msgstr "Interaktive Python-Konsole in der Fußleiste öffnen"
 
 #: ../plugins/quickopen/quickopen/__init__.py:35
 msgid "Quick Open..."
@@ -3380,7 +3360,7 @@ msgstr "Sie können den Sortiervorgang nicht rückgängig machen"
 
 #: ../plugins/sort/sort.plugin.desktop.in.h:2
 msgid "Sorts a document or selected text."
-msgstr "Ein Dokument oder den markierten Text sortieren."
+msgstr "Dokument oder den markierten Text sortieren."
 
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
@@ -3535,7 +3515,7 @@ msgstr "Rechtschreibprüfung"
 
 #: ../plugins/spell/spell.plugin.desktop.in.h:2
 msgid "Checks the spelling of the current document."
-msgstr "Eine Rechtschreibprüfung im momentan geöffneten Dokument durchführen."
+msgstr "Rechtschreibprüfung im momentan geöffneten Dokument durchführen."
 
 #: ../plugins/time/gedit-time-plugin.c:270
 msgid "In_sert Date and Time..."
