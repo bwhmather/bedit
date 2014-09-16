@@ -157,6 +157,14 @@ test.rb:5: undefined method `fake_method' for main:Object (NoMethodError)
         self.assert_link(lnk, "Test.scala", 7)
         self.assert_link_text(line, lnk, 'Test.scala:7')
 
+    def test_parse_sbt_one_line(self):
+        line = "[error] /home/hank/foo/Test.scala:7: not found: value fakeMethod"
+        links = self.p.parse(line)
+        self.assert_link_count(links, 1)
+        lnk = links[0]
+        self.assert_link(lnk, "/home/hank/foo/Test.scala", 7)
+        self.assert_link_text(line, lnk, '/home/hank/foo/Test.scala:7')
+
     def test_parse_go_6g_one_line(self):
         line = "test.go:9: undefined: FakeMethod"
         links = self.p.parse(line)
