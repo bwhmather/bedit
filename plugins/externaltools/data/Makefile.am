@@ -26,9 +26,6 @@ externaltools_install_tools_in_files += $(externaltools_tools_in_linux)
 endif
 endif
 
-externaltools_desktop_in_files = $(externaltools_install_tools_in_files:.tool.in=.desktop.in)
-externaltools_desktop_files    = $(externaltools_install_tools_in_files:.tool.in=.desktop)
-
 externaltools_toolsdir = $(GEDIT_PLUGINS_DATA_DIR)/externaltools/tools
 externaltools_tools_SCRIPTS = $(externaltools_install_tools_in_files:.tool.in=)
 
@@ -54,8 +51,4 @@ EXTRA_DIST +=					\
 
 CLEANFILES +=					\
 	$(externaltools_all_desktop_files)	\
-	$(externaltools_all_tools_files)
-
-DISTCLEANFILES +=				\
-	$(externaltools_all_desktop_files) 	\
 	$(externaltools_all_tools_files)
