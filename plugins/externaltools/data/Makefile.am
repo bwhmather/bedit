@@ -52,3 +52,12 @@ EXTRA_DIST +=					\
 CLEANFILES +=					\
 	$(externaltools_all_desktop_files)	\
 	$(externaltools_all_tools_files)
+
+# Needed when builddir != srcdir. Normally Autoconf creates the
+# directory when creating the Makefile, but since gedit uses
+# non-recursive make, the directory is not created, but is needed for
+# generating the .desktop files.
+# If the following bug is fixed, this hack can normally be removed:
+# https://bugs.launchpad.net/intltool/+bug/605826
+$(externaltools_all_desktop_files):
+	$(AM_V_GEN) $(MKDIR_P) $(top_builddir)/plugins/externaltools/data/
