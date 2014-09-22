@@ -3,8 +3,8 @@ dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.63.2)
 
 m4_define(gedit_major_version, 3)
-m4_define(gedit_minor_version, 13)
-m4_define(gedit_micro_version, 91)
+m4_define(gedit_minor_version, 14)
+m4_define(gedit_micro_version, 0)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
 AC_INIT([gedit],[gedit_version],[http://bugzilla.gnome.org/enter_bug.cgi?product=gedit],[gedit],[https://wiki.gnome.org/Apps/Gedit])
@@ -314,8 +314,8 @@ PKG_CHECK_MODULES(GEDIT, [
 	glib-2.0 >= 2.39.5
 	gio-2.0 >= 2.37.0
 	gmodule-2.0
-	gtk+-3.0 >= 3.13.6
-	gtksourceview-3.0 >= 3.13.4
+	gtk+-3.0 >= 3.14.0
+	gtksourceview-3.0 >= 3.14.0
 	libpeas-1.0 >= 1.7.0
 	libpeas-gtk-1.0 >= 1.7.0
 	gsettings-desktop-schemas
