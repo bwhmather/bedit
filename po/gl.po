@@ -16,9 +16,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-master-po-gl-116402.merged\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-11 10:04+0200\n"
-"PO-Revision-Date: 2014-09-11 10:05+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&k"
+"eywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-09-22 17:16+0000\n"
+"PO-Revision-Date: 2014-09-23 01:54+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -27,6 +28,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -787,13 +789,16 @@ msgstr "Se non garda, todos os seus cambios perderanse permanentemente."
 
 #: ../gedit/gedit-commands-file.c:256
 #, c-format
-msgid "Loading file '%s'ے"
+#| msgid "Loading file '%s'ے"
+msgid "Loading file '%s'…"
 msgstr "Cargando o ficheiro '%s'…"
 
 #: ../gedit/gedit-commands-file.c:265
 #, c-format
-msgid "Loading %d fileے"
-msgid_plural "Loading %d filesے"
+#| msgid "Loading %d fileے"
+#| msgid_plural "Loading %d filesے"
+msgid "Loading %d file…"
+msgid_plural "Loading %d files…"
 msgstr[0] "Cargando %d ficheiro…"
 msgstr[1] "Cargando %d ficheiros…"
 
@@ -861,7 +866,8 @@ msgstr "Gardar como te_xto plano"
 
 #: ../gedit/gedit-commands-file.c:764 ../gedit/gedit-commands-file.c:991
 #, c-format
-msgid "Saving file '%s'ے"
+#| msgid "Saving file '%s'ے"
+msgid "Saving file '%s'…"
 msgstr "Gardando o ficheiro '%s'…"
 
 #: ../gedit/gedit-commands-file.c:875
@@ -870,7 +876,8 @@ msgstr "Gardar como"
 
 #: ../gedit/gedit-commands-file.c:1195
 #, c-format
-msgid "Reverting the document '%s'ے"
+#| msgid "Reverting the document '%s'ے"
+msgid "Reverting the document '%s'…"
 msgstr "Recuperando o documento '%s'…"
 
 #: ../gedit/gedit-commands-file.c:1240
@@ -1414,7 +1421,7 @@ msgstr ""
 "Se continúa gardando este ficheiro pode corromper o documento. Desexa gardar "
 "de todos modos?"
 
-#: ../gedit/gedit-open-document-selector.c:409
+#: ../gedit/gedit-open-document-selector.c:411
 msgid "No results"
 msgstr "Sen resultados"
 
@@ -2479,19 +2486,19 @@ msgstr "_Ferramentas externas"
 msgid "Could not execute command: %s"
 msgstr "Non foi posíbel executar a orde: %s"
 
-#: ../plugins/externaltools/tools/functions.py:182
+#: ../plugins/externaltools/tools/functions.py:184
 msgid "You must be inside a word to run this command"
 msgstr "Debe introducir unha palabra para executar esta orde"
 
-#: ../plugins/externaltools/tools/functions.py:316
+#: ../plugins/externaltools/tools/functions.py:320
 msgid "Running tool:"
 msgstr "Ferramenta en execución:"
 
-#: ../plugins/externaltools/tools/functions.py:347
+#: ../plugins/externaltools/tools/functions.py:351
 msgid "Done."
 msgstr "Feito."
 
-#: ../plugins/externaltools/tools/functions.py:349
+#: ../plugins/externaltools/tools/functions.py:353
 msgid "Exited"
 msgstr "Saíu"
 
