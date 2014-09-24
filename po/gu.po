@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
 "cgi?product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2014-09-11 05:10+0000\n"
-"PO-Revision-Date: 2014-09-11 15:54+0530\n"
+"PO-Revision-Date: 2014-09-24 20:20+0530\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -32,6 +32,8 @@ msgid ""
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
 "text editor."
 msgstr ""
+"gedit એ GNOME ડેસ્કટોપ પર્યાવરણનું લખાણ સંપાદક છે. જ્યારે તેનો વપરાશ સરળ છે, gedit એ શક્તિશાળી "
+"સામાન્ય હેતુનું લખાણ સંપાદક છે."
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
@@ -39,12 +41,17 @@ msgid ""
 "application, or simply taking some quick notes, gedit will be a reliable "
 "tool to accomplish your task."
 msgstr ""
+"ક્યાંતો તમે આગલા બેસ્ટસેલરને લખી રહ્યા હોય, એક નવીન કાર્યક્રમનું પ્રોગ્રામીંગ કરી રહ્યા હોય, "
+"અથવા અમુક ઝડપી નોંધોને લઇ રહ્યા હોય. gedit એ તમારાં કાર્યને પૂરુ કરવા માટે વિશ્ર્વાસપાત્ર સાધન "
+"હશે."
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
 msgstr ""
+"તે સરળ પ્લગઇન સિસ્ટમ છે તે તમારી જરૂરિયાતો માટે કાર્યક્રમને ચલાવવા માટે પરવાનગી આપે છે અને "
+"તમારા કાર્ય કરવાની ઢબને સ્વીકારે છે."
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:1
 msgid "gedit"
@@ -118,12 +125,11 @@ msgid "Create Backup Copies"
 msgstr "બેક-અપ નકલો બનાવો"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:9
-#, fuzzy
 #| msgid ""
 #| "Whether gedit should restore the previous cursor position when a file is "
 #| "loaded."
 msgid "Whether gedit should create backup copies for the files it saves."
-msgstr "જ્યારે ફાઈલ લોડ થઈ રહી હોય ત્યારે શું gedit એ પહેલાનું કર્સર સ્થાન પુનઃસંગ્રહવું જોઈએ."
+msgstr "ક્યાંતો gedit એ તેની સંગ્રહ ફાઇલો માટે બેકઅપ નકલોને બનાવવી જોઇએ."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
@@ -179,7 +185,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid "Last split mode choice for line wrapping mode"
-msgstr ""
+msgstr " લાઇન રેપીંગ સ્થિતિ માટે છેલ્લી સ્પ"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid ""
@@ -188,6 +194,9 @@ msgid ""
 "for wrapping at word boundaries, and \"char\" for wrapping at individual "
 "character boundaries."
 msgstr ""
+"વાક્ય રેપીંગ સ્થિતિ સાથે છેલ્લી સ્પ્લીટ સ્થિતિને સ્પષ્ટ કરે છે, તેથી જ્યારે રેપીંગ સ્થિતિ બંધ "
+"હોય અમે સ્પ્લીટ સ્થિતિ પસંદગીને હજુ યાદ રાખી છે. શબ્દ સીમાઓ પર આવરવા માટે \"શબ્દ\" ને વાપરો, "
+"અને વ્યક્તિગત અક્ષર સીમાઓને આવરવા માટે \"અક્ષર\"  વાપરો."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Tab Size"
@@ -962,10 +971,10 @@ msgstr "મહેરબાની કરીને ચકાસો કે તમ�
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:188
-#, fuzzy, c-format
+#, c-format
 #| msgid "gedit cannot handle %s locations."
 msgid "Unable to handle “%s:” locations."
-msgstr "gedit એ %s સ્થાનો નિયંત્રિત કરી શકતું નથી."
+msgstr "“%s:” સ્થાનો ને સંચાલિત કરવાનું અસમર્થ."
 
 #: ../gedit/gedit-io-error-info-bar.c:194
 msgid "Unable to handle this location."
@@ -1021,10 +1030,9 @@ msgid "Unexpected error: %s"
 msgstr "અનિચ્છનિય ભૂલ: %s"
 
 #: ../gedit/gedit-io-error-info-bar.c:347
-#, fuzzy
 #| msgid "gedit cannot find the file. Perhaps it has recently been deleted."
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
-msgstr "gedit ફાઇલને શોધી શકતું નથી. કદાચ તે તાજેતરમાં કાઢી નંખાયેલ છે."
+msgstr "સૂચિત ફાઇલને શોધી શકાતી નથી. કદાચ તે તાજેતરમાં કાઢી નાંખવામાં આવી છે."
 
 #: ../gedit/gedit-io-error-info-bar.c:357
 #, c-format
@@ -1063,10 +1071,9 @@ msgid "You do not have the permissions necessary to open the file."
 msgstr "તમારી પાસે આ ફાઈલ ખોલવા માટે જરૂરી પરવાનગીઓ નથી."
 
 #: ../gedit/gedit-io-error-info-bar.c:605
-#, fuzzy
 #| msgid "gedit has not been able to detect the character encoding."
 msgid "Unable to detect the character encoding."
-msgstr "gedit એ અક્ષર સંગ્રહપદ્દતિશોધવા માટે સમર્થ નથી."
+msgstr "અક્ષર એનકોડીંગને શોધવાનું અસમર્થ."
 
 #: ../gedit/gedit-io-error-info-bar.c:606
 #: ../gedit/gedit-io-error-info-bar.c:630
@@ -1180,7 +1187,6 @@ msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "“%s” સંગ્રહતી વખતે કામચલાઉ બેકઅપ ફાઈલ બનાવી શક્યા નહિં"
 
 #: ../gedit/gedit-io-error-info-bar.c:991
-#, fuzzy
 #| msgid ""
 #| "gedit could not back up the old copy of the file before saving the new "
 #| "one. You can ignore this warning and save the file anyway, but if an "
@@ -1191,13 +1197,13 @@ msgid ""
 "can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
-"gedit એ ફાઈલની જૂની નકલની બેકઅપ લઈ શક્યું નહિં નવીનો સંગ્રહ કરતાં પહેલાં. તમે આ ચેતવણીને "
+"ફાઈલની જૂની નકલની બેકઅપ લઈ શક્યું નહિં નવીનો સંગ્રહ કરતાં પહેલાં. તમે આ ચેતવણીને "
 "અવગણી શકો છો અને ફાઈલને ગમે તે રીતે સંગ્રહી શકો છો, પરંતુ જો ભૂલ સંગ્રહ કરતી વખતે ઉદ્દભવે, "
 "તો તમે ફાઈલની જૂની નકલ ગુમાવી શક્યા હશો. શું ગમે તે રીતે સંગ્રહવા માંગો છો?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:1051
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "gedit cannot handle %s locations in write mode. Please check that you "
 #| "typed the location correctly and try again."
@@ -1205,11 +1211,10 @@ msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
-"gedit લેખન સ્થિતિમાં %s સ્થાનો સંભાળી શકતું નથી. મહેરબાની કરીને ચકાસો કે તમે સ્થાન બરાબર "
+"લેખન સ્થિતિમાં “%s:” સ્થાનોને સંચાલિત કરી શકાતુ નથી. મહેરબાની કરીને ચકાસો કે તમે સ્થાન બરાબર "
 "રીતે લખેલું છે અને ફરીથી પ્રયત્ન કરો."
 
 #: ../gedit/gedit-io-error-info-bar.c:1059
-#, fuzzy
 #| msgid ""
 #| "gedit cannot handle this location in write mode. Please check that you "
 #| "typed the location correctly and try again."
@@ -1217,8 +1222,8 @@ msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
-"gedit આ સ્થાનને લેખન સ્થિતિમાં સંભાળી શકતું નથી. મહેરબાની કરીને ચકાસો કે તમે સ્થાન યોગ્ય "
-"રીતે લખેલું છે અને ફરીથી પ્રયાસ કરો."
+"લખવાની સ્થિતિમાં આ સ્થાનને સંચાલિત કરી શકાતુ નથી. મહેરબાની કરીને ચકાસો કે તમે સ્થાન બરાબર "
+"રીતે લખેલું છે અને ફરીથી પ્રયત્ન કરો."
 
 #: ../gedit/gedit-io-error-info-bar.c:1068
 #, c-format
@@ -1291,7 +1296,7 @@ msgstr "ફાઈલ “%s” ડિસ્ક પર બદલાઈ ગયે�
 
 #: ../gedit/gedit-io-error-info-bar.c:1176
 msgid "Drop Changes and _Reload"
-msgstr ""
+msgstr "ફેરફારોને છોડો અને પુન:લાવો (_R)"
 
 #: ../gedit/gedit-io-error-info-bar.c:1186
 #: ../gedit/resources/gtk/menus-default.ui.h:6
@@ -1557,7 +1562,7 @@ msgstr "ત્યાં અસંગ્રહેલ દસ્તાવેજો 
 
 #: ../gedit/gedit-window.c:2418
 msgid "Change side panel page"
-msgstr ""
+msgstr "બાજુનુ પેનલ પાનાંને બદલો"
 
 #: ../gedit/gedit-window.c:2438 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
@@ -1778,10 +1783,9 @@ msgid "_Delete"
 msgstr "કાઢી નાંખો (_D)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:20
-#, fuzzy
 #| msgid "File Browser Filter Mode"
 msgid "Overwrite _Mode"
-msgstr "ફાઈલ બ્રાઉઝર ગાળક સ્થિતિ"
+msgstr "ઓવરરાઇટ સ્થિતિ (_M)"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:21
 msgid "Select _All"
@@ -2166,7 +2170,7 @@ msgstr "માત્ર આખા શબ્દને જ સરખાવો (_e)
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
 msgid "Match as re_gular expression"
-msgstr ""
+msgstr "નિયમિત એક્સપ્રેશન તરીકે બંધબેસાડો (_g)"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:11
 msgid "Search _backwards"
@@ -2261,14 +2265,11 @@ msgid "Document Statistics"
 msgstr "દસ્તાવેજનુ ગણન"
 
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
-#, fuzzy
 #| msgid ""
 #| "Analyzes the current document and reports the number of words, lines, "
 #| "characters and non-space characters in it."
 msgid "Report the number of words, lines and characters in a document."
-msgstr ""
-"વર્તમાન દસ્તાવેજનું  વિશ્લેષણ કરે છે અને તેમાંના શબ્દો, લીટીઓ, અક્ષરો અને જગ્યાવિહીન અક્ષરોની "
-"સંખ્યાનો તેને અહેવાલ આપે છે."
+msgstr "દસ્તાવેજમાં શબ્દો, વાક્યો અને અક્ષરોની સંખ્યાનો અહેવાલ કરો."
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:537
 msgid "_Document Statistics"
@@ -2341,10 +2342,9 @@ msgid "Send to fpaste"
 msgstr "fpaste માં મોકલો"
 
 #: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
-#, fuzzy
 #| msgid "Change selected text to upper case"
 msgid "Paste selected text or current document to fpaste"
-msgstr "પસંદ કરેલ લખાણને મોટા કેસમાં ફેરવો"
+msgstr "પસંદ થયેલ લખાણને ચોંટાડો અથવા fpaste માટે તાજેતરનાં દસ્તાવેજ"
 
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
@@ -2798,7 +2798,7 @@ msgstr "ફાઇલ બ્રાઉઝર બાઇનરી ભાત"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
-msgstr ""
+msgstr "વાપરવા માટે પૂરક ભાતો જ્યારે બાઇનરી ફાઇલોને ફિલ્ટર કરી રહ્યા હોય."
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:2
 msgid "_Set Root to Active Document"
