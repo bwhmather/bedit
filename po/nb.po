@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit 3.13.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-06 12:16+0200\n"
+"POT-Creation-Date: 2014-09-26 17:30+0200\n"
 "PO-Revision-Date: 2014-09-06 12:19+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
@@ -610,7 +610,7 @@ msgid "_Save As…"
 msgstr "Lagre _som …"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:347
-#: ../gedit/gedit-commands-file.c:883 ../gedit/resources/gtk/menus-osx.ui.h:6
+#: ../gedit/gedit-commands-file.c:883 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -753,7 +753,7 @@ msgstr[1] "Laster %d filerے"
 msgid "Open"
 msgstr "Åpne"
 
-#: ../gedit/gedit-commands-file.c:458 ../gedit/resources/gtk/menus-osx.ui.h:3
+#: ../gedit/gedit-commands-file.c:458 ../gedit/resources/gtk/menus-osx.ui.h:4
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:38
@@ -1309,7 +1309,7 @@ msgstr "Forkast endringer og last på _nytt"
 #: ../gedit/gedit-io-error-info-bar.c:1186
 #: ../gedit/resources/gtk/menus-default.ui.h:6
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
+#: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_Last på nytt"
 
@@ -1325,7 +1325,7 @@ msgstr ""
 "Hvis du fortsetter å lagre denne filen kan dokumentet bli korrupt. Lagre "
 "likevel?"
 
-#: ../gedit/gedit-open-document-selector.c:409
+#: ../gedit/gedit-open-document-selector.c:411
 msgid "No results"
 msgstr "Ingen resultater"
 
@@ -1379,7 +1379,7 @@ msgstr "Side %N av %Q"
 msgid "Preparing..."
 msgstr "Forbereder …"
 
-#: ../gedit/gedit-print-preview.c:604
+#: ../gedit/gedit-print-preview.c:648
 #, c-format
 msgid "Page %d of %d"
 msgstr "Side %d av %d"
@@ -1571,11 +1571,11 @@ msgstr "Tabulatorbredde: %u"
 msgid "There are unsaved documents"
 msgstr "Det finnes dokumenter som ikke er lagret"
 
-#: ../gedit/gedit-window.c:2409
+#: ../gedit/gedit-window.c:2418
 msgid "Change side panel page"
 msgstr "Bytt side på sidepanel"
 
-#: ../gedit/gedit-window.c:2429 ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/gedit-window.c:2438 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumenter"
@@ -1600,7 +1600,7 @@ msgstr "Flytt til ny fane_gruppe"
 #: ../gedit/resources/gtk/menus-common.ui.h:5
 #: ../gedit/resources/gtk/menus-default.ui.h:21
 #: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
+#: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
@@ -1632,7 +1632,7 @@ msgid "Text wrapping"
 msgstr "Tekstbryting"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
+#: ../gedit/resources/gtk/menus-osx.ui.h:9
 msgid "_New Window"
 msgstr "_Nytt vindu"
 
@@ -1643,7 +1643,7 @@ msgstr "_Brukervalg"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
+#: ../gedit/resources/gtk/menus-osx.ui.h:45
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
 #: ../plugins/spell/gedit-spell-language-dialog.c:126
@@ -1664,13 +1664,13 @@ msgstr "A_vslutt"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
+#: ../gedit/resources/gtk/menus-osx.ui.h:11
 msgid "_Print…"
 msgstr "_Skriv ut …"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
+#: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "_Fullskjerm"
 
@@ -1681,7 +1681,7 @@ msgstr "Lagre _alle"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:11
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
+#: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "_Find…"
 msgstr "_Finn …"
 
@@ -1692,7 +1692,7 @@ msgstr "_Finn og erstatt …"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
+#: ../gedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "_Fjern utheving"
 
@@ -1703,38 +1703,38 @@ msgstr "Gå til _linje …"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
+#: ../gedit/resources/gtk/menus-osx.ui.h:22
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
 msgid "View"
 msgstr "Vis"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
+#: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "Side_panel"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
+#: ../gedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "_Bunnpanel"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:18
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
+#: ../gedit/resources/gtk/menus-osx.ui.h:26
 msgid "_Highlight Mode…"
 msgstr "Ut_hevingsmodus"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
+#: ../gedit/resources/gtk/menus-osx.ui.h:34
 msgid "Tools"
 msgstr "Verktøy"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
+#: ../gedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "_Lukk alle"
 
@@ -1742,110 +1742,111 @@ msgstr "_Lukk alle"
 msgid "File"
 msgstr "Fil"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:2
+#. _New is the menu item under the File menu on OS X which creates a new empty document.
+#: ../gedit/resources/gtk/menus-osx.ui.h:3
 msgid "_New"
 msgstr "_Ny"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/resources/gtk/menus-osx.ui.h:5
 msgid "Open _Recent"
 msgstr "Åpne nylig b_rukt"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
+#: ../gedit/resources/gtk/menus-osx.ui.h:6
 msgid "Reopen Closed _Tab"
 msgstr "Gjenåpnet lukke_t fane"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/resources/gtk/menus-osx.ui.h:8
 msgid "Save _As…"
 msgstr "Lagre _som …"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
+#: ../gedit/resources/gtk/menus-osx.ui.h:13
 msgid "Edit"
 msgstr "Rediger"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
+#: ../gedit/resources/gtk/menus-osx.ui.h:14
 msgid "_Undo"
 msgstr "_Angre"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
+#: ../gedit/resources/gtk/menus-osx.ui.h:15
 msgid "_Redo"
 msgstr "_Gjenta"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
+#: ../gedit/resources/gtk/menus-osx.ui.h:16
 msgid "C_ut"
 msgstr "Klipp _ut"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
+#: ../gedit/resources/gtk/menus-osx.ui.h:17
 msgid "_Copy"
 msgstr "_Kopier"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
+#: ../gedit/resources/gtk/menus-osx.ui.h:18
 msgid "_Paste"
 msgstr "_Lim inn"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
+#: ../gedit/resources/gtk/menus-osx.ui.h:19
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Slett"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
+#: ../gedit/resources/gtk/menus-osx.ui.h:20
 msgid "Overwrite _Mode"
 msgstr "Overskrivingsmodus"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
+#: ../gedit/resources/gtk/menus-osx.ui.h:21
 msgid "Select _All"
 msgstr "Velg _alle"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
+#: ../gedit/resources/gtk/menus-osx.ui.h:27
 msgid "Search"
 msgstr "Søk"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
+#: ../gedit/resources/gtk/menus-osx.ui.h:29
 msgid "Find Ne_xt"
 msgstr "Finn _neste"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
+#: ../gedit/resources/gtk/menus-osx.ui.h:30
 msgid "Find Pre_vious"
 msgstr "Finn _forrige"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
+#: ../gedit/resources/gtk/menus-osx.ui.h:31
 msgid "Find and _Replace…"
 msgstr "Finn og e_rstatt …"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
+#: ../gedit/resources/gtk/menus-osx.ui.h:33
 msgid "Go to _Line…"
 msgstr "Gå til _linje …"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/resources/gtk/menus-osx.ui.h:36
 msgid "_Save All"
 msgstr "_Lagre alle"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
+#: ../gedit/resources/gtk/menus-osx.ui.h:38
 msgid "_New Tab Group"
 msgstr "_Ny fane_gruppe"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
+#: ../gedit/resources/gtk/menus-osx.ui.h:39
 msgid "P_revious Tab Group"
 msgstr "Fo_rrige fanegruppe"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
+#: ../gedit/resources/gtk/menus-osx.ui.h:40
 msgid "Nex_t Tab Group"
 msgstr "_Neste fanegruppe"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
+#: ../gedit/resources/gtk/menus-osx.ui.h:41
 msgid "_Previous Document"
 msgstr "_Forrige dokument"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
+#: ../gedit/resources/gtk/menus-osx.ui.h:42
 msgid "N_ext Document"
 msgstr "N_este dokument"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
+#: ../gedit/resources/gtk/menus-osx.ui.h:43
 msgid "_Move To New Window"
 msgstr "Flytt til _nytt vindu"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
+#: ../gedit/resources/gtk/menus-osx.ui.h:44
 msgid "Help"
 msgstr "Hjelp"
 
@@ -2387,19 +2388,19 @@ msgstr "Eksterne verk_tøy"
 msgid "Could not execute command: %s"
 msgstr "Kunne ikke kjøre kommando: %s"
 
-#: ../plugins/externaltools/tools/functions.py:182
+#: ../plugins/externaltools/tools/functions.py:184
 msgid "You must be inside a word to run this command"
 msgstr "Du må være inne i et ord for å kjøre denne kommandoen"
 
-#: ../plugins/externaltools/tools/functions.py:316
+#: ../plugins/externaltools/tools/functions.py:320
 msgid "Running tool:"
 msgstr "Kjører verktøy:"
 
-#: ../plugins/externaltools/tools/functions.py:347
+#: ../plugins/externaltools/tools/functions.py:351
 msgid "Done."
 msgstr "Ferdig."
 
-#: ../plugins/externaltools/tools/functions.py:349
+#: ../plugins/externaltools/tools/functions.py:353
 msgid "Exited"
 msgstr "Avsluttet"
 
