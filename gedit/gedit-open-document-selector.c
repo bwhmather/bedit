@@ -37,7 +37,6 @@ struct _GeditOpenDocumentSelectorPrivate
 	GtkWidget *scrolled_window;
 
 	guint populate_listbox_id;
-	gulong recent_manager_changed_id;
 
 	gint row_height;
 
@@ -249,27 +248,10 @@ on_recent_manager_changed (GtkRecentManager *manager,
 }
 
 static void
-gedit_open_document_selector_finalize (GObject *object)
-{
-	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (object);
-	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-
-	gedit_recent_configuration_destroy (&priv->recent_config);
-
-	G_OBJECT_CLASS (gedit_open_document_selector_parent_class)->finalize (object);
-}
-
-static void
 gedit_open_document_selector_dispose (GObject *object)
 {
 	GeditOpenDocumentSelector *open_document_selector = GEDIT_OPEN_DOCUMENT_SELECTOR (object);
 	GeditOpenDocumentSelectorPrivate *priv = open_document_selector->priv;
-
-	if (priv->recent_manager_changed_id)
-	{
-		g_signal_handler_disconnect (priv->recent_config.manager, priv->recent_manager_changed_id);
-		priv->recent_manager_changed_id = 0;
-	}
 
 	if (priv->populate_listbox_id)
 	{
@@ -277,7 +259,15 @@ gedit_open_document_selector_dispose (GObject *object)
 		priv->populate_listbox_id = 0;
 	}
 
+	gedit_recent_configuration_destroy (&priv->recent_config);
+
 	G_OBJECT_CLASS (gedit_open_document_selector_parent_class)->dispose (object);
+}
+
+static void
+gedit_open_document_selector_finalize (GObject *object)
+{
+	G_OBJECT_CLASS (gedit_open_document_selector_parent_class)->finalize (object);
 }
 
 static void
@@ -391,10 +381,11 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *open_document_sele
 	/* gedit-open-document-selector initial state */
 	gedit_recent_configuration_init_default (&priv->recent_config);
 
-	priv->recent_manager_changed_id = g_signal_connect (priv->recent_config.manager,
-	                                                    "changed",
-	                                                    G_CALLBACK (on_recent_manager_changed),
-	                                                    open_document_selector);
+	g_signal_connect_object (priv->recent_config.manager,
+	                         "changed",
+	                         G_CALLBACK (on_recent_manager_changed),
+	                         open_document_selector,
+	                         0);
 
 	priv->populate_listbox_id = 0;
 
