@@ -157,6 +157,7 @@ populate_filter_info (GtkRecentInfo        *info,
 	}
 }
 
+/* The GeditRecentConfiguration struct is allocated and owned by the caller */
 void
 gedit_recent_configuration_init_default (GeditRecentConfiguration *config)
 {
@@ -189,6 +190,7 @@ gedit_recent_configuration_init_default (GeditRecentConfiguration *config)
 	config->substring_filter = NULL;
 }
 
+/* The GeditRecentConfiguration struct is owned and destroyed by the caller */
 void
 gedit_recent_configuration_destroy (GeditRecentConfiguration *config)
 {
