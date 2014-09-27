@@ -59,6 +59,7 @@ _gedit_cmd_help_about (GtkAction   *action,
 		"Jesse van den Kieboom <jessevdk@gnome.org>",
 		"Paolo Borelli <pborelli@katamail.com>",
 		"Paolo Maggi <paolo@gnome.org>",
+		"S\303\251bastien Lafargue <slafargue@gnome.org>",
 		"S\303\251bastien Wilmet <swilmet@gnome.org>",
 		"Steve Fr\303\251cinaux <steve@istique.net>",
 		NULL
