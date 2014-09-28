@@ -4,7 +4,7 @@ import os, urllib, json, sys, urllib.request
 from gi.repository import Gtk, Gdk
 
 lang = os.getenv('GEDIT_CURRRENT_DOCUMENT_LANGUAGE')
-if lang is None
+if lang is None:
     lang = "text"
 
 current_document_path = os.getenv('GEDIT_CURRENT_DOCUMENT_PATH')
