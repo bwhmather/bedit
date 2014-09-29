@@ -10,7 +10,7 @@
 # Wadim Dziedzic <wdziedzic@aviary.pl>, 2007.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009.
 # Piotr Zaryk <pzaryk@aviary.pl>, 2008.
-# Piotr Drąg <piotrdrag@gmail.com>, 2009-2013.
+# Piotr Drąg <piotrdrag@gmail.com>, 2009-2014.
 # Wojciech Szczęsny <wszczesny@aviary.pl>, 2013.
 # Paweł Żołnowski <pawel@zolnowski.name>, 2014.
 # Aviary.pl <gnomepl@aviary.pl>, 2006-2014.
@@ -18,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-09 21:03+0200\n"
-"PO-Revision-Date: 2014-09-09 20:32+0100\n"
-"Last-Translator: Paweł Żołnowski <pawel@zolnowski.name>\n"
+"POT-Creation-Date: 2014-09-29 16:20+0200\n"
+"PO-Revision-Date: 2014-09-29 16:23+0200\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -817,15 +817,15 @@ msgstr ""
 #: ../gedit/gedit-commands-file.c:256
 #, c-format
 msgid "Loading file '%s'ے"
-msgstr "Wczytywanie pliku \"%s\"ے"
+msgstr "Wczytywanie pliku \"%s\"…"
 
 #: ../gedit/gedit-commands-file.c:265
 #, c-format
 msgid "Loading %d fileے"
 msgid_plural "Loading %d filesے"
-msgstr[0] "Wczytywanie %d plikuے"
-msgstr[1] "Wczytywanie %d plikówے"
-msgstr[2] "Wczytywanie %d plikówے"
+msgstr[0] "Wczytywanie %d pliku…"
+msgstr[1] "Wczytywanie %d plików…"
+msgstr[2] "Wczytywanie %d plików…"
 
 #. Translators: "Open" is the title of the file chooser window
 #: ../gedit/gedit-commands-file.c:451
@@ -892,7 +892,7 @@ msgstr "Zapi_sz jako zwykły tekst"
 #: ../gedit/gedit-commands-file.c:764 ../gedit/gedit-commands-file.c:991
 #, c-format
 msgid "Saving file '%s'ے"
-msgstr "Zapisywanie pliku \"%s\"ے"
+msgstr "Zapisywanie pliku \"%s\"…"
 
 #: ../gedit/gedit-commands-file.c:875
 msgid "Save As"
@@ -901,7 +901,7 @@ msgstr "Zapisz jako"
 #: ../gedit/gedit-commands-file.c:1195
 #, c-format
 msgid "Reverting the document '%s'ے"
-msgstr "Przywracanie dokumentu \"%s\"ے"
+msgstr "Przywracanie dokumentu \"%s\"…"
 
 #: ../gedit/gedit-commands-file.c:1240
 #, c-format
@@ -1001,11 +1001,11 @@ msgstr[2] ""
 msgid "_Revert"
 msgstr "_Przywróć"
 
-#: ../gedit/gedit-commands-help.c:78
+#: ../gedit/gedit-commands-help.c:79
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "gedit to niewielki i szybki edytor tekstu dla środowiska GNOME"
 
-#: ../gedit/gedit-commands-help.c:102
+#: ../gedit/gedit-commands-help.c:103
 msgid "translator-credits"
 msgstr ""
 "Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 1999-2003\n"
@@ -1014,7 +1014,7 @@ msgstr ""
 "Wadim Dziedzic <wdziedzic@aviary.pl>, 2007\n"
 "Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009\n"
 "Piotr Zaryk <pzaryk@aviary.pl>, 2008\n"
-"Piotr Drąg <piotrdrag@gmail.com>, 2009-2013\n"
+"Piotr Drąg <piotrdrag@gmail.com>, 2009-2014\n"
 "Wojciech Szczęsny <wszczesny@aviary.pl>, 2013\n"
 "Paweł Żołnowski <pawel@zolnowski.name>, 2014\n"
 "Aviary.pl <gnomepl@aviary.pl>, 2006-2014"
@@ -1446,7 +1446,7 @@ msgid ""
 msgstr ""
 "Kontynuacja zapisywania tego pliku może uszkodzić dokument. Zapisać mimo to?"
 
-#: ../gedit/gedit-open-document-selector.c:409
+#: ../gedit/gedit-open-document-selector.c:402
 msgid "No results"
 msgstr "Brak wyników"
 
@@ -1500,7 +1500,7 @@ msgstr "Strona %N z %Q"
 msgid "Preparing..."
 msgstr "Przygotowywanie..."
 
-#: ../gedit/gedit-print-preview.c:604
+#: ../gedit/gedit-print-preview.c:648
 #, c-format
 msgid "Page %d of %d"
 msgstr "Strona %d z %d"
@@ -2512,21 +2512,21 @@ msgstr "_Narzędzia zewnętrzne"
 msgid "Could not execute command: %s"
 msgstr "Nie można wykonać polecenia: %s"
 
-#: ../plugins/externaltools/tools/functions.py:182
+#: ../plugins/externaltools/tools/functions.py:184
 msgid "You must be inside a word to run this command"
 msgstr ""
 "Kursor musi znajdować się wewnątrz słowa, aby możliwe było wykonanie tego "
 "polecenia"
 
-#: ../plugins/externaltools/tools/functions.py:316
+#: ../plugins/externaltools/tools/functions.py:320
 msgid "Running tool:"
 msgstr "Uruchamianie narzędzia:"
 
-#: ../plugins/externaltools/tools/functions.py:347
+#: ../plugins/externaltools/tools/functions.py:351
 msgid "Done."
 msgstr "Wykonano."
 
-#: ../plugins/externaltools/tools/functions.py:349
+#: ../plugins/externaltools/tools/functions.py:353
 msgid "Exited"
 msgstr "Zakończono"
 
