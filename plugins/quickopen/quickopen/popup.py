@@ -519,13 +519,15 @@ class Popup(Gtk.Dialog):
                 return True
 
         if rows and ret:
-            self.destroy()
+            # We destroy the popup in an idle callback to work around a crash that happens with
+            # GTK_IM_MODULE=xim.  See https://bugzilla.gnome.org/show_bug.cgi?id=737711 .
+            GLib.idle_add(self.destroy)
 
         if not rows:
             gfile = self._direct_file()
 
             if gfile and self._handler(gfile):
-                self.destroy()
+                GLib.idle_add(self.destroy)
             else:
                 ret = False
         else:
