@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-29 16:20+0200\n"
-"PO-Revision-Date: 2014-09-29 16:23+0200\n"
+"POT-Creation-Date: 2014-10-03 14:56+0200\n"
+"PO-Revision-Date: 2014-10-03 14:57+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -816,13 +816,13 @@ msgstr ""
 
 #: ../gedit/gedit-commands-file.c:256
 #, c-format
-msgid "Loading file '%s'ے"
+msgid "Loading file '%s'…"
 msgstr "Wczytywanie pliku \"%s\"…"
 
 #: ../gedit/gedit-commands-file.c:265
 #, c-format
-msgid "Loading %d fileے"
-msgid_plural "Loading %d filesے"
+msgid "Loading %d file…"
+msgid_plural "Loading %d files…"
 msgstr[0] "Wczytywanie %d pliku…"
 msgstr[1] "Wczytywanie %d plików…"
 msgstr[2] "Wczytywanie %d plików…"
@@ -891,7 +891,7 @@ msgstr "Zapi_sz jako zwykły tekst"
 
 #: ../gedit/gedit-commands-file.c:764 ../gedit/gedit-commands-file.c:991
 #, c-format
-msgid "Saving file '%s'ے"
+msgid "Saving file '%s'…"
 msgstr "Zapisywanie pliku \"%s\"…"
 
 #: ../gedit/gedit-commands-file.c:875
@@ -900,7 +900,7 @@ msgstr "Zapisz jako"
 
 #: ../gedit/gedit-commands-file.c:1195
 #, c-format
-msgid "Reverting the document '%s'ے"
+msgid "Reverting the document '%s'…"
 msgstr "Przywracanie dokumentu \"%s\"…"
 
 #: ../gedit/gedit-commands-file.c:1240
@@ -3579,18 +3579,3 @@ msgstr "Wstawienie daty/czasu"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Wstawia na pozycji kursora bieżącą datę i czas."
-
-msgid "Loading file '%s'…"
-msgstr "Wczytywanie pliku \"%s\"…"
-
-msgid "Loading %d file…"
-msgid_plural "Loading %d files…"
-msgstr[0] "Wczytywanie %d pliku…"
-msgstr[1] "Wczytywanie %d plików…"
-msgstr[2] "Wczytywanie %d plików…"
-
-msgid "Saving file '%s'…"
-msgstr "Zapisywanie pliku \"%s\"…"
-
-msgid "Reverting the document '%s'…"
-msgstr "Przywracanie dokumentu \"%s\"…"
