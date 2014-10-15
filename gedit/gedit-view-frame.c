@@ -26,16 +26,17 @@
 #endif
 
 #include "gedit-view-frame.h"
-#include "gedit-window.h"
-#include "gedit-view-holder.h"
-#include "gedit-debug.h"
-#include "gedit-utils.h"
-#include "libgd/gd.h"
 
 #include <gtksourceview/gtksource.h>
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 #include <stdlib.h>
+
+#include "gedit-window.h"
+#include "gedit-view-holder.h"
+#include "gedit-debug.h"
+#include "gedit-utils.h"
+#include "libgd/gd.h"
 
 #define FLUSH_TIMEOUT_DURATION 30 /* in seconds */
 

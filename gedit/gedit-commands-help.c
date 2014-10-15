@@ -24,10 +24,11 @@
 #include <config.h>
 #endif
 
+#include "gedit-commands.h"
+
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "gedit-commands.h"
 #include "gedit-debug.h"
 #include "gedit-app.h"
 #include "gedit-dirs.h"

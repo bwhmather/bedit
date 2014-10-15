@@ -21,6 +21,7 @@
  */
 
 #include "gedit-multi-notebook.h"
+
 #include "gedit-enum-types.h"
 #include "gedit-marshal.h"
 #include "gedit-settings.h"

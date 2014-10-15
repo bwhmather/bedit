@@ -31,11 +31,12 @@
 #include <config.h>
 #endif
 
+#include "gedit-notebook.h"
+
 #include <glib-object.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "gedit-notebook.h"
 #include "gedit-tab.h"
 #include "gedit-tab-label.h"
 #include "gedit-window.h"

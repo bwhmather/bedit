@@ -22,9 +22,10 @@
 #include <config.h>
 #endif
 
+#include "gedit-documents-panel.h"
+
 #include <glib/gi18n.h>
 
-#include "gedit-documents-panel.h"
 #include "gedit-debug.h"
 #include "gedit-document.h"
 #include "gedit-multi-notebook.h"

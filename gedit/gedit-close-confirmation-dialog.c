@@ -22,9 +22,10 @@
 #include <config.h>
 #endif
 
+#include "gedit-close-confirmation-dialog.h"
+
 #include <glib/gi18n.h>
 
-#include "gedit-close-confirmation-dialog.h"
 #include <gedit/gedit-app.h>
 #include <gedit/gedit-utils.h>
 #include <gedit/gedit-window.h>

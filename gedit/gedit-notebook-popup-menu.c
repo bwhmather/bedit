@@ -18,11 +18,13 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "gedit-notebook-popup-menu.h"
+
 #include <glib/gi18n.h>
+
 #include "gedit-app.h"
 #include "gedit-commands.h"
 #include "gedit-multi-notebook.h"
-#include "gedit-notebook-popup-menu.h"
 
 struct _GeditNotebookPopupMenuPrivate
 {

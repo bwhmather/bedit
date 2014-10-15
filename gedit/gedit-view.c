@@ -24,15 +24,14 @@
 #include <config.h>
 #endif
 
+#include "gedit-view.h"
+
 #include <string.h>
 #include <stdlib.h>
-
 #include <gdk/gdkkeysyms.h>
 #include <libpeas/peas-extension-set.h>
-
 #include <glib/gi18n.h>
 
-#include "gedit-view.h"
 #include "gedit-view-activatable.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-debug.h"

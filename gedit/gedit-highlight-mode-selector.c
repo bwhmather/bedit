@@ -18,10 +18,11 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "gedit-highlight-mode-selector.h"
+
 #include <gdk/gdkkeysyms.h>
 #include <glib/gi18n.h>
 #include <string.h>
-#include "gedit-highlight-mode-selector.h"
 
 enum
 {

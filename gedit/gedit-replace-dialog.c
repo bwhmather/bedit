@@ -23,11 +23,12 @@
 #include <config.h>
 #endif
 
+#include "gedit-replace-dialog.h"
+
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "gedit-replace-dialog.h"
 #include "gedit-history-entry.h"
 #include "gedit-document.h"
 

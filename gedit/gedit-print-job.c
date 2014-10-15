@@ -23,10 +23,11 @@
 #include <config.h>
 #endif
 
+#include "gedit-print-job.h"
+
 #include <glib/gi18n.h>
 #include <gtksourceview/gtksource.h>
 
-#include "gedit-print-job.h"
 #include "gedit-debug.h"
 #include "gedit-print-preview.h"
 #include "gedit-marshal.h"

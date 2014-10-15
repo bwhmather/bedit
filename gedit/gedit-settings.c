@@ -25,12 +25,14 @@
 #include <config.h>
 #endif
 
+#include "gedit-settings.h"
+
 #include <string.h>
 #include <gtksourceview/gtksource.h>
+
 #include "gedit-app.h"
 #include "gedit-view.h"
 #include "gedit-window.h"
-#include "gedit-settings.h"
 
 #define GEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE "disable-command-line"
 #define GEDIT_SETTINGS_LOCKDOWN_PRINTING "disable-printing"

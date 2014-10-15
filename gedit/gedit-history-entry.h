@@ -21,6 +21,7 @@
 #ifndef __GEDIT_HISTORY_ENTRY_H__
 #define __GEDIT_HISTORY_ENTRY_H__
 
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 

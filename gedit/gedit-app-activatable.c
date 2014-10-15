@@ -24,6 +24,7 @@
 #endif
 
 #include "gedit-app-activatable.h"
+
 #include "gedit-app.h"
 
 /**

@@ -22,6 +22,8 @@
 #include <config.h>
 #endif
 
+#include "gedit-window.h"
+
 #include <time.h>
 #include <sys/types.h>
 #include <string.h>
@@ -29,7 +31,6 @@
 #include <glib/gi18n.h>
 #include <libpeas/peas-extension-set.h>
 
-#include "gedit-window.h"
 #include "gedit-window-private.h"
 #include "gedit-app.h"
 #include "gedit-recent.h"

@@ -24,11 +24,12 @@
 #include <config.h>
 #endif
 
+#include "gedit-commands.h"
+
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
-#include "gedit-commands.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
 #include "gedit-notebook.h"

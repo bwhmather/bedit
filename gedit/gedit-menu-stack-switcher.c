@@ -22,10 +22,11 @@
 #include <config.h>
 #endif
 
+#include "gedit-menu-stack-switcher.h"
+
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include "gedit-menu-stack-switcher.h"
 
 struct _GeditMenuStackSwitcherPrivate
 {

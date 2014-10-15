@@ -22,6 +22,8 @@
 #include <config.h>
 #endif
 
+#include "gedit-app.h"
+
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -35,7 +37,6 @@
 #include <girepository.h>
 #endif
 
-#include "gedit-app.h"
 #include "gedit-commands.h"
 #include "gedit-notebook.h"
 #include "gedit-debug.h"

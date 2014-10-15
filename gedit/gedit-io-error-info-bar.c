@@ -26,17 +26,18 @@
 #include <config.h>
 #endif
 
+#include "gedit-io-error-info-bar.h"
+
 #include <errno.h>
 #include <string.h>
 
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 
+#include <gedit/gedit-encodings-combo-box.h>
 #include "gedit-settings.h"
 #include "gedit-utils.h"
 #include "gedit-document.h"
-#include "gedit-io-error-info-bar.h"
-#include <gedit/gedit-encodings-combo-box.h>
 
 #define MAX_URI_IN_DIALOG_LENGTH 50
 

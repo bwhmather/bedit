@@ -18,13 +18,14 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "gedit-open-document-selector.h"
+
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
 #include <glib/gstdio.h>
 #include <gio/gio.h>
 
-#include "gedit-open-document-selector.h"
 #include "gedit-recent.h"
 #include "gedit-utils.h"
 #include "gedit-window.h"

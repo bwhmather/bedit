@@ -24,6 +24,8 @@
 #include <config.h>
 #endif
 
+#include "gedit-utils.h"
+
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -35,11 +37,6 @@
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gio/gio.h>
-
-#include "gedit-utils.h"
-
-#include "gedit-document.h"
-#include "gedit-debug.h"
 
 /* For the workspace/viewport stuff */
 #ifdef GDK_WINDOWING_X11
@@ -53,6 +50,9 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #endif
+
+#include "gedit-document.h"
+#include "gedit-debug.h"
 
 static void
 widget_get_origin (GtkWidget *widget,

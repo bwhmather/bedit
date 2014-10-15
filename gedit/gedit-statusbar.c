@@ -22,10 +22,12 @@
 #include <config.h>
 #endif
 
+#include "gedit-statusbar.h"
+
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include "gedit-statusbar.h"
+
 #include "gedit-app.h"
 #include "gedit-status-menu-button.h"
 

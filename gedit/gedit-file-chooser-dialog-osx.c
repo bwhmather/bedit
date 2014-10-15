@@ -22,11 +22,12 @@
 #include <config.h>
 #endif
 
+#include "gedit-file-chooser-dialog-osx.h"
+
 #import <Cocoa/Cocoa.h>
 #include <gdk/gdkquartz.h>
 #include <glib/gi18n.h>
 
-#include "gedit-file-chooser-dialog-osx.h"
 #include "gedit-encoding-items.h"
 #include "gedit-encodings-dialog.h"
 #include "gedit-utils.h"

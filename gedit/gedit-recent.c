@@ -20,11 +20,12 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "gedit-recent.h"
+
 #include <gtk/gtk.h>
 #include <gedit/gedit-document.h>
 #include <string.h>
 
-#include "gedit-recent.h"
 #include "gedit-settings.h"
 
 void

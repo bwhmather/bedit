@@ -23,6 +23,8 @@
 #include <config.h>
 #endif
 
+#include "gedit-preferences-dialog.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
@@ -32,7 +34,6 @@
 #include <gtksourceview/gtksource.h>
 #include <libpeas-gtk/peas-gtk.h>
 
-#include "gedit-preferences-dialog.h"
 #include "gedit-utils.h"
 #include "gedit-debug.h"
 #include "gedit-document.h"

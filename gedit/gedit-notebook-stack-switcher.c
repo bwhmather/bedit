@@ -22,10 +22,11 @@
 #include <config.h>
 #endif
 
+#include "gedit-notebook-stack-switcher.h"
+
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include "gedit-notebook-stack-switcher.h"
 
 /*
  * This widget is a rather ugly kludge: it uses a GtkNotebook full of empty

@@ -22,11 +22,11 @@
 #include <config.h>
 #endif
 
+#include "gedit-history-entry.h"
+
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-
-#include "gedit-history-entry.h"
 
 enum {
 	PROP_0,

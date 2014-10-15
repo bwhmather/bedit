@@ -18,8 +18,8 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #include "gedit-menu-extension.h"
+
 #include <string.h>
 
 static guint last_merge_id = 0;

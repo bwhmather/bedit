@@ -23,12 +23,13 @@
 #include <config.h>
 #endif
 
+#include "gedit-plugins-engine.h"
+
 #include <string.h>
 
 #include <glib/gi18n.h>
 #include <girepository.h>
 
-#include "gedit-plugins-engine.h"
 #include "gedit-debug.h"
 #include "gedit-app.h"
 #include "gedit-dirs.h"

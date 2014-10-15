@@ -19,11 +19,14 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "gedit-metadata-manager.h"
+
 #include <stdlib.h>
 #include <libxml/xmlreader.h>
+
 #include "gedit-debug.h"
 #include "gedit-dirs.h"
-#include "gedit-metadata-manager.h"
+
 
 /*
 #define GEDIT_METADATA_VERBOSE_DEBUG	1

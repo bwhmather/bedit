@@ -24,8 +24,9 @@
 #include <config.h>
 #endif
 
-#include <stdio.h>
 #include "gedit-debug.h"
+
+#include <stdio.h>
 
 #define ENABLE_PROFILING
 

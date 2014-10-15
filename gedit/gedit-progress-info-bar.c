@@ -22,11 +22,11 @@
 #include <config.h>
 #endif
 
+#include "gedit-progress-info-bar.h"
+
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
-
-#include "gedit-progress-info-bar.h"
 
 enum {
 	PROP_0,

@@ -21,6 +21,8 @@
 #include <config.h>
 #endif
 
+#include "gedit-print-preview.h"
+
 #include <math.h>
 #include <stdlib.h>
 #include <glib/gi18n.h>
@@ -28,8 +30,6 @@
 #include <gtk/gtk.h>
 
 #include <cairo-pdf.h>
-
-#include "gedit-print-preview.h"
 
 #define PRINTER_DPI (72.)
 #define TOOLTIP_THRESHOLD 20

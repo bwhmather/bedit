@@ -25,11 +25,12 @@
 #include <config.h>
 #endif
 
+#include "gedit-commands.h"
+
 #include <string.h>
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
 
-#include "gedit-commands.h"
 #include "gedit-debug.h"
 #include "gedit-statusbar.h"
 #include "gedit-view-frame.h"

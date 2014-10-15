@@ -23,10 +23,11 @@
 #include <config.h>
 #endif
 
+#include "gedit-tab.h"
+
 #include <stdlib.h>
 #include <glib/gi18n.h>
 
-#include "gedit-tab.h"
 #include "gedit-app.h"
 #include "gedit-recent.h"
 #include "gedit-utils.h"

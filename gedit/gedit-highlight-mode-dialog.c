@@ -18,8 +18,9 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
 #include "gedit-highlight-mode-dialog.h"
+
+#include <gtk/gtk.h>
 
 struct _GeditHighlightModeDialogPrivate
 {

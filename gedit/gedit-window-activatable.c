@@ -23,8 +23,10 @@
 #endif
 
 #include "gedit-window-activatable.h"
-#include "gedit-window.h"
+
 #include <string.h>
+
+#include "gedit-window.h"
 
 /**
  * SECTION:gedit-window-activatable

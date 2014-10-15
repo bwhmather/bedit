@@ -21,12 +21,13 @@
  */
 
 #include "gedit-app-osx.h"
-#include <gedit/gedit-dirs.h>
-#include <gedit/gedit-debug.h>
+
 #include <gdk/gdkquartz.h>
 #include <string.h>
 #include <glib/gi18n.h>
 
+#include "gedit-dirs.h"
+#include "gedit-debug.h"
 #include "gedit-commands.h"
 #include "gedit-recent.h"
 

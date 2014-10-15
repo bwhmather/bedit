@@ -25,10 +25,11 @@
 #include <config.h>
 #endif
 
+#include "gedit-document.h"
+
 #include <string.h>
 #include <glib/gi18n.h>
 
-#include "gedit-document.h"
 #include "gedit-settings.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"

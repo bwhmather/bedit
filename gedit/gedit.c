@@ -22,11 +22,6 @@
 #include <config.h>
 #endif
 
-#include <glib.h>
-#include <locale.h>
-#include <libintl.h>
-
-#include "gedit-dirs.h"
 #include "gedit-app.h"
 #ifdef OS_OSX
 #include "gedit-app-osx.h"
@@ -38,6 +33,11 @@
 #endif
 #endif
 
+#include <glib.h>
+#include <locale.h>
+#include <libintl.h>
+
+#include "gedit-dirs.h"
 #include "gedit-debug.h"
 
 #ifdef G_OS_WIN32

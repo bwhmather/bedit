@@ -24,9 +24,10 @@
 #include <config.h>
 #endif
 
+#include "gedit-commands.h"
+
 #include <gtk/gtk.h>
 
-#include "gedit-commands.h"
 #include "gedit-window.h"
 #include "gedit-notebook.h"
 #include "gedit-multi-notebook.h"

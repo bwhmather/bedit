@@ -26,11 +26,12 @@
 #include <config.h>
 #endif
 
+#include "gedit-file-chooser-dialog-gtk.h"
+
 #include <string.h>
 
 #include <glib/gi18n.h>
 
-#include "gedit-file-chooser-dialog-gtk.h"
 #include "gedit-encodings-combo-box.h"
 #include "gedit-debug.h"
 #include "gedit-enum-types.h"
