@@ -2,7 +2,7 @@
  * gedit-documents-panel.c
  * This file is part of gedit
  *
- * Copyright (C) 2014 - Sebastien Lafargue <slaf66@gmail.com>
+ * Copyright (C) 2014 - Sébastien Lafargue <slafargue@gnome.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
