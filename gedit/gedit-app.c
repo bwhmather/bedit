@@ -493,6 +493,7 @@ load_css_from_resource (const gchar *filename,
 
 	if (!required && !g_file_query_exists (css_file, NULL))
 	{
+		g_object_unref (css_file);
 		return;
 	}
 
