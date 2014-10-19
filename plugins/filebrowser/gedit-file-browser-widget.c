@@ -124,6 +124,8 @@ struct _GeditFileBrowserWidgetPrivate
 
 	GtkWidget *combo;
 	GtkTreeStore *combo_model;
+	GtkWidget *combo_stack;
+	GtkWidget *bookmarks_label;
 
 	GtkWidget *location_entry;
 
@@ -563,6 +565,8 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, next_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, combo);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, combo_model);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, combo_stack);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, bookmarks_label);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, location_entry);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, treeview);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, filter_entry_revealer);
@@ -672,17 +676,6 @@ insert_separator_item (GeditFileBrowserWidget *obj)
 			    COLUMN_ICON, NULL,
 			    COLUMN_NAME, NULL,
 			    COLUMN_ID, SEPARATOR_ID, -1);
-}
-
-static void
-combo_set_active_by_id (GeditFileBrowserWidget *obj,
-			guint                   id)
-{
-	GtkTreeIter iter;
-
-	if (combo_find_by_id (obj, id, &iter))
-		gtk_combo_box_set_active_iter (GTK_COMBO_BOX
-					       (obj->priv->combo), &iter);
 }
 
 static void
@@ -1663,14 +1656,8 @@ gedit_file_browser_widget_new (void)
 void
 gedit_file_browser_widget_show_bookmarks (GeditFileBrowserWidget *obj)
 {
-	/* Select bookmarks in the combo box */
-	g_signal_handlers_block_by_func (obj->priv->combo,
-					 on_combo_changed, obj);
-	combo_set_active_by_id (obj, BOOKMARKS_ID);
-	g_signal_handlers_unblock_by_func (obj->priv->combo,
-					   on_combo_changed, obj);
-
-	check_current_item (obj, FALSE);
+	gtk_stack_set_visible_child (GTK_STACK (obj->priv->combo_stack),
+				     obj->priv->bookmarks_label);
 
 	gedit_file_browser_view_set_model (obj->priv->treeview,
 					   GTK_TREE_MODEL (obj->priv->bookmarks_store));
@@ -1680,6 +1667,9 @@ static void
 show_files_real (GeditFileBrowserWidget *obj,
 		 gboolean                do_root_changed)
 {
+	gtk_stack_set_visible_child (GTK_STACK (obj->priv->combo_stack),
+				     obj->priv->combo);
+
 	gedit_file_browser_view_set_model (obj->priv->treeview,
 					   GTK_TREE_MODEL (obj->priv->file_store));
 
