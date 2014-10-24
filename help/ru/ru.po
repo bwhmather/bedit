@@ -2,14 +2,15 @@
 # Copyright 2008 Free Software Foundation Inc.
 # Misha Shnurapet <shnurapet@fedoraproject.org>, 2011. 
 # Yuri Myasoedov <omerta13@yandex.ru>, 2013.
-# Stas Solovey <whats_up@tut.by>, 2011, 2012, 2013.
+# Andrew Razumnov <razandale@gmail.com>, 2014.
+# Stas Solovey <whats_up@tut.by>, 2011, 2012, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-29 14:13+0000\n"
-"PO-Revision-Date: 2013-12-23 02:07+0300\n"
+"POT-Creation-Date: 2014-10-19 23:10+0000\n"
+"PO-Revision-Date: 2014-10-24 12:45+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -24,105 +25,30 @@ msgstr ""
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
-"Stas Solovey <whats_up@tut.by>, 2011, 2012, 2013.\n"
+"Stas Solovey <whats_up@tut.by>, 2011-2014.\n"
 "Misha Shnurapet <shnurapet@fedoraproject.org>, 2011."
 
-#. (itstool) path: info/title
-#: C/index.page:8
-msgctxt "link"
-msgid "gedit Text Editor"
-msgstr "Текстовый редактор gedit"
-
-#. (itstool) path: info/title
-#: C/index.page:9
-msgctxt "text"
-msgid "gedit Text Editor"
-msgstr "Текстовый редактор gedit"
-
 #. (itstool) path: credit/name
-#: C/index.page:13 C/gedit-change-color-scheme.page:9
-#: C/gedit-change-default-font.page:9 C/gedit-close-file.page:9
-#: C/gedit-create-new-file.page:9 C/gedit-edit-as-root.page:9
-#: C/gedit-files-basic.page:9 C/gedit-full-screen.page:9
-#: C/gedit-open-files-from-sidepane.page:10 C/gedit-open-files.page:13
-#: C/gedit-open-on-server.page:9 C/gedit-open-recent.page:9
-#: C/gedit-plugin-guide.page:9 C/gedit-plugins-change-case.page:14
-#: C/gedit-plugins-doc-stats.page:14 C/gedit-plugins-external-tools.page:15
-#: C/gedit-plugins-file-browser.page:14
+#: C/gedit-change-color-scheme.page:9 C/gedit-change-default-font.page:9
+#: C/gedit-close-file.page:9 C/gedit-create-new-file.page:11
+#: C/gedit-edit-as-root.page:9 C/gedit-files-basic.page:9
+#: C/gedit-full-screen.page:11 C/gedit-open-files-from-sidepane.page:10
+#: C/gedit-open-files.page:16 C/gedit-open-on-server.page:9
+#: C/gedit-open-recent.page:9 C/gedit-plugin-guide.page:9
+#: C/gedit-plugins-change-case.page:14 C/gedit-plugins-doc-stats.page:14
+#: C/gedit-plugins-external-tools.page:15 C/gedit-plugins-file-browser.page:14
 #: C/gedit-plugins-insert-date-time.page:14 C/gedit-plugins-install.page:8
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:9
 #: C/gedit-plugins-quick-open.page:10 C/gedit-plugins-snippets.page:9
 #: C/gedit-plugins-sort.page:13 C/gedit-printing.page:9
-#: C/gedit-quickstart.page:11 C/gedit-replace.page:11 C/gedit-save-file.page:9
-#: C/gedit-search.page:10 C/gedit-shortcut-keys.page:13
-#: C/gedit-spellcheck.page:11 C/gedit-syntax-highlighting.page:9
-#: C/gedit-tabs-moving.page:12 C/gedit-tabs.page:12
-#: C/gedit-undo-recent-action.page:9
-#: C/gedit-view-open-files-in-sidepane.page:10
+#: C/gedit-quickstart.page:11 C/gedit-replace.page:11
+#: C/gedit-save-file.page:11 C/gedit-search.page:10
+#: C/gedit-shortcut-keys.page:12 C/gedit-spellcheck.page:11
+#: C/gedit-syntax-highlighting.page:9 C/gedit-tabs-moving.page:12
+#: C/gedit-tabs.page:13 C/gedit-undo-recent-action.page:11
+#: C/gedit-view-open-files-in-sidepane.page:10 C/index.page:13
 msgid "Jim Campbell"
 msgstr "Джим Кэмпбелл (Jim Campbell)"
-
-#. (itstool) path: credit/name
-#: C/index.page:17 C/gedit-plugins-snippets.page:13
-#: C/gedit-plugins-sort.page:17 C/gedit-printing-order.page:14
-#: C/gedit-printing.page:13 C/gedit-printing-select.page:13
-#: C/gedit-quickstart.page:15 C/gedit-replace.page:19
-#: C/gedit-save-file.page:13 C/gedit-search.page:18
-#: C/gedit-shortcut-keys.page:29 C/gedit-spellcheck.page:19
-#: C/gedit-syntax-highlighting.page:13 C/gedit-tabs-moving.page:20
-#: C/gedit-tabs.page:20 C/gedit-undo-recent-action.page:17
-#: C/gedit-view-open-files-in-sidepane.page:18
-msgid "Sindhu S"
-msgstr "Синдху С (Sindhu S)"
-
-#. (itstool) path: page/title
-#: C/index.page:25
-msgid "<_:media-1/> gedit Text Editor"
-msgstr "<_:media-1/> Текстовый редактор gedit"
-
-#. (itstool) path: page/p
-#: C/index.page:29
-msgid ""
-"Welcome to the <app>gedit</app> help guide. For a quick introduction into "
-"both <app>gedit's</app> most basic features, as well as some advanced "
-"keyboard shortcuts, visit the <link xref=\"gedit-quickstart\">Get started "
-"with gedit</link> and <link xref=\"gedit-shortcut-keys\">Shortcut keys</"
-"link> pages."
-msgstr ""
-"Добро пожаловать в руководство по текстовому редактору <app>gedit</app>. "
-"Чтобы узнать об основных функциях <app>gedit</app>, а также о некоторых "
-"дополнительных комбинациях клавиш, посетите страницы: <link xref=\"gedit-"
-"quickstart\">Начало работы с gedit</link> и <link xref=\"gedit-shortcut-keys"
-"\">Комбинации клавиш</link>."
-
-#. (itstool) path: page/p
-#: C/index.page:35
-msgid ""
-"Other help topics are grouped together into sections below. Enjoy using "
-"<app>gedit</app>!"
-msgstr ""
-"Другие темы руководства сгруппированы по разделам ниже. Приятного "
-"использования <app>gedit</app>!"
-
-#. (itstool) path: section/title
-#: C/index.page:39
-msgid "Working With Files"
-msgstr "Работа с файлами"
-
-#. (itstool) path: section/title
-#: C/index.page:44
-msgid "Configure gedit"
-msgstr "Настройка gedit"
-
-#. (itstool) path: section/title
-#: C/index.page:48
-msgid "gedit Plugins"
-msgstr "Модули gedit"
-
-#. (itstool) path: section/title
-#: C/index.page:52
-msgid "Printing with gedit"
-msgstr "Печать с помощью gedit"
 
 #. (itstool) path: page/title
 #: C/gedit-change-color-scheme.page:14
@@ -273,27 +199,32 @@ msgstr ""
 "изменения, которые не были сохранены, <app>gedit</app> предложит сохранить "
 "эти изменения перед закрытием файла."
 
+#. (itstool) path: credit/name
+#: C/gedit-create-new-file.page:15 C/gedit-full-screen.page:15
+#: C/gedit-open-files.page:20 C/gedit-plugins-quick-open.page:14
+#: C/gedit-save-file.page:19 C/gedit-search.page:22 C/gedit-tabs.page:30
+#: C/gedit-undo-recent-action.page:23
+msgid "Shobha Tyagi"
+msgstr "Шобха Тиаджи (Shobha Tyagi)"
+
 #. (itstool) path: page/title
-#: C/gedit-create-new-file.page:14
+#: C/gedit-create-new-file.page:21
 msgid "Create a new file"
 msgstr "Создание нового файла"
 
 #. (itstool) path: page/p
-#: C/gedit-create-new-file.page:16
+#: C/gedit-create-new-file.page:23
 msgid ""
 "The easiest way to create a new file in <app>gedit</app>, is to click the "
-"icon in the toolbar that looks like a blank piece of paper. If you prefer, "
-"you may also select <guiseq><gui>File</gui><gui>New</gui></guiseq>, or press "
-"<keyseq><key>Ctrl</key><key>N</key></keyseq>."
+"<gui>Create a new document</gui> button on the left side of the toolbar, or "
+"press <keyseq><key>Ctrl</key><key>T</key></keyseq>."
 msgstr ""
-"Самый простой способ создать новый файл в <app>gedit</app> — нажать на "
-"значок в панели инструментов с изображением чистого листа бумаги. Также файл "
-"можно создать с помощью меню: выберите в меню <guiseq><gui>Файл</"
-"gui><gui>Создать</gui></guiseq> или нажмите комбинацию клавиш "
-"<keyseq><key>Ctrl</key><key>N</key></keyseq>."
+"Самый простой способ создать новый файл в <app>gedit</app> — это нажать "
+"кнопку <gui>Создать новый документ</gui> слева на панели инструментов, или "
+"нажать <keyseq><key>Ctrl</key><key>T</key></keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-create-new-file.page:21
+#: C/gedit-create-new-file.page:27
 msgid ""
 "Any one of these actions will create a new file in the <app>gedit</app> "
 "window. If you have other files open in <app>gedit</app>, the new file that "
@@ -351,6 +282,7 @@ msgstr ""
 "В качестве альтернативы команде <cmd>sudo</cmd>, можно получить права "
 "администратора, введя:"
 
+# минус "-" на тире "—" не заменять
 #. (itstool) path: page/code
 #: C/gedit-edit-as-root.page:31
 #, no-wrap
@@ -388,12 +320,12 @@ msgstr ""
 "помогут вам c созданием, сохранением, открытием и закрытием файлов."
 
 #. (itstool) path: page/title
-#: C/gedit-full-screen.page:14
+#: C/gedit-full-screen.page:21
 msgid "Use fullscreen mode"
 msgstr "Использование полноэкранного режима"
 
 #. (itstool) path: page/p
-#: C/gedit-full-screen.page:16
+#: C/gedit-full-screen.page:23
 msgid ""
 "When working with a large document, you may find it helpful to work in "
 "<app>gedit's</app> fullscreen mode. Using fullscreen mode will hide the "
@@ -408,25 +340,23 @@ msgstr ""
 "текущих задачах."
 
 #. (itstool) path: section/title
-#: C/gedit-full-screen.page:23
+#: C/gedit-full-screen.page:30
 msgid "Turn on fullscreen mode"
 msgstr "Включение полноэкранного режима"
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:24
+#: C/gedit-full-screen.page:31
 msgid ""
-"To turn on fullscreen mode, select <guiseq><gui>View</gui> <gui>Fullscreen</"
-"gui></guiseq>, or press <key>F11</key>. <app>gedit's</app> menu, title, and "
-"tab-bars will hide, and you will only be presented with the text of your "
-"current file."
+"To turn on fullscreen mode, press <key>F11</key>. <app>gedit's</app> menu, "
+"title, and tab-bars will hide, and you will only be presented with the text "
+"of your current file."
 msgstr ""
-"Чтобы включить полноэкранный режим, выберите <guiseq><gui>Вид</gui> <gui>Во "
-"весь экран</gui></guiseq>, или нажмите клавишу <key>F11</key>. Меню, "
+"Чтобы включить полноэкранный режим, нажмите клавишу <key>F11</key>. Меню, "
 "заголовок и панель вкладок <app>gedit</app> будут скрыты, останется виден "
 "только текст текущего файла."
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:28
+#: C/gedit-full-screen.page:34
 msgid ""
 "If you need to perform an action from the <app>gedit</app> menu while "
 "working in fullscreen mode, move your mouse pointer to the top of the "
@@ -439,7 +369,7 @@ msgstr ""
 "действие."
 
 #. (itstool) path: note/p
-#: C/gedit-full-screen.page:34
+#: C/gedit-full-screen.page:40
 msgid ""
 "To switch between open tabs while in fullscreen mode, press either "
 "<keyseq><key>Ctrl</key><key>Alt</key><key>PgUp</key></keyseq> or "
@@ -450,12 +380,12 @@ msgstr ""
 "<keyseq><key>Ctrl</key><key>Alt</key><key>PgDn</key></keyseq>."
 
 #. (itstool) path: section/title
-#: C/gedit-full-screen.page:42
+#: C/gedit-full-screen.page:48
 msgid "Turn off fullscreen mode"
 msgstr "Выключение полноэкранного режима"
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:43
+#: C/gedit-full-screen.page:49
 msgid ""
 "To turn off fullscreen mode and return to the standard <app>gedit</app> "
 "window, press <key>F11</key>."
@@ -464,7 +394,7 @@ msgstr ""
 "<key>F11</key>."
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:45
+#: C/gedit-full-screen.page:51
 msgid ""
 "You can also move your mouse cursor to the top of the screen, and wait for "
 "the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui> appears, "
@@ -569,12 +499,12 @@ msgstr ""
 "редактирования."
 
 #. (itstool) path: page/title
-#: C/gedit-open-files.page:18
+#: C/gedit-open-files.page:26
 msgid "Open a file or set of files"
 msgstr "Открытие файла или набора файлов"
 
 #. (itstool) path: page/p
-#: C/gedit-open-files.page:20
+#: C/gedit-open-files.page:28
 msgid ""
 "To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or "
 "press <keyseq><key>Ctrl</key><key>O</key></keyseq>."
@@ -583,27 +513,27 @@ msgstr ""
 "нажмите <keyseq><key>Ctrl</key><key>O</key></keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-open-files.page:22
+#: C/gedit-open-files.page:30
 msgid ""
-"This will cause the <gui>Open Files</gui> dialog to appear. Use your mouse "
-"or keyboard to select the file that you wish to open, and then click "
-"<gui>Open</gui>. The file that you've selected will open in a new tab."
+"This will cause the <gui>Open</gui> dialog to appear. Use your mouse or "
+"keyboard to select the file that you wish to open, and then click <gui>Open</"
+"gui>. The file that you've selected will open in a new tab."
 msgstr ""
-"Появится диалоговое окно <gui>Открыть файлы</gui>. С помощью мыши или "
-"клавиатуры выберите нужный файл и нажмите кнопку <gui>Открыть</gui>. "
-"Выбранный файл откроется в новой вкладке."
+"Появится диалоговое окно <gui>Открыть</gui>. С помощью мыши или клавиатуры "
+"выберите нужный файл и нажмите кнопку <gui>Открыть</gui>. Выбранный файл "
+"откроется в новой вкладке."
 
 #. (itstool) path: page/p
-#: C/gedit-open-files.page:25
+#: C/gedit-open-files.page:33
 msgid ""
-"To close the <gui>Open Files</gui> dialog without opening a file, click "
+"To close the <gui>Open</gui> dialog without opening a file, click "
 "<gui>Cancel</gui>."
 msgstr ""
-"Чтобы закрыть диалоговое окно <gui>Открыть файлы</gui>, нажмите кнопку "
-"<gui>Отмена</gui>."
+"Чтобы закрыть диалоговое окно <gui>Открыть</gui> без открытия файла, нажмите "
+"кнопку <gui>Отмена</gui>."
 
 #. (itstool) path: note/p
-#: C/gedit-open-files.page:28
+#: C/gedit-open-files.page:36
 msgid ""
 "You can use the <key>Ctrl</key> and <key>Shift</key> keys to open more than "
 "one file at a time. If you hold down the <key>Ctrl</key> key while you "
@@ -616,7 +546,7 @@ msgstr ""
 "выбранные файлы."
 
 #. (itstool) path: note/p
-#: C/gedit-open-files.page:35
+#: C/gedit-open-files.page:43
 msgid ""
 "Holding down the <key>Shift</key> while you select multiple files will open "
 "the first file that you select, the last file that you select, and all of "
@@ -749,7 +679,7 @@ msgstr ""
 msgid ""
 "Click the downward-facing arrow to the right of the <gui>Open</gui> button."
 msgstr ""
-"Справа от кнопки <gui>Открыть</gui> нажмите на обращенную вниз стрелку."
+"Справа от кнопки <gui>Открыть</gui> нажмите на обращённую вниз стрелку."
 
 #. (itstool) path: item/p
 #: C/gedit-open-recent.page:21
@@ -836,7 +766,7 @@ msgstr "Дополнительные модули gedit"
 #: C/gedit-plugins-insert-date-time.page:9 C/gedit-plugins-install.page:12
 #: C/gedit-plugins-modelines.page:9 C/gedit-plugins-sort.page:9
 #: C/gedit-replace.page:15 C/gedit-search.page:14 C/gedit-tabs-moving.page:16
-#: C/gedit-tabs.page:16 C/gedit-undo-recent-action.page:13
+#: C/gedit-tabs.page:17 C/gedit-undo-recent-action.page:15
 #: C/gedit-view-open-files-in-sidepane.page:14
 msgid "Daniel Neel"
 msgstr "Даниэль Нил (Daniel Neel)"
@@ -1150,14 +1080,14 @@ msgid ""
 "Installing third-party plugins gives you extra functionality that isn't "
 "available in default <app>gedit</app> plugins, or even the extra plugins "
 "that are part of the <app>gedit-plugins</app> package. An online list of "
-"third-party plugins is <link href=\"https://wiki.gnome.org/Apps/Gedit/"
-"Plugins#third_party\">kept here</link>."
+"third-party plugins is <link href=\"https://wiki.gnome.org/Apps/Gedit\">kept "
+"here</link>."
 msgstr ""
 "Установка сторонних модулей предоставляет дополнительную функциональность, "
 "которая не доступна в стандартных и дополнительных модулях <app>gedit</app>, "
 "которые являются частью пакета <app>gedit-plugins</app>. Онлайн-список "
-"сторонних модулей находится <link href=\"https://wiki.gnome.org/Apps/Gedit/"
-"Plugins#third_party\">здесь</link>."
+"сторонних модулей находится <link href=\"https://wiki.gnome.org/Apps/Gedit"
+"\">здесь</link>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-install.page:27
@@ -1517,12 +1447,6 @@ msgstr ""
 "Если также включён модуль <gui>Встроенный терминал</gui>, консоль Python "
 "будет отображена в нижней панели в виде отдельной вкладки."
 
-#. (itstool) path: credit/name
-#: C/gedit-plugins-quick-open.page:14
-#: C/gedit-plugins-zeitgeist-dataprovider.page:10 C/gedit-search.page:22
-msgid "Shobha Tyagi"
-msgstr "Шобха Тиаджи (Shobha Tyagi)"
-
 #. (itstool) path: info/desc
 #: C/gedit-plugins-quick-open.page:18
 msgid "Quickly open a file or set of files"
@@ -1664,6 +1588,18 @@ msgstr ""
 "external ref='figures/gedit-html-snippet.png' "
 "md5='1f02c599b116ed209e6fb79e3e63b9ca'"
 
+#. (itstool) path: credit/name
+#: C/gedit-plugins-snippets.page:13 C/gedit-plugins-sort.page:17
+#: C/gedit-printing-order.page:14 C/gedit-printing.page:13
+#: C/gedit-printing-select.page:13 C/gedit-quickstart.page:15
+#: C/gedit-replace.page:19 C/gedit-save-file.page:15 C/gedit-search.page:18
+#: C/gedit-shortcut-keys.page:28 C/gedit-spellcheck.page:19
+#: C/gedit-syntax-highlighting.page:13 C/gedit-tabs-moving.page:20
+#: C/gedit-tabs.page:21 C/gedit-undo-recent-action.page:19
+#: C/gedit-view-open-files-in-sidepane.page:18 C/index.page:17
+msgid "Sindhu S"
+msgstr "Синдху С (Sindhu S)"
+
 #. (itstool) path: info/desc
 #: C/gedit-plugins-snippets.page:17
 msgid "Use snippets to quickly insert often-used pieces of text"
@@ -1702,7 +1638,7 @@ msgstr "Чтобы включить модуль <app>Фрагменты</app>:"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:35 C/gedit-plugins-sort.page:44
-#: C/gedit-plugins-zeitgeist-dataprovider.page:29 C/gedit-spellcheck.page:36
+#: C/gedit-spellcheck.page:36
 msgid ""
 "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
 "\">Preferences</gui> <gui style=\"tab\">Plugins</gui></guiseq>."
@@ -2103,42 +2039,6 @@ msgid "To perform the sort operation, click <gui>Sort</gui>."
 msgstr ""
 "Для выполнения операции сортировки, выберите команду <gui>Сортировка</gui>."
 
-#. (itstool) path: info/desc
-#: C/gedit-plugins-zeitgeist-dataprovider.page:15
-msgid "Log user activity for documents which are opened in gedit"
-msgstr "Журналирование документов, открываемых в gedit"
-
-#. (itstool) path: page/title
-#: C/gedit-plugins-zeitgeist-dataprovider.page:18
-msgid "Zeitgeist dataprovider"
-msgstr "Источник данных Zietgeist"
-
-#. (itstool) path: page/p
-#: C/gedit-plugins-zeitgeist-dataprovider.page:20
-msgid ""
-"Zeitgeist is a service that logs user activities and events. Zeitgeist lets "
-"other applications access this information in the form of statistics and "
-"timelines.The Zeitgeist dataprovider plugin for <app>gedit</app> records "
-"user activity for documents used with gedit giving easy access to recently-"
-"used and frequently-used files."
-msgstr ""
-"Zeitgeist — это сервис, который регистрирует события и действия "
-"пользователя. Zeitgeist предоставляет доступ другим приложениям к этой "
-"информации в виде статистики и временных промежутков. Модуль Источник данных "
-"Zietgeist для <app>gedit</app> записывает действия пользователя над "
-"документами в gedit, обеспечивая удобный доступ к недавно использованным и "
-"часто используемым файлам."
-
-#. (itstool) path: steps/title
-#: C/gedit-plugins-zeitgeist-dataprovider.page:27
-msgid "Enable Zeitgeist dataprovider"
-msgstr "Включение модуля Источник данных Zietgeist"
-
-#. (itstool) path: item/p
-#: C/gedit-plugins-zeitgeist-dataprovider.page:34
-msgid "Select <gui style=\"menuitem\">Zietgeist Dataprovider</gui>."
-msgstr "Нажмите на <gui style=\"menuitem\">Источник данных Zietgeist</gui>."
-
 #. (itstool) path: credit/name
 #: C/gedit-printing-order.page:10 C/gedit-printing-select.page:9
 msgid "Phil Bull"
@@ -2241,7 +2141,7 @@ msgid ""
 "configured your printer. If you have not done this, please consult the <link "
 "href=\"help:gnome-help/printing\">printing help for GNOME</link>."
 msgstr ""
-"Для печати с помощью <app>gedit</app> требуется подключенный и настроенный "
+"Для печати с помощью <app>gedit</app> требуется подключённый и настроенный "
 "принтер. Если это не сделано, обратитесь к руководству <link href=\"help:"
 "gnome-help/printing\">Печать в среде GNOME</link>."
 
@@ -2303,7 +2203,7 @@ msgid ""
 "You can print your documents to paper using a local or remote printer. To "
 "print a file:"
 msgstr ""
-"Можно печатать документы на бумаге на локальном или удаленном принтере. "
+"Можно печатать документы на бумаге на локальном или удалённом принтере. "
 "Чтобы распечатать файл:"
 
 #. (itstool) path: item/p
@@ -2461,13 +2361,17 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gedit-quickstart.page:27
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gedit3-screenshot.png' "
+#| "md5='3f101415d3b97ca8b0e81dc3cc1a6bd7'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gedit3-screenshot.png' "
-"md5='3f101415d3b97ca8b0e81dc3cc1a6bd7'"
+"md5='883fe82b057396bce097926551bb109e'"
 msgstr ""
 "external ref='figures/gedit3-screenshot.png' "
-"md5='3f101415d3b97ca8b0e81dc3cc1a6bd7'"
+"md5='883fe82b057396bce097926551bb109e'"
 
 #. (itstool) path: page/title
 #: C/gedit-quickstart.page:21
@@ -2492,13 +2396,15 @@ msgstr ""
 #: C/gedit-quickstart.page:29
 msgid ""
 "Once <app>gedit</app> launches, you can start writing right away. To save "
-"your text, just click <gui>Save</gui>."
+"your text, just click the <gui>Save</gui> icon in the <app>gedit</app> "
+"toolbar."
 msgstr ""
 "После запуска <app>gedit</app>, можно сразу приступать к написанию текста. "
-"Чтобы сохранить текст, просто нажмите кнопку <gui>Сохранить</gui>."
+"Чтобы сохранить текст, нажмите кнопку <gui>Сохранить</gui> на панели "
+"инструментов <app>gedit</app>."
 
 #. (itstool) path: page/p
-#: C/gedit-quickstart.page:32
+#: C/gedit-quickstart.page:33
 msgid ""
 "To learn about additional <app>gedit</app> features and to get assistance "
 "with performing additional tasks, explore <link xref=\"index\">the other "
@@ -2525,7 +2431,7 @@ msgid ""
 "a <app>Replace</app> function that helps you to find and replace portions of "
 "text."
 msgstr ""
-"Редактирование текста может занять много времени. Для экономиии времени, в "
+"Редактирование текста может занять много времени. Для экономии времени, в "
 "<app>gedit</app> есть функция <app>Заменить</app>, которая может находить и "
 "заменять часть текста."
 
@@ -2634,7 +2540,7 @@ msgid ""
 "em>' and 'comm<em>and</em>er' would not be matched."
 msgstr ""
 "Используйте эту опцию, чтобы найти определённое слово, исключив фрагменты "
-"других слов. Например, если при включенной опции искать слово «на», то слово "
+"других слов. Например, если при включённой опции искать слово «на», то слово "
 "«на» будет соответствовать, а слова «<em>на</em>м» и «Па<em>на</em>ма» нет."
 
 #. (itstool) path: item/title
@@ -2669,33 +2575,34 @@ msgstr ""
 "его начала. Это гарантирует, что функция поиск/замена будет выполнена по "
 "всему документу."
 
+# escape sequence - управляющий символ, как например разрыв строки, символ табуляции и т.д. В русском переводе их часто называют непечатные символы, так как на содержание текста они не влияют.
 #. (itstool) path: section/title
 #: C/gedit-replace.page:112
 msgid "Using escape sequences"
-msgstr ""
+msgstr "Использование непечатных символов"
 
 #. (itstool) path: section/p
 #: C/gedit-replace.page:114
 msgid ""
 "You can use <em>escape sequences</em> to search for line breaks and tabs."
 msgstr ""
+"Можно использовать <em>непечатные символы</em> для поиска конца строк или "
+"знаков табуляции."
 
 #. (itstool) path: item/title
 #: C/gedit-replace.page:119
 msgid "\\n"
-msgstr ""
+msgstr "\\n"
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:120
-#, fuzzy
-#| msgid "Modelines"
 msgid "Newline"
-msgstr "Режим строк"
+msgstr "Новая строка"
 
 #. (itstool) path: item/title
 #: C/gedit-replace.page:123
 msgid "\\t"
-msgstr ""
+msgstr "\\t"
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:124
@@ -2705,12 +2612,13 @@ msgstr "Tab"
 #. (itstool) path: item/title
 #: C/gedit-replace.page:127
 msgid "\\r"
-msgstr ""
+msgstr "\\r"
 
+# Возвра́т каре́тки — управляющий символ или механизм, используемый для возвращения позиции устройства к началу строки. Часто обозначается как CR (от англ. carriage return). (wiki)
 #. (itstool) path: item/p
 #: C/gedit-replace.page:128
 msgid "Carriage return"
-msgstr ""
+msgstr "Возврат каретки"
 
 #. (itstool) path: section/p
 #: C/gedit-replace.page:132
@@ -2722,34 +2630,37 @@ msgid ""
 "search for escape sequences in the same way: to search for or replace with a "
 "<input>\\n</input>, use the <input>\\\\n</input> term."
 msgstr ""
+"Если нужно найти в тексте <output>\\</output> (обратный слеш) или любой "
+"другой непечатный символ, то при поиске нужно перед обратным слешем "
+"поставить ещё один обратный слеш. Например, для поиска <input>\\</input> "
+"нужно ввести <input>\\\\</input>. Остальные непечатные символы можно найти "
+"таким же образом: чтобы найти или заменить <input>\\n</input>, введите "
+"<input>\\\\n</input>."
 
 #. (itstool) path: page/title
-#: C/gedit-save-file.page:20
+#: C/gedit-save-file.page:26
 msgid "Save a file"
 msgstr "Сохранение файла"
 
 #. (itstool) path: page/p
-#: C/gedit-save-file.page:22
+#: C/gedit-save-file.page:28
 msgid ""
-"To save a file in <app>gedit</app>, click on the disk-drive icon with the "
-"word <gui style=\"button\">Save</gui> next to it. You may also select "
-"<guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Save</gui></"
-"guiseq>, or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
+"To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save "
+"the current file</gui> button with the disk-drive icon on the right side of "
+"the toolbar or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
 msgstr ""
-"Чтобы сохранить файл в <app>gedit</app>, нажмите на значок диска с надписью "
-"<gui style=\"button\">Сохранить</gui> рядом с ним. Также можно выбрать "
-"<guiseq><gui style=\"menu\">Файл</gui> <gui style=\"menuitem\">Сохранить</"
-"gui></guiseq>, или просто нажать <keyseq><key>Ctrl</key><key>S</key></"
-"keyseq>."
+"Чтобы сохранить файл в <app>gedit</app>, нажмите на кнопку <gui style="
+"\"button\">Сохранить текущий файл</gui> в виде значка диска справа на панели "
+"инструментов, или нажмите <keyseq><key>Ctrl</key><key>S</key></keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-save-file.page:26
+#: C/gedit-save-file.page:31
 msgid ""
-"If you are saving a new file, the <gui>Save File</gui> dialog will appear, "
-"and you can select a name for the file, as well as the directory where you "
-"would like the file to be saved."
+"If you are saving a new file, the <gui>Save As</gui> dialog will appear, and "
+"you can select a name for the file, as well as the directory where you would "
+"like the file to be saved."
 msgstr ""
-"При сохранении нового файла, появится диалоговое окно <gui>Сохранить файл</"
+"При сохранении нового файла, появится диалоговое окно <gui>Сохранить как</"
 "gui>, в котором можно выбрать имя файла, а также каталог, в который будет "
 "сохранён файл."
 
@@ -2912,44 +2823,44 @@ msgstr ""
 "key><key>Shift</key><key>K</key></keyseq>."
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:17
+#: C/gedit-shortcut-keys.page:16
 msgid "Paolo Borelli"
 msgstr "Паоло Борелли (Paolo Borelli)"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:20
+#: C/gedit-shortcut-keys.page:19
 msgid "Jesse van den Kieboom"
 msgstr "Джесси Ван ден Кибум (Jesse van den Kieboom)"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:23
+#: C/gedit-shortcut-keys.page:22
 msgid "Steve Frécinaux"
 msgstr "Стив Фресинукс (Steve Frécinaux)"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:26
+#: C/gedit-shortcut-keys.page:25
 msgid "Ignacio Casal Quinteiro"
 msgstr "Игнасио Касал Куантеро (Ignacio Casal Quinteiro)"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:33 C/gedit-tab-groups.page:14
-#: C/gedit-tabs-moving.page:24 C/gedit-tabs.page:24
+#: C/gedit-shortcut-keys.page:32 C/gedit-tab-groups.page:14
+#: C/gedit-tabs-moving.page:24 C/gedit-tabs.page:25
 msgid "Radina Matic"
 msgstr "Радина Матик (Radina Matic)"
 
 #. (itstool) path: credit/years
-#: C/gedit-shortcut-keys.page:35 C/gedit-tab-groups.page:16
-#: C/gedit-tabs-moving.page:26 C/gedit-tabs.page:26
+#: C/gedit-shortcut-keys.page:34 C/gedit-tab-groups.page:16
+#: C/gedit-tabs-moving.page:26 C/gedit-tabs.page:27
 msgid "2013"
 msgstr "2013"
 
 #. (itstool) path: page/title
-#: C/gedit-shortcut-keys.page:40
+#: C/gedit-shortcut-keys.page:39
 msgid "Shortcut keys"
 msgstr "Комбинации клавиш"
 
 #. (itstool) path: page/p
-#: C/gedit-shortcut-keys.page:42
+#: C/gedit-shortcut-keys.page:41
 msgid ""
 "Use <gui>shortcut keys</gui> to perform common tasks more quickly than with "
 "the mouse and menus. The following tables list all of <app>gedit's</app> "
@@ -2960,103 +2871,113 @@ msgstr ""
 "комбинации клавиш <app>gedit</app>."
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:61
+#: C/gedit-shortcut-keys.page:46
 msgid "Tab-related Shortcut keys"
 msgstr "Комбинация клавиш для работы с вкладками"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:64 C/gedit-shortcut-keys.page:117
-#: C/gedit-shortcut-keys.page:163 C/gedit-shortcut-keys.page:245
+#: C/gedit-shortcut-keys.page:49 C/gedit-shortcut-keys.page:105
+#: C/gedit-shortcut-keys.page:151 C/gedit-shortcut-keys.page:245
 #: C/gedit-shortcut-keys.page:266 C/gedit-shortcut-keys.page:303
 #: C/gedit-shortcut-keys.page:332
 msgid "To Do This"
 msgstr "Действие"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:65 C/gedit-shortcut-keys.page:118
-#: C/gedit-shortcut-keys.page:164 C/gedit-shortcut-keys.page:246
+#: C/gedit-shortcut-keys.page:50 C/gedit-shortcut-keys.page:106
+#: C/gedit-shortcut-keys.page:152 C/gedit-shortcut-keys.page:246
 #: C/gedit-shortcut-keys.page:267 C/gedit-shortcut-keys.page:304
 #: C/gedit-shortcut-keys.page:333
 msgid "Press This"
 msgstr "Комбинация"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:70
+#: C/gedit-shortcut-keys.page:55
 msgid "Switch to the next tab to the left"
 msgstr "Переключиться на следующую вкладку влево"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:71
+#: C/gedit-shortcut-keys.page:56
 msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:75
+#: C/gedit-shortcut-keys.page:60
 msgid "Switch to the next tab to the right"
 msgstr "Переключиться на следующую вкладку вправо"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:76
+#: C/gedit-shortcut-keys.page:61
 msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:80
+#: C/gedit-shortcut-keys.page:65
 msgid "Close tab"
 msgstr "Закрыть вкладку"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:81 C/gedit-shortcut-keys.page:150
+#: C/gedit-shortcut-keys.page:66 C/gedit-shortcut-keys.page:138
 msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:84
+#: C/gedit-shortcut-keys.page:69
 msgid "Save all tabs"
 msgstr "Сохранить все вкладки"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:85
+#: C/gedit-shortcut-keys.page:70
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:89
+#: C/gedit-shortcut-keys.page:74
 msgid "Close all tabs"
 msgstr "Закрыть все вкладки"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:90
-msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>W</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>W</key></keyseq>"
+#: C/gedit-shortcut-keys.page:75
+msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:94
+#: C/gedit-shortcut-keys.page:78
+msgid "Reopen the most recently closed tab"
+msgstr "Повторно открыть последнюю закрытую вкладку"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:79
+msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:82
 msgid "Jump to <var>n</var>th tab"
 msgstr "Перейти на <var>n</var>-ю вкладку"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:95
+#: C/gedit-shortcut-keys.page:83
 msgid "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:99
+#: C/gedit-shortcut-keys.page:87
 msgid "New tab group"
 msgstr "Создать группу вкладок"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:100
+#: C/gedit-shortcut-keys.page:88
 msgid "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:103
+#: C/gedit-shortcut-keys.page:91
 msgid "Previous tab group"
 msgstr "Предыдущая группа вкладок"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:104
+#: C/gedit-shortcut-keys.page:92
 msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></"
 "keyseq>"
@@ -3065,12 +2986,12 @@ msgstr ""
 "keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:107
+#: C/gedit-shortcut-keys.page:95
 msgid "Next tab group"
 msgstr "Следующая группа вкладок"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:108
+#: C/gedit-shortcut-keys.page:96
 msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></"
 "keyseq>"
@@ -3079,259 +3000,291 @@ msgstr ""
 "keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:114
+#: C/gedit-shortcut-keys.page:102
 msgid "Shortcut keys for working with files"
 msgstr "Комбинации клавиш для работы с файлами"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:123
+#: C/gedit-shortcut-keys.page:111
 msgid "Create a new document"
 msgstr "Создать новый документ"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:124
+#: C/gedit-shortcut-keys.page:112
 msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:127
+#: C/gedit-shortcut-keys.page:115
 msgid "Open a document"
 msgstr "Открыть документ"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:128
+#: C/gedit-shortcut-keys.page:116
 msgid "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:131
+#: C/gedit-shortcut-keys.page:119
 msgid "Save the current document"
 msgstr "Сохранить текущий документ"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:132
+#: C/gedit-shortcut-keys.page:120
 msgid "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:135
+#: C/gedit-shortcut-keys.page:123
 msgid "Save the current document with a new filename"
 msgstr "Сохранить текущий документ под новым именем"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:136
+#: C/gedit-shortcut-keys.page:124
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:140
+#: C/gedit-shortcut-keys.page:128
 msgid "Print the current document"
 msgstr "Напечатать текущий документ"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:141
+#: C/gedit-shortcut-keys.page:129
 msgid "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:144
+#: C/gedit-shortcut-keys.page:132
 msgid "Print preview"
 msgstr "Предпросмотр печати"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:145
+#: C/gedit-shortcut-keys.page:133
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:149
+#: C/gedit-shortcut-keys.page:137
 msgid "Close the current document"
 msgstr "Закрыть текущий документ"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:153
+#: C/gedit-shortcut-keys.page:141
 msgid "Quit gedit"
 msgstr "Завершить gedit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:154
+#: C/gedit-shortcut-keys.page:142
 msgid "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:160
+#: C/gedit-shortcut-keys.page:148
 msgid "Shortcut keys for editing files"
 msgstr "Комбинации клавиш для редактирования файлов"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:169
+#: C/gedit-shortcut-keys.page:157
 msgid "Move to the beginning of the current line"
 msgstr "Перейти в начало текущей строки"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:170
+#: C/gedit-shortcut-keys.page:158
 msgid "<key>Home</key>"
 msgstr "<key>Home</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:173
+#: C/gedit-shortcut-keys.page:161
 msgid "Move to the end of the current line"
 msgstr "Перейти в конец текущей строки"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:174
+#: C/gedit-shortcut-keys.page:162
 msgid "<key>End</key>"
 msgstr "<key>End</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:177
+#: C/gedit-shortcut-keys.page:165
 msgid "Move to the beginning of the document"
 msgstr "Перейти к началу документа"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:178
+#: C/gedit-shortcut-keys.page:166
 msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:181
+#: C/gedit-shortcut-keys.page:169
 msgid "Move to the end of the document"
 msgstr "Перейти к концу документа"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:182
+#: C/gedit-shortcut-keys.page:170
 msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:185
+#: C/gedit-shortcut-keys.page:173
 msgid "Move the selected word right one word"
 msgstr "Переместить выделенное слово вправо на одно слово"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:186
+#: C/gedit-shortcut-keys.page:174
 msgid "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Стрелка вправо</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:189
+#: C/gedit-shortcut-keys.page:177
 msgid "Move the selected word left one word"
 msgstr "Переместить выделенное слово влево на одно слово"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:190
+#: C/gedit-shortcut-keys.page:178
 msgid "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Стрелка влево</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:193
+#: C/gedit-shortcut-keys.page:181
 msgid "Undo the last action"
 msgstr "Отменить последнее действие"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:194
+#: C/gedit-shortcut-keys.page:182
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:197
+#: C/gedit-shortcut-keys.page:185
 msgid "Redo the last undone action"
 msgstr "Вернуть последнее отменённое действие"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:198
+#: C/gedit-shortcut-keys.page:186
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:202
+#: C/gedit-shortcut-keys.page:190
 msgid "Cut the selected text or region and place it on the clipboard"
 msgstr "Вырезать выделенный текст и поместить его в буфер обмена"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:204
+#: C/gedit-shortcut-keys.page:192
 msgid "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:207
+#: C/gedit-shortcut-keys.page:195
 msgid "Copy the selected text or region onto the clipboard"
 msgstr "Скопировать выделенный текст в буфер обмена"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:208
+#: C/gedit-shortcut-keys.page:196
 msgid "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:211
+#: C/gedit-shortcut-keys.page:199
 msgid "Paste the contents of the clipboard"
 msgstr "Вставить содержимое буфера обмена"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:212
+#: C/gedit-shortcut-keys.page:200
 msgid "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:215
+#: C/gedit-shortcut-keys.page:203
 msgid "Select all text in the file"
 msgstr "Выделить весь текст в файле"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:216
+#: C/gedit-shortcut-keys.page:204
 msgid "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:219
+#: C/gedit-shortcut-keys.page:207
 msgid "Delete the current line"
 msgstr "Удалить текущую строку"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:220
+#: C/gedit-shortcut-keys.page:208
 msgid "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:223
+#: C/gedit-shortcut-keys.page:211
 msgid "Move the selected line up one line"
 msgstr "Переместить выделенную строку на одну строку вверх"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:224
+#: C/gedit-shortcut-keys.page:212
 msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Стрелка вверх</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:227
+#: C/gedit-shortcut-keys.page:215
 msgid "Move the selected line down one line"
 msgstr "Переместить выделенную строку на одну строку вниз"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:228
+#: C/gedit-shortcut-keys.page:216
 msgid "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Стрелка вниз</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:231
+#: C/gedit-shortcut-keys.page:219
 msgid "Add a tab stop"
 msgstr "Добавить табуляцию"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:232
+#: C/gedit-shortcut-keys.page:220
 msgid "<keyseq><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:235
+#: C/gedit-shortcut-keys.page:223
 msgid "Remove a tab stop"
 msgstr "Убрать табуляцию"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:236
+#: C/gedit-shortcut-keys.page:224
 msgid "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:227
+msgid "Convert the selected text to upper case"
+msgstr "Преобразовать все буквы выделенного текста в заглавные"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:228
+msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:231
+msgid "Convert the selected text to lower case"
+msgstr "Преобразовать все буквы выделенного текста в строчные"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:232
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:235
+msgid "Toggle case of the selected text"
+msgstr "Переключить регистр выделенного текста"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:236
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 
 #. (itstool) path: table/title
 #: C/gedit-shortcut-keys.page:242
@@ -3726,7 +3679,7 @@ msgstr ""
 #. (itstool) path: page/title
 #: C/gedit-tab-groups.page:22
 msgid "Organize files in grouped tabs"
-msgstr ""
+msgstr "Упорядочить файлы в сгруппированные вкладки"
 
 #. (itstool) path: page/p
 #: C/gedit-tab-groups.page:24
@@ -3737,6 +3690,11 @@ msgid ""
 "\"Untitled Document\" in the new pane, and make it active. You can open "
 "files into that tab group and move tabs from one tab group to another."
 msgstr ""
+"Если вы работаете с множеством вкладок в <app>gedit</app>, то можно "
+"сгруппировать их, так будет легче сохранять открытые файлы упорядоченными. "
+"Добавление новой группы вкладок разделит окно <app>gedit</app> на две "
+"панели, откроет новую вкладку «Несохранённый документ» в новой панели и "
+"сделает её активной."
 
 #. (itstool) path: section/title
 #: C/gedit-tab-groups.page:31
@@ -3773,6 +3731,10 @@ msgid ""
 "You can move the handle right or left assigning more or less space of "
 "<app>gedit</app> window between panes according to your needs."
 msgstr ""
+"Это действие разделит окно <app>gedit</app> на две панели, панель с новой "
+"группой вкладок будет помещена справа от активной вкладки. Можно перемещать "
+"разделитель вправо либо влево, распределяя пространство окна <app>gedit</"
+"app> между панелями в соответствии с вашими потребностями."
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:51
@@ -3780,66 +3742,59 @@ msgid ""
 "You can open as much tab groups in <app>gedit</app> window as your screen "
 "allows, but you will have to move the handle in order to see them correctly."
 msgstr ""
+"В окне <app>gedit</app> можно открыть столько групп вкладок, сколько "
+"позволяет экран монитора, но для корректного отображения вкладок придётся "
+"перемещать разделитель."
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:55
 msgid ""
 "To close a tab group pane just close all the tabs that are opened inside it."
 msgstr ""
+"Чтобы закрыть панель группы вкладок, нужно закрыть все вкладки, которые "
+"открыты в этой панели."
 
 #. (itstool) path: section/title
 #: C/gedit-tab-groups.page:61
-#, fuzzy
-#| msgid "Move a tab to another tab group"
 msgid "Move through tab groups"
-msgstr "Перемещение вкладки из одной группы вкладок в другую"
+msgstr "Перемещение вкладкок по группам вкладок"
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:63
 msgid "To move forward (on the next) tab group:"
-msgstr ""
+msgstr "Чтобы переместить вкладку в следующую группу вкладок:"
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:67
-#, fuzzy
-#| msgid ""
-#| "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
-#| "<gui>Open Files</gui> dialog."
 msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>Next Tab Group</gui></guiseq> in the "
 "main menu."
 msgstr ""
-"Выберите <guiseq><gui>Файл</gui><gui>Открыть</gui></guiseq>, появится "
-"диалоговое окно <gui>Открыть файлы</gui>."
+"Выберите <guiseq><gui>Документы</gui><gui>Следующая группа вкладок</gui></"
+"guiseq> в главном меню приложения."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:71
-#, fuzzy
-#| msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 msgid ""
 "Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</"
 "key></keyseq> shortcut."
-msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
+msgstr ""
+"Используйте комбинацию клавиш <keyseq><key>Shift</key><key>Ctrl</"
+"key><key>Alt</key><key>Page down</key></keyseq>"
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:76
-#, fuzzy
-#| msgid "Move a tab to another tab group"
 msgid "To move backward (on the previous) tab group:"
-msgstr "Перемещение вкладки из одной группы вкладок в другую"
+msgstr "Чтобы переместить вкладку в предыдущую группу вкладок:"
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:80
-#, fuzzy
-#| msgid ""
-#| "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
-#| "<gui>Open Files</gui> dialog."
 msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>Previous Tab Group</gui></guiseq> in "
 "the main menu."
 msgstr ""
-"Выберите <guiseq><gui>Файл</gui><gui>Открыть</gui></guiseq>, появится "
-"диалоговое окно <gui>Открыть файлы</gui>."
+"Выберите <guiseq><gui>Документы</gui><gui>Предыдущая группа вкладок</gui></"
+"guiseq> в главном меню приложения."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:84
@@ -3965,7 +3920,7 @@ msgid ""
 "tab onto the top bar at the top of the screen."
 msgstr ""
 "Чтобы переместить вкладку в новое окно, когда окно <app>gedit</app> "
-"развернуто на весь экран, переместите вкладку на заголовок окна в верхней "
+"развёрнуто на весь экран, переместите вкладку на заголовок окна в верхней "
 "части экрана."
 
 #. (itstool) path: section/title
@@ -3996,7 +3951,7 @@ msgid ""
 "This will reveal each of the open <app>gedit</app> windows. You can then "
 "release the tab on the desired <app>gedit</app> window."
 msgstr ""
-"Возможно, вам будет проще перемещать вкладки из одного окна в другое путем "
+"Возможно, вам будет проще перемещать вкладки из одного окна в другое путём "
 "перемещения вкладки в левый верхний угол в меню <gui>Обзор</gui>. Там будут "
 "отображены все открытые окна <app>gedit</app>. Поднесите вкладку к нужному "
 "окну <app>gedit</app> и отпустите."
@@ -4011,12 +3966,12 @@ msgstr ""
 "link>, чтобы узнать комбинации клавиш для быстрого управления вкладками."
 
 #. (itstool) path: page/title
-#: C/gedit-tabs.page:31
+#: C/gedit-tabs.page:37
 msgid "Add and remove tabs"
 msgstr "Добавление и удаление вкладок"
 
 #. (itstool) path: page/p
-#: C/gedit-tabs.page:32
+#: C/gedit-tabs.page:38
 msgid ""
 "Working with tabs in <app>gedit</app> allows you to keep an eye on several "
 "files in a single window. The tab that is larger than the other tabs "
@@ -4029,27 +3984,27 @@ msgstr ""
 "работы файлы."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs.page:38
+#: C/gedit-tabs.page:44
 msgid "Adding tabs"
 msgstr "Добавление вкладок"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs.page:39
+#: C/gedit-tabs.page:45
 msgid ""
-"To add a new tab, create a new file with <keyseq><key>Ctrl</key> <key>N</"
+"To add a new tab, create a new file with <keyseq><key>Ctrl</key> <key>T</"
 "key></keyseq>. The tab will be added to the right side of any other tabs."
 msgstr ""
-"Чтобы добавить новую вкладку, создайте новый файл, нажав <keyseq><key>Ctrl</"
-"key> <key>N</key></keyseq>. Вкладка будет добавлена справа от остальных "
+"Чтобы добавить новую вкладку, создайте новый файл нажав <keyseq><key>Ctrl</"
+"key> <key>T</key></keyseq>. Вкладка будет добавлена справа от остальных "
 "вкладок."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs.page:45
+#: C/gedit-tabs.page:51
 msgid "Removing tabs"
 msgstr "Удаление вкладок"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs.page:46
+#: C/gedit-tabs.page:52
 msgid ""
 "To remove a tab, click the <gui style=\"button\">×</gui> on the tab's right "
 "side. To remove all open tabs, press <keyseq><key>Ctrl</key> <key>Shift</"
@@ -4060,40 +4015,23 @@ msgstr ""
 "<key>Shift</key><key>W</key></keyseq>."
 
 #. (itstool) path: page/title
-#: C/gedit-undo-recent-action.page:23
+#: C/gedit-undo-recent-action.page:30
 msgid "Undo a recent action"
 msgstr "Отмена последнего действия"
 
 #. (itstool) path: page/p
-#: C/gedit-undo-recent-action.page:25
-msgid ""
-"If you make a mistake while using <app>gedit</app>, you can undo it by "
-"pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
-"<guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem\">Undo</gui></"
-"guiseq>. Doing so will cause <app>gedit</app> to undo one set of similar "
-"actions."
-msgstr ""
-"Если при использовании <app>gedit</app> была допущена ошибка, её можно "
-"отменить, нажав <keyseq><key>Ctrl</key><key>Z</key></keyseq>, или выбрав "
-"<guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem\">Отменить</"
-"gui></guiseq>. Это может привести к отмене нескольких одинаковых действий."
-
-#. (itstool) path: note/p
 #: C/gedit-undo-recent-action.page:32
 msgid ""
-"Undoing a \"set of similar actions\" means, for example, that <app>gedit</"
-"app> will remove an entire word rather than removing each character in the "
-"word one at a time. This makes <app>gedit</app>'s <em>undo</em> feature more "
-"efficient."
+"If you make a mistake while using <app>gedit</app>, you can undo it by "
+"pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>."
 msgstr ""
-"Отмена «нескольких одинаковых действий» означает, например, что <app>gedit</"
-"app> будет удалять слово целиком, а не каждый символ в слове по одному за "
-"раз. Это делает функцию <em>отмены</em> в <app>gedit</app> более эффективной."
+"Если вы сделали ошибку при использовании <app>gedit</app>, можно отменить "
+"изменения нажав <keyseq><key>Ctrl</key><key>Z</key></keyseq>."
 
 #. (itstool) path: note/p
-#: C/gedit-undo-recent-action.page:39
-msgid "You cannot undo a change after you have saved it."
-msgstr "После сохранения файла, отмена изменений невозможна."
+#: C/gedit-undo-recent-action.page:36
+msgid "You cannot undo a change after you have closed a <app>gedit</app> file."
+msgstr "После закрытия файла в <app>gedit</app>, отмена изменений невозможна."
 
 #. (itstool) path: page/title
 #: C/gedit-view-open-files-in-sidepane.page:24
@@ -4156,6 +4094,67 @@ msgstr ""
 "несколько окон, в боковой панели будут отображены только открытые в "
 "выбранном окне файлы."
 
+#. (itstool) path: info/title
+#: C/index.page:8
+msgctxt "link"
+msgid "gedit Text Editor"
+msgstr "Текстовый редактор gedit"
+
+#. (itstool) path: info/title
+#: C/index.page:9
+msgctxt "text"
+msgid "gedit Text Editor"
+msgstr "Текстовый редактор gedit"
+
+#. (itstool) path: page/title
+#: C/index.page:25
+msgid "<_:media-1/> gedit Text Editor"
+msgstr "<_:media-1/> Текстовый редактор gedit"
+
+#. (itstool) path: page/p
+#: C/index.page:29
+msgid ""
+"Welcome to the <app>gedit</app> help guide. For a quick introduction into "
+"both <app>gedit's</app> most basic features, as well as some advanced "
+"keyboard shortcuts, visit the <link xref=\"gedit-quickstart\">Get started "
+"with gedit</link> and <link xref=\"gedit-shortcut-keys\">Shortcut keys</"
+"link> pages."
+msgstr ""
+"Добро пожаловать в руководство по текстовому редактору <app>gedit</app>. "
+"Чтобы узнать об основных функциях <app>gedit</app>, а также о некоторых "
+"дополнительных комбинациях клавиш, посетите страницы: <link xref=\"gedit-"
+"quickstart\">Начало работы с gedit</link> и <link xref=\"gedit-shortcut-keys"
+"\">Комбинации клавиш</link>."
+
+#. (itstool) path: page/p
+#: C/index.page:35
+msgid ""
+"Other help topics are grouped together into sections below. Enjoy using "
+"<app>gedit</app>!"
+msgstr ""
+"Другие темы руководства сгруппированы по разделам ниже. Приятного "
+"использования <app>gedit</app>!"
+
+#. (itstool) path: section/title
+#: C/index.page:39
+msgid "Working With Files"
+msgstr "Работа с файлами"
+
+#. (itstool) path: section/title
+#: C/index.page:44
+msgid "Configure gedit"
+msgstr "Настройка gedit"
+
+#. (itstool) path: section/title
+#: C/index.page:48
+msgid "gedit Plugins"
+msgstr "Модули gedit"
+
+#. (itstool) path: section/title
+#: C/index.page:52
+msgid "Printing with gedit"
+msgstr "Печать с помощью gedit"
+
 #. (itstool) path: p/link
 #: C/legal.xml:3
 msgid "http://creativecommons.org/licenses/by-sa/3.0/"
@@ -4173,27 +4172,3 @@ msgstr ""
 "Attribution-ShareAlike 3.0 Unported. Для просмотра копии этой лицензии "
 "посетите <_:link-1/> или отправьте письмо по адресу: Creative Commons, 444 "
 "Castro Street, Suite 900, Mountain View, California, 94041, USA."
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-icon.png' "
-#~ "md5='a7174de2671462e1ac4f80a82ad09184'"
-#~ msgstr ""
-#~ "external ref='figures/gedit-icon.png' "
-#~ "md5='a7174de2671462e1ac4f80a82ad09184'"
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-side-pane1.png' "
-#~ "md5='ac9c80cb0552d63b593c71f23be69b53'"
-#~ msgstr ""
-#~ "external ref='figures/gedit-side-pane1.png' "
-#~ "md5='ac9c80cb0552d63b593c71f23be69b53'"
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-side-pane2.png' "
-#~ "md5='e7a12a43adc9c9cb8c992ad22a815a57'"
-#~ msgstr ""
-#~ "external ref='figures/gedit-side-pane2.png' "
-#~ "md5='e7a12a43adc9c9cb8c992ad22a815a57'"
