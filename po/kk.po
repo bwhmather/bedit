@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2014-09-06 08:22+0000\n"
-"PO-Revision-Date: 2014-10-27 16:32+0600\n"
+"PO-Revision-Date: 2014-10-28 07:12+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: kk\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -574,13 +574,12 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Сақтамасаңыз, соңғы %ld секундта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:374
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
-msgstr ""
+msgstr "Сақтамасаңыз, соңғы минутта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:380
 #, c-format
@@ -591,7 +590,7 @@ msgid_plural ""
 "If you don't save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-msgstr[1] ""
+"Сақтамасаңыз, соңғы минут және %ld секундта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:390
 #, c-format
@@ -600,12 +599,11 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Сақтамасаңыз, соңғы %ld минутта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:405
 msgid "If you don't save, changes from the last hour will be permanently lost."
-msgstr ""
+msgstr "Сақтамасаңыз, соңғы сағатта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:411
 #, c-format
@@ -616,7 +614,7 @@ msgid_plural ""
 "If you don't save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-msgstr[1] ""
+"Сақтамасаңыз, соңғы сағат және %d минутта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:426
 #, c-format
@@ -624,30 +622,28 @@ msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Сақтамасаңыз, соңғы %d сағатта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:470
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
-msgstr ""
+msgstr "\"%s\" құжат өзгерістері қайтарылмастай жоғалады."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:475
 #, c-format
 msgid "Save changes to document “%s” before closing?"
-msgstr "Жабу алдында “%s” құжаттың өзгерістерін сақтау керек пе?"
+msgstr "Жабу алдында \"%s\" құжат өзгерістерін сақтау керек пе?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:490
 #: ../gedit/gedit-close-confirmation-dialog.c:651
 msgid "Saving has been disabled by the system administrator."
-msgstr ""
+msgstr "Жүйелік әкімші сақтау мүмкіндігін сөндірген."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:599
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d құжат өзгерістері қайтарылмастай жоғалатын болады."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:607
 #, c-format
@@ -655,19 +651,20 @@ msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
-msgstr[1] ""
+"Сақталмаған өзгерістері бар %d құжат бар болып тұр. Жабу алдында "
+"өзгерістерді сақтау керек пе?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:627
 msgid "Docum_ents with unsaved changes:"
-msgstr ""
+msgstr "Сақталмаған өзгерістері бар құ_жаттар:"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:631
 msgid "S_elect the documents you want to save:"
-msgstr "Сақ_тауға тиісті құжаттарды таңдаңыз"
+msgstr "Сақ_тауға тиісті құжаттарды таңдаңыз:"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:655
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr ""
+msgstr "Сақтамасаңыз, барлық өзгерістер қайтарылмастай жоғалады."
 
 #: ../gedit/gedit-commands-file.c:256
 #, c-format
@@ -764,13 +761,12 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Соңғы %ld секундта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-commands-file.c:1256
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
-msgstr ""
+msgstr "Соңғы минутта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-commands-file.c:1262
 #, c-format
@@ -780,8 +776,7 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "permanently lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Соңғы минут және %ld секундта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-commands-file.c:1272
 #, c-format
@@ -790,12 +785,11 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Соңғы %ld минутта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-commands-file.c:1287
 msgid "Changes made to the document in the last hour will be permanently lost."
-msgstr ""
+msgstr "Соңғы сағатта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-commands-file.c:1293
 #, c-format
@@ -805,8 +799,7 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Соңғы сағат және %d минутта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-commands-file.c:1308
 #, c-format
@@ -814,8 +807,7 @@ msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Соңғы %d сағатта жасалған өзгерістер жоғалады."
 
 #: ../gedit/gedit-commands-file.c:1331
 msgid "_Revert"
@@ -864,7 +856,7 @@ msgstr "Тек оқу"
 #: ../gedit/gedit-encodings-combo-box.c:302
 #: ../gedit/gedit-file-chooser-dialog-osx.c:561
 msgid "Automatically Detected"
-msgstr "Автоанықталған"
+msgstr "Автоанықтау"
 
 #: ../gedit/gedit-encodings-combo-box.c:331
 #: ../gedit/gedit-file-chooser-dialog-osx.c:570
@@ -920,16 +912,16 @@ msgid "_Retry"
 msgstr "Қа_йталау"
 
 #: ../gedit/gedit-io-error-info-bar.c:167
-#, fuzzy, c-format
+#, c-format
 #| msgid "Could not open the file %s."
 msgid "Could not find the file “%s”."
-msgstr "Томды табу мүмкін емес: %s"
+msgstr "\"%s\" файлын табу мүмкін емес."
 
 #: ../gedit/gedit-io-error-info-bar.c:169
 #: ../gedit/gedit-io-error-info-bar.c:209
 #: ../gedit/gedit-io-error-info-bar.c:216
 msgid "Please check that you typed the location correctly and try again."
-msgstr ""
+msgstr "Орналасуды дұрыс енгізгеніңізді тексеріп, қайталап көріңіз."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:188
@@ -990,10 +982,10 @@ msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:357
-#, fuzzy, c-format
+#, c-format
 #| msgid "Could not open the file %s."
 msgid "Could not revert the file “%s”."
-msgstr "Файлды “%s” етіп сақтау мүмкін емес."
+msgstr "\"%s\" файлын қайтару мүмкін емес."
 
 #: ../gedit/gedit-io-error-info-bar.c:384
 #, fuzzy
@@ -1001,9 +993,9 @@ msgid "Ch_aracter Encoding:"
 msgstr "Кодталуы"
 
 #: ../gedit/gedit-io-error-info-bar.c:445
-#, fuzzy, c-format
+#, c-format
 msgid "The location “%s” is not currently reachable."
-msgstr "Орналасуы: %s"
+msgstr "\"%s\" орналасуы қолжетерсіз."
 
 #: ../gedit/gedit-io-error-info-bar.c:460
 msgid "Your system is offline. Check your network."
@@ -1013,9 +1005,8 @@ msgstr ""
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:503
 #: ../gedit/gedit-io-error-info-bar.c:772
-#, fuzzy
 msgid "Edit Any_way"
-msgstr "_Түзету"
+msgstr "Со_нда да түзету"
 
 #: ../gedit/gedit-io-error-info-bar.c:595
 msgid ""
@@ -1024,14 +1015,12 @@ msgid ""
 msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:599
-#, fuzzy
 msgid "You do not have the permissions necessary to open the file."
-msgstr "Файлды сақтау үшін керек рұқсаттарыңыз жоқ."
+msgstr "Файлды ашу үшін керек рұқсаттарыңыз жоқ."
 
 #: ../gedit/gedit-io-error-info-bar.c:605
-#, fuzzy
 msgid "Unable to detect the character encoding."
-msgstr "Таңбалар _кодталуын орнату"
+msgstr "Таңбалар кодталуын анықтау мүмкін емес."
 
 #: ../gedit/gedit-io-error-info-bar.c:606
 #: ../gedit/gedit-io-error-info-bar.c:630
@@ -1043,10 +1032,10 @@ msgid "Select a character encoding from the menu and try again."
 msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:613
-#, fuzzy, c-format
+#, c-format
 #| msgid "There was an error displaying the help."
 msgid "There was a problem opening the file “%s”."
-msgstr "%s ашу"
+msgstr "\"%s\" файлын ашу кезінде қате орын алды."
 
 #: ../gedit/gedit-io-error-info-bar.c:615
 msgid ""
@@ -1069,10 +1058,10 @@ msgid "Select a different character encoding from the menu and try again."
 msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:643
-#, fuzzy, c-format
+#, c-format
 #| msgid "Could not open the file %s."
 msgid "Could not open the file “%s”."
-msgstr "Файлдың бұл түрін ашу мүмкін емес"
+msgstr "\"%s\" файлын ашу мүмкін емес."
 
 #: ../gedit/gedit-io-error-info-bar.c:701
 #, c-format
@@ -1088,33 +1077,29 @@ msgstr ""
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:777
-#, fuzzy
 msgid "D_on't Edit"
-msgstr "_Түзету"
+msgstr "_Түзетпеу"
 
 #: ../gedit/gedit-io-error-info-bar.c:787
-#, fuzzy, c-format
+#, c-format
 msgid "This file “%s” is already open in another window."
-msgstr "\"%s\" ішінде аттас файл бар болып тұр."
+msgstr "\"%s\" файлы басқа терезеде ашық тұр."
 
 #: ../gedit/gedit-io-error-info-bar.c:801
-#, fuzzy
 msgid "Do you want to edit it anyway?"
-msgstr "Экранның бұл баптауларын сақтауды қалайсыз ба?"
+msgstr "Сонда да оны түзетуді қалайсыз ба?"
 
 #: ../gedit/gedit-io-error-info-bar.c:857
 #: ../gedit/gedit-io-error-info-bar.c:947
 #: ../gedit/gedit-io-error-info-bar.c:1239
-#, fuzzy
 msgid "S_ave Anyway"
-msgstr "Жк"
+msgstr "Сонда да с_ақтау"
 
 #: ../gedit/gedit-io-error-info-bar.c:860
 #: ../gedit/gedit-io-error-info-bar.c:950
 #: ../gedit/gedit-io-error-info-bar.c:1242
-#, fuzzy
 msgid "D_on't Save"
-msgstr "Сақтау"
+msgstr "Сақ_тамау"
 
 #. FIXME: review this message, it's not clear since for the user the
 #. "modification"
@@ -1204,10 +1189,10 @@ msgid ""
 msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:1125
-#, fuzzy, c-format
+#, c-format
 #| msgid "Could not open the file %s."
 msgid "Could not save the file “%s”."
-msgstr "\"%s\" архивін сақтау мүмкін емес"
+msgstr "\"%s\" файлын сақтау мүмкін емес."
 
 #: ../gedit/gedit-io-error-info-bar.c:1165
 #, c-format
@@ -1215,9 +1200,8 @@ msgid "The file “%s” changed on disk."
 msgstr "\"%s\" файлы дискте өзгертілген."
 
 #: ../gedit/gedit-io-error-info-bar.c:1176
-#, fuzzy
 msgid "Drop Changes and _Reload"
-msgstr "Қа_йта жүктеу"
+msgstr "Өзгерістерді тастап, қа_йта жүктеу"
 
 #: ../gedit/gedit-io-error-info-bar.c:1186
 #: ../gedit/resources/gtk/menus-default.ui.h:6
@@ -1247,7 +1231,7 @@ msgstr ""
 #: ../gedit/gedit-preferences-dialog.c:397
 #, c-format
 msgid "_Use the system fixed width font (%s)"
-msgstr ""
+msgstr "Жүйелік ені біркелкі қаріпті қ_олдану (%s)"
 
 #: ../gedit/gedit-preferences-dialog.c:641
 #, c-format
@@ -1259,9 +1243,8 @@ msgid "The selected color scheme cannot be installed."
 msgstr ""
 
 #: ../gedit/gedit-preferences-dialog.c:852
-#, fuzzy
 msgid "Add Scheme"
-msgstr "Қо_су"
+msgstr "Схеманы қосу"
 
 #: ../gedit/gedit-preferences-dialog.c:856
 msgid "A_dd Scheme"
@@ -1297,12 +1280,10 @@ msgstr "Парақ %d, барлығы %d"
 
 #. Use spaces to leave padding proportional to the font size
 #: ../gedit/gedit-statusbar.c:54 ../gedit/gedit-statusbar.c:60
-#, fuzzy
 msgid "OVR"
 msgstr "ҮСТЖЗ"
 
 #: ../gedit/gedit-statusbar.c:54 ../gedit/gedit-statusbar.c:60
-#, fuzzy
 msgid "INS"
 msgstr "КІРСТ"
 
@@ -1351,7 +1332,6 @@ msgstr "Сақталуда \"%s\""
 
 #. Read only
 #: ../gedit/gedit-tab.c:1443
-#, fuzzy
 msgid "RO"
 msgstr "ТО"
 
@@ -1508,9 +1488,8 @@ msgid "Move to New _Window"
 msgstr "Жаңа тере_зеге жылжыту"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:4
-#, fuzzy
 msgid "Move to New Tab _Group"
-msgstr "Жаңа терминал жаңа бетте"
+msgstr "Жаңа беттер то_бына жылжыту"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
 #: ../gedit/resources/gtk/menus-default.ui.h:21
@@ -1609,19 +1588,19 @@ msgstr "Табу жә_не алмастыру…"
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
 #: ../gedit/resources/gtk/menus-osx.ui.h:31
 msgid "_Clear Highlight"
-msgstr "_Түстпен ерекшелеуді алып тастау"
+msgstr "_Түспен ерекшелеуді тастау"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:14
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
-msgstr "Жо _лға өту…"
+msgstr "Жолға ө_ту…"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/gtk/menus-osx.ui.h:21
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
 msgid "View"
-msgstr "Қарау"
+msgstr "Көрініс"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
@@ -1639,7 +1618,7 @@ msgstr "Төмен_гі панелі"
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
 #: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Highlight Mode…"
-msgstr "_Түстпен ерекшелеу режимі…"
+msgstr "_Түспен ерекшелеу режимі…"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
@@ -1666,15 +1645,13 @@ msgid "Open _Recent"
 msgstr "С_оңғысын ашу"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:5
-#, fuzzy
 msgid "Reopen Closed _Tab"
-msgstr "Tab"
+msgstr "Жабылған бе_тті қайта ашу"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:7
-#, fuzzy
 #| msgid "Save As…"
 msgid "Save _As…"
-msgstr "Сақтау"
+msgstr "Қал_айша сақтау…"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:12
 msgid "Edit"
@@ -1708,19 +1685,17 @@ msgid "_Delete"
 msgstr "Ө_шіру"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:19
-#, fuzzy
 msgid "Overwrite _Mode"
-msgstr "_Режимі:"
+msgstr "Үстінен жазу режи_мі"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:20
 msgid "Select _All"
 msgstr "Б_арлығын таңдау"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:26
-#, fuzzy
 #| msgid "_Search"
 msgid "Search"
-msgstr "_Нені іздеу керек:"
+msgstr "Іздеу"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "Find Ne_xt"
@@ -1731,59 +1706,51 @@ msgid "Find Pre_vious"
 msgstr "Ал_дыңғысын табу"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:30
-#, fuzzy
 msgid "Find and _Replace…"
-msgstr "Табу м_ен алмастыру"
+msgstr "Табу жә_не алмастыру…"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:32
-#, fuzzy
 #| msgid "Go to _Line..."
 msgid "Go to _Line…"
-msgstr "Жо _лға өту..."
+msgstr "Жо_лға өту…"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:35
 msgid "_Save All"
 msgstr "Барл_ығын сақтау"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:37
-#, fuzzy
 msgid "_New Tab Group"
-msgstr "Жаңа терминал жаңа бетте"
+msgstr "_Жаңа беттер тобы"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:38
 msgid "P_revious Tab Group"
-msgstr ""
+msgstr "Ал_дыңғы беттер тобы"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:39
 msgid "Nex_t Tab Group"
-msgstr ""
+msgstr "К_елесі беттер тобы"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:40
-#, fuzzy
 msgid "_Previous Document"
-msgstr "Құжат"
+msgstr "_Алдыңғы құжат"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:41
-#, fuzzy
 #| msgid "_Documents"
 msgid "N_ext Document"
-msgstr "Index 4x6 ext"
+msgstr "_Келесі құжат"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:42
-#, fuzzy
 msgid "_Move To New Window"
-msgstr "Жаңа терезе"
+msgstr "Жаңа тере_зеге жылжыту"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:43
-#, fuzzy
 #| msgid "_Help"
 msgid "Help"
-msgstr "Кө_мек"
+msgstr "Көмек"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
-#, fuzzy
 msgid "Character encodings"
-msgstr "Кодтаулар"
+msgstr "Таңбалар кодталуы"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
 #: ../plugins/spell/gedit-spell-language-dialog.c:125
@@ -1792,9 +1759,8 @@ msgid "_OK"
 msgstr "_ОК"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
-#, fuzzy
 msgid "A_vailable encodings:"
-msgstr "Кодтаулар"
+msgstr "Қ_олжетерлік кодтаулар:"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
 msgid "_Description"
@@ -1819,47 +1785,40 @@ msgid "E_ncodings shown in menu:"
 msgstr "Мәзірде көрсетілетін _кодтаулар:"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:1
-#, fuzzy
 msgid "Highlight Mode"
-msgstr "_Түстпен ерекшелеуді алып тастау"
+msgstr "Түспен ерекшелеу"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
-#, fuzzy
 #| msgid "Selected"
 msgid "_Select"
 msgstr "_Таңдау"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
-#, fuzzy
 msgid "Search highlight mode..."
-msgstr "_Түстпен ерекшелеуді алып тастау"
+msgstr ""
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
-#, fuzzy
 #| msgid "_Documents"
 msgid "Other _Documents…"
-msgstr "Құ_жаттар"
+msgstr "Басқа құ_жаттар…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
-#, fuzzy
 #| msgid "Open a file"
 msgid "Open another file"
-msgstr "Файлды ашу"
+msgstr "Басқа файлды ашу"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:1
 msgid "Preferences"
-msgstr "Қалаулар"
+msgstr "Баптаулар"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:3
-#, fuzzy
 msgid "Display right _margin at column:"
-msgstr "Басты терезеде түр бағанын көрсету."
+msgstr "Оң жақ шет өрісін көрсету, баға_ны:"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:4
-#, fuzzy
 #| msgid "_Statusbar"
 msgid "Display _statusbar"
-msgstr "ДИСПЛЕЙ"
+msgstr "Қа_лып-күй жолағын көрсету"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:9
@@ -1868,33 +1827,29 @@ msgstr "Мәтінді тасымалдау"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:10
-#, fuzzy
 msgid "Enable text _wrapping"
-msgstr "Мәтін"
+msgstr "Мәтінді тасы_малдау"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
-msgstr ""
+msgstr "Сөздерді екіге бөл_меу"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
 msgid "Highlighting"
 msgstr "Түспен ерекшелеу"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
-#, fuzzy
 msgid "Highlight current _line"
-msgstr "_Түстпен ерекшелеуді алып тастау"
+msgstr "Ағымдағы жо_лды түспен ерекшелеу"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
-#, fuzzy
 msgid "Highlight matching _brackets"
-msgstr "_Түстпен ерекшелеуді алып тастау"
+msgstr "Сәйкес жақ_шаны түспен ерекшелеу"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
-#, fuzzy
 msgid "Tab Stops"
-msgstr "Табуляция өлшемі"
+msgstr "Табуляция"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "_Tab width:"
@@ -1902,12 +1857,11 @@ msgstr "_Табуляция ені:"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
 msgid "Insert _spaces instead of tabs"
-msgstr ""
+msgstr "Табуляция орнына бо_с аралықтарды кірістіру"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
-#, fuzzy
 msgid "_Enable automatic indentation"
-msgstr "_Автоматты түрде"
+msgstr "_Автошегінуді іске қосу"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
 msgid "File Saving"
@@ -1915,12 +1869,11 @@ msgstr "Файлды сақтау"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
 msgid "Create a _backup copy of files before saving"
-msgstr ""
+msgstr "Сақтау алдында файлдардың қ_ор көшірмелерін жасау"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
-#, fuzzy
 msgid "_Autosave files every"
-msgstr "күнде"
+msgstr "Файлдарды _автосақтау, әр"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
 msgid "_minutes"
@@ -1941,9 +1894,8 @@ msgid "Editor _font: "
 msgstr "Түзету_ші қарібі:"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
-#, fuzzy
 msgid "Pick the editor font"
-msgstr "Қаріпті таңдаңыз"
+msgstr "Түзеткіш қарібін таңдаңыз"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Color Scheme"
@@ -1975,11 +1927,11 @@ msgstr "Плагиндер"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:1
 msgid "Syntax Highlighting"
-msgstr ""
+msgstr "Синтаксисті түспен ерекшелеу"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:2
 msgid "Print synta_x highlighting"
-msgstr ""
+msgstr "Синт_аксисті түспен ерекшелеуді баспаға шығару"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:3
 msgid "Line Numbers"
@@ -1987,14 +1939,13 @@ msgstr "Жолдардың нөмірленуі"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:4
 msgid "Print line nu_mbers"
-msgstr ""
+msgstr "Жол нө_мірлерін баспаға шығару"
 
 #. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the
 #. print preferences.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
-#, fuzzy
 msgid "_Number every"
-msgstr "NUMBER"
+msgstr "_Нөмірлеу әр"
 
 #. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print
 #. preferences.
@@ -2007,9 +1958,8 @@ msgid "Page header"
 msgstr "Беттің жоғарғы колонтитулы"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:13
-#, fuzzy
 msgid "Print page _headers"
-msgstr "Сы_ану парағын баспаға шығару"
+msgstr "Бет _тақырыптамаларын баспаға шығару"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:14
 msgid "Fonts"
@@ -2017,36 +1967,31 @@ msgstr "Қаріптер"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:15
 msgid "_Body:"
-msgstr ""
+msgstr "Құжат _денесі:"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:16
-#, fuzzy
 msgid "_Line numbers:"
-msgstr "Сандар"
+msgstr "Жо_лдар нөмірлері:"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:17
 msgid "He_aders and footers:"
-msgstr ""
+msgstr "Жоғ_арғы және төменгі колонтитулдар:"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:18
-#, fuzzy
 msgid "_Restore Default Fonts"
-msgstr "Қалпына келтіру"
+msgstr "_Бастапқы қаріптерді қалпына келтіру"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:1
-#, fuzzy
 msgid "Show the previous page"
-msgstr "А_лдыңғы парақ"
+msgstr "Алдыңғы парақты көрсету"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:2
-#, fuzzy
 msgid "P_revious Page"
-msgstr "P_IN:"
+msgstr "А_лдыңғы парақ"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:3
-#, fuzzy
 msgid "Show the next page"
-msgstr "К_елесі парақ"
+msgstr "Келесі парақты көрсету"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:4
 msgid "_Next Page"
@@ -2072,9 +2017,8 @@ msgid "The total number of pages in the document"
 msgstr "Парақтар саны:"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:10
-#, fuzzy
 msgid "Show multiple pages"
-msgstr "Бір уақытта екі парақты көрсету"
+msgstr "Бірнеше парақты көрсету"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:11
 msgid "Zoom 1:1"
@@ -2202,9 +2146,8 @@ msgid "_Download"
 msgstr "Жү_ктеп алу"
 
 #: ../plugins/checkupdate/gedit-check-update-plugin.c:283
-#, fuzzy
 msgid "_Ignore Version"
-msgstr "Елемеу"
+msgstr "_Нұсқаны елемеу"
 
 #: ../plugins/checkupdate/gedit-check-update-plugin.c:288
 #, fuzzy
@@ -2219,9 +2162,8 @@ msgstr ""
 
 #. ex:set ts=8 noet:
 #: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
-#, fuzzy
 msgid "Version to Ignore"
-msgstr "Елемеу"
+msgstr "Елемеу үшін нұсқа"
 
 #. This is releated to the next gedit version to be released
 #: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
@@ -2239,9 +2181,8 @@ msgid "Report the number of words, lines and characters in a document."
 msgstr ""
 
 #: ../plugins/docinfo/gedit-docinfo-plugin.c:537
-#, fuzzy
 msgid "_Document Statistics"
-msgstr "Құжат"
+msgstr "Құ_жат статистикасы"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
@@ -2253,25 +2194,23 @@ msgstr "Таңдалған"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
-msgstr "Сызықтар"
+msgstr "Жолдар"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:5
 msgid "Words"
 msgstr "Сөздер"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:6
-#, fuzzy
 msgid "Characters (with spaces)"
-msgstr "_Ендері екі мәнді таңбалар:"
+msgstr "Таңбалар (бас аралықтармен)"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:7
-#, fuzzy
 msgid "Characters (no spaces)"
-msgstr "_Ендері екі мәнді таңбалар:"
+msgstr "Таңбалар (бас аралықтарсыз)"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:8
 msgid "Bytes"
-msgstr "Байт"
+msgstr "Байттар"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:1
 msgid "Build"
@@ -2311,18 +2250,16 @@ msgid "Execute a custom command and put its output in a new document"
 msgstr ""
 
 #: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:1
-#, fuzzy
 msgid "Send to fpaste"
-msgstr "Қа_йда жіберу..."
+msgstr "fpaste қызметіне жіберу"
 
 #: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
 msgid "Paste selected text or current document to fpaste"
 msgstr ""
 
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
-#, fuzzy
 msgid "External Tools"
-msgstr "Калибрация үшін керек саймандар орнатылмаған."
+msgstr "Сыртқы саймандар"
 
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
 msgid "Execute external commands and shell scripts."
@@ -2330,9 +2267,8 @@ msgstr "Сыртқы командалар және скрипттерді оры
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
-#, fuzzy
 msgid "Whether to use the system font"
-msgstr "Жүйелік тең енді қаріп қолданыла ма"
+msgstr "Жүйелік қаріп қолданыла ма"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
 msgid ""
@@ -2346,37 +2282,33 @@ msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "Pango қарібінің аты. Мысалы: \"Sans 12\" немесе \"Monospace Bold 14\"."
 
 #: ../plugins/externaltools/tools/appactivatable.py:126
-#, fuzzy
 msgid "Manage _External Tools..."
-msgstr "Калибрация үшін керек саймандар орнатылмаған."
+msgstr "С_ыртқы саймандарды басқару"
 
 #: ../plugins/externaltools/tools/appactivatable.py:131
-#, fuzzy
 msgid "External _Tools"
-msgstr "Калибрация үшін керек саймандар орнатылмаған."
+msgstr "Сыртқы сай_мандар"
 
 #: ../plugins/externaltools/tools/capture.py:99
-#, fuzzy, python-format
+#, python-format
 msgid "Could not execute command: %s"
-msgstr "Команданы талдау мүмкін емес:"
+msgstr "Команданы орындау мүмкін емес: %s"
 
 #: ../plugins/externaltools/tools/functions.py:182
 msgid "You must be inside a word to run this command"
 msgstr "Бұл команданы орынау үшін сөздің ішінде тұру керек"
 
 #: ../plugins/externaltools/tools/functions.py:316
-#, fuzzy
 msgid "Running tool:"
-msgstr "орындалуда"
+msgstr "Сайманды жөнелту:"
 
 #: ../plugins/externaltools/tools/functions.py:347
 msgid "Done."
 msgstr "Дайын."
 
 #: ../plugins/externaltools/tools/functions.py:349
-#, fuzzy
 msgid "Exited"
-msgstr "Команды дұрыс аяқталмады."
+msgstr "Аяқталды"
 
 #: ../plugins/externaltools/tools/manager.py:106
 msgid "All languages"
@@ -2453,9 +2385,8 @@ msgid "Current selection"
 msgstr "Ағымдағы ерекшелеу"
 
 #: ../plugins/externaltools/tools/tools.ui.h:10
-#, fuzzy
 msgid "Current selection (default to document)"
-msgstr "Ағы_мдағы баптауларды негізгі ретінде сақтау"
+msgstr "Ағымдағы таңдау (құжат үшін негізгі)"
 
 #: ../plugins/externaltools/tools/tools.ui.h:11
 msgid "Current line"
@@ -2466,9 +2397,8 @@ msgid "Current word"
 msgstr "Ағымдағы сөз"
 
 #: ../plugins/externaltools/tools/tools.ui.h:13
-#, fuzzy
 msgid "Display in bottom pane"
-msgstr "Бү_йір панелі"
+msgstr "Төменгі панельде көрсету"
 
 #: ../plugins/externaltools/tools/tools.ui.h:14
 msgid "Create new document"
@@ -2491,42 +2421,37 @@ msgid "Insert at cursor position"
 msgstr "Курсор тұрған жерге кірістіру"
 
 #: ../plugins/externaltools/tools/tools.ui.h:19
-#, fuzzy
 msgid "Manage External Tools"
-msgstr "Калибрация үшін керек саймандар орнатылмаған."
+msgstr "Сыртқы саймандарды басқару"
 
 #: ../plugins/externaltools/tools/tools.ui.h:20
-#, fuzzy
 msgid "Add a new tool"
-msgstr "Жаңа байланысты қосу мүмкін емес"
+msgstr "Жаңа сайманды қосу"
 
 #: ../plugins/externaltools/tools/tools.ui.h:21
-#, fuzzy
 msgid "Add Tool"
-msgstr "Қосымша баптаулар"
+msgstr "Сайманды қосу"
 
 #: ../plugins/externaltools/tools/tools.ui.h:22
-#, fuzzy
 #| msgid "Open selected file"
 msgid "Remove selected tool"
-msgstr "Таңдалған фотоларды қоқыс шелегінен өшіру"
+msgstr "Таңдалған сайманды өшіру"
 
 #: ../plugins/externaltools/tools/tools.ui.h:23
-#, fuzzy
 msgid "Remove Tool"
-msgstr "Қосымша баптаулар"
+msgstr "Сайманды өшіру"
 
 #: ../plugins/externaltools/tools/tools.ui.h:24
 #, fuzzy
 #| msgid "_Revert"
 msgid "Revert tool"
-msgstr "Қай_тару"
+msgstr "Сайманды қайтару"
 
 #: ../plugins/externaltools/tools/tools.ui.h:25
 #, fuzzy
 #| msgid "_Revert"
 msgid "Revert Tool"
-msgstr "Қай_тару"
+msgstr "Сайманды қайтару"
 
 #: ../plugins/externaltools/tools/tools.ui.h:26
 msgid "Shortcut _key:"
@@ -2556,18 +2481,17 @@ msgstr "шығыс"
 
 #. ex:ts=4:et:
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
-#, fuzzy
 #| msgid "File Browser"
 msgid "File Browser Panel"
-msgstr "Көрсетілетін панель"
+msgstr "Файлдық шолушы панелі"
 
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
 msgid "Easy file access from the side panel"
-msgstr ""
+msgstr "Бүйір панелінен файлдарға жеңіл қатынау"
 
 #: ../plugins/filebrowser/gedit-file-bookmarks-store.c:205
 msgid "Home"
-msgstr "Үйге"
+msgstr "Үй бумасы"
 
 #: ../plugins/filebrowser/gedit-file-bookmarks-store.c:231
 msgid "File System"
@@ -2575,7 +2499,7 @@ msgstr "Файлдық жүйе"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:532
 msgid "File Browser"
-msgstr "Файлдық шолушы"
+msgstr "Файлдар шолушысы"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
 msgid "An error occurred while creating a new directory"
@@ -2707,9 +2631,8 @@ msgid ""
 msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
-#, fuzzy
 msgid "File Browser Root Directory"
-msgstr "Файлдық жүйенің түбірі"
+msgstr "Файлдық шолушының түбірлік бумасы"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
 msgid ""
@@ -2729,9 +2652,8 @@ msgid ""
 msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
-#, fuzzy
 msgid "Enable Restore of Remote Locations"
-msgstr "Қашықтан кіруді іске қосу немесе сөндіру"
+msgstr "Қашықтағы орналасуларды қалпына келтіру"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
@@ -2789,34 +2711,30 @@ msgid "_New Folder"
 msgstr "Жаңа _бума"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:4
-#, fuzzy
 msgid "New F_ile"
-msgstr "Жм"
+msgstr "Жаңа фа_йл"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
-#, fuzzy
 #| msgid "_Rename"
 msgid "_Rename..."
-msgstr "Атын өзгерту"
+msgstr "Атын ө_згерту..."
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
 msgstr "Қоқы_с шелегіне тастау"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:8
-#, fuzzy
 msgid "Re_fresh View"
-msgstr "Тү_рі"
+msgstr "Көріністі жаң_арту"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:9
 msgid "_View Folder"
 msgstr "Буманы қ_арау"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:10
-#, fuzzy
 #| msgid "_Open terminal here"
 msgid "_Open in Terminal"
-msgstr "Терминалды а_шу"
+msgstr "Терминалда а_шу"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:11
 msgid "_Filter"
@@ -2839,31 +2757,27 @@ msgstr "_Файл аты:"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
-msgstr ""
+msgstr "Режимдер"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:2
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr ""
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
-#, fuzzy
 msgid "Command Color Text"
-msgstr "Мә_тін түсі:"
+msgstr "Команда мәтінінің түсі"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
-#, fuzzy
 msgid "The command color text"
-msgstr "Мә_тін түсі:"
+msgstr "Команда мәтінінің түсі"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
-#, fuzzy
 msgid "Error Color Text"
-msgstr "Мә_тін түсі:"
+msgstr "Қате мәтінінің түсі"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
-#, fuzzy
 msgid "The error color text"
-msgstr "Мә_тін түсі:"
+msgstr "Қате мәтінінің түсі"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
 msgid ""
@@ -2872,14 +2786,12 @@ msgid ""
 msgstr ""
 
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
-#, fuzzy
 msgid "C_ommand color:"
-msgstr "К_оманда:"
+msgstr "К_оманда түсі:"
 
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:2
-#, fuzzy
 msgid "_Error color:"
-msgstr "Тү_с"
+msgstr "Қат_е түсі:"
 
 #. ex:et:ts=4:
 #: ../plugins/pythonconsole/pythonconsole/__init__.py:47
@@ -2906,7 +2818,6 @@ msgid "Quickly open files"
 msgstr "Файлдарды жылдам ашу"
 
 #: ../plugins/quickopen/quickopen/popup.py:82
-#, fuzzy
 msgid "Type to search..."
 msgstr "Іздеу үшін теріңіз..."
 
@@ -2922,7 +2833,7 @@ msgstr "Желілік байланыстарыңызды басқару"
 #: ../plugins/snippets/snippets/document.py:659
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
-msgstr ""
+msgstr "Снипеттер"
 
 #: ../plugins/snippets/snippets/exporter.py:80
 #, fuzzy, python-format
@@ -3189,18 +3100,16 @@ msgid "_Reverse order"
 msgstr "К_ері ретпен"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#, fuzzy
 msgid "R_emove duplicates"
-msgstr "Ж_инақтан өшіру"
+msgstr "Қа_йталанатындарды өшіру"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
 msgid "_Ignore case"
 msgstr "_Регистрді елемеу"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:8
-#, fuzzy
 msgid "S_tart at column:"
-msgstr "Баған:"
+msgstr "Бағаннан бас_тау:"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:9
 msgid "You cannot undo a sort operation"
@@ -3217,9 +3126,8 @@ msgstr "Құжатты не таңдалған мәтінді сұрыптау."
 #. * for the current misspelled word
 #: ../plugins/spell/gedit-automatic-spell-checker.c:412
 #: ../plugins/spell/gedit-spell-checker-dialog.c:424
-#, fuzzy
 msgid "(no suggested words)"
-msgstr "Тол_ық сөздер ғана"
+msgstr "(ұсынылатын сөздер жоқ)"
 
 #: ../plugins/spell/gedit-automatic-spell-checker.c:436
 msgid "_More..."
@@ -3227,13 +3135,12 @@ msgstr "Кө_бірек..."
 
 #. Ignore all
 #: ../plugins/spell/gedit-automatic-spell-checker.c:491
-#, fuzzy
 msgid "_Ignore All"
-msgstr "Елемеу"
+msgstr "Барлығын е_лемеу"
 
 #: ../plugins/spell/gedit-automatic-spell-checker.c:545
 msgid "_Spelling Suggestions..."
-msgstr ""
+msgstr "_Емле ұсыныстары..."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:136
 msgid "_Check Spelling..."
@@ -3244,9 +3151,8 @@ msgid "Set _Language..."
 msgstr "Тілді о_рнату..."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:144
-#, fuzzy
 msgid "_Highlight Misspelled Words"
-msgstr "_Түстпен ерекшелеуді алып тастау"
+msgstr "Қате жазылған сөздерді _түспен ерекшелеу"
 
 #: ../plugins/spell/gedit-spell-checker-dialog.c:262
 msgid "Suggestions"
@@ -3256,12 +3162,11 @@ msgstr "Ұсыныстар"
 #. isn't misspelled
 #: ../plugins/spell/gedit-spell-checker-dialog.c:523
 msgid "(correct spelling)"
-msgstr ""
+msgstr "(емлесі дұрыс)"
 
 #: ../plugins/spell/gedit-spell-checker-dialog.c:664
-#, fuzzy
 msgid "Completed spell checking"
-msgstr "Аяқталған"
+msgstr "Емлені тексеру аяқталды"
 
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
@@ -3301,50 +3206,42 @@ msgid "The document is empty."
 msgstr "Құжат бос болып тұр."
 
 #: ../plugins/spell/gedit-spell-plugin.c:816
-#, fuzzy
 msgid "No misspelled words"
-msgstr "Тол_ық сөздер ғана"
+msgstr "Қате жазылған сөздер жоқ"
 
 #. ex:set ts=8 noet:
 #: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-#, fuzzy
 #| msgid "Set language"
 msgid "Set Language"
-msgstr "Тіл"
+msgstr "Тілді орнату"
 
 #: ../plugins/spell/resources/ui/languages-dialog.ui.h:5
-#, fuzzy
 msgid "Select the _language of the current document."
-msgstr "Ағымдағы құжатты жіберу мүмкін емес"
+msgstr "Ағымдағы құжат ті_лін таңдаңыз."
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-#, fuzzy
 msgid "Check spelling"
-msgstr "Е_млені тексеру"
+msgstr "Емлені тексеру"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-#, fuzzy
 msgid "Misspelled word:"
-msgstr "Паро_ль…"
+msgstr "Қате сөз:"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:3
 msgid "word"
 msgstr "сөз"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-#, fuzzy
 msgid "Change _to:"
-msgstr "Ауыстыру..."
+msgstr "Немен алмас_тыру:"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-#, fuzzy
 msgid "Check _Word"
-msgstr "Паро_ль…"
+msgstr "Сө_зді тексеру"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-#, fuzzy
 msgid "_Suggestions:"
-msgstr "Ұсыныстар"
+msgstr "Ұ_сыныстар:"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
@@ -3355,37 +3252,32 @@ msgid "Cha_nge"
 msgstr "Өз_герту"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-#, fuzzy
 msgid "Ignore _All"
-msgstr "Елемеу"
+msgstr "Б_арлығын елемеу"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-#, fuzzy
 msgid "Change A_ll"
-msgstr "Бар_лық оқиғаларды сақтау"
+msgstr "Бар_лығын қосу"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:11
 msgid "User dictionary:"
 msgstr "Пайдаланушы сөздігі:"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-#, fuzzy
 msgid "Add w_ord"
-msgstr "Ср"
+msgstr "Сө_зді қосу"
 
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Емлені тексеру"
 
 #: ../plugins/spell/spell.plugin.desktop.in.h:2
-#, fuzzy
 msgid "Checks the spelling of the current document."
-msgstr "Ағымдағы құжатты жіберу мүмкін емес"
+msgstr "Ағымдағы құжаттың емлесін тексереді."
 
 #: ../plugins/time/gedit-time-plugin.c:270
-#, fuzzy
 msgid "In_sert Date and Time..."
-msgstr "Күн және уақыт"
+msgstr "Күн және уақытты кірі_стіру..."
 
 #: ../plugins/time/gedit-time-plugin.c:496
 msgid "Available formats"
@@ -3393,9 +3285,8 @@ msgstr "Қолжетерлік пішімдер"
 
 #. ex:set ts=8 noet:
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
-#, fuzzy
 msgid "Prompt Type"
-msgstr "қоршам;сұрау;команда;командалық жол;"
+msgstr "Сұрау түрі"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
 msgid ""
@@ -3404,10 +3295,9 @@ msgid ""
 msgstr ""
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
-#, fuzzy
 #| msgid "Selected"
 msgid "Selected Format"
-msgstr "Пішімі:"
+msgstr "Таңдалған пішім"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
 msgid "The selected format used when inserting the date/time."
@@ -3422,21 +3312,18 @@ msgid "The custom format used when inserting the date/time."
 msgstr ""
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
-#, fuzzy
 msgid "Insert Date and Time"
-msgstr "Күн және уақыт"
+msgstr "Күн және уақытты кірістіру"
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:5
-#, fuzzy
 msgid "Use the _selected format"
-msgstr "Пішімі:"
+msgstr "Таң_далған пішімді қолдану"
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:6
-#, fuzzy
 msgid "_Use custom format"
-msgstr "Қоршам орнына қолданылатын таңдауыңызша команда"
+msgstr "_Таңдауыңызша пішімді қолдану"
 
 #. Translators: Use the more common date format in your locale
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:5
@@ -3465,9 +3352,8 @@ msgid "When inserting date/time..."
 msgstr "Күн/уақытты кірістіру кезінде..."
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
-#, fuzzy
 msgid "_Prompt for a format"
-msgstr "Пішімі:"
+msgstr "_Пішімді сұрау"
 
 #: ../plugins/time/time.plugin.desktop.in.h:1
 msgid "Insert Date/Time"
