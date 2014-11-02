@@ -7,7 +7,21 @@ m4_define(gedit_minor_version, 14)
 m4_define(gedit_micro_version, 0)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
-AC_INIT([gedit],[gedit_version],[http://bugzilla.gnome.org/enter_bug.cgi?product=gedit],[gedit],[https://wiki.gnome.org/Apps/Gedit])
+AC_INIT([gedit],
+        [gedit_version],
+	[http://bugzilla.gnome.org/enter_bug.cgi?product=gedit],
+	[gedit],
+	[https://wiki.gnome.org/Apps/Gedit])
+
+# Dependencies
+GLIB_REQUIRED=2.40.0
+GTK_REQUIRED=3.14.0
+GTKSOURCEVIEW_REQUIRED=3.14.0
+LIBPEAS_REQUIRED=1.7.0
+LIBXML_REQUIRED=2.5.0
+ENCHANT_REQUIRED=1.2.0
+ISO_CODES_REQUIRED=0.35
+PYGOBJECT_REQUIRED=3.0.0
 
 AC_CONFIG_HEADERS(config.h)
 AC_CONFIG_SRCDIR(gedit/gedit.c)
@@ -237,9 +251,6 @@ dnl ================================================================
 dnl spell plugins checks: enchant and iso-codes
 dnl ================================================================
 
-ENCHANT_REQUIRED=1.2.0
-ISO_CODES_REQUIRED=0.35
-
 AC_ARG_ENABLE([spell],
 	AS_HELP_STRING([--disable-spell],[Disable spell plugin (default: enabled)]),
 	[enable_enchant=$enableval],
@@ -281,8 +292,6 @@ fi
 
 AM_CONDITIONAL(ENABLE_ENCHANT, test x"$enable_enchant" = "xyes")
 
-PYGOBJECT_REQUIRED=3.0.0
-
 AC_ARG_ENABLE([python],
               AS_HELP_STRING([--enable-python[=@<:@no/auto/yes@:>@]],[Build with python support]),
               [enable_python=$enableval],
@@ -310,14 +319,14 @@ dnl ================================================================
 # Dependencies
 
 PKG_CHECK_MODULES(GEDIT, [
-	libxml-2.0 >= 2.5.0
-	glib-2.0 >= 2.39.5
-	gio-2.0 >= 2.37.0
+	libxml-2.0 >= $LIBXML_REQUIRED
+	glib-2.0 >= $GLIB_REQUIRED
+	gio-2.0 >= $GLIB_REQUIRED
 	gmodule-2.0
-	gtk+-3.0 >= 3.14.0
-	gtksourceview-3.0 >= 3.14.0
-	libpeas-1.0 >= 1.7.0
-	libpeas-gtk-1.0 >= 1.7.0
+	gtk+-3.0 >= $GTK_REQUIRED
+	gtksourceview-3.0 >= $GTKSOURCEVIEW_REQUIRED
+	libpeas-1.0 >= $LIBPEAS_REQUIRED
+	libpeas-gtk-1.0 >= $LIBPEAS_REQUIRED
 	gsettings-desktop-schemas
 ])
 
