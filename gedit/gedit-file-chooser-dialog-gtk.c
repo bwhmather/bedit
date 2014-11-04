@@ -330,6 +330,15 @@ create_option_menu (GeditFileChooserDialogGtk *dialog,
 }
 
 static void
+update_newline_visibility (GeditFileChooserDialogGtk *dialog)
+{
+	gboolean visible = gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog)) == GTK_FILE_CHOOSER_ACTION_SAVE;
+
+	gtk_widget_set_visible (dialog->priv->newline_label, visible);
+	gtk_widget_set_visible (dialog->priv->newline_combo, visible);
+}
+
+static void
 newline_combo_append (GtkComboBox          *combo,
 		      GtkListStore         *store,
 		      GtkTreeIter          *iter,
@@ -404,6 +413,8 @@ create_newline_combo (GeditFileChooserDialogGtk *dialog)
 	dialog->priv->newline_combo = combo;
 	dialog->priv->newline_label = label;
 	dialog->priv->newline_store = store;
+
+	update_newline_visibility (dialog);
 }
 
 static void
@@ -437,6 +448,36 @@ create_extra_widget (GeditFileChooserDialogGtk *dialog,
 
 	gtk_file_chooser_set_extra_widget (GTK_FILE_CHOOSER (dialog),
 					   dialog->priv->extra_widget);
+}
+
+static void
+action_changed (GeditFileChooserDialogGtk *dialog,
+		GParamSpec                *pspec,
+		gpointer                   data)
+{
+	GtkFileChooserAction action;
+
+	action = gtk_file_chooser_get_action (GTK_FILE_CHOOSER (dialog));
+
+	switch (action)
+	{
+		case GTK_FILE_CHOOSER_ACTION_OPEN:
+			g_object_set (dialog->priv->option_menu,
+				      "save_mode", FALSE,
+				      NULL);
+			gtk_widget_show (dialog->priv->option_menu);
+			break;
+		case GTK_FILE_CHOOSER_ACTION_SAVE:
+			g_object_set (dialog->priv->option_menu,
+				      "save_mode", TRUE,
+				      NULL);
+			gtk_widget_show (dialog->priv->option_menu);
+			break;
+		default:
+			gtk_widget_hide (dialog->priv->option_menu);
+	}
+
+	update_newline_visibility (dialog);
 }
 
 static void
@@ -586,6 +627,11 @@ gedit_file_chooser_dialog_gtk_create (const gchar             *title,
 			       NULL);
 
 	create_extra_widget (GEDIT_FILE_CHOOSER_DIALOG_GTK (result), flags);
+
+	g_signal_connect (result,
+			  "notify::action",
+			  G_CALLBACK (action_changed),
+			  NULL);
 
 	if (encoding != NULL)
 	{
