@@ -696,6 +696,14 @@ get_compression_type_from_file (GFile *file)
 }
 
 static void
+save_finish_cb (GeditTab     *tab,
+		GAsyncResult *result,
+		gpointer      user_data)
+{
+	_gedit_tab_save_finish (tab, result);
+}
+
+static void
 save_dialog_response_cb (GeditFileChooserDialog *dialog,
                          gint                    response_id,
                          GeditWindow            *window)
@@ -771,7 +779,14 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		 * even if the saving fails... */
 		_gedit_window_set_default_location (window, location);
 
-		_gedit_tab_save_as (tab, location, encoding, newline_type, compression_type);
+		_gedit_tab_save_as_async (tab,
+					  location,
+					  encoding,
+					  newline_type,
+					  compression_type,
+					  NULL,
+					  (GAsyncReadyCallback) save_finish_cb,
+					  NULL);
 
 		g_object_unref (location);
 	}
@@ -994,7 +1009,10 @@ _gedit_cmd_file_save_tab (GeditTab    *tab,
 
 	g_free (uri_for_display);
 
-	_gedit_tab_save (tab);
+	_gedit_tab_save_async (tab,
+			       NULL,
+			       (GAsyncReadyCallback) save_finish_cb,
+			       NULL);
 }
 
 void

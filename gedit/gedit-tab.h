@@ -135,13 +135,23 @@ void		 _gedit_tab_load_stream		(GeditTab                *tab,
 						 gint                     column_pos);
 
 void		 _gedit_tab_revert		(GeditTab            *tab);
-void		 _gedit_tab_save		(GeditTab            *tab);
 
-void		 _gedit_tab_save_as		(GeditTab                *tab,
-						 GFile                   *location,
-						 const GtkSourceEncoding *encoding,
-						 GtkSourceNewlineType     newline_type,
-						 GtkSourceCompressionType compression_type);
+void		 _gedit_tab_save_async		(GeditTab            *tab,
+						 GCancellable        *cancellable,
+						 GAsyncReadyCallback  callback,
+						 gpointer             user_data);
+
+gboolean	 _gedit_tab_save_finish		(GeditTab            *tab,
+						 GAsyncResult        *result);
+
+void		 _gedit_tab_save_as_async	(GeditTab                 *tab,
+						 GFile                    *location,
+						 const GtkSourceEncoding  *encoding,
+						 GtkSourceNewlineType      newline_type,
+						 GtkSourceCompressionType  compression_type,
+						 GCancellable             *cancellable,
+						 GAsyncReadyCallback       callback,
+						 gpointer                  user_data);
 
 void		 _gedit_tab_print		(GeditTab            *tab);
 void		 _gedit_tab_print_preview	(GeditTab            *tab);
