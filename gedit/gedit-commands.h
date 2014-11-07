@@ -66,10 +66,6 @@ void		_gedit_cmd_file_new			(GSimpleAction *action,
 void		_gedit_cmd_file_open			(GSimpleAction *action,
                                                          GVariant      *parameter,
                                                          gpointer       user_data);
-void		_gedit_cmd_file_save_tab		(GeditTab    *tab,
-							 GeditWindow *window);
-void		_gedit_cmd_file_save_as_tab		(GeditTab    *tab,
-							 GeditWindow *window);
 void		_gedit_cmd_file_reopen_closed_tab	(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
@@ -85,8 +81,6 @@ void		_gedit_cmd_file_save_all		(GSimpleAction *action,
 void		_gedit_cmd_file_revert			(GSimpleAction *action,
                                                          GVariant      *parameter,
                                                          gpointer       user_data);
-void		_gedit_cmd_file_open_uri		(GtkAction   *action,
-							 GeditWindow *window);
 void		_gedit_cmd_file_print			(GSimpleAction *action,
                                                          GVariant      *parameter,
                                                          gpointer       user_data);
@@ -192,9 +186,6 @@ void		_gedit_cmd_help_about			(GtkAction   *action,
 
 void		_gedit_cmd_file_close_tab 		(GeditTab    *tab,
 							 GeditWindow *window);
-
-void		_gedit_cmd_file_save_documents_list	(GeditWindow *window,
-							 GList       *docs);
 
 void		_gedit_cmd_file_close_notebook		(GeditWindow   *window,
 							 GeditNotebook *notebook);
