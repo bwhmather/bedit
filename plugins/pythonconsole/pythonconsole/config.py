@@ -57,10 +57,11 @@ class PythonConsoleConfigWidget(object):
 
     @staticmethod
     def set_colorbutton_color(colorbutton, value):
-        color = Gdk.color_parse(value)
+        rgba = Gdk.RGBA()
+        parsed = rgba.parse(value)
 
-        if color is not None:
-            colorbutton.set_color(color)
+        if parsed:
+            colorbutton.set_rgba(rgba)
 
     def on_colorbutton_command_color_set(self, colorbutton):
         self._settings.set_string(self.CONSOLE_KEY_COMMAND_COLOR,
