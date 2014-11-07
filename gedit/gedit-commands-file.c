@@ -72,40 +72,39 @@ static GeditTab *
 get_tab_from_file (GList *docs,
 		   GFile *file)
 {
-	GeditTab *tab = NULL;
+	GList *l;
 
-	while (docs != NULL)
+	for (l = docs; l != NULL; l = l->next)
 	{
-		GeditDocument *d;
+		GeditDocument *doc;
 		GtkSourceFile *source_file;
-		GFile *l;
+		GFile *location;
 
-		d = GEDIT_DOCUMENT (docs->data);
-		source_file = gedit_document_get_file (d);
+		doc = l->data;
+		source_file = gedit_document_get_file (doc);
+		location = gtk_source_file_get_location (source_file);
 
-		l = gtk_source_file_get_location (source_file);
-		if (l != NULL && g_file_equal (l, file))
+		if (location != NULL && g_file_equal (location, file))
 		{
-			tab = gedit_tab_get_from_document (d);
-			break;
+			return gedit_tab_get_from_document (doc);
 		}
-
-		docs = g_list_next (docs);
 	}
 
-	return tab;
+	return NULL;
 }
 
 static gboolean
 is_duplicated_file (GSList *files,
 		    GFile  *file)
 {
-	while (files != NULL)
-	{
-		if (g_file_equal (files->data, file))
-			return TRUE;
+	GSList *l;
 
-		files = g_slist_next (files);
+	for (l = files; l != NULL; l = l->next)
+	{
+		if (g_file_equal (l->data, file))
+		{
+			return TRUE;
+		}
 	}
 
 	return FALSE;
@@ -120,11 +119,11 @@ load_file_list (GeditWindow             *window,
 		gint                     column_pos,
 		gboolean                 create)
 {
-	GeditTab *tab;
-	GSList *loaded_files = NULL; /* Number of files to load */
-	gboolean jump_to = TRUE; /* Whether to jump to the new tab */
 	GList *win_docs;
 	GSList *files_to_load = NULL;
+	GSList *loaded_files = NULL;
+	GeditTab *tab;
+	gboolean jump_to = TRUE; /* Whether to jump to the new tab */
 	const GSList *l;
 	gint num_loaded_files = 0;
 
@@ -132,17 +131,25 @@ load_file_list (GeditWindow             *window,
 
 	win_docs = gedit_window_get_documents (window);
 
-	/* Remove the uris corresponding to documents already open
-	 * in "window" and remove duplicates from "uris" list */
+	/* Remove the files corresponding to documents already opened in
+	 * "window" and remove duplicates from the "files" list.
+	 */
 	for (l = files; l != NULL; l = l->next)
 	{
-		if (is_duplicated_file (files_to_load, l->data))
+		GFile *file = l->data;
+
+		if (is_duplicated_file (files_to_load, file))
 		{
 			continue;
 		}
 
-		tab = get_tab_from_file (win_docs, l->data);
-		if (tab != NULL)
+		tab = get_tab_from_file (win_docs, file);
+
+		if (tab == NULL)
+		{
+			files_to_load = g_slist_prepend (files_to_load, file);
+		}
+		else
 		{
 			if (l == files)
 			{
@@ -173,11 +180,6 @@ load_file_list (GeditWindow             *window,
 			loaded_files = g_slist_prepend (loaded_files,
 			                                gedit_tab_get_document (tab));
 		}
-		else
-		{
-			files_to_load = g_slist_prepend (files_to_load,
-							 l->data);
-		}
 	}
 
 	g_list_free (win_docs);
@@ -198,7 +200,7 @@ load_file_list (GeditWindow             *window,
 		doc = gedit_tab_get_document (tab);
 
 		if (gedit_document_is_untouched (doc) &&
-		    (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL))
+		    gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL)
 		{
 			_gedit_tab_load (tab,
 					 l->data,
@@ -221,7 +223,7 @@ load_file_list (GeditWindow             *window,
 
 	while (l != NULL)
 	{
-		g_return_val_if_fail (l->data != NULL, 0);
+		g_return_val_if_fail (l->data != NULL, NULL);
 
 		tab = gedit_window_create_tab_from_location (window,
 							     l->data,
@@ -266,13 +268,12 @@ load_file_list (GeditWindow             *window,
 	{
 		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
-					       ngettext("Loading %d file\342\200\246",
-							"Loading %d files\342\200\246",
-							num_loaded_files),
+					       ngettext ("Loading %d file\342\200\246",
+							 "Loading %d files\342\200\246",
+							 num_loaded_files),
 					       num_loaded_files);
 	}
 
-	/* Free uris_to_load. Note that l points to the first element of uris_to_load */
 	g_slist_free (files_to_load);
 
 	return loaded_files;
@@ -281,12 +282,12 @@ load_file_list (GeditWindow             *window,
 /**
  * gedit_commands_load_location:
  * @window: a #GeditWindow
- * @location: a #GFile to be loaded
+ * @location: a #GFile to load
  * @encoding: (allow-none): the #GtkSourceEncoding of @location
- * @line_pos: the line position to place the cursor when @location is loaded
- * @column_pos: the line column to place the cursor when @location is loaded
+ * @line_pos: the line position to place the cursor
+ * @column_pos: the line column to place the cursor
  *
- * Loads @location. Ignores non-existing locations
+ * Loads @location. Ignores non-existing locations.
  */
 void
 gedit_commands_load_location (GeditWindow             *window,
@@ -318,14 +319,15 @@ gedit_commands_load_location (GeditWindow             *window,
 /**
  * gedit_commands_load_locations:
  * @window: a #GeditWindow
- * @locations: (element-type Gio.File): the locations to be loaded
- * @encoding: (allow-none): the #GtkSourceEncoding of @location
- * @line_pos: the line position to place the cursor when @location is loaded
- * @column_pos: the line column to place the cursor when @location is loaded
+ * @locations: (element-type Gio.File): the locations to load
+ * @encoding: (allow-none): the #GtkSourceEncoding
+ * @line_pos: the line position to place the cursor
+ * @column_pos: the line column to place the cursor
  *
- * Loads @locations. Ignore non-existing locations
+ * Loads @locations. Ignore non-existing locations.
  *
- * Returns: (element-type Gedit.Document) (transfer container): the locations that were loaded
+ * Returns: (element-type Gedit.Document) (transfer container): the locations
+ * that were loaded.
  */
 GSList *
 gedit_commands_load_locations (GeditWindow             *window,
@@ -334,8 +336,8 @@ gedit_commands_load_locations (GeditWindow             *window,
 			       gint                     line_pos,
 			       gint                     column_pos)
 {
-	g_return_val_if_fail (GEDIT_IS_WINDOW (window), 0);
-	g_return_val_if_fail ((locations != NULL) && (locations->data != NULL), 0);
+	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
+	g_return_val_if_fail (locations != NULL && locations->data != NULL, NULL);
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -344,7 +346,7 @@ gedit_commands_load_locations (GeditWindow             *window,
 
 /*
  * From the command line we can specify a line position for the
- * first doc. Beside specifying a not existing uri creates a
+ * first doc. Beside specifying a non-existing file creates a
  * titled document.
  */
 GSList *
@@ -384,7 +386,6 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 	if (response_id != GTK_RESPONSE_OK)
 	{
 		gedit_file_chooser_dialog_destroy (dialog);
-
 		return;
 	}
 
@@ -405,7 +406,7 @@ open_dialog_response_cb (GeditFileChooserDialog *dialog,
 	}
 
 	/* Remember the folder we navigated to */
-	 _gedit_window_set_default_location (window, files->data);
+	_gedit_window_set_default_location (window, files->data);
 
 	loaded = gedit_commands_load_locations (window,
 	                                        files,
@@ -427,7 +428,7 @@ _gedit_cmd_file_open (GSimpleAction *action,
 
 	if (GEDIT_IS_WINDOW (user_data))
 	{
-		window = GEDIT_WINDOW (user_data);
+		window = user_data;
 	}
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -447,13 +448,14 @@ _gedit_cmd_file_open (GSimpleAction *action,
 			return;
 		}
 
+		/* FIXME: this should be in GeditWindow. */
 		gtk_widget_hide (GTK_WIDGET (window->priv->open_document_popover));
 		gtk_widget_hide (GTK_WIDGET (window->priv->fullscreen_open_document_popover));
 	}
 
-	/* Translators: "Open" is the title of the file chooser window */
+	/* Translators: "Open" is the title of the file chooser window. */
 	open_dialog = gedit_file_chooser_dialog_create (_("Open"),
-							window ? GTK_WINDOW (window) : NULL,
+							window != NULL ? GTK_WINDOW (window) : NULL,
 							GEDIT_FILE_CHOOSER_OPEN |
 							GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
 							GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS,
@@ -466,6 +468,9 @@ _gedit_cmd_file_open (GSimpleAction *action,
 		GeditDocument *doc;
 		GFile *default_path = NULL;
 
+		/* The file chooser dialog for opening files is not modal, so
+		 * ensure that at most one file chooser is opened.
+		 */
 		g_object_set_data (G_OBJECT (window),
 				   GEDIT_OPEN_DIALOG_KEY,
 				   open_dialog);
@@ -474,7 +479,7 @@ _gedit_cmd_file_open (GSimpleAction *action,
 				   (GWeakNotify) open_dialog_destroyed,
 				   window);
 
-		/* Set the current folder uri */
+		/* Set the current folder */
 		doc = gedit_window_get_active_document (window);
 
 		if (doc != NULL)
@@ -489,7 +494,9 @@ _gedit_cmd_file_open (GSimpleAction *action,
 		}
 
 		if (default_path == NULL)
+		{
 			default_path = _gedit_window_get_default_location (window);
+		}
 
 		if (default_path != NULL)
 		{
@@ -508,8 +515,8 @@ _gedit_cmd_file_open (GSimpleAction *action,
 
 void
 _gedit_cmd_file_reopen_closed_tab (GSimpleAction *action,
-                                   GVariant      *parameter,
-                                   gpointer      user_data)
+				   GVariant      *parameter,
+				   gpointer       user_data)
 {
 	GeditWindow *window = GEDIT_WINDOW (user_data);
 	GFile *file;
