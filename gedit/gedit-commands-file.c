@@ -757,7 +757,9 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 		if ((compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE) !=
 		    (current_compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE))
 		{
-			if (!change_compression (GTK_WINDOW (dialog),
+			GtkWindow *dialog_window = gedit_file_chooser_dialog_get_window (dialog);
+
+			if (!change_compression (dialog_window,
 			                         location,
 			                         compression_type != GTK_SOURCE_COMPRESSION_TYPE_NONE))
 			{
