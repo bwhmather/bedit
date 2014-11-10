@@ -42,7 +42,7 @@ class PythonConsoleConfigWidget(object):
         self._ui = Gtk.Builder()
 
     def configure_widget(self):
-        self._ui.add_objects_from_file(self._ui_path, ["grid"])
+        self._ui.add_from_file(self._ui_path)
 
         self.set_colorbutton_color(self._ui.get_object('colorbutton-command'),
                                    self._settings.get_string(self.CONSOLE_KEY_COMMAND_COLOR))
