@@ -5,6 +5,7 @@
  * Copyright (C) 1998, 1999 Alex Roberts, Evan Lawrence
  * Copyright (C) 2000, 2001 Chema Celorio, Paolo Maggi
  * Copyright (C) 2002-2005 Paolo Maggi
+ * Copyright (C) 2014 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -41,11 +42,9 @@
 #include "gedit-close-confirmation-dialog.h"
 
 #define GEDIT_OPEN_DIALOG_KEY "gedit-open-dialog-key"
-#define GEDIT_LIST_OF_TABS_TO_SAVE_AS "gedit-list-of-tabs-to-save-as"
 #define GEDIT_IS_CLOSING_ALL "gedit-is-closing-all"
 #define GEDIT_NOTEBOOK_TO_CLOSE "gedit-notebook-to-close"
 #define GEDIT_IS_QUITTING "gedit-is-quitting"
-#define GEDIT_IS_CLOSING_TAB "gedit-is-closing-tab"
 #define GEDIT_IS_QUITTING_ALL "gedit-is-quitting-all"
 
 static void tab_state_changed_while_saving (GeditTab    *tab,
@@ -793,52 +792,6 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 				  task);
 
 	g_object_unref (location);
-
-/* TODO refactor this */
-#if 0
-save_next_tab:
-
-	data = g_object_get_data (G_OBJECT (window),
-				  GEDIT_LIST_OF_TABS_TO_SAVE_AS);
-	if (data == NULL)
-	{
-		return;
-	}
-
-	/* Save As the next tab of the list (we are Saving All files) */
-	tabs_to_save_as = (GSList *)data;
-	g_return_if_fail (tab == GEDIT_TAB (tabs_to_save_as->data));
-
-	/* Remove the first item of the list */
-	tabs_to_save_as = g_slist_delete_link (tabs_to_save_as,
-					       tabs_to_save_as);
-
-	g_object_set_data (G_OBJECT (window),
-			   GEDIT_LIST_OF_TABS_TO_SAVE_AS,
-			   tabs_to_save_as);
-
-	if (tabs_to_save_as != NULL)
-	{
-		tab = GEDIT_TAB (tabs_to_save_as->data);
-
-		if (GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (tab),
-							    GEDIT_IS_CLOSING_TAB)))
-		{
-			g_object_set_data (G_OBJECT (tab),
-					   GEDIT_IS_CLOSING_TAB,
-					   NULL);
-
-			/* Trace tab state changes */
-			g_signal_connect (tab,
-					  "notify::state",
-					  G_CALLBACK (tab_state_changed_while_saving),
-					  window);
-		}
-
-		gedit_window_set_active_tab (window, tab);
-		save_as_tab (tab, window);
-	}
-#endif
 }
 
 static GtkFileChooserConfirmation
@@ -1093,6 +1046,145 @@ _gedit_cmd_file_save_as (GSimpleAction *action,
 	}
 }
 
+static void
+quit_if_needed (GeditWindow *window)
+{
+	gboolean is_quitting;
+	gboolean is_quitting_all;
+
+	is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
+							      GEDIT_IS_QUITTING));
+
+	is_quitting_all = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
+							          GEDIT_IS_QUITTING_ALL));
+
+	if (is_quitting)
+	{
+		gtk_widget_destroy (GTK_WIDGET (window));
+	}
+
+	if (is_quitting_all)
+	{
+		GtkApplication *app;
+
+		app = GTK_APPLICATION (g_application_get_default ());
+
+		if (gtk_application_get_windows (app) == NULL)
+		{
+			g_application_quit (G_APPLICATION (app));
+		}
+	}
+}
+
+static gboolean
+really_close_tab (GeditTab *tab)
+{
+	GtkWidget *toplevel;
+	GeditWindow *window;
+
+	gedit_debug (DEBUG_COMMANDS);
+
+	g_return_val_if_fail (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_CLOSING,
+			      FALSE);
+
+	toplevel = gtk_widget_get_toplevel (GTK_WIDGET (tab));
+	g_return_val_if_fail (GEDIT_IS_WINDOW (toplevel), FALSE);
+
+	window = GEDIT_WINDOW (toplevel);
+
+	gedit_window_close_tab (window, tab);
+
+	if (gedit_window_get_active_tab (window) == NULL)
+	{
+		quit_if_needed (window);
+	}
+
+	return FALSE;
+}
+
+static void
+close_tab (GeditTab *tab)
+{
+	GeditDocument *doc;
+
+	doc = gedit_tab_get_document (tab);
+	g_return_if_fail (doc != NULL);
+
+	/* If the user has modified again the document, do not close the tab. */
+	if (_gedit_document_needs_saving (doc))
+	{
+		return;
+	}
+
+	/* Close the document only if it has been succesfully saved.
+	 * Tab state is set to CLOSING (it is a state without exiting
+	 * transitions) and the tab is closed in an idle handler.
+	 */
+	_gedit_tab_mark_for_closing (tab);
+
+	g_idle_add_full (G_PRIORITY_HIGH_IDLE,
+			 (GSourceFunc) really_close_tab,
+			 tab,
+			 NULL);
+}
+
+typedef struct _SaveAsData SaveAsData;
+
+struct _SaveAsData
+{
+	/* Reffed */
+	GeditWindow *window;
+
+	/* List of reffed GeditTab's */
+	GSList *tabs_to_save_as;
+
+	guint close_tabs : 1;
+};
+
+static void save_as_documents_list (SaveAsData *data);
+
+static void
+save_as_documents_list_cb (GeditTab     *tab,
+			   GAsyncResult *result,
+			   SaveAsData   *data)
+{
+	gboolean saved = save_as_tab_finish (tab, result);
+
+	if (saved && data->close_tabs)
+	{
+		close_tab (tab);
+	}
+
+	g_return_if_fail (tab == GEDIT_TAB (data->tabs_to_save_as->data));
+	g_object_unref (data->tabs_to_save_as->data);
+	data->tabs_to_save_as = g_slist_delete_link (data->tabs_to_save_as,
+						     data->tabs_to_save_as);
+
+	if (data->tabs_to_save_as != NULL)
+	{
+		save_as_documents_list (data);
+	}
+	else
+	{
+		g_object_unref (data->window);
+		g_slice_free (SaveAsData, data);
+	}
+}
+
+static void
+save_as_documents_list (SaveAsData *data)
+{
+	GeditTab *next_tab = GEDIT_TAB (data->tabs_to_save_as->data);
+
+	gedit_window_set_active_tab (data->window, next_tab);
+
+	save_as_tab_async (next_tab,
+			   data->window,
+			   NULL,
+			   (GAsyncReadyCallback) save_as_documents_list_cb,
+			   data);
+}
+
 /*
  * The docs in the list must belong to the same GeditWindow.
  */
@@ -1100,8 +1192,8 @@ static void
 save_documents_list (GeditWindow *window,
 		     GList       *docs)
 {
+	SaveAsData *data = NULL;
 	GList *l;
-	GSList *tabs_to_save_as = NULL;
 
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -1134,7 +1226,16 @@ save_documents_list (GeditWindow *window,
 				if (gedit_document_is_untitled (doc) ||
 				    gedit_document_get_readonly (doc))
 				{
-					tabs_to_save_as = g_slist_prepend (tabs_to_save_as, tab);
+					if (data == NULL)
+					{
+						data = g_slice_new (SaveAsData);
+						data->window = g_object_ref (window);
+						data->tabs_to_save_as = NULL;
+						data->close_tabs = FALSE;
+					}
+
+					data->tabs_to_save_as = g_slist_prepend (data->tabs_to_save_as,
+										 g_object_ref (tab));
 				}
 				else
 				{
@@ -1176,29 +1277,10 @@ save_documents_list (GeditWindow *window,
 		}
 	}
 
-	if (tabs_to_save_as != NULL)
+	if (data != NULL)
 	{
-		GeditTab *tab;
-
-		tabs_to_save_as = g_slist_reverse (tabs_to_save_as);
-
-		g_return_if_fail (g_object_get_data (G_OBJECT (window),
-						     GEDIT_LIST_OF_TABS_TO_SAVE_AS) == NULL);
-
-		g_object_set_data (G_OBJECT (window),
-				   GEDIT_LIST_OF_TABS_TO_SAVE_AS,
-				   tabs_to_save_as);
-
-		tab = GEDIT_TAB (tabs_to_save_as->data);
-
-		gedit_window_set_active_tab (window, tab);
-
-		/* TODO save next tab in the callback. */
-		save_as_tab_async (tab,
-				   window,
-				   NULL,
-				   (GAsyncReadyCallback) save_as_tab_ready_cb,
-				   NULL);
+		data->tabs_to_save_as = g_slist_reverse (data->tabs_to_save_as);
+		save_as_documents_list (data);
 	}
 }
 
@@ -1453,63 +1535,6 @@ _gedit_cmd_file_revert (GSimpleAction *action,
 }
 
 static void
-quit_if_needed (GeditWindow *window)
-{
-	gboolean is_quitting;
-	gboolean is_quitting_all;
-
-	is_quitting = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-							      GEDIT_IS_QUITTING));
-
-	is_quitting_all = GPOINTER_TO_BOOLEAN (g_object_get_data (G_OBJECT (window),
-							          GEDIT_IS_QUITTING_ALL));
-
-	if (is_quitting)
-	{
-		gtk_widget_destroy (GTK_WIDGET (window));
-	}
-
-	if (is_quitting_all)
-	{
-		GtkApplication *app;
-
-		app = GTK_APPLICATION (g_application_get_default ());
-
-		if (gtk_application_get_windows (app) == NULL)
-		{
-			g_application_quit (G_APPLICATION (app));
-		}
-	}
-}
-
-/* Close tab */
-static gboolean
-really_close_tab (GeditTab *tab)
-{
-	GtkWidget *toplevel;
-	GeditWindow *window;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	g_return_val_if_fail (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_CLOSING,
-			      FALSE);
-
-	toplevel = gtk_widget_get_toplevel (GTK_WIDGET (tab));
-	g_return_val_if_fail (GEDIT_IS_WINDOW (toplevel), FALSE);
-
-	window = GEDIT_WINDOW (toplevel);
-
-	gedit_window_close_tab (window, tab);
-
-	if (gedit_window_get_active_tab (window) == NULL)
-	{
-		quit_if_needed (window);
-	}
-
-	return FALSE;
-}
-
-static void
 tab_state_changed_while_saving (GeditTab    *tab,
 				GParamSpec  *pspec,
 				GeditWindow *window)
@@ -1525,33 +1550,11 @@ tab_state_changed_while_saving (GeditTab    *tab,
 	 */
 	if (state == GEDIT_TAB_STATE_NORMAL)
 	{
-		GeditDocument *doc;
-
 		g_signal_handlers_disconnect_by_func (tab,
 						      G_CALLBACK (tab_state_changed_while_saving),
 					      	      window);
 
-		doc = gedit_tab_get_document (tab);
-		g_return_if_fail (doc != NULL);
-
-		/* If the saving operation failed or was interrupted, then the
-		 * document is still "modified" -> do not close the tab.
-		 */
-		if (_gedit_document_needs_saving (doc))
-		{
-			return;
-		}
-
-		/* Close the document only if it has been succesfully saved.
-		 * Tab state is set to CLOSING (it is a state without exiting
-		 * transitions) and the tab is closed in an idle handler.
-		 */
-		_gedit_tab_mark_for_closing (tab);
-
-		g_idle_add_full (G_PRIORITY_HIGH_IDLE,
-				 (GSourceFunc)really_close_tab,
-				 tab,
-				 NULL);
+		close_tab (tab);
 	}
 }
 
@@ -1571,32 +1574,6 @@ save_and_close (GeditTab    *tab,
 }
 
 static void
-save_as_and_close (GeditTab    *tab,
-		   GeditWindow *window)
-{
-	gedit_debug (DEBUG_COMMANDS);
-
-	g_object_set_data (G_OBJECT (tab),
-			   GEDIT_IS_CLOSING_TAB,
-			   NULL);
-
-	/* Trace tab state changes */
-	g_signal_connect (tab,
-			  "notify::state",
-			  G_CALLBACK (tab_state_changed_while_saving),
-			  window);
-
-	gedit_window_set_active_tab (window, tab);
-
-	/* TODO close tab in the callback. */
-	save_as_tab_async (tab,
-			   window,
-			   NULL,
-			   (GAsyncReadyCallback) save_as_tab_ready_cb,
-			   NULL);
-}
-
-static void
 save_and_close_documents (GList         *docs,
                           GeditWindow   *window,
                           GeditNotebook *notebook)
@@ -1604,7 +1581,7 @@ save_and_close_documents (GList         *docs,
 	GList *tabs;
 	GList *l;
 	GSList *sl;
-	GSList *tabs_to_save_as = NULL;
+	SaveAsData *data = NULL;
 	GSList *tabs_to_save_and_close = NULL;
 	GList *tabs_to_close = NULL;
 
@@ -1676,11 +1653,16 @@ save_and_close_documents (GList         *docs,
 				if (gedit_document_is_untitled (doc) ||
 				    gedit_document_get_readonly (doc))
 				{
-					g_object_set_data (G_OBJECT (tab),
-							   GEDIT_IS_CLOSING_TAB,
-							   GBOOLEAN_TO_POINTER (TRUE));
+					if (data == NULL)
+					{
+						data = g_slice_new (SaveAsData);
+						data->window = g_object_ref (window);
+						data->tabs_to_save_as = NULL;
+						data->close_tabs = TRUE;
+					}
 
-					tabs_to_save_as = g_slist_prepend (tabs_to_save_as, tab);
+					data->tabs_to_save_as = g_slist_prepend (data->tabs_to_save_as,
+										 g_object_ref (tab));
 				}
 				else
 				{
@@ -1709,23 +1691,11 @@ save_and_close_documents (GList         *docs,
 
 	g_slist_free (tabs_to_save_and_close);
 
-	/* Save As and close all the files in tabs_to_save_as  */
-	if (tabs_to_save_as != NULL)
+	/* Save As and close all the files in data->tabs_to_save_as. */
+	if (data != NULL)
 	{
-		GeditTab *tab;
-
-		tabs_to_save_as = g_slist_reverse (tabs_to_save_as);
-
-		g_return_if_fail (g_object_get_data (G_OBJECT (window),
-						     GEDIT_LIST_OF_TABS_TO_SAVE_AS) == NULL);
-
-		g_object_set_data (G_OBJECT (window),
-				   GEDIT_LIST_OF_TABS_TO_SAVE_AS,
-				   tabs_to_save_as);
-
-		tab = GEDIT_TAB (tabs_to_save_as->data);
-
-		save_as_and_close (tab, window);
+		data->tabs_to_save_as = g_slist_reverse (data->tabs_to_save_as);
+		save_as_documents_list (data);
 	}
 }
 
