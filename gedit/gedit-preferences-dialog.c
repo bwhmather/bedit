@@ -657,7 +657,10 @@ file_copy (const gchar  *name,
 		return FALSE;
 
 	if (!g_file_set_contents (dest_name, contents, length, error))
+	{
+		g_free (contents);
 		return FALSE;
+	}
 
 	g_free (contents);
 
@@ -709,9 +712,12 @@ install_style_scheme (const gchar *fname)
 		if (!file_copy (fname, new_file_name, &error))
 		{
 			g_free (new_file_name);
+			g_free (dirname);
 
 			g_message ("Cannot install style scheme:\n%s",
 				   error->message);
+
+			g_error_free (error);
 
 			return NULL;
 		}

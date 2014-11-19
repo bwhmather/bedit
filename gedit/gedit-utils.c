@@ -1194,9 +1194,11 @@ gedit_utils_drop_get_uris (GtkSelectionData *selection_data)
 	if (*uri_list == NULL)
 	{
 		g_free(uri_list);
+		g_strfreev (uris);
 		return NULL;
 	}
 
+	g_strfreev (uris);
 	return uri_list;
 }
 
