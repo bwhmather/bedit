@@ -41,7 +41,6 @@
 #include "gedit-close-confirmation-dialog.h"
 
 #define GEDIT_OPEN_DIALOG_KEY "gedit-open-dialog-key"
-#define GEDIT_TAB_TO_SAVE_AS "gedit-tab-to-save-as"
 #define GEDIT_LIST_OF_TABS_TO_SAVE_AS "gedit-list-of-tabs-to-save-as"
 #define GEDIT_IS_CLOSING_ALL "gedit-is-closing-all"
 #define GEDIT_NOTEBOOK_TO_CLOSE "gedit-notebook-to-close"
@@ -52,9 +51,6 @@
 static void tab_state_changed_while_saving (GeditTab    *tab,
 					    GParamSpec  *pspec,
 					    GeditWindow *window);
-
-static void save_as_tab (GeditTab    *tab,
-			 GeditWindow *window);
 
 void
 _gedit_cmd_file_new (GSimpleAction *action,
@@ -705,102 +701,101 @@ get_compression_type_from_file (GFile *file)
 }
 
 static void
-save_finish_cb (GeditTab     *tab,
-		GAsyncResult *result,
-		gpointer      user_data)
+tab_save_as_ready_cb (GeditTab     *tab,
+		      GAsyncResult *result,
+		      GTask        *task)
 {
-	_gedit_tab_save_finish (tab, result);
+	gboolean success = _gedit_tab_save_finish (tab, result);
+	g_task_return_boolean (task, success);
+	g_object_unref (task);
 }
 
 static void
 save_dialog_response_cb (GeditFileChooserDialog *dialog,
-                         gint                    response_id,
-                         GeditWindow            *window)
+			 gint                    response_id,
+			 GTask                  *task)
 {
 	GeditTab *tab;
-	gpointer data;
-	GSList *tabs_to_save_as;
+	GeditWindow *window;
+	GeditDocument *doc;
+	GtkSourceFile *file;
+	GFile *location;
+	gchar *parse_name;
+	GtkSourceNewlineType newline_type;
+	GtkSourceCompressionType compression_type;
+	GtkSourceCompressionType current_compression_type;
+	const GtkSourceEncoding *encoding;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	tab = GEDIT_TAB (g_object_get_data (G_OBJECT (dialog),
-					    GEDIT_TAB_TO_SAVE_AS));
+	tab = g_task_get_source_object (task);
+	window = g_task_get_task_data (task);
 
 	if (response_id != GTK_RESPONSE_OK)
 	{
 		gedit_file_chooser_dialog_destroy (dialog);
-
-		goto save_next_tab;
+		g_task_return_boolean (task, FALSE);
+		g_object_unref (task);
+		return;
 	}
 
-	if (tab != NULL)
+	doc = gedit_tab_get_document (tab);
+	file = gedit_document_get_file (doc);
+
+	location = gedit_file_chooser_dialog_get_file (dialog);
+	g_return_if_fail (location != NULL);
+
+	compression_type = get_compression_type_from_file (location);
+	current_compression_type = gtk_source_file_get_compression_type (file);
+
+	if ((compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE) !=
+	    (current_compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE))
 	{
-		GFile *location;
-		GeditDocument *doc;
-		GtkSourceFile *file;
-		gchar *parse_name;
-		GtkSourceNewlineType newline_type;
-		GtkSourceCompressionType compression_type;
-		GtkSourceCompressionType current_compression_type;
-		const GtkSourceEncoding *encoding;
+		GtkWindow *dialog_window = gedit_file_chooser_dialog_get_window (dialog);
 
-		doc = gedit_tab_get_document (tab);
-		file = gedit_document_get_file (doc);
-
-		location = gedit_file_chooser_dialog_get_file (dialog);
-		g_return_if_fail (location != NULL);
-
-		compression_type = get_compression_type_from_file (location);
-		current_compression_type = gtk_source_file_get_compression_type (file);
-
-		if ((compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE) !=
-		    (current_compression_type == GTK_SOURCE_COMPRESSION_TYPE_NONE))
+		if (!change_compression (dialog_window,
+					 location,
+					 compression_type != GTK_SOURCE_COMPRESSION_TYPE_NONE))
 		{
-			GtkWindow *dialog_window = gedit_file_chooser_dialog_get_window (dialog);
+			gedit_file_chooser_dialog_destroy (dialog);
+			g_object_unref (location);
 
-			if (!change_compression (dialog_window,
-			                         location,
-			                         compression_type != GTK_SOURCE_COMPRESSION_TYPE_NONE))
-			{
-				gedit_file_chooser_dialog_destroy (dialog);
-				g_object_unref (location);
-
-				goto save_next_tab;
-			}
+			g_task_return_boolean (task, FALSE);
+			g_object_unref (task);
+			return;
 		}
-
-		encoding = gedit_file_chooser_dialog_get_encoding (dialog);
-		newline_type = gedit_file_chooser_dialog_get_newline_type (dialog);
-
-		gedit_file_chooser_dialog_destroy (dialog);
-
-		doc = gedit_tab_get_document (tab);
-		g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-		parse_name = g_file_get_parse_name (location);
-
-		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
-					        window->priv->generic_message_cid,
-					       _("Saving file '%s'\342\200\246"),
-					       parse_name);
-
-		g_free (parse_name);
-
-		/* Let's remember the dir we navigated to, even if the saving fails... */
-		_gedit_window_set_default_location (window, location);
-
-		_gedit_tab_save_as_async (tab,
-					  location,
-					  encoding,
-					  newline_type,
-					  compression_type,
-					  NULL,
-					  (GAsyncReadyCallback) save_finish_cb,
-					  NULL);
-
-		g_object_unref (location);
 	}
 
+	encoding = gedit_file_chooser_dialog_get_encoding (dialog);
+	newline_type = gedit_file_chooser_dialog_get_newline_type (dialog);
+
+	gedit_file_chooser_dialog_destroy (dialog);
+
+	parse_name = g_file_get_parse_name (location);
+
+	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
+				       window->priv->generic_message_cid,
+				       _("Saving file '%s'\342\200\246"),
+				       parse_name);
+
+	g_free (parse_name);
+
+	/* Let's remember the dir we navigated to, even if the saving fails... */
+	_gedit_window_set_default_location (window, location);
+
+	_gedit_tab_save_as_async (tab,
+				  location,
+				  encoding,
+				  newline_type,
+				  compression_type,
+				  g_task_get_cancellable (task),
+				  (GAsyncReadyCallback) tab_save_as_ready_cb,
+				  task);
+
+	g_object_unref (location);
+
+/* TODO refactor this */
+#if 0
 save_next_tab:
 
 	data = g_object_get_data (G_OBJECT (window),
@@ -843,6 +838,7 @@ save_next_tab:
 		gedit_window_set_active_tab (window, tab);
 		save_as_tab (tab, window);
 	}
+#endif
 }
 
 static GtkFileChooserConfirmation
@@ -882,10 +878,15 @@ confirm_overwrite_callback (GeditFileChooserDialog *dialog,
 	return res;
 }
 
+/* Call save_as_tab_finish() in @callback. */
 static void
-save_as_tab (GeditTab    *tab,
-	     GeditWindow *window)
+save_as_tab_async (GeditTab            *tab,
+		   GeditWindow         *window,
+		   GCancellable        *cancellable,
+		   GAsyncReadyCallback  callback,
+		   gpointer             user_data)
 {
+	GTask *task;
 	GeditFileChooserDialog *save_dialog;
 	GtkWindowGroup *window_group;
 	GtkWindow *dialog_window;
@@ -899,6 +900,9 @@ save_as_tab (GeditTab    *tab,
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
 
 	gedit_debug (DEBUG_COMMANDS);
+
+	task = g_task_new (tab, cancellable, callback, user_data);
+	g_task_set_task_data (task, g_object_ref (window), g_object_unref);
 
 	save_dialog = gedit_file_chooser_dialog_create (_("Save As"),
 							GTK_WINDOW (window),
@@ -960,7 +964,7 @@ save_as_tab (GeditTab    *tab,
 		g_free (docname);
 	}
 
-	/* Set suggested encoding */
+	/* Set suggested encoding and newline type. */
 	encoding = gtk_source_file_get_encoding (file);
 
 	if (encoding == NULL)
@@ -976,16 +980,37 @@ save_as_tab (GeditTab    *tab,
 	gedit_file_chooser_dialog_set_newline_type (GEDIT_FILE_CHOOSER_DIALOG (save_dialog),
 	                                            newline_type);
 
-	g_object_set_data (G_OBJECT (save_dialog),
-			   GEDIT_TAB_TO_SAVE_AS,
-			   tab);
-
 	g_signal_connect (save_dialog,
 			  "response",
 			  G_CALLBACK (save_dialog_response_cb),
-			  window);
+			  task);
 
 	gedit_file_chooser_dialog_show (save_dialog);
+}
+
+static gboolean
+save_as_tab_finish (GeditTab     *tab,
+		    GAsyncResult *result)
+{
+	g_return_val_if_fail (g_task_is_valid (result, tab), FALSE);
+
+	return g_task_propagate_boolean (G_TASK (result), NULL);
+}
+
+static void
+save_as_tab_ready_cb (GeditTab     *tab,
+		      GAsyncResult *result,
+		      gpointer      user_data)
+{
+	save_as_tab_finish (tab, result);
+}
+
+static void
+tab_save_ready_cb (GeditTab     *tab,
+		   GAsyncResult *result,
+		   gpointer      user_data)
+{
+	_gedit_tab_save_finish (tab, result);
 }
 
 static void
@@ -1007,7 +1032,12 @@ save_tab (GeditTab    *tab,
 	    gedit_document_get_readonly (doc))
 	{
 		gedit_debug_message (DEBUG_COMMANDS, "Untitled or Readonly");
-		save_as_tab (tab, window);
+
+		save_as_tab_async (tab,
+				   window,
+				   NULL,
+				   (GAsyncReadyCallback) save_as_tab_ready_cb,
+				   NULL);
 		return;
 	}
 
@@ -1021,7 +1051,7 @@ save_tab (GeditTab    *tab,
 
 	_gedit_tab_save_async (tab,
 			       NULL,
-			       (GAsyncReadyCallback) save_finish_cb,
+			       (GAsyncReadyCallback) tab_save_ready_cb,
 			       NULL);
 }
 
@@ -1055,7 +1085,11 @@ _gedit_cmd_file_save_as (GSimpleAction *action,
 	tab = gedit_window_get_active_tab (window);
 	if (tab != NULL)
 	{
-		save_as_tab (tab, window);
+		save_as_tab_async (tab,
+				   window,
+				   NULL,
+				   (GAsyncReadyCallback) save_as_tab_ready_cb,
+				   NULL);
 	}
 }
 
@@ -1158,7 +1192,13 @@ save_documents_list (GeditWindow *window,
 		tab = GEDIT_TAB (tabs_to_save_as->data);
 
 		gedit_window_set_active_tab (window, tab);
-		save_as_tab (tab, window);
+
+		/* TODO save next tab in the callback. */
+		save_as_tab_async (tab,
+				   window,
+				   NULL,
+				   (GAsyncReadyCallback) save_as_tab_ready_cb,
+				   NULL);
 	}
 }
 
@@ -1547,7 +1587,13 @@ save_as_and_close (GeditTab    *tab,
 			  window);
 
 	gedit_window_set_active_tab (window, tab);
-	save_as_tab (tab, window);
+
+	/* TODO close tab in the callback. */
+	save_as_tab_async (tab,
+			   window,
+			   NULL,
+			   (GAsyncReadyCallback) save_as_tab_ready_cb,
+			   NULL);
 }
 
 static void
