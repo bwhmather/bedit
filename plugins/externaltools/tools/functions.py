@@ -246,51 +246,33 @@ class MultipleDocumentsSaver:
         self._window = window
         self._panel = panel
         self._node = node
-        self._error = False
-
-        self._signal_ids = {}
-        self._counter = 0
 
         if all_docs:
             docs = window.get_documents()
         else:
             docs = [window.get_active_document()]
 
-        docs_to_save = [doc for doc in docs if doc.get_modified()]
-        signals = {}
+        self._docs_to_save = [doc for doc in docs if doc.get_modified()]
+        self.save_next_document()
 
-        for doc in docs_to_save:
-            signals[doc] = doc.connect('saving', self.on_document_saving)
-
-        if len(docs_to_save) == len(docs) and len(docs) != 0:
-            Gedit.commands_save_all_documents(window)
-        else:
-            for doc in docs_to_save:
-                Gedit.commands_save_document(window, doc)
-
-        for doc in docs_to_save:
-            doc.disconnect(signals[doc])
-
-        self.run_tool()
-
-    def on_document_saving(self, doc, size, total_size):
-        self._counter += 1
-        self._signal_ids[doc] = doc.connect('saved', self.on_document_saved)
-
-    def on_document_saved(self, doc, error):
-        if error:
-            self._error = True
-
-        doc.disconnect(self._signal_ids[doc])
-        del self._signal_ids[doc]
-
-        self._counter -= 1
-
-        self.run_tool()
-
-    def run_tool(self):
-        if self._counter == 0 and not self._error:
+    def save_next_document(self):
+        if len(self._docs_to_save) == 0:
+            # The documents are saved, we can run the tool.
             run_external_tool(self._window, self._panel, self._node)
+        else:
+            next_doc = self._docs_to_save[0]
+            self._docs_to_save.remove(next_doc)
+
+            Gedit.commands_save_document_async(next_doc,
+                                               self._window,
+                                               None,
+                                               self.on_document_saved,
+                                               None)
+
+    def on_document_saved(self, doc, result, user_data):
+        saved = Gedit.commands_save_document_finish(doc, result)
+        if saved:
+            self.save_next_document()
 
 
 def capture_menu_action(action, parameter, window, panel, node):
