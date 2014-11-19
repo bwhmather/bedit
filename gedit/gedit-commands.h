@@ -47,6 +47,15 @@ GSList		*gedit_commands_load_locations		(GeditWindow             *window,
 void		 gedit_commands_save_document		(GeditWindow         *window,
                                                          GeditDocument       *document);
 
+void		 gedit_commands_save_document_async	(GeditDocument       *document,
+							 GeditWindow         *window,
+							 GCancellable        *cancellable,
+							 GAsyncReadyCallback  callback,
+							 gpointer             user_data);
+
+gboolean	 gedit_commands_save_document_finish	(GeditDocument       *document,
+							 GAsyncResult        *result);
+
 void		 gedit_commands_save_all_documents 	(GeditWindow         *window);
 
 /*

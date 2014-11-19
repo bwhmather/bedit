@@ -953,59 +953,134 @@ save_as_tab_finish (GeditTab     *tab,
 static void
 save_as_tab_ready_cb (GeditTab     *tab,
 		      GAsyncResult *result,
-		      gpointer      user_data)
+		      GTask        *task)
 {
-	save_as_tab_finish (tab, result);
+	gboolean success = save_as_tab_finish (tab, result);
+
+	g_task_return_boolean (task, success);
+	g_object_unref (task);
 }
 
 static void
 tab_save_ready_cb (GeditTab     *tab,
 		   GAsyncResult *result,
-		   gpointer      user_data)
+		   GTask        *task)
 {
-	_gedit_tab_save_finish (tab, result);
+	gboolean success = _gedit_tab_save_finish (tab, result);
+
+	g_task_return_boolean (task, success);
+	g_object_unref (task);
 }
 
-static void
-save_tab (GeditTab    *tab,
-	  GeditWindow *window)
+/**
+ * gedit_commands_save_document_async:
+ * @document: the #GeditDocument to save.
+ * @window: a #GeditWindow.
+ * @cancellable: (nullable): optional #GCancellable object, %NULL to ignore.
+ * @callback: (scope async): a #GAsyncReadyCallback to call when the operation
+ *   is finished.
+ * @user_data: (closure): the data to pass to the @callback function.
+ *
+ * Asynchronously save the @document. @document must belong to @window. The
+ * source object of the async task is @document (which will be the first
+ * parameter of the #GAsyncReadyCallback).
+ *
+ * When the operation is finished, @callback will be called. You can then call
+ * gedit_commands_save_document_finish() to get the result of the operation.
+ *
+ * Since: 3.14
+ */
+void
+gedit_commands_save_document_async (GeditDocument       *document,
+				    GeditWindow         *window,
+				    GCancellable        *cancellable,
+				    GAsyncReadyCallback  callback,
+				    gpointer             user_data)
 {
-	GeditDocument *doc;
+	GTask *task;
+	GeditTab *tab;
 	gchar *uri_for_display;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail (GEDIT_IS_DOCUMENT (document));
 	g_return_if_fail (GEDIT_IS_WINDOW (window));
+	g_return_if_fail (cancellable == NULL || G_IS_CANCELLABLE (cancellable));
 
-	doc = gedit_tab_get_document (tab);
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+	task = g_task_new (document, cancellable, callback, user_data);
 
-	if (gedit_document_is_untitled (doc) ||
-	    gedit_document_get_readonly (doc))
+	tab = gedit_tab_get_from_document (document);
+
+	if (gedit_document_is_untitled (document) ||
+	    gedit_document_get_readonly (document))
 	{
 		gedit_debug_message (DEBUG_COMMANDS, "Untitled or Readonly");
 
 		save_as_tab_async (tab,
 				   window,
-				   NULL,
+				   cancellable,
 				   (GAsyncReadyCallback) save_as_tab_ready_cb,
-				   NULL);
+				   task);
 		return;
 	}
 
-	uri_for_display = gedit_document_get_uri_for_display (doc);
+	uri_for_display = gedit_document_get_uri_for_display (document);
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
-				        window->priv->generic_message_cid,
+				       window->priv->generic_message_cid,
 				       _("Saving file '%s'\342\200\246"),
 				       uri_for_display);
 
 	g_free (uri_for_display);
 
 	_gedit_tab_save_async (tab,
-			       NULL,
+			       cancellable,
 			       (GAsyncReadyCallback) tab_save_ready_cb,
-			       NULL);
+			       task);
+}
+
+/**
+ * gedit_commands_save_document_finish:
+ * @document: a #GeditDocument.
+ * @result: a #GAsyncResult.
+ *
+ * Finishes an asynchronous document saving operation started with
+ * gedit_commands_save_document_async().
+ *
+ * Note that there is no error parameter because the errors are already handled
+ * by gedit.
+ *
+ * Returns: %TRUE if the document has been correctly saved, %FALSE otherwise.
+ * Since: 3.14
+ */
+gboolean
+gedit_commands_save_document_finish (GeditDocument *document,
+				     GAsyncResult  *result)
+{
+	g_return_val_if_fail (g_task_is_valid (result, document), FALSE);
+
+	return g_task_propagate_boolean (G_TASK (result), NULL);
+}
+
+static void
+save_tab_ready_cb (GeditDocument *doc,
+		   GAsyncResult  *result,
+		   gpointer       user_data)
+{
+	gedit_commands_save_document_finish (doc, result);
+}
+
+/* Save tab asynchronously, but without results. */
+static void
+save_tab (GeditTab    *tab,
+	  GeditWindow *window)
+{
+	GeditDocument *doc = gedit_tab_get_document (tab);
+
+	gedit_commands_save_document_async (doc,
+					    window,
+					    NULL,
+					    (GAsyncReadyCallback) save_tab_ready_cb,
+					    NULL);
 }
 
 void
@@ -1025,6 +1100,14 @@ _gedit_cmd_file_save (GSimpleAction *action,
 	}
 }
 
+static void
+_gedit_cmd_file_save_as_cb (GeditTab     *tab,
+			    GAsyncResult *result,
+			    gpointer      user_data)
+{
+	save_as_tab_finish (tab, result);
+}
+
 void
 _gedit_cmd_file_save_as (GSimpleAction *action,
                          GVariant      *parameter,
@@ -1041,7 +1124,7 @@ _gedit_cmd_file_save_as (GSimpleAction *action,
 		save_as_tab_async (tab,
 				   window,
 				   NULL,
-				   (GAsyncReadyCallback) save_as_tab_ready_cb,
+				   (GAsyncReadyCallback) _gedit_cmd_file_save_as_cb,
 				   NULL);
 	}
 }
@@ -1284,6 +1367,14 @@ save_documents_list (GeditWindow *window,
 	}
 }
 
+/**
+ * gedit_commands_save_all_documents:
+ * @window: a #GeditWindow.
+ *
+ * Asynchronously save all documents belonging to @window. The result of the
+ * operation is not available, so it's difficult to know whether all the
+ * documents are correctly saved.
+ */
 void
 gedit_commands_save_all_documents (GeditWindow *window)
 {
@@ -1308,6 +1399,14 @@ _gedit_cmd_file_save_all (GSimpleAction *action,
 	gedit_commands_save_all_documents (GEDIT_WINDOW (user_data));
 }
 
+/**
+ * gedit_commands_save_document:
+ * @window: a #GeditWindow.
+ * @document: the #GeditDocument to save.
+ *
+ * Asynchronously save @document. @document must belong to @window. If you need
+ * the result of the operation, use gedit_commands_save_document_async().
+ */
 void
 gedit_commands_save_document (GeditWindow   *window,
                               GeditDocument *document)
