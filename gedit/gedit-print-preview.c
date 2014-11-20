@@ -567,7 +567,7 @@ get_page_at_coords (GeditPrintPreview *preview,
 
 	priv = preview->priv;
 
-	if (priv->tile_h <= 0 || priv->tile_h <= 0)
+	if (priv->tile_h <= 0 || priv->tile_w <= 0)
 		return -1;
 
 	get_adjustments (preview, &hadj, &vadj);
