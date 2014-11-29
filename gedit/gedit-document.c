@@ -483,8 +483,10 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	 * The "saved" signal is emitted at the end of a successful file saving.
 	 *
 	 * Before gedit 3.14 this signal contained a #GError parameter, and the
-	 * signal was also emitted if an error occurred. Plugins should not need
-	 * the error parameter.
+	 * signal was also emitted if an error occurred. To save a document, a
+	 * plugin can use the gedit_commands_save_document_async() function and
+	 * get the result of the operation with
+	 * gedit_commands_save_document_finish().
 	 */
 	document_signals[SAVED] =
 		g_signal_new ("saved",
