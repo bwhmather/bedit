@@ -1619,21 +1619,6 @@ gedit_document_get_metadata (GeditDocument *doc,
 	return NULL;
 }
 
-static void
-set_attributes_cb (GFile        *location,
-		   GAsyncResult *result)
-{
-	GError *error = NULL;
-
-	g_file_set_attributes_finish (location, result, NULL, &error);
-
-	if (error != NULL)
-	{
-		g_warning ("Set document metadata failed: %s", error->message);
-		g_error_free (error);
-	}
-}
-
 /**
  * gedit_document_set_metadata:
  * @doc: a #GeditDocument
@@ -1687,13 +1672,25 @@ gedit_document_set_metadata (GeditDocument *doc,
 
 	if (location != NULL)
 	{
-		g_file_set_attributes_async (location,
-					     info,
-					     G_FILE_QUERY_INFO_NONE,
-					     G_PRIORITY_DEFAULT,
-					     NULL,
-					     (GAsyncReadyCallback) set_attributes_cb,
-					     NULL);
+		GError *error = NULL;
+
+		/* We save synchronously since metadata is always local so it
+		 * should be fast. Moreover this function can be called on
+		 * application shutdown, when the main loop has already exited,
+		 * so an async operation would not terminate.
+		 * https://bugzilla.gnome.org/show_bug.cgi?id=736591
+		 */
+		g_file_set_attributes_from_info (location,
+						 info,
+						 G_FILE_QUERY_INFO_NONE,
+						 NULL,
+						 &error);
+
+		if (error != NULL)
+		{
+			g_warning ("Set document metadata failed: %s", error->message);
+			g_error_free (error);
+		}
 	}
 
 	g_object_unref (info);
