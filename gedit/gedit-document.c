@@ -1653,20 +1653,25 @@ gedit_document_set_metadata (GeditDocument *doc,
 		if (value != NULL)
 		{
 			g_file_info_set_attribute_string (info, key, value);
+
+			if (doc->priv->metadata_info != NULL)
+			{
+				g_file_info_set_attribute_string (doc->priv->metadata_info, key, value);
+			}
 		}
 		else
 		{
 			/* Unset the key */
 			g_file_info_remove_attribute (info, key);
+
+			if (doc->priv->metadata_info != NULL)
+			{
+				g_file_info_remove_attribute (doc->priv->metadata_info, key);
+			}
 		}
 	}
 
 	va_end (var_args);
-
-	if (doc->priv->metadata_info != NULL)
-	{
-		g_file_info_copy_into (info, doc->priv->metadata_info);
-	}
 
 	location = gtk_source_file_get_location (doc->priv->file);
 
