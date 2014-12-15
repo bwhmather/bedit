@@ -451,7 +451,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	document_signals[LOADED] =
 		g_signal_new ("loaded",
 			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
+			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditDocumentClass, loaded),
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE, 0);
@@ -491,7 +491,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	document_signals[SAVED] =
 		g_signal_new ("saved",
 			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
+			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditDocumentClass, saved),
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE, 0);
