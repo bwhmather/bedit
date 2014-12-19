@@ -467,7 +467,9 @@ goto_next_word (GeditDocument *doc)
 }
 
 static gchar *
-get_next_misspelled_word (GeditView *view, gint *word_start_offset, gint *word_end_offset)
+get_next_misspelled_word (GeditView *view,
+                          gint      *word_start_offset,
+                          gint      *word_end_offset)
 {
 	GeditDocument *doc;
 	CheckRange *range;
