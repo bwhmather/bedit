@@ -57,6 +57,8 @@ struct _GeditSpellCheckerDialogClass
 	void		(*add_word_to_personal)	(GeditSpellCheckerDialog *dlg,
 						 const gchar *word);
 
+	/* Keybinding signal */
+	void		(*close)		(GeditSpellCheckerDialog *dlg);
 };
 
 GType        		 gedit_spell_checker_dialog_get_type	(void) G_GNUC_CONST;

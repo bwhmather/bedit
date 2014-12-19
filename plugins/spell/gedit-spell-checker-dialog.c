@@ -62,6 +62,7 @@ enum
 	CHANGE,
 	CHANGE_ALL,
 	ADD_WORD_TO_PERSONAL,
+	CLOSE,
 	LAST_SIGNAL
 };
 
@@ -127,12 +128,24 @@ gedit_spell_checker_dialog_finalize (GObject *object)
 }
 
 static void
+gedit_spell_checker_dialog_close (GeditSpellCheckerDialog *dlg)
+{
+	gtk_window_close (GTK_WINDOW (dlg));
+}
+
+static void
 gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass * klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkBindingSet *binding_set;
 
 	object_class->dispose = gedit_spell_checker_dialog_dispose;
 	object_class->finalize = gedit_spell_checker_dialog_finalize;
+
+	klass->close = gedit_spell_checker_dialog_close;
+
+	binding_set = gtk_binding_set_by_class (klass);
+	gtk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
 
 	signals[IGNORE] =
 		g_signal_new ("ignore",
@@ -190,6 +203,16 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass * klass)
 			      G_TYPE_NONE,
 			      1,
 			      G_TYPE_STRING);
+
+	signals[CLOSE] =
+		g_signal_new ("close",
+			      G_OBJECT_CLASS_TYPE (klass),
+			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, close),
+			      NULL, NULL,
+			      gedit_marshal_VOID__VOID,
+			      G_TYPE_NONE,
+			      0);
 }
 
 static void
