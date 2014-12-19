@@ -467,7 +467,7 @@ goto_next_word (GeditDocument *doc)
 }
 
 static gchar *
-get_next_misspelled_word (GeditView *view)
+get_next_misspelled_word (GeditView *view, gint *word_start_offset, gint *word_end_offset)
 {
 	GeditDocument *doc;
 	CheckRange *range;
@@ -512,27 +512,40 @@ get_next_misspelled_word (GeditView *view)
 
 	if (word != NULL)
 	{
-		GtkTextIter s, e;
-
 		range->mw_start = start;
 		range->mw_end = end;
+		*word_start_offset = start;
+		*word_end_offset = end;
 
 		gedit_debug_message (DEBUG_PLUGINS, "Select [%d, %d]", start, end);
-
-		gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &s, start);
-		gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &e, end);
-
-		gtk_text_buffer_select_range (GTK_TEXT_BUFFER (doc), &s, &e);
-
-		gedit_view_scroll_to_cursor (view);
 	}
 	else
 	{
 		range->mw_start = -1;
 		range->mw_end = -1;
+		*word_start_offset = -1;
+		*word_end_offset = -1;
 	}
 
 	return word;
+}
+
+static void
+select_misspelled_word (GeditView *view,
+                        gint       word_start_offset,
+                        gint       word_end_offset)
+{
+	GeditDocument *doc;
+	GtkTextIter word_start_iter, word_end_iter;
+
+	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+
+	gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &word_start_iter, word_start_offset);
+	gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &word_end_iter, word_end_offset);
+
+	gtk_text_buffer_select_range (GTK_TEXT_BUFFER (doc), &word_start_iter, &word_end_iter);
+
+	gedit_view_scroll_to_cursor (view);
 }
 
 static void
@@ -541,19 +554,22 @@ ignore_cb (GeditSpellCheckerDialog *dlg,
 	   GeditView               *view)
 {
 	gchar *word = NULL;
+	gint word_start_offset, word_end_offset;
 
 	gedit_debug (DEBUG_PLUGINS);
 
 	g_return_if_fail (w != NULL);
 	g_return_if_fail (view != NULL);
 
-	word = get_next_misspelled_word (view);
+	word = get_next_misspelled_word (view, &word_start_offset, &word_end_offset);
 	if (word == NULL)
 	{
 		gedit_spell_checker_dialog_set_completed (dlg);
 
 		return;
 	}
+
+	select_misspelled_word (view, word_start_offset, word_end_offset);
 
 	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dlg),
 							word,
@@ -765,6 +781,7 @@ spell_cb (GSimpleAction *action,
 	GeditSpellChecker *spell;
 	GtkWidget *dlg;
 	GtkTextIter start, end;
+	gint word_start_offset, word_end_offset;
 	gchar *word;
 	gchar *data_dir;
 
@@ -805,7 +822,7 @@ spell_cb (GSimpleAction *action,
 
 	set_check_range (doc, &start, &end);
 
-	word = get_next_misspelled_word (view);
+	word = get_next_misspelled_word (view, &word_start_offset, &word_end_offset);
 	if (word == NULL)
 	{
 		GtkWidget *statusbar;
@@ -840,6 +857,8 @@ spell_cb (GSimpleAction *action,
 	g_free (word);
 
 	gtk_widget_show (dlg);
+	select_misspelled_word (view, word_start_offset, word_end_offset);
+
 }
 
 static void
