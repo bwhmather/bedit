@@ -518,8 +518,6 @@ get_next_misspelled_word (GeditView *view,
 		range->mw_end = end;
 		*word_start_offset = start;
 		*word_end_offset = end;
-
-		gedit_debug_message (DEBUG_PLUGINS, "Select [%d, %d]", start, end);
 	}
 	else
 	{
@@ -537,15 +535,17 @@ select_misspelled_word (GeditView *view,
                         gint       word_start_offset,
                         gint       word_end_offset)
 {
-	GeditDocument *doc;
-	GtkTextIter word_start_iter, word_end_iter;
+	GtkTextBuffer *buffer;
+	GtkTextIter word_start_iter;
+	GtkTextIter word_end_iter;
 
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
-	gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &word_start_iter, word_start_offset);
-	gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &word_end_iter, word_end_offset);
+	gtk_text_buffer_get_iter_at_offset (buffer, &word_start_iter, word_start_offset);
+	gtk_text_buffer_get_iter_at_offset (buffer, &word_end_iter, word_end_offset);
 
-	gtk_text_buffer_select_range (GTK_TEXT_BUFFER (doc), &word_start_iter, &word_end_iter);
+	gedit_debug_message (DEBUG_PLUGINS, "Select [%d, %d]", word_start_offset, word_end_offset);
+	gtk_text_buffer_select_range (buffer, &word_start_iter, &word_end_iter);
 
 	gedit_view_scroll_to_cursor (view);
 }
