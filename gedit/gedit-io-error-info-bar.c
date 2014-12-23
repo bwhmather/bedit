@@ -1189,7 +1189,7 @@ gedit_externally_modified_info_bar_new (GFile    *location,
 	}
 
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("_Cancel"),
+				 _("_Ignore"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
