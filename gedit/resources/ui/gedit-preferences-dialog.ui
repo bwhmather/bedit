@@ -615,12 +615,11 @@
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="shadow_type">etched-in</property>
-                        <property name="min_content_height">140</property>
+                        <property name="min_content_height">200</property>
                         <child>
-                          <object class="GtkListBox" id="schemes_list">
+                          <object class="GtkSourceStyleSchemeChooserWidget" id="schemes_list">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="selection_mode">browse</property>
                           </object>
                         </child>
                       </object>
