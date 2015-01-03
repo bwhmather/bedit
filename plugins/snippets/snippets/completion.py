@@ -74,7 +74,9 @@ class Provider(GObject.Object, GtkSource.CompletionProvider):
             self.mark.get_buffer().move_mark(self.mark, it)
 
     def get_word(self, context):
-        it = context.get_iter()
+        (valid_context, it) = context.get_iter()
+        if not valid_context:
+            return None
 
         if it.starts_word() or it.starts_line() or not it.ends_word():
             return None
