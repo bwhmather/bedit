@@ -122,10 +122,13 @@ struct _GeditFileBrowserWidgetPrivate
 	GtkWidget *previous_button;
 	GtkWidget *next_button;
 
-	GtkWidget *combo;
-	GtkTreeStore *combo_model;
-	GtkWidget *combo_stack;
-	GtkWidget *bookmarks_label;
+	GtkWidget *locations_button;
+	GtkWidget *locations_popover;
+	GtkWidget *locations_treeview;
+	GtkTreeSelection *locations_treeview_selection;
+	GtkWidget *locations_button_arrow;
+	GtkWidget *locations_cellview;
+	GtkListStore *locations_model;
 
 	GtkWidget *location_entry;
 
@@ -174,8 +177,6 @@ static gboolean on_file_store_no_trash 	       (GeditFileBrowserStore  *store,
 						GeditFileBrowserWidget *obj);
 static gboolean on_location_button_press_event (GtkWidget              *button,
 						GdkEventButton         *event,
-						GeditFileBrowserWidget *obj);
-static void on_combo_changed                   (GtkComboBox            *combo,
 						GeditFileBrowserWidget *obj);
 static void on_location_entry_activate         (GtkEntry               *entry,
 						GeditFileBrowserWidget *obj);
@@ -266,6 +267,8 @@ static void open_in_terminal_activated         (GSimpleAction          *action,
 static void set_active_root_activated          (GSimpleAction          *action,
                                                 GVariant               *parameter,
                                                 gpointer                user_data);
+static void on_locations_treeview_selection_changed (GtkTreeSelection       *treeselection,
+                                                     GeditFileBrowserWidget *obj);
 
 G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditFileBrowserWidget,
 				gedit_file_browser_widget,
@@ -321,12 +324,12 @@ location_free (Location *loc)
 }
 
 static gboolean
-combo_find_by_id (GeditFileBrowserWidget *obj,
+locations_find_by_id (GeditFileBrowserWidget *obj,
 		  guint                   id,
 		  GtkTreeIter            *iter)
 {
 	guint checkid;
-	GtkTreeModel *model = GTK_TREE_MODEL (obj->priv->combo_model);
+	GtkTreeModel *model = GTK_TREE_MODEL (obj->priv->locations_model);
 
 	if (iter == NULL)
 		return FALSE;
@@ -563,10 +566,15 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	                                             "/org/gnome/gedit/plugins/file-browser/ui/gedit-file-browser-widget.ui");
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, previous_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, next_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, combo);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, combo_model);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, combo_stack);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, bookmarks_label);
+
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_popover);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_treeview);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_treeview_selection);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_cellview);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_button_arrow);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_model);
+
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, location_entry);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, treeview);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, filter_entry_revealer);
@@ -649,10 +657,9 @@ insert_path_item (GeditFileBrowserWidget *obj,
 		icon = gedit_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU, TRUE);
 	}
 
-	gtk_tree_store_insert_after (obj->priv->combo_model, iter, NULL,
-				     after);
+	gtk_list_store_insert_after (obj->priv->locations_model, iter, after);
 
-	gtk_tree_store_set (obj->priv->combo_model,
+	gtk_list_store_set (obj->priv->locations_model,
 	                    iter,
 	                    COLUMN_ICON, icon,
 	                    COLUMN_NAME, unescape,
@@ -671,8 +678,8 @@ insert_separator_item (GeditFileBrowserWidget *obj)
 {
 	GtkTreeIter iter;
 
-	gtk_tree_store_insert (obj->priv->combo_model, &iter, NULL, 1);
-	gtk_tree_store_set (obj->priv->combo_model, &iter,
+	gtk_list_store_insert (obj->priv->locations_model, &iter, 1);
+	gtk_list_store_set (obj->priv->locations_model, &iter,
 			    COLUMN_ICON, NULL,
 			    COLUMN_NAME, NULL,
 			    COLUMN_ID, SEPARATOR_ID, -1);
@@ -681,22 +688,23 @@ insert_separator_item (GeditFileBrowserWidget *obj)
 static void
 insert_location_path (GeditFileBrowserWidget *obj)
 {
+	GeditFileBrowserWidgetPrivate *priv = obj->priv;
 	Location *loc;
 	GFile *current = NULL;
 	GFile *tmp;
 	GtkTreeIter separator;
 	GtkTreeIter iter;
 
-	if (!obj->priv->current_location)
+	if (!priv->current_location)
 	{
 		g_message ("insert_location_path: no current location");
 		return;
 	}
 
-	loc = (Location *) (obj->priv->current_location->data);
+	loc = (Location *)(priv->current_location->data);
 
 	current = loc->virtual_root;
-	combo_find_by_id (obj, SEPARATOR_ID, &separator);
+	locations_find_by_id (obj, SEPARATOR_ID, &separator);
 
 	while (current != NULL)
 	{
@@ -704,16 +712,16 @@ insert_location_path (GeditFileBrowserWidget *obj)
 
 		if (current == loc->virtual_root)
 		{
-			g_signal_handlers_block_by_func (obj->priv->combo,
-							 on_combo_changed,
-							 obj);
-			gtk_combo_box_set_active_iter (GTK_COMBO_BOX
-						       (obj->priv->combo),
-						       &iter);
-			g_signal_handlers_unblock_by_func (obj->priv->
-							   combo,
-							   on_combo_changed,
-							   obj);
+
+			g_signal_handlers_block_by_func (priv->locations_treeview,
+			                                 on_locations_treeview_selection_changed,
+			                                 obj);
+
+			gtk_tree_selection_select_iter (priv->locations_treeview_selection, &iter);
+
+			g_signal_handlers_unblock_by_func (priv->locations_treeview,
+			                                   on_locations_treeview_selection_changed,
+			                                   obj);
 		}
 
 		if (g_file_equal (current, loc->root) ||
@@ -738,9 +746,9 @@ remove_path_items (GeditFileBrowserWidget *obj)
 {
 	GtkTreeIter iter;
 
-	while (combo_find_by_id (obj, PATH_ID, &iter))
+	while (locations_find_by_id (obj, PATH_ID, &iter))
 	{
-		gtk_tree_store_remove (obj->priv->combo_model, &iter);
+		gtk_list_store_remove (obj->priv->locations_model, &iter);
 	}
 }
 
@@ -752,7 +760,7 @@ check_current_item (GeditFileBrowserWidget *obj,
 	gboolean has_sep;
 
 	remove_path_items (obj);
-	has_sep = combo_find_by_id (obj, SEPARATOR_ID, &separator);
+	has_sep = locations_find_by_id (obj, SEPARATOR_ID, &separator);
 
 	if (show_path)
 	{
@@ -763,21 +771,23 @@ check_current_item (GeditFileBrowserWidget *obj,
 	}
 	else if (has_sep)
 	{
-		gtk_tree_store_remove (obj->priv->combo_model, &separator);
+		gtk_list_store_remove (obj->priv->locations_model, &separator);
 	}
 }
 
 static void
-fill_combo_model (GeditFileBrowserWidget *obj)
+fill_locations_model (GeditFileBrowserWidget *obj)
 {
-	GtkTreeStore *store = obj->priv->combo_model;
+	GeditFileBrowserWidgetPrivate *priv = obj->priv;
+	GtkListStore *store;
 	GtkTreeIter iter;
 	GdkPixbuf *icon;
 
+	store = obj->priv->locations_model;
 	icon = gedit_file_browser_utils_pixbuf_from_theme ("user-bookmarks-symbolic", GTK_ICON_SIZE_MENU);
 
-	gtk_tree_store_append (store, &iter, NULL);
-	gtk_tree_store_set (store, &iter,
+	gtk_list_store_append (store, &iter);
+	gtk_list_store_set (store, &iter,
 			    COLUMN_ICON, icon,
 			    COLUMN_NAME, _("Bookmarks"),
 			    COLUMN_ID, BOOKMARKS_ID, -1);
@@ -787,9 +797,15 @@ fill_combo_model (GeditFileBrowserWidget *obj)
 		g_object_unref (icon);
 	}
 
-	gtk_combo_box_set_row_separator_func (GTK_COMBO_BOX (obj->priv->combo),
-					      separator_func, obj, NULL);
-	gtk_combo_box_set_active (GTK_COMBO_BOX (obj->priv->combo), 0);
+	gtk_tree_view_set_row_separator_func (GTK_TREE_VIEW (priv->locations_treeview),
+	                                      separator_func,
+	                                      obj,
+	                                      NULL);
+
+	gtk_tree_selection_select_iter (priv->locations_treeview_selection, &iter);
+
+	on_locations_treeview_selection_changed (priv->locations_treeview_selection, obj);
+	gedit_file_browser_widget_show_bookmarks (obj);
 }
 
 static void
@@ -909,6 +925,43 @@ on_end_loading (GeditFileBrowserStore  *model,
 	gdk_window_set_cursor (gtk_widget_get_window (GTK_WIDGET (obj)), NULL);
 }
 
+static void
+on_locations_treeview_row_activated (GtkTreeView            *locations_treeview,
+                                     GtkTreePath            *path,
+                                     GtkTreeViewColumn      *column,
+                                     GeditFileBrowserWidget *obj)
+{
+	GeditFileBrowserWidgetPrivate *priv = obj->priv;
+	GtkTreeIter iter;
+	guint id;
+	GFile *file;
+
+	gtk_tree_model_get_iter (GTK_TREE_MODEL (priv->locations_model), &iter, path);
+	gtk_tree_model_get (GTK_TREE_MODEL (priv->locations_model), &iter, COLUMN_ID, &id, -1);
+
+	switch (id)
+	{
+		case BOOKMARKS_ID:
+			gedit_file_browser_widget_show_bookmarks (obj);
+			break;
+
+		case PATH_ID:
+			gtk_tree_model_get (GTK_TREE_MODEL (priv->locations_model),
+			                    &iter,
+			                    COLUMN_FILE,
+			                    &file,
+			                    -1);
+
+			gedit_file_browser_store_set_virtual_root_from_location (priv->file_store, file);
+
+			g_object_unref (file);
+			gtk_cell_view_set_displayed_row (GTK_CELL_VIEW (priv->locations_cellview), path);
+			break;
+	}
+
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->locations_button), FALSE);
+}
+
 static GActionEntry browser_entries[] = {
 	{ "open", open_activated },
 	{ "set_active_root", set_active_root_activated },
@@ -990,10 +1043,14 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 	g_signal_connect (obj->priv->next_button, "button-press-event",
 	                  G_CALLBACK (on_location_button_press_event), obj);
 
-	/* combo */
-	fill_combo_model (obj);
-	g_signal_connect (obj->priv->combo, "changed",
-	                  G_CALLBACK (on_combo_changed), obj);
+	/* locations popover */
+	gtk_tree_selection_set_mode (obj->priv->locations_treeview_selection, GTK_SELECTION_SINGLE);
+	fill_locations_model (obj);
+
+	g_signal_connect (obj->priv->locations_treeview_selection, "changed",
+	                  G_CALLBACK (on_locations_treeview_selection_changed), obj);
+	g_signal_connect (obj->priv->locations_treeview, "row-activated",
+	                  G_CALLBACK (on_locations_treeview_row_activated), obj);
 
 	g_signal_connect (obj->priv->location_entry, "activate",
 	                  G_CALLBACK (on_location_entry_activate), obj);
@@ -1656,8 +1713,16 @@ gedit_file_browser_widget_new (void)
 void
 gedit_file_browser_widget_show_bookmarks (GeditFileBrowserWidget *obj)
 {
-	gtk_stack_set_visible_child (GTK_STACK (obj->priv->combo_stack),
-				     obj->priv->bookmarks_label);
+	GtkTreePath *path;
+	GtkTreeIter iter;
+
+	gtk_widget_set_sensitive (obj->priv->locations_button, FALSE);
+	gtk_widget_hide (obj->priv->locations_button_arrow);
+	locations_find_by_id (obj, BOOKMARKS_ID, &iter);
+
+	path = gtk_tree_model_get_path (GTK_TREE_MODEL (obj->priv->locations_model), &iter);
+	gtk_cell_view_set_displayed_row (GTK_CELL_VIEW (obj->priv->locations_cellview), path);
+	gtk_tree_path_free (path);
 
 	gedit_file_browser_view_set_model (obj->priv->treeview,
 					   GTK_TREE_MODEL (obj->priv->bookmarks_store));
@@ -1667,8 +1732,8 @@ static void
 show_files_real (GeditFileBrowserWidget *obj,
 		 gboolean                do_root_changed)
 {
-	gtk_stack_set_visible_child (GTK_STACK (obj->priv->combo_stack),
-				     obj->priv->combo);
+	gtk_widget_set_sensitive (obj->priv->locations_button, TRUE);
+	gtk_widget_show (obj->priv->locations_button_arrow);
 
 	gedit_file_browser_view_set_model (obj->priv->treeview,
 					   GTK_TREE_MODEL (obj->priv->file_store));
@@ -2690,36 +2755,24 @@ on_location_button_press_event (GtkWidget              *button,
 }
 
 static void
-on_combo_changed (GtkComboBox            *combo,
-		  GeditFileBrowserWidget *obj)
+on_locations_treeview_selection_changed (GtkTreeSelection       *treeview_selection,
+                                         GeditFileBrowserWidget *obj)
 {
+	GeditFileBrowserWidgetPrivate *priv = obj->priv;
+	GtkTreeModel *model;
+	GtkTreePath *path;
 	GtkTreeIter iter;
-	guint id;
-	GFile *file;
 
-	if (!gtk_combo_box_get_active_iter (combo, &iter))
-		return;
+	model = GTK_TREE_MODEL (priv->locations_model);
 
-	gtk_tree_model_get (GTK_TREE_MODEL (obj->priv->combo_model), &iter,
-			    COLUMN_ID, &id, -1);
-
-	switch (id)
+	if (!gtk_tree_selection_get_selected (treeview_selection, &model, &iter))
 	{
-		case BOOKMARKS_ID:
-			gedit_file_browser_widget_show_bookmarks (obj);
-			break;
-
-		case PATH_ID:
-			gtk_tree_model_get (GTK_TREE_MODEL
-					    (obj->priv->combo_model), &iter,
-					    COLUMN_FILE, &file, -1);
-
-			gedit_file_browser_store_set_virtual_root_from_location
-			    (obj->priv->file_store, file);
-
-			g_object_unref (file);
-			break;
+		return;
 	}
+
+	path = gtk_tree_model_get_path (GTK_TREE_MODEL (obj->priv->locations_model), &iter);
+	gtk_cell_view_set_displayed_row (GTK_CELL_VIEW (obj->priv->locations_cellview), path);
+	gtk_tree_path_free (path);
 }
 
 static void
