@@ -90,7 +90,6 @@
             <property name="margin-end">2</property>
             <style>
               <class name="raised"/>
-              <class name="linked"/>
             </style>
             <child>
               <object class="GtkBox" id="box1">
@@ -124,6 +123,9 @@
                     <property name="position">1</property>
                   </packing>
                 </child>
+                <style>
+                  <class name="linked"/>
+                </style>
               </object>
             </child>
           </object>
