@@ -39,27 +39,34 @@ G_BEGIN_DECLS
 typedef struct _GeditOpenDocumentSelector		GeditOpenDocumentSelector;
 typedef struct _GeditOpenDocumentSelectorClass		GeditOpenDocumentSelectorClass;
 typedef struct _GeditOpenDocumentSelectorPrivate	GeditOpenDocumentSelectorPrivate;
+typedef struct _GeditOpenDocumentSelectorClassPrivate	GeditOpenDocumentSelectorClassPrivate;
 
 struct _GeditOpenDocumentSelector
 {
 	GtkBox parent;
 
+	GeditWindow *window;
 	GtkWidget *recent_search_entry;
 
 	GeditOpenDocumentSelectorPrivate *priv;
 };
+
+enum ListType;
 
 struct _GeditOpenDocumentSelectorClass
 {
 	GtkBoxClass  parent_class;
 
 	/* Signals */
-	void (* recent_file_activated)	(GeditOpenDocumentSelector *open_document_selector, gchar *uri);
+	void (* selector_file_activated)	(GeditOpenDocumentSelector *selector,
+	                                         gchar                     *uri);
+
+	GeditOpenDocumentSelectorClassPrivate *priv;
 };
 
-GType gedit_open_document_selector_get_type		(void) G_GNUC_CONST;
+GType				 gedit_open_document_selector_get_type		(void) G_GNUC_CONST;
 
-GeditOpenDocumentSelector * gedit_open_document_selector_new			(void);
+GeditOpenDocumentSelector	*gedit_open_document_selector_new		(GeditWindow *window);
 
 G_END_DECLS
 

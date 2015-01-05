@@ -22,18 +22,23 @@
       </packing>
     </child>
     <child>
-      <object class="GtkScrolledWindow" id="scrolled_window">
-        <property name="visible">True</property>
+      <object class="GtkFrame" id="placeholder_box">
+        <property name="visible">False</property>
+        <property name="can_focus">False</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
-        <property name="hscrollbar_policy">never</property>
         <property name="shadow_type">in</property>
         <child>
-          <object class="GtkListBox" id="listbox">
+          <object class="GtkLabel" id="placeholder_label">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="vexpand">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="label" translatable="yes">No results</property>
+            <style>
+              <class name="dim-label"/>
+            </style>
           </object>
         </child>
       </object>
@@ -41,6 +46,32 @@
         <property name="expand">True</property>
         <property name="fill">True</property>
         <property name="position">1</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkScrolledWindow" id="scrolled_window">
+        <property name="visible">True</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
+        <property name="hscrollbar_policy">never</property>
+        <property name="shadow_type">in</property>
+        <child>
+          <object class="GtkTreeView" id="treeview">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <property name="headers_visible">False</property>
+            <property name="fixed_height_mode">True</property>
+            <property name="enable_grid_lines">horizontal</property>
+            <property name="activate_on_single_click">True</property>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">True</property>
+        <property name="fill">True</property>
+        <property name="position">2</property>
       </packing>
     </child>
     <child>
@@ -59,7 +90,7 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">2</property>
+        <property name="position">3</property>
       </packing>
     </child>
   </template>

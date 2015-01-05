@@ -7,20 +7,26 @@ GeditWindow .pane-separator:hover {
     color: @borders;
 }
 
-.open-document-selector-listbox-row {
-    border-bottom: 1px solid shade(@theme_bg_color, 0.95);
-    padding: 6px 6px 6px 12px;
+.open-document-selector-treeview {
+    padding: 3px 6px 3px 6px;
 }
 
-.open-document-selector-listbox-row .name-label {
+.open-document-selector-treeview:prelight {
+    background-color: #fafafa;
+}
+
+.open-document-selector-treeview:selected:prelight {
+    background-color: @theme_selected_bg_color;
+}
+
+/* Only normal state is handle */
+.open-document-selector-name-label {
     color: @theme_fg_color;
 }
 
-.open-document-selector-listbox-row .path-label {
-    font-size: smaller;
-}
-
-.open-document-selector-listbox-row:selected .path-label {
+/* Only normal state is handle */
+.open-document-selector-path-label {
+    color: @theme_unfocused_fg_color;
     font-size: smaller;
 }
 

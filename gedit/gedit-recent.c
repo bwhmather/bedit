@@ -173,6 +173,7 @@ gedit_recent_configuration_init_default (GeditRecentConfiguration *config)
 
 	config->filter = gtk_recent_filter_new ();
 	gtk_recent_filter_add_application (config->filter, g_get_application_name ());
+	gtk_recent_filter_add_mime_type (config->filter, "text/plain");
 	g_object_ref_sink (config->filter);
 
 	settings = g_settings_new ("org.gnome.gedit.preferences.ui");
@@ -208,6 +209,7 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 	GList *items;
 	GList *retitems = NULL;
 	gint length;
+	gboolean has_substring_filter;
 
 	if (config->limit == 0)
 	{
@@ -222,6 +224,7 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 	}
 
 	needed = gtk_recent_filter_get_needed (config->filter);
+	has_substring_filter = (config->substring_filter && *config->substring_filter != '\0');
 
 	while (items)
 	{
@@ -246,7 +249,7 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 		}
 		else
 		{
-			if (config->substring_filter && *config->substring_filter != '\0')
+			if (has_substring_filter)
 			{
 				gchar *uri_lower;
 

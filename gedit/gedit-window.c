@@ -802,7 +802,8 @@ on_recent_chooser_item_activated (GeditOpenDocumentSelector *open_document_selec
 		locations = g_slist_prepend (locations, (gpointer) location);
 		loaded = gedit_commands_load_locations (window, locations, NULL, 0, 0);
 
-		if (!loaded || loaded->next) /* if it doesn't contain just 1 element */
+		/* if it doesn't contain just 1 element */
+		if (!loaded || loaded->next)
 		{
 			gedit_recent_remove_if_local (location);
 		}
@@ -1832,7 +1833,7 @@ fullscreen_controls_setup (GeditWindow *window)
 	gtk_menu_button_set_popover (GTK_MENU_BUTTON (priv->fullscreen_open_button),
 	                             priv->fullscreen_open_document_popover);
 
-	window->priv->fullscreen_open_document_selector = gedit_open_document_selector_new ();
+	window->priv->fullscreen_open_document_selector = gedit_open_document_selector_new (window);
 
 	gtk_container_add (GTK_CONTAINER (priv->fullscreen_open_document_popover),
 	                   GTK_WIDGET (priv->fullscreen_open_document_selector));
@@ -1840,7 +1841,7 @@ fullscreen_controls_setup (GeditWindow *window)
 	gtk_widget_show_all (GTK_WIDGET (priv->fullscreen_open_document_selector));
 
 	g_signal_connect (window->priv->fullscreen_open_document_selector,
-	                  "recent-file-activated",
+	                  "file-activated",
 	                  G_CALLBACK (on_recent_chooser_item_activated),
 	                  window);
 }
@@ -2773,7 +2774,7 @@ gedit_window_init (GeditWindow *window)
 	gtk_menu_button_set_popover (GTK_MENU_BUTTON (window->priv->open_button),
 	                             window->priv->open_document_popover);
 
-	window->priv->open_document_selector = gedit_open_document_selector_new ();
+	window->priv->open_document_selector = gedit_open_document_selector_new (window);
 
 	gtk_container_add (GTK_CONTAINER (window->priv->open_document_popover),
 	                   GTK_WIDGET (window->priv->open_document_selector));
@@ -2781,7 +2782,7 @@ gedit_window_init (GeditWindow *window)
 	gtk_widget_show_all (GTK_WIDGET (window->priv->open_document_selector));
 
 	g_signal_connect (window->priv->open_document_selector,
-	                  "recent-file-activated",
+	                  "file-activated",
 	                  G_CALLBACK (on_recent_chooser_item_activated),
 	                  window);
 
