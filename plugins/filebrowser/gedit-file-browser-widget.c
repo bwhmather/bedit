@@ -986,6 +986,7 @@ static void
 gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 {
 	GtkBuilder *builder;
+	GdkDisplay *display;
 	GAction *action;
 	GError *error = NULL;
 
@@ -997,7 +998,8 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 			                                   g_object_unref,
 			                                   free_name_icon);
 
-	obj->priv->busy_cursor = gdk_cursor_new (GDK_WATCH);
+	display = gtk_widget_get_display (GTK_WIDGET (obj));
+	obj->priv->busy_cursor = gdk_cursor_new_for_display (display, GDK_WATCH);
 
 	builder = gtk_builder_new ();
 	if (!gtk_builder_add_from_resource (builder,
@@ -2015,7 +2017,10 @@ set_busy (GeditFileBrowserWidget *obj,
 
 	if (busy)
 	{
-		cursor = gdk_cursor_new (GDK_WATCH);
+		GdkDisplay *display;
+
+		display = gtk_widget_get_display (GTK_WIDGET (obj));
+		cursor = gdk_cursor_new_for_display (display, GDK_WATCH);
 		gdk_window_set_cursor (window, cursor);
 		g_object_unref (cursor);
 	}
