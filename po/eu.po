@@ -4,15 +4,15 @@
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
 # Julen Ruiz Aizpuru <julenx@gmail.com>, 2011.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2004, 2005, 2006, 2007, 2008, 2009, 2010.
-# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2011, 2012, 2013, 2014.
+# Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2011, 2012, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-12-30 17:03+0100\n"
-"PO-Revision-Date: 2014-12-05 23:24+0100\n"
+"POT-Creation-Date: 2015-01-06 21:14+0100\n"
+"PO-Revision-Date: 2015-01-06 21:14+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.org>\n"
 "Language: eu\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.4\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
@@ -635,7 +635,7 @@ msgstr "Itxi gorde _gabe"
 #: ../gedit/gedit-commands-file.c:668 ../gedit/gedit-commands-file.c:867
 #: ../gedit/gedit-commands-file.c:1579 ../gedit/gedit-io-error-info-bar.c:135
 #: ../gedit/gedit-io-error-info-bar.c:516
-#: ../gedit/gedit-preferences-dialog.c:875
+#: ../gedit/gedit-preferences-dialog.c:764
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
@@ -997,8 +997,8 @@ msgstr "Gorde gabeko %d dokumentua"
 msgid "Tab Group %i"
 msgstr "Fitxen %i. taldea"
 
-#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1134
-#: ../gedit/gedit-window.c:1140 ../gedit/gedit-window.c:1148
+#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1135
+#: ../gedit/gedit-window.c:1141 ../gedit/gedit-window.c:1149
 msgid "Read-Only"
 msgstr "Irakurtzeko soilik"
 
@@ -1018,7 +1018,7 @@ msgid "Current Locale (%s)"
 msgstr "Uneko locale-a (%s)"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:41
-#: ../gedit/gedit-preferences-dialog.c:884
+#: ../gedit/gedit-preferences-dialog.c:773
 msgid "All Files"
 msgstr "Fitxategi guztiak"
 
@@ -1043,7 +1043,7 @@ msgid "Line Ending:"
 msgstr "Lerroaren amaiera:"
 
 #
-#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1218
+#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1219
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1399,10 +1399,6 @@ msgstr ""
 "Fitxategi hau gordetzen jarraitzen baduzu, dokumentua honda dezakezu. Gorde "
 "dena den?"
 
-#: ../gedit/gedit-open-document-selector.c:403
-msgid "No results"
-msgstr "Ez dago emaitzarik"
-
 #: ../gedit/gedit-preferences-dialog.c:387
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Sakatu botoi hau editoreak erabili beharreko letra-tipoa hautatzeko"
@@ -1412,29 +1408,29 @@ msgstr "Sakatu botoi hau editoreak erabili beharreko letra-tipoa hautatzeko"
 msgid "_Use the system fixed width font (%s)"
 msgstr "_Erabili sistemako letra-zabalera (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:644
+#: ../gedit/gedit-preferences-dialog.c:540
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Ezin izan da '%s' direktorioa sortu: g_mkdir_with_parents() huts egin du: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:846
+#: ../gedit/gedit-preferences-dialog.c:737
 msgid "The selected color scheme cannot be installed."
 msgstr "Hautatutako kolore-eskema ezin da instalatu."
 
-#: ../gedit/gedit-preferences-dialog.c:871
+#: ../gedit/gedit-preferences-dialog.c:760
 msgid "Add Scheme"
 msgstr "Gehitu eskema"
 
-#: ../gedit/gedit-preferences-dialog.c:876
+#: ../gedit/gedit-preferences-dialog.c:765
 msgid "A_dd Scheme"
 msgstr "_Gehitu eskema"
 
-#: ../gedit/gedit-preferences-dialog.c:880
+#: ../gedit/gedit-preferences-dialog.c:769
 msgid "Color Scheme Files"
 msgstr "Kolore-eskemaren fitxategiak"
 
-#: ../gedit/gedit-preferences-dialog.c:917
+#: ../gedit/gedit-preferences-dialog.c:800
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Ezin izan da \"%s\" kolore-eskema kendu."
@@ -1617,40 +1613,40 @@ msgstr "Bilatzea nahi duzun katea"
 msgid "Line you want to move the cursor to"
 msgstr "Lerroa kurtsorea kokatzeko"
 
-#: ../gedit/gedit-window.c:973
+#: ../gedit/gedit-window.c:974
 msgid "Bracket match is out of range"
 msgstr "Parentesien bat-etortzea barrutitik kanpo"
 
-#: ../gedit/gedit-window.c:978
+#: ../gedit/gedit-window.c:979
 msgid "Bracket match not found"
 msgstr "Parentesien bat-etortzea ez da aurkitu"
 
-#: ../gedit/gedit-window.c:983
+#: ../gedit/gedit-window.c:984
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Bat datorren parentesia honako lerroan aurkituta: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1018
+#: ../gedit/gedit-window.c:1019
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  %d lerroa, %d zutabea"
 
-#: ../gedit/gedit-window.c:1200
+#: ../gedit/gedit-window.c:1201
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Tabulazio-zabalera: %u"
 
-#: ../gedit/gedit-window.c:1570
+#: ../gedit/gedit-window.c:1571
 msgid "There are unsaved documents"
 msgstr "Gorde gabeko dokumentuak daude"
 
-#: ../gedit/gedit-window.c:2419
+#: ../gedit/gedit-window.c:2420
 msgid "Change side panel page"
 msgstr "Aldatu albo-paneleko orria"
 
-#: ../gedit/gedit-window.c:2439 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2440 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumentuak"
@@ -1981,10 +1977,14 @@ msgid "Search highlight mode..."
 msgstr "Bilaketaren nabarmentze-modua..."
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
+msgid "No results"
+msgstr "Ez dago emaitzarik"
+
+#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
 msgid "Other _Documents…"
 msgstr "Beste _dokumentuak…"
 
-#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
+#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:3
 msgid "Open another file"
 msgstr "Ireki beste fitxategia"
 
@@ -2805,27 +2805,26 @@ msgstr ""
 "Direktorio berria jadanik iragazita dago. Iragazkiaren ezarpenak egokitu "
 "behar dituzu direktorioa ikusgai egiteko"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:782
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:1
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:792
 msgid "Bookmarks"
 msgstr "Laster-markak"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:1978
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2048
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Ez da muntatutako bolumenaren objekturik muntatu: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2055
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2125
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Ezin izan da euskarria ireki: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2102
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2172
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Ezin izan da bolumena muntatu: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2764
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2822
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Errorea '%s' kargatzean: ez dago halako direktoriorik"
@@ -2974,6 +2973,14 @@ msgstr "Erakutsi _bitarra"
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:14
 msgid "Match Filename"
 msgstr "Bat etorri fitxategi-izenarekin"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:1
+msgid "History"
+msgstr "Historia"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:2
+msgid "Open history menu"
+msgstr "Ireki historiaren menua"
 
 #
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
@@ -3771,9 +3778,6 @@ msgstr "Uneko data eta ordua sartzen ditu kurtsorearen posizioan."
 #~ msgid "_Contents"
 #~ msgstr "_Edukia"
 
-#~ msgid "Open the gedit manual"
-#~ msgstr "Gedit-en eskuliburua irekitzen du"
-
 #
 #~ msgid "About this application"
 #~ msgstr "Aplikazio honi buruz"
@@ -4044,9 +4048,6 @@ msgstr "Uneko data eta ordua sartzen ditu kurtsorearen posizioan."
 #
 #~ msgid "file"
 #~ msgstr "fitxategia"
-
-#~ msgid "directory"
-#~ msgstr "direktorioa"
 
 #~ msgid "Move selected file or folder to trash"
 #~ msgstr "Bota hautatutako fitxategi edo karpeta zakarrontzira"
