@@ -3,14 +3,14 @@
 # Misha Shnurapet <shnurapet@fedoraproject.org>, 2011. 
 # Yuri Myasoedov <omerta13@yandex.ru>, 2013.
 # Andrew Razumnov <razandale@gmail.com>, 2014.
-# Stas Solovey <whats_up@tut.by>, 2011, 2012, 2013, 2014.
+# Stas Solovey <whats_up@tut.by>, 2011, 2012, 2013, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 06:00+0000\n"
-"PO-Revision-Date: 2014-10-30 18:26+0300\n"
+"POT-Creation-Date: 2015-01-10 06:01+0000\n"
+"PO-Revision-Date: 2015-01-10 12:53+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
-"Stas Solovey <whats_up@tut.by>, 2011-2014.\n"
+"Stas Solovey <whats_up@tut.by>, 2011-2015.\n"
 "Misha Shnurapet <shnurapet@fedoraproject.org>, 2011."
 
 #. (itstool) path: credit/name
@@ -41,7 +41,7 @@ msgstr ""
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:9
 #: C/gedit-plugins-quick-open.page:10 C/gedit-plugins-snippets.page:9
 #: C/gedit-plugins-sort.page:13 C/gedit-printing.page:9
-#: C/gedit-quickstart.page:11 C/gedit-replace.page:11
+#: C/gedit-quickstart.page:11 C/gedit-replace.page:12
 #: C/gedit-save-file.page:11 C/gedit-search.page:10
 #: C/gedit-shortcut-keys.page:12 C/gedit-spellcheck.page:11
 #: C/gedit-syntax-highlighting.page:9 C/gedit-tabs-moving.page:12
@@ -202,8 +202,8 @@ msgstr ""
 #. (itstool) path: credit/name
 #: C/gedit-create-new-file.page:15 C/gedit-full-screen.page:15
 #: C/gedit-open-files.page:20 C/gedit-plugins-quick-open.page:14
-#: C/gedit-save-file.page:19 C/gedit-search.page:22 C/gedit-tabs.page:30
-#: C/gedit-undo-recent-action.page:23
+#: C/gedit-replace.page:28 C/gedit-save-file.page:19 C/gedit-search.page:22
+#: C/gedit-tabs.page:30 C/gedit-undo-recent-action.page:23
 msgid "Shobha Tyagi"
 msgstr "Шобха Тиаджи (Shobha Tyagi)"
 
@@ -765,7 +765,7 @@ msgstr "Дополнительные модули gedit"
 #: C/gedit-plugins-external-tools.page:11 C/gedit-plugins-file-browser.page:10
 #: C/gedit-plugins-insert-date-time.page:9 C/gedit-plugins-install.page:12
 #: C/gedit-plugins-modelines.page:9 C/gedit-plugins-sort.page:9
-#: C/gedit-replace.page:15 C/gedit-search.page:14 C/gedit-tabs-moving.page:16
+#: C/gedit-replace.page:16 C/gedit-search.page:14 C/gedit-tabs-moving.page:16
 #: C/gedit-tabs.page:17 C/gedit-undo-recent-action.page:15
 #: C/gedit-view-open-files-in-sidepane.page:14
 msgid "Daniel Neel"
@@ -1592,7 +1592,7 @@ msgstr ""
 #: C/gedit-plugins-snippets.page:13 C/gedit-plugins-sort.page:17
 #: C/gedit-printing-order.page:14 C/gedit-printing.page:13
 #: C/gedit-printing-select.page:13 C/gedit-quickstart.page:15
-#: C/gedit-replace.page:19 C/gedit-save-file.page:15 C/gedit-search.page:18
+#: C/gedit-replace.page:20 C/gedit-save-file.page:15 C/gedit-search.page:18
 #: C/gedit-shortcut-keys.page:28 C/gedit-spellcheck.page:19
 #: C/gedit-syntax-highlighting.page:13 C/gedit-tabs-moving.page:20
 #: C/gedit-tabs.page:21 C/gedit-undo-recent-action.page:19
@@ -2411,17 +2411,17 @@ msgstr ""
 "link> руководства <app>gedit</app>."
 
 #. (itstool) path: credit/name
-#: C/gedit-replace.page:23
+#: C/gedit-replace.page:24
 msgid "Ekaterina Gerasimova"
 msgstr "Екатерина Герасимова (Ekaterina Gerasimova)"
 
 #. (itstool) path: page/title
-#: C/gedit-replace.page:29
+#: C/gedit-replace.page:34
 msgid "Replace text"
 msgstr "Замена текста"
 
 #. (itstool) path: page/p
-#: C/gedit-replace.page:31
+#: C/gedit-replace.page:36
 msgid ""
 "Editing text can be time consuming. To save time, <app>gedit</app> includes "
 "a <app>Replace</app> function that helps you to find and replace portions of "
@@ -2432,36 +2432,36 @@ msgstr ""
 "заменять часть текста."
 
 #. (itstool) path: steps/title
-#: C/gedit-replace.page:36
+#: C/gedit-replace.page:41
 msgid "Replace text in <app>gedit</app>"
 msgstr "Замена текста в <app>gedit</app>"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:38
+#: C/gedit-replace.page:43
 msgid ""
-"Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"menu"
-"\">Search</gui><gui style=\"menuitem\">Replace…</gui></guiseq> or press "
-"<keyseq><key>Ctrl</key><key>H</key></keyseq>."
+"Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"button"
+"\">Menu button</gui><gui style=\"menuitem\">Find and Replace…</gui></guiseq> "
+"or press <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgstr ""
-"Откройте инструмент <gui>Заменить</gui>, выбрав <guiseq><gui style=\"menu"
-"\">Поиск</gui><gui style=\"menuitem\">Заменить…</gui></guiseq>, или нажмите "
-"<keyseq><key>Ctrl</key><key>H</key></keyseq>."
+"Откройте инструмент <gui>Заменить</gui>, нажав <guiseq><gui style=\"button"
+"\">Кнопку меню</gui><gui style=\"menuitem\">Найти и заменить…</gui></guiseq>, "
+"или нажмите <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:43
+#: C/gedit-replace.page:49
 msgid ""
 "Enter the text that you wish to replace into the <gui>Search for:</gui> "
 "field."
 msgstr "Введите текст, который нужно заменить, в поле <gui>Найти:</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:47
+#: C/gedit-replace.page:53
 msgid ""
 "Enter the new, replacement text into the <gui>Replace with:</gui> field."
 msgstr "Введите заменяющий текст в поле <gui>Заменить на:</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:51
+#: C/gedit-replace.page:57
 msgid ""
 "Once you have entered the original and replacement text, you can add extra "
 "parameters to the search. You can also choose what you want to replace:"
@@ -2470,14 +2470,14 @@ msgstr ""
 "параметры поиска. Также можно выбрать что заменять:"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:56
+#: C/gedit-replace.page:62
 msgid "To replace <em>only</em> the next match, click <gui>Replace</gui>."
 msgstr ""
 "Чтобы заменить <em>только</em> следующее соответствие, нажмите кнопку "
 "<gui>Заменить</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:60
+#: C/gedit-replace.page:66
 msgid ""
 "To replace <em>all occurrences</em> of the searched-for text, click "
 "<gui>Replace All</gui>."
@@ -2486,7 +2486,7 @@ msgstr ""
 "<gui>Заменить все</gui>."
 
 #. (itstool) path: note/p
-#: C/gedit-replace.page:68
+#: C/gedit-replace.page:74
 msgid ""
 "Use the <gui>Replace All</gui> function with care. <gui>Replace All</gui> "
 "works on the entirety of your text file, and does not allow you to highlight "
@@ -2497,22 +2497,22 @@ msgstr ""
 "выделять часть текста, в которой функция замены не будет выполняться."
 
 #. (itstool) path: section/title
-#: C/gedit-replace.page:75
+#: C/gedit-replace.page:81
 msgid "More options"
 msgstr "Дополнительные параметры"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:77
+#: C/gedit-replace.page:83
 msgid "If you wish, you can add some extra parameters to your search:"
 msgstr "Если нужно, можно указать дополнительные параметры поиска:"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:81
+#: C/gedit-replace.page:87
 msgid "Match case"
 msgstr "Учитывать регистр"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:82
+#: C/gedit-replace.page:88
 msgid ""
 "The <em>Match case</em> option allows you to specify whether you want your "
 "search to be case-sensitive. If this option is selected, searches will be "
@@ -2523,12 +2523,12 @@ msgstr ""
 "нет, поиск будет производиться без учёта регистра."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:87
+#: C/gedit-replace.page:93
 msgid "Match entire word only"
 msgstr "Только полные слова"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:88
+#: C/gedit-replace.page:94
 msgid ""
 "Use this option to search for a specific word without including fragments of "
 "other words. For example, if you searched for the word 'and' with this "
@@ -2540,12 +2540,12 @@ msgstr ""
 "«на» будет соответствовать, а слова «<em>на</em>м» и «Па<em>на</em>ма» нет."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:95
+#: C/gedit-replace.page:101
 msgid "Search backwards"
 msgstr "Обратный поиск"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:96
+#: C/gedit-replace.page:102
 msgid ""
 "This command behaves identically to the Find Previous command. If you wish "
 "to step through search results from end to beginning, select this option."
@@ -2554,12 +2554,12 @@ msgstr ""
 "если нужно выполнять поиск от конца к началу."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:101
+#: C/gedit-replace.page:107
 msgid "Wrap around"
 msgstr "Автоматически переходить к началу документа"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:102
+#: C/gedit-replace.page:108
 msgid ""
 "With the <app>wrap around</app> option enabled, <app>gedit</app> will re-"
 "start the search/replace action at the top of the file after it has reached "
@@ -2573,12 +2573,12 @@ msgstr ""
 
 # escape sequence - управляющий символ, как например разрыв строки, символ табуляции и т.д. В русском переводе их часто называют непечатные символы, так как на содержание текста они не влияют.
 #. (itstool) path: section/title
-#: C/gedit-replace.page:112
+#: C/gedit-replace.page:118
 msgid "Using escape sequences"
 msgstr "Использование непечатных символов"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:114
+#: C/gedit-replace.page:120
 msgid ""
 "You can use <em>escape sequences</em> to search for line breaks and tabs."
 msgstr ""
@@ -2586,38 +2586,38 @@ msgstr ""
 "знаков табуляции."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:119
+#: C/gedit-replace.page:125
 msgid "\\n"
 msgstr "\\n"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:120
+#: C/gedit-replace.page:126
 msgid "Newline"
 msgstr "Новая строка"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:123
+#: C/gedit-replace.page:129
 msgid "\\t"
 msgstr "\\t"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:124
+#: C/gedit-replace.page:130
 msgid "Tab"
 msgstr "Tab"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:127
+#: C/gedit-replace.page:133
 msgid "\\r"
 msgstr "\\r"
 
 # Возвра́т каре́тки — управляющий символ или механизм, используемый для возвращения позиции устройства к началу строки. Часто обозначается как CR (от англ. carriage return). (wiki)
 #. (itstool) path: item/p
-#: C/gedit-replace.page:128
+#: C/gedit-replace.page:134
 msgid "Carriage return"
 msgstr "Возврат каретки"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:132
+#: C/gedit-replace.page:138
 msgid ""
 "If you actually want to search for a <output>\\</output> (backslash) or one "
 "of the escape sequences in the text, you need to escape the backslash with "
@@ -2682,14 +2682,14 @@ msgstr "Поиск текста"
 #: C/gedit-search.page:36
 msgid ""
 "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
-"\">Search</gui> <gui style=\"menuitem\">Find</gui> </guiseq> or pressing "
-"<keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your cursor to "
-"the start of the <gui>search window</gui>."
+"\">Menu Button</gui> <gui style=\"menuitem\">Find…</gui> </guiseq> or "
+"pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your "
+"cursor to the start of the <gui>search window</gui>."
 msgstr ""
-"Откройте <gui>окно поиска</gui>, выбрав <guiseq><gui style=\"menu\">Поиск</"
-"gui> <gui style=\"menuitem\">Найти</gui> </guiseq>, или нажмите "
-"<keyseq><key>Ctrl</key><key>F</key></keyseq>. Это переместит указатель в "
-"<gui>окно поиска</gui>, к началу."
+"Откройте <gui>окно поиска</gui>, нажав <guiseq><gui style=\"menu"
+"\">Menu Button</gui> <gui style=\"menuitem\">Найти…</gui> </guiseq>, или "
+"нажмите <keyseq><key>Ctrl</key><key>F</key></keyseq>. Это переместит "
+"указатель в начало <gui>окна поиска</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:43
@@ -3811,7 +3811,7 @@ msgstr "Чтобы переместить вкладку из одной гру�
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:98 C/gedit-tabs-moving.page:44
-#: C/gedit-tabs-moving.page:65 C/gedit-tabs-moving.page:91
+#: C/gedit-tabs-moving.page:65 C/gedit-tabs-moving.page:88
 msgid "Click and hold the mouse button on the tab."
 msgstr "Нажмите и удерживайте кнопку мыши на вкладке."
 
@@ -3827,7 +3827,7 @@ msgstr "Поместите её рядом с другими вкладками 
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:107 C/gedit-tabs-moving.page:50
-#: C/gedit-tabs-moving.page:71 C/gedit-tabs-moving.page:100
+#: C/gedit-tabs-moving.page:71 C/gedit-tabs-moving.page:97
 msgid "Release the mouse button."
 msgstr "Отпустите кнопку мыши."
 
@@ -3898,17 +3898,8 @@ msgstr "Чтобы создать новое окно из существующ�
 msgid "Drag the tab out of the <app>gedit</app> window."
 msgstr "Переместите вкладку за пределы окна <app>gedit</app>."
 
-#. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:75
-msgid ""
-"or, while the tab to be moved is open, choose <guiseq><gui>Documents </"
-"gui><gui>Move to New Window</gui></guiseq>"
-msgstr ""
-"или, когда открыта вкладка, которую нужно переместить, выберите "
-"<guiseq><gui>Документы</gui><gui>Переместить в новое окно</gui></guiseq>"
-
 #. (itstool) path: note/p
-#: C/gedit-tabs-moving.page:79
+#: C/gedit-tabs-moving.page:76
 msgid ""
 "To move a tab into a new window when <app>gedit</app> is maximized, drag the "
 "tab onto the top bar at the top of the screen."
@@ -3918,27 +3909,27 @@ msgstr ""
 "части экрана."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs-moving.page:85
+#: C/gedit-tabs-moving.page:82
 msgid "Move a tab to another gedit window"
 msgstr "Перемещение вкладки в другое окно gedit"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:87
+#: C/gedit-tabs-moving.page:84
 msgid "If you want to move a tab from one window to another:"
 msgstr "Чтобы переместить вкладку из одного окна в другое:"
 
 #. (itstool) path: item/p
-#: C/gedit-tabs-moving.page:94
+#: C/gedit-tabs-moving.page:91
 msgid "Drag the tab to the new window."
 msgstr "Переместите вкладку в другое окно."
 
 #. (itstool) path: item/p
-#: C/gedit-tabs-moving.page:97
+#: C/gedit-tabs-moving.page:94
 msgid "Place it beside other tabs in the new window."
 msgstr "Поместите её рядом с другими вкладками в другом окне."
 
 #. (itstool) path: note/p
-#: C/gedit-tabs-moving.page:106
+#: C/gedit-tabs-moving.page:103
 msgid ""
 "You may find it easier to move a tab from one window to another by dragging "
 "the tab to the <gui>Activities</gui> hot-corner of <gui>GNOME Shell</gui>. "
@@ -3951,7 +3942,7 @@ msgstr ""
 "окну <app>gedit</app> и отпустите."
 
 #. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:113
+#: C/gedit-tabs-moving.page:110
 msgid ""
 "See the <link xref=\"gedit-shortcut-keys\">tab-related shortcut keys</link> "
 "table to make it easier to manage your tabs."
@@ -4166,3 +4157,10 @@ msgstr ""
 "Attribution-ShareAlike 3.0 Unported. Для просмотра копии этой лицензии "
 "посетите <_:link-1/> или отправьте письмо по адресу: Creative Commons, 444 "
 "Castro Street, Suite 900, Mountain View, California, 94041, USA."
+
+#~ msgid ""
+#~ "or, while the tab to be moved is open, choose <guiseq><gui>Documents </"
+#~ "gui><gui>Move to New Window</gui></guiseq>"
+#~ msgstr ""
+#~ "или, когда открыта вкладка, которую нужно переместить, выберите "
+#~ "<guiseq><gui>Документы</gui><gui>Переместить в новое окно</gui></guiseq>"
