@@ -187,7 +187,7 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 	object_class->get_property = gedit_print_job_get_property;
 	object_class->set_property = gedit_print_job_set_property;
 	object_class->finalize = gedit_print_job_finalize;
-	object_class->finalize = gedit_print_job_dispose;
+	object_class->dispose = gedit_print_job_dispose;
 
 	g_object_class_install_property (object_class,
 					 PROP_VIEW,
