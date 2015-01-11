@@ -26,7 +26,6 @@ gedit_open_document_selector_debug_print_list (const gchar *title,
 {
 	FileItem *item;
 	GList *l;
-	gchar *uri;
 	glong time_sec;
 	glong time_usec;
 
@@ -37,15 +36,33 @@ gedit_open_document_selector_debug_print_list (const gchar *title,
 		item = (FileItem *)l->data;
 		time_sec = item->access_time.tv_sec;
 		time_usec = item->access_time.tv_usec;
-		uri = item->uri;
-		g_print ("%ld:%ld%s\n", time_sec, time_usec, uri);
+
+		g_print ("%ld:%ld uri:%s (%s %s)\n",
+		         time_sec,
+		         time_usec,
+		         item->uri,
+		         item->name,
+		         item->path);
 	}
+}
+
+FileItem *
+gedit_open_document_selector_create_fileitem_item (void)
+{
+	FileItem *item;
+
+	item = g_slice_new0 (FileItem);
+
+	return item;
 }
 
 void
 gedit_open_document_selector_free_fileitem_item (FileItem *item)
 {
 	g_free (item->uri);
+	g_free (item->name);
+	g_free (item->path);
+
 	g_slice_free (FileItem, item);
 }
 
@@ -54,8 +71,11 @@ gedit_open_document_selector_copy_fileitem_item (FileItem *item)
 {
 	FileItem *new_item;
 
-	new_item = g_slice_new (FileItem);
+	new_item = gedit_open_document_selector_create_fileitem_item ();
+
 	new_item->uri = g_strdup (item->uri);
+	new_item->name = g_strdup (item->name);
+	new_item->path = g_strdup (item->path);
 	new_item->access_time = item->access_time;
 
 	return new_item;

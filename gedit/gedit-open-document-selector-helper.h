@@ -30,6 +30,8 @@ G_BEGIN_DECLS
 typedef struct
 {
 	gchar *uri;
+	gchar *name;
+	gchar *path;
 	GTimeVal access_time;
 } FileItem;
 
@@ -87,6 +89,8 @@ void		 gedit_open_document_selector_debug_print_list		(const gchar *title,
 GList		*gedit_open_document_selector_copy_file_items_list	(const GList *file_items_list);
 
 void		 gedit_open_document_selector_free_file_items_list	(GList *file_items_list);
+
+FileItem	*gedit_open_document_selector_create_fileitem_item	(void);
 
 void		 gedit_open_document_selector_free_fileitem_item	(FileItem *item);
 

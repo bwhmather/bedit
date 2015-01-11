@@ -110,7 +110,7 @@ get_current_docs_list (GeditOpenDocumentSelectorStore *selector_store,
 			continue;
 		}
 
-		item = (FileItem *)g_slice_new (FileItem);
+		item = gedit_open_document_selector_create_fileitem_item ();
 
 		item->access_time.tv_sec = g_file_info_get_attribute_uint64 (info, "time::access");
 		item->access_time.tv_usec = g_file_info_get_attribute_uint32 (info, "time::access-usec");
@@ -175,7 +175,6 @@ get_children_from_dir (GeditOpenDocumentSelectorStore *selector_store,
 	GFileInfo *info;
 	GFileType filetype;
 	GFile *file;
-	gchar *uri;
 	FileItem *item;
 	gboolean is_text;
 	gboolean is_correct_type;
@@ -183,7 +182,6 @@ get_children_from_dir (GeditOpenDocumentSelectorStore *selector_store,
 	g_return_val_if_fail (G_IS_FILE (dir), NULL);
 
 	file_enum = g_file_enumerate_children (dir,
-	                                       "standard::name,"
 	                                       "standard::type,"
 	                                       "standard::fast-content-type,"
 	                                       "time::access,time::access-usec",
@@ -207,9 +205,8 @@ get_children_from_dir (GeditOpenDocumentSelectorStore *selector_store,
 		    is_correct_type &&
 		    (file = g_file_enumerator_get_child (file_enum, info)) != NULL)
 		{
-			item = (FileItem *)g_slice_new (FileItem);
-			uri = g_file_get_uri (file);
-			item->uri = uri;
+			item = gedit_open_document_selector_create_fileitem_item ();
+			item->uri = g_file_get_uri (file);
 
 			item->access_time.tv_sec = g_file_info_get_attribute_uint64 (info, "time::access");
 			item->access_time.tv_usec = g_file_info_get_attribute_uint32 (info, "time::access-usec");
@@ -458,7 +455,12 @@ convert_recent_item_list_to_fileitem_list (GList *uri_list)
 
 		uri = g_strdup (gtk_recent_info_get_uri (l->data));
 		file = g_file_new_for_uri (uri);
-		info = g_file_query_info (file, "time::access,time::access-usec", G_FILE_QUERY_INFO_NONE, NULL, NULL);
+		info = g_file_query_info (file,
+		                          "time::access,time::access-usec",
+		                          G_FILE_QUERY_INFO_NONE,
+		                          NULL,
+		                          NULL);
+
 		g_object_unref (file);
 
 		if (info == NULL)
@@ -467,8 +469,9 @@ convert_recent_item_list_to_fileitem_list (GList *uri_list)
 			continue;
 		}
 
-		item = g_slice_new (FileItem);
+		item = gedit_open_document_selector_create_fileitem_item ();
 		item->uri = uri;
+
 		/* We query access time because gtk_recent_info_get_modified() doesn't give us the usec part */
 		item->access_time.tv_sec = g_file_info_get_attribute_uint64 (info, "time::access");
 		item->access_time.tv_usec = g_file_info_get_attribute_uint32 (info, "time::access-usec");
@@ -578,12 +581,12 @@ gedit_open_document_selector_store_class_init (GeditOpenDocumentSelectorStoreCla
 static GList * (*list_func [])(GeditOpenDocumentSelectorStore *selector_store,
                                GeditOpenDocumentSelector      *selector) =
 {
-	get_local_bookmarks_list,
+	get_recent_files_list,
 	get_home_dir_list,
 	get_desktop_dir_list,
+	get_local_bookmarks_list,
 	get_file_browser_root_dir_list,
 	get_active_doc_dir_list,
-	get_recent_files_list,
 	get_current_docs_list
 };
 
