@@ -96,7 +96,7 @@
             <property name="can_focus">False</property>
             <property name="border_width">5</property>
             <property name="orientation">vertical</property>
-            <property name="spacing">18</property>
+            <property name="spacing">8</property>
             <child>
               <object class="GtkGrid" id="grid">
                 <property name="visible">True</property>
@@ -146,7 +146,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
-                <property name="spacing">12</property>
+                <property name="spacing">4</property>
                 <child>
                   <object class="GtkCheckButton" id="match_case_checkbutton">
                     <property name="label" translatable="yes">_Match case</property>
