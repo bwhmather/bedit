@@ -259,7 +259,9 @@ create_row (GeditOpenDocumentSelector *selector,
 	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	GtkTreeIter iter;
 	gchar *uri;
+	gchar *dst_path_escaped;
 	gchar *dst_path;
+	gchar *dst_name_escaped;
 	gchar *dst_name;
 
 	uri =item->uri;
@@ -274,8 +276,8 @@ create_row (GeditOpenDocumentSelector *selector,
 	}
 	else
 	{
-		dst_path = g_strdup (item->path);
-		dst_name = g_strdup (item->name);
+		dst_path = g_markup_escape_text (item->path, -1);
+		dst_name = g_markup_escape_text (item->name, -1);
 	}
 
 	gtk_list_store_append (priv->liststore, &iter);
@@ -378,6 +380,8 @@ fileitem_setup (FileItem *item)
 	gchar *scheme;
 	gchar *filename;
 	gchar *candidate = NULL;
+	gchar *path;
+	gchar *name;
 
 	scheme = g_uri_parse_scheme (item->uri);
 	if (g_strcmp0 (scheme, "file") == 0)
@@ -385,10 +389,15 @@ fileitem_setup (FileItem *item)
 		filename = g_filename_from_uri ((const gchar *)item->uri, NULL, NULL);
 		if (filename)
 		{
-			item->path = g_path_get_dirname (filename);
-			item->name = g_path_get_basename (filename);
-			candidate = g_utf8_strdown (filename, -1);
+			path = g_path_get_dirname (filename);
+			item->path = g_filename_to_utf8 (path, -1, NULL, NULL, NULL);
+			g_free (path);
 
+			name = g_path_get_basename (filename);
+			item->name = g_filename_to_utf8 (name, -1, NULL, NULL, NULL);
+			g_free (name);
+
+			candidate = g_utf8_strdown (filename, -1);
 			g_free (filename);
 		}
 	}
