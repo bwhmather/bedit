@@ -578,6 +578,41 @@ populate_liststore (GeditOpenDocumentSelector *selector)
 	gdk_threads_add_idle_full (G_PRIORITY_HIGH_IDLE + 30, real_populate_liststore, selector, NULL);
 }
 
+static gboolean
+on_treeview_key_press (GtkTreeView               *treeview,
+                       GdkEventKey               *event,
+                       GeditOpenDocumentSelector *selector)
+{
+	guint keyval;
+	gboolean is_control_pressed;
+	GtkTreeSelection *tree_selection;
+	GtkTreePath *root_path;
+	GdkModifierType modifiers;
+
+	if (gdk_event_get_keyval ((GdkEvent *)event, &keyval) == TRUE)
+	{
+		tree_selection = gtk_tree_view_get_selection (treeview);
+		root_path = gtk_tree_path_new_from_string ("0");
+
+		modifiers = gtk_accelerator_get_default_mod_mask ();
+		is_control_pressed = (event->state & modifiers) == GDK_CONTROL_MASK;
+
+		if ((keyval == GDK_KEY_Up || keyval == GDK_KEY_KP_Up) &&
+		    !is_control_pressed)
+		{
+			if (gtk_tree_selection_path_is_selected (tree_selection, root_path))
+			{
+				gtk_tree_selection_unselect_all (tree_selection);
+				gtk_widget_grab_focus (selector->recent_search_entry);
+
+				return GDK_EVENT_STOP;
+			}
+		}
+	}
+
+	return GDK_EVENT_PROPAGATE;
+}
+
 static void
 on_entry_changed (GtkEntry                  *entry,
                   GeditOpenDocumentSelector *selector)
@@ -1124,6 +1159,11 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *selector)
 	g_signal_connect (priv->treeview,
 	                  "size-allocate",
 	                  G_CALLBACK (on_treeview_allocate),
+	                  selector);
+
+	g_signal_connect (priv->treeview,
+	                  "key-press-event",
+	                  G_CALLBACK (on_treeview_key_press),
 	                  selector);
 }
 
