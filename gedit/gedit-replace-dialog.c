@@ -681,6 +681,7 @@ gedit_replace_dialog_init (GeditReplaceDialog *dlg)
 	dlg->priv->replace_entry = gedit_history_entry_new ("replace-with-entry", TRUE);
 	gtk_widget_set_hexpand (GTK_WIDGET (dlg->priv->replace_entry), TRUE);
 	dlg->priv->replace_text_entry = gedit_history_entry_get_entry (GEDIT_HISTORY_ENTRY (dlg->priv->replace_entry));
+	gtk_entry_set_placeholder_text (GTK_ENTRY (dlg->priv->replace_text_entry), _("Nothing"));
 	gtk_entry_set_activates_default (GTK_ENTRY (dlg->priv->replace_text_entry), TRUE);
 	gtk_grid_attach_next_to (GTK_GRID (dlg->priv->grid),
 				 dlg->priv->replace_entry,
