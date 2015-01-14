@@ -259,9 +259,7 @@ create_row (GeditOpenDocumentSelector *selector,
 	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	GtkTreeIter iter;
 	gchar *uri;
-	gchar *dst_path_escaped;
 	gchar *dst_path;
-	gchar *dst_name_escaped;
 	gchar *dst_name;
 
 	uri =item->uri;
