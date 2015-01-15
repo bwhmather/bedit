@@ -1004,7 +1004,7 @@ on_treeview_allocate (GtkWidget                 *widget,
 	                                        NULL,
 	                                        &path_renderer_natural_size);
 
-	gtk_style_context_get_padding (context, GTK_STATE_NORMAL, &padding);
+	gtk_style_context_get_padding (context, GTK_STATE_FLAG_NORMAL, &padding);
 	gtk_cell_renderer_get_padding (priv->name_renderer, NULL, &ypad);
 	gtk_widget_style_get (priv->treeview, "grid-line-width", &grid_line_width, NULL);
 
@@ -1043,10 +1043,10 @@ name_renderer_datafunc (GtkTreeViewColumn         *column,
 	/* Name label foreground and font size styling */
 	gtk_style_context_add_class (context, "open-document-selector-name-label");
 
-	gtk_style_context_get_color (context, GTK_STATE_NORMAL, &label_color);
+	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &label_color);
 	g_object_set (priv->name_renderer, "foreground-rgba", &label_color, NULL);
 
-	gtk_style_context_get (context, GTK_STATE_NORMAL, "font-size", &font_size, NULL);
+	gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL, "font-size", &font_size, NULL);
 	g_object_set (priv->name_renderer, "size-points", font_size, NULL);
 
 	gtk_style_context_remove_class (context, "open-document-selector-name-label");
@@ -1069,10 +1069,10 @@ path_renderer_datafunc (GtkTreeViewColumn         *column,
 	/* Path label foreground and font size styling */
 	gtk_style_context_add_class (context, "open-document-selector-path-label");
 
-	gtk_style_context_get_color (context, GTK_STATE_NORMAL, &label_color);
+	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &label_color);
 	g_object_set (priv->path_renderer, "foreground-rgba", &label_color, NULL);
 
-	gtk_style_context_get (context, GTK_STATE_NORMAL, "font-size", &font_size, NULL);
+	gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL, "font-size", &font_size, NULL);
 	g_object_set (priv->path_renderer, "size-points", font_size, NULL);
 
 	gtk_style_context_remove_class (context, "open-document-selector-path-label");
