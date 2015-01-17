@@ -242,8 +242,6 @@ hide_search_widget (GeditViewFrame *frame,
 		gtk_text_buffer_delete_mark (buffer, frame->priv->start_mark);
 		frame->priv->start_mark = NULL;
 	}
-
-	gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
 }
 
 static gboolean
@@ -580,6 +578,8 @@ search_widget_key_press_event (GtkWidget      *widget,
 	if (event->keyval == GDK_KEY_Tab)
 	{
 		hide_search_widget (frame, FALSE);
+		gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
+
 		return GDK_EVENT_STOP;
 	}
 
@@ -607,6 +607,8 @@ search_widget_key_press_event (GtkWidget      *widget,
 		}
 
 		hide_search_widget (frame, TRUE);
+		gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
+
 		return GDK_EVENT_STOP;
 	}
 
@@ -956,6 +958,7 @@ search_entry_activate (GtkEntry       *entry,
                        GeditViewFrame *frame)
 {
 	hide_search_widget (frame, FALSE);
+	gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
 }
 
 static void
