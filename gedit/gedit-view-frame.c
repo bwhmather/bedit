@@ -575,7 +575,9 @@ search_widget_key_press_event (GtkWidget      *widget,
 	guint modifiers = gtk_accelerator_get_default_mod_mask ();
 
 	/* Close window */
-	if (event->keyval == GDK_KEY_Tab)
+	if (event->keyval == GDK_KEY_Tab ||
+	    event->keyval == GDK_KEY_Return ||
+	    event->keyval == GDK_KEY_KP_Enter)
 	{
 		hide_search_widget (frame, FALSE);
 		gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
@@ -1571,7 +1573,7 @@ gedit_view_frame_init (GeditViewFrame *frame)
 			  G_CALLBACK (mark_set_cb),
 			  frame);
 
-	g_signal_connect (frame->priv->revealer,
+	g_signal_connect (frame->priv->search_entry,
 			  "key-press-event",
 	                  G_CALLBACK (search_widget_key_press_event),
 	                  frame);
