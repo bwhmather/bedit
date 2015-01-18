@@ -48,6 +48,7 @@ struct _GeditReplaceDialogPrivate
 	GtkWidget *regex_checkbutton;
 	GtkWidget *backwards_checkbutton;
 	GtkWidget *wrap_around_checkbutton;
+	GtkWidget *close_button;
 
 	GeditDocument *active_document;
 
@@ -539,6 +540,7 @@ gedit_replace_dialog_class_init (GeditReplaceDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, regex_checkbutton);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, backwards_checkbutton);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, wrap_around_checkbutton);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditReplaceDialog, close_button);
 }
 
 static void
@@ -746,13 +748,40 @@ GtkWidget *
 gedit_replace_dialog_new (GeditWindow *window)
 {
 	GeditReplaceDialog *dialog;
+	gboolean use_header;
 
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 
 	dialog = g_object_new (GEDIT_TYPE_REPLACE_DIALOG,
 			       "transient-for", window,
 			       "destroy-with-parent", TRUE,
+			       "use-header-bar", FALSE,
 			       NULL);
+
+	/* We force the Find/Replace buttons at the bottom, so we
+	 * turn off the automatic header bar, but we check the
+	 * setting and if an header bar showld be used we
+	 * create it and use it for the close button.
+	 */
+	g_object_get (gtk_settings_get_default (),
+	              "gtk-dialogs-use-header", &use_header,
+	              NULL);
+
+	if (use_header)
+	{
+		GtkWidget *header_bar;
+
+		header_bar = gtk_header_bar_new ();
+		gtk_header_bar_set_title (GTK_HEADER_BAR (header_bar), _("Find and Replace"));
+		gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (header_bar), TRUE);
+		gtk_widget_show (header_bar);
+		gtk_window_set_titlebar (GTK_WINDOW (dialog), header_bar);
+	}
+	else
+	{
+		gtk_widget_set_no_show_all (dialog->priv->close_button, FALSE);
+		gtk_widget_show (dialog->priv->close_button);
+	}
 
 	return GTK_WIDGET (dialog);
 }
