@@ -62,6 +62,9 @@ typedef struct _GeditPreferencesDialogClass GeditPreferencesDialogClass;
 struct _GeditPreferencesDialogClass
 {
 	GtkWindowClass parent_class;
+
+	/* Keybinding signals */
+	void (* close)			(GeditPreferencesDialog *dialog);
 };
 
 /*

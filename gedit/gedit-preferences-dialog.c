@@ -63,6 +63,14 @@ enum
 	NUM_COLUMNS
 };
 
+enum
+{
+	CLOSE,
+	LAST_SIGNAL
+};
+
+static guint signals[LAST_SIGNAL];
+
 struct _GeditPreferencesDialogPrivate
 {
 	GSettings	*editor;
@@ -131,15 +139,33 @@ gedit_preferences_dialog_dispose (GObject *object)
 }
 
 static void
+gedit_preferences_dialog_close (GeditPreferencesDialog *dialog)
+{
+	gtk_window_close (GTK_WINDOW (dialog));
+}
+
+static void
 gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+	GtkBindingSet *binding_set;
 
 	/* Otherwise libpeas-gtk might not be linked */
 	g_type_ensure (PEAS_GTK_TYPE_PLUGIN_MANAGER);
 
 	object_class->dispose = gedit_preferences_dialog_dispose;
+	klass->close = gedit_preferences_dialog_close;
+
+	signals[CLOSE] = g_signal_new ("close",
+	                               G_OBJECT_CLASS_TYPE (klass),
+	                               G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+	                               G_STRUCT_OFFSET (GeditPreferencesDialogClass, close),
+	                               NULL, NULL, NULL,
+	                               G_TYPE_NONE, 0);
+
+	binding_set = gtk_binding_set_by_class (klass);
+	gtk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
