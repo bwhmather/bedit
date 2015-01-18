@@ -758,10 +758,10 @@ gedit_replace_dialog_new (GeditWindow *window)
 			       "use-header-bar", FALSE,
 			       NULL);
 
-	/* We force the Find/Replace buttons at the bottom, so we
-	 * turn off the automatic header bar, but we check the
-	 * setting and if an header bar showld be used we
-	 * create it and use it for the close button.
+	/* We want the Find/Replace/ReplaceAll buttons at the bottom,
+	 * so we turn off the automatic header bar, but we check the
+	 * setting and if a header bar should be used, we create it
+	 * manually and use it for the close button.
 	 */
 	g_object_get (gtk_settings_get_default (),
 	              "gtk-dialogs-use-header", &use_header,
