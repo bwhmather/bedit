@@ -545,6 +545,32 @@ close_button_clicked (GtkWidget         *button,
 	gtk_widget_destroy (GTK_WIDGET (preview));
 }
 
+static gboolean
+scroll_event_activated (GtkWidget         *widget,
+		        GdkEventScroll    *event,
+		        GeditPrintPreview *preview)
+{
+	if (event->state & GDK_CONTROL_MASK)
+	{
+		if ((event->direction == GDK_SCROLL_UP) ||
+		    (event->direction == GDK_SCROLL_SMOOTH &&
+		     event->delta_y < 0))
+		{
+			zoom_in (preview);
+		}
+		else if ((event->direction == GDK_SCROLL_DOWN) ||
+		         (event->direction == GDK_SCROLL_SMOOTH &&
+		          event->delta_y > 0))
+		{
+			zoom_out (preview);
+		}
+
+		return GDK_EVENT_STOP;
+	}
+
+	return GDK_EVENT_PROPAGATE;
+}
+
 static gint
 get_first_page_displayed (GeditPrintPreview *preview)
 {
@@ -881,6 +907,11 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 	g_signal_connect (priv->close,
 			  "clicked",
 			  G_CALLBACK (close_button_clicked),
+			  preview);
+
+	g_signal_connect (priv->layout,
+			  "scroll-event",
+			  G_CALLBACK (scroll_event_activated),
 			  preview);
 
 	g_object_set (priv->layout, "has-tooltip", TRUE, NULL);
