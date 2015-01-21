@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-07 06:02+0000\n"
+"POT-Creation-Date: 2015-01-21 06:02+0000\n"
 "PO-Revision-Date: 2015-01-07 08:18+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -610,7 +610,7 @@ msgstr "Zavřít _bez uložení"
 #: ../gedit/gedit-commands-file.c:668 ../gedit/gedit-commands-file.c:867
 #: ../gedit/gedit-commands-file.c:1579 ../gedit/gedit-io-error-info-bar.c:135
 #: ../gedit/gedit-io-error-info-bar.c:516
-#: ../gedit/gedit-preferences-dialog.c:764
+#: ../gedit/gedit-preferences-dialog.c:790
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
@@ -1032,7 +1032,7 @@ msgid "Current Locale (%s)"
 msgstr "Současné národní prostředí (%s)"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:41
-#: ../gedit/gedit-preferences-dialog.c:773
+#: ../gedit/gedit-preferences-dialog.c:799
 msgid "All Files"
 msgstr "Všechny soubory"
 
@@ -1408,39 +1408,39 @@ msgstr ""
 "Pokud budete pokračovat v ukládání tohoto souboru, můžete dokument poškodit. "
 "Přesto uložit?"
 
-#: ../gedit/gedit-preferences-dialog.c:387
+#: ../gedit/gedit-preferences-dialog.c:413
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Chcete-li vybrat písmo, které má editor používat, klikněte na toto tlačítko"
 
-#: ../gedit/gedit-preferences-dialog.c:400
+#: ../gedit/gedit-preferences-dialog.c:426
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Po_užít systémové písmo s pevnou šířkou (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:540
+#: ../gedit/gedit-preferences-dialog.c:566
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Složka „%s“ nemůže být vytvořena: funkce g_mkdir_with_parents() selhala: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:737
+#: ../gedit/gedit-preferences-dialog.c:763
 msgid "The selected color scheme cannot be installed."
 msgstr "Vybrané schéma barev nelze nainstalovat"
 
-#: ../gedit/gedit-preferences-dialog.c:760
+#: ../gedit/gedit-preferences-dialog.c:786
 msgid "Add Scheme"
 msgstr "Přidat schéma"
 
-#: ../gedit/gedit-preferences-dialog.c:765
+#: ../gedit/gedit-preferences-dialog.c:791
 msgid "A_dd Scheme"
 msgstr "Při_dat schéma"
 
-#: ../gedit/gedit-preferences-dialog.c:769
+#: ../gedit/gedit-preferences-dialog.c:795
 msgid "Color Scheme Files"
 msgstr "Soubory s barevnými schématy"
 
-#: ../gedit/gedit-preferences-dialog.c:800
+#: ../gedit/gedit-preferences-dialog.c:826
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nelze odstranit schéma barev „%s“."
@@ -1462,6 +1462,16 @@ msgstr "Připravuje se tisk…"
 #, c-format
 msgid "Page %d of %d"
 msgstr "Stránka %d z %d"
+
+#: ../gedit/gedit-replace-dialog.c:686
+#: ../plugins/externaltools/tools/tools.ui.h:7
+msgid "Nothing"
+msgstr "Nic"
+
+#: ../gedit/gedit-replace-dialog.c:775
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+msgid "Find and Replace"
+msgstr "Hledání a nahrazování"
 
 #. Use spaces to leave padding proportional to the font size
 #: ../gedit/gedit-statusbar.c:56 ../gedit/gedit-statusbar.c:62
@@ -1589,36 +1599,36 @@ msgstr "Zobrazovat čísla řá_dků"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:734
+#: ../gedit/gedit-view-frame.c:736
 #, c-format
 msgid "%d of %d"
 msgstr "%d z %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:826
+#: ../gedit/gedit-view-frame.c:828
 msgid "_Wrap Around"
 msgstr "Přecházet přes _okraj"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:836
+#: ../gedit/gedit-view-frame.c:838
 msgid "Match as _Regular Expression"
 msgstr "Hledat jako _regulární výraz"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:850
+#: ../gedit/gedit-view-frame.c:852
 msgid "Match _Entire Word Only"
 msgstr "Hledat pouze _celá slova"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:864
+#: ../gedit/gedit-view-frame.c:866
 msgid "_Match Case"
 msgstr "_Rozlišovat velikost písmen"
 
-#: ../gedit/gedit-view-frame.c:1038
+#: ../gedit/gedit-view-frame.c:1041
 msgid "String you want to search for"
 msgstr "Řetězec, který chcete hledat"
 
-#: ../gedit/gedit-view-frame.c:1050
+#: ../gedit/gedit-view-frame.c:1053
 msgid "Line you want to move the cursor to"
 msgstr "Řádek, na který chcete přesunout kurzor"
 
@@ -2229,10 +2239,6 @@ msgstr "Náhled stránky"
 msgid "The preview of a page in the document to be printed"
 msgstr "Náhled stránky dokumentu, který se má tisknout"
 
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
-msgid "Replace"
-msgstr "Nahradit"
-
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:3
 msgid "Replace _All"
 msgstr "Nahradit _vše"
@@ -2242,12 +2248,12 @@ msgid "_Find"
 msgstr "_Najít"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
-msgid "_Search for: "
-msgstr "_Hledat: "
+msgid "F_ind "
+msgstr "Na_jít"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
-msgid "Replace _with: "
-msgstr "Nahradit z_a: "
+msgid "Replace _with "
+msgstr "Nahradit z_a"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:8
 msgid "_Match case"
@@ -2258,8 +2264,8 @@ msgid "Match _entire word only"
 msgstr "Hledat pouze _celá slova"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
-msgid "Match as re_gular expression"
-msgstr "Hledat jako re_gulární výraz"
+msgid "Re_gular expression"
+msgstr "Re_gulární výraz"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:11
 msgid "Search _backwards"
@@ -2549,10 +2555,6 @@ msgstr "Jen vzdálené soubory"
 #: ../plugins/externaltools/tools/tools.ui.h:6
 msgid "Untitled documents only"
 msgstr "Jen nepojmenované dokumenty"
-
-#: ../plugins/externaltools/tools/tools.ui.h:7
-msgid "Nothing"
-msgstr "Nic"
 
 #: ../plugins/externaltools/tools/tools.ui.h:8
 msgid "Current document"
