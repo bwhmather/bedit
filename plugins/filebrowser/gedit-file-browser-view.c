@@ -998,8 +998,12 @@ cell_data_cb (GtkTreeViewColumn    *tree_column,
 	    obj->priv->editable != NULL &&
 	    gtk_tree_row_reference_valid (obj->priv->editable))
 	{
-		GtkTreePath *edpath = gtk_tree_row_reference_get_path (obj->priv->editable);
+		GtkTreePath *edpath;
+
+		edpath = gtk_tree_row_reference_get_path (obj->priv->editable);
 		editable = edpath && gtk_tree_path_compare (path, edpath) == 0;
+
+		gtk_tree_path_free (edpath);
 	}
 
 	gtk_tree_path_free (path);
@@ -1187,15 +1191,14 @@ gedit_file_browser_view_start_rename (GeditFileBrowserView *tree_view,
 	gtk_tree_view_column_focus_cell (tree_view->priv->column,
 					 tree_view->priv->text_renderer);
 
-	gtk_tree_view_set_cursor (GTK_TREE_VIEW (tree_view),
-				  gtk_tree_row_reference_get_path (tree_view->priv->editable),
+	path = gtk_tree_row_reference_get_path (tree_view->priv->editable),
+	gtk_tree_view_set_cursor (GTK_TREE_VIEW (tree_view), path,
 				  tree_view->priv->column, TRUE);
-
 	gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (tree_view),
-				      gtk_tree_row_reference_get_path (tree_view->priv->editable),
-				      tree_view->priv->column,
+				      path, tree_view->priv->column,
 				      FALSE, 0.0, 0.0);
 
+	gtk_tree_path_free (path);
 	g_value_unset (&name_escaped);
 	g_free (name);
 }
