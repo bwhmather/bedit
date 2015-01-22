@@ -131,6 +131,7 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 {
 	GeditLockdownMask lockdown;
 	AtkObject *atk_obj;
+	GtkWidget *content_area;
 	GtkWidget *action_area;
 
 	dlg->priv = gedit_close_confirmation_dialog_get_instance_private (dlg);
@@ -139,8 +140,9 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 
 	dlg->priv->disable_save_to_disk = lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK;
 
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
-			     14);
+	content_area = gtk_dialog_get_content_area (GTK_DIALOG (dlg));
+	gtk_container_set_border_width (GTK_CONTAINER (content_area), 0);
+	gtk_box_set_spacing (GTK_BOX (content_area), 14);
 	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dlg), TRUE);
 
 	gtk_window_set_title (GTK_WINDOW (dlg), "");
