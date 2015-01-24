@@ -2953,6 +2953,8 @@ gedit_tab_print_or_print_preview (GeditTab                *tab,
 		g_object_unref (tab->priv->print_job);
 		g_error_free (error);
 	}
+
+	g_object_unref (settings);
 }
 
 void
