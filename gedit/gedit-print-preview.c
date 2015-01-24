@@ -351,7 +351,7 @@ prev_button_clicked (GtkWidget         *button,
 	else
 		page = preview->priv->cur_page - preview->priv->rows * preview->priv->cols;
 
- 	goto_page (preview, MAX (page, 0));
+	goto_page (preview, MAX (page, 0));
 
 	gdk_event_free (event);
 }
@@ -370,7 +370,7 @@ next_button_clicked (GtkWidget         *button,
 	else
 		page = preview->priv->cur_page + preview->priv->rows * preview->priv->cols;
 
- 	goto_page (preview, MIN (page, preview->priv->n_pages - 1));
+	goto_page (preview, MIN (page, preview->priv->n_pages - 1));
 
 	gdk_event_free (event);
 }
@@ -398,7 +398,7 @@ page_entry_insert_text (GtkEditable *editable,
 {
 	gunichar c;
 	const gchar *p;
- 	const gchar *end;
+	const gchar *end;
 
 	p = text;
 	end = text + length;
@@ -682,7 +682,6 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 		priv->has_tooltip = TRUE;
 		return FALSE;
 	}
-
 }
 
 static gint
@@ -909,19 +908,18 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 			  G_CALLBACK (close_button_clicked),
 			  preview);
 
-	g_signal_connect (priv->layout,
-			  "scroll-event",
-			  G_CALLBACK (scroll_event_activated),
-			  preview);
-
 	g_object_set (priv->layout, "has-tooltip", TRUE, NULL);
-  	g_signal_connect (priv->layout,
+	g_signal_connect (priv->layout,
 			  "query-tooltip",
 			  G_CALLBACK (preview_layout_query_tooltip),
 			  preview);
-  	g_signal_connect (priv->layout,
+	g_signal_connect (priv->layout,
 			  "key-press-event",
 			  G_CALLBACK (preview_layout_key_press),
+			  preview);
+	g_signal_connect (priv->layout,
+			  "scroll-event",
+			  G_CALLBACK (scroll_event_activated),
 			  preview);
 
 	/* hide the tooltip once we move the cursor, since gtk does not do it for us */
@@ -1147,7 +1145,7 @@ dummy_write_func (G_GNUC_UNUSED gpointer      closure,
 		  G_GNUC_UNUSED const guchar *data,
 		  G_GNUC_UNUSED guint         length)
 {
-    return CAIRO_STATUS_SUCCESS;
+	return CAIRO_STATUS_SUCCESS;
 }
 
 #define PRINTER_DPI (72.)
@@ -1157,32 +1155,34 @@ create_preview_surface_platform (GtkPaperSize *paper_size,
 				 double       *dpi_x,
 				 double       *dpi_y)
 {
-    double width, height;
-    cairo_surface_t *sf;
+	double width, height;
+	cairo_surface_t *sf;
 
-    width = gtk_paper_size_get_width (paper_size, GTK_UNIT_POINTS);
-    height = gtk_paper_size_get_height (paper_size, GTK_UNIT_POINTS);
+	width = gtk_paper_size_get_width (paper_size, GTK_UNIT_POINTS);
+	height = gtk_paper_size_get_height (paper_size, GTK_UNIT_POINTS);
 
-    *dpi_x = *dpi_y = PRINTER_DPI;
+	*dpi_x = *dpi_y = PRINTER_DPI;
 
-    sf = cairo_pdf_surface_create_for_stream (dummy_write_func, NULL,
-					      width, height);
-    return sf;
+	sf = cairo_pdf_surface_create_for_stream (dummy_write_func, NULL,
+						  width, height);
+
+	return sf;
 }
 
 static cairo_surface_t *
 create_preview_surface (GeditPrintPreview *preview,
-			double	  *dpi_x,
-			double	  *dpi_y)
+			double            *dpi_x,
+			double            *dpi_y)
 {
-    GtkPageSetup *page_setup;
-    GtkPaperSize *paper_size;
+	GtkPageSetup *page_setup;
+	GtkPaperSize *paper_size;
 
-    page_setup = gtk_print_context_get_page_setup (preview->priv->context);
-    /* gtk_page_setup_get_paper_size swaps width and height for landscape */
-    paper_size = gtk_page_setup_get_paper_size (page_setup);
+	page_setup = gtk_print_context_get_page_setup (preview->priv->context);
 
-    return create_preview_surface_platform (paper_size, dpi_x, dpi_y);
+	/* gtk_page_setup_get_paper_size swaps width and height for landscape */
+	paper_size = gtk_page_setup_get_paper_size (page_setup);
+
+	return create_preview_surface_platform (paper_size, dpi_x, dpi_y);
 }
 
 GtkWidget *
