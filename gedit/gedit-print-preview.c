@@ -40,16 +40,16 @@ struct _GeditPrintPreviewPrivate
 	GtkPrintContext *context;
 	GtkPrintOperationPreview *gtk_preview;
 
-	GtkToolItem *next;
-	GtkToolItem *prev;
-	GtkWidget   *page_entry;
-	GtkWidget   *last;
-	GtkToolItem *multi;
-	GtkToolItem *zoom_one;
-	GtkToolItem *zoom_fit;
-	GtkToolItem *zoom_in;
-	GtkToolItem *zoom_out;
-	GtkToolItem *close;
+	GtkWidget *next;
+	GtkButton *prev;
+	GtkWidget *page_entry;
+	GtkWidget *last;
+	GtkWidget *multi;
+	GtkWidget *zoom_one;
+	GtkWidget *zoom_fit;
+	GtkWidget *zoom_in;
+	GtkWidget *zoom_out;
+	GtkWidget *close;
 
 	GtkWidget *layout;
 

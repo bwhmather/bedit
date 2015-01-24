@@ -14,35 +14,56 @@
         <property name="is_focus">False</property>
         <property name="toolbar_style">both-horiz</property>
         <child>
-          <object class="GtkToolButton" id="prev">
+          <object class="GtkToolItem" id="toolbutton1">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Show the previous page</property>
-            <property name="label" translatable="yes">P_revious Page</property>
-            <property name="use_underline">True</property>
-            <property name="icon_name">go-previous</property>
+            <property name="can_focus">False</property>
+            <property name="vexpand">False</property>
+            <property name="valign">center</property>
+            <property name="margin-end">2</property>
+            <style>
+              <class name="raised"/>
+            </style>
+            <child>
+              <object class="GtkBox" id="box1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkButton" id="prev">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Show the previous page</property>
+                    <property name="use_underline">True</property>
+                    <property name="image">previous_image</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="next">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Show the next page</property>
+                    <property name="use_underline">True</property>
+                    <property name="image">next_image</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <style>
+                  <class name="linked"/>
+                </style>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="next">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Show the next page</property>
-            <property name="label" translatable="yes">_Next Page</property>
-            <property name="use_underline">True</property>
-            <property name="icon_name">go-next</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">False</property>
           </packing>
         </child>
         <child>
@@ -58,7 +79,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToolItem" id="toolbutton1">
+          <object class="GtkToolItem" id="toolbutton2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="has_focus">False</property>
@@ -144,17 +165,39 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToolButton" id="multi">
+          <object class="GtkToolItem" id="toolbutton3">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Show multiple pages</property>
-            <property name="stock_id">gtk-dnd-multiple</property>
+            <property name="can_focus">False</property>
+            <property name="vexpand">False</property>
+            <property name="valign">center</property>
+            <property name="margin-end">2</property>
+            <style>
+              <class name="raised"/>
+            </style>
+            <child>
+              <object class="GtkBox" id="box2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkButton" id="multi">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Show multiple pages</property>
+                    <property name="use_underline">True</property>
+                    <property name="image">multi_image</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">False</property>
           </packing>
         </child>
         <child>
@@ -170,59 +213,84 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToolButton" id="zoom_one">
+          <object class="GtkToolItem" id="toolbutton4">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Zoom 1:1</property>
-            <property name="icon_name">zoom-original</property>
+            <property name="can_focus">False</property>
+            <property name="vexpand">False</property>
+            <property name="valign">center</property>
+            <property name="margin-end">2</property>
+            <style>
+              <class name="raised"/>
+            </style>
+            <child>
+              <object class="GtkBox" id="box3">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkButton" id="zoom_one">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Zoom 1:1</property>
+                    <property name="use_underline">True</property>
+                    <property name="image">zoom_one_image</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="zoom_fit">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Zoom to fit the whole page</property>
+                    <property name="use_underline">True</property>
+                    <property name="image">zoom_fit_image</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="zoom_in">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Zoom the page in</property>
+                    <property name="use_underline">True</property>
+                    <property name="image">zoom_in_image</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="zoom_out">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Zoom the page out</property>
+                    <property name="use_underline">True</property>
+                    <property name="image">zoom_out_image</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <style>
+                  <class name="linked"/>
+                </style>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="zoom_fit">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Zoom to fit the whole page</property>
-            <property name="icon_name">zoom-fit-best</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="zoom_in">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Zoom the page in</property>
-            <property name="icon_name">zoom-in</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToolButton" id="zoom_out">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Zoom the page out</property>
-            <property name="icon_name">zoom-out</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">False</property>
           </packing>
         </child>
         <child>
@@ -238,21 +306,44 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToolButton" id="close">
+          <object class="GtkToolItem" id="toolbutton5">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Close print preview</property>
-            <property name="label" translatable="yes">_Close Preview</property>
-            <property name="is_important">True</property>
-            <property name="use_underline">True</property>
+            <property name="can_focus">False</property>
+            <property name="vexpand">False</property>
+            <property name="valign">center</property>
+            <property name="margin-end">2</property>
+            <style>
+              <class name="raised"/>
+            </style>
+            <child>
+              <object class="GtkBox" id="box4">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkButton" id="close">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Close print preview</property>
+                    <property name="label" translatable="yes">_Close Preview</property>
+                    <property name="use_underline">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
-            <property name="homogeneous">True</property>
+            <property name="homogeneous">False</property>
           </packing>
         </child>
+        <style>
+          <class name="inline-toolbar"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">0</property>
@@ -294,4 +385,32 @@
       </packing>
     </child>
   </template>
+  <object class="GtkImage" id="previous_image">
+    <property name="visible">True</property>
+    <property name="icon_name">go-previous-symbolic</property>
+  </object>
+  <object class="GtkImage" id="next_image">
+    <property name="visible">True</property>
+    <property name="icon_name">go-next-symbolic</property>
+  </object>
+  <object class="GtkImage" id="multi_image">
+    <property name="visible">True</property>
+    <property name="icon_name">view-grid-symbolic</property>
+  </object>
+  <object class="GtkImage" id="zoom_in_image">
+    <property name="visible">True</property>
+    <property name="icon_name">zoom-in-symbolic</property>
+  </object>
+  <object class="GtkImage" id="zoom_out_image">
+    <property name="visible">True</property>
+    <property name="icon_name">zoom-out-symbolic</property>
+  </object>
+  <object class="GtkImage" id="zoom_one_image">
+    <property name="visible">True</property>
+    <property name="icon_name">zoom-original-symbolic</property>
+  </object>
+  <object class="GtkImage" id="zoom_fit_image">
+    <property name="visible">True</property>
+    <property name="icon_name">zoom-fit-best-symbolic</property>
+  </object>
 </interface>
