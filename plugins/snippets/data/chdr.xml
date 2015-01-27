@@ -127,52 +127,29 @@ $0]]></text>
   <snippet id="gobject">
     <text><![CDATA[#ifndef __${1:NAME}_H__
 #define __$1_H__
-
-#include <${2:glib-object.h}>
-
-G_BEGIN_DECLS
-
 $<
-global camel_str
+global camel_str, module, name, type_str
 components = $1.split('_')
-type_str = '_'.join([components[0], 'TYPE'] + components[1:])
-is_str = '_'.join([components[0], 'IS'] + components[1:])
+module = components[0].upper()
+name = '_'.join(components[1:]).upper()
+type_str = '_'.join([components[0], 'TYPE'] + components[1:]).upper()
 camel_str = ''
 
 for t in components:
   camel_str += t.capitalize()
+>
+#include <${2:glib-object.h}>
 
-items = [ \
-['#define ' + type_str, '(' + $1.lower() + '_get_type ())'], \
-['#define ' + $1 + '(obj)', '(G_TYPE_CHECK_INSTANCE_CAST ((obj), ' + type_str + ', ' + camel_str + '))'], \
-['#define ' + $1 + '_CONST(obj)', '(G_TYPE_CHECK_INSTANCE_CAST ((obj), ' + type_str + ', ' + camel_str + ' const))'], \
-['#define ' + $1 + '_CLASS(klass)', '(G_TYPE_CHECK_CLASS_CAST ((klass), ' + type_str + ', ' + camel_str + 'Class))'], \
-['#define ' + is_str + '(obj)', '(G_TYPE_CHECK_INSTANCE_TYPE ((obj), ' + type_str + '))'], \
-['#define ' + is_str + '_CLASS(klass)', '(G_TYPE_CHECK_CLASS_TYPE ((klass), ' + type_str + '))'], \
-['#define ' + $1 + '_GET_CLASS(obj)', '(G_TYPE_INSTANCE_GET_CLASS ((obj), ' + type_str + ', ' + camel_str + 'Class))']
-]
+G_BEGIN_DECLS
 
-return align(items) >
-
-$<[1]:
-items = [ \
-['typedef struct _' + camel_str, camel_str + ';'], \
-['typedef struct _' + camel_str + 'Class', camel_str + 'Class;'], \
-]
-
-return align(items) >
-
-struct _$<[1]: return camel_str >
-{
-	${7:GObject} parent;
-};
+#define $<[1]: return type_str > ($<[1]: return $1.lower() >_get_type ())
+G_DECLARE_DERIVABLE_TYPE ($<[1]: return camel_str >, $<[1]: return $1.lower() >, $<[1]: return module >, $<[1]: return name >, ${3:GObject})
 
 struct _$<[1]: return camel_str >Class
 {
-	$7Class parent_class;
+	$3Class parent_class;
 };
 
-GType $< return $1.lower() + '_get_type' > (void) G_GNUC_CONST;
 $<[1]: return camel_str > *$< return $1.lower()>_new (void);
 
 $0
