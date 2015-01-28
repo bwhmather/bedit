@@ -1,13 +1,21 @@
 <page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
       type="guide" style="task"
       id="gedit-change-color-scheme">
 
   <info>
     <link type="guide" xref="index#configure-gedit"/>
     <revision pkgversion="3.8" date="2013-03-07" status="final"/>
+    <revision pkgversion="3.15" date="2015-01-29" status="final"/>
+
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jwcampbell@gmail.com</email>
+    </credit>
+    <credit type="editor">
+      <name>Jana Svarova</name>
+      <email its:translate="no">jana.svarova@gmail.com</email>
+      <years>2015</years>
     </credit>
 
   <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
@@ -20,8 +28,8 @@
 
   <p>To change the color scheme, complete the following steps:</p>
   <steps>
-    <item><p>Select <guiseq><gui style="menu">gedit</gui>
-    <gui style="menuitem">Preferences</gui>
+    <item><p>Open the <gui style="menu">gedit</gui> menu from the top bar, 
+    then then <guiseq><gui style="menuitem">Preferences</gui>
     <gui>Font &amp; Colors</gui></guiseq>.</p></item>
     <item><p>Choose your desired color scheme.</p></item>
   </steps>
