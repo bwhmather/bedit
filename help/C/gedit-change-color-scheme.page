@@ -17,6 +17,11 @@
       <email its:translate="no">jana.svarova@gmail.com</email>
       <years>2015</years>
     </credit>
+    <credit type="editor">
+      <name>Ekaterina Gerasimova</name>
+      <email its:translate="no">kittykat3756@gmail.com</email>
+      <years>2015</years>
+    </credit>
 
   <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
   </info>
@@ -26,12 +31,16 @@
   <p><app>gedit</app> includes several different color schemes, allowing you to
   change the appearance of the main text window.</p>
 
-  <p>To change the color scheme, complete the following steps:</p>
   <steps>
-    <item><p>Open the <gui style="menu">gedit</gui> menu from the top bar, 
-    then then <guiseq><gui style="menuitem">Preferences</gui>
-    <gui>Font &amp; Colors</gui></guiseq>.</p></item>
-    <item><p>Choose your desired color scheme.</p></item>
+    <title>To change the color scheme:</title>
+    <item>
+      <p>Open the <gui style="menu">gedit</gui> menu from the top bar, then
+      then <guiseq><gui style="menuitem">Preferences</gui><gui>Font &amp;
+      Colors</gui></guiseq>.</p>
+    </item>
+    <item>
+      <p>Choose your desired color scheme.</p>
+    </item>
   </steps>
 
   <p>The new color scheme will be applied immediately.</p>
@@ -42,11 +51,13 @@
   I should describe it here.  I'm linking to the wiki for now because the wiki
   page includes downloads and screenshots. I'm open to including the help here,
   though. -->
+
     <p>You can also use color schemes that have been created by others, or
     create and use your own color schemes.</p>
+
     <p>Instructions on how to install custom color schemes, as well as examples
     of color schemes that you can download and use, are available on the
-    <link href="http://live.gnome.org/GtkSourceView/StyleSchemes">gedit
+    <link href="https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes">gedit
     wiki</link>.</p>
   </section>
 
