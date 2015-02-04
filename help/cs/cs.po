@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the gedit help.
 #
 # Lucas Lommer <llommer@svn.gnome.org>, 2009.
-# Marek Černocký <marek@manet.cz>, 2009, 2010, 2014.
+# Marek Černocký <marek@manet.cz>, 2009, 2010, 2014, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"POT-Creation-Date: 2015-01-04 06:04+0000\n"
-"PO-Revision-Date: 2014-05-31 20:05+0100\n"
+"POT-Creation-Date: 2015-02-04 06:06+0000\n"
+"PO-Revision-Date: 2015-02-04 12:15+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Lucas Lommer <llommer@svn.gnome.org>, 2009."
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:9 C/gedit-change-default-font.page:9
+#: C/gedit-change-color-scheme.page:12 C/gedit-change-default-font.page:9
 #: C/gedit-close-file.page:9 C/gedit-create-new-file.page:11
 #: C/gedit-edit-as-root.page:9 C/gedit-files-basic.page:9
 #: C/gedit-full-screen.page:11 C/gedit-open-files-from-sidepane.page:10
@@ -51,13 +51,28 @@ msgstr ""
 msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
+#. (itstool) path: credit/name
+#: C/gedit-change-color-scheme.page:16
+msgid "Jana Svarova"
+msgstr "Jana Švárová"
+
+#. (itstool) path: credit/years
+#: C/gedit-change-color-scheme.page:18 C/gedit-change-color-scheme.page:23
+msgid "2015"
+msgstr "2015"
+
+#. (itstool) path: credit/name
+#: C/gedit-change-color-scheme.page:21 C/gedit-replace.page:24
+msgid "Ekaterina Gerasimova"
+msgstr "Ekaterina Gerasimova"
+
 #. (itstool) path: page/title
-#: C/gedit-change-color-scheme.page:14
+#: C/gedit-change-color-scheme.page:29
 msgid "Change the color scheme"
 msgstr "Změna barevného schématu"
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:16
+#: C/gedit-change-color-scheme.page:31
 msgid ""
 "<app>gedit</app> includes several different color schemes, allowing you to "
 "change the appearance of the main text window."
@@ -65,37 +80,39 @@ msgstr ""
 "Součástí aplikace <app>gedit</app> je několik různých schémat barev, díky "
 "kterým můžete měnit vzhled hlavního okna s textem."
 
-#. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:19
-msgid "To change the color scheme, complete the following steps:"
-msgstr "Když chcete schéma barev změnit, postupujte v následujících krocích:"
+#. (itstool) path: steps/title
+#: C/gedit-change-color-scheme.page:35
+msgid "To change the color scheme:"
+msgstr "Když chcete změnit barevné schéma:"
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:21 C/gedit-change-default-font.page:23
+#: C/gedit-change-color-scheme.page:37
 msgid ""
-"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+"Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then then "
+"<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; Colors</"
+"gui></guiseq>."
 msgstr ""
-"Vyberte <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-"\">Předvolby</gui> <gui>Písmo a barvy</gui></guiseq>."
+"Otevřete nabídku <gui style=\"menu\">gedit</gui> na horní liště a po té "
+"<guiseq><gui style=\"menuitem\">Předvolby</gui> <gui>Písmo a barvy</gui></"
+"guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:24
+#: C/gedit-change-color-scheme.page:42
 msgid "Choose your desired color scheme."
 msgstr "Zvolte požadované schéma barev."
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:27
+#: C/gedit-change-color-scheme.page:46
 msgid "The new color scheme will be applied immediately."
 msgstr "Nové schéma barev se okamžitě použije."
 
 #. (itstool) path: section/title
-#: C/gedit-change-color-scheme.page:30
+#: C/gedit-change-color-scheme.page:49
 msgid "Use a Custom Color Scheme"
 msgstr "Použití vlastního schématu barev"
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:35
+#: C/gedit-change-color-scheme.page:55
 msgid ""
 "You can also use color schemes that have been created by others, or create "
 "and use your own color schemes."
@@ -104,11 +121,12 @@ msgstr ""
 "své vlastní."
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:37
+#: C/gedit-change-color-scheme.page:58
 msgid ""
 "Instructions on how to install custom color schemes, as well as examples of "
 "color schemes that you can download and use, are available on the <link href="
-"\"http://live.gnome.org/GtkSourceView/StyleSchemes\">gedit wiki</link>."
+"\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes\">gedit wiki</"
+"link>."
 msgstr ""
 "Návod, jak si nainstalovat vlastní schéma barev, stejně jako ukázka schématu "
 "barev, kterou si můžete stáhnout a použít, jsou dostupné na <link href="
@@ -121,12 +139,12 @@ msgid "2011 2012 2013"
 msgstr "2011 2012 2013"
 
 #. (itstool) path: page/title
-#: C/gedit-change-default-font.page:15
+#: C/gedit-change-default-font.page:18
 msgid "Change the default font"
 msgstr "Změna výchozího písma"
 
 #. (itstool) path: page/p
-#: C/gedit-change-default-font.page:17
+#: C/gedit-change-default-font.page:20
 msgid ""
 "<app>gedit</app> will use the system fixed-width font by default, but you "
 "can change the default <app>gedit</app> font to suit your preferences."
@@ -135,19 +153,28 @@ msgstr ""
 "ale máte možnost si ho změnit, aby lépe vyhovovalo vašim potřebám."
 
 #. (itstool) path: steps/title
-#: C/gedit-change-default-font.page:22
+#: C/gedit-change-default-font.page:25
 msgid "To change the default font in <app>gedit</app>:"
 msgstr "Pokud chcete výchozí písmo v editoru <app>gedit</app> změnit:"
 
 #. (itstool) path: item/p
 #: C/gedit-change-default-font.page:26
 msgid ""
+"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+msgstr ""
+"Vyberte <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Předvolby</gui> <gui>Písmo a barvy</gui></guiseq>."
+
+#. (itstool) path: item/p
+#: C/gedit-change-default-font.page:29
+msgid ""
 "Uncheck the box next to the phrase, \"Use the system fixed-width font.\""
 msgstr ""
 "Zruště zaškrtnutí vedle popisku „Použít systémové písmo s pevnou šířkou“"
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:28
+#: C/gedit-change-default-font.page:31
 msgid ""
 "Click on the current font name. <app>gedit</app> will open a font-chooser "
 "window, allowing you to see available fonts and choose the one that you "
@@ -157,7 +184,7 @@ msgstr ""
 "písma, takže uvidíte dostupná písma a to požadované si můžete zvolit."
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:31
+#: C/gedit-change-default-font.page:34
 msgid ""
 "After you have chosen a new font, use the <gui>slider</gui> under the list "
 "of fonts to set the default font size."
@@ -166,17 +193,17 @@ msgstr ""
 "nastavení výchozí velikosti písma."
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:33
+#: C/gedit-change-default-font.page:36
 msgid "Click <gui>Select</gui>, and then click <gui>Close</gui>."
 msgstr "Klikněte na <gui>Vybrat</gui> a pak na <gui>Zavřít</gui>."
 
 #. (itstool) path: page/title
-#: C/gedit-close-file.page:14
+#: C/gedit-close-file.page:16
 msgid "Close a file"
 msgstr "Zavření souboru"
 
 #. (itstool) path: page/p
-#: C/gedit-close-file.page:16
+#: C/gedit-close-file.page:18
 msgid ""
 "To close a file in <app>gedit</app>, select <guiseq><gui>File</gui> "
 "<gui>Close</gui></guiseq>. Alternately, you can click the small \"X\" that "
@@ -189,7 +216,7 @@ msgstr ""
 "zmáčknout <keyseq><key>Ctrl</key> <key>W</key></keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-close-file.page:20
+#: C/gedit-close-file.page:22
 msgid ""
 "Any one of these actions will close a file in <app>gedit</app>. If your file "
 "contains changes that have not been saved, <app>gedit</app> will prompt you "
@@ -236,12 +263,12 @@ msgstr ""
 "soubor jako nová karta napravo od ostatních karet se soubory."
 
 #. (itstool) path: page/title
-#: C/gedit-edit-as-root.page:14
+#: C/gedit-edit-as-root.page:15
 msgid "Edit a file as the root user"
 msgstr "Úprava souborů pod uživatelem root"
 
 #. (itstool) path: note/p
-#: C/gedit-edit-as-root.page:17
+#: C/gedit-edit-as-root.page:18
 msgid ""
 "Editing files as the root user is potentially dangerous, and may break your "
 "system in bad ways. Take great care when editing files as the root user."
@@ -251,7 +278,7 @@ msgstr ""
 "obvzlášť pozor, co děláte."
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:22
+#: C/gedit-edit-as-root.page:23
 msgid ""
 "To edit files as the root user, launch <app>gedit</app> from the terminal by "
 "entering:"
@@ -260,13 +287,13 @@ msgstr ""
 "<app>gedit</app> z terminálu zadáním:"
 
 #. (itstool) path: page/code
-#: C/gedit-edit-as-root.page:24
+#: C/gedit-edit-as-root.page:25
 #, no-wrap
 msgid "sudo gedit"
 msgstr "sudo gedit"
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:26
+#: C/gedit-edit-as-root.page:27
 msgid ""
 "Using the <cmd>sudo</cmd> command, you will need to successfully enter your "
 "password before <app>gedit</app> will open."
@@ -275,7 +302,7 @@ msgstr ""
 "<app>gedit</app> zadat správné heslo."
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:29
+#: C/gedit-edit-as-root.page:30
 msgid ""
 "As an alternative to the <cmd>sudo</cmd> command, you may obtain "
 "administrative privileges by entering:"
@@ -284,19 +311,19 @@ msgstr ""
 "zadáním:"
 
 #. (itstool) path: page/code
-#: C/gedit-edit-as-root.page:31
+#: C/gedit-edit-as-root.page:32
 #, no-wrap
 msgid "su -"
 msgstr "su -"
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:33
+#: C/gedit-edit-as-root.page:34
 msgid ""
 "You would then launch <app>gedit</app> using the <cmd>gedit</cmd> command."
 msgstr "Po té byste měli <app>gedit</app> spustit příkazem <cmd>gedit</cmd>."
 
 #. (itstool) path: note/p
-#: C/gedit-edit-as-root.page:37
+#: C/gedit-edit-as-root.page:38
 msgid ""
 "Once you have opened <app>gedit</app> with administrative privileges, "
 "<app>gedit</app> will keep those privileges until you close it."
@@ -305,12 +332,12 @@ msgstr ""
 "dokud jej nezavřete."
 
 #. (itstool) path: page/title
-#: C/gedit-files-basic.page:14
+#: C/gedit-files-basic.page:15
 msgid "File basics: Open, close, and save files"
 msgstr "Základní práce se soubory: otevřít, zavřít a uložit"
 
 #. (itstool) path: page/p
-#: C/gedit-files-basic.page:16
+#: C/gedit-files-basic.page:17
 msgid ""
 "If you are new to <app>gedit</app>, these topics will help you with "
 "creating, saving, and opening and closing files."
@@ -404,12 +431,12 @@ msgstr ""
 "obrazovku</gui>."
 
 #. (itstool) path: page/title
-#: C/gedit-open-files-from-sidepane.page:15
+#: C/gedit-open-files-from-sidepane.page:16
 msgid "View and open files from the side pane"
 msgstr "Zobrazení a otevření souborů z postranního panelu"
 
 #. (itstool) path: page/p
-#: C/gedit-open-files-from-sidepane.page:16
+#: C/gedit-open-files-from-sidepane.page:17
 msgid ""
 "The most common way to switch between files in <app>gedit</app> is by using "
 "the tabs at the top of the <app>gedit</app> window. In some cases, though, "
@@ -422,7 +449,7 @@ msgstr ""
 "použití <app>postranního panelu</app>."
 
 #. (itstool) path: page/p
-#: C/gedit-open-files-from-sidepane.page:23
+#: C/gedit-open-files-from-sidepane.page:24
 msgid ""
 "To activate the <app>side pane</app>, select <guiseq><gui>View</gui> "
 "<gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key."
@@ -432,7 +459,7 @@ msgstr ""
 "zmáčknete klávesu <key>F9</key>."
 
 #. (itstool) path: note/p
-#: C/gedit-open-files-from-sidepane.page:29
+#: C/gedit-open-files-from-sidepane.page:30
 msgid ""
 "You can toggle the <gui>side pane</gui> open or closed by pressing <key>F9</"
 "key> at any time."
@@ -441,13 +468,13 @@ msgstr ""
 "kdykoliv přepnout zmačknutím <key>F9</key>."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:36
+#: C/gedit-open-files-from-sidepane.page:37
 #: C/gedit-plugins-file-browser.page:32
 msgid "Opening files from the side pane"
 msgstr "Otevírání souborů z postranního panelu"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:37
+#: C/gedit-open-files-from-sidepane.page:38
 msgid ""
 "To open files from the <app>side pane</app>, first open the <app>side pane</"
 "app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></guiseq>, "
@@ -459,7 +486,7 @@ msgstr ""
 "části panelu."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:46
+#: C/gedit-open-files-from-sidepane.page:47
 #: C/gedit-plugins-file-browser.page:42
 msgid ""
 "This will activate the <em>file-browser</em> mode of the <app>side pane</"
@@ -471,12 +498,12 @@ msgstr ""
 "požadovaných souborů."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:54
+#: C/gedit-open-files-from-sidepane.page:55
 msgid "Using the side pane to switch between open files"
 msgstr "Používejte postranní panel k přepínání mezi soubory"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:55
+#: C/gedit-open-files-from-sidepane.page:56
 msgid ""
 "Once you have several files open, you can use the side pane to switch "
 "between open files. To activate the file browser portion of the <app>side "
@@ -489,7 +516,7 @@ msgstr ""
 "panelu</gui>."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:64
+#: C/gedit-open-files-from-sidepane.page:65
 msgid ""
 "Clicking on any file name in the <gui>side pane</gui> will open that file "
 "for editing."
@@ -557,12 +584,12 @@ msgstr ""
 "soubory mezi nimi."
 
 #. (itstool) path: page/title
-#: C/gedit-open-on-server.page:14
+#: C/gedit-open-on-server.page:15
 msgid "Open a file that is located on a server"
 msgstr "Otevření souboru umístěného na serveru"
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:16
+#: C/gedit-open-on-server.page:17
 msgid ""
 "Prior to opening a file on a server from within <app>gedit</app>, you need "
 "to know some technical information about the server. For example, you will "
@@ -575,7 +602,7 @@ msgstr ""
 "serveru se jedná (např. HTTP, FTP apod.)."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:21
+#: C/gedit-open-on-server.page:22
 msgid ""
 "Also, some types of servers impose restrictions on what you can do with "
 "files stored on the server. For example, you may be able to open a file from "
@@ -587,7 +614,7 @@ msgstr ""
 "provedené změny budete muset uložit na místní disk na svém počítači."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:26
+#: C/gedit-open-on-server.page:27
 msgid ""
 "With these caveats in mind, perform the following steps to open a file from "
 "a server using <app>gedit</app>:"
@@ -596,7 +623,7 @@ msgstr ""
 "serveru v editoru <app>gedit</app> v následujících krocích:"
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:30
+#: C/gedit-open-on-server.page:31
 msgid ""
 "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
 "<gui>Open Files</gui> dialog."
@@ -605,7 +632,7 @@ msgstr ""
 "dialogové okno <gui>Otevření souboru</gui>"
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:32
+#: C/gedit-open-on-server.page:33
 msgid ""
 "Select the <gui>Pencil</gui> icon near the top of the <gui>Open Files</gui> "
 "dialog."
@@ -614,17 +641,17 @@ msgstr ""
 "<gui>Otevření souboru</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:34
+#: C/gedit-open-on-server.page:35
 msgid "Enter the IP Address or URL of the appropriate server."
 msgstr "Zadejte IP adresu nebo URL patřičného serveru."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:36
+#: C/gedit-open-on-server.page:37
 msgid "Find and select the file that you wish to open."
 msgstr "Najděte a vyberte soubor, který si přejete otevřít."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:37
+#: C/gedit-open-on-server.page:38
 msgid ""
 "Use the Character coding drop-down list to select the appropriate character "
 "coding."
@@ -633,12 +660,12 @@ msgstr ""
 "kódování znaků."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:39 C/gedit-plugins-quick-open.page:43
+#: C/gedit-open-on-server.page:40 C/gedit-plugins-quick-open.page:43
 msgid "Click <gui>Open</gui>."
 msgstr "Klikněte na <gui>Otevřít</gui>."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:42
+#: C/gedit-open-on-server.page:43
 msgid ""
 "Valid types of URI include http:, ftp:, file:, and all of the methods "
 "supported by <app>gvfs</app>."
@@ -647,7 +674,7 @@ msgstr ""
 "podporované <app>gvfs</app>."
 
 #. (itstool) path: note/p
-#: C/gedit-open-on-server.page:46
+#: C/gedit-open-on-server.page:47
 msgid ""
 "Files from some types of URI are opened as read-only, and any changes you "
 "make must be saved to a different location. For example, HTTP only allows "
@@ -660,12 +687,12 @@ msgstr ""
 "že ne všechny FTP servery pracují korektně s ukládáním vzdálených souborů."
 
 #. (itstool) path: page/title
-#: C/gedit-open-recent.page:14
+#: C/gedit-open-recent.page:15
 msgid "Reopen a recently-used file"
 msgstr "Opětovné otevření nedávno použitého souboru"
 
 #. (itstool) path: page/p
-#: C/gedit-open-recent.page:16
+#: C/gedit-open-recent.page:17
 msgid ""
 "By default, <app>gedit</app> provides easy access to five of your most "
 "recently-used files. Here is how you can open a recently-used file:"
@@ -674,25 +701,25 @@ msgstr ""
 "použitým souborům. Zde je postup, jak můžete nedávno použitý soubor otevřít:"
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:19
+#: C/gedit-open-recent.page:20
 msgid ""
 "Click the downward-facing arrow to the right of the <gui>Open</gui> button."
 msgstr ""
 "Klikněte na šipku ukazující dolů po pravé straně tlačítka <gui>Otevřít</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:21
+#: C/gedit-open-recent.page:22
 msgid ""
 "<app>gedit</app> will display a list of the five most-recently used files."
 msgstr "<app>gedit</app> zobrazí seznam posledních pěti použitých souborů."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:23
+#: C/gedit-open-recent.page:24
 msgid "Select the desired file, and it will open in a new tab."
 msgstr "Vyberte požadovaný soubor a ten se otevře v nové kartě."
 
 #. (itstool) path: note/p
-#: C/gedit-open-recent.page:26
+#: C/gedit-open-recent.page:27
 msgid ""
 "To adjust the number of recently-used files that gedit displays, you will "
 "need to use the <app>dconf-editor</app> application."
@@ -701,7 +728,7 @@ msgstr ""
 "zobrazuje, budete muset použít aplikaci <app>dconf-editor</app>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:30
+#: C/gedit-open-recent.page:31
 msgid ""
 "Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui> <gui>gnome</"
 "gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</"
@@ -712,7 +739,7 @@ msgstr ""
 "gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:33
+#: C/gedit-open-recent.page:34
 msgid ""
 "Double-click on the number next to <gui>max-recents</gui> and change the "
 "number to your desired value."
@@ -721,12 +748,12 @@ msgstr ""
 "tu požadovanou."
 
 #. (itstool) path: page/title
-#: C/gedit-plugin-guide.page:14
+#: C/gedit-plugin-guide.page:15
 msgid "Configure and use gedit Plugins"
 msgstr "Nastavení a používání zásuvných modulů"
 
 #. (itstool) path: page/p
-#: C/gedit-plugin-guide.page:15
+#: C/gedit-plugin-guide.page:16
 msgid ""
 "You can do more with <app>gedit</app> by using plugins. Several plugins are "
 "installed by default, but a large number of other plugins are available "
@@ -737,7 +764,7 @@ msgstr ""
 "většina je dodávána odděleně."
 
 #. (itstool) path: note/p
-#: C/gedit-plugin-guide.page:19
+#: C/gedit-plugin-guide.page:20
 msgid ""
 "Many Linux distributions make a group of these plugins available as a "
 "<app>gedit-plugins</app> package. Install the <app>gedit-plugins</app> "
@@ -748,12 +775,12 @@ msgstr ""
 "budete mít dodatečné zásuvné moduly k dispozici."
 
 #. (itstool) path: section/title
-#: C/gedit-plugin-guide.page:24
+#: C/gedit-plugin-guide.page:25
 msgid "Default gedit Plugins"
 msgstr "Výchozí zásuvné moduly editoru gedit"
 
 #. (itstool) path: section/title
-#: C/gedit-plugin-guide.page:28
+#: C/gedit-plugin-guide.page:29
 msgid "Additional gedit Plugins"
 msgstr "Dodatečné zásuvné moduly editoru gedit"
 
@@ -1398,17 +1425,17 @@ msgstr ""
 "angličtině)."
 
 #. (itstool) path: info/desc
-#: C/gedit-plugins-pyconsole.page:12
+#: C/gedit-plugins-pyconsole.page:13
 msgid "Add an interactive Python console to the bottom pane"
 msgstr "Přidává do spodního panelu interaktivní konzolu jazyka Python"
 
 #. (itstool) path: page/title
-#: C/gedit-plugins-pyconsole.page:15
+#: C/gedit-plugins-pyconsole.page:16
 msgid "Python console"
 msgstr "Konzola Python"
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-pyconsole.page:17
+#: C/gedit-plugins-pyconsole.page:18
 msgid ""
 "You can add a Python console to the bottom pane, allowing you to test Python "
 "scripts without leaving <app>gedit</app>. To enable the Python console, "
@@ -1422,7 +1449,7 @@ msgstr ""
 "gui></guiseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-pyconsole.page:23
+#: C/gedit-plugins-pyconsole.page:24
 msgid ""
 "Once the Python console is enabled, you can open it by selecting "
 "<guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just press "
@@ -1433,7 +1460,7 @@ msgstr ""
 "<keyseq><key>Shift</key> <key>F9</key></keyseq>."
 
 #. (itstool) path: note/p
-#: C/gedit-plugins-pyconsole.page:27
+#: C/gedit-plugins-pyconsole.page:28
 msgid ""
 "If you have also enabled the <gui>Embeded Terminal</gui> plugin, the "
 "<gui>Python Console</gui> will appear as a separate tab in the bottom pane."
@@ -2394,11 +2421,6 @@ msgstr ""
 "vyhledejte v <link xref=\"index\">dalších částech</link> nápovědy k aplikaci "
 "<app>gedit</app>."
 
-#. (itstool) path: credit/name
-#: C/gedit-replace.page:24
-msgid "Ekaterina Gerasimova"
-msgstr "Ekaterina Gerasimova"
-
 #. (itstool) path: page/title
 #: C/gedit-replace.page:34
 msgid "Replace text"
@@ -2428,8 +2450,8 @@ msgid ""
 "or press <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgstr ""
 "Otevřete nástroj <gui>Nahradit</gui> kliknutím na <guiseq><gui style=\"button"
-"\">Tlačítko s nabídkou</gui> <gui style=\"menuitem\">Hledat a nahradit…</gui>"
-"</guiseq> nebo zmáčknutím <keyseq><key>Ctrl</key> <key>H</key></keyseq>."
+"\">Tlačítko s nabídkou</gui> <gui style=\"menuitem\">Hledat a nahradit…</"
+"gui></guiseq> nebo zmáčknutím <keyseq><key>Ctrl</key> <key>H</key></keyseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:49
@@ -2530,7 +2552,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: C/gedit-replace.page:101
 msgid "Search backwards"
-msgstr "Hledat pozpátku"
+msgstr "Hledat od konce"
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:102
@@ -4122,18 +4144,10 @@ msgstr "Tisk v editoru gedit"
 
 #. (itstool) path: p/link
 #: C/legal.xml:3
-msgid "http://creativecommons.org/licenses/by-sa/3.0/"
-msgstr "http://creativecommons.org/licenses/by-sa/3.0/"
+msgid "Creative Commons Attribution-ShareAlike 3.0 Unported License"
+msgstr "Creative Commons Attribution-ShareAlike 3.0 Unported License"
 
 #. (itstool) path: license/p
 #: C/legal.xml:3
-msgid ""
-"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 "
-"Unported License. To view a copy of this license, visit <_:link-1/> or send "
-"a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, "
-"California, 94041, USA."
-msgstr ""
-"Tato práce je licencovaná pod Creative Commons Attribution-ShareAlike 3.0 "
-"Unported License. Jestli potřebujete její kopii, navštivte <_:link-1/> nebo "
-"napište na Creative Commons, 444 Castro Street, Suite 900, Mountain View, "
-"California, 94041, USA."
+msgid "This work is licensed under a <_:link-1/>."
+msgstr "Tento dokument je licencován pod <_:link-1/>"
