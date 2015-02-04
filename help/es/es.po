@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2015-01-27 06:03+0000\n"
-"PO-Revision-Date: 2015-02-02 13:44+0100\n"
+"POT-Creation-Date: 2015-02-04 06:06+0000\n"
+"PO-Revision-Date: 2015-02-04 13:23+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -29,7 +29,7 @@ msgstr ""
 "María Majadas <maria.majadas@hispalinux.es>, 2005"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:9 C/gedit-change-default-font.page:9
+#: C/gedit-change-color-scheme.page:12 C/gedit-change-default-font.page:9
 #: C/gedit-close-file.page:9 C/gedit-create-new-file.page:11
 #: C/gedit-edit-as-root.page:9 C/gedit-files-basic.page:9
 #: C/gedit-full-screen.page:11 C/gedit-open-files-from-sidepane.page:10
@@ -50,13 +50,28 @@ msgstr ""
 msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
-#. (itstool) path: page/title
+#. (itstool) path: credit/name
 #: C/gedit-change-color-scheme.page:16
+msgid "Jana Svarova"
+msgstr "Jana Svarova"
+
+#. (itstool) path: credit/years
+#: C/gedit-change-color-scheme.page:18 C/gedit-change-color-scheme.page:23
+msgid "2015"
+msgstr "2015"
+
+#. (itstool) path: credit/name
+#: C/gedit-change-color-scheme.page:21 C/gedit-replace.page:24
+msgid "Ekaterina Gerasimova"
+msgstr "Ekaterina Gerasimova"
+
+#. (itstool) path: page/title
+#: C/gedit-change-color-scheme.page:29
 msgid "Change the color scheme"
 msgstr "Cambiar el esquema de color"
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:18
+#: C/gedit-change-color-scheme.page:31
 msgid ""
 "<app>gedit</app> includes several different color schemes, allowing you to "
 "change the appearance of the main text window."
@@ -64,37 +79,43 @@ msgstr ""
 "<app>gedit</app> incluye diferentes esquemas de colores, permitiéndole "
 "cambiar la apariencia de la ventana de texto principal."
 
-#. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:21
-msgid "To change the color scheme, complete the following steps:"
-msgstr "Para cambiar el esquema de colores complete los siguientes pasos:"
+#. (itstool) path: steps/title
+#: C/gedit-change-color-scheme.page:35
+#| msgid "Change the color scheme"
+msgid "To change the color scheme:"
+msgstr "Para cambiar el esquema de color:"
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:23 C/gedit-change-default-font.page:26
+#: C/gedit-change-color-scheme.page:37
+#| msgid ""
+#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
-"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+"Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then select "
+"<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; Colors</"
+"gui></guiseq>."
 msgstr ""
-"Seleccione <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-"\">Preferencias</gui> <gui>Tipografía y colores</gui></guiseq>."
+"Abra el menú de <guiseq><gui style=\"menu\">gedit</gui> en la barra superior "
+"y vaya a <gui style=\"menuitem\">Preferencias</gui> <gui>Tipografía y "
+"colores</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:26
+#: C/gedit-change-color-scheme.page:42
 msgid "Choose your desired color scheme."
 msgstr "Elija el esquema de color que quiera."
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:29
+#: C/gedit-change-color-scheme.page:46
 msgid "The new color scheme will be applied immediately."
 msgstr "Se aplicará el nuevo esquema de color inmediatamente."
 
 #. (itstool) path: section/title
-#: C/gedit-change-color-scheme.page:32
+#: C/gedit-change-color-scheme.page:49
 msgid "Use a Custom Color Scheme"
 msgstr "Usar un esquema de color personalizado"
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:37
+#: C/gedit-change-color-scheme.page:55
 msgid ""
 "You can also use color schemes that have been created by others, or create "
 "and use your own color schemes."
@@ -103,15 +124,21 @@ msgstr ""
 "propio esquema de colores."
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:39
+#: C/gedit-change-color-scheme.page:58
+#| msgid ""
+#| "Instructions on how to install custom color schemes, as well as examples "
+#| "of color schemes that you can download and use, are available on the "
+#| "<link href=\"http://live.gnome.org/GtkSourceView/StyleSchemes\">gedit "
+#| "wiki</link>."
 msgid ""
 "Instructions on how to install custom color schemes, as well as examples of "
 "color schemes that you can download and use, are available on the <link href="
-"\"http://live.gnome.org/GtkSourceView/StyleSchemes\">gedit wiki</link>."
+"\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes\">gedit wiki</"
+"link>."
 msgstr ""
 "Las instrucciones para instalar esquemas de colores personalizados, así como "
 "ejemplos de esquemas de colores que puede descargar y usar, están "
-"disponibles en el <link href=\"http://live.gnome.org/GtkSourceView/"
+"disponibles en el <link href=\"https://wiki.gnome.org/Projects/GtkSourceView/"
 "StyleSchemes\">wiki de gedit</link>."
 
 #. (itstool) path: credit/years
@@ -138,6 +165,15 @@ msgstr ""
 #: C/gedit-change-default-font.page:25
 msgid "To change the default font in <app>gedit</app>:"
 msgstr "Para cambiar la tipografía predeterminada en <app>gedit</app>:"
+
+#. (itstool) path: item/p
+#: C/gedit-change-default-font.page:26
+msgid ""
+"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+msgstr ""
+"Seleccione <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferencias</gui> <gui>Tipografía y colores</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-change-default-font.page:29
@@ -2423,11 +2459,6 @@ msgstr ""
 "obtener ayuda para realizar tareas adicionales, explore <link xref=\"index"
 "\">las otras partes</link> de la ayuda de <app>gedit</app>."
 
-#. (itstool) path: credit/name
-#: C/gedit-replace.page:24
-msgid "Ekaterina Gerasimova"
-msgstr "Ekaterina Gerasimova"
-
 #. (itstool) path: page/title
 #: C/gedit-replace.page:34
 msgid "Replace text"
@@ -4171,7 +4202,6 @@ msgstr "Imprimir con gedit"
 
 #. (itstool) path: p/link
 #: C/legal.xml:3
-#| msgid "Creative Commons Share Alike 3.0"
 msgid "Creative Commons Attribution-ShareAlike 3.0 Unported License"
 msgstr "Creative Commons de Atribución-Compartir Igual 3.0 sin soporte"
 
@@ -4179,6 +4209,9 @@ msgstr "Creative Commons de Atribución-Compartir Igual 3.0 sin soporte"
 #: C/legal.xml:3
 msgid "This work is licensed under a <_:link-1/>."
 msgstr "Este trabajo está licenciado bajo la <_:link-1/>."
+
+#~ msgid "To change the color scheme, complete the following steps:"
+#~ msgstr "Para cambiar el esquema de colores complete los siguientes pasos:"
 
 #~ msgid "http://creativecommons.org/licenses/by-sa/3.0/"
 #~ msgstr "http://creativecommons.org/licenses/by-sa/3.0/"
