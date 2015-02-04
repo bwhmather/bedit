@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.master.is\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
-"keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-15 06:03+0000\n"
-"PO-Revision-Date: 2015-01-27 14:35+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-01-28 06:04+0000\n"
+"PO-Revision-Date: 2015-02-04 17:40+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -134,8 +134,8 @@ msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"Mínútur þar til gedit vistar sjálfvirkt breytt skjöl. Þetta hefur "
-"einungis áhrif ef \"Vista sjálfvirkt\" er valið."
+"Mínútur þar til gedit vistar sjálfvirkt breytt skjöl. Þetta hefur einungis "
+"áhrif ef \"Vista sjálfvirkt\" er valið."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Maximum Number of Undo Actions"
@@ -544,20 +544,20 @@ msgstr "Villa kom upp þegar sýna átti hjálpina."
 msgid "%s: invalid encoding."
 msgstr "%s: ógild stafatafla."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:153
+#: ../gedit/gedit-close-confirmation-dialog.c:155
 msgid "Question"
 msgstr "Spurning"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:321
+#: ../gedit/gedit-close-confirmation-dialog.c:323
 msgid "Close _without Saving"
 msgstr "_Loka án þess að vista"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:322
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #: ../gedit/gedit-commands-file.c:458 ../gedit/gedit-commands-file.c:592
 #: ../gedit/gedit-commands-file.c:668 ../gedit/gedit-commands-file.c:867
 #: ../gedit/gedit-commands-file.c:1579 ../gedit/gedit-io-error-info-bar.c:135
 #: ../gedit/gedit-io-error-info-bar.c:516
-#: ../gedit/gedit-preferences-dialog.c:764
+#: ../gedit/gedit-preferences-dialog.c:790
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
@@ -573,13 +573,13 @@ msgstr "_Loka án þess að vista"
 msgid "_Cancel"
 msgstr "_Hætta við"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:348
+#: ../gedit/gedit-close-confirmation-dialog.c:350
 #: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "Vista _sem..."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:348
+#: ../gedit/gedit-close-confirmation-dialog.c:350
 #: ../gedit/gedit-commands-file.c:868 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
@@ -587,7 +587,7 @@ msgstr "Vista _sem..."
 msgid "_Save"
 msgstr "_Vista"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:366
+#: ../gedit/gedit-close-confirmation-dialog.c:368
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -599,12 +599,12 @@ msgstr[0] ""
 msgstr[1] ""
 "Ef þú vistar ekki núna mun allt sem þú gerðir síðustu %ld sekúndurnar tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:375
+#: ../gedit/gedit-close-confirmation-dialog.c:377
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "Ef þú vistar ekki núna mun allt sem þú gerðir síðustu mínútuna tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:381
+#: ../gedit/gedit-close-confirmation-dialog.c:383
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -617,7 +617,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Ef þú vistar ekki núna munu breytingar síðustu mínútu og %ld sekúndur tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:391
+#: ../gedit/gedit-close-confirmation-dialog.c:393
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -627,11 +627,11 @@ msgid_plural ""
 msgstr[0] "Ef þú vistar ekki núna munu breytingar síðustu %ld mínútu tapast."
 msgstr[1] "Ef þú vistar ekki núna munu breytingar síðustu %ld mínútur tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:406
+#: ../gedit/gedit-close-confirmation-dialog.c:408
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Ef þú vistar ekki núna munu breytingar frá síðustu klukkustund tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:412
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -646,7 +646,7 @@ msgstr[1] ""
 "Ef þú vistar ekki núna mun allt sem þú gerðir síðustu klukkustund og %d "
 "mínútur tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:427
+#: ../gedit/gedit-close-confirmation-dialog.c:429
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -657,29 +657,29 @@ msgstr[0] ""
 msgstr[1] ""
 "Ef þú vistar ekki núna mun allt sem þú gerðir síðustu %d klukkutímana tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:471
+#: ../gedit/gedit-close-confirmation-dialog.c:473
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Breytingar á skjalinu “%s” munu tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:476
+#: ../gedit/gedit-close-confirmation-dialog.c:478
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Viltu vista breytingar á skjalinu “%s“ áður en þú lokar því?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:491
-#: ../gedit/gedit-close-confirmation-dialog.c:652
+#: ../gedit/gedit-close-confirmation-dialog.c:493
+#: ../gedit/gedit-close-confirmation-dialog.c:654
 msgid "Saving has been disabled by the system administrator."
 msgstr "Kerfisstjórinn hefur bannað þér að vista."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:600
+#: ../gedit/gedit-close-confirmation-dialog.c:602
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Breytingar á skjalinu %d munu endanlega tapast."
 msgstr[1] "Breytingar á %d skjölum munu eyðast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:608
+#: ../gedit/gedit-close-confirmation-dialog.c:610
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -689,15 +689,15 @@ msgstr[0] ""
 msgstr[1] ""
 "Þú átt eftir að vista breytingar á %d skjölum. Viltu vista áður en þú lokar?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:628
+#: ../gedit/gedit-close-confirmation-dialog.c:630
 msgid "Docum_ents with unsaved changes:"
 msgstr "_Skjöl með breytingum sem á eftir að vista:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:632
+#: ../gedit/gedit-close-confirmation-dialog.c:634
 msgid "S_elect the documents you want to save:"
 msgstr "V_eldu skjölin sem þú vilt vista:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:656
+#: ../gedit/gedit-close-confirmation-dialog.c:658
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Ef þú vistar ekki munu allar breytingar glatast."
 
@@ -933,7 +933,7 @@ msgid "Current Locale (%s)"
 msgstr "Núverandi staðfærsla (%s)"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:41
-#: ../gedit/gedit-preferences-dialog.c:773
+#: ../gedit/gedit-preferences-dialog.c:799
 msgid "All Files"
 msgstr "Allar skrár"
 
@@ -1280,37 +1280,37 @@ msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
 
-#: ../gedit/gedit-preferences-dialog.c:387
+#: ../gedit/gedit-preferences-dialog.c:413
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Smelltu á þennan hnapp til að velja leturgerð fyrir ritilinn"
 
-#: ../gedit/gedit-preferences-dialog.c:400
+#: ../gedit/gedit-preferences-dialog.c:426
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Nota _jafnbreitt letur úr kerfisstillingum (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:540
+#: ../gedit/gedit-preferences-dialog.c:566
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 
-#: ../gedit/gedit-preferences-dialog.c:737
+#: ../gedit/gedit-preferences-dialog.c:763
 msgid "The selected color scheme cannot be installed."
 msgstr "Ekki er hægt að setja inn valið litastef."
 
-#: ../gedit/gedit-preferences-dialog.c:760
+#: ../gedit/gedit-preferences-dialog.c:786
 msgid "Add Scheme"
 msgstr "Bæta við skema"
 
-#: ../gedit/gedit-preferences-dialog.c:765
+#: ../gedit/gedit-preferences-dialog.c:791
 msgid "A_dd Scheme"
 msgstr "_Bæta við skema"
 
-#: ../gedit/gedit-preferences-dialog.c:769
+#: ../gedit/gedit-preferences-dialog.c:795
 msgid "Color Scheme Files"
 msgstr "Litastefsskemaskrár"
 
-#: ../gedit/gedit-preferences-dialog.c:800
+#: ../gedit/gedit-preferences-dialog.c:826
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Gat ekki fjarlægt litastefið \"%s\"."
@@ -1328,15 +1328,20 @@ msgstr "Síða %N af %Q"
 msgid "Preparing..."
 msgstr "Undirbý..."
 
-#: ../gedit/gedit-print-preview.c:648
+#: ../gedit/gedit-print-preview.c:674
 #, c-format
 msgid "Page %d of %d"
 msgstr "Blaðsíða %d af %d"
 
-#: ../gedit/gedit-replace-dialog.c:684
+#: ../gedit/gedit-replace-dialog.c:686
 #: ../plugins/externaltools/tools/tools.ui.h:7
 msgid "Nothing"
 msgstr "Ekkert"
+
+#: ../gedit/gedit-replace-dialog.c:775
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+msgid "Find and Replace"
+msgstr "Finna og skipta út"
 
 #. Use spaces to leave padding proportional to the font size
 #: ../gedit/gedit-statusbar.c:56 ../gedit/gedit-statusbar.c:62
@@ -1463,36 +1468,36 @@ msgstr "Birta _línunúmer"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:734
+#: ../gedit/gedit-view-frame.c:736
 #, c-format
 msgid "%d of %d"
 msgstr "%d af %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:826
+#: ../gedit/gedit-view-frame.c:828
 msgid "_Wrap Around"
 msgstr "Um_brjóta í kringum"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:836
+#: ../gedit/gedit-view-frame.c:838
 msgid "Match as _Regular Expression"
 msgstr "Samsvara _reglulegri segð"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:850
+#: ../gedit/gedit-view-frame.c:852
 msgid "Match _Entire Word Only"
 msgstr "Passar einungis við _heil orð"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:864
+#: ../gedit/gedit-view-frame.c:866
 msgid "_Match Case"
 msgstr "Hástafsnæ_mt"
 
-#: ../gedit/gedit-view-frame.c:1038
+#: ../gedit/gedit-view-frame.c:1041
 msgid "String you want to search for"
 msgstr "Leitarstrengur"
 
-#: ../gedit/gedit-view-frame.c:1050
+#: ../gedit/gedit-view-frame.c:1053
 msgid "Line you want to move the cursor to"
 msgstr "Sú lína sem þú vilt að bendillinn fari á"
 
@@ -2040,74 +2045,61 @@ msgid "Show the previous page"
 msgstr "Sýna fyrri síðu"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:2
-msgid "P_revious Page"
-msgstr "Fy_rri síða"
-
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
 msgid "Show the next page"
 msgstr "Sýna næstu síðu"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:4
-msgid "_Next Page"
-msgstr "_Næsta síða"
-
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
 msgid "Current page (Alt+P)"
 msgstr "Núverandi síða (Alt+P)"
 
 #. the "of" from "1 of 19" in print preview
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
 msgid "of"
 msgstr "af"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:6
 msgid "Page total"
 msgstr "alls síður"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
 msgid "The total number of pages in the document"
 msgstr "Heildarfjöldi blaðsíðna í þessu skjali"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
 msgid "Show multiple pages"
 msgstr "Sýna margar síður"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
 msgid "Zoom 1:1"
 msgstr "Aðdráttur 1:1"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
 msgid "Zoom to fit the whole page"
 msgstr "Renna að allri síðunni"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
 msgid "Zoom the page in"
 msgstr "Renna að síðu"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
 msgid "Zoom the page out"
 msgstr "Renna frá síðu"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
 msgid "Close print preview"
 msgstr "Loka _prentunarforskoðun"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
 msgid "_Close Preview"
 msgstr "_Loka forskoðuninni"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:17
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
 msgid "Page Preview"
 msgstr "Forskoðun síðu"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:18
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
 msgid "The preview of a page in the document to be printed"
 msgstr "Forskoðun einnar blaðsíðu úr skjalinu sem á að prenta"
-
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
-#| msgid "_Find and Replace…"
-msgid "Find and Replace"
-msgstr "Finna og skipta út"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:3
 msgid "Replace _All"
@@ -2118,12 +2110,10 @@ msgid "_Find"
 msgstr "_Finna"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
-#| msgid "Find Next"
 msgid "F_ind "
 msgstr "_Finna "
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
-#| msgid "Replace _with: "
 msgid "Replace _with "
 msgstr "S_kipta út með "
 
@@ -2136,7 +2126,6 @@ msgid "Match _entire word only"
 msgstr "Máta einungis h_eil orð"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
-#| msgid "Match as _Regular Expression"
 msgid "Re_gular expression"
 msgstr "Re_gluleg segð"
 
@@ -2942,7 +2931,7 @@ msgstr "Víðvært"
 
 #: ../plugins/snippets/snippets/manager.py:406
 msgid "Revert selected snippet"
-msgstr ""
+msgstr "Endurheimta valda úrklippu"
 
 #: ../plugins/snippets/snippets/manager.py:409
 #: ../plugins/snippets/snippets/snippets.ui.h:4
@@ -2966,16 +2955,16 @@ msgstr ""
 #: ../plugins/snippets/snippets/manager.py:758
 #, python-format
 msgid "The following error occurred while importing: %s"
-msgstr ""
+msgstr "Eftirfarandi villa kom upp við innflutning: %s"
 
 #: ../plugins/snippets/snippets/manager.py:765
 msgid "Import successfully completed"
-msgstr ""
+msgstr "Innflutningur heppnaðist vel"
 
 #: ../plugins/snippets/snippets/manager.py:779
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
-msgstr ""
+msgstr "Flytja inn úrklippur"
 
 #: ../plugins/snippets/snippets/manager.py:784
 #: ../plugins/snippets/snippets/manager.py:870
@@ -2997,7 +2986,7 @@ msgstr "Bzip2-þjöppuð safnskrá"
 
 #: ../plugins/snippets/snippets/manager.py:787
 msgid "Single snippets file"
-msgstr ""
+msgstr "Ein úrklippuskrá"
 
 #: ../plugins/snippets/snippets/manager.py:788
 #: ../plugins/snippets/snippets/manager.py:874
@@ -3008,11 +2997,11 @@ msgstr "Allar skrár"
 #: ../plugins/snippets/snippets/manager.py:800
 #, python-format
 msgid "The following error occurred while exporting: %s"
-msgstr ""
+msgstr "Eftirfarandi villa kom upp við útflutning: %s"
 
 #: ../plugins/snippets/snippets/manager.py:804
 msgid "Export successfully completed"
-msgstr ""
+msgstr "Útflutningur heppnaðist vel"
 
 #. Ask if system snippets should also be exported
 #: ../plugins/snippets/snippets/manager.py:844
@@ -3028,7 +3017,7 @@ msgstr ""
 #: ../plugins/snippets/snippets/manager.py:864
 #: ../plugins/snippets/snippets/manager.py:902
 msgid "Export snippets"
-msgstr ""
+msgstr "Flytja út úrklippur"
 
 #: ../plugins/snippets/snippets/manager.py:1041
 msgid "Type a new shortcut, or press Backspace to clear"
@@ -3052,7 +3041,7 @@ msgstr ""
 
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:2
 msgid "Insert often-used pieces of text in a fast way"
-msgstr ""
+msgstr "Setja inn oft notaðan texta á hraðvirkan hátt"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:1
 msgid "Manage Snippets"
@@ -3064,23 +3053,23 @@ msgstr "Búa til nýja úrklippu"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:3
 msgid "Add Snippet"
-msgstr ""
+msgstr "Bæta við úrklippu"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:5
 msgid "Remove Snippet"
-msgstr ""
+msgstr "Fjarlægja úrklippu"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:7
 msgid "Import Snippets"
-msgstr ""
+msgstr "Flytja inn úrklippur"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:8
 msgid "Export selected snippets"
-msgstr ""
+msgstr "Flytja út valdar úrklippur"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:9
 msgid "Export Snippets"
-msgstr ""
+msgstr "Flytja út úrklippur"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:10
 msgid "Activation"
@@ -3135,7 +3124,7 @@ msgstr "_Hunsa há/lágstafi"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:8
 msgid "S_tart at column:"
-msgstr ""
+msgstr "Byrja í _dálki:"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:9
 msgid "You cannot undo a sort operation"
@@ -3143,7 +3132,7 @@ msgstr "Þú getur ekki afturkallað röðunaraðgerð"
 
 #: ../plugins/sort/sort.plugin.desktop.in.h:2
 msgid "Sorts a document or selected text."
-msgstr ""
+msgstr "Raðar skjali eða völdum texta."
 
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
@@ -3322,7 +3311,7 @@ msgstr "Valið snið"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
 msgid "The selected format used when inserting the date/time."
-msgstr ""
+msgstr "Valið snið sem notað er þegar slegin eru inn dagsetningar og tími."
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
 msgid "Custom Format"
@@ -3330,7 +3319,7 @@ msgstr "Sérsnið"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
 msgid "The custom format used when inserting the date/time."
-msgstr ""
+msgstr "Sérsnið sem notað er þegar slegin eru inn dagsetningar og tími."
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
 msgid "Insert Date and Time"
@@ -3383,4 +3372,8 @@ msgstr "Setja inn dagsetningu/tíma"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Setur inn dagsetningu og tíma við núverandi bendilstöðu."
 
+#~ msgid "P_revious Page"
+#~ msgstr "Fy_rri síða"
 
+#~ msgid "_Next Page"
+#~ msgstr "_Næsta síða"
