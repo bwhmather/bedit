@@ -22,8 +22,8 @@ msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-10 06:00+0000\n"
-"PO-Revision-Date: 2015-01-10 13:03+0300\n"
+"POT-Creation-Date: 2015-02-06 06:06+0000\n"
+"PO-Revision-Date: 2015-02-06 15:31+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -107,7 +107,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
 msgid "'Monospace 12'"
-msgstr "'Monospace 12'"
+msgstr "«Monospace 12»"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
@@ -148,8 +148,8 @@ msgid ""
 "option."
 msgstr ""
 "Следует ли автоматически сохранять изменённые файлы через промежуток "
-"времени. Интервал между сохранениями устанавливается параметром \"Интервал "
-"автосохранения\"."
+"времени. Интервал между сохранениями устанавливается параметром «Интервал "
+"автосохранения»."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid "Autosave Interval"
@@ -205,7 +205,7 @@ msgstr ""
 "Определяет последний используемый режим переноса строк. Даже если перенос "
 "строк выключен, приложение запоминает последний выбранный режим переноса. "
 "Выберите «word», чтобы включить перенос по словами, или «char», чтобы "
-"включить перенос по буквам. "
+"включить перенос по буквам."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Tab Size"
@@ -411,7 +411,7 @@ msgid ""
 "individual character boundaries. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"Определяет режим переноса длинных строк при печати.  «none» — не переносить, "
+"Определяет режим переноса длинных строк при печати. Используйте «none» — не переносить, "
 "«word» — переносить по словам, «char» — переносить посимвольно. Так как "
 "значения чувствительны к регистру, проверьте, правильно ли они записаны."
 
@@ -430,7 +430,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "'Monospace 9'"
-msgstr "'Monospace 9'"
+msgstr "«Monospace 9»"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Body Font for Printing"
@@ -443,7 +443,7 @@ msgstr "Определяет шрифт, используемый при печ�
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "'Sans 11'"
-msgstr "'Sans 11'"
+msgstr "«Sans 11»"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "Header Font for Printing"
@@ -459,7 +459,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid "'Sans 8'"
-msgstr "'Sans 8'"
+msgstr "«Sans 8»"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Line Number Font for Printing"
@@ -592,20 +592,20 @@ msgstr "Произошла ошибка при отображении справ
 msgid "%s: invalid encoding."
 msgstr "%s: неверная кодировка."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:153
+#: ../gedit/gedit-close-confirmation-dialog.c:155
 msgid "Question"
 msgstr "Вопрос"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:321
+#: ../gedit/gedit-close-confirmation-dialog.c:323
 msgid "Close _without Saving"
 msgstr "Закрыть _без сохранения"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:322
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #: ../gedit/gedit-commands-file.c:458 ../gedit/gedit-commands-file.c:592
 #: ../gedit/gedit-commands-file.c:668 ../gedit/gedit-commands-file.c:867
 #: ../gedit/gedit-commands-file.c:1579 ../gedit/gedit-io-error-info-bar.c:135
 #: ../gedit/gedit-io-error-info-bar.c:516
-#: ../gedit/gedit-preferences-dialog.c:764
+#: ../gedit/gedit-preferences-dialog.c:790
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
@@ -621,13 +621,13 @@ msgstr "Закрыть _без сохранения"
 msgid "_Cancel"
 msgstr "_Отмена"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:348
+#: ../gedit/gedit-close-confirmation-dialog.c:350
 #: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "_Сохранить как…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:348
+#: ../gedit/gedit-close-confirmation-dialog.c:350
 #: ../gedit/gedit-commands-file.c:868 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
@@ -635,7 +635,7 @@ msgstr "_Сохранить как…"
 msgid "_Save"
 msgstr "Со_хранить"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:366
+#: ../gedit/gedit-close-confirmation-dialog.c:368
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -652,13 +652,13 @@ msgstr[2] ""
 "Если не сохранить, изменения за последние %ld секунд будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:375
+#: ../gedit/gedit-close-confirmation-dialog.c:377
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Если не сохранить, изменения за последнюю минуту будут безвозвратно утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:381
+#: ../gedit/gedit-close-confirmation-dialog.c:383
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -676,7 +676,7 @@ msgstr[2] ""
 "Если не сохранить, изменения за последнюю минуту и %ld секунд будут "
 "безвозвратно утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:391
+#: ../gedit/gedit-close-confirmation-dialog.c:393
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -693,12 +693,12 @@ msgstr[2] ""
 "Если не сохранить, изменения за последние %ld минут будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:406
+#: ../gedit/gedit-close-confirmation-dialog.c:408
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Если не сохранить, изменения за последний час будут безвозвратно утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:412
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -708,7 +708,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] ""
 "Если не сохранить, изменения за последний час и %d минуту будут безвозвратно "
-"утеряны.     "
+"утеряны."
 msgstr[1] ""
 "Если не сохранить, изменения за последний час и %d минуты будут безвозвратно "
 "утеряны."
@@ -716,7 +716,7 @@ msgstr[2] ""
 "Если не сохранить, изменения за последний час и %d минут будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:427
+#: ../gedit/gedit-close-confirmation-dialog.c:429
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -729,22 +729,22 @@ msgstr[2] ""
 "Если не сохранить, изменения за последние %d часов будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:471
+#: ../gedit/gedit-close-confirmation-dialog.c:473
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Изменения документа «%s» будут безвозвратно утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:476
+#: ../gedit/gedit-close-confirmation-dialog.c:478
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Сохранить изменения в документе «%s» перед закрытием?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:491
-#: ../gedit/gedit-close-confirmation-dialog.c:652
+#: ../gedit/gedit-close-confirmation-dialog.c:493
+#: ../gedit/gedit-close-confirmation-dialog.c:654
 msgid "Saving has been disabled by the system administrator."
 msgstr "Сохранение было запрещено системным администратором."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:600
+#: ../gedit/gedit-close-confirmation-dialog.c:602
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -752,14 +752,14 @@ msgstr[0] "Изменения в %d документе будут безвозв
 msgstr[1] "Изменения в %d документах будут безвозвратно утеряны."
 msgstr[2] "Изменения в %d документах будут безвозвратно утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:608
+#: ../gedit/gedit-close-confirmation-dialog.c:610
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
 "%d документ имеет несохранённые изменения. Сохранить изменения перед "
-"закрытием?   "
+"закрытием?"
 msgstr[1] ""
 "%d документа имеют несохранённые изменения. Сохранить изменения перед "
 "закрытием?"
@@ -767,15 +767,15 @@ msgstr[2] ""
 "%d документов имеют несохранённые изменения. Сохранить изменения перед "
 "закрытием?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:628
+#: ../gedit/gedit-close-confirmation-dialog.c:630
 msgid "Docum_ents with unsaved changes:"
 msgstr "Докум_енты с несохранёнными изменениями:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:632
+#: ../gedit/gedit-close-confirmation-dialog.c:634
 msgid "S_elect the documents you want to save:"
 msgstr "_Выберите документы, которые нужно сохранить:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:656
+#: ../gedit/gedit-close-confirmation-dialog.c:658
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Все несохранённые изменения будут безвозвратно утеряны."
 
@@ -993,7 +993,7 @@ msgstr ""
 "Alexander Saprykin <xelfium@gmail.com>, 2010.\n"
 "Yuri Kozlov <yuray@komyakino.ru>, 2011.\n"
 "Yuri Myasoedov <omerta13@yandex.ru>, 2012, 2013.\n"
-"Stas Solovey <whats_up@tut.by>, 2013."
+"Stas Solovey <whats_up@tut.by>, 2013-2015."
 
 #: ../gedit/gedit-commands-search.c:104
 #, c-format
@@ -1045,7 +1045,7 @@ msgid "Current Locale (%s)"
 msgstr "Текущая локаль (%s)"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:41
-#: ../gedit/gedit-preferences-dialog.c:773
+#: ../gedit/gedit-preferences-dialog.c:799
 msgid "All Files"
 msgstr "Все файлы"
 
@@ -1293,13 +1293,13 @@ msgstr ""
 #: ../gedit/gedit-io-error-info-bar.c:970
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
-msgstr "Не удалось создать резервную копию файла при сохранении «%s»."
+msgstr "Не удалось создать резервную копию файла при сохранении «%s»"
 
 #: ../gedit/gedit-io-error-info-bar.c:975
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
-"Не удалось создать временную резервную копию файла при сохранении «%s»."
+"Не удалось создать временную резервную копию файла при сохранении «%s»"
 
 #: ../gedit/gedit-io-error-info-bar.c:992
 msgid ""
@@ -1422,38 +1422,38 @@ msgid ""
 msgstr ""
 "Продолжение сохранения файла может повредить документ. Всё равно продолжить?"
 
-#: ../gedit/gedit-preferences-dialog.c:387
+#: ../gedit/gedit-preferences-dialog.c:413
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Нажмите эту кнопку для выбора шрифта, используемого редактором"
 
-#: ../gedit/gedit-preferences-dialog.c:400
+#: ../gedit/gedit-preferences-dialog.c:426
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Ис_пользовать системный моноширинный шрифт (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:540
+#: ../gedit/gedit-preferences-dialog.c:566
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Не удалось создать каталог «%s»: g_mkdir_with_parents() вернуло ошибку: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:737
+#: ../gedit/gedit-preferences-dialog.c:763
 msgid "The selected color scheme cannot be installed."
 msgstr "Не удалось установить выбранную цветовую схему."
 
-#: ../gedit/gedit-preferences-dialog.c:760
+#: ../gedit/gedit-preferences-dialog.c:786
 msgid "Add Scheme"
 msgstr "Добавить схему"
 
-#: ../gedit/gedit-preferences-dialog.c:765
+#: ../gedit/gedit-preferences-dialog.c:791
 msgid "A_dd Scheme"
 msgstr "До_бавить схему"
 
-#: ../gedit/gedit-preferences-dialog.c:769
+#: ../gedit/gedit-preferences-dialog.c:795
 msgid "Color Scheme Files"
 msgstr "Файлы цветовых схем"
 
-#: ../gedit/gedit-preferences-dialog.c:800
+#: ../gedit/gedit-preferences-dialog.c:826
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Не удалось удалить цветовую схему «%s»."
@@ -1471,10 +1471,20 @@ msgstr "Страница %N из %Q"
 msgid "Preparing..."
 msgstr "Подготовка…"
 
-#: ../gedit/gedit-print-preview.c:648
+#: ../gedit/gedit-print-preview.c:674
 #, c-format
 msgid "Page %d of %d"
 msgstr "Страница %d из %d"
+
+#: ../gedit/gedit-replace-dialog.c:686
+#: ../plugins/externaltools/tools/tools.ui.h:7
+msgid "Nothing"
+msgstr "Ничего"
+
+#: ../gedit/gedit-replace-dialog.c:775
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+msgid "Find and Replace"
+msgstr "Найти и заменить"
 
 #. Use spaces to leave padding proportional to the font size
 #: ../gedit/gedit-statusbar.c:56 ../gedit/gedit-statusbar.c:62
@@ -1603,36 +1613,36 @@ msgstr "По_казывать номера строк"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:734
+#: ../gedit/gedit-view-frame.c:736
 #, c-format
 msgid "%d of %d"
 msgstr "%d из %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:826
+#: ../gedit/gedit-view-frame.c:828
 msgid "_Wrap Around"
 msgstr "Автоматически пере_ходить к началу документа"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:836
+#: ../gedit/gedit-view-frame.c:838
 msgid "Match as _Regular Expression"
 msgstr "Совпадение по _регулярному выражению"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:850
+#: ../gedit/gedit-view-frame.c:852
 msgid "Match _Entire Word Only"
 msgstr "Только _полные слова"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:864
+#: ../gedit/gedit-view-frame.c:866
 msgid "_Match Case"
 msgstr "Учитывать _регистр"
 
-#: ../gedit/gedit-view-frame.c:1038
+#: ../gedit/gedit-view-frame.c:1041
 msgid "String you want to search for"
 msgstr "Строка, которую нужно найти"
 
-#: ../gedit/gedit-view-frame.c:1050
+#: ../gedit/gedit-view-frame.c:1053
 msgid "Line you want to move the cursor to"
 msgstr "Строка, на которую нужно переместить курсор"
 
@@ -1753,7 +1763,7 @@ msgstr "_О программе"
 #: ../gedit/resources/gtk/menus-default.ui.h:5
 #: ../gedit/resources/gtk/menus-traditional.ui.h:20
 msgid "_Quit"
-msgstr "В_ыйти"
+msgstr "_Завершить"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
@@ -1765,7 +1775,7 @@ msgstr "_Печать…"
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
 #: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
-msgstr "На _полный экран"
+msgstr "_Полноэкранный режим"
 
 #: ../gedit/resources/gtk/menus-default.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
@@ -1951,7 +1961,7 @@ msgstr "Кодировки символов"
 #: ../plugins/spell/gedit-spell-language-dialog.c:125
 #: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_OK"
-msgstr "_OK"
+msgstr "_ОК"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
 msgid "A_vailable encodings:"
@@ -2179,73 +2189,61 @@ msgid "Show the previous page"
 msgstr "Показать предыдущую страницу"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:2
-msgid "P_revious Page"
-msgstr "_Предыдущая страница"
-
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
 msgid "Show the next page"
 msgstr "Показать следующую страницу"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:4
-msgid "_Next Page"
-msgstr "С_ледующая страница"
-
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
 msgid "Current page (Alt+P)"
 msgstr "Текущая страница (Alt+P)"
 
 #. the "of" from "1 of 19" in print preview
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
 msgid "of"
 msgstr "из"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:6
 msgid "Page total"
 msgstr "Всего страниц"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
 msgid "The total number of pages in the document"
 msgstr "Общее число страниц в документе"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
 msgid "Show multiple pages"
 msgstr "Показывать несколько страниц"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
 msgid "Zoom 1:1"
 msgstr "Масштаб 1:1"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
 msgid "Zoom to fit the whole page"
 msgstr "Показать страницу целиком"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
 msgid "Zoom the page in"
 msgstr "Увеличить страницу"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
 msgid "Zoom the page out"
 msgstr "Уменьшить страницу"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
 msgid "Close print preview"
 msgstr "Закрыть просмотр печати"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
 msgid "_Close Preview"
 msgstr "_Закрыть просмотр печати"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:17
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
 msgid "Page Preview"
 msgstr "Предварительный просмотр"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:18
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
 msgid "The preview of a page in the document to be printed"
 msgstr "Предварительный просмотр выводимой на печать страницы"
-
-#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
-msgid "Replace"
-msgstr "Заменить"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:3
 msgid "Replace _All"
@@ -2256,12 +2254,12 @@ msgid "_Find"
 msgstr "_Найти"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
-msgid "_Search for: "
-msgstr "На_йти: "
+msgid "F_ind "
+msgstr "Най_ти"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
-msgid "Replace _with: "
-msgstr "З_аменить на:"
+msgid "Replace _with "
+msgstr "З_аменить на"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:8
 msgid "_Match case"
@@ -2272,12 +2270,12 @@ msgid "Match _entire word only"
 msgstr "Только _полные слова"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
-msgid "Match as re_gular expression"
-msgstr "Совпадение по _регулярному выражению"
+msgid "Re_gular expression"
+msgstr "Р_егулярное выражение"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:11
 msgid "Search _backwards"
-msgstr "Обратный поиск"
+msgstr "О_братный поиск"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
 msgid "_Wrap around"
@@ -2317,7 +2315,7 @@ msgstr "Открыть файловое диалоговое окно"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
-msgstr "Выйти из полноэкранного режима"
+msgstr "Покинуть полноэкранный режим"
 
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
 msgid "Check update"
@@ -2349,7 +2347,7 @@ msgid ""
 "or ignore that version and wait for a new one"
 msgstr ""
 "Можно загрузить новую версию gedit, нажав соответствующую кнопку, или "
-"оставить текущую версию и подождать более новую."
+"оставить текущую версию и подождать более новую"
 
 #. ex:set ts=8 noet:
 #: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
@@ -2561,10 +2559,6 @@ msgstr "Только удалённые документы"
 #: ../plugins/externaltools/tools/tools.ui.h:6
 msgid "Untitled documents only"
 msgstr "Только несохранённые документы"
-
-#: ../plugins/externaltools/tools/tools.ui.h:7
-msgid "Nothing"
-msgstr "Ничего"
 
 #: ../plugins/externaltools/tools/tools.ui.h:8
 msgid "Current document"
@@ -2844,7 +2838,7 @@ msgid ""
 msgstr ""
 "Виртуальный корневой каталог обозревателя файлов при загрузке модуля "
 "обозревателя, если установлен параметр onload/tree_view. Виртуальный "
-"корневой каталог всегда должен быть ниже настоящего корня.."
+"корневой каталог всегда должен быть ниже настоящего корня."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
 msgid "Enable Restore of Remote Locations"
@@ -2923,7 +2917,7 @@ msgstr "_Переименовать…"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
-msgstr "_Удалить в корзину"
+msgstr "_Переместить в корзину"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:8
 msgid "Re_fresh View"
@@ -2967,7 +2961,7 @@ msgstr "Режим строк"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:2
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
-msgstr "Поддержка режима строк Emacs, Kate и Vim"
+msgstr "Поддержка режима строк Emacs, Kate и Vim для gedit."
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
 msgid "Command Color Text"
@@ -3127,7 +3121,7 @@ msgstr ""
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr ""
 "Слово, которое используется для вставки фрагмента текста. Фрагмент "
-"вставляется, если после слова нажать Tab."
+"вставляется, если после слова нажать Tab"
 
 #: ../plugins/snippets/snippets/manager.py:758
 #, python-format
@@ -3552,3 +3546,15 @@ msgstr "Вставка даты и времени"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Вставляет текущую дату и время в позиции курсора."
+
+#~ msgid "P_revious Page"
+#~ msgstr "_Предыдущая страница"
+
+#~ msgid "_Next Page"
+#~ msgstr "С_ледующая страница"
+
+#~ msgid "Replace"
+#~ msgstr "Заменить"
+
+#~ msgid "_Search for: "
+#~ msgstr "На_йти: "
