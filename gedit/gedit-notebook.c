@@ -568,7 +568,7 @@ gedit_notebook_move_tab (GeditNotebook *src,
 
 	/* make sure the tab isn't destroyed while we move it */
 	g_object_ref (tab);
-	gtk_container_remove (GTK_CONTAINER (src), GTK_WIDGET (tab));
+	gtk_notebook_detach_tab (GTK_NOTEBOOK (src), GTK_WIDGET (tab));
 	gedit_notebook_add_tab (dest, tab, dest_position, TRUE);
 	g_object_unref (tab);
 }
