@@ -13,6 +13,9 @@ AC_INIT([gedit],
 	[gedit],
 	[https://wiki.gnome.org/Apps/Gedit])
 
+GEDIT_API_VERSION=3.14
+AC_SUBST(GEDIT_API_VERSION)
+
 # Dependencies
 GLIB_REQUIRED=2.40.0
 GTK_REQUIRED=3.15.7
@@ -51,9 +54,6 @@ AC_PROG_OBJC
 # Initialize libtool
 LT_PREREQ([2.2.6])
 LT_INIT(disable-static)
-
-GEDIT_API_VERSION=3.12
-AC_SUBST(GEDIT_API_VERSION)
 
 GTK_DOC_CHECK([1.0],[--flavour=no-tmpl])
 
