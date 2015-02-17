@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-19 06:02+0000\n"
-"PO-Revision-Date: 2015-01-19 18:17+0100\n"
+"POT-Creation-Date: 2015-02-17 06:04+0000\n"
+"PO-Revision-Date: 2015-02-17 17:48+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -626,15 +626,15 @@ msgstr "Hubo un error al mostrar la ayuda."
 msgid "%s: invalid encoding."
 msgstr "%s: codificación no válida."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:153
+#: ../gedit/gedit-close-confirmation-dialog.c:155
 msgid "Question"
 msgstr "Pregunta"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:321
+#: ../gedit/gedit-close-confirmation-dialog.c:323
 msgid "Close _without Saving"
 msgstr "Cerrar _sin guardar"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:322
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #: ../gedit/gedit-commands-file.c:458 ../gedit/gedit-commands-file.c:592
 #: ../gedit/gedit-commands-file.c:668 ../gedit/gedit-commands-file.c:867
 #: ../gedit/gedit-commands-file.c:1579 ../gedit/gedit-io-error-info-bar.c:135
@@ -655,13 +655,13 @@ msgstr "Cerrar _sin guardar"
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:348
+#: ../gedit/gedit-close-confirmation-dialog.c:350
 #: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "Guardar _como"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:348
+#: ../gedit/gedit-close-confirmation-dialog.c:350
 #: ../gedit/gedit-commands-file.c:868 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
@@ -669,7 +669,7 @@ msgstr "Guardar _como"
 msgid "_Save"
 msgstr "_Guardar"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:366
+#: ../gedit/gedit-close-confirmation-dialog.c:368
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -682,13 +682,13 @@ msgstr[1] ""
 "Si no guarda, los cambios desde los últimos %ld segundos se perderán para "
 "siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:375
+#: ../gedit/gedit-close-confirmation-dialog.c:377
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Si no guarda, los cambios desde el último minuto se perderán para siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:381
+#: ../gedit/gedit-close-confirmation-dialog.c:383
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -703,7 +703,7 @@ msgstr[1] ""
 "Si no los guarda, los cambios del último minuto y %ld segundos se perderán "
 "para siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:391
+#: ../gedit/gedit-close-confirmation-dialog.c:393
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -716,11 +716,11 @@ msgstr[1] ""
 "Si no guarda, los cambios de los últimos %ld minutos se perderán para "
 "siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:406
+#: ../gedit/gedit-close-confirmation-dialog.c:408
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Si no guarda, los cambios de la última hora se perderán para siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:412
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -735,7 +735,7 @@ msgstr[1] ""
 "Si no guarda, los cambios desde la última hora y %d minutos se perderán para "
 "siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:427
+#: ../gedit/gedit-close-confirmation-dialog.c:429
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -746,29 +746,29 @@ msgstr[0] ""
 msgstr[1] ""
 "Si no guarda, los cambios de la últimas %d horas se perderán para siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:471
+#: ../gedit/gedit-close-confirmation-dialog.c:473
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Los cambios del documento «%s» se perderán para siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:476
+#: ../gedit/gedit-close-confirmation-dialog.c:478
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "¿Guardar los cambios del documento «%s» antes de cerrar?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:491
-#: ../gedit/gedit-close-confirmation-dialog.c:652
+#: ../gedit/gedit-close-confirmation-dialog.c:493
+#: ../gedit/gedit-close-confirmation-dialog.c:654
 msgid "Saving has been disabled by the system administrator."
 msgstr "El guardado se ha desactivado por el administrador del sistema."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:600
+#: ../gedit/gedit-close-confirmation-dialog.c:602
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Los cambios realizados a %d documento se perderán para siempre."
 msgstr[1] "Los cambios realizados a %d documentos se perderán para siempre."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:608
+#: ../gedit/gedit-close-confirmation-dialog.c:610
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -780,15 +780,15 @@ msgstr[1] ""
 "Hay %d documentos con cambios sin guardar. ¿Quiere guardar los cambios antes "
 "de cerrar?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:628
+#: ../gedit/gedit-close-confirmation-dialog.c:630
 msgid "Docum_ents with unsaved changes:"
 msgstr "_Documentos con cambios no guardados:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:632
+#: ../gedit/gedit-close-confirmation-dialog.c:634
 msgid "S_elect the documents you want to save:"
 msgstr "S_eleccione los documentos que quiere guardar:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:656
+#: ../gedit/gedit-close-confirmation-dialog.c:658
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Si no guarda, todos sus cambios se perderán para siempre."
 
@@ -1471,7 +1471,7 @@ msgstr "Página %N de %Q"
 msgid "Preparing..."
 msgstr "Preparándose…"
 
-#: ../gedit/gedit-print-preview.c:648
+#: ../gedit/gedit-print-preview.c:674
 #, c-format
 msgid "Page %d of %d"
 msgstr "Página %d de %d"
@@ -1483,7 +1483,6 @@ msgstr "Nada"
 
 #: ../gedit/gedit-replace-dialog.c:775
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
-#| msgid "_Find and Replace…"
 msgid "Find and Replace"
 msgstr "Buscar y reemplazar"
 
@@ -2188,67 +2187,59 @@ msgid "Show the previous page"
 msgstr "Mostrar la página anterior"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:2
-msgid "P_revious Page"
-msgstr "Página a_nterior"
-
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
 msgid "Show the next page"
 msgstr "Mostrar la página siguiente"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:4
-msgid "_Next Page"
-msgstr "_Siguiente página"
-
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
 msgid "Current page (Alt+P)"
 msgstr "Página actual (Alt+P)"
 
 #. the "of" from "1 of 19" in print preview
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
 msgid "of"
 msgstr "de"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:6
 msgid "Page total"
 msgstr "Total de páginas"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
 msgid "The total number of pages in the document"
 msgstr "El número total de páginas del documento"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
 msgid "Show multiple pages"
 msgstr "Mostrar varias páginas"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
 msgid "Zoom 1:1"
 msgstr "Ampliación 1:1"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
 msgid "Zoom to fit the whole page"
 msgstr "Ampliar hasta ajustar toda la página"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
 msgid "Zoom the page in"
 msgstr "Ampliar la página"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
 msgid "Zoom the page out"
 msgstr "Reducir la página"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
 msgid "Close print preview"
 msgstr "Cerrar vista previa de impresión"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
 msgid "_Close Preview"
 msgstr "_Cerrar vista previa"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:17
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
 msgid "Page Preview"
 msgstr "Vista previa de la página"
 
-#: ../gedit/resources/ui/gedit-print-preview.ui.h:18
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
 msgid "The preview of a page in the document to be printed"
 msgstr "Vista previa de una página en el documento que se va a imprimir"
 
@@ -2257,16 +2248,18 @@ msgid "Replace _All"
 msgstr "Reemplazar _todo"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:5
+#| msgid "_Find"
+msgctxt "label of the find button"
 msgid "_Find"
 msgstr "_Buscar"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
-#| msgid "Find Ne_xt"
+#| msgid "F_ind "
+msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
-msgstr "_Buscar"
+msgstr "B_uscar "
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
-#| msgid "Replace _with: "
 msgid "Replace _with "
 msgstr "Reemplazar _con "
 
@@ -2279,7 +2272,6 @@ msgid "Match _entire word only"
 msgstr "Coincidir sólo con la palabra compl_eta"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
-#| msgid "Match as re_gular expression"
 msgid "Re_gular expression"
 msgstr "Expresión reg_ular"
 
@@ -3561,6 +3553,12 @@ msgstr "Insertar fecha/hora"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Inserta la fecha y hora actual en la posición del cursor."
+
+#~ msgid "P_revious Page"
+#~ msgstr "Página a_nterior"
+
+#~ msgid "_Next Page"
+#~ msgstr "_Siguiente página"
 
 #~ msgid "Replace"
 #~ msgstr "Reemplazar"
