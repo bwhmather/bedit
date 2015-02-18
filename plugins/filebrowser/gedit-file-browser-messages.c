@@ -38,7 +38,7 @@ typedef struct
 typedef struct
 {
 	guint row_inserted_id;
-	guint row_deleted_id;
+	guint before_row_deleted_id;
 	guint root_changed_id;
 	guint begin_loading_id;
 	guint end_loading_id;
@@ -788,9 +788,9 @@ store_row_inserted (GeditFileBrowserStore *store,
 }
 
 static void
-store_row_deleted (GeditFileBrowserStore *store,
-		   GtkTreePath		 *path,
-		   MessageCacheData      *data)
+store_before_row_deleted (GeditFileBrowserStore *store,
+                          GtkTreePath           *path,
+                          MessageCacheData      *data)
 {
 	GtkTreeIter iter;
 	guint flags = 0;
@@ -805,9 +805,17 @@ store_row_deleted (GeditFileBrowserStore *store,
 	if (!FILE_IS_DUMMY (flags) && !FILE_IS_FILTERED (flags))
 	{
 		WindowData *wdata = get_window_data (data->window);
+		gchar *id;
 
 		set_item_message (wdata, &iter, path, data->message);
+
+		/* Must get the ID before the plugin can modify it */
+		g_object_get (data->message, "id", &id, NULL);
+
 		gedit_message_bus_send_message_sync (wdata->bus, data->message);
+
+		g_hash_table_remove (wdata->row_tracking, id);
+		g_free (id);
 	}
 }
 
@@ -925,10 +933,10 @@ register_signals (GeditWindow            *window,
 	                        "method", "deleted",
 	                        NULL);
 
-	data->row_deleted_id =
+	data->before_row_deleted_id =
 		g_signal_connect_data (store,
-		                       "row-deleted",
-		                       G_CALLBACK (store_row_deleted),
+		                       "before-row-deleted",
+		                       G_CALLBACK (store_before_row_deleted),
 		                       message_cache_data_new (window, message),
 		                       (GClosureNotify)message_cache_data_free,
 		                       0);
@@ -1022,7 +1030,7 @@ cleanup_signals (GeditWindow *window)
 	store = gedit_file_browser_widget_get_browser_store (data->widget);
 
 	g_signal_handler_disconnect (store, data->row_inserted_id);
-	g_signal_handler_disconnect (store, data->row_deleted_id);
+	g_signal_handler_disconnect (store, data->before_row_deleted_id);
 	g_signal_handler_disconnect (store, data->root_changed_id);
 	g_signal_handler_disconnect (store, data->begin_loading_id);
 	g_signal_handler_disconnect (store, data->end_loading_id);

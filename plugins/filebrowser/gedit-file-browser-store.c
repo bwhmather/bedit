@@ -226,6 +226,7 @@ enum
 	BEGIN_REFRESH,
 	END_REFRESH,
 	UNLOAD,
+	BEFORE_ROW_DELETED,
 	NUM_SIGNALS
 };
 
@@ -445,6 +446,15 @@ gedit_file_browser_store_class_init (GeditFileBrowserStoreClass *klass)
 	    		  g_cclosure_marshal_VOID__OBJECT,
 	    		  G_TYPE_NONE, 1,
 	    		  G_TYPE_FILE);
+	model_signals[BEFORE_ROW_DELETED] =
+	    g_signal_new ("before-row-deleted",
+	    		  G_OBJECT_CLASS_TYPE (object_class),
+	    		  G_SIGNAL_RUN_LAST,
+	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
+	    		  		   before_row_deleted), NULL, NULL,
+	    		  g_cclosure_marshal_VOID__BOXED,
+	    		  G_TYPE_NONE, 1,
+	    		  GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE);
 }
 
 static void
@@ -1259,13 +1269,33 @@ row_inserted (GeditFileBrowserStore  *model,
 
 static void
 row_deleted (GeditFileBrowserStore *model,
-	     const GtkTreePath     *path)
+             FileBrowserNode       *node,
+             const GtkTreePath     *path)
 {
-	GtkTreePath *copy = gtk_tree_path_copy (path);
+	gboolean hidden;
+	GtkTreePath *copy;
 
-	/* Delete a copy of the actual path here because the row-deleted
-	   signal may alter the path */
-	gtk_tree_model_row_deleted (GTK_TREE_MODEL(model), copy);
+	/* We should always be called when the row is still inserted */
+	g_return_if_fail (node->inserted == TRUE);
+
+	hidden = FILE_IS_HIDDEN (node->flags);
+	node->flags &= ~GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+
+	/* Create temporary copies of the path as the signals may alter it */
+
+	copy = gtk_tree_path_copy (path);
+	g_signal_emit (model, model_signals[BEFORE_ROW_DELETED], 0, copy);
+	gtk_tree_path_free (copy);
+
+	node->inserted = FALSE;
+
+	if (hidden)
+	{
+		node->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
+	}
+
+	copy = gtk_tree_path_copy (path);
+	gtk_tree_model_row_deleted (GTK_TREE_MODEL (model), copy);
 	gtk_tree_path_free (copy);
 }
 
@@ -1327,8 +1357,7 @@ model_refilter_node (GeditFileBrowserStore  *model,
 		{
 			if (old_visible)
 			{
-				node->inserted = FALSE;
-				row_deleted (model, *path);
+				row_deleted (model, node, *path);
 			}
 			else
 			{
@@ -1576,8 +1605,7 @@ model_remove_node (GeditFileBrowserStore *model,
 	   not the virtual root) */
 	if (model_node_visibility (model, node) && node != model->priv->virtual_root)
 	{
-		node->inserted = FALSE;
-		row_deleted (model, path);
+		row_deleted (model, node, path);
 	}
 
 	if (free_path)
@@ -1645,9 +1673,7 @@ model_clear (GeditFileBrowserStore *model,
 			    model_node_visibility (model, dummy))
 			{
 				path = gtk_tree_path_new_first ();
-
-				dummy->inserted = FALSE;
-				row_deleted (model, path);
+				row_deleted (model, dummy, path);
 				gtk_tree_path_free (path);
 			}
 		}
@@ -1868,8 +1894,7 @@ model_check_dummy (GeditFileBrowserStore *model,
 			path = gedit_file_browser_store_get_path_real (model, dummy);
 			dummy->flags |= GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
 
-			dummy->inserted = FALSE;
-			row_deleted (model, path);
+			row_deleted (model, dummy, path);
 			gtk_tree_path_free (path);
 		}
 	}
