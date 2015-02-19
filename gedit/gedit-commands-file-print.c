@@ -20,15 +20,7 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-commands.h"
-
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
-
 #include "gedit-window.h"
 #include "gedit-tab.h"
 #include "gedit-debug.h"
@@ -44,10 +36,11 @@ _gedit_cmd_file_print (GSimpleAction *action,
 	gedit_debug (DEBUG_COMMANDS);
 
 	tab = gedit_window_get_active_tab (window);
-	if (tab == NULL)
-		return;
 
-	_gedit_tab_print (tab);
+	if (tab != NULL)
+	{
+		_gedit_tab_print (tab);
+	}
 }
 
 /* ex:set ts=8 noet: */
