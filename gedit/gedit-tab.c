@@ -2975,15 +2975,6 @@ _gedit_tab_print (GeditTab *tab)
 }
 
 void
-_gedit_tab_print_preview (GeditTab *tab)
-{
-	g_return_if_fail (GEDIT_IS_TAB (tab));
-
-	gedit_tab_print_or_print_preview (tab,
-					  GTK_PRINT_OPERATION_ACTION_PREVIEW);
-}
-
-void
 _gedit_tab_mark_for_closing (GeditTab *tab)
 {
 	g_return_if_fail (GEDIT_IS_TAB (tab));

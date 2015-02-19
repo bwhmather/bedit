@@ -154,7 +154,6 @@ void		 _gedit_tab_save_as_async	(GeditTab                 *tab,
 						 gpointer                  user_data);
 
 void		 _gedit_tab_print		(GeditTab            *tab);
-void		 _gedit_tab_print_preview	(GeditTab            *tab);
 
 void		 _gedit_tab_mark_for_closing	(GeditTab	     *tab);
 
