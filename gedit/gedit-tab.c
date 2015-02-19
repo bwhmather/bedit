@@ -2860,11 +2860,12 @@ print_cancelled (GtkWidget *bar,
 		 gint       response_id,
 		 GeditTab  *tab)
 {
-	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->priv->info_bar));
+	gedit_debug (DEBUG_TAB);
 
-	gedit_print_job_cancel (tab->priv->print_job);
-
-	g_debug ("print_cancelled");
+	if (tab->priv->print_job != NULL)
+	{
+		gedit_print_job_cancel (tab->priv->print_job);
+	}
 }
 
 static void
