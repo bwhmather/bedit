@@ -2884,15 +2884,24 @@ show_printing_info_bar (GeditTab *tab)
 	set_info_bar (tab, bar, GTK_RESPONSE_NONE);
 }
 
-static void
-gedit_tab_print_or_print_preview (GeditTab                *tab,
-				  GtkPrintOperationAction  print_action)
+void
+_gedit_tab_print (GeditTab *tab)
 {
 	GeditView *view;
 	GtkPageSetup *setup;
 	GtkPrintSettings *settings;
 	GtkPrintOperationResult res;
 	GError *error = NULL;
+
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+
+	/* FIXME: currently we can have just one printoperation going on
+	 * at a given time, so before starting the print we close the preview.
+	 * Would be nice to handle it properly though */
+	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
+	{
+		gtk_widget_destroy (tab->priv->print_preview);
+	}
 
 	g_return_if_fail (tab->priv->print_job == NULL);
 	g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_NORMAL);
@@ -2923,22 +2932,15 @@ gedit_tab_print_or_print_preview (GeditTab                *tab,
 				 tab,
 				 0);
 
-	if (print_action == GTK_PRINT_OPERATION_ACTION_PREVIEW)
-	{
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_PRINT_PREVIEWING);
-	}
-	else
-	{
-		/* hide until we start printing */
-		gtk_widget_hide (tab->priv->info_bar);
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_PRINTING);
-	}
+	/* hide until we start printing */
+	gtk_widget_hide (tab->priv->info_bar);
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_PRINTING);
 
 	setup = get_page_setup (tab);
 	settings = get_print_settings (tab);
 
 	res = gedit_print_job_print (tab->priv->print_job,
-				     print_action,
+				     GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
 				     setup,
 				     settings,
 				     GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (tab))),
@@ -2955,23 +2957,6 @@ gedit_tab_print_or_print_preview (GeditTab                *tab,
 	}
 
 	g_object_unref (settings);
-}
-
-void
-_gedit_tab_print (GeditTab *tab)
-{
-	g_return_if_fail (GEDIT_IS_TAB (tab));
-
-	/* FIXME: currently we can have just one printoperation going on
-	 * at a given time, so before starting the print we close the preview.
-	 * Would be nice to handle it properly though */
-	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
-	{
-		gtk_widget_destroy (tab->priv->print_preview);
-	}
-
-	gedit_tab_print_or_print_preview (tab,
-					  GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG);
 }
 
 void
