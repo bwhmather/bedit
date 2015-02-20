@@ -304,11 +304,14 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 {
 	GtkBuilder *builder;
 	GtkWidget *contents;
-	gint line_numbers;
+	guint line_numbers;
 	GtkWrapMode wrap_mode;
 	gboolean syntax_hl;
 	gboolean print_header;
-	gchar *font_body, *font_header, *font_numbers;
+	gchar *font_body;
+	gchar *font_header;
+	gchar *font_numbers;
+
 	gchar *root_objects[] = {
 		"adjustment1",
 		"contents",
@@ -336,36 +339,31 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	job->priv->restore_button = GTK_WIDGET (gtk_builder_get_object (builder, "restore_button"));
 	g_object_unref (builder);
 
-	/* Get all settings values */
+	/* Syntax highlighting */
 	syntax_hl = g_settings_get_boolean (job->priv->print_settings,
 					    GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING);
-	print_header = g_settings_get_boolean (job->priv->print_settings,
-					       GEDIT_SETTINGS_PRINT_HEADER);
-	g_settings_get (job->priv->print_settings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
-			"u", &line_numbers);
-	font_body = g_settings_get_string (job->priv->print_settings,
-					   GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
-	font_header = g_settings_get_string (job->priv->print_settings,
-					     GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
-	font_numbers = g_settings_get_string (job->priv->print_settings,
-					      GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
 
-	/* Print syntax */
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->syntax_checkbutton),
 				      syntax_hl);
 
-	/* Print page headers */
+	/* Print header */
+	print_header = g_settings_get_boolean (job->priv->print_settings,
+					       GEDIT_SETTINGS_PRINT_HEADER);
+
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->page_header_checkbutton),
 				      print_header);
 
 	/* Line numbers */
+	g_settings_get (job->priv->print_settings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
+			"u", &line_numbers);
+
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (job->priv->line_numbers_checkbutton),
 				      line_numbers > 0);
 
 	if (line_numbers > 0)
 	{
 		gtk_spin_button_set_value (GTK_SPIN_BUTTON (job->priv->line_numbers_spinbutton),
-					   (guint) line_numbers);
+					   line_numbers);
 		gtk_widget_set_sensitive (job->priv->line_numbers_hbox, TRUE);
 	}
 	else
@@ -375,7 +373,31 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 		gtk_widget_set_sensitive (job->priv->line_numbers_hbox, FALSE);
 	}
 
-	/* Text wrapping */
+	g_signal_connect (job->priv->line_numbers_checkbutton,
+			  "toggled",
+			  G_CALLBACK (line_numbers_checkbutton_toggled),
+			  job);
+
+	/* Fonts */
+	font_body = g_settings_get_string (job->priv->print_settings,
+					   GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
+	font_header = g_settings_get_string (job->priv->print_settings,
+					     GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
+	font_numbers = g_settings_get_string (job->priv->print_settings,
+					      GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
+
+	gtk_font_button_set_font_name (GTK_FONT_BUTTON (job->priv->body_fontbutton),
+				       font_body);
+	gtk_font_button_set_font_name (GTK_FONT_BUTTON (job->priv->headers_fontbutton),
+				       font_header);
+	gtk_font_button_set_font_name (GTK_FONT_BUTTON (job->priv->numbers_fontbutton),
+				       font_numbers);
+
+	g_free (font_body);
+	g_free (font_header);
+	g_free (font_numbers);
+
+	/* Wrap mode */
 	wrap_mode = g_settings_get_enum (job->priv->print_settings,
 					 GEDIT_SETTINGS_PRINT_WRAP_MODE);
 
@@ -387,12 +409,14 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 			gtk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton), TRUE);
 			break;
+
 		case GTK_WRAP_CHAR:
 			gtk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton), TRUE);
 			gtk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (job->priv->do_not_split_checkbutton), FALSE);
 			break;
+
 		default:
 			gtk_toggle_button_set_active (
 				GTK_TOGGLE_BUTTON (job->priv->text_wrapping_checkbutton), FALSE);
@@ -403,31 +427,17 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	gtk_widget_set_sensitive (job->priv->do_not_split_checkbutton,
 				  wrap_mode != GTK_WRAP_NONE);
 
-	/* Set initial values */
-	gtk_font_button_set_font_name (GTK_FONT_BUTTON (job->priv->body_fontbutton),
-				       font_body);
-	g_free (font_body);
-
-	gtk_font_button_set_font_name (GTK_FONT_BUTTON (job->priv->headers_fontbutton),
-				       font_header);
-	g_free (font_header);
-
-	gtk_font_button_set_font_name (GTK_FONT_BUTTON (job->priv->numbers_fontbutton),
-				       font_numbers);
-	g_free (font_numbers);
-
-	g_signal_connect (job->priv->line_numbers_checkbutton,
-			  "toggled",
-			  G_CALLBACK (line_numbers_checkbutton_toggled),
-			  job);
 	g_signal_connect (job->priv->text_wrapping_checkbutton,
 			  "toggled",
 			  G_CALLBACK (wrap_mode_checkbutton_toggled),
 			  job);
+
 	g_signal_connect (job->priv->do_not_split_checkbutton,
 			  "toggled",
 			  G_CALLBACK (wrap_mode_checkbutton_toggled),
 			  job);
+
+	/* Restore */
 	g_signal_connect (job->priv->restore_button,
 			  "clicked",
 			  G_CALLBACK (restore_button_clicked),
@@ -744,81 +754,80 @@ gedit_print_job_print (GeditPrintJob            *job,
 		       GtkWindow                *parent,
 		       GError                  **error)
 {
-	GeditPrintJobPrivate *priv;
 	gchar *job_name;
 
 	g_return_val_if_fail (job->priv->compositor == NULL, GTK_PRINT_OPERATION_RESULT_ERROR);
 
-	priv = job->priv;
-
-	/* Check if we are previewing */
-	priv->is_preview = (action == GTK_PRINT_OPERATION_ACTION_PREVIEW);
-
-	/* Create print operation */
 	job->priv->operation = gtk_print_operation_new ();
 
-	if (settings)
-		gtk_print_operation_set_print_settings (priv->operation,
+	job->priv->is_preview = action == GTK_PRINT_OPERATION_ACTION_PREVIEW;
+
+	if (settings != NULL)
+	{
+		gtk_print_operation_set_print_settings (job->priv->operation,
 							settings);
+	}
 
 	if (page_setup != NULL)
-		gtk_print_operation_set_default_page_setup (priv->operation,
+	{
+		gtk_print_operation_set_default_page_setup (job->priv->operation,
 							    page_setup);
+	}
 
-	job_name = gedit_document_get_short_name_for_display (priv->doc);
-	gtk_print_operation_set_job_name (priv->operation, job_name);
+	job_name = gedit_document_get_short_name_for_display (job->priv->doc);
+	gtk_print_operation_set_job_name (job->priv->operation, job_name);
 	g_free (job_name);
 
-	gtk_print_operation_set_embed_page_setup (priv->operation, TRUE);
+	gtk_print_operation_set_embed_page_setup (job->priv->operation, TRUE);
 
-	gtk_print_operation_set_custom_tab_label (priv->operation,
+	gtk_print_operation_set_custom_tab_label (job->priv->operation,
 						  _("Text Editor"));
 
-	gtk_print_operation_set_allow_async (priv->operation, TRUE);
+	gtk_print_operation_set_allow_async (job->priv->operation, TRUE);
 
-	g_signal_connect (priv->operation,
+	g_signal_connect (job->priv->operation,
 			  "create-custom-widget",
 			  G_CALLBACK (create_custom_widget_cb),
 			  job);
 
-	g_signal_connect (priv->operation,
+	g_signal_connect (job->priv->operation,
 			  "custom-widget-apply",
 			  G_CALLBACK (custom_widget_apply_cb),
 			  job);
 
-  	g_signal_connect (priv->operation,
+	g_signal_connect (job->priv->operation,
 			  "begin-print",
 			  G_CALLBACK (begin_print_cb),
 			  job);
 
-	g_signal_connect (priv->operation,
+	g_signal_connect (job->priv->operation,
 			  "preview",
 			  G_CALLBACK (preview_cb),
 			  job);
 
-  	g_signal_connect (priv->operation,
+	g_signal_connect (job->priv->operation,
 			  "paginate",
 			  G_CALLBACK (paginate_cb),
 			  job);
 
-	g_signal_connect (priv->operation,
+	g_signal_connect (job->priv->operation,
 			  "draw-page",
 			  G_CALLBACK (draw_page_cb),
 			  job);
 
-	g_signal_connect_object (priv->operation,
+	g_signal_connect_object (job->priv->operation,
 				 "end-print",
 				 G_CALLBACK (end_print_cb),
 				 job,
 				 0);
 
-	g_signal_connect_object (priv->operation,
+	g_signal_connect_object (job->priv->operation,
 				 "done",
 				 G_CALLBACK (done_cb),
 				 job,
 				 0);
 
-	return gtk_print_operation_run (priv->operation,
+	return gtk_print_operation_run (job->priv->operation,
 					action,
 					parent,
 					error);
