@@ -358,44 +358,57 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 			GtkWidget         *widget,
 			GeditPrintJob     *job)
 {
-	gboolean syntax, page_header;
-	const gchar *body, *header, *numbers;
+	gboolean syntax;
+	gboolean page_header;
+	const gchar *body_font;
+	const gchar *header_font;
+	const gchar *numbers_font;
 	GtkWrapMode wrap_mode;
 
 	syntax = gtk_toggle_button_get_active (job->priv->syntax_checkbutton);
 	page_header = gtk_toggle_button_get_active (job->priv->page_header_checkbutton);
-	body = gtk_font_button_get_font_name (job->priv->body_fontbutton);
-	header = gtk_font_button_get_font_name (job->priv->headers_fontbutton);
-	numbers = gtk_font_button_get_font_name (job->priv->numbers_fontbutton);
+	body_font = gtk_font_button_get_font_name (job->priv->body_fontbutton);
+	header_font = gtk_font_button_get_font_name (job->priv->headers_fontbutton);
+	numbers_font = gtk_font_button_get_font_name (job->priv->numbers_fontbutton);
 
 	g_settings_set_boolean (job->priv->print_settings,
-				GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING, syntax);
-	g_settings_set_boolean (job->priv->print_settings, GEDIT_SETTINGS_PRINT_HEADER,
+				GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING,
+				syntax);
+
+	g_settings_set_boolean (job->priv->print_settings,
+				GEDIT_SETTINGS_PRINT_HEADER,
 				page_header);
-	g_settings_set_string (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO,
-			       body);
-	g_settings_set_string (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO,
-			       header);
-	g_settings_set_string (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO,
-			       numbers);
+
+	g_settings_set_string (job->priv->print_settings,
+			       GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO,
+			       body_font);
+
+	g_settings_set_string (job->priv->print_settings,
+			       GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO,
+			       header_font);
+
+	g_settings_set_string (job->priv->print_settings,
+			       GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO,
+			       numbers_font);
 
 	if (gtk_toggle_button_get_active (job->priv->line_numbers_checkbutton))
 	{
+		gint num;
+
+		num = gtk_spin_button_get_value_as_int (job->priv->line_numbers_spinbutton);
+
 		g_settings_set (job->priv->print_settings,
 				GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
-			"u", MAX (1, gtk_spin_button_get_value_as_int (job->priv->line_numbers_spinbutton)));
+				"u", MAX (1, num));
 	}
 	else
 	{
 		g_settings_set (job->priv->print_settings,
-				GEDIT_SETTINGS_PRINT_LINE_NUMBERS, "u", 0);
+				GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
+				"u", 0);
 	}
 
-	if (!gtk_toggle_button_get_active (job->priv->text_wrapping_checkbutton))
-	{
-		wrap_mode = GTK_WRAP_NONE;
-	}
-	else
+	if (gtk_toggle_button_get_active (job->priv->text_wrapping_checkbutton))
 	{
 		if (gtk_toggle_button_get_active (job->priv->do_not_split_checkbutton))
 		{
@@ -405,6 +418,10 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 		{
 			wrap_mode = GTK_WRAP_CHAR;
 		}
+	}
+	else
+	{
+		wrap_mode = GTK_WRAP_NONE;
 	}
 
 	g_settings_set_enum (job->priv->print_settings,
@@ -422,38 +439,46 @@ create_compositor (GeditPrintJob *job)
 	GtkWrapMode wrap_mode;
 	guint print_line_numbers;
 	gboolean print_header;
+	guint tab_width;
 
-	/* Create and initialize print compositor */
 	print_font_body = g_settings_get_string (job->priv->print_settings,
 						 GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
+
 	print_font_header = g_settings_get_string (job->priv->print_settings,
 						   GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
+
 	print_font_numbers = g_settings_get_string (job->priv->print_settings,
 						    GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
-	syntax_hl = g_settings_get_boolean (job->priv->print_settings,
-					    GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING);
+
 	g_settings_get (job->priv->print_settings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
 			"u", &print_line_numbers);
+
 	print_header = g_settings_get_boolean (job->priv->print_settings,
 					       GEDIT_SETTINGS_PRINT_HEADER);
 
 	wrap_mode = g_settings_get_enum (job->priv->print_settings,
 					 GEDIT_SETTINGS_PRINT_WRAP_MODE);
 
+	syntax_hl = g_settings_get_boolean (job->priv->print_settings,
+					    GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING);
+
+	syntax_hl &= gtk_source_buffer_get_highlight_syntax (GTK_SOURCE_BUFFER (job->priv->doc));
+
+	tab_width = gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (job->priv->view));
+
 	job->priv->compositor = GTK_SOURCE_PRINT_COMPOSITOR (
-					g_object_new (GTK_SOURCE_TYPE_PRINT_COMPOSITOR,
-						     "buffer", GTK_SOURCE_BUFFER (job->priv->doc),
-						     "tab-width", gtk_source_view_get_tab_width (GTK_SOURCE_VIEW (job->priv->view)),
-						     "highlight-syntax", gtk_source_buffer_get_highlight_syntax (GTK_SOURCE_BUFFER (job->priv->doc)) &&
-									 syntax_hl,
-						     "wrap-mode", wrap_mode,
-						     "print-line-numbers", print_line_numbers,
-						     "print-header", print_header,
-						     "print-footer", FALSE,
-						     "body-font-name", print_font_body,
-						     "line-numbers-font-name", print_font_numbers,
-						     "header-font-name", print_font_header,
-						     NULL));
+		g_object_new (GTK_SOURCE_TYPE_PRINT_COMPOSITOR,
+			      "buffer", GTK_SOURCE_BUFFER (job->priv->doc),
+			      "tab-width", tab_width,
+			      "highlight-syntax", syntax_hl,
+			      "wrap-mode", wrap_mode,
+			      "print-line-numbers", print_line_numbers,
+			      "print-header", print_header,
+			      "print-footer", FALSE,
+			      "body-font-name", print_font_body,
+			      "line-numbers-font-name", print_font_numbers,
+			      "header-font-name", print_font_header,
+			      NULL));
 
 	g_free (print_font_body);
 	g_free (print_font_header);
