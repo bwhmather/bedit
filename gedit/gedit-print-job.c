@@ -230,24 +230,6 @@ gedit_print_job_init (GeditPrintJob *job)
 }
 
 static void
-wrap_mode_checkbutton_toggled (GtkToggleButton *button,
-			       GeditPrintJob   *job)
-{
-	if (!gtk_toggle_button_get_active (job->priv->text_wrapping_checkbutton))
-	{
-		gtk_widget_set_sensitive (GTK_WIDGET (job->priv->do_not_split_checkbutton),
-					  FALSE);
-		gtk_toggle_button_set_inconsistent (job->priv->do_not_split_checkbutton, TRUE);
-	}
-	else
-	{
-		gtk_widget_set_sensitive (GTK_WIDGET (job->priv->do_not_split_checkbutton),
-					  TRUE);
-		gtk_toggle_button_set_inconsistent (job->priv->do_not_split_checkbutton, FALSE);
-	}
-}
-
-static void
 restore_button_clicked (GtkButton     *button,
 			GeditPrintJob *job)
 
@@ -381,22 +363,16 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 
 		default:
 			gtk_toggle_button_set_active (job->priv->text_wrapping_checkbutton, FALSE);
-			gtk_toggle_button_set_inconsistent (job->priv->do_not_split_checkbutton, TRUE);
 			break;
 	}
 
-	gtk_widget_set_sensitive (GTK_WIDGET (job->priv->do_not_split_checkbutton),
-				  wrap_mode != GTK_WRAP_NONE);
+	g_object_bind_property (job->priv->text_wrapping_checkbutton, "active",
+				job->priv->do_not_split_checkbutton, "sensitive",
+				G_BINDING_SYNC_CREATE);
 
-	g_signal_connect (job->priv->text_wrapping_checkbutton,
-			  "toggled",
-			  G_CALLBACK (wrap_mode_checkbutton_toggled),
-			  job);
-
-	g_signal_connect (job->priv->do_not_split_checkbutton,
-			  "toggled",
-			  G_CALLBACK (wrap_mode_checkbutton_toggled),
-			  job);
+	g_object_bind_property (job->priv->text_wrapping_checkbutton, "active",
+				job->priv->do_not_split_checkbutton, "inconsistent",
+				G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
 
 	/* Restore */
 	g_signal_connect (job->priv->restore_button,
