@@ -1,5 +1,5 @@
 /*
- * gedit-print.c
+ * gedit-print-job.c
  * This file is part of gedit
  *
  * Copyright (C) 2000-2001 Chema Celorio, Paolo Maggi
@@ -93,16 +93,9 @@ static guint print_job_signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditPrintJob, gedit_print_job, G_TYPE_OBJECT)
 
-static void          end_print_cb      (GtkPrintOperation *operation,
-                                        GtkPrintContext   *context,
-                                        GeditPrintJob     *job);
-
-static void          done_cb           (GtkPrintOperation       *operation,
-                                        GtkPrintOperationResult  result,
-                                        GeditPrintJob           *job);
-
 static void
-set_view (GeditPrintJob *job, GeditView *view)
+set_view (GeditPrintJob *job,
+	  GeditView     *view)
 {
 	job->priv->view = view;
 	job->priv->doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
@@ -121,6 +114,7 @@ gedit_print_job_get_property (GObject    *object,
 		case PROP_VIEW:
 			g_value_set_object (value, job->priv->view);
 			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -140,10 +134,23 @@ gedit_print_job_set_property (GObject      *object,
 		case PROP_VIEW:
 			set_view (job, g_value_get_object (value));
 			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
 	}
+}
+
+static void
+gedit_print_job_dispose (GObject *object)
+{
+	GeditPrintJob *job = GEDIT_PRINT_JOB (object);
+
+	g_clear_object (&job->priv->print_settings);
+	g_clear_object (&job->priv->compositor);
+	g_clear_object (&job->priv->operation);
+
+	G_OBJECT_CLASS (gedit_print_job_parent_class)->dispose (object);
 }
 
 static void
@@ -157,27 +164,6 @@ gedit_print_job_finalize (GObject *object)
 }
 
 static void
-gedit_print_job_dispose (GObject *object)
-{
-	GeditPrintJob *job = GEDIT_PRINT_JOB (object);
-
-	g_clear_object (&job->priv->print_settings);
-	g_clear_object (&job->priv->compositor);
-
-	if (job->priv->operation != NULL)
-	{
-		g_signal_handlers_disconnect_by_func (job->priv->operation,
-		                                      end_print_cb, job);
-		g_signal_handlers_disconnect_by_func (job->priv->operation,
-		                                      done_cb, job);
-		g_object_unref (job->priv->operation);
-		job->priv->operation = NULL;
-	}
-
-	G_OBJECT_CLASS (gedit_print_job_parent_class)->dispose (object);
-}
-
-static void
 gedit_print_job_class_init (GeditPrintJobClass *klass)
 {
 	GObjectClass *object_class;
@@ -186,8 +172,8 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 
 	object_class->get_property = gedit_print_job_get_property;
 	object_class->set_property = gedit_print_job_set_property;
-	object_class->finalize = gedit_print_job_finalize;
 	object_class->dispose = gedit_print_job_dispose;
+	object_class->finalize = gedit_print_job_finalize;
 
 	g_object_class_install_property (object_class,
 					 PROP_VIEW,
@@ -232,6 +218,18 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 			      2,
 			      G_TYPE_UINT,
 			      G_TYPE_POINTER);
+}
+
+static void
+gedit_print_job_init (GeditPrintJob *job)
+{
+	job->priv = gedit_print_job_get_instance_private (job);
+
+	job->priv->print_settings = g_settings_new ("org.gnome.gedit.preferences.print");
+
+	job->priv->status = GEDIT_PRINT_JOB_STATUS_INIT;
+
+	job->priv->status_string = g_strdup (_("Preparing..."));
 }
 
 static void
@@ -735,7 +733,9 @@ done_cb (GtkPrintOperation       *operation,
 	g_object_unref (job);
 }
 
-/* Note that gedit_print_job_print can can only be called once on a given GeditPrintJob */
+/* Note that gedit_print_job_print() can only be called once on a given
+ * GeditPrintJob.
+ */
 GtkPrintOperationResult
 gedit_print_job_print (GeditPrintJob            *job,
 		       GtkPrintOperationAction   action,
@@ -780,51 +780,48 @@ gedit_print_job_print (GeditPrintJob            *job,
 			  "create-custom-widget",
 			  G_CALLBACK (create_custom_widget_cb),
 			  job);
+
 	g_signal_connect (priv->operation,
 			  "custom-widget-apply",
 			  G_CALLBACK (custom_widget_apply_cb),
 			  job);
+
   	g_signal_connect (priv->operation,
 			  "begin-print",
 			  G_CALLBACK (begin_print_cb),
 			  job);
+
 	g_signal_connect (priv->operation,
 			  "preview",
 			  G_CALLBACK (preview_cb),
 			  job);
+
   	g_signal_connect (priv->operation,
 			  "paginate",
 			  G_CALLBACK (paginate_cb),
 			  job);
+
 	g_signal_connect (priv->operation,
 			  "draw-page",
 			  G_CALLBACK (draw_page_cb),
 			  job);
-	g_signal_connect (priv->operation,
-			  "end-print",
-			  G_CALLBACK (end_print_cb),
-			  job);
-	g_signal_connect (priv->operation,
-			  "done",
-			  G_CALLBACK (done_cb),
-			  job);
+
+	g_signal_connect_object (priv->operation,
+				 "end-print",
+				 G_CALLBACK (end_print_cb),
+				 job,
+				 0);
+
+	g_signal_connect_object (priv->operation,
+				 "done",
+				 G_CALLBACK (done_cb),
+				 job,
+				 0);
 
 	return gtk_print_operation_run (priv->operation,
 					action,
 					parent,
 					error);
-}
-
-static void
-gedit_print_job_init (GeditPrintJob *job)
-{
-	job->priv = gedit_print_job_get_instance_private (job);
-
-	job->priv->print_settings = g_settings_new ("org.gnome.gedit.preferences.print");
-
-	job->priv->status = GEDIT_PRINT_JOB_STATUS_INIT;
-
-	job->priv->status_string = g_strdup (_("Preparing..."));
 }
 
 GeditPrintJob *
