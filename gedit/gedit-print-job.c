@@ -62,14 +62,12 @@ struct _GeditPrintJobPrivate
 	GtkToggleButton *syntax_checkbutton;
 	GtkToggleButton *page_header_checkbutton;
 	GtkToggleButton *line_numbers_checkbutton;
-	GtkWidget *line_numbers_hbox;
 	GtkSpinButton *line_numbers_spinbutton;
 	GtkToggleButton *text_wrapping_checkbutton;
 	GtkToggleButton *do_not_split_checkbutton;
 	GtkFontButton *body_fontbutton;
 	GtkFontButton *headers_fontbutton;
 	GtkFontButton *numbers_fontbutton;
-	GtkWidget *restore_button;
 };
 
 enum
@@ -245,6 +243,8 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 {
 	GtkBuilder *builder;
 	GtkWidget *contents;
+	GtkWidget *line_numbers_hbox;
+	GtkWidget *restore_button;
 	guint line_numbers;
 	GtkWrapMode wrap_mode;
 
@@ -261,7 +261,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	g_object_ref (contents);
 	job->priv->syntax_checkbutton = GTK_TOGGLE_BUTTON (gtk_builder_get_object (builder, "syntax_checkbutton"));
 	job->priv->line_numbers_checkbutton = GTK_TOGGLE_BUTTON (gtk_builder_get_object (builder, "line_numbers_checkbutton"));
-	job->priv->line_numbers_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "line_numbers_hbox"));
+	line_numbers_hbox = GTK_WIDGET (gtk_builder_get_object (builder, "line_numbers_hbox"));
 	job->priv->line_numbers_spinbutton = GTK_SPIN_BUTTON (gtk_builder_get_object (builder, "line_numbers_spinbutton"));
 	job->priv->page_header_checkbutton = GTK_TOGGLE_BUTTON (gtk_builder_get_object (builder, "page_header_checkbutton"));
 	job->priv->text_wrapping_checkbutton = GTK_TOGGLE_BUTTON (gtk_builder_get_object (builder, "text_wrapping_checkbutton"));
@@ -269,7 +269,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	job->priv->body_fontbutton = GTK_FONT_BUTTON (gtk_builder_get_object (builder, "body_fontbutton"));
 	job->priv->headers_fontbutton = GTK_FONT_BUTTON (gtk_builder_get_object (builder, "headers_fontbutton"));
 	job->priv->numbers_fontbutton = GTK_FONT_BUTTON (gtk_builder_get_object (builder, "numbers_fontbutton"));
-	job->priv->restore_button = GTK_WIDGET (gtk_builder_get_object (builder, "restore_button"));
+	restore_button = GTK_WIDGET (gtk_builder_get_object (builder, "restore_button"));
 	g_object_unref (builder);
 
 	/* Syntax highlighting */
@@ -299,7 +299,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 				      line_numbers > 0);
 
 	g_object_bind_property (job->priv->line_numbers_checkbutton, "active",
-				job->priv->line_numbers_hbox, "sensitive",
+				line_numbers_hbox, "sensitive",
 				G_BINDING_SYNC_CREATE);
 
 	/* Fonts */
@@ -345,7 +345,7 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 				G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
 
 	/* Restore */
-	g_signal_connect (job->priv->restore_button,
+	g_signal_connect (restore_button,
 			  "clicked",
 			  G_CALLBACK (restore_button_clicked),
 			  job);
