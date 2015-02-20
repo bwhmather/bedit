@@ -234,29 +234,9 @@ restore_button_clicked (GtkButton     *button,
 			GeditPrintJob *job)
 
 {
-	gchar *body, *header, *numbers;
-
-	g_settings_reset (job->priv->print_settings,
-			  GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
-	g_settings_reset (job->priv->print_settings,
-			  GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
-	g_settings_reset (job->priv->print_settings,
-			  GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
-
-	body = g_settings_get_string (job->priv->print_settings,
-				      GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
-	header = g_settings_get_string (job->priv->print_settings,
-					GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
-	numbers = g_settings_get_string (job->priv->print_settings,
-					 GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
-
-	gtk_font_button_set_font_name (job->priv->body_fontbutton, body);
-	gtk_font_button_set_font_name (job->priv->headers_fontbutton, header);
-	gtk_font_button_set_font_name (job->priv->numbers_fontbutton, numbers);
-
-	g_free (body);
-	g_free (header);
-	g_free (numbers);
+	g_settings_reset (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
+	g_settings_reset (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
+	g_settings_reset (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
 }
 
 static GObject *
@@ -267,11 +247,6 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	GtkWidget *contents;
 	guint line_numbers;
 	GtkWrapMode wrap_mode;
-	gboolean syntax_hl;
-	gboolean print_header;
-	gchar *font_body;
-	gchar *font_header;
-	gchar *font_numbers;
 
 	gchar *root_objects[] = {
 		"adjustment1",
@@ -298,16 +273,14 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	g_object_unref (builder);
 
 	/* Syntax highlighting */
-	syntax_hl = g_settings_get_boolean (job->priv->print_settings,
-					    GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING);
-
-	gtk_toggle_button_set_active (job->priv->syntax_checkbutton, syntax_hl);
+	g_settings_bind (job->priv->print_settings, GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING,
+			 job->priv->syntax_checkbutton, "active",
+			 G_SETTINGS_BIND_GET);
 
 	/* Print header */
-	print_header = g_settings_get_boolean (job->priv->print_settings,
-					       GEDIT_SETTINGS_PRINT_HEADER);
-
-	gtk_toggle_button_set_active (job->priv->page_header_checkbutton, print_header);
+	g_settings_bind (job->priv->print_settings, GEDIT_SETTINGS_PRINT_HEADER,
+			 job->priv->page_header_checkbutton, "active",
+			 G_SETTINGS_BIND_GET);
 
 	/* Line numbers */
 	g_settings_get (job->priv->print_settings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
@@ -330,20 +303,17 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 				G_BINDING_SYNC_CREATE);
 
 	/* Fonts */
-	font_body = g_settings_get_string (job->priv->print_settings,
-					   GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
-	font_header = g_settings_get_string (job->priv->print_settings,
-					     GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
-	font_numbers = g_settings_get_string (job->priv->print_settings,
-					      GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
+	g_settings_bind (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO,
+			 job->priv->body_fontbutton, "font-name",
+			 G_SETTINGS_BIND_GET);
 
-	gtk_font_button_set_font_name (job->priv->body_fontbutton, font_body);
-	gtk_font_button_set_font_name (job->priv->headers_fontbutton, font_header);
-	gtk_font_button_set_font_name (job->priv->numbers_fontbutton, font_numbers);
+	g_settings_bind (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO,
+			 job->priv->headers_fontbutton, "font-name",
+			 G_SETTINGS_BIND_GET);
 
-	g_free (font_body);
-	g_free (font_header);
-	g_free (font_numbers);
+	g_settings_bind (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO,
+			 job->priv->numbers_fontbutton, "font-name",
+			 G_SETTINGS_BIND_GET);
 
 	/* Wrap mode */
 	wrap_mode = g_settings_get_enum (job->priv->print_settings,
