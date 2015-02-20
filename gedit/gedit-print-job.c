@@ -230,14 +230,6 @@ gedit_print_job_init (GeditPrintJob *job)
 }
 
 static void
-line_numbers_checkbutton_toggled (GtkToggleButton *button,
-				  GeditPrintJob   *job)
-{
-	gtk_widget_set_sensitive (job->priv->line_numbers_hbox,
-				  gtk_toggle_button_get_active (button));
-}
-
-static void
 wrap_mode_checkbutton_toggled (GtkToggleButton *button,
 			       GeditPrintJob   *job)
 {
@@ -339,24 +331,21 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	g_settings_get (job->priv->print_settings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
 			"u", &line_numbers);
 
-	gtk_toggle_button_set_active (job->priv->line_numbers_checkbutton,
-				      line_numbers > 0);
-
 	if (line_numbers > 0)
 	{
 		gtk_spin_button_set_value (job->priv->line_numbers_spinbutton, line_numbers);
-		gtk_widget_set_sensitive (job->priv->line_numbers_hbox, TRUE);
 	}
 	else
 	{
 		gtk_spin_button_set_value (job->priv->line_numbers_spinbutton, 1);
-		gtk_widget_set_sensitive (job->priv->line_numbers_hbox, FALSE);
 	}
 
-	g_signal_connect (job->priv->line_numbers_checkbutton,
-			  "toggled",
-			  G_CALLBACK (line_numbers_checkbutton_toggled),
-			  job);
+	gtk_toggle_button_set_active (job->priv->line_numbers_checkbutton,
+				      line_numbers > 0);
+
+	g_object_bind_property (job->priv->line_numbers_checkbutton, "active",
+				job->priv->line_numbers_hbox, "sensitive",
+				G_BINDING_SYNC_CREATE);
 
 	/* Fonts */
 	font_body = g_settings_get_string (job->priv->print_settings,
