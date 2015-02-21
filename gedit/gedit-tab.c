@@ -51,9 +51,9 @@ struct _GeditTabPrivate
 
 	GtkWidget	       *info_bar;
 	GtkWidget	       *info_bar_hidden;
-	GtkWidget	       *print_preview;
 
 	GeditPrintJob          *print_job;
+	GtkWidget	       *print_preview;
 
 	GTask                  *task_saver;
 	GtkSourceFileSaverFlags save_flags;
@@ -2739,11 +2739,7 @@ done_printing_cb (GeditPrintJob       *job,
 	view = gedit_tab_get_view (tab);
 	gtk_widget_grab_focus (GTK_WIDGET (view));
 
-	if (tab->priv->print_job != NULL)
-	{
-		g_object_unref (tab->priv->print_job);
-		tab->priv->print_job = NULL;
-	}
+	g_clear_object (&tab->priv->print_job);
 }
 
 #if 0
@@ -2910,8 +2906,6 @@ _gedit_tab_print (GeditTab *tab)
 	view = gedit_tab_get_view (tab);
 
 	tab->priv->print_job = gedit_print_job_new (view);
-	g_object_add_weak_pointer (G_OBJECT (tab->priv->print_job),
-				   (gpointer *) &tab->priv->print_job);
 
 	show_printing_info_bar (tab);
 
@@ -2954,6 +2948,7 @@ _gedit_tab_print (GeditTab *tab)
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 		g_warning ("Async print preview failed (%s)", error->message);
 		g_object_unref (tab->priv->print_job);
+		tab->priv->print_job = NULL;
 		g_error_free (error);
 	}
 
