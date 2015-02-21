@@ -38,15 +38,13 @@
 
 struct _GeditPrintJobPrivate
 {
-	GSettings *print_settings;
+	GSettings *gsettings;
 
 	GeditView *view;
 	GeditDocument *doc;
 
 	GtkPrintOperation *operation;
 	GtkSourcePrintCompositor *compositor;
-
-	GtkPrintSettings *settings;
 
 	GtkWidget *preview;
 
@@ -140,9 +138,9 @@ gedit_print_job_dispose (GObject *object)
 {
 	GeditPrintJob *job = GEDIT_PRINT_JOB (object);
 
-	g_clear_object (&job->priv->print_settings);
-	g_clear_object (&job->priv->compositor);
+	g_clear_object (&job->priv->gsettings);
 	g_clear_object (&job->priv->operation);
+	g_clear_object (&job->priv->compositor);
 
 	G_OBJECT_CLASS (gedit_print_job_parent_class)->dispose (object);
 }
@@ -219,7 +217,7 @@ gedit_print_job_init (GeditPrintJob *job)
 {
 	job->priv = gedit_print_job_get_instance_private (job);
 
-	job->priv->print_settings = g_settings_new ("org.gnome.gedit.preferences.print");
+	job->priv->gsettings = g_settings_new ("org.gnome.gedit.preferences.print");
 
 	job->priv->status_string = g_strdup (_("Preparing..."));
 }
@@ -229,9 +227,9 @@ restore_button_clicked (GtkButton     *button,
 			GeditPrintJob *job)
 
 {
-	g_settings_reset (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
-	g_settings_reset (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
-	g_settings_reset (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
+	g_settings_reset (job->priv->gsettings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
+	g_settings_reset (job->priv->gsettings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
+	g_settings_reset (job->priv->gsettings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
 }
 
 static GObject *
@@ -270,17 +268,17 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 	g_object_unref (builder);
 
 	/* Syntax highlighting */
-	g_settings_bind (job->priv->print_settings, GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING,
+	g_settings_bind (job->priv->gsettings, GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING,
 			 job->priv->syntax_checkbutton, "active",
 			 G_SETTINGS_BIND_GET);
 
 	/* Print header */
-	g_settings_bind (job->priv->print_settings, GEDIT_SETTINGS_PRINT_HEADER,
+	g_settings_bind (job->priv->gsettings, GEDIT_SETTINGS_PRINT_HEADER,
 			 job->priv->page_header_checkbutton, "active",
 			 G_SETTINGS_BIND_GET);
 
 	/* Line numbers */
-	g_settings_get (job->priv->print_settings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
+	g_settings_get (job->priv->gsettings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
 			"u", &line_numbers);
 
 	if (line_numbers > 0)
@@ -300,20 +298,20 @@ create_custom_widget_cb (GtkPrintOperation *operation,
 				G_BINDING_SYNC_CREATE);
 
 	/* Fonts */
-	g_settings_bind (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO,
+	g_settings_bind (job->priv->gsettings, GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO,
 			 job->priv->body_fontbutton, "font-name",
 			 G_SETTINGS_BIND_GET);
 
-	g_settings_bind (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO,
+	g_settings_bind (job->priv->gsettings, GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO,
 			 job->priv->headers_fontbutton, "font-name",
 			 G_SETTINGS_BIND_GET);
 
-	g_settings_bind (job->priv->print_settings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO,
+	g_settings_bind (job->priv->gsettings, GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO,
 			 job->priv->numbers_fontbutton, "font-name",
 			 G_SETTINGS_BIND_GET);
 
 	/* Wrap mode */
-	wrap_mode = g_settings_get_enum (job->priv->print_settings,
+	wrap_mode = g_settings_get_enum (job->priv->gsettings,
 					 GEDIT_SETTINGS_PRINT_WRAP_MODE);
 
 	switch (wrap_mode)
@@ -368,23 +366,23 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 	header_font = gtk_font_button_get_font_name (job->priv->headers_fontbutton);
 	numbers_font = gtk_font_button_get_font_name (job->priv->numbers_fontbutton);
 
-	g_settings_set_boolean (job->priv->print_settings,
+	g_settings_set_boolean (job->priv->gsettings,
 				GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING,
 				syntax);
 
-	g_settings_set_boolean (job->priv->print_settings,
+	g_settings_set_boolean (job->priv->gsettings,
 				GEDIT_SETTINGS_PRINT_HEADER,
 				page_header);
 
-	g_settings_set_string (job->priv->print_settings,
+	g_settings_set_string (job->priv->gsettings,
 			       GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO,
 			       body_font);
 
-	g_settings_set_string (job->priv->print_settings,
+	g_settings_set_string (job->priv->gsettings,
 			       GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO,
 			       header_font);
 
-	g_settings_set_string (job->priv->print_settings,
+	g_settings_set_string (job->priv->gsettings,
 			       GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO,
 			       numbers_font);
 
@@ -394,13 +392,13 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 
 		num = gtk_spin_button_get_value_as_int (job->priv->line_numbers_spinbutton);
 
-		g_settings_set (job->priv->print_settings,
+		g_settings_set (job->priv->gsettings,
 				GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
 				"u", MAX (1, num));
 	}
 	else
 	{
-		g_settings_set (job->priv->print_settings,
+		g_settings_set (job->priv->gsettings,
 				GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
 				"u", 0);
 	}
@@ -421,7 +419,7 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 		wrap_mode = GTK_WRAP_NONE;
 	}
 
-	g_settings_set_enum (job->priv->print_settings,
+	g_settings_set_enum (job->priv->gsettings,
 			     GEDIT_SETTINGS_PRINT_WRAP_MODE,
 			     wrap_mode);
 }
@@ -478,25 +476,25 @@ create_compositor (GeditPrintJob *job)
 	gboolean print_header;
 	guint tab_width;
 
-	print_font_body = g_settings_get_string (job->priv->print_settings,
+	print_font_body = g_settings_get_string (job->priv->gsettings,
 						 GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO);
 
-	print_font_header = g_settings_get_string (job->priv->print_settings,
+	print_font_header = g_settings_get_string (job->priv->gsettings,
 						   GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO);
 
-	print_font_numbers = g_settings_get_string (job->priv->print_settings,
+	print_font_numbers = g_settings_get_string (job->priv->gsettings,
 						    GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO);
 
-	g_settings_get (job->priv->print_settings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
+	g_settings_get (job->priv->gsettings, GEDIT_SETTINGS_PRINT_LINE_NUMBERS,
 			"u", &print_line_numbers);
 
-	print_header = g_settings_get_boolean (job->priv->print_settings,
+	print_header = g_settings_get_boolean (job->priv->gsettings,
 					       GEDIT_SETTINGS_PRINT_HEADER);
 
-	wrap_mode = g_settings_get_enum (job->priv->print_settings,
+	wrap_mode = g_settings_get_enum (job->priv->gsettings,
 					 GEDIT_SETTINGS_PRINT_WRAP_MODE);
 
-	syntax_hl = g_settings_get_boolean (job->priv->print_settings,
+	syntax_hl = g_settings_get_boolean (job->priv->gsettings,
 					    GEDIT_SETTINGS_PRINT_SYNTAX_HIGHLIGHTING);
 
 	syntax_hl &= gtk_source_buffer_get_highlight_syntax (GTK_SOURCE_BUFFER (job->priv->doc));
