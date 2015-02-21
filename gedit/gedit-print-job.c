@@ -663,11 +663,7 @@ done_cb (GtkPrintOperation       *operation,
 
 	/* Avoid that job is destroyed in the handler of the "done" message. */
 	g_object_ref (job);
-
 	g_signal_emit (job, print_job_signals[DONE], 0, print_result, error);
-
-	g_clear_object (&job->priv->operation);
-
 	g_object_unref (job);
 }
 
@@ -694,6 +690,7 @@ gedit_print_job_print (GeditPrintJob            *job,
 {
 	gchar *job_name;
 
+	g_return_val_if_fail (job->priv->operation == NULL, GTK_PRINT_OPERATION_RESULT_ERROR);
 	g_return_val_if_fail (job->priv->compositor == NULL, GTK_PRINT_OPERATION_RESULT_ERROR);
 
 	job->priv->operation = gtk_print_operation_new ();
