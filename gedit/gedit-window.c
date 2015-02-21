@@ -599,8 +599,7 @@ update_actions_sensitivity (GeditWindow *window)
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
-	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
-	                              (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
 	                             (doc != NULL) && !gedit_document_get_readonly (doc) &&
 	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 
@@ -608,8 +607,7 @@ update_actions_sensitivity (GeditWindow *window)
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
 	                              (state == GEDIT_TAB_STATE_SAVING_ERROR) ||
-	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION) ||
-	                              (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)) &&
+	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
 	                             (doc != NULL) &&
 	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 
