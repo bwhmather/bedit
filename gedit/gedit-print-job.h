@@ -40,7 +40,6 @@ typedef struct _GeditPrintJobPrivate	GeditPrintJobPrivate;
 
 typedef enum
 {
-	GEDIT_PRINT_JOB_STATUS_INIT,
 	GEDIT_PRINT_JOB_STATUS_PAGINATING,
 	GEDIT_PRINT_JOB_STATUS_DRAWING
 } GeditPrintJobStatus;

@@ -4,6 +4,7 @@
  *
  * Copyright (C) 2000-2001 Chema Celorio, Paolo Maggi
  * Copyright (C) 2002-2008 Paolo Maggi
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -37,28 +38,24 @@
 
 struct _GeditPrintJobPrivate
 {
-	GSettings                *print_settings;
+	GSettings *print_settings;
 
-	GeditView                *view;
-	GeditDocument            *doc;
+	GeditView *view;
+	GeditDocument *doc;
 
-	GtkPrintOperation        *operation;
+	GtkPrintOperation *operation;
 	GtkSourcePrintCompositor *compositor;
 
-	GtkPrintSettings         *settings;
+	GtkPrintSettings *settings;
 
-	GtkWidget                *preview;
+	GtkWidget *preview;
 
-	GeditPrintJobStatus       status;
+	gchar *status_string;
+	gdouble progress;
 
-	gchar                    *status_string;
-
-	gdouble			  progress;
-
-	gboolean                  is_preview;
-
-	/* widgets part of the custom print preferences widget.
-	 * These pointers are valid just when the dialog is displayed */
+	/* Widgets part of the custom print preferences widget.
+	 * These pointers are valid just when the dialog is displayed.
+	 */
 	GtkToggleButton *syntax_checkbutton;
 	GtkToggleButton *page_header_checkbutton;
 	GtkToggleButton *line_numbers_checkbutton;
@@ -68,6 +65,8 @@ struct _GeditPrintJobPrivate
 	GtkFontButton *body_fontbutton;
 	GtkFontButton *headers_fontbutton;
 	GtkFontButton *numbers_fontbutton;
+
+	guint is_preview : 1;
 };
 
 enum
@@ -221,8 +220,6 @@ gedit_print_job_init (GeditPrintJob *job)
 	job->priv = gedit_print_job_get_instance_private (job);
 
 	job->priv->print_settings = g_settings_new ("org.gnome.gedit.preferences.print");
-
-	job->priv->status = GEDIT_PRINT_JOB_STATUS_INIT;
 
 	job->priv->status_string = g_strdup (_("Preparing..."));
 }
@@ -557,11 +554,12 @@ begin_print_cb (GtkPrintOperation *operation,
 {
 	create_compositor (job);
 
-	job->priv->status = GEDIT_PRINT_JOB_STATUS_PAGINATING;
-
 	job->priv->progress = 0.0;
 
-	g_signal_emit (job, print_job_signals[PRINTING], 0, job->priv->status);
+	g_signal_emit (job,
+		       print_job_signals[PRINTING],
+		       0,
+		       GEDIT_PRINT_JOB_STATUS_PAGINATING);
 }
 
 static gboolean
@@ -569,13 +567,11 @@ paginate_cb (GtkPrintOperation *operation,
 	     GtkPrintContext   *context,
 	     GeditPrintJob     *job)
 {
-	gboolean res;
+	gboolean finished;
 
-	job->priv->status = GEDIT_PRINT_JOB_STATUS_PAGINATING;
+	finished = gtk_source_print_compositor_paginate (job->priv->compositor, context);
 
-	res = gtk_source_print_compositor_paginate (job->priv->compositor, context);
-
-	if (res)
+	if (finished)
 	{
 		gint n_pages;
 
@@ -586,13 +582,19 @@ paginate_cb (GtkPrintOperation *operation,
 	job->priv->progress = gtk_source_print_compositor_get_pagination_progress (job->priv->compositor);
 
 	/* When previewing, the progress is just for pagination, when printing
-	 * it's split between pagination and rendering */
+	 * it's split between pagination and rendering.
+	 */
 	if (!job->priv->is_preview)
+	{
 		job->priv->progress /= 2.0;
+	}
 
-	g_signal_emit (job, print_job_signals[PRINTING], 0, job->priv->status);
+	g_signal_emit (job,
+		       print_job_signals[PRINTING],
+		       0,
+		       GEDIT_PRINT_JOB_STATUS_PAGINATING);
 
-	return res;
+	return finished;
 }
 
 static void
@@ -604,22 +606,23 @@ draw_page_cb (GtkPrintOperation *operation,
 	gint n_pages;
 
 	/* In preview, pages are drawn on the fly, so rendering is
-	 * not part of the progress */
+	 * not part of the progress.
+	 */
 	if (!job->priv->is_preview)
 	{
-		g_free (job->priv->status_string);
-
 		n_pages = gtk_source_print_compositor_get_n_pages (job->priv->compositor);
 
-		job->priv->status = GEDIT_PRINT_JOB_STATUS_DRAWING;
-
-		job->priv->status_string = g_strdup_printf ("Rendering page %d of %d...",
+		g_free (job->priv->status_string);
+		job->priv->status_string = g_strdup_printf (_("Rendering page %d of %d..."),
 							    page_nr + 1,
 							    n_pages);
 
 		job->priv->progress = page_nr / (2.0 * n_pages) + 0.5;
 
-		g_signal_emit (job, print_job_signals[PRINTING], 0, job->priv->status);
+		g_signal_emit (job,
+			       print_job_signals[PRINTING],
+			       0,
+			       GEDIT_PRINT_JOB_STATUS_DRAWING);
 	}
 
 	gtk_source_print_compositor_draw_page (job->priv->compositor, context, page_nr);
@@ -630,11 +633,7 @@ end_print_cb (GtkPrintOperation *operation,
 	      GtkPrintContext   *context,
 	      GeditPrintJob     *job)
 {
-	if (job->priv->compositor != NULL)
-	{
-		g_object_unref (job->priv->compositor);
-		job->priv->compositor = NULL;
-	}
+	g_clear_object (&job->priv->compositor);
 }
 
 static void
@@ -664,13 +663,12 @@ done_cb (GtkPrintOperation       *operation,
 			g_return_if_reached ();
 	}
 
-	/* Avoid job is destroyed in the handler of the "done" message */
+	/* Avoid that job is destroyed in the handler of the "done" message. */
 	g_object_ref (job);
 
 	g_signal_emit (job, print_job_signals[DONE], 0, print_result, error);
 
-	g_object_unref (operation);
-	job->priv->operation = NULL;
+	g_clear_object (&job->priv->operation);
 
 	g_object_unref (job);
 }
@@ -678,15 +676,11 @@ done_cb (GtkPrintOperation       *operation,
 GeditPrintJob *
 gedit_print_job_new (GeditView *view)
 {
-	GeditPrintJob *job;
-
 	g_return_val_if_fail (GEDIT_IS_VIEW (view), NULL);
 
-	job = GEDIT_PRINT_JOB (g_object_new (GEDIT_TYPE_PRINT_JOB,
-					     "view", view,
-					      NULL));
-
-	return job;
+	return g_object_new (GEDIT_TYPE_PRINT_JOB,
+			     "view", view,
+			     NULL);
 }
 
 /* Note that gedit_print_job_print() can only be called once on a given
