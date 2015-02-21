@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-02-18 06:05+0000\n"
-"PO-Revision-Date: 2015-02-18 15:38+0100\n"
+"POT-Creation-Date: 2015-02-21 10:44+0000\n"
+"PO-Revision-Date: 2015-02-21 14:48+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: slovenčina <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -49,7 +49,7 @@ msgstr "Jeho flexibilný systém zásuvných modulov umožňuje prispôsobenie a
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:775
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:724
 msgid "Text Editor"
 msgstr "Textový editor"
 
@@ -1175,18 +1175,23 @@ msgstr "Súbory farebnej schémy"
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nepodarilo sa odstrániť farebnú schému „%s“."
 
-#: ../gedit/gedit-print-job.c:556
+#: ../gedit/gedit-print-job.c:224
+msgid "Preparing..."
+msgstr "Pripravuje sa…"
+
+#: ../gedit/gedit-print-job.c:533
 #, c-format
 msgid "File: %s"
 msgstr "Súbor: %s"
 
-#: ../gedit/gedit-print-job.c:565
+#: ../gedit/gedit-print-job.c:542
 msgid "Page %N of %Q"
 msgstr "Stránka %N z %Q"
 
-#: ../gedit/gedit-print-job.c:827
-msgid "Preparing..."
-msgstr "Pripravuje sa…"
+#: ../gedit/gedit-print-job.c:616
+#, c-format
+msgid "Rendering page %d of %d..."
+msgstr "Vykresľuje sa stránka %d z %d…"
 
 #: ../gedit/gedit-print-preview.c:674
 #, c-format
@@ -2428,29 +2433,29 @@ msgstr "Ste si istý, že chcete natrvalo odstrániť vybrané súbory?"
 msgid "If you delete an item, it is permanently lost."
 msgstr "Ak zmažete položku, bude natrvalo stratená."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1781
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1807
 msgid "(Empty)"
 msgstr "(Prázdny)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3503
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3528
 msgid "The renamed file is currently filtered out. You need to adjust your filter settings to make the file visible"
 msgstr "Premenovaný súbor je momentálne odfiltrovaný. Aby ste súbor zviditeľnili, budete musieť prispôsobiť svoje nastavenia filtra"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3760
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3785
 msgid "Untitled File"
 msgstr "Nepomenovaný súbor"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3788
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3813
 msgid "The new file is currently filtered out. You need to adjust your filter settings to make the file visible"
 msgstr "Nový súbor je momentálne odfiltrovaný. Aby ste súbor zviditeľnili, budete musieť prispôsobiť vaše nastavenia filtra"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3819
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3844
 msgid "Untitled Folder"
 msgstr "Nepomenovaný priečinok"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3844
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3869
 msgid "The new directory is currently filtered out. You need to adjust your filter settings to make the directory visible"
 msgstr "Nový adresár je momentálne odfiltrovaný. Aby ste súbor zviditeľnili, budete musieť prispôsobiť vaše nastavenia filtra"
 
