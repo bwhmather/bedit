@@ -274,14 +274,9 @@ gedit_tab_dispose (GObject *object)
 {
 	GeditTab *tab = GEDIT_TAB (object);
 
-	if (tab->priv->print_job != NULL)
-	{
-		g_object_unref (tab->priv->print_job);
-		tab->priv->print_job = NULL;
-		tab->priv->print_preview = NULL;
-	}
-
 	g_clear_object (&tab->priv->editor);
+	g_clear_object (&tab->priv->print_job);
+	g_clear_object (&tab->priv->print_preview);
 	g_clear_object (&tab->priv->task_saver);
 
 	clear_loading (tab);
@@ -2143,6 +2138,23 @@ _gedit_tab_revert (GeditTab *tab)
 }
 
 static void
+close_printing (GeditTab *tab)
+{
+	if (tab->priv->print_preview != NULL)
+	{
+		gtk_widget_destroy (tab->priv->print_preview);
+	}
+
+	g_clear_object (&tab->priv->print_job);
+	g_clear_object (&tab->priv->print_preview);
+
+	/* destroy the info bar */
+	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+}
+
+static void
 saver_progress_cb (goffset   size,
 		   goffset   total_size,
 		   GeditTab *tab)
@@ -2383,7 +2395,7 @@ _gedit_tab_save_async (GeditTab            *tab,
 	 */
 	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
 	{
-		gtk_widget_destroy (tab->priv->print_preview);
+		close_printing (tab);
 	}
 
 	doc = gedit_tab_get_document (tab);
@@ -2537,7 +2549,7 @@ _gedit_tab_save_as_async (GeditTab                 *tab,
 	/* See note at _gedit_tab_save_async(). */
 	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
 	{
-		gtk_widget_destroy (tab->priv->print_preview);
+		close_printing (tab);
 	}
 
 	tab->priv->task_saver = g_task_new (tab, cancellable, callback, user_data);
@@ -2705,17 +2717,6 @@ done_printing_cb (GeditPrintJob       *job,
 			  tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW ||
 			  tab->priv->state == GEDIT_TAB_STATE_PRINTING);
 
-	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
-	{
-		/* print preview has been destroyed... */
-		tab->priv->print_preview = NULL;
-	}
-	else
-	{
-		/* destroy the info bar */
-		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
-	}
-
 	/* TODO: check status and error */
 
 	if (result == GEDIT_PRINT_JOB_RESULT_OK)
@@ -2723,12 +2724,10 @@ done_printing_cb (GeditPrintJob       *job,
 		store_print_settings (tab, job);
 	}
 
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+	close_printing (tab);
 
 	view = gedit_tab_get_view (tab);
 	gtk_widget_grab_focus (GTK_WIDGET (view));
-
-	g_clear_object (&tab->priv->print_job);
 }
 
 static void
@@ -2742,11 +2741,14 @@ show_preview_cb (GeditPrintJob     *job,
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
 	tab->priv->print_preview = GTK_WIDGET (preview);
+	g_object_ref_sink (tab->priv->print_preview);
+
 	gtk_box_pack_end (GTK_BOX (tab),
 			  tab->priv->print_preview,
 			  TRUE,
 			  TRUE,
 			  0);
+
 	gtk_widget_show (tab->priv->print_preview);
 	gtk_widget_grab_focus (tab->priv->print_preview);
 
@@ -2794,12 +2796,13 @@ _gedit_tab_print (GeditTab *tab)
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
-	/* FIXME: currently we can have just one printoperation going on
-	 * at a given time, so before starting the print we close the preview.
-	 * Would be nice to handle it properly though */
+	/* FIXME: currently we can have just one printoperation going on at a
+	 * given time, so before starting the print we close the preview.
+	 * Would be nice to handle it properly though.
+	 */
 	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
 	{
-		gtk_widget_destroy (tab->priv->print_preview);
+		close_printing (tab);
 	}
 
 	g_return_if_fail (tab->priv->print_job == NULL);
@@ -2810,6 +2813,9 @@ _gedit_tab_print (GeditTab *tab)
 	tab->priv->print_job = gedit_print_job_new (view);
 
 	show_printing_info_bar (tab);
+
+	/* hide until we start printing */
+	gtk_widget_hide (tab->priv->info_bar);
 
 	g_signal_connect_object (tab->priv->print_job,
 				 "printing",
@@ -2829,8 +2835,6 @@ _gedit_tab_print (GeditTab *tab)
 				 tab,
 				 0);
 
-	/* hide until we start printing */
-	gtk_widget_hide (tab->priv->info_bar);
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_PRINTING);
 
 	setup = get_page_setup (tab);
@@ -2847,11 +2851,10 @@ _gedit_tab_print (GeditTab *tab)
 	if (res == GTK_PRINT_OPERATION_RESULT_ERROR)
 	{
 		/* FIXME: go in error state */
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 		g_warning ("Async print preview failed (%s)", error->message);
-		g_object_unref (tab->priv->print_job);
-		tab->priv->print_job = NULL;
 		g_error_free (error);
+
+		close_printing (tab);
 	}
 
 	g_object_unref (setup);

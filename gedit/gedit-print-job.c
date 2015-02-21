@@ -141,6 +141,7 @@ gedit_print_job_dispose (GObject *object)
 	g_clear_object (&job->priv->gsettings);
 	g_clear_object (&job->priv->operation);
 	g_clear_object (&job->priv->compositor);
+	g_clear_object (&job->priv->preview);
 
 	G_OBJECT_CLASS (gedit_print_job_parent_class)->dispose (object);
 }
@@ -432,6 +433,8 @@ preview_ready (GtkPrintOperationPreview *gtk_preview,
 	job->priv->is_preview = TRUE;
 
 	g_signal_emit (job, print_job_signals[SHOW_PREVIEW], 0, job->priv->preview);
+
+	g_clear_object (&job->priv->preview);
 }
 
 static void
@@ -448,7 +451,9 @@ preview_cb (GtkPrintOperation        *op,
 	    GtkWindow                *parent,
 	    GeditPrintJob            *job)
 {
+	g_clear_object (&job->priv->preview);
 	job->priv->preview = gedit_print_preview_new (op, gtk_preview, context);
+	g_object_ref_sink (job->priv->preview);
 
 	g_signal_connect_after (gtk_preview,
 			        "ready",
