@@ -183,17 +183,13 @@ remove_auto_save_timeout (GeditTab *tab)
 static void
 update_auto_save_timeout (GeditTab *tab)
 {
-	gboolean good_state;
 	GeditDocument *doc;
 
 	gedit_debug (DEBUG_TAB);
 
-	good_state = (tab->priv->state == GEDIT_TAB_STATE_NORMAL ||
-		      tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
-
 	doc = gedit_tab_get_document (tab);
 
-	if (good_state &&
+	if (tab->priv->state == GEDIT_TAB_STATE_NORMAL &&
 	    tab->priv->auto_save &&
 	    !gedit_document_is_untitled (doc) &&
 	    !gedit_document_get_readonly (doc))
@@ -486,7 +482,6 @@ set_view_properties_according_to_state (GeditTab      *tab,
 	view = gedit_tab_get_view (tab);
 
 	val = ((state == GEDIT_TAB_STATE_NORMAL) &&
-	       (tab->priv->print_preview == NULL) &&
 	       tab->priv->editable);
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), val);
 
@@ -968,14 +963,7 @@ unrecoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 {
 	GeditView *view;
 
-	if (tab->priv->print_preview != NULL)
-	{
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
-	}
-	else
-	{
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
-	}
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
@@ -2298,14 +2286,7 @@ save_cb (GtkSourceFileSaver *saver,
 	{
 		gedit_recent_add_document (doc);
 
-		if (tab->priv->print_preview != NULL)
-		{
-			gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
-		}
-		else
-		{
-			gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
-		}
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 
 		tab->priv->ask_if_externally_modified = TRUE;
 
@@ -2391,6 +2372,20 @@ _gedit_tab_save_async (GeditTab            *tab,
 		return;
 	}
 
+	/* The Save and Save As window actions are insensitive when the print
+	 * preview is shown, but it's still possible to save several documents
+	 * at once (with the Save All action or when quitting gedit). In that
+	 * case, the print preview is simply closed. Handling correctly the
+	 * document saving when the print preview is shown is more complicated
+	 * and error-prone, it doesn't worth the effort. (the print preview
+	 * would need to be updated when the filename changes, dealing with file
+	 * saving errors is also more complicated, etc).
+	 */
+	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
+	{
+		gtk_widget_destroy (tab->priv->print_preview);
+	}
+
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (!gedit_document_is_untitled (doc));
 
@@ -2465,8 +2460,7 @@ gedit_tab_auto_save (GeditTab *tab)
 		return G_SOURCE_CONTINUE;
 	}
 
-	if (tab->priv->state != GEDIT_TAB_STATE_NORMAL &&
-	    tab->priv->state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
+	if (tab->priv->state != GEDIT_TAB_STATE_NORMAL)
 	{
 		gedit_debug_message (DEBUG_TAB, "Retry after 30 seconds");
 
@@ -2538,6 +2532,12 @@ _gedit_tab_save_as_async (GeditTab                 *tab,
 	{
 		g_warning ("GeditTab: file saver already exists.");
 		return;
+	}
+
+	/* See note at _gedit_tab_save_async(). */
+	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
+	{
+		gtk_widget_destroy (tab->priv->print_preview);
 	}
 
 	tab->priv->task_saver = g_task_new (tab, cancellable, callback, user_data);
