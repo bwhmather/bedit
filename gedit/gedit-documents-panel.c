@@ -33,7 +33,7 @@
 #include "gedit-notebook-popup-menu.h"
 #include "gedit-small-button.h"
 #include "gedit-utils.h"
-#include "gedit-commands.h"
+#include "gedit-commands-private.h"
 
 typedef struct _GeditDocumentsGenericRow GeditDocumentsGenericRow;
 typedef struct _GeditDocumentsGenericRow GeditDocumentsGroupRow;

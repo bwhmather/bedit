@@ -25,6 +25,7 @@
 #endif
 
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
 
 #include <gtk/gtk.h>
 

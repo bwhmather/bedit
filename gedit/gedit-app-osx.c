@@ -29,6 +29,7 @@
 #include "gedit-dirs.h"
 #include "gedit-debug.h"
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
 #include "gedit-recent.h"
 
 static GeditWindow *

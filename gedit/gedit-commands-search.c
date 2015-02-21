@@ -26,6 +26,7 @@
 #endif
 
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
 
 #include <string.h>
 #include <glib/gi18n.h>

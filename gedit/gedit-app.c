@@ -37,7 +37,7 @@
 #include <girepository.h>
 #endif
 
-#include "gedit-commands.h"
+#include "gedit-commands-private.h"
 #include "gedit-notebook.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"

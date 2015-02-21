@@ -40,6 +40,7 @@
 #include "gedit-statusbar.h"
 #include "gedit-utils.h"
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
 #include "gedit-debug.h"
 #include "gedit-documents-panel.h"
 #include "gedit-plugins-engine.h"

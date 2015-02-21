@@ -21,6 +21,8 @@
  */
 
 #include "gedit-commands.h"
+#include "gedit-commands-private.h"
+
 #include "gedit-window.h"
 #include "gedit-tab.h"
 #include "gedit-debug.h"
