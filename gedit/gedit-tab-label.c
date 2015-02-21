@@ -143,22 +143,32 @@ sync_name (GeditTab      *tab,
 }
 
 static void
-sync_state (GeditTab      *tab,
-	    GParamSpec    *pspec,
-	    GeditTabLabel *tab_label)
+update_close_button_sensitivity (GeditTabLabel *tab_label)
 {
-	GeditTabState  state;
-
-	g_return_if_fail (tab == tab_label->priv->tab);
-
-	state = gedit_tab_get_state (tab);
+	GeditTabState state = gedit_tab_get_state (tab_label->priv->tab);
 
 	gtk_widget_set_sensitive (tab_label->priv->close_button,
 				  tab_label->priv->close_button_sensitive &&
 				  (state != GEDIT_TAB_STATE_CLOSING) &&
 				  (state != GEDIT_TAB_STATE_SAVING)  &&
 				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
+				  (state != GEDIT_TAB_STATE_PRINTING) &&
+				  (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
 				  (state != GEDIT_TAB_STATE_SAVING_ERROR));
+}
+
+static void
+sync_state (GeditTab      *tab,
+	    GParamSpec    *pspec,
+	    GeditTabLabel *tab_label)
+{
+	GeditTabState state;
+
+	g_return_if_fail (tab == tab_label->priv->tab);
+
+	update_close_button_sensitivity (tab_label);
+
+	state = gedit_tab_get_state (tab);
 
 	if ((state == GEDIT_TAB_STATE_LOADING)   ||
 	    (state == GEDIT_TAB_STATE_SAVING)    ||
@@ -284,27 +294,15 @@ void
 gedit_tab_label_set_close_button_sensitive (GeditTabLabel *tab_label,
 					    gboolean       sensitive)
 {
-	GeditTabState state;
-
 	g_return_if_fail (GEDIT_IS_TAB_LABEL (tab_label));
 
 	sensitive = (sensitive != FALSE);
 
-	if (sensitive == tab_label->priv->close_button_sensitive)
-		return;
-
-	tab_label->priv->close_button_sensitive = sensitive;
-
-	state = gedit_tab_get_state (tab_label->priv->tab);
-
-	gtk_widget_set_sensitive (tab_label->priv->close_button,
-				  tab_label->priv->close_button_sensitive &&
-				  (state != GEDIT_TAB_STATE_CLOSING) &&
-				  (state != GEDIT_TAB_STATE_SAVING)  &&
-				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
-				  (state != GEDIT_TAB_STATE_PRINTING) &&
-				  (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
-				  (state != GEDIT_TAB_STATE_SAVING_ERROR));
+	if (tab_label->priv->close_button_sensitive != sensitive)
+	{
+		tab_label->priv->close_button_sensitive = sensitive;
+		update_close_button_sensitivity (tab_label);
+	}
 }
 
 GeditTab *
