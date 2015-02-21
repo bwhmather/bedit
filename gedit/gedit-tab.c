@@ -2712,27 +2712,16 @@ done_printing_cb (GeditPrintJob       *job,
 	}
 	else
 	{
-		g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->priv->info_bar));
-
-		set_info_bar (tab, NULL, GTK_RESPONSE_NONE); /* destroy the info bar */
+		/* destroy the info bar */
+		set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 	}
 
 	/* TODO: check status and error */
 
-	if (result ==  GEDIT_PRINT_JOB_RESULT_OK)
+	if (result == GEDIT_PRINT_JOB_RESULT_OK)
 	{
 		store_print_settings (tab, job);
 	}
-
-#if 0
-	if (tab->priv->print_preview != NULL)
-	{
-		/* If we were printing while showing the print preview,
-		   see bug #352658 */
-		gtk_widget_destroy (tab->priv->print_preview);
-		g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_PRINTING);
-	}
-#endif
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 
@@ -2742,43 +2731,15 @@ done_printing_cb (GeditPrintJob       *job,
 	g_clear_object (&tab->priv->print_job);
 }
 
-#if 0
-static void
-print_preview_destroyed (GtkWidget *preview,
-			 GeditTab  *tab)
-{
-	tab->priv->print_preview = NULL;
-
-	if (tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
-	{
-		GeditView *view;
-
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
-
-		view = gedit_tab_get_view (tab);
-		gtk_widget_grab_focus (GTK_WIDGET (view));
-	}
-	else
-	{
-		/* This should happen only when printing while showing the print
-		 * preview. In this case let us continue whithout changing
-		 * the state and show the document. See bug #352658 */
-		gtk_widget_show (tab->priv->view_scrolled_window);
-
-		g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_PRINTING);
-	}
-}
-#endif
-
 static void
 show_preview_cb (GeditPrintJob     *job,
 		 GeditPrintPreview *preview,
 		 GeditTab          *tab)
 {
-	/* g_return_if_fail (tab->priv->state == GEDIT_TAB_STATE_PRINT_PREVIEWING); */
 	g_return_if_fail (tab->priv->print_preview == NULL);
 
-	set_info_bar (tab, NULL, GTK_RESPONSE_NONE); /* destroy the info bar */
+	/* destroy the info bar */
+	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
 	tab->priv->print_preview = GTK_WIDGET (preview);
 	gtk_box_pack_end (GTK_BOX (tab),
@@ -2789,67 +2750,8 @@ show_preview_cb (GeditPrintJob     *job,
 	gtk_widget_show (tab->priv->print_preview);
 	gtk_widget_grab_focus (tab->priv->print_preview);
 
-/* when the preview gets destroyed we get "done" signal
-	g_signal_connect (tab->priv->print_preview,
-			  "destroy",
-			  G_CALLBACK (print_preview_destroyed),
-			  tab);
-*/
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
 }
-
-#if 0
-
-static void
-set_print_preview (GeditTab  *tab,
-		   GtkWidget *print_preview)
-{
-	if (tab->priv->print_preview == print_preview)
-		return;
-
-	if (tab->priv->print_preview != NULL)
-		gtk_widget_destroy (tab->priv->print_preview);
-
-	tab->priv->print_preview = print_preview;
-
-	gtk_box_pack_end (GTK_BOX (tab),
-			  tab->priv->print_preview,
-			  TRUE,
-			  TRUE,
-			  0);
-
-	gtk_widget_grab_focus (tab->priv->print_preview);
-
-	g_signal_connect (tab->priv->print_preview,
-			  "destroy",
-			  G_CALLBACK (print_preview_destroyed),
-			  tab);
-}
-
-static void
-preview_finished_cb (GtkSourcePrintJob *pjob, GeditTab *tab)
-{
-	GnomePrintJob *gjob;
-	GtkWidget *preview = NULL;
-
-	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->priv->info_bar));
-	set_info_bar (tab, NULL, GTK_RESPONSE_NONE); /* destroy the info bar */
-
-	gjob = gtk_source_print_job_get_print_job (pjob);
-
-	preview = gedit_print_job_preview_new (gjob);
- 	g_object_unref (gjob);
-
-	set_print_preview (tab, preview);
-
-	gtk_widget_show (preview);
-	g_object_unref (pjob);
-
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW);
-}
-
-
-#endif
 
 static void
 print_cancelled (GtkWidget *bar,
