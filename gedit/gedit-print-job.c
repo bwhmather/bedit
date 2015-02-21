@@ -430,6 +430,46 @@ custom_widget_apply_cb (GtkPrintOperation *operation,
 }
 
 static void
+preview_ready (GtkPrintOperationPreview *gtk_preview,
+	       GtkPrintContext          *context,
+	       GeditPrintJob            *job)
+{
+	job->priv->is_preview = TRUE;
+
+	g_signal_emit (job, print_job_signals[SHOW_PREVIEW], 0, job->priv->preview);
+}
+
+static void
+preview_destroyed (GtkWidget                *preview,
+		   GtkPrintOperationPreview *gtk_preview)
+{
+	gtk_print_operation_preview_end_preview (gtk_preview);
+}
+
+static gboolean
+preview_cb (GtkPrintOperation        *op,
+	    GtkPrintOperationPreview *gtk_preview,
+	    GtkPrintContext          *context,
+	    GtkWindow                *parent,
+	    GeditPrintJob            *job)
+{
+	job->priv->preview = gedit_print_preview_new (op, gtk_preview, context);
+
+	g_signal_connect_after (gtk_preview,
+			        "ready",
+				G_CALLBACK (preview_ready),
+				job);
+
+	/* FIXME: should this go in the preview widget itself? */
+	g_signal_connect (job->priv->preview,
+			  "destroy",
+			  G_CALLBACK (preview_destroyed),
+			  gtk_preview);
+
+	return TRUE;
+}
+
+static void
 create_compositor (GeditPrintJob *job)
 {
 	gchar *print_font_body;
@@ -522,46 +562,6 @@ begin_print_cb (GtkPrintOperation *operation,
 	job->priv->progress = 0.0;
 
 	g_signal_emit (job, print_job_signals[PRINTING], 0, job->priv->status);
-}
-
-static void
-preview_ready (GtkPrintOperationPreview *gtk_preview,
-	       GtkPrintContext          *context,
-	       GeditPrintJob            *job)
-{
-	job->priv->is_preview = TRUE;
-
-	g_signal_emit (job, print_job_signals[SHOW_PREVIEW], 0, job->priv->preview);
-}
-
-static void
-preview_destroyed (GtkWidget                *preview,
-		   GtkPrintOperationPreview *gtk_preview)
-{
-	gtk_print_operation_preview_end_preview (gtk_preview);
-}
-
-static gboolean
-preview_cb (GtkPrintOperation        *op,
-	    GtkPrintOperationPreview *gtk_preview,
-	    GtkPrintContext          *context,
-	    GtkWindow                *parent,
-	    GeditPrintJob            *job)
-{
-	job->priv->preview = gedit_print_preview_new (op, gtk_preview, context);
-
-	g_signal_connect_after (gtk_preview,
-			        "ready",
-				G_CALLBACK (preview_ready),
-				job);
-
-	/* FIXME: should this go in the preview widget itself? */
-	g_signal_connect (job->priv->preview,
-			  "destroy",
-			  G_CALLBACK (preview_destroyed),
-			  gtk_preview);
-
-	return TRUE;
 }
 
 static gboolean
@@ -675,6 +675,20 @@ done_cb (GtkPrintOperation       *operation,
 	g_object_unref (job);
 }
 
+GeditPrintJob *
+gedit_print_job_new (GeditView *view)
+{
+	GeditPrintJob *job;
+
+	g_return_val_if_fail (GEDIT_IS_VIEW (view), NULL);
+
+	job = GEDIT_PRINT_JOB (g_object_new (GEDIT_TYPE_PRINT_JOB,
+					     "view", view,
+					      NULL));
+
+	return job;
+}
+
 /* Note that gedit_print_job_print() can only be called once on a given
  * GeditPrintJob.
  */
@@ -728,13 +742,13 @@ gedit_print_job_print (GeditPrintJob            *job,
 			  job);
 
 	g_signal_connect (job->priv->operation,
-			  "begin-print",
-			  G_CALLBACK (begin_print_cb),
+			  "preview",
+			  G_CALLBACK (preview_cb),
 			  job);
 
 	g_signal_connect (job->priv->operation,
-			  "preview",
-			  G_CALLBACK (preview_cb),
+			  "begin-print",
+			  G_CALLBACK (begin_print_cb),
 			  job);
 
 	g_signal_connect (job->priv->operation,
@@ -763,20 +777,6 @@ gedit_print_job_print (GeditPrintJob            *job,
 					action,
 					parent,
 					error);
-}
-
-GeditPrintJob *
-gedit_print_job_new (GeditView *view)
-{
-	GeditPrintJob *job;
-
-	g_return_val_if_fail (GEDIT_IS_VIEW (view), NULL);
-
-	job = GEDIT_PRINT_JOB (g_object_new (GEDIT_TYPE_PRINT_JOB,
-					     "view", view,
-					      NULL));
-
-	return job;
 }
 
 void
