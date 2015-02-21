@@ -2854,6 +2854,7 @@ _gedit_tab_print (GeditTab *tab)
 		g_error_free (error);
 	}
 
+	g_object_unref (setup);
 	g_object_unref (settings);
 }
 
