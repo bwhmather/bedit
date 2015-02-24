@@ -15,17 +15,17 @@
 # Alexander Saprykin <xelfium@gmail.com>, 2010.
 # Yuri Kozlov <yuray@komyakino.ru>, 2011.
 # Yuri Myasoedov <ymyasoedov@yandex.ru>, 2012, 2013, 2014.
-# Stas Solovey <whats_up@tut.by>, 2013, 2015.
 # Ivan Komaritsyn <vantu5z@mail.ru>, 2015.
+# Stas Solovey <whats_up@tut.by>, 2013, 2015.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-02-17 06:04+0000\n"
-"PO-Revision-Date: 2015-02-17 11:57+0300\n"
-"Last-Translator: Ivan Komaritsyn <vantu5z@mail.ru>\n"
+"POT-Creation-Date: 2015-02-24 06:05+0000\n"
+"PO-Revision-Date: 2015-02-24 14:24+0300\n"
+"Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgstr ""
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:775
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:724
 msgid "Text Editor"
 msgstr "Текстовый редактор"
 
@@ -603,9 +603,9 @@ msgid "Close _without Saving"
 msgstr "Закрыть _без сохранения"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:324
-#: ../gedit/gedit-commands-file.c:458 ../gedit/gedit-commands-file.c:592
-#: ../gedit/gedit-commands-file.c:668 ../gedit/gedit-commands-file.c:867
-#: ../gedit/gedit-commands-file.c:1579 ../gedit/gedit-io-error-info-bar.c:135
+#: ../gedit/gedit-commands-file.c:459 ../gedit/gedit-commands-file.c:593
+#: ../gedit/gedit-commands-file.c:669 ../gedit/gedit-commands-file.c:868
+#: ../gedit/gedit-commands-file.c:1580 ../gedit/gedit-io-error-info-bar.c:135
 #: ../gedit/gedit-io-error-info-bar.c:516
 #: ../gedit/gedit-preferences-dialog.c:790
 #: ../gedit/gedit-progress-info-bar.c:51
@@ -630,7 +630,7 @@ msgid "_Save As…"
 msgstr "_Сохранить как…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:350
-#: ../gedit/gedit-commands-file.c:868 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/gedit-commands-file.c:869 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -781,12 +781,12 @@ msgstr "_Выберите документы, которые нужно сохр
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Все несохранённые изменения будут безвозвратно утеряны."
 
-#: ../gedit/gedit-commands-file.c:257
+#: ../gedit/gedit-commands-file.c:258
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "Загрузка файла «%s»…"
 
-#: ../gedit/gedit-commands-file.c:266
+#: ../gedit/gedit-commands-file.c:267
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -795,12 +795,12 @@ msgstr[1] "Загрузка %d файлов…"
 msgstr[2] "Загрузка %d файлов…"
 
 #. Translators: "Open" is the title of the file chooser window.
-#: ../gedit/gedit-commands-file.c:452
+#: ../gedit/gedit-commands-file.c:453
 #: ../gedit/resources/ui/gedit-window.ui.h:4
 msgid "Open"
 msgstr "Открыть"
 
-#: ../gedit/gedit-commands-file.c:459 ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/gedit-commands-file.c:460 ../gedit/resources/gtk/menus-osx.ui.h:4
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:38
@@ -808,29 +808,29 @@ msgstr "Открыть"
 msgid "_Open"
 msgstr "_Открыть"
 
-#: ../gedit/gedit-commands-file.c:583
+#: ../gedit/gedit-commands-file.c:584
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Файл «%s» доступен только для чтения."
 
-#: ../gedit/gedit-commands-file.c:588
+#: ../gedit/gedit-commands-file.c:589
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Попробовать заменить сохраняемым файлом?"
 
-#: ../gedit/gedit-commands-file.c:593
+#: ../gedit/gedit-commands-file.c:594
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "_Заменить"
 
-#: ../gedit/gedit-commands-file.c:633
+#: ../gedit/gedit-commands-file.c:634
 msgid "Save the file using compression?"
 msgstr "Сохранить файл с использованием сжатия?"
 
-#: ../gedit/gedit-commands-file.c:637
+#: ../gedit/gedit-commands-file.c:638
 msgid "Save the file as plain text?"
 msgstr "Сохранить файл как обычный текст?"
 
-#: ../gedit/gedit-commands-file.c:650
+#: ../gedit/gedit-commands-file.c:651
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -839,11 +839,11 @@ msgstr ""
 "Файл «%s» был ранее сохранён как обычный текст, теперь будет сохранён с "
 "использованием сжатия."
 
-#: ../gedit/gedit-commands-file.c:654
+#: ../gedit/gedit-commands-file.c:655
 msgid "_Save Using Compression"
 msgstr "_Сохранить с использованием сжатия"
 
-#: ../gedit/gedit-commands-file.c:659
+#: ../gedit/gedit-commands-file.c:660
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -852,30 +852,30 @@ msgstr ""
 "Файл «%s», сохранённый с использованием сжатия, будет сохранён как обычный "
 "текст."
 
-#: ../gedit/gedit-commands-file.c:662
+#: ../gedit/gedit-commands-file.c:663
 msgid "_Save As Plain Text"
 msgstr "_Сохранить как обычный текст"
 
-#: ../gedit/gedit-commands-file.c:777 ../gedit/gedit-commands-file.c:1030
+#: ../gedit/gedit-commands-file.c:778 ../gedit/gedit-commands-file.c:1031
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Сохранение файла «%s»…"
 
-#: ../gedit/gedit-commands-file.c:860
+#: ../gedit/gedit-commands-file.c:861
 msgid "Save As"
 msgstr "Сохранить как"
 
-#: ../gedit/gedit-commands-file.c:1440
+#: ../gedit/gedit-commands-file.c:1441
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Восстановление документа «%s»…"
 
-#: ../gedit/gedit-commands-file.c:1487
+#: ../gedit/gedit-commands-file.c:1488
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Восстановить несохранённые изменения в документе «%s»?"
 
-#: ../gedit/gedit-commands-file.c:1496
+#: ../gedit/gedit-commands-file.c:1497
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -892,14 +892,14 @@ msgstr[2] ""
 "Изменения, внесённые в документ за последние %ld секунд, будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-commands-file.c:1505
+#: ../gedit/gedit-commands-file.c:1506
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Изменения, внесённые в документ за последнюю минуту, будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-commands-file.c:1511
+#: ../gedit/gedit-commands-file.c:1512
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -917,7 +917,7 @@ msgstr[2] ""
 "Изменения, внесённые в документ за последние минуту и %ld секунд, будут "
 "безвозвратно утеряны."
 
-#: ../gedit/gedit-commands-file.c:1521
+#: ../gedit/gedit-commands-file.c:1522
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -934,12 +934,12 @@ msgstr[2] ""
 "Изменения, внесённые в документ за последние %ld минут, будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-commands-file.c:1536
+#: ../gedit/gedit-commands-file.c:1537
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Изменения, внесённые в документ за последний час, будут безвозвратно утеряны."
 
-#: ../gedit/gedit-commands-file.c:1542
+#: ../gedit/gedit-commands-file.c:1543
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -957,7 +957,7 @@ msgstr[2] ""
 "Изменения, внесённые в документ за последний час и %d минут, будут "
 "безвозвратно утеряны."
 
-#: ../gedit/gedit-commands-file.c:1557
+#: ../gedit/gedit-commands-file.c:1558
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -972,15 +972,15 @@ msgstr[2] ""
 "Изменения, внесённые в документ за последние %d часов, будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-commands-file.c:1580
+#: ../gedit/gedit-commands-file.c:1581
 msgid "_Revert"
 msgstr "Восста_новить"
 
-#: ../gedit/gedit-commands-help.c:80
+#: ../gedit/gedit-commands-help.c:81
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "gedit — небольшой и лёгкий редактор текстов среды рабочего стола GNOME"
 
-#: ../gedit/gedit-commands-help.c:104
+#: ../gedit/gedit-commands-help.c:105
 msgid "translator-credits"
 msgstr ""
 "Valek Filippov <frob@df.ru>, 2000-2002, 2003.\n"
@@ -997,7 +997,7 @@ msgstr ""
 "Yuri Myasoedov <omerta13@yandex.ru>, 2012, 2013.\n"
 "Stas Solovey <whats_up@tut.by>, 2013-2015."
 
-#: ../gedit/gedit-commands-search.c:104
+#: ../gedit/gedit-commands-search.c:105
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
@@ -1005,13 +1005,13 @@ msgstr[0] "Найдено и заменено %d вхождение"
 msgstr[1] "Найдено и заменено %d вхождения"
 msgstr[2] "Найдено и заменено %d вхождений"
 
-#: ../gedit/gedit-commands-search.c:113
+#: ../gedit/gedit-commands-search.c:114
 msgid "Found and replaced one occurrence"
 msgstr "Найдено и заменено одно вхождение"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:139
+#: ../gedit/gedit-commands-search.c:140
 #, c-format
 msgid "\"%s\" not found"
 msgstr "Текст «%s» не найден"
@@ -1026,8 +1026,8 @@ msgstr "Несохранённый документ %d"
 msgid "Tab Group %i"
 msgstr "Группа вкладок %i"
 
-#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1135
-#: ../gedit/gedit-window.c:1141 ../gedit/gedit-window.c:1149
+#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1134
+#: ../gedit/gedit-window.c:1140 ../gedit/gedit-window.c:1148
 msgid "Read-Only"
 msgstr "Только для чтения"
 
@@ -1071,7 +1071,7 @@ msgstr "Кодировка символов:"
 msgid "Line Ending:"
 msgstr "Конец строки:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1219
+#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1218
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1459,18 +1459,24 @@ msgstr "Файлы цветовых схем"
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Не удалось удалить цветовую схему «%s»."
 
-#: ../gedit/gedit-print-job.c:556
+#: ../gedit/gedit-print-job.c:223
+msgid "Preparing..."
+msgstr "Подготовка…"
+
+#: ../gedit/gedit-print-job.c:536
 #, c-format
 msgid "File: %s"
 msgstr "Файл: %s"
 
-#: ../gedit/gedit-print-job.c:565
+#: ../gedit/gedit-print-job.c:545
 msgid "Page %N of %Q"
 msgstr "Страница %N из %Q"
 
-#: ../gedit/gedit-print-job.c:827
-msgid "Preparing..."
-msgstr "Подготовка…"
+#: ../gedit/gedit-print-job.c:619
+#, c-format
+#| msgid "Page %d of %d"
+msgid "Rendering page %d of %d..."
+msgstr "Обработка страниц %d из %d…"
 
 #: ../gedit/gedit-print-preview.c:674
 #, c-format
@@ -1506,70 +1512,70 @@ msgstr[2] "%d вкладок с ошибками"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:793
+#: ../gedit/gedit-tab.c:783
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Восстановка «%s» из «%s»"
 
-#: ../gedit/gedit-tab.c:800
+#: ../gedit/gedit-tab.c:790
 #, c-format
 msgid "Reverting %s"
 msgstr "Восстановка «%s»"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:813
+#: ../gedit/gedit-tab.c:803
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Загрузка «%s» из «%s»"
 
-#: ../gedit/gedit-tab.c:820
+#: ../gedit/gedit-tab.c:810
 #, c-format
 msgid "Loading %s"
 msgstr "Загрузка «%s»"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:900
+#: ../gedit/gedit-tab.c:890
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Сохранение «%s» в «%s»"
 
-#: ../gedit/gedit-tab.c:905
+#: ../gedit/gedit-tab.c:895
 #, c-format
 msgid "Saving %s"
 msgstr "Сохранение «%s»"
 
 # «Только чтение» — слишком длинно
 #. Read only
-#: ../gedit/gedit-tab.c:1479
+#: ../gedit/gedit-tab.c:1462
 msgid "RO"
 msgstr "Чтение"
 
-#: ../gedit/gedit-tab.c:1527
+#: ../gedit/gedit-tab.c:1510
 #, c-format
 msgid "Error opening file %s"
 msgstr "Ошибка открытия файла «%s»"
 
-#: ../gedit/gedit-tab.c:1532
+#: ../gedit/gedit-tab.c:1515
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Ошибка восстановления файла «%s»"
 
-#: ../gedit/gedit-tab.c:1537
+#: ../gedit/gedit-tab.c:1520
 #, c-format
 msgid "Error saving file %s"
 msgstr "Ошибка сохранения файла «%s»"
 
-#: ../gedit/gedit-tab.c:1568
+#: ../gedit/gedit-tab.c:1551
 msgid "Name:"
 msgstr "Имя:"
 
-#: ../gedit/gedit-tab.c:1569
+#: ../gedit/gedit-tab.c:1552
 msgid "MIME Type:"
 msgstr "Тип MIME:"
 
-#: ../gedit/gedit-tab.c:1570
+#: ../gedit/gedit-tab.c:1553
 msgid "Encoding:"
 msgstr "Кодировка:"
 
@@ -1647,40 +1653,40 @@ msgstr "Строка, которую нужно найти"
 msgid "Line you want to move the cursor to"
 msgstr "Строка, на которую нужно переместить курсор"
 
-#: ../gedit/gedit-window.c:974
+#: ../gedit/gedit-window.c:973
 msgid "Bracket match is out of range"
 msgstr "Парная скобка находится вне допустимого предела"
 
-#: ../gedit/gedit-window.c:979
+#: ../gedit/gedit-window.c:978
 msgid "Bracket match not found"
 msgstr "Парная скобка не найдена"
 
-#: ../gedit/gedit-window.c:984
+#: ../gedit/gedit-window.c:983
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Парная скобка найдена в строке: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1019
+#: ../gedit/gedit-window.c:1018
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Стр %d, Стлб %d"
 
-#: ../gedit/gedit-window.c:1201
+#: ../gedit/gedit-window.c:1200
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Ширина табуляции: %u"
 
-#: ../gedit/gedit-window.c:1571
+#: ../gedit/gedit-window.c:1570
 msgid "There are unsaved documents"
 msgstr "Имеются несохранённые документы"
 
-#: ../gedit/gedit-window.c:2420
+#: ../gedit/gedit-window.c:2419
 msgid "Change side panel page"
 msgstr "Изменить страницу боковой панели"
 
-#: ../gedit/gedit-window.c:2440 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2439 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Документы"
@@ -2251,13 +2257,11 @@ msgid "Replace _All"
 msgstr "Заменить вс_ё"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:5
-#| msgid "_Find"
 msgctxt "label of the find button"
 msgid "_Find"
 msgstr "_Найти"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
-#| msgid "F_ind "
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
 msgstr "Най_ти "
@@ -2744,11 +2748,11 @@ msgstr "Действительно безвозвратно удалить вы�
 msgid "If you delete an item, it is permanently lost."
 msgstr "Если удалить элемент, он будет безвозвратно утерян."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1781
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1807
 msgid "(Empty)"
 msgstr "(Пусто)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3503
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3528
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2757,11 +2761,11 @@ msgstr ""
 "сделать файл видимым"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3760
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3785
 msgid "Untitled File"
 msgstr "Безымянный файл"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3788
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3813
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2770,11 +2774,11 @@ msgstr ""
 "видимым"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3819
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3844
 msgid "Untitled Folder"
 msgstr "Безымянная папка"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3844
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3869
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
