@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-16 23:20+0200\n"
-"PO-Revision-Date: 2015-02-16 23:20+0200\n"
+"POT-Creation-Date: 2015-02-24 12:37+0200\n"
+"PO-Revision-Date: 2015-02-24 12:38+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -53,7 +53,7 @@ msgstr ""
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:775
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:724
 msgid "Text Editor"
 msgstr "עורך טקסט"
 
@@ -602,9 +602,9 @@ msgid "Close _without Saving"
 msgstr "סגירה _ללא שמירה"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:324
-#: ../gedit/gedit-commands-file.c:458 ../gedit/gedit-commands-file.c:592
-#: ../gedit/gedit-commands-file.c:668 ../gedit/gedit-commands-file.c:867
-#: ../gedit/gedit-commands-file.c:1579 ../gedit/gedit-io-error-info-bar.c:135
+#: ../gedit/gedit-commands-file.c:459 ../gedit/gedit-commands-file.c:593
+#: ../gedit/gedit-commands-file.c:669 ../gedit/gedit-commands-file.c:868
+#: ../gedit/gedit-commands-file.c:1580 ../gedit/gedit-io-error-info-bar.c:135
 #: ../gedit/gedit-io-error-info-bar.c:516
 #: ../gedit/gedit-preferences-dialog.c:790
 #: ../gedit/gedit-progress-info-bar.c:51
@@ -629,7 +629,7 @@ msgid "_Save As…"
 msgstr "שמירה _בשם…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:350
-#: ../gedit/gedit-commands-file.c:868 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/gedit-commands-file.c:869 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -740,12 +740,12 @@ msgstr "נא ל_בחור את הקובץ שברצונך לשמור:"
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "אם לא תתבצע שמירה, כל השינויים יאבדו."
 
-#: ../gedit/gedit-commands-file.c:257
+#: ../gedit/gedit-commands-file.c:258
 #, c-format
 msgid "Loading file '%s'…"
 msgstr "הקובץ '%s' בטעינה…"
 
-#: ../gedit/gedit-commands-file.c:266
+#: ../gedit/gedit-commands-file.c:267
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
@@ -753,12 +753,12 @@ msgstr[0] "קובץ אחד בטעינה…"
 msgstr[1] "%d קבצים בטעינה…"
 
 #. Translators: "Open" is the title of the file chooser window.
-#: ../gedit/gedit-commands-file.c:452
+#: ../gedit/gedit-commands-file.c:453
 #: ../gedit/resources/ui/gedit-window.ui.h:4
 msgid "Open"
 msgstr "פתיחה"
 
-#: ../gedit/gedit-commands-file.c:459 ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/gedit-commands-file.c:460 ../gedit/resources/gtk/menus-osx.ui.h:4
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:38
@@ -766,70 +766,70 @@ msgstr "פתיחה"
 msgid "_Open"
 msgstr "_פתיחה"
 
-#: ../gedit/gedit-commands-file.c:583
+#: ../gedit/gedit-commands-file.c:584
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "הקובץ \"%s\" הנו לקריאה בלבד."
 
-#: ../gedit/gedit-commands-file.c:588
+#: ../gedit/gedit-commands-file.c:589
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "האם ברצונך לנסות להחליפו עם הקובץ שנשמר?"
 
-#: ../gedit/gedit-commands-file.c:593
+#: ../gedit/gedit-commands-file.c:594
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "ה_חלפה"
 
-#: ../gedit/gedit-commands-file.c:633
+#: ../gedit/gedit-commands-file.c:634
 msgid "Save the file using compression?"
 msgstr "האם לשמור את הקובץ באמצעות דחיסה?"
 
-#: ../gedit/gedit-commands-file.c:637
+#: ../gedit/gedit-commands-file.c:638
 msgid "Save the file as plain text?"
 msgstr "האם לשמור את הקובץ כקובץ טקסט פשוט?"
 
-#: ../gedit/gedit-commands-file.c:650
+#: ../gedit/gedit-commands-file.c:651
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr "הקובץ \"%s\" נשמר בעבר כקובץ טקסט פשוט וכעת ישמר באמצעות דחיסה."
 
-#: ../gedit/gedit-commands-file.c:654
+#: ../gedit/gedit-commands-file.c:655
 msgid "_Save Using Compression"
 msgstr "שמירה באמצעות _דחיסה"
 
-#: ../gedit/gedit-commands-file.c:659
+#: ../gedit/gedit-commands-file.c:660
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr "הקובץ \"%s\" נשמר בעבר באמצעות דחיסה וכעת ישמר כקובץ טקסט פשוט."
 
-#: ../gedit/gedit-commands-file.c:662
+#: ../gedit/gedit-commands-file.c:663
 msgid "_Save As Plain Text"
 msgstr "שמירה כ_טקסט פשוט"
 
-#: ../gedit/gedit-commands-file.c:777 ../gedit/gedit-commands-file.c:1030
+#: ../gedit/gedit-commands-file.c:778 ../gedit/gedit-commands-file.c:1031
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "הקובץ '%s' נשמר…"
 
-#: ../gedit/gedit-commands-file.c:860
+#: ../gedit/gedit-commands-file.c:861
 msgid "Save As"
 msgstr "שמירה בשם"
 
-#: ../gedit/gedit-commands-file.c:1440
+#: ../gedit/gedit-commands-file.c:1441
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "המסמך '%s' משוחזר…"
 
-#: ../gedit/gedit-commands-file.c:1487
+#: ../gedit/gedit-commands-file.c:1488
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "האם לבטל את השינויים שלא נשמרו במסמך '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1496
+#: ../gedit/gedit-commands-file.c:1497
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -839,12 +839,12 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשנייה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1505
+#: ../gedit/gedit-commands-file.c:1506
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "השינויים שנערכו במסמך בדקה האחרונה יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1511
+#: ../gedit/gedit-commands-file.c:1512
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -855,7 +855,7 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בדקה והשנייה האחרונות יאבדו."
 msgstr[1] "השינויים שנערכו במסמך בדקה ו־%ld השניות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1521
+#: ../gedit/gedit-commands-file.c:1522
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -865,11 +865,11 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בדקה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%ld הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1536
+#: ../gedit/gedit-commands-file.c:1537
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "השינויים שנערכו במסמך בשעה האחרונה יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1542
+#: ../gedit/gedit-commands-file.c:1543
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -880,7 +880,7 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשעה ובדקה האחרונות יאבדו."
 msgstr[1] "השינויים שנערכו במסמך בשעה וב־%d הדקות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1557
+#: ../gedit/gedit-commands-file.c:1558
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -889,15 +889,15 @@ msgid_plural ""
 msgstr[0] "השינויים שנערכו במסמך בשעה האחרונה יאבדו."
 msgstr[1] "השינויים שנערכו במסמך ב־%d השעות האחרונות יאבדו."
 
-#: ../gedit/gedit-commands-file.c:1580
+#: ../gedit/gedit-commands-file.c:1581
 msgid "_Revert"
 msgstr "_שחזור"
 
-#: ../gedit/gedit-commands-help.c:80
+#: ../gedit/gedit-commands-help.c:81
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "‏gedit הינו עורך טקסט קטן וקל עבור סביבת Gnome"
 
-#: ../gedit/gedit-commands-help.c:104
+#: ../gedit/gedit-commands-help.c:105
 msgid "translator-credits"
 msgstr ""
 "מאיר קריחלי <meir@mksoft.co.il>\n"
@@ -910,20 +910,20 @@ msgstr ""
 "מיזם תרגום GNOME לעברית:\n"
 "‏http://gnome-il.berlios.de"
 
-#: ../gedit/gedit-commands-search.c:104
+#: ../gedit/gedit-commands-search.c:105
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
 msgstr[0] "מופע אחד נמצא והוחלף"
 msgstr[1] "%d מופעים נמצאו והוחלפו"
 
-#: ../gedit/gedit-commands-search.c:113
+#: ../gedit/gedit-commands-search.c:114
 msgid "Found and replaced one occurrence"
 msgstr "מופע אחד נמצא והוחלף"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
-#: ../gedit/gedit-commands-search.c:139
+#: ../gedit/gedit-commands-search.c:140
 #, c-format
 msgid "\"%s\" not found"
 msgstr "‏\"%s\" לא נמצא"
@@ -938,8 +938,8 @@ msgstr "מסמך שלא נשמר %d"
 msgid "Tab Group %i"
 msgstr "קבוצת לשוניות %i"
 
-#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1135
-#: ../gedit/gedit-window.c:1141 ../gedit/gedit-window.c:1149
+#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1134
+#: ../gedit/gedit-window.c:1140 ../gedit/gedit-window.c:1148
 msgid "Read-Only"
 msgstr "(קריאה בלבד)"
 
@@ -983,7 +983,7 @@ msgstr "קידוד תווים:"
 msgid "Line Ending:"
 msgstr "סיום שורה:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1219
+#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1218
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1360,18 +1360,23 @@ msgstr "קובצי סכימת צבעים"
 msgid "Could not remove color scheme \"%s\"."
 msgstr "לא ניתן להסיר את סכימת הצבעים \"%s\"."
 
-#: ../gedit/gedit-print-job.c:556
+#: ../gedit/gedit-print-job.c:223
+msgid "Preparing..."
+msgstr "בהכנה..."
+
+#: ../gedit/gedit-print-job.c:536
 #, c-format
 msgid "File: %s"
 msgstr "קובץ: %s"
 
-#: ../gedit/gedit-print-job.c:565
+#: ../gedit/gedit-print-job.c:545
 msgid "Page %N of %Q"
 msgstr "עמוד %N מתוך %Q"
 
-#: ../gedit/gedit-print-job.c:827
-msgid "Preparing..."
-msgstr "בהכנה..."
+#: ../gedit/gedit-print-job.c:619
+#, c-format
+msgid "Rendering page %d of %d..."
+msgstr "מעבד עמוד %d מתוך %d…"
 
 #: ../gedit/gedit-print-preview.c:674
 #, c-format
@@ -1406,70 +1411,70 @@ msgstr[1] "קיימות %d לשוניות עם שגיאות"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:793
+#: ../gedit/gedit-tab.c:783
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "‏%s משוחזר מ־%s"
 
-#: ../gedit/gedit-tab.c:800
+#: ../gedit/gedit-tab.c:790
 #, c-format
 msgid "Reverting %s"
 msgstr "‏%s משוחזר"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:813
+#: ../gedit/gedit-tab.c:803
 #, c-format
 msgid "Loading %s from %s"
 msgstr "‏%s נטען מ־%s"
 
-#: ../gedit/gedit-tab.c:820
+#: ../gedit/gedit-tab.c:810
 #, c-format
 msgid "Loading %s"
 msgstr "‏%s נטען"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:900
+#: ../gedit/gedit-tab.c:890
 #, c-format
 msgid "Saving %s to %s"
 msgstr "%s נשמר אל %s"
 
-#: ../gedit/gedit-tab.c:905
+#: ../gedit/gedit-tab.c:895
 #, c-format
 msgid "Saving %s"
 msgstr "שומר %s"
 
 #  Read only
 #. Read only
-#: ../gedit/gedit-tab.c:1479
+#: ../gedit/gedit-tab.c:1462
 msgid "RO"
 msgstr "ק\"ב"
 
-#: ../gedit/gedit-tab.c:1527
+#: ../gedit/gedit-tab.c:1510
 #, c-format
 msgid "Error opening file %s"
 msgstr "שגיאה בטעינת הקובץ %s"
 
-#: ../gedit/gedit-tab.c:1532
+#: ../gedit/gedit-tab.c:1515
 #, c-format
 msgid "Error reverting file %s"
 msgstr "שגיאה בשחזור הקובץ %s"
 
-#: ../gedit/gedit-tab.c:1537
+#: ../gedit/gedit-tab.c:1520
 #, c-format
 msgid "Error saving file %s"
 msgstr "שגיאה בשמירת הקובץ %s"
 
-#: ../gedit/gedit-tab.c:1568
+#: ../gedit/gedit-tab.c:1551
 msgid "Name:"
 msgstr "שם:"
 
-#: ../gedit/gedit-tab.c:1569
+#: ../gedit/gedit-tab.c:1552
 msgid "MIME Type:"
 msgstr "סוג MIME:"
 
-#: ../gedit/gedit-tab.c:1570
+#: ../gedit/gedit-tab.c:1553
 msgid "Encoding:"
 msgstr "קידוד:"
 
@@ -1547,40 +1552,40 @@ msgstr "המחרוזת שברצונך לחפש"
 msgid "Line you want to move the cursor to"
 msgstr "השורה אליה להעביר את הסמן"
 
-#: ../gedit/gedit-window.c:974
+#: ../gedit/gedit-window.c:973
 msgid "Bracket match is out of range"
 msgstr "הסוגר התואם הוא מחוץ לטווח"
 
-#: ../gedit/gedit-window.c:979
+#: ../gedit/gedit-window.c:978
 msgid "Bracket match not found"
 msgstr "הסוגר התואם לא נמצא"
 
-#: ../gedit/gedit-window.c:984
+#: ../gedit/gedit-window.c:983
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "הסוגר התואם נמצא בשורה: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1019
+#: ../gedit/gedit-window.c:1018
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  שורה %d, עמודה %d"
 
-#: ../gedit/gedit-window.c:1201
+#: ../gedit/gedit-window.c:1200
 #, c-format
 msgid "Tab Width: %u"
 msgstr "רוחב טאב: %u"
 
-#: ../gedit/gedit-window.c:1571
+#: ../gedit/gedit-window.c:1570
 msgid "There are unsaved documents"
 msgstr "ישנם מסמכים שלא נשמרו"
 
-#: ../gedit/gedit-window.c:2420
+#: ../gedit/gedit-window.c:2419
 msgid "Change side panel page"
 msgstr "שינוי דף הסרגל הצדי"
 
-#: ../gedit/gedit-window.c:2440 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2439 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "מסמכים"
@@ -2641,11 +2646,11 @@ msgstr "האם למחוק את הקבצים המסומנים?"
 msgid "If you delete an item, it is permanently lost."
 msgstr "אם פריט ימחק, הוא יאבד."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1781
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1807
 msgid "(Empty)"
 msgstr "(ריק)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3503
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3528
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2654,11 +2659,11 @@ msgstr ""
 "כדי שהקובץ יופיע"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3760
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3785
 msgid "Untitled File"
 msgstr "קובץ ללא שם"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3788
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3813
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -2667,11 +2672,11 @@ msgstr ""
 "הקובץ יופיע"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3819
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3844
 msgid "Untitled Folder"
 msgstr "תיקייה ללא שם"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3844
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3869
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
