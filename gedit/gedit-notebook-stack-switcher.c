@@ -141,11 +141,22 @@ on_child_changed (GtkWidget                  *widget,
                   GParamSpec                 *pspec,
                   GeditNotebookStackSwitcher *switcher)
 {
+	GtkNotebook *notebook;
 	GtkWidget *child;
 	GtkWidget *nb_child;
+	gint nb_page;
+
+	notebook = GTK_NOTEBOOK (switcher->priv->notebook);
 
 	child = gtk_stack_get_visible_child (GTK_STACK (widget));
 	nb_child = find_notebook_child (switcher, child);
+
+	nb_page = gtk_notebook_page_num (notebook, nb_child);
+
+	g_signal_handlers_block_by_func (widget, on_child_prop_changed, switcher);
+	gtk_notebook_set_current_page (notebook, nb_page);
+	g_signal_handlers_unblock_by_func (widget, on_child_prop_changed, switcher);
+
 	sync_label (switcher, child, nb_child);
 }
 
