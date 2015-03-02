@@ -6,23 +6,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"POT-Creation-Date: 2014-07-17 17:07+0000\n"
-"PO-Revision-Date: 2014-07-25 11:56+0200\n"
-"Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
+"POT-Creation-Date: 2015-02-25 06:06+0000\n"
+"PO-Revision-Date: 2015-02-25 16:48+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: www.gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.7.4\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
-"Για την Ελληνική μεταφραστική ομάδα GNOME <team@gnome.gr>, 2009, 2011, 2012, "
-"2013, 2014\n"
+"Ελληνική μεταφραστική ομάδα GNOME <team@gnome.gr>, 2009 - 2014\n"
 "Μάριος Ζηντίλης <m.zindilis@dmajor.org>, 2009\n"
 "Μιχαήλ Κοτσαρίνης <mk73628@hotmail.com>,2009\n"
 "Βασίλης Τσιβίκης <vasitsiv@hotmail.gr>, 2011\n"
@@ -31,7 +30,7 @@ msgstr ""
 "Μαρία Μαυρίδου <mavridou@gmail.com>, 2014"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:9 C/gedit-change-default-font.page:9
+#: C/gedit-change-color-scheme.page:12 C/gedit-change-default-font.page:9
 #: C/gedit-close-file.page:9 C/gedit-create-new-file.page:11
 #: C/gedit-edit-as-root.page:9 C/gedit-files-basic.page:9
 #: C/gedit-full-screen.page:11 C/gedit-open-files-from-sidepane.page:10
@@ -43,7 +42,7 @@ msgstr ""
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:9
 #: C/gedit-plugins-quick-open.page:10 C/gedit-plugins-snippets.page:9
 #: C/gedit-plugins-sort.page:13 C/gedit-printing.page:9
-#: C/gedit-quickstart.page:11 C/gedit-replace.page:11
+#: C/gedit-quickstart.page:11 C/gedit-replace.page:12
 #: C/gedit-save-file.page:11 C/gedit-search.page:10
 #: C/gedit-shortcut-keys.page:12 C/gedit-spellcheck.page:11
 #: C/gedit-syntax-highlighting.page:9 C/gedit-tabs-moving.page:12
@@ -52,13 +51,28 @@ msgstr ""
 msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
+#. (itstool) path: credit/name
+#: C/gedit-change-color-scheme.page:16
+msgid "Jana Svarova"
+msgstr "Jana Svarova"
+
+#. (itstool) path: credit/years
+#: C/gedit-change-color-scheme.page:18 C/gedit-change-color-scheme.page:23
+msgid "2015"
+msgstr "2015"
+
+#. (itstool) path: credit/name
+#: C/gedit-change-color-scheme.page:21 C/gedit-replace.page:24
+msgid "Ekaterina Gerasimova"
+msgstr "Ekaterina Gerasimova"
+
 #. (itstool) path: page/title
-#: C/gedit-change-color-scheme.page:14
+#: C/gedit-change-color-scheme.page:29
 msgid "Change the color scheme"
 msgstr "Αλλαγή συνδυασμού χρωμάτων"
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:16
+#: C/gedit-change-color-scheme.page:31
 msgid ""
 "<app>gedit</app> includes several different color schemes, allowing you to "
 "change the appearance of the main text window."
@@ -67,37 +81,39 @@ msgstr ""
 "χρωμάτων, επιτρέποντάς σας να αλλάξετε την εμφάνιση του κύριου παράθυρου του "
 "κειμένου."
 
-#. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:19
-msgid "To change the color scheme, complete the following steps:"
-msgstr "Για να αλλάξετε τον συνδυασμό χρωμάτων, κάντε τα ακόλουθα:"
+#. (itstool) path: steps/title
+#: C/gedit-change-color-scheme.page:35
+msgid "To change the color scheme:"
+msgstr "Για να αλλάξετε τον συνδυασμό χρωμάτων:"
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:21 C/gedit-change-default-font.page:23
+#: C/gedit-change-color-scheme.page:37
 msgid ""
-"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+"Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then select "
+"<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; Colors</"
+"gui></guiseq>."
 msgstr ""
-"Επιλέξτε <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-"\">Προτιμήσεις</gui> <gui>Γραμματοσειρά &amp; χρώματα</gui></guiseq>."
+"Ανοίξτε το μενού του <gui style=\"menu\">gedit</gui> από την πάνω μπάρα, και "
+"μετά επιλέξτε <guiseq><gui style=\"menuitem\">Προτιμήσεις</"
+"gui><gui>Γραμματοσειρά &amp; Χρώματα</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:24
+#: C/gedit-change-color-scheme.page:42
 msgid "Choose your desired color scheme."
 msgstr "Επιλέξτε τον επιθυμητό συνδυασμό χρωμάτων."
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:27
+#: C/gedit-change-color-scheme.page:46
 msgid "The new color scheme will be applied immediately."
 msgstr "Ο νέος συνδυασμός χρωμάτων θα εφαρμοστεί άμεσα."
 
 #. (itstool) path: section/title
-#: C/gedit-change-color-scheme.page:30
+#: C/gedit-change-color-scheme.page:49
 msgid "Use a Custom Color Scheme"
 msgstr "Χρήση ενός προσαρμοσμένου συνδυασμού χρωμάτων"
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:35
+#: C/gedit-change-color-scheme.page:55
 msgid ""
 "You can also use color schemes that have been created by others, or create "
 "and use your own color schemes."
@@ -107,16 +123,17 @@ msgstr ""
 "δικούς σας."
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:37
+#: C/gedit-change-color-scheme.page:58
 msgid ""
 "Instructions on how to install custom color schemes, as well as examples of "
 "color schemes that you can download and use, are available on the <link href="
-"\"http://live.gnome.org/GtkSourceView/StyleSchemes\">gedit wiki</link>."
+"\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes\">gedit wiki</"
+"link>."
 msgstr ""
 "Οδηγίες για το πώς να εγκαταστήσετε προσαρμοσμένους συνδυασμούς χρωμάτων, "
 "όπως και παραδείγματα συνδυασμών χρωμάτων που μπορείτε να κάνετε λήψη και να "
-"χρησιμοποιήσετε, είναι διαθέσιμες στο <link href=\"http://live.gnome.org/"
-"GtkSourceView/StyleSchemes\">gedit wiki</link>."
+"χρησιμοποιήσετε, είναι διαθέσιμες στο <link href=\"https://wiki.gnome.org/"
+"Projects/GtkSourceView/StyleSchemes\">gedit wiki</link>."
 
 #. (itstool) path: credit/years
 #: C/gedit-change-default-font.page:11
@@ -124,12 +141,12 @@ msgid "2011 2012 2013"
 msgstr "2011 2012 2013"
 
 #. (itstool) path: page/title
-#: C/gedit-change-default-font.page:15
+#: C/gedit-change-default-font.page:18
 msgid "Change the default font"
 msgstr "Αλλαγή της προεπιλεγμένης γραμματοσειράς"
 
 #. (itstool) path: page/p
-#: C/gedit-change-default-font.page:17
+#: C/gedit-change-default-font.page:20
 msgid ""
 "<app>gedit</app> will use the system fixed-width font by default, but you "
 "can change the default <app>gedit</app> font to suit your preferences."
@@ -139,12 +156,21 @@ msgstr ""
 "του <app>gedit</app> ώστε να ταιριάζει στις προτιμήσεις σας."
 
 #. (itstool) path: steps/title
-#: C/gedit-change-default-font.page:22
+#: C/gedit-change-default-font.page:25
 msgid "To change the default font in <app>gedit</app>:"
 msgstr "Για να αλλάξετε την προεπιλεγμένη γραμματοσειρά στο <app>gedit</app>:"
 
 #. (itstool) path: item/p
 #: C/gedit-change-default-font.page:26
+msgid ""
+"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+msgstr ""
+"Επιλέξτε <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Προτιμήσεις</gui> <gui>Γραμματοσειρά &amp; χρώματα</gui></guiseq>."
+
+#. (itstool) path: item/p
+#: C/gedit-change-default-font.page:29
 msgid ""
 "Uncheck the box next to the phrase, \"Use the system fixed-width font.\""
 msgstr ""
@@ -152,7 +178,7 @@ msgstr ""
 "γραμματοσειράς σταθερού πλάτους του συστήματος.\""
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:28
+#: C/gedit-change-default-font.page:31
 msgid ""
 "Click on the current font name. <app>gedit</app> will open a font-chooser "
 "window, allowing you to see available fonts and choose the one that you "
@@ -163,7 +189,7 @@ msgstr ""
 "γραμματοσειρές και να επιλέξετε αυτή που προτιμάτε."
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:31
+#: C/gedit-change-default-font.page:34
 msgid ""
 "After you have chosen a new font, use the <gui>slider</gui> under the list "
 "of fonts to set the default font size."
@@ -173,18 +199,17 @@ msgstr ""
 "προεπιλεγμένο μέγεθος της."
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:33
+#: C/gedit-change-default-font.page:36
 msgid "Click <gui>Select</gui>, and then click <gui>Close</gui>."
-msgstr ""
-"Πατήστε στο <gui>Επιλογή</gui>, και μετά πατήστε στο <gui>Κλείσιμο</gui>."
+msgstr "Πατήστε <gui>Επιλογή</gui>, και μετά πατήστε <gui>Κλείσιμο</gui>."
 
 #. (itstool) path: page/title
-#: C/gedit-close-file.page:14
+#: C/gedit-close-file.page:16
 msgid "Close a file"
 msgstr "Κλείσιμο αρχείου"
 
 #. (itstool) path: page/p
-#: C/gedit-close-file.page:16
+#: C/gedit-close-file.page:18
 msgid ""
 "To close a file in <app>gedit</app>, select <guiseq><gui>File</gui> "
 "<gui>Close</gui></guiseq>. Alternately, you can click the small \"X\" that "
@@ -198,7 +223,7 @@ msgstr ""
 "keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-close-file.page:20
+#: C/gedit-close-file.page:22
 msgid ""
 "Any one of these actions will close a file in <app>gedit</app>. If your file "
 "contains changes that have not been saved, <app>gedit</app> will prompt you "
@@ -212,8 +237,8 @@ msgstr ""
 #. (itstool) path: credit/name
 #: C/gedit-create-new-file.page:15 C/gedit-full-screen.page:15
 #: C/gedit-open-files.page:20 C/gedit-plugins-quick-open.page:14
-#: C/gedit-save-file.page:19 C/gedit-search.page:22 C/gedit-tabs.page:30
-#: C/gedit-undo-recent-action.page:23
+#: C/gedit-replace.page:28 C/gedit-save-file.page:19 C/gedit-search.page:22
+#: C/gedit-tabs.page:30 C/gedit-undo-recent-action.page:23
 msgid "Shobha Tyagi"
 msgstr "Shobha Tyagi"
 
@@ -247,12 +272,12 @@ msgstr ""
 "καινούρια καρτέλα στα δεξιά αυτών των αρχείων."
 
 #. (itstool) path: page/title
-#: C/gedit-edit-as-root.page:14
+#: C/gedit-edit-as-root.page:15
 msgid "Edit a file as the root user"
 msgstr "Επεξεργασία ενός αρχείου ως υπερχρήστης"
 
 #. (itstool) path: note/p
-#: C/gedit-edit-as-root.page:17
+#: C/gedit-edit-as-root.page:18
 msgid ""
 "Editing files as the root user is potentially dangerous, and may break your "
 "system in bad ways. Take great care when editing files as the root user."
@@ -262,7 +287,7 @@ msgstr ""
 "επεξεργάζεστε αρχεία ως χρήστης root."
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:22
+#: C/gedit-edit-as-root.page:23
 msgid ""
 "To edit files as the root user, launch <app>gedit</app> from the terminal by "
 "entering:"
@@ -271,13 +296,13 @@ msgstr ""
 "από το τερματικό εισάγοντας:"
 
 #. (itstool) path: page/code
-#: C/gedit-edit-as-root.page:24
+#: C/gedit-edit-as-root.page:25
 #, no-wrap
 msgid "sudo gedit"
 msgstr "sudo gedit"
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:26
+#: C/gedit-edit-as-root.page:27
 msgid ""
 "Using the <cmd>sudo</cmd> command, you will need to successfully enter your "
 "password before <app>gedit</app> will open."
@@ -286,7 +311,7 @@ msgstr ""
 "κωδικό πρόσβασης επιτυχώς πριν ανοίξει το <app>gedit</app>."
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:29
+#: C/gedit-edit-as-root.page:30
 msgid ""
 "As an alternative to the <cmd>sudo</cmd> command, you may obtain "
 "administrative privileges by entering:"
@@ -295,13 +320,13 @@ msgstr ""
 "δικαιώματα διαχειριστή εισάγοντας:"
 
 #. (itstool) path: page/code
-#: C/gedit-edit-as-root.page:31
+#: C/gedit-edit-as-root.page:32
 #, no-wrap
 msgid "su -"
 msgstr "su -"
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:33
+#: C/gedit-edit-as-root.page:34
 msgid ""
 "You would then launch <app>gedit</app> using the <cmd>gedit</cmd> command."
 msgstr ""
@@ -309,7 +334,7 @@ msgstr ""
 "cmd>."
 
 #. (itstool) path: note/p
-#: C/gedit-edit-as-root.page:37
+#: C/gedit-edit-as-root.page:38
 msgid ""
 "Once you have opened <app>gedit</app> with administrative privileges, "
 "<app>gedit</app> will keep those privileges until you close it."
@@ -318,12 +343,12 @@ msgstr ""
 "app> θα διατηρήσει αυτά τα δικαιώματα μέχρι να κλείσει."
 
 #. (itstool) path: page/title
-#: C/gedit-files-basic.page:14
+#: C/gedit-files-basic.page:15
 msgid "File basics: Open, close, and save files"
 msgstr "Βασικά για τα αρχεία: Άνοιγμα, κλείσιμο και αποθήκευση αρχείων"
 
 #. (itstool) path: page/p
-#: C/gedit-files-basic.page:16
+#: C/gedit-files-basic.page:17
 msgid ""
 "If you are new to <app>gedit</app>, these topics will help you with "
 "creating, saving, and opening and closing files."
@@ -419,12 +444,12 @@ msgstr ""
 "gui>."
 
 #. (itstool) path: page/title
-#: C/gedit-open-files-from-sidepane.page:15
+#: C/gedit-open-files-from-sidepane.page:16
 msgid "View and open files from the side pane"
 msgstr "Προβολή και άνοιγμα αρχείων από την πλευρική στήλη"
 
 #. (itstool) path: page/p
-#: C/gedit-open-files-from-sidepane.page:16
+#: C/gedit-open-files-from-sidepane.page:17
 msgid ""
 "The most common way to switch between files in <app>gedit</app> is by using "
 "the tabs at the top of the <app>gedit</app> window. In some cases, though, "
@@ -438,7 +463,7 @@ msgstr ""
 "χρησιμοποιείτε την <app>πλευρική στήλη</app>."
 
 #. (itstool) path: page/p
-#: C/gedit-open-files-from-sidepane.page:23
+#: C/gedit-open-files-from-sidepane.page:24
 msgid ""
 "To activate the <app>side pane</app>, select <guiseq><gui>View</gui> "
 "<gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key."
@@ -448,7 +473,7 @@ msgstr ""
 "πλήκτρο <key>F9</key>."
 
 #. (itstool) path: note/p
-#: C/gedit-open-files-from-sidepane.page:29
+#: C/gedit-open-files-from-sidepane.page:30
 msgid ""
 "You can toggle the <gui>side pane</gui> open or closed by pressing <key>F9</"
 "key> at any time."
@@ -457,13 +482,13 @@ msgstr ""
 "πατώντας <key>F9</key> οποιαδήποτε στιγμή."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:36
+#: C/gedit-open-files-from-sidepane.page:37
 #: C/gedit-plugins-file-browser.page:32
 msgid "Opening files from the side pane"
 msgstr "Άνοιγμα αρχείων από την πλευρική στήλη"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:37
+#: C/gedit-open-files-from-sidepane.page:38
 msgid ""
 "To open files from the <app>side pane</app>, first open the <app>side pane</"
 "app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></guiseq>, "
@@ -475,7 +500,7 @@ msgstr ""
 "<gui>Περιηγητής αρχείων</gui> στο κάτω μέρος του παραθύρου."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:46
+#: C/gedit-open-files-from-sidepane.page:47
 #: C/gedit-plugins-file-browser.page:42
 msgid ""
 "This will activate the <em>file-browser</em> mode of the <app>side pane</"
@@ -488,13 +513,13 @@ msgstr ""
 "αρχεία που επιθυμείτε."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:54
+#: C/gedit-open-files-from-sidepane.page:55
 msgid "Using the side pane to switch between open files"
 msgstr ""
 "Χρησιμοποιώντας την πλευρική στήλη για να αλλάξετε μεταξύ ανοιχτών αρχείων"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:55
+#: C/gedit-open-files-from-sidepane.page:56
 msgid ""
 "Once you have several files open, you can use the side pane to switch "
 "between open files. To activate the file browser portion of the <app>side "
@@ -507,7 +532,7 @@ msgstr ""
 "<gui>αρχείο</gui> στο κάτω μέρος της <gui>πλευρικής στήλης</gui>."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:64
+#: C/gedit-open-files-from-sidepane.page:65
 msgid ""
 "Clicking on any file name in the <gui>side pane</gui> will open that file "
 "for editing."
@@ -575,12 +600,12 @@ msgstr ""
 "τα ενδιάμεσα."
 
 #. (itstool) path: page/title
-#: C/gedit-open-on-server.page:14
+#: C/gedit-open-on-server.page:15
 msgid "Open a file that is located on a server"
 msgstr "Άνοιγμα αρχείου που βρίσκεται σε διακομιστή"
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:16
+#: C/gedit-open-on-server.page:17
 msgid ""
 "Prior to opening a file on a server from within <app>gedit</app>, you need "
 "to know some technical information about the server. For example, you will "
@@ -594,7 +619,7 @@ msgstr ""
 "HTTP, FTP, κτλ.)."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:21
+#: C/gedit-open-on-server.page:22
 msgid ""
 "Also, some types of servers impose restrictions on what you can do with "
 "files stored on the server. For example, you may be able to open a file from "
@@ -608,7 +633,7 @@ msgstr ""
 "στο αρχείο τοπικά, στον δικό σας υπολογιστή."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:26
+#: C/gedit-open-on-server.page:27
 msgid ""
 "With these caveats in mind, perform the following steps to open a file from "
 "a server using <app>gedit</app>:"
@@ -617,7 +642,7 @@ msgstr ""
 "ανοίξετε ένα αρχείο από έναν διακομιστή χρησιμοποιώντας το <app>gedit</app>:"
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:30
+#: C/gedit-open-on-server.page:31
 msgid ""
 "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
 "<gui>Open Files</gui> dialog."
@@ -626,7 +651,7 @@ msgstr ""
 "εμφανίσετε το διάλογο <gui>Άνοιγμα αρχείων</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:32
+#: C/gedit-open-on-server.page:33
 msgid ""
 "Select the <gui>Pencil</gui> icon near the top of the <gui>Open Files</gui> "
 "dialog."
@@ -635,17 +660,17 @@ msgstr ""
 "<gui>Άνοιγμα Αρχείων</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:34
+#: C/gedit-open-on-server.page:35
 msgid "Enter the IP Address or URL of the appropriate server."
 msgstr "Πληκτρολογήστε τη διεύθυνση IP ή το URL του κατάλληλου διακομιστή."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:36
+#: C/gedit-open-on-server.page:37
 msgid "Find and select the file that you wish to open."
 msgstr "Πληκτρολογήστε την τοποθεσία του αρχείου που θέλετε να ανοίξετε."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:37
+#: C/gedit-open-on-server.page:38
 msgid ""
 "Use the Character coding drop-down list to select the appropriate character "
 "coding."
@@ -654,12 +679,12 @@ msgstr ""
 "διαλέξετε την κατάλληλη κωδικοποίηση."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:39 C/gedit-plugins-quick-open.page:43
+#: C/gedit-open-on-server.page:40 C/gedit-plugins-quick-open.page:43
 msgid "Click <gui>Open</gui>."
 msgstr "Πατήστε <gui>Άνοιγμα</gui>."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:42
+#: C/gedit-open-on-server.page:43
 msgid ""
 "Valid types of URI include http:, ftp:, file:, and all of the methods "
 "supported by <app>gvfs</app>."
@@ -668,7 +693,7 @@ msgstr ""
 "που υποστηρίζονται από το <app>gvfs</app>."
 
 #. (itstool) path: note/p
-#: C/gedit-open-on-server.page:46
+#: C/gedit-open-on-server.page:47
 msgid ""
 "Files from some types of URI are opened as read-only, and any changes you "
 "make must be saved to a different location. For example, HTTP only allows "
@@ -682,12 +707,12 @@ msgstr ""
 "εξυπηρετητές FTP την αποθήκευση απομακρυσμένων αρχείων."
 
 #. (itstool) path: page/title
-#: C/gedit-open-recent.page:14
+#: C/gedit-open-recent.page:15
 msgid "Reopen a recently-used file"
 msgstr "Άνοιγμα ξανά ενός πρόσφατου αρχείο"
 
 #. (itstool) path: page/p
-#: C/gedit-open-recent.page:16
+#: C/gedit-open-recent.page:17
 msgid ""
 "By default, <app>gedit</app> provides easy access to five of your most "
 "recently-used files. Here is how you can open a recently-used file:"
@@ -697,7 +722,7 @@ msgstr ""
 "χρησιμοποιήθηκε πρόσφατα, κάντε τα ακόλουθα:"
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:19
+#: C/gedit-open-recent.page:20
 msgid ""
 "Click the downward-facing arrow to the right of the <gui>Open</gui> button."
 msgstr ""
@@ -705,7 +730,7 @@ msgstr ""
 "<gui>Άνοιγμα</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:21
+#: C/gedit-open-recent.page:22
 msgid ""
 "<app>gedit</app> will display a list of the five most-recently used files."
 msgstr ""
@@ -713,12 +738,12 @@ msgstr ""
 "χρησιμοποιημένων αρχείων."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:23
+#: C/gedit-open-recent.page:24
 msgid "Select the desired file, and it will open in a new tab."
 msgstr "Επιλέξτε το επιθυμητό αρχείο, και θα ανοίξει σε νέα καρτέλα."
 
 #. (itstool) path: note/p
-#: C/gedit-open-recent.page:26
+#: C/gedit-open-recent.page:27
 msgid ""
 "To adjust the number of recently-used files that gedit displays, you will "
 "need to use the <app>dconf-editor</app> application."
@@ -728,7 +753,7 @@ msgstr ""
 "editor</app>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:30
+#: C/gedit-open-recent.page:31
 msgid ""
 "Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui> <gui>gnome</"
 "gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</"
@@ -739,7 +764,7 @@ msgstr ""
 "recents</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:33
+#: C/gedit-open-recent.page:34
 msgid ""
 "Double-click on the number next to <gui>max-recents</gui> and change the "
 "number to your desired value."
@@ -748,12 +773,12 @@ msgstr ""
 "τον αριθμό στην επιθυμητή σας τιμή."
 
 #. (itstool) path: page/title
-#: C/gedit-plugin-guide.page:14
+#: C/gedit-plugin-guide.page:15
 msgid "Configure and use gedit Plugins"
 msgstr "Ρύθμιση και χρήση προσθέτων gedit"
 
 #. (itstool) path: page/p
-#: C/gedit-plugin-guide.page:15
+#: C/gedit-plugin-guide.page:16
 msgid ""
 "You can do more with <app>gedit</app> by using plugins. Several plugins are "
 "installed by default, but a large number of other plugins are available "
@@ -764,7 +789,7 @@ msgstr ""
 "μεγάλος αριθμός από άλλα πρόσθετα είναι διαθέσιμα ξεχωριστά."
 
 #. (itstool) path: note/p
-#: C/gedit-plugin-guide.page:19
+#: C/gedit-plugin-guide.page:20
 msgid ""
 "Many Linux distributions make a group of these plugins available as a "
 "<app>gedit-plugins</app> package. Install the <app>gedit-plugins</app> "
@@ -775,12 +800,12 @@ msgstr ""
 "app> για να κάνετε αυτά τα επιπλέον πρόσθετα διαθέσιμα στο <app>gedit</app>."
 
 #. (itstool) path: section/title
-#: C/gedit-plugin-guide.page:24
+#: C/gedit-plugin-guide.page:25
 msgid "Default gedit Plugins"
 msgstr "Προεπιλεγμένα πρόσθετα gedit"
 
 #. (itstool) path: section/title
-#: C/gedit-plugin-guide.page:28
+#: C/gedit-plugin-guide.page:29
 msgid "Additional gedit Plugins"
 msgstr "Επιπλέον πρόσθετα gedit"
 
@@ -789,7 +814,7 @@ msgstr "Επιπλέον πρόσθετα gedit"
 #: C/gedit-plugins-external-tools.page:11 C/gedit-plugins-file-browser.page:10
 #: C/gedit-plugins-insert-date-time.page:9 C/gedit-plugins-install.page:12
 #: C/gedit-plugins-modelines.page:9 C/gedit-plugins-sort.page:9
-#: C/gedit-replace.page:15 C/gedit-search.page:14 C/gedit-tabs-moving.page:16
+#: C/gedit-replace.page:16 C/gedit-search.page:14 C/gedit-tabs-moving.page:16
 #: C/gedit-tabs.page:17 C/gedit-undo-recent-action.page:15
 #: C/gedit-view-open-files-in-sidepane.page:14
 msgid "Daniel Neel"
@@ -1438,17 +1463,17 @@ msgstr ""
 "επισκεφτείτε τον <link href=\"http://www.vim.org/\">ιστότοπο του Vim</link>."
 
 #. (itstool) path: info/desc
-#: C/gedit-plugins-pyconsole.page:12
+#: C/gedit-plugins-pyconsole.page:13
 msgid "Add an interactive Python console to the bottom pane"
 msgstr "Προσθήκη μιας διαδραστικής κονσόλας Python στο κάτω παράθυρο"
 
 #. (itstool) path: page/title
-#: C/gedit-plugins-pyconsole.page:15
+#: C/gedit-plugins-pyconsole.page:16
 msgid "Python console"
 msgstr "Κονσόλα Python"
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-pyconsole.page:17
+#: C/gedit-plugins-pyconsole.page:18
 msgid ""
 "You can add a Python console to the bottom pane, allowing you to test Python "
 "scripts without leaving <app>gedit</app>. To enable the Python console, "
@@ -1462,7 +1487,7 @@ msgstr ""
 "gui> <gui>Κονσόλα Python</gui></guiseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-pyconsole.page:23
+#: C/gedit-plugins-pyconsole.page:24
 msgid ""
 "Once the Python console is enabled, you can open it by selecting "
 "<guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just press "
@@ -1473,7 +1498,7 @@ msgstr ""
 "<keyseq><key>Shift</key><key>F9</key></keyseq>."
 
 #. (itstool) path: note/p
-#: C/gedit-plugins-pyconsole.page:27
+#: C/gedit-plugins-pyconsole.page:28
 msgid ""
 "If you have also enabled the <gui>Embeded Terminal</gui> plugin, the "
 "<gui>Python Console</gui> will appear as a separate tab in the bottom pane."
@@ -1628,7 +1653,7 @@ msgstr ""
 #: C/gedit-plugins-snippets.page:13 C/gedit-plugins-sort.page:17
 #: C/gedit-printing-order.page:14 C/gedit-printing.page:13
 #: C/gedit-printing-select.page:13 C/gedit-quickstart.page:15
-#: C/gedit-replace.page:19 C/gedit-save-file.page:15 C/gedit-search.page:18
+#: C/gedit-replace.page:20 C/gedit-save-file.page:15 C/gedit-search.page:18
 #: C/gedit-shortcut-keys.page:28 C/gedit-spellcheck.page:19
 #: C/gedit-syntax-highlighting.page:13 C/gedit-tabs-moving.page:20
 #: C/gedit-tabs.page:21 C/gedit-undo-recent-action.page:19
@@ -2459,18 +2484,13 @@ msgstr ""
 "λάβετε βοήθεια με την εκτέλεση πρόσθετων καθηκόντων, εξερευνήστε <link xref="
 "\"index\">τα άλλα τμήματα</link> τις βοήθειας του <app>gedit</app>."
 
-#. (itstool) path: credit/name
-#: C/gedit-replace.page:23
-msgid "Ekaterina Gerasimova"
-msgstr "Ekaterina Gerasimova"
-
 #. (itstool) path: page/title
-#: C/gedit-replace.page:29
+#: C/gedit-replace.page:34
 msgid "Replace text"
 msgstr "Αντικατάσταση κειμένου"
 
 #. (itstool) path: page/p
-#: C/gedit-replace.page:31
+#: C/gedit-replace.page:36
 msgid ""
 "Editing text can be time consuming. To save time, <app>gedit</app> includes "
 "a <app>Replace</app> function that helps you to find and replace portions of "
@@ -2481,23 +2501,23 @@ msgstr ""
 "βοηθάει να βρείτε και να αντικαταστήσετε τμήματα του κειμένου."
 
 #. (itstool) path: steps/title
-#: C/gedit-replace.page:36
+#: C/gedit-replace.page:41
 msgid "Replace text in <app>gedit</app>"
 msgstr "Αντικατάσταση κειμένου στο <app>gedit</app>"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:38
+#: C/gedit-replace.page:43
 msgid ""
-"Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"menu"
-"\">Search</gui><gui style=\"menuitem\">Replace…</gui></guiseq> or press "
-"<keyseq><key>Ctrl</key><key>H</key></keyseq>."
+"Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"button"
+"\">Menu button</gui><gui style=\"menuitem\">Find and Replace…</gui></guiseq> "
+"or press <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgstr ""
-"Ανοίξτε το εργαλείο <gui>Αντικατάσταση</gui> πατώντας <guiseq><gui style="
-"\"menu\">Αναζήτηση</gui> <gui style=\"menuitem\">Αντικατάσταση…</gui></"
-"guiseq> ή πατώντας <keyseq><key>Ctrl</key><key>H</key></keyseq>."
+"Ανοίξτε το εργαλείο <gui>Αντικατάσταση</gui> κάνοντας κλικ στο <guiseq><gui "
+"style=\"button\">Μενού</gui><gui style=\"menuitem\">Εύρεση και αντικατάσταση…"
+"</gui></guiseq> ή πατώντας <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:43
+#: C/gedit-replace.page:49
 msgid ""
 "Enter the text that you wish to replace into the <gui>Search for:</gui> "
 "field."
@@ -2506,7 +2526,7 @@ msgstr ""
 "για:</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:47
+#: C/gedit-replace.page:53
 msgid ""
 "Enter the new, replacement text into the <gui>Replace with:</gui> field."
 msgstr ""
@@ -2514,7 +2534,7 @@ msgstr ""
 "gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:51
+#: C/gedit-replace.page:57
 msgid ""
 "Once you have entered the original and replacement text, you can add extra "
 "parameters to the search. You can also choose what you want to replace:"
@@ -2524,14 +2544,14 @@ msgstr ""
 "επιλέξετε τι θέλετε να αντικαταστήσετε:"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:56
+#: C/gedit-replace.page:62
 msgid "To replace <em>only</em> the next match, click <gui>Replace</gui>."
 msgstr ""
 "Για να αντικαταστήσετε <em>μόνο</em> το επόμενο ταίριασμα, πατήστε στο "
 "<gui>Αντικατάσταση</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:60
+#: C/gedit-replace.page:66
 msgid ""
 "To replace <em>all occurrences</em> of the searched-for text, click "
 "<gui>Replace All</gui>."
@@ -2540,7 +2560,7 @@ msgstr ""
 "κειμένου, πατήστε στην <gui>Αντικατάσταση όλων</gui>."
 
 #. (itstool) path: note/p
-#: C/gedit-replace.page:68
+#: C/gedit-replace.page:74
 msgid ""
 "Use the <gui>Replace All</gui> function with care. <gui>Replace All</gui> "
 "works on the entirety of your text file, and does not allow you to highlight "
@@ -2552,24 +2572,24 @@ msgstr ""
 "αντικατάστασης θα ενεργήσει."
 
 #. (itstool) path: section/title
-#: C/gedit-replace.page:75
+#: C/gedit-replace.page:81
 msgid "More options"
 msgstr "Περισσότερες επιλογές"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:77
+#: C/gedit-replace.page:83
 msgid "If you wish, you can add some extra parameters to your search:"
 msgstr ""
 "Αν θέλετε, μπορείτε να προσθέσετε μερικές πρόσθετες παραμέτρους στην "
 "αναζήτησή σας:"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:81
+#: C/gedit-replace.page:87
 msgid "Match case"
 msgstr "Ταίριασμα πεζών-κεφαλαίων"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:82
+#: C/gedit-replace.page:88
 msgid ""
 "The <em>Match case</em> option allows you to specify whether you want your "
 "search to be case-sensitive. If this option is selected, searches will be "
@@ -2581,12 +2601,12 @@ msgstr ""
 "έχουν διάκριση πεζών-κεφαλαίων."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:87
+#: C/gedit-replace.page:93
 msgid "Match entire word only"
 msgstr "Ταίριασμα μόνο ολόκληρης λέξης"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:88
+#: C/gedit-replace.page:94
 msgid ""
 "Use this option to search for a specific word without including fragments of "
 "other words. For example, if you searched for the word 'and' with this "
@@ -2600,12 +2620,12 @@ msgstr ""
 "όχι."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:95
+#: C/gedit-replace.page:101
 msgid "Search backwards"
 msgstr "Αναζήτηση προς τα πίσω"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:96
+#: C/gedit-replace.page:102
 msgid ""
 "This command behaves identically to the Find Previous command. If you wish "
 "to step through search results from end to beginning, select this option."
@@ -2615,12 +2635,12 @@ msgstr ""
 "επιλέξτε αυτή την επιλογή."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:101
+#: C/gedit-replace.page:107
 msgid "Wrap around"
 msgstr "Αναδίπλωση ολόγυρα"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:102
+#: C/gedit-replace.page:108
 msgid ""
 "With the <app>wrap around</app> option enabled, <app>gedit</app> will re-"
 "start the search/replace action at the top of the file after it has reached "
@@ -2633,12 +2653,12 @@ msgstr ""
 "αναζήτησης/αντικατάστασης σας έχει γίνει σε όλο το αρχείο."
 
 #. (itstool) path: section/title
-#: C/gedit-replace.page:112
+#: C/gedit-replace.page:118
 msgid "Using escape sequences"
 msgstr "Χρήση ακολουθιών διαφυγής"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:114
+#: C/gedit-replace.page:120
 msgid ""
 "You can use <em>escape sequences</em> to search for line breaks and tabs."
 msgstr ""
@@ -2646,37 +2666,37 @@ msgstr ""
 "αλλαγών γραμμών και στηλοθετών."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:119
+#: C/gedit-replace.page:125
 msgid "\\n"
 msgstr "\\n"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:120
+#: C/gedit-replace.page:126
 msgid "Newline"
 msgstr "Νέα γραμμή"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:123
+#: C/gedit-replace.page:129
 msgid "\\t"
 msgstr "\\t"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:124
+#: C/gedit-replace.page:130
 msgid "Tab"
 msgstr "Στηλοθέτης"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:127
+#: C/gedit-replace.page:133
 msgid "\\r"
 msgstr "\\r"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:128
+#: C/gedit-replace.page:134
 msgid "Carriage return"
 msgstr "Επαναφορά κεφαλής"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:132
+#: C/gedit-replace.page:138
 msgid ""
 "If you actually want to search for a <output>\\</output> (backslash) or one "
 "of the escape sequences in the text, you need to escape the backslash with "
@@ -2745,13 +2765,13 @@ msgstr "Εύρεση κειμένου"
 #: C/gedit-search.page:36
 msgid ""
 "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
-"\">Search</gui> <gui style=\"menuitem\">Find</gui> </guiseq> or pressing "
-"<keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your cursor to "
-"the start of the <gui>search window</gui>."
+"\">Menu Button</gui> <gui style=\"menuitem\">Find…</gui> </guiseq> or "
+"pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your "
+"cursor to the start of the <gui>search window</gui>."
 msgstr ""
-"Ανοίξτε το <gui>παράθυρο αναζήτησης</gui> πατώντας στο <guiseq><gui style="
-"\"menu\">Αναζήτηση</gui> <gui style=\"menuitem\">Εύρεση</gui> </guiseq> ή "
-"πατήστε <keyseq><key>Ctrl</key><key>F</key></keyseq>. Αυτό θα μετακινήσει "
+"Ανοίξτε το <gui>παράθυρο αναζήτησης</gui> κάνοντας κλικ στο <guiseq><gui "
+"style=\"menu\">Μενού</gui> <gui style=\"menuitem\">Εύρεση…</gui> </guiseq> ή "
+"πατώντας <keyseq><key>Ctrl</key><key>F</key></keyseq>. Αυτό θα μετακινήσει "
 "τον δρομέα σας στην αρχή του <gui>παραθύρου αναζήτησης</gui>."
 
 #. (itstool) path: item/p
@@ -3893,7 +3913,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:98 C/gedit-tabs-moving.page:44
-#: C/gedit-tabs-moving.page:65 C/gedit-tabs-moving.page:91
+#: C/gedit-tabs-moving.page:65 C/gedit-tabs-moving.page:88
 msgid "Click and hold the mouse button on the tab."
 msgstr "Πατήστε και κρατήστε το κουμπί του ποντικιού στην καρτέλα."
 
@@ -3909,7 +3929,7 @@ msgstr "Τοποθετήστε την δίπλα στις άλλες καρτέ�
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:107 C/gedit-tabs-moving.page:50
-#: C/gedit-tabs-moving.page:71 C/gedit-tabs-moving.page:100
+#: C/gedit-tabs-moving.page:71 C/gedit-tabs-moving.page:97
 msgid "Release the mouse button."
 msgstr "Απελευθερώστε το κουμπί του ποντικιού."
 
@@ -3981,17 +4001,8 @@ msgstr "Για τη δημιουργία ενός νέου παραθύρου α
 msgid "Drag the tab out of the <app>gedit</app> window."
 msgstr "Σύρετε την καρτέλα έξω από το παράθυρο του <app>gedit</app>."
 
-#. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:75
-msgid ""
-"or, while the tab to be moved is open, choose <guiseq><gui>Documents </"
-"gui><gui>Move to New Window</gui></guiseq>"
-msgstr ""
-"ή, ενώ η καρτέλα που θα μετακινηθεί είναι ανοιχτή, επιλέξτε "
-"<guiseq><gui>Έγγραφα</gui><gui>Μετακίνηση σε νέο παράθυρο</gui></guiseq>"
-
 #. (itstool) path: note/p
-#: C/gedit-tabs-moving.page:79
+#: C/gedit-tabs-moving.page:76
 msgid ""
 "To move a tab into a new window when <app>gedit</app> is maximized, drag the "
 "tab onto the top bar at the top of the screen."
@@ -4000,27 +4011,27 @@ msgstr ""
 "μεγιστοποιημένο, σύρετε την καρτέλα στην πάνω γραμμή στην κορυφή της οθόνης."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs-moving.page:85
+#: C/gedit-tabs-moving.page:82
 msgid "Move a tab to another gedit window"
 msgstr "Μετακίνηση της καρτέλας στο νέο παράθυρο gedit"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:87
+#: C/gedit-tabs-moving.page:84
 msgid "If you want to move a tab from one window to another:"
 msgstr "Αν θέλετε να μετακινήσετε μια καρτέλα από ένα παράθυρο σε άλλο:"
 
 #. (itstool) path: item/p
-#: C/gedit-tabs-moving.page:94
+#: C/gedit-tabs-moving.page:91
 msgid "Drag the tab to the new window."
 msgstr "Σύρετε την καρτέλα στο νέο παράθυρο."
 
 #. (itstool) path: item/p
-#: C/gedit-tabs-moving.page:97
+#: C/gedit-tabs-moving.page:94
 msgid "Place it beside other tabs in the new window."
 msgstr "Τοποθετήστε το δίπλα στις άλλες καρτέλες στο νέο παράθυρο."
 
 #. (itstool) path: note/p
-#: C/gedit-tabs-moving.page:106
+#: C/gedit-tabs-moving.page:103
 msgid ""
 "You may find it easier to move a tab from one window to another by dragging "
 "the tab to the <gui>Activities</gui> hot-corner of <gui>GNOME Shell</gui>. "
@@ -4034,7 +4045,7 @@ msgstr ""
 "παράθυρο <app>gedit</app>."
 
 #. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:113
+#: C/gedit-tabs-moving.page:110
 msgid ""
 "See the <link xref=\"gedit-shortcut-keys\">tab-related shortcut keys</link> "
 "table to make it easier to manage your tabs."
@@ -4236,21 +4247,38 @@ msgstr "Εκτύπωση με το gedit"
 
 #. (itstool) path: p/link
 #: C/legal.xml:3
-msgid "http://creativecommons.org/licenses/by-sa/3.0/"
-msgstr "http://creativecommons.org/licenses/by-sa/3.0/"
+#| msgid "Creative Commons Share Alike 3.0"
+msgid "Creative Commons Attribution-ShareAlike 3.0 Unported License"
+msgstr "Creative Commons Attribution-ShareAlike 3.0 Unported License"
 
 #. (itstool) path: license/p
 #: C/legal.xml:3
-msgid ""
-"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 "
-"Unported License. To view a copy of this license, visit <_:link-1/> or send "
-"a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, "
-"California, 94041, USA."
-msgstr ""
-"Αυτό το έργο έχει αδειοδοτηθεί υπό την άδεια Creative Commons Attribution-"
-"ShareAlike 3.0 Unported. Για να δείτε ένα αντίγραφο αυτής της άδειας, "
-"επισκεφτείτε <_:link-1/> ή στείλτε ένα γράμμα στο Creative Commons, 444 "
-"Castro Street, Suite 900, Mountain View, California, 94041, USA."
+msgid "This work is licensed under a <_:link-1/>."
+msgstr "Αυτό το έργο έχει αδειοδοτηθεί υπό την <_:link-1/>."
+
+#~ msgid "To change the color scheme, complete the following steps:"
+#~ msgstr "Για να αλλάξετε τον συνδυασμό χρωμάτων, κάντε τα ακόλουθα:"
+
+#~ msgid ""
+#~ "or, while the tab to be moved is open, choose <guiseq><gui>Documents </"
+#~ "gui><gui>Move to New Window</gui></guiseq>"
+#~ msgstr ""
+#~ "ή, ενώ η καρτέλα που θα μετακινηθεί είναι ανοιχτή, επιλέξτε "
+#~ "<guiseq><gui>Έγγραφα</gui><gui>Μετακίνηση σε νέο παράθυρο</gui></guiseq>"
+
+#~ msgid "http://creativecommons.org/licenses/by-sa/3.0/"
+#~ msgstr "http://creativecommons.org/licenses/by-sa/3.0/"
+
+#~ msgid ""
+#~ "This work is licensed under the Creative Commons Attribution-ShareAlike "
+#~ "3.0 Unported License. To view a copy of this license, visit <_:link-1/> "
+#~ "or send a letter to Creative Commons, 444 Castro Street, Suite 900, "
+#~ "Mountain View, California, 94041, USA."
+#~ msgstr ""
+#~ "Αυτό το έργο έχει αδειοδοτηθεί υπό την άδεια Creative Commons Attribution-"
+#~ "ShareAlike 3.0 Unported. Για να δείτε ένα αντίγραφο αυτής της άδειας, "
+#~ "επισκεφτείτε <_:link-1/> ή στείλτε ένα γράμμα στο Creative Commons, 444 "
+#~ "Castro Street, Suite 900, Mountain View, California, 94041, USA."
 
 #~ msgid "Log user activity for documents which are opened in gedit"
 #~ msgstr ""
@@ -5559,9 +5587,6 @@ msgstr ""
 #~ msgctxt "_"
 #~ msgid "external ref='reverse-collate.png' md5='__failed__'"
 #~ msgstr "external ref='reverse-collate.png' md5='__failed__'"
-
-#~ msgid "Creative Commons Share Alike 3.0"
-#~ msgstr "Creative Commons Share Alike 3.0"
 
 #~ msgid "To reverse the order:"
 #~ msgstr "Για να αντιστρέψετε τη σειρά:"
