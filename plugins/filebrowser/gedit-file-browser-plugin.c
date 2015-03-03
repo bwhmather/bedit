@@ -52,7 +52,6 @@
 #define NAUTILUS_BASE_SETTINGS		"org.gnome.nautilus.preferences"
 #define NAUTILUS_FALLBACK_SETTINGS	"org.gnome.gedit.plugins.filebrowser.nautilus"
 #define NAUTILUS_CLICK_POLICY_KEY	"click-policy"
-#define NAUTILUS_ENABLE_DELETE_KEY	"enable-delete"
 #define NAUTILUS_CONFIRM_TRASH_KEY	"confirm-trash"
 
 #define TERMINAL_BASE_SETTINGS		"org.gnome.desktop.default-applications.terminal"
@@ -72,7 +71,6 @@ struct _GeditFileBrowserPluginPrivate
 	gboolean		confirm_trash;
 
 	guint			click_policy_handle;
-	guint			enable_delete_handle;
 	guint			confirm_trash_handle;
 };
 
@@ -354,13 +352,6 @@ install_nautilus_prefs (GeditFileBrowserPlugin *plugin)
 				  G_CALLBACK (on_click_policy_changed),
 				  plugin);
 
-	/* Bind enable-delete */
-	g_settings_bind (priv->nautilus_settings,
-			 NAUTILUS_ENABLE_DELETE_KEY,
-			 priv->tree_widget,
-			 "enable-delete",
-			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_SET);
-
 	/* Get confirm_trash */
 	prefb = g_settings_get_boolean (priv->nautilus_settings,
 					NAUTILUS_CONFIRM_TRASH_KEY);
@@ -597,12 +588,6 @@ gedit_file_browser_plugin_deactivate (GeditWindowActivatable *activatable)
 	{
 		g_signal_handler_disconnect (priv->nautilus_settings,
 					     priv->click_policy_handle);
-	}
-
-	if (priv->enable_delete_handle)
-	{
-		g_signal_handler_disconnect (priv->nautilus_settings,
-					     priv->enable_delete_handle);
 	}
 
 	if (priv->confirm_trash_handle)

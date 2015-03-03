@@ -65,7 +65,6 @@ enum
 	PROP_0,
 
 	PROP_FILTER_PATTERN,
-	PROP_ENABLE_DELETE
 };
 
 /* Signals */
@@ -152,15 +151,11 @@ struct _GeditFileBrowserWidgetPrivate
 	GtkWidget *location_next_menu;
 	GtkWidget *current_location_menu_item;
 
-	gboolean enable_delete;
-
 	GCancellable *cancellable;
 
 	GdkCursor *busy_cursor;
 };
 
-static void set_enable_delete		       (GeditFileBrowserWidget *obj,
-						gboolean                enable);
 static void on_model_set                       (GObject                *gobject,
 						GParamSpec             *arg1,
 						GeditFileBrowserWidget *obj);
@@ -439,9 +434,6 @@ gedit_file_browser_widget_get_property (GObject   *object,
 		case PROP_FILTER_PATTERN:
 			g_value_set_string (value, obj->priv->filter_pattern_str);
 			break;
-		case PROP_ENABLE_DELETE:
-			g_value_set_boolean (value, obj->priv->enable_delete);
-			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
@@ -461,9 +453,6 @@ gedit_file_browser_widget_set_property (GObject     *object,
 		case PROP_FILTER_PATTERN:
 			gedit_file_browser_widget_set_filter_pattern (obj,
 			                                              g_value_get_string (value));
-			break;
-		case PROP_ENABLE_DELETE:
-			set_enable_delete (obj, g_value_get_boolean (value));
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -489,13 +478,6 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 					 		      "The filter pattern",
 					 		      "",
 					 		      G_PARAM_READWRITE));
-	g_object_class_install_property (object_class, PROP_ENABLE_DELETE,
-					 g_param_spec_boolean ("enable-delete",
-					 		       "Enable delete",
-					 		       "Enable permanently deleting items",
-					 		       TRUE,
-					 		       G_PARAM_READWRITE |
-					 		       G_PARAM_CONSTRUCT));
 
 	signals[LOCATION_ACTIVATED] =
 	    g_signal_new ("location-activated",
@@ -808,19 +790,6 @@ fill_locations_model (GeditFileBrowserWidget *obj)
 	gedit_file_browser_widget_show_bookmarks (obj);
 }
 
-static void
-set_enable_delete (GeditFileBrowserWidget *obj,
-		   gboolean                enable)
-{
-	GAction *action;
-	obj->priv->enable_delete = enable;
-
-	action = g_action_map_lookup_action (G_ACTION_MAP (obj->priv->action_group),
-	                                     "delete");
-
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enable);
-}
-
 static gboolean
 filter_real (GeditFileBrowserStore  *model,
 	     GtkTreeIter            *iter,
@@ -1035,8 +1004,6 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 	gtk_widget_insert_action_group (GTK_WIDGET (obj),
 	                                "browser",
 	                                G_ACTION_GROUP (obj->priv->action_group));
-
-	set_enable_delete (obj, obj->priv->enable_delete);
 
 	gtk_widget_init_template (GTK_WIDGET (obj));
 
@@ -2967,8 +2934,7 @@ on_treeview_key_press_event (GeditFileBrowserView   *treeview,
 	    event->keyval == GDK_KEY_KP_Delete)
 	{
 
-		if ((event->state & modifiers) == GDK_SHIFT_MASK &&
-		    obj->priv->enable_delete)
+		if ((event->state & modifiers) == GDK_SHIFT_MASK)
 		{
 			delete_selected_files (obj, FALSE);
 			return TRUE;
