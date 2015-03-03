@@ -16,9 +16,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-master-po-gl-116402.merged\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-24 21:58+0100\n"
-"PO-Revision-Date: 2015-02-24 21:59+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&k"
+"eywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-03-03 18:05+0000\n"
+"PO-Revision-Date: 2015-03-03 23:59+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -787,15 +788,18 @@ msgstr "Se non garda, todos os seus cambios perderanse permanentemente."
 
 #: ../gedit/gedit-commands-file.c:258
 #, c-format
-msgid "Loading file '%s'ے"
-msgstr "Cargando o ficheiro '%s'"
+#| msgid "Loading file '%s'ے"
+msgid "Loading file '%s'…"
+msgstr "Cargando o ficheiro '%s'…"
 
 #: ../gedit/gedit-commands-file.c:267
 #, c-format
-msgid "Loading %d fileے"
-msgid_plural "Loading %d filesے"
-msgstr[0] "Cargando %d ficheiro"
-msgstr[1] "Cargando %d ficheiros"
+#| msgid "Loading %d fileے"
+#| msgid_plural "Loading %d filesے"
+msgid "Loading %d file…"
+msgid_plural "Loading %d files…"
+msgstr[0] "Cargando %d ficheiro…"
+msgstr[1] "Cargando %d ficheiros…"
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:453
@@ -861,8 +865,9 @@ msgstr "Gardar como te_xto plano"
 
 #: ../gedit/gedit-commands-file.c:778 ../gedit/gedit-commands-file.c:1031
 #, c-format
-msgid "Saving file '%s'ے"
-msgstr "Gardando o ficheiro '%s'"
+#| msgid "Saving file '%s'ے"
+msgid "Saving file '%s'…"
+msgstr "Gardando o ficheiro '%s'…"
 
 #: ../gedit/gedit-commands-file.c:861
 msgid "Save As"
@@ -870,8 +875,9 @@ msgstr "Gardar como"
 
 #: ../gedit/gedit-commands-file.c:1441
 #, c-format
-msgid "Reverting the document '%s'ے"
-msgstr "Recuperando o documento '%s'"
+#| msgid "Reverting the document '%s'ے"
+msgid "Reverting the document '%s'…"
+msgstr "Recuperando o documento '%s'…"
 
 #: ../gedit/gedit-commands-file.c:1488
 #, c-format
@@ -1888,8 +1894,8 @@ msgid "_Paste"
 msgstr "_Pegar"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:19
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "E_liminar"
@@ -2678,43 +2684,43 @@ msgstr "Inicio"
 msgid "File System"
 msgstr "Sistema de ficheiros"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:532
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:523
 msgid "File Browser"
 msgstr "Navegador de ficheiros"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
 msgstr "Produciuse un erro ao cargar o cartafol novo"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
 msgstr "Produciuse un erro ao crear un ficheiro novo"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
 msgstr "Produciuse un erro ao renomear un ficheiro ou cartafol"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:683
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:668
 msgid "An error occurred while deleting a file or directory"
 msgstr "Produciuse un erro ao eliminar un ficheiro ou cartafol"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:686
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:671
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Produciuse un erro ao abrir un cartafol no xestor de ficheiros"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:689
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
 msgid "An error occurred while setting a root directory"
 msgstr "Produciuse un erro ao configurar o cartafol raíz"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:692
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
 msgid "An error occurred while loading a directory"
 msgstr "Produciuse un erro ao cargar un cartafol"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
 msgid "An error occurred"
 msgstr "Produciuse un erro"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:913
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2722,26 +2728,26 @@ msgstr ""
 "Non é posíbel mover o ficheiro ao lixo.\n"
 "Quere eliminalo permanentemente?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:918
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Non é posíbel mover ao lixo o ficheiro \"%s\"."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
 msgid "The selected files cannot be moved to the trash."
 msgstr "Non é posíbel mover os ficheiros seleccionados ao lixo."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Está seguro de que quere eliminar \"%s\" para sempre?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:959
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr ""
 "Está seguro de que quere eliminar para sempre os ficheiros seleccionados?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
 msgid "If you delete an item, it is permanently lost."
 msgstr "Se elimina un elemento perderase para sempre."
 
@@ -2783,26 +2789,26 @@ msgstr ""
 "O cartafol novo está agora oculto polo filtro. É necesario axustar as "
 "definicións do filtro para facelo visíbel"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:792
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:774
 msgid "Bookmarks"
 msgstr "Marcadores"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2048
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2015
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Non hai un obxecto montado para o volume montado: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2125
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2092
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Non foi posíbel abrir o soporte: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2172
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2139
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Non foi posíbel montar o volume: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2822
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2789
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Produciuse un erro ao cargar «%s»: Non existe o cartafol"
