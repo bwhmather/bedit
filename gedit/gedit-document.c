@@ -708,13 +708,13 @@ on_location_changed (GtkSourceFile *file,
 
 		if (error != NULL)
 		{
-			/* TODO document why the warning is not displayed in
-			 * certain cases.
+			/* Do not complain about metadata if we are opening a
+			 * non existing file.
 			 */
-			if (error->domain != G_FILE_ERROR ||
-			    (error->code != G_FILE_ERROR_ISDIR &&
-			     error->code != G_FILE_ERROR_NOTDIR &&
-			     error->code != G_FILE_ERROR_NOENT))
+			if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_ISDIR) &&
+			    !g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOTDIR) &&
+			    !g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
+			    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
 			{
 				g_warning ("%s", error->message);
 			}
@@ -1693,7 +1693,15 @@ gedit_document_set_metadata (GeditDocument *doc,
 
 		if (error != NULL)
 		{
-			g_warning ("Set document metadata failed: %s", error->message);
+			/* Do not complain about metadata if we are closing a
+			 * document for a non existing file.
+			 */
+			if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
+			    !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND))
+			{
+				g_warning ("Set document metadata failed: %s", error->message);
+			}
+
 			g_error_free (error);
 		}
 	}
