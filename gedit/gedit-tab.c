@@ -2769,7 +2769,7 @@ print_cancelled (GtkWidget *bar,
 }
 
 static void
-show_printing_info_bar (GeditTab *tab)
+add_printing_info_bar (GeditTab *tab)
 {
 	GtkWidget *bar;
 
@@ -2783,6 +2783,9 @@ show_printing_info_bar (GeditTab *tab)
 			  tab);
 
 	set_info_bar (tab, bar, GTK_RESPONSE_NONE);
+
+	/* hide until we start printing */
+	gtk_widget_hide (bar);
 }
 
 void
@@ -2812,10 +2815,7 @@ _gedit_tab_print (GeditTab *tab)
 
 	tab->priv->print_job = gedit_print_job_new (view);
 
-	show_printing_info_bar (tab);
-
-	/* hide until we start printing */
-	gtk_widget_hide (tab->priv->info_bar);
+	add_printing_info_bar (tab);
 
 	g_signal_connect_object (tab->priv->print_job,
 				 "printing",
