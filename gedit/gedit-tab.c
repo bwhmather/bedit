@@ -2708,7 +2708,7 @@ store_print_settings (GeditTab      *tab,
 static void
 done_printing_cb (GeditPrintJob       *job,
 		  GeditPrintJobResult  result,
-		  const GError        *error,
+		  GError              *error,
 		  GeditTab            *tab)
 {
 	GeditView *view;
@@ -2717,11 +2717,17 @@ done_printing_cb (GeditPrintJob       *job,
 			  tab->priv->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW ||
 			  tab->priv->state == GEDIT_TAB_STATE_PRINTING);
 
-	/* TODO: check status and error */
-
 	if (result == GEDIT_PRINT_JOB_RESULT_OK)
 	{
 		store_print_settings (tab, job);
+	}
+
+	/* TODO Show the error in an info bar. */
+	if (error != NULL)
+	{
+		g_warning ("Printing error: %s", error->message);
+		g_error_free (error);
+		error = NULL;
 	}
 
 	close_printing (tab);
