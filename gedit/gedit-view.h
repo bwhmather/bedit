@@ -67,8 +67,8 @@ struct _GeditViewClass
 
 	void	 (* drop_uris)			(GeditView	 *view,
 						 gchar          **uri_list);
-	void	 (* change_case)		(GeditView               *view,
-						 GtkSourceChangeCaseType  case_type);
+
+	gpointer padding;
 };
 
 /*

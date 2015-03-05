@@ -64,7 +64,6 @@ G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)
 enum
 {
 	DROP_URIS,
-	CHANGE_CASE,
 	LAST_SIGNAL
 };
 
@@ -736,26 +735,6 @@ gedit_view_create_buffer (GtkTextView *text_view)
 }
 
 static void
-gedit_view_change_case (GeditView               *view,
-			GtkSourceChangeCaseType  case_type)
-{
-	GtkSourceBuffer *buffer;
-	GtkTextIter start, end;
-
-	buffer = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-
-	gtk_text_view_reset_im_context (GTK_TEXT_VIEW (view));
-
-	if (!gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (buffer), &start, &end))
-	{
-		/* if no selection, change the current char */
-		gtk_text_iter_forward_char (&end);
-	}
-
-	gtk_source_buffer_change_case (buffer, case_type, &start, &end);
-}
-
-static void
 gedit_view_class_init (GeditViewClass *klass)
 {
 	GObjectClass     *object_class = G_OBJECT_CLASS (klass);
@@ -792,8 +771,6 @@ gedit_view_class_init (GeditViewClass *klass)
 	text_view_class->delete_from_cursor = gedit_view_delete_from_cursor;
 	text_view_class->create_buffer = gedit_view_create_buffer;
 
-	klass->change_case = gedit_view_change_case;
-
 	/* A new signal DROP_URIS has been added to allow plugins to intercept
 	 * the default dnd behaviour of 'text/uri-list'. GeditView now handles
 	 * dnd in the default handlers of drag_drop, drag_motion and
@@ -811,15 +788,6 @@ gedit_view_class_init (GeditViewClass *klass)
 		              NULL, NULL,
 		              g_cclosure_marshal_VOID__BOXED,
 		              G_TYPE_NONE, 1, G_TYPE_STRV);
-
-	view_signals[CHANGE_CASE] =
-		g_signal_new ("change-case",
-		              G_TYPE_FROM_CLASS (object_class),
-		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		              G_STRUCT_OFFSET (GeditViewClass, change_case),
-		              NULL, NULL,
-		              g_cclosure_marshal_VOID__ENUM,
-		              G_TYPE_NONE, 1, GTK_SOURCE_TYPE_CHANGE_CASE_TYPE);
 
 	binding_set = gtk_binding_set_by_class (klass);
 
