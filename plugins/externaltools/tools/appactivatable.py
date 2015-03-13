@@ -71,7 +71,7 @@ class ToolMenu(object):
 class AppActivatable(GObject.Object, Gedit.AppActivatable):
     __gtype_name__ = "ExternalToolsAppActivatable"
 
-    app = GObject.property(type=Gedit.App)
+    app = GObject.Property(type=Gedit.App)
 
     def __init__(self):
         GObject.Object.__init__(self)

@@ -37,7 +37,7 @@ class Document(GObject.Object, Gedit.ViewActivatable, Signals):
     TAB_KEY_VAL = (Gdk.KEY_Tab, Gdk.KEY_ISO_Left_Tab)
     SPACE_KEY_VAL = (Gdk.KEY_space,)
 
-    view = GObject.property(type=Gedit.View)
+    view = GObject.Property(type=Gedit.View)
 
     def __init__(self):
         GObject.Object.__init__(self)

@@ -36,10 +36,10 @@ class Capture(GObject.Object):
     WRITE_BUFFER_SIZE = 0x4000
 
     __gsignals__ = {
-        'stdout-line': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_STRING,)),
-        'stderr-line': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_STRING,)),
-        'begin-execute': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, tuple()),
-        'end-execute': (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_INT,))
+        'stdout-line': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_STRING,)),
+        'stderr-line': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_STRING,)),
+        'begin-execute': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, tuple()),
+        'end-execute': (GObject.SignalFlags.RUN_LAST, GObject.TYPE_NONE, (GObject.TYPE_INT,))
     }
 
     def __init__(self, command, cwd=None, env={}):

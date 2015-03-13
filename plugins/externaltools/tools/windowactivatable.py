@@ -98,7 +98,7 @@ class ToolActions(object):
 class WindowActivatable(GObject.Object, Gedit.WindowActivatable):
     __gtype_name__ = "ExternalToolsWindowActivatable"
 
-    window = GObject.property(type=Gedit.Window)
+    window = GObject.Property(type=Gedit.Window)
 
     def __init__(self):
         GObject.Object.__init__(self)
