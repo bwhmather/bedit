@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the gedit help.
 #
 # Mate Ory <orymate at gmail dot com>, 2007, 2008.
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015.
 # Balázs Úr <urbalazs@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit_help master\n"
-"POT-Creation-Date: 2014-12-29 06:05+0000\n"
-"PO-Revision-Date: 2014-12-29 10:31+0100\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
-"Language-Team: Hungarian <openscope at gmail dot com>\n"
+"POT-Creation-Date: 2015-03-12 06:07+0000\n"
+"PO-Revision-Date: 2015-03-14 01:04+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
+"Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,11 +25,11 @@ msgid "translator-credits"
 msgstr ""
 "Hammer Attila <hammera at pickup dot hu>, 2014.\n"
 "Kelemen Gábor <kelemeng at gnome dot hu>, 2007, 2008, 2009, 2010, 2011, "
-"2012, 2013, 2014.\n"
+"2012, 2013, 2014, 2015.\n"
 "Őry Máté <orymate at gmail dot com>, 2007, 2008."
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:9 C/gedit-change-default-font.page:9
+#: C/gedit-change-color-scheme.page:12 C/gedit-change-default-font.page:9
 #: C/gedit-close-file.page:9 C/gedit-create-new-file.page:11
 #: C/gedit-edit-as-root.page:9 C/gedit-files-basic.page:9
 #: C/gedit-full-screen.page:11 C/gedit-open-files-from-sidepane.page:10
@@ -50,13 +50,28 @@ msgstr ""
 msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
+#. (itstool) path: credit/name
+#: C/gedit-change-color-scheme.page:16
+msgid "Jana Svarova"
+msgstr "Jana Svarova"
+
+#. (itstool) path: credit/years
+#: C/gedit-change-color-scheme.page:18 C/gedit-change-color-scheme.page:23
+msgid "2015"
+msgstr "2015"
+
+#. (itstool) path: credit/name
+#: C/gedit-change-color-scheme.page:21 C/gedit-replace.page:24
+msgid "Ekaterina Gerasimova"
+msgstr "Ekaterina Gerasimova"
+
 #. (itstool) path: page/title
-#: C/gedit-change-color-scheme.page:14
+#: C/gedit-change-color-scheme.page:29
 msgid "Change the color scheme"
 msgstr "Színséma megváltoztatása"
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:16
+#: C/gedit-change-color-scheme.page:31
 msgid ""
 "<app>gedit</app> includes several different color schemes, allowing you to "
 "change the appearance of the main text window."
@@ -64,37 +79,43 @@ msgstr ""
 "A <app>gedit</app> számos színsémát tartalmaz, amelyek lehetővé teszik a fő "
 "szövegablak megjelenésének módosítását."
 
-#. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:19
-msgid "To change the color scheme, complete the following steps:"
-msgstr "A színséma megváltoztatásához tegye a következőket:"
+#. (itstool) path: steps/title
+#: C/gedit-change-color-scheme.page:35
+#| msgid "Change the color scheme"
+msgid "To change the color scheme:"
+msgstr "A színséma megváltoztatásához:"
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:21 C/gedit-change-default-font.page:23
+#: C/gedit-change-color-scheme.page:37
+#| msgid ""
+#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
-"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+"Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then select "
+"<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; Colors</"
+"gui></guiseq>."
 msgstr ""
-"Válassza a <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-"\">Beállítások</gui> <gui>Betűk és színek</gui></guiseq> lehetőséget."
+"Nyissa meg a <gui style=\"menu\">gedit</gui> menüt a felső sávban, majd "
+"válassza a <guiseq><gui style=\"menuitem"
+"\">Beállítások</gui><gui>Betűk és színek</gui></guiseq> lehetőséget."
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:24
+#: C/gedit-change-color-scheme.page:42
 msgid "Choose your desired color scheme."
 msgstr "Válassza ki a kívánt színsémát."
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:27
+#: C/gedit-change-color-scheme.page:46
 msgid "The new color scheme will be applied immediately."
 msgstr "Az új színséma azonnal alkalmazásra kerül."
 
 #. (itstool) path: section/title
-#: C/gedit-change-color-scheme.page:30
+#: C/gedit-change-color-scheme.page:49
 msgid "Use a Custom Color Scheme"
 msgstr "Egyéni színséma használata"
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:35
+#: C/gedit-change-color-scheme.page:55
 msgid ""
 "You can also use color schemes that have been created by others, or create "
 "and use your own color schemes."
@@ -103,15 +124,22 @@ msgstr ""
 "színsémáit."
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:37
+#: C/gedit-change-color-scheme.page:58
+#| msgid ""
+#| "Instructions on how to install custom color schemes, as well as examples "
+#| "of color schemes that you can download and use, are available on the "
+#| "<link href=\"http://live.gnome.org/GtkSourceView/StyleSchemes\">gedit "
+#| "wiki</link>."
 msgid ""
 "Instructions on how to install custom color schemes, as well as examples of "
 "color schemes that you can download and use, are available on the <link href="
-"\"http://live.gnome.org/GtkSourceView/StyleSchemes\">gedit wiki</link>."
+"\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes\">gedit wiki</"
+"link>."
 msgstr ""
 "Az egyéni színsémák telepítésével kapcsolatos utasításokért, valamint a "
-"letölthető és használható színsémákra példák a <link href=\"http://live."
-"gnome.org/GtkSourceView/StyleSchemes\">gedit wikiben</link> érhetők el."
+"letölthető és használható színsémákra példák a <link "
+"href=\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes\">gedit "
+"wikiben</link> érhetők el."
 
 #. (itstool) path: credit/years
 #: C/gedit-change-default-font.page:11
@@ -119,12 +147,12 @@ msgid "2011 2012 2013"
 msgstr "2011 2012 2013"
 
 #. (itstool) path: page/title
-#: C/gedit-change-default-font.page:15
+#: C/gedit-change-default-font.page:18
 msgid "Change the default font"
 msgstr "Alapértelmezett betűkészlet megváltoztatása"
 
 #. (itstool) path: page/p
-#: C/gedit-change-default-font.page:17
+#: C/gedit-change-default-font.page:20
 msgid ""
 "<app>gedit</app> will use the system fixed-width font by default, but you "
 "can change the default <app>gedit</app> font to suit your preferences."
@@ -134,12 +162,21 @@ msgstr ""
 "app> betűkészletet."
 
 #. (itstool) path: steps/title
-#: C/gedit-change-default-font.page:22
+#: C/gedit-change-default-font.page:25
 msgid "To change the default font in <app>gedit</app>:"
 msgstr "Alapértelmezett betűkészlet módosításához a <app>geditben</app>:"
 
 #. (itstool) path: item/p
 #: C/gedit-change-default-font.page:26
+msgid ""
+"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+msgstr ""
+"Válassza a <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Beállítások</gui> <gui>Betűk és színek</gui></guiseq> lehetőséget."
+
+#. (itstool) path: item/p
+#: C/gedit-change-default-font.page:29
 msgid ""
 "Uncheck the box next to the phrase, \"Use the system fixed-width font.\""
 msgstr ""
@@ -147,7 +184,7 @@ msgstr ""
 "mondat melletti jelölőnégyzetet."
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:28
+#: C/gedit-change-default-font.page:31
 msgid ""
 "Click on the current font name. <app>gedit</app> will open a font-chooser "
 "window, allowing you to see available fonts and choose the one that you "
@@ -158,7 +195,7 @@ msgstr ""
 "megjelenítését és a kívánt betűkészlet kiválasztását."
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:31
+#: C/gedit-change-default-font.page:34
 msgid ""
 "After you have chosen a new font, use the <gui>slider</gui> under the list "
 "of fonts to set the default font size."
@@ -167,17 +204,17 @@ msgstr ""
 "<gui>csúszkát</gui> az alapértelmezett betűméret beállításához."
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:33
+#: C/gedit-change-default-font.page:36
 msgid "Click <gui>Select</gui>, and then click <gui>Close</gui>."
 msgstr "Nyomja meg a <gui>Kiválasztás</gui>, majd a <gui>Bezárás</gui> gombot."
 
 #. (itstool) path: page/title
-#: C/gedit-close-file.page:14
+#: C/gedit-close-file.page:16
 msgid "Close a file"
 msgstr "Fájl bezárása"
 
 #. (itstool) path: page/p
-#: C/gedit-close-file.page:16
+#: C/gedit-close-file.page:18
 msgid ""
 "To close a file in <app>gedit</app>, select <guiseq><gui>File</gui> "
 "<gui>Close</gui></guiseq>. Alternately, you can click the small \"X\" that "
@@ -190,7 +227,7 @@ msgstr ""
 "megnyomhatja a <keyseq><key>Ctrl</key><key>W</key></keyseq> kombinációt."
 
 #. (itstool) path: page/p
-#: C/gedit-close-file.page:20
+#: C/gedit-close-file.page:22
 msgid ""
 "Any one of these actions will close a file in <app>gedit</app>. If your file "
 "contains changes that have not been saved, <app>gedit</app> will prompt you "
@@ -237,12 +274,12 @@ msgstr ""
 "fájl azoktól jobbra, új lapon jelenik meg."
 
 #. (itstool) path: page/title
-#: C/gedit-edit-as-root.page:14
+#: C/gedit-edit-as-root.page:15
 msgid "Edit a file as the root user"
 msgstr "Fájl szerkesztése root felhasználóként"
 
 #. (itstool) path: note/p
-#: C/gedit-edit-as-root.page:17
+#: C/gedit-edit-as-root.page:18
 msgid ""
 "Editing files as the root user is potentially dangerous, and may break your "
 "system in bad ways. Take great care when editing files as the root user."
@@ -252,7 +289,7 @@ msgstr ""
 "root felhasználóként szerkeszti."
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:22
+#: C/gedit-edit-as-root.page:23
 msgid ""
 "To edit files as the root user, launch <app>gedit</app> from the terminal by "
 "entering:"
@@ -261,13 +298,13 @@ msgstr ""
 "kiadásával indítsa a <app>geditet</app> a terminálból:"
 
 #. (itstool) path: page/code
-#: C/gedit-edit-as-root.page:24
+#: C/gedit-edit-as-root.page:25
 #, no-wrap
 msgid "sudo gedit"
 msgstr "sudo gedit"
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:26
+#: C/gedit-edit-as-root.page:27
 msgid ""
 "Using the <cmd>sudo</cmd> command, you will need to successfully enter your "
 "password before <app>gedit</app> will open."
@@ -276,7 +313,7 @@ msgstr ""
 "<app>gedit</app> megnyílása előtt."
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:29
+#: C/gedit-edit-as-root.page:30
 msgid ""
 "As an alternative to the <cmd>sudo</cmd> command, you may obtain "
 "administrative privileges by entering:"
@@ -285,20 +322,20 @@ msgstr ""
 "következő parancs kiadásával is:"
 
 #. (itstool) path: page/code
-#: C/gedit-edit-as-root.page:31
+#: C/gedit-edit-as-root.page:32
 #, no-wrap
 msgid "su -"
 msgstr "su -"
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:33
+#: C/gedit-edit-as-root.page:34
 msgid ""
 "You would then launch <app>gedit</app> using the <cmd>gedit</cmd> command."
 msgstr ""
 "Ezután a <app>gedit</app> a <cmd>gedit</cmd> parancs kiadásával indítható el."
 
 #. (itstool) path: note/p
-#: C/gedit-edit-as-root.page:37
+#: C/gedit-edit-as-root.page:38
 msgid ""
 "Once you have opened <app>gedit</app> with administrative privileges, "
 "<app>gedit</app> will keep those privileges until you close it."
@@ -307,12 +344,12 @@ msgstr ""
 "<app>gedit</app> addig megtartja ezeket a jogokat, amíg be nem zárja."
 
 #. (itstool) path: page/title
-#: C/gedit-files-basic.page:14
+#: C/gedit-files-basic.page:15
 msgid "File basics: Open, close, and save files"
 msgstr "Fájlkezelési alapok: fájlok megnyitása, bezárása és mentése"
 
 #. (itstool) path: page/p
-#: C/gedit-files-basic.page:16
+#: C/gedit-files-basic.page:17
 msgid ""
 "If you are new to <app>gedit</app>, these topics will help you with "
 "creating, saving, and opening and closing files."
@@ -405,12 +442,12 @@ msgstr ""
 "nyomja meg a <gui>Teljes képernyő elhagyása</gui> gombot."
 
 #. (itstool) path: page/title
-#: C/gedit-open-files-from-sidepane.page:15
+#: C/gedit-open-files-from-sidepane.page:16
 msgid "View and open files from the side pane"
 msgstr "Fájlok megjelenítése és megnyitása az oldalsávból"
 
 #. (itstool) path: page/p
-#: C/gedit-open-files-from-sidepane.page:16
+#: C/gedit-open-files-from-sidepane.page:17
 msgid ""
 "The most common way to switch between files in <app>gedit</app> is by using "
 "the tabs at the top of the <app>gedit</app> window. In some cases, though, "
@@ -423,7 +460,7 @@ msgstr ""
 "használata."
 
 #. (itstool) path: page/p
-#: C/gedit-open-files-from-sidepane.page:23
+#: C/gedit-open-files-from-sidepane.page:24
 msgid ""
 "To activate the <app>side pane</app>, select <guiseq><gui>View</gui> "
 "<gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key."
@@ -433,7 +470,7 @@ msgstr ""
 "<key>F9</key> billentyűt."
 
 #. (itstool) path: note/p
-#: C/gedit-open-files-from-sidepane.page:29
+#: C/gedit-open-files-from-sidepane.page:30
 msgid ""
 "You can toggle the <gui>side pane</gui> open or closed by pressing <key>F9</"
 "key> at any time."
@@ -442,13 +479,13 @@ msgstr ""
 "key> megnyomásával."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:36
+#: C/gedit-open-files-from-sidepane.page:37
 #: C/gedit-plugins-file-browser.page:32
 msgid "Opening files from the side pane"
 msgstr "Fájlok megnyitása az oldalsávból"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:37
+#: C/gedit-open-files-from-sidepane.page:38
 msgid ""
 "To open files from the <app>side pane</app>, first open the <app>side pane</"
 "app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></guiseq>, "
@@ -460,7 +497,7 @@ msgstr ""
 "<gui>fájlböngészőt</gui> ábrázoló ikonra."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:46
+#: C/gedit-open-files-from-sidepane.page:47
 #: C/gedit-plugins-file-browser.page:42
 msgid ""
 "This will activate the <em>file-browser</em> mode of the <app>side pane</"
@@ -472,12 +509,12 @@ msgstr ""
 "megnyithatja a kívánt fájlokat."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:54
+#: C/gedit-open-files-from-sidepane.page:55
 msgid "Using the side pane to switch between open files"
 msgstr "Az oldalsáv használata a nyitott fájlok közti váltásra"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:55
+#: C/gedit-open-files-from-sidepane.page:56
 msgid ""
 "Once you have several files open, you can use the side pane to switch "
 "between open files. To activate the file browser portion of the <app>side "
@@ -489,7 +526,7 @@ msgstr ""
 "aktiválásához kattintson az <gui>oldalsáv</gui> <gui>fájl</gui> ikonjára."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:64
+#: C/gedit-open-files-from-sidepane.page:65
 msgid ""
 "Clicking on any file name in the <gui>side pane</gui> will open that file "
 "for editing."
@@ -557,12 +594,12 @@ msgstr ""
 "összes fájl megnyílik."
 
 #. (itstool) path: page/title
-#: C/gedit-open-on-server.page:14
+#: C/gedit-open-on-server.page:15
 msgid "Open a file that is located on a server"
 msgstr "Kiszolgálón található fájl megnyitása"
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:16
+#: C/gedit-open-on-server.page:17
 msgid ""
 "Prior to opening a file on a server from within <app>gedit</app>, you need "
 "to know some technical information about the server. For example, you will "
@@ -575,7 +612,7 @@ msgstr ""
 "típusának (például HTTP, FTP stb.) ismeretére is."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:21
+#: C/gedit-open-on-server.page:22
 msgid ""
 "Also, some types of servers impose restrictions on what you can do with "
 "files stored on the server. For example, you may be able to open a file from "
@@ -588,7 +625,7 @@ msgstr ""
 "számítógépére."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:26
+#: C/gedit-open-on-server.page:27
 msgid ""
 "With these caveats in mind, perform the following steps to open a file from "
 "a server using <app>gedit</app>:"
@@ -597,7 +634,7 @@ msgstr ""
 "található fájl megnyitásához a <app>gedittel</app>:"
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:30
+#: C/gedit-open-on-server.page:31
 msgid ""
 "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
 "<gui>Open Files</gui> dialog."
@@ -606,7 +643,7 @@ msgstr ""
 "<gui>Fájlok megnyitása</gui> ablak megjelenítéséhez."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:32
+#: C/gedit-open-on-server.page:33
 msgid ""
 "Select the <gui>Pencil</gui> icon near the top of the <gui>Open Files</gui> "
 "dialog."
@@ -615,17 +652,17 @@ msgstr ""
 "tetején."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:34
+#: C/gedit-open-on-server.page:35
 msgid "Enter the IP Address or URL of the appropriate server."
 msgstr "Adja meg a megfelelő kiszolgáló IP-címét vagy URL-címét."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:36
+#: C/gedit-open-on-server.page:37
 msgid "Find and select the file that you wish to open."
 msgstr "Keresse meg, és válassza ki a megnyitni kívánt fájlt."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:37
+#: C/gedit-open-on-server.page:38
 msgid ""
 "Use the Character coding drop-down list to select the appropriate character "
 "coding."
@@ -634,12 +671,12 @@ msgstr ""
 "listából."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:39 C/gedit-plugins-quick-open.page:43
+#: C/gedit-open-on-server.page:40 C/gedit-plugins-quick-open.page:43
 msgid "Click <gui>Open</gui>."
 msgstr "Kattintson a <gui>Megnyitás</gui> gombra."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:42
+#: C/gedit-open-on-server.page:43
 msgid ""
 "Valid types of URI include http:, ftp:, file:, and all of the methods "
 "supported by <app>gvfs</app>."
@@ -648,7 +685,7 @@ msgstr ""
 "<app>gvfs</app> által támogatott elérési mód."
 
 #. (itstool) path: note/p
-#: C/gedit-open-on-server.page:46
+#: C/gedit-open-on-server.page:47
 msgid ""
 "Files from some types of URI are opened as read-only, and any changes you "
 "make must be saved to a different location. For example, HTTP only allows "
@@ -662,12 +699,12 @@ msgstr ""
 "fájlok mentését."
 
 #. (itstool) path: page/title
-#: C/gedit-open-recent.page:14
+#: C/gedit-open-recent.page:15
 msgid "Reopen a recently-used file"
 msgstr "Legutóbb használt fájl újranyitása"
 
 #. (itstool) path: page/p
-#: C/gedit-open-recent.page:16
+#: C/gedit-open-recent.page:17
 msgid ""
 "By default, <app>gedit</app> provides easy access to five of your most "
 "recently-used files. Here is how you can open a recently-used file:"
@@ -676,25 +713,25 @@ msgstr ""
 "hozzáférést. A legutóbb használt fájlok eléréséhez:"
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:19
+#: C/gedit-open-recent.page:20
 msgid ""
 "Click the downward-facing arrow to the right of the <gui>Open</gui> button."
 msgstr ""
 "Kattintson a lefelé mutató nyílra a <gui>Megnyitás</gui> gomb jobb oldalán."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:21
+#: C/gedit-open-recent.page:22
 msgid ""
 "<app>gedit</app> will display a list of the five most-recently used files."
 msgstr "A <app>gedit</app> megjeleníti a legutóbb használt öt fájlt."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:23
+#: C/gedit-open-recent.page:24
 msgid "Select the desired file, and it will open in a new tab."
 msgstr "Válassza ki a kívánt fájlt, és az megnyílik egy új lapon."
 
 #. (itstool) path: note/p
-#: C/gedit-open-recent.page:26
+#: C/gedit-open-recent.page:27
 msgid ""
 "To adjust the number of recently-used files that gedit displays, you will "
 "need to use the <app>dconf-editor</app> application."
@@ -703,7 +740,7 @@ msgstr ""
 "a <app>dconf-editor</app> alkalmazást kell használnia."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:30
+#: C/gedit-open-recent.page:31
 msgid ""
 "Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui> <gui>gnome</"
 "gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</"
@@ -714,7 +751,7 @@ msgstr ""
 "gui><gui>ui</gui> <gui>max-recents</gui></guiseq> kategóriát."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:33
+#: C/gedit-open-recent.page:34
 msgid ""
 "Double-click on the number next to <gui>max-recents</gui> and change the "
 "number to your desired value."
@@ -723,12 +760,12 @@ msgstr ""
 "módosítsa a kívánt értékre."
 
 #. (itstool) path: page/title
-#: C/gedit-plugin-guide.page:14
+#: C/gedit-plugin-guide.page:15
 msgid "Configure and use gedit Plugins"
 msgstr "Bővítmények beállítása és használata"
 
 #. (itstool) path: page/p
-#: C/gedit-plugin-guide.page:15
+#: C/gedit-plugin-guide.page:16
 msgid ""
 "You can do more with <app>gedit</app> by using plugins. Several plugins are "
 "installed by default, but a large number of other plugins are available "
@@ -738,7 +775,7 @@ msgstr ""
 "alapesetben telepítve van, de sok más külön bővítmény is elérhető."
 
 #. (itstool) path: note/p
-#: C/gedit-plugin-guide.page:19
+#: C/gedit-plugin-guide.page:20
 msgid ""
 "Many Linux distributions make a group of these plugins available as a "
 "<app>gedit-plugins</app> package. Install the <app>gedit-plugins</app> "
@@ -749,12 +786,12 @@ msgstr ""
 "telepítse a <app>gedit-plugins</app> csomagot."
 
 #. (itstool) path: section/title
-#: C/gedit-plugin-guide.page:24
+#: C/gedit-plugin-guide.page:25
 msgid "Default gedit Plugins"
 msgstr "A gedit alap bővítményei"
 
 #. (itstool) path: section/title
-#: C/gedit-plugin-guide.page:28
+#: C/gedit-plugin-guide.page:29
 msgid "Additional gedit Plugins"
 msgstr "További gedit bővítmények"
 
@@ -1401,17 +1438,17 @@ msgstr ""
 "\"http://www.vim.org/\">Vim weboldalán</link> találhat."
 
 #. (itstool) path: info/desc
-#: C/gedit-plugins-pyconsole.page:12
+#: C/gedit-plugins-pyconsole.page:13
 msgid "Add an interactive Python console to the bottom pane"
 msgstr "Interaktív Python konzol beágyazása az alsó ablaktáblába"
 
 #. (itstool) path: page/title
-#: C/gedit-plugins-pyconsole.page:15
+#: C/gedit-plugins-pyconsole.page:16
 msgid "Python console"
 msgstr "Python konzol"
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-pyconsole.page:17
+#: C/gedit-plugins-pyconsole.page:18
 msgid ""
 "You can add a Python console to the bottom pane, allowing you to test Python "
 "scripts without leaving <app>gedit</app>. To enable the Python console, "
@@ -1425,7 +1462,7 @@ msgstr ""
 "gui><gui>Python konzol</gui></guiseq> lehetőséget."
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-pyconsole.page:23
+#: C/gedit-plugins-pyconsole.page:24
 msgid ""
 "Once the Python console is enabled, you can open it by selecting "
 "<guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just press "
@@ -1436,7 +1473,7 @@ msgstr ""
 "nyomja meg a <keyseq><key>Shift</key><key>F9</key></keyseq> kombinációt."
 
 #. (itstool) path: note/p
-#: C/gedit-plugins-pyconsole.page:27
+#: C/gedit-plugins-pyconsole.page:28
 msgid ""
 "If you have also enabled the <gui>Embeded Terminal</gui> plugin, the "
 "<gui>Python Console</gui> will appear as a separate tab in the bottom pane."
@@ -2411,11 +2448,6 @@ msgstr ""
 "feladatok elvégzésével kapcsolatos segítségért nézze meg a <app>gedit</app> "
 "súgójának <link xref=\"index\">további témaköreit</link>."
 
-#. (itstool) path: credit/name
-#: C/gedit-replace.page:24
-msgid "Ekaterina Gerasimova"
-msgstr "Ekaterina Gerasimova"
-
 #. (itstool) path: page/title
 #: C/gedit-replace.page:34
 msgid "Replace text"
@@ -2439,20 +2471,15 @@ msgstr "Szöveg cseréje a <app>geditben</app>"
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:43
-#| msgid ""
-#| "Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"menu"
-#| "\">Search</gui><gui style=\"menuitem\">Replace…</gui></guiseq> or press "
-#| "<keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgid ""
 "Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"button"
 "\">Menu button</gui><gui style=\"menuitem\">Find and Replace…</gui></guiseq> "
 "or press <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgstr ""
-"A <gui>Csere</gui> eszköz a <guiseq><gui style=\"button\">Menü gomb</gui><gui "
-"style=\"menuitem\">Keresé és csere</gui></guiseq> menüpont kiválasztásával, "
-"vagy a "
-"<keyseq><key>Ctrl</key><key>H</key></keyseq> billentyűkombináció "
-"megnyomásával nyitható meg."
+"A <gui>Csere</gui> eszköz a <guiseq><gui style=\"button\">Menü gomb</"
+"gui><gui style=\"menuitem\">Keresé és csere</gui></guiseq> menüpont "
+"kiválasztásával, vagy a <keyseq><key>Ctrl</key><key>H</key></keyseq> "
+"billentyűkombináció megnyomásával nyitható meg."
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:49
@@ -2688,19 +2715,14 @@ msgstr "Szöveg keresése"
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:36
-#| msgid ""
-#| "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
-#| "\">Search</gui> <gui style=\"menuitem\">Find</gui> </guiseq> or pressing "
-#| "<keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your cursor "
-#| "to the start of the <gui>search window</gui>."
 msgid ""
 "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
 "\">Menu Button</gui> <gui style=\"menuitem\">Find…</gui> </guiseq> or "
 "pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your "
 "cursor to the start of the <gui>search window</gui>."
 msgstr ""
-"A <gui>keresés ablak</gui> megnyitásához válassza a <guiseq><gui "
-"style=\"menu\">Menü gomb</gui> <gui style=\"menuitem\">Keresés</gui></guiseq> "
+"A <gui>keresés ablak</gui> megnyitásához válassza a <guiseq><gui style=\"menu"
+"\">Menü gomb</gui> <gui style=\"menuitem\">Keresés</gui></guiseq> "
 "menüpontot, vagy nyomja meg a <keyseq><key>Ctrl</key><key>F</key></keyseq> "
 "kombinációt. Ez a kurzort a <gui>keresés ablak</gui> elejére viszi."
 
@@ -4159,21 +4181,31 @@ msgstr "Nyomtatás a gedittel"
 
 #. (itstool) path: p/link
 #: C/legal.xml:3
-msgid "http://creativecommons.org/licenses/by-sa/3.0/"
-msgstr "http://creativecommons.org/licenses/by-sa/3.0/"
+msgid "Creative Commons Attribution-ShareAlike 3.0 Unported License"
+msgstr "Creative Commons Nevezd meg!-Így add tovább! 3.0 átíratlan licenc"
 
 #. (itstool) path: license/p
 #: C/legal.xml:3
-msgid ""
-"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 "
-"Unported License. To view a copy of this license, visit <_:link-1/> or send "
-"a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, "
-"California, 94041, USA."
-msgstr ""
-"Ez a munka a Creative Commons Attribution-ShareAlike 3.0 Unported licenc "
-"alatt érhető el. A licenc másolatának megjelenítéséhez keresse fel a <_:"
-"link-1/> oldalt, vagy küldjön levelet a következő címre: Creative Commons, "
-"444 Castro Street, Suite 900, Mountain View, California, 94041, USA."
+msgid "This work is licensed under a <_:link-1/>."
+msgstr "Ez a munka a <_:link-1/> feltételei szerint használható."
+
+#~ msgid "To change the color scheme, complete the following steps:"
+#~ msgstr "A színséma megváltoztatásához tegye a következőket:"
+
+#~ msgid "http://creativecommons.org/licenses/by-sa/3.0/"
+#~ msgstr "http://creativecommons.org/licenses/by-sa/3.0/"
+
+#~ msgid ""
+#~ "This work is licensed under the Creative Commons Attribution-ShareAlike "
+#~ "3.0 Unported License. To view a copy of this license, visit <_:link-1/> "
+#~ "or send a letter to Creative Commons, 444 Castro Street, Suite 900, "
+#~ "Mountain View, California, 94041, USA."
+#~ msgstr ""
+#~ "Ez a munka a Creative Commons Attribution-ShareAlike 3.0 Unported licenc "
+#~ "alatt érhető el. A licenc másolatának megjelenítéséhez keresse fel a <_:"
+#~ "link-1/> oldalt, vagy küldjön levelet a következő címre: Creative "
+#~ "Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, "
+#~ "USA."
 
 #~ msgid ""
 #~ "or, while the tab to be moved is open, choose <guiseq><gui>Documents </"
