@@ -132,25 +132,25 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 }
 
 static void
-available_selection_changed_cb (GtkTreeSelection     *selection,
-				GeditEncodingsDialog *dialogs)
+update_add_button_sensitivity (GeditEncodingsDialog *dialog)
 {
+	GtkTreeSelection *selection;
 	gint count;
 
+	selection = gtk_tree_view_get_selection (dialog->priv->treeview_available);
 	count = gtk_tree_selection_count_selected_rows (selection);
-
-	gtk_widget_set_sensitive (dialogs->priv->add_button, count > 0);
+	gtk_widget_set_sensitive (dialog->priv->add_button, count > 0);
 }
 
 static void
-chosen_selection_changed_cb (GtkTreeSelection     *selection,
-			     GeditEncodingsDialog *dialogs)
+update_remove_button_sensitivity (GeditEncodingsDialog *dialog)
 {
+	GtkTreeSelection *selection;
 	gint count;
 
+	selection = gtk_tree_view_get_selection (dialog->priv->treeview_chosen);
 	count = gtk_tree_selection_count_selected_rows (selection);
-
-	gtk_widget_set_sensitive (dialogs->priv->remove_button, count > 0);
+	gtk_widget_set_sensitive (dialog->priv->remove_button, count > 0);
 }
 
 static void
@@ -260,7 +260,7 @@ remove_button_clicked_cb (GtkWidget            *button,
 }
 
 static void
-init_candidates_tree_model (GeditEncodingsDialog *dialog)
+init_liststore_chosen (GeditEncodingsDialog *dialog)
 {
 	GtkTreeIter iter;
 	gchar **enc_strv;
@@ -315,58 +315,57 @@ init_liststore_available (GeditEncodingsDialog *dialog)
 }
 
 static void
-gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
+gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 
-	dlg->priv = gedit_encodings_dialog_get_instance_private (dlg);
+	dialog->priv = gedit_encodings_dialog_get_instance_private (dialog);
 
-	dlg->priv->enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
+	dialog->priv->enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
 
-	gtk_widget_init_template (GTK_WIDGET (dlg));
+	gtk_widget_init_template (GTK_WIDGET (dialog));
 
-	gtk_dialog_set_default_response (GTK_DIALOG (dlg), GTK_RESPONSE_OK);
+	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
-	g_signal_connect (dlg->priv->add_button,
+	g_signal_connect (dialog->priv->add_button,
 			  "clicked",
 			  G_CALLBACK (add_button_clicked_cb),
-			  dlg);
+			  dialog);
 
-	g_signal_connect (dlg->priv->remove_button,
+	g_signal_connect (dialog->priv->remove_button,
 			  "clicked",
 			  G_CALLBACK (remove_button_clicked_cb),
-			  dlg);
+			  dialog);
 
 	/* Tree view of available encodings */
 
-	/* Add the data */
-	init_liststore_available (dlg);
+	init_liststore_available (dialog);
 
-	/* Sort model */
-	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dlg->priv->sort_available),
+	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dialog->priv->sort_available),
 					      COLUMN_NAME,
 					      GTK_SORT_ASCENDING);
 
-	selection = gtk_tree_view_get_selection (dlg->priv->treeview_available);
+	selection = gtk_tree_view_get_selection (dialog->priv->treeview_available);
 
-	available_selection_changed_cb (selection, dlg);
-	g_signal_connect (selection,
-			  "changed",
-			  G_CALLBACK (available_selection_changed_cb),
-			  dlg);
+	g_signal_connect_swapped (selection,
+				  "changed",
+				  G_CALLBACK (update_add_button_sensitivity),
+				  dialog);
 
-	/* Tree view of selected encodings */
+	update_add_button_sensitivity (dialog);
 
-	/* Add the data */
-	init_candidates_tree_model (dlg);
+	/* Tree view of chosen encodings */
 
-	selection = gtk_tree_view_get_selection (dlg->priv->treeview_chosen);
+	init_liststore_chosen (dialog);
 
-	chosen_selection_changed_cb (selection, dlg);
-	g_signal_connect (selection,
-			  "changed",
-			  G_CALLBACK (chosen_selection_changed_cb),
-			  dlg);
+	selection = gtk_tree_view_get_selection (dialog->priv->treeview_chosen);
+
+	g_signal_connect_swapped (selection,
+				  "changed",
+				  G_CALLBACK (update_remove_button_sensitivity),
+				  dialog);
+
+	update_remove_button_sensitivity (dialog);
 }
 
 GtkWidget *
