@@ -68,6 +68,8 @@ struct _GeditAppPrivate
 {
 	GeditPluginsEngine *engine;
 
+	GtkCssProvider     *theme_provider;
+
 	GeditLockdownMask  lockdown;
 
 	GtkPageSetup      *page_setup;
@@ -182,6 +184,13 @@ gedit_app_dispose (GObject *object)
 	g_clear_object (&app->priv->extensions);
 
 	g_clear_object (&app->priv->engine);
+
+	if (app->priv->theme_provider != NULL)
+	{
+		gtk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
+		                                              GTK_STYLE_PROVIDER (app->priv->theme_provider));
+		g_clear_object (&app->priv->theme_provider);
+	}
 
 	g_clear_object (&app->priv->window_menu);
 	g_clear_object (&app->priv->notebook_menu);
@@ -402,53 +411,78 @@ load_accels (void)
 	}
 }
 
-static void
-theme_changed (GtkSettings *settings,
-	       GParamSpec  *pspec,
-	       gpointer     data)
+static GtkCssProvider *
+load_css_from_resource (const gchar *filename,
+                        gboolean     required)
 {
-	static GtkCssProvider *provider;
-	gchar *theme;
-	GdkScreen *screen;
+	GError *error = NULL;
+	GFile *css_file;
+	GtkCssProvider *provider;
+	gchar *resource_name;
 
-	g_object_get (settings, "gtk-theme-name", &theme, NULL);
-	screen = gdk_screen_get_default ();
+	resource_name = g_strdup_printf ("resource:///org/gnome/gedit/css/%s", filename);
+	css_file = g_file_new_for_uri (resource_name);
+	g_free (resource_name);
 
-	if (g_str_equal (theme, "Adwaita"))
+	if (!required && !g_file_query_exists (css_file, NULL))
 	{
-		if (provider == NULL)
-		{
-			GFile *file;
-
-			provider = gtk_css_provider_new ();
-			file = g_file_new_for_uri ("resource:///org/gnome/gedit/css/gedit.adwaita.css");
-			gtk_css_provider_load_from_file (provider, file, NULL);
-			g_object_unref (file);
-		}
-
-		gtk_style_context_add_provider_for_screen (screen,
-							   GTK_STYLE_PROVIDER (provider),
-							   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-	}
-	else if (provider != NULL)
-	{
-		gtk_style_context_remove_provider_for_screen (screen,
-							      GTK_STYLE_PROVIDER (provider));
-		g_clear_object (&provider);
+		g_object_unref (css_file);
+		return NULL;
 	}
 
-	g_free (theme);
+	provider = gtk_css_provider_new ();
+
+	if (gtk_css_provider_load_from_file (provider, css_file, &error))
+	{
+		gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+		                                           GTK_STYLE_PROVIDER (provider),
+		                                           GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+	}
+	else
+	{
+		g_warning ("Could not load css provider: %s", error->message);
+		g_error_free (error);
+	}
+
+	g_object_unref (css_file);
+	return provider;
 }
 
 static void
-setup_theme_extensions (void)
+theme_changed (GtkSettings *settings,
+	       GParamSpec  *pspec,
+	       GeditApp    *app)
+{
+	gchar *theme, *lc_theme, *theme_css;
+
+	g_object_get (settings, "gtk-theme-name", &theme, NULL);
+	lc_theme = g_ascii_strdown (theme, -1);
+	g_free (theme);
+
+	theme_css = g_strdup_printf ("gedit.%s.css", lc_theme);
+	g_free (lc_theme);
+
+	if (app->priv->theme_provider != NULL)
+	{
+		gtk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
+		                                              GTK_STYLE_PROVIDER (app->priv->theme_provider));
+		g_clear_object (&app->priv->theme_provider);
+	}
+
+	app->priv->theme_provider = load_css_from_resource (theme_css, FALSE);
+
+	g_free (theme_css);
+}
+
+static void
+setup_theme_extensions (GeditApp *app)
 {
 	GtkSettings *settings;
 
 	settings = gtk_settings_get_default ();
 	g_signal_connect (settings, "notify::gtk-theme-name",
-	                  G_CALLBACK (theme_changed), NULL);
-	theme_changed (settings, NULL, NULL);
+	                  G_CALLBACK (theme_changed), app);
+	theme_changed (settings, NULL, app);
 }
 
 static GMenuModel *
@@ -476,46 +510,10 @@ add_accelerator (GeditApp    *app,
 }
 
 static void
-load_css_from_resource (const gchar *filename,
-                        gboolean     required)
-{
-	GError *error = NULL;
-	GFile *css_file;
-	GtkCssProvider *provider;
-	gchar *resource_name;
-
-	resource_name = g_strdup_printf ("resource:///org/gnome/gedit/css/%s", filename);
-	css_file = g_file_new_for_uri (resource_name);
-	g_free (resource_name);
-
-	if (!required && !g_file_query_exists (css_file, NULL))
-	{
-		g_object_unref (css_file);
-		return;
-	}
-
-	provider = gtk_css_provider_new ();
-
-	if (gtk_css_provider_load_from_file (provider, css_file, &error))
-	{
-		gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-		                                           GTK_STYLE_PROVIDER (provider),
-		                                           GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-		g_object_unref (provider);
-	}
-	else
-	{
-		g_warning ("Could not load css provider: %s", error->message);
-		g_error_free (error);
-	}
-
-	g_object_unref (css_file);
-}
-
-static void
 gedit_app_startup (GApplication *application)
 {
 	GeditApp *app = GEDIT_APP (application);
+	GtkCssProvider *css_provider;
 	GtkSourceStyleSchemeManager *manager;
 	const gchar *dir;
 	gchar *icon_dir;
@@ -534,7 +532,7 @@ gedit_app_startup (GApplication *application)
 	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (), icon_dir);
 	g_free (icon_dir);
 
-	setup_theme_extensions ();
+	setup_theme_extensions (app);
 
 #ifndef ENABLE_GVFS_METADATA
 	gedit_metadata_manager_init ();
@@ -603,8 +601,9 @@ gedit_app_startup (GApplication *application)
 	load_accels ();
 
 	/* Load custom css */
-	load_css_from_resource ("gedit-style.css", TRUE);
-	load_css_from_resource ("gedit-style-os.css", FALSE);
+	g_object_unref (load_css_from_resource ("gedit-style.css", TRUE));
+	css_provider = load_css_from_resource ("gedit-style-os.css", FALSE);
+	g_clear_object (&css_provider);
 
 	/*
 	 * We use the default gtksourceview style scheme manager so that plugins
