@@ -9,7 +9,7 @@
       <column type="gchararray"/>
     </columns>
   </object>
-  <object class="GtkListStore" id="liststore_displayed">
+  <object class="GtkListStore" id="liststore_chosen">
     <columns>
       <!-- column-name name -->
       <column type="gchararray"/>
@@ -242,14 +242,14 @@
                 <property name="is_focus">False</property>
                 <property name="shadow_type">etched-in</property>
                 <child>
-                  <object class="GtkTreeView" id="treeview_displayed">
+                  <object class="GtkTreeView" id="treeview_chosen">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="has_focus">False</property>
                     <property name="is_focus">False</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
-                    <property name="model">liststore_displayed</property>
+                    <property name="model">liststore_chosen</property>
                     <child internal-child="selection">
                       <object class="GtkTreeSelection" id="treeview-selection1">
                         <property name="mode">multiple</property>
@@ -288,7 +288,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="displayed_label">
+              <object class="GtkLabel" id="chosen_label">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="has_focus">False</property>
@@ -297,7 +297,7 @@
                 <property name="xalign">0</property>
                 <property name="label" translatable="yes">E_ncodings shown in menu:</property>
                 <property name="use_underline">True</property>
-                <property name="mnemonic_widget">treeview_displayed</property>
+                <property name="mnemonic_widget">treeview_chosen</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>

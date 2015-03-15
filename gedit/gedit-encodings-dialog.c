@@ -35,14 +35,16 @@ struct _GeditEncodingsDialogPrivate
 {
 	GSettings *enc_settings;
 
+	/* Available encodings */
 	GtkListStore *liststore_available;
-	GtkListStore *liststore_displayed;
 	GtkTreeModelSort *sort_available;
 	GtkTreeView *treeview_available;
-	GtkTreeView *treeview_displayed;
 	GtkWidget *add_button;
-	GtkWidget *remove_button;
 
+	/* Chosen encodings */
+	GtkListStore *liststore_chosen;
+	GtkTreeView *treeview_chosen;
+	GtkWidget *remove_button;
 	GSList *candidates_list;
 };
 
@@ -121,10 +123,10 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-encodings-dialog.ui");
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, liststore_available);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, liststore_displayed);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, liststore_chosen);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, sort_available);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, treeview_available);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, treeview_displayed);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, treeview_chosen);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, add_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, remove_button);
 }
@@ -141,8 +143,8 @@ available_selection_changed_cb (GtkTreeSelection     *selection,
 }
 
 static void
-displayed_selection_changed_cb (GtkTreeSelection     *selection,
-				GeditEncodingsDialog *dialogs)
+chosen_selection_changed_cb (GtkTreeSelection     *selection,
+			     GeditEncodingsDialog *dialogs)
 {
 	gint count;
 
@@ -188,21 +190,21 @@ get_selected_encodings (GtkTreeView *treeview)
 }
 
 static void
-update_liststore_displayed (GeditEncodingsDialog *dialog)
+update_liststore_chosen (GeditEncodingsDialog *dialog)
 {
 	GSList *l;
 
-	gtk_list_store_clear (dialog->priv->liststore_displayed);
+	gtk_list_store_clear (dialog->priv->liststore_chosen);
 
 	for (l = dialog->priv->candidates_list; l != NULL; l = l->next)
 	{
 		const GtkSourceEncoding *enc = l->data;
 		GtkTreeIter iter;
 
-		gtk_list_store_append (dialog->priv->liststore_displayed,
+		gtk_list_store_append (dialog->priv->liststore_chosen,
 				       &iter);
 
-		gtk_list_store_set (dialog->priv->liststore_displayed,
+		gtk_list_store_set (dialog->priv->liststore_chosen,
 				    &iter,
 				    COLUMN_CHARSET, gtk_source_encoding_get_charset (enc),
 				    COLUMN_NAME, gtk_source_encoding_get_name (enc),
@@ -232,7 +234,7 @@ add_button_clicked_cb (GtkWidget            *button,
 
 	g_slist_free (encodings);
 
-	update_liststore_displayed (dialog);
+	update_liststore_chosen (dialog);
 }
 
 static void
@@ -242,7 +244,7 @@ remove_button_clicked_cb (GtkWidget            *button,
 	GSList *encodings;
 	GSList *l;
 
-	encodings = get_selected_encodings (dialog->priv->treeview_displayed);
+	encodings = get_selected_encodings (dialog->priv->treeview_chosen);
 
 	for (l = encodings; l != NULL; l = l->next)
 	{
@@ -254,7 +256,7 @@ remove_button_clicked_cb (GtkWidget            *button,
 
 	g_slist_free (encodings);
 
-	update_liststore_displayed (dialog);
+	update_liststore_chosen (dialog);
 }
 
 static void
@@ -277,8 +279,8 @@ init_candidates_tree_model (GeditEncodingsDialog *dialog)
 		dialog->priv->candidates_list = g_slist_prepend (dialog->priv->candidates_list,
 								 (gpointer) cur_encoding);
 
-		gtk_list_store_append (dialog->priv->liststore_displayed, &iter);
-		gtk_list_store_set (dialog->priv->liststore_displayed, &iter,
+		gtk_list_store_append (dialog->priv->liststore_chosen, &iter);
+		gtk_list_store_set (dialog->priv->liststore_chosen, &iter,
 				    COLUMN_CHARSET, gtk_source_encoding_get_charset (cur_encoding),
 				    COLUMN_NAME, gtk_source_encoding_get_name (cur_encoding),
 				    -1);
@@ -358,12 +360,12 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 	/* Add the data */
 	init_candidates_tree_model (dlg);
 
-	selection = gtk_tree_view_get_selection (dlg->priv->treeview_displayed);
+	selection = gtk_tree_view_get_selection (dlg->priv->treeview_chosen);
 
-	displayed_selection_changed_cb (selection, dlg);
+	chosen_selection_changed_cb (selection, dlg);
 	g_signal_connect (selection,
 			  "changed",
-			  G_CALLBACK (displayed_selection_changed_cb),
+			  G_CALLBACK (chosen_selection_changed_cb),
 			  dlg);
 }
 
