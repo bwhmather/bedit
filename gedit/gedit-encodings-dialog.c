@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2002-2005 Paolo Maggi
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,7 +46,6 @@ struct _GeditEncodingsDialogPrivate
 	GtkListStore *liststore_chosen;
 	GtkTreeView *treeview_chosen;
 	GtkWidget *remove_button;
-	GSList *candidates_list;
 };
 
 enum
@@ -58,16 +58,6 @@ enum
 G_DEFINE_TYPE_WITH_PRIVATE (GeditEncodingsDialog, gedit_encodings_dialog, GTK_TYPE_DIALOG)
 
 static void
-gedit_encodings_dialog_finalize (GObject *object)
-{
-	GeditEncodingsDialogPrivate *priv = GEDIT_ENCODINGS_DIALOG (object)->priv;
-
-	g_slist_free (priv->candidates_list);
-
-	G_OBJECT_CLASS (gedit_encodings_dialog_parent_class)->finalize (object);
-}
-
-static void
 gedit_encodings_dialog_dispose (GObject *object)
 {
 	GeditEncodingsDialogPrivate *priv = GEDIT_ENCODINGS_DIALOG (object)->priv;
@@ -77,11 +67,45 @@ gedit_encodings_dialog_dispose (GObject *object)
 	G_OBJECT_CLASS (gedit_encodings_dialog_parent_class)->dispose (object);
 }
 
+static GSList *
+get_chosen_encodings_list (GeditEncodingsDialog *dialog)
+{
+	GtkTreeModel *model = GTK_TREE_MODEL (dialog->priv->liststore_chosen);
+	GtkTreeIter iter;
+	gboolean iter_set;
+	GSList *ret = NULL;
+
+	iter_set = gtk_tree_model_get_iter_first (model, &iter);
+
+	while (iter_set)
+	{
+		gchar *charset = NULL;
+		const GtkSourceEncoding *encoding;
+
+		gtk_tree_model_get (model, &iter,
+				    COLUMN_CHARSET, &charset,
+				    -1);
+
+		/* FIXME get_from_charset() has O(n) complexity, so calling it
+		 * in a loop is O(n^2)... Add a COLUMN_ENCODING to the
+		 * TreeModel.
+		 */
+		encoding = gtk_source_encoding_get_from_charset (charset);
+		g_free (charset);
+
+		ret = g_slist_prepend (ret, (gpointer)encoding);
+
+		iter_set = gtk_tree_model_iter_next (model, &iter);
+	}
+
+	return ret;
+}
+
 static void
-gedit_encodings_dialog_response (GtkDialog *dialog,
+gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
                                  gint       response_id)
 {
-	GeditEncodingsDialogPrivate *priv = GEDIT_ENCODINGS_DIALOG (dialog)->priv;
+	GeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG (gtk_dialog);
 
 	switch (response_id)
 	{
@@ -94,13 +118,17 @@ gedit_encodings_dialog_response (GtkDialog *dialog,
 
 		case GTK_RESPONSE_OK:
 		{
+			GSList *enc_list;
 			gchar **enc_strv;
 
-			enc_strv = _gedit_utils_encoding_list_to_strv (priv->candidates_list);
-			g_settings_set_strv (priv->enc_settings,
+			enc_list = get_chosen_encodings_list (dialog);
+			enc_strv = _gedit_utils_encoding_list_to_strv (enc_list);
+
+			g_settings_set_strv (dialog->priv->enc_settings,
 			                     GEDIT_SETTINGS_CANDIDATE_ENCODINGS,
 			                     (const gchar * const *)enc_strv);
 
+			g_slist_free (enc_list);
 			g_strfreev (enc_strv);
 			break;
 		}
@@ -114,7 +142,6 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
-	object_class->finalize = gedit_encodings_dialog_finalize;
 	object_class->dispose = gedit_encodings_dialog_dispose;
 
 	dialog_class->response = gedit_encodings_dialog_response;
@@ -153,110 +180,129 @@ update_remove_button_sensitivity (GeditEncodingsDialog *dialog)
 	gtk_widget_set_sensitive (dialog->priv->remove_button, count > 0);
 }
 
+/* Removes all @paths from @orig, and append them at the end of @dest in the
+ * same order.
+ */
 static void
-get_selected_encodings_func (GtkTreeModel *model,
-			     GtkTreePath  *path,
-			     GtkTreeIter  *iter,
-			     gpointer      data)
+transfer_encodings (GList        *paths,
+		    GtkListStore *orig,
+		    GtkListStore *dest)
 {
-	GSList **list = data;
-	gchar *charset = NULL;
-	const GtkSourceEncoding *enc;
+	GtkTreeModel *model_orig = GTK_TREE_MODEL (orig);
+	GList *refs = NULL;
+	GList *l;
 
-	gtk_tree_model_get (model, iter,
-			    COLUMN_CHARSET, &charset,
-			    -1);
-
-	enc = gtk_source_encoding_get_from_charset (charset);
-	g_free (charset);
-
-	*list = g_slist_prepend (*list, (gpointer)enc);
-}
-
-/* Returns a list of GtkSourceEncoding's. */
-static GSList *
-get_selected_encodings (GtkTreeView *treeview)
-{
-	GtkTreeSelection *selection;
-	GSList *encodings = NULL;
-
-	selection = gtk_tree_view_get_selection (treeview);
-
-	gtk_tree_selection_selected_foreach (selection,
-					     get_selected_encodings_func,
-					     &encodings);
-
-	return encodings;
-}
-
-static void
-update_liststore_chosen (GeditEncodingsDialog *dialog)
-{
-	GSList *l;
-
-	gtk_list_store_clear (dialog->priv->liststore_chosen);
-
-	for (l = dialog->priv->candidates_list; l != NULL; l = l->next)
+	for (l = paths; l != NULL; l = l->next)
 	{
-		const GtkSourceEncoding *enc = l->data;
-		GtkTreeIter iter;
-
-		gtk_list_store_append (dialog->priv->liststore_chosen,
-				       &iter);
-
-		gtk_list_store_set (dialog->priv->liststore_chosen,
-				    &iter,
-				    COLUMN_CHARSET, gtk_source_encoding_get_charset (enc),
-				    COLUMN_NAME, gtk_source_encoding_get_name (enc),
-				    -1);
+		GtkTreePath *path = l->data;
+		refs = g_list_prepend (refs, gtk_tree_row_reference_new (model_orig, path));
 	}
+
+	refs = g_list_reverse (refs);
+
+	for (l = refs; l != NULL; l = l->next)
+	{
+		GtkTreeRowReference *ref = l->data;
+		GtkTreePath *path;
+		GtkTreeIter iter_orig;
+		GtkTreeIter iter_dest;
+		gchar *name = NULL;
+		gchar *charset = NULL;
+
+		path = gtk_tree_row_reference_get_path (ref);
+
+		if (!gtk_tree_model_get_iter (model_orig, &iter_orig, path))
+		{
+			gtk_tree_path_free (path);
+			g_warning ("Remove encoding: invalid path");
+			continue;
+		}
+
+		/* Transfer encoding */
+		gtk_tree_model_get (model_orig, &iter_orig,
+				    COLUMN_NAME, &name,
+				    COLUMN_CHARSET, &charset,
+				    -1);
+
+		gtk_list_store_append (dest, &iter_dest);
+		gtk_list_store_set (dest, &iter_dest,
+				    COLUMN_NAME, name,
+				    COLUMN_CHARSET, charset,
+				    -1);
+
+		gtk_list_store_remove (orig, &iter_orig);
+
+		gtk_tree_path_free (path);
+		g_free (charset);
+		g_free (name);
+	}
+
+	g_list_free_full (refs, (GDestroyNotify) gtk_tree_row_reference_free);
 }
 
 static void
 add_button_clicked_cb (GtkWidget            *button,
 		       GeditEncodingsDialog *dialog)
 {
-	GSList *encodings;
-	GSList *l;
+	GtkTreeSelection *selection;
+	GtkTreeModel *model;
+	GList *filter_paths;
+	GList *children_paths = NULL;
+	GList *l;
 
-	encodings = get_selected_encodings (dialog->priv->treeview_available);
+	selection = gtk_tree_view_get_selection (dialog->priv->treeview_available);
+	filter_paths = gtk_tree_selection_get_selected_rows (selection, &model);
 
-	for (l = encodings; l != NULL; l = l->next)
+	g_return_if_fail (model == GTK_TREE_MODEL (dialog->priv->sort_available));
+
+	for (l = filter_paths; l != NULL; l = l->next)
 	{
-		gpointer cur_encoding = l->data;
+		GtkTreePath *filter_path = l->data;
+		GtkTreePath *child_path;
 
-		if (g_slist_find (dialog->priv->candidates_list, cur_encoding) == NULL)
-		{
-			dialog->priv->candidates_list = g_slist_prepend (dialog->priv->candidates_list,
-									 cur_encoding);
-		}
+		child_path = gtk_tree_model_sort_convert_path_to_child_path (dialog->priv->sort_available,
+									     filter_path);
+
+		children_paths = g_list_prepend (children_paths, child_path);
 	}
 
-	g_slist_free (encodings);
+	children_paths = g_list_reverse (children_paths);
 
-	update_liststore_chosen (dialog);
+	transfer_encodings (children_paths,
+			    dialog->priv->liststore_available,
+			    dialog->priv->liststore_chosen);
+
+	/* For the treeview_available, it's more natural to unselect the added
+	 * encodings.
+	 * Note that when removing encodings from treeview_chosen, it is
+	 * desirable to keep a selection, so we can remove several elements in a
+	 * row (if the user doesn't know that several elements can be selected
+	 * at once with Ctrl or Shift).
+	 */
+	gtk_tree_selection_unselect_all (selection);
+
+	g_list_free_full (filter_paths, (GDestroyNotify) gtk_tree_path_free);
+	g_list_free_full (children_paths, (GDestroyNotify) gtk_tree_path_free);
 }
 
 static void
 remove_button_clicked_cb (GtkWidget            *button,
 			  GeditEncodingsDialog *dialog)
 {
-	GSList *encodings;
-	GSList *l;
+	GtkTreeSelection *selection;
+	GtkTreeModel *model;
+	GList *paths;
 
-	encodings = get_selected_encodings (dialog->priv->treeview_chosen);
+	selection = gtk_tree_view_get_selection (dialog->priv->treeview_chosen);
+	paths = gtk_tree_selection_get_selected_rows (selection, &model);
 
-	for (l = encodings; l != NULL; l = l->next)
-	{
-		gpointer cur_encoding = l->data;
+	g_return_if_fail (model == GTK_TREE_MODEL (dialog->priv->liststore_chosen));
 
-		dialog->priv->candidates_list = g_slist_remove (dialog->priv->candidates_list,
-								cur_encoding);
-	}
+	transfer_encodings (paths,
+			    dialog->priv->liststore_chosen,
+			    dialog->priv->liststore_available);
 
-	g_slist_free (encodings);
-
-	update_liststore_chosen (dialog);
+	g_list_free_full (paths, (GDestroyNotify) gtk_tree_path_free);
 }
 
 static void
@@ -276,13 +322,10 @@ init_liststore_chosen (GeditEncodingsDialog *dialog)
 	{
 		const GtkSourceEncoding *cur_encoding = l->data;
 
-		dialog->priv->candidates_list = g_slist_prepend (dialog->priv->candidates_list,
-								 (gpointer) cur_encoding);
-
 		gtk_list_store_append (dialog->priv->liststore_chosen, &iter);
 		gtk_list_store_set (dialog->priv->liststore_chosen, &iter,
-				    COLUMN_CHARSET, gtk_source_encoding_get_charset (cur_encoding),
 				    COLUMN_NAME, gtk_source_encoding_get_name (cur_encoding),
+				    COLUMN_CHARSET, gtk_source_encoding_get_charset (cur_encoding),
 				    -1);
 	}
 
@@ -303,11 +346,9 @@ init_liststore_available (GeditEncodingsDialog *dialog)
 		GtkTreeIter iter;
 
 		gtk_list_store_append (dialog->priv->liststore_available, &iter);
-
-		gtk_list_store_set (dialog->priv->liststore_available,
-				    &iter,
-				    COLUMN_CHARSET, gtk_source_encoding_get_charset (encoding),
+		gtk_list_store_set (dialog->priv->liststore_available, &iter,
 				    COLUMN_NAME, gtk_source_encoding_get_name (encoding),
+				    COLUMN_CHARSET, gtk_source_encoding_get_charset (encoding),
 				    -1);
 	}
 
