@@ -106,7 +106,6 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 #define GEDIT_SETTINGS_PRINT_FONT_BODY_PANGO		"print-font-body-pango"
 #define GEDIT_SETTINGS_PRINT_FONT_HEADER_PANGO		"print-font-header-pango"
 #define GEDIT_SETTINGS_PRINT_FONT_NUMBERS_PANGO		"print-font-numbers-pango"
-#define GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU		"shown-in-menu"
 #define GEDIT_SETTINGS_CANDIDATE_ENCODINGS		"candidate-encodings"
 #define GEDIT_SETTINGS_ACTIVE_PLUGINS			"active-plugins"
 #define GEDIT_SETTINGS_ENSURE_TRAILING_NEWLINE		"ensure-trailing-newline"

@@ -108,7 +108,7 @@ gedit_encoding_items_get (void)
 		ret = g_slist_prepend (ret, gedit_encoding_item_new (current_encoding, str));
 	}
 
-	enc_strv = g_settings_get_strv (enc_settings, GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU);
+	enc_strv = g_settings_get_strv (enc_settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
 
 	encodings = _gedit_utils_encoding_strv_to_list ((const gchar * const *)enc_strv);
 	g_strfreev (enc_strv);

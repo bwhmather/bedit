@@ -43,7 +43,7 @@ struct _GeditEncodingsDialogPrivate
 	GtkWidget *add_button;
 	GtkWidget *remove_button;
 
-	GSList *show_in_menu_list;
+	GSList *candidates_list;
 };
 
 enum
@@ -60,7 +60,7 @@ gedit_encodings_dialog_finalize (GObject *object)
 {
 	GeditEncodingsDialogPrivate *priv = GEDIT_ENCODINGS_DIALOG (object)->priv;
 
-	g_slist_free (priv->show_in_menu_list);
+	g_slist_free (priv->candidates_list);
 
 	G_OBJECT_CLASS (gedit_encodings_dialog_parent_class)->finalize (object);
 }
@@ -94,9 +94,9 @@ gedit_encodings_dialog_response (GtkDialog *dialog,
 		{
 			gchar **enc_strv;
 
-			enc_strv = _gedit_utils_encoding_list_to_strv (priv->show_in_menu_list);
+			enc_strv = _gedit_utils_encoding_list_to_strv (priv->candidates_list);
 			g_settings_set_strv (priv->enc_settings,
-			                     GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU,
+			                     GEDIT_SETTINGS_CANDIDATE_ENCODINGS,
 			                     (const gchar * const *)enc_strv);
 
 			g_strfreev (enc_strv);
@@ -194,7 +194,7 @@ update_liststore_displayed (GeditEncodingsDialog *dialog)
 
 	gtk_list_store_clear (dialog->priv->liststore_displayed);
 
-	for (l = dialog->priv->show_in_menu_list; l != NULL; l = l->next)
+	for (l = dialog->priv->candidates_list; l != NULL; l = l->next)
 	{
 		const GtkSourceEncoding *enc = l->data;
 		GtkTreeIter iter;
@@ -223,10 +223,10 @@ add_button_clicked_cb (GtkWidget            *button,
 	{
 		gpointer cur_encoding = l->data;
 
-		if (g_slist_find (dialog->priv->show_in_menu_list, cur_encoding) == NULL)
+		if (g_slist_find (dialog->priv->candidates_list, cur_encoding) == NULL)
 		{
-			dialog->priv->show_in_menu_list = g_slist_prepend (dialog->priv->show_in_menu_list,
-									   cur_encoding);
+			dialog->priv->candidates_list = g_slist_prepend (dialog->priv->candidates_list,
+									 cur_encoding);
 		}
 	}
 
@@ -248,8 +248,8 @@ remove_button_clicked_cb (GtkWidget            *button,
 	{
 		gpointer cur_encoding = l->data;
 
-		dialog->priv->show_in_menu_list = g_slist_remove (dialog->priv->show_in_menu_list,
-								  cur_encoding);
+		dialog->priv->candidates_list = g_slist_remove (dialog->priv->candidates_list,
+								cur_encoding);
 	}
 
 	g_slist_free (encodings);
@@ -258,16 +258,15 @@ remove_button_clicked_cb (GtkWidget            *button,
 }
 
 static void
-init_shown_in_menu_tree_model (GeditEncodingsDialog *dialog)
+init_candidates_tree_model (GeditEncodingsDialog *dialog)
 {
 	GtkTreeIter iter;
 	gchar **enc_strv;
 	GSList *list;
 	GSList *l;
 
-	/* add data to the list store */
 	enc_strv = g_settings_get_strv (dialog->priv->enc_settings,
-					GEDIT_SETTINGS_ENCODING_SHOWN_IN_MENU);
+					GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
 
 	list = _gedit_utils_encoding_strv_to_list ((const gchar * const *)enc_strv);
 
@@ -275,8 +274,8 @@ init_shown_in_menu_tree_model (GeditEncodingsDialog *dialog)
 	{
 		const GtkSourceEncoding *cur_encoding = l->data;
 
-		dialog->priv->show_in_menu_list = g_slist_prepend (dialog->priv->show_in_menu_list,
-								   (gpointer) cur_encoding);
+		dialog->priv->candidates_list = g_slist_prepend (dialog->priv->candidates_list,
+								 (gpointer) cur_encoding);
 
 		gtk_list_store_append (dialog->priv->liststore_displayed, &iter);
 		gtk_list_store_set (dialog->priv->liststore_displayed, &iter,
@@ -357,7 +356,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dlg)
 	/* Tree view of selected encodings */
 
 	/* Add the data */
-	init_shown_in_menu_tree_model (dlg);
+	init_candidates_tree_model (dlg);
 
 	selection = gtk_tree_view_get_selection (dlg->priv->treeview_displayed);
 

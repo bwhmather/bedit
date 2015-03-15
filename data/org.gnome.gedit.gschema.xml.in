@@ -224,13 +224,6 @@
     </key>
   </schema>
   <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.gedit.preferences.encodings" path="/org/gnome/gedit/preferences/encodings/">
-    <key name="shown-in-menu" type="as">
-      <!-- Translators: This is the list of encodings shown by default in the Character Encoding
-           menu in open/save file selector. Only recognized encodings are displayed.-->
-      <default l10n="messages">['ISO-8859-15']</default>
-      <summary>Encodings shown in menu</summary>
-      <description>List of encodings shown in the Character Encoding menu in open/save file selector. Only recognized encodings are used.</description>
-    </key>
     <key name="candidate-encodings" type="as">
       <default>['']</default>
       <summary>Candidate Encodings</summary>
