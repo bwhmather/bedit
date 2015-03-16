@@ -572,8 +572,6 @@ search_widget_key_press_event (GtkWidget      *widget,
                                GdkEventKey    *event,
                                GeditViewFrame *frame)
 {
-	guint modifiers = gtk_accelerator_get_default_mod_mask ();
-
 	/* Close window */
 	if (event->keyval == GDK_KEY_Tab)
 	{
@@ -597,22 +595,8 @@ search_widget_key_press_event (GtkWidget      *widget,
 		return GDK_EVENT_STOP;
 	}
 
-	if (((event->state & modifiers) == (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) &&
-	    (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
-	{
-		backward_search (frame);
-		return GDK_EVENT_STOP;
-	}
-
 	/* select next matching iter */
 	if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_KP_Down)
-	{
-		forward_search (frame);
-		return GDK_EVENT_STOP;
-	}
-
-	if (((event->state & modifiers) == GDK_CONTROL_MASK) &&
-	    (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
 	{
 		forward_search (frame);
 		return GDK_EVENT_STOP;
@@ -902,6 +886,20 @@ search_entry_escaped (GtkSearchEntry *entry,
 
 	hide_search_widget (frame, TRUE);
 	gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
+}
+
+static void
+search_entry_previous_match (GtkSearchEntry *entry,
+                             GeditViewFrame *frame)
+{
+	backward_search (frame);
+}
+
+static void
+search_entry_next_match (GtkSearchEntry *entry,
+                         GeditViewFrame *frame)
+{
+	forward_search (frame);
 }
 
 static void
@@ -1603,6 +1601,16 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	g_signal_connect (frame->priv->search_entry,
 	                  "stop-search",
 	                  G_CALLBACK (search_entry_escaped),
+	                  frame);
+
+	g_signal_connect (frame->priv->search_entry,
+	                  "next-match",
+	                  G_CALLBACK (search_entry_next_match),
+	                  frame);
+
+	g_signal_connect (frame->priv->search_entry,
+	                  "previous-match",
+	                  G_CALLBACK (search_entry_previous_match),
 	                  frame);
 
 	frame->priv->search_entry_changed_id =
