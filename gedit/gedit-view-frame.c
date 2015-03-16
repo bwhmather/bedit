@@ -583,35 +583,6 @@ search_widget_key_press_event (GtkWidget      *widget,
 		return GDK_EVENT_STOP;
 	}
 
-	/* Close window and cancel the search */
-	if (event->keyval == GDK_KEY_Escape)
-	{
-		GtkSourceSearchContext *search_context = get_search_context (frame);
-
-		if (frame->priv->search_mode == SEARCH &&
-		    search_context != NULL)
-		{
-			g_clear_object (&frame->priv->search_settings);
-			frame->priv->search_settings = copy_search_settings (frame->priv->old_search_settings);
-
-			gtk_source_search_context_set_settings (search_context,
-								frame->priv->search_settings);
-
-			g_free (frame->priv->search_text);
-			frame->priv->search_text = NULL;
-
-			if (frame->priv->old_search_text != NULL)
-			{
-				frame->priv->search_text = g_strdup (frame->priv->old_search_text);
-			}
-		}
-
-		hide_search_widget (frame, TRUE);
-		gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
-
-		return GDK_EVENT_STOP;
-	}
-
 	if (frame->priv->search_mode == GOTO_LINE)
 	{
 		return GDK_EVENT_PROPAGATE;
@@ -903,6 +874,34 @@ setup_popup_menu (GeditViewFrame *frame,
 				  "hide",
 				  G_CALLBACK (popup_menu_hide_cb),
 				  frame);
+}
+
+static void
+search_entry_escaped (GtkSearchEntry *entry,
+                      GeditViewFrame *frame)
+{
+	GtkSourceSearchContext *search_context = get_search_context (frame);
+
+	if (frame->priv->search_mode == SEARCH &&
+	    search_context != NULL)
+	{
+		g_clear_object (&frame->priv->search_settings);
+		frame->priv->search_settings = copy_search_settings (frame->priv->old_search_settings);
+
+		gtk_source_search_context_set_settings (search_context,
+		                                        frame->priv->search_settings);
+
+		g_free (frame->priv->search_text);
+		frame->priv->search_text = NULL;
+
+		if (frame->priv->old_search_text != NULL)
+		{
+			frame->priv->search_text = g_strdup (frame->priv->old_search_text);
+		}
+	}
+
+	hide_search_widget (frame, TRUE);
+	gtk_widget_grab_focus (GTK_WIDGET (frame->priv->view));
 }
 
 static void
@@ -1599,6 +1598,11 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	g_signal_connect (frame->priv->search_entry,
 			  "insert-text",
 	                  G_CALLBACK (search_entry_insert_text),
+	                  frame);
+
+	g_signal_connect (frame->priv->search_entry,
+	                  "stop-search",
+	                  G_CALLBACK (search_entry_escaped),
 	                  frame);
 
 	frame->priv->search_entry_changed_id =
