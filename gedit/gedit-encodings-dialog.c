@@ -52,6 +52,7 @@ enum
 {
 	COLUMN_NAME,
 	COLUMN_CHARSET,
+	COLUMN_ENCODING,
 	N_COLUMNS
 };
 
@@ -79,19 +80,11 @@ get_chosen_encodings_list (GeditEncodingsDialog *dialog)
 
 	while (iter_set)
 	{
-		gchar *charset = NULL;
-		const GtkSourceEncoding *encoding;
+		const GtkSourceEncoding *encoding = NULL;
 
 		gtk_tree_model_get (model, &iter,
-				    COLUMN_CHARSET, &charset,
+				    COLUMN_ENCODING, &encoding,
 				    -1);
-
-		/* FIXME get_from_charset() has O(n) complexity, so calling it
-		 * in a loop is O(n^2)... Add a COLUMN_ENCODING to the
-		 * TreeModel.
-		 */
-		encoding = gtk_source_encoding_get_from_charset (charset);
-		g_free (charset);
 
 		ret = g_slist_prepend (ret, (gpointer)encoding);
 
@@ -180,6 +173,20 @@ update_remove_button_sensitivity (GeditEncodingsDialog *dialog)
 	gtk_widget_set_sensitive (dialog->priv->remove_button, count > 0);
 }
 
+static void
+append_encoding (GtkListStore            *liststore,
+		 const GtkSourceEncoding *encoding)
+{
+	GtkTreeIter iter;
+
+	gtk_list_store_append (liststore, &iter);
+	gtk_list_store_set (liststore, &iter,
+			    COLUMN_NAME, gtk_source_encoding_get_name (encoding),
+			    COLUMN_CHARSET, gtk_source_encoding_get_charset (encoding),
+			    COLUMN_ENCODING, encoding,
+			    -1);
+}
+
 /* Removes all @paths from @orig, and append them at the end of @dest in the
  * same order.
  */
@@ -204,14 +211,12 @@ transfer_encodings (GList        *paths,
 	{
 		GtkTreeRowReference *ref = l->data;
 		GtkTreePath *path;
-		GtkTreeIter iter_orig;
-		GtkTreeIter iter_dest;
-		gchar *name = NULL;
-		gchar *charset = NULL;
+		GtkTreeIter iter;
+		const GtkSourceEncoding *encoding = NULL;
 
 		path = gtk_tree_row_reference_get_path (ref);
 
-		if (!gtk_tree_model_get_iter (model_orig, &iter_orig, path))
+		if (!gtk_tree_model_get_iter (model_orig, &iter, path))
 		{
 			gtk_tree_path_free (path);
 			g_warning ("Remove encoding: invalid path");
@@ -219,22 +224,15 @@ transfer_encodings (GList        *paths,
 		}
 
 		/* Transfer encoding */
-		gtk_tree_model_get (model_orig, &iter_orig,
-				    COLUMN_NAME, &name,
-				    COLUMN_CHARSET, &charset,
+		gtk_tree_model_get (model_orig, &iter,
+				    COLUMN_ENCODING, &encoding,
 				    -1);
 
-		gtk_list_store_append (dest, &iter_dest);
-		gtk_list_store_set (dest, &iter_dest,
-				    COLUMN_NAME, name,
-				    COLUMN_CHARSET, charset,
-				    -1);
+		append_encoding (dest, encoding);
 
-		gtk_list_store_remove (orig, &iter_orig);
+		gtk_list_store_remove (orig, &iter);
 
 		gtk_tree_path_free (path);
-		g_free (charset);
-		g_free (name);
 	}
 
 	g_list_free_full (refs, (GDestroyNotify) gtk_tree_row_reference_free);
@@ -303,19 +301,6 @@ remove_button_clicked_cb (GtkWidget            *button,
 			    dialog->priv->liststore_available);
 
 	g_list_free_full (paths, (GDestroyNotify) gtk_tree_path_free);
-}
-
-static void
-append_encoding (GtkListStore            *liststore,
-		 const GtkSourceEncoding *encoding)
-{
-	GtkTreeIter iter;
-
-	gtk_list_store_append (liststore, &iter);
-	gtk_list_store_set (liststore, &iter,
-			    COLUMN_NAME, gtk_source_encoding_get_name (encoding),
-			    COLUMN_CHARSET, gtk_source_encoding_get_charset (encoding),
-			    -1);
 }
 
 static void
