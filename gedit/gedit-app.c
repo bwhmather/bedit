@@ -299,6 +299,193 @@ gedit_app_set_window_title_impl (GeditApp    *app,
 	gtk_window_set_title (GTK_WINDOW (window), title);
 }
 
+static gboolean
+is_in_viewport (GtkWindow    *window,
+		GdkScreen    *screen,
+		gint          workspace,
+		gint          viewport_x,
+		gint          viewport_y)
+{
+	GdkScreen *s;
+	GdkDisplay *display;
+	GdkWindow *gdkwindow;
+	const gchar *cur_name;
+	const gchar *name;
+	gint cur_n;
+	gint n;
+	gint ws;
+	gint sc_width, sc_height;
+	gint x, y, width, height;
+	gint vp_x, vp_y;
+
+	/* Check for screen and display match */
+	display = gdk_screen_get_display (screen);
+	cur_name = gdk_display_get_name (display);
+	cur_n = gdk_screen_get_number (screen);
+
+	s = gtk_window_get_screen (window);
+	display = gdk_screen_get_display (s);
+	name = gdk_display_get_name (display);
+	n = gdk_screen_get_number (s);
+
+	if (strcmp (cur_name, name) != 0 || cur_n != n)
+	{
+		return FALSE;
+	}
+
+	/* Check for workspace match */
+	ws = gedit_utils_get_window_workspace (window);
+	if (ws != workspace && ws != GEDIT_ALL_WORKSPACES)
+	{
+		return FALSE;
+	}
+
+	/* Check for viewport match */
+	gdkwindow = gtk_widget_get_window (GTK_WIDGET (window));
+	gdk_window_get_position (gdkwindow, &x, &y);
+	width = gdk_window_get_width (gdkwindow);
+	height = gdk_window_get_height (gdkwindow);
+	gedit_utils_get_current_viewport (screen, &vp_x, &vp_y);
+	x += vp_x;
+	y += vp_y;
+
+	sc_width = gdk_screen_get_width (screen);
+	sc_height = gdk_screen_get_height (screen);
+
+	return x + width * .25 >= viewport_x &&
+	       x + width * .75 <= viewport_x + sc_width &&
+	       y >= viewport_y &&
+	       y + height <= viewport_y + sc_height;
+}
+
+static GeditWindow *
+get_active_window (GtkApplication *app)
+{
+	GdkScreen *screen;
+	guint workspace;
+	gint viewport_x, viewport_y;
+	GList *windows, *l;
+
+	screen = gdk_screen_get_default ();
+
+	workspace = gedit_utils_get_current_workspace (screen);
+	gedit_utils_get_current_viewport (screen, &viewport_x, &viewport_y);
+
+	/* Gtk documentation says the window list is always in MRU order */
+	windows = gtk_application_get_windows (app);
+	for (l = windows; l != NULL; l = l->next)
+	{
+		GtkWindow *window = l->data;
+
+		if (GEDIT_IS_WINDOW (window) && is_in_viewport (window, screen, workspace, viewport_x, viewport_y))
+		{
+			return GEDIT_WINDOW (window);
+		}
+	}
+
+	return NULL;
+}
+
+static void
+set_command_line_wait (GeditApp *app,
+		       GeditTab *tab)
+{
+	g_object_set_data_full (G_OBJECT (tab),
+	                        "GeditTabCommandLineWait",
+	                        g_object_ref (app->priv->command_line),
+	                        (GDestroyNotify)g_object_unref);
+}
+
+static void
+open_files (GApplication            *application,
+	    gboolean                 new_window,
+	    gboolean                 new_document,
+	    gchar                   *geometry,
+	    gint                     line_position,
+	    gint                     column_position,
+	    const GtkSourceEncoding *encoding,
+	    GInputStream            *stdin_stream,
+	    GSList                  *file_list,
+	    GApplicationCommandLine *command_line)
+{
+	GeditWindow *window = NULL;
+	GeditTab *tab;
+	gboolean doc_created = FALSE;
+
+	if (!new_window)
+	{
+		window = get_active_window (GTK_APPLICATION (application));
+	}
+
+	if (window == NULL)
+	{
+		gedit_debug_message (DEBUG_APP, "Create main window");
+		window = gedit_app_create_window (GEDIT_APP (application), NULL);
+
+		gedit_debug_message (DEBUG_APP, "Show window");
+		gtk_widget_show (GTK_WIDGET (window));
+	}
+
+	if (geometry)
+	{
+		gtk_window_parse_geometry (GTK_WINDOW (window), geometry);
+	}
+
+	if (stdin_stream)
+	{
+		gedit_debug_message (DEBUG_APP, "Load stdin");
+
+		tab = gedit_window_create_tab_from_stream (window,
+		                                           stdin_stream,
+		                                           encoding,
+		                                           line_position,
+		                                           column_position,
+		                                           TRUE);
+		doc_created = tab != NULL;
+
+		if (doc_created && command_line)
+		{
+			set_command_line_wait (GEDIT_APP (application),
+					       tab);
+		}
+		g_input_stream_close (stdin_stream, NULL, NULL);
+	}
+
+	if (file_list != NULL)
+	{
+		GSList *loaded;
+
+		gedit_debug_message (DEBUG_APP, "Load files");
+		loaded = _gedit_cmd_load_files_from_prompt (window,
+		                                            file_list,
+		                                            encoding,
+		                                            line_position,
+		                                            column_position);
+
+		doc_created = doc_created || loaded != NULL;
+
+		if (command_line)
+		{
+			g_slist_foreach (loaded, (GFunc)set_command_line_wait, NULL);
+		}
+		g_slist_free (loaded);
+	}
+
+	if (!doc_created || new_document)
+	{
+		gedit_debug_message (DEBUG_APP, "Create tab");
+		tab = gedit_window_create_tab (window, TRUE);
+
+		if (command_line)
+		{
+			set_command_line_wait (GEDIT_APP (application),
+					       tab);
+		}
+	}
+
+	gtk_window_present (GTK_WINDOW (window));
+}
+
 static void
 new_window_activated (GSimpleAction *action,
                       GVariant      *parameter,
@@ -317,6 +504,25 @@ new_window_activated (GSimpleAction *action,
 	gedit_window_create_tab (window, TRUE);
 
 	gtk_window_present (GTK_WINDOW (window));
+}
+
+static void
+new_document_activated (GSimpleAction *action,
+                        GVariant      *parameter,
+                        gpointer       user_data)
+{
+	GApplication *application = G_APPLICATION (user_data);
+
+	open_files (application,
+	            FALSE,
+	            TRUE,
+	            NULL,
+	            0,
+	            0,
+	            NULL,
+	            NULL,
+	            NULL,
+	            NULL);
 }
 
 static void
@@ -371,6 +577,7 @@ quit_activated (GSimpleAction *action,
 
 static GActionEntry app_entries[] = {
 	{ "new-window", new_window_activated, NULL, NULL, NULL },
+	{ "new-document", new_document_activated, NULL, NULL, NULL },
 	{ "preferences", preferences_activated, NULL, NULL, NULL },
 	{ "help", help_activated, NULL, NULL, NULL },
 	{ "about", about_activated, NULL, NULL, NULL },
@@ -633,193 +840,6 @@ gedit_app_startup (GApplication *application)
 	peas_extension_set_foreach (app->priv->extensions,
 	                            (PeasExtensionSetForeachFunc) extension_added,
 	                            app);
-}
-
-static gboolean
-is_in_viewport (GtkWindow    *window,
-		GdkScreen    *screen,
-		gint          workspace,
-		gint          viewport_x,
-		gint          viewport_y)
-{
-	GdkScreen *s;
-	GdkDisplay *display;
-	GdkWindow *gdkwindow;
-	const gchar *cur_name;
-	const gchar *name;
-	gint cur_n;
-	gint n;
-	gint ws;
-	gint sc_width, sc_height;
-	gint x, y, width, height;
-	gint vp_x, vp_y;
-
-	/* Check for screen and display match */
-	display = gdk_screen_get_display (screen);
-	cur_name = gdk_display_get_name (display);
-	cur_n = gdk_screen_get_number (screen);
-
-	s = gtk_window_get_screen (window);
-	display = gdk_screen_get_display (s);
-	name = gdk_display_get_name (display);
-	n = gdk_screen_get_number (s);
-
-	if (strcmp (cur_name, name) != 0 || cur_n != n)
-	{
-		return FALSE;
-	}
-
-	/* Check for workspace match */
-	ws = gedit_utils_get_window_workspace (window);
-	if (ws != workspace && ws != GEDIT_ALL_WORKSPACES)
-	{
-		return FALSE;
-	}
-
-	/* Check for viewport match */
-	gdkwindow = gtk_widget_get_window (GTK_WIDGET (window));
-	gdk_window_get_position (gdkwindow, &x, &y);
-	width = gdk_window_get_width (gdkwindow);
-	height = gdk_window_get_height (gdkwindow);
-	gedit_utils_get_current_viewport (screen, &vp_x, &vp_y);
-	x += vp_x;
-	y += vp_y;
-
-	sc_width = gdk_screen_get_width (screen);
-	sc_height = gdk_screen_get_height (screen);
-
-	return x + width * .25 >= viewport_x &&
-	       x + width * .75 <= viewport_x + sc_width &&
-	       y >= viewport_y &&
-	       y + height <= viewport_y + sc_height;
-}
-
-static GeditWindow *
-get_active_window (GtkApplication *app)
-{
-	GdkScreen *screen;
-	guint workspace;
-	gint viewport_x, viewport_y;
-	GList *windows, *l;
-
-	screen = gdk_screen_get_default ();
-
-	workspace = gedit_utils_get_current_workspace (screen);
-	gedit_utils_get_current_viewport (screen, &viewport_x, &viewport_y);
-
-	/* Gtk documentation says the window list is always in MRU order */
-	windows = gtk_application_get_windows (app);
-	for (l = windows; l != NULL; l = l->next)
-	{
-		GtkWindow *window = l->data;
-
-		if (GEDIT_IS_WINDOW (window) && is_in_viewport (window, screen, workspace, viewport_x, viewport_y))
-		{
-			return GEDIT_WINDOW (window);
-		}
-	}
-
-	return NULL;
-}
-
-static void
-set_command_line_wait (GeditApp *app,
-		       GeditTab *tab)
-{
-	g_object_set_data_full (G_OBJECT (tab),
-	                        "GeditTabCommandLineWait",
-	                        g_object_ref (app->priv->command_line),
-	                        (GDestroyNotify)g_object_unref);
-}
-
-static void
-open_files (GApplication            *application,
-	    gboolean                 new_window,
-	    gboolean                 new_document,
-	    gchar                   *geometry,
-	    gint                     line_position,
-	    gint                     column_position,
-	    const GtkSourceEncoding *encoding,
-	    GInputStream            *stdin_stream,
-	    GSList                  *file_list,
-	    GApplicationCommandLine *command_line)
-{
-	GeditWindow *window = NULL;
-	GeditTab *tab;
-	gboolean doc_created = FALSE;
-
-	if (!new_window)
-	{
-		window = get_active_window (GTK_APPLICATION (application));
-	}
-
-	if (window == NULL)
-	{
-		gedit_debug_message (DEBUG_APP, "Create main window");
-		window = gedit_app_create_window (GEDIT_APP (application), NULL);
-
-		gedit_debug_message (DEBUG_APP, "Show window");
-		gtk_widget_show (GTK_WIDGET (window));
-	}
-
-	if (geometry)
-	{
-		gtk_window_parse_geometry (GTK_WINDOW (window), geometry);
-	}
-
-	if (stdin_stream)
-	{
-		gedit_debug_message (DEBUG_APP, "Load stdin");
-
-		tab = gedit_window_create_tab_from_stream (window,
-		                                           stdin_stream,
-		                                           encoding,
-		                                           line_position,
-		                                           column_position,
-		                                           TRUE);
-		doc_created = tab != NULL;
-
-		if (doc_created && command_line)
-		{
-			set_command_line_wait (GEDIT_APP (application),
-					       tab);
-		}
-		g_input_stream_close (stdin_stream, NULL, NULL);
-	}
-
-	if (file_list != NULL)
-	{
-		GSList *loaded;
-
-		gedit_debug_message (DEBUG_APP, "Load files");
-		loaded = _gedit_cmd_load_files_from_prompt (window,
-		                                            file_list,
-		                                            encoding,
-		                                            line_position,
-		                                            column_position);
-
-		doc_created = doc_created || loaded != NULL;
-
-		if (command_line)
-		{
-			g_slist_foreach (loaded, (GFunc)set_command_line_wait, NULL);
-		}
-		g_slist_free (loaded);
-	}
-
-	if (!doc_created || new_document)
-	{
-		gedit_debug_message (DEBUG_APP, "Create tab");
-		tab = gedit_window_create_tab (window, TRUE);
-
-		if (command_line)
-		{
-			set_command_line_wait (GEDIT_APP (application),
-					       tab);
-		}
-	}
-
-	gtk_window_present (GTK_WINDOW (window));
 }
 
 static void

@@ -16,14 +16,14 @@ X-GNOME-Bugzilla-Product=gedit
 X-GNOME-Bugzilla-Component=general
 X-GNOME-Bugzilla-Version=@VERSION@
 X-GNOME-Bugzilla-ExtraInfoScript=@FULL_LIBEXECDIR@/gedit/gedit-bugreport.sh
-Actions=Window;Document;
+Actions=new-window;new-document;
 _Keywords=Text;Editor;
 DBusActivatable=true
 
-[Desktop Action Window]
+[Desktop Action new-window]
 _Name=Open a New Window
 Exec=gedit --new-window
 
-[Desktop Action Document]
+[Desktop Action new-document]
 _Name=Open a New Document
 Exec=gedit --new-document
