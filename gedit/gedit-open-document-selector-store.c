@@ -141,7 +141,7 @@ check_mime_type (GFileInfo *info)
 #ifdef G_OS_WIN32
 	if (g_content_type_is_a (content_type, "text"))
 	{
-		return TRUE:
+		return TRUE;
 	}
 
 	mime_type = g_content_type_get_mime_type (content_type);
