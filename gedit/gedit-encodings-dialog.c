@@ -46,6 +46,8 @@ struct _GeditEncodingsDialogPrivate
 	GtkListStore *liststore_chosen;
 	GtkTreeView *treeview_chosen;
 	GtkWidget *remove_button;
+	GtkWidget *up_button;
+	GtkWidget *down_button;
 };
 
 enum
@@ -149,6 +151,8 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, treeview_chosen);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, add_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, remove_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, up_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, down_button);
 }
 
 static void
@@ -163,14 +167,46 @@ update_add_button_sensitivity (GeditEncodingsDialog *dialog)
 }
 
 static void
-update_remove_button_sensitivity (GeditEncodingsDialog *dialog)
+update_chosen_buttons_sensitivity (GeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 	gint count;
+	GList *selected_rows;
+	GtkTreeModel *model;
+	GtkTreePath *path;
+	gint *indices;
+	gint depth;
+	gint items_count;
+	gboolean first_item_selected;
+	gboolean last_item_selected;
 
 	selection = gtk_tree_view_get_selection (dialog->priv->treeview_chosen);
 	count = gtk_tree_selection_count_selected_rows (selection);
 	gtk_widget_set_sensitive (dialog->priv->remove_button, count > 0);
+
+	if (count != 1)
+	{
+		gtk_widget_set_sensitive (dialog->priv->up_button, FALSE);
+		gtk_widget_set_sensitive (dialog->priv->down_button, FALSE);
+		return;
+	}
+
+	selected_rows = gtk_tree_selection_get_selected_rows (selection, &model);
+	g_assert (g_list_length (selected_rows) == 1);
+
+	path = selected_rows->data;
+	indices = gtk_tree_path_get_indices_with_depth (path, &depth);
+	g_assert (depth == 1);
+
+	items_count = gtk_tree_model_iter_n_children (model, NULL);
+
+	first_item_selected = indices[0] == 0;
+	last_item_selected = indices[0] == (items_count - 1);
+
+	gtk_widget_set_sensitive (dialog->priv->up_button, !first_item_selected);
+	gtk_widget_set_sensitive (dialog->priv->down_button, !last_item_selected);
+
+	g_list_free_full (selected_rows, (GDestroyNotify) gtk_tree_path_free);
 }
 
 static void
@@ -304,6 +340,82 @@ remove_button_clicked_cb (GtkWidget            *button,
 }
 
 static void
+up_button_clicked_cb (GtkWidget            *button,
+		      GeditEncodingsDialog *dialog)
+{
+	GtkTreeSelection *selection;
+	GtkTreeModel *model;
+	GList *selected_rows;
+	GtkTreePath *path;
+	GtkTreeIter iter;
+	GtkTreeIter prev_iter;
+
+	selection = gtk_tree_view_get_selection (dialog->priv->treeview_chosen);
+	selected_rows = gtk_tree_selection_get_selected_rows (selection, &model);
+
+	g_return_if_fail (model == GTK_TREE_MODEL (dialog->priv->liststore_chosen));
+	g_return_if_fail (g_list_length (selected_rows) == 1);
+
+	path = selected_rows->data;
+	if (!gtk_tree_model_get_iter (model, &iter, path))
+	{
+		g_return_if_reached ();
+	}
+
+	prev_iter = iter;
+	if (!gtk_tree_model_iter_previous (model, &prev_iter))
+	{
+		g_return_if_reached ();
+	}
+
+	gtk_list_store_move_before (dialog->priv->liststore_chosen,
+				    &iter,
+				    &prev_iter);
+
+	update_chosen_buttons_sensitivity (dialog);
+
+	g_list_free_full (selected_rows, (GDestroyNotify) gtk_tree_path_free);
+}
+
+static void
+down_button_clicked_cb (GtkWidget            *button,
+			GeditEncodingsDialog *dialog)
+{
+	GtkTreeSelection *selection;
+	GtkTreeModel *model;
+	GList *selected_rows;
+	GtkTreePath *path;
+	GtkTreeIter iter;
+	GtkTreeIter next_iter;
+
+	selection = gtk_tree_view_get_selection (dialog->priv->treeview_chosen);
+	selected_rows = gtk_tree_selection_get_selected_rows (selection, &model);
+
+	g_return_if_fail (model == GTK_TREE_MODEL (dialog->priv->liststore_chosen));
+	g_return_if_fail (g_list_length (selected_rows) == 1);
+
+	path = selected_rows->data;
+	if (!gtk_tree_model_get_iter (model, &iter, path))
+	{
+		g_return_if_reached ();
+	}
+
+	next_iter = iter;
+	if (!gtk_tree_model_iter_next (model, &next_iter))
+	{
+		g_return_if_reached ();
+	}
+
+	gtk_list_store_move_after (dialog->priv->liststore_chosen,
+				   &iter,
+				   &next_iter);
+
+	update_chosen_buttons_sensitivity (dialog);
+
+	g_list_free_full (selected_rows, (GDestroyNotify) gtk_tree_path_free);
+}
+
+static void
 init_liststores (GeditEncodingsDialog *dialog)
 {
 	gchar **enc_strv;
@@ -386,14 +498,24 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 
 	g_signal_connect_swapped (selection,
 				  "changed",
-				  G_CALLBACK (update_remove_button_sensitivity),
+				  G_CALLBACK (update_chosen_buttons_sensitivity),
 				  dialog);
 
-	update_remove_button_sensitivity (dialog);
+	update_chosen_buttons_sensitivity (dialog);
 
 	g_signal_connect (dialog->priv->remove_button,
 			  "clicked",
 			  G_CALLBACK (remove_button_clicked_cb),
+			  dialog);
+
+	g_signal_connect (dialog->priv->up_button,
+			  "clicked",
+			  G_CALLBACK (up_button_clicked_cb),
+			  dialog);
+
+	g_signal_connect (dialog->priv->down_button,
+			  "clicked",
+			  G_CALLBACK (down_button_clicked_cb),
 			  dialog);
 }
 
