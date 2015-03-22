@@ -153,6 +153,7 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, remove_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, up_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, down_button);
+	gtk_widget_class_bind_template_child_full (widget_class, "reset_button", FALSE, 0);
 }
 
 static void
@@ -458,9 +459,46 @@ init_liststores (GeditEncodingsDialog *dialog)
 }
 
 static void
+reset_button_clicked_cb (GtkWidget            *button,
+			 GeditEncodingsDialog *dialog)
+{
+	GtkDialog *msg_dialog;
+	gint response;
+
+	msg_dialog = GTK_DIALOG (gtk_message_dialog_new (GTK_WINDOW (dialog),
+							 GTK_DIALOG_DESTROY_WITH_PARENT |
+							 GTK_DIALOG_MODAL,
+							 GTK_MESSAGE_QUESTION,
+							 GTK_BUTTONS_NONE,
+							 "%s",
+							 _("Do you really want to reset the "
+							   "character encodings' preferences?")));
+
+	gtk_dialog_add_buttons (msg_dialog,
+				_("_Cancel"), GTK_RESPONSE_CANCEL,
+				_("_Reset"), GTK_RESPONSE_ACCEPT,
+				NULL);
+
+	response = gtk_dialog_run (msg_dialog);
+
+	if (response == GTK_RESPONSE_ACCEPT)
+	{
+		g_settings_reset (dialog->priv->enc_settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
+
+		gtk_list_store_clear (dialog->priv->liststore_available);
+		gtk_list_store_clear (dialog->priv->liststore_chosen);
+
+		init_liststores (dialog);
+	}
+
+	gtk_widget_destroy (GTK_WIDGET (msg_dialog));
+}
+
+static void
 gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
+	GtkButton *reset_button;
 
 	dialog->priv = gedit_encodings_dialog_get_instance_private (dialog);
 
@@ -516,6 +554,15 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 	g_signal_connect (dialog->priv->down_button,
 			  "clicked",
 			  G_CALLBACK (down_button_clicked_cb),
+			  dialog);
+
+	reset_button = GTK_BUTTON (gtk_widget_get_template_child (GTK_WIDGET (dialog),
+								  GEDIT_TYPE_ENCODINGS_DIALOG,
+								  "reset_button"));
+
+	g_signal_connect (reset_button,
+			  "clicked",
+			  G_CALLBACK (reset_button_clicked_cb),
 			  dialog);
 }
 
