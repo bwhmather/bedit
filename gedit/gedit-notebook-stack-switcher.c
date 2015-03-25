@@ -206,7 +206,14 @@ on_notebook_switch_page (GtkNotebook                *notebook,
 	GtkWidget *child;
 
 	child = g_object_get_data (G_OBJECT (page), "stack-child");
-	if (child != NULL)
+
+	/* NOTE: we make the assumption here that if there is no visible child
+	 * it means that the child does not contain any child already, this is
+	 * to avoid an assertion when closing gedit, since the remove signal
+	 * runs first on the stack handler so we try to set a visible child
+	 * when the stack already does not handle that child
+	 */
+	if (child != NULL && gtk_stack_get_visible_child (priv->stack) != NULL)
 	{
 		gtk_stack_set_visible_child (priv->stack, child);
 	}
