@@ -67,13 +67,25 @@ gedit_w32_load_private_dll (void)
 		 */
 		dllpath = g_build_filename (prefix, "lib", "gedit", "libgedit.dll", NULL);
 		g_free (prefix);
+
 		libgedit_dll = g_module_open (dllpath, 0);
+		if (libgedit_dll == NULL)
+		{
+			g_printerr ("Failed to load '%s': %s\n",
+			            dllpath, g_module_error ());
+		}
+
 		g_free (dllpath);
 	}
 
 	if (libgedit_dll == NULL)
 	{
 		libgedit_dll = g_module_open ("libgedit.dll", 0);
+		if (libgedit_dll == NULL)
+		{
+			g_printerr ("Failed to load 'libgedit.dll': %s\n",
+			            g_module_error ());
+		}
 	}
 
 	return (libgedit_dll != NULL);
@@ -104,7 +116,6 @@ main (int argc, char *argv[])
 #ifdef G_OS_WIN32
 	if (!gedit_w32_load_private_dll ())
 	{
-		g_printerr ("Failed to load libgedit DLL\n");
 		return 1;
 	}
 
