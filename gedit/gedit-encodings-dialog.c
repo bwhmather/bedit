@@ -167,7 +167,61 @@ update_add_button_sensitivity (GeditEncodingsDialog *dialog)
 }
 
 static void
-update_chosen_buttons_sensitivity (GeditEncodingsDialog *dialog)
+update_remove_button_sensitivity (GeditEncodingsDialog *dialog)
+{
+	const GtkSourceEncoding *utf8_encoding;
+	const GtkSourceEncoding *current_encoding;
+	GtkTreeSelection *selection;
+	GtkTreeModel *model;
+	GList *selected_rows;
+	GList *l;
+	gboolean sensitive;
+
+	utf8_encoding = gtk_source_encoding_get_utf8 ();
+	current_encoding = gtk_source_encoding_get_current ();
+
+	selection = gtk_tree_view_get_selection (dialog->priv->treeview_chosen);
+
+	selected_rows = gtk_tree_selection_get_selected_rows (selection, &model);
+	g_return_if_fail (model == GTK_TREE_MODEL (dialog->priv->liststore_chosen));
+
+	sensitive = FALSE;
+	for (l = selected_rows; l != NULL; l = l->next)
+	{
+		GtkTreePath *path = l->data;
+		GtkTreeIter iter;
+		const GtkSourceEncoding *encoding = NULL;
+
+		if (!gtk_tree_model_get_iter (model, &iter, path))
+		{
+			g_warning ("Remove button: invalid path");
+			continue;
+		}
+
+		gtk_tree_model_get (model, &iter,
+				    COLUMN_ENCODING, &encoding,
+				    -1);
+
+		/* If at least one encoding other than UTF-8 or current is
+		 * selected, set the Remove button as sensitive. But if UTF-8 or
+		 * current is selected, it won't be removed. So Ctrl+A works
+		 * fine to remove (almost) all encodings in one go.
+		 */
+		if (encoding != utf8_encoding &&
+		    encoding != current_encoding)
+		{
+			sensitive = TRUE;
+			break;
+		}
+	}
+
+	gtk_widget_set_sensitive (dialog->priv->remove_button, sensitive);
+
+	g_list_free_full (selected_rows, (GDestroyNotify) gtk_tree_path_free);
+}
+
+static void
+update_up_down_buttons_sensitivity (GeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
 	gint count;
@@ -182,7 +236,6 @@ update_chosen_buttons_sensitivity (GeditEncodingsDialog *dialog)
 
 	selection = gtk_tree_view_get_selection (dialog->priv->treeview_chosen);
 	count = gtk_tree_selection_count_selected_rows (selection);
-	gtk_widget_set_sensitive (dialog->priv->remove_button, count > 0);
 
 	if (count != 1)
 	{
@@ -207,6 +260,13 @@ update_chosen_buttons_sensitivity (GeditEncodingsDialog *dialog)
 	gtk_widget_set_sensitive (dialog->priv->down_button, !last_item_selected);
 
 	g_list_free_full (selected_rows, (GDestroyNotify) gtk_tree_path_free);
+}
+
+static void
+update_chosen_buttons_sensitivity (GeditEncodingsDialog *dialog)
+{
+	update_remove_button_sensitivity (dialog);
+	update_up_down_buttons_sensitivity (dialog);
 }
 
 static void
