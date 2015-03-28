@@ -63,6 +63,8 @@ GeditLockdownMask	 gedit_settings_get_lockdown			(GeditSettings *gs);
 
 gchar			*gedit_settings_get_system_font			(GeditSettings *gs);
 
+GSList			*gedit_settings_get_candidate_encodings		(void);
+
 /* Utility functions */
 GSList			*gedit_settings_get_list			(GSettings     *settings,
 									 const gchar   *key);

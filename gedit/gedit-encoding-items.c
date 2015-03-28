@@ -74,57 +74,19 @@ gedit_encoding_item_get_name (GeditEncodingItem *item)
 GSList *
 gedit_encoding_items_get (void)
 {
-	const GtkSourceEncoding *utf8_encoding;
 	const GtkSourceEncoding *current_encoding;
-	GSettings *settings;
-	gchar **settings_strv;
 	GSList *encodings;
-	GSList *ret = NULL;
+	GSList *items = NULL;
 	GSList *l;
 
-	utf8_encoding = gtk_source_encoding_get_utf8 ();
+	encodings = gedit_settings_get_candidate_encodings ();
+
 	current_encoding = gtk_source_encoding_get_current ();
-
-	settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
-
-	settings_strv = g_settings_get_strv (settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
-
-	/* First take the candidate encodings from GSettings. If the gsetting is
-	 * empty, take the default candidates of GtkSourceEncoding.
-	 */
-	if (settings_strv != NULL && settings_strv[0] != NULL)
-	{
-		encodings = _gedit_utils_encoding_strv_to_list ((const gchar * const *)settings_strv);
-
-		/* Ensure that UTF-8 is present. */
-		if (utf8_encoding != current_encoding &&
-		    g_slist_find (encodings, utf8_encoding) == NULL)
-		{
-			encodings = g_slist_prepend (encodings, (gpointer)utf8_encoding);
-		}
-
-		/* Ensure that the current locale encoding is present (if not
-		 * present, it must be the first encoding).
-		 */
-		if (g_slist_find (encodings, current_encoding) == NULL)
-		{
-			encodings = g_slist_prepend (encodings, (gpointer)current_encoding);
-		}
-	}
-	else
-	{
-		encodings = gtk_source_encoding_get_default_candidates ();
-	}
 
 	for (l = encodings; l != NULL; l = l->next)
 	{
 		const GtkSourceEncoding *enc = l->data;
 		gchar *name;
-
-		if (enc == NULL)
-		{
-			continue;
-		}
 
 		if (enc == current_encoding)
 		{
@@ -136,15 +98,12 @@ gedit_encoding_items_get (void)
 			name = gtk_source_encoding_to_string (enc);
 		}
 
-		ret = g_slist_prepend (ret, gedit_encoding_item_new (enc, name));
+		items = g_slist_prepend (items, gedit_encoding_item_new (enc, name));
 	}
 
-	ret = g_slist_reverse (ret);
-
-	g_object_unref (settings);
-	g_strfreev (settings_strv);
 	g_slist_free (encodings);
-	return ret;
+
+	return g_slist_reverse (items);
 }
 
 /* ex:set ts=8 noet: */

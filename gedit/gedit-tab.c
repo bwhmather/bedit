@@ -1947,31 +1947,15 @@ end:
 static GSList *
 get_candidate_encodings (GeditTab *tab)
 {
+	GSList *candidates = NULL;
 	GeditDocument *doc;
 	GtkSourceFile *file;
-	GSettings *settings;
-	gchar **settings_strv;
 	gchar *metadata_charset;
 	const GtkSourceEncoding *file_encoding;
-	GSList *candidates = NULL;
 
-	settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
+	candidates = gedit_settings_get_candidate_encodings ();
 
-	settings_strv = g_settings_get_strv (settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
-
-	/* First take the candidate encodings from GSettings. If the gsetting is
-	 * empty, take the default candidates of GtkSourceEncoding.
-	 */
-	if (settings_strv != NULL && settings_strv[0] != NULL)
-	{
-		candidates = _gedit_utils_encoding_strv_to_list ((const gchar * const *)settings_strv);
-	}
-	else
-	{
-		candidates = gtk_source_encoding_get_default_candidates ();
-	}
-
-	/* Then prepend the encoding stored in the metadata. */
+	/* Prepend the encoding stored in the metadata. */
 	doc = gedit_tab_get_document (tab);
 	metadata_charset = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_ENCODING);
 
@@ -1998,10 +1982,7 @@ get_candidate_encodings (GeditTab *tab)
 		candidates = g_slist_prepend (candidates, (gpointer)file_encoding);
 	}
 
-	g_object_unref (settings);
-	g_strfreev (settings_strv);
 	g_free (metadata_charset);
-
 	return candidates;
 }
 

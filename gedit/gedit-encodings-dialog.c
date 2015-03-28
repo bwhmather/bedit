@@ -93,7 +93,7 @@ get_chosen_encodings_list (GeditEncodingsDialog *dialog)
 		iter_set = gtk_tree_model_iter_next (model, &iter);
 	}
 
-	return ret;
+	return g_slist_reverse (ret);
 }
 
 static void
@@ -119,6 +119,7 @@ gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
 			enc_list = get_chosen_encodings_list (dialog);
 			enc_strv = _gedit_utils_encoding_list_to_strv (enc_list);
 
+			/* TODO save setting only if list modified. */
 			g_settings_set_strv (dialog->priv->enc_settings,
 			                     GEDIT_SETTINGS_CANDIDATE_ENCODINGS,
 			                     (const gchar * const *)enc_strv);
@@ -419,17 +420,13 @@ down_button_clicked_cb (GtkWidget            *button,
 static void
 init_liststores (GeditEncodingsDialog *dialog)
 {
-	gchar **enc_strv;
 	GSList *chosen_encodings;
 	GSList *all_encodings;
 	GSList *l;
 
 	/* Chosen encodings */
 
-	enc_strv = g_settings_get_strv (dialog->priv->enc_settings,
-					GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
-
-	chosen_encodings = _gedit_utils_encoding_strv_to_list ((const gchar * const *)enc_strv);
+	chosen_encodings = gedit_settings_get_candidate_encodings ();
 
 	for (l = chosen_encodings; l != NULL; l = l->next)
 	{
@@ -453,7 +450,6 @@ init_liststores (GeditEncodingsDialog *dialog)
 		append_encoding (dialog->priv->liststore_available, cur_encoding);
 	}
 
-	g_strfreev (enc_strv);
 	g_slist_free (chosen_encodings);
 	g_slist_free (all_encodings);
 }

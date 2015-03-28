@@ -33,6 +33,7 @@
 #include "gedit-app.h"
 #include "gedit-view.h"
 #include "gedit-window.h"
+#include "gedit-utils.h"
 
 #define GEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE "disable-command-line"
 #define GEDIT_SETTINGS_LOCKDOWN_PRINTING "disable-printing"
@@ -490,6 +491,74 @@ gedit_settings_set_list (GSettings    *settings,
 
 	g_settings_set_strv (settings, key, (const gchar * const *)values);
 	g_free (values);
+}
+
+static gboolean
+strv_is_empty (gchar **strv)
+{
+	if (strv == NULL || strv[0] == NULL)
+	{
+		return TRUE;
+	}
+
+	/* Contains one empty string. */
+	if (strv[1] == NULL && strv[0][0] == '\0')
+	{
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+/* Take in priority the candidate encodings from GSettings. If the gsetting is
+ * empty, take the default candidates of GtkSourceEncoding.
+ * Also, ensure that UTF-8 and the current locale encoding are present.
+ * TODO remove duplicates.
+ * Returns: a list of GtkSourceEncodings. Free with g_slist_free().
+ */
+GSList *
+gedit_settings_get_candidate_encodings (void)
+{
+	const GtkSourceEncoding *utf8_encoding;
+	const GtkSourceEncoding *current_encoding;
+	GSettings *settings;
+	gchar **settings_strv;
+	GSList *candidates;
+
+	utf8_encoding = gtk_source_encoding_get_utf8 ();
+	current_encoding = gtk_source_encoding_get_current ();
+
+	settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
+
+	settings_strv = g_settings_get_strv (settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
+
+	if (strv_is_empty (settings_strv))
+	{
+		candidates = gtk_source_encoding_get_default_candidates ();
+	}
+	else
+	{
+		candidates = _gedit_utils_encoding_strv_to_list ((const gchar * const *)settings_strv);
+
+		/* Ensure that UTF-8 is present. */
+		if (utf8_encoding != current_encoding &&
+		    g_slist_find (candidates, utf8_encoding) == NULL)
+		{
+			candidates = g_slist_prepend (candidates, (gpointer)utf8_encoding);
+		}
+
+		/* Ensure that the current locale encoding is present (if not
+		 * present, it must be the first encoding).
+		 */
+		if (g_slist_find (candidates, current_encoding) == NULL)
+		{
+			candidates = g_slist_prepend (candidates, (gpointer)current_encoding);
+		}
+	}
+
+	g_object_unref (settings);
+	g_strfreev (settings_strv);
+	return candidates;
 }
 
 /* ex:set ts=8 noet: */
