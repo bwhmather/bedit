@@ -74,63 +74,77 @@ gedit_encoding_item_get_name (GeditEncodingItem *item)
 GSList *
 gedit_encoding_items_get (void)
 {
-	GSList *ret = NULL;
 	const GtkSourceEncoding *utf8_encoding;
 	const GtkSourceEncoding *current_encoding;
-	GSettings *enc_settings;
-	gchar *str;
+	GSettings *settings;
+	gchar **settings_strv;
 	GSList *encodings;
-	gchar **enc_strv;
+	GSList *ret = NULL;
+	GSList *l;
 
 	utf8_encoding = gtk_source_encoding_get_utf8 ();
 	current_encoding = gtk_source_encoding_get_current ();
 
-	enc_settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
+	settings = g_settings_new ("org.gnome.gedit.preferences.encodings");
 
-	if (utf8_encoding != current_encoding)
+	settings_strv = g_settings_get_strv (settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
+
+	/* First take the candidate encodings from GSettings. If the gsetting is
+	 * empty, take the default candidates of GtkSourceEncoding.
+	 */
+	if (settings_strv != NULL && settings_strv[0] != NULL)
 	{
-		str = gtk_source_encoding_to_string (utf8_encoding);
+		encodings = _gedit_utils_encoding_strv_to_list ((const gchar * const *)settings_strv);
+
+		/* Ensure that UTF-8 is present. */
+		if (utf8_encoding != current_encoding &&
+		    g_slist_find (encodings, utf8_encoding) == NULL)
+		{
+			encodings = g_slist_prepend (encodings, (gpointer)utf8_encoding);
+		}
+
+		/* Ensure that the current locale encoding is present (if not
+		 * present, it must be the first encoding).
+		 */
+		if (g_slist_find (encodings, current_encoding) == NULL)
+		{
+			encodings = g_slist_prepend (encodings, (gpointer)current_encoding);
+		}
 	}
 	else
 	{
-		str = g_strdup_printf (_("Current Locale (%s)"),
-				       gtk_source_encoding_get_charset (utf8_encoding));
+		encodings = gtk_source_encoding_get_default_candidates ();
 	}
 
-	ret = g_slist_prepend (ret, gedit_encoding_item_new (utf8_encoding, str));
-
-	if (current_encoding != utf8_encoding &&
-	    current_encoding != NULL)
+	for (l = encodings; l != NULL; l = l->next)
 	{
-		str = g_strdup_printf (_("Current Locale (%s)"),
-				       gtk_source_encoding_get_charset (current_encoding));
+		const GtkSourceEncoding *enc = l->data;
+		gchar *name;
 
-		ret = g_slist_prepend (ret, gedit_encoding_item_new (current_encoding, str));
-	}
-
-	enc_strv = g_settings_get_strv (enc_settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
-
-	encodings = _gedit_utils_encoding_strv_to_list ((const gchar * const *)enc_strv);
-	g_strfreev (enc_strv);
-
-	g_object_unref (enc_settings);
-
-	while (encodings)
-	{
-		const GtkSourceEncoding *enc = encodings->data;
-
-		if (enc != current_encoding &&
-		    enc != utf8_encoding &&
-		    enc != NULL)
+		if (enc == NULL)
 		{
-			str = gtk_source_encoding_to_string (enc);
-			ret = g_slist_prepend (ret, gedit_encoding_item_new (enc, str));
+			continue;
 		}
 
-		encodings = g_slist_delete_link (encodings, encodings);
+		if (enc == current_encoding)
+		{
+			name = g_strdup_printf (_("Current Locale (%s)"),
+						gtk_source_encoding_get_charset (enc));
+		}
+		else
+		{
+			name = gtk_source_encoding_to_string (enc);
+		}
+
+		ret = g_slist_prepend (ret, gedit_encoding_item_new (enc, name));
 	}
 
-	return g_slist_reverse (ret);
+	ret = g_slist_reverse (ret);
+
+	g_object_unref (settings);
+	g_strfreev (settings_strv);
+	g_slist_free (encodings);
+	return ret;
 }
 
 /* ex:set ts=8 noet: */
