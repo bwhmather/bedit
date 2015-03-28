@@ -385,22 +385,61 @@ static void
 remove_button_clicked_cb (GtkWidget            *button,
 			  GeditEncodingsDialog *dialog)
 {
+	const GtkSourceEncoding *utf8_encoding;
+	const GtkSourceEncoding *current_encoding;
 	GtkTreeSelection *selection;
 	GtkTreeModel *model;
-	GList *paths;
+	GList *selected_rows;
+	GList *to_remove = NULL;
+	GList *l;
+
+	utf8_encoding = gtk_source_encoding_get_utf8 ();
+	current_encoding = gtk_source_encoding_get_current ();
 
 	selection = gtk_tree_view_get_selection (dialog->priv->treeview_chosen);
-	paths = gtk_tree_selection_get_selected_rows (selection, &model);
+	selected_rows = gtk_tree_selection_get_selected_rows (selection, &model);
 
 	g_return_if_fail (model == GTK_TREE_MODEL (dialog->priv->liststore_chosen));
 
-	transfer_encodings (paths,
+	/* Ensure that UTF-8 and the current locale encodings cannot be removed. */
+	for (l = selected_rows; l != NULL; l = l->next)
+	{
+		GtkTreePath *path = l->data;
+		GtkTreeIter iter;
+		const GtkSourceEncoding *encoding = NULL;
+
+		if (!gtk_tree_model_get_iter (model, &iter, path))
+		{
+			gtk_tree_path_free (path);
+			g_warning ("Remove button: invalid path");
+			continue;
+		}
+
+		gtk_tree_model_get (model, &iter,
+				    COLUMN_ENCODING, &encoding,
+				    -1);
+
+		if (encoding == utf8_encoding ||
+		    encoding == current_encoding)
+		{
+			gtk_tree_path_free (path);
+		}
+		else
+		{
+			to_remove = g_list_prepend (to_remove, path);
+		}
+	}
+
+	to_remove = g_list_reverse (to_remove);
+
+	transfer_encodings (to_remove,
 			    dialog->priv->liststore_chosen,
 			    dialog->priv->liststore_available);
 
 	dialog->priv->modified = TRUE;
 
-	g_list_free_full (paths, (GDestroyNotify) gtk_tree_path_free);
+	g_list_free (selected_rows);
+	g_list_free_full (to_remove, (GDestroyNotify) gtk_tree_path_free);
 }
 
 static void
