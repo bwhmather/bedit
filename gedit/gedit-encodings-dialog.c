@@ -48,6 +48,8 @@ struct _GeditEncodingsDialogPrivate
 	GtkWidget *remove_button;
 	GtkWidget *up_button;
 	GtkWidget *down_button;
+
+	guint modified : 1;
 };
 
 enum
@@ -102,32 +104,28 @@ gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
 {
 	GeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG (gtk_dialog);
 
-	switch (response_id)
+	if (response_id == GTK_RESPONSE_HELP)
 	{
-		case GTK_RESPONSE_HELP:
-			gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
-			                     GTK_WINDOW (dialog),
-			                     "gedit",
-			                     NULL);
-			break;
+		gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
+				     GTK_WINDOW (dialog),
+				     "gedit",
+				     NULL);
+	}
+	else if (response_id == GTK_RESPONSE_OK &&
+		 dialog->priv->modified)
+	{
+		GSList *enc_list;
+		gchar **enc_strv;
 
-		case GTK_RESPONSE_OK:
-		{
-			GSList *enc_list;
-			gchar **enc_strv;
+		enc_list = get_chosen_encodings_list (dialog);
+		enc_strv = _gedit_utils_encoding_list_to_strv (enc_list);
 
-			enc_list = get_chosen_encodings_list (dialog);
-			enc_strv = _gedit_utils_encoding_list_to_strv (enc_list);
+		g_settings_set_strv (dialog->priv->enc_settings,
+				     GEDIT_SETTINGS_CANDIDATE_ENCODINGS,
+				     (const gchar * const *)enc_strv);
 
-			/* TODO save setting only if list modified. */
-			g_settings_set_strv (dialog->priv->enc_settings,
-			                     GEDIT_SETTINGS_CANDIDATE_ENCODINGS,
-			                     (const gchar * const *)enc_strv);
-
-			g_slist_free (enc_list);
-			g_strfreev (enc_strv);
-			break;
-		}
+		g_slist_free (enc_list);
+		g_strfreev (enc_strv);
 	}
 }
 
@@ -308,6 +306,8 @@ add_button_clicked_cb (GtkWidget            *button,
 			    dialog->priv->liststore_available,
 			    dialog->priv->liststore_chosen);
 
+	dialog->priv->modified = TRUE;
+
 	/* For the treeview_available, it's more natural to unselect the added
 	 * encodings.
 	 * Note that when removing encodings from treeview_chosen, it is
@@ -337,6 +337,8 @@ remove_button_clicked_cb (GtkWidget            *button,
 	transfer_encodings (paths,
 			    dialog->priv->liststore_chosen,
 			    dialog->priv->liststore_available);
+
+	dialog->priv->modified = TRUE;
 
 	g_list_free_full (paths, (GDestroyNotify) gtk_tree_path_free);
 }
@@ -373,6 +375,8 @@ up_button_clicked_cb (GtkWidget            *button,
 	gtk_list_store_move_before (dialog->priv->liststore_chosen,
 				    &iter,
 				    &prev_iter);
+
+	dialog->priv->modified = TRUE;
 
 	update_chosen_buttons_sensitivity (dialog);
 
@@ -411,6 +415,8 @@ down_button_clicked_cb (GtkWidget            *button,
 	gtk_list_store_move_after (dialog->priv->liststore_chosen,
 				   &iter,
 				   &next_iter);
+
+	dialog->priv->modified = TRUE;
 
 	update_chosen_buttons_sensitivity (dialog);
 
@@ -485,6 +491,7 @@ reset_button_clicked_cb (GtkWidget            *button,
 		gtk_list_store_clear (dialog->priv->liststore_chosen);
 
 		init_liststores (dialog);
+		dialog->priv->modified = FALSE;
 	}
 
 	gtk_widget_destroy (GTK_WIDGET (msg_dialog));
@@ -505,6 +512,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
 	init_liststores (dialog);
+	dialog->priv->modified = FALSE;
 
 	/* Tree view of available encodings */
 
