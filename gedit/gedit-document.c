@@ -69,6 +69,8 @@ struct _GeditDocumentPrivate
 	 */
 	GtkSourceSearchContext *search_context;
 
+	guint user_action;
+
 	guint readonly : 1;
 	guint externally_modified : 1;
 	guint deleted : 1;
@@ -293,6 +295,22 @@ gedit_document_set_property (GObject      *object,
 }
 
 static void
+gedit_document_begin_user_action (GtkTextBuffer *buffer)
+{
+	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
+
+	++doc->priv->user_action;
+}
+
+static void
+gedit_document_end_user_action (GtkTextBuffer *buffer)
+{
+	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
+
+	--doc->priv->user_action;
+}
+
+static void
 gedit_document_mark_set (GtkTextBuffer     *buffer,
                          const GtkTextIter *iter,
                          GtkTextMark       *mark)
@@ -304,7 +322,7 @@ gedit_document_mark_set (GtkTextBuffer     *buffer,
 		GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set (buffer, iter, mark);
 	}
 
-	if (mark == gtk_text_buffer_get_insert (buffer))
+	if (mark == gtk_text_buffer_get_insert (buffer) && (doc->priv->user_action == 0))
 	{
 		g_signal_emit (doc, document_signals[CURSOR_MOVED], 0);
 	}
@@ -345,6 +363,8 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	object_class->set_property = gedit_document_set_property;
 	object_class->constructed = gedit_document_constructed;
 
+	buf_class->begin_user_action = gedit_document_begin_user_action;
+	buf_class->end_user_action = gedit_document_end_user_action;
 	buf_class->mark_set = gedit_document_mark_set;
 	buf_class->changed = gedit_document_changed;
 
