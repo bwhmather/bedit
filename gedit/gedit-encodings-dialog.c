@@ -300,9 +300,26 @@ append_encoding (GtkListStore            *liststore,
 	gtk_list_store_append (liststore, &iter);
 	gtk_list_store_set (liststore, &iter,
 			    COLUMN_NAME, gtk_source_encoding_get_name (encoding),
-			    COLUMN_CHARSET, gtk_source_encoding_get_charset (encoding),
 			    COLUMN_ENCODING, encoding,
 			    -1);
+
+	if (encoding == gtk_source_encoding_get_current ())
+	{
+		gchar *charset = g_strdup_printf (_("%s (Current Locale)"),
+						  gtk_source_encoding_get_charset (encoding));
+
+		gtk_list_store_set (liststore, &iter,
+				    COLUMN_CHARSET, charset,
+				    -1);
+
+		g_free (charset);
+	}
+	else
+	{
+		gtk_list_store_set (liststore, &iter,
+				    COLUMN_CHARSET, gtk_source_encoding_get_charset (encoding),
+				    -1);
+	}
 }
 
 /* Removes all @paths from @orig, and append them at the end of @dest in the
