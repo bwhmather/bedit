@@ -300,6 +300,11 @@ gedit_document_begin_user_action (GtkTextBuffer *buffer)
 	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
 
 	++doc->priv->user_action;
+
+	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->begin_user_action != NULL)
+	{
+		GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->begin_user_action (buffer);
+	}
 }
 
 static void
@@ -308,6 +313,11 @@ gedit_document_end_user_action (GtkTextBuffer *buffer)
 	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
 
 	--doc->priv->user_action;
+
+	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->end_user_action != NULL)
+	{
+		GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->end_user_action (buffer);
+	}
 }
 
 static void
