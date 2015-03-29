@@ -33,7 +33,6 @@
 #include "gedit-app.h"
 #include "gedit-view.h"
 #include "gedit-window.h"
-#include "gedit-utils.h"
 
 #define GEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE "disable-command-line"
 #define GEDIT_SETTINGS_LOCKDOWN_PRINTING "disable-printing"
@@ -510,10 +509,32 @@ strv_is_empty (gchar **strv)
 	return FALSE;
 }
 
+static GSList *
+encoding_strv_to_list (const gchar * const *encoding_strv)
+{
+	GSList *list = NULL;
+	gchar **p;
+
+	for (p = (gchar **)encoding_strv; p != NULL && *p != NULL; p++)
+	{
+		const gchar *charset = *p;
+		const GtkSourceEncoding *encoding;
+
+		encoding = gtk_source_encoding_get_from_charset (charset);
+
+		if (encoding != NULL &&
+		    g_slist_find (list, encoding) == NULL)
+		{
+			list = g_slist_prepend (list, (gpointer)encoding);
+		}
+	}
+
+	return g_slist_reverse (list);
+}
+
 /* Take in priority the candidate encodings from GSettings. If the gsetting is
  * empty, take the default candidates of GtkSourceEncoding.
  * Also, ensure that UTF-8 and the current locale encoding are present.
- * TODO remove duplicates.
  * Returns: a list of GtkSourceEncodings. Free with g_slist_free().
  */
 GSList *
@@ -538,7 +559,7 @@ gedit_settings_get_candidate_encodings (void)
 	}
 	else
 	{
-		candidates = _gedit_utils_encoding_strv_to_list ((const gchar * const *)settings_strv);
+		candidates = encoding_strv_to_list ((const gchar * const *) settings_strv);
 
 		/* Ensure that UTF-8 is present. */
 		if (utf8_encoding != current_encoding &&

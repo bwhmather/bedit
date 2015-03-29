@@ -23,7 +23,6 @@
 #include <glib/gi18n.h>
 
 #include "gedit-settings.h"
-#include "gedit-utils.h"
 
 struct _GeditEncodingItem
 {

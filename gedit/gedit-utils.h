@@ -131,11 +131,6 @@ gchar           *gedit_utils_set_direct_save_filename	(GdkDragContext *context);
 
 const gchar     *gedit_utils_newline_type_to_string	(GtkSourceNewlineType newline_type);
 
-/* Private */
-GSList		*_gedit_utils_encoding_strv_to_list	(const gchar * const *enc_str);
-
-gchar	       **_gedit_utils_encoding_list_to_strv	(const GSList *enc_list);
-
 G_END_DECLS
 
 #endif /* __GEDIT_UTILS_H__ */

@@ -29,7 +29,6 @@
 #include <glib/gi18n.h>
 #include <gtksourceview/gtksource.h>
 
-#include "gedit-utils.h"
 #include "gedit-settings.h"
 
 struct _GeditEncodingsDialogPrivate
@@ -98,6 +97,29 @@ get_chosen_encodings_list (GeditEncodingsDialog *dialog)
 	return g_slist_reverse (ret);
 }
 
+static gchar **
+encoding_list_to_strv (const GSList *enc_list)
+{
+	GSList *l;
+	GPtrArray *array;
+
+	array = g_ptr_array_sized_new (g_slist_length ((GSList *)enc_list) + 1);
+
+	for (l = (GSList *)enc_list; l != NULL; l = l->next)
+	{
+		const GtkSourceEncoding *enc = l->data;
+		const gchar *charset = gtk_source_encoding_get_charset (enc);
+
+		g_return_val_if_fail (charset != NULL, NULL);
+
+		g_ptr_array_add (array, g_strdup (charset));
+	}
+
+	g_ptr_array_add (array, NULL);
+
+	return (gchar **)g_ptr_array_free (array, FALSE);
+}
+
 static void
 gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
                                  gint       response_id)
@@ -118,7 +140,7 @@ gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
 		gchar **enc_strv;
 
 		enc_list = get_chosen_encodings_list (dialog);
-		enc_strv = _gedit_utils_encoding_list_to_strv (enc_list);
+		enc_strv = encoding_list_to_strv (enc_list);
 
 		g_settings_set_strv (dialog->priv->enc_settings,
 				     GEDIT_SETTINGS_CANDIDATE_ENCODINGS,
