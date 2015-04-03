@@ -442,26 +442,36 @@ static void
 do_replace_all (GeditReplaceDialog *dialog,
 		GeditWindow        *window)
 {
-	GeditDocument *doc;
+	GeditView *view;
 	GtkSourceSearchContext *search_context;
+	GtkTextBuffer *buffer;
+	GtkSourceCompletion *completion;
 	const gchar *replace_entry_text;
 	gchar *unescaped_replace_text;
 	gint count;
 	GError *error = NULL;
 
-	doc = gedit_window_get_active_document (window);
+	view = gedit_window_get_active_view (window);
 
-	if (doc == NULL)
+	if (view == NULL)
 	{
 		return;
 	}
 
-	search_context = gedit_document_get_search_context (doc);
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+
+	search_context = gedit_document_get_search_context (GTK_SOURCE_BUFFER (buffer));
 
 	if (search_context == NULL)
 	{
 		return;
 	}
+
+	/* FIXME: this should really be done automatically in gtksoureview, but
+	 * it is an important performance fix, so let's do it here for now.
+	 */
+	completion = gtk_source_view_get_completion (GTK_SOURCE_VIEW (view));
+	gtk_source_completion_block_interactive (completion);
 
 	/* replace text may be "", we just delete all occurrences */
 	replace_entry_text = gedit_replace_dialog_get_replace_text (dialog);
@@ -475,6 +485,8 @@ do_replace_all (GeditReplaceDialog *dialog,
 						       &error);
 
 	g_free (unescaped_replace_text);
+
+	gtk_source_completion_unblock_interactive (completion);
 
 	if (count > 0)
 	{
