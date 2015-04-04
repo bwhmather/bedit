@@ -146,7 +146,7 @@ gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
 				     "gedit",
 				     NULL);
 	}
-	else if (response_id == GTK_RESPONSE_OK &&
+	else if (response_id == GTK_RESPONSE_CLOSE &&
 		 dialog->priv->modified)
 	{
 		GSList *enc_list;
@@ -663,7 +663,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 
 	gtk_widget_init_template (GTK_WIDGET (dialog));
 
-	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
 
 	init_liststores (dialog);
 
