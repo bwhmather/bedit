@@ -38,5 +38,5 @@ CLEANFILES +=				\
 EXTRA_DIST +=									\
 	$(plugin_in_files)							\
 	$(dist_plugin_in_files)							\
-	$(plugin_gsettings_SCHEMAS:%.gschema.xml=%.gschema.xml.in.in)		\
-	$(dist_plugin_gsettings_SCHEMAS:%.gschema.xml=%.gschema.xml.in.in)
+	$(plugin_gsettings_SCHEMAS:%.gschema.xml=%.gschema.xml.in)		\
+	$(dist_plugin_gsettings_SCHEMAS:%.gschema.xml=%.gschema.xml.in)
