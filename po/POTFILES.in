@@ -54,7 +54,7 @@ gedit/gedit-window.c
 [type: gettext/glade]gedit/resources/ui/gedit-window.ui
 plugins/checkupdate/checkupdate.plugin.desktop.in
 plugins/checkupdate/gedit-check-update-plugin.c
-plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in
+[type: gettext/gsettings]plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in
 plugins/docinfo/docinfo.plugin.desktop.in
 plugins/docinfo/gedit-docinfo-plugin.c
 [type: gettext/glade]plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui
@@ -65,7 +65,7 @@ plugins/externaltools/data/remove-trailing-spaces.desktop.in
 plugins/externaltools/data/run-command.desktop.in
 plugins/externaltools/data/send-to-fpaste.desktop.in
 plugins/externaltools/externaltools.plugin.desktop.in
-plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in
+[type: gettext/gsettings]plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in
 plugins/externaltools/tools/appactivatable.py
 plugins/externaltools/tools/capture.py
 plugins/externaltools/tools/functions.py
@@ -82,11 +82,11 @@ plugins/filebrowser/gedit-file-browser-store.c
 plugins/filebrowser/gedit-file-browser-utils.c
 plugins/filebrowser/gedit-file-browser-view.c
 plugins/filebrowser/gedit-file-browser-widget.c
-plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in
+[type: gettext/gsettings]plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in
 [type: gettext/glade]plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui
 [type: gettext/glade]plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui
 plugins/modelines/modelines.plugin.desktop.in
-plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in
+[type: gettext/gsettings]plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in
 [type: gettext/glade]plugins/pythonconsole/pythonconsole/config.ui
 plugins/pythonconsole/pythonconsole/__init__.py
 plugins/pythonconsole/pythonconsole.plugin.desktop.in
@@ -116,7 +116,7 @@ plugins/spell/gedit-spell-plugin.c
 [type: gettext/glade]plugins/spell/resources/ui/spell-checker.ui
 plugins/spell/spell.plugin.desktop.in
 plugins/time/gedit-time-plugin.c
-plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in
+[type: gettext/gsettings]plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in
 [type: gettext/glade]plugins/time/resources/ui/gedit-time-dialog.ui
 [type: gettext/glade]plugins/time/resources/ui/gedit-time-setup-dialog.ui
 plugins/time/time.plugin.desktop.in

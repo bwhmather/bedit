@@ -464,11 +464,11 @@ docs/Makefile
 docs/reference/Makefile
 help/Makefile
 libgd/Makefile
-plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in
-plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in
-plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in
-plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in
-plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in
+plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml
+plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml
+plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml
+plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml
+plugins/time/org.gnome.gedit.plugins.time.gschema.xml
 po/Makefile.in
 osx/bundle/data/Info.plist])
 
