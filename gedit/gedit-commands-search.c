@@ -460,7 +460,7 @@ do_replace_all (GeditReplaceDialog *dialog,
 
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
-	search_context = gedit_document_get_search_context (GTK_SOURCE_BUFFER (buffer));
+	search_context = gedit_document_get_search_context (GEDIT_DOCUMENT (buffer));
 
 	if (search_context == NULL)
 	{
