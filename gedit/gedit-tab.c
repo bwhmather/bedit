@@ -1953,7 +1953,7 @@ get_candidate_encodings (GeditTab *tab)
 	gchar *metadata_charset;
 	const GtkSourceEncoding *file_encoding;
 
-	candidates = gedit_settings_get_candidate_encodings ();
+	candidates = gedit_settings_get_candidate_encodings (NULL);
 
 	/* Prepend the encoding stored in the metadata. */
 	doc = gedit_tab_get_document (tab);

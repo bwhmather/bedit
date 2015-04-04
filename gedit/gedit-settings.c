@@ -538,7 +538,7 @@ encoding_strv_to_list (const gchar * const *encoding_strv)
  * Returns: a list of GtkSourceEncodings. Free with g_slist_free().
  */
 GSList *
-gedit_settings_get_candidate_encodings (void)
+gedit_settings_get_candidate_encodings (gboolean *default_candidates)
 {
 	const GtkSourceEncoding *utf8_encoding;
 	const GtkSourceEncoding *current_encoding;
@@ -555,10 +555,20 @@ gedit_settings_get_candidate_encodings (void)
 
 	if (strv_is_empty (settings_strv))
 	{
+		if (default_candidates != NULL)
+		{
+			*default_candidates = TRUE;
+		}
+
 		candidates = gtk_source_encoding_get_default_candidates ();
 	}
 	else
 	{
+		if (default_candidates != NULL)
+		{
+			*default_candidates = FALSE;
+		}
+
 		candidates = encoding_strv_to_list ((const gchar * const *) settings_strv);
 
 		/* Ensure that UTF-8 is present. */

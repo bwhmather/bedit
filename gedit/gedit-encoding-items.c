@@ -78,7 +78,7 @@ gedit_encoding_items_get (void)
 	GSList *items = NULL;
 	GSList *l;
 
-	encodings = gedit_settings_get_candidate_encodings ();
+	encodings = gedit_settings_get_candidate_encodings (NULL);
 
 	current_encoding = gtk_source_encoding_get_current ();
 

@@ -47,6 +47,7 @@ struct _GeditEncodingsDialogPrivate
 	GtkWidget *remove_button;
 	GtkWidget *up_button;
 	GtkWidget *down_button;
+	GtkWidget *reset_button;
 
 	guint modified : 1;
 };
@@ -60,6 +61,18 @@ enum
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditEncodingsDialog, gedit_encodings_dialog, GTK_TYPE_DIALOG)
+
+static void
+set_modified (GeditEncodingsDialog *dialog,
+	      gboolean              modified)
+{
+	dialog->priv->modified = modified;
+
+	if (modified)
+	{
+		gtk_widget_set_sensitive (dialog->priv->reset_button, TRUE);
+	}
+}
 
 static void
 gedit_encodings_dialog_dispose (GObject *object)
@@ -174,7 +187,7 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, remove_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, up_button);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, down_button);
-	gtk_widget_class_bind_template_child_full (widget_class, "reset_button", FALSE, 0);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, reset_button);
 }
 
 static void
@@ -405,7 +418,7 @@ add_button_clicked_cb (GtkWidget            *button,
 			    dialog->priv->liststore_available,
 			    dialog->priv->liststore_chosen);
 
-	dialog->priv->modified = TRUE;
+	set_modified (dialog, TRUE);
 
 	/* For the treeview_available, it's more natural to unselect the added
 	 * encodings.
@@ -475,7 +488,7 @@ remove_button_clicked_cb (GtkWidget            *button,
 			    dialog->priv->liststore_chosen,
 			    dialog->priv->liststore_available);
 
-	dialog->priv->modified = TRUE;
+	set_modified (dialog, TRUE);
 
 	g_list_free (selected_rows);
 	g_list_free_full (to_remove, (GDestroyNotify) gtk_tree_path_free);
@@ -514,7 +527,7 @@ up_button_clicked_cb (GtkWidget            *button,
 				    &iter,
 				    &prev_iter);
 
-	dialog->priv->modified = TRUE;
+	set_modified (dialog, TRUE);
 
 	update_chosen_buttons_sensitivity (dialog);
 
@@ -554,7 +567,7 @@ down_button_clicked_cb (GtkWidget            *button,
 				   &iter,
 				   &next_iter);
 
-	dialog->priv->modified = TRUE;
+	set_modified (dialog, TRUE);
 
 	update_chosen_buttons_sensitivity (dialog);
 
@@ -564,13 +577,16 @@ down_button_clicked_cb (GtkWidget            *button,
 static void
 init_liststores (GeditEncodingsDialog *dialog)
 {
+	gboolean default_candidates;
 	GSList *chosen_encodings;
 	GSList *all_encodings;
 	GSList *l;
 
 	/* Chosen encodings */
 
-	chosen_encodings = gedit_settings_get_candidate_encodings ();
+	chosen_encodings = gedit_settings_get_candidate_encodings (&default_candidates);
+
+	gtk_widget_set_sensitive (dialog->priv->reset_button, !default_candidates);
 
 	for (l = chosen_encodings; l != NULL; l = l->next)
 	{
@@ -593,6 +609,8 @@ init_liststores (GeditEncodingsDialog *dialog)
 		const GtkSourceEncoding *cur_encoding = l->data;
 		append_encoding (dialog->priv->liststore_available, cur_encoding);
 	}
+
+	set_modified (dialog, FALSE);
 
 	g_slist_free (chosen_encodings);
 	g_slist_free (all_encodings);
@@ -629,7 +647,6 @@ reset_button_clicked_cb (GtkWidget            *button,
 		gtk_list_store_clear (dialog->priv->liststore_chosen);
 
 		init_liststores (dialog);
-		dialog->priv->modified = FALSE;
 	}
 
 	gtk_widget_destroy (GTK_WIDGET (msg_dialog));
@@ -639,7 +656,6 @@ static void
 gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 {
 	GtkTreeSelection *selection;
-	GtkButton *reset_button;
 
 	dialog->priv = gedit_encodings_dialog_get_instance_private (dialog);
 
@@ -650,7 +666,6 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 
 	init_liststores (dialog);
-	dialog->priv->modified = FALSE;
 
 	/* Tree view of available encodings */
 
@@ -698,11 +713,7 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 			  G_CALLBACK (down_button_clicked_cb),
 			  dialog);
 
-	reset_button = GTK_BUTTON (gtk_widget_get_template_child (GTK_WIDGET (dialog),
-								  GEDIT_TYPE_ENCODINGS_DIALOG,
-								  "reset_button"));
-
-	g_signal_connect (reset_button,
+	g_signal_connect (dialog->priv->reset_button,
 			  "clicked",
 			  G_CALLBACK (reset_button_clicked_cb),
 			  dialog);
