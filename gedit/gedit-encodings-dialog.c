@@ -31,6 +31,13 @@
 
 #include "gedit-settings.h"
 
+typedef enum _State
+{
+	STATE_UNMODIFIED,
+	STATE_MODIFIED,
+	STATE_RESET
+} State;
+
 struct _GeditEncodingsDialogPrivate
 {
 	GSettings *enc_settings;
@@ -50,7 +57,7 @@ struct _GeditEncodingsDialogPrivate
 	GtkWidget *up_button;
 	GtkWidget *down_button;
 
-	guint modified : 1;
+	State state;
 };
 
 enum
@@ -64,29 +71,124 @@ enum
 G_DEFINE_TYPE_WITH_PRIVATE (GeditEncodingsDialog, gedit_encodings_dialog, GTK_TYPE_DIALOG)
 
 static void
-set_modified (GeditEncodingsDialog *dialog,
-	      gboolean              modified)
+set_modified (GeditEncodingsDialog *dialog)
 {
-	dialog->priv->modified = modified;
+	dialog->priv->state = STATE_MODIFIED;
+	gtk_widget_set_sensitive (dialog->priv->reset_button, TRUE);
+}
 
-	if (modified)
+static void
+append_encoding (GtkListStore            *liststore,
+		 const GtkSourceEncoding *encoding)
+{
+	GtkTreeIter iter;
+
+	gtk_list_store_append (liststore, &iter);
+	gtk_list_store_set (liststore, &iter,
+			    COLUMN_NAME, gtk_source_encoding_get_name (encoding),
+			    COLUMN_ENCODING, encoding,
+			    -1);
+
+	if (encoding == gtk_source_encoding_get_current ())
 	{
-		gtk_widget_set_sensitive (dialog->priv->reset_button, TRUE);
+		gchar *charset = g_strdup_printf (_("%s (Current Locale)"),
+						  gtk_source_encoding_get_charset (encoding));
+
+		gtk_list_store_set (liststore, &iter,
+				    COLUMN_CHARSET, charset,
+				    -1);
+
+		g_free (charset);
+	}
+	else
+	{
+		gtk_list_store_set (liststore, &iter,
+				    COLUMN_CHARSET, gtk_source_encoding_get_charset (encoding),
+				    -1);
 	}
 }
 
 static void
-gedit_encodings_dialog_dispose (GObject *object)
+init_liststores (GeditEncodingsDialog *dialog,
+		 gboolean              reset)
 {
-	GeditEncodingsDialogPrivate *priv = GEDIT_ENCODINGS_DIALOG (object)->priv;
+	gboolean default_candidates;
+	GSList *chosen_encodings;
+	GSList *all_encodings;
+	GSList *l;
 
-	g_clear_object (&priv->enc_settings);
-	g_clear_object (&priv->add_button);
-	g_clear_object (&priv->remove_button);
-	g_clear_object (&priv->up_button);
-	g_clear_object (&priv->down_button);
+	/* Chosen encodings */
 
-	G_OBJECT_CLASS (gedit_encodings_dialog_parent_class)->dispose (object);
+	if (reset)
+	{
+		chosen_encodings = gtk_source_encoding_get_default_candidates ();
+		default_candidates = TRUE;
+	}
+	else
+	{
+		chosen_encodings = gedit_settings_get_candidate_encodings (&default_candidates);
+	}
+
+	gtk_widget_set_sensitive (dialog->priv->reset_button, !default_candidates);
+
+	for (l = chosen_encodings; l != NULL; l = l->next)
+	{
+		const GtkSourceEncoding *cur_encoding = l->data;
+		append_encoding (dialog->priv->liststore_chosen, cur_encoding);
+	}
+
+	/* Available encodings */
+
+	all_encodings = gtk_source_encoding_get_all ();
+
+	for (l = chosen_encodings; l != NULL; l = l->next)
+	{
+		const GtkSourceEncoding *chosen_encoding = l->data;
+		all_encodings = g_slist_remove (all_encodings, chosen_encoding);
+	}
+
+	for (l = all_encodings; l != NULL; l = l->next)
+	{
+		const GtkSourceEncoding *cur_encoding = l->data;
+		append_encoding (dialog->priv->liststore_available, cur_encoding);
+	}
+
+	g_slist_free (chosen_encodings);
+	g_slist_free (all_encodings);
+}
+
+static void
+reset_encodings (GeditEncodingsDialog *dialog)
+{
+	GtkDialog *msg_dialog;
+	gint response;
+
+	msg_dialog = GTK_DIALOG (gtk_message_dialog_new (GTK_WINDOW (dialog),
+							 GTK_DIALOG_DESTROY_WITH_PARENT |
+							 GTK_DIALOG_MODAL,
+							 GTK_MESSAGE_QUESTION,
+							 GTK_BUTTONS_NONE,
+							 "%s",
+							 _("Do you really want to reset the "
+							   "character encodings' preferences?")));
+
+	gtk_dialog_add_buttons (msg_dialog,
+				_("_Cancel"), GTK_RESPONSE_CANCEL,
+				_("_Reset"), GTK_RESPONSE_ACCEPT,
+				NULL);
+
+	response = gtk_dialog_run (msg_dialog);
+
+	if (response == GTK_RESPONSE_ACCEPT)
+	{
+		gtk_list_store_clear (dialog->priv->liststore_available);
+		gtk_list_store_clear (dialog->priv->liststore_chosen);
+
+		init_liststores (dialog, TRUE);
+		dialog->priv->state = STATE_RESET;
+	}
+
+	gtk_widget_destroy (GTK_WIDGET (msg_dialog));
 }
 
 static GSList *
@@ -139,26 +241,77 @@ encoding_list_to_strv (const GSList *enc_list)
 }
 
 static void
+apply_settings (GeditEncodingsDialog *dialog)
+{
+	switch (dialog->priv->state)
+	{
+		case STATE_MODIFIED:
+		{
+			GSList *enc_list;
+			gchar **enc_strv;
+
+			enc_list = get_chosen_encodings_list (dialog);
+			enc_strv = encoding_list_to_strv (enc_list);
+
+			g_settings_set_strv (dialog->priv->enc_settings,
+					     GEDIT_SETTINGS_CANDIDATE_ENCODINGS,
+					     (const gchar * const *)enc_strv);
+
+			g_slist_free (enc_list);
+			g_strfreev (enc_strv);
+			break;
+		}
+
+		case STATE_RESET:
+			g_settings_reset (dialog->priv->enc_settings,
+					  GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
+			break;
+
+		case STATE_UNMODIFIED:
+			/* Do nothing. */
+			break;
+
+		default:
+			g_assert_not_reached ();
+
+	}
+}
+
+static void
 gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
                                  gint       response_id)
 {
 	GeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG (gtk_dialog);
 
-	if (dialog->priv->modified)
+	switch (response_id)
 	{
-		GSList *enc_list;
-		gchar **enc_strv;
+		case GEDIT_ENCODINGS_DIALOG_RESPONSE_RESET:
+			reset_encodings (dialog);
+			break;
 
-		enc_list = get_chosen_encodings_list (dialog);
-		enc_strv = encoding_list_to_strv (enc_list);
+		case GTK_RESPONSE_APPLY:
+			apply_settings (dialog);
+			break;
 
-		g_settings_set_strv (dialog->priv->enc_settings,
-				     GEDIT_SETTINGS_CANDIDATE_ENCODINGS,
-				     (const gchar * const *)enc_strv);
-
-		g_slist_free (enc_list);
-		g_strfreev (enc_strv);
+		case GTK_RESPONSE_CANCEL:
+		default:
+			/* Do nothing */
+			break;
 	}
+}
+
+static void
+gedit_encodings_dialog_dispose (GObject *object)
+{
+	GeditEncodingsDialogPrivate *priv = GEDIT_ENCODINGS_DIALOG (object)->priv;
+
+	g_clear_object (&priv->enc_settings);
+	g_clear_object (&priv->add_button);
+	g_clear_object (&priv->remove_button);
+	g_clear_object (&priv->up_button);
+	g_clear_object (&priv->down_button);
+
+	G_OBJECT_CLASS (gedit_encodings_dialog_parent_class)->dispose (object);
 }
 
 static void
@@ -301,37 +454,6 @@ update_chosen_buttons_sensitivity (GeditEncodingsDialog *dialog)
 	update_up_down_buttons_sensitivity (dialog);
 }
 
-static void
-append_encoding (GtkListStore            *liststore,
-		 const GtkSourceEncoding *encoding)
-{
-	GtkTreeIter iter;
-
-	gtk_list_store_append (liststore, &iter);
-	gtk_list_store_set (liststore, &iter,
-			    COLUMN_NAME, gtk_source_encoding_get_name (encoding),
-			    COLUMN_ENCODING, encoding,
-			    -1);
-
-	if (encoding == gtk_source_encoding_get_current ())
-	{
-		gchar *charset = g_strdup_printf (_("%s (Current Locale)"),
-						  gtk_source_encoding_get_charset (encoding));
-
-		gtk_list_store_set (liststore, &iter,
-				    COLUMN_CHARSET, charset,
-				    -1);
-
-		g_free (charset);
-	}
-	else
-	{
-		gtk_list_store_set (liststore, &iter,
-				    COLUMN_CHARSET, gtk_source_encoding_get_charset (encoding),
-				    -1);
-	}
-}
-
 /* Removes all @paths from @orig, and append them at the end of @dest in the
  * same order.
  */
@@ -415,7 +537,7 @@ add_button_clicked_cb (GtkWidget            *button,
 			    dialog->priv->liststore_available,
 			    dialog->priv->liststore_chosen);
 
-	set_modified (dialog, TRUE);
+	set_modified (dialog);
 
 	/* For the treeview_available, it's more natural to unselect the added
 	 * encodings.
@@ -485,7 +607,7 @@ remove_button_clicked_cb (GtkWidget            *button,
 			    dialog->priv->liststore_chosen,
 			    dialog->priv->liststore_available);
 
-	set_modified (dialog, TRUE);
+	set_modified (dialog);
 
 	g_list_free (selected_rows);
 	g_list_free_full (to_remove, (GDestroyNotify) gtk_tree_path_free);
@@ -524,7 +646,7 @@ up_button_clicked_cb (GtkWidget            *button,
 				    &iter,
 				    &prev_iter);
 
-	set_modified (dialog, TRUE);
+	set_modified (dialog);
 
 	update_chosen_buttons_sensitivity (dialog);
 
@@ -564,89 +686,11 @@ down_button_clicked_cb (GtkWidget            *button,
 				   &iter,
 				   &next_iter);
 
-	set_modified (dialog, TRUE);
+	set_modified (dialog);
 
 	update_chosen_buttons_sensitivity (dialog);
 
 	g_list_free_full (selected_rows, (GDestroyNotify) gtk_tree_path_free);
-}
-
-static void
-init_liststores (GeditEncodingsDialog *dialog)
-{
-	gboolean default_candidates;
-	GSList *chosen_encodings;
-	GSList *all_encodings;
-	GSList *l;
-
-	/* Chosen encodings */
-
-	chosen_encodings = gedit_settings_get_candidate_encodings (&default_candidates);
-
-	gtk_widget_set_sensitive (dialog->priv->reset_button, !default_candidates);
-
-	for (l = chosen_encodings; l != NULL; l = l->next)
-	{
-		const GtkSourceEncoding *cur_encoding = l->data;
-		append_encoding (dialog->priv->liststore_chosen, cur_encoding);
-	}
-
-	/* Available encodings */
-
-	all_encodings = gtk_source_encoding_get_all ();
-
-	for (l = chosen_encodings; l != NULL; l = l->next)
-	{
-		const GtkSourceEncoding *chosen_encoding = l->data;
-		all_encodings = g_slist_remove (all_encodings, chosen_encoding);
-	}
-
-	for (l = all_encodings; l != NULL; l = l->next)
-	{
-		const GtkSourceEncoding *cur_encoding = l->data;
-		append_encoding (dialog->priv->liststore_available, cur_encoding);
-	}
-
-	set_modified (dialog, FALSE);
-
-	g_slist_free (chosen_encodings);
-	g_slist_free (all_encodings);
-}
-
-static void
-reset_button_clicked_cb (GtkWidget            *button,
-			 GeditEncodingsDialog *dialog)
-{
-	GtkDialog *msg_dialog;
-	gint response;
-
-	msg_dialog = GTK_DIALOG (gtk_message_dialog_new (GTK_WINDOW (dialog),
-							 GTK_DIALOG_DESTROY_WITH_PARENT |
-							 GTK_DIALOG_MODAL,
-							 GTK_MESSAGE_QUESTION,
-							 GTK_BUTTONS_NONE,
-							 "%s",
-							 _("Do you really want to reset the "
-							   "character encodings' preferences?")));
-
-	gtk_dialog_add_buttons (msg_dialog,
-				_("_Cancel"), GTK_RESPONSE_CANCEL,
-				_("_Reset"), GTK_RESPONSE_ACCEPT,
-				NULL);
-
-	response = gtk_dialog_run (msg_dialog);
-
-	if (response == GTK_RESPONSE_ACCEPT)
-	{
-		g_settings_reset (dialog->priv->enc_settings, GEDIT_SETTINGS_CANDIDATE_ENCODINGS);
-
-		gtk_list_store_clear (dialog->priv->liststore_available);
-		gtk_list_store_clear (dialog->priv->liststore_chosen);
-
-		init_liststores (dialog);
-	}
-
-	gtk_widget_destroy (GTK_WIDGET (msg_dialog));
 }
 
 static void
@@ -793,16 +837,11 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 
 	init_toolbar_available (dialog);
 	init_toolbar_chosen (dialog);
-	init_liststores (dialog);
+	init_liststores (dialog, FALSE);
+	dialog->priv->state = STATE_UNMODIFIED;
 
-	/* Reset button */
 	context = gtk_widget_get_style_context (dialog->priv->reset_button);
 	gtk_style_context_add_class (context, GTK_STYLE_CLASS_DESTRUCTIVE_ACTION);
-
-	g_signal_connect (dialog->priv->reset_button,
-			  "clicked",
-			  G_CALLBACK (reset_button_clicked_cb),
-			  dialog);
 
 	/* Available encodings */
 	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dialog->priv->sort_available),

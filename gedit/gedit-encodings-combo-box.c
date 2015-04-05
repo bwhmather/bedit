@@ -169,8 +169,11 @@ dialog_response_cb (GtkDialog              *dialog,
                     gint                    response_id,
                     GeditEncodingsComboBox *menu)
 {
-	update_menu (menu);
-	gtk_widget_destroy (GTK_WIDGET (dialog));
+	if (response_id != GEDIT_ENCODINGS_DIALOG_RESPONSE_RESET)
+	{
+		update_menu (menu);
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+	}
 }
 
 static void
