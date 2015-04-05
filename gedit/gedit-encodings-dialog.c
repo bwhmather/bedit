@@ -144,15 +144,7 @@ gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
 {
 	GeditEncodingsDialog *dialog = GEDIT_ENCODINGS_DIALOG (gtk_dialog);
 
-	if (response_id == GTK_RESPONSE_HELP)
-	{
-		gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
-				     GTK_WINDOW (dialog),
-				     "gedit",
-				     NULL);
-	}
-	else if (response_id == GTK_RESPONSE_CLOSE &&
-		 dialog->priv->modified)
+	if (dialog->priv->modified)
 	{
 		GSList *enc_list;
 		gchar **enc_strv;
