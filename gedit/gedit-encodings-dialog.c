@@ -42,8 +42,6 @@ struct _GeditEncodingsDialogPrivate
 {
 	GSettings *enc_settings;
 
-	GtkWidget *reset_button;
-
 	/* Available encodings */
 	GtkListStore *liststore_available;
 	GtkTreeModelSort *sort_available;
@@ -56,6 +54,7 @@ struct _GeditEncodingsDialogPrivate
 	GtkWidget *remove_button;
 	GtkWidget *up_button;
 	GtkWidget *down_button;
+	GtkWidget *reset_button;
 
 	State state;
 };
@@ -158,7 +157,8 @@ init_liststores (GeditEncodingsDialog *dialog,
 }
 
 static void
-reset_encodings (GeditEncodingsDialog *dialog)
+reset_button_clicked_cb (GtkWidget            *button,
+			 GeditEncodingsDialog *dialog)
 {
 	GtkDialog *msg_dialog;
 	gint response;
@@ -285,10 +285,6 @@ gedit_encodings_dialog_response (GtkDialog *gtk_dialog,
 
 	switch (response_id)
 	{
-		case GEDIT_ENCODINGS_DIALOG_RESPONSE_RESET:
-			reset_encodings (dialog);
-			break;
-
 		case GTK_RESPONSE_APPLY:
 			apply_settings (dialog);
 			break;
@@ -310,6 +306,7 @@ gedit_encodings_dialog_dispose (GObject *object)
 	g_clear_object (&priv->remove_button);
 	g_clear_object (&priv->up_button);
 	g_clear_object (&priv->down_button);
+	g_clear_object (&priv->reset_button);
 
 	G_OBJECT_CLASS (gedit_encodings_dialog_parent_class)->dispose (object);
 }
@@ -333,7 +330,6 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, sort_available);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, treeview_available);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, treeview_chosen);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, reset_button);
 	gtk_widget_class_bind_template_child_full (widget_class, "scrolledwindow_available", FALSE, 0);
 	gtk_widget_class_bind_template_child_full (widget_class, "scrolledwindow_chosen", FALSE, 0);
 	gtk_widget_class_bind_template_child_full (widget_class, "toolbar_available", FALSE, 0);
@@ -744,6 +740,11 @@ init_toolbar_chosen (GeditEncodingsDialog *dialog)
 	GtkWidget *scrolled_window;
 	GtkToolbar *toolbar;
 	GtkStyleContext *context;
+	GtkWidget *left_box;
+	GtkWidget *right_box;
+	GtkToolItem *left_group;
+	GtkToolItem *right_group;
+	GtkToolItem *separator;
 
 	scrolled_window = GTK_WIDGET (gtk_widget_get_template_child (GTK_WIDGET (dialog),
 								     GEDIT_TYPE_ENCODINGS_DIALOG,
@@ -761,18 +762,11 @@ init_toolbar_chosen (GeditEncodingsDialog *dialog)
 	gtk_style_context_add_class (context, GTK_STYLE_CLASS_INLINE_TOOLBAR);
 
 	/* Remove button */
-	dialog->priv->remove_button = GTK_WIDGET (gtk_tool_button_new (NULL, NULL));
+	dialog->priv->remove_button = gtk_button_new_from_icon_name ("list-remove-symbolic",
+								     GTK_ICON_SIZE_SMALL_TOOLBAR);
 	g_object_ref_sink (dialog->priv->remove_button);
 
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (dialog->priv->remove_button),
-				       "list-remove-symbolic");
-
-	gtk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (dialog->priv->remove_button),
-					_("Remove"));
-
-	gtk_toolbar_insert (toolbar,
-			    GTK_TOOL_ITEM (dialog->priv->remove_button),
-			    -1);
+	gtk_widget_set_tooltip_text (dialog->priv->remove_button, _("Remove"));
 
 	g_signal_connect_object (dialog->priv->remove_button,
 				 "clicked",
@@ -781,18 +775,12 @@ init_toolbar_chosen (GeditEncodingsDialog *dialog)
 				 0);
 
 	/* Up button */
-	dialog->priv->up_button = GTK_WIDGET (gtk_tool_button_new (NULL, NULL));
+	dialog->priv->up_button = gtk_button_new_from_icon_name ("go-up-symbolic",
+								 GTK_ICON_SIZE_SMALL_TOOLBAR);
 	g_object_ref_sink (dialog->priv->up_button);
 
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (dialog->priv->up_button),
-				       "go-up-symbolic");
-
-	gtk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (dialog->priv->up_button),
-					_("Move to a higher priority"));
-
-	gtk_toolbar_insert (toolbar,
-			    GTK_TOOL_ITEM (dialog->priv->up_button),
-			    -1);
+	gtk_widget_set_tooltip_text (dialog->priv->up_button,
+				     _("Move to a higher priority"));
 
 	g_signal_connect_object (dialog->priv->up_button,
 				 "clicked",
@@ -801,18 +789,12 @@ init_toolbar_chosen (GeditEncodingsDialog *dialog)
 				 0);
 
 	/* Down button */
-	dialog->priv->down_button = GTK_WIDGET (gtk_tool_button_new (NULL, NULL));
+	dialog->priv->down_button = gtk_button_new_from_icon_name ("go-down-symbolic",
+								   GTK_ICON_SIZE_SMALL_TOOLBAR);
 	g_object_ref_sink (dialog->priv->down_button);
 
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (dialog->priv->down_button),
-				       "go-down-symbolic");
-
-	gtk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (dialog->priv->down_button),
-					_("Move to a lower priority"));
-
-	gtk_toolbar_insert (toolbar,
-			    GTK_TOOL_ITEM (dialog->priv->down_button),
-			    -1);
+	gtk_widget_set_tooltip_text (dialog->priv->down_button,
+				     _("Move to a lower priority"));
 
 	g_signal_connect_object (dialog->priv->down_button,
 				 "clicked",
@@ -820,13 +802,44 @@ init_toolbar_chosen (GeditEncodingsDialog *dialog)
 				 dialog,
 				 0);
 
+	/* Left group (with a trick for rounded borders) */
+	left_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	left_group = gtk_tool_item_new ();
+	gtk_box_pack_start (GTK_BOX (left_box), dialog->priv->remove_button, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (left_box), dialog->priv->up_button, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (left_box), dialog->priv->down_button, FALSE, FALSE, 0);
+	gtk_container_add (GTK_CONTAINER (left_group), left_box);
+	gtk_toolbar_insert (toolbar, left_group, -1);
+
+	/* Separator */
+	separator = gtk_separator_tool_item_new ();
+	gtk_separator_tool_item_set_draw (GTK_SEPARATOR_TOOL_ITEM (separator), FALSE);
+	gtk_tool_item_set_expand (separator, TRUE);
+	gtk_toolbar_insert (toolbar, separator, -1);
+
+	/* Reset button */
+	dialog->priv->reset_button = gtk_button_new_with_mnemonic (_("_Reset"));
+	g_object_ref_sink (dialog->priv->reset_button);
+
+	g_signal_connect_object (dialog->priv->reset_button,
+				 "clicked",
+				 G_CALLBACK (reset_button_clicked_cb),
+				 dialog,
+				 0);
+
+	/* Right group */
+	right_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+	right_group = gtk_tool_item_new ();
+	gtk_box_pack_start (GTK_BOX (right_box), dialog->priv->reset_button, FALSE, FALSE, 0);
+	gtk_container_add (GTK_CONTAINER (right_group), right_box);
+	gtk_toolbar_insert (toolbar, right_group, -1);
+
 	gtk_widget_show_all (GTK_WIDGET (toolbar));
 }
 
 static void
 gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 {
-	GtkStyleContext *context;
 	GtkTreeSelection *selection;
 
 	dialog->priv = gedit_encodings_dialog_get_instance_private (dialog);
@@ -839,9 +852,6 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 	init_toolbar_chosen (dialog);
 	init_liststores (dialog, FALSE);
 	dialog->priv->state = STATE_UNMODIFIED;
-
-	context = gtk_widget_get_style_context (dialog->priv->reset_button);
-	gtk_style_context_add_class (context, GTK_STYLE_CLASS_DESTRUCTIVE_ACTION);
 
 	/* Available encodings */
 	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dialog->priv->sort_available),

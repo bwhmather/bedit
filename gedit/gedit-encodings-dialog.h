@@ -36,8 +36,6 @@ typedef struct _GeditEncodingsDialog		GeditEncodingsDialog;
 typedef struct _GeditEncodingsDialogClass	GeditEncodingsDialogClass;
 typedef struct _GeditEncodingsDialogPrivate	GeditEncodingsDialogPrivate;
 
-#define GEDIT_ENCODINGS_DIALOG_RESPONSE_RESET	1
-
 struct _GeditEncodingsDialog
 {
 	GtkDialog dialog;

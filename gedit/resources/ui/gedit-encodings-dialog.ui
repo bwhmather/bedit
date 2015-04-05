@@ -40,21 +40,11 @@
         <property name="has_subtitle">False</property>
         <property name="title" translatable="yes">Character Encodings</property>
         <child>
-          <object class="GtkButton" id="reset_button">
-            <property name="label" translatable="yes">_Reset</property>
-            <property name="visible">True</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
           <object class="GtkButton" id="cancel_button">
             <property name="label" translatable="yes">_Cancel</property>
             <property name="visible">True</property>
             <property name="use_underline">True</property>
           </object>
-          <packing>
-            <property name="position">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="apply_button">
@@ -65,7 +55,7 @@
           </object>
           <packing>
             <property name="pack_type">end</property>
-            <property name="position">2</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>
@@ -182,7 +172,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="toolbar_style">icons</property>
-                    <property name="icon_size">1</property>
+                    <property name="icon_size">2</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -257,8 +247,7 @@
                   <object class="GtkToolbar" id="toolbar_chosen">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="toolbar_style">icons</property>
-                    <property name="icon_size">1</property>
+                    <property name="icon_size">2</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -282,7 +271,6 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="1">reset_button</action-widget>
       <action-widget response="cancel">cancel_button</action-widget>
       <action-widget response="apply" default="true">apply_button</action-widget>
     </action-widgets>
