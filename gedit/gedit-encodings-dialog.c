@@ -35,6 +35,8 @@ struct _GeditEncodingsDialogPrivate
 {
 	GSettings *enc_settings;
 
+	GtkWidget *reset_button;
+
 	/* Available encodings */
 	GtkListStore *liststore_available;
 	GtkTreeModelSort *sort_available;
@@ -47,7 +49,6 @@ struct _GeditEncodingsDialogPrivate
 	GtkWidget *remove_button;
 	GtkWidget *up_button;
 	GtkWidget *down_button;
-	GtkWidget *reset_button;
 
 	guint modified : 1;
 };
@@ -84,7 +85,6 @@ gedit_encodings_dialog_dispose (GObject *object)
 	g_clear_object (&priv->remove_button);
 	g_clear_object (&priv->up_button);
 	g_clear_object (&priv->down_button);
-	g_clear_object (&priv->reset_button);
 
 	G_OBJECT_CLASS (gedit_encodings_dialog_parent_class)->dispose (object);
 }
@@ -180,6 +180,7 @@ gedit_encodings_dialog_class_init (GeditEncodingsDialogClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, sort_available);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, treeview_available);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, treeview_chosen);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditEncodingsDialog, reset_button);
 	gtk_widget_class_bind_template_child_full (widget_class, "scrolledwindow_available", FALSE, 0);
 	gtk_widget_class_bind_template_child_full (widget_class, "scrolledwindow_chosen", FALSE, 0);
 	gtk_widget_class_bind_template_child_full (widget_class, "toolbar_available", FALSE, 0);
@@ -775,32 +776,13 @@ init_toolbar_chosen (GeditEncodingsDialog *dialog)
 				 dialog,
 				 0);
 
-	/* Reset button */
-	dialog->priv->reset_button = GTK_WIDGET (gtk_tool_button_new (NULL, NULL));
-	g_object_ref_sink (dialog->priv->reset_button);
-
-	gtk_tool_button_set_icon_name (GTK_TOOL_BUTTON (dialog->priv->reset_button),
-				       "edit-clear-all-symbolic");
-
-	gtk_tool_item_set_tooltip_text (GTK_TOOL_ITEM (dialog->priv->reset_button),
-					_("Reset"));
-
-	gtk_toolbar_insert (toolbar,
-			    GTK_TOOL_ITEM (dialog->priv->reset_button),
-			    -1);
-
-	g_signal_connect_object (dialog->priv->reset_button,
-				 "clicked",
-				 G_CALLBACK (reset_button_clicked_cb),
-				 dialog,
-				 0);
-
 	gtk_widget_show_all (GTK_WIDGET (toolbar));
 }
 
 static void
 gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 {
+	GtkStyleContext *context;
 	GtkTreeSelection *selection;
 
 	dialog->priv = gedit_encodings_dialog_get_instance_private (dialog);
@@ -809,11 +791,18 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 
 	gtk_widget_init_template (GTK_WIDGET (dialog));
 
-	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
-
 	init_toolbar_available (dialog);
 	init_toolbar_chosen (dialog);
 	init_liststores (dialog);
+
+	/* Reset button */
+	context = gtk_widget_get_style_context (dialog->priv->reset_button);
+	gtk_style_context_add_class (context, GTK_STYLE_CLASS_DESTRUCTIVE_ACTION);
+
+	g_signal_connect (dialog->priv->reset_button,
+			  "clicked",
+			  G_CALLBACK (reset_button_clicked_cb),
+			  dialog);
 
 	/* Available encodings */
 	gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (dialog->priv->sort_available),
@@ -843,7 +832,9 @@ gedit_encodings_dialog_init (GeditEncodingsDialog *dialog)
 GtkWidget *
 gedit_encodings_dialog_new (void)
 {
-	return g_object_new (GEDIT_TYPE_ENCODINGS_DIALOG, NULL);
+	return g_object_new (GEDIT_TYPE_ENCODINGS_DIALOG,
+			     "use-header-bar", TRUE,
+			     NULL);
 }
 
 /* ex:set ts=8 noet: */
