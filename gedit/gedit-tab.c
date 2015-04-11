@@ -1232,12 +1232,16 @@ _gedit_tab_set_network_available (GeditTab *tab,
 				  gboolean  enable)
 {
 	GeditDocument *doc;
+	GtkSourceFile *file;
+	GFile *location;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
 	doc = gedit_tab_get_document (tab);
+	file = gedit_document_get_file (doc);
+	location = gtk_source_file_get_location (file);
 
-	if (gedit_document_is_local (doc))
+	if (gedit_document_is_local (doc) || location == NULL)
 	{
 		return;
 	}
@@ -1248,16 +1252,14 @@ _gedit_tab_set_network_available (GeditTab *tab,
 	}
 	else
 	{
-		GtkSourceFile *file = gedit_document_get_file (doc);
-		GFile *location = gtk_source_file_get_location (file);
-		GtkWidget *bar = gedit_network_unavailable_info_bar_new (location);
+		GtkWidget *info_bar = gedit_network_unavailable_info_bar_new (location);
 
-		g_signal_connect (bar,
+		g_signal_connect (info_bar,
 				  "response",
 				  G_CALLBACK (network_available_warning_info_bar_response),
 				  tab);
 
-		set_info_bar (tab, bar, GTK_RESPONSE_CLOSE);
+		set_info_bar (tab, info_bar, GTK_RESPONSE_CLOSE);
 	}
 }
 
