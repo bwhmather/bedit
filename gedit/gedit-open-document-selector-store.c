@@ -182,6 +182,7 @@ get_children_from_dir (GeditOpenDocumentSelectorStore *selector_store,
 	g_return_val_if_fail (G_IS_FILE (dir), NULL);
 
 	file_enum = g_file_enumerate_children (dir,
+	                                       "standard::name,"
 	                                       "standard::type,"
 	                                       "standard::fast-content-type,"
 	                                       "time::access,time::access-usec",
