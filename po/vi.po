@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-03-13 06:07+0000\n"
-"PO-Revision-Date: 2015-03-14 14:38+0700\n"
+"POT-Creation-Date: 2015-04-13 05:21+0000\n"
+"PO-Revision-Date: 2015-04-13 13:51+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
 "Language: vi\n"
@@ -79,7 +79,7 @@ msgstr "Mở tài liệu mới"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
-msgstr "Dùng phông mặc định"
+msgstr "Dùng phông chữ mặc định"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
@@ -95,7 +95,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
 msgid "'Monospace 12'"
-msgstr "“Monospace 12”"
+msgstr "'Monospace 12'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
@@ -161,8 +161,8 @@ msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
 msgstr ""
-"Số tối đa các hành động Hủy bước/Bước lại có thể thực hiện. Dùng “-1” cho số "
-"hành động vô hạn."
+"Số tối đa các hành động Hủy bước/Bước lại có thể thực hiện. Dùng “-1” nếu "
+"muốn không giới hạn số lượng."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid "Line Wrapping Mode"
@@ -424,7 +424,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "'Monospace 9'"
-msgstr "“Monospace 9”"
+msgstr "'Monospace 9'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Body Font for Printing"
@@ -437,7 +437,7 @@ msgstr "Xác định phông dùng khi in phần thân tài liệu."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "'Sans 11'"
-msgstr "“Sans 11”"
+msgstr "'Sans 11'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "Header Font for Printing"
@@ -453,7 +453,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid "'Sans 8'"
-msgstr "“Sans 8”"
+msgstr "'Sans 8'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Line Number Font for Printing"
@@ -467,58 +467,28 @@ msgstr ""
 "Xác định phông dùng in số hiệu dòng. Chỉ có tác dụng nếu tùy chọn “In số "
 "hiệu dòng” khác không."
 
-#. Translators: This is the sorted list of encodings used by gedit
-#. for automatic detection of the file encoding. You may want to customize it adding
-#. encodings that are common in your country, for instance the GB18030 encoding
-#. for the Chinese translation. You may also want to remove the ISO-8859-15 encoding
-#. (covering English and most Western European languages) if you think people
-#. in your country will rarely use it.
-#. "CURRENT" is a magic value used by gedit and it represents the encoding
-#. for the current locale, so please don't translate the "CURRENT" term.
-#. Only recognized encodings are used.
-#. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
-#. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
-msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
-msgstr "['UTF-8', 'CURRENT', 'UTF-16']"
+#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+msgid "Candidate Encodings"
+msgstr "Bảng mã kí tự ứng cử"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
-msgid "Automatically Detected Encodings"
-msgstr "Tự động phát hiện bảng mã"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid ""
-"Sorted list of encodings used by gedit for automatically detecting the "
-"encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
-"recognized encodings are used."
+"List of candidate encodings shown in the Character Encoding menu in the open/"
+"save file chooser. \"CURRENT\" represents the current locale encoding. Only "
+"recognized encodings are used. The default value is the empty list, in which "
+"case gedit will choose good defaults depending on the country and language."
 msgstr ""
-"Danh sách bảng mã đã sắp xếp được sử dụng bởi gedit cho việc phát hiện bảng "
-"mã tự động của tập tin. \"CURRENT\" thể hiện bảng mã được sử dụng hiện tại. "
-"Chỉ những bảng mã có thể nhận dạng được dùng."
+"Liệt kê các bảng mã ký tự ứng cử được hiện trong trình đơn \"Bảng mã ký tự "
+"ứng cử\" trong bộ chọn tập tin mở/lưu. \"CURRENT\" đại diện cho bảng mã miền "
+"địa phương hiện tại. Chỉ những bảng mã nhận ra là được dùng. Giá trị mặc "
+"định là danh sách rỗng, trong trường hợp này gedit sẽ chọn bảng mặc định tốt "
+"nhất phụ thuộc vào ngôn ngữ và quốc gia."
 
-#. Translators: This is the list of encodings shown by default in the Character Encoding
-#. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.h:89
-msgid "['ISO-8859-15']"
-msgstr "['UTF-8']"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.h:90
-msgid "Encodings shown in menu"
-msgstr "Bảng mã hiển thị trong trình đơn"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.h:91
-msgid ""
-"List of encodings shown in the Character Encoding menu in open/save file "
-"selector. Only recognized encodings are used."
-msgstr ""
-"Danh sách các bảng mã được hiển thị ở trình đơn Bảng mã kí tự ở hộp chọn mở/"
-"lưu tập tin. Chỉ những bảng mã có thể nhận dạng được dùng"
-
-#: ../data/org.gnome.gedit.gschema.xml.in.h:92
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Active plugins"
 msgstr "Phần bổ sung đang được dùng"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:93
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -526,58 +496,58 @@ msgstr ""
 "Danh sách các bổ sung còn hoạt động. Nó chứa “Vị trí” của các bổ sung đó. "
 "Hãy xem tập tin “.gedit-plugin” để biết vị trí của từng bổ sung."
 
-#: ../gedit/gedit-app.c:105
+#: ../gedit/gedit-app.c:107
 msgid "Show the application's version"
 msgstr "Hiện phiên bản của ứng dụng"
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:113
 msgid "Display list of possible values for the encoding option"
 msgstr "Hiểu thị danh sách những giá trị có thể dùng cho tùy chọn bảng mã"
 
-#: ../gedit/gedit-app.c:118
+#: ../gedit/gedit-app.c:120
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr ""
 "Đặt bảng mã ký tự cần dùng để mở những tập tin đã liệt kê trên dòng lệnh."
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:121
 msgid "ENCODING"
 msgstr "BẢNG MÃ"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:127
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Tạo một cửa sổ ở khác của hiện thực có sẵn của gedit"
 
-#: ../gedit/gedit-app.c:132
+#: ../gedit/gedit-app.c:134
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Tạo tài liệu mới trong một trình gedit đang chạy"
 
-#: ../gedit/gedit-app.c:139
+#: ../gedit/gedit-app.c:141
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Đặt vị trí và kích thước cửa sổ (RỘNGxCAO+X+Y)"
 
-#: ../gedit/gedit-app.c:140
+#: ../gedit/gedit-app.c:142
 msgid "GEOMETRY"
 msgstr "TỌA ĐỘ"
 
-#: ../gedit/gedit-app.c:146
+#: ../gedit/gedit-app.c:148
 msgid "Open files and block process until files are closed"
 msgstr "Mở tập tin và chặn tiến trình đến khi tập tin bị đóng"
 
-#: ../gedit/gedit-app.c:153
+#: ../gedit/gedit-app.c:155
 msgid "Run gedit in standalone mode"
 msgstr "Chạy gedit độc lập"
 
-#: ../gedit/gedit-app.c:160
+#: ../gedit/gedit-app.c:162
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[TẬP TIN…] [+DÒNG[:CỘT]]"
 
-#: ../gedit/gedit-app.c:265
+#: ../gedit/gedit-app.c:274
 msgid "There was an error displaying the help."
 msgstr "Đã có một lỗi khi hiển thị trợ giúp"
 
-#: ../gedit/gedit-app.c:916
+#: ../gedit/gedit-app.c:935
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: bảng mã không hợp lệ."
@@ -593,11 +563,12 @@ msgstr "Đóng _không lưu"
 #: ../gedit/gedit-close-confirmation-dialog.c:324
 #: ../gedit/gedit-commands-file.c:459 ../gedit/gedit-commands-file.c:593
 #: ../gedit/gedit-commands-file.c:669 ../gedit/gedit-commands-file.c:868
-#: ../gedit/gedit-commands-file.c:1580 ../gedit/gedit-io-error-info-bar.c:135
+#: ../gedit/gedit-commands-file.c:1580 ../gedit/gedit-encodings-dialog.c:176
+#: ../gedit/gedit-io-error-info-bar.c:135
 #: ../gedit/gedit-io-error-info-bar.c:516
 #: ../gedit/gedit-preferences-dialog.c:790
 #: ../gedit/gedit-progress-info-bar.c:51
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
 #: ../plugins/quickopen/quickopen/popup.py:37
@@ -887,7 +858,9 @@ msgstr "_Hoàn nguyên"
 
 #: ../gedit/gedit-commands-help.c:81
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr "gedit là phần mềm soạn thảo văn bản nhỏ gọn của GNOME"
+msgstr ""
+"gedit là phần mềm soạn thảo văn bản nhỏ gọn dành cho môi trường máy tính để "
+"bàn GNOME"
 
 #: ../gedit/gedit-commands-help.c:105
 msgid "translator-credits"
@@ -910,7 +883,7 @@ msgstr "Đã tìm thấy và thay thế một lần"
 msgid "\"%s\" not found"
 msgstr "Không tìm thấy \"%s\""
 
-#: ../gedit/gedit-document.c:956 ../gedit/gedit-document.c:986
+#: ../gedit/gedit-document.c:986 ../gedit/gedit-document.c:1016
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Tài liệu chưa lưu %d"
@@ -923,22 +896,52 @@ msgstr "Nhóm thẻ %i"
 #: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1134
 #: ../gedit/gedit-window.c:1140 ../gedit/gedit-window.c:1148
 msgid "Read-Only"
-msgstr "Chỉ đọc"
+msgstr "Chỉ-đọc"
 
-#: ../gedit/gedit-encodings-combo-box.c:302
+#: ../gedit/gedit-encodings-combo-box.c:295
 #: ../gedit/gedit-file-chooser-dialog-osx.c:565
 msgid "Automatically Detected"
 msgstr "Tự động xác định"
 
-#: ../gedit/gedit-encodings-combo-box.c:331
+#: ../gedit/gedit-encodings-combo-box.c:324
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
 msgid "Add or Remove..."
 msgstr "Thêm hoặc gỡ bỏ…"
 
-#: ../gedit/gedit-encoding-items.c:96 ../gedit/gedit-encoding-items.c:105
+#: ../gedit/gedit-encoding-items.c:92
 #, c-format
 msgid "Current Locale (%s)"
 msgstr "Miền ngôn ngữ hiện tại (%s)"
+
+#: ../gedit/gedit-encodings-dialog.c:93
+#, c-format
+msgid "%s (Current Locale)"
+msgstr "%s (Miền ngôn ngữ hiện tại)"
+
+#: ../gedit/gedit-encodings-dialog.c:172
+msgid "Do you really want to reset the character encodings' preferences?"
+msgstr "Bạn có thực sự muốn đặt lại bảng mã ký tự của tùy tích hay không?"
+
+#. Reset button
+#: ../gedit/gedit-encodings-dialog.c:177 ../gedit/gedit-encodings-dialog.c:821
+msgid "_Reset"
+msgstr "Đặt _lại"
+
+#: ../gedit/gedit-encodings-dialog.c:722
+msgid "Add"
+msgstr "Thêm"
+
+#: ../gedit/gedit-encodings-dialog.c:769
+msgid "Remove"
+msgstr "Xóa bỏ"
+
+#: ../gedit/gedit-encodings-dialog.c:783
+msgid "Move to a higher priority"
+msgstr "Nâng cao mức ưu tiên"
+
+#: ../gedit/gedit-encodings-dialog.c:797
+msgid "Move to a lower priority"
+msgstr "Hạ thấp mức ưu tiên"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:41
 #: ../gedit/gedit-preferences-dialog.c:799
@@ -1432,34 +1435,34 @@ msgid "Saving %s"
 msgstr "Đang lưu %s…"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1462
+#: ../gedit/gedit-tab.c:1464
 msgid "RO"
 msgstr "Chỉ đọc"
 
-#: ../gedit/gedit-tab.c:1510
+#: ../gedit/gedit-tab.c:1512
 #, c-format
 msgid "Error opening file %s"
 msgstr "Gặp lỗi khi mở tập tin %s"
 
-#: ../gedit/gedit-tab.c:1515
+#: ../gedit/gedit-tab.c:1517
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Gặp lỗi khi hoàn nguyên tập tin %s"
 
-#: ../gedit/gedit-tab.c:1520
+#: ../gedit/gedit-tab.c:1522
 #, c-format
 msgid "Error saving file %s"
 msgstr "Gặp lỗi khi lưu tập tin %s"
 
-#: ../gedit/gedit-tab.c:1551
+#: ../gedit/gedit-tab.c:1553
 msgid "Name:"
 msgstr "Tên:"
 
-#: ../gedit/gedit-tab.c:1552
+#: ../gedit/gedit-tab.c:1554
 msgid "MIME Type:"
 msgstr "Dạng MIME:"
 
-#: ../gedit/gedit-tab.c:1553
+#: ../gedit/gedit-tab.c:1555
 msgid "Encoding:"
 msgstr "Bảng mã:"
 
@@ -1504,36 +1507,36 @@ msgstr "_Hiện số dòng"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:736
+#: ../gedit/gedit-view-frame.c:691
 #, c-format
 msgid "%d of %d"
-msgstr "%d/%d"
+msgstr "%d trên %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:828
+#: ../gedit/gedit-view-frame.c:783
 msgid "_Wrap Around"
 msgstr "_Cuộn vòng"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:838
+#: ../gedit/gedit-view-frame.c:793
 msgid "Match as _Regular Expression"
 msgstr "Khớp mẫu dùng biểu thức chính qu_y"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:852
+#: ../gedit/gedit-view-frame.c:807
 msgid "Match _Entire Word Only"
 msgstr "Chỉ khớp với ng_uyên từ"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:866
+#: ../gedit/gedit-view-frame.c:821
 msgid "_Match Case"
 msgstr "_Phân biệt HOA/thường"
 
-#: ../gedit/gedit-view-frame.c:1041
+#: ../gedit/gedit-view-frame.c:1038
 msgid "String you want to search for"
 msgstr "Chuỗi cần tìm kiếm"
 
-#: ../gedit/gedit-view-frame.c:1053
+#: ../gedit/gedit-view-frame.c:1050
 msgid "Line you want to move the cursor to"
 msgstr "Dòng nơi bạn muốn chuyển con trỏ đến"
 
@@ -1638,7 +1641,6 @@ msgstr "Tù_y thích"
 #: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
 #: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
 #: ../plugins/spell/gedit-spell-language-dialog.c:126
 #: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
@@ -1845,18 +1847,20 @@ msgid "Help"
 msgstr "Trợ giúp"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
-msgid "Character encodings"
+msgid "Character Encodings"
 msgstr "Bảng mã kí tự"
 
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
+msgid "_Apply"
+msgstr "Á_p dụng"
+
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
-#: ../plugins/spell/gedit-spell-language-dialog.c:125
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
-msgid "_OK"
-msgstr "Đồn_g ý"
+msgid "A_vailable Encodings"
+msgstr "Bảng mã _sẵn có"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
-msgid "A_vailable encodings:"
-msgstr "Bảng mã _hỗ trợ:"
+msgid "Cho_sen Encodings"
+msgstr "_Chọn các bảng mã"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
 msgid "_Description"
@@ -1865,20 +1869,6 @@ msgstr "_Mô tả"
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:7
 msgid "_Encoding"
 msgstr "_Bảng mã"
-
-#. Add to Dictionary
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:8
-#: ../plugins/spell/gedit-automatic-spell-checker.c:506
-msgid "_Add"
-msgstr "Thê_m"
-
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:9
-msgid "_Remove"
-msgstr "_Xóa bỏ"
-
-#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:10
-msgid "E_ncodings shown in menu:"
-msgstr "Bảng _mã hiển thị trên trình đơn:"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:1
 msgid "Highlight Mode"
@@ -1980,8 +1970,8 @@ msgid "Editor"
 msgstr "Bộ soạn thảo"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Phông"
 
@@ -2243,12 +2233,12 @@ msgstr ""
 "thể lờ đi phiên bản này và đợi một phiên bản mới hơn"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
 msgid "Version to Ignore"
 msgstr "Phiên bản cần bỏ qua"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "Phiên bản cần lờ đi cho đến khi bản tiếp nữa được phát hành."
 
@@ -2344,12 +2334,12 @@ msgstr "Công cụ bên ngoài"
 msgid "Execute external commands and shell scripts."
 msgstr "Thực hiện lệnh bên ngoài và tập lệnh hệ thống (shell scripts)."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
 msgstr "Có dùng phông hệ thống không"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2357,8 +2347,8 @@ msgstr ""
 "Nếu đúng, công cụ bên ngoài sẽ dùng phông chuẩn của hệ thống nếu là phông "
 "monospace (hoặc phông giống nhất nếu khác)."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "Tên phông Pango. Ví dụ \"Sans 12\" hoặc \"Monospace Bold 14\"."
 
@@ -2694,22 +2684,22 @@ msgid "Error when loading '%s': No such directory"
 msgstr "Gặp lỗi khi tải “%s”: Không có thư mục nào như thế"
 
 #. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
 msgid "Open With Tree View"
 msgstr "Mở trong ô xem cây"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr ""
 "Mở ô xem cây khi bổ sung duyệt tập tin được tải, thay cho ô xem Đánh dấu"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Thư mục gốc của bộ duyệt tập tin"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2717,11 +2707,11 @@ msgstr ""
 "Thư mục gốc của bộ duyệt tập tin, để dùng khi tải bổ sung duyệt tập tin và "
 "khi “onload/tree_view” là ĐÚNG."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Thư mục gốc ảo của bộ duyệt tập tin"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -2731,19 +2721,19 @@ msgstr ""
 "và khi “onload/tree_view” là ĐÚNG. Gốc ảo luôn luôn phải nằm bên dưới gốc "
 "thật."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "Bật phục hồi từ xa"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Đặt nếu bật khả năng phục hồi vị trí từ xa hay không."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "Đặt địa chỉ mở tập tin đầu tiên"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2754,11 +2744,11 @@ msgstr ""
 "tiên nếu trình duyệt tập tin chưa được sử dụng lần nào. (thường áp dụng khi "
 "mở tập tin từ dòng lệnh hoặc mở chúng bằng Nautilus …)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "Chế độ lọc của bộ duyệt tập tin"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -2768,11 +2758,11 @@ msgstr ""
 "trị có thể: none (không lọc gì), hide-hidden (lọc tập tin ẩn), hide-binary "
 "(lọc tập tin nhị phân)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Mẫu lọc của bộ duyệt tập tin"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -2780,11 +2770,11 @@ msgstr ""
 "Mẫu lọc cần dùng để lọc bộ duyệt tập tin. Mẫu lọc này hoạt động bên trên chế "
 "độ lọc (“filter_mode”)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
 msgstr "Mẫu lọc của bộ duyệt tập tin"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Các mẫu bổ xung được dùng khi lọc các tập tin nhị phân"
 
@@ -2852,23 +2842,23 @@ msgstr "Dòng chế độ"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Cách hỗ trợ dòng chế độ dạng Emacs, Kate và Vim trong gedit."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
 msgstr "Mô tả màu cho lệnh"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
 msgid "The command color text"
 msgstr "Mô tả màu cho lệnh"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
 msgid "Error Color Text"
 msgstr "Mô tả màu cho lỗi:"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
 msgid "The error color text"
 msgstr "Mô tả màu cho lỗi"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3090,8 +3080,8 @@ msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
 msgstr ""
-"Việc thực thi lệnh Python (%s) đạt tới thời gian giới hạn, việc thực thi đã "
-"bị hủy bỏ."
+"Việc thực thi lệnh Python (%s) lâu quá thời hạn chờ, nên việc thực thi đã bị "
+"hủy bỏ."
 
 #: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
@@ -3100,7 +3090,7 @@ msgstr "Việc thực thi lệnh Python (%s) gặp lỗi: %s"
 
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:2
 msgid "Insert often-used pieces of text in a fast way"
-msgstr "Chèn vào một đoạn văn bản thường dùng một cách nhanh chóng"
+msgstr "Chèn vào một đoạn văn bản hay dùng một cách nhanh chóng"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:1
 msgid "Manage Snippets"
@@ -3210,6 +3200,11 @@ msgstr "Thê_m nữa…"
 msgid "_Ignore All"
 msgstr "Bỏ _qua tất cả"
 
+#. Add to Dictionary
+#: ../plugins/spell/gedit-automatic-spell-checker.c:506
+msgid "_Add"
+msgstr "Thê_m"
+
 #: ../plugins/spell/gedit-automatic-spell-checker.c:545
 msgid "_Spelling Suggestions..."
 msgstr "_Gợi ý chính tả…"
@@ -3266,6 +3261,11 @@ msgstr "Chưa biết (%s)"
 msgctxt "language"
 msgid "Default"
 msgstr "Mặc định"
+
+#: ../plugins/spell/gedit-spell-language-dialog.c:125
+#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
+msgid "_OK"
+msgstr "Đồn_g ý"
 
 #: ../plugins/spell/gedit-spell-language-dialog.c:129
 msgid "Set language"
@@ -3353,11 +3353,11 @@ msgid "Available formats"
 msgstr "Định dạng sẵn có"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
 msgid "Prompt Type"
 msgstr "Kiểu dấu nhắc"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3365,19 +3365,19 @@ msgstr ""
 "Người dùng nên được hỏi định dạng hoặc định dạng được chọn hoặc định dạng "
 "riêng nên được dùng."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
 msgstr "Định dạng được chọn"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "Định dạng được chọn được dùng khi chèn ngày/giờ."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
 msgstr "Định dạng riêng"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "Định dạng riêng để dùng khi chèn chèn ngày/giờ."
 
@@ -3431,6 +3431,40 @@ msgstr "Chèn ngày/giờ"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
+
+#~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+#~ msgstr "['UTF-8', 'CURRENT', 'UTF-16']"
+
+#~ msgid "Automatically Detected Encodings"
+#~ msgstr "Tự động phát hiện bảng mã"
+
+#~ msgid ""
+#~ "Sorted list of encodings used by gedit for automatically detecting the "
+#~ "encoding of a file. \"CURRENT\" represents the current locale encoding. "
+#~ "Only recognized encodings are used."
+#~ msgstr ""
+#~ "Danh sách bảng mã đã sắp xếp được sử dụng bởi gedit cho việc phát hiện "
+#~ "bảng mã tự động của tập tin. \"CURRENT\" thể hiện bảng mã được sử dụng "
+#~ "hiện tại. Chỉ những bảng mã có thể nhận dạng được dùng."
+
+#~ msgid "['ISO-8859-15']"
+#~ msgstr "['UTF-8']"
+
+#~ msgid "Encodings shown in menu"
+#~ msgstr "Bảng mã hiển thị trong trình đơn"
+
+#~ msgid ""
+#~ "List of encodings shown in the Character Encoding menu in open/save file "
+#~ "selector. Only recognized encodings are used."
+#~ msgstr ""
+#~ "Danh sách các bảng mã được hiển thị ở trình đơn Bảng mã kí tự ở hộp chọn "
+#~ "mở/lưu tập tin. Chỉ những bảng mã có thể nhận dạng được dùng"
+
+#~ msgid "Character encodings"
+#~ msgstr "Bảng mã kí tự"
+
+#~ msgid "E_ncodings shown in menu:"
+#~ msgstr "Bảng _mã hiển thị trên trình đơn:"
 
 #~ msgid "P_revious Page"
 #~ msgstr "Trang t_rước"
@@ -3827,9 +3861,6 @@ msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
 
 #~ msgid "Open Files"
 #~ msgstr "Mở tập tin"
-
-#~ msgid "Character Encodings"
-#~ msgstr "Bảng mã kí tự"
 
 #~ msgid "Replace All"
 #~ msgstr "Thay thế hết"
