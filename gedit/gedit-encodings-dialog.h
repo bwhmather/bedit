@@ -25,35 +25,13 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_ENCODINGS_DIALOG              (gedit_encodings_dialog_get_type())
-#define GEDIT_ENCODINGS_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_ENCODINGS_DIALOG, GeditEncodingsDialog))
-#define GEDIT_ENCODINGS_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_ENCODINGS_DIALOG, GeditEncodingsDialogClass))
-#define GEDIT_IS_ENCODINGS_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_ENCODINGS_DIALOG))
-#define GEDIT_IS_ENCODINGS_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_ENCODINGS_DIALOG))
-#define GEDIT_ENCODINGS_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_ENCODINGS_DIALOG, GeditEncodingsDialogClass))
+#define GEDIT_TYPE_ENCODINGS_DIALOG (gedit_encodings_dialog_get_type())
 
-typedef struct _GeditEncodingsDialog		GeditEncodingsDialog;
-typedef struct _GeditEncodingsDialogClass	GeditEncodingsDialogClass;
-typedef struct _GeditEncodingsDialogPrivate	GeditEncodingsDialogPrivate;
-
-struct _GeditEncodingsDialog
-{
-	GtkDialog dialog;
-
-	GeditEncodingsDialogPrivate *priv;
-};
-
-struct _GeditEncodingsDialogClass
-{
-	GtkDialogClass parent_class;
-};
-
-GType		 gedit_encodings_dialog_get_type	(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditEncodingsDialog, gedit_encodings_dialog, GEDIT, ENCODINGS_DIALOG, GtkDialog)
 
 GtkWidget	*gedit_encodings_dialog_new		(void);
 
 G_END_DECLS
 
 #endif /* __GEDIT_ENCODINGS_DIALOG_H__ */
-
 /* ex:set ts=8 noet: */
