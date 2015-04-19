@@ -44,21 +44,23 @@ enum
 	MULTIPLE_DOCS_MODE
 };
 
-#define GET_MODE(priv) (((priv->unsaved_documents != NULL) && \
-			 (priv->unsaved_documents->next == NULL)) ? \
-			  SINGLE_DOC_MODE : MULTIPLE_DOCS_MODE)
+#define GET_MODE(dlg) (((dlg->unsaved_documents != NULL) && \
+                       (dlg->unsaved_documents->next == NULL)) ? \
+                       SINGLE_DOC_MODE : MULTIPLE_DOCS_MODE)
 
 #define GEDIT_SAVE_DOCUMENT_KEY "gedit-save-document"
 
-struct _GeditCloseConfirmationDialogPrivate
+struct _GeditCloseConfirmationDialog
 {
+	GtkDialog parent_instance;
+
 	GList       *unsaved_documents;
 	GList       *selected_documents;
 	GtkWidget   *list_box;
 	gboolean     disable_save_to_disk;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GTK_TYPE_DIALOG)
 
 static void 	 set_unsaved_document 		(GeditCloseConfirmationDialog *dlg,
 						 const GList                  *list);
@@ -101,27 +103,23 @@ response_cb (GeditCloseConfirmationDialog *dlg,
              gint                          response_id,
              gpointer                      data)
 {
-	GeditCloseConfirmationDialogPrivate *priv;
-
 	g_return_if_fail (GEDIT_IS_CLOSE_CONFIRMATION_DIALOG (dlg));
 
-	priv = dlg->priv;
-
-	if (priv->selected_documents != NULL)
+	if (dlg->selected_documents != NULL)
 	{
-		g_list_free (priv->selected_documents);
-		priv->selected_documents = NULL;
+		g_list_free (dlg->selected_documents);
+		dlg->selected_documents = NULL;
 	}
 
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		if (GET_MODE (priv) == SINGLE_DOC_MODE)
+		if (GET_MODE (dlg) == SINGLE_DOC_MODE)
 		{
-			priv->selected_documents = g_list_copy (priv->unsaved_documents);
+			dlg->selected_documents = g_list_copy (dlg->unsaved_documents);
 		}
 		else
 		{
-			priv->selected_documents = get_selected_docs (priv->list_box);
+			dlg->selected_documents = get_selected_docs (dlg->list_box);
 		}
 	}
 }
@@ -134,11 +132,9 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 	GtkWidget *content_area;
 	GtkWidget *action_area;
 
-	dlg->priv = gedit_close_confirmation_dialog_get_instance_private (dlg);
-
 	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 
-	dlg->priv->disable_save_to_disk = lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK;
+	dlg->disable_save_to_disk = lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK;
 
 	content_area = gtk_dialog_get_content_area (GTK_DIALOG (dlg));
 	gtk_container_set_border_width (GTK_CONTAINER (content_area), 0);
@@ -168,12 +164,10 @@ gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 static void
 gedit_close_confirmation_dialog_finalize (GObject *object)
 {
-	GeditCloseConfirmationDialogPrivate *priv;
+	GeditCloseConfirmationDialog *dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG (object);
 
-	priv = GEDIT_CLOSE_CONFIRMATION_DIALOG (object)->priv;
-
-	g_list_free (priv->unsaved_documents);
-	g_list_free (priv->selected_documents);
+	g_list_free (dlg->unsaved_documents);
+	g_list_free (dlg->selected_documents);
 
 	/* Call the parent's destructor */
 	G_OBJECT_CLASS (gedit_close_confirmation_dialog_parent_class)->finalize (object);
@@ -207,14 +201,12 @@ gedit_close_confirmation_dialog_get_property (GObject    *object,
 					      GValue     *value,
 					      GParamSpec *pspec)
 {
-	GeditCloseConfirmationDialogPrivate *priv;
-
-	priv = GEDIT_CLOSE_CONFIRMATION_DIALOG (object)->priv;
+	GeditCloseConfirmationDialog *dlg = GEDIT_CLOSE_CONFIRMATION_DIALOG (object);
 
 	switch (prop_id)
 	{
 		case PROP_UNSAVED_DOCUMENTS:
-			g_value_set_pointer (value, priv->unsaved_documents);
+			g_value_set_pointer (value, dlg->unsaved_documents);
 			break;
 
 		default:
@@ -246,7 +238,7 @@ gedit_close_confirmation_dialog_get_selected_documents (GeditCloseConfirmationDi
 {
 	g_return_val_if_fail (GEDIT_IS_CLOSE_CONFIRMATION_DIALOG (dlg), NULL);
 
-	return g_list_copy (dlg->priv->selected_documents);
+	return g_list_copy (dlg->selected_documents);
 }
 
 GtkWidget *
@@ -324,7 +316,7 @@ add_buttons (GeditCloseConfirmationDialog *dlg)
 	                        _("_Cancel"), GTK_RESPONSE_CANCEL,
 	                        NULL);
 
-	if (dlg->priv->disable_save_to_disk)
+	if (dlg->disable_save_to_disk)
 	{
 		gtk_dialog_set_default_response	(GTK_DIALOG (dlg),
 						 GTK_RESPONSE_NO);
@@ -333,11 +325,11 @@ add_buttons (GeditCloseConfirmationDialog *dlg)
 	{
 		gboolean save_as = FALSE;
 
-		if (GET_MODE (dlg->priv) == SINGLE_DOC_MODE)
+		if (GET_MODE (dlg) == SINGLE_DOC_MODE)
 		{
 			GeditDocument *doc;
 
-			doc = GEDIT_DOCUMENT (dlg->priv->unsaved_documents->data);
+			doc = GEDIT_DOCUMENT (dlg->unsaved_documents->data);
 
 			if (gedit_document_get_readonly (doc) ||
 			    gedit_document_is_untitled (doc))
@@ -451,8 +443,8 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 
 	gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
 
-	g_return_if_fail (dlg->priv->unsaved_documents->data != NULL);
-	doc = GEDIT_DOCUMENT (dlg->priv->unsaved_documents->data);
+	g_return_if_fail (dlg->unsaved_documents->data != NULL);
+	doc = GEDIT_DOCUMENT (dlg->unsaved_documents->data);
 
 	add_buttons (dlg);
 
@@ -468,7 +460,7 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 
 	doc_name = gedit_document_get_short_name_for_display (doc);
 
-	if (dlg->priv->disable_save_to_disk)
+	if (dlg->disable_save_to_disk)
 	{
 		str = g_markup_printf_escaped (_("Changes to document “%s” will be permanently lost."),
 		                               doc_name);
@@ -488,7 +480,7 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	g_free (markup_str);
 
 	/* Secondary label */
-	if (dlg->priv->disable_save_to_disk)
+	if (dlg->disable_save_to_disk)
 	{
 		str = g_strdup (_("Saving has been disabled by the system administrator."));
 	}
@@ -522,14 +514,14 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 }
 
 static GtkWidget *
-create_list_box (GeditCloseConfirmationDialogPrivate *priv)
+create_list_box (GeditCloseConfirmationDialog *dlg)
 {
 	GtkWidget *list_box;
 	GList *l;
 
 	list_box = gtk_list_box_new ();
 
-	for (l = priv->unsaved_documents; l != NULL; l = l->next)
+	for (l = dlg->unsaved_documents; l != NULL; l = l->next)
 	{
 		GeditDocument *doc = l->data;
 		gchar *name;
@@ -560,7 +552,6 @@ create_list_box (GeditCloseConfirmationDialogPrivate *priv)
 static void
 build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 {
-	GeditCloseConfirmationDialogPrivate *priv;
 	GtkWidget *hbox;
 	GtkWidget *vbox;
 	GtkWidget *primary_label;
@@ -570,8 +561,6 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	GtkWidget *secondary_label;
 	gchar     *str;
 	gchar     *markup_str;
-
-	priv = dlg->priv;
 
 	add_buttons (dlg);
 
@@ -596,13 +585,13 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_widget_set_can_focus (primary_label, FALSE);
 	gtk_label_set_max_width_chars (GTK_LABEL (primary_label), 72);
 
-	if (priv->disable_save_to_disk)
+	if (dlg->disable_save_to_disk)
 	{
 		str = g_strdup_printf (
 				ngettext ("Changes to %d document will be permanently lost.",
 					  "Changes to %d documents will be permanently lost.",
-					  g_list_length (priv->unsaved_documents)),
-				g_list_length (priv->unsaved_documents));
+					  g_list_length (dlg->unsaved_documents)),
+				g_list_length (dlg->unsaved_documents));
 	}
 	else
 	{
@@ -611,8 +600,8 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 					  "Save changes before closing?",
 					  "There are %d documents with unsaved changes. "
 					  "Save changes before closing?",
-					  g_list_length (priv->unsaved_documents)),
-				g_list_length (priv->unsaved_documents));
+					  g_list_length (dlg->unsaved_documents)),
+				g_list_length (dlg->unsaved_documents));
 	}
 
 	markup_str = g_strconcat ("<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL);
@@ -625,7 +614,7 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	vbox2 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
 	gtk_box_pack_start (GTK_BOX (vbox), vbox2, TRUE, TRUE, 0);
 
-	if (priv->disable_save_to_disk)
+	if (dlg->disable_save_to_disk)
 	{
 		select_label = gtk_label_new_with_mnemonic (_("Docum_ents with unsaved changes:"));
 	}
@@ -645,11 +634,11 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 					     GTK_SHADOW_IN);
 	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (scrolledwindow), 60);
 
-	priv->list_box = create_list_box (priv);
-	gtk_container_add (GTK_CONTAINER (scrolledwindow), priv->list_box);
+	dlg->list_box = create_list_box (dlg);
+	gtk_container_add (GTK_CONTAINER (scrolledwindow), dlg->list_box);
 
 	/* Secondary label */
-	if (priv->disable_save_to_disk)
+	if (dlg->disable_save_to_disk)
 	{
 		secondary_label = gtk_label_new (_("Saving has been disabled by the system administrator."));
 	}
@@ -666,7 +655,7 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
 	gtk_label_set_max_width_chars (GTK_LABEL (secondary_label), 72);
 
-	gtk_label_set_mnemonic_widget (GTK_LABEL (select_label), priv->list_box);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (select_label), dlg->list_box);
 
 	gtk_widget_show_all (hbox);
 }
@@ -675,16 +664,13 @@ static void
 set_unsaved_document (GeditCloseConfirmationDialog *dlg,
 		      const GList                  *list)
 {
-	GeditCloseConfirmationDialogPrivate *priv;
-
 	g_return_if_fail (list != NULL);
 
-	priv = dlg->priv;
-	g_return_if_fail (priv->unsaved_documents == NULL);
+	g_return_if_fail (dlg->unsaved_documents == NULL);
 
-	priv->unsaved_documents = g_list_copy ((GList *)list);
+	dlg->unsaved_documents = g_list_copy ((GList *)list);
 
-	if (GET_MODE (priv) == SINGLE_DOC_MODE)
+	if (GET_MODE (dlg) == SINGLE_DOC_MODE)
 	{
 		build_single_doc_dialog (dlg);
 	}
@@ -699,7 +685,7 @@ gedit_close_confirmation_dialog_get_unsaved_documents (GeditCloseConfirmationDia
 {
 	g_return_val_if_fail (GEDIT_IS_CLOSE_CONFIRMATION_DIALOG (dlg), NULL);
 
-	return dlg->priv->unsaved_documents;
+	return dlg->unsaved_documents;
 }
 
 /* ex:set ts=8 noet: */
