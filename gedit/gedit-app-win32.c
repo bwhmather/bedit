@@ -33,6 +33,10 @@
 #define DATADIR SAVE_DATADIR
 #undef SAVE_DATADIR
 
+struct _GeditAppWin32
+{
+	GeditApp parent_instance;
+};
 
 G_DEFINE_TYPE (GeditAppWin32, gedit_app_win32, GEDIT_TYPE_APP)
 

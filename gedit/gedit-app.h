@@ -28,52 +28,34 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_APP              (gedit_app_get_type())
-#define GEDIT_APP(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_APP, GeditApp))
-#define GEDIT_APP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_APP, GeditAppClass))
-#define GEDIT_IS_APP(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_APP))
-#define GEDIT_IS_APP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_APP))
-#define GEDIT_APP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_APP, GeditAppClass))
+#define GEDIT_TYPE_APP (gedit_app_get_type())
 
-typedef struct _GeditApp        GeditApp;
-typedef struct _GeditAppClass   GeditAppClass;
-typedef struct _GeditAppPrivate GeditAppPrivate;
-
-struct _GeditApp
-{
-	GtkApplication parent;
-
-	/*< private > */
-	GeditAppPrivate *priv;
-};
+G_DECLARE_DERIVABLE_TYPE (GeditApp, gedit_app, GEDIT, APP, GtkApplication)
 
 struct _GeditAppClass
 {
 	GtkApplicationClass parent_class;
 
-	gboolean (*show_help)			(GeditApp    *app,
+	gboolean (*show_help)                   (GeditApp    *app,
 	                                         GtkWindow   *parent,
 	                                         const gchar *name,
 	                                         const gchar *link_id);
 
-	gchar *(*help_link_id)			(GeditApp    *app,
+	gchar *(*help_link_id)                  (GeditApp    *app,
 	                                         const gchar *name,
 	                                         const gchar *link_id);
 
-	void (*set_window_title)		(GeditApp    *app,
+	void (*set_window_title)                (GeditApp    *app,
 	                                         GeditWindow *window,
 	                                         const gchar *title);
 
-	GeditWindow *(*create_window)		(GeditApp    *app);
+	GeditWindow *(*create_window)           (GeditApp    *app);
 
-	gboolean (*process_window_event)	(GeditApp    *app,
-						 GeditWindow *window,
-						 GdkEvent    *event);
+	gboolean (*process_window_event)        (GeditApp    *app,
+	                                         GeditWindow *window,
+	                                         GdkEvent    *event);
 };
 
-/*
- * Lockdown mask definition
- */
 typedef enum
 {
 	GEDIT_LOCKDOWN_COMMAND_LINE	= 1 << 0,
@@ -84,9 +66,6 @@ typedef enum
 
 /* We need to define this here to avoid problems with bindings and gsettings */
 #define GEDIT_LOCKDOWN_ALL 0xF
-
-/* Public methods */
-GType 		 gedit_app_get_type 			(void) G_GNUC_CONST;
 
 GeditWindow	*gedit_app_create_window		(GeditApp    *app,
 							 GdkScreen   *screen);

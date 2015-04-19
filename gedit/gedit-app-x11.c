@@ -26,6 +26,11 @@
 #include <gdk/gdkx.h>
 #endif
 
+struct _GeditAppX11
+{
+	GeditApp parent_instance;
+};
+
 G_DEFINE_TYPE (GeditAppX11, gedit_app_x11, GEDIT_TYPE_APP)
 
 /* This should go in GtkApplication at some point... */
