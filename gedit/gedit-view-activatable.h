@@ -25,17 +25,9 @@
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
-#define GEDIT_TYPE_VIEW_ACTIVATABLE		(gedit_view_activatable_get_type ())
-#define GEDIT_VIEW_ACTIVATABLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_VIEW_ACTIVATABLE, GeditViewActivatable))
-#define GEDIT_VIEW_ACTIVATABLE_IFACE(obj)	(G_TYPE_CHECK_CLASS_CAST ((obj), GEDIT_TYPE_VIEW_ACTIVATABLE, GeditViewActivatableInterface))
-#define GEDIT_IS_VIEW_ACTIVATABLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_VIEW_ACTIVATABLE))
-#define GEDIT_VIEW_ACTIVATABLE_GET_IFACE(obj)	(G_TYPE_INSTANCE_GET_INTERFACE ((obj), GEDIT_TYPE_VIEW_ACTIVATABLE, GeditViewActivatableInterface))
+#define GEDIT_TYPE_VIEW_ACTIVATABLE (gedit_view_activatable_get_type ())
 
-typedef struct _GeditViewActivatable           GeditViewActivatable; /* dummy typedef */
-typedef struct _GeditViewActivatableInterface  GeditViewActivatableInterface;
+G_DECLARE_INTERFACE (GeditViewActivatable, gedit_view_activatable, GEDIT, VIEW_ACTIVATABLE, GObject)
 
 struct _GeditViewActivatableInterface
 {
@@ -46,14 +38,10 @@ struct _GeditViewActivatableInterface
 	void	(*deactivate)		(GeditViewActivatable *activatable);
 };
 
-/*
- * Public methods
- */
-GType	 gedit_view_activatable_get_type	(void)  G_GNUC_CONST;
-
 void	 gedit_view_activatable_activate	(GeditViewActivatable *activatable);
 void	 gedit_view_activatable_deactivate	(GeditViewActivatable *activatable);
 
 G_END_DECLS
 
 #endif /* __GEDIT_VIEW_ACTIVATABLE_H__ */
+/* ex:set ts=8 noet: */

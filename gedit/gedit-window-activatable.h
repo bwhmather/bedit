@@ -25,17 +25,9 @@
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
-#define GEDIT_TYPE_WINDOW_ACTIVATABLE		(gedit_window_activatable_get_type ())
-#define GEDIT_WINDOW_ACTIVATABLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_WINDOW_ACTIVATABLE, GeditWindowActivatable))
-#define GEDIT_WINDOW_ACTIVATABLE_IFACE(obj)	(G_TYPE_CHECK_CLASS_CAST ((obj), GEDIT_TYPE_WINDOW_ACTIVATABLE, GeditWindowActivatableInterface))
-#define GEDIT_IS_WINDOW_ACTIVATABLE(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_WINDOW_ACTIVATABLE))
-#define GEDIT_WINDOW_ACTIVATABLE_GET_IFACE(obj)	(G_TYPE_INSTANCE_GET_INTERFACE ((obj), GEDIT_TYPE_WINDOW_ACTIVATABLE, GeditWindowActivatableInterface))
+#define GEDIT_TYPE_WINDOW_ACTIVATABLE (gedit_window_activatable_get_type ())
 
-typedef struct _GeditWindowActivatable           GeditWindowActivatable; /* dummy typedef */
-typedef struct _GeditWindowActivatableInterface  GeditWindowActivatableInterface;
+G_DECLARE_INTERFACE (GeditWindowActivatable, gedit_window_activatable, GEDIT, WINDOW_ACTIVATABLE, GObject)
 
 struct _GeditWindowActivatableInterface
 {
@@ -47,11 +39,6 @@ struct _GeditWindowActivatableInterface
 	void	(*update_state)		(GeditWindowActivatable *activatable);
 };
 
-/*
- * Public methods
- */
-GType	 gedit_window_activatable_get_type	(void)  G_GNUC_CONST;
-
 void	 gedit_window_activatable_activate	(GeditWindowActivatable *activatable);
 void	 gedit_window_activatable_deactivate	(GeditWindowActivatable *activatable);
 void	 gedit_window_activatable_update_state	(GeditWindowActivatable *activatable);
@@ -59,5 +46,4 @@ void	 gedit_window_activatable_update_state	(GeditWindowActivatable *activatable
 G_END_DECLS
 
 #endif /* __GEDIT_WINDOW_ACTIVATABLE_H__ */
-
 /* ex:set ts=8 noet: */
