@@ -102,6 +102,7 @@ gedit_NOINST_H_FILES =					\
 	gedit/gedit-close-confirmation-dialog.h		\
 	gedit/gedit-dirs.h				\
 	gedit/gedit-commands-private.h			\
+	gedit/gedit-document-private.h			\
 	gedit/gedit-documents-panel.h			\
 	gedit/gedit-encodings-dialog.h			\
 	gedit/gedit-encoding-items.h			\

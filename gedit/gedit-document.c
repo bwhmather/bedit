@@ -26,6 +26,7 @@
 #endif
 
 #include "gedit-document.h"
+#include "gedit-document-private.h"
 
 #include <string.h>
 #include <glib/gi18n.h>
@@ -48,7 +49,7 @@ static void	gedit_document_loaded_real	(GeditDocument *doc);
 
 static void	gedit_document_saved_real	(GeditDocument *doc);
 
-struct _GeditDocumentPrivate
+typedef struct
 {
 	GtkSourceFile *file;
 
@@ -87,7 +88,7 @@ struct _GeditDocumentPrivate
 	 * when opened from the command line).
 	 */
 	guint create : 1;
-};
+} GeditDocumentPrivate;
 
 enum
 {
@@ -159,11 +160,13 @@ get_language_string (GeditDocument *doc)
 static void
 save_metadata (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	const gchar *language = NULL;
 	GtkTextIter iter;
 	gchar *position;
 
-	if (doc->priv->language_set_by_user)
+	priv = gedit_document_get_instance_private (doc);
+	if (priv->language_set_by_user)
 	{
 		language = get_language_string (doc);
 	}
@@ -194,24 +197,26 @@ save_metadata (GeditDocument *doc)
 static void
 gedit_document_dispose (GObject *object)
 {
-	GeditDocument *doc = GEDIT_DOCUMENT (object);
+	GeditDocumentPrivate *priv;
 
 	gedit_debug (DEBUG_DOCUMENT);
+
+	priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (object));
 
 	/* Metadata must be saved here and not in finalize because the language
 	 * is gone by the time finalize runs.
 	 */
-	if (doc->priv->file != NULL)
+	if (priv->file != NULL)
 	{
-		save_metadata (doc);
+		save_metadata (GEDIT_DOCUMENT (object));
 
-		g_object_unref (doc->priv->file);
-		doc->priv->file = NULL;
+		g_object_unref (priv->file);
+		priv->file = NULL;
 	}
 
-	g_clear_object (&doc->priv->editor_settings);
-	g_clear_object (&doc->priv->metadata_info);
-	g_clear_object (&doc->priv->search_context);
+	g_clear_object (&priv->editor_settings);
+	g_clear_object (&priv->metadata_info);
+	g_clear_object (&priv->search_context);
 
 	G_OBJECT_CLASS (gedit_document_parent_class)->dispose (object);
 }
@@ -219,17 +224,19 @@ gedit_document_dispose (GObject *object)
 static void
 gedit_document_finalize (GObject *object)
 {
-	GeditDocument *doc = GEDIT_DOCUMENT (object);
+	GeditDocumentPrivate *priv;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	if (doc->priv->untitled_number > 0)
+	priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (object));
+
+	if (priv->untitled_number > 0)
 	{
-		release_untitled_number (doc->priv->untitled_number);
+		release_untitled_number (priv->untitled_number);
 	}
 
-	g_free (doc->priv->content_type);
-	g_free (doc->priv->short_name);
+	g_free (priv->content_type);
+	g_free (priv->short_name);
 
 	G_OBJECT_CLASS (gedit_document_parent_class)->finalize (object);
 }
@@ -241,6 +248,9 @@ gedit_document_get_property (GObject    *object,
 			     GParamSpec *pspec)
 {
 	GeditDocument *doc = GEDIT_DOCUMENT (object);
+	GeditDocumentPrivate *priv;
+
+	priv = gedit_document_get_instance_private (doc);
 
 	switch (prop_id)
 	{
@@ -257,11 +267,11 @@ gedit_document_get_property (GObject    *object,
 			break;
 
 		case PROP_READ_ONLY:
-			g_value_set_boolean (value, doc->priv->readonly);
+			g_value_set_boolean (value, priv->readonly);
 			break;
 
 		case PROP_EMPTY_SEARCH:
-			g_value_set_boolean (value, doc->priv->empty_search);
+			g_value_set_boolean (value, priv->empty_search);
 			break;
 
 		default:
@@ -297,9 +307,11 @@ gedit_document_set_property (GObject      *object,
 static void
 gedit_document_begin_user_action (GtkTextBuffer *buffer)
 {
-	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
+	GeditDocumentPrivate *priv;
 
-	++doc->priv->user_action;
+	priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (buffer));
+
+	++priv->user_action;
 
 	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->begin_user_action != NULL)
 	{
@@ -310,9 +322,11 @@ gedit_document_begin_user_action (GtkTextBuffer *buffer)
 static void
 gedit_document_end_user_action (GtkTextBuffer *buffer)
 {
-	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
+	GeditDocumentPrivate *priv;
 
-	--doc->priv->user_action;
+	priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (buffer));
+
+	--priv->user_action;
 
 	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->end_user_action != NULL)
 	{
@@ -326,13 +340,16 @@ gedit_document_mark_set (GtkTextBuffer     *buffer,
                          GtkTextMark       *mark)
 {
 	GeditDocument *doc = GEDIT_DOCUMENT (buffer);
+	GeditDocumentPrivate *priv;
+
+	priv = gedit_document_get_instance_private (doc);
 
 	if (GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set != NULL)
 	{
 		GTK_TEXT_BUFFER_CLASS (gedit_document_parent_class)->mark_set (buffer, iter, mark);
 	}
 
-	if (mark == gtk_text_buffer_get_insert (buffer) && (doc->priv->user_action == 0))
+	if (mark == gtk_text_buffer_get_insert (buffer) && (priv->user_action == 0))
 	{
 		g_signal_emit (doc, document_signals[CURSOR_MOVED], 0);
 	}
@@ -350,9 +367,12 @@ static void
 gedit_document_constructed (GObject *object)
 {
 	GeditDocument *doc = GEDIT_DOCUMENT (object);
+	GeditDocumentPrivate *priv;
+
+	priv = gedit_document_get_instance_private (doc);
 
 	/* Bind construct properties. */
-	g_settings_bind (doc->priv->editor_settings,
+	g_settings_bind (priv->editor_settings,
 			 GEDIT_SETTINGS_ENSURE_TRAILING_NEWLINE,
 			 doc,
 			 "implicit-trailing-newline",
@@ -532,9 +552,12 @@ set_language (GeditDocument     *doc,
               GtkSourceLanguage *lang,
               gboolean           set_by_user)
 {
+	GeditDocumentPrivate *priv;
 	GtkSourceLanguage *old_lang;
 
 	gedit_debug (DEBUG_DOCUMENT);
+
+	priv = gedit_document_get_instance_private (doc);
 
 	old_lang = gtk_source_buffer_get_language (GTK_SOURCE_BUFFER (doc));
 
@@ -549,7 +572,7 @@ set_language (GeditDocument     *doc,
 	{
 		gboolean syntax_hl;
 
-		syntax_hl = g_settings_get_boolean (doc->priv->editor_settings,
+		syntax_hl = g_settings_get_boolean (priv->editor_settings,
 						    GEDIT_SETTINGS_SYNTAX_HIGHLIGHTING);
 
 		gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (doc),
@@ -570,18 +593,21 @@ set_language (GeditDocument     *doc,
 					     NULL);
 	}
 
-	doc->priv->language_set_by_user = set_by_user;
+	priv->language_set_by_user = set_by_user;
 }
 
 static void
 save_encoding_metadata (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	const GtkSourceEncoding *encoding;
 	const gchar *charset;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	encoding = gtk_source_file_get_encoding (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
+
+	encoding = gtk_source_file_get_encoding (priv->file);
 
 	if (encoding == NULL)
 	{
@@ -626,9 +652,12 @@ get_default_style_scheme (GSettings *editor_settings)
 static GtkSourceLanguage *
 guess_language (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	gchar *data;
 	GtkSourceLanguageManager *manager = gtk_source_language_manager_get_default ();
 	GtkSourceLanguage *language = NULL;
+
+	priv = gedit_document_get_instance_private (doc);
 
 	data = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_LANGUAGE);
 
@@ -648,21 +677,21 @@ guess_language (GeditDocument *doc)
 		GFile *location;
 		gchar *basename = NULL;
 
-		location = gtk_source_file_get_location (doc->priv->file);
+		location = gtk_source_file_get_location (priv->file);
 		gedit_debug_message (DEBUG_DOCUMENT, "Sniffing Language");
 
 		if (location != NULL)
 		{
 			basename = g_file_get_basename (location);
 		}
-		else if (doc->priv->short_name != NULL)
+		else if (priv->short_name != NULL)
 		{
-			basename = g_strdup (doc->priv->short_name);
+			basename = g_strdup (priv->short_name);
 		}
 
 		language = gtk_source_language_manager_guess_language (manager,
 								       basename,
-								       doc->priv->content_type);
+								       priv->content_type);
 
 		g_free (basename);
 	}
@@ -675,7 +704,11 @@ on_content_type_changed (GeditDocument *doc,
 			 GParamSpec    *pspec,
 			 gpointer       useless)
 {
-	if (!doc->priv->language_set_by_user)
+	GeditDocumentPrivate *priv;
+
+	priv = gedit_document_get_instance_private (doc);
+
+	if (!priv->language_set_by_user)
 	{
 		GtkSourceLanguage *language = guess_language (doc);
 
@@ -697,20 +730,22 @@ on_location_changed (GtkSourceFile *file,
 		     GParamSpec    *pspec,
 		     GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GFile *location;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
+	priv = gedit_document_get_instance_private (doc);
+
 	location = gtk_source_file_get_location (file);
 
-	if (location != NULL &&
-	    doc->priv->untitled_number > 0)
+	if (location != NULL && priv->untitled_number > 0)
 	{
-		release_untitled_number (doc->priv->untitled_number);
-		doc->priv->untitled_number = 0;
+		release_untitled_number (priv->untitled_number);
+		priv->untitled_number = 0;
 	}
 
-	if (doc->priv->short_name == NULL)
+	if (priv->short_name == NULL)
 	{
 		g_object_notify (G_OBJECT (doc), "shortname");
 	}
@@ -725,16 +760,16 @@ on_location_changed (GtkSourceFile *file,
 	{
 		GError *error = NULL;
 
-		if (doc->priv->metadata_info != NULL)
+		if (priv->metadata_info != NULL)
 		{
-			g_object_unref (doc->priv->metadata_info);
+			g_object_unref (priv->metadata_info);
 		}
 
-		doc->priv->metadata_info = g_file_query_info (location,
-							      METADATA_QUERY,
-							      G_FILE_QUERY_INFO_NONE,
-							      NULL,
-							      &error);
+		priv->metadata_info = g_file_query_info (location,
+		                                         METADATA_QUERY,
+		                                         G_FILE_QUERY_INFO_NONE,
+		                                         NULL,
+		                                         &error);
 
 		if (error != NULL)
 		{
@@ -763,22 +798,16 @@ gedit_document_init (GeditDocument *doc)
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	doc->priv = gedit_document_get_instance_private (doc);
-	priv = doc->priv;
+	priv = gedit_document_get_instance_private (doc);
 
 	priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
-
 	priv->untitled_number = get_untitled_number ();
-
 	priv->content_type = get_default_content_type ();
-
 	priv->readonly = FALSE;
-
 	priv->language_set_by_user = FALSE;
-
 	priv->empty_search = TRUE;
 
-	g_get_current_time (&doc->priv->time_of_last_save_or_load);
+	g_get_current_time (&priv->time_of_last_save_or_load);
 
 	priv->file = gtk_source_file_new ();
 
@@ -849,18 +878,21 @@ static void
 set_content_type_no_guess (GeditDocument *doc,
 			   const gchar   *content_type)
 {
+	GeditDocumentPrivate *priv;
 	gchar *dupped_content_type;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
-	if (doc->priv->content_type != NULL &&
+	priv = gedit_document_get_instance_private (doc);
+
+	if (priv->content_type != NULL &&
 	    content_type != NULL &&
-	    g_str_equal (doc->priv->content_type, content_type))
+	    g_str_equal (priv->content_type, content_type))
 	{
 		return;
 	}
 
-	g_free (doc->priv->content_type);
+	g_free (priv->content_type);
 
 	/* For compression types, we try to just guess from the content */
 	if (gedit_utils_get_compression_type_from_content_type (content_type) !=
@@ -876,12 +908,12 @@ set_content_type_no_guess (GeditDocument *doc,
 	if (dupped_content_type == NULL ||
 	    g_content_type_is_unknown (dupped_content_type))
 	{
-		doc->priv->content_type = get_default_content_type ();
+		priv->content_type = get_default_content_type ();
 		g_free (dupped_content_type);
 	}
 	else
 	{
-		doc->priv->content_type = dupped_content_type;
+		priv->content_type = dupped_content_type;
 	}
 
 	g_object_notify (G_OBJECT (doc), "content-type");
@@ -896,9 +928,13 @@ void
 gedit_document_set_content_type (GeditDocument *doc,
                                  const gchar   *content_type)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
 	gedit_debug (DEBUG_DOCUMENT);
+
+	priv = gedit_document_get_instance_private (doc);
 
 	if (content_type == NULL)
 	{
@@ -906,7 +942,7 @@ gedit_document_set_content_type (GeditDocument *doc,
 		gchar *guessed_type = NULL;
 
 		/* If content type is null, we guess from the filename */
-		location = gtk_source_file_get_location (doc->priv->file);
+		location = gtk_source_file_get_location (priv->file);
 		if (location != NULL)
 		{
 			gchar *basename;
@@ -939,11 +975,14 @@ gedit_document_set_content_type (GeditDocument *doc,
 GFile *
 gedit_document_get_location (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GFile *location;
+
+	priv = gedit_document_get_instance_private (doc);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
-	location = gtk_source_file_get_location (doc->priv->file);
+	location = gtk_source_file_get_location (priv->file);
 
 	return location != NULL ? g_object_ref (location) : NULL;
 }
@@ -959,10 +998,14 @@ void
 gedit_document_set_location (GeditDocument *doc,
 			     GFile         *location)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (G_IS_FILE (location));
 
-	gtk_source_file_set_location (doc->priv->file, location);
+	priv = gedit_document_get_instance_private (doc);
+
+	gtk_source_file_set_location (priv->file, location);
 	gedit_document_set_content_type (doc, NULL);
 }
 
@@ -975,16 +1018,19 @@ gedit_document_set_location (GeditDocument *doc,
 gchar *
 gedit_document_get_uri_for_display (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GFile *location;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), g_strdup (""));
 
-	location = gtk_source_file_get_location (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
+
+	location = gtk_source_file_get_location (priv->file);
 
 	if (location == NULL)
 	{
 		return g_strdup_printf (_("Unsaved Document %d"),
-					doc->priv->untitled_number);
+					priv->untitled_number);
 	}
 	else
 	{
@@ -1001,20 +1047,23 @@ gedit_document_get_uri_for_display (GeditDocument *doc)
 gchar *
 gedit_document_get_short_name_for_display (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GFile *location;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), g_strdup (""));
 
-	location = gtk_source_file_get_location (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
 
-	if (doc->priv->short_name != NULL)
+	location = gtk_source_file_get_location (priv->file);
+
+	if (priv->short_name != NULL)
 	{
-		return g_strdup (doc->priv->short_name);
+		return g_strdup (priv->short_name);
 	}
 	else if (location == NULL)
 	{
 		return g_strdup_printf (_("Unsaved Document %d"),
-					doc->priv->untitled_number);
+					priv->untitled_number);
 	}
 	else
 	{
@@ -1031,10 +1080,14 @@ void
 gedit_document_set_short_name_for_display (GeditDocument *doc,
                                            const gchar   *short_name)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
-	g_free (doc->priv->short_name);
-	doc->priv->short_name = g_strdup (short_name);
+	priv = gedit_document_get_instance_private (doc);
+
+	g_free (priv->short_name);
+	priv->short_name = g_strdup (short_name);
 
 	g_object_notify (G_OBJECT (doc), "shortname");
 }
@@ -1042,9 +1095,13 @@ gedit_document_set_short_name_for_display (GeditDocument *doc,
 gchar *
 gedit_document_get_content_type (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
- 	return g_strdup (doc->priv->content_type);
+	priv = gedit_document_get_instance_private (doc);
+
+	return g_strdup (priv->content_type);
 }
 
 /**
@@ -1056,12 +1113,16 @@ gedit_document_get_content_type (GeditDocument *doc)
 gchar *
 gedit_document_get_mime_type (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), g_strdup ("text/plain"));
 
-	if (doc->priv->content_type != NULL &&
-	    !g_content_type_is_unknown (doc->priv->content_type))
+	priv = gedit_document_get_instance_private (doc);
+
+	if (priv->content_type != NULL &&
+	    !g_content_type_is_unknown (priv->content_type))
 	{
-		return g_content_type_get_mime_type (doc->priv->content_type);
+		return g_content_type_get_mime_type (priv->content_type);
 	}
 
 	return g_strdup ("text/plain");
@@ -1071,15 +1132,19 @@ static void
 set_readonly (GeditDocument *doc,
 	      gboolean       readonly)
 {
+	GeditDocumentPrivate *priv;
+
 	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
+	priv = gedit_document_get_instance_private (doc);
+
 	readonly = readonly != FALSE;
 
-	if (doc->priv->readonly != readonly)
+	if (priv->readonly != readonly)
 	{
-		doc->priv->readonly = readonly;
+		priv->readonly = readonly;
 		g_object_notify (G_OBJECT (doc), "read-only");
 	}
 }
@@ -1087,9 +1152,13 @@ set_readonly (GeditDocument *doc,
 gboolean
 gedit_document_get_readonly (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
-	return doc->priv->readonly;
+	priv = gedit_document_get_instance_private (doc);
+
+	return priv->readonly;
 }
 
 static void
@@ -1097,8 +1166,11 @@ loaded_query_info_cb (GFile         *location,
 		      GAsyncResult  *result,
 		      GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GFileInfo *info;
 	GError *error = NULL;
+
+	priv = gedit_document_get_instance_private (doc);
 
 	info = g_file_query_info_finish (location, result, &error);
 
@@ -1139,8 +1211,8 @@ loaded_query_info_cb (GFile         *location,
 
 		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
 		{
-			g_file_info_get_modification_time (info, &doc->priv->mtime);
-			doc->priv->mtime_set = TRUE;
+			g_file_info_get_modification_time (info, &priv->mtime);
+			priv->mtime_set = TRUE;
 		}
 
 		g_object_unref (info);
@@ -1153,9 +1225,12 @@ loaded_query_info_cb (GFile         *location,
 static void
 gedit_document_loaded_real (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GFile *location;
 
-	if (!doc->priv->language_set_by_user)
+	priv = gedit_document_get_instance_private (doc);
+
+	if (!priv->language_set_by_user)
 	{
 		GtkSourceLanguage *language = guess_language (doc);
 
@@ -1165,17 +1240,17 @@ gedit_document_loaded_real (GeditDocument *doc)
 		set_language (doc, language, FALSE);
 	}
 
-	doc->priv->mtime_set = FALSE;
-	doc->priv->externally_modified = FALSE;
-	doc->priv->deleted = FALSE;
+	priv->mtime_set = FALSE;
+	priv->externally_modified = FALSE;
+	priv->deleted = FALSE;
 
-	g_get_current_time (&doc->priv->time_of_last_save_or_load);
+	g_get_current_time (&priv->time_of_last_save_or_load);
 
 	set_readonly (doc, FALSE);
 
 	gedit_document_set_content_type (doc, NULL);
 
-	location = gtk_source_file_get_location (doc->priv->file);
+	location = gtk_source_file_get_location (priv->file);
 
 	if (location != NULL)
 	{
@@ -1199,9 +1274,12 @@ saved_query_info_cb (GFile         *location,
 		     GAsyncResult  *result,
 		     GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GFileInfo *info;
 	const gchar *content_type = NULL;
 	GError *error = NULL;
+
+	priv = gedit_document_get_instance_private (doc);
 
 	info = g_file_query_info_finish (location, result, &error);
 
@@ -1212,7 +1290,7 @@ saved_query_info_cb (GFile         *location,
 		error = NULL;
 	}
 
-	doc->priv->mtime_set = FALSE;
+	priv->mtime_set = FALSE;
 
 	if (info != NULL)
 	{
@@ -1223,8 +1301,8 @@ saved_query_info_cb (GFile         *location,
 
 		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
 		{
-			g_file_info_get_modification_time (info, &doc->priv->mtime);
-			doc->priv->mtime_set = TRUE;
+			g_file_info_get_modification_time (info, &priv->mtime);
+			priv->mtime_set = TRUE;
 		}
 	}
 
@@ -1236,11 +1314,11 @@ saved_query_info_cb (GFile         *location,
 		g_object_unref (info);
 	}
 
-	g_get_current_time (&doc->priv->time_of_last_save_or_load);
+	g_get_current_time (&priv->time_of_last_save_or_load);
 
-	doc->priv->externally_modified = FALSE;
-	doc->priv->deleted = FALSE;
-	doc->priv->create = FALSE;
+	priv->externally_modified = FALSE;
+	priv->deleted = FALSE;
+	priv->create = FALSE;
 
 	set_readonly (doc, FALSE);
 
@@ -1255,7 +1333,12 @@ saved_query_info_cb (GFile         *location,
 static void
 gedit_document_saved_real (GeditDocument *doc)
 {
-	GFile *location = gtk_source_file_get_location (doc->priv->file);
+	GeditDocumentPrivate *priv;
+	GFile *location;
+
+	priv = gedit_document_get_instance_private (doc);
+
+	location = gtk_source_file_get_location (priv->file);
 
 	/* Keep the doc alive during the async operation. */
 	g_object_ref (doc);
@@ -1273,11 +1356,14 @@ gedit_document_saved_real (GeditDocument *doc)
 gboolean
 gedit_document_is_untouched (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GFile *location;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
-	location = gtk_source_file_get_location (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
+
+	location = gtk_source_file_get_location (priv->file);
 
 	return location == NULL && !gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc));
 }
@@ -1285,19 +1371,26 @@ gedit_document_is_untouched (GeditDocument *doc)
 gboolean
 gedit_document_is_untitled (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
-	return gtk_source_file_get_location (doc->priv->file) == NULL;
+	priv = gedit_document_get_instance_private (doc);
+
+	return gtk_source_file_get_location (priv->file) == NULL;
 }
 
 gboolean
 gedit_document_is_local (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GFile *location;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 
-	location = gtk_source_file_get_location (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
+
+	location = gtk_source_file_get_location (priv->file);
 
 	if (location == NULL)
 	{
@@ -1310,10 +1403,13 @@ gedit_document_is_local (GeditDocument *doc)
 static void
 check_file_on_disk (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GFile *location;
 	GFileInfo *info;
 
-	location = gtk_source_file_get_location (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
+
+	location = gtk_source_file_get_location (priv->file);
 
 	if (location == NULL)
 	{
@@ -1338,8 +1434,7 @@ check_file_on_disk (GeditDocument *doc)
 			set_readonly (doc, read_only);
 		}
 
-		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED) &&
-		    doc->priv->mtime_set)
+		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED) && priv->mtime_set)
 		{
 			GTimeVal timeval;
 
@@ -1348,10 +1443,10 @@ check_file_on_disk (GeditDocument *doc)
 			/* Note that mtime can even go backwards if the
 			 * user is copying over a file with an old mtime
 			 */
-			if (timeval.tv_sec != doc->priv->mtime.tv_sec ||
-			    timeval.tv_usec != doc->priv->mtime.tv_usec)
+			if (timeval.tv_sec != priv->mtime.tv_sec ||
+			    timeval.tv_usec != priv->mtime.tv_usec)
 			{
-				doc->priv->externally_modified = TRUE;
+				priv->externally_modified = TRUE;
 			}
 		}
 
@@ -1359,34 +1454,42 @@ check_file_on_disk (GeditDocument *doc)
 	}
 	else
 	{
-		doc->priv->deleted = TRUE;
+		priv->deleted = TRUE;
 	}
 }
 
 gboolean
 _gedit_document_check_externally_modified (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 
-	if (!doc->priv->externally_modified)
+	priv = gedit_document_get_instance_private (doc);
+
+	if (!priv->externally_modified)
 	{
 		check_file_on_disk (doc);
 	}
 
-	return doc->priv->externally_modified;
+	return priv->externally_modified;
 }
 
 gboolean
 gedit_document_get_deleted (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 
-	if (!doc->priv->deleted)
+	priv = gedit_document_get_instance_private (doc);
+
+	if (!priv->deleted)
 	{
 		check_file_on_disk (doc);
 	}
 
-	return doc->priv->deleted;
+	return priv->deleted;
 }
 
 /*
@@ -1395,7 +1498,11 @@ gedit_document_get_deleted (GeditDocument *doc)
 gboolean
 _gedit_document_needs_saving (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
+
+	priv = gedit_document_get_instance_private (doc);
 
 	if (gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
@@ -1407,7 +1514,7 @@ _gedit_document_needs_saving (GeditDocument *doc)
 		check_file_on_disk (doc);
 	}
 
-	return (doc->priv->externally_modified || doc->priv->deleted) && !doc->priv->create;
+	return (priv->externally_modified || priv->deleted) && !priv->create;
 }
 
 /* If @line is bigger than the lines of the document, the cursor is moved
@@ -1521,23 +1628,29 @@ gedit_document_get_language (GeditDocument *doc)
 const GtkSourceEncoding *
 gedit_document_get_encoding (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
-	return gtk_source_file_get_encoding (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
+
+	return gtk_source_file_get_encoding (priv->file);
 }
 
 glong
 _gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GTimeVal current_time;
-
 	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), -1);
 
+	priv = gedit_document_get_instance_private (doc);
+
 	g_get_current_time (&current_time);
 
-	return (current_time.tv_sec - doc->priv->time_of_last_save_or_load.tv_sec);
+	return (current_time.tv_sec - priv->time_of_last_save_or_load.tv_sec);
 }
 
 /**
@@ -1550,9 +1663,13 @@ _gedit_document_get_seconds_since_last_save_or_load (GeditDocument *doc)
 GtkSourceNewlineType
 gedit_document_get_newline_type (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), 0);
 
-	return gtk_source_file_get_newline_type (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
+
+	return gtk_source_file_get_newline_type (priv->file);
 }
 
 /**
@@ -1565,9 +1682,13 @@ gedit_document_get_newline_type (GeditDocument *doc)
 GtkSourceCompressionType
 gedit_document_get_compression_type (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), 0);
 
-	return gtk_source_file_get_compression_type (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
+
+	return gtk_source_file_get_compression_type (priv->file);
 }
 
 #ifndef ENABLE_GVFS_METADATA
@@ -1575,12 +1696,15 @@ gchar *
 gedit_document_get_metadata (GeditDocument *doc,
 			     const gchar   *key)
 {
+	GeditDocumentPrivate *priv;
 	GFile *location;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 	g_return_val_if_fail (key != NULL, NULL);
 
-	location = gtk_source_file_get_location (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
+
+	location = gtk_source_file_get_location (priv->file);
 
 	if (location != NULL)
 	{
@@ -1595,6 +1719,7 @@ gedit_document_set_metadata (GeditDocument *doc,
 			     const gchar   *first_key,
 			     ...)
 {
+	GeditDocumentPrivate *priv;
 	GFile *location;
 	const gchar *key;
 	const gchar *value;
@@ -1603,7 +1728,9 @@ gedit_document_set_metadata (GeditDocument *doc,
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (first_key != NULL);
 
-	location = gtk_source_file_get_location (doc->priv->file);
+	priv = gedit_document_get_instance_private (doc);
+
+	location = gtk_source_file_get_location (priv->file);
 
 	if (location == NULL)
 	{
@@ -1637,13 +1764,17 @@ gchar *
 gedit_document_get_metadata (GeditDocument *doc,
 			     const gchar   *key)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 	g_return_val_if_fail (key != NULL, NULL);
 
-	if (doc->priv->metadata_info != NULL &&
-	    g_file_info_has_attribute (doc->priv->metadata_info, key))
+	priv = gedit_document_get_instance_private (doc);
+
+	if (priv->metadata_info != NULL &&
+	    g_file_info_has_attribute (priv->metadata_info, key))
 	{
-		return g_strdup (g_file_info_get_attribute_string (doc->priv->metadata_info, key));
+		return g_strdup (g_file_info_get_attribute_string (priv->metadata_info, key));
 	}
 
 	return NULL;
@@ -1663,6 +1794,7 @@ gedit_document_set_metadata (GeditDocument *doc,
 			     const gchar   *first_key,
 			     ...)
 {
+	GeditDocumentPrivate *priv;
 	const gchar *key;
 	const gchar *value;
 	va_list var_args;
@@ -1671,6 +1803,8 @@ gedit_document_set_metadata (GeditDocument *doc,
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (first_key != NULL);
+
+	priv = gedit_document_get_instance_private (doc);
 
 	info = g_file_info_new ();
 
@@ -1684,9 +1818,9 @@ gedit_document_set_metadata (GeditDocument *doc,
 		{
 			g_file_info_set_attribute_string (info, key, value);
 
-			if (doc->priv->metadata_info != NULL)
+			if (priv->metadata_info != NULL)
 			{
-				g_file_info_set_attribute_string (doc->priv->metadata_info, key, value);
+				g_file_info_set_attribute_string (priv->metadata_info, key, value);
 			}
 		}
 		else
@@ -1694,16 +1828,16 @@ gedit_document_set_metadata (GeditDocument *doc,
 			/* Unset the key */
 			g_file_info_remove_attribute (info, key);
 
-			if (doc->priv->metadata_info != NULL)
+			if (priv->metadata_info != NULL)
 			{
-				g_file_info_remove_attribute (doc->priv->metadata_info, key);
+				g_file_info_remove_attribute (priv->metadata_info, key);
 			}
 		}
 	}
 
 	va_end (var_args);
 
-	location = gtk_source_file_get_location (doc->priv->file);
+	location = gtk_source_file_get_location (priv->file);
 
 	if (location != NULL)
 	{
@@ -1743,9 +1877,12 @@ gedit_document_set_metadata (GeditDocument *doc,
 static void
 update_empty_search (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	gboolean new_value;
 
-	if (doc->priv->search_context == NULL)
+	priv = gedit_document_get_instance_private (doc);
+
+	if (priv->search_context == NULL)
 	{
 		new_value = TRUE;
 	}
@@ -1753,14 +1890,14 @@ update_empty_search (GeditDocument *doc)
 	{
 		GtkSourceSearchSettings *search_settings;
 
-		search_settings = gtk_source_search_context_get_settings (doc->priv->search_context);
+		search_settings = gtk_source_search_context_get_settings (priv->search_context);
 
 		new_value = gtk_source_search_settings_get_search_text (search_settings) == NULL;
 	}
 
-	if (doc->priv->empty_search != new_value)
+	if (priv->empty_search != new_value)
 	{
-		doc->priv->empty_search = new_value;
+		priv->empty_search = new_value;
 		g_object_notify (G_OBJECT (doc), "empty-search");
 	}
 }
@@ -1768,9 +1905,12 @@ update_empty_search (GeditDocument *doc)
 static void
 connect_search_settings (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
 	GtkSourceSearchSettings *search_settings;
 
-	search_settings = gtk_source_search_context_get_settings (doc->priv->search_context);
+	priv = gedit_document_get_instance_private (doc);
+
+	search_settings = gtk_source_search_context_get_settings (priv->search_context);
 
 	/* Note: the signal handler is never disconnected. If the search context
 	 * changes its search settings, the old search settings will most
@@ -1803,24 +1943,29 @@ void
 gedit_document_set_search_context (GeditDocument          *doc,
 				   GtkSourceSearchContext *search_context)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
-	if (doc->priv->search_context != NULL)
+	priv = gedit_document_get_instance_private (doc);
+
+	if (priv->search_context != NULL)
 	{
-		g_signal_handlers_disconnect_by_func (doc->priv->search_context,
+		g_signal_handlers_disconnect_by_func (priv->search_context,
 						      connect_search_settings,
 						      doc);
 
-		g_object_unref (doc->priv->search_context);
+		g_object_unref (priv->search_context);
 	}
 
-	doc->priv->search_context = search_context;
+	priv->search_context = search_context;
 
 	if (search_context != NULL)
 	{
 		g_object_ref (search_context);
 
-		g_settings_bind (doc->priv->editor_settings, GEDIT_SETTINGS_SEARCH_HIGHLIGHTING,
+		g_settings_bind (priv->editor_settings,
+				 GEDIT_SETTINGS_SEARCH_HIGHLIGHTING,
 				 search_context, "highlight",
 				 G_SETTINGS_BIND_GET);
 
@@ -1852,17 +1997,25 @@ gedit_document_set_search_context (GeditDocument          *doc,
 GtkSourceSearchContext *
 gedit_document_get_search_context (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
-	return doc->priv->search_context;
+	priv = gedit_document_get_instance_private (doc);
+
+	return priv->search_context;
 }
 
 gboolean
 _gedit_document_get_empty_search (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), TRUE);
 
-	return doc->priv->empty_search;
+	priv = gedit_document_get_instance_private (doc);
+
+	return priv->empty_search;
 }
 
 /**
@@ -1884,26 +2037,38 @@ _gedit_document_get_empty_search (GeditDocument *doc)
 GtkSourceFile *
 gedit_document_get_file (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
-	return doc->priv->file;
+	priv = gedit_document_get_instance_private (doc);
+
+	return priv->file;
 }
 
 void
 _gedit_document_set_create (GeditDocument *doc,
 			    gboolean       create)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
-	doc->priv->create = create != FALSE;
+	priv = gedit_document_get_instance_private (doc);
+
+	priv->create = create != FALSE;
 }
 
 gboolean
 _gedit_document_get_create (GeditDocument *doc)
 {
+	GeditDocumentPrivate *priv;
+
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 
-	return doc->priv->create;
+	priv = gedit_document_get_instance_private (doc);
+
+	return priv->create;
 }
 
 /* ex:set ts=8 noet: */

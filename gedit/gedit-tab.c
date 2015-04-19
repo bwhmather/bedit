@@ -36,6 +36,8 @@
 #include "gedit-print-preview.h"
 #include "gedit-progress-info-bar.h"
 #include "gedit-debug.h"
+#include "gedit-document.h"
+#include "gedit-document-private.h"
 #include "gedit-enum-types.h"
 #include "gedit-settings.h"
 #include "gedit-view-frame.h"

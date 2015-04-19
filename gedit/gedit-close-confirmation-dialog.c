@@ -27,6 +27,8 @@
 #include <glib/gi18n.h>
 
 #include <gedit/gedit-app.h>
+#include <gedit/gedit-document.h>
+#include <gedit/gedit-document-private.h>
 #include <gedit/gedit-utils.h>
 #include <gedit/gedit-window.h>
 

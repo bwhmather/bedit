@@ -32,12 +32,13 @@
 #include <gio/gio.h>
 #include <gtk/gtk.h>
 
+#include "gedit-debug.h"
+#include "gedit-document.h"
+#include "gedit-document-private.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
 #include "gedit-notebook.h"
-#include "gedit-document.h"
 #include "gedit-statusbar.h"
-#include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "gedit-file-chooser-dialog.h"
 #include "gedit-close-confirmation-dialog.h"
