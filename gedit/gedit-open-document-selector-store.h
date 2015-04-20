@@ -29,29 +29,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR_STORE			(gedit_open_document_selector_store_get_type ())
-#define GEDIT_OPEN_DOCUMENT_SELECTOR_STORE(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR_STORE, GeditOpenDocumentSelectorStore))
-#define GEDIT_IS_OPEN_DOCUMENT_SELECTOR_STORE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR_STORE))
-#define GEDIT_OPEN_DOCUMENT_SELECTOR_STORE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR_STORE, GeditOpenDocumentSelectorStore const))
-#define GEDIT_OPEN_DOCUMENT_SELECTOR_STORE_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR_STORE, GeditOpenDocumentSelectorStoreClass))
-#define GEDIT_IS_OPEN_DOCUMENT_SELECTOR_STORE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR_STORE))
-#define GEDIT_OPEN_DOCUMENT_SELECTOR_STORE_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR_STORE, GeditOpenDocumentSelectorStoreClass))
+#define GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR_STORE (gedit_open_document_selector_store_get_type ())
 
-typedef struct _GeditOpenDocumentSelectorStore			GeditOpenDocumentSelectorStore;
-typedef struct _GeditOpenDocumentSelectorStoreClass		GeditOpenDocumentSelectorStoreClass;
-typedef struct _GeditOpenDocumentSelectorStorePrivate		GeditOpenDocumentSelectorStorePrivate;
-
-struct _GeditOpenDocumentSelectorStore
-{
-	GtkBox parent;
-
-	GeditOpenDocumentSelectorStorePrivate *priv;
-};
-
-struct _GeditOpenDocumentSelectorStoreClass
-{
-	GtkBoxClass  parent_class;
-};
+G_DECLARE_FINAL_TYPE (GeditOpenDocumentSelectorStore, gedit_open_document_selector_store, GEDIT, OPEN_DOCUMENT_SELECTOR_STORE, GObject)
 
 #define GEDIT_OPEN_DOCUMENT_SELECTOR_STORE_ERROR gedit_open_document_selector_store_error_quark ()
 
@@ -61,8 +41,6 @@ typedef enum
 } GeditOpenDocumentSelectorStoreError;
 
 GQuark				 gedit_open_document_selector_store_error_quark				(void);
-
-GType				 gedit_open_document_selector_store_get_type				(void) G_GNUC_CONST;
 
 gint				 gedit_open_document_selector_store_get_recent_limit			(GeditOpenDocumentSelectorStore *store);
 
@@ -87,5 +65,4 @@ GeditOpenDocumentSelectorStore	*gedit_open_document_selector_store_get_default		
 G_END_DECLS
 
 #endif /* __GEDIT_OPEN_DOCUMENT_SELECTOR_STORE_H__ */
-
 /* ex:set ts=8 noet: */

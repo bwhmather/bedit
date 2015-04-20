@@ -2789,9 +2789,9 @@ gedit_window_init (GeditWindow *window)
 	fullscreen_controls_setup (window);
 	sync_fullscreen_actions (window, FALSE);
 
-	g_object_bind_property (window->priv->open_document_selector->recent_search_entry,
+	g_object_bind_property (gedit_open_document_selector_get_search_entry (window->priv->open_document_selector),
 	                        "text",
-	                        window->priv->fullscreen_open_document_selector->recent_search_entry,
+	                        gedit_open_document_selector_get_search_entry (window->priv->fullscreen_open_document_selector),
 	                        "text",
 	                        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 

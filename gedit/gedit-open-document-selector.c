@@ -36,8 +36,13 @@
 #include "gedit-window.h"
 #include "gedit-debug.h"
 
-struct _GeditOpenDocumentSelectorPrivate
+struct _GeditOpenDocumentSelector
 {
+	GtkBox parent_instance;
+
+	GeditWindow *window;
+	GtkWidget *search_entry;
+
 	GtkWidget *open_button;
 	GtkWidget *treeview;
 	GtkListStore *liststore;
@@ -95,7 +100,7 @@ enum
 #define OPEN_DOCUMENT_SELECTOR_WIDTH 400
 #define OPEN_DOCUMENT_SELECTOR_MAX_VISIBLE_ROWS 10
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditOpenDocumentSelector, gedit_open_document_selector, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GeditOpenDocumentSelector, gedit_open_document_selector, GTK_TYPE_BOX)
 
 static inline const guint8 *
 get_byte_run (const guint8 *byte_array,
@@ -256,7 +261,6 @@ create_row (GeditOpenDocumentSelector *selector,
             const FileItem            *item,
             GRegex                    *filter_regex)
 {
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	GtkTreeIter iter;
 	gchar *uri;
 	gchar *dst_path;
@@ -278,8 +282,8 @@ create_row (GeditOpenDocumentSelector *selector,
 		dst_name = g_markup_escape_text (item->name, -1);
 	}
 
-	gtk_list_store_append (priv->liststore, &iter);
-	gtk_list_store_set (priv->liststore, &iter,
+	gtk_list_store_append (selector->liststore, &iter);
+	gtk_list_store_set (selector->liststore, &iter,
 	                    URI_COLUMN, uri,
 	                    NAME_COLUMN, dst_name,
 	                    PATH_COLUMN, dst_path,
@@ -312,7 +316,6 @@ sort_items_by_mru (FileItem *a,
 static GList *
 compute_all_items_list (GeditOpenDocumentSelector *selector)
 {
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	GList *recent_items;
 	GList *home_dir_items;
 	GList *desktop_dir_items;
@@ -323,18 +326,18 @@ compute_all_items_list (GeditOpenDocumentSelector *selector)
 	GList *all_items = NULL;
 
 	/* Copy/concat the whole list */
-	recent_items = gedit_open_document_selector_copy_file_items_list ((const GList *)priv->recent_items);
-	home_dir_items = gedit_open_document_selector_copy_file_items_list ((const GList *)priv->home_dir_items);
-	desktop_dir_items = gedit_open_document_selector_copy_file_items_list ((const GList *)priv->desktop_dir_items);
-	local_bookmarks_dir_items = gedit_open_document_selector_copy_file_items_list ((const GList *)priv->local_bookmarks_dir_items);
-	file_browser_root_items = gedit_open_document_selector_copy_file_items_list ((const GList *)priv->file_browser_root_items);
-	active_doc_dir_items = gedit_open_document_selector_copy_file_items_list ((const GList *)priv->active_doc_dir_items);
-	current_docs_items = gedit_open_document_selector_copy_file_items_list ((const GList *)priv->current_docs_items);
+	recent_items = gedit_open_document_selector_copy_file_items_list ((const GList *)selector->recent_items);
+	home_dir_items = gedit_open_document_selector_copy_file_items_list ((const GList *)selector->home_dir_items);
+	desktop_dir_items = gedit_open_document_selector_copy_file_items_list ((const GList *)selector->desktop_dir_items);
+	local_bookmarks_dir_items = gedit_open_document_selector_copy_file_items_list ((const GList *)selector->local_bookmarks_dir_items);
+	file_browser_root_items = gedit_open_document_selector_copy_file_items_list ((const GList *)selector->file_browser_root_items);
+	active_doc_dir_items = gedit_open_document_selector_copy_file_items_list ((const GList *)selector->active_doc_dir_items);
+	current_docs_items = gedit_open_document_selector_copy_file_items_list ((const GList *)selector->current_docs_items);
 
-	if (priv->all_items)
+	if (selector->all_items)
 	{
-		gedit_open_document_selector_free_file_items_list (priv->all_items);
-		priv->all_items = NULL;
+		gedit_open_document_selector_free_file_items_list (selector->all_items);
+		selector->all_items = NULL;
 	}
 
 	all_items = g_list_concat (all_items, recent_items);
@@ -474,25 +477,25 @@ static gboolean
 real_populate_liststore (gpointer data)
 {
 	GeditOpenDocumentSelector *selector = GEDIT_OPEN_DOCUMENT_SELECTOR (data);
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
-	GeditOpenDocumentSelectorStore *selector_store = priv->selector_store;
+	GeditOpenDocumentSelectorStore *selector_store;
 	GList *l;
 	GList *filter_items = NULL;
 	gchar *filter;
 	GRegex *filter_regex = NULL;
-	priv->populate_liststore_is_idle = FALSE;
+	selector->populate_liststore_is_idle = FALSE;
 
 	DEBUG_SELECTOR_TIMER_DECL
 	DEBUG_SELECTOR_TIMER_NEW
 
-	gtk_list_store_clear (priv->liststore);
+	gtk_list_store_clear (selector->liststore);
 
+	selector_store = selector->selector_store;
 	filter = gedit_open_document_selector_store_get_recent_filter (selector_store);
 	if (filter && *filter != '\0')
 	{
 		DEBUG_SELECTOR (g_print ("Selector(%p): populate liststore: all lists\n", selector););
 
-		filter_items = fileitem_list_filter (priv->all_items, (const gchar *)filter);
+		filter_items = fileitem_list_filter (selector->all_items, (const gchar *)filter);
 		filter_items = g_list_sort_with_data (filter_items, (GCompareDataFunc)sort_items_by_mru, NULL);
 		fileitem_list_remove_duplicates (filter_items);
 
@@ -509,13 +512,13 @@ real_populate_liststore (gpointer data)
 
 		if (recent_limit > 0 )
 		{
-			recent_items = fileitem_list_filter (priv->recent_items, NULL);
+			recent_items = fileitem_list_filter (selector->recent_items, NULL);
 			filter_items = clamp_recent_items_list (recent_items, recent_limit);
 			gedit_open_document_selector_free_file_items_list (recent_items);
 		}
 		else
 		{
-			filter_items = fileitem_list_filter (priv->recent_items, NULL);
+			filter_items = fileitem_list_filter (selector->recent_items, NULL);
 		}
 	}
 
@@ -525,8 +528,8 @@ real_populate_liststore (gpointer data)
 	                         selector, g_list_length (filter_items)););
 
 	/* Show the placeholder if no results, show the treeview otherwise */
-	gtk_widget_set_visible (priv->scrolled_window, (filter_items != NULL));
-	gtk_widget_set_visible (priv->placeholder_box, (filter_items == NULL));
+	gtk_widget_set_visible (selector->scrolled_window, (filter_items != NULL));
+	gtk_widget_set_visible (selector->placeholder_box, (filter_items == NULL));
 
 	for (l = filter_items; l != NULL; l = l->next)
 	{
@@ -547,9 +550,9 @@ real_populate_liststore (gpointer data)
 	                          selector, DEBUG_SELECTOR_TIMER_GET););
 	DEBUG_SELECTOR_TIMER_DESTROY
 
-	if (priv->populate_scheduled == TRUE)
+	if (selector->populate_scheduled == TRUE)
 	{
-		priv->populate_scheduled = FALSE;
+		selector->populate_scheduled = FALSE;
 		return TRUE;
 	}
 	else
@@ -561,20 +564,18 @@ real_populate_liststore (gpointer data)
 static void
 populate_liststore (GeditOpenDocumentSelector *selector)
 {
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
-
 	/* Populate requests are compressed */
-	if (priv->populate_liststore_is_idle)
+	if (selector->populate_liststore_is_idle)
 	{
 		DEBUG_SELECTOR (g_print ("Selector(%p): populate liststore: idle\n", selector););
 
-		priv->populate_scheduled = TRUE;
+		selector->populate_scheduled = TRUE;
 		return;
 	}
 
 	DEBUG_SELECTOR (g_print ("Selector(%p): populate liststore: scheduled\n", selector););
 
-	priv->populate_liststore_is_idle = TRUE;
+	selector->populate_liststore_is_idle = TRUE;
 	gdk_threads_add_idle_full (G_PRIORITY_HIGH_IDLE + 30, real_populate_liststore, selector, NULL);
 }
 
@@ -603,7 +604,7 @@ on_treeview_key_press (GtkTreeView               *treeview,
 			if (gtk_tree_selection_path_is_selected (tree_selection, root_path))
 			{
 				gtk_tree_selection_unselect_all (tree_selection);
-				gtk_widget_grab_focus (selector->recent_search_entry);
+				gtk_widget_grab_focus (selector->search_entry);
 
 				return GDK_EVENT_STOP;
 			}
@@ -617,11 +618,10 @@ static void
 on_entry_changed (GtkEntry                  *entry,
                   GeditOpenDocumentSelector *selector)
 {
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	const gchar *entry_text;
 
 	entry_text = gtk_entry_get_text (entry);
-	gedit_open_document_selector_store_set_recent_filter (priv->selector_store,
+	gedit_open_document_selector_store_set_recent_filter (selector->selector_store,
 	                                                      g_utf8_strdown (entry_text, -1));
 
 	if (gtk_widget_get_mapped ( GTK_WIDGET (selector)))
@@ -668,7 +668,7 @@ on_entry_activated (GtkEntry                  *entry,
 		                         selector, uri););
 
 		gtk_entry_set_text (entry, "");
-		selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (selector->priv->treeview));
+		selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (selector->treeview));
 		gtk_tree_selection_unselect_all (selection);
 
 		g_signal_emit (G_OBJECT (selector), signals[SELECTOR_FILE_ACTIVATED], 0, uri);
@@ -681,7 +681,6 @@ static void
 gedit_open_document_selector_dispose (GObject *object)
 {
 	GeditOpenDocumentSelector *selector = GEDIT_OPEN_DOCUMENT_SELECTOR (object);
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 
 	while (TRUE)
 	{
@@ -691,52 +690,52 @@ gedit_open_document_selector_dispose (GObject *object)
 		}
 	}
 
-	if (priv->recent_items)
+	if (selector->recent_items)
 	{
-		gedit_open_document_selector_free_file_items_list (priv->recent_items);
-		priv->recent_items = NULL;
+		gedit_open_document_selector_free_file_items_list (selector->recent_items);
+		selector->recent_items = NULL;
 	}
 
-	if (priv->home_dir_items)
+	if (selector->home_dir_items)
 	{
-		gedit_open_document_selector_free_file_items_list (priv->home_dir_items);
-		priv->home_dir_items = NULL;
+		gedit_open_document_selector_free_file_items_list (selector->home_dir_items);
+		selector->home_dir_items = NULL;
 	}
 
-	if (priv->desktop_dir_items)
+	if (selector->desktop_dir_items)
 	{
-		gedit_open_document_selector_free_file_items_list (priv->desktop_dir_items);
-		priv->desktop_dir_items = NULL;
+		gedit_open_document_selector_free_file_items_list (selector->desktop_dir_items);
+		selector->desktop_dir_items = NULL;
 	}
 
-	if (priv->local_bookmarks_dir_items)
+	if (selector->local_bookmarks_dir_items)
 	{
-		gedit_open_document_selector_free_file_items_list (priv->local_bookmarks_dir_items);
-		priv->local_bookmarks_dir_items = NULL;
+		gedit_open_document_selector_free_file_items_list (selector->local_bookmarks_dir_items);
+		selector->local_bookmarks_dir_items = NULL;
 	}
 
-	if (priv->file_browser_root_items)
+	if (selector->file_browser_root_items)
 	{
-		gedit_open_document_selector_free_file_items_list (priv->file_browser_root_items);
-		priv->file_browser_root_items = NULL;
+		gedit_open_document_selector_free_file_items_list (selector->file_browser_root_items);
+		selector->file_browser_root_items = NULL;
 	}
 
-	if (priv->active_doc_dir_items)
+	if (selector->active_doc_dir_items)
 	{
-		gedit_open_document_selector_free_file_items_list (priv->active_doc_dir_items);
-		priv->active_doc_dir_items = NULL;
+		gedit_open_document_selector_free_file_items_list (selector->active_doc_dir_items);
+		selector->active_doc_dir_items = NULL;
 	}
 
-	if (priv->current_docs_items)
+	if (selector->current_docs_items)
 	{
-		gedit_open_document_selector_free_file_items_list (priv->current_docs_items);
-		priv->current_docs_items = NULL;
+		gedit_open_document_selector_free_file_items_list (selector->current_docs_items);
+		selector->current_docs_items = NULL;
 	}
 
-	if (priv->all_items)
+	if (selector->all_items)
 	{
-		gedit_open_document_selector_free_file_items_list (priv->all_items);
-		priv->all_items = NULL;
+		gedit_open_document_selector_free_file_items_list (selector->all_items);
+		selector->all_items = NULL;
 	}
 
 	G_OBJECT_CLASS (gedit_open_document_selector_parent_class)->dispose (object);
@@ -748,13 +747,12 @@ on_row_activated (GtkTreeView               *treeview,
                   GtkTreeViewColumn         *column,
                   GeditOpenDocumentSelector *selector)
 {
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 	gchar *uri;
 
-	gtk_tree_model_get_iter (GTK_TREE_MODEL (priv->liststore), &iter, path);
-	gtk_tree_model_get (GTK_TREE_MODEL (priv->liststore),
+	gtk_tree_model_get_iter (GTK_TREE_MODEL (selector->liststore), &iter, path);
+	gtk_tree_model_get (GTK_TREE_MODEL (selector->liststore),
 	                    &iter,
 	                    URI_COLUMN, &uri,
 	                    -1);
@@ -776,12 +774,10 @@ update_list_cb (GeditOpenDocumentSelectorStore *selector_store,
 	PushMessage *message;
 	ListType type;
 	GeditOpenDocumentSelector *selector;
-	GeditOpenDocumentSelectorPrivate *priv;
 
 	list = gedit_open_document_selector_store_update_list_finish (selector_store, res, &error);
 	message = g_task_get_task_data (G_TASK (res));
 	selector = message->selector;
-	priv = selector->priv;
 	type = message->type;
 
 	DEBUG_SELECTOR (g_print ("Selector(%p): update_list_cb - type:%s, length:%i\n",
@@ -790,45 +786,45 @@ update_list_cb (GeditOpenDocumentSelectorStore *selector_store,
 	switch (type)
 	{
 		case GEDIT_OPEN_DOCUMENT_SELECTOR_RECENT_FILES_LIST:
-			gedit_open_document_selector_free_file_items_list (priv->recent_items);
-			priv->recent_items = list;
+			gedit_open_document_selector_free_file_items_list (selector->recent_items);
+			selector->recent_items = list;
 			break;
 
 		case GEDIT_OPEN_DOCUMENT_SELECTOR_HOME_DIR_LIST:
-			gedit_open_document_selector_free_file_items_list (priv->home_dir_items);
-			priv->home_dir_items = list;
+			gedit_open_document_selector_free_file_items_list (selector->home_dir_items);
+			selector->home_dir_items = list;
 			break;
 
 		case GEDIT_OPEN_DOCUMENT_SELECTOR_DESKTOP_DIR_LIST:
-			gedit_open_document_selector_free_file_items_list (priv->desktop_dir_items);
-			priv->desktop_dir_items = list;
+			gedit_open_document_selector_free_file_items_list (selector->desktop_dir_items);
+			selector->desktop_dir_items = list;
 			break;
 
 		case GEDIT_OPEN_DOCUMENT_SELECTOR_LOCAL_BOOKMARKS_DIR_LIST:
-			gedit_open_document_selector_free_file_items_list (priv->local_bookmarks_dir_items);
-			priv->local_bookmarks_dir_items = list;
+			gedit_open_document_selector_free_file_items_list (selector->local_bookmarks_dir_items);
+			selector->local_bookmarks_dir_items = list;
 			break;
 
 		case GEDIT_OPEN_DOCUMENT_SELECTOR_FILE_BROWSER_ROOT_DIR_LIST:
-			gedit_open_document_selector_free_file_items_list (priv->file_browser_root_items);
-			priv->file_browser_root_items = list;
+			gedit_open_document_selector_free_file_items_list (selector->file_browser_root_items);
+			selector->file_browser_root_items = list;
 			break;
 
 		case GEDIT_OPEN_DOCUMENT_SELECTOR_ACTIVE_DOC_DIR_LIST:
-			gedit_open_document_selector_free_file_items_list (priv->active_doc_dir_items);
-			priv->active_doc_dir_items = list;
+			gedit_open_document_selector_free_file_items_list (selector->active_doc_dir_items);
+			selector->active_doc_dir_items = list;
 			break;
 
 		case GEDIT_OPEN_DOCUMENT_SELECTOR_CURRENT_DOCS_LIST:
-			gedit_open_document_selector_free_file_items_list (priv->current_docs_items);
-			priv->current_docs_items = list;
+			gedit_open_document_selector_free_file_items_list (selector->current_docs_items);
+			selector->current_docs_items = list;
 			break;
 
 		default:
 			g_return_if_reached ();
 	}
 
-	priv->all_items = compute_all_items_list (selector);
+	selector->all_items = compute_all_items_list (selector);
 	populate_liststore (selector);
 }
 
@@ -836,13 +832,12 @@ static void
 gedit_open_document_selector_constructed (GObject *object)
 {
 	GeditOpenDocumentSelector *selector = GEDIT_OPEN_DOCUMENT_SELECTOR (object);
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 
 	G_OBJECT_CLASS (gedit_open_document_selector_parent_class)->constructed (object);
 
 	DEBUG_SELECTOR (g_print ("Selector(%p): constructed - ask recent file list\n", selector););
 
-	gedit_open_document_selector_store_update_list_async (priv->selector_store,
+	gedit_open_document_selector_store_update_list_async (selector->selector_store,
 	                                                      selector,
 	                                                      NULL,
 	                                                      (GAsyncReadyCallback)update_list_cb,
@@ -854,7 +849,6 @@ static void
 gedit_open_document_selector_mapped (GtkWidget *widget)
 {
 	GeditOpenDocumentSelector *selector = GEDIT_OPEN_DOCUMENT_SELECTOR (widget);
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	ListType list_number;
 
 	/* We update all the lists */
@@ -862,7 +856,7 @@ gedit_open_document_selector_mapped (GtkWidget *widget)
 
 	for (list_number = 0; list_number < GEDIT_OPEN_DOCUMENT_SELECTOR_LIST_TYPE_NUM_OF_LISTS; list_number++)
 	{
-		gedit_open_document_selector_store_update_list_async (priv->selector_store,
+		gedit_open_document_selector_store_update_list_async (selector->selector_store,
 		                                                      selector,
 		                                                      NULL,
 		                                                      (GAsyncReadyCallback)update_list_cb,
@@ -928,6 +922,13 @@ gedit_open_document_selector_get_property (GObject    *object,
 }
 
 static void
+gedit_open_document_selector_file_activated (GeditOpenDocumentSelector *selector,
+					     const gchar               *uri)
+{
+	/* Do nothing in the default handler */
+}
+
+static void
 gedit_open_document_selector_class_init (GeditOpenDocumentSelectorClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
@@ -944,23 +945,23 @@ gedit_open_document_selector_class_init (GeditOpenDocumentSelectorClass *klass)
 	widget_class->map = gedit_open_document_selector_mapped;
 
 	signals[SELECTOR_FILE_ACTIVATED] =
-		g_signal_new ("file-activated",
-		              G_TYPE_FROM_CLASS (klass),
-		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		              G_STRUCT_OFFSET (GeditOpenDocumentSelectorClass, selector_file_activated),
-		              NULL, NULL,
-		              g_cclosure_marshal_VOID__STRING,
-		              G_TYPE_NONE, 1,
-		              G_TYPE_STRING);
+		g_signal_new_class_handler ("file-activated",
+		                            G_TYPE_FROM_CLASS (klass),
+		                            G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+		                            G_CALLBACK (gedit_open_document_selector_file_activated),
+		                            NULL, NULL, NULL,
+		                            G_TYPE_NONE,
+		                            1,
+		                            G_TYPE_STRING);
 
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-open-document-selector.ui");
 
-	gtk_widget_class_bind_template_child_private (widget_class, GeditOpenDocumentSelector, open_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditOpenDocumentSelector, treeview);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditOpenDocumentSelector, placeholder_box);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditOpenDocumentSelector, scrolled_window);
-	gtk_widget_class_bind_template_child (widget_class, GeditOpenDocumentSelector, recent_search_entry);
+	gtk_widget_class_bind_template_child (widget_class, GeditOpenDocumentSelector, open_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditOpenDocumentSelector, treeview);
+	gtk_widget_class_bind_template_child (widget_class, GeditOpenDocumentSelector, placeholder_box);
+	gtk_widget_class_bind_template_child (widget_class, GeditOpenDocumentSelector, scrolled_window);
+	gtk_widget_class_bind_template_child (widget_class, GeditOpenDocumentSelector, search_entry);
 
 	g_object_class_install_property (gobject_class,
 	                                 PROP_WINDOW,
@@ -978,8 +979,7 @@ on_treeview_allocate (GtkWidget                 *widget,
                       GdkRectangle              *allocation,
                       GeditOpenDocumentSelector *selector)
 {
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
-	GeditOpenDocumentSelectorStore *selector_store = priv->selector_store;
+	GeditOpenDocumentSelectorStore *selector_store;
 	GtkStyleContext *context;
 	gint name_renderer_natural_size;
 	gint path_renderer_natural_size;
@@ -991,22 +991,24 @@ on_treeview_allocate (GtkWidget                 *widget,
 	gint row_height;
 	gint recent_limit;
 
-	context = gtk_widget_get_style_context (priv->treeview);
+	selector_store = selector->selector_store;
+
+	context = gtk_widget_get_style_context (selector->treeview);
 
 	/* Treeview height computation */
-	gtk_cell_renderer_get_preferred_height (priv->name_renderer,
-	                                        priv->treeview,
+	gtk_cell_renderer_get_preferred_height (selector->name_renderer,
+	                                        selector->treeview,
 	                                        NULL,
 	                                        &name_renderer_natural_size);
 
-	gtk_cell_renderer_get_preferred_height (priv->path_renderer,
-	                                        priv->treeview,
+	gtk_cell_renderer_get_preferred_height (selector->path_renderer,
+	                                        selector->treeview,
 	                                        NULL,
 	                                        &path_renderer_natural_size);
 
 	gtk_style_context_get_padding (context, GTK_STATE_FLAG_NORMAL, &padding);
-	gtk_cell_renderer_get_padding (priv->name_renderer, NULL, &ypad);
-	gtk_widget_style_get (priv->treeview, "grid-line-width", &grid_line_width, NULL);
+	gtk_cell_renderer_get_padding (selector->name_renderer, NULL, &ypad);
+	gtk_widget_style_get (selector->treeview, "grid-line-width", &grid_line_width, NULL);
 
 	recent_limit = gedit_open_document_selector_store_get_recent_limit (selector_store);
 
@@ -1020,10 +1022,10 @@ on_treeview_allocate (GtkWidget                 *widget,
 	             grid_line_width;
 
 	treeview_height = row_height * limit_capped;
-	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (priv->scrolled_window),
+	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (selector->scrolled_window),
 	                                            treeview_height);
 
-	gtk_widget_set_size_request (priv->placeholder_box, -1, treeview_height);
+	gtk_widget_set_size_request (selector->placeholder_box, -1, treeview_height);
 }
 
 static void
@@ -1033,21 +1035,20 @@ name_renderer_datafunc (GtkTreeViewColumn         *column,
                         GtkTreeIter               *iter,
                         GeditOpenDocumentSelector *selector)
 {
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	GtkStyleContext *context;
 	GdkRGBA label_color;
 	gdouble font_size;
 
-	context = gtk_widget_get_style_context (priv->treeview);
+	context = gtk_widget_get_style_context (selector->treeview);
 
 	/* Name label foreground and font size styling */
 	gtk_style_context_add_class (context, "open-document-selector-name-label");
 
 	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &label_color);
-	g_object_set (priv->name_renderer, "foreground-rgba", &label_color, NULL);
+	g_object_set (selector->name_renderer, "foreground-rgba", &label_color, NULL);
 
 	gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL, "font-size", &font_size, NULL);
-	g_object_set (priv->name_renderer, "size-points", font_size, NULL);
+	g_object_set (selector->name_renderer, "size-points", font_size, NULL);
 
 	gtk_style_context_remove_class (context, "open-document-selector-name-label");
 }
@@ -1059,21 +1060,20 @@ path_renderer_datafunc (GtkTreeViewColumn         *column,
                         GtkTreeIter               *iter,
                         GeditOpenDocumentSelector *selector)
 {
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	GtkStyleContext *context;
 	GdkRGBA label_color;
 	gdouble font_size;
 
-	context = gtk_widget_get_style_context (priv->treeview);
+	context = gtk_widget_get_style_context (selector->treeview);
 
 	/* Path label foreground and font size styling */
 	gtk_style_context_add_class (context, "open-document-selector-path-label");
 
 	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &label_color);
-	g_object_set (priv->path_renderer, "foreground-rgba", &label_color, NULL);
+	g_object_set (selector->path_renderer, "foreground-rgba", &label_color, NULL);
 
 	gtk_style_context_get (context, GTK_STATE_FLAG_NORMAL, "font-size", &font_size, NULL);
-	g_object_set (priv->path_renderer, "size-points", font_size, NULL);
+	g_object_set (selector->path_renderer, "size-points", font_size, NULL);
 
 	gtk_style_context_remove_class (context, "open-document-selector-path-label");
 }
@@ -1081,44 +1081,43 @@ path_renderer_datafunc (GtkTreeViewColumn         *column,
 static void
 setup_treeview (GeditOpenDocumentSelector *selector)
 {
-	GeditOpenDocumentSelectorPrivate *priv = selector->priv;
 	GtkTreeViewColumn *column;
 	GtkCellArea *cell_area;
 	GtkStyleContext *context;
 
-	gtk_tree_view_set_model (GTK_TREE_VIEW (priv->treeview), GTK_TREE_MODEL (priv->liststore));
-	g_object_unref(GTK_TREE_MODEL (priv->liststore));
+	gtk_tree_view_set_model (GTK_TREE_VIEW (selector->treeview), GTK_TREE_MODEL (selector->liststore));
+	g_object_unref(GTK_TREE_MODEL (selector->liststore));
 
-	priv->name_renderer = gtk_cell_renderer_text_new ();
-	priv->path_renderer = gtk_cell_renderer_text_new ();
+	selector->name_renderer = gtk_cell_renderer_text_new ();
+	selector->path_renderer = gtk_cell_renderer_text_new ();
 
-	g_object_set (priv->name_renderer, "ellipsize", PANGO_ELLIPSIZE_END, NULL);
-	g_object_set (priv->path_renderer, "ellipsize", PANGO_ELLIPSIZE_START, NULL);
+	g_object_set (selector->name_renderer, "ellipsize", PANGO_ELLIPSIZE_END, NULL);
+	g_object_set (selector->path_renderer, "ellipsize", PANGO_ELLIPSIZE_START, NULL);
 
 	column = gtk_tree_view_column_new ();
 	gtk_tree_view_column_set_sizing (column, GTK_TREE_VIEW_COLUMN_FIXED);
 
-	gtk_tree_view_column_pack_start (column, priv->name_renderer, TRUE);
-	gtk_tree_view_column_pack_start (column, priv->path_renderer, TRUE);
+	gtk_tree_view_column_pack_start (column, selector->name_renderer, TRUE);
+	gtk_tree_view_column_pack_start (column, selector->path_renderer, TRUE);
 
-	gtk_tree_view_column_set_attributes (column, priv->name_renderer, "markup", NAME_COLUMN, NULL);
-	gtk_tree_view_column_set_attributes (column, priv->path_renderer, "markup", PATH_COLUMN, NULL);
+	gtk_tree_view_column_set_attributes (column, selector->name_renderer, "markup", NAME_COLUMN, NULL);
+	gtk_tree_view_column_set_attributes (column, selector->path_renderer, "markup", PATH_COLUMN, NULL);
 
-	gtk_tree_view_append_column (GTK_TREE_VIEW (priv->treeview), column);
+	gtk_tree_view_append_column (GTK_TREE_VIEW (selector->treeview), column);
 	cell_area = gtk_cell_layout_get_area (GTK_CELL_LAYOUT (column));
 	gtk_orientable_set_orientation (GTK_ORIENTABLE (cell_area), GTK_ORIENTATION_VERTICAL);
 
-	context = gtk_widget_get_style_context (priv->treeview);
+	context = gtk_widget_get_style_context (selector->treeview);
 	gtk_style_context_add_class (context, "open-document-selector-treeview");
 
 	gtk_tree_view_column_set_cell_data_func (column,
-	                                         priv->name_renderer,
+	                                         selector->name_renderer,
 	                                         (GtkTreeCellDataFunc)name_renderer_datafunc,
 	                                         selector,
 	                                         NULL);
 
 	gtk_tree_view_column_set_cell_data_func (column,
-	                                         priv->path_renderer,
+	                                         selector->path_renderer,
 	                                         (GtkTreeCellDataFunc)path_renderer_datafunc,
 	                                         selector,
 	                                         NULL);
@@ -1127,41 +1126,36 @@ setup_treeview (GeditOpenDocumentSelector *selector)
 static void
 gedit_open_document_selector_init (GeditOpenDocumentSelector *selector)
 {
-	GeditOpenDocumentSelectorPrivate *priv;
-
 	gedit_debug (DEBUG_WINDOW);
-
-	selector->priv = gedit_open_document_selector_get_instance_private (selector);
-	priv = selector->priv;
 
 	gtk_widget_init_template (GTK_WIDGET (selector));
 
-	priv->selector_store = gedit_open_document_selector_store_get_default ();
+	selector->selector_store = gedit_open_document_selector_store_get_default ();
 
-	priv->liststore = gtk_list_store_new (N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+	selector->liststore = gtk_list_store_new (N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 	setup_treeview (selector);
 
-	g_signal_connect (selector->recent_search_entry,
+	g_signal_connect (selector->search_entry,
 	                  "changed",
 	                  G_CALLBACK (on_entry_changed),
 	                  selector);
 
-	g_signal_connect (selector->recent_search_entry,
+	g_signal_connect (selector->search_entry,
 	                  "activate",
 	                  G_CALLBACK (on_entry_activated),
 	                  selector);
 
-	g_signal_connect (priv->treeview,
+	g_signal_connect (selector->treeview,
 	                  "row-activated",
 	                  G_CALLBACK (on_row_activated),
 	                  selector);
 
-	g_signal_connect (priv->treeview,
+	g_signal_connect (selector->treeview,
 	                  "size-allocate",
 	                  G_CALLBACK (on_treeview_allocate),
 	                  selector);
 
-	g_signal_connect (priv->treeview,
+	g_signal_connect (selector->treeview,
 	                  "key-press-event",
 	                  G_CALLBACK (on_treeview_key_press),
 	                  selector);
@@ -1175,6 +1169,22 @@ gedit_open_document_selector_new (GeditWindow *window)
 	return g_object_new (GEDIT_TYPE_OPEN_DOCUMENT_SELECTOR,
 	                     "window", window,
 	                     NULL);
+}
+
+GeditWindow *
+gedit_open_document_selector_get_window (GeditOpenDocumentSelector *selector)
+{
+	g_return_val_if_fail (GEDIT_IS_OPEN_DOCUMENT_SELECTOR (selector), NULL);
+
+	return selector->window;
+}
+
+GtkWidget *
+gedit_open_document_selector_get_search_entry (GeditOpenDocumentSelector *selector)
+{
+	g_return_val_if_fail (GEDIT_IS_OPEN_DOCUMENT_SELECTOR (selector), NULL);
+
+	return selector->search_entry;
 }
 
 /* ex:set ts=8 noet: */

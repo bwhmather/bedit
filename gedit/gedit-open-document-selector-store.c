@@ -63,8 +63,10 @@
 #include "gedit-window.h"
 #include "gedit-debug.h"
 
-struct _GeditOpenDocumentSelectorStorePrivate
+struct _GeditOpenDocumentSelectorStore
 {
+	GObject parent_instance;
+
 	GeditRecentConfiguration recent_config;
 	GList *recent_items;
 	gint recent_config_limit;
@@ -74,7 +76,7 @@ struct _GeditOpenDocumentSelectorStorePrivate
 G_LOCK_DEFINE_STATIC (recent_files_filter_lock);
 G_LOCK_DEFINE_STATIC (store_recent_items_lock);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditOpenDocumentSelectorStore, gedit_open_document_selector_store, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GeditOpenDocumentSelectorStore, gedit_open_document_selector_store, G_TYPE_OBJECT)
 
 G_DEFINE_QUARK (gedit-open-document-selector-store-error-quark,
                 gedit_open_document_selector_store_error)
@@ -83,6 +85,7 @@ static GList *
 get_current_docs_list (GeditOpenDocumentSelectorStore *selector_store,
                        GeditOpenDocumentSelector      *selector)
 {
+	GeditWindow *window;
 	GList *docs;
 	GList *l;
 	GFile *file;
@@ -90,7 +93,9 @@ get_current_docs_list (GeditOpenDocumentSelectorStore *selector_store,
 	FileItem *item;
 	GList *file_items_list = NULL;
 
-	docs = gedit_window_get_documents (selector->window);
+	window = gedit_open_document_selector_get_window (selector);
+
+	docs = gedit_window_get_documents (window);
 	for (l = docs; l != NULL; l = l->next)
 	{
 		file = gtk_source_file_get_location (gedit_document_get_file (l->data));
@@ -229,12 +234,15 @@ static GList *
 get_active_doc_dir_list (GeditOpenDocumentSelectorStore *selector_store,
                          GeditOpenDocumentSelector      *selector)
 {
+	GeditWindow *window;
 	GeditDocument *active_doc;
 	GList *file_items_list = NULL;
 	GFile *file;
 	GFile *parent_dir;
 
-	active_doc = gedit_window_get_active_document (selector->window);
+	window = gedit_open_document_selector_get_window (selector);
+
+	active_doc = gedit_window_get_active_document (window);
 	if (active_doc != NULL && gedit_document_is_local (active_doc))
 	{
 		file = gtk_source_file_get_location (gedit_document_get_file (active_doc));
@@ -253,11 +261,14 @@ static GFile *
 get_file_browser_root (GeditOpenDocumentSelectorStore *selector_store,
                        GeditOpenDocumentSelector      *selector)
 {
+	GeditWindow *window;
 	GeditMessageBus *bus;
 	GeditMessage *msg;
 	GFile *root = NULL;
 
-	bus = gedit_window_get_message_bus (selector->window);
+	window = gedit_open_document_selector_get_window (selector);
+
+	bus = gedit_window_get_message_bus (window);
 	if (gedit_message_bus_is_registered (bus, "/plugins/filebrowser", "get_root"))
 	{
 		msg = gedit_message_bus_send_sync (bus, "/plugins/filebrowser", "get_root", NULL, NULL);
@@ -489,12 +500,11 @@ static GList *
 get_recent_files_list (GeditOpenDocumentSelectorStore *selector_store,
                        GeditOpenDocumentSelector      *selector)
 {
-	GeditOpenDocumentSelectorStorePrivate *priv = selector_store->priv;
 	GList *recent_items_list;
 	GList *file_items_list;
 
 	G_LOCK (recent_files_filter_lock);
-	recent_items_list = gedit_recent_get_items (&priv->recent_config);
+	recent_items_list = gedit_recent_get_items (&selector_store->recent_config);
 	G_UNLOCK (recent_files_filter_lock);
 
 	file_items_list = convert_recent_item_list_to_fileitem_list (recent_items_list);
@@ -523,8 +533,8 @@ update_list_cb (GeditOpenDocumentSelectorStore *selector_store,
 		case GEDIT_OPEN_DOCUMENT_SELECTOR_RECENT_FILES_LIST:
 			G_LOCK (store_recent_items_lock);
 
-			gedit_open_document_selector_free_file_items_list (selector_store->priv->recent_items);
-			selector_store->priv->recent_items = list;
+			gedit_open_document_selector_free_file_items_list (selector_store->recent_items);
+			selector_store->recent_items = list;
 
 			DEBUG_SELECTOR (g_print ("\tStore(%p): update_list_cb: Thread:%p, type:%s, length:%i\n",
 			                         selector_store, g_thread_self (), list_type_string[type], g_list_length (list)););
@@ -542,7 +552,7 @@ on_recent_manager_changed (GtkRecentManager *manager,
 {
 	GeditOpenDocumentSelectorStore *selector_store = GEDIT_OPEN_DOCUMENT_SELECTOR_STORE (user_data);
 
-	selector_store->priv->recent_items_need_update = TRUE;
+	selector_store->recent_items_need_update = TRUE;
 	gedit_open_document_selector_store_update_list_async (selector_store,
 	                                                      NULL,
 	                                                      NULL,
@@ -555,14 +565,13 @@ static void
 gedit_open_document_selector_store_dispose (GObject *object)
 {
 	GeditOpenDocumentSelectorStore *selector_store = GEDIT_OPEN_DOCUMENT_SELECTOR_STORE (object);
-	GeditOpenDocumentSelectorStorePrivate *priv = selector_store->priv;
 
-	gedit_recent_configuration_destroy (&priv->recent_config);
+	gedit_recent_configuration_destroy (&selector_store->recent_config);
 
-	if (priv->recent_items)
+	if (selector_store->recent_items)
 	{
-		gedit_open_document_selector_free_file_items_list (priv->recent_items);
-		priv->recent_items = NULL;
+		gedit_open_document_selector_free_file_items_list (selector_store->recent_items);
+		selector_store->recent_items = NULL;
 	}
 
 	G_OBJECT_CLASS (gedit_open_document_selector_store_parent_class)->dispose (object);
@@ -598,7 +607,6 @@ update_list_dispatcher (GTask        *task,
                         GCancellable *cancellable)
 {
 	GeditOpenDocumentSelectorStore *selector_store = source_object;
-	GeditOpenDocumentSelectorStorePrivate *priv = selector_store->priv;
 	GeditOpenDocumentSelector *selector;
 	PushMessage *message;
 	ListType type;
@@ -618,22 +626,22 @@ update_list_dispatcher (GTask        *task,
 	{
 		G_LOCK (store_recent_items_lock);
 
-		if (priv->recent_items != NULL && priv->recent_items_need_update == FALSE)
+		if (selector_store->recent_items != NULL && selector_store->recent_items_need_update == FALSE)
 		{
-			file_items_list = gedit_open_document_selector_copy_file_items_list (priv->recent_items);
+			file_items_list = gedit_open_document_selector_copy_file_items_list (selector_store->recent_items);
 
 			DEBUG_SELECTOR (g_print ("\tStore(%p): store dispatcher: recent list copy\n", selector););
 		}
 		else
 		{
-			priv->recent_items_need_update = FALSE;
+			selector_store->recent_items_need_update = FALSE;
 			file_items_list = get_recent_files_list (selector_store, selector);
 
 			DEBUG_SELECTOR (g_print ("\tStore(%p): store dispatcher: recent list compute\n", selector););
 
-			if (priv->recent_items == NULL)
+			if (selector_store->recent_items == NULL)
 			{
-				priv->recent_items = gedit_open_document_selector_copy_file_items_list (file_items_list);
+				selector_store->recent_items = gedit_open_document_selector_copy_file_items_list (file_items_list);
 			}
 		}
 
@@ -710,65 +718,61 @@ gedit_open_document_selector_store_update_list_async (GeditOpenDocumentSelectorS
 }
 
 static void
-gedit_open_document_selector_store_init (GeditOpenDocumentSelectorStore *open_document_selector_store)
+gedit_open_document_selector_store_init (GeditOpenDocumentSelectorStore *selector_store)
 {
-	GeditOpenDocumentSelectorStorePrivate *priv;
+	gedit_recent_configuration_init_default (&selector_store->recent_config);
 
-	open_document_selector_store->priv = gedit_open_document_selector_store_get_instance_private (open_document_selector_store);
-	priv = open_document_selector_store->priv;
-
-	gedit_recent_configuration_init_default (&priv->recent_config);
 	/* We remove the recent files limit since we need the whole list but
 	 * we back it up as gedit_open_document_selector_store_get_recent_limit
 	 * use it
 	 */
-	priv->recent_config_limit = priv->recent_config.limit;
-	priv->recent_config.limit = -1;
+	selector_store->recent_config_limit = selector_store->recent_config.limit;
+	selector_store->recent_config.limit = -1;
 
-	g_signal_connect_object (priv->recent_config.manager,
+	g_signal_connect_object (selector_store->recent_config.manager,
 	                         "changed",
 	                         G_CALLBACK (on_recent_manager_changed),
-	                         open_document_selector_store,
+	                         selector_store,
 	                         0);
 
-	priv->recent_items_need_update = TRUE;
+	selector_store->recent_items_need_update = TRUE;
 }
 
 gint
-gedit_open_document_selector_store_get_recent_limit (GeditOpenDocumentSelectorStore *store)
+gedit_open_document_selector_store_get_recent_limit (GeditOpenDocumentSelectorStore *selector_store)
 {
-	g_return_val_if_fail (GEDIT_IS_OPEN_DOCUMENT_SELECTOR_STORE (store), -1);
+	g_return_val_if_fail (GEDIT_IS_OPEN_DOCUMENT_SELECTOR_STORE (selector_store), -1);
 
-	return store->priv->recent_config_limit;
+	return selector_store->recent_config_limit;
 }
 
 void
-gedit_open_document_selector_store_set_recent_filter (GeditOpenDocumentSelectorStore *store,
+gedit_open_document_selector_store_set_recent_filter (GeditOpenDocumentSelectorStore *selector_store,
                                                       gchar                          *filter)
 {
 	gchar *old_filter;
 
-	g_return_if_fail (GEDIT_IS_OPEN_DOCUMENT_SELECTOR_STORE (store));
+	g_return_if_fail (GEDIT_IS_OPEN_DOCUMENT_SELECTOR_STORE (selector_store));
 	g_return_if_fail (filter != NULL);
 
 	G_LOCK (recent_files_filter_lock);
 
-	old_filter = store->priv->recent_config.substring_filter;
-	store->priv->recent_config.substring_filter = filter;
+	old_filter = selector_store->recent_config.substring_filter;
+	selector_store->recent_config.substring_filter = filter;
 
 	G_UNLOCK (recent_files_filter_lock);
 	g_free (old_filter);
 }
 
 gchar *
-gedit_open_document_selector_store_get_recent_filter (GeditOpenDocumentSelectorStore *store)
+gedit_open_document_selector_store_get_recent_filter (GeditOpenDocumentSelectorStore *selector_store)
 {
 	gchar *recent_filter;
 
-	g_return_val_if_fail (GEDIT_IS_OPEN_DOCUMENT_SELECTOR_STORE (store), NULL);
+	g_return_val_if_fail (GEDIT_IS_OPEN_DOCUMENT_SELECTOR_STORE (selector_store), NULL);
 
 	G_LOCK (recent_files_filter_lock);
-	recent_filter = g_strdup (store->priv->recent_config.substring_filter);
+	recent_filter = g_strdup (selector_store->recent_config.substring_filter);
 	G_UNLOCK (recent_files_filter_lock);
 
 	return recent_filter;
