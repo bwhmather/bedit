@@ -31,7 +31,7 @@
 #include "gedit-app.h"
 #include "gedit-status-menu-button.h"
 
-struct _GeditStatusbarPrivate
+struct _GeditStatusbar
 {
 	GtkWidget     *error_frame;
 	GtkWidget     *error_image;
@@ -47,7 +47,7 @@ struct _GeditStatusbarPrivate
 	guint          flash_message_id;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
+G_DEFINE_TYPE (GeditStatusbar, gedit_statusbar, GTK_TYPE_STATUSBAR)
 
 static gchar *
 get_overwrite_mode_string (gboolean overwrite)
@@ -67,10 +67,10 @@ gedit_statusbar_dispose (GObject *object)
 {
 	GeditStatusbar *statusbar = GEDIT_STATUSBAR (object);
 
-	if (statusbar->priv->flash_timeout > 0)
+	if (statusbar->flash_timeout > 0)
 	{
-		g_source_remove (statusbar->priv->flash_timeout);
-		statusbar->priv->flash_timeout = 0;
+		g_source_remove (statusbar->flash_timeout);
+		statusbar->flash_timeout = 0;
 	}
 
 	G_OBJECT_CLASS (gedit_statusbar_parent_class)->dispose (object);
@@ -87,24 +87,22 @@ gedit_statusbar_class_init (GeditStatusbarClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class,
 		                                    "/org/gnome/gedit/ui/gedit-statusbar.ui");
 
-	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, error_frame);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, error_image);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, state_frame);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, load_image);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, save_image);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, print_image);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditStatusbar, overwrite_mode_label);
+	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, error_frame);
+	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, error_image);
+	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, state_frame);
+	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, load_image);
+	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, save_image);
+	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, print_image);
+	gtk_widget_class_bind_template_child (widget_class, GeditStatusbar, overwrite_mode_label);
 }
 
 static void
 gedit_statusbar_init (GeditStatusbar *statusbar)
 {
-	statusbar->priv = gedit_statusbar_get_instance_private (statusbar);
-
 	gtk_widget_init_template (GTK_WIDGET (statusbar));
 
-	gtk_label_set_width_chars (GTK_LABEL (statusbar->priv->overwrite_mode_label),
-				   get_overwrite_mode_length ());
+	gtk_label_set_width_chars (GTK_LABEL (statusbar->overwrite_mode_label),
+	                           get_overwrite_mode_length ());
 }
 
 /**
@@ -136,7 +134,7 @@ gedit_statusbar_set_overwrite (GeditStatusbar *statusbar,
 	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));
 
 	msg = get_overwrite_mode_string (overwrite);
-	gtk_label_set_text (GTK_LABEL (statusbar->priv->overwrite_mode_label), msg);
+	gtk_label_set_text (GTK_LABEL (statusbar->overwrite_mode_label), msg);
 	g_free (msg);
 }
 
@@ -145,18 +143,18 @@ gedit_statusbar_clear_overwrite (GeditStatusbar *statusbar)
 {
 	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));
 
-	gtk_label_set_text (GTK_LABEL (statusbar->priv->overwrite_mode_label), NULL);
+	gtk_label_set_text (GTK_LABEL (statusbar->overwrite_mode_label), NULL);
 }
 
 static gboolean
 remove_message_timeout (GeditStatusbar *statusbar)
 {
 	gtk_statusbar_remove (GTK_STATUSBAR (statusbar),
-			      statusbar->priv->flash_context_id,
-			      statusbar->priv->flash_message_id);
+	                      statusbar->flash_context_id,
+	                      statusbar->flash_message_id);
 
 	/* remove the timeout */
-	statusbar->priv->flash_timeout = 0;
+	statusbar->flash_timeout = 0;
   	return FALSE;
 }
 
@@ -188,24 +186,24 @@ gedit_statusbar_flash_message (GeditStatusbar *statusbar,
 	va_end (args);
 
 	/* remove a currently ongoing flash message */
-	if (statusbar->priv->flash_timeout > 0)
+	if (statusbar->flash_timeout > 0)
 	{
-		g_source_remove (statusbar->priv->flash_timeout);
-		statusbar->priv->flash_timeout = 0;
+		g_source_remove (statusbar->flash_timeout);
+		statusbar->flash_timeout = 0;
 
 		gtk_statusbar_remove (GTK_STATUSBAR (statusbar),
-				      statusbar->priv->flash_context_id,
-				      statusbar->priv->flash_message_id);
+		                      statusbar->flash_context_id,
+		                      statusbar->flash_message_id);
 	}
 
-	statusbar->priv->flash_context_id = context_id;
-	statusbar->priv->flash_message_id = gtk_statusbar_push (GTK_STATUSBAR (statusbar),
-								context_id,
-								msg);
+	statusbar->flash_context_id = context_id;
+	statusbar->flash_message_id = gtk_statusbar_push (GTK_STATUSBAR (statusbar),
+							  context_id,
+							  msg);
 
-	statusbar->priv->flash_timeout = g_timeout_add (flash_length,
-							(GSourceFunc) remove_message_timeout,
-							statusbar);
+	statusbar->flash_timeout = g_timeout_add (flash_length,
+						  (GSourceFunc) remove_message_timeout,
+						  statusbar);
 
 	g_free (msg);
 }
@@ -217,44 +215,43 @@ gedit_statusbar_set_window_state (GeditStatusbar   *statusbar,
 {
 	g_return_if_fail (GEDIT_IS_STATUSBAR (statusbar));
 
-	gtk_widget_hide (statusbar->priv->state_frame);
-	gtk_widget_hide (statusbar->priv->save_image);
-	gtk_widget_hide (statusbar->priv->load_image);
-	gtk_widget_hide (statusbar->priv->print_image);
+	gtk_widget_hide (statusbar->state_frame);
+	gtk_widget_hide (statusbar->save_image);
+	gtk_widget_hide (statusbar->load_image);
+	gtk_widget_hide (statusbar->print_image);
 
 	if (state & GEDIT_WINDOW_STATE_SAVING)
 	{
-		gtk_widget_show (statusbar->priv->state_frame);
-		gtk_widget_show (statusbar->priv->save_image);
+		gtk_widget_show (statusbar->state_frame);
+		gtk_widget_show (statusbar->save_image);
 	}
 	if (state & GEDIT_WINDOW_STATE_LOADING)
 	{
-		gtk_widget_show (statusbar->priv->state_frame);
-		gtk_widget_show (statusbar->priv->load_image);
+		gtk_widget_show (statusbar->state_frame);
+		gtk_widget_show (statusbar->load_image);
 	}
 	if (state & GEDIT_WINDOW_STATE_PRINTING)
 	{
-		gtk_widget_show (statusbar->priv->state_frame);
-		gtk_widget_show (statusbar->priv->print_image);
+		gtk_widget_show (statusbar->state_frame);
+		gtk_widget_show (statusbar->print_image);
 	}
 	if (state & GEDIT_WINDOW_STATE_ERROR)
 	{
 	 	gchar *tip;
 
  		tip = g_strdup_printf (ngettext("There is a tab with errors",
-						"There are %d tabs with errors",
-						num_of_errors),
-			       		num_of_errors);
+		                                "There are %d tabs with errors",
+		                                num_of_errors),
+		                       num_of_errors);
 
-		gtk_widget_set_tooltip_text (statusbar->priv->error_image,
-					     tip);
+		gtk_widget_set_tooltip_text (statusbar->error_image, tip);
 		g_free (tip);
 
-		gtk_widget_show (statusbar->priv->error_frame);
+		gtk_widget_show (statusbar->error_frame);
 	}
 	else
 	{
-		gtk_widget_hide (statusbar->priv->error_frame);
+		gtk_widget_hide (statusbar->error_frame);
 	}
 }
 

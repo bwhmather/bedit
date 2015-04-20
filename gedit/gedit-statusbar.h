@@ -26,31 +26,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_STATUSBAR		(gedit_statusbar_get_type ())
-#define GEDIT_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_STATUSBAR, GeditStatusbar))
-#define GEDIT_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_STATUSBAR, GeditStatusbarClass))
-#define GEDIT_IS_STATUSBAR(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_STATUSBAR))
-#define GEDIT_IS_STATUSBAR_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_STATUSBAR))
-#define GEDIT_STATUSBAR_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_STATUSBAR, GeditStatusbarClass))
+#define GEDIT_TYPE_STATUSBAR (gedit_statusbar_get_type ())
 
-typedef struct _GeditStatusbar		GeditStatusbar;
-typedef struct _GeditStatusbarPrivate	GeditStatusbarPrivate;
-typedef struct _GeditStatusbarClass	GeditStatusbarClass;
-
-struct _GeditStatusbar
-{
-	GtkStatusbar parent;
-
-	/* <private/> */
-	GeditStatusbarPrivate *priv;
-};
-
-struct _GeditStatusbarClass
-{
-	GtkStatusbarClass parent_class;
-};
-
-GType		 gedit_statusbar_get_type		(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditStatusbar, gedit_statusbar, GEDIT, STATUSBAR, GtkStatusbar)
 
 GtkWidget	*gedit_statusbar_new			(void);
 
