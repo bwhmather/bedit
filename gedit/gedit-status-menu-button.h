@@ -25,34 +25,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_STATUS_MENU_BUTTON			(gedit_status_menu_button_get_type ())
-#define GEDIT_STATUS_MENU_BUTTON(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButton))
-#define GEDIT_STATUS_MENU_BUTTON_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButton const))
-#define GEDIT_STATUS_MENU_BUTTON_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButtonClass))
-#define GEDIT_IS_STATUS_MENU_BUTTON(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_STATUS_MENU_BUTTON))
-#define GEDIT_IS_STATUS_MENU_BUTTON_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_STATUS_MENU_BUTTON))
-#define GEDIT_STATUS_MENU_BUTTON_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_STATUS_MENU_BUTTON, GeditStatusMenuButtonClass))
+#define GEDIT_TYPE_STATUS_MENU_BUTTON (gedit_status_menu_button_get_type ())
 
-typedef struct _GeditStatusMenuButton			GeditStatusMenuButton;
-typedef struct _GeditStatusMenuButtonPrivate		GeditStatusMenuButtonPrivate;
-typedef struct _GeditStatusMenuButtonClass		GeditStatusMenuButtonClass;
-typedef struct _GeditStatusMenuButtonClassPrivate	GeditStatusMenuButtonClassPrivate;
-
-struct _GeditStatusMenuButton
-{
-	GtkMenuButton parent;
-
-	GeditStatusMenuButtonPrivate *priv;
-};
-
-struct _GeditStatusMenuButtonClass
-{
-	GtkMenuButtonClass parent_class;
-
-	GeditStatusMenuButtonClassPrivate *priv;
-};
-
-GType gedit_status_menu_button_get_type 	(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditStatusMenuButton, gedit_status_menu_button, GEDIT, STATUS_MENU_BUTTON, GtkMenuButton)
 
 GtkWidget *gedit_status_menu_button_new		(void);
 
