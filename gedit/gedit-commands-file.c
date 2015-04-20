@@ -35,6 +35,8 @@
 #include "gedit-debug.h"
 #include "gedit-document.h"
 #include "gedit-document-private.h"
+#include "gedit-tab.h"
+#include "gedit-tab-private.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"
 #include "gedit-notebook.h"

@@ -38,6 +38,8 @@
 #include "gedit-notebook-popup-menu.h"
 #include "gedit-multi-notebook.h"
 #include "gedit-statusbar.h"
+#include "gedit-tab.h"
+#include "gedit-tab-private.h"
 #include "gedit-utils.h"
 #include "gedit-commands.h"
 #include "gedit-commands-private.h"

@@ -34,6 +34,8 @@
 
 #include "gedit-debug.h"
 #include "gedit-statusbar.h"
+#include "gedit-tab.h"
+#include "gedit-tab-private.h"
 #include "gedit-view-frame.h"
 #include "gedit-window.h"
 #include "gedit-window-private.h"

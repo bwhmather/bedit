@@ -26,33 +26,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_TAB_LABEL		(gedit_tab_label_get_type ())
-#define GEDIT_TAB_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_TAB_LABEL, GeditTabLabel))
-#define GEDIT_TAB_LABEL_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_TAB_LABEL, GeditTabLabel const))
-#define GEDIT_TAB_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_TAB_LABEL, GeditTabLabelClass))
-#define GEDIT_IS_TAB_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_TAB_LABEL))
-#define GEDIT_IS_TAB_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_TAB_LABEL))
-#define GEDIT_TAB_LABEL_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_TAB_LABEL, GeditTabLabelClass))
+#define GEDIT_TYPE_TAB_LABEL (gedit_tab_label_get_type ())
 
-typedef struct _GeditTabLabel		GeditTabLabel;
-typedef struct _GeditTabLabelClass	GeditTabLabelClass;
-typedef struct _GeditTabLabelPrivate	GeditTabLabelPrivate;
-
-struct _GeditTabLabel
-{
-	GtkBox parent;
-
-	GeditTabLabelPrivate *priv;
-};
-
-struct _GeditTabLabelClass
-{
-	GtkBoxClass parent_class;
-
-	void (* close_clicked)  (GeditTabLabel *tab_label);
-};
-
-GType		 gedit_tab_label_get_type			(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditTabLabel, gedit_tab_label, GEDIT, TAB_LABEL, GtkBox)
 
 GtkWidget 	*gedit_tab_label_new				(GeditTab *tab);
 

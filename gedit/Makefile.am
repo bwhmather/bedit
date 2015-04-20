@@ -129,6 +129,7 @@ gedit_NOINST_H_FILES =					\
 	gedit/gedit-settings.h				\
 	gedit/gedit-small-button.h			\
 	gedit/gedit-status-menu-button.h		\
+	gedit/gedit-tab-private.h			\
 	gedit/gedit-tab-label.h				\
 	gedit/gedit-view-frame.h			\
 	gedit/gedit-view-holder.h			\

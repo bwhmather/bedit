@@ -32,6 +32,8 @@
 #include "gedit-notebook.h"
 #include "gedit-notebook-popup-menu.h"
 #include "gedit-small-button.h"
+#include "gedit-tab.h"
+#include "gedit-tab-private.h"
 #include "gedit-utils.h"
 #include "gedit-commands-private.h"
 

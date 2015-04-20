@@ -46,124 +46,31 @@ typedef enum
 	GEDIT_TAB_NUM_OF_STATES /* This is not a valid state */
 } GeditTabState;
 
-#define GEDIT_TYPE_TAB              (gedit_tab_get_type())
-#define GEDIT_TAB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_TAB, GeditTab))
-#define GEDIT_TAB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_TAB, GeditTabClass))
-#define GEDIT_IS_TAB(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_TAB))
-#define GEDIT_IS_TAB_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_TAB))
-#define GEDIT_TAB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_TAB, GeditTabClass))
+#define GEDIT_TYPE_TAB (gedit_tab_get_type())
 
-typedef struct _GeditTab	GeditTab;
-typedef struct _GeditTabClass	GeditTabClass;
-typedef struct _GeditTabPrivate	GeditTabPrivate;
+G_DECLARE_FINAL_TYPE (GeditTab, gedit_tab, GEDIT, TAB, GtkBox)
 
-struct _GeditTab
-{
-	GtkBox vbox;
-
-	/*< private >*/
-	GeditTabPrivate *priv;
-};
-
-struct _GeditTabClass
-{
-	GtkBoxClass parent_class;
-
-	void (* drop_uris)	(GeditView *view,
-				 gchar    **uri_list);
-};
-
-GType 		 gedit_tab_get_type 		(void) G_GNUC_CONST;
-
-GeditView	*gedit_tab_get_view		(GeditTab            *tab);
+GeditView	*gedit_tab_get_view			(GeditTab            *tab);
 
 /* This is only an helper function */
-GeditDocument	*gedit_tab_get_document		(GeditTab            *tab);
+GeditDocument	*gedit_tab_get_document			(GeditTab            *tab);
 
-GeditTab	*gedit_tab_get_from_document	(GeditDocument       *doc);
+GeditTab	*gedit_tab_get_from_document		(GeditDocument       *doc);
 
-GeditTabState	 gedit_tab_get_state		(GeditTab	     *tab);
+GeditTabState	 gedit_tab_get_state			(GeditTab            *tab);
 
-gboolean	 gedit_tab_get_auto_save_enabled
-						(GeditTab            *tab);
+gboolean	 gedit_tab_get_auto_save_enabled	(GeditTab            *tab);
 
-void		 gedit_tab_set_auto_save_enabled
-						(GeditTab            *tab,
-						 gboolean            enable);
+void		 gedit_tab_set_auto_save_enabled	(GeditTab            *tab,
+							 gboolean            enable);
 
-gint		 gedit_tab_get_auto_save_interval
-						(GeditTab            *tab);
+gint		 gedit_tab_get_auto_save_interval	(GeditTab            *tab);
 
-void		 gedit_tab_set_auto_save_interval
-						(GeditTab            *tab,
-						 gint                interval);
+void		 gedit_tab_set_auto_save_interval	(GeditTab            *tab,
+							 gint                interval);
 
-void		 gedit_tab_set_info_bar		(GeditTab            *tab,
-						 GtkWidget           *info_bar);
-/*
- * Non exported methods
- */
-GtkWidget 	*_gedit_tab_new 		(void);
-
-/* Whether create is TRUE, creates a new empty document if location does
-   not refer to an existing location */
-GtkWidget	*_gedit_tab_new_from_location	(GFile                   *location,
-						 const GtkSourceEncoding *encoding,
-						 gint                     line_pos,
-						 gint                     column_pos,
-						 gboolean                 create);
-
-GtkWidget	*_gedit_tab_new_from_stream	(GInputStream            *stream,
-						 const GtkSourceEncoding *encoding,
-						 gint                     line_pos,
-						 gint                     column_pos);
-
-gchar 		*_gedit_tab_get_name		(GeditTab            *tab);
-gchar 		*_gedit_tab_get_tooltip		(GeditTab            *tab);
-GdkPixbuf 	*_gedit_tab_get_icon		(GeditTab            *tab);
-void		 _gedit_tab_load		(GeditTab                *tab,
-						 GFile                   *location,
-						 const GtkSourceEncoding *encoding,
-						 gint                     line_pos,
-						 gint                     column_pos,
-						 gboolean                 create);
-
-void		 _gedit_tab_load_stream		(GeditTab                *tab,
-						 GInputStream            *location,
-						 const GtkSourceEncoding *encoding,
-						 gint                     line_pos,
-						 gint                     column_pos);
-
-void		 _gedit_tab_revert		(GeditTab            *tab);
-
-void		 _gedit_tab_save_async		(GeditTab            *tab,
-						 GCancellable        *cancellable,
-						 GAsyncReadyCallback  callback,
-						 gpointer             user_data);
-
-gboolean	 _gedit_tab_save_finish		(GeditTab            *tab,
-						 GAsyncResult        *result);
-
-void		 _gedit_tab_save_as_async	(GeditTab                 *tab,
-						 GFile                    *location,
-						 const GtkSourceEncoding  *encoding,
-						 GtkSourceNewlineType      newline_type,
-						 GtkSourceCompressionType  compression_type,
-						 GCancellable             *cancellable,
-						 GAsyncReadyCallback       callback,
-						 gpointer                  user_data);
-
-void		 _gedit_tab_print		(GeditTab            *tab);
-
-void		 _gedit_tab_mark_for_closing	(GeditTab	     *tab);
-
-gboolean	 _gedit_tab_get_can_close	(GeditTab	     *tab);
-
-GtkWidget	*_gedit_tab_get_view_frame	(GeditTab            *tab);
-
-void		 _gedit_tab_set_network_available
-						(GeditTab	     *tab,
-						 gboolean	     enable);
+void		 gedit_tab_set_info_bar			(GeditTab            *tab,
+							 GtkWidget           *info_bar);
 
 G_END_DECLS
 

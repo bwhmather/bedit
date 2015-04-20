@@ -25,6 +25,7 @@
 
 #include "gedit-window.h"
 #include "gedit-tab.h"
+#include "gedit-tab-private.h"
 #include "gedit-debug.h"
 
 void

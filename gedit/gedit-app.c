@@ -49,6 +49,7 @@
 #include "gedit-commands.h"
 #include "gedit-preferences-dialog.h"
 #include "gedit-tab.h"
+#include "gedit-tab-private.h"
 
 #ifndef ENABLE_GVFS_METADATA
 #include "gedit-metadata-manager.h"
