@@ -33,6 +33,8 @@
 
 struct _GeditStatusbar
 {
+	GtkStatusbar  parent_instance;
+
 	GtkWidget     *error_frame;
 	GtkWidget     *error_image;
 	GtkWidget     *state_frame;
