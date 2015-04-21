@@ -31,8 +31,10 @@
 #include "gedit-utils.h"
 #include "gedit-encoding-items.h"
 
-struct _GeditEncodingsComboBoxPrivate
+struct _GeditEncodingsComboBox
 {
+	GtkComboBox parent_instance;
+
 	GtkListStore *store;
 	glong changed_id;
 
@@ -55,9 +57,9 @@ enum
 	PROP_SAVE_MODE
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditEncodingsComboBox, gedit_encodings_combo_box, GTK_TYPE_COMBO_BOX)
+G_DEFINE_TYPE (GeditEncodingsComboBox, gedit_encodings_combo_box, GTK_TYPE_COMBO_BOX)
 
-static void	  update_menu 		(GeditEncodingsComboBox       *combo_box);
+static void	update_menu		(GeditEncodingsComboBox       *combo_box);
 
 static void
 gedit_encodings_combo_box_set_property (GObject    *object,
@@ -72,7 +74,7 @@ gedit_encodings_combo_box_set_property (GObject    *object,
 	switch (prop_id)
 	{
 		case PROP_SAVE_MODE:
-			combo->priv->save_mode = g_value_get_boolean (value);
+			combo->save_mode = g_value_get_boolean (value);
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -93,7 +95,7 @@ gedit_encodings_combo_box_get_property (GObject    *object,
 	switch (prop_id)
 	{
 		case PROP_SAVE_MODE:
-			g_value_set_boolean (value, combo->priv->save_mode);
+			g_value_set_boolean (value, combo->save_mode);
 			break;
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -106,7 +108,7 @@ gedit_encodings_combo_box_dispose (GObject *object)
 {
 	GeditEncodingsComboBox *combo = GEDIT_ENCODINGS_COMBO_BOX (object);
 
-	g_clear_object (&combo->priv->store);
+	g_clear_object (&combo->store);
 
 	G_OBJECT_CLASS (gedit_encodings_combo_box_parent_class)->dispose (object);
 }
@@ -185,10 +187,10 @@ configure_encodings (GeditEncodingsComboBox *menu)
 		toplevel = NULL;
 	}
 
-	g_signal_handler_block (menu, menu->priv->changed_id);
+	g_signal_handler_block (menu, menu->changed_id);
 	gtk_combo_box_set_active (GTK_COMBO_BOX (menu),
-				  menu->priv->activated_item);
-	g_signal_handler_unblock (menu, menu->priv->changed_id);
+				  menu->activated_item);
+	g_signal_handler_unblock (menu, menu->changed_id);
 
 	dialog = gedit_encodings_dialog_new ();
 
@@ -242,7 +244,7 @@ changed_cb (GeditEncodingsComboBox *menu,
 	}
 	else
 	{
-		menu->priv->activated_item = gtk_combo_box_get_active (GTK_COMBO_BOX (menu));
+		menu->activated_item = gtk_combo_box_get_active (GTK_COMBO_BOX (menu));
 	}
 }
 
@@ -281,14 +283,14 @@ update_menu (GeditEncodingsComboBox *menu)
 	GtkTreeIter iter;
 	GSList *encodings;
 
-	store = menu->priv->store;
+	store = menu->store;
 
 	/* Unset the previous model */
-	g_signal_handler_block (menu, menu->priv->changed_id);
+	g_signal_handler_block (menu, menu->changed_id);
 	gtk_list_store_clear (store);
 	gtk_combo_box_set_model (GTK_COMBO_BOX (menu), NULL);
 
-	if (!menu->priv->save_mode)
+	if (!menu->save_mode)
 	{
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
@@ -328,30 +330,28 @@ update_menu (GeditEncodingsComboBox *menu)
 
 	/* set the model back */
 	gtk_combo_box_set_model (GTK_COMBO_BOX (menu),
-				 GTK_TREE_MODEL (menu->priv->store));
+				 GTK_TREE_MODEL (menu->store));
 	gtk_combo_box_set_active (GTK_COMBO_BOX (menu), 0);
 
-	g_signal_handler_unblock (menu, menu->priv->changed_id);
+	g_signal_handler_unblock (menu, menu->changed_id);
 }
 
 static void
 gedit_encodings_combo_box_init (GeditEncodingsComboBox *menu)
 {
-	menu->priv = gedit_encodings_combo_box_get_instance_private (menu);
-
-	menu->priv->store = gtk_list_store_new (N_COLUMNS,
-						G_TYPE_STRING,
-						G_TYPE_POINTER,
-						G_TYPE_BOOLEAN);
+	menu->store = gtk_list_store_new (N_COLUMNS,
+	                                  G_TYPE_STRING,
+	                                  G_TYPE_POINTER,
+	                                  G_TYPE_BOOLEAN);
 
 	gtk_combo_box_set_row_separator_func (GTK_COMBO_BOX (menu),
-					      separator_func, NULL,
-					      NULL);
+	                                      separator_func, NULL,
+	                                      NULL);
 
-	menu->priv->changed_id = g_signal_connect (menu,
-						   "changed",
-						   G_CALLBACK (changed_cb),
-						   menu->priv->store);
+	menu->changed_id = g_signal_connect (menu,
+	                                     "changed",
+	                                     G_CALLBACK (changed_cb),
+	                                     menu->store);
 }
 
 /**
