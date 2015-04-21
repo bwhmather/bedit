@@ -27,30 +27,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX             (gedit_file_chooser_dialog_osx_get_type ())
-#define GEDIT_FILE_CHOOSER_DIALOG_OSX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX, GeditFileChooserDialogOSX))
-#define GEDIT_FILE_CHOOSER_DIALOG_OSX_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX, GeditFileChooserDialogOSXClass))
-#define GEDIT_IS_FILE_CHOOSER_DIALOG_OSX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX))
-#define GEDIT_IS_FILE_CHOOSER_DIALOG_OSX_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX))
-#define GEDIT_FILE_CHOOSER_DIALOG_OSX_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX, GeditFileChooserDialogOSXClass))
+#define GEDIT_TYPE_FILE_CHOOSER_DIALOG_OSX (gedit_file_chooser_dialog_osx_get_type ())
 
-typedef struct _GeditFileChooserDialogOSX		GeditFileChooserDialogOSX;
-typedef struct _GeditFileChooserDialogOSXClass		GeditFileChooserDialogOSXClass;
-typedef struct _GeditFileChooserDialogOSXPrivate	GeditFileChooserDialogOSXPrivate;
-
-struct _GeditFileChooserDialogOSXClass
-{
-	GtkFileChooserDialogClass parent_class;
-};
-
-struct _GeditFileChooserDialogOSX
-{
-	GtkFileChooserDialog parent_instance;
-
-	GeditFileChooserDialogOSXPrivate *priv;
-};
-
-GType		 	 gedit_file_chooser_dialog_osx_get_type		(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditFileChooserDialogOSX, gedit_file_chooser_dialog_osx, GEDIT, FILE_CHOOSER_DIALOG_OSX, GObject)
 
 GeditFileChooserDialog	*gedit_file_chooser_dialog_osx_create		(const gchar              *title,
 									 GtkWindow                *parent,

@@ -26,14 +26,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_FILE_CHOOSER_DIALOG			(gedit_file_chooser_dialog_get_type ())
-#define GEDIT_FILE_CHOOSER_DIALOG(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialog))
-#define GEDIT_FILE_CHOOSER_DIALOG_IFACE(obj)		(G_TYPE_CHECK_CLASS_CAST ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialogInterface))
-#define GEDIT_IS_FILE_CHOOSER_DIALOG(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG))
-#define GEDIT_FILE_CHOOSER_DIALOG_GET_IFACE(obj)	(G_TYPE_INSTANCE_GET_INTERFACE ((obj), GEDIT_TYPE_FILE_CHOOSER_DIALOG, GeditFileChooserDialogInterface))
+#define GEDIT_TYPE_FILE_CHOOSER_DIALOG (gedit_file_chooser_dialog_get_type ())
 
-typedef struct _GeditFileChooserDialog           GeditFileChooserDialog; /* dummy typedef */
-typedef struct _GeditFileChooserDialogInterface  GeditFileChooserDialogInterface;
+G_DECLARE_INTERFACE (GeditFileChooserDialog, gedit_file_chooser_dialog, GEDIT, FILE_CHOOSER_DIALOG, GObject)
 
 struct _GeditFileChooserDialogInterface
 {
@@ -94,8 +89,6 @@ typedef enum
 	GEDIT_FILE_CHOOSER_ENABLE_DEFAULT_FILTERS = 1 << 4
 } GeditFileChooserFlags;
 
-GType		gedit_file_chooser_dialog_get_type		(void)  G_GNUC_CONST;
-
 GeditFileChooserDialog *
 		gedit_file_chooser_dialog_create		(const gchar              *title,
 								 GtkWindow                *parent,
@@ -133,7 +126,6 @@ GFile		*gedit_file_chooser_dialog_get_file		(GeditFileChooserDialog   *dialog);
 
 GSList		*gedit_file_chooser_dialog_get_files		(GeditFileChooserDialog   *dialog);
 
-
 void		 gedit_file_chooser_dialog_set_do_overwrite_confirmation (
 								 GeditFileChooserDialog   *dialog,
 								 gboolean                  overwrite_confirmation);
@@ -146,7 +138,7 @@ void		 gedit_file_chooser_dialog_set_modal		(GeditFileChooserDialog   *dialog,
 
 GtkWindow	*gedit_file_chooser_dialog_get_window		(GeditFileChooserDialog   *dialog);
 
-void             gedit_file_chooser_dialog_add_pattern_filter   (GeditFileChooserDialog   *dialog,
+void		 gedit_file_chooser_dialog_add_pattern_filter	(GeditFileChooserDialog   *dialog,
 								 const gchar              *name,
 								 const gchar              *pattern);
 
