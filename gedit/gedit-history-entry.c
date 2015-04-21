@@ -39,8 +39,10 @@ enum {
 
 #define GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT 10
 
-struct _GeditHistoryEntryPrivate
+struct _GeditHistoryEntry
 {
+	GtkComboBoxText     parent_instance;
+
 	gchar              *history_id;
 	guint               history_length;
 
@@ -49,7 +51,7 @@ struct _GeditHistoryEntryPrivate
 	GSettings          *settings;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditHistoryEntry, gedit_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
+G_DEFINE_TYPE (GeditHistoryEntry, gedit_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
 
 static void
 gedit_history_entry_set_property (GObject      *object,
@@ -66,7 +68,7 @@ gedit_history_entry_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_HISTORY_ID:
-			entry->priv->history_id = g_value_dup_string (value);
+			entry->history_id = g_value_dup_string (value);
 			break;
 		case PROP_HISTORY_LENGTH:
 			gedit_history_entry_set_history_length (entry,
@@ -87,19 +89,19 @@ gedit_history_entry_get_property (GObject    *object,
 				  GValue     *value,
 				  GParamSpec *spec)
 {
-	GeditHistoryEntryPrivate *priv;
+	GeditHistoryEntry *entry;
 
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (object));
 
-	priv = GEDIT_HISTORY_ENTRY (object)->priv;
+	entry = GEDIT_HISTORY_ENTRY (object);
 
 	switch (prop_id)
 	{
 		case PROP_HISTORY_ID:
-			g_value_set_string (value, priv->history_id);
+			g_value_set_string (value, entry->history_id);
 			break;
 		case PROP_HISTORY_LENGTH:
-			g_value_set_uint (value, priv->history_length);
+			g_value_set_uint (value, entry->history_length);
 			break;
 		case PROP_ENABLE_COMPLETION:
 			g_value_set_boolean (value, gedit_history_entry_get_enable_completion (GEDIT_HISTORY_ENTRY (object)));
@@ -112,14 +114,11 @@ gedit_history_entry_get_property (GObject    *object,
 static void
 gedit_history_entry_dispose (GObject *object)
 {
-	GeditHistoryEntryPrivate *priv;
+	GeditHistoryEntry *entry = GEDIT_HISTORY_ENTRY (object);
 
-	priv = GEDIT_HISTORY_ENTRY (object)->priv;
+	gedit_history_entry_set_enable_completion (entry, FALSE);
 
-	gedit_history_entry_set_enable_completion (GEDIT_HISTORY_ENTRY (object),
-						   FALSE);
-
-	g_clear_object (&priv->settings);
+	g_clear_object (&entry->settings);
 
 	G_OBJECT_CLASS (gedit_history_entry_parent_class)->dispose (object);
 }
@@ -127,11 +126,9 @@ gedit_history_entry_dispose (GObject *object)
 static void
 gedit_history_entry_finalize (GObject *object)
 {
-	GeditHistoryEntryPrivate *priv;
+	GeditHistoryEntry *entry = GEDIT_HISTORY_ENTRY (object);
 
-	priv = GEDIT_HISTORY_ENTRY (object)->priv;
-
-	g_free (priv->history_id);
+	g_free (entry->history_id);
 
 	G_OBJECT_CLASS (gedit_history_entry_parent_class)->finalize (object);
 }
@@ -142,8 +139,7 @@ gedit_history_entry_load_history (GeditHistoryEntry *entry)
 	gchar **items;
 	gsize i;
 
-	items = g_settings_get_strv (entry->priv->settings,
-				     entry->priv->history_id);
+	items = g_settings_get_strv (entry->settings, entry->history_id);
 	i = 0;
 
 	gtk_combo_box_text_remove_all (GTK_COMBO_BOX_TEXT (entry));
@@ -151,7 +147,7 @@ gedit_history_entry_load_history (GeditHistoryEntry *entry)
 	/* Now the default value is an empty string so we have to take care
 	   of it to not add the empty string in the search list */
 	while (items[i] != NULL && *items[i] != '\0' &&
-	       i < entry->priv->history_length)
+	       i < entry->history_length)
 	{
 		gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (entry), items[i]);
 		i++;
@@ -163,7 +159,7 @@ gedit_history_entry_load_history (GeditHistoryEntry *entry)
 static void
 gedit_history_entry_class_init (GeditHistoryEntryClass *klass)
 {
-	GObjectClass   *object_class = G_OBJECT_CLASS (klass);
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->set_property = gedit_history_entry_set_property;
 	object_class->get_property = gedit_history_entry_get_property;
@@ -261,8 +257,8 @@ gedit_history_entry_save_history (GeditHistoryEntry *entry)
 
 	items = get_history_items (entry);
 
-	g_settings_set_strv (entry->priv->settings,
-			     entry->priv->history_id,
+	g_settings_set_strv (entry->settings,
+			     entry->history_id,
 			     (const gchar * const *)items);
 
 	g_strfreev (items);
@@ -349,13 +345,18 @@ insert_history_item (GeditHistoryEntry *entry,
 	 * would not work */
 
 	if (!remove_item (entry, text))
-		clamp_list_store (store,
-				  entry->priv->history_length - 1);
+	{
+		clamp_list_store (store, entry->history_length - 1);
+	}
 
 	if (prepend)
+	{
 		gtk_combo_box_text_prepend_text (GTK_COMBO_BOX_TEXT (entry), text);
+	}
 	else
+	{
 		gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (entry), text);
+	}
 
 	gedit_history_entry_save_history (entry);
 }
@@ -393,17 +394,12 @@ gedit_history_entry_clear (GeditHistoryEntry *entry)
 static void
 gedit_history_entry_init (GeditHistoryEntry *entry)
 {
-	GeditHistoryEntryPrivate *priv;
+	entry->history_id = NULL;
+	entry->history_length = GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT;
 
-	priv = gedit_history_entry_get_instance_private (entry);
-	entry->priv = priv;
+	entry->completion = NULL;
 
-	priv->history_id = NULL;
-	priv->history_length = GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT;
-
-	priv->completion = NULL;
-
-	priv->settings = g_settings_new ("org.gnome.gedit.state.history-entry");
+	entry->settings = g_settings_new ("org.gnome.gedit.state.history-entry");
 }
 
 void
@@ -413,7 +409,7 @@ gedit_history_entry_set_history_length (GeditHistoryEntry *entry,
 	g_return_if_fail (GEDIT_IS_HISTORY_ENTRY (entry));
 	g_return_if_fail (history_length > 0);
 
-	entry->priv->history_length = history_length;
+	entry->history_length = history_length;
 
 	/* TODO: update if we currently have more items than max */
 }
@@ -423,7 +419,7 @@ gedit_history_entry_get_history_length (GeditHistoryEntry *entry)
 {
 	g_return_val_if_fail (GEDIT_IS_HISTORY_ENTRY (entry), 0);
 
-	return entry->priv->history_length;
+	return entry->history_length;
 }
 
 void
@@ -434,37 +430,37 @@ gedit_history_entry_set_enable_completion (GeditHistoryEntry *entry,
 
 	if (enable)
 	{
-		if (entry->priv->completion != NULL)
+		if (entry->completion != NULL)
+		{
 			return;
+		}
 
-		entry->priv->completion = gtk_entry_completion_new ();
-		gtk_entry_completion_set_model (entry->priv->completion,
+		entry->completion = gtk_entry_completion_new ();
+		gtk_entry_completion_set_model (entry->completion,
 						GTK_TREE_MODEL (get_history_store (entry)));
 
 		/* Use model column 0 as the text column */
-		gtk_entry_completion_set_text_column (entry->priv->completion, 0);
+		gtk_entry_completion_set_text_column (entry->completion, 0);
 
-		gtk_entry_completion_set_minimum_key_length (entry->priv->completion,
+		gtk_entry_completion_set_minimum_key_length (entry->completion,
 							     MIN_ITEM_LEN);
 
-		gtk_entry_completion_set_popup_completion (entry->priv->completion, FALSE);
-		gtk_entry_completion_set_inline_completion (entry->priv->completion, TRUE);
+		gtk_entry_completion_set_popup_completion (entry->completion, FALSE);
+		gtk_entry_completion_set_inline_completion (entry->completion, TRUE);
 
 		/* Assign the completion to the entry */
 		gtk_entry_set_completion (GTK_ENTRY (gedit_history_entry_get_entry (entry)),
-					  entry->priv->completion);
+					  entry->completion);
 	}
 	else
 	{
-		if (entry->priv->completion == NULL)
+		if (entry->completion == NULL)
+		{
 			return;
+		}
 
-		gtk_entry_set_completion (GTK_ENTRY (gedit_history_entry_get_entry (entry)),
-					  NULL);
-
-		g_object_unref (entry->priv->completion);
-
-		entry->priv->completion = NULL;
+		gtk_entry_set_completion (GTK_ENTRY (gedit_history_entry_get_entry (entry)), NULL);
+		g_clear_object (&entry->completion);
 	}
 }
 
@@ -473,7 +469,7 @@ gedit_history_entry_get_enable_completion (GeditHistoryEntry *entry)
 {
 	g_return_val_if_fail (GEDIT_IS_HISTORY_ENTRY (entry), FALSE);
 
-	return entry->priv->completion != NULL;
+	return entry->completion != NULL;
 }
 
 GtkWidget *
