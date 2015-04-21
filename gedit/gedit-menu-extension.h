@@ -26,28 +26,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_MENU_EXTENSION		(gedit_menu_extension_get_type ())
-#define GEDIT_MENU_EXTENSION(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MENU_EXTENSION, GeditMenuExtension))
-#define GEDIT_MENU_EXTENSION_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_MENU_EXTENSION, GeditMenuExtension const))
-#define GEDIT_MENU_EXTENSION_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_MENU_EXTENSION, GeditMenuExtensionClass))
-#define GEDIT_IS_MENU_EXTENSION(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_MENU_EXTENSION))
-#define GEDIT_IS_MENU_EXTENSION_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_MENU_EXTENSION))
-#define GEDIT_MENU_EXTENSION_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_MENU_EXTENSION, GeditMenuExtensionClass))
+#define GEDIT_TYPE_MENU_EXTENSION (gedit_menu_extension_get_type ())
 
-typedef struct _GeditMenuExtension	 GeditMenuExtension;
-typedef struct _GeditMenuExtensionClass	 GeditMenuExtensionClass;
-
-struct _GeditMenuExtension
-{
-	GObject parent;
-};
-
-struct _GeditMenuExtensionClass
-{
-	GObjectClass parent_class;
-};
-
-GType                     gedit_menu_extension_get_type            (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditMenuExtension, gedit_menu_extension, GEDIT, MENU_EXTENSION, GObject)
 
 GeditMenuExtension       *gedit_menu_extension_new                 (GMenu                *menu);
 
