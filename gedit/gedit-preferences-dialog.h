@@ -26,52 +26,6 @@
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
-#define GEDIT_TYPE_PREFERENCES_DIALOG              (gedit_preferences_dialog_get_type())
-#define GEDIT_PREFERENCES_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_PREFERENCES_DIALOG, GeditPreferencesDialog))
-#define GEDIT_PREFERENCES_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_PREFERENCES_DIALOG, GeditPreferencesDialog const))
-#define GEDIT_PREFERENCES_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_PREFERENCES_DIALOG, GeditPreferencesDialogClass))
-#define GEDIT_IS_PREFERENCES_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_PREFERENCES_DIALOG))
-#define GEDIT_IS_PREFERENCES_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_PREFERENCES_DIALOG))
-#define GEDIT_PREFERENCES_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_PREFERENCES_DIALOG, GeditPreferencesDialogClass))
-
-
-/* Private structure type */
-typedef struct _GeditPreferencesDialogPrivate GeditPreferencesDialogPrivate;
-
-/*
- * Main object structure
- */
-typedef struct _GeditPreferencesDialog GeditPreferencesDialog;
-
-struct _GeditPreferencesDialog
-{
-	GtkWindow dialog;
-
-	/*< private > */
-	GeditPreferencesDialogPrivate *priv;
-};
-
-/*
- * Class definition
- */
-typedef struct _GeditPreferencesDialogClass GeditPreferencesDialogClass;
-
-struct _GeditPreferencesDialogClass
-{
-	GtkWindowClass parent_class;
-
-	/* Keybinding signals */
-	void (* close)			(GeditPreferencesDialog *dialog);
-};
-
-/*
- * Public methods
- */
-GType		 gedit_preferences_dialog_get_type	(void) G_GNUC_CONST;
-
 void		 gedit_show_preferences_dialog		(GeditWindow *parent);
 
 G_END_DECLS
