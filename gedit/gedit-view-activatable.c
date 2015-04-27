@@ -37,30 +37,23 @@
 
 G_DEFINE_INTERFACE(GeditViewActivatable, gedit_view_activatable, G_TYPE_OBJECT)
 
-void
+static void
 gedit_view_activatable_default_init (GeditViewActivatableInterface *iface)
 {
-	static gboolean initialized = FALSE;
-
-	if (!initialized)
-	{
-		/**
-		 * GeditViewActivatable:view:
-		 *
-		 * The window property contains the gedit window for this
-		 * #GeditViewActivatable instance.
-		 */
-		g_object_interface_install_property (iface,
-		                                     g_param_spec_object ("view",
-		                                                          "view",
-		                                                          "A gedit view",
-		                                                          GEDIT_TYPE_VIEW,
-		                                                          G_PARAM_READWRITE |
-		                                                          G_PARAM_CONSTRUCT_ONLY |
-		                                                          G_PARAM_STATIC_STRINGS));
-
-		initialized = TRUE;
-	}
+	/**
+	 * GeditViewActivatable:view:
+	 *
+	 * The window property contains the gedit window for this
+	 * #GeditViewActivatable instance.
+	 */
+	g_object_interface_install_property (iface,
+	                                     g_param_spec_object ("view",
+	                                                          "view",
+	                                                          "A gedit view",
+	                                                          GEDIT_TYPE_VIEW,
+	                                                          G_PARAM_READWRITE |
+	                                                          G_PARAM_CONSTRUCT_ONLY |
+	                                                          G_PARAM_STATIC_STRINGS));
 }
 
 /**
