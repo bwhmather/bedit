@@ -13,6 +13,11 @@
     <value nick="always" value="3"/>
   </enum>
 
+  <enum id="org.gnome.gedit.BackgroundPatternType">
+    <value nick="none" value="0"/>
+    <value nick="grid" value="1"/>
+  </enum>
+
   <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.gedit" path="/org/gnome/gedit/">
     <child name="preferences" schema="org.gnome.gedit.preferences"/>
     <child name="state" schema="org.gnome.gedit.state"/>
@@ -118,6 +123,11 @@
       <default>80</default>
       <summary>Right Margin Position</summary>
       <description>Specifies the position of the right margin.</description>
+    </key>
+    <key name="background-pattern" enum="org.gnome.gedit.BackgroundPatternType">
+      <default>'none'</default>
+      <summary>Document background pattern type</summary>
+      <description>Whether the document will get a background pattern painted.</description>
     </key>
     <key name="smart-home-end" enum="org.gnome.gedit.SmartHomeEnd">
       <aliases>

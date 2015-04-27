@@ -117,6 +117,7 @@ struct _GeditPreferencesDialog
 
 	GtkWidget	*display_line_numbers_checkbutton;
 	GtkWidget	*display_statusbar_checkbutton;
+	GtkWidget       *display_grid_checkbutton;
 
 	/* Right margin */
 	GtkWidget	*right_margin_checkbutton;
@@ -180,6 +181,7 @@ gedit_preferences_dialog_class_init (GeditPreferencesDialogClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, notebook);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_line_numbers_checkbutton);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_statusbar_checkbutton);
+	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, display_grid_checkbutton);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_checkbutton);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_position_grid);
 	gtk_widget_class_bind_template_child (widget_class, GeditPreferencesDialog, right_margin_position_spinbutton);
@@ -300,10 +302,25 @@ wrap_mode_checkbutton_toggled (GtkToggleButton        *button,
 }
 
 static void
+grid_checkbutton_toggled (GtkToggleButton        *button,
+                          GeditPreferencesDialog *dlg)
+{
+	GtkSourceBackgroundPatternType background_type;
+
+	background_type = gtk_toggle_button_get_active (button) ?
+	                  GTK_SOURCE_BACKGROUND_PATTERN_TYPE_GRID :
+		          GTK_SOURCE_BACKGROUND_PATTERN_TYPE_NONE;
+	g_settings_set_enum (dlg->editor,
+	                     GEDIT_SETTINGS_BACKGROUND_PATTERN,
+	                     background_type);
+}
+
+static void
 setup_view_page (GeditPreferencesDialog *dlg)
 {
 	GtkWrapMode wrap_mode;
 	GtkWrapMode last_split_mode;
+	GtkSourceBackgroundPatternType background_pattern;
 	gboolean display_right_margin;
 	guint right_margin_position;
 
@@ -314,6 +331,8 @@ setup_view_page (GeditPreferencesDialog *dlg)
 						       GEDIT_SETTINGS_DISPLAY_RIGHT_MARGIN);
 	g_settings_get (dlg->editor, GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
 			"u", &right_margin_position);
+	background_pattern = g_settings_get_enum (dlg->editor,
+	                                          GEDIT_SETTINGS_BACKGROUND_PATTERN);
 
 	/* Set initial state */
 	wrap_mode = g_settings_get_enum (dlg->editor,
@@ -357,6 +376,9 @@ setup_view_page (GeditPreferencesDialog *dlg)
 	gtk_toggle_button_set_active (
 		GTK_TOGGLE_BUTTON (dlg->right_margin_checkbutton),
 		display_right_margin);
+	gtk_toggle_button_set_active (
+		GTK_TOGGLE_BUTTON (dlg->display_grid_checkbutton),
+		background_pattern == GTK_SOURCE_BACKGROUND_PATTERN_TYPE_GRID);
 
 	/* Set widgets sensitivity */
 	gtk_widget_set_sensitive (dlg->split_checkbutton,
@@ -404,6 +426,10 @@ setup_view_page (GeditPreferencesDialog *dlg)
 	g_signal_connect (dlg->split_checkbutton,
 			  "toggled",
 			  G_CALLBACK (wrap_mode_checkbutton_toggled),
+			  dlg);
+	g_signal_connect (dlg->display_grid_checkbutton,
+			  "toggled",
+			  G_CALLBACK (grid_checkbutton_toggled),
 			  dlg);
 }
 

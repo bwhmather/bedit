@@ -244,6 +244,12 @@ gedit_view_constructed (GObject *object)
 	                 G_SETTINGS_BIND_GET);
 
 	g_settings_bind (priv->editor_settings,
+	                 GEDIT_SETTINGS_BACKGROUND_PATTERN,
+	                 view,
+	                 "background-pattern",
+	                 G_SETTINGS_BIND_GET);
+
+	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_RIGHT_MARGIN_POSITION,
 	                 view,
 	                 "right-margin-position",
