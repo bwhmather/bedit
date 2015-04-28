@@ -922,6 +922,8 @@ info_bar_set_progress (GeditTab *tab,
 		       goffset   size,
 		       goffset   total_size)
 {
+	GeditProgressInfoBar *progress_info_bar;
+
 	if (tab->info_bar == NULL)
 	{
 		return;
@@ -931,25 +933,21 @@ info_bar_set_progress (GeditTab *tab,
 
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->info_bar));
 
-	if (total_size == 0)
+	progress_info_bar = GEDIT_PROGRESS_INFO_BAR (tab->info_bar);
+
+	if (total_size != 0)
 	{
-		if (size != 0)
-			gedit_progress_info_bar_pulse (
-					GEDIT_PROGRESS_INFO_BAR (tab->info_bar));
-		else
-			gedit_progress_info_bar_set_fraction (
-				GEDIT_PROGRESS_INFO_BAR (tab->info_bar),
-				0);
+		gdouble frac = (gdouble)size / (gdouble)total_size;
+
+		gedit_progress_info_bar_set_fraction (progress_info_bar, frac);
+	}
+	else if (size != 0)
+	{
+		gedit_progress_info_bar_pulse (progress_info_bar);
 	}
 	else
 	{
-		gdouble frac;
-
-		frac = (gdouble)size / (gdouble)total_size;
-
-		gedit_progress_info_bar_set_fraction (
-				GEDIT_PROGRESS_INFO_BAR (tab->info_bar),
-				frac);
+		gedit_progress_info_bar_set_fraction (progress_info_bar, 0);
 	}
 }
 
