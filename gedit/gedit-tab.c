@@ -951,6 +951,53 @@ info_bar_set_progress (GeditTab *tab,
 	}
 }
 
+/* Returns whether progress info should be shown. */
+static gboolean
+should_show_progress_info (GeditTab *tab,
+			   goffset   size,
+			   goffset   total_size)
+{
+	gdouble elapsed_time;
+	gdouble total_time;
+	gdouble remaining_time;
+
+	if (tab->timer == NULL)
+	{
+		return TRUE;
+	}
+
+	elapsed_time = g_timer_elapsed (tab->timer, NULL);
+
+	/* Wait a little, because at the very beginning it's maybe not very
+	 * accurate (it takes initially more time for the first bytes, the
+	 * following chunks should arrive more quickly, as a rough guess).
+	 */
+	if (elapsed_time < 0.5)
+	{
+		return FALSE;
+	}
+
+	/* elapsed_time / total_time = size / total_size */
+	total_time = (elapsed_time * total_size) / size;
+
+	remaining_time = total_time - elapsed_time;
+
+	/* Approximately more than 3 seconds remaining. */
+	if (remaining_time > 3.0)
+	{
+		/* Once the progress info bar is shown, it must remain
+		 * shown until the end, so we don't need the timer
+		 * anymore.
+		 */
+		g_timer_destroy (tab->timer);
+		tab->timer = NULL;
+
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
 static gboolean
 scroll_to_cursor (GeditTab *tab)
 {
@@ -1646,32 +1693,14 @@ loader_progress_cb (goffset   size,
 		    goffset   total_size,
 		    GeditTab *tab)
 {
-	gdouble elapsed_time;
-	gdouble total_time;
-	gdouble remaining_time;
-
 	g_return_if_fail (tab->state == GEDIT_TAB_STATE_LOADING ||
-	                  tab->state == GEDIT_TAB_STATE_REVERTING);
+			  tab->state == GEDIT_TAB_STATE_REVERTING);
 
-	if (tab->timer == NULL)
-	{
-		tab->timer = g_timer_new ();
-	}
-
-	elapsed_time = g_timer_elapsed (tab->timer, NULL);
-
-	/* elapsed_time / total_time = size / total_size */
-	total_time = (elapsed_time * total_size) / size;
-
-	remaining_time = total_time - elapsed_time;
-
-	/* Approximately more than 3 seconds remaining. */
-	if (remaining_time > 3.0)
+	if (should_show_progress_info (tab, size, total_size))
 	{
 		show_loading_info_bar (tab);
+		info_bar_set_progress (tab, size, total_size);
 	}
-
-	info_bar_set_progress (tab, size, total_size);
 }
 
 static void
@@ -2028,6 +2057,13 @@ load (GeditTab                *tab,
 	doc = gedit_tab_get_document (tab);
 	g_signal_emit_by_name (doc, "load");
 
+	if (tab->timer != NULL)
+	{
+		g_timer_destroy (tab->timer);
+	}
+
+	tab->timer = g_timer_new ();
+
 	/* Keep the tab alive during the async operation. */
 	g_object_ref (tab);
 
@@ -2168,31 +2204,13 @@ saver_progress_cb (goffset   size,
 		   goffset   total_size,
 		   GeditTab *tab)
 {
-	gdouble elapsed_time;
-	gdouble total_time;
-	gdouble remaining_time;
-
 	g_return_if_fail (tab->state == GEDIT_TAB_STATE_SAVING);
 
-	if (tab->timer == NULL)
-	{
-		tab->timer = g_timer_new ();
-	}
-
-	elapsed_time = g_timer_elapsed (tab->timer, NULL);
-
-	/* elapsed_time / total_time = size / total_size */
-	total_time = (elapsed_time * total_size) / size;
-
-	remaining_time = total_time - elapsed_time;
-
-	/* Approximately more than 3 seconds remaining. */
-	if (remaining_time > 3.0)
+	if (should_show_progress_info (tab, size, total_size))
 	{
 		show_saving_info_bar (tab);
+		info_bar_set_progress (tab, size, total_size);
 	}
-
-	info_bar_set_progress (tab, size, total_size);
 }
 
 static void
@@ -2335,6 +2353,13 @@ save (GeditTab *tab)
 	g_signal_emit_by_name (doc, "save");
 
 	data = g_task_get_task_data (tab->task_saver);
+
+	if (tab->timer != NULL)
+	{
+		g_timer_destroy (tab->timer);
+	}
+
+	tab->timer = g_timer_new ();
 
 	gtk_source_file_saver_save_async (data->saver,
 					  G_PRIORITY_DEFAULT,
