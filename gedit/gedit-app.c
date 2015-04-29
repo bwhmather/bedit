@@ -736,6 +736,10 @@ gedit_app_startup (GApplication *application)
 	GtkSourceStyleSchemeManager *manager;
 	const gchar *dir;
 	gchar *icon_dir;
+#ifndef ENABLE_GVFS_METADATA
+	const gchar *cache_dir;
+	gchar *metadata_filename;
+#endif
 
 	priv = gedit_app_get_instance_private (GEDIT_APP (application));
 
@@ -756,7 +760,10 @@ gedit_app_startup (GApplication *application)
 	setup_theme_extensions (GEDIT_APP (application));
 
 #ifndef ENABLE_GVFS_METADATA
-	gedit_metadata_manager_init ();
+	cache_dir = gedit_dirs_get_user_cache_dir ();
+	metadata_filename = g_build_filename (cache_dir, "gedit-metadata.xml", NULL);
+	gedit_metadata_manager_init (metadata_filename);
+	g_free (metadata_filename);
 #endif
 
 	/* Load settings */

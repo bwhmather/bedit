@@ -20,18 +20,14 @@
  */
 
 #include "gedit-metadata-manager.h"
-
 #include <libxml/xmlreader.h>
-
 #include "gedit-debug.h"
-#include "gedit-dirs.h"
 
 /*
 #define GEDIT_METADATA_VERBOSE_DEBUG	1
 */
 
 #define MAX_ITEMS 50
-#define METADATA_FILE "gedit-metadata.xml"
 
 typedef struct _GeditMetadataManager GeditMetadataManager;
 
@@ -96,19 +92,20 @@ gedit_metadata_manager_arm_timeout (void)
 
 /**
  * gedit_metadata_manager_init:
+ * @metadata_filename: the filename where the metadata is stored.
  *
  * This function initializes the metadata manager.
  * See also gedit_metadata_manager_shutdown().
  */
 void
-gedit_metadata_manager_init (void)
+gedit_metadata_manager_init (const gchar *metadata_filename)
 {
-	const gchar *cache_dir;
-
 	gedit_debug (DEBUG_METADATA);
 
 	if (gedit_metadata_manager != NULL)
+	{
 		return;
+	}
 
 	gedit_metadata_manager = g_new0 (GeditMetadataManager, 1);
 
@@ -120,8 +117,7 @@ gedit_metadata_manager_init (void)
 				       g_free,
 				       item_free);
 
-	cache_dir = gedit_dirs_get_user_cache_dir ();
-	gedit_metadata_manager->metadata_filename = g_build_filename (cache_dir, METADATA_FILE, NULL);
+	gedit_metadata_manager->metadata_filename = g_strdup (metadata_filename);
 }
 
 /**
