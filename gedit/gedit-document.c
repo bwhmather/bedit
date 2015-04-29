@@ -594,22 +594,6 @@ set_language (GeditDocument     *doc,
 
 	gtk_source_buffer_set_language (GTK_SOURCE_BUFFER (doc), lang);
 
-	if (lang != NULL)
-	{
-		gboolean syntax_hl;
-
-		syntax_hl = g_settings_get_boolean (priv->editor_settings,
-						    GEDIT_SETTINGS_SYNTAX_HIGHLIGHTING);
-
-		gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (doc),
-							syntax_hl);
-	}
-	else
-	{
-		gtk_source_buffer_set_highlight_syntax (GTK_SOURCE_BUFFER (doc),
-							FALSE);
-	}
-
 	if (set_by_user)
 	{
 		const gchar *language = get_language_string (doc);
@@ -845,6 +829,12 @@ gedit_document_init (GeditDocument *doc)
 	                 doc,
 	                 "max-undo-levels",
 	                 G_SETTINGS_BIND_GET);
+
+	g_settings_bind (priv->editor_settings,
+			 GEDIT_SETTINGS_SYNTAX_HIGHLIGHTING,
+			 doc,
+			 "highlight-syntax",
+			 G_SETTINGS_BIND_GET);
 
 	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_BRACKET_MATCHING,
