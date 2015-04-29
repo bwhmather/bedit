@@ -21,7 +21,6 @@
 
 #include "gedit-metadata-manager.h"
 
-#include <stdlib.h>
 #include <libxml/xmlreader.h>
 
 #include "gedit-debug.h"
