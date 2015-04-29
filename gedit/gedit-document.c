@@ -34,8 +34,6 @@
 #include "gedit-settings.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
-#include "gedit-marshal.h"
-#include "gedit-enum-types.h"
 
 #ifndef ENABLE_GVFS_METADATA
 #include "gedit-metadata-manager.h"
@@ -462,8 +460,7 @@ gedit_document_class_init (GeditDocumentClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditDocumentClass, cursor_moved),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__VOID,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      0);
 
