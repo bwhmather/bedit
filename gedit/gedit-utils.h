@@ -23,10 +23,6 @@
 #ifndef __GEDIT_UTILS_H__
 #define __GEDIT_UTILS_H__
 
-#include <glib.h>
-#include <gtk/gtk.h>
-#include <atk/atk.h>
-#include <gedit/gedit-document.h>
 #include <gtksourceview/gtksource.h>
 
 G_BEGIN_DECLS

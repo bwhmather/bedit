@@ -20,38 +20,17 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-utils.h"
 
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/time.h>
-#include <fcntl.h>
 #include <string.h>
-
-#include <glib.h>
 #include <glib/gi18n.h>
-#include <glib/gstdio.h>
-#include <gio/gio.h>
 
 /* For the workspace/viewport stuff */
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
 #include <X11/Xatom.h>
 #endif
 
-#ifdef G_OS_UNIX
-#include <unistd.h>
-#include <sys/stat.h>
-#endif
-
-#include "gedit-document.h"
 #include "gedit-debug.h"
 
 static void
