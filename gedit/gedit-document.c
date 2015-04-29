@@ -828,19 +828,19 @@ gedit_document_init (GeditDocument *doc)
 	                 GEDIT_SETTINGS_MAX_UNDO_ACTIONS,
 	                 doc,
 	                 "max-undo-levels",
-	                 G_SETTINGS_BIND_GET);
+	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
 
 	g_settings_bind (priv->editor_settings,
 			 GEDIT_SETTINGS_SYNTAX_HIGHLIGHTING,
 			 doc,
 			 "highlight-syntax",
-			 G_SETTINGS_BIND_GET);
+			 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
 
 	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_BRACKET_MATCHING,
 	                 doc,
 	                 "highlight-matching-brackets",
-	                 G_SETTINGS_BIND_GET);
+	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
 
 	style_scheme = get_default_style_scheme (priv->editor_settings);
 	if (style_scheme != NULL)
@@ -1997,7 +1997,7 @@ gedit_document_set_search_context (GeditDocument          *doc,
 		g_settings_bind (priv->editor_settings,
 				 GEDIT_SETTINGS_SEARCH_HIGHLIGHTING,
 				 search_context, "highlight",
-				 G_SETTINGS_BIND_GET);
+				 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
 
 		g_signal_connect_object (search_context,
 					 "notify::settings",
