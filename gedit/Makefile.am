@@ -116,6 +116,7 @@ gedit_NOINST_H_FILES =					\
 	gedit/gedit-history-entry.h			\
 	gedit/gedit-io-error-info-bar.h			\
 	gedit/gedit-menu-stack-switcher.h		\
+	gedit/gedit-metadata-manager.h			\
 	gedit/gedit-multi-notebook.h			\
 	gedit/gedit-notebook.h				\
 	gedit/gedit-notebook-popup-menu.h		\
@@ -154,10 +155,6 @@ gedit_INST_H_FILES =				\
 	gedit/gedit-window.h			\
 	gedit/gedit-window-activatable.h
 
-if !ENABLE_GVFS_METADATA
-gedit_NOINST_H_FILES += gedit/gedit-metadata-manager.h
-endif
-
 gedit_headerdir = $(prefix)/include/gedit-$(GEDIT_API_VERSION)/gedit
 gedit_header_HEADERS = $(gedit_INST_H_FILES)
 
@@ -195,6 +192,7 @@ gedit_libgedit_c_files =				\
 	gedit/gedit-menu-stack-switcher.c		\
 	gedit/gedit-message-bus.c			\
 	gedit/gedit-message.c				\
+	gedit/gedit-metadata-manager.c			\
 	gedit/gedit-multi-notebook.c			\
 	gedit/gedit-notebook.c				\
 	gedit/gedit-notebook-popup-menu.c		\
@@ -223,10 +221,6 @@ gedit_libgedit_la_SOURCES = 		\
 	$(gedit_libgedit_c_files)	\
 	$(gedit_NOINST_H_FILES)		\
 	$(gedit_INST_H_FILES)
-
-if !ENABLE_GVFS_METADATA
-gedit_libgedit_la_SOURCES += gedit/gedit-metadata-manager.c
-endif
 
 gedit_ENUM_TYPES = 		\
 	gedit/gedit-notebook.h	\
