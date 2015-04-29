@@ -26,7 +26,6 @@
 #include "gedit-debug.h"
 #include "gedit-dirs.h"
 
-
 /*
 #define GEDIT_METADATA_VERBOSE_DEBUG	1
 */
@@ -40,15 +39,16 @@ typedef struct _Item Item;
 
 struct _Item
 {
-	gint64	 	 atime; /* time of last access in seconds since January 1, 1970 UTC */
+	/* Time of last access in seconds since January 1, 1970 UTC. */
+	gint64	 	 atime;
 
 	GHashTable	*values;
 };
 
 struct _GeditMetadataManager
 {
-	gboolean	 values_loaded; /* It is true if the file
-					   has been read */
+	/* It is true if the file has been read. */
+	gboolean	 values_loaded;
 
 	guint 		 timeout_id;
 
@@ -58,7 +58,6 @@ struct _GeditMetadataManager
 };
 
 static gboolean gedit_metadata_manager_save (gpointer data);
-
 
 static GeditMetadataManager *gedit_metadata_manager = NULL;
 
