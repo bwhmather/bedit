@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-04-25 05:20+0000\n"
-"PO-Revision-Date: 2015-04-25 11:43+0200\n"
+"POT-Creation-Date: 2015-04-30 05:20+0000\n"
+"PO-Revision-Date: 2015-04-30 12:33+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -274,10 +274,18 @@ msgid "Specifies the position of the right margin."
 msgstr "Určuje pozici pravého okraje."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:36
+msgid "Document background pattern type"
+msgstr "Typ vzoru na pozadí dokumentu"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+msgid "Whether the document will get a background pattern painted."
+msgstr "Zda se má na pozadí dokumentu vykreslovat nějaký vzor."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Smart Home End"
 msgstr "Chytré Home/End"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -295,11 +303,11 @@ msgstr ""
 "přesunutím na začátek/konec řádku a „always“, pokud se chcete vždy přesunout "
 "na začátek/konec textu místo na začátek/konec řádku."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Restore Previous Cursor Position"
 msgstr "Obnovovat předchozí umístění kurzoru"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
@@ -307,46 +315,46 @@ msgstr ""
 "Zda má gedit po otevření souboru zobrazit kurzor v stejném místě jako před "
 "uzavřením souboru."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid "Enable Syntax Highlighting"
 msgstr "Povolit zvýrazňování syntaxe"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Zda má gedit zapnout zvýrazňování syntaxe."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid "Enable Search Highlighting"
 msgstr "Povolit zvýrazňování vyhledaného"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Zda má gedit zvýrazňovat všechny výskyty vyhledaného textu."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Ensure Trailing Newline"
 msgstr "Zajistit koncový nový řádek"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
 "Zda se má gedit ujišťovat, že dokument bude vždy zakončen novým řádkem."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid "Toolbar is Visible"
 msgstr "Lišta nástrojů je viditelná"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Zda má gedit zobrazovat v editačních oknech lištu nástrojů."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid "Notebook Show Tabs Mode"
 msgstr "Režim zobrazování karet zápisníku"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -359,29 +367,29 @@ msgstr ""
 "jedna. Tyto hodnoty jsou citlivé na velikost písmen, takže dejte pozor, aby "
 "odpovídaly přesně hodnotám, které jsou zde popsány."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Status Bar is Visible"
 msgstr "Stavový panel je viditelný"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Zda má být stavová lišta pod editační oblastí zobrazena."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid "Side panel is Visible"
 msgstr "Postranní panel je zobrazen"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Zda má být postranní panel nalevo od editačního okna zobrazen."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid "Maximum Recent Files"
 msgstr "Maximální počet nedávno otevřených souborů"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
@@ -389,27 +397,27 @@ msgstr ""
 "Udává maximální počet nedávno otevřených souborů, které se budou zobrazovat "
 "v podnabídce „Otevřít nedávný“."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid "Print Syntax Highlighting"
 msgstr "Tisknout zvýraznění syntaxe"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Zda má gedit tisknout zvýraznění syntaxe při tisku dokumentů."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid "Print Header"
 msgstr "Tisknout záhlaví"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Zda má být vložena hlavička dokumentu při jeho tisku."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Printing Line Wrapping Mode"
 msgstr "Zalamovat řádky při tisku"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
 "\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
@@ -421,11 +429,11 @@ msgstr ""
 "zalamovat na hranicích znaků. Tyto hodnoty jsou citlivé na velikost písmen, "
 "takže dejte pozor, aby odpovídaly přesně hodnotám, které jsou zde popsány."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "Print Line Numbers"
 msgstr "Tisknout čísla řádků"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -434,28 +442,28 @@ msgstr ""
 "Je-li hodnota nastavena na 0, nebudou tisknuta žádná čísla řádků. Jinak bude "
 "vytisknuto číslo řádku vždy po tomto počtu řádků."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "Body Font for Printing"
 msgstr "Písmo těla textu pro tisk"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr "Udává písmo, které bude použito pro tělo dokumentu při jeho tisku."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid "Header Font for Printing"
 msgstr "Písmo záhlaví pro tisk"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:69
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -464,15 +472,15 @@ msgstr ""
 "nastavení bude mít vliv pouze v případě, že je zapnuta hodnota „Tisknout "
 "záhlaví“."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+#: ../data/org.gnome.gedit.gschema.xml.in.h:73
 msgid "Line Number Font for Printing"
 msgstr "Písmo číslování řádků pro tisk"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -480,11 +488,11 @@ msgstr ""
 "Udává písmo, které bude použito pro čísla řádků při tisku. Toto nastavení "
 "bude mít vliv pouze v případě, že hodnota „Tisknout čísla řádků“ je nenulová."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Candidate Encodings"
 msgstr "Kandidáti kódování"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. \"CURRENT\" represents the current locale encoding. Only "
@@ -497,11 +505,11 @@ msgstr ""
 "rozpoznaná kódování. Výchozí hodnotou je prázdný seznam, kdy gedit zvolí "
 "správné výchozí hodnoty na základě země a jazyka."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+#: ../data/org.gnome.gedit.gschema.xml.in.h:77
 msgid "Active plugins"
 msgstr "Aktivní zásuvné moduly"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -562,7 +570,7 @@ msgstr "[SOUBOR…] [+ŘÁDEK[:SLOUPEC]]"
 msgid "There was an error displaying the help."
 msgstr "Při zobrazování nápovědy došlo k chybě."
 
-#: ../gedit/gedit-app.c:953
+#: ../gedit/gedit-app.c:960
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: neplatné kódování."
@@ -581,7 +589,7 @@ msgstr "Zavřít _bez uložení"
 #: ../gedit/gedit-commands-file.c:1583 ../gedit/gedit-encodings-dialog.c:178
 #: ../gedit/gedit-io-error-info-bar.c:135
 #: ../gedit/gedit-io-error-info-bar.c:516
-#: ../gedit/gedit-preferences-dialog.c:797
+#: ../gedit/gedit-preferences-dialog.c:823
 #: ../gedit/gedit-progress-info-bar.c:51
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
@@ -972,7 +980,7 @@ msgstr "Nalezen a nahrazen jeden výskyt"
 msgid "\"%s\" not found"
 msgstr "„%s“ nenalezeno"
 
-#: ../gedit/gedit-document.c:1032 ../gedit/gedit-document.c:1065
+#: ../gedit/gedit-document.c:1029 ../gedit/gedit-document.c:1062
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Neuložený dokument %d"
@@ -1033,7 +1041,7 @@ msgid "Move to a lower priority"
 msgstr "Přesunout do nižší priority"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:41
-#: ../gedit/gedit-preferences-dialog.c:806
+#: ../gedit/gedit-preferences-dialog.c:832
 msgid "All Files"
 msgstr "Všechny soubory"
 
@@ -1409,39 +1417,39 @@ msgstr ""
 "Pokud budete pokračovat v ukládání tohoto souboru, můžete dokument poškodit. "
 "Přesto uložit?"
 
-#: ../gedit/gedit-preferences-dialog.c:420
+#: ../gedit/gedit-preferences-dialog.c:446
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
 "Chcete-li vybrat písmo, které má editor používat, klikněte na toto tlačítko"
 
-#: ../gedit/gedit-preferences-dialog.c:433
+#: ../gedit/gedit-preferences-dialog.c:459
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Po_užít systémové písmo s pevnou šířkou (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:573
+#: ../gedit/gedit-preferences-dialog.c:599
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Složka „%s“ nemůže být vytvořena: funkce g_mkdir_with_parents() selhala: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:770
+#: ../gedit/gedit-preferences-dialog.c:796
 msgid "The selected color scheme cannot be installed."
 msgstr "Vybrané schéma barev nelze nainstalovat"
 
-#: ../gedit/gedit-preferences-dialog.c:793
+#: ../gedit/gedit-preferences-dialog.c:819
 msgid "Add Scheme"
 msgstr "Přidat schéma"
 
-#: ../gedit/gedit-preferences-dialog.c:798
+#: ../gedit/gedit-preferences-dialog.c:824
 msgid "A_dd Scheme"
 msgstr "Při_dat schéma"
 
-#: ../gedit/gedit-preferences-dialog.c:802
+#: ../gedit/gedit-preferences-dialog.c:828
 msgid "Color Scheme Files"
 msgstr "Soubory s barevnými schématy"
 
-#: ../gedit/gedit-preferences-dialog.c:833
+#: ../gedit/gedit-preferences-dialog.c:859
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nelze odstranit schéma barev „%s“."
@@ -1533,70 +1541,70 @@ msgid "Saving %s"
 msgstr "Ukládá se %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1474
+#: ../gedit/gedit-tab.c:1519
 msgid "RO"
 msgstr "RO"
 
-#: ../gedit/gedit-tab.c:1522
+#: ../gedit/gedit-tab.c:1567
 #, c-format
 msgid "Error opening file %s"
 msgstr "Chyba při otevírání souboru %s"
 
-#: ../gedit/gedit-tab.c:1527
+#: ../gedit/gedit-tab.c:1572
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Chyba při vrácení souboru %s do původního stavu"
 
-#: ../gedit/gedit-tab.c:1532
+#: ../gedit/gedit-tab.c:1577
 #, c-format
 msgid "Error saving file %s"
 msgstr "Chyba při ukládání souboru %s"
 
-#: ../gedit/gedit-tab.c:1563
+#: ../gedit/gedit-tab.c:1608
 msgid "Name:"
 msgstr "Název:"
 
-#: ../gedit/gedit-tab.c:1564
+#: ../gedit/gedit-tab.c:1609
 msgid "MIME Type:"
 msgstr "Typ MIME:"
 
-#: ../gedit/gedit-tab.c:1565
+#: ../gedit/gedit-tab.c:1610
 msgid "Encoding:"
 msgstr "Kódování:"
 
-#: ../gedit/gedit-utils.c:848
+#: ../gedit/gedit-utils.c:827
 msgid "Please check your installation."
 msgstr "Zkontrolujte prosím svou instalaci."
 
-#: ../gedit/gedit-utils.c:909
+#: ../gedit/gedit-utils.c:888
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Nelze otevřít soubor „%s“ s uživatelským rozhraním. Chyba: %s"
 
-#: ../gedit/gedit-utils.c:928
+#: ../gedit/gedit-utils.c:907
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Nelze najít objekt „%s“ uvnitř souboru %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1151
+#: ../gedit/gedit-utils.c:1130
 #, c-format
 msgid "/ on %s"
 msgstr "/ na %s"
 
-#: ../gedit/gedit-utils.c:1455
+#: ../gedit/gedit-utils.c:1434
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-utils.c:1457
+#: ../gedit/gedit-utils.c:1436
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: ../gedit/gedit-utils.c:1459
+#: ../gedit/gedit-utils.c:1438
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:510
+#: ../gedit/gedit-view.c:516
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "Zobrazovat čísla řá_dků"
@@ -1798,7 +1806,7 @@ msgstr "Přejít na řá_dek…"
 #: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/gtk/menus-osx.ui.h:22
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
 msgid "View"
 msgstr "Zobrazit"
 
@@ -2005,107 +2013,111 @@ msgid "Display _statusbar"
 msgstr "Zobrazovat _stavovou lištu"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
+msgid "Display _grid pattern"
+msgstr "Zobrazovat vzor _mřížky"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "Zalamování textu"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
 msgstr "Povolit zalamování _textu"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
 msgstr "Nerozdělovat _slova na dva řádky"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
 msgid "Highlighting"
 msgstr "Zvýrazňování"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
 msgid "Highlight current _line"
 msgstr "Zvýrazňovat _aktuální řádek"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
 msgid "Highlight matching _brackets"
 msgstr "Zvýrazňovat _odpovídající závorky"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "Tab Stops"
 msgstr "Tabulační zarážky"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
 msgid "_Tab width:"
 msgstr "Šířka _tabulátorů:"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
 msgid "Insert _spaces instead of tabs"
 msgstr "Vkládat _mezery místo tabulátorů"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
 msgid "_Enable automatic indentation"
 msgstr "Povolit a_utomatické odsazování"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
 msgid "File Saving"
 msgstr "Ukládání souborů"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
 msgid "Create a _backup copy of files before saving"
 msgstr "Vytvářet záložní _kopii souborů před uložením"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
 msgid "_Autosave files every"
 msgstr "_Automaticky ukládat soubory každých"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
 msgid "_minutes"
 msgstr "_minut"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
 msgid "Editor"
 msgstr "Editor"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Písmo"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
 msgid "Editor _font: "
 msgstr "_Písmo editoru: "
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Pick the editor font"
 msgstr "Zvolte písmo editoru"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
 msgid "Color Scheme"
 msgstr "Barevné schéma"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
 msgid "Install scheme"
 msgstr "Instalovat schéma"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
 msgid "Install Scheme"
 msgstr "Instalovat schéma"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
 msgid "Uninstall scheme"
 msgstr "Odinstalovat schéma"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
 msgid "Uninstall Scheme"
 msgstr "Odinstalovat schéma"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
 msgid "Font & Colors"
 msgstr "Písma a barvy"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:31
 msgid "Plugins"
 msgstr "Zásuvné moduly"
 
