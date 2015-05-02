@@ -27,17 +27,17 @@
 
 #ifdef ENABLE_PROFILING
 static GTimer *timer = NULL;
-static gdouble last = 0.0;
+static gdouble last_time = 0.0;
 #endif
 
-static GeditDebugSection debug = GEDIT_NO_DEBUG;
+static GeditDebugSection enabled_sections = GEDIT_NO_DEBUG;
 
-#define DEBUG_IS_ENABLED(section_rval) (debug & (section_rval))
+#define DEBUG_IS_ENABLED(section) (enabled_sections & (section))
 
 /**
  * gedit_debug_init:
  *
- * Initializes the debugging subsystem of Gedit.
+ * Initializes the debugging subsystem of gedit.
  *
  * The function checks for the existence of certain environment variables to
  * determine whether to enable output for a debug section. To enable output
@@ -56,50 +56,74 @@ gedit_debug_init (void)
 	if (g_getenv ("GEDIT_DEBUG") != NULL)
 	{
 		/* enable all debugging */
-		debug = ~GEDIT_NO_DEBUG;
+		enabled_sections = ~GEDIT_NO_DEBUG;
 		goto out;
 	}
 
 	if (g_getenv ("GEDIT_DEBUG_VIEW") != NULL)
-		debug = debug | GEDIT_DEBUG_VIEW;
+	{
+		enabled_sections |= GEDIT_DEBUG_VIEW;
+	}
 	if (g_getenv ("GEDIT_DEBUG_PREFS") != NULL)
-		debug = debug | GEDIT_DEBUG_PREFS;
-	if (g_getenv ("GEDIT_DEBUG_PLUGINS") != NULL)
-		debug = debug | GEDIT_DEBUG_PLUGINS;
-	if (g_getenv ("GEDIT_DEBUG_TAB") != NULL)
-		debug = debug | GEDIT_DEBUG_TAB;
-	if (g_getenv ("GEDIT_DEBUG_DOCUMENT") != NULL)
-		debug = debug | GEDIT_DEBUG_DOCUMENT;
-	if (g_getenv ("GEDIT_DEBUG_COMMANDS") != NULL)
-		debug = debug | GEDIT_DEBUG_COMMANDS;
-	if (g_getenv ("GEDIT_DEBUG_APP") != NULL)
-		debug = debug | GEDIT_DEBUG_APP;
-	if (g_getenv ("GEDIT_DEBUG_UTILS") != NULL)
-		debug = debug | GEDIT_DEBUG_UTILS;
-	if (g_getenv ("GEDIT_DEBUG_METADATA") != NULL)
-		debug = debug | GEDIT_DEBUG_METADATA;
+	{
+		enabled_sections |= GEDIT_DEBUG_PREFS;
+	}
 	if (g_getenv ("GEDIT_DEBUG_WINDOW") != NULL)
-		debug = debug | GEDIT_DEBUG_WINDOW;
+	{
+		enabled_sections |= GEDIT_DEBUG_WINDOW;
+	}
 	if (g_getenv ("GEDIT_DEBUG_PANEL") != NULL)
-		debug = debug | GEDIT_DEBUG_PANEL;
+	{
+		enabled_sections |= GEDIT_DEBUG_PANEL;
+	}
+	if (g_getenv ("GEDIT_DEBUG_PLUGINS") != NULL)
+	{
+		enabled_sections |= GEDIT_DEBUG_PLUGINS;
+	}
+	if (g_getenv ("GEDIT_DEBUG_TAB") != NULL)
+	{
+		enabled_sections |= GEDIT_DEBUG_TAB;
+	}
+	if (g_getenv ("GEDIT_DEBUG_DOCUMENT") != NULL)
+	{
+		enabled_sections |= GEDIT_DEBUG_DOCUMENT;
+	}
+	if (g_getenv ("GEDIT_DEBUG_COMMANDS") != NULL)
+	{
+		enabled_sections |= GEDIT_DEBUG_COMMANDS;
+	}
+	if (g_getenv ("GEDIT_DEBUG_APP") != NULL)
+	{
+		enabled_sections |= GEDIT_DEBUG_APP;
+	}
+	if (g_getenv ("GEDIT_DEBUG_UTILS") != NULL)
+	{
+		enabled_sections |= GEDIT_DEBUG_UTILS;
+	}
+	if (g_getenv ("GEDIT_DEBUG_METADATA") != NULL)
+	{
+		enabled_sections |= GEDIT_DEBUG_METADATA;
+	}
+
 out:
 
 #ifdef ENABLE_PROFILING
-	if (debug != GEDIT_NO_DEBUG)
+	if (enabled_sections != GEDIT_NO_DEBUG)
+	{
 		timer = g_timer_new ();
+	}
 #endif
-	return;
 }
 
 /**
  * gedit_debug:
- * @section: Debug section.
- * @file: Name of the source file containing the call to gedit_debug().
- * @line: Line number within the file named by @file of the call to gedit_debug().
- * @function: Name of the function that is calling gedit_debug().
+ * @section: debug section.
+ * @file: file name.
+ * @line: line number.
+ * @function: name of the function that is calling gedit_debug().
  *
- * If output for debug section @section is enabled, then logs the trace
- * information @file, @line, and @function.
+ * If @section is enabled, then logs the trace information @file, @line, and
+ * @function.
  */
 void gedit_debug (GeditDebugSection  section,
 		  const gchar       *file,
@@ -115,8 +139,8 @@ void gedit_debug (GeditDebugSection  section,
 
 		seconds = g_timer_elapsed (timer, NULL);
 		g_print ("[%f (%f)] %s:%d (%s)\n",
-			 seconds, seconds - last, file, line, function);
-		last = seconds;
+			 seconds, seconds - last_time, file, line, function);
+		last_time = seconds;
 #else
 		g_print ("%s:%d (%s)\n", file, line, function);
 #endif
@@ -127,23 +151,24 @@ void gedit_debug (GeditDebugSection  section,
 
 /**
  * gedit_debug_message:
- * @section: Debug section.
- * @file: Name of the source file containing the call to gedit_debug_message().
- * @line: Line number within the file named by @file of the call to gedit_debug_message().
- * @function: Name of the function that is calling gedit_debug_message().
+ * @section: debug section.
+ * @file: file name.
+ * @line: line number.
+ * @function: name of the function that is calling gedit_debug_message().
  * @format: A g_vprintf() format string.
  * @...: The format string arguments.
  *
- * If output for debug section @section is enabled, then logs the trace
- * information @file, @line, and @function along with the message obtained by
- * formatting @format with the given format string arguments.
+ * If @section is enabled, then logs the trace information @file, @line, and
+ * @function along with the message obtained by formatting @format with the
+ * given format string arguments.
  */
 void
 gedit_debug_message (GeditDebugSection  section,
 		     const gchar       *file,
 		     gint               line,
 		     const gchar       *function,
-		     const gchar       *format, ...)
+		     const gchar       *format,
+		     ...)
 {
 	if (G_UNLIKELY (DEBUG_IS_ENABLED (section)))
 	{
@@ -166,8 +191,14 @@ gedit_debug_message (GeditDebugSection  section,
 
 #ifdef ENABLE_PROFILING
 		g_print ("[%f (%f)] %s:%d (%s) %s\n",
-			 seconds, seconds - last, file, line, function, msg);
-		last = seconds;
+			 seconds,
+			 seconds - last_time,
+			 file,
+			 line,
+			 function,
+			 msg);
+
+		last_time = seconds;
 #else
 		g_print ("%s:%d (%s) %s\n", file, line, function, msg);
 #endif
@@ -180,14 +211,13 @@ gedit_debug_message (GeditDebugSection  section,
 
 /**
  * gedit_debug_plugin_message:
- * @file: Name of the source file containing the call to gedit_debug_plugin_message().
- * @line: Line number within the file named by @file of the call to gedit_debug_plugin_message().
- * @function: Name of the function that is calling gedit_debug_plugin_message().
- * @message: An informational message.
+ * @file: file name.
+ * @line: line number.
+ * @function: name of the function that is calling gedit_debug_plugin_message().
+ * @message: a message.
  *
- * If output for debug section %GEDIT_DEBUG_PLUGINS is enabled, then logs the trace
- * information @file, @line, and @function along with the informational message
- * @message.
+ * If the section %GEDIT_DEBUG_PLUGINS is enabled, then logs the trace
+ * information @file, @line, and @function along with @message.
  *
  * This function may be overridden by GObject Introspection language bindings
  * to be more language-specific.
@@ -215,8 +245,7 @@ gedit_debug_plugin_message (const gchar       *file,
 			    const gchar       *function,
 			    const gchar       *message)
 {
-	gedit_debug_message (GEDIT_DEBUG_PLUGINS, file, line, function, "%s",
-			     message);
+	gedit_debug_message (GEDIT_DEBUG_PLUGINS, file, line, function, "%s", message);
 }
 
 /* ex:set ts=8 noet: */
