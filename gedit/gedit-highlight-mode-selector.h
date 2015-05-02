@@ -27,34 +27,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR		(gedit_highlight_mode_selector_get_type ())
-#define GEDIT_HIGHLIGHT_MODE_SELECTOR(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR, GeditHighlightModeSelector))
-#define GEDIT_HIGHLIGHT_MODE_SELECTOR_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR, GeditHighlightModeSelector const))
-#define GEDIT_HIGHLIGHT_MODE_SELECTOR_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR, GeditHighlightModeSelectorClass))
-#define GEDIT_IS_HIGHLIGHT_MODE_SELECTOR(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR))
-#define GEDIT_IS_HIGHLIGHT_MODE_SELECTOR_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR))
-#define GEDIT_HIGHLIGHT_MODE_SELECTOR_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR, GeditHighlightModeSelectorClass))
+#define GEDIT_TYPE_HIGHLIGHT_MODE_SELECTOR (gedit_highlight_mode_selector_get_type ())
 
-typedef struct _GeditHighlightModeSelector	GeditHighlightModeSelector;
-typedef struct _GeditHighlightModeSelectorClass	GeditHighlightModeSelectorClass;
-typedef struct _GeditHighlightModeSelectorPrivate	GeditHighlightModeSelectorPrivate;
-
-struct _GeditHighlightModeSelector
-{
-	GtkGrid parent;
-
-	GeditHighlightModeSelectorPrivate *priv;
-};
-
-struct _GeditHighlightModeSelectorClass
-{
-	GtkGridClass parent_class;
-
-	void (* language_selected) (GeditHighlightModeSelector *widget,
-	                            GtkSourceLanguage          *language);
-};
-
-GType                       gedit_highlight_mode_selector_get_type        (void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditHighlightModeSelector, gedit_highlight_mode_selector, GEDIT, HIGHLIGHT_MODE_SELECTOR, GtkGrid)
 
 GeditHighlightModeSelector *gedit_highlight_mode_selector_new             (void);
 

@@ -31,8 +31,10 @@ enum
 	N_COLUMNS
 };
 
-struct _GeditHighlightModeSelectorPrivate
+struct _GeditHighlightModeSelector
 {
+	GtkGrid parent_instance;
+
 	GtkWidget *treeview;
 	GtkWidget *entry;
 	GtkListStore *liststore;
@@ -49,7 +51,13 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditHighlightModeSelector, gedit_highlight_mode_selector, GTK_TYPE_GRID)
+G_DEFINE_TYPE (GeditHighlightModeSelector, gedit_highlight_mode_selector, GTK_TYPE_GRID)
+
+static void
+gedit_highlight_mode_selector_language_selected (GeditHighlightModeSelector *widget,
+                                                 GtkSourceLanguage          *language)
+{
+}
 
 static void
 gedit_highlight_mode_selector_class_init (GeditHighlightModeSelectorClass *klass)
@@ -57,24 +65,23 @@ gedit_highlight_mode_selector_class_init (GeditHighlightModeSelectorClass *klass
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	signals[LANGUAGE_SELECTED] =
-		g_signal_new ("language-selected",
-		              G_TYPE_FROM_CLASS (klass),
-		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-		              G_STRUCT_OFFSET (GeditHighlightModeSelectorClass, language_selected),
-		              NULL, NULL,
-		              g_cclosure_marshal_VOID__OBJECT,
-		              G_TYPE_NONE,
-		              1,
-		              GTK_SOURCE_TYPE_LANGUAGE);
+		g_signal_new_class_handler ("language-selected",
+		                            G_TYPE_FROM_CLASS (klass),
+		                            G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
+		                            G_CALLBACK (gedit_highlight_mode_selector_language_selected),
+		                            NULL, NULL, NULL,
+		                            G_TYPE_NONE,
+		                            1,
+		                            GTK_SOURCE_TYPE_LANGUAGE);
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-highlight-mode-selector.ui");
-	gtk_widget_class_bind_template_child_private (widget_class, GeditHighlightModeSelector, treeview);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditHighlightModeSelector, entry);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditHighlightModeSelector, liststore);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditHighlightModeSelector, treemodelfilter);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditHighlightModeSelector, treeview_selection);
+	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, treeview);
+	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, entry);
+	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, liststore);
+	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, treemodelfilter);
+	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeSelector, treeview_selection);
 }
 
 static gboolean
@@ -88,7 +95,7 @@ visible_func (GtkTreeModel               *model,
 	gchar *text_lower;
 	gboolean visible = FALSE;
 
-	entry_text = gtk_entry_get_text (GTK_ENTRY (selector->priv->entry));
+	entry_text = gtk_entry_get_text (GTK_ENTRY (selector->entry));
 
 	if (*entry_text == '\0')
 	{
@@ -126,11 +133,11 @@ on_entry_changed (GtkEntry                   *entry,
 {
 	GtkTreeIter iter;
 
-	gtk_tree_model_filter_refilter (selector->priv->treemodelfilter);
+	gtk_tree_model_filter_refilter (selector->treemodelfilter);
 
-	if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (selector->priv->treemodelfilter), &iter))
+	if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (selector->treemodelfilter), &iter))
 	{
-		gtk_tree_selection_select_iter (selector->priv->treeview_selection, &iter);
+		gtk_tree_selection_select_iter (selector->treeview_selection, &iter);
 	}
 }
 
@@ -143,13 +150,13 @@ move_selection (GeditHighlightModeSelector *selector,
 	gint *indices;
 	gint ret = FALSE;
 
-	if (!gtk_tree_selection_get_selected (selector->priv->treeview_selection, NULL, &iter) &&
-	    !gtk_tree_model_get_iter_first (GTK_TREE_MODEL (selector->priv->treemodelfilter), &iter))
+	if (!gtk_tree_selection_get_selected (selector->treeview_selection, NULL, &iter) &&
+	    !gtk_tree_model_get_iter_first (GTK_TREE_MODEL (selector->treemodelfilter), &iter))
 	{
 		return FALSE;
 	}
 
-	path = gtk_tree_model_get_path (GTK_TREE_MODEL (selector->priv->treemodelfilter), &iter);
+	path = gtk_tree_model_get_path (GTK_TREE_MODEL (selector->treemodelfilter), &iter);
 	indices = gtk_tree_path_get_indices (path);
 
 	if (indices)
@@ -159,7 +166,7 @@ move_selection (GeditHighlightModeSelector *selector,
 		GtkTreePath *new_path;
 
 		idx = indices[0];
-		num = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (selector->priv->treemodelfilter), NULL);
+		num = gtk_tree_model_iter_n_children (GTK_TREE_MODEL (selector->treemodelfilter), NULL);
 
 		if ((idx + howmany) < 0)
 		{
@@ -175,8 +182,8 @@ move_selection (GeditHighlightModeSelector *selector,
 		}
 
 		new_path = gtk_tree_path_new_from_indices (idx, -1);
-		gtk_tree_selection_select_path (selector->priv->treeview_selection, new_path);
-		gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (selector->priv->treeview),
+		gtk_tree_selection_select_path (selector->treeview_selection, new_path);
+		gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (selector->treeview),
 		                              new_path, NULL, TRUE, 0.5, 0);
 		gtk_tree_path_free (new_path);
 
@@ -225,35 +232,33 @@ on_row_activated (GtkTreeView                *tree_view,
 static void
 gedit_highlight_mode_selector_init (GeditHighlightModeSelector *selector)
 {
-	GeditHighlightModeSelectorPrivate *priv;
 	GtkSourceLanguageManager *lm;
 	const gchar * const *ids;
 	gint i;
 	GtkTreeIter iter;
 
-	selector->priv = gedit_highlight_mode_selector_get_instance_private (selector);
-	priv = selector->priv;
+	selector = gedit_highlight_mode_selector_get_instance_private (selector);
 
 	gtk_widget_init_template (GTK_WIDGET (selector));
 
-	gtk_tree_model_filter_set_visible_func (priv->treemodelfilter,
+	gtk_tree_model_filter_set_visible_func (selector->treemodelfilter,
 	                                        (GtkTreeModelFilterVisibleFunc)visible_func,
 	                                        selector,
 	                                        NULL);
 
-	g_signal_connect (priv->entry, "activate",
+	g_signal_connect (selector->entry, "activate",
 	                  G_CALLBACK (on_entry_activate), selector);
-	g_signal_connect (priv->entry, "changed",
+	g_signal_connect (selector->entry, "changed",
 	                  G_CALLBACK (on_entry_changed), selector);
-	g_signal_connect (priv->entry, "key-press-event",
+	g_signal_connect (selector->entry, "key-press-event",
 	                  G_CALLBACK (on_entry_key_press_event), selector);
 
-	g_signal_connect (priv->treeview, "row-activated",
+	g_signal_connect (selector->treeview, "row-activated",
 	                  G_CALLBACK (on_row_activated), selector);
 
 	/* Populate tree model */
-	gtk_list_store_append (priv->liststore, &iter);
-	gtk_list_store_set (priv->liststore, &iter,
+	gtk_list_store_append (selector->liststore, &iter);
+	gtk_list_store_set (selector->liststore, &iter,
 	                    COLUMN_NAME, _("Plain Text"),
 	                    COLUMN_LANG, NULL,
 	                    -1);
@@ -269,8 +274,8 @@ gedit_highlight_mode_selector_init (GeditHighlightModeSelector *selector)
 
 		if (!gtk_source_language_get_hidden (lang))
 		{
-			gtk_list_store_append (priv->liststore, &iter);
-			gtk_list_store_set (priv->liststore, &iter,
+			gtk_list_store_append (selector->liststore, &iter);
+			gtk_list_store_set (selector->liststore, &iter,
 			                    COLUMN_NAME, gtk_source_language_get_name (lang),
 			                    COLUMN_LANG, lang,
 			                    -1);
@@ -278,9 +283,9 @@ gedit_highlight_mode_selector_init (GeditHighlightModeSelector *selector)
 	}
 
 	/* select first item */
-	if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (selector->priv->treemodelfilter), &iter))
+	if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (selector->treemodelfilter), &iter))
 	{
-		gtk_tree_selection_select_iter (selector->priv->treeview_selection, &iter);
+		gtk_tree_selection_select_iter (selector->treeview_selection, &iter);
 	}
 }
 
@@ -303,13 +308,13 @@ gedit_highlight_mode_selector_select_language (GeditHighlightModeSelector *selec
 		return;
 	}
 
-	if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (selector->priv->treemodelfilter), &iter))
+	if (gtk_tree_model_get_iter_first (GTK_TREE_MODEL (selector->treemodelfilter), &iter))
 	{
 		do
 		{
 			GtkSourceLanguage *lang;
 
-			gtk_tree_model_get (GTK_TREE_MODEL (selector->priv->treemodelfilter),
+			gtk_tree_model_get (GTK_TREE_MODEL (selector->treemodelfilter),
 			                    &iter,
 			                    COLUMN_LANG, &lang,
 			                    -1);
@@ -324,35 +329,34 @@ gedit_highlight_mode_selector_select_language (GeditHighlightModeSelector *selec
 				{
 					GtkTreePath *path;
 
-					path = gtk_tree_model_get_path (GTK_TREE_MODEL (selector->priv->treemodelfilter), &iter);
+					path = gtk_tree_model_get_path (GTK_TREE_MODEL (selector->treemodelfilter), &iter);
 
-					gtk_tree_selection_select_iter (selector->priv->treeview_selection, &iter);
-					gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (selector->priv->treeview),
+					gtk_tree_selection_select_iter (selector->treeview_selection, &iter);
+					gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (selector->treeview),
 					                              path, NULL, TRUE, 0.5, 0);
 					gtk_tree_path_free (path);
 					break;
 				}
 			}
 		}
-		while (gtk_tree_model_iter_next (GTK_TREE_MODEL (selector->priv->treemodelfilter), &iter));
+		while (gtk_tree_model_iter_next (GTK_TREE_MODEL (selector->treemodelfilter), &iter));
 	}
 }
 
 void
 gedit_highlight_mode_selector_activate_selected_language (GeditHighlightModeSelector *selector)
 {
-	GeditHighlightModeSelectorPrivate *priv = selector->priv;
 	GtkSourceLanguage *lang;
 	GtkTreeIter iter;
 
 	g_return_if_fail (GEDIT_IS_HIGHLIGHT_MODE_SELECTOR (selector));
 
-	if (!gtk_tree_selection_get_selected (priv->treeview_selection, NULL, &iter))
+	if (!gtk_tree_selection_get_selected (selector->treeview_selection, NULL, &iter))
 	{
 		return;
 	}
 
-	gtk_tree_model_get (GTK_TREE_MODEL (priv->treemodelfilter), &iter,
+	gtk_tree_model_get (GTK_TREE_MODEL (selector->treemodelfilter), &iter,
 	                    COLUMN_LANG, &lang,
 	                    -1);
 

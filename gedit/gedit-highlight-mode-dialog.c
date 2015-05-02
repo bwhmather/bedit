@@ -22,25 +22,27 @@
 
 #include <gtk/gtk.h>
 
-struct _GeditHighlightModeDialogPrivate
+struct _GeditHighlightModeDialog
 {
+	GtkDialog parent_instance;
+
 	GeditHighlightModeSelector *selector;
-	gulong                      on_language_selected_id;
+	gulong on_language_selected_id;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditHighlightModeDialog, gedit_highlight_mode_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (GeditHighlightModeDialog, gedit_highlight_mode_dialog, GTK_TYPE_DIALOG)
 
 static void
 gedit_highlight_mode_dialog_response (GtkDialog *dialog,
                                       gint       response_id)
 {
-	GeditHighlightModeDialogPrivate *priv = GEDIT_HIGHLIGHT_MODE_DIALOG (dialog)->priv;
+	GeditHighlightModeDialog *dlg = GEDIT_HIGHLIGHT_MODE_DIALOG (dialog);
 
 	if (response_id == GTK_RESPONSE_OK)
 	{
-		g_signal_handler_block (priv->selector, priv->on_language_selected_id);
-		gedit_highlight_mode_selector_activate_selected_language (priv->selector);
-		g_signal_handler_unblock (priv->selector, priv->on_language_selected_id);
+		g_signal_handler_block (dlg->selector, dlg->on_language_selected_id);
+		gedit_highlight_mode_selector_activate_selected_language (dlg->selector);
+		g_signal_handler_unblock (dlg->selector, dlg->on_language_selected_id);
 	}
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
@@ -49,15 +51,13 @@ gedit_highlight_mode_dialog_response (GtkDialog *dialog,
 static void
 on_language_selected (GeditHighlightModeSelector *sel,
                       GtkSourceLanguage          *language,
-                      GtkDialog                  *dialog)
+                      GeditHighlightModeDialog   *dlg)
 {
-	GeditHighlightModeDialogPrivate *priv = GEDIT_HIGHLIGHT_MODE_DIALOG (dialog)->priv;
+	g_signal_handler_block (dlg->selector, dlg->on_language_selected_id);
+	gedit_highlight_mode_selector_activate_selected_language (dlg->selector);
+	g_signal_handler_unblock (dlg->selector, dlg->on_language_selected_id);
 
-	g_signal_handler_block (priv->selector, priv->on_language_selected_id);
-	gedit_highlight_mode_selector_activate_selected_language (priv->selector);
-	g_signal_handler_unblock (priv->selector, priv->on_language_selected_id);
-
-	gtk_widget_destroy (GTK_WIDGET (dialog));
+	gtk_widget_destroy (GTK_WIDGET (dlg));
 }
 
 static void
@@ -71,19 +71,17 @@ gedit_highlight_mode_dialog_class_init (GeditHighlightModeDialogClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-highlight-mode-dialog.ui");
-	gtk_widget_class_bind_template_child_private (widget_class, GeditHighlightModeDialog, selector);
+	gtk_widget_class_bind_template_child (widget_class, GeditHighlightModeDialog, selector);
 }
 
 static void
 gedit_highlight_mode_dialog_init (GeditHighlightModeDialog *dlg)
 {
-	dlg->priv = gedit_highlight_mode_dialog_get_instance_private (dlg);
-
 	gtk_widget_init_template (GTK_WIDGET (dlg));
 	gtk_dialog_set_default_response (GTK_DIALOG (dlg), GTK_RESPONSE_OK);
 
-	dlg->priv->on_language_selected_id = g_signal_connect (dlg->priv->selector, "language-selected",
-	                                                       G_CALLBACK (on_language_selected), dlg);
+	dlg->on_language_selected_id = g_signal_connect (dlg->selector, "language-selected",
+	                                                 G_CALLBACK (on_language_selected), dlg);
 }
 
 GtkWidget *
@@ -100,7 +98,7 @@ gedit_highlight_mode_dialog_get_selector (GeditHighlightModeDialog *dlg)
 {
 	g_return_val_if_fail (GEDIT_IS_HIGHLIGHT_MODE_DIALOG (dlg), NULL);
 
-	return dlg->priv->selector;
+	return dlg->selector;
 }
 
 /* ex:set ts=8 noet: */
