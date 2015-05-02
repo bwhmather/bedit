@@ -125,28 +125,13 @@ out:
  * If @section is enabled, then logs the trace information @file, @line, and
  * @function.
  */
-void gedit_debug (GeditDebugSection  section,
-		  const gchar       *file,
-		  gint               line,
-		  const gchar       *function)
+void
+gedit_debug (GeditDebugSection  section,
+	     const gchar       *file,
+	     gint               line,
+	     const gchar       *function)
 {
-	if (G_UNLIKELY (DEBUG_IS_ENABLED (section)))
-	{
-#ifdef ENABLE_PROFILING
-		gdouble seconds;
-
-		g_return_if_fail (timer != NULL);
-
-		seconds = g_timer_elapsed (timer, NULL);
-		g_print ("[%f (%f)] %s:%d (%s)\n",
-			 seconds, seconds - last_time, file, line, function);
-		last_time = seconds;
-#else
-		g_print ("%s:%d (%s)\n", file, line, function);
-#endif
-
-		fflush (stdout);
-	}
+	gedit_debug_message (section, file, line, function, "%s", "");
 }
 
 /**
