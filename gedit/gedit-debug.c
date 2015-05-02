@@ -62,12 +62,8 @@ gedit_debug_init (void)
 
 	if (g_getenv ("GEDIT_DEBUG_VIEW") != NULL)
 		debug = debug | GEDIT_DEBUG_VIEW;
-	if (g_getenv ("GEDIT_DEBUG_SEARCH") != NULL)
-		debug = debug | GEDIT_DEBUG_SEARCH;
 	if (g_getenv ("GEDIT_DEBUG_PREFS") != NULL)
 		debug = debug | GEDIT_DEBUG_PREFS;
-	if (g_getenv ("GEDIT_DEBUG_PRINT") != NULL)
-		debug = debug | GEDIT_DEBUG_PRINT;
 	if (g_getenv ("GEDIT_DEBUG_PLUGINS") != NULL)
 		debug = debug | GEDIT_DEBUG_PLUGINS;
 	if (g_getenv ("GEDIT_DEBUG_TAB") != NULL)
@@ -78,22 +74,14 @@ gedit_debug_init (void)
 		debug = debug | GEDIT_DEBUG_COMMANDS;
 	if (g_getenv ("GEDIT_DEBUG_APP") != NULL)
 		debug = debug | GEDIT_DEBUG_APP;
-	if (g_getenv ("GEDIT_DEBUG_SESSION") != NULL)
-		debug = debug | GEDIT_DEBUG_SESSION;
 	if (g_getenv ("GEDIT_DEBUG_UTILS") != NULL)
 		debug = debug | GEDIT_DEBUG_UTILS;
 	if (g_getenv ("GEDIT_DEBUG_METADATA") != NULL)
 		debug = debug | GEDIT_DEBUG_METADATA;
 	if (g_getenv ("GEDIT_DEBUG_WINDOW") != NULL)
 		debug = debug | GEDIT_DEBUG_WINDOW;
-	if (g_getenv ("GEDIT_DEBUG_LOADER") != NULL)
-		debug = debug | GEDIT_DEBUG_LOADER;
-	if (g_getenv ("GEDIT_DEBUG_SAVER") != NULL)
-		debug = debug | GEDIT_DEBUG_SAVER;
 	if (g_getenv ("GEDIT_DEBUG_PANEL") != NULL)
 		debug = debug | GEDIT_DEBUG_PANEL;
-	if (g_getenv ("GEDIT_DEBUG_DBUS") != NULL)
-		debug = debug | GEDIT_DEBUG_DBUS;
 out:
 
 #ifdef ENABLE_PROFILING
