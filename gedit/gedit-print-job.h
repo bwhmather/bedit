@@ -27,16 +27,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PRINT_JOB              (gedit_print_job_get_type())
-#define GEDIT_PRINT_JOB(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_PRINT_JOB, GeditPrintJob))
-#define GEDIT_PRINT_JOB_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_PRINT_JOB, GeditPrintJobClass))
-#define GEDIT_IS_PRINT_JOB(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_PRINT_JOB))
-#define GEDIT_IS_PRINT_JOB_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_PRINT_JOB))
-#define GEDIT_PRINT_JOB_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_PRINT_JOB, GeditPrintJobClass))
+#define GEDIT_TYPE_PRINT_JOB (gedit_print_job_get_type())
 
-typedef struct _GeditPrintJob		GeditPrintJob;
-typedef struct _GeditPrintJobClass	GeditPrintJobClass;
-typedef struct _GeditPrintJobPrivate	GeditPrintJobPrivate;
+G_DECLARE_FINAL_TYPE (GeditPrintJob, gedit_print_job, GEDIT, PRINT_JOB, GObject)
 
 typedef enum
 {
@@ -50,32 +43,6 @@ typedef enum
 	GEDIT_PRINT_JOB_RESULT_CANCEL,
 	GEDIT_PRINT_JOB_RESULT_ERROR
 } GeditPrintJobResult;
-
-struct _GeditPrintJob
-{
-	GObject parent;
-
-	/* <private> */
-	GeditPrintJobPrivate *priv;
-};
-
-struct _GeditPrintJobClass
-{
-	GObjectClass parent_class;
-
-        /* Signals */
-	void (* printing)	(GeditPrintJob       *job,
-				 GeditPrintJobStatus  status);
-
-	void (* show_preview)	(GeditPrintJob       *job,
-				 GtkWidget           *preview);
-
-        void (* done)		(GeditPrintJob       *job,
-        			 GeditPrintJobResult  result,
-        			 const GError        *error);
-};
-
-GType			 gedit_print_job_get_type		(void) G_GNUC_CONST;
 
 GeditPrintJob		*gedit_print_job_new			(GeditView                *view);
 
