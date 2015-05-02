@@ -21,7 +21,6 @@
  * Boston, MA  02110-1301  USA
  */
 
-
 #ifndef __GEDIT_SETTINGS_H__
 #define __GEDIT_SETTINGS_H__
 
@@ -31,31 +30,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SETTINGS		(gedit_settings_get_type ())
-#define GEDIT_SETTINGS(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_SETTINGS, GeditSettings))
-#define GEDIT_SETTINGS_CONST(obj)	(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_SETTINGS, GeditSettings const))
-#define GEDIT_SETTINGS_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_SETTINGS, GeditSettingsClass))
-#define GEDIT_IS_SETTINGS(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_SETTINGS))
-#define GEDIT_IS_SETTINGS_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_SETTINGS))
-#define GEDIT_SETTINGS_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_SETTINGS, GeditSettingsClass))
+#define GEDIT_TYPE_SETTINGS (gedit_settings_get_type ())
 
-typedef struct _GeditSettings		GeditSettings;
-typedef struct _GeditSettingsClass	GeditSettingsClass;
-typedef struct _GeditSettingsPrivate	GeditSettingsPrivate;
-
-struct _GeditSettings
-{
-	GObject parent;
-
-	GeditSettingsPrivate *priv;
-};
-
-struct _GeditSettingsClass
-{
-	GObjectClass parent_class;
-};
-
-GType			 gedit_settings_get_type			(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditSettings, gedit_settings, GEDIT, SETTINGS, GObject)
 
 GObject			*gedit_settings_new				(void);
 

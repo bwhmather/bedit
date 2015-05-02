@@ -41,8 +41,10 @@
 
 #define GEDIT_SETTINGS_SYSTEM_FONT "monospace-font-name"
 
-struct _GeditSettingsPrivate
+struct _GeditSettings
 {
+	GObject parent_instance;
+
 	GSettings *lockdown;
 	GSettings *interface;
 	GSettings *editor;
@@ -51,14 +53,14 @@ struct _GeditSettingsPrivate
 	gchar *old_scheme;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditSettings, gedit_settings, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GeditSettings, gedit_settings, G_TYPE_OBJECT)
 
 static void
 gedit_settings_finalize (GObject *object)
 {
 	GeditSettings *gs = GEDIT_SETTINGS (object);
 
-	g_free (gs->priv->old_scheme);
+	g_free (gs->old_scheme);
 
 	G_OBJECT_CLASS (gedit_settings_parent_class)->finalize (object);
 }
@@ -66,12 +68,12 @@ gedit_settings_finalize (GObject *object)
 static void
 gedit_settings_dispose (GObject *object)
 {
-	GeditSettingsPrivate *priv = GEDIT_SETTINGS (object)->priv;
+	GeditSettings *gs = GEDIT_SETTINGS (object);
 
-	g_clear_object (&priv->lockdown);
-	g_clear_object (&priv->interface);
-	g_clear_object (&priv->editor);
-	g_clear_object (&priv->ui);
+	g_clear_object (&gs->lockdown);
+	g_clear_object (&gs->interface);
+	g_clear_object (&gs->editor);
+	g_clear_object (&gs->ui);
 
 	G_OBJECT_CLASS (gedit_settings_parent_class)->dispose (object);
 }
@@ -120,7 +122,7 @@ set_font (GeditSettings *gs,
 	GList *views, *l;
 	guint ts;
 
-	g_settings_get (gs->priv->editor, GEDIT_SETTINGS_TABS_SIZE, "u", &ts);
+	g_settings_get (gs->editor, GEDIT_SETTINGS_TABS_SIZE, "u", &ts);
 
 	views = gedit_app_get_views (GEDIT_APP (g_application_get_default ()));
 
@@ -142,18 +144,18 @@ on_system_font_changed (GSettings     *settings,
 {
 
 	gboolean use_default_font;
-	gchar *font;
 
-	use_default_font = g_settings_get_boolean (gs->priv->editor,
+	use_default_font = g_settings_get_boolean (gs->editor,
 						   GEDIT_SETTINGS_USE_DEFAULT_FONT);
-	if (!use_default_font)
-		return;
 
-	font = g_settings_get_string (settings, key);
+	if (use_default_font)
+	{
+		gchar *font;
 
-	set_font (gs, font);
-
-	g_free (font);
+		font = g_settings_get_string (settings, key);
+		set_font (gs, font);
+		g_free (font);
+	}
 }
 
 static void
@@ -168,12 +170,12 @@ on_use_default_font_changed (GSettings     *settings,
 
 	if (def)
 	{
-		font = g_settings_get_string (gs->priv->interface,
+		font = g_settings_get_string (gs->interface,
 					      GEDIT_SETTINGS_SYSTEM_FONT);
 	}
 	else
 	{
-		font = g_settings_get_string (gs->priv->editor,
+		font = g_settings_get_string (gs->editor,
 					      GEDIT_SETTINGS_EDITOR_FONT);
 	}
 
@@ -188,18 +190,18 @@ on_editor_font_changed (GSettings     *settings,
 			GeditSettings *gs)
 {
 	gboolean use_default_font;
-	gchar *font;
 
-	use_default_font = g_settings_get_boolean (gs->priv->editor,
+	use_default_font = g_settings_get_boolean (gs->editor,
 						   GEDIT_SETTINGS_USE_DEFAULT_FONT);
-	if (use_default_font)
-		return;
 
-	font = g_settings_get_string (settings, key);
+	if (!use_default_font)
+	{
+		gchar *font;
 
-	set_font (gs, font);
-
-	g_free (font);
+		font = g_settings_get_string (settings, key);
+		set_font (gs, font);
+		g_free (font);
+	}
 }
 
 static void
@@ -215,15 +217,14 @@ on_scheme_changed (GSettings     *settings,
 
 	scheme = g_settings_get_string (settings, key);
 
-	if (gs->priv->old_scheme != NULL &&
-	    (strcmp (scheme, gs->priv->old_scheme) == 0))
+	if (gs->old_scheme != NULL && (strcmp (scheme, gs->old_scheme) == 0))
 	{
 		g_free (scheme);
 		return;
 	}
 
-	g_free (gs->priv->old_scheme);
-	gs->priv->old_scheme = scheme;
+	g_free (gs->old_scheme);
+	gs->old_scheme = scheme;
 
 	manager = gtk_source_style_scheme_manager_get_default ();
 	style = gtk_source_style_scheme_manager_get_scheme (manager, scheme);
@@ -332,49 +333,47 @@ on_syntax_highlighting_changed (GSettings     *settings,
 static void
 gedit_settings_init (GeditSettings *gs)
 {
-	gs->priv = gedit_settings_get_instance_private (gs);
-
-	gs->priv->old_scheme = NULL;
-	gs->priv->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
-	gs->priv->ui = g_settings_new ("org.gnome.gedit.preferences.ui");
+	gs->old_scheme = NULL;
+	gs->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
+	gs->ui = g_settings_new ("org.gnome.gedit.preferences.ui");
 
 	/* Load settings */
-	gs->priv->lockdown = g_settings_new ("org.gnome.desktop.lockdown");
+	gs->lockdown = g_settings_new ("org.gnome.desktop.lockdown");
 
-	g_signal_connect (gs->priv->lockdown,
+	g_signal_connect (gs->lockdown,
 			  "changed",
 			  G_CALLBACK (on_lockdown_changed),
 			  NULL);
 
-	gs->priv->interface = g_settings_new ("org.gnome.desktop.interface");
+	gs->interface = g_settings_new ("org.gnome.desktop.interface");
 
-	g_signal_connect (gs->priv->interface,
+	g_signal_connect (gs->interface,
 			  "changed::monospace-font-name",
 			  G_CALLBACK (on_system_font_changed),
 			  gs);
 
 	/* editor changes */
-	g_signal_connect (gs->priv->editor,
+	g_signal_connect (gs->editor,
 			  "changed::use-default-font",
 			  G_CALLBACK (on_use_default_font_changed),
 			  gs);
-	g_signal_connect (gs->priv->editor,
+	g_signal_connect (gs->editor,
 			  "changed::editor-font",
 			  G_CALLBACK (on_editor_font_changed),
 			  gs);
-	g_signal_connect (gs->priv->editor,
+	g_signal_connect (gs->editor,
 			  "changed::scheme",
 			  G_CALLBACK (on_scheme_changed),
 			  gs);
-	g_signal_connect (gs->priv->editor,
+	g_signal_connect (gs->editor,
 			  "changed::auto-save",
 			  G_CALLBACK (on_auto_save_changed),
 			  gs);
-	g_signal_connect (gs->priv->editor,
+	g_signal_connect (gs->editor,
 			  "changed::auto-save-interval",
 			  G_CALLBACK (on_auto_save_interval_changed),
 			  gs);
-	g_signal_connect (gs->priv->editor,
+	g_signal_connect (gs->editor,
 			  "changed::syntax-highlighting",
 			  G_CALLBACK (on_syntax_highlighting_changed),
 			  gs);
@@ -401,13 +400,13 @@ gedit_settings_get_lockdown (GeditSettings *gs)
 	guint lockdown = 0;
 	gboolean command_line, printing, print_setup, save_to_disk;
 
-	command_line = g_settings_get_boolean (gs->priv->lockdown,
+	command_line = g_settings_get_boolean (gs->lockdown,
 					       GEDIT_SETTINGS_LOCKDOWN_COMMAND_LINE);
-	printing = g_settings_get_boolean (gs->priv->lockdown,
+	printing = g_settings_get_boolean (gs->lockdown,
 					   GEDIT_SETTINGS_LOCKDOWN_PRINTING);
-	print_setup = g_settings_get_boolean (gs->priv->lockdown,
+	print_setup = g_settings_get_boolean (gs->lockdown,
 					      GEDIT_SETTINGS_LOCKDOWN_PRINT_SETUP);
-	save_to_disk = g_settings_get_boolean (gs->priv->lockdown,
+	save_to_disk = g_settings_get_boolean (gs->lockdown,
 					       GEDIT_SETTINGS_LOCKDOWN_SAVE_TO_DISK);
 
 	if (command_line)
@@ -432,7 +431,7 @@ gedit_settings_get_system_font (GeditSettings *gs)
 
 	g_return_val_if_fail (GEDIT_IS_SETTINGS (gs), NULL);
 
-	system_font = g_settings_get_string (gs->priv->interface,
+	system_font = g_settings_get_string (gs->interface,
 					     "monospace-font-name");
 
 	return system_font;
