@@ -24,33 +24,9 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PRINT_PREVIEW            (gedit_print_preview_get_type ())
-#define GEDIT_PRINT_PREVIEW(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GEDIT_TYPE_PRINT_PREVIEW, GeditPrintPreview))
-#define GEDIT_PRINT_PREVIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_PRINT_PREVIEW, GeditPrintPreviewClass))
-#define GEDIT_IS_PRINT_PREVIEW(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GEDIT_TYPE_PRINT_PREVIEW))
-#define GEDIT_IS_PRINT_PREVIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_PRINT_PREVIEW))
-#define GEDIT_PRINT_PREVIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_PRINT_PREVIEW, GeditPrintPreviewClass))
+#define GEDIT_TYPE_PRINT_PREVIEW (gedit_print_preview_get_type ())
 
-typedef struct _GeditPrintPreview        GeditPrintPreview;
-typedef struct _GeditPrintPreviewPrivate GeditPrintPreviewPrivate;
-typedef struct _GeditPrintPreviewClass   GeditPrintPreviewClass;
-
-struct _GeditPrintPreview
-{
-	GtkGrid parent;
-
-	GeditPrintPreviewPrivate *priv;
-};
-
-struct _GeditPrintPreviewClass
-{
-	GtkGridClass parent_class;
-
-	void (* close)		(GeditPrintPreview          *preview);
-};
-
-
-GType		 gedit_print_preview_get_type	(void) G_GNUC_CONST;
+G_DECLARE_FINAL_TYPE (GeditPrintPreview, gedit_print_preview, GEDIT, PRINT_PREVIEW, GtkGrid)
 
 GtkWidget	*gedit_print_preview_new	(GtkPrintOperation		*op,
 						 GtkPrintOperationPreview	*gtk_preview,
