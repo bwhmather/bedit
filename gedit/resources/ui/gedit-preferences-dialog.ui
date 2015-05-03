@@ -536,6 +536,9 @@
                         <property name="receives_default">False</property>
                         <property name="use_underline">True</property>
                         <property name="draw_indicator">True</property>
+                        <accessibility>
+                          <relation type="controller-for" target="font_button"/>
+                        </accessibility>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -571,6 +574,9 @@
                             <property name="font">Sans 12</property>
                             <property name="title" translatable="yes">Pick the editor font</property>
                             <property name="use_font">True</property>
+                            <accessibility>
+                              <relation type="controlled-by" target="default_font_checkbutton"/>
+                            </accessibility>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>

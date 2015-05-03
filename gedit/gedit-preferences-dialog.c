@@ -445,13 +445,6 @@ setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 	gtk_widget_set_tooltip_text (dlg->font_button,
 			 _("Click on this button to select the font to be used by the editor"));
 
-	gedit_utils_set_atk_relation (dlg->font_button,
-				      dlg->default_font_checkbutton,
-				      ATK_RELATION_CONTROLLED_BY);
-	gedit_utils_set_atk_relation (dlg->default_font_checkbutton,
-				      dlg->font_button,
-				      ATK_RELATION_CONTROLLER_FOR);
-
 	/* Get values */
 	settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
 	system_font = gedit_settings_get_system_font (GEDIT_SETTINGS (settings));
