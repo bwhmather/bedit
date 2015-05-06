@@ -29,31 +29,8 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_VIEW_FRAME			(gedit_view_frame_get_type ())
-#define GEDIT_VIEW_FRAME(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_VIEW_FRAME, GeditViewFrame))
-#define GEDIT_VIEW_FRAME_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_VIEW_FRAME, GeditViewFrame const))
-#define GEDIT_VIEW_FRAME_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_VIEW_FRAME, GeditViewFrameClass))
-#define GEDIT_IS_VIEW_FRAME(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_VIEW_FRAME))
-#define GEDIT_IS_VIEW_FRAME_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_VIEW_FRAME))
-#define GEDIT_VIEW_FRAME_GET_CLASS(obj)		(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_VIEW_FRAME, GeditViewFrameClass))
-
-typedef struct _GeditViewFrame			GeditViewFrame;
-typedef struct _GeditViewFramePrivate		GeditViewFramePrivate;
-typedef struct _GeditViewFrameClass		GeditViewFrameClass;
-
-struct _GeditViewFrame
-{
-	GtkOverlay parent;
-
-	GeditViewFramePrivate *priv;
-};
-
-struct _GeditViewFrameClass
-{
-	GtkOverlayClass parent_class;
-};
-
-GType		 gedit_view_frame_get_type	(void) G_GNUC_CONST;
+#define GEDIT_TYPE_VIEW_FRAME (gedit_view_frame_get_type ())
+G_DECLARE_FINAL_TYPE (GeditViewFrame, gedit_view_frame, GEDIT, VIEW_FRAME, GtkOverlay)
 
 GeditViewFrame	*gedit_view_frame_new		(void);
 
