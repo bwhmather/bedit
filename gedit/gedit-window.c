@@ -2728,6 +2728,7 @@ gedit_window_init (GeditWindow *window)
 {
 	GtkTargetList *tl;
 	GMenuModel *gear_menu;
+	GAction *action;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -2756,6 +2757,9 @@ gedit_window_init (GeditWindow *window)
 	                                 win_entries,
 	                                 G_N_ELEMENTS (win_entries),
 	                                 window);
+	action = g_settings_create_action (window->priv->ui_settings,
+	                                   GEDIT_SETTINGS_MINIMAP_VISIBLE);
+	g_action_map_add_action (G_ACTION_MAP (window), action);
 
 	window->priv->window_group = gtk_window_group_new ();
 	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));

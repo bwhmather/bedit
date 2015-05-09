@@ -36,6 +36,7 @@
 #include "gedit-view-holder.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
+#include "gedit-settings.h"
 #include "libgd/gd.h"
 
 #define FLUSH_TIMEOUT_DURATION 30 /* in seconds */
@@ -58,9 +59,12 @@ struct _GeditViewFrame
 {
 	GtkOverlay parent_instance;
 
+	GSettings *ui_settings;
+
 	GeditView *view;
 	GeditViewHolder *view_holder;
 	GtkWidget *window;
+	GtkFrame *map_frame;
 
 	SearchMode search_mode;
 
@@ -1470,6 +1474,7 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	                                             "/org/gnome/gedit/ui/gedit-view-frame.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, view);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, view_holder);
+	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, map_frame);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, revealer);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, search_entry);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, go_up_button);
@@ -1537,6 +1542,13 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	gedit_debug (DEBUG_WINDOW);
 
 	gtk_widget_init_template (GTK_WIDGET (frame));
+
+	frame->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
+	g_settings_bind (frame->ui_settings,
+	                 GEDIT_SETTINGS_MINIMAP_VISIBLE,
+	                 frame->map_frame,
+	                 "visible",
+	                 G_SETTINGS_BIND_GET);
 
 	gtk_widget_override_background_color (GTK_WIDGET (frame), 0, &transparent);
 
