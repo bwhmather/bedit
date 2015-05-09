@@ -32,16 +32,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_DERIVABLE_TYPE (GeditDocument, gedit_document, GEDIT, DOCUMENT, GtkSourceBuffer)
 
-#ifdef G_OS_WIN32
-#define GEDIT_METADATA_ATTRIBUTE_POSITION "position"
-#define GEDIT_METADATA_ATTRIBUTE_ENCODING "encoding"
-#define GEDIT_METADATA_ATTRIBUTE_LANGUAGE "language"
-#else
-#define GEDIT_METADATA_ATTRIBUTE_POSITION "metadata::gedit-position"
-#define GEDIT_METADATA_ATTRIBUTE_ENCODING "metadata::gedit-encoding"
-#define GEDIT_METADATA_ATTRIBUTE_LANGUAGE "metadata::gedit-language"
-#endif
-
 struct _GeditDocumentClass
 {
 	GtkSourceBufferClass parent_class;
