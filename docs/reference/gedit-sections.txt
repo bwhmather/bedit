@@ -1,9 +1,9 @@
 <SECTION>
 <FILE>gedit-app</FILE>
-GeditAppPrivate
 <TITLE>GeditApp</TITLE>
 GeditApp
 GeditLockdownMask
+GEDIT_LOCKDOWN_ALL
 gedit_app_create_window
 gedit_app_set_window_title
 gedit_app_get_main_windows
@@ -51,7 +51,6 @@ gedit_commands_save_all_documents
 
 <SECTION>
 <FILE>gedit-document</FILE>
-GeditDocumentPrivate
 <TITLE>GeditDocument</TITLE>
 GeditDocument
 gedit_document_new
@@ -90,7 +89,6 @@ GEDIT_DOCUMENT_GET_CLASS
 
 <SECTION>
 <FILE>gedit-encodings-combo-box</FILE>
-GeditEncodingsComboBoxPrivate
 <TITLE>GeditEncodingsComboBox</TITLE>
 GeditEncodingsComboBox
 gedit_encodings_combo_box_new
@@ -189,7 +187,6 @@ GEDIT_PROGRESS_INFO_BAR_GET_CLASS
 
 <SECTION>
 <FILE>gedit-statusbar</FILE>
-GeditStatusbarPrivate
 <TITLE>GeditStatusbar</TITLE>
 GeditStatusbar
 gedit_statusbar_new
@@ -210,7 +207,6 @@ GEDIT_STATUSBAR_GET_CLASS
 <SECTION>
 <FILE>gedit-tab</FILE>
 GeditTabState
-GeditTabPrivate
 <TITLE>GeditTab</TITLE>
 GeditTab
 gedit_tab_get_view
@@ -390,4 +386,5 @@ gedit_utils_is_valid_location
 gedit_utils_location_get_dirname_for_display
 gedit_utils_set_direct_save_filename
 gedit_utils_str_end_truncate
+gedit_utils_newline_type_to_string
 </SECTION>

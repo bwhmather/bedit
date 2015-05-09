@@ -32,7 +32,9 @@ IGNORE_HFILES =					\
 	gedit-app-x11.h				\
 	gedit-close-confirmation-dialog.h 	\
 	gedit-dirs.h				\
+	gedit-document-private.h		\
 	gedit-documents-panel.h			\
+	gedit-encoding-items.h			\
 	gedit-encodings-dialog.h		\
 	gedit-enum-types.h			\
 	gedit-file-chooser-dialog.h		\
@@ -50,6 +52,8 @@ IGNORE_HFILES =					\
 	gedit-notebook-popup-menu.h		\
 	gedit-notebook-stack-switcher.h		\
 	gedit-open-document-selector.h		\
+	gedit-open-document-selector-helper.h	\
+	gedit-open-document-selector-store.h	\
 	gedit-open-menu-button.h		\
 	gedit-plugins-engine.h			\
 	gedit-preferences-dialog.h		\
