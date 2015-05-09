@@ -1018,7 +1018,7 @@ gedit_message_bus_block (GeditMessageBus *bus,
  * @user_data: the user_data with which the callback was connected
  *
  * Blocks evoking the callback that matches provided @callback and @user_data.
- * Unblock the callback using gedit_message_unblock_by_func().
+ * Unblock the callback using gedit_message_bus_unblock_by_func().
  *
  */
 void

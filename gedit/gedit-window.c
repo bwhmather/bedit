@@ -3051,8 +3051,8 @@ process_create_tab (GeditWindow *window,
  * @window: a #GeditWindow
  * @jump_to: %TRUE to set the new #GeditTab as active
  *
- * Creates a new #GeditTab and adds the new tab to the #GeditNotebook.
- * In case @jump_to is %TRUE the #GeditNotebook switches to that new #GeditTab.
+ * Creates a new #GeditTab and adds the new tab to the #GtkNotebook.
+ * In case @jump_to is %TRUE the #GtkNotebook switches to that new #GeditTab.
  *
  * Returns: (transfer none): a new #GeditTab
  */
@@ -3085,7 +3085,7 @@ gedit_window_create_tab (GeditWindow *window,
  * @jump_to: %TRUE to set the new #GeditTab as active
  *
  * Creates a new #GeditTab loading the document specified by @uri.
- * In case @jump_to is %TRUE the #GeditNotebook swithes to that new #GeditTab.
+ * In case @jump_to is %TRUE the #GtkNotebook swithes to that new #GeditTab.
  * Whether @create is %TRUE, creates a new empty document if location does
  * not refer to an existing file
  *
