@@ -31,7 +31,15 @@ G_BEGIN_DECLS
 #define GBOOLEAN_TO_POINTER(i) (GINT_TO_POINTER ((i) ? 2 : 1))
 #define GPOINTER_TO_BOOLEAN(i) ((gboolean) ((GPOINTER_TO_INT(i) == 2) ? TRUE : FALSE))
 
+/**
+ * IS_VALID_BOOLEAN:
+ * @v: a gboolean.
+ *
+ * Deprecated: 3.18
+ */
+#ifndef GEDIT_DISABLE_DEPRECATED
 #define IS_VALID_BOOLEAN(v) (((v == TRUE) || (v == FALSE)) ? TRUE : FALSE)
+#endif
 
 enum { GEDIT_ALL_WORKSPACES = 0xffffffff };
 
@@ -48,6 +56,7 @@ void		 gedit_utils_menu_position_under_tree_view
 							 gboolean         *push_in,
 							 gpointer          user_data);
 
+G_DEPRECATED
 gchar		*gedit_utils_escape_underscores		(const gchar      *text,
 							 gssize            length);
 
@@ -72,6 +81,7 @@ void		 gedit_warning				(GtkWindow        *parent,
 gchar		*gedit_utils_make_valid_utf8		(const char       *name);
 
 /* Note that this function replace home dir with ~ */
+G_DEPRECATED
 gchar		*gedit_utils_uri_get_dirname		(const char       *uri);
 
 gchar		*gedit_utils_location_get_dirname_for_display
@@ -89,12 +99,14 @@ void		 gedit_utils_get_current_viewport	(GdkScreen        *screen,
 
 gboolean	 gedit_utils_is_valid_location		(GFile            *location);
 
+G_DEPRECATED
 gboolean	 gedit_utils_get_ui_objects		(const gchar      *filename,
 							 gchar           **root_objects,
 							 GtkWidget       **error_widget,
 							 const gchar      *object_name,
 							 ...) G_GNUC_NULL_TERMINATED;
 
+G_DEPRECATED
 gboolean         gedit_utils_get_ui_objects_with_translation_domain
                                                         (const gchar  *filename,
                                                          const gchar  *translation_domain,
@@ -103,7 +115,7 @@ gboolean         gedit_utils_get_ui_objects_with_translation_domain
                                                          const gchar  *object_name,
                                                          ...) G_GNUC_NULL_TERMINATED;
 
-/* Return NULL if str is not a valid URI and/or filename */
+G_DEPRECATED
 gchar		*gedit_utils_make_canonical_uri_from_shell_arg
 							(const gchar      *str);
 

@@ -16,7 +16,7 @@ DOC_SOURCE_DIR = ../../gedit
 
 # Extra options to supply to gtkdoc-scan.
 # e.g. SCAN_OPTIONS = --deprecated-guards="GTK_DISABLE_DEPRECATED"
-SCAN_OPTIONS = --rebuild-types
+SCAN_OPTIONS = --rebuild-types --deprecated-guards="GEDIT_DISABLE_DEPRECATED"
 
 # Extra options to supply to gtkdoc-mkdb.
 MKDB_OPTIONS = --xml-mode --output-format=xml

@@ -232,8 +232,15 @@ gedit_warning (GtkWindow *parent, const gchar *format, ...)
 	gtk_widget_show (dialog);
 }
 
-/*
+/**
+ * gedit_utils_escape_underscores:
+ * @text: some text.
+ * @length: the length.
+ *
  * Doubles underscore to avoid spurious menu accels.
+ *
+ * Returns: the text escaped.
+ * Deprecated: 3.18
  */
 gchar *
 gedit_utils_escape_underscores (const gchar *text,
@@ -393,16 +400,8 @@ gedit_utils_make_valid_utf8 (const char *name)
 	return g_string_free (string, FALSE);
 }
 
-/**
- * gedit_utils_uri_get_dirname:
- * @uri: the URI.
- *
- * Note: this function replace home dir with ~
- *
- * Returns: the directory name.
- */
-gchar *
-gedit_utils_uri_get_dirname (const gchar *uri)
+static gchar *
+uri_get_dirname (const gchar *uri)
 {
 	gchar *res;
 	gchar *str;
@@ -425,6 +424,21 @@ gedit_utils_uri_get_dirname (const gchar *uri)
 	g_free (str);
 
 	return res;
+}
+
+/**
+ * gedit_utils_uri_get_dirname:
+ * @uri: the URI.
+ *
+ * Note: this function replace home dir with ~.
+ *
+ * Returns: the directory name.
+ * Deprecated: 3.18
+ */
+gchar *
+gedit_utils_uri_get_dirname (const gchar *uri)
+{
+	return uri_get_dirname (uri);
 }
 
 /**
@@ -470,11 +484,11 @@ gedit_utils_location_get_dirname_for_display (GFile *location)
 
 		if (path == NULL)
 		{
-			dirname = gedit_utils_uri_get_dirname (uri);
+			dirname = uri_get_dirname (uri);
 		}
 		else
 		{
-			dirname = gedit_utils_uri_get_dirname (path);
+			dirname = uri_get_dirname (path);
 		}
 
 		if (dirname == NULL || strcmp (dirname, ".") == 0)
@@ -493,7 +507,7 @@ gedit_utils_location_get_dirname_for_display (GFile *location)
 	else
 	{
 		/* fallback for local files or uris without mounts */
-		res = gedit_utils_uri_get_dirname (uri);
+		res = uri_get_dirname (uri);
 	}
 
 	g_free (uri);
@@ -948,6 +962,7 @@ get_ui_objects_with_translation_domain (const gchar  *filename,
  * the error message to display.
  *
  * Returns: %FALSE if an error occurs, %TRUE on success.
+ * Deprecated: 3.18
  */
 gboolean
 gedit_utils_get_ui_objects (const gchar  *filename,
@@ -987,6 +1002,7 @@ gedit_utils_get_ui_objects (const gchar  *filename,
  * the error message to display.
  *
  * Returns: %FALSE if an error occurs, %TRUE on success.
+ * Deprecated: 3.18
  */
 gboolean
 gedit_utils_get_ui_objects_with_translation_domain (const gchar  *filename,
@@ -1011,8 +1027,8 @@ gedit_utils_get_ui_objects_with_translation_domain (const gchar  *filename,
 	return ret;
 }
 
-gchar *
-gedit_utils_make_canonical_uri_from_shell_arg (const gchar *str)
+static gchar *
+make_canonical_uri_from_shell_arg (const gchar *str)
 {
 	GFile *gfile;
 	gchar *uri;
@@ -1048,6 +1064,19 @@ gedit_utils_make_canonical_uri_from_shell_arg (const gchar *str)
 
 	g_object_unref (gfile);
 	return NULL;
+}
+
+/**
+ * gedit_utils_make_canonical_uri_from_shell_arg:
+ * @str: shell arg.
+ *
+ * Returns: canonical URI, or %NULL if @str is not a valid URI and/or filename.
+ * Deprecated: 3.18
+ */
+gchar *
+gedit_utils_make_canonical_uri_from_shell_arg (const gchar *str)
+{
+	return make_canonical_uri_from_shell_arg (str);
 }
 
 /**
@@ -1163,7 +1192,7 @@ gedit_utils_drop_get_uris (GtkSelectionData *selection_data)
 	{
 		gchar *uri;
 
-		uri = gedit_utils_make_canonical_uri_from_shell_arg (uris[i]);
+		uri = make_canonical_uri_from_shell_arg (uris[i]);
 
 		/* Silently ignore malformed URI/filename */
 		if (uri != NULL)
