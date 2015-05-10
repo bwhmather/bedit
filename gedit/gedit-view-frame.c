@@ -154,6 +154,7 @@ gedit_view_frame_dispose (GObject *object)
 		gtk_source_file_set_mount_operation_factory (file, NULL, NULL, NULL);
 	}
 
+	g_clear_object (&frame->ui_settings);
 	g_clear_object (&frame->entry_tag);
 	g_clear_object (&frame->search_settings);
 	g_clear_object (&frame->old_search_settings);
@@ -1548,7 +1549,7 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	                 GEDIT_SETTINGS_MINIMAP_VISIBLE,
 	                 frame->map_frame,
 	                 "visible",
-	                 G_SETTINGS_BIND_GET);
+	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
 
 	gtk_widget_override_background_color (GTK_WIDGET (frame), 0, &transparent);
 
