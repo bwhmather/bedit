@@ -159,11 +159,27 @@ init_liststores (GeditEncodingsDialog *dialog,
 }
 
 static void
+reset_dialog_response_cb (GtkDialog            *msg_dialog,
+			  gint                  response,
+			  GeditEncodingsDialog *dialog)
+{
+	if (response == GTK_RESPONSE_ACCEPT)
+	{
+		gtk_list_store_clear (dialog->liststore_available);
+		gtk_list_store_clear (dialog->liststore_chosen);
+
+		init_liststores (dialog, TRUE);
+		dialog->state = STATE_RESET;
+	}
+
+	gtk_widget_destroy (GTK_WIDGET (msg_dialog));
+}
+
+static void
 reset_button_clicked_cb (GtkWidget            *button,
 			 GeditEncodingsDialog *dialog)
 {
 	GtkDialog *msg_dialog;
-	gint response;
 
 	msg_dialog = GTK_DIALOG (gtk_message_dialog_new (GTK_WINDOW (dialog),
 							 GTK_DIALOG_DESTROY_WITH_PARENT |
@@ -179,18 +195,12 @@ reset_button_clicked_cb (GtkWidget            *button,
 				_("_Reset"), GTK_RESPONSE_ACCEPT,
 				NULL);
 
-	response = gtk_dialog_run (msg_dialog);
+	g_signal_connect (msg_dialog,
+			  "response",
+			  G_CALLBACK (reset_dialog_response_cb),
+			  dialog);
 
-	if (response == GTK_RESPONSE_ACCEPT)
-	{
-		gtk_list_store_clear (dialog->liststore_available);
-		gtk_list_store_clear (dialog->liststore_chosen);
-
-		init_liststores (dialog, TRUE);
-		dialog->state = STATE_RESET;
-	}
-
-	gtk_widget_destroy (GTK_WIDGET (msg_dialog));
+	gtk_widget_show_all (GTK_WIDGET (msg_dialog));
 }
 
 static GSList *
