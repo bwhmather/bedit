@@ -45,7 +45,7 @@ struct _GeditSortPluginPrivate
 	GtkWidget *dialog;
 	GtkWidget *col_num_spinbutton;
 	GtkWidget *reverse_order_checkbutton;
-	GtkWidget *ignore_case_checkbutton;
+	GtkWidget *case_checkbutton;
 	GtkWidget *remove_dups_checkbutton;
 
 	GeditApp *app;
@@ -53,15 +53,6 @@ struct _GeditSortPluginPrivate
 
 	GtkTextIter start, end; /* selection */
 };
-
-typedef struct
-{
-	gint starting_column;
-
-	guint ignore_case : 1;
-	guint reverse_order : 1;
-	guint remove_duplicates : 1;
-} SortInfo;
 
 enum
 {
@@ -80,33 +71,60 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSortPlugin,
 							       gedit_window_activatable_iface_init)
 				G_ADD_PRIVATE_DYNAMIC (GeditSortPlugin))
 
-static void sort_real (GeditSortPlugin *plugin);
+static void
+do_sort (GeditSortPlugin *plugin)
+{
+	GeditSortPluginPrivate *priv;
+	GeditDocument *doc;
+	GtkSourceSortFlags sort_flags = 0;
+	gint starting_column;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	priv = plugin->priv;
+
+	doc = gedit_window_get_active_document (priv->window);
+	g_return_if_fail (doc != NULL);
+
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->case_checkbutton)))
+	{
+		sort_flags |= GTK_SOURCE_SORT_FLAGS_CASE_SENSITIVE;
+	}
+
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->reverse_order_checkbutton)))
+	{
+		sort_flags |= GTK_SOURCE_SORT_FLAGS_REVERSE_ORDER;
+	}
+
+	if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->remove_dups_checkbutton)))
+	{
+		sort_flags |= GTK_SOURCE_SORT_FLAGS_REMOVE_DUPLICATES;
+	}
+
+	starting_column = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (priv->col_num_spinbutton)) - 1;
+
+	gtk_source_buffer_sort_lines (GTK_SOURCE_BUFFER (doc),
+	                              &priv->start,
+	                              &priv->end,
+	                              sort_flags,
+	                              starting_column);
+
+	gedit_debug_message (DEBUG_PLUGINS, "Done.");
+}
 
 static void
 sort_dialog_response_handler (GtkDialog       *dlg,
-			      gint             res_id,
+			      gint             response,
 			      GeditSortPlugin *plugin)
 {
 	gedit_debug (DEBUG_PLUGINS);
 
-	switch (res_id)
+	if (response == GTK_RESPONSE_OK)
 	{
-		case GTK_RESPONSE_OK:
-			sort_real (plugin);
-			gtk_widget_destroy (GTK_WIDGET (dlg));
-			break;
-
-		case GTK_RESPONSE_HELP:
-			gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
-					     GTK_WINDOW (dlg),
-					     NULL,
-					     "gedit-sort-plugin");
-			break;
-
-		case GTK_RESPONSE_CANCEL:
-			gtk_widget_destroy (GTK_WIDGET (dlg));
-			break;
+		do_sort (plugin);
 	}
+
+	gtk_widget_destroy (GTK_WIDGET (dlg));
 }
 
 /* NOTE: we store the current selection in the dialog since focusing
@@ -150,7 +168,7 @@ create_sort_dialog (GeditSortPlugin *plugin)
 	priv->dialog = GTK_WIDGET (gtk_builder_get_object (builder, "sort_dialog"));
 	priv->reverse_order_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "reverse_order_checkbutton"));
 	priv->col_num_spinbutton = GTK_WIDGET (gtk_builder_get_object (builder, "col_num_spinbutton"));
-	priv->ignore_case_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "ignore_case_checkbutton"));
+	priv->case_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "case_checkbutton"));
 	priv->remove_dups_checkbutton = GTK_WIDGET (gtk_builder_get_object (builder, "remove_dups_checkbutton"));
 	g_object_unref (builder);
 
@@ -195,212 +213,6 @@ sort_cb (GAction         *action,
 			      TRUE);
 
 	gtk_widget_show (GTK_WIDGET (priv->dialog));
-}
-
-/* Compares two strings for the sorting algorithm. Uses the UTF-8 processing
- * functions in GLib to be as correct as possible.*/
-static gint
-compare_algorithm (gconstpointer s1,
-		   gconstpointer s2,
-		   gpointer      data)
-{
-	gint length1, length2;
-	gint ret;
-	gchar *string1, *string2;
-	gchar *substring1, *substring2;
-	gchar *key1, *key2;
-	SortInfo *sort_info;
-
-	gedit_debug (DEBUG_PLUGINS);
-
-	sort_info = (SortInfo *) data;
-	g_return_val_if_fail (sort_info != NULL, -1);
-
-	if (!sort_info->ignore_case)
-	{
-		string1 = *((gchar **) s1);
-		string2 = *((gchar **) s2);
-	}
-	else
-	{
-		string1 = g_utf8_casefold (*((gchar **) s1), -1);
-		string2 = g_utf8_casefold (*((gchar **) s2), -1);
-	}
-
-	length1 = g_utf8_strlen (string1, -1);
-	length2 = g_utf8_strlen (string2, -1);
-
-	if ((length1 < sort_info->starting_column) &&
-	    (length2 < sort_info->starting_column))
-	{
-		ret = 0;
-	}
-	else if (length1 < sort_info->starting_column)
-	{
-		ret = -1;
-	}
-	else if (length2 < sort_info->starting_column)
-	{
-		ret = 1;
-	}
-	else if (sort_info->starting_column < 1)
-	{
-		key1 = g_utf8_collate_key (string1, -1);
-		key2 = g_utf8_collate_key (string2, -1);
-		ret = strcmp (key1, key2);
-
-		g_free (key1);
-		g_free (key2);
-	}
-	else
-	{
-		/* A character column offset is required, so figure out
-		 * the correct offset into the UTF-8 string. */
-		substring1 = g_utf8_offset_to_pointer (string1, sort_info->starting_column);
-		substring2 = g_utf8_offset_to_pointer (string2, sort_info->starting_column);
-
-		key1 = g_utf8_collate_key (substring1, -1);
-		key2 = g_utf8_collate_key (substring2, -1);
-		ret = strcmp (key1, key2);
-
-		g_free (key1);
-		g_free (key2);
-	}
-
-	/* Do the necessary cleanup. */
-	if (sort_info->ignore_case)
-	{
-		g_free (string1);
-		g_free (string2);
-	}
-
-	if (sort_info->reverse_order)
-	{
-		ret = -1 * ret;
-	}
-
-	return ret;
-}
-
-static gchar *
-get_line_slice (GtkTextBuffer *buf,
-		gint           line)
-{
-	GtkTextIter start, end;
-	char *ret;
-
-	gtk_text_buffer_get_iter_at_line (buf, &start, line);
-	end = start;
-
-	if (!gtk_text_iter_ends_line (&start))
-		gtk_text_iter_forward_to_line_end (&end);
-
-	ret= gtk_text_buffer_get_slice (buf,
-					&start,
-					&end,
-					TRUE);
-
-	g_assert (ret != NULL);
-
-	return ret;
-}
-
-static void
-sort_real (GeditSortPlugin *plugin)
-{
-	GeditSortPluginPrivate *priv;
-	GeditDocument *doc;
-	GtkTextIter start, end;
-	gint start_line, end_line;
-	gint i;
-	gint num_lines;
-	gchar **lines;
-	SortInfo *sort_info;
-	gchar *last_row = NULL;
-
-	gedit_debug (DEBUG_PLUGINS);
-
-	priv = plugin->priv;
-
-	doc = gedit_window_get_active_document (priv->window);
-	g_return_if_fail (doc != NULL);
-
-	sort_info = g_slice_new (SortInfo);
-	sort_info->ignore_case = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->ignore_case_checkbutton));
-	sort_info->reverse_order = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->reverse_order_checkbutton));
-	sort_info->remove_duplicates = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->remove_dups_checkbutton));
-	sort_info->starting_column = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (priv->col_num_spinbutton)) - 1;
-
-	start = priv->start;
-	end = priv->end;
-	start_line = gtk_text_iter_get_line (&start);
-	end_line = gtk_text_iter_get_line (&end);
-
-	/* if we are at line start our last line is the previus one.
-	 * Otherwise the last line is the current one but we try to
-	 * move the iter after the line terminator */
-	if (gtk_text_iter_get_line_offset (&end) == 0)
-	{
-		end_line = MAX (start_line, end_line - 1);
-	}
-	else
-	{
-		gtk_text_iter_forward_line (&end);
-	}
-
-	num_lines = end_line - start_line + 1;
-	lines = g_new0 (gchar *, num_lines + 1);
-
-	gedit_debug_message (DEBUG_PLUGINS, "Building list...");
-
-	for (i = 0; i < num_lines; i++)
-	{
-		lines[i] = get_line_slice (GTK_TEXT_BUFFER (doc), start_line + i);
-	}
-
-	lines[num_lines] = NULL;
-
-	gedit_debug_message (DEBUG_PLUGINS, "Sort list...");
-
-	g_qsort_with_data (lines,
-			   num_lines,
-			   sizeof (gpointer),
-			   compare_algorithm,
-			   sort_info);
-
-	gedit_debug_message (DEBUG_PLUGINS, "Rebuilding document...");
-
-	gtk_source_buffer_begin_not_undoable_action (GTK_SOURCE_BUFFER (doc));
-
-	gtk_text_buffer_delete (GTK_TEXT_BUFFER (doc),
-				&start,
-				&end);
-
-	for (i = 0; i < num_lines; i++)
-	{
-		if (sort_info->remove_duplicates &&
-		    last_row != NULL &&
-		    (strcmp (last_row, lines[i]) == 0))
-			continue;
-
-		gtk_text_buffer_insert (GTK_TEXT_BUFFER (doc),
-					&start,
-					lines[i],
-					-1);
-		gtk_text_buffer_insert (GTK_TEXT_BUFFER (doc),
-					&start,
-					"\n",
-					-1);
-
-		last_row = lines[i];
-	}
-
-	gtk_source_buffer_end_not_undoable_action (GTK_SOURCE_BUFFER (doc));
-
-	g_strfreev (lines);
-	g_slice_free (SortInfo, sort_info);
-
-	gedit_debug_message (DEBUG_PLUGINS, "Done.");
 }
 
 static void
