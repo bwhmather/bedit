@@ -520,7 +520,15 @@ received_clipboard_contents (GtkClipboard     *clipboard,
 	}
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "paste");
-	g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
+
+	/* Since this is emitted async, the disposal of the actions may have
+	 * already happened. Ensure that we have an action before setting the
+	 * state.
+	 */
+	if (action != NULL)
+	{
+		g_simple_action_set_enabled (G_SIMPLE_ACTION (action), enabled);
+	}
 
 	g_object_unref (window);
 }
