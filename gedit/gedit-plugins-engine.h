@@ -23,34 +23,12 @@
 #define __GEDIT_PLUGINS_ENGINE_H__
 
 #include <glib.h>
-#include <libpeas/peas-engine.h>
+#include <libpeas/peas.h>
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_PLUGINS_ENGINE              (gedit_plugins_engine_get_type ())
-#define GEDIT_PLUGINS_ENGINE(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_PLUGINS_ENGINE, GeditPluginsEngine))
-#define GEDIT_PLUGINS_ENGINE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_PLUGINS_ENGINE, GeditPluginsEngineClass))
-#define GEDIT_IS_PLUGINS_ENGINE(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_PLUGINS_ENGINE))
-#define GEDIT_IS_PLUGINS_ENGINE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_PLUGINS_ENGINE))
-#define GEDIT_PLUGINS_ENGINE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_PLUGINS_ENGINE, GeditPluginsEngineClass))
-
-typedef struct _GeditPluginsEngine		GeditPluginsEngine;
-typedef struct _GeditPluginsEnginePrivate	GeditPluginsEnginePrivate;
-
-struct _GeditPluginsEngine
-{
-	PeasEngine parent;
-	GeditPluginsEnginePrivate *priv;
-};
-
-typedef struct _GeditPluginsEngineClass		GeditPluginsEngineClass;
-
-struct _GeditPluginsEngineClass
-{
-	PeasEngineClass parent_class;
-};
-
-GType			 gedit_plugins_engine_get_type		(void) G_GNUC_CONST;
+#define GEDIT_TYPE_PLUGINS_ENGINE (gedit_plugins_engine_get_type ())
+G_DECLARE_FINAL_TYPE(GeditPluginsEngine, gedit_plugins_engine, GEDIT, PLUGINS_ENGINE, PeasEngine)
 
 GeditPluginsEngine	*gedit_plugins_engine_get_default	(void);
 

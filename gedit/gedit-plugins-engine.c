@@ -26,24 +26,22 @@
 #include "gedit-plugins-engine.h"
 
 #include <string.h>
-
 #include <glib/gi18n.h>
 #include <girepository.h>
-
 #include "gedit-debug.h"
-#include "gedit-app.h"
 #include "gedit-dirs.h"
 #include "gedit-settings.h"
-#include "gedit-utils.h"
 
-struct _GeditPluginsEnginePrivate
+struct _GeditPluginsEngine
 {
+	PeasEngine parent_instance;
+
 	GSettings *plugin_settings;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditPluginsEngine, gedit_plugins_engine, PEAS_TYPE_ENGINE)
+G_DEFINE_TYPE (GeditPluginsEngine, gedit_plugins_engine, PEAS_TYPE_ENGINE)
 
-GeditPluginsEngine *default_engine = NULL;
+static GeditPluginsEngine *default_engine = NULL;
 
 static void
 gedit_plugins_engine_init (GeditPluginsEngine *engine)
@@ -53,11 +51,9 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	engine->priv = gedit_plugins_engine_get_instance_private (engine);
-
 	peas_engine_enable_loader (PEAS_ENGINE (engine), "python3");
 
-	engine->priv->plugin_settings = g_settings_new ("org.gnome.gedit.plugins");
+	engine->plugin_settings = g_settings_new ("org.gnome.gedit.plugins");
 
 	/* Require gedit's typelib. */
 	typelib_dir = g_build_filename (gedit_dirs_get_gedit_lib_dir (),
@@ -99,7 +95,7 @@ gedit_plugins_engine_init (GeditPluginsEngine *engine)
 	                             gedit_dirs_get_gedit_plugins_dir (),
 	                             gedit_dirs_get_gedit_plugins_data_dir ());
 
-	g_settings_bind (engine->priv->plugin_settings,
+	g_settings_bind (engine->plugin_settings,
 	                 GEDIT_SETTINGS_ACTIVE_PLUGINS,
 	                 engine,
 	                 "loaded-plugins",
@@ -111,7 +107,7 @@ gedit_plugins_engine_dispose (GObject *object)
 {
 	GeditPluginsEngine *engine = GEDIT_PLUGINS_ENGINE (object);
 
-	g_clear_object (&engine->priv->plugin_settings);
+	g_clear_object (&engine->plugin_settings);
 
 	G_OBJECT_CLASS (gedit_plugins_engine_parent_class)->dispose (object);
 }
