@@ -49,7 +49,6 @@ HELP_FILES = \
 	gedit-tabs-moving.page \
 	gedit-tabs.page \
 	gedit-undo-recent-action.page \
-	gedit-view-open-files-in-sidepane.page \
 	index.page \
 	legal.xml
 
