@@ -487,6 +487,7 @@ create_compositor (GeditPrintJob *job)
 	guint print_line_numbers;
 	gboolean print_header;
 	guint tab_width;
+	gdouble margin;
 
 	buf = GTK_SOURCE_BUFFER (gtk_text_view_get_buffer (GTK_TEXT_VIEW (job->view)));
 
@@ -530,9 +531,17 @@ create_compositor (GeditPrintJob *job)
 			      "header-font-name", print_font_header,
 			      NULL));
 
-	g_free (print_font_body);
-	g_free (print_font_header);
-	g_free (print_font_numbers);
+	margin = g_settings_get_double (job->gsettings, GEDIT_SETTINGS_PRINT_MARGIN_LEFT);
+	gtk_source_print_compositor_set_left_margin (job->compositor, margin, GTK_UNIT_MM);
+
+	margin = g_settings_get_double (job->gsettings, GEDIT_SETTINGS_PRINT_MARGIN_TOP);
+	gtk_source_print_compositor_set_top_margin (job->compositor, margin, GTK_UNIT_MM);
+
+	margin = g_settings_get_double (job->gsettings, GEDIT_SETTINGS_PRINT_MARGIN_RIGHT);
+	gtk_source_print_compositor_set_right_margin (job->compositor, margin, GTK_UNIT_MM);
+
+	margin = g_settings_get_double (job->gsettings, GEDIT_SETTINGS_PRINT_MARGIN_BOTTOM);
+	gtk_source_print_compositor_set_bottom_margin (job->compositor, margin, GTK_UNIT_MM);
 
 	if (print_header)
 	{
@@ -558,6 +567,10 @@ create_compositor (GeditPrintJob *job)
 		g_free (name_to_display);
 		g_free (left);
 	}
+
+	g_free (print_font_body);
+	g_free (print_font_header);
+	g_free (print_font_numbers);
 }
 
 static void

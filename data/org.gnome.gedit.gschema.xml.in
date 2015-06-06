@@ -237,6 +237,26 @@
       <summary>Line Number Font for Printing</summary>
       <description>Specifies the font to use for line numbers when printing. This will only take effect if the "Print Line Numbers" option is non-zero.</description>
     </key>
+    <key name="margin-left" type="d">
+      <default>25</default>
+      <summary>Margin Left</summary>
+      <description>The left margin, in millimeters.</description>
+    </key>
+    <key name="margin-top" type="d">
+      <default>25</default>
+      <summary>Margin Top</summary>
+      <description>The top margin, in millimeters.</description>
+    </key>
+    <key name="margin-right" type="d">
+      <default>25</default>
+      <summary>Margin Right</summary>
+      <description>The right margin, in millimeters.</description>
+    </key>
+    <key name="margin-bottom" type="d">
+      <default>25</default>
+      <summary>Margin Bottom</summary>
+      <description>The bottom margin, in millimeters.</description>
+    </key>
   </schema>
   <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.gedit.preferences.encodings" path="/org/gnome/gedit/preferences/encodings/">
     <key name="candidate-encodings" type="as">
