@@ -1816,12 +1816,7 @@ _gedit_app_set_default_page_setup (GeditApp     *app,
 
 	priv = gedit_app_get_instance_private (app);
 
-	if (priv->page_setup != NULL)
-	{
-		g_object_unref (priv->page_setup);
-	}
-
-	priv->page_setup = g_object_ref (page_setup);
+	g_set_object (&priv->page_setup, page_setup);
 }
 
 /* Returns a copy */
