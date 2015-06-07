@@ -42,7 +42,6 @@
 #include "gedit-automatic-spell-checker.h"
 
 #ifdef G_OS_WIN32
-#include <gedit/gedit-metadata-manager.h>
 #define GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE "spell-language"
 #define GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED  "spell-enabled"
 #else
