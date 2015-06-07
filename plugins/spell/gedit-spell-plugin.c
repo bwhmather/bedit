@@ -89,15 +89,16 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSpellPlugin,
 							       gedit_window_activatable_iface_init)
 				G_ADD_PRIVATE_DYNAMIC (GeditSpellPlugin))
 
-static void	spell_cb	(GSimpleAction *action, GVariant *parameter, gpointer data);
-static void	set_language_cb	(GSimpleAction *action, GVariant *parameter, gpointer data);
-static void	auto_spell_cb	(GSimpleAction *action, GVariant *state, gpointer data);
+static void	spell_cb			(GSimpleAction *action, GVariant *parameter, gpointer data);
+static void	set_language_cb			(GSimpleAction *action, GVariant *parameter, gpointer data);
+static void	auto_spell_activate_cb		(GSimpleAction *action, GVariant *parameter, gpointer data);
+static void	auto_spell_change_state_cb	(GSimpleAction *action, GVariant *state, gpointer data);
 
 static GActionEntry action_entries[] =
 {
 	{ "check-spell", spell_cb },
 	{ "config-spell", set_language_cb },
-	{ "auto-spell", NULL, NULL, "false", auto_spell_cb }
+	{ "auto-spell", auto_spell_activate_cb, NULL, "false", auto_spell_change_state_cb }
 };
 
 static GQuark spell_checker_id = 0;
@@ -895,9 +896,52 @@ set_auto_spell (GeditWindow   *window,
 }
 
 static void
-auto_spell_cb (GSimpleAction  *action,
-               GVariant       *state,
-               gpointer        data)
+auto_spell_activate_cb (GSimpleAction *action,
+			GVariant      *parameter,
+			gpointer       data)
+{
+	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (data);
+	GeditSpellPluginPrivate *priv = plugin->priv;
+	GVariant *state;
+	gboolean active;
+	GeditView *view;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	state = g_action_get_state (G_ACTION (action));
+	g_return_if_fail (state != NULL);
+
+	active = g_variant_get_boolean (state);
+	g_variant_unref (state);
+
+	/* We must toggle ourself the value. */
+	active = !active;
+	g_action_change_state (G_ACTION (action), g_variant_new_boolean (active));
+
+	view = gedit_window_get_active_view (priv->window);
+	if (view != NULL)
+	{
+		GeditDocument *doc;
+
+		doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+
+		/* Set metadata in the "activate" handler, not in "change-state"
+		 * because "change-state" is called every time the state
+		 * changes, not specifically when the user has changed the state
+		 * herself. For example "change-state" is called to initialize
+		 * the sate to the default value specified in the GActionEntry.
+		 */
+		gedit_document_set_metadata (doc,
+					     GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
+					     active ? "1" : NULL,
+					     NULL);
+	}
+}
+
+static void
+auto_spell_change_state_cb (GSimpleAction *action,
+			    GVariant      *state,
+			    gpointer       data)
 {
 	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (data);
 	GeditSpellPluginPrivate *priv = plugin->priv;
@@ -913,14 +957,6 @@ auto_spell_cb (GSimpleAction  *action,
 	view = gedit_window_get_active_view (priv->window);
 	if (view != NULL)
 	{
-		GeditDocument *doc;
-
-		doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-
-		gedit_document_set_metadata (doc,
-					     GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-					     active ? "1" : NULL, NULL);
-
 		set_auto_spell (priv->window, view, active);
 		g_simple_action_set_state (action, g_variant_new_boolean (active));
 	}
