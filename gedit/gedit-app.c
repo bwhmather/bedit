@@ -1378,13 +1378,17 @@ load_print_settings (GeditApp *app)
 	filename = get_print_settings_file ();
 
 	priv->print_settings = gtk_print_settings_new_from_file (filename, &error);
-	if (error)
+	if (error != NULL)
 	{
-		/* Ignore file not found error */
-		if (error->domain != G_FILE_ERROR ||
-		    error->code != G_FILE_ERROR_NOENT)
+		/* - Ignore file not found error.
+		 * - Ignore empty file error, i.e. group not found. This happens
+		 *   when we click on cancel in the print dialog, when using the
+		 *   printing for the first time in gedit.
+		 */
+		if (!g_error_matches (error, G_FILE_ERROR, G_FILE_ERROR_NOENT) &&
+		    !g_error_matches (error, G_KEY_FILE_ERROR, G_KEY_FILE_ERROR_GROUP_NOT_FOUND))
 		{
-			g_warning ("%s", error->message);
+			g_warning ("Load print settings error: %s", error->message);
 		}
 
 		g_error_free (error);
