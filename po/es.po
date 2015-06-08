@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: gedit.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-05-27 05:20+0000\n"
-"PO-Revision-Date: 2015-05-27 \n"
+"POT-Creation-Date: 2015-06-08 05:21+0000\n"
+"PO-Revision-Date: 2015-06-08 \n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:733
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:746
 msgid "Text Editor"
 msgstr "Editor de textos"
 
@@ -400,13 +400,10 @@ msgstr ""
 "debe ser visible."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:56
-#| msgid "Toolbar is Visible"
 msgid "Minimap is Visible"
 msgstr "El mini mapa es visible"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:57
-#| msgid ""
-#| "Whether the status bar at the bottom of editing windows should be visible."
 msgid "Whether the minimap for the document should be visible."
 msgstr "Indica si el mini mapa para el documento debe ser visible."
 
@@ -522,11 +519,45 @@ msgstr ""
 "distinta de cero."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:77
-#| msgid "Character Encodings"
+#| msgid "Margin pixel width"
+msgid "Margin Left"
+msgstr "Margen izquierdo"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+msgid "The left margin, in millimeters."
+msgstr "El margen izquierdo, en milímetros."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+msgid "Margin Top"
+msgstr "Margen superior"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#| msgid "Top margin in pixels"
+msgid "The top margin, in millimeters."
+msgstr "El margen superior, en milímetros."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+#| msgid "Margin pixel height"
+msgid "Margin Right"
+msgstr "Margen derecho"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+msgid "The right margin, in millimeters."
+msgstr "El margen derecho, en milímetros."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+msgid "Margin Bottom"
+msgstr "Margen inferior"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+msgid "The bottom margin, in millimeters."
+msgstr "El margen inferior, en milímetros."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Candidate Encodings"
 msgstr "Codificaciones posibles"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. \"CURRENT\" represents the current locale encoding. Only "
@@ -539,11 +570,11 @@ msgstr ""
 "reconocidas. El valor predeterminado es la lista vacía, en cuyo caso gedit "
 "las buenas de manera predeterminada dependiendo del país y del idioma."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+#: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Active plugins"
 msgstr "Complementos activos"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -1025,12 +1056,10 @@ msgstr "Configuración regional actual (%s)"
 
 #: ../gedit/gedit-encodings-dialog.c:95
 #, c-format
-#| msgid "Current Locale (%s)"
 msgid "%s (Current Locale)"
 msgstr "%s (configuración regional actual)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
-#| msgid "Unable to detect the character encoding."
 msgid "Do you really want to reset the character encodings' preferences?"
 msgstr ""
 "¿Realmente quiere restablecer las preferencias de la codificación de "
@@ -1042,12 +1071,10 @@ msgid "_Reset"
 msgstr "_Restablecer"
 
 #: ../gedit/gedit-encodings-dialog.c:731
-#| msgid "_Add"
 msgid "Add"
 msgstr "Añadir"
 
 #: ../gedit/gedit-encodings-dialog.c:774
-#| msgid "_Remove"
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -1486,16 +1513,16 @@ msgstr "No se pudo quitar el estilo «%s»."
 msgid "Preparing..."
 msgstr "Preparándose…"
 
-#: ../gedit/gedit-print-job.c:546
+#: ../gedit/gedit-print-job.c:555
 #, c-format
 msgid "File: %s"
 msgstr "Archivo: %s"
 
-#: ../gedit/gedit-print-job.c:555
+#: ../gedit/gedit-print-job.c:564
 msgid "Page %N of %Q"
 msgstr "Página %N de %Q"
 
-#: ../gedit/gedit-print-job.c:629
+#: ../gedit/gedit-print-job.c:642
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "Renderizando página %d de %d…"
@@ -1993,12 +2020,10 @@ msgid "_Apply"
 msgstr "_Aplicar"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
-#| msgid "A_vailable encodings:"
 msgid "A_vailable Encodings"
 msgstr "Codificaciones dispo_nibles"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
-#| msgid "Character Encodings"
 msgid "Cho_sen Encodings"
 msgstr "Códificaciones _elegidas"
 
@@ -2047,7 +2072,6 @@ msgid "Display _statusbar"
 msgstr "Mostrar barra de _estado"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
-#| msgid "Display right margin"
 msgid "Display _grid pattern"
 msgstr "Mostrar el patrón de la rejilla"
 
@@ -4614,12 +4638,6 @@ msgstr "Inserta la fecha y hora actual en la posición del cursor."
 #~ msgid "Mail link"
 #~ msgstr "Enlace de correo"
 
-#~ msgid "Margin pixel height"
-#~ msgstr "Altura en píxeles del margen"
-
-#~ msgid "Margin pixel width"
-#~ msgstr "Anchura en píxeles del margen"
-
 #~ msgid "Marquee"
 #~ msgstr "Marquilla"
 
@@ -4979,9 +4997,6 @@ msgstr "Inserta la fecha y hora actual en la posición del cursor."
 
 #~ msgid "Title"
 #~ msgstr "Título"
-
-#~ msgid "Top margin in pixels"
-#~ msgstr "Margen superior en píxeles"
 
 #~ msgid "URL"
 #~ msgstr "URL"
