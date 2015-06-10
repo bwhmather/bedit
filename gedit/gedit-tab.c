@@ -517,12 +517,15 @@ gedit_tab_set_state (GeditTab      *tab,
 
 	set_view_properties_according_to_state (tab, state);
 
-	if ((state == GEDIT_TAB_STATE_LOADING_ERROR) || /* FIXME: add other states if needed */
-	    (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW))
+	/* Hide or show the document.
+	 * For GEDIT_TAB_STATE_LOADING_ERROR, tab->frame is either shown or
+	 * hidden, depending on the error.
+	 */
+	if (state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
 	{
 		gtk_widget_hide (GTK_WIDGET (tab->frame));
 	}
-	else if (tab->print_preview == NULL)
+	else if (state != GEDIT_TAB_STATE_LOADING_ERROR)
 	{
 		gtk_widget_show (GTK_WIDGET (tab->frame));
 	}
@@ -1817,6 +1820,7 @@ load_cb (GtkSourceFileLoader *loader,
 	{
 		if (tab->state == GEDIT_TAB_STATE_LOADING)
 		{
+			gtk_widget_hide (GTK_WIDGET (tab->frame));
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
 		}
 		else
@@ -1896,6 +1900,20 @@ load_cb (GtkSourceFileLoader *loader,
 				  tab);
 
 		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
+
+		if (tab->state == GEDIT_TAB_STATE_LOADING)
+		{
+			gtk_widget_show (GTK_WIDGET (tab->frame));
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
+		}
+		else
+		{
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING_ERROR);
+		}
+	}
+	else
+	{
+		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 	}
 
 	/* Scroll to the cursor when the document is loaded, we need to do it in
@@ -1949,8 +1967,6 @@ load_cb (GtkSourceFileLoader *loader,
 
 		g_list_free (all_documents);
 	}
-
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 
 	if (location == NULL)
 	{
