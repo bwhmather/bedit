@@ -76,10 +76,10 @@ struct _GeditTab
 	gint auto_save_interval;
 	guint auto_save_timeout;
 
-	gint editable : 1;
-	gint auto_save : 1;
+	guint editable : 1;
+	guint auto_save : 1;
 
-	gint ask_if_externally_modified : 1;
+	guint ask_if_externally_modified : 1;
 
 	/* tmp data for loading */
 	guint user_requested_encoding : 1;
