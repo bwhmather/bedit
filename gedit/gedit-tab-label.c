@@ -19,7 +19,6 @@
  */
 
 #include "gedit-tab-label.h"
-#include "gedit-small-button.h"
 #include "gedit-tab-private.h"
 
 enum
@@ -40,21 +39,15 @@ struct _GeditTabLabel
 
 	GeditTab *tab;
 
-	GtkWidget *close_button;
 	GtkWidget *spinner;
 	GtkWidget *icon;
 	GtkWidget *label;
+	GtkWidget *close_button;
 };
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (GeditTabLabel, gedit_tab_label, GTK_TYPE_BOX)
-
-static void
-gedit_tab_label_finalize (GObject *object)
-{
-	G_OBJECT_CLASS (gedit_tab_label_parent_class)->finalize (object);
-}
 
 static void
 gedit_tab_label_set_property (GObject      *object,
@@ -67,6 +60,7 @@ gedit_tab_label_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_TAB:
+			g_return_if_fail (tab_label->tab == NULL);
 			tab_label->tab = GEDIT_TAB (g_value_get_object (value));
 			break;
 
@@ -104,8 +98,8 @@ close_button_clicked_cb (GtkWidget     *widget,
 }
 
 static void
-sync_tip (GeditTab *tab,
-	  GeditTabLabel *tab_label)
+sync_tooltip (GeditTab      *tab,
+	      GeditTabLabel *tab_label)
 {
 	gchar *str;
 
@@ -131,7 +125,7 @@ sync_name (GeditTab      *tab,
 	gtk_label_set_text (GTK_LABEL (tab_label->label), str);
 	g_free (str);
 
-	sync_tip (tab, tab_label);
+	sync_tooltip (tab, tab_label);
 }
 
 static void
@@ -161,8 +155,8 @@ sync_state (GeditTab      *tab,
 
 	state = gedit_tab_get_state (tab);
 
-	if ((state == GEDIT_TAB_STATE_LOADING)   ||
-	    (state == GEDIT_TAB_STATE_SAVING)    ||
+	if ((state == GEDIT_TAB_STATE_LOADING) ||
+	    (state == GEDIT_TAB_STATE_SAVING) ||
 	    (state == GEDIT_TAB_STATE_REVERTING))
 	{
 		gtk_widget_hide (tab_label->icon);
@@ -195,7 +189,7 @@ sync_state (GeditTab      *tab,
 	}
 
 	/* sync tip since encoding is known only after load/save end */
-	sync_tip (tab, tab_label);
+	sync_tooltip (tab, tab_label);
 }
 
 static void
@@ -203,7 +197,7 @@ gedit_tab_label_constructed (GObject *object)
 {
 	GeditTabLabel *tab_label = GEDIT_TAB_LABEL (object);
 
-	if (!tab_label->tab)
+	if (tab_label->tab == NULL)
 	{
 		g_critical ("The tab label was not properly constructed");
 		return;
@@ -238,7 +232,6 @@ gedit_tab_label_class_init (GeditTabLabelClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	object_class->finalize = gedit_tab_label_finalize;
 	object_class->set_property = gedit_tab_label_set_property;
 	object_class->get_property = gedit_tab_label_get_property;
 	object_class->constructed = gedit_tab_label_constructed;
@@ -265,9 +258,9 @@ gedit_tab_label_class_init (GeditTabLabelClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-tab-label.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditTabLabel, spinner);
-	gtk_widget_class_bind_template_child (widget_class, GeditTabLabel, close_button);
 	gtk_widget_class_bind_template_child (widget_class, GeditTabLabel, icon);
 	gtk_widget_class_bind_template_child (widget_class, GeditTabLabel, label);
+	gtk_widget_class_bind_template_child (widget_class, GeditTabLabel, close_button);
 }
 
 static void
