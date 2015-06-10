@@ -244,13 +244,6 @@ gedit_notebook_switch_page (GtkNotebook *notebook,
 }
 
 static void
-on_tab_label_destroyed (GtkWidget *tab_label,
-                        GeditTab  *tab)
-{
-	g_object_set_data (G_OBJECT (tab), "tab-label", NULL);
-}
-
-static void
 close_button_clicked_cb (GeditTabLabel *tab_label,
 			 GeditNotebook *notebook)
 {
@@ -280,37 +273,13 @@ switch_to_last_focused_page (GeditNotebook *notebook,
 	}
 }
 
-static GtkWidget *
-get_tab_label (GeditTab *tab)
-{
-	GObject *tab_label;
-
-	tab_label = g_object_get_data (G_OBJECT (tab), "tab-label");
-
-	return (tab_label != NULL) ? GTK_WIDGET (tab_label) : NULL;
-}
-
 static void
 gedit_notebook_page_removed (GtkNotebook *notebook,
                              GtkWidget   *page,
                              guint        page_num)
 {
 	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (notebook)->priv;
-	GtkWidget *tab_label;
 	gboolean current_page;
-
-	tab_label = get_tab_label (GEDIT_TAB (page));
-
-	if (tab_label != NULL)
-	{
-		g_signal_handlers_disconnect_by_func (tab_label,
-		                                      G_CALLBACK (on_tab_label_destroyed),
-		                                      page);
-
-		g_signal_handlers_disconnect_by_func (tab_label,
-		                                      G_CALLBACK (close_button_clicked_cb),
-		                                      notebook);
-	}
 
 	/* The page removed was the current page. */
 	current_page = (priv->focused_pages != NULL &&
@@ -332,13 +301,12 @@ gedit_notebook_page_added (GtkNotebook *notebook,
 {
 	GtkWidget *tab_label;
 
-	tab_label = get_tab_label (GEDIT_TAB (page));
+	tab_label = gtk_notebook_get_tab_label (notebook, page);
+	g_return_if_fail (GEDIT_IS_TAB_LABEL (tab_label));
 
-	g_signal_connect (tab_label,
-	                  "destroy",
-	                  G_CALLBACK (on_tab_label_destroyed),
-	                  page);
-
+	/* For a DND from one notebook to another, the same tab_label is
+	 * used, so we need to connect the signal here.
+	 */
 	g_signal_connect (tab_label,
 	                  "close-clicked",
 	                  G_CALLBACK (close_button_clicked_cb),
@@ -349,13 +317,26 @@ static void
 gedit_notebook_remove (GtkContainer *container,
                        GtkWidget    *widget)
 {
+	GtkNotebook *notebook = GTK_NOTEBOOK (container);
 	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (container)->priv;
+	GtkWidget *tab_label;
+
+	g_return_if_fail (GEDIT_IS_TAB (widget));
+
+	tab_label = gtk_notebook_get_tab_label (notebook, widget);
+	g_return_if_fail (GEDIT_IS_TAB_LABEL (tab_label));
+
+	/* For a DND from one notebook to another, the same tab_label is
+	 * used, so we need to disconnect the signal.
+	 */
+	g_signal_handlers_disconnect_by_func (tab_label,
+					      G_CALLBACK (close_button_clicked_cb),
+					      notebook);
 
 	/* This is where GtkNotebook will remove the page. By doing so, it
 	 * will also switch to a new page, messing up our focus list. So we
 	 * set a flag here to ignore the switch temporarily.
 	 */
-
 	priv->ignore_focused_page_update = TRUE;
 
 	if (GTK_CONTAINER_CLASS (gedit_notebook_parent_class)->remove != NULL)
@@ -479,18 +460,6 @@ gedit_notebook_init (GeditNotebook *notebook)
 	gtk_container_set_border_width (GTK_CONTAINER (notebook), 0);
 }
 
-static GtkWidget *
-create_tab_label (GeditTab *tab)
-{
-	GtkWidget *tab_label;
-
-	tab_label = gedit_tab_label_new (tab);
-
-	g_object_set_data (G_OBJECT (tab), "tab-label", tab_label);
-
-	return tab_label;
-}
-
 /**
  * gedit_notebook_add_tab:
  * @notebook: a #GeditNotebook
@@ -511,7 +480,7 @@ gedit_notebook_add_tab (GeditNotebook *notebook,
 	g_return_if_fail (GEDIT_IS_NOTEBOOK (notebook));
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
-	tab_label = create_tab_label (tab);
+	tab_label = gedit_tab_label_new (tab);
 
 	gtk_notebook_insert_page (GTK_NOTEBOOK (notebook),
 				  GTK_WIDGET (tab),
