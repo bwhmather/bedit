@@ -34,9 +34,6 @@ GtkWidget 	*gedit_tab_label_new				(GeditTab *tab);
 
 GeditTab	*gedit_tab_label_get_tab			(GeditTabLabel *tab_label);
 
-void		 gedit_tab_label_set_close_button_sensitive	(GeditTabLabel *tab_label,
-								 gboolean       sensitive);
-
 G_END_DECLS
 
 #endif /* __GEDIT_TAB_LABEL_H__ */

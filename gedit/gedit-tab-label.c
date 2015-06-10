@@ -18,20 +18,10 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-tab-label.h"
-
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
-
 #include "gedit-small-button.h"
-#include "gedit-tab.h"
 #include "gedit-tab-private.h"
 
-/* Signals */
 enum
 {
 	CLOSE_CLICKED,
@@ -54,8 +44,6 @@ struct _GeditTabLabel
 	GtkWidget *spinner;
 	GtkWidget *icon;
 	GtkWidget *label;
-
-	gboolean close_button_sensitive;
 };
 
 static guint signals[LAST_SIGNAL] = { 0 };
@@ -152,7 +140,6 @@ update_close_button_sensitivity (GeditTabLabel *tab_label)
 	GeditTabState state = gedit_tab_get_state (tab_label->tab);
 
 	gtk_widget_set_sensitive (tab_label->close_button,
-				  tab_label->close_button_sensitive &&
 				  (state != GEDIT_TAB_STATE_CLOSING) &&
 				  (state != GEDIT_TAB_STATE_SAVING)  &&
 				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
@@ -286,29 +273,12 @@ gedit_tab_label_class_init (GeditTabLabelClass *klass)
 static void
 gedit_tab_label_init (GeditTabLabel *tab_label)
 {
-	tab_label->close_button_sensitive = TRUE;
-
 	gtk_widget_init_template (GTK_WIDGET (tab_label));
 
 	g_signal_connect (tab_label->close_button,
 	                  "clicked",
 	                  G_CALLBACK (close_button_clicked_cb),
 	                  tab_label);
-}
-
-void
-gedit_tab_label_set_close_button_sensitive (GeditTabLabel *tab_label,
-					    gboolean       sensitive)
-{
-	g_return_if_fail (GEDIT_IS_TAB_LABEL (tab_label));
-
-	sensitive = (sensitive != FALSE);
-
-	if (tab_label->close_button_sensitive != sensitive)
-	{
-		tab_label->close_button_sensitive = sensitive;
-		update_close_button_sensitivity (tab_label);
-	}
 }
 
 GeditTab *
@@ -322,13 +292,9 @@ gedit_tab_label_get_tab (GeditTabLabel *tab_label)
 GtkWidget *
 gedit_tab_label_new (GeditTab *tab)
 {
-	GeditTabLabel *tab_label;
-
-	tab_label = g_object_new (GEDIT_TYPE_TAB_LABEL,
-				  "tab", tab,
-				  NULL);
-
-	return GTK_WIDGET (tab_label);
+	return g_object_new (GEDIT_TYPE_TAB_LABEL,
+			     "tab", tab,
+			     NULL);
 }
 
 /* ex:set ts=8 noet: */
