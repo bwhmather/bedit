@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2005 - Paolo Maggi
+ * Copyright (C) 2015 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -34,6 +35,9 @@
 
 struct _GeditNotebookPrivate
 {
+	/* History of focused pages. The first element contains the most recent
+	 * one.
+	 */
 	GList *focused_pages;
 
 	guint ignore_focused_page_update : 1;
@@ -211,23 +215,29 @@ gedit_notebook_switch_page (GtkNotebook *notebook,
 {
 	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (notebook)->priv;
 
+	GTK_NOTEBOOK_CLASS (gedit_notebook_parent_class)->switch_page (notebook, page, page_num);
+
 	if (!priv->ignore_focused_page_update)
 	{
-		gint prev_page_num;
-		GtkWidget *prev_page;
+		gint page_num;
 
-		prev_page_num = gtk_notebook_get_current_page (notebook);
-		prev_page = gtk_notebook_get_nth_page (notebook, prev_page_num);
-
-		/* Remove the old page, we dont want to grow unnecessarily
-		 * the list.
+		/* Get again page_num and page, the signal handler may have
+		 * changed them.
 		 */
-		priv->focused_pages = g_list_remove (priv->focused_pages, prev_page);
+		page_num = gtk_notebook_get_current_page (notebook);
+		if (page_num != -1)
+		{
+			GtkWidget *page = gtk_notebook_get_nth_page (notebook, page_num);
+			g_assert (page != NULL);
 
-		priv->focused_pages = g_list_append (priv->focused_pages, prev_page);
+			/* Remove the old page, we dont want to grow unnecessarily
+			 * the list.
+			 */
+			priv->focused_pages = g_list_remove (priv->focused_pages, page);
+
+			priv->focused_pages = g_list_prepend (priv->focused_pages, page);
+		}
 	}
-
-	GTK_NOTEBOOK_CLASS (gedit_notebook_parent_class)->switch_page (notebook, page, page_num);
 
 	/* give focus to the tab */
 	gtk_widget_grab_focus (page);
@@ -251,24 +261,22 @@ close_button_clicked_cb (GeditTabLabel *tab_label,
 }
 
 static void
-smart_tab_switching_on_closure (GeditNotebook *notebook,
-				GeditTab      *tab)
+switch_to_last_focused_page (GeditNotebook *notebook,
+			     GeditTab      *tab)
 {
-	if (notebook->priv->focused_pages)
+	if (notebook->priv->focused_pages != NULL)
 	{
 		GList *node;
-		GtkWidget *child;
+		GtkWidget *page;
 		gint page_num;
 
-		/* activate the last focused tab */
-		node = g_list_last (notebook->priv->focused_pages);
-		child = GTK_WIDGET (node->data);
+		node = notebook->priv->focused_pages;
+		page = GTK_WIDGET (node->data);
 
-		page_num = gtk_notebook_page_num (GTK_NOTEBOOK (notebook),
-		                                  child);
+		page_num = gtk_notebook_page_num (GTK_NOTEBOOK (notebook), page);
+		g_return_if_fail (page_num != -1);
 
-		gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook),
-		                               page_num);
+		gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook), page_num);
 	}
 }
 
@@ -289,7 +297,7 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
 {
 	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (notebook)->priv;
 	GtkWidget *tab_label;
-	gint current_page;
+	gboolean current_page;
 
 	tab_label = get_tab_label (GEDIT_TAB (page));
 
@@ -304,15 +312,16 @@ gedit_notebook_page_removed (GtkNotebook *notebook,
 		                                      notebook);
 	}
 
-	/* Remove the page from the focused pages list */
+	/* The page removed was the current page. */
+	current_page = (priv->focused_pages != NULL &&
+			priv->focused_pages->data == page);
+
 	priv->focused_pages = g_list_remove (priv->focused_pages, page);
 
-	current_page = gtk_notebook_get_current_page (notebook);
-
-	if (page_num == current_page)
+	if (current_page)
 	{
-		smart_tab_switching_on_closure (GEDIT_NOTEBOOK (notebook),
-						GEDIT_TAB (page));
+		switch_to_last_focused_page (GEDIT_NOTEBOOK (notebook),
+					     GEDIT_TAB (page));
 	}
 }
 
