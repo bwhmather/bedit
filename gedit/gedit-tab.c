@@ -667,6 +667,7 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 			tab->editable = TRUE;
 			gtk_text_view_set_editable (GTK_TEXT_VIEW (view), TRUE);
 			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 			clear_loading (tab);
 			break;
 
