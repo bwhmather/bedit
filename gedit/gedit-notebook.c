@@ -27,34 +27,21 @@
  *
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-notebook.h"
-
-#include <glib-object.h>
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
-
-#include "gedit-tab.h"
 #include "gedit-tab-label.h"
-#include "gedit-window.h"
 #include "gedit-marshal.h"
 
 #define GEDIT_NOTEBOOK_GROUP_NAME "GeditNotebookGroup"
 
 struct _GeditNotebookPrivate
 {
-	GList         *focused_pages;
+	GList *focused_pages;
 
-	guint close_buttons_sensitive : 1;
 	guint ignore_focused_page_update : 1;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditNotebook, gedit_notebook, GTK_TYPE_NOTEBOOK)
 
-/* Signals */
 enum
 {
 	TAB_CLOSE_REQUEST,
@@ -467,12 +454,7 @@ gedit_notebook_new (void)
 static void
 gedit_notebook_init (GeditNotebook *notebook)
 {
-	GeditNotebookPrivate *priv;
-
 	notebook->priv = gedit_notebook_get_instance_private (notebook);
-	priv = notebook->priv;
-
-	priv->close_buttons_sensitive = TRUE;
 
 	gtk_notebook_set_scrollable (GTK_NOTEBOOK (notebook), TRUE);
 	gtk_notebook_set_show_border (GTK_NOTEBOOK (notebook), FALSE);
@@ -598,59 +580,6 @@ gedit_notebook_remove_all_tabs (GeditNotebook *nb)
 	}
 
 	g_list_free (tabs);
-}
-
-static void
-set_close_buttons_sensitivity (GeditTab      *tab,
-                               GeditNotebook *nb)
-{
-	GtkWidget *tab_label;
-
-	tab_label = get_tab_label (tab);
-
-	gedit_tab_label_set_close_button_sensitive (GEDIT_TAB_LABEL (tab_label),
-						    nb->priv->close_buttons_sensitive);
-}
-
-/**
- * gedit_notebook_set_close_buttons_sensitive:
- * @nb: a #GeditNotebook
- * @sensitive: %TRUE to make the buttons sensitive
- *
- * Sets whether the close buttons in the tabs of @nb are sensitive.
- */
-void
-gedit_notebook_set_close_buttons_sensitive (GeditNotebook *nb,
-					    gboolean       sensitive)
-{
-	g_return_if_fail (GEDIT_IS_NOTEBOOK (nb));
-
-	sensitive = (sensitive != FALSE);
-
-	if (sensitive == nb->priv->close_buttons_sensitive)
-		return;
-
-	nb->priv->close_buttons_sensitive = sensitive;
-
-	gtk_container_foreach (GTK_CONTAINER (nb),
-			       (GtkCallback)set_close_buttons_sensitivity,
-			       nb);
-}
-
-/**
- * gedit_notebook_get_close_buttons_sensitive:
- * @nb: a #GeditNotebook
- *
- * Whether the close buttons are sensitive.
- *
- * Returns: %TRUE if the close buttons are sensitive
- */
-gboolean
-gedit_notebook_get_close_buttons_sensitive (GeditNotebook *nb)
-{
-	g_return_val_if_fail (GEDIT_IS_NOTEBOOK (nb), TRUE);
-
-	return nb->priv->close_buttons_sensitive;
 }
 
 /* ex:set ts=8 noet: */

@@ -31,21 +31,20 @@
 #define GEDIT_NOTEBOOK_H
 
 #include <gedit/gedit-tab.h>
-
-#include <glib.h>
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
 #define GEDIT_TYPE_NOTEBOOK		(gedit_notebook_get_type ())
 #define GEDIT_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GEDIT_TYPE_NOTEBOOK, GeditNotebook))
 #define GEDIT_NOTEBOOK_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GEDIT_TYPE_NOTEBOOK, GeditNotebookClass))
 #define GEDIT_IS_NOTEBOOK(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GEDIT_TYPE_NOTEBOOK))
 #define GEDIT_IS_NOTEBOOK_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GEDIT_TYPE_NOTEBOOK))
 #define GEDIT_NOTEBOOK_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GEDIT_TYPE_NOTEBOOK, GeditNotebookClass))
+
+typedef struct _GeditNotebook		GeditNotebook;
+typedef struct _GeditNotebookClass	GeditNotebookClass;
+typedef struct _GeditNotebookPrivate	GeditNotebookPrivate;
 
 /* This is now used in multi-notebook but we keep the same enum for
  * backward compatibility since it is used in the gsettings schema */
@@ -56,14 +55,6 @@ typedef enum
 	GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS
 } GeditNotebookShowTabsModeType;
 
-/* Private structure type */
-typedef struct _GeditNotebookPrivate	GeditNotebookPrivate;
-
-/*
- * Main object structure
- */
-typedef struct _GeditNotebook		GeditNotebook;
-
 struct _GeditNotebook
 {
 	GtkNotebook notebook;
@@ -71,11 +62,6 @@ struct _GeditNotebook
 	/*< private >*/
 	GeditNotebookPrivate *priv;
 };
-
-/*
- * Class definition
- */
-typedef struct _GeditNotebookClass	GeditNotebookClass;
 
 struct _GeditNotebookClass
 {
@@ -91,9 +77,6 @@ struct _GeditNotebookClass
 	                                 gint           page_num);
 };
 
-/*
- * Public methods
- */
 GType		gedit_notebook_get_type		(void) G_GNUC_CONST;
 
 GtkWidget      *gedit_notebook_new		(void);
@@ -109,13 +92,6 @@ void		gedit_notebook_move_tab		(GeditNotebook *src,
 						 gint           dest_position);
 
 void		gedit_notebook_remove_all_tabs 	(GeditNotebook *nb);
-
-void		gedit_notebook_set_close_buttons_sensitive
-						(GeditNotebook *nb,
-						 gboolean       sensitive);
-
-gboolean	gedit_notebook_get_close_buttons_sensitive
-						(GeditNotebook *nb);
 
 G_END_DECLS
 
