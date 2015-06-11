@@ -40,9 +40,6 @@ G_BEGIN_DECLS
 
 glong		 _gedit_document_get_seconds_since_last_save_or_load	(GeditDocument       *doc);
 
-/* Note: this is a sync stat: use only on local files */
-void		 _gedit_document_check_can_write_file			(GeditDocument       *doc);
-
 gboolean	 _gedit_document_needs_saving				(GeditDocument       *doc);
 
 gboolean	 _gedit_document_get_empty_search			(GeditDocument       *doc);

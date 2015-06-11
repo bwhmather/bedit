@@ -69,7 +69,6 @@ typedef struct
 
 	guint user_action;
 
-	guint readonly : 1;
 	guint language_set_by_user : 1;
 	guint use_gvfs_metadata : 1;
 
@@ -263,7 +262,7 @@ gedit_document_get_property (GObject    *object,
 			break;
 
 		case PROP_READ_ONLY:
-			g_value_set_boolean (value, priv->readonly);
+			g_value_set_boolean (value, gtk_source_file_is_readonly (priv->file));
 			break;
 
 		case PROP_EMPTY_SEARCH:
@@ -432,12 +431,20 @@ gedit_document_class_init (GeditDocumentClass *klass)
 							      G_PARAM_READABLE |
 							      G_PARAM_STATIC_STRINGS));
 
+	/**
+	 * GeditDocument:read-only:
+	 *
+	 * Whether the document is read-only or not.
+	 *
+	 * Deprecated: 3.18: Use the #GtkSourceFile API.
+	 */
 	g_object_class_install_property (object_class, PROP_READ_ONLY,
 					 g_param_spec_boolean ("read-only",
 							       "Read Only",
-							       "Whether the document is read only or not",
+							       "Whether the document is read-only or not",
 							       FALSE,
 							       G_PARAM_READABLE |
+							       G_PARAM_DEPRECATED |
 							       G_PARAM_STATIC_STRINGS));
 
 	/**
@@ -799,6 +806,14 @@ on_location_changed (GtkSourceFile *file,
 }
 
 static void
+on_readonly_changed (GtkSourceFile *file,
+		     GParamSpec    *pspec,
+		     GeditDocument *doc)
+{
+	g_object_notify (G_OBJECT (doc), "read-only");
+}
+
+static void
 gedit_document_init (GeditDocument *doc)
 {
 	GeditDocumentPrivate *priv;
@@ -811,7 +826,6 @@ gedit_document_init (GeditDocument *doc)
 	priv->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
 	priv->untitled_number = get_untitled_number ();
 	priv->content_type = get_default_content_type ();
-	priv->readonly = FALSE;
 	priv->language_set_by_user = FALSE;
 	priv->empty_search = TRUE;
 
@@ -822,6 +836,12 @@ gedit_document_init (GeditDocument *doc)
 	g_signal_connect_object (priv->file,
 				 "notify::location",
 				 G_CALLBACK (on_location_changed),
+				 doc,
+				 0);
+
+	g_signal_connect_object (priv->file,
+				 "notify::read-only",
+				 G_CALLBACK (on_readonly_changed),
 				 doc,
 				 0);
 
@@ -1165,27 +1185,13 @@ gedit_document_get_mime_type (GeditDocument *doc)
 	return g_strdup ("text/plain");
 }
 
-static void
-set_readonly (GeditDocument *doc,
-	      gboolean       readonly)
-{
-	GeditDocumentPrivate *priv;
-
-	gedit_debug (DEBUG_DOCUMENT);
-
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-	priv = gedit_document_get_instance_private (doc);
-
-	readonly = readonly != FALSE;
-
-	if (priv->readonly != readonly)
-	{
-		priv->readonly = readonly;
-		g_object_notify (G_OBJECT (doc), "read-only");
-	}
-}
-
+/**
+ * gedit_document_get_readonly:
+ * @doc: a #GeditDocument.
+ *
+ * Returns: whether the document is read-only.
+ * Deprecated: 3.18: Use gtk_source_file_is_readonly() instead.
+ */
 gboolean
 gedit_document_get_readonly (GeditDocument *doc)
 {
@@ -1195,7 +1201,7 @@ gedit_document_get_readonly (GeditDocument *doc)
 
 	priv = gedit_document_get_instance_private (doc);
 
-	return priv->readonly;
+	return gtk_source_file_is_readonly (priv->file);
 }
 
 static void
@@ -1223,28 +1229,17 @@ loaded_query_info_cb (GFile         *location,
 		error = NULL;
 	}
 
-	if (info != NULL)
+	if (info != NULL &&
+	    g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
 	{
-		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
-		{
-			const gchar *content_type;
+		const gchar *content_type;
 
-			content_type = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
+		content_type = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
 
-			set_content_type (doc, content_type);
-		}
-
-		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-		{
-			gboolean read_only;
-
-			read_only = !g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
-
-			set_readonly (doc, read_only);
-		}
-
-		g_object_unref (info);
+		set_content_type (doc, content_type);
 	}
+
+	g_clear_object (&info);
 
 	/* Async operation finished. */
 	g_object_unref (doc);
@@ -1269,8 +1264,6 @@ gedit_document_loaded_real (GeditDocument *doc)
 	}
 
 	g_get_current_time (&priv->time_of_last_save_or_load);
-
-	set_readonly (doc, FALSE);
 
 	set_content_type (doc, NULL);
 
@@ -1330,8 +1323,6 @@ saved_query_info_cb (GFile         *location,
 	g_get_current_time (&priv->time_of_last_save_or_load);
 
 	priv->create = FALSE;
-
-	set_readonly (doc, FALSE);
 
 	gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc), FALSE);
 
@@ -1410,42 +1401,6 @@ gedit_document_is_local (GeditDocument *doc)
 	return g_file_has_uri_scheme (location, "file");
 }
 
-void
-_gedit_document_check_can_write_file (GeditDocument *doc)
-{
-	GeditDocumentPrivate *priv;
-	GFile *location;
-	GFileInfo *info;
-
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
-
-	priv = gedit_document_get_instance_private (doc);
-
-	location = gtk_source_file_get_location (priv->file);
-
-	if (location == NULL)
-	{
-		return;
-	}
-
-	info = g_file_query_info (location,
-				  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
-				  G_FILE_QUERY_INFO_NONE,
-				  NULL, NULL);
-
-	if (info != NULL &&
-	    g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-	{
-		gboolean read_only;
-
-		read_only = !g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
-
-		set_readonly (doc, read_only);
-	}
-
-	g_clear_object (&info);
-}
-
 /**
  * gedit_document_get_deleted:
  * @doc: a #GeditDocument.
@@ -1487,6 +1442,7 @@ _gedit_document_needs_saving (GeditDocument *doc)
 
 	if (gedit_document_is_local (doc))
 	{
+		gtk_source_file_check_file_on_disk (priv->file);
 		externally_modified = gtk_source_file_is_externally_modified (priv->file);
 		deleted = gtk_source_file_is_deleted (priv->file);
 	}

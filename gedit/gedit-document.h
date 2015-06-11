@@ -75,6 +75,7 @@ void		 gedit_document_set_content_type		(GeditDocument       *doc,
 
 gchar		*gedit_document_get_mime_type			(GeditDocument       *doc);
 
+G_DEPRECATED_FOR (gtk_source_file_is_readonly)
 gboolean	 gedit_document_get_readonly			(GeditDocument       *doc);
 
 gboolean	 gedit_document_is_untouched			(GeditDocument       *doc);

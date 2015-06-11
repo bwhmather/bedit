@@ -1260,9 +1260,10 @@ view_focused_in (GtkWidget     *widget,
 	{
 		GtkSourceFile *file;
 
-		_gedit_document_check_can_write_file (doc);
-
 		file = gedit_document_get_file (doc);
+
+		gtk_source_file_check_file_on_disk (file);
+
 		if (gtk_source_file_is_externally_modified (file))
 		{
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION);
