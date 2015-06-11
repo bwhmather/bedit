@@ -10,7 +10,7 @@
 # Wadim Dziedzic <wdziedzic@aviary.pl>, 2007.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009.
 # Piotr Zaryk <pzaryk@aviary.pl>, 2008.
-# Piotr Drąg <piotrdrag@gmail.com>, 2009-2014.
+# Piotr Drąg <piotrdrag@gmail.com>, 2009-2015.
 # Wojciech Szczęsny <wszczesny@aviary.pl>, 2013.
 # Paweł Żołnowski <pawel@zolnowski.name>, 2014-2015.
 # Aviary.pl <gnomepl@aviary.pl>, 2006-2015.
@@ -18,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-10 19:17+0100\n"
-"PO-Revision-Date: 2015-03-09 20:00+0100\n"
-"Last-Translator: Paweł Żołnowski <pawel@zolnowski.name>\n"
+"POT-Creation-Date: 2015-06-11 16:50+0200\n"
+"PO-Revision-Date: 2015-06-11 16:51+0200\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:724
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:737
 msgid "Text Editor"
 msgstr "Edytor tekstu"
 
@@ -505,6 +505,38 @@ msgstr ""
 "Określa czcionkę stosowaną do numerów wierszy na wydruku. Opcja jest brana "
 "pod uwagę tylko, jeśli aktywna jest opcja \"Drukowanie numerów wierszy\"."
 
+#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+msgid "Margin Left"
+msgstr "Lewy margines"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+msgid "The left margin, in millimeters."
+msgstr "Lewy margines w milimetrach."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+msgid "Margin Top"
+msgstr "Górny margines"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+msgid "The top margin, in millimeters."
+msgstr "Górny margines w milimetrach."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+msgid "Margin Right"
+msgstr "Prawy margines"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+msgid "The right margin, in millimeters."
+msgstr "Prawy margines w milimetrach."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+msgid "Margin Bottom"
+msgstr "Dolny margines"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+msgid "The bottom margin, in millimeters."
+msgstr "Dolny margines w milimetrach."
+
 #. Translators: This is the sorted list of encodings used by gedit
 #. for automatic detection of the file encoding. You may want to customize it adding
 #. encodings that are common in your country, for instance the GB18030 encoding
@@ -516,15 +548,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'CURRENT', 'ISO-8859-2', 'WINDOWS-1250', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:93
 msgid "Automatically Detected Encodings"
 msgstr "Automatyczne rozpoznawanie kodowania"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:94
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -536,15 +568,15 @@ msgstr ""
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.h:97
 msgid "['ISO-8859-15']"
 msgstr "['UTF-8', 'ISO-8859-2', 'WINDOWS-1250']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:90
+#: ../data/org.gnome.gedit.gschema.xml.in.h:98
 msgid "Encodings shown in menu"
 msgstr "Kodowania wyświetlane w menu"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:91
+#: ../data/org.gnome.gedit.gschema.xml.in.h:99
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -552,11 +584,11 @@ msgstr ""
 "Lista kodowań widoczna w menu Kodowanie znaków na liście wyboru otwierania i "
 "zapisywania pliku. Używane są tylko rozpoznane kodowania."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:92
+#: ../data/org.gnome.gedit.gschema.xml.in.h:100
 msgid "Active plugins"
 msgstr "Aktywne wtyczki"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:93
+#: ../data/org.gnome.gedit.gschema.xml.in.h:101
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -564,15 +596,15 @@ msgstr ""
 "Lista aktywnych wtyczek. Zawiera \"Położenie\" aktywnej wtyczki. Proszę "
 "zobaczyć plik .gedit-plugins w celu otrzymania \"Położenia\" danej wtyczki."
 
-#: ../gedit/gedit-app.c:105
+#: ../gedit/gedit-app.c:107
 msgid "Show the application's version"
 msgstr "Wyświetla wersję programu"
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:113
 msgid "Display list of possible values for the encoding option"
 msgstr "Wyświetla listę możliwych wartości dla opcji kodowania"
 
-#: ../gedit/gedit-app.c:118
+#: ../gedit/gedit-app.c:120
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -580,43 +612,43 @@ msgstr ""
 "Ustawia kodowanie znaków używane podczas otwierania plików wymienionych w "
 "wierszu poleceń"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:121
 msgid "ENCODING"
 msgstr "KODOWANIE"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:127
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Tworzy nowe główne okno w ramach istniejącej instancji programu gedit"
 
-#: ../gedit/gedit-app.c:132
+#: ../gedit/gedit-app.c:134
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Tworzy nowy dokument w ramach istniejącej instancji programu gedit"
 
-#: ../gedit/gedit-app.c:139
+#: ../gedit/gedit-app.c:141
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Ustawia rozmiar i położenie okna (SZEROKOŚĆxWYSOKOŚĆ+x+Y)"
 
-#: ../gedit/gedit-app.c:140
+#: ../gedit/gedit-app.c:142
 msgid "GEOMETRY"
 msgstr "GEOMETRIA"
 
-#: ../gedit/gedit-app.c:146
+#: ../gedit/gedit-app.c:148
 msgid "Open files and block process until files are closed"
 msgstr "Otwiera pliki i blokuje proces, dopóki pliki nie zostaną zamknięte"
 
-#: ../gedit/gedit-app.c:153
+#: ../gedit/gedit-app.c:155
 msgid "Run gedit in standalone mode"
 msgstr "Uruchamia program gedit w trybie samodzielnym"
 
-#: ../gedit/gedit-app.c:160
+#: ../gedit/gedit-app.c:162
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[PLIK...] [+WIERSZ[:KOLUMNA]]"
 
-#: ../gedit/gedit-app.c:265
+#: ../gedit/gedit-app.c:274
 msgid "There was an error displaying the help."
 msgstr "Wystąpił błąd podczas wyświetlania pomocy."
 
-#: ../gedit/gedit-app.c:916
+#: ../gedit/gedit-app.c:944
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: nieprawidłowe kodowanie."
@@ -1013,7 +1045,7 @@ msgstr ""
 "Wadim Dziedzic <wdziedzic@aviary.pl>, 2007\n"
 "Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009\n"
 "Piotr Zaryk <pzaryk@aviary.pl>, 2008\n"
-"Piotr Drąg <piotrdrag@gmail.com>, 2009-2014\n"
+"Piotr Drąg <piotrdrag@gmail.com>, 2009-2015\n"
 "Wojciech Szczęsny <wszczesny@aviary.pl>, 2013\n"
 "Paweł Żołnowski <pawel@zolnowski.name>, 2014-2015\n"
 "Aviary.pl <gnomepl@aviary.pl>, 2006-2015"
@@ -1037,7 +1069,7 @@ msgstr "Odnaleziono i zmieniono jedno wystąpienie"
 msgid "\"%s\" not found"
 msgstr "Wyrażenie \"%s\" nie zostało odnalezione"
 
-#: ../gedit/gedit-document.c:956 ../gedit/gedit-document.c:986
+#: ../gedit/gedit-document.c:986 ../gedit/gedit-document.c:1016
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Niezapisany dokument %d"
@@ -1047,8 +1079,8 @@ msgstr "Niezapisany dokument %d"
 msgid "Tab Group %i"
 msgstr "Grupa kart %i"
 
-#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1134
-#: ../gedit/gedit-window.c:1140 ../gedit/gedit-window.c:1148
+#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1142
+#: ../gedit/gedit-window.c:1148 ../gedit/gedit-window.c:1156
 msgid "Read-Only"
 msgstr "Tylko do odczytu"
 
@@ -1092,7 +1124,7 @@ msgstr "Kodowanie znaków:"
 msgid "Line Ending:"
 msgstr "Koniec wiersza:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1218
+#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1226
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1491,16 +1523,16 @@ msgstr "Nie można usunąć schematu kolorów \"%s\"."
 msgid "Preparing..."
 msgstr "Przygotowywanie..."
 
-#: ../gedit/gedit-print-job.c:536
+#: ../gedit/gedit-print-job.c:545
 #, c-format
 msgid "File: %s"
 msgstr "Plik: %s"
 
-#: ../gedit/gedit-print-job.c:545
+#: ../gedit/gedit-print-job.c:554
 msgid "Page %N of %Q"
 msgstr "Strona %N z %Q"
 
-#: ../gedit/gedit-print-job.c:619
+#: ../gedit/gedit-print-job.c:632
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "Wyświetlanie strony %d z %d..."
@@ -1574,34 +1606,34 @@ msgid "Saving %s"
 msgstr "Zapisywanie %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1462
+#: ../gedit/gedit-tab.c:1464
 msgid "RO"
 msgstr "tylko do odczytu"
 
-#: ../gedit/gedit-tab.c:1510
+#: ../gedit/gedit-tab.c:1512
 #, c-format
 msgid "Error opening file %s"
 msgstr "Podczas otwierania pliku %s wystąpił błąd"
 
-#: ../gedit/gedit-tab.c:1515
+#: ../gedit/gedit-tab.c:1517
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Podczas przywracania pliku %s wystąpił błąd"
 
-#: ../gedit/gedit-tab.c:1520
+#: ../gedit/gedit-tab.c:1522
 #, c-format
 msgid "Error saving file %s"
 msgstr "Podczas zapisywania pliku %s wystąpił błąd"
 
-#: ../gedit/gedit-tab.c:1551
+#: ../gedit/gedit-tab.c:1553
 msgid "Name:"
 msgstr "Nazwa:"
 
-#: ../gedit/gedit-tab.c:1552
+#: ../gedit/gedit-tab.c:1554
 msgid "MIME Type:"
 msgstr "Typ MIME:"
 
-#: ../gedit/gedit-tab.c:1553
+#: ../gedit/gedit-tab.c:1555
 msgid "Encoding:"
 msgstr "Kodowanie:"
 
@@ -1646,73 +1678,73 @@ msgstr "_Numery wierszy"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:736
+#: ../gedit/gedit-view-frame.c:691
 #, c-format
 msgid "%d of %d"
 msgstr "%d z %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:828
+#: ../gedit/gedit-view-frame.c:783
 msgid "_Wrap Around"
 msgstr "_Automatyczny powrót do początku"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:838
+#: ../gedit/gedit-view-frame.c:793
 msgid "Match as _Regular Expression"
 msgstr "_Dopasowywanie jako wyrażenie regularne"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:852
+#: ../gedit/gedit-view-frame.c:807
 msgid "Match _Entire Word Only"
 msgstr "Tylko całe _wyrazy"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:866
+#: ../gedit/gedit-view-frame.c:821
 msgid "_Match Case"
 msgstr "_Rozróżnianie małych i wielkich liter"
 
-#: ../gedit/gedit-view-frame.c:1041
+#: ../gedit/gedit-view-frame.c:1038
 msgid "String you want to search for"
 msgstr "Poszukiwane wyrażenie"
 
-#: ../gedit/gedit-view-frame.c:1053
+#: ../gedit/gedit-view-frame.c:1050
 msgid "Line you want to move the cursor to"
 msgstr "Numer wiersza, do którego ma zostać przeniesiony kursor"
 
-#: ../gedit/gedit-window.c:973
+#: ../gedit/gedit-window.c:981
 msgid "Bracket match is out of range"
 msgstr "Parowanie nawiasów jest poza zakresem"
 
-#: ../gedit/gedit-window.c:978
+#: ../gedit/gedit-window.c:986
 msgid "Bracket match not found"
 msgstr "Nie odnaleziono pasującego nawiasu"
 
-#: ../gedit/gedit-window.c:983
+#: ../gedit/gedit-window.c:991
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Odnaleziono pasujący nawias w wierszu: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1018
+#: ../gedit/gedit-window.c:1026
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Wrsz %d, kol %d"
 
-#: ../gedit/gedit-window.c:1200
+#: ../gedit/gedit-window.c:1208
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Szerokość tabulacji: %u"
 
-#: ../gedit/gedit-window.c:1570
+#: ../gedit/gedit-window.c:1578
 msgid "There are unsaved documents"
 msgstr "Są niezapisane dokumenty"
 
-#: ../gedit/gedit-window.c:2419
+#: ../gedit/gedit-window.c:2427
 msgid "Change side panel page"
 msgstr "Zmienia stronę panelu bocznego"
 
-#: ../gedit/gedit-window.c:2439 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2447 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumenty"
@@ -2122,8 +2154,8 @@ msgid "Editor"
 msgstr "Edytor"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Czcionka"
 
@@ -2179,12 +2211,12 @@ msgstr "Numery wierszy"
 msgid "Print line nu_mbers"
 msgstr "Drukowa_nie"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
 msgid "_Number every"
 msgstr "_Numery wierszy co"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
 msgid "lines"
 msgstr "wiersze"
@@ -2385,12 +2417,12 @@ msgstr ""
 "pominąć ją i poczekać na nowszą"
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
 msgid "Version to Ignore"
 msgstr "Wersja do pominięcia"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "Wersja do pominięcia, dopóki nie zostanie wydana nowsza."
 
@@ -2486,12 +2518,12 @@ msgstr "Narzędzia zewnętrzne"
 msgid "Execute external commands and shell scripts."
 msgstr "Wykonuje zewnętrzne polecenia i skrypty powłoki."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
 msgstr "Określa, czy używać czcionki systemowej"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2500,8 +2532,8 @@ msgstr ""
 "pulpitu, jeśli to czcionka o stałej szerokości (a w innym przypadku "
 "najbardziej podobną czcionkę)."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr ""
 "Nazwa czcionki biblioteki Pango. Przykłady: \"Sans 12\" lub \"Monospace Bold "
@@ -2843,11 +2875,11 @@ msgid "Error when loading '%s': No such directory"
 msgstr "Wystąpił błąd podczas wczytywania \"%s\": nie ma takiego katalogu"
 
 #. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
 msgid "Open With Tree View"
 msgstr "Rozpocznij z widokiem drzewa plików"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2855,11 +2887,11 @@ msgstr ""
 "Otwiera przeglądarkę plików z aktywnym widokiem drzewa plików zamiast widoku "
 "zakładek"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Katalog główny przeglądarki plików"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2867,11 +2899,11 @@ msgstr ""
 "Katalog główny, w którym rozpocznie przeglądarka plików, jeśli \"onload/"
 "tree_view\" ma wartość \"true\"."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Wirtualny katalog główny przeglądarki plików"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -2881,19 +2913,19 @@ msgstr ""
 "\"onload/tree_view\" ma wartość \"true\". Wirtualny katalog główny musi "
 "zawsze być katalogiem podrzędnym faktycznego katalogu głównego."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "Włącza możliwość przywracania zdalnych położeń"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Przełącza możliwość przywracania zdalnych położeń."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "Ustawienie położenia na pierwszy dokument"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2905,11 +2937,11 @@ msgstr ""
 "powodu opcja ta dotyczy ogólnie przypadków, w których dokumenty zostały "
 "otwarte z wiersza poleceń lub z menedżera plików, np. programu Nautilus)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "Tryb filtrowania plików"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -2919,11 +2951,11 @@ msgstr ""
 "Prawidłowe wartości to: \"none\" (wszystkie pliki widoczne), \"hide-hidden"
 "\" (wyklucza pliki ukryte) oraz \"hide-binary\" (wyklucza pliki binarne)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Wzór filtra plików"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -2931,11 +2963,11 @@ msgstr ""
 "Wzorzec filtra przeglądarki plików. Filtr ten działa w oparciu o "
 "\"filter_mode\"."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
 msgstr "Wzory plików binarnych przeglądarki"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Dodatkowe wzorce używane podczas filtrowania plików binarnych."
 
@@ -3003,23 +3035,23 @@ msgstr "Wiersze trybu"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Obsługa wierszy trybu z programów Emacs, Kate i Vim w programie gedit."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
 msgstr "Tekst koloru polecenia"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
 msgid "The command color text"
 msgstr "Tekst koloru polecenia"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
 msgid "Error Color Text"
 msgstr "Tekst koloru błędu"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
 msgid "The error color text"
 msgstr "Tekst koloru błędu"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3509,11 +3541,11 @@ msgid "Available formats"
 msgstr "Dostępne formaty"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
 msgid "Prompt Type"
 msgstr "Typ znaku zachęty"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3521,19 +3553,19 @@ msgstr ""
 "Jeśli użytkownik powinien być pytany o format, albo jeśli powinien być "
 "używany wybrany lub własny format."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
 msgstr "Wybrany format"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "Wybrany format używany podczas wstawiania daty/czasu."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
 msgstr "Własny format"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "Własny format podczas wstawiania daty/czasu."
 
