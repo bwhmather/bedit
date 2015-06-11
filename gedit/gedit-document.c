@@ -44,6 +44,9 @@ static void	gedit_document_loaded_real	(GeditDocument *doc);
 
 static void	gedit_document_saved_real	(GeditDocument *doc);
 
+static void	set_content_type		(GeditDocument *doc,
+						 const gchar   *content_type);
+
 typedef struct
 {
 	GtkSourceFile *file;
@@ -299,7 +302,7 @@ gedit_document_set_property (GObject      *object,
 			break;
 
 		case PROP_CONTENT_TYPE:
-			gedit_document_set_content_type (doc, g_value_get_string (value));
+			set_content_type (doc, g_value_get_string (value));
 			break;
 
 		case PROP_USE_GVFS_METADATA:
@@ -944,18 +947,11 @@ set_content_type_no_guess (GeditDocument *doc,
 	g_object_notify (G_OBJECT (doc), "content-type");
 }
 
-/**
- * gedit_document_set_content_type:
- * @doc:
- * @content_type: (allow-none):
- */
-void
-gedit_document_set_content_type (GeditDocument *doc,
-                                 const gchar   *content_type)
+static void
+set_content_type (GeditDocument *doc,
+		  const gchar   *content_type)
 {
 	GeditDocumentPrivate *priv;
-
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
 	gedit_debug (DEBUG_DOCUMENT);
 
@@ -985,6 +981,23 @@ gedit_document_set_content_type (GeditDocument *doc,
 	{
 		set_content_type_no_guess (doc, content_type);
 	}
+}
+
+/**
+ * gedit_document_set_content_type:
+ * @doc:
+ * @content_type: (allow-none):
+ *
+ * Deprecated: 3.18: Unused function. The intent is to change the
+ * #GeditDocument:content-type property to be read-only.
+ */
+void
+gedit_document_set_content_type (GeditDocument *doc,
+                                 const gchar   *content_type)
+{
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+	set_content_type (doc, content_type);
 }
 
 /**
@@ -1031,7 +1044,7 @@ gedit_document_set_location (GeditDocument *doc,
 	priv = gedit_document_get_instance_private (doc);
 
 	gtk_source_file_set_location (priv->file, location);
-	gedit_document_set_content_type (doc, NULL);
+	set_content_type (doc, NULL);
 }
 
 /**
@@ -1225,7 +1238,7 @@ loaded_query_info_cb (GFile         *location,
 
 			content_type = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
 
-			gedit_document_set_content_type (doc, content_type);
+			set_content_type (doc, content_type);
 		}
 
 		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
@@ -1276,7 +1289,7 @@ gedit_document_loaded_real (GeditDocument *doc)
 
 	set_readonly (doc, FALSE);
 
-	gedit_document_set_content_type (doc, NULL);
+	set_content_type (doc, NULL);
 
 	location = gtk_source_file_get_location (priv->file);
 
@@ -1334,7 +1347,7 @@ saved_query_info_cb (GFile         *location,
 		}
 	}
 
-	gedit_document_set_content_type (doc, content_type);
+	set_content_type (doc, content_type);
 
 	if (info != NULL)
 	{

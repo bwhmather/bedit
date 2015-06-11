@@ -69,6 +69,7 @@ void		 gedit_document_set_short_name_for_display	(GeditDocument       *doc,
 
 gchar		*gedit_document_get_content_type		(GeditDocument       *doc);
 
+G_DEPRECATED
 void		 gedit_document_set_content_type		(GeditDocument       *doc,
 								 const gchar         *content_type);
 
