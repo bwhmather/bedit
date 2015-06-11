@@ -1003,6 +1003,7 @@ gedit_commands_save_document_async (GeditDocument       *document,
 {
 	GTask *task;
 	GeditTab *tab;
+	GtkSourceFile *file;
 	gchar *uri_for_display;
 
 	gedit_debug (DEBUG_COMMANDS);
@@ -1014,9 +1015,10 @@ gedit_commands_save_document_async (GeditDocument       *document,
 	task = g_task_new (document, cancellable, callback, user_data);
 
 	tab = gedit_tab_get_from_document (document);
+	file = gedit_document_get_file (document);
 
 	if (gedit_document_is_untitled (document) ||
-	    gedit_document_get_readonly (document))
+	    gtk_source_file_is_readonly (file))
 	{
 		gedit_debug_message (DEBUG_COMMANDS, "Untitled or Readonly");
 
@@ -1308,10 +1310,12 @@ save_documents_list (GeditWindow *window,
 		{
 			if (_gedit_document_needs_saving (doc))
 			{
+				GtkSourceFile *file = gedit_document_get_file (doc);
+
 				/* FIXME: manage the case of local readonly files owned by the
 				   user is running gedit - Paolo (Dec. 8, 2005) */
 				if (gedit_document_is_untitled (doc) ||
-				    gedit_document_get_readonly (doc))
+				    gtk_source_file_is_readonly (file))
 				{
 					if (data == NULL)
 					{
@@ -1748,13 +1752,15 @@ save_and_close_documents (GList         *docs,
 			    state != GEDIT_TAB_STATE_LOADING_ERROR &&
 			    state != GEDIT_TAB_STATE_REVERTING) /* FIXME: is this the right behavior with REVERTING ?*/
 			{
+				GtkSourceFile *file = gedit_document_get_file (doc);
+
 				/* The document must be saved before closing */
 				g_return_if_fail (_gedit_document_needs_saving (doc));
 
 				/* FIXME: manage the case of local readonly files owned by the
 				 * user is running gedit - Paolo (Dec. 8, 2005) */
 				if (gedit_document_is_untitled (doc) ||
-				    gedit_document_get_readonly (doc))
+				    gtk_source_file_is_readonly (file))
 				{
 					if (data == NULL)
 					{

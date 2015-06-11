@@ -70,14 +70,14 @@ enum
 static guint view_signals [LAST_SIGNAL] = { 0 };
 
 static void
-document_read_only_notify_handler (GeditDocument *document,
-			           GParamSpec    *pspec,
-				   GeditView     *view)
+file_read_only_notify_handler (GtkSourceFile *file,
+			       GParamSpec    *pspec,
+			       GeditView     *view)
 {
 	gedit_debug (DEBUG_VIEW);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
-				    !gedit_document_get_readonly (document));
+				    !gtk_source_file_is_readonly (file));
 }
 
 static void
@@ -85,8 +85,12 @@ current_buffer_removed (GeditView *view)
 {
 	if (view->priv->current_buffer != NULL)
 	{
-		g_signal_handlers_disconnect_by_func (view->priv->current_buffer,
-						      document_read_only_notify_handler,
+		GtkSourceFile *file;
+
+		file = gedit_document_get_file (GEDIT_DOCUMENT (view->priv->current_buffer));
+
+		g_signal_handlers_disconnect_by_func (file,
+						      file_read_only_notify_handler,
 						      view);
 
 		g_object_unref (view->priv->current_buffer);
@@ -100,6 +104,7 @@ on_notify_buffer_cb (GeditView  *view,
 		     gpointer    userdata)
 {
 	GtkTextBuffer *buffer;
+	GtkSourceFile *file;
 
 	current_buffer_removed (view);
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
@@ -107,14 +112,17 @@ on_notify_buffer_cb (GeditView  *view,
 	if (buffer == NULL || !GEDIT_IS_DOCUMENT (buffer))
 		return;
 
+	file = gedit_document_get_file (GEDIT_DOCUMENT (buffer));
+
 	view->priv->current_buffer = g_object_ref (buffer);
-	g_signal_connect (buffer,
-			  "notify::read-only",
-			  G_CALLBACK (document_read_only_notify_handler),
-			  view);
+	g_signal_connect_object (file,
+				 "notify::read-only",
+				 G_CALLBACK (file_read_only_notify_handler),
+				 view,
+				 0);
 
 	gtk_text_view_set_editable (GTK_TEXT_VIEW (view),
-				    !gedit_document_get_readonly (GEDIT_DOCUMENT (buffer)));
+				    !gtk_source_file_is_readonly (file));
 }
 
 static void
@@ -854,11 +862,9 @@ gedit_view_cut_clipboard (GeditView *view)
 	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view),
 	                                      GDK_SELECTION_CLIPBOARD);
 
-	/* FIXME: what is default editability of a buffer? */
 	gtk_text_buffer_cut_clipboard (buffer,
 	                               clipboard,
-	                               !gedit_document_get_readonly (
-	                               		GEDIT_DOCUMENT (buffer)));
+				       gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 	                              gtk_text_buffer_get_insert (buffer),
@@ -905,12 +911,10 @@ gedit_view_paste_clipboard (GeditView *view)
 	clipboard = gtk_widget_get_clipboard (GTK_WIDGET (view),
 	                                      GDK_SELECTION_CLIPBOARD);
 
-	/* FIXME: what is default editability of a buffer? */
 	gtk_text_buffer_paste_clipboard (buffer,
 	                                 clipboard,
 	                                 NULL,
-	                                 !gedit_document_get_readonly (
-	                                 	GEDIT_DOCUMENT (buffer)));
+					 gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 	                              gtk_text_buffer_get_insert (buffer),
@@ -939,11 +943,9 @@ gedit_view_delete_selection (GeditView *view)
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	g_return_if_fail (buffer != NULL);
 
-	/* FIXME: what is default editability of a buffer? */
 	gtk_text_buffer_delete_selection (buffer,
 	                                  TRUE,
-	                                  !gedit_document_get_readonly (
-	                                  	GEDIT_DOCUMENT (buffer)));
+					  gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 
 	gtk_text_view_scroll_to_mark (GTK_TEXT_VIEW (view),
 	                              gtk_text_buffer_get_insert (buffer),

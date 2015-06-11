@@ -495,6 +495,7 @@ document_row_sync_tab_name_and_icon (GeditTab   *tab,
 {
 	GeditDocumentsDocumentRow *document_row = GEDIT_DOCUMENTS_DOCUMENT_ROW (row);
 	GeditDocument *doc;
+	GtkSourceFile *file;
 	gchar *name;
 	GdkPixbuf *pixbuf;
 
@@ -517,8 +518,10 @@ document_row_sync_tab_name_and_icon (GeditTab   *tab,
 
 	g_free (name);
 
+	file = gedit_document_get_file (doc);
+
 	/* The status has as separate label to prevent ellipsizing */
-	if (!gedit_document_get_readonly (doc))
+	if (!gtk_source_file_is_readonly (file))
 	{
 		gtk_widget_hide (GTK_WIDGET (document_row->status_label));
 	}

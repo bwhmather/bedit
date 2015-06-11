@@ -190,15 +190,17 @@ static void
 update_auto_save_timeout (GeditTab *tab)
 {
 	GeditDocument *doc;
+	GtkSourceFile *file;
 
 	gedit_debug (DEBUG_TAB);
 
 	doc = gedit_tab_get_document (tab);
+	file = gedit_document_get_file (doc);
 
 	if (tab->state == GEDIT_TAB_STATE_NORMAL &&
 	    tab->auto_save &&
 	    !gedit_document_is_untitled (doc) &&
-	    !gedit_document_get_readonly (doc))
+	    !gtk_source_file_is_readonly (file))
 	{
 		install_auto_save_timeout (tab);
 	}
@@ -1520,17 +1522,6 @@ _gedit_tab_get_name (GeditTab *tab)
 	}
 	else
 	{
- #if 0
-		if (gedit_document_get_readonly (doc))
-		{
-			tab_name = g_strdup_printf ("%s [%s]", docname,
-						/*Read only*/ _("RO"));
-		}
-		else
-		{
-			tab_name = g_strdup_printf ("%s", docname);
-		}
-#endif
 		tab_name = g_strdup (docname);
 	}
 
@@ -1765,6 +1756,7 @@ load_cb (GtkSourceFileLoader *loader,
 	 GeditTab            *tab)
 {
 	GeditDocument *doc = gedit_tab_get_document (tab);
+	GtkSourceFile *file = gedit_document_get_file (doc);
 	GFile *location = gtk_source_file_loader_get_location (loader);
 	gboolean create_named_new_doc;
 	GError *error = NULL;
@@ -1933,7 +1925,7 @@ load_cb (GtkSourceFileLoader *loader,
 	/* If the document is readonly we don't care how many times the document
 	 * is opened.
 	 */
-	if (!gedit_document_get_readonly (doc))
+	if (!gtk_source_file_is_readonly (file))
 	{
 		GList *all_documents;
 		GList *l;
@@ -2517,8 +2509,10 @@ gedit_tab_auto_save (GeditTab *tab)
 	gedit_debug (DEBUG_TAB);
 
 	doc = gedit_tab_get_document (tab);
+	file = gedit_document_get_file (doc);
+
 	g_return_val_if_fail (!gedit_document_is_untitled (doc), G_SOURCE_REMOVE);
-	g_return_val_if_fail (!gedit_document_get_readonly (doc), G_SOURCE_REMOVE);
+	g_return_val_if_fail (!gtk_source_file_is_readonly (file), G_SOURCE_REMOVE);
 
 	if (!gtk_text_buffer_get_modified (GTK_TEXT_BUFFER (doc)))
 	{
@@ -2557,8 +2551,6 @@ gedit_tab_auto_save (GeditTab *tab)
 	g_task_set_task_data (tab->task_saver,
 			      data,
 			      (GDestroyNotify) saver_data_free);
-
-	file = gedit_document_get_file (doc);
 
 	data->saver = gtk_source_file_saver_new (GTK_SOURCE_BUFFER (doc), file);
 

@@ -330,10 +330,12 @@ add_buttons (GeditCloseConfirmationDialog *dlg)
 		if (GET_MODE (dlg) == SINGLE_DOC_MODE)
 		{
 			GeditDocument *doc;
+			GtkSourceFile *file;
 
 			doc = GEDIT_DOCUMENT (dlg->unsaved_documents->data);
+			file = gedit_document_get_file (doc);
 
-			if (gedit_document_get_readonly (doc) ||
+			if (gtk_source_file_is_readonly (file) ||
 			    gedit_document_is_untitled (doc))
 			{
 				save_as = TRUE;

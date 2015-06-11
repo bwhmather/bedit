@@ -577,6 +577,7 @@ update_actions_sensitivity (GeditWindow *window)
 	gint num_tabs;
 	GeditTabState state = GEDIT_TAB_STATE_NORMAL;
 	GeditDocument *doc = NULL;
+	GtkSourceFile *file = NULL;
 	GeditView *view = NULL;
 	gint tab_number = -1;
 	GAction *action;
@@ -598,6 +599,7 @@ update_actions_sensitivity (GeditWindow *window)
 		state = gedit_tab_get_state (tab);
 		view = gedit_tab_get_view (tab);
 		doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+		file = gedit_document_get_file (doc);
 		tab_number = gtk_notebook_page_num (GTK_NOTEBOOK (notebook), GTK_WIDGET (tab));
 		editable = gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
 		empty_search = _gedit_document_get_empty_search (doc);
@@ -611,7 +613,7 @@ update_actions_sensitivity (GeditWindow *window)
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (action),
 	                             ((state == GEDIT_TAB_STATE_NORMAL) ||
 	                              (state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION)) &&
-	                             (doc != NULL) && !gedit_document_get_readonly (doc) &&
+	                             (file != NULL) && !gtk_source_file_is_readonly (file) &&
 	                             !(lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "save-as");
@@ -1064,6 +1066,7 @@ set_title (GeditWindow *window)
 {
 	GeditTab *tab;
 	GeditDocument *doc = NULL;
+	GtkSourceFile *file;
 	gchar *name;
 	gchar *dirname = NULL;
 	gchar *main_title = NULL;
@@ -1092,6 +1095,8 @@ set_title (GeditWindow *window)
 	doc = gedit_tab_get_document (tab);
 	g_return_if_fail (doc != NULL);
 
+	file = gedit_document_get_file (doc);
+
 	name = gedit_document_get_short_name_for_display (doc);
 
 	len = g_utf8_strlen (name, -1);
@@ -1110,7 +1115,6 @@ set_title (GeditWindow *window)
 	}
 	else
 	{
-		GtkSourceFile *file = gedit_document_get_file (doc);
 		GFile *location = gtk_source_file_get_location (file);
 
 		if (location != NULL)
@@ -1139,7 +1143,7 @@ set_title (GeditWindow *window)
 		name = tmp_name;
 	}
 
-	if (gedit_document_get_readonly (doc))
+	if (gtk_source_file_is_readonly (file))
 	{
 		title = g_strdup_printf ("%s [%s]",
 		                         name, _("Read-Only"));
@@ -1901,7 +1905,7 @@ selection_changed (GeditDocument *doc,
 }
 
 static void
-readonly_changed (GeditDocument *doc,
+readonly_changed (GtkSourceFile *file,
 		  GParamSpec    *pspec,
 		  GeditWindow   *window)
 {
@@ -1932,6 +1936,7 @@ on_tab_added (GeditMultiNotebook *multi,
 {
 	GeditView *view;
 	GeditDocument *doc;
+	GtkSourceFile *file;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -1939,6 +1944,7 @@ on_tab_added (GeditMultiNotebook *multi,
 
 	view = gedit_tab_get_view (tab);
 	doc = gedit_tab_get_document (tab);
+	file = gedit_document_get_file (doc);
 
 	/* IMPORTANT: remember to disconnect the signal in notebook_tab_removed
 	 * if a new signal is connected here */
@@ -1983,10 +1989,6 @@ on_tab_added (GeditMultiNotebook *multi,
 			  "notify::has-selection",
 			  G_CALLBACK (selection_changed),
 			  window);
-	g_signal_connect (doc,
-			  "notify::read-only",
-			  G_CALLBACK (readonly_changed),
-			  window);
 	g_signal_connect (view,
 			  "notify::overwrite",
 			  G_CALLBACK (overwrite_mode_changed),
@@ -1994,6 +1996,10 @@ on_tab_added (GeditMultiNotebook *multi,
 	g_signal_connect (view,
 			  "notify::editable",
 			  G_CALLBACK (editable_changed),
+			  window);
+	g_signal_connect (file,
+			  "notify::read-only",
+			  G_CALLBACK (readonly_changed),
 			  window);
 
 	update_window_state (window);
