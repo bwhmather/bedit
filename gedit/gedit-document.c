@@ -1516,6 +1516,14 @@ _gedit_document_check_externally_modified (GeditDocument *doc)
 	return priv->externally_modified;
 }
 
+/**
+ * gedit_document_get_deleted:
+ * @doc: a #GeditDocument.
+ *
+ * Returns: whether the file has been deleted.
+ *
+ * Deprecated: 3.18: Unused function.
+ */
 gboolean
 gedit_document_get_deleted (GeditDocument *doc)
 {
