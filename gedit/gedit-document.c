@@ -60,7 +60,6 @@ typedef struct
 
 	gchar	    *content_type;
 
-	GTimeVal     mtime;
 	GTimeVal     time_of_last_save_or_load;
 
 	/* The search context for the incremental search, or the search and
@@ -71,10 +70,7 @@ typedef struct
 	guint user_action;
 
 	guint readonly : 1;
-	guint externally_modified : 1;
-	guint deleted : 1;
 	guint language_set_by_user : 1;
-	guint mtime_set : 1;
 	guint use_gvfs_metadata : 1;
 
 	/* The search is empty if there is no search context, or if the
@@ -1207,11 +1203,8 @@ loaded_query_info_cb (GFile         *location,
 		      GAsyncResult  *result,
 		      GeditDocument *doc)
 {
-	GeditDocumentPrivate *priv;
 	GFileInfo *info;
 	GError *error = NULL;
-
-	priv = gedit_document_get_instance_private (doc);
 
 	info = g_file_query_info_finish (location, result, &error);
 
@@ -1250,12 +1243,6 @@ loaded_query_info_cb (GFile         *location,
 			set_readonly (doc, read_only);
 		}
 
-		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
-		{
-			g_file_info_get_modification_time (info, &priv->mtime);
-			priv->mtime_set = TRUE;
-		}
-
 		g_object_unref (info);
 	}
 
@@ -1281,10 +1268,6 @@ gedit_document_loaded_real (GeditDocument *doc)
 		set_language (doc, language, FALSE);
 	}
 
-	priv->mtime_set = FALSE;
-	priv->externally_modified = FALSE;
-	priv->deleted = FALSE;
-
 	g_get_current_time (&priv->time_of_last_save_or_load);
 
 	set_readonly (doc, FALSE);
@@ -1300,8 +1283,7 @@ gedit_document_loaded_real (GeditDocument *doc)
 
 		g_file_query_info_async (location,
 					 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","
-					 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE ","
-					 G_FILE_ATTRIBUTE_TIME_MODIFIED,
+					 G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
 					 G_FILE_QUERY_INFO_NONE,
 					 G_PRIORITY_DEFAULT,
 					 NULL,
@@ -1331,20 +1313,10 @@ saved_query_info_cb (GFile         *location,
 		error = NULL;
 	}
 
-	priv->mtime_set = FALSE;
-
-	if (info != NULL)
+	if (info != NULL &&
+	    g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
 	{
-		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
-		{
-			content_type = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
-		}
-
-		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED))
-		{
-			g_file_info_get_modification_time (info, &priv->mtime);
-			priv->mtime_set = TRUE;
-		}
+		content_type = g_file_info_get_attribute_string (info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
 	}
 
 	set_content_type (doc, content_type);
@@ -1357,8 +1329,6 @@ saved_query_info_cb (GFile         *location,
 
 	g_get_current_time (&priv->time_of_last_save_or_load);
 
-	priv->externally_modified = FALSE;
-	priv->deleted = FALSE;
 	priv->create = FALSE;
 
 	set_readonly (doc, FALSE);
@@ -1385,8 +1355,7 @@ gedit_document_saved_real (GeditDocument *doc)
 	g_object_ref (doc);
 
 	g_file_query_info_async (location,
-				 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE ","
-				 G_FILE_ATTRIBUTE_TIME_MODIFIED,
+				 G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
 				 G_FILE_QUERY_INFO_NONE,
 				 G_PRIORITY_DEFAULT,
 				 NULL,
@@ -1441,12 +1410,14 @@ gedit_document_is_local (GeditDocument *doc)
 	return g_file_has_uri_scheme (location, "file");
 }
 
-static void
-check_file_on_disk (GeditDocument *doc)
+void
+_gedit_document_check_can_write_file (GeditDocument *doc)
 {
 	GeditDocumentPrivate *priv;
 	GFile *location;
 	GFileInfo *info;
+
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
 	priv = gedit_document_get_instance_private (doc);
 
@@ -1458,62 +1429,21 @@ check_file_on_disk (GeditDocument *doc)
 	}
 
 	info = g_file_query_info (location,
-				  G_FILE_ATTRIBUTE_TIME_MODIFIED "," \
 				  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
 				  G_FILE_QUERY_INFO_NONE,
 				  NULL, NULL);
 
-	if (info != NULL)
+	if (info != NULL &&
+	    g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
 	{
-		/* While at it also check if permissions changed */
-		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-		{
-			gboolean read_only;
+		gboolean read_only;
 
-			read_only = !g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+		read_only = !g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
 
-			set_readonly (doc, read_only);
-		}
-
-		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_TIME_MODIFIED) && priv->mtime_set)
-		{
-			GTimeVal timeval;
-
-			g_file_info_get_modification_time (info, &timeval);
-
-			/* Note that mtime can even go backwards if the
-			 * user is copying over a file with an old mtime
-			 */
-			if (timeval.tv_sec != priv->mtime.tv_sec ||
-			    timeval.tv_usec != priv->mtime.tv_usec)
-			{
-				priv->externally_modified = TRUE;
-			}
-		}
-
-		g_object_unref (info);
-	}
-	else
-	{
-		priv->deleted = TRUE;
-	}
-}
-
-gboolean
-_gedit_document_check_externally_modified (GeditDocument *doc)
-{
-	GeditDocumentPrivate *priv;
-
-	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
-
-	priv = gedit_document_get_instance_private (doc);
-
-	if (!priv->externally_modified)
-	{
-		check_file_on_disk (doc);
+		set_readonly (doc, read_only);
 	}
 
-	return priv->externally_modified;
+	g_clear_object (&info);
 }
 
 /**
@@ -1533,12 +1463,7 @@ gedit_document_get_deleted (GeditDocument *doc)
 
 	priv = gedit_document_get_instance_private (doc);
 
-	if (!priv->deleted)
-	{
-		check_file_on_disk (doc);
-	}
-
-	return priv->deleted;
+	return gtk_source_file_is_deleted (priv->file);
 }
 
 /*
@@ -1548,6 +1473,8 @@ gboolean
 _gedit_document_needs_saving (GeditDocument *doc)
 {
 	GeditDocumentPrivate *priv;
+	gboolean externally_modified = FALSE;
+	gboolean deleted = FALSE;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 
@@ -1560,10 +1487,11 @@ _gedit_document_needs_saving (GeditDocument *doc)
 
 	if (gedit_document_is_local (doc))
 	{
-		check_file_on_disk (doc);
+		externally_modified = gtk_source_file_is_externally_modified (priv->file);
+		deleted = gtk_source_file_is_deleted (priv->file);
 	}
 
-	return (priv->externally_modified || priv->deleted) && !priv->create;
+	return (externally_modified || deleted) && !priv->create;
 }
 
 /* If @line is bigger than the lines of the document, the cursor is moved

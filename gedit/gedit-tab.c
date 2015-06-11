@@ -1256,16 +1256,19 @@ view_focused_in (GtkWidget     *widget,
 	doc = gedit_tab_get_document (tab);
 
 	/* If file was never saved or is remote we do not check */
-	if (!gedit_document_is_local (doc))
+	if (gedit_document_is_local (doc))
 	{
-		return GDK_EVENT_PROPAGATE;
-	}
+		GtkSourceFile *file;
 
-	if (_gedit_document_check_externally_modified (doc))
-	{
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION);
+		_gedit_document_check_can_write_file (doc);
 
-		display_externally_modified_notification (tab);
+		file = gedit_document_get_file (doc);
+		if (gtk_source_file_is_externally_modified (file))
+		{
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION);
+
+			display_externally_modified_notification (tab);
+		}
 	}
 
 	return GDK_EVENT_PROPAGATE;
