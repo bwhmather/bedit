@@ -293,7 +293,9 @@ gedit_document_set_property (GObject      *object,
 	switch (prop_id)
 	{
 		case PROP_SHORTNAME:
+			G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 			gedit_document_set_short_name_for_display (doc, g_value_get_string (value));
+			G_GNUC_END_IGNORE_DEPRECATIONS;
 			break;
 
 		case PROP_CONTENT_TYPE:
@@ -1098,6 +1100,9 @@ gedit_document_get_short_name_for_display (GeditDocument *doc)
  * gedit_document_set_short_name_for_display:
  * @doc:
  * @short_name: (allow-none):
+ *
+ * Deprecated: 3.18: Unused function. The intent is to change the
+ * #GeditDocument:shortname property to be read-only.
  */
 void
 gedit_document_set_short_name_for_display (GeditDocument *doc,
