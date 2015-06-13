@@ -162,6 +162,23 @@ saver_data_free (SaverData *data)
 }
 
 static void
+set_editable (GeditTab *tab,
+	      gboolean  editable)
+{
+	GeditView *view;
+	gboolean val;
+
+	tab->editable = editable != FALSE;
+
+	view = gedit_tab_get_view (tab);
+
+	val = (tab->state == GEDIT_TAB_STATE_NORMAL &&
+	       tab->editable);
+
+	gtk_text_view_set_editable (GTK_TEXT_VIEW (view), val);
+}
+
+static void
 install_auto_save_timeout (GeditTab *tab)
 {
 	if (tab->auto_save_timeout == 0)
@@ -640,13 +657,10 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 				    gint       response_id,
 				    GeditTab  *tab)
 {
-	GeditView *view;
 	GFile *location;
 	const GtkSourceEncoding *encoding;
 
 	g_return_if_fail (tab->loader != NULL);
-
-	view = gedit_tab_get_view (tab);
 
 	location = gtk_source_file_loader_get_location (tab->loader);
 
@@ -666,8 +680,7 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 
 		case GTK_RESPONSE_YES:
 			/* This means that we want to edit the document anyway */
-			tab->editable = TRUE;
-			gtk_text_view_set_editable (GTK_TEXT_VIEW (view), TRUE);
+			set_editable (tab, TRUE);
 			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 			clear_loading (tab);
@@ -693,8 +706,7 @@ file_already_open_warning_info_bar_response (GtkWidget *info_bar,
 
 	if (response_id == GTK_RESPONSE_YES)
 	{
-		tab->editable = TRUE;
-		gtk_text_view_set_editable (GTK_TEXT_VIEW (view), TRUE);
+		set_editable (tab, TRUE);
 	}
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
@@ -1885,7 +1897,7 @@ load_cb (GtkSourceFileLoader *loader,
 		/* Set the tab as not editable as we have an error, the user can
 		 * decide to make it editable again.
 		 */
-		tab->editable = FALSE;
+		set_editable (tab, FALSE);
 
 		encoding = gtk_source_file_loader_get_encoding (loader);
 
@@ -1946,7 +1958,7 @@ load_cb (GtkSourceFileLoader *loader,
 				{
 					GtkWidget *info_bar;
 
-					tab->editable = FALSE;
+					set_editable (tab, FALSE);
 
 					info_bar = gedit_file_already_open_warning_info_bar_new (location);
 
