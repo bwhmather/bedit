@@ -1751,6 +1751,48 @@ goto_line (GeditTab *tab)
 	gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
 }
 
+static gboolean
+file_already_opened (GeditDocument *doc,
+		     GFile         *location)
+{
+	GList *all_documents;
+	GList *l;
+	gboolean already_opened = FALSE;
+
+	if (location == NULL)
+	{
+		return FALSE;
+	}
+
+	all_documents = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+
+	for (l = all_documents; l != NULL; l = l->next)
+	{
+		GeditDocument *cur_doc = l->data;
+		GtkSourceFile *cur_file;
+		GFile *cur_location;
+
+		if (cur_doc == doc)
+		{
+			continue;
+		}
+
+		cur_file = gedit_document_get_file (cur_doc);
+		cur_location = gtk_source_file_get_location (cur_file);
+
+		if (cur_location != NULL &&
+		    g_file_equal (location, cur_location))
+		{
+			already_opened = TRUE;
+			break;
+		}
+	}
+
+	g_list_free (all_documents);
+
+	return already_opened;
+}
+
 static void
 load_cb (GtkSourceFileLoader *loader,
 	 GAsyncResult        *result,
@@ -1914,47 +1956,24 @@ load_cb (GtkSourceFileLoader *loader,
 		tab->idle_scroll = g_idle_add ((GSourceFunc)scroll_to_cursor, tab);
 	}
 
-	/* If the document is readonly we don't care how many times the document
+	/* If the document is readonly we don't care how many times the file
 	 * is opened.
 	 */
-	if (!gtk_source_file_is_readonly (file))
+	if (!gtk_source_file_is_readonly (file) &&
+	    file_already_opened (doc, location))
 	{
-		GList *all_documents;
-		GList *l;
+		GtkWidget *info_bar;
 
-		all_documents = gedit_app_get_documents (GEDIT_APP (g_application_get_default ()));
+		set_editable (tab, FALSE);
 
-		for (l = all_documents; l != NULL; l = g_list_next (l))
-		{
-			GeditDocument *cur_doc = l->data;
+		info_bar = gedit_file_already_open_warning_info_bar_new (location);
 
-			if (cur_doc != doc)
-			{
-				GtkSourceFile *cur_file = gedit_document_get_file (cur_doc);
-				GFile *cur_location = gtk_source_file_get_location (cur_file);
+		g_signal_connect (info_bar,
+				  "response",
+				  G_CALLBACK (file_already_open_warning_info_bar_response),
+				  tab);
 
-				if (cur_location != NULL && location != NULL &&
-				    g_file_equal (location, cur_location))
-				{
-					GtkWidget *info_bar;
-
-					set_editable (tab, FALSE);
-
-					info_bar = gedit_file_already_open_warning_info_bar_new (location);
-
-					g_signal_connect (info_bar,
-							  "response",
-							  G_CALLBACK (file_already_open_warning_info_bar_response),
-							  tab);
-
-					set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
-
-					break;
-				}
-			}
-		}
-
-		g_list_free (all_documents);
+		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
 	}
 
 	if (location == NULL)
