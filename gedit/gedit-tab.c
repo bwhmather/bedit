@@ -1800,9 +1800,7 @@ load_cb (GtkSourceFileLoader *loader,
 
 	/* Special case creating a named new doc. */
 	create_named_new_doc = (_gedit_document_get_create (doc) &&
-				error != NULL &&
-				error->domain == G_IO_ERROR &&
-				error->code == G_IO_ERROR_NOT_FOUND &&
+				g_error_matches (error, G_IO_ERROR, G_IO_ERROR_NOT_FOUND) &&
 				g_file_has_uri_scheme (location, "file"));
 
 	if (create_named_new_doc)
@@ -1811,74 +1809,15 @@ load_cb (GtkSourceFileLoader *loader,
 		error = NULL;
 	}
 
-	/* If the error is CONVERSION FALLBACK don't treat it as a normal error. */
-	if (error != NULL &&
-	    (error->domain != GTK_SOURCE_FILE_LOADER_ERROR ||
-	     error->code != GTK_SOURCE_FILE_LOADER_ERROR_CONVERSION_FALLBACK))
+	if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
 	{
-		if (tab->state == GEDIT_TAB_STATE_LOADING)
-		{
-			gtk_widget_hide (GTK_WIDGET (tab->frame));
-			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
-		}
-		else
-		{
-			gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING_ERROR);
-		}
-
-		if (error->domain == G_IO_ERROR &&
-		    error->code == G_IO_ERROR_CANCELLED)
-		{
-			remove_tab (tab);
-		}
-		else
-		{
-			GtkWidget *info_bar;
-
-			if (location != NULL)
-			{
-				gedit_recent_remove_if_local (location);
-			}
-
-			if (tab->state == GEDIT_TAB_STATE_LOADING_ERROR)
-			{
-				const GtkSourceEncoding *encoding;
-
-				encoding = gtk_source_file_loader_get_encoding (loader);
-
-				info_bar = gedit_io_loading_error_info_bar_new (location, encoding, error);
-
-				g_signal_connect (info_bar,
-						  "response",
-						  G_CALLBACK (io_loading_error_info_bar_response),
-						  tab);
-			}
-			else
-			{
-				g_return_if_fail (tab->state == GEDIT_TAB_STATE_REVERTING_ERROR);
-
-				info_bar = gedit_unrecoverable_reverting_error_info_bar_new (location, error);
-
-				g_signal_connect (info_bar,
-						  "response",
-						  G_CALLBACK (unrecoverable_reverting_error_info_bar_response),
-						  tab);
-			}
-
-			set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
-		}
-
+		remove_tab (tab);
 		goto end;
 	}
 
-	if (!create_named_new_doc)
-	{
-		gedit_recent_add_document (doc);
-	}
-
-	if (error != NULL &&
-	    error->domain == GTK_SOURCE_FILE_LOADER_ERROR &&
-	    error->code == GTK_SOURCE_FILE_LOADER_ERROR_CONVERSION_FALLBACK)
+	if (g_error_matches (error,
+			     GTK_SOURCE_FILE_LOADER_ERROR,
+			     GTK_SOURCE_FILE_LOADER_ERROR_CONVERSION_FALLBACK))
 	{
 		GtkWidget *info_bar;
 		const GtkSourceEncoding *encoding;
@@ -1909,9 +1848,61 @@ load_cb (GtkSourceFileLoader *loader,
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING_ERROR);
 		}
 	}
+	else if (error != NULL)
+	{
+		GtkWidget *info_bar;
+
+		if (tab->state == GEDIT_TAB_STATE_LOADING)
+		{
+			gtk_widget_hide (GTK_WIDGET (tab->frame));
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING_ERROR);
+		}
+		else
+		{
+			gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING_ERROR);
+		}
+
+		if (location != NULL)
+		{
+			gedit_recent_remove_if_local (location);
+		}
+
+		if (tab->state == GEDIT_TAB_STATE_LOADING_ERROR)
+		{
+			const GtkSourceEncoding *encoding;
+
+			encoding = gtk_source_file_loader_get_encoding (loader);
+
+			info_bar = gedit_io_loading_error_info_bar_new (location, encoding, error);
+
+			g_signal_connect (info_bar,
+					  "response",
+					  G_CALLBACK (io_loading_error_info_bar_response),
+					  tab);
+		}
+		else
+		{
+			g_return_if_fail (tab->state == GEDIT_TAB_STATE_REVERTING_ERROR);
+
+			info_bar = gedit_unrecoverable_reverting_error_info_bar_new (location, error);
+
+			g_signal_connect (info_bar,
+					  "response",
+					  G_CALLBACK (unrecoverable_reverting_error_info_bar_response),
+					  tab);
+		}
+
+		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
+		goto end;
+	}
 	else
 	{
 		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+	}
+
+	if (!create_named_new_doc)
+	{
+		gedit_recent_add_document (doc);
 	}
 
 	/* Scroll to the cursor when the document is loaded, we need to do it in
