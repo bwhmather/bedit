@@ -1794,12 +1794,75 @@ file_already_opened (GeditDocument *doc,
 }
 
 static void
+successful_load (GeditTab *tab)
+{
+	GeditDocument *doc;
+	GtkSourceFile *file;
+	GFile *location;
+
+	doc = gedit_tab_get_document (tab);
+	file = gedit_document_get_file (doc);
+
+	if (tab->user_requested_encoding)
+	{
+		const GtkSourceEncoding *encoding = gtk_source_file_loader_get_encoding (tab->loader);
+		const gchar *charset = gtk_source_encoding_get_charset (encoding);
+
+		gedit_document_set_metadata (doc,
+					     GEDIT_METADATA_ATTRIBUTE_ENCODING, charset,
+					     NULL);
+	}
+
+	goto_line (tab);
+
+	/* Scroll to the cursor when the document is loaded, we need to do it in
+	 * an idle as after the document is loaded the textview is still
+	 * redrawing and relocating its internals.
+	 */
+	if (tab->idle_scroll == 0)
+	{
+		tab->idle_scroll = g_idle_add ((GSourceFunc)scroll_to_cursor, tab);
+	}
+
+	location = gtk_source_file_loader_get_location (tab->loader);
+
+	/* If the document is readonly we don't care how many times the file
+	 * is opened.
+	 */
+	if (!gtk_source_file_is_readonly (file) &&
+	    file_already_opened (doc, location))
+	{
+		GtkWidget *info_bar;
+
+		set_editable (tab, FALSE);
+
+		info_bar = gedit_file_already_open_warning_info_bar_new (location);
+
+		g_signal_connect (info_bar,
+				  "response",
+				  G_CALLBACK (file_already_open_warning_info_bar_response),
+				  tab);
+
+		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
+	}
+
+	if (location == NULL)
+	{
+		/* FIXME: hackish */
+		gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc), TRUE);
+	}
+
+	tab->ask_if_externally_modified = TRUE;
+
+	g_signal_emit_by_name (doc, "loaded");
+}
+
+static void
 load_cb (GtkSourceFileLoader *loader,
 	 GAsyncResult        *result,
 	 GeditTab            *tab)
 {
 	GeditDocument *doc = gedit_tab_get_document (tab);
-	GtkSourceFile *file = gedit_document_get_file (doc);
 	GFile *location = gtk_source_file_loader_get_location (loader);
 	gboolean create_named_new_doc;
 	GError *error = NULL;
@@ -1821,24 +1884,6 @@ load_cb (GtkSourceFileLoader *loader,
 	}
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
-
-	/* Load was successful. */
-	if (error == NULL ||
-	    (error->domain == GTK_SOURCE_FILE_LOADER_ERROR &&
-	     error->code == GTK_SOURCE_FILE_LOADER_ERROR_CONVERSION_FALLBACK))
-	{
-		if (tab->user_requested_encoding)
-		{
-			const GtkSourceEncoding *encoding = gtk_source_file_loader_get_encoding (loader);
-			const gchar *charset = gtk_source_encoding_get_charset (encoding);
-
-			gedit_document_set_metadata (doc,
-						     GEDIT_METADATA_ATTRIBUTE_ENCODING, charset,
-						     NULL);
-		}
-
-		goto_line (tab);
-	}
 
 	/* Special case creating a named new doc. */
 	create_named_new_doc = (_gedit_document_get_create (doc) &&
@@ -1889,8 +1934,16 @@ load_cb (GtkSourceFileLoader *loader,
 		{
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING_ERROR);
 		}
+
+		/* The loading was successful, despite some invalid characters.
+		 * The document can be edited.
+		 */
+		successful_load (tab);
+		gedit_recent_add_document (doc);
+		goto end;
 	}
-	else if (error != NULL)
+
+	if (error != NULL)
 	{
 		GtkWidget *info_bar;
 
@@ -1937,59 +1990,18 @@ load_cb (GtkSourceFileLoader *loader,
 		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
 		goto end;
 	}
-	else
-	{
-		gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
-	}
+
+	g_assert (error == NULL);
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
+	successful_load (tab);
 
 	if (!create_named_new_doc)
 	{
 		gedit_recent_add_document (doc);
 	}
 
-	/* Scroll to the cursor when the document is loaded, we need to do it in
-	 * an idle as after the document is loaded the textview is still
-	 * redrawing and relocating its internals.
-	 */
-	if (tab->idle_scroll == 0)
-	{
-		tab->idle_scroll = g_idle_add ((GSourceFunc)scroll_to_cursor, tab);
-	}
-
-	/* If the document is readonly we don't care how many times the file
-	 * is opened.
-	 */
-	if (!gtk_source_file_is_readonly (file) &&
-	    file_already_opened (doc, location))
-	{
-		GtkWidget *info_bar;
-
-		set_editable (tab, FALSE);
-
-		info_bar = gedit_file_already_open_warning_info_bar_new (location);
-
-		g_signal_connect (info_bar,
-				  "response",
-				  G_CALLBACK (file_already_open_warning_info_bar_response),
-				  tab);
-
-		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
-	}
-
-	if (location == NULL)
-	{
-		/* FIXME: hackish */
-		gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc), TRUE);
-	}
-
-	tab->ask_if_externally_modified = TRUE;
-
-	if (error == NULL)
-	{
-		clear_loading (tab);
-	}
-
-	g_signal_emit_by_name (doc, "loaded");
+	clear_loading (tab);
 
 end:
 	/* Async operation finished. */
