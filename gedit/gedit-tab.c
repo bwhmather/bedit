@@ -3041,10 +3041,10 @@ gedit_tab_set_info_bar (GeditTab  *tab,
 	set_info_bar (tab, info_bar, GTK_RESPONSE_NONE);
 }
 
-GtkWidget *
+GeditViewFrame *
 _gedit_tab_get_view_frame (GeditTab *tab)
 {
-	return GTK_WIDGET (tab->frame);
+	return tab->frame;
 }
 
 /* ex:set ts=8 noet: */

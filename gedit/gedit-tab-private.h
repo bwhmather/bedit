@@ -21,7 +21,8 @@
 #ifndef __GEDIT_TAB_PRIVATE_H__
 #define __GEDIT_TAB_PRIVATE_H__
 
-#include <gedit/gedit-tab.h>
+#include "gedit-tab.h"
+#include "gedit-view-frame.h"
 
 G_BEGIN_DECLS
 
@@ -40,7 +41,7 @@ GtkWidget	*_gedit_tab_new_from_stream		(GInputStream            *stream,
 							 const GtkSourceEncoding *encoding,
 							 gint                     line_pos,
 							 gint                     column_pos);
-	
+
 gchar 		*_gedit_tab_get_name			(GeditTab                *tab);
 
 gchar 		*_gedit_tab_get_tooltip			(GeditTab                *tab);
@@ -85,7 +86,7 @@ void		 _gedit_tab_mark_for_closing		(GeditTab                 *tab);
 
 gboolean	 _gedit_tab_get_can_close		(GeditTab                 *tab);
 
-GtkWidget	*_gedit_tab_get_view_frame		(GeditTab                 *tab);
+GeditViewFrame	*_gedit_tab_get_view_frame		(GeditTab                 *tab);
 
 void		 _gedit_tab_set_network_available	(GeditTab	     *tab,
 							 gboolean	     enable);

@@ -586,7 +586,7 @@ _gedit_cmd_search_find (GSimpleAction *action,
 		return;
 	}
 
-	frame = GEDIT_VIEW_FRAME (_gedit_tab_get_view_frame (active_tab));
+	frame = _gedit_tab_get_view_frame (active_tab);
 	gedit_view_frame_popup_search (frame);
 }
 
@@ -663,7 +663,7 @@ _gedit_cmd_search_clear_highlight (GSimpleAction *action,
 		return;
 	}
 
-	frame = GEDIT_VIEW_FRAME (_gedit_tab_get_view_frame (active_tab));
+	frame = _gedit_tab_get_view_frame (active_tab);
 	gedit_view_frame_clear_search (frame);
 
 	doc = gedit_view_frame_get_document (frame);
@@ -688,7 +688,7 @@ _gedit_cmd_search_goto_line (GSimpleAction *action,
 		return;
 	}
 
-	frame = GEDIT_VIEW_FRAME (_gedit_tab_get_view_frame (active_tab));
+	frame = _gedit_tab_get_view_frame (active_tab);
 	gedit_view_frame_popup_goto_line (frame);
 }
 
