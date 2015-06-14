@@ -138,7 +138,6 @@ update_close_button_sensitivity (GeditTabLabel *tab_label)
 				  (state != GEDIT_TAB_STATE_SAVING)  &&
 				  (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
 				  (state != GEDIT_TAB_STATE_PRINTING) &&
-				  (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
 				  (state != GEDIT_TAB_STATE_SAVING_ERROR));
 }
 

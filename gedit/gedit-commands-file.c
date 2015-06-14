@@ -1301,7 +1301,6 @@ save_documents_list (GeditWindow *window,
 		state = gedit_tab_get_state (tab);
 
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINTING);
-		g_return_if_fail (state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_CLOSING);
 
 		if (state == GEDIT_TAB_STATE_NORMAL ||
@@ -1341,7 +1340,7 @@ save_documents_list (GeditWindow *window,
 			   - GEDIT_TAB_STATE_REVERTING: we do not save since the user wants
 			     to return back to the version of the file she previously saved
 			   - GEDIT_TAB_STATE_SAVING: well, we are already saving (no need to save again)
-			   - GEDIT_TAB_STATE_PRINTING, GEDIT_TAB_STATE_PRINT_PREVIEWING: there is not a
+			   - GEDIT_TAB_STATE_PRINTING: there is not a
 			     real reason for not saving in this case, we do not save to avoid to run
 			     two operations using the message area at the same time (may be we can remove
 			     this limitation in the future). Note that SaveAll, ClosAll
@@ -1723,7 +1722,7 @@ save_and_close_documents (GList         *docs,
 		     the original file has been deleted)
 		   - [*] GEDIT_TAB_STATE_SAVING: invalid, ClosAll
 		     and Quit are unsensitive if the window state is SAVING.
-		   - [*] GEDIT_TAB_STATE_PRINTING, GEDIT_TAB_STATE_PRINT_PREVIEWING: there is not a
+		   - [*] GEDIT_TAB_STATE_PRINTING: there is not a
 		     real reason for not closing in this case, we do not save to avoid to run
 		     two operations using the message area at the same time (may be we can remove
 		     this limitation in the future). Note that ClosAll
@@ -1739,7 +1738,6 @@ save_and_close_documents (GList         *docs,
 		*/
 
 		g_return_if_fail (state != GEDIT_TAB_STATE_PRINTING);
-		g_return_if_fail (state != GEDIT_TAB_STATE_PRINT_PREVIEWING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_CLOSING);
 		g_return_if_fail (state != GEDIT_TAB_STATE_SAVING);
 

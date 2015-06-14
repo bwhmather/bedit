@@ -646,7 +646,6 @@ update_actions_sensitivity (GeditWindow *window)
 	                             (state != GEDIT_TAB_STATE_SAVING) &&
 	                             (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
 	                             (state != GEDIT_TAB_STATE_PRINTING) &&
-	                             (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
 	                             (state != GEDIT_TAB_STATE_SAVING_ERROR));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (window), "undo");
@@ -1494,7 +1493,6 @@ analyze_tab_state (GeditTab    *tab,
 			break;
 
 		case GEDIT_TAB_STATE_PRINTING:
-		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
 			window->priv->state |= GEDIT_WINDOW_STATE_PRINTING;
 			break;
 

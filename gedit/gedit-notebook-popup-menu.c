@@ -124,7 +124,6 @@ update_sensitivity (GeditNotebookPopupMenu *menu)
 				     (state != GEDIT_TAB_STATE_SAVING) &&
 				     (state != GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW) &&
 				     (state != GEDIT_TAB_STATE_PRINTING) &&
-				     (state != GEDIT_TAB_STATE_PRINT_PREVIEWING) &&
 				     (state != GEDIT_TAB_STATE_SAVING_ERROR));
 
 	action = g_action_map_lookup_action (G_ACTION_MAP (menu->priv->action_group),

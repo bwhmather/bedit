@@ -456,7 +456,6 @@ set_cursor_according_to_state (GtkTextView   *view,
 	    (state == GEDIT_TAB_STATE_REVERTING)        ||
 	    (state == GEDIT_TAB_STATE_SAVING)           ||
 	    (state == GEDIT_TAB_STATE_PRINTING)         ||
-	    (state == GEDIT_TAB_STATE_PRINT_PREVIEWING) ||
 	    (state == GEDIT_TAB_STATE_CLOSING))
 	{
 		cursor = gdk_cursor_new_for_display (
@@ -1632,7 +1631,6 @@ _gedit_tab_get_icon (GeditTab *tab)
 			icon_name = "printer-printing-symbolic";
 			break;
 
-		case GEDIT_TAB_STATE_PRINT_PREVIEWING:
 		case GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW:
 			icon_name = "printer-symbolic";
 			break;
@@ -2747,8 +2745,7 @@ done_printing_cb (GeditPrintJob       *job,
 {
 	GeditView *view;
 
-	g_return_if_fail (tab->state == GEDIT_TAB_STATE_PRINT_PREVIEWING ||
-	                  tab->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW ||
+	g_return_if_fail (tab->state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW ||
 	                  tab->state == GEDIT_TAB_STATE_PRINTING);
 
 	if (result == GEDIT_PRINT_JOB_RESULT_OK)
