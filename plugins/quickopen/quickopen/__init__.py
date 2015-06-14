@@ -73,8 +73,8 @@ class QuickOpenPlugin(GObject.Object, Gedit.WindowActivatable):
         doc = self.window.get_active_document()
 
         # Current document directory
-        if doc and doc.is_local():
-            gfile = doc.get_location()
+        if doc and doc.get_file().is_local():
+            gfile = doc.get_file().get_location()
             paths.append(gfile.get_parent())
 
         # File browser root directory

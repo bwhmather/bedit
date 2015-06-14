@@ -75,8 +75,8 @@ class ToolActions(object):
             remote = False
             language = None
         else:
-            titled = document.get_location() is not None
-            remote = not document.is_local()
+            titled = document.get_file().get_location() is not None
+            remote = not document.get_file().is_local()
             language = document.get_language()
 
         states = {

@@ -131,8 +131,8 @@ class OpenDocumentRelPathFileLookupProvider(FileLookupProvider):
             return None
 
         for doc in Gio.Application.get_default().get_documents():
-            if doc.is_local():
-                location = doc.get_location()
+            if doc.get_file().is_local():
+                location = doc.get_file().get_location()
                 if location:
                     rel_path = location.get_parent().get_path()
                     joined_path = os.path.join(rel_path, path)
@@ -156,8 +156,8 @@ class OpenDocumentFileLookupProvider(FileLookupProvider):
             return None
 
         for doc in Gio.Application.get_default().get_documents():
-            if doc.is_local():
-                location = doc.get_location()
+            if doc.get_file().is_local():
+                location = doc.get_file().get_location()
                 if location and location.get_uri().endswith(path):
                     return location
         return None
