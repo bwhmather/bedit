@@ -1241,6 +1241,7 @@ view_focused_in (GtkWidget     *widget,
                  GeditTab      *tab)
 {
 	GeditDocument *doc;
+	GtkSourceFile *file;
 
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), GDK_EVENT_PROPAGATE);
 
@@ -1257,14 +1258,11 @@ view_focused_in (GtkWidget     *widget,
 	}
 
 	doc = gedit_tab_get_document (tab);
+	file = gedit_document_get_file (doc);
 
 	/* If file was never saved or is remote we do not check */
-	if (gedit_document_is_local (doc))
+	if (gtk_source_file_is_local (file))
 	{
-		GtkSourceFile *file;
-
-		file = gedit_document_get_file (doc);
-
 		gtk_source_file_check_file_on_disk (file);
 
 		if (gtk_source_file_is_externally_modified (file))
@@ -1311,7 +1309,7 @@ _gedit_tab_set_network_available (GeditTab *tab,
 	file = gedit_document_get_file (doc);
 	location = gtk_source_file_get_location (file);
 
-	if (gedit_document_is_local (doc) || location == NULL)
+	if (gtk_source_file_is_local (file) || location == NULL)
 	{
 		return;
 	}

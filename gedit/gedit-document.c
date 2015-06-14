@@ -1381,24 +1381,23 @@ gedit_document_is_untitled (GeditDocument *doc)
 	return gtk_source_file_get_location (priv->file) == NULL;
 }
 
+/**
+ * gedit_document_is_local:
+ * @doc: a #GeditDocument.
+ *
+ * Returns: whether the document is local.
+ * Deprecated: 3.18: Use gtk_source_file_is_local() instead.
+ */
 gboolean
 gedit_document_is_local (GeditDocument *doc)
 {
 	GeditDocumentPrivate *priv;
-	GFile *location;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 
 	priv = gedit_document_get_instance_private (doc);
 
-	location = gtk_source_file_get_location (priv->file);
-
-	if (location == NULL)
-	{
-		return FALSE;
-	}
-
-	return g_file_has_uri_scheme (location, "file");
+	return gtk_source_file_is_local (priv->file);
 }
 
 /**
@@ -1440,7 +1439,7 @@ _gedit_document_needs_saving (GeditDocument *doc)
 		return TRUE;
 	}
 
-	if (gedit_document_is_local (doc))
+	if (gtk_source_file_is_local (priv->file))
 	{
 		gtk_source_file_check_file_on_disk (priv->file);
 		externally_modified = gtk_source_file_is_externally_modified (priv->file);

@@ -236,17 +236,27 @@ get_active_doc_dir_list (GeditOpenDocumentSelectorStore *selector_store,
 {
 	GeditWindow *window;
 	GeditDocument *active_doc;
+	GtkSourceFile *source_file;
 	GList *file_items_list = NULL;
-	GFile *file;
-	GFile *parent_dir;
 
 	window = gedit_open_document_selector_get_window (selector);
 
 	active_doc = gedit_window_get_active_document (window);
-	if (active_doc != NULL && gedit_document_is_local (active_doc))
+
+	if (active_doc == NULL)
 	{
-		file = gtk_source_file_get_location (gedit_document_get_file (active_doc));
-		parent_dir = g_file_get_parent (file);
+		return NULL;
+	}
+
+	source_file = gedit_document_get_file (active_doc);
+	if (gtk_source_file_is_local (source_file))
+	{
+		GFile *location;
+		GFile *parent_dir;
+
+		location = gtk_source_file_get_location (source_file);
+		parent_dir = g_file_get_parent (location);
+
 		if (parent_dir != NULL)
 		{
 			file_items_list = get_children_from_dir (selector_store, parent_dir);
