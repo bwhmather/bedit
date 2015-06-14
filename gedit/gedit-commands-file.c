@@ -1304,8 +1304,7 @@ save_documents_list (GeditWindow *window,
 		g_return_if_fail (state != GEDIT_TAB_STATE_CLOSING);
 
 		if (state == GEDIT_TAB_STATE_NORMAL ||
-		    state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW ||
-		    state == GEDIT_TAB_STATE_GENERIC_NOT_EDITABLE)
+		    state == GEDIT_TAB_STATE_SHOWING_PRINT_PREVIEW)
 		{
 			if (_gedit_document_needs_saving (doc))
 			{
