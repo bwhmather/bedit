@@ -133,12 +133,12 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 static gboolean gedit_tab_auto_save (GeditTab *tab);
 
-static void load (GeditTab                *tab,
-		  const GtkSourceEncoding *encoding,
-		  gint                     line_pos,
-		  gint                     column_pos);
+static void launch_loader (GeditTab                *tab,
+			   const GtkSourceEncoding *encoding,
+			   gint                     line_pos,
+			   gint                     column_pos);
 
-static void save (GTask *saving_task);
+static void launch_saver (GTask *saving_task);
 
 static SaverData *
 saver_data_new (void)
@@ -669,10 +669,10 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
 
-			load (tab,
-			      encoding,
-			      tab->tmp_line_pos,
-			      tab->tmp_column_pos);
+			launch_loader (tab,
+				       encoding,
+				       tab->tmp_line_pos,
+				       tab->tmp_column_pos);
 			break;
 
 		case GTK_RESPONSE_YES:
@@ -1093,7 +1093,7 @@ invalid_character_info_bar_response (GtkWidget *info_bar,
 		response_set_save_flags (saving_task, save_flags);
 
 		/* Force saving */
-		save (saving_task);
+		launch_saver (saving_task);
 	}
 	else
 	{
@@ -1119,7 +1119,7 @@ no_backup_error_info_bar_response (GtkWidget *info_bar,
 		response_set_save_flags (saving_task, save_flags);
 
 		/* Force saving */
-		save (saving_task);
+		launch_saver (saving_task);
 	}
 	else
 	{
@@ -1148,7 +1148,7 @@ externally_modified_error_info_bar_response (GtkWidget *info_bar,
 		response_set_save_flags (saving_task, save_flags);
 
 		/* Force saving */
-		save (saving_task);
+		launch_saver (saving_task);
 	}
 	else
 	{
@@ -1173,7 +1173,7 @@ recoverable_saving_error_info_bar_response (GtkWidget *info_bar,
 		g_return_if_fail (encoding != NULL);
 
 		gtk_source_file_saver_set_encoding (data->saver, encoding);
-		save (saving_task);
+		launch_saver (saving_task);
 	}
 	else
 	{
@@ -2058,10 +2058,10 @@ get_candidate_encodings (GeditTab *tab)
 }
 
 static void
-load (GeditTab                *tab,
-      const GtkSourceEncoding *encoding,
-      gint                     line_pos,
-      gint                     column_pos)
+launch_loader (GeditTab                *tab,
+	       const GtkSourceEncoding *encoding,
+	       gint                     line_pos,
+	       gint                     column_pos)
 {
 	GSList *candidate_encodings = NULL;
 	GeditDocument *doc;
@@ -2143,7 +2143,7 @@ _gedit_tab_load (GeditTab                *tab,
 
 	_gedit_document_set_create (doc, create);
 
-	load (tab, encoding, line_pos, column_pos);
+	launch_loader (tab, encoding, line_pos, column_pos);
 }
 
 void
@@ -2179,7 +2179,7 @@ _gedit_tab_load_stream (GeditTab                *tab,
 
 	_gedit_document_set_create (doc, FALSE);
 
-	load (tab, encoding, line_pos, column_pos);
+	launch_loader (tab, encoding, line_pos, column_pos);
 }
 
 void
@@ -2213,7 +2213,7 @@ _gedit_tab_revert (GeditTab *tab)
 
 	tab->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc), file);
 
-	load (tab, NULL, 0, 0);
+	launch_loader (tab, NULL, 0, 0);
 }
 
 static void
@@ -2377,7 +2377,7 @@ save_cb (GtkSourceFileSaver *saver,
 }
 
 static void
-save (GTask *saving_task)
+launch_saver (GTask *saving_task)
 {
 	GeditTab *tab = g_task_get_source_object (saving_task);
 	GeditDocument *doc = gedit_tab_get_document (tab);
@@ -2485,7 +2485,7 @@ _gedit_tab_save_async (GeditTab            *tab,
 
 	gtk_source_file_saver_set_flags (data->saver, save_flags);
 
-	save (saving_task);
+	launch_saver (saving_task);
 }
 
 gboolean
@@ -2557,7 +2557,7 @@ gedit_tab_auto_save (GeditTab *tab)
 	save_flags = get_initial_save_flags (tab, TRUE);
 	gtk_source_file_saver_set_flags (data->saver, save_flags);
 
-	save (saving_task);
+	launch_saver (saving_task);
 
 	return G_SOURCE_REMOVE;
 }
@@ -2626,7 +2626,7 @@ _gedit_tab_save_as_async (GeditTab                 *tab,
 	gtk_source_file_saver_set_compression_type (data->saver, compression_type);
 	gtk_source_file_saver_set_flags (data->saver, save_flags);
 
-	save (saving_task);
+	launch_saver (saving_task);
 }
 
 #define GEDIT_PAGE_SETUP_KEY "gedit-page-setup-key"
