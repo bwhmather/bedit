@@ -3,7 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2005 - Paolo Maggi
- * Copyright (C) 2014 - Sébastien Wilmet
+ * Copyright (C) 2014, 2015 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,11 +63,6 @@ struct _GeditTab
 
 	GtkSourceFileSaverFlags save_flags;
 
-	/* tmp data for loading */
-	GtkSourceFileLoader *loader;
-	GCancellable *cancellable;
-	gint tmp_line_pos;
-	gint tmp_column_pos;
 	guint idle_scroll;
 
 	GTimer *timer;
@@ -79,12 +74,10 @@ struct _GeditTab
 	guint auto_save : 1;
 
 	guint ask_if_externally_modified : 1;
-
-	/* tmp data for loading */
-	guint user_requested_encoding : 1;
 };
 
 typedef struct _SaverData SaverData;
+typedef struct _LoaderData LoaderData;
 
 struct _SaverData
 {
@@ -111,6 +104,14 @@ struct _SaverData
 	guint force_no_backup : 1;
 };
 
+struct _LoaderData
+{
+	GtkSourceFileLoader *loader;
+	gint line_pos;
+	gint column_pos;
+	guint user_requested_encoding : 1;
+};
+
 G_DEFINE_TYPE (GeditTab, gedit_tab, GTK_TYPE_BOX)
 
 enum
@@ -133,10 +134,8 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 static gboolean gedit_tab_auto_save (GeditTab *tab);
 
-static void launch_loader (GeditTab                *tab,
-			   const GtkSourceEncoding *encoding,
-			   gint                     line_pos,
-			   gint                     column_pos);
+static void launch_loader (GTask                   *loading_task,
+			   const GtkSourceEncoding *encoding);
 
 static void launch_saver (GTask *saving_task);
 
@@ -157,6 +156,26 @@ saver_data_free (SaverData *data)
 		}
 
 		g_slice_free (SaverData, data);
+	}
+}
+
+static LoaderData *
+loader_data_new (void)
+{
+	return g_slice_new0 (LoaderData);
+}
+
+static void
+loader_data_free (LoaderData *data)
+{
+	if (data != NULL)
+	{
+		if (data->loader != NULL)
+		{
+			g_object_unref (data->loader);
+		}
+
+		g_slice_free (LoaderData, data);
 	}
 }
 
@@ -287,13 +306,6 @@ gedit_tab_set_property (GObject      *object,
 }
 
 static void
-clear_loading (GeditTab *tab)
-{
-	g_clear_object (&tab->loader);
-	g_clear_object (&tab->cancellable);
-}
-
-static void
 gedit_tab_dispose (GObject *object)
 {
 	GeditTab *tab = GEDIT_TAB (object);
@@ -301,8 +313,6 @@ gedit_tab_dispose (GObject *object)
 	g_clear_object (&tab->editor_settings);
 	g_clear_object (&tab->print_job);
 	g_clear_object (&tab->print_preview);
-
-	clear_loading (tab);
 
 	G_OBJECT_CLASS (gedit_tab_parent_class)->dispose (object);
 }
@@ -652,14 +662,14 @@ remove_tab (GeditTab *tab)
 static void
 io_loading_error_info_bar_response (GtkWidget *info_bar,
 				    gint       response_id,
-				    GeditTab  *tab)
+				    GTask     *loading_task)
 {
+	GeditTab *tab = g_task_get_source_object (loading_task);
+	LoaderData *data = g_task_get_task_data (loading_task);
 	GFile *location;
 	const GtkSourceEncoding *encoding;
 
-	g_return_if_fail (tab->loader != NULL);
-
-	location = gtk_source_file_loader_get_location (tab->loader);
+	location = gtk_source_file_loader_get_location (data->loader);
 
 	switch (response_id)
 	{
@@ -669,10 +679,7 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
 
-			launch_loader (tab,
-				       encoding,
-				       tab->tmp_line_pos,
-				       tab->tmp_column_pos);
+			launch_loader (loading_task, encoding);
 			break;
 
 		case GTK_RESPONSE_YES:
@@ -680,7 +687,9 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 			set_editable (tab, TRUE);
 			set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
-			clear_loading (tab);
+
+			g_task_return_boolean (loading_task, TRUE);
+			g_object_unref (loading_task);
 			break;
 
 		default:
@@ -688,6 +697,9 @@ io_loading_error_info_bar_response (GtkWidget *info_bar,
 			{
 				gedit_recent_remove_if_local (location);
 			}
+
+			g_task_return_boolean (loading_task, FALSE);
+			g_object_unref (loading_task);
 
 			remove_tab (tab);
 			break;
@@ -714,36 +726,40 @@ file_already_open_warning_info_bar_response (GtkWidget *info_bar,
 static void
 load_cancelled (GtkWidget *bar,
 		gint       response_id,
-		GeditTab  *tab)
+		GTask     *loading_task)
 {
-	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->info_bar));
-	g_return_if_fail (G_IS_CANCELLABLE (tab->cancellable));
+	GeditTab *tab = g_task_get_source_object (loading_task);
 
-	g_cancellable_cancel (tab->cancellable);
+	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (tab->info_bar));
+
+	g_cancellable_cancel (g_task_get_cancellable (loading_task));
 }
 
 static void
 unrecoverable_reverting_error_info_bar_response (GtkWidget *info_bar,
 						 gint       response_id,
-						 GeditTab  *tab)
+						 GTask     *loading_task)
 {
+	GeditTab *tab = g_task_get_source_object (loading_task);
 	GeditView *view;
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
 
-	clear_loading (tab);
-
 	view = gedit_tab_get_view (tab);
 	gtk_widget_grab_focus (GTK_WIDGET (view));
+
+	g_task_return_boolean (loading_task, FALSE);
+	g_object_unref (loading_task);
 }
 
 #define MAX_MSG_LENGTH 100
 
 static void
-show_loading_info_bar (GeditTab *tab)
+show_loading_info_bar (GTask *loading_task)
 {
+	GeditTab *tab = g_task_get_source_object (loading_task);
 	GtkWidget *bar;
 	GeditDocument *doc;
 	gchar *name;
@@ -840,10 +856,11 @@ show_loading_info_bar (GeditTab *tab)
 		bar = gedit_progress_info_bar_new ("document-open", msg, TRUE);
 	}
 
-	g_signal_connect (bar,
-			  "response",
-			  G_CALLBACK (load_cancelled),
-			  tab);
+	g_signal_connect_object (bar,
+				 "response",
+				 G_CALLBACK (load_cancelled),
+				 loading_task,
+				 0);
 
 	set_info_bar (tab, bar, GTK_RESPONSE_NONE);
 
@@ -1685,32 +1702,36 @@ gedit_tab_get_from_document (GeditDocument *doc)
 }
 
 static void
-loader_progress_cb (goffset   size,
-		    goffset   total_size,
-		    GeditTab *tab)
+loader_progress_cb (goffset  size,
+		    goffset  total_size,
+		    GTask   *loading_task)
 {
+	GeditTab *tab = g_task_get_source_object (loading_task);
+
 	g_return_if_fail (tab->state == GEDIT_TAB_STATE_LOADING ||
 			  tab->state == GEDIT_TAB_STATE_REVERTING);
 
 	if (should_show_progress_info (tab, size, total_size))
 	{
-		show_loading_info_bar (tab);
+		show_loading_info_bar (loading_task);
 		info_bar_set_progress (tab, size, total_size);
 	}
 }
 
 static void
-goto_line (GeditTab *tab)
+goto_line (GTask *loading_task)
 {
+	GeditTab *tab = g_task_get_source_object (loading_task);
+	LoaderData *data = g_task_get_task_data (loading_task);
 	GeditDocument *doc = gedit_tab_get_document (tab);
 	GtkTextIter iter;
 
 	/* Move the cursor at the requested line if any. */
-	if (tab->tmp_line_pos > 0)
+	if (data->line_pos > 0)
 	{
 		gedit_document_goto_line_offset (doc,
-						 tab->tmp_line_pos - 1,
-						 MAX (0, tab->tmp_column_pos - 1));
+						 data->line_pos - 1,
+						 MAX (0, data->column_pos - 1));
 		return;
 	}
 
@@ -1790,18 +1811,17 @@ file_already_opened (GeditDocument *doc,
 }
 
 static void
-successful_load (GeditTab *tab)
+successful_load (GTask *loading_task)
 {
-	GeditDocument *doc;
-	GtkSourceFile *file;
+	GeditTab *tab = g_task_get_source_object (loading_task);
+	LoaderData *data = g_task_get_task_data (loading_task);
+	GeditDocument *doc = gedit_tab_get_document (tab);
+	GtkSourceFile *file = gedit_document_get_file (doc);
 	GFile *location;
 
-	doc = gedit_tab_get_document (tab);
-	file = gedit_document_get_file (doc);
-
-	if (tab->user_requested_encoding)
+	if (data->user_requested_encoding)
 	{
-		const GtkSourceEncoding *encoding = gtk_source_file_loader_get_encoding (tab->loader);
+		const GtkSourceEncoding *encoding = gtk_source_file_loader_get_encoding (data->loader);
 		const gchar *charset = gtk_source_encoding_get_charset (encoding);
 
 		gedit_document_set_metadata (doc,
@@ -1809,7 +1829,7 @@ successful_load (GeditTab *tab)
 					     NULL);
 	}
 
-	goto_line (tab);
+	goto_line (loading_task);
 
 	/* Scroll to the cursor when the document is loaded, we need to do it in
 	 * an idle as after the document is loaded the textview is still
@@ -1820,7 +1840,7 @@ successful_load (GeditTab *tab)
 		tab->idle_scroll = g_idle_add ((GSourceFunc)scroll_to_cursor, tab);
 	}
 
-	location = gtk_source_file_loader_get_location (tab->loader);
+	location = gtk_source_file_loader_get_location (data->loader);
 
 	/* If the document is readonly we don't care how many times the file
 	 * is opened.
@@ -1858,8 +1878,9 @@ successful_load (GeditTab *tab)
 static void
 load_cb (GtkSourceFileLoader *loader,
 	 GAsyncResult        *result,
-	 GeditTab            *tab)
+	 GTask               *loading_task)
 {
+	GeditTab *tab = g_task_get_source_object (loading_task);
 	GeditDocument *doc = gedit_tab_get_document (tab);
 	GFile *location = gtk_source_file_loader_get_location (loader);
 	gboolean create_named_new_doc;
@@ -1896,8 +1917,13 @@ load_cb (GtkSourceFileLoader *loader,
 
 	if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
 	{
+		g_task_return_boolean (loading_task, FALSE);
+		g_object_unref (loading_task);
+
 		remove_tab (tab);
-		goto end;
+
+		g_error_free (error);
+		return;
 	}
 
 	if (g_error_matches (error,
@@ -1919,7 +1945,7 @@ load_cb (GtkSourceFileLoader *loader,
 		g_signal_connect (info_bar,
 				  "response",
 				  G_CALLBACK (io_loading_error_info_bar_response),
-				  tab);
+				  loading_task);
 
 		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
 
@@ -1933,12 +1959,12 @@ load_cb (GtkSourceFileLoader *loader,
 			gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING_ERROR);
 		}
 
-		/* The loading was successful, despite some invalid characters.
-		 * The document can be edited.
-		 */
-		successful_load (tab);
+		/* The loading was successful, despite some invalid characters. */
+		successful_load (loading_task);
 		gedit_recent_add_document (doc);
-		goto end;
+
+		g_error_free (error);
+		return;
 	}
 
 	if (error != NULL)
@@ -1971,7 +1997,7 @@ load_cb (GtkSourceFileLoader *loader,
 			g_signal_connect (info_bar,
 					  "response",
 					  G_CALLBACK (io_loading_error_info_bar_response),
-					  tab);
+					  loading_task);
 		}
 		else
 		{
@@ -1982,33 +2008,27 @@ load_cb (GtkSourceFileLoader *loader,
 			g_signal_connect (info_bar,
 					  "response",
 					  G_CALLBACK (unrecoverable_reverting_error_info_bar_response),
-					  tab);
+					  loading_task);
 		}
 
 		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
-		goto end;
+
+		g_error_free (error);
+		return;
 	}
 
 	g_assert (error == NULL);
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_NORMAL);
-	successful_load (tab);
+	successful_load (loading_task);
 
 	if (!create_named_new_doc)
 	{
 		gedit_recent_add_document (doc);
 	}
 
-	clear_loading (tab);
-
-end:
-	/* Async operation finished. */
-	g_object_unref (tab);
-
-	if (error != NULL)
-	{
-		g_error_free (error);
-	}
+	g_task_return_boolean (loading_task, TRUE);
+	g_object_unref (loading_task);
 }
 
 /* The returned list may contain duplicated encodings. Only the first occurrence
@@ -2058,35 +2078,27 @@ get_candidate_encodings (GeditTab *tab)
 }
 
 static void
-launch_loader (GeditTab                *tab,
-	       const GtkSourceEncoding *encoding,
-	       gint                     line_pos,
-	       gint                     column_pos)
+launch_loader (GTask                   *loading_task,
+	       const GtkSourceEncoding *encoding)
 {
+	GeditTab *tab = g_task_get_source_object (loading_task);
+	LoaderData *data = g_task_get_task_data (loading_task);
 	GSList *candidate_encodings = NULL;
 	GeditDocument *doc;
 
-	g_return_if_fail (GTK_SOURCE_IS_FILE_LOADER (tab->loader));
-
 	if (encoding != NULL)
 	{
-		tab->user_requested_encoding = TRUE;
+		data->user_requested_encoding = TRUE;
 		candidate_encodings = g_slist_append (NULL, (gpointer) encoding);
 	}
 	else
 	{
-		tab->user_requested_encoding = FALSE;
+		data->user_requested_encoding = FALSE;
 		candidate_encodings = get_candidate_encodings (tab);
 	}
 
-	gtk_source_file_loader_set_candidate_encodings (tab->loader, candidate_encodings);
+	gtk_source_file_loader_set_candidate_encodings (data->loader, candidate_encodings);
 	g_slist_free (candidate_encodings);
-
-	tab->tmp_line_pos = line_pos;
-	tab->tmp_column_pos = column_pos;
-
-	g_clear_object (&tab->cancellable);
-	tab->cancellable = g_cancellable_new ();
 
 	doc = gedit_tab_get_document (tab);
 	g_signal_emit_by_name (doc, "load");
@@ -2098,17 +2110,64 @@ launch_loader (GeditTab                *tab,
 
 	tab->timer = g_timer_new ();
 
-	/* Keep the tab alive during the async operation. */
-	g_object_ref (tab);
-
-	gtk_source_file_loader_load_async (tab->loader,
+	gtk_source_file_loader_load_async (data->loader,
 					   G_PRIORITY_DEFAULT,
-					   tab->cancellable,
+					   g_task_get_cancellable (loading_task),
 					   (GFileProgressCallback) loader_progress_cb,
-					   tab,
+					   loading_task,
 					   NULL,
 					   (GAsyncReadyCallback) load_cb,
-					   tab);
+					   loading_task);
+}
+
+static void
+load_async (GeditTab                *tab,
+	    GFile                   *location,
+	    const GtkSourceEncoding *encoding,
+	    gint                     line_pos,
+	    gint                     column_pos,
+	    gboolean                 create,
+	    GCancellable            *cancellable,
+	    GAsyncReadyCallback      callback,
+	    gpointer                 user_data)
+{
+	GeditDocument *doc;
+	GtkSourceFile *file;
+	GTask *loading_task;
+	LoaderData *data;
+
+	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail (G_IS_FILE (location));
+	g_return_if_fail (cancellable == NULL || G_IS_CANCELLABLE (cancellable));
+	g_return_if_fail (tab->state == GEDIT_TAB_STATE_NORMAL);
+
+	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
+
+	doc = gedit_tab_get_document (tab);
+	file = gedit_document_get_file (doc);
+	gtk_source_file_set_location (file, location);
+
+	loading_task = g_task_new (tab, cancellable, callback, user_data);
+
+	data = loader_data_new ();
+	g_task_set_task_data (loading_task, data, (GDestroyNotify) loader_data_free);
+
+	data->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc), file);
+	data->line_pos = line_pos;
+	data->column_pos = column_pos;
+
+	_gedit_document_set_create (doc, create);
+
+	launch_loader (loading_task, encoding);
+}
+
+static gboolean
+load_finish (GeditTab     *tab,
+	     GAsyncResult *result)
+{
+	g_return_val_if_fail (g_task_is_valid (result, tab), FALSE);
+
+	return g_task_propagate_boolean (G_TASK (result), NULL);
 }
 
 void
@@ -2119,11 +2178,41 @@ _gedit_tab_load (GeditTab                *tab,
 		 gint                     column_pos,
 		 gboolean                 create)
 {
+	GCancellable *cancellable;
+
+	cancellable = g_cancellable_new ();
+
+	load_async (tab,
+		    location,
+		    encoding,
+		    line_pos,
+		    column_pos,
+		    create,
+		    cancellable,
+		    (GAsyncReadyCallback) load_finish,
+		    NULL);
+
+	g_object_unref (cancellable);
+}
+
+static void
+load_stream_async (GeditTab                *tab,
+		   GInputStream            *stream,
+		   const GtkSourceEncoding *encoding,
+		   gint                     line_pos,
+		   gint                     column_pos,
+		   GCancellable            *cancellable,
+		   GAsyncReadyCallback      callback,
+		   gpointer                 user_data)
+{
 	GeditDocument *doc;
 	GtkSourceFile *file;
+	GTask *loading_task;
+	LoaderData *data;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
-	g_return_if_fail (G_IS_FILE (location));
+	g_return_if_fail (G_IS_INPUT_STREAM (stream));
+	g_return_if_fail (cancellable == NULL || G_IS_CANCELLABLE (cancellable));
 	g_return_if_fail (tab->state == GEDIT_TAB_STATE_NORMAL);
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
@@ -2131,19 +2220,22 @@ _gedit_tab_load (GeditTab                *tab,
 	doc = gedit_tab_get_document (tab);
 	file = gedit_document_get_file (doc);
 
-	if (tab->loader != NULL)
-	{
-		g_warning ("GeditTab: file loader already exists.");
-		g_object_unref (tab->loader);
-	}
+	gtk_source_file_set_location (file, NULL);
 
-	gtk_source_file_set_location (file, location);
+	loading_task = g_task_new (tab, cancellable, callback, user_data);
 
-	tab->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc), file);
+	data = loader_data_new ();
+	g_task_set_task_data (loading_task, data, (GDestroyNotify) loader_data_free);
 
-	_gedit_document_set_create (doc, create);
+	data->loader = gtk_source_file_loader_new_from_stream (GTK_SOURCE_BUFFER (doc),
+							       file,
+							       stream);
+	data->line_pos = line_pos;
+	data->column_pos = column_pos;
 
-	launch_loader (tab, encoding, line_pos, column_pos);
+	_gedit_document_set_create (doc, FALSE);
+
+	launch_loader (loading_task, encoding);
 }
 
 void
@@ -2153,43 +2245,36 @@ _gedit_tab_load_stream (GeditTab                *tab,
 			gint                     line_pos,
 			gint                     column_pos)
 {
-	GeditDocument *doc;
-	GtkSourceFile *file;
+	GCancellable *cancellable;
 
-	g_return_if_fail (GEDIT_IS_TAB (tab));
-	g_return_if_fail (G_IS_INPUT_STREAM (stream));
-	g_return_if_fail (tab->state == GEDIT_TAB_STATE_NORMAL);
+	cancellable = g_cancellable_new ();
 
-	gedit_tab_set_state (tab, GEDIT_TAB_STATE_LOADING);
+	load_stream_async (tab,
+			   stream,
+			   encoding,
+			   line_pos,
+			   column_pos,
+			   cancellable,
+			   (GAsyncReadyCallback) load_finish,
+			   NULL);
 
-	doc = gedit_tab_get_document (tab);
-	file = gedit_document_get_file (doc);
-
-	if (tab->loader != NULL)
-	{
-		g_warning ("GeditTab: file loader already exists.");
-		g_object_unref (tab->loader);
-	}
-
-	gtk_source_file_set_location (file, NULL);
-
-	tab->loader = gtk_source_file_loader_new_from_stream (GTK_SOURCE_BUFFER (doc),
-								    file,
-								    stream);
-
-	_gedit_document_set_create (doc, FALSE);
-
-	launch_loader (tab, encoding, line_pos, column_pos);
+	g_object_unref (cancellable);
 }
 
-void
-_gedit_tab_revert (GeditTab *tab)
+static void
+revert_async (GeditTab            *tab,
+	      GCancellable        *cancellable,
+	      GAsyncReadyCallback  callback,
+	      gpointer             user_data)
 {
 	GeditDocument *doc;
 	GtkSourceFile *file;
 	GFile *location;
+	GTask *loading_task;
+	LoaderData *data;
 
 	g_return_if_fail (GEDIT_IS_TAB (tab));
+	g_return_if_fail (cancellable == NULL || G_IS_CANCELLABLE (cancellable));
 	g_return_if_fail (tab->state == GEDIT_TAB_STATE_NORMAL ||
 	                  tab->state == GEDIT_TAB_STATE_EXTERNALLY_MODIFIED_NOTIFICATION);
 
@@ -2205,15 +2290,31 @@ _gedit_tab_revert (GeditTab *tab)
 
 	gedit_tab_set_state (tab, GEDIT_TAB_STATE_REVERTING);
 
-	if (tab->loader != NULL)
-	{
-		g_warning ("GeditTab: file loader already exists.");
-		g_object_unref (tab->loader);
-	}
+	loading_task = g_task_new (tab, cancellable, callback, user_data);
 
-	tab->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc), file);
+	data = loader_data_new ();
+	g_task_set_task_data (loading_task, data, (GDestroyNotify) loader_data_free);
 
-	launch_loader (tab, NULL, 0, 0);
+	data->loader = gtk_source_file_loader_new (GTK_SOURCE_BUFFER (doc), file);
+	data->line_pos = 0;
+	data->column_pos = 0;
+
+	launch_loader (loading_task, NULL);
+}
+
+void
+_gedit_tab_revert (GeditTab *tab)
+{
+	GCancellable *cancellable;
+
+	cancellable = g_cancellable_new ();
+
+	revert_async (tab,
+		      cancellable,
+		      (GAsyncReadyCallback) load_finish,
+		      NULL);
+
+	g_object_unref (cancellable);
 }
 
 static void
