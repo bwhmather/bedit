@@ -1842,9 +1842,11 @@ successful_load (GeditTab *tab)
 		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
 	}
 
+	/* When loading from stdin, the contents may not be saved, so set the
+	 * buffer as modified.
+	 */
 	if (location == NULL)
 	{
-		/* FIXME: hackish */
 		gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc), TRUE);
 	}
 
