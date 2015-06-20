@@ -1842,6 +1842,12 @@ successful_load (GeditTab *tab)
 		set_info_bar (tab, info_bar, GTK_RESPONSE_CANCEL);
 	}
 
+	if (location == NULL)
+	{
+		/* FIXME: hackish */
+		gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc), TRUE);
+	}
+
 	tab->ask_if_externally_modified = TRUE;
 
 	g_signal_emit_by_name (doc, "loaded");
