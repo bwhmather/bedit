@@ -51,7 +51,7 @@ struct _GeditTab
 
 	GeditTabState state;
 
-	GSettings *editor;
+	GSettings *editor_settings;
 
 	GeditViewFrame *frame;
 
@@ -298,7 +298,7 @@ gedit_tab_dispose (GObject *object)
 {
 	GeditTab *tab = GEDIT_TAB (object);
 
-	g_clear_object (&tab->editor);
+	g_clear_object (&tab->editor_settings);
 	g_clear_object (&tab->print_job);
 	g_clear_object (&tab->print_preview);
 
@@ -499,7 +499,7 @@ set_view_properties_according_to_state (GeditTab      *tab,
 	gboolean val;
 	gboolean hl_current_line;
 
-	hl_current_line = g_settings_get_boolean (tab->editor,
+	hl_current_line = g_settings_get_boolean (tab->editor_settings,
 						  GEDIT_SETTINGS_HIGHLIGHT_CURRENT_LINE);
 
 	view = gedit_tab_get_view (tab);
@@ -1052,7 +1052,7 @@ response_set_save_flags (GTask                   *saving_task,
 	SaverData *data = g_task_get_task_data (saving_task);
 	gboolean create_backup;
 
-	create_backup = g_settings_get_boolean (tab->editor,
+	create_backup = g_settings_get_boolean (tab->editor_settings,
 						GEDIT_SETTINGS_CREATE_BACKUP_COPY);
 
 	/* If we are here, it means that the user expressed his or her willing
@@ -1343,7 +1343,7 @@ gedit_tab_init (GeditTab *tab)
 
 	tab->state = GEDIT_TAB_STATE_NORMAL;
 
-	tab->editor = g_settings_new ("org.gnome.gedit.preferences.editor");
+	tab->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
 
 	tab->editable = TRUE;
 
@@ -1353,9 +1353,9 @@ gedit_tab_init (GeditTab *tab)
 	                                GTK_ORIENTATION_VERTICAL);
 
 	/* Manage auto save data */
-	auto_save = g_settings_get_boolean (tab->editor,
+	auto_save = g_settings_get_boolean (tab->editor_settings,
 					    GEDIT_SETTINGS_AUTO_SAVE);
-	g_settings_get (tab->editor, GEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
+	g_settings_get (tab->editor_settings, GEDIT_SETTINGS_AUTO_SAVE_INTERVAL,
 			"u", &auto_save_interval);
 
 	app = GEDIT_APP (g_application_get_default ());
@@ -1715,7 +1715,7 @@ goto_line (GeditTab *tab)
 	}
 
 	/* If enabled, move to the position stored in the metadata. */
-	if (g_settings_get_boolean (tab->editor, GEDIT_SETTINGS_RESTORE_CURSOR_POSITION))
+	if (g_settings_get_boolean (tab->editor_settings, GEDIT_SETTINGS_RESTORE_CURSOR_POSITION))
 	{
 		gchar *pos;
 		gint offset;
@@ -2414,7 +2414,7 @@ get_initial_save_flags (GeditTab *tab,
 
 	save_flags = tab->save_flags;
 
-	create_backup = g_settings_get_boolean (tab->editor,
+	create_backup = g_settings_get_boolean (tab->editor_settings,
 						GEDIT_SETTINGS_CREATE_BACKUP_COPY);
 
 	/* In case of autosaving, we need to preserve the backup that was produced
