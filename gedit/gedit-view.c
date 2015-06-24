@@ -20,15 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-view.h"
 
-#include <string.h>
-#include <stdlib.h>
-#include <gdk/gdkkeysyms.h>
 #include <libpeas/peas-extension-set.h>
 #include <glib/gi18n.h>
 
