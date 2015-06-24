@@ -157,7 +157,7 @@ AC_SUBST(DEFAULT_PRINT_FONT)
 if test "$os_osx" = "yes"; then
 	AC_DEFINE([OS_OSX],[1],[Defined if os is Mac OSX])
 
-	PKG_CHECK_MODULES(GTK_MAC, gtk-mac-integration)
+	PKG_CHECK_MODULES(GTK_MAC, gtk-mac-integration-gtk3 >= 2.0.8)
 
 	AC_SUBST(GTK_MAC_CFLAGS)
 	AC_SUBST(GTK_MAC_LIBS)
