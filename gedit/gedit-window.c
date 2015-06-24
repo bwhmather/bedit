@@ -3117,21 +3117,25 @@ gedit_window_create_tab_from_location (GeditWindow             *window,
 				       gboolean                 jump_to)
 {
 	GtkWidget *notebook;
-	GtkWidget *tab;
+	GeditTab *tab;
 
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (G_IS_FILE (location), NULL);
 
 	gedit_debug (DEBUG_WINDOW);
 
-	notebook = _gedit_window_get_notebook (window);
-	tab = _gedit_tab_new_from_location (location,
-	                                    encoding,
-	                                    line_pos,
-	                                    column_pos,
-	                                    create);
+	tab = GEDIT_TAB (_gedit_tab_new ());
 
-	return process_create_tab (window, notebook, GEDIT_TAB (tab), jump_to);
+	_gedit_tab_load (tab,
+			 location,
+			 encoding,
+			 line_pos,
+			 column_pos,
+			 create);
+
+	notebook = _gedit_window_get_notebook (window);
+
+	return process_create_tab (window, notebook, tab, jump_to);
 }
 
 /**
@@ -3154,20 +3158,24 @@ gedit_window_create_tab_from_stream (GeditWindow             *window,
 				     gboolean                 jump_to)
 {
 	GtkWidget *notebook;
-	GtkWidget *tab;
+	GeditTab *tab;
 
 	gedit_debug (DEBUG_WINDOW);
 
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (G_IS_INPUT_STREAM (stream), NULL);
 
-	notebook = _gedit_window_get_notebook (window);
-	tab = _gedit_tab_new_from_stream (stream,
-	                                  encoding,
-	                                  line_pos,
-	                                  column_pos);
+	tab = GEDIT_TAB (_gedit_tab_new ());
 
-	return process_create_tab (window, notebook, GEDIT_TAB (tab), jump_to);
+	_gedit_tab_load_stream (tab,
+				stream,
+				encoding,
+				line_pos,
+				column_pos);
+
+	notebook = _gedit_window_get_notebook (window);
+
+	return process_create_tab (window, notebook, tab, jump_to);
 }
 
 /**

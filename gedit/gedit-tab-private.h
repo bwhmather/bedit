@@ -28,20 +28,6 @@ G_BEGIN_DECLS
 
 GtkWidget	*_gedit_tab_new				(void);
 
-/* Whether create is TRUE, creates a new empty document if location does
- * not refer to an existing location
- */
-GtkWidget	*_gedit_tab_new_from_location		(GFile                   *location,
-							 const GtkSourceEncoding *encoding,
-							 gint                     line_pos,
-							 gint                     column_pos,
-							 gboolean                 create);
-
-GtkWidget	*_gedit_tab_new_from_stream		(GInputStream            *stream,
-							 const GtkSourceEncoding *encoding,
-							 gint                     line_pos,
-							 gint                     column_pos);
-
 gchar 		*_gedit_tab_get_name			(GeditTab                *tab);
 
 gchar 		*_gedit_tab_get_tooltip			(GeditTab                *tab);

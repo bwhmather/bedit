@@ -1434,52 +1434,6 @@ _gedit_tab_new (void)
 	return g_object_new (GEDIT_TYPE_TAB, NULL);
 }
 
-/* Whether create is TRUE, creates a new empty document if location does
-   not refer to an existing location */
-GtkWidget *
-_gedit_tab_new_from_location (GFile                   *location,
-			      const GtkSourceEncoding *encoding,
-			      gint                     line_pos,
-			      gint                     column_pos,
-			      gboolean                 create)
-{
-	GtkWidget *tab;
-
-	g_return_val_if_fail (G_IS_FILE (location), NULL);
-
-	tab = _gedit_tab_new ();
-
-	_gedit_tab_load (GEDIT_TAB (tab),
-			 location,
-			 encoding,
-			 line_pos,
-			 column_pos,
-			 create);
-
-	return tab;
-}
-
-GtkWidget *
-_gedit_tab_new_from_stream (GInputStream            *stream,
-			    const GtkSourceEncoding *encoding,
-			    gint                     line_pos,
-			    gint                     column_pos)
-{
-	GtkWidget *tab;
-
-	g_return_val_if_fail (G_IS_INPUT_STREAM (stream), NULL);
-
-	tab = _gedit_tab_new ();
-
-	_gedit_tab_load_stream (GEDIT_TAB (tab),
-	                        stream,
-	                        encoding,
-	                        line_pos,
-	                        column_pos);
-
-	return tab;
-}
-
 /**
  * gedit_tab_get_view:
  * @tab: a #GeditTab
