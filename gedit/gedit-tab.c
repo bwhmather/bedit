@@ -325,14 +325,6 @@ gedit_tab_dispose (GObject *object)
 	g_clear_object (&tab->print_job);
 	g_clear_object (&tab->print_preview);
 
-	G_OBJECT_CLASS (gedit_tab_parent_class)->dispose (object);
-}
-
-static void
-gedit_tab_finalize (GObject *object)
-{
-	GeditTab *tab = GEDIT_TAB (object);
-
 	remove_auto_save_timeout (tab);
 
 	if (tab->idle_scroll != 0)
@@ -341,7 +333,7 @@ gedit_tab_finalize (GObject *object)
 		tab->idle_scroll = 0;
 	}
 
-	G_OBJECT_CLASS (gedit_tab_parent_class)->finalize (object);
+	G_OBJECT_CLASS (gedit_tab_parent_class)->dispose (object);
 }
 
 static void
@@ -376,7 +368,6 @@ gedit_tab_class_init (GeditTabClass *klass)
 	GtkWidgetClass *gtkwidget_class = GTK_WIDGET_CLASS (klass);
 
 	object_class->dispose = gedit_tab_dispose;
-	object_class->finalize = gedit_tab_finalize;
 	object_class->get_property = gedit_tab_get_property;
 	object_class->set_property = gedit_tab_set_property;
 
