@@ -1861,7 +1861,7 @@ _gedit_app_set_default_print_settings (GeditApp         *app,
 	priv->print_settings = g_object_ref (settings);
 }
 
-GObject *
+GeditSettings *
 _gedit_app_get_settings (GeditApp *app)
 {
 	GeditAppPrivate *priv;
@@ -1870,7 +1870,7 @@ _gedit_app_get_settings (GeditApp *app)
 
 	priv = gedit_app_get_instance_private (app);
 
-	return G_OBJECT (priv->settings);
+	return priv->settings;
 }
 
 GMenuModel *

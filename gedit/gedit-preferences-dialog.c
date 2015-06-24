@@ -438,7 +438,7 @@ setup_view_page (GeditPreferencesDialog *dlg)
 static void
 setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 {
-	GObject *settings;
+	GeditSettings *settings;
 	gchar *system_font = NULL;
 	gchar *label;
 
@@ -449,7 +449,7 @@ setup_font_colors_page_font_section (GeditPreferencesDialog *dlg)
 
 	/* Get values */
 	settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
-	system_font = gedit_settings_get_system_font (GEDIT_SETTINGS (settings));
+	system_font = gedit_settings_get_system_font (settings);
 
 	label = g_strdup_printf(_("_Use the system fixed width font (%s)"),
 				system_font);

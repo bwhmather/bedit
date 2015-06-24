@@ -1035,11 +1035,11 @@ gedit_view_set_font (GeditView   *view,
 
 	if (default_font)
 	{
-		GObject *settings;
+		GeditSettings *settings;
 		gchar *font;
 
 		settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
-		font = gedit_settings_get_system_font (GEDIT_SETTINGS (settings));
+		font = gedit_settings_get_system_font (settings);
 
 		font_desc = pango_font_description_from_string (font);
 		g_free (font);
