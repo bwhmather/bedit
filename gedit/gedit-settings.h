@@ -34,7 +34,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GeditSettings, gedit_settings, GEDIT, SETTINGS, GObject)
 
-GObject			*gedit_settings_new				(void);
+GeditSettings		*gedit_settings_new				(void);
 
 GeditLockdownMask	 gedit_settings_get_lockdown			(GeditSettings *gs);
 

@@ -388,7 +388,7 @@ gedit_settings_class_init (GeditSettingsClass *klass)
 	object_class->dispose = gedit_settings_dispose;
 }
 
-GObject *
+GeditSettings *
 gedit_settings_new ()
 {
 	return g_object_new (GEDIT_TYPE_SETTINGS, NULL);

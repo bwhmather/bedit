@@ -76,7 +76,7 @@ typedef struct
 	GtkPageSetup      *page_setup;
 	GtkPrintSettings  *print_settings;
 
-	GObject           *settings;
+	GeditSettings     *settings;
 	GSettings         *ui_settings;
 	GSettings         *window_settings;
 
@@ -781,7 +781,7 @@ gedit_app_startup (GApplication *application)
 	priv->window_settings = g_settings_new ("org.gnome.gedit.state.window");
 
 	/* initial lockdown state */
-	priv->lockdown = gedit_settings_get_lockdown (GEDIT_SETTINGS (priv->settings));
+	priv->lockdown = gedit_settings_get_lockdown (priv->settings);
 
 	g_action_map_add_action_entries (G_ACTION_MAP (application),
 	                                 app_entries,
@@ -1869,7 +1869,7 @@ _gedit_app_get_settings (GeditApp *app)
 
 	priv = gedit_app_get_instance_private (app);
 
-	return priv->settings;
+	return G_OBJECT (priv->settings);
 }
 
 GMenuModel *
