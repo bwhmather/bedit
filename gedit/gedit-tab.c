@@ -65,8 +65,6 @@ struct _GeditTab
 
 	guint idle_scroll;
 
-	GTimer *timer;
-
 	gint auto_save_interval;
 	guint auto_save_timeout;
 
@@ -82,6 +80,8 @@ typedef struct _LoaderData LoaderData;
 struct _SaverData
 {
 	GtkSourceFileSaver *saver;
+
+	GTimer *timer;
 
 	/* Notes about the create_backup saver flag:
 	 * - At the beginning of a new file saving, force_no_backup is FALSE.
@@ -107,6 +107,7 @@ struct _SaverData
 struct _LoaderData
 {
 	GtkSourceFileLoader *loader;
+	GTimer *timer;
 	gint line_pos;
 	gint column_pos;
 	guint user_requested_encoding : 1;
@@ -155,6 +156,11 @@ saver_data_free (SaverData *data)
 			g_object_unref (data->saver);
 		}
 
+		if (data->timer != NULL)
+		{
+			g_timer_destroy (data->timer);
+		}
+
 		g_slice_free (SaverData, data);
 	}
 }
@@ -173,6 +179,11 @@ loader_data_free (LoaderData *data)
 		if (data->loader != NULL)
 		{
 			g_object_unref (data->loader);
+		}
+
+		if (data->timer != NULL)
+		{
+			g_timer_destroy (data->timer);
 		}
 
 		g_slice_free (LoaderData, data);
@@ -321,11 +332,6 @@ static void
 gedit_tab_finalize (GObject *object)
 {
 	GeditTab *tab = GEDIT_TAB (object);
-
-	if (tab->timer != NULL)
-	{
-		g_timer_destroy (tab->timer);
-	}
 
 	remove_auto_save_timeout (tab);
 
@@ -984,7 +990,7 @@ info_bar_set_progress (GeditTab *tab,
 
 /* Returns whether progress info should be shown. */
 static gboolean
-should_show_progress_info (GeditTab *tab,
+should_show_progress_info (GTimer  **timer,
 			   goffset   size,
 			   goffset   total_size)
 {
@@ -992,12 +998,14 @@ should_show_progress_info (GeditTab *tab,
 	gdouble total_time;
 	gdouble remaining_time;
 
-	if (tab->timer == NULL)
+	g_assert (timer != NULL);
+
+	if (*timer == NULL)
 	{
 		return TRUE;
 	}
 
-	elapsed_time = g_timer_elapsed (tab->timer, NULL);
+	elapsed_time = g_timer_elapsed (*timer, NULL);
 
 	/* Wait a little, because at the very beginning it's maybe not very
 	 * accurate (it takes initially more time for the first bytes, the
@@ -1020,8 +1028,8 @@ should_show_progress_info (GeditTab *tab,
 		 * shown until the end, so we don't need the timer
 		 * anymore.
 		 */
-		g_timer_destroy (tab->timer);
-		tab->timer = NULL;
+		g_timer_destroy (*timer);
+		*timer = NULL;
 
 		return TRUE;
 	}
@@ -1661,11 +1669,12 @@ loader_progress_cb (goffset  size,
 		    GTask   *loading_task)
 {
 	GeditTab *tab = g_task_get_source_object (loading_task);
+	LoaderData *data = g_task_get_task_data (loading_task);
 
 	g_return_if_fail (tab->state == GEDIT_TAB_STATE_LOADING ||
 			  tab->state == GEDIT_TAB_STATE_REVERTING);
 
-	if (should_show_progress_info (tab, size, total_size))
+	if (should_show_progress_info (&data->timer, size, total_size))
 	{
 		show_loading_info_bar (loading_task);
 		info_bar_set_progress (tab, size, total_size);
@@ -1835,6 +1844,7 @@ load_cb (GtkSourceFileLoader *loader,
 	 GTask               *loading_task)
 {
 	GeditTab *tab = g_task_get_source_object (loading_task);
+	LoaderData *data = g_task_get_task_data (loading_task);
 	GeditDocument *doc = gedit_tab_get_document (tab);
 	GFile *location = gtk_source_file_loader_get_location (loader);
 	gboolean create_named_new_doc;
@@ -1850,10 +1860,10 @@ load_cb (GtkSourceFileLoader *loader,
 		gedit_debug_message (DEBUG_TAB, "File loading error: %s", error->message);
 	}
 
-	if (tab->timer != NULL)
+	if (data->timer != NULL)
 	{
-		g_timer_destroy (tab->timer);
-		tab->timer = NULL;
+		g_timer_destroy (data->timer);
+		data->timer = NULL;
 	}
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
@@ -2057,12 +2067,12 @@ launch_loader (GTask                   *loading_task,
 	doc = gedit_tab_get_document (tab);
 	g_signal_emit_by_name (doc, "load");
 
-	if (tab->timer != NULL)
+	if (data->timer != NULL)
 	{
-		g_timer_destroy (tab->timer);
+		g_timer_destroy (data->timer);
 	}
 
-	tab->timer = g_timer_new ();
+	data->timer = g_timer_new ();
 
 	gtk_source_file_loader_load_async (data->loader,
 					   G_PRIORITY_DEFAULT,
@@ -2294,10 +2304,11 @@ saver_progress_cb (goffset  size,
 		   GTask   *saving_task)
 {
 	GeditTab *tab = g_task_get_source_object (saving_task);
+	SaverData *data = g_task_get_task_data (saving_task);
 
 	g_return_if_fail (tab->state == GEDIT_TAB_STATE_SAVING);
 
-	if (should_show_progress_info (tab, size, total_size))
+	if (should_show_progress_info (&data->timer, size, total_size))
 	{
 		show_saving_info_bar (saving_task);
 		info_bar_set_progress (tab, size, total_size);
@@ -2310,6 +2321,7 @@ save_cb (GtkSourceFileSaver *saver,
 	 GTask              *saving_task)
 {
 	GeditTab *tab = g_task_get_source_object (saving_task);
+	SaverData *data = g_task_get_task_data (saving_task);
 	GeditDocument *doc = gedit_tab_get_document (tab);
 	GFile *location = gtk_source_file_saver_get_location (saver);
 	GError *error = NULL;
@@ -2323,10 +2335,10 @@ save_cb (GtkSourceFileSaver *saver,
 		gedit_debug_message (DEBUG_TAB, "File saving error: %s", error->message);
 	}
 
-	if (tab->timer != NULL)
+	if (data->timer != NULL)
 	{
-		g_timer_destroy (tab->timer);
-		tab->timer = NULL;
+		g_timer_destroy (data->timer);
+		data->timer = NULL;
 	}
 
 	set_info_bar (tab, NULL, GTK_RESPONSE_NONE);
@@ -2442,12 +2454,12 @@ launch_saver (GTask *saving_task)
 
 	g_signal_emit_by_name (doc, "save");
 
-	if (tab->timer != NULL)
+	if (data->timer != NULL)
 	{
-		g_timer_destroy (tab->timer);
+		g_timer_destroy (data->timer);
 	}
 
-	tab->timer = g_timer_new ();
+	data->timer = g_timer_new ();
 
 	gtk_source_file_saver_save_async (data->saver,
 					  G_PRIORITY_DEFAULT,
