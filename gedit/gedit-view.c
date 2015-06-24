@@ -215,7 +215,7 @@ gedit_view_constructed (GObject *object)
 	                 GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS,
 	                 view,
 	                 "show-line-numbers",
-	                 G_SETTINGS_BIND_GET);
+	                 G_SETTINGS_BIND_DEFAULT);
 
 	g_settings_bind (priv->editor_settings,
 	                 GEDIT_SETTINGS_AUTO_INDENT,
@@ -521,11 +521,9 @@ show_line_numbers_menu (GeditView      *view,
 	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item),
 					gtk_source_view_get_show_line_numbers (GTK_SOURCE_VIEW (view)));
 
-	g_settings_bind (view->priv->editor_settings,
-			 GEDIT_SETTINGS_DISPLAY_LINE_NUMBERS,
-			 item,
-			 "active",
-			 G_SETTINGS_BIND_SET);
+	g_object_bind_property (item, "active",
+				view, "show-line-numbers",
+				G_BINDING_DEFAULT);
 
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
