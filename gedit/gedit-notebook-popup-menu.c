@@ -23,6 +23,7 @@
 #include <glib/gi18n.h>
 
 #include "gedit-app.h"
+#include "gedit-app-private.h"
 #include "gedit-commands-private.h"
 #include "gedit-multi-notebook.h"
 

@@ -31,6 +31,7 @@
 #include <gtksourceview/gtksource.h>
 
 #include "gedit-app.h"
+#include "gedit-app-private.h"
 #include "gedit-view.h"
 #include "gedit-window.h"
 

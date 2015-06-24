@@ -26,6 +26,7 @@
 #include <string.h>
 #include <glib/gi18n.h>
 
+#include "gedit-app-private.h"
 #include "gedit-dirs.h"
 #include "gedit-debug.h"
 #include "gedit-commands.h"

@@ -99,6 +99,7 @@ gedit_built_sources =			\
 	gedit/gedit-marshal.h
 
 gedit_NOINST_H_FILES =					\
+	gedit/gedit-app-private.h			\
 	gedit/gedit-close-confirmation-dialog.h		\
 	gedit/gedit-commands-private.h			\
 	gedit/gedit-dirs.h				\

@@ -41,6 +41,8 @@
 #include "gedit-settings.h"
 #include "gedit-utils.h"
 #include "gedit-file-chooser-dialog.h"
+#include "gedit-app.h"
+#include "gedit-app-private.h"
 
 /*
  * gedit-preferences dialog is a singleton since we don't

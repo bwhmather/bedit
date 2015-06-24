@@ -30,6 +30,7 @@
 #include <glib/gi18n.h>
 
 #include "gedit-app.h"
+#include "gedit-app-private.h"
 #include "gedit-recent.h"
 #include "gedit-utils.h"
 #include "gedit-io-error-info-bar.h"

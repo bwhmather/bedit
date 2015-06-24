@@ -23,6 +23,7 @@
 #endif
 
 #include "gedit-app.h"
+#include "gedit-app-private.h"
 
 #include <string.h>
 #include <unistd.h>

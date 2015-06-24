@@ -39,6 +39,7 @@
 #include "gedit-utils.h"
 #include "gedit-settings.h"
 #include "gedit-app.h"
+#include "gedit-app-private.h"
 #include "gedit-notebook.h"
 
 #define GEDIT_VIEW_SCROLL_MARGIN 0.02
