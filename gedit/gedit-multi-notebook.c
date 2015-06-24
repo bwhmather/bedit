@@ -977,7 +977,7 @@ gedit_multi_notebook_add_new_notebook (GeditMultiNotebook *mnb)
 	notebook = gedit_notebook_new ();
 	add_notebook (mnb, notebook, FALSE);
 
-	tab = GEDIT_TAB (_gedit_tab_new ());
+	tab = _gedit_tab_new ();
 	gtk_widget_show (GTK_WIDGET (tab));
 
 	/* When gtk_notebook_insert_page is called the focus is set in

@@ -1436,7 +1436,7 @@ gedit_tab_init (GeditTab *tab)
 			  tab);
 }
 
-GtkWidget *
+GeditTab *
 _gedit_tab_new (void)
 {
 	return g_object_new (GEDIT_TYPE_TAB, NULL);

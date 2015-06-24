@@ -26,7 +26,7 @@
 
 G_BEGIN_DECLS
 
-GtkWidget	*_gedit_tab_new				(void);
+GeditTab	*_gedit_tab_new				(void);
 
 gchar 		*_gedit_tab_get_name			(GeditTab                *tab);
 

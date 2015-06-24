@@ -3084,7 +3084,7 @@ gedit_window_create_tab (GeditWindow *window,
 	gedit_debug (DEBUG_WINDOW);
 
 	notebook = _gedit_window_get_notebook (window);
-	tab = GEDIT_TAB (_gedit_tab_new ());
+	tab = _gedit_tab_new ();
 	gtk_widget_show (GTK_WIDGET (tab));
 
 	return process_create_tab (window, notebook, tab, jump_to);
@@ -3124,7 +3124,7 @@ gedit_window_create_tab_from_location (GeditWindow             *window,
 
 	gedit_debug (DEBUG_WINDOW);
 
-	tab = GEDIT_TAB (_gedit_tab_new ());
+	tab = _gedit_tab_new ();
 
 	_gedit_tab_load (tab,
 			 location,
@@ -3165,7 +3165,7 @@ gedit_window_create_tab_from_stream (GeditWindow             *window,
 	g_return_val_if_fail (GEDIT_IS_WINDOW (window), NULL);
 	g_return_val_if_fail (G_IS_INPUT_STREAM (stream), NULL);
 
-	tab = GEDIT_TAB (_gedit_tab_new ());
+	tab = _gedit_tab_new ();
 
 	_gedit_tab_load_stream (tab,
 				stream,
