@@ -304,8 +304,11 @@ gedit_notebook_page_added (GtkNotebook *notebook,
 	tab_label = gtk_notebook_get_tab_label (notebook, page);
 	g_return_if_fail (GEDIT_IS_TAB_LABEL (tab_label));
 
-	/* For a DND from one notebook to another, the same tab_label is
+	/* For a DND from one notebook to another, the same tab_label can be
 	 * used, so we need to connect the signal here.
+	 * More precisely, the same tab_label is used when the drop zone is in
+	 * the tab labels (not the GeditView), that is, when the DND is handled
+	 * by the GtkNotebook implementation.
 	 */
 	g_signal_connect (tab_label,
 	                  "close-clicked",
@@ -326,7 +329,7 @@ gedit_notebook_remove (GtkContainer *container,
 	tab_label = gtk_notebook_get_tab_label (notebook, widget);
 	g_return_if_fail (GEDIT_IS_TAB_LABEL (tab_label));
 
-	/* For a DND from one notebook to another, the same tab_label is
+	/* For a DND from one notebook to another, the same tab_label can be
 	 * used, so we need to disconnect the signal.
 	 */
 	g_signal_handlers_disconnect_by_func (tab_label,
