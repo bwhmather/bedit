@@ -33,6 +33,11 @@
 
 #define GEDIT_NOTEBOOK_GROUP_NAME "GeditNotebookGroup"
 
+/* The DND targets defined in GeditView start at 100.
+ * Those defined in GtkSourceView start at 200.
+ */
+#define TARGET_TAB 150
+
 struct _GeditNotebookPrivate
 {
 	/* History of focused pages. The first element contains the most recent
@@ -273,6 +278,66 @@ switch_to_last_focused_page (GeditNotebook *notebook,
 	}
 }
 
+static GtkWidget *
+get_notebook_from_view (GtkWidget *view)
+{
+	GtkWidget *widget;
+
+	widget = view;
+
+	do
+	{
+		widget = gtk_widget_get_parent (widget);
+	}
+	while (!GEDIT_IS_NOTEBOOK (widget));
+
+	return widget;
+}
+
+static void
+drag_data_received_cb (GtkWidget        *widget,
+		       GdkDragContext   *context,
+		       gint              x,
+		       gint              y,
+		       GtkSelectionData *selection_data,
+		       guint             info,
+		       guint             timestamp)
+{
+	GtkWidget *notebook;
+	GtkWidget *new_notebook;
+	GtkWidget *page;
+
+	if (info != TARGET_TAB)
+	{
+		return;
+	}
+
+	notebook = gtk_drag_get_source_widget (context);
+
+	if (!GTK_IS_WIDGET (notebook))
+	{
+		return;
+	}
+
+	page = *(GtkWidget **) gtk_selection_data_get_data (selection_data);
+	g_return_if_fail (page != NULL);
+
+	/* We need to iterate and get the notebook of the target view
+	 * because we can have several notebooks per window.
+	 */
+	new_notebook = get_notebook_from_view (widget);
+
+	if (notebook != new_notebook)
+	{
+		gedit_notebook_move_tab (GEDIT_NOTEBOOK (notebook),
+					 GEDIT_NOTEBOOK (new_notebook),
+					 GEDIT_TAB (page),
+					 0);
+	}
+
+	gtk_drag_finish (context, TRUE, TRUE, timestamp);
+}
+
 static void
 gedit_notebook_page_removed (GtkNotebook *notebook,
                              GtkWidget   *page,
@@ -300,6 +365,9 @@ gedit_notebook_page_added (GtkNotebook *notebook,
                            guint        page_num)
 {
 	GtkWidget *tab_label;
+	GeditView *view;
+
+	g_return_if_fail (GEDIT_IS_TAB (page));
 
 	tab_label = gtk_notebook_get_tab_label (notebook, page);
 	g_return_if_fail (GEDIT_IS_TAB_LABEL (tab_label));
@@ -314,6 +382,12 @@ gedit_notebook_page_added (GtkNotebook *notebook,
 	                  "close-clicked",
 	                  G_CALLBACK (close_button_clicked_cb),
 	                  notebook);
+
+	view = gedit_tab_get_view (GEDIT_TAB (page));
+	g_signal_connect (view,
+			  "drag-data-received",
+			  G_CALLBACK (drag_data_received_cb),
+			  NULL);
 }
 
 static void
@@ -323,6 +397,7 @@ gedit_notebook_remove (GtkContainer *container,
 	GtkNotebook *notebook = GTK_NOTEBOOK (container);
 	GeditNotebookPrivate *priv = GEDIT_NOTEBOOK (container)->priv;
 	GtkWidget *tab_label;
+	GeditView *view;
 
 	g_return_if_fail (GEDIT_IS_TAB (widget));
 
@@ -335,6 +410,9 @@ gedit_notebook_remove (GtkContainer *container,
 	g_signal_handlers_disconnect_by_func (tab_label,
 					      G_CALLBACK (close_button_clicked_cb),
 					      notebook);
+
+	view = gedit_tab_get_view (GEDIT_TAB (widget));
+	g_signal_handlers_disconnect_by_func (view, drag_data_received_cb, NULL);
 
 	/* This is where GtkNotebook will remove the page. By doing so, it
 	 * will also switch to a new page, messing up our focus list. So we
@@ -479,6 +557,8 @@ gedit_notebook_add_tab (GeditNotebook *notebook,
 		        gboolean       jump_to)
 {
 	GtkWidget *tab_label;
+	GeditView *view;
+	GtkTargetList *target_list;
 
 	g_return_if_fail (GEDIT_IS_NOTEBOOK (notebook));
 	g_return_if_fail (GEDIT_IS_TAB (tab));
@@ -502,6 +582,21 @@ gedit_notebook_add_tab (GeditNotebook *notebook,
 				 GTK_WIDGET (tab),
 				 "tab-expand", TRUE,
 				 NULL);
+
+	/* Drag and drop support: move a tab to another notebook, with the drop
+	 * zone in the GeditView. The drop zone in the tab labels is already
+	 * implemented by GtkNotebook.
+	 */
+	view = gedit_tab_get_view (tab);
+	target_list = gtk_drag_dest_get_target_list (GTK_WIDGET (view));
+
+	if (target_list != NULL)
+	{
+		gtk_target_list_add (target_list,
+		                     gdk_atom_intern_static_string ("GTK_NOTEBOOK_TAB"),
+		                     GTK_TARGET_SAME_APP,
+		                     TARGET_TAB);
+	}
 
 	/* The signal handler may have reordered the tabs */
 	position = gtk_notebook_page_num (GTK_NOTEBOOK (notebook),

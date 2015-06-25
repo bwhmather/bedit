@@ -33,15 +33,13 @@
 #include "gedit-settings.h"
 #include "gedit-app.h"
 #include "gedit-app-private.h"
-#include "gedit-notebook.h"
 
 #define GEDIT_VIEW_SCROLL_MARGIN 0.02
 
 enum
 {
 	TARGET_URI_LIST = 100,
-	TARGET_XDNDDIRECTSAVE,
-	TARGET_TAB
+	TARGET_XDNDDIRECTSAVE
 };
 
 struct _GeditViewPrivate
@@ -142,10 +140,6 @@ gedit_view_init (GeditView *view)
 		                     0,
 		                     TARGET_XDNDDIRECTSAVE);
 		gtk_target_list_add_uri_targets (target_list, TARGET_URI_LIST);
-		gtk_target_list_add (target_list,
-		                     gdk_atom_intern_static_string ("GTK_NOTEBOOK_TAB"),
-		                     GTK_TARGET_SAME_APP,
-		                     TARGET_TAB);
 	}
 
 	view->priv->extensions =
@@ -333,22 +327,6 @@ gedit_view_drag_motion (GtkWidget      *widget,
 	return drop_zone;
 }
 
-static GtkWidget *
-get_notebook_from_view (GtkWidget *view)
-{
-	GtkWidget *widget;
-
-	widget = view;
-
-	do
-	{
-		widget = gtk_widget_get_parent (widget);
-	}
-	while (!GEDIT_IS_NOTEBOOK (widget));
-
-	return widget;
-}
-
 static void
 gedit_view_drag_data_received (GtkWidget        *widget,
 		       	       GdkDragContext   *context,
@@ -377,39 +355,6 @@ gedit_view_drag_data_received (GtkWidget        *widget,
 
 			break;
 
-		}
-		case TARGET_TAB:
-		{
-			GtkWidget *notebook;
-			GtkWidget *new_notebook;
-			GtkWidget *page;
-
-			notebook = gtk_drag_get_source_widget (context);
-
-			if (!GTK_IS_WIDGET (notebook))
-			{
-				return;
-			}
-
-			page = *(GtkWidget **) gtk_selection_data_get_data (selection_data);
-			g_return_if_fail (page != NULL);
-
-			/* We need to iterate and get the notebook of the target view
-			 * because we can have several notebooks per window.
-			 */
-			new_notebook = get_notebook_from_view (widget);
-
-			if (notebook != new_notebook)
-			{
-				gedit_notebook_move_tab (GEDIT_NOTEBOOK (notebook),
-							 GEDIT_NOTEBOOK (new_notebook),
-							 GEDIT_TAB (page),
-							 0);
-			}
-
-			gtk_drag_finish (context, TRUE, TRUE, timestamp);
-
-			break;
 		}
 		case TARGET_XDNDDIRECTSAVE:
 		{
