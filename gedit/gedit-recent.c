@@ -31,48 +31,43 @@
 void
 gedit_recent_add_document (GeditDocument *document)
 {
-	GtkRecentManager *recent_manager;
-	GtkRecentData *recent_data;
 	GtkSourceFile *file;
 	GFile *location;
+	GtkRecentManager *recent_manager;
+	GtkRecentData recent_data;
 	gchar *uri;
+	static gchar *groups[2] = { "gedit", NULL };
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (document));
-
-	static gchar *groups[2] = {
-		"gedit",
-		NULL
-	};
 
 	file = gedit_document_get_file (document);
 	location = gtk_source_file_get_location (file);
 
-	if (location != NULL)
+	if (location == NULL)
 	{
-		recent_manager = gtk_recent_manager_get_default ();
-
-		recent_data = g_slice_new (GtkRecentData);
-
-		recent_data->display_name = NULL;
-		recent_data->description = NULL;
-		recent_data->mime_type = gedit_document_get_mime_type (document);
-		recent_data->app_name = (gchar *) g_get_application_name ();
-		recent_data->app_exec = g_strjoin (" ", g_get_prgname (), "%u", NULL);
-		recent_data->groups = groups;
-		recent_data->is_private = FALSE;
-
-		uri = g_file_get_uri (location);
-
-		if (!gtk_recent_manager_add_full (recent_manager, uri, recent_data))
-		{
-			g_warning ("Failed to add uri '%s' to the recent manager.", uri);
-		}
-
-		g_free (uri);
-		g_free (recent_data->app_exec);
-		g_free (recent_data->mime_type);
-		g_slice_free (GtkRecentData, recent_data);
+		return;
 	}
+
+	recent_manager = gtk_recent_manager_get_default ();
+
+	recent_data.display_name = NULL;
+	recent_data.description = NULL;
+	recent_data.mime_type = gedit_document_get_mime_type (document);
+	recent_data.app_name = (gchar *) g_get_application_name ();
+	recent_data.app_exec = g_strjoin (" ", g_get_prgname (), "%u", NULL);
+	recent_data.groups = groups;
+	recent_data.is_private = FALSE;
+
+	uri = g_file_get_uri (location);
+
+	if (!gtk_recent_manager_add_full (recent_manager, uri, &recent_data))
+	{
+		g_warning ("Failed to add uri '%s' to the recent manager.", uri);
+	}
+
+	g_free (uri);
+	g_free (recent_data.app_exec);
+	g_free (recent_data.mime_type);
 }
 
 void
