@@ -100,12 +100,6 @@ struct _GeditViewFrame
 	gchar *old_search_text;
 };
 
-enum
-{
-	PROP_0,
-	PROP_VIEW
-};
-
 G_DEFINE_TYPE (GeditViewFrame, gedit_view_frame, GTK_TYPE_OVERLAY)
 
 static GeditDocument *
@@ -172,26 +166,6 @@ gedit_view_frame_finalize (GObject *object)
 	g_free (frame->old_search_text);
 
 	G_OBJECT_CLASS (gedit_view_frame_parent_class)->finalize (object);
-}
-
-static void
-gedit_view_frame_get_property (GObject    *object,
-                               guint       prop_id,
-                               GValue     *value,
-                               GParamSpec *pspec)
-{
-	GeditViewFrame *frame = GEDIT_VIEW_FRAME (object);
-
-	switch (prop_id)
-	{
-		case PROP_VIEW:
-			g_value_set_object (value, gedit_view_frame_get_view (frame));
-			break;
-
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
 }
 
 static void
@@ -1442,15 +1416,6 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 
 	object_class->dispose = gedit_view_frame_dispose;
 	object_class->finalize = gedit_view_frame_finalize;
-	object_class->get_property = gedit_view_frame_get_property;
-
-	g_object_class_install_property (object_class, PROP_VIEW,
-	                                 g_param_spec_object ("view",
-	                                                      "View",
-	                                                      "The View",
-	                                                      GEDIT_TYPE_VIEW,
-	                                                      G_PARAM_READABLE |
-	                                                      G_PARAM_STATIC_STRINGS));
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
