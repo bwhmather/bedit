@@ -1461,9 +1461,13 @@ gedit_tab_get_view (GeditTab *tab)
 GeditDocument *
 gedit_tab_get_document (GeditTab *tab)
 {
+	GeditView *view;
+
 	g_return_val_if_fail (GEDIT_IS_TAB (tab), NULL);
 
-	return gedit_view_frame_get_document (tab->frame);
+	view = gedit_view_frame_get_view (tab->frame);
+
+	return GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 }
 
 #define MAX_DOC_NAME_LENGTH 40

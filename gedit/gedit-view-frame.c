@@ -107,11 +107,16 @@ struct _GeditViewFrame
 enum
 {
 	PROP_0,
-	PROP_DOCUMENT,
 	PROP_VIEW
 };
 
 G_DEFINE_TYPE (GeditViewFrame, gedit_view_frame, GTK_TYPE_OVERLAY)
+
+static GeditDocument *
+get_document (GeditViewFrame *frame)
+{
+	return GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->view)));
+}
 
 static void
 gedit_view_frame_dispose (GObject *object)
@@ -190,10 +195,6 @@ gedit_view_frame_get_property (GObject    *object,
 
 	switch (prop_id)
 	{
-		case PROP_DOCUMENT:
-			g_value_set_object (value, gedit_view_frame_get_document (frame));
-			break;
-
 		case PROP_VIEW:
 			g_value_set_object (value, gedit_view_frame_get_view (frame));
 			break;
@@ -280,7 +281,7 @@ get_search_context (GeditViewFrame *frame)
 	GtkSourceSearchContext *search_context;
 	GtkSourceSearchSettings *search_settings;
 
-	doc = gedit_view_frame_get_document (frame);
+	doc = get_document (frame);
 	search_context = gedit_document_get_search_context (doc);
 
 	if (search_context == NULL)
@@ -1091,7 +1092,7 @@ update_goto_line (GeditViewFrame *frame)
 		return;
 	}
 
-	doc = gedit_view_frame_get_document (frame);
+	doc = get_document (frame);
 
 	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
 					  &iter,
@@ -1454,14 +1455,6 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	object_class->finalize = gedit_view_frame_finalize;
 	object_class->get_property = gedit_view_frame_get_property;
 
-	g_object_class_install_property (object_class, PROP_DOCUMENT,
-	                                 g_param_spec_object ("document",
-	                                                      "Document",
-	                                                      "The Document",
-	                                                      GEDIT_TYPE_DOCUMENT,
-	                                                      G_PARAM_READABLE |
-	                                                      G_PARAM_STATIC_STRINGS));
-
 	g_object_class_install_property (object_class, PROP_VIEW,
 	                                 g_param_spec_object ("view",
 	                                                      "View",
@@ -1549,7 +1542,7 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	gtk_widget_override_background_color (GTK_WIDGET (frame), 0, &transparent);
 
-	doc = gedit_view_frame_get_document (frame);
+	doc = get_document (frame);
 	file = gedit_document_get_file (doc);
 
 	gtk_source_file_set_mount_operation_factory (file,
@@ -1649,14 +1642,6 @@ GeditViewFrame *
 gedit_view_frame_new (void)
 {
 	return g_object_new (GEDIT_TYPE_VIEW_FRAME, NULL);
-}
-
-GeditDocument *
-gedit_view_frame_get_document (GeditViewFrame *frame)
-{
-	g_return_val_if_fail (GEDIT_IS_VIEW_FRAME (frame), NULL);
-
-	return GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->view)));
 }
 
 GeditView *

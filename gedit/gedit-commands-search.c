@@ -666,7 +666,7 @@ _gedit_cmd_search_clear_highlight (GSimpleAction *action,
 	frame = _gedit_tab_get_view_frame (active_tab);
 	gedit_view_frame_clear_search (frame);
 
-	doc = gedit_view_frame_get_document (frame);
+	doc = gedit_tab_get_document (active_tab);
 	gedit_document_set_search_context (doc, NULL);
 }
 

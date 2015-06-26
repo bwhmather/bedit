@@ -32,8 +32,6 @@ G_DECLARE_FINAL_TYPE (GeditViewFrame, gedit_view_frame, GEDIT, VIEW_FRAME, GtkOv
 
 GeditViewFrame	*gedit_view_frame_new		(void);
 
-GeditDocument	*gedit_view_frame_get_document	(GeditViewFrame *frame);
-
 GeditView	*gedit_view_frame_get_view	(GeditViewFrame *frame);
 
 void		 gedit_view_frame_popup_search	(GeditViewFrame *frame);
