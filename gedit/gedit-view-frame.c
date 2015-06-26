@@ -98,10 +98,6 @@ struct _GeditViewFrame
 	 */
 	gchar *search_text;
 	gchar *old_search_text;
-
-	/* Track if the window is in fullscreen mode. */
-	GtkWindow *window;
-	gint window_state_changed_handler_id;
 };
 
 enum
@@ -151,13 +147,6 @@ gedit_view_frame_dispose (GObject *object)
 	{
 		g_source_remove (frame->remove_entry_tag_timeout_id);
 		frame->remove_entry_tag_timeout_id = 0;
-	}
-
-	if (frame->window_state_changed_handler_id != 0)
-	{
-		g_signal_handler_disconnect (frame->window,
-		                             frame->window_state_changed_handler_id);
-		frame->window_state_changed_handler_id = 0;
 	}
 
 	if (buffer != NULL)
@@ -1485,43 +1474,6 @@ view_frame_mount_operation_factory (GtkSourceFile *file,
 	return gtk_mount_operation_new (GTK_WINDOW (window));
 }
 
-static gboolean
-on_window_state_changed (GtkWidget           *widget,
-                         GdkEventWindowState *event,
-                         GeditViewFrame      *frame)
-{
-	gboolean fullscreen_state;
-
-	fullscreen_state = event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN;
-
-	gedit_view_holder_set_centering (frame->view_holder, fullscreen_state);
-
-	return FALSE;
-}
-
-static void
-on_toplevel_window_changed (GtkWidget      *widget,
-                            GtkWidget      *previous_toplevel,
-                            GeditViewFrame *frame)
-{
-	if (frame->window_state_changed_handler_id != 0)
-	{
-		g_signal_handler_disconnect (frame->window,
-		                             frame->window_state_changed_handler_id);
-		frame->window_state_changed_handler_id = 0;
-	}
-
-	frame->window = GTK_WINDOW (gtk_widget_get_ancestor (GTK_WIDGET (frame), GTK_TYPE_WINDOW));
-
-	if (frame->window != NULL)
-	{
-		frame->window_state_changed_handler_id = g_signal_connect (frame->window,
-									   "window-state-event",
-									   G_CALLBACK (on_window_state_changed),
-									   frame);
-	}
-}
-
 static void
 gedit_view_frame_init (GeditViewFrame *frame)
 {
@@ -1631,17 +1583,20 @@ gedit_view_frame_init (GeditViewFrame *frame)
 				  "clicked",
 				  G_CALLBACK (forward_search),
 				  frame);
-
-	g_signal_connect (frame,
-	                  "hierarchy-changed",
-	                  G_CALLBACK (on_toplevel_window_changed),
-	                  frame);
 }
 
 GeditViewFrame *
 gedit_view_frame_new (void)
 {
 	return g_object_new (GEDIT_TYPE_VIEW_FRAME, NULL);
+}
+
+GeditViewHolder *
+gedit_view_frame_get_view_holder (GeditViewFrame *frame)
+{
+	g_return_val_if_fail (GEDIT_IS_VIEW_FRAME (frame), NULL);
+
+	return frame->view_holder;
 }
 
 GeditView *

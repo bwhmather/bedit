@@ -41,6 +41,8 @@
 #include "gedit-statusbar.h"
 #include "gedit-tab.h"
 #include "gedit-tab-private.h"
+#include "gedit-view-frame.h"
+#include "gedit-view-holder.h"
 #include "gedit-utils.h"
 #include "gedit-commands.h"
 #include "gedit-commands-private.h"
@@ -256,6 +258,22 @@ gedit_window_finalize (GObject *object)
 	G_OBJECT_CLASS (gedit_window_parent_class)->finalize (object);
 }
 
+/* Center the view when the window is in fullscreen mode. */
+static void
+update_view_centering (GeditTab *tab,
+		       gpointer  user_data)
+{
+	GeditViewFrame *view_frame;
+	GeditViewHolder *view_holder;
+	gboolean is_fullscreen;
+
+	view_frame = _gedit_tab_get_view_frame (tab);
+	view_holder = gedit_view_frame_get_view_holder (view_frame);
+
+	is_fullscreen = GPOINTER_TO_BOOLEAN (user_data);
+	gedit_view_holder_set_centering (view_holder, is_fullscreen);
+}
+
 static void
 update_fullscreen (GeditWindow *window,
                    gboolean     is_fullscreen)
@@ -275,6 +293,10 @@ update_fullscreen (GeditWindow *window,
 			gtk_widget_show (window->priv->statusbar);
 		}
 	}
+
+	gedit_multi_notebook_foreach_tab (window->priv->multi_notebook,
+					  (GtkCallback)update_view_centering,
+					  GBOOLEAN_TO_POINTER (is_fullscreen));
 
 #ifndef OS_OSX
 	if (is_fullscreen)
