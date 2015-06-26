@@ -82,46 +82,6 @@ struct _GeditPrintPreview
 G_DEFINE_TYPE (GeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
 
 static void
-gedit_print_preview_get_property (GObject    *object,
-				  guint       prop_id,
-				  GValue     *value,
-				  GParamSpec *pspec)
-{
-	/* GeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (object); */
-
-	switch (prop_id)
-	{
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
-
-static void
-gedit_print_preview_set_property (GObject      *object,
-				  guint	        prop_id,
-				  const GValue *value,
-				  GParamSpec   *pspec)
-{
-	/* GeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (object); */
-
-	switch (prop_id)
-	{
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
-
-static void
-gedit_print_preview_finalize (GObject *object)
-{
-	/* GeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (object); */
-
-	G_OBJECT_CLASS (gedit_print_preview_parent_class)->finalize (object);
-}
-
-static void
 gedit_print_preview_grab_focus (GtkWidget *widget)
 {
 	GeditPrintPreview *preview;
@@ -134,15 +94,7 @@ gedit_print_preview_grab_focus (GtkWidget *widget)
 static void
 gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 {
-	GObjectClass *object_class;
-	GtkWidgetClass *widget_class;
-
-	object_class = G_OBJECT_CLASS (klass);
-	widget_class = GTK_WIDGET_CLASS (klass);
-
-	object_class->get_property = gedit_print_preview_get_property;
-	object_class->set_property = gedit_print_preview_set_property;
-	object_class->finalize = gedit_print_preview_finalize;
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
 	widget_class->grab_focus = gedit_print_preview_grab_focus;
 
