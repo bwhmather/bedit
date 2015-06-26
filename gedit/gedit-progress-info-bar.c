@@ -18,15 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-progress-info-bar.h"
-
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
-#include <gdk/gdk.h>
 
 enum {
 	PROP_0,

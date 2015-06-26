@@ -22,19 +22,14 @@
  * Verbose error reporting for file I/O operations (load, save, revert, create)
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-io-error-info-bar.h"
 
 #include <errno.h>
 #include <string.h>
-
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 
-#include <gedit/gedit-encodings-combo-box.h>
+#include "gedit-encodings-combo-box.h"
 #include "gedit-settings.h"
 #include "gedit-utils.h"
 #include "gedit-document.h"

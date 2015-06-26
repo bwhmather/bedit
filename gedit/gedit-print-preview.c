@@ -17,18 +17,12 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-print-preview.h"
 
 #include <math.h>
 #include <stdlib.h>
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
-#include <gtk/gtk.h>
-
 #include <cairo-pdf.h>
 
 #define PRINTER_DPI (72.)
