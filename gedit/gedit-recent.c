@@ -36,7 +36,7 @@ gedit_recent_add_document (GeditDocument *document)
 	GtkRecentManager *recent_manager;
 	GtkRecentData recent_data;
 	gchar *uri;
-	static gchar *groups[2] = { "gedit", NULL };
+	static gchar *groups[2];
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (document));
 
@@ -49,6 +49,9 @@ gedit_recent_add_document (GeditDocument *document)
 	}
 
 	recent_manager = gtk_recent_manager_get_default ();
+
+	groups[0] = (gchar *) g_get_application_name ();
+	groups[1] = NULL;
 
 	recent_data.display_name = NULL;
 	recent_data.description = NULL;
