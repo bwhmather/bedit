@@ -52,12 +52,12 @@ struct _GeditViewHolderClass
 
 GType			 gedit_view_holder_get_type				(void) G_GNUC_CONST;
 
+GeditViewHolder		*gedit_view_holder_new					(void);
+
 void			 gedit_view_holder_set_centering			(GeditViewHolder *container,
 			                                                         gboolean         centering);
 
 gboolean		 gedit_view_holder_get_centering			(GeditViewHolder *container);
-
-GeditViewHolder		*gedit_view_holder_new		(void);
 
 G_END_DECLS
 

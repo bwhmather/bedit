@@ -40,8 +40,8 @@ struct _GeditViewHolderPrivate
 	GdkRGBA view_line_margin_fg;
 	GdkRGBA view_margin_background;
 	guint view_text_width;
-	gboolean centering;
 
+	guint centering : 1;
 	guint view_background_set : 1;
 	guint view_line_margin_fg_set : 1;
 	guint view_margin_background_set : 1;
@@ -459,7 +459,7 @@ gedit_view_holder_set_centering (GeditViewHolder *container,
 {
 	g_return_if_fail (GEDIT_IS_VIEW_HOLDER (container));
 
-	container->priv->centering = centering;
+	container->priv->centering = centering != FALSE;
 
 	on_view_right_margin_visibility_changed (GEDIT_VIEW (container->priv->sourceview), NULL, container);
 }
