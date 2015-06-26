@@ -32,7 +32,6 @@
 #include <glib/gi18n.h>
 #include <stdlib.h>
 
-#include "gedit-window.h"
 #include "gedit-view-holder.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
@@ -63,7 +62,6 @@ struct _GeditViewFrame
 
 	GeditView *view;
 	GeditViewHolder *view_holder;
-	GtkWidget *window;
 	GtkFrame *map_frame;
 
 	SearchMode search_mode;
@@ -101,6 +99,8 @@ struct _GeditViewFrame
 	gchar *search_text;
 	gchar *old_search_text;
 
+	/* Track if the window is in fullscreen mode. */
+	GtkWindow *window;
 	gint window_state_changed_handler_id;
 };
 
@@ -148,6 +148,13 @@ gedit_view_frame_dispose (GObject *object)
 		frame->remove_entry_tag_timeout_id = 0;
 	}
 
+	if (frame->window_state_changed_handler_id != 0)
+	{
+		g_signal_handler_disconnect (frame->window,
+		                             frame->window_state_changed_handler_id);
+		frame->window_state_changed_handler_id = 0;
+	}
+
 	if (buffer != NULL)
 	{
 		GtkSourceFile *file = gedit_document_get_file (GEDIT_DOCUMENT (buffer));
@@ -169,13 +176,6 @@ gedit_view_frame_finalize (GObject *object)
 
 	g_free (frame->search_text);
 	g_free (frame->old_search_text);
-
-	if (frame->window_state_changed_handler_id != 0)
-	{
-		g_signal_handler_disconnect (frame->window,
-		                             frame->window_state_changed_handler_id);
-		frame->window_state_changed_handler_id = 0;
-	}
 
 	G_OBJECT_CLASS (gedit_view_frame_parent_class)->finalize (object);
 }
@@ -1511,8 +1511,6 @@ on_toplevel_window_changed (GtkWidget      *widget,
                             GtkWidget      *previous_toplevel,
                             GeditViewFrame *frame)
 {
-	GeditWindow *gedit_window;
-
 	if (frame->window_state_changed_handler_id != 0)
 	{
 		g_signal_handler_disconnect (frame->window,
@@ -1520,16 +1518,14 @@ on_toplevel_window_changed (GtkWidget      *widget,
 		frame->window_state_changed_handler_id = 0;
 	}
 
-	gedit_window = GEDIT_WINDOW (gtk_widget_get_ancestor (GTK_WIDGET (frame), GEDIT_TYPE_WINDOW));
+	frame->window = GTK_WINDOW (gtk_widget_get_ancestor (GTK_WIDGET (frame), GTK_TYPE_WINDOW));
 
-	if (gedit_window)
+	if (frame->window != NULL)
 	{
-		frame->window = GTK_WIDGET (&gedit_window->window);
-
 		frame->window_state_changed_handler_id = g_signal_connect (frame->window,
-		                                                          "window-state-event",
-		                                                          G_CALLBACK (on_window_state_changed),
-		                                                          frame);
+									   "window-state-event",
+									   G_CALLBACK (on_window_state_changed),
+									   frame);
 	}
 }
 
@@ -1555,8 +1551,6 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	doc = gedit_view_frame_get_document (frame);
 	file = gedit_document_get_file (doc);
-
-	frame->window_state_changed_handler_id = 0;
 
 	gtk_source_file_set_mount_operation_factory (file,
 						     view_frame_mount_operation_factory,
