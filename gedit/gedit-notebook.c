@@ -278,22 +278,6 @@ switch_to_last_focused_page (GeditNotebook *notebook,
 	}
 }
 
-static GtkWidget *
-get_notebook_from_view (GtkWidget *view)
-{
-	GtkWidget *widget;
-
-	widget = view;
-
-	do
-	{
-		widget = gtk_widget_get_parent (widget);
-	}
-	while (!GEDIT_IS_NOTEBOOK (widget));
-
-	return widget;
-}
-
 static void
 drag_data_received_cb (GtkWidget        *widget,
 		       GdkDragContext   *context,
@@ -325,7 +309,8 @@ drag_data_received_cb (GtkWidget        *widget,
 	/* We need to iterate and get the notebook of the target view
 	 * because we can have several notebooks per window.
 	 */
-	new_notebook = get_notebook_from_view (widget);
+	new_notebook = gtk_widget_get_ancestor (widget, GEDIT_TYPE_NOTEBOOK);
+	g_return_if_fail (new_notebook != NULL);
 
 	if (notebook != new_notebook)
 	{
