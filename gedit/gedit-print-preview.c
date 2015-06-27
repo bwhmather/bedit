@@ -27,6 +27,10 @@
 
 #define PRINTER_DPI (72.0)
 #define TOOLTIP_THRESHOLD 20
+#define PAGE_PAD 12
+#define PAGE_SHADOW_OFFSET 5
+#define ZOOM_IN_FACTOR (1.2)
+#define ZOOM_OUT_FACTOR (1.0 / ZOOM_IN_FACTOR)
 
 struct _GeditPrintPreview
 {
@@ -56,8 +60,10 @@ struct _GeditPrintPreview
 
 	gdouble scale;
 
-	/* size of the tile of a page (including padding
-	 * and drop shadow) in pixels */
+	/* The tile size is the size in pixels of the area where a page will be
+	 * drawn, including the padding. The size is independent of the
+	 * orientation.
+	 */
 	gint tile_width;
 	gint tile_height;
 
@@ -65,7 +71,7 @@ struct _GeditPrintPreview
 	gint n_columns;
 
 	guint n_pages;
-	guint cur_page;
+	guint cur_page; /* starts at 0 */
 	gint cursor_x;
 	gint cursor_y;
 
@@ -125,17 +131,9 @@ update_layout_size (GeditPrintPreview *preview)
 	gtk_widget_queue_draw (GTK_WIDGET (preview->layout));
 }
 
-static void
-set_n_columns (GeditPrintPreview *preview,
-	       gint               n_columns)
-{
-	preview->n_columns = n_columns;
-	update_layout_size (preview);
-}
-
-/* get the paper size in points: these must be used only
- * after the widget has been mapped and the dpi is known */
-
+/* Get the paper size in points: these must be used only
+ * after the widget has been mapped and the dpi is known.
+ */
 static gdouble
 get_paper_width (GeditPrintPreview *preview)
 {
@@ -148,24 +146,12 @@ get_paper_height (GeditPrintPreview *preview)
 	return preview->paper_height * preview->dpi;
 }
 
-#define PAGE_PAD 12
-#define PAGE_SHADOW_OFFSET 5
-
-/* The tile size is the size of the area where a page
- * will be drawn including the padding and idependent
- * of the orientation */
-
-/* updates the tile size to the current zoom and page size */
+/* Updates the tile size to the current zoom and page size. */
 static void
 update_tile_size (GeditPrintPreview *preview)
 {
-	gint w, h;
-
-	w = 2 * PAGE_PAD + floor (preview->scale * get_paper_width (preview) + 0.5);
-	h = 2 * PAGE_PAD + floor (preview->scale * get_paper_height (preview) + 0.5);
-
-	preview->tile_width = w;
-	preview->tile_height = h;
+	preview->tile_width = 2 * PAGE_PAD + floor (preview->scale * get_paper_width (preview) + 0.5);
+	preview->tile_height = 2 * PAGE_PAD + floor (preview->scale * get_paper_height (preview) + 0.5);
 }
 
 /* Zoom should always be set with one of these two function
@@ -217,9 +203,6 @@ set_zoom_fit_to_size (GeditPrintPreview *preview)
 
 	update_layout_size (preview);
 }
-
-#define ZOOM_IN_FACTOR (1.2)
-#define ZOOM_OUT_FACTOR (1.0 / ZOOM_IN_FACTOR)
 
 static void
 zoom_in (GeditPrintPreview *preview)
@@ -378,14 +361,15 @@ static void
 on_1x1_clicked (GtkMenuItem       *item,
 		GeditPrintPreview *preview)
 {
-	set_n_columns (preview, 1);
+	preview->n_columns = 1;
+	update_layout_size (preview);
 }
 
 static void
 on_1x2_clicked (GtkMenuItem       *item,
 		GeditPrintPreview *preview)
 {
-	set_n_columns (preview, 2);
+	preview->n_columns = 2;
 	set_zoom_fit_to_size (preview);
 }
 
@@ -482,7 +466,7 @@ scroll_event_activated (GtkWidget         *widget,
 static gint
 get_first_page_displayed (GeditPrintPreview *preview)
 {
-	return preview->cur_page - preview->cur_page % preview->n_columns;
+	return preview->cur_page - (preview->cur_page % preview->n_columns);
 }
 
 /* returns the page number (starting from 0) or -1 if no page */
