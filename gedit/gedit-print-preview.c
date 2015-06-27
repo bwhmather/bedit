@@ -938,46 +938,49 @@ preview_draw (GtkWidget         *widget,
 	      GeditPrintPreview *preview)
 {
 	GdkWindow *bin_window;
-	gint pg;
-	gint i, j;
+	gint page_num;
+	gint col;
 
 	bin_window = gtk_layout_get_bin_window (preview->layout);
 
-	if (gtk_cairo_should_draw_window (cr, bin_window))
+	if (!gtk_cairo_should_draw_window (cr, bin_window))
 	{
-		cairo_save (cr);
-
-		gtk_cairo_transform_to_window (cr, widget, bin_window);
-
-		/* get the first page to display */
-		pg = get_first_page_displayed (preview);
-
-		for (i = 0; i < preview->cols; ++i)
-		{
-			for (j = 0; j < preview->rows; ++j)
-			{
-				if (!gtk_print_operation_preview_is_selected (preview->gtk_preview, pg))
-				{
-					continue;
-				}
-
-				if (pg == preview->n_pages)
-				{
-					break;
-				}
-
-				draw_page (cr,
-					   j * preview->tile_width,
-					   i * preview->tile_height,
-					   pg,
-					   preview);
-
-				++pg;
-			}
-		}
-
-		cairo_restore (cr);
+		return GDK_EVENT_STOP;
 	}
+
+	cairo_save (cr);
+
+	gtk_cairo_transform_to_window (cr, widget, bin_window);
+
+	page_num = get_first_page_displayed (preview);
+
+	for (col = 0; col < preview->cols; col++)
+	{
+		gint row;
+
+		for (row = 0; row < preview->rows; row++)
+		{
+			if (!gtk_print_operation_preview_is_selected (preview->gtk_preview, page_num))
+			{
+				continue;
+			}
+
+			if (page_num == preview->n_pages)
+			{
+				break;
+			}
+
+			draw_page (cr,
+				   row * preview->tile_width,
+				   col * preview->tile_height,
+				   page_num,
+				   preview);
+
+			page_num++;
+		}
+	}
+
+	cairo_restore (cr);
 
 	return GDK_EVENT_STOP;
 }
