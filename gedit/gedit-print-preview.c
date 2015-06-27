@@ -924,26 +924,24 @@ preview_draw (GtkWidget         *widget,
 
 	gtk_cairo_transform_to_window (cr, widget, bin_window);
 
+	col = 0;
 	page_num = get_first_page_displayed (preview);
 
-	for (col = 0; col < preview->n_columns; col++)
+	while (col < preview->n_columns && page_num < preview->n_pages)
 	{
 		if (!gtk_print_operation_preview_is_selected (preview->gtk_preview, page_num))
 		{
+			page_num++;
 			continue;
 		}
 
-		if (page_num == preview->n_pages)
-		{
-			break;
-		}
-
 		draw_page (cr,
+			   col * preview->tile_width,
 			   0,
-			   col * preview->tile_height,
 			   page_num,
 			   preview);
 
+		col++;
 		page_num++;
 	}
 
