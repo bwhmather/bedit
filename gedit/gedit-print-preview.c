@@ -25,7 +25,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <cairo-pdf.h>
 
-#define PRINTER_DPI (72.)
+#define PRINTER_DPI (72.0)
 #define TOOLTIP_THRESHOLD 20
 
 struct _GeditPrintPreview
@@ -78,9 +78,7 @@ G_DEFINE_TYPE (GeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
 static void
 gedit_print_preview_grab_focus (GtkWidget *widget)
 {
-	GeditPrintPreview *preview;
-
-	preview = GEDIT_PRINT_PREVIEW (widget);
+	GeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (widget);
 
 	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 }
@@ -143,13 +141,13 @@ set_rows_and_cols (GeditPrintPreview *preview,
 /* get the paper size in points: these must be used only
  * after the widget has been mapped and the dpi is known */
 
-static double
+static gdouble
 get_paper_width (GeditPrintPreview *preview)
 {
 	return preview->paper_width * preview->dpi;
 }
 
-static double
+static gdouble
 get_paper_height (GeditPrintPreview *preview)
 {
 	return preview->paper_height * preview->dpi;
@@ -180,7 +178,7 @@ update_tile_size (GeditPrintPreview *preview)
 
 static void
 set_zoom_factor (GeditPrintPreview *preview,
-                 double            zoom)
+		 gdouble            zoom)
 {
 	preview->scale = zoom;
 
@@ -192,9 +190,9 @@ static void
 set_zoom_fit_to_size (GeditPrintPreview *preview)
 {
 	GtkAdjustment *hadj, *vadj;
-	double width, height;
-	double p_width, p_height;
-	double zoomx, zoomy;
+	gdouble width, height;
+	gdouble p_width, p_height;
+	gdouble zoomx, zoomy;
 
 	get_adjustments (preview, &hadj, &vadj);
 
@@ -245,10 +243,11 @@ static void
 goto_page (GeditPrintPreview *preview,
            gint               page)
 {
-	gchar c[32];
+	gchar *page_str;
 
-	g_snprintf (c, 32, "%d", page + 1);
-	gtk_entry_set_text (preview->page_entry, c);
+	page_str = g_strdup_printf ("%d", page + 1);
+	gtk_entry_set_text (preview->page_entry, page_str);
+	g_free (page_str);
 
 	gtk_widget_set_sensitive (GTK_WIDGET (preview->prev_button),
 	                          (page > 0) && (preview->n_pages > 1));
@@ -588,7 +587,7 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 	gint pg;
 	gchar *tip;
 
-	if (preview->has_tooltip == TRUE)
+	if (preview->has_tooltip)
 	{
 		pg = get_page_at_coords (preview, x, y);
 		if (pg < 0)
@@ -613,11 +612,11 @@ preview_layout_key_press (GtkWidget         *widget,
 			  GeditPrintPreview *preview)
 {
 	GtkAdjustment *hadj, *vadj;
-	double x, y;
+	gdouble x, y;
 	guint h, w;
-	double hlower, hupper, vlower, vupper;
-	double hpage, vpage;
-	double hstep, vstep;
+	gdouble hlower, hupper, vlower, vupper;
+	gdouble hpage, vpage;
+	gdouble hstep, vstep;
 	gboolean domove = FALSE;
 	gboolean ret = TRUE;
 
@@ -772,74 +771,6 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 	preview->operation = NULL;
 	preview->context = NULL;
 	preview->gtk_preview = NULL;
-
-	gtk_widget_init_template (GTK_WIDGET (preview));
-
-	g_signal_connect (preview->prev_button,
-			  "clicked",
-			  G_CALLBACK (prev_button_clicked),
-			  preview);
-	g_signal_connect (preview->next_button,
-			  "clicked",
-			  G_CALLBACK (next_button_clicked),
-			  preview);
-	g_signal_connect (preview->page_entry,
-			  "activate",
-			  G_CALLBACK (page_entry_activated),
-			  preview);
-	g_signal_connect (preview->page_entry,
-			  "insert-text",
-			  G_CALLBACK (page_entry_insert_text),
-			  NULL);
-	g_signal_connect (preview->page_entry,
-			  "focus-out-event",
-			  G_CALLBACK (page_entry_focus_out),
-			  preview);
-	g_signal_connect (preview->multi_pages_button,
-			  "clicked",
-			  G_CALLBACK (multi_pages_button_clicked),
-			  preview);
-	g_signal_connect (preview->zoom_one_button,
-			  "clicked",
-			  G_CALLBACK (zoom_one_button_clicked),
-			  preview);
-	g_signal_connect (preview->zoom_fit_button,
-			  "clicked",
-			  G_CALLBACK (zoom_fit_button_clicked),
-			  preview);
-	g_signal_connect (preview->zoom_in_button,
-			  "clicked",
-			  G_CALLBACK (zoom_in_button_clicked),
-			  preview);
-	g_signal_connect (preview->zoom_out_button,
-			  "clicked",
-			  G_CALLBACK (zoom_out_button_clicked),
-			  preview);
-	g_signal_connect (preview->close_button,
-			  "clicked",
-			  G_CALLBACK (close_button_clicked),
-			  preview);
-
-	g_signal_connect (preview->layout,
-			  "query-tooltip",
-			  G_CALLBACK (preview_layout_query_tooltip),
-			  preview);
-	g_signal_connect (preview->layout,
-			  "key-press-event",
-			  G_CALLBACK (preview_layout_key_press),
-			  preview);
-	g_signal_connect (preview->layout,
-			  "scroll-event",
-			  G_CALLBACK (scroll_event_activated),
-			  preview);
-
-	/* hide the tooltip once we move the cursor, since gtk does not do it for us */
-	g_signal_connect (preview->layout,
-			  "motion-notify-event",
-			  G_CALLBACK (on_preview_layout_motion_notify),
-			  preview);
-	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
-
 	preview->cur_page = 0;
 	preview->paper_width = 0;
 	preview->paper_height = 0;
@@ -850,6 +781,86 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 	preview->cursor_x = 0;
 	preview->cursor_y = 0;
 	preview->has_tooltip = TRUE;
+
+	gtk_widget_init_template (GTK_WIDGET (preview));
+
+	g_signal_connect (preview->prev_button,
+			  "clicked",
+			  G_CALLBACK (prev_button_clicked),
+			  preview);
+
+	g_signal_connect (preview->next_button,
+			  "clicked",
+			  G_CALLBACK (next_button_clicked),
+			  preview);
+
+	g_signal_connect (preview->page_entry,
+			  "activate",
+			  G_CALLBACK (page_entry_activated),
+			  preview);
+
+	g_signal_connect (preview->page_entry,
+			  "insert-text",
+			  G_CALLBACK (page_entry_insert_text),
+			  NULL);
+
+	g_signal_connect (preview->page_entry,
+			  "focus-out-event",
+			  G_CALLBACK (page_entry_focus_out),
+			  preview);
+
+	g_signal_connect (preview->multi_pages_button,
+			  "clicked",
+			  G_CALLBACK (multi_pages_button_clicked),
+			  preview);
+
+	g_signal_connect (preview->zoom_one_button,
+			  "clicked",
+			  G_CALLBACK (zoom_one_button_clicked),
+			  preview);
+
+	g_signal_connect (preview->zoom_fit_button,
+			  "clicked",
+			  G_CALLBACK (zoom_fit_button_clicked),
+			  preview);
+
+	g_signal_connect (preview->zoom_in_button,
+			  "clicked",
+			  G_CALLBACK (zoom_in_button_clicked),
+			  preview);
+
+	g_signal_connect (preview->zoom_out_button,
+			  "clicked",
+			  G_CALLBACK (zoom_out_button_clicked),
+			  preview);
+
+	g_signal_connect (preview->close_button,
+			  "clicked",
+			  G_CALLBACK (close_button_clicked),
+			  preview);
+
+	g_signal_connect (preview->layout,
+			  "query-tooltip",
+			  G_CALLBACK (preview_layout_query_tooltip),
+			  preview);
+
+	g_signal_connect (preview->layout,
+			  "key-press-event",
+			  G_CALLBACK (preview_layout_key_press),
+			  preview);
+
+	g_signal_connect (preview->layout,
+			  "scroll-event",
+			  G_CALLBACK (scroll_event_activated),
+			  preview);
+
+	/* hide the tooltip once we move the cursor, since gtk does not do it for us */
+	g_signal_connect (preview->layout,
+			  "motion-notify-event",
+			  G_CALLBACK (on_preview_layout_motion_notify),
+			  preview);
+
+	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 }
 
 static void
@@ -877,7 +888,7 @@ static void
 draw_page_frame (cairo_t            *cr,
 		 GeditPrintPreview  *preview)
 {
-	double w, h;
+	gdouble w, h;
 
 	w = get_paper_width (preview);
 	h = get_paper_height (preview);
@@ -905,9 +916,9 @@ draw_page_frame (cairo_t            *cr,
 
 static void
 draw_page (cairo_t           *cr,
-	   double             x,
-	   double             y,
-	   gint	              page_number,
+	   gdouble            x,
+	   gdouble            y,
+	   gint               page_number,
 	   GeditPrintPreview *preview)
 {
 	cairo_save (cr);
@@ -968,22 +979,22 @@ preview_draw (GtkWidget         *widget,
 		cairo_restore (cr);
 	}
 
-	return TRUE;
+	return GDK_EVENT_STOP;
 }
 
-static double
+static gdouble
 get_screen_dpi (GeditPrintPreview *preview)
 {
 	GdkScreen *screen;
-	double dpi;
+	gdouble dpi;
 
 	screen = gtk_widget_get_screen (GTK_WIDGET (preview));
 
 	dpi = gdk_screen_get_resolution (screen);
-	if (dpi < 30. || 600. < dpi)
+	if (dpi < 30.0 || 600.0 < dpi)
 	{
 		g_warning ("Invalid the x-resolution for the screen, assuming 96dpi");
-		dpi = 96.;
+		dpi = 96.0;
 	}
 
 	return dpi;
@@ -999,8 +1010,8 @@ set_n_pages (GeditPrintPreview *preview,
 
 	/* FIXME: count the visible pages */
 
-	str =  g_strdup_printf ("%d", n_pages);
-	gtk_label_set_markup (preview->last_page_label, str);
+	str = g_strdup_printf ("%d", n_pages);
+	gtk_label_set_text (preview->last_page_label, str);
 	g_free (str);
 }
 
@@ -1056,14 +1067,12 @@ dummy_write_func (G_GNUC_UNUSED gpointer      closure,
 	return CAIRO_STATUS_SUCCESS;
 }
 
-#define PRINTER_DPI (72.)
-
 static cairo_surface_t *
 create_preview_surface_platform (GtkPaperSize *paper_size,
-				 double       *dpi_x,
-				 double       *dpi_y)
+				 gdouble      *dpi_x,
+				 gdouble      *dpi_y)
 {
-	double width, height;
+	gdouble width, height;
 	cairo_surface_t *sf;
 
 	width = gtk_paper_size_get_width (paper_size, GTK_UNIT_POINTS);
@@ -1079,8 +1088,8 @@ create_preview_surface_platform (GtkPaperSize *paper_size,
 
 static cairo_surface_t *
 create_preview_surface (GeditPrintPreview *preview,
-			double            *dpi_x,
-			double            *dpi_y)
+			gdouble           *dpi_x,
+			gdouble           *dpi_y)
 {
 	GtkPageSetup *page_setup;
 	GtkPaperSize *paper_size;
@@ -1102,7 +1111,7 @@ gedit_print_preview_new (GtkPrintOperation        *op,
 	GtkPageSetup *page_setup;
 	cairo_surface_t *surface;
 	cairo_t *cr;
-	double dpi_x, dpi_y;
+	gdouble dpi_x, dpi_y;
 
 	g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), NULL);
 	g_return_val_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (gtk_preview), NULL);
@@ -1116,17 +1125,27 @@ gedit_print_preview_new (GtkPrintOperation        *op,
 	/* FIXME: is this legal?? */
 	gtk_print_operation_set_unit (op, GTK_UNIT_POINTS);
 
-	g_signal_connect (gtk_preview, "ready",
-			  G_CALLBACK (preview_ready), preview);
-	g_signal_connect (gtk_preview, "got-page-size",
-			  G_CALLBACK (preview_got_page_size), preview);
+	g_signal_connect_object (gtk_preview,
+				 "ready",
+				 G_CALLBACK (preview_ready),
+				 preview,
+				 0);
+
+	g_signal_connect_object (gtk_preview,
+				 "got-page-size",
+				 G_CALLBACK (preview_got_page_size),
+				 preview,
+				 0);
 
 	page_setup = gtk_print_context_get_page_setup (preview->context);
 	update_paper_size (preview, page_setup);
 
 	/* FIXME: we need a cr to paginate... but we can't get the drawing
 	 * area surface because it's not there yet... for now I create
-	 * a dummy pdf surface */
+	 * a dummy pdf surface.
+	 * gtk_print_context_set_cairo_context() should be called in the
+	 * got-page-size handler.
+	 */
 
 	surface = create_preview_surface (preview, &dpi_x, &dpi_y);
 	cr = cairo_create (surface);
