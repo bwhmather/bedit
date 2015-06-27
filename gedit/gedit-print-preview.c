@@ -50,8 +50,8 @@ struct _GeditPrintPreview
 	GtkWidget *layout;
 
 	/* real size of the page in inches */
-	double paper_w;
-	double paper_h;
+	double paper_width;
+	double paper_height;
 	double dpi;
 
 	double scale;
@@ -146,13 +146,13 @@ set_rows_and_cols (GeditPrintPreview *preview,
 static double
 get_paper_width (GeditPrintPreview *preview)
 {
-	return preview->paper_w * preview->dpi;
+	return preview->paper_width * preview->dpi;
 }
 
 static double
 get_paper_height (GeditPrintPreview *preview)
 {
-	return preview->paper_h * preview->dpi;
+	return preview->paper_height * preview->dpi;
 }
 
 #define PAGE_PAD 12
@@ -845,8 +845,8 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 
 	preview->cur_page = 0;
-	preview->paper_w = 0;
-	preview->paper_h = 0;
+	preview->paper_width = 0;
+	preview->paper_height = 0;
 	preview->dpi = PRINTER_DPI;
 	preview->scale = 1.0;
 	preview->rows = 1;
@@ -1037,8 +1037,8 @@ static void
 update_paper_size (GeditPrintPreview *preview,
 		   GtkPageSetup      *page_setup)
 {
-	preview->paper_w = gtk_page_setup_get_paper_width (page_setup, GTK_UNIT_INCH);
-	preview->paper_h = gtk_page_setup_get_paper_height (page_setup, GTK_UNIT_INCH);
+	preview->paper_width = gtk_page_setup_get_paper_width (page_setup, GTK_UNIT_INCH);
+	preview->paper_height = gtk_page_setup_get_paper_height (page_setup, GTK_UNIT_INCH);
 }
 
 static void
