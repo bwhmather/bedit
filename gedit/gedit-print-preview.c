@@ -50,11 +50,11 @@ struct _GeditPrintPreview
 	GtkWidget *layout;
 
 	/* real size of the page in inches */
-	double paper_width;
-	double paper_height;
-	double dpi;
+	gdouble paper_width;
+	gdouble paper_height;
+	gdouble dpi;
 
-	double scale;
+	gdouble scale;
 
 	/* size of the tile of a page (including padding
 	 * and drop shadow) in pixels */
@@ -70,7 +70,7 @@ struct _GeditPrintPreview
 	gint cursor_x;
 	gint cursor_y;
 
-	gboolean has_tooltip;
+	guint has_tooltip : 1;
 };
 
 G_DEFINE_TYPE (GeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
