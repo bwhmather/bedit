@@ -820,7 +820,6 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 			  G_CALLBACK (close_button_clicked),
 			  preview);
 
-	g_object_set (preview->layout, "has-tooltip", TRUE, NULL);
 	g_signal_connect (preview->layout,
 			  "query-tooltip",
 			  G_CALLBACK (preview_layout_query_tooltip),
