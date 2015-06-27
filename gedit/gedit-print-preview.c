@@ -58,8 +58,8 @@ struct _GeditPrintPreview
 
 	/* size of the tile of a page (including padding
 	 * and drop shadow) in pixels */
-	gint tile_w;
-	gint tile_h;
+	gint tile_width;
+	gint tile_height;
 
 	/* multipage support */
 	gint rows;
@@ -122,8 +122,8 @@ update_layout_size (GeditPrintPreview *preview)
 {
 	/* force size of the drawing area to make the scrolled window work */
 	gtk_layout_set_size (preview->layout,
-	                     preview->tile_w * preview->cols,
-	                     preview->tile_h * preview->rows);
+	                     preview->tile_width * preview->cols,
+	                     preview->tile_height * preview->rows);
 
 	gtk_widget_queue_draw (GTK_WIDGET (preview->layout));
 }
@@ -171,8 +171,8 @@ update_tile_size (GeditPrintPreview *preview)
 	w = 2 * PAGE_PAD + floor (preview->scale * get_paper_width (preview) + 0.5);
 	h = 2 * PAGE_PAD + floor (preview->scale * get_paper_height (preview) + 0.5);
 
-	preview->tile_w = w;
-	preview->tile_h = h;
+	preview->tile_width = w;
+	preview->tile_height = h;
 }
 
 /* Zoom should always be set with one of these two function
@@ -212,14 +212,14 @@ set_zoom_fit_to_size (GeditPrintPreview *preview)
 
 	if (zoomx <= zoomy)
 	{
-		preview->tile_w = width;
-		preview->tile_h = floor (0.5 + width * (p_height / p_width));
+		preview->tile_width = width;
+		preview->tile_height = floor (0.5 + width * (p_height / p_width));
 		preview->scale = zoomx;
 	}
 	else
 	{
-		preview->tile_w = floor (0.5 + height * (p_width / p_height));
-		preview->tile_h = height;
+		preview->tile_width = floor (0.5 + height * (p_width / p_height));
+		preview->tile_height = height;
 		preview->scale = zoomy;
 	}
 
@@ -523,7 +523,7 @@ get_page_at_coords (GeditPrintPreview *preview,
 	GtkAdjustment *hadj, *vadj;
 	gint r, c, pg;
 
-	if (preview->tile_h <= 0 || preview->tile_w <= 0)
+	if (preview->tile_height <= 0 || preview->tile_width <= 0)
 		return -1;
 
 	get_adjustments (preview, &hadj, &vadj);
@@ -531,8 +531,8 @@ get_page_at_coords (GeditPrintPreview *preview,
 	x += gtk_adjustment_get_value (hadj);
 	y += gtk_adjustment_get_value (vadj);
 
-	r = 1 + y / (preview->tile_h);
-	c = 1 + x / (preview->tile_w);
+	r = 1 + y / (preview->tile_height);
+	c = 1 + x / (preview->tile_width);
 
 	if (c > preview->cols)
 		return -1;
@@ -957,8 +957,8 @@ preview_draw (GtkWidget         *widget,
 				}
 
 				draw_page (cr,
-					   j * preview->tile_w,
-					   i * preview->tile_h,
+					   j * preview->tile_width,
+					   i * preview->tile_height,
 					   pg,
 					   preview);
 
