@@ -62,8 +62,7 @@ struct _GeditPrintPreview
 	gint tile_height;
 
 	/* multipage support */
-	gint rows;
-	gint cols;
+	gint n_columns;
 
 	guint n_pages;
 	guint cur_page;
@@ -120,21 +119,19 @@ update_layout_size (GeditPrintPreview *preview)
 {
 	/* force size of the drawing area to make the scrolled window work */
 	gtk_layout_set_size (preview->layout,
-	                     preview->tile_width * preview->cols,
-	                     preview->tile_height * preview->rows);
+	                     preview->tile_width * preview->n_columns,
+	                     preview->tile_height);
 
 	gtk_widget_queue_draw (GTK_WIDGET (preview->layout));
 }
 
 static void
-set_rows_and_cols (GeditPrintPreview *preview,
-		   gint	              rows,
-		   gint	              cols)
+set_n_columns (GeditPrintPreview *preview,
+	       gint               n_columns)
 {
 	/* TODO: set the zoom appropriately */
 
-	preview->rows = rows;
-	preview->cols = cols;
+	preview->n_columns = n_columns;
 	update_layout_size (preview);
 }
 
@@ -199,8 +196,7 @@ set_zoom_fit_to_size (GeditPrintPreview *preview)
 	g_object_get (hadj, "page-size", &width, NULL);
 	g_object_get (vadj, "page-size", &height, NULL);
 
-	width /= preview->cols;
-	height /= preview->rows;
+	width /= preview->n_columns;
 
 	p_width = get_paper_width (preview);
 	p_height = get_paper_height (preview);
@@ -280,7 +276,7 @@ prev_button_clicked (GtkWidget         *button,
 	}
 	else
 	{
-		page = preview->cur_page - preview->rows * preview->cols;
+		page = preview->cur_page - preview->n_columns;
 	}
 
 	goto_page (preview, MAX (page, 0));
@@ -303,7 +299,7 @@ next_button_clicked (GtkWidget         *button,
 	}
 	else
 	{
-		page = preview->cur_page + preview->rows * preview->cols;
+		page = preview->cur_page + preview->n_columns;
 	}
 
 	goto_page (preview, MIN (page, preview->n_pages - 1));
@@ -381,67 +377,44 @@ page_entry_focus_out (GtkWidget         *widget,
 }
 
 static void
-on_1x1_clicked (GtkMenuItem       *i,
+on_1x1_clicked (GtkMenuItem       *item,
 		GeditPrintPreview *preview)
 {
-	set_rows_and_cols (preview, 1, 1);
+	set_n_columns (preview, 1);
 }
 
 static void
-on_1x2_clicked (GtkMenuItem       *i,
+on_1x2_clicked (GtkMenuItem       *item,
 		GeditPrintPreview *preview)
 {
-	set_rows_and_cols (preview, 1, 2);
-}
-
-static void
-on_2x1_clicked (GtkMenuItem       *i,
-		GeditPrintPreview *preview)
-{
-	set_rows_and_cols (preview, 2, 1);
-}
-
-static void
-on_2x2_clicked (GtkMenuItem       *i,
-		GeditPrintPreview *preview)
-{
-	set_rows_and_cols (preview, 2, 2);
+	set_n_columns (preview, 2);
 }
 
 static void
 multi_pages_button_clicked (GtkWidget         *button,
 			    GeditPrintPreview *preview)
 {
-	GtkWidget *m, *i;
+	GtkWidget *menu;
+	GtkWidget *item;
 
-	m = gtk_menu_new ();
-	gtk_widget_show (m);
-	g_signal_connect (m,
-			 "selection_done",
+	menu = gtk_menu_new ();
+	gtk_widget_show (menu);
+	g_signal_connect (menu,
+			  "selection-done",
 			  G_CALLBACK (gtk_widget_destroy),
-			  m);
+			  NULL);
 
-	i = gtk_menu_item_new_with_label ("1x1");
-	gtk_widget_show (i);
-	gtk_menu_attach (GTK_MENU (m), i, 0, 1, 0, 1);
-	g_signal_connect (i, "activate", G_CALLBACK (on_1x1_clicked), preview);
+	item = gtk_menu_item_new_with_label ("1x1");
+	gtk_widget_show (item);
+	gtk_menu_attach (GTK_MENU (menu), item, 0, 1, 0, 1);
+	g_signal_connect (item, "activate", G_CALLBACK (on_1x1_clicked), preview);
 
-	i = gtk_menu_item_new_with_label ("2x1");
-	gtk_widget_show (i);
-	gtk_menu_attach (GTK_MENU (m), i, 0, 1, 1, 2);
-	g_signal_connect (i, "activate", G_CALLBACK (on_2x1_clicked), preview);
+	item = gtk_menu_item_new_with_label ("1x2");
+	gtk_widget_show (item);
+	gtk_menu_attach (GTK_MENU (menu), item, 1, 2, 0, 1);
+	g_signal_connect (item, "activate", G_CALLBACK (on_1x2_clicked), preview);
 
-	i = gtk_menu_item_new_with_label ("1x2");
-	gtk_widget_show (i);
-	gtk_menu_attach (GTK_MENU (m), i, 1, 2, 0, 1);
-	g_signal_connect (i, "activate", G_CALLBACK (on_1x2_clicked), preview);
-
-	i = gtk_menu_item_new_with_label ("2x2");
-	gtk_widget_show (i);
-	gtk_menu_attach (GTK_MENU (m), i, 1, 2, 1, 2);
-	g_signal_connect (i, "activate", G_CALLBACK (on_2x2_clicked), preview);
-
-	gtk_menu_popup (GTK_MENU (m),
+	gtk_menu_popup (GTK_MENU (menu),
 			NULL, NULL, NULL, preview, 0,
 			GDK_CURRENT_TIME);
 }
@@ -510,7 +483,7 @@ scroll_event_activated (GtkWidget         *widget,
 static gint
 get_first_page_displayed (GeditPrintPreview *preview)
 {
-	return preview->cur_page - preview->cur_page % (preview->cols * preview->rows);
+	return preview->cur_page - preview->cur_page % preview->n_columns;
 }
 
 /* returns the page number (starting from 0) or -1 if no page */
@@ -533,11 +506,11 @@ get_page_at_coords (GeditPrintPreview *preview,
 	r = 1 + y / (preview->tile_height);
 	c = 1 + x / (preview->tile_width);
 
-	if (c > preview->cols)
+	if (c > preview->n_columns)
 		return -1;
 
 	pg = get_first_page_displayed (preview) - 1;
-	pg += (r - 1) * preview->cols + c;
+	pg += (r - 1) * preview->n_columns + c;
 
 	if (pg >= preview->n_pages)
 		return -1;
@@ -776,8 +749,7 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 	preview->paper_height = 0;
 	preview->dpi = PRINTER_DPI;
 	preview->scale = 1.0;
-	preview->rows = 1;
-	preview->cols = 1;
+	preview->n_columns = 1;
 	preview->cursor_x = 0;
 	preview->cursor_y = 0;
 	preview->has_tooltip = TRUE;
@@ -954,30 +926,25 @@ preview_draw (GtkWidget         *widget,
 
 	page_num = get_first_page_displayed (preview);
 
-	for (col = 0; col < preview->cols; col++)
+	for (col = 0; col < preview->n_columns; col++)
 	{
-		gint row;
-
-		for (row = 0; row < preview->rows; row++)
+		if (!gtk_print_operation_preview_is_selected (preview->gtk_preview, page_num))
 		{
-			if (!gtk_print_operation_preview_is_selected (preview->gtk_preview, page_num))
-			{
-				continue;
-			}
-
-			if (page_num == preview->n_pages)
-			{
-				break;
-			}
-
-			draw_page (cr,
-				   row * preview->tile_width,
-				   col * preview->tile_height,
-				   page_num,
-				   preview);
-
-			page_num++;
+			continue;
 		}
+
+		if (page_num == preview->n_pages)
+		{
+			break;
+		}
+
+		draw_page (cr,
+			   0,
+			   col * preview->tile_height,
+			   page_num,
+			   preview);
+
+		page_num++;
 	}
 
 	cairo_restore (cr);
