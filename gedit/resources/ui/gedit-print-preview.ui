@@ -28,7 +28,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkButton" id="prev">
+                  <object class="GtkButton" id="prev_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes">Show the previous page</property>
@@ -42,7 +42,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="next">
+                  <object class="GtkButton" id="next_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes">Show the next page</property>
@@ -125,7 +125,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkLabel" id="last">
+                  <object class="GtkLabel" id="last_page_label">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="has_focus">False</property>
@@ -179,7 +179,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkButton" id="multi">
+                  <object class="GtkButton" id="multi_pages_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes">Show multiple pages</property>
@@ -227,7 +227,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkButton" id="zoom_one">
+                  <object class="GtkButton" id="zoom_one_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes">Zoom 1:1</property>
@@ -241,7 +241,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="zoom_fit">
+                  <object class="GtkButton" id="zoom_fit_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes">Zoom to fit the whole page</property>
@@ -255,7 +255,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="zoom_in">
+                  <object class="GtkButton" id="zoom_in_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes">Zoom the page in</property>
@@ -269,7 +269,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="zoom_out">
+                  <object class="GtkButton" id="zoom_out_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes">Zoom the page out</property>
@@ -320,7 +320,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <child>
-                  <object class="GtkButton" id="close">
+                  <object class="GtkButton" id="close_button">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="tooltip_text" translatable="yes">Close print preview</property>

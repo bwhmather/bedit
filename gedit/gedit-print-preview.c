@@ -36,18 +36,18 @@ struct _GeditPrintPreview
 	GtkPrintContext *context;
 	GtkPrintOperationPreview *gtk_preview;
 
-	GtkWidget *next;
-	GtkButton *prev;
-	GtkWidget *page_entry;
-	GtkWidget *last;
-	GtkWidget *multi;
-	GtkWidget *zoom_one;
-	GtkWidget *zoom_fit;
-	GtkWidget *zoom_in;
-	GtkWidget *zoom_out;
-	GtkWidget *close;
+	GtkButton *prev_button;
+	GtkButton *next_button;
+	GtkEntry *page_entry;
+	GtkLabel *last_page_label;
+	GtkButton *multi_pages_button;
+	GtkButton *zoom_one_button;
+	GtkButton *zoom_fit_button;
+	GtkButton *zoom_in_button;
+	GtkButton *zoom_out_button;
+	GtkButton *close_button;
 
-	GtkWidget *layout;
+	GtkLayout *layout;
 
 	/* real size of the page in inches */
 	gdouble paper_width;
@@ -95,16 +95,16 @@ gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-print-preview.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, prev);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, next);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, multi);
+	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, prev_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, next_button);
 	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, page_entry);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, last);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_one);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_fit);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_in);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_out);
-	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, close);
+	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, last_page_label);
+	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, multi_pages_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_one_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_fit_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_in_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_out_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, close_button);
 	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, layout);
 }
 
@@ -121,11 +121,11 @@ static void
 update_layout_size (GeditPrintPreview *preview)
 {
 	/* force size of the drawing area to make the scrolled window work */
-	gtk_layout_set_size (GTK_LAYOUT (preview->layout),
+	gtk_layout_set_size (preview->layout,
 	                     preview->tile_w * preview->cols,
 	                     preview->tile_h * preview->rows);
 
-	gtk_widget_queue_draw (preview->layout);
+	gtk_widget_queue_draw (GTK_WIDGET (preview->layout));
 }
 
 static void
@@ -248,11 +248,11 @@ goto_page (GeditPrintPreview *preview,
 	gchar c[32];
 
 	g_snprintf (c, 32, "%d", page + 1);
-	gtk_entry_set_text (GTK_ENTRY (preview->page_entry), c);
+	gtk_entry_set_text (preview->page_entry, c);
 
-	gtk_widget_set_sensitive (GTK_WIDGET (preview->prev),
+	gtk_widget_set_sensitive (GTK_WIDGET (preview->prev_button),
 	                          (page > 0) && (preview->n_pages > 1));
-	gtk_widget_set_sensitive (GTK_WIDGET (preview->next),
+	gtk_widget_set_sensitive (GTK_WIDGET (preview->next_button),
 	                          (page != (preview->n_pages - 1)) &&
 	                          (preview->n_pages > 1));
 
@@ -261,7 +261,7 @@ goto_page (GeditPrintPreview *preview,
 		preview->cur_page = page;
 		if (preview->n_pages > 0)
 		{
-			gtk_widget_queue_draw (preview->layout);
+			gtk_widget_queue_draw (GTK_WIDGET (preview->layout));
 		}
 	}
 }
@@ -410,8 +410,8 @@ on_2x2_clicked (GtkMenuItem       *i,
 }
 
 static void
-multi_button_clicked (GtkWidget	        *button,
-		      GeditPrintPreview *preview)
+multi_pages_button_clicked (GtkWidget         *button,
+			    GeditPrintPreview *preview)
 {
 	GtkWidget *m, *i;
 
@@ -637,7 +637,7 @@ preview_layout_key_press (GtkWidget         *widget,
 		      "page-size", &vpage,
 		      NULL);
 
-	gtk_layout_get_size (GTK_LAYOUT (preview->layout), &w, &h);
+	gtk_layout_get_size (preview->layout, &w, &h);
 
 	hstep = 10;
 	vstep = 10;
@@ -749,7 +749,7 @@ preview_layout_key_press (GtkWidget         *widget,
 		case 'p':
 			if (event->state & GDK_MOD1_MASK)
 			{
-				gtk_widget_grab_focus (preview->page_entry);
+				gtk_widget_grab_focus (GTK_WIDGET (preview->page_entry));
 			}
 			break;
 		default:
@@ -775,11 +775,11 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 
 	gtk_widget_init_template (GTK_WIDGET (preview));
 
-	g_signal_connect (preview->prev,
+	g_signal_connect (preview->prev_button,
 			  "clicked",
 			  G_CALLBACK (prev_button_clicked),
 			  preview);
-	g_signal_connect (preview->next,
+	g_signal_connect (preview->next_button,
 			  "clicked",
 			  G_CALLBACK (next_button_clicked),
 			  preview);
@@ -795,27 +795,27 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 			  "focus-out-event",
 			  G_CALLBACK (page_entry_focus_out),
 			  preview);
-	g_signal_connect (preview->multi,
+	g_signal_connect (preview->multi_pages_button,
 			  "clicked",
-			  G_CALLBACK (multi_button_clicked),
+			  G_CALLBACK (multi_pages_button_clicked),
 			  preview);
-	g_signal_connect (preview->zoom_one,
+	g_signal_connect (preview->zoom_one_button,
 			  "clicked",
 			  G_CALLBACK (zoom_one_button_clicked),
 			  preview);
-	g_signal_connect (preview->zoom_fit,
+	g_signal_connect (preview->zoom_fit_button,
 			  "clicked",
 			  G_CALLBACK (zoom_fit_button_clicked),
 			  preview);
-	g_signal_connect (preview->zoom_in,
+	g_signal_connect (preview->zoom_in_button,
 			  "clicked",
 			  G_CALLBACK (zoom_in_button_clicked),
 			  preview);
-	g_signal_connect (preview->zoom_out,
+	g_signal_connect (preview->zoom_out_button,
 			  "clicked",
 			  G_CALLBACK (zoom_out_button_clicked),
 			  preview);
-	g_signal_connect (preview->close,
+	g_signal_connect (preview->close_button,
 			  "clicked",
 			  G_CALLBACK (close_button_clicked),
 			  preview);
@@ -931,7 +931,7 @@ preview_draw (GtkWidget         *widget,
 	gint pg;
 	gint i, j;
 
-	bin_window = gtk_layout_get_bin_window (GTK_LAYOUT (preview->layout));
+	bin_window = gtk_layout_get_bin_window (preview->layout);
 
 	if (gtk_cairo_should_draw_window (cr, bin_window))
 	{
@@ -1001,7 +1001,7 @@ set_n_pages (GeditPrintPreview *preview,
 	/* FIXME: count the visible pages */
 
 	str =  g_strdup_printf ("%d", n_pages);
-	gtk_label_set_markup (GTK_LABEL (preview->last), str);
+	gtk_label_set_markup (preview->last_page_label, str);
 	g_free (str);
 }
 
@@ -1027,7 +1027,7 @@ preview_ready (GtkPrintOperationPreview *gtk_preview,
 				G_CALLBACK (preview_draw),
 				preview);
 
-	gtk_widget_queue_draw (preview->layout);
+	gtk_widget_queue_draw (GTK_WIDGET (preview->layout));
 }
 
 static void
