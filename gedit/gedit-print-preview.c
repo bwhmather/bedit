@@ -129,8 +129,6 @@ static void
 set_n_columns (GeditPrintPreview *preview,
 	       gint               n_columns)
 {
-	/* TODO: set the zoom appropriately */
-
 	preview->n_columns = n_columns;
 	update_layout_size (preview);
 }
@@ -388,6 +386,7 @@ on_1x2_clicked (GtkMenuItem       *item,
 		GeditPrintPreview *preview)
 {
 	set_n_columns (preview, 2);
+	set_zoom_fit_to_size (preview);
 }
 
 static void
