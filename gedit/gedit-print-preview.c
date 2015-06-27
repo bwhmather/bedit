@@ -150,8 +150,8 @@ get_paper_height (GeditPrintPreview *preview)
 static void
 update_tile_size (GeditPrintPreview *preview)
 {
-	preview->tile_width = 2 * PAGE_PAD + floor (preview->scale * get_paper_width (preview) + 0.5);
-	preview->tile_height = 2 * PAGE_PAD + floor (preview->scale * get_paper_height (preview) + 0.5);
+	preview->tile_width = 2 * PAGE_PAD + round (preview->scale * get_paper_width (preview));
+	preview->tile_height = 2 * PAGE_PAD + round (preview->scale * get_paper_height (preview));
 }
 
 /* Zoom should always be set with one of these two function
@@ -191,12 +191,12 @@ set_zoom_fit_to_size (GeditPrintPreview *preview)
 	if (zoomx <= zoomy)
 	{
 		preview->tile_width = width;
-		preview->tile_height = floor (0.5 + width * (p_height / p_width));
+		preview->tile_height = round (width * (p_height / p_width));
 		preview->scale = zoomx;
 	}
 	else
 	{
-		preview->tile_width = floor (0.5 + height * (p_width / p_height));
+		preview->tile_width = round (height * (p_width / p_height));
 		preview->tile_height = height;
 		preview->scale = zoomy;
 	}
