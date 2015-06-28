@@ -81,6 +81,18 @@ struct _GeditPrintPreview
 G_DEFINE_TYPE (GeditPrintPreview, gedit_print_preview, GTK_TYPE_GRID)
 
 static void
+gedit_print_preview_dispose (GObject *object)
+{
+	GeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (object);
+
+	g_clear_object (&preview->operation);
+	g_clear_object (&preview->context);
+	g_clear_object (&preview->gtk_preview);
+
+	G_OBJECT_CLASS (gedit_print_preview_parent_class)->dispose (object);
+}
+
+static void
 gedit_print_preview_grab_focus (GtkWidget *widget)
 {
 	GeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (widget);
@@ -91,7 +103,10 @@ gedit_print_preview_grab_focus (GtkWidget *widget)
 static void
 gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 {
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+
+	object_class->dispose = gedit_print_preview_dispose;
 
 	widget_class->grab_focus = gedit_print_preview_grab_focus;
 
