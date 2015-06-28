@@ -61,13 +61,6 @@ struct _GeditPrintPreview
 
 	gdouble scale;
 
-	/* The tile size is the size in pixels of the area where a page will be
-	 * drawn, including the padding. The size is independent of the
-	 * orientation.
-	 */
-	gint tile_width;
-	gint tile_height;
-
 	/* multipage support */
 	gint n_columns;
 
@@ -145,26 +138,6 @@ gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, layout);
 }
 
-static void
-get_adjustments (GeditPrintPreview  *preview,
-		 GtkAdjustment     **hadj,
-		 GtkAdjustment     **vadj)
-{
-	*hadj = gtk_scrollable_get_hadjustment (GTK_SCROLLABLE (preview->layout));
-	*vadj = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (preview->layout));
-}
-
-static void
-update_layout_size (GeditPrintPreview *preview)
-{
-	/* force size of the drawing area to make the scrolled window work */
-	gtk_layout_set_size (preview->layout,
-	                     preview->tile_width * preview->n_columns,
-	                     preview->tile_height);
-
-	gtk_widget_queue_draw (GTK_WIDGET (preview->layout));
-}
-
 /* Get the paper size in points: these must be used only
  * after the widget has been mapped and the dpi is known.
  */
@@ -180,12 +153,49 @@ get_paper_height (GeditPrintPreview *preview)
 	return preview->paper_height * preview->dpi;
 }
 
-/* Updates the tile size to the current zoom and page size. */
+/* The tile size is the size in pixels of the area where a page will be
+ * drawn, including the padding. The size is independent of the
+ * orientation.
+ */
 static void
-update_tile_size (GeditPrintPreview *preview)
+get_tile_size (GeditPrintPreview *preview,
+	       gint              *tile_width,
+	       gint              *tile_height)
 {
-	preview->tile_width = 2 * PAGE_PAD + round (preview->scale * get_paper_width (preview));
-	preview->tile_height = 2 * PAGE_PAD + round (preview->scale * get_paper_height (preview));
+	if (tile_width != NULL)
+	{
+		*tile_width = 2 * PAGE_PAD + round (preview->scale * get_paper_width (preview));
+	}
+
+	if (tile_height != NULL)
+	{
+		*tile_height = 2 * PAGE_PAD + round (preview->scale * get_paper_height (preview));
+	}
+}
+
+static void
+get_adjustments (GeditPrintPreview  *preview,
+		 GtkAdjustment     **hadj,
+		 GtkAdjustment     **vadj)
+{
+	*hadj = gtk_scrollable_get_hadjustment (GTK_SCROLLABLE (preview->layout));
+	*vadj = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (preview->layout));
+}
+
+static void
+update_layout_size (GeditPrintPreview *preview)
+{
+	gint tile_width;
+	gint tile_height;
+
+	get_tile_size (preview, &tile_width, &tile_height);
+
+	/* force size of the drawing area to make the scrolled window work */
+	gtk_layout_set_size (preview->layout,
+	                     tile_width * preview->n_columns,
+	                     tile_height);
+
+	gtk_widget_queue_draw (GTK_WIDGET (preview->layout));
 }
 
 /* Zoom should always be set with one of these two function
@@ -197,8 +207,6 @@ set_zoom_factor (GeditPrintPreview *preview,
 		 gdouble            zoom)
 {
 	preview->scale = zoom;
-
-	update_tile_size (preview);
 	update_layout_size (preview);
 }
 
@@ -488,10 +496,13 @@ get_page_at_coords (GeditPrintPreview *preview,
                     gint               x,
                     gint               y)
 {
+	gint tile_width, tile_height;
 	GtkAdjustment *hadj, *vadj;
 	gint col, page;
 
-	if (preview->tile_height <= 0 || preview->tile_width <= 0)
+	get_tile_size (preview, &tile_width, &tile_height);
+
+	if (tile_height <= 0 || tile_width <= 0)
 	{
 		return -1;
 	}
@@ -501,10 +512,9 @@ get_page_at_coords (GeditPrintPreview *preview,
 	x += gtk_adjustment_get_value (hadj);
 	y += gtk_adjustment_get_value (vadj);
 
-	col = x / preview->tile_width;
+	col = x / tile_width;
 
-	if (col >= preview->n_columns ||
-	    y > preview->tile_height)
+	if (col >= preview->n_columns || y > tile_height)
 	{
 		return -1;
 	}
@@ -916,6 +926,7 @@ preview_draw (GtkWidget         *widget,
 	      GeditPrintPreview *preview)
 {
 	GdkWindow *bin_window;
+	gint tile_width;
 	gint page_num;
 	gint col;
 
@@ -930,6 +941,8 @@ preview_draw (GtkWidget         *widget,
 
 	gtk_cairo_transform_to_window (cr, widget, bin_window);
 
+	get_tile_size (preview, &tile_width, NULL);
+
 	col = 0;
 	page_num = get_first_page_displayed (preview);
 
@@ -942,7 +955,7 @@ preview_draw (GtkWidget         *widget,
 		}
 
 		draw_page (cr,
-			   col * preview->tile_width,
+			   col * tile_width,
 			   0,
 			   page_num,
 			   preview);
