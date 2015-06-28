@@ -85,9 +85,24 @@ gedit_print_preview_dispose (GObject *object)
 {
 	GeditPrintPreview *preview = GEDIT_PRINT_PREVIEW (object);
 
+	if (preview->gtk_preview != NULL)
+	{
+		GtkPrintOperationPreview *gtk_preview;
+
+		/* Set preview->gtk_preview to NULL because when calling
+		 * end_preview() this dispose() function can be run a second
+		 * time.
+		 */
+		gtk_preview = preview->gtk_preview;
+		preview->gtk_preview = NULL;
+
+		gtk_print_operation_preview_end_preview (gtk_preview);
+
+		g_object_unref (gtk_preview);
+	}
+
 	g_clear_object (&preview->operation);
 	g_clear_object (&preview->context);
-	g_clear_object (&preview->gtk_preview);
 
 	G_OBJECT_CLASS (gedit_print_preview_parent_class)->dispose (object);
 }

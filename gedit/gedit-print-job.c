@@ -439,13 +439,6 @@ preview_ready (GtkPrintOperationPreview *gtk_preview,
 	g_clear_object (&job->preview);
 }
 
-static void
-preview_destroyed (GtkWidget                *preview,
-		   GtkPrintOperationPreview *gtk_preview)
-{
-	gtk_print_operation_preview_end_preview (gtk_preview);
-}
-
 static gboolean
 preview_cb (GtkPrintOperation        *op,
 	    GtkPrintOperationPreview *gtk_preview,
@@ -461,12 +454,6 @@ preview_cb (GtkPrintOperation        *op,
 			        "ready",
 				G_CALLBACK (preview_ready),
 				job);
-
-	/* FIXME: should this go in the preview widget itself? */
-	g_signal_connect (job->preview,
-			  "destroy",
-			  G_CALLBACK (preview_destroyed),
-			  gtk_preview);
 
 	return TRUE;
 }
