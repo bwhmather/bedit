@@ -675,7 +675,7 @@ preview_layout_key_press (GtkWidget         *widget,
 	gdouble x, y;
 	gdouble hlower, vlower;
 	gdouble hupper, vupper;
-	gdouble hpage, vpage;
+	gdouble visible_width, visible_height;
 	gdouble hstep, vstep;
 	gint n_pages;
 	gboolean do_move = FALSE;
@@ -691,8 +691,8 @@ preview_layout_key_press (GtkWidget         *widget,
 	hupper = gtk_adjustment_get_upper (hadj);
 	vupper = gtk_adjustment_get_upper (vadj);
 
-	hpage = gtk_adjustment_get_page_size (hadj);
-	vpage = gtk_adjustment_get_page_size (vadj);
+	visible_width = gtk_adjustment_get_page_size (hadj);
+	visible_height = gtk_adjustment_get_page_size (vadj);
 
 	hstep = 10;
 	vstep = 10;
@@ -720,9 +720,9 @@ preview_layout_key_press (GtkWidget         *widget,
 		case GDK_KEY_KP_Right:
 		case GDK_KEY_Right:
 			if (event->state & GDK_SHIFT_MASK)
-				x = hupper - hpage;
+				x = hupper - visible_width;
 			else
-				x = MIN (hupper - hpage, x + hstep);
+				x = MIN (hupper - visible_width, x + hstep);
 			do_move = TRUE;
 			break;
 
@@ -749,7 +749,7 @@ preview_layout_key_press (GtkWidget         *widget,
 			if (event->state & GDK_SHIFT_MASK)
 				goto page_down;
 
-			y = MIN (vupper - vpage, y + vstep);
+			y = MIN (vupper - visible_height, y + vstep);
 			do_move = TRUE;
 			break;
 
@@ -764,7 +764,7 @@ preview_layout_key_press (GtkWidget         *widget,
 				if (preview->cur_page > 0)
 				{
 					goto_page (preview, preview->cur_page - 1);
-					y = (vupper - vpage);
+					y = (vupper - visible_height);
 				}
 			}
 			else
@@ -778,7 +778,7 @@ preview_layout_key_press (GtkWidget         *widget,
 		case GDK_KEY_Page_Down:
 		case ' ':
 		page_down:
-			if (y >= (vupper - vpage))
+			if (y >= (vupper - visible_height))
 			{
 				if (preview->cur_page < n_pages - 1)
 				{
@@ -788,7 +788,7 @@ preview_layout_key_press (GtkWidget         *widget,
 			}
 			else
 			{
-				y = (vupper - vpage);
+				y = (vupper - visible_height);
 			}
 			do_move = TRUE;
 			break;
