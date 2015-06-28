@@ -52,6 +52,13 @@ struct _GeditPrintPreview
 	GtkButton *zoom_out_button;
 	GtkButton *close_button;
 
+	/* The GtkLayout is where the pages are drawn. The layout should have
+	 * the focus, because key-press-events and scroll-events are handled on
+	 * the layout. It is AFAIK not easily possible to handle those events on
+	 * the GeditPrintPreview itself because when a toolbar item has the
+	 * focus, some key presses (like the arrows) moves the focus to a
+	 * sibling toolbar item instead.
+	 */
 	GtkLayout *layout;
 
 	/* real size of the page in inches */
@@ -292,6 +299,8 @@ prev_button_clicked (GtkWidget         *button,
 
 	goto_page (preview, MAX (page, 0));
 
+	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
+
 	gdk_event_free (event);
 }
 
@@ -314,6 +323,8 @@ next_button_clicked (GtkWidget         *button,
 	}
 
 	goto_page (preview, MIN (page, preview->n_pages - 1));
+
+	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 
 	gdk_event_free (event);
 }
@@ -384,6 +395,7 @@ on_1x1_clicked (GtkMenuItem       *item,
 {
 	preview->n_columns = 1;
 	update_layout_size (preview);
+	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 }
 
 static void
@@ -392,6 +404,7 @@ on_1x2_clicked (GtkMenuItem       *item,
 {
 	preview->n_columns = 2;
 	set_zoom_fit_to_size (preview);
+	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 }
 
 static void
@@ -428,6 +441,7 @@ zoom_one_button_clicked (GtkWidget         *button,
 			 GeditPrintPreview *preview)
 {
 	set_zoom_factor (preview, 1);
+	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 }
 
 static void
@@ -435,6 +449,7 @@ zoom_fit_button_clicked (GtkWidget         *button,
 			 GeditPrintPreview *preview)
 {
 	set_zoom_fit_to_size (preview);
+	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 }
 
 static void
@@ -442,6 +457,7 @@ zoom_in_button_clicked (GtkWidget         *button,
 			GeditPrintPreview *preview)
 {
 	zoom_in (preview);
+	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 }
 
 static void
@@ -449,6 +465,7 @@ zoom_out_button_clicked (GtkWidget         *button,
 			 GeditPrintPreview *preview)
 {
 	zoom_out (preview);
+	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 }
 
 static void
