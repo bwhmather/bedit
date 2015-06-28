@@ -172,36 +172,23 @@ set_zoom_fit_to_size (GeditPrintPreview *preview)
 {
 	GtkAdjustment *hadj, *vadj;
 	gdouble width, height;
-	gdouble p_width, p_height;
+	gdouble paper_width, paper_height;
 	gdouble zoomx, zoomy;
 
 	get_adjustments (preview, &hadj, &vadj);
 
-	g_object_get (hadj, "page-size", &width, NULL);
-	g_object_get (vadj, "page-size", &height, NULL);
+	width = gtk_adjustment_get_page_size (hadj);
+	height = gtk_adjustment_get_page_size (vadj);
 
 	width /= preview->n_columns;
 
-	p_width = get_paper_width (preview);
-	p_height = get_paper_height (preview);
+	paper_width = get_paper_width (preview);
+	paper_height = get_paper_height (preview);
 
-	zoomx = MAX (1, width - 2 * PAGE_PAD) / p_width;
-	zoomy = MAX (1, height - 2 * PAGE_PAD) / p_height;
+	zoomx = MAX (1, width - 2 * PAGE_PAD) / paper_width;
+	zoomy = MAX (1, height - 2 * PAGE_PAD) / paper_height;
 
-	if (zoomx <= zoomy)
-	{
-		preview->tile_width = width;
-		preview->tile_height = round (width * (p_height / p_width));
-		preview->scale = zoomx;
-	}
-	else
-	{
-		preview->tile_width = round (height * (p_width / p_height));
-		preview->tile_height = height;
-		preview->scale = zoomy;
-	}
-
-	update_layout_size (preview);
+	set_zoom_factor (preview, zoomx <= zoomy ? zoomx : zoomy);
 }
 
 static void
