@@ -727,13 +727,6 @@ preview_layout_key_press (GtkWidget         *widget,
 			gtk_widget_destroy (GTK_WIDGET (preview));
 			break;
 
-		case 'c':
-			if (event->state & GDK_MOD1_MASK)
-			{
-				gtk_widget_destroy (GTK_WIDGET (preview));
-			}
-			break;
-
 		case 'p':
 			if (event->state & GDK_MOD1_MASK)
 			{
