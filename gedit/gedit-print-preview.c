@@ -61,11 +61,7 @@ struct _GeditPrintPreview
 	 */
 	GtkLayout *layout;
 
-	/* real size of the page in inches */
-	gdouble paper_width;
-	gdouble paper_height;
 	gdouble dpi;
-
 	gdouble scale;
 
 	/* multipage support */
@@ -76,6 +72,7 @@ struct _GeditPrintPreview
 	 */
 	guint n_pages;
 	guint cur_page; /* starts at 0 */
+
 	gint cursor_x;
 	gint cursor_y;
 
@@ -151,13 +148,25 @@ gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 static gdouble
 get_paper_width (GeditPrintPreview *preview)
 {
-	return preview->paper_width * preview->dpi;
+	GtkPageSetup *page_setup;
+	gdouble paper_width;
+
+	page_setup = gtk_print_context_get_page_setup (preview->context);
+	paper_width = gtk_page_setup_get_paper_width (page_setup, GTK_UNIT_INCH);
+
+	return paper_width * preview->dpi;
 }
 
 static gdouble
 get_paper_height (GeditPrintPreview *preview)
 {
-	return preview->paper_height * preview->dpi;
+	GtkPageSetup *page_setup;
+	gdouble paper_height;
+
+	page_setup = gtk_print_context_get_page_setup (preview->context);
+	paper_height = gtk_page_setup_get_paper_height (page_setup, GTK_UNIT_INCH);
+
+	return paper_height * preview->dpi;
 }
 
 /* The tile size is the size in pixels of the area where a page will be
@@ -779,8 +788,6 @@ static void
 gedit_print_preview_init (GeditPrintPreview *preview)
 {
 	preview->cur_page = 0;
-	preview->paper_width = 0;
-	preview->paper_height = 0;
 	preview->dpi = PRINTER_DPI;
 	preview->scale = 1.0;
 	preview->n_columns = 1;
@@ -1042,23 +1049,6 @@ preview_ready (GtkPrintOperationPreview *gtk_preview,
 	gtk_widget_queue_draw (GTK_WIDGET (preview->layout));
 }
 
-static void
-update_paper_size (GeditPrintPreview *preview,
-		   GtkPageSetup      *page_setup)
-{
-	preview->paper_width = gtk_page_setup_get_paper_width (page_setup, GTK_UNIT_INCH);
-	preview->paper_height = gtk_page_setup_get_paper_height (page_setup, GTK_UNIT_INCH);
-}
-
-static void
-preview_got_page_size (GtkPrintOperationPreview *gtk_preview,
-		       GtkPrintContext          *context,
-		       GtkPageSetup             *page_setup,
-		       GeditPrintPreview        *preview)
-{
-	update_paper_size (preview, page_setup);
-}
-
 /* HACK: we need a dummy surface to paginate... can we use something simpler? */
 
 static cairo_status_t
@@ -1109,7 +1099,6 @@ gedit_print_preview_new (GtkPrintOperation        *operation,
 			 GtkPrintContext          *context)
 {
 	GeditPrintPreview *preview;
-	GtkPageSetup *page_setup;
 	cairo_surface_t *surface;
 	cairo_t *cr;
 	gdouble dpi_x, dpi_y;
@@ -1131,15 +1120,6 @@ gedit_print_preview_new (GtkPrintOperation        *operation,
 				 G_CALLBACK (preview_ready),
 				 preview,
 				 0);
-
-	g_signal_connect_object (gtk_preview,
-				 "got-page-size",
-				 G_CALLBACK (preview_got_page_size),
-				 preview,
-				 0);
-
-	page_setup = gtk_print_context_get_page_setup (preview->context);
-	update_paper_size (preview, page_setup);
 
 	/* FIXME: we need a cr to paginate... but we can't get the drawing
 	 * area surface because it's not there yet... for now I create
