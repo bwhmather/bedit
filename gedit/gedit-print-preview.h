@@ -28,9 +28,9 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE (GeditPrintPreview, gedit_print_preview, GEDIT, PRINT_PREVIEW, GtkGrid)
 
-GtkWidget	*gedit_print_preview_new	(GtkPrintOperation		*op,
-						 GtkPrintOperationPreview	*gtk_preview,
-						 GtkPrintContext		*context);
+GtkWidget	*gedit_print_preview_new	(GtkPrintOperation        *operation,
+						 GtkPrintOperationPreview *gtk_preview,
+						 GtkPrintContext          *context);
 
 G_END_DECLS
 

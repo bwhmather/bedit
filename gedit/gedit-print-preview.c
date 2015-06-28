@@ -2,6 +2,7 @@
  * gedit-print-preview.c
  *
  * Copyright (C) 2008 Paolo Borelli
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -70,6 +71,9 @@ struct _GeditPrintPreview
 	/* multipage support */
 	gint n_columns;
 
+	/* FIXME: handle correctly page selection (e.g. print only
+	 * page 1-3, 7 and 12.
+	 */
 	guint n_pages;
 	guint cur_page; /* starts at 0 */
 	gint cursor_x;
@@ -185,7 +189,8 @@ update_tile_size (GeditPrintPreview *preview)
 }
 
 /* Zoom should always be set with one of these two function
- * so that the tile size is properly updated */
+ * so that the tile size is properly updated.
+ */
 
 static void
 set_zoom_factor (GeditPrintPreview *preview,
@@ -326,39 +331,30 @@ page_entry_insert_text (GtkEditable *editable,
 			gint         length,
 			gint        *position)
 {
-	gunichar c;
-	const gchar *p;
 	const gchar *end;
+	const gchar *p;
 
-	p = text;
 	end = text + length;
 
-	while (p != end)
+	for (p = text; p < end; p = g_utf8_next_char (p))
 	{
-		const gchar *next;
-		next = g_utf8_next_char (p);
-
-		c = g_utf8_get_char (p);
-
-		if (!g_unichar_isdigit (c))
+		if (!g_unichar_isdigit (g_utf8_get_char (p)))
 		{
 			g_signal_stop_emission_by_name (editable, "insert-text");
 			break;
 		}
-
-		p = next;
 	}
 }
 
 static gboolean
-page_entry_focus_out (GtkWidget         *widget,
+page_entry_focus_out (GtkEntry          *entry,
 		      GdkEventFocus     *event,
 		      GeditPrintPreview *preview)
 {
 	const gchar *text;
 	gint page;
 
-	text = gtk_entry_get_text (GTK_ENTRY (widget));
+	text = gtk_entry_get_text (entry);
 	page = atoi (text) - 1;
 
 	/* Reset the page number only if really needed */
@@ -367,11 +363,11 @@ page_entry_focus_out (GtkWidget         *widget,
 		gchar *str;
 
 		str = g_strdup_printf ("%d", preview->cur_page + 1);
-		gtk_entry_set_text (GTK_ENTRY (widget), str);
+		gtk_entry_set_text (entry, str);
 		g_free (str);
 	}
 
-	return FALSE;
+	return GDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -563,16 +559,21 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 			      GtkTooltip        *tooltip,
 			      GeditPrintPreview *preview)
 {
-	gint pg;
-	gchar *tip;
-
 	if (preview->has_tooltip)
 	{
-		pg = get_page_at_coords (preview, x, y);
-		if (pg < 0)
-			return FALSE;
+		gint page;
+		gchar *tip;
 
-		tip = g_strdup_printf (_("Page %d of %d"), pg + 1, preview->n_pages);
+		page = get_page_at_coords (preview, x, y);
+		if (page < 0)
+		{
+			return FALSE;
+		}
+
+		tip = g_strdup_printf (_("Page %d of %d"),
+				       page + 1,
+				       preview->n_pages);
+
 		gtk_tooltip_set_text (tooltip, tip);
 		g_free (tip);
 
@@ -750,9 +751,6 @@ preview_layout_key_press (GtkWidget         *widget,
 static void
 gedit_print_preview_init (GeditPrintPreview *preview)
 {
-	preview->operation = NULL;
-	preview->context = NULL;
-	preview->gtk_preview = NULL;
 	preview->cur_page = 0;
 	preview->paper_width = 0;
 	preview->paper_height = 0;
@@ -845,9 +843,9 @@ gedit_print_preview_init (GeditPrintPreview *preview)
 }
 
 static void
-draw_page_content (cairo_t            *cr,
-		   gint	               page_number,
-		   GeditPrintPreview  *preview)
+draw_page_content (cairo_t           *cr,
+		   gint               page_number,
+		   GeditPrintPreview *preview)
 {
 	/* scale to the desired size */
 	cairo_scale (cr, preview->scale, preview->scale);
@@ -864,31 +862,30 @@ draw_page_content (cairo_t            *cr,
 /* For the frame, we scale and rotate manually, since
  * the line width should not depend on the zoom and
  * the drop shadow should be on the bottom right no matter
- * the orientation */
+ * the orientation.
+ */
 static void
-draw_page_frame (cairo_t            *cr,
-		 GeditPrintPreview  *preview)
+draw_page_frame (cairo_t           *cr,
+		 GeditPrintPreview *preview)
 {
-	gdouble w, h;
+	gdouble width;
+	gdouble height;
 
-	w = get_paper_width (preview);
-	h = get_paper_height (preview);
-
-	w *= preview->scale;
-	h *= preview->scale;
+	width = get_paper_width (preview) * preview->scale;
+	height = get_paper_height (preview) * preview->scale;
 
 	/* drop shadow */
 	cairo_set_source_rgb (cr, 0, 0, 0);
 	cairo_rectangle (cr,
 			 PAGE_SHADOW_OFFSET, PAGE_SHADOW_OFFSET,
-			 w, h);
+			 width, height);
 	cairo_fill (cr);
 
 	/* page frame */
 	cairo_set_source_rgb (cr, 1, 1, 1);
 	cairo_rectangle (cr,
 			 0, 0,
-			 w, h);
+			 width, height);
 	cairo_fill_preserve (cr);
 	cairo_set_source_rgb (cr, 0, 0, 0);
 	cairo_set_line_width (cr, 1);
@@ -985,8 +982,6 @@ set_n_pages (GeditPrintPreview *preview,
 
 	preview->n_pages = n_pages;
 
-	/* FIXME: count the visible pages */
-
 	str = g_strdup_printf ("%d", n_pages);
 	gtk_label_set_text (preview->last_page_label, str);
 	g_free (str);
@@ -1050,17 +1045,14 @@ create_preview_surface_platform (GtkPaperSize *paper_size,
 				 gdouble      *dpi_y)
 {
 	gdouble width, height;
-	cairo_surface_t *sf;
 
 	width = gtk_paper_size_get_width (paper_size, GTK_UNIT_POINTS);
 	height = gtk_paper_size_get_height (paper_size, GTK_UNIT_POINTS);
 
 	*dpi_x = *dpi_y = PRINTER_DPI;
 
-	sf = cairo_pdf_surface_create_for_stream (dummy_write_func, NULL,
-						  width, height);
-
-	return sf;
+	return cairo_pdf_surface_create_for_stream (dummy_write_func, NULL,
+						    width, height);
 }
 
 static cairo_surface_t *
@@ -1073,14 +1065,16 @@ create_preview_surface (GeditPrintPreview *preview,
 
 	page_setup = gtk_print_context_get_page_setup (preview->context);
 
-	/* gtk_page_setup_get_paper_size swaps width and height for landscape */
+	/* Note: gtk_page_setup_get_paper_size() swaps width and height for
+	 * landscape.
+	 */
 	paper_size = gtk_page_setup_get_paper_size (page_setup);
 
 	return create_preview_surface_platform (paper_size, dpi_x, dpi_y);
 }
 
 GtkWidget *
-gedit_print_preview_new (GtkPrintOperation        *op,
+gedit_print_preview_new (GtkPrintOperation        *operation,
 			 GtkPrintOperationPreview *gtk_preview,
 			 GtkPrintContext          *context)
 {
@@ -1090,17 +1084,17 @@ gedit_print_preview_new (GtkPrintOperation        *op,
 	cairo_t *cr;
 	gdouble dpi_x, dpi_y;
 
-	g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), NULL);
+	g_return_val_if_fail (GTK_IS_PRINT_OPERATION (operation), NULL);
 	g_return_val_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (gtk_preview), NULL);
 
 	preview = g_object_new (GEDIT_TYPE_PRINT_PREVIEW, NULL);
 
-	preview->operation = g_object_ref (op);
+	preview->operation = g_object_ref (operation);
 	preview->gtk_preview = g_object_ref (gtk_preview);
 	preview->context = g_object_ref (context);
 
 	/* FIXME: is this legal?? */
-	gtk_print_operation_set_unit (op, GTK_UNIT_POINTS);
+	gtk_print_operation_set_unit (operation, GTK_UNIT_POINTS);
 
 	g_signal_connect_object (gtk_preview,
 				 "ready",
@@ -1123,7 +1117,6 @@ gedit_print_preview_new (GtkPrintOperation        *op,
 	 * gtk_print_context_set_cairo_context() should be called in the
 	 * got-page-size handler.
 	 */
-
 	surface = create_preview_surface (preview, &dpi_x, &dpi_y);
 	cr = cairo_create (surface);
 	gtk_print_context_set_cairo_context (context, cr, dpi_x, dpi_y);
