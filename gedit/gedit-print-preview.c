@@ -592,30 +592,25 @@ preview_layout_key_press (GtkWidget         *widget,
 {
 	GtkAdjustment *hadj, *vadj;
 	gdouble x, y;
-	guint h, w;
-	gdouble hlower, hupper, vlower, vupper;
+	gdouble hlower, vlower;
+	gdouble hupper, vupper;
 	gdouble hpage, vpage;
 	gdouble hstep, vstep;
-	gboolean domove = FALSE;
-	gboolean ret = TRUE;
+	gboolean do_move = FALSE;
 
 	get_adjustments (preview, &hadj, &vadj);
 
 	x = gtk_adjustment_get_value (hadj);
 	y = gtk_adjustment_get_value (vadj);
 
-	g_object_get (hadj,
-		      "lower", &hlower,
-		      "upper", &hupper,
-		      "page-size", &hpage,
-		      NULL);
-	g_object_get (vadj,
-		      "lower", &vlower,
-		      "upper", &vupper,
-		      "page-size", &vpage,
-		      NULL);
+	hlower = gtk_adjustment_get_lower (hadj);
+	vlower = gtk_adjustment_get_lower (vadj);
 
-	gtk_layout_get_size (preview->layout, &w, &h);
+	hupper = gtk_adjustment_get_upper (hadj);
+	vupper = gtk_adjustment_get_upper (vadj);
+
+	hpage = gtk_adjustment_get_page_size (hadj);
+	vpage = gtk_adjustment_get_page_size (vadj);
 
 	hstep = 10;
 	vstep = 10;
@@ -625,46 +620,55 @@ preview_layout_key_press (GtkWidget         *widget,
 		case '1':
 			set_zoom_fit_to_size (preview);
 			break;
+
 		case '+':
 		case '=':
 		case GDK_KEY_KP_Add:
 			zoom_in (preview);
 			break;
+
 		case '-':
 		case '_':
 		case GDK_KEY_KP_Subtract:
 			zoom_out (preview);
 			break;
+
 		case GDK_KEY_KP_Right:
 		case GDK_KEY_Right:
 			if (event->state & GDK_SHIFT_MASK)
 				x = hupper - hpage;
 			else
 				x = MIN (hupper - hpage, x + hstep);
-			domove = TRUE;
+			do_move = TRUE;
 			break;
+
 		case GDK_KEY_KP_Left:
 		case GDK_KEY_Left:
 			if (event->state & GDK_SHIFT_MASK)
 				x = hlower;
 			else
 				x = MAX (hlower, x - hstep);
-			domove = TRUE;
+			do_move = TRUE;
 			break;
+
 		case GDK_KEY_KP_Up:
 		case GDK_KEY_Up:
 			if (event->state & GDK_SHIFT_MASK)
 				goto page_up;
+
 			y = MAX (vlower, y - vstep);
-			domove = TRUE;
+			do_move = TRUE;
 			break;
+
 		case GDK_KEY_KP_Down:
 		case GDK_KEY_Down:
 			if (event->state & GDK_SHIFT_MASK)
 				goto page_down;
+
 			y = MIN (vupper - vpage, y + vstep);
-			domove = TRUE;
+			do_move = TRUE;
 			break;
+
 		case GDK_KEY_KP_Page_Up:
 		case GDK_KEY_Page_Up:
 		case GDK_KEY_Delete:
@@ -683,8 +687,9 @@ preview_layout_key_press (GtkWidget         *widget,
 			{
 				y = vlower;
 			}
-			domove = TRUE;
+			do_move = TRUE;
 			break;
+
 		case GDK_KEY_KP_Page_Down:
 		case GDK_KEY_Page_Down:
 		case ' ':
@@ -701,47 +706,52 @@ preview_layout_key_press (GtkWidget         *widget,
 			{
 				y = (vupper - vpage);
 			}
-			domove = TRUE;
+			do_move = TRUE;
 			break;
+
 		case GDK_KEY_KP_Home:
 		case GDK_KEY_Home:
 			goto_page (preview, 0);
-			y = 0;
-			domove = TRUE;
+			y = vlower;
+			do_move = TRUE;
 			break;
+
 		case GDK_KEY_KP_End:
 		case GDK_KEY_End:
 			goto_page (preview, preview->n_pages - 1);
-			y = 0;
-			domove = TRUE;
+			y = vlower;
+			do_move = TRUE;
 			break;
+
 		case GDK_KEY_Escape:
 			gtk_widget_destroy (GTK_WIDGET (preview));
 			break;
+
 		case 'c':
 			if (event->state & GDK_MOD1_MASK)
 			{
 				gtk_widget_destroy (GTK_WIDGET (preview));
 			}
 			break;
+
 		case 'p':
 			if (event->state & GDK_MOD1_MASK)
 			{
 				gtk_widget_grab_focus (GTK_WIDGET (preview->page_entry));
 			}
 			break;
+
 		default:
-			/* by default do not stop the default handler */
-			ret = FALSE;
+			return GDK_EVENT_PROPAGATE;
 	}
 
-	if (domove)
+	if (do_move)
 	{
 		gtk_adjustment_set_value (hadj, x);
 		gtk_adjustment_set_value (vadj, y);
 	}
 
-	return ret;
+	return GDK_EVENT_STOP;
 }
 
 static void
