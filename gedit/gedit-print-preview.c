@@ -69,7 +69,6 @@ struct _GeditPrintPreview
 	/* FIXME: handle correctly page selection (e.g. print only
 	 * page 1-3, 7 and 12.
 	 */
-	guint n_pages;
 	guint cur_page; /* starts at 0 */
 
 	gint cursor_x;
@@ -139,6 +138,16 @@ gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, zoom_out_button);
 	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, close_button);
 	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, layout);
+}
+
+static gint
+get_n_pages (GeditPrintPreview *preview)
+{
+	gint n_pages;
+
+	g_object_get (preview->operation, "n-pages", &n_pages, NULL);
+
+	return n_pages;
 }
 
 static gdouble
@@ -295,21 +304,26 @@ goto_page (GeditPrintPreview *preview,
            gint               page)
 {
 	gchar *page_str;
+	gint n_pages;
 
 	page_str = g_strdup_printf ("%d", page + 1);
 	gtk_entry_set_text (preview->page_entry, page_str);
 	g_free (page_str);
 
+	n_pages = get_n_pages (preview);
+
 	gtk_widget_set_sensitive (GTK_WIDGET (preview->prev_button),
-	                          (page > 0) && (preview->n_pages > 1));
+	                          page > 0 &&
+				  n_pages > 1);
+
 	gtk_widget_set_sensitive (GTK_WIDGET (preview->next_button),
-	                          (page != (preview->n_pages - 1)) &&
-	                          (preview->n_pages > 1));
+	                          page < (n_pages - 1) &&
+	                          n_pages > 1);
 
 	if (page != preview->cur_page)
 	{
 		preview->cur_page = page;
-		if (preview->n_pages > 0)
+		if (n_pages > 0)
 		{
 			gtk_widget_queue_draw (GTK_WIDGET (preview->layout));
 		}
@@ -347,19 +361,20 @@ next_button_clicked (GtkWidget         *button,
 {
 	GdkEvent *event;
 	gint page;
+	gint n_pages = get_n_pages (preview);
 
 	event = gtk_get_current_event ();
 
 	if (event->button.state & GDK_SHIFT_MASK)
 	{
-		page = preview->n_pages - 1;
+		page = n_pages - 1;
 	}
 	else
 	{
 		page = preview->cur_page + preview->n_columns;
 	}
 
-	goto_page (preview, MIN (page, preview->n_pages - 1));
+	goto_page (preview, MIN (page, n_pages - 1));
 
 	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
 
@@ -372,10 +387,11 @@ page_entry_activated (GtkEntry          *entry,
 {
 	const gchar *text;
 	gint page;
+	gint n_pages = get_n_pages (preview);
 
 	text = gtk_entry_get_text (entry);
 
-	page = CLAMP (atoi (text), 1, preview->n_pages) - 1;
+	page = CLAMP (atoi (text), 1, n_pages) - 1;
 	goto_page (preview, page);
 
 	gtk_widget_grab_focus (GTK_WIDGET (preview->layout));
@@ -575,7 +591,7 @@ get_page_at_coords (GeditPrintPreview *preview,
 
 	page = get_first_page_displayed (preview) + col;
 
-	if (page >= preview->n_pages)
+	if (page >= get_n_pages (preview))
 	{
 		return -1;
 	}
@@ -636,7 +652,7 @@ preview_layout_query_tooltip (GtkWidget         *widget,
 
 		tip = g_strdup_printf (_("Page %d of %d"),
 				       page + 1,
-				       preview->n_pages);
+				       get_n_pages (preview));
 
 		gtk_tooltip_set_text (tooltip, tip);
 		g_free (tip);
@@ -661,6 +677,7 @@ preview_layout_key_press (GtkWidget         *widget,
 	gdouble hupper, vupper;
 	gdouble hpage, vpage;
 	gdouble hstep, vstep;
+	gint n_pages;
 	gboolean do_move = FALSE;
 
 	get_adjustments (preview, &hadj, &vadj);
@@ -679,6 +696,8 @@ preview_layout_key_press (GtkWidget         *widget,
 
 	hstep = 10;
 	vstep = 10;
+
+	n_pages = get_n_pages (preview);
 
 	switch (event->keyval)
 	{
@@ -761,7 +780,7 @@ preview_layout_key_press (GtkWidget         *widget,
 		page_down:
 			if (y >= (vupper - vpage))
 			{
-				if (preview->cur_page < preview->n_pages - 1)
+				if (preview->cur_page < n_pages - 1)
 				{
 					goto_page (preview, preview->cur_page + 1);
 					y = vlower;
@@ -783,7 +802,7 @@ preview_layout_key_press (GtkWidget         *widget,
 
 		case GDK_KEY_KP_End:
 		case GDK_KEY_End:
-			goto_page (preview, preview->n_pages - 1);
+			goto_page (preview, n_pages - 1);
 			y = vlower;
 			do_move = TRUE;
 			break;
@@ -979,6 +998,7 @@ preview_draw (GtkWidget         *widget,
 	GdkWindow *bin_window;
 	gint tile_width;
 	gint page_num;
+	gint n_pages;
 	gint col;
 
 	bin_window = gtk_layout_get_bin_window (preview->layout);
@@ -993,11 +1013,12 @@ preview_draw (GtkWidget         *widget,
 	gtk_cairo_transform_to_window (cr, widget, bin_window);
 
 	get_tile_size (preview, &tile_width, NULL);
+	n_pages = get_n_pages (preview);
 
 	col = 0;
 	page_num = get_first_page_displayed (preview);
 
-	while (col < preview->n_columns && page_num < preview->n_pages)
+	while (col < preview->n_columns && page_num < n_pages)
 	{
 		if (!gtk_print_operation_preview_is_selected (preview->gtk_preview, page_num))
 		{
@@ -1021,14 +1042,11 @@ preview_draw (GtkWidget         *widget,
 }
 
 static void
-set_n_pages (GeditPrintPreview *preview,
-	     gint               n_pages)
+init_last_page_label (GeditPrintPreview *preview)
 {
 	gchar *str;
 
-	preview->n_pages = n_pages;
-
-	str = g_strdup_printf ("%d", n_pages);
+	str = g_strdup_printf ("%d", get_n_pages (preview));
 	gtk_label_set_text (preview->last_page_label, str);
 	g_free (str);
 }
@@ -1038,10 +1056,7 @@ preview_ready (GtkPrintOperationPreview *gtk_preview,
 	       GtkPrintContext          *context,
 	       GeditPrintPreview        *preview)
 {
-	gint n_pages;
-
-	g_object_get (preview->operation, "n-pages", &n_pages, NULL);
-	set_n_pages (preview, n_pages);
+	init_last_page_label (preview);
 	goto_page (preview, 0);
 
 	set_zoom_factor (preview, 1.0);
