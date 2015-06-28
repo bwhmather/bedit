@@ -486,38 +486,44 @@ get_first_page_displayed (GeditPrintPreview *preview)
 	return preview->cur_page - (preview->cur_page % preview->n_columns);
 }
 
-/* returns the page number (starting from 0) or -1 if no page */
+/* Returns the page number (starting from 0) or -1 if no page. */
 static gint
 get_page_at_coords (GeditPrintPreview *preview,
                     gint               x,
                     gint               y)
 {
 	GtkAdjustment *hadj, *vadj;
-	gint r, c, pg;
+	gint col, page;
 
 	if (preview->tile_height <= 0 || preview->tile_width <= 0)
+	{
 		return -1;
+	}
 
 	get_adjustments (preview, &hadj, &vadj);
 
 	x += gtk_adjustment_get_value (hadj);
 	y += gtk_adjustment_get_value (vadj);
 
-	r = 1 + y / (preview->tile_height);
-	c = 1 + x / (preview->tile_width);
+	col = x / preview->tile_width;
 
-	if (c > preview->n_columns)
+	if (col >= preview->n_columns ||
+	    y > preview->tile_height)
+	{
 		return -1;
+	}
 
-	pg = get_first_page_displayed (preview) - 1;
-	pg += (r - 1) * preview->n_columns + c;
+	page = get_first_page_displayed (preview) + col;
 
-	if (pg >= preview->n_pages)
+	if (page >= preview->n_pages)
+	{
 		return -1;
+	}
 
-	/* FIXME: we could try to be picky and check
-	 * if we actually are inside the page */
-	return pg;
+	/* FIXME: we could try to be picky and check if we actually are inside
+	 * the page (i.e. not in the padding or shadow).
+	 */
+	return page;
 }
 
 static gboolean
