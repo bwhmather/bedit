@@ -61,7 +61,6 @@ struct _GeditPrintPreview
 	 */
 	GtkLayout *layout;
 
-	gdouble dpi;
 	gdouble scale;
 
 	/* multipage support */
@@ -142,6 +141,35 @@ gedit_print_preview_class_init (GeditPrintPreviewClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GeditPrintPreview, layout);
 }
 
+static gdouble
+get_screen_dpi (GeditPrintPreview *preview)
+{
+	GdkScreen *screen;
+	gdouble dpi;
+	static gboolean warning_shown = FALSE;
+
+	screen = gtk_widget_get_screen (GTK_WIDGET (preview));
+
+	if (screen == NULL)
+	{
+		return PRINTER_DPI;
+	}
+
+	dpi = gdk_screen_get_resolution (screen);
+	if (dpi < 30.0 || 600.0 < dpi)
+	{
+		if (!warning_shown)
+		{
+			g_warning ("Invalid the x-resolution for the screen, assuming 96dpi");
+			warning_shown = TRUE;
+		}
+
+		dpi = 96.0;
+	}
+
+	return dpi;
+}
+
 /* Get the paper size in points: these must be used only
  * after the widget has been mapped and the dpi is known.
  */
@@ -154,7 +182,7 @@ get_paper_width (GeditPrintPreview *preview)
 	page_setup = gtk_print_context_get_page_setup (preview->context);
 	paper_width = gtk_page_setup_get_paper_width (page_setup, GTK_UNIT_INCH);
 
-	return paper_width * preview->dpi;
+	return paper_width * get_screen_dpi (preview);
 }
 
 static gdouble
@@ -166,7 +194,7 @@ get_paper_height (GeditPrintPreview *preview)
 	page_setup = gtk_print_context_get_page_setup (preview->context);
 	paper_height = gtk_page_setup_get_paper_height (page_setup, GTK_UNIT_INCH);
 
-	return paper_height * preview->dpi;
+	return paper_height * get_screen_dpi (preview);
 }
 
 /* The tile size is the size in pixels of the area where a page will be
@@ -788,7 +816,6 @@ static void
 gedit_print_preview_init (GeditPrintPreview *preview)
 {
 	preview->cur_page = 0;
-	preview->dpi = PRINTER_DPI;
 	preview->scale = 1.0;
 	preview->n_columns = 1;
 	preview->cursor_x = 0;
@@ -881,13 +908,13 @@ draw_page_content (cairo_t           *cr,
 		   gint               page_number,
 		   GeditPrintPreview *preview)
 {
+	gdouble dpi;
+
 	/* scale to the desired size */
 	cairo_scale (cr, preview->scale, preview->scale);
 
-	gtk_print_context_set_cairo_context (preview->context,
-	                                     cr,
-	                                     preview->dpi,
-	                                     preview->dpi);
+	dpi = get_screen_dpi (preview);
+	gtk_print_context_set_cairo_context (preview->context, cr, dpi, dpi);
 
 	gtk_print_operation_preview_render_page (preview->gtk_preview,
 	                                         page_number);
@@ -993,24 +1020,6 @@ preview_draw (GtkWidget         *widget,
 	return GDK_EVENT_STOP;
 }
 
-static gdouble
-get_screen_dpi (GeditPrintPreview *preview)
-{
-	GdkScreen *screen;
-	gdouble dpi;
-
-	screen = gtk_widget_get_screen (GTK_WIDGET (preview));
-
-	dpi = gdk_screen_get_resolution (screen);
-	if (dpi < 30.0 || 600.0 < dpi)
-	{
-		g_warning ("Invalid the x-resolution for the screen, assuming 96dpi");
-		dpi = 96.0;
-	}
-
-	return dpi;
-}
-
 static void
 set_n_pages (GeditPrintPreview *preview,
 	     gint               n_pages)
@@ -1034,9 +1043,6 @@ preview_ready (GtkPrintOperationPreview *gtk_preview,
 	g_object_get (preview->operation, "n-pages", &n_pages, NULL);
 	set_n_pages (preview, n_pages);
 	goto_page (preview, 0);
-
-	/* figure out the dpi */
-	preview->dpi = get_screen_dpi (preview);
 
 	set_zoom_factor (preview, 1.0);
 
