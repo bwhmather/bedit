@@ -17,6 +17,8 @@
 
 from .popup import Popup
 import os
+import gi
+gi.require_version('Gtk', '3.0')
 from gi.repository import GObject, Gio, GLib, Gtk, Gedit
 from .virtualdirs import RecentDocumentsDirectory
 from .virtualdirs import CurrentDocumentsDirectory

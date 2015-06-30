@@ -23,6 +23,11 @@
 # Bits from gedit Python Console Plugin
 #     Copyrignt (C), 2005 Raphaël Slinckx
 
+import gi
+gi.require_version('Gtk', '3.0')
+gi.require_version('PeasGtk', '1.0')
+gi.require_version('Gedit', '3.0')
+gi.require_version('Peas', '1.0')
 from gi.repository import GObject, Gtk, Gedit, Peas, PeasGtk
 
 from .console import PythonConsole
