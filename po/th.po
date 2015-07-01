@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-05-21 14:02+0000\n"
-"PO-Revision-Date: 2015-05-22 14:06+0700\n"
+"POT-Creation-Date: 2015-06-30 21:20+0000\n"
+"PO-Revision-Date: 2015-07-01 11:45+0700\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -56,7 +56,7 @@ msgstr ""
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:733
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:729
 msgid "Text Editor"
 msgstr "เครื่องมือแก้ไขข้อความ"
 
@@ -469,10 +469,42 @@ msgstr ""
 "ไม่มีค่าเป็นศูนย์"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:77
+msgid "Margin Left"
+msgstr "ขอบซ้าย"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+msgid "The left margin, in millimeters."
+msgstr "ขอบซ้ายเป็นมิลลิเมตร"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+msgid "Margin Top"
+msgstr "ขอบบน"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+msgid "The top margin, in millimeters."
+msgstr "ขอบบนเป็นมิลลิเมตร"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+msgid "Margin Right"
+msgstr "ขอบขวา"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+msgid "The right margin, in millimeters."
+msgstr "ขอบขวาเป็นมิลลิเมตร"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+msgid "Margin Bottom"
+msgstr "ขอบล่าง"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+msgid "The bottom margin, in millimeters."
+msgstr "ขอบล่างเป็นมิลลิเมตร"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Candidate Encodings"
 msgstr "รหัสอักขระให้เลือก"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. \"CURRENT\" represents the current locale encoding. Only "
@@ -484,11 +516,11 @@ msgstr ""
 "ค่าปริยายคือรายชื่อว่างเปล่า ซึ่ง Gedit จะเลือกค่าปริยายต่างๆ ที่เหมาะสมให้ "
 "โดยพิจารณาจากภาษาและประเทศ"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+#: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Active plugins"
 msgstr "ปลั๊กอินที่เปิดใช้"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -496,57 +528,57 @@ msgstr ""
 "รายการปลั๊กอินที่เลือกใช้ คีย์นี้เก็บ \"ตำแหน่ง\" ของปลั๊กอินทั้งหลายที่เลือกกรุณาดูแฟ้ม .gedit-"
 "plugin เพื่อดู \"ตำแหน่ง\" ของปลั๊กอินที่ต้องการ"
 
-#: ../gedit/gedit-app.c:108
+#: ../gedit/gedit-app.c:109
 msgid "Show the application's version"
 msgstr "แสดงรุ่นของโปรแกรม"
 
-#: ../gedit/gedit-app.c:114
+#: ../gedit/gedit-app.c:115
 msgid "Display list of possible values for the encoding option"
 msgstr "แสดงค่าที่เป็นไปได้ทั้งหมดสำหรับตัวเลือกรหัสอักขระ"
 
-#: ../gedit/gedit-app.c:121
+#: ../gedit/gedit-app.c:122
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr "กำหนดรหัสอักขระที่จะใช้เปิดแฟ้มที่ระบุในบรรทัดคำสั่ง"
 
-#: ../gedit/gedit-app.c:122
+#: ../gedit/gedit-app.c:123
 msgid "ENCODING"
 msgstr "ENCODING"
 
-#: ../gedit/gedit-app.c:128
+#: ../gedit/gedit-app.c:129
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "เปิดหน้าต่างใหม่โดยใช้ gedit ตัวที่กำลังทำงานอยู่"
 
-#: ../gedit/gedit-app.c:135
+#: ../gedit/gedit-app.c:136
 msgid "Create a new document in an existing instance of gedit"
 msgstr "สร้างเอกสารใหม่ในหน้าต่าง gedit ที่ใช้งานอยู่"
 
-#: ../gedit/gedit-app.c:142
+#: ../gedit/gedit-app.c:143
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "กำหนดขนาดและตำแหน่งของหน้าต่าง (กว้างxสูง+X+Y)"
 
-#: ../gedit/gedit-app.c:143
+#: ../gedit/gedit-app.c:144
 msgid "GEOMETRY"
 msgstr "เรขาคณิต"
 
-#: ../gedit/gedit-app.c:149
+#: ../gedit/gedit-app.c:150
 msgid "Open files and block process until files are closed"
 msgstr "เปิดแฟ้มแล้วบล็อคโพรเซสจนกระทั่งแฟ้มต่างๆ ถูกปิด"
 
-#: ../gedit/gedit-app.c:156
+#: ../gedit/gedit-app.c:157
 msgid "Run gedit in standalone mode"
 msgstr "เรียกทำงาน gedit ในโหมด standalone"
 
-#: ../gedit/gedit-app.c:163
+#: ../gedit/gedit-app.c:164
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[แฟ้ม...] [+บรรทัด[:คอลัมน์]]"
 
-#: ../gedit/gedit-app.c:278
+#: ../gedit/gedit-app.c:279
 msgid "There was an error displaying the help."
 msgstr "เกิดข้อผิดพลาดในการแสดงคำแนะนำ"
 
-#: ../gedit/gedit-app.c:969
+#: ../gedit/gedit-app.c:970
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: ไม่ใช่รหัสอักขระที่ใช้ได้"
@@ -562,11 +594,11 @@ msgstr "_ปิดโดยไม่บันทึก"
 #: ../gedit/gedit-close-confirmation-dialog.c:318
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:596
 #: ../gedit/gedit-commands-file.c:672 ../gedit/gedit-commands-file.c:871
-#: ../gedit/gedit-commands-file.c:1583 ../gedit/gedit-encodings-dialog.c:194
-#: ../gedit/gedit-io-error-info-bar.c:135
-#: ../gedit/gedit-io-error-info-bar.c:516
-#: ../gedit/gedit-preferences-dialog.c:816
-#: ../gedit/gedit-progress-info-bar.c:51
+#: ../gedit/gedit-commands-file.c:1585 ../gedit/gedit-encodings-dialog.c:194
+#: ../gedit/gedit-io-error-info-bar.c:130
+#: ../gedit/gedit-io-error-info-bar.c:511
+#: ../gedit/gedit-preferences-dialog.c:818
+#: ../gedit/gedit-progress-info-bar.c:44
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
@@ -581,13 +613,13 @@ msgstr "_ปิดโดยไม่บันทึก"
 msgid "_Cancel"
 msgstr "_ยกเลิก"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:344
+#: ../gedit/gedit-close-confirmation-dialog.c:346
 #: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "_บันทึกเป็น…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:344
+#: ../gedit/gedit-close-confirmation-dialog.c:346
 #: ../gedit/gedit-commands-file.c:872 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
@@ -595,7 +627,7 @@ msgstr "_บันทึกเป็น…"
 msgid "_Save"
 msgstr "_บันทึก"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:362
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -604,12 +636,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "ถ้าคุณไม่บันทึก การแก้ไขทั้งหมดใน %ld วินาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:371
+#: ../gedit/gedit-close-confirmation-dialog.c:373
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "ถ้าคุณไม่บันทึก การแก้ไขทั้งหมดในนาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:377
+#: ../gedit/gedit-close-confirmation-dialog.c:379
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -619,7 +651,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "ถ้าคุณไม่บันทึก การแก้ไขทั้งหมดในนาทีกับ %ld วินาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:387
+#: ../gedit/gedit-close-confirmation-dialog.c:389
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -628,11 +660,11 @@ msgid_plural ""
 "lost."
 msgstr[0] "ถ้าคุณไม่บันทึก การแก้ไขทั้งหมดใน %ld นาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:402
+#: ../gedit/gedit-close-confirmation-dialog.c:404
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "ถ้าคุณไม่บันทึก การแก้ไขทั้งหมดในชั่วโมงที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:408
+#: ../gedit/gedit-close-confirmation-dialog.c:410
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -642,7 +674,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "ถ้าคุณไม่บันทึก การแก้ไขทั้งหมดในชั่วโมงกับ %d นาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:423
+#: ../gedit/gedit-close-confirmation-dialog.c:425
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -650,43 +682,43 @@ msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] "ถ้าคุณไม่บันทึก การแก้ไขทั้งหมดใน %d ชั่วโมงที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:467
+#: ../gedit/gedit-close-confirmation-dialog.c:469
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "การแก้ไขทั้งหมดในเอกสาร “%s” จะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:472
+#: ../gedit/gedit-close-confirmation-dialog.c:474
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "บันทึกการเปลี่ยนแปลงในเอกสาร “%s” ก่อนปิดหรือไม่?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:487
-#: ../gedit/gedit-close-confirmation-dialog.c:645
+#: ../gedit/gedit-close-confirmation-dialog.c:489
+#: ../gedit/gedit-close-confirmation-dialog.c:647
 msgid "Saving has been disabled by the system administrator."
 msgstr "การบันทึกถูกระงับไว้โดยผู้ดูแลระบบ"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:593
+#: ../gedit/gedit-close-confirmation-dialog.c:595
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสาร %d ฉบับจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:601
+#: ../gedit/gedit-close-confirmation-dialog.c:603
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] "มีเอกสารทั้งหมด %d ฉบับถูกแก้ไขโดยยังไม่บันทึก คุณต้องการบันทึกก่อนปิดหรือไม่?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:621
+#: ../gedit/gedit-close-confirmation-dialog.c:623
 msgid "Docum_ents with unsaved changes:"
 msgstr "เอก_สารที่ยังไม่ได้บันทึกการแก้ไข:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:625
+#: ../gedit/gedit-close-confirmation-dialog.c:627
 msgid "S_elect the documents you want to save:"
 msgstr "เ_ลือกเอกสารที่คุณต้องการจะบันทึก"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:649
+#: ../gedit/gedit-close-confirmation-dialog.c:651
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "ถ้าคุณไม่บันทึก การแก้ไขที่ผ่านมาจะสูญหายอย่างถาวร"
 
@@ -759,7 +791,7 @@ msgstr "แฟ้ม \"%s\" ถูกบันทึกไว้ก่อนห�
 msgid "_Save As Plain Text"
 msgstr "_บันทึกเป็นข้อความเปล่า"
 
-#: ../gedit/gedit-commands-file.c:781 ../gedit/gedit-commands-file.c:1034
+#: ../gedit/gedit-commands-file.c:781 ../gedit/gedit-commands-file.c:1036
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "กำลังบันทึกแฟ้ม '%s'…"
@@ -768,17 +800,17 @@ msgstr "กำลังบันทึกแฟ้ม '%s'…"
 msgid "Save As"
 msgstr "บันทึกเป็น"
 
-#: ../gedit/gedit-commands-file.c:1444
+#: ../gedit/gedit-commands-file.c:1446
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "กำลังคืนข้อมูลแฟ้ม '%s' กลับ…"
 
-#: ../gedit/gedit-commands-file.c:1491
+#: ../gedit/gedit-commands-file.c:1493
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "ยกเลิกการแก้ไขที่ยังไม่บันทึกของเอกสาร '%s' เพื่อย้อนกลับสู่สภาพเดิมหรือไม่?"
 
-#: ../gedit/gedit-commands-file.c:1500
+#: ../gedit/gedit-commands-file.c:1502
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -787,12 +819,12 @@ msgid_plural ""
 "lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสารใน %ld วินาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1509
+#: ../gedit/gedit-commands-file.c:1511
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "การแก้ไขทั้งหมดในเอกสารในช่วงนาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1515
+#: ../gedit/gedit-commands-file.c:1517
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -802,7 +834,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสารในนาทีกับอีก %ld วินาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1525
+#: ../gedit/gedit-commands-file.c:1527
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -811,11 +843,11 @@ msgid_plural ""
 "lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสารใน %ld นาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1540
+#: ../gedit/gedit-commands-file.c:1542
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "การแก้ไขทั้งหมดในเอกสารในชั่วโมงที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1546
+#: ../gedit/gedit-commands-file.c:1548
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -825,7 +857,7 @@ msgid_plural ""
 "permanently lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสารในช่วงชั่วโมงกับอีก %d นาทีที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1561
+#: ../gedit/gedit-commands-file.c:1563
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -833,7 +865,7 @@ msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] "การแก้ไขทั้งหมดในเอกสารใน %d ชั่วโมงที่ผ่านมาจะสูญหายอย่างถาวร"
 
-#: ../gedit/gedit-commands-file.c:1584
+#: ../gedit/gedit-commands-file.c:1586
 msgid "_Revert"
 msgstr "คืน_กลับ"
 
@@ -868,7 +900,7 @@ msgstr "ค้นพบและแทนที่ไปแห่งเดีย
 msgid "\"%s\" not found"
 msgstr "ไม่พบ \"%s\""
 
-#: ../gedit/gedit-document.c:1055 ../gedit/gedit-document.c:1088
+#: ../gedit/gedit-document.c:1086 ../gedit/gedit-document.c:1119
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "เอกสารยังไม่บันทึก %d"
@@ -878,8 +910,8 @@ msgstr "เอกสารยังไม่บันทึก %d"
 msgid "Tab Group %i"
 msgstr "กลุ่มแท็บ %i"
 
-#: ../gedit/gedit-documents-panel.c:529 ../gedit/gedit-window.c:1145
-#: ../gedit/gedit-window.c:1151 ../gedit/gedit-window.c:1159
+#: ../gedit/gedit-documents-panel.c:532 ../gedit/gedit-window.c:1171
+#: ../gedit/gedit-window.c:1177 ../gedit/gedit-window.c:1185
 msgid "Read-Only"
 msgstr "อ่านอย่างเดียว"
 
@@ -929,7 +961,7 @@ msgid "Move to a lower priority"
 msgstr "ย้ายลำดับความสำคัญให้ต่ำลง"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:41
-#: ../gedit/gedit-preferences-dialog.c:825
+#: ../gedit/gedit-preferences-dialog.c:827
 msgid "All Files"
 msgstr "ทุกแฟ้ม"
 
@@ -953,7 +985,7 @@ msgstr "รหัสอักขระ:"
 msgid "Line Ending:"
 msgstr "การจบบรรทัด:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:262 ../gedit/gedit-window.c:1229
+#: ../gedit/gedit-highlight-mode-selector.c:262 ../gedit/gedit-window.c:1255
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -961,162 +993,162 @@ msgstr "การจบบรรทัด:"
 msgid "Plain Text"
 msgstr "ข้อความเปล่า"
 
-#: ../gedit/gedit-io-error-info-bar.c:148
-#: ../gedit/gedit-io-error-info-bar.c:496
+#: ../gedit/gedit-io-error-info-bar.c:143
+#: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "_ลองใหม่"
 
-#: ../gedit/gedit-io-error-info-bar.c:168
+#: ../gedit/gedit-io-error-info-bar.c:163
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "หาแฟ้ม “%s” ไม่พบ"
 
-#: ../gedit/gedit-io-error-info-bar.c:170
-#: ../gedit/gedit-io-error-info-bar.c:210
-#: ../gedit/gedit-io-error-info-bar.c:217
+#: ../gedit/gedit-io-error-info-bar.c:165
+#: ../gedit/gedit-io-error-info-bar.c:205
+#: ../gedit/gedit-io-error-info-bar.c:212
 msgid "Please check that you typed the location correctly and try again."
 msgstr "กรุณาตรวจสอบว่าพิมพ์ตำแหน่งถูกต้องหรือไม่ และลองใหม่อีกครั้ง"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:189
+#: ../gedit/gedit-io-error-info-bar.c:184
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "ไม่สามารถจัดการตำแหน่ง “%s:” ได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:195
+#: ../gedit/gedit-io-error-info-bar.c:190
 msgid "Unable to handle this location."
 msgstr "ไม่สามารถจัดการตำแหน่งนี้ได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:204
+#: ../gedit/gedit-io-error-info-bar.c:199
 msgid "The location of the file cannot be accessed."
 msgstr "ตำแหน่งของแฟ้มไม่สามารถเข้าถึงได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:208
+#: ../gedit/gedit-io-error-info-bar.c:203
 #, c-format
 msgid "“%s” is a directory."
 msgstr "“%s” เป็นไดเรกทอรี"
 
-#: ../gedit/gedit-io-error-info-bar.c:215
+#: ../gedit/gedit-io-error-info-bar.c:210
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "“%s” ไม่ใช่ตำแหน่งที่ถูกต้อง"
 
-#: ../gedit/gedit-io-error-info-bar.c:251
+#: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
 "correct and try again."
 msgstr "ไม่พบโฮสต์ชื่อ “%s” กรุณาตรวจสอบการตั้งค่าพร็อกซีให้ถูกต้อง แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:266
+#: ../gedit/gedit-io-error-info-bar.c:261
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
 msgstr "ชื่อโฮสต์ไม่ถูกต้อง กรุณาตรวจสอบว่าคุณพิมพ์ชื่อถูกต้องหรือไม่ แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:274
+#: ../gedit/gedit-io-error-info-bar.c:269
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "“%s” ไม่ใช่แฟ้มปกติ"
 
-#: ../gedit/gedit-io-error-info-bar.c:279
+#: ../gedit/gedit-io-error-info-bar.c:274
 msgid "Connection timed out. Please try again."
 msgstr "หมดเวลารอการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:312
+#: ../gedit/gedit-io-error-info-bar.c:307
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "เกิดข้อผิดพลาดไม่คาดหมาย: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:348
+#: ../gedit/gedit-io-error-info-bar.c:343
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "หาแฟ้มที่ร้องขอไม่พบ เป็นไปได้ว่าแฟ้มอาจเพิ่งถูกลบไป"
 
-#: ../gedit/gedit-io-error-info-bar.c:358
+#: ../gedit/gedit-io-error-info-bar.c:353
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "ไม่สามารถคืนข้อมูลแฟ้ม “%s” กลับได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:385
+#: ../gedit/gedit-io-error-info-bar.c:380
 msgid "Ch_aracter Encoding:"
 msgstr "_รหัสอักขระ:"
 
-#: ../gedit/gedit-io-error-info-bar.c:446
+#: ../gedit/gedit-io-error-info-bar.c:441
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "ตำแหน่ง “%s” ไม่สามารถติดต่อได้ในขณะนี้"
 
-#: ../gedit/gedit-io-error-info-bar.c:461
+#: ../gedit/gedit-io-error-info-bar.c:456
 msgid "Your system is offline. Check your network."
 msgstr "ระบบของคุณออฟไลน์อยู่ กรุณาตรวจสอบการเชื่อมต่อเครือข่ายของคุณ"
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:504
-#: ../gedit/gedit-io-error-info-bar.c:773
+#: ../gedit/gedit-io-error-info-bar.c:499
+#: ../gedit/gedit-io-error-info-bar.c:768
 msgid "Edit Any_way"
 msgstr "ยืนยันแ_ก้ไข"
 
-#: ../gedit/gedit-io-error-info-bar.c:596
+#: ../gedit/gedit-io-error-info-bar.c:591
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr "จำนวนขั้นของการตามลิงก์ถูกจำกัด และไม่สามารถไปถึงแฟ้มจริงภายในจำนวนขั้นที่กำหนดนี้"
 
-#: ../gedit/gedit-io-error-info-bar.c:600
+#: ../gedit/gedit-io-error-info-bar.c:595
 msgid "You do not have the permissions necessary to open the file."
 msgstr "คุณไม่มีสิทธิ์เพียงพอที่จะเปิดแฟ้มได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:606
+#: ../gedit/gedit-io-error-info-bar.c:601
 msgid "Unable to detect the character encoding."
 msgstr "ไม่สามารถตรวจสอบรหัสอักขระได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:607
-#: ../gedit/gedit-io-error-info-bar.c:631
+#: ../gedit/gedit-io-error-info-bar.c:602
+#: ../gedit/gedit-io-error-info-bar.c:626
 msgid "Please check that you are not trying to open a binary file."
 msgstr "กรุณาตรวจสอบว่าคุณไม่ได้พยายามเปิดแฟ้มไบนารีอยู่"
 
-#: ../gedit/gedit-io-error-info-bar.c:608
+#: ../gedit/gedit-io-error-info-bar.c:603
 msgid "Select a character encoding from the menu and try again."
 msgstr "เลือกรหัสอักขระจากเมนู แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:614
+#: ../gedit/gedit-io-error-info-bar.c:609
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "เกิดปัญหาในการเปิดแฟ้ม “%s”"
 
-#: ../gedit/gedit-io-error-info-bar.c:616
+#: ../gedit/gedit-io-error-info-bar.c:611
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
 msgstr "แฟ้มที่คุณเปิดมีอักขระที่ไม่ถูกต้องอยู่ หากคุณยังแก้ไขแฟ้มนี้ต่อไป คุณอาจทำให้เอกสารนี้เสียหายได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:619
+#: ../gedit/gedit-io-error-info-bar.c:614
 msgid "You can also choose another character encoding and try again."
 msgstr "คุณสามารถเลือกรหัสอักขระอื่น แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:628
+#: ../gedit/gedit-io-error-info-bar.c:623
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "ไม่สามารถเปิดแฟ้ม “%s” ด้วยรหัสอักขระ “%s” ได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:632
-#: ../gedit/gedit-io-error-info-bar.c:707
+#: ../gedit/gedit-io-error-info-bar.c:627
+#: ../gedit/gedit-io-error-info-bar.c:702
 msgid "Select a different character encoding from the menu and try again."
 msgstr "เลือกรหัสอักขระอื่นจากเมนู แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:644
+#: ../gedit/gedit-io-error-info-bar.c:639
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "ไม่สามารถเปิดแฟ้ม “%s” ได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:702
+#: ../gedit/gedit-io-error-info-bar.c:697
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "ไม่สามารถบันทึกแฟ้ม “%s” ด้วยรหัสอักขระ “%s” ได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:705
+#: ../gedit/gedit-io-error-info-bar.c:700
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1124,28 +1156,28 @@ msgstr "เอกสารมีอักขระที่ไม่สามา
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:778
+#: ../gedit/gedit-io-error-info-bar.c:773
 msgid "D_on't Edit"
 msgstr "ไ_ม่แก้ไข"
 
-#: ../gedit/gedit-io-error-info-bar.c:788
+#: ../gedit/gedit-io-error-info-bar.c:783
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "แฟ้มนี้ “%s” ถูกเปิดอยู่แล้วในหน้าต่างบานอื่น"
 
-#: ../gedit/gedit-io-error-info-bar.c:802
+#: ../gedit/gedit-io-error-info-bar.c:797
 msgid "Do you want to edit it anyway?"
 msgstr "คุณยังคงต้องการแก้ไขแฟ้มนี้อยู่หรือไม่?"
 
-#: ../gedit/gedit-io-error-info-bar.c:858
-#: ../gedit/gedit-io-error-info-bar.c:948
-#: ../gedit/gedit-io-error-info-bar.c:1240
+#: ../gedit/gedit-io-error-info-bar.c:853
+#: ../gedit/gedit-io-error-info-bar.c:943
+#: ../gedit/gedit-io-error-info-bar.c:1235
 msgid "S_ave Anyway"
 msgstr "ยืนยัน_บันทึก"
 
-#: ../gedit/gedit-io-error-info-bar.c:861
-#: ../gedit/gedit-io-error-info-bar.c:951
-#: ../gedit/gedit-io-error-info-bar.c:1243
+#: ../gedit/gedit-io-error-info-bar.c:856
+#: ../gedit/gedit-io-error-info-bar.c:946
+#: ../gedit/gedit-io-error-info-bar.c:1238
 msgid "D_on't Save"
 msgstr "ไ_ม่บันทึก"
 
@@ -1153,26 +1185,26 @@ msgstr "ไ_ม่บันทึก"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:875
+#: ../gedit/gedit-io-error-info-bar.c:870
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "แฟ้ม “%s” ถูกเปลี่ยนแปลงหลังจากการอ่านครั้งล่าสุด"
 
-#: ../gedit/gedit-io-error-info-bar.c:890
+#: ../gedit/gedit-io-error-info-bar.c:885
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr "ถ้าคุณบันทึก การเปลี่ยนแปลงจากโปรแกรมภายนอกจะสูญหายทั้งหมด ยืนยันบันทึกหรือไม่?"
 
-#: ../gedit/gedit-io-error-info-bar.c:970
+#: ../gedit/gedit-io-error-info-bar.c:965
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "ไม่สามารถสร้างแฟ้มสำรองขณะบันทึก “%s”"
 
-#: ../gedit/gedit-io-error-info-bar.c:975
+#: ../gedit/gedit-io-error-info-bar.c:970
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "ไม่สามารถสร้างแฟ้มสำรองชั่วคราวขณะบันทึก “%s”"
 
-#: ../gedit/gedit-io-error-info-bar.c:992
+#: ../gedit/gedit-io-error-info-bar.c:987
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1183,7 +1215,7 @@ msgstr ""
 "ยืนยันบันทึกหรือไม่?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1052
+#: ../gedit/gedit-io-error-info-bar.c:1047
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1192,7 +1224,7 @@ msgstr ""
 "ไม่สามารถจัดการตำแหน่ง “%s:” ในโหมดเขียนได้ กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ "
 "แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:1060
+#: ../gedit/gedit-io-error-info-bar.c:1055
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1200,7 +1232,7 @@ msgstr ""
 "ไม่สามารถจัดการตำแหน่งนี้ในโหมดเขียนได้ กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ "
 "แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:1069
+#: ../gedit/gedit-io-error-info-bar.c:1064
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1208,20 +1240,20 @@ msgid ""
 msgstr ""
 "“%s” ไม่ใช่ตำแหน่งที่ถูกต้อง กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:1076
+#: ../gedit/gedit-io-error-info-bar.c:1071
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
 "คุณไม่มีสิทธิ์เพียงพอที่จะบันทึกแฟ้มนี้ได้ กรุณาตรวจสอบว่าพิมพ์ตำแหน่งถูกต้องหรือไม่ แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1077
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
 msgstr "เหลือพื้นที่บนดิสก์ไม่พอที่จะบันทึกแฟ้มนี้ กรุณาลบข้อมูลที่ไม่จำเป็นออก แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:1087
+#: ../gedit/gedit-io-error-info-bar.c:1082
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1229,17 +1261,17 @@ msgstr ""
 "คุณกำลังพยายามบันทึกแฟ้มในดิสก์ที่อ่านได้อย่างเดียว กรุณาตรวจสอบว่าคุณพิมพ์ตำแหน่งถูกต้องหรือไม่ "
 "แล้วลองใหม่อีกครั้ง"
 
-#: ../gedit/gedit-io-error-info-bar.c:1093
+#: ../gedit/gedit-io-error-info-bar.c:1088
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "มีแฟ้มชื่อเดียวกันอยู่ก่อนแล้ว กรุณาใช้ชื่ออื่น"
 
-#: ../gedit/gedit-io-error-info-bar.c:1098
+#: ../gedit/gedit-io-error-info-bar.c:1093
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
 msgstr "ดิสก์ที่คุณกำลังบันทึกแฟ้มมีข้อจำกัดเรื่องความยาวของชื่อแฟ้ม กรุณาใช้ชื่อที่สั้นกว่านี้"
 
-#: ../gedit/gedit-io-error-info-bar.c:1109
+#: ../gedit/gedit-io-error-info-bar.c:1104
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1247,96 +1279,96 @@ msgid ""
 msgstr ""
 "ดิสก์ที่คุณกำลังบันทึกแฟ้มมีข้อจำกัดด้านขนาดของแฟ้ม ลองบันทึกแฟ้มขนาดเล็กลงหรือบันทึกลงดิสก์อื่น"
 
-#: ../gedit/gedit-io-error-info-bar.c:1126
+#: ../gedit/gedit-io-error-info-bar.c:1121
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "ไม่สามารถบันทึกแฟ้ม “%s” ได้"
 
-#: ../gedit/gedit-io-error-info-bar.c:1166
+#: ../gedit/gedit-io-error-info-bar.c:1161
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "แฟ้ม “%s” มีการเปลี่ยนแปลงเนื้อหาในดิสก์"
 
-#: ../gedit/gedit-io-error-info-bar.c:1177
+#: ../gedit/gedit-io-error-info-bar.c:1172
 msgid "Drop Changes and _Reload"
 msgstr "เลิกการเปลี่ยนแปลง แล้ว_อ่านใหม่"
 
-#: ../gedit/gedit-io-error-info-bar.c:1187
+#: ../gedit/gedit-io-error-info-bar.c:1182
 #: ../gedit/resources/gtk/menus-default.ui.h:6
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 #: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_อ่านใหม่"
 
-#: ../gedit/gedit-io-error-info-bar.c:1192
+#: ../gedit/gedit-io-error-info-bar.c:1187
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "ไ_ม่สนใจ"
 
-#: ../gedit/gedit-io-error-info-bar.c:1253
+#: ../gedit/gedit-io-error-info-bar.c:1248
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "ตรวจพบอักขระที่ไม่ถูกต้องบางตัวขณะบันทึก “%s”"
 
-#: ../gedit/gedit-io-error-info-bar.c:1269
+#: ../gedit/gedit-io-error-info-bar.c:1264
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr "ถ้าคุณยังคงบันทึกแฟ้มนี้ต่อไป คุณจะทำให้เอกสารเสียหายได้ บันทึกต่อไปหรือไม่?"
 
-#: ../gedit/gedit-preferences-dialog.c:446
+#: ../gedit/gedit-preferences-dialog.c:448
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "กดปุ่มนี้เพื่อเลือกแบบอักษรที่จะใช้ใน gedit"
 
-#: ../gedit/gedit-preferences-dialog.c:452
+#: ../gedit/gedit-preferences-dialog.c:454
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "ใ_ช้แบบอักษรความกว้างคงที่ของระบบ (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:592
+#: ../gedit/gedit-preferences-dialog.c:594
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr "ไม่สามารถสร้างไดเรกทอรี '%s' ได้: g_mkdir_with_parents() ล้มเหลว: %s"
 
-#: ../gedit/gedit-preferences-dialog.c:789
+#: ../gedit/gedit-preferences-dialog.c:791
 msgid "The selected color scheme cannot be installed."
 msgstr "ไม่สามารถติดตั้งชุดสีที่เลือกได้"
 
-#: ../gedit/gedit-preferences-dialog.c:812
+#: ../gedit/gedit-preferences-dialog.c:814
 msgid "Add Scheme"
 msgstr "เพิ่มชุดสี"
 
-#: ../gedit/gedit-preferences-dialog.c:817
+#: ../gedit/gedit-preferences-dialog.c:819
 msgid "A_dd Scheme"
 msgstr "เ_พิ่มชุดสี"
 
-#: ../gedit/gedit-preferences-dialog.c:821
+#: ../gedit/gedit-preferences-dialog.c:823
 msgid "Color Scheme Files"
 msgstr "แฟ้มชุดสี"
 
-#: ../gedit/gedit-preferences-dialog.c:852
+#: ../gedit/gedit-preferences-dialog.c:854
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "ไม่สามารถลบชุดสี \"%s\" ได้"
 
-#: ../gedit/gedit-print-job.c:230
+#: ../gedit/gedit-print-job.c:226
 msgid "Preparing..."
 msgstr "กำลังเตรียมพิมพ์..."
 
-#: ../gedit/gedit-print-job.c:546
+#: ../gedit/gedit-print-job.c:538
 #, c-format
 msgid "File: %s"
 msgstr "แฟ้ม: %s"
 
-#: ../gedit/gedit-print-job.c:555
+#: ../gedit/gedit-print-job.c:547
 msgid "Page %N of %Q"
 msgstr "หน้า %N จาก %Q หน้า"
 
-#: ../gedit/gedit-print-job.c:629
+#: ../gedit/gedit-print-job.c:625
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "กำลังวาดหน้า %d จาก %d..."
 
-#: ../gedit/gedit-print-preview.c:651
+#: ../gedit/gedit-print-preview.c:653
 #, c-format
 msgid "Page %d of %d"
 msgstr "หน้า %d จาก %d หน้า"
@@ -1368,69 +1400,64 @@ msgstr[0] "มี %d แท็บมีปัญหา"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:795
+#: ../gedit/gedit-tab.c:820
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "กำลังย้อนคืนข้อมูลแฟ้ม %s จาก %s"
 
-#: ../gedit/gedit-tab.c:802
+#: ../gedit/gedit-tab.c:827
 #, c-format
 msgid "Reverting %s"
 msgstr "กำลังคืนข้อมูลแฟ้ม %s กลับ"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:815
+#: ../gedit/gedit-tab.c:840
 #, c-format
 msgid "Loading %s from %s"
 msgstr "กำลังโหลดแฟ้ม %s จาก %s"
 
-#: ../gedit/gedit-tab.c:822
+#: ../gedit/gedit-tab.c:847
 #, c-format
 msgid "Loading %s"
 msgstr "กำลังโหลดแฟ้ม %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:902
+#: ../gedit/gedit-tab.c:927
 #, c-format
 msgid "Saving %s to %s"
 msgstr "กำลังบันทึกแฟ้ม %s ที่ %s"
 
-#: ../gedit/gedit-tab.c:907
+#: ../gedit/gedit-tab.c:932
 #, c-format
 msgid "Saving %s"
 msgstr "กำลังบันทึกแฟ้ม %s"
 
-#. Read only
-#: ../gedit/gedit-tab.c:1519
-msgid "RO"
-msgstr "RO"
-
-#: ../gedit/gedit-tab.c:1567
+#: ../gedit/gedit-tab.c:1535
 #, c-format
 msgid "Error opening file %s"
 msgstr "เกิดข้อผิดพลาดขณะเปิดแฟ้ม %s"
 
-#: ../gedit/gedit-tab.c:1572
+#: ../gedit/gedit-tab.c:1540
 #, c-format
 msgid "Error reverting file %s"
 msgstr "เกิดข้อผิดพลาดขณะคืนข้อมูลแฟ้ม %s กลับ"
 
-#: ../gedit/gedit-tab.c:1577
+#: ../gedit/gedit-tab.c:1545
 #, c-format
 msgid "Error saving file %s"
 msgstr "เกิดข้อผิดพลาดขณะบันทึกแฟ้ม %s"
 
-#: ../gedit/gedit-tab.c:1608
+#: ../gedit/gedit-tab.c:1576
 msgid "Name:"
 msgstr "ชื่อ:"
 
-#: ../gedit/gedit-tab.c:1609
+#: ../gedit/gedit-tab.c:1577
 msgid "MIME Type:"
 msgstr "ชนิด MIME:"
 
-#: ../gedit/gedit-tab.c:1610
+#: ../gedit/gedit-tab.c:1578
 msgid "Encoding:"
 msgstr "รหัสอักขระ:"
 
@@ -1466,7 +1493,7 @@ msgstr "Mac OS แบบฉบับ"
 msgid "Windows"
 msgstr "วินโดวส์"
 
-#: ../gedit/gedit-view.c:516
+#: ../gedit/gedit-view.c:465
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "แสดงเ_ลขบรรทัด"
@@ -1475,73 +1502,73 @@ msgstr "แสดงเ_ลขบรรทัด"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:697
+#: ../gedit/gedit-view-frame.c:657
 #, c-format
 msgid "%d of %d"
 msgstr "%d จาก %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:789
+#: ../gedit/gedit-view-frame.c:749
 msgid "_Wrap Around"
 msgstr "ห_มดแล้วเริ่มใหม่"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:799
+#: ../gedit/gedit-view-frame.c:759
 msgid "Match as _Regular Expression"
 msgstr "ค้นหาด้วยนิพจน์เ_รกิวลาร์"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:813
+#: ../gedit/gedit-view-frame.c:773
 msgid "Match _Entire Word Only"
 msgstr "ค้นหาทั้_งคำ"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:827
+#: ../gedit/gedit-view-frame.c:787
 msgid "_Match Case"
 msgstr "ตัวพิมพ์ใหญ่-เ_ล็กตรงกัน"
 
-#: ../gedit/gedit-view-frame.c:1044
+#: ../gedit/gedit-view-frame.c:1004
 msgid "String you want to search for"
 msgstr "ข้อความที่คุณต้องการค้นหา"
 
-#: ../gedit/gedit-view-frame.c:1056
+#: ../gedit/gedit-view-frame.c:1016
 msgid "Line you want to move the cursor to"
 msgstr "บรรทัดที่คุณต้องการย้ายเคอร์เซอร์ไป"
 
-#: ../gedit/gedit-window.c:984
+#: ../gedit/gedit-window.c:1008
 msgid "Bracket match is out of range"
 msgstr "คู่วงเล็บอยู่นอกช่วง"
 
-#: ../gedit/gedit-window.c:989
+#: ../gedit/gedit-window.c:1013
 msgid "Bracket match not found"
 msgstr "ไม่พบคู่วงเล็บ"
 
-#: ../gedit/gedit-window.c:994
+#: ../gedit/gedit-window.c:1018
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "พบคู่วงเล็บที่บรรทัด: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1029
+#: ../gedit/gedit-window.c:1053
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  บรรทัด %d, คอลัมน์ %d"
 
-#: ../gedit/gedit-window.c:1211
+#: ../gedit/gedit-window.c:1237
 #, c-format
 msgid "Tab Width: %u"
 msgstr "ความกว้างแท็บ: %u"
 
-#: ../gedit/gedit-window.c:1581
+#: ../gedit/gedit-window.c:1606
 msgid "There are unsaved documents"
 msgstr "มีเอกสารที่ไม่ได้บันทึก"
 
-#: ../gedit/gedit-window.c:2430
+#: ../gedit/gedit-window.c:2457
 msgid "Change side panel page"
 msgstr "เปลี่ยนหน้าของช่องด้านข้าง"
 
-#: ../gedit/gedit-window.c:2450 ../gedit/resources/gtk/menus-osx.ui.h:36
+#: ../gedit/gedit-window.c:2477 ../gedit/resources/gtk/menus-osx.ui.h:36
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "เอกสาร"
@@ -2329,11 +2356,11 @@ msgstr ""
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "ชื่อแบบอักษร Pango ตัวอย่างเช่น \"Sans 12\" หรือ \"Monospace Bold 14\""
 
-#: ../plugins/externaltools/tools/appactivatable.py:126
+#: ../plugins/externaltools/tools/appactivatable.py:128
 msgid "Manage _External Tools..."
 msgstr "จัดการเครื่องมือภาย_นอก..."
 
-#: ../plugins/externaltools/tools/appactivatable.py:131
+#: ../plugins/externaltools/tools/appactivatable.py:133
 msgid "External _Tools"
 msgstr "เ_ครื่องมือภายนอก"
 
@@ -2511,7 +2538,7 @@ msgstr "ผลลัพธ์_ออก:"
 msgid "_Applicability:"
 msgstr "_กระทำกับ:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:118
+#: ../plugins/externaltools/tools/windowactivatable.py:121
 msgid "Tool Output"
 msgstr "ผลลัพธ์เครื่องมือ"
 
@@ -2844,7 +2871,7 @@ msgid "_Error color:"
 msgstr "สีของข้อ_ผิดพลาด:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:47
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:52
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "คอนโซลไพธอน"
@@ -2853,7 +2880,7 @@ msgstr "คอนโซลไพธอน"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "คอนโซลไพธอนโต้ตอบในแถบด้านล่าง"
 
-#: ../plugins/quickopen/quickopen/__init__.py:35
+#: ../plugins/quickopen/quickopen/__init__.py:37
 msgid "Quick Open..."
 msgstr "เปิดอย่างเร็ว..."
 
@@ -2871,7 +2898,7 @@ msgstr "เปิดแฟ้มอย่างเร็ว"
 msgid "Type to search..."
 msgstr "พิมพ์เพื่อค้นหา..."
 
-#: ../plugins/snippets/snippets/appactivatable.py:82
+#: ../plugins/snippets/snippets/appactivatable.py:83
 msgid "Manage _Snippets..."
 msgstr "จัดการ_ข้อความสั้น..."
 
@@ -3392,6 +3419,9 @@ msgstr "แทรกวันที่และเวลา"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "แทรกวันที่และเวลาปัจจุบันที่ตำแหน่งเคอร์เซอร์"
+
+#~ msgid "RO"
+#~ msgstr "RO"
 
 #~ msgid "_Ignore case"
 #~ msgstr "ไ_ม่สนใจตัวพิมพ์ใหญ่-เล็ก"
@@ -4435,12 +4465,6 @@ msgstr "แทรกวันที่และเวลาปัจจุบั
 #~ msgid "Mail link"
 #~ msgstr "ลิงก์ชนิดเมล"
 
-#~ msgid "Margin pixel height"
-#~ msgstr "ความสูงของขอบเฟรม"
-
-#~ msgid "Margin pixel width"
-#~ msgstr "ความกว้างของขอบเฟรม"
-
 #~ msgid "Marquee"
 #~ msgstr "ตัววิ่ง"
 
@@ -4714,9 +4738,6 @@ msgstr "แทรกวันที่และเวลาปัจจุบั
 #~ msgid "Target - Self"
 #~ msgstr "ลิงก์เปิดในเฟรมเดิม"
 
-#~ msgid "Target - Top"
-#~ msgstr "ลิงก์เปิดเต็มหน้าต่างเดิม"
-
 #~ msgid "Teletype or monospace text style"
 #~ msgstr "ตัวอักษรพิมพ์ดีด"
 
@@ -4731,9 +4752,6 @@ msgstr "แทรกวันที่และเวลาปัจจุบั
 
 #~ msgid "Title"
 #~ msgstr "ชื่อเรื่อง"
-
-#~ msgid "Top margin in pixels"
-#~ msgstr "ระยะเว้นขอบบนเป็นพิกเซล"
 
 #~ msgid "Underlined text style"
 #~ msgstr "ตัวขีดเส้นใต้"
