@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-02-21 20:05+0000\n"
-"PO-Revision-Date: 2015-02-21 21:45+0100\n"
+"POT-Creation-Date: 2015-07-08 05:17+0000\n"
+"PO-Revision-Date: 2015-07-08 15:31+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.7.5\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -55,7 +55,7 @@ msgstr ""
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:724
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:737
 msgid "Text Editor"
 msgstr "Gedit - urejevalnik besedil"
 
@@ -469,6 +469,38 @@ msgstr ""
 "Določa pisavo, ki se uporabi za številke vrstic pri tiskanju. Uporabljena je "
 "le v primeru, da je možnost \"Natisni številke vrstic\" različna od nič."
 
+#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+msgid "Margin Left"
+msgstr "Levi rob"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+msgid "The left margin, in millimeters."
+msgstr "Levi rob, določen v milimetrih."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+msgid "Margin Top"
+msgstr "Zgornji rob"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+msgid "The top margin, in millimeters."
+msgstr "Zgornji rob, določen v milimetrih."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+msgid "Margin Right"
+msgstr "Desni rob"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+msgid "The right margin, in millimeters."
+msgstr "Desni rob, določen v milimetrih."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+msgid "Margin Bottom"
+msgstr "Spodnji rob"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+msgid "The bottom margin, in millimeters."
+msgstr "Spodnji rob, določen v milimetrih."
+
 #. Translators: This is the sorted list of encodings used by gedit
 #. for automatic detection of the file encoding. You may want to customize it adding
 #. encodings that are common in your country, for instance the GB18030 encoding
@@ -480,15 +512,15 @@ msgstr ""
 #. Only recognized encodings are used.
 #. See http://git.gnome.org/browse/gedit/tree/gedit/gedit-encodings.c#n152 for
 #. a list of supported encodings
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 msgstr "['UTF-8', 'TRENUTNI', 'ISO-8859-1', 'ISO-8859-2', 'UTF-16']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:93
 msgid "Automatically Detected Encodings"
 msgstr "Samodejno zaznan nabor znakov"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:94
 msgid ""
 "Sorted list of encodings used by gedit for automatically detecting the "
 "encoding of a file. \"CURRENT\" represents the current locale encoding. Only "
@@ -500,15 +532,15 @@ msgstr ""
 
 #. Translators: This is the list of encodings shown by default in the Character Encoding
 #. menu in open/save file selector. Only recognized encodings are displayed.
-#: ../data/org.gnome.gedit.gschema.xml.in.h:89
+#: ../data/org.gnome.gedit.gschema.xml.in.h:97
 msgid "['ISO-8859-15']"
 msgstr "['ISO-8859-15']"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:90
+#: ../data/org.gnome.gedit.gschema.xml.in.h:98
 msgid "Encodings shown in menu"
 msgstr "Kodiranja prikazana v meniju"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:91
+#: ../data/org.gnome.gedit.gschema.xml.in.h:99
 msgid ""
 "List of encodings shown in the Character Encoding menu in open/save file "
 "selector. Only recognized encodings are used."
@@ -517,11 +549,11 @@ msgstr ""
 "odpiranje in shranjevanje datotek. Uporabljena so le prepoznani nabori "
 "znakov."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:92
+#: ../data/org.gnome.gedit.gschema.xml.in.h:100
 msgid "Active plugins"
 msgstr "Dejavni vstavki"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:93
+#: ../data/org.gnome.gedit.gschema.xml.in.h:101
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -529,15 +561,15 @@ msgstr ""
 "Seznam dejavnih vstavkov. Vsebuje \"Mesto\" dejavnih vstavkov. Glejte "
 "datoteko .gedit-plugin za pridobitev \"Mesta\" danega vstavka."
 
-#: ../gedit/gedit-app.c:105
+#: ../gedit/gedit-app.c:107
 msgid "Show the application's version"
 msgstr "Pokaži različico programa"
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:113
 msgid "Display list of possible values for the encoding option"
 msgstr "Pokaži seznam mogočih vrednosti kodiranja"
 
-#: ../gedit/gedit-app.c:118
+#: ../gedit/gedit-app.c:120
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -545,43 +577,43 @@ msgstr ""
 "Nastavi kodiranje znakov, ki naj bo uporabljeno za odpiranje datotek, "
 "naštetih v ukazni vrstici"
 
-#: ../gedit/gedit-app.c:119
+#: ../gedit/gedit-app.c:121
 msgid "ENCODING"
 msgstr "KODIRANJE"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:127
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Ustvari novo vrhnje okno v obstoječem oknu gedit"
 
-#: ../gedit/gedit-app.c:132
+#: ../gedit/gedit-app.c:134
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Ustvari nov dokument v obstoječem primerku gedit"
 
-#: ../gedit/gedit-app.c:139
+#: ../gedit/gedit-app.c:141
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Nastavitve položaja in velikost okna (širina x višina + X + Y)"
 
-#: ../gedit/gedit-app.c:140
+#: ../gedit/gedit-app.c:142
 msgid "GEOMETRY"
 msgstr "GEOMETRIJA"
 
-#: ../gedit/gedit-app.c:146
+#: ../gedit/gedit-app.c:148
 msgid "Open files and block process until files are closed"
 msgstr "Odpri datoteke in zadrži proces dokler datoteke ne bodo zaprte"
 
-#: ../gedit/gedit-app.c:153
+#: ../gedit/gedit-app.c:155
 msgid "Run gedit in standalone mode"
 msgstr "Zaženi gedit v samostojnem načinu"
 
-#: ../gedit/gedit-app.c:160
+#: ../gedit/gedit-app.c:162
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[DATOTEKA ...] [+VRSTICA[:STOLPEC]]"
 
-#: ../gedit/gedit-app.c:265
+#: ../gedit/gedit-app.c:274
 msgid "There was an error displaying the help."
 msgstr "Prišlo je do napake med prikazovanjem pomoči."
 
-#: ../gedit/gedit-app.c:919
+#: ../gedit/gedit-app.c:944
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: neveljavno kodiranje."
@@ -1009,7 +1041,7 @@ msgstr "Najden in zamenjan en niz"
 msgid "\"%s\" not found"
 msgstr "\"%s\" ni mogoče najti"
 
-#: ../gedit/gedit-document.c:956 ../gedit/gedit-document.c:986
+#: ../gedit/gedit-document.c:986 ../gedit/gedit-document.c:1016
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "dokument %d"
@@ -1019,8 +1051,8 @@ msgstr "dokument %d"
 msgid "Tab Group %i"
 msgstr "Skupina zavihkov %i"
 
-#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1134
-#: ../gedit/gedit-window.c:1140 ../gedit/gedit-window.c:1148
+#: ../gedit/gedit-documents-panel.c:525 ../gedit/gedit-window.c:1142
+#: ../gedit/gedit-window.c:1148 ../gedit/gedit-window.c:1156
 msgid "Read-Only"
 msgstr "Le za branje"
 
@@ -1064,7 +1096,7 @@ msgstr "Znakovni nabor:"
 msgid "Line Ending:"
 msgstr "Konec vrstice:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1218
+#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1226
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1458,16 +1490,16 @@ msgstr "Ni mogoče odstraniti barvne sheme \"%s\"."
 msgid "Preparing..."
 msgstr "Pripravljanje ..."
 
-#: ../gedit/gedit-print-job.c:536
+#: ../gedit/gedit-print-job.c:545
 #, c-format
 msgid "File: %s"
 msgstr "Datoteka: %s"
 
-#: ../gedit/gedit-print-job.c:545
+#: ../gedit/gedit-print-job.c:554
 msgid "Page %N of %Q"
 msgstr "Stran %N od %Q"
 
-#: ../gedit/gedit-print-job.c:619
+#: ../gedit/gedit-print-job.c:632
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "Izrisovanje strani %d od %d .."
@@ -1542,34 +1574,34 @@ msgid "Saving %s"
 msgstr "Shranjevanje %s"
 
 #. Read only
-#: ../gedit/gedit-tab.c:1462
+#: ../gedit/gedit-tab.c:1464
 msgid "RO"
 msgstr "Le beri"
 
-#: ../gedit/gedit-tab.c:1510
+#: ../gedit/gedit-tab.c:1512
 #, c-format
 msgid "Error opening file %s"
 msgstr "Napaka med odpiranjem datoteke %s"
 
-#: ../gedit/gedit-tab.c:1515
+#: ../gedit/gedit-tab.c:1517
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Napaka med povračanjem datoteke %s"
 
-#: ../gedit/gedit-tab.c:1520
+#: ../gedit/gedit-tab.c:1522
 #, c-format
 msgid "Error saving file %s"
 msgstr "Napaka med shranjevanjem datoteke %s"
 
-#: ../gedit/gedit-tab.c:1551
+#: ../gedit/gedit-tab.c:1553
 msgid "Name:"
 msgstr "Ime:"
 
-#: ../gedit/gedit-tab.c:1552
+#: ../gedit/gedit-tab.c:1554
 msgid "MIME Type:"
 msgstr "Vrsta MIME:"
 
-#: ../gedit/gedit-tab.c:1553
+#: ../gedit/gedit-tab.c:1555
 msgid "Encoding:"
 msgstr "Nabor znakov:"
 
@@ -1605,7 +1637,7 @@ msgstr "Mac OS"
 msgid "Windows"
 msgstr "Okna"
 
-#: ../gedit/gedit-view.c:511
+#: ../gedit/gedit-view.c:510
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "_Pokaži številke vrstic"
@@ -1614,73 +1646,73 @@ msgstr "_Pokaži številke vrstic"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:736
+#: ../gedit/gedit-view-frame.c:691
 #, c-format
 msgid "%d of %d"
 msgstr "%d od %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:828
+#: ../gedit/gedit-view-frame.c:783
 msgid "_Wrap Around"
 msgstr "_Prelomi vrstice"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:838
+#: ../gedit/gedit-view-frame.c:793
 msgid "Match as _Regular Expression"
 msgstr "Poišči kot _logični izraz"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:852
+#: ../gedit/gedit-view-frame.c:807
 msgid "Match _Entire Word Only"
 msgstr "Poišči le _cele besede"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:866
+#: ../gedit/gedit-view-frame.c:821
 msgid "_Match Case"
 msgstr "_Upoštevaj velikost črk"
 
-#: ../gedit/gedit-view-frame.c:1041
+#: ../gedit/gedit-view-frame.c:1038
 msgid "String you want to search for"
 msgstr "Niz, ki ga želite poiskati"
 
-#: ../gedit/gedit-view-frame.c:1053
+#: ../gedit/gedit-view-frame.c:1050
 msgid "Line you want to move the cursor to"
 msgstr "Vrstica, na katero želite premakniti kazalko"
 
-#: ../gedit/gedit-window.c:973
+#: ../gedit/gedit-window.c:981
 msgid "Bracket match is out of range"
 msgstr "Ujemanje oklepajev je izven obsega"
 
-#: ../gedit/gedit-window.c:978
+#: ../gedit/gedit-window.c:986
 msgid "Bracket match not found"
 msgstr "Ujemanja oklepajev ni mogoče najti"
 
-#: ../gedit/gedit-window.c:983
+#: ../gedit/gedit-window.c:991
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Na vrstici je bilo najdeno ujemanje oklepaja: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1018
+#: ../gedit/gedit-window.c:1026
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Vr. %d, St. %d"
 
-#: ../gedit/gedit-window.c:1200
+#: ../gedit/gedit-window.c:1208
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Širina _tabulatorja: %u"
 
-#: ../gedit/gedit-window.c:1570
+#: ../gedit/gedit-window.c:1578
 msgid "There are unsaved documents"
 msgstr "Odprti so neshranjeni dokumenti"
 
-#: ../gedit/gedit-window.c:2419
+#: ../gedit/gedit-window.c:2427
 msgid "Change side panel page"
 msgstr "Spremeni stran stranskega pladnja"
 
-#: ../gedit/gedit-window.c:2439 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2447 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumenti"
@@ -1888,8 +1920,8 @@ msgid "_Paste"
 msgstr "_Prilepi"
 
 #: ../gedit/resources/gtk/menus-osx.ui.h:19
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:930
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:968
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Izbriši"
@@ -2090,8 +2122,8 @@ msgid "Editor"
 msgstr "Urejevalnik"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:3
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:7
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Pisava"
 
@@ -2353,12 +2385,12 @@ msgstr ""
 "prenos, lahko pa jo tudi prezrete in počakate na novejše posodobitve."
 
 #. ex:set ts=8 noet:
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:1
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
 msgid "Version to Ignore"
 msgstr "Različica za prezrtje"
 
 #. This is releated to the next gedit version to be released
-#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.in.h:3
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr "Prezrta različica do izdaje naslednje različice."
 
@@ -2454,12 +2486,12 @@ msgstr "Zunanja orodja"
 msgid "Execute external commands and shell scripts."
 msgstr "Izvajanje zunanjih ukazov in lupinskih skriptov."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:1
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:5
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
 msgstr "Ali naj se uporabi sistemska pisava"
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:2
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
@@ -2468,8 +2500,8 @@ msgstr ""
 "pisavo, če je enopresledna (sicer pa bo uporabil najbolj podobno pisavo, ki "
 "jo bo našel)."
 
-#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.in.h:4
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:8
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "Ime pisave Pango. Primera sta \"Sans 12\" ali \"Monospace Bold 14\"."
 
@@ -2676,43 +2708,43 @@ msgstr "Osebna mapa"
 msgid "File System"
 msgstr "Datotečni sistem"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:532
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:523
 msgid "File Browser"
 msgstr "Brskalnik datotek"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:659
 msgid "An error occurred while creating a new directory"
 msgstr "Med ustvarjanjem novega imenika je prišlo do napake"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:662
 msgid "An error occurred while creating a new file"
 msgstr "Med ustvarjanjem nove datoteke je prišlo do napake"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:665
 msgid "An error occurred while renaming a file or directory"
 msgstr "Med preimenovanjem datoteke ali imenika je prišlo do napake."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:683
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:668
 msgid "An error occurred while deleting a file or directory"
 msgstr "Med brisanjem datoteke ali imenika je prišlo do napake"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:686
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:671
 msgid "An error occurred while opening a directory in the file manager"
 msgstr "Med odpiranjem datoteke v upravljalniku datotek je prišlo do napake."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:689
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
 msgid "An error occurred while setting a root directory"
 msgstr "Med nastavljanjem korenskega imenika je prišlo do napake"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:692
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
 msgid "An error occurred while loading a directory"
 msgstr "Med nalaganjem imenika je prišlo do napake"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:695
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
 msgid "An error occurred"
 msgstr "Prišlo je do napake"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:913
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2720,25 +2752,25 @@ msgstr ""
 "Datoteke ni mogoče premakniti v smeti,\n"
 "ali jo želite trajno izbrisati?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:918
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Datoteke \"%s\" ni mogoče premakniti v smeti."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:923
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
 msgid "The selected files cannot be moved to the trash."
 msgstr "Izbranih datotek ni mogoče premakniti v smeti."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:954
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Ali ste prepričani, da želite trajno izbrisati \"%s\"?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:959
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Ali ste prepričani, da želite trajno izbrisati izbrane datoteke?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:962
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
 msgid "If you delete an item, it is permanently lost."
 msgstr "V kolikor izbrišete predmet, bo trajno izgubljen."
 
@@ -2780,36 +2812,36 @@ msgstr ""
 "Nova mapa je zaradi filtriranja trenutno nevidna. Nastavitve filtriranja je "
 "treba prilagoditi, da bo mapa vidna."
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:792
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:774
 msgid "Bookmarks"
 msgstr "Zaznamki"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2048
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2015
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Ni priklopnega predmeta za priklopljen pogon: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2125
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2092
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Ni mogoče odpreti nosilca: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2172
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2139
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Ni mogoče priklopiti pogona: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2822
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2789
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr "Napaka nalaganja '%s': ni take mape."
 
 #. ex:set ts=8 noet:
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:1
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
 msgid "Open With Tree View"
 msgstr "Odpri z drevesnim prikazom"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:2
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
 msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
@@ -2817,11 +2849,11 @@ msgstr ""
 "Odpri drevesni prikaz namesto prikaza zaznamkov, ko se zažene vstavek "
 "pregledovalnika datotek"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:3
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
 msgstr "Korenski imenik pregledovalnika datotek"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:4
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
@@ -2829,11 +2861,11 @@ msgstr ""
 "Korenski imenik pregledovalnika datotek, ki naj se uporabi pri nalaganju "
 "vstavka pregledovalnika datotek in ko je onload/tree_view RESNIČNO (TRUE)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:5
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
 msgstr "Navidezni korenski imenik pregledovalnika datotek"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:6
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
 "The file browser virtual root directory to use when loading the file browser "
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
@@ -2843,19 +2875,19 @@ msgstr ""
 "nalaganju vstavka pregledovalnika datotek in ko je onload/tree_view RESNIČNO "
 "(TRUE). Navidezni koren mora vedno biti pod dejanskim korenom."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:7
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
 msgstr "Omogoči povrnitev oddaljenih mest"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:8
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
 msgstr "Nastavi, ali je omogočena povrnitev oddaljenih mest."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:9
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "Nastavi mesto na prvi dokument"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:10
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn't been used yet. (Thus this "
@@ -2867,11 +2899,11 @@ msgstr ""
 "(Čeprav se ponavadi to nanaša na odpiranje dokumenta iz ukazne vrstice ali "
 "na odpiranje s programom nautilus itd.)"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:11
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
 msgstr "Filtrirni način pregledovalnika datotek"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:12
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
 "This value determines what files get filtered from the file browser. Valid "
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
@@ -2881,11 +2913,11 @@ msgstr ""
 "Veljavne vrednosti so: none (ne filtriraj), hide-hidden (filtriraj skrite "
 "datoteke) in hide-binary (filtriraj binarne datoteke)."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:13
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
 msgstr "Filtrirni vzorec pregledovalnika datotek"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:14
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
@@ -2893,11 +2925,11 @@ msgstr ""
 "Filtrirni vzorec za filtriranje pregledovalnika datotek. Ta filter deluje "
 "nad filter_mode."
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:15
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
 msgstr "Vzorci brskanja binarnih datotek"
 
-#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.in.h:16
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr "Podporni vzorci za uporabo pri filtriranju dvojiških datotek."
 
@@ -2965,23 +2997,23 @@ msgstr "Vrstične nastavitve"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Podpora za vrstične nastavitve v slogu programov Emacs, Kate in Vim."
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
 msgstr "Barva besdila ukazov"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:2
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
 msgid "The command color text"
 msgstr "Barva besedila ukazov"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
 msgid "Error Color Text"
 msgstr "Barva besedila napak"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
 msgid "The error color text"
 msgstr "Barva besedila o napakah"
 
-#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.in.h:6
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
@@ -3468,11 +3500,11 @@ msgid "Available formats"
 msgstr "Oblike na voljo"
 
 #. ex:set ts=8 noet:
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:1
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
 msgid "Prompt Type"
 msgstr "Vrsta poziva"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:2
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
 msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
@@ -3480,19 +3512,19 @@ msgstr ""
 "Ali naj bo uporabnik pozvan za obliko ali naj bosta uporabljena izbrana ali "
 "oblika po meri."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:3
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
 msgstr "Izbrana oblika"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:4
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
 msgstr "Izbrana oblika, ki je uporabljena pri vstavljanju datuma/časa."
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:5
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
 msgstr "Oblika po meri"
 
-#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.in.h:6
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
 msgstr "Oblika po meri pri vstavljanju datuma in časa."
 
