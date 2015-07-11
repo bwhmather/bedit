@@ -23,7 +23,8 @@
 #include <gtksourceview/gtksource.h>
 
 gboolean
-gedit_spell_utils_is_digit (const char *text, gssize length)
+gedit_spell_utils_is_digit (const gchar *text,
+			    gssize       length)
 {
 	gunichar c;
 	const gchar *p;
@@ -32,19 +33,24 @@ gedit_spell_utils_is_digit (const char *text, gssize length)
 	g_return_val_if_fail (text != NULL, FALSE);
 
 	if (length < 0)
+	{
 		length = strlen (text);
+	}
 
 	p = text;
 	end = text + length;
 
-	while (p != end) {
+	while (p < end)
+	{
 		const gchar *next;
 		next = g_utf8_next_char (p);
 
 		c = g_utf8_get_char (p);
 
 		if (!g_unichar_isdigit (c) && c != '.' && c != ',')
+		{
 			return FALSE;
+		}
 
 		p = next;
 	}
