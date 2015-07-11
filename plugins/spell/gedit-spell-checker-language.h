@@ -1,4 +1,3 @@
-/* vim: set sw=8: -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
 /*
  * gedit-spell-checker-language.h
  * This file is part of gedit
@@ -28,17 +27,18 @@ G_BEGIN_DECLS
 
 typedef struct _GeditSpellCheckerLanguage GeditSpellCheckerLanguage;
 
-const gchar			*gedit_spell_checker_language_to_string	(const GeditSpellCheckerLanguage *lang);
+const gchar *	gedit_spell_checker_language_to_string		(const GeditSpellCheckerLanguage *lang);
 
-const gchar			*gedit_spell_checker_language_to_key	(const GeditSpellCheckerLanguage *lang);
+const gchar *	gedit_spell_checker_language_to_key		(const GeditSpellCheckerLanguage *lang);
 
-const GeditSpellCheckerLanguage	*gedit_spell_checker_language_from_key	(const gchar *key);
+const GeditSpellCheckerLanguage *
+		gedit_spell_checker_language_from_key		(const gchar *key);
 
 /* GSList contains "GeditSpellCheckerLanguage*" items */
-const GSList 			*gedit_spell_checker_get_available_languages
-									(void);
+const GSList *	gedit_spell_checker_get_available_languages	(void);
 
 G_END_DECLS
 
 #endif /* __GEDIT_SPELL_CHECKER_LANGUAGE_H__ */
+
 /* ex:set ts=8 noet: */

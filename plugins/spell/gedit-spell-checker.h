@@ -36,9 +36,8 @@ G_BEGIN_DECLS
 #define GEDIT_IS_SPELL_CHECKER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_SPELL_CHECKER))
 #define GEDIT_SPELL_CHECKER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_SPELL_CHECKER, GeditSpellChecker))
 
-typedef struct _GeditSpellChecker GeditSpellChecker;
-
-typedef struct _GeditSpellCheckerClass GeditSpellCheckerClass;
+typedef struct _GeditSpellChecker	GeditSpellChecker;
+typedef struct _GeditSpellCheckerClass	GeditSpellCheckerClass;
 
 struct _GeditSpellCheckerClass
 {
@@ -59,10 +58,8 @@ struct _GeditSpellCheckerClass
 	void (*clear_session)	     (GeditSpellChecker               *spell);
 };
 
-
 GType        		 gedit_spell_checker_get_type		(void) G_GNUC_CONST;
 
-/* Constructors */
 GeditSpellChecker	*gedit_spell_checker_new		(void);
 
 gboolean		 gedit_spell_checker_set_language 	(GeditSpellChecker               *spell,
@@ -95,6 +92,7 @@ gboolean		 gedit_spell_checker_set_correction 	(GeditSpellChecker               
 								 gssize                           w_len,
 								 const gchar                     *replacement,
 								 gssize                           r_len);
+
 G_END_DECLS
 
 #endif  /* __GEDIT_SPELL_CHECKER_H__ */

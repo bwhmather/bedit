@@ -34,10 +34,8 @@ G_BEGIN_DECLS
 #define GEDIT_IS_SPELL_LANGUAGE_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_SPELL_LANGUAGE_DIALOG))
 #define GEDIT_SPELL_LANGUAGE_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_SPELL_LANGUAGE_DIALOG, GeditSpellLanguageDialogClass))
 
-
-typedef struct _GeditSpellLanguageDialog GeditSpellLanguageDialog;
-
-typedef struct _GeditSpellLanguageDialogClass GeditSpellLanguageDialogClass;
+typedef struct _GeditSpellLanguageDialog	GeditSpellLanguageDialog;
+typedef struct _GeditSpellLanguageDialogClass	GeditSpellLanguageDialogClass;
 
 struct _GeditSpellLanguageDialogClass
 {
@@ -48,7 +46,7 @@ GType		 gedit_spell_language_dialog_get_type		(void) G_GNUC_CONST;
 
 GtkWidget	*gedit_spell_language_dialog_new		(GtkWindow			 *parent,
 								 const GeditSpellCheckerLanguage *cur_lang,
-								 const gchar *data_dir);
+								 const gchar                     *data_dir);
 
 const GeditSpellCheckerLanguage *
 		 gedit_spell_language_get_selected_language	(GeditSpellLanguageDialog *dlg);

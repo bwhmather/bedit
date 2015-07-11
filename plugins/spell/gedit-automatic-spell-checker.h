@@ -34,26 +34,22 @@
 
 typedef struct _GeditAutomaticSpellChecker GeditAutomaticSpellChecker;
 
-GeditAutomaticSpellChecker	*gedit_automatic_spell_checker_new (
-							GeditDocument 			*doc,
-							GeditSpellChecker		*checker);
+GeditAutomaticSpellChecker *
+	gedit_automatic_spell_checker_new		(GeditDocument     *doc,
+							 GeditSpellChecker *checker);
 
-GeditAutomaticSpellChecker	*gedit_automatic_spell_checker_get_from_document (
-							const GeditDocument 		*doc);
+GeditAutomaticSpellChecker *
+	gedit_automatic_spell_checker_get_from_document	(const GeditDocument *doc);
 
-void				 gedit_automatic_spell_checker_free (
-							GeditAutomaticSpellChecker 	*spell);
+void	gedit_automatic_spell_checker_free		(GeditAutomaticSpellChecker *spell);
 
-void 				 gedit_automatic_spell_checker_attach_view (
-							GeditAutomaticSpellChecker 	*spell,
-							GeditView 			*view);
+void	gedit_automatic_spell_checker_attach_view	(GeditAutomaticSpellChecker *spell,
+							 GeditView                  *view);
 
-void 				 gedit_automatic_spell_checker_detach_view (
-							GeditAutomaticSpellChecker 	*spell,
-							GeditView 			*view);
+void	gedit_automatic_spell_checker_detach_view	(GeditAutomaticSpellChecker *spell,
+							 GeditView                  *view);
 
-void				 gedit_automatic_spell_checker_recheck_all (
-							GeditAutomaticSpellChecker 	*spell);
+void	gedit_automatic_spell_checker_recheck_all	(GeditAutomaticSpellChecker *spell);
 
 #endif  /* __GEDIT_AUTOMATIC_SPELL_CHECKER_H__ */
 
