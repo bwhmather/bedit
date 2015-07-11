@@ -972,14 +972,9 @@ gedit_automatic_spell_checker_detach_view (GeditAutomaticSpellChecker *spell,
 	g_return_if_fail (spell->views != NULL);
 
 	g_signal_handlers_disconnect_matched (G_OBJECT (view),
-			G_SIGNAL_MATCH_DATA,
-			0, 0, NULL, NULL,
-			spell);
-
-	g_signal_handlers_disconnect_matched (G_OBJECT (view),
-			G_SIGNAL_MATCH_DATA,
-			0, 0, NULL, NULL,
-			spell);
+					      G_SIGNAL_MATCH_DATA,
+					      0, 0, NULL, NULL,
+					      spell);
 
 	spell->views = g_slist_remove (spell->views, view);
 }
