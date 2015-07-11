@@ -60,8 +60,8 @@ view_destroy (GtkTextView                *view,
 
 static void
 check_word (GeditAutomaticSpellChecker *spell,
-	    GtkTextIter                *start,
-	    GtkTextIter                *end)
+	    const GtkTextIter          *start,
+	    const GtkTextIter          *end)
 {
 	gchar *word;
 
@@ -201,6 +201,7 @@ check_deferred_range (GeditAutomaticSpellChecker *spell,
 	gtk_text_buffer_get_iter_at_mark (spell->buffer,
 					  &start,
 					  spell->mark_insert_start);
+
 	gtk_text_buffer_get_iter_at_mark (spell->buffer,
 					  &end,
 					  spell->mark_insert_end);
@@ -266,7 +267,9 @@ mark_set (GtkTextBuffer              *buffer,
 {
 	/* if the cursor has moved and there is a deferred check so handle it now */
 	if ((mark == gtk_text_buffer_get_insert (buffer)) && spell->deferred_check)
+	{
 		check_deferred_range (spell, FALSE);
+	}
 }
 
 static void
@@ -275,15 +278,19 @@ get_word_extents_from_mark (GtkTextBuffer *buffer,
 			    GtkTextIter   *end,
 			    GtkTextMark   *mark)
 {
-	gtk_text_buffer_get_iter_at_mark(buffer, start, mark);
+	gtk_text_buffer_get_iter_at_mark (buffer, start, mark);
 
 	if (!gtk_text_iter_starts_word (start))
+	{
 		gtk_text_iter_backward_word_start (start);
+	}
 
 	*end = *start;
 
 	if (gtk_text_iter_inside_word (end))
+	{
 		gtk_text_iter_forward_word_end (end);
+	}
 }
 
 static void
@@ -291,53 +298,52 @@ remove_tag_to_word (GeditAutomaticSpellChecker *spell,
 		    const gchar                *word)
 {
 	GtkTextIter iter;
-	GtkTextIter match_start, match_end;
 
-	gboolean found;
+	gtk_text_buffer_get_start_iter (spell->buffer, &iter);
 
-	gtk_text_buffer_get_iter_at_offset (spell->buffer, &iter, 0);
-
-	found = TRUE;
-
-	while (found)
+	while (TRUE)
 	{
+		gboolean found;
+		GtkTextIter match_start;
+		GtkTextIter match_end;
+
 		found = gtk_text_iter_forward_search (&iter,
-				word,
-				GTK_TEXT_SEARCH_VISIBLE_ONLY | GTK_TEXT_SEARCH_TEXT_ONLY,
-				&match_start,
-				&match_end,
-				NULL);
+						      word,
+						      GTK_TEXT_SEARCH_VISIBLE_ONLY |
+						      GTK_TEXT_SEARCH_TEXT_ONLY,
+						      &match_start,
+						      &match_end,
+						      NULL);
 
-		if (found)
+		if (!found)
 		{
-			if (gtk_text_iter_starts_word (&match_start) &&
-			    gtk_text_iter_ends_word (&match_end))
-			{
-				gtk_text_buffer_remove_tag (spell->buffer,
-						spell->tag_highlight,
-						&match_start,
-						&match_end);
-			}
-
-			iter = match_end;
+			break;
 		}
+
+		if (gtk_text_iter_starts_word (&match_start) &&
+		    gtk_text_iter_ends_word (&match_end))
+		{
+			gtk_text_buffer_remove_tag (spell->buffer,
+						    spell->tag_highlight,
+						    &match_start,
+						    &match_end);
+		}
+
+		iter = match_end;
 	}
 }
 
 static void
-add_to_dictionary (GtkWidget                  *menuitem,
+add_to_dictionary (GtkWidget                  *menu_item,
 		   GeditAutomaticSpellChecker *spell)
 {
+	GtkTextIter start;
+	GtkTextIter end;
 	gchar *word;
-
-	GtkTextIter start, end;
 
 	get_word_extents_from_mark (spell->buffer, &start, &end, spell->mark_click);
 
-	word = gtk_text_buffer_get_text (spell->buffer,
-					 &start,
-					 &end,
-					 FALSE);
+	word = gtk_text_buffer_get_text (spell->buffer, &start, &end, FALSE);
 
 	gedit_spell_checker_add_word_to_personal (spell->spell_checker, word, -1);
 
@@ -345,19 +351,16 @@ add_to_dictionary (GtkWidget                  *menuitem,
 }
 
 static void
-ignore_all (GtkWidget                  *menuitem,
+ignore_all (GtkWidget                  *menu_item,
 	    GeditAutomaticSpellChecker *spell)
 {
+	GtkTextIter start;
+	GtkTextIter end;
 	gchar *word;
-
-	GtkTextIter start, end;
 
 	get_word_extents_from_mark (spell->buffer, &start, &end, spell->mark_click);
 
-	word = gtk_text_buffer_get_text (spell->buffer,
-					 &start,
-					 &end,
-					 FALSE);
+	word = gtk_text_buffer_get_text (spell->buffer, &start, &end, FALSE);
 
 	gedit_spell_checker_add_word_to_session (spell->spell_checker, word, -1);
 
@@ -365,199 +368,172 @@ ignore_all (GtkWidget                  *menuitem,
 }
 
 static void
-replace_word (GtkWidget                  *menuitem,
+replace_word (GtkWidget                  *menu_item,
 	      GeditAutomaticSpellChecker *spell)
 {
-	gchar *oldword;
-	const gchar *newword;
-
-	GtkTextIter start, end;
+	GtkTextIter start;
+	GtkTextIter end;
+	gchar *old_word;
+	const gchar *new_word;
 
 	get_word_extents_from_mark (spell->buffer, &start, &end, spell->mark_click);
 
-	oldword = gtk_text_buffer_get_text (spell->buffer, &start, &end, FALSE);
+	old_word = gtk_text_buffer_get_text (spell->buffer, &start, &end, FALSE);
 
-	newword =  g_object_get_data (G_OBJECT (menuitem), SUGGESTION_KEY);
-	g_return_if_fail (newword != NULL);
+	new_word = g_object_get_data (G_OBJECT (menu_item), SUGGESTION_KEY);
+	g_return_if_fail (new_word != NULL);
 
 	gtk_text_buffer_begin_user_action (spell->buffer);
 
 	gtk_text_buffer_delete (spell->buffer, &start, &end);
-	gtk_text_buffer_insert (spell->buffer, &start, newword, -1);
+	gtk_text_buffer_insert (spell->buffer, &start, new_word, -1);
 
 	gtk_text_buffer_end_user_action (spell->buffer);
 
 	gedit_spell_checker_set_correction (spell->spell_checker,
-				oldword, strlen (oldword),
-				newword, strlen (newword));
+					    old_word, strlen (old_word),
+					    new_word, strlen (new_word));
 
-	g_free (oldword);
+	g_free (old_word);
 }
 
 static GtkWidget *
 build_suggestion_menu (GeditAutomaticSpellChecker *spell,
 		       const gchar                *word)
 {
-	GtkWidget *topmenu, *menu;
-	GtkWidget *mi;
+	GtkWidget *top_menu;
+	GtkWidget *menu_item;
 	GSList *suggestions;
-	GSList *list;
-	gchar *label_text;
 
-	topmenu = menu = gtk_menu_new();
+	top_menu = gtk_menu_new ();
 
 	suggestions = gedit_spell_checker_get_suggestions (spell->spell_checker, word, -1);
 
-	list = suggestions;
-
 	if (suggestions == NULL)
 	{
-		/* no suggestions.  put something in the menu anyway... */
-		GtkWidget *label;
-		/* Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word */
-		label = gtk_label_new (_("(no suggested words)"));
-
-		mi = gtk_menu_item_new ();
-		gtk_widget_set_sensitive (mi, FALSE);
-		gtk_container_add (GTK_CONTAINER(mi), label);
-		gtk_widget_show_all (mi);
-		gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), mi);
+		/* No suggestions. Put something in the menu anyway... */
+		menu_item = gtk_menu_item_new_with_label (_("(no suggested words)"));
+		gtk_widget_set_sensitive (menu_item, FALSE);
+		gtk_menu_shell_prepend (GTK_MENU_SHELL (top_menu), menu_item);
 	}
 	else
 	{
+		GtkWidget *menu = top_menu;
 		gint count = 0;
+		GSList *l;
 
-		/* build a set of menus with suggestions. */
-		while (suggestions != NULL)
+		/* Build a set of menus with suggestions. */
+		for (l = suggestions; l != NULL; l = l->next)
 		{
+			gchar *suggested_word = l->data;
 			GtkWidget *label;
+			gchar *label_text;
 
 			if (count == 10)
 			{
 				/* Separator */
-				mi = gtk_separator_menu_item_new ();
-				gtk_widget_show (mi);
-				gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+				menu_item = gtk_separator_menu_item_new ();
+				gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
 
-				mi = gtk_menu_item_new_with_mnemonic (_("_More..."));
-				gtk_widget_show (mi);
-				gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+				menu_item = gtk_menu_item_new_with_mnemonic (_("_More..."));
+				gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
 
 				menu = gtk_menu_new ();
-				gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi), menu);
+				gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item), menu);
 				count = 0;
 			}
 
-			label_text = g_strdup_printf ("<b>%s</b>", (gchar*) suggestions->data);
+			label_text = g_strdup_printf ("<b>%s</b>", suggested_word);
 
 			label = gtk_label_new (label_text);
 			gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
 			gtk_widget_set_halign (label, GTK_ALIGN_START);
 
-			mi = gtk_menu_item_new ();
-			gtk_container_add (GTK_CONTAINER(mi), label);
+			menu_item = gtk_menu_item_new ();
+			gtk_container_add (GTK_CONTAINER (menu_item), label);
+			gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
 
-			gtk_widget_show_all (mi);
-			gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-
-			g_object_set_data_full (G_OBJECT (mi),
+			g_object_set_data_full (G_OBJECT (menu_item),
 						SUGGESTION_KEY,
-						g_strdup (suggestions->data),
+						g_strdup (suggested_word),
 						g_free);
 
-			g_free (label_text);
-			g_signal_connect (mi,
+			g_signal_connect (menu_item,
 					  "activate",
 					  G_CALLBACK (replace_word),
 					  spell);
 
+			g_free (label_text);
 			count++;
-
-			suggestions = g_slist_next (suggestions);
 		}
 	}
 
-	/* free the suggestion list */
-	suggestions = list;
-
-	while (list)
-	{
-		g_free (list->data);
-		list = g_slist_next (list);
-	}
-
-	g_slist_free (suggestions);
+	g_slist_free_full (suggestions, g_free);
 
 	/* Separator */
-	mi = gtk_separator_menu_item_new ();
-	gtk_widget_show (mi);
-	gtk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
+	menu_item = gtk_separator_menu_item_new ();
+	gtk_menu_shell_append (GTK_MENU_SHELL (top_menu), menu_item);
 
 	/* Ignore all */
-	mi = gtk_menu_item_new_with_mnemonic (_("_Ignore All"));
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Ignore All"));
+	gtk_menu_shell_append (GTK_MENU_SHELL (top_menu), menu_item);
 
-	g_signal_connect (mi,
+	g_signal_connect (menu_item,
 			  "activate",
-			  G_CALLBACK(ignore_all),
+			  G_CALLBACK (ignore_all),
 			  spell);
 
-	gtk_widget_show_all (mi);
-
-	gtk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
-
 	/* Add to Dictionary */
-	mi = gtk_menu_item_new_with_mnemonic (_("_Add"));
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Add"));
+	gtk_menu_shell_append (GTK_MENU_SHELL (top_menu), menu_item);
 
-	g_signal_connect (mi,
+	g_signal_connect (menu_item,
 			  "activate",
 			  G_CALLBACK (add_to_dictionary),
 			  spell);
 
-	gtk_widget_show_all (mi);
-
-	gtk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
-
-	return topmenu;
+	return top_menu;
 }
 
 static void
-populate_popup (GtkTextView                *textview,
+populate_popup (GtkTextView                *view,
 		GtkMenu                    *menu,
 		GeditAutomaticSpellChecker *spell)
 {
-	GtkWidget *mi;
-	GtkTextIter start, end;
-	char *word;
+	GtkWidget *menu_item;
+	GtkTextIter start;
+	GtkTextIter end;
+	gchar *word;
 
-	/* we need to figure out if they picked a misspelled word. */
 	get_word_extents_from_mark (spell->buffer, &start, &end, spell->mark_click);
 
-	/* if our highlight algorithm ever messes up,
-	 * this isn't correct, either. */
 	if (!gtk_text_iter_has_tag (&start, spell->tag_highlight))
-		return; /* word wasn't misspelled. */
+	{
+		return;
+	}
 
-	/* menu separator comes first. */
-	mi = gtk_separator_menu_item_new ();
-	gtk_widget_show (mi);
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), mi);
+	/* Prepend separator */
+	menu_item = gtk_separator_menu_item_new ();
+	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
+	gtk_widget_show (menu_item);
 
-	/* then, on top of it, the suggestions menu. */
-	mi = gtk_menu_item_new_with_mnemonic (_("_Spelling Suggestions..."));
+	/* Prepend suggestions */
+	menu_item = gtk_menu_item_new_with_mnemonic (_("_Spelling Suggestions..."));
+	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
 
 	word = gtk_text_buffer_get_text (spell->buffer, &start, &end, FALSE);
-	gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi),
+	gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
 				   build_suggestion_menu (spell, word));
-	g_free(word);
+	g_free (word);
 
-	gtk_widget_show_all (mi);
-	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), mi);
+	gtk_widget_show_all (menu_item);
 }
 
 void
 gedit_automatic_spell_checker_recheck_all (GeditAutomaticSpellChecker *spell)
 {
-	GtkTextIter start, end;
+	GtkTextIter start;
+	GtkTextIter end;
 
 	g_return_if_fail (spell != NULL);
 
@@ -574,10 +550,7 @@ add_word_signal_cb (GeditSpellChecker          *checker,
 {
 	gchar *w;
 
-	if (len < 0)
-		w = g_strdup (word);
-	else
-		w = g_strndup (word, len);
+	w = len < 0 ? g_strdup (word) : g_strndup (word, len);
 
 	remove_tag_to_word (spell, w);
 
@@ -600,7 +573,7 @@ clear_session_cb (GeditSpellChecker          *checker,
 }
 
 /* When the user right-clicks on a word, they want to check that word.
- * Here, we do NOT  move the cursor to the location of the clicked-upon word
+ * Here, we do NOT move the cursor to the location of the clicked-upon word
  * since that prevents the use of edit functions on the context menu.
  */
 static gboolean
@@ -610,27 +583,27 @@ button_press_event (GtkTextView                *view,
 {
 	if (event->button == GDK_BUTTON_SECONDARY)
 	{
-		gint x, y;
-		GtkTextIter iter;
-
 		GtkTextBuffer *buffer = gtk_text_view_get_buffer (view);
+		GtkTextIter iter;
+		gint x;
+		gint y;
 
-		/* handle deferred check if it exists */
 		if (spell->deferred_check)
+		{
 			check_deferred_range (spell, TRUE);
+		}
 
 		gtk_text_view_window_to_buffer_coords (view,
-				GTK_TEXT_WINDOW_TEXT,
-				event->x, event->y,
-				&x, &y);
+						       GTK_TEXT_WINDOW_TEXT,
+						       event->x, event->y,
+						       &x, &y);
 
 		gtk_text_view_get_iter_at_location (view, &iter, x, y);
 
 		gtk_text_buffer_move_mark (buffer, spell->mark_click, &iter);
 	}
 
-	return FALSE; /* false: let gtk process this event, too.
-			 we don't want to eat any events. */
+	return GDK_EVENT_PROPAGATE;
 }
 
 /* Move the insert mark before popping up the menu, otherwise it
@@ -645,9 +618,10 @@ popup_menu_event (GtkTextView                *view,
 
 	buffer = gtk_text_view_get_buffer (view);
 
-	/* handle deferred check if it exists */
 	if (spell->deferred_check)
+	{
 		check_deferred_range (spell, TRUE);
+	}
 
 	gtk_text_buffer_get_iter_at_mark (buffer, &iter,
 					  gtk_text_buffer_get_insert (buffer));
@@ -660,7 +634,7 @@ static void
 tag_table_changed (GtkTextTagTable            *table,
 		   GeditAutomaticSpellChecker *spell)
 {
-	g_return_if_fail (spell->tag_highlight !=  NULL);
+	g_return_if_fail (spell->tag_highlight != NULL);
 
 	gtk_text_tag_set_priority (spell->tag_highlight,
 				   gtk_text_tag_table_get_size (table) - 1);
@@ -705,12 +679,14 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 {
 	GeditAutomaticSpellChecker *spell;
 	GtkTextTagTable *tag_table;
-	GtkTextIter start, end;
+	GtkTextIter start;
+	GtkTextIter end;
 
 	g_return_val_if_fail (GTK_SOURCE_IS_BUFFER (buffer), NULL);
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
-	g_return_val_if_fail ((spell = gedit_automatic_spell_checker_get_from_buffer (buffer)) == NULL,
-			      spell);
+
+	spell = gedit_automatic_spell_checker_get_from_buffer (buffer);
+	g_return_val_if_fail (spell == NULL, spell);
 
 	/* attach to the widget */
 	spell = g_new0 (GeditAutomaticSpellChecker, 1);
@@ -727,14 +703,17 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 			  "insert-text",
 			  G_CALLBACK (insert_text_before),
 			  spell);
+
 	g_signal_connect_after (buffer,
-			  "insert-text",
-			  G_CALLBACK (insert_text_after),
-			  spell);
+				"insert-text",
+				G_CALLBACK (insert_text_after),
+				spell);
+
 	g_signal_connect_after (buffer,
-			  "delete-range",
-			  G_CALLBACK (delete_range_after),
-			  spell);
+				"delete-range",
+				G_CALLBACK (delete_range_after),
+				spell);
+
 	g_signal_connect (buffer,
 			  "mark-set",
 			  G_CALLBACK (mark_set),
@@ -749,24 +728,26 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 			  "add_word_to_session",
 			  G_CALLBACK (add_word_signal_cb),
 			  spell);
+
 	g_signal_connect (spell->spell_checker,
 			  "add_word_to_personal",
 			  G_CALLBACK (add_word_signal_cb),
 			  spell);
+
 	g_signal_connect (spell->spell_checker,
 			  "clear_session",
 			  G_CALLBACK (clear_session_cb),
 			  spell);
+
 	g_signal_connect (spell->spell_checker,
 			  "set_language",
 			  G_CALLBACK (set_language_cb),
 			  spell);
 
-	spell->tag_highlight = gtk_text_buffer_create_tag (
-				spell->buffer,
-				"gtkspell-misspelled",
-				"underline", PANGO_UNDERLINE_ERROR,
-				NULL);
+	spell->tag_highlight = gtk_text_buffer_create_tag (spell->buffer,
+							   "gedit-spell-misspelled",
+							   "underline", PANGO_UNDERLINE_ERROR,
+							   NULL);
 
 	g_object_weak_ref (G_OBJECT (spell->tag_highlight),
 	                   (GWeakNotify)spell_tag_destroyed,
@@ -781,21 +762,24 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 			  "tag-added",
 			  G_CALLBACK (tag_added_or_removed),
 			  spell);
+
 	g_signal_connect (tag_table,
 			  "tag-removed",
 			  G_CALLBACK (tag_added_or_removed),
 			  spell);
+
 	g_signal_connect (tag_table,
 			  "tag-changed",
 			  G_CALLBACK (tag_changed),
 			  spell);
 
-	/* we create the mark here, but we don't use it until text is
-	 * inserted, so we don't really care where iter points.  */
+	/* We create the mark here, but we don't use it until text is
+	 * inserted, so we don't really care where iter points.
+	 */
 	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
 
 	spell->mark_insert_start = gtk_text_buffer_get_mark (spell->buffer,
-					"gedit-automatic-spell-checker-insert-start");
+							     "gedit-automatic-spell-checker-insert-start");
 
 	if (spell->mark_insert_start == NULL)
 	{
@@ -813,15 +797,14 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 	}
 
 	spell->mark_insert_end = gtk_text_buffer_get_mark (spell->buffer,
-					"gedit-automatic-spell-checker-insert-end");
+							   "gedit-automatic-spell-checker-insert-end");
 
 	if (spell->mark_insert_end == NULL)
 	{
-		spell->mark_insert_end =
-			gtk_text_buffer_create_mark (spell->buffer,
-						     "gedit-automatic-spell-checker-insert-end",
-						     &start,
-						     TRUE);
+		spell->mark_insert_end = gtk_text_buffer_create_mark (spell->buffer,
+								      "gedit-automatic-spell-checker-insert-end",
+								      &start,
+								      TRUE);
 	}
 	else
 	{
@@ -831,15 +814,14 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 	}
 
 	spell->mark_click = gtk_text_buffer_get_mark (spell->buffer,
-					"gedit-automatic-spell-checker-click");
+						      "gedit-automatic-spell-checker-click");
 
 	if (spell->mark_click == NULL)
 	{
-		spell->mark_click =
-			gtk_text_buffer_create_mark (spell->buffer,
-						     "gedit-automatic-spell-checker-click",
-						     &start,
-						     TRUE);
+		spell->mark_click = gtk_text_buffer_create_mark (spell->buffer,
+								 "gedit-automatic-spell-checker-click",
+								 &start,
+								 TRUE);
 	}
 	else
 	{
@@ -874,8 +856,7 @@ static void
 gedit_automatic_spell_checker_free_internal (GeditAutomaticSpellChecker *spell)
 {
 	GtkTextTagTable *table;
-	GtkTextIter start, end;
-	GSList *list;
+	GSList *l;
 
 	g_return_if_fail (spell != NULL);
 
@@ -883,54 +864,47 @@ gedit_automatic_spell_checker_free_internal (GeditAutomaticSpellChecker *spell)
 
 	if (table != NULL && spell->tag_highlight != NULL)
 	{
-		gtk_text_buffer_get_bounds (spell->buffer,
-					    &start,
-					    &end);
+		GtkTextIter start;
+		GtkTextIter end;
+
+		gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
+
 		gtk_text_buffer_remove_tag (spell->buffer,
 					    spell->tag_highlight,
 					    &start,
 					    &end);
 
-		g_signal_handlers_disconnect_matched (G_OBJECT (table),
-					G_SIGNAL_MATCH_DATA,
-					0, 0, NULL, NULL,
-					spell);
+		g_signal_handlers_disconnect_matched (table,
+						      G_SIGNAL_MATCH_DATA,
+						      0, 0, NULL, NULL,
+						      spell);
 
 		gtk_text_tag_table_remove (table, spell->tag_highlight);
 	}
 
-	g_signal_handlers_disconnect_matched (G_OBJECT (spell->buffer),
-			G_SIGNAL_MATCH_DATA,
-			0, 0, NULL, NULL,
-			spell);
+	g_signal_handlers_disconnect_matched (spell->buffer,
+					      G_SIGNAL_MATCH_DATA,
+					      0, 0, NULL, NULL,
+					      spell);
 
-	g_signal_handlers_disconnect_matched (G_OBJECT (spell->spell_checker),
-			G_SIGNAL_MATCH_DATA,
-			0, 0, NULL, NULL,
-			spell);
+	g_signal_handlers_disconnect_matched (spell->spell_checker,
+					      G_SIGNAL_MATCH_DATA,
+					      0, 0, NULL, NULL,
+					      spell);
 
 	g_object_unref (spell->spell_checker);
 
-	list = spell->views;
-	while (list != NULL)
+	for (l = spell->views; l != NULL; l = l->next)
 	{
-		GtkTextView *view = GTK_TEXT_VIEW (list->data);
+		GtkTextView *view = GTK_TEXT_VIEW (l->data);
 
-		g_signal_handlers_disconnect_matched (G_OBJECT (view),
-				G_SIGNAL_MATCH_DATA,
-				0, 0, NULL, NULL,
-				spell);
-
-		g_signal_handlers_disconnect_matched (G_OBJECT (view),
-			G_SIGNAL_MATCH_DATA,
-			0, 0, NULL, NULL,
-			spell);
-
-		list = g_slist_next (list);
+		g_signal_handlers_disconnect_matched (view,
+						      G_SIGNAL_MATCH_DATA,
+						      0, 0, NULL, NULL,
+						      spell);
 	}
 
 	g_slist_free (spell->views);
-
 	g_free (spell);
 }
 
@@ -940,21 +914,23 @@ gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
 {
 	g_return_if_fail (spell != NULL);
 	g_return_if_fail (GTK_IS_TEXT_VIEW (view));
-
 	g_return_if_fail (gtk_text_view_get_buffer (view) == spell->buffer);
 
 	g_signal_connect (view,
 			  "button-press-event",
 			  G_CALLBACK (button_press_event),
 			  spell);
+
 	g_signal_connect (view,
 			  "popup-menu",
 			  G_CALLBACK (popup_menu_event),
 			  spell);
+
 	g_signal_connect (view,
 			  "populate-popup",
 			  G_CALLBACK (populate_popup),
 			  spell);
+
 	g_signal_connect (view,
 			  "destroy",
 			  G_CALLBACK (view_destroy),
@@ -969,11 +945,10 @@ gedit_automatic_spell_checker_detach_view (GeditAutomaticSpellChecker *spell,
 {
 	g_return_if_fail (spell != NULL);
 	g_return_if_fail (GTK_IS_TEXT_VIEW (view));
-
 	g_return_if_fail (gtk_text_view_get_buffer (view) == spell->buffer);
 	g_return_if_fail (spell->views != NULL);
 
-	g_signal_handlers_disconnect_matched (G_OBJECT (view),
+	g_signal_handlers_disconnect_matched (view,
 					      G_SIGNAL_MATCH_DATA,
 					      0, 0, NULL, NULL,
 					      spell);
