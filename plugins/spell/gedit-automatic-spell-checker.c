@@ -70,17 +70,8 @@ check_word (GeditAutomaticSpellChecker *spell,
 
 	word = gtk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc), start, end, FALSE);
 
-	/*
-	g_print ("Check word: %s [%d - %d]\n", word, gtk_text_iter_get_offset (start),
-						gtk_text_iter_get_offset (end));
-	*/
-
 	if (!gedit_spell_checker_check_word (spell->spell_checker, word, -1))
 	{
-		/*
-		g_print ("Apply tag: [%d - %d]\n", gtk_text_iter_get_offset (start),
-						gtk_text_iter_get_offset (end));
-		*/
 		gtk_text_buffer_apply_tag (GTK_TEXT_BUFFER (spell->doc),
 					   spell->tag_highlight,
 					   start,
@@ -105,11 +96,6 @@ check_range (GeditAutomaticSpellChecker *spell,
 	GtkTextIter cursor;
 	GtkTextIter precursor;
   	gboolean    highlight;
-
-	/*
-	g_print ("Check range: [%d - %d]\n", gtk_text_iter_get_offset (&start),
-						gtk_text_iter_get_offset (&end));
-	*/
 
 	if (gtk_text_iter_inside_word (&end))
 		gtk_text_iter_forward_word_end (&end);
