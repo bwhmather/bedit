@@ -26,7 +26,6 @@ gboolean
 gedit_spell_utils_is_digit (const gchar *text,
 			    gssize       length)
 {
-	gunichar c;
 	const gchar *p;
 	const gchar *end;
 
@@ -40,19 +39,16 @@ gedit_spell_utils_is_digit (const gchar *text,
 	p = text;
 	end = text + length;
 
-	while (p < end)
+	while (p != NULL && *p != '\0')
 	{
-		const gchar *next;
-		next = g_utf8_next_char (p);
-
-		c = g_utf8_get_char (p);
+		gunichar c = g_utf8_get_char (p);
 
 		if (!g_unichar_isdigit (c) && c != '.' && c != ',')
 		{
 			return FALSE;
 		}
 
-		p = next;
+		p = g_utf8_find_next_char (p, end);
 	}
 
 	return TRUE;
