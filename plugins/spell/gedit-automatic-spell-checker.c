@@ -49,8 +49,8 @@ struct _GeditAutomaticSpellChecker
 	guint deferred_check : 1;
 };
 
-static GQuark automatic_spell_checker_id = 0;
-static GQuark suggestion_id = 0;
+#define AUTOMATIC_SPELL_CHECKER_KEY	"GeditAutomaticSpellCheckerID"
+#define SUGGESTION_KEY			"GeditAutoSuggestionID"
 
 static void gedit_automatic_spell_checker_free_internal (GeditAutomaticSpellChecker *spell);
 
@@ -373,7 +373,7 @@ replace_word (GtkWidget                  *menuitem,
 
 	oldword = gtk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc), &start, &end, FALSE);
 
-	newword =  g_object_get_qdata (G_OBJECT (menuitem), suggestion_id);
+	newword =  g_object_get_data (G_OBJECT (menuitem), SUGGESTION_KEY);
 	g_return_if_fail (newword != NULL);
 
 	gtk_text_buffer_begin_user_action (GTK_TEXT_BUFFER (spell->doc));
@@ -456,10 +456,10 @@ build_suggestion_menu (GeditAutomaticSpellChecker *spell,
 			gtk_widget_show_all (mi);
 			gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
 
-			g_object_set_qdata_full (G_OBJECT (mi),
-				 suggestion_id,
-				 g_strdup (suggestions->data),
-				 (GDestroyNotify)g_free);
+			g_object_set_data_full (G_OBJECT (mi),
+						SUGGESTION_KEY,
+						g_strdup (suggestions->data),
+						g_free);
 
 			g_free (label_text);
 			g_signal_connect (mi,
@@ -714,20 +714,10 @@ gedit_automatic_spell_checker_new (GeditDocument     *doc,
 	spell->doc = doc;
 	spell->spell_checker = g_object_ref (checker);
 
-	if (automatic_spell_checker_id == 0)
-	{
-		automatic_spell_checker_id =
-			g_quark_from_string ("GeditAutomaticSpellCheckerID");
-	}
-	if (suggestion_id == 0)
-	{
-		suggestion_id = g_quark_from_string ("GeditAutoSuggestionID");
-	}
-
-	g_object_set_qdata_full (G_OBJECT (doc),
-				 automatic_spell_checker_id,
-				 spell,
-				 (GDestroyNotify)gedit_automatic_spell_checker_free_internal);
+	g_object_set_data_full (G_OBJECT (doc),
+				AUTOMATIC_SPELL_CHECKER_KEY,
+				spell,
+				(GDestroyNotify) gedit_automatic_spell_checker_free_internal);
 
 	g_signal_connect (doc,
 			  "insert-text",
@@ -864,10 +854,7 @@ gedit_automatic_spell_checker_get_from_document (const GeditDocument *doc)
 {
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
-	if (automatic_spell_checker_id == 0)
-		return NULL;
-
-	return g_object_get_qdata (G_OBJECT (doc), automatic_spell_checker_id);
+	return g_object_get_data (G_OBJECT (doc), AUTOMATIC_SPELL_CHECKER_KEY);
 }
 
 void
@@ -876,10 +863,7 @@ gedit_automatic_spell_checker_free (GeditAutomaticSpellChecker *spell)
 	g_return_if_fail (spell != NULL);
 	g_return_if_fail (gedit_automatic_spell_checker_get_from_document (spell->doc) == spell);
 
-	if (automatic_spell_checker_id == 0)
-		return;
-
-	g_object_set_qdata (G_OBJECT (spell->doc), automatic_spell_checker_id, NULL);
+	g_object_set_data (G_OBJECT (spell->doc), AUTOMATIC_SPELL_CHECKER_KEY, NULL);
 }
 
 static void
