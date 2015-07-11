@@ -32,7 +32,6 @@
 
 #include "gedit-spell-checker.h"
 #include "gedit-spell-utils.h"
-#include "gedit-spell-marshal.h"
 
 #ifdef OS_OSX
 #include "gedit-spell-osx.h"
@@ -148,8 +147,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (GeditSpellCheckerClass, add_word_to_personal),
-			  NULL, NULL,
-			  gedit_marshal_VOID__STRING_INT,
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE,
 			  2,
 			  G_TYPE_STRING,
@@ -160,8 +158,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (GeditSpellCheckerClass, add_word_to_session),
-			  NULL, NULL,
-			  gedit_marshal_VOID__STRING_INT,
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE,
 			  2,
 			  G_TYPE_STRING,
@@ -172,8 +169,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (GeditSpellCheckerClass, set_language),
-			  NULL, NULL,
-			  gedit_marshal_VOID__POINTER,
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE,
 			  1,
 			  G_TYPE_POINTER);
@@ -183,8 +179,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (GeditSpellCheckerClass, clear_session),
-			  NULL, NULL,
-			  gedit_marshal_VOID__VOID,
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE,
 			  0);
 }

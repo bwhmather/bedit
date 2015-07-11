@@ -19,8 +19,6 @@ plugins_spell_libspell_la_CFLAGS =				\
 	$(DISABLE_DEPRECATED_CFLAGS)
 
 plugins_spell_built_sources =				\
-	plugins/spell/gedit-spell-marshal.c		\
-	plugins/spell/gedit-spell-marshal.h		\
 	plugins/spell/gedit-spell-resources.c
 
 plugins_spell_libspell_la_SOURCES =			\
@@ -56,13 +54,6 @@ plugins_spell_libosx_la_SOURCES = 		\
 plugins_spell_libspell_la_LIBADD += plugins/spell/libosx.la
 endif
 
-plugins/spell/gedit-spell-marshal.h: plugins/spell/gedit-spell-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) $(GLIB_GENMARSHAL) $< --header --prefix=gedit_marshal > $@
-
-plugins/spell/gedit-spell-marshal.c: plugins/spell/gedit-spell-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) echo "#include \"gedit-spell-marshal.h\"" > $@ && \
-	$(GLIB_GENMARSHAL) $< --body --prefix=gedit_marshal >> $@
-
 spell_resource_deps = $(call GRESDEPS,plugins/spell/resources/gedit-spell.gresource.xml)
 plugins/spell/gedit-spell-resources.c: $(spell_resource_deps)
 	$(GRESGEN)
@@ -71,9 +62,7 @@ plugin_in_files += plugins/spell/spell.plugin.desktop.in
 
 BUILT_SOURCES += $(plugins_spell_built_sources)
 
-EXTRA_DIST += 					\
-	plugins/spell/gedit-spell-marshal.list	\
-	$(spell_resource_deps)
+EXTRA_DIST += $(spell_resource_deps)
 
 else
 

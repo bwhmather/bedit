@@ -31,7 +31,6 @@
 #include <gedit/gedit-utils.h>
 
 #include "gedit-spell-checker-dialog.h"
-#include "gedit-spell-marshal.h"
 
 struct _GeditSpellCheckerDialog
 {
@@ -152,8 +151,7 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass * klass)
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, ignore),
-			      NULL, NULL,
-			      gedit_marshal_VOID__STRING,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      G_TYPE_STRING);
@@ -163,8 +161,7 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass * klass)
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, ignore_all),
-			      NULL, NULL,
-			      gedit_marshal_VOID__STRING,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      G_TYPE_STRING);
@@ -174,8 +171,7 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass * klass)
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, change),
-			      NULL, NULL,
-			      gedit_marshal_VOID__STRING_STRING,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      G_TYPE_STRING,
@@ -186,8 +182,7 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass * klass)
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, change_all),
-			      NULL, NULL,
-			      gedit_marshal_VOID__STRING_STRING,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      G_TYPE_STRING,
@@ -198,8 +193,7 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass * klass)
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, add_word_to_personal),
-			      NULL, NULL,
-			      gedit_marshal_VOID__STRING,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      G_TYPE_STRING);
@@ -209,8 +203,7 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass * klass)
 			      G_OBJECT_CLASS_TYPE (klass),
 			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, close),
-			      NULL, NULL,
-			      gedit_marshal_VOID__VOID,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      0);
 }
