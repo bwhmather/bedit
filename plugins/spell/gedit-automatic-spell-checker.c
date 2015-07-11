@@ -504,10 +504,7 @@ build_suggestion_menu (GeditAutomaticSpellChecker *spell,
 	gtk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
 
 	/* Ignore all */
-	mi = gtk_image_menu_item_new_with_mnemonic (_("_Ignore All"));
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi),
-				       gtk_image_new_from_icon_name ("go-bottom",
-								     GTK_ICON_SIZE_MENU));
+	mi = gtk_menu_item_new_with_mnemonic (_("_Ignore All"));
 
 	g_signal_connect (mi,
 			  "activate",
@@ -519,10 +516,7 @@ build_suggestion_menu (GeditAutomaticSpellChecker *spell,
 	gtk_menu_shell_append (GTK_MENU_SHELL (topmenu), mi);
 
 	/* Add to Dictionary */
-	mi = gtk_image_menu_item_new_with_mnemonic (_("_Add"));
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi),
-				       gtk_image_new_from_icon_name ("list-add",
-								     GTK_ICON_SIZE_MENU));
+	mi = gtk_menu_item_new_with_mnemonic (_("_Add"));
 
 	g_signal_connect (mi,
 			  "activate",
@@ -541,7 +535,7 @@ populate_popup (GtkTextView                *textview,
 		GtkMenu                    *menu,
 		GeditAutomaticSpellChecker *spell)
 {
-	GtkWidget *img, *mi;
+	GtkWidget *mi;
 	GtkTextIter start, end;
 	char *word;
 
@@ -559,9 +553,7 @@ populate_popup (GtkTextView                *textview,
 	gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), mi);
 
 	/* then, on top of it, the suggestions menu. */
-	img = gtk_image_new_from_icon_name ("tools-check-spelling", GTK_ICON_SIZE_MENU);
-	mi = gtk_image_menu_item_new_with_mnemonic (_("_Spelling Suggestions..."));
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), img);
+	mi = gtk_menu_item_new_with_mnemonic (_("_Spelling Suggestions..."));
 
 	word = gtk_text_buffer_get_text (GTK_TEXT_BUFFER (spell->doc), &start, &end, FALSE);
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (mi),
