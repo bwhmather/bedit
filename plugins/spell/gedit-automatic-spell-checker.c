@@ -28,11 +28,9 @@
 #include <config.h>
 #endif
 
-#include <string.h>
-
-#include <glib/gi18n.h>
-
 #include "gedit-automatic-spell-checker.h"
+#include <string.h>
+#include <glib/gi18n.h>
 #include "gedit-spell-utils.h"
 
 struct _GeditAutomaticSpellChecker {

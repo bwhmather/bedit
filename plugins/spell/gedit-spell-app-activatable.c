@@ -18,11 +18,11 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "gedit-spell-app-activatable.h"
 #include <glib/gi18n.h>
 #include <libpeas/peas-object-module.h>
 #include <gedit/gedit-app-activatable.h>
 #include <gedit/gedit-app.h>
-#include "gedit-spell-app-activatable.h"
 
 typedef struct _GeditSpellAppActivatablePrivate
 {

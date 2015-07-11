@@ -22,13 +22,8 @@
 #endif
 
 #include "gedit-spell-plugin.h"
-#include "gedit-spell-app-activatable.h"
-#include "gedit-spell-utils.h"
-
-#include <string.h> /* For strlen */
 
 #include <glib/gi18n.h>
-
 #include <gedit/gedit-debug.h>
 #include <gedit/gedit-statusbar.h>
 #include <gedit/gedit-app.h>
@@ -36,10 +31,12 @@
 #include <gedit/gedit-window-activatable.h>
 #include <gtksourceview/gtksource.h>
 
+#include "gedit-automatic-spell-checker.h"
+#include "gedit-spell-app-activatable.h"
 #include "gedit-spell-checker.h"
 #include "gedit-spell-checker-dialog.h"
 #include "gedit-spell-language-dialog.h"
-#include "gedit-automatic-spell-checker.h"
+#include "gedit-spell-utils.h"
 
 #ifdef G_OS_WIN32
 #define GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE "spell-language"

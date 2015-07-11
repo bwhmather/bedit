@@ -20,9 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#include <string.h>
-
 #include "gedit-spell-utils.h"
+#include <string.h>
 #include <gtksourceview/gtksource.h>
 
 gboolean

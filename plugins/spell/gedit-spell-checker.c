@@ -23,14 +23,11 @@
 #include <config.h>
 #endif
 
+#include "gedit-spell-checker.h"
 #include <string.h>
-
 #include <enchant.h>
-
 #include <glib/gi18n.h>
 #include <glib.h>
-
-#include "gedit-spell-checker.h"
 #include "gedit-spell-utils.h"
 
 #ifdef OS_OSX

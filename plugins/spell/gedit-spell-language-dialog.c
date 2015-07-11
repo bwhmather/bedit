@@ -23,13 +23,12 @@
 #include <config.h>
 #endif
 
+#include "gedit-spell-language-dialog.h"
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 #include <gedit/gedit-utils.h>
 #include <gedit/gedit-app.h>
-#include "gedit-spell-language-dialog.h"
 #include "gedit-spell-checker-language.h"
-
 
 enum
 {

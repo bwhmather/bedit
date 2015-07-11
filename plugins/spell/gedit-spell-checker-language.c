@@ -28,19 +28,16 @@
 #include <config.h>
 #endif
 
+#include "gedit-spell-checker-language.h"
+
 #ifdef OS_OSX
 #include "gedit-spell-osx.h"
 #endif
 
 #include <string.h>
-
 #include <enchant.h>
-
 #include <glib/gi18n.h>
 #include <libxml/xmlreader.h>
-
-#include "gedit-spell-checker-language.h"
-
 #include <gedit/gedit-debug.h>
 
 #define ISO_639_DOMAIN	"iso_639"

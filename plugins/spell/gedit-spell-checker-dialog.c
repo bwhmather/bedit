@@ -23,14 +23,11 @@
 #include <config.h>
 #endif
 
+#include "gedit-spell-checker-dialog.h"
 #include <string.h>
-
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-
 #include <gedit/gedit-utils.h>
-
-#include "gedit-spell-checker-dialog.h"
 
 struct _GeditSpellCheckerDialog
 {
