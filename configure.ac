@@ -141,10 +141,6 @@ AM_CONDITIONAL(OS_OSX, test "$os_osx" = "yes")
 
 AM_CONDITIONAL(GDK_WINDOWING_X11, test "$gdk_windowing" = "x11")
 
-if test "$platform_osx" = "yes"; then
-	AC_DEFINE([PLATFORM_OSX],[1],[Defined if platform is Mac OSX])
-fi
-
 if test "$os_osx" = "yes"; then
 	AC_DEFINE([OS_OSX],[1],[Defined if os is Mac OSX])
 
@@ -201,8 +197,6 @@ AC_ARG_ENABLE([gvfs-metadata],
 	AS_HELP_STRING([--enable-gvfs-metadata], [Enable using gvfs to store metadata]),
 	[enable_gvfs_metadata=$enableval],
 	[enable_gvfs_metadata=$gvfs_metadata_default])
-
-AM_CONDITIONAL(ENABLE_GVFS_METADATA, test "x$enable_gvfs_metadata" != "xno")
 
 if test "x$enable_gvfs_metadata" != "xno"; then
 	AC_DEFINE([ENABLE_GVFS_METADATA], [1], [Define to enable using gvfs metadata])
@@ -271,7 +265,6 @@ if test "x$enable_enchant" = "xyes" ; then
 
 		if test "x$have_iso_codes" = "xyes"; then
 			AC_DEFINE_UNQUOTED([ISO_CODES_PREFIX],["`$PKG_CONFIG --variable=prefix iso-codes`"],[ISO codes prefix])
-			AC_DEFINE([HAVE_ISO_CODES],[1],[Define if you have the iso-codes package])
 		else
 			AC_MSG_ERROR([iso-codes is required to build the spell plugin. Use --disable-spell to build without spell plugin.])
 		fi
