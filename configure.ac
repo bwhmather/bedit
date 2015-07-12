@@ -145,9 +145,6 @@ if test "$platform_osx" = "yes"; then
 	AC_DEFINE([PLATFORM_OSX],[1],[Defined if platform is Mac OSX])
 fi
 
-AC_SUBST(DEFAULT_FONT)
-AC_SUBST(DEFAULT_PRINT_FONT)
-
 if test "$os_osx" = "yes"; then
 	AC_DEFINE([OS_OSX],[1],[Defined if os is Mac OSX])
 
