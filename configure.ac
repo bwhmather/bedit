@@ -353,7 +353,7 @@ GNOME_COMPILE_WARNINGS([maximum])
 
 AC_ARG_ENABLE(deprecations,
               [AS_HELP_STRING([--enable-deprecations],
-                              [warn about deprecated usages [default=no]])],
+                              [show error when a deprecated API is used [default=no]])],
               [enable_deprecations=$enableval], [])
 
 AC_MSG_CHECKING([whether to forbid deprecated symbols])
