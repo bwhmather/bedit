@@ -59,5 +59,4 @@ CLEANFILES +=					\
 # generating the .desktop files.
 # If the following bug is fixed, this hack can normally be removed:
 # https://bugs.launchpad.net/intltool/+bug/605826
-$(externaltools_all_desktop_files):
-	$(AM_V_GEN) $(MKDIR_P) $(top_builddir)/plugins/externaltools/data/
+$(shell $(MKDIR_P) $(top_builddir)/plugins/externaltools/data/)
