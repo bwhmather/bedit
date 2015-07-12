@@ -359,6 +359,23 @@ else
 fi
 
 dnl ================================================================
+dnl User help
+dnl ================================================================
+
+YELP_HELP_INIT
+
+# Hack: since non-recursive make is used, it can be useful to disable the user
+# help since it takes a lot of time to build and install. On the other hand
+# with recursive make it's usually possible to build and install only what we
+# need...
+AC_ARG_ENABLE([user_help],
+	      AS_HELP_STRING([--disable-user-help],[Disable the user help to speed the build (default: enabled)]),
+	      [enable_user_help=$enableval],
+	      [enable_user_help=yes])
+
+AM_CONDITIONAL(ENABLE_USER_HELP, test x"$enable_user_help" = "xyes")
+
+dnl ================================================================
 dnl GObject Introspection
 dnl ================================================================
 
@@ -419,8 +436,6 @@ dnl ================================================================
 LIBGD_INIT([tagged-entry static])
 
 GLIB_GSETTINGS
-
-YELP_HELP_INIT
 
 # Vala
 VAPIGEN_CHECK([0.25.1])
