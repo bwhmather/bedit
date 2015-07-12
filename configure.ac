@@ -203,7 +203,7 @@ if test "x$enable_gvfs_metadata" != "xno"; then
 fi
 
 dnl ================================================================
-dnl check update plugin
+dnl checkupdate plugin
 dnl ================================================================
 
 AC_ARG_ENABLE([updater],
@@ -233,7 +233,7 @@ fi
 AM_CONDITIONAL(ENABLE_UPDATER, test x"$enable_updater" = "xyes")
 
 dnl ================================================================
-dnl spell plugins checks: enchant and iso-codes
+dnl spell plugin checks: enchant and iso-codes
 dnl ================================================================
 
 AC_ARG_ENABLE([spell],
@@ -275,6 +275,10 @@ if test "x$enable_enchant" = "xyes" ; then
 fi
 
 AM_CONDITIONAL(ENABLE_ENCHANT, test x"$enable_enchant" = "xyes")
+
+dnl ================================================================
+dnl Check Python support
+dnl ================================================================
 
 AC_ARG_ENABLE([python],
               AS_HELP_STRING([--enable-python[=@<:@no/auto/yes@:>@]],[Build with python support]),
@@ -331,25 +335,8 @@ AC_SUBST(GEDIT_CFLAGS)
 AC_SUBST(GEDIT_LIBS)
 
 dnl ================================================================
-dnl libgd
+dnl Deprecations
 dnl ================================================================
-
-LIBGD_INIT([tagged-entry static])
-
-dnl ================================================================
-dnl GSettings stuff
-dnl ================================================================
-
-GLIB_GSETTINGS
-
-dnl ================================================================
-dnl Misc
-dnl ================================================================
-AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
-AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
-AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
-
-GNOME_COMPILE_WARNINGS([maximum])
 
 AC_ARG_ENABLE(deprecations,
               [AS_HELP_STRING([--enable-deprecations],
@@ -371,6 +358,23 @@ else
 	AC_MSG_RESULT(no)
 fi
 
+dnl ================================================================
+dnl GObject Introspection
+dnl ================================================================
+
+GOBJECT_INTROSPECTION_CHECK([0.9.3])
+
+if test "$found_introspection" = "yes"; then
+	enable_introspection=yes
+	AC_DEFINE([ENABLE_INTROSPECTION], [1], [Define to enable GObject Introspection])
+else
+	enable_introspection=no
+fi
+
+dnl ================================================================
+dnl Internal lib on win32
+dnl ================================================================
+
 # on win32 plugins must be able to resolve all symbols at link time
 # so we create a lib
 if test "$platform_win32" = yes; then
@@ -386,26 +390,9 @@ fi
 AC_SUBST(GEDIT_IMPLIB)
 AC_SUBST(PLUGIN_LIBTOOL_FLAGS)
 
-GEDIT_PLUGINS_DATA_DIR="$datadir/gedit/plugins"
-AC_SUBST(GEDIT_PLUGINS_DATA_DIR)
-
-GEDIT_PLUGINS_LIBS_DIR="$libdir/gedit/plugins"
-AC_SUBST(GEDIT_PLUGINS_LIBS_DIR)
-
-YELP_HELP_INIT
-
-# Introspection
-GOBJECT_INTROSPECTION_CHECK([0.9.3])
-
-if test "$found_introspection" = "yes"; then
-	enable_introspection=yes
-	AC_DEFINE([ENABLE_INTROSPECTION], [1], [Define to enable GObject Introspection])
-else
-	enable_introspection=no
-fi
-
-# Vala
-VAPIGEN_CHECK([0.25.1])
+dnl ================================================================
+dnl Resource files depending on the OS
+dnl ================================================================
 
 if test "$os_osx" = "yes"; then
 	os_menus_ui=menus-osx.ui
@@ -424,6 +411,31 @@ fi
 
 AC_SUBST(OS_DEPENDENT_RESOURCE_FILES)
 AC_CONFIG_LINKS(gedit/resources/gtk/menus.ui:gedit/resources/gtk/$os_menus_ui)
+
+dnl ================================================================
+dnl Misc
+dnl ================================================================
+
+LIBGD_INIT([tagged-entry static])
+
+GLIB_GSETTINGS
+
+YELP_HELP_INIT
+
+# Vala
+VAPIGEN_CHECK([0.25.1])
+
+AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
+AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
+AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
+
+GNOME_COMPILE_WARNINGS([maximum])
+
+GEDIT_PLUGINS_DATA_DIR="$datadir/gedit/plugins"
+AC_SUBST(GEDIT_PLUGINS_DATA_DIR)
+
+GEDIT_PLUGINS_LIBS_DIR="$libdir/gedit/plugins"
+AC_SUBST(GEDIT_PLUGINS_LIBS_DIR)
 
 AC_CONFIG_FILES([
 Makefile
