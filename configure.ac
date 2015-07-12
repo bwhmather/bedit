@@ -57,9 +57,6 @@ LT_INIT(disable-static)
 
 GTK_DOC_CHECK([1.0],[--flavour=no-tmpl])
 
-dnl make sure we keep ACLOCAL_FLAGS around for maintainer builds to work
-AC_SUBST(ACLOCAL_AMFLAGS, "$ACLOCAL_FLAGS -I m4")
-
 dnl active plugins for gedit.schemas
 ACTIVE_PLUGINS="'docinfo', 'modelines', 'filebrowser', 'spell', 'time'"
 AC_SUBST(ACTIVE_PLUGINS)
