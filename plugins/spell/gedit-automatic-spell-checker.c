@@ -23,10 +23,6 @@
  * Copyright (c) 2002 Evan Martin.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-automatic-spell-checker.h"
 #include <string.h>
 #include <glib/gi18n.h>

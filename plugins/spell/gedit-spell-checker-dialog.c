@@ -18,10 +18,6 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include "gedit-spell-checker-dialog.h"
 #include <string.h>
 #include <glib/gi18n.h>
