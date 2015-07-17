@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2002 Paolo Maggi
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +19,9 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/* This is a modified version of gtkspell 2.0.2  (gtkspell.sf.net) */
-/* gtkspell - a spell-checking addon for GTK's TextView widget
- * Copyright (c) 2002 Evan Martin.
+/* This is a modified version of GtkSpell 2.0.2 (gtkspell.sf.net) */
+/* GtkSpell - a spell-checking addon for GTK's TextView widget
+ * Copyright (C) 2002 Evan Martin.
  */
 
 #ifndef __GEDIT_AUTOMATIC_SPELL_CHECKER_H__
@@ -29,7 +30,12 @@
 #include <gtksourceview/gtksource.h>
 #include "gedit-spell-checker.h"
 
-typedef struct _GeditAutomaticSpellChecker GeditAutomaticSpellChecker;
+#define GEDIT_TYPE_AUTOMATIC_SPELL_CHECKER (gedit_automatic_spell_checker_get_type ())
+G_DECLARE_FINAL_TYPE (GeditAutomaticSpellChecker,
+		      gedit_automatic_spell_checker,
+		      GEDIT,
+		      AUTOMATIC_SPELL_CHECKER,
+		      GObject)
 
 GeditAutomaticSpellChecker *
 	gedit_automatic_spell_checker_new		(GtkSourceBuffer   *buffer,

@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2002 Paolo Maggi
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,9 +19,9 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-/* This is a modified version of gtkspell 2.0.5  (gtkspell.sf.net) */
-/* gtkspell - a spell-checking addon for GTK's TextView widget
- * Copyright (c) 2002 Evan Martin.
+/* This is a modified version of GtkSpell 2.0.5 (gtkspell.sf.net) */
+/* GtkSpell - a spell-checking addon for GTK's TextView widget
+ * Copyright (C) 2002 Evan Martin.
  */
 
 #include "gedit-automatic-spell-checker.h"
@@ -30,6 +31,8 @@
 
 struct _GeditAutomaticSpellChecker
 {
+	GObject parent;
+
 	GtkTextBuffer *buffer;
 
 	/* List of GtkTextView* */
@@ -49,7 +52,7 @@ struct _GeditAutomaticSpellChecker
 #define AUTOMATIC_SPELL_CHECKER_KEY	"GeditAutomaticSpellCheckerID"
 #define SUGGESTION_KEY			"GeditAutoSuggestionID"
 
-static void gedit_automatic_spell_checker_free_internal (GeditAutomaticSpellChecker *spell);
+G_DEFINE_TYPE (GeditAutomaticSpellChecker, gedit_automatic_spell_checker, G_TYPE_OBJECT)
 
 static void
 view_destroy_cb (GtkTextView                *view,
@@ -536,7 +539,7 @@ gedit_automatic_spell_checker_recheck_all (GeditAutomaticSpellChecker *spell)
 	GtkTextIter start;
 	GtkTextIter end;
 
-	g_return_if_fail (spell != NULL);
+	g_return_if_fail (GEDIT_IS_AUTOMATIC_SPELL_CHECKER (spell));
 
 	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
 
@@ -668,10 +671,75 @@ highlight_updated_cb (GtkSourceBuffer            *buffer,
 }
 
 static void
-spell_tag_destroyed_cb (GeditAutomaticSpellChecker *spell,
-			GObject                    *where_the_object_was)
+gedit_automatic_spell_checker_dispose (GObject *object)
 {
-	spell->tag_highlight = NULL;
+	GeditAutomaticSpellChecker *spell = GEDIT_AUTOMATIC_SPELL_CHECKER (object);
+	GSList *l;
+
+	if (spell->buffer != NULL)
+	{
+		GtkTextTagTable *table;
+
+		table = gtk_text_buffer_get_tag_table (spell->buffer);
+
+		if (table != NULL && spell->tag_highlight != NULL)
+		{
+			g_signal_handlers_disconnect_matched (table,
+							      G_SIGNAL_MATCH_DATA,
+							      0, 0, NULL, NULL,
+							      spell);
+
+			gtk_text_tag_table_remove (table, spell->tag_highlight);
+		}
+
+		g_signal_handlers_disconnect_matched (spell->buffer,
+						      G_SIGNAL_MATCH_DATA,
+						      0, 0, NULL, NULL,
+						      spell);
+
+		spell->buffer = NULL;
+	}
+
+	g_clear_object (&spell->tag_highlight);
+
+	if (spell->spell_checker != NULL)
+	{
+		g_signal_handlers_disconnect_matched (spell->spell_checker,
+						      G_SIGNAL_MATCH_DATA,
+						      0, 0, NULL, NULL,
+						      spell);
+
+		g_object_unref (spell->spell_checker);
+		spell->spell_checker = NULL;
+	}
+
+	for (l = spell->views; l != NULL; l = l->next)
+	{
+		GtkTextView *view = GTK_TEXT_VIEW (l->data);
+
+		g_signal_handlers_disconnect_matched (view,
+						      G_SIGNAL_MATCH_DATA,
+						      0, 0, NULL, NULL,
+						      spell);
+	}
+
+	g_slist_free (spell->views);
+	spell->views = NULL;
+
+	G_OBJECT_CLASS (gedit_automatic_spell_checker_parent_class)->dispose (object);
+}
+
+static void
+gedit_automatic_spell_checker_class_init (GeditAutomaticSpellCheckerClass *klass)
+{
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+	object_class->dispose = gedit_automatic_spell_checker_dispose;
+}
+
+static void
+gedit_automatic_spell_checker_init (GeditAutomaticSpellChecker *spell)
+{
 }
 
 GeditAutomaticSpellChecker *
@@ -689,8 +757,7 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 	spell = gedit_automatic_spell_checker_get_from_buffer (buffer);
 	g_return_val_if_fail (spell == NULL, spell);
 
-	/* attach to the widget */
-	spell = g_new0 (GeditAutomaticSpellChecker, 1);
+	spell = g_object_new (GEDIT_TYPE_AUTOMATIC_SPELL_CHECKER, NULL);
 
 	spell->buffer = GTK_TEXT_BUFFER (buffer);
 	spell->spell_checker = g_object_ref (checker);
@@ -698,7 +765,7 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 	g_object_set_data_full (G_OBJECT (buffer),
 				AUTOMATIC_SPELL_CHECKER_KEY,
 				spell,
-				(GDestroyNotify) gedit_automatic_spell_checker_free_internal);
+				g_object_unref);
 
 	g_signal_connect (buffer,
 			  "insert-text",
@@ -749,10 +816,7 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 							   "gedit-spell-misspelled",
 							   "underline", PANGO_UNDERLINE_ERROR,
 							   NULL);
-
-	g_object_weak_ref (G_OBJECT (spell->tag_highlight),
-	                   (GWeakNotify)spell_tag_destroyed_cb,
-	                   spell);
+	g_object_ref (spell->tag_highlight);
 
 	tag_table = gtk_text_buffer_get_tag_table (spell->buffer);
 
@@ -847,73 +911,17 @@ gedit_automatic_spell_checker_get_from_buffer (GtkSourceBuffer *buffer)
 void
 gedit_automatic_spell_checker_free (GeditAutomaticSpellChecker *spell)
 {
-	g_return_if_fail (spell != NULL);
+	g_return_if_fail (GEDIT_IS_AUTOMATIC_SPELL_CHECKER (spell));
 	g_return_if_fail (gedit_automatic_spell_checker_get_from_buffer (GTK_SOURCE_BUFFER (spell->buffer)) == spell);
 
 	g_object_set_data (G_OBJECT (spell->buffer), AUTOMATIC_SPELL_CHECKER_KEY, NULL);
-}
-
-static void
-gedit_automatic_spell_checker_free_internal (GeditAutomaticSpellChecker *spell)
-{
-	GtkTextTagTable *table;
-	GSList *l;
-
-	g_return_if_fail (spell != NULL);
-
-	table = gtk_text_buffer_get_tag_table (spell->buffer);
-
-	if (table != NULL && spell->tag_highlight != NULL)
-	{
-		GtkTextIter start;
-		GtkTextIter end;
-
-		gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
-
-		gtk_text_buffer_remove_tag (spell->buffer,
-					    spell->tag_highlight,
-					    &start,
-					    &end);
-
-		g_signal_handlers_disconnect_matched (table,
-						      G_SIGNAL_MATCH_DATA,
-						      0, 0, NULL, NULL,
-						      spell);
-
-		gtk_text_tag_table_remove (table, spell->tag_highlight);
-	}
-
-	g_signal_handlers_disconnect_matched (spell->buffer,
-					      G_SIGNAL_MATCH_DATA,
-					      0, 0, NULL, NULL,
-					      spell);
-
-	g_signal_handlers_disconnect_matched (spell->spell_checker,
-					      G_SIGNAL_MATCH_DATA,
-					      0, 0, NULL, NULL,
-					      spell);
-
-	g_object_unref (spell->spell_checker);
-
-	for (l = spell->views; l != NULL; l = l->next)
-	{
-		GtkTextView *view = GTK_TEXT_VIEW (l->data);
-
-		g_signal_handlers_disconnect_matched (view,
-						      G_SIGNAL_MATCH_DATA,
-						      0, 0, NULL, NULL,
-						      spell);
-	}
-
-	g_slist_free (spell->views);
-	g_free (spell);
 }
 
 void
 gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
 					   GtkTextView                *view)
 {
-	g_return_if_fail (spell != NULL);
+	g_return_if_fail (GEDIT_IS_AUTOMATIC_SPELL_CHECKER (spell));
 	g_return_if_fail (GTK_IS_TEXT_VIEW (view));
 	g_return_if_fail (gtk_text_view_get_buffer (view) == spell->buffer);
 
@@ -944,7 +952,7 @@ void
 gedit_automatic_spell_checker_detach_view (GeditAutomaticSpellChecker *spell,
 					   GtkTextView                *view)
 {
-	g_return_if_fail (spell != NULL);
+	g_return_if_fail (GEDIT_IS_AUTOMATIC_SPELL_CHECKER (spell));
 	g_return_if_fail (GTK_IS_TEXT_VIEW (view));
 	g_return_if_fail (gtk_text_view_get_buffer (view) == spell->buffer);
 	g_return_if_fail (spell->views != NULL);
