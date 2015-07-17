@@ -26,7 +26,7 @@
 #ifndef __GEDIT_AUTOMATIC_SPELL_CHECKER_H__
 #define __GEDIT_AUTOMATIC_SPELL_CHECKER_H__
 
-#include <gedit/gedit-document.h>
+#include <gtksourceview/gtksource.h>
 #include <gedit/gedit-view.h>
 
 #include "gedit-spell-checker.h"
@@ -34,11 +34,11 @@
 typedef struct _GeditAutomaticSpellChecker GeditAutomaticSpellChecker;
 
 GeditAutomaticSpellChecker *
-	gedit_automatic_spell_checker_new		(GeditDocument     *doc,
+	gedit_automatic_spell_checker_new		(GtkSourceBuffer   *buffer,
 							 GeditSpellChecker *checker);
 
 GeditAutomaticSpellChecker *
-	gedit_automatic_spell_checker_get_from_document	(const GeditDocument *doc);
+	gedit_automatic_spell_checker_get_from_buffer	(GtkSourceBuffer *buffer);
 
 void	gedit_automatic_spell_checker_free		(GeditAutomaticSpellChecker *spell);
 

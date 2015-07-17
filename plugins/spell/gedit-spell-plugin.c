@@ -870,13 +870,13 @@ set_auto_spell (GeditWindow   *window,
 	spell = get_spell_checker_from_document (doc);
 	g_return_if_fail (spell != NULL);
 
-	autospell = gedit_automatic_spell_checker_get_from_document (doc);
+	autospell = gedit_automatic_spell_checker_get_from_buffer (GTK_SOURCE_BUFFER (doc));
 
 	if (active)
 	{
 		if (autospell == NULL)
 		{
-			autospell = gedit_automatic_spell_checker_new (doc, spell);
+			autospell = gedit_automatic_spell_checker_new (GTK_SOURCE_BUFFER (doc), spell);
 			gedit_automatic_spell_checker_attach_view (autospell, view);
 			gedit_automatic_spell_checker_recheck_all (autospell);
 		}
@@ -999,7 +999,7 @@ update_ui (GeditSpellPlugin *plugin)
 		tab = gedit_window_get_active_tab (priv->window);
 		state = gedit_tab_get_state (tab);
 		autospell = (doc != NULL &&
-		             gedit_automatic_spell_checker_get_from_document (doc) != NULL);
+		             gedit_automatic_spell_checker_get_from_buffer (GTK_SOURCE_BUFFER (doc)) != NULL);
 
 		/* If the document is loading we can't get the metadata so we
 		   endup with an useless speller */
@@ -1076,7 +1076,7 @@ on_document_saved (GeditDocument    *doc,
 	const gchar *key;
 
 	/* Make sure to save the metadata here too */
-	autospell = gedit_automatic_spell_checker_get_from_document (doc);
+	autospell = gedit_automatic_spell_checker_get_from_buffer (GTK_SOURCE_BUFFER (doc));
 	spell = GEDIT_SPELL_CHECKER (g_object_get_qdata (G_OBJECT (doc), spell_checker_id));
 
 	if (spell != NULL)
