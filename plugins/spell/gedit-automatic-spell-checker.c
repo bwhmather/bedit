@@ -140,16 +140,6 @@ check_range (GeditAutomaticSpellChecker *spell,
 				    &start_adjusted,
 				    &end_adjusted);
 
-	/* Fix a corner case when replacement occurs at beginning of buffer:
-	 * An iter at offset 0 seems to always be inside a word,
-  	 * even if it's not.  Possibly a pango bug.
-	 */
-	if (gtk_text_iter_is_start (&start_adjusted))
-	{
-		gtk_text_iter_forward_word_end (&start_adjusted);
-		gtk_text_iter_backward_word_start (&start_adjusted);
-	}
-
 	word_start = start_adjusted;
 
 	while (gedit_spell_utils_skip_no_spell_check (&word_start, &end_adjusted) &&
