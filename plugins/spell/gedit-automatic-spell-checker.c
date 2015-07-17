@@ -100,7 +100,8 @@ adjust_iters_at_word_boundaries (GtkTextIter *start,
 			 * me must be in some spaces.
 			 * Skip forward to the beginning of the next word.
 			 */
-			if (gtk_text_iter_forward_word_end (start))
+			if (gtk_text_iter_forward_word_end (start) ||
+			    gtk_text_iter_is_end (start))
 			{
 				gtk_text_iter_backward_word_start (start);
 			}
