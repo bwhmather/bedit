@@ -31,6 +31,8 @@
 struct _GeditAutomaticSpellChecker
 {
 	GtkSourceBuffer *buffer;
+
+	/* List of GtkTextView* */
 	GSList *views;
 
 	GtkTextMark *mark_insert_start;
@@ -50,7 +52,7 @@ struct _GeditAutomaticSpellChecker
 static void gedit_automatic_spell_checker_free_internal (GeditAutomaticSpellChecker *spell);
 
 static void
-view_destroy (GeditView                  *view,
+view_destroy (GtkTextView                *view,
 	      GeditAutomaticSpellChecker *spell)
 {
 	gedit_automatic_spell_checker_detach_view (spell, view);
@@ -922,7 +924,7 @@ gedit_automatic_spell_checker_free_internal (GeditAutomaticSpellChecker *spell)
 	list = spell->views;
 	while (list != NULL)
 	{
-		GeditView *view = GEDIT_VIEW (list->data);
+		GtkTextView *view = GTK_TEXT_VIEW (list->data);
 
 		g_signal_handlers_disconnect_matched (G_OBJECT (view),
 				G_SIGNAL_MATCH_DATA,
@@ -944,13 +946,12 @@ gedit_automatic_spell_checker_free_internal (GeditAutomaticSpellChecker *spell)
 
 void
 gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
-					   GeditView                  *view)
+					   GtkTextView                *view)
 {
 	g_return_if_fail (spell != NULL);
-	g_return_if_fail (GEDIT_IS_VIEW (view));
+	g_return_if_fail (GTK_IS_TEXT_VIEW (view));
 
-	g_return_if_fail (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)) ==
-			  GTK_TEXT_BUFFER (spell->buffer));
+	g_return_if_fail (gtk_text_view_get_buffer (view) == GTK_TEXT_BUFFER (spell->buffer));
 
 	g_signal_connect (view,
 			  "button-press-event",
@@ -974,13 +975,12 @@ gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
 
 void
 gedit_automatic_spell_checker_detach_view (GeditAutomaticSpellChecker *spell,
-					   GeditView                  *view)
+					   GtkTextView                *view)
 {
 	g_return_if_fail (spell != NULL);
-	g_return_if_fail (GEDIT_IS_VIEW (view));
+	g_return_if_fail (GTK_IS_TEXT_VIEW (view));
 
-	g_return_if_fail (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)) ==
-			  GTK_TEXT_BUFFER (spell->buffer));
+	g_return_if_fail (gtk_text_view_get_buffer (view) == GTK_TEXT_BUFFER (spell->buffer));
 	g_return_if_fail (spell->views != NULL);
 
 	g_signal_handlers_disconnect_matched (G_OBJECT (view),

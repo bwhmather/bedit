@@ -877,7 +877,7 @@ set_auto_spell (GeditWindow   *window,
 		if (autospell == NULL)
 		{
 			autospell = gedit_automatic_spell_checker_new (GTK_SOURCE_BUFFER (doc), spell);
-			gedit_automatic_spell_checker_attach_view (autospell, view);
+			gedit_automatic_spell_checker_attach_view (autospell, GTK_TEXT_VIEW (view));
 			gedit_automatic_spell_checker_recheck_all (autospell);
 		}
 	}
