@@ -119,9 +119,9 @@ gedit_spell_plugin_dispose (GObject *object)
 
 static void
 gedit_spell_plugin_set_property (GObject      *object,
-                                 guint         prop_id,
-                                 const GValue *value,
-                                 GParamSpec   *pspec)
+				 guint         prop_id,
+				 const GValue *value,
+				 GParamSpec   *pspec)
 {
 	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (object);
 
@@ -139,9 +139,9 @@ gedit_spell_plugin_set_property (GObject      *object,
 
 static void
 gedit_spell_plugin_get_property (GObject    *object,
-                                 guint       prop_id,
-                                 GValue     *value,
-                                 GParamSpec *pspec)
+				 guint       prop_id,
+				 GValue     *value,
+				 GParamSpec *pspec)
 {
 	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (object);
 
@@ -158,9 +158,9 @@ gedit_spell_plugin_get_property (GObject    *object,
 }
 
 static void
-set_spell_language_cb (GeditSpellChecker   *spell,
+set_spell_language_cb (GeditSpellChecker               *spell,
 		       const GeditSpellCheckerLanguage *lang,
-		       GeditDocument 	   *doc)
+		       GeditDocument                   *doc)
 {
 	const gchar *key;
 
@@ -461,8 +461,8 @@ goto_next_word (GeditDocument *doc)
 
 static gchar *
 get_next_misspelled_word (GeditView *view,
-                          gint      *word_start_offset,
-                          gint      *word_end_offset)
+			  gint      *word_start_offset,
+			  gint      *word_end_offset)
 {
 	GeditDocument *doc;
 	CheckRange *range;
@@ -525,8 +525,8 @@ get_next_misspelled_word (GeditView *view,
 
 static void
 select_misspelled_word (GeditView *view,
-                        gint       word_start_offset,
-                        gint       word_end_offset)
+			gint       word_start_offset,
+			gint       word_end_offset)
 {
 	GtkTextBuffer *buffer;
 	GtkTextIter word_start_iter;
@@ -720,8 +720,8 @@ language_dialog_response (GtkDialog         *dlg,
 
 static void
 set_language_cb (GSimpleAction *action,
-                 GVariant      *parameter,
-                 gpointer       data)
+		 GVariant      *parameter,
+		 gpointer       data)
 {
 	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (data);
 	GeditSpellPluginPrivate *priv;
@@ -766,8 +766,8 @@ set_language_cb (GSimpleAction *action,
 
 static void
 spell_cb (GSimpleAction *action,
-          GVariant      *parameter,
-          gpointer       data)
+	  GVariant      *parameter,
+	  gpointer       data)
 {
 	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (data);
 	GeditSpellPluginPrivate *priv;
@@ -857,9 +857,9 @@ spell_cb (GSimpleAction *action,
 }
 
 static void
-set_auto_spell (GeditWindow   *window,
-                GeditView     *view,
-                gboolean       active)
+set_auto_spell (GeditWindow *window,
+		GeditView   *view,
+		gboolean     active)
 {
 	GeditAutomaticSpellChecker *autospell;
 	GeditSpellChecker *spell;
