@@ -170,8 +170,9 @@ set_spell_language_cb (GeditSpellChecker               *checker,
 	key = gedit_spell_checker_language_to_key (lang);
 	g_return_if_fail (key != NULL);
 
-	gedit_document_set_metadata (doc, GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE,
-				     key, NULL);
+	gedit_document_set_metadata (doc,
+				     GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, key,
+				     NULL);
 }
 
 static void
@@ -237,15 +238,11 @@ get_spell_checker_from_document (GeditDocument *doc)
 static CheckRange *
 get_check_range (GeditDocument *doc)
 {
-	CheckRange *range;
-
 	gedit_debug (DEBUG_PLUGINS);
 
-	g_return_val_if_fail (doc != NULL, NULL);
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 
-	range = (CheckRange *) g_object_get_qdata (G_OBJECT (doc), check_range_id);
-
-	return range;
+	return g_object_get_qdata (G_OBJECT (doc), check_range_id);
 }
 
 static void
@@ -258,7 +255,7 @@ update_current (GeditDocument *doc,
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	g_return_if_fail (doc != NULL);
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 	g_return_if_fail (current >= 0);
 
 	range = get_check_range (doc);
@@ -323,18 +320,24 @@ set_check_range (GeditDocument *doc,
 		range = g_new0 (CheckRange, 1);
 
 		range->start_mark = gtk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
-				"check_range_start_mark", &iter, TRUE);
+								 "check_range_start_mark",
+								 &iter,
+								 TRUE);
 
 		range->end_mark = gtk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
-				"check_range_end_mark", &iter, FALSE);
+							       "check_range_end_mark",
+							       &iter,
+							       FALSE);
 
 		range->current_mark = gtk_text_buffer_create_mark (GTK_TEXT_BUFFER (doc),
-				"check_range_current_mark", &iter, TRUE);
+								   "check_range_current_mark",
+								   &iter,
+								   TRUE);
 
 		g_object_set_qdata_full (G_OBJECT (doc),
-				 check_range_id,
-				 range,
-				 (GDestroyNotify)g_free);
+					 check_range_id,
+					 range,
+					 g_free);
 	}
 
 	if (gedit_spell_utils_skip_no_spell_check (start, end))
@@ -376,7 +379,9 @@ set_check_range (GeditDocument *doc,
 }
 
 static gchar *
-get_current_word (GeditDocument *doc, gint *start, gint *end)
+get_current_word (GeditDocument *doc,
+		  gint          *start,
+		  gint          *end)
 {
 	const CheckRange *range;
 	GtkTextIter end_iter;
@@ -385,7 +390,7 @@ get_current_word (GeditDocument *doc, gint *start, gint *end)
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	g_return_val_if_fail (doc != NULL, NULL);
+	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), NULL);
 	g_return_val_if_fail (start != NULL, NULL);
 	g_return_val_if_fail (end != NULL, NULL);
 
@@ -393,12 +398,14 @@ get_current_word (GeditDocument *doc, gint *start, gint *end)
 	g_return_val_if_fail (range != NULL, NULL);
 
 	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
-			&end_iter, range->end_mark);
+					  &end_iter,
+					  range->end_mark);
 
 	range_end = gtk_text_iter_get_offset (&end_iter);
 
 	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
-			&current_iter, range->current_mark);
+					  &current_iter,
+					  range->current_mark);
 
 	end_iter = current_iter;
 
@@ -414,8 +421,10 @@ get_current_word (GeditDocument *doc, gint *start, gint *end)
 
 	gedit_debug_message (DEBUG_PLUGINS, "Current word extends [%d, %d]", *start, *end);
 
-	if (!(*start < *end))
+	if (*start >= *end)
+	{
 		return NULL;
+	}
 
 	return gtk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc),
 					  &current_iter,
@@ -483,7 +492,9 @@ get_next_misspelled_word (GeditView *view,
 
 	word = get_current_word (doc, &start, &end);
 	if (word == NULL)
+	{
 		return NULL;
+	}
 
 	gedit_debug_message (DEBUG_PLUGINS, "Word to check: %s", word);
 
@@ -492,18 +503,24 @@ get_next_misspelled_word (GeditView *view,
 		g_free (word);
 
 		if (!goto_next_word (doc))
+		{
 			return NULL;
+		}
 
 		/* may return null if we reached the end of the selection */
 		word = get_current_word (doc, &start, &end);
 		if (word == NULL)
+		{
 			return NULL;
+		}
 
 		gedit_debug_message (DEBUG_PLUGINS, "Word to check: %s", word);
 	}
 
 	if (!goto_next_word (doc))
+	{
 		update_current (doc, gtk_text_buffer_get_char_count (GTK_TEXT_BUFFER (doc)));
+	}
 
 	if (word != NULL)
 	{
@@ -598,9 +615,13 @@ change_cb (GeditSpellCheckerDialog *dlg,
 
 	gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &start, range->mw_start);
 	if (range->mw_end < 0)
+	{
 		gtk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &end);
+	}
 	else
+	{
 		gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &end, range->mw_end);
+	}
 
 	w = gtk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc), &start, &end, TRUE);
 	g_return_if_fail (w != NULL);
@@ -653,9 +674,13 @@ change_all_cb (GeditSpellCheckerDialog *dlg,
 
 	gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &start, range->mw_start);
 	if (range->mw_end < 0)
+	{
 		gtk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc), &end);
+	}
 	else
+	{
 		gtk_text_buffer_get_iter_at_offset (GTK_TEXT_BUFFER (doc), &end, range->mw_end);
+	}
 
 	w = gtk_text_buffer_get_slice (GTK_TEXT_BUFFER (doc), &start, &end, TRUE);
 	g_return_if_fail (w != NULL);
@@ -712,7 +737,9 @@ language_dialog_response (GtkDialog         *dlg,
 
 		lang = gedit_spell_language_get_selected_language (GEDIT_SPELL_LANGUAGE_DIALOG (dlg));
 		if (lang != NULL)
+		{
 			gedit_spell_checker_set_language (checker, lang);
+		}
 	}
 
 	gtk_widget_destroy (GTK_WIDGET (dlg));
@@ -1105,8 +1132,9 @@ tab_added_cb (GeditWindow      *window,
 	view = gedit_tab_get_view (tab);
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
-	/* we need to pass the view with the document as there is no way to
-	   attach the view to the automatic spell checker. */
+	/* We need to pass the view with the document as there is no way to
+	 * attach the view to the automatic spell checker.
+	 */
 	g_object_set_data (G_OBJECT (doc), GEDIT_AUTOMATIC_SPELL_VIEW, view);
 
 	g_signal_connect (doc,
@@ -1164,12 +1192,15 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 		set_auto_spell_from_metadata (plugin, view);
 	}
 
-	priv->tab_added_id =
-		g_signal_connect (priv->window, "tab-added",
-				  G_CALLBACK (tab_added_cb), activatable);
-	priv->tab_removed_id =
-		g_signal_connect (priv->window, "tab-removed",
-				  G_CALLBACK (tab_removed_cb), activatable);
+	priv->tab_added_id = g_signal_connect (priv->window,
+					       "tab-added",
+					       G_CALLBACK (tab_added_cb),
+					       activatable);
+
+	priv->tab_removed_id = g_signal_connect (priv->window,
+						 "tab-removed",
+						 G_CALLBACK (tab_removed_cb),
+						 activatable);
 }
 
 static void
@@ -1210,10 +1241,14 @@ gedit_spell_plugin_class_init (GeditSpellPluginClass *klass)
 	object_class->get_property = gedit_spell_plugin_get_property;
 
 	if (spell_checker_id == 0)
+	{
 		spell_checker_id = g_quark_from_string ("GeditSpellCheckerID");
+	}
 
 	if (check_range_id == 0)
+	{
 		check_range_id = g_quark_from_string ("CheckRangeID");
+	}
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
 }
