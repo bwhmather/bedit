@@ -674,7 +674,6 @@ static void
 gedit_automatic_spell_checker_dispose (GObject *object)
 {
 	GeditAutomaticSpellChecker *spell = GEDIT_AUTOMATIC_SPELL_CHECKER (object);
-	GSList *l;
 
 	if (spell->buffer != NULL)
 	{
@@ -684,44 +683,14 @@ gedit_automatic_spell_checker_dispose (GObject *object)
 
 		if (table != NULL && spell->tag_highlight != NULL)
 		{
-			g_signal_handlers_disconnect_matched (table,
-							      G_SIGNAL_MATCH_DATA,
-							      0, 0, NULL, NULL,
-							      spell);
-
 			gtk_text_tag_table_remove (table, spell->tag_highlight);
 		}
-
-		g_signal_handlers_disconnect_matched (spell->buffer,
-						      G_SIGNAL_MATCH_DATA,
-						      0, 0, NULL, NULL,
-						      spell);
 
 		spell->buffer = NULL;
 	}
 
 	g_clear_object (&spell->tag_highlight);
-
-	if (spell->spell_checker != NULL)
-	{
-		g_signal_handlers_disconnect_matched (spell->spell_checker,
-						      G_SIGNAL_MATCH_DATA,
-						      0, 0, NULL, NULL,
-						      spell);
-
-		g_object_unref (spell->spell_checker);
-		spell->spell_checker = NULL;
-	}
-
-	for (l = spell->views; l != NULL; l = l->next)
-	{
-		GtkTextView *view = GTK_TEXT_VIEW (l->data);
-
-		g_signal_handlers_disconnect_matched (view,
-						      G_SIGNAL_MATCH_DATA,
-						      0, 0, NULL, NULL,
-						      spell);
-	}
+	g_clear_object (&spell->spell_checker);
 
 	g_slist_free (spell->views);
 	spell->views = NULL;
@@ -767,50 +736,59 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 				spell,
 				g_object_unref);
 
-	g_signal_connect (buffer,
-			  "insert-text",
-			  G_CALLBACK (insert_text_before_cb),
-			  spell);
+	g_signal_connect_object (buffer,
+				 "insert-text",
+				 G_CALLBACK (insert_text_before_cb),
+				 spell,
+				 0);
 
-	g_signal_connect_after (buffer,
-				"insert-text",
-				G_CALLBACK (insert_text_after_cb),
-				spell);
+	g_signal_connect_object (buffer,
+				 "insert-text",
+				 G_CALLBACK (insert_text_after_cb),
+				 spell,
+				 G_CONNECT_AFTER);
 
-	g_signal_connect_after (buffer,
-				"delete-range",
-				G_CALLBACK (delete_range_after_cb),
-				spell);
+	g_signal_connect_object (buffer,
+				 "delete-range",
+				 G_CALLBACK (delete_range_after_cb),
+				 spell,
+				 G_CONNECT_AFTER);
 
-	g_signal_connect (buffer,
-			  "mark-set",
-			  G_CALLBACK (mark_set_cb),
-			  spell);
+	g_signal_connect_object (buffer,
+				 "mark-set",
+				 G_CALLBACK (mark_set_cb),
+				 spell,
+				 0);
 
-	g_signal_connect (buffer,
-	                  "highlight-updated", /* GtkSourceBuffer signal */
-	                  G_CALLBACK (highlight_updated_cb),
-	                  spell);
+	g_signal_connect_object (buffer,
+				 "highlight-updated", /* GtkSourceBuffer signal */
+				 G_CALLBACK (highlight_updated_cb),
+				 spell,
+				 0);
 
-	g_signal_connect (spell->spell_checker,
-			  "add_word_to_session",
-			  G_CALLBACK (add_word_cb),
-			  spell);
+	g_signal_connect_object (spell->spell_checker,
+				 "add_word_to_session",
+				 G_CALLBACK (add_word_cb),
+				 spell,
+				 0);
 
-	g_signal_connect (spell->spell_checker,
-			  "add_word_to_personal",
-			  G_CALLBACK (add_word_cb),
-			  spell);
+	g_signal_connect_object (spell->spell_checker,
+				 "add_word_to_personal",
+				 G_CALLBACK (add_word_cb),
+				 spell,
+				 0);
 
-	g_signal_connect (spell->spell_checker,
-			  "clear_session",
-			  G_CALLBACK (clear_session_cb),
-			  spell);
+	g_signal_connect_object (spell->spell_checker,
+				 "clear_session",
+				 G_CALLBACK (clear_session_cb),
+				 spell,
+				 0);
 
-	g_signal_connect (spell->spell_checker,
-			  "set_language",
-			  G_CALLBACK (set_language_cb),
-			  spell);
+	g_signal_connect_object (spell->spell_checker,
+				 "set_language",
+				 G_CALLBACK (set_language_cb),
+				 spell,
+				 0);
 
 	spell->tag_highlight = gtk_text_buffer_create_tag (spell->buffer,
 							   "gedit-spell-misspelled",
@@ -823,20 +801,23 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 	gtk_text_tag_set_priority (spell->tag_highlight,
 				   gtk_text_tag_table_get_size (tag_table) - 1);
 
-	g_signal_connect (tag_table,
-			  "tag-added",
-			  G_CALLBACK (tag_added_or_removed_cb),
-			  spell);
+	g_signal_connect_object (tag_table,
+				 "tag-added",
+				 G_CALLBACK (tag_added_or_removed_cb),
+				 spell,
+				 0);
 
-	g_signal_connect (tag_table,
-			  "tag-removed",
-			  G_CALLBACK (tag_added_or_removed_cb),
-			  spell);
+	g_signal_connect_object (tag_table,
+				 "tag-removed",
+				 G_CALLBACK (tag_added_or_removed_cb),
+				 spell,
+				 0);
 
-	g_signal_connect (tag_table,
-			  "tag-changed",
-			  G_CALLBACK (tag_changed_cb),
-			  spell);
+	g_signal_connect_object (tag_table,
+				 "tag-changed",
+				 G_CALLBACK (tag_changed_cb),
+				 spell,
+				 0);
 
 	/* We create the mark here, but we don't use it until text is
 	 * inserted, so we don't really care where iter points.
@@ -925,25 +906,29 @@ gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
 	g_return_if_fail (GTK_IS_TEXT_VIEW (view));
 	g_return_if_fail (gtk_text_view_get_buffer (view) == spell->buffer);
 
-	g_signal_connect (view,
-			  "button-press-event",
-			  G_CALLBACK (button_press_event_cb),
-			  spell);
+	g_signal_connect_object (view,
+				 "button-press-event",
+				 G_CALLBACK (button_press_event_cb),
+				 spell,
+				 0);
 
-	g_signal_connect (view,
-			  "popup-menu",
-			  G_CALLBACK (popup_menu_cb),
-			  spell);
+	g_signal_connect_object (view,
+				 "popup-menu",
+				 G_CALLBACK (popup_menu_cb),
+				 spell,
+				 0);
 
-	g_signal_connect (view,
-			  "populate-popup",
-			  G_CALLBACK (populate_popup_cb),
-			  spell);
+	g_signal_connect_object (view,
+				 "populate-popup",
+				 G_CALLBACK (populate_popup_cb),
+				 spell,
+				 0);
 
-	g_signal_connect (view,
-			  "destroy",
-			  G_CALLBACK (view_destroy_cb),
-			  spell);
+	g_signal_connect_object (view,
+				 "destroy",
+				 G_CALLBACK (view_destroy_cb),
+				 spell,
+				 0);
 
 	spell->views = g_slist_prepend (spell->views, view);
 }
@@ -957,10 +942,7 @@ gedit_automatic_spell_checker_detach_view (GeditAutomaticSpellChecker *spell,
 	g_return_if_fail (gtk_text_view_get_buffer (view) == spell->buffer);
 	g_return_if_fail (spell->views != NULL);
 
-	g_signal_handlers_disconnect_matched (view,
-					      G_SIGNAL_MATCH_DATA,
-					      0, 0, NULL, NULL,
-					      spell);
+	g_signal_handlers_disconnect_by_data (view, spell);
 
 	spell->views = g_slist_remove (spell->views, view);
 }
