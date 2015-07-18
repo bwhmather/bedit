@@ -881,10 +881,9 @@ set_auto_spell (GeditWindow   *window,
 			gedit_automatic_spell_checker_recheck_all (autospell);
 		}
 	}
-	else
+	else if (autospell != NULL)
 	{
-		if (autospell != NULL)
-			gedit_automatic_spell_checker_free (autospell);
+		g_object_unref (autospell);
 	}
 }
 

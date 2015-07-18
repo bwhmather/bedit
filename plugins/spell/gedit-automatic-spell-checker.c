@@ -691,10 +691,9 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 
 	spell->buffer = GTK_TEXT_BUFFER (buffer);
 
-	g_object_set_data_full (G_OBJECT (buffer),
-				AUTOMATIC_SPELL_CHECKER_KEY,
-				spell,
-				g_object_unref);
+	g_object_set_data (G_OBJECT (buffer),
+			   AUTOMATIC_SPELL_CHECKER_KEY,
+			   spell);
 
 	g_signal_connect_object (buffer,
 				 "insert-text",
@@ -911,6 +910,8 @@ gedit_automatic_spell_checker_dispose (GObject *object)
 			gtk_text_tag_table_remove (table, spell->tag_highlight);
 		}
 
+		g_object_set_data (G_OBJECT (spell->buffer), AUTOMATIC_SPELL_CHECKER_KEY, NULL);
+
 		spell->buffer = NULL;
 	}
 
@@ -983,15 +984,6 @@ gedit_automatic_spell_checker_get_from_buffer (GtkSourceBuffer *buffer)
 	g_return_val_if_fail (GTK_SOURCE_IS_BUFFER (buffer), NULL);
 
 	return g_object_get_data (G_OBJECT (buffer), AUTOMATIC_SPELL_CHECKER_KEY);
-}
-
-void
-gedit_automatic_spell_checker_free (GeditAutomaticSpellChecker *spell)
-{
-	g_return_if_fail (GEDIT_IS_AUTOMATIC_SPELL_CHECKER (spell));
-	g_return_if_fail (gedit_automatic_spell_checker_get_from_buffer (GTK_SOURCE_BUFFER (spell->buffer)) == spell);
-
-	g_object_set_data (G_OBJECT (spell->buffer), AUTOMATIC_SPELL_CHECKER_KEY, NULL);
 }
 
 void

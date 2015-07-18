@@ -44,8 +44,6 @@ GeditAutomaticSpellChecker *
 GeditAutomaticSpellChecker *
 	gedit_automatic_spell_checker_get_from_buffer	(GtkSourceBuffer *buffer);
 
-void	gedit_automatic_spell_checker_free		(GeditAutomaticSpellChecker *spell);
-
 void	gedit_automatic_spell_checker_attach_view	(GeditAutomaticSpellChecker *spell,
 							 GtkTextView                *view);
 
