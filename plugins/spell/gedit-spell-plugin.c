@@ -42,6 +42,8 @@
 #define GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED  "metadata::gedit-spell-enabled"
 #endif
 
+#define SPELL_ENABLED_STR "1"
+
 #define GEDIT_AUTOMATIC_SPELL_VIEW "GeditAutomaticSpellView"
 
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
@@ -951,7 +953,7 @@ auto_spell_activate_cb (GSimpleAction *action,
 		 */
 		gedit_document_set_metadata (doc,
 					     GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-					     active ? "1" : NULL,
+					     active ? SPELL_ENABLED_STR : NULL,
 					     NULL);
 	}
 }
@@ -1048,13 +1050,11 @@ set_auto_spell_from_metadata (GeditSpellPlugin *plugin,
 	GeditDocument *active_doc;
 
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-	active_str = gedit_document_get_metadata (doc,
-						  GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED);
 
-	if (active_str)
+	active_str = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED);
+	if (active_str != NULL)
 	{
-		active = *active_str == '1';
-
+		active = g_str_equal (active_str, SPELL_ENABLED_STR);
 		g_free (active_str);
 	}
 
@@ -1115,7 +1115,7 @@ on_document_saved (GeditDocument    *doc,
 
 	gedit_document_set_metadata (doc,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-	                             autospell != NULL ? "1" : NULL,
+	                             autospell != NULL ? SPELL_ENABLED_STR : NULL,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE,
 	                             key,
 	                             NULL);
