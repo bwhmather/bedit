@@ -49,6 +49,13 @@ struct _GeditAutomaticSpellChecker
 	guint deferred_check : 1;
 };
 
+enum
+{
+	PROP_0,
+	PROP_BUFFER,
+	PROP_SPELL_CHECKER,
+};
+
 #define AUTOMATIC_SPELL_CHECKER_KEY	"GeditAutomaticSpellCheckerID"
 #define SUGGESTION_KEY			"GeditAutoSuggestionID"
 
@@ -671,65 +678,18 @@ highlight_updated_cb (GtkSourceBuffer            *buffer,
 }
 
 static void
-gedit_automatic_spell_checker_dispose (GObject *object)
+set_buffer (GeditAutomaticSpellChecker *spell,
+	    GtkSourceBuffer            *buffer)
 {
-	GeditAutomaticSpellChecker *spell = GEDIT_AUTOMATIC_SPELL_CHECKER (object);
-
-	if (spell->buffer != NULL)
-	{
-		GtkTextTagTable *table;
-
-		table = gtk_text_buffer_get_tag_table (spell->buffer);
-
-		if (table != NULL && spell->tag_highlight != NULL)
-		{
-			gtk_text_tag_table_remove (table, spell->tag_highlight);
-		}
-
-		spell->buffer = NULL;
-	}
-
-	g_clear_object (&spell->tag_highlight);
-	g_clear_object (&spell->spell_checker);
-
-	g_slist_free (spell->views);
-	spell->views = NULL;
-
-	G_OBJECT_CLASS (gedit_automatic_spell_checker_parent_class)->dispose (object);
-}
-
-static void
-gedit_automatic_spell_checker_class_init (GeditAutomaticSpellCheckerClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-	object_class->dispose = gedit_automatic_spell_checker_dispose;
-}
-
-static void
-gedit_automatic_spell_checker_init (GeditAutomaticSpellChecker *spell)
-{
-}
-
-GeditAutomaticSpellChecker *
-gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
-				   GeditSpellChecker *checker)
-{
-	GeditAutomaticSpellChecker *spell;
 	GtkTextTagTable *tag_table;
 	GtkTextIter start;
 	GtkTextIter end;
 
-	g_return_val_if_fail (GTK_SOURCE_IS_BUFFER (buffer), NULL);
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
-
-	spell = gedit_automatic_spell_checker_get_from_buffer (buffer);
-	g_return_val_if_fail (spell == NULL, spell);
-
-	spell = g_object_new (GEDIT_TYPE_AUTOMATIC_SPELL_CHECKER, NULL);
+	g_return_if_fail (GTK_SOURCE_IS_BUFFER (buffer));
+	g_return_if_fail (spell->buffer == NULL);
+	g_return_if_fail (spell->tag_highlight == NULL);
 
 	spell->buffer = GTK_TEXT_BUFFER (buffer);
-	spell->spell_checker = g_object_ref (checker);
 
 	g_object_set_data_full (G_OBJECT (buffer),
 				AUTOMATIC_SPELL_CHECKER_KEY,
@@ -763,30 +723,6 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 	g_signal_connect_object (buffer,
 				 "highlight-updated", /* GtkSourceBuffer signal */
 				 G_CALLBACK (highlight_updated_cb),
-				 spell,
-				 0);
-
-	g_signal_connect_object (spell->spell_checker,
-				 "add_word_to_session",
-				 G_CALLBACK (add_word_cb),
-				 spell,
-				 0);
-
-	g_signal_connect_object (spell->spell_checker,
-				 "add_word_to_personal",
-				 G_CALLBACK (add_word_cb),
-				 spell,
-				 0);
-
-	g_signal_connect_object (spell->spell_checker,
-				 "clear_session",
-				 G_CALLBACK (clear_session_cb),
-				 spell,
-				 0);
-
-	g_signal_connect_object (spell->spell_checker,
-				 "set_language",
-				 G_CALLBACK (set_language_cb),
 				 spell,
 				 0);
 
@@ -875,10 +811,170 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 					   spell->mark_click,
 					   &start);
 	}
+}
 
+static void
+set_spell_checker (GeditAutomaticSpellChecker *spell,
+		   GeditSpellChecker          *checker)
+{
+	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (checker));
+	g_return_if_fail (spell->spell_checker == NULL);
+
+	spell->spell_checker = g_object_ref (checker);
+
+	g_signal_connect_object (spell->spell_checker,
+				 "add_word_to_session",
+				 G_CALLBACK (add_word_cb),
+				 spell,
+				 0);
+
+	g_signal_connect_object (spell->spell_checker,
+				 "add_word_to_personal",
+				 G_CALLBACK (add_word_cb),
+				 spell,
+				 0);
+
+	g_signal_connect_object (spell->spell_checker,
+				 "clear_session",
+				 G_CALLBACK (clear_session_cb),
+				 spell,
+				 0);
+
+	g_signal_connect_object (spell->spell_checker,
+				 "set_language",
+				 G_CALLBACK (set_language_cb),
+				 spell,
+				 0);
+}
+
+static void
+gedit_automatic_spell_checker_get_property (GObject    *object,
+					    guint       prop_id,
+					    GValue     *value,
+					    GParamSpec *pspec)
+{
+	GeditAutomaticSpellChecker *spell = GEDIT_AUTOMATIC_SPELL_CHECKER (object);
+
+	switch (prop_id)
+	{
+		case PROP_BUFFER:
+			g_value_set_object (value, spell->buffer);
+			break;
+
+		case PROP_SPELL_CHECKER:
+			g_value_set_object (value, spell->spell_checker);
+			break;
+
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
+gedit_automatic_spell_checker_set_property (GObject      *object,
+					    guint         prop_id,
+					    const GValue *value,
+					    GParamSpec   *pspec)
+{
+	GeditAutomaticSpellChecker *spell = GEDIT_AUTOMATIC_SPELL_CHECKER (object);
+
+	switch (prop_id)
+	{
+		case PROP_BUFFER:
+			set_buffer (spell, g_value_get_object (value));
+			break;
+
+		case PROP_SPELL_CHECKER:
+			set_spell_checker (spell, g_value_get_object (value));
+			break;
+
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
+gedit_automatic_spell_checker_dispose (GObject *object)
+{
+	GeditAutomaticSpellChecker *spell = GEDIT_AUTOMATIC_SPELL_CHECKER (object);
+
+	if (spell->buffer != NULL)
+	{
+		GtkTextTagTable *table;
+
+		table = gtk_text_buffer_get_tag_table (spell->buffer);
+
+		if (table != NULL && spell->tag_highlight != NULL)
+		{
+			gtk_text_tag_table_remove (table, spell->tag_highlight);
+		}
+
+		spell->buffer = NULL;
+	}
+
+	g_clear_object (&spell->tag_highlight);
+	g_clear_object (&spell->spell_checker);
+
+	g_slist_free (spell->views);
+	spell->views = NULL;
+
+	G_OBJECT_CLASS (gedit_automatic_spell_checker_parent_class)->dispose (object);
+}
+
+static void
+gedit_automatic_spell_checker_class_init (GeditAutomaticSpellCheckerClass *klass)
+{
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+	object_class->get_property = gedit_automatic_spell_checker_get_property;
+	object_class->set_property = gedit_automatic_spell_checker_set_property;
+	object_class->dispose = gedit_automatic_spell_checker_dispose;
+
+	g_object_class_install_property (object_class,
+					 PROP_BUFFER,
+					 g_param_spec_object ("buffer",
+							      "Buffer",
+							      "",
+							      GTK_SOURCE_TYPE_BUFFER,
+							      G_PARAM_READWRITE |
+							      G_PARAM_CONSTRUCT_ONLY |
+							      G_PARAM_STATIC_STRINGS));
+
+	g_object_class_install_property (object_class,
+					 PROP_SPELL_CHECKER,
+					 g_param_spec_object ("spell-checker",
+							      "Spell Checker",
+							      "",
+							      GEDIT_TYPE_SPELL_CHECKER,
+							      G_PARAM_READWRITE |
+							      G_PARAM_CONSTRUCT_ONLY |
+							      G_PARAM_STATIC_STRINGS));
+}
+
+static void
+gedit_automatic_spell_checker_init (GeditAutomaticSpellChecker *spell)
+{
 	spell->deferred_check = FALSE;
+}
 
-	return spell;
+GeditAutomaticSpellChecker *
+gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
+				   GeditSpellChecker *checker)
+{
+	GeditAutomaticSpellChecker *spell;
+
+	g_return_val_if_fail (GTK_SOURCE_IS_BUFFER (buffer), NULL);
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
+
+	spell = gedit_automatic_spell_checker_get_from_buffer (buffer);
+	g_return_val_if_fail (spell == NULL, spell);
+
+	return g_object_new (GEDIT_TYPE_AUTOMATIC_SPELL_CHECKER,
+			     "buffer", buffer,
+			     "spell-checker", checker,
+			     NULL);
 }
 
 GeditAutomaticSpellChecker *
