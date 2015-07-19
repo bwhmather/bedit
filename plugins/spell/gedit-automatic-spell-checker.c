@@ -34,17 +34,16 @@ struct _GeditAutomaticSpellChecker
 	GObject parent;
 
 	GtkTextBuffer *buffer;
+	GeditSpellChecker *spell_checker;
 
 	/* List of GtkTextView* */
 	GSList *views;
 
+	GtkTextTag *tag_highlight;
+
 	GtkTextMark *mark_insert_start;
 	GtkTextMark *mark_insert_end;
-
-	GtkTextTag *tag_highlight;
 	GtkTextMark *mark_click;
-
-	GeditSpellChecker *spell_checker;
 
 	guint deferred_check : 1;
 };
