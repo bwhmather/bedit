@@ -970,7 +970,10 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
 
 	spell = gedit_automatic_spell_checker_get_from_buffer (buffer);
-	g_return_val_if_fail (spell == NULL, spell);
+	if (spell != NULL)
+	{
+		return spell;
+	}
 
 	return g_object_new (GEDIT_TYPE_AUTOMATIC_SPELL_CHECKER,
 			     "buffer", buffer,

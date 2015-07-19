@@ -2,6 +2,7 @@
  * gedit-spell-plugin.c
  *
  * Copyright (C) 2002-2005 Paolo Maggi
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,6 +46,7 @@
 #define SPELL_ENABLED_STR "1"
 
 #define GEDIT_AUTOMATIC_SPELL_VIEW "GeditAutomaticSpellView"
+#define VIEW_DATA_KEY "GeditSpellPlugin-ViewData"
 
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
 
@@ -70,6 +72,20 @@ struct _CheckRange
 	GtkTextMark *current_mark;
 };
 
+typedef struct _ViewData ViewData;
+
+struct _ViewData
+{
+	GeditSpellPlugin *plugin;
+	GeditView *view;
+	GeditAutomaticSpellChecker *auto_spell;
+
+	/* The doc is also needed, to be sure that the signals are disconnected
+	 * on the same doc.
+	 */
+	GeditDocument *doc;
+};
+
 enum
 {
 	PROP_0,
@@ -89,6 +105,9 @@ static void	set_language_cb			(GSimpleAction *action, GVariant *parameter, gpoin
 static void	auto_spell_activate_cb		(GSimpleAction *action, GVariant *parameter, gpointer data);
 static void	auto_spell_change_state_cb	(GSimpleAction *action, GVariant *state, gpointer data);
 
+static void	on_document_loaded		(GeditDocument *doc, ViewData *data);
+static void	on_document_saved		(GeditDocument *doc, ViewData *data);
+
 static GActionEntry action_entries[] =
 {
 	{ "check-spell", spell_cb },
@@ -98,6 +117,56 @@ static GActionEntry action_entries[] =
 
 static GQuark spell_checker_id = 0;
 static GQuark check_range_id = 0;
+
+static ViewData *
+view_data_new (GeditSpellPlugin *plugin,
+	       GeditView        *view)
+{
+	ViewData *data;
+
+	data = g_slice_new (ViewData);
+	data->plugin = g_object_ref (plugin);
+	data->view = g_object_ref (view);
+	data->auto_spell = NULL;
+
+	data->doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	g_object_ref (data->doc);
+
+	g_signal_connect (data->doc,
+			  "loaded",
+			  G_CALLBACK (on_document_loaded),
+			  data);
+
+	g_signal_connect (data->doc,
+			  "saved",
+			  G_CALLBACK (on_document_saved),
+			  data);
+
+	return data;
+}
+
+static void
+view_data_free (ViewData *data)
+{
+	if (data == NULL)
+	{
+		return;
+	}
+
+	if (data->doc != NULL)
+	{
+		g_signal_handlers_disconnect_by_func (data->doc, on_document_loaded, data);
+		g_signal_handlers_disconnect_by_func (data->doc, on_document_saved, data);
+
+		g_object_unref (data->doc);
+	}
+
+	g_clear_object (&data->plugin);
+	g_clear_object (&data->view);
+	g_clear_object (&data->auto_spell);
+
+	g_slice_free (ViewData, data);
+}
 
 static void
 gedit_spell_plugin_init (GeditSpellPlugin *plugin)
@@ -885,33 +954,27 @@ spell_cb (GSimpleAction *action,
 }
 
 static void
-set_auto_spell (GeditWindow *window,
-		GeditView   *view,
-		gboolean     active)
+set_auto_spell (ViewData *data,
+		gboolean  active)
 {
-	GeditAutomaticSpellChecker *autospell;
-	GeditSpellChecker *checker;
-	GeditDocument *doc;
-
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-
-	checker = get_spell_checker_from_document (doc);
-	g_return_if_fail (checker != NULL);
-
-	autospell = gedit_automatic_spell_checker_get_from_buffer (GTK_SOURCE_BUFFER (doc));
-
-	if (active)
+	if (!active)
 	{
-		if (autospell == NULL)
-		{
-			autospell = gedit_automatic_spell_checker_new (GTK_SOURCE_BUFFER (doc), checker);
-			gedit_automatic_spell_checker_attach_view (autospell, GTK_TEXT_VIEW (view));
-			gedit_automatic_spell_checker_recheck_all (autospell);
-		}
+		g_clear_object (&data->auto_spell);
 	}
-	else if (autospell != NULL)
+	else if (data->auto_spell == NULL)
 	{
-		g_object_unref (autospell);
+		GeditSpellChecker *checker;
+
+		checker = get_spell_checker_from_document (data->doc);
+		g_return_if_fail (checker != NULL);
+
+		data->auto_spell = gedit_automatic_spell_checker_new (GTK_SOURCE_BUFFER (data->doc),
+								      checker);
+
+		gedit_automatic_spell_checker_attach_view (data->auto_spell,
+							   GTK_TEXT_VIEW (data->view));
+
+		gedit_automatic_spell_checker_recheck_all (data->auto_spell);
 	}
 }
 
@@ -977,7 +1040,13 @@ auto_spell_change_state_cb (GSimpleAction *action,
 	view = gedit_window_get_active_view (priv->window);
 	if (view != NULL)
 	{
-		set_auto_spell (priv->window, view, active);
+		ViewData *data = g_object_get_data (G_OBJECT (view), VIEW_DATA_KEY);
+
+		if (data != NULL)
+		{
+			set_auto_spell (data, active);
+		}
+
 		g_simple_action_set_state (action, g_variant_new_boolean (active));
 	}
 }
@@ -1041,29 +1110,26 @@ update_ui (GeditSpellPlugin *plugin)
 }
 
 static void
-set_auto_spell_from_metadata (GeditSpellPlugin *plugin,
-			      GeditView        *view)
+set_auto_spell_from_metadata (ViewData *data)
 {
+	GeditSpellPlugin *plugin = data->plugin;
 	gboolean active = FALSE;
 	gchar *active_str;
-	GeditDocument *doc;
-	GeditDocument *active_doc;
+	GeditView *active_view;
 
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-
-	active_str = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED);
+	active_str = gedit_document_get_metadata (data->doc, GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED);
 	if (active_str != NULL)
 	{
 		active = g_str_equal (active_str, SPELL_ENABLED_STR);
 		g_free (active_str);
 	}
 
-	set_auto_spell (plugin->priv->window, view, active);
+	set_auto_spell (data, active);
 
-	/* In case that the doc is the active one we mark the spell action */
-	active_doc = gedit_window_get_active_document (plugin->priv->window);
+	/* In case that the view is the active one we mark the spell action */
+	active_view = gedit_window_get_active_view (plugin->priv->window);
 
-	if (active_doc == doc)
+	if (active_view == data->view)
 	{
 		GAction *action;
 
@@ -1074,11 +1140,10 @@ set_auto_spell_from_metadata (GeditSpellPlugin *plugin,
 }
 
 static void
-on_document_loaded (GeditDocument    *doc,
-		    GeditSpellPlugin *plugin)
+on_document_loaded (GeditDocument *doc,
+		    ViewData      *data)
 {
 	GeditSpellChecker *checker;
-	GeditView *view;
 
 	checker = GEDIT_SPELL_CHECKER (g_object_get_qdata (G_OBJECT (doc),
 							   spell_checker_id));
@@ -1087,21 +1152,18 @@ on_document_loaded (GeditDocument    *doc,
 		set_language_from_metadata (checker, doc);
 	}
 
-	view = GEDIT_VIEW (g_object_get_data (G_OBJECT (doc), GEDIT_AUTOMATIC_SPELL_VIEW));
-
-	set_auto_spell_from_metadata (plugin, view);
+	set_auto_spell_from_metadata (data);
 }
 
 static void
-on_document_saved (GeditDocument    *doc,
-		   GeditSpellPlugin *plugin)
+on_document_saved (GeditDocument *doc,
+		   ViewData      *data)
 {
-	GeditAutomaticSpellChecker *autospell;
 	GeditSpellChecker *checker;
 	const gchar *key;
 
 	/* Make sure to save the metadata here too */
-	autospell = gedit_automatic_spell_checker_get_from_buffer (GTK_SOURCE_BUFFER (doc));
+
 	checker = GEDIT_SPELL_CHECKER (g_object_get_qdata (G_OBJECT (doc), spell_checker_id));
 
 	if (checker != NULL)
@@ -1115,7 +1177,7 @@ on_document_saved (GeditDocument    *doc,
 
 	gedit_document_set_metadata (doc,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-	                             autospell != NULL ? SPELL_ENABLED_STR : NULL,
+				     data->auto_spell != NULL ? SPELL_ENABLED_STR : NULL,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE,
 	                             key,
 	                             NULL);
@@ -1127,25 +1189,15 @@ tab_added_cb (GeditWindow      *window,
 	      GeditSpellPlugin *plugin)
 {
 	GeditView *view;
-	GeditDocument *doc;
+	ViewData *data;
 
 	view = gedit_tab_get_view (tab);
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 
-	/* We need to pass the view with the document as there is no way to
-	 * attach the view to the automatic spell checker.
-	 */
-	g_object_set_data (G_OBJECT (doc), GEDIT_AUTOMATIC_SPELL_VIEW, view);
-
-	g_signal_connect (doc,
-			  "loaded",
-			  G_CALLBACK (on_document_loaded),
-			  plugin);
-
-	g_signal_connect (doc,
-			  "saved",
-			  G_CALLBACK (on_document_saved),
-			  plugin);
+	data = view_data_new (plugin, view);
+	g_object_set_data_full (G_OBJECT (view),
+				VIEW_DATA_KEY,
+				data,
+				(GDestroyNotify) view_data_free);
 }
 
 static void
@@ -1153,13 +1205,8 @@ tab_removed_cb (GeditWindow      *window,
 		GeditTab         *tab,
 		GeditSpellPlugin *plugin)
 {
-	GeditDocument *doc;
-
-	doc = gedit_tab_get_document (tab);
-	g_object_set_data (G_OBJECT (doc), GEDIT_AUTOMATIC_SPELL_VIEW, NULL);
-
-	g_signal_handlers_disconnect_by_func (doc, on_document_loaded, plugin);
-	g_signal_handlers_disconnect_by_func (doc, on_document_saved, plugin);
+	GeditView *view = gedit_tab_get_view (tab);
+	g_object_set_data (G_OBJECT (view), VIEW_DATA_KEY, NULL);
 }
 
 static void
@@ -1188,8 +1235,14 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 	for (l = views; l != NULL; l = g_list_next (l))
 	{
 		GeditView *view = GEDIT_VIEW (l->data);
+		ViewData *data = view_data_new (plugin, view);
 
-		set_auto_spell_from_metadata (plugin, view);
+		g_object_set_data_full (G_OBJECT (view),
+					VIEW_DATA_KEY,
+					data,
+					(GDestroyNotify) view_data_free);
+
+		set_auto_spell_from_metadata (data);
 	}
 
 	priv->tab_added_id = g_signal_connect (priv->window,
