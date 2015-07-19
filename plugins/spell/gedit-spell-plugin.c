@@ -1085,26 +1085,31 @@ update_ui (GeditSpellPlugin *plugin)
 
 	if (view != NULL)
 	{
-		GeditDocument *doc;
 		GeditTab *tab;
-		GeditTabState state;
-		gboolean autospell;
+		GtkTextBuffer *buffer;
 
-		doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 		tab = gedit_window_get_active_tab (priv->window);
-		state = gedit_tab_get_state (tab);
-		autospell = (doc != NULL &&
-		             gedit_automatic_spell_checker_get_from_buffer (GTK_SOURCE_BUFFER (doc)) != NULL);
+		g_return_if_fail (gedit_tab_get_view (tab) == view);
 
 		/* If the document is loading we can't get the metadata so we
-		   endup with an useless speller */
-		if (state == GEDIT_TAB_STATE_NORMAL)
+		 * endup with an useless speller.
+		 */
+		if (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL)
 		{
-			g_action_change_state (auto_spell_action, g_variant_new_boolean (autospell));
+			ViewData *data;
+			gboolean auto_spell_enabled;
+
+			data = g_object_get_data (G_OBJECT (view), VIEW_DATA_KEY);
+			auto_spell_enabled = data != NULL && data->auto_spell != NULL;
+
+			g_action_change_state (auto_spell_action,
+					       g_variant_new_boolean (auto_spell_enabled));
 		}
 
+		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (check_spell_action),
-		                             gtk_text_buffer_get_char_count (GTK_TEXT_BUFFER (doc)) > 0);
+		                             gtk_text_buffer_get_char_count (buffer) > 0);
 	}
 }
 
