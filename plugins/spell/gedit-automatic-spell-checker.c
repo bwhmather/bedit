@@ -969,9 +969,10 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 	g_return_val_if_fail (GTK_SOURCE_IS_BUFFER (buffer), NULL);
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
 
-	spell = gedit_automatic_spell_checker_get_from_buffer (buffer);
+	spell = g_object_get_data (G_OBJECT (buffer), AUTOMATIC_SPELL_CHECKER_KEY);
 	if (spell != NULL)
 	{
+		g_return_val_if_fail (spell->spell_checker == checker, spell);
 		return spell;
 	}
 
@@ -979,14 +980,6 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 			     "buffer", buffer,
 			     "spell-checker", checker,
 			     NULL);
-}
-
-GeditAutomaticSpellChecker *
-gedit_automatic_spell_checker_get_from_buffer (GtkSourceBuffer *buffer)
-{
-	g_return_val_if_fail (GTK_SOURCE_IS_BUFFER (buffer), NULL);
-
-	return g_object_get_data (G_OBJECT (buffer), AUTOMATIC_SPELL_CHECKER_KEY);
 }
 
 void
