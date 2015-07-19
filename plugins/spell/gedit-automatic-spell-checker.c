@@ -698,6 +698,9 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 	g_return_if_fail (GTK_SOURCE_IS_BUFFER (buffer));
 	g_return_if_fail (spell->buffer == NULL);
 	g_return_if_fail (spell->tag_highlight == NULL);
+	g_return_if_fail (spell->mark_insert_start == NULL);
+	g_return_if_fail (spell->mark_insert_end == NULL);
+	g_return_if_fail (spell->mark_click == NULL);
 
 	spell->buffer = g_object_ref (buffer);
 
@@ -766,57 +769,9 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 	 */
 	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
 
-	spell->mark_insert_start = gtk_text_buffer_get_mark (spell->buffer,
-							     "gedit-automatic-spell-checker-insert-start");
-
-	if (spell->mark_insert_start == NULL)
-	{
-		spell->mark_insert_start =
-			gtk_text_buffer_create_mark (spell->buffer,
-						     "gedit-automatic-spell-checker-insert-start",
-						     &start,
-						     TRUE);
-	}
-	else
-	{
-		gtk_text_buffer_move_mark (spell->buffer,
-					   spell->mark_insert_start,
-					   &start);
-	}
-
-	spell->mark_insert_end = gtk_text_buffer_get_mark (spell->buffer,
-							   "gedit-automatic-spell-checker-insert-end");
-
-	if (spell->mark_insert_end == NULL)
-	{
-		spell->mark_insert_end = gtk_text_buffer_create_mark (spell->buffer,
-								      "gedit-automatic-spell-checker-insert-end",
-								      &start,
-								      TRUE);
-	}
-	else
-	{
-		gtk_text_buffer_move_mark (spell->buffer,
-					   spell->mark_insert_end,
-					   &start);
-	}
-
-	spell->mark_click = gtk_text_buffer_get_mark (spell->buffer,
-						      "gedit-automatic-spell-checker-click");
-
-	if (spell->mark_click == NULL)
-	{
-		spell->mark_click = gtk_text_buffer_create_mark (spell->buffer,
-								 "gedit-automatic-spell-checker-click",
-								 &start,
-								 TRUE);
-	}
-	else
-	{
-		gtk_text_buffer_move_mark (spell->buffer,
-					   spell->mark_click,
-					   &start);
-	}
+	spell->mark_insert_start = gtk_text_buffer_create_mark (spell->buffer, NULL, &start, TRUE);
+	spell->mark_insert_end = gtk_text_buffer_create_mark (spell->buffer, NULL, &start, TRUE);
+	spell->mark_click = gtk_text_buffer_create_mark (spell->buffer, NULL, &start, TRUE);
 }
 
 static void
@@ -917,6 +872,22 @@ gedit_automatic_spell_checker_dispose (GObject *object)
 			gtk_text_tag_table_remove (table, spell->tag_highlight);
 		}
 
+		if (spell->mark_insert_start != NULL)
+		{
+			gtk_text_buffer_delete_mark (spell->buffer, spell->mark_insert_start);
+			spell->mark_insert_start = NULL;
+		}
+		if (spell->mark_insert_end != NULL)
+		{
+			gtk_text_buffer_delete_mark (spell->buffer, spell->mark_insert_end);
+			spell->mark_insert_end = NULL;
+		}
+		if (spell->mark_click != NULL)
+		{
+			gtk_text_buffer_delete_mark (spell->buffer, spell->mark_click);
+			spell->mark_click = NULL;
+		}
+
 		g_object_set_data (G_OBJECT (spell->buffer), AUTOMATIC_SPELL_CHECKER_KEY, NULL);
 
 		g_object_unref (spell->buffer);
@@ -928,6 +899,10 @@ gedit_automatic_spell_checker_dispose (GObject *object)
 
 	g_slist_free (spell->views);
 	spell->views = NULL;
+
+	spell->mark_insert_start = NULL;
+	spell->mark_insert_end = NULL;
+	spell->mark_click = NULL;
 
 	G_OBJECT_CLASS (gedit_automatic_spell_checker_parent_class)->dispose (object);
 }
