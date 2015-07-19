@@ -160,6 +160,12 @@ view_data_free (ViewData *data)
 		g_object_unref (data->doc);
 	}
 
+	if (data->auto_spell != NULL && data->view != NULL)
+	{
+		gedit_automatic_spell_checker_detach_view (data->auto_spell,
+							   GTK_TEXT_VIEW (data->view));
+	}
+
 	g_clear_object (&data->plugin);
 	g_clear_object (&data->view);
 	g_clear_object (&data->auto_spell);
@@ -958,6 +964,12 @@ set_auto_spell (ViewData *data,
 {
 	if (!active)
 	{
+		if (data->auto_spell != NULL && data->view != NULL)
+		{
+			gedit_automatic_spell_checker_detach_view (data->auto_spell,
+								   GTK_TEXT_VIEW (data->view));
+		}
+
 		g_clear_object (&data->auto_spell);
 	}
 	else if (data->auto_spell == NULL)
