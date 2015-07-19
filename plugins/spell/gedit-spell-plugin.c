@@ -45,7 +45,6 @@
 
 #define SPELL_ENABLED_STR "1"
 
-#define GEDIT_AUTOMATIC_SPELL_VIEW "GeditAutomaticSpellView"
 #define VIEW_DATA_KEY "GeditSpellPlugin-ViewData"
 
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
