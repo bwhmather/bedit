@@ -972,6 +972,7 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 	spell = g_object_get_data (G_OBJECT (buffer), AUTOMATIC_SPELL_CHECKER_KEY);
 	if (spell != NULL)
 	{
+		g_object_ref (spell);
 		g_return_val_if_fail (spell->spell_checker == checker, spell);
 		return spell;
 	}
