@@ -688,7 +688,7 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 	g_return_if_fail (spell->buffer == NULL);
 	g_return_if_fail (spell->tag_highlight == NULL);
 
-	spell->buffer = GTK_TEXT_BUFFER (buffer);
+	spell->buffer = g_object_ref (buffer);
 
 	g_object_set_data (G_OBJECT (buffer),
 			   AUTOMATIC_SPELL_CHECKER_KEY,
@@ -911,6 +911,7 @@ gedit_automatic_spell_checker_dispose (GObject *object)
 
 		g_object_set_data (G_OBJECT (spell->buffer), AUTOMATIC_SPELL_CHECKER_KEY, NULL);
 
+		g_object_unref (spell->buffer);
 		spell->buffer = NULL;
 	}
 
