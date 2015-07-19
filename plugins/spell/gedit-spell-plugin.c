@@ -975,9 +975,13 @@ set_auto_spell (ViewData *data,
 	else if (data->auto_spell == NULL)
 	{
 		GeditSpellChecker *checker;
+		GtkTextBuffer *buffer;
 
 		checker = get_spell_checker_from_document (data->doc);
 		g_return_if_fail (checker != NULL);
+
+		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (data->view));
+		g_return_if_fail (buffer == GTK_TEXT_BUFFER (data->doc));
 
 		data->auto_spell = gedit_automatic_spell_checker_new (GTK_SOURCE_BUFFER (data->doc),
 								      checker);
