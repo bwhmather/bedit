@@ -641,8 +641,8 @@ popup_menu_cb (GtkTextView                *view,
 }
 
 static void
-tag_table_changed (GtkTextTagTable            *table,
-		   GeditAutomaticSpellChecker *spell)
+update_tag_highlight_priority (GeditAutomaticSpellChecker *spell,
+			       GtkTextTagTable            *table)
 {
 	g_return_if_fail (spell->tag_highlight != NULL);
 
@@ -651,11 +651,22 @@ tag_table_changed (GtkTextTagTable            *table,
 }
 
 static void
-tag_added_or_removed_cb (GtkTextTagTable            *table,
-			 GtkTextTag                 *tag,
-			 GeditAutomaticSpellChecker *spell)
+tag_added_cb (GtkTextTagTable            *table,
+	      GtkTextTag                 *tag,
+	      GeditAutomaticSpellChecker *spell)
 {
-	tag_table_changed (table, spell);
+	update_tag_highlight_priority (spell, table);
+}
+
+static void
+tag_removed_cb (GtkTextTagTable            *table,
+		GtkTextTag                 *tag,
+		GeditAutomaticSpellChecker *spell)
+{
+	if (tag != spell->tag_highlight)
+	{
+		update_tag_highlight_priority (spell, table);
+	}
 }
 
 static void
@@ -664,7 +675,7 @@ tag_changed_cb (GtkTextTagTable            *table,
 		gboolean                    size_changed,
 		GeditAutomaticSpellChecker *spell)
 {
-	tag_table_changed (table, spell);
+	update_tag_highlight_priority (spell, table);
 }
 
 static void
@@ -732,18 +743,15 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 
 	tag_table = gtk_text_buffer_get_tag_table (spell->buffer);
 
-	gtk_text_tag_set_priority (spell->tag_highlight,
-				   gtk_text_tag_table_get_size (tag_table) - 1);
-
 	g_signal_connect_object (tag_table,
 				 "tag-added",
-				 G_CALLBACK (tag_added_or_removed_cb),
+				 G_CALLBACK (tag_added_cb),
 				 spell,
 				 0);
 
 	g_signal_connect_object (tag_table,
 				 "tag-removed",
-				 G_CALLBACK (tag_added_or_removed_cb),
+				 G_CALLBACK (tag_removed_cb),
 				 spell,
 				 0);
 
