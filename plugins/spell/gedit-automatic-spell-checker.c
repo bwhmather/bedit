@@ -61,13 +61,6 @@ enum
 G_DEFINE_TYPE (GeditAutomaticSpellChecker, gedit_automatic_spell_checker, G_TYPE_OBJECT)
 
 static void
-view_destroy_cb (GtkTextView                *view,
-		 GeditAutomaticSpellChecker *spell)
-{
-	gedit_automatic_spell_checker_detach_view (spell, view);
-}
-
-static void
 check_word (GeditAutomaticSpellChecker *spell,
 	    const GtkTextIter          *start,
 	    const GtkTextIter          *end)
@@ -897,7 +890,7 @@ gedit_automatic_spell_checker_dispose (GObject *object)
 	g_clear_object (&spell->tag_highlight);
 	g_clear_object (&spell->spell_checker);
 
-	g_slist_free (spell->views);
+	g_slist_free_full (spell->views, g_object_unref);
 	spell->views = NULL;
 
 	spell->mark_insert_start = NULL;
@@ -973,6 +966,7 @@ gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
 	g_return_if_fail (GEDIT_IS_AUTOMATIC_SPELL_CHECKER (spell));
 	g_return_if_fail (GTK_IS_TEXT_VIEW (view));
 	g_return_if_fail (gtk_text_view_get_buffer (view) == spell->buffer);
+	g_return_if_fail (g_slist_find (spell->views, view) == NULL);
 
 	g_signal_connect_object (view,
 				 "button-press-event",
@@ -992,13 +986,8 @@ gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
 				 spell,
 				 0);
 
-	g_signal_connect_object (view,
-				 "destroy",
-				 G_CALLBACK (view_destroy_cb),
-				 spell,
-				 0);
-
 	spell->views = g_slist_prepend (spell->views, view);
+	g_object_ref (view);
 }
 
 void
@@ -1008,11 +997,12 @@ gedit_automatic_spell_checker_detach_view (GeditAutomaticSpellChecker *spell,
 	g_return_if_fail (GEDIT_IS_AUTOMATIC_SPELL_CHECKER (spell));
 	g_return_if_fail (GTK_IS_TEXT_VIEW (view));
 	g_return_if_fail (gtk_text_view_get_buffer (view) == spell->buffer);
-	g_return_if_fail (spell->views != NULL);
+	g_return_if_fail (g_slist_find (spell->views, view) != NULL);
 
 	g_signal_handlers_disconnect_by_data (view, spell);
 
 	spell->views = g_slist_remove (spell->views, view);
+	g_object_unref (view);
 }
 
 /* ex:set ts=8 noet: */
