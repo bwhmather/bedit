@@ -212,46 +212,25 @@ check_deferred_range (GeditAutomaticSpellChecker *spell,
 	check_range (spell, &start, &end, force_all);
 }
 
-/* insertion works like this:
- *  - before the text is inserted, we mark the position in the buffer.
- *  - after the text is inserted, we see where our mark is and use that and
- *    the current position to check the entire range of inserted text.
- *
- * this may be overkill for the common case (inserting one character). */
-
-static void
-insert_text_before_cb (GtkTextBuffer              *buffer,
-		       GtkTextIter                *iter,
-		       gchar                      *text,
-		       gint                        len,
-		       GeditAutomaticSpellChecker *spell)
-{
-	gtk_text_buffer_move_mark (buffer, spell->mark_insert_start, iter);
-}
-
 static void
 insert_text_after_cb (GtkTextBuffer              *buffer,
-		      GtkTextIter                *iter,
+		      GtkTextIter                *location,
 		      gchar                      *text,
-		      gint                        len,
+		      gint                        length,
 		      GeditAutomaticSpellChecker *spell)
 {
 	GtkTextIter start;
+	GtkTextIter end;
 
-	/* we need to check a range of text. */
-	gtk_text_buffer_get_iter_at_mark (buffer, &start, spell->mark_insert_start);
+	start = end = *location;
 
-	check_range (spell, &start, iter, FALSE);
+	gtk_text_iter_backward_chars (&start, g_utf8_strlen (text, length));
 
-	gtk_text_buffer_move_mark (buffer, spell->mark_insert_end, iter);
+	gtk_text_buffer_move_mark (buffer, spell->mark_insert_start, &start);
+	gtk_text_buffer_move_mark (buffer, spell->mark_insert_end, &end);
+
+	check_range (spell, &start, &end, FALSE);
 }
-
-/* deleting is more simple:  we're given the range of deleted text.
- * after deletion, the start and end iters should be at the same position
- * (because all of the text between them was deleted!).
- * this means we only really check the words immediately bounding the
- * deletion.
- */
 
 static void
 delete_range_after_cb (GtkTextBuffer              *buffer,
@@ -700,12 +679,6 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 	g_object_set_data (G_OBJECT (buffer),
 			   AUTOMATIC_SPELL_CHECKER_KEY,
 			   spell);
-
-	g_signal_connect_object (buffer,
-				 "insert-text",
-				 G_CALLBACK (insert_text_before_cb),
-				 spell,
-				 0);
 
 	g_signal_connect_object (buffer,
 				 "insert-text",
