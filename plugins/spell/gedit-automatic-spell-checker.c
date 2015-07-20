@@ -285,46 +285,6 @@ get_word_extents_at_click_position (GeditAutomaticSpellChecker *spell,
 }
 
 static void
-remove_tag_to_word (GeditAutomaticSpellChecker *spell,
-		    const gchar                *word)
-{
-	GtkTextIter iter;
-
-	gtk_text_buffer_get_start_iter (spell->buffer, &iter);
-
-	while (TRUE)
-	{
-		gboolean found;
-		GtkTextIter match_start;
-		GtkTextIter match_end;
-
-		found = gtk_text_iter_forward_search (&iter,
-						      word,
-						      GTK_TEXT_SEARCH_VISIBLE_ONLY |
-						      GTK_TEXT_SEARCH_TEXT_ONLY,
-						      &match_start,
-						      &match_end,
-						      NULL);
-
-		if (!found)
-		{
-			break;
-		}
-
-		if (gtk_text_iter_starts_word (&match_start) &&
-		    gtk_text_iter_ends_word (&match_end))
-		{
-			gtk_text_buffer_remove_tag (spell->buffer,
-						    spell->tag_highlight,
-						    &match_start,
-						    &match_end);
-		}
-
-		iter = match_end;
-	}
-}
-
-static void
 add_to_dictionary_cb (GtkWidget                  *menu_item,
 		      GeditAutomaticSpellChecker *spell)
 {
@@ -532,17 +492,44 @@ populate_popup_cb (GtkTextView                *view,
 	gtk_widget_show_all (menu_item);
 }
 
-void
-gedit_automatic_spell_checker_recheck_all (GeditAutomaticSpellChecker *spell)
+static void
+remove_tag_to_word (GeditAutomaticSpellChecker *spell,
+		    const gchar                *word)
 {
-	GtkTextIter start;
-	GtkTextIter end;
+	GtkTextIter iter;
 
-	g_return_if_fail (GEDIT_IS_AUTOMATIC_SPELL_CHECKER (spell));
+	gtk_text_buffer_get_start_iter (spell->buffer, &iter);
 
-	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
+	while (TRUE)
+	{
+		gboolean found;
+		GtkTextIter match_start;
+		GtkTextIter match_end;
 
-	check_range (spell, &start, &end, TRUE);
+		found = gtk_text_iter_forward_search (&iter,
+						      word,
+						      GTK_TEXT_SEARCH_VISIBLE_ONLY |
+						      GTK_TEXT_SEARCH_TEXT_ONLY,
+						      &match_start,
+						      &match_end,
+						      NULL);
+
+		if (!found)
+		{
+			break;
+		}
+
+		if (gtk_text_iter_starts_word (&match_start) &&
+		    gtk_text_iter_ends_word (&match_end))
+		{
+			gtk_text_buffer_remove_tag (spell->buffer,
+						    spell->tag_highlight,
+						    &match_start,
+						    &match_end);
+		}
+
+		iter = match_end;
+	}
 }
 
 static void
@@ -561,16 +548,16 @@ add_word_cb (GeditSpellChecker          *checker,
 }
 
 static void
-set_language_cb (GeditSpellChecker               *checker,
-		 const GeditSpellCheckerLanguage *lang,
-		 GeditAutomaticSpellChecker      *spell)
+clear_session_cb (GeditSpellChecker          *checker,
+		  GeditAutomaticSpellChecker *spell)
 {
 	gedit_automatic_spell_checker_recheck_all (spell);
 }
 
 static void
-clear_session_cb (GeditSpellChecker          *checker,
-		  GeditAutomaticSpellChecker *spell)
+set_language_cb (GeditSpellChecker               *checker,
+		 const GeditSpellCheckerLanguage *lang,
+		 GeditAutomaticSpellChecker      *spell)
 {
 	gedit_automatic_spell_checker_recheck_all (spell);
 }
@@ -997,6 +984,19 @@ gedit_automatic_spell_checker_detach_view (GeditAutomaticSpellChecker *spell,
 
 	spell->views = g_slist_remove (spell->views, view);
 	g_object_unref (view);
+}
+
+void
+gedit_automatic_spell_checker_recheck_all (GeditAutomaticSpellChecker *spell)
+{
+	GtkTextIter start;
+	GtkTextIter end;
+
+	g_return_if_fail (GEDIT_IS_AUTOMATIC_SPELL_CHECKER (spell));
+
+	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
+
+	check_range (spell, &start, &end, TRUE);
 }
 
 /* ex:set ts=8 noet: */
