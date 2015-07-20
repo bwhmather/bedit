@@ -574,7 +574,7 @@ get_next_misspelled_word (GeditView *view,
 
 	gedit_debug_message (DEBUG_PLUGINS, "Word to check: %s", word);
 
-	while (gedit_spell_checker_check_word (checker, word, -1))
+	while (gedit_spell_checker_check_word (checker, word))
 	{
 		g_free (word);
 
@@ -659,9 +659,7 @@ ignore_cb (GeditSpellCheckerDialog *dlg,
 
 	select_misspelled_word (view, word_start_offset, word_end_offset);
 
-	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dlg),
-							word,
-							-1);
+	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dlg), word);
 
 	g_free (word);
 }
@@ -948,9 +946,7 @@ spell_cb (GSimpleAction *action,
 
 	g_signal_connect (dlg, "add_word_to_personal", G_CALLBACK (add_word_cb), view);
 
-	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dlg),
-							word,
-							-1);
+	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dlg), word);
 
 	g_free (word);
 

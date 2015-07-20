@@ -69,7 +69,7 @@ check_word (GeditAutomaticSpellChecker *spell,
 
 	word = gtk_text_buffer_get_text (spell->buffer, start, end, FALSE);
 
-	if (!gedit_spell_checker_check_word (spell->spell_checker, word, -1))
+	if (!gedit_spell_checker_check_word (spell->spell_checker, word))
 	{
 		gtk_text_buffer_apply_tag (spell->buffer,
 					   spell->tag_highlight,
@@ -299,7 +299,7 @@ add_to_dictionary_cb (GtkWidget                  *menu_item,
 
 	word = gtk_text_buffer_get_text (spell->buffer, &start, &end, FALSE);
 
-	gedit_spell_checker_add_word_to_personal (spell->spell_checker, word, -1);
+	gedit_spell_checker_add_word_to_personal (spell->spell_checker, word);
 
 	g_free (word);
 }
@@ -319,7 +319,7 @@ ignore_all_cb (GtkWidget                  *menu_item,
 
 	word = gtk_text_buffer_get_text (spell->buffer, &start, &end, FALSE);
 
-	gedit_spell_checker_add_word_to_session (spell->spell_checker, word, -1);
+	gedit_spell_checker_add_word_to_session (spell->spell_checker, word);
 
 	g_free (word);
 }
@@ -350,9 +350,7 @@ replace_word_cb (GtkWidget                  *menu_item,
 
 	gtk_text_buffer_end_user_action (spell->buffer);
 
-	gedit_spell_checker_set_correction (spell->spell_checker,
-					    old_word, strlen (old_word),
-					    new_word, strlen (new_word));
+	gedit_spell_checker_set_correction (spell->spell_checker, old_word, new_word);
 
 	g_free (old_word);
 }
@@ -367,7 +365,7 @@ get_suggestion_menu (GeditAutomaticSpellChecker *spell,
 
 	top_menu = gtk_menu_new ();
 
-	suggestions = gedit_spell_checker_get_suggestions (spell->spell_checker, word, -1);
+	suggestions = gedit_spell_checker_get_suggestions (spell->spell_checker, word);
 
 	if (suggestions == NULL)
 	{
@@ -534,17 +532,10 @@ remove_tag_to_word (GeditAutomaticSpellChecker *spell,
 
 static void
 add_word_cb (GeditSpellChecker          *checker,
-	     const gchar                *_word,
-	     gint                        len,
+	     const gchar                *word,
 	     GeditAutomaticSpellChecker *spell)
 {
-	gchar *word;
-
-	word = len < 0 ? g_strdup (_word) : g_strndup (_word, len);
-
 	remove_tag_to_word (spell, word);
-
-	g_free (word);
 }
 
 static void

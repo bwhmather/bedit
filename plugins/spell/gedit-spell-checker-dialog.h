@@ -73,8 +73,7 @@ void		gedit_spell_checker_dialog_set_spell_checker		(GeditSpellCheckerDialog *dl
 									 GeditSpellChecker       *spell);
 
 void		gedit_spell_checker_dialog_set_misspelled_word		(GeditSpellCheckerDialog *dlg,
-									 const gchar             *word,
-									 gint                     len);
+									 const gchar             *word);
 
 void		gedit_spell_checker_dialog_set_completed		(GeditSpellCheckerDialog *dlg);
 

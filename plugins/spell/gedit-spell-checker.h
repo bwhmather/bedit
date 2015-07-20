@@ -44,12 +44,10 @@ struct _GeditSpellCheckerClass
 
 	/* Signals */
 	void (*add_word_to_personal) (GeditSpellChecker               *spell,
-				      const gchar                     *word,
-				      gint                             len);
+				      const gchar                     *word);
 
 	void (*add_word_to_session)  (GeditSpellChecker               *spell,
-				      const gchar                     *word,
-				      gint                             len);
+				      const gchar                     *word);
 
 	void (*set_language)         (GeditSpellChecker               *spell,
 				      const GeditSpellCheckerLanguage *lang);
@@ -67,30 +65,24 @@ const GeditSpellCheckerLanguage
 			*gedit_spell_checker_get_language 	(GeditSpellChecker               *spell);
 
 gboolean		 gedit_spell_checker_check_word 	(GeditSpellChecker               *spell,
-								 const gchar                     *word,
-								 gssize                           len);
+								 const gchar                     *word);
 
 GSList 			*gedit_spell_checker_get_suggestions 	(GeditSpellChecker               *spell,
-								 const gchar                     *word,
-								 gssize                           len);
+								 const gchar                     *word);
 
 gboolean		 gedit_spell_checker_add_word_to_personal
 								(GeditSpellChecker               *spell,
-								 const gchar                     *word,
-								 gssize                           len);
+								 const gchar                     *word);
 
 gboolean		 gedit_spell_checker_add_word_to_session
 								(GeditSpellChecker               *spell,
-								 const gchar                     *word,
-								 gssize                           len);
+								 const gchar                     *word);
 
 gboolean		 gedit_spell_checker_clear_session 	(GeditSpellChecker               *spell);
 
 gboolean		 gedit_spell_checker_set_correction 	(GeditSpellChecker               *spell,
 								 const gchar                     *word,
-								 gssize                           w_len,
-								 const gchar                     *replacement,
-								 gssize                           r_len);
+								 const gchar                     *replacement);
 
 G_END_DECLS
 

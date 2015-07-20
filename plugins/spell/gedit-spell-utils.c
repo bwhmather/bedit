@@ -23,21 +23,15 @@
 #include <gtksourceview/gtksource.h>
 
 gboolean
-gedit_spell_utils_is_digit (const gchar *text,
-			    gssize       length)
+gedit_spell_utils_is_digit (const gchar *text)
 {
 	const gchar *p;
 	const gchar *end;
 
 	g_return_val_if_fail (text != NULL, FALSE);
 
-	if (length < 0)
-	{
-		length = strlen (text);
-	}
-
 	p = text;
-	end = text + length;
+	end = text + strlen (text);
 
 	while (p != NULL && *p != '\0')
 	{

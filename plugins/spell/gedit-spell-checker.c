@@ -145,9 +145,8 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
 			  G_STRUCT_OFFSET (GeditSpellCheckerClass, add_word_to_personal),
 			  NULL, NULL, NULL,
 			  G_TYPE_NONE,
-			  2,
-			  G_TYPE_STRING,
-			  G_TYPE_INT);
+			  1,
+			  G_TYPE_STRING);
 
 	signals[ADD_WORD_TO_SESSION] =
 	    g_signal_new ("add_word_to_session",
@@ -156,9 +155,8 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
 			  G_STRUCT_OFFSET (GeditSpellCheckerClass, add_word_to_session),
 			  NULL, NULL, NULL,
 			  G_TYPE_NONE,
-			  2,
-			  G_TYPE_STRING,
-			  G_TYPE_INT);
+			  1,
+			  G_TYPE_STRING);
 
 	signals[SET_LANGUAGE] =
 	    g_signal_new ("set_language",
@@ -327,8 +325,7 @@ gedit_spell_checker_get_language (GeditSpellChecker *spell)
 
 gboolean
 gedit_spell_checker_check_word (GeditSpellChecker *spell,
-				const gchar       *word,
-				gssize             len)
+				const gchar       *word)
 {
 	gint enchant_result;
 	gboolean res = FALSE;
@@ -339,17 +336,14 @@ gedit_spell_checker_check_word (GeditSpellChecker *spell,
 	if (!lazy_init (spell, spell->active_lang))
 		return FALSE;
 
-	if (len < 0)
-		len = strlen (word);
-
 	if (strcmp (word, "gedit") == 0)
 		return TRUE;
 
-	if (gedit_spell_utils_is_digit (word, len))
+	if (gedit_spell_utils_is_digit (word))
 		return TRUE;
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
-	enchant_result = enchant_dict_check (spell->dict, word, len);
+	enchant_result = enchant_dict_check (spell->dict, word, strlen (word));
 
 	switch (enchant_result)
 	{
@@ -380,8 +374,7 @@ gedit_spell_checker_check_word (GeditSpellChecker *spell,
 /* return NULL on error or if no suggestions are found */
 GSList *
 gedit_spell_checker_get_suggestions (GeditSpellChecker *spell,
-				     const gchar       *word,
-				     gssize             len)
+				     const gchar       *word)
 {
 	gchar **suggestions;
 	size_t n_suggestions = 0;
@@ -396,10 +389,7 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *spell,
 
 	g_return_val_if_fail (spell->dict != NULL, NULL);
 
-	if (len < 0)
-		len = strlen (word);
-
-	suggestions = enchant_dict_suggest (spell->dict, word, len, &n_suggestions);
+	suggestions = enchant_dict_suggest (spell->dict, word, strlen (word), &n_suggestions);
 
 	if (n_suggestions == 0)
 		return NULL;
@@ -422,8 +412,7 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *spell,
 
 gboolean
 gedit_spell_checker_add_word_to_personal (GeditSpellChecker *spell,
-					  const gchar       *word,
-					  gssize             len)
+					  const gchar       *word)
 {
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
@@ -433,20 +422,16 @@ gedit_spell_checker_add_word_to_personal (GeditSpellChecker *spell,
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
 
-	if (len < 0)
-		len = strlen (word);
+	enchant_dict_add_to_pwl (spell->dict, word, strlen (word));
 
-	enchant_dict_add_to_pwl (spell->dict, word, len);
-
-	g_signal_emit (G_OBJECT (spell), signals[ADD_WORD_TO_PERSONAL], 0, word, len);
+	g_signal_emit (G_OBJECT (spell), signals[ADD_WORD_TO_PERSONAL], 0, word);
 
 	return TRUE;
 }
 
 gboolean
 gedit_spell_checker_add_word_to_session (GeditSpellChecker *spell,
-					 const gchar       *word,
-					 gssize             len)
+					 const gchar       *word)
 {
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
@@ -456,12 +441,9 @@ gedit_spell_checker_add_word_to_session (GeditSpellChecker *spell,
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
 
-	if (len < 0)
-		len = strlen (word);
+	enchant_dict_add_to_session (spell->dict, word, strlen (word));
 
-	enchant_dict_add_to_session (spell->dict, word, len);
-
-	g_signal_emit (G_OBJECT (spell), signals[ADD_WORD_TO_SESSION], 0, word, len);
+	g_signal_emit (G_OBJECT (spell), signals[ADD_WORD_TO_SESSION], 0, word);
 
 	return TRUE;
 }
@@ -493,9 +475,7 @@ gedit_spell_checker_clear_session (GeditSpellChecker *spell)
 gboolean
 gedit_spell_checker_set_correction (GeditSpellChecker *spell,
 				    const gchar       *word,
-				    gssize             w_len,
-				    const gchar       *replacement,
-				    gssize             r_len)
+				    const gchar       *replacement)
 {
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
@@ -506,17 +486,11 @@ gedit_spell_checker_set_correction (GeditSpellChecker *spell,
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
 
-	if (w_len < 0)
-		w_len = strlen (word);
-
-	if (r_len < 0)
-		r_len = strlen (replacement);
-
 	enchant_dict_store_replacement (spell->dict,
 					word,
-					w_len,
+					strlen (word),
 					replacement,
-					r_len);
+					strlen (replacement));
 
 	return TRUE;
 }
