@@ -254,25 +254,34 @@ mark_set_cb (GtkTextBuffer              *buffer,
 	}
 }
 
-static void
-get_word_extents_from_mark (GtkTextBuffer *buffer,
-			    GtkTextIter   *start,
-			    GtkTextIter   *end,
-			    GtkTextMark   *mark)
+static gboolean
+get_word_extents_at_click_position (GeditAutomaticSpellChecker *spell,
+				    GtkTextIter                *start,
+				    GtkTextIter                *end)
 {
-	gtk_text_buffer_get_iter_at_mark (buffer, start, mark);
+	GtkTextIter iter;
 
+	gtk_text_buffer_get_iter_at_mark (spell->buffer, &iter, spell->mark_click);
+
+	if (!gtk_text_iter_inside_word (&iter) &&
+	    !gtk_text_iter_ends_word (&iter))
+	{
+		return FALSE;
+	}
+
+	*start = iter;
 	if (!gtk_text_iter_starts_word (start))
 	{
 		gtk_text_iter_backward_word_start (start);
 	}
 
-	*end = *start;
-
-	if (gtk_text_iter_inside_word (end))
+	*end = iter;
+	if (!gtk_text_iter_ends_word (end))
 	{
 		gtk_text_iter_forward_word_end (end);
 	}
+
+	return TRUE;
 }
 
 static void
@@ -323,7 +332,10 @@ add_to_dictionary_cb (GtkWidget                  *menu_item,
 	GtkTextIter end;
 	gchar *word;
 
-	get_word_extents_from_mark (spell->buffer, &start, &end, spell->mark_click);
+	if (!get_word_extents_at_click_position (spell, &start, &end))
+	{
+		return;
+	}
 
 	word = gtk_text_buffer_get_text (spell->buffer, &start, &end, FALSE);
 
@@ -340,7 +352,10 @@ ignore_all_cb (GtkWidget                  *menu_item,
 	GtkTextIter end;
 	gchar *word;
 
-	get_word_extents_from_mark (spell->buffer, &start, &end, spell->mark_click);
+	if (!get_word_extents_at_click_position (spell, &start, &end))
+	{
+		return;
+	}
 
 	word = gtk_text_buffer_get_text (spell->buffer, &start, &end, FALSE);
 
@@ -358,7 +373,10 @@ replace_word_cb (GtkWidget                  *menu_item,
 	gchar *old_word;
 	const gchar *new_word;
 
-	get_word_extents_from_mark (spell->buffer, &start, &end, spell->mark_click);
+	if (!get_word_extents_at_click_position (spell, &start, &end))
+	{
+		return;
+	}
 
 	old_word = gtk_text_buffer_get_text (spell->buffer, &start, &end, FALSE);
 
@@ -487,7 +505,10 @@ populate_popup_cb (GtkTextView                *view,
 	GtkTextIter end;
 	gchar *word;
 
-	get_word_extents_from_mark (spell->buffer, &start, &end, spell->mark_click);
+	if (!get_word_extents_at_click_position (spell, &start, &end))
+	{
+		return;
+	}
 
 	if (!gtk_text_iter_has_tag (&start, spell->tag_highlight))
 	{
