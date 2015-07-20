@@ -28,6 +28,7 @@
 #include <string.h>
 #include <glib/gi18n.h>
 #include "gedit-spell-utils.h"
+#include "gtktextregion.h"
 
 struct _GeditAutomaticSpellChecker
 {
@@ -41,11 +42,9 @@ struct _GeditAutomaticSpellChecker
 
 	GtkTextTag *tag_highlight;
 
-	GtkTextMark *mark_insert_start;
-	GtkTextMark *mark_insert_end;
 	GtkTextMark *mark_click;
 
-	guint deferred_check : 1;
+	GtkTextRegion *scan_region;
 };
 
 enum
@@ -66,6 +65,13 @@ check_word (GeditAutomaticSpellChecker *spell,
 	    const GtkTextIter          *end)
 {
 	gchar *word;
+
+	if (!gtk_text_iter_starts_word (start) ||
+	    !gtk_text_iter_ends_word (end))
+	{
+		g_warning ("Spell checking: @start and @end must delimit a word");
+		return;
+	}
 
 	word = gtk_text_buffer_get_text (spell->buffer, start, end, FALSE);
 
@@ -112,27 +118,13 @@ adjust_iters_at_word_boundaries (GtkTextIter *start,
 }
 
 static void
-check_range (GeditAutomaticSpellChecker *spell,
-	     const GtkTextIter          *start,
-	     const GtkTextIter          *end,
-	     gboolean                    force_all)
+check_subregion (GeditAutomaticSpellChecker *spell,
+		 const GtkTextIter          *start,
+		 const GtkTextIter          *end)
 {
-	GtkTextIter cursor;
-	GtkTextIter precursor;
 	GtkTextIter start_adjusted;
 	GtkTextIter end_adjusted;
 	GtkTextIter word_start;
-  	gboolean highlight;
-
-	gtk_text_buffer_get_iter_at_mark (spell->buffer,
-					  &cursor,
-					  gtk_text_buffer_get_insert (spell->buffer));
-
-	precursor = cursor;
-	gtk_text_iter_backward_char (&precursor);
-
-	highlight = (gtk_text_iter_has_tag (&cursor, spell->tag_highlight) ||
-		     gtk_text_iter_has_tag (&precursor, spell->tag_highlight));
 
 	start_adjusted = *start;
 	end_adjusted = *end;
@@ -150,33 +142,14 @@ check_range (GeditAutomaticSpellChecker *spell,
 	{
 		GtkTextIter word_end;
 		GtkTextIter next_word_start;
-		gboolean in_word;
 
 		word_end = word_start;
 		gtk_text_iter_forward_word_end (&word_end);
 
-		in_word = (gtk_text_iter_compare (&word_start, &cursor) < 0 &&
-			   gtk_text_iter_compare (&cursor, &word_end) <= 0);
-
-		if (in_word && !force_all)
-		{
-			/* This word is being actively edited,
-			 * only check if it's already highligted,
-			 * otherwise defer this check until later.
-			 */
-			if (highlight)
-			{
-				check_word (spell, &word_start, &word_end);
-			}
-			else
-			{
-				spell->deferred_check = TRUE;
-			}
-		}
-		else
+		if (gtk_text_iter_starts_word (&word_start) &&
+		    gtk_text_iter_ends_word (&word_end))
 		{
 			check_word (spell, &word_start, &word_end);
-			spell->deferred_check = FALSE;
 		}
 
 		next_word_start = word_end;
@@ -196,20 +169,55 @@ check_range (GeditAutomaticSpellChecker *spell,
 }
 
 static void
-check_deferred_range (GeditAutomaticSpellChecker *spell,
-		      gboolean                    force_all)
+check_region (GeditAutomaticSpellChecker *spell)
 {
-	GtkTextIter start, end;
+	GtkTextRegionIterator region_iter;
 
-	gtk_text_buffer_get_iter_at_mark (spell->buffer,
-					  &start,
-					  spell->mark_insert_start);
+	if (spell->scan_region == NULL)
+	{
+		return;
+	}
 
-	gtk_text_buffer_get_iter_at_mark (spell->buffer,
-					  &end,
-					  spell->mark_insert_end);
+	gtk_text_region_get_iterator (spell->scan_region, &region_iter, 0);
 
-	check_range (spell, &start, &end, force_all);
+	while (!gtk_text_region_iterator_is_end (&region_iter))
+	{
+		GtkTextIter start;
+		GtkTextIter end;
+
+		gtk_text_region_iterator_get_subregion (&region_iter, &start, &end);
+
+		check_subregion (spell, &start, &end);
+
+		gtk_text_region_iterator_next (&region_iter);
+	}
+
+	gtk_text_region_destroy (spell->scan_region);
+	spell->scan_region = NULL;
+}
+
+static void
+add_subregion_to_scan (GeditAutomaticSpellChecker *spell,
+		       const GtkTextIter          *start,
+		       const GtkTextIter          *end)
+{
+	GtkTextIter start_adjusted;
+	GtkTextIter end_adjusted;
+
+	if (spell->scan_region == NULL)
+	{
+		spell->scan_region = gtk_text_region_new (spell->buffer);
+	}
+
+	start_adjusted = *start;
+	end_adjusted = *end;
+	adjust_iters_at_word_boundaries (&start_adjusted, &end_adjusted);
+
+	gtk_text_region_add (spell->scan_region,
+			     &start_adjusted,
+			     &end_adjusted);
+
+	check_region (spell);
 }
 
 static void
@@ -223,13 +231,9 @@ insert_text_after_cb (GtkTextBuffer              *buffer,
 	GtkTextIter end;
 
 	start = end = *location;
-
 	gtk_text_iter_backward_chars (&start, g_utf8_strlen (text, length));
 
-	gtk_text_buffer_move_mark (buffer, spell->mark_insert_start, &start);
-	gtk_text_buffer_move_mark (buffer, spell->mark_insert_end, &end);
-
-	check_range (spell, &start, &end, FALSE);
+	add_subregion_to_scan (spell, &start, &end);
 }
 
 static void
@@ -238,20 +242,7 @@ delete_range_after_cb (GtkTextBuffer              *buffer,
 		       GtkTextIter                *end,
 		       GeditAutomaticSpellChecker *spell)
 {
-	check_range (spell, start, end, FALSE);
-}
-
-static void
-mark_set_cb (GtkTextBuffer              *buffer,
-	     GtkTextIter                *iter,
-	     GtkTextMark                *mark,
-	     GeditAutomaticSpellChecker *spell)
-{
-	/* if the cursor has moved and there is a deferred check so handle it now */
-	if ((mark == gtk_text_buffer_get_insert (buffer)) && spell->deferred_check)
-	{
-		check_deferred_range (spell, FALSE);
-	}
+	add_subregion_to_scan (spell, start, end);
 }
 
 static gboolean
@@ -569,11 +560,6 @@ button_press_event_cb (GtkTextView                *view,
 		gint x;
 		gint y;
 
-		if (spell->deferred_check)
-		{
-			check_deferred_range (spell, TRUE);
-		}
-
 		gtk_text_view_window_to_buffer_coords (view,
 						       GTK_TEXT_WINDOW_TEXT,
 						       event->x, event->y,
@@ -595,11 +581,6 @@ popup_menu_cb (GtkTextView                *view,
 	       GeditAutomaticSpellChecker *spell)
 {
 	GtkTextIter iter;
-
-	if (spell->deferred_check)
-	{
-		check_deferred_range (spell, TRUE);
-	}
 
 	gtk_text_buffer_get_iter_at_mark (spell->buffer, &iter,
 					  gtk_text_buffer_get_insert (spell->buffer));
@@ -652,7 +633,7 @@ highlight_updated_cb (GtkSourceBuffer            *buffer,
 		      GtkTextIter                *end,
 		      GeditAutomaticSpellChecker *spell)
 {
-	check_range (spell, start, end, FALSE);
+	add_subregion_to_scan (spell, start, end);
 }
 
 static void
@@ -661,13 +642,10 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 {
 	GtkTextTagTable *tag_table;
 	GtkTextIter start;
-	GtkTextIter end;
 
 	g_return_if_fail (GTK_SOURCE_IS_BUFFER (buffer));
 	g_return_if_fail (spell->buffer == NULL);
 	g_return_if_fail (spell->tag_highlight == NULL);
-	g_return_if_fail (spell->mark_insert_start == NULL);
-	g_return_if_fail (spell->mark_insert_end == NULL);
 	g_return_if_fail (spell->mark_click == NULL);
 
 	spell->buffer = g_object_ref (buffer);
@@ -687,12 +665,6 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 				 G_CALLBACK (delete_range_after_cb),
 				 spell,
 				 G_CONNECT_AFTER);
-
-	g_signal_connect_object (buffer,
-				 "mark-set",
-				 G_CALLBACK (mark_set_cb),
-				 spell,
-				 0);
 
 	g_signal_connect_object (buffer,
 				 "highlight-updated", /* GtkSourceBuffer signal */
@@ -725,13 +697,10 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 				 spell,
 				 0);
 
-	/* We create the mark here, but we don't use it until text is
-	 * inserted, so we don't really care where iter points.
+	/* For now we don't care where the mark points. The start looks like a
+	 * good place to begin with.
 	 */
-	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
-
-	spell->mark_insert_start = gtk_text_buffer_create_mark (spell->buffer, NULL, &start, TRUE);
-	spell->mark_insert_end = gtk_text_buffer_create_mark (spell->buffer, NULL, &start, TRUE);
+	gtk_text_buffer_get_start_iter (spell->buffer, &start);
 	spell->mark_click = gtk_text_buffer_create_mark (spell->buffer, NULL, &start, TRUE);
 }
 
@@ -833,16 +802,6 @@ gedit_automatic_spell_checker_dispose (GObject *object)
 			gtk_text_tag_table_remove (table, spell->tag_highlight);
 		}
 
-		if (spell->mark_insert_start != NULL)
-		{
-			gtk_text_buffer_delete_mark (spell->buffer, spell->mark_insert_start);
-			spell->mark_insert_start = NULL;
-		}
-		if (spell->mark_insert_end != NULL)
-		{
-			gtk_text_buffer_delete_mark (spell->buffer, spell->mark_insert_end);
-			spell->mark_insert_end = NULL;
-		}
 		if (spell->mark_click != NULL)
 		{
 			gtk_text_buffer_delete_mark (spell->buffer, spell->mark_click);
@@ -861,9 +820,13 @@ gedit_automatic_spell_checker_dispose (GObject *object)
 	g_slist_free_full (spell->views, g_object_unref);
 	spell->views = NULL;
 
-	spell->mark_insert_start = NULL;
-	spell->mark_insert_end = NULL;
 	spell->mark_click = NULL;
+
+	if (spell->scan_region != NULL)
+	{
+		gtk_text_region_destroy (spell->scan_region);
+		spell->scan_region = NULL;
+	}
 
 	G_OBJECT_CLASS (gedit_automatic_spell_checker_parent_class)->dispose (object);
 }
@@ -901,7 +864,6 @@ gedit_automatic_spell_checker_class_init (GeditAutomaticSpellCheckerClass *klass
 static void
 gedit_automatic_spell_checker_init (GeditAutomaticSpellChecker *spell)
 {
-	spell->deferred_check = FALSE;
 }
 
 GeditAutomaticSpellChecker *
@@ -983,7 +945,7 @@ gedit_automatic_spell_checker_recheck_all (GeditAutomaticSpellChecker *spell)
 
 	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
 
-	check_range (spell, &start, &end, TRUE);
+	add_subregion_to_scan (spell, &start, &end);
 }
 
 /* ex:set ts=8 noet: */
