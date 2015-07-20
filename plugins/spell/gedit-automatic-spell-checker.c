@@ -604,18 +604,15 @@ popup_menu_cb (GtkTextView                *view,
 	       GeditAutomaticSpellChecker *spell)
 {
 	GtkTextIter iter;
-	GtkTextBuffer *buffer;
-
-	buffer = gtk_text_view_get_buffer (view);
 
 	if (spell->deferred_check)
 	{
 		check_deferred_range (spell, TRUE);
 	}
 
-	gtk_text_buffer_get_iter_at_mark (buffer, &iter,
-					  gtk_text_buffer_get_insert (buffer));
-	gtk_text_buffer_move_mark (buffer, spell->mark_click, &iter);
+	gtk_text_buffer_get_iter_at_mark (spell->buffer, &iter,
+					  gtk_text_buffer_get_insert (spell->buffer));
+	gtk_text_buffer_move_mark (spell->buffer, spell->mark_click, &iter);
 
 	return FALSE;
 }
@@ -712,8 +709,7 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 				 spell,
 				 0);
 
-	spell->tag_highlight = gtk_text_buffer_create_tag (spell->buffer,
-							   "gedit-spell-misspelled",
+	spell->tag_highlight = gtk_text_buffer_create_tag (spell->buffer, NULL,
 							   "underline", PANGO_UNDERLINE_ERROR,
 							   NULL);
 	g_object_ref (spell->tag_highlight);
