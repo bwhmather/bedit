@@ -38,6 +38,8 @@ plugins_spell_libspell_la_SOURCES =			\
 	plugins/spell/gedit-automatic-spell-checker.h	\
 	plugins/spell/gedit-spell-utils.c		\
 	plugins/spell/gedit-spell-utils.h		\
+	plugins/spell/gtktextregion.c			\
+	plugins/spell/gtktextregion.h			\
 	$(plugins_spell_built_sources)
 
 # Mac OSX convenience library and ldflags
