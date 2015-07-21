@@ -802,10 +802,10 @@ add_word_cb (GeditSpellCheckerDialog *dlg,
 
 static void
 language_dialog_response (GtkDialog         *dlg,
-			  gint               res_id,
+			  gint               response_id,
 			  GeditSpellChecker *checker)
 {
-	if (res_id == GTK_RESPONSE_OK)
+	if (response_id == GTK_RESPONSE_OK)
 	{
 		const GeditSpellCheckerLanguage *lang;
 
@@ -816,7 +816,10 @@ language_dialog_response (GtkDialog         *dlg,
 		}
 	}
 
-	gtk_widget_destroy (GTK_WIDGET (dlg));
+	if (response_id != GTK_RESPONSE_HELP)
+	{
+		gtk_widget_destroy (GTK_WIDGET (dlg));
+	}
 }
 
 static void

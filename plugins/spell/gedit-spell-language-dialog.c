@@ -43,24 +43,28 @@ struct _GeditSpellLanguageDialog
 G_DEFINE_TYPE (GeditSpellLanguageDialog, gedit_spell_language_dialog, GTK_TYPE_DIALOG)
 
 static void
-gedit_spell_language_dialog_class_init (GeditSpellLanguageDialogClass *klass)
+gedit_spell_language_dialog_response (GtkDialog *dialog,
+				      gint       response_id)
 {
-	/* GObjectClass *object_class = G_OBJECT_CLASS (klass); */
-}
-
-static void
-dialog_response_handler (GtkDialog *dialog,
-			 gint       res_id)
-{
-	if (res_id == GTK_RESPONSE_HELP)
+	if (response_id == GTK_RESPONSE_HELP)
 	{
 		gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
 				     GTK_WINDOW (dialog),
 				     NULL,
 				     "gedit-spellcheck");
-
-		g_signal_stop_emission_by_name (dialog, "response");
 	}
+	else if (GTK_DIALOG_CLASS (gedit_spell_language_dialog_parent_class)->response != NULL)
+	{
+		GTK_DIALOG_CLASS (gedit_spell_language_dialog_parent_class)->response (dialog, response_id);
+	}
+}
+
+static void
+gedit_spell_language_dialog_class_init (GeditSpellLanguageDialogClass *klass)
+{
+	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
+
+	dialog_class->response = gedit_spell_language_dialog_response;
 }
 
 static void
@@ -130,11 +134,6 @@ create_dialog (GeditSpellLanguageDialog *dialog,
 					5);
 	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (dialog))),
 			     6);
-
-	g_signal_connect (dialog,
-			  "response",
-			  G_CALLBACK (dialog_response_handler),
-			  NULL);
 
 	builder = gtk_builder_new ();
 	gtk_builder_add_objects_from_resource (builder, "/org/gnome/gedit/plugins/spell/ui/languages-dialog.ui",
