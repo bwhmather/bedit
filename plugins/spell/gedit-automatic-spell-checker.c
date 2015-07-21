@@ -60,10 +60,11 @@ enum
 #define AUTOMATIC_SPELL_CHECKER_KEY	"GeditAutomaticSpellCheckerID"
 #define SUGGESTION_KEY			"GeditAutoSuggestionID"
 
-/* Timeout duration in milliseconds. Writing and deleting text should be smooth
+/* Timeout durations in milliseconds. Writing and deleting text should be smooth
  * and responsive.
  */
-#define TIMEOUT_DURATION 400
+#define TIMEOUT_DURATION_BUFFER_MODIFIED 400
+#define TIMEOUT_DURATION_DRAWING 20
 
 G_DEFINE_TYPE (GeditAutomaticSpellChecker, gedit_automatic_spell_checker, G_TYPE_OBJECT)
 
@@ -177,9 +178,140 @@ check_subregion (GeditAutomaticSpellChecker *spell,
 }
 
 static void
-check_region (GeditAutomaticSpellChecker *spell)
+check_region (GeditAutomaticSpellChecker *spell,
+	      GtkTextRegion              *region)
 {
 	GtkTextRegionIterator region_iter;
+
+	if (region == NULL)
+	{
+		return;
+	}
+
+	gtk_text_region_get_iterator (region, &region_iter, 0);
+
+	while (!gtk_text_region_iterator_is_end (&region_iter))
+	{
+		GtkTextIter start;
+		GtkTextIter end;
+
+		if (!gtk_text_region_iterator_get_subregion (&region_iter, &start, &end))
+		{
+			return;
+		}
+
+		check_subregion (spell, &start, &end);
+
+		gtk_text_region_iterator_next (&region_iter);
+	}
+}
+
+static void
+get_visible_region (GtkTextView *view,
+		    GtkTextIter *start,
+		    GtkTextIter *end)
+{
+	GdkRectangle visible_rect;
+
+	gtk_text_view_get_visible_rect (view, &visible_rect);
+
+	gtk_text_view_get_line_at_y (view,
+				     start,
+				     visible_rect.y,
+				     NULL);
+
+	gtk_text_view_get_line_at_y (view,
+				     end,
+				     visible_rect.y + visible_rect.height,
+				     NULL);
+
+	gtk_text_iter_backward_line (start);
+	gtk_text_iter_forward_line (end);
+}
+
+/* A TextRegion can contain empty subregions. So checking the number of
+ * subregions is not sufficient.
+ * When calling gtk_text_region_add() with equal iters, the subregion is not
+ * added. But when a subregion becomes empty, due to text deletion, the
+ * subregion is not removed from the TextRegion.
+ */
+static gboolean
+is_text_region_empty (GtkTextRegion *region)
+{
+	GtkTextRegionIterator region_iter;
+
+	if (region == NULL)
+	{
+		return TRUE;
+	}
+
+	gtk_text_region_get_iterator (region, &region_iter, 0);
+
+	while (!gtk_text_region_iterator_is_end (&region_iter))
+	{
+		GtkTextIter region_start;
+		GtkTextIter region_end;
+
+		if (!gtk_text_region_iterator_get_subregion (&region_iter,
+							     &region_start,
+							     &region_end))
+		{
+			return TRUE;
+		}
+
+		if (!gtk_text_iter_equal (&region_start, &region_end))
+		{
+			return FALSE;
+		}
+
+		gtk_text_region_iterator_next (&region_iter);
+	}
+
+	return TRUE;
+}
+
+static void
+check_visible_region_in_view (GeditAutomaticSpellChecker *spell,
+			      GtkTextView                *view)
+{
+	GtkTextIter visible_start;
+	GtkTextIter visible_end;
+	GtkTextRegion *intersect;
+
+	if (spell->scan_region == NULL)
+	{
+		return;
+	}
+
+	get_visible_region (view, &visible_start, &visible_end);
+
+	intersect = gtk_text_region_intersect (spell->scan_region,
+					       &visible_start,
+					       &visible_end);
+
+	if (intersect == NULL)
+	{
+		return;
+	}
+
+	check_region (spell, intersect);
+	gtk_text_region_destroy (intersect);
+
+	gtk_text_region_subtract (spell->scan_region,
+				  &visible_start,
+				  &visible_end);
+
+	if (is_text_region_empty (spell->scan_region))
+	{
+		gtk_text_region_destroy (spell->scan_region);
+		spell->scan_region = NULL;
+	}
+}
+
+static void
+check_visible_region (GeditAutomaticSpellChecker *spell)
+{
+	GSList *l;
 #if ENABLE_DEBUG
 	GTimer *timer;
 #endif
@@ -193,22 +325,11 @@ check_region (GeditAutomaticSpellChecker *spell)
 	timer = g_timer_new ();
 #endif
 
-	gtk_text_region_get_iterator (spell->scan_region, &region_iter, 0);
-
-	while (!gtk_text_region_iterator_is_end (&region_iter))
+	for (l = spell->views; l != NULL; l = l->next)
 	{
-		GtkTextIter start;
-		GtkTextIter end;
-
-		gtk_text_region_iterator_get_subregion (&region_iter, &start, &end);
-
-		check_subregion (spell, &start, &end);
-
-		gtk_text_region_iterator_next (&region_iter);
+		GtkTextView *view = l->data;
+		check_visible_region_in_view (spell, view);
 	}
-
-	gtk_text_region_destroy (spell->scan_region);
-	spell->scan_region = NULL;
 
 #if ENABLE_DEBUG
 	g_print ("%s() executed in %lf seconds\n",
@@ -222,21 +343,22 @@ check_region (GeditAutomaticSpellChecker *spell)
 static gboolean
 timeout_cb (GeditAutomaticSpellChecker *spell)
 {
-	check_region (spell);
+	check_visible_region (spell);
 
 	spell->timeout_id = 0;
 	return G_SOURCE_REMOVE;
 }
 
 static void
-install_timeout (GeditAutomaticSpellChecker *spell)
+install_timeout (GeditAutomaticSpellChecker *spell,
+		 guint                       duration)
 {
 	if (spell->timeout_id != 0)
 	{
 		g_source_remove (spell->timeout_id);
 	}
 
-	spell->timeout_id = g_timeout_add (TIMEOUT_DURATION,
+	spell->timeout_id = g_timeout_add (duration,
 					   (GSourceFunc) timeout_cb,
 					   spell);
 }
@@ -277,7 +399,7 @@ insert_text_after_cb (GtkTextBuffer              *buffer,
 	gtk_text_iter_backward_chars (&start, g_utf8_strlen (text, length));
 
 	add_subregion_to_scan (spell, &start, &end);
-	install_timeout (spell);
+	install_timeout (spell, TIMEOUT_DURATION_BUFFER_MODIFIED);
 }
 
 static void
@@ -287,7 +409,7 @@ delete_range_after_cb (GtkTextBuffer              *buffer,
 		       GeditAutomaticSpellChecker *spell)
 {
 	add_subregion_to_scan (spell, start, end);
-	install_timeout (spell);
+	install_timeout (spell, TIMEOUT_DURATION_BUFFER_MODIFIED);
 }
 
 static gboolean
@@ -526,6 +648,16 @@ populate_popup_cb (GtkTextView                *view,
 	gtk_widget_show_all (menu_item);
 }
 
+static gboolean
+draw_cb (GtkWidget                  *text_view,
+	 cairo_t                    *cr,
+	 GeditAutomaticSpellChecker *spell)
+{
+	install_timeout (spell, TIMEOUT_DURATION_DRAWING);
+
+	return GDK_EVENT_PROPAGATE;
+}
+
 static void
 remove_tag_to_word (GeditAutomaticSpellChecker *spell,
 		    const gchar                *word)
@@ -679,7 +811,7 @@ highlight_updated_cb (GtkSourceBuffer            *buffer,
 		      GeditAutomaticSpellChecker *spell)
 {
 	add_subregion_to_scan (spell, start, end);
-	install_timeout (spell);
+	install_timeout (spell, TIMEOUT_DURATION_BUFFER_MODIFIED);
 }
 
 static void
@@ -968,6 +1100,12 @@ gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
 				 spell,
 				 0);
 
+	g_signal_connect_object (view,
+				 "draw",
+				 G_CALLBACK (draw_cb),
+				 spell,
+				 0);
+
 	spell->views = g_slist_prepend (spell->views, view);
 	g_object_ref (view);
 }
@@ -998,7 +1136,7 @@ gedit_automatic_spell_checker_recheck_all (GeditAutomaticSpellChecker *spell)
 	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
 
 	add_subregion_to_scan (spell, &start, &end);
-	check_region (spell);
+	check_visible_region (spell);
 }
 
 /* ex:set ts=8 noet: */
