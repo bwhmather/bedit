@@ -49,17 +49,17 @@ gedit_spell_language_dialog_class_init (GeditSpellLanguageDialogClass *klass)
 }
 
 static void
-dialog_response_handler (GtkDialog *dlg,
+dialog_response_handler (GtkDialog *dialog,
 			 gint       res_id)
 {
 	if (res_id == GTK_RESPONSE_HELP)
 	{
 		gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
-				     GTK_WINDOW (dlg),
+				     GTK_WINDOW (dialog),
 				     NULL,
 				     "gedit-spellcheck");
 
-		g_signal_stop_emission_by_name (dlg, "response");
+		g_signal_stop_emission_by_name (dialog, "response");
 	}
 }
 
@@ -100,7 +100,7 @@ language_row_activated (GtkTreeView *tree_view,
 }
 
 static void
-create_dialog (GeditSpellLanguageDialog *dlg,
+create_dialog (GeditSpellLanguageDialog *dialog,
 	       const gchar *data_dir)
 {
 	GtkBuilder *builder;
@@ -112,26 +112,26 @@ create_dialog (GeditSpellLanguageDialog *dlg,
 		NULL
 	};
 
-	gtk_dialog_add_buttons (GTK_DIALOG (dlg),
+	gtk_dialog_add_buttons (GTK_DIALOG (dialog),
 				_("_Cancel"), GTK_RESPONSE_CANCEL,
 				_("_OK"), GTK_RESPONSE_OK,
 				_("_Help"), GTK_RESPONSE_HELP,
 				NULL);
 
-	gtk_window_set_title (GTK_WINDOW (dlg), _("Set language"));
-	gtk_window_set_modal (GTK_WINDOW (dlg), TRUE);
-	gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
+	gtk_window_set_title (GTK_WINDOW (dialog), _("Set language"));
+	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+	gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
 
 	/* HIG defaults */
-	gtk_container_set_border_width (GTK_CONTAINER (dlg), 5);
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
 			     2); /* 2 * 5 + 2 = 12 */
-	gtk_container_set_border_width (GTK_CONTAINER (gtk_dialog_get_action_area (GTK_DIALOG (dlg))),
+	gtk_container_set_border_width (GTK_CONTAINER (gtk_dialog_get_action_area (GTK_DIALOG (dialog))),
 					5);
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (dlg))),
+	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (dialog))),
 			     6);
 
-	g_signal_connect (dlg,
+	g_signal_connect (dialog,
 			  "response",
 			  G_CALLBACK (dialog_response_handler),
 			  NULL);
@@ -141,22 +141,22 @@ create_dialog (GeditSpellLanguageDialog *dlg,
 	                                       root_objects, NULL);
 	content = GTK_WIDGET (gtk_builder_get_object (builder, "content"));
 	g_object_ref (content);
-	dlg->treeview = GTK_WIDGET (gtk_builder_get_object (builder, "languages_treeview"));
+	dialog->treeview = GTK_WIDGET (gtk_builder_get_object (builder, "languages_treeview"));
 	g_object_unref (builder);
 
-	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
+	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
 			    content, TRUE, TRUE, 0);
 	g_object_unref (content);
 	gtk_container_set_border_width (GTK_CONTAINER (content), 5);
 
-	dlg->model = GTK_TREE_MODEL (gtk_list_store_new (ENCODING_NUM_COLS,
-							 G_TYPE_STRING,
-							 G_TYPE_POINTER));
+	dialog->model = GTK_TREE_MODEL (gtk_list_store_new (ENCODING_NUM_COLS,
+							    G_TYPE_STRING,
+							    G_TYPE_POINTER));
 
-	gtk_tree_view_set_model (GTK_TREE_VIEW (dlg->treeview),
-				 dlg->model);
+	gtk_tree_view_set_model (GTK_TREE_VIEW (dialog->treeview),
+				 dialog->model);
 
-	g_object_unref (dlg->model);
+	g_object_unref (dialog->model);
 
 	/* Add the encoding column */
 	cell = gtk_cell_renderer_text_new ();
@@ -166,30 +166,30 @@ create_dialog (GeditSpellLanguageDialog *dlg,
 							   COLUMN_LANGUAGE_NAME,
 							   NULL);
 
-	gtk_tree_view_append_column (GTK_TREE_VIEW (dlg->treeview),
+	gtk_tree_view_append_column (GTK_TREE_VIEW (dialog->treeview),
 				     column);
 
-	gtk_tree_view_set_search_column (GTK_TREE_VIEW (dlg->treeview),
+	gtk_tree_view_set_search_column (GTK_TREE_VIEW (dialog->treeview),
 					 COLUMN_LANGUAGE_NAME);
 
-	g_signal_connect (dlg->treeview,
+	g_signal_connect (dialog->treeview,
 			  "realize",
 			  G_CALLBACK (scroll_to_selected),
-			  dlg);
-	g_signal_connect (dlg->treeview,
+			  dialog);
+	g_signal_connect (dialog->treeview,
 			  "row-activated",
 			  G_CALLBACK (language_row_activated),
-			  dlg);
+			  dialog);
 }
 
 static void
-gedit_spell_language_dialog_init (GeditSpellLanguageDialog *dlg)
+gedit_spell_language_dialog_init (GeditSpellLanguageDialog *dialog)
 {
 
 }
 
 static void
-populate_language_list (GeditSpellLanguageDialog        *dlg,
+populate_language_list (GeditSpellLanguageDialog        *dialog,
 			const GeditSpellCheckerLanguage *cur_lang)
 {
 	GtkListStore *store;
@@ -198,7 +198,7 @@ populate_language_list (GeditSpellLanguageDialog        *dlg,
 	const GSList* langs;
 
 	/* create list store */
-	store = GTK_LIST_STORE (dlg->model);
+	store = GTK_LIST_STORE (dialog->model);
 
 	langs = gedit_spell_checker_get_available_languages ();
 
@@ -218,7 +218,7 @@ populate_language_list (GeditSpellLanguageDialog        *dlg,
 		{
 			GtkTreeSelection *selection;
 
-			selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->treeview));
+			selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dialog->treeview));
 			g_return_if_fail (selection != NULL);
 
 			gtk_tree_selection_select_iter (selection, &iter);
@@ -233,24 +233,24 @@ gedit_spell_language_dialog_new (GtkWindow                       *parent,
 				 const GeditSpellCheckerLanguage *cur_lang,
 				 const gchar *data_dir)
 {
-	GeditSpellLanguageDialog *dlg;
+	GeditSpellLanguageDialog *dialog;
 
 	g_return_val_if_fail (GTK_IS_WINDOW (parent), NULL);
 
-	dlg = g_object_new (GEDIT_TYPE_SPELL_LANGUAGE_DIALOG, NULL);
+	dialog = g_object_new (GEDIT_TYPE_SPELL_LANGUAGE_DIALOG, NULL);
 
-	create_dialog (dlg, data_dir);
+	create_dialog (dialog, data_dir);
 
-	populate_language_list (dlg, cur_lang);
+	populate_language_list (dialog, cur_lang);
 
-	gtk_window_set_transient_for (GTK_WINDOW (dlg), parent);
-	gtk_widget_grab_focus (dlg->treeview);
+	gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
+	gtk_widget_grab_focus (dialog->treeview);
 
-	return GTK_WIDGET (dlg);
+	return GTK_WIDGET (dialog);
 }
 
 const GeditSpellCheckerLanguage *
-gedit_spell_language_get_selected_language (GeditSpellLanguageDialog *dlg)
+gedit_spell_language_get_selected_language (GeditSpellLanguageDialog *dialog)
 {
 	GValue value = {0, };
 	const GeditSpellCheckerLanguage* lang;
@@ -258,13 +258,13 @@ gedit_spell_language_get_selected_language (GeditSpellLanguageDialog *dlg)
 	GtkTreeIter iter;
 	GtkTreeSelection *selection;
 
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dlg->treeview));
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dialog->treeview));
 	g_return_val_if_fail (selection != NULL, NULL);
 
 	if (!gtk_tree_selection_get_selected (selection, NULL, &iter))
 		return NULL;
 
-	gtk_tree_model_get_value (dlg->model,
+	gtk_tree_model_get_value (dialog->model,
 				  &iter,
 				  COLUMN_LANGUAGE_POINTER,
 				  &value);
