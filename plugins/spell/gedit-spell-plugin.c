@@ -834,7 +834,6 @@ set_language_cb (GSimpleAction *action,
 	const GeditSpellCheckerLanguage *lang;
 	GtkWidget *dlg;
 	GtkWindowGroup *wg;
-	gchar *data_dir;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -848,11 +847,7 @@ set_language_cb (GSimpleAction *action,
 
 	lang = gedit_spell_checker_get_language (checker);
 
-	data_dir = peas_extension_base_get_data_dir (PEAS_EXTENSION_BASE (plugin));
-	dlg = gedit_spell_language_dialog_new (GTK_WINDOW (priv->window),
-					       lang,
-					       data_dir);
-	g_free (data_dir);
+	dlg = gedit_spell_language_dialog_new (GTK_WINDOW (priv->window), lang);
 
 	wg = gedit_window_get_group (priv->window);
 

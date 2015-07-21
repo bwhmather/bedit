@@ -104,8 +104,7 @@ language_row_activated (GtkTreeView *tree_view,
 }
 
 static void
-create_dialog (GeditSpellLanguageDialog *dialog,
-	       const gchar *data_dir)
+create_dialog (GeditSpellLanguageDialog *dialog)
 {
 	GtkBuilder *builder;
 	GtkWidget *content;
@@ -229,8 +228,7 @@ populate_language_list (GeditSpellLanguageDialog        *dialog,
 
 GtkWidget *
 gedit_spell_language_dialog_new (GtkWindow                       *parent,
-				 const GeditSpellCheckerLanguage *cur_lang,
-				 const gchar *data_dir)
+				 const GeditSpellCheckerLanguage *cur_lang)
 {
 	GeditSpellLanguageDialog *dialog;
 
@@ -238,7 +236,7 @@ gedit_spell_language_dialog_new (GtkWindow                       *parent,
 
 	dialog = g_object_new (GEDIT_TYPE_SPELL_LANGUAGE_DIALOG, NULL);
 
-	create_dialog (dialog, data_dir);
+	create_dialog (dialog);
 
 	populate_language_list (dialog, cur_lang);
 
