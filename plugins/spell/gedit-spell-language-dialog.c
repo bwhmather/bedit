@@ -241,11 +241,9 @@ gedit_spell_language_dialog_new (GtkWindow                       *parent,
 const GeditSpellCheckerLanguage *
 gedit_spell_language_get_selected_language (GeditSpellLanguageDialog *dialog)
 {
-	GValue value = { 0 };
-	const GeditSpellCheckerLanguage *lang;
-
-	GtkTreeIter iter;
 	GtkTreeSelection *selection;
+	GtkTreeIter iter;
+	const GeditSpellCheckerLanguage *lang;
 
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dialog->treeview));
 
@@ -254,12 +252,9 @@ gedit_spell_language_get_selected_language (GeditSpellLanguageDialog *dialog)
 		return NULL;
 	}
 
-	gtk_tree_model_get_value (dialog->model,
-				  &iter,
-				  COLUMN_LANGUAGE_POINTER,
-				  &value);
-
-	lang = g_value_get_pointer (&value);
+	gtk_tree_model_get (dialog->model, &iter,
+			    COLUMN_LANGUAGE_POINTER, &lang,
+			    -1);
 
 	return lang;
 }
