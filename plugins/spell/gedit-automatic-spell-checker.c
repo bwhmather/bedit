@@ -45,6 +45,7 @@ struct _GeditAutomaticSpellChecker
 	GtkTextMark *mark_click;
 
 	GtkTextRegion *scan_region;
+	guint timeout_id;
 };
 
 enum
@@ -56,6 +57,11 @@ enum
 
 #define AUTOMATIC_SPELL_CHECKER_KEY	"GeditAutomaticSpellCheckerID"
 #define SUGGESTION_KEY			"GeditAutoSuggestionID"
+
+/* Timeout duration in milliseconds. Writing and deleting text should be smooth
+ * and responsive.
+ */
+#define TIMEOUT_DURATION 400
 
 G_DEFINE_TYPE (GeditAutomaticSpellChecker, gedit_automatic_spell_checker, G_TYPE_OBJECT)
 
@@ -196,6 +202,28 @@ check_region (GeditAutomaticSpellChecker *spell)
 	spell->scan_region = NULL;
 }
 
+static gboolean
+timeout_cb (GeditAutomaticSpellChecker *spell)
+{
+	check_region (spell);
+
+	spell->timeout_id = 0;
+	return G_SOURCE_REMOVE;
+}
+
+static void
+install_timeout (GeditAutomaticSpellChecker *spell)
+{
+	if (spell->timeout_id != 0)
+	{
+		g_source_remove (spell->timeout_id);
+	}
+
+	spell->timeout_id = g_timeout_add (TIMEOUT_DURATION,
+					   (GSourceFunc) timeout_cb,
+					   spell);
+}
+
 static void
 add_subregion_to_scan (GeditAutomaticSpellChecker *spell,
 		       const GtkTextIter          *start,
@@ -216,8 +244,6 @@ add_subregion_to_scan (GeditAutomaticSpellChecker *spell,
 	gtk_text_region_add (spell->scan_region,
 			     &start_adjusted,
 			     &end_adjusted);
-
-	check_region (spell);
 }
 
 static void
@@ -234,6 +260,7 @@ insert_text_after_cb (GtkTextBuffer              *buffer,
 	gtk_text_iter_backward_chars (&start, g_utf8_strlen (text, length));
 
 	add_subregion_to_scan (spell, &start, &end);
+	install_timeout (spell);
 }
 
 static void
@@ -243,6 +270,7 @@ delete_range_after_cb (GtkTextBuffer              *buffer,
 		       GeditAutomaticSpellChecker *spell)
 {
 	add_subregion_to_scan (spell, start, end);
+	install_timeout (spell);
 }
 
 static gboolean
@@ -634,6 +662,7 @@ highlight_updated_cb (GtkSourceBuffer            *buffer,
 		      GeditAutomaticSpellChecker *spell)
 {
 	add_subregion_to_scan (spell, start, end);
+	install_timeout (spell);
 }
 
 static void
@@ -828,6 +857,12 @@ gedit_automatic_spell_checker_dispose (GObject *object)
 		spell->scan_region = NULL;
 	}
 
+	if (spell->timeout_id != 0)
+	{
+		g_source_remove (spell->timeout_id);
+		spell->timeout_id = 0;
+	}
+
 	G_OBJECT_CLASS (gedit_automatic_spell_checker_parent_class)->dispose (object);
 }
 
@@ -946,6 +981,7 @@ gedit_automatic_spell_checker_recheck_all (GeditAutomaticSpellChecker *spell)
 	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
 
 	add_subregion_to_scan (spell, &start, &end);
+	check_region (spell);
 }
 
 /* ex:set ts=8 noet: */
