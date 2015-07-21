@@ -59,9 +59,15 @@ gedit_spell_language_dialog_response (GtkDialog *dialog,
 static void
 gedit_spell_language_dialog_class_init (GeditSpellLanguageDialogClass *klass)
 {
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
 
 	dialog_class->response = gedit_spell_language_dialog_response;
+
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+						     "/org/gnome/gedit/plugins/spell/ui/languages-dialog.ui");
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellLanguageDialog, treeview);
 }
 
 static void
@@ -99,48 +105,12 @@ row_activated_cb (GtkTreeView              *tree_view,
 }
 
 static void
-create_dialog (GeditSpellLanguageDialog *dialog)
+gedit_spell_language_dialog_init (GeditSpellLanguageDialog *dialog)
 {
-	GtkBuilder *builder;
-	GtkWidget *content;
 	GtkCellRenderer *cell;
 	GtkTreeViewColumn *column;
-	gchar *root_objects[] = {
-		"content",
-		NULL
-	};
 
-	gtk_dialog_add_buttons (GTK_DIALOG (dialog),
-				_("_Cancel"), GTK_RESPONSE_CANCEL,
-				_("_OK"), GTK_RESPONSE_OK,
-				_("_Help"), GTK_RESPONSE_HELP,
-				NULL);
-
-	gtk_window_set_title (GTK_WINDOW (dialog), _("Set language"));
-	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
-	gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
-
-	/* HIG defaults */
-	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
-			     2); /* 2 * 5 + 2 = 12 */
-	gtk_container_set_border_width (GTK_CONTAINER (gtk_dialog_get_action_area (GTK_DIALOG (dialog))),
-					5);
-	gtk_box_set_spacing (GTK_BOX (gtk_dialog_get_action_area (GTK_DIALOG (dialog))),
-			     6);
-
-	builder = gtk_builder_new ();
-	gtk_builder_add_objects_from_resource (builder, "/org/gnome/gedit/plugins/spell/ui/languages-dialog.ui",
-	                                       root_objects, NULL);
-	content = GTK_WIDGET (gtk_builder_get_object (builder, "content"));
-	g_object_ref (content);
-	dialog->treeview = GTK_WIDGET (gtk_builder_get_object (builder, "languages_treeview"));
-	g_object_unref (builder);
-
-	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))),
-			    content, TRUE, TRUE, 0);
-	g_object_unref (content);
-	gtk_container_set_border_width (GTK_CONTAINER (content), 5);
+	gtk_widget_init_template (GTK_WIDGET (dialog));
 
 	dialog->model = GTK_TREE_MODEL (gtk_list_store_new (N_COLUMNS,
 							    G_TYPE_STRING,
@@ -153,10 +123,8 @@ create_dialog (GeditSpellLanguageDialog *dialog)
 
 	/* Add the language column */
 	cell = gtk_cell_renderer_text_new ();
-	column = gtk_tree_view_column_new_with_attributes (_("Languages"),
-							   cell,
-							   "text",
-							   COLUMN_LANGUAGE_NAME,
+	column = gtk_tree_view_column_new_with_attributes (_("Languages"), cell,
+							   "text", COLUMN_LANGUAGE_NAME,
 							   NULL);
 
 	gtk_tree_view_append_column (GTK_TREE_VIEW (dialog->treeview),
@@ -174,11 +142,6 @@ create_dialog (GeditSpellLanguageDialog *dialog)
 			  "row-activated",
 			  G_CALLBACK (row_activated_cb),
 			  dialog);
-}
-
-static void
-gedit_spell_language_dialog_init (GeditSpellLanguageDialog *dialog)
-{
 }
 
 static void
@@ -226,13 +189,12 @@ gedit_spell_language_dialog_new (GtkWindow                       *parent,
 
 	g_return_val_if_fail (GTK_IS_WINDOW (parent), NULL);
 
-	dialog = g_object_new (GEDIT_TYPE_SPELL_LANGUAGE_DIALOG, NULL);
-
-	create_dialog (dialog);
+	dialog = g_object_new (GEDIT_TYPE_SPELL_LANGUAGE_DIALOG,
+			       "transient-for", parent,
+			       NULL);
 
 	populate_language_list (dialog, cur_lang);
 
-	gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
 	gtk_widget_grab_focus (dialog->treeview);
 
 	return GTK_WIDGET (dialog);
