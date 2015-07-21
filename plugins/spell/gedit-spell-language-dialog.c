@@ -32,7 +32,6 @@ enum
 	ENCODING_NUM_COLS
 };
 
-
 struct _GeditSpellLanguageDialog
 {
 	GtkDialog dialog;
@@ -41,8 +40,7 @@ struct _GeditSpellLanguageDialog
 	GtkTreeModel *model;
 };
 
-G_DEFINE_TYPE(GeditSpellLanguageDialog, gedit_spell_language_dialog, GTK_TYPE_DIALOG)
-
+G_DEFINE_TYPE (GeditSpellLanguageDialog, gedit_spell_language_dialog, GTK_TYPE_DIALOG)
 
 static void
 gedit_spell_language_dialog_class_init (GeditSpellLanguageDialogClass *klass)

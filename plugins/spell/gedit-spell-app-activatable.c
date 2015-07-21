@@ -24,11 +24,18 @@
 #include <gedit/gedit-app-activatable.h>
 #include <gedit/gedit-app.h>
 
-typedef struct _GeditSpellAppActivatablePrivate
+typedef struct _GeditSpellAppActivatablePrivate GeditSpellAppActivatablePrivate;
+
+struct _GeditSpellAppActivatable
+{
+	GObject parent;
+};
+
+struct _GeditSpellAppActivatablePrivate
 {
 	GeditApp *app;
 	GeditMenuExtension *menu_ext;
-} GeditSpellAppActivatablePrivate;
+};
 
 enum
 {

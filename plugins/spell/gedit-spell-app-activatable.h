@@ -26,30 +26,14 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SPELL_APP_ACTIVATABLE		(gedit_spell_app_activatable_get_type ())
-#define GEDIT_SPELL_APP_ACTIVATABLE(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_SPELL_APP_ACTIVATABLE, GeditSpellAppActivatable))
-#define GEDIT_SPELL_APP_ACTIVATABLE_CONST(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_SPELL_APP_ACTIVATABLE, GeditSpellAppActivatable const))
-#define GEDIT_SPELL_APP_ACTIVATABLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_SPELL_APP_ACTIVATABLE, GeditSpellAppActivatableClass))
-#define GEDIT_IS_SPELL_APP_ACTIVATABLE(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_SPELL_APP_ACTIVATABLE))
-#define GEDIT_IS_SPELL_APP_ACTIVATABLE_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_SPELL_APP_ACTIVATABLE))
-#define GEDIT_SPELL_APP_ACTIVATABLE_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_SPELL_APP_ACTIVATABLE, GeditSpellAppActivatableClass))
+#define GEDIT_TYPE_SPELL_APP_ACTIVATABLE (gedit_spell_app_activatable_get_type ())
+G_DECLARE_FINAL_TYPE (GeditSpellAppActivatable,
+		      gedit_spell_app_activatable,
+		      GEDIT,
+		      SPELL_APP_ACTIVATABLE,
+		      GObject)
 
-typedef struct _GeditSpellAppActivatable	GeditSpellAppActivatable;
-typedef struct _GeditSpellAppActivatableClass	GeditSpellAppActivatableClass;
-
-struct _GeditSpellAppActivatable
-{
-	GObject parent;
-};
-
-struct _GeditSpellAppActivatableClass
-{
-	GObjectClass parent_class;
-};
-
-GType          gedit_spell_app_activatable_get_type (void) G_GNUC_CONST;
-
-void           gedit_spell_app_activatable_register (GTypeModule *module);
+void	gedit_spell_app_activatable_register	(GTypeModule *module);
 
 G_END_DECLS
 
