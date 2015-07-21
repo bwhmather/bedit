@@ -55,6 +55,8 @@ enum
 	PROP_SPELL_CHECKER,
 };
 
+#define ENABLE_DEBUG 0
+
 #define AUTOMATIC_SPELL_CHECKER_KEY	"GeditAutomaticSpellCheckerID"
 #define SUGGESTION_KEY			"GeditAutoSuggestionID"
 
@@ -178,11 +180,18 @@ static void
 check_region (GeditAutomaticSpellChecker *spell)
 {
 	GtkTextRegionIterator region_iter;
+#if ENABLE_DEBUG
+	GTimer *timer;
+#endif
 
 	if (spell->scan_region == NULL)
 	{
 		return;
 	}
+
+#if ENABLE_DEBUG
+	timer = g_timer_new ();
+#endif
 
 	gtk_text_region_get_iterator (spell->scan_region, &region_iter, 0);
 
@@ -200,6 +209,14 @@ check_region (GeditAutomaticSpellChecker *spell)
 
 	gtk_text_region_destroy (spell->scan_region);
 	spell->scan_region = NULL;
+
+#if ENABLE_DEBUG
+	g_print ("%s() executed in %lf seconds\n",
+		 G_STRFUNC,
+		 g_timer_elapsed (timer, NULL));
+
+	g_timer_destroy (timer);
+#endif
 }
 
 static gboolean
