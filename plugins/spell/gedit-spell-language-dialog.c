@@ -35,7 +35,6 @@ struct _GeditSpellLanguageDialog
 	GtkDialog dialog;
 
 	GtkTreeView *treeview;
-	GtkTreeModel *model;
 };
 
 G_DEFINE_TYPE (GeditSpellLanguageDialog, gedit_spell_language_dialog, GTK_TYPE_DIALOG)
@@ -108,18 +107,15 @@ row_activated_cb (GtkTreeView              *tree_view,
 static void
 gedit_spell_language_dialog_init (GeditSpellLanguageDialog *dialog)
 {
+	GtkListStore *store;
 	GtkCellRenderer *cell;
 	GtkTreeViewColumn *column;
 
 	gtk_widget_init_template (GTK_WIDGET (dialog));
 
-	dialog->model = GTK_TREE_MODEL (gtk_list_store_new (N_COLUMNS,
-							    G_TYPE_STRING,
-							    G_TYPE_POINTER));
-
-	gtk_tree_view_set_model (dialog->treeview, dialog->model);
-
-	g_object_unref (dialog->model);
+	store = gtk_list_store_new (N_COLUMNS, G_TYPE_STRING, G_TYPE_POINTER);
+	gtk_tree_view_set_model (dialog->treeview, GTK_TREE_MODEL (store));
+	g_object_unref (store);
 
 	/* Add the language column */
 	cell = gtk_cell_renderer_text_new ();
@@ -150,7 +146,7 @@ populate_language_list (GeditSpellLanguageDialog        *dialog,
 	const GSList *available_langs;
 	const GSList *l;
 
-	store = GTK_LIST_STORE (dialog->model);
+	store = GTK_LIST_STORE (gtk_tree_view_get_model (dialog->treeview));
 
 	available_langs = gedit_spell_checker_get_available_languages ();
 
@@ -202,17 +198,18 @@ const GeditSpellCheckerLanguage *
 gedit_spell_language_get_selected_language (GeditSpellLanguageDialog *dialog)
 {
 	GtkTreeSelection *selection;
+	GtkTreeModel *model;
 	GtkTreeIter iter;
 	const GeditSpellCheckerLanguage *lang;
 
 	selection = gtk_tree_view_get_selection (dialog->treeview);
 
-	if (!gtk_tree_selection_get_selected (selection, NULL, &iter))
+	if (!gtk_tree_selection_get_selected (selection, &model, &iter))
 	{
 		return NULL;
 	}
 
-	gtk_tree_model_get (dialog->model, &iter,
+	gtk_tree_model_get (model, &iter,
 			    COLUMN_LANGUAGE_POINTER, &lang,
 			    -1);
 
