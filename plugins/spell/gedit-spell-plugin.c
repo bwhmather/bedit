@@ -805,6 +805,15 @@ language_dialog_response (GtkDialog         *dlg,
 			  gint               response_id,
 			  GeditSpellChecker *checker)
 {
+	if (response_id == GTK_RESPONSE_HELP)
+	{
+		gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
+				     GTK_WINDOW (dlg),
+				     NULL,
+				     "gedit-spellcheck");
+		return;
+	}
+
 	if (response_id == GTK_RESPONSE_OK)
 	{
 		const GeditSpellCheckerLanguage *lang;
@@ -816,10 +825,7 @@ language_dialog_response (GtkDialog         *dlg,
 		}
 	}
 
-	if (response_id != GTK_RESPONSE_HELP)
-	{
-		gtk_widget_destroy (GTK_WIDGET (dlg));
-	}
+	gtk_widget_destroy (GTK_WIDGET (dlg));
 }
 
 static void
@@ -854,6 +860,10 @@ set_language_cb (GSimpleAction *action,
 	gtk_window_group_add_window (wg, GTK_WINDOW (dlg));
 
 	gtk_window_set_modal (GTK_WINDOW (dlg), TRUE);
+
+	gtk_dialog_add_button (GTK_DIALOG (dlg),
+			       _("_Help"),
+			       GTK_RESPONSE_HELP);
 
 	g_signal_connect (dlg,
 			  "response",

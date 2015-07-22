@@ -20,8 +20,6 @@
  */
 
 #include "gedit-spell-language-dialog.h"
-#include <glib/gi18n.h>
-#include <gedit/gedit-app.h>
 
 enum
 {
@@ -40,29 +38,9 @@ struct _GeditSpellLanguageDialog
 G_DEFINE_TYPE (GeditSpellLanguageDialog, gedit_spell_language_dialog, GTK_TYPE_DIALOG)
 
 static void
-gedit_spell_language_dialog_response (GtkDialog *dialog,
-				      gint       response_id)
-{
-	if (response_id == GTK_RESPONSE_HELP)
-	{
-		gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
-				     GTK_WINDOW (dialog),
-				     NULL,
-				     "gedit-spellcheck");
-	}
-	else if (GTK_DIALOG_CLASS (gedit_spell_language_dialog_parent_class)->response != NULL)
-	{
-		GTK_DIALOG_CLASS (gedit_spell_language_dialog_parent_class)->response (dialog, response_id);
-	}
-}
-
-static void
 gedit_spell_language_dialog_class_init (GeditSpellLanguageDialogClass *klass)
 {
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-	GtkDialogClass *dialog_class = GTK_DIALOG_CLASS (klass);
-
-	dialog_class->response = gedit_spell_language_dialog_response;
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
