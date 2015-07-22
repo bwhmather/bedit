@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2002 Paolo Maggi
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +34,7 @@ struct _GeditSpellLanguageDialog
 {
 	GtkDialog dialog;
 
-	GtkWidget *treeview;
+	GtkTreeView *treeview;
 	GtkTreeModel *model;
 };
 
@@ -116,8 +117,7 @@ gedit_spell_language_dialog_init (GeditSpellLanguageDialog *dialog)
 							    G_TYPE_STRING,
 							    G_TYPE_POINTER));
 
-	gtk_tree_view_set_model (GTK_TREE_VIEW (dialog->treeview),
-				 dialog->model);
+	gtk_tree_view_set_model (dialog->treeview, dialog->model);
 
 	g_object_unref (dialog->model);
 
@@ -127,11 +127,9 @@ gedit_spell_language_dialog_init (GeditSpellLanguageDialog *dialog)
 							   "text", COLUMN_LANGUAGE_NAME,
 							   NULL);
 
-	gtk_tree_view_append_column (GTK_TREE_VIEW (dialog->treeview),
-				     column);
+	gtk_tree_view_append_column (dialog->treeview, column);
 
-	gtk_tree_view_set_search_column (GTK_TREE_VIEW (dialog->treeview),
-					 COLUMN_LANGUAGE_NAME);
+	gtk_tree_view_set_search_column (dialog->treeview, COLUMN_LANGUAGE_NAME);
 
 	g_signal_connect (dialog->treeview,
 			  "realize",
@@ -174,7 +172,7 @@ populate_language_list (GeditSpellLanguageDialog        *dialog,
 		{
 			GtkTreeSelection *selection;
 
-			selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dialog->treeview));
+			selection = gtk_tree_view_get_selection (dialog->treeview);
 
 			gtk_tree_selection_select_iter (selection, &iter);
 		}
@@ -195,7 +193,7 @@ gedit_spell_language_dialog_new (GtkWindow                       *parent,
 
 	populate_language_list (dialog, cur_lang);
 
-	gtk_widget_grab_focus (dialog->treeview);
+	gtk_widget_grab_focus (GTK_WIDGET (dialog->treeview));
 
 	return GTK_WIDGET (dialog);
 }
@@ -207,7 +205,7 @@ gedit_spell_language_get_selected_language (GeditSpellLanguageDialog *dialog)
 	GtkTreeIter iter;
 	const GeditSpellCheckerLanguage *lang;
 
-	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (dialog->treeview));
+	selection = gtk_tree_view_get_selection (dialog->treeview);
 
 	if (!gtk_tree_selection_get_selected (selection, NULL, &iter))
 	{
