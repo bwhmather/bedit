@@ -41,25 +41,25 @@ struct _GeditSpellCheckerDialogClass
 	GtkWindowClass parent_class;
 
 	/* Signals */
-	void		(*ignore)		(GeditSpellCheckerDialog *dlg,
-						 const gchar *word);
+	void	(* ignore)			(GeditSpellCheckerDialog *dialog,
+						 const gchar             *word);
 
-	void		(*ignore_all)		(GeditSpellCheckerDialog *dlg,
-						 const gchar *word);
+	void	(* ignore_all)			(GeditSpellCheckerDialog *dialog,
+						 const gchar             *word);
 
-	void		(*change)		(GeditSpellCheckerDialog *dlg,
-						 const gchar *word,
-						 const gchar *change_to);
+	void	(* change)			(GeditSpellCheckerDialog *dialog,
+						 const gchar             *word,
+						 const gchar             *change_to);
 
-	void		(*change_all)		(GeditSpellCheckerDialog *dlg,
-						 const gchar *word,
-						 const gchar *change_to);
+	void	(* change_all)			(GeditSpellCheckerDialog *dialog,
+						 const gchar             *word,
+						 const gchar             *change_to);
 
-	void		(*add_word_to_personal)	(GeditSpellCheckerDialog *dlg,
-						 const gchar *word);
+	void	(* add_word_to_personal)	(GeditSpellCheckerDialog *dialog,
+						 const gchar             *word);
 
 	/* Keybinding signal */
-	void		(*close)		(GeditSpellCheckerDialog *dlg);
+	void	(* close)			(GeditSpellCheckerDialog *dialog);
 };
 
 GType		gedit_spell_checker_dialog_get_type			(void) G_GNUC_CONST;
@@ -68,13 +68,13 @@ GtkWidget *	gedit_spell_checker_dialog_new				(void);
 
 GtkWidget *	gedit_spell_checker_dialog_new_from_spell_checker	(GeditSpellChecker *spell);
 
-void		gedit_spell_checker_dialog_set_spell_checker		(GeditSpellCheckerDialog *dlg,
+void		gedit_spell_checker_dialog_set_spell_checker		(GeditSpellCheckerDialog *dialog,
 									 GeditSpellChecker       *spell);
 
-void		gedit_spell_checker_dialog_set_misspelled_word		(GeditSpellCheckerDialog *dlg,
+void		gedit_spell_checker_dialog_set_misspelled_word		(GeditSpellCheckerDialog *dialog,
 									 const gchar             *word);
 
-void		gedit_spell_checker_dialog_set_completed		(GeditSpellCheckerDialog *dlg);
+void		gedit_spell_checker_dialog_set_completed		(GeditSpellCheckerDialog *dialog);
 
 G_END_DECLS
 
