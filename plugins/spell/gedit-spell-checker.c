@@ -199,70 +199,70 @@ gedit_spell_checker_new	(void)
 	return spell;
 }
 
+static const GeditSpellCheckerLanguage *
+get_default_language (void)
+{
+	const GeditSpellCheckerLanguage *lang;
+	const gchar * const *lang_names;
+	const GSList *langs;
+	gint i;
+
+	/* Try with the current locale */
+	lang_names = g_get_language_names ();
+
+	for (i = 0; lang_names[i] != NULL; i++)
+	{
+		lang = gedit_spell_checker_language_from_key (lang_names[i]);
+
+		if (lang != NULL)
+		{
+			return lang;
+		}
+	}
+
+	/* Another try specific to Mac OS X */
+#ifdef OS_OSX
+	{
+		gchar *key = gedit_spell_osx_get_preferred_spell_language ();
+
+		if (key != NULL)
+		{
+			lang = gedit_spell_checker_language_from_key (key);
+			g_free (key);
+			return lang;
+		}
+	}
+#endif
+
+	/* Try English */
+	lang = gedit_spell_checker_language_from_key ("en_US");
+	if (lang != NULL)
+	{
+		return lang;
+	}
+
+	/* Take the first available language */
+	langs = gedit_spell_checker_get_available_languages ();
+	if (langs != NULL)
+	{
+		return langs->data;
+	}
+
+	return NULL;
+}
+
 static gboolean
 lazy_init (GeditSpellChecker               *spell,
 	   const GeditSpellCheckerLanguage *language)
 {
 	if (spell->dict != NULL)
+	{
 		return TRUE;
+	}
 
 	g_return_val_if_fail (spell->broker != NULL, FALSE);
 
-	spell->active_lang = NULL;
-
-	if (language != NULL)
-	{
-		spell->active_lang = language;
-	}
-	else
-	{
-		/* First try to get a default language */
-		const GeditSpellCheckerLanguage *l;
-		gint i = 0;
-		const gchar * const *lang_tags = g_get_language_names ();
-
-		while (lang_tags [i])
-		{
-			l = gedit_spell_checker_language_from_key (lang_tags [i]);
-
-			if (l != NULL)
-			{
-				spell->active_lang = l;
-				break;
-			}
-
-			i++;
-		}
-	}
-
-#ifdef OS_OSX
-	if (spell->active_lang == NULL)
-	{
-		gchar *key;
-
-		key = gedit_spell_osx_get_preferred_spell_language ();
-
-		if (key)
-		{
-			spell->active_lang = gedit_spell_checker_language_from_key (key);
-		}
-
-		g_free (key);
-	}
-#endif
-
-	/* Second try to get a default language */
-	if (spell->active_lang == NULL)
-		spell->active_lang = gedit_spell_checker_language_from_key ("en_US");
-
-	/* Last try to get a default language */
-	if (spell->active_lang == NULL)
-	{
-		const GSList *langs;
-		langs = gedit_spell_checker_get_available_languages ();
-		if (langs != NULL)
-			spell->active_lang = (const GeditSpellCheckerLanguage *)langs->data;
-	}
+	spell->active_lang = language != NULL ? language : get_default_language ();
 
 	if (spell->active_lang != NULL)
 	{
@@ -270,8 +270,7 @@ lazy_init (GeditSpellChecker               *spell,
 
 		key = gedit_spell_checker_language_to_key (spell->active_lang);
 
-		spell->dict = enchant_broker_request_dict (spell->broker,
-							   key);
+		spell->dict = enchant_broker_request_dict (spell->broker, key);
 	}
 
 	if (spell->dict == NULL)
@@ -279,7 +278,9 @@ lazy_init (GeditSpellChecker               *spell,
 		spell->active_lang = NULL;
 
 		if (language != NULL)
+		{
 			g_warning ("Spell checker plugin: cannot select a default language.");
+		}
 
 		return FALSE;
 	}
