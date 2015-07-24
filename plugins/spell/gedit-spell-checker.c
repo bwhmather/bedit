@@ -31,10 +31,15 @@
 #include "gedit-spell-osx.h"
 #endif
 
+typedef struct _GeditSpellCheckerPrivate GeditSpellCheckerPrivate;
+
 struct _GeditSpellChecker
 {
 	GObject parent_instance;
+};
 
+struct _GeditSpellCheckerPrivate
+{
 	EnchantBroker *broker;
 	EnchantDict *dict;
 	const GeditSpellCheckerLanguage *active_lang;
@@ -56,7 +61,7 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GeditSpellChecker, gedit_spell_checker, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditSpellChecker, gedit_spell_checker, G_TYPE_OBJECT)
 
 static void
 gedit_spell_checker_set_property (GObject      *object,
@@ -64,12 +69,12 @@ gedit_spell_checker_set_property (GObject      *object,
 				  const GValue *value,
 				  GParamSpec   *pspec)
 {
-	GeditSpellChecker *spell = GEDIT_SPELL_CHECKER (object);
+	GeditSpellChecker *checker = GEDIT_SPELL_CHECKER (object);
 
 	switch (prop_id)
 	{
 		case PROP_LANGUAGE:
-			gedit_spell_checker_set_language (spell, g_value_get_pointer (value));
+			gedit_spell_checker_set_language (checker, g_value_get_pointer (value));
 			break;
 
 		default:
@@ -84,12 +89,14 @@ gedit_spell_checker_get_property (GObject    *object,
 				  GValue     *value,
 				  GParamSpec *pspec)
 {
-	GeditSpellChecker *spell = GEDIT_SPELL_CHECKER (object);
+	GeditSpellCheckerPrivate *priv;
+
+	priv = gedit_spell_checker_get_instance_private (GEDIT_SPELL_CHECKER (object));
 
 	switch (prop_id)
 	{
 		case PROP_LANGUAGE:
-			g_value_set_pointer (value, (gpointer)spell->active_lang);
+			g_value_set_pointer (value, (gpointer)priv->active_lang);
 			break;
 
 		default:
@@ -101,16 +108,18 @@ gedit_spell_checker_get_property (GObject    *object,
 static void
 gedit_spell_checker_finalize (GObject *object)
 {
-	GeditSpellChecker *spell_checker = GEDIT_SPELL_CHECKER (object);
+	GeditSpellCheckerPrivate *priv;
 
-	if (spell_checker->dict != NULL)
+	priv = gedit_spell_checker_get_instance_private (GEDIT_SPELL_CHECKER (object));
+
+	if (priv->dict != NULL)
 	{
-		enchant_broker_free_dict (spell_checker->broker, spell_checker->dict);
+		enchant_broker_free_dict (priv->broker, priv->dict);
 	}
 
-	if (spell_checker->broker != NULL)
+	if (priv->broker != NULL)
 	{
-		enchant_broker_free (spell_checker->broker);
+		enchant_broker_free (priv->broker);
 	}
 
 	G_OBJECT_CLASS (gedit_spell_checker_parent_class)->finalize (object);
@@ -163,11 +172,15 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 }
 
 static void
-gedit_spell_checker_init (GeditSpellChecker *spell_checker)
+gedit_spell_checker_init (GeditSpellChecker *checker)
 {
-	spell_checker->broker = enchant_broker_init ();
-	spell_checker->dict = NULL;
-	spell_checker->active_lang = NULL;
+	GeditSpellCheckerPrivate *priv;
+
+	priv = gedit_spell_checker_get_instance_private (checker);
+
+	priv->broker = enchant_broker_init ();
+	priv->dict = NULL;
+	priv->active_lang = NULL;
 }
 
 GeditSpellChecker *
@@ -229,30 +242,34 @@ get_default_language (void)
 }
 
 static gboolean
-lazy_init (GeditSpellChecker               *spell,
+lazy_init (GeditSpellChecker               *checker,
 	   const GeditSpellCheckerLanguage *language)
 {
-	if (spell->dict != NULL)
+	GeditSpellCheckerPrivate *priv;
+
+	priv = gedit_spell_checker_get_instance_private (checker);
+
+	if (priv->dict != NULL)
 	{
 		return TRUE;
 	}
 
-	g_return_val_if_fail (spell->broker != NULL, FALSE);
+	g_return_val_if_fail (priv->broker != NULL, FALSE);
 
-	spell->active_lang = language != NULL ? language : get_default_language ();
+	priv->active_lang = language != NULL ? language : get_default_language ();
 
-	if (spell->active_lang != NULL)
+	if (priv->active_lang != NULL)
 	{
 		const gchar *key;
 
-		key = gedit_spell_checker_language_to_key (spell->active_lang);
+		key = gedit_spell_checker_language_to_key (priv->active_lang);
 
-		spell->dict = enchant_broker_request_dict (spell->broker, key);
+		priv->dict = enchant_broker_request_dict (priv->broker, key);
 	}
 
-	if (spell->dict == NULL)
+	if (priv->dict == NULL)
 	{
-		spell->active_lang = NULL;
+		priv->active_lang = NULL;
 
 		if (language != NULL)
 		{
@@ -266,20 +283,23 @@ lazy_init (GeditSpellChecker               *spell,
 }
 
 gboolean
-gedit_spell_checker_set_language (GeditSpellChecker               *spell,
+gedit_spell_checker_set_language (GeditSpellChecker               *checker,
 				  const GeditSpellCheckerLanguage *language)
 {
+	GeditSpellCheckerPrivate *priv;
 	gboolean ret;
 
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), FALSE);
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
 
-	if (spell->dict != NULL)
+	priv = gedit_spell_checker_get_instance_private (checker);
+
+	if (priv->dict != NULL)
 	{
-		enchant_broker_free_dict (spell->broker, spell->dict);
-		spell->dict = NULL;
+		enchant_broker_free_dict (priv->broker, priv->dict);
+		priv->dict = NULL;
 	}
 
-	ret = lazy_init (spell, language);
+	ret = lazy_init (checker, language);
 
 	if (!ret)
 	{
@@ -287,35 +307,42 @@ gedit_spell_checker_set_language (GeditSpellChecker               *spell,
 		           gedit_spell_checker_language_to_string (language));
 	}
 
-	g_object_notify (G_OBJECT (spell), "language");
+	g_object_notify (G_OBJECT (checker), "language");
 
 	return ret;
 }
 
 const GeditSpellCheckerLanguage *
-gedit_spell_checker_get_language (GeditSpellChecker *spell)
+gedit_spell_checker_get_language (GeditSpellChecker *checker)
 {
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), NULL);
+	GeditSpellCheckerPrivate *priv;
 
-	if (!lazy_init (spell, spell->active_lang))
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
+
+	priv = gedit_spell_checker_get_instance_private (checker);
+
+	if (!lazy_init (checker, priv->active_lang))
 	{
 		return NULL;
 	}
 
-	return spell->active_lang;
+	return priv->active_lang;
 }
 
 gboolean
-gedit_spell_checker_check_word (GeditSpellChecker *spell,
+gedit_spell_checker_check_word (GeditSpellChecker *checker,
 				const gchar       *word)
 {
+	GeditSpellCheckerPrivate *priv;
 	gint enchant_result;
 	gboolean res = FALSE;
 
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), FALSE);
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
 
-	if (!lazy_init (spell, spell->active_lang))
+	priv = gedit_spell_checker_get_instance_private (checker);
+
+	if (!lazy_init (checker, priv->active_lang))
 	{
 		return FALSE;
 	}
@@ -330,8 +357,8 @@ gedit_spell_checker_check_word (GeditSpellChecker *spell,
 		return TRUE;
 	}
 
-	g_return_val_if_fail (spell->dict != NULL, FALSE);
-	enchant_result = enchant_dict_check (spell->dict, word, -1);
+	g_return_val_if_fail (priv->dict != NULL, FALSE);
+	enchant_result = enchant_dict_check (priv->dict, word, -1);
 
 	switch (enchant_result)
 	{
@@ -340,7 +367,7 @@ gedit_spell_checker_check_word (GeditSpellChecker *spell,
 			res = FALSE;
 
 			g_warning ("Spell checker plugin: error checking word '%s' (%s).",
-				   word, enchant_dict_get_error (spell->dict));
+				   word, enchant_dict_get_error (priv->dict));
 
 			break;
 
@@ -363,24 +390,27 @@ gedit_spell_checker_check_word (GeditSpellChecker *spell,
 
 /* return NULL on error or if no suggestions are found */
 GSList *
-gedit_spell_checker_get_suggestions (GeditSpellChecker *spell,
+gedit_spell_checker_get_suggestions (GeditSpellChecker *checker,
 				     const gchar       *word)
 {
+	GeditSpellCheckerPrivate *priv;
 	gchar **suggestions;
 	GSList *suggestions_list = NULL;
 	gint i;
 
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), NULL);
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
 	g_return_val_if_fail (word != NULL, NULL);
 
-	if (!lazy_init (spell, spell->active_lang))
+	priv = gedit_spell_checker_get_instance_private (checker);
+
+	if (!lazy_init (checker, priv->active_lang))
 	{
 		return NULL;
 	}
 
-	g_return_val_if_fail (spell->dict != NULL, NULL);
+	g_return_val_if_fail (priv->dict != NULL, NULL);
 
-	suggestions = enchant_dict_suggest (spell->dict, word, -1, NULL);
+	suggestions = enchant_dict_suggest (priv->dict, word, -1, NULL);
 
 	if (suggestions == NULL)
 	{
@@ -399,87 +429,103 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *spell,
 }
 
 gboolean
-gedit_spell_checker_add_word_to_personal (GeditSpellChecker *spell,
+gedit_spell_checker_add_word_to_personal (GeditSpellChecker *checker,
 					  const gchar       *word)
 {
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), FALSE);
+	GeditSpellCheckerPrivate *priv;
+
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
 
-	if (!lazy_init (spell, spell->active_lang))
+	priv = gedit_spell_checker_get_instance_private (checker);
+
+	if (!lazy_init (checker, priv->active_lang))
 	{
 		return FALSE;
 	}
 
-	g_return_val_if_fail (spell->dict != NULL, FALSE);
+	g_return_val_if_fail (priv->dict != NULL, FALSE);
 
-	enchant_dict_add (spell->dict, word, -1);
+	enchant_dict_add (priv->dict, word, -1);
 
-	g_signal_emit (G_OBJECT (spell), signals[SIGNAL_ADD_WORD_TO_PERSONAL], 0, word);
+	g_signal_emit (G_OBJECT (checker), signals[SIGNAL_ADD_WORD_TO_PERSONAL], 0, word);
 
 	return TRUE;
 }
 
 gboolean
-gedit_spell_checker_add_word_to_session (GeditSpellChecker *spell,
+gedit_spell_checker_add_word_to_session (GeditSpellChecker *checker,
 					 const gchar       *word)
 {
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), FALSE);
+	GeditSpellCheckerPrivate *priv;
+
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
 
-	if (!lazy_init (spell, spell->active_lang))
+	priv = gedit_spell_checker_get_instance_private (checker);
+
+	if (!lazy_init (checker, priv->active_lang))
 	{
 		return FALSE;
 	}
 
-	g_return_val_if_fail (spell->dict != NULL, FALSE);
+	g_return_val_if_fail (priv->dict != NULL, FALSE);
 
-	enchant_dict_add_to_session (spell->dict, word, -1);
+	enchant_dict_add_to_session (priv->dict, word, -1);
 
-	g_signal_emit (G_OBJECT (spell), signals[SIGNAL_ADD_WORD_TO_SESSION], 0, word);
+	g_signal_emit (G_OBJECT (checker), signals[SIGNAL_ADD_WORD_TO_SESSION], 0, word);
 
 	return TRUE;
 }
 
 gboolean
-gedit_spell_checker_clear_session (GeditSpellChecker *spell)
+gedit_spell_checker_clear_session (GeditSpellChecker *checker)
 {
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), FALSE);
+	GeditSpellCheckerPrivate *priv;
+
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
+
+	priv = gedit_spell_checker_get_instance_private (checker);
 
 	/* free and re-request dictionary */
-	if (spell->dict != NULL)
+	if (priv->dict != NULL)
 	{
-		enchant_broker_free_dict (spell->broker, spell->dict);
-		spell->dict = NULL;
+		enchant_broker_free_dict (priv->broker, priv->dict);
+		priv->dict = NULL;
 	}
 
-	if (!lazy_init (spell, spell->active_lang))
+	if (!lazy_init (checker, priv->active_lang))
 	{
 		return FALSE;
 	}
 
-	g_signal_emit (G_OBJECT (spell), signals[SIGNAL_CLEAR_SESSION], 0);
+	g_signal_emit (G_OBJECT (checker), signals[SIGNAL_CLEAR_SESSION], 0);
 
 	return TRUE;
 }
 
 /* Informs dictionary, that @word will be replaced/corrected by @replacement. */
 gboolean
-gedit_spell_checker_set_correction (GeditSpellChecker *spell,
+gedit_spell_checker_set_correction (GeditSpellChecker *checker,
 				    const gchar       *word,
 				    const gchar       *replacement)
 {
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), FALSE);
+	GeditSpellCheckerPrivate *priv;
+
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
 	g_return_val_if_fail (replacement != NULL, FALSE);
 
-	if (!lazy_init (spell, spell->active_lang))
+	priv = gedit_spell_checker_get_instance_private (checker);
+
+	if (!lazy_init (checker, priv->active_lang))
 	{
 		return FALSE;
 	}
 
-	g_return_val_if_fail (spell->dict != NULL, FALSE);
+	g_return_val_if_fail (priv->dict != NULL, FALSE);
 
-	enchant_dict_store_replacement (spell->dict,
+	enchant_dict_store_replacement (priv->dict,
 					word, -1,
 					replacement, -1);
 
