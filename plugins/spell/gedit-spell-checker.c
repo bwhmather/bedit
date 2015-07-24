@@ -46,13 +46,12 @@ enum
 	PROP_LANGUAGE,
 };
 
-/* Signals */
 enum
 {
-	ADD_WORD_TO_PERSONAL,
-	ADD_WORD_TO_SESSION,
-	SET_LANGUAGE,
-	CLEAR_SESSION,
+	SIGNAL_ADD_WORD_TO_PERSONAL,
+	SIGNAL_ADD_WORD_TO_SESSION,
+	SIGNAL_SET_LANGUAGE,
+	SIGNAL_CLEAR_SESSION,
 	LAST_SIGNAL
 };
 
@@ -134,7 +133,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 							       "The language used by the spell checker",
 							       G_PARAM_READWRITE));
 
-	signals[ADD_WORD_TO_PERSONAL] =
+	signals[SIGNAL_ADD_WORD_TO_PERSONAL] =
 	    g_signal_new ("add-word-to-personal",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
@@ -144,7 +143,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 			  1,
 			  G_TYPE_STRING);
 
-	signals[ADD_WORD_TO_SESSION] =
+	signals[SIGNAL_ADD_WORD_TO_SESSION] =
 	    g_signal_new ("add-word-to-session",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
@@ -154,7 +153,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 			  1,
 			  G_TYPE_STRING);
 
-	signals[SET_LANGUAGE] =
+	signals[SIGNAL_SET_LANGUAGE] =
 	    g_signal_new ("set-language",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
@@ -164,7 +163,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 			  1,
 			  G_TYPE_POINTER);
 
-	signals[CLEAR_SESSION] =
+	signals[SIGNAL_CLEAR_SESSION] =
 	    g_signal_new ("clear-session",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
@@ -295,7 +294,7 @@ gedit_spell_checker_set_language (GeditSpellChecker               *spell,
 
 	if (ret)
 	{
-		g_signal_emit (G_OBJECT (spell), signals[SET_LANGUAGE], 0, language);
+		g_signal_emit (G_OBJECT (spell), signals[SIGNAL_SET_LANGUAGE], 0, language);
 	}
 	else
 	{
@@ -430,7 +429,7 @@ gedit_spell_checker_add_word_to_personal (GeditSpellChecker *spell,
 
 	enchant_dict_add (spell->dict, word, -1);
 
-	g_signal_emit (G_OBJECT (spell), signals[ADD_WORD_TO_PERSONAL], 0, word);
+	g_signal_emit (G_OBJECT (spell), signals[SIGNAL_ADD_WORD_TO_PERSONAL], 0, word);
 
 	return TRUE;
 }
@@ -451,7 +450,7 @@ gedit_spell_checker_add_word_to_session (GeditSpellChecker *spell,
 
 	enchant_dict_add_to_session (spell->dict, word, -1);
 
-	g_signal_emit (G_OBJECT (spell), signals[ADD_WORD_TO_SESSION], 0, word);
+	g_signal_emit (G_OBJECT (spell), signals[SIGNAL_ADD_WORD_TO_SESSION], 0, word);
 
 	return TRUE;
 }
@@ -473,7 +472,7 @@ gedit_spell_checker_clear_session (GeditSpellChecker *spell)
 		return FALSE;
 	}
 
-	g_signal_emit (G_OBJECT (spell), signals[CLEAR_SESSION], 0);
+	g_signal_emit (G_OBJECT (spell), signals[SIGNAL_CLEAR_SESSION], 0);
 
 	return TRUE;
 }
