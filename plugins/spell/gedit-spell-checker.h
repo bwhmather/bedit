@@ -31,6 +31,28 @@ G_DECLARE_DERIVABLE_TYPE (GeditSpellChecker, gedit_spell_checker,
 			  GEDIT, SPELL_CHECKER,
 			  GObject)
 
+/**
+ * GEDIT_SPELL_CHECKER_ERROR:
+ *
+ * Error domain for the spell checker. Errors in this domain will be from the
+ * #GeditSpellCheckerError enumeration. See #GError for more information on
+ * error domains.
+ */
+#define GEDIT_SPELL_CHECKER_ERROR (gedit_spell_checker_error_quark ())
+
+/**
+ * GeditSpellCheckerError:
+ * @GEDIT_SPELL_CHECKER_ERROR_DICTIONARY: dictionary error.
+ *
+ * An error code used with %GEDIT_SPELL_CHECKER_ERROR in a #GError returned
+ * from a spell-checker-related function.
+ */
+typedef enum _GeditSpellCheckerError GeditSpellCheckerError;
+enum _GeditSpellCheckerError
+{
+	GEDIT_SPELL_CHECKER_ERROR_DICTIONARY,
+};
+
 struct _GeditSpellCheckerClass
 {
 	GObjectClass parent_class;
@@ -45,6 +67,8 @@ struct _GeditSpellCheckerClass
 	void (* clear_session)		(GeditSpellChecker *checker);
 };
 
+GQuark		gedit_spell_checker_error_quark			(void);
+
 GeditSpellChecker *
 		gedit_spell_checker_new				(const GeditSpellCheckerLanguage *language);
 
@@ -55,8 +79,9 @@ gboolean
 const GeditSpellCheckerLanguage *
 		gedit_spell_checker_get_language		(GeditSpellChecker *checker);
 
-gboolean	gedit_spell_checker_check_word			(GeditSpellChecker *checker,
-								 const gchar       *word);
+gboolean	gedit_spell_checker_check_word			(GeditSpellChecker  *checker,
+								 const gchar        *word,
+								 GError            **error);
 
 GSList *	gedit_spell_checker_get_suggestions		(GeditSpellChecker *checker,
 								 const gchar       *word);

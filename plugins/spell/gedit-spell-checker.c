@@ -24,6 +24,7 @@
 
 #include "gedit-spell-checker.h"
 #include <enchant.h>
+#include <glib/gi18n.h>
 #include "gedit-spell-utils.h"
 
 #ifdef OS_OSX
@@ -56,6 +57,19 @@ enum
 static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditSpellChecker, gedit_spell_checker, G_TYPE_OBJECT)
+
+GQuark
+gedit_spell_checker_error_quark (void)
+{
+	static GQuark quark = 0;
+
+	if (G_UNLIKELY (quark == 0))
+	{
+		quark = g_quark_from_static_string ("gedit-spell-checker-error-quark");
+	}
+
+	return quark;
+}
 
 static void
 gedit_spell_checker_set_property (GObject      *object,
@@ -326,16 +340,19 @@ gedit_spell_checker_get_language (GeditSpellChecker *checker)
 	return priv->active_lang;
 }
 
+/* Returns whether @word is correctly spelled. */
 gboolean
-gedit_spell_checker_check_word (GeditSpellChecker *checker,
-				const gchar       *word)
+gedit_spell_checker_check_word (GeditSpellChecker  *checker,
+				const gchar        *word,
+				GError            **error)
 {
 	GeditSpellCheckerPrivate *priv;
 	gint enchant_result;
-	gboolean res = FALSE;
+	gboolean correctly_spelled;
 
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
+	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
@@ -351,32 +368,19 @@ gedit_spell_checker_check_word (GeditSpellChecker *checker,
 
 	enchant_result = enchant_dict_check (priv->dict, word, -1);
 
-	switch (enchant_result)
+	correctly_spelled = enchant_result == 0;
+
+	if (enchant_result < 0)
 	{
-		case -1:
-			/* error */
-			res = FALSE;
-
-			g_warning ("Spell checker plugin: error checking word '%s' (%s).",
-				   word, enchant_dict_get_error (priv->dict));
-
-			break;
-
-		case 1:
-			/* it is not in the directory */
-			res = FALSE;
-			break;
-
-		case 0:
-			/* is is in the directory */
-			res = TRUE;
-			break;
-
-		default:
-			g_return_val_if_reached (FALSE);
+		g_set_error (error,
+			     GEDIT_SPELL_CHECKER_ERROR,
+			     GEDIT_SPELL_CHECKER_ERROR_DICTIONARY,
+			     _("Error when checking the spelling of word “%s”: %s"),
+			     word,
+			     enchant_dict_get_error (priv->dict));
 	}
 
-	return res;
+	return correctly_spelled;
 }
 
 /* return NULL on error or if no suggestions are found */

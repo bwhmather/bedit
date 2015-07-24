@@ -552,6 +552,7 @@ get_next_misspelled_word (GeditView *view,
 	gint start, end;
 	gchar *word;
 	GeditSpellChecker *checker;
+	GError *error = NULL;
 
 	g_return_val_if_fail (view != NULL, NULL);
 
@@ -572,7 +573,7 @@ get_next_misspelled_word (GeditView *view,
 
 	gedit_debug_message (DEBUG_PLUGINS, "Word to check: %s", word);
 
-	while (gedit_spell_checker_check_word (checker, word))
+	while (gedit_spell_checker_check_word (checker, word, &error))
 	{
 		g_free (word);
 
@@ -589,6 +590,13 @@ get_next_misspelled_word (GeditView *view,
 		}
 
 		gedit_debug_message (DEBUG_PLUGINS, "Word to check: %s", word);
+	}
+
+	if (error != NULL)
+	{
+		g_warning ("Spell checking plugin: %s", error->message);
+		g_error_free (error);
+		return NULL;
 	}
 
 	if (!goto_next_word (doc))

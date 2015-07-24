@@ -74,6 +74,8 @@ check_word (GeditAutomaticSpellChecker *spell,
 	    const GtkTextIter          *end)
 {
 	gchar *word;
+	GError *error = NULL;
+	gboolean correctly_spelled;
 
 	if (!gtk_text_iter_starts_word (start) ||
 	    !gtk_text_iter_ends_word (end))
@@ -84,7 +86,17 @@ check_word (GeditAutomaticSpellChecker *spell,
 
 	word = gtk_text_buffer_get_text (spell->buffer, start, end, FALSE);
 
-	if (!gedit_spell_checker_check_word (spell->spell_checker, word))
+	correctly_spelled = gedit_spell_checker_check_word (spell->spell_checker,
+							    word,
+							    &error);
+
+	if (error != NULL)
+	{
+		g_warning ("Automatic spell checker: %s", error->message);
+		g_error_free (error);
+	}
+
+	if (!correctly_spelled)
 	{
 		gtk_text_buffer_apply_tag (spell->buffer,
 					   spell->tag_highlight,

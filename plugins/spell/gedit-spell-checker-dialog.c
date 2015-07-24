@@ -385,7 +385,7 @@ gedit_spell_checker_dialog_set_misspelled_word (GeditSpellCheckerDialog *dlg,
 	g_return_if_fail (word != NULL);
 
 	g_return_if_fail (dlg->spell_checker != NULL);
-	g_return_if_fail (!gedit_spell_checker_check_word (dlg->spell_checker, word));
+	g_return_if_fail (!gedit_spell_checker_check_word (dlg->spell_checker, word, NULL));
 
 	g_free (dlg->misspelled_word);
 	dlg->misspelled_word = g_strdup (word);
@@ -507,13 +507,24 @@ static void
 check_word_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *dlg)
 {
 	const gchar *word;
+	GError *error = NULL;
+	gboolean correctly_spelled;
 
 	g_return_if_fail (GEDIT_IS_SPELL_CHECKER_DIALOG (dlg));
 
 	word = gtk_entry_get_text (GTK_ENTRY (dlg->word_entry));
 	g_return_if_fail (gtk_entry_get_text_length (GTK_ENTRY (dlg->word_entry)) > 0);
 
-	if (gedit_spell_checker_check_word (dlg->spell_checker, word))
+	correctly_spelled = gedit_spell_checker_check_word (dlg->spell_checker, word, &error);
+
+	if (error != NULL)
+	{
+		g_warning ("Spell checker dialog: %s", error->message);
+		g_error_free (error);
+		return;
+	}
+
+	if (correctly_spelled)
 	{
 		GtkListStore *store;
 		GtkTreeIter iter;
