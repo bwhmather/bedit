@@ -282,13 +282,14 @@ init_dictionary (GeditSpellChecker *checker)
 
 /* If @language is %NULL, find the best available language based on the current
  * locale.
+ * Returns: whether the operation was successful.
  */
 gboolean
 gedit_spell_checker_set_language (GeditSpellChecker               *checker,
 				  const GeditSpellCheckerLanguage *language)
 {
 	GeditSpellCheckerPrivate *priv;
-	gboolean ret;
+	gboolean success;
 
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
 
@@ -306,17 +307,11 @@ gedit_spell_checker_set_language (GeditSpellChecker               *checker,
 	}
 
 	priv->active_lang = language;
-	ret = init_dictionary (checker);
-
-	if (!ret)
-	{
-		g_warning ("Spell checker plugin: cannot use language %s.",
-		           gedit_spell_checker_language_to_string (language));
-	}
+	success = init_dictionary (checker);
 
 	g_object_notify (G_OBJECT (checker), "language");
 
-	return ret;
+	return success;
 }
 
 const GeditSpellCheckerLanguage *
