@@ -383,7 +383,6 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *spell,
 				     const gchar       *word)
 {
 	gchar **suggestions;
-	size_t n_suggestions = 0;
 	GSList *suggestions_list = NULL;
 	gint i;
 
@@ -397,19 +396,16 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *spell,
 
 	g_return_val_if_fail (spell->dict != NULL, NULL);
 
-	suggestions = enchant_dict_suggest (spell->dict, word, strlen (word), &n_suggestions);
+	suggestions = enchant_dict_suggest (spell->dict, word, -1, NULL);
 
-	if (n_suggestions == 0)
+	if (suggestions == NULL)
 	{
 		return NULL;
 	}
 
-	g_return_val_if_fail (suggestions != NULL, NULL);
-
-	for (i = 0; i < n_suggestions; i++)
+	for (i = 0; suggestions[i] != NULL; i++)
 	{
-		suggestions_list = g_slist_prepend (suggestions_list,
-						    suggestions[i]);
+		suggestions_list = g_slist_prepend (suggestions_list, suggestions[i]);
 	}
 
 	/* The single suggestions will be freed by the caller */
