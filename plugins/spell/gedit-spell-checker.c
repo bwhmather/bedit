@@ -66,17 +66,17 @@ gedit_spell_checker_set_property (GObject      *object,
 				  const GValue *value,
 				  GParamSpec   *pspec)
 {
-	/*
 	GeditSpellChecker *spell = GEDIT_SPELL_CHECKER (object);
-	*/
 
 	switch (prop_id)
 	{
 		case PROP_LANGUAGE:
-			/* TODO */
+			gedit_spell_checker_set_language (spell, g_value_get_pointer (value));
 			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
 	}
 }
 
@@ -86,16 +86,17 @@ gedit_spell_checker_get_property (GObject    *object,
 				  GValue     *value,
 				  GParamSpec *pspec)
 {
-	/*
 	GeditSpellChecker *spell = GEDIT_SPELL_CHECKER (object);
-	*/
 
 	switch (prop_id)
 	{
 		case PROP_LANGUAGE:
-			/* TODO */
+			g_value_set_pointer (value, (gpointer)spell->active_lang);
+			break;
+
 		default:
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
 	}
 }
 
@@ -301,6 +302,8 @@ gedit_spell_checker_set_language (GeditSpellChecker               *spell,
 		g_warning ("Spell checker plugin: cannot use language %s.",
 		           gedit_spell_checker_language_to_string (language));
 	}
+
+	g_object_notify (G_OBJECT (spell), "language");
 
 	return ret;
 }
