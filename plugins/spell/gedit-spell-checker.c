@@ -33,11 +33,6 @@
 
 typedef struct _GeditSpellCheckerPrivate GeditSpellCheckerPrivate;
 
-struct _GeditSpellChecker
-{
-	GObject parent_instance;
-};
-
 struct _GeditSpellCheckerPrivate
 {
 	EnchantBroker *broker;

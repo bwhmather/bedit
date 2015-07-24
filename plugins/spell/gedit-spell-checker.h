@@ -26,15 +26,10 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SPELL_CHECKER            (gedit_spell_checker_get_type ())
-#define GEDIT_SPELL_CHECKER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_SPELL_CHECKER, GeditSpellChecker))
-#define GEDIT_SPELL_CHECKER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_SPELL_CHECKER, GeditSpellChecker))
-#define GEDIT_IS_SPELL_CHECKER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_SPELL_CHECKER))
-#define GEDIT_IS_SPELL_CHECKER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_SPELL_CHECKER))
-#define GEDIT_SPELL_CHECKER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_SPELL_CHECKER, GeditSpellChecker))
-
-typedef struct _GeditSpellChecker	GeditSpellChecker;
-typedef struct _GeditSpellCheckerClass	GeditSpellCheckerClass;
+#define GEDIT_TYPE_SPELL_CHECKER (gedit_spell_checker_get_type ())
+G_DECLARE_DERIVABLE_TYPE (GeditSpellChecker, gedit_spell_checker,
+			  GEDIT, SPELL_CHECKER,
+			  GObject)
 
 struct _GeditSpellCheckerClass
 {
@@ -49,8 +44,6 @@ struct _GeditSpellCheckerClass
 
 	void (* clear_session)		(GeditSpellChecker *checker);
 };
-
-GType        		 gedit_spell_checker_get_type		(void) G_GNUC_CONST;
 
 GeditSpellChecker	*gedit_spell_checker_new		(void);
 
