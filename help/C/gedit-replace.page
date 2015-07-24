@@ -29,6 +29,10 @@
       <name>Shobha Tyagi</name>
       <email>tyagishobha@gmail.com</email>
     </credit>
+    <credit type="editor">
+      <name>Young Li</name>
+      <email>li.young1618@gmail.com</email>
+    </credit>
     <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
   </info>
 
@@ -118,8 +122,8 @@
 <section id="escape-sequences">
   <title>Using escape sequences</title>
 
-  <p>You can use <em>escape sequences</em> to search for line breaks and
-  tabs.</p>
+  <p>You can use <em>escape sequences</em> to search for line breaks, carriage
+  returns, and tabs.</p>
 
   <terms>
     <item>
@@ -127,12 +131,12 @@
       <p>Newline</p>
     </item>
     <item>
-      <title>\t</title>
-      <p>Tab</p>
-    </item>
-    <item>
       <title>\r</title>
       <p>Carriage return</p>
+    </item>
+    <item>
+      <title>\t</title>
+      <p>Tab</p>
     </item>
   </terms>
 
