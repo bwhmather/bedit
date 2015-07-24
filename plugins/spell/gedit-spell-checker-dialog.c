@@ -195,7 +195,7 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 }
 
 static void
-create_dialog (GeditSpellCheckerDialog *dialog)
+gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 {
 	GtkBuilder *builder;
 	GtkWidget *content;
@@ -213,11 +213,6 @@ create_dialog (GeditSpellCheckerDialog *dialog)
 		"change_all_image",
 		NULL
 	};
-
-	g_return_if_fail (dialog != NULL);
-
-	dialog->spell_checker = NULL;
-	dialog->misspelled_word = NULL;
 
 	builder = gtk_builder_new ();
 	gtk_builder_add_objects_from_resource (builder, "/org/gnome/gedit/plugins/spell/ui/spell-checker.ui",
@@ -252,16 +247,16 @@ create_dialog (GeditSpellCheckerDialog *dialog)
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
 	/* Suggestion list */
-	dialog->suggestions_list_model = GTK_TREE_MODEL (
-			gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING));
+	dialog->suggestions_list_model = GTK_TREE_MODEL (gtk_list_store_new (NUM_COLUMNS, G_TYPE_STRING));
 
 	gtk_tree_view_set_model (GTK_TREE_VIEW (dialog->suggestions_list),
-			dialog->suggestions_list_model);
+				 dialog->suggestions_list_model);
 
 	/* Add the suggestions column */
 	cell = gtk_cell_renderer_text_new ();
 	column = gtk_tree_view_column_new_with_attributes (_("Suggestions"), cell,
-			"text", COLUMN_SUGGESTIONS, NULL);
+							   "text", COLUMN_SUGGESTIONS,
+							   NULL);
 
 	gtk_tree_view_append_column (GTK_TREE_VIEW (dialog->suggestions_list), column);
 
@@ -279,30 +274,50 @@ create_dialog (GeditSpellCheckerDialog *dialog)
 	gtk_entry_set_activates_default (GTK_ENTRY (dialog->word_entry), TRUE);
 
 	/* Connect signals */
-	g_signal_connect (dialog->word_entry, "changed",
-			  G_CALLBACK (word_entry_changed_handler), dialog);
-	g_signal_connect (selection, "changed",
+	g_signal_connect (dialog->word_entry,
+			  "changed",
+			  G_CALLBACK (word_entry_changed_handler),
+			  dialog);
+
+	g_signal_connect (selection,
+			  "changed",
 			  G_CALLBACK (suggestions_list_selection_changed_handler),
 			  dialog);
-	g_signal_connect (dialog->check_word_button, "clicked",
-			  G_CALLBACK (check_word_button_clicked_handler), dialog);
-	g_signal_connect (dialog->add_word_button, "clicked",
-			  G_CALLBACK (add_word_button_clicked_handler), dialog);
-	g_signal_connect (dialog->ignore_button, "clicked",
-			  G_CALLBACK (ignore_button_clicked_handler), dialog);
-	g_signal_connect (dialog->ignore_all_button, "clicked",
-			  G_CALLBACK (ignore_all_button_clicked_handler), dialog);
-	g_signal_connect (dialog->change_button, "clicked",
-			  G_CALLBACK (change_button_clicked_handler), dialog);
-	g_signal_connect (dialog->change_all_button, "clicked",
-			  G_CALLBACK (change_all_button_clicked_handler), dialog);
-	g_signal_connect (dialog->suggestions_list, "row-activated",
-			  G_CALLBACK (suggestions_list_row_activated_handler), dialog);
-}
 
-static void
-gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
-{
+	g_signal_connect (dialog->check_word_button,
+			  "clicked",
+			  G_CALLBACK (check_word_button_clicked_handler),
+			  dialog);
+
+	g_signal_connect (dialog->add_word_button,
+			  "clicked",
+			  G_CALLBACK (add_word_button_clicked_handler),
+			  dialog);
+
+	g_signal_connect (dialog->ignore_button,
+			  "clicked",
+			  G_CALLBACK (ignore_button_clicked_handler),
+			  dialog);
+
+	g_signal_connect (dialog->ignore_all_button,
+			  "clicked",
+			  G_CALLBACK (ignore_all_button_clicked_handler),
+			  dialog);
+
+	g_signal_connect (dialog->change_button,
+			  "clicked",
+			  G_CALLBACK (change_button_clicked_handler),
+			  dialog);
+
+	g_signal_connect (dialog->change_all_button,
+			  "clicked",
+			  G_CALLBACK (change_all_button_clicked_handler),
+			  dialog);
+
+	g_signal_connect (dialog->suggestions_list,
+			  "row-activated",
+			  G_CALLBACK (suggestions_list_row_activated_handler),
+			  dialog);
 }
 
 GtkWidget *
@@ -314,8 +329,6 @@ gedit_spell_checker_dialog_new (void)
 			g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG, NULL));
 
 	g_return_val_if_fail (dialog != NULL, NULL);
-
-	create_dialog (dialog);
 
 	return GTK_WIDGET (dialog);
 }
@@ -331,8 +344,6 @@ gedit_spell_checker_dialog_new_from_spell_checker (GeditSpellChecker *spell)
 			g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG, NULL));
 
 	g_return_val_if_fail (dialog != NULL, NULL);
-
-	create_dialog (dialog);
 
 	gedit_spell_checker_dialog_set_spell_checker (dialog, spell);
 
