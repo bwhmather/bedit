@@ -134,7 +134,9 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 					 g_param_spec_pointer ("language",
 							       "Language",
 							       "The language used by the spell checker",
-							       G_PARAM_READWRITE));
+							       G_PARAM_READWRITE |
+							       G_PARAM_CONSTRUCT |
+							       G_PARAM_STATIC_STRINGS));
 
 	signals[SIGNAL_ADD_WORD_TO_PERSONAL] =
 	    g_signal_new ("add-word-to-personal",
@@ -179,9 +181,11 @@ gedit_spell_checker_init (GeditSpellChecker *checker)
 }
 
 GeditSpellChecker *
-gedit_spell_checker_new	(void)
+gedit_spell_checker_new	(const GeditSpellCheckerLanguage *language)
 {
-	return g_object_new (GEDIT_TYPE_SPELL_CHECKER, NULL);
+	return g_object_new (GEDIT_TYPE_SPELL_CHECKER,
+			     "language", language,
+			     NULL);
 }
 
 static const GeditSpellCheckerLanguage *
@@ -237,18 +241,18 @@ get_default_language (void)
 }
 
 static gboolean
-lazy_init (GeditSpellChecker *checker)
+init_dictionary (GeditSpellChecker *checker)
 {
 	GeditSpellCheckerPrivate *priv;
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
+	g_return_val_if_fail (priv->broker != NULL, FALSE);
+
 	if (priv->dict != NULL)
 	{
 		return TRUE;
 	}
-
-	g_return_val_if_fail (priv->broker != NULL, FALSE);
 
 	if (priv->active_lang == NULL)
 	{
@@ -273,6 +277,9 @@ lazy_init (GeditSpellChecker *checker)
 	return TRUE;
 }
 
+/* If @language is %NULL, find the best available language based on the current
+ * locale.
+ */
 gboolean
 gedit_spell_checker_set_language (GeditSpellChecker               *checker,
 				  const GeditSpellCheckerLanguage *language)
@@ -296,7 +303,7 @@ gedit_spell_checker_set_language (GeditSpellChecker               *checker,
 	}
 
 	priv->active_lang = language;
-	ret = lazy_init (checker);
+	ret = init_dictionary (checker);
 
 	if (!ret)
 	{
@@ -318,11 +325,6 @@ gedit_spell_checker_get_language (GeditSpellChecker *checker)
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker))
-	{
-		return NULL;
-	}
-
 	return priv->active_lang;
 }
 
@@ -339,7 +341,7 @@ gedit_spell_checker_check_word (GeditSpellChecker *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker))
+	if (priv->dict == NULL)
 	{
 		return FALSE;
 	}
@@ -354,7 +356,6 @@ gedit_spell_checker_check_word (GeditSpellChecker *checker,
 		return TRUE;
 	}
 
-	g_return_val_if_fail (priv->dict != NULL, FALSE);
 	enchant_result = enchant_dict_check (priv->dict, word, -1);
 
 	switch (enchant_result)
@@ -400,12 +401,10 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker))
+	if (priv->dict == NULL)
 	{
 		return NULL;
 	}
-
-	g_return_val_if_fail (priv->dict != NULL, NULL);
 
 	suggestions = enchant_dict_suggest (priv->dict, word, -1, NULL);
 
@@ -436,12 +435,10 @@ gedit_spell_checker_add_word_to_personal (GeditSpellChecker *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker))
+	if (priv->dict == NULL)
 	{
 		return FALSE;
 	}
-
-	g_return_val_if_fail (priv->dict != NULL, FALSE);
 
 	enchant_dict_add (priv->dict, word, -1);
 
@@ -461,12 +458,10 @@ gedit_spell_checker_add_word_to_session (GeditSpellChecker *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker))
+	if (priv->dict == NULL)
 	{
 		return FALSE;
 	}
-
-	g_return_val_if_fail (priv->dict != NULL, FALSE);
 
 	enchant_dict_add_to_session (priv->dict, word, -1);
 
@@ -491,7 +486,7 @@ gedit_spell_checker_clear_session (GeditSpellChecker *checker)
 		priv->dict = NULL;
 	}
 
-	if (!lazy_init (checker))
+	if (!init_dictionary (checker))
 	{
 		return FALSE;
 	}
@@ -515,12 +510,10 @@ gedit_spell_checker_set_correction (GeditSpellChecker *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker))
+	if (priv->dict == NULL)
 	{
 		return FALSE;
 	}
-
-	g_return_val_if_fail (priv->dict != NULL, FALSE);
 
 	enchant_dict_store_replacement (priv->dict,
 					word, -1,

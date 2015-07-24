@@ -45,10 +45,10 @@ struct _GeditSpellCheckerClass
 	void (* clear_session)		(GeditSpellChecker *checker);
 };
 
-GeditSpellChecker	*gedit_spell_checker_new		(void);
+GeditSpellChecker	*gedit_spell_checker_new		(const GeditSpellCheckerLanguage *language);
 
 gboolean		 gedit_spell_checker_set_language 	(GeditSpellChecker               *checker,
-								 const GeditSpellCheckerLanguage *lang);
+								 const GeditSpellCheckerLanguage *language);
 const GeditSpellCheckerLanguage
 			*gedit_spell_checker_get_language 	(GeditSpellChecker               *checker);
 

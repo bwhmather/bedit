@@ -254,9 +254,8 @@ language_notify_cb (GeditSpellChecker *checker,
 				     NULL);
 }
 
-static void
-set_language_from_metadata (GeditSpellChecker *checker,
-			    GeditDocument     *doc)
+static const GeditSpellCheckerLanguage *
+get_language_from_metadata (GeditDocument *doc)
 {
 	const GeditSpellCheckerLanguage *lang = NULL;
 	gchar *value = NULL;
@@ -269,12 +268,7 @@ set_language_from_metadata (GeditSpellChecker *checker,
 		g_free (value);
 	}
 
-	if (lang != NULL)
-	{
-		g_signal_handlers_block_by_func (checker, language_notify_cb, doc);
-		gedit_spell_checker_set_language (checker, lang);
-		g_signal_handlers_unblock_by_func (checker, language_notify_cb, doc);
-	}
+	return lang;
 }
 
 static GeditSpellChecker *
@@ -291,9 +285,10 @@ get_spell_checker_from_document (GeditDocument *doc)
 
 	if (data == NULL)
 	{
-		checker = gedit_spell_checker_new ();
+		const GeditSpellCheckerLanguage *lang;
 
-		set_language_from_metadata (checker, doc);
+		lang = get_language_from_metadata (doc);
+		checker = gedit_spell_checker_new (lang);
 
 		g_object_set_qdata_full (G_OBJECT (doc),
 					 spell_checker_id,
@@ -1176,7 +1171,16 @@ on_document_loaded (GeditDocument *doc,
 							   spell_checker_id));
 	if (checker != NULL)
 	{
-		set_language_from_metadata (checker, doc);
+		const GeditSpellCheckerLanguage *lang;
+
+		lang = get_language_from_metadata (doc);
+
+		if (lang != NULL)
+		{
+			g_signal_handlers_block_by_func (checker, language_notify_cb, doc);
+			gedit_spell_checker_set_language (checker, lang);
+			g_signal_handlers_unblock_by_func (checker, language_notify_cb, doc);
+		}
 	}
 
 	set_auto_spell_from_metadata (data);
