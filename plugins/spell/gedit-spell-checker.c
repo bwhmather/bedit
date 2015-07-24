@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2002-2006 Paolo Maggi
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -152,33 +153,33 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 							       G_PARAM_STATIC_STRINGS));
 
 	signals[SIGNAL_ADD_WORD_TO_PERSONAL] =
-	    g_signal_new ("add-word-to-personal",
-			  G_OBJECT_CLASS_TYPE (object_class),
-			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditSpellCheckerClass, add_word_to_personal),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE,
-			  1,
-			  G_TYPE_STRING);
+		g_signal_new ("add-word-to-personal",
+			      G_OBJECT_CLASS_TYPE (object_class),
+			      G_SIGNAL_RUN_LAST,
+			      G_STRUCT_OFFSET (GeditSpellCheckerClass, add_word_to_personal),
+			      NULL, NULL, NULL,
+			      G_TYPE_NONE,
+			      1,
+			      G_TYPE_STRING);
 
 	signals[SIGNAL_ADD_WORD_TO_SESSION] =
-	    g_signal_new ("add-word-to-session",
-			  G_OBJECT_CLASS_TYPE (object_class),
-			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditSpellCheckerClass, add_word_to_session),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE,
-			  1,
-			  G_TYPE_STRING);
+		g_signal_new ("add-word-to-session",
+			      G_OBJECT_CLASS_TYPE (object_class),
+			      G_SIGNAL_RUN_LAST,
+			      G_STRUCT_OFFSET (GeditSpellCheckerClass, add_word_to_session),
+			      NULL, NULL, NULL,
+			      G_TYPE_NONE,
+			      1,
+			      G_TYPE_STRING);
 
 	signals[SIGNAL_CLEAR_SESSION] =
-	    g_signal_new ("clear-session",
-			  G_OBJECT_CLASS_TYPE (object_class),
-			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditSpellCheckerClass, clear_session),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE,
-			  0);
+		g_signal_new ("clear-session",
+			      G_OBJECT_CLASS_TYPE (object_class),
+			      G_SIGNAL_RUN_LAST,
+			      G_STRUCT_OFFSET (GeditSpellCheckerClass, clear_session),
+			      NULL, NULL, NULL,
+			      G_TYPE_NONE,
+			      0);
 }
 
 static void
