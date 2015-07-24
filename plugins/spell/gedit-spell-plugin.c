@@ -234,13 +234,16 @@ gedit_spell_plugin_get_property (GObject    *object,
 }
 
 static void
-set_spell_language_cb (GeditSpellChecker               *checker,
-		       const GeditSpellCheckerLanguage *lang,
-		       GeditDocument                   *doc)
+language_notify_cb (GeditSpellChecker *checker,
+		    GParamSpec        *pspec,
+		    GeditDocument     *doc)
 {
+	const GeditSpellCheckerLanguage *lang;
 	const gchar *key;
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+	lang = gedit_spell_checker_get_language (checker);
 	g_return_if_fail (lang != NULL);
 
 	key = gedit_spell_checker_language_to_key (lang);
@@ -268,9 +271,9 @@ set_language_from_metadata (GeditSpellChecker *checker,
 
 	if (lang != NULL)
 	{
-		g_signal_handlers_block_by_func (checker, set_spell_language_cb, doc);
+		g_signal_handlers_block_by_func (checker, language_notify_cb, doc);
 		gedit_spell_checker_set_language (checker, lang);
-		g_signal_handlers_unblock_by_func (checker, set_spell_language_cb, doc);
+		g_signal_handlers_unblock_by_func (checker, language_notify_cb, doc);
 	}
 }
 
@@ -298,8 +301,8 @@ get_spell_checker_from_document (GeditDocument *doc)
 					 g_object_unref);
 
 		g_signal_connect (checker,
-				  "set_language",
-				  G_CALLBACK (set_spell_language_cb),
+				  "notify::language",
+				  G_CALLBACK (language_notify_cb),
 				  doc);
 	}
 	else

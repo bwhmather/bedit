@@ -714,9 +714,9 @@ clear_session_cb (GeditSpellChecker          *checker,
 }
 
 static void
-set_language_cb (GeditSpellChecker               *checker,
-		 const GeditSpellCheckerLanguage *lang,
-		 GeditAutomaticSpellChecker      *spell)
+language_notify_cb (GeditSpellChecker          *checker,
+		    GParamSpec                 *pspec,
+		    GeditAutomaticSpellChecker *spell)
 {
 	gedit_automatic_spell_checker_recheck_all (spell);
 }
@@ -910,8 +910,8 @@ set_spell_checker (GeditAutomaticSpellChecker *spell,
 				 0);
 
 	g_signal_connect_object (spell->spell_checker,
-				 "set_language",
-				 G_CALLBACK (set_language_cb),
+				 "notify::language",
+				 G_CALLBACK (language_notify_cb),
 				 spell,
 				 0);
 }

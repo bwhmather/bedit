@@ -50,7 +50,6 @@ enum
 {
 	SIGNAL_ADD_WORD_TO_PERSONAL,
 	SIGNAL_ADD_WORD_TO_SESSION,
-	SIGNAL_SET_LANGUAGE,
 	SIGNAL_CLEAR_SESSION,
 	LAST_SIGNAL
 };
@@ -152,16 +151,6 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 			  G_TYPE_NONE,
 			  1,
 			  G_TYPE_STRING);
-
-	signals[SIGNAL_SET_LANGUAGE] =
-	    g_signal_new ("set-language",
-			  G_OBJECT_CLASS_TYPE (object_class),
-			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditSpellCheckerClass, set_language),
-			  NULL, NULL, NULL,
-			  G_TYPE_NONE,
-			  1,
-			  G_TYPE_POINTER);
 
 	signals[SIGNAL_CLEAR_SESSION] =
 	    g_signal_new ("clear-session",
@@ -292,11 +281,7 @@ gedit_spell_checker_set_language (GeditSpellChecker               *spell,
 
 	ret = lazy_init (spell, language);
 
-	if (ret)
-	{
-		g_signal_emit (G_OBJECT (spell), signals[SIGNAL_SET_LANGUAGE], 0, language);
-	}
-	else
+	if (!ret)
 	{
 		g_warning ("Spell checker plugin: cannot use language %s.",
 		           gedit_spell_checker_language_to_string (language));

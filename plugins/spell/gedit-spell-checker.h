@@ -47,9 +47,6 @@ struct _GeditSpellCheckerClass
 	void (*add_word_to_session)  (GeditSpellChecker               *spell,
 				      const gchar                     *word);
 
-	void (*set_language)         (GeditSpellChecker               *spell,
-				      const GeditSpellCheckerLanguage *lang);
-
 	void (*clear_session)	     (GeditSpellChecker               *spell);
 };
 
