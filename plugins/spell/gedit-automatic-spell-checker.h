@@ -31,10 +31,8 @@
 #include "gedit-spell-checker.h"
 
 #define GEDIT_TYPE_AUTOMATIC_SPELL_CHECKER (gedit_automatic_spell_checker_get_type ())
-G_DECLARE_FINAL_TYPE (GeditAutomaticSpellChecker,
-		      gedit_automatic_spell_checker,
-		      GEDIT,
-		      AUTOMATIC_SPELL_CHECKER,
+G_DECLARE_FINAL_TYPE (GeditAutomaticSpellChecker, gedit_automatic_spell_checker,
+		      GEDIT, AUTOMATIC_SPELL_CHECKER,
 		      GObject)
 
 GeditAutomaticSpellChecker *

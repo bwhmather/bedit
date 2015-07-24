@@ -27,10 +27,8 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_SPELL_LANGUAGE_DIALOG (gedit_spell_language_dialog_get_type ())
-G_DECLARE_FINAL_TYPE (GeditSpellLanguageDialog,
-		      gedit_spell_language_dialog,
-		      GEDIT,
-		      SPELL_LANGUAGE_DIALOG,
+G_DECLARE_FINAL_TYPE (GeditSpellLanguageDialog, gedit_spell_language_dialog,
+		      GEDIT, SPELL_LANGUAGE_DIALOG,
 		      GtkDialog)
 
 GtkWidget *	gedit_spell_language_dialog_new			(GtkWindow			 *parent,

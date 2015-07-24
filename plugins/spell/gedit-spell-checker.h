@@ -45,32 +45,33 @@ struct _GeditSpellCheckerClass
 	void (* clear_session)		(GeditSpellChecker *checker);
 };
 
-GeditSpellChecker	*gedit_spell_checker_new		(const GeditSpellCheckerLanguage *language);
+GeditSpellChecker *
+		gedit_spell_checker_new				(const GeditSpellCheckerLanguage *language);
 
-gboolean		 gedit_spell_checker_set_language 	(GeditSpellChecker               *checker,
+gboolean
+		gedit_spell_checker_set_language		(GeditSpellChecker               *checker,
 								 const GeditSpellCheckerLanguage *language);
-const GeditSpellCheckerLanguage
-			*gedit_spell_checker_get_language 	(GeditSpellChecker               *checker);
 
-gboolean		 gedit_spell_checker_check_word 	(GeditSpellChecker               *checker,
-								 const gchar                     *word);
+const GeditSpellCheckerLanguage *
+		gedit_spell_checker_get_language		(GeditSpellChecker *checker);
 
-GSList 			*gedit_spell_checker_get_suggestions 	(GeditSpellChecker               *checker,
-								 const gchar                     *word);
+gboolean	gedit_spell_checker_check_word			(GeditSpellChecker *checker,
+								 const gchar       *word);
 
-gboolean		 gedit_spell_checker_add_word_to_personal
-								(GeditSpellChecker               *checker,
-								 const gchar                     *word);
+GSList *	gedit_spell_checker_get_suggestions		(GeditSpellChecker *checker,
+								 const gchar       *word);
 
-gboolean		 gedit_spell_checker_add_word_to_session
-								(GeditSpellChecker               *checker,
-								 const gchar                     *word);
+gboolean	gedit_spell_checker_add_word_to_personal	(GeditSpellChecker *checker,
+								 const gchar       *word);
 
-gboolean		 gedit_spell_checker_clear_session 	(GeditSpellChecker               *checker);
+gboolean	gedit_spell_checker_add_word_to_session		(GeditSpellChecker *checker,
+								 const gchar       *word);
 
-gboolean		 gedit_spell_checker_set_correction 	(GeditSpellChecker               *checker,
-								 const gchar                     *word,
-								 const gchar                     *replacement);
+gboolean	gedit_spell_checker_clear_session		(GeditSpellChecker *checker);
+
+gboolean	gedit_spell_checker_set_correction		(GeditSpellChecker *checker,
+								 const gchar       *word,
+								 const gchar       *replacement);
 
 G_END_DECLS
 
