@@ -125,7 +125,7 @@ gedit_spell_checker_dialog_close (GeditSpellCheckerDialog *dialog)
 }
 
 static void
-gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass * klass)
+gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkBindingSet *binding_set;
@@ -346,7 +346,8 @@ gedit_spell_checker_dialog_new_from_spell_checker (GeditSpellChecker *spell)
 }
 
 void
-gedit_spell_checker_dialog_set_spell_checker (GeditSpellCheckerDialog *dialog, GeditSpellChecker *spell)
+gedit_spell_checker_dialog_set_spell_checker (GeditSpellCheckerDialog *dialog,
+					      GeditSpellChecker       *spell)
 {
 	const GeditSpellCheckerLanguage* language;
 
@@ -405,7 +406,8 @@ gedit_spell_checker_dialog_set_misspelled_word (GeditSpellCheckerDialog *dialog,
 }
 
 static void
-update_suggestions_list_model (GeditSpellCheckerDialog *dialog, GSList *suggestions)
+update_suggestions_list_model (GeditSpellCheckerDialog *dialog,
+			       GSList                  *suggestions)
 {
 	GtkListStore *store;
 	GtkTreeIter iter;
@@ -455,7 +457,8 @@ update_suggestions_list_model (GeditSpellCheckerDialog *dialog, GSList *suggesti
 }
 
 static void
-word_entry_changed_handler (GtkEditable *editable, GeditSpellCheckerDialog *dialog)
+word_entry_changed_handler (GtkEditable             *editable,
+			    GeditSpellCheckerDialog *dialog)
 {
 	const gchar *text;
 
@@ -478,8 +481,8 @@ word_entry_changed_handler (GtkEditable *editable, GeditSpellCheckerDialog *dial
 }
 
 static void
-suggestions_list_selection_changed_handler (GtkTreeSelection *selection,
-		GeditSpellCheckerDialog *dialog)
+suggestions_list_selection_changed_handler (GtkTreeSelection        *selection,
+					    GeditSpellCheckerDialog *dialog)
 {
  	GtkTreeIter iter;
 	GValue value = {0, };
@@ -502,7 +505,8 @@ suggestions_list_selection_changed_handler (GtkTreeSelection *selection,
 }
 
 static void
-check_word_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *dialog)
+check_word_button_clicked_handler (GtkButton               *button,
+				   GeditSpellCheckerDialog *dialog)
 {
 	const gchar *word;
 	GError *error = NULL;
@@ -551,7 +555,8 @@ check_word_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *d
 }
 
 static void
-add_word_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *dialog)
+add_word_button_clicked_handler (GtkButton               *button,
+				 GeditSpellCheckerDialog *dialog)
 {
 	gchar *word;
 
@@ -569,7 +574,8 @@ add_word_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *dia
 }
 
 static void
-ignore_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *dialog)
+ignore_button_clicked_handler (GtkButton               *button,
+			       GeditSpellCheckerDialog *dialog)
 {
 	gchar *word;
 
@@ -584,7 +590,8 @@ ignore_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *dialo
 }
 
 static void
-ignore_all_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *dialog)
+ignore_all_button_clicked_handler (GtkButton               *button,
+				   GeditSpellCheckerDialog *dialog)
 {
 	gchar *word;
 
@@ -602,7 +609,8 @@ ignore_all_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *d
 }
 
 static void
-change_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *dialog)
+change_button_clicked_handler (GtkButton               *button,
+			       GeditSpellCheckerDialog *dialog)
 {
 	gchar *word;
 	gchar *change;
@@ -628,10 +636,10 @@ change_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *dialo
 
 /* double click on one of the suggestions is like clicking on "change" */
 static void
-suggestions_list_row_activated_handler (GtkTreeView *view,
-		GtkTreePath *path,
-		GtkTreeViewColumn *column,
-		GeditSpellCheckerDialog *dialog)
+suggestions_list_row_activated_handler (GtkTreeView             *view,
+					GtkTreePath             *path,
+					GtkTreeViewColumn       *column,
+					GeditSpellCheckerDialog *dialog)
 {
 	g_return_if_fail (GEDIT_IS_SPELL_CHECKER_DIALOG (dialog));
 
@@ -639,7 +647,8 @@ suggestions_list_row_activated_handler (GtkTreeView *view,
 }
 
 static void
-change_all_button_clicked_handler (GtkButton *button, GeditSpellCheckerDialog *dialog)
+change_all_button_clicked_handler (GtkButton               *button,
+				   GeditSpellCheckerDialog *dialog)
 {
 	gchar *word;
 	gchar *change;
