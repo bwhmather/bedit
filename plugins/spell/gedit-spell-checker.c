@@ -347,7 +347,7 @@ gedit_spell_checker_check_word (GeditSpellChecker *spell,
 	}
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
-	enchant_result = enchant_dict_check (spell->dict, word, strlen (word));
+	enchant_result = enchant_dict_check (spell->dict, word, -1);
 
 	switch (enchant_result)
 	{
@@ -428,7 +428,7 @@ gedit_spell_checker_add_word_to_personal (GeditSpellChecker *spell,
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
 
-	enchant_dict_add_to_pwl (spell->dict, word, strlen (word));
+	enchant_dict_add_to_pwl (spell->dict, word, -1);
 
 	g_signal_emit (G_OBJECT (spell), signals[ADD_WORD_TO_PERSONAL], 0, word);
 
@@ -449,7 +449,7 @@ gedit_spell_checker_add_word_to_session (GeditSpellChecker *spell,
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
 
-	enchant_dict_add_to_session (spell->dict, word, strlen (word));
+	enchant_dict_add_to_session (spell->dict, word, -1);
 
 	g_signal_emit (G_OBJECT (spell), signals[ADD_WORD_TO_SESSION], 0, word);
 
@@ -496,10 +496,8 @@ gedit_spell_checker_set_correction (GeditSpellChecker *spell,
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
 
 	enchant_dict_store_replacement (spell->dict,
-					word,
-					strlen (word),
-					replacement,
-					strlen (replacement));
+					word, -1,
+					replacement, -1);
 
 	return TRUE;
 }
