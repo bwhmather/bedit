@@ -288,6 +288,11 @@ gedit_spell_checker_set_language (GeditSpellChecker               *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
+	if (language != NULL && priv->active_lang == language)
+	{
+		return TRUE;
+	}
+
 	if (priv->dict != NULL)
 	{
 		enchant_broker_free_dict (priv->broker, priv->dict);
