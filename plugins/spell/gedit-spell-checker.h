@@ -21,9 +21,7 @@
 #ifndef __GEDIT_SPELL_CHECKER_H__
 #define __GEDIT_SPELL_CHECKER_H__
 
-#include <glib.h>
 #include <glib-object.h>
-
 #include "gedit-spell-checker-language.h"
 
 G_BEGIN_DECLS

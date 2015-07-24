@@ -25,8 +25,6 @@
 #include "gedit-spell-checker.h"
 #include <string.h>
 #include <enchant.h>
-#include <glib/gi18n.h>
-#include <glib.h>
 #include "gedit-spell-utils.h"
 
 #ifdef OS_OSX
@@ -37,21 +35,21 @@ struct _GeditSpellChecker
 {
 	GObject parent_instance;
 
-	EnchantDict                     *dict;
-	EnchantBroker                   *broker;
+	EnchantBroker *broker;
+	EnchantDict *dict;
 	const GeditSpellCheckerLanguage *active_lang;
 };
 
-/* GObject properties */
-enum {
-	PROP_0 = 0,
+enum
+{
+	PROP_0,
 	PROP_LANGUAGE,
-	LAST_PROP
 };
 
 /* Signals */
-enum {
-	ADD_WORD_TO_PERSONAL = 0,
+enum
+{
+	ADD_WORD_TO_PERSONAL,
 	ADD_WORD_TO_SESSION,
 	SET_LANGUAGE,
 	CLEAR_SESSION,
@@ -60,13 +58,13 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(GeditSpellChecker, gedit_spell_checker, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GeditSpellChecker, gedit_spell_checker, G_TYPE_OBJECT)
 
 static void
-gedit_spell_checker_set_property (GObject *object,
-			   guint prop_id,
-			   const GValue *value,
-			   GParamSpec *pspec)
+gedit_spell_checker_set_property (GObject      *object,
+				  guint         prop_id,
+				  const GValue *value,
+				  GParamSpec   *pspec)
 {
 	/*
 	GeditSpellChecker *spell = GEDIT_SPELL_CHECKER (object);
@@ -83,10 +81,10 @@ gedit_spell_checker_set_property (GObject *object,
 }
 
 static void
-gedit_spell_checker_get_property (GObject *object,
-			   guint prop_id,
-			   GValue *value,
-			   GParamSpec *pspec)
+gedit_spell_checker_get_property (GObject    *object,
+				  guint       prop_id,
+				  GValue     *value,
+				  GParamSpec *pspec)
 {
 	/*
 	GeditSpellChecker *spell = GEDIT_SPELL_CHECKER (object);
@@ -104,42 +102,39 @@ gedit_spell_checker_get_property (GObject *object,
 static void
 gedit_spell_checker_finalize (GObject *object)
 {
-	GeditSpellChecker *spell_checker;
-
-	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (object));
-
-	spell_checker = GEDIT_SPELL_CHECKER (object);
+	GeditSpellChecker *spell_checker = GEDIT_SPELL_CHECKER (object);
 
 	if (spell_checker->dict != NULL)
+	{
 		enchant_broker_free_dict (spell_checker->broker, spell_checker->dict);
+	}
 
 	if (spell_checker->broker != NULL)
+	{
 		enchant_broker_free (spell_checker->broker);
+	}
 
 	G_OBJECT_CLASS (gedit_spell_checker_parent_class)->finalize (object);
 }
 
 static void
-gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
+gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 {
-	GObjectClass *object_class;
-
-	object_class = G_OBJECT_CLASS (klass);
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
 	object_class->set_property = gedit_spell_checker_set_property;
 	object_class->get_property = gedit_spell_checker_get_property;
-
 	object_class->finalize = gedit_spell_checker_finalize;
 
 	g_object_class_install_property (object_class,
 					 PROP_LANGUAGE,
 					 g_param_spec_pointer ("language",
-						 	      "Language",
-							      "The language used by the spell checker",
-							      G_PARAM_READWRITE));
+							       "Language",
+							       "The language used by the spell checker",
+							       G_PARAM_READWRITE));
 
 	signals[ADD_WORD_TO_PERSONAL] =
-	    g_signal_new ("add_word_to_personal",
+	    g_signal_new ("add-word-to-personal",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (GeditSpellCheckerClass, add_word_to_personal),
@@ -149,7 +144,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
 			  G_TYPE_STRING);
 
 	signals[ADD_WORD_TO_SESSION] =
-	    g_signal_new ("add_word_to_session",
+	    g_signal_new ("add-word-to-session",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (GeditSpellCheckerClass, add_word_to_session),
@@ -159,7 +154,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
 			  G_TYPE_STRING);
 
 	signals[SET_LANGUAGE] =
-	    g_signal_new ("set_language",
+	    g_signal_new ("set-language",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (GeditSpellCheckerClass, set_language),
@@ -169,7 +164,7 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass * klass)
 			  G_TYPE_POINTER);
 
 	signals[CLEAR_SESSION] =
-	    g_signal_new ("clear_session",
+	    g_signal_new ("clear-session",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
 			  G_STRUCT_OFFSET (GeditSpellCheckerClass, clear_session),
@@ -189,14 +184,7 @@ gedit_spell_checker_init (GeditSpellChecker *spell_checker)
 GeditSpellChecker *
 gedit_spell_checker_new	(void)
 {
-	GeditSpellChecker *spell;
-
-	spell = GEDIT_SPELL_CHECKER (
-			g_object_new (GEDIT_TYPE_SPELL_CHECKER, NULL));
-
-	g_return_val_if_fail (spell != NULL, NULL);
-
-	return spell;
+	return g_object_new (GEDIT_TYPE_SPELL_CHECKER, NULL);
 }
 
 static const GeditSpellCheckerLanguage *
@@ -305,10 +293,14 @@ gedit_spell_checker_set_language (GeditSpellChecker               *spell,
 	ret = lazy_init (spell, language);
 
 	if (ret)
+	{
 		g_signal_emit (G_OBJECT (spell), signals[SET_LANGUAGE], 0, language);
+	}
 	else
+	{
 		g_warning ("Spell checker plugin: cannot use language %s.",
 		           gedit_spell_checker_language_to_string (language));
+	}
 
 	return ret;
 }
@@ -319,7 +311,9 @@ gedit_spell_checker_get_language (GeditSpellChecker *spell)
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), NULL);
 
 	if (!lazy_init (spell, spell->active_lang))
+	{
 		return NULL;
+	}
 
 	return spell->active_lang;
 }
@@ -335,13 +329,19 @@ gedit_spell_checker_check_word (GeditSpellChecker *spell,
 	g_return_val_if_fail (word != NULL, FALSE);
 
 	if (!lazy_init (spell, spell->active_lang))
+	{
 		return FALSE;
+	}
 
 	if (strcmp (word, "gedit") == 0)
+	{
 		return TRUE;
+	}
 
 	if (gedit_spell_utils_is_digit (word))
+	{
 		return TRUE;
+	}
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
 	enchant_result = enchant_dict_check (spell->dict, word, strlen (word));
@@ -356,21 +356,23 @@ gedit_spell_checker_check_word (GeditSpellChecker *spell,
 				   word, enchant_dict_get_error (spell->dict));
 
 			break;
+
 		case 1:
 			/* it is not in the directory */
 			res = FALSE;
 			break;
+
 		case 0:
 			/* is is in the directory */
 			res = TRUE;
 			break;
+
 		default:
 			g_return_val_if_reached (FALSE);
 	}
 
 	return res;
 }
-
 
 /* return NULL on error or if no suggestions are found */
 GSList *
@@ -386,18 +388,22 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *spell,
 	g_return_val_if_fail (word != NULL, NULL);
 
 	if (!lazy_init (spell, spell->active_lang))
+	{
 		return NULL;
+	}
 
 	g_return_val_if_fail (spell->dict != NULL, NULL);
 
 	suggestions = enchant_dict_suggest (spell->dict, word, strlen (word), &n_suggestions);
 
 	if (n_suggestions == 0)
+	{
 		return NULL;
+	}
 
 	g_return_val_if_fail (suggestions != NULL, NULL);
 
-	for (i = 0; i < (gint)n_suggestions; i++)
+	for (i = 0; i < n_suggestions; i++)
 	{
 		suggestions_list = g_slist_prepend (suggestions_list,
 						    suggestions[i]);
@@ -406,9 +412,7 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *spell,
 	/* The single suggestions will be freed by the caller */
 	g_free (suggestions);
 
-	suggestions_list = g_slist_reverse (suggestions_list);
-
-	return suggestions_list;
+	return g_slist_reverse (suggestions_list);
 }
 
 gboolean
@@ -419,7 +423,9 @@ gedit_spell_checker_add_word_to_personal (GeditSpellChecker *spell,
 	g_return_val_if_fail (word != NULL, FALSE);
 
 	if (!lazy_init (spell, spell->active_lang))
+	{
 		return FALSE;
+	}
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
 
@@ -438,7 +444,9 @@ gedit_spell_checker_add_word_to_session (GeditSpellChecker *spell,
 	g_return_val_if_fail (word != NULL, FALSE);
 
 	if (!lazy_init (spell, spell->active_lang))
+	{
 		return FALSE;
+	}
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
 
@@ -462,17 +470,16 @@ gedit_spell_checker_clear_session (GeditSpellChecker *spell)
 	}
 
 	if (!lazy_init (spell, spell->active_lang))
+	{
 		return FALSE;
+	}
 
 	g_signal_emit (G_OBJECT (spell), signals[CLEAR_SESSION], 0);
 
 	return TRUE;
 }
 
-/*
- * Informs dictionary, that word 'word' will be replaced/corrected by word
- * 'replacement'
- */
+/* Informs dictionary, that @word will be replaced/corrected by @replacement. */
 gboolean
 gedit_spell_checker_set_correction (GeditSpellChecker *spell,
 				    const gchar       *word,
@@ -483,7 +490,9 @@ gedit_spell_checker_set_correction (GeditSpellChecker *spell,
 	g_return_val_if_fail (replacement != NULL, FALSE);
 
 	if (!lazy_init (spell, spell->active_lang))
+	{
 		return FALSE;
+	}
 
 	g_return_val_if_fail (spell->dict != NULL, FALSE);
 
