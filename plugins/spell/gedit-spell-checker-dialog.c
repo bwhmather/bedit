@@ -99,12 +99,6 @@ gedit_spell_checker_dialog_dispose (GObject *object)
 
 	g_clear_object (&dialog->spell_checker);
 
-	if (dialog->misspelled_word != NULL)
-	{
-		g_free (dialog->misspelled_word);
-		dialog->misspelled_word = NULL;
-	}
-
 	G_OBJECT_CLASS (gedit_spell_checker_dialog_parent_class)->dispose (object);
 }
 
