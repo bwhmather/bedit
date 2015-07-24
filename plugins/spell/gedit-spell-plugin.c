@@ -944,7 +944,7 @@ spell_cb (GSimpleAction *action,
 		return;
 	}
 
-	dlg = gedit_spell_checker_dialog_new_from_spell_checker (checker);
+	dlg = gedit_spell_checker_dialog_new (checker);
 	gtk_window_set_modal (GTK_WINDOW (dlg), TRUE);
 	gtk_window_set_transient_for (GTK_WINDOW (dlg),
 				      GTK_WINDOW (priv->window));

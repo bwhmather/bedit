@@ -45,6 +45,12 @@ struct _GeditSpellCheckerDialog
 
 enum
 {
+	PROP_0,
+	PROP_SPELL_CHECKER,
+};
+
+enum
+{
 	IGNORE,
 	IGNORE_ALL,
 	CHANGE,
@@ -89,6 +95,63 @@ static guint signals [LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE (GeditSpellCheckerDialog, gedit_spell_checker_dialog, GTK_TYPE_WINDOW)
 
 static void
+set_spell_checker (GeditSpellCheckerDialog *dialog,
+		   GeditSpellChecker       *checker)
+{
+	const GeditSpellCheckerLanguage *lang;
+
+	g_return_if_fail (dialog->spell_checker == NULL);
+	dialog->spell_checker = g_object_ref (checker);
+
+	lang = gedit_spell_checker_get_language (dialog->spell_checker);
+
+	gtk_header_bar_set_subtitle (GTK_HEADER_BAR (dialog->header_bar),
+	                             gedit_spell_checker_language_to_string (lang));
+
+	g_object_notify (G_OBJECT (dialog), "spell-checker");
+}
+
+static void
+gedit_spell_checker_dialog_get_property (GObject    *object,
+					 guint       prop_id,
+					 GValue     *value,
+					 GParamSpec *pspec)
+{
+	GeditSpellCheckerDialog *dialog = GEDIT_SPELL_CHECKER_DIALOG (object);
+
+	switch (prop_id)
+	{
+		case PROP_SPELL_CHECKER:
+			g_value_set_object (value, dialog->spell_checker);
+			break;
+
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
+gedit_spell_checker_dialog_set_property (GObject      *object,
+					 guint         prop_id,
+					 const GValue *value,
+					 GParamSpec   *pspec)
+{
+	GeditSpellCheckerDialog *dialog = GEDIT_SPELL_CHECKER_DIALOG (object);
+
+	switch (prop_id)
+	{
+		case PROP_SPELL_CHECKER:
+			set_spell_checker (dialog, g_value_get_object (value));
+			break;
+
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
 gedit_spell_checker_dialog_dispose (GObject *object)
 {
 	GeditSpellCheckerDialog *dialog = GEDIT_SPELL_CHECKER_DIALOG (object);
@@ -120,6 +183,8 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkBindingSet *binding_set;
 
+	object_class->get_property = gedit_spell_checker_dialog_get_property;
+	object_class->set_property = gedit_spell_checker_dialog_set_property;
 	object_class->dispose = gedit_spell_checker_dialog_dispose;
 	object_class->finalize = gedit_spell_checker_dialog_finalize;
 
@@ -127,6 +192,16 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 
 	binding_set = gtk_binding_set_by_class (klass);
 	gtk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
+
+	g_object_class_install_property (object_class,
+					 PROP_SPELL_CHECKER,
+					 g_param_spec_object ("spell-checker",
+							      "Spell Checker",
+							      "",
+							      GEDIT_TYPE_SPELL_CHECKER,
+							      G_PARAM_READWRITE |
+							      G_PARAM_CONSTRUCT_ONLY |
+							      G_PARAM_STATIC_STRINGS));
 
 	signals[IGNORE] =
 		g_signal_new ("ignore",
@@ -317,51 +392,13 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 }
 
 GtkWidget *
-gedit_spell_checker_dialog_new (void)
+gedit_spell_checker_dialog_new (GeditSpellChecker *checker)
 {
-	return g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG, NULL);
-}
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
 
-GtkWidget *
-gedit_spell_checker_dialog_new_from_spell_checker (GeditSpellChecker *spell)
-{
-	GeditSpellCheckerDialog *dialog;
-
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), NULL);
-
-	dialog = g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG, NULL);
-
-	gedit_spell_checker_dialog_set_spell_checker (dialog, spell);
-
-	return GTK_WIDGET (dialog);
-}
-
-void
-gedit_spell_checker_dialog_set_spell_checker (GeditSpellCheckerDialog *dialog,
-					      GeditSpellChecker       *checker)
-{
-	const GeditSpellCheckerLanguage *language;
-
-	g_return_if_fail (GEDIT_IS_SPELL_CHECKER_DIALOG (dialog));
-	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (checker));
-
-	g_set_object (&dialog->spell_checker, checker);
-
-	language = gedit_spell_checker_get_language (dialog->spell_checker);
-
-	gtk_header_bar_set_subtitle (GTK_HEADER_BAR (dialog->header_bar),
-	                             gedit_spell_checker_language_to_string (language));
-
-	if (dialog->misspelled_word != NULL)
-	{
-		gedit_spell_checker_dialog_set_misspelled_word (dialog, dialog->misspelled_word);
-	}
-	else
-	{
-		gtk_list_store_clear (GTK_LIST_STORE (dialog->suggestions_list_model));
-	}
-
-	/* TODO: reset all widgets */
+	return g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG,
+			     "spell-checker", checker,
+			     NULL);
 }
 
 void
