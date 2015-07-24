@@ -19,31 +19,28 @@
  */
 
 #include "gedit-spell-checker-dialog.h"
-#include <string.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
-#include <gedit/gedit-utils.h>
 
 struct _GeditSpellCheckerDialog
 {
 	GtkWindow parent_instance;
 
-	GeditSpellChecker 	*spell_checker;
+	GeditSpellChecker *spell_checker;
 
-	gchar			*misspelled_word;
+	gchar *misspelled_word;
 
-	GtkWidget		*header_bar;
-	GtkWidget 		*misspelled_word_label;
-	GtkWidget		*word_entry;
-	GtkWidget		*check_word_button;
-	GtkWidget		*ignore_button;
-	GtkWidget		*ignore_all_button;
-	GtkWidget		*change_button;
-	GtkWidget		*change_all_button;
-	GtkWidget		*add_word_button;
-	GtkWidget		*suggestions_list;
+	GtkWidget *header_bar;
+	GtkWidget *misspelled_word_label;
+	GtkWidget *word_entry;
+	GtkWidget *check_word_button;
+	GtkWidget *ignore_button;
+	GtkWidget *ignore_all_button;
+	GtkWidget *change_button;
+	GtkWidget *change_all_button;
+	GtkWidget *add_word_button;
+	GtkWidget *suggestions_list;
 
-	GtkTreeModel		*suggestions_list_model;
+	GtkTreeModel *suggestions_list_model;
 };
 
 enum
@@ -87,10 +84,9 @@ static void	suggestions_list_row_activated_handler		(GtkTreeView *view,
 								 GtkTreeViewColumn *column,
 								 GeditSpellCheckerDialog *dialog);
 
-
 static guint signals [LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE(GeditSpellCheckerDialog, gedit_spell_checker_dialog, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE (GeditSpellCheckerDialog, gedit_spell_checker_dialog, GTK_TYPE_WINDOW)
 
 static void
 gedit_spell_checker_dialog_dispose (GObject *object)
@@ -323,14 +319,7 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 GtkWidget *
 gedit_spell_checker_dialog_new (void)
 {
-	GeditSpellCheckerDialog *dialog;
-
-	dialog = GEDIT_SPELL_CHECKER_DIALOG (
-			g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG, NULL));
-
-	g_return_val_if_fail (dialog != NULL, NULL);
-
-	return GTK_WIDGET (dialog);
+	return g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG, NULL);
 }
 
 GtkWidget *
@@ -338,12 +327,9 @@ gedit_spell_checker_dialog_new_from_spell_checker (GeditSpellChecker *spell)
 {
 	GeditSpellCheckerDialog *dialog;
 
-	g_return_val_if_fail (spell != NULL, NULL);
+	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (spell), NULL);
 
-	dialog = GEDIT_SPELL_CHECKER_DIALOG (
-			g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG, NULL));
-
-	g_return_val_if_fail (dialog != NULL, NULL);
+	dialog = g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG, NULL);
 
 	gedit_spell_checker_dialog_set_spell_checker (dialog, spell);
 
@@ -352,18 +338,14 @@ gedit_spell_checker_dialog_new_from_spell_checker (GeditSpellChecker *spell)
 
 void
 gedit_spell_checker_dialog_set_spell_checker (GeditSpellCheckerDialog *dialog,
-					      GeditSpellChecker       *spell)
+					      GeditSpellChecker       *checker)
 {
-	const GeditSpellCheckerLanguage* language;
+	const GeditSpellCheckerLanguage *language;
 
 	g_return_if_fail (GEDIT_IS_SPELL_CHECKER_DIALOG (dialog));
-	g_return_if_fail (spell != NULL);
+	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (checker));
 
-	if (dialog->spell_checker != NULL)
-		g_object_unref (dialog->spell_checker);
-
-	dialog->spell_checker = spell;
-	g_object_ref (dialog->spell_checker);
+	g_set_object (&dialog->spell_checker, checker);
 
 	language = gedit_spell_checker_get_language (dialog->spell_checker);
 
@@ -371,9 +353,13 @@ gedit_spell_checker_dialog_set_spell_checker (GeditSpellCheckerDialog *dialog,
 	                             gedit_spell_checker_language_to_string (language));
 
 	if (dialog->misspelled_word != NULL)
+	{
 		gedit_spell_checker_dialog_set_misspelled_word (dialog, dialog->misspelled_word);
+	}
 	else
+	{
 		gtk_list_store_clear (GTK_LIST_STORE (dialog->suggestions_list_model));
+	}
 
 	/* TODO: reset all widgets */
 }
@@ -382,8 +368,8 @@ void
 gedit_spell_checker_dialog_set_misspelled_word (GeditSpellCheckerDialog *dialog,
 						const gchar             *word)
 {
-	gchar *tmp;
-	GSList *sug;
+	gchar *label;
+	GSList *suggestions;
 
 	g_return_if_fail (GEDIT_IS_SPELL_CHECKER_DIALOG (dialog));
 	g_return_if_fail (word != NULL);
@@ -394,16 +380,16 @@ gedit_spell_checker_dialog_set_misspelled_word (GeditSpellCheckerDialog *dialog,
 	g_free (dialog->misspelled_word);
 	dialog->misspelled_word = g_strdup (word);
 
-	tmp = g_strdup_printf("<b>%s</b>", word);
-	gtk_label_set_label (GTK_LABEL (dialog->misspelled_word_label), tmp);
-	g_free (tmp);
+	label = g_strdup_printf("<b>%s</b>", word);
+	gtk_label_set_label (GTK_LABEL (dialog->misspelled_word_label), label);
+	g_free (label);
 
-	sug = gedit_spell_checker_get_suggestions (dialog->spell_checker,
-						   dialog->misspelled_word);
+	suggestions = gedit_spell_checker_get_suggestions (dialog->spell_checker,
+							   dialog->misspelled_word);
 
-	update_suggestions_list_model (dialog, sug);
+	update_suggestions_list_model (dialog, suggestions);
 
-	g_slist_free_full (sug, g_free);
+	g_slist_free_full (suggestions, g_free);
 
 	gtk_widget_set_sensitive (dialog->ignore_button, TRUE);
 	gtk_widget_set_sensitive (dialog->ignore_all_button, TRUE);
