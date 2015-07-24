@@ -23,7 +23,6 @@
 #endif
 
 #include "gedit-spell-checker.h"
-#include <string.h>
 #include <enchant.h>
 #include "gedit-spell-utils.h"
 
@@ -244,6 +243,7 @@ static gboolean
 init_dictionary (GeditSpellChecker *checker)
 {
 	GeditSpellCheckerPrivate *priv;
+	const gchar *app_name;
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
@@ -273,6 +273,9 @@ init_dictionary (GeditSpellChecker *checker)
 		priv->active_lang = NULL;
 		return FALSE;
 	}
+
+	app_name = g_get_application_name ();
+	gedit_spell_checker_add_word_to_session (checker, app_name);
 
 	return TRUE;
 }
@@ -344,11 +347,6 @@ gedit_spell_checker_check_word (GeditSpellChecker *checker,
 	if (priv->dict == NULL)
 	{
 		return FALSE;
-	}
-
-	if (strcmp (word, "gedit") == 0)
-	{
-		return TRUE;
 	}
 
 	if (gedit_spell_utils_is_digit (word))
