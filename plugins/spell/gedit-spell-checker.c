@@ -237,8 +237,7 @@ get_default_language (void)
 }
 
 static gboolean
-lazy_init (GeditSpellChecker               *checker,
-	   const GeditSpellCheckerLanguage *language)
+lazy_init (GeditSpellChecker *checker)
 {
 	GeditSpellCheckerPrivate *priv;
 
@@ -251,7 +250,10 @@ lazy_init (GeditSpellChecker               *checker,
 
 	g_return_val_if_fail (priv->broker != NULL, FALSE);
 
-	priv->active_lang = language != NULL ? language : get_default_language ();
+	if (priv->active_lang == NULL)
+	{
+		priv->active_lang = get_default_language ();
+	}
 
 	if (priv->active_lang != NULL)
 	{
@@ -265,12 +267,6 @@ lazy_init (GeditSpellChecker               *checker,
 	if (priv->dict == NULL)
 	{
 		priv->active_lang = NULL;
-
-		if (language != NULL)
-		{
-			g_warning ("Spell checker plugin: cannot select a default language.");
-		}
-
 		return FALSE;
 	}
 
@@ -299,7 +295,8 @@ gedit_spell_checker_set_language (GeditSpellChecker               *checker,
 		priv->dict = NULL;
 	}
 
-	ret = lazy_init (checker, language);
+	priv->active_lang = language;
+	ret = lazy_init (checker);
 
 	if (!ret)
 	{
@@ -321,7 +318,7 @@ gedit_spell_checker_get_language (GeditSpellChecker *checker)
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker, priv->active_lang))
+	if (!lazy_init (checker))
 	{
 		return NULL;
 	}
@@ -342,7 +339,7 @@ gedit_spell_checker_check_word (GeditSpellChecker *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker, priv->active_lang))
+	if (!lazy_init (checker))
 	{
 		return FALSE;
 	}
@@ -403,7 +400,7 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker, priv->active_lang))
+	if (!lazy_init (checker))
 	{
 		return NULL;
 	}
@@ -439,7 +436,7 @@ gedit_spell_checker_add_word_to_personal (GeditSpellChecker *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker, priv->active_lang))
+	if (!lazy_init (checker))
 	{
 		return FALSE;
 	}
@@ -464,7 +461,7 @@ gedit_spell_checker_add_word_to_session (GeditSpellChecker *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker, priv->active_lang))
+	if (!lazy_init (checker))
 	{
 		return FALSE;
 	}
@@ -494,7 +491,7 @@ gedit_spell_checker_clear_session (GeditSpellChecker *checker)
 		priv->dict = NULL;
 	}
 
-	if (!lazy_init (checker, priv->active_lang))
+	if (!lazy_init (checker))
 	{
 		return FALSE;
 	}
@@ -518,7 +515,7 @@ gedit_spell_checker_set_correction (GeditSpellChecker *checker,
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
-	if (!lazy_init (checker, priv->active_lang))
+	if (!lazy_init (checker))
 	{
 		return FALSE;
 	}
