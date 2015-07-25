@@ -64,7 +64,8 @@ struct _GeditSpellCheckerDialogClass
 
 GType		gedit_spell_checker_dialog_get_type			(void) G_GNUC_CONST;
 
-GtkWidget *	gedit_spell_checker_dialog_new				(GeditSpellChecker *spell);
+GtkWidget *	gedit_spell_checker_dialog_new				(GtkWindow         *parent,
+									 GeditSpellChecker *checker);
 
 void		gedit_spell_checker_dialog_set_misspelled_word		(GeditSpellCheckerDialog *dialog,
 									 const gchar             *word);

@@ -568,11 +568,14 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 }
 
 GtkWidget *
-gedit_spell_checker_dialog_new (GeditSpellChecker *checker)
+gedit_spell_checker_dialog_new (GtkWindow         *parent,
+				GeditSpellChecker *checker)
 {
+	g_return_val_if_fail (GTK_IS_WINDOW (parent), NULL);
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
 
 	return g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG,
+			     "transient-for", parent,
 			     "spell-checker", checker,
 			     "use-header-bar", TRUE,
 			     NULL);
