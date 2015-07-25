@@ -24,13 +24,12 @@
 
 struct _GeditSpellCheckerDialog
 {
-	GtkWindow parent_instance;
+	GtkDialog parent_instance;
 
 	GeditSpellChecker *spell_checker;
 
 	gchar *misspelled_word;
 
-	GtkHeaderBar *header_bar;
 	GtkLabel *misspelled_word_label;
 	GtkEntry *word_entry;
 	GtkWidget *check_word_button;
@@ -55,7 +54,6 @@ enum
 	CHANGE,
 	CHANGE_ALL,
 	ADD_WORD_TO_PERSONAL,
-	CLOSE,
 	LAST_SIGNAL
 };
 
@@ -67,20 +65,23 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GeditSpellCheckerDialog, gedit_spell_checker_dialog, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE (GeditSpellCheckerDialog, gedit_spell_checker_dialog, GTK_TYPE_DIALOG)
 
 static void
 set_spell_checker (GeditSpellCheckerDialog *dialog,
 		   GeditSpellChecker       *checker)
 {
+	GtkHeaderBar *header_bar;
 	const GeditSpellCheckerLanguage *lang;
 
 	g_return_if_fail (dialog->spell_checker == NULL);
 	dialog->spell_checker = g_object_ref (checker);
 
+	header_bar = GTK_HEADER_BAR (gtk_dialog_get_header_bar (GTK_DIALOG (dialog)));
+
 	lang = gedit_spell_checker_get_language (dialog->spell_checker);
 
-	gtk_header_bar_set_subtitle (dialog->header_bar,
+	gtk_header_bar_set_subtitle (header_bar,
 	                             gedit_spell_checker_language_to_string (lang));
 
 	g_object_notify (G_OBJECT (dialog), "spell-checker");
@@ -147,27 +148,15 @@ gedit_spell_checker_dialog_finalize (GObject *object)
 }
 
 static void
-gedit_spell_checker_dialog_close (GeditSpellCheckerDialog *dialog)
-{
-	gtk_window_close (GTK_WINDOW (dialog));
-}
-
-static void
 gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-	GtkBindingSet *binding_set;
 
 	object_class->get_property = gedit_spell_checker_dialog_get_property;
 	object_class->set_property = gedit_spell_checker_dialog_set_property;
 	object_class->dispose = gedit_spell_checker_dialog_dispose;
 	object_class->finalize = gedit_spell_checker_dialog_finalize;
-
-	klass->close = gedit_spell_checker_dialog_close;
-
-	binding_set = gtk_binding_set_by_class (klass);
-	gtk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
 
 	g_object_class_install_property (object_class,
 					 PROP_SPELL_CHECKER,
@@ -231,19 +220,9 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 			      1,
 			      G_TYPE_STRING);
 
-	signals[CLOSE] =
-		g_signal_new ("close",
-			      G_OBJECT_CLASS_TYPE (klass),
-			      G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
-			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, close),
-			      NULL, NULL, NULL,
-			      G_TYPE_NONE,
-			      0);
-
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 						     "/org/gnome/gedit/plugins/spell/ui/spell-checker.ui");
-	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, header_bar);
 	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, misspelled_word_label);
 	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, word_entry);
 	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, check_word_button);
@@ -595,6 +574,7 @@ gedit_spell_checker_dialog_new (GeditSpellChecker *checker)
 
 	return g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG,
 			     "spell-checker", checker,
+			     "use-header-bar", TRUE,
 			     NULL);
 }
 

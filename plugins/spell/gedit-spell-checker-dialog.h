@@ -38,7 +38,7 @@ typedef struct _GeditSpellCheckerDialogClass	GeditSpellCheckerDialogClass;
 
 struct _GeditSpellCheckerDialogClass
 {
-	GtkWindowClass parent_class;
+	GtkDialogClass parent_class;
 
 	/* Signals */
 	void	(* ignore)			(GeditSpellCheckerDialog *dialog,
