@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2002 Paolo Maggi
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,8 +40,6 @@ struct _GeditSpellCheckerDialog
 	GtkWidget *change_all_button;
 	GtkWidget *add_word_button;
 	GtkTreeView *suggestions_view;
-
-	GtkTreeModel *suggestions_model;
 };
 
 enum
@@ -251,7 +250,7 @@ update_suggestions_model (GeditSpellCheckerDialog *dialog,
 	const gchar *first_suggestion;
 	GSList *l;
 
-	store = GTK_LIST_STORE (dialog->suggestions_model);
+	store = GTK_LIST_STORE (gtk_tree_view_get_model (dialog->suggestions_view));
 	gtk_list_store_clear (store);
 
 	gtk_widget_set_sensitive (GTK_WIDGET (dialog->word_entry), TRUE);
@@ -286,7 +285,7 @@ update_suggestions_model (GeditSpellCheckerDialog *dialog,
 	}
 
 	selection = gtk_tree_view_get_selection (dialog->suggestions_view);
-	gtk_tree_model_get_iter_first (dialog->suggestions_model, &iter);
+	gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
 	gtk_tree_selection_select_iter (selection, &iter);
 }
 
@@ -351,7 +350,7 @@ check_word_button_clicked_handler (GtkButton               *button,
 		GtkListStore *store;
 		GtkTreeIter iter;
 
-		store = GTK_LIST_STORE (dialog->suggestions_model);
+		store = GTK_LIST_STORE (gtk_tree_view_get_model (dialog->suggestions_view));
 		gtk_list_store_clear (store);
 
 		gtk_list_store_append (store, &iter);
@@ -485,6 +484,7 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 {
 	GtkBuilder *builder;
 	GtkWidget *content;
+	GtkListStore *store;
 	GtkTreeViewColumn *column;
 	GtkCellRenderer *cell;
 	GtkTreeSelection *selection;
@@ -535,10 +535,9 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
 	/* Suggestion list */
-	dialog->suggestions_model = GTK_TREE_MODEL (gtk_list_store_new (N_COLUMNS, G_TYPE_STRING));
-
-	gtk_tree_view_set_model (dialog->suggestions_view,
-				 dialog->suggestions_model);
+	store = gtk_list_store_new (N_COLUMNS, G_TYPE_STRING);
+	gtk_tree_view_set_model (dialog->suggestions_view, GTK_TREE_MODEL (store));
+	g_object_unref (store);
 
 	/* Add the suggestions column */
 	cell = gtk_cell_renderer_text_new ();
@@ -653,6 +652,7 @@ void
 gedit_spell_checker_dialog_set_completed (GeditSpellCheckerDialog *dialog)
 {
 	gchar *label;
+	GtkListStore *store;
 
 	g_return_if_fail (GEDIT_IS_SPELL_CHECKER_DIALOG (dialog));
 
@@ -660,7 +660,8 @@ gedit_spell_checker_dialog_set_completed (GeditSpellCheckerDialog *dialog)
 	gtk_label_set_label (dialog->misspelled_word_label, label);
 	g_free (label);
 
-	gtk_list_store_clear (GTK_LIST_STORE (dialog->suggestions_model));
+	store = GTK_LIST_STORE (gtk_tree_view_get_model (dialog->suggestions_view));
+	gtk_list_store_clear (store);
 	gtk_entry_set_text (dialog->word_entry, "");
 
 	gtk_widget_set_sensitive (GTK_WIDGET (dialog->word_entry), FALSE);
