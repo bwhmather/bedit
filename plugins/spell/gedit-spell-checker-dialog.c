@@ -483,17 +483,6 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 
 	gtk_widget_init_template (GTK_WIDGET (dialog));
 
-	gtk_label_set_label (dialog->misspelled_word_label, "");
-	gtk_widget_set_sensitive (GTK_WIDGET (dialog->word_entry), FALSE);
-	gtk_widget_set_sensitive (dialog->check_word_button, FALSE);
-	gtk_widget_set_sensitive (dialog->ignore_button, FALSE);
-	gtk_widget_set_sensitive (dialog->ignore_all_button, FALSE);
-	gtk_widget_set_sensitive (dialog->change_button, FALSE);
-	gtk_widget_set_sensitive (dialog->change_all_button, FALSE);
-	gtk_widget_set_sensitive (dialog->add_word_button, FALSE);
-
-	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-
 	/* Suggestion list */
 	store = gtk_list_store_new (N_COLUMNS, G_TYPE_STRING);
 	gtk_tree_view_set_model (dialog->suggestions_view, GTK_TREE_MODEL (store));
@@ -512,12 +501,6 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 	selection = gtk_tree_view_get_selection (dialog->suggestions_view);
 
 	gtk_tree_selection_set_mode (selection, GTK_SELECTION_SINGLE);
-
-	/* Set default button */
-	gtk_widget_set_can_default (dialog->change_button, TRUE);
-	gtk_widget_grab_default (dialog->change_button);
-
-	gtk_entry_set_activates_default (dialog->word_entry, TRUE);
 
 	/* Connect signals */
 	g_signal_connect (dialog->word_entry,
@@ -565,6 +548,8 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 			  "row-activated",
 			  G_CALLBACK (suggestions_row_activated_handler),
 			  dialog);
+
+	gtk_widget_grab_default (dialog->change_button);
 }
 
 GtkWidget *
