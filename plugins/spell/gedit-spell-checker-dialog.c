@@ -546,10 +546,11 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 			  G_CALLBACK (word_entry_changed_handler),
 			  dialog);
 
-	g_signal_connect (selection,
-			  "changed",
-			  G_CALLBACK (suggestions_selection_changed_handler),
-			  dialog);
+	g_signal_connect_object (selection,
+				 "changed",
+				 G_CALLBACK (suggestions_selection_changed_handler),
+				 dialog,
+				 0);
 
 	g_signal_connect (dialog->check_word_button,
 			  "clicked",
