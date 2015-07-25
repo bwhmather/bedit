@@ -21,7 +21,7 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-07-24 17:24+0000\n"
+"POT-Creation-Date: 2015-07-25 13:59+0000\n"
 "PO-Revision-Date: 2015-07-24 21:42+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -3339,7 +3339,7 @@ msgstr "Seřadí dokument nebo vybraný text."
 #. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 #. * for the current misspelled word
 #: ../plugins/spell/gedit-automatic-spell-checker.c:543
-#: ../plugins/spell/gedit-spell-checker-dialog.c:458
+#: ../plugins/spell/gedit-spell-checker-dialog.c:258
 msgid "(no suggested words)"
 msgstr "(žádná navrhovaná slova)"
 
@@ -3379,16 +3379,19 @@ msgstr "_Zvýrazňovat pravopisné chyby"
 msgid "Error when checking the spelling of word “%s”: %s"
 msgstr "Chyba při kontrole pravopisu slova „%s“: %s"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:328
-msgid "Suggestions"
-msgstr "Návrhy"
-
-#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: ../plugins/spell/gedit-spell-checker-dialog.c:568
+#. Translators: Displayed in the "Check
+#. * Spelling" dialog if the current word
+#. * isn't misspelled.
+#.
+#: ../plugins/spell/gedit-spell-checker-dialog.c:356
 msgid "(correct spelling)"
 msgstr "(správný tvar)"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:710
+#: ../plugins/spell/gedit-spell-checker-dialog.c:493
+msgid "Suggestions"
+msgstr "Návrhy"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:609
 msgid "Completed spell checking"
 msgstr "Kontrola pravopisu dokončena"
 
@@ -3438,8 +3441,8 @@ msgid "Select the _language of the current document."
 msgstr "Vyberte _jazyk aktuálního dokumentu."
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check spelling"
-msgstr "Kontrolovat pravopis"
+msgid "Check Spelling"
+msgstr "Kontrola pravopisu"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:2
 msgid "Misspelled word:"
@@ -3576,12 +3579,3 @@ msgstr "Vložit datum/čas"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Vloží aktuální datum a čas na pozici kurzoru."
-
-#~ msgid "_OK"
-#~ msgstr "_Budiž"
-
-#~ msgid "Set language"
-#~ msgstr "Nastavit jazyk"
-
-#~ msgid "Languages"
-#~ msgstr "Jazyky"
