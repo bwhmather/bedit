@@ -892,6 +892,8 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 	 */
 	gtk_text_buffer_get_start_iter (spell->buffer, &start);
 	spell->mark_click = gtk_text_buffer_create_mark (spell->buffer, NULL, &start, TRUE);
+
+	g_object_notify (G_OBJECT (spell), "buffer");
 }
 
 static void
@@ -926,6 +928,8 @@ set_spell_checker (GeditAutomaticSpellChecker *spell,
 				 G_CALLBACK (language_notify_cb),
 				 spell,
 				 0);
+
+	g_object_notify (G_OBJECT (spell), "spell-checker");
 }
 
 static void
