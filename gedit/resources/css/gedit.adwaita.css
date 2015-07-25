@@ -12,7 +12,7 @@ GeditWindow .pane-separator:hover {
 }
 
 .open-document-selector-treeview:prelight {
-    background-color: #fafafa;
+    background-color: alpha(@theme_fg_color, 0.05);
 }
 
 .open-document-selector-treeview:selected:prelight {
@@ -116,12 +116,19 @@ GeditStatusbar {
 
 GeditStatusbar .button.flat {
     border-radius: 0;
+    border-bottom: none;
+}
+
+GeditStatusbar .frame {
+    border: none;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 GeditViewFrame .gedit-search-slider {
     background-color: @theme_base_color;
     padding: 6px;
-    border-color: shade (@notebook_tab_gradient_b, 0.80);
+    border-color: @borders;
     border-radius: 0 0 3px 3px;
     border-width: 0 1px 1px 1px;
     border-style: solid;
