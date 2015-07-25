@@ -66,9 +66,6 @@ GType		gedit_spell_checker_dialog_get_type			(void) G_GNUC_CONST;
 
 GtkWidget *	gedit_spell_checker_dialog_new				(GeditSpellChecker *spell);
 
-void		gedit_spell_checker_dialog_set_spell_checker		(GeditSpellCheckerDialog *dialog,
-									 GeditSpellChecker       *spell);
-
 void		gedit_spell_checker_dialog_set_misspelled_word		(GeditSpellCheckerDialog *dialog,
 									 const gchar             *word);
 
