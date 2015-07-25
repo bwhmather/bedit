@@ -156,6 +156,7 @@ static void
 gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 {
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkBindingSet *binding_set;
 
 	object_class->get_property = gedit_spell_checker_dialog_get_property;
@@ -238,6 +239,20 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      0);
+
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+						     "/org/gnome/gedit/plugins/spell/ui/spell-checker.ui");
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, header_bar);
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, misspelled_word_label);
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, word_entry);
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, check_word_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, ignore_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, ignore_all_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, change_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, change_all_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, add_word_button);
+	gtk_widget_class_bind_template_child (widget_class, GeditSpellCheckerDialog, suggestions_view);
 }
 
 static void
@@ -482,46 +497,12 @@ change_all_button_clicked_handler (GtkButton               *button,
 static void
 gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 {
-	GtkBuilder *builder;
-	GtkWidget *content;
 	GtkListStore *store;
 	GtkTreeViewColumn *column;
 	GtkCellRenderer *cell;
 	GtkTreeSelection *selection;
-	gchar *root_objects[] = {
-		"header_bar",
-		"content",
-		"check_word_image",
-		"add_word_image",
-		"ignore_image",
-		"change_image",
-		"ignore_all_image",
-		"change_all_image",
-		NULL
-	};
 
-	builder = gtk_builder_new ();
-	gtk_builder_add_objects_from_resource (builder, "/org/gnome/gedit/plugins/spell/ui/spell-checker.ui",
-	                                       root_objects, NULL);
-	content = GTK_WIDGET (gtk_builder_get_object (builder, "content"));
-	dialog->header_bar = GTK_HEADER_BAR (gtk_builder_get_object (builder, "header_bar"));
-	dialog->misspelled_word_label = GTK_LABEL (gtk_builder_get_object (builder, "misspelled_word_label"));
-	dialog->word_entry = GTK_ENTRY (gtk_builder_get_object (builder, "word_entry"));
-	dialog->check_word_button = GTK_WIDGET (gtk_builder_get_object (builder, "check_word_button"));
-	dialog->ignore_button = GTK_WIDGET (gtk_builder_get_object (builder, "ignore_button"));
-	dialog->ignore_all_button = GTK_WIDGET (gtk_builder_get_object (builder, "ignore_all_button"));
-	dialog->change_button = GTK_WIDGET (gtk_builder_get_object (builder, "change_button"));
-	dialog->change_all_button = GTK_WIDGET (gtk_builder_get_object (builder, "change_all_button"));
-	dialog->add_word_button = GTK_WIDGET (gtk_builder_get_object (builder, "add_word_button"));
-	dialog->suggestions_view = GTK_TREE_VIEW (gtk_builder_get_object (builder, "suggestions_view"));
-
-	gtk_window_set_titlebar (GTK_WINDOW (dialog),
-				 GTK_WIDGET (dialog->header_bar));
-
-	gtk_header_bar_set_subtitle (dialog->header_bar, NULL);
-
-	gtk_container_add (GTK_CONTAINER (dialog), content);
-	g_object_unref (builder);
+	gtk_widget_init_template (GTK_WIDGET (dialog));
 
 	gtk_label_set_label (dialog->misspelled_word_label, "");
 	gtk_widget_set_sensitive (GTK_WIDGET (dialog->word_entry), FALSE);
