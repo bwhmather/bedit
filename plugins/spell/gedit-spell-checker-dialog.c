@@ -62,7 +62,7 @@ enum
 
 enum
 {
-	COLUMN_SUGGESTIONS,
+	COLUMN_SUGGESTION,
 	N_COLUMNS
 };
 
@@ -328,12 +328,12 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 	/* Add the suggestions column */
 	cell = gtk_cell_renderer_text_new ();
 	column = gtk_tree_view_column_new_with_attributes (_("Suggestions"), cell,
-							   "text", COLUMN_SUGGESTIONS,
+							   "text", COLUMN_SUGGESTION,
 							   NULL);
 
 	gtk_tree_view_append_column (dialog->suggestions_view, column);
 
-	gtk_tree_view_set_search_column (dialog->suggestions_view, COLUMN_SUGGESTIONS);
+	gtk_tree_view_set_search_column (dialog->suggestions_view, COLUMN_SUGGESTION);
 
 	selection = gtk_tree_view_get_selection (dialog->suggestions_view);
 
@@ -455,7 +455,7 @@ update_suggestions_model (GeditSpellCheckerDialog *dialog,
 		gtk_list_store_set (store, &iter,
 		                    /* Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
 		                     * for the current misspelled word */
-				    COLUMN_SUGGESTIONS, _("(no suggested words)"),
+				    COLUMN_SUGGESTION, _("(no suggested words)"),
 				    -1);
 
 		gtk_entry_set_text (dialog->word_entry, "");
@@ -474,7 +474,7 @@ update_suggestions_model (GeditSpellCheckerDialog *dialog,
 
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
-				    COLUMN_SUGGESTIONS, suggestion,
+				    COLUMN_SUGGESTION, suggestion,
 				    -1);
 	}
 
@@ -510,7 +510,7 @@ suggestions_selection_changed_handler (GtkTreeSelection        *selection,
 	}
 
 	gtk_tree_model_get (model, &iter,
-			    COLUMN_SUGGESTIONS, &text,
+			    COLUMN_SUGGESTION, &text,
 			    -1);
 
 	gtk_entry_set_text (dialog->word_entry, text);
@@ -553,7 +553,7 @@ check_word_button_clicked_handler (GtkButton               *button,
 				     * Spelling" dialog if the current word
 				     * isn't misspelled.
 				     */
-				    COLUMN_SUGGESTIONS, _("(correct spelling)"),
+				    COLUMN_SUGGESTION, _("(correct spelling)"),
 				    -1);
 
 		gtk_widget_set_sensitive (GTK_WIDGET (dialog->suggestions_view), FALSE);
