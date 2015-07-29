@@ -301,9 +301,11 @@ static void
 set_click_policy_property (GeditFileBrowserView            *obj,
 			   GeditFileBrowserViewClickPolicy  click_policy)
 {
-	GtkTreeIter iter;
 	GdkDisplay *display;
+	GtkTreeIter iter;
 	GdkWindow *win;
+
+	display = gtk_widget_get_display (GTK_WIDGET (obj));
 
 	obj->priv->click_policy = click_policy;
 
@@ -311,8 +313,7 @@ set_click_policy_property (GeditFileBrowserView            *obj,
 	{
 		if (obj->priv->hand_cursor == NULL)
 		{
-			display = gtk_widget_get_display (GTK_WIDGET (obj));
-			obj->priv->hand_cursor = gdk_cursor_new_for_display (display, GDK_HAND2);
+			obj->priv->hand_cursor = gdk_cursor_new_from_name (display, "pointer");
 		}
 	}
 	else if (click_policy == GEDIT_FILE_BROWSER_VIEW_CLICK_POLICY_DOUBLE)
@@ -335,10 +336,10 @@ set_click_policy_property (GeditFileBrowserView            *obj,
 			win = gtk_widget_get_window (GTK_WIDGET (obj));
 			gdk_window_set_cursor (win, NULL);
 
-			display = gtk_widget_get_display (GTK_WIDGET (obj));
-
 			if (display != NULL)
+			{
 				gdk_display_flush (display);
+			}
 		}
 
 		if (obj->priv->hand_cursor)

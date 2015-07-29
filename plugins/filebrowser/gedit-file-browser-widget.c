@@ -968,7 +968,7 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 			                                   free_name_icon);
 
 	display = gtk_widget_get_display (GTK_WIDGET (obj));
-	obj->priv->busy_cursor = gdk_cursor_new_for_display (display, GDK_WATCH);
+	obj->priv->busy_cursor = gdk_cursor_new_from_name (display, "progress");
 
 	builder = gtk_builder_new ();
 	if (!gtk_builder_add_from_resource (builder,
@@ -1987,7 +1987,7 @@ set_busy (GeditFileBrowserWidget *obj,
 		GdkDisplay *display;
 
 		display = gtk_widget_get_display (GTK_WIDGET (obj));
-		cursor = gdk_cursor_new_for_display (display, GDK_WATCH);
+		cursor = gdk_cursor_new_from_name (display, "progress");
 		gdk_window_set_cursor (window, cursor);
 		g_object_unref (cursor);
 	}

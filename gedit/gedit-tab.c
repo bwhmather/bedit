@@ -449,9 +449,12 @@ static void
 set_cursor_according_to_state (GtkTextView   *view,
 			       GeditTabState  state)
 {
+	GdkDisplay *display;
 	GdkCursor *cursor;
 	GdkWindow *text_window;
 	GdkWindow *left_window;
+
+	display = gtk_widget_get_display (GTK_WIDGET (view));
 
 	text_window = gtk_text_view_get_window (view, GTK_TEXT_WINDOW_TEXT);
 	left_window = gtk_text_view_get_window (view, GTK_TEXT_WINDOW_LEFT);
@@ -462,9 +465,7 @@ set_cursor_according_to_state (GtkTextView   *view,
 	    (state == GEDIT_TAB_STATE_PRINTING)         ||
 	    (state == GEDIT_TAB_STATE_CLOSING))
 	{
-		cursor = gdk_cursor_new_for_display (
-				gtk_widget_get_display (GTK_WIDGET (view)),
-				GDK_WATCH);
+		cursor = gdk_cursor_new_from_name (display, "progress");
 
 		if (text_window != NULL)
 			gdk_window_set_cursor (text_window, cursor);
@@ -475,9 +476,7 @@ set_cursor_according_to_state (GtkTextView   *view,
 	}
 	else
 	{
-		cursor = gdk_cursor_new_for_display (
-				gtk_widget_get_display (GTK_WIDGET (view)),
-				GDK_XTERM);
+		cursor = gdk_cursor_new_from_name (display, "text");
 
 		if (text_window != NULL)
 			gdk_window_set_cursor (text_window, cursor);
