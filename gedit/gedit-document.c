@@ -1660,23 +1660,15 @@ get_metadata_from_gvfs (GeditDocument *doc,
 }
 
 static void
-set_gvfs_metadata (GeditDocument *doc,
-		   GFileInfo     *info,
-		   const gchar   *key,
-		   const gchar   *value)
+set_gvfs_metadata (GFileInfo   *info,
+		   const gchar *key,
+		   const gchar *value)
 {
-	GeditDocumentPrivate *priv;
-
-	priv = gedit_document_get_instance_private (doc);
+	g_return_if_fail (G_IS_FILE_INFO (info));
 
 	if (value != NULL)
 	{
 		g_file_info_set_attribute_string (info, key, value);
-
-		if (priv->metadata_info != NULL)
-		{
-			g_file_info_set_attribute_string (priv->metadata_info, key, value);
-		}
 	}
 	else
 	{
@@ -1685,14 +1677,6 @@ set_gvfs_metadata (GeditDocument *doc,
 					   key,
 					   G_FILE_ATTRIBUTE_TYPE_INVALID,
 					   NULL);
-
-		if (priv->metadata_info != NULL)
-		{
-			g_file_info_set_attribute (priv->metadata_info,
-						   key,
-						   G_FILE_ATTRIBUTE_TYPE_INVALID,
-						   NULL);
-		}
 	}
 }
 
@@ -1774,8 +1758,8 @@ gedit_document_set_metadata (GeditDocument *doc,
 
 		if (priv->use_gvfs_metadata)
 		{
-			/* Collect the metadata into @info. */
-			set_gvfs_metadata (doc, info, key, value);
+			set_gvfs_metadata (info, key, value);
+			set_gvfs_metadata (priv->metadata_info, key, value);
 		}
 		else
 		{
