@@ -106,6 +106,7 @@ static void	auto_spell_change_state_cb	(GSimpleAction *action, GVariant *state, 
 
 static void	on_document_loaded		(GeditDocument *doc, ViewData *data);
 static void	on_document_saved		(GeditDocument *doc, ViewData *data);
+static void	set_auto_spell_from_metadata	(ViewData *data);
 
 static GActionEntry action_entries[] =
 {
@@ -140,6 +141,8 @@ view_data_new (GeditSpellPlugin *plugin,
 			  "saved",
 			  G_CALLBACK (on_document_saved),
 			  data);
+
+	set_auto_spell_from_metadata (data);
 
 	return data;
 }
@@ -1275,8 +1278,6 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 					VIEW_DATA_KEY,
 					data,
 					(GDestroyNotify) view_data_free);
-
-		set_auto_spell_from_metadata (data);
 	}
 
 	priv->tab_added_id = g_signal_connect (priv->window,
