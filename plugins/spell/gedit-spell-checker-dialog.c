@@ -409,6 +409,7 @@ change_button_clicked_handler (GtkButton               *button,
 
 	word = g_strdup (dialog->misspelled_word);
 	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_CHANGE], 0, word, change);
+	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_GOTO_NEXT], 0);
 
 	g_free (word);
 	g_free (change);
@@ -443,6 +444,7 @@ change_all_button_clicked_handler (GtkButton               *button,
 
 	word = g_strdup (dialog->misspelled_word);
 	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_CHANGE_ALL], 0, word, change);
+	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_GOTO_NEXT], 0);
 
 	g_free (word);
 	g_free (change);

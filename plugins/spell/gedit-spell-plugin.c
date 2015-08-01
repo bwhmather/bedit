@@ -645,8 +645,8 @@ select_misspelled_word (GeditView *view,
 }
 
 static void
-goto_next_misspelled_word (GeditSpellCheckerDialog *dialog,
-			   GeditView               *view)
+goto_next_cb (GeditSpellCheckerDialog *dialog,
+	      GeditView               *view)
 {
 	gchar *word = NULL;
 	gint word_start_offset;
@@ -709,8 +709,6 @@ change_cb (GeditSpellCheckerDialog *dialog,
 	gtk_text_buffer_end_user_action (GTK_TEXT_BUFFER (doc));
 
 	update_current (doc, range->mw_start + g_utf8_strlen (change_to, -1));
-
-	goto_next_misspelled_word (dialog, view);
 }
 
 static void
@@ -761,8 +759,6 @@ change_all_cb (GeditSpellCheckerDialog *dialog,
 	gtk_source_search_context_replace_all (search_context, change_to, -1, NULL);
 
 	update_current (doc, range->mw_start + g_utf8_strlen (change_to, -1));
-
-	goto_next_misspelled_word (dialog, view);
 
 	g_object_unref (search_settings);
 	g_object_unref (search_context);
@@ -922,7 +918,7 @@ spell_cb (GSimpleAction *action,
 
 	g_signal_connect (dialog,
 			  "goto-next",
-			  G_CALLBACK (goto_next_misspelled_word),
+			  G_CALLBACK (goto_next_cb),
 			  view);
 
 	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dialog), word);
