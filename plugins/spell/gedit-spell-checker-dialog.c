@@ -235,6 +235,17 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 }
 
 static void
+clear_suggestions (GeditSpellCheckerDialog *dialog)
+{
+	GtkListStore *store;
+
+	store = GTK_LIST_STORE (gtk_tree_view_get_model (dialog->suggestions_view));
+	gtk_list_store_clear (store);
+
+	gtk_tree_view_columns_autosize (dialog->suggestions_view);
+}
+
+static void
 set_suggestions (GeditSpellCheckerDialog *dialog,
 		 GSList                  *suggestions)
 {
@@ -244,8 +255,9 @@ set_suggestions (GeditSpellCheckerDialog *dialog,
 	const gchar *first_suggestion;
 	GSList *l;
 
+	clear_suggestions (dialog);
+
 	store = GTK_LIST_STORE (gtk_tree_view_get_model (dialog->suggestions_view));
-	gtk_list_store_clear (store);
 
 	if (suggestions == NULL)
 	{
@@ -344,8 +356,9 @@ check_word_button_clicked_handler (GtkButton               *button,
 		GtkListStore *store;
 		GtkTreeIter iter;
 
+		clear_suggestions (dialog);
+
 		store = GTK_LIST_STORE (gtk_tree_view_get_model (dialog->suggestions_view));
-		gtk_list_store_clear (store);
 
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
@@ -596,7 +609,6 @@ void
 gedit_spell_checker_dialog_set_completed (GeditSpellCheckerDialog *dialog)
 {
 	gchar *label;
-	GtkListStore *store;
 
 	g_return_if_fail (GEDIT_IS_SPELL_CHECKER_DIALOG (dialog));
 
@@ -604,8 +616,7 @@ gedit_spell_checker_dialog_set_completed (GeditSpellCheckerDialog *dialog)
 	gtk_label_set_label (dialog->misspelled_word_label, label);
 	g_free (label);
 
-	store = GTK_LIST_STORE (gtk_tree_view_get_model (dialog->suggestions_view));
-	gtk_list_store_clear (store);
+	clear_suggestions (dialog);
 	gtk_entry_set_text (dialog->word_entry, "");
 
 	gtk_widget_set_sensitive (GTK_WIDGET (dialog->word_entry), FALSE);
