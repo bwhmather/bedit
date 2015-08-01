@@ -26,15 +26,10 @@
 
 G_BEGIN_DECLS
 
-#define GEDIT_TYPE_SPELL_CHECKER_DIALOG            (gedit_spell_checker_dialog_get_type ())
-#define GEDIT_SPELL_CHECKER_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GEDIT_TYPE_SPELL_CHECKER_DIALOG, GeditSpellCheckerDialog))
-#define GEDIT_SPELL_CHECKER_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GEDIT_TYPE_SPELL_CHECKER_DIALOG, GeditSpellCheckerDialog))
-#define GEDIT_IS_SPELL_CHECKER_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GEDIT_TYPE_SPELL_CHECKER_DIALOG))
-#define GEDIT_IS_SPELL_CHECKER_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_SPELL_CHECKER_DIALOG))
-#define GEDIT_SPELL_CHECKER_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GEDIT_TYPE_SPELL_CHECKER_DIALOG, GeditSpellCheckerDialog))
-
-typedef struct _GeditSpellCheckerDialog		GeditSpellCheckerDialog;
-typedef struct _GeditSpellCheckerDialogClass	GeditSpellCheckerDialogClass;
+#define GEDIT_TYPE_SPELL_CHECKER_DIALOG (gedit_spell_checker_dialog_get_type ())
+G_DECLARE_DERIVABLE_TYPE (GeditSpellCheckerDialog, gedit_spell_checker_dialog,
+			  GEDIT, SPELL_CHECKER_DIALOG,
+			  GtkDialog)
 
 struct _GeditSpellCheckerDialogClass
 {
@@ -51,8 +46,6 @@ struct _GeditSpellCheckerDialogClass
 
 	void	(* goto_next)		(GeditSpellCheckerDialog *dialog);
 };
-
-GType		gedit_spell_checker_dialog_get_type			(void) G_GNUC_CONST;
 
 GtkWidget *	gedit_spell_checker_dialog_new				(GtkWindow         *parent,
 									 GeditSpellChecker *checker);
