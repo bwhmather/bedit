@@ -247,8 +247,6 @@ set_suggestions (GeditSpellCheckerDialog *dialog,
 	store = GTK_LIST_STORE (gtk_tree_view_get_model (dialog->suggestions_view));
 	gtk_list_store_clear (store);
 
-	gtk_widget_set_sensitive (GTK_WIDGET (dialog->word_entry), TRUE);
-
 	if (suggestions == NULL)
 	{
 		gtk_list_store_append (store, &iter);
@@ -592,10 +590,6 @@ gedit_spell_checker_dialog_set_misspelled_word (GeditSpellCheckerDialog *dialog,
 	set_suggestions (dialog, suggestions);
 
 	g_slist_free_full (suggestions, g_free);
-
-	gtk_widget_set_sensitive (dialog->ignore_button, TRUE);
-	gtk_widget_set_sensitive (dialog->ignore_all_button, TRUE);
-	gtk_widget_set_sensitive (dialog->add_word_button, TRUE);
 }
 
 void
