@@ -646,7 +646,7 @@ select_misspelled_word (GeditView *view,
 }
 
 static void
-ignore_cb (GeditSpellCheckerDialog *dlg,
+ignore_cb (GeditSpellCheckerDialog *dialog,
 	   const gchar             *w,
 	   GeditView               *view)
 {
@@ -661,20 +661,20 @@ ignore_cb (GeditSpellCheckerDialog *dlg,
 	word = get_next_misspelled_word (view, &word_start_offset, &word_end_offset);
 	if (word == NULL)
 	{
-		gedit_spell_checker_dialog_set_completed (dlg);
+		gedit_spell_checker_dialog_set_completed (dialog);
 
 		return;
 	}
 
 	select_misspelled_word (view, word_start_offset, word_end_offset);
 
-	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dlg), word);
+	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dialog), word);
 
 	g_free (word);
 }
 
 static void
-change_cb (GeditSpellCheckerDialog *dlg,
+change_cb (GeditSpellCheckerDialog *dialog,
 	   const gchar             *word,
 	   const gchar             *change,
 	   GeditView               *view)
@@ -727,11 +727,11 @@ change_cb (GeditSpellCheckerDialog *dlg,
 	update_current (doc, range->mw_start + g_utf8_strlen (change, -1));
 
 	/* go to next misspelled word */
-	ignore_cb (dlg, word, view);
+	ignore_cb (dialog, word, view);
 }
 
 static void
-change_all_cb (GeditSpellCheckerDialog *dlg,
+change_all_cb (GeditSpellCheckerDialog *dialog,
 	       const gchar             *word,
 	       const gchar             *change,
 	       GeditView               *view)
@@ -791,14 +791,14 @@ change_all_cb (GeditSpellCheckerDialog *dlg,
 	update_current (doc, range->mw_start + g_utf8_strlen (change, -1));
 
 	/* go to next misspelled word */
-	ignore_cb (dlg, word, view);
+	ignore_cb (dialog, word, view);
 
 	g_object_unref (search_settings);
 	g_object_unref (search_context);
 }
 
 static void
-add_word_cb (GeditSpellCheckerDialog *dlg,
+add_word_cb (GeditSpellCheckerDialog *dialog,
 	     const gchar             *word,
 	     GeditView               *view)
 {
@@ -806,18 +806,18 @@ add_word_cb (GeditSpellCheckerDialog *dlg,
 	g_return_if_fail (word != NULL);
 
 	/* go to next misspelled word */
-	ignore_cb (dlg, word, view);
+	ignore_cb (dialog, word, view);
 }
 
 static void
-language_dialog_response (GtkDialog         *dlg,
+language_dialog_response (GtkDialog         *dialog,
 			  gint               response_id,
 			  GeditSpellChecker *checker)
 {
 	if (response_id == GTK_RESPONSE_HELP)
 	{
 		gedit_app_show_help (GEDIT_APP (g_application_get_default ()),
-				     GTK_WINDOW (dlg),
+				     GTK_WINDOW (dialog),
 				     NULL,
 				     "gedit-spellcheck");
 		return;
@@ -827,14 +827,14 @@ language_dialog_response (GtkDialog         *dlg,
 	{
 		const GeditSpellCheckerLanguage *lang;
 
-		lang = gedit_spell_language_get_selected_language (GEDIT_SPELL_LANGUAGE_DIALOG (dlg));
+		lang = gedit_spell_language_get_selected_language (GEDIT_SPELL_LANGUAGE_DIALOG (dialog));
 		if (lang != NULL)
 		{
 			gedit_spell_checker_set_language (checker, lang);
 		}
 	}
 
-	gtk_widget_destroy (GTK_WIDGET (dlg));
+	gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 static void
@@ -847,7 +847,7 @@ set_language_cb (GSimpleAction *action,
 	GeditDocument *doc;
 	GeditSpellChecker *checker;
 	const GeditSpellCheckerLanguage *lang;
-	GtkWidget *dlg;
+	GtkWidget *dialog;
 	GtkWindowGroup *wg;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -862,24 +862,24 @@ set_language_cb (GSimpleAction *action,
 
 	lang = gedit_spell_checker_get_language (checker);
 
-	dlg = gedit_spell_language_dialog_new (GTK_WINDOW (priv->window), lang);
+	dialog = gedit_spell_language_dialog_new (GTK_WINDOW (priv->window), lang);
 
 	wg = gedit_window_get_group (priv->window);
 
-	gtk_window_group_add_window (wg, GTK_WINDOW (dlg));
+	gtk_window_group_add_window (wg, GTK_WINDOW (dialog));
 
-	gtk_window_set_modal (GTK_WINDOW (dlg), TRUE);
+	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
-	gtk_dialog_add_button (GTK_DIALOG (dlg),
+	gtk_dialog_add_button (GTK_DIALOG (dialog),
 			       _("_Help"),
 			       GTK_RESPONSE_HELP);
 
-	g_signal_connect (dlg,
+	g_signal_connect (dialog,
 			  "response",
 			  G_CALLBACK (language_dialog_response),
 			  checker);
 
-	gtk_widget_show (dlg);
+	gtk_widget_show (dialog);
 }
 
 static void
@@ -892,7 +892,7 @@ spell_cb (GSimpleAction *action,
 	GeditView *view;
 	GeditDocument *doc;
 	GeditSpellChecker *checker;
-	GtkWidget *dlg;
+	GtkWidget *dialog;
 	GtkTextIter start, end;
 	gint word_start_offset, word_end_offset;
 	gchar *word;
@@ -947,22 +947,22 @@ spell_cb (GSimpleAction *action,
 		return;
 	}
 
-	dlg = gedit_spell_checker_dialog_new (GTK_WINDOW (priv->window), checker);
-	gtk_window_set_modal (GTK_WINDOW (dlg), TRUE);
+	dialog = gedit_spell_checker_dialog_new (GTK_WINDOW (priv->window), checker);
+	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
-	g_signal_connect (dlg, "ignore", G_CALLBACK (ignore_cb), view);
-	g_signal_connect (dlg, "ignore_all", G_CALLBACK (ignore_cb), view);
+	g_signal_connect (dialog, "ignore", G_CALLBACK (ignore_cb), view);
+	g_signal_connect (dialog, "ignore_all", G_CALLBACK (ignore_cb), view);
 
-	g_signal_connect (dlg, "change", G_CALLBACK (change_cb), view);
-	g_signal_connect (dlg, "change_all", G_CALLBACK (change_all_cb), view);
+	g_signal_connect (dialog, "change", G_CALLBACK (change_cb), view);
+	g_signal_connect (dialog, "change_all", G_CALLBACK (change_all_cb), view);
 
-	g_signal_connect (dlg, "add_word_to_personal", G_CALLBACK (add_word_cb), view);
+	g_signal_connect (dialog, "add_word_to_personal", G_CALLBACK (add_word_cb), view);
 
-	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dlg), word);
+	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dialog), word);
 
 	g_free (word);
 
-	gtk_widget_show (dlg);
+	gtk_widget_show (dialog);
 	select_misspelled_word (view, word_start_offset, word_end_offset);
 }
 
