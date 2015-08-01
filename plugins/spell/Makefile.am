@@ -34,6 +34,10 @@ plugins_spell_libspell_la_SOURCES =			\
 	plugins/spell/gedit-spell-checker-language.h	\
 	plugins/spell/gedit-spell-language-dialog.c	\
 	plugins/spell/gedit-spell-language-dialog.h	\
+	plugins/spell/gedit-spell-navigator.c		\
+	plugins/spell/gedit-spell-navigator.h		\
+	plugins/spell/gedit-spell-navigator-gtv.c	\
+	plugins/spell/gedit-spell-navigator-gtv.h	\
 	plugins/spell/gedit-automatic-spell-checker.c	\
 	plugins/spell/gedit-automatic-spell-checker.h	\
 	plugins/spell/gedit-spell-utils.c		\
