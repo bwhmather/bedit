@@ -53,7 +53,7 @@ struct _GeditSpellPluginPrivate
 {
 	GeditWindow    *window;
 
-	guint           message_cid;
+	guint           statusbar_context_id;
 	gulong          tab_added_id;
 	gulong          tab_removed_id;
 };
@@ -916,7 +916,7 @@ spell_cb (GSimpleAction *action,
 
 		statusbar = gedit_window_get_statusbar (priv->window);
 		gedit_statusbar_flash_message (GEDIT_STATUSBAR (statusbar),
-					       priv->message_cid,
+					       priv->statusbar_context_id,
 					       _("The document is empty."));
 
 		return;
@@ -941,7 +941,7 @@ spell_cb (GSimpleAction *action,
 
 		statusbar = gedit_window_get_statusbar (priv->window);
 		gedit_statusbar_flash_message (GEDIT_STATUSBAR (statusbar),
-					       priv->message_cid,
+					       priv->statusbar_context_id,
 					       _("No misspelled words"));
 
 		return;
@@ -1251,6 +1251,7 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 {
 	GeditSpellPlugin *plugin;
 	GeditSpellPluginPrivate *priv;
+	GtkStatusbar *statusbar;
 	GList *views, *l;
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -1263,8 +1264,8 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 	                                 G_N_ELEMENTS (action_entries),
 	                                 activatable);
 
-	priv->message_cid = gtk_statusbar_get_context_id (GTK_STATUSBAR (gedit_window_get_statusbar (priv->window)),
-	                                                  "spell_plugin_message");
+	statusbar = GTK_STATUSBAR (gedit_window_get_statusbar (priv->window));
+	priv->statusbar_context_id = gtk_statusbar_get_context_id (statusbar, "spell_plugin_message");
 
 	update_ui (plugin);
 
