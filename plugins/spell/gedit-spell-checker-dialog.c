@@ -49,11 +49,11 @@ enum
 
 enum
 {
-	IGNORE,
-	IGNORE_ALL,
-	CHANGE,
-	CHANGE_ALL,
-	ADD_WORD_TO_PERSONAL,
+	SIGNAL_IGNORE,
+	SIGNAL_IGNORE_ALL,
+	SIGNAL_CHANGE,
+	SIGNAL_CHANGE_ALL,
+	SIGNAL_ADD_WORD_TO_PERSONAL,
 	LAST_SIGNAL
 };
 
@@ -168,7 +168,7 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 							      G_PARAM_CONSTRUCT_ONLY |
 							      G_PARAM_STATIC_STRINGS));
 
-	signals[IGNORE] =
+	signals[SIGNAL_IGNORE] =
 		g_signal_new ("ignore",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
@@ -178,8 +178,8 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 			      1,
 			      G_TYPE_STRING);
 
-	signals[IGNORE_ALL] =
-		g_signal_new ("ignore_all",
+	signals[SIGNAL_IGNORE_ALL] =
+		g_signal_new ("ignore-all",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, ignore_all),
@@ -188,7 +188,7 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 			      1,
 			      G_TYPE_STRING);
 
-	signals[CHANGE] =
+	signals[SIGNAL_CHANGE] =
 		g_signal_new ("change",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
@@ -199,8 +199,8 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 			      G_TYPE_STRING,
 			      G_TYPE_STRING);
 
-	signals[CHANGE_ALL] =
-		g_signal_new ("change_all",
+	signals[SIGNAL_CHANGE_ALL] =
+		g_signal_new ("change-all",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, change_all),
@@ -210,8 +210,8 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 			      G_TYPE_STRING,
 			      G_TYPE_STRING);
 
-	signals[ADD_WORD_TO_PERSONAL] =
-		g_signal_new ("add_word_to_personal",
+	signals[SIGNAL_ADD_WORD_TO_PERSONAL] =
+		g_signal_new ("add-word-to-personal",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, add_word_to_personal),
@@ -395,7 +395,7 @@ add_word_button_clicked_handler (GtkButton               *button,
 						  dialog->misspelled_word);
 
 	word = g_strdup (dialog->misspelled_word);
-	g_signal_emit (G_OBJECT (dialog), signals [ADD_WORD_TO_PERSONAL], 0, word);
+	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_ADD_WORD_TO_PERSONAL], 0, word);
 	g_free (word);
 }
 
@@ -408,7 +408,7 @@ ignore_button_clicked_handler (GtkButton               *button,
 	g_return_if_fail (dialog->misspelled_word != NULL);
 
 	word = g_strdup (dialog->misspelled_word);
-	g_signal_emit (G_OBJECT (dialog), signals [IGNORE], 0, word);
+	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_IGNORE], 0, word);
 	g_free (word);
 }
 
@@ -424,7 +424,7 @@ ignore_all_button_clicked_handler (GtkButton               *button,
 						 dialog->misspelled_word);
 
 	word = g_strdup (dialog->misspelled_word);
-	g_signal_emit (G_OBJECT (dialog), signals [IGNORE_ALL], 0, word);
+	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_IGNORE_ALL], 0, word);
 	g_free (word);
 }
 
@@ -446,7 +446,7 @@ change_button_clicked_handler (GtkButton               *button,
 					    change);
 
 	word = g_strdup (dialog->misspelled_word);
-	g_signal_emit (G_OBJECT (dialog), signals [CHANGE], 0, word, change);
+	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_CHANGE], 0, word, change);
 
 	g_free (word);
 	g_free (change);
@@ -480,7 +480,7 @@ change_all_button_clicked_handler (GtkButton               *button,
 					    change);
 
 	word = g_strdup (dialog->misspelled_word);
-	g_signal_emit (G_OBJECT (dialog), signals [CHANGE_ALL], 0, word, change);
+	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_CHANGE_ALL], 0, word, change);
 
 	g_free (word);
 	g_free (change);
