@@ -49,11 +49,9 @@ enum
 
 enum
 {
-	SIGNAL_IGNORE,
-	SIGNAL_IGNORE_ALL,
 	SIGNAL_CHANGE,
 	SIGNAL_CHANGE_ALL,
-	SIGNAL_ADD_WORD_TO_PERSONAL,
+	SIGNAL_GOTO_NEXT,
 	LAST_SIGNAL
 };
 
@@ -168,26 +166,6 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 							      G_PARAM_CONSTRUCT_ONLY |
 							      G_PARAM_STATIC_STRINGS));
 
-	signals[SIGNAL_IGNORE] =
-		g_signal_new ("ignore",
- 			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, ignore),
-			      NULL, NULL, NULL,
-			      G_TYPE_NONE,
-			      1,
-			      G_TYPE_STRING);
-
-	signals[SIGNAL_IGNORE_ALL] =
-		g_signal_new ("ignore-all",
- 			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, ignore_all),
-			      NULL, NULL, NULL,
-			      G_TYPE_NONE,
-			      1,
-			      G_TYPE_STRING);
-
 	signals[SIGNAL_CHANGE] =
 		g_signal_new ("change",
  			      G_OBJECT_CLASS_TYPE (object_class),
@@ -210,15 +188,13 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 			      G_TYPE_STRING,
 			      G_TYPE_STRING);
 
-	signals[SIGNAL_ADD_WORD_TO_PERSONAL] =
-		g_signal_new ("add-word-to-personal",
+	signals[SIGNAL_GOTO_NEXT] =
+		g_signal_new ("goto-next",
  			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, add_word_to_personal),
+			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, goto_next),
 			      NULL, NULL, NULL,
-			      G_TYPE_NONE,
-			      1,
-			      G_TYPE_STRING);
+			      G_TYPE_NONE, 0);
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
@@ -387,45 +363,31 @@ static void
 add_word_button_clicked_handler (GtkButton               *button,
 				 GeditSpellCheckerDialog *dialog)
 {
-	gchar *word;
-
 	g_return_if_fail (dialog->misspelled_word != NULL);
 
 	gedit_spell_checker_add_word_to_personal (dialog->spell_checker,
 						  dialog->misspelled_word);
 
-	word = g_strdup (dialog->misspelled_word);
-	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_ADD_WORD_TO_PERSONAL], 0, word);
-	g_free (word);
+	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_GOTO_NEXT], 0);
 }
 
 static void
 ignore_button_clicked_handler (GtkButton               *button,
 			       GeditSpellCheckerDialog *dialog)
 {
-	gchar *word;
-
-	g_return_if_fail (dialog->misspelled_word != NULL);
-
-	word = g_strdup (dialog->misspelled_word);
-	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_IGNORE], 0, word);
-	g_free (word);
+	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_GOTO_NEXT], 0);
 }
 
 static void
 ignore_all_button_clicked_handler (GtkButton               *button,
 				   GeditSpellCheckerDialog *dialog)
 {
-	gchar *word;
-
 	g_return_if_fail (dialog->misspelled_word != NULL);
 
 	gedit_spell_checker_add_word_to_session (dialog->spell_checker,
 						 dialog->misspelled_word);
 
-	word = g_strdup (dialog->misspelled_word);
-	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_IGNORE_ALL], 0, word);
-	g_free (word);
+	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_GOTO_NEXT], 0);
 }
 
 static void

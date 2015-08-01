@@ -669,14 +669,6 @@ goto_next_misspelled_word (GeditSpellCheckerDialog *dialog,
 }
 
 static void
-ignore_cb (GeditSpellCheckerDialog *dialog,
-	   const gchar             *word,
-	   GeditView               *view)
-{
-	goto_next_misspelled_word (dialog, view);
-}
-
-static void
 change_cb (GeditSpellCheckerDialog *dialog,
 	   const gchar             *word,
 	   const gchar             *change_to,
@@ -774,14 +766,6 @@ change_all_cb (GeditSpellCheckerDialog *dialog,
 
 	g_object_unref (search_settings);
 	g_object_unref (search_context);
-}
-
-static void
-add_word_cb (GeditSpellCheckerDialog *dialog,
-	     const gchar             *word,
-	     GeditView               *view)
-{
-	goto_next_misspelled_word (dialog, view);
 }
 
 static void
@@ -927,16 +911,6 @@ spell_cb (GSimpleAction *action,
 	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
 	g_signal_connect (dialog,
-			  "ignore",
-			  G_CALLBACK (ignore_cb),
-			  view);
-
-	g_signal_connect (dialog,
-			  "ignore-all",
-			  G_CALLBACK (ignore_cb),
-			  view);
-
-	g_signal_connect (dialog,
 			  "change",
 			  G_CALLBACK (change_cb),
 			  view);
@@ -947,8 +921,8 @@ spell_cb (GSimpleAction *action,
 			  view);
 
 	g_signal_connect (dialog,
-			  "add-word-to-personal",
-			  G_CALLBACK (add_word_cb),
+			  "goto-next",
+			  G_CALLBACK (goto_next_misspelled_word),
 			  view);
 
 	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dialog), word);

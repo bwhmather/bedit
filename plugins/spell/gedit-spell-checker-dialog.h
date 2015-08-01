@@ -41,25 +41,15 @@ struct _GeditSpellCheckerDialogClass
 	GtkDialogClass parent_class;
 
 	/* Signals */
-	void	(* ignore)			(GeditSpellCheckerDialog *dialog,
-						 const gchar             *word);
+	void	(* change)		(GeditSpellCheckerDialog *dialog,
+					 const gchar             *word,
+					 const gchar             *change_to);
 
-	void	(* ignore_all)			(GeditSpellCheckerDialog *dialog,
-						 const gchar             *word);
+	void	(* change_all)		(GeditSpellCheckerDialog *dialog,
+					 const gchar             *word,
+					 const gchar             *change_to);
 
-	void	(* change)			(GeditSpellCheckerDialog *dialog,
-						 const gchar             *word,
-						 const gchar             *change_to);
-
-	void	(* change_all)			(GeditSpellCheckerDialog *dialog,
-						 const gchar             *word,
-						 const gchar             *change_to);
-
-	void	(* add_word_to_personal)	(GeditSpellCheckerDialog *dialog,
-						 const gchar             *word);
-
-	/* Keybinding signal */
-	void	(* close)			(GeditSpellCheckerDialog *dialog);
+	void	(* goto_next)		(GeditSpellCheckerDialog *dialog);
 };
 
 GType		gedit_spell_checker_dialog_get_type			(void) G_GNUC_CONST;
