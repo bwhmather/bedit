@@ -235,8 +235,8 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 }
 
 static void
-update_suggestions_model (GeditSpellCheckerDialog *dialog,
-			  GSList                  *suggestions)
+set_suggestions (GeditSpellCheckerDialog *dialog,
+		 GSList                  *suggestions)
 {
 	GtkListStore *store;
 	GtkTreeIter iter;
@@ -364,7 +364,7 @@ check_word_button_clicked_handler (GtkButton               *button,
 
 		suggestions = gedit_spell_checker_get_suggestions (dialog->spell_checker, word);
 
-		update_suggestions_model (dialog, suggestions);
+		set_suggestions (dialog, suggestions);
 
 		g_slist_free_full (suggestions, g_free);
 	}
@@ -589,7 +589,7 @@ gedit_spell_checker_dialog_set_misspelled_word (GeditSpellCheckerDialog *dialog,
 	suggestions = gedit_spell_checker_get_suggestions (dialog->spell_checker,
 							   dialog->misspelled_word);
 
-	update_suggestions_model (dialog, suggestions);
+	set_suggestions (dialog, suggestions);
 
 	g_slist_free_full (suggestions, g_free);
 
