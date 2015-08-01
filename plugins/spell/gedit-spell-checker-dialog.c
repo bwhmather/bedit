@@ -251,8 +251,10 @@ set_suggestions (GeditSpellCheckerDialog *dialog,
 	{
 		gtk_list_store_append (store, &iter);
 		gtk_list_store_set (store, &iter,
-		                    /* Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
-		                     * for the current misspelled word */
+				    /* Translators: Displayed in the "Check Spelling"
+				     * dialog if there are no suggestions for the current
+				     * misspelled word.
+				     */
 				    COLUMN_SUGGESTION, _("(no suggested words)"),
 				    -1);
 
@@ -573,8 +575,6 @@ gedit_spell_checker_dialog_set_misspelled_word (GeditSpellCheckerDialog *dialog,
 
 	g_return_if_fail (GEDIT_IS_SPELL_CHECKER_DIALOG (dialog));
 	g_return_if_fail (word != NULL);
-
-	g_return_if_fail (dialog->spell_checker != NULL);
 	g_return_if_fail (!gedit_spell_checker_check_word (dialog->spell_checker, word, NULL));
 
 	g_free (dialog->misspelled_word);
