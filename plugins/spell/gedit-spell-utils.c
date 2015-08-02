@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2010 - Jesse van den Kieboom
+ * Copyright (C) 2015 - Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,9 +49,12 @@ gedit_spell_utils_is_digit (const gchar *text)
 	return TRUE;
 }
 
+/* Returns %TRUE if @start is moved to the start of a word to spell check,
+ * located before @end.
+ */
 gboolean
-gedit_spell_utils_skip_no_spell_check (GtkTextIter *start,
-                                       GtkTextIter *end)
+gedit_spell_utils_skip_no_spell_check (GtkTextIter       *start,
+				       const GtkTextIter *end)
 {
 	GtkSourceBuffer *buffer = GTK_SOURCE_BUFFER (gtk_text_iter_get_buffer (start));
 
