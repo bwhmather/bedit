@@ -49,9 +49,6 @@ gedit_spell_utils_is_digit (const gchar *text)
 	return TRUE;
 }
 
-/* Returns %TRUE if @start is moved to the start of a word to spell check,
- * located before @end.
- */
 gboolean
 gedit_spell_utils_skip_no_spell_check (GtkTextIter       *start,
 				       const GtkTextIter *end)
