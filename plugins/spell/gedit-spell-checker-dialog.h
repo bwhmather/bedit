@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2002 Paolo Maggi
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +23,7 @@
 #define __GEDIT_SPELL_CHECKER_DIALOG_H__
 
 #include <gtk/gtk.h>
-#include "gedit-spell-checker.h"
+#include "gedit-spell-navigator.h"
 
 G_BEGIN_DECLS
 
@@ -34,26 +35,10 @@ G_DECLARE_DERIVABLE_TYPE (GeditSpellCheckerDialog, gedit_spell_checker_dialog,
 struct _GeditSpellCheckerDialogClass
 {
 	GtkDialogClass parent_class;
-
-	/* Signals */
-	void	(* change)		(GeditSpellCheckerDialog *dialog,
-					 const gchar             *word,
-					 const gchar             *change_to);
-
-	void	(* change_all)		(GeditSpellCheckerDialog *dialog,
-					 const gchar             *word,
-					 const gchar             *change_to);
-
-	void	(* goto_next)		(GeditSpellCheckerDialog *dialog);
 };
 
-GtkWidget *	gedit_spell_checker_dialog_new				(GtkWindow         *parent,
-									 GeditSpellChecker *checker);
-
-void		gedit_spell_checker_dialog_set_misspelled_word		(GeditSpellCheckerDialog *dialog,
-									 const gchar             *word);
-
-void		gedit_spell_checker_dialog_set_completed		(GeditSpellCheckerDialog *dialog);
+GtkWidget *	gedit_spell_checker_dialog_new		(GtkWindow           *parent,
+							 GeditSpellNavigator *navigator);
 
 G_END_DECLS
 

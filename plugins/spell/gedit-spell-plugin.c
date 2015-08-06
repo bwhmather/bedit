@@ -47,7 +47,6 @@
 #define SPELL_ENABLED_STR "1"
 
 #define VIEW_DATA_KEY "GeditSpellPlugin-ViewData"
-#define NAVIGATOR_KEY "GeditSpellPlugin-Navigator"
 
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
 
@@ -301,50 +300,6 @@ get_spell_checker_from_document (GeditDocument *doc)
 }
 
 static void
-goto_next_cb (GeditSpellCheckerDialog *dialog,
-	      GeditSpellNavigator     *navigator)
-{
-	gchar *word;
-	GError *error = NULL;
-
-	word = gedit_spell_navigator_goto_next (navigator, &error);
-
-	if (error != NULL)
-	{
-		g_warning ("Spell checker plugin: %s", error->message);
-		g_error_free (error);
-	}
-
-	if (word != NULL)
-	{
-		gedit_spell_checker_dialog_set_misspelled_word (dialog, word);
-		g_free (word);
-	}
-	else
-	{
-		gedit_spell_checker_dialog_set_completed (dialog);
-	}
-}
-
-static void
-change_cb (GeditSpellCheckerDialog *dialog,
-	   const gchar             *word,
-	   const gchar             *change_to,
-	   GeditSpellNavigator     *navigator)
-{
-	gedit_spell_navigator_change (navigator, word, change_to);
-}
-
-static void
-change_all_cb (GeditSpellCheckerDialog *dialog,
-	       const gchar             *word,
-	       const gchar             *change_to,
-	       GeditSpellNavigator     *navigator)
-{
-	gedit_spell_navigator_change_all (navigator, word, change_to);
-}
-
-static void
 language_dialog_response (GtkDialog         *dialog,
 			  gint               response_id,
 			  GeditSpellChecker *checker)
@@ -429,10 +384,6 @@ spell_cb (GSimpleAction *action,
 	GeditSpellChecker *checker;
 	GeditSpellNavigator *navigator;
 	GtkWidget *dialog;
-	gchar *word;
-	GtkTextIter start;
-	GtkTextIter end;
-	GError *error = NULL;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -459,64 +410,11 @@ spell_cb (GSimpleAction *action,
 	}
 
 	navigator = gedit_spell_navigator_gtv_new (GTK_TEXT_VIEW (view), checker);
-
-	word = gedit_spell_navigator_goto_next (navigator, &error);
-
-	if (error != NULL)
-	{
-		g_warning ("Spell checker plugin: %s", error->message);
-		g_error_free (error);
-		error = NULL;
-	}
-
-	if (word == NULL)
-	{
-		GtkWidget *statusbar;
-
-		statusbar = gedit_window_get_statusbar (priv->window);
-		gedit_statusbar_flash_message (GEDIT_STATUSBAR (statusbar),
-					       priv->statusbar_context_id,
-					       _("No misspelled words"));
-
-		g_object_unref (navigator);
-		return;
-	}
-
-	dialog = gedit_spell_checker_dialog_new (GTK_WINDOW (priv->window), checker);
+	dialog = gedit_spell_checker_dialog_new (GTK_WINDOW (priv->window), navigator);
+	g_object_unref (navigator);
 
 	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
-
-	g_object_set_data_full (G_OBJECT (dialog),
-				NAVIGATOR_KEY,
-				navigator,
-				g_object_unref);
-
-	g_signal_connect (dialog,
-			  "change",
-			  G_CALLBACK (change_cb),
-			  navigator);
-
-	g_signal_connect (dialog,
-			  "change-all",
-			  G_CALLBACK (change_all_cb),
-			  navigator);
-
-	g_signal_connect (dialog,
-			  "goto-next",
-			  G_CALLBACK (goto_next_cb),
-			  navigator);
-
-	gedit_spell_checker_dialog_set_misspelled_word (GEDIT_SPELL_CHECKER_DIALOG (dialog), word);
-	g_free (word);
-
-	gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc), &start, &end);
-
 	gtk_widget_show (dialog);
-
-	/* Restore selection. Showing the dialog makes a focus change, which
-	 * unselects the GtkTextBuffer selection.
-	 */
-	gtk_text_buffer_select_range (GTK_TEXT_BUFFER (doc), &start, &end);
 }
 
 static void

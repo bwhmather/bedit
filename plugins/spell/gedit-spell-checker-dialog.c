@@ -21,12 +21,13 @@
 
 #include "gedit-spell-checker-dialog.h"
 #include <glib/gi18n.h>
+#include "gedit-spell-checker.h"
 
 typedef struct _GeditSpellCheckerDialogPrivate GeditSpellCheckerDialogPrivate;
 
 struct _GeditSpellCheckerDialogPrivate
 {
-	GeditSpellChecker *spell_checker;
+	GeditSpellNavigator *navigator;
 
 	gchar *misspelled_word;
 
@@ -44,15 +45,7 @@ struct _GeditSpellCheckerDialogPrivate
 enum
 {
 	PROP_0,
-	PROP_SPELL_CHECKER,
-};
-
-enum
-{
-	SIGNAL_CHANGE,
-	SIGNAL_CHANGE_ALL,
-	SIGNAL_GOTO_NEXT,
-	LAST_SIGNAL
+	PROP_SPELL_NAVIGATOR,
 };
 
 enum
@@ -61,162 +54,62 @@ enum
 	N_COLUMNS
 };
 
-static guint signals[LAST_SIGNAL] = { 0 };
-
 G_DEFINE_TYPE_WITH_PRIVATE (GeditSpellCheckerDialog, gedit_spell_checker_dialog, GTK_TYPE_DIALOG)
 
 static void
-set_spell_checker (GeditSpellCheckerDialog *dialog,
-		   GeditSpellChecker       *checker)
+update_spell_checker (GeditSpellCheckerDialog *dialog)
 {
 	GeditSpellCheckerDialogPrivate *priv;
+	GeditSpellChecker *checker;
 	GtkHeaderBar *header_bar;
 	const GeditSpellCheckerLanguage *lang;
 
 	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
 
-	g_return_if_fail (priv->spell_checker == NULL);
-	priv->spell_checker = g_object_ref (checker);
+	g_object_get (priv->navigator,
+		      "spell-checker", &checker,
+		      NULL);
+
+	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (checker));
 
 	header_bar = GTK_HEADER_BAR (gtk_dialog_get_header_bar (GTK_DIALOG (dialog)));
 
-	lang = gedit_spell_checker_get_language (priv->spell_checker);
+	lang = gedit_spell_checker_get_language (checker);
 
 	gtk_header_bar_set_subtitle (header_bar,
 	                             gedit_spell_checker_language_to_string (lang));
 
-	g_object_notify (G_OBJECT (dialog), "spell-checker");
+	g_object_unref (checker);
 }
 
 static void
-gedit_spell_checker_dialog_get_property (GObject    *object,
-					 guint       prop_id,
-					 GValue     *value,
-					 GParamSpec *pspec)
+spell_checker_notify_cb (GeditSpellNavigator     *navigator,
+			 GParamSpec              *pspec,
+			 GeditSpellCheckerDialog *dialog)
+{
+	update_spell_checker (dialog);
+}
+
+static void
+set_navigator (GeditSpellCheckerDialog *dialog,
+	       GeditSpellNavigator     *navigator)
 {
 	GeditSpellCheckerDialogPrivate *priv;
 
-	priv = gedit_spell_checker_dialog_get_instance_private (GEDIT_SPELL_CHECKER_DIALOG (object));
+	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
 
-	switch (prop_id)
-	{
-		case PROP_SPELL_CHECKER:
-			g_value_set_object (value, priv->spell_checker);
-			break;
+	g_return_if_fail (priv->navigator == NULL);
+	priv->navigator = g_object_ref (navigator);
 
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
+	update_spell_checker (dialog);
 
-static void
-gedit_spell_checker_dialog_set_property (GObject      *object,
-					 guint         prop_id,
-					 const GValue *value,
-					 GParamSpec   *pspec)
-{
-	GeditSpellCheckerDialog *dialog = GEDIT_SPELL_CHECKER_DIALOG (object);
+	g_signal_connect_object (priv->navigator,
+				 "notify::spell-checker",
+				 G_CALLBACK (spell_checker_notify_cb),
+				 dialog,
+				 0);
 
-	switch (prop_id)
-	{
-		case PROP_SPELL_CHECKER:
-			set_spell_checker (dialog, g_value_get_object (value));
-			break;
-
-		default:
-			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-			break;
-	}
-}
-
-static void
-gedit_spell_checker_dialog_dispose (GObject *object)
-{
-	GeditSpellCheckerDialogPrivate *priv;
-
-	priv = gedit_spell_checker_dialog_get_instance_private (GEDIT_SPELL_CHECKER_DIALOG (object));
-
-	g_clear_object (&priv->spell_checker);
-
-	G_OBJECT_CLASS (gedit_spell_checker_dialog_parent_class)->dispose (object);
-}
-
-static void
-gedit_spell_checker_dialog_finalize (GObject *object)
-{
-	GeditSpellCheckerDialogPrivate *priv;
-
-	priv = gedit_spell_checker_dialog_get_instance_private (GEDIT_SPELL_CHECKER_DIALOG (object));
-
-	g_free (priv->misspelled_word);
-
-	G_OBJECT_CLASS (gedit_spell_checker_dialog_parent_class)->finalize (object);
-}
-
-static void
-gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-	object_class->get_property = gedit_spell_checker_dialog_get_property;
-	object_class->set_property = gedit_spell_checker_dialog_set_property;
-	object_class->dispose = gedit_spell_checker_dialog_dispose;
-	object_class->finalize = gedit_spell_checker_dialog_finalize;
-
-	g_object_class_install_property (object_class,
-					 PROP_SPELL_CHECKER,
-					 g_param_spec_object ("spell-checker",
-							      "Spell Checker",
-							      "",
-							      GEDIT_TYPE_SPELL_CHECKER,
-							      G_PARAM_READWRITE |
-							      G_PARAM_CONSTRUCT_ONLY |
-							      G_PARAM_STATIC_STRINGS));
-
-	signals[SIGNAL_CHANGE] =
-		g_signal_new ("change",
- 			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, change),
-			      NULL, NULL, NULL,
-			      G_TYPE_NONE,
-			      2,
-			      G_TYPE_STRING,
-			      G_TYPE_STRING);
-
-	signals[SIGNAL_CHANGE_ALL] =
-		g_signal_new ("change-all",
- 			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, change_all),
-			      NULL, NULL, NULL,
-			      G_TYPE_NONE,
-			      2,
-			      G_TYPE_STRING,
-			      G_TYPE_STRING);
-
-	signals[SIGNAL_GOTO_NEXT] =
-		g_signal_new ("goto-next",
- 			      G_OBJECT_CLASS_TYPE (object_class),
-			      G_SIGNAL_RUN_LAST,
-			      G_STRUCT_OFFSET (GeditSpellCheckerDialogClass, goto_next),
-			      NULL, NULL, NULL,
-			      G_TYPE_NONE, 0);
-
-	/* Bind class to template */
-	gtk_widget_class_set_template_from_resource (widget_class,
-						     "/org/gnome/gedit/plugins/spell/ui/spell-checker.ui");
-	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, misspelled_word_label);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, word_entry);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, check_word_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, ignore_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, ignore_all_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, change_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, change_all_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, add_word_button);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, suggestions_view);
+	g_object_notify (G_OBJECT (dialog), "spell-navigator");
 }
 
 static void
@@ -287,6 +180,222 @@ set_suggestions (GeditSpellCheckerDialog *dialog,
 }
 
 static void
+set_misspelled_word (GeditSpellCheckerDialog *dialog,
+		     const gchar             *word)
+{
+	GeditSpellCheckerDialogPrivate *priv;
+	GeditSpellChecker *checker;
+	gchar *label;
+	GSList *suggestions;
+
+	g_assert (word != NULL);
+
+	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
+
+	g_object_get (priv->navigator,
+		      "spell-checker", &checker,
+		      NULL);
+
+	g_return_if_fail (!gedit_spell_checker_check_word (checker, word, NULL));
+
+	g_free (priv->misspelled_word);
+	priv->misspelled_word = g_strdup (word);
+
+	label = g_strdup_printf("<b>%s</b>", word);
+	gtk_label_set_label (priv->misspelled_word_label, label);
+	g_free (label);
+
+	suggestions = gedit_spell_checker_get_suggestions (checker, priv->misspelled_word);
+
+	set_suggestions (dialog, suggestions);
+
+	g_object_unref (checker);
+	g_slist_free_full (suggestions, g_free);
+}
+
+static void
+set_completed (GeditSpellCheckerDialog *dialog)
+{
+	GeditSpellCheckerDialogPrivate *priv;
+	gchar *label;
+
+	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
+
+	label = g_strdup_printf ("<b>%s</b>", _("Completed spell checking"));
+	gtk_label_set_label (priv->misspelled_word_label, label);
+	g_free (label);
+
+	clear_suggestions (dialog);
+	gtk_entry_set_text (priv->word_entry, "");
+
+	gtk_widget_set_sensitive (GTK_WIDGET (priv->word_entry), FALSE);
+	gtk_widget_set_sensitive (priv->check_word_button, FALSE);
+	gtk_widget_set_sensitive (priv->ignore_button, FALSE);
+	gtk_widget_set_sensitive (priv->ignore_all_button, FALSE);
+	gtk_widget_set_sensitive (priv->change_button, FALSE);
+	gtk_widget_set_sensitive (priv->change_all_button, FALSE);
+	gtk_widget_set_sensitive (priv->add_word_button, FALSE);
+	gtk_widget_set_sensitive (GTK_WIDGET (priv->suggestions_view), FALSE);
+}
+
+static void
+goto_next (GeditSpellCheckerDialog *dialog)
+{
+	GeditSpellCheckerDialogPrivate *priv;
+	gchar *word;
+	GError *error = NULL;
+
+	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
+
+	word = gedit_spell_navigator_goto_next (priv->navigator, &error);
+
+	if (error != NULL)
+	{
+		g_warning ("Spell checker dialog: %s", error->message);
+		g_error_free (error);
+	}
+
+	if (word != NULL)
+	{
+		set_misspelled_word (dialog, word);
+		g_free (word);
+	}
+	else
+	{
+		set_completed (dialog);
+	}
+}
+
+static void
+gedit_spell_checker_dialog_get_property (GObject    *object,
+					 guint       prop_id,
+					 GValue     *value,
+					 GParamSpec *pspec)
+{
+	GeditSpellCheckerDialogPrivate *priv;
+
+	priv = gedit_spell_checker_dialog_get_instance_private (GEDIT_SPELL_CHECKER_DIALOG (object));
+
+	switch (prop_id)
+	{
+		case PROP_SPELL_NAVIGATOR:
+			g_value_set_object (value, priv->navigator);
+			break;
+
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
+gedit_spell_checker_dialog_set_property (GObject      *object,
+					 guint         prop_id,
+					 const GValue *value,
+					 GParamSpec   *pspec)
+{
+	GeditSpellCheckerDialog *dialog = GEDIT_SPELL_CHECKER_DIALOG (object);
+
+	switch (prop_id)
+	{
+		case PROP_SPELL_NAVIGATOR:
+			set_navigator (dialog, g_value_get_object (value));
+			break;
+
+		default:
+			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+			break;
+	}
+}
+
+static void
+gedit_spell_checker_dialog_dispose (GObject *object)
+{
+	GeditSpellCheckerDialogPrivate *priv;
+
+	priv = gedit_spell_checker_dialog_get_instance_private (GEDIT_SPELL_CHECKER_DIALOG (object));
+
+	g_clear_object (&priv->navigator);
+
+	G_OBJECT_CLASS (gedit_spell_checker_dialog_parent_class)->dispose (object);
+}
+
+static void
+gedit_spell_checker_dialog_finalize (GObject *object)
+{
+	GeditSpellCheckerDialogPrivate *priv;
+
+	priv = gedit_spell_checker_dialog_get_instance_private (GEDIT_SPELL_CHECKER_DIALOG (object));
+
+	g_free (priv->misspelled_word);
+
+	G_OBJECT_CLASS (gedit_spell_checker_dialog_parent_class)->finalize (object);
+}
+
+static void
+gedit_spell_checker_dialog_show (GtkWidget *widget)
+{
+	GeditSpellCheckerDialog *dialog = GEDIT_SPELL_CHECKER_DIALOG (widget);
+	GeditSpellCheckerDialogPrivate *priv;
+
+	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
+
+	/* Chain-up */
+	if (GTK_WIDGET_CLASS (gedit_spell_checker_dialog_parent_class)->show != NULL)
+	{
+		GTK_WIDGET_CLASS (gedit_spell_checker_dialog_parent_class)->show (widget);
+	}
+
+	/* A typical implementation of a SpellNavigator is to select the
+	 * misspelled word when goto_next() is called. Showing the dialog makes
+	 * a focus change, which can unselect the buffer selection (e.g. in a
+	 * GtkTextBuffer). So that's why goto_next() is called after the
+	 * chain-up.
+	 */
+	if (priv->misspelled_word == NULL)
+	{
+		goto_next (dialog);
+	}
+}
+
+static void
+gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
+{
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+
+	object_class->get_property = gedit_spell_checker_dialog_get_property;
+	object_class->set_property = gedit_spell_checker_dialog_set_property;
+	object_class->dispose = gedit_spell_checker_dialog_dispose;
+	object_class->finalize = gedit_spell_checker_dialog_finalize;
+
+	widget_class->show = gedit_spell_checker_dialog_show;
+
+	g_object_class_install_property (object_class,
+					 PROP_SPELL_NAVIGATOR,
+					 g_param_spec_object ("spell-navigator",
+							      "Spell Navigator",
+							      "",
+							      GEDIT_TYPE_SPELL_NAVIGATOR,
+							      G_PARAM_READWRITE |
+							      G_PARAM_CONSTRUCT_ONLY |
+							      G_PARAM_STATIC_STRINGS));
+
+	/* Bind class to template */
+	gtk_widget_class_set_template_from_resource (widget_class,
+						     "/org/gnome/gedit/plugins/spell/ui/spell-checker.ui");
+	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, misspelled_word_label);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, word_entry);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, check_word_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, ignore_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, ignore_all_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, change_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, change_all_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, add_word_button);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditSpellCheckerDialog, suggestions_view);
+}
+
+static void
 word_entry_changed_handler (GtkEntry                *word_entry,
 			    GeditSpellCheckerDialog *dialog)
 {
@@ -332,6 +441,7 @@ check_word_button_clicked_handler (GtkButton               *button,
 				   GeditSpellCheckerDialog *dialog)
 {
 	GeditSpellCheckerDialogPrivate *priv;
+	GeditSpellChecker *checker;
 	const gchar *word;
 	gboolean correctly_spelled;
 	GError *error = NULL;
@@ -340,15 +450,20 @@ check_word_button_clicked_handler (GtkButton               *button,
 
 	g_return_if_fail (gtk_entry_get_text_length (priv->word_entry) > 0);
 
+	g_object_get (priv->navigator,
+		      "spell-checker", &checker,
+		      NULL);
+
 	word = gtk_entry_get_text (priv->word_entry);
 
-	correctly_spelled = gedit_spell_checker_check_word (priv->spell_checker, word, &error);
+	correctly_spelled = gedit_spell_checker_check_word (checker, word, &error);
 
 	if (error != NULL)
 	{
 		g_warning ("Spell checker dialog: %s", error->message);
 		g_error_free (error);
-		return;
+		error = NULL;
+		goto out;
 	}
 
 	if (correctly_spelled)
@@ -375,12 +490,15 @@ check_word_button_clicked_handler (GtkButton               *button,
 	{
 		GSList *suggestions;
 
-		suggestions = gedit_spell_checker_get_suggestions (priv->spell_checker, word);
+		suggestions = gedit_spell_checker_get_suggestions (checker, word);
 
 		set_suggestions (dialog, suggestions);
 
 		g_slist_free_full (suggestions, g_free);
 	}
+
+out:
+	g_object_unref (checker);
 }
 
 static void
@@ -388,22 +506,28 @@ add_word_button_clicked_handler (GtkButton               *button,
 				 GeditSpellCheckerDialog *dialog)
 {
 	GeditSpellCheckerDialogPrivate *priv;
+	GeditSpellChecker *checker;
 
 	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
 
 	g_return_if_fail (priv->misspelled_word != NULL);
 
-	gedit_spell_checker_add_word_to_personal (priv->spell_checker,
-						  priv->misspelled_word);
+	g_object_get (priv->navigator,
+		      "spell-checker", &checker,
+		      NULL);
 
-	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_GOTO_NEXT], 0);
+	gedit_spell_checker_add_word_to_personal (checker, priv->misspelled_word);
+
+	goto_next (dialog);
+
+	g_object_unref (checker);
 }
 
 static void
 ignore_button_clicked_handler (GtkButton               *button,
 			       GeditSpellCheckerDialog *dialog)
 {
-	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_GOTO_NEXT], 0);
+	goto_next (dialog);
 }
 
 static void
@@ -411,15 +535,21 @@ ignore_all_button_clicked_handler (GtkButton               *button,
 				   GeditSpellCheckerDialog *dialog)
 {
 	GeditSpellCheckerDialogPrivate *priv;
+	GeditSpellChecker *checker;
 
 	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
 
 	g_return_if_fail (priv->misspelled_word != NULL);
 
-	gedit_spell_checker_add_word_to_session (priv->spell_checker,
-						 priv->misspelled_word);
+	g_object_get (priv->navigator,
+		      "spell-checker", &checker,
+		      NULL);
 
-	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_GOTO_NEXT], 0);
+	gedit_spell_checker_add_word_to_session (checker, priv->misspelled_word);
+
+	goto_next (dialog);
+
+	g_object_unref (checker);
 }
 
 static void
@@ -427,27 +557,31 @@ change_button_clicked_handler (GtkButton               *button,
 			       GeditSpellCheckerDialog *dialog)
 {
 	GeditSpellCheckerDialogPrivate *priv;
-	gchar *word;
-	gchar *change;
+	GeditSpellChecker *checker;
+	gchar *change_to;
 
 	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
 
 	g_return_if_fail (priv->misspelled_word != NULL);
 
-	change = g_strdup (gtk_entry_get_text (priv->word_entry));
-	g_return_if_fail (change != NULL);
-	g_return_if_fail (*change != '\0');
+	g_object_get (priv->navigator,
+		      "spell-checker", &checker,
+		      NULL);
 
-	gedit_spell_checker_set_correction (priv->spell_checker,
+	change_to = g_strdup (gtk_entry_get_text (priv->word_entry));
+	g_return_if_fail (change_to != NULL);
+	g_return_if_fail (change_to[0] != '\0');
+
+	gedit_spell_checker_set_correction (checker,
 					    priv->misspelled_word,
-					    change);
+					    change_to);
 
-	word = g_strdup (priv->misspelled_word);
-	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_CHANGE], 0, word, change);
-	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_GOTO_NEXT], 0);
+	gedit_spell_navigator_change (priv->navigator, priv->misspelled_word, change_to);
+	g_free (change_to);
 
-	g_free (word);
-	g_free (change);
+	goto_next (dialog);
+
+	g_object_unref (checker);
 }
 
 /* double click on one of the suggestions is like clicking on "change" */
@@ -469,27 +603,31 @@ change_all_button_clicked_handler (GtkButton               *button,
 				   GeditSpellCheckerDialog *dialog)
 {
 	GeditSpellCheckerDialogPrivate *priv;
-	gchar *word;
-	gchar *change;
+	GeditSpellChecker *checker;
+	gchar *change_to;
 
 	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
 
 	g_return_if_fail (priv->misspelled_word != NULL);
 
-	change = g_strdup (gtk_entry_get_text (priv->word_entry));
-	g_return_if_fail (change != NULL);
-	g_return_if_fail (*change != '\0');
+	g_object_get (priv->navigator,
+		      "spell-checker", &checker,
+		      NULL);
 
-	gedit_spell_checker_set_correction (priv->spell_checker,
+	change_to = g_strdup (gtk_entry_get_text (priv->word_entry));
+	g_return_if_fail (change_to != NULL);
+	g_return_if_fail (change_to[0] != '\0');
+
+	gedit_spell_checker_set_correction (checker,
 					    priv->misspelled_word,
-					    change);
+					    change_to);
 
-	word = g_strdup (priv->misspelled_word);
-	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_CHANGE_ALL], 0, word, change);
-	g_signal_emit (G_OBJECT (dialog), signals[SIGNAL_GOTO_NEXT], 0);
+	gedit_spell_navigator_change_all (priv->navigator, priv->misspelled_word, change_to);
+	g_free (change_to);
 
-	g_free (word);
-	g_free (change);
+	goto_next (dialog);
+
+	g_object_unref (checker);
 }
 
 static void
@@ -575,74 +713,17 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 }
 
 GtkWidget *
-gedit_spell_checker_dialog_new (GtkWindow         *parent,
-				GeditSpellChecker *checker)
+gedit_spell_checker_dialog_new (GtkWindow           *parent,
+				GeditSpellNavigator *navigator)
 {
 	g_return_val_if_fail (GTK_IS_WINDOW (parent), NULL);
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
+	g_return_val_if_fail (GEDIT_IS_SPELL_NAVIGATOR (navigator), NULL);
 
 	return g_object_new (GEDIT_TYPE_SPELL_CHECKER_DIALOG,
 			     "transient-for", parent,
-			     "spell-checker", checker,
 			     "use-header-bar", TRUE,
+			     "spell-navigator", navigator,
 			     NULL);
-}
-
-void
-gedit_spell_checker_dialog_set_misspelled_word (GeditSpellCheckerDialog *dialog,
-						const gchar             *word)
-{
-	GeditSpellCheckerDialogPrivate *priv;
-	gchar *label;
-	GSList *suggestions;
-
-	g_return_if_fail (GEDIT_IS_SPELL_CHECKER_DIALOG (dialog));
-	g_return_if_fail (word != NULL);
-
-	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
-
-	g_return_if_fail (!gedit_spell_checker_check_word (priv->spell_checker, word, NULL));
-
-	g_free (priv->misspelled_word);
-	priv->misspelled_word = g_strdup (word);
-
-	label = g_strdup_printf("<b>%s</b>", word);
-	gtk_label_set_label (priv->misspelled_word_label, label);
-	g_free (label);
-
-	suggestions = gedit_spell_checker_get_suggestions (priv->spell_checker,
-							   priv->misspelled_word);
-
-	set_suggestions (dialog, suggestions);
-
-	g_slist_free_full (suggestions, g_free);
-}
-
-void
-gedit_spell_checker_dialog_set_completed (GeditSpellCheckerDialog *dialog)
-{
-	GeditSpellCheckerDialogPrivate *priv;
-	gchar *label;
-
-	g_return_if_fail (GEDIT_IS_SPELL_CHECKER_DIALOG (dialog));
-
-	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
-
-	label = g_strdup_printf ("<b>%s</b>", _("Completed spell checking"));
-	gtk_label_set_label (priv->misspelled_word_label, label);
-	g_free (label);
-
-	clear_suggestions (dialog);
-	gtk_entry_set_text (priv->word_entry, "");
-
-	gtk_widget_set_sensitive (GTK_WIDGET (priv->word_entry), FALSE);
-	gtk_widget_set_sensitive (priv->check_word_button, FALSE);
-	gtk_widget_set_sensitive (priv->ignore_button, FALSE);
-	gtk_widget_set_sensitive (priv->ignore_all_button, FALSE);
-	gtk_widget_set_sensitive (priv->change_button, FALSE);
-	gtk_widget_set_sensitive (priv->change_all_button, FALSE);
-	gtk_widget_set_sensitive (priv->add_word_button, FALSE);
-	gtk_widget_set_sensitive (GTK_WIDGET (priv->suggestions_view), FALSE);
 }
 
 /* ex:set ts=8 noet: */
