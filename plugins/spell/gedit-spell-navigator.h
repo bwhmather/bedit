@@ -22,6 +22,7 @@
 #define __GEDIT_SPELL_NAVIGATOR_H__
 
 #include <glib-object.h>
+#include "gedit-spell-checker.h"
 
 G_BEGIN_DECLS
 
@@ -34,7 +35,9 @@ struct _GeditSpellNavigatorInterface
 {
 	GTypeInterface parent_interface;
 
-	gchar *		(* goto_next)		(GeditSpellNavigator  *navigator,
+	gboolean	(* goto_next)		(GeditSpellNavigator  *navigator,
+						 gchar               **word,
+						 GeditSpellChecker   **spell_checker,
 						 GError              **error);
 
 	void		(* change)		(GeditSpellNavigator *navigator,
@@ -46,7 +49,9 @@ struct _GeditSpellNavigatorInterface
 						 const gchar         *change_to);
 };
 
-gchar *		gedit_spell_navigator_goto_next		(GeditSpellNavigator  *navigator,
+gboolean	gedit_spell_navigator_goto_next		(GeditSpellNavigator  *navigator,
+							 gchar               **word,
+							 GeditSpellChecker   **spell_checker,
 							 GError              **error);
 
 void		gedit_spell_navigator_change		(GeditSpellNavigator *navigator,

@@ -232,7 +232,15 @@ gedit_spell_navigator_gtv_class_init (GeditSpellNavigatorGtvClass *klass)
 							      G_PARAM_CONSTRUCT_ONLY |
 							      G_PARAM_STATIC_STRINGS));
 
-	g_object_class_override_property (object_class, PROP_SPELL_CHECKER, "spell-checker");
+	g_object_class_install_property (object_class,
+					 PROP_SPELL_CHECKER,
+					 g_param_spec_object ("spell-checker",
+							      "Spell Checker",
+							      "",
+							      GEDIT_TYPE_SPELL_CHECKER,
+							      G_PARAM_READWRITE |
+							      G_PARAM_CONSTRUCT |
+							      G_PARAM_STATIC_STRINGS));
 }
 
 static void
@@ -264,9 +272,11 @@ select_misspelled_word (GeditSpellNavigatorGtv *navigator)
 	                              0.0);
 }
 
-static gchar *
+static gboolean
 gedit_spell_navigator_gtv_goto_next (GeditSpellNavigator  *navigator,
-				     GError              **error)
+				     gchar               **word_p,
+				     GeditSpellChecker   **spell_checker_p,
+				     GError              **error_p)
 {
 	GeditSpellNavigatorGtvPrivate *priv;
 	GtkTextIter word_start;
@@ -298,7 +308,7 @@ gedit_spell_navigator_gtv_goto_next (GeditSpellNavigator  *navigator,
 
 		if (gtk_text_iter_compare (&end, &word_end) <= 0)
 		{
-			return NULL;
+			return FALSE;
 		}
 
 		word_start = word_end;
@@ -309,7 +319,7 @@ gedit_spell_navigator_gtv_goto_next (GeditSpellNavigator  *navigator,
 		GtkTextIter word_end;
 		gchar *word;
 		gboolean correctly_spelled;
-		GError *my_error = NULL;
+		GError *error = NULL;
 
 		if (!gtk_text_iter_starts_word (&word_start))
 		{
@@ -321,7 +331,7 @@ gedit_spell_navigator_gtv_goto_next (GeditSpellNavigator  *navigator,
 			if (gtk_text_iter_equal (&iter, &word_start))
 			{
 				/* Didn't move, we are at the end. */
-				return NULL;
+				return FALSE;
 			}
 
 			gtk_text_iter_backward_word_start (&word_start);
@@ -329,28 +339,28 @@ gedit_spell_navigator_gtv_goto_next (GeditSpellNavigator  *navigator,
 
 		if (!gedit_spell_utils_skip_no_spell_check (&word_start, &end))
 		{
-			return NULL;
+			return FALSE;
 		}
 
-		g_return_val_if_fail (gtk_text_iter_starts_word (&word_start), NULL);
+		g_return_val_if_fail (gtk_text_iter_starts_word (&word_start), FALSE);
 
 		word_end = word_start;
 		gtk_text_iter_forward_word_end (&word_end);
 
 		if (gtk_text_iter_compare (&end, &word_end) < 0)
 		{
-			return NULL;
+			return FALSE;
 		}
 
 		word = gtk_text_buffer_get_text (priv->buffer, &word_start, &word_end, FALSE);
 
-		correctly_spelled = gedit_spell_checker_check_word (priv->spell_checker, word, &my_error);
+		correctly_spelled = gedit_spell_checker_check_word (priv->spell_checker, word, &error);
 
-		if (my_error != NULL)
+		if (error != NULL)
 		{
-			g_propagate_error (error, my_error);
+			g_propagate_error (error_p, error);
 			g_free (word);
-			return NULL;
+			return FALSE;
 		}
 
 		if (!correctly_spelled)
@@ -361,14 +371,28 @@ gedit_spell_navigator_gtv_goto_next (GeditSpellNavigator  *navigator,
 
 			select_misspelled_word (GEDIT_SPELL_NAVIGATOR_GTV (navigator));
 
-			return word;
+			if (spell_checker_p != NULL)
+			{
+				*spell_checker_p = g_object_ref (priv->spell_checker);
+			}
+
+			if (word_p != NULL)
+			{
+				*word_p = word;
+			}
+			else
+			{
+				g_free (word);
+			}
+
+			return TRUE;
 		}
 
 		word_start = word_end;
 		g_free (word);
 	}
 
-	return NULL;
+	return FALSE;
 }
 
 static void
