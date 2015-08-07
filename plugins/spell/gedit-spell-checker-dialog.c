@@ -225,11 +225,18 @@ goto_next (GeditSpellCheckerDialog *dialog)
 
 	if (error != NULL)
 	{
-		g_warning ("Spell checker dialog: %s", error->message);
-		g_error_free (error);
-	}
+		gchar *label;
 
-	if (found)
+		label = g_strdup_printf ("<b>%s</b> %s", _("Error:"), error->message);
+		gtk_label_set_markup (priv->misspelled_word_label, label);
+		g_free (label);
+
+		set_completed (dialog);
+
+		g_error_free (error);
+		error = NULL;
+	}
+	else if (found)
 	{
 		set_spell_checker (dialog, checker);
 		set_misspelled_word (dialog, word);
