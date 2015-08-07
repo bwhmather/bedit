@@ -441,7 +441,9 @@ gedit_spell_checker_check_word (GeditSpellChecker  *checker,
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
 	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-	g_return_val_if_fail (is_language_set (checker), FALSE);
+
+	/* If no dictionaries are available, limit the damage by returning TRUE. */
+	g_return_val_if_fail (is_language_set (checker), TRUE);
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
