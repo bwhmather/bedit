@@ -397,18 +397,6 @@ spell_cb (GSimpleAction *action,
 	checker = get_spell_checker_from_document (doc);
 	g_return_if_fail (checker != NULL);
 
-	if (gtk_text_buffer_get_char_count (GTK_TEXT_BUFFER (doc)) <= 0)
-	{
-		GtkWidget *statusbar;
-
-		statusbar = gedit_window_get_statusbar (priv->window);
-		gedit_statusbar_flash_message (GEDIT_STATUSBAR (statusbar),
-					       priv->statusbar_context_id,
-					       _("The document is empty."));
-
-		return;
-	}
-
 	navigator = gedit_spell_navigator_gtv_new (GTK_TEXT_VIEW (view), checker);
 	dialog = gedit_spell_checker_dialog_new (GTK_WINDOW (priv->window), navigator);
 	g_object_unref (navigator);
