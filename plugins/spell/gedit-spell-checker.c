@@ -32,6 +32,20 @@
 #include "gedit-spell-osx.h"
 #endif
 
+/**
+ * SECTION:spell-checker
+ * @Short_description: Spell checker
+ * @Title: GeditSpellChecker
+ * @See_also: #GeditSpellCheckerLanguage
+ *
+ * #GeditSpellChecker is a spell checker. It is a wrapper around the Enchant
+ * library, to have a #GObject-based API.
+ *
+ * If the #GeditSpellChecker:language is not set correctly, the spell checker
+ * should not be used. It can happen when no dictionaries are available, in
+ * which case gedit_spell_checker_get_language() returns %NULL.
+ */
+
 typedef struct _GeditSpellCheckerPrivate GeditSpellCheckerPrivate;
 
 struct _GeditSpellCheckerPrivate
@@ -143,6 +157,11 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 	object_class->get_property = gedit_spell_checker_get_property;
 	object_class->finalize = gedit_spell_checker_finalize;
 
+	/**
+	 * GeditSpellChecker:language:
+	 *
+	 * The #GeditSpellCheckerLanguage used.
+	 */
 	g_object_class_install_property (object_class,
 					 PROP_LANGUAGE,
 					 g_param_spec_pointer ("language",
@@ -152,6 +171,13 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 							       G_PARAM_CONSTRUCT |
 							       G_PARAM_STATIC_STRINGS));
 
+	/**
+	 * GeditSpellChecker::add-word-to-personal:
+	 * @spell_checker: the #GeditSpellChecker.
+	 * @word: the added word.
+	 *
+	 * Emitted when a word is added to the personal dictionary.
+	 */
 	signals[SIGNAL_ADD_WORD_TO_PERSONAL] =
 		g_signal_new ("add-word-to-personal",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -162,6 +188,14 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 			      1,
 			      G_TYPE_STRING);
 
+	/**
+	 * GeditSpellChecker::add-word-to-session:
+	 * @spell_checker: the #GeditSpellChecker.
+	 * @word: the added word.
+	 *
+	 * Emitted when a word is added to the session dictionary. The session
+	 * dictionary is lost when the application exits.
+	 */
 	signals[SIGNAL_ADD_WORD_TO_SESSION] =
 		g_signal_new ("add-word-to-session",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -172,6 +206,12 @@ gedit_spell_checker_class_init (GeditSpellCheckerClass *klass)
 			      1,
 			      G_TYPE_STRING);
 
+	/**
+	 * GeditSpellChecker::clear-session:
+	 * @spell_checker: the #GeditSpellChecker.
+	 *
+	 * Emitted when the session dictionary is cleared.
+	 */
 	signals[SIGNAL_CLEAR_SESSION] =
 		g_signal_new ("clear-session",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -194,6 +234,12 @@ gedit_spell_checker_init (GeditSpellChecker *checker)
 	priv->active_lang = NULL;
 }
 
+/**
+ * gedit_spell_checker_new:
+ * @language: (nullable): the #GeditSpellCheckerLanguage to use.
+ *
+ * Returns: a new #GeditSpellChecker object.
+ */
 GeditSpellChecker *
 gedit_spell_checker_new	(const GeditSpellCheckerLanguage *language)
 {
@@ -295,8 +341,14 @@ init_dictionary (GeditSpellChecker *checker)
 	return TRUE;
 }
 
-/* If @language is %NULL, find the best available language based on the current
- * locale.
+/**
+ * gedit_spell_checker_set_language:
+ * @checker: a #GeditSpellChecker.
+ * @language: (nullable): the #GeditSpellCheckerLanguage to use, or %NULL.
+ *
+ * Sets the language to use for the spell checking. If @language is %NULL, finds
+ * the best available language based on the current locale.
+ *
  * Returns: whether the operation was successful.
  */
 gboolean
@@ -329,6 +381,13 @@ gedit_spell_checker_set_language (GeditSpellChecker               *checker,
 	return success;
 }
 
+/**
+ * gedit_spell_checker_get_language:
+ * @checker: a #GeditSpellChecker.
+ *
+ * Returns: (nullable): the #GeditSpellCheckerLanguage currently used, or %NULL
+ * if no dictionaries are available.
+ */
 const GeditSpellCheckerLanguage *
 gedit_spell_checker_get_language (GeditSpellChecker *checker)
 {
@@ -341,7 +400,14 @@ gedit_spell_checker_get_language (GeditSpellChecker *checker)
 	return priv->active_lang;
 }
 
-/* Returns whether @word is correctly spelled. */
+/**
+ * gedit_spell_checker_check_word:
+ * @checker: a #GeditSpellChecker.
+ * @word: the word to check.
+ * @error: (out) (optional): a location to a %NULL #GError, or %NULL.
+ *
+ * Returns: whether @word is correctly spelled.
+ */
 gboolean
 gedit_spell_checker_check_word (GeditSpellChecker  *checker,
 				const gchar        *word,
@@ -384,7 +450,16 @@ gedit_spell_checker_check_word (GeditSpellChecker  *checker,
 	return correctly_spelled;
 }
 
-/* return NULL on error or if no suggestions are found */
+/**
+ * gedit_spell_checker_get_suggestions:
+ * @checker: a #GeditSpellChecker.
+ * @word: a misspelled word.
+ *
+ * Gets the suggestions for @word. Free the return value with
+ * g_slist_free_full(suggestions, g_free).
+ *
+ * Returns: (transfer full) (element-type utf8): the list of suggestions.
+ */
 GSList *
 gedit_spell_checker_get_suggestions (GeditSpellChecker *checker,
 				     const gchar       *word)
@@ -422,6 +497,17 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *checker,
 	return g_slist_reverse (suggestions_list);
 }
 
+/**
+ * gedit_spell_checker_add_word_to_personal:
+ * @checker: a #GeditSpellChecker.
+ * @word: a word.
+ *
+ * Adds a word to the personal dictionary. It is typically saved in the user
+ * home directory.
+ *
+ * Returns: whether the operation was successful.
+ * TODO do not return a value.
+ */
 gboolean
 gedit_spell_checker_add_word_to_personal (GeditSpellChecker *checker,
 					  const gchar       *word)
@@ -445,6 +531,18 @@ gedit_spell_checker_add_word_to_personal (GeditSpellChecker *checker,
 	return TRUE;
 }
 
+/**
+ * gedit_spell_checker_add_word_to_session:
+ * @checker: a #GeditSpellChecker.
+ * @word: a word.
+ *
+ * Adds a word to the session dictionary. The session dictionary is lost when
+ * the application exits. This function is typically called when an “Ignore All”
+ * action is activated.
+ *
+ * Returns: whether the operation was successful.
+ * TODO do not return a value.
+ */
 gboolean
 gedit_spell_checker_add_word_to_session (GeditSpellChecker *checker,
 					 const gchar       *word)
@@ -468,6 +566,14 @@ gedit_spell_checker_add_word_to_session (GeditSpellChecker *checker,
 	return TRUE;
 }
 
+/**
+ * gedit_spell_checker_clear_session:
+ * @checker: a #GeditSpellChecker.
+ *
+ * Clears the session dictionary.
+ *
+ * Returns: whether the operation was successful.
+ */
 gboolean
 gedit_spell_checker_clear_session (GeditSpellChecker *checker)
 {
@@ -494,7 +600,16 @@ gedit_spell_checker_clear_session (GeditSpellChecker *checker)
 	return TRUE;
 }
 
-/* Informs dictionary, that @word will be replaced/corrected by @replacement. */
+/**
+ * gedit_spell_checker_set_correction:
+ * @checker: a #GeditSpellChecker.
+ * @word: a word.
+ * @replacement: the replacement word.
+ *
+ * Informs the spell checker that @word is replaced/corrected by @replacement.
+ *
+ * Returns: whether the operation was successful.
+ */
 gboolean
 gedit_spell_checker_set_correction (GeditSpellChecker *checker,
 				    const gchar       *word,
