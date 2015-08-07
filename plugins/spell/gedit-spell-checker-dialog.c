@@ -180,7 +180,7 @@ set_misspelled_word (GeditSpellCheckerDialog *dialog,
 	priv->misspelled_word = g_strdup (word);
 
 	label = g_strdup_printf("<b>%s</b>", word);
-	gtk_label_set_label (priv->misspelled_word_label, label);
+	gtk_label_set_markup (priv->misspelled_word_label, label);
 	g_free (label);
 
 	suggestions = gedit_spell_checker_get_suggestions (priv->checker, priv->misspelled_word);
@@ -247,7 +247,7 @@ goto_next (GeditSpellCheckerDialog *dialog)
 			label = g_strdup_printf ("<b>%s</b>", _("No misspelled words"));
 		}
 
-		gtk_label_set_label (priv->misspelled_word_label, label);
+		gtk_label_set_markup (priv->misspelled_word_label, label);
 		g_free (label);
 
 		set_completed (dialog);
