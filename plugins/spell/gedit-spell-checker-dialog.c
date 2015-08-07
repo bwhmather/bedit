@@ -41,6 +41,8 @@ struct _GeditSpellCheckerDialogPrivate
 	GtkWidget *change_all_button;
 	GtkWidget *add_word_button;
 	GtkTreeView *suggestions_view;
+
+	guint initialized : 1;
 };
 
 enum
@@ -192,13 +194,8 @@ static void
 set_completed (GeditSpellCheckerDialog *dialog)
 {
 	GeditSpellCheckerDialogPrivate *priv;
-	gchar *label;
 
 	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
-
-	label = g_strdup_printf ("<b>%s</b>", _("Completed spell checking"));
-	gtk_label_set_label (priv->misspelled_word_label, label);
-	g_free (label);
 
 	clear_suggestions (dialog);
 	gtk_entry_set_text (priv->word_entry, "");
@@ -239,8 +236,24 @@ goto_next (GeditSpellCheckerDialog *dialog)
 	}
 	else
 	{
+		gchar *label;
+
+		if (priv->initialized)
+		{
+			label = g_strdup_printf ("<b>%s</b>", _("Completed spell checking"));
+		}
+		else
+		{
+			label = g_strdup_printf ("<b>%s</b>", _("No misspelled words"));
+		}
+
+		gtk_label_set_label (priv->misspelled_word_label, label);
+		g_free (label);
+
 		set_completed (dialog);
 	}
+
+	priv->initialized = TRUE;
 
 	g_free (word);
 	g_clear_object (&checker);
@@ -333,7 +346,7 @@ gedit_spell_checker_dialog_show (GtkWidget *widget)
 	 * GtkTextBuffer). So that's why goto_next() is called after the
 	 * chain-up.
 	 */
-	if (priv->misspelled_word == NULL)
+	if (!priv->initialized)
 	{
 		goto_next (dialog);
 	}
