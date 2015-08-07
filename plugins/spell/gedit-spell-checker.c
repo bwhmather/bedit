@@ -86,6 +86,27 @@ gedit_spell_checker_error_quark (void)
 	return quark;
 }
 
+static gboolean
+is_language_set (GeditSpellChecker *checker)
+{
+	GeditSpellCheckerPrivate *priv;
+
+	priv = gedit_spell_checker_get_instance_private (checker);
+
+	g_assert ((priv->active_lang == NULL && priv->dict == NULL) ||
+		  (priv->active_lang != NULL && priv->dict != NULL));
+
+	if (priv->active_lang == NULL)
+	{
+		g_warning ("Spell checker: the language is not correctly set.\n"
+			   "There is maybe no dictionaries available.\n"
+			   "Check the return value of gedit_spell_checker_get_language().");
+		return FALSE;
+	}
+
+	return TRUE;
+}
+
 static void
 gedit_spell_checker_set_property (GObject      *object,
 				  guint         prop_id,
@@ -420,13 +441,9 @@ gedit_spell_checker_check_word (GeditSpellChecker  *checker,
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
 	g_return_val_if_fail (word != NULL, FALSE);
 	g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+	g_return_val_if_fail (is_language_set (checker), FALSE);
 
 	priv = gedit_spell_checker_get_instance_private (checker);
-
-	if (priv->dict == NULL)
-	{
-		return FALSE;
-	}
 
 	if (gedit_spell_utils_is_digit (word))
 	{
@@ -471,13 +488,9 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *checker,
 
 	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), NULL);
 	g_return_val_if_fail (word != NULL, NULL);
+	g_return_val_if_fail (is_language_set (checker), NULL);
 
 	priv = gedit_spell_checker_get_instance_private (checker);
-
-	if (priv->dict == NULL)
-	{
-		return NULL;
-	}
 
 	suggestions = enchant_dict_suggest (priv->dict, word, -1, NULL);
 
@@ -504,31 +517,22 @@ gedit_spell_checker_get_suggestions (GeditSpellChecker *checker,
  *
  * Adds a word to the personal dictionary. It is typically saved in the user
  * home directory.
- *
- * Returns: whether the operation was successful.
- * TODO do not return a value.
  */
-gboolean
+void
 gedit_spell_checker_add_word_to_personal (GeditSpellChecker *checker,
 					  const gchar       *word)
 {
 	GeditSpellCheckerPrivate *priv;
 
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
-	g_return_val_if_fail (word != NULL, FALSE);
+	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (checker));
+	g_return_if_fail (word != NULL);
+	g_return_if_fail (is_language_set (checker));
 
 	priv = gedit_spell_checker_get_instance_private (checker);
-
-	if (priv->dict == NULL)
-	{
-		return FALSE;
-	}
 
 	enchant_dict_add (priv->dict, word, -1);
 
 	g_signal_emit (G_OBJECT (checker), signals[SIGNAL_ADD_WORD_TO_PERSONAL], 0, word);
-
-	return TRUE;
 }
 
 /**
@@ -539,31 +543,22 @@ gedit_spell_checker_add_word_to_personal (GeditSpellChecker *checker,
  * Adds a word to the session dictionary. The session dictionary is lost when
  * the application exits. This function is typically called when an “Ignore All”
  * action is activated.
- *
- * Returns: whether the operation was successful.
- * TODO do not return a value.
  */
-gboolean
+void
 gedit_spell_checker_add_word_to_session (GeditSpellChecker *checker,
 					 const gchar       *word)
 {
 	GeditSpellCheckerPrivate *priv;
 
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
-	g_return_val_if_fail (word != NULL, FALSE);
+	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (checker));
+	g_return_if_fail (word != NULL);
+	g_return_if_fail (is_language_set (checker));
 
 	priv = gedit_spell_checker_get_instance_private (checker);
-
-	if (priv->dict == NULL)
-	{
-		return FALSE;
-	}
 
 	enchant_dict_add_to_session (priv->dict, word, -1);
 
 	g_signal_emit (G_OBJECT (checker), signals[SIGNAL_ADD_WORD_TO_SESSION], 0, word);
-
-	return TRUE;
 }
 
 /**
@@ -571,33 +566,25 @@ gedit_spell_checker_add_word_to_session (GeditSpellChecker *checker,
  * @checker: a #GeditSpellChecker.
  *
  * Clears the session dictionary.
- *
- * Returns: whether the operation was successful.
  */
-gboolean
+void
 gedit_spell_checker_clear_session (GeditSpellChecker *checker)
 {
 	GeditSpellCheckerPrivate *priv;
 
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
+	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (checker));
+	g_return_if_fail (is_language_set (checker));
 
 	priv = gedit_spell_checker_get_instance_private (checker);
 
 	/* free and re-request dictionary */
-	if (priv->dict != NULL)
-	{
-		enchant_broker_free_dict (priv->broker, priv->dict);
-		priv->dict = NULL;
-	}
+	g_assert (priv->dict != NULL);
+	enchant_broker_free_dict (priv->broker, priv->dict);
+	priv->dict = NULL;
 
-	if (!init_dictionary (checker))
-	{
-		return FALSE;
-	}
+	init_dictionary (checker);
 
 	g_signal_emit (G_OBJECT (checker), signals[SIGNAL_CLEAR_SESSION], 0);
-
-	return TRUE;
 }
 
 /**
@@ -607,32 +594,24 @@ gedit_spell_checker_clear_session (GeditSpellChecker *checker)
  * @replacement: the replacement word.
  *
  * Informs the spell checker that @word is replaced/corrected by @replacement.
- *
- * Returns: whether the operation was successful.
  */
-gboolean
+void
 gedit_spell_checker_set_correction (GeditSpellChecker *checker,
 				    const gchar       *word,
 				    const gchar       *replacement)
 {
 	GeditSpellCheckerPrivate *priv;
 
-	g_return_val_if_fail (GEDIT_IS_SPELL_CHECKER (checker), FALSE);
-	g_return_val_if_fail (word != NULL, FALSE);
-	g_return_val_if_fail (replacement != NULL, FALSE);
+	g_return_if_fail (GEDIT_IS_SPELL_CHECKER (checker));
+	g_return_if_fail (word != NULL);
+	g_return_if_fail (replacement != NULL);
+	g_return_if_fail (is_language_set (checker));
 
 	priv = gedit_spell_checker_get_instance_private (checker);
-
-	if (priv->dict == NULL)
-	{
-		return FALSE;
-	}
 
 	enchant_dict_store_replacement (priv->dict,
 					word, -1,
 					replacement, -1);
-
-	return TRUE;
 }
 
 /* ex:set ts=8 noet: */

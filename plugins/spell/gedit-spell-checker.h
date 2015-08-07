@@ -72,8 +72,7 @@ GQuark		gedit_spell_checker_error_quark			(void);
 GeditSpellChecker *
 		gedit_spell_checker_new				(const GeditSpellCheckerLanguage *language);
 
-gboolean
-		gedit_spell_checker_set_language		(GeditSpellChecker               *checker,
+gboolean	gedit_spell_checker_set_language		(GeditSpellChecker               *checker,
 								 const GeditSpellCheckerLanguage *language);
 
 const GeditSpellCheckerLanguage *
@@ -86,15 +85,15 @@ gboolean	gedit_spell_checker_check_word			(GeditSpellChecker  *checker,
 GSList *	gedit_spell_checker_get_suggestions		(GeditSpellChecker *checker,
 								 const gchar       *word);
 
-gboolean	gedit_spell_checker_add_word_to_personal	(GeditSpellChecker *checker,
+void		gedit_spell_checker_add_word_to_personal	(GeditSpellChecker *checker,
 								 const gchar       *word);
 
-gboolean	gedit_spell_checker_add_word_to_session		(GeditSpellChecker *checker,
+void		gedit_spell_checker_add_word_to_session		(GeditSpellChecker *checker,
 								 const gchar       *word);
 
-gboolean	gedit_spell_checker_clear_session		(GeditSpellChecker *checker);
+void		gedit_spell_checker_clear_session		(GeditSpellChecker *checker);
 
-gboolean	gedit_spell_checker_set_correction		(GeditSpellChecker *checker,
+void		gedit_spell_checker_set_correction		(GeditSpellChecker *checker,
 								 const gchar       *word,
 								 const gchar       *replacement);
 
