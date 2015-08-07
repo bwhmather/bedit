@@ -211,6 +211,22 @@ set_completed (GeditSpellCheckerDialog *dialog)
 }
 
 static void
+show_error (GeditSpellCheckerDialog *dialog,
+	    GError                  *error)
+{
+	GeditSpellCheckerDialogPrivate *priv;
+	gchar *label;
+
+	priv = gedit_spell_checker_dialog_get_instance_private (dialog);
+
+	label = g_strdup_printf ("<b>%s</b> %s", _("Error:"), error->message);
+	gtk_label_set_markup (priv->misspelled_word_label, label);
+	g_free (label);
+
+	set_completed (dialog);
+}
+
+static void
 goto_next (GeditSpellCheckerDialog *dialog)
 {
 	GeditSpellCheckerDialogPrivate *priv;
@@ -225,14 +241,7 @@ goto_next (GeditSpellCheckerDialog *dialog)
 
 	if (error != NULL)
 	{
-		gchar *label;
-
-		label = g_strdup_printf ("<b>%s</b> %s", _("Error:"), error->message);
-		gtk_label_set_markup (priv->misspelled_word_label, label);
-		g_free (label);
-
-		set_completed (dialog);
-
+		show_error (dialog, error);
 		g_error_free (error);
 		error = NULL;
 	}
@@ -456,7 +465,7 @@ check_word_button_clicked_handler (GtkButton               *button,
 
 	if (error != NULL)
 	{
-		g_warning ("Spell checker dialog: %s", error->message);
+		show_error (dialog, error);
 		g_error_free (error);
 		return;
 	}
