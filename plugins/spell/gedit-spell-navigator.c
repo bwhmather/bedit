@@ -20,6 +20,23 @@
 
 #include "gedit-spell-navigator.h"
 
+/**
+ * SECTION:spell-navigator
+ * @Short_description: Interface to navigate through misspelled words
+ * @Title: GeditSpellNavigator
+ * @See_also: #GeditSpellNavigatorGtv, #GeditSpellCheckerDialog
+ *
+ * #GeditSpellNavigator is an interface to navigate through misspelled words,
+ * and correct the mistakes.
+ *
+ * It is used by widgets like #GeditSpellCheckerDialog. The purpose is to
+ * spell check a document one word at a time.
+ *
+ * It is not mandatory to navigate through all the text. Depending on the
+ * context, an implementation could spell check only the current page, or the
+ * selection, etc.
+ */
+
 G_DEFINE_INTERFACE (GeditSpellNavigator, gedit_spell_navigator, G_TYPE_OBJECT)
 
 static gboolean
@@ -59,7 +76,8 @@ gedit_spell_navigator_default_init (GeditSpellNavigatorInterface *iface)
  * @word: (out) (optional): a location to store an allocated string, or %NULL.
  *   Use g_free() to free the returned string.
  * @spell_checker: (out) (optional) (transfer full): a location to store the
- *   #GeditSpellChecker used, or %NULL.
+ *   #GeditSpellChecker used, or %NULL. Use g_object_unref() when no longer
+ *   needed.
  * @error: (out) (optional): a location to a %NULL #GError, or %NULL.
  *
  * Goes to the next misspelled word. When called the first time, goes to the
@@ -93,6 +111,18 @@ gedit_spell_navigator_goto_next (GeditSpellNavigator  *navigator,
 								       error);
 }
 
+/**
+ * gedit_spell_navigator_change:
+ * @navigator: a #GeditSpellNavigator.
+ * @word: the word to change.
+ * @change_to: the replacement.
+ *
+ * Changes the current @word by @change_to. @word is the same as returned by the
+ * last gedit_spell_navigator_goto_next().
+ *
+ * gedit_spell_checker_set_correction() has already been called, this function
+ * is to make the change in the text. Only the current word should be changed.
+ */
 void
 gedit_spell_navigator_change (GeditSpellNavigator *navigator,
 			      const gchar         *word,
@@ -103,6 +133,17 @@ gedit_spell_navigator_change (GeditSpellNavigator *navigator,
 	GEDIT_SPELL_NAVIGATOR_GET_IFACE (navigator)->change (navigator, word, change_to);
 }
 
+/**
+ * gedit_spell_navigator_change_all:
+ * @navigator: a #GeditSpellNavigator.
+ * @word: the word to change.
+ * @change_to: the replacement.
+ *
+ * Changes all occurrences of @word by @change_to.
+ *
+ * gedit_spell_checker_set_correction() has already been called, this function
+ * is to make the change in the text.
+ */
 void
 gedit_spell_navigator_change_all (GeditSpellNavigator *navigator,
 				  const gchar         *word,

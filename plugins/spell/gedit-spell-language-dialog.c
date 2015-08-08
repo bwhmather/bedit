@@ -21,6 +21,16 @@
 
 #include "gedit-spell-language-dialog.h"
 
+/**
+ * SECTION:spell-language-dialog
+ * @Short_description: Dialog to choose a spell language.
+ * @Title: GeditSpellLanguageDialog
+ * @See_also: #GeditSpellCheckerLanguage.
+ *
+ * #GeditSpellLanguageDialog is a #GtkDialog to choose an available
+ * #GeditSpellCheckerLanguage.
+ */
+
 enum
 {
 	COLUMN_LANGUAGE_NAME,
@@ -155,6 +165,13 @@ populate_language_list (GeditSpellLanguageDialog        *dialog,
 	}
 }
 
+/**
+ * gedit_spell_language_dialog_new:
+ * @parent: transient parent of the dialog.
+ * @cur_lang: the #GeditSpellCheckerLanguage to select initially.
+ *
+ * Returns: a new #GeditSpellLanguageDialog widget.
+ */
 GtkWidget *
 gedit_spell_language_dialog_new (GtkWindow                       *parent,
 				 const GeditSpellCheckerLanguage *cur_lang)
@@ -172,6 +189,12 @@ gedit_spell_language_dialog_new (GtkWindow                       *parent,
 	return GTK_WIDGET (dialog);
 }
 
+/**
+ * gedit_spell_language_get_selected_language:
+ * @dialog: a #GeditSpellLanguageDialog.
+ *
+ * Returns: the currently selected language.
+ */
 const GeditSpellCheckerLanguage *
 gedit_spell_language_get_selected_language (GeditSpellLanguageDialog *dialog)
 {

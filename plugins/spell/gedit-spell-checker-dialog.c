@@ -23,6 +23,16 @@
 #include <glib/gi18n.h>
 #include "gedit-spell-checker.h"
 
+/**
+ * SECTION:spell-checker-dialog
+ * @Short_description: Spell checker dialog
+ * @Title: GeditSpellCheckerDialog
+ * @See_also: #GeditSpellNavigator
+ *
+ * #GeditSpellCheckerDialog is a #GtkDialog to spell check a document one word
+ * at a time. It uses a #GeditSpellNavigator.
+ */
+
 typedef struct _GeditSpellCheckerDialogPrivate GeditSpellCheckerDialogPrivate;
 
 struct _GeditSpellCheckerDialogPrivate
@@ -381,6 +391,11 @@ gedit_spell_checker_dialog_class_init (GeditSpellCheckerDialogClass *klass)
 
 	widget_class->show = gedit_spell_checker_dialog_show;
 
+	/**
+	 * GeditSpellCheckerDialog:spell-navigator:
+	 *
+	 * The #GeditSpellNavigator to use.
+	 */
 	g_object_class_install_property (object_class,
 					 PROP_SPELL_NAVIGATOR,
 					 g_param_spec_object ("spell-navigator",
@@ -685,6 +700,13 @@ gedit_spell_checker_dialog_init (GeditSpellCheckerDialog *dialog)
 	gtk_widget_grab_default (priv->change_button);
 }
 
+/**
+ * gedit_spell_checker_dialog_new:
+ * @parent: transient parent of the dialog.
+ * @navigator: the #GeditSpellNavigator to use.
+ *
+ * Returns: a new #GeditSpellCheckerDialog widget.
+ */
 GtkWidget *
 gedit_spell_checker_dialog_new (GtkWindow           *parent,
 				GeditSpellNavigator *navigator)

@@ -21,6 +21,27 @@
 #include "gedit-spell-navigator-gtv.h"
 #include "gedit-spell-utils.h"
 
+/**
+ * SECTION:spell-navigator-gtv
+ * @Short_description: A GeditSpellNavigator implementation for GtkTextView.
+ * @Title: GeditSpellNavigatorGtv
+ * @See_also: #GeditSpellNavigator, #GeditSpellCheckerDialog
+ *
+ * #GeditSpellNavigatorGtv is a simple implementation of the
+ * #GeditSpellNavigator interface.
+ *
+ * If a selection exists in the #GtkTextView, only the selected text is spell
+ * checked. Otherwise the whole buffer is checked. The same #GeditSpellChecker
+ * is used throughout the navigation.
+ *
+ * If only the selected text is spell checked, the implementation of
+ * gedit_spell_navigator_change_all() changes only the occurrences that were
+ * present in the selection.
+ *
+ * The implementation of gedit_spell_navigator_goto_next() selects the
+ * misspelled word and scrolls to it.
+ */
+
 typedef struct _GeditSpellNavigatorGtvPrivate GeditSpellNavigatorGtvPrivate;
 
 struct _GeditSpellNavigatorGtvPrivate
@@ -222,6 +243,12 @@ gedit_spell_navigator_gtv_class_init (GeditSpellNavigatorGtvClass *klass)
 	object_class->set_property = gedit_spell_navigator_gtv_set_property;
 	object_class->dispose = gedit_spell_navigator_gtv_dispose;
 
+	/**
+	 * GeditSpellNavigatorGtv:view:
+	 *
+	 * The #GtkTextView. The buffer is not sufficient, the view is needed to
+	 * scroll to the misspelled words.
+	 */
 	g_object_class_install_property (object_class,
 					 PROP_VIEW,
 					 g_param_spec_object ("view",
@@ -232,6 +259,11 @@ gedit_spell_navigator_gtv_class_init (GeditSpellNavigatorGtvClass *klass)
 							      G_PARAM_CONSTRUCT_ONLY |
 							      G_PARAM_STATIC_STRINGS));
 
+	/**
+	 * GeditSpellNavigatorGtv:spell-checker:
+	 *
+	 * The #GeditSpellChecker to use.
+	 */
 	g_object_class_install_property (object_class,
 					 PROP_SPELL_CHECKER,
 					 g_param_spec_object ("spell-checker",
@@ -489,6 +521,13 @@ gedit_spell_navigator_iface_init (gpointer g_iface,
 	iface->change_all = gedit_spell_navigator_gtv_change_all;
 }
 
+/**
+ * gedit_spell_navigator_gtv_new:
+ * @view: a #GtkTextView.
+ * @spell_checker: a #GeditSpellChecker.
+ *
+ * Returns: a new #GeditSpellNavigatorGtv object.
+ */
 GeditSpellNavigator *
 gedit_spell_navigator_gtv_new (GtkTextView       *view,
 			       GeditSpellChecker *spell_checker)
