@@ -30,6 +30,24 @@
 #include "gedit-spell-utils.h"
 #include "gtktextregion.h"
 
+/**
+ * SECTION:automatic-spell-checker
+ * @Short_description: Inline spell checker for GtkTextView
+ * @Title: GeditAutomaticSpellChecker
+ * @See_also: #GeditSpellChecker
+ *
+ * The #GeditAutomaticSpellChecker is an inline spell checker for the
+ * #GtkTextView widget. Misspelled words are highlighted with a
+ * %PANGO_UNDERLINE_ERROR, usually a red wavy underline. Right-clicking a
+ * misspelled word pops up a context menu of suggested replacements. The context
+ * menu also contains an “Ignore All” item to add the misspelled word to the
+ * session dictionary. And an “Add” item to add the word to the personal
+ * dictionary.
+ *
+ * The spell is checked only on the visible regions of the attached
+ * #GtkTextView's.
+ */
+
 struct _GeditAutomaticSpellChecker
 {
 	GObject parent;
@@ -1040,6 +1058,13 @@ gedit_automatic_spell_checker_class_init (GeditAutomaticSpellCheckerClass *klass
 	object_class->set_property = gedit_automatic_spell_checker_set_property;
 	object_class->dispose = gedit_automatic_spell_checker_dispose;
 
+	/**
+	 * GeditAutomaticSpellChecker:buffer:
+	 *
+	 * The #GtkSourceBuffer. If a same buffer is used for several views, the
+	 * misspelled words are visible in all views, because #GtkTextTag's are
+	 * added to the buffer.
+	 */
 	g_object_class_install_property (object_class,
 					 PROP_BUFFER,
 					 g_param_spec_object ("buffer",
@@ -1050,6 +1075,13 @@ gedit_automatic_spell_checker_class_init (GeditAutomaticSpellCheckerClass *klass
 							      G_PARAM_CONSTRUCT_ONLY |
 							      G_PARAM_STATIC_STRINGS));
 
+	/**
+	 * GeditAutomaticSpellChecker:spell-checker:
+	 *
+	 * The #GeditSpellChecker to use. It cannot be changed afterwards. If
+	 * you want to change the language, you need to create another
+	 * #GeditAutomaticSpellChecker.
+	 */
 	g_object_class_install_property (object_class,
 					 PROP_SPELL_CHECKER,
 					 g_param_spec_object ("spell-checker",
@@ -1066,6 +1098,13 @@ gedit_automatic_spell_checker_init (GeditAutomaticSpellChecker *spell)
 {
 }
 
+/**
+ * gedit_automatic_spell_checker_new:
+ * @buffer: a #GtkSourceBuffer.
+ * @checker: a #GeditSpellChecker.
+ *
+ * Returns: a new #GeditAutomaticSpellChecker object.
+ */
 GeditAutomaticSpellChecker *
 gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 				   GeditSpellChecker *checker)
@@ -1089,6 +1128,14 @@ gedit_automatic_spell_checker_new (GtkSourceBuffer   *buffer,
 			     NULL);
 }
 
+/**
+ * gedit_automatic_spell_checker_attach_view:
+ * @spell: a #GeditAutomaticSpellChecker.
+ * @view: a #GtkTextView.
+ *
+ * Enables the inline spell checker for @view. @view must have the same buffer as
+ * the #GeditAutomaticSpellChecker:buffer property.
+ */
 void
 gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
 					   GtkTextView                *view)
@@ -1126,6 +1173,13 @@ gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
 	g_object_ref (view);
 }
 
+/**
+ * gedit_automatic_spell_checker_detach_view:
+ * @spell: a #GeditAutomaticSpellChecker.
+ * @view: a #GtkTextView.
+ *
+ * Disables the inline spell checker for @view.
+ */
 void
 gedit_automatic_spell_checker_detach_view (GeditAutomaticSpellChecker *spell,
 					   GtkTextView                *view)
@@ -1141,6 +1195,13 @@ gedit_automatic_spell_checker_detach_view (GeditAutomaticSpellChecker *spell,
 	g_object_unref (view);
 }
 
+/**
+ * gedit_automatic_spell_checker_recheck_all:
+ * @spell: a #GeditAutomaticSpellChecker.
+ *
+ * Adds the whole buffer to the region to check. But only the visible regions of
+ * the attached #GtkTextView's are scanned.
+ */
 void
 gedit_automatic_spell_checker_recheck_all (GeditAutomaticSpellChecker *spell)
 {
