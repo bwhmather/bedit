@@ -45,8 +45,6 @@ void	gedit_automatic_spell_checker_attach_view	(GeditAutomaticSpellChecker *spel
 void	gedit_automatic_spell_checker_detach_view	(GeditAutomaticSpellChecker *spell,
 							 GtkTextView                *view);
 
-void	gedit_automatic_spell_checker_recheck_all	(GeditAutomaticSpellChecker *spell);
-
 #endif  /* __GEDIT_AUTOMATIC_SPELL_CHECKER_H__ */
 
 /* ex:set ts=8 noet: */

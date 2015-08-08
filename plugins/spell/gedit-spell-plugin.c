@@ -435,8 +435,6 @@ set_auto_spell (ViewData *data,
 
 		gedit_automatic_spell_checker_attach_view (data->auto_spell,
 							   GTK_TEXT_VIEW (data->view));
-
-		gedit_automatic_spell_checker_recheck_all (data->auto_spell);
 	}
 }
 

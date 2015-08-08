@@ -416,6 +416,18 @@ add_subregion_to_scan (GeditAutomaticSpellChecker *spell,
 }
 
 static void
+recheck_all (GeditAutomaticSpellChecker *spell)
+{
+	GtkTextIter start;
+	GtkTextIter end;
+
+	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
+
+	add_subregion_to_scan (spell, &start, &end);
+	check_visible_region (spell);
+}
+
+static void
 insert_text_after_cb (GtkTextBuffer              *buffer,
 		      GtkTextIter                *location,
 		      gchar                      *text,
@@ -740,7 +752,7 @@ static void
 clear_session_cb (GeditSpellChecker          *checker,
 		  GeditAutomaticSpellChecker *spell)
 {
-	gedit_automatic_spell_checker_recheck_all (spell);
+	recheck_all (spell);
 }
 
 static void
@@ -748,7 +760,7 @@ language_notify_cb (GeditSpellChecker          *checker,
 		    GParamSpec                 *pspec,
 		    GeditAutomaticSpellChecker *spell)
 {
-	gedit_automatic_spell_checker_recheck_all (spell);
+	recheck_all (spell);
 }
 
 /* When the user right-clicks on a word, they want to check that word.
@@ -910,6 +922,8 @@ set_buffer (GeditAutomaticSpellChecker *spell,
 	 */
 	gtk_text_buffer_get_start_iter (spell->buffer, &start);
 	spell->mark_click = gtk_text_buffer_create_mark (spell->buffer, NULL, &start, TRUE);
+
+	recheck_all (spell);
 
 	g_object_notify (G_OBJECT (spell), "buffer");
 }
@@ -1171,6 +1185,8 @@ gedit_automatic_spell_checker_attach_view (GeditAutomaticSpellChecker *spell,
 
 	spell->views = g_slist_prepend (spell->views, view);
 	g_object_ref (view);
+
+	check_visible_region_in_view (spell, view);
 }
 
 /**
@@ -1193,27 +1209,6 @@ gedit_automatic_spell_checker_detach_view (GeditAutomaticSpellChecker *spell,
 
 	spell->views = g_slist_remove (spell->views, view);
 	g_object_unref (view);
-}
-
-/**
- * gedit_automatic_spell_checker_recheck_all:
- * @spell: a #GeditAutomaticSpellChecker.
- *
- * Adds the whole buffer to the region to check. But only the visible regions of
- * the attached #GtkTextView's are scanned.
- */
-void
-gedit_automatic_spell_checker_recheck_all (GeditAutomaticSpellChecker *spell)
-{
-	GtkTextIter start;
-	GtkTextIter end;
-
-	g_return_if_fail (GEDIT_IS_AUTOMATIC_SPELL_CHECKER (spell));
-
-	gtk_text_buffer_get_bounds (spell->buffer, &start, &end);
-
-	add_subregion_to_scan (spell, &start, &end);
-	check_visible_region (spell);
 }
 
 /* ex:set ts=8 noet: */
