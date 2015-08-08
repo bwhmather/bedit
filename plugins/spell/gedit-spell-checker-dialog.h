@@ -28,14 +28,9 @@
 G_BEGIN_DECLS
 
 #define GEDIT_TYPE_SPELL_CHECKER_DIALOG (gedit_spell_checker_dialog_get_type ())
-G_DECLARE_DERIVABLE_TYPE (GeditSpellCheckerDialog, gedit_spell_checker_dialog,
-			  GEDIT, SPELL_CHECKER_DIALOG,
-			  GtkDialog)
-
-struct _GeditSpellCheckerDialogClass
-{
-	GtkDialogClass parent_class;
-};
+G_DECLARE_FINAL_TYPE (GeditSpellCheckerDialog, gedit_spell_checker_dialog,
+		      GEDIT, SPELL_CHECKER_DIALOG,
+		      GtkDialog)
 
 GtkWidget *	gedit_spell_checker_dialog_new		(GtkWindow           *parent,
 							 GeditSpellNavigator *navigator);

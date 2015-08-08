@@ -35,6 +35,11 @@
 
 typedef struct _GeditSpellCheckerDialogPrivate GeditSpellCheckerDialogPrivate;
 
+struct _GeditSpellCheckerDialog
+{
+	GtkDialog parent_instance;
+};
+
 struct _GeditSpellCheckerDialogPrivate
 {
 	GeditSpellNavigator *navigator;
