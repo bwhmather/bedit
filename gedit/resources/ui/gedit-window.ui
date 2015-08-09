@@ -8,12 +8,13 @@
     <child type="titlebar">
       <object class="GtkPaned" id="titlebar_paned">
         <property name="visible">True</property>
+        <property name="position" bind-source="hpaned" bind-property="position" bind-flags="bidirectional|sync-create"/>
         <style>
           <class name="gedit-headerbar-paned"/>
         </style>
         <child>
           <object class="GtkHeaderBar" id="side_headerbar">
-            <property name="visible">True</property>
+            <property name="visible" bind-source="side_panel" bind-property="visible" bind-flags="sync-create"/>
             <property name="show_close_button">False</property>
             <property name="title" translatable="yes">Documents</property>
             <style>
@@ -154,7 +155,7 @@
                 </style>
                 <child>
                   <object class="GtkBox" id="side_panel_box">
-                    <property name="visible">True</property>
+                    <property name="visible" bind-source="side_panel" bind-property="visible" bind-flags="sync-create"/>
                     <property name="orientation">vertical</property>
                     <child>
                       <object class="GeditMenuStackSwitcher" id="side_panel_inline_stack_switcher">
@@ -211,7 +212,7 @@
                         </child>
                         <child>
                           <object class="GtkBox" id="bottom_panel_box">
-                            <property name="visible">True</property>
+                            <property name="visible" bind-source="bottom_panel" bind-property="visible" bind-flags="sync-create"/>
                             <property name="orientation">horizontal</property>
                             <style>
                               <class name="gedit-bottom-panel"/>

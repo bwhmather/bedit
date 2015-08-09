@@ -2434,12 +2434,6 @@ setup_side_panel (GeditWindow *window)
 
 	gedit_debug (DEBUG_WINDOW);
 
-	g_object_bind_property (window->priv->side_panel,
-	                        "visible",
-	                        window->priv->side_panel_box,
-	                        "visible",
-	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
-
 	g_signal_connect_after (priv->side_panel,
 	                        "notify::visible",
 	                        G_CALLBACK (side_panel_visibility_changed),
@@ -2550,12 +2544,6 @@ static void
 setup_bottom_panel (GeditWindow *window)
 {
 	gedit_debug (DEBUG_WINDOW);
-
-	g_object_bind_property (window->priv->bottom_panel,
-	                        "visible",
-	                        window->priv->bottom_panel_box,
-	                        "visible",
-	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
 
 	g_signal_connect_after (window->priv->bottom_panel,
 	                        "notify::visible",
@@ -2798,17 +2786,6 @@ gedit_window_init (GeditWindow *window)
 
 	window->priv->window_group = gtk_window_group_new ();
 	gtk_window_group_add_window (window->priv->window_group, GTK_WINDOW (window));
-
-	g_object_bind_property (window->priv->side_panel,
-	                        "visible",
-	                        window->priv->side_headerbar,
-	                        "visible",
-	                        G_BINDING_DEFAULT | G_BINDING_SYNC_CREATE);
-	g_object_bind_property (window->priv->titlebar_paned,
-	                        "position",
-	                        window->priv->hpaned,
-	                        "position",
-	                        G_BINDING_DEFAULT | G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
 	/* Setup file popover and file dialog */
 	window->priv->open_document_popover = gtk_popover_new (window->priv->open_button);
