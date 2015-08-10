@@ -251,7 +251,7 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 			{
 				gchar *uri_lower;
 
-				uri_lower = g_utf8_strdown (gtk_recent_info_get_uri (info), -1);
+				uri_lower = g_utf8_strdown (gtk_recent_info_get_uri_display (info), -1);
 
 				if (strstr (uri_lower, config->substring_filter) == NULL)
 				{
