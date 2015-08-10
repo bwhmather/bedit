@@ -380,6 +380,7 @@ fileitem_setup (FileItem *item)
 {
 	gchar *scheme;
 	gchar *filename;
+	gchar *normalized_filename;
 	gchar *candidate = NULL;
 	gchar *path;
 	gchar *name;
@@ -398,8 +399,11 @@ fileitem_setup (FileItem *item)
 			item->name = g_filename_to_utf8 (name, -1, NULL, NULL, NULL);
 			g_free (name);
 
-			candidate = g_utf8_strdown (filename, -1);
+			normalized_filename = g_utf8_normalize (filename, -1, G_NORMALIZE_ALL);
 			g_free (filename);
+
+			candidate = g_utf8_casefold (normalized_filename, -1);
+			g_free (normalized_filename);
 		}
 	}
 

@@ -224,7 +224,11 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 	needed = gtk_recent_filter_get_needed (config->filter);
 	if (config->substring_filter && *config->substring_filter != '\0')
 	{
-		substring_filter = g_utf8_strdown (config->substring_filter, -1);
+		gchar *filter_normalized;
+
+		filter_normalized = g_utf8_normalize (config->substring_filter, -1, G_NORMALIZE_ALL);
+		substring_filter = g_utf8_casefold (filter_normalized, -1);
+		g_free (filter_normalized);
 	}
 
 	while (items)
@@ -252,16 +256,19 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 		{
 			if (substring_filter)
 			{
-				gchar *uri_lower;
+				gchar *uri_normalized;
+				gchar *uri_casefolded;
 
-				uri_lower = g_utf8_strdown (gtk_recent_info_get_uri_display (info), -1);
+				uri_normalized = g_utf8_normalize (gtk_recent_info_get_uri_display (info), -1, G_NORMALIZE_ALL);
+				uri_casefolded = g_utf8_casefold (uri_normalized, -1);
+				g_free (uri_normalized);
 
-				if (strstr (uri_lower, substring_filter) == NULL)
+				if (strstr (uri_casefolded, substring_filter) == NULL)
 				{
 					is_filtered = TRUE;
 				}
 
-				g_free (uri_lower);
+				g_free (uri_casefolded);
 			}
 
 			if (!is_filtered)
