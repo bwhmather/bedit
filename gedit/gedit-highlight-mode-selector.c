@@ -91,8 +91,10 @@ visible_func (GtkTreeModel               *model,
 {
 	const gchar *entry_text;
 	gchar *name;
-	gchar *name_lower;
-	gchar *text_lower;
+	gchar *name_normalized;
+	gchar *name_casefolded;
+	gchar *text_normalized;
+	gchar *text_casefolded;
 	gboolean visible = FALSE;
 
 	entry_text = gtk_entry_get_text (GTK_ENTRY (selector->entry));
@@ -104,18 +106,23 @@ visible_func (GtkTreeModel               *model,
 
 	gtk_tree_model_get (model, iter, COLUMN_NAME, &name, -1);
 
-	name_lower = g_utf8_strdown (name, -1);
+	name_normalized = g_utf8_normalize (name, -1, G_NORMALIZE_ALL);
 	g_free (name);
 
-	text_lower = g_utf8_strdown (entry_text, -1);
+	name_casefolded = g_utf8_casefold (name_normalized, -1);
+	g_free (name_normalized);
 
-	if (strstr (name_lower, text_lower) != NULL)
+	text_normalized = g_utf8_normalize (entry_text, -1, G_NORMALIZE_ALL);
+	text_casefolded = g_utf8_casefold (text_normalized, -1);
+	g_free (text_normalized);
+
+	if (strstr (name_casefolded, text_casefolded) != NULL)
 	{
 		visible = TRUE;
 	}
 
-	g_free (name_lower);
-	g_free (text_lower);
+	g_free (name_casefolded);
+	g_free (text_casefolded);
 
 	return visible;
 }
