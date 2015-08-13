@@ -622,7 +622,7 @@ on_entry_changed (GtkEntry                  *entry,
 
 	entry_text = gtk_entry_get_text (entry);
 	gedit_open_document_selector_store_set_recent_filter (selector->selector_store,
-	                                                      g_utf8_strdown (entry_text, -1));
+	                                                      g_strdup (entry_text));
 
 	if (gtk_widget_get_mapped ( GTK_WIDGET (selector)))
 	{

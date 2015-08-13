@@ -207,7 +207,7 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 	GList *items;
 	GList *retitems = NULL;
 	gint length;
-	gboolean has_substring_filter;
+	char *substring_filter = NULL;
 
 	if (config->limit == 0)
 	{
@@ -222,7 +222,10 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 	}
 
 	needed = gtk_recent_filter_get_needed (config->filter);
-	has_substring_filter = (config->substring_filter && *config->substring_filter != '\0');
+	if (config->substring_filter && *config->substring_filter != '\0')
+	{
+		substring_filter = g_utf8_strdown (config->substring_filter, -1);
+	}
 
 	while (items)
 	{
@@ -247,13 +250,13 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 		}
 		else
 		{
-			if (has_substring_filter)
+			if (substring_filter)
 			{
 				gchar *uri_lower;
 
 				uri_lower = g_utf8_strdown (gtk_recent_info_get_uri_display (info), -1);
 
-				if (strstr (uri_lower, config->substring_filter) == NULL)
+				if (strstr (uri_lower, substring_filter) == NULL)
 				{
 					is_filtered = TRUE;
 				}
@@ -290,6 +293,8 @@ gedit_recent_get_items (GeditRecentConfiguration *config)
 
 		items = g_list_delete_link (items, items);
 	}
+
+	g_free (substring_filter);
 
 	if (!retitems)
 	{
