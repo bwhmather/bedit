@@ -124,6 +124,11 @@
       <summary>Right Margin Position</summary>
       <description>Specifies the position of the right margin.</description>
     </key>
+    <key name="display-overview-map" type="b">
+      <default>false</default>
+      <summary>Display Overview Map</summary>
+      <description>Whether gedit should display the overview map for the document.</description>
+    </key>
     <key name="background-pattern" enum="org.gnome.gedit.BackgroundPatternType">
       <default>'none'</default>
       <summary>Document background pattern type</summary>
@@ -184,11 +189,6 @@
     </key>
     <key name="bottom-panel-visible" type="b">
       <default>false</default>
-    </key>
-    <key name="minimap-visible" type="b">
-      <default>false</default>
-      <summary>Minimap is Visible</summary>
-      <description>Whether the minimap for the document should be visible.</description>
     </key>
     <key name="max-recents" type="u">
       <default>5</default>

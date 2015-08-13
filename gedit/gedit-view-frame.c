@@ -54,7 +54,7 @@ struct _GeditViewFrame
 {
 	GtkOverlay parent_instance;
 
-	GSettings *ui_settings;
+	GSettings *editor_settings;
 
 	GeditView *view;
 	GeditViewHolder *view_holder;
@@ -145,7 +145,7 @@ gedit_view_frame_dispose (GObject *object)
 		gtk_source_file_set_mount_operation_factory (file, NULL, NULL, NULL);
 	}
 
-	g_clear_object (&frame->ui_settings);
+	g_clear_object (&frame->editor_settings);
 	g_clear_object (&frame->entry_tag);
 	g_clear_object (&frame->search_settings);
 	g_clear_object (&frame->old_search_settings);
@@ -1446,9 +1446,9 @@ gedit_view_frame_init (GeditViewFrame *frame)
 
 	gtk_widget_init_template (GTK_WIDGET (frame));
 
-	frame->ui_settings = g_settings_new ("org.gnome.gedit.preferences.ui");
-	g_settings_bind (frame->ui_settings,
-	                 GEDIT_SETTINGS_MINIMAP_VISIBLE,
+	frame->editor_settings = g_settings_new ("org.gnome.gedit.preferences.editor");
+	g_settings_bind (frame->editor_settings,
+	                 GEDIT_SETTINGS_DISPLAY_OVERVIEW_MAP,
 	                 frame->map_frame,
 	                 "visible",
 	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
