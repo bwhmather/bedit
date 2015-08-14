@@ -45,7 +45,7 @@ GQuark				 gedit_open_document_selector_store_error_quark				(void);
 gint				 gedit_open_document_selector_store_get_recent_limit			(GeditOpenDocumentSelectorStore *store);
 
 void				 gedit_open_document_selector_store_set_recent_filter			(GeditOpenDocumentSelectorStore *store,
-                                                                                                         gchar                          *filter);
+                                                                                                         const gchar                    *filter);
 
 gchar				*gedit_open_document_selector_store_get_recent_filter			(GeditOpenDocumentSelectorStore *store);
 

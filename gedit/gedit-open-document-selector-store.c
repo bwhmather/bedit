@@ -758,7 +758,7 @@ gedit_open_document_selector_store_get_recent_limit (GeditOpenDocumentSelectorSt
 
 void
 gedit_open_document_selector_store_set_recent_filter (GeditOpenDocumentSelectorStore *selector_store,
-                                                      gchar                          *filter)
+                                                      const gchar                    *filter)
 {
 	gchar *old_filter;
 
@@ -768,7 +768,7 @@ gedit_open_document_selector_store_set_recent_filter (GeditOpenDocumentSelectorS
 	G_LOCK (recent_files_filter_lock);
 
 	old_filter = selector_store->recent_config.substring_filter;
-	selector_store->recent_config.substring_filter = filter;
+	selector_store->recent_config.substring_filter = g_strdup (filter);
 
 	G_UNLOCK (recent_files_filter_lock);
 	g_free (old_filter);
