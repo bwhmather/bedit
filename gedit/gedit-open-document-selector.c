@@ -1040,6 +1040,31 @@ on_treeview_allocate (GtkWidget                 *widget,
 }
 
 static void
+on_treeview_style_updated (GtkWidget                 *widget,
+                           GeditOpenDocumentSelector *selector)
+{
+	GtkStyleContext *context;
+	GtkStateFlags state;
+
+	context = gtk_widget_get_style_context (widget);
+	state = gtk_style_context_get_state (context);
+
+	/* Name label foreground and font size styling */
+	gtk_style_context_save (context);
+	gtk_style_context_add_class (context, "open-document-selector-name-label");
+	gtk_style_context_get_color (context, state, &selector->name_label_color);
+	gtk_style_context_get (context, state, "font-size", &selector->name_font_size, NULL);
+	gtk_style_context_restore (context);
+
+	/* Path label foreground and font size styling */
+	gtk_style_context_save (context);
+	gtk_style_context_add_class (context, "open-document-selector-path-label");
+	gtk_style_context_get_color (context, state, &selector->path_label_color);
+	gtk_style_context_get (context, state, "font-size", &selector->path_font_size, NULL);
+	gtk_style_context_restore (context);
+}
+
+static void
 name_renderer_datafunc (GtkTreeViewColumn         *column,
                         GtkCellRenderer           *name_renderer,
                         GtkTreeModel              *liststore,
@@ -1067,7 +1092,6 @@ setup_treeview (GeditOpenDocumentSelector *selector)
 	GtkTreeViewColumn *column;
 	GtkCellArea *cell_area;
 	GtkStyleContext *context;
-	GtkStateFlags state;
 
 	gtk_tree_view_set_model (GTK_TREE_VIEW (selector->treeview), GTK_TREE_MODEL (selector->liststore));
 	g_object_unref(GTK_TREE_MODEL (selector->liststore));
@@ -1093,22 +1117,6 @@ setup_treeview (GeditOpenDocumentSelector *selector)
 
 	context = gtk_widget_get_style_context (selector->treeview);
 	gtk_style_context_add_class (context, "open-document-selector-treeview");
-
-	state = gtk_style_context_get_state (context);
-
-	/* Name label foreground and font size styling */
-	gtk_style_context_save (context);
-	gtk_style_context_add_class (context, "open-document-selector-name-label");
-	gtk_style_context_get_color (context, state, &selector->name_label_color);
-	gtk_style_context_get (context, state, "font-size", &selector->name_font_size, NULL);
-	gtk_style_context_restore (context);
-
-	/* Path label foreground and font size styling */
-	gtk_style_context_save (context);
-	gtk_style_context_add_class (context, "open-document-selector-path-label");
-	gtk_style_context_get_color (context, state, &selector->path_label_color);
-	gtk_style_context_get (context, state, "font-size", &selector->path_font_size, NULL);
-	gtk_style_context_restore (context);
 
 	gtk_tree_view_column_set_cell_data_func (column,
 	                                         selector->name_renderer,
@@ -1158,6 +1166,11 @@ gedit_open_document_selector_init (GeditOpenDocumentSelector *selector)
 	g_signal_connect (selector->treeview,
 	                  "key-press-event",
 	                  G_CALLBACK (on_treeview_key_press),
+	                  selector);
+
+	g_signal_connect (selector->treeview,
+	                  "style-updated",
+	                  G_CALLBACK (on_treeview_style_updated),
 	                  selector);
 }
 
