@@ -18,10 +18,7 @@
 
 __all__ = ('ExternalToolsPlugin', 'OutputPanel', 'Capture', 'UniqueById')
 
-import gi
-gi.require_version('Gtk', '3.0')
-gi.require_version('PeasGtk', '1.0')
-from gi.repository import GLib, Gio, GObject, Gtk, Gedit, PeasGtk
+from gi.repository import GLib, Gio, GObject, Gtk, Gedit
 from .library import ToolLibrary
 from .outputpanel import OutputPanel
 from .capture import Capture

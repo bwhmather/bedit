@@ -15,14 +15,12 @@
 #    along with this program; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-import gi
-gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gedit, GObject
-
 from .snippet import Snippet
 from .library import Library
 from .shareddata import SharedData
 from .signals import Signals
+
 
 class Message(Gedit.Message):
     view = GObject.Property(type=Gedit.View)

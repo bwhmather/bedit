@@ -15,11 +15,14 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-from .popup import Popup
 import os
+
 import gi
+gi.require_version('Gedit', '3.0')
 gi.require_version('Gtk', '3.0')
 from gi.repository import GObject, Gio, GLib, Gtk, Gedit
+
+from .popup import Popup
 from .virtualdirs import RecentDocumentsDirectory
 from .virtualdirs import CurrentDocumentsDirectory
 

@@ -16,13 +16,11 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import os
-import gi
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gedit, Gtk, Gdk, GObject, Gio, GLib
 import platform
-
+from gi.repository import Gedit, Gtk, Gdk, GObject, Gio, GLib
 from .library import Library
 from .shareddata import SharedData
+
 
 class AppActivatable(GObject.Object, Gedit.AppActivatable):
     __gtype_name__ = "GeditSnippetsAppActivatable"

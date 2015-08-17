@@ -20,10 +20,6 @@ import platform
 import functools
 import fnmatch
 
-import gi
-gi.require_version('Pango', '1.0')
-gi.require_version('Gtk', '3.0')
-gi.require_version('Gedit', '3.0')
 from gi.repository import GLib, Gio, GObject, Pango, Gtk, Gdk, Gedit
 import xml.sax.saxutils
 from .virtualdirs import VirtualDirectory
