@@ -802,6 +802,11 @@ on_location_changed (GtkSourceFile *file,
 
 			g_error_free (error);
 		}
+
+		if (priv->metadata_info == NULL)
+		{
+			priv->metadata_info = g_file_info_new ();
+		}
 	}
 }
 
