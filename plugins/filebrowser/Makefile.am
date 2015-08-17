@@ -16,8 +16,6 @@ plugins_filebrowser_libfilebrowser_la_CFLAGS =				\
 plugins_filebrowser_BUILTSOURCES =				\
 	plugins/filebrowser/gedit-file-browser-enum-types.h	\
 	plugins/filebrowser/gedit-file-browser-enum-types.c	\
-	plugins/filebrowser/gedit-file-browser-marshal.h	\
-	plugins/filebrowser/gedit-file-browser-marshal.c	\
 	plugins/filebrowser/gedit-file-browser-resources.c
 
 plugins_filebrowser_messages_NOINST_H_FILES =						\
@@ -94,13 +92,6 @@ plugins/filebrowser/gedit-file-browser-enum-types.c: $(filebrowser_enum_c_templa
 		--template $(filebrowser_enum_register_c_template)		\
 		$(plugins_filebrowser_libfilebrowser_la_NOINST_H_FILES)) > $@
 
-plugins/filebrowser/gedit-file-browser-marshal.h: plugins/filebrowser/gedit-file-browser-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) $(GLIB_GENMARSHAL) $< --header --prefix=gedit_file_browser_marshal > $@
-
-plugins/filebrowser/gedit-file-browser-marshal.c: plugins/filebrowser/gedit-file-browser-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) echo "#include \"gedit-file-browser-marshal.h\"" > $@ && \
-	$(GLIB_GENMARSHAL) $< --body --prefix=gedit_file_browser_marshal >> $@
-
 plugin_gsettings_SCHEMAS += plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml
 gsettings_ENUMS += plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.enums.xml
 
@@ -115,5 +106,4 @@ EXTRA_DIST +=								\
 	$(filebrowser_resources_deps)					\
 	plugins/filebrowser/gedit-file-browser-enum-types.h.template	\
 	plugins/filebrowser/gedit-file-browser-enum-types.c.template	\
-	plugins/filebrowser/gedit-file-browser-enum-register.c.template	\
-	plugins/filebrowser/gedit-file-browser-marshal.list
+	plugins/filebrowser/gedit-file-browser-enum-register.c.template

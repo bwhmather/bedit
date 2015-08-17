@@ -26,8 +26,6 @@
 #include <stdarg.h>
 #include <gobject/gvaluecollector.h>
 
-#include "gedit-marshal.h"
-
 /**
  * GeditMessageCallback:
  * @bus: the #GeditMessageBus on which the message was sent
@@ -285,9 +283,7 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_LAST,
 		              G_STRUCT_OFFSET (GeditMessageBusClass, dispatch),
-		              NULL,
-		              NULL,
-		              g_cclosure_marshal_VOID__OBJECT,
+		              NULL, NULL, NULL,
 		              G_TYPE_NONE,
 		              1,
 		              GEDIT_TYPE_MESSAGE);
@@ -307,9 +303,7 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_LAST,
 		              G_STRUCT_OFFSET (GeditMessageBusClass, registered),
-		              NULL,
-		              NULL,
-		              gedit_marshal_VOID__STRING_STRING,
+		              NULL, NULL, NULL,
 		              G_TYPE_NONE,
 		              2,
 		              G_TYPE_STRING,
@@ -330,9 +324,7 @@ gedit_message_bus_class_init (GeditMessageBusClass *klass)
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_LAST,
 		              G_STRUCT_OFFSET (GeditMessageBusClass, unregistered),
-		              NULL,
-		              NULL,
-		              gedit_marshal_VOID__STRING_STRING,
+		              NULL, NULL, NULL,
 		              G_TYPE_NONE,
 		              2,
 		              G_TYPE_STRING,

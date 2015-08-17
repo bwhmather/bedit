@@ -28,7 +28,6 @@
 #include <gedit/gedit-utils.h>
 
 #include "gedit-file-browser-store.h"
-#include "gedit-file-browser-marshal.h"
 #include "gedit-file-browser-enum-types.h"
 #include "gedit-file-browser-error.h"
 #include "gedit-file-browser-utils.h"
@@ -385,76 +384,64 @@ gedit_file_browser_store_class_init (GeditFileBrowserStoreClass *klass)
 	    g_signal_new ("begin-loading",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-					   begin_loading), NULL, NULL,
-			  g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE, 1,
-			  GTK_TYPE_TREE_ITER);
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, begin_loading),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 	model_signals[END_LOADING] =
 	    g_signal_new ("end-loading",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-					   end_loading), NULL, NULL,
-			  g_cclosure_marshal_VOID__BOXED, G_TYPE_NONE, 1,
-			  GTK_TYPE_TREE_ITER);
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, end_loading),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 	model_signals[ERROR] =
 	    g_signal_new ("error", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-					   error), NULL, NULL,
-			  gedit_file_browser_marshal_VOID__UINT_STRING,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, error),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
 	model_signals[NO_TRASH] =
 	    g_signal_new ("no-trash", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-					   no_trash), g_signal_accumulator_true_handled, NULL,
-			  gedit_file_browser_marshal_BOOL__POINTER,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, no_trash),
+			  g_signal_accumulator_true_handled, NULL, NULL,
 			  G_TYPE_BOOLEAN, 1, G_TYPE_POINTER);
 	model_signals[RENAME] =
 	    g_signal_new ("rename",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-					   rename), NULL, NULL,
-			  gedit_file_browser_marshal_VOID__OBJECT_OBJECT,
-			  G_TYPE_NONE, 2,
-			  G_TYPE_FILE,
-			  G_TYPE_FILE);
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, rename),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 2, G_TYPE_FILE, G_TYPE_FILE);
 	model_signals[BEGIN_REFRESH] =
 	    g_signal_new ("begin-refresh",
-	    		  G_OBJECT_CLASS_TYPE (object_class),
-	    		  G_SIGNAL_RUN_LAST,
-	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-	    		  		   begin_refresh), NULL, NULL,
-	    		  g_cclosure_marshal_VOID__VOID,
-	    		  G_TYPE_NONE, 0);
+			  G_OBJECT_CLASS_TYPE (object_class),
+			  G_SIGNAL_RUN_LAST,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, begin_refresh),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 0);
 	model_signals[END_REFRESH] =
 	    g_signal_new ("end-refresh",
-	    		  G_OBJECT_CLASS_TYPE (object_class),
-	    		  G_SIGNAL_RUN_LAST,
-	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-	    		  		   end_refresh), NULL, NULL,
-	    		  g_cclosure_marshal_VOID__VOID,
-	    		  G_TYPE_NONE, 0);
+			  G_OBJECT_CLASS_TYPE (object_class),
+			  G_SIGNAL_RUN_LAST,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, end_refresh),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 0);
 	model_signals[UNLOAD] =
 	    g_signal_new ("unload",
-	    		  G_OBJECT_CLASS_TYPE (object_class),
-	    		  G_SIGNAL_RUN_LAST,
-	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-	    		  		   unload), NULL, NULL,
-	    		  g_cclosure_marshal_VOID__OBJECT,
-	    		  G_TYPE_NONE, 1,
-	    		  G_TYPE_FILE);
+			  G_OBJECT_CLASS_TYPE (object_class),
+			  G_SIGNAL_RUN_LAST,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, unload),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 1, G_TYPE_FILE);
 	model_signals[BEFORE_ROW_DELETED] =
 	    g_signal_new ("before-row-deleted",
-	    		  G_OBJECT_CLASS_TYPE (object_class),
-	    		  G_SIGNAL_RUN_LAST,
-	    		  G_STRUCT_OFFSET (GeditFileBrowserStoreClass,
-	    		  		   before_row_deleted), NULL, NULL,
-	    		  g_cclosure_marshal_VOID__BOXED,
-	    		  G_TYPE_NONE, 1,
-	    		  GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE);
+			  G_OBJECT_CLASS_TYPE (object_class),
+			  G_SIGNAL_RUN_LAST,
+			  G_STRUCT_OFFSET (GeditFileBrowserStoreClass, before_row_deleted),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 1,
+			  GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE);
 }
 
 static void

@@ -36,7 +36,6 @@
 #include "gedit-file-browser-view.h"
 #include "gedit-file-browser-store.h"
 #include "gedit-file-bookmarks-store.h"
-#include "gedit-file-browser-marshal.h"
 #include "gedit-file-browser-enum-types.h"
 
 #define LOCATION_DATA_KEY "gedit-file-browser-widget-location"
@@ -483,65 +482,46 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	    g_signal_new ("location-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserWidgetClass,
-					   location_activated), NULL, NULL,
-			  g_cclosure_marshal_VOID__OBJECT, G_TYPE_NONE, 1,
-			  G_TYPE_FILE);
+			  G_STRUCT_OFFSET (GeditFileBrowserWidgetClass, location_activated),
+			  NULL, NULL, NULL,
+			  G_TYPE_NONE, 1, G_TYPE_FILE);
+
 	signals[ERROR] =
 	    g_signal_new ("error", G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserWidgetClass,
-					   error), NULL, NULL,
-			  gedit_file_browser_marshal_VOID__UINT_STRING,
+			  G_STRUCT_OFFSET (GeditFileBrowserWidgetClass, error),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
 
 	signals[CONFIRM_DELETE] =
 	    g_signal_new ("confirm-delete", G_OBJECT_CLASS_TYPE (object_class),
 	                  G_SIGNAL_RUN_LAST,
-	                  G_STRUCT_OFFSET (GeditFileBrowserWidgetClass,
-	                                   confirm_delete),
-	                  g_signal_accumulator_true_handled,
-	                  NULL,
-	                  gedit_file_browser_marshal_BOOL__OBJECT_POINTER,
-	                  G_TYPE_BOOLEAN,
-	                  2,
-	                  G_TYPE_OBJECT,
-	                  G_TYPE_POINTER);
+	                  G_STRUCT_OFFSET (GeditFileBrowserWidgetClass, confirm_delete),
+	                  g_signal_accumulator_true_handled, NULL, NULL,
+	                  G_TYPE_BOOLEAN, 2, G_TYPE_OBJECT, G_TYPE_POINTER);
 
 	signals[CONFIRM_NO_TRASH] =
 	    g_signal_new ("confirm-no-trash", G_OBJECT_CLASS_TYPE (object_class),
 	                  G_SIGNAL_RUN_LAST,
-	                  G_STRUCT_OFFSET (GeditFileBrowserWidgetClass,
-	                                   confirm_no_trash),
-	                  g_signal_accumulator_true_handled,
-	                  NULL,
-	                  gedit_file_browser_marshal_BOOL__POINTER,
-	                  G_TYPE_BOOLEAN,
-	                  1,
-	                  G_TYPE_POINTER);
+	                  G_STRUCT_OFFSET (GeditFileBrowserWidgetClass, confirm_no_trash),
+	                  g_signal_accumulator_true_handled, NULL, NULL,
+	                  G_TYPE_BOOLEAN, 1, G_TYPE_POINTER);
 
 	signals[OPEN_IN_TERMINAL] =
 	    g_signal_new ("open-in-terminal",
 	                  G_OBJECT_CLASS_TYPE (object_class),
 	                  G_SIGNAL_RUN_LAST,
 	                  G_STRUCT_OFFSET (GeditFileBrowserWidgetClass, open_in_terminal),
-	                  NULL,
-	                  NULL,
-	                  g_cclosure_marshal_VOID__OBJECT,
-	                  G_TYPE_NONE,
-	                  1,
-	                  G_TYPE_FILE);
+	                  NULL, NULL, NULL,
+	                  G_TYPE_NONE, 1, G_TYPE_FILE);
 
 	signals[SET_ACTIVE_ROOT] =
 	    g_signal_new ("set-active-root",
 	                  G_OBJECT_CLASS_TYPE (object_class),
 	                  G_SIGNAL_RUN_LAST,
 	                  G_STRUCT_OFFSET (GeditFileBrowserWidgetClass, set_active_root),
-	                  NULL,
-	                  NULL,
-	                  g_cclosure_marshal_VOID__VOID,
-	                  G_TYPE_NONE,
-	                  0);
+	                  NULL, NULL, NULL,
+	                  G_TYPE_NONE, 0);
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,

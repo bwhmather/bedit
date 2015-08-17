@@ -28,7 +28,6 @@
 #include "gedit-view-activatable.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-debug.h"
-#include "gedit-marshal.h"
 #include "gedit-utils.h"
 #include "gedit-settings.h"
 #include "gedit-app.h"
@@ -749,8 +748,7 @@ gedit_view_class_init (GeditViewClass *klass)
 		              G_TYPE_FROM_CLASS (object_class),
 		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		              G_STRUCT_OFFSET (GeditViewClass, drop_uris),
-		              NULL, NULL,
-		              g_cclosure_marshal_VOID__BOXED,
+		              NULL, NULL, NULL,
 		              G_TYPE_NONE, 1, G_TYPE_STRV);
 
 	binding_set = gtk_binding_set_by_class (klass);

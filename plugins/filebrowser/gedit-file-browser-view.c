@@ -27,7 +27,6 @@
 #include "gedit-file-browser-store.h"
 #include "gedit-file-bookmarks-store.h"
 #include "gedit-file-browser-view.h"
-#include "gedit-file-browser-marshal.h"
 #include "gedit-file-browser-enum-types.h"
 
 struct _GeditFileBrowserViewPrivate
@@ -940,33 +939,29 @@ gedit_file_browser_view_class_init (GeditFileBrowserViewClass *klass)
 	    g_signal_new ("error",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
-					   error), NULL, NULL,
-			  gedit_file_browser_marshal_VOID__UINT_STRING,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, error),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 2, G_TYPE_UINT, G_TYPE_STRING);
 	signals[FILE_ACTIVATED] =
 	    g_signal_new ("file-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
-					   file_activated), NULL, NULL,
-			  g_cclosure_marshal_VOID__BOXED,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, file_activated),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 	signals[DIRECTORY_ACTIVATED] =
 	    g_signal_new ("directory-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
-					   directory_activated), NULL, NULL,
-			  g_cclosure_marshal_VOID__BOXED,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, directory_activated),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 	signals[BOOKMARK_ACTIVATED] =
 	    g_signal_new ("bookmark-activated",
 			  G_OBJECT_CLASS_TYPE (object_class),
 			  G_SIGNAL_RUN_LAST,
-			  G_STRUCT_OFFSET (GeditFileBrowserViewClass,
-					   bookmark_activated), NULL, NULL,
-			  g_cclosure_marshal_VOID__BOXED,
+			  G_STRUCT_OFFSET (GeditFileBrowserViewClass, bookmark_activated),
+			  NULL, NULL, NULL,
 			  G_TYPE_NONE, 1, GTK_TYPE_TREE_ITER);
 }
 

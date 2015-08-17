@@ -23,7 +23,6 @@
 #include "gedit-multi-notebook.h"
 
 #include "gedit-enum-types.h"
-#include "gedit-marshal.h"
 #include "gedit-settings.h"
 #include "gedit-tab-private.h"
 #include "gedit-tab.h"
@@ -158,8 +157,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, notebook_added),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_NOTEBOOK);
@@ -168,8 +166,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, notebook_removed),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_NOTEBOOK);
@@ -178,8 +175,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, tab_added),
-			      NULL, NULL,
-			      gedit_marshal_VOID__OBJECT_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      GEDIT_TYPE_NOTEBOOK,
@@ -189,8 +185,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, tab_removed),
-			      NULL, NULL,
-			      gedit_marshal_VOID__OBJECT_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      GEDIT_TYPE_NOTEBOOK,
@@ -200,8 +195,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, switch_tab),
-			      NULL, NULL,
-			      gedit_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      4,
 			      GEDIT_TYPE_NOTEBOOK,
@@ -213,8 +207,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, tab_close_request),
-			      NULL, NULL,
-			      gedit_marshal_VOID__OBJECT_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      GEDIT_TYPE_NOTEBOOK,
@@ -224,8 +217,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 		              G_TYPE_FROM_CLASS (object_class),
 		              G_SIGNAL_RUN_LAST,
 		              G_STRUCT_OFFSET (GeditMultiNotebookClass, create_window),
-		              NULL, NULL,
-		              gedit_marshal_OBJECT__OBJECT_OBJECT_INT_INT,
+		              NULL, NULL, NULL,
 		              GTK_TYPE_NOTEBOOK, 4,
 		              GEDIT_TYPE_NOTEBOOK, GTK_TYPE_WIDGET,
 		              G_TYPE_INT, G_TYPE_INT);
@@ -234,8 +226,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 		              G_OBJECT_CLASS_TYPE (object_class),
 		              G_SIGNAL_RUN_FIRST,
 		              G_STRUCT_OFFSET (GeditMultiNotebookClass, page_reordered),
-		              NULL, NULL,
-		              gedit_marshal_VOID__OBJECT_OBJECT_INT,
+		              NULL, NULL, NULL,
 		              G_TYPE_NONE,
 		              3,
 		              GEDIT_TYPE_NOTEBOOK, GTK_TYPE_WIDGET,
@@ -245,8 +236,7 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditMultiNotebookClass, show_popup_menu),
-			      NULL, NULL,
-			      gedit_marshal_VOID__BOXED_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE,

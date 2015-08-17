@@ -94,9 +94,7 @@ endif
 
 gedit_built_sources =			\
 	gedit/gedit-enum-types.c	\
-	gedit/gedit-enum-types.h	\
-	gedit/gedit-marshal.c		\
-	gedit/gedit-marshal.h
+	gedit/gedit-enum-types.h
 
 gedit_NOINST_H_FILES =					\
 	gedit/gedit-app-private.h			\
@@ -233,13 +231,6 @@ gedit/gedit-enum-types.h: gedit/gedit-enum-types.h.template $(gedit_ENUM_TYPES) 
 gedit/gedit-enum-types.c: gedit/gedit-enum-types.c.template $(gedit_ENUM_TYPES) $(GLIB_MKENUMS)
 	$(AM_V_GEN) (cd $(srcdir) && $(GLIB_MKENUMS) --template gedit/gedit-enum-types.c.template $(gedit_ENUM_TYPES)) > $@
 
-gedit/gedit-marshal.h: gedit/gedit-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) $(GLIB_GENMARSHAL) $< --header --prefix=gedit_marshal > $@
-
-gedit/gedit-marshal.c: gedit/gedit-marshal.list $(GLIB_GENMARSHAL)
-	$(AM_V_GEN) echo "#include \"gedit-marshal.h\"" > $@ && \
-	$(GLIB_GENMARSHAL) $< --body --prefix=gedit_marshal >> $@
-
 gedit_resource_deps = $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir)/gedit/resources --sourcedir $(builddir)/gedit/resources $(builddir)/gedit/resources/gedit.gresource.xml)
 
 gedit_resources_c_deps = $(builddir)/gedit/resources/gedit.gresource.xml $(gedit_resource_deps)
@@ -266,7 +257,6 @@ gedit_dist_resource_deps = 							\
 EXTRA_DIST += 					\
 	gedit/gedit-enum-types.h.template	\
 	gedit/gedit-enum-types.c.template	\
-	gedit/gedit-marshal.list		\
 	gedit/gedit.rc				\
 	gedit/Gedit-3.0.metadata		\
 	gedit/resources/gedit.gresource.xml.in	\

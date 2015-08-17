@@ -29,7 +29,6 @@
 
 #include "gedit-notebook.h"
 #include "gedit-tab-label.h"
-#include "gedit-marshal.h"
 
 #define GEDIT_NOTEBOOK_GROUP_NAME "GeditNotebookGroup"
 
@@ -462,8 +461,7 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_LAST,
 			      G_STRUCT_OFFSET (GeditNotebookClass, tab_close_request),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_TAB);
@@ -473,8 +471,7 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditNotebookClass, show_popup_menu),
-			      NULL, NULL,
-			      gedit_marshal_VOID__BOXED_OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      2,
 			      GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE,
@@ -485,8 +482,7 @@ gedit_notebook_class_init (GeditNotebookClass *klass)
 		              G_TYPE_FROM_CLASS (object_class),
 		              G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		              G_STRUCT_OFFSET (GeditNotebookClass, change_to_page),
-		              NULL, NULL,
-		              gedit_marshal_BOOLEAN__INT,
+		              NULL, NULL, NULL,
 		              G_TYPE_BOOLEAN, 1,
 		              G_TYPE_INT);
 

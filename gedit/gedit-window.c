@@ -56,7 +56,6 @@
 #include "gedit-dirs.h"
 #include "gedit-status-menu-button.h"
 #include "gedit-settings.h"
-#include "gedit-marshal.h"
 #include "gedit-small-button.h"
 #include "gedit-menu-stack-switcher.h"
 #include "gedit-highlight-mode-selector.h"
@@ -429,8 +428,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditWindowClass, tab_added),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_TAB);
@@ -439,8 +437,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditWindowClass, tab_removed),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_TAB);
@@ -449,8 +446,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditWindowClass, tabs_reordered),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__VOID,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      0);
 	signals[ACTIVE_TAB_CHANGED] =
@@ -458,8 +454,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditWindowClass, active_tab_changed),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__OBJECT,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      1,
 			      GEDIT_TYPE_TAB);
@@ -468,8 +463,7 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      G_OBJECT_CLASS_TYPE (object_class),
 			      G_SIGNAL_RUN_FIRST,
 			      G_STRUCT_OFFSET (GeditWindowClass, active_tab_state_changed),
-			      NULL, NULL,
-			      g_cclosure_marshal_VOID__VOID,
+			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      0);
 

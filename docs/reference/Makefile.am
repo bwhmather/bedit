@@ -44,7 +44,6 @@ IGNORE_HFILES =					\
 	gedit-highlight-mode-selector.h		\
 	gedit-history-entry.h			\
 	gedit-io-error-info-bar.h		\
-	gedit-marshal.h				\
 	gedit-menu-stack-switcher.h		\
 	gedit-metadata-manager.h		\
 	gedit-multi-notebook.h			\
