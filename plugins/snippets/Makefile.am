@@ -44,6 +44,7 @@ dist_plugins_snippets_snippets_DATA =		\
 	plugins/snippets/data/perl.xml		\
 	plugins/snippets/data/php.xml		\
 	plugins/snippets/data/python.xml	\
+	plugins/snippets/data/rpmspec.xml		\
 	plugins/snippets/data/ruby.xml		\
 	plugins/snippets/data/sh.xml		\
 	plugins/snippets/data/snippets.xml	\
