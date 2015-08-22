@@ -529,35 +529,6 @@ _gedit_cmd_file_reopen_closed_tab (GSimpleAction *action,
 
 /* File saving */
 
-static gboolean
-is_read_only (GFile *location)
-{
-	gboolean ret = TRUE; /* default to read only */
-	GFileInfo *info;
-
-	gedit_debug (DEBUG_COMMANDS);
-
-	info = g_file_query_info (location,
-				  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
-				  G_FILE_QUERY_INFO_NONE,
-				  NULL,
-				  NULL);
-
-	if (info != NULL)
-	{
-		if (g_file_info_has_attribute (info,
-					       G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
-		{
-			ret = !g_file_info_get_attribute_boolean (info,
-								  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
-		}
-
-		g_object_unref (info);
-	}
-
-	return ret;
-}
-
 /* FIXME: modify this dialog to be similar to the one provided by gtk+ for
  * already existing files - Paolo (Oct. 11, 2005) */
 static gboolean
@@ -803,26 +774,39 @@ confirm_overwrite_callback (GeditFileChooserDialog *dialog,
 			    gpointer                data)
 {
 	GFile *file;
+	GFileInfo *info;
 	GtkFileChooserConfirmation res;
 
 	gedit_debug (DEBUG_COMMANDS);
 
 	file = gedit_file_chooser_dialog_get_file (dialog);
 
-	if (is_read_only (file))
+	info = g_file_query_info (file,
+				  G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE,
+				  G_FILE_QUERY_INFO_NONE,
+				  NULL,
+				  NULL);
+
+	if (info != NULL)
 	{
-		GtkWindow *win;
-
-		win = gedit_file_chooser_dialog_get_window (dialog);
-
-		if (replace_read_only_file (win, file))
+		if (g_file_info_has_attribute (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE) &&
+		    !g_file_info_get_attribute_boolean (info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE))
 		{
-			res = GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
+			GtkWindow *win;
+
+			win = gedit_file_chooser_dialog_get_window (dialog);
+
+			if (replace_read_only_file (win, file))
+			{
+				res = GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
+			}
+			else
+			{
+				res = GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
+			}
 		}
-		else
-		{
-			res = GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
-		}
+
+		g_object_unref (info);
 	}
 	else
 	{
