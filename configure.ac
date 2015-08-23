@@ -9,7 +9,7 @@ m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_ver
 
 AC_INIT([gedit],
         [gedit_version],
-	[http://bugzilla.gnome.org/enter_bug.cgi?product=gedit],
+	[https://wiki.gnome.org/Apps/Gedit/ReportingBugs],
 	[gedit],
 	[https://wiki.gnome.org/Apps/Gedit])
 
