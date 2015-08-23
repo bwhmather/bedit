@@ -773,11 +773,14 @@ static GtkFileChooserConfirmation
 confirm_overwrite_callback (GeditFileChooserDialog *dialog,
 			    gpointer                data)
 {
+	GtkFileChooserConfirmation res;
 	GFile *file;
 	GFileInfo *info;
-	GtkFileChooserConfirmation res;
 
 	gedit_debug (DEBUG_COMMANDS);
+
+	/* fall back to the default confirmation dialog */
+	res = GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
 
 	file = gedit_file_chooser_dialog_get_file (dialog);
 
@@ -807,11 +810,6 @@ confirm_overwrite_callback (GeditFileChooserDialog *dialog,
 		}
 
 		g_object_unref (info);
-	}
-	else
-	{
-		/* fall back to the default confirmation dialog */
-		res = GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
 	}
 
 	g_object_unref (file);
