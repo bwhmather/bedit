@@ -1101,7 +1101,7 @@ gedit_document_get_uri_for_display (GeditDocument *doc)
 
 	if (location == NULL)
 	{
-		return g_strdup_printf (_("Unsaved Document %d"),
+		return g_strdup_printf (_("Untitled Document %d"),
 					priv->untitled_number);
 	}
 	else
@@ -1134,7 +1134,7 @@ gedit_document_get_short_name_for_display (GeditDocument *doc)
 	}
 	else if (location == NULL)
 	{
-		return g_strdup_printf (_("Unsaved Document %d"),
+		return g_strdup_printf (_("Untitled Document %d"),
 					priv->untitled_number);
 	}
 	else
