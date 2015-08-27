@@ -2807,9 +2807,19 @@ gedit_window_init (GeditWindow *window)
 	                        "text",
 	                        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
-	gear_menu = _gedit_app_get_window_menu (GEDIT_APP (g_application_get_default ())),
-	gtk_menu_button_set_menu_model (window->priv->gear_button, gear_menu);
-	gtk_menu_button_set_menu_model (window->priv->fullscreen_gear_button, gear_menu);
+	gear_menu = _gedit_app_get_gear_menu (GEDIT_APP (g_application_get_default ()));
+	if (gear_menu)
+	{
+		gtk_menu_button_set_menu_model (window->priv->gear_button, gear_menu);
+		gtk_menu_button_set_menu_model (window->priv->fullscreen_gear_button, gear_menu);
+	}
+	else
+	{
+		gtk_widget_hide (GTK_WIDGET (window->priv->gear_button));
+		gtk_widget_hide (GTK_WIDGET (window->priv->fullscreen_gear_button));
+		gtk_widget_set_no_show_all (GTK_WIDGET (window->priv->gear_button), TRUE);
+		gtk_widget_set_no_show_all (GTK_WIDGET (window->priv->fullscreen_gear_button), TRUE);
+	}
 
 	g_signal_connect (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_button),
 	                  "toggled",

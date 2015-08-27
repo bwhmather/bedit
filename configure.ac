@@ -388,10 +388,8 @@ dnl Resource files depending on the OS
 dnl ================================================================
 
 if test "$os_osx" = "yes"; then
-	os_menus_ui=menus-osx.ui
 	os_style_css=gedit-style-osx.css
 else
-	os_menus_ui=menus-default.ui
 	os_style_css=
 
 	OS_DEPENDENT_RESOURCE_FILES='<file preprocess="xml-stripblanks">gtk/menus-traditional.ui</file>'
@@ -403,7 +401,6 @@ if test "x$os_style_css" != "x"; then
 fi
 
 AC_SUBST(OS_DEPENDENT_RESOURCE_FILES)
-AC_CONFIG_LINKS(gedit/resources/gtk/menus.ui:gedit/resources/gtk/$os_menus_ui)
 
 dnl ================================================================
 dnl Misc

@@ -74,7 +74,7 @@ typedef struct
 	GSettings         *ui_settings;
 	GSettings         *window_settings;
 
-	GMenuModel        *window_menu;
+	GMenuModel        *gear_menu;
 	GMenuModel        *notebook_menu;
 	GMenuModel        *tab_width_menu;
 	GMenuModel        *line_col_menu;
@@ -199,7 +199,7 @@ gedit_app_dispose (GObject *object)
 		g_clear_object (&priv->theme_provider);
 	}
 
-	g_clear_object (&priv->window_menu);
+	g_clear_object (&priv->gear_menu);
 	g_clear_object (&priv->notebook_menu);
 	g_clear_object (&priv->tab_width_menu);
 	g_clear_object (&priv->line_col_menu);
@@ -797,17 +797,7 @@ gedit_app_startup (GApplication *application)
 	                                 application);
 
 	/* menus */
-	priv->window_menu = gtk_application_get_menubar (GTK_APPLICATION (application));
-
-	if (priv->window_menu == NULL)
-	{
-		priv->window_menu = get_menu_model (GEDIT_APP (application), "gear-menu");
-	}
-	else
-	{
-		g_object_ref (priv->window_menu);
-	}
-
+	priv->gear_menu = get_menu_model (GEDIT_APP (application), "gear-menu");
 	priv->notebook_menu = get_menu_model (GEDIT_APP (application), "notebook-menu");
 	priv->tab_width_menu = get_menu_model (GEDIT_APP (application), "tab-width-menu");
 	priv->line_col_menu = get_menu_model (GEDIT_APP (application), "line-col-menu");
@@ -1881,7 +1871,7 @@ _gedit_app_get_settings (GeditApp *app)
 }
 
 GMenuModel *
-_gedit_app_get_window_menu (GeditApp *app)
+_gedit_app_get_gear_menu (GeditApp *app)
 {
 	GeditAppPrivate *priv;
 
@@ -1889,7 +1879,7 @@ _gedit_app_get_window_menu (GeditApp *app)
 
 	priv = gedit_app_get_instance_private (app);
 
-	return priv->window_menu;
+	return priv->gear_menu;
 }
 
 GMenuModel *
@@ -1941,8 +1931,17 @@ _gedit_app_extend_menu (GeditApp    *app,
 
 	priv = gedit_app_get_instance_private (app);
 
-	/* First look in the window menu */
-	section = find_extension_point_section (priv->window_menu, extension_point);
+	/* First look in the gear or window menu */
+	if (priv->gear_menu)
+	{
+		model = priv->gear_menu;
+	}
+	else
+	{
+		model = gtk_application_get_menubar (GTK_APPLICATION (app));
+	}
+
+	section = find_extension_point_section (model, extension_point);
 
 	/* otherwise look in the app menu */
 	if (section == NULL)

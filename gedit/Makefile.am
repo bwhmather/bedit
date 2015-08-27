@@ -246,10 +246,7 @@ gedit_overrides_PYTHON = gedit/Gedit.py
 endif
 
 gedit_dist_resource_deps = 							\
-	$(filter-out gedit/resources/css/gedit-style-os.css,$(filter-out gedit/resources/gtk/menus.ui,$(gedit_resource_deps)))	\
-	gedit/resources/gtk/menus-traditional.ui				\
-	gedit/resources/gtk/menus-default.ui					\
-	gedit/resources/gtk/menus-osx.ui					\
+	$(filter-out %gedit/resources/css/gedit-style-os.css,$(gedit_resource_deps))	\
 	gedit/resources/css/gedit-style-osx.css
 
 EXTRA_DIST += 					\
