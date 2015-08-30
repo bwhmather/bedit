@@ -301,7 +301,7 @@ create_row (GeditOpenDocumentSelector *selector,
 static gint
 sort_items_by_mru (FileItem *a,
                    FileItem *b,
-                   gpointer  unused)
+                   gpointer  unused G_GNUC_UNUSED)
 {
 	glong diff;
 
@@ -753,7 +753,7 @@ gedit_open_document_selector_dispose (GObject *object)
 static void
 on_row_activated (GtkTreeView               *treeview,
                   GtkTreePath               *path,
-                  GtkTreeViewColumn         *column,
+                  GtkTreeViewColumn         *column G_GNUC_UNUSED,
                   GeditOpenDocumentSelector *selector)
 {
 	GtkTreeSelection *selection;
@@ -776,7 +776,7 @@ on_row_activated (GtkTreeView               *treeview,
 static void
 update_list_cb (GeditOpenDocumentSelectorStore *selector_store,
                 GAsyncResult                   *res,
-                gpointer                        user_data)
+                gpointer                        user_data G_GNUC_UNUSED)
 {
 	GList *list;
 	GError *error;
@@ -877,13 +877,13 @@ gedit_open_document_selector_mapped (GtkWidget *widget)
 }
 
 static GtkSizeRequestMode
-gedit_open_document_selector_get_request_mode (GtkWidget *widget)
+gedit_open_document_selector_get_request_mode (GtkWidget *widget G_GNUC_UNUSED)
 {
 	return GTK_SIZE_REQUEST_CONSTANT_SIZE;
 }
 
 static void
-gedit_open_document_selector_get_preferred_width (GtkWidget *widget,
+gedit_open_document_selector_get_preferred_width (GtkWidget *widget G_GNUC_UNUSED,
                                                   gint      *minimum_width,
                                                   gint      *natural_width)
 {
@@ -931,8 +931,8 @@ gedit_open_document_selector_get_property (GObject    *object,
 }
 
 static void
-gedit_open_document_selector_file_activated (GeditOpenDocumentSelector *selector,
-					     const gchar               *uri)
+gedit_open_document_selector_file_activated (GeditOpenDocumentSelector *selector G_GNUC_UNUSED,
+                                             const gchar               *uri      G_GNUC_UNUSED)
 {
 	/* Do nothing in the default handler */
 }
@@ -984,8 +984,8 @@ gedit_open_document_selector_class_init (GeditOpenDocumentSelectorClass *klass)
 }
 
 static void
-on_treeview_allocate (GtkWidget                 *widget,
-                      GdkRectangle              *allocation,
+on_treeview_allocate (GtkWidget                 *widget     G_GNUC_UNUSED,
+                      GdkRectangle              *allocation G_GNUC_UNUSED,
                       GeditOpenDocumentSelector *selector)
 {
 	GeditOpenDocumentSelectorStore *selector_store;
@@ -1065,10 +1065,10 @@ on_treeview_style_updated (GtkWidget                 *widget,
 }
 
 static void
-name_renderer_datafunc (GtkTreeViewColumn         *column,
-                        GtkCellRenderer           *name_renderer,
-                        GtkTreeModel              *liststore,
-                        GtkTreeIter               *iter,
+name_renderer_datafunc (GtkTreeViewColumn         *column        G_GNUC_UNUSED,
+                        GtkCellRenderer           *name_renderer G_GNUC_UNUSED,
+                        GtkTreeModel              *liststore     G_GNUC_UNUSED,
+                        GtkTreeIter               *iter          G_GNUC_UNUSED,
                         GeditOpenDocumentSelector *selector)
 {
 	g_object_set (selector->name_renderer, "foreground-rgba", &selector->name_label_color, NULL);
@@ -1076,10 +1076,10 @@ name_renderer_datafunc (GtkTreeViewColumn         *column,
 }
 
 static void
-path_renderer_datafunc (GtkTreeViewColumn         *column,
-                        GtkCellRenderer           *path_renderer,
-                        GtkTreeModel              *liststore,
-                        GtkTreeIter               *iter,
+path_renderer_datafunc (GtkTreeViewColumn         *column        G_GNUC_UNUSED,
+                        GtkCellRenderer           *path_renderer G_GNUC_UNUSED,
+                        GtkTreeModel              *liststore     G_GNUC_UNUSED,
+                        GtkTreeIter               *iter          G_GNUC_UNUSED,
                         GeditOpenDocumentSelector *selector)
 {
 	g_object_set (selector->path_renderer, "foreground-rgba", &selector->path_label_color, NULL);

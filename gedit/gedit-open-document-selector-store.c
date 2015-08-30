@@ -83,7 +83,7 @@ G_DEFINE_QUARK (gedit-open-document-selector-store-error-quark,
                 gedit_open_document_selector_store_error)
 
 static GList *
-get_current_docs_list (GeditOpenDocumentSelectorStore *selector_store,
+get_current_docs_list (GeditOpenDocumentSelectorStore *selector_store G_GNUC_UNUSED,
                        GeditOpenDocumentSelector      *selector)
 {
 	GeditWindow *window;
@@ -173,7 +173,7 @@ check_mime_type (GFileInfo *info)
 }
 
 static GList *
-get_children_from_dir (GeditOpenDocumentSelectorStore *selector_store,
+get_children_from_dir (GeditOpenDocumentSelectorStore *selector_store G_GNUC_UNUSED,
                        GFile                          *dir)
 {
 	GList *file_items_list = NULL;
@@ -269,7 +269,7 @@ get_active_doc_dir_list (GeditOpenDocumentSelectorStore *selector_store,
 }
 
 static GFile *
-get_file_browser_root (GeditOpenDocumentSelectorStore *selector_store,
+get_file_browser_root (GeditOpenDocumentSelectorStore *selector_store G_GNUC_UNUSED,
                        GeditOpenDocumentSelector      *selector)
 {
 	GeditWindow *window;
@@ -351,7 +351,7 @@ read_bookmarks_file (GFile *file)
 
 static GList *
 get_local_bookmarks_list (GeditOpenDocumentSelectorStore *selector_store,
-                          GeditOpenDocumentSelector      *selector)
+                          GeditOpenDocumentSelector      *selector G_GNUC_UNUSED)
 {
 	GList *bookmarks_uri_list = NULL;
 	GList *file_items_list = NULL;
@@ -411,7 +411,7 @@ path_is_home_dir (const gchar *path)
 
 static GList *
 get_desktop_dir_list (GeditOpenDocumentSelectorStore *selector_store,
-                      GeditOpenDocumentSelector      *selector)
+                      GeditOpenDocumentSelector      *selector G_GNUC_UNUSED)
 {
 	GList *file_items_list = NULL;
 	const gchar *desktop_dir_name;
@@ -440,7 +440,7 @@ get_desktop_dir_list (GeditOpenDocumentSelectorStore *selector_store,
 
 static GList *
 get_home_dir_list (GeditOpenDocumentSelectorStore *selector_store,
-                   GeditOpenDocumentSelector      *selector)
+                   GeditOpenDocumentSelector      *selector G_GNUC_UNUSED)
 {
 	GList *file_items_list = NULL;
 	const gchar *home_name;
@@ -509,7 +509,7 @@ convert_recent_item_list_to_fileitem_list (GList *uri_list)
 
 static GList *
 get_recent_files_list (GeditOpenDocumentSelectorStore *selector_store,
-                       GeditOpenDocumentSelector      *selector)
+                       GeditOpenDocumentSelector      *selector G_GNUC_UNUSED)
 {
 	GList *recent_items_list;
 	GList *file_items_list;
@@ -527,7 +527,7 @@ get_recent_files_list (GeditOpenDocumentSelectorStore *selector_store,
 static void
 update_list_cb (GeditOpenDocumentSelectorStore *selector_store,
                 GAsyncResult                   *res,
-                gpointer                        user_data)
+                gpointer                        user_data G_GNUC_UNUSED)
 {
 	GList *list;
 	GError *error;
@@ -555,7 +555,7 @@ update_list_cb (GeditOpenDocumentSelectorStore *selector_store,
 }
 
 static void
-on_recent_manager_changed (GtkRecentManager *manager,
+on_recent_manager_changed (GtkRecentManager *manager G_GNUC_UNUSED,
                            gpointer          user_data)
 {
 	GeditOpenDocumentSelectorStore *selector_store = GEDIT_OPEN_DOCUMENT_SELECTOR_STORE (user_data);
@@ -619,7 +619,8 @@ update_recent_list (gpointer user_data)
 	GeditOpenDocumentSelectorStore *selector_store;
 	GeditOpenDocumentSelector *selector;
 	PushMessage *message;
-	ListType type;
+	/* The type variable is only used when debug code activated */
+	G_GNUC_UNUSED ListType type;
 	GList *file_items_list;
 	GTask *task = G_TASK(user_data);
 
@@ -669,7 +670,7 @@ static void
 update_list_dispatcher (GTask        *task,
                         gpointer      source_object,
                         gpointer      task_data,
-                        GCancellable *cancellable)
+                        GCancellable *cancellable G_GNUC_UNUSED)
 {
 	GeditOpenDocumentSelectorStore *selector_store = source_object;
 	GeditOpenDocumentSelector *selector;
