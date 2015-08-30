@@ -576,10 +576,7 @@ gedit_open_document_selector_store_dispose (GObject *object)
 
 	gedit_recent_configuration_destroy (&selector_store->recent_config);
 
-	if (selector_store->recent_source != NULL)
-	{
-		g_clear_pointer (&selector_store->recent_source, g_source_destroy);
-	}
+	g_clear_pointer (&selector_store->recent_source, g_source_destroy);
 
 	if (selector_store->recent_items)
 	{
