@@ -66,8 +66,8 @@ struct _GeditOpenDocumentSelector
 	GList *current_docs_items;
 	GList *all_items;
 
-	gint populate_liststore_is_idle : 1;
-	gint populate_scheduled : 1;
+	guint populate_liststore_is_idle : 1;
+	guint populate_scheduled : 1;
 };
 
 typedef enum
@@ -559,14 +559,14 @@ real_populate_liststore (gpointer data)
 	                          selector, DEBUG_SELECTOR_TIMER_GET););
 	DEBUG_SELECTOR_TIMER_DESTROY
 
-	if (selector->populate_scheduled == TRUE)
+	if (selector->populate_scheduled)
 	{
 		selector->populate_scheduled = FALSE;
-		return TRUE;
+		return G_SOURCE_CONTINUE;
 	}
 	else
 	{
-		return FALSE;
+		return G_SOURCE_REMOVE;
 	}
 }
 
