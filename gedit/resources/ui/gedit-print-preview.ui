@@ -9,15 +9,9 @@
     <child>
       <object class="GtkToolbar" id="toolbar1">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="has_focus">False</property>
-        <property name="is_focus">False</property>
-        <property name="toolbar_style">both-horiz</property>
         <child>
           <object class="GtkToolItem" id="toolbutton1">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="vexpand">False</property>
             <property name="valign">center</property>
             <property name="margin-end">2</property>
             <style>
@@ -26,7 +20,6 @@
             <child>
               <object class="GtkBox" id="box1">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <child>
                   <object class="GtkButton" id="prev_button">
                     <property name="visible">True</property>
@@ -36,9 +29,7 @@
                     <property name="image">previous_image</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -50,7 +41,6 @@
                     <property name="image">next_image</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="fill">False</property>
                     <property name="position">1</property>
                   </packing>
@@ -61,43 +51,27 @@
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">False</property>
-          </packing>
         </child>
         <child>
           <object class="GtkSeparatorToolItem" id="toolseparator1">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
           </object>
           <packing>
-            <property name="expand">False</property>
             <property name="homogeneous">True</property>
           </packing>
         </child>
         <child>
           <object class="GtkToolItem" id="toolbutton2">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
             <child>
               <object class="GtkGrid" id="grid1">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="has_focus">False</property>
-                <property name="is_focus">False</property>
                 <property name="valign">center</property>
                 <property name="column_spacing">4</property>
                 <child>
                   <object class="GtkEntry" id="page_entry">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="has_focus">False</property>
-                    <property name="is_focus">False</property>
                     <property name="max_length">6</property>
                     <property name="width_chars">3</property>
                     <property name="primary_icon_tooltip_text" translatable="yes">Current page (Alt+P)</property>
@@ -105,31 +79,21 @@
                   <packing>
                     <property name="left_attach">0</property>
                     <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="label1">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_focus">False</property>
-                    <property name="is_focus">False</property>
                     <property name="label" translatable="yes" comments="the &quot;of&quot; from &quot;1 of 19&quot; in print preview">of</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
                     <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="last_page_label">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="has_focus">False</property>
-                    <property name="is_focus">False</property>
                     <child internal-child="accessible">
                       <object class="AtkObject" id="last-atkobject">
                         <property name="AtkObject::accessible-name" translatable="yes">Page total</property>
@@ -140,35 +104,23 @@
                   <packing>
                     <property name="left_attach">2</property>
                     <property name="top_attach">0</property>
-                    <property name="width">1</property>
-                    <property name="height">1</property>
                   </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">False</property>
-          </packing>
         </child>
         <child>
           <object class="GtkSeparatorToolItem" id="toolseparator2">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
           </object>
           <packing>
-            <property name="expand">False</property>
             <property name="homogeneous">True</property>
           </packing>
         </child>
         <child>
           <object class="GtkToolItem" id="toolbutton3">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="vexpand">False</property>
             <property name="valign">center</property>
             <property name="margin-end">2</property>
             <style>
@@ -177,7 +129,6 @@
             <child>
               <object class="GtkBox" id="box2">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <child>
                   <object class="GtkButton" id="multi_pages_button">
                     <property name="visible">True</property>
@@ -187,36 +138,24 @@
                     <property name="image">multi_image</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">0</property>
                   </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">False</property>
-          </packing>
         </child>
         <child>
           <object class="GtkSeparatorToolItem" id="toolseparator3">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
           </object>
           <packing>
-            <property name="expand">False</property>
             <property name="homogeneous">True</property>
           </packing>
         </child>
         <child>
           <object class="GtkToolItem" id="toolbutton4">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="vexpand">False</property>
             <property name="valign">center</property>
             <property name="margin-end">2</property>
             <style>
@@ -225,7 +164,6 @@
             <child>
               <object class="GtkBox" id="box3">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <child>
                   <object class="GtkButton" id="zoom_one_button">
                     <property name="visible">True</property>
@@ -235,9 +173,7 @@
                     <property name="image">zoom_one_image</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -249,7 +185,6 @@
                     <property name="image">zoom_fit_image</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="fill">False</property>
                     <property name="position">1</property>
                   </packing>
@@ -263,7 +198,6 @@
                     <property name="image">zoom_in_image</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="fill">False</property>
                     <property name="position">2</property>
                   </packing>
@@ -277,7 +211,6 @@
                     <property name="image">zoom_out_image</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="fill">False</property>
                     <property name="position">3</property>
                   </packing>
@@ -288,28 +221,18 @@
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">False</property>
-          </packing>
         </child>
         <child>
           <object class="GtkSeparatorToolItem" id="toolseparator4">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
           </object>
           <packing>
-            <property name="expand">False</property>
             <property name="homogeneous">True</property>
           </packing>
         </child>
         <child>
           <object class="GtkToolItem" id="toolbutton5">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="vexpand">False</property>
             <property name="valign">center</property>
             <property name="margin-end">2</property>
             <style>
@@ -318,7 +241,6 @@
             <child>
               <object class="GtkBox" id="box4">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <child>
                   <object class="GtkButton" id="close_button">
                     <property name="visible">True</property>
@@ -328,18 +250,12 @@
                     <property name="use_underline">True</property>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">0</property>
                   </packing>
                 </child>
               </object>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="homogeneous">False</property>
-          </packing>
         </child>
         <style>
           <class name="inline-toolbar"/>
@@ -356,8 +272,6 @@
       <object class="GtkScrolledWindow" id="scrolledwindow1">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="has_focus">False</property>
-        <property name="is_focus">False</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
         <property name="shadow_type">in</property>
@@ -365,8 +279,6 @@
           <object class="GtkLayout" id="layout">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
             <property name="has_tooltip">True</property>
             <property name="events">GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK | GDK_KEY_PRESS_MASK | GDK_STRUCTURE_MASK</property>
             <child internal-child="accessible">

@@ -132,7 +132,6 @@
     </data>
   </object>
   <object class="GtkWindow" id="tool-manager-dialog">
-    <property name="can_focus">False</property>
     <property name="title" translatable="yes">Manage External Tools</property>
     <property name="default_width">800</property>
     <property name="default_height">600</property>
@@ -160,7 +159,6 @@
         <child>
           <object class="GtkBox" id="vbox2">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <child>
               <object class="GtkScrolledWindow" id="scrolled_window1">
@@ -184,14 +182,11 @@
               </object>
               <packing>
                 <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkToolbar" id="toolbar1">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <property name="toolbar_style">icons</property>
                 <style>
                   <class name="inline-toolbar"/>
@@ -200,7 +195,6 @@
                 <child>
                   <object class="GtkToolButton" id="add-tool-button">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">Add a new tool</property>
                     <property name="label" translatable="yes">Add Tool</property>
                     <property name="use_underline">True</property>
@@ -208,14 +202,12 @@
                     <signal name="clicked" handler="on_add_tool_button_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkToolButton" id="remove-tool-button">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">Remove selected tool</property>
                     <property name="label" translatable="yes">Remove Tool</property>
                     <property name="use_underline">True</property>
@@ -223,14 +215,12 @@
                     <signal name="clicked" handler="on_remove_tool_button_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="homogeneous">True</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkToolButton" id="revert-tool-button">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <property name="tooltip_text" translatable="yes">Revert tool</property>
                     <property name="label" translatable="yes">Revert Tool</property>
                     <property name="use_underline">True</property>
@@ -238,14 +228,11 @@
                     <signal name="clicked" handler="on_remove_tool_button_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
                     <property name="homogeneous">True</property>
                   </packing>
                 </child>
               </object>
               <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -258,21 +245,17 @@
         <child>
           <object class="GtkBox" id="vbox5">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
             <property name="spacing">6</property>
             <child>
               <object class="GtkBox" id="hbox7">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <child>
                   <object class="GtkGrid" id="grid1">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
                     <child>
                       <object class="GtkGrid" id="tool-grid">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
                         <property name="margin_start">6</property>
                         <property name="margin_end">6</property>
                         <property name="margin_top">6</property>
@@ -282,7 +265,6 @@
                         <child>
                           <object class="GtkLabel" id="label3">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
                             <property name="xalign">0</property>
                             <property name="label" translatable="yes">Shortcut _key:</property>
                             <property name="use_underline">True</property>
@@ -292,8 +274,6 @@
                           <packing>
                             <property name="left_attach">0</property>
                             <property name="top_attach">0</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
                           </packing>
                         </child>
                         <child>
@@ -309,14 +289,11 @@
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">0</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkLabel" id="label6">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
                             <property name="xalign">0</property>
                             <property name="label" translatable="yes">_Save:</property>
                             <property name="use_underline">True</property>
@@ -325,14 +302,11 @@
                           <packing>
                             <property name="left_attach">0</property>
                             <property name="top_attach">1</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkComboBox" id="save-files">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
                             <property name="model">model_save_files</property>
                             <child>
                               <object class="GtkCellRendererText" id="renderer1"/>
@@ -344,14 +318,11 @@
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">1</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkLabel" id="label7">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
                             <property name="xalign">0</property>
                             <property name="label" translatable="yes">_Input:</property>
                             <property name="use_underline">True</property>
@@ -360,14 +331,11 @@
                           <packing>
                             <property name="left_attach">0</property>
                             <property name="top_attach">2</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkComboBox" id="input">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
                             <property name="model">model_input</property>
                             <child>
                               <object class="GtkCellRendererText" id="input_renderer"/>
@@ -379,14 +347,11 @@
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">2</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkLabel" id="label8">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
                             <property name="xalign">0</property>
                             <property name="label" translatable="yes">_Output:</property>
                             <property name="use_underline">True</property>
@@ -395,14 +360,11 @@
                           <packing>
                             <property name="left_attach">0</property>
                             <property name="top_attach">3</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkComboBox" id="output">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
                             <property name="model">model_output</property>
                             <child>
                               <object class="GtkCellRendererText" id="output_renderer"/>
@@ -414,14 +376,11 @@
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">3</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkLabel" id="label23">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
                             <property name="xalign">0</property>
                             <property name="label" translatable="yes">_Applicability:</property>
                             <property name="use_underline">True</property>
@@ -430,19 +389,15 @@
                           <packing>
                             <property name="left_attach">0</property>
                             <property name="top_attach">4</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkBox" id="hbox1">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkComboBox" id="applicability">
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
                                 <property name="model">model_applicability</property>
                                 <signal name="changed" handler="on_applicability_changed" swapped="no"/>
                                 <child>
@@ -452,23 +407,16 @@
                                   </attributes>
                                 </child>
                               </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
                             </child>
                             <child>
                               <object class="GtkButton" id="languages_button">
                                 <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
                                 <signal name="clicked" handler="on_languages_button_clicked" swapped="no"/>
                                 <child>
                                   <object class="GtkLabel" id="languages_label">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
                                     <property name="xalign">0</property>
                                     <property name="label" translatable="yes">All Languages</property>
                                     <property name="ellipsize">end</property>
@@ -478,7 +426,6 @@
                               </object>
                               <packing>
                                 <property name="expand">True</property>
-                                <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -486,16 +433,12 @@
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">4</property>
-                            <property name="width">1</property>
-                            <property name="height">1</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">1</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
                       </packing>
                     </child>
                     <child>
@@ -518,27 +461,18 @@
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
                       </packing>
                     </child>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
               </object>
               <packing>
                 <property name="expand">True</property>
-                <property name="fill">True</property>
                 <property name="position">1</property>
               </packing>
             </child>
           </object>
           <packing>
-            <property name="resize">True</property>
             <property name="shrink">False</property>
           </packing>
         </child>

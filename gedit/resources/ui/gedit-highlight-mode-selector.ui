@@ -26,7 +26,6 @@
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="has_focus">True</property>
-        <property name="is_focus">False</property>
         <property name="activates_default">True</property>
         <property name="placeholder_text" translatable="yes">Search highlight mode...</property>
       </object>
@@ -41,8 +40,6 @@
       <object class="GtkScrolledWindow" id="scrolledwindow1">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="has_focus">False</property>
-        <property name="is_focus">False</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
         <property name="shadow_type">in</property>
@@ -50,8 +47,6 @@
           <object class="GtkTreeView" id="treeview">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="has_focus">False</property>
-            <property name="is_focus">False</property>
             <property name="model">treemodelfilter</property>
             <property name="headers_visible">False</property>
             <property name="headers_clickable">False</property>
