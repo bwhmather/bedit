@@ -29,16 +29,33 @@
         <property name="vexpand">True</property>
         <property name="shadow_type">in</property>
         <child>
-          <object class="GtkLabel" id="placeholder_label">
+          <object class="GtkBox" id="placeholder_inner_box">
             <property name="visible">True</property>
-            <property name="sensitive">False</property>
-            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="label" translatable="yes">No results</property>
-            <style>
-              <class name="dim-label"/>
-            </style>
+            <child>
+              <object class="GtkImage" id="placeholder_image">
+                <property name="visible">True</property>
+                <property name="icon_name">edit-find-symbolic</property>
+                <property name="pixel_size">64</property>
+                <property name="can_focus">False</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="placeholder_label">
+                <property name="visible">True</property>
+                <property name="sensitive">False</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">No results</property>
+                <style>
+                  <class name="dim-label"/>
+                </style>
+              </object>
+            </child>
           </object>
         </child>
       </object>
