@@ -44,10 +44,10 @@ GQuark				 gedit_open_document_selector_store_error_quark				(void);
 
 gint				 gedit_open_document_selector_store_get_recent_limit			(GeditOpenDocumentSelectorStore *store);
 
-void				 gedit_open_document_selector_store_set_recent_filter			(GeditOpenDocumentSelectorStore *store,
+void				 gedit_open_document_selector_store_set_filter				(GeditOpenDocumentSelectorStore *store,
                                                                                                          const gchar                    *filter);
 
-gchar				*gedit_open_document_selector_store_get_recent_filter			(GeditOpenDocumentSelectorStore *store);
+gchar				*gedit_open_document_selector_store_get_filter				(GeditOpenDocumentSelectorStore *store);
 
 GList				*gedit_open_document_selector_store_update_list_finish			(GeditOpenDocumentSelectorStore  *open_document_selector_store,
                                                                                                          GAsyncResult                    *res,

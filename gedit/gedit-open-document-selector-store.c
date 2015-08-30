@@ -34,9 +34,9 @@
  * in return the list of FileItem structs.
  *
  * The recent files list can be filtered by calling
- * gedit_open_document_selector_store_set_recent_filter()
+ * gedit_open_document_selector_store_set_filter()
  * and you can get the actual filter by calling
- * gedit_open_document_selector_store_get_recent_filter()
+ * gedit_open_document_selector_store_get_filter()
  * ( this is in addition to the text mime type filter)
  *
  * The recent files list is not capped by Gedit settings like
@@ -70,6 +70,7 @@ struct _GeditOpenDocumentSelectorStore
 	GSource *recent_source;
 
 	GeditRecentConfiguration recent_config;
+	gchar *filter;
 	GList *recent_items;
 	gint recent_config_limit;
 	gboolean recent_items_need_update;
@@ -577,6 +578,7 @@ gedit_open_document_selector_store_dispose (GObject *object)
 	gedit_recent_configuration_destroy (&selector_store->recent_config);
 
 	g_clear_pointer (&selector_store->recent_source, g_source_destroy);
+	g_clear_pointer (&selector_store->filter, g_free);
 
 	if (selector_store->recent_items)
 	{
@@ -783,8 +785,8 @@ gedit_open_document_selector_store_get_recent_limit (GeditOpenDocumentSelectorSt
 }
 
 void
-gedit_open_document_selector_store_set_recent_filter (GeditOpenDocumentSelectorStore *selector_store,
-                                                      const gchar                    *filter)
+gedit_open_document_selector_store_set_filter (GeditOpenDocumentSelectorStore *selector_store,
+                                               const gchar                    *filter)
 {
 	gchar *old_filter;
 
@@ -793,22 +795,22 @@ gedit_open_document_selector_store_set_recent_filter (GeditOpenDocumentSelectorS
 
 	G_LOCK (recent_files_filter_lock);
 
-	old_filter = selector_store->recent_config.substring_filter;
-	selector_store->recent_config.substring_filter = g_strdup (filter);
+	old_filter = selector_store->filter;
+	selector_store->filter = g_strdup (filter);
 
 	G_UNLOCK (recent_files_filter_lock);
 	g_free (old_filter);
 }
 
 gchar *
-gedit_open_document_selector_store_get_recent_filter (GeditOpenDocumentSelectorStore *selector_store)
+gedit_open_document_selector_store_get_filter (GeditOpenDocumentSelectorStore *selector_store)
 {
 	gchar *recent_filter;
 
 	g_return_val_if_fail (GEDIT_IS_OPEN_DOCUMENT_SELECTOR_STORE (selector_store), NULL);
 
 	G_LOCK (recent_files_filter_lock);
-	recent_filter = g_strdup (selector_store->recent_config.substring_filter);
+	recent_filter = g_strdup (selector_store->filter);
 	G_UNLOCK (recent_files_filter_lock);
 
 	return recent_filter;
