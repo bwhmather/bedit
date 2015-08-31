@@ -4,19 +4,19 @@
 #
 # Mate Ory <orymate at gmail dot com>, 2007, 2008.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015.
-# Balázs Úr <urbalazs@gmail.com>, 2014.
+# Balázs Úr <urbalazs@gmail.com>, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit_help master\n"
-"POT-Creation-Date: 2015-08-18 05:22+0000\n"
-"PO-Revision-Date: 2015-08-18 17:40+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"POT-Creation-Date: 2015-08-31 17:25+0000\n"
+"PO-Revision-Date: 2015-08-31 19:31+0200\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at gmail dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -2695,15 +2695,12 @@ msgstr "Escape sorozatok használata"
 
 #. (itstool) path: section/p
 #: C/gedit-replace.page:125
-#| msgid ""
-#| "You can use <em>escape sequences</em> to search for line breaks and tabs."
 msgid ""
 "You can use <em>escape sequences</em> to search for line breaks, carriage "
 "returns, and tabs."
 msgstr ""
 "Sorvégjelek, kocsivissza-karakterek és tabulátorok kereséséhez használhatja "
-"az <em>escape "
-"sorozatokat</em>."
+"az <em>escape sorozatokat</em>."
 
 #. (itstool) path: item/title
 #: C/gedit-replace.page:130
@@ -3011,17 +3008,17 @@ msgstr "Lapokkal kapcsolatos gyorsbillentyűk"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:57 C/gedit-shortcut-keys.page:113
-#: C/gedit-shortcut-keys.page:163 C/gedit-shortcut-keys.page:257
-#: C/gedit-shortcut-keys.page:282 C/gedit-shortcut-keys.page:319
-#: C/gedit-shortcut-keys.page:348
+#: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:261
+#: C/gedit-shortcut-keys.page:286 C/gedit-shortcut-keys.page:323
+#: C/gedit-shortcut-keys.page:352
 msgid "Action"
 msgstr "Művelet"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:58 C/gedit-shortcut-keys.page:114
-#: C/gedit-shortcut-keys.page:164 C/gedit-shortcut-keys.page:258
-#: C/gedit-shortcut-keys.page:283 C/gedit-shortcut-keys.page:320
-#: C/gedit-shortcut-keys.page:349
+#: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:262
+#: C/gedit-shortcut-keys.page:287 C/gedit-shortcut-keys.page:324
+#: C/gedit-shortcut-keys.page:353
 msgid "Keyboard shortcut"
 msgstr "Gyorsbillentyű"
 
@@ -3051,7 +3048,7 @@ msgid "Close tab"
 msgstr "Lap bezárása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:74 C/gedit-shortcut-keys.page:150
+#: C/gedit-shortcut-keys.page:74 C/gedit-shortcut-keys.page:154
 msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 
@@ -3140,7 +3137,6 @@ msgstr "Gyorsbillentyűk fájlok kezeléséhez"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:119
-#| msgid "Create a new document"
 msgid "Create a new document in a new window"
 msgstr "Új dokumentum létrehozása új ablakban"
 
@@ -3151,13 +3147,11 @@ msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:123
-#| msgid "Create a new document"
 msgid "Create a new document in a new tab"
 msgstr "Új dokumentum létrehozása új lapon"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:124
-#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
 
@@ -3173,424 +3167,433 @@ msgstr "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:131
+#| msgid "The <gui>Quick Open</gui> file dialog will appear."
+msgid "Open the <gui>Quick Open</gui> window"
+msgstr "A <gui>Gyors megnyitás</gui> ablak megnyitása"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:132
+#| msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
+msgid "<keyseq><key>Alt</key><key>O</key></keyseq>"
+msgstr "<keyseq><key>Alt</key><key>O</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:135
 msgid "Save the current document"
 msgstr "A jelenlegi dokumentum mentése"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:132
+#: C/gedit-shortcut-keys.page:136
 msgid "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:135
+#: C/gedit-shortcut-keys.page:139
 msgid "Save the current document with a new filename"
 msgstr "A jelenlegi dokumentum mentése más fájlnéven"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:136
+#: C/gedit-shortcut-keys.page:140
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:140
+#: C/gedit-shortcut-keys.page:144
 msgid "Print the current document"
 msgstr "A jelenlegi dokumentum nyomtatása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:141
+#: C/gedit-shortcut-keys.page:145
 msgid "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:144
+#: C/gedit-shortcut-keys.page:148
 msgid "Print preview"
 msgstr "Nyomtatási kép"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:145
+#: C/gedit-shortcut-keys.page:149
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:149
+#: C/gedit-shortcut-keys.page:153
 msgid "Close the current document"
 msgstr "A jelenlegi dokumentum bezárása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:153
+#: C/gedit-shortcut-keys.page:157
 msgid "Quit gedit"
 msgstr "Kilépés a geditből"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:154
+#: C/gedit-shortcut-keys.page:158
 msgid "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:160
+#: C/gedit-shortcut-keys.page:164
 msgid "Shortcut keys for editing files"
 msgstr "Gyorsbillentyűk fájlok szerkesztéséhez"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:169
+#: C/gedit-shortcut-keys.page:173
 msgid "Move to the beginning of the current line"
 msgstr "Az aktuális sor elejére lépés"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:170
+#: C/gedit-shortcut-keys.page:174
 msgid "<key>Home</key>"
 msgstr "<key>Home</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:173
+#: C/gedit-shortcut-keys.page:177
 msgid "Move to the end of the current line"
 msgstr "Az aktuális sor végére lépés"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:174
+#: C/gedit-shortcut-keys.page:178
 msgid "<key>End</key>"
 msgstr "<key>End</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:177
+#: C/gedit-shortcut-keys.page:181
 msgid "Move to the beginning of the document"
 msgstr "Ugrás a dokumentum elejére"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:178
+#: C/gedit-shortcut-keys.page:182
 msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:181
+#: C/gedit-shortcut-keys.page:185
 msgid "Move to the end of the document"
 msgstr "Ugrás a dokumentum végére"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:182
+#: C/gedit-shortcut-keys.page:186
 msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:185
+#: C/gedit-shortcut-keys.page:189
 msgid "Move the selected word right one word"
 msgstr "A kijelölt szó egy szóval jobbra mozgatása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:186
+#: C/gedit-shortcut-keys.page:190
 msgid "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Jobbra nyíl</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:189
+#: C/gedit-shortcut-keys.page:193
 msgid "Move the selected word left one word"
 msgstr "A kijelölt szó egy szóval balra mozgatása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:190
+#: C/gedit-shortcut-keys.page:194
 msgid "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Balra nyíl</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:193
+#: C/gedit-shortcut-keys.page:197
 msgid "Undo the last action"
 msgstr "Az utolsó művelet visszavonása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:194
+#: C/gedit-shortcut-keys.page:198
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:197
+#: C/gedit-shortcut-keys.page:201
 msgid "Redo the last undone action"
 msgstr "A visszavont művelet végrehajtása mégis"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:198
+#: C/gedit-shortcut-keys.page:202
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:202
+#: C/gedit-shortcut-keys.page:206
 msgid "Cut the selected text or region and place it on the clipboard"
 msgstr "A kijelölt szöveg vagy terület kivágása és vágólapra helyezése"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:204
+#: C/gedit-shortcut-keys.page:208
 msgid "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:207
+#: C/gedit-shortcut-keys.page:211
 msgid "Copy the selected text or region onto the clipboard"
 msgstr "A kijelölt szöveg vagy terület másolása a vágólapra"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:208
+#: C/gedit-shortcut-keys.page:212
 msgid "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:211
+#: C/gedit-shortcut-keys.page:215
 msgid "Paste the contents of the clipboard"
 msgstr "A vágólap tartalmának beillesztése"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:212
+#: C/gedit-shortcut-keys.page:216
 msgid "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:215
+#: C/gedit-shortcut-keys.page:219
 msgid "Select all text in the file"
 msgstr "Minden szöveg kijelölése a fájlban"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:216
+#: C/gedit-shortcut-keys.page:220
 msgid "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:219
+#: C/gedit-shortcut-keys.page:223
 msgid "Delete the current line"
 msgstr "A jelenlegi sor törlése"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:220
+#: C/gedit-shortcut-keys.page:224
 msgid "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:223
+#: C/gedit-shortcut-keys.page:227
 msgid "Move the selected line up one line"
 msgstr "A kijelölt sor egy sorral feljebb mozgatása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:224
+#: C/gedit-shortcut-keys.page:228
 msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Fel nyíl</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:227
+#: C/gedit-shortcut-keys.page:231
 msgid "Move the selected line down one line"
 msgstr "A kijelölt sor egy sorral lejjebb mozgatása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:228
+#: C/gedit-shortcut-keys.page:232
 msgid "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Le nyíl</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:231
+#: C/gedit-shortcut-keys.page:235
 msgid "Add a tab stop"
 msgstr "Tabulátor hozzáadása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:232
+#: C/gedit-shortcut-keys.page:236
 msgid "<keyseq><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:235
+#: C/gedit-shortcut-keys.page:239
 msgid "Remove a tab stop"
 msgstr "Tabulátor eltávolítása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:236
+#: C/gedit-shortcut-keys.page:240
 msgid "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:239
+#: C/gedit-shortcut-keys.page:243
 msgid "Convert the selected text to upper case"
 msgstr "A kijelölt szöveg nagybetűssé alakítása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:240
+#: C/gedit-shortcut-keys.page:244
 msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:243
+#: C/gedit-shortcut-keys.page:247
 msgid "Convert the selected text to lower case"
 msgstr "A kijelölt szöveg kisbetűssé alakítása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:244
+#: C/gedit-shortcut-keys.page:248
 msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:247
+#: C/gedit-shortcut-keys.page:251
 msgid "Toggle case of the selected text"
 msgstr "A kijelölt szöveg kis- és nagybetűsségének átváltása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:248
+#: C/gedit-shortcut-keys.page:252
 msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:254
+#: C/gedit-shortcut-keys.page:258
 msgid "Shortcut keys for showing and hiding panes"
 msgstr "Ablaktáblákat elrejtő és megjelenítő gyorsbillentyűk"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:263
+#: C/gedit-shortcut-keys.page:267
 msgid "Show / hide the side pane"
 msgstr "Oldalsó ablaktábla megjelenítése/elrejtése"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:264
+#: C/gedit-shortcut-keys.page:268
 msgid "<key>F9</key>"
 msgstr "<key>F9</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:267
-#| msgid "Show / hide the bottom pane."
+#: C/gedit-shortcut-keys.page:271
 msgid "Show / hide the bottom pane"
 msgstr "Alsó ablaktábla megjelenítése/elrejtése"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:268
+#: C/gedit-shortcut-keys.page:272
 msgid "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:272
-#| msgid "Open a new file for editing."
+#: C/gedit-shortcut-keys.page:276
 msgid "Open the file menu"
 msgstr "A Fájl menü megnyitása"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:273
-#| msgid "<key>F1</key>"
+#: C/gedit-shortcut-keys.page:277
 msgid "<key>F10</key>"
 msgstr "<key>F10</key>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:279
+#: C/gedit-shortcut-keys.page:283
 msgid "Shortcut keys for searching"
 msgstr "Gyorsbillentyűk a kereséshez"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:288
+#: C/gedit-shortcut-keys.page:292
 msgid "Find a string"
 msgstr "Karakterlánc keresése"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:289
+#: C/gedit-shortcut-keys.page:293
 msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:292
+#: C/gedit-shortcut-keys.page:296
 msgid "Find the next instance of the string"
 msgstr "A karakterlánc következő előfordulására ugrás"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:293
+#: C/gedit-shortcut-keys.page:297
 msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:296
+#: C/gedit-shortcut-keys.page:300
 msgid "Find the previous instance of the string"
 msgstr "A karakterlánc előző előfordulására ugrás"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:297
+#: C/gedit-shortcut-keys.page:301
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:300
+#: C/gedit-shortcut-keys.page:304
 msgid "Search and Replace"
 msgstr "Keresés és csere"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:301
+#: C/gedit-shortcut-keys.page:305
 msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:304
+#: C/gedit-shortcut-keys.page:308
 msgid "Clear highlight"
 msgstr "Kiemelés törlése"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:305
+#: C/gedit-shortcut-keys.page:309
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:309
+#: C/gedit-shortcut-keys.page:313
 msgid "Goto line"
 msgstr "Ugrás sorra"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:310
+#: C/gedit-shortcut-keys.page:314
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:316
+#: C/gedit-shortcut-keys.page:320
 msgid "Shortcut keys for tools"
 msgstr "Gyorsbillentyűk az eszközökhöz"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:325
+#: C/gedit-shortcut-keys.page:329
 msgid "Check spelling"
 msgstr "Helyesírás-ellenőrzés"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:326
+#: C/gedit-shortcut-keys.page:330
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:329
+#: C/gedit-shortcut-keys.page:333
 msgid "Remove trailing spaces (with plugin)"
 msgstr "Sorvégi szóközök törlése (bővítménnyel)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:330
+#: C/gedit-shortcut-keys.page:334
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:333
+#: C/gedit-shortcut-keys.page:337
 msgid "Run \"make\" in the current directory (with plugin)"
 msgstr "A „make” futtatása az aktuális könyvtárban (bővítménnyel)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:334
+#: C/gedit-shortcut-keys.page:338
 msgid "<key>F8</key>"
 msgstr "<key>F8</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:337
+#: C/gedit-shortcut-keys.page:341
 msgid "Directory listing (with plugin)"
 msgstr "Könyvtár listázása (bővítménnyel)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:338
+#: C/gedit-shortcut-keys.page:342
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:345
+#: C/gedit-shortcut-keys.page:349
 msgid "Shortcut keys for user help"
 msgstr "Súgó gyorsbillentyűi"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:354
+#: C/gedit-shortcut-keys.page:358
 msgid "Open the gedit user guide"
 msgstr "A gedit súgójának megjelenítése"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:355
+#: C/gedit-shortcut-keys.page:359
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
