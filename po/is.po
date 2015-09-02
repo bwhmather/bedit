@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gedit.master.is\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-04-24 05:25+0000\n"
-"PO-Revision-Date: 2015-04-28 10:46+0000\n"
+"POT-Creation-Date: 2015-09-02 05:24+0000\n"
+"PO-Revision-Date: 2015-09-02 17:00+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
 "Language: is\n"
@@ -51,7 +51,7 @@ msgstr ""
 msgid "gedit"
 msgstr "gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:724
+#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:728
 msgid "Text Editor"
 msgstr "Textaritill"
 
@@ -252,10 +252,30 @@ msgid "Specifies the position of the right margin."
 msgstr "Tilgreinir staðsetningu hægri spássíu."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:36
+#, fuzzy
+#| msgid "Display Right Margin"
+msgid "Display Overview Map"
+msgstr "Sýna hægri spássíu"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#, fuzzy
+#| msgid "Whether gedit should display the right margin in the editing area."
+msgid "Whether gedit should display the overview map for the document."
+msgstr "Hvort sýna eigi hægri spássíu."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+msgid "Document background pattern type"
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+msgid "Whether the document will get a background pattern painted."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Smart Home End"
 msgstr "Snjallir Home/End"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "\"disabled\" to always move at the start/end of the line, \"after\" to move "
@@ -266,55 +286,55 @@ msgid ""
 "the text instead of the start/end of the line."
 msgstr ""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid "Restore Previous Cursor Position"
 msgstr "Endursetja fyrri stöðu bendils"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr "Hvort endurvekja eigi fyrri stöðu bendils þegar skjali er opnað."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid "Enable Syntax Highlighting"
 msgstr "Virkja litun skipanna"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Hvort lýsa eigi upp málskipan."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Enable Search Highlighting"
 msgstr "Virkja litun leitarorða"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Hvort lýsa eigi upp öll tilfelli leitunarstrengs."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid "Ensure Trailing Newline"
 msgstr ""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid "Toolbar is Visible"
 msgstr "Verkfærastika sýnileg"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Hvort verkfærastikan eigi að vera sýnileg."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Notebook Show Tabs Mode"
 msgstr ""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
 "Specifies when to show the notebook tabs. Use \"never\" to never show the "
 "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
@@ -322,29 +342,29 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr ""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid "Status Bar is Visible"
 msgstr "Stöðustika sýnileg"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Hvort stöðustikan eigi að vera sýnileg."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid "Side panel is Visible"
 msgstr "Hliðarstika er sýnileg"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Hvort vinstri hliðarstika eigi að vera sýnileg."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid "Maximum Recent Files"
 msgstr "Hámarksfjöldi nýlegra skjala"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
@@ -352,27 +372,27 @@ msgstr ""
 "Tilgreinir hámarksfjölda þeirra nýlegu skjala sem eru sýnd í \"Nýleg skjöl\" "
 "undirvalmyndinni."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid "Print Syntax Highlighting"
 msgstr "Prenta upplýsingu málskipunar"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Hvort prenta eigi upplýsingu málskipans."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Print Header"
 msgstr "Prenta haus"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Hvort prenta eigi haus skjals."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "Printing Line Wrapping Mode"
 msgstr "Umbrotshamur texta fyrir prentun"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid ""
 "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
 "\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
@@ -384,11 +404,11 @@ msgstr ""
 "\"\" ef brjóta á línu á milli stafa. Athugaðu að gildin eru hástafsnæm, "
 "þannig að þau verða að vera nákvæmlega eins og hér er sýnt."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid "Print Line Numbers"
 msgstr "Prenta línunúmer"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -397,28 +417,28 @@ msgstr ""
 "Ef þetta gildi er 0, þá munu engin línunúmer sjást þegar skjalið er prentað. "
 "Annars verða línunúmer prentuð með tilgreindu millibili."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "'Monospace 9'"
 msgstr "'Jafnbreitt 9'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid "Body Font for Printing"
 msgstr "Leturgerð fyrir prentun"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr "Tilgreinir leturgerð megintexta þegar skjöl eru prentuð."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid "Header Font for Printing"
 msgstr "Leturgerð hausa fyrir prentun"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:69
+#: ../data/org.gnome.gedit.gschema.xml.in.h:73
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
@@ -426,15 +446,15 @@ msgstr ""
 "Tilgreinir leturgerð hausa þegar skjöl eru prentuð. Þetta hefur einungis "
 "áhrif ef \"Prenta haus\" er valið."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Line Number Font for Printing"
 msgstr "Leturgerð línunúmera fyrir prentun"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
@@ -442,12 +462,44 @@ msgstr ""
 "Tilgreinir leturgerð línunúmera fyrir prentun. Þetta hefur einungis áhrif ef "
 "\"Prenta númeraðar línur\" er valið."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:73
-#| msgid "Character Encoding:"
+#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+msgid "Margin Left"
+msgstr "Spássía til vinstri"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+msgid "The left margin, in millimeters."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+msgid "Margin Top"
+msgstr "Spássía efst"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+msgid "The top margin, in millimeters."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+#| msgid "Move _Right"
+msgid "Margin Right"
+msgstr "Spássía til hægri"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+msgid "The right margin, in millimeters."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+msgid "Margin Bottom"
+msgstr "Spássía neðst"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+msgid "The bottom margin, in millimeters."
+msgstr ""
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Candidate Encodings"
 msgstr "Tillögur að stafatöflum"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. \"CURRENT\" represents the current locale encoding. Only "
@@ -455,11 +507,11 @@ msgid ""
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+#: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Active plugins"
 msgstr "Virkar viðbætur"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
@@ -468,57 +520,57 @@ msgstr ""
 "viðbótanna. Sjá skrána .gedit-plugin til að finna \"Staðsetningu\" "
 "tiltekinnar viðbótar."
 
-#: ../gedit/gedit-app.c:108
+#: ../gedit/gedit-app.c:109
 msgid "Show the application's version"
 msgstr "Sjá útgáfu forrits"
 
-#: ../gedit/gedit-app.c:114
+#: ../gedit/gedit-app.c:115
 msgid "Display list of possible values for the encoding option"
 msgstr ""
 
-#: ../gedit/gedit-app.c:121
+#: ../gedit/gedit-app.c:122
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr ""
 
-#: ../gedit/gedit-app.c:122
+#: ../gedit/gedit-app.c:123
 msgid "ENCODING"
 msgstr "STAFATAFLA"
 
-#: ../gedit/gedit-app.c:128
+#: ../gedit/gedit-app.c:129
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr ""
 
-#: ../gedit/gedit-app.c:135
+#: ../gedit/gedit-app.c:136
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Búa til nýtt skjal"
 
-#: ../gedit/gedit-app.c:142
+#: ../gedit/gedit-app.c:143
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr ""
 
-#: ../gedit/gedit-app.c:143
+#: ../gedit/gedit-app.c:144
 msgid "GEOMETRY"
 msgstr "STÆRÐARHLUTFÖLL"
 
-#: ../gedit/gedit-app.c:149
+#: ../gedit/gedit-app.c:150
 msgid "Open files and block process until files are closed"
 msgstr ""
 
-#: ../gedit/gedit-app.c:156
+#: ../gedit/gedit-app.c:157
 msgid "Run gedit in standalone mode"
 msgstr "Keyra gedit sem sjálfstætt forrit"
 
-#: ../gedit/gedit-app.c:163
+#: ../gedit/gedit-app.c:164
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[SKRÁ...] [+LÍNA[:DÁLKUR]]"
 
-#: ../gedit/gedit-app.c:278
+#: ../gedit/gedit-app.c:279
 msgid "There was an error displaying the help."
 msgstr "Villa kom upp þegar sýna átti hjálpina."
 
-#: ../gedit/gedit-app.c:953
+#: ../gedit/gedit-app.c:970
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: ógild stafatafla."
@@ -532,42 +584,41 @@ msgid "Close _without Saving"
 msgstr "_Loka án þess að vista"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:318
-#: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:596
-#: ../gedit/gedit-commands-file.c:672 ../gedit/gedit-commands-file.c:871
-#: ../gedit/gedit-commands-file.c:1583 ../gedit/gedit-encodings-dialog.c:178
-#: ../gedit/gedit-io-error-info-bar.c:135
-#: ../gedit/gedit-io-error-info-bar.c:516
-#: ../gedit/gedit-preferences-dialog.c:797
-#: ../gedit/gedit-progress-info-bar.c:51
+#: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
+#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:853
+#: ../gedit/gedit-commands-file.c:1567 ../gedit/gedit-encodings-dialog.c:194
+#: ../gedit/gedit-io-error-info-bar.c:130
+#: ../gedit/gedit-io-error-info-bar.c:511
+#: ../gedit/gedit-preferences-dialog.c:825
+#: ../gedit/gedit-progress-info-bar.c:44
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:37
+#: ../plugins/quickopen/quickopen/popup.py:38
 #: ../plugins/snippets/snippets/manager.py:781
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:2
-#: ../plugins/spell/gedit-spell-language-dialog.c:124
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_Hætta við"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:344
+#: ../gedit/gedit-close-confirmation-dialog.c:346
 #: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "Vista _sem..."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:344
-#: ../gedit/gedit-commands-file.c:872 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:346
+#: ../gedit/gedit-commands-file.c:854 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "_Vista"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:362
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -579,12 +630,12 @@ msgstr[0] ""
 msgstr[1] ""
 "Ef þú vistar ekki núna mun allt sem þú gerðir síðustu %ld sekúndurnar tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:371
+#: ../gedit/gedit-close-confirmation-dialog.c:373
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "Ef þú vistar ekki núna mun allt sem þú gerðir síðustu mínútuna tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:377
+#: ../gedit/gedit-close-confirmation-dialog.c:379
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -597,7 +648,7 @@ msgstr[0] ""
 msgstr[1] ""
 "Ef þú vistar ekki núna munu breytingar síðustu mínútu og %ld sekúndur tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:387
+#: ../gedit/gedit-close-confirmation-dialog.c:389
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -607,11 +658,11 @@ msgid_plural ""
 msgstr[0] "Ef þú vistar ekki núna munu breytingar síðustu %ld mínútu tapast."
 msgstr[1] "Ef þú vistar ekki núna munu breytingar síðustu %ld mínútur tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:402
+#: ../gedit/gedit-close-confirmation-dialog.c:404
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Ef þú vistar ekki núna munu breytingar frá síðustu klukkustund tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:408
+#: ../gedit/gedit-close-confirmation-dialog.c:410
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -626,7 +677,7 @@ msgstr[1] ""
 "Ef þú vistar ekki núna mun allt sem þú gerðir síðustu klukkustund og %d "
 "mínútur tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:423
+#: ../gedit/gedit-close-confirmation-dialog.c:425
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -637,29 +688,29 @@ msgstr[0] ""
 msgstr[1] ""
 "Ef þú vistar ekki núna mun allt sem þú gerðir síðustu %d klukkutímana tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:467
+#: ../gedit/gedit-close-confirmation-dialog.c:469
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Breytingar á skjalinu “%s” munu tapast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:472
+#: ../gedit/gedit-close-confirmation-dialog.c:474
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Viltu vista breytingar á skjalinu “%s“ áður en þú lokar því?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:487
-#: ../gedit/gedit-close-confirmation-dialog.c:645
+#: ../gedit/gedit-close-confirmation-dialog.c:489
+#: ../gedit/gedit-close-confirmation-dialog.c:647
 msgid "Saving has been disabled by the system administrator."
 msgstr "Kerfisstjórinn hefur bannað þér að vista."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:593
+#: ../gedit/gedit-close-confirmation-dialog.c:595
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Breytingar á skjalinu %d munu endanlega tapast."
 msgstr[1] "Breytingar á %d skjölum munu eyðast."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:601
+#: ../gedit/gedit-close-confirmation-dialog.c:603
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -669,15 +720,15 @@ msgstr[0] ""
 msgstr[1] ""
 "Þú átt eftir að vista breytingar á %d skjölum. Viltu vista áður en þú lokar?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:621
+#: ../gedit/gedit-close-confirmation-dialog.c:623
 msgid "Docum_ents with unsaved changes:"
 msgstr "_Skjöl með breytingum sem á eftir að vista:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:625
+#: ../gedit/gedit-close-confirmation-dialog.c:627
 msgid "S_elect the documents you want to save:"
 msgstr "V_eldu skjölin sem þú vilt vista:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:649
+#: ../gedit/gedit-close-confirmation-dialog.c:651
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Ef þú vistar ekki munu allar breytingar glatast."
 
@@ -702,34 +753,34 @@ msgstr "Opna"
 #: ../gedit/gedit-commands-file.c:463 ../gedit/resources/gtk/menus-osx.ui.h:4
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:38
+#: ../plugins/quickopen/quickopen/popup.py:39
 #: ../plugins/snippets/snippets/manager.py:782
 msgid "_Open"
 msgstr "_Opna"
 
-#: ../gedit/gedit-commands-file.c:587
+#: ../gedit/gedit-commands-file.c:558
 #, c-format
 msgid "The file \"%s\" is read-only."
 msgstr "Skráin \"%s\" er aðeins til lestrar."
 
-#: ../gedit/gedit-commands-file.c:592
+#: ../gedit/gedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
 msgstr "Viltu reyna að skipta henni út fyrir þá sem þú vilt vista?"
 
-#: ../gedit/gedit-commands-file.c:597
+#: ../gedit/gedit-commands-file.c:568
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
 msgid "_Replace"
 msgstr "_Útskipta"
 
-#: ../gedit/gedit-commands-file.c:637
+#: ../gedit/gedit-commands-file.c:608
 msgid "Save the file using compression?"
 msgstr "Vista skjalið með þjöppun?"
 
-#: ../gedit/gedit-commands-file.c:641
+#: ../gedit/gedit-commands-file.c:612
 msgid "Save the file as plain text?"
 msgstr "Vista skjalið sem hreinan texta?"
 
-#: ../gedit/gedit-commands-file.c:654
+#: ../gedit/gedit-commands-file.c:625
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
@@ -738,11 +789,11 @@ msgstr ""
 "Skráin \"%s\" var áður vistuð sem hreinn texti en verður nú vistuð með "
 "þjöppun."
 
-#: ../gedit/gedit-commands-file.c:658
+#: ../gedit/gedit-commands-file.c:629
 msgid "_Save Using Compression"
 msgstr "Vi_sta skjalið með þjöppun"
 
-#: ../gedit/gedit-commands-file.c:663
+#: ../gedit/gedit-commands-file.c:634
 #, c-format
 msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
@@ -751,30 +802,30 @@ msgstr ""
 "Skráin \"%s\" var áður vistuð með þjöppun en verður nú vistuð sem hreinn "
 "texti."
 
-#: ../gedit/gedit-commands-file.c:666
+#: ../gedit/gedit-commands-file.c:637
 msgid "_Save As Plain Text"
 msgstr "Vi_sta skjalið sem hreinan texta"
 
-#: ../gedit/gedit-commands-file.c:781 ../gedit/gedit-commands-file.c:1034
+#: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1018
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Vista skrá '%s'..."
 
-#: ../gedit/gedit-commands-file.c:864
+#: ../gedit/gedit-commands-file.c:846
 msgid "Save As"
 msgstr "Vista sem"
 
-#: ../gedit/gedit-commands-file.c:1444
+#: ../gedit/gedit-commands-file.c:1428
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Tek aftur breytingar á skjalinu '%s'…"
 
-#: ../gedit/gedit-commands-file.c:1491
+#: ../gedit/gedit-commands-file.c:1475
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Afturkalla óvistaðar breytingar sem gerðar hafa verið á skjalinu '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1500
+#: ../gedit/gedit-commands-file.c:1484
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -788,13 +839,13 @@ msgstr[1] ""
 "Breytingar sem gerðar hafa verið á skjalinu síðustu %ld sekúndurnar munu "
 "tapast."
 
-#: ../gedit/gedit-commands-file.c:1509
+#: ../gedit/gedit-commands-file.c:1493
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Breytingar sem gerðar hafa verið á skjalinu síðustu mínútuna munu tapast."
 
-#: ../gedit/gedit-commands-file.c:1515
+#: ../gedit/gedit-commands-file.c:1499
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -809,7 +860,7 @@ msgstr[1] ""
 "Breytingar sem gerðar hafa verið á skjalinu síðustu mínútuna og %ld "
 "sekúndurnar munu tapast."
 
-#: ../gedit/gedit-commands-file.c:1525
+#: ../gedit/gedit-commands-file.c:1509
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -822,13 +873,13 @@ msgstr[1] ""
 "Breytingar sem gerðar hafa verið á skjalinu síðustu %ld mínúturnar munu "
 "tapast."
 
-#: ../gedit/gedit-commands-file.c:1540
+#: ../gedit/gedit-commands-file.c:1524
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Breytingar sem gerðar hafa verið á skjalinu síðustu klukkustundina munu "
 "tapast."
 
-#: ../gedit/gedit-commands-file.c:1546
+#: ../gedit/gedit-commands-file.c:1530
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -843,7 +894,7 @@ msgstr[1] ""
 "Breytingar sem gerðar hafa verið á skjalinu síðustu klukkustundina og %d "
 "mínúturnar munu tapast."
 
-#: ../gedit/gedit-commands-file.c:1561
+#: ../gedit/gedit-commands-file.c:1545
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -856,7 +907,7 @@ msgstr[1] ""
 "Breytingar sem gerðar hafa verið á skjalinu síðustu %d klukkustundirnar munu "
 "tapast."
 
-#: ../gedit/gedit-commands-file.c:1584
+#: ../gedit/gedit-commands-file.c:1568
 msgid "_Revert"
 msgstr "_Afturkalla"
 
@@ -886,7 +937,7 @@ msgstr "Fann og skipti út í einu tilfelli"
 msgid "\"%s\" not found"
 msgstr "\"%s\" fannst ekki"
 
-#: ../gedit/gedit-document.c:1032 ../gedit/gedit-document.c:1065
+#: ../gedit/gedit-document.c:1092 ../gedit/gedit-document.c:1125
 #, c-format
 msgid "Unsaved Document %d"
 msgstr "Óvistað skjal %d"
@@ -896,8 +947,8 @@ msgstr "Óvistað skjal %d"
 msgid "Tab Group %i"
 msgstr "Flipahópur %i"
 
-#: ../gedit/gedit-documents-panel.c:529 ../gedit/gedit-window.c:1137
-#: ../gedit/gedit-window.c:1143 ../gedit/gedit-window.c:1151
+#: ../gedit/gedit-documents-panel.c:532 ../gedit/gedit-window.c:1165
+#: ../gedit/gedit-window.c:1171 ../gedit/gedit-window.c:1179
 msgid "Read-Only"
 msgstr "Skrifvarið"
 
@@ -918,41 +969,37 @@ msgstr "Núverandi staðfærsla (%s)"
 
 #: ../gedit/gedit-encodings-dialog.c:95
 #, c-format
-#| msgid "Current Locale (%s)"
 msgid "%s (Current Locale)"
 msgstr "%s (núverandi staðfærsla)"
 
-#: ../gedit/gedit-encodings-dialog.c:174
-#| msgid "Unable to detect the character encoding."
+#: ../gedit/gedit-encodings-dialog.c:190
 msgid "Do you really want to reset the character encodings' preferences?"
 msgstr "Ertu viss um að þú viljir frumstilla kjörstillingar fyrir stafatöflur?"
 
 #. Reset button
-#: ../gedit/gedit-encodings-dialog.c:179 ../gedit/gedit-encodings-dialog.c:810
+#: ../gedit/gedit-encodings-dialog.c:195 ../gedit/gedit-encodings-dialog.c:820
 msgid "_Reset"
 msgstr "F_rumstilla"
 
 #  + Add to Dictionary
-#: ../gedit/gedit-encodings-dialog.c:721
-#| msgid "_Add"
+#: ../gedit/gedit-encodings-dialog.c:731
 msgid "Add"
 msgstr "Bæta við"
 
-#: ../gedit/gedit-encodings-dialog.c:764
-#| msgid "_Remove"
+#: ../gedit/gedit-encodings-dialog.c:774
 msgid "Remove"
 msgstr "Fjarlægja"
 
-#: ../gedit/gedit-encodings-dialog.c:775
+#: ../gedit/gedit-encodings-dialog.c:785
 msgid "Move to a higher priority"
 msgstr "Flytja í hærri forgang"
 
-#: ../gedit/gedit-encodings-dialog.c:786
+#: ../gedit/gedit-encodings-dialog.c:796
 msgid "Move to a lower priority"
 msgstr "Flytja í lægri forgang"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:41
-#: ../gedit/gedit-preferences-dialog.c:806
+#: ../gedit/gedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "Allar skrár"
 
@@ -976,7 +1023,7 @@ msgstr "Stafatafla:"
 msgid "Line Ending:"
 msgstr "Línuendingar:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:257 ../gedit/gedit-window.c:1221
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1249
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -984,47 +1031,47 @@ msgstr "Línuendingar:"
 msgid "Plain Text"
 msgstr "Hreinn texti"
 
-#: ../gedit/gedit-io-error-info-bar.c:148
-#: ../gedit/gedit-io-error-info-bar.c:496
+#: ../gedit/gedit-io-error-info-bar.c:143
+#: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "_Reyna aftur"
 
-#: ../gedit/gedit-io-error-info-bar.c:168
+#: ../gedit/gedit-io-error-info-bar.c:163
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Gat ekki fundið skrána “%s”."
 
-#: ../gedit/gedit-io-error-info-bar.c:170
-#: ../gedit/gedit-io-error-info-bar.c:210
-#: ../gedit/gedit-io-error-info-bar.c:217
+#: ../gedit/gedit-io-error-info-bar.c:165
+#: ../gedit/gedit-io-error-info-bar.c:205
+#: ../gedit/gedit-io-error-info-bar.c:212
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Athugaðu hvort þú skrifaðir staðsetninguna rétt og prófaðu svo aftur."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:189
+#: ../gedit/gedit-io-error-info-bar.c:184
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "Er ekki fært um að meðhöndla \"%s\" staðsetningar."
 
-#: ../gedit/gedit-io-error-info-bar.c:195
+#: ../gedit/gedit-io-error-info-bar.c:190
 msgid "Unable to handle this location."
 msgstr "Get ekki meðhöndlað þessa tegund staðsetningar."
 
-#: ../gedit/gedit-io-error-info-bar.c:204
+#: ../gedit/gedit-io-error-info-bar.c:199
 msgid "The location of the file cannot be accessed."
 msgstr "Staðsetning skrárinnar er ekki aðgengileg."
 
-#: ../gedit/gedit-io-error-info-bar.c:208
+#: ../gedit/gedit-io-error-info-bar.c:203
 #, c-format
 msgid "“%s” is a directory."
 msgstr "\"%s\" er mappa."
 
-#: ../gedit/gedit-io-error-info-bar.c:215
+#: ../gedit/gedit-io-error-info-bar.c:210
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "\"%s\" er ekki gild staðsetning."
 
-#: ../gedit/gedit-io-error-info-bar.c:251
+#: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1033,7 +1080,7 @@ msgstr ""
 "Vélin \"%s\" fannst ekki. Athugaðu vandlega uppsetningu á milliþjóni (vefsel "
 "- proxy) og reyndu aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:266
+#: ../gedit/gedit-io-error-info-bar.c:261
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1042,109 +1089,109 @@ msgstr ""
 "Vélarheiti er ógilt. Athugaðu hvort þú skrifaðir staðsetninguna rétt og "
 "prófaðu svo aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:274
+#: ../gedit/gedit-io-error-info-bar.c:269
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "“%s” er ekki venjuleg skrá."
 
-#: ../gedit/gedit-io-error-info-bar.c:279
+#: ../gedit/gedit-io-error-info-bar.c:274
 msgid "Connection timed out. Please try again."
 msgstr "Tenging féll á tíma. Reyndu aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:312
+#: ../gedit/gedit-io-error-info-bar.c:307
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Óvænt villa: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:348
+#: ../gedit/gedit-io-error-info-bar.c:343
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "Fann ekki umbeðna skrá. Hugsanlega var henni eytt nýlega."
 
-#: ../gedit/gedit-io-error-info-bar.c:358
+#: ../gedit/gedit-io-error-info-bar.c:353
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:385
+#: ../gedit/gedit-io-error-info-bar.c:380
 msgid "Ch_aracter Encoding:"
 msgstr "Sta_fatafla:"
 
-#: ../gedit/gedit-io-error-info-bar.c:446
+#: ../gedit/gedit-io-error-info-bar.c:441
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "Staðsetningin “%s” er ekki tiltæk í augnablikinu."
 
-#: ../gedit/gedit-io-error-info-bar.c:461
+#: ../gedit/gedit-io-error-info-bar.c:456
 msgid "Your system is offline. Check your network."
 msgstr "Kerfið þitt er ekki nettengt. Athugaðu ástand nettenginga."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:504
-#: ../gedit/gedit-io-error-info-bar.c:773
+#: ../gedit/gedit-io-error-info-bar.c:499
+#: ../gedit/gedit-io-error-info-bar.c:768
 msgid "Edit Any_way"
 msgstr "_Breyta samt"
 
-#: ../gedit/gedit-io-error-info-bar.c:596
+#: ../gedit/gedit-io-error-info-bar.c:591
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:600
+#: ../gedit/gedit-io-error-info-bar.c:595
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Þú hefur ekki leyfi til að opna þessa skrá."
 
-#: ../gedit/gedit-io-error-info-bar.c:606
+#: ../gedit/gedit-io-error-info-bar.c:601
 msgid "Unable to detect the character encoding."
 msgstr "Tókst ekki að finna út rétta stafatöflu."
 
-#: ../gedit/gedit-io-error-info-bar.c:607
-#: ../gedit/gedit-io-error-info-bar.c:631
+#: ../gedit/gedit-io-error-info-bar.c:602
+#: ../gedit/gedit-io-error-info-bar.c:626
 msgid "Please check that you are not trying to open a binary file."
 msgstr ""
 "Athugaðu hvort þú sért nokkuð að reyna að opna tvíundakerfisskrá (binary)."
 
-#: ../gedit/gedit-io-error-info-bar.c:608
+#: ../gedit/gedit-io-error-info-bar.c:603
 msgid "Select a character encoding from the menu and try again."
 msgstr "Veldu stafatöflu úr valmyndinni og reyndu aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:614
+#: ../gedit/gedit-io-error-info-bar.c:609
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "Villa kom upp við að opna skrána \"%s\""
 
-#: ../gedit/gedit-io-error-info-bar.c:616
+#: ../gedit/gedit-io-error-info-bar.c:611
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:619
+#: ../gedit/gedit-io-error-info-bar.c:614
 msgid "You can also choose another character encoding and try again."
 msgstr "Þú getur einnig valið aðra stafatöflu og reynt aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:628
+#: ../gedit/gedit-io-error-info-bar.c:623
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "Gat ekki opnað skrána \"%s\" með \"%s\" stafatöflunni."
 
-#: ../gedit/gedit-io-error-info-bar.c:632
-#: ../gedit/gedit-io-error-info-bar.c:707
+#: ../gedit/gedit-io-error-info-bar.c:627
+#: ../gedit/gedit-io-error-info-bar.c:702
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Veldu aðra stafatöflu úr valmyndinni og reyndu aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:644
+#: ../gedit/gedit-io-error-info-bar.c:639
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "Gat ekki opnað skrána \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:702
+#: ../gedit/gedit-io-error-info-bar.c:697
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "Gat ekki vistað skrána \"%s\" með \"%s\" stafatöfluni."
 
-#: ../gedit/gedit-io-error-info-bar.c:705
+#: ../gedit/gedit-io-error-info-bar.c:700
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1152,28 +1199,28 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:778
+#: ../gedit/gedit-io-error-info-bar.c:773
 msgid "D_on't Edit"
 msgstr "_Ekki breyta"
 
-#: ../gedit/gedit-io-error-info-bar.c:788
+#: ../gedit/gedit-io-error-info-bar.c:783
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Skráin \"%s\" er þegar opin í öðrum glugga."
 
-#: ../gedit/gedit-io-error-info-bar.c:802
+#: ../gedit/gedit-io-error-info-bar.c:797
 msgid "Do you want to edit it anyway?"
 msgstr "Viltu samt breyta henni?"
 
-#: ../gedit/gedit-io-error-info-bar.c:858
-#: ../gedit/gedit-io-error-info-bar.c:948
-#: ../gedit/gedit-io-error-info-bar.c:1240
+#: ../gedit/gedit-io-error-info-bar.c:853
+#: ../gedit/gedit-io-error-info-bar.c:943
+#: ../gedit/gedit-io-error-info-bar.c:1235
 msgid "S_ave Anyway"
 msgstr "_Vista samt"
 
-#: ../gedit/gedit-io-error-info-bar.c:861
-#: ../gedit/gedit-io-error-info-bar.c:951
-#: ../gedit/gedit-io-error-info-bar.c:1243
+#: ../gedit/gedit-io-error-info-bar.c:856
+#: ../gedit/gedit-io-error-info-bar.c:946
+#: ../gedit/gedit-io-error-info-bar.c:1238
 msgid "D_on't Save"
 msgstr "_Ekki vista"
 
@@ -1181,26 +1228,26 @@ msgstr "_Ekki vista"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:875
+#: ../gedit/gedit-io-error-info-bar.c:870
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "Skránni “%s” hefur verið breytt síðan hún var lesin inn."
 
-#: ../gedit/gedit-io-error-info-bar.c:890
+#: ../gedit/gedit-io-error-info-bar.c:885
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:970
+#: ../gedit/gedit-io-error-info-bar.c:965
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:975
+#: ../gedit/gedit-io-error-info-bar.c:970
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:992
+#: ../gedit/gedit-io-error-info-bar.c:987
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1208,26 +1255,24 @@ msgid ""
 msgstr ""
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1052
+#: ../gedit/gedit-io-error-info-bar.c:1047
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
 "Get ekki meðhöndlað \"%s:\" staðsetningar í skrifham. Athugaðu hvort þú "
-"skrifaðir staðsetninguna rétt og "
-"prófaðu svo aftur."
+"skrifaðir staðsetninguna rétt og prófaðu svo aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:1060
+#: ../gedit/gedit-io-error-info-bar.c:1055
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
 "Get ekki meðhöndlað þessa staðsetningu í skrifham. Athugaðu hvort þú "
-"skrifaðir staðsetninguna rétt og "
-"prófaðu svo aftur."
+"skrifaðir staðsetninguna rétt og prófaðu svo aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:1069
+#: ../gedit/gedit-io-error-info-bar.c:1064
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1236,7 +1281,7 @@ msgstr ""
 "\"%s\" er ekki gild staðsetning. Athugaðu hvort þú skrifaðir staðsetninguna "
 "rétt og prófaðu svo aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:1076
+#: ../gedit/gedit-io-error-info-bar.c:1071
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1244,7 +1289,7 @@ msgstr ""
 "Þú hefur ekki heimild til að vista þessa skrá. Athugaðu hvort þú skrifaðir "
 "staðsetninguna rétt og prófaðu svo aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1077
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1252,7 +1297,7 @@ msgstr ""
 "Það er ekki nóg diskpláss til að vista skrána. Búðu til meira pláss og "
 "prófaðu svo aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:1087
+#: ../gedit/gedit-io-error-info-bar.c:1082
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1260,115 +1305,114 @@ msgstr ""
 "Þú ert að reyna að vista skrána á skrifvarinn disk. Athugaðu hvort þú "
 "skrifaðir staðsetninguna rétt og prófaðu svo aftur."
 
-#: ../gedit/gedit-io-error-info-bar.c:1093
+#: ../gedit/gedit-io-error-info-bar.c:1088
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Skrá með sama heiti er þegar til staðar. Notaðu eitthvað annað nafn."
 
-#: ../gedit/gedit-io-error-info-bar.c:1098
+#: ../gedit/gedit-io-error-info-bar.c:1093
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1109
+#: ../gedit/gedit-io-error-info-bar.c:1104
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
 "have this limitation."
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1126
+#: ../gedit/gedit-io-error-info-bar.c:1121
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Gat ekki vistað skrána “%s”."
 
-#: ../gedit/gedit-io-error-info-bar.c:1166
+#: ../gedit/gedit-io-error-info-bar.c:1161
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "Skránni “%s” var breytt á diski."
 
-#: ../gedit/gedit-io-error-info-bar.c:1177
+#: ../gedit/gedit-io-error-info-bar.c:1172
 msgid "Drop Changes and _Reload"
 msgstr "_Henda breytingum og endurlesa"
 
-#: ../gedit/gedit-io-error-info-bar.c:1187
+#: ../gedit/gedit-io-error-info-bar.c:1182
 #: ../gedit/resources/gtk/menus-default.ui.h:6
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 #: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_Endurhlaða"
 
-#: ../gedit/gedit-io-error-info-bar.c:1192
+#: ../gedit/gedit-io-error-info-bar.c:1187
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "_Hunsa"
 
-#: ../gedit/gedit-io-error-info-bar.c:1253
+#: ../gedit/gedit-io-error-info-bar.c:1248
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr ""
 
-#: ../gedit/gedit-io-error-info-bar.c:1269
+#: ../gedit/gedit-io-error-info-bar.c:1264
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
 "Ef þú heldur áfram og vistar skrána geturðu skemmt skjalið. Vista samt?"
 
-#: ../gedit/gedit-preferences-dialog.c:420
+#: ../gedit/gedit-preferences-dialog.c:455
 msgid "Click on this button to select the font to be used by the editor"
 msgstr "Smelltu á þennan hnapp til að velja leturgerð fyrir ritilinn"
 
-#: ../gedit/gedit-preferences-dialog.c:433
+#: ../gedit/gedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
 msgstr "Nota _jafnbreitt letur úr kerfisstillingum (%s)"
 
-#: ../gedit/gedit-preferences-dialog.c:573
+#: ../gedit/gedit-preferences-dialog.c:601
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 
-#: ../gedit/gedit-preferences-dialog.c:770
+#: ../gedit/gedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
 msgstr "Ekki er hægt að setja inn valið litastef."
 
-#: ../gedit/gedit-preferences-dialog.c:793
+#: ../gedit/gedit-preferences-dialog.c:821
 msgid "Add Scheme"
 msgstr "Bæta við skema"
 
-#: ../gedit/gedit-preferences-dialog.c:798
+#: ../gedit/gedit-preferences-dialog.c:826
 msgid "A_dd Scheme"
 msgstr "_Bæta við skema"
 
-#: ../gedit/gedit-preferences-dialog.c:802
+#: ../gedit/gedit-preferences-dialog.c:830
 msgid "Color Scheme Files"
 msgstr "Litastefsskemaskrár"
 
-#: ../gedit/gedit-preferences-dialog.c:833
+#: ../gedit/gedit-preferences-dialog.c:861
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Gat ekki fjarlægt litastefið \"%s\"."
 
-#: ../gedit/gedit-print-job.c:223
+#: ../gedit/gedit-print-job.c:225
 msgid "Preparing..."
 msgstr "Undirbý..."
 
-#: ../gedit/gedit-print-job.c:536
+#: ../gedit/gedit-print-job.c:537
 #, c-format
 msgid "File: %s"
 msgstr "Skrá: %s"
 
-#: ../gedit/gedit-print-job.c:545
+#: ../gedit/gedit-print-job.c:546
 msgid "Page %N of %Q"
 msgstr "Síða %N af %Q"
 
-#: ../gedit/gedit-print-job.c:619
+#: ../gedit/gedit-print-job.c:624
 #, c-format
-#| msgid "Page %d of %d"
 msgid "Rendering page %d of %d..."
 msgstr "Geri blaðsíðu %d af %d"
 
-#: ../gedit/gedit-print-preview.c:674
+#: ../gedit/gedit-print-preview.c:653
 #, c-format
 msgid "Page %d of %d"
 msgstr "Blaðsíða %d af %d"
@@ -1401,105 +1445,100 @@ msgstr[1] "Það eru villur í %d flipum"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:795
+#: ../gedit/gedit-tab.c:819
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "Tek aftur %s frá %s"
 
-#: ../gedit/gedit-tab.c:802
+#: ../gedit/gedit-tab.c:826
 #, c-format
 msgid "Reverting %s"
 msgstr "Tak aftur %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:815
+#: ../gedit/gedit-tab.c:839
 #, c-format
 msgid "Loading %s from %s"
 msgstr "Hleð inn %s frá %s"
 
-#: ../gedit/gedit-tab.c:822
+#: ../gedit/gedit-tab.c:846
 #, c-format
 msgid "Loading %s"
 msgstr "Hleð inn %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:902
+#: ../gedit/gedit-tab.c:926
 #, c-format
 msgid "Saving %s to %s"
 msgstr "Vista %s í %s"
 
-#: ../gedit/gedit-tab.c:907
+#: ../gedit/gedit-tab.c:931
 #, c-format
 msgid "Saving %s"
 msgstr "Vista %s"
 
-#. Read only
-#: ../gedit/gedit-tab.c:1474
-msgid "RO"
-msgstr "RO"
-
-#: ../gedit/gedit-tab.c:1522
+#: ../gedit/gedit-tab.c:1534
 #, c-format
 msgid "Error opening file %s"
 msgstr "Villa við að opna skrána %s"
 
-#: ../gedit/gedit-tab.c:1527
+#: ../gedit/gedit-tab.c:1539
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Villa við að taka aftur skrána %s"
 
-#: ../gedit/gedit-tab.c:1532
+#: ../gedit/gedit-tab.c:1544
 #, c-format
 msgid "Error saving file %s"
 msgstr "Villa við að vista skrána %s"
 
-#: ../gedit/gedit-tab.c:1563
+#: ../gedit/gedit-tab.c:1575
 msgid "Name:"
 msgstr "Heiti:"
 
-#: ../gedit/gedit-tab.c:1564
+#: ../gedit/gedit-tab.c:1576
 msgid "MIME Type:"
 msgstr "MIME tegund:"
 
-#: ../gedit/gedit-tab.c:1565
+#: ../gedit/gedit-tab.c:1577
 msgid "Encoding:"
 msgstr "Kóðun:"
 
-#: ../gedit/gedit-utils.c:848
+#: ../gedit/gedit-utils.c:841
 msgid "Please check your installation."
 msgstr "Athugaðu uppsetninguna þína."
 
-#: ../gedit/gedit-utils.c:909
+#: ../gedit/gedit-utils.c:902
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Tókst ekki að opna UI-skrána %s. Villa: %s"
 
-#: ../gedit/gedit-utils.c:928
+#: ../gedit/gedit-utils.c:921
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
 msgstr "Gat ekki fundið hlutinn '%s' innan í skránni %s."
 
 #. Translators: '/ on <remote-share>'
-#: ../gedit/gedit-utils.c:1151
+#: ../gedit/gedit-utils.c:1159
 #, c-format
 msgid "/ on %s"
 msgstr "/ á %s"
 
-#: ../gedit/gedit-utils.c:1455
+#: ../gedit/gedit-utils.c:1463
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: ../gedit/gedit-utils.c:1457
+#: ../gedit/gedit-utils.c:1465
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: ../gedit/gedit-utils.c:1459
+#: ../gedit/gedit-utils.c:1467
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:510
+#: ../gedit/gedit-view.c:464
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "Birta _línunúmer"
@@ -1508,73 +1547,73 @@ msgstr "Birta _línunúmer"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:691
+#: ../gedit/gedit-view-frame.c:657
 #, c-format
 msgid "%d of %d"
 msgstr "%d af %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:783
+#: ../gedit/gedit-view-frame.c:749
 msgid "_Wrap Around"
 msgstr "Um_brjóta í kringum"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:793
+#: ../gedit/gedit-view-frame.c:759
 msgid "Match as _Regular Expression"
 msgstr "Samsvara _reglulegri segð"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:807
+#: ../gedit/gedit-view-frame.c:773
 msgid "Match _Entire Word Only"
 msgstr "Passar einungis við _heil orð"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:821
+#: ../gedit/gedit-view-frame.c:787
 msgid "_Match Case"
 msgstr "Hástafsnæ_mt"
 
-#: ../gedit/gedit-view-frame.c:1038
+#: ../gedit/gedit-view-frame.c:1004
 msgid "String you want to search for"
 msgstr "Leitarstrengur"
 
-#: ../gedit/gedit-view-frame.c:1050
+#: ../gedit/gedit-view-frame.c:1016
 msgid "Line you want to move the cursor to"
 msgstr "Sú lína sem þú vilt að bendillinn fari á"
 
-#: ../gedit/gedit-window.c:976
+#: ../gedit/gedit-window.c:1002
 msgid "Bracket match is out of range"
 msgstr "Samsvörun sviga er utan leitarsviðs"
 
-#: ../gedit/gedit-window.c:981
+#: ../gedit/gedit-window.c:1007
 msgid "Bracket match not found"
 msgstr "Samsvörun sviga fannst ekki"
 
-#: ../gedit/gedit-window.c:986
+#: ../gedit/gedit-window.c:1012
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Samsvörun sviga fannst á línu: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1021
+#: ../gedit/gedit-window.c:1047
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Lín %d, Dál %d"
 
-#: ../gedit/gedit-window.c:1203
+#: ../gedit/gedit-window.c:1231
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Inndráttarbreidd: %u"
 
-#: ../gedit/gedit-window.c:1573
+#: ../gedit/gedit-window.c:1600
 msgid "There are unsaved documents"
 msgstr "Það eru óvistuð skjöl"
 
-#: ../gedit/gedit-window.c:2422
+#: ../gedit/gedit-window.c:2445
 msgid "Change side panel page"
 msgstr "Breyta síðu hliðarstiku"
 
-#: ../gedit/gedit-window.c:2442 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2465 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Skjöl"
@@ -1642,9 +1681,7 @@ msgstr "_Stillingar"
 #: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
 #: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
-#: ../plugins/spell/gedit-spell-language-dialog.c:126
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
+#: ../plugins/spell/gedit-spell-plugin.c:364
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "_Hjálp"
@@ -1701,7 +1738,7 @@ msgstr "_Fara á línu..."
 #: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/gtk/menus-osx.ui.h:22
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Skoða"
 
@@ -1848,7 +1885,6 @@ msgid "Help"
 msgstr "Hjálp"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
-#| msgid "Character Encoding:"
 msgid "Character Encodings"
 msgstr "Stafatöflur"
 
@@ -1857,12 +1893,10 @@ msgid "_Apply"
 msgstr "Virkj_a"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
-#| msgid "A_vailable encodings:"
 msgid "A_vailable Encodings"
 msgstr "_Tiltækar stafatöflur"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
-#| msgid "Ch_aracter Encoding:"
 msgid "Cho_sen Encodings"
 msgstr "Valin _stafatafla:"
 
@@ -1879,6 +1913,7 @@ msgid "Highlight Mode"
 msgstr "Áherslulitunarhamur"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
+#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_Select"
 msgstr "_Velja"
 
@@ -1911,107 +1946,119 @@ msgid "Display _statusbar"
 msgstr "Birta _stöðustiku"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
+#, fuzzy
+#| msgid "Display right margin"
+msgid "Display _overview map"
+msgstr "Birta hægri spássíu"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
+#, fuzzy
+#| msgid "Display right margin"
+msgid "Display _grid pattern"
+msgstr "Birta hægri spássíu"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:9
 msgid "Text Wrapping"
 msgstr "Textaskrið"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:10
 msgid "Enable text _wrapping"
 msgstr "_Virkja textaskrið"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
 msgstr "Ekki _skipta orðum milli lína"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
 msgid "Highlighting"
 msgstr "Áherslulitun"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
 msgid "Highlight current _line"
 msgstr "Lýsa upp núverandi _línu"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
 msgid "Highlight matching _brackets"
 msgstr "Lýsa upp samstæða _hornklofa"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
 msgid "Tab Stops"
 msgstr "Innskotsmerki"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
 msgid "_Tab width:"
 msgstr "Breidd staf_hopps:"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
 msgid "Insert _spaces instead of tabs"
 msgstr "Setja _stafbil í stað inndráttarmerkja"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
 msgid "_Enable automatic indentation"
 msgstr "_Draga texta sjálfvirkt inn"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
 msgid "File Saving"
 msgstr "Vistun skráa"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
 msgid "Create a _backup copy of files before saving"
 msgstr "Gera ör_yggisafrit áður en skrár eru vistaðar"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
 msgid "_Autosave files every"
 msgstr "Vist_a sjálfvirkt hverja"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
 msgid "_minutes"
 msgstr "_mínútur"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
 msgid "Editor"
 msgstr "Ritill"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
 msgstr "Letur"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
 msgstr "Letur_gerð ritils: "
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
 msgstr "Velja leturgerð ritils"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
 msgid "Color Scheme"
 msgstr "Litastef"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
 msgid "Install scheme"
 msgstr "Setja inn skema"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
 msgid "Install Scheme"
 msgstr "Setja inn skema"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
 msgid "Uninstall scheme"
 msgstr "Fjarlægja skema"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
 msgid "Uninstall Scheme"
 msgstr "Fjarlægja skema"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:31
 msgid "Font & Colors"
 msgstr "Letur og litir"
 
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:32
 msgid "Plugins"
 msgstr "Viðbætur"
 
@@ -2135,13 +2182,11 @@ msgid "Replace _All"
 msgstr "Skipt_a út öllu"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:5
-#| msgid "_Find"
 msgctxt "label of the find button"
 msgid "_Find"
 msgstr "_Finna"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
-#| msgid "F_ind "
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
 msgstr "F_inna "
@@ -2296,7 +2341,7 @@ msgstr "Byggingarútgáfa"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
 msgid "Run \"make\" in the document directory"
-msgstr ""
+msgstr "Keyrðu \"make\" í möppu skjalsins"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
@@ -2628,58 +2673,58 @@ msgstr "Ertu viss að þú viljir endanlega eyða völdum skrám?"
 msgid "If you delete an item, it is permanently lost."
 msgstr "Ef þú eyðir hlut hverfur hann varanlega."
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:1807
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1794
 msgid "(Empty)"
 msgstr "(Tómt)"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3528
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3515
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3785
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3772
 msgid "Untitled File"
 msgstr "Ónefnd skrá"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3813
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3800
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3844
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3831
 msgid "Untitled Folder"
 msgstr "Ónefnd mappa"
 
-#: ../plugins/filebrowser/gedit-file-browser-store.c:3869
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3856
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
 msgstr ""
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:774
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:754
 msgid "Bookmarks"
 msgstr "Bókamerki"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2015
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1995
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr ""
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2092
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2072
 #, c-format
 msgid "Could not open media: %s"
-msgstr ""
+msgstr "Gat ekki opnað miðil: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2139
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2119
 #, c-format
 msgid "Could not mount volume: %s"
-msgstr ""
+msgstr "Gat ekki tengt gagnamiðilinn: %s"
 
-#: ../plugins/filebrowser/gedit-file-browser-widget.c:2789
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
 #, c-format
 msgid "Error when loading '%s': No such directory"
 msgstr ""
@@ -2697,7 +2742,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
-msgstr ""
+msgstr "Grunnappa (rót) skráavafra"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
 msgid ""
@@ -2707,7 +2752,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
-msgstr ""
+msgstr "Sýndargrunnappa (sýndarrót) skráavafra"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
 msgid ""
@@ -2726,7 +2771,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
-msgstr ""
+msgstr "Stilla staðsetningu á fyrsta skjalið"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
@@ -2767,7 +2812,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:2
 msgid "_Set Root to Active Document"
-msgstr ""
+msgstr "_Setja rót við virkt skjal"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:3
 msgid "_New Folder"
@@ -2823,11 +2868,12 @@ msgstr "Opna ferilsvalmyndina"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:1
 msgid "Modelines"
-msgstr ""
+msgstr "Upplýsingalínur (modelines)"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:2
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr ""
+"Stuðningur gedit við upplýsingalínur (modelines) eins og í Emacs, Kate og Vim."
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
@@ -2863,22 +2909,22 @@ msgid "_Error color:"
 msgstr "Litur _villu:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:47
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Python stjórnskjár"
 
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
 msgid "Interactive Python console standing in the bottom panel"
-msgstr ""
+msgstr "Gagnvirkur Python stjórnskjár á botnstiku"
 
-#: ../plugins/quickopen/quickopen/__init__.py:35
+#: ../plugins/quickopen/quickopen/__init__.py:40
 msgid "Quick Open..."
 msgstr "Flýtiopna..."
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:32
+#: ../plugins/quickopen/quickopen/popup.py:33
 msgid "Quick Open"
 msgstr "Flýtiopna"
 
@@ -2886,11 +2932,11 @@ msgstr "Flýtiopna"
 msgid "Quickly open files"
 msgstr "Opna skrár hratt"
 
-#: ../plugins/quickopen/quickopen/popup.py:82
+#: ../plugins/quickopen/quickopen/popup.py:83
 msgid "Type to search..."
 msgstr "Skrifaðu hér til að leita..."
 
-#: ../plugins/snippets/snippets/appactivatable.py:82
+#: ../plugins/snippets/snippets/appactivatable.py:81
 msgid "Manage _Snippets..."
 msgstr "_Sýsla með úrklippur..."
 
@@ -2906,17 +2952,17 @@ msgstr "Úrklippur"
 #: ../plugins/snippets/snippets/exporter.py:80
 #, python-format
 msgid "The archive \"%s\" could not be created"
-msgstr ""
+msgstr "Ekki var hægt að búa til \"%s\" safnskrána"
 
 #: ../plugins/snippets/snippets/exporter.py:97
 #, python-format
 msgid "Target directory \"%s\" does not exist"
-msgstr ""
+msgstr "Úttaksmappan \"%s\" er ekki til"
 
 #: ../plugins/snippets/snippets/exporter.py:100
 #, python-format
 msgid "Target directory \"%s\" is not a valid directory"
-msgstr ""
+msgstr "Úttaksmappan \"%s\" er ekki gild mappa"
 
 #: ../plugins/snippets/snippets/importer.py:47
 #: ../plugins/snippets/snippets/importer.py:108
@@ -2937,12 +2983,12 @@ msgstr ""
 #: ../plugins/snippets/snippets/importer.py:77
 #, python-format
 msgid "The archive \"%s\" could not be extracted"
-msgstr ""
+msgstr "Ekki var hægt að afþjappa \"%s\" safnskrána"
 
 #: ../plugins/snippets/snippets/importer.py:95
 #, python-format
 msgid "The following files could not be imported: %s"
-msgstr ""
+msgstr "Ekki var hægt að flytja inn eftirtaldar skrár: %s"
 
 #: ../plugins/snippets/snippets/importer.py:111
 #: ../plugins/snippets/snippets/importer.py:124
@@ -3070,7 +3116,7 @@ msgstr ""
 #: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
-msgstr ""
+msgstr "Keyrsla Python skipunarinnar (%s) mistókst: %s"
 
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:2
 msgid "Insert often-used pieces of text in a fast way"
@@ -3129,7 +3175,7 @@ msgstr ""
 msgid "_Drop targets:"
 msgstr ""
 
-#: ../plugins/sort/gedit-sort-plugin.c:431
+#: ../plugins/sort/gedit-sort-plugin.c:243
 msgid "S_ort..."
 msgstr "_Raða..."
 
@@ -3139,93 +3185,109 @@ msgstr "_Raða..."
 msgid "Sort"
 msgstr "Raða"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:3
-msgid "_Sort"
-msgstr "R_aða"
-
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:2
 msgid "_Reverse order"
 msgstr "_Öfug röð"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:3
 msgid "R_emove duplicates"
 msgstr "Fja_rlægja tvítök"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
-msgid "_Ignore case"
-msgstr "_Hunsa há/lágstafi"
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
+msgid "C_ase sensitive"
+msgstr ""
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:8
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
 msgid "S_tart at column:"
 msgstr "Byrja í _dálki:"
 
-#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:9
-msgid "You cannot undo a sort operation"
-msgstr "Þú getur ekki afturkallað röðunaraðgerð"
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
+msgid "_Sort"
+msgstr "R_aða"
 
 #: ../plugins/sort/sort.plugin.desktop.in.h:2
 msgid "Sorts a document or selected text."
 msgstr "Raðar skjali eða völdum texta."
 
-#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions for the current misspelled word
-#. Translators: Displayed in the "Check Spelling" dialog if there are no suggestions
-#. * for the current misspelled word
-#: ../plugins/spell/gedit-automatic-spell-checker.c:412
-#: ../plugins/spell/gedit-spell-checker-dialog.c:447
+#. No suggestions. Put something in the menu anyway...
+#. Translators: Displayed in the "Check Spelling"
+#. * dialog if there are no suggestions for the current
+#. * misspelled word.
+#.
+#: ../plugins/spell/gedit-automatic-spell-checker.c:573
+#: ../plugins/spell/gedit-spell-checker-dialog.c:152
 msgid "(no suggested words)"
 msgstr "(engar tillögur um orð)"
 
-#: ../plugins/spell/gedit-automatic-spell-checker.c:436
+#: ../plugins/spell/gedit-automatic-spell-checker.c:596
 msgid "_More..."
 msgstr "_Meira.."
 
 #  Ignore all
 #. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:491
+#: ../plugins/spell/gedit-automatic-spell-checker.c:636
 msgid "_Ignore All"
 msgstr "_Hunsa allt"
 
 #  + Add to Dictionary
 #. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:506
+#: ../plugins/spell/gedit-automatic-spell-checker.c:645
 msgid "_Add"
 msgstr "_Bæta í orðasafn"
 
-#: ../plugins/spell/gedit-automatic-spell-checker.c:545
+#. Prepend suggestions
+#: ../plugins/spell/gedit-automatic-spell-checker.c:682
 msgid "_Spelling Suggestions..."
 msgstr "Tillögur um _stafsetningu..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:136
+#: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "_Yfirfara stafsetningu..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:140
+#: ../plugins/spell/gedit-spell-app-activatable.c:147
 msgid "Set _Language..."
 msgstr "Sti_lla tungumál..."
 
-#: ../plugins/spell/gedit-spell-app-activatable.c:144
+#: ../plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
 msgstr "Á_herslulita rangt stafsett orð"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:285
-msgid "Suggestions"
-msgstr "Uppástungur"
+#: ../plugins/spell/gedit-spell-checker.c:464
+#, c-format
+msgid "Error when checking the spelling of word “%s”: %s"
+msgstr ""
 
-#. Translators: Displayed in the "Check Spelling" dialog if the current word isn't misspelled
-#: ../plugins/spell/gedit-spell-checker-dialog.c:546
+#: ../plugins/spell/gedit-spell-checker-dialog.c:237
+#| msgid "_Error color:"
+msgid "Error:"
+msgstr "Villa:"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:274
+msgid "Completed spell checking"
+msgstr "Lauk stafsetningarvilluleit"
+
+#: ../plugins/spell/gedit-spell-checker-dialog.c:278
+msgid "No misspelled words"
+msgstr "Engin rangt stafsett orð"
+
+#. Translators: Displayed in the "Check
+#. * Spelling" dialog if the current word
+#. * isn't misspelled.
+#.
+#: ../plugins/spell/gedit-spell-checker-dialog.c:508
 msgid "(correct spelling)"
 msgstr "(leiðrétta stafsetningu)"
 
-#: ../plugins/spell/gedit-spell-checker-dialog.c:687
-msgid "Completed spell checking"
-msgstr "Lauk stafsetningarvilluleit"
+#: ../plugins/spell/gedit-spell-checker-dialog.c:646
+msgid "Suggestions"
+msgstr "Uppástungur"
 
 #. Translators: the first %s is the language name, and
 #. * the second %s is the locale name. Example:
 #. * "French (France)"
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:367
-#: ../plugins/spell/gedit-spell-checker-language.c:373
+#: ../plugins/spell/gedit-spell-checker-language.c:363
+#: ../plugins/spell/gedit-spell-checker-language.c:369
 #, c-format
 msgctxt "language"
 msgid "%s (%s)"
@@ -3234,7 +3296,7 @@ msgstr "%s (%s)"
 #. Translators: this refers to an unknown language code
 #. * (one which isn't in our built-in list).
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:382
+#: ../plugins/spell/gedit-spell-checker-language.c:378
 #, c-format
 msgctxt "language"
 msgid "Unknown (%s)"
@@ -3243,43 +3305,23 @@ msgstr "Óþekkt (%s)"
 #. Translators: this refers the Default language used by the
 #. * spell checker
 #.
-#: ../plugins/spell/gedit-spell-checker-language.c:488
+#: ../plugins/spell/gedit-spell-checker-language.c:484
 msgctxt "language"
 msgid "Default"
 msgstr "Sjálfgefið"
-
-#: ../plugins/spell/gedit-spell-language-dialog.c:125
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
-msgid "_OK"
-msgstr "Í _lagi"
-
-#: ../plugins/spell/gedit-spell-language-dialog.c:129
-msgid "Set language"
-msgstr "Stilla tungumál"
-
-#: ../plugins/spell/gedit-spell-language-dialog.c:171
-msgid "Languages"
-msgstr "Tungumál"
-
-#: ../plugins/spell/gedit-spell-plugin.c:810
-msgid "The document is empty."
-msgstr "Skjalið er tómt."
-
-#: ../plugins/spell/gedit-spell-plugin.c:835
-msgid "No misspelled words"
-msgstr "Engin rangt stafsett orð"
 
 #. ex:set ts=8 noet:
 #: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
 msgid "Set Language"
 msgstr "Stilla tungumál"
 
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:5
+#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
 msgid "Select the _language of the current document."
 msgstr "Ve_ldu tungumál núverandi skjals."
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check spelling"
+#| msgid "Check spelling"
+msgid "Check Spelling"
 msgstr "Athuga stafsetningu"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:2
@@ -3303,12 +3345,12 @@ msgid "_Suggestions:"
 msgstr "_Uppástungur:"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Cha_nge"
-msgstr "Bre_yta"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
 msgid "Ignore _All"
 msgstr "Hunsa _allt"
+
+#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
+msgid "Cha_nge"
+msgstr "Bre_yta"
 
 #: ../plugins/spell/resources/ui/spell-checker.ui.h:10
 msgid "Change A_ll"
@@ -3415,6 +3457,27 @@ msgstr "Setja inn dagsetningu/tíma"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Setur inn dagsetningu og tíma við núverandi bendilstöðu."
+
+#~ msgid "RO"
+#~ msgstr "RO"
+
+#~ msgid "_Ignore case"
+#~ msgstr "_Hunsa há/lágstafi"
+
+#~ msgid "You cannot undo a sort operation"
+#~ msgstr "Þú getur ekki afturkallað röðunaraðgerð"
+
+#~ msgid "_OK"
+#~ msgstr "Í _lagi"
+
+#~ msgid "Set language"
+#~ msgstr "Stilla tungumál"
+
+#~ msgid "Languages"
+#~ msgstr "Tungumál"
+
+#~ msgid "The document is empty."
+#~ msgstr "Skjalið er tómt."
 
 #~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 #~ msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
