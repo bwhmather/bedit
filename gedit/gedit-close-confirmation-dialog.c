@@ -32,13 +32,6 @@
 #include <gedit/gedit-utils.h>
 #include <gedit/gedit-window.h>
 
-/* Properties */
-enum
-{
-	PROP_0,
-	PROP_UNSAVED_DOCUMENTS
-};
-
 /* Mode */
 enum
 {
@@ -61,6 +54,15 @@ struct _GeditCloseConfirmationDialog
 	GtkWidget   *list_box;
 	gboolean     disable_save_to_disk;
 };
+
+enum
+{
+	PROP_0,
+	PROP_UNSAVED_DOCUMENTS,
+	LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE (GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GTK_TYPE_DIALOG)
 
@@ -226,13 +228,13 @@ gedit_close_confirmation_dialog_class_init (GeditCloseConfirmationDialogClass *k
 	gobject_class->get_property = gedit_close_confirmation_dialog_get_property;
 	gobject_class->finalize = gedit_close_confirmation_dialog_finalize;
 
-	g_object_class_install_property (gobject_class,
-					 PROP_UNSAVED_DOCUMENTS,
-					 g_param_spec_pointer ("unsaved_documents",
-						 	       "Unsaved Documents",
-							       "List of Unsaved Documents",
-							       (G_PARAM_READWRITE |
-							        G_PARAM_CONSTRUCT_ONLY)));
+	properties[PROP_UNSAVED_DOCUMENTS] =
+		g_param_spec_pointer ("unsaved_documents",
+		                      "Unsaved Documents",
+		                      "List of Unsaved Documents",
+		                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (gobject_class, LAST_PROP, properties);
 }
 
 GList *
@@ -298,13 +300,11 @@ gedit_close_confirmation_dialog_new_single (GtkWindow     *parent,
 {
 	GtkWidget *dlg;
 	GList *unsaved_documents;
+
 	g_return_val_if_fail (doc != NULL, NULL);
 
 	unsaved_documents = g_list_prepend (NULL, doc);
-
-	dlg = gedit_close_confirmation_dialog_new (parent,
-						   unsaved_documents);
-
+	dlg = gedit_close_confirmation_dialog_new (parent, unsaved_documents);
 	g_list_free (unsaved_documents);
 
 	return dlg;
