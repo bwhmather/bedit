@@ -27,42 +27,8 @@
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
-#define GEDIT_TYPE_REPLACE_DIALOG              (gedit_replace_dialog_get_type())
-#define GEDIT_REPLACE_DIALOG(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_REPLACE_DIALOG, GeditReplaceDialog))
-#define GEDIT_REPLACE_DIALOG_CONST(obj)        (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_REPLACE_DIALOG, GeditReplaceDialog const))
-#define GEDIT_REPLACE_DIALOG_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_REPLACE_DIALOG, GeditReplaceDialogClass))
-#define GEDIT_IS_REPLACE_DIALOG(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_REPLACE_DIALOG))
-#define GEDIT_IS_REPLACE_DIALOG_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_REPLACE_DIALOG))
-#define GEDIT_REPLACE_DIALOG_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_REPLACE_DIALOG, GeditReplaceDialogClass))
-
-/* Private structure type */
-typedef struct _GeditReplaceDialogPrivate GeditReplaceDialogPrivate;
-
-/*
- * Main object structure
- */
-typedef struct _GeditReplaceDialog GeditReplaceDialog;
-
-struct _GeditReplaceDialog
-{
-	GtkDialog dialog;
-
-	/*< private > */
-	GeditReplaceDialogPrivate *priv;
-};
-
-/*
- * Class definition
- */
-typedef struct _GeditReplaceDialogClass GeditReplaceDialogClass;
-
-struct _GeditReplaceDialogClass
-{
-	GtkDialogClass parent_class;
-};
+#define GEDIT_TYPE_REPLACE_DIALOG (gedit_replace_dialog_get_type ())
+G_DECLARE_FINAL_TYPE (GeditReplaceDialog, gedit_replace_dialog, GEDIT, REPLACE_DIALOG, GtkDialog)
 
 enum
 {
@@ -70,11 +36,6 @@ enum
 	GEDIT_REPLACE_DIALOG_REPLACE_RESPONSE,
 	GEDIT_REPLACE_DIALOG_REPLACE_ALL_RESPONSE
 };
-
-/*
- * Public methods
- */
-GType			 gedit_replace_dialog_get_type			(void) G_GNUC_CONST;
 
 GtkWidget		*gedit_replace_dialog_new			(GeditWindow        *window);
 
