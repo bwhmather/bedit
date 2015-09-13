@@ -119,8 +119,11 @@ enum
 	PROP_STATE,
 	PROP_AUTO_SAVE,
 	PROP_AUTO_SAVE_INTERVAL,
-	PROP_CAN_CLOSE
+	PROP_CAN_CLOSE,
+	LAST_PROP
 };
+
+static GParamSpec *properties[LAST_PROP];
 
 enum
 {
@@ -128,7 +131,7 @@ enum
 	LAST_SIGNAL
 };
 
-static guint signals[LAST_SIGNAL] = { 0 };
+static guint signals[LAST_SIGNAL];
 
 static gboolean gedit_tab_auto_save (GeditTab *tab);
 
@@ -370,53 +373,45 @@ gedit_tab_class_init (GeditTabClass *klass)
 
 	gtkwidget_class->grab_focus = gedit_tab_grab_focus;
 
-	g_object_class_install_property (object_class,
-					 PROP_NAME,
-					 g_param_spec_string ("name",
-							      "Name",
-							      "The tab's name",
-							      NULL,
-							      G_PARAM_READABLE |
-							      G_PARAM_STATIC_STRINGS));
+	properties[PROP_NAME] =
+		g_param_spec_string ("name",
+		                     "Name",
+		                     "The tab's name",
+		                     NULL,
+		                     G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
-	g_object_class_install_property (object_class,
-					 PROP_STATE,
-					 g_param_spec_enum ("state",
-							    "State",
-							    "The tab's state",
-							    GEDIT_TYPE_TAB_STATE,
-							    GEDIT_TAB_STATE_NORMAL,
-							    G_PARAM_READABLE |
-							    G_PARAM_STATIC_STRINGS));
+	properties[PROP_STATE] =
+		g_param_spec_enum ("state",
+		                   "State",
+		                   "The tab's state",
+		                   GEDIT_TYPE_TAB_STATE,
+		                   GEDIT_TAB_STATE_NORMAL,
+		                   G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
-	g_object_class_install_property (object_class,
-					 PROP_AUTO_SAVE,
-					 g_param_spec_boolean ("autosave",
-							       "Autosave",
-							       "Autosave feature",
-							       TRUE,
-							       G_PARAM_READWRITE |
-							       G_PARAM_STATIC_STRINGS));
+	properties[PROP_AUTO_SAVE] =
+		g_param_spec_boolean ("autosave",
+		                      "Autosave",
+		                      "Autosave feature",
+		                      TRUE,
+		                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
-	g_object_class_install_property (object_class,
-					 PROP_AUTO_SAVE_INTERVAL,
-					 g_param_spec_int ("autosave-interval",
-							   "AutosaveInterval",
-							   "Time between two autosaves",
-							   0,
-							   G_MAXINT,
-							   0,
-							   G_PARAM_READWRITE |
-							   G_PARAM_STATIC_STRINGS));
+	properties[PROP_AUTO_SAVE_INTERVAL] =
+		g_param_spec_int ("autosave-interval",
+		                  "AutosaveInterval",
+		                  "Time between two autosaves",
+		                  0,
+		                  G_MAXINT,
+		                  0,
+		                  G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
-	g_object_class_install_property (object_class,
-					 PROP_CAN_CLOSE,
-					 g_param_spec_boolean ("can-close",
-							       "Can close",
-							       "Whether the tab can be closed",
-							       TRUE,
-							       G_PARAM_READABLE |
-							       G_PARAM_STATIC_STRINGS));
+	properties[PROP_CAN_CLOSE] =
+		g_param_spec_boolean ("can-close",
+		                      "Can close",
+		                      "Whether the tab can be closed",
+		                      TRUE,
+		                      G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 
 	signals[DROP_URIS] =
 		g_signal_new_class_handler ("drop-uris",
@@ -554,8 +549,8 @@ gedit_tab_set_state (GeditTab      *tab,
 
 	update_auto_save_timeout (tab);
 
-	g_object_notify (G_OBJECT (tab), "state");
-	g_object_notify (G_OBJECT (tab), "can-close");
+	g_object_notify_by_pspec (G_OBJECT (tab), properties[PROP_STATE]);
+	g_object_notify_by_pspec (G_OBJECT (tab), properties[PROP_CAN_CLOSE]);
 }
 
 static void
@@ -566,7 +561,7 @@ document_location_notify_handler (GtkSourceFile *file,
 	gedit_debug (DEBUG_TAB);
 
 	/* Notify the change in the location */
-	g_object_notify (G_OBJECT (tab), "name");
+	g_object_notify_by_pspec (G_OBJECT (tab), properties[PROP_NAME]);
 }
 
 static void
@@ -577,15 +572,15 @@ document_shortname_notify_handler (GeditDocument *document,
 	gedit_debug (DEBUG_TAB);
 
 	/* Notify the change in the shortname */
-	g_object_notify (G_OBJECT (tab), "name");
+	g_object_notify_by_pspec (G_OBJECT (tab), properties[PROP_NAME]);
 }
 
 static void
 document_modified_changed (GtkTextBuffer *document,
 			   GeditTab      *tab)
 {
-	g_object_notify (G_OBJECT (tab), "name");
-	g_object_notify (G_OBJECT (tab), "can-close");
+	g_object_notify_by_pspec (G_OBJECT (tab), properties[PROP_NAME]);
+	g_object_notify_by_pspec (G_OBJECT (tab), properties[PROP_CAN_CLOSE]);
 }
 
 static void
