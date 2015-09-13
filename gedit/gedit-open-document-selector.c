@@ -84,20 +84,22 @@ enum
 	N_COLUMNS
 };
 
-/* Signals */
+enum
+{
+	PROP_0,
+	PROP_WINDOW,
+	LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP];
+
 enum
 {
 	SELECTOR_FILE_ACTIVATED,
 	LAST_SIGNAL
 };
 
-static guint signals[LAST_SIGNAL] = { 0 };
-
-enum
-{
-	PROP_0,
-	PROP_WINDOW
-};
+static guint signals[LAST_SIGNAL];
 
 /* Value 0xFF is reserved to mark the end of the array */
 #define BYTE_ARRAY_END 0xFF
@@ -940,18 +942,27 @@ gedit_open_document_selector_file_activated (GeditOpenDocumentSelector *selector
 static void
 gedit_open_document_selector_class_init (GeditOpenDocumentSelectorClass *klass)
 {
-	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 
-	gobject_class->constructed = gedit_open_document_selector_constructed;
-	gobject_class->dispose = gedit_open_document_selector_dispose;
+	object_class->constructed = gedit_open_document_selector_constructed;
+	object_class->dispose = gedit_open_document_selector_dispose;
 
-	gobject_class->get_property = gedit_open_document_selector_get_property;
-	gobject_class->set_property = gedit_open_document_selector_set_property;
+	object_class->get_property = gedit_open_document_selector_get_property;
+	object_class->set_property = gedit_open_document_selector_set_property;
 
 	widget_class->get_request_mode = gedit_open_document_selector_get_request_mode;
 	widget_class->get_preferred_width = gedit_open_document_selector_get_preferred_width;
 	widget_class->map = gedit_open_document_selector_mapped;
+
+	properties[PROP_WINDOW] =
+		g_param_spec_object ("window",
+		                     "Window",
+		                     "The GeditWindow this GeditOpenDocumentSelector is associated with",
+		                     GEDIT_TYPE_WINDOW,
+		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 
 	signals[SELECTOR_FILE_ACTIVATED] =
 		g_signal_new_class_handler ("file-activated",
@@ -971,16 +982,6 @@ gedit_open_document_selector_class_init (GeditOpenDocumentSelectorClass *klass)
 	gtk_widget_class_bind_template_child (widget_class, GeditOpenDocumentSelector, placeholder_box);
 	gtk_widget_class_bind_template_child (widget_class, GeditOpenDocumentSelector, scrolled_window);
 	gtk_widget_class_bind_template_child (widget_class, GeditOpenDocumentSelector, search_entry);
-
-	g_object_class_install_property (gobject_class,
-	                                 PROP_WINDOW,
-	                                 g_param_spec_object ("window",
-	                                                      "Window",
-	                                                      "The GeditWindow this GeditOpenDocumentSelector is associated with",
-	                                                      GEDIT_TYPE_WINDOW,
-	                                                      G_PARAM_READWRITE |
-	                                                      G_PARAM_CONSTRUCT_ONLY |
-	                                                      G_PARAM_STATIC_STRINGS));
 }
 
 static void
