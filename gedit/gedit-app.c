@@ -59,13 +59,6 @@
 #define GEDIT_PAGE_SETUP_FILE		"gedit-page-setup"
 #define GEDIT_PRINT_SETTINGS_FILE	"gedit-print-settings"
 
-/* Properties */
-enum
-{
-	PROP_0,
-	PROP_LOCKDOWN
-};
-
 typedef struct
 {
 	GeditPluginsEngine *engine;
@@ -100,6 +93,15 @@ typedef struct
 	gint column_position;
 	GApplicationCommandLine *command_line;
 } GeditAppPrivate;
+
+enum
+{
+	PROP_0,
+	PROP_LOCKDOWN,
+	LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP];
 
 static const GOptionEntry options[] =
 {
@@ -1319,15 +1321,15 @@ gedit_app_class_init (GeditAppClass *klass)
 	klass->set_window_title = gedit_app_set_window_title_impl;
 	klass->create_window = gedit_app_create_window_impl;
 
-	g_object_class_install_property (object_class,
-					 PROP_LOCKDOWN,
-					 g_param_spec_flags ("lockdown",
-							     "Lockdown",
-							     "The lockdown mask",
-							     GEDIT_TYPE_LOCKDOWN_MASK,
-							     0,
-							     G_PARAM_READABLE |
-							     G_PARAM_STATIC_STRINGS));
+	properties[PROP_LOCKDOWN] =
+		g_param_spec_flags ("lockdown",
+		                    "Lockdown",
+		                    "The lockdown mask",
+		                    GEDIT_TYPE_LOCKDOWN_MASK,
+		                    0,
+		                    G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
 static void
