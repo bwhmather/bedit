@@ -54,8 +54,11 @@ enum
 enum
 {
 	PROP_0,
-	PROP_SAVE_MODE
+	PROP_SAVE_MODE,
+	LAST_PROP
 };
+
+static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE (GeditEncodingsComboBox, gedit_encodings_combo_box, GTK_TYPE_COMBO_BOX)
 
@@ -155,15 +158,14 @@ gedit_encodings_combo_box_class_init (GeditEncodingsComboBoxClass *klass)
 	/* TODO It'd be clearer if "save-mode" is renamed as "mode" with an
 	 * enum: loading, saving. Or something like that.
 	 */
-	g_object_class_install_property (object_class,
-					 PROP_SAVE_MODE,
-					 g_param_spec_boolean ("save-mode",
-							       "Save Mode",
-							       "Save Mode",
-							       FALSE,
-							       G_PARAM_READWRITE |
-							       G_PARAM_CONSTRUCT |
-							       G_PARAM_STATIC_STRINGS));
+	properties[PROP_SAVE_MODE] =
+		g_param_spec_boolean ("save-mode",
+		                      "Save Mode",
+		                      "Save Mode",
+		                      FALSE,
+		                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
 static void
