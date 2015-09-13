@@ -36,8 +36,11 @@ struct _GeditMenuExtension
 enum
 {
 	PROP_0,
-	PROP_MENU
+	PROP_MENU,
+	LAST_PROP
 };
+
+static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE (GeditMenuExtension, gedit_menu_extension, G_TYPE_OBJECT)
 
@@ -104,15 +107,14 @@ gedit_menu_extension_class_init (GeditMenuExtensionClass *klass)
 	object_class->get_property = gedit_menu_extension_get_property;
 	object_class->set_property = gedit_menu_extension_set_property;
 
-	g_object_class_install_property (object_class,
-	                                 PROP_MENU,
-	                                 g_param_spec_object ("menu",
-	                                                      "Menu",
-	                                                      "The main menu",
-	                                                      G_TYPE_MENU,
-	                                                      G_PARAM_READWRITE |
-	                                                      G_PARAM_CONSTRUCT_ONLY |
-	                                                      G_PARAM_STATIC_STRINGS));
+	properties[PROP_MENU] =
+		g_param_spec_object ("menu",
+		                     "Menu",
+		                     "The main menu",
+		                     G_TYPE_MENU,
+		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
 static void
