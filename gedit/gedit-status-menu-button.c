@@ -32,11 +32,11 @@ typedef struct
 	GtkCssProvider *css;
 } GeditStatusMenuButtonClassPrivate;
 
-/* Properties */
 enum
 {
 	PROP_0,
-	PROP_LABEL
+	PROP_LABEL,
+	LAST_PROP
 };
 
 G_DEFINE_TYPE_WITH_CODE (GeditStatusMenuButton,
