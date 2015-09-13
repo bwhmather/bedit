@@ -134,13 +134,16 @@ struct _GeditDocumentsPanel
 	gboolean            is_on_drag;
 };
 
-G_DEFINE_TYPE (GeditDocumentsPanel, gedit_documents_panel, GTK_TYPE_BOX)
-
 enum
 {
 	PROP_0,
-	PROP_WINDOW
+	PROP_WINDOW,
+	LAST_PROP
 };
+
+static GParamSpec *properties[LAST_PROP];
+
+G_DEFINE_TYPE (GeditDocumentsPanel, gedit_documents_panel, GTK_TYPE_BOX)
 
 static const GtkTargetEntry panel_targets [] = {
 	{"GEDIT_DOCUMENTS_DOCUMENT_ROW", GTK_TARGET_SAME_APP, 0},
@@ -1396,15 +1399,14 @@ gedit_documents_panel_class_init (GeditDocumentsPanelClass *klass)
 	widget_class->drag_data_get = panel_on_drag_data_get;
 	widget_class->drag_data_received = panel_on_drag_data_received;
 
-	g_object_class_install_property (object_class,
-	                                 PROP_WINDOW,
-	                                 g_param_spec_object ("window",
-	                                                      "Window",
-	                                                      "The GeditWindow this GeditDocumentsPanel is associated with",
-	                                                      GEDIT_TYPE_WINDOW,
-	                                                      G_PARAM_READWRITE |
-	                                                      G_PARAM_CONSTRUCT_ONLY |
-	                                                      G_PARAM_STATIC_STRINGS));
+	properties[PROP_WINDOW] =
+		g_param_spec_object ("window",
+		                     "Window",
+		                     "The GeditWindow this GeditDocumentsPanel is associated with",
+		                     GEDIT_TYPE_WINDOW,
+		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
 static void
