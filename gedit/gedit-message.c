@@ -41,19 +41,21 @@
  * Since: 2.26
  */
 
-enum
-{
-	PROP_0,
-
-	PROP_OBJECT_PATH,
-	PROP_METHOD
-};
-
 struct _GeditMessagePrivate
 {
 	gchar *object_path;
 	gchar *method;
 };
+
+enum
+{
+	PROP_0,
+	PROP_OBJECT_PATH,
+	PROP_METHOD,
+	LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditMessage, gedit_message, G_TYPE_OBJECT)
 
@@ -132,15 +134,12 @@ gedit_message_class_init (GeditMessageClass *klass)
 	 * The messages object path (e.g. /gedit/object/path).
 	 *
 	 */
-	g_object_class_install_property (object_class,
-	                                 PROP_OBJECT_PATH,
-	                                 g_param_spec_string ("object-path",
-	                                                      "OBJECT_PATH",
-	                                                      "The message object path",
-	                                                      NULL,
-	                                                      G_PARAM_READWRITE |
-	                                                      G_PARAM_CONSTRUCT |
-	                                                      G_PARAM_STATIC_STRINGS));
+	properties[PROP_OBJECT_PATH] =
+		g_param_spec_string ("object-path",
+		                     "OBJECT_PATH",
+		                     "The message object path",
+		                     NULL,
+		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
 
 	/**
 	 * GeditMessage:method:
@@ -148,15 +147,14 @@ gedit_message_class_init (GeditMessageClass *klass)
 	 * The messages method.
 	 *
 	 */
-	g_object_class_install_property (object_class,
-	                                 PROP_METHOD,
-	                                 g_param_spec_string ("method",
-	                                                      "METHOD",
-	                                                      "The message method",
-	                                                      NULL,
-	                                                      G_PARAM_READWRITE |
-	                                                      G_PARAM_CONSTRUCT |
-	                                                      G_PARAM_STATIC_STRINGS));
+	properties[PROP_METHOD] =
+		g_param_spec_string ("method",
+		                     "METHOD",
+		                     "The message method",
+		                     NULL,
+		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
 static void
