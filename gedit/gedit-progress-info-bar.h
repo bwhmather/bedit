@@ -25,48 +25,10 @@
 
 G_BEGIN_DECLS
 
-/*
- * Type checking and casting macros
- */
-#define GEDIT_TYPE_PROGRESS_INFO_BAR              (gedit_progress_info_bar_get_type())
-#define GEDIT_PROGRESS_INFO_BAR(obj)              (G_TYPE_CHECK_INSTANCE_CAST((obj), GEDIT_TYPE_PROGRESS_INFO_BAR, GeditProgressInfoBar))
-#define GEDIT_PROGRESS_INFO_BAR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST((klass), GEDIT_TYPE_PROGRESS_INFO_BAR, GeditProgressInfoBarClass))
-#define GEDIT_IS_PROGRESS_INFO_BAR(obj)           (G_TYPE_CHECK_INSTANCE_TYPE((obj), GEDIT_TYPE_PROGRESS_INFO_BAR))
-#define GEDIT_IS_PROGRESS_INFO_BAR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GEDIT_TYPE_PROGRESS_INFO_BAR))
-#define GEDIT_PROGRESS_INFO_BAR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS((obj), GEDIT_TYPE_PROGRESS_INFO_BAR, GeditProgressInfoBarClass))
+#define GEDIT_TYPE_PROGRESS_INFO_BAR (gedit_progress_info_bar_get_type ())
+G_DECLARE_FINAL_TYPE (GeditProgressInfoBar, gedit_progress_info_bar, GEDIT, PROGRESS_INFO_BAR, GtkInfoBar)
 
-/* Private structure type */
-typedef struct _GeditProgressInfoBarPrivate GeditProgressInfoBarPrivate;
-
-/*
- * Main object structure
- */
-typedef struct _GeditProgressInfoBar GeditProgressInfoBar;
-
-struct _GeditProgressInfoBar
-{
-	GtkInfoBar parent;
-
-	/*< private > */
-	GeditProgressInfoBarPrivate *priv;
-};
-
-/*
- * Class definition
- */
-typedef struct _GeditProgressInfoBarClass GeditProgressInfoBarClass;
-
-struct _GeditProgressInfoBarClass
-{
-	GtkInfoBarClass parent_class;
-};
-
-/*
- * Public methods
- */
-GType 		 gedit_progress_info_bar_get_type 		(void) G_GNUC_CONST;
-
-GtkWidget	*gedit_progress_info_bar_new      		(const gchar          *icon_name,
+GtkWidget	*gedit_progress_info_bar_new			(const gchar          *icon_name,
 								 const gchar          *markup,
 								 gboolean              has_cancel);
 
@@ -83,7 +45,6 @@ void		 gedit_progress_info_bar_set_fraction		(GeditProgressInfoBar *bar,
 								 gdouble               fraction);
 
 void		 gedit_progress_info_bar_pulse			(GeditProgressInfoBar *bar);
-
 
 G_END_DECLS
 

@@ -23,17 +23,22 @@
 
 enum {
 	PROP_0,
-	PROP_HAS_CANCEL_BUTTON
+	PROP_HAS_CANCEL_BUTTON,
+	LAST_PROP
 };
 
-struct _GeditProgressInfoBarPrivate
+static GParamSpec *properties[LAST_PROP];
+
+struct _GeditProgressInfoBar
 {
+	GtkInfoBar parent_instance;
+
 	GtkWidget *image;
 	GtkWidget *label;
 	GtkWidget *progress;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditProgressInfoBar, gedit_progress_info_bar, GTK_TYPE_INFO_BAR)
+G_DEFINE_TYPE (GeditProgressInfoBar, gedit_progress_info_bar, GTK_TYPE_INFO_BAR)
 
 static void
 gedit_progress_info_bar_set_has_cancel_button (GeditProgressInfoBar *bar,
@@ -75,29 +80,28 @@ gedit_progress_info_bar_class_init (GeditProgressInfoBarClass *klass)
 
 	gobject_class->set_property = gedit_progress_info_bar_set_property;
 
-	g_object_class_install_property (gobject_class,
-					 PROP_HAS_CANCEL_BUTTON,
-					 g_param_spec_boolean ("has-cancel-button",
-							       "Has Cancel Button",
-							       "If the message bar has a cancel button",
-							       TRUE,
-							       G_PARAM_WRITABLE |
-							       G_PARAM_CONSTRUCT_ONLY |
-							       G_PARAM_STATIC_STRINGS));
+	properties[PROP_HAS_CANCEL_BUTTON] =
+		 g_param_spec_boolean ("has-cancel-button",
+				       "Has Cancel Button",
+				       "If the message bar has a cancel button",
+				       TRUE,
+				       G_PARAM_WRITABLE |
+				       G_PARAM_CONSTRUCT_ONLY |
+				       G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (gobject_class, LAST_PROP, properties);
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-progress-info-bar.ui");
-	gtk_widget_class_bind_template_child_private (widget_class, GeditProgressInfoBar, image);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditProgressInfoBar, label);
-	gtk_widget_class_bind_template_child_private (widget_class, GeditProgressInfoBar, progress);
+	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, image);
+	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, label);
+	gtk_widget_class_bind_template_child (widget_class, GeditProgressInfoBar, progress);
 }
 
 static void
 gedit_progress_info_bar_init (GeditProgressInfoBar *bar)
 {
-	bar->priv = gedit_progress_info_bar_get_instance_private (bar);
-
 	gtk_widget_init_template (GTK_WIDGET (bar));
 }
 
@@ -128,7 +132,7 @@ gedit_progress_info_bar_set_icon_name (GeditProgressInfoBar *bar,
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 	g_return_if_fail (icon_name != NULL);
 
-	gtk_image_set_from_icon_name (GTK_IMAGE (bar->priv->image),
+	gtk_image_set_from_icon_name (GTK_IMAGE (bar->image),
 				      icon_name,
 				      GTK_ICON_SIZE_SMALL_TOOLBAR);
 }
@@ -140,7 +144,7 @@ gedit_progress_info_bar_set_markup (GeditProgressInfoBar *bar,
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 	g_return_if_fail (markup != NULL);
 
-	gtk_label_set_markup (GTK_LABEL (bar->priv->label), markup);
+	gtk_label_set_markup (GTK_LABEL (bar->label), markup);
 }
 
 void
@@ -150,7 +154,7 @@ gedit_progress_info_bar_set_text (GeditProgressInfoBar *bar,
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 	g_return_if_fail (text != NULL);
 
-	gtk_label_set_text (GTK_LABEL (bar->priv->label), text);
+	gtk_label_set_text (GTK_LABEL (bar->label), text);
 }
 
 void
@@ -159,8 +163,7 @@ gedit_progress_info_bar_set_fraction (GeditProgressInfoBar *bar,
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 
-	gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (bar->priv->progress),
-				       fraction);
+	gtk_progress_bar_set_fraction (GTK_PROGRESS_BAR (bar->progress), fraction);
 }
 
 void
@@ -168,7 +171,7 @@ gedit_progress_info_bar_pulse (GeditProgressInfoBar *bar)
 {
 	g_return_if_fail (GEDIT_IS_PROGRESS_INFO_BAR (bar));
 
-	gtk_progress_bar_pulse (GTK_PROGRESS_BAR (bar->priv->progress));
+	gtk_progress_bar_pulse (GTK_PROGRESS_BAR (bar->progress));
 }
 
 /* ex:set ts=8 noet: */
