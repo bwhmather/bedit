@@ -47,10 +47,12 @@ enum
 	PROP_0,
 	PROP_ACTIVE_NOTEBOOK,
 	PROP_ACTIVE_TAB,
-	PROP_SHOW_TABS_MODE
+	PROP_SHOW_TABS_MODE,
+	LAST_PROP
 };
 
-/* Signals */
+static GParamSpec *properties[LAST_PROP];
+
 enum
 {
 	NOTEBOOK_ADDED,
@@ -65,7 +67,7 @@ enum
 	LAST_SIGNAL
 };
 
-static guint signals[LAST_SIGNAL] = { 0 };
+static guint signals[LAST_SIGNAL];
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditMultiNotebook, gedit_multi_notebook, GTK_TYPE_GRID)
 
@@ -151,6 +153,28 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 	object_class->finalize = gedit_multi_notebook_finalize;
 	object_class->get_property = gedit_multi_notebook_get_property;
 	object_class->set_property = gedit_multi_notebook_set_property;
+
+	properties[PROP_ACTIVE_NOTEBOOK] =
+		g_param_spec_object ("active-notebook",
+		                     "Active Notebook",
+		                     "The Active Notebook",
+		                     GEDIT_TYPE_NOTEBOOK,
+		                     G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+	properties[PROP_ACTIVE_TAB] =
+		g_param_spec_object ("active-tab",
+		                     "Active Tab",
+		                     "The Active Tab",
+		                     GEDIT_TYPE_TAB,
+		                     G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+	properties[PROP_SHOW_TABS_MODE] =
+		g_param_spec_enum ("show-tabs-mode",
+		                   "Show Tabs Mode",
+		                   "When tabs should be shown",
+		                   GEDIT_TYPE_NOTEBOOK_SHOW_TABS_MODE_TYPE,
+		                   GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS,
+		                   G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 
 	signals[NOTEBOOK_ADDED] =
 		g_signal_new ("notebook-added",
@@ -241,31 +265,6 @@ gedit_multi_notebook_class_init (GeditMultiNotebookClass *klass)
 			      2,
 			      GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE,
 			      GEDIT_TYPE_TAB);
-
-	g_object_class_install_property (object_class,
-					 PROP_ACTIVE_NOTEBOOK,
-					 g_param_spec_object ("active-notebook",
-							      "Active Notebook",
-							      "The Active Notebook",
-							      GEDIT_TYPE_NOTEBOOK,
-							      G_PARAM_READABLE |
-							      G_PARAM_STATIC_STRINGS));
-	g_object_class_install_property (object_class,
-					 PROP_ACTIVE_TAB,
-					 g_param_spec_object ("active-tab",
-							      "Active Tab",
-							      "The Active Tab",
-							      GEDIT_TYPE_TAB,
-							      G_PARAM_READABLE |
-							      G_PARAM_STATIC_STRINGS));
-	g_object_class_install_property (object_class,
-					 PROP_SHOW_TABS_MODE,
-					 g_param_spec_enum ("show-tabs-mode",
-							    "Show Tabs Mode",
-							    "When tabs should be shown",
-							    GEDIT_TYPE_NOTEBOOK_SHOW_TABS_MODE_TYPE,
-							    GEDIT_NOTEBOOK_SHOW_TABS_ALWAYS,
-							    G_PARAM_READWRITE));
 }
 
 static void
@@ -328,8 +327,7 @@ notebook_page_removed (GtkNotebook        *notebook,
 	if (mnb->priv->total_tabs == 0)
 	{
 		mnb->priv->active_tab = NULL;
-
-		g_object_notify (G_OBJECT (mnb), "active-tab");
+		g_object_notify_by_pspec (G_OBJECT (mnb), properties[PROP_ACTIVE_TAB]);
 	}
 
 	g_signal_emit (G_OBJECT (mnb), signals[TAB_REMOVED], 0, notebook, tab);
@@ -385,8 +383,7 @@ notebook_switch_page (GtkNotebook        *book,
 
 		/* set the active tab */
 		mnb->priv->active_tab = tab;
-
-		g_object_notify (G_OBJECT (mnb), "active-tab");
+		g_object_notify_by_pspec (G_OBJECT (mnb), properties[PROP_ACTIVE_TAB]);
 
 		g_signal_emit (G_OBJECT (mnb), signals[SWITCH_TAB], 0,
 			       mnb->priv->active_notebook, old_tab,
@@ -412,7 +409,7 @@ notebook_set_focus (GtkContainer       *container,
 		notebook_switch_page (GTK_NOTEBOOK (container), NULL,
 				      page_num, mnb);
 
-		g_object_notify (G_OBJECT (mnb), "active-notebook");
+		g_object_notify_by_pspec (G_OBJECT (mnb), properties[PROP_ACTIVE_NOTEBOOK]);
 	}
 }
 
