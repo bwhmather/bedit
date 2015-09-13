@@ -21,18 +21,6 @@
 #include "gedit-tab-label.h"
 #include "gedit-tab-private.h"
 
-enum
-{
-	CLOSE_CLICKED,
-	LAST_SIGNAL
-};
-
-enum
-{
-	PROP_0,
-	PROP_TAB
-};
-
 struct _GeditTabLabel
 {
 	GtkBox parent_instance;
@@ -45,7 +33,22 @@ struct _GeditTabLabel
 	GtkWidget *close_button;
 };
 
-static guint signals[LAST_SIGNAL] = { 0 };
+enum
+{
+	PROP_0,
+	PROP_TAB,
+	LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP];
+
+enum
+{
+	CLOSE_CLICKED,
+	LAST_SIGNAL
+};
+
+static guint signals[LAST_SIGNAL];
 
 G_DEFINE_TYPE (GeditTabLabel, gedit_tab_label, GTK_TYPE_BOX)
 
@@ -235,6 +238,15 @@ gedit_tab_label_class_init (GeditTabLabelClass *klass)
 	object_class->get_property = gedit_tab_label_get_property;
 	object_class->constructed = gedit_tab_label_constructed;
 
+	properties[PROP_TAB] =
+		g_param_spec_object ("tab",
+		                     "Tab",
+		                     "The GeditTab",
+		                     GEDIT_TYPE_TAB,
+		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
+
 	signals[CLOSE_CLICKED] =
 		g_signal_new_class_handler ("close-clicked",
 		                            G_TYPE_FROM_CLASS (klass),
@@ -243,15 +255,6 @@ gedit_tab_label_class_init (GeditTabLabelClass *klass)
 		                            NULL, NULL, NULL,
 		                            G_TYPE_NONE,
 		                            0);
-
-	g_object_class_install_property (object_class,
-					 PROP_TAB,
-					 g_param_spec_object ("tab",
-							      "Tab",
-							      "The GeditTab",
-							      GEDIT_TYPE_TAB,
-							      G_PARAM_READWRITE |
-							      G_PARAM_CONSTRUCT_ONLY));
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
