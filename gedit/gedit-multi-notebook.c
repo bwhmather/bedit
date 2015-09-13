@@ -311,6 +311,14 @@ notebook_page_reordered (GeditNotebook      *notebook,
 }
 
 static void
+set_active_tab (GeditMultiNotebook *mnb,
+                GeditTab           *tab)
+{
+	mnb->priv->active_tab = tab;
+	g_object_notify_by_pspec (G_OBJECT (mnb), properties[PROP_ACTIVE_TAB]);
+}
+
+static void
 notebook_page_removed (GtkNotebook        *notebook,
 		       GtkWidget          *child,
 		       guint               page_num,
@@ -326,8 +334,7 @@ notebook_page_removed (GtkNotebook        *notebook,
 
 	if (mnb->priv->total_tabs == 0)
 	{
-		mnb->priv->active_tab = NULL;
-		g_object_notify_by_pspec (G_OBJECT (mnb), properties[PROP_ACTIVE_TAB]);
+		set_active_tab (mnb, NULL);
 	}
 
 	g_signal_emit (G_OBJECT (mnb), signals[TAB_REMOVED], 0, notebook, tab);
@@ -380,11 +387,7 @@ notebook_switch_page (GtkNotebook        *book,
 		GeditTab *old_tab;
 
 		old_tab = mnb->priv->active_tab;
-
-		/* set the active tab */
-		mnb->priv->active_tab = tab;
-		g_object_notify_by_pspec (G_OBJECT (mnb), properties[PROP_ACTIVE_TAB]);
-
+		set_active_tab (mnb, tab);
 		g_signal_emit (G_OBJECT (mnb), signals[SWITCH_TAB], 0,
 			       mnb->priv->active_notebook, old_tab,
 			       book, tab);
@@ -806,15 +809,17 @@ gedit_multi_notebook_set_active_tab (GeditMultiNotebook *mnb,
 	g_return_if_fail (GEDIT_IS_MULTI_NOTEBOOK (mnb));
 	g_return_if_fail (GEDIT_IS_TAB (tab) || tab == NULL);
 
-	if (tab == NULL)
+	/* use plain C cast since the active tab can be null */
+	if (tab == (GeditTab *) mnb->priv->active_tab)
 	{
-		mnb->priv->active_tab = NULL;
-
 		return;
 	}
 
-	if (tab == GEDIT_TAB (mnb->priv->active_tab))
+	if (tab == NULL)
+	{
+		set_active_tab (mnb, NULL);
 		return;
+	}
 
 	l = mnb->priv->notebooks;
 
