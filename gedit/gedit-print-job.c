@@ -66,8 +66,11 @@ struct _GeditPrintJob
 enum
 {
 	PROP_0,
-	PROP_VIEW
+	PROP_VIEW,
+	LAST_PROP
 };
+
+static GParamSpec *properties[LAST_PROP];
 
 enum
 {
@@ -77,7 +80,7 @@ enum
 	LAST_SIGNAL
 };
 
-static guint print_job_signals[LAST_SIGNAL] = { 0 };
+static guint signals[LAST_SIGNAL];
 
 G_DEFINE_TYPE (GeditPrintJob, gedit_print_job, G_TYPE_OBJECT)
 
@@ -175,17 +178,16 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 	object_class->dispose = gedit_print_job_dispose;
 	object_class->finalize = gedit_print_job_finalize;
 
-	g_object_class_install_property (object_class,
-					 PROP_VIEW,
-					 g_param_spec_object ("view",
-							      "Gedit View",
-							      "Gedit View to print",
-							      GEDIT_TYPE_VIEW,
-							      G_PARAM_READWRITE |
-							      G_PARAM_STATIC_STRINGS |
-							      G_PARAM_CONSTRUCT_ONLY));
+	properties[PROP_VIEW] =
+		g_param_spec_object ("view",
+		                     "Gedit View",
+		                     "Gedit View to print",
+		                     GEDIT_TYPE_VIEW,
+		                     G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_CONSTRUCT_ONLY);
 
-	print_job_signals[PRINTING] =
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
+
+	signals[PRINTING] =
 		g_signal_new_class_handler ("printing",
 		                            G_TYPE_FROM_CLASS (klass),
 		                            G_SIGNAL_RUN_LAST,
@@ -195,7 +197,7 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 		                            1,
 		                            G_TYPE_UINT);
 
-	print_job_signals[SHOW_PREVIEW] =
+	signals[SHOW_PREVIEW] =
 		g_signal_new_class_handler ("show-preview",
 		                            G_TYPE_FROM_CLASS (klass),
 		                            G_SIGNAL_RUN_LAST,
@@ -205,7 +207,7 @@ gedit_print_job_class_init (GeditPrintJobClass *klass)
 		                            1,
 		                            GTK_TYPE_WIDGET);
 
-	print_job_signals[DONE] =
+	signals[DONE] =
 		g_signal_new_class_handler ("done",
 		                            G_TYPE_FROM_CLASS (klass),
 		                            G_SIGNAL_RUN_LAST,
@@ -433,7 +435,7 @@ preview_ready (GtkPrintOperationPreview *gtk_preview,
 {
 	job->is_preview = TRUE;
 
-	g_signal_emit (job, print_job_signals[SHOW_PREVIEW], 0, job->preview);
+	g_signal_emit (job, signals[SHOW_PREVIEW], 0, job->preview);
 
 	g_clear_object (&job->preview);
 }
@@ -565,7 +567,7 @@ begin_print_cb (GtkPrintOperation *operation,
 	job->progress = 0.0;
 
 	g_signal_emit (job,
-		       print_job_signals[PRINTING],
+		       signals[PRINTING],
 		       0,
 		       GEDIT_PRINT_JOB_STATUS_PAGINATING);
 }
@@ -598,7 +600,7 @@ paginate_cb (GtkPrintOperation *operation,
 	}
 
 	g_signal_emit (job,
-		       print_job_signals[PRINTING],
+		       signals[PRINTING],
 		       0,
 		       GEDIT_PRINT_JOB_STATUS_PAGINATING);
 
@@ -626,7 +628,7 @@ draw_page_cb (GtkPrintOperation *operation,
 		job->progress = page_nr / (2.0 * n_pages) + 0.5;
 
 		g_signal_emit (job,
-			       print_job_signals[PRINTING],
+			       signals[PRINTING],
 			       0,
 			       GEDIT_PRINT_JOB_STATUS_DRAWING);
 	}
@@ -671,7 +673,7 @@ done_cb (GtkPrintOperation       *operation,
 
 	/* Avoid that job is destroyed in the handler of the "done" message. */
 	g_object_ref (job);
-	g_signal_emit (job, print_job_signals[DONE], 0, print_result, error);
+	g_signal_emit (job, signals[DONE], 0, print_result, error);
 	g_object_unref (job);
 }
 
