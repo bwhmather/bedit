@@ -64,7 +64,15 @@
 #define TAB_WIDTH_DATA "GeditWindowTabWidthData"
 #define FULLSCREEN_ANIMATION_SPEED 500
 
-/* Signals */
+enum
+{
+	PROP_0,
+	PROP_STATE,
+	LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP];
+
 enum
 {
 	TAB_ADDED,
@@ -75,13 +83,7 @@ enum
 	LAST_SIGNAL
 };
 
-static guint signals[LAST_SIGNAL] = { 0 };
-
-enum
-{
-	PROP_0,
-	PROP_STATE
-};
+static guint signals[LAST_SIGNAL];
 
 enum
 {
@@ -423,6 +425,16 @@ gedit_window_class_init (GeditWindowClass *klass)
 	widget_class->configure_event = gedit_window_configure_event;
 	widget_class->key_press_event = gedit_window_key_press_event;
 
+	properties[PROP_STATE] =
+		g_param_spec_flags ("state",
+		                    "State",
+		                    "The window's state",
+		                    GEDIT_TYPE_WINDOW_STATE,
+		                    GEDIT_WINDOW_STATE_NORMAL,
+		                    G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
+
 	signals[TAB_ADDED] =
 		g_signal_new ("tab-added",
 			      G_OBJECT_CLASS_TYPE (object_class),
@@ -466,16 +478,6 @@ gedit_window_class_init (GeditWindowClass *klass)
 			      NULL, NULL, NULL,
 			      G_TYPE_NONE,
 			      0);
-
-	g_object_class_install_property (object_class,
-					 PROP_STATE,
-					 g_param_spec_flags ("state",
-							     "State",
-							     "The window's state",
-							     GEDIT_TYPE_WINDOW_STATE,
-							     GEDIT_WINDOW_STATE_NORMAL,
-							     G_PARAM_READABLE |
-							     G_PARAM_STATIC_STRINGS));
 
 	/* Bind class to template */
 	gtk_widget_class_set_template_from_resource (widget_class,
@@ -1553,7 +1555,7 @@ update_window_state (GeditWindow *window)
 						  window->priv->state,
 						  window->priv->num_tabs_with_error);
 
-		g_object_notify (G_OBJECT (window), "state");
+		g_object_notify_by_pspec (G_OBJECT (window), properties[PROP_STATE]);
 	}
 	else if (old_num_of_errors != window->priv->num_tabs_with_error)
 	{
