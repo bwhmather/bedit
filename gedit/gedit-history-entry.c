@@ -28,13 +28,6 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-enum {
-	PROP_0,
-	PROP_HISTORY_ID,
-	PROP_HISTORY_LENGTH,
-	PROP_ENABLE_COMPLETION
-};
-
 #define MIN_ITEM_LEN 3
 
 #define GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT 10
@@ -50,6 +43,16 @@ struct _GeditHistoryEntry
 
 	GSettings          *settings;
 };
+
+enum {
+	PROP_0,
+	PROP_HISTORY_ID,
+	PROP_HISTORY_LENGTH,
+	PROP_ENABLE_COMPLETION,
+	LAST_PROP
+};
+
+static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE (GeditHistoryEntry, gedit_history_entry, GTK_TYPE_COMBO_BOX_TEXT)
 
@@ -166,35 +169,30 @@ gedit_history_entry_class_init (GeditHistoryEntryClass *klass)
 	object_class->dispose = gedit_history_entry_dispose;
 	object_class->finalize = gedit_history_entry_finalize;
 
-	g_object_class_install_property (object_class,
-					 PROP_HISTORY_ID,
-					 g_param_spec_string ("history-id",
-							      "History ID",
-							      "History ID",
-							      NULL,
-							      G_PARAM_READWRITE |
-							      G_PARAM_CONSTRUCT_ONLY |
-							      G_PARAM_STATIC_STRINGS));
+	properties[PROP_HISTORY_ID] =
+		g_param_spec_string ("history-id",
+		                     "History ID",
+		                     "History ID",
+		                     NULL,
+		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
 
-	g_object_class_install_property (object_class,
-					 PROP_HISTORY_LENGTH,
-					 g_param_spec_uint ("history-length",
-							    "Max History Length",
-							    "Max History Length",
-							    0,
-							    G_MAXUINT,
-							    GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT,
-							    G_PARAM_READWRITE |
-							    G_PARAM_STATIC_STRINGS));
+	properties[PROP_HISTORY_LENGTH] =
+		g_param_spec_uint ("history-length",
+		                   "Max History Length",
+		                   "Max History Length",
+		                   0,
+		                   G_MAXUINT,
+		                   GEDIT_HISTORY_ENTRY_HISTORY_LENGTH_DEFAULT,
+		                   G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
-	g_object_class_install_property (object_class,
-	                                 PROP_ENABLE_COMPLETION,
-	                                 g_param_spec_boolean ("enable-completion",
-	                                                       "Enable Completion",
-	                                                       "Wether the completion is enabled",
-	                                                       TRUE,
-	                                                       G_PARAM_READWRITE |
-	                                                       G_PARAM_STATIC_STRINGS));
+	properties[PROP_ENABLE_COMPLETION] =
+		g_param_spec_boolean ("enable-completion",
+		                      "Enable Completion",
+		                      "Wether the completion is enabled",
+		                      TRUE,
+		                      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
 static GtkListStore *
