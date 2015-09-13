@@ -92,8 +92,11 @@ enum
 	PROP_MIME_TYPE,
 	PROP_READ_ONLY,
 	PROP_EMPTY_SEARCH,
-	PROP_USE_GVFS_METADATA
+	PROP_USE_GVFS_METADATA,
+	LAST_PROP
 };
+
+static GParamSpec *properties[LAST_PROP];
 
 enum
 {
@@ -105,7 +108,7 @@ enum
 	LAST_SIGNAL
 };
 
-static guint document_signals[LAST_SIGNAL] = { 0 };
+static guint document_signals[LAST_SIGNAL];
 
 static GHashTable *allocated_untitled_numbers = NULL;
 
@@ -407,29 +410,41 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	klass->loaded = gedit_document_loaded_real;
 	klass->saved = gedit_document_saved_real;
 
-	g_object_class_install_property (object_class, PROP_SHORTNAME,
-					 g_param_spec_string ("shortname",
-							      "Short Name",
-							      "The document's short name",
-							      NULL,
-							      G_PARAM_READWRITE |
-							      G_PARAM_STATIC_STRINGS));
+	/**
+	 * GeditDocument:shortname:
+	 *
+	 * The document's short name.
+	 */
+	properties[PROP_SHORTNAME] =
+		g_param_spec_string ("shortname",
+		                     "Short Name",
+		                     "The document's short name",
+		                     NULL,
+		                     G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
-	g_object_class_install_property (object_class, PROP_CONTENT_TYPE,
-					 g_param_spec_string ("content-type",
-							      "Content Type",
-							      "The document's Content Type",
-							      NULL,
-							      G_PARAM_READWRITE |
-							      G_PARAM_STATIC_STRINGS));
+	/**
+	 * GeditDocument:content-type:
+	 *
+	 * The document's content type.
+	 */
+	properties[PROP_CONTENT_TYPE] =
+		g_param_spec_string ("content-type",
+		                     "Content Type",
+		                     "The document's Content Type",
+		                     NULL,
+		                     G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
-	g_object_class_install_property (object_class, PROP_MIME_TYPE,
-					 g_param_spec_string ("mime-type",
-							      "MIME Type",
-							      "The document's MIME Type",
-							      "text/plain",
-							      G_PARAM_READABLE |
-							      G_PARAM_STATIC_STRINGS));
+	/**
+	 * GeditDocument:mime-type:
+	 *
+	 * The document's MIME type.
+	 */
+	properties[PROP_MIME_TYPE] =
+		g_param_spec_string ("mime-type",
+		                     "MIME Type",
+		                     "The document's MIME Type",
+		                     "text/plain",
+		                     G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
 	/**
 	 * GeditDocument:read-only:
@@ -438,14 +453,12 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	 *
 	 * Deprecated: 3.18: Use the #GtkSourceFile API.
 	 */
-	g_object_class_install_property (object_class, PROP_READ_ONLY,
-					 g_param_spec_boolean ("read-only",
-							       "Read Only",
-							       "Whether the document is read-only or not",
-							       FALSE,
-							       G_PARAM_READABLE |
-							       G_PARAM_DEPRECATED |
-							       G_PARAM_STATIC_STRINGS));
+	properties[PROP_READ_ONLY] =
+		g_param_spec_boolean ("read-only",
+		                      "Read Only",
+		                      "Whether the document is read-only or not",
+		                      FALSE,
+		                      G_PARAM_READABLE | G_PARAM_STATIC_STRINGS | G_PARAM_DEPRECATED);
 
 	/**
 	 * GeditDocument:empty-search:
@@ -455,13 +468,12 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	 * gedit plugin. The property can be modified or removed at any time.
 	 * </warning>
 	 */
-	g_object_class_install_property (object_class, PROP_EMPTY_SEARCH,
-					 g_param_spec_boolean ("empty-search",
-							       "Empty search",
-							       "Whether the search is empty",
-							       TRUE,
-							       G_PARAM_READABLE |
-							       G_PARAM_STATIC_STRINGS));
+	properties[PROP_EMPTY_SEARCH] =
+		g_param_spec_boolean ("empty-search",
+		                      "Empty search",
+		                      "Whether the search is empty",
+		                      TRUE,
+		                      G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
 	/**
 	 * GeditDocument:use-gvfs-metadata:
@@ -475,14 +487,14 @@ gedit_document_class_init (GeditDocumentClass *klass)
 	 * gedit plugin. The property can be modified or removed at any time.
 	 * </warning>
 	 */
-	g_object_class_install_property (object_class, PROP_USE_GVFS_METADATA,
-					 g_param_spec_boolean ("use-gvfs-metadata",
-							       "Use GVFS metadata",
-							       "",
-							       TRUE,
-							       G_PARAM_READWRITE |
-							       G_PARAM_CONSTRUCT_ONLY |
-							       G_PARAM_STATIC_STRINGS));
+	properties[PROP_USE_GVFS_METADATA] =
+		g_param_spec_boolean ("use-gvfs-metadata",
+		                      "Use GVFS metadata",
+		                      "",
+		                      TRUE,
+		                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 
 	/* This signal is used to update the cursor position in the statusbar,
 	 * it's emitted either when the insert mark is moved explicitely or
@@ -765,7 +777,7 @@ on_location_changed (GtkSourceFile *file,
 
 	if (priv->short_name == NULL)
 	{
-		g_object_notify (G_OBJECT (doc), "shortname");
+		g_object_notify_by_pspec (G_OBJECT (doc), properties[PROP_SHORTNAME]);
 	}
 
 	/* Load metadata for this location: we load sync since metadata is
@@ -815,7 +827,7 @@ on_readonly_changed (GtkSourceFile *file,
 		     GParamSpec    *pspec,
 		     GeditDocument *doc)
 {
-	g_object_notify (G_OBJECT (doc), "read-only");
+	g_object_notify_by_pspec (G_OBJECT (doc), properties[PROP_READ_ONLY]);
 }
 
 static void
@@ -966,7 +978,7 @@ set_content_type_no_guess (GeditDocument *doc,
 		priv->content_type = dupped_content_type;
 	}
 
-	g_object_notify (G_OBJECT (doc), "content-type");
+	g_object_notify_by_pspec (G_OBJECT (doc), properties[PROP_CONTENT_TYPE]);
 }
 
 static void
@@ -1152,7 +1164,7 @@ gedit_document_set_short_name_for_display (GeditDocument *doc,
 	g_free (priv->short_name);
 	priv->short_name = g_strdup (short_name);
 
-	g_object_notify (G_OBJECT (doc), "shortname");
+	g_object_notify_by_pspec (G_OBJECT (doc), properties[PROP_SHORTNAME]);
 }
 
 gchar *
@@ -1833,7 +1845,7 @@ update_empty_search (GeditDocument *doc)
 	if (priv->empty_search != new_value)
 	{
 		priv->empty_search = new_value;
-		g_object_notify (G_OBJECT (doc), "empty-search");
+		g_object_notify_by_pspec (G_OBJECT (doc), properties[PROP_EMPTY_SEARCH]);
 	}
 }
 
