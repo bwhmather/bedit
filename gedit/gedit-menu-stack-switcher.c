@@ -42,8 +42,11 @@ struct _GeditMenuStackSwitcher
 
 enum {
   PROP_0,
-  PROP_STACK
+  PROP_STACK,
+  LAST_PROP
 };
+
+static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE (GeditMenuStackSwitcher, gedit_menu_stack_switcher, GTK_TYPE_MENU_BUTTON)
 
@@ -319,7 +322,7 @@ gedit_menu_stack_switcher_set_stack (GeditMenuStackSwitcher *switcher,
 
   gtk_widget_queue_resize (GTK_WIDGET (switcher));
 
-  g_object_notify (G_OBJECT (switcher), "stack");
+  g_object_notify_by_pspec (G_OBJECT (switcher), properties[PROP_STACK]);
 }
 
 GtkStack *
@@ -400,14 +403,14 @@ gedit_menu_stack_switcher_class_init (GeditMenuStackSwitcherClass *klass)
   object_class->dispose = gedit_menu_stack_switcher_dispose;
   object_class->finalize = gedit_menu_stack_switcher_finalize;
 
-  g_object_class_install_property (object_class,
-                                   PROP_STACK,
-                                   g_param_spec_object ("stack",
-                                                        "Stack",
-                                                        "Stack",
-                                                        GTK_TYPE_STACK,
-                                                        G_PARAM_READWRITE |
-                                                        G_PARAM_CONSTRUCT));
+  properties[PROP_STACK] =
+    g_param_spec_object ("stack",
+                         "Stack",
+                         "Stack",
+                         GTK_TYPE_STACK,
+                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_STATIC_STRINGS);
+
+  g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
 GtkWidget *
