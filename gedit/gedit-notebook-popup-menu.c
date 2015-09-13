@@ -41,8 +41,11 @@ enum
 {
 	PROP_0,
 	PROP_WINDOW,
-	PROP_TAB
+	PROP_TAB,
+	LAST_PROP
 };
+
+static GParamSpec *properties[LAST_PROP];
 
 G_DEFINE_TYPE (GeditNotebookPopupMenu, gedit_notebook_popup_menu, GTK_TYPE_MENU)
 
@@ -92,12 +95,6 @@ gedit_notebook_popup_menu_get_property (GObject    *object,
 			G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
 			break;
 	}
-}
-
-static void
-gedit_notebook_popup_menu_finalize (GObject *object)
-{
-	G_OBJECT_CLASS (gedit_notebook_popup_menu_parent_class)->finalize (object);
 }
 
 static void
@@ -164,25 +161,22 @@ gedit_notebook_popup_menu_class_init (GeditNotebookPopupMenuClass *klass)
 	object_class->get_property = gedit_notebook_popup_menu_get_property;
 	object_class->set_property = gedit_notebook_popup_menu_set_property;
 	object_class->constructed = gedit_notebook_popup_menu_constructed;
-	object_class->finalize = gedit_notebook_popup_menu_finalize;
 
-	g_object_class_install_property (object_class,
-	                                 PROP_WINDOW,
-	                                 g_param_spec_object ("window",
-	                                                      "Window",
-	                                                      "The GeditWindow",
-	                                                      GEDIT_TYPE_WINDOW,
-	                                                      G_PARAM_READWRITE |
-	                                                      G_PARAM_CONSTRUCT_ONLY));
+	properties[PROP_WINDOW] =
+		g_param_spec_object ("window",
+		                     "Window",
+		                     "The GeditWindow",
+		                     GEDIT_TYPE_WINDOW,
+		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
 
-	g_object_class_install_property (object_class,
-	                                 PROP_TAB,
-	                                 g_param_spec_object ("tab",
-	                                                      "Tab",
-	                                                      "The GeditTab",
-	                                                      GEDIT_TYPE_TAB,
-	                                                      G_PARAM_READWRITE |
-	                                                      G_PARAM_CONSTRUCT_ONLY));
+	properties[PROP_TAB] =
+		g_param_spec_object ("tab",
+		                     "Tab",
+		                     "The GeditTab",
+		                     GEDIT_TYPE_TAB,
+		                     G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
+
+	g_object_class_install_properties (object_class, LAST_PROP, properties);
 }
 
 static void
