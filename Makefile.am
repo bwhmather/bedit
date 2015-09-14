@@ -8,7 +8,6 @@ SUBDIRS += help
 endif
 
 EXTRA_DIST = 			\
-	BUGS			\
 	HACKING			\
 	MAINTAINERS		\
 	gedit.doap		\
