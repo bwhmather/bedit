@@ -6,16 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"POT-Creation-Date: 2015-06-19 05:21+0000\n"
-"PO-Revision-Date: 2015-06-20 10:30+0300\n"
-"Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
+"POT-Creation-Date: 2015-09-20 05:28+0000\n"
+"PO-Revision-Date: 2015-09-20 13:17+0300\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: www.gnome.gr\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.8.4\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -47,11 +47,11 @@ msgstr "Αλλαγή των χρωμάτων κειμένου και παρασ�
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:9
 #: C/gedit-plugins-quick-open.page:10 C/gedit-plugins-snippets.page:9
 #: C/gedit-plugins-sort.page:13 C/gedit-printing.page:10
-#: C/gedit-quickstart.page:12 C/gedit-replace.page:13
-#: C/gedit-save-file.page:12 C/gedit-search.page:11
-#: C/gedit-shortcut-keys.page:13 C/gedit-spellcheck.page:12
-#: C/gedit-syntax-highlighting.page:10 C/gedit-tabs-moving.page:13
-#: C/gedit-tabs.page:14 C/gedit-undo-recent-action.page:12 C/index.page:14
+#: C/gedit-quickstart.page:12 C/gedit-replace.page:13 C/gedit-save-file.page:12
+#: C/gedit-search.page:11 C/gedit-shortcut-keys.page:14
+#: C/gedit-spellcheck.page:12 C/gedit-syntax-highlighting.page:10
+#: C/gedit-tabs-moving.page:13 C/gedit-tabs.page:14
+#: C/gedit-undo-recent-action.page:12 C/index.page:14
 msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
@@ -62,11 +62,13 @@ msgstr "Jana Svarova"
 
 #. (itstool) path: credit/years
 #: C/gedit-change-color-scheme.page:19 C/gedit-change-color-scheme.page:24
+#: C/gedit-shortcut-keys.page:41
 msgid "2015"
 msgstr "2015"
 
 #. (itstool) path: credit/name
 #: C/gedit-change-color-scheme.page:22 C/gedit-replace.page:25
+#: C/gedit-shortcut-keys.page:39
 msgid "Ekaterina Gerasimova"
 msgstr "Ekaterina Gerasimova"
 
@@ -250,7 +252,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-create-new-file.page:8
-#| msgid "Open a file or set of files"
 msgid "Open a new file for editing."
 msgstr "Άνοιγμα ενός νέου αρχείου για επεξεργασία."
 
@@ -480,7 +481,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-open-files-from-sidepane.page:8
-#| msgid "Use the side pane to browse and open files"
 msgid "Use gedit's side pane as a file browser."
 msgstr "Χρησιμοποιήστε την πλευρική στήλη του gedit ως περιηγητή αρχείου."
 
@@ -648,7 +648,8 @@ msgstr ""
 #. (itstool) path: info/desc
 #: C/gedit-open-on-server.page:7
 msgid "Access files that are stored on a different computer."
-msgstr "Πρόσβαση αρχείων που είναι αποθηκευμένα σε έναν διαφορετικό υπολογιστή."
+msgstr ""
+"Πρόσβαση αρχείων που είναι αποθηκευμένα σε έναν διαφορετικό υπολογιστή."
 
 #. (itstool) path: page/title
 #: C/gedit-open-on-server.page:16
@@ -835,7 +836,6 @@ msgstr "Χρήση προσθέτων για προσαρμογή του τρό�
 
 #. (itstool) path: page/title
 #: C/gedit-plugin-guide.page:16
-#| msgid "Configure and use gedit Plugins"
 msgid "Configure and use gedit plugins"
 msgstr "Ρύθμιση και χρήση προσθέτων του gedit"
 
@@ -883,7 +883,6 @@ msgstr "Daniel Neel"
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-change-case.page:17
-#| msgid "Change the case of selected text"
 msgid "Change the case of selected text."
 msgstr "Αλλαγή του επιλεγμένου κειμένου σε κεφαλαία-πεζά."
 
@@ -973,7 +972,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-doc-stats.page:17
-#| msgid "View document statistics"
 msgid "View document statistics."
 msgstr "Προβολή στατιστικών εγγράφου."
 
@@ -1035,8 +1033,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-external-tools.page:18
-#| msgid ""
-#| "Run scripts on your current files, and interact with other applications"
 msgid ""
 "Run scripts on your current files, and interact with other applications."
 msgstr ""
@@ -1098,11 +1094,9 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-file-browser.page:17
-#| msgid "Use the side pane to browse and open files"
 msgid "Use the side pane to browse and open files."
 msgstr ""
-"Χρησιμοποιήστε την πλευρική στήλη για να περιηγηθείτε και να ανοίξετε "
-"αρχεία."
+"Χρησιμοποιήστε την πλευρική στήλη για να περιηγηθείτε και να ανοίξετε αρχεία."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-file-browser.page:20
@@ -1147,7 +1141,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-insert-date-time.page:17
-#| msgid "Insert the current date/time at the cursor position"
 msgid "Insert the current date/time at the cursor position."
 msgstr "Εισαγωγή τρέχουσας ημερομηνίας/ώρας στη θέση του δρομέα."
 
@@ -1193,7 +1186,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-install.page:15
-#| msgid "How to install third-party plugins"
 msgid "How to install third-party plugins."
 msgstr "Πως να εγκαταστήσετε πρόσθετα τρίτων."
 
@@ -1303,9 +1295,9 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-modelines.page:16
-#| msgid "Emacs, Kate and Vim-style modelines support for gedit"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
-msgstr "Υποστήριξη του gedit για γραμμές διαμόρφωσης τύπου Emacs, Kate και Vim."
+msgstr ""
+"Υποστήριξη του gedit για γραμμές διαμόρφωσης τύπου Emacs, Kate και Vim."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-modelines.page:19
@@ -1534,7 +1526,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-pyconsole.page:13
-#| msgid "Add an interactive Python console to the bottom pane"
 msgid "Add an interactive Python console to the bottom pane."
 msgstr "Προσθήκη μιας διαδραστικής κονσόλας Python στο κάτω παράθυρο."
 
@@ -1580,7 +1571,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-quick-open.page:18
-#| msgid "Quickly open a file or set of files"
 msgid "Quickly open a file or set of files."
 msgstr "Γρήγορο άνοιγμα ενός αρχείου ή ενός συνόλου αρχείων."
 
@@ -1726,7 +1716,7 @@ msgstr ""
 #: C/gedit-printing-order.page:15 C/gedit-printing.page:14
 #: C/gedit-printing-select.page:14 C/gedit-quickstart.page:16
 #: C/gedit-replace.page:21 C/gedit-save-file.page:16 C/gedit-search.page:19
-#: C/gedit-shortcut-keys.page:29 C/gedit-spellcheck.page:20
+#: C/gedit-shortcut-keys.page:30 C/gedit-spellcheck.page:20
 #: C/gedit-syntax-highlighting.page:14 C/gedit-tabs-moving.page:21
 #: C/gedit-tabs.page:22 C/gedit-undo-recent-action.page:20 C/index.page:18
 msgid "Sindhu S"
@@ -1734,7 +1724,6 @@ msgstr "Sindhu S"
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-snippets.page:17
-#| msgid "Use snippets to quickly insert often-used pieces of text"
 msgid "Use snippets to quickly insert often-used pieces of text."
 msgstr ""
 "Χρησιμοποιήστε αποσπάσματα για να εισάγετε γρήγορα συχνά χρησιμοποιούμενα "
@@ -2060,7 +2049,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-sort.page:21
-#| msgid "Sort lines of text into alphabetical order"
 msgid "Sort lines of text into alphabetical order."
 msgstr "Ταξινόμηση γραμμών του κειμένου σε αλφαβητική σειρά."
 
@@ -2279,7 +2267,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-printing.page:7
-#| msgid "Find and select the file that you wish to open."
 msgid "Print the files that you create with gedit."
 msgstr "Εκτύπωση των αρχείων που δημιουργήθηκαν με το gedit."
 
@@ -2468,13 +2455,11 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-printing-select.page:7
-#| msgid "Select the name of the session that you want to delete."
 msgid "Choose the pages that you want to print."
 msgstr "Επιλέξτε τις σελίδες που θέλετε να εκτυπώσετε."
 
 #. (itstool) path: page/title
 #: C/gedit-printing-select.page:20
-#| msgid "Only Printing Certain Pages"
 msgid "Only print certain pages"
 msgstr "Εκτύπωση μόνο συγκεκριμένων σελίδων"
 
@@ -2582,17 +2567,21 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-replace.page:8
-#| msgid "Replace a word within the current file"
 msgid "Replace portions of text in a file."
 msgstr "Αντικατάσταση τμημάτων του κειμένου σε ένα αρχείο."
 
+#. (itstool) path: credit/name
+#: C/gedit-replace.page:33
+msgid "Young Li"
+msgstr "Young Li"
+
 #. (itstool) path: page/title
-#: C/gedit-replace.page:35
+#: C/gedit-replace.page:39
 msgid "Replace text"
 msgstr "Αντικατάσταση κειμένου"
 
 #. (itstool) path: page/p
-#: C/gedit-replace.page:37
+#: C/gedit-replace.page:41
 msgid ""
 "Editing text can be time consuming. To save time, <app>gedit</app> includes "
 "a <app>Replace</app> function that helps you to find and replace portions of "
@@ -2603,12 +2592,12 @@ msgstr ""
 "βοηθάει να βρείτε και να αντικαταστήσετε τμήματα του κειμένου."
 
 #. (itstool) path: steps/title
-#: C/gedit-replace.page:42
+#: C/gedit-replace.page:46
 msgid "Replace text in <app>gedit</app>"
 msgstr "Αντικατάσταση κειμένου στο <app>gedit</app>"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:44
+#: C/gedit-replace.page:48
 msgid ""
 "Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"button"
 "\">Menu button</gui><gui style=\"menuitem\">Find and Replace…</gui></guiseq> "
@@ -2619,7 +2608,7 @@ msgstr ""
 "</gui></guiseq> ή πατώντας <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:50
+#: C/gedit-replace.page:54
 msgid ""
 "Enter the text that you wish to replace into the <gui>Search for:</gui> "
 "field."
@@ -2628,7 +2617,7 @@ msgstr ""
 "για:</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:54
+#: C/gedit-replace.page:58
 msgid ""
 "Enter the new, replacement text into the <gui>Replace with:</gui> field."
 msgstr ""
@@ -2636,7 +2625,7 @@ msgstr ""
 "gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:58
+#: C/gedit-replace.page:62
 msgid ""
 "Once you have entered the original and replacement text, you can add extra "
 "parameters to the search. You can also choose what you want to replace:"
@@ -2646,14 +2635,14 @@ msgstr ""
 "επιλέξετε τι θέλετε να αντικαταστήσετε:"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:63
+#: C/gedit-replace.page:67
 msgid "To replace <em>only</em> the next match, click <gui>Replace</gui>."
 msgstr ""
 "Για να αντικαταστήσετε <em>μόνο</em> το επόμενο ταίριασμα, πατήστε στο "
 "<gui>Αντικατάσταση</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:67
+#: C/gedit-replace.page:71
 msgid ""
 "To replace <em>all occurrences</em> of the searched-for text, click "
 "<gui>Replace All</gui>."
@@ -2662,7 +2651,7 @@ msgstr ""
 "κειμένου, πατήστε στην <gui>Αντικατάσταση όλων</gui>."
 
 #. (itstool) path: note/p
-#: C/gedit-replace.page:75
+#: C/gedit-replace.page:79
 msgid ""
 "Use the <gui>Replace All</gui> function with care. <gui>Replace All</gui> "
 "works on the entirety of your text file, and does not allow you to highlight "
@@ -2674,24 +2663,24 @@ msgstr ""
 "αντικατάστασης θα ενεργήσει."
 
 #. (itstool) path: section/title
-#: C/gedit-replace.page:82
+#: C/gedit-replace.page:86
 msgid "More options"
 msgstr "Περισσότερες επιλογές"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:84
+#: C/gedit-replace.page:88
 msgid "If you wish, you can add some extra parameters to your search:"
 msgstr ""
 "Αν θέλετε, μπορείτε να προσθέσετε μερικές πρόσθετες παραμέτρους στην "
 "αναζήτησή σας:"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:88
+#: C/gedit-replace.page:92
 msgid "Match case"
 msgstr "Ταίριασμα πεζών-κεφαλαίων"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:89
+#: C/gedit-replace.page:93
 msgid ""
 "The <em>Match case</em> option allows you to specify whether you want your "
 "search to be case-sensitive. If this option is selected, searches will be "
@@ -2703,12 +2692,12 @@ msgstr ""
 "έχουν διάκριση πεζών-κεφαλαίων."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:94
+#: C/gedit-replace.page:98
 msgid "Match entire word only"
 msgstr "Ταίριασμα μόνο ολόκληρης λέξης"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:95
+#: C/gedit-replace.page:99
 msgid ""
 "Use this option to search for a specific word without including fragments of "
 "other words. For example, if you searched for the word 'and' with this "
@@ -2722,12 +2711,12 @@ msgstr ""
 "όχι."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:102
+#: C/gedit-replace.page:106
 msgid "Search backwards"
 msgstr "Αναζήτηση προς τα πίσω"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:103
+#: C/gedit-replace.page:107
 msgid ""
 "This command behaves identically to the Find Previous command. If you wish "
 "to step through search results from end to beginning, select this option."
@@ -2737,12 +2726,12 @@ msgstr ""
 "επιλέξτε αυτή την επιλογή."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:108
+#: C/gedit-replace.page:112
 msgid "Wrap around"
 msgstr "Αναδίπλωση ολόγυρα"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:109
+#: C/gedit-replace.page:113
 msgid ""
 "With the <app>wrap around</app> option enabled, <app>gedit</app> will re-"
 "start the search/replace action at the top of the file after it has reached "
@@ -2755,37 +2744,28 @@ msgstr ""
 "αναζήτησης/αντικατάστασης σας έχει γίνει σε όλο το αρχείο."
 
 #. (itstool) path: section/title
-#: C/gedit-replace.page:119
+#: C/gedit-replace.page:123
 msgid "Using escape sequences"
 msgstr "Χρήση ακολουθιών διαφυγής"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:121
+#: C/gedit-replace.page:125
 msgid ""
-"You can use <em>escape sequences</em> to search for line breaks and tabs."
+"You can use <em>escape sequences</em> to search for line breaks, carriage "
+"returns, and tabs."
 msgstr ""
 "Μπορείτε να χρησιμοποιήσετε <em>ακολουθίες διαφυγής</em> για αναζήτηση "
-"αλλαγών γραμμών και στηλοθετών."
+"αλλαγών γραμμών, επαναφορών κεφαλής και στηλοθετών."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:126
+#: C/gedit-replace.page:130
 msgid "\\n"
 msgstr "\\n"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:127
+#: C/gedit-replace.page:131
 msgid "Newline"
 msgstr "Νέα γραμμή"
-
-#. (itstool) path: item/title
-#: C/gedit-replace.page:130
-msgid "\\t"
-msgstr "\\t"
-
-#. (itstool) path: item/p
-#: C/gedit-replace.page:131
-msgid "Tab"
-msgstr "Στηλοθέτης"
 
 #. (itstool) path: item/title
 #: C/gedit-replace.page:134
@@ -2797,8 +2777,18 @@ msgstr "\\r"
 msgid "Carriage return"
 msgstr "Επαναφορά κεφαλής"
 
-#. (itstool) path: section/p
+#. (itstool) path: item/title
+#: C/gedit-replace.page:138
+msgid "\\t"
+msgstr "\\t"
+
+#. (itstool) path: item/p
 #: C/gedit-replace.page:139
+msgid "Tab"
+msgstr "Στηλοθέτης"
+
+#. (itstool) path: section/p
+#: C/gedit-replace.page:143
 msgid ""
 "If you actually want to search for a <output>\\</output> (backslash) or one "
 "of the escape sequences in the text, you need to escape the backslash with "
@@ -2851,7 +2841,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-search.page:8
-#| msgid "Find a word within the current file"
 msgid "Find a portion of text within a file."
 msgstr "Εύρεση τμήματος κειμένου μέσα σε ένα αρχείο."
 
@@ -3031,44 +3020,44 @@ msgstr ""
 "γρήγορα."
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:17
+#: C/gedit-shortcut-keys.page:18
 msgid "Paolo Borelli"
 msgstr "Paolo Borelli"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:20
+#: C/gedit-shortcut-keys.page:21
 msgid "Jesse van den Kieboom"
 msgstr "Jesse van den Kieboom"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:23
+#: C/gedit-shortcut-keys.page:24
 msgid "Steve Frécinaux"
 msgstr "Steve Frécinaux"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:26
+#: C/gedit-shortcut-keys.page:27
 msgid "Ignacio Casal Quinteiro"
 msgstr "Ignacio Casal Quinteiro"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:33 C/gedit-tab-groups.page:15
+#: C/gedit-shortcut-keys.page:34 C/gedit-tab-groups.page:15
 #: C/gedit-tabs-moving.page:25 C/gedit-tabs.page:26
 msgid "Radina Matic"
 msgstr "Radina Matic"
 
 #. (itstool) path: credit/years
-#: C/gedit-shortcut-keys.page:35 C/gedit-tab-groups.page:17
+#: C/gedit-shortcut-keys.page:36 C/gedit-tab-groups.page:17
 #: C/gedit-tabs-moving.page:27 C/gedit-tabs.page:28
 msgid "2013"
 msgstr "2013"
 
 #. (itstool) path: page/title
-#: C/gedit-shortcut-keys.page:40
+#: C/gedit-shortcut-keys.page:47
 msgid "Shortcut keys"
 msgstr "Πλήκτρα συντόμευσης"
 
 #. (itstool) path: page/p
-#: C/gedit-shortcut-keys.page:42
+#: C/gedit-shortcut-keys.page:49
 msgid ""
 "Use <gui>shortcut keys</gui> to perform common tasks more quickly than with "
 "the mouse and menus. The following tables list all of <app>gedit's</app> "
@@ -3080,113 +3069,113 @@ msgstr ""
 "<app>gedit</app>."
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:47
+#: C/gedit-shortcut-keys.page:54
 msgid "Tab-related Shortcut keys"
 msgstr "Συντομεύσεις πλήκτρων σχετικές με τις καρτέλες"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:50 C/gedit-shortcut-keys.page:106
-#: C/gedit-shortcut-keys.page:152 C/gedit-shortcut-keys.page:246
-#: C/gedit-shortcut-keys.page:267 C/gedit-shortcut-keys.page:304
-#: C/gedit-shortcut-keys.page:333
-msgid "To Do This"
-msgstr "Για να κάνετε αυτό"
+#: C/gedit-shortcut-keys.page:57 C/gedit-shortcut-keys.page:113
+#: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:261
+#: C/gedit-shortcut-keys.page:286 C/gedit-shortcut-keys.page:323
+#: C/gedit-shortcut-keys.page:352
+msgid "Action"
+msgstr "Ενέργεια"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:51 C/gedit-shortcut-keys.page:107
-#: C/gedit-shortcut-keys.page:153 C/gedit-shortcut-keys.page:247
-#: C/gedit-shortcut-keys.page:268 C/gedit-shortcut-keys.page:305
-#: C/gedit-shortcut-keys.page:334
-msgid "Press This"
-msgstr "Πατήστε αυτό"
+#: C/gedit-shortcut-keys.page:58 C/gedit-shortcut-keys.page:114
+#: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:262
+#: C/gedit-shortcut-keys.page:287 C/gedit-shortcut-keys.page:324
+#: C/gedit-shortcut-keys.page:353
+msgid "Keyboard shortcut"
+msgstr "Συντόμευση πληκτρολογίου"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:56
+#: C/gedit-shortcut-keys.page:63
 msgid "Switch to the next tab to the left"
 msgstr "Μετάβαση στην επόμενη προς τα αριστερά καρτέλα"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:57
+#: C/gedit-shortcut-keys.page:64
 msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:61
+#: C/gedit-shortcut-keys.page:68
 msgid "Switch to the next tab to the right"
 msgstr "Μετάβαση στην επόμενη προς τα δεξιά καρτέλα"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:62
+#: C/gedit-shortcut-keys.page:69
 msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:66
+#: C/gedit-shortcut-keys.page:73
 msgid "Close tab"
 msgstr "Κλείσιμο καρτέλας"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:67 C/gedit-shortcut-keys.page:139
+#: C/gedit-shortcut-keys.page:74 C/gedit-shortcut-keys.page:154
 msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:70
+#: C/gedit-shortcut-keys.page:77
 msgid "Save all tabs"
 msgstr "Αποθήκευση όλων των καρτελών"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:71
+#: C/gedit-shortcut-keys.page:78
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:75
+#: C/gedit-shortcut-keys.page:82
 msgid "Close all tabs"
 msgstr "Κλείσιμο όλων των καρτελών"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:76
+#: C/gedit-shortcut-keys.page:83
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:79
+#: C/gedit-shortcut-keys.page:86
 msgid "Reopen the most recently closed tab"
 msgstr "Άνοιγμα ξανά της πιο πρόσφατης κλεισμένης καρτέλας"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:80
+#: C/gedit-shortcut-keys.page:87
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:83
+#: C/gedit-shortcut-keys.page:90
 msgid "Jump to <var>n</var>th tab"
 msgstr "Μετάβαση στην <var>n</var>η καρτέλα"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:84
+#: C/gedit-shortcut-keys.page:91
 msgid "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:88
+#: C/gedit-shortcut-keys.page:95
 msgid "New tab group"
 msgstr "Νέα ομάδα καρτελών"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:89
+#: C/gedit-shortcut-keys.page:96
 msgid "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:92
+#: C/gedit-shortcut-keys.page:99
 msgid "Previous tab group"
 msgstr "Προηγούμενη ομάδα καρτελών"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:93
+#: C/gedit-shortcut-keys.page:100
 msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></"
 "keyseq>"
@@ -3195,12 +3184,12 @@ msgstr ""
 "keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:96
+#: C/gedit-shortcut-keys.page:103
 msgid "Next tab group"
 msgstr "Επόμενη ομάδα καρτελών"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:97
+#: C/gedit-shortcut-keys.page:104
 msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></"
 "keyseq>"
@@ -3209,438 +3198,471 @@ msgstr ""
 "keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:103
+#: C/gedit-shortcut-keys.page:110
 msgid "Shortcut keys for working with files"
 msgstr "Συντομεύσεις πλήκτρων για εργασία με αρχεία"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:112
-msgid "Create a new document"
-msgstr "Δημιουργία νέου εγγράφου"
+#: C/gedit-shortcut-keys.page:119
+msgid "Create a new document in a new window"
+msgstr "Δημιουργία νέου εγγράφου σε νέο παράθυρο"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:113
+#: C/gedit-shortcut-keys.page:120
 msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:116
+#: C/gedit-shortcut-keys.page:123
+msgid "Create a new document in a new tab"
+msgstr "Δημιουργία νέου εγγράφου σε νέα καρτέλα"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:124
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:127
 msgid "Open a document"
 msgstr "Άνοιγμα ενός εγγράφου"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:117
+#: C/gedit-shortcut-keys.page:128
 msgid "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:120
+#: C/gedit-shortcut-keys.page:131
+msgid "Open the <gui>Quick Open</gui> window"
+msgstr "Άνοιγμα του παραθύρου <gui>Γρήγορο άνοιγμα</gui>."
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:132
+#| msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
+msgid "<keyseq><key>Alt</key><key>O</key></keyseq>"
+msgstr "<keyseq><key>Alt</key><key>O</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:135
 msgid "Save the current document"
 msgstr "Αποθήκευση του τρέχοντος εγγράφου"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:121
+#: C/gedit-shortcut-keys.page:136
 msgid "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:124
+#: C/gedit-shortcut-keys.page:139
 msgid "Save the current document with a new filename"
 msgstr "Αποθήκευση του τρέχοντος εγγράφου με νέο όνομα αρχείου"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:125
+#: C/gedit-shortcut-keys.page:140
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:129
+#: C/gedit-shortcut-keys.page:144
 msgid "Print the current document"
 msgstr "Εκτύπωση του τρέχοντος εγγράφου"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:130
+#: C/gedit-shortcut-keys.page:145
 msgid "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:133
+#: C/gedit-shortcut-keys.page:148
 msgid "Print preview"
 msgstr "Προεπισκόπηση εκτύπωσης"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:134
+#: C/gedit-shortcut-keys.page:149
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:138
+#: C/gedit-shortcut-keys.page:153
 msgid "Close the current document"
 msgstr "Κλείσιμο του τρέχοντος εγγράφου"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:142
+#: C/gedit-shortcut-keys.page:157
 msgid "Quit gedit"
 msgstr "Έξοδος από το gedit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:143
+#: C/gedit-shortcut-keys.page:158
 msgid "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:149
+#: C/gedit-shortcut-keys.page:164
 msgid "Shortcut keys for editing files"
 msgstr "Συντομεύσεις πλήκτρων για την επεξεργασία αρχείων"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:158
+#: C/gedit-shortcut-keys.page:173
 msgid "Move to the beginning of the current line"
 msgstr "Μετάβαση στην αρχή της τρέχουσας γραμμής"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:159
+#: C/gedit-shortcut-keys.page:174
 msgid "<key>Home</key>"
 msgstr "<key>Home</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:162
+#: C/gedit-shortcut-keys.page:177
 msgid "Move to the end of the current line"
 msgstr "Μετάβαση στο τέλος της τρέχουσας γραμμής"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:163
+#: C/gedit-shortcut-keys.page:178
 msgid "<key>End</key>"
 msgstr "<key>End</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:166
+#: C/gedit-shortcut-keys.page:181
 msgid "Move to the beginning of the document"
 msgstr "Μετάβαση στην αρχή του εγγράφου"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:167
+#: C/gedit-shortcut-keys.page:182
 msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:170
+#: C/gedit-shortcut-keys.page:185
 msgid "Move to the end of the document"
 msgstr "Μετάβαση στο τέλος του εγγράφου"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:171
+#: C/gedit-shortcut-keys.page:186
 msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:174
+#: C/gedit-shortcut-keys.page:189
 msgid "Move the selected word right one word"
 msgstr "Μετακίνηση της επιλεγμένης λέξης δεξιά κατά μία λέξη"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:175
+#: C/gedit-shortcut-keys.page:190
 msgid "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:178
+#: C/gedit-shortcut-keys.page:193
 msgid "Move the selected word left one word"
 msgstr "Μετακίνηση της επιλεγμένης λέξης αριστερά κατά μία λέξη"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:179
+#: C/gedit-shortcut-keys.page:194
 msgid "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:182
+#: C/gedit-shortcut-keys.page:197
 msgid "Undo the last action"
 msgstr "Αναίρεση της τελευταίας ενέργειας"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:183
+#: C/gedit-shortcut-keys.page:198
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:186
+#: C/gedit-shortcut-keys.page:201
 msgid "Redo the last undone action"
 msgstr "Επανάληψη της ενέργειας που έχει ακυρωθεί"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:187
+#: C/gedit-shortcut-keys.page:202
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:191
+#: C/gedit-shortcut-keys.page:206
 msgid "Cut the selected text or region and place it on the clipboard"
 msgstr ""
 "Αποκοπή του επιλεγμένου κειμένου ή περιοχής και τοποθέτηση στο πρόχειρο."
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:193
+#: C/gedit-shortcut-keys.page:208
 msgid "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:196
+#: C/gedit-shortcut-keys.page:211
 msgid "Copy the selected text or region onto the clipboard"
 msgstr "Αντιγραφή του επιλεγμένου κειμένου ή περιοχής στο πρόχειρο."
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:197
+#: C/gedit-shortcut-keys.page:212
 msgid "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:200
+#: C/gedit-shortcut-keys.page:215
 msgid "Paste the contents of the clipboard"
 msgstr "Επικόλληση των περιεχομένων του πρόχειρου"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:201
+#: C/gedit-shortcut-keys.page:216
 msgid "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:204
+#: C/gedit-shortcut-keys.page:219
 msgid "Select all text in the file"
 msgstr "Επιλογή όλου του κειμένου στο αρχείο"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:205
+#: C/gedit-shortcut-keys.page:220
 msgid "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:208
+#: C/gedit-shortcut-keys.page:223
 msgid "Delete the current line"
 msgstr "Διαγραφή τρέχουσας γραμμής"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:209
+#: C/gedit-shortcut-keys.page:224
 msgid "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:212
+#: C/gedit-shortcut-keys.page:227
 msgid "Move the selected line up one line"
 msgstr "Μετακίνηση της επιλεγμένης γραμμής μια γραμμή επάνω"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:213
+#: C/gedit-shortcut-keys.page:228
 msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:216
+#: C/gedit-shortcut-keys.page:231
 msgid "Move the selected line down one line"
 msgstr "Μετακίνηση της επιλεγμένης γραμμής μια γραμμή κάτω"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:217
+#: C/gedit-shortcut-keys.page:232
 msgid "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:220
+#: C/gedit-shortcut-keys.page:235
 msgid "Add a tab stop"
 msgstr "Προσθήκη στάση στηλοθέτη"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:221
+#: C/gedit-shortcut-keys.page:236
 msgid "<keyseq><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:224
+#: C/gedit-shortcut-keys.page:239
 msgid "Remove a tab stop"
 msgstr "Αφαίρεση στάσης στηλοθέτη"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:225
+#: C/gedit-shortcut-keys.page:240
 msgid "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:228
+#: C/gedit-shortcut-keys.page:243
 msgid "Convert the selected text to upper case"
 msgstr "Μετατροπή του επιλεγμένου κειμένου σε κεφαλαία"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:229
+#: C/gedit-shortcut-keys.page:244
 msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:232
+#: C/gedit-shortcut-keys.page:247
 msgid "Convert the selected text to lower case"
 msgstr "Μετατροπή του επιλεγμένου κειμένου σε πεζά"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:233
+#: C/gedit-shortcut-keys.page:248
 msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:236
+#: C/gedit-shortcut-keys.page:251
 msgid "Toggle case of the selected text"
 msgstr "Αλλαγή του επιλεγμένου κειμένου σε κεφαλαία-πεζά"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:237
+#: C/gedit-shortcut-keys.page:252
 msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:243
+#: C/gedit-shortcut-keys.page:258
 msgid "Shortcut keys for showing and hiding panes"
 msgstr "Συντομεύσεις πλήκτρων για εμφάνιση και απόκρυψη παραθύρων"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:252
+#: C/gedit-shortcut-keys.page:267
 msgid "Show / hide the side pane"
 msgstr "Εμφάνιση / απόκρυψη της πλευρικής στήλης"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:253
+#: C/gedit-shortcut-keys.page:268
 msgid "<key>F9</key>"
 msgstr "<key>F9</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:256
-msgid "Show / hide the bottom pane."
-msgstr "Εμφάνιση / απόκρυψη του κάτω παραθύρου."
+#: C/gedit-shortcut-keys.page:271
+msgid "Show / hide the bottom pane"
+msgstr "Εμφάνιση / απόκρυψη του κάτω παραθύρου"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:257
+#: C/gedit-shortcut-keys.page:272
 msgid "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:276
+msgid "Open the file menu"
+msgstr "Άνοιγμα του μενού αρχείου"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:277
+#| msgid "<key>F1</key>"
+msgid "<key>F10</key>"
+msgstr "<key>F10</key>"
+
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:264
+#: C/gedit-shortcut-keys.page:283
 msgid "Shortcut keys for searching"
 msgstr "Συντομεύσεις πλήκτρων για αναζήτηση"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:273
+#: C/gedit-shortcut-keys.page:292
 msgid "Find a string"
 msgstr "Εύρεση συμβολοσειράς"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:274
+#: C/gedit-shortcut-keys.page:293
 msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:277
+#: C/gedit-shortcut-keys.page:296
 msgid "Find the next instance of the string"
 msgstr "Εύρεση του επόμενου στιγμιότυπου της συμβολοσειράς"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:278
+#: C/gedit-shortcut-keys.page:297
 msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:281
+#: C/gedit-shortcut-keys.page:300
 msgid "Find the previous instance of the string"
 msgstr "Εύρεση του προηγούμενου στιγμιότυπου της συμβολοσειράς"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:282
+#: C/gedit-shortcut-keys.page:301
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:285
+#: C/gedit-shortcut-keys.page:304
 msgid "Search and Replace"
 msgstr "Αναζήτηση και αντικατάσταση"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:286
+#: C/gedit-shortcut-keys.page:305
 msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:289
+#: C/gedit-shortcut-keys.page:308
 msgid "Clear highlight"
 msgstr "Καθαρισμός επισήμανσης"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:290
+#: C/gedit-shortcut-keys.page:309
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:294
+#: C/gedit-shortcut-keys.page:313
 msgid "Goto line"
 msgstr "Μετάβαση στη γραμμή"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:295
+#: C/gedit-shortcut-keys.page:314
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:301
+#: C/gedit-shortcut-keys.page:320
 msgid "Shortcut keys for tools"
 msgstr "Συντομεύσεις πλήκτρων για εργαλεία"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:310
+#: C/gedit-shortcut-keys.page:329
 msgid "Check spelling"
 msgstr "Έλεγχος ορθογραφίας"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:311
+#: C/gedit-shortcut-keys.page:330
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:314
+#: C/gedit-shortcut-keys.page:333
 msgid "Remove trailing spaces (with plugin)"
 msgstr "Αφαίρεση τελικών κενών (με πρόσθετο)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:315
+#: C/gedit-shortcut-keys.page:334
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:318
+#: C/gedit-shortcut-keys.page:337
 msgid "Run \"make\" in the current directory (with plugin)"
 msgstr "Εκτέλεση της εντολής \"make\" στον τρέχοντα κατάλογο (με πρόσθετο)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:319
+#: C/gedit-shortcut-keys.page:338
 msgid "<key>F8</key>"
 msgstr "<key>F8</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:322
+#: C/gedit-shortcut-keys.page:341
 msgid "Directory listing (with plugin)"
 msgstr "Λίστα καταλόγου (με πρόσθετο)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:323
+#: C/gedit-shortcut-keys.page:342
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:330
+#: C/gedit-shortcut-keys.page:349
 msgid "Shortcut keys for user help"
 msgstr "Συντομεύσεις πλήκτρων για την βοήθεια του χρήστη"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:339
+#: C/gedit-shortcut-keys.page:358
 msgid "Open the gedit user guide"
 msgstr "Άνοιγμα του οδηγού χρήσης του gedit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:340
+#: C/gedit-shortcut-keys.page:359
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
@@ -3862,7 +3884,6 @@ msgstr "Ενεργοποίηση της επισήμανσης σύνταξης"
 
 #. (itstool) path: section/title
 #: C/gedit-syntax-highlighting.page:23
-#| msgid "Syntax Highlighting"
 msgid "Syntax highlighting"
 msgstr "Επισήμανση σύνταξης"
 
@@ -4076,7 +4097,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-tabs-moving.page:10
-#| msgid "Change the order of tabs in the gedit window"
 msgid "Change the position of a tab in the gedit window."
 msgstr "Αλλάξτε τη θέση μιας καρτέλας στο παράθυρο gedit."
 
@@ -4192,7 +4212,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-tabs.page:10
-#| msgid "Change the order of tabs in the gedit window"
 msgid "Create or close tabs in the gedit window."
 msgstr "Αλλαγή ή κλείσιμο των καρτελών στο παράθυρο gedit."
 
@@ -4284,7 +4303,6 @@ msgstr "Επεξεργαστής κειμένου gedit"
 
 #. (itstool) path: info/desc
 #: C/index.page:11
-#| msgid "Open the gedit user guide"
 msgid "Home page of the gedit help guide."
 msgstr "Αρχική σελίδα του οδηγού βοήθειας του gedit."
 
@@ -4346,6 +4364,12 @@ msgstr "Creative Commons Attribution-ShareAlike 3.0 Unported License"
 #: C/legal.xml:3
 msgid "This work is licensed under a <_:link-1/>."
 msgstr "Αυτό το έργο έχει αδειοδοτηθεί υπό την <_:link-1/>."
+
+#~ msgid "To Do This"
+#~ msgstr "Για να κάνετε αυτό"
+
+#~ msgid "Press This"
+#~ msgstr "Πατήστε αυτό"
 
 #~ msgid "Enable and use spell-checking feature"
 #~ msgstr "Ενεργοποίηση και χρήση της λειτουργίας ελέγχου ορθογραφίας"
