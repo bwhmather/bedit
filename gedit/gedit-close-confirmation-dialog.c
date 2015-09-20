@@ -229,7 +229,7 @@ gedit_close_confirmation_dialog_class_init (GeditCloseConfirmationDialogClass *k
 	gobject_class->finalize = gedit_close_confirmation_dialog_finalize;
 
 	properties[PROP_UNSAVED_DOCUMENTS] =
-		g_param_spec_pointer ("unsaved_documents",
+		g_param_spec_pointer ("unsaved-documents",
 		                      "Unsaved Documents",
 		                      "List of Unsaved Documents",
 		                      G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS);
@@ -256,7 +256,7 @@ gedit_close_confirmation_dialog_new (GtkWindow *parent,
 
 	dlg = GTK_WIDGET (g_object_new (GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG,
 	                                "use-header-bar", FALSE,
-	                                "unsaved_documents", unsaved_documents,
+	                                "unsaved-documents", unsaved_documents,
 	                                NULL));
 
 	/* As GtkMessageDialog we look at the setting to check
