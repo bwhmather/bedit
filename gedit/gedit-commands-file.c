@@ -453,7 +453,7 @@ _gedit_cmd_file_open (GSimpleAction *action,
 	}
 
 	/* Translators: "Open" is the title of the file chooser window. */
-	open_dialog = gedit_file_chooser_dialog_create (_("Open"),
+	open_dialog = gedit_file_chooser_dialog_create (C_("window title", "Open"),
 							window != NULL ? GTK_WINDOW (window) : NULL,
 							GEDIT_FILE_CHOOSER_OPEN |
 							GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
@@ -843,7 +843,8 @@ save_as_tab_async (GeditTab            *tab,
 	task = g_task_new (tab, cancellable, callback, user_data);
 	g_task_set_task_data (task, g_object_ref (window), g_object_unref);
 
-	save_dialog = gedit_file_chooser_dialog_create (_("Save As"),
+	/* Translators: "Save As" is the title of the file chooser window. */
+	save_dialog = gedit_file_chooser_dialog_create (C_("window title", "Save As"),
 							GTK_WINDOW (window),
 							GEDIT_FILE_CHOOSER_SAVE |
 							GEDIT_FILE_CHOOSER_ENABLE_ENCODING |
