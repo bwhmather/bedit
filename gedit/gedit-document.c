@@ -1669,7 +1669,8 @@ get_metadata_from_gvfs (GeditDocument *doc,
 	priv = gedit_document_get_instance_private (doc);
 
 	if (priv->metadata_info != NULL &&
-	    g_file_info_has_attribute (priv->metadata_info, key))
+	    g_file_info_has_attribute (priv->metadata_info, key) &&
+	    g_file_info_get_attribute_type (priv->metadata_info, key) == G_FILE_ATTRIBUTE_TYPE_STRING)
 	{
 		return g_strdup (g_file_info_get_attribute_string (priv->metadata_info, key));
 	}
