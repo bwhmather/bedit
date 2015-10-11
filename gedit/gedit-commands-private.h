@@ -156,10 +156,8 @@ void		_gedit_cmd_documents_next_tab_group	(GSimpleAction *action,
 							 GVariant      *parameter,
 							 gpointer       user_data);
 
-void		_gedit_cmd_help_contents		(GtkAction   *action,
-							 GeditWindow *window);
-void		_gedit_cmd_help_about			(GtkAction   *action,
-							 GeditWindow *window);
+void		_gedit_cmd_help_contents		(GeditWindow *window);
+void		_gedit_cmd_help_about			(GeditWindow *window);
 
 void		_gedit_cmd_file_close_tab 		(GeditTab    *tab,
 							 GeditWindow *window);

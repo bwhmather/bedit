@@ -570,7 +570,7 @@ help_activated (GSimpleAction *action,
 	app = GTK_APPLICATION (user_data);
 	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
 
-	_gedit_cmd_help_contents (NULL, window);
+	_gedit_cmd_help_contents (window);
 }
 
 static void
@@ -584,7 +584,7 @@ about_activated (GSimpleAction  *action,
 	app = GTK_APPLICATION (user_data);
 	window = GEDIT_WINDOW (gtk_application_get_active_window (app));
 
-	_gedit_cmd_help_about (NULL, window);
+	_gedit_cmd_help_about (window);
 }
 
 static void

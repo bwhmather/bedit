@@ -35,8 +35,7 @@
 #include "gedit-dirs.h"
 
 void
-_gedit_cmd_help_contents (GtkAction   *action,
-			  GeditWindow *window)
+_gedit_cmd_help_contents (GeditWindow *window)
 {
 	gedit_debug (DEBUG_COMMANDS);
 
@@ -47,8 +46,7 @@ _gedit_cmd_help_contents (GtkAction   *action,
 }
 
 void
-_gedit_cmd_help_about (GtkAction   *action,
-		       GeditWindow *window)
+_gedit_cmd_help_about (GeditWindow *window)
 {
 	static const gchar * const authors[] = {
 		"Alex Roberts",
