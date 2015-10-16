@@ -36,6 +36,7 @@
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header_bar">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="has_subtitle">False</property>
         <property name="title" translatable="yes">Character Encodings</property>
         <child>
@@ -62,11 +63,13 @@
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
           <object class="GtkGrid" id="encodings_dialog_contents">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="border_width">6</property>
             <property name="row_spacing">6</property>
             <property name="column_spacing">18</property>
@@ -74,6 +77,7 @@
             <child>
               <object class="GtkLabel" id="available_label">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="valign">start</property>
                 <property name="label" translatable="yes">A_vailable Encodings</property>
                 <property name="use_underline">True</property>
@@ -91,6 +95,7 @@
             <child>
               <object class="GtkLabel" id="chosen_label">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="valign">start</property>
                 <property name="label" translatable="yes">Cho_sen Encodings</property>
                 <property name="use_underline">True</property>
@@ -108,6 +113,7 @@
             <child>
               <object class="GtkBox" id="box_available">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
@@ -155,14 +161,22 @@
                       </object>
                     </child>
                   </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
                 </child>
                 <child>
                   <object class="GtkToolbar" id="toolbar_available">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                     <property name="toolbar_style">icons</property>
                     <property name="icon_size">2</property>
                   </object>
                   <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -175,6 +189,7 @@
             <child>
               <object class="GtkBox" id="box_chosen">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
@@ -222,13 +237,21 @@
                       </object>
                     </child>
                   </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
                 </child>
                 <child>
                   <object class="GtkToolbar" id="toolbar_chosen">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
                     <property name="icon_size">2</property>
                   </object>
                   <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
@@ -241,6 +264,7 @@
           </object>
           <packing>
             <property name="expand">True</property>
+            <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
         </child>

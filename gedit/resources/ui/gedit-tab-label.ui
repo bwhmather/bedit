@@ -11,13 +11,17 @@
       </object>
     </child>
     <child>
-      <object class="GtkImage" id="icon"/>
+      <object class="GtkImage" id="icon">
+        <property name="visible">False</property>
+      </object>
       <packing>
         <property name="pack_type">start</property>
       </packing>
     </child>
     <child>
-      <object class="GtkSpinner" id="spinner"/>
+      <object class="GtkSpinner" id="spinner">
+        <property name="visible">False</property>
+      </object>
       <packing>
         <property name="pack_type">start</property>
       </packing>

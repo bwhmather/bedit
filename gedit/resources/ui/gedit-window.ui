@@ -15,6 +15,7 @@
         <child>
           <object class="GtkHeaderBar" id="side_headerbar">
             <property name="visible" bind-source="side_panel" bind-property="visible" bind-flags="sync-create"/>
+            <property name="show_close_button">False</property>
             <property name="title" translatable="yes">Documents</property>
             <style>
               <class name="gedit-titlebar-left"/>
@@ -38,6 +39,7 @@
                 <property name="visible">True</property>
                 <property name="tooltip_text" translatable="yes">Open a file</property>
                 <property name="valign">center</property>
+                <property name="use_popover">True</property>
                 <style>
                   <class name="text-button"/>
                   <class name="image-button"/>
@@ -45,6 +47,9 @@
                 <child>
                   <object class="GtkBox" id="open_button_box">
                     <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="has_focus">False</property>
+                    <property name="is_focus">False</property>
                     <property name="spacing">6</property>
                     <child>
                       <object class="GtkLabel" id="open_button_name">
@@ -70,12 +75,16 @@
                   </object>
                 </child>
               </object>
+              <packing>
+                <property name="pack_type">start</property>
+              </packing>
             </child>
             <child>
               <object class="GtkButton" id="new_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="can_default">True</property>
+                <property name="receives_default">False</property>
                 <property name="tooltip_text" translatable="yes">Create a new document</property>
                 <property name="valign">center</property>
                 <property name="action_name">win.new-tab</property>
@@ -92,6 +101,7 @@
               <object class="GtkMenuButton" id="gear_button">
                 <property name="visible">True</property>
                 <property name="valign">center</property>
+                <property name="use_popover">True</property>
                 <property name="image">menu_image</property>
               </object>
               <packing>
@@ -127,6 +137,9 @@
     <child>
       <object class="GtkOverlay" id="fullscreen_overlay">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="has_focus">False</property>
+        <property name="is_focus">False</property>
         <child>
           <object class="GtkBox" id="main_box">
             <property name="visible">True</property>
@@ -135,6 +148,8 @@
               <object class="GtkPaned" id="hpaned">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="has_focus">False</property>
+                <property name="is_focus">False</property>
                 <style>
                   <class name="gedit-side-panel-paned"/>
                 </style>
@@ -151,13 +166,18 @@
                         </style>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
                         <property name="fill">False</property>
+                        <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkStack" id="side_panel"/>
+                      <object class="GtkStack" id="side_panel">
+                        <property name="visible">False</property>
+                      </object>
                       <packing>
                         <property name="expand">True</property>
+                        <property name="fill">True</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -175,6 +195,8 @@
                       <object class="GtkPaned" id="vpaned">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
+                        <property name="has_focus">False</property>
+                        <property name="is_focus">False</property>
                         <property name="orientation">vertical</property>
                         <style>
                           <class name="gedit-bottom-panel-paned"/>
@@ -184,12 +206,14 @@
                             <property name="visible">True</property>
                           </object>
                           <packing>
+                            <property name="resize">True</property>
                             <property name="shrink">False</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkBox" id="bottom_panel_box">
                             <property name="visible" bind-source="bottom_panel" bind-property="visible" bind-flags="sync-create"/>
+                            <property name="orientation">horizontal</property>
                             <style>
                               <class name="gedit-bottom-panel"/>
                             </style>
@@ -198,9 +222,12 @@
                                 <property name="visible">True</property>
                                 <property name="orientation">vertical</property>
                                 <child>
-                                  <object class="GtkStack" id="bottom_panel"/>
+                                  <object class="GtkStack" id="bottom_panel">
+                                    <property name="visible">False</property>
+                                  </object>
                                   <packing>
                                     <property name="expand">True</property>
+                                    <property name="fill">True</property>
                                     <property name="position">1</property>
                                   </packing>
                                 </child>
@@ -213,6 +240,7 @@
                                     </style>
                                   </object>
                                   <packing>
+                                    <property name="expand">False</property>
                                     <property name="fill">False</property>
                                     <property name="position">2</property>
                                   </packing>
@@ -220,6 +248,7 @@
                               </object>
                               <packing>
                                 <property name="expand">True</property>
+                                <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
                             </child>
@@ -235,12 +264,14 @@
                                     <property name="action_name">win.bottom-panel</property>
                                   </object>
                                   <packing>
+                                    <property name="expand">False</property>
                                     <property name="fill">False</property>
                                     <property name="position">1</property>
                                   </packing>
                                 </child>
                               </object>
                               <packing>
+                                <property name="expand">False</property>
                                 <property name="fill">False</property>
                                 <property name="position">2</property>
                               </packing>
@@ -254,6 +285,7 @@
                       </object>
                       <packing>
                         <property name="expand">True</property>
+                        <property name="fill">True</property>
                         <property name="position">2</property>
                       </packing>
                     </child>
@@ -267,6 +299,7 @@
                             <child internal-child="label">
                               <object class="GtkLabel">
                                 <property name="width_chars">18</property>
+                                <property name="can_focus">False</property>
                               </object>
                             </child>
                           </object>
@@ -300,14 +333,21 @@
                         </child>
                       </object>
                       <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
                   </object>
+                  <packing>
+                    <property name="resize">True</property>
+                    <property name="shrink">True</property>
+                  </packing>
                 </child>
               </object>
               <packing>
                 <property name="expand">True</property>
+                <property name="fill">True</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -316,10 +356,13 @@
         <child type="overlay">
           <object class="GtkEventBox" id="fullscreen_eventbox">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="valign">start</property>
             <child>
               <object class="GtkRevealer" id="fullscreen_controls">
                 <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="reveal_child">False</property>
                 <property name="valign">start</property>
                 <child>
                   <object class="GtkHeaderBar" id="fullscreen_headerbar">
@@ -329,6 +372,7 @@
                         <property name="visible">True</property>
                         <property name="tooltip_text" translatable="yes">Open a file dialog</property>
                         <property name="valign">center</property>
+                        <property name="use_popover">True</property>
                         <style>
                           <class name="text-button"/>
                           <class name="image-button"/>
@@ -336,6 +380,9 @@
                         <child>
                           <object class="GtkBox" id="fullscreen_open_button_box">
                             <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="has_focus">False</property>
+                            <property name="is_focus">False</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkLabel" id="fullscreen_open_button_name">
@@ -358,12 +405,16 @@
                           </object>
                         </child>
                       </object>
+                      <packing>
+                        <property name="pack_type">start</property>
+                      </packing>
                     </child>
                     <child>
                       <object class="GtkButton" id="fullscreen_new_button">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="can_default">True</property>
+                        <property name="receives_default">False</property>
                         <property name="tooltip_text" translatable="yes">Create a new document</property>
                         <property name="valign">center</property>
                         <property name="action_name">win.new-tab</property>
@@ -452,6 +503,7 @@
     <property name="icon_name">view-restore-symbolic</property>
   </object>
   <object class="GtkSizeGroup">
+    <property name="mode">horizontal</property>
     <widgets>
       <widget name="side_headerbar"/>
       <widget name="side_panel"/>
@@ -464,6 +516,7 @@
       <widget name="open_button"/>
       <widget name="gear_button"/>
       <widget name="save_button"/>
+      <widget name="open_button"/>
     </widgets>
   </object>
   <object class="GtkSizeGroup">
@@ -473,7 +526,9 @@
       <widget name="fullscreen_open_button"/>
       <widget name="fullscreen_gear_button"/>
       <widget name="fullscreen_save_button"/>
+      <widget name="fullscreen_open_button"/>
       <widget name="leave_fullscreen_button"/>
     </widgets>
   </object>
 </interface>
+

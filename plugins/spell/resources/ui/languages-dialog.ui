@@ -12,11 +12,13 @@
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
+        <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">12</property>
         <child>
           <object class="GtkLabel" id="label1">
             <property name="visible">True</property>
+            <property name="can_focus">False</property>
             <property name="label" translatable="yes">Select the _language of the current document.</property>
             <property name="use_underline">True</property>
             <property name="wrap">True</property>
@@ -24,7 +26,9 @@
             <property name="xalign">0</property>
           </object>
           <packing>
+            <property name="expand">False</property>
             <property name="fill">False</property>
+            <property name="position">0</property>
           </packing>
         </child>
         <child>
@@ -46,6 +50,7 @@
           </object>
           <packing>
             <property name="expand">True</property>
+            <property name="fill">True</property>
             <property name="position">1</property>
           </packing>
         </child>
