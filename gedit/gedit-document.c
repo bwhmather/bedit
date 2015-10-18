@@ -1474,29 +1474,17 @@ gboolean
 gedit_document_goto_line (GeditDocument *doc,
 			  gint           line)
 {
-	gboolean ret = TRUE;
-	guint line_count;
 	GtkTextIter iter;
+	gboolean ret;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (line >= -1, FALSE);
 
-	line_count = gtk_text_buffer_get_line_count (GTK_TEXT_BUFFER (doc));
-
-	if (line >= line_count)
-	{
-		ret = FALSE;
-		gtk_text_buffer_get_end_iter (GTK_TEXT_BUFFER (doc),
-					      &iter);
-	}
-	else
-	{
-		gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
-						  &iter,
-						  line);
-	}
+	ret = gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
+						&iter,
+						line);
 
 	gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
 
