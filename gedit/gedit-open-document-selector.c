@@ -387,7 +387,7 @@ fileitem_setup (FileItem *item)
 {
 	gchar *scheme;
 	gchar *filename;
-	gchar *normalized_filename;
+	gchar *normalized_filename = NULL;
 	gchar *candidate = NULL;
 	gchar *path;
 	gchar *name;
@@ -408,10 +408,27 @@ fileitem_setup (FileItem *item)
 
 			normalized_filename = g_utf8_normalize (filename, -1, G_NORMALIZE_ALL);
 			g_free (filename);
-
-			candidate = g_utf8_casefold (normalized_filename, -1);
-			g_free (normalized_filename);
 		}
+	}
+	else
+	{
+		GFile *file;
+		gchar *parse_name;
+
+		file = g_file_new_for_uri (item->uri);
+		item->path = gedit_utils_location_get_dirname_for_display (file);
+		item->name  = gedit_utils_basename_for_display (file);
+		parse_name = g_file_get_parse_name (file);
+		g_object_unref (file);
+
+		normalized_filename = g_utf8_normalize (parse_name, -1, G_NORMALIZE_ALL);
+		g_free (parse_name);
+	}
+
+        if (normalized_filename)
+	{
+		candidate = g_utf8_casefold (normalized_filename, -1);
+		g_free (normalized_filename);
 	}
 
 	g_free (scheme);

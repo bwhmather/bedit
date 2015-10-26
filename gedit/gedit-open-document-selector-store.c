@@ -473,35 +473,17 @@ convert_recent_item_list_to_fileitem_list (GList *uri_list)
 	for (l = uri_list; l != NULL; l = l->next)
 	{
 		gchar *uri;
-		GFile *file;
-		GFileInfo *info;
 		FileItem *item;
 
 		uri = g_strdup (gtk_recent_info_get_uri (l->data));
-		file = g_file_new_for_uri (uri);
-		info = g_file_query_info (file,
-		                          "time::access,time::access-usec",
-		                          G_FILE_QUERY_INFO_NONE,
-		                          NULL,
-		                          NULL);
-
-		g_object_unref (file);
-
-		if (info == NULL)
-		{
-			g_free (uri);
-			continue;
-		}
 
 		item = gedit_open_document_selector_create_fileitem_item ();
 		item->uri = uri;
 
-		/* We query access time because gtk_recent_info_get_modified() doesn't give us the usec part */
-		item->access_time.tv_sec = g_file_info_get_attribute_uint64 (info, "time::access");
-		item->access_time.tv_usec = g_file_info_get_attribute_uint32 (info, "time::access-usec");
+		item->access_time.tv_sec = gtk_recent_info_get_visited (l->data);
+		item->access_time.tv_usec = 0;
 
 		fileitem_list = g_list_prepend (fileitem_list, item);
-		g_object_unref (info);
 	}
 
 	fileitem_list = g_list_reverse (fileitem_list);
