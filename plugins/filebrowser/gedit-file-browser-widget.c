@@ -1954,7 +1954,6 @@ static void
 set_busy (GeditFileBrowserWidget *obj,
 	  gboolean                busy)
 {
-	GdkCursor *cursor;
 	GdkWindow *window;
 
 	window = gtk_widget_get_window (GTK_WIDGET (obj->priv->treeview));
@@ -1965,11 +1964,12 @@ set_busy (GeditFileBrowserWidget *obj,
 	if (busy)
 	{
 		GdkDisplay *display;
+		GdkCursor *cursor;
 
 		display = gtk_widget_get_display (GTK_WIDGET (obj));
 		cursor = gdk_cursor_new_from_name (display, "progress");
 		gdk_window_set_cursor (window, cursor);
-		g_object_unref (cursor);
+		g_clear_object (&cursor);
 	}
 	else
 	{
