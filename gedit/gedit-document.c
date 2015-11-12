@@ -1475,20 +1475,19 @@ gedit_document_goto_line (GeditDocument *doc,
 			  gint           line)
 {
 	GtkTextIter iter;
-	gboolean ret;
 
 	gedit_debug (DEBUG_DOCUMENT);
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (line >= -1, FALSE);
 
-	ret = gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
-						&iter,
-						line);
+	gtk_text_buffer_get_iter_at_line (GTK_TEXT_BUFFER (doc),
+					  &iter,
+					  line);
 
 	gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
 
-	return ret;
+	return gtk_text_iter_get_line (&iter) == line;
 }
 
 gboolean
@@ -1496,21 +1495,21 @@ gedit_document_goto_line_offset (GeditDocument *doc,
 				 gint           line,
 				 gint           line_offset)
 {
-	gboolean ret;
 	GtkTextIter iter;
 
 	g_return_val_if_fail (GEDIT_IS_DOCUMENT (doc), FALSE);
 	g_return_val_if_fail (line >= -1, FALSE);
 	g_return_val_if_fail (line_offset >= -1, FALSE);
 
-	ret = gtk_text_buffer_get_iter_at_line_offset (GTK_TEXT_BUFFER (doc),
-						       &iter,
-						       line,
-						       line_offset);
+	gtk_text_buffer_get_iter_at_line_offset (GTK_TEXT_BUFFER (doc),
+						 &iter,
+						 line,
+						 line_offset);
 
 	gtk_text_buffer_place_cursor (GTK_TEXT_BUFFER (doc), &iter);
 
-	return ret;
+	return (gtk_text_iter_get_line (&iter) == line &&
+		gtk_text_iter_get_line_offset (&iter) == line_offset);
 }
 
 /**
