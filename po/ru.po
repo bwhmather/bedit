@@ -24,16 +24,16 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2015-09-17 05:28+0000\n"
-"PO-Revision-Date: 2015-09-17 13:45+0300\n"
-"Last-Translator: Stas Solovey <whats_up@tut.by>\n"
+"PO-Revision-Date: 2015-11-14 20:27+0300\n"
+"Last-Translator: Yuri Myasoedov <ymyasoedov@yandex.ru>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -819,7 +819,8 @@ msgstr[1] "Загрузка %d файлов…"
 msgstr[2] "Загрузка %d файлов…"
 
 #. Translators: "Open" is the title of the file chooser window.
-#: ../gedit/gedit-commands-file.c:456 ../gedit/resources/ui/gedit-window.ui.h:4
+#: ../gedit/gedit-commands-file.c:456
+#: ../gedit/resources/ui/gedit-window.ui.h:4
 msgid "Open"
 msgstr "Открыть"
 
@@ -1562,12 +1563,12 @@ msgstr[2] "%d вкладок с ошибками"
 #: ../gedit/gedit-tab.c:814
 #, c-format
 msgid "Reverting %s from %s"
-msgstr "Восстановка «%s» из «%s»"
+msgstr "Восстановление «%s» из «%s»"
 
 #: ../gedit/gedit-tab.c:821
 #, c-format
 msgid "Reverting %s"
-msgstr "Восстановка «%s»"
+msgstr "Восстановление «%s»"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
@@ -3601,61 +3602,3 @@ msgstr "Вставка даты и времени"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Вставляет текущую дату и время в позиции курсора."
-
-#~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
-#~ msgstr ""
-#~ "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16', 'WINDOWS-1251', 'KOI8-R', "
-#~ "'ISO-8859-5', 'IBM855', 'CP866']"
-
-#~ msgid "Automatically Detected Encodings"
-#~ msgstr "Автоматически определяемые кодировки"
-
-#~ msgid ""
-#~ "Sorted list of encodings used by gedit for automatically detecting the "
-#~ "encoding of a file. \"CURRENT\" represents the current locale encoding. "
-#~ "Only recognized encodings are used."
-#~ msgstr ""
-#~ "Упорядоченный список кодировок, используемый gedit для автоматического "
-#~ "определения кодировки файла. «ТЕКУЩАЯ» — это кодировка текущего языка "
-#~ "системы. Используются только распознаваемые кодировки."
-
-#~ msgid "['ISO-8859-15']"
-#~ msgstr "['UTF-8', 'WINDOWS-1251', 'KOI8-R', 'ISO-8859-15', 'ISO-8859-5']"
-
-#~ msgid "Encodings shown in menu"
-#~ msgstr "Кодировки, доступные в меню"
-
-#~ msgid ""
-#~ "List of encodings shown in the Character Encoding menu in open/save file "
-#~ "selector. Only recognized encodings are used."
-#~ msgstr ""
-#~ "Список кодировок, доступных в меню «Кодировка символов» в диалоговом окне "
-#~ "выбора файлов. Используются только распознаваемые кодировки."
-
-# «Только чтение» — слишком длинно
-#~ msgid "RO"
-#~ msgstr "Чтение"
-
-#~ msgid "Character encodings"
-#~ msgstr "Кодировки символов"
-
-#~ msgid "_OK"
-#~ msgstr "_ОК"
-
-#~ msgid "E_ncodings shown in menu:"
-#~ msgstr "К_одировки, отображаемые в меню:"
-
-#~ msgid "_Ignore case"
-#~ msgstr "_Игнорировать регистр"
-
-#~ msgid "You cannot undo a sort operation"
-#~ msgstr "Нельзя отменить операцию сортировки"
-
-#~ msgid "Set language"
-#~ msgstr "Установить язык"
-
-#~ msgid "Languages"
-#~ msgstr "Языки"
-
-#~ msgid "The document is empty."
-#~ msgstr "Документ не содержит текста."
