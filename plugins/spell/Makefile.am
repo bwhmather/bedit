@@ -1,4 +1,4 @@
-if ENABLE_ENCHANT
+if ENABLE_SPELL
 
 plugin_LTLIBRARIES += plugins/spell/libspell.la
 
@@ -6,69 +6,25 @@ plugins_spell_libspell_la_LDFLAGS = $(PLUGIN_LIBTOOL_FLAGS)
 plugins_spell_libspell_la_LIBADD  =		\
 	$(top_builddir)/gedit/libgedit.la	\
 	$(GEDIT_LIBS)				\
-	$(ENCHANT_LIBS)
+	$(GSPELL_LIBS)
 
 plugins_spell_libspell_la_CPPFLAGS =				\
 	-I$(top_srcdir)						\
-	-I$(top_builddir)/plugins/spell
+	-I$(top_srcdir)/plugins/spell
 
 plugins_spell_libspell_la_CFLAGS =				\
 	$(GEDIT_CFLAGS) 					\
-	$(ENCHANT_CFLAGS)					\
+	$(GSPELL_CFLAGS)					\
 	$(WARN_CFLAGS)						\
 	$(DISABLE_DEPRECATED_CFLAGS)
-
-plugins_spell_built_sources =				\
-	plugins/spell/gedit-spell-resources.c
 
 plugins_spell_libspell_la_SOURCES =			\
 	plugins/spell/gedit-spell-plugin.c 		\
 	plugins/spell/gedit-spell-plugin.h 		\
 	plugins/spell/gedit-spell-app-activatable.c	\
-	plugins/spell/gedit-spell-app-activatable.h	\
-	plugins/spell/gedit-spell-checker.c 		\
-	plugins/spell/gedit-spell-checker.h		\
-	plugins/spell/gedit-spell-checker-dialog.c	\
-	plugins/spell/gedit-spell-checker-dialog.h	\
-	plugins/spell/gedit-spell-checker-language.c	\
-	plugins/spell/gedit-spell-checker-language.h	\
-	plugins/spell/gedit-spell-language-dialog.c	\
-	plugins/spell/gedit-spell-language-dialog.h	\
-	plugins/spell/gedit-spell-navigator.c		\
-	plugins/spell/gedit-spell-navigator.h		\
-	plugins/spell/gedit-spell-navigator-gtv.c	\
-	plugins/spell/gedit-spell-navigator-gtv.h	\
-	plugins/spell/gedit-automatic-spell-checker.c	\
-	plugins/spell/gedit-automatic-spell-checker.h	\
-	plugins/spell/gedit-spell-utils.c		\
-	plugins/spell/gedit-spell-utils.h		\
-	plugins/spell/gtktextregion.c			\
-	plugins/spell/gtktextregion.h			\
-	$(plugins_spell_built_sources)
-
-# Mac OSX convenience library and ldflags
-if OS_OSX
-noinst_LTLIBRARIES += plugins/spell/libosx.la
-
-plugins_spell_libosx_la_LDFLAGS = -framework Cocoa $(GTK_MAC_LIBS)
-plugins_spell_libosx_la_CFLAGS = $(GEDIT_CFLAGS) $(GTK_MAC_CFLAGS) -xobjective-c
-
-plugins_spell_libosx_la_SOURCES = 		\
-	plugins/spell/gedit-spell-osx.c		\
-	plugins/spell/gedit-spell-osx.h
-
-plugins_spell_libspell_la_LIBADD += plugins/spell/libosx.la
-endif
-
-spell_resource_deps = $(call GRESDEPS,plugins/spell/resources/gedit-spell.gresource.xml)
-plugins/spell/gedit-spell-resources.c: $(spell_resource_deps)
-	$(GRESGEN)
+	plugins/spell/gedit-spell-app-activatable.h
 
 plugin_in_files += plugins/spell/spell.plugin.desktop.in
-
-BUILT_SOURCES += $(plugins_spell_built_sources)
-
-EXTRA_DIST += $(spell_resource_deps)
 
 else
 
