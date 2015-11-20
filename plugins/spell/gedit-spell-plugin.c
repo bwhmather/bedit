@@ -336,7 +336,10 @@ set_language_cb (GSimpleAction *action,
 
 	lang = gspell_checker_get_language (checker);
 
-	dialog = gspell_language_chooser_dialog_new (GTK_WINDOW (priv->window), lang);
+	dialog = gspell_language_chooser_dialog_new (GTK_WINDOW (priv->window),
+						     lang,
+						     GTK_DIALOG_MODAL |
+						     GTK_DIALOG_DESTROY_WITH_PARENT);
 
 	g_object_bind_property (dialog, "language",
 				checker, "language",
@@ -345,8 +348,6 @@ set_language_cb (GSimpleAction *action,
 	wg = gedit_window_get_group (priv->window);
 
 	gtk_window_group_add_window (wg, GTK_WINDOW (dialog));
-
-	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
 	gtk_dialog_add_button (GTK_DIALOG (dialog),
 			       _("_Help"),
