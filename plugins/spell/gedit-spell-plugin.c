@@ -352,10 +352,10 @@ set_language_cb (GSimpleAction *action,
 			       _("_Help"),
 			       GTK_RESPONSE_HELP);
 
-	g_signal_connect_after (dialog,
-				"response",
-				G_CALLBACK (language_dialog_response_cb),
-				NULL);
+	g_signal_connect (dialog,
+			  "response",
+			  G_CALLBACK (language_dialog_response_cb),
+			  NULL);
 
 	gtk_widget_show (dialog);
 }
