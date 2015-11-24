@@ -7,10 +7,6 @@ GeditWindow .pane-separator:hover {
     color: @borders;
 }
 
-.open-document-selector-treeview {
-    padding: 3px 6px 3px 6px;
-}
-
 .open-document-selector-treeview:prelight {
     background-color: alpha(@theme_fg_color, 0.05);
 }
@@ -119,12 +115,6 @@ GeditStatusbar .button.flat {
     border-bottom: none;
 }
 
-GeditStatusbar .frame {
-    border: none;
-    padding-left: 6px;
-    padding-right: 6px;
-}
-
 GeditViewFrame .gedit-search-slider {
     background-color: @theme_base_color;
     padding: 6px;
@@ -141,6 +131,3 @@ GeditViewFrame .gedit-search-slider {
     padding: 2px;
 }
 
-GeditFileBrowserWidget .small-button {
-  padding: 2px 4px;
-}
