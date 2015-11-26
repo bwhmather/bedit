@@ -246,7 +246,6 @@ if test "x$enable_spell" = "xyes" ; then
 	                  have_gspell=yes, have_gspell=no)
 
 	if test "x$have_gspell" = "xno"; then
-		enable_spell=no
 		AC_MSG_ERROR([gspell library not found or too old. Use --disable-spell to build without spell plugin.])
 	fi
 fi
