@@ -962,7 +962,8 @@ panel_on_drag_begin (GtkWidget      *widget,
 
 	name = gtk_label_get_label (GTK_LABEL (GEDIT_DOCUMENTS_DOCUMENT_ROW (drag_document_row)->label));
 
-	label = gtk_label_new (name);
+	label = gtk_label_new (NULL);
+	gtk_label_set_markup (label, name);
 	gtk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
 	gtk_widget_set_halign (label, GTK_ALIGN_START);
 	gtk_widget_set_valign (label, GTK_ALIGN_CENTER);
