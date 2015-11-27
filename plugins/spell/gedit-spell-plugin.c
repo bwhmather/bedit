@@ -224,18 +224,18 @@ language_notify_cb (GspellChecker *checker,
 		    GeditDocument *doc)
 {
 	const GspellLanguage *lang;
-	const gchar *key;
+	const gchar *language_code;
 
 	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
 
 	lang = gspell_checker_get_language (checker);
 	g_return_if_fail (lang != NULL);
 
-	key = gspell_language_to_key (lang);
-	g_return_if_fail (key != NULL);
+	language_code = gspell_language_get_code (lang);
+	g_return_if_fail (language_code != NULL);
 
 	gedit_document_set_metadata (doc,
-				     GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, key,
+				     GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, language_code,
 				     NULL);
 }
 
@@ -243,14 +243,14 @@ static const GspellLanguage *
 get_language_from_metadata (GeditDocument *doc)
 {
 	const GspellLanguage *lang = NULL;
-	gchar *value = NULL;
+	gchar *language_code = NULL;
 
-	value = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE);
+	language_code = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE);
 
-	if (value != NULL)
+	if (language_code != NULL)
 	{
-		lang = gspell_language_from_key (value);
-		g_free (value);
+		lang = gspell_language_lookup (language_code);
+		g_free (language_code);
 	}
 
 	return lang;
@@ -623,7 +623,7 @@ on_document_saved (GeditDocument *doc,
 		   ViewData      *data)
 {
 	GspellChecker *checker;
-	const gchar *key;
+	const gchar *language_code = NULL;
 
 	/* Make sure to save the metadata here too */
 
@@ -631,18 +631,14 @@ on_document_saved (GeditDocument *doc,
 
 	if (checker != NULL)
 	{
-		key = gspell_language_to_key (gspell_checker_get_language (checker));
-	}
-	else
-	{
-		key = NULL;
+		language_code = gspell_language_get_code (gspell_checker_get_language (checker));
 	}
 
 	gedit_document_set_metadata (doc,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
 				     data->inline_checker != NULL ? SPELL_ENABLED_STR : NULL,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE,
-	                             key,
+	                             language_code,
 	                             NULL);
 }
 
