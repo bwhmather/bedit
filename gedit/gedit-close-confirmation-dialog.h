@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2004-2005 GNOME Foundation
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,10 +28,13 @@
 
 #define GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG (gedit_close_confirmation_dialog_get_type ())
 
-G_DECLARE_FINAL_TYPE (GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GEDIT, CLOSE_CONFIRMATION_DIALOG, GtkDialog)
+G_DECLARE_FINAL_TYPE (GeditCloseConfirmationDialog, gedit_close_confirmation_dialog,
+		      GEDIT, CLOSE_CONFIRMATION_DIALOG,
+		      GtkMessageDialog)
 
 GtkWidget	*gedit_close_confirmation_dialog_new			(GtkWindow     *parent,
 									 GList         *unsaved_documents);
+
 GtkWidget 	*gedit_close_confirmation_dialog_new_single 		(GtkWindow     *parent,
 									 GeditDocument *doc);
 

@@ -3,6 +3,7 @@
  * This file is part of gedit
  *
  * Copyright (C) 2004-2005 GNOME Foundation
+ * Copyright (C) 2015 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -47,7 +48,7 @@ enum
 
 struct _GeditCloseConfirmationDialog
 {
-	GtkDialog parent_instance;
+	GtkMessageDialog parent_instance;
 
 	GList       *unsaved_documents;
 	GList       *selected_documents;
@@ -64,7 +65,9 @@ enum
 
 static GParamSpec *properties[LAST_PROP];
 
-G_DEFINE_TYPE (GeditCloseConfirmationDialog, gedit_close_confirmation_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (GeditCloseConfirmationDialog,
+	       gedit_close_confirmation_dialog,
+	       GTK_TYPE_MESSAGE_DIALOG)
 
 static void 	 set_unsaved_document 		(GeditCloseConfirmationDialog *dlg,
 						 const GList                  *list);
@@ -99,8 +102,8 @@ get_selected_docs (GtkWidget *list_box)
 	return g_list_reverse (ret);
 }
 
-/*  Since we connect in the costructor we are sure this handler will be called
- *  before the user ones
+/* Since we connect in the constructor we are sure this handler will be called
+ * before the user ones.
  */
 static void
 response_cb (GeditCloseConfirmationDialog *dlg,
@@ -132,32 +135,14 @@ static void
 gedit_close_confirmation_dialog_init (GeditCloseConfirmationDialog *dlg)
 {
 	GeditLockdownMask lockdown;
-	AtkObject *atk_obj;
-	GtkWidget *content_area;
-	GtkWidget *action_area;
 
 	lockdown = gedit_app_get_lockdown (GEDIT_APP (g_application_get_default ()));
 
-	dlg->disable_save_to_disk = lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK;
-
-	content_area = gtk_dialog_get_content_area (GTK_DIALOG (dlg));
-	gtk_container_set_border_width (GTK_CONTAINER (content_area), 0);
-	gtk_box_set_spacing (GTK_BOX (content_area), 14);
-	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dlg), TRUE);
+	dlg->disable_save_to_disk = (lockdown & GEDIT_LOCKDOWN_SAVE_TO_DISK) != 0;
 
 	gtk_window_set_title (GTK_WINDOW (dlg), "");
-
 	gtk_window_set_modal (GTK_WINDOW (dlg), TRUE);
 	gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg), TRUE);
-
-	atk_obj = gtk_widget_get_accessible (GTK_WIDGET (dlg));
-	atk_object_set_role (atk_obj, ATK_ROLE_ALERT);
-	atk_object_set_name (atk_obj, _("Question"));
-
-	action_area = gtk_dialog_get_action_area (GTK_DIALOG (dlg));
-	gtk_button_box_set_layout (GTK_BUTTON_BOX (action_area), GTK_BUTTONBOX_EXPAND);
-	gtk_style_context_add_class (gtk_widget_get_style_context (GTK_WIDGET (dlg)),
-	                                                           GTK_STYLE_CLASS_MESSAGE_DIALOG);
 
 	g_signal_connect (dlg,
 			  "response",
@@ -250,38 +235,13 @@ gedit_close_confirmation_dialog_new (GtkWindow *parent,
 				     GList     *unsaved_documents)
 {
 	GtkWidget *dlg;
-	gboolean use_header;
 
 	g_return_val_if_fail (unsaved_documents != NULL, NULL);
 
-	dlg = GTK_WIDGET (g_object_new (GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG,
-	                                "use-header-bar", FALSE,
-	                                "unsaved-documents", unsaved_documents,
-	                                NULL));
-
-	/* As GtkMessageDialog we look at the setting to check
-	 * whether to set a CSD header, but we actually force the
-	 * buttons at the bottom
-	 */
-	g_object_get (gtk_settings_get_default (),
-	              "gtk-dialogs-use-header", &use_header,
-	              NULL);
-
-	if (use_header)
-	{
-		GtkWidget *box;
-		GtkWidget *label;
-
-		box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-		gtk_widget_show (box);
-		gtk_widget_set_size_request (box, -1, 16);
-		label = gtk_label_new ("");
-		gtk_widget_set_margin_top (label, 6);
-		gtk_widget_set_margin_bottom (label, 6);
-		gtk_style_context_add_class (gtk_widget_get_style_context (label), "title");
-		gtk_box_set_center_widget (GTK_BOX (box), label);
-		gtk_window_set_titlebar (GTK_WINDOW (dlg), box);
-	}
+	dlg = g_object_new (GEDIT_TYPE_CLOSE_CONFIRMATION_DIALOG,
+			    "unsaved-documents", unsaved_documents,
+			    "message-type", GTK_MESSAGE_QUESTION,
+			    NULL);
 
 	if (parent != NULL)
 	{
@@ -436,32 +396,17 @@ get_text_secondary_label (GeditDocument *doc)
 static void
 build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 {
-	GtkWidget     *hbox;
-	GtkWidget     *vbox;
-	GtkWidget     *primary_label;
-	GtkWidget     *secondary_label;
 	GeditDocument *doc;
-	gchar         *doc_name;
-	gchar         *str;
-	gchar         *markup_str;
-
-	gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
+	gchar *doc_name;
+	gchar *str;
+	gchar *markup_str;
 
 	g_return_if_fail (dlg->unsaved_documents->data != NULL);
 	doc = GEDIT_DOCUMENT (dlg->unsaved_documents->data);
 
 	add_buttons (dlg);
 
-	/* Primary label */
-	primary_label = gtk_label_new (NULL);
-	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	gtk_widget_set_halign (primary_label, GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (primary_label, GTK_ALIGN_START);
-	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
-	gtk_widget_set_can_focus (primary_label, FALSE);
-	gtk_label_set_max_width_chars (GTK_LABEL (primary_label), 72);
-
+	/* Primary message */
 	doc_name = gedit_document_get_short_name_for_display (doc);
 
 	if (dlg->disable_save_to_disk)
@@ -480,10 +425,10 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 	markup_str = g_strconcat ("<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL);
 	g_free (str);
 
-	gtk_label_set_markup (GTK_LABEL (primary_label), markup_str);
+	gtk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (dlg), markup_str);
 	g_free (markup_str);
 
-	/* Secondary label */
+	/* Secondary message */
 	if (dlg->disable_save_to_disk)
 	{
 		str = g_strdup (_("Saving has been disabled by the system administrator."));
@@ -493,28 +438,8 @@ build_single_doc_dialog (GeditCloseConfirmationDialog *dlg)
 		str = get_text_secondary_label (doc);
 	}
 
-	secondary_label = gtk_label_new (str);
+	gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dlg), "%s", str);
 	g_free (str);
-	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
-	gtk_widget_set_halign (secondary_label, GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (secondary_label, GTK_ALIGN_START);
-	gtk_label_set_selectable (GTK_LABEL (secondary_label), TRUE);
-	gtk_widget_set_can_focus (secondary_label, FALSE);
-	gtk_label_set_max_width_chars (GTK_LABEL (secondary_label), 72);
-
-	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-	gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
-	gtk_widget_set_margin_start (hbox, 30);
-	gtk_widget_set_margin_end (hbox, 30);
-
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-	gtk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 0);
-	gtk_box_pack_start (GTK_BOX (vbox), primary_label, FALSE, FALSE, 0);
-	gtk_box_pack_start (GTK_BOX (vbox), secondary_label, FALSE, FALSE, 0);
-	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
-	                    hbox, FALSE, FALSE, 0);
-
-	gtk_widget_show_all (hbox);
 }
 
 static GtkWidget *
@@ -556,39 +481,19 @@ create_list_box (GeditCloseConfirmationDialog *dlg)
 static void
 build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 {
-	GtkWidget *hbox;
+	GtkWidget *content_area;
 	GtkWidget *vbox;
-	GtkWidget *primary_label;
-	GtkWidget *vbox2;
 	GtkWidget *select_label;
 	GtkWidget *scrolledwindow;
 	GtkWidget *secondary_label;
-	gchar     *str;
-	gchar     *markup_str;
+	gchar *str;
+	gchar *markup_str;
 
 	add_buttons (dlg);
 
-	hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-	gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
-	gtk_widget_set_margin_start (hbox, 30);
-	gtk_widget_set_margin_end (hbox, 30);
+	gtk_window_set_resizable (GTK_WINDOW (dlg), TRUE);
 
-	gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dlg))),
-			    hbox, TRUE, TRUE, 0);
-
-	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-	gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
-
-	/* Primary label */
-	primary_label = gtk_label_new (NULL);
-	gtk_label_set_line_wrap (GTK_LABEL (primary_label), TRUE);
-	gtk_label_set_use_markup (GTK_LABEL (primary_label), TRUE);
-	gtk_widget_set_halign (primary_label, GTK_ALIGN_CENTER);
-	gtk_widget_set_valign (primary_label, GTK_ALIGN_START);
-	gtk_label_set_selectable (GTK_LABEL (primary_label), TRUE);
-	gtk_widget_set_can_focus (primary_label, FALSE);
-	gtk_label_set_max_width_chars (GTK_LABEL (primary_label), 72);
-
+	/* Primary message */
 	if (dlg->disable_save_to_disk)
 	{
 		str = g_strdup_printf (
@@ -611,12 +516,18 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 	markup_str = g_strconcat ("<span weight=\"bold\" size=\"larger\">", str, "</span>", NULL);
 	g_free (str);
 
-	gtk_label_set_markup (GTK_LABEL (primary_label), markup_str);
+	gtk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (dlg), markup_str);
 	g_free (markup_str);
-	gtk_box_pack_start (GTK_BOX (vbox), primary_label, FALSE, FALSE, 0);
 
-	vbox2 = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-	gtk_box_pack_start (GTK_BOX (vbox), vbox2, TRUE, TRUE, 0);
+	/* List of unsaved documents */
+	content_area = gtk_dialog_get_content_area (GTK_DIALOG (dlg));
+	gtk_box_set_spacing (GTK_BOX (content_area), 10);
+
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+	gtk_widget_set_margin_start (vbox, 30);
+	gtk_widget_set_margin_end (vbox, 30);
+	gtk_widget_set_margin_bottom (vbox, 12);
+	gtk_box_pack_start (GTK_BOX (content_area), vbox, TRUE, TRUE, 0);
 
 	if (dlg->disable_save_to_disk)
 	{
@@ -627,16 +538,16 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 		select_label = gtk_label_new_with_mnemonic (_("S_elect the documents you want to save:"));
 	}
 
-	gtk_box_pack_start (GTK_BOX (vbox2), select_label, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), select_label, FALSE, FALSE, 0);
 	gtk_label_set_line_wrap (GTK_LABEL (select_label), TRUE);
 	gtk_label_set_max_width_chars (GTK_LABEL (select_label), 72);
 	gtk_widget_set_halign (select_label, GTK_ALIGN_START);
 
 	scrolledwindow = gtk_scrolled_window_new (NULL, NULL);
-	gtk_box_pack_start (GTK_BOX (vbox2), scrolledwindow, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), scrolledwindow, TRUE, TRUE, 0);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolledwindow),
 					     GTK_SHADOW_IN);
-	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (scrolledwindow), 60);
+	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (scrolledwindow), 90);
 
 	dlg->list_box = create_list_box (dlg);
 	gtk_container_add (GTK_CONTAINER (scrolledwindow), dlg->list_box);
@@ -652,7 +563,7 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 						   "all your changes will be permanently lost."));
 	}
 
-	gtk_box_pack_start (GTK_BOX (vbox2), secondary_label, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), secondary_label, FALSE, FALSE, 0);
 	gtk_label_set_line_wrap (GTK_LABEL (secondary_label), TRUE);
 	gtk_widget_set_halign (secondary_label, GTK_ALIGN_CENTER);
 	gtk_widget_set_valign (secondary_label, GTK_ALIGN_START);
@@ -661,7 +572,7 @@ build_multiple_docs_dialog (GeditCloseConfirmationDialog *dlg)
 
 	gtk_label_set_mnemonic_widget (GTK_LABEL (select_label), dlg->list_box);
 
-	gtk_widget_show_all (hbox);
+	gtk_widget_show_all (vbox);
 }
 
 static void
