@@ -57,7 +57,7 @@ _gedit_cmd_help_about (GeditWindow *window)
 		"Ignacio Casal Quinteiro <icq@gnome.org>",
 		"James Willcox <jwillcox@gnome.org>",
 		"Jesse van den Kieboom <jessevdk@gnome.org>",
-		"Paolo Borelli <pborelli@katamail.com>",
+		"Paolo Borelli <pborelli@gnome.org>",
 		"Paolo Maggi <paolo@gnome.org>",
 		"S\303\251bastien Lafargue <slafargue@gnome.org>",
 		"S\303\251bastien Wilmet <swilmet@gnome.org>",
