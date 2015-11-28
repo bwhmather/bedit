@@ -184,19 +184,4 @@ gedit_dirs_get_gedit_plugins_data_dir (void)
 	return gedit_plugins_data_dir;
 }
 
-gchar *
-gedit_dirs_get_ui_file (const gchar *file)
-{
-	gchar *ui_file;
-
-	g_return_val_if_fail (file != NULL, NULL);
-
-	ui_file = g_build_filename (gedit_dirs_get_gedit_data_dir (),
-				    "ui",
-				    file,
-				    NULL);
-
-	return ui_file;
-}
-
 /* ex:set ts=8 noet: */
