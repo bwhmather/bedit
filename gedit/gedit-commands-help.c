@@ -79,18 +79,16 @@ _gedit_cmd_help_about (GeditWindow *window)
 		N_("gedit is a small and lightweight text editor for the GNOME Desktop");
 
 	GdkPixbuf *logo;
-	const gchar *data_dir;
-	gchar *logo_file;
+	GError *error = NULL;
 
 	gedit_debug (DEBUG_COMMANDS);
 
-	data_dir = gedit_dirs_get_gedit_data_dir ();
-	logo_file = g_build_filename (data_dir,
-				      "logo",
-				      "gedit-logo.png",
-				      NULL);
-	logo = gdk_pixbuf_new_from_file (logo_file, NULL);
-	g_free (logo_file);
+	logo = gdk_pixbuf_new_from_resource ("/org/gnome/gedit/pixmaps/gedit-logo.png", &error);
+	if (error != NULL)
+	{
+		g_warning ("Error when loading the gedit logo: %s", error->message);
+		g_clear_error (&error);
+	}
 
 	gtk_show_about_dialog (GTK_WINDOW (window),
 			       "program-name", "gedit",
@@ -106,8 +104,7 @@ _gedit_cmd_help_about (GeditWindow *window)
 			       "website-label", "www.gedit.org",
 			       NULL);
 
-	if (logo)
-		g_object_unref (logo);
+	g_clear_object (&logo);
 }
 
 /* ex:set ts=8 noet: */

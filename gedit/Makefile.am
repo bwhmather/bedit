@@ -260,6 +260,7 @@ EXTRA_DIST += 					\
 	gedit/gedit.rc				\
 	gedit/Gedit-3.0.metadata		\
 	gedit/resources/gedit.gresource.xml.in	\
+	gedit/resources/pixmaps/gedit.ico	\
 	$(gedit_dist_resource_deps)
 
 if HAVE_INTROSPECTION
