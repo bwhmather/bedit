@@ -926,7 +926,7 @@ gedit_documents_panel_dispose (GObject *object)
 }
 
 static GtkWidget *
-create_placerholder_row (gint height)
+create_placeholder_row (gint height)
 {
 	GtkStyleContext *context;
 
@@ -1039,7 +1039,7 @@ panel_on_drag_motion (GtkWidget      *widget,
 			panel->document_row_height = allocation.height;
 		}
 
-		panel->row_placeholder = create_placerholder_row (panel->document_row_height);
+		panel->row_placeholder = create_placeholder_row (panel->document_row_height);
 		gtk_widget_show (panel->row_placeholder);
 		g_object_ref_sink (panel->row_placeholder);
 	}
