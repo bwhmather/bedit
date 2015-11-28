@@ -746,8 +746,6 @@ gedit_app_startup (GApplication *application)
 	GeditAppPrivate *priv;
 	GtkCssProvider *css_provider;
 	GtkSourceStyleSchemeManager *manager;
-	const gchar *dir;
-	gchar *icon_dir;
 #ifndef ENABLE_GVFS_METADATA
 	const gchar *cache_dir;
 	gchar *metadata_filename;
@@ -760,14 +758,6 @@ gedit_app_startup (GApplication *application)
 	/* Setup debugging */
 	gedit_debug_init ();
 	gedit_debug_message (DEBUG_APP, "Startup");
-
-	gedit_debug_message (DEBUG_APP, "Set icon");
-
-	dir = gedit_dirs_get_gedit_data_dir ();
-	icon_dir = g_build_filename (dir, "icons", NULL);
-
-	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (), icon_dir);
-	g_free (icon_dir);
 
 	setup_theme_extensions (GEDIT_APP (application));
 
