@@ -272,7 +272,7 @@ update_view_centering (GeditTab *tab,
 	view_centering = gedit_view_frame_get_view_centering (view_frame);
 
 	is_fullscreen = GPOINTER_TO_BOOLEAN (user_data);
-	gedit_view_centering_set_centering (view_centering, is_fullscreen);
+	gedit_view_centering_set_centered (view_centering, is_fullscreen);
 }
 
 static void

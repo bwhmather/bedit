@@ -55,10 +55,10 @@ GType			gedit_view_centering_get_type			(void) G_GNUC_CONST;
 
 GeditViewCentering *	gedit_view_centering_new			(void);
 
-void			gedit_view_centering_set_centering		(GeditViewCentering *container,
-									 gboolean            centering);
+void			gedit_view_centering_set_centered		(GeditViewCentering *container,
+									 gboolean            centered);
 
-gboolean		gedit_view_centering_get_centering		(GeditViewCentering *container);
+gboolean		gedit_view_centering_get_centered		(GeditViewCentering *container);
 
 G_END_DECLS
 

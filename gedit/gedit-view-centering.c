@@ -41,7 +41,7 @@ struct _GeditViewCenteringPrivate
 	GdkRGBA view_margin_background;
 	guint view_text_width;
 
-	guint centering : 1;
+	guint centered : 1;
 	guint view_background_set : 1;
 	guint view_line_margin_fg_set : 1;
 	guint view_margin_background_set : 1;
@@ -153,7 +153,7 @@ on_view_right_margin_visibility_changed (GeditView          *view,
 
 	visibility = gtk_source_view_get_show_right_margin (GTK_SOURCE_VIEW (priv->sourceview));
 
-	gtk_widget_set_visible (GTK_WIDGET (container->priv->spacer), visibility && priv->centering);
+	gtk_widget_set_visible (GTK_WIDGET (container->priv->spacer), visibility && priv->centered);
 }
 
 static void
@@ -446,26 +446,26 @@ gedit_view_centering_init (GeditViewCentering *container)
 }
 
 /**
- * gedit_view_centering_set_centering:
+ * gedit_view_centering_set_centered:
  * @container: a #GeditViewCentering.
- * @centering : whether to center the sourceview child or not.
+ * @centered: whether to center the sourceview child or not.
  *
- * if @centering is %TRUE, the sourceview child is centered
+ * If @centered is %TRUE, the sourceview child is centered
  * horizontally on the #GeditViewCentering container.
  **/
 void
-gedit_view_centering_set_centering (GeditViewCentering *container,
-				    gboolean            centering)
+gedit_view_centering_set_centered (GeditViewCentering *container,
+				   gboolean            centered)
 {
 	g_return_if_fail (GEDIT_IS_VIEW_CENTERING (container));
 
-	container->priv->centering = centering != FALSE;
+	container->priv->centered = centered != FALSE;
 
 	on_view_right_margin_visibility_changed (GEDIT_VIEW (container->priv->sourceview), NULL, container);
 }
 
 /**
- * gedit_view_centering_get_centering:
+ * gedit_view_centering_get_centered:
  * @container: a #GeditViewCentering.
  *
  * Return whether the #GtkSourceView child is centered or not.
@@ -474,11 +474,11 @@ gedit_view_centering_set_centering (GeditViewCentering *container,
  * horizontally on the #GeditViewCentering container.
  **/
 gboolean
-gedit_view_centering_get_centering (GeditViewCentering *container)
+gedit_view_centering_get_centered (GeditViewCentering *container)
 {
 	g_return_val_if_fail (GEDIT_IS_VIEW_CENTERING (container), FALSE);
 
-	return container->priv->centering;
+	return container->priv->centered;
 }
 
 GeditViewCentering *
