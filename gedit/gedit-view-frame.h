@@ -24,7 +24,7 @@
 #include <gtk/gtk.h>
 #include "gedit-document.h"
 #include "gedit-view.h"
-#include "gedit-view-holder.h"
+#include "gedit-view-centering.h"
 
 G_BEGIN_DECLS
 
@@ -33,7 +33,8 @@ G_DECLARE_FINAL_TYPE (GeditViewFrame, gedit_view_frame, GEDIT, VIEW_FRAME, GtkOv
 
 GeditViewFrame	*gedit_view_frame_new			(void);
 
-GeditViewHolder	*gedit_view_frame_get_view_holder	(GeditViewFrame *frame);
+GeditViewCentering
+		*gedit_view_frame_get_view_centering	(GeditViewFrame *frame);
 
 GeditView	*gedit_view_frame_get_view		(GeditViewFrame *frame);
 

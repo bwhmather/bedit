@@ -28,7 +28,7 @@
 #include <glib/gi18n.h>
 #include <stdlib.h>
 
-#include "gedit-view-holder.h"
+#include "gedit-view-centering.h"
 #include "gedit-debug.h"
 #include "gedit-utils.h"
 #include "gedit-settings.h"
@@ -57,7 +57,7 @@ struct _GeditViewFrame
 	GSettings *editor_settings;
 
 	GeditView *view;
-	GeditViewHolder *view_holder;
+	GeditViewCentering *view_centering;
 	GtkFrame *map_frame;
 
 	SearchMode search_mode;
@@ -1417,7 +1417,7 @@ gedit_view_frame_class_init (GeditViewFrameClass *klass)
 	gtk_widget_class_set_template_from_resource (widget_class,
 	                                             "/org/gnome/gedit/ui/gedit-view-frame.ui");
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, view);
-	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, view_holder);
+	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, view_centering);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, map_frame);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, revealer);
 	gtk_widget_class_bind_template_child (widget_class, GeditViewFrame, search_entry);
@@ -1552,12 +1552,12 @@ gedit_view_frame_new (void)
 	return g_object_new (GEDIT_TYPE_VIEW_FRAME, NULL);
 }
 
-GeditViewHolder *
-gedit_view_frame_get_view_holder (GeditViewFrame *frame)
+GeditViewCentering *
+gedit_view_frame_get_view_centering (GeditViewFrame *frame)
 {
 	g_return_val_if_fail (GEDIT_IS_VIEW_FRAME (frame), NULL);
 
-	return frame->view_holder;
+	return frame->view_centering;
 }
 
 GeditView *

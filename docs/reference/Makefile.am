@@ -64,8 +64,8 @@ IGNORE_HFILES =					\
 	gedit-small-button.h			\
 	gedit-status-menu-button.h		\
 	gedit-tab-label.h			\
+	gedit-view-centering.h			\
 	gedit-view-frame.h			\
-	gedit-view-holder.h			\
 	gedit-window-private.h
 
 # Images to copy into HTML directory.

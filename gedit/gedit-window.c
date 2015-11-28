@@ -42,7 +42,7 @@
 #include "gedit-tab.h"
 #include "gedit-tab-private.h"
 #include "gedit-view-frame.h"
-#include "gedit-view-holder.h"
+#include "gedit-view-centering.h"
 #include "gedit-utils.h"
 #include "gedit-commands.h"
 #include "gedit-commands-private.h"
@@ -265,14 +265,14 @@ update_view_centering (GeditTab *tab,
 		       gpointer  user_data)
 {
 	GeditViewFrame *view_frame;
-	GeditViewHolder *view_holder;
+	GeditViewCentering *view_centering;
 	gboolean is_fullscreen;
 
 	view_frame = _gedit_tab_get_view_frame (tab);
-	view_holder = gedit_view_frame_get_view_holder (view_frame);
+	view_centering = gedit_view_frame_get_view_centering (view_frame);
 
 	is_fullscreen = GPOINTER_TO_BOOLEAN (user_data);
-	gedit_view_holder_set_centering (view_holder, is_fullscreen);
+	gedit_view_centering_set_centering (view_centering, is_fullscreen);
 }
 
 static void

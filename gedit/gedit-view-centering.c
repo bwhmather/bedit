@@ -1,5 +1,5 @@
 /*
- * gedit-view-holder.c
+ * gedit-view-centering.c
  * This file is part of gedit
  *
  * Copyright (C) 2014 - Sébastien Lafargue
@@ -21,14 +21,14 @@
  * Based on Christian Hergert's prototype.
  */
 
-#include "gedit-view-holder.h"
+#include "gedit-view-centering.h"
 
 #include <gtksourceview/gtksource.h>
 
 #include "gedit-view.h"
 #include "gedit-debug.h"
 
-struct _GeditViewHolderPrivate
+struct _GeditViewCenteringPrivate
 {
 	GtkWidget *box;
 	GtkWidget *scrolled_window;
@@ -47,7 +47,7 @@ struct _GeditViewHolderPrivate
 	guint view_margin_background_set : 1;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GeditViewHolder, gedit_view_holder, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GeditViewCentering, gedit_view_centering, GTK_TYPE_BIN)
 
 #define STYLE_TEXT			"text"
 #define STYLE_RIGHT_MARGIN		"right-margin"
@@ -57,9 +57,9 @@ G_DEFINE_TYPE_WITH_PRIVATE (GeditViewHolder, gedit_view_holder, GTK_TYPE_BIN)
 
 static gboolean
 get_style (GtkSourceStyleScheme *scheme,
-           const gchar          *style_id,
-           const gchar          *attribute,
-           GdkRGBA              *color)
+	   const gchar          *style_id,
+	   const gchar          *attribute,
+	   GdkRGBA              *color)
 {
 	GtkSourceStyle *style;
 	gchar *style_string;
@@ -83,10 +83,10 @@ get_style (GtkSourceStyleScheme *scheme,
 }
 
 static void
-get_spacer_colors (GeditViewHolder      *container,
-                   GtkSourceStyleScheme *scheme)
+get_spacer_colors (GeditViewCentering   *container,
+		   GtkSourceStyleScheme *scheme)
 {
-	GeditViewHolderPrivate *priv = container->priv;
+	GeditViewCenteringPrivate *priv = container->priv;
 
 	if (scheme)
 	{
@@ -106,21 +106,21 @@ get_spacer_colors (GeditViewHolder      *container,
 	}
 }
 
-/* FIXME: when GeditViewHolder will be transfered to GtkSourceViewHolder,
+/* FIXME: when GeditViewCentering will be transfered to GtkSourceView,
  * this method will be replaced by a call to a new method called
  * gtk_source_view_get_right_margin_pixel_position ()
  */
 static guint
-_gedit_view_holder_get_right_margin_pixel_position (GeditViewHolder *container)
+_gedit_view_centering_get_right_margin_pixel_position (GeditViewCentering *container)
 {
-	GeditViewHolderPrivate *priv;
+	GeditViewCenteringPrivate *priv;
 	gchar *str;
 	PangoFontDescription *font_desc;
 	PangoLayout *layout;
 	guint right_margin_position;
 	gint width = 0;
 
-	g_return_val_if_fail (GEDIT_IS_VIEW_HOLDER (container), 0);
+	g_return_val_if_fail (GEDIT_IS_VIEW_CENTERING (container), 0);
 
 	priv = container->priv;
 
@@ -144,11 +144,11 @@ _gedit_view_holder_get_right_margin_pixel_position (GeditViewHolder *container)
 }
 
 static void
-on_view_right_margin_visibility_changed (GeditView       *view,
-                                         GParamSpec      *pspec,
-                                         GeditViewHolder *container)
+on_view_right_margin_visibility_changed (GeditView          *view,
+					 GParamSpec         *pspec,
+					 GeditViewCentering *container)
 {
-	GeditViewHolderPrivate *priv = container->priv;
+	GeditViewCenteringPrivate *priv = container->priv;
 	gboolean visibility;
 
 	visibility = gtk_source_view_get_show_right_margin (GTK_SOURCE_VIEW (priv->sourceview));
@@ -157,14 +157,14 @@ on_view_right_margin_visibility_changed (GeditView       *view,
 }
 
 static void
-on_view_right_margin_position_changed (GeditView       *view,
-                                       GParamSpec      *pspec,
-                                       GeditViewHolder *container)
+on_view_right_margin_position_changed (GeditView          *view,
+				       GParamSpec         *pspec,
+				       GeditViewCentering *container)
 {
-	GeditViewHolderPrivate *priv = container->priv;
+	GeditViewCenteringPrivate *priv = container->priv;
 	gboolean visibility;
 
-	priv->view_text_width = _gedit_view_holder_get_right_margin_pixel_position (container);
+	priv->view_text_width = _gedit_view_centering_get_right_margin_pixel_position (container);
 
 	visibility = gtk_source_view_get_show_right_margin (GTK_SOURCE_VIEW (priv->sourceview));
 
@@ -175,10 +175,10 @@ on_view_right_margin_position_changed (GeditView       *view,
 }
 
 static void
-on_view_context_changed (GtkStyleContext *stylecontext,
-                         GeditViewHolder *container)
+on_view_context_changed (GtkStyleContext    *stylecontext,
+			 GeditViewCentering *container)
 {
-	GeditViewHolderPrivate *priv = container->priv;
+	GeditViewCenteringPrivate *priv = container->priv;
 	GtkTextBuffer *buffer;
 	GtkSourceStyleScheme *scheme;
 	gboolean visibility;
@@ -187,7 +187,7 @@ on_view_context_changed (GtkStyleContext *stylecontext,
 	scheme = gtk_source_buffer_get_style_scheme (GTK_SOURCE_BUFFER (buffer));
 	get_spacer_colors (container, scheme);
 
-	priv->view_text_width = _gedit_view_holder_get_right_margin_pixel_position (container);
+	priv->view_text_width = _gedit_view_centering_get_right_margin_pixel_position (container);
 
 	visibility = gtk_source_view_get_show_right_margin (GTK_SOURCE_VIEW (priv->sourceview));
 
@@ -198,11 +198,11 @@ on_view_context_changed (GtkStyleContext *stylecontext,
 }
 
 static gboolean
-on_spacer_draw (GeditViewHolder *container,
-                cairo_t         *cr,
-                GtkDrawingArea  *spacer)
+on_spacer_draw (GeditViewCentering *container,
+		cairo_t            *cr,
+		GtkDrawingArea     *spacer)
 {
-	GeditViewHolderPrivate *priv = container->priv;
+	GeditViewCenteringPrivate *priv = container->priv;
 	GtkStyleContext *context;
 	guint width, height;
 
@@ -248,14 +248,14 @@ on_spacer_draw (GeditViewHolder *container,
 }
 
 static void
-gedit_view_holder_remove (GtkContainer *container,
-                          GtkWidget    *child)
+gedit_view_centering_remove (GtkContainer *container,
+			     GtkWidget    *child)
 {
-	GeditViewHolderPrivate *priv;
+	GeditViewCenteringPrivate *priv;
 
-	g_assert (GEDIT_IS_VIEW_HOLDER (container));
+	g_assert (GEDIT_IS_VIEW_CENTERING (container));
 
-	priv = GEDIT_VIEW_HOLDER (container)->priv;
+	priv = GEDIT_VIEW_CENTERING (container)->priv;
 
 	if (priv->sourceview == child)
 	{
@@ -266,27 +266,27 @@ gedit_view_holder_remove (GtkContainer *container,
 	}
 	else
 	{
-		GTK_CONTAINER_CLASS (gedit_view_holder_parent_class)->remove (container, child);
+		GTK_CONTAINER_CLASS (gedit_view_centering_parent_class)->remove (container, child);
 	}
 }
 
 static void
-gedit_view_holder_add (GtkContainer *container,
-                       GtkWidget    *child)
+gedit_view_centering_add (GtkContainer *container,
+			  GtkWidget    *child)
 {
-	GeditViewHolderPrivate *priv;
+	GeditViewCenteringPrivate *priv;
 	GtkTextBuffer *buffer;
 	GtkSourceStyleScheme *scheme;
 
-	g_assert (GEDIT_IS_VIEW_HOLDER (container));
+	g_assert (GEDIT_IS_VIEW_CENTERING (container));
 
-	priv = GEDIT_VIEW_HOLDER (container)->priv;
+	priv = GEDIT_VIEW_CENTERING (container)->priv;
 
 	if (GEDIT_IS_VIEW (child))
 	{
 		if (priv->sourceview)
 		{
-			gedit_view_holder_remove (container, priv->sourceview);
+			gedit_view_centering_remove (container, priv->sourceview);
 		}
 
 		priv->sourceview = child;
@@ -297,7 +297,7 @@ gedit_view_holder_add (GtkContainer *container,
 
 		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (priv->sourceview));
 		scheme = gtk_source_buffer_get_style_scheme (GTK_SOURCE_BUFFER (buffer));
-		get_spacer_colors (GEDIT_VIEW_HOLDER (container), scheme);
+		get_spacer_colors (GEDIT_VIEW_CENTERING (container), scheme);
 
 		g_signal_connect (priv->sourceview,
 		                  "notify::right-margin-position",
@@ -318,14 +318,14 @@ gedit_view_holder_add (GtkContainer *container,
 	}
 	else
 	{
-		GTK_CONTAINER_CLASS (gedit_view_holder_parent_class)->add (container, child);
+		GTK_CONTAINER_CLASS (gedit_view_centering_parent_class)->add (container, child);
 	}
 }
 
 static gboolean
-on_spacer_scroll_event (GtkWidget       *widget,
-                        GdkEvent        *event,
-                        GeditViewHolder *container)
+on_spacer_scroll_event (GtkWidget          *widget,
+			GdkEvent           *event,
+			GeditViewCentering *container)
 {
 	GdkEventScroll *new_scroll_event;
 
@@ -347,10 +347,10 @@ on_spacer_scroll_event (GtkWidget       *widget,
 }
 
 static void
-gedit_view_holder_size_allocate (GtkWidget     *widget,
-                                 GtkAllocation *alloc)
+gedit_view_centering_size_allocate (GtkWidget     *widget,
+				    GtkAllocation *alloc)
 {
-	GeditViewHolderPrivate *priv;
+	GeditViewCenteringPrivate *priv;
 	GtkTextView *view;
 	gint container_width;
 	gint gutter_width;
@@ -359,9 +359,9 @@ gedit_view_holder_size_allocate (GtkWidget     *widget,
 	gint current_spacer_width;
 	GdkWindow *gutter_window;
 
-	g_assert (GEDIT_IS_VIEW_HOLDER (widget));
+	g_assert (GEDIT_IS_VIEW_CENTERING (widget));
 
-	priv = GEDIT_VIEW_HOLDER (widget)->priv;
+	priv = GEDIT_VIEW_CENTERING (widget)->priv;
 
 	view = GTK_TEXT_VIEW (priv->sourceview);
 
@@ -383,44 +383,44 @@ gedit_view_holder_size_allocate (GtkWidget     *widget,
 		}
 	}
 
-	GTK_WIDGET_CLASS (gedit_view_holder_parent_class)->size_allocate (widget, alloc);
+	GTK_WIDGET_CLASS (gedit_view_centering_parent_class)->size_allocate (widget, alloc);
 }
 
 static void
-gedit_view_holder_finalize (GObject *object)
+gedit_view_centering_finalize (GObject *object)
 {
-	GeditViewHolder *container = GEDIT_VIEW_HOLDER (object);
-	GeditViewHolderPrivate *priv = container->priv;
+	GeditViewCentering *container = GEDIT_VIEW_CENTERING (object);
+	GeditViewCenteringPrivate *priv = container->priv;
 
 	if (priv->sourceview)
 	{
-		gedit_view_holder_remove (GTK_CONTAINER (container), priv->sourceview);
+		gedit_view_centering_remove (GTK_CONTAINER (container), priv->sourceview);
 	}
 
-	G_OBJECT_CLASS (gedit_view_holder_parent_class)->finalize (object);
+	G_OBJECT_CLASS (gedit_view_centering_parent_class)->finalize (object);
 }
 
 static void
-gedit_view_holder_class_init (GeditViewHolderClass *klass)
+gedit_view_centering_class_init (GeditViewCenteringClass *klass)
 {
 	GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 	GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 	GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
 
-	gobject_class->finalize = gedit_view_holder_finalize;
+	gobject_class->finalize = gedit_view_centering_finalize;
 
-	widget_class->size_allocate = gedit_view_holder_size_allocate;
+	widget_class->size_allocate = gedit_view_centering_size_allocate;
 
-	container_class->add = gedit_view_holder_add;
-	container_class->remove = gedit_view_holder_remove;
+	container_class->add = gedit_view_centering_add;
+	container_class->remove = gedit_view_centering_remove;
 }
 
 static void
-gedit_view_holder_init (GeditViewHolder *container)
+gedit_view_centering_init (GeditViewCentering *container)
 {
-	GeditViewHolderPrivate *priv;
+	GeditViewCenteringPrivate *priv;
 
-	container->priv = gedit_view_holder_get_instance_private (container);
+	container->priv = gedit_view_centering_get_instance_private (container);
 	priv = container->priv;
 	priv->view_text_width = 0;
 
@@ -446,18 +446,18 @@ gedit_view_holder_init (GeditViewHolder *container)
 }
 
 /**
- * gedit_view_holder_set_centering:
- * @container: a #GeditViewHolder.
+ * gedit_view_centering_set_centering:
+ * @container: a #GeditViewCentering.
  * @centering : whether to center the sourceview child or not.
  *
  * if @centering is %TRUE, the sourceview child is centered
- * horizontally on the #GeditViewHolder container.
+ * horizontally on the #GeditViewCentering container.
  **/
 void
-gedit_view_holder_set_centering (GeditViewHolder *container,
-                                 gboolean         centering)
+gedit_view_centering_set_centering (GeditViewCentering *container,
+				    gboolean            centering)
 {
-	g_return_if_fail (GEDIT_IS_VIEW_HOLDER (container));
+	g_return_if_fail (GEDIT_IS_VIEW_CENTERING (container));
 
 	container->priv->centering = centering != FALSE;
 
@@ -465,26 +465,26 @@ gedit_view_holder_set_centering (GeditViewHolder *container,
 }
 
 /**
- * gedit_view_holder_get_centering:
- * @container: a #GeditViewHolder.
+ * gedit_view_centering_get_centering:
+ * @container: a #GeditViewCentering.
  *
  * Return whether the #GtkSourceView child is centered or not.
  *
  * Return value: %TRUE if the #GtkSourceView child is centered
- * horizontally on the #GeditViewHolder container.
+ * horizontally on the #GeditViewCentering container.
  **/
 gboolean
-gedit_view_holder_get_centering (GeditViewHolder *container)
+gedit_view_centering_get_centering (GeditViewCentering *container)
 {
-	g_return_val_if_fail (GEDIT_IS_VIEW_HOLDER (container), FALSE);
+	g_return_val_if_fail (GEDIT_IS_VIEW_CENTERING (container), FALSE);
 
 	return container->priv->centering;
 }
 
-GeditViewHolder *
-gedit_view_holder_new (void)
+GeditViewCentering *
+gedit_view_centering_new (void)
 {
-	return g_object_new (GEDIT_TYPE_VIEW_HOLDER,
+	return g_object_new (GEDIT_TYPE_VIEW_CENTERING,
 	                     NULL);
 }
 
