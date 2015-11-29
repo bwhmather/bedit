@@ -32,7 +32,6 @@ static gchar *user_config_dir        = NULL;
 static gchar *user_cache_dir         = NULL;
 static gchar *user_styles_dir        = NULL;
 static gchar *user_plugins_dir       = NULL;
-static gchar *gedit_data_dir         = NULL;
 static gchar *gedit_locale_dir       = NULL;
 static gchar *gedit_lib_dir          = NULL;
 static gchar *gedit_plugins_dir      = NULL;
@@ -46,10 +45,6 @@ gedit_dirs_init ()
 
 	win32_dir = g_win32_get_package_installation_directory_of_module (NULL);
 
-	gedit_data_dir = g_build_filename (win32_dir,
-					   "share",
-					   "gedit",
-					   NULL);
 	gedit_locale_dir = g_build_filename (win32_dir,
 					     "share",
 					     "locale",
@@ -58,18 +53,20 @@ gedit_dirs_init ()
 					  "lib",
 					  "gedit",
 					  NULL);
+	gedit_plugins_data_dir = g_build_filename (win32_dir,
+						   "share",
+						   "gedit",
+						   "plugins",
+						   NULL);
 
 	g_free (win32_dir);
-#else /* !G_OS_WIN32 */
+#endif /* G_OS_WIN32 */
+
 #ifdef OS_OSX
 	if (gtkosx_application_get_bundle_id () != NULL)
 	{
 		const gchar *bundle_resource_dir = gtkosx_application_get_resource_path ();
 
-		gedit_data_dir = g_build_filename (bundle_resource_dir,
-						   "share",
-						   "gedit",
-						   NULL);
 		gedit_locale_dir = g_build_filename (bundle_resource_dir,
 						     "share",
 						     "locale",
@@ -78,21 +75,27 @@ gedit_dirs_init ()
 						  "lib",
 						  "gedit",
 						  NULL);
+		gedit_plugins_data_dir = g_build_filename (bundle_resource_dir,
+							   "share",
+							   "gedit",
+							   "plugins",
+							   NULL);
 	}
-#endif /* !OS_OSX */
-	if (gedit_data_dir == NULL)
+#endif /* OS_OSX */
+
+	if (gedit_locale_dir == NULL)
 	{
-		gedit_data_dir = g_build_filename (DATADIR,
-						   "gedit",
-						   NULL);
 		gedit_locale_dir = g_build_filename (DATADIR,
 						     "locale",
 						     NULL);
 		gedit_lib_dir = g_build_filename (LIBDIR,
 						  "gedit",
 						  NULL);
+		gedit_plugins_data_dir = g_build_filename (DATADIR,
+							   "gedit",
+							   "plugins",
+							   NULL);
 	}
-#endif /* !G_OS_WIN32 */
 
 	user_cache_dir = g_build_filename (g_get_user_cache_dir (),
 					   "gedit",
@@ -111,9 +114,6 @@ gedit_dirs_init ()
 	gedit_plugins_dir = g_build_filename (gedit_lib_dir,
 					      "plugins",
 					      NULL);
-	gedit_plugins_data_dir = g_build_filename (gedit_data_dir,
-						   "plugins",
-						   NULL);
 }
 
 void
@@ -123,7 +123,6 @@ gedit_dirs_shutdown ()
 	g_free (user_cache_dir);
 	g_free (user_styles_dir);
 	g_free (user_plugins_dir);
-	g_free (gedit_data_dir);
 	g_free (gedit_locale_dir);
 	g_free (gedit_lib_dir);
 	g_free (gedit_plugins_dir);
@@ -152,12 +151,6 @@ const gchar *
 gedit_dirs_get_user_plugins_dir (void)
 {
 	return user_plugins_dir;
-}
-
-const gchar *
-gedit_dirs_get_gedit_data_dir (void)
-{
-	return gedit_data_dir;
 }
 
 const gchar *
