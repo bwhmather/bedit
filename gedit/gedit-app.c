@@ -1437,7 +1437,7 @@ gedit_app_init (GeditApp *app)
 	priv = gedit_app_get_instance_private (app);
 
 	g_set_application_name ("gedit");
-	gtk_window_set_default_icon_name ("accessories-text-editor");
+	gtk_window_set_default_icon_name ("gedit");
 
 	priv->monitor = g_network_monitor_get_default ();
 	g_signal_connect (priv->monitor,

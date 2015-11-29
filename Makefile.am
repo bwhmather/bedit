@@ -88,6 +88,7 @@ BUILT_SOURCES             =
 CLEANFILES                =
 
 include data/Makefile.am
+include data/icons/Makefile.am
 include win32/Makefile.am
 include osx/bundle/data/Makefile.am
 include plugins/Makefile.am
