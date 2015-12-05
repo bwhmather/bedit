@@ -1342,8 +1342,6 @@ saved_query_info_cb (GFile         *location,
 
 	priv->create = FALSE;
 
-	gtk_text_buffer_set_modified (GTK_TEXT_BUFFER (doc), FALSE);
-
 	save_encoding_metadata (doc);
 
 	/* Async operation finished. */
