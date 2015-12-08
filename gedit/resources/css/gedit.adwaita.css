@@ -56,7 +56,7 @@ GeditWindow .pane-separator:hover {
     border-color: transparent;
     border-width: 1px;
     padding: 1px;
-    icon-shadow: none;
+    -gtk-icon-shadow: none;
 }
 
 .gedit-document-panel .prelight-row .button  {
@@ -76,7 +76,7 @@ GeditWindow .pane-separator:hover {
     color:  @button_active_text;
     background-color: alpha(black, 0.08);
     box-shadow: inset 0 1px alpha(black, 0.05);
-    icon-shadow: 0 1px @button_active_text_shadow;
+    -gtk-icon-shadow: 0 1px @button_active_text_shadow;
 
     border-color: alpha(black, 0.27)
                   alpha(black, 0.13)
@@ -86,7 +86,7 @@ GeditWindow .pane-separator:hover {
 
 .gedit-document-panel .prelight-row .button:backdrop {
     color: mix(@theme_unfocused_fg_color, @theme_unfocused_base_color, 0.7);
-    icon-shadow: none;
+    -gtk-icon-shadow: none;
 }
 
 .gedit-document-panel .prelight-row .button:backdrop:hover {

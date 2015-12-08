@@ -35,11 +35,9 @@ gedit_small_button_class_init (GeditSmallButtonClass *klass)
 {
 	static const gchar button_style[] =
 		"* {\n"
-		  "-GtkButton-default-border : 0;\n"
-		  "-GtkButton-default-outside-border : 0;\n"
-		  "-GtkButton-inner-border: 0;\n"
-		  "-GtkWidget-focus-line-width : 0;\n"
-		  "-GtkWidget-focus-padding : 0;\n"
+		  "padding: 0;\n"
+		  "border: 0;\n"
+		  "outline-width: 0;\n"
 		"}";
 
 	klass->priv = G_TYPE_CLASS_GET_PRIVATE (klass, GEDIT_TYPE_SMALL_BUTTON, GeditSmallButtonClassPrivate);

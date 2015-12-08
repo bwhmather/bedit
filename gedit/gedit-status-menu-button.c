@@ -87,12 +87,9 @@ gedit_status_menu_button_class_init (GeditStatusMenuButtonClass *klass)
 {
 	static const gchar style[] =
 		"* {\n"
-		  "-GtkButton-default-border : 0;\n"
-		  "-GtkButton-default-outside-border : 0;\n"
-		  "-GtkButton-inner-border: 0;\n"
-		  "-GtkWidget-focus-line-width : 0;\n"
-		  "-GtkWidget-focus-padding : 0;\n"
 		  "padding: 1px 8px 2px 4px;\n"
+		  "border: 0;\n"
+		  "outline-width: 0;\n"
 		"}";
 
 	GObjectClass *object_class = G_OBJECT_CLASS (klass);
