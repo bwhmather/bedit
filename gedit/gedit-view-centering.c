@@ -126,9 +126,13 @@ _gedit_view_centering_get_right_margin_pixel_position (GeditViewCentering *conta
 
 	right_margin_position = gtk_source_view_get_right_margin_position (GTK_SOURCE_VIEW (priv->sourceview));
 
-	gtk_style_context_get (priv->view_context, GTK_STATE_FLAG_NORMAL,
+	gtk_style_context_save (priv->view_context);
+	gtk_style_context_set_state (priv->view_context, GTK_STATE_FLAG_NORMAL);
+	gtk_style_context_get (priv->view_context,
+	                       gtk_style_context_get_state (priv->view_context),
 	                       GTK_STYLE_PROPERTY_FONT, &font_desc,
 	                       NULL);
+	gtk_style_context_restore (priv->view_context);
 
 	str = g_strnfill (right_margin_position, '_');
 	layout = gtk_widget_create_pango_layout (GTK_WIDGET (priv->sourceview), str);
