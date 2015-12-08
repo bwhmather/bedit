@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-10-18 11:01+0000\n"
-"PO-Revision-Date: 2015-09-02 08:05+0200\n"
+"POT-Creation-Date: 2015-12-08 20:43+0000\n"
+"PO-Revision-Date: 2015-12-08 23:16+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: slovenčina <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.6\n"
 
 # DK: typujem ze zaciatok vety by mal byt velkym pismenom "Gedit...". Nahlas bug a preloz to velkym.
 # PK: nie, aj inde je gedit malym pismom
@@ -620,20 +620,16 @@ msgstr "[SÚBOR…] [+RIADOK[:STĹPEC]]"
 msgid "There was an error displaying the help."
 msgstr "Nastala chyba pri zobrazovaní pomocníka."
 
-#: ../gedit/gedit-app.c:972
+#: ../gedit/gedit-app.c:977
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: neplatné kódovanie."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:155
-msgid "Question"
-msgstr "Otázka"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:317
+#: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Zavrieť _bez uloženia"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:318
+#: ../gedit/gedit-close-confirmation-dialog.c:278
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
@@ -649,18 +645,17 @@ msgstr "Zavrieť _bez uloženia"
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/resources/gtk/menus-default.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus-default.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "Uložiť _ako…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
+#: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
@@ -668,7 +663,7 @@ msgstr "Uložiť _ako…"
 msgid "_Save"
 msgstr "_Uložiť"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -681,12 +676,12 @@ msgstr[1] "Ak ich neuložíte, zmeny za poslednú sekundu budú natrvalo straten
 msgstr[2] ""
 "Ak ich neuložíte, zmeny za posledné %ld sekundy budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:373
+#: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr "Ak ich neuložíte, zmeny za poslednú minútu budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:379
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -704,7 +699,7 @@ msgstr[2] ""
 "Ak ich neuložíte, zmeny za poslednú minútu a %ld sekundy budú natrvalo "
 "stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -717,11 +712,11 @@ msgstr[1] "Ak ich neuložíte, zmeny za poslednú minútu budú natrvalo straten
 msgstr[2] ""
 "Ak ich neuložíte, zmeny za posledné %ld minúty budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:404
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Ak ich neuložíte, zmeny za poslednú hodinu budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -738,7 +733,7 @@ msgstr[2] ""
 "Ak ich neuložíte, zmeny za poslednú hodinu a %d minúty budú natrvalo "
 "stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:425
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -750,22 +745,22 @@ msgstr[1] "Ak ich neuložíte, zmeny za poslednú hodinu budú natrvalo straten�
 msgstr[2] ""
 "Ak ich neuložíte, zmeny za posledné %d hodiny budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:469
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Zmeny v dokumente „%s“ budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:474
+#: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Uložiť zmeny v dokumente „%s“ pred zatvorením?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:489
-#: ../gedit/gedit-close-confirmation-dialog.c:647
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "Správca systému zakázal ukladanie."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:595
+#: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -773,7 +768,7 @@ msgstr[0] "Zmeny v %d dokumentoch budú natrvalo stratené."
 msgstr[1] "Zmeny v %d dokumente budú natrvalo stratené."
 msgstr[2] "Zmeny v %d dokumentoch budú natrvalo stratené."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:603
+#: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -788,15 +783,15 @@ msgstr[2] ""
 "Máte otvorené %d dokumenty, ktoré obsahujú neuložené zmeny. Chcete ich "
 "uložiť pred zatvorením?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:623
+#: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_enty s neuloženými zmenami:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "Vyberte _súbory, ktoré chcete uložiť:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Ak ich neuložíte, všetky vaše zmeny budú natrvalo stratené."
 
@@ -983,11 +978,11 @@ msgstr[2] ""
 msgid "_Revert"
 msgstr "V_rátiť"
 
-#: ../gedit/gedit-commands-help.c:79
+#: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "gedit je malý textový editor nenáročný na zdroje pre prostredie GNOME"
 
-#: ../gedit/gedit-commands-help.c:103
+#: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "Stanislav Višňovský\n"
@@ -1433,14 +1428,13 @@ msgid "Drop Changes and _Reload"
 msgstr "Zahodiť zmeny a _znovu načítať"
 
 #: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-default.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 #: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_Znova načítať"
 
 #: ../gedit/gedit-io-error-info-bar.c:1187
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "_Ignorovať"
 
@@ -1521,6 +1515,7 @@ msgstr "Nič"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Nájsť a nahradiť"
 
@@ -1712,6 +1707,7 @@ msgid "Change side panel page"
 msgstr "Zmení stránku bočného panela"
 
 #: ../gedit/gedit-window.c:2467 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumenty"
@@ -1734,8 +1730,8 @@ msgid "Move to New Tab _Group"
 msgstr "_Presunúť do novej skupiny kariet"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
@@ -1779,94 +1775,101 @@ msgstr "Nas_tavenia"
 #: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
 #: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../plugins/spell/gedit-spell-plugin.c:364
+msgid "_Keyboard Shortcuts"
+msgstr "_Klávesové skratky"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-osx.ui.h:46
+#: ../plugins/spell/gedit-spell-plugin.c:353
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "_Pomocník"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_About"
 msgstr "_O programe"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
 msgid "_Quit"
 msgstr "U_končiť"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:7
+#: ../gedit/resources/gtk/menus-default.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
 #: ../gedit/resources/gtk/menus-osx.ui.h:11
 msgid "_Print…"
 msgstr "_Tlačiť…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
+#: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
 #: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "Na _celú obrazovku"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:10
+#: ../gedit/resources/gtk/menus-default.ui.h:11
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Save _All"
 msgstr "Uložiť _všetky"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:11
+#: ../gedit/resources/gtk/menus-default.ui.h:12
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
 #: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "_Find…"
 msgstr "_Nájsť…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:12
+#: ../gedit/resources/gtk/menus-default.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
 msgstr "Nájsť a n_ahradiť…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:13
+#: ../gedit/resources/gtk/menus-default.ui.h:14
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
 #: ../gedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "_Zrušiť zvýrazňovanie"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:14
+#: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
 msgstr "Prejsť na _riadok…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:15
+#: ../gedit/resources/gtk/menus-default.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/gtk/menus-osx.ui.h:22
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Zobraziť"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:16
+#: ../gedit/resources/gtk/menus-default.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
 #: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "_Bočný panel"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:18
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
 #: ../gedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "Sp_odný panel"
 
 #  GtkDialog title
-#: ../gedit/resources/gtk/menus-default.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
 #: ../gedit/resources/gtk/menus-osx.ui.h:26
 msgid "_Highlight Mode…"
 msgstr "Režim z_výrazňovania"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 #: ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgid "Tools"
 msgstr "_Nástroje"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
 #: ../gedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "Za_vrieť všetky"
@@ -2017,7 +2020,6 @@ msgid "Highlight Mode"
 msgstr "Režim zvýrazňovania"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_Select"
 msgstr "Vybr_ať"
 
@@ -2326,6 +2328,201 @@ msgstr "Hľadať _dozadu"
 msgid "Wra_p around"
 msgstr "_Pokračovať dookola"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgid "Create a new document in a tab"
+msgstr "Vytvorenie nového dokumentu na karte"
+
+# quicklist
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgid "Open a document"
+msgstr "Otvorenie dokumentu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgid "Save the document"
+msgstr "Uloženie dokumentu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgid "Save the document with a new filename"
+msgstr "Uloženie dokumentu s novým názvom súboru"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgid "Save all the documents"
+msgstr "Uloženie všetkých dokumentov"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgid "Close the document"
+msgstr "Zatvorenie dokumentu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgid "Close all the documents"
+msgstr "Zatvorenie všetkých dokumentov"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgid "Reopen the most recently closed document"
+msgstr "Znovu otvorenie posledného zatvoreného dokumentu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgid "Switch to the next document"
+msgstr "Prepnutie na nasledujúci dokument"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgid "Switch to the previous document"
+msgstr "Prepnutie na predchádzajúci dokument"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgid "Switch to the first - ninth document"
+msgstr "Prepínanie medzi prvým až deviatym dokumentom"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgid "Windows and Panels"
+msgstr "Okná a panely"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgid "Create a new document in a window"
+msgstr "Vytvorenie nového dokumentu v okne"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgid "Create a new tab group"
+msgstr "Vytvorí novú skupinu kariet"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgid "Show side panel"
+msgstr "Zobrazenie bočného panelu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgid "Show bottom panel"
+msgstr "Zobrazenie spodného panelu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgid "Fullscreen on / off"
+msgstr "Zapnutie alebo vypnutie režimu na celú obrazovku"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgid "Quit the application"
+msgstr "Ukončenie aplikácie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgid "Find"
+msgstr "Nájdenie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgid "Find the next match"
+msgstr "Nájdenie nasledujúcej zhody"
+
+# tooltip
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgid "Find the previous match"
+msgstr "Nájdenie predchádzajúcej zhody"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgid "Clear highlight"
+msgstr "Vymazanie zvýraznenia"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgid "Go to line"
+msgstr "Prejdenie na riadok"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgid "Copy and Paste"
+msgstr "Kopírovanie a vkladanie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgid "Copy selected text to clipboard"
+msgstr "Skopírovanie vybratého textu do schránky"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgid "Cut selected text to clipboard"
+msgstr "Vystrihnutie vybratého textu do schránky"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgid "Paste text from clipboard"
+msgstr "Vloženie textu zo schránky"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgid "Undo and Redo"
+msgstr "Vrátenie späť a zopakovanie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgid "Undo previous command"
+msgstr "Vrátenie späť predchádzajúceho príkazu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgid "Redo previous command"
+msgstr "Zopakovanie predchádzajúceho príkazu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Výber"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgid "Select all text"
+msgstr "Výber celého textu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgid "Editing"
+msgstr "Upravovanie"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgid "Toggle insert / overwrite"
+msgstr "Prepnutie režimu vkladania alebo prepisovania"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgid "Delete current line"
+msgstr "Odstránenie aktuálneho riadku"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgid "Join selected lines"
+msgstr "Spojenie vybratých riadkov"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgid "Move current line up"
+msgstr "Presun aktuálneho riadku hore"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgid "Move current line down"
+msgstr "Presun aktuálneho riadku dole"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgid "Move current word left"
+msgstr "Presun aktuálneho slova doľava"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgid "Move current word right"
+msgstr "Presun aktuálneho slova doprava"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgid "Convert to uppercase"
+msgstr "Skonvertovanie na veľké písmená"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgid "Convert to lowercase"
+msgstr "Zmena textu na malé písmená"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgid "Invert case"
+msgstr "Obrátenie veľkosti písmen"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgid "Increment number at cursor"
+msgstr "Navýšenie čísla na kurzore"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgid "Decrement number at cursor"
+msgstr "Zníženie čísla na kurzore"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgid "Check spelling"
+msgstr "Kontrola pravopisu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgid "Print the document"
+msgstr "Tlač dokumentu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgid "Show completion window"
+msgstr "Zobrazenie okna dopĺňania"
+
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
 msgstr "Zavrieť dokument"
@@ -2426,10 +2623,6 @@ msgstr "Š_tatistika dokumentu"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Dokument"
-
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
-msgid "Selection"
-msgstr "Výber"
 
 # nemá tu byť riadkov?
 # netreba plural forms?
@@ -3368,35 +3561,6 @@ msgstr "Zo_radiť"
 msgid "Sorts a document or selected text."
 msgstr "Zoradí dokument alebo vybraný text."
 
-#. No suggestions. Put something in the menu anyway...
-#. Translators: Displayed in the "Check Spelling"
-#. * dialog if there are no suggestions for the current
-#. * misspelled word.
-#.
-#: ../plugins/spell/gedit-automatic-spell-checker.c:573
-#: ../plugins/spell/gedit-spell-checker-dialog.c:152
-msgid "(no suggested words)"
-msgstr "(žiadne návrhy)"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:596
-msgid "_More..."
-msgstr "Ďa_lšie…"
-
-#. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:636
-msgid "_Ignore All"
-msgstr "_Ignorovať všetky"
-
-#. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:645
-msgid "_Add"
-msgstr "Pri_dať"
-
-#. Prepend suggestions
-#: ../plugins/spell/gedit-automatic-spell-checker.c:682
-msgid "_Spelling Suggestions..."
-msgstr "_Odporúčania…"
-
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "_Kontrola pravopisu…"
@@ -3409,116 +3573,7 @@ msgstr "Nastaviť _jazyk…"
 msgid "_Highlight Misspelled Words"
 msgstr "_Zvýrazniť preklepy"
 
-#: ../plugins/spell/gedit-spell-checker.c:464
-#, c-format
-msgid "Error when checking the spelling of word “%s”: %s"
-msgstr "Chyba pri kontrole pravopisu slova „%s“: %s"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:237
-msgid "Error:"
-msgstr "Chyba:"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:274
-msgid "Completed spell checking"
-msgstr "Kontrola pravopisu dokončená"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:278
-msgid "No misspelled words"
-msgstr "Žiadne nesprávne slová"
-
-#. Translators: Displayed in the "Check
-#. * Spelling" dialog if the current word
-#. * isn't misspelled.
-#.
-#: ../plugins/spell/gedit-spell-checker-dialog.c:508
-msgid "(correct spelling)"
-msgstr "(správny tvar)"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:646
-msgid "Suggestions"
-msgstr "Odporúčania"
-
-#. Translators: the first %s is the language name, and
-#. * the second %s is the locale name. Example:
-#. * "French (France)"
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:363
-#: ../plugins/spell/gedit-spell-checker-language.c:369
-#, c-format
-msgctxt "language"
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#. Translators: this refers to an unknown language code
-#. * (one which isn't in our built-in list).
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:378
-#, c-format
-msgctxt "language"
-msgid "Unknown (%s)"
-msgstr "Neznámy (%s)"
-
-#. Translators: this refers the Default language used by the
-#. * spell checker
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:484
-msgctxt "language"
-msgid "Default"
-msgstr "Predvolený"
-
 #. ex:set ts=8 noet:
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-msgid "Set Language"
-msgstr "Nastavenie jazyka"
-
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-msgid "Select the _language of the current document."
-msgstr "Vybrať _jazyk aktuálneho dokumentu."
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check Spelling"
-msgstr "Kontrola pravopisu"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-msgid "Misspelled word:"
-msgstr "Nesprávne slovo:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
-msgid "word"
-msgstr "slovo"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-msgid "Change _to:"
-msgstr "Zmeniť _na:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-msgid "Check _Word"
-msgstr "Kontrolované _slovo"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-msgid "_Suggestions:"
-msgstr "_Odporúčania:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Ignore _All"
-msgstr "I_gnorovať všetky"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-msgid "Cha_nge"
-msgstr "Z_meniť"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-msgid "Change A_ll"
-msgstr "Zmeniť vš_etky"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
-msgid "User dictionary:"
-msgstr "Používateľský slovník:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-msgid "Add w_ord"
-msgstr "Pridať slo_vo"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Kontrola pravopisu"
@@ -3615,6 +3670,93 @@ msgstr "Vložiť dátum/čas"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 
+#~ msgid "Question"
+#~ msgstr "Otázka"
+
+#~ msgid "(no suggested words)"
+#~ msgstr "(žiadne návrhy)"
+
+#~ msgid "_More..."
+#~ msgstr "Ďa_lšie…"
+
+#~ msgid "_Ignore All"
+#~ msgstr "_Ignorovať všetky"
+
+#~ msgid "_Add"
+#~ msgstr "Pri_dať"
+
+#~ msgid "_Spelling Suggestions..."
+#~ msgstr "_Odporúčania…"
+
+#~ msgid "Error when checking the spelling of word “%s”: %s"
+#~ msgstr "Chyba pri kontrole pravopisu slova „%s“: %s"
+
+#~ msgid "Error:"
+#~ msgstr "Chyba:"
+
+#~ msgid "Completed spell checking"
+#~ msgstr "Kontrola pravopisu dokončená"
+
+#~ msgid "No misspelled words"
+#~ msgstr "Žiadne nesprávne slová"
+
+#~ msgid "(correct spelling)"
+#~ msgstr "(správny tvar)"
+
+#~ msgid "Suggestions"
+#~ msgstr "Odporúčania"
+
+#~ msgctxt "language"
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Unknown (%s)"
+#~ msgstr "Neznámy (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Default"
+#~ msgstr "Predvolený"
+
+#~ msgid "Set Language"
+#~ msgstr "Nastavenie jazyka"
+
+#~ msgid "Select the _language of the current document."
+#~ msgstr "Vybrať _jazyk aktuálneho dokumentu."
+
+#~ msgid "Check Spelling"
+#~ msgstr "Kontrola pravopisu"
+
+#~ msgid "Misspelled word:"
+#~ msgstr "Nesprávne slovo:"
+
+#~ msgid "word"
+#~ msgstr "slovo"
+
+#~ msgid "Change _to:"
+#~ msgstr "Zmeniť _na:"
+
+#~ msgid "Check _Word"
+#~ msgstr "Kontrolované _slovo"
+
+#~ msgid "_Suggestions:"
+#~ msgstr "_Odporúčania:"
+
+#~ msgid "Ignore _All"
+#~ msgstr "I_gnorovať všetky"
+
+#~ msgid "Cha_nge"
+#~ msgstr "Z_meniť"
+
+#~ msgid "Change A_ll"
+#~ msgstr "Zmeniť vš_etky"
+
+#~ msgid "User dictionary:"
+#~ msgstr "Používateľský slovník:"
+
+#~ msgid "Add w_ord"
+#~ msgstr "Pridať slo_vo"
+
 #~ msgid "Minimap is Visible"
 #~ msgstr "Miniatúrny náhľad je viditeľný"
 
@@ -3635,9 +3777,6 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 
 #~ msgid "The document is empty."
 #~ msgstr "Dokument je prázdny."
-
-#~ msgid "Check spelling"
-#~ msgstr "Kontrola pravopisu"
 
 #~ msgid "RO"
 #~ msgstr "RO"
@@ -3839,14 +3978,8 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 #~ msgid "_Contents"
 #~ msgstr "Ob_sah"
 
-#~ msgid "About this application"
-#~ msgstr "O aplikácii"
-
 #~ msgid "Save _As..."
 #~ msgstr "Uložiť _ako…"
-
-#~ msgid "Save the current file with a different name"
-#~ msgstr "Uloží aktuálny súbor pod iným menom"
 
 #~ msgid "Revert to a saved version of the file"
 #~ msgstr "Vráti sa k uloženej verzii súboru"
@@ -3860,9 +3993,6 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 #~ msgid "_Print..."
 #~ msgstr "_Tlačiť…"
 
-#~ msgid "Print the current page"
-#~ msgstr "Vytlačí aktuálnu stranu"
-
 #~ msgid "Undo the last action"
 #~ msgstr "Vráti poslednú operáciu"
 
@@ -3875,14 +4005,8 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 #~ msgid "Copy the selection"
 #~ msgstr "Skopíruje výber do schránky"
 
-#~ msgid "Paste the clipboard"
-#~ msgstr "Vloží obsah schránky"
-
 #~ msgid "Delete the selected text"
 #~ msgstr "Odstráni vybraný text"
-
-#~ msgid "Select the entire document"
-#~ msgstr "Vyberie celý dokument"
 
 #~ msgid "_Highlight Mode..."
 #~ msgstr "Režim _zvýrazňovania…"
@@ -3919,15 +4043,6 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 
 #~ msgid "Close all open files"
 #~ msgstr "Zavrie všetky otvorené súbory"
-
-#~ msgid "Create a new tab group"
-#~ msgstr "Vytvorí novú skupinu kariet"
-
-#~ msgid "Switch to the previous tab group"
-#~ msgstr "Prepne na predchádzajúcu skupinu kariet"
-
-#~ msgid "Switch to the next tab group"
-#~ msgstr "Prepne na nasledovnú skupinu kariet"
 
 #~ msgid "Activate previous document"
 #~ msgstr "Aktivuje predchádzajúci dokument"
@@ -3982,12 +4097,6 @@ msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
 
 #~ msgid "All _Lower Case"
 #~ msgstr "Všetko _malými písmenami"
-
-#~ msgid "Change selected text to lower case"
-#~ msgstr "Zmeniť označený text na malé písmená"
-
-#~ msgid "_Invert Case"
-#~ msgstr "_Invertovať veľkosť písmen"
 
 #~ msgid "Invert the case of selected text"
 #~ msgstr "Invertovať veľkosť písmen označeného textu"
