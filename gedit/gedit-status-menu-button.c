@@ -147,12 +147,16 @@ void
 gedit_status_menu_button_set_label (GeditStatusMenuButton *button,
                                     const gchar           *label)
 {
+	g_return_if_fail (GEDIT_IS_STATUS_MENU_BUTTON (button));
+
 	gtk_label_set_markup (GTK_LABEL (button->label), label);
 }
 
 const gchar *
 gedit_status_menu_button_get_label (GeditStatusMenuButton *button)
 {
+	g_return_val_if_fail (GEDIT_IS_STATUS_MENU_BUTTON (button), NULL);
+
 	return gtk_label_get_label (GTK_LABEL (button->label));
 }
 
