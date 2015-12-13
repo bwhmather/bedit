@@ -419,7 +419,7 @@ set_inline_checker (ViewData *data,
 		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (data->view));
 		g_return_if_fail (buffer == GTK_TEXT_BUFFER (data->doc));
 
-		data->inline_checker = gspell_inline_checker_gtv_new (GTK_SOURCE_BUFFER (data->doc),
+		data->inline_checker = gspell_inline_checker_gtv_new (GTK_TEXT_BUFFER (data->doc),
 								      checker);
 
 		gspell_inline_checker_gtv_attach_view (data->inline_checker,
