@@ -1,7 +1,7 @@
 General Information
 ===================
 
-This is version 3.19.1 of gedit. gedit is a small and lightweight UTF-8 text
+This is version 3.19.2 of gedit. gedit is a small and lightweight UTF-8 text
 editor for the GNOME environment.
 
 gedit is part of GNOME and uses the latest GTK+ and GNOME libraries.
@@ -64,7 +64,7 @@ Information about gedit mailing lists can be found at
 Installation
 ============
 
-gedit requires GTK+ >= 3.19.0, GtkSourceView >= 3.18 and
+gedit requires GTK+ >= 3.19.0, GtkSourceView >= 3.19.3 and
 libpeas >= 1.14.1 libraries. It also has a run-time dependency on an
 icon theme for its icons. If gedit fails to display icons, installing
 GNOME's default adwaita-icon-theme is a simple way of providing them.
@@ -74,8 +74,8 @@ plugins support.
 
 Simple install procedure:
 
-  % tar Jxf gedit-3.19.1.tar.xz			# unpack the sources
-  % cd gedit-3.19.1				# change to the toplevel directory
+  % tar Jxf gedit-3.19.2.tar.xz			# unpack the sources
+  % cd gedit-3.19.2				# change to the toplevel directory
   % ./configure					# run the `configure' script
   % make					# build gedit
   [ Become root if necessary ]
