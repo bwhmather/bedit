@@ -21,7 +21,7 @@ icon_files = \
 	$(icon48_DATA) \
 	$(icon256_DATA) \
 	$(iconsymbolic_DATA) \
-	data/src/gedit.svg
+	data/icons/src/gedit.svg
 
 gtk_update_icon_cache = gtk-update-icon-cache -f -t $(datadir)/icons/hicolor
 
