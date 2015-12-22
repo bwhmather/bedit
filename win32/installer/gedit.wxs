@@ -16,6 +16,8 @@
 
     <!-- UI -->
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.TopDir)\win32\installer\WixUIBannerBmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.TopDir)\win32\installer\WixUIDialogBmp.bmp" />
     <WixVariable Id="WixUILicenseRtf" Value="$(var.LicenseFile)" />
     <Condition Message="[ProductName] requires that your computer is running at least Windows 7">VersionNT&gt;=601</Condition>
 
