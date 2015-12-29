@@ -87,76 +87,12 @@ static void	set_language_cb			(GSimpleAction *action, GVariant *parameter, gpoin
 static void	inline_checker_activate_cb	(GSimpleAction *action, GVariant *parameter, gpointer data);
 static void	inline_checker_change_state_cb	(GSimpleAction *action, GVariant *state, gpointer data);
 
-static void	on_document_loaded		(GeditDocument *doc, ViewData *data);
-static void	on_document_saved		(GeditDocument *doc, ViewData *data);
-static void	set_inline_checker_from_metadata (ViewData *data);
-
 static GActionEntry action_entries[] =
 {
 	{ "check-spell", spell_cb },
 	{ "config-spell", set_language_cb },
 	{ "inline-checker", inline_checker_activate_cb, NULL, "false", inline_checker_change_state_cb }
 };
-
-static GQuark spell_checker_id = 0;
-
-static ViewData *
-view_data_new (GeditSpellPlugin *plugin,
-	       GeditView        *view)
-{
-	ViewData *data;
-
-	data = g_slice_new (ViewData);
-	data->plugin = g_object_ref (plugin);
-	data->view = g_object_ref (view);
-	data->inline_checker = NULL;
-
-	data->doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-	g_object_ref (data->doc);
-
-	g_signal_connect (data->doc,
-			  "loaded",
-			  G_CALLBACK (on_document_loaded),
-			  data);
-
-	g_signal_connect (data->doc,
-			  "saved",
-			  G_CALLBACK (on_document_saved),
-			  data);
-
-	set_inline_checker_from_metadata (data);
-
-	return data;
-}
-
-static void
-view_data_free (ViewData *data)
-{
-	if (data == NULL)
-	{
-		return;
-	}
-
-	if (data->doc != NULL)
-	{
-		g_signal_handlers_disconnect_by_func (data->doc, on_document_loaded, data);
-		g_signal_handlers_disconnect_by_func (data->doc, on_document_saved, data);
-
-		g_object_unref (data->doc);
-	}
-
-	if (data->inline_checker != NULL && data->view != NULL)
-	{
-		gspell_inline_checker_gtv_detach_view (data->inline_checker,
-						       GTK_TEXT_VIEW (data->view));
-	}
-
-	g_clear_object (&data->plugin);
-	g_clear_object (&data->view);
-	g_clear_object (&data->inline_checker);
-
-	g_slice_free (ViewData, data);
-}
 
 static void
 gedit_spell_plugin_init (GeditSpellPlugin *plugin)
@@ -256,44 +192,6 @@ get_language_from_metadata (GeditDocument *doc)
 	return lang;
 }
 
-static GspellChecker *
-get_spell_checker_from_document (GeditDocument *doc)
-{
-	GspellChecker *checker;
-	gpointer data;
-
-	gedit_debug (DEBUG_PLUGINS);
-
-	g_return_val_if_fail (doc != NULL, NULL);
-
-	data = g_object_get_qdata (G_OBJECT (doc), spell_checker_id);
-
-	if (data == NULL)
-	{
-		const GspellLanguage *lang;
-
-		lang = get_language_from_metadata (doc);
-		checker = gspell_checker_new (lang);
-
-		g_object_set_qdata_full (G_OBJECT (doc),
-					 spell_checker_id,
-					 checker,
-					 g_object_unref);
-
-		g_signal_connect (checker,
-				  "notify::language",
-				  G_CALLBACK (language_notify_cb),
-				  doc);
-	}
-	else
-	{
-		g_return_val_if_fail (GSPELL_IS_CHECKER (data), NULL);
-		checker = data;
-	}
-
-	return checker;
-}
-
 static void
 language_dialog_response_cb (GtkDialog *dialog,
 			     gint       response_id,
@@ -331,7 +229,7 @@ set_language_cb (GSimpleAction *action,
 	doc = gedit_window_get_active_document (priv->window);
 	g_return_if_fail (doc != NULL);
 
-	checker = get_spell_checker_from_document (doc);
+	checker = gspell_text_buffer_get_spell_checker (GTK_TEXT_BUFFER (doc));
 	g_return_if_fail (checker != NULL);
 
 	lang = gspell_checker_get_language (checker);
@@ -369,8 +267,6 @@ spell_cb (GSimpleAction *action,
 	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (data);
 	GeditSpellPluginPrivate *priv;
 	GeditView *view;
-	GeditDocument *doc;
-	GspellChecker *checker;
 	GspellNavigator *navigator;
 	GtkWidget *dialog;
 
@@ -381,12 +277,7 @@ spell_cb (GSimpleAction *action,
 	view = gedit_window_get_active_view (priv->window);
 	g_return_if_fail (view != NULL);
 
-	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-
-	checker = get_spell_checker_from_document (doc);
-	g_return_if_fail (checker != NULL);
-
-	navigator = gspell_navigator_gtv_new (GTK_TEXT_VIEW (view), checker);
+	navigator = gspell_navigator_gtv_new (GTK_TEXT_VIEW (view));
 	dialog = gspell_checker_dialog_new (GTK_WINDOW (priv->window), navigator);
 	g_object_unref (navigator);
 
@@ -410,17 +301,12 @@ set_inline_checker (ViewData *data,
 	}
 	else if (data->inline_checker == NULL)
 	{
-		GspellChecker *checker;
 		GtkTextBuffer *buffer;
-
-		checker = get_spell_checker_from_document (data->doc);
-		g_return_if_fail (checker != NULL);
 
 		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (data->view));
 		g_return_if_fail (buffer == GTK_TEXT_BUFFER (data->doc));
 
-		data->inline_checker = gspell_inline_checker_gtv_new (GTK_TEXT_BUFFER (data->doc),
-								      checker);
+		data->inline_checker = gspell_inline_checker_gtv_new (GTK_TEXT_BUFFER (data->doc));
 
 		gspell_inline_checker_gtv_attach_view (data->inline_checker,
 						       GTK_TEXT_VIEW (data->view));
@@ -599,7 +485,7 @@ on_document_loaded (GeditDocument *doc,
 {
 	GspellChecker *checker;
 
-	checker = GSPELL_CHECKER (g_object_get_qdata (G_OBJECT (doc), spell_checker_id));
+	checker = gspell_text_buffer_get_spell_checker (GTK_TEXT_BUFFER (doc));
 
 	if (checker != NULL)
 	{
@@ -627,7 +513,7 @@ on_document_saved (GeditDocument *doc,
 
 	/* Make sure to save the metadata here too */
 
-	checker = GSPELL_CHECKER (g_object_get_qdata (G_OBJECT (doc), spell_checker_id));
+	checker = gspell_text_buffer_get_spell_checker (GTK_TEXT_BUFFER (doc));
 
 	if (checker != NULL)
 	{
@@ -642,21 +528,99 @@ on_document_saved (GeditDocument *doc,
 	                             NULL);
 }
 
-static void
-tab_added_cb (GeditWindow      *window,
-	      GeditTab         *tab,
-	      GeditSpellPlugin *plugin)
+static ViewData *
+view_data_new (GeditSpellPlugin *plugin,
+	       GeditView        *view)
 {
-	GeditView *view;
 	ViewData *data;
 
-	view = gedit_tab_get_view (tab);
+	data = g_slice_new (ViewData);
+	data->plugin = g_object_ref (plugin);
+	data->view = g_object_ref (view);
+	data->inline_checker = NULL;
+
+	data->doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	g_object_ref (data->doc);
+
+	g_signal_connect (data->doc,
+			  "loaded",
+			  G_CALLBACK (on_document_loaded),
+			  data);
+
+	g_signal_connect (data->doc,
+			  "saved",
+			  G_CALLBACK (on_document_saved),
+			  data);
+
+	set_inline_checker_from_metadata (data);
+
+	return data;
+}
+
+static void
+view_data_free (ViewData *data)
+{
+	if (data == NULL)
+	{
+		return;
+	}
+
+	if (data->doc != NULL)
+	{
+		g_signal_handlers_disconnect_by_func (data->doc, on_document_loaded, data);
+		g_signal_handlers_disconnect_by_func (data->doc, on_document_saved, data);
+
+		g_object_unref (data->doc);
+	}
+
+	if (data->inline_checker != NULL && data->view != NULL)
+	{
+		gspell_inline_checker_gtv_detach_view (data->inline_checker,
+						       GTK_TEXT_VIEW (data->view));
+	}
+
+	g_clear_object (&data->plugin);
+	g_clear_object (&data->view);
+	g_clear_object (&data->inline_checker);
+
+	g_slice_free (ViewData, data);
+}
+
+static void
+init_spell_checking_in_view (GeditSpellPlugin *plugin,
+			     GeditView        *view)
+{
+	GeditDocument *doc;
+	const GspellLanguage *lang;
+	GspellChecker *checker;
+	ViewData *data;
+
+	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+	lang = get_language_from_metadata (doc);
+	checker = gspell_checker_new (lang);
+
+	g_signal_connect_object (checker,
+				 "notify::language",
+				 G_CALLBACK (language_notify_cb),
+				 doc,
+				 0);
+
+	gspell_text_buffer_set_spell_checker (GTK_TEXT_BUFFER (doc), checker);
+	g_object_unref (checker);
 
 	data = view_data_new (plugin, view);
 	g_object_set_data_full (G_OBJECT (view),
 				VIEW_DATA_KEY,
 				data,
 				(GDestroyNotify) view_data_free);
+}
+
+static void
+tab_added_cb (GeditWindow      *window,
+	      GeditTab         *tab,
+	      GeditSpellPlugin *plugin)
+{
+	init_spell_checking_in_view (plugin, gedit_tab_get_view (tab));
 }
 
 static void
@@ -692,15 +656,9 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 	update_ui (plugin);
 
 	views = gedit_window_get_views (priv->window);
-	for (l = views; l != NULL; l = g_list_next (l))
+	for (l = views; l != NULL; l = l->next)
 	{
-		GeditView *view = GEDIT_VIEW (l->data);
-		ViewData *data = view_data_new (plugin, view);
-
-		g_object_set_data_full (G_OBJECT (view),
-					VIEW_DATA_KEY,
-					data,
-					(GDestroyNotify) view_data_free);
+		init_spell_checking_in_view (plugin, GEDIT_VIEW (l->data));
 	}
 
 	priv->tab_added_id = g_signal_connect (priv->window,
@@ -750,11 +708,6 @@ gedit_spell_plugin_class_init (GeditSpellPluginClass *klass)
 	object_class->dispose = gedit_spell_plugin_dispose;
 	object_class->set_property = gedit_spell_plugin_set_property;
 	object_class->get_property = gedit_spell_plugin_get_property;
-
-	if (spell_checker_id == 0)
-	{
-		spell_checker_id = g_quark_from_string ("GeditSpellCheckerID");
-	}
 
 	g_object_class_override_property (object_class, PROP_WINDOW, "window");
 }
