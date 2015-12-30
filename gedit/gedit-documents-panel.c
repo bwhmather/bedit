@@ -1581,6 +1581,7 @@ row_create (GtkWidget *row)
 {
 	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
 	GtkWidget *event_box;
+	GtkStyleContext *context;
 	GtkWidget *image;
 	GIcon *icon;
 
@@ -1604,6 +1605,10 @@ row_create (GtkWidget *row)
 	                                                      "relief", GTK_RELIEF_NONE,
 	                                                      "focus-on-click", FALSE,
 	                                                      NULL));
+
+	context = gtk_widget_get_style_context (generic_row->close_button);
+	gtk_style_context_add_class (context, "flat");
+	gtk_style_context_add_class (context, "small-button");
 
 	icon = g_themed_icon_new_with_default_fallbacks ("window-close-symbolic");
 	image = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_MENU);
