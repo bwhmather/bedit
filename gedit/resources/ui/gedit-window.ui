@@ -9,18 +9,11 @@
       <object class="GtkPaned" id="titlebar_paned">
         <property name="visible">True</property>
         <property name="position" bind-source="hpaned" bind-property="position" bind-flags="bidirectional|sync-create"/>
-        <style>
-          <class name="gedit-headerbar-paned"/>
-        </style>
         <child>
           <object class="GtkHeaderBar" id="side_headerbar">
             <property name="visible" bind-source="side_panel" bind-property="visible" bind-flags="sync-create"/>
             <property name="show_close_button">False</property>
             <property name="title" translatable="yes">Documents</property>
-            <style>
-              <class name="gedit-titlebar-left"/>
-              <class name="titlebar"/>
-            </style>
           </object>
           <packing>
             <property name="resize">False</property>
@@ -31,9 +24,6 @@
           <object class="GtkHeaderBar" id="headerbar">
             <property name="visible">True</property>
             <property name="show_close_button">True</property>
-            <style>
-              <class name="titlebar"/>
-            </style>
             <child>
               <object class="GtkMenuButton" id="open_button">
                 <property name="visible">True</property>

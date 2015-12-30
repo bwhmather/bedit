@@ -2349,12 +2349,10 @@ side_panel_visibility_changed (GtkWidget   *panel,
 	context = gtk_widget_get_style_context (window->priv->headerbar);
 	if (visible)
 	{
-		gtk_style_context_add_class (context, "gedit-titlebar-right");
 		gtk_widget_grab_focus (window->priv->side_panel);
 	}
 	else
 	{
-		gtk_style_context_remove_class (context, "gedit-titlebar-right");
 		gtk_widget_grab_focus (GTK_WIDGET (window->priv->multi_notebook));
 	}
 
