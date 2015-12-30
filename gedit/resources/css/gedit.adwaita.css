@@ -7,11 +7,11 @@ GeditWindow .pane-separator:hover {
     color: @borders;
 }
 
-.open-document-selector-treeview:prelight {
+.open-document-selector-treeview:hover {
     background-color: alpha(@theme_fg_color, 0.05);
 }
 
-.open-document-selector-treeview:selected:prelight {
+.open-document-selector-treeview:hover {
     background-color: @theme_selected_bg_color;
 }
 
