@@ -31,7 +31,6 @@
 #include "gedit-multi-notebook.h"
 #include "gedit-notebook.h"
 #include "gedit-notebook-popup-menu.h"
-#include "gedit-small-button.h"
 #include "gedit-tab.h"
 #include "gedit-tab-private.h"
 #include "gedit-utils.h"
@@ -1582,6 +1581,8 @@ row_create (GtkWidget *row)
 {
 	GeditDocumentsGenericRow *generic_row = (GeditDocumentsGenericRow *)row;
 	GtkWidget *event_box;
+	GtkWidget *image;
+	GIcon *icon;
 
 	gedit_debug (DEBUG_PANEL);
 
@@ -1599,7 +1600,17 @@ row_create (GtkWidget *row)
 	gtk_widget_set_halign (generic_row->status_label, GTK_ALIGN_END);
 	gtk_widget_set_valign (generic_row->status_label, GTK_ALIGN_CENTER);
 
-	generic_row->close_button = gedit_close_button_new ();
+	generic_row->close_button = GTK_WIDGET (g_object_new (GTK_TYPE_BUTTON,
+	                                                      "relief", GTK_RELIEF_NONE,
+	                                                      "focus-on-click", FALSE,
+	                                                      NULL));
+
+	icon = g_themed_icon_new_with_default_fallbacks ("window-close-symbolic");
+	image = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_MENU);
+	gtk_widget_show (image);
+	g_object_unref (icon);
+
+	gtk_container_add (GTK_CONTAINER (generic_row->close_button), image);
 
 	gtk_box_pack_start (GTK_BOX (generic_row->box),
 	                    generic_row->label, FALSE, FALSE, 0);

@@ -127,7 +127,6 @@ gedit_NOINST_H_FILES =					\
 	gedit/gedit-recent.h				\
 	gedit/gedit-replace-dialog.h			\
 	gedit/gedit-settings.h				\
-	gedit/gedit-small-button.h			\
 	gedit/gedit-status-menu-button.h		\
 	gedit/gedit-tab-label.h				\
 	gedit/gedit-tab-private.h			\
@@ -202,7 +201,6 @@ gedit_libgedit_c_files =				\
 	gedit/gedit-replace-dialog.c			\
 	gedit/gedit-resources.c				\
 	gedit/gedit-settings.c				\
-	gedit/gedit-small-button.c			\
 	gedit/gedit-statusbar.c				\
 	gedit/gedit-status-menu-button.c		\
 	gedit/gedit-tab.c 				\

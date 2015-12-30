@@ -56,7 +56,6 @@
 #include "gedit-dirs.h"
 #include "gedit-status-menu-button.h"
 #include "gedit-settings.h"
-#include "gedit-small-button.h"
 #include "gedit-menu-stack-switcher.h"
 #include "gedit-highlight-mode-selector.h"
 #include "gedit-open-document-selector.h"

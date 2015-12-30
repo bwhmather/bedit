@@ -247,11 +247,17 @@
                                 <property name="visible">True</property>
                                 <property name="orientation">vertical</property>
                                 <child>
-                                  <object class="GeditCloseButton" id="bottom_panel_close_button">
+                                  <object class="GtkButton" id="bottom_panel_close_button">
                                     <property name="visible">True</property>
                                     <property name="relief">none</property>
+                                    <property name="focus-on-click">False</property>
                                     <property name="tooltip-text" translatable="yes">Hide panel</property>
                                     <property name="action_name">win.bottom-panel</property>
+                                    <property name="image">close_button_image</property>
+                                    <style>
+                                      <class name="small-button"/>
+                                      <class name="flat"/>
+                                    </style>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -491,6 +497,10 @@
   <object class="GtkImage" id="leave_fullscreen_image">
     <property name="visible">True</property>
     <property name="icon_name">view-restore-symbolic</property>
+  </object>
+  <object class="GtkImage" id="close_button_image">
+    <property name="visible">True</property>
+    <property name="icon_name">window-close-symbolic</property>
   </object>
   <object class="GtkSizeGroup">
     <property name="mode">horizontal</property>

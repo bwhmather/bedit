@@ -27,13 +27,24 @@
       </packing>
     </child>
     <child>
-      <object class="GeditCloseButton" id="close_button">
+      <object class="GtkButton" id="close_button">
         <property name="visible">True</property>
+        <property name="relief">none</property>
+        <property name="focus-on-click">False</property>
         <property name="tooltip_text" translatable="yes">Close Document</property>
+        <property name="image">close_button_image</property>
+        <style>
+          <class name="small-button"/>
+          <class name="flat"/>
+        </style>
       </object>
       <packing>
         <property name="pack_type">end</property>
       </packing>
     </child>
   </template>
+  <object class="GtkImage" id="close_button_image">
+    <property name="visible">True</property>
+    <property name="icon_name">window-close-symbolic</property>
+  </object>
 </interface>
