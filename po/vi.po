@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-10-18 17:40+0000\n"
-"PO-Revision-Date: 2015-10-19 07:47+0700\n"
+"POT-Creation-Date: 2015-12-31 07:01+0000\n"
+"PO-Revision-Date: 2015-12-31 14:28+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
 "Language: vi\n"
@@ -150,8 +150,8 @@ msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
-"Số lượng phút sau khi gedit tự động lưu các thay đổi trên tập tin. Chỉ có "
-"giá trị nếu tùy chọn \"Tự động lưu\" được bật"
+"Số phút mà sau đó gedit tự động lưu các thay đổi trên tập tin. Chỉ có giá "
+"trị nếu tùy chọn \"Tự động lưu\" được bật"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Maximum Number of Undo Actions"
@@ -465,8 +465,8 @@ msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"Xác định phông để in đầu trang khi in tài liệu. Chỉ có tác dụng nếu bật tùy "
-"chọn “In đầu trang”. "
+"Xác định phông chữ để in đầu đề trang khi in tài liệu. Chỉ có tác dụng nếu "
+"bật tùy chọn “In đầu trang”. "
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 8'"
@@ -596,20 +596,16 @@ msgstr "[TẬP_TIN …] [+DÒNG[:CỘT]]"
 msgid "There was an error displaying the help."
 msgstr "Đã có một lỗi khi hiển thị trợ giúp"
 
-#: ../gedit/gedit-app.c:972
+#: ../gedit/gedit-app.c:977
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: bảng mã không hợp lệ."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:155
-msgid "Question"
-msgstr "Câu hỏi"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:317
+#: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Đóng _không lưu"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:318
+#: ../gedit/gedit-close-confirmation-dialog.c:278
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
@@ -625,18 +621,17 @@ msgstr "Đóng _không lưu"
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "Thô_i"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/resources/gtk/menus-default.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus-default.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "_Lưu dạng…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
+#: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
@@ -644,7 +639,7 @@ msgstr "_Lưu dạng…"
 msgid "_Save"
 msgstr "_Lưu"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -654,14 +649,14 @@ msgid_plural ""
 msgstr[0] ""
 "Nếu bạn không lưu, các thay đổi của bạn ở %ld phút cuối sẽ bị mất hoàn toàn."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:373
+#: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Nếu bạn không lưu, các thay đổi của bạn ở những phút cuối sẽ bị mất hoàn "
 "toàn."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:379
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -673,7 +668,7 @@ msgstr[0] ""
 "Nếu bạn không lưu, các thay đổi của bạn trong phút cuối và %ld giây sẽ bị "
 "mất hoàn toàn."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -683,13 +678,13 @@ msgid_plural ""
 msgstr[0] ""
 "Nếu bạn không lưu, các thay đổi của bạn ở %ld phút cuối sẽ bị mất hoàn toàn."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:404
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Nếu bạn không lưu, các thay đổi của bạn ở %d giờ sau cùng sẽ bị mất vĩnh "
 "viễn.."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -701,7 +696,7 @@ msgstr[0] ""
 "Nếu bạn không lưu, các thay đổi của bạn ở giờ cuối cùng và %d phút cuối sẽ "
 "bị mất hoàn toàn."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:425
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -710,28 +705,28 @@ msgid_plural ""
 msgstr[0] ""
 "Không lưu thì các thay đổi của bạn ở %d giờ cuối sẽ bị mất hoàn toàn."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:469
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Các thay đổi trong tài liệu “%s” sẽ bị mất vĩnh viễn."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:474
+#: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Lưu các thay đổi trong tài liệu “%s” trước khi đóng lại chứ?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:489
-#: ../gedit/gedit-close-confirmation-dialog.c:647
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "Quản trị hệ thống không cho phép lưu."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:595
+#: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Các thay đổi trong tài liệu %d sẽ bị mất hoàn toàn."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:603
+#: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -740,15 +735,15 @@ msgstr[0] ""
 "Có %d tài liệu có thay đổi chưa được lưu. Lưu các thay đổi trước khi đóng "
 "lại chứ?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:623
+#: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Tài liệu có thay đổi chư_a lưu:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "_Chọn tài liệu bạn muốn lưu:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Nếu bạn không lưu tài liệu, các thay đổi của bạn sẽ hoàn toàn bị mất."
 
@@ -906,13 +901,13 @@ msgstr[0] "Các thay đổi trong tài liệu ở %d giờ cuối sẽ hoàn to�
 msgid "_Revert"
 msgstr "_Hoàn nguyên"
 
-#: ../gedit/gedit-commands-help.c:79
+#: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr ""
 "gedit là phần mềm soạn thảo văn bản nhỏ gọn dành cho môi trường máy tính để "
 "bàn GNOME"
 
-#: ../gedit/gedit-commands-help.c:103
+#: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr "Nhóm Việt hóa GNOME <gnome-vi-list@gnome.org>"
 
@@ -938,13 +933,13 @@ msgstr "Không tìm thấy \"%s\""
 msgid "Untitled Document %d"
 msgstr "Tài liệu chưa đặt tên %d"
 
-#: ../gedit/gedit-documents-panel.c:435
+#: ../gedit/gedit-documents-panel.c:434
 #, c-format
 msgid "Tab Group %i"
 msgstr "Nhóm thẻ %i"
 
-#: ../gedit/gedit-documents-panel.c:535 ../gedit/gedit-window.c:1167
-#: ../gedit/gedit-window.c:1173 ../gedit/gedit-window.c:1181
+#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
+#: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
 msgid "Read-Only"
 msgstr "Chỉ-đọc"
 
@@ -1018,7 +1013,7 @@ msgstr "Bảng mã kí tự:"
 msgid "Line Ending:"
 msgstr "Kết thúc dòng:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1251
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1250
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1344,14 +1339,13 @@ msgid "Drop Changes and _Reload"
 msgstr "Xóa các thay đổi và tải _lại"
 
 #: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-default.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 #: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "Tải _lại"
 
 #: ../gedit/gedit-io-error-info-bar.c:1187
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "Bỏ _qua"
 
@@ -1430,6 +1424,7 @@ msgstr "Không gì"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Tìm và thay thế"
 
@@ -1465,12 +1460,12 @@ msgstr "Đang hoàn nguyên %s…"
 #: ../gedit/gedit-tab.c:834
 #, c-format
 msgid "Loading %s from %s"
-msgstr "Đang nạp %s từ %s…"
+msgstr "Đang tải %s từ %s…"
 
 #: ../gedit/gedit-tab.c:841
 #, c-format
 msgid "Loading %s"
-msgstr "Đang nạp %s…"
+msgstr "Đang tải %s…"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
@@ -1585,40 +1580,41 @@ msgstr "Chuỗi cần tìm kiếm"
 msgid "Line you want to move the cursor to"
 msgstr "Dòng nơi bạn muốn chuyển con trỏ đến"
 
-#: ../gedit/gedit-window.c:1004
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match is out of range"
 msgstr "Khớp dấu ngoặc ngoài phạm vi"
 
-#: ../gedit/gedit-window.c:1009
+#: ../gedit/gedit-window.c:1008
 msgid "Bracket match not found"
 msgstr "Không tìm thấy dấu ngoặc khớp"
 
-#: ../gedit/gedit-window.c:1014
+#: ../gedit/gedit-window.c:1013
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Tìm thấy dấu ngoặc khớp trên dòng: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1049
+#: ../gedit/gedit-window.c:1048
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Dg %d, Cột %d"
 
-#: ../gedit/gedit-window.c:1233
+#: ../gedit/gedit-window.c:1232
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Bề rộng Tab: %u"
 
-#: ../gedit/gedit-window.c:1602
+#: ../gedit/gedit-window.c:1601
 msgid "There are unsaved documents"
 msgstr "Có tạo tài liệu chưa được ghi lại"
 
-#: ../gedit/gedit-window.c:2447
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "Đổi trang bảng bên"
 
-#: ../gedit/gedit-window.c:2467 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Tài liệu"
@@ -1641,8 +1637,8 @@ msgid "Move to New Tab _Group"
 msgstr "Chuyển vào _Nhóm thanh mới"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
@@ -1686,93 +1682,100 @@ msgstr "Tù_y thích"
 #: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
 #: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../plugins/spell/gedit-spell-plugin.c:364
+msgid "_Keyboard Shortcuts"
+msgstr "_Phím tắt"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-osx.ui.h:46
+#: ../plugins/spell/gedit-spell-plugin.c:251
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "Trợ g_iúp"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_About"
 msgstr "_Giới thiệu"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
 msgid "_Quit"
 msgstr "T_hoát"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:7
+#: ../gedit/resources/gtk/menus-default.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
 #: ../gedit/resources/gtk/menus-osx.ui.h:11
 msgid "_Print…"
 msgstr "_In…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
+#: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
 #: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "Đầ_y màn hình"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:10
+#: ../gedit/resources/gtk/menus-default.ui.h:11
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Save _All"
 msgstr "_Lưu tất cả"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:11
+#: ../gedit/resources/gtk/menus-default.ui.h:12
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
 #: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "_Find…"
 msgstr "_Tìm…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:12
+#: ../gedit/resources/gtk/menus-default.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
 msgstr "Tìm và tha_y thế…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:13
+#: ../gedit/resources/gtk/menus-default.ui.h:14
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
 #: ../gedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "_Xóa tô sáng"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:14
+#: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
 msgstr "Nhảy tới dòn_g…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:15
+#: ../gedit/resources/gtk/menus-default.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/gtk/menus-osx.ui.h:22
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Trình bày"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:16
+#: ../gedit/resources/gtk/menus-default.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
 #: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "Khung _lề"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:18
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
 #: ../gedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "Khung đá_y"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
 #: ../gedit/resources/gtk/menus-osx.ui.h:26
 msgid "_Highlight Mode…"
 msgstr "Chế độ tô _sáng…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 #: ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgid "Tools"
 msgstr "Công cụ"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
 #: ../gedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "Đóng tất _cả"
@@ -1918,7 +1921,6 @@ msgid "Highlight Mode"
 msgstr "Chế độ tô sáng"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_Select"
 msgstr "_Chọn"
 
@@ -2216,6 +2218,199 @@ msgstr "Tìm n_gược"
 msgid "Wra_p around"
 msgstr "Cuộn _vòng"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgid "Create a new document in a tab"
+msgstr "Tạo tài liệu mới trong một tab"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgid "Open a document"
+msgstr "Mở một tài liệu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgid "Save the document"
+msgstr "Lưu tài liệu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgid "Save the document with a new filename"
+msgstr "Lưu tại liệu bằng tên mới"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgid "Save all the documents"
+msgstr "Lưu mọi tài liệu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgid "Close the document"
+msgstr "Đóng tài liệu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgid "Close all the documents"
+msgstr "Đóng tất cả các tài liệu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgid "Reopen the most recently closed document"
+msgstr "Mở những tài liệu mới đóng gần đây"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgid "Switch to the next document"
+msgstr "Chuyển sang tài liệu kế tiếp"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgid "Switch to the previous document"
+msgstr "Chuyển sang tài liệu kế trước"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgid "Switch to the first - ninth document"
+msgstr "Chuyển sang tài liệu thứ n đầu tiên"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgid "Windows and Panels"
+msgstr "Cửa sổ và Bảng"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgid "Create a new document in a window"
+msgstr "Tạo tài liệu mới trong một cửa sổ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgid "Create a new tab group"
+msgstr "Tạo nhóm thẻ mới"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgid "Show side panel"
+msgstr "Hiển thị khung lề"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgid "Show bottom panel"
+msgstr "Hiển thị khung đáy"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgid "Fullscreen on / off"
+msgstr "Bật/tắt đầy màn hình"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgid "Quit the application"
+msgstr "Thoát khỏi ứng dụng"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgid "Find"
+msgstr "Tìm"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgid "Find the next match"
+msgstr "Tìm đến chỗ khớp kế tiếp"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgid "Find the previous match"
+msgstr "Tìm đến chỗ khớp kế trước"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgid "Clear highlight"
+msgstr "Xóa tô sáng"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgid "Go to line"
+msgstr "Nhảy tới dòng"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgid "Copy and Paste"
+msgstr "Chép và Dán"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgid "Copy selected text to clipboard"
+msgstr "Chép chữ đã chọn vào clipboard"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgid "Cut selected text to clipboard"
+msgstr "Cắt chữ đã chọn vào clipboard"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgid "Paste text from clipboard"
+msgstr "Dán chữ từ clipboard"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgid "Undo and Redo"
+msgstr "Hoàn tác và Redo"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgid "Undo previous command"
+msgstr "Hoàn lại lệnh trước đó"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgid "Redo previous command"
+msgstr "Làm lại lệnh trước đó"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Vùng chọn"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgid "Select all text"
+msgstr "Chọn toàn bộ văn bản"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgid "Editing"
+msgstr "Chỉnh sửa"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgid "Toggle insert / overwrite"
+msgstr "Bật/tắt chèn/đè"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgid "Delete current line"
+msgstr "Xóa dòng hiện tại"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgid "Join selected lines"
+msgstr "Nối các dòng đã chọn"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgid "Move current line up"
+msgstr "Di chuyển dòng hiện tại lên trên"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgid "Move current line down"
+msgstr "Di chuyển dòng hiện tại xuống dưới"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgid "Move current word left"
+msgstr "Di chuyển từ hiện tại sang trái"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgid "Move current word right"
+msgstr "Di chuyển từ hiện tại sang phải"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgid "Convert to uppercase"
+msgstr "Chuyển đổi sang chữ HOA"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgid "Convert to lowercase"
+msgstr "Chuyển đổi sang chữ thường"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgid "Invert case"
+msgstr "Đảo HOA/thường"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgid "Increment number at cursor"
+msgstr "Gia số tại con trỏ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgid "Decrement number at cursor"
+msgstr "Giảm số tại con trỏ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgid "Check spelling"
+msgstr "Kiểm tra chính tả"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgid "Print the document"
+msgstr "In tài liệu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgid "Show completion window"
+msgstr "Hiển thị cửa sổ hoàn thiện nốt từ"
+
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
 msgstr "Đóng tài liệu"
@@ -2315,10 +2510,6 @@ msgstr "Thống _kê tài liệu"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Tài liệu"
-
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
-msgid "Selection"
-msgstr "Vùng chọn"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
@@ -3235,35 +3426,6 @@ msgstr "_Sắp xếp"
 msgid "Sorts a document or selected text."
 msgstr "Sắp xếp tài liệu hay đoạn được chọn."
 
-#. No suggestions. Put something in the menu anyway...
-#. Translators: Displayed in the "Check Spelling"
-#. * dialog if there are no suggestions for the current
-#. * misspelled word.
-#.
-#: ../plugins/spell/gedit-automatic-spell-checker.c:573
-#: ../plugins/spell/gedit-spell-checker-dialog.c:152
-msgid "(no suggested words)"
-msgstr "(không có từ để gợi ý)"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:596
-msgid "_More..."
-msgstr "Thê_m nữa…"
-
-#. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:636
-msgid "_Ignore All"
-msgstr "Bỏ _qua tất cả"
-
-#. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:645
-msgid "_Add"
-msgstr "Thê_m"
-
-#. Prepend suggestions
-#: ../plugins/spell/gedit-automatic-spell-checker.c:682
-msgid "_Spelling Suggestions..."
-msgstr "_Gợi ý chính tả…"
-
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "Kiểm lỗi _chính tả…"
@@ -3276,116 +3438,7 @@ msgstr "Chọn n_gôn ngữ…"
 msgid "_Highlight Misspelled Words"
 msgstr "_Tô sáng từ viết sai"
 
-#: ../plugins/spell/gedit-spell-checker.c:464
-#, c-format
-msgid "Error when checking the spelling of word “%s”: %s"
-msgstr "Gặp lỗi khi kiểm tra chính tả của từ “%s”: %s"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:237
-msgid "Error:"
-msgstr "Lỗi:"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:274
-msgid "Completed spell checking"
-msgstr "Hoàn thành kiểm lỗi chính tả"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:278
-msgid "No misspelled words"
-msgstr "Không có từ sai chính tả"
-
-#. Translators: Displayed in the "Check
-#. * Spelling" dialog if the current word
-#. * isn't misspelled.
-#.
-#: ../plugins/spell/gedit-spell-checker-dialog.c:508
-msgid "(correct spelling)"
-msgstr "(đúng chính tả)"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:646
-msgid "Suggestions"
-msgstr "Gợi ý"
-
-#. Translators: the first %s is the language name, and
-#. * the second %s is the locale name. Example:
-#. * "French (France)"
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:363
-#: ../plugins/spell/gedit-spell-checker-language.c:369
-#, c-format
-msgctxt "language"
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#. Translators: this refers to an unknown language code
-#. * (one which isn't in our built-in list).
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:378
-#, c-format
-msgctxt "language"
-msgid "Unknown (%s)"
-msgstr "Chưa biết (%s)"
-
-#. Translators: this refers the Default language used by the
-#. * spell checker
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:484
-msgctxt "language"
-msgid "Default"
-msgstr "Mặc định"
-
 #. ex:set ts=8 noet:
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-msgid "Set Language"
-msgstr "Đặt ngôn ngữ"
-
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-msgid "Select the _language of the current document."
-msgstr "Chọn n_gôn ngữ của tài liệu hiện tại."
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check Spelling"
-msgstr "Kiểm lỗi chính tả"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-msgid "Misspelled word:"
-msgstr "Từ sai chính tả:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
-msgid "word"
-msgstr "từ"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-msgid "Change _to:"
-msgstr "Đổi _thành:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-msgid "Check _Word"
-msgstr "Kiểm lỗi _từ"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-msgid "_Suggestions:"
-msgstr "_Gợi ý:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Ignore _All"
-msgstr "Bỏ qu_a tất cả"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-msgid "Cha_nge"
-msgstr "Thay đổ_i"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-msgid "Change A_ll"
-msgstr "Thay đổi tất _cả"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
-msgid "User dictionary:"
-msgstr "Từ điển của người dùng:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-msgid "Add w_ord"
-msgstr "Thêm _từ"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Kiểm tra chính tả"
@@ -3421,7 +3474,7 @@ msgstr "Định dạng được chọn"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
-msgstr "Định dạng được chọn được dùng khi chèn ngày/giờ."
+msgstr "Dùng định dạng đã chọn khi chèn ngày/giờ."
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
@@ -3429,7 +3482,7 @@ msgstr "Định dạng riêng"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
-msgstr "Dùng định dạng riêng khi chèn chèn ngày/giờ."
+msgstr "Dùng định dạng riêng khi chèn ngày/giờ."
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
 msgid "Insert Date and Time"
@@ -3482,6 +3535,93 @@ msgstr "Chèn ngày/giờ"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
 
+#~ msgid "Question"
+#~ msgstr "Câu hỏi"
+
+#~ msgid "(no suggested words)"
+#~ msgstr "(không có từ để gợi ý)"
+
+#~ msgid "_More..."
+#~ msgstr "Thê_m nữa…"
+
+#~ msgid "_Ignore All"
+#~ msgstr "Bỏ _qua tất cả"
+
+#~ msgid "_Add"
+#~ msgstr "Thê_m"
+
+#~ msgid "_Spelling Suggestions..."
+#~ msgstr "_Gợi ý chính tả…"
+
+#~ msgid "Error when checking the spelling of word “%s”: %s"
+#~ msgstr "Gặp lỗi khi kiểm tra chính tả của từ “%s”: %s"
+
+#~ msgid "Error:"
+#~ msgstr "Lỗi:"
+
+#~ msgid "Completed spell checking"
+#~ msgstr "Hoàn thành kiểm lỗi chính tả"
+
+#~ msgid "No misspelled words"
+#~ msgstr "Không có từ sai chính tả"
+
+#~ msgid "(correct spelling)"
+#~ msgstr "(đúng chính tả)"
+
+#~ msgid "Suggestions"
+#~ msgstr "Gợi ý"
+
+#~ msgctxt "language"
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Unknown (%s)"
+#~ msgstr "Chưa biết (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Default"
+#~ msgstr "Mặc định"
+
+#~ msgid "Set Language"
+#~ msgstr "Đặt ngôn ngữ"
+
+#~ msgid "Select the _language of the current document."
+#~ msgstr "Chọn n_gôn ngữ của tài liệu hiện tại."
+
+#~ msgid "Check Spelling"
+#~ msgstr "Kiểm lỗi chính tả"
+
+#~ msgid "Misspelled word:"
+#~ msgstr "Từ sai chính tả:"
+
+#~ msgid "word"
+#~ msgstr "từ"
+
+#~ msgid "Change _to:"
+#~ msgstr "Đổi _thành:"
+
+#~ msgid "Check _Word"
+#~ msgstr "Kiểm lỗi _từ"
+
+#~ msgid "_Suggestions:"
+#~ msgstr "_Gợi ý:"
+
+#~ msgid "Ignore _All"
+#~ msgstr "Bỏ qu_a tất cả"
+
+#~ msgid "Cha_nge"
+#~ msgstr "Thay đổ_i"
+
+#~ msgid "Change A_ll"
+#~ msgstr "Thay đổi tất _cả"
+
+#~ msgid "User dictionary:"
+#~ msgstr "Từ điển của người dùng:"
+
+#~ msgid "Add w_ord"
+#~ msgstr "Thêm _từ"
+
 #~ msgid "RO"
 #~ msgstr "Chỉ đọc"
 
@@ -3502,9 +3642,6 @@ msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
 
 #~ msgid "The document is empty."
 #~ msgstr "Tài liệu trống rỗng."
-
-#~ msgid "Check spelling"
-#~ msgstr "Kiểm tra chính tả"
 
 #~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 #~ msgstr "['UTF-8', 'CURRENT', 'UTF-16']"
@@ -3699,12 +3836,6 @@ msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
 #~ msgid "_Contents"
 #~ msgstr "Mụ_c lục"
 
-#~ msgid "About this application"
-#~ msgstr "Giới thiệu về ứng dụng này"
-
-#~ msgid "Save the current file with a different name"
-#~ msgstr "Lưu tập tin hiện tại nhưng bằng tên khác"
-
 #~ msgid "Revert to a saved version of the file"
 #~ msgstr "Hoàn lại phiên bản đã lưu của tập tin"
 
@@ -3713,9 +3844,6 @@ msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
 
 #~ msgid "Print preview"
 #~ msgstr "Xem thử trước khi in"
-
-#~ msgid "Print the current page"
-#~ msgstr "In trang hiện tại"
 
 #~ msgid "Undo the last action"
 #~ msgstr "Hủy thao tác cuối cùng"
@@ -3729,14 +3857,8 @@ msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
 #~ msgid "Copy the selection"
 #~ msgstr "Sao chép vùng đã chọn"
 
-#~ msgid "Paste the clipboard"
-#~ msgstr "Dán bảng lưu tạm"
-
 #~ msgid "Delete the selected text"
 #~ msgstr "Xóa bỏ đoạn đã chọn"
-
-#~ msgid "Select the entire document"
-#~ msgstr "Chọn toàn bộ tài liệu"
 
 #~ msgid "_Highlight Mode..."
 #~ msgstr "C_hế độ tô sáng…"
@@ -3773,15 +3895,6 @@ msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
 
 #~ msgid "Close all open files"
 #~ msgstr "Đóng tất cả các tập tin đang mở"
-
-#~ msgid "Create a new tab group"
-#~ msgstr "Tạo nhóm thẻ mới"
-
-#~ msgid "Switch to the previous tab group"
-#~ msgstr "Chuyển sang nhóm thẻ trước"
-
-#~ msgid "Switch to the next tab group"
-#~ msgstr "Chuyển sang nhóm thẻ kế tiếp"
 
 #~ msgid "Activate previous document"
 #~ msgstr "Kích hoạt tài liệu trước đó"
@@ -3837,12 +3950,6 @@ msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
 
 #~ msgid "All _Lower Case"
 #~ msgstr "Tất cả chữ _thường"
-
-#~ msgid "Change selected text to lower case"
-#~ msgstr "Thay đổi đoạn được chọn thành chữ thường."
-
-#~ msgid "_Invert Case"
-#~ msgstr "Đả_o HOA/thường"
 
 #~ msgid "Invert the case of selected text"
 #~ msgstr "Đảo chữ HOA/thường trong đoạn được chọn."
@@ -3954,9 +4061,6 @@ msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
 #~ msgid "Delete selected file or folder"
 #~ msgstr "Xóa tập tin hay thư mục đã chọn"
 
-#~ msgid "Open selected file"
-#~ msgstr "Mở tập tin đã chọn"
-
 #~ msgid "Up"
 #~ msgstr "Lên"
 
@@ -4004,9 +4108,6 @@ msgstr "Chèn ngày, giờ hiện tại vào vị trí con trỏ hiện tại."
 
 #~ msgid "Previous location"
 #~ msgstr "Vị trí trước"
-
-#~ msgid "Go to previous location"
-#~ msgstr "Trở về vị trí trước đó"
 
 #~ msgid "Go to a previously opened location"
 #~ msgstr "Trở về một vị trí đã mở trước đó"
