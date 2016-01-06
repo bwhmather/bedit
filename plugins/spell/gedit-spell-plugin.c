@@ -60,7 +60,6 @@ struct _ViewData
 {
 	GeditSpellPlugin *plugin;
 	GeditView *view;
-	GspellInlineCheckerGtv *inline_checker;
 
 	/* The doc is also needed, to be sure that the signals are disconnected
 	 * on the same doc.
@@ -286,34 +285,6 @@ spell_cb (GSimpleAction *action,
 }
 
 static void
-set_inline_checker (ViewData *data,
-		    gboolean  active)
-{
-	if (!active)
-	{
-		if (data->inline_checker != NULL && data->view != NULL)
-		{
-			gspell_inline_checker_gtv_detach_view (data->inline_checker,
-							       GTK_TEXT_VIEW (data->view));
-		}
-
-		g_clear_object (&data->inline_checker);
-	}
-	else if (data->inline_checker == NULL)
-	{
-		GtkTextBuffer *buffer;
-
-		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (data->view));
-		g_return_if_fail (buffer == GTK_TEXT_BUFFER (data->doc));
-
-		data->inline_checker = gspell_inline_checker_gtv_new (GTK_TEXT_BUFFER (data->doc));
-
-		gspell_inline_checker_gtv_attach_view (data->inline_checker,
-						       GTK_TEXT_VIEW (data->view));
-	}
-}
-
-static void
 inline_checker_activate_cb (GSimpleAction *action,
 			    GVariant      *parameter,
 			    gpointer       data)
@@ -375,13 +346,7 @@ inline_checker_change_state_cb (GSimpleAction *action,
 	view = gedit_window_get_active_view (priv->window);
 	if (view != NULL)
 	{
-		ViewData *data = g_object_get_data (G_OBJECT (view), VIEW_DATA_KEY);
-
-		if (data != NULL)
-		{
-			set_inline_checker (data, active);
-		}
-
+		gspell_text_view_set_inline_checking (GTK_TEXT_VIEW (view), active);
 		g_simple_action_set_state (action, g_variant_new_boolean (active));
 	}
 }
@@ -432,14 +397,12 @@ update_ui (GeditSpellPlugin *plugin)
 		 */
 		if (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL)
 		{
-			ViewData *data;
-			gboolean inline_checker_enabled;
+			gboolean inline_checking_enabled;
 
-			data = g_object_get_data (G_OBJECT (view), VIEW_DATA_KEY);
-			inline_checker_enabled = data != NULL && data->inline_checker != NULL;
+			inline_checking_enabled = gspell_text_view_get_inline_checking (GTK_TEXT_VIEW (view));
 
 			g_action_change_state (inline_checker_action,
-					       g_variant_new_boolean (inline_checker_enabled));
+					       g_variant_new_boolean (inline_checking_enabled));
 		}
 
 		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
@@ -464,7 +427,7 @@ set_inline_checker_from_metadata (ViewData *data)
 		g_free (active_str);
 	}
 
-	set_inline_checker (data, active);
+	gspell_text_view_set_inline_checking (GTK_TEXT_VIEW (data->view), active);
 
 	/* In case that the view is the active one we mark the spell action */
 	active_view = gedit_window_get_active_view (plugin->priv->window);
@@ -510,6 +473,7 @@ on_document_saved (GeditDocument *doc,
 {
 	GspellChecker *checker;
 	const gchar *language_code = NULL;
+	gboolean inline_checking_enabled;
 
 	/* Make sure to save the metadata here too */
 
@@ -520,9 +484,11 @@ on_document_saved (GeditDocument *doc,
 		language_code = gspell_language_get_code (gspell_checker_get_language (checker));
 	}
 
+	inline_checking_enabled = gspell_text_view_get_inline_checking (GTK_TEXT_VIEW (data->view));
+
 	gedit_document_set_metadata (doc,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-				     data->inline_checker != NULL ? SPELL_ENABLED_STR : NULL,
+				     inline_checking_enabled ? SPELL_ENABLED_STR : NULL,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE,
 	                             language_code,
 	                             NULL);
@@ -537,7 +503,6 @@ view_data_new (GeditSpellPlugin *plugin,
 	data = g_slice_new (ViewData);
 	data->plugin = g_object_ref (plugin);
 	data->view = g_object_ref (view);
-	data->inline_checker = NULL;
 
 	data->doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 	g_object_ref (data->doc);
@@ -573,15 +538,8 @@ view_data_free (ViewData *data)
 		g_object_unref (data->doc);
 	}
 
-	if (data->inline_checker != NULL && data->view != NULL)
-	{
-		gspell_inline_checker_gtv_detach_view (data->inline_checker,
-						       GTK_TEXT_VIEW (data->view));
-	}
-
 	g_clear_object (&data->plugin);
 	g_clear_object (&data->view);
-	g_clear_object (&data->inline_checker);
 
 	g_slice_free (ViewData, data);
 }
