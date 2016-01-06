@@ -37,16 +37,16 @@ msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-11-17 18:58+0000\n"
-"PO-Revision-Date: 2015-11-17 23:17+0200\n"
-"Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
+"POT-Creation-Date: 2015-12-15 14:33+0200\n"
+"PO-Revision-Date: 2016-01-04 19:11+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: Ελληνικά <opensuse-translation-el@opensuse.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
@@ -650,20 +650,16 @@ msgstr "[ΑΡΧΕΙΟ...] [+ΓΡΑΜΜΗ[:ΣΤΗΛΗ]]"
 msgid "There was an error displaying the help."
 msgstr "Υπήρξε σφάλμα κατά την εμφάνιση της βοήθειας."
 
-#: ../gedit/gedit-app.c:972
+#: ../gedit/gedit-app.c:977
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: μη έγκυρη κωδικοποίηση."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:155
-msgid "Question"
-msgstr "Ερώτηση"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:317
+#: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Κλείσιμο _χωρίς αποθήκευση"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:318
+#: ../gedit/gedit-close-confirmation-dialog.c:278
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
@@ -679,18 +675,17 @@ msgstr "Κλείσιμο _χωρίς αποθήκευση"
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_Ακύρωση"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/resources/gtk/menus-default.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus-default.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "Αποθήκευση _ως…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
+#: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
@@ -698,7 +693,7 @@ msgstr "Αποθήκευση _ως…"
 msgid "_Save"
 msgstr "Απο_θήκευση"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -712,14 +707,14 @@ msgstr[1] ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο τα τελευταία %ld "
 "δευτερόλεπτα θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:373
+#: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο το τελευταίο λεπτό θα "
 "χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:379
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -734,7 +729,7 @@ msgstr[1] ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο το τελευταίο λεπτό "
 "και %ld δευτερόλεπτα θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -748,13 +743,13 @@ msgstr[1] ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο τα τελευταία %ld "
 "λεπτά θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:404
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο την τελευταία ώρα θα "
 "χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -769,7 +764,7 @@ msgstr[1] ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο την τελευταία ώρα και "
 "%d λεπτά θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:425
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -782,29 +777,29 @@ msgstr[1] ""
 "Αν δεν αποθηκεύσετε, οι αλλαγές που έγιναν στο έγγραφο τις τελευταίες %d "
 "ώρες θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:469
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Οι αλλαγές στο έγγραφο “%s” θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:474
+#: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Αποθήκευση των αλλαγών στο έγγραφο “%s” πριν το κλείσιμο;"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:489
-#: ../gedit/gedit-close-confirmation-dialog.c:647
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "Η αποθήκευση έχει απενεργοποιηθεί από το διαχειριστή συστήματος."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:595
+#: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Οι αλλαγές σε %d έγγραφο θα χαθούν οριστικά."
 msgstr[1] "Οι αλλαγές σε %d έγγραφα θα χαθούν οριστικά."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:603
+#: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -816,15 +811,15 @@ msgstr[1] ""
 "Υπάρχουν %d έγγραφα με μη αποθηκευμένες αλλαγές. Να αποθηκευτούν οι αλλαγές "
 "πριν το κλείσιμο;"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:623
+#: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Έ_γγραφα με μη αποθηκευμένες αλλαγές:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "Επι_λέξτε τα έγγραφα που θέλετε να αποθηκεύσετε:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Αν δεν αποθηκεύσετε, όλες οι αλλαγές θα χαθούν."
 
@@ -842,7 +837,6 @@ msgstr[1] "Φόρτωση %d αρχείων…"
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
-#| msgid "Open"
 msgctxt "window title"
 msgid "Open"
 msgstr "Άνοιγμα"
@@ -911,7 +905,6 @@ msgstr "Αποθήκευση αρχείου '%s'…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
-#| msgid "Save As"
 msgctxt "window title"
 msgid "Save As"
 msgstr "Αποθήκευση ως"
@@ -1008,13 +1001,13 @@ msgstr[1] ""
 msgid "_Revert"
 msgstr "Επανα_φορά"
 
-#: ../gedit/gedit-commands-help.c:79
+#: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr ""
 "Το gedit είναι ένας μικρός και ελαφρύς διορθωτής κειμένου για την επιφάνεια "
 "εργασίας GNOME"
 
-#: ../gedit/gedit-commands-help.c:103
+#: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -1052,7 +1045,6 @@ msgstr "Δε βρέθηκε το \"%s\""
 
 #: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
 #, c-format
-#| msgid "Unsaved Document %d"
 msgid "Untitled Document %d"
 msgstr "Ανώνυμο έγγραφο %d"
 
@@ -1489,14 +1481,13 @@ msgid "Drop Changes and _Reload"
 msgstr "Απόθεση αλλαγών και επα_ναφόρτωση"
 
 #: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-default.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 #: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_Επαναφόρτωση"
 
 #: ../gedit/gedit-io-error-info-bar.c:1187
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "Α_γνόηση"
 
@@ -1584,6 +1575,7 @@ msgstr "Τίποτα"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Εύρεση και αντικατάσταση"
 
@@ -1774,6 +1766,7 @@ msgid "Change side panel page"
 msgstr "Αλλαγή σελίδας της πλευρικής στήλης"
 
 #: ../gedit/gedit-window.c:2467 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Έγγραφα"
@@ -1796,8 +1789,8 @@ msgid "Move to New Tab _Group"
 msgstr "Μετακίνηση σε νέα _ομάδα καρτελών"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
@@ -1841,93 +1834,100 @@ msgstr "Π_ροτιμήσεις"
 #: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
 #: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../plugins/spell/gedit-spell-plugin.c:364
+msgid "_Keyboard Shortcuts"
+msgstr "Συντομεύσεις _πληκτρολογίου"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-osx.ui.h:46
+#: ../plugins/spell/gedit-spell-plugin.c:353
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "_Βοήθεια"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_About"
 msgstr "_Περί"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
 msgid "_Quit"
 msgstr "Έ_ξοδος"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:7
+#: ../gedit/resources/gtk/menus-default.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
 #: ../gedit/resources/gtk/menus-osx.ui.h:11
 msgid "_Print…"
 msgstr "Εκ_τύπωση…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
+#: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
 #: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "_Πλήρης οθόνη"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:10
+#: ../gedit/resources/gtk/menus-default.ui.h:11
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Save _All"
 msgstr "Αποθήκευση ό_λων"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:11
+#: ../gedit/resources/gtk/menus-default.ui.h:12
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
 #: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "_Find…"
 msgstr "Εύ_ρεση…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:12
+#: ../gedit/resources/gtk/menus-default.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
 msgstr "Εύ_ρεση και αντικατάσταση…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:13
+#: ../gedit/resources/gtk/menus-default.ui.h:14
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
 #: ../gedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "Εκκα_θάριση επισήμανσης"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:14
+#: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
 msgstr "_Μετάβαση σε γραμμή…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:15
+#: ../gedit/resources/gtk/menus-default.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/gtk/menus-osx.ui.h:22
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Προβολή"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:16
+#: ../gedit/resources/gtk/menus-default.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
 #: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "_Πλευρική στήλη"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:18
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
 #: ../gedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "_Κάτω στήλη"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
 #: ../gedit/resources/gtk/menus-osx.ui.h:26
 msgid "_Highlight Mode…"
 msgstr "Λειτουργία επ_ισήμανσης…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 #: ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgid "Tools"
 msgstr "Εργαλεία"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
 #: ../gedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "_Κλείσιμο όλων"
@@ -2073,7 +2073,6 @@ msgid "Highlight Mode"
 msgstr "Λειτουργία επισήμανσης"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_Select"
 msgstr "_Επιλογή"
 
@@ -2368,9 +2367,201 @@ msgid "Search _backwards"
 msgstr "Αναζήτηση προς τα _πίσω"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
-#| msgid "_Wrap around"
 msgid "Wra_p around"
 msgstr "Αναδίπλ_ωση γύρω"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgid "Create a new document in a tab"
+msgstr "Δημιουργία νέου εγγράφου σε νέα καρτέλα"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgid "Open a document"
+msgstr "Άνοιγμα εγγράφου"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgid "Save the document"
+msgstr "Αποθήκευση εγγράφου"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgid "Save the document with a new filename"
+msgstr "Αποθήκευση του εγγράφου με νέο όνομα αρχείου"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgid "Save all the documents"
+msgstr "Αποθήκευση όλων των εγγράφων"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgid "Close the document"
+msgstr "Κλείσιμο εγγράφου"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgid "Close all the documents"
+msgstr "Κλείσιμο όλων των εγγράφων"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgid "Reopen the most recently closed document"
+msgstr "Ξανάνοιγμα του πιο πρόσφατου κλεισμένου αρχείου"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgid "Switch to the next document"
+msgstr "Μετάβαση στο επόμενο έγγραφο"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgid "Switch to the previous document"
+msgstr "Μετάβαση στο προηγούμενο έγγραφο"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgid "Switch to the first - ninth document"
+msgstr "Μετάβαση στο πρώτο - ένατο έγγραφο"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgid "Windows and Panels"
+msgstr "Παράθυρα και πίνακες"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgid "Create a new document in a window"
+msgstr "Δημιουργία νέου εγγράφου σε νέο παράθυρο"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgid "Create a new tab group"
+msgstr "Δημιουργία νέας ομάδας καρτελών"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgid "Show side panel"
+msgstr "Εμφάνιση πλευρικού πίνακα"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgid "Show bottom panel"
+msgstr "Εμφάνιση κάτω πίνακα"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgid "Fullscreen on / off"
+msgstr "Ενεργοποίηση απενεργοποίηση λειτουργίας πλήρους οθόνης"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgid "Quit the application"
+msgstr "Τερματισμός εφαρμογής"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgid "Find"
+msgstr "Εύρεση"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgid "Find the next match"
+msgstr "Εύρεση της επόμενης αντιστοιχίας"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgid "Find the previous match"
+msgstr "Εύρεση της προηγούμενης αντιστοιχίας"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgid "Clear highlight"
+msgstr "Καθαρισμός επισήμανσης"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgid "Go to line"
+msgstr "Μετάβαση στη γραμμή"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgid "Copy and Paste"
+msgstr "Αντιγραφή και επικόλληση"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgid "Copy selected text to clipboard"
+msgstr "Αντιγραφή επιλεγμένου κειμένου στο πρόχειρο"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgid "Cut selected text to clipboard"
+msgstr "Αποκοπή επιλεγμένου κειμένου στο πρόχειρο"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgid "Paste text from clipboard"
+msgstr "Επικόλληση κειμένου από το πρόχειρο"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgid "Undo and Redo"
+msgstr "Αναίρεση και επαναφορά"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgid "Undo previous command"
+msgstr "Αναίρεση προηγούμενης εντολής"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgid "Redo previous command"
+msgstr "Επανάληψη προηγούμενης εντολής"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Επιλογή"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgid "Select all text"
+msgstr "Επιλογή όλου του κειμένου"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgid "Editing"
+msgstr "Επεξεργασία"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgid "Toggle insert / overwrite"
+msgstr "Εναλλαγή εισαγωγή / αντικατάσταση"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgid "Delete current line"
+msgstr "Διαγραφή της τρέχουσας γραμμής"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgid "Join selected lines"
+msgstr "Ένωση των επιλεγμένων γραμμών"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgid "Move current line up"
+msgstr "Μετακίνηση της τρέχουσας γραμμής πάνω"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgid "Move current line down"
+msgstr "Μετακίνηση της τρέχουσας γραμμής κάτω"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgid "Move current word left"
+msgstr "Μετακίνηση της τρέχουσας λέξης αριστερά"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgid "Move current word right"
+msgstr "Μετακίνηση της τρέχουσας λέξης δεξιά"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgid "Convert to uppercase"
+msgstr "Μετατροπή σε κεφαλαία"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgid "Convert to lowercase"
+msgstr "Μετατροπή σε πεζά"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgid "Invert case"
+msgstr "Εναλλαγή πεζών κεφαλαίων"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgid "Increment number at cursor"
+msgstr "Αύξηση αριθμού στον δρομέα"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgid "Decrement number at cursor"
+msgstr "Μείωση αριθμού στον δρομέα"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgid "Check spelling"
+msgstr "Έλεγχος ορθογραφίας"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgid "Print the document"
+msgstr "Εκτύπωση εγγράφου"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgid "Show completion window"
+msgstr "Εμφάνιση παραθύρου ολοκλήρωσης"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
@@ -2471,10 +2662,6 @@ msgstr "_Στατιστικά εγγράφου"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Έγγραφο"
-
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
-msgid "Selection"
-msgstr "Επιλογή"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
@@ -3410,35 +3597,6 @@ msgstr "_Ταξινόμηση"
 msgid "Sorts a document or selected text."
 msgstr "Ταξινόμηση του εγγράφου ή της επιλογής."
 
-#. No suggestions. Put something in the menu anyway...
-#. Translators: Displayed in the "Check Spelling"
-#. * dialog if there are no suggestions for the current
-#. * misspelled word.
-#.
-#: ../plugins/spell/gedit-automatic-spell-checker.c:573
-#: ../plugins/spell/gedit-spell-checker-dialog.c:152
-msgid "(no suggested words)"
-msgstr "(όχι προτεινόμενες λέξεις)"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:596
-msgid "_More..."
-msgstr "_Περισσότερα..."
-
-#. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:636
-msgid "_Ignore All"
-msgstr "_Αγνόηση όλων"
-
-#. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:645
-msgid "_Add"
-msgstr "_Προσθήκη"
-
-#. Prepend suggestions
-#: ../plugins/spell/gedit-automatic-spell-checker.c:682
-msgid "_Spelling Suggestions..."
-msgstr "_Συμβουλές ορθογραφίας..."
-
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "Έ_λεγχος ορθογραφίας..."
@@ -3451,116 +3609,7 @@ msgstr "Ορισμός γ_λώσσας..."
 msgid "_Highlight Misspelled Words"
 msgstr "_Επισήμανση ανορθόγραφων λέξεων"
 
-#: ../plugins/spell/gedit-spell-checker.c:464
-#, c-format
-msgid "Error when checking the spelling of word “%s”: %s"
-msgstr "Σφάλμα κατά τον έλεγχο ορθογραφίας της λέξης “%s”: %s"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:237
-msgid "Error:"
-msgstr "Σφάλμα:"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:274
-msgid "Completed spell checking"
-msgstr "Ο έλεγχος ορθογραφίας ολοκληρώθηκε"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:278
-msgid "No misspelled words"
-msgstr "Δεν υπάρχουν ανορθόγραφες λέξεις"
-
-#. Translators: Displayed in the "Check
-#. * Spelling" dialog if the current word
-#. * isn't misspelled.
-#.
-#: ../plugins/spell/gedit-spell-checker-dialog.c:508
-msgid "(correct spelling)"
-msgstr "(διόρθωση ορθογραφίας)"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:646
-msgid "Suggestions"
-msgstr "Συμβουλές"
-
-#. Translators: the first %s is the language name, and
-#. * the second %s is the locale name. Example:
-#. * "French (France)"
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:363
-#: ../plugins/spell/gedit-spell-checker-language.c:369
-#, c-format
-msgctxt "language"
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#. Translators: this refers to an unknown language code
-#. * (one which isn't in our built-in list).
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:378
-#, c-format
-msgctxt "language"
-msgid "Unknown (%s)"
-msgstr "Άγνωστο (%s)"
-
-#. Translators: this refers the Default language used by the
-#. * spell checker
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:484
-msgctxt "language"
-msgid "Default"
-msgstr "Προεπιλεγμένη"
-
 #. ex:set ts=8 noet:
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-msgid "Set Language"
-msgstr "Ορισμός γλώσσας"
-
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-msgid "Select the _language of the current document."
-msgstr "Επιλέξτε τη γ_λώσσα του τρέχοντος εγγράφου."
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check Spelling"
-msgstr "Έλεγχος ορθογραφίας"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-msgid "Misspelled word:"
-msgstr "Ανορθόγραφη λέξη:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
-msgid "word"
-msgstr "λέξη"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-msgid "Change _to:"
-msgstr "Αλλαγή _σε:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-msgid "Check _Word"
-msgstr "Έλεγχος _λέξης"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-msgid "_Suggestions:"
-msgstr "_Συμβουλές:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Ignore _All"
-msgstr "Αγνόηση ό_λων"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-msgid "Cha_nge"
-msgstr "Αλλα_γή"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-msgid "Change A_ll"
-msgstr "Αλλαγή ό_λων"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
-msgid "User dictionary:"
-msgstr "Λεξικό χρήστη:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-msgid "Add w_ord"
-msgstr "Προσθήκη λέ_ξης"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Ορθογραφικός έλεγχος"
@@ -3661,6 +3710,93 @@ msgstr "Εισαγωγή ημερομηνίας/ώρας"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη θέση του δρομέα."
 
+#~ msgid "Question"
+#~ msgstr "Ερώτηση"
+
+#~ msgid "(no suggested words)"
+#~ msgstr "(όχι προτεινόμενες λέξεις)"
+
+#~ msgid "_More..."
+#~ msgstr "_Περισσότερα..."
+
+#~ msgid "_Ignore All"
+#~ msgstr "_Αγνόηση όλων"
+
+#~ msgid "_Add"
+#~ msgstr "_Προσθήκη"
+
+#~ msgid "_Spelling Suggestions..."
+#~ msgstr "_Συμβουλές ορθογραφίας..."
+
+#~ msgid "Error when checking the spelling of word “%s”: %s"
+#~ msgstr "Σφάλμα κατά τον έλεγχο ορθογραφίας της λέξης “%s”: %s"
+
+#~ msgid "Error:"
+#~ msgstr "Σφάλμα:"
+
+#~ msgid "Completed spell checking"
+#~ msgstr "Ο έλεγχος ορθογραφίας ολοκληρώθηκε"
+
+#~ msgid "No misspelled words"
+#~ msgstr "Δεν υπάρχουν ανορθόγραφες λέξεις"
+
+#~ msgid "(correct spelling)"
+#~ msgstr "(διόρθωση ορθογραφίας)"
+
+#~ msgid "Suggestions"
+#~ msgstr "Συμβουλές"
+
+#~ msgctxt "language"
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Unknown (%s)"
+#~ msgstr "Άγνωστο (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Default"
+#~ msgstr "Προεπιλεγμένη"
+
+#~ msgid "Set Language"
+#~ msgstr "Ορισμός γλώσσας"
+
+#~ msgid "Select the _language of the current document."
+#~ msgstr "Επιλέξτε τη γ_λώσσα του τρέχοντος εγγράφου."
+
+#~ msgid "Check Spelling"
+#~ msgstr "Έλεγχος ορθογραφίας"
+
+#~ msgid "Misspelled word:"
+#~ msgstr "Ανορθόγραφη λέξη:"
+
+#~ msgid "word"
+#~ msgstr "λέξη"
+
+#~ msgid "Change _to:"
+#~ msgstr "Αλλαγή _σε:"
+
+#~ msgid "Check _Word"
+#~ msgstr "Έλεγχος _λέξης"
+
+#~ msgid "_Suggestions:"
+#~ msgstr "_Συμβουλές:"
+
+#~ msgid "Ignore _All"
+#~ msgstr "Αγνόηση ό_λων"
+
+#~ msgid "Cha_nge"
+#~ msgstr "Αλλα_γή"
+
+#~ msgid "Change A_ll"
+#~ msgstr "Αλλαγή ό_λων"
+
+#~ msgid "User dictionary:"
+#~ msgstr "Λεξικό χρήστη:"
+
+#~ msgid "Add w_ord"
+#~ msgstr "Προσθήκη λέ_ξης"
+
 #~ msgid "Minimap is Visible"
 #~ msgstr "Ο μικροχάρτης είναι ορατός"
 
@@ -3684,9 +3820,6 @@ msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη
 
 #~ msgid "The document is empty."
 #~ msgstr "Το έγγραφο είναι κενό."
-
-#~ msgid "Check spelling"
-#~ msgstr "Έλεγχος ορθογραφίας"
 
 #~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 #~ msgstr "['UTF-8', 'CURRENT', 'WINDOWS-1253', 'ISO-8859-15', 'UTF-16']"
@@ -3913,14 +4046,8 @@ msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη
 #~ msgid "_Contents"
 #~ msgstr "_Περιεχόμενα"
 
-#~ msgid "About this application"
-#~ msgstr "Περί της εφαρμογής"
-
 #~ msgid "Save _As..."
 #~ msgstr "Αποθήκευση _ως..."
-
-#~ msgid "Save the current file with a different name"
-#~ msgstr "Αποθήκευση του τρέχοντος αρχείου με διαφορετικό όνομα"
 
 #~ msgid "Revert to a saved version of the file"
 #~ msgstr "Επαναφορά σε μια αποθηκευμένη έκδοση του αρχείου"
@@ -3934,9 +4061,6 @@ msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη
 #~ msgid "_Print..."
 #~ msgstr "_Εκτύπωση..."
 
-#~ msgid "Print the current page"
-#~ msgstr "Εκτύπωση της τρέχουσας σελίδας"
-
 #~ msgid "Undo the last action"
 #~ msgstr "Αναίρεση της τελευταίας ενέργειας"
 
@@ -3949,14 +4073,8 @@ msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη
 #~ msgid "Copy the selection"
 #~ msgstr "Αντιγραφή της επιλογής"
 
-#~ msgid "Paste the clipboard"
-#~ msgstr "Επικόλληση του προχείρου"
-
 #~ msgid "Delete the selected text"
 #~ msgstr "Διαγραφή επιλεγμένου κειμένου"
-
-#~ msgid "Select the entire document"
-#~ msgstr "Επιλογή ολόκληρου του εγγράφου"
 
 #~ msgid "_Highlight Mode..."
 #~ msgstr "Λειτουργία _επισήμανσης..."
@@ -3993,15 +4111,6 @@ msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη
 
 #~ msgid "Close all open files"
 #~ msgstr "Κλείσιμο όλων των ανοιχτών εγγράφων"
-
-#~ msgid "Create a new tab group"
-#~ msgstr "Δημιουργία νέας ομάδας καρτελών"
-
-#~ msgid "Switch to the previous tab group"
-#~ msgstr "Αλλαγή στην προηγούμενη ομάδα καρτελών"
-
-#~ msgid "Switch to the next tab group"
-#~ msgstr "Αλλαγή στην επόμενη ομάδα καρτελών"
 
 #~ msgid "Activate previous document"
 #~ msgstr "Ενεργοποίηση προηγούμενου εγγράφου"
@@ -4056,12 +4165,6 @@ msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη
 
 #~ msgid "All _Lower Case"
 #~ msgstr "Όλα πε_ζά"
-
-#~ msgid "Change selected text to lower case"
-#~ msgstr "Μετατροπή του επιλεγμένου κειμένου σε πεζά"
-
-#~ msgid "_Invert Case"
-#~ msgstr "Εν_αλλαγή πεζών κεφαλαίων"
 
 #~ msgid "Invert the case of selected text"
 #~ msgstr "Εναλλαγή πεζών-κεφαλαίων στο επιλεγμένο κείμενο"
@@ -4213,9 +4316,6 @@ msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη
 
 #~ msgid "Previous location"
 #~ msgstr "Προηγούμενη τοποθεσία"
-
-#~ msgid "Go to previous location"
-#~ msgstr "Μετάβαση σε προηγούμενη τοποθεσία"
 
 #~ msgid "Go to a previously opened location"
 #~ msgstr "Μετάβαση σε προηγούμενη ανοιγμένη τοποθεσία"
@@ -4468,9 +4568,6 @@ msgstr "Εισαγωγή τρέχουσας ημ/νίας και ώρας στη
 
 #~ msgid "Code content type"
 #~ msgstr "Είδος περιεχομένου κώδικα"
-
-#~ msgid "Color of selected links"
-#~ msgstr "Χρώμα επιλεγμένων δεσμών"
 
 #~ msgid "Color of selected links (deprecated)"
 #~ msgstr "Χρώμα επιλεγμένων δεσμών (deprecated)"
