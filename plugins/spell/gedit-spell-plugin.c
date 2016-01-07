@@ -405,34 +405,37 @@ update_ui (GeditSpellPlugin *plugin)
 }
 
 static void
-set_inline_checker_from_metadata (ViewData *data)
+setup_inline_checker_from_metadata (GeditSpellPlugin *plugin,
+				    GeditView        *view)
 {
-	GeditSpellPlugin *plugin = data->plugin;
-	gboolean active = FALSE;
-	gchar *active_str;
+	GeditDocument *doc;
+	gboolean enabled = FALSE;
+	gchar *enabled_str;
 	GspellInlineCheckerText *inline_checker;
 	GeditView *active_view;
 
-	active_str = gedit_document_get_metadata (data->doc, GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED);
-	if (active_str != NULL)
+	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
+
+	enabled_str = gedit_document_get_metadata (doc, GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED);
+	if (enabled_str != NULL)
 	{
-		active = g_str_equal (active_str, SPELL_ENABLED_STR);
-		g_free (active_str);
+		enabled = g_str_equal (enabled_str, SPELL_ENABLED_STR);
+		g_free (enabled_str);
 	}
 
-	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (data->view));
-	gspell_inline_checker_text_set_enabled (inline_checker, active);
+	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
+	gspell_inline_checker_text_set_enabled (inline_checker, enabled);
 
 	/* In case that the view is the active one we mark the spell action */
 	active_view = gedit_window_get_active_view (plugin->priv->window);
 
-	if (active_view == data->view)
+	if (active_view == view)
 	{
 		GAction *action;
 
 		action = g_action_map_lookup_action (G_ACTION_MAP (plugin->priv->window),
 		                                     "inline-spell-checker");
-		g_action_change_state (action, g_variant_new_boolean (active));
+		g_action_change_state (action, g_variant_new_boolean (enabled));
 	}
 }
 
@@ -458,7 +461,7 @@ on_document_loaded (GeditDocument *doc,
 		}
 	}
 
-	set_inline_checker_from_metadata (data);
+	setup_inline_checker_from_metadata (data->plugin, data->view);
 }
 
 static void
@@ -513,7 +516,7 @@ view_data_new (GeditSpellPlugin *plugin,
 			  G_CALLBACK (on_document_saved),
 			  data);
 
-	set_inline_checker_from_metadata (data);
+	setup_inline_checker_from_metadata (plugin, view);
 
 	return data;
 }
