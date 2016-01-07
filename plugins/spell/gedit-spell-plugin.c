@@ -2,7 +2,7 @@
  * gedit-spell-plugin.c
  *
  * Copyright (C) 2002-2005 Paolo Maggi
- * Copyright (C) 2015 Sébastien Wilmet
+ * Copyright (C) 2015-2016 Sébastien Wilmet
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -346,7 +346,11 @@ inline_checker_change_state_cb (GSimpleAction *action,
 	view = gedit_window_get_active_view (priv->window);
 	if (view != NULL)
 	{
-		gspell_text_view_set_inline_checking (GTK_TEXT_VIEW (view), active);
+		GspellInlineCheckerText *inline_checker;
+
+		inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
+		gspell_inline_checker_text_set_enabled (inline_checker, active);
+
 		g_simple_action_set_state (action, g_variant_new_boolean (active));
 	}
 }
@@ -397,12 +401,14 @@ update_ui (GeditSpellPlugin *plugin)
 		 */
 		if (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL)
 		{
-			gboolean inline_checking_enabled;
+			GspellInlineCheckerText *inline_checker;
+			gboolean inline_checker_enabled;
 
-			inline_checking_enabled = gspell_text_view_get_inline_checking (GTK_TEXT_VIEW (view));
+			inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
+			inline_checker_enabled = gspell_inline_checker_text_get_enabled (inline_checker);
 
 			g_action_change_state (inline_checker_action,
-					       g_variant_new_boolean (inline_checking_enabled));
+					       g_variant_new_boolean (inline_checker_enabled));
 		}
 
 		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
@@ -418,6 +424,7 @@ set_inline_checker_from_metadata (ViewData *data)
 	GeditSpellPlugin *plugin = data->plugin;
 	gboolean active = FALSE;
 	gchar *active_str;
+	GspellInlineCheckerText *inline_checker;
 	GeditView *active_view;
 
 	active_str = gedit_document_get_metadata (data->doc, GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED);
@@ -427,7 +434,8 @@ set_inline_checker_from_metadata (ViewData *data)
 		g_free (active_str);
 	}
 
-	gspell_text_view_set_inline_checking (GTK_TEXT_VIEW (data->view), active);
+	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (data->view));
+	gspell_inline_checker_text_set_enabled (inline_checker, active);
 
 	/* In case that the view is the active one we mark the spell action */
 	active_view = gedit_window_get_active_view (plugin->priv->window);
@@ -473,7 +481,8 @@ on_document_saved (GeditDocument *doc,
 {
 	GspellChecker *checker;
 	const gchar *language_code = NULL;
-	gboolean inline_checking_enabled;
+	GspellInlineCheckerText *inline_checker;
+	gboolean inline_checker_enabled;
 
 	/* Make sure to save the metadata here too */
 
@@ -484,11 +493,12 @@ on_document_saved (GeditDocument *doc,
 		language_code = gspell_language_get_code (gspell_checker_get_language (checker));
 	}
 
-	inline_checking_enabled = gspell_text_view_get_inline_checking (GTK_TEXT_VIEW (data->view));
+	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (data->view));
+	inline_checker_enabled = gspell_inline_checker_text_get_enabled (inline_checker);
 
 	gedit_document_set_metadata (doc,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-				     inline_checking_enabled ? SPELL_ENABLED_STR : NULL,
+				     inline_checker_enabled ? SPELL_ENABLED_STR : NULL,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE,
 	                             language_code,
 	                             NULL);
