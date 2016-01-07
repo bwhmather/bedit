@@ -148,7 +148,7 @@ gedit_spell_app_activatable_activate (GeditAppActivatable *activatable)
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
 
-	item = g_menu_item_new (_("_Highlight Misspelled Words"), "win.inline-checker");
+	item = g_menu_item_new (_("_Highlight Misspelled Words"), "win.inline-spell-checker");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
 }

@@ -371,7 +371,7 @@ update_ui (GeditSpellPlugin *plugin)
 	                             gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
 
 	inline_checker_action = g_action_map_lookup_action (G_ACTION_MAP (priv->window),
-							    "inline-checker");
+							    "inline-spell-checker");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (inline_checker_action),
 	                             (view != NULL) &&
 	                             gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
@@ -433,7 +433,7 @@ set_inline_checker_from_metadata (ViewData *data)
 		GAction *action;
 
 		action = g_action_map_lookup_action (G_ACTION_MAP (plugin->priv->window),
-		                                     "inline-checker");
+		                                     "inline-spell-checker");
 		g_action_change_state (action, g_variant_new_boolean (active));
 	}
 }
@@ -600,7 +600,11 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 	{
 		{ "check-spell", spell_cb },
 		{ "config-spell", set_language_cb },
-		{ "inline-checker", inline_checker_activate_cb, NULL, "false", inline_checker_change_state_cb }
+		{ "inline-spell-checker",
+		  inline_checker_activate_cb,
+		  NULL,
+		  "false",
+		  inline_checker_change_state_cb }
 	};
 
 	gedit_debug (DEBUG_PLUGINS);
@@ -649,7 +653,7 @@ gedit_spell_plugin_deactivate (GeditWindowActivatable *activatable)
 	g_action_map_remove_action (G_ACTION_MAP (priv->window),
 	                            "config-spell");
 	g_action_map_remove_action (G_ACTION_MAP (priv->window),
-	                            "inline-checker");
+	                            "inline-spell-checker");
 
 	g_signal_handler_disconnect (priv->window, priv->tab_added_id);
 	g_signal_handler_disconnect (priv->window, priv->tab_removed_id);
