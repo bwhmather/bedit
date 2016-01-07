@@ -440,10 +440,12 @@ setup_inline_checker_from_metadata (GeditSpellPlugin *plugin,
 }
 
 static void
-on_document_loaded (GeditDocument *doc,
-		    ViewData      *data)
+on_document_loaded (GeditDocument    *doc,
+		    GeditSpellPlugin *plugin)
 {
 	GspellChecker *checker;
+	GeditTab *tab;
+	GeditView *view;
 
 	checker = gspell_text_buffer_get_spell_checker (GTK_TEXT_BUFFER (doc));
 
@@ -461,13 +463,17 @@ on_document_loaded (GeditDocument *doc,
 		}
 	}
 
-	setup_inline_checker_from_metadata (data->plugin, data->view);
+	tab = gedit_tab_get_from_document (doc);
+	view = gedit_tab_get_view (tab);
+	setup_inline_checker_from_metadata (plugin, view);
 }
 
 static void
 on_document_saved (GeditDocument *doc,
-		   ViewData      *data)
+		   gpointer       user_data)
 {
+	GeditTab *tab;
+	GeditView *view;
 	GspellChecker *checker;
 	const gchar *language_code = NULL;
 	GspellInlineCheckerText *inline_checker;
@@ -482,7 +488,10 @@ on_document_saved (GeditDocument *doc,
 		language_code = gspell_language_get_code (gspell_checker_get_language (checker));
 	}
 
-	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (data->view));
+	tab = gedit_tab_get_from_document (doc);
+	view = gedit_tab_get_view (tab);
+
+	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
 	inline_checker_enabled = gspell_inline_checker_text_get_enabled (inline_checker);
 
 	gedit_document_set_metadata (doc,
@@ -509,12 +518,12 @@ view_data_new (GeditSpellPlugin *plugin,
 	g_signal_connect (data->doc,
 			  "loaded",
 			  G_CALLBACK (on_document_loaded),
-			  data);
+			  plugin);
 
 	g_signal_connect (data->doc,
 			  "saved",
 			  G_CALLBACK (on_document_saved),
-			  data);
+			  NULL);
 
 	setup_inline_checker_from_metadata (plugin, view);
 
@@ -531,8 +540,8 @@ view_data_free (ViewData *data)
 
 	if (data->doc != NULL)
 	{
-		g_signal_handlers_disconnect_by_func (data->doc, on_document_loaded, data);
-		g_signal_handlers_disconnect_by_func (data->doc, on_document_saved, data);
+		g_signal_handlers_disconnect_by_func (data->doc, on_document_loaded, data->plugin);
+		g_signal_handlers_disconnect_by_func (data->doc, on_document_saved, NULL);
 
 		g_object_unref (data->doc);
 	}
