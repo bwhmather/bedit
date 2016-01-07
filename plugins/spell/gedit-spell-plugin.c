@@ -81,18 +81,6 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSpellPlugin,
 							       gedit_window_activatable_iface_init)
 				G_ADD_PRIVATE_DYNAMIC (GeditSpellPlugin))
 
-static void	spell_cb			(GSimpleAction *action, GVariant *parameter, gpointer data);
-static void	set_language_cb			(GSimpleAction *action, GVariant *parameter, gpointer data);
-static void	inline_checker_activate_cb	(GSimpleAction *action, GVariant *parameter, gpointer data);
-static void	inline_checker_change_state_cb	(GSimpleAction *action, GVariant *state, gpointer data);
-
-static GActionEntry action_entries[] =
-{
-	{ "check-spell", spell_cb },
-	{ "config-spell", set_language_cb },
-	{ "inline-checker", inline_checker_activate_cb, NULL, "false", inline_checker_change_state_cb }
-};
-
 static void
 gedit_spell_plugin_init (GeditSpellPlugin *plugin)
 {
@@ -607,6 +595,13 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 	GeditSpellPluginPrivate *priv;
 	GtkStatusbar *statusbar;
 	GList *views, *l;
+
+	const GActionEntry action_entries[] =
+	{
+		{ "check-spell", spell_cb },
+		{ "config-spell", set_language_cb },
+		{ "inline-checker", inline_checker_activate_cb, NULL, "false", inline_checker_change_state_cb }
+	};
 
 	gedit_debug (DEBUG_PLUGINS);
 
