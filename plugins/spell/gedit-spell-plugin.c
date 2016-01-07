@@ -50,8 +50,6 @@ struct _GeditSpellPluginPrivate
 	GeditWindow    *window;
 
 	guint           statusbar_context_id;
-	gulong          tab_added_id;
-	gulong          tab_removed_id;
 };
 
 typedef struct _ViewData ViewData;
@@ -628,15 +626,15 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 		init_spell_checking_in_view (plugin, GEDIT_VIEW (l->data));
 	}
 
-	priv->tab_added_id = g_signal_connect (priv->window,
-					       "tab-added",
-					       G_CALLBACK (tab_added_cb),
-					       activatable);
+	g_signal_connect (priv->window,
+			  "tab-added",
+			  G_CALLBACK (tab_added_cb),
+			  activatable);
 
-	priv->tab_removed_id = g_signal_connect (priv->window,
-						 "tab-removed",
-						 G_CALLBACK (tab_removed_cb),
-						 activatable);
+	g_signal_connect (priv->window,
+			  "tab-removed",
+			  G_CALLBACK (tab_removed_cb),
+			  activatable);
 }
 
 static void
@@ -648,15 +646,12 @@ gedit_spell_plugin_deactivate (GeditWindowActivatable *activatable)
 
 	priv = GEDIT_SPELL_PLUGIN (activatable)->priv;
 
-	g_action_map_remove_action (G_ACTION_MAP (priv->window),
-	                            "check-spell");
-	g_action_map_remove_action (G_ACTION_MAP (priv->window),
-	                            "config-spell");
-	g_action_map_remove_action (G_ACTION_MAP (priv->window),
-	                            "inline-spell-checker");
+	g_action_map_remove_action (G_ACTION_MAP (priv->window), "check-spell");
+	g_action_map_remove_action (G_ACTION_MAP (priv->window), "config-spell");
+	g_action_map_remove_action (G_ACTION_MAP (priv->window), "inline-spell-checker");
 
-	g_signal_handler_disconnect (priv->window, priv->tab_added_id);
-	g_signal_handler_disconnect (priv->window, priv->tab_removed_id);
+	g_signal_handlers_disconnect_by_func (priv->window, tab_added_cb, activatable);
+	g_signal_handlers_disconnect_by_func (priv->window, tab_removed_cb, activatable);
 }
 
 static void
