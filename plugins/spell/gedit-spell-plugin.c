@@ -346,6 +346,7 @@ update_ui (GeditSpellPlugin *plugin)
 {
 	GeditSpellPluginPrivate *priv;
 	GeditView *view;
+	gboolean editable_view;
 	GAction *check_spell_action;
 	GAction *config_spell_action;
 	GAction *inline_checker_action;
@@ -356,23 +357,22 @@ update_ui (GeditSpellPlugin *plugin)
 
 	view = gedit_window_get_active_view (priv->window);
 
+	editable_view = (view != NULL) && gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
+
 	check_spell_action = g_action_map_lookup_action (G_ACTION_MAP (priv->window),
 	                                                 "check-spell");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (check_spell_action),
-	                             (view != NULL) &&
-	                             gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+				     editable_view);
 
 	config_spell_action = g_action_map_lookup_action (G_ACTION_MAP (priv->window),
 	                                                  "config-spell");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (config_spell_action),
-	                             (view != NULL) &&
-	                             gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+				     editable_view);
 
 	inline_checker_action = g_action_map_lookup_action (G_ACTION_MAP (priv->window),
 							    "inline-spell-checker");
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (inline_checker_action),
-	                             (view != NULL) &&
-	                             gtk_text_view_get_editable (GTK_TEXT_VIEW (view)));
+				     editable_view);
 
 	if (view != NULL)
 	{
@@ -400,6 +400,7 @@ update_ui (GeditSpellPlugin *plugin)
 		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 
 		g_simple_action_set_enabled (G_SIMPLE_ACTION (check_spell_action),
+					     editable_view &&
 		                             gtk_text_buffer_get_char_count (buffer) > 0);
 	}
 }
