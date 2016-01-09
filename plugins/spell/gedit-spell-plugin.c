@@ -61,26 +61,6 @@ G_DEFINE_DYNAMIC_TYPE_EXTENDED (GeditSpellPlugin,
 				G_ADD_PRIVATE_DYNAMIC (GeditSpellPlugin))
 
 static void
-gedit_spell_plugin_init (GeditSpellPlugin *plugin)
-{
-	gedit_debug_message (DEBUG_PLUGINS, "GeditSpellPlugin initializing");
-
-	plugin->priv = gedit_spell_plugin_get_instance_private (plugin);
-}
-
-static void
-gedit_spell_plugin_dispose (GObject *object)
-{
-	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (object);
-
-	gedit_debug_message (DEBUG_PLUGINS, "GeditSpellPlugin disposing");
-
-	g_clear_object (&plugin->priv->window);
-
-	G_OBJECT_CLASS (gedit_spell_plugin_parent_class)->dispose (object);
-}
-
-static void
 gedit_spell_plugin_set_property (GObject      *object,
 				 guint         prop_id,
 				 const GValue *value,
@@ -121,24 +101,40 @@ gedit_spell_plugin_get_property (GObject    *object,
 }
 
 static void
-language_notify_cb (GspellChecker *checker,
-		    GParamSpec    *pspec,
-		    GeditDocument *doc)
+gedit_spell_plugin_dispose (GObject *object)
 {
-	const GspellLanguage *lang;
-	const gchar *language_code;
+	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (object);
 
-	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+	gedit_debug_message (DEBUG_PLUGINS, "GeditSpellPlugin disposing");
 
-	lang = gspell_checker_get_language (checker);
-	g_return_if_fail (lang != NULL);
+	g_clear_object (&plugin->priv->window);
 
-	language_code = gspell_language_get_code (lang);
-	g_return_if_fail (language_code != NULL);
+	G_OBJECT_CLASS (gedit_spell_plugin_parent_class)->dispose (object);
+}
 
-	gedit_document_set_metadata (doc,
-				     GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, language_code,
-				     NULL);
+static void
+gedit_spell_plugin_class_init (GeditSpellPluginClass *klass)
+{
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+	object_class->set_property = gedit_spell_plugin_set_property;
+	object_class->get_property = gedit_spell_plugin_get_property;
+	object_class->dispose = gedit_spell_plugin_dispose;
+
+	g_object_class_override_property (object_class, PROP_WINDOW, "window");
+}
+
+static void
+gedit_spell_plugin_class_finalize (GeditSpellPluginClass *klass)
+{
+}
+
+static void
+gedit_spell_plugin_init (GeditSpellPlugin *plugin)
+{
+	gedit_debug_message (DEBUG_PLUGINS, "GeditSpellPlugin initializing");
+
+	plugin->priv = gedit_spell_plugin_get_instance_private (plugin);
 }
 
 static const GspellLanguage *
@@ -156,6 +152,32 @@ get_language_from_metadata (GeditDocument *doc)
 	}
 
 	return lang;
+}
+
+static void
+check_spell_cb (GSimpleAction *action,
+		GVariant      *parameter,
+		gpointer       data)
+{
+	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (data);
+	GeditSpellPluginPrivate *priv;
+	GeditView *view;
+	GspellNavigator *navigator;
+	GtkWidget *dialog;
+
+	gedit_debug (DEBUG_PLUGINS);
+
+	priv = plugin->priv;
+
+	view = gedit_window_get_active_view (priv->window);
+	g_return_if_fail (view != NULL);
+
+	navigator = gspell_navigator_gtv_new (GTK_TEXT_VIEW (view));
+	dialog = gspell_checker_dialog_new (GTK_WINDOW (priv->window), navigator);
+	g_object_unref (navigator);
+
+	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+	gtk_widget_show (dialog);
 }
 
 static void
@@ -222,32 +244,6 @@ set_language_cb (GSimpleAction *action,
 			  G_CALLBACK (language_dialog_response_cb),
 			  NULL);
 
-	gtk_widget_show (dialog);
-}
-
-static void
-check_spell_cb (GSimpleAction *action,
-		GVariant      *parameter,
-		gpointer       data)
-{
-	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (data);
-	GeditSpellPluginPrivate *priv;
-	GeditView *view;
-	GspellNavigator *navigator;
-	GtkWidget *dialog;
-
-	gedit_debug (DEBUG_PLUGINS);
-
-	priv = plugin->priv;
-
-	view = gedit_window_get_active_view (priv->window);
-	g_return_if_fail (view != NULL);
-
-	navigator = gspell_navigator_gtv_new (GTK_TEXT_VIEW (view));
-	dialog = gspell_checker_dialog_new (GTK_WINDOW (priv->window), navigator);
-	g_object_unref (navigator);
-
-	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 	gtk_widget_show (dialog);
 }
 
@@ -410,6 +406,27 @@ setup_inline_checker_from_metadata (GeditSpellPlugin *plugin,
 		                                     "inline-spell-checker");
 		g_action_change_state (action, g_variant_new_boolean (enabled));
 	}
+}
+
+static void
+language_notify_cb (GspellChecker *checker,
+		    GParamSpec    *pspec,
+		    GeditDocument *doc)
+{
+	const GspellLanguage *lang;
+	const gchar *language_code;
+
+	g_return_if_fail (GEDIT_IS_DOCUMENT (doc));
+
+	lang = gspell_checker_get_language (checker);
+	g_return_if_fail (lang != NULL);
+
+	language_code = gspell_language_get_code (lang);
+	g_return_if_fail (language_code != NULL);
+
+	gedit_document_set_metadata (doc,
+				     GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE, language_code,
+				     NULL);
 }
 
 static void
@@ -611,23 +628,6 @@ gedit_spell_plugin_update_state (GeditWindowActivatable *activatable)
 	gedit_debug (DEBUG_PLUGINS);
 
 	update_ui (GEDIT_SPELL_PLUGIN (activatable));
-}
-
-static void
-gedit_spell_plugin_class_init (GeditSpellPluginClass *klass)
-{
-	GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-	object_class->dispose = gedit_spell_plugin_dispose;
-	object_class->set_property = gedit_spell_plugin_set_property;
-	object_class->get_property = gedit_spell_plugin_get_property;
-
-	g_object_class_override_property (object_class, PROP_WINDOW, "window");
-}
-
-static void
-gedit_spell_plugin_class_finalize (GeditSpellPluginClass *klass)
-{
 }
 
 static void
