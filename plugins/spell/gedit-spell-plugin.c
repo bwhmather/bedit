@@ -377,7 +377,6 @@ update_ui (GeditSpellPlugin *plugin)
 	if (view != NULL)
 	{
 		GeditTab *tab;
-		GtkTextBuffer *buffer;
 
 		tab = gedit_window_get_active_tab (priv->window);
 		g_return_if_fail (gedit_tab_get_view (tab) == view);
@@ -396,12 +395,6 @@ update_ui (GeditSpellPlugin *plugin)
 			g_action_change_state (inline_checker_action,
 					       g_variant_new_boolean (inline_checker_enabled));
 		}
-
-		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-
-		g_simple_action_set_enabled (G_SIMPLE_ACTION (check_spell_action),
-					     editable_view &&
-		                             gtk_text_buffer_get_char_count (buffer) > 0);
 	}
 }
 
