@@ -523,22 +523,6 @@ tab_added_cb (GeditWindow      *window,
 }
 
 static void
-tab_removed_cb (GeditWindow      *window,
-		GeditTab         *tab,
-		GeditSpellPlugin *plugin)
-{
-	GeditDocument *doc = gedit_tab_get_document (tab);
-
-	/* It should still be the same doc as the one where the signal handlers
-	 * were connected. If not, we assume that the old doc is finalized and
-	 * it is safe to call g_signal_handlers_disconnect_by_func() if no
-	 * signal handlers are found.
-	 */
-	g_signal_handlers_disconnect_by_func (doc, on_document_loaded, plugin);
-	g_signal_handlers_disconnect_by_func (doc, on_document_saved, plugin);
-}
-
-static void
 gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 {
 	GeditSpellPlugin *plugin;
@@ -582,11 +566,6 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 			  "tab-added",
 			  G_CALLBACK (tab_added_cb),
 			  activatable);
-
-	g_signal_connect (priv->window,
-			  "tab-removed",
-			  G_CALLBACK (tab_removed_cb),
-			  activatable);
 }
 
 static void
@@ -603,7 +582,6 @@ gedit_spell_plugin_deactivate (GeditWindowActivatable *activatable)
 	g_action_map_remove_action (G_ACTION_MAP (priv->window), "inline-spell-checker");
 
 	g_signal_handlers_disconnect_by_func (priv->window, tab_added_cb, activatable);
-	g_signal_handlers_disconnect_by_func (priv->window, tab_removed_cb, activatable);
 }
 
 static void
