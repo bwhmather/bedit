@@ -41,28 +41,12 @@
 
 #define SPELL_ENABLED_STR "1"
 
-#define VIEW_DATA_KEY "GeditSpellPlugin-ViewData"
-
 static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface *iface);
 
 struct _GeditSpellPluginPrivate
 {
-	GeditWindow    *window;
-
-	guint           statusbar_context_id;
-};
-
-typedef struct _ViewData ViewData;
-
-struct _ViewData
-{
-	GeditSpellPlugin *plugin;
-	GeditView *view;
-
-	/* The doc is also needed, to be sure that the signals are disconnected
-	 * on the same doc.
-	 */
-	GeditDocument *doc;
+	GeditWindow *window;
+	guint statusbar_context_id;
 };
 
 enum
@@ -494,56 +478,6 @@ on_document_saved (GeditDocument *doc,
 	                             NULL);
 }
 
-static ViewData *
-view_data_new (GeditSpellPlugin *plugin,
-	       GeditView        *view)
-{
-	ViewData *data;
-
-	data = g_slice_new (ViewData);
-	data->plugin = g_object_ref (plugin);
-	data->view = g_object_ref (view);
-
-	data->doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-	g_object_ref (data->doc);
-
-	g_signal_connect (data->doc,
-			  "loaded",
-			  G_CALLBACK (on_document_loaded),
-			  plugin);
-
-	g_signal_connect (data->doc,
-			  "saved",
-			  G_CALLBACK (on_document_saved),
-			  NULL);
-
-	setup_inline_checker_from_metadata (plugin, view);
-
-	return data;
-}
-
-static void
-view_data_free (ViewData *data)
-{
-	if (data == NULL)
-	{
-		return;
-	}
-
-	if (data->doc != NULL)
-	{
-		g_signal_handlers_disconnect_by_func (data->doc, on_document_loaded, data->plugin);
-		g_signal_handlers_disconnect_by_func (data->doc, on_document_saved, NULL);
-
-		g_object_unref (data->doc);
-	}
-
-	g_clear_object (&data->plugin);
-	g_clear_object (&data->view);
-
-	g_slice_free (ViewData, data);
-}
-
 static void
 init_spell_checking_in_view (GeditSpellPlugin *plugin,
 			     GeditView        *view)
@@ -551,7 +485,6 @@ init_spell_checking_in_view (GeditSpellPlugin *plugin,
 	GeditDocument *doc;
 	const GspellLanguage *lang;
 	GspellChecker *checker;
-	ViewData *data;
 
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
 	lang = get_language_from_metadata (doc);
@@ -566,11 +499,19 @@ init_spell_checking_in_view (GeditSpellPlugin *plugin,
 	gspell_text_buffer_set_spell_checker (GTK_TEXT_BUFFER (doc), checker);
 	g_object_unref (checker);
 
-	data = view_data_new (plugin, view);
-	g_object_set_data_full (G_OBJECT (view),
-				VIEW_DATA_KEY,
-				data,
-				(GDestroyNotify) view_data_free);
+	g_signal_connect_object (doc,
+				 "loaded",
+				 G_CALLBACK (on_document_loaded),
+				 plugin,
+				 0);
+
+	g_signal_connect_object (doc,
+				 "saved",
+				 G_CALLBACK (on_document_saved),
+				 plugin,
+				 0);
+
+	setup_inline_checker_from_metadata (plugin, view);
 }
 
 static void
@@ -586,8 +527,15 @@ tab_removed_cb (GeditWindow      *window,
 		GeditTab         *tab,
 		GeditSpellPlugin *plugin)
 {
-	GeditView *view = gedit_tab_get_view (tab);
-	g_object_set_data (G_OBJECT (view), VIEW_DATA_KEY, NULL);
+	GeditDocument *doc = gedit_tab_get_document (tab);
+
+	/* It should still be the same doc as the one where the signal handlers
+	 * were connected. If not, we assume that the old doc is finalized and
+	 * it is safe to call g_signal_handlers_disconnect_by_func() if no
+	 * signal handlers are found.
+	 */
+	g_signal_handlers_disconnect_by_func (doc, on_document_loaded, plugin);
+	g_signal_handlers_disconnect_by_func (doc, on_document_saved, plugin);
 }
 
 static void
