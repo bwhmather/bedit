@@ -476,8 +476,8 @@ on_document_saved (GeditDocument *doc,
 }
 
 static void
-init_spell_checking_in_view (GeditSpellPlugin *plugin,
-			     GeditView        *view)
+activate_spell_checking_in_view (GeditSpellPlugin *plugin,
+				 GeditView        *view)
 {
 	GeditDocument *doc;
 	const GspellLanguage *lang;
@@ -512,11 +512,28 @@ init_spell_checking_in_view (GeditSpellPlugin *plugin,
 }
 
 static void
+deactivate_spell_checking_in_view (GeditSpellPlugin *plugin,
+				   GeditView        *view)
+{
+	GtkTextBuffer *buffer;
+	GspellInlineCheckerText *inline_checker;
+
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	gspell_text_buffer_set_spell_checker (buffer, NULL);
+
+	g_signal_handlers_disconnect_by_func (buffer, on_document_loaded, plugin);
+	g_signal_handlers_disconnect_by_func (buffer, on_document_saved, plugin);
+
+	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
+	gspell_inline_checker_text_set_enabled (inline_checker, FALSE);
+}
+
+static void
 tab_added_cb (GeditWindow      *window,
 	      GeditTab         *tab,
 	      GeditSpellPlugin *plugin)
 {
-	init_spell_checking_in_view (plugin, gedit_tab_get_view (tab));
+	activate_spell_checking_in_view (plugin, gedit_tab_get_view (tab));
 }
 
 static void
@@ -524,7 +541,8 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 {
 	GeditSpellPlugin *plugin;
 	GeditSpellPluginPrivate *priv;
-	GList *views, *l;
+	GList *views;
+	GList *l;
 
 	const GActionEntry action_entries[] =
 	{
@@ -552,7 +570,7 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 	views = gedit_window_get_views (priv->window);
 	for (l = views; l != NULL; l = l->next)
 	{
-		init_spell_checking_in_view (plugin, GEDIT_VIEW (l->data));
+		activate_spell_checking_in_view (plugin, GEDIT_VIEW (l->data));
 	}
 
 	g_signal_connect (priv->window,
@@ -564,17 +582,27 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 static void
 gedit_spell_plugin_deactivate (GeditWindowActivatable *activatable)
 {
+	GeditSpellPlugin *plugin;
 	GeditSpellPluginPrivate *priv;
+	GList *views;
+	GList *l;
 
 	gedit_debug (DEBUG_PLUGINS);
 
-	priv = GEDIT_SPELL_PLUGIN (activatable)->priv;
+	plugin = GEDIT_SPELL_PLUGIN (activatable);
+	priv = plugin->priv;
 
 	g_action_map_remove_action (G_ACTION_MAP (priv->window), "check-spell");
 	g_action_map_remove_action (G_ACTION_MAP (priv->window), "config-spell");
 	g_action_map_remove_action (G_ACTION_MAP (priv->window), "inline-spell-checker");
 
 	g_signal_handlers_disconnect_by_func (priv->window, tab_added_cb, activatable);
+
+	views = gedit_window_get_views (priv->window);
+	for (l = views; l != NULL; l = l->next)
+	{
+		deactivate_spell_checking_in_view (plugin, GEDIT_VIEW (l->data));
+	}
 }
 
 static void
