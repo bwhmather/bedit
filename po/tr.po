@@ -9,15 +9,15 @@
 # Gökhan Gurbetoğlu <ggurbet@gmail.com>, 2014, 2015.
 # sabri ünal <yakushabb@gmail.com>, 2014.
 # Necdet Yücel <necdetyucel@gmail.com>, 2015.
-# Muhammet Kara <muhammetk@gmail.com>, 2011, 2012, 2013, 2014, 2015.
+# Muhammet Kara <muhammetk@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-12-13 18:58+0000\n"
-"PO-Revision-Date: 2015-12-13 23:56+0200\n"
+"POT-Creation-Date: 2016-01-09 06:59+0000\n"
+"PO-Revision-Date: 2016-01-09 19:08+0200\n"
 "Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "X-POOTLE-MTIME: 1433962102.000000\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
@@ -954,13 +954,13 @@ msgstr "\"%s\" bulunamadı"
 msgid "Untitled Document %d"
 msgstr "Adsız Belge %d"
 
-#: ../gedit/gedit-documents-panel.c:435
+#: ../gedit/gedit-documents-panel.c:434
 #, c-format
 msgid "Tab Group %i"
 msgstr "Sekme Grubu %i"
 
-#: ../gedit/gedit-documents-panel.c:535 ../gedit/gedit-window.c:1167
-#: ../gedit/gedit-window.c:1173 ../gedit/gedit-window.c:1181
+#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
+#: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
 msgid "Read-Only"
 msgstr "Salt Okunur"
 
@@ -1034,7 +1034,7 @@ msgstr "Karakter Kodlaması:"
 msgid "Line Ending:"
 msgstr "Satır Sonu:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1251
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1250
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1609,40 +1609,40 @@ msgstr "Arama yapılacak dizgi"
 msgid "Line you want to move the cursor to"
 msgstr "İmleci taşımak istediğiniz satır"
 
-#: ../gedit/gedit-window.c:1004
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match is out of range"
 msgstr "Parantez eşlemesi erişim dışı"
 
-#: ../gedit/gedit-window.c:1009
+#: ../gedit/gedit-window.c:1008
 msgid "Bracket match not found"
 msgstr "Parantez eşleşmesi bulunamadı"
 
-#: ../gedit/gedit-window.c:1014
+#: ../gedit/gedit-window.c:1013
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "%d satırında parantez eşleşmesi bulundu."
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1049
+#: ../gedit/gedit-window.c:1048
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Sat %d, Süt %d"
 
-#: ../gedit/gedit-window.c:1233
+#: ../gedit/gedit-window.c:1232
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Etiket Genişliği: %u"
 
-#: ../gedit/gedit-window.c:1602
+#: ../gedit/gedit-window.c:1601
 msgid "There are unsaved documents"
 msgstr "Kaydedilmemiş belgeler var"
 
-#: ../gedit/gedit-window.c:2447
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "Yan panel sayfasını değiştir"
 
-#: ../gedit/gedit-window.c:2467 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/gtk/menus-osx.ui.h:35
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
@@ -1717,7 +1717,7 @@ msgstr "_Klavye Kısayolları"
 #: ../gedit/resources/gtk/menus-default.ui.h:4
 #: ../gedit/resources/gtk/menus-traditional.ui.h:17
 #: ../gedit/resources/gtk/menus-osx.ui.h:46
-#: ../plugins/spell/gedit-spell-plugin.c:353
+#: ../plugins/spell/gedit-spell-plugin.c:236
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "_Yardım"
@@ -2345,31 +2345,29 @@ msgstr "Kopyala ve Yapıştır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
 msgid "Copy selected text to clipboard"
-msgstr ""
+msgstr "Seçili metni panoya kopyala"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
 msgid "Cut selected text to clipboard"
-msgstr ""
+msgstr "Seçili metni kes ve panoya yapıştır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
 msgid "Paste text from clipboard"
-msgstr ""
+msgstr "Panodaki metni yapıştır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
-#, fuzzy
 #| msgid "Find and Replace"
 msgid "Undo and Redo"
-msgstr "Bul ve Değiştir"
+msgstr "Geri Al ve Yinele"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
 msgid "Undo previous command"
-msgstr ""
+msgstr "Önceki komutu geri al"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
-#, fuzzy
 #| msgid "Run command"
 msgid "Redo previous command"
-msgstr "Komut çalıştır"
+msgstr "Önceki komutu yinele"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
@@ -2377,94 +2375,83 @@ msgid "Selection"
 msgstr "Seçim"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
-#, fuzzy
 #| msgid "Select _All"
 msgid "Select all text"
-msgstr "Tü_münü Seç"
+msgstr "Tüm metni seç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
-#, fuzzy
 #| msgid "Edit"
 msgid "Editing"
-msgstr "Düzenle"
+msgstr "Düzenleme"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
 msgid "Toggle insert / overwrite"
-msgstr ""
+msgstr "Araya ekleme / üzerine yazmayı aç/kapat"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
-#, fuzzy
 #| msgid "Highlight current line"
 msgid "Delete current line"
-msgstr "Geçerli satırı vurgula"
+msgstr "Geçerli satırı sil"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
-#, fuzzy
 #| msgid "Export selected snippets"
 msgid "Join selected lines"
-msgstr "Seçili bölümleri aktar"
+msgstr "Seçili satırları birleştir"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
-#, fuzzy
 #| msgid "Current line"
 msgid "Move current line up"
-msgstr "Mevcut satır"
+msgstr "Geçerli satırı yukarı taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
-#, fuzzy
 #| msgid "Current line"
 msgid "Move current line down"
-msgstr "Mevcut satır"
+msgstr "Geçerli satırı aşağı taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
-#, fuzzy
 #| msgid "Current word"
 msgid "Move current word left"
-msgstr "Mevcut kelime"
+msgstr "Geçerli kelimeyi sola taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
-#, fuzzy
 #| msgid "Current word"
 msgid "Move current word right"
-msgstr "Mevcut kelime"
+msgstr "Geçerli kelimeyi sağa taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
 msgid "Convert to uppercase"
-msgstr ""
+msgstr "Büyük harfe dönüştür"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
 msgid "Convert to lowercase"
-msgstr ""
+msgstr "Küçük harfe dönüştür"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
-#, fuzzy
 #| msgid "_Ignore case"
 msgid "Invert case"
-msgstr "Büyük/küçük harf önemli _değil"
+msgstr "BÜYÜK/küçük harf değiştir"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
 msgid "Increment number at cursor"
-msgstr ""
+msgstr "İmleçteki sayıyı artır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
 msgid "Decrement number at cursor"
-msgstr ""
+msgstr "İmleçteki sayıyı azalt"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
-#, fuzzy
 #| msgid "Check Spelling"
 msgid "Check spelling"
-msgstr "Yazım Denetimi Yap"
+msgstr "Yazım denetimi yap"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
-#, fuzzy
 #| msgid "Current document"
 msgid "Print the document"
-msgstr "Mevcut belge"
+msgstr "Belgeyi yazdır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
 msgid "Show completion window"
-msgstr ""
+msgstr "Tamamlama penceresini göster"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
