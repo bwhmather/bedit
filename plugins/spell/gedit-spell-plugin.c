@@ -345,7 +345,8 @@ static void
 update_ui (GeditSpellPlugin *plugin)
 {
 	GeditSpellPluginPrivate *priv;
-	GeditView *view;
+	GeditTab *tab;
+	GeditView *view = NULL;
 	gboolean editable_view;
 	GAction *check_spell_action;
 	GAction *config_spell_action;
@@ -355,7 +356,11 @@ update_ui (GeditSpellPlugin *plugin)
 
 	priv = plugin->priv;
 
-	view = gedit_window_get_active_view (priv->window);
+	tab = gedit_window_get_active_tab (priv->window);
+	if (tab != NULL)
+	{
+		view = gedit_tab_get_view (tab);
+	}
 
 	editable_view = (view != NULL) && gtk_text_view_get_editable (GTK_TEXT_VIEW (view));
 
@@ -374,27 +379,20 @@ update_ui (GeditSpellPlugin *plugin)
 	g_simple_action_set_enabled (G_SIMPLE_ACTION (inline_checker_action),
 				     editable_view);
 
-	if (view != NULL)
+	/* Update only on normal state to avoid garbage changes during e.g. file
+	 * loading.
+	 */
+	if (tab != NULL &&
+	    gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL)
 	{
-		GeditTab *tab;
+		GspellInlineCheckerText *inline_checker;
+		gboolean inline_checker_enabled;
 
-		tab = gedit_window_get_active_tab (priv->window);
-		g_return_if_fail (gedit_tab_get_view (tab) == view);
+		inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
+		inline_checker_enabled = gspell_inline_checker_text_get_enabled (inline_checker);
 
-		/* If the document is loading we can't get the metadata so we
-		 * endup with a useless speller.
-		 */
-		if (gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL)
-		{
-			GspellInlineCheckerText *inline_checker;
-			gboolean inline_checker_enabled;
-
-			inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
-			inline_checker_enabled = gspell_inline_checker_text_get_enabled (inline_checker);
-
-			g_action_change_state (inline_checker_action,
-					       g_variant_new_boolean (inline_checker_enabled));
-		}
+		g_action_change_state (inline_checker_action,
+				       g_variant_new_boolean (inline_checker_enabled));
 	}
 }
 
