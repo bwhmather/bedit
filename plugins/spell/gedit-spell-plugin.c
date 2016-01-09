@@ -245,9 +245,9 @@ set_language_cb (GSimpleAction *action,
 }
 
 static void
-spell_cb (GSimpleAction *action,
-	  GVariant      *parameter,
-	  gpointer       data)
+check_spell_cb (GSimpleAction *action,
+		GVariant      *parameter,
+		gpointer       data)
 {
 	GeditSpellPlugin *plugin = GEDIT_SPELL_PLUGIN (data);
 	GeditSpellPluginPrivate *priv;
@@ -600,7 +600,7 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 
 	const GActionEntry action_entries[] =
 	{
-		{ "check-spell", spell_cb },
+		{ "check-spell", check_spell_cb },
 		{ "config-spell", set_language_cb },
 		{ "inline-spell-checker",
 		  inline_checker_activate_cb,
