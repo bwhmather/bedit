@@ -22,11 +22,9 @@
 
 #include <glib/gi18n.h>
 #include <gedit/gedit-debug.h>
-#include <gedit/gedit-statusbar.h>
 #include <gedit/gedit-app.h>
 #include <gedit/gedit-window.h>
 #include <gedit/gedit-window-activatable.h>
-#include <gtksourceview/gtksource.h>
 #include <gspell/gspell.h>
 
 #include "gedit-spell-app-activatable.h"
@@ -46,7 +44,6 @@ static void gedit_window_activatable_iface_init (GeditWindowActivatableInterface
 struct _GeditSpellPluginPrivate
 {
 	GeditWindow *window;
-	guint statusbar_context_id;
 };
 
 enum
@@ -527,7 +524,6 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 {
 	GeditSpellPlugin *plugin;
 	GeditSpellPluginPrivate *priv;
-	GtkStatusbar *statusbar;
 	GList *views, *l;
 
 	const GActionEntry action_entries[] =
@@ -550,9 +546,6 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 	                                 action_entries,
 	                                 G_N_ELEMENTS (action_entries),
 	                                 activatable);
-
-	statusbar = GTK_STATUSBAR (gedit_window_get_statusbar (priv->window));
-	priv->statusbar_context_id = gtk_statusbar_get_context_id (statusbar, "spell_plugin_message");
 
 	update_ui (plugin);
 
