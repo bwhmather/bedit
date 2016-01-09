@@ -205,7 +205,7 @@ set_language_cb (GSimpleAction *action,
 	GspellChecker *checker;
 	const GspellLanguage *lang;
 	GtkWidget *dialog;
-	GtkWindowGroup *wg;
+	GtkWindowGroup *window_group;
 
 	gedit_debug (DEBUG_PLUGINS);
 
@@ -228,9 +228,9 @@ set_language_cb (GSimpleAction *action,
 				checker, "language",
 				G_BINDING_DEFAULT);
 
-	wg = gedit_window_get_group (priv->window);
+	window_group = gedit_window_get_group (priv->window);
 
-	gtk_window_group_add_window (wg, GTK_WINDOW (dialog));
+	gtk_window_group_add_window (window_group, GTK_WINDOW (dialog));
 
 	gtk_dialog_add_button (GTK_DIALOG (dialog),
 			       _("_Help"),
