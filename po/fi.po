@@ -13,15 +13,15 @@
 # Ilkka Tuohela <hile@iki.fi>, 2005-2009.
 # Tommi Vainikainen <thv@iki.fi>, 2009-2010.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2014.
-# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2010, 2012, 2013, 2014, 2015.
+# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2010, 2012, 2013, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-10-18 11:00+0000\n"
-"PO-Revision-Date: 2015-10-18 15:26+0300\n"
+"POT-Creation-Date: 2016-01-11 18:59+0000\n"
+"PO-Revision-Date: 2016-01-12 00:07+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
@@ -609,20 +609,16 @@ msgstr "[TIEDOSTO...] [+RIVI[:SARAKE]]"
 msgid "There was an error displaying the help."
 msgstr "Ohjetta näyttäessä tapahtui virhe."
 
-#: ../gedit/gedit-app.c:972
+#: ../gedit/gedit-app.c:977
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: virheellinen koodaus."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:155
-msgid "Question"
-msgstr "Kysymys"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:317
+#: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "_Sulje tallentamatta"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:318
+#: ../gedit/gedit-close-confirmation-dialog.c:278
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
@@ -638,18 +634,17 @@ msgstr "_Sulje tallentamatta"
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_Peru"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/resources/gtk/menus-default.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus-default.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "_Tallenna nimellä…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
+#: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
@@ -657,7 +652,7 @@ msgstr "_Tallenna nimellä…"
 msgid "_Save"
 msgstr "_Tallenna"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -671,13 +666,13 @@ msgstr[1] ""
 "Mikäli et tallenna, muutokset viimeisten %ld sekunnin ajalta menetetään "
 "pysyvästi."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:373
+#: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Mikäli et tallenna, muutokset viimeisen minuutin ajalta menetetään pysyvästi."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:379
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -692,7 +687,7 @@ msgstr[1] ""
 "Mikäli et tallenna, muutokset viimeisten minuutin ja %ld sekunnin ajalta "
 "menetetään pysyvästi."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -706,12 +701,12 @@ msgstr[1] ""
 "Mikäli et tallenna, muutokset viimeisten %ld minuutin ajalta menetetään "
 "pysyvästi."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:404
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Mikäli et tallenna, muutokset viimeisen tunnin ajalta menetetään pysyvästi."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -726,7 +721,7 @@ msgstr[1] ""
 "Mikäli et tallenna, muutokset viimeisen tunnin ja %d minuutin ajalta "
 "menetetään pysyvästi."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:425
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -739,29 +734,29 @@ msgstr[1] ""
 "Mikäli et tallenna, muutokset viimeisten %d tunnin ajalta menetetään "
 "pysyvästi."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:469
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Muutokset asiakirjaan ”%s” menetetään lopullisesti."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:474
+#: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Tallennetaanko muutokset asiakirjaan ”%s” ennen sulkemista?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:489
-#: ../gedit/gedit-close-confirmation-dialog.c:647
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "Ylläpitäjä on estänyt tiedostojen tallennuksen."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:595
+#: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Muutokset %d asiakirjaan menetetään lopullisesti."
 msgstr[1] "Muutokset %d asiakirjaan menetetään lopullisesti."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:603
+#: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -773,15 +768,15 @@ msgstr[1] ""
 "Sinulla on avoinna %d tallentamattomia muutoksia sisältävää asiakirjaa. "
 "Tallennetaanko muutokset ennen sulkemista?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:623
+#: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Asia_kirjat, joissa on tallentamattomia muutoksia:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "Valits_e asiakirjat jotka haluat tallentaa:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Mikäli et tallenna, kaikki tekemäsi muutokset menetetään lopullisesti."
 
@@ -799,7 +794,6 @@ msgstr[1] "Ladataan %d tiedostoa…"
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
-#| msgid "Open"
 msgctxt "window title"
 msgid "Open"
 msgstr "Avaa"
@@ -867,7 +861,6 @@ msgstr "Tallennetaan tiedostoa ”%s”…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
-#| msgid "Save As"
 msgctxt "window title"
 msgid "Save As"
 msgstr "Tallenna nimellä"
@@ -969,11 +962,11 @@ msgstr[1] ""
 msgid "_Revert"
 msgstr "_Palauta levyltä"
 
-#: ../gedit/gedit-commands-help.c:79
+#: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "gedit on pieni ja kevyt tekstimuokkain GNOME-työpöytäympäristölle."
 
-#: ../gedit/gedit-commands-help.c:103
+#: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos 2010-2015\n"
@@ -1010,17 +1003,16 @@ msgstr "”%s” ei löytynyt"
 
 #: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
 #, c-format
-#| msgid "Unsaved Document %d"
 msgid "Untitled Document %d"
 msgstr "Nimetön asiakirja %d"
 
-#: ../gedit/gedit-documents-panel.c:435
+#: ../gedit/gedit-documents-panel.c:434
 #, c-format
 msgid "Tab Group %i"
 msgstr "välilehtiryhmä %i"
 
-#: ../gedit/gedit-documents-panel.c:535 ../gedit/gedit-window.c:1167
-#: ../gedit/gedit-window.c:1173 ../gedit/gedit-window.c:1181
+#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
+#: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
 msgid "Read-Only"
 msgstr "Vain luku"
 
@@ -1094,7 +1086,7 @@ msgstr "Merkistökoodaus:"
 msgid "Line Ending:"
 msgstr "Rivinloppu:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1251
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1250
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1428,14 +1420,13 @@ msgid "Drop Changes and _Reload"
 msgstr "_Hylkää muutokset ja lataa uudelleen"
 
 #: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-default.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 #: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_Lataa uudelleen"
 
 #: ../gedit/gedit-io-error-info-bar.c:1187
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "_Ohita"
 
@@ -1515,6 +1506,7 @@ msgstr "Ei mitään"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Etsi ja korvaa"
 
@@ -1671,40 +1663,41 @@ msgstr "Etsittävä merkkijono"
 msgid "Line you want to move the cursor to"
 msgstr "Rivi, jolle haluat siirtää kursorin"
 
-#: ../gedit/gedit-window.c:1004
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match is out of range"
 msgstr "Sulkuparin täsmäys on alueen ulkopuolella"
 
-#: ../gedit/gedit-window.c:1009
+#: ../gedit/gedit-window.c:1008
 msgid "Bracket match not found"
 msgstr "Vastaavaa sulkua ei löytynyt"
 
-#: ../gedit/gedit-window.c:1014
+#: ../gedit/gedit-window.c:1013
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Vastaava sulku löytyi riviltä: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1049
+#: ../gedit/gedit-window.c:1048
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Rvi %d, Srke %d"
 
-#: ../gedit/gedit-window.c:1233
+#: ../gedit/gedit-window.c:1232
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Sarkaimen leveys: %u"
 
-#: ../gedit/gedit-window.c:1602
+#: ../gedit/gedit-window.c:1601
 msgid "There are unsaved documents"
 msgstr "Tallentamattomia asiakirjoja on avoinna"
 
-#: ../gedit/gedit-window.c:2447
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "Vaihda sivupaneelin sivua"
 
-#: ../gedit/gedit-window.c:2467 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Asiakirjat"
@@ -1727,8 +1720,8 @@ msgid "Move to New Tab _Group"
 msgstr "Siirr_ä uuteen välilehtiryhmään"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
@@ -1772,93 +1765,100 @@ msgstr "_Asetukset"
 #: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
 #: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../plugins/spell/gedit-spell-plugin.c:364
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanäppäimet"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-osx.ui.h:46
+#: ../plugins/spell/gedit-spell-plugin.c:239
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "O_hje"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_About"
 msgstr "_Tietoja"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:7
+#: ../gedit/resources/gtk/menus-default.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
 #: ../gedit/resources/gtk/menus-osx.ui.h:11
 msgid "_Print…"
 msgstr "_Tulosta…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
+#: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
 #: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "Koko näytt_ö"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:10
+#: ../gedit/resources/gtk/menus-default.ui.h:11
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Save _All"
 msgstr "Tallenna k_aikki"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:11
+#: ../gedit/resources/gtk/menus-default.ui.h:12
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
 #: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "_Find…"
 msgstr "_Etsi…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:12
+#: ../gedit/resources/gtk/menus-default.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
 msgstr "Etsi _ja korvaa…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:13
+#: ../gedit/resources/gtk/menus-default.ui.h:14
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
 #: ../gedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "Ä_lä korosta osumia"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:14
+#: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
 msgstr "S_iirry riville…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:15
+#: ../gedit/resources/gtk/menus-default.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/gtk/menus-osx.ui.h:22
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Näytä"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:16
+#: ../gedit/resources/gtk/menus-default.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
 #: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "_Sivupaneeli"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:18
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
 #: ../gedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "_Alapaneeli"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
 #: ../gedit/resources/gtk/menus-osx.ui.h:26
 msgid "_Highlight Mode…"
 msgstr "Korost_ustila…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 #: ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgid "Tools"
 msgstr "Työkalut"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
 #: ../gedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "Sulje _kaikki"
@@ -2004,7 +2004,6 @@ msgid "Highlight Mode"
 msgstr "Korostustila"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_Select"
 msgstr "_Valitse"
 
@@ -2299,9 +2298,236 @@ msgid "Search _backwards"
 msgstr "Etsi _taaksepäin"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
-#| msgid "_Wrap around"
 msgid "Wra_p around"
 msgstr "Jatka _alusta"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+#| msgid "Create a new document"
+msgid "Create a new document in a tab"
+msgstr "Luo uusi asiakirja välilehteen"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+#| msgid "Open a New Document"
+msgid "Open a document"
+msgstr "Avaa asiakirja"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+#| msgid "Save the current file"
+msgid "Save the document"
+msgstr "Tallenna asiakirja"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+#| msgid "Save the current file"
+msgid "Save the document with a new filename"
+msgstr "Tallenna asiakirja toisella nimellä"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+#| msgid "Create a new document"
+msgid "Save all the documents"
+msgstr "Tallenna kaikki asiakirjat"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+#| msgid "Close Document"
+msgid "Close the document"
+msgstr "Sulje asiakirja"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+#| msgid "Close Document"
+msgid "Close all the documents"
+msgstr "Sulje kaikki asiakirjat"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+#| msgid "Append to current document"
+msgid "Reopen the most recently closed document"
+msgstr "Avaa viimeksi suljettu asiakirja"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+#| msgid "Show the next page"
+msgid "Switch to the next document"
+msgstr "Vaihda seuraavaan asiakirjaan"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+#| msgid "Show the previous page"
+msgid "Switch to the previous document"
+msgstr "Vaihda edelliseen asiakirjaan"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+#| msgid "Set Location to First Document"
+msgid "Switch to the first - ninth document"
+msgstr "Vaihda asiakirjojen 1-9 välillä"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgid "Windows and Panels"
+msgstr "Ikkunat ja paneelit"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+#| msgid "Create a new document"
+msgid "Create a new document in a window"
+msgstr "Luo uusi asiakirja ikkunaan"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+#| msgid "Create a new document"
+msgid "Create a new tab group"
+msgstr "Luo uusi välilehtiryhmä"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+#| msgid "Hide panel"
+msgid "Show side panel"
+msgstr "Näytä sivupaneeli"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+#| msgid "_Bottom Panel"
+msgid "Show bottom panel"
+msgstr "Näytä alapaneeli"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+#| msgid "_Fullscreen"
+msgid "Fullscreen on / off"
+msgstr "Koko näyttö päällä/pois"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+#| msgid "Show the application's version"
+msgid "Quit the application"
+msgstr "Lopeta sovellus"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+#| msgctxt "label of the find button"
+#| msgid "_Find"
+msgid "Find"
+msgstr "Etsi"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgid "Find the next match"
+msgstr "Etsi seuraava osuma"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+#| msgid "Show the previous page"
+msgid "Find the previous match"
+msgstr "Etsi edellinen osuma"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+#| msgid "_Clear Highlight"
+msgid "Clear highlight"
+msgstr "Tyhjennä korostus"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+#| msgid "_Go to Line…"
+msgid "Go to line"
+msgstr "Siirry riville"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgid "Copy and Paste"
+msgstr "Kopioi ja liitä"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgid "Copy selected text to clipboard"
+msgstr "Kopioi valittu teksti leikepöydälle"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgid "Cut selected text to clipboard"
+msgstr "Leikkaa valittu teksti leikepöydälle"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgid "Paste text from clipboard"
+msgstr "Liitä teksti leikepöydältä"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+#| msgid "Find and Replace"
+msgid "Undo and Redo"
+msgstr "Kumoa ja tee uudelleen"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgid "Undo previous command"
+msgstr "Kumoa edellinen komento"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+#| msgid "Run command"
+msgid "Redo previous command"
+msgstr "Tee uudelleen edellinen komento"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Valinta"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+#| msgid "Select _All"
+msgid "Select all text"
+msgstr "Valitse kaikki teksti"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+#| msgid "Edit"
+msgid "Editing"
+msgstr "Muokkaa"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgid "Toggle insert / overwrite"
+msgstr "Vaihda syötön ja korvauksen välillä"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+#| msgid "Highlight current line"
+msgid "Delete current line"
+msgstr "Poista nykyinen rivi"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+#| msgid "Export selected snippets"
+msgid "Join selected lines"
+msgstr "Yhdistä valitut rivit"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+#| msgid "Current line"
+msgid "Move current line up"
+msgstr "Siirrä nykyinen rivi ylöspäin"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+#| msgid "Current line"
+msgid "Move current line down"
+msgstr "Siirrä nykyinen rivi alaspäin"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+#| msgid "Current word"
+msgid "Move current word left"
+msgstr "Siirrä nykyinen sana vasemmalle"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+#| msgid "Current word"
+msgid "Move current word right"
+msgstr "Siirrä nykyinen sana oikealle"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgid "Convert to uppercase"
+msgstr "Muuta suuriksi kirjaimiksi"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgid "Convert to lowercase"
+msgstr "Muuta pieniksi kirjaimiksi"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+#| msgid "_Ignore case"
+msgid "Invert case"
+msgstr "Käänteinen kirjainkoko"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgid "Increment number at cursor"
+msgstr "Kasvata kohdistettua numeroarvoa"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgid "Decrement number at cursor"
+msgstr "Vähennä kohdistettua numeroarvoa"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+#| msgid "Check Spelling"
+msgid "Check spelling"
+msgstr "Tarkista oikeinkirjoitus\t"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+#| msgid "Current document"
+msgid "Print the document"
+msgstr "Tulosta asiakirja"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgid "Show completion window"
+msgstr "Näytä täydennysikkuna"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
@@ -2403,10 +2629,6 @@ msgstr "A_siakirjan tilastot"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Asiakirja"
-
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
-msgid "Selection"
-msgstr "Valinta"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
@@ -3327,35 +3549,6 @@ msgstr "_Lajittele"
 msgid "Sorts a document or selected text."
 msgstr "Lajittelee asiakirjan tai valitun tekstin."
 
-#. No suggestions. Put something in the menu anyway...
-#. Translators: Displayed in the "Check Spelling"
-#. * dialog if there are no suggestions for the current
-#. * misspelled word.
-#.
-#: ../plugins/spell/gedit-automatic-spell-checker.c:573
-#: ../plugins/spell/gedit-spell-checker-dialog.c:152
-msgid "(no suggested words)"
-msgstr "(ei suositeltavia sanoja)"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:596
-msgid "_More..."
-msgstr "_Lisää…"
-
-#. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:636
-msgid "_Ignore All"
-msgstr "_Ohita kaikki"
-
-#. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:645
-msgid "_Add"
-msgstr "_Lisää"
-
-#. Prepend suggestions
-#: ../plugins/spell/gedit-automatic-spell-checker.c:682
-msgid "_Spelling Suggestions..."
-msgstr "_Kirjoitusehdotuksia…"
-
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "_Tarkista oikeinkirjoitus…"
@@ -3368,116 +3561,7 @@ msgstr "Aseta _kieli…"
 msgid "_Highlight Misspelled Words"
 msgstr "Ko_rosta väärin kirjoitetut sanat"
 
-#: ../plugins/spell/gedit-spell-checker.c:464
-#, c-format
-msgid "Error when checking the spelling of word “%s”: %s"
-msgstr "Virhe sanan ”%s” oikeinkirjoituksen tarkistuksessa: %s"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:237
-msgid "Error:"
-msgstr "Virhe:"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:274
-msgid "Completed spell checking"
-msgstr "Oikoluku on valmis"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:278
-msgid "No misspelled words"
-msgstr "Ei väärinkirjoitettuja sanoja"
-
-#. Translators: Displayed in the "Check
-#. * Spelling" dialog if the current word
-#. * isn't misspelled.
-#.
-#: ../plugins/spell/gedit-spell-checker-dialog.c:508
-msgid "(correct spelling)"
-msgstr "(oikea kirjoitusasu)"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:646
-msgid "Suggestions"
-msgstr "Ehdotukset"
-
-#. Translators: the first %s is the language name, and
-#. * the second %s is the locale name. Example:
-#. * "French (France)"
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:363
-#: ../plugins/spell/gedit-spell-checker-language.c:369
-#, c-format
-msgctxt "language"
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#. Translators: this refers to an unknown language code
-#. * (one which isn't in our built-in list).
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:378
-#, c-format
-msgctxt "language"
-msgid "Unknown (%s)"
-msgstr "Tuntematon (%s)"
-
-#. Translators: this refers the Default language used by the
-#. * spell checker
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:484
-msgctxt "language"
-msgid "Default"
-msgstr "Oletus"
-
 #. ex:set ts=8 noet:
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-msgid "Set Language"
-msgstr "Aseta kieli"
-
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-msgid "Select the _language of the current document."
-msgstr "Valitse _aktiivisen asiakirjan kieli."
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check Spelling"
-msgstr "Tarkista oikeinkirjoitus"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-msgid "Misspelled word:"
-msgstr "Väärinkirjoitettu sana:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
-msgid "word"
-msgstr "sana"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-msgid "Change _to:"
-msgstr "Mihin _muutetaan:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-msgid "Check _Word"
-msgstr "Tarkista _sana"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-msgid "_Suggestions:"
-msgstr "_Ehdotukset:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Ignore _All"
-msgstr "Ohita k_aikki"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-msgid "Cha_nge"
-msgstr "M_uuta"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-msgid "Change A_ll"
-msgstr "Ta_llenna kaikki"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
-msgid "User dictionary:"
-msgstr "Käyttäjän sanakirja:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-msgid "Add w_ord"
-msgstr "Lisää _sana"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Oikoluku"
@@ -3574,6 +3658,90 @@ msgstr "Lisää päiväys/aika"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Lisää päiväys ja aika kohdistimen kohdalle."
 
+#~ msgid "Question"
+#~ msgstr "Kysymys"
+
+#~ msgid "(no suggested words)"
+#~ msgstr "(ei suositeltavia sanoja)"
+
+#~ msgid "_More..."
+#~ msgstr "_Lisää…"
+
+#~ msgid "_Ignore All"
+#~ msgstr "_Ohita kaikki"
+
+#~ msgid "_Add"
+#~ msgstr "_Lisää"
+
+#~ msgid "_Spelling Suggestions..."
+#~ msgstr "_Kirjoitusehdotuksia…"
+
+#~ msgid "Error when checking the spelling of word “%s”: %s"
+#~ msgstr "Virhe sanan ”%s” oikeinkirjoituksen tarkistuksessa: %s"
+
+#~ msgid "Error:"
+#~ msgstr "Virhe:"
+
+#~ msgid "Completed spell checking"
+#~ msgstr "Oikoluku on valmis"
+
+#~ msgid "No misspelled words"
+#~ msgstr "Ei väärinkirjoitettuja sanoja"
+
+#~ msgid "(correct spelling)"
+#~ msgstr "(oikea kirjoitusasu)"
+
+#~ msgid "Suggestions"
+#~ msgstr "Ehdotukset"
+
+#~ msgctxt "language"
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Unknown (%s)"
+#~ msgstr "Tuntematon (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Default"
+#~ msgstr "Oletus"
+
+#~ msgid "Set Language"
+#~ msgstr "Aseta kieli"
+
+#~ msgid "Select the _language of the current document."
+#~ msgstr "Valitse _aktiivisen asiakirjan kieli."
+
+#~ msgid "Misspelled word:"
+#~ msgstr "Väärinkirjoitettu sana:"
+
+#~ msgid "word"
+#~ msgstr "sana"
+
+#~ msgid "Change _to:"
+#~ msgstr "Mihin _muutetaan:"
+
+#~ msgid "Check _Word"
+#~ msgstr "Tarkista _sana"
+
+#~ msgid "_Suggestions:"
+#~ msgstr "_Ehdotukset:"
+
+#~ msgid "Ignore _All"
+#~ msgstr "Ohita k_aikki"
+
+#~ msgid "Cha_nge"
+#~ msgstr "M_uuta"
+
+#~ msgid "Change A_ll"
+#~ msgstr "Ta_llenna kaikki"
+
+#~ msgid "User dictionary:"
+#~ msgstr "Käyttäjän sanakirja:"
+
+#~ msgid "Add w_ord"
+#~ msgstr "Lisää _sana"
+
 #~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 #~ msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
@@ -3613,9 +3781,6 @@ msgstr "Lisää päiväys ja aika kohdistimen kohdalle."
 
 #~ msgid "E_ncodings shown in menu:"
 #~ msgstr "Valikossa _näytettävät koodaustavat:"
-
-#~ msgid "_Ignore case"
-#~ msgstr "_Jätä kirjainkoko huomiotta"
 
 #~ msgid "You cannot undo a sort operation"
 #~ msgstr "Järjestämistä ei voi kumota"
