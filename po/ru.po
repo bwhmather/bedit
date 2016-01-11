@@ -16,24 +16,24 @@
 # Yuri Kozlov <yuray@komyakino.ru>, 2011.
 # Yuri Myasoedov <ymyasoedov@yandex.ru>, 2012, 2013, 2014.
 # Ivan Komaritsyn <vantu5z@mail.ru>, 2015.
-# Stas Solovey <whats_up@tut.by>, 2013, 2015.
+# Stas Solovey <whats_up@tut.by>, 2013, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-17 05:28+0000\n"
-"PO-Revision-Date: 2015-11-14 20:27+0300\n"
-"Last-Translator: Yuri Myasoedov <ymyasoedov@yandex.ru>\n"
-"Language-Team: Русский <gnome-cyr@gnome.org>\n"
+"POT-Creation-Date: 2016-01-09 14:15+0000\n"
+"PO-Revision-Date: 2016-01-12 00:46+0300\n"
+"Last-Translator: Stas Solovey <whats_up@tut.by>\n"
+"Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -275,12 +275,10 @@ msgid "Specifies the position of the right margin."
 msgstr "Указывает положение правой границы."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:36
-#| msgid "Display Right Margin"
 msgid "Display Overview Map"
 msgstr "Показывать обзорную карту"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:37
-#| msgid "Whether gedit should display the right margin in the editing area."
 msgid "Whether gedit should display the overview map for the document."
 msgstr "Определяет отображение обзорной карты для документа."
 
@@ -512,7 +510,6 @@ msgid "The top margin, in millimeters."
 msgstr "Верхняя граница в миллиметрах."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:81
-#| msgid "Move _Right"
 msgid "Margin Right"
 msgstr "Правая граница"
 
@@ -530,7 +527,6 @@ msgstr "Нижняя граница в миллиметрах."
 
 # как переводить Candidate в данном случае не совсем ясно
 #: ../data/org.gnome.gedit.gschema.xml.in.h:85
-#| msgid "Character Encoding:"
 msgid "Candidate Encodings"
 msgstr "Предлагаемые кодировки"
 
@@ -613,23 +609,19 @@ msgstr "[ФАЙЛ…] [+СТРОКА[:СТОЛБЕЦ]]"
 msgid "There was an error displaying the help."
 msgstr "Произошла ошибка при отображении справки."
 
-#: ../gedit/gedit-app.c:972
+#: ../gedit/gedit-app.c:977
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: неверная кодировка."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:155
-msgid "Question"
-msgstr "Вопрос"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:317
+#: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Закрыть _без сохранения"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:318
+#: ../gedit/gedit-close-confirmation-dialog.c:278
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
-#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:853
-#: ../gedit/gedit-commands-file.c:1567 ../gedit/gedit-encodings-dialog.c:194
+#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
+#: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
 #: ../gedit/gedit-io-error-info-bar.c:130
 #: ../gedit/gedit-io-error-info-bar.c:511
 #: ../gedit/gedit-preferences-dialog.c:825
@@ -642,26 +634,25 @@ msgstr "Закрыть _без сохранения"
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_Отмена"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/resources/gtk/menus-default.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus-default.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "_Сохранить как…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/gedit-commands-file.c:854 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/gedit-commands-file.c:855 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "Со_хранить"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -678,13 +669,13 @@ msgstr[2] ""
 "Если не сохранить, изменения за последние %ld секунд будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:373
+#: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Если не сохранить, изменения за последнюю минуту будут безвозвратно утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:379
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -702,7 +693,7 @@ msgstr[2] ""
 "Если не сохранить, изменения за последнюю минуту и %ld секунд будут "
 "безвозвратно утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -719,12 +710,12 @@ msgstr[2] ""
 "Если не сохранить, изменения за последние %ld минут будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:404
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Если не сохранить, изменения за последний час будут безвозвратно утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -742,7 +733,7 @@ msgstr[2] ""
 "Если не сохранить, изменения за последний час и %d минут будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:425
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -755,22 +746,22 @@ msgstr[2] ""
 "Если не сохранить, изменения за последние %d часов будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:469
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Изменения документа «%s» будут безвозвратно утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:474
+#: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Сохранить изменения в документе «%s» перед закрытием?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:489
-#: ../gedit/gedit-close-confirmation-dialog.c:647
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "Сохранение было запрещено системным администратором."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:595
+#: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -778,7 +769,7 @@ msgstr[0] "Изменения в %d документе будут безвозв
 msgstr[1] "Изменения в %d документах будут безвозвратно утеряны."
 msgstr[2] "Изменения в %d документах будут безвозвратно утеряны."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:603
+#: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -793,15 +784,15 @@ msgstr[2] ""
 "%d документов имеют несохранённые изменения. Сохранить изменения перед "
 "закрытием?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:623
+#: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Докум_енты с несохранёнными изменениями:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "_Выберите документы, которые нужно сохранить:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Все несохранённые изменения будут безвозвратно утеряны."
 
@@ -820,7 +811,7 @@ msgstr[2] "Загрузка %d файлов…"
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
-#: ../gedit/resources/ui/gedit-window.ui.h:4
+msgctxt "window title"
 msgid "Open"
 msgstr "Открыть"
 
@@ -880,26 +871,28 @@ msgstr ""
 msgid "_Save As Plain Text"
 msgstr "_Сохранить как обычный текст"
 
-#: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1018
+#: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Сохранение файла «%s»…"
 
-#: ../gedit/gedit-commands-file.c:846
+#. Translators: "Save As" is the title of the file chooser window.
+#: ../gedit/gedit-commands-file.c:847
+msgctxt "window title"
 msgid "Save As"
 msgstr "Сохранить как"
 
-#: ../gedit/gedit-commands-file.c:1428
+#: ../gedit/gedit-commands-file.c:1429
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Восстановление документа «%s»…"
 
-#: ../gedit/gedit-commands-file.c:1475
+#: ../gedit/gedit-commands-file.c:1476
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Восстановить несохранённые изменения в документе «%s»?"
 
-#: ../gedit/gedit-commands-file.c:1484
+#: ../gedit/gedit-commands-file.c:1485
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -916,14 +909,14 @@ msgstr[2] ""
 "Изменения, внесённые в документ за последние %ld секунд, будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-commands-file.c:1493
+#: ../gedit/gedit-commands-file.c:1494
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Изменения, внесённые в документ за последнюю минуту, будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-commands-file.c:1499
+#: ../gedit/gedit-commands-file.c:1500
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -941,7 +934,7 @@ msgstr[2] ""
 "Изменения, внесённые в документ за последние минуту и %ld секунд, будут "
 "безвозвратно утеряны."
 
-#: ../gedit/gedit-commands-file.c:1509
+#: ../gedit/gedit-commands-file.c:1510
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -958,12 +951,12 @@ msgstr[2] ""
 "Изменения, внесённые в документ за последние %ld минут, будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-commands-file.c:1524
+#: ../gedit/gedit-commands-file.c:1525
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Изменения, внесённые в документ за последний час, будут безвозвратно утеряны."
 
-#: ../gedit/gedit-commands-file.c:1530
+#: ../gedit/gedit-commands-file.c:1531
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -981,7 +974,7 @@ msgstr[2] ""
 "Изменения, внесённые в документ за последний час и %d минут, будут "
 "безвозвратно утеряны."
 
-#: ../gedit/gedit-commands-file.c:1545
+#: ../gedit/gedit-commands-file.c:1546
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -996,21 +989,22 @@ msgstr[2] ""
 "Изменения, внесённые в документ за последние %d часов, будут безвозвратно "
 "утеряны."
 
-#: ../gedit/gedit-commands-file.c:1568
+#: ../gedit/gedit-commands-file.c:1569
 msgid "_Revert"
 msgstr "Восста_новить"
 
-#: ../gedit/gedit-commands-help.c:81
+#: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "gedit — небольшой и лёгкий редактор текстов среды рабочего стола GNOME"
 
-#: ../gedit/gedit-commands-help.c:105
+#: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "Alexander Saprykin <xelfium@gmail.com>, 2010.\n"
 "Yuri Kozlov <yuray@komyakino.ru>, 2011.\n"
 "Yuri Myasoedov <omerta13@yandex.ru>, 2012, 2013.\n"
-"Stas Solovey <whats_up@tut.by>, 2012-2015."
+"Stas Solovey <whats_up@tut.by>, 2012-2016.\n"
+"Aleksey Kabanov <ak099@mail.ru>, 2015."
 
 #: ../gedit/gedit-commands-search.c:107
 #, c-format
@@ -1033,16 +1027,16 @@ msgstr "Текст «%s» не найден"
 
 #: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
 #, c-format
-msgid "Unsaved Document %d"
-msgstr "Несохранённый документ %d"
+msgid "Untitled Document %d"
+msgstr "Безымянный документ %d"
 
-#: ../gedit/gedit-documents-panel.c:435
+#: ../gedit/gedit-documents-panel.c:434
 #, c-format
 msgid "Tab Group %i"
 msgstr "Группа вкладок %i"
 
-#: ../gedit/gedit-documents-panel.c:535 ../gedit/gedit-window.c:1167
-#: ../gedit/gedit-window.c:1173 ../gedit/gedit-window.c:1181
+#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
+#: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
 msgid "Read-Only"
 msgstr "Только для чтения"
 
@@ -1063,12 +1057,10 @@ msgstr "Текущая локаль (%s)"
 
 #: ../gedit/gedit-encodings-dialog.c:95
 #, c-format
-#| msgid "Current Locale (%s)"
 msgid "%s (Current Locale)"
 msgstr "%s (Текущая локаль)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
-#| msgid "Unable to detect the character encoding."
 msgid "Do you really want to reset the character encodings' preferences?"
 msgstr "Действительно сбросить настройки кодировок?"
 
@@ -1078,12 +1070,10 @@ msgid "_Reset"
 msgstr "С_бросить"
 
 #: ../gedit/gedit-encodings-dialog.c:731
-#| msgid "_Add"
 msgid "Add"
 msgstr "Добавить"
 
 #: ../gedit/gedit-encodings-dialog.c:774
-#| msgid "_Remove"
 msgid "Remove"
 msgstr "Удалить"
 
@@ -1120,7 +1110,7 @@ msgstr "Кодировка символов:"
 msgid "Line Ending:"
 msgstr "Конец строки:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1251
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1250
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1450,14 +1440,13 @@ msgid "Drop Changes and _Reload"
 msgstr "От_казаться от изменений и перезагрузить"
 
 #: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-default.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 #: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "Пере_загрузить"
 
 #: ../gedit/gedit-io-error-info-bar.c:1187
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "_Игнорировать"
 
@@ -1538,6 +1527,7 @@ msgstr "Ничего"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Найти и заменить"
 
@@ -1695,40 +1685,41 @@ msgstr "Строка, которую нужно найти"
 msgid "Line you want to move the cursor to"
 msgstr "Строка, на которую нужно переместить курсор"
 
-#: ../gedit/gedit-window.c:1004
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match is out of range"
 msgstr "Парная скобка находится вне допустимого предела"
 
-#: ../gedit/gedit-window.c:1009
+#: ../gedit/gedit-window.c:1008
 msgid "Bracket match not found"
 msgstr "Парная скобка не найдена"
 
-#: ../gedit/gedit-window.c:1014
+#: ../gedit/gedit-window.c:1013
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Парная скобка найдена в строке: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1049
+#: ../gedit/gedit-window.c:1048
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Стр %d, Стлб %d"
 
-#: ../gedit/gedit-window.c:1233
+#: ../gedit/gedit-window.c:1232
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Ширина табуляции: %u"
 
-#: ../gedit/gedit-window.c:1602
+#: ../gedit/gedit-window.c:1601
 msgid "There are unsaved documents"
 msgstr "Имеются несохранённые документы"
 
-#: ../gedit/gedit-window.c:2447
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "Изменить страницу боковой панели"
 
-#: ../gedit/gedit-window.c:2467 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Документы"
@@ -1751,8 +1742,8 @@ msgid "Move to New Tab _Group"
 msgstr "Переместить в новую _группу вкладок"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
@@ -1796,93 +1787,100 @@ msgstr "П_араметры"
 #: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
 #: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../plugins/spell/gedit-spell-plugin.c:364
+msgid "_Keyboard Shortcuts"
+msgstr "_Комбинации клавиш"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-osx.ui.h:46
+#: ../plugins/spell/gedit-spell-plugin.c:239
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "_Справка"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_About"
 msgstr "_О программе"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
 msgid "_Quit"
 msgstr "_Завершить"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:7
+#: ../gedit/resources/gtk/menus-default.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
 #: ../gedit/resources/gtk/menus-osx.ui.h:11
 msgid "_Print…"
 msgstr "_Печать…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
+#: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
 #: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "_Полноэкранный режим"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:10
+#: ../gedit/resources/gtk/menus-default.ui.h:11
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Save _All"
 msgstr "Сохранить _всё"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:11
+#: ../gedit/resources/gtk/menus-default.ui.h:12
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
 #: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "_Find…"
 msgstr "_Найти…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:12
+#: ../gedit/resources/gtk/menus-default.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
 msgstr "_Найти и заменить…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:13
+#: ../gedit/resources/gtk/menus-default.ui.h:14
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
 #: ../gedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "О_чистить подсветку"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:14
+#: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
 msgstr "Перейти к _строке…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:15
+#: ../gedit/resources/gtk/menus-default.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/gtk/menus-osx.ui.h:22
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Вид"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:16
+#: ../gedit/resources/gtk/menus-default.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
 #: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "Бо_ковая панель"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:18
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
 #: ../gedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "_Нижняя панель"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
 #: ../gedit/resources/gtk/menus-osx.ui.h:26
 msgid "_Highlight Mode…"
 msgstr "_Режим подсветки синтаксиса…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 #: ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgid "Tools"
 msgstr "Инструменты"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
 #: ../gedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "_Закрыть всё"
@@ -2000,7 +1998,6 @@ msgid "Help"
 msgstr "Справка"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
-#| msgid "Character Encoding:"
 msgid "Character Encodings"
 msgstr "Кодировка символов"
 
@@ -2009,12 +2006,10 @@ msgid "_Apply"
 msgstr "_Применить"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
-#| msgid "A_vailable encodings:"
 msgid "A_vailable Encodings"
 msgstr "_Доступные кодировки"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
-#| msgid "Ch_aracter Encoding:"
 msgid "Cho_sen Encodings"
 msgstr "_Выбранные кодировки"
 
@@ -2031,7 +2026,6 @@ msgid "Highlight Mode"
 msgstr "Режим подсветки синтаксиса"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_Select"
 msgstr "_Выбрать"
 
@@ -2064,12 +2058,10 @@ msgid "Display _statusbar"
 msgstr "Показывать _строку состояния"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
-#| msgid "Display right margin"
 msgid "Display _overview map"
 msgstr "Показывать _обзорную карту"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
-#| msgid "Display right margin"
 msgid "Display _grid pattern"
 msgstr "Показывать с_етку"
 
@@ -2194,12 +2186,12 @@ msgstr "Номера строк"
 msgid "Print line nu_mbers"
 msgstr "Печатать _номера строк"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
 msgid "_Number every"
 msgstr "Печатать н_омера строк каждые"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
 msgid "lines"
 msgstr "строк"
@@ -2328,8 +2320,203 @@ msgid "Search _backwards"
 msgstr "О_братный поиск"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
-msgid "_Wrap around"
+#| msgid "_Wrap around"
+msgid "Wra_p around"
 msgstr "Автоматически пере_ходить к началу документа"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgid "Create a new document in a tab"
+msgstr "Создать новый документ во вкладке"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgid "Open a document"
+msgstr "Открыть документ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgid "Save the document"
+msgstr "Сохранить документ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgid "Save the document with a new filename"
+msgstr "Сохранить документ под другим именем"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgid "Save all the documents"
+msgstr "Сохранить все документы"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgid "Close the document"
+msgstr "Закрыть документ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgid "Close all the documents"
+msgstr "Закрыть все документы"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgid "Reopen the most recently closed document"
+msgstr "Переоткрыть последний закрытый документ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgid "Switch to the next document"
+msgstr "Перейти к следующему документу"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgid "Switch to the previous document"
+msgstr "Перейти к предыдущему документу"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgid "Switch to the first - ninth document"
+msgstr "Перейти к первому - девятому документу"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgid "Windows and Panels"
+msgstr "Окна и панели"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgid "Create a new document in a window"
+msgstr "Создать новый документ в окне"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgid "Create a new tab group"
+msgstr "Создать новую группу вкладок"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgid "Show side panel"
+msgstr "Показать боковую панель"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgid "Show bottom panel"
+msgstr "Показать нижнюю панель"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgid "Fullscreen on / off"
+msgstr "Включить/отключить полноэкранный режим"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgid "Quit the application"
+msgstr "Выйти из приложения"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgid "Find"
+msgstr "Найти"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgid "Find the next match"
+msgstr "Найти следующее совпадение"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgid "Find the previous match"
+msgstr "Найти предыдущее совпадение"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgid "Clear highlight"
+msgstr "Очистить подсветку"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgid "Go to line"
+msgstr "Перейти к строке"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgid "Copy and Paste"
+msgstr "Скопировать и вставить"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgid "Copy selected text to clipboard"
+msgstr "Копировать выделенный текст в буфер обмена"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgid "Cut selected text to clipboard"
+msgstr "Вырезать выделенный текст в буфер обмена"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgid "Paste text from clipboard"
+msgstr "Вставить текст из буфера обмена"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgid "Undo and Redo"
+msgstr "Отмена и повторение"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgid "Undo previous command"
+msgstr "Отменить предыдущую команду"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgid "Redo previous command"
+msgstr "Вернуть предыдущую команду"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Выделение"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgid "Select all text"
+msgstr "Выделить весь текст"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgid "Editing"
+msgstr "Правка"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgid "Toggle insert / overwrite"
+msgstr "Переключить вставку/замену"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgid "Delete current line"
+msgstr "Удалить текущую строку"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgid "Join selected lines"
+msgstr "Соединить выделенные строки"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgid "Move current line up"
+msgstr "Переместить текущую строку вверх"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgid "Move current line down"
+msgstr "Переместить текущую строку вниз"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgid "Move current word left"
+msgstr "Переместить текущее слово влево"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgid "Move current word right"
+msgstr "Переместить текущее слово вправо"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgid "Convert to uppercase"
+msgstr "Преобразовать в верхний регистр"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgid "Convert to lowercase"
+msgstr "Преобразовать в нижний регистр"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgid "Invert case"
+msgstr "Инвертировать регистр"
+
+# можно перевести и как "инкрементировать", но обычный юзер не поймет
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgid "Increment number at cursor"
+msgstr "Увеличить число рядом с курсором"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgid "Decrement number at cursor"
+msgstr "Уменьшить число рядом с курсором"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgid "Check spelling"
+msgstr "Проверить орфографию"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgid "Print the document"
+msgstr "Распечатать документ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgid "Show completion window"
+msgstr "Показать окно дополнения"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
@@ -2338,6 +2525,10 @@ msgstr "Закрыть документ"
 #: ../gedit/resources/ui/gedit-window.ui.h:2
 msgid "Open a file"
 msgstr "Открыть файл"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:4
+msgid "Open"
+msgstr "Открыть"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:5
 msgid "Create a new document"
@@ -2426,10 +2617,6 @@ msgstr "Показать статистику _документа"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Документ"
-
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
-msgid "Selection"
-msgstr "Выделение"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
@@ -3354,35 +3541,6 @@ msgstr "_Упорядочить"
 msgid "Sorts a document or selected text."
 msgstr "Сортирует документ или выделенный текст."
 
-#. No suggestions. Put something in the menu anyway...
-#. Translators: Displayed in the "Check Spelling"
-#. * dialog if there are no suggestions for the current
-#. * misspelled word.
-#.
-#: ../plugins/spell/gedit-automatic-spell-checker.c:573
-#: ../plugins/spell/gedit-spell-checker-dialog.c:152
-msgid "(no suggested words)"
-msgstr "(нет вариантов)"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:596
-msgid "_More..."
-msgstr "Показать бол_ьше…"
-
-#. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:636
-msgid "_Ignore All"
-msgstr "_Игнорировать всё"
-
-#. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:645
-msgid "_Add"
-msgstr "Доб_авить"
-
-#. Prepend suggestions
-#: ../plugins/spell/gedit-automatic-spell-checker.c:682
-msgid "_Spelling Suggestions..."
-msgstr "Возмо_жные варианты…"
-
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "_Проверить орфографию…"
@@ -3395,118 +3553,7 @@ msgstr "Установить _язык…"
 msgid "_Highlight Misspelled Words"
 msgstr "_Подсвечивать слова с ошибками правописания"
 
-#: ../plugins/spell/gedit-spell-checker.c:464
-#, c-format
-msgid "Error when checking the spelling of word “%s”: %s"
-msgstr "Ошибка при проверке орфографии слова «%s»: %s"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:237
-#| msgid "_Error color:"
-msgid "Error:"
-msgstr "Ошибка:"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:274
-msgid "Completed spell checking"
-msgstr "Проверка завершена"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:278
-msgid "No misspelled words"
-msgstr "Нет слов с ошибками"
-
-#. Translators: Displayed in the "Check
-#. * Spelling" dialog if the current word
-#. * isn't misspelled.
-#.
-#: ../plugins/spell/gedit-spell-checker-dialog.c:508
-msgid "(correct spelling)"
-msgstr "(правильное написание)"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:646
-msgid "Suggestions"
-msgstr "Варианты"
-
-#. Translators: the first %s is the language name, and
-#. * the second %s is the locale name. Example:
-#. * "French (France)"
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:363
-#: ../plugins/spell/gedit-spell-checker-language.c:369
-#, c-format
-msgctxt "language"
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#. Translators: this refers to an unknown language code
-#. * (one which isn't in our built-in list).
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:378
-#, c-format
-msgctxt "language"
-msgid "Unknown (%s)"
-msgstr "Неизвестный (%s)"
-
-#. Translators: this refers the Default language used by the
-#. * spell checker
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:484
-msgctxt "language"
-msgid "Default"
-msgstr "По умолчанию"
-
 #. ex:set ts=8 noet:
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-msgid "Set Language"
-msgstr "Установить язык"
-
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-msgid "Select the _language of the current document."
-msgstr "Выбрать _язык текущего документа."
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-#| msgid "Check spelling"
-msgid "Check Spelling"
-msgstr "Проверить орфографию"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-msgid "Misspelled word:"
-msgstr "Слово с ошибкой:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
-msgid "word"
-msgstr "слово"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-msgid "Change _to:"
-msgstr "З_аменить на:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-msgid "Check _Word"
-msgstr "Проверить сл_ово"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-msgid "_Suggestions:"
-msgstr "_Варианты:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Ignore _All"
-msgstr "Игнорировать в_се"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-msgid "Cha_nge"
-msgstr "_Изменить"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-msgid "Change A_ll"
-msgstr "Изменить вс_е"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
-msgid "User dictionary:"
-msgstr "Пользовательский словарь:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-msgid "Add w_ord"
-msgstr "Добавить с_лово"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Проверка орфографии"
@@ -3602,3 +3649,88 @@ msgstr "Вставка даты и времени"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Вставляет текущую дату и время в позиции курсора."
+
+#~ msgid "Question"
+#~ msgstr "Вопрос"
+
+#~ msgid "(no suggested words)"
+#~ msgstr "(нет вариантов)"
+
+#~ msgid "_More..."
+#~ msgstr "Показать бол_ьше…"
+
+#~ msgid "_Ignore All"
+#~ msgstr "_Игнорировать всё"
+
+#~ msgid "_Add"
+#~ msgstr "Доб_авить"
+
+#~ msgid "_Spelling Suggestions..."
+#~ msgstr "Возмо_жные варианты…"
+
+#~ msgid "Error when checking the spelling of word “%s”: %s"
+#~ msgstr "Ошибка при проверке орфографии слова «%s»: %s"
+
+#~| msgid "_Error color:"
+#~ msgid "Error:"
+#~ msgstr "Ошибка:"
+
+#~ msgid "Completed spell checking"
+#~ msgstr "Проверка завершена"
+
+#~ msgid "No misspelled words"
+#~ msgstr "Нет слов с ошибками"
+
+#~ msgid "(correct spelling)"
+#~ msgstr "(правильное написание)"
+
+#~ msgid "Suggestions"
+#~ msgstr "Варианты"
+
+#~ msgctxt "language"
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Unknown (%s)"
+#~ msgstr "Неизвестный (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Default"
+#~ msgstr "По умолчанию"
+
+#~ msgid "Set Language"
+#~ msgstr "Установить язык"
+
+#~ msgid "Select the _language of the current document."
+#~ msgstr "Выбрать _язык текущего документа."
+
+#~ msgid "Misspelled word:"
+#~ msgstr "Слово с ошибкой:"
+
+#~ msgid "word"
+#~ msgstr "слово"
+
+#~ msgid "Change _to:"
+#~ msgstr "З_аменить на:"
+
+#~ msgid "Check _Word"
+#~ msgstr "Проверить сл_ово"
+
+#~ msgid "_Suggestions:"
+#~ msgstr "_Варианты:"
+
+#~ msgid "Ignore _All"
+#~ msgstr "Игнорировать в_се"
+
+#~ msgid "Cha_nge"
+#~ msgstr "_Изменить"
+
+#~ msgid "Change A_ll"
+#~ msgstr "Изменить вс_е"
+
+#~ msgid "User dictionary:"
+#~ msgstr "Пользовательский словарь:"
+
+#~ msgid "Add w_ord"
+#~ msgstr "Добавить с_лово"
