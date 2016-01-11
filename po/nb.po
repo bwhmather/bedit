@@ -1,16 +1,16 @@
 # Norwegian bokmål translation of gedit.
 # Copyright (C) 1998-2004, 2005 Free Software Foundation, Inc.
 #
-# Kjartan Maraas <kmaraas@gnome.org>, 1998-2015.
+# Kjartan Maraas <kmaraas@gnome.org>, 1998-2016.
 # Terance Edward Sola <terance@lyse.net>, 2005.
 # Sigurd Gartmann <sigurd-translate@brogar.org>, 2005.
 # Torstein Adolf Winterseth <kvikende@fsfe.org>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 3.18.x\n"
+"Project-Id-Version: gedit 3.19.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-18 19:00+0200\n"
-"PO-Revision-Date: 2015-10-18 19:01+0200\n"
+"POT-Creation-Date: 2016-01-11 07:43+0100\n"
+"PO-Revision-Date: 2016-01-11 07:52+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -560,11 +560,11 @@ msgstr "KODING"
 
 #: ../gedit/gedit-app.c:131
 msgid "Create a new top-level window in an existing instance of gedit"
-msgstr "Opprett et nytt toppvindu i en eksisterende instans av gedit"
+msgstr "Lag et nytt toppvindu i en eksisterende instans av gedit"
 
 #: ../gedit/gedit-app.c:138
 msgid "Create a new document in an existing instance of gedit"
-msgstr "Opprett et nytt dokument i en eksisterende instans av gedit"
+msgstr "Lag et nytt dokument i en eksisterende instans av gedit"
 
 #: ../gedit/gedit-app.c:145
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
@@ -590,20 +590,16 @@ msgstr "[FIL …] [+LINJE[:KOLONNE]]"
 msgid "There was an error displaying the help."
 msgstr "Det oppsto en feil under visning av hjelp."
 
-#: ../gedit/gedit-app.c:972
+#: ../gedit/gedit-app.c:977
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: ugyldig koding."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:155
-msgid "Question"
-msgstr "Spørsmål"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:317
+#: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Lukk _uten å lagre"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:318
+#: ../gedit/gedit-close-confirmation-dialog.c:278
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
@@ -619,18 +615,17 @@ msgstr "Lukk _uten å lagre"
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "A_vbryt"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/resources/gtk/menus-default.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus-default.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "Lagre _som …"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
+#: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855 ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
@@ -638,7 +633,7 @@ msgstr "Lagre _som …"
 msgid "_Save"
 msgstr "_Lagre"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -650,13 +645,13 @@ msgstr[0] ""
 msgstr[1] ""
 "Hvis du ikke lagrer, går endringer som er utført de siste %ld sekundene tapt."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:373
+#: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Hvis du ikke lagrer, går endringer som er utført det siste minuttet tapt."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:379
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -671,7 +666,7 @@ msgstr[1] ""
 "Hvis du ikke lagrer, går endringer som er utført det siste minuttet og %ld "
 "sekundene tapt."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -683,11 +678,11 @@ msgstr[0] ""
 msgstr[1] ""
 "Hvis du ikke lagrer, går endringer som er utført de siste %ld minuttene tapt."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:404
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr "Hvis du ikke lagrer, går endringer som er utført den siste timen tapt."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -702,7 +697,7 @@ msgstr[1] ""
 "Hvis du ikke lagrer, går endringer som er utført den siste timen og %d "
 "minuttene tapt."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:425
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -713,29 +708,29 @@ msgstr[0] ""
 msgstr[1] ""
 "Hvis du ikke lagrer, går endringer som er utført de siste %d timene tapt."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:469
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Endringer som er utført i «%s» går tapt."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:474
+#: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Vil du lagre endringer i «%s» før programmet lukkes?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:489
-#: ../gedit/gedit-close-confirmation-dialog.c:647
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "Systemadministrator har slått av lagring."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:595
+#: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Endringer som er utført i %d dokument går tapt."
 msgstr[1] "Endringer som er utført i %d dokumenter går tapt."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:603
+#: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -747,15 +742,15 @@ msgstr[1] ""
 "Det finnes %d dokumenter med endringer som ikke er lagret. Vil du lagre "
 "endringer før dokumentene lukkes?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:623
+#: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_enter med endringer som ikke er lagret:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "V_elg hvilke dokumenter du vil lagre:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Hvis du ikke lagrer, går alle endringer tapt."
 
@@ -927,11 +922,11 @@ msgstr[1] "Endringer som er utført i dokumentet de siste %d timene går tapt."
 msgid "_Revert"
 msgstr "Fo_rkast"
 
-#: ../gedit/gedit-commands-help.c:79
+#: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "gedit er en liten og lett tekstbehandler for skrivebordsmiljøet GNOME"
 
-#: ../gedit/gedit-commands-help.c:103
+#: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
@@ -961,13 +956,13 @@ msgstr "Fant ikke «%s»"
 msgid "Untitled Document %d"
 msgstr "Dokument uten tittel %d"
 
-#: ../gedit/gedit-documents-panel.c:435
+#: ../gedit/gedit-documents-panel.c:434
 #, c-format
 msgid "Tab Group %i"
 msgstr "Fanegruppe %i"
 
-#: ../gedit/gedit-documents-panel.c:535 ../gedit/gedit-window.c:1167
-#: ../gedit/gedit-window.c:1173 ../gedit/gedit-window.c:1181
+#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
+#: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
 msgid "Read-Only"
 msgstr "Skrivebeskyttet"
 
@@ -1041,7 +1036,7 @@ msgstr "Tegnkoding:"
 msgid "Line Ending:"
 msgstr "Slutt på linje:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1251
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1250
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1370,14 +1365,13 @@ msgid "Drop Changes and _Reload"
 msgstr "Forkast endringer og åpne på _nytt"
 
 #: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-default.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 #: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_Åpne på nytt"
 
 #: ../gedit/gedit-io-error-info-bar.c:1187
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "_Ignorer"
 
@@ -1461,6 +1455,7 @@ msgstr "Ingenting"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Søk og erstatt …"
 
@@ -1617,40 +1612,41 @@ msgstr "Streng du vil søke etter"
 msgid "Line you want to move the cursor to"
 msgstr "Linje du vil flytte markøren til"
 
-#: ../gedit/gedit-window.c:1004
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match is out of range"
 msgstr "Søk etter sammenhørende hakeparantes utenfor gyldig område"
 
-#: ../gedit/gedit-window.c:1009
+#: ../gedit/gedit-window.c:1008
 msgid "Bracket match not found"
 msgstr "Fant ingen sammenhørende hakeparanteser"
 
-#: ../gedit/gedit-window.c:1014
+#: ../gedit/gedit-window.c:1013
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Sammenhørende hakeparantes funnet på linje: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1049
+#: ../gedit/gedit-window.c:1048
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Ln. %d, Kol. %d"
 
-#: ../gedit/gedit-window.c:1233
+#: ../gedit/gedit-window.c:1232
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Tabulatorbredde: %u"
 
-#: ../gedit/gedit-window.c:1602
+#: ../gedit/gedit-window.c:1601
 msgid "There are unsaved documents"
 msgstr "Det finnes dokumenter som ikke er lagret"
 
-#: ../gedit/gedit-window.c:2447
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "Bytt side på sidepanel"
 
-#: ../gedit/gedit-window.c:2467 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumenter"
@@ -1673,8 +1669,8 @@ msgid "Move to New Tab _Group"
 msgstr "Flytt til ny fane_gruppe"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
@@ -1718,93 +1714,100 @@ msgstr "_Brukervalg"
 #: ../gedit/resources/gtk/menus-default.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
 #: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../plugins/spell/gedit-spell-plugin.c:364
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastatursnarveier"
+
+#: ../gedit/resources/gtk/menus-default.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-osx.ui.h:46
+#: ../plugins/spell/gedit-spell-plugin.c:239
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "_Hjelp"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_About"
 msgstr "_Om"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
 msgid "_Quit"
 msgstr "A_vslutt"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:7
+#: ../gedit/resources/gtk/menus-default.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
 #: ../gedit/resources/gtk/menus-osx.ui.h:11
 msgid "_Print…"
 msgstr "_Skriv ut …"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
+#: ../gedit/resources/gtk/menus-default.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
 #: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "_Fullskjerm"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:10
+#: ../gedit/resources/gtk/menus-default.ui.h:11
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Save _All"
 msgstr "Lagre _alle"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:11
+#: ../gedit/resources/gtk/menus-default.ui.h:12
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
 #: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "_Find…"
 msgstr "_Søk …"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:12
+#: ../gedit/resources/gtk/menus-default.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
 msgstr "_Søk og erstatt …"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:13
+#: ../gedit/resources/gtk/menus-default.ui.h:14
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
 #: ../gedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "_Fjern utheving"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:14
+#: ../gedit/resources/gtk/menus-default.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
 msgstr "Gå til _linje …"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:15
+#: ../gedit/resources/gtk/menus-default.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/gtk/menus-osx.ui.h:22
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Vis"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:16
+#: ../gedit/resources/gtk/menus-default.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
 #: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "Side_panel"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:17
+#: ../gedit/resources/gtk/menus-default.ui.h:18
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
 #: ../gedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "_Bunnpanel"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
 #: ../gedit/resources/gtk/menus-osx.ui.h:26
 msgid "_Highlight Mode…"
 msgstr "Ut_hevingsmodus"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:19
+#: ../gedit/resources/gtk/menus-default.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 #: ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgid "Tools"
 msgstr "Verktøy"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus-default.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
 #: ../gedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "_Lukk alle"
@@ -1950,7 +1953,6 @@ msgid "Highlight Mode"
 msgstr "Uthevingsmodus"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_Select"
 msgstr "_Velg"
 
@@ -2039,7 +2041,7 @@ msgstr "Lagring av fil"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
 msgid "Create a _backup copy of files before saving"
-msgstr "Opprett en _sikkerhetskopi av filene før lagring"
+msgstr "Lag en _sikkerhetskopi av filene før lagring"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
 msgid "_Autosave files every"
@@ -2248,6 +2250,199 @@ msgstr "Søk _bakover"
 msgid "Wra_p around"
 msgstr "_Fortsett når slutt på dokumentet nås"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgid "Create a new document in a tab"
+msgstr "Lag et nytt dokument i en fane"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgid "Open a document"
+msgstr "Åpne et dokument"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgid "Save the document"
+msgstr "Lagre dokumentet"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgid "Save the document with a new filename"
+msgstr "Lagre dokumentet med et nytt filnavn"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgid "Save all the documents"
+msgstr "Lagre alle dokumentene"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgid "Close the document"
+msgstr "Lukk dokumentet"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgid "Close all the documents"
+msgstr "Lukk alle dokumenter"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgid "Reopen the most recently closed document"
+msgstr "Gjenåpne sist lukkede dokument"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgid "Switch to the next document"
+msgstr "Bytt til neste dokument"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgid "Switch to the previous document"
+msgstr "Bytt til forrige dokument"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgid "Switch to the first - ninth document"
+msgstr "Bytt til første til niende dokument"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgid "Windows and Panels"
+msgstr "Vinduer og paneler"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgid "Create a new document in a window"
+msgstr "Lag et nytt dokument i et vindu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgid "Create a new tab group"
+msgstr "Lag en ny fanegruppe"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgid "Show side panel"
+msgstr "Vis sidepanel"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgid "Show bottom panel"
+msgstr "Vis bunnpanel"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgid "Fullscreen on / off"
+msgstr "Fullskjerm av/på"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgid "Quit the application"
+msgstr "Avslutt programmet"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgid "Find"
+msgstr "Søk"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgid "Find the next match"
+msgstr "Finn neste treff"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgid "Find the previous match"
+msgstr "Finn forrige treff"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgid "Clear highlight"
+msgstr "Fjern merking"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgid "Go to line"
+msgstr "Gå til linje"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgid "Copy and Paste"
+msgstr "Kopier og lim inn"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgid "Copy selected text to clipboard"
+msgstr "Kopier valgt tekst til utklippstavlen"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgid "Cut selected text to clipboard"
+msgstr "Klipp ut valgt tekst til utklippstavlen"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgid "Paste text from clipboard"
+msgstr "Lim inn tekst fra utklippstavlen"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgid "Undo and Redo"
+msgstr "Angre og gjenopprett"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgid "Undo previous command"
+msgstr "Angre forrige kommando"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgid "Redo previous command"
+msgstr "Gjenta forrige kommando"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Utvalg"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgid "Select all text"
+msgstr "Velg all tekst"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgid "Editing"
+msgstr "Redigering"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgid "Toggle insert / overwrite"
+msgstr "Bytt mellom sett inn / overskriv"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgid "Delete current line"
+msgstr "Slett denne linjen"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgid "Join selected lines"
+msgstr "Slå sammen valgte linjer"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgid "Move current line up"
+msgstr "Flytt denne linjen opp"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgid "Move current line down"
+msgstr "Flytt denne linjen ned"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgid "Move current word left"
+msgstr "Flytt dette ordet til venstre"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgid "Move current word right"
+msgstr "Flytt dette ordet til høyre"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgid "Convert to uppercase"
+msgstr "Konverter til store bokstaver"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgid "Convert to lowercase"
+msgstr "Konverter til små bokstaver"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgid "Invert case"
+msgstr "Bytt mellom små/store bokstaver"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgid "Increment number at cursor"
+msgstr "Gjør tallet ved markøren høyere"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgid "Decrement number at cursor"
+msgstr "Gjør tallet ved markøren lavere"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgid "Check spelling"
+msgstr "Kontroller staving"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgid "Print the document"
+msgstr "Skriv ut dokumentet"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgid "Show completion window"
+msgstr "Vis kompletteringsvindu"
+
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
 msgstr "Lukk dokument"
@@ -2262,7 +2457,7 @@ msgstr "Åpne"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:5
 msgid "Create a new document"
-msgstr "Opprett et nytt dokument"
+msgstr "Lag et nytt dokument"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:6
 msgid "New"
@@ -2347,10 +2542,6 @@ msgstr "_Dokumentstatistikk"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Dokument"
-
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
-msgid "Selection"
-msgstr "Utvalg"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
@@ -2557,7 +2748,7 @@ msgstr "Vis i nederste felt"
 
 #: ../plugins/externaltools/tools/tools.ui.h:14
 msgid "Create new document"
-msgstr "Opprett nytt dokument"
+msgstr "Lag nytt dokument"
 
 #: ../plugins/externaltools/tools/tools.ui.h:15
 msgid "Append to current document"
@@ -3187,7 +3378,7 @@ msgstr "Håndter tekstblokker"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:2
 msgid "Create new snippet"
-msgstr "Opprett ny tekstblokk"
+msgstr "Lag ny tekstblokk"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:3
 msgid "Add Snippet"
@@ -3268,35 +3459,6 @@ msgstr "_Sorter"
 msgid "Sorts a document or selected text."
 msgstr "Sorter et dokument eller valgt tekst."
 
-#. No suggestions. Put something in the menu anyway...
-#. Translators: Displayed in the "Check Spelling"
-#. * dialog if there are no suggestions for the current
-#. * misspelled word.
-#.
-#: ../plugins/spell/gedit-automatic-spell-checker.c:573
-#: ../plugins/spell/gedit-spell-checker-dialog.c:152
-msgid "(no suggested words)"
-msgstr "(ingen foreslåtte ord)"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:596
-msgid "_More..."
-msgstr "_Mer …"
-
-#. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:636
-msgid "_Ignore All"
-msgstr "_Ignorer alle"
-
-#. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:645
-msgid "_Add"
-msgstr "_Legg til"
-
-#. Prepend suggestions
-#: ../plugins/spell/gedit-automatic-spell-checker.c:682
-msgid "_Spelling Suggestions..."
-msgstr "_Forslag til staving …"
-
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "_Kontroller staving …"
@@ -3309,116 +3471,7 @@ msgstr "Velg _språk …"
 msgid "_Highlight Misspelled Words"
 msgstr "_Uthev feilstavede ord"
 
-#: ../plugins/spell/gedit-spell-checker.c:464
-#, c-format
-msgid "Error when checking the spelling of word “%s”: %s"
-msgstr "Feil ved stavekontroll av ord «%s»: %s"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:237
-msgid "Error:"
-msgstr "Feil:"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:274
-msgid "Completed spell checking"
-msgstr "Stavekontroll fullført"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:278
-msgid "No misspelled words"
-msgstr "Ingen feilstavede ord"
-
-#. Translators: Displayed in the "Check
-#. * Spelling" dialog if the current word
-#. * isn't misspelled.
-#.
-#: ../plugins/spell/gedit-spell-checker-dialog.c:508
-msgid "(correct spelling)"
-msgstr "(korrekt staving)"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:646
-msgid "Suggestions"
-msgstr "Forslag"
-
-#. Translators: the first %s is the language name, and
-#. * the second %s is the locale name. Example:
-#. * "French (France)"
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:363
-#: ../plugins/spell/gedit-spell-checker-language.c:369
-#, c-format
-msgctxt "language"
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#. Translators: this refers to an unknown language code
-#. * (one which isn't in our built-in list).
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:378
-#, c-format
-msgctxt "language"
-msgid "Unknown (%s)"
-msgstr "Ukjent (%s)"
-
-#. Translators: this refers the Default language used by the
-#. * spell checker
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:484
-msgctxt "language"
-msgid "Default"
-msgstr "Forvalgt"
-
 #. ex:set ts=8 noet:
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-msgid "Set Language"
-msgstr "Velg språk"
-
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-msgid "Select the _language of the current document."
-msgstr "Velg _språk for gjeldende dokument."
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check Spelling"
-msgstr "Kontroller staving"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-msgid "Misspelled word:"
-msgstr "Feilstavet ord:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
-msgid "word"
-msgstr "ord"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-msgid "Change _to:"
-msgstr "Endre _til:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-msgid "Check _Word"
-msgstr "Kontroller _ord"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-msgid "_Suggestions:"
-msgstr "_Forslag:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Ignore _All"
-msgstr "Ignorer _alle"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-msgid "Cha_nge"
-msgstr "E_ndre"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-msgid "Change A_ll"
-msgstr "Endre a_lle"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
-msgid "User dictionary:"
-msgstr "Brukerordbok:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-msgid "Add w_ord"
-msgstr "Legg til _ord"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Stavekontroll"
