@@ -2213,14 +2213,20 @@ on_show_popup_menu (GeditMultiNotebook *multi,
 	GtkWidget *menu;
 
 	if (event == NULL)
+	{
 		return;
+	}
 
 	menu = gedit_notebook_popup_menu_new (window, tab);
-	gtk_widget_show (menu);
 
+	g_object_ref_sink (menu);
+
+	gtk_widget_show (menu);
 	gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
 			NULL, NULL,
 			event->button, event->time);
+
+	g_object_unref (menu);
 }
 
 static void
