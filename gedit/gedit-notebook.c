@@ -613,10 +613,21 @@ gedit_notebook_move_tab (GeditNotebook *src,
 	g_return_if_fail (src != dest);
 	g_return_if_fail (GEDIT_IS_TAB (tab));
 
-	/* make sure the tab isn't destroyed while we move it */
+	/* Make sure the tab isn't destroyed while we move it. */
 	g_object_ref (tab);
+
+	/* Make sure the @src notebook isn't destroyed during the tab
+	 * detachment, to prevent a crash in gtk_notebook_detach_tab(). In fact,
+	 * if @tab is the last tab of @src, and if @src is not the last notebook
+	 * of the GeditMultiNotebook, then @src will be destroyed when
+	 * gtk_container_remove() is called by gtk_notebook_detach_tab().
+	 */
+	g_object_ref (src);
 	gtk_notebook_detach_tab (GTK_NOTEBOOK (src), GTK_WIDGET (tab));
+	g_object_unref (src);
+
 	gedit_notebook_add_tab (dest, tab, dest_position, TRUE);
+
 	g_object_unref (tab);
 }
 
