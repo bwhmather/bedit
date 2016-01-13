@@ -473,8 +473,12 @@ show_line_numbers_menu (GeditView      *view,
 
 	gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
 
-	gtk_widget_show_all (menu);
+	g_signal_connect (menu,
+			  "selection-done",
+			  G_CALLBACK (gtk_widget_destroy),
+			  NULL);
 
+	gtk_widget_show_all (menu);
 	gtk_menu_popup (GTK_MENU (menu),
 			NULL,
 			NULL,
