@@ -497,21 +497,28 @@ activate_spell_checking_in_view (GeditSpellPlugin *plugin,
 				 GeditView        *view)
 {
 	GeditDocument *doc;
-	const GspellLanguage *lang;
-	GspellChecker *checker;
 
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
-	lang = get_language_from_metadata (doc);
-	checker = gspell_checker_new (lang);
 
-	g_signal_connect_object (checker,
-				 "notify::language",
-				 G_CALLBACK (language_notify_cb),
-				 doc,
-				 0);
+	/* It is possible that a GspellChecker has already been set, for example
+	 * if a GeditTab has moved to another window.
+	 */
+	if (gspell_text_buffer_get_spell_checker (GTK_TEXT_BUFFER (doc)) == NULL)
+	{
+		const GspellLanguage *lang = get_language_from_metadata (doc);
+		GspellChecker *checker = gspell_checker_new (lang);
 
-	gspell_text_buffer_set_spell_checker (GTK_TEXT_BUFFER (doc), checker);
-	g_object_unref (checker);
+		g_signal_connect_object (checker,
+					 "notify::language",
+					 G_CALLBACK (language_notify_cb),
+					 doc,
+					 0);
+
+		gspell_text_buffer_set_spell_checker (GTK_TEXT_BUFFER (doc), checker);
+		g_object_unref (checker);
+
+		setup_inline_checker_from_metadata (plugin, view);
+	}
 
 	g_signal_connect_object (doc,
 				 "loaded",
@@ -524,8 +531,24 @@ activate_spell_checking_in_view (GeditSpellPlugin *plugin,
 				 G_CALLBACK (on_document_saved),
 				 plugin,
 				 0);
+}
 
-	setup_inline_checker_from_metadata (plugin, view);
+static void
+disconnect_view (GeditSpellPlugin *plugin,
+		 GeditView        *view)
+{
+	GtkTextBuffer *buffer;
+
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+
+	/* It should still be the same buffer as the one where the signal
+	 * handlers were connected. If not, we assume that the old buffer is
+	 * finalized. And it is anyway safe to call
+	 * g_signal_handlers_disconnect_by_func() if no signal handlers are
+	 * found.
+	 */
+	g_signal_handlers_disconnect_by_func (buffer, on_document_loaded, plugin);
+	g_signal_handlers_disconnect_by_func (buffer, on_document_saved, plugin);
 }
 
 static void
@@ -535,11 +558,10 @@ deactivate_spell_checking_in_view (GeditSpellPlugin *plugin,
 	GtkTextBuffer *buffer;
 	GspellInlineCheckerText *inline_checker;
 
+	disconnect_view (plugin, view);
+
 	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
 	gspell_text_buffer_set_spell_checker (buffer, NULL);
-
-	g_signal_handlers_disconnect_by_func (buffer, on_document_loaded, plugin);
-	g_signal_handlers_disconnect_by_func (buffer, on_document_saved, plugin);
 
 	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
 	gspell_inline_checker_text_set_enabled (inline_checker, FALSE);
@@ -551,6 +573,19 @@ tab_added_cb (GeditWindow      *window,
 	      GeditSpellPlugin *plugin)
 {
 	activate_spell_checking_in_view (plugin, gedit_tab_get_view (tab));
+}
+
+static void
+tab_removed_cb (GeditWindow      *window,
+		GeditTab         *tab,
+		GeditSpellPlugin *plugin)
+{
+	/* Don't deactivate completely the spell checking in @tab, since the tab
+	 * can be moved to another window and we don't want to loose the spell
+	 * checking settings (they are not saved in metadata for unsaved
+	 * documents).
+	 */
+	disconnect_view (plugin, gedit_tab_get_view (tab));
 }
 
 static void
@@ -594,6 +629,11 @@ gedit_spell_plugin_activate (GeditWindowActivatable *activatable)
 			  "tab-added",
 			  G_CALLBACK (tab_added_cb),
 			  activatable);
+
+	g_signal_connect (priv->window,
+			  "tab-removed",
+			  G_CALLBACK (tab_removed_cb),
+			  activatable);
 }
 
 static void
@@ -614,6 +654,7 @@ gedit_spell_plugin_deactivate (GeditWindowActivatable *activatable)
 	g_action_map_remove_action (G_ACTION_MAP (priv->window), "inline-spell-checker");
 
 	g_signal_handlers_disconnect_by_func (priv->window, tab_added_cb, activatable);
+	g_signal_handlers_disconnect_by_func (priv->window, tab_removed_cb, activatable);
 
 	views = gedit_window_get_views (priv->window);
 	for (l = views; l != NULL; l = l->next)
