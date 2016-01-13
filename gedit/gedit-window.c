@@ -2331,7 +2331,6 @@ side_panel_visibility_changed (GtkWidget   *panel,
 {
 	gboolean visible;
 	GAction *action;
-	GtkStyleContext *context;
 	gchar *layout_desc;
 
 	visible = gtk_widget_get_visible (panel);
@@ -2345,7 +2344,6 @@ side_panel_visibility_changed (GtkWidget   *panel,
 	g_simple_action_set_state (G_SIMPLE_ACTION (action), g_variant_new_boolean (visible));
 
 	/* focus the right widget and set the right styles */
-	context = gtk_widget_get_style_context (window->priv->headerbar);
 	if (visible)
 	{
 		gtk_widget_grab_focus (window->priv->side_panel);
