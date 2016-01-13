@@ -910,6 +910,11 @@ search_entry_icon_release (GtkEntry             *entry,
 	setup_popup_menu (frame, menu);
 	add_popup_menu_items (frame, menu);
 
+	g_signal_connect (menu,
+			  "selection-done",
+			  G_CALLBACK (gtk_widget_destroy),
+			  NULL);
+
 	gtk_menu_popup (GTK_MENU (menu),
 	                NULL, NULL,
 	                gedit_utils_menu_position_under_widget, entry,
