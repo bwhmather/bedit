@@ -1536,7 +1536,10 @@ row_on_button_pressed (GtkWidget      *row_event_box,
 			GeditTab *tab = GEDIT_TAB (document_row->ref);
 			GtkWidget *menu = gedit_notebook_popup_menu_new (window, tab);
 
-			g_object_ref_sink (menu);
+			g_signal_connect (menu,
+					  "selection-done",
+					  G_CALLBACK (gtk_widget_destroy),
+					  NULL);
 
 			gtk_menu_popup_for_device (GTK_MENU (menu),
 			                           gdk_event_get_device ((GdkEvent *)event),
@@ -1544,8 +1547,6 @@ row_on_button_pressed (GtkWidget      *row_event_box,
 			                           NULL, NULL, NULL,
 			                           event->button,
 			                           event->time);
-
-			g_object_unref (menu);
 
 			return TRUE;
 		}

@@ -2219,14 +2219,15 @@ on_show_popup_menu (GeditMultiNotebook *multi,
 
 	menu = gedit_notebook_popup_menu_new (window, tab);
 
-	g_object_ref_sink (menu);
+	g_signal_connect (menu,
+			  "selection-done",
+			  G_CALLBACK (gtk_widget_destroy),
+			  NULL);
 
 	gtk_widget_show (menu);
 	gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
 			NULL, NULL,
 			event->button, event->time);
-
-	g_object_unref (menu);
 }
 
 static void
