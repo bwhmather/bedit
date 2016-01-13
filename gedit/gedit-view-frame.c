@@ -105,6 +105,25 @@ get_document (GeditViewFrame *frame)
 }
 
 static void
+get_iter_at_start_mark (GeditViewFrame *frame,
+			GtkTextIter    *iter)
+{
+	GtkTextBuffer *buffer;
+
+	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->view));
+
+	if (frame->start_mark != NULL)
+	{
+		gtk_text_buffer_get_iter_at_mark (buffer, iter, frame->start_mark);
+	}
+	else
+	{
+		g_warn_if_reached ();
+		gtk_text_buffer_get_start_iter (buffer, iter);
+	}
+}
+
+static void
 gedit_view_frame_dispose (GObject *object)
 {
 	GeditViewFrame *frame = GEDIT_VIEW_FRAME (object);
@@ -337,9 +356,8 @@ start_search_finished (GtkSourceSearchContext *search_context,
 static void
 start_search (GeditViewFrame *frame)
 {
-	GtkTextIter start_at;
-	GtkTextBuffer *buffer;
 	GtkSourceSearchContext *search_context;
+	GtkTextIter start_at;
 
 	g_return_if_fail (frame->search_mode == SEARCH);
 
@@ -350,11 +368,7 @@ start_search (GeditViewFrame *frame)
 		return;
 	}
 
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->view));
-
-	gtk_text_buffer_get_iter_at_mark (buffer,
-					  &start_at,
-					  frame->start_mark);
+	get_iter_at_start_mark (frame, &start_at);
 
 	gtk_source_search_context_forward_async (search_context,
 						 &start_at,
@@ -1056,11 +1070,7 @@ update_goto_line (GeditViewFrame *frame)
 		return;
 	}
 
-	doc = get_document (frame);
-
-	gtk_text_buffer_get_iter_at_mark (GTK_TEXT_BUFFER (doc),
-					  &iter,
-					  frame->start_mark);
+	get_iter_at_start_mark (frame, &iter);
 
 	split_text = g_strsplit (entry_text, ":", -1);
 
@@ -1107,6 +1117,7 @@ update_goto_line (GeditViewFrame *frame)
 
 	g_strfreev (split_text);
 
+	doc = get_document (frame);
 	moved = gedit_document_goto_line (doc, line);
 	moved_offset = gedit_document_goto_line_offset (doc, line, line_offset);
 
@@ -1200,17 +1211,13 @@ get_selected_text (GtkTextBuffer  *doc,
 static void
 init_search_entry (GeditViewFrame *frame)
 {
-	GtkTextBuffer *buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->view));
-
 	if (frame->search_mode == GOTO_LINE)
 	{
 		gint line;
 		gchar *line_str;
 		GtkTextIter iter;
 
-		gtk_text_buffer_get_iter_at_mark (buffer,
-		                                  &iter,
-		                                  frame->start_mark);
+		get_iter_at_start_mark (frame, &iter);
 
 		line = gtk_text_iter_get_line (&iter);
 
@@ -1226,6 +1233,7 @@ init_search_entry (GeditViewFrame *frame)
 	else
 	{
 		/* SEARCH mode */
+		GtkTextBuffer *buffer;
 		gboolean selection_exists;
 		gchar *search_text = NULL;
 		gint selection_len = 0;
@@ -1247,6 +1255,8 @@ init_search_entry (GeditViewFrame *frame)
 		{
 			frame->old_search_text = g_strdup (frame->search_text);
 		}
+
+		buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (frame->view));
 
 		search_context = get_search_context (frame);
 
