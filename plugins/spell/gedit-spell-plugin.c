@@ -172,7 +172,7 @@ check_spell_cb (GSimpleAction *action,
 	view = gedit_window_get_active_view (priv->window);
 	g_return_if_fail (view != NULL);
 
-	navigator = gspell_navigator_gtv_new (GTK_TEXT_VIEW (view));
+	navigator = gspell_navigator_text_new (GTK_TEXT_VIEW (view));
 	dialog = gspell_checker_dialog_new (GTK_WINDOW (priv->window), navigator);
 	g_object_unref (navigator);
 
