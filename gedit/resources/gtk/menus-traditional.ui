@@ -10,6 +10,7 @@
           <item>
             <attribute name="label" translatable="yes" comments="_New is the menu item under the File menu on OS X which creates a new empty document.">_New</attribute>
             <attribute name="action">win.new-tab</attribute>
+            <attribute name="accel">&lt;Primary&gt;T</attribute>
           </item>
         </section>
         <section>
@@ -18,6 +19,7 @@
             <attribute name="label" translatable="yes">_Open</attribute>
             <attribute name="action">win.open</attribute>
             <attribute name="hidden-when">action-disabled</attribute>
+            <attribute name="accel">&lt;Primary&gt;O</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">_Open</attribute>
@@ -30,6 +32,7 @@
               <item>
                 <attribute name="label" translatable="yes">Reopen Closed _Tab</attribute>
                 <attribute name="action">win.reopen-closed-tab</attribute>
+                <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;T</attribute>
               </item>
             </section>
             <section>
@@ -42,10 +45,12 @@
           <item>
             <attribute name="label" translatable="yes">_Save</attribute>
             <attribute name="action">win.save</attribute>
+            <attribute name="accel">&lt;Primary&gt;S</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">Save _As…</attribute>
             <attribute name="action">win.save-as</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;S</attribute>
           </item>
         </section>
         <section>
@@ -53,6 +58,7 @@
           <item>
             <attribute name="label" translatable="yes">_New Window</attribute>
             <attribute name="action">app.new-window</attribute>
+            <attribute name="accel">&lt;Primary&gt;N</attribute>
           </item>
         </section>
         <section>
@@ -67,6 +73,7 @@
           <item>
             <attribute name="label" translatable="yes">_Print…</attribute>
             <attribute name="action">win.print</attribute>
+            <attribute name="accel">&lt;Primary&gt;P</attribute>
           </item>
         </section>
         <section>
@@ -74,11 +81,13 @@
           <item>
             <attribute name="label" translatable="yes">_Close</attribute>
             <attribute name="action">win.close</attribute>
+            <attribute name="accel">&lt;Primary&gt;W</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">_Quit</attribute>
             <attribute name="hidden-when">macos-menubar</attribute>
             <attribute name="action">app.quit</attribute>
+            <attribute name="accel">&lt;Primary&gt;Q</attribute>
           </item>
         </section>
       </submenu>
@@ -89,28 +98,34 @@
           <item>
             <attribute name="label" translatable="yes">_Undo</attribute>
             <attribute name="action">win.undo</attribute>
+            <attribute name="accel">&lt;Primary&gt;Z</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">_Redo</attribute>
             <attribute name="action">win.redo</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;Z</attribute>
           </item>
         </section>
         <section>
           <item>
             <attribute name="label" translatable="yes">C_ut</attribute>
             <attribute name="action">win.cut</attribute>
+            <attribute name="accel">&lt;Primary&gt;X</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">_Copy</attribute>
             <attribute name="action">win.copy</attribute>
+            <attribute name="accel">&lt;Primary&gt;C</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">_Paste</attribute>
             <attribute name="action">win.paste</attribute>
+            <attribute name="accel">&lt;Primary&gt;V</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">_Delete</attribute>
             <attribute name="action">win.delete</attribute>
+            <attribute name="accel">Delete</attribute>
           </item>
         </section>
         <section>
@@ -118,6 +133,7 @@
           <item>
             <attribute name="label" translatable="yes">Overwrite _Mode</attribute>
             <attribute name="action">win.overwrite-mode</attribute>
+            <attribute name="accel">Insert</attribute>
           </item>
         </section>
         <section>
@@ -125,6 +141,7 @@
           <item>
             <attribute name="label" translatable="yes">Select _All</attribute>
             <attribute name="action">win.select-all</attribute>
+            <attribute name="accel">&lt;Primary&gt;A</attribute>
           </item>
         </section>
         <section>
@@ -142,11 +159,13 @@
           <item>
             <attribute name="label" translatable="yes">Side _Panel</attribute>
             <attribute name="action">win.side-panel</attribute>
+            <attribute name="accel">F9</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">_Bottom Panel</attribute>
             <attribute name="action">win.bottom-panel</attribute>
             <attribute name="hidden-when">action-disabled</attribute>
+            <attribute name="accel">&lt;Primary&gt;F9</attribute>
           </item>
         </section>
         <section>
@@ -154,6 +173,7 @@
           <item>
             <attribute name="label" translatable="yes">_Fullscreen</attribute>
             <attribute name="action">win.fullscreen</attribute>
+            <attribute name="accel">F11</attribute>
           </item>
         </section>
         <section>
@@ -171,14 +191,17 @@
           <item>
             <attribute name="label" translatable="yes">_Find…</attribute>
             <attribute name="action">win.find</attribute>
+            <attribute name="accel">&lt;Primary&gt;F</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">Find Ne_xt</attribute>
             <attribute name="action">win.find-next</attribute>
+            <attribute name="accel">&lt;Primary&gt;G</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">Find Pre_vious</attribute>
             <attribute name="action">win.find-prev</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;G</attribute>
           </item>
         </section>
         <section>
@@ -186,6 +209,7 @@
           <item>
             <attribute name="label" translatable="yes">Find and _Replace…</attribute>
             <attribute name="action">win.replace</attribute>
+            <attribute name="accel">&lt;Primary&gt;H</attribute>
           </item>
         </section>
         <section>
@@ -193,6 +217,7 @@
           <item>
             <attribute name="label" translatable="yes">_Clear Highlight</attribute>
             <attribute name="action">win.clear-highlight</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;K</attribute>
           </item>
         </section>
         <section>
@@ -200,6 +225,7 @@
           <item>
             <attribute name="label" translatable="yes">Go to _Line…</attribute>
             <attribute name="action">win.goto-line</attribute>
+            <attribute name="accel">&lt;Primary&gt;I</attribute>
           </item>
         </section>
       </submenu>
@@ -225,10 +251,12 @@
           <item>
             <attribute name="label" translatable="yes">_Save All</attribute>
             <attribute name="action">win.save-all</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;L</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">_Close All</attribute>
             <attribute name="action">win.close-all</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;W</attribute>
           </item>
         </section>
         <section>
@@ -236,14 +264,17 @@
           <item>
             <attribute name="label" translatable="yes">_New Tab Group</attribute>
             <attribute name="action">win.new-tab-group</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Alt&gt;N</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">P_revious Tab Group</attribute>
             <attribute name="action">win.previous-tab-group</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Page_Up</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">Nex_t Tab Group</attribute>
             <attribute name="action">win.next-tab-group</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Page_Down</attribute>
           </item>
         </section>
         <section>
@@ -251,10 +282,12 @@
           <item>
             <attribute name="label" translatable="yes">_Previous Document</attribute>
             <attribute name="action">win.previous-document</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Alt&gt;Page_Up</attribute>
           </item>
           <item>
             <attribute name="label" translatable="yes">N_ext Document</attribute>
             <attribute name="action">win.next-document</attribute>
+            <attribute name="accel">&lt;Primary&gt;&lt;Alt&gt;Page_Down</attribute>
           </item>
         </section>
         <section>
@@ -272,6 +305,7 @@
           <item>
             <attribute name="label" translatable="yes">_Help</attribute>
             <attribute name="action">app.help</attribute>
+            <attribute name="accel">F1</attribute>
           </item>
         </section>
         <section>
