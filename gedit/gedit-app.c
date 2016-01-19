@@ -74,7 +74,7 @@ typedef struct
 	GSettings         *ui_settings;
 	GSettings         *window_settings;
 
-	GMenuModel        *gear_menu;
+	GMenuModel        *hamburger_menu;
 	GMenuModel        *notebook_menu;
 	GMenuModel        *tab_width_menu;
 	GMenuModel        *line_col_menu;
@@ -199,7 +199,7 @@ gedit_app_dispose (GObject *object)
 		g_clear_object (&priv->theme_provider);
 	}
 
-	g_clear_object (&priv->gear_menu);
+	g_clear_object (&priv->hamburger_menu);
 	g_clear_object (&priv->notebook_menu);
 	g_clear_object (&priv->tab_width_menu);
 	g_clear_object (&priv->line_col_menu);
@@ -797,7 +797,7 @@ gedit_app_startup (GApplication *application)
 	                                 application);
 
 	/* menus */
-	priv->gear_menu = get_menu_model (GEDIT_APP (application), "gear-menu");
+	priv->hamburger_menu = get_menu_model (GEDIT_APP (application), "hamburger-menu");
 	priv->notebook_menu = get_menu_model (GEDIT_APP (application), "notebook-menu");
 	priv->tab_width_menu = get_menu_model (GEDIT_APP (application), "tab-width-menu");
 	priv->line_col_menu = get_menu_model (GEDIT_APP (application), "line-col-menu");
@@ -807,7 +807,7 @@ gedit_app_startup (GApplication *application)
 	add_accelerator (GTK_APPLICATION (application), "app.quit", "<Primary>Q");
 	add_accelerator (GTK_APPLICATION (application), "app.help", "F1");
 
-	add_accelerator (GTK_APPLICATION (application), "win.gear-menu", "F10");
+	add_accelerator (GTK_APPLICATION (application), "win.hamburger-menu", "F10");
 	add_accelerator (GTK_APPLICATION (application), "win.open", "<Primary>O");
 	add_accelerator (GTK_APPLICATION (application), "win.save", "<Primary>S");
 	add_accelerator (GTK_APPLICATION (application), "win.save-as", "<Primary><Shift>S");
@@ -1871,7 +1871,7 @@ _gedit_app_get_settings (GeditApp *app)
 }
 
 GMenuModel *
-_gedit_app_get_gear_menu (GeditApp *app)
+_gedit_app_get_hamburger_menu (GeditApp *app)
 {
 	GeditAppPrivate *priv;
 
@@ -1879,7 +1879,7 @@ _gedit_app_get_gear_menu (GeditApp *app)
 
 	priv = gedit_app_get_instance_private (app);
 
-	return priv->gear_menu;
+	return priv->hamburger_menu;
 }
 
 GMenuModel *
@@ -1932,9 +1932,9 @@ _gedit_app_extend_menu (GeditApp    *app,
 	priv = gedit_app_get_instance_private (app);
 
 	/* First look in the gear or window menu */
-	if (priv->gear_menu)
+	if (priv->hamburger_menu)
 	{
-		model = priv->gear_menu;
+		model = priv->hamburger_menu;
 	}
 	else
 	{

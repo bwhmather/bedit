@@ -50,7 +50,7 @@ void			 _gedit_app_set_default_print_settings	(GeditApp         *app,
 
 GeditSettings		*_gedit_app_get_settings		(GeditApp  *app);
 
-GMenuModel		*_gedit_app_get_gear_menu		(GeditApp  *app);
+GMenuModel		*_gedit_app_get_hamburger_menu		(GeditApp  *app);
 
 GMenuModel		*_gedit_app_get_notebook_menu		(GeditApp  *app);
 

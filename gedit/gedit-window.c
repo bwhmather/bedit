@@ -1811,16 +1811,16 @@ static gboolean
 real_fullscreen_controls_leave_notify_event (gpointer data)
 {
 	GeditWindow *window = GEDIT_WINDOW (data);
-	gboolean gear_menu_state;
+	gboolean hamburger_menu_state;
 	gboolean fullscreen_open_button_state;
 
-	gear_menu_state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button));
+	hamburger_menu_state = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_gear_button));
 	fullscreen_open_button_state =
 	                  gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (window->priv->fullscreen_open_button));
 
 	window->priv->in_fullscreen_eventbox = FALSE;
 
-	if (!gear_menu_state && !fullscreen_open_button_state)
+	if (!hamburger_menu_state && !fullscreen_open_button_state)
 	{
 		gtk_revealer_set_reveal_child (GTK_REVEALER (window->priv->fullscreen_controls), FALSE);
 	}
@@ -2738,8 +2738,8 @@ sync_fullscreen_actions (GeditWindow *window,
 	GPropertyAction *action;
 
 	button = fullscreen ? window->priv->fullscreen_gear_button : window->priv->gear_button;
-	g_action_map_remove_action (G_ACTION_MAP (window), "gear-menu");
-	action = g_property_action_new ("gear-menu", button, "active");
+	g_action_map_remove_action (G_ACTION_MAP (window), "hamburger-menu");
+	action = g_property_action_new ("hamburger-menu", button, "active");
 	g_action_map_add_action (G_ACTION_MAP (window), G_ACTION (action));
 	g_object_unref (action);
 }
@@ -2748,7 +2748,7 @@ static void
 gedit_window_init (GeditWindow *window)
 {
 	GtkTargetList *tl;
-	GMenuModel *gear_menu;
+	GMenuModel *hamburger_menu;
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -2807,11 +2807,11 @@ gedit_window_init (GeditWindow *window)
 	                        "text",
 	                        G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
-	gear_menu = _gedit_app_get_gear_menu (GEDIT_APP (g_application_get_default ()));
-	if (gear_menu)
+	hamburger_menu = _gedit_app_get_hamburger_menu (GEDIT_APP (g_application_get_default ()));
+	if (hamburger_menu)
 	{
-		gtk_menu_button_set_menu_model (window->priv->gear_button, gear_menu);
-		gtk_menu_button_set_menu_model (window->priv->fullscreen_gear_button, gear_menu);
+		gtk_menu_button_set_menu_model (window->priv->gear_button, hamburger_menu);
+		gtk_menu_button_set_menu_model (window->priv->fullscreen_gear_button, hamburger_menu);
 	}
 	else
 	{

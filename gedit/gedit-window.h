@@ -138,13 +138,13 @@ GeditTab        *gedit_window_get_tab_from_location	(GeditWindow         *window
 /* Message bus */
 GeditMessageBus	*gedit_window_get_message_bus		(GeditWindow         *window);
 
-GMenuModel       *_gedit_window_get_gear_menu           (GeditWindow         *window);
-
 /*
  * Non exported functions
  */
 GtkWidget	*_gedit_window_get_multi_notebook	(GeditWindow         *window);
 GtkWidget	*_gedit_window_get_notebook		(GeditWindow         *window);
+
+GMenuModel	*_gedit_window_get_hamburger_menu	(GeditWindow         *window);
 
 GeditWindow	*_gedit_window_move_tab_to_new_window	(GeditWindow         *window,
 							 GeditTab            *tab);
