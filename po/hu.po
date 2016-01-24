@@ -8,7 +8,7 @@
 # Andras Timar <timar at gnome dot hu>, 2001, 2002, 2003.
 # Gabor Sari <saga at gnome dot hu>, 2003.
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016.
 # Mate Ory <orymate at gmail dot com>, 2006, 2007, 2008.
 # Balázs Úr <urbalazs at gmail dot com>, 2013, 2014, 2015.
 msgid ""
@@ -16,16 +16,16 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-08-31 05:24+0000\n"
-"PO-Revision-Date: 2015-08-31 18:05+0200\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"POT-Creation-Date: 2016-01-19 20:46+0000\n"
+"PO-Revision-Date: 2016-01-24 20:20+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -51,34 +51,30 @@ msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
 msgstr ""
-"Rugalmas bővítményrendszere lehetővé teszi az alkalmazás személyre szabását "
+"Rugalmas bővítményrendszere lehetővé teszi az alkalmazás személyre szabását, "
 "és a munkafolyamatához igazítását."
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1
-msgid "gedit"
-msgstr "gedit"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:728
+#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Szövegszerkesztő"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:3
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
 msgid "Edit text files"
 msgstr "Szövegfájlok szerkesztése"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
+#: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "gedit szövegszerkesztő"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:5
+#: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "Text;Editor;"
 msgstr "Szöveg;Szerkesztő;"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:6
+#: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "Open a New Window"
 msgstr "Új ablak megnyitása"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:7
+#: ../data/org.gnome.gedit.desktop.in.in.h:6
 msgid "Open a New Document"
 msgstr "Új dokumentum megnyitása"
 
@@ -269,12 +265,10 @@ msgid "Specifies the position of the right margin."
 msgstr "Jobb oldali margó pozíciójának megadása."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:36
-#| msgid "Display Right Margin"
 msgid "Display Overview Map"
 msgstr "Áttekintő térkép megjelenítése"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:37
-#| msgid "Whether gedit should display the right margin in the editing area."
 msgid "Whether gedit should display the overview map for the document."
 msgstr "Meg legyen-e jelenítve az áttekintő térkép a dokumentumhoz."
 
@@ -554,15 +548,15 @@ msgstr ""
 "tartalmazza. Lásd a .gedit-plugin fájlt az adott bővítményhez tartozó "
 "„Location” értékért."
 
-#: ../gedit/gedit-app.c:109
+#: ../gedit/gedit-app.c:111
 msgid "Show the application's version"
 msgstr "Az alkalmazás verziószámának megjelenítése"
 
-#: ../gedit/gedit-app.c:115
+#: ../gedit/gedit-app.c:117
 msgid "Display list of possible values for the encoding option"
 msgstr "A kódolás beállításhoz használható értékek listájának megjelenítése"
 
-#: ../gedit/gedit-app.c:122
+#: ../gedit/gedit-app.c:124
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -570,63 +564,59 @@ msgstr ""
 "A parancssorban felsorolt fájlok megnyitásához használandó karakterkódolás "
 "beállítása"
 
-#: ../gedit/gedit-app.c:123
+#: ../gedit/gedit-app.c:125
 msgid "ENCODING"
 msgstr "KÓDOLÁS"
 
-#: ../gedit/gedit-app.c:129
+#: ../gedit/gedit-app.c:131
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Új felső szintű ablak létrehozása a gedit egy már futó példányában"
 
-#: ../gedit/gedit-app.c:136
+#: ../gedit/gedit-app.c:138
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Új dokumentum létrehozása egy már megnyitott gedit példányban"
 
-#: ../gedit/gedit-app.c:143
+#: ../gedit/gedit-app.c:145
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 msgstr "Az ablak méretének és helyének beállítása (SZÉLESSÉGxMAGASSÁG+X+Y)"
 
-#: ../gedit/gedit-app.c:144
+#: ../gedit/gedit-app.c:146
 msgid "GEOMETRY"
 msgstr "GEOMETRIA"
 
-#: ../gedit/gedit-app.c:150
+#: ../gedit/gedit-app.c:152
 msgid "Open files and block process until files are closed"
 msgstr "Fájlok megnyitása, és a folytatás blokkolása a fájlok bezárásáig"
 
-#: ../gedit/gedit-app.c:157
+#: ../gedit/gedit-app.c:159
 msgid "Run gedit in standalone mode"
 msgstr "A gedit futtatása önálló módban"
 
-#: ../gedit/gedit-app.c:164
+#: ../gedit/gedit-app.c:166
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FÁJL…] [+SOR[:OSZLOP]]"
 
-#: ../gedit/gedit-app.c:279
+#: ../gedit/gedit-app.c:281
 msgid "There was an error displaying the help."
 msgstr "Hiba történt a súgó megjelenítése közben."
 
-#: ../gedit/gedit-app.c:970
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: érvénytelen kódolás."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:153
-msgid "Question"
-msgstr "Kérdés"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:317
+#: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Bezárás mentés _nélkül"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:318
+#: ../gedit/gedit-close-confirmation-dialog.c:278
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
-#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:853
-#: ../gedit/gedit-commands-file.c:1567 ../gedit/gedit-encodings-dialog.c:194
+#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
+#: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
 #: ../gedit/gedit-io-error-info-bar.c:130
 #: ../gedit/gedit-io-error-info-bar.c:511
 #: ../gedit/gedit-preferences-dialog.c:825
-#: ../gedit/gedit-progress-info-bar.c:44
+#: ../gedit/gedit-progress-info-bar.c:49
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
@@ -635,26 +625,25 @@ msgstr "Bezárás mentés _nélkül"
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "Mé_gse"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/resources/gtk/menus-default.ui.h:9
-#: ../gedit/resources/gtk/menus-traditional.ui.h:4
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus.ui.h:10
 msgid "_Save As…"
 msgstr "M_entés másként…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/gedit-commands-file.c:854 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/gedit-commands-file.c:855
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "M_entés"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -668,14 +657,14 @@ msgstr[1] ""
 "Ha nem menti, akkor az elmúlt %ld másodpercben történt változások véglegesen "
 "elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:373
+#: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Ha nem menti, akkor az elmúlt percben történt változások véglegesen "
 "elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:379
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -690,7 +679,7 @@ msgstr[1] ""
 "Ha nem menti, akkor az elmúlt egy percben és %ld másodpercben történt "
 "változások véglegesen elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -704,12 +693,12 @@ msgstr[1] ""
 "Ha nem menti, akkor az elmúlt %ld percben történt változások véglegesen "
 "elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:404
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Ha nem menti, akkor az elmúlt órában történt változások véglegesen elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -724,7 +713,7 @@ msgstr[1] ""
 "Ha nem menti, akkor az elmúlt egy órában és %d percben történt változások "
 "véglegesen elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:425
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -737,29 +726,29 @@ msgstr[1] ""
 "Ha nem menti, akkor az elmúlt %d órában történt változások véglegesen "
 "elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:469
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "A(z) „%s” dokumentum változásai véglegesen elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:474
+#: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Menti a változásokat a(z) „%s” dokumentumba, mielőtt bezárja?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:489
-#: ../gedit/gedit-close-confirmation-dialog.c:647
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "A rendszergazda letiltotta a mentést."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:595
+#: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "%d dokumentum változásai véglegesen elvesznek."
 msgstr[1] "%d dokumentum változásai véglegesen elvesznek."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:603
+#: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -767,15 +756,15 @@ msgid_plural ""
 msgstr[0] "%d mentetlen dokumentum van. Menti a változásokat, mielőtt bezárja?"
 msgstr[1] "%d mentetlen dokumentum van. Menti a változásokat, mielőtt bezárja?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:623
+#: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Dokum_entumok mentetlen módosításokkal:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "_Válassza ki a menteni kívánt dokumentumokat:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Ha nem menti, akkor az összes változás véglegesen elveszik."
 
@@ -793,11 +782,12 @@ msgstr[1] "%d fájl betöltése…"
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
-#: ../gedit/resources/ui/gedit-window.ui.h:4
+msgctxt "window title"
 msgid "Open"
 msgstr "Megnyitás"
 
-#: ../gedit/gedit-commands-file.c:463 ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/gedit-commands-file.c:463
+#: ../gedit/resources/gtk/menus-traditional.ui.h:4
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:39
@@ -853,26 +843,28 @@ msgstr ""
 msgid "_Save As Plain Text"
 msgstr "Mentés _egyszerű szövegként"
 
-#: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1018
+#: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "A(z) „%s” fájl mentése…"
 
-#: ../gedit/gedit-commands-file.c:846
+#. Translators: "Save As" is the title of the file chooser window.
+#: ../gedit/gedit-commands-file.c:847
+msgctxt "window title"
 msgid "Save As"
 msgstr "Mentés másként"
 
-#: ../gedit/gedit-commands-file.c:1428
+#: ../gedit/gedit-commands-file.c:1429
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "A(z) „%s” dokumentum visszaállítása…"
 
-#: ../gedit/gedit-commands-file.c:1475
+#: ../gedit/gedit-commands-file.c:1476
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Visszaállítja „%s” dokumentum nem mentett változásait?"
 
-#: ../gedit/gedit-commands-file.c:1484
+#: ../gedit/gedit-commands-file.c:1485
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -884,12 +876,12 @@ msgstr[0] ""
 msgstr[1] ""
 "A dokumentum elmúlt %ld másodpercben történt változásai véglegesen elvesznek."
 
-#: ../gedit/gedit-commands-file.c:1493
+#: ../gedit/gedit-commands-file.c:1494
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr "A dokumentum elmúlt percben történt változásai véglegesen elvesznek."
 
-#: ../gedit/gedit-commands-file.c:1499
+#: ../gedit/gedit-commands-file.c:1500
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -904,7 +896,7 @@ msgstr[1] ""
 "A dokumentum elmúlt egy percben és %ld másodpercben történt változásai "
 "véglegesen elvesznek."
 
-#: ../gedit/gedit-commands-file.c:1509
+#: ../gedit/gedit-commands-file.c:1510
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -916,11 +908,11 @@ msgstr[0] ""
 msgstr[1] ""
 "A dokumentum elmúlt %ld percben történt változásai véglegesen elvesznek."
 
-#: ../gedit/gedit-commands-file.c:1524
+#: ../gedit/gedit-commands-file.c:1525
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr "A dokumentum elmúlt órában történt változásai véglegesen elvesznek."
 
-#: ../gedit/gedit-commands-file.c:1530
+#: ../gedit/gedit-commands-file.c:1531
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -935,7 +927,7 @@ msgstr[1] ""
 "A dokumentum elmúlt egy órában és %d percben történt változásai véglegesen "
 "elvesznek."
 
-#: ../gedit/gedit-commands-file.c:1545
+#: ../gedit/gedit-commands-file.c:1546
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -946,16 +938,16 @@ msgstr[0] ""
 msgstr[1] ""
 "A dokumentum elmúlt %d órában történt változásai véglegesen elvesznek."
 
-#: ../gedit/gedit-commands-file.c:1568
+#: ../gedit/gedit-commands-file.c:1569
 msgid "_Revert"
 msgstr "_Visszaállítás"
 
-#: ../gedit/gedit-commands-help.c:81
+#: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr ""
 "A gedit egy kicsi és könnyű szövegszerkesztő a GNOME asztali környezethez"
 
-#: ../gedit/gedit-commands-help.c:105
+#: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "Bán Szabolcs <shooby at gnome dot hu>\n"
@@ -985,27 +977,27 @@ msgstr "Egy egyezés megtalálva és kicserélve"
 msgid "\"%s\" not found"
 msgstr "„%s” nem található"
 
-#: ../gedit/gedit-document.c:1092 ../gedit/gedit-document.c:1125
+#: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
 #, c-format
-msgid "Unsaved Document %d"
-msgstr "Mentetlen dokumentum %d"
+msgid "Untitled Document %d"
+msgstr "%d. névtelen dokumentum"
 
-#: ../gedit/gedit-documents-panel.c:432
+#: ../gedit/gedit-documents-panel.c:434
 #, c-format
 msgid "Tab Group %i"
 msgstr "%i. lapcsoport"
 
-#: ../gedit/gedit-documents-panel.c:532 ../gedit/gedit-window.c:1165
-#: ../gedit/gedit-window.c:1171 ../gedit/gedit-window.c:1179
+#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
+#: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
 msgid "Read-Only"
 msgstr "Csak olvasható"
 
-#: ../gedit/gedit-encodings-combo-box.c:297
+#: ../gedit/gedit-encodings-combo-box.c:299
 #: ../gedit/gedit-file-chooser-dialog-osx.c:565
 msgid "Automatically Detected"
 msgstr "Automatikusan felismert"
 
-#: ../gedit/gedit-encodings-combo-box.c:326
+#: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
 msgid "Add or Remove..."
 msgstr "Hozzáadás vagy eltávolítás…"
@@ -1070,7 +1062,7 @@ msgstr "Karakterkódolás:"
 msgid "Line Ending:"
 msgstr "Sor vége:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1249
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1250
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1399,15 +1391,12 @@ msgstr "A(z) „%s” fájl megváltozott a lemezen."
 msgid "Drop Changes and _Reload"
 msgstr "_Változások eldobása és újratöltés"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:6
-#: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
+#: ../gedit/gedit-io-error-info-bar.c:1182 ../gedit/resources/gtk/menus.ui.h:7
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
 msgid "_Reload"
 msgstr "Újr_atöltés"
 
 #: ../gedit/gedit-io-error-info-bar.c:1187
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "_Kihagyás"
 
@@ -1461,20 +1450,20 @@ msgstr "Színsémafájlok"
 msgid "Could not remove color scheme \"%s\"."
 msgstr "Nem távolítható el a(z) „%s” színséma."
 
-#: ../gedit/gedit-print-job.c:225
+#: ../gedit/gedit-print-job.c:227
 msgid "Preparing..."
 msgstr "Előkészítés…"
 
-#: ../gedit/gedit-print-job.c:537
+#: ../gedit/gedit-print-job.c:539
 #, c-format
 msgid "File: %s"
 msgstr "Fájl: %s"
 
-#: ../gedit/gedit-print-job.c:546
+#: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "%N. / %Q oldal"
 
-#: ../gedit/gedit-print-job.c:624
+#: ../gedit/gedit-print-job.c:626
 #, c-format
 msgid "Rendering page %d of %d..."
 msgstr "A(z) %d. oldal megjelenítése %d oldalból…"
@@ -1484,13 +1473,14 @@ msgstr "A(z) %d. oldal megjelenítése %d oldalból…"
 msgid "Page %d of %d"
 msgstr "%d/%d oldal"
 
-#: ../gedit/gedit-replace-dialog.c:686
+#: ../gedit/gedit-replace-dialog.c:690
 #: ../plugins/externaltools/tools/tools.ui.h:7
 msgid "Nothing"
 msgstr "Semmi"
 
-#: ../gedit/gedit-replace-dialog.c:775
+#: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Keresés és csere"
 
@@ -1512,64 +1502,64 @@ msgstr[1] "%d lapon vannak hibák"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:819
+#: ../gedit/gedit-tab.c:814
 #, c-format
 msgid "Reverting %s from %s"
 msgstr "%s visszaállítása innen: %s"
 
-#: ../gedit/gedit-tab.c:826
+#: ../gedit/gedit-tab.c:821
 #, c-format
 msgid "Reverting %s"
 msgstr "%s visszaállítása"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:839
+#: ../gedit/gedit-tab.c:834
 #, c-format
 msgid "Loading %s from %s"
 msgstr "%s fájl betöltése innen: %s"
 
-#: ../gedit/gedit-tab.c:846
+#: ../gedit/gedit-tab.c:841
 #, c-format
 msgid "Loading %s"
 msgstr "%s fájl betöltése"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
-#: ../gedit/gedit-tab.c:926
+#: ../gedit/gedit-tab.c:921
 #, c-format
 msgid "Saving %s to %s"
 msgstr "%s mentése ide: %s"
 
-#: ../gedit/gedit-tab.c:931
+#: ../gedit/gedit-tab.c:926
 #, c-format
 msgid "Saving %s"
 msgstr "%s mentése"
 
-#: ../gedit/gedit-tab.c:1534
+#: ../gedit/gedit-tab.c:1529
 #, c-format
 msgid "Error opening file %s"
 msgstr "Hiba a(z) „%s” fájl megnyitása közben"
 
-#: ../gedit/gedit-tab.c:1539
+#: ../gedit/gedit-tab.c:1534
 #, c-format
 msgid "Error reverting file %s"
 msgstr "Hiba a(z) „%s” fájl visszaállítása közben"
 
-#: ../gedit/gedit-tab.c:1544
+#: ../gedit/gedit-tab.c:1539
 #, c-format
 msgid "Error saving file %s"
 msgstr "Hiba a(z) „%s” fájl mentése közben"
 
-#: ../gedit/gedit-tab.c:1575
+#: ../gedit/gedit-tab.c:1570
 msgid "Name:"
 msgstr "Név:"
 
-#: ../gedit/gedit-tab.c:1576
+#: ../gedit/gedit-tab.c:1571
 msgid "MIME Type:"
 msgstr "MIME-típus:"
 
-#: ../gedit/gedit-tab.c:1577
+#: ../gedit/gedit-tab.c:1572
 msgid "Encoding:"
 msgstr "Kódolás:"
 
@@ -1614,73 +1604,73 @@ msgstr "Sorok számának _megjelenítése"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:657
+#: ../gedit/gedit-view-frame.c:671
 #, c-format
 msgid "%d of %d"
 msgstr "%d / %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:749
+#: ../gedit/gedit-view-frame.c:763
 msgid "_Wrap Around"
 msgstr "_Keresés elölről"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:759
+#: ../gedit/gedit-view-frame.c:773
 msgid "Match as _Regular Expression"
 msgstr "Illesztés _reguláris kifejezésként"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:787
 msgid "Match _Entire Word Only"
 msgstr "Csak _teljes szóra"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:801
 msgid "_Match Case"
 msgstr "Kis- és _nagybetű"
 
-#: ../gedit/gedit-view-frame.c:1004
+#: ../gedit/gedit-view-frame.c:1023
 msgid "String you want to search for"
 msgstr "A keresendő karaktersorozat"
 
-#: ../gedit/gedit-view-frame.c:1016
+#: ../gedit/gedit-view-frame.c:1035
 msgid "Line you want to move the cursor to"
 msgstr "A kurzor mozgatása a megadott sor elejére"
 
-#: ../gedit/gedit-window.c:1002
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match is out of range"
 msgstr "A zárójel párja kívül esik a tartományon"
 
-#: ../gedit/gedit-window.c:1007
+#: ../gedit/gedit-window.c:1008
 msgid "Bracket match not found"
 msgstr "Nem található a zárójel párja"
 
-#: ../gedit/gedit-window.c:1012
+#: ../gedit/gedit-window.c:1013
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "A zárójel párja a(z) %d. sorban megtalálva"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1047
+#: ../gedit/gedit-window.c:1048
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr " %d. sor, %d. oszlop"
 
-#: ../gedit/gedit-window.c:1231
+#: ../gedit/gedit-window.c:1232
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Tabulátorszélesség: %u"
 
-#: ../gedit/gedit-window.c:1600
+#: ../gedit/gedit-window.c:1601
 msgid "There are unsaved documents"
 msgstr "Mentetlen dokumentumok találhatók"
 
-#: ../gedit/gedit-window.c:2445
+#: ../gedit/gedit-window.c:2449
 msgid "Change side panel page"
 msgstr "Oldalpanel oldal megváltoztatása"
 
-#: ../gedit/gedit-window.c:2465 ../gedit/resources/gtk/menus-osx.ui.h:35
+#: ../gedit/gedit-window.c:2469 ../gedit/resources/ui/gedit-shortcuts.ui.h:1
 #: ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumentumok"
@@ -1703,9 +1693,8 @@ msgid "Move to New Tab _Group"
 msgstr "Áthelyezés új lap_csoportba"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
+#: ../gedit/resources/gtk/menus.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
@@ -1735,221 +1724,218 @@ msgstr "Jelenlegi sor kiemelése"
 msgid "Text wrapping"
 msgstr "Szöveg tördelése"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
+#: ../gedit/resources/gtk/menus.ui.h:1
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_New Window"
 msgstr "Új _ablak"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:2
-#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+#: ../gedit/resources/gtk/menus.ui.h:2
+#: ../gedit/resources/gtk/menus-traditional.ui.h:23
 msgid "_Preferences"
 msgstr "_Beállítások"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:3
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../plugins/spell/gedit-spell-plugin.c:364
+#: ../gedit/resources/gtk/menus.ui.h:3
+msgid "_Keyboard Shortcuts"
+msgstr "_Gyorsbillentyűk"
+
+#: ../gedit/resources/gtk/menus.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:46
+#: ../plugins/spell/gedit-spell-plugin.c:239
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "_Súgó"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:47
 msgid "_About"
 msgstr "_Névjegy"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../gedit/resources/gtk/menus.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
 msgid "_Quit"
 msgstr "_Kilépés"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:7
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
+#: ../gedit/resources/gtk/menus.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
 msgid "_Print…"
 msgstr "_Nyomtatás…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
+#: ../gedit/resources/gtk/menus.ui.h:9
+#: ../gedit/resources/gtk/menus-traditional.ui.h:27
 msgid "_Fullscreen"
 msgstr "_Teljes képernyő"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:10
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+#: ../gedit/resources/gtk/menus.ui.h:11
 msgid "Save _All"
 msgstr "Összes _mentése"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:11
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
+#: ../gedit/resources/gtk/menus.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:30
 msgid "_Find…"
 msgstr "_Keresés…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+#: ../gedit/resources/gtk/menus.ui.h:13
 msgid "_Find and Replace…"
 msgstr "_Keresés és csere…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:13
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
+#: ../gedit/resources/gtk/menus.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:34
 msgid "_Clear Highlight"
 msgstr "Kiemelés _törlése"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+#: ../gedit/resources/gtk/menus.ui.h:15
 msgid "_Go to Line…"
 msgstr "_Ugrás sorra…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:15
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
+#: ../gedit/resources/gtk/menus.ui.h:16
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Nézet"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:16
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
+#: ../gedit/resources/gtk/menus.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:25
 msgid "Side _Panel"
 msgstr "Oldal_panel"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
+#: ../gedit/resources/gtk/menus.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:26
 msgid "_Bottom Panel"
 msgstr "_Alsó panel"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
+#: ../gedit/resources/gtk/menus.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:28
 msgid "_Highlight Mode…"
 msgstr "Kiemelési ü_zemmód…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/resources/gtk/menus.ui.h:20
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgid "Tools"
 msgstr "Eszközök"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
+#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:39
 msgid "_Close All"
 msgstr "Összes _bezárása"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:1
-msgid "File"
-msgstr "Fájl"
+#: ../gedit/resources/gtk/menus-traditional.ui.h:1
+msgid "_File"
+msgstr "Fáj_l"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
 msgid "_New"
 msgstr "Ú_j"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Open _Recent"
 msgstr "Leg_utóbbi megnyitása"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
 msgid "Reopen Closed _Tab"
 msgstr "Bezárt _lap újranyitása"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
 msgid "Save _As…"
 msgstr "Men_tés másként…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
-msgid "Edit"
-msgstr "Szerkesztés"
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+msgid "_Edit"
+msgstr "S_zerkesztés"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:15
 msgid "_Undo"
 msgstr "_Visszavonás"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
+#: ../gedit/resources/gtk/menus-traditional.ui.h:16
 msgid "_Redo"
 msgstr "Új_ra"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
 msgid "C_ut"
 msgstr "_Kivágás"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_Copy"
 msgstr "_Másolás"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
 msgid "_Paste"
 msgstr "_Beillesztés"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Törlés"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
 msgid "Overwrite _Mode"
 msgstr "Felülírás _mód"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:22
 msgid "Select _All"
 msgstr "Ö_sszes kijelölése"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
-msgid "Search"
-msgstr "Keresés"
+#: ../gedit/resources/gtk/menus-traditional.ui.h:24
+msgid "_View"
+msgstr "_Nézet"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
+#: ../gedit/resources/gtk/menus-traditional.ui.h:29
+msgid "_Search"
+msgstr "K_eresés"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:31
 msgid "Find Ne_xt"
 msgstr "Kö_vetkező találat"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
+#: ../gedit/resources/gtk/menus-traditional.ui.h:32
 msgid "Find Pre_vious"
 msgstr "Elő_ző találat"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
+#: ../gedit/resources/gtk/menus-traditional.ui.h:33
 msgid "Find and _Replace…"
 msgstr "Keresés és _csere…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
+#: ../gedit/resources/gtk/menus-traditional.ui.h:35
 msgid "Go to _Line…"
 msgstr "_Ugrás sorra…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
+#: ../gedit/resources/gtk/menus-traditional.ui.h:36
+msgid "_Tools"
+msgstr "_Eszközök"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:37
+msgid "_Documents"
+msgstr "_Dokumentumok"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:38
 msgid "_Save All"
 msgstr "Összes _mentése"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
+#: ../gedit/resources/gtk/menus-traditional.ui.h:40
 msgid "_New Tab Group"
 msgstr "Új lap_csoport"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
+#: ../gedit/resources/gtk/menus-traditional.ui.h:41
 msgid "P_revious Tab Group"
 msgstr "_Előző lapcsoport"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
+#: ../gedit/resources/gtk/menus-traditional.ui.h:42
 msgid "Nex_t Tab Group"
 msgstr "_Következő lapcsoport"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
+#: ../gedit/resources/gtk/menus-traditional.ui.h:43
 msgid "_Previous Document"
 msgstr "_Előző dokumentum"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
+#: ../gedit/resources/gtk/menus-traditional.ui.h:44
 msgid "N_ext Document"
 msgstr "Kö_vetkező dokumentum"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
+#: ../gedit/resources/gtk/menus-traditional.ui.h:45
 msgid "_Move To New Window"
 msgstr "Át_helyezés új ablakba"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
-msgid "Help"
-msgstr "Súgó"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character Encodings"
@@ -1980,7 +1966,6 @@ msgid "Highlight Mode"
 msgstr "Kiemelési üzemmód"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_Select"
 msgstr "_Kijelölés"
 
@@ -2013,7 +1998,6 @@ msgid "Display _statusbar"
 msgstr "Á_llapotsor megjelenítése"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
-#| msgid "Display right margin"
 msgid "Display _overview map"
 msgstr "Áttekintő _térkép megjelenítése"
 
@@ -2142,12 +2126,12 @@ msgstr "Sorszámok"
 msgid "Print line nu_mbers"
 msgstr "_Sorszámok nyomtatása"
 
-#. 'Number every' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
 msgid "_Number every"
 msgstr "S_orszám"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
 msgid "lines"
 msgstr "soronként"
@@ -2276,8 +2260,201 @@ msgid "Search _backwards"
 msgstr "Keresés _visszafelé"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
-msgid "_Wrap around"
+msgid "Wra_p around"
 msgstr "Kö_rbe"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgid "Create a new document in a tab"
+msgstr "Új dokumentum létrehozása lapon"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgid "Open a document"
+msgstr "Dokumentum megnyitása"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgid "Save the document"
+msgstr "Dokumentum mentése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgid "Save the document with a new filename"
+msgstr "Dokumentum mentése más néven"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgid "Save all the documents"
+msgstr "Minden dokumentum mentése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgid "Close the document"
+msgstr "Dokumentum bezárása"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgid "Close all the documents"
+msgstr "Minden dokumentum bezárása"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgid "Reopen the most recently closed document"
+msgstr "A legutóbb bezárt dokumentum újra megnyitása"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgid "Switch to the next document"
+msgstr "Váltás a következő dokumentumra"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgid "Switch to the previous document"
+msgstr "Váltás az előző dokumentumra"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgid "Switch to the first - ninth document"
+msgstr "Váltás az első - kilencedik dokumentumra"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgid "Windows and Panels"
+msgstr "Ablakok és panelek"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgid "Create a new document in a window"
+msgstr "Új dokumentum létrehozása egy ablakban"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgid "Create a new tab group"
+msgstr "Új lapcsoport létrehozása"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgid "Show side panel"
+msgstr "Oldalpanel megjelenítése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgid "Show bottom panel"
+msgstr "Alsó panel megjelenítése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgid "Fullscreen on / off"
+msgstr "Teljes képernyő be / ki"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgid "Quit the application"
+msgstr "Kilépés az alkalmazásból"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgid "Find"
+msgstr "Keresés"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgid "Find the next match"
+msgstr "Következő találat keresése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgid "Find the previous match"
+msgstr "Előző találat keresése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgid "Clear highlight"
+msgstr "Kiemelés törlése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgid "Go to line"
+msgstr "Ugrás sorra"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgid "Copy and Paste"
+msgstr "Másolás és beillesztés"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgid "Copy selected text to clipboard"
+msgstr "Kijelölt szöveg másolása a vágólapra"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgid "Cut selected text to clipboard"
+msgstr "Kijelölt szöveg kivágása a vágólapra"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgid "Paste text from clipboard"
+msgstr "Szöveg beillesztése a vágólapról"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgid "Undo and Redo"
+msgstr "Visszavonás és Mégis"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgid "Undo previous command"
+msgstr "Előző parancs visszavonása"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgid "Redo previous command"
+msgstr "Előző parancs újra elvégzése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Kijelölés"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgid "Select all text"
+msgstr "Minden szöveg kijelölése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgid "Editing"
+msgstr "Szerkesztés"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgid "Toggle insert / overwrite"
+msgstr "Váltás a beszúrás / felülírás közt"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgid "Delete current line"
+msgstr "Jelenlegi sor törlése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgid "Join selected lines"
+msgstr "Kiválasztott sorok összevonása"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgid "Move current line up"
+msgstr "Sor mozgatása felfelé"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgid "Move current line down"
+msgstr "Sor mozgatása lefelé"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgid "Move current word left"
+msgstr "Jelenlegi szó mozgatása balra"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgid "Move current word right"
+msgstr "Jelenlegi szó mozgatása jobbra"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgid "Convert to uppercase"
+msgstr "Nagybetűssé alakítás"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgid "Convert to lowercase"
+msgstr "Kisbetűssé alakítás"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgid "Invert case"
+msgstr "Kis- és nagybetűk felcserélése"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgid "Increment number at cursor"
+msgstr "Szám növelése a kurzornál"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgid "Decrement number at cursor"
+msgstr "Szám csökkentése a kurzornál"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgid "Check spelling"
+msgstr "Helyesírás-ellenőrzés"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgid "Print the document"
+msgstr "Dokumentum nyomtatása"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgid "Show completion window"
+msgstr "Szókiegészítési ablak megjelenítése"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
@@ -2286,6 +2463,10 @@ msgstr "Dokumentum bezárása"
 #: ../gedit/resources/ui/gedit-window.ui.h:2
 msgid "Open a file"
 msgstr "Fájl megnyitása"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:4
+msgid "Open"
+msgstr "Megnyitás"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:5
 msgid "Create a new document"
@@ -2374,10 +2555,6 @@ msgstr "_Statisztika a dokumentumról"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Dokumentum"
-
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
-msgid "Selection"
-msgstr "Kijelölés"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
@@ -3303,35 +3480,6 @@ msgstr "_Rendezés"
 msgid "Sorts a document or selected text."
 msgstr "Dokumentum vagy kijelölt szöveg rendezése"
 
-#. No suggestions. Put something in the menu anyway...
-#. Translators: Displayed in the "Check Spelling"
-#. * dialog if there are no suggestions for the current
-#. * misspelled word.
-#.
-#: ../plugins/spell/gedit-automatic-spell-checker.c:573
-#: ../plugins/spell/gedit-spell-checker-dialog.c:152
-msgid "(no suggested words)"
-msgstr "(nincs javasolt szó)"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:596
-msgid "_More..."
-msgstr "_Több…"
-
-#. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:636
-msgid "_Ignore All"
-msgstr "Mindet á_tugorja"
-
-#. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:645
-msgid "_Add"
-msgstr "Hozzá_adás"
-
-#. Prepend suggestions
-#: ../plugins/spell/gedit-automatic-spell-checker.c:682
-msgid "_Spelling Suggestions..."
-msgstr "_Helyesírási javaslatok…"
-
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "_Helyesírás-ellenőrzés…"
@@ -3344,117 +3492,7 @@ msgstr "_Nyelv megadása…"
 msgid "_Highlight Misspelled Words"
 msgstr "Elgépelt s_zavak kiemelése"
 
-#: ../plugins/spell/gedit-spell-checker.c:464
-#, c-format
-msgid "Error when checking the spelling of word “%s”: %s"
-msgstr "Hiba a(z) „%s” szó helyesírásának ellenőrzésekor: %s"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:237
-#| msgid "_Error color:"
-msgid "Error:"
-msgstr "Hiba:"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:274
-msgid "Completed spell checking"
-msgstr "Helyesírás-ellenőrzés kész"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:278
-msgid "No misspelled words"
-msgstr "Nincs hibás szó"
-
-#. Translators: Displayed in the "Check
-#. * Spelling" dialog if the current word
-#. * isn't misspelled.
-#.
-#: ../plugins/spell/gedit-spell-checker-dialog.c:508
-msgid "(correct spelling)"
-msgstr "(helyes írásmód)"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:646
-msgid "Suggestions"
-msgstr "Javaslatok"
-
-#. Translators: the first %s is the language name, and
-#. * the second %s is the locale name. Example:
-#. * "French (France)"
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:363
-#: ../plugins/spell/gedit-spell-checker-language.c:369
-#, c-format
-msgctxt "language"
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#. Translators: this refers to an unknown language code
-#. * (one which isn't in our built-in list).
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:378
-#, c-format
-msgctxt "language"
-msgid "Unknown (%s)"
-msgstr "Ismeretlen (%s)"
-
-#. Translators: this refers the Default language used by the
-#. * spell checker
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:484
-msgctxt "language"
-msgid "Default"
-msgstr "Alapértelmezett"
-
 #. ex:set ts=8 noet:
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-msgid "Set Language"
-msgstr "Nyelv megadása"
-
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-msgid "Select the _language of the current document."
-msgstr "Válassza ki az aktuális _dokumentum nyelvét"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check Spelling"
-msgstr "Helyesírás-ellenőrzés"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-msgid "Misspelled word:"
-msgstr "Hibásan írt szó:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
-msgid "word"
-msgstr "szó"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-msgid "Change _to:"
-msgstr "_Erre:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-msgid "Check _Word"
-msgstr "_Szó ellenőrzése"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-msgid "_Suggestions:"
-msgstr "_Javaslatok:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Ignore _All"
-msgstr "Mi_ndet kihagyja"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-msgid "Cha_nge"
-msgstr "Mó_dosítás"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-msgid "Change A_ll"
-msgstr "M_indet módosítja"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
-msgid "User dictionary:"
-msgstr "Felhasználói szótár:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-msgid "Add w_ord"
-msgstr "Szó hozzá_adása"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Helyesírás-ellenőrző"
@@ -3551,6 +3589,109 @@ msgstr "Dátum és idő beszúrása"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Aktuális idő és dátum beszúrása a kurzorpozícióba"
 
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "File"
+#~ msgstr "Fájl"
+
+#~ msgid "Edit"
+#~ msgstr "Szerkesztés"
+
+#~ msgid "Search"
+#~ msgstr "Keresés"
+
+#~ msgid "Help"
+#~ msgstr "Súgó"
+
+#~ msgid "Question"
+#~ msgstr "Kérdés"
+
+#~ msgid "(no suggested words)"
+#~ msgstr "(nincs javasolt szó)"
+
+#~ msgid "_More..."
+#~ msgstr "_Több…"
+
+#~ msgid "_Ignore All"
+#~ msgstr "Mindet á_tugorja"
+
+#~ msgid "_Add"
+#~ msgstr "Hozzá_adás"
+
+#~ msgid "_Spelling Suggestions..."
+#~ msgstr "_Helyesírási javaslatok…"
+
+#~ msgid "Error when checking the spelling of word “%s”: %s"
+#~ msgstr "Hiba a(z) „%s” szó helyesírásának ellenőrzésekor: %s"
+
+#~| msgid "_Error color:"
+#~ msgid "Error:"
+#~ msgstr "Hiba:"
+
+#~ msgid "Completed spell checking"
+#~ msgstr "Helyesírás-ellenőrzés kész"
+
+#~ msgid "No misspelled words"
+#~ msgstr "Nincs hibás szó"
+
+#~ msgid "(correct spelling)"
+#~ msgstr "(helyes írásmód)"
+
+#~ msgid "Suggestions"
+#~ msgstr "Javaslatok"
+
+#~ msgctxt "language"
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Unknown (%s)"
+#~ msgstr "Ismeretlen (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Default"
+#~ msgstr "Alapértelmezett"
+
+#~ msgid "Set Language"
+#~ msgstr "Nyelv megadása"
+
+#~ msgid "Select the _language of the current document."
+#~ msgstr "Válassza ki az aktuális _dokumentum nyelvét"
+
+#~ msgid "Check Spelling"
+#~ msgstr "Helyesírás-ellenőrzés"
+
+#~ msgid "Misspelled word:"
+#~ msgstr "Hibásan írt szó:"
+
+#~ msgid "word"
+#~ msgstr "szó"
+
+#~ msgid "Change _to:"
+#~ msgstr "_Erre:"
+
+#~ msgid "Check _Word"
+#~ msgstr "_Szó ellenőrzése"
+
+#~ msgid "_Suggestions:"
+#~ msgstr "_Javaslatok:"
+
+#~ msgid "Ignore _All"
+#~ msgstr "Mi_ndet kihagyja"
+
+#~ msgid "Cha_nge"
+#~ msgstr "Mó_dosítás"
+
+#~ msgid "Change A_ll"
+#~ msgstr "M_indet módosítja"
+
+#~ msgid "User dictionary:"
+#~ msgstr "Felhasználói szótár:"
+
+#~ msgid "Add w_ord"
+#~ msgstr "Szó hozzá_adása"
+
 #~| msgid "Toolbar is Visible"
 #~ msgid "Minimap is Visible"
 #~ msgstr "Minitérkép látható"
@@ -3575,9 +3716,6 @@ msgstr "Aktuális idő és dátum beszúrása a kurzorpozícióba"
 
 #~ msgid "The document is empty."
 #~ msgstr "A dokumentum üres."
-
-#~ msgid "Check spelling"
-#~ msgstr "Helyesírás-ellenőrzés"
 
 #~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 #~ msgstr ""
@@ -3781,9 +3919,6 @@ msgstr "Aktuális idő és dátum beszúrása a kurzorpozícióba"
 #~ msgid "column"
 #~ msgstr "oszlop"
 
-#~ msgid "_View"
-#~ msgstr "_Nézet"
-
 #~ msgid "_Open..."
 #~ msgstr "_Megnyitás…"
 
@@ -3796,12 +3931,6 @@ msgstr "Aktuális idő és dátum beszúrása a kurzorpozícióba"
 #~ msgid "_Contents"
 #~ msgstr "_Tartalom"
 
-#~ msgid "About this application"
-#~ msgstr "Az alkalmazás névjegye"
-
-#~ msgid "Save the current file with a different name"
-#~ msgstr "A jelenlegi fájl mentése más néven"
-
 #~ msgid "Revert to a saved version of the file"
 #~ msgstr "Visszatérés a fájl egy korábban mentett változatához"
 
@@ -3810,9 +3939,6 @@ msgstr "Aktuális idő és dátum beszúrása a kurzorpozícióba"
 
 #~ msgid "Print preview"
 #~ msgstr "Nyomtatási kép"
-
-#~ msgid "Print the current page"
-#~ msgstr "A jelenlegi oldal nyomtatása"
 
 #~ msgid "Undo the last action"
 #~ msgstr "Az utolsó művelet visszavonása"
@@ -3826,14 +3952,8 @@ msgstr "Aktuális idő és dátum beszúrása a kurzorpozícióba"
 #~ msgid "Copy the selection"
 #~ msgstr "A kijelölés másolása"
 
-#~ msgid "Paste the clipboard"
-#~ msgstr "A vágólap tartalmának beillesztése"
-
 #~ msgid "Delete the selected text"
 #~ msgstr "A kijelölt szöveg törlése"
-
-#~ msgid "Select the entire document"
-#~ msgstr "Teljes dokumentum kijelölése"
 
 #~ msgid "_Highlight Mode..."
 #~ msgstr "Kiemelési ü_zemmód…"
@@ -3870,15 +3990,6 @@ msgstr "Aktuális idő és dátum beszúrása a kurzorpozícióba"
 
 #~ msgid "Close all open files"
 #~ msgstr "Minden megnyitott fájl bezárása"
-
-#~ msgid "Create a new tab group"
-#~ msgstr "Új lapcsoport létrehozása"
-
-#~ msgid "Switch to the previous tab group"
-#~ msgstr "Váltás az előző lapcsoportra"
-
-#~ msgid "Switch to the next tab group"
-#~ msgstr "Váltás a következő lapcsoportra"
 
 #~ msgid "Activate previous document"
 #~ msgstr "Előző dokumentum aktiválása"
@@ -3934,12 +4045,6 @@ msgstr "Aktuális idő és dátum beszúrása a kurzorpozícióba"
 #~ msgid "All _Lower Case"
 #~ msgstr "Mind _kisbetűs"
 
-#~ msgid "Change selected text to lower case"
-#~ msgstr "A kijelölt szöveg kisbetűssé alakítása"
-
-#~ msgid "_Invert Case"
-#~ msgstr "Kis- és nagybetű _invertálása"
-
 #~ msgid "Invert the case of selected text"
 #~ msgstr "A kijelölt szöveg kis- és nagybetűinek invertálása"
 
@@ -3957,12 +4062,6 @@ msgstr "Aktuális idő és dátum beszúrása a kurzorpozícióba"
 
 #~ msgid "File Name"
 #~ msgstr "Fájlnév"
-
-#~ msgid "_Tools:"
-#~ msgstr "_Eszközök:"
-
-#~ msgid "_Edit:"
-#~ msgstr "S_zerkesztés:"
 
 #~ msgid "Opens the External Tools Manager"
 #~ msgstr "Megnyitja a külső eszközök kezelése ablakot"
@@ -4065,9 +4164,6 @@ msgstr "Aktuális idő és dátum beszúrása a kurzorpozícióba"
 
 #~ msgid "Delete selected file or folder"
 #~ msgstr "A kijelölt fájl vagy mappa törlése"
-
-#~ msgid "Open selected file"
-#~ msgstr "Kijelölt fájl megnyitása"
 
 #~ msgid "Up"
 #~ msgstr "Fel"
