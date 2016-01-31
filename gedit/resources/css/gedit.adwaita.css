@@ -21,80 +21,40 @@
     background-color: @sidebar_bg;
 }
 
+.gedit-document-panel:backdrop {
+    color: #b0b2b2;
+}
+
+.gedit-document-panel row:selected:backdrop {
+    background-color: #8b8e8f;
+}
+
 .gedit-document-panel-group-row,
 .gedit-document-panel-group-row:hover {
-    border-top: 1px solid shade(@sidebar_bg, 0.90);
-    background-color: @sidebar_bg;
+    border-top: 1px solid alpha(currentColor, 0.3);
 }
 
-.gedit-document-panel-document-row:hover {
-    background-color: shade(@sidebar_bg, 0.95);
+.gedit-document-panel-group-row:first-child,
+.gedit-document-panel-group-row:first-child:hover {
+    border-top: 0px;
 }
 
-.gedit-document-panel-document-row:selected,
-.gedit-document-panel-document-row:selected:hover {
-    background-color: @theme_selected_bg_color;
+/* Try to look as the notebook tab close button */
+.gedit-document-panel row button.flat {
+    padding: 0;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    min-width: 18px;
+    min-height: 18px;
+    color: alpha(currentColor,0.3);
 }
 
-/* sidepane close button styling (copied from the gtk tab close button) */
-.gedit-document-panel .list-row .button {
-    color: transparent;
-    border-image: none;
-    background-image: none;
-    background-color: transparent;
-    border-radius: 3px;
-    border-style: solid;
-    border-color: transparent;
-    border-width: 1px;
-    padding: 1px;
-    -gtk-icon-shadow: none;
+.gedit-document-panel row:hover button.flat {
+    color: alpha(currentColor,0.5);
 }
 
-.gedit-document-panel .prelight-row .button  {
-    color: mix(@theme_fg_color, @sidebar_bg, 0.6);
-    border-color: alpha(black, 0.1);
-    transition: all 200ms ease-in;
-}
-
-.gedit-document-panel .list-row .button:hover,
-.gedit-document-panel .prelight-row .button:hover {
-    color: @theme_fg_color;
-    border-color: alpha(black, 0.1);
-    transition: all 200ms ease-in;
-}
-
-.gedit-document-panel .prelight-row .button:active {
-    color:  @button_active_text;
-    background-color: alpha(black, 0.08);
-    box-shadow: inset 0 1px alpha(black, 0.05);
-    -gtk-icon-shadow: 0 1px @button_active_text_shadow;
-
-    border-color: alpha(black, 0.27)
-                  alpha(black, 0.13)
-                  alpha(black, 0.13)
-                  alpha(black, 0.13);
-}
-
-.gedit-document-panel .prelight-row .button:backdrop {
-    color: mix(@theme_unfocused_fg_color, @theme_unfocused_base_color, 0.7);
-    -gtk-icon-shadow: none;
-}
-
-.gedit-document-panel .prelight-row .button:backdrop:hover {
-    color: @theme_unfocused_fg_color;
-    transition: all 200ms ease-out;
-}
-
-.gedit-document-panel-dragged-row {
-    border: 1px solid @borders;
-    background-color: shade(@sidebar_bg, 0.90);
-    color: @theme_fg_color;
-}
-
-.gedit-document-panel-placeholder-row {
-    border: none;
-    background-color: mix(@sidebar_bg, @theme_selected_bg_color, 0.20);
-    transition: all 200ms ease-in;
+.gedit-document-panel row button.flat:hover {
+    color: currentColor;
 }
 
 GeditStatusbar {

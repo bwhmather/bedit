@@ -299,48 +299,13 @@ row_select (GeditDocumentsPanel *panel,
 }
 
 static void
-row_state_changed (GtkWidget           *row,
-                   GtkStateFlags        previous_flags,
-                   GeditDocumentsPanel *panel)
-{
-	GtkStateFlags flags;
-
-	flags = gtk_widget_get_state_flags (row);
-
-	if (flags & GTK_STATE_FLAG_PRELIGHT)
-	{
-		gtk_style_context_add_class (gtk_widget_get_style_context (row), "prelight-row");
-	}
-	else
-	{
-		gtk_style_context_remove_class (gtk_widget_get_style_context (row), "prelight-row");
-	}
-
-	if (GEDIT_IS_DOCUMENTS_GROUP_ROW (row))
-	{
-		GTK_WIDGET_CLASS (gedit_documents_group_row_parent_class)->state_flags_changed (row, previous_flags);
-	}
-	else
-	{
-		GTK_WIDGET_CLASS (gedit_documents_document_row_parent_class)->state_flags_changed (row, previous_flags);
-	}
-}
-
-static void
 insert_row (GeditDocumentsPanel *panel,
             GtkListBox          *listbox,
             GtkWidget           *row,
             gint                 position)
 {
 	g_signal_handler_block (listbox, panel->selection_changed_handler_id);
-
 	gtk_list_box_insert (listbox, row, position);
-
-	g_signal_connect (row,
-	                  "state-flags-changed",
-	                  G_CALLBACK (row_state_changed),
-	                  panel);
-
 	g_signal_handler_unblock (listbox, panel->selection_changed_handler_id);
 }
 
