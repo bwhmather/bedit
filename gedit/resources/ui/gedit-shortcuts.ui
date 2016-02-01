@@ -11,82 +11,82 @@
         <child>
           <object class="GtkShortcutsGroup">
             <property name="visible">1</property>
-            <property name="title" translatable="yes">Documents</property>
+            <property name="title" translatable="yes" context="shortcut window">Documents</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;T</property>
-                <property name="title" translatable="yes">Create a new document in a tab</property>
+                <property name="title" translatable="yes" context="shortcut window">Create a new document in a tab</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;O</property>
-                <property name="title" translatable="yes">Open a document</property>
+                <property name="title" translatable="yes" context="shortcut window">Open a document</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;S</property>
-                <property name="title" translatable="yes">Save the document</property>
+                <property name="title" translatable="yes" context="shortcut window">Save the document</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;S</property>
-                <property name="title" translatable="yes">Save the document with a new filename</property>
+                <property name="title" translatable="yes" context="shortcut window">Save the document with a new filename</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;L</property>
-                <property name="title" translatable="yes">Save all the documents</property>
+                <property name="title" translatable="yes" context="shortcut window">Save all the documents</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;W</property>
-                <property name="title" translatable="yes">Close the document</property>
+                <property name="title" translatable="yes" context="shortcut window">Close the document</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;W</property>
-                <property name="title" translatable="yes">Close all the documents</property>
+                <property name="title" translatable="yes" context="shortcut window">Close all the documents</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;T</property>
-                <property name="title" translatable="yes">Reopen the most recently closed document</property>
+                <property name="title" translatable="yes" context="shortcut window">Reopen the most recently closed document</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;Alt&gt;Page_Down</property>
-                <property name="title" translatable="yes">Switch to the next document</property>
+                <property name="title" translatable="yes" context="shortcut window">Switch to the next document</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;Alt&gt;Page_Up</property>
-                <property name="title" translatable="yes">Switch to the previous document</property>
+                <property name="title" translatable="yes" context="shortcut window">Switch to the previous document</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;Alt&gt;1...9</property>
-                <property name="title" translatable="yes">Switch to the first - ninth document</property>
+                <property name="title" translatable="yes" context="shortcut window">Switch to the first - ninth document</property>
               </object>
             </child>
           </object>
@@ -94,47 +94,47 @@
         <child>
           <object class="GtkShortcutsGroup">
             <property name="visible">1</property>
-            <property name="title" translatable="yes">Windows and Panels</property>
+            <property name="title" translatable="yes" context="shortcut window">Windows and Panels</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;N</property>
-                <property name="title" translatable="yes">Create a new document in a window</property>
+                <property name="title" translatable="yes" context="shortcut window">Create a new document in a window</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;alt&gt;N</property>
-                <property name="title" translatable="yes">Create a new tab group</property>
+                <property name="title" translatable="yes" context="shortcut window">Create a new tab group</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">F9</property>
-                <property name="title" translatable="yes">Show side panel</property>
+                <property name="title" translatable="yes" context="shortcut window">Show side panel</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;F9</property>
-                <property name="title" translatable="yes">Show bottom panel</property>
+                <property name="title" translatable="yes" context="shortcut window">Show bottom panel</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">F11</property>
-                <property name="title" translatable="yes">Fullscreen on / off</property>
+                <property name="title" translatable="yes" context="shortcut window">Fullscreen on / off</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;Q</property>
-                <property name="title" translatable="yes">Quit the application</property>
+                <property name="title" translatable="yes" context="shortcut window">Quit the application</property>
               </object>
             </child>
           </object>
@@ -142,47 +142,47 @@
         <child>
           <object class="GtkShortcutsGroup">
             <property name="visible">1</property>
-            <property name="title" translatable="yes">Find and Replace</property>
+            <property name="title" translatable="yes" context="shortcut window">Find and Replace</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;F</property>
-                <property name="title" translatable="yes">Find</property>
+                <property name="title" translatable="yes" context="shortcut window">Find</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;G</property>
-                <property name="title" translatable="yes">Find the next match</property>
+                <property name="title" translatable="yes" context="shortcut window">Find the next match</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;Shift&gt;G</property>
-                <property name="title" translatable="yes">Find the previous match</property>
+                <property name="title" translatable="yes" context="shortcut window">Find the previous match</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;H</property>
-                <property name="title" translatable="yes">Find and Replace</property>
+                <property name="title" translatable="yes" context="shortcut window">Find and Replace</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;Shift&gt;K</property>
-                <property name="title" translatable="yes">Clear highlight</property>
+                <property name="title" translatable="yes" context="shortcut window">Clear highlight</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;I</property>
-                <property name="title" translatable="yes">Go to line</property>
+                <property name="title" translatable="yes" context="shortcut window">Go to line</property>
               </object>
             </child>
           </object>
@@ -190,26 +190,26 @@
         <child>
           <object class="GtkShortcutsGroup">
             <property name="visible">1</property>
-            <property name="title" translatable="yes">Copy and Paste</property>
+            <property name="title" translatable="yes" context="shortcut window">Copy and Paste</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;C</property>
-                <property name="title" translatable="yes">Copy selected text to clipboard</property>
+                <property name="title" translatable="yes" context="shortcut window">Copy selected text to clipboard</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;X</property>
-                <property name="title" translatable="yes">Cut selected text to clipboard</property>
+                <property name="title" translatable="yes" context="shortcut window">Cut selected text to clipboard</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;V</property>
-                <property name="title" translatable="yes">Paste text from clipboard</property>
+                <property name="title" translatable="yes" context="shortcut window">Paste text from clipboard</property>
               </object>
             </child>
           </object>
@@ -217,19 +217,19 @@
         <child>
           <object class="GtkShortcutsGroup">
             <property name="visible">1</property>
-            <property name="title" translatable="yes">Undo and Redo</property>
+            <property name="title" translatable="yes" context="shortcut window">Undo and Redo</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;Z</property>
-                <property name="title" translatable="yes">Undo previous command</property>
+                <property name="title" translatable="yes" context="shortcut window">Undo previous command</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;Z</property>
-                <property name="title" translatable="yes">Redo previous command</property>
+                <property name="title" translatable="yes" context="shortcut window">Redo previous command</property>
               </object>
             </child>
           </object>
@@ -237,12 +237,12 @@
         <child>
           <object class="GtkShortcutsGroup">
             <property name="visible">1</property>
-            <property name="title" translatable="yes">Selection</property>
+            <property name="title" translatable="yes" context="shortcut window">Selection</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;A</property>
-                <property name="title" translatable="yes">Select all text</property>
+                <property name="title" translatable="yes" context="shortcut window">Select all text</property>
               </object>
             </child>
           </object>
@@ -250,89 +250,89 @@
         <child>
           <object class="GtkShortcutsGroup">
             <property name="visible">1</property>
-            <property name="title" translatable="yes">Editing</property>
+            <property name="title" translatable="yes" context="shortcut window">Editing</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">Insert</property>
-                <property name="title" translatable="yes">Toggle insert / overwrite</property>
+                <property name="title" translatable="yes" context="shortcut window">Toggle insert / overwrite</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;D</property>
-                <property name="title" translatable="yes">Delete current line</property>
+                <property name="title" translatable="yes" context="shortcut window">Delete current line</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;J</property>
-                <property name="title" translatable="yes">Join selected lines</property>
+                <property name="title" translatable="yes" context="shortcut window">Join selected lines</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;alt&gt;Up</property>
-                <property name="title" translatable="yes">Move current line up</property>
+                <property name="title" translatable="yes" context="shortcut window">Move current line up</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;alt&gt;Down</property>
-                <property name="title" translatable="yes">Move current line down</property>
+                <property name="title" translatable="yes" context="shortcut window">Move current line down</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;alt&gt;Left</property>
-                <property name="title" translatable="yes">Move current word left</property>
+                <property name="title" translatable="yes" context="shortcut window">Move current word left</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;alt&gt;Right</property>
-                <property name="title" translatable="yes">Move current word right</property>
+                <property name="title" translatable="yes" context="shortcut window">Move current word right</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;U</property>
-                <property name="title" translatable="yes">Convert to uppercase</property>
+                <property name="title" translatable="yes" context="shortcut window">Convert to uppercase</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;L</property>
-                <property name="title" translatable="yes">Convert to lowercase</property>
+                <property name="title" translatable="yes" context="shortcut window">Convert to lowercase</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;asciitilde</property>
-                <property name="title" translatable="yes">Invert case</property>
+                <property name="title" translatable="yes" context="shortcut window">Invert case</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;a</property>
-                <property name="title" translatable="yes">Increment number at cursor</property>
+                <property name="title" translatable="yes" context="shortcut window">Increment number at cursor</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;x</property>
-                <property name="title" translatable="yes">Decrement number at cursor</property>
+                <property name="title" translatable="yes" context="shortcut window">Decrement number at cursor</property>
               </object>
             </child>
           </object>
@@ -340,26 +340,26 @@
         <child>
           <object class="GtkShortcutsGroup">
             <property name="visible">1</property>
-            <property name="title" translatable="yes">Tools</property>
+            <property name="title" translatable="yes" context="shortcut window">Tools</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;shift&gt;F7</property>
-                <property name="title" translatable="yes">Check spelling</property>
+                <property name="title" translatable="yes" context="shortcut window">Check spelling</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;P</property>
-                <property name="title" translatable="yes">Print the document</property>
+                <property name="title" translatable="yes" context="shortcut window">Print the document</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="visible">1</property>
                 <property name="accelerator">&lt;ctrl&gt;space</property>
-                <property name="title" translatable="yes">Show completion window</property>
+                <property name="title" translatable="yes" context="shortcut window">Show completion window</property>
               </object>
             </child>
           </object>
