@@ -94,38 +94,35 @@
   unbind "<control>d";
 }
 
-GtkEntry {
+entry {
   gtk-key-bindings: gtk-osx-editable, gtk-osx-text-entry;
 }
 
-GtkTextView {
+textview {
   gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view;
 }
 
-GtkSourceView {
+textview.sourceview {
   gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view, gtk-osx-source-view;
 }
 
-GeditView {
+textview.gedit-view {
   gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view, gtk-osx-source-view, gedit-osx-view;
 }
 
-GtkTreeView {
+treeview {
   gtk-key-bindings: gtk-osx-tree-view;
 }
 
-GtkNotebook
-{
-	padding: 0px;
+notebook {
+  padding: 0px;
 }
 
-GtkNotebook tab
-{
-	padding: 4px 2px 2px 2px;
+notebook tab {
+  padding: 4px 2px 2px 2px;
 }
 
-GeditMenuStackSwitcher.gedit-side-panel-stack-switcher
-{
+.gedit-side-panel-stack-switcher {
   border: 0;
   border-radius: 0;
   border-bottom: 1px solid @borders;

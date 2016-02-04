@@ -121,6 +121,7 @@ static void
 gedit_view_init (GeditView *view)
 {
 	GtkTargetList *target_list;
+	GtkStyleContext *context;
 
 	gedit_debug (DEBUG_VIEW);
 
@@ -152,6 +153,9 @@ gedit_view_init (GeditView *view)
 			  "notify::buffer",
 			  G_CALLBACK (on_notify_buffer_cb),
 			  NULL);
+
+	context = gtk_widget_get_style_context (GTK_WIDGET (view));
+	gtk_style_context_add_class (context, "gedit-view");
 }
 
 static void
