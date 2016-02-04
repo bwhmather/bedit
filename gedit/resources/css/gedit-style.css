@@ -26,10 +26,15 @@
     padding: 3px 6px 3px 6px;
 }
 
-GeditStatusbar .frame {
+statusbar frame {
     border: none;
     padding-left: 6px;
     padding-right: 6px;
+}
+
+statusbar button.flat {
+    border-radius: 0;
+    border-bottom: none;
 }
 
 GeditFileBrowserWidget .small-button {

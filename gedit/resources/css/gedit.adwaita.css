@@ -57,16 +57,11 @@
     color: currentColor;
 }
 
-GeditStatusbar {
+statusbar {
     border-top: 1px solid @borders;
 }
 
-GeditStatusbar .button.flat {
-    border-radius: 0;
-    border-bottom: none;
-}
-
-GeditViewFrame .gedit-search-slider {
+.gedit-search-slider {
     background-color: @theme_base_color;
     padding: 6px;
     border-color: @borders;
