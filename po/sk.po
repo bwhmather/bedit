@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-16 06:59+0000\n"
-"PO-Revision-Date: 2016-01-16 16:32+0100\n"
+"POT-Creation-Date: 2016-02-06 06:59+0000\n"
+"PO-Revision-Date: 2016-02-06 08:32+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: slovenčina <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -54,33 +54,29 @@ msgstr ""
 "Jeho flexibilný systém zásuvných modulov umožňuje prispôsobenie aplikácie "
 "vašim potrebám."
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1
-msgid "gedit"
-msgstr "gedit"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:730
+#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Textový editor"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:3
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
 msgid "Edit text files"
 msgstr "Úprava textových súborov"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
+#: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "gedit - textový editor"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:5
+#: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "Text;Editor;"
 msgstr "Text;Editor;"
 
 # qiucklist
-#: ../data/org.gnome.gedit.desktop.in.in.h:6
+#: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "Open a New Window"
 msgstr "Otvoriť nové okno"
 
 # quicklist
-#: ../data/org.gnome.gedit.desktop.in.in.h:7
+#: ../data/org.gnome.gedit.desktop.in.in.h:6
 msgid "Open a New Document"
 msgstr "Otvoriť nový dokument"
 
@@ -657,7 +653,6 @@ msgstr "Uložiť _ako…"
 #: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
-#: ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -817,7 +812,6 @@ msgstr "Otvorenie"
 
 #: ../gedit/gedit-commands-file.c:463
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
-#: ../gedit/resources/gtk/menus-osx.ui.h:4
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:39
@@ -1017,12 +1011,12 @@ msgstr "Výraz „%s“ nebol nájdený"
 msgid "Untitled Document %d"
 msgstr "Neuložený dokument %d"
 
-#: ../gedit/gedit-documents-panel.c:434
+#: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "Skupina kariet %i"
 
-#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
+#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1166
 #: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
 msgid "Read-Only"
 msgstr "Len na čítanie"
@@ -1432,7 +1426,6 @@ msgstr "Zahodiť zmeny a _znovu načítať"
 
 #: ../gedit/gedit-io-error-info-bar.c:1182 ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_Znova načítať"
 
@@ -1517,7 +1510,6 @@ msgstr "Nič"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Nájsť a nahradiť"
 
@@ -1633,7 +1625,7 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:464
+#: ../gedit/gedit-view.c:468
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "Zobraziť čísla _riadkov"
@@ -1708,9 +1700,7 @@ msgstr "Máte neuložené dokumenty"
 msgid "Change side panel page"
 msgstr "Zmení stránku bočného panela"
 
-#: ../gedit/gedit-window.c:2469 ../gedit/resources/gtk/menus-osx.ui.h:35
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
-#: ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2469 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -1734,7 +1724,6 @@ msgstr "_Presunúť do novej skupiny kariet"
 #: ../gedit/resources/gtk/menus-common.ui.h:5
 #: ../gedit/resources/gtk/menus.ui.h:22
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
@@ -1766,7 +1755,6 @@ msgstr "Zalamovanie textu"
 
 #: ../gedit/resources/gtk/menus.ui.h:1
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
 msgid "_New Window"
 msgstr "_Nové okno"
 
@@ -1775,13 +1763,12 @@ msgstr "_Nové okno"
 msgid "_Preferences"
 msgstr "Nas_tavenia"
 
-#: ../gedit/resources/gtk/menus.ui.h:3 ../gedit/resources/gtk/menus-osx.ui.h:45
+#: ../gedit/resources/gtk/menus.ui.h:3
 msgid "_Keyboard Shortcuts"
 msgstr "_Klávesové skratky"
 
 #: ../gedit/resources/gtk/menus.ui.h:4
 #: ../gedit/resources/gtk/menus-traditional.ui.h:46
-#: ../gedit/resources/gtk/menus-osx.ui.h:46
 #: ../plugins/spell/gedit-spell-plugin.c:239
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
@@ -1799,13 +1786,11 @@ msgstr "U_končiť"
 
 #: ../gedit/resources/gtk/menus.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
 msgid "_Print…"
 msgstr "_Tlačiť…"
 
 #: ../gedit/resources/gtk/menus.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:27
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "Na _celú obrazovku"
 
@@ -1815,7 +1800,6 @@ msgstr "Uložiť _všetky"
 
 #: ../gedit/resources/gtk/menus.ui.h:12
 #: ../gedit/resources/gtk/menus-traditional.ui.h:30
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "_Find…"
 msgstr "_Nájsť…"
 
@@ -1825,7 +1809,6 @@ msgstr "Nájsť a n_ahradiť…"
 
 #: ../gedit/resources/gtk/menus.ui.h:14
 #: ../gedit/resources/gtk/menus-traditional.ui.h:34
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "_Zrušiť zvýrazňovanie"
 
@@ -1834,39 +1817,32 @@ msgid "_Go to Line…"
 msgstr "Prejsť na _riadok…"
 
 #: ../gedit/resources/gtk/menus.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Zobraziť"
 
 #: ../gedit/resources/gtk/menus.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:25
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "_Bočný panel"
 
 #: ../gedit/resources/gtk/menus.ui.h:18
 #: ../gedit/resources/gtk/menus-traditional.ui.h:26
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "Sp_odný panel"
 
 #  GtkDialog title
 #: ../gedit/resources/gtk/menus.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:28
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
 msgid "_Highlight Mode…"
 msgstr "Režim z_výrazňovania"
 
 #: ../gedit/resources/gtk/menus.ui.h:20
-#: ../gedit/resources/gtk/menus-osx.ui.h:34
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgid "Tools"
 msgstr "_Nástroje"
 
 #: ../gedit/resources/gtk/menus.ui.h:21
 #: ../gedit/resources/gtk/menus-traditional.ui.h:39
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "Za_vrieť všetky"
 
@@ -1876,23 +1852,19 @@ msgstr "_Súbor"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
 msgid "_New"
 msgstr "_Nový"
 
 # quicklist
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
 msgid "Open _Recent"
 msgstr "Otvoriť nový dokument"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
 msgid "Reopen Closed _Tab"
 msgstr "Znovu otvoriť zavreté _karty"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
 msgid "Save _As…"
 msgstr "Uložiť _ako…"
 
@@ -1901,32 +1873,26 @@ msgid "_Edit"
 msgstr "_Upraviť"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:15
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
 msgid "_Undo"
 msgstr "_Vrátiť späť"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
 msgid "_Redo"
 msgstr "_Znovu vykonať"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:17
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
 msgid "C_ut"
 msgstr "Vys_trihnúť"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
 msgid "_Copy"
 msgstr "_Kopírovať"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
 msgid "_Paste"
 msgstr "_Vložiť"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:20
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
@@ -1934,12 +1900,10 @@ msgid "_Delete"
 msgstr "O_dstrániť"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:21
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
 msgid "Overwrite _Mode"
 msgstr "Režim filtra prehliadača súborov"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:22
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
 msgid "Select _All"
 msgstr "Vybr_ať všetko"
 
@@ -1952,7 +1916,6 @@ msgid "_Search"
 msgstr "_Hľadať"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:31
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
 msgid "Find Ne_xt"
 msgstr "Hľadať ď_alšie"
 
@@ -1960,17 +1923,14 @@ msgstr "Hľadať ď_alšie"
 # treby vymyslieť ako preložiť find next a find previous
 # Ivan: výskyty
 #: ../gedit/resources/gtk/menus-traditional.ui.h:32
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
 msgid "Find Pre_vious"
 msgstr "Nájsť pre_dchádzajúce"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:33
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
 msgid "Find and _Replace…"
 msgstr "Nájsť a n_ahradiť…"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:35
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
 msgid "Go to _Line…"
 msgstr "Prejsť na _riadok…"
 
@@ -1983,55 +1943,32 @@ msgid "_Documents"
 msgstr "_Dokumenty"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:38
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
 msgid "_Save All"
 msgstr "Uložiť _všetky"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:40
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
 msgid "_New Tab Group"
 msgstr "Nasledovná skupina karie_t"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:41
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
 msgid "P_revious Tab Group"
 msgstr "P_redchádzajúca skupina kariet"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:42
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
 msgid "Nex_t Tab Group"
 msgstr "Nasledovná skupina karie_t"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:43
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
 msgid "_Previous Document"
 msgstr "_Predchádzajúci dokument"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:44
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
 msgid "N_ext Document"
 msgstr "Ďalší _dokument"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:45
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
 msgid "_Move To New Window"
 msgstr "Pre_sunúť do nového okna"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:1
-msgid "File"
-msgstr "_Súbor"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
-msgid "Edit"
-msgstr "_Upraviť"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
-msgid "Search"
-msgstr "_Hľadať"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
-msgid "Help"
-msgstr "_Pomocník"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character Encodings"
@@ -2371,198 +2308,260 @@ msgstr "Hľadať _dozadu"
 msgid "Wra_p around"
 msgstr "_Pokračovať dookola"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+msgctxt "shortcut window"
+msgid "Documents"
+msgstr "Dokumenty"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgctxt "shortcut window"
 msgid "Create a new document in a tab"
 msgstr "Vytvorenie nového dokumentu na karte"
 
 # quicklist
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "Otvorenie dokumentu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "Uloženie dokumentu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "Uloženie dokumentu s novým názvom súboru"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "Uloženie všetkých dokumentov"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "Zatvorenie dokumentu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "Zatvorenie všetkých dokumentov"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
 msgstr "Znovu otvorenie posledného zatvoreného dokumentu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "Prepnutie na nasledujúci dokument"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "Prepnutie na predchádzajúci dokument"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgctxt "shortcut window"
 msgid "Switch to the first - ninth document"
 msgstr "Prepínanie medzi prvým až deviatym dokumentom"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgctxt "shortcut window"
 msgid "Windows and Panels"
 msgstr "Okná a panely"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "Vytvorenie nového dokumentu v okne"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgctxt "shortcut window"
 msgid "Create a new tab group"
-msgstr "Vytvorí novú skupinu kariet"
+msgstr "Vytvorenie novej skupiny kariet"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "Zobrazenie bočného panelu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "Zobrazenie spodného panelu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgctxt "shortcut window"
 msgid "Fullscreen on / off"
 msgstr "Zapnutie alebo vypnutie režimu na celú obrazovku"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Ukončenie aplikácie"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+msgctxt "shortcut window"
+msgid "Find and Replace"
+msgstr "Nájdenie a nahradenie"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgctxt "shortcut window"
 msgid "Find"
 msgstr "Nájdenie"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "Nájdenie nasledujúcej zhody"
 
 # tooltip
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "Nájdenie predchádzajúcej zhody"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "Vymazanie zvýraznenia"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgctxt "shortcut window"
 msgid "Go to line"
 msgstr "Prejdenie na riadok"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "Kopírovanie a vkladanie"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Skopírovanie vybratého textu do schránky"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Vystrihnutie vybratého textu do schránky"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgctxt "shortcut window"
 msgid "Paste text from clipboard"
 msgstr "Vloženie textu zo schránky"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "Vrátenie späť a zopakovanie"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Vrátenie späť predchádzajúceho príkazu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Zopakovanie predchádzajúceho príkazu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Výber"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Výber celého textu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Upravovanie"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "Prepnutie režimu vkladania alebo prepisovania"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgctxt "shortcut window"
 msgid "Delete current line"
 msgstr "Odstránenie aktuálneho riadku"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "Spojenie vybratých riadkov"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "Presun aktuálneho riadku hore"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "Presun aktuálneho riadku dole"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgctxt "shortcut window"
 msgid "Move current word left"
 msgstr "Presun aktuálneho slova doľava"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgctxt "shortcut window"
 msgid "Move current word right"
 msgstr "Presun aktuálneho slova doprava"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgctxt "shortcut window"
 msgid "Convert to uppercase"
-msgstr "Skonvertovanie na veľké písmená"
+msgstr "Zmena textu na veľké písmená"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "Zmena textu na malé písmená"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "Obrátenie veľkosti písmen"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgctxt "shortcut window"
 msgid "Increment number at cursor"
 msgstr "Navýšenie čísla na kurzore"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgctxt "shortcut window"
 msgid "Decrement number at cursor"
 msgstr "Zníženie čísla na kurzore"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+msgctxt "shortcut window"
+msgid "Tools"
+msgstr "Nástroje"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "Kontrola pravopisu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "Tlač dokumentu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Zobrazenie okna dopĺňania"
 
@@ -2666,6 +2665,10 @@ msgstr "Š_tatistika dokumentu"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Dokument"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Výber"
 
 # nemá tu byť riadkov?
 # netreba plural forms?
@@ -3712,6 +3715,21 @@ msgstr "Vložiť dátum/čas"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Vloží aktuálny dátum a čas na pozíciu kurzora."
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "File"
+#~ msgstr "_Súbor"
+
+#~ msgid "Edit"
+#~ msgstr "_Upraviť"
+
+#~ msgid "Search"
+#~ msgstr "_Hľadať"
+
+#~ msgid "Help"
+#~ msgstr "_Pomocník"
 
 #~ msgid "Question"
 #~ msgstr "Otázka"
