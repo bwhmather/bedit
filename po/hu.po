@@ -16,16 +16,16 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-19 20:46+0000\n"
-"PO-Revision-Date: 2016-01-24 20:20+0100\n"
-"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
+"POT-Creation-Date: 2016-02-06 07:33+0000\n"
+"PO-Revision-Date: 2016-02-05 19:45+0100\n"
+"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 1.8.5\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -234,11 +234,11 @@ msgstr "Jelenítse-e meg a sorok számát a szerkesztő területen."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Highlight Current Line"
-msgstr "Jelenlegi sor kiemelése"
+msgstr "Aktuális sor kiemelése"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Whether gedit should highlight the current line."
-msgstr "Ki legyen-e emelve a jelenlegi sor."
+msgstr "Ki legyen-e emelve az aktuális sor."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Highlight Matching Brackets"
@@ -530,7 +530,7 @@ msgid ""
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
 "A kódolásjelöltek listája a Karakterkódolás menüben jelenik meg a megnyitás/"
-"mentés fájlválasztó ablakban. A „JELENLEGI” jelöli a jelenlegi területi "
+"mentés fájlválasztó ablakban. A „CURRENT” jelöli a jelenlegi területi "
 "beállítás szerinti kódolást. Csak a felismert kódolások használhatók. Az "
 "alapértelmezett érték az üres lista, amely esetben a gedit jó alapértékeket "
 "fog választani az országtól és a nyelvtől függően."
@@ -982,12 +982,12 @@ msgstr "„%s” nem található"
 msgid "Untitled Document %d"
 msgstr "%d. névtelen dokumentum"
 
-#: ../gedit/gedit-documents-panel.c:434
+#: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "%i. lapcsoport"
 
-#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
+#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1166
 #: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
 msgid "Read-Only"
 msgstr "Csak olvasható"
@@ -1480,7 +1480,6 @@ msgstr "Semmi"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Keresés és csere"
 
@@ -1595,7 +1594,7 @@ msgstr "Mac OS klasszikus"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:464
+#: ../gedit/gedit-view.c:468
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "Sorok számának _megjelenítése"
@@ -1670,8 +1669,7 @@ msgstr "Mentetlen dokumentumok találhatók"
 msgid "Change side panel page"
 msgstr "Oldalpanel oldal megváltoztatása"
 
-#: ../gedit/gedit-window.c:2469 ../gedit/resources/ui/gedit-shortcuts.ui.h:1
-#: ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2469 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumentumok"
 
@@ -1718,7 +1716,7 @@ msgstr "Jobb oldali margó megjelenítése"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:10
 msgid "Highlight current line"
-msgstr "Jelenlegi sor kiemelése"
+msgstr "Aktuális sor kiemelése"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:11
 msgid "Text wrapping"
@@ -1808,7 +1806,6 @@ msgid "_Highlight Mode…"
 msgstr "Kiemelési ü_zemmód…"
 
 #: ../gedit/resources/gtk/menus.ui.h:20
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgid "Tools"
 msgstr "Eszközök"
 
@@ -2026,7 +2023,7 @@ msgstr "Kiemelés"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
 msgid "Highlight current _line"
-msgstr "_Jelenlegi sor kiemelése"
+msgstr "_Aktuális sor kiemelése"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
 msgid "Highlight matching _brackets"
@@ -2263,196 +2260,258 @@ msgstr "Keresés _visszafelé"
 msgid "Wra_p around"
 msgstr "Kö_rbe"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+msgctxt "shortcut window"
+msgid "Documents"
+msgstr "Dokumentumok"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgctxt "shortcut window"
 msgid "Create a new document in a tab"
 msgstr "Új dokumentum létrehozása lapon"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "Dokumentum megnyitása"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "Dokumentum mentése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "Dokumentum mentése más néven"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "Minden dokumentum mentése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "Dokumentum bezárása"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "Minden dokumentum bezárása"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
 msgstr "A legutóbb bezárt dokumentum újra megnyitása"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "Váltás a következő dokumentumra"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "Váltás az előző dokumentumra"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgctxt "shortcut window"
 msgid "Switch to the first - ninth document"
 msgstr "Váltás az első - kilencedik dokumentumra"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgctxt "shortcut window"
 msgid "Windows and Panels"
 msgstr "Ablakok és panelek"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "Új dokumentum létrehozása egy ablakban"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgctxt "shortcut window"
 msgid "Create a new tab group"
 msgstr "Új lapcsoport létrehozása"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "Oldalpanel megjelenítése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "Alsó panel megjelenítése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgctxt "shortcut window"
 msgid "Fullscreen on / off"
 msgstr "Teljes képernyő be / ki"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Kilépés az alkalmazásból"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+msgctxt "shortcut window"
+msgid "Find and Replace"
+msgstr "Keresés és csere"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgctxt "shortcut window"
 msgid "Find"
 msgstr "Keresés"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "Következő találat keresése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "Előző találat keresése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "Kiemelés törlése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgctxt "shortcut window"
 msgid "Go to line"
 msgstr "Ugrás sorra"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "Másolás és beillesztés"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Kijelölt szöveg másolása a vágólapra"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Kijelölt szöveg kivágása a vágólapra"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgctxt "shortcut window"
 msgid "Paste text from clipboard"
 msgstr "Szöveg beillesztése a vágólapról"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "Visszavonás és Mégis"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Előző parancs visszavonása"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Előző parancs újra elvégzése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Kijelölés"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Minden szöveg kijelölése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Szerkesztés"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "Váltás a beszúrás / felülírás közt"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgctxt "shortcut window"
 msgid "Delete current line"
-msgstr "Jelenlegi sor törlése"
+msgstr "Aktuális sor törlése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "Kiválasztott sorok összevonása"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "Sor mozgatása felfelé"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "Sor mozgatása lefelé"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgctxt "shortcut window"
 msgid "Move current word left"
-msgstr "Jelenlegi szó mozgatása balra"
+msgstr "Aktuális szó mozgatása balra"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgctxt "shortcut window"
 msgid "Move current word right"
-msgstr "Jelenlegi szó mozgatása jobbra"
+msgstr "Aktuális szó mozgatása jobbra"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgctxt "shortcut window"
 msgid "Convert to uppercase"
 msgstr "Nagybetűssé alakítás"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "Kisbetűssé alakítás"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "Kis- és nagybetűk felcserélése"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgctxt "shortcut window"
 msgid "Increment number at cursor"
 msgstr "Szám növelése a kurzornál"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgctxt "shortcut window"
 msgid "Decrement number at cursor"
 msgstr "Szám csökkentése a kurzornál"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+msgctxt "shortcut window"
+msgid "Tools"
+msgstr "Eszközök"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "Helyesírás-ellenőrzés"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "Dokumentum nyomtatása"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Szókiegészítési ablak megjelenítése"
 
@@ -2555,6 +2614,10 @@ msgstr "_Statisztika a dokumentumról"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Dokumentum"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Kijelölés"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
