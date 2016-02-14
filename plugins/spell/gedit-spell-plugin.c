@@ -176,7 +176,6 @@ check_spell_cb (GSimpleAction *action,
 	dialog = gspell_checker_dialog_new (GTK_WINDOW (priv->window), navigator);
 	g_object_unref (navigator);
 
-	gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 	gtk_widget_show (dialog);
 }
 
