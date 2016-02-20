@@ -60,7 +60,7 @@ gedit_menu_stack_switcher_init (GeditMenuStackSwitcher *switcher)
   box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
 
   arrow = gtk_image_new_from_icon_name ("pan-down-symbolic", GTK_ICON_SIZE_BUTTON);
-  gtk_box_pack_end (GTK_BOX (box), arrow, FALSE, TRUE, 6);
+  gtk_box_pack_end (GTK_BOX (box), arrow, FALSE, TRUE, 0);
   gtk_widget_set_valign (arrow, GTK_ALIGN_BASELINE);
 
   switcher->label = gtk_label_new (NULL);
