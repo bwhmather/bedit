@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-15 14:04+0000\n"
-"PO-Revision-Date: 2016-01-18 21:10+0200\n"
+"POT-Creation-Date: 2016-02-14 13:51+0000\n"
+"PO-Revision-Date: 2016-02-02 14:16+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -56,31 +56,27 @@ msgstr ""
 "Jo lanksti įskiepių sistema leidžia pritaikyti programą jūsų poreikiams bei "
 "pritaikyti prie jūsų darbo įpročių."
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1
-msgid "gedit"
-msgstr "gedit"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:730
+#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Tekstų redaktorius"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:3
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
 msgid "Edit text files"
 msgstr "Redaguoti tekstinius failus"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
+#: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "gedit tekstų redaktorius"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:5
+#: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "Text;Editor;"
 msgstr "Tekstas;Redaktorius;"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:6
+#: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "Open a New Window"
 msgstr "Atverti naują langą"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:7
+#: ../data/org.gnome.gedit.desktop.in.in.h:6
 msgid "Open a New Document"
 msgstr "Atverti naują dokumentą"
 
@@ -636,7 +632,6 @@ msgstr "Įrašyti _taip…"
 #: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
-#: ../gedit/resources/gtk/menus-osx.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -809,7 +804,6 @@ msgstr "Atverti"
 
 #: ../gedit/gedit-commands-file.c:463
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
-#: ../gedit/resources/gtk/menus-osx.ui.h:4
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:39
@@ -1001,12 +995,12 @@ msgstr "„%s“ nerasta"
 msgid "Untitled Document %d"
 msgstr "Nepavadintas dokumentas %d"
 
-#: ../gedit/gedit-documents-panel.c:434
+#: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "Kortelių grupę %i"
 
-#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
+#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1166
 #: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
 msgid "Read-Only"
 msgstr "Tik skaitymui"
@@ -1412,7 +1406,6 @@ msgstr "Panaikinti pakeitimus ir įkelti iš _naujo"
 
 #: ../gedit/gedit-io-error-info-bar.c:1182 ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_Atverti iš naujo"
 
@@ -1497,7 +1490,6 @@ msgstr "Nieko"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Surasti ir pakeisti"
 
@@ -1613,7 +1605,7 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:464
+#: ../gedit/gedit-view.c:468
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "_Rodyti eilučių numerius"
@@ -1688,9 +1680,7 @@ msgstr "Yra neįrašytų dokumentų"
 msgid "Change side panel page"
 msgstr "Pakeisti šoninio skydelio puslapį"
 
-#: ../gedit/gedit-window.c:2469 ../gedit/resources/gtk/menus-osx.ui.h:35
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
-#: ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2469 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumentai"
 
@@ -1714,7 +1704,6 @@ msgstr "Perkelti į _naują kortelių grupę"
 #: ../gedit/resources/gtk/menus-common.ui.h:5
 #: ../gedit/resources/gtk/menus.ui.h:22
 #: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
@@ -1746,7 +1735,6 @@ msgstr "Teksto laužymas"
 
 #: ../gedit/resources/gtk/menus.ui.h:1
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
 msgid "_New Window"
 msgstr "_Naujas langas"
 
@@ -1755,14 +1743,13 @@ msgstr "_Naujas langas"
 msgid "_Preferences"
 msgstr "_Nuostatos"
 
-#: ../gedit/resources/gtk/menus.ui.h:3 ../gedit/resources/gtk/menus-osx.ui.h:45
+#: ../gedit/resources/gtk/menus.ui.h:3
 msgid "_Keyboard Shortcuts"
 msgstr "_Klaviatūros trumpiniai"
 
 #: ../gedit/resources/gtk/menus.ui.h:4
 #: ../gedit/resources/gtk/menus-traditional.ui.h:46
-#: ../gedit/resources/gtk/menus-osx.ui.h:46
-#: ../plugins/spell/gedit-spell-plugin.c:239
+#: ../plugins/spell/gedit-spell-plugin.c:238
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "_Žinynas"
@@ -1779,13 +1766,11 @@ msgstr "Iš_eiti"
 
 #: ../gedit/resources/gtk/menus.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
 msgid "_Print…"
 msgstr "S_pausdinti…"
 
 #: ../gedit/resources/gtk/menus.ui.h:9
 #: ../gedit/resources/gtk/menus-traditional.ui.h:27
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
 msgid "_Fullscreen"
 msgstr "_Visame ekrane"
 
@@ -1795,7 +1780,6 @@ msgstr "Įrašyti _visus"
 
 #: ../gedit/resources/gtk/menus.ui.h:12
 #: ../gedit/resources/gtk/menus-traditional.ui.h:30
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
 msgid "_Find…"
 msgstr "_Ieškoti…"
 
@@ -1805,7 +1789,6 @@ msgstr "_Surasti ir pakeisti…"
 
 #: ../gedit/resources/gtk/menus.ui.h:14
 #: ../gedit/resources/gtk/menus-traditional.ui.h:34
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
 msgid "_Clear Highlight"
 msgstr "Iš_valyti paryškinimą"
 
@@ -1814,99 +1797,80 @@ msgid "_Go to Line…"
 msgstr "Eiti į _eilutę…"
 
 #: ../gedit/resources/gtk/menus.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Rodyti"
 
 #: ../gedit/resources/gtk/menus.ui.h:17
 #: ../gedit/resources/gtk/menus-traditional.ui.h:25
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
 msgid "Side _Panel"
 msgstr "Šoninis _polangis"
 
 #: ../gedit/resources/gtk/menus.ui.h:18
 #: ../gedit/resources/gtk/menus-traditional.ui.h:26
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
 msgid "_Bottom Panel"
 msgstr "_Apatinis polangis"
 
 #: ../gedit/resources/gtk/menus.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:28
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
 msgid "_Highlight Mode…"
 msgstr "Pa_ryškinimo veiksena…"
 
 #: ../gedit/resources/gtk/menus.ui.h:20
-#: ../gedit/resources/gtk/menus-osx.ui.h:34
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgid "Tools"
 msgstr "Įrankiai"
 
 #: ../gedit/resources/gtk/menus.ui.h:21
 #: ../gedit/resources/gtk/menus-traditional.ui.h:39
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
 msgid "_Close All"
 msgstr "_Užverti visus"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#| msgid "File"
 msgid "_File"
 msgstr "_Failas"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
 #: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
 msgid "_New"
 msgstr "_Naujas"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
 msgid "Open _Recent"
 msgstr "Atverti _neseniai naudotą"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
 msgid "Reopen Closed _Tab"
 msgstr "Atverti užvertą _kortelę"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
 msgid "Save _As…"
 msgstr "Įrašyti _taip…"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#| msgid "Edit"
 msgid "_Edit"
 msgstr "K_eisti"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:15
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
 msgid "_Undo"
 msgstr "_Atšaukti"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
 msgid "_Redo"
 msgstr "_Pakartoti"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:17
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
 msgid "C_ut"
 msgstr "_Iškirpti"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
 msgid "_Copy"
 msgstr "_Kopijuoti"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
 msgid "_Paste"
 msgstr "Į_dėti"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:20
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
@@ -1914,105 +1878,72 @@ msgid "_Delete"
 msgstr "_Ištrinti"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:21
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
 msgid "Overwrite _Mode"
 msgstr "Perrašymo _veiksena"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:22
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
 msgid "Select _All"
 msgstr "Žymėti _viską"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:24
-#| msgid "View"
 msgid "_View"
 msgstr "_Rodyti"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:29
-#| msgid "Search"
 msgid "_Search"
 msgstr "_Ieškoti"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:31
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
 msgid "Find Ne_xt"
 msgstr "Rasti _kitą"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:32
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
 msgid "Find Pre_vious"
 msgstr "Rasti _ankstesnį"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:33
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
 msgid "Find and _Replace…"
 msgstr "_Surasti ir pakeisti…"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:35
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
 msgid "Go to _Line…"
 msgstr "Eiti į _eilutę…"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:36
-#| msgid "Tools"
 msgid "_Tools"
 msgstr "Į_rankiai"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:37
-#| msgid "Documents"
 msgid "_Documents"
 msgstr "_Dokumentai"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:38
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
 msgid "_Save All"
 msgstr "Įrašyti _visus"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:40
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
 msgid "_New Tab Group"
 msgstr "_Nauja kortelių grupė"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:41
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
 msgid "P_revious Tab Group"
 msgstr "_Ankstesnė kortelių grupė"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:42
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
 msgid "Nex_t Tab Group"
 msgstr "Kita kortelių grupė"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:43
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
 msgid "_Previous Document"
 msgstr "_Ankstesnis dokumentas"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:44
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
 msgid "N_ext Document"
 msgstr "_Kitas dokumentas"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:45
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
 msgid "_Move To New Window"
 msgstr "_Perkelti į naują langą"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:1
-msgid "File"
-msgstr "Failas"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
-msgid "Edit"
-msgstr "Keisti"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
-msgid "Search"
-msgstr "Ieškoti"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
-msgid "Help"
-msgstr "Žinynas"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character Encodings"
@@ -2340,231 +2271,258 @@ msgstr "Ieškoti _atgal"
 msgid "Wra_p around"
 msgstr "_Priėjus pabaigą, ieškoti nuo pradžios"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+msgctxt "shortcut window"
+msgid "Documents"
+msgstr "Dokumentai"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
-#| msgid "Create a new document"
+msgctxt "shortcut window"
 msgid "Create a new document in a tab"
 msgstr "Sukurti naują dokumentą kortelėje"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
-#| msgid "Open a New Document"
+msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "Atverti dokumentą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
-#| msgid "Save the current file"
+msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "Įrašyti dokumentą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
-#| msgid "Save the current file"
+msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "Įrašyti dokumentą nauju failo pavadinimu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
-#| msgid "Create a new document"
+msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "Įrašyti visus dokumentus"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
-#| msgid "Close Document"
+msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "Užverti dokumentą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
-#| msgid "Close Document"
+msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "Užverti visus dokumentus"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
-#| msgid "Append to current document"
+msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
 msgstr "Atverti paskutinį užvertą dokumentą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
-#| msgid "Show the next page"
+msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "Eiti į kitą dokumentą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
-#| msgid "Show the previous page"
+msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "Eiti į ankstesnį dokumentą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
-#| msgid "Set Location to First Document"
+msgctxt "shortcut window"
 msgid "Switch to the first - ninth document"
-msgstr "Eiti į pirmą - devintąjį dokumentą"
+msgstr "Eiti į pirmąjį - devintąjį dokumentą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgctxt "shortcut window"
 msgid "Windows and Panels"
 msgstr "Langai ir polangiai"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
-#| msgid "Create a new document"
+msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "Sukurti naują dokumentą lange"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
-#| msgid "Create a new document"
+msgctxt "shortcut window"
 msgid "Create a new tab group"
 msgstr "Sukurti naują kortelių grupę"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
-#| msgid "Hide panel"
+msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "Rodyti šoninį polangį"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
-#| msgid "_Bottom Panel"
+msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "Rodyti apatinį polangį"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
-#| msgid "_Fullscreen"
+msgctxt "shortcut window"
 msgid "Fullscreen on / off"
 msgstr "Viso ekrano veiksena"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
-#| msgid "Show the application's version"
+msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Išeiti iš programos"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+msgctxt "shortcut window"
+msgid "Find and Replace"
+msgstr "Surasti ir pakeisti"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
-#| msgctxt "label of the find button"
-#| msgid "_Find"
+msgctxt "shortcut window"
 msgid "Find"
 msgstr "Rasti"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "Rasti kitą atitikmenį"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
-#| msgid "Show the previous page"
+msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "Rasti ankstesnį atitikmenį"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
-#| msgid "_Clear Highlight"
+msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "Išvalyti paryškinimą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
-#| msgid "_Go to Line…"
+msgctxt "shortcut window"
 msgid "Go to line"
 msgstr "Eiti į eilutę"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "Kopijuoti ir įdėti"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Kopijuoti pažymėtą tekstą į iškarpinę"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Iškirpti pažymėtą tekstą į iškarpinę"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgctxt "shortcut window"
 msgid "Paste text from clipboard"
 msgstr "Įdėti tekstą iš iškarpinės"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
-#| msgid "Find and Replace"
+msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "Atšaukti ir pakartoti"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Atšaukti paskutinę komandą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
-#| msgid "Run command"
+msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Pakartoti paskutinę komandą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Pasirinkimas"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
-#| msgid "Select _All"
+msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Pažymėti visą tekstą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
-#| msgid "Edit"
+msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Redagavimas"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "Perjungti įterpimą / perrašymą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
-#| msgid "Highlight current line"
+msgctxt "shortcut window"
 msgid "Delete current line"
 msgstr "Ištrinti dabartinę eilutę"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
-#| msgid "Export selected snippets"
+msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "Sujungti pažymėtas eilutes"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
-#| msgid "Current line"
+msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "Perkelti dabartinę eilutę aukštyn"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
-#| msgid "Current line"
+msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "Perkelti dabartinę eilutę žemyn"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
-#| msgid "Current word"
+msgctxt "shortcut window"
 msgid "Move current word left"
 msgstr "Perkelti dabartinį žodį kairėn"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
-#| msgid "Current word"
+msgctxt "shortcut window"
 msgid "Move current word right"
 msgstr "Perkelti dabartinį žodį dešinėn"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgctxt "shortcut window"
 msgid "Convert to uppercase"
 msgstr "Paversti didžiosiomis"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "Paversti mažosiomis"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
-#| msgid "_Ignore case"
+msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "Apversti raidžių registrą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgctxt "shortcut window"
 msgid "Increment number at cursor"
-msgstr "Padidinti skaičių ties žymikliu"
+msgstr "Padidinti skaičių ties žymekliu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgctxt "shortcut window"
 msgid "Decrement number at cursor"
-msgstr "Sumažinti skaičių ties žymikliu"
+msgstr "Sumažinti skaičių ties žymekliu"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+msgctxt "shortcut window"
+msgid "Tools"
+msgstr "Įrankiai"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
-#| msgid "Check Spelling"
+msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "Tikrinti rašybą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
-#| msgid "Current document"
+msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "Spausdinti dokumentą"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Rodyti užbaigimo langą"
 
@@ -2667,6 +2625,10 @@ msgstr "_Dokumento statistika"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Dokumentas"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Pasirinkimas"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
@@ -3695,6 +3657,21 @@ msgstr "Įterpti datą/laiką"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Žymeklio vietoje įterpia esamą datą ir laiką"
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "File"
+#~ msgstr "Failas"
+
+#~ msgid "Edit"
+#~ msgstr "Keisti"
+
+#~ msgid "Search"
+#~ msgstr "Ieškoti"
+
+#~ msgid "Help"
+#~ msgstr "Žinynas"
 
 #~ msgid "Question"
 #~ msgstr "Klausimas"
