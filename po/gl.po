@@ -12,13 +12,13 @@
 # Antón Méixome <meixome@certima.net>, 2010.
 # Fran Diéguez <frandieguez@gnome.org>, 2009, 2010, 2011, 2012.
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2012.
-# Fran Dieguez <frandieguez@gnome.org>, 2012, 2013, 2014, 2015.
+# Fran Dieguez <frandieguez@gnome.org>, 2012, 2013, 2014, 2015, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-master-po-gl-116402.merged\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-14 17:01+0200\n"
-"PO-Revision-Date: 2015-09-14 17:02+0200\n"
+"POT-Creation-Date: 2016-02-24 20:05+0100\n"
+"PO-Revision-Date: 2016-02-24 20:11+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
 "Language-Team: gnome-l10n-gl@gnome.org\n"
 "Language: gl\n"
@@ -57,31 +57,27 @@ msgstr ""
 "O seu sistema de engadidos flexíbel permítelle adaptar o aplicativo ás súas "
 "necesidades e ao seu fluxo de traballo"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1
-msgid "gedit"
-msgstr "gedit"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:730
+#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Editor de texto"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:3
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
 msgid "Edit text files"
 msgstr "Editar ficheiros de texto"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
+#: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "Editor de texto gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:5
+#: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "Text;Editor;"
 msgstr "Texto;Editor;"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:6
+#: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "Open a New Window"
 msgstr "Abrir unha nova xanela"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:7
+#: ../data/org.gnome.gedit.desktop.in.in.h:6
 msgid "Open a New Document"
 msgstr "Abrir un novo documento"
 
@@ -626,23 +622,19 @@ msgstr "[FICHEIRO…] [+LIÑA[:COLUMNA]]"
 msgid "There was an error displaying the help."
 msgstr "Produciuse un erro ao mostrar a axuda."
 
-#: ../gedit/gedit-app.c:972
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codificación non válida."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:155
-msgid "Question"
-msgstr "Pregunta"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:317
+#: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Pechar _sen gardar"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:318
+#: ../gedit/gedit-close-confirmation-dialog.c:278
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
-#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:853
-#: ../gedit/gedit-commands-file.c:1567 ../gedit/gedit-encodings-dialog.c:194
+#: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
+#: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
 #: ../gedit/gedit-io-error-info-bar.c:130
 #: ../gedit/gedit-io-error-info-bar.c:511
 #: ../gedit/gedit-preferences-dialog.c:825
@@ -655,26 +647,25 @@ msgstr "Pechar _sen gardar"
 #: ../plugins/snippets/snippets/manager.py:866
 #: ../plugins/snippets/snippets/manager.py:904
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/resources/gtk/menus-default.ui.h:9
-#: ../gedit/resources/gtk/menus-traditional.ui.h:4
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus.ui.h:10
 msgid "_Save As…"
 msgstr "_Gardar como…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/gedit-commands-file.c:854 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/gedit-commands-file.c:855
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "_Gardar"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -688,13 +679,13 @@ msgstr[1] ""
 "Se non garda, os cambios desde os últimos %ld segundos perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:373
+#: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Se non garda, os cambios desde o último minuto perderanse permanentemente."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:379
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -709,7 +700,7 @@ msgstr[1] ""
 "Se non garda, os cambios desde o último minuto e %ld segundos perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -723,12 +714,12 @@ msgstr[1] ""
 "Se non garda, os cambios desde os últimos %ld minutos perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:404
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Se non garda, os cambios desde a última hora perderanse permanentemente."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -743,7 +734,7 @@ msgstr[1] ""
 "Se non garda, os cambios desde a última hora e %d minutos perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:425
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -755,29 +746,29 @@ msgstr[1] ""
 "Se non garda, os cambios desde as últimas %d horas perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:469
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Os cambios do documento «%s» perderanse permanentemente."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:474
+#: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Quere gardar os cambios do documento «%s» antes de pechar?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:489
-#: ../gedit/gedit-close-confirmation-dialog.c:647
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "O administrador do sistema desactivou o gardado."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:595
+#: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
 msgstr[0] "Os cambios realizados a %d documento perderanse permanentemente."
 msgstr[1] "Os cambios realizados a %d documentos perderanse permanentemente."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:603
+#: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -789,15 +780,15 @@ msgstr[1] ""
 "Hai %d documentos con cambios sen gardar. Quere gardar os cambios antes de "
 "pechar?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:623
+#: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Docum_entos con cambios non gardados:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "S_eleccione os documentos que quere gardar:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Se non garda, todos os seus cambios perderanse permanentemente."
 
@@ -814,11 +805,13 @@ msgstr[0] "Cargando %d ficheiro…"
 msgstr[1] "Cargando %d ficheiros…"
 
 #. Translators: "Open" is the title of the file chooser window.
-#: ../gedit/gedit-commands-file.c:456 ../gedit/resources/ui/gedit-window.ui.h:4
+#: ../gedit/gedit-commands-file.c:456
+msgctxt "window title"
 msgid "Open"
 msgstr "Abrir"
 
-#: ../gedit/gedit-commands-file.c:463 ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/gedit-commands-file.c:463
+#: ../gedit/resources/gtk/menus-traditional.ui.h:4
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:39
@@ -874,26 +867,28 @@ msgstr ""
 msgid "_Save As Plain Text"
 msgstr "Gardar como te_xto plano"
 
-#: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1018
+#: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
 msgid "Saving file '%s'…"
 msgstr "Gardando o ficheiro '%s'…"
 
-#: ../gedit/gedit-commands-file.c:846
+#. Translators: "Save As" is the title of the file chooser window.
+#: ../gedit/gedit-commands-file.c:847
+msgctxt "window title"
 msgid "Save As"
 msgstr "Gardar como"
 
-#: ../gedit/gedit-commands-file.c:1428
+#: ../gedit/gedit-commands-file.c:1429
 #, c-format
 msgid "Reverting the document '%s'…"
 msgstr "Recuperando o documento '%s'…"
 
-#: ../gedit/gedit-commands-file.c:1475
+#: ../gedit/gedit-commands-file.c:1476
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
 msgstr "Quere recuperar os cambios non gardados no documento '%s'?"
 
-#: ../gedit/gedit-commands-file.c:1484
+#: ../gedit/gedit-commands-file.c:1485
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld second will be permanently lost."
@@ -907,14 +902,14 @@ msgstr[1] ""
 "Os cambios realizados no documento nos últimos %ld segundos perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1493
+#: ../gedit/gedit-commands-file.c:1494
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
 "Os cambios realizados no documento no último minuto perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1499
+#: ../gedit/gedit-commands-file.c:1500
 #, c-format
 msgid ""
 "Changes made to the document in the last minute and %ld second will be "
@@ -929,7 +924,7 @@ msgstr[1] ""
 "Os cambios realizados no documento no último minuto e %ld segundos "
 "perderanse permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1509
+#: ../gedit/gedit-commands-file.c:1510
 #, c-format
 msgid ""
 "Changes made to the document in the last %ld minute will be permanently lost."
@@ -943,12 +938,12 @@ msgstr[1] ""
 "Os cambios realizados no documento nos últimos %ld minutos perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1524
+#: ../gedit/gedit-commands-file.c:1525
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
 "Os cambios realizados no documento na última hora perderanse permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1530
+#: ../gedit/gedit-commands-file.c:1531
 #, c-format
 msgid ""
 "Changes made to the document in the last hour and %d minute will be "
@@ -963,7 +958,7 @@ msgstr[1] ""
 "Os cambios realizados no documento na última hora e %d minutos perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1545
+#: ../gedit/gedit-commands-file.c:1546
 #, c-format
 msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
@@ -976,15 +971,15 @@ msgstr[1] ""
 "Os cambios realizados no documento nas últimas %d horas perderanse "
 "permanentemente."
 
-#: ../gedit/gedit-commands-file.c:1568
+#: ../gedit/gedit-commands-file.c:1569
 msgid "_Revert"
 msgstr "_Recuperar"
 
-#: ../gedit/gedit-commands-help.c:81
+#: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "O gedit é un editor de textos pequeno e lixeiro para o GNOME"
 
-#: ../gedit/gedit-commands-help.c:105
+#: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "Fran Diéguez <frandieguez@ubuntu.com>, 2009-2014.\n"
@@ -1017,16 +1012,16 @@ msgstr "Non se atopou «%s»"
 
 #: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
 #, c-format
-msgid "Unsaved Document %d"
+msgid "Untitled Document %d"
 msgstr "Documento non gardado %d"
 
-#: ../gedit/gedit-documents-panel.c:435
+#: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "Grupo de lapelas %i"
 
-#: ../gedit/gedit-documents-panel.c:535 ../gedit/gedit-window.c:1167
-#: ../gedit/gedit-window.c:1173 ../gedit/gedit-window.c:1181
+#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
+#: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
 msgid "Read-Only"
 msgstr "Só de lectura"
 
@@ -1100,7 +1095,7 @@ msgstr "Codificación de caracteres:"
 msgid "Line Ending:"
 msgstr "Finalización de liña:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1251
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1440,15 +1435,12 @@ msgstr "O ficheiro «%s» foi modificado no disco."
 msgid "Drop Changes and _Reload"
 msgstr "Rexeitar cambios e _recargar"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:6
-#: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
+#: ../gedit/gedit-io-error-info-bar.c:1182 ../gedit/resources/gtk/menus.ui.h:7
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
 msgid "_Reload"
 msgstr "_Recargar"
 
 #: ../gedit/gedit-io-error-info-bar.c:1187
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "_Ignorar"
 
@@ -1645,7 +1637,7 @@ msgstr "Mac OS Classic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:464
+#: ../gedit/gedit-view.c:468
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "_Mostrar os números de liña"
@@ -1654,74 +1646,73 @@ msgstr "_Mostrar os números de liña"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:657
+#: ../gedit/gedit-view-frame.c:671
 #, c-format
 msgid "%d of %d"
 msgstr "%d de %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:749
+#: ../gedit/gedit-view-frame.c:763
 msgid "_Wrap Around"
 msgstr "_Dar a volta"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:759
+#: ../gedit/gedit-view-frame.c:773
 msgid "Match as _Regular Expression"
 msgstr "Coincidir coa expresión _regular"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:787
 msgid "Match _Entire Word Only"
 msgstr "Coincidir só coa palabra com_pleta"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:801
 msgid "_Match Case"
 msgstr "Di_ferenciar maiúsculas de minúsculas"
 
-#: ../gedit/gedit-view-frame.c:1004
+#: ../gedit/gedit-view-frame.c:1023
 msgid "String you want to search for"
 msgstr "A cadea que quere buscar"
 
-#: ../gedit/gedit-view-frame.c:1016
+#: ../gedit/gedit-view-frame.c:1035
 msgid "Line you want to move the cursor to"
 msgstr "A liña á que quere mover o cursor"
 
-#: ../gedit/gedit-window.c:1004
+#: ../gedit/gedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "O corchete de coincidencia está fora de rango"
 
-#: ../gedit/gedit-window.c:1009
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "Non se encontrou o corchete coincidente"
 
-#: ../gedit/gedit-window.c:1014
+#: ../gedit/gedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Corchete coincidente encontrado na liña: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1049
+#: ../gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Li %d, Col %d"
 
-#: ../gedit/gedit-window.c:1233
+#: ../gedit/gedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Largura da tabulación: %u"
 
-#: ../gedit/gedit-window.c:1602
+#: ../gedit/gedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "Hai documentos sen gardar"
 
-#: ../gedit/gedit-window.c:2447
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "Cambiar páxina do panel lateral"
 
-#: ../gedit/gedit-window.c:2467 ../gedit/resources/gtk/menus-osx.ui.h:35
-#: ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Documentos"
 
@@ -1743,9 +1734,8 @@ msgid "Move to New Tab _Group"
 msgstr "Mover a un novo _grupo de lapelas"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
+#: ../gedit/resources/gtk/menus.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
@@ -1775,221 +1765,217 @@ msgstr "Realzar a liña actual"
 msgid "Text wrapping"
 msgstr "Axuste do texto"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
+#: ../gedit/resources/gtk/menus.ui.h:1
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_New Window"
 msgstr "_Xanela nova"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:2
-#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+#: ../gedit/resources/gtk/menus.ui.h:2
+#: ../gedit/resources/gtk/menus-traditional.ui.h:23
 msgid "_Preferences"
 msgstr "_Preferencias"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:3
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../plugins/spell/gedit-spell-plugin.c:364
+#: ../gedit/resources/gtk/menus.ui.h:3
+msgid "_Keyboard Shortcuts"
+msgstr "Atallos de _teclado"
+
+#: ../gedit/resources/gtk/menus.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:46
+#: ../plugins/spell/gedit-spell-plugin.c:238
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "A_xuda"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:47
 msgid "_About"
 msgstr "_Sobre"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../gedit/resources/gtk/menus.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
 msgid "_Quit"
 msgstr "_Saír"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:7
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
+#: ../gedit/resources/gtk/menus.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
 msgid "_Print…"
 msgstr "Im_primir…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
+#: ../gedit/resources/gtk/menus.ui.h:9
+#: ../gedit/resources/gtk/menus-traditional.ui.h:27
 msgid "_Fullscreen"
 msgstr "_Pantalla completa"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:10
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+#: ../gedit/resources/gtk/menus.ui.h:11
 msgid "Save _All"
 msgstr "Gardar _todo"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:11
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
+#: ../gedit/resources/gtk/menus.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:30
 msgid "_Find…"
 msgstr "_Buscar…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+#: ../gedit/resources/gtk/menus.ui.h:13
 msgid "_Find and Replace…"
 msgstr "Buscar e substituí_r…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:13
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
+#: ../gedit/resources/gtk/menus.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:34
 msgid "_Clear Highlight"
 msgstr "E_liminar o realce"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+#: ../gedit/resources/gtk/menus.ui.h:15
 msgid "_Go to Line…"
 msgstr "Ir á _liña…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:15
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
+#: ../gedit/resources/gtk/menus.ui.h:16
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Ver"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:16
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
+#: ../gedit/resources/gtk/menus.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:25
 msgid "Side _Panel"
 msgstr "_Panel lateral"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
+#: ../gedit/resources/gtk/menus.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:26
 msgid "_Bottom Panel"
 msgstr "Panel _inferior"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
+#: ../gedit/resources/gtk/menus.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:28
 msgid "_Highlight Mode…"
 msgstr "Modo de _realce…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus-osx.ui.h:34
+#: ../gedit/resources/gtk/menus.ui.h:20
 msgid "Tools"
 msgstr "Ferramentas"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
+#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:39
 msgid "_Close All"
 msgstr "_Pechar todos"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:1
-msgid "File"
-msgstr "Ficheiro"
+#: ../gedit/resources/gtk/menus-traditional.ui.h:1
+msgid "_File"
+msgstr "_Ficheiro"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
 msgid "_New"
 msgstr "_Novo"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Open _Recent"
 msgstr "Abrir _recente"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
 msgid "Reopen Closed _Tab"
 msgstr "Reabrir _lapela pechada"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
 msgid "Save _As…"
 msgstr "_Gardar como…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
-msgid "Edit"
-msgstr "Editar"
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+msgid "_Edit"
+msgstr "_Editar"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:15
 msgid "_Undo"
 msgstr "_Desfacer"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
+#: ../gedit/resources/gtk/menus-traditional.ui.h:16
 msgid "_Redo"
 msgstr "_Refacer"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
 msgid "C_ut"
 msgstr "Co_rtar"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
 msgid "_Paste"
 msgstr "_Pegar"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "E_liminar"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
 msgid "Overwrite _Mode"
 msgstr "Modo de _sobrescritura"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:22
 msgid "Select _All"
 msgstr "Seleccionar _todo"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
-msgid "Search"
-msgstr "Buscar"
+#: ../gedit/resources/gtk/menus-traditional.ui.h:24
+msgid "_View"
+msgstr "_Ver"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
+#: ../gedit/resources/gtk/menus-traditional.ui.h:29
+msgid "_Search"
+msgstr "_Buscar"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:31
 msgid "Find Ne_xt"
 msgstr "Buscar segu_inte"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
+#: ../gedit/resources/gtk/menus-traditional.ui.h:32
 msgid "Find Pre_vious"
 msgstr "Buscar an_terior"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
+#: ../gedit/resources/gtk/menus-traditional.ui.h:33
 msgid "Find and _Replace…"
 msgstr "Buscar e substituí_r…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
+#: ../gedit/resources/gtk/menus-traditional.ui.h:35
 msgid "Go to _Line…"
 msgstr "Ir á _liña…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
+#: ../gedit/resources/gtk/menus-traditional.ui.h:36
+msgid "_Tools"
+msgstr "_Ferramentas"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:37
+msgid "_Documents"
+msgstr "_Documentos"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:38
 msgid "_Save All"
 msgstr "Gardar _todo"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
+#: ../gedit/resources/gtk/menus-traditional.ui.h:40
 msgid "_New Tab Group"
 msgstr "Seg_uinte grupo de lapelas"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
+#: ../gedit/resources/gtk/menus-traditional.ui.h:41
 msgid "P_revious Tab Group"
 msgstr "Grupo de lapelas a_nterior"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
+#: ../gedit/resources/gtk/menus-traditional.ui.h:42
 msgid "Nex_t Tab Group"
 msgstr "Seg_uinte grupo de lapelas"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
+#: ../gedit/resources/gtk/menus-traditional.ui.h:43
 msgid "_Previous Document"
 msgstr "Documento an_terior"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
+#: ../gedit/resources/gtk/menus-traditional.ui.h:44
 msgid "N_ext Document"
 msgstr "Documento _seguinte"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
+#: ../gedit/resources/gtk/menus-traditional.ui.h:45
 msgid "_Move To New Window"
 msgstr "Mover a unha _xanela nova"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
-msgid "Help"
-msgstr "Axuda"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character Encodings"
@@ -2020,7 +2006,6 @@ msgid "Highlight Mode"
 msgstr "Modo de realce"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_Select"
 msgstr "_Seleccionar"
 
@@ -2186,7 +2171,7 @@ msgstr "Imprimir os nú_meros de liña"
 msgid "_Number every"
 msgstr "_Numerar cada"
 
-#. 'lines' from 'Number every 3 lines' in the 'Text Editor' tab of the print preferences.
+#.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
 msgid "lines"
 msgstr "liñas"
@@ -2315,8 +2300,263 @@ msgid "Search _backwards"
 msgstr "Buscar cara a _atrás"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
-msgid "_Wrap around"
+msgid "Wra_p around"
 msgstr "Dar a _volta"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+msgctxt "shortcut window"
+msgid "Documents"
+msgstr "Documentos"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgctxt "shortcut window"
+msgid "Create a new document in a tab"
+msgstr "Crear un documento novo nunha lapela"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgctxt "shortcut window"
+msgid "Open a document"
+msgstr "Abrir un documento"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgctxt "shortcut window"
+msgid "Save the document"
+msgstr "Gardar o documento"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgctxt "shortcut window"
+msgid "Save the document with a new filename"
+msgstr "Gardar o ficheiro actual cun nome de ficheiro novo"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgctxt "shortcut window"
+msgid "Save all the documents"
+msgstr "Gardar todos os documentos"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgctxt "shortcut window"
+msgid "Close the document"
+msgstr "Pechar o documento"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgctxt "shortcut window"
+msgid "Close all the documents"
+msgstr "Pechar todos os documentos"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgctxt "shortcut window"
+msgid "Reopen the most recently closed document"
+msgstr "Reabrir o documento pechado máis recente"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgctxt "shortcut window"
+msgid "Switch to the next document"
+msgstr "Cambiar ao seguinte documento"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgctxt "shortcut window"
+msgid "Switch to the previous document"
+msgstr "Cambiar ao anterior documento"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to the first - ninth document"
+msgstr "Cambiar ao primeiro - noveno documento"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgctxt "shortcut window"
+msgid "Windows and Panels"
+msgstr "Xanelas e paneles"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgctxt "shortcut window"
+msgid "Create a new document in a window"
+msgstr "Crear un novo documento nunha xanela"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgctxt "shortcut window"
+msgid "Create a new tab group"
+msgstr "Crear un novo grupo de lapelas"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgctxt "shortcut window"
+msgid "Show side panel"
+msgstr "Mostrar o panel lateral"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgctxt "shortcut window"
+msgid "Show bottom panel"
+msgstr "Mostrar o panel inferior"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgctxt "shortcut window"
+msgid "Fullscreen on / off"
+msgstr "Pantalla completa activada / desactivada"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgctxt "shortcut window"
+msgid "Quit the application"
+msgstr "Saír do aplicativo"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+msgctxt "shortcut window"
+msgid "Find and Replace"
+msgstr "Buscar e substituír"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "Buscar"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgctxt "shortcut window"
+msgid "Find the next match"
+msgstr "Buscar a seguinte ocorrencia"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgctxt "shortcut window"
+msgid "Find the previous match"
+msgstr "Buscar a anterior aparencia"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgctxt "shortcut window"
+msgid "Clear highlight"
+msgstr "Limpar realzado"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgctxt "shortcut window"
+msgid "Go to line"
+msgstr "Ir á liña"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgctxt "shortcut window"
+msgid "Copy and Paste"
+msgstr "Copiar e pegar"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgctxt "shortcut window"
+msgid "Copy selected text to clipboard"
+msgstr "Copiar o texto seleccionado ao portapapeis"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgctxt "shortcut window"
+msgid "Cut selected text to clipboard"
+msgstr "Cortar o texto seleccionado ao portapapeis"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgctxt "shortcut window"
+msgid "Paste text from clipboard"
+msgstr "Pegar texto desde o portapapeis"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgctxt "shortcut window"
+msgid "Undo and Redo"
+msgstr "Desfacer e refacer"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgctxt "shortcut window"
+msgid "Undo previous command"
+msgstr "Desfacer a orde anterior"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgctxt "shortcut window"
+msgid "Redo previous command"
+msgstr "Refacer a orde anterior"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+msgctxt "shortcut window"
+msgid "Selection"
+msgstr "Selección"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgctxt "shortcut window"
+msgid "Select all text"
+msgstr "Seleccionar todo o texto"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Editando"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgctxt "shortcut window"
+msgid "Toggle insert / overwrite"
+msgstr "Trocar inserir / sobrescribir"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgctxt "shortcut window"
+msgid "Delete current line"
+msgstr "Eliminar liña actual"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgctxt "shortcut window"
+msgid "Join selected lines"
+msgstr "Unir liñas seleccionadas"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgctxt "shortcut window"
+msgid "Move current line up"
+msgstr "Mover a liña actual arriba"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgctxt "shortcut window"
+msgid "Move current line down"
+msgstr "Mover a liña actual abaixo"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgctxt "shortcut window"
+msgid "Move current word left"
+msgstr "Mover a palabra actual á esquerda"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgctxt "shortcut window"
+msgid "Move current word right"
+msgstr "Mover a palabra actual á dereita"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgctxt "shortcut window"
+msgid "Convert to uppercase"
+msgstr "Converter a maiúsculas"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgctxt "shortcut window"
+msgid "Convert to lowercase"
+msgstr "Converter a minúsculas"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgctxt "shortcut window"
+msgid "Invert case"
+msgstr "Inverter as maiúsculas e minúsculas"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgctxt "shortcut window"
+msgid "Increment number at cursor"
+msgstr "Incrementar o número no cursor"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgctxt "shortcut window"
+msgid "Decrement number at cursor"
+msgstr "Decrementar o número no cursor"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+msgctxt "shortcut window"
+msgid "Tools"
+msgstr "Ferramentas"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgctxt "shortcut window"
+msgid "Check spelling"
+msgstr "Corrección ortográfica"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgctxt "shortcut window"
+msgid "Print the document"
+msgstr "Imprimir o documento"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgctxt "shortcut window"
+msgid "Show completion window"
+msgstr "Mostrar a xanela de completado"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
@@ -2325,6 +2565,10 @@ msgstr "Pechar documento"
 #: ../gedit/resources/ui/gedit-window.ui.h:2
 msgid "Open a file"
 msgstr "Abrir un ficheiro"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:4
+msgid "Open"
+msgstr "Abrir"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:5
 msgid "Create a new document"
@@ -3342,35 +3586,6 @@ msgstr "_Ordenar"
 msgid "Sorts a document or selected text."
 msgstr "Ordena un documento ou o texto seleccionado."
 
-#. No suggestions. Put something in the menu anyway...
-#. Translators: Displayed in the "Check Spelling"
-#. * dialog if there are no suggestions for the current
-#. * misspelled word.
-#.
-#: ../plugins/spell/gedit-automatic-spell-checker.c:573
-#: ../plugins/spell/gedit-spell-checker-dialog.c:152
-msgid "(no suggested words)"
-msgstr "(non hai suxestión de palabras)"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:596
-msgid "_More..."
-msgstr "_Máis…"
-
-#. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:636
-msgid "_Ignore All"
-msgstr "_Ignorar todos"
-
-#. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:645
-msgid "_Add"
-msgstr "Eng_adir"
-
-#. Prepend suggestions
-#: ../plugins/spell/gedit-automatic-spell-checker.c:682
-msgid "_Spelling Suggestions..."
-msgstr "_Suxestións de ortografía…"
-
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "_Verificación ortográfica…"
@@ -3383,116 +3598,7 @@ msgstr "Definir o _idioma…"
 msgid "_Highlight Misspelled Words"
 msgstr "_Realzar as palabras mal escritas"
 
-#: ../plugins/spell/gedit-spell-checker.c:464
-#, c-format
-msgid "Error when checking the spelling of word “%s”: %s"
-msgstr "Produciuse un erro ao comprobar a ortografía da palabra «%s»: %s"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:237
-msgid "Error:"
-msgstr "Erro:"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:274
-msgid "Completed spell checking"
-msgstr "Verificación ortográfica concluída"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:278
-msgid "No misspelled words"
-msgstr "Non hai palabras con erros ortográficos"
-
-#. Translators: Displayed in the "Check
-#. * Spelling" dialog if the current word
-#. * isn't misspelled.
-#.
-#: ../plugins/spell/gedit-spell-checker-dialog.c:508
-msgid "(correct spelling)"
-msgstr "(corrixir ortografía)"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:646
-msgid "Suggestions"
-msgstr "Suxestións"
-
-#. Translators: the first %s is the language name, and
-#. * the second %s is the locale name. Example:
-#. * "French (France)"
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:363
-#: ../plugins/spell/gedit-spell-checker-language.c:369
-#, c-format
-msgctxt "language"
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#. Translators: this refers to an unknown language code
-#. * (one which isn't in our built-in list).
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:378
-#, c-format
-msgctxt "language"
-msgid "Unknown (%s)"
-msgstr "Descoñecido (%s)"
-
-#. Translators: this refers the Default language used by the
-#. * spell checker
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:484
-msgctxt "language"
-msgid "Default"
-msgstr "predeterminado"
-
 #. ex:set ts=8 noet:
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-msgid "Set Language"
-msgstr "Definir o idioma"
-
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-msgid "Select the _language of the current document."
-msgstr "Seleccione o _idioma do documento actual."
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check Spelling"
-msgstr "Verificación ortográfica"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-msgid "Misspelled word:"
-msgstr "Palabra incorrecta:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
-msgid "word"
-msgstr "palabra"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-msgid "Change _to:"
-msgstr "Cambiar _por:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-msgid "Check _Word"
-msgstr "Corrixir pala_bra"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-msgid "_Suggestions:"
-msgstr "_Suxestións:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Ignore _All"
-msgstr "Ignorar _todos"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-msgid "Cha_nge"
-msgstr "Ca_mbiar"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-msgid "Change A_ll"
-msgstr "Cambiar _todos"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
-msgid "User dictionary:"
-msgstr "Dicionario do usuario:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-msgid "Add w_ord"
-msgstr "Engadir _palabra"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Corrector ortográfico"
@@ -3589,6 +3695,99 @@ msgstr "Inserir data e hora"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Insire a data e hora actuais na posición do cursor."
 
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "Question"
+#~ msgstr "Pregunta"
+
+#~ msgid "Help"
+#~ msgstr "Axuda"
+
+#~ msgid "(no suggested words)"
+#~ msgstr "(non hai suxestión de palabras)"
+
+#~ msgid "_More..."
+#~ msgstr "_Máis…"
+
+#~ msgid "_Ignore All"
+#~ msgstr "_Ignorar todos"
+
+#~ msgid "_Add"
+#~ msgstr "Eng_adir"
+
+#~ msgid "_Spelling Suggestions..."
+#~ msgstr "_Suxestións de ortografía…"
+
+#~ msgid "Error when checking the spelling of word “%s”: %s"
+#~ msgstr "Produciuse un erro ao comprobar a ortografía da palabra «%s»: %s"
+
+#~ msgid "Error:"
+#~ msgstr "Erro:"
+
+#~ msgid "Completed spell checking"
+#~ msgstr "Verificación ortográfica concluída"
+
+#~ msgid "No misspelled words"
+#~ msgstr "Non hai palabras con erros ortográficos"
+
+#~ msgid "(correct spelling)"
+#~ msgstr "(corrixir ortografía)"
+
+#~ msgid "Suggestions"
+#~ msgstr "Suxestións"
+
+#~ msgctxt "language"
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Unknown (%s)"
+#~ msgstr "Descoñecido (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Default"
+#~ msgstr "predeterminado"
+
+#~ msgid "Set Language"
+#~ msgstr "Definir o idioma"
+
+#~ msgid "Select the _language of the current document."
+#~ msgstr "Seleccione o _idioma do documento actual."
+
+#~ msgid "Check Spelling"
+#~ msgstr "Verificación ortográfica"
+
+#~ msgid "Misspelled word:"
+#~ msgstr "Palabra incorrecta:"
+
+#~ msgid "word"
+#~ msgstr "palabra"
+
+#~ msgid "Change _to:"
+#~ msgstr "Cambiar _por:"
+
+#~ msgid "Check _Word"
+#~ msgstr "Corrixir pala_bra"
+
+#~ msgid "_Suggestions:"
+#~ msgstr "_Suxestións:"
+
+#~ msgid "Ignore _All"
+#~ msgstr "Ignorar _todos"
+
+#~ msgid "Cha_nge"
+#~ msgstr "Ca_mbiar"
+
+#~ msgid "Change A_ll"
+#~ msgstr "Cambiar _todos"
+
+#~ msgid "User dictionary:"
+#~ msgstr "Dicionario do usuario:"
+
+#~ msgid "Add w_ord"
+#~ msgstr "Engadir _palabra"
+
 #~ msgid "Minimap is Visible"
 #~ msgstr "O minimapa é visíbel"
 
@@ -3609,9 +3808,6 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 
 #~ msgid "The document is empty."
 #~ msgstr "O documento está baleiro."
-
-#~ msgid "Check spelling"
-#~ msgstr "Corrección ortográfica"
 
 #~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 #~ msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
@@ -3783,14 +3979,8 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 #~ msgid "_Snippets:"
 #~ msgstr "_Fragmentos:"
 
-#~ msgid "_Edit:"
-#~ msgstr "_Editar:"
-
 #~ msgid "File Name"
 #~ msgstr "Nome de ficheiro"
-
-#~ msgid "_Tools:"
-#~ msgstr "_Ferramentas:"
 
 #~ msgid "Language:"
 #~ msgstr "Idioma:"
@@ -3824,12 +4014,6 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 #~ msgid "column"
 #~ msgstr "columna"
 
-#~ msgid "_View"
-#~ msgstr "_Ver"
-
-#~ msgid "_Documents"
-#~ msgstr "_Documentos"
-
 #~ msgid "_Open..."
 #~ msgstr "_Abrir…"
 
@@ -3842,14 +4026,8 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 #~ msgid "_Contents"
 #~ msgstr "_Contidos"
 
-#~ msgid "About this application"
-#~ msgstr "Sobre este aplicativo"
-
 #~ msgid "Save _As..."
 #~ msgstr "Gardar _como…"
-
-#~ msgid "Save the current file with a different name"
-#~ msgstr "Gardar o ficheiro actual cun nome diferente"
 
 #~ msgid "Revert to a saved version of the file"
 #~ msgstr "Recuperar unha versión gardada do ficheiro"
@@ -3863,9 +4041,6 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 #~ msgid "_Print..."
 #~ msgstr "_Imprimir…"
 
-#~ msgid "Print the current page"
-#~ msgstr "Imprimir a páxina actual"
-
 #~ msgid "Undo the last action"
 #~ msgstr "Desfacer a última acción"
 
@@ -3878,14 +4053,8 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 #~ msgid "Copy the selection"
 #~ msgstr "Copiar a selección"
 
-#~ msgid "Paste the clipboard"
-#~ msgstr "Pegar o contido do portarretallos"
-
 #~ msgid "Delete the selected text"
 #~ msgstr "Eliminar o texto seleccionado"
-
-#~ msgid "Select the entire document"
-#~ msgstr "Seleccionar todo o documento"
 
 #~ msgid "_Highlight Mode..."
 #~ msgstr "Modo de _realce…"
@@ -3922,15 +4091,6 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 
 #~ msgid "Close all open files"
 #~ msgstr "Pechar todos os ficheiros abertos"
-
-#~ msgid "Create a new tab group"
-#~ msgstr "Crear un grupo de lapelas novo"
-
-#~ msgid "Switch to the previous tab group"
-#~ msgstr "Cambiar ao grupo de lapelas anterior"
-
-#~ msgid "Switch to the next tab group"
-#~ msgstr "Cambiar ao seguinte grupo de lapelas"
 
 #~ msgid "Activate previous document"
 #~ msgstr "Activar o documento anterior"
@@ -3985,12 +4145,6 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 
 #~ msgid "All _Lower Case"
 #~ msgstr "Todo en m_inúsculas"
-
-#~ msgid "Change selected text to lower case"
-#~ msgstr "Cambia o texto seleccionado a minúsculas"
-
-#~ msgid "_Invert Case"
-#~ msgstr "_Inverter as maiúsculas e minúsculas"
 
 #~ msgid "Invert the case of selected text"
 #~ msgstr "Inverter as maiúsculas e minúsculas do texto seleccionado"
@@ -4147,9 +4301,6 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 
 #~ msgid "Previous location"
 #~ msgstr "Localización anterior"
-
-#~ msgid "Go to previous location"
-#~ msgstr "Ir á localización anterior"
 
 #~ msgid "Go to a previously opened location"
 #~ msgstr "Ir a unha localización aberta anteriormente"
@@ -4331,9 +4482,6 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 
 #~ msgid "Code content type"
 #~ msgstr "Tipo de contido do código"
-
-#~ msgid "Color of selected links"
-#~ msgstr "Cor das ligazóns seleccionadas"
 
 #~ msgid "Color of selected links (deprecated)"
 #~ msgstr "Cor das ligazóns seleccionadas (obsoleto)"
