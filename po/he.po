@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-15 14:34+0200\n"
-"PO-Revision-Date: 2016-01-15 14:48+0200\n"
+"POT-Creation-Date: 2016-03-02 13:03+0200\n"
+"PO-Revision-Date: 2016-03-02 13:10+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -49,31 +49,27 @@ msgstr ""
 "תוספי מערכת גמישים מאפשרים לך להתאים את היישום לצרכיך ולסגל אותו למהלך "
 "העבודה שלך."
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1
-msgid "gedit"
-msgstr "gedit"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:730
+#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "עורך טקסט"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:3
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
 msgid "Edit text files"
 msgstr "עריכת קובצי טקסט"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
+#: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "עורך הטקסט gedit"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:5
+#: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "Text;Editor;"
 msgstr "טקסט;עורך;עריכה;"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:6
+#: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "Open a New Window"
 msgstr "פתיחת חלון חדש"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:7
+#: ../data/org.gnome.gedit.desktop.in.in.h:6
 msgid "Open a New Document"
 msgstr "יצירת מסמך חדש"
 
@@ -605,7 +601,7 @@ msgstr "[FILE...] [+LINE[:COLUMN]]"
 msgid "There was an error displaying the help."
 msgstr "ארעה שגיאה בהצגת העזרה."
 
-#: ../gedit/gedit-app.c:977
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: invalid encoding."
@@ -635,13 +631,13 @@ msgid "_Cancel"
 msgstr "_ביטול"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:306
-#: ../gedit/resources/gtk/menus-default.ui.h:10
-#: ../gedit/resources/gtk/menus-traditional.ui.h:4
+#: ../gedit/resources/gtk/menus.ui.h:10
 msgid "_Save As…"
 msgstr "שמירה _בשם…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:306
-#: ../gedit/gedit-commands-file.c:855 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/gedit-commands-file.c:855
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -770,7 +766,8 @@ msgctxt "window title"
 msgid "Open"
 msgstr "פתיחה"
 
-#: ../gedit/gedit-commands-file.c:463 ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/gedit-commands-file.c:463
+#: ../gedit/resources/gtk/menus-traditional.ui.h:4
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:39
@@ -947,13 +944,13 @@ msgstr "‏\"%s\" לא נמצא"
 msgid "Untitled Document %d"
 msgstr "מסמך שלא נשמר %d"
 
-#: ../gedit/gedit-documents-panel.c:434
+#: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "קבוצת לשוניות %i"
 
-#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
-#: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
+#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
+#: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
 msgid "Read-Only"
 msgstr "(קריאה בלבד)"
 
@@ -1027,7 +1024,7 @@ msgstr "קידוד תווים:"
 msgid "Line Ending:"
 msgstr "סיום שורה:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1250
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1347,10 +1344,8 @@ msgstr "הקובץ „%s“ השתנה בכונן."
 msgid "Drop Changes and _Reload"
 msgstr "השמטת השינויים ו_רענון"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:7
-#: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
+#: ../gedit/gedit-io-error-info-bar.c:1182 ../gedit/resources/gtk/menus.ui.h:7
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
 msgid "_Reload"
 msgstr "_טעינה מחדש"
 
@@ -1433,7 +1428,6 @@ msgstr "כלום"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "חיפוש והחלפה"
 
@@ -1548,7 +1542,7 @@ msgstr "Mac OS קלסי"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:464
+#: ../gedit/gedit-view.c:468
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "_הצגת מספרי שורות"
@@ -1590,42 +1584,40 @@ msgstr "המחרוזת שברצונך לחפש"
 msgid "Line you want to move the cursor to"
 msgstr "השורה אליה להעביר את הסמן"
 
-#: ../gedit/gedit-window.c:1003
+#: ../gedit/gedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "הסוגר התואם הוא מחוץ לטווח"
 
-#: ../gedit/gedit-window.c:1008
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "הסוגר התואם לא נמצא"
 
-#: ../gedit/gedit-window.c:1013
+#: ../gedit/gedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "הסוגר התואם נמצא בשורה: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1048
+#: ../gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  שורה %d, עמודה %d"
 
-#: ../gedit/gedit-window.c:1232
+#: ../gedit/gedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "רוחב טאב: %u"
 
-#: ../gedit/gedit-window.c:1601
+#: ../gedit/gedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "ישנם מסמכים שלא נשמרו"
 
-#: ../gedit/gedit-window.c:2449
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "שינוי דף הסרגל הצדי"
 
-#: ../gedit/gedit-window.c:2469 ../gedit/resources/gtk/menus-osx.ui.h:35
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
-#: ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "מסמכים"
 
@@ -1647,9 +1639,8 @@ msgid "Move to New Tab _Group"
 msgstr "ה_עברה לקבוצת לשוניות חדשה"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:22
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
+#: ../gedit/resources/gtk/menus.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
@@ -1679,228 +1670,217 @@ msgstr "הדגשת את השורה הנוכחית"
 msgid "Text wrapping"
 msgstr "גלישת טקסט"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
+#: ../gedit/resources/gtk/menus.ui.h:1
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_New Window"
 msgstr "_חלון חדש"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:2
-#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+#: ../gedit/resources/gtk/menus.ui.h:2
+#: ../gedit/resources/gtk/menus-traditional.ui.h:23
 msgid "_Preferences"
 msgstr "ה_עדפות"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:3
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:45
+#: ../gedit/resources/gtk/menus.ui.h:3
 msgid "_Keyboard Shortcuts"
 msgstr "_צירופי מקשים"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
-#: ../gedit/resources/gtk/menus-osx.ui.h:46
-#: ../plugins/spell/gedit-spell-plugin.c:239
+#: ../gedit/resources/gtk/menus.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:46
+#: ../plugins/spell/gedit-spell-plugin.c:238
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:47
 msgid "_About"
 msgstr "על _אודות"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:6
-#: ../gedit/resources/gtk/menus-traditional.ui.h:21
+#: ../gedit/resources/gtk/menus.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
 msgid "_Quit"
 msgstr "י_ציאה"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
+#: ../gedit/resources/gtk/menus.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
 msgid "_Print…"
 msgstr "ה_דפסה…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:9
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
+#: ../gedit/resources/gtk/menus.ui.h:9
+#: ../gedit/resources/gtk/menus-traditional.ui.h:27
 msgid "_Fullscreen"
 msgstr "_מסך מלא"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:11
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+#: ../gedit/resources/gtk/menus.ui.h:11
 msgid "Save _All"
 msgstr "_שמירת הכול"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
+#: ../gedit/resources/gtk/menus.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:30
 msgid "_Find…"
 msgstr "_חיפוש…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:13
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+#: ../gedit/resources/gtk/menus.ui.h:13
 msgid "_Find and Replace…"
 msgstr "חיפוש והח_לפה…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
+#: ../gedit/resources/gtk/menus.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:34
 msgid "_Clear Highlight"
 msgstr "ניקוי הה_דגשה"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:15
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+#: ../gedit/resources/gtk/menus.ui.h:15
 msgid "_Go to Line…"
 msgstr "מעבר _לשורה…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:16
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
+#: ../gedit/resources/gtk/menus.ui.h:16
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "תצוגה"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
+#: ../gedit/resources/gtk/menus.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:25
 msgid "Side _Panel"
 msgstr "חלונית ה_צד"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
+#: ../gedit/resources/gtk/menus.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:26
 msgid "_Bottom Panel"
 msgstr "החלונית ה_תחתונה"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
+#: ../gedit/resources/gtk/menus.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:28
 msgid "_Highlight Mode…"
 msgstr "מצב הד_גשה…"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus-osx.ui.h:34
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+#: ../gedit/resources/gtk/menus.ui.h:20
 msgid "Tools"
 msgstr "כלים"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
+#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:39
 msgid "_Close All"
 msgstr "_סגירת הכל"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:1
-msgid "File"
-msgstr "קובץ"
+#: ../gedit/resources/gtk/menus-traditional.ui.h:1
+msgid "_File"
+msgstr "_קובץ"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
 msgid "_New"
 msgstr "_חדש"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Open _Recent"
 msgstr "פתיחת מסמך _אחרון"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
 msgid "Reopen Closed _Tab"
 msgstr "פתיחה מחדש ל_שונית שנסגרה"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
 msgid "Save _As…"
 msgstr "שמירה _בשם…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
-msgid "Edit"
-msgstr "עריכה"
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+msgid "_Edit"
+msgstr "_עריכה"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:15
 msgid "_Undo"
 msgstr "_ביטול"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
+#: ../gedit/resources/gtk/menus-traditional.ui.h:16
 msgid "_Redo"
 msgstr "_ביצוע שוב"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
 msgid "C_ut"
 msgstr "_גזירה"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_Copy"
 msgstr "ה_עתקה"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
 msgid "_Paste"
 msgstr "ה_דבקה"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_מחיקה"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
 msgid "Overwrite _Mode"
 msgstr "_מצב דריסה"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:22
 msgid "Select _All"
 msgstr "בחירת _הכול"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
-msgid "Search"
-msgstr "חיפוש"
+#: ../gedit/resources/gtk/menus-traditional.ui.h:24
+msgid "_View"
+msgstr "_תצוגה"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
+#: ../gedit/resources/gtk/menus-traditional.ui.h:29
+msgid "_Search"
+msgstr "_חיפוש"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:31
 msgid "Find Ne_xt"
 msgstr "חיפוש ה_בא"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
+#: ../gedit/resources/gtk/menus-traditional.ui.h:32
 msgid "Find Pre_vious"
 msgstr "חיפוש ה_קודם"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
+#: ../gedit/resources/gtk/menus-traditional.ui.h:33
 msgid "Find and _Replace…"
 msgstr "חיפוש והח_לפה…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
+#: ../gedit/resources/gtk/menus-traditional.ui.h:35
 msgid "Go to _Line…"
 msgstr "מעבר _לשורה…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
+#: ../gedit/resources/gtk/menus-traditional.ui.h:36
+msgid "_Tools"
+msgstr "_כלים"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:37
+msgid "_Documents"
+msgstr "_מסמכים"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:38
 msgid "_Save All"
 msgstr "_שמירת הכול"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
+#: ../gedit/resources/gtk/menus-traditional.ui.h:40
 msgid "_New Tab Group"
 msgstr "קבוצת לשוניות _חדשה"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
+#: ../gedit/resources/gtk/menus-traditional.ui.h:41
 msgid "P_revious Tab Group"
 msgstr "קבוצת הלשוניות ה_קודמת"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
+#: ../gedit/resources/gtk/menus-traditional.ui.h:42
 msgid "Nex_t Tab Group"
 msgstr "קבוצת הלשוניות ה_באה"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
+#: ../gedit/resources/gtk/menus-traditional.ui.h:43
 msgid "_Previous Document"
 msgstr "ה_מסמך הקודם"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
+#: ../gedit/resources/gtk/menus-traditional.ui.h:44
 msgid "N_ext Document"
 msgstr "המסמך ה_בא"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
+#: ../gedit/resources/gtk/menus-traditional.ui.h:45
 msgid "_Move To New Window"
 msgstr "ה_עברה לחלון חדש"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
-msgid "Help"
-msgstr "עזרה"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character Encodings"
@@ -2228,196 +2208,258 @@ msgstr "חיפוש _אחורה"
 msgid "Wra_p around"
 msgstr "_גלישה מסביב"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+msgctxt "shortcut window"
+msgid "Documents"
+msgstr "מסמכים"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgctxt "shortcut window"
 msgid "Create a new document in a tab"
-msgstr "יצירת מסמך חדש בלשונית"
+msgstr "יצירת מסמך חדש בלשוניתו"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "פתיחת מסמך"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "שמירת המסמך"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "שמירת המסמך בשם קובץ חדש"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "שמירת כל המסמכים"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "סגירת המסמך"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "סגירת כל המסמכים"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
-msgstr "פתחה מחדש של המסמך האחרון שנסגר"
+msgstr "פתיחה מחדש של המסמך האחרון שנסגר"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "מעבר למסמך הבא"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "מעבר למסמך הקודם"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgctxt "shortcut window"
 msgid "Switch to the first - ninth document"
 msgstr "מעבר למסמך הראשון - התשיעי"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgctxt "shortcut window"
 msgid "Windows and Panels"
-msgstr "חלונות לוחות"
+msgstr "חלונות ולוחות"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "יצירת מסמך חדש בחלון"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgctxt "shortcut window"
 msgid "Create a new tab group"
 msgstr "יצירת קבוצת לשוניות חדשה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "הצגת הלוח הצדי"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "הצגת הלוח התחתון"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgctxt "shortcut window"
 msgid "Fullscreen on / off"
 msgstr "מסך מלא"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgctxt "shortcut window"
 msgid "Quit the application"
-msgstr "יציאה מהיישון"
+msgstr "יציאה מהיישום"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+msgctxt "shortcut window"
+msgid "Find and Replace"
+msgstr "חיפוש והחלפה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgctxt "shortcut window"
 msgid "Find"
 msgstr "חיפוש"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "חיפוש ההתאמה הבאה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "חיפוש ההתאמה הקודמת"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "ניקוי הדגשה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgctxt "shortcut window"
 msgid "Go to line"
 msgstr "מעבר לשורה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgctxt "shortcut window"
 msgid "Copy and Paste"
-msgstr "העתקה והדפסה"
+msgstr "העתקה והדבקה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "התקהת הטקסט הנבחר ללוח הגזירים"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "גזירת הטקסט הנבחר ללוח הגזירים"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgctxt "shortcut window"
 msgid "Paste text from clipboard"
 msgstr "הדבקת טקסט מלוח הגזירים"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "ביטול וביצוע חוזר"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "ביטול הפקודה האחרונה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "ביצוע חוזר של הפקודה האחרונה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgctxt "shortcut window"
 msgid "Selection"
 msgstr "בחירה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "בחירת כל הטקסט"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgctxt "shortcut window"
 msgid "Editing"
 msgstr "עריכה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "מעבר בין מצב הכנסה / דריסה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgctxt "shortcut window"
 msgid "Delete current line"
 msgstr "מחיקת השורה הנוכחית"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "צירוף השורות הנבחרות"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "העברת השורה הנוכחית מעלה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "העברת השורה הנוכחית מטה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgctxt "shortcut window"
 msgid "Move current word left"
 msgstr "העברה המילה הנוכחית שמאלה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgctxt "shortcut window"
 msgid "Move current word right"
 msgstr "העברת השורה הנוכחית ימינה"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgctxt "shortcut window"
 msgid "Convert to uppercase"
 msgstr "המרה לאותיות רישיות"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "המרה לאותיות קטנות"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "החלפה בין אותיות רישיות וקטנות"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgctxt "shortcut window"
 msgid "Increment number at cursor"
-msgstr ""
+msgstr "הגדלת המספר שתחת הסמן"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgctxt "shortcut window"
 msgid "Decrement number at cursor"
-msgstr ""
+msgstr "הקטנת המספר שתחת הסמן"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+msgctxt "shortcut window"
+msgid "Tools"
+msgstr "כלים"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "בדיקת איות"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "הדפסת המסמך"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "הצגת חלון הידור"
 
@@ -2520,6 +2562,10 @@ msgstr "סטטיסטיקת ה_מסמך"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "מסמך"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "בחירה"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
@@ -3545,6 +3591,15 @@ msgstr "הוספת תאריך/שעה"
 msgid "Inserts current date and time at the cursor position."
 msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמן."
 
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "Edit"
+#~ msgstr "עריכה"
+
+#~ msgid "Help"
+#~ msgstr "עזרה"
+
 #~ msgid "Question"
 #~ msgstr "שאלה"
 
@@ -3821,9 +3876,6 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgid "_Snippets:"
 #~ msgstr "מ_קטעים:"
 
-#~ msgid "_Edit:"
-#~ msgstr "_עריכה:"
-
 #~ msgid "Show the application's help"
 #~ msgstr "Show the application's help"
 
@@ -3846,9 +3898,6 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 #~ msgid "File Name"
 #~ msgstr "שם הקובץ"
 
-#~ msgid "_Tools:"
-#~ msgstr "_כלים:"
-
 #~ msgid "Language:"
 #~ msgstr "שפה:"
 
@@ -3860,12 +3909,6 @@ msgstr "הוספת התאריך והשעה הנוכחיים במיקום הסמ�
 
 #~ msgid "column"
 #~ msgstr "עמודה"
-
-#~ msgid "_View"
-#~ msgstr "_תצוגה"
-
-#~ msgid "_Documents"
-#~ msgstr "_מסמכים"
 
 #~ msgid "_Open..."
 #~ msgstr "_פתיחה..."
