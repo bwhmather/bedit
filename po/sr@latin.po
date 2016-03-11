@@ -1,28 +1,30 @@
 # Serbian translation of gedit
-# Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2016.
+# Courtesy of Prevod.org team (http://prevod.org/) -- 2003—2015.
 # This file is distributed under the same license as the gedit package.
 # Goran Rakić <grakic@devbase.net>
 # Danilo Šegan <danilo@prevod.org>, 2005.
 # Igor Nestorović <igor@prevod.org>, 2005.
 # Branko Kokanović <branko.kokanovic@gmail.com>, 2010.
-# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011—2016.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2011—2015.
 # Miloš Popović <gpopac@gmail.com>, 2015.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&k"
-"eywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-20 06:59+0000\n"
-"PO-Revision-Date: 2016-02-20 10:19+0200\n"
-"Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
-"Language-Team: Serbian <gnom@prevod.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-02-27 06:59+0000\n"
+"PO-Revision-Date: 2016-02-27 10:03+0100\n"
+"Last-Translator: Marko M. Kostić <marko.m.kostic@gmail.com>\n"
+"Language-Team: srpski <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -78,7 +80,7 @@ msgstr "Otvorite novi dokument"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
-msgstr "Korišćenje osnovnog slovnog lika"
+msgstr "Koristi podrazumevani font"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
@@ -87,10 +89,10 @@ msgid ""
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"Da li će biti korišćen osnovni slovni lik sistema stalne širine za prikaz "
-"teksta umesto slovnog lika navedenog u podešavanjima programa Vilenjakova "
-"beležnica. Ako je ova opcija isključena, slovni lik naveden u opciji „Slovni "
-"lik uređivača“ će biti korišćen umesto slovnog lika sistema."
+"Da li će biti korišćen podrazumevani font sistema stalne širine za prikaz "
+"teksta umesto fonta navedenog u podešavanjima Vilenjakove beležnice. Ako je "
+"ova opcija isključena, font naveden u opciji „Font uređivača“ će biti "
+"korišćen umesto fonta sistema."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
 msgid "'Monospace 12'"
@@ -98,16 +100,15 @@ msgstr "„Monospejs 12“"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
-msgstr "Slovni lik uređivača"
+msgstr "Font uređivača"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
-"Proizvoljni slovni lik koji će biti korišćen u prostoru za unos teksta. Ovo "
-"će jedino imati efekta ako je štiklirana kućica „Koristi poroizvoljni slovni "
-"lik“."
+"Proizvoljni font koji će biti korišćen u prostoru za unos teksta. Ovo će "
+"jedino imati efekta ako je štiklirana kućica „Koristi podrazumevani font“."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:6
 msgid "Style Scheme"
@@ -452,14 +453,13 @@ msgstr "„Monospejs 9“"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid "Body Font for Printing"
-msgstr "Slovni lik za štampanje"
+msgstr "Font za štampanje"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"Određuje koji će slovni lik biti korišćen za telo dokumenta prilikom "
-"štampanja."
+"Određuje koji će font biti korišćen za telo dokumenta prilikom štampanja."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "'Sans 11'"
@@ -467,15 +467,15 @@ msgstr "„Sans 11“"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid "Header Font for Printing"
-msgstr "Slovni lik za štampanje zaglavlja"
+msgstr "Font za štampanje zaglavlja"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:73
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"Određuje koji će slovni lik biti korišćen za štampanje zaglavlja stranice. Ovo "
-"će jedino imati efekta ako je uključena opcija „Štampanje zaglavlja“."
+"Određuje koji će font biti korišćen za štampanje zaglavlja stranice. Ovo će "
+"jedino imati efekta ako je uključena opcija „Štampanje zaglavlja“."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 8'"
@@ -483,14 +483,14 @@ msgstr "„Sans 8“"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Line Number Font for Printing"
-msgstr "Slovni lik za štampanje broja reda"
+msgstr "Font za štampanje broja reda"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"Određuje koji će slovni lik biti korišćen za štampanje brojeva redova. Ovo će "
+"Određuje koji će font biti korišćen za štampanje brojeva redova. Ovo će "
 "jedino imati efekta ukoliko opcija „Štampanje brojeva redova“ nije postavljena "
 "na 0."
 
@@ -538,10 +538,10 @@ msgid ""
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
 "Spisak kodiranja koja se prikazuju u listi „Kodiranje znakova“ unutar "
-"prozorčeta za otvaranje/čuvanje datoteka. Trenutno (CURRENT) označava "
-"podrazumevano kodiranje u za jezik sistema. Samo prepoznata kodiranja se "
-"koriste. Podrazumevana vrednost je prazan spisak, pri čemu će program "
-"izabrati odgovarajuće vrednosti za vašu državu i jezik."
+"prozorčeta za otvaranje/čuvanje datoteka. Trenutno (CURRENT) označava trenutno "
+"lokalno kodiranje. Samo prepoznata kodiranja se koriste. Podrazumevana "
+"vrednost je prazan spisak, pri čemu će program izabrati odgovarajuće "
+"vrednosti za vašu državu i jezik."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Active plugins"
@@ -811,10 +811,9 @@ msgstr[3] "Učitavam datoteku…"
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
-#| msgid "Open"
 msgctxt "window title"
 msgid "Open"
-msgstr "Otvorite"
+msgstr "Otvaranje datoteke"
 
 #: ../gedit/gedit-commands-file.c:463
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
@@ -880,10 +879,9 @@ msgstr "Čuvam datoteku „%s“…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
-#| msgid "Save As"
 msgctxt "window title"
 msgid "Save As"
-msgstr "Sačuvajte kao"
+msgstr "Čuvanje datoteke"
 
 #: ../gedit/gedit-commands-file.c:1429
 #, c-format
@@ -1007,10 +1005,12 @@ msgstr ""
 "Goran Rakić <grakic@devbase.net>\n"
 "Danilo Šegan <danilo@prevod.org>\n"
 "Strahinja Radić <vilinkamen@mail.ru>\n"
-"Igor Nestorović <igor@prevod.org\n"
+"Igor Nestorović <igor@prevod.org>\n"
 "Slobodan D. Sredojević <slobo@akrep.be>\n"
 "Branko Kokanović <branko.kokanovic@gmail.com>\n"
+"Miloš Popović <gpopac@gmail.com>\n"
 "Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
+"Marko M. Kostić <marko.m.kostic@gmail.com>\n"
 "\n"
 "http://prevod.org — prevod na srpski jezik."
 
@@ -1036,17 +1036,16 @@ msgstr "Nisam pronašao „%s“"
 
 #: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
 #, c-format
-#| msgid "Unsaved Document %d"
 msgid "Untitled Document %d"
-msgstr "Neimenovani dokument „%d“"
+msgstr "Neimenovan dokument „%d“"
 
 #: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "Grupa jezička %i"
 
-#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1166
-#: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
+#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
+#: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
 msgid "Read-Only"
 msgstr "Samo čitanje"
 
@@ -1120,7 +1119,7 @@ msgstr "Kodiranja znakova:"
 msgid "Line Ending:"
 msgstr "Završetak reda:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1250
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1475,13 +1474,12 @@ msgstr ""
 #: ../gedit/gedit-preferences-dialog.c:455
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
-"Kliknite na ovo dugme da izaberete slovni lik koji će biti korišćen u "
-"uređivaču"
+"Kliknite na ovo dugme da izaberete font koji će biti korišćen u uređivaču"
 
 #: ../gedit/gedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
-msgstr "_Koristi slovni lik sistema stalne širine (%s)"
+msgstr "_Koristi font sistema stalne širine (%s)"
 
 #: ../gedit/gedit-preferences-dialog.c:601
 #, c-format
@@ -1699,40 +1697,40 @@ msgstr "Niska koju želite da potražite"
 msgid "Line you want to move the cursor to"
 msgstr "Red na koji želite da postavite kursor"
 
-#: ../gedit/gedit-window.c:1003
+#: ../gedit/gedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "Poklapanje zagrada je izvan opsega"
 
-#: ../gedit/gedit-window.c:1008
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "Nisam pronašao poklapanje zagrada"
 
-#: ../gedit/gedit-window.c:1013
+#: ../gedit/gedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Poklapanje zagrada se nalaze u redu: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1048
+#: ../gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  red %d, kol %d"
 
-#: ../gedit/gedit-window.c:1232
+#: ../gedit/gedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Širina tabulatora: %u"
 
-#: ../gedit/gedit-window.c:1601
+#: ../gedit/gedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "Imate nesačuvanih dokumenata"
 
-#: ../gedit/gedit-window.c:2449
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "Promenite stranicu bočne površi"
 
-#: ../gedit/gedit-window.c:2469 ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -1797,7 +1795,7 @@ msgstr "_Postavke"
 
 #: ../gedit/resources/gtk/menus.ui.h:3
 msgid "_Keyboard Shortcuts"
-msgstr "_Prečice tastature"
+msgstr "Prečice na _tastaturi"
 
 #: ../gedit/resources/gtk/menus.ui.h:4
 #: ../gedit/resources/gtk/menus-traditional.ui.h:46
@@ -1878,7 +1876,6 @@ msgid "_Close All"
 msgstr "_Zatvori sve"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#| msgid "File"
 msgid "_File"
 msgstr "_Datoteka"
 
@@ -1900,7 +1897,6 @@ msgid "Save _As…"
 msgstr "Sačuvaj _kao…"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#| msgid "_Edit:"
 msgid "_Edit"
 msgstr "_Uređivanje"
 
@@ -1944,9 +1940,8 @@ msgid "_View"
 msgstr "Pre_gled"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:29
-#| msgid "Search"
 msgid "_Search"
-msgstr "_Pretraga"
+msgstr "Pre_traga"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:31
 msgid "Find Ne_xt"
@@ -1965,14 +1960,12 @@ msgid "Go to _Line…"
 msgstr "_Idi na red…"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:36
-#| msgid "_Tools:"
 msgid "_Tools"
 msgstr "_Alati"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:37
-#| msgid "Documents"
 msgid "_Documents"
-msgstr "_Dokumenti"
+msgstr "_Dokumenta"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:38
 msgid "_Save All"
@@ -2138,15 +2131,15 @@ msgstr "Uređivač"
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
-msgstr "Slovni lik"
+msgstr "Font"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
-msgstr "Slovni lik _uređivača: "
+msgstr "Font _uređivača: "
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
-msgstr "Izaberite slovni lik uređivača"
+msgstr "Izaberite font uređivača"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
 msgid "Color Scheme"
@@ -2170,7 +2163,7 @@ msgstr "Ukloni šemu"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:31
 msgid "Font & Colors"
-msgstr "Slovni lik i boje"
+msgstr "Font i boje"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:32
 msgid "Plugins"
@@ -2213,7 +2206,7 @@ msgstr "Ispiši _zaglavlja stranica"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:14
 msgid "Fonts"
-msgstr "Slovni likovi"
+msgstr "Fontovi"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:15
 msgid "_Body:"
@@ -2229,7 +2222,7 @@ msgstr "Za_glavlja i podnožja:"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:18
 msgid "_Restore Default Fonts"
-msgstr "Pov_rati osnovne slovne likove"
+msgstr "Pov_rati podrazumevane fontove"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:1
 msgid "Show the previous page"
@@ -2327,213 +2320,180 @@ msgid "Search _backwards"
 msgstr "Traži _unazad"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
-#| msgid "_Wrap around"
 msgid "Wra_p around"
 msgstr "Prelamaj _okolo"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
-#| msgid "Documents"
 msgctxt "shortcut window"
 msgid "Documents"
 msgstr "Dokumenti"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
-#| msgid "Create a new document"
 msgctxt "shortcut window"
 msgid "Create a new document in a tab"
-msgstr "Pravi novi dokument u jezičku"
+msgstr "Napravi novi dokument u jezičku"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
-#| msgid "Open a New Document"
 msgctxt "shortcut window"
 msgid "Open a document"
-msgstr "Otvara dokument"
+msgstr "Otvori dokument"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
-#| msgid "Save the current file"
 msgctxt "shortcut window"
 msgid "Save the document"
-msgstr "Čuva dokument"
+msgstr "Sačuvaj dokument"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
-#| msgid "Save the current file with a different name"
 msgctxt "shortcut window"
 msgid "Save the document with a new filename"
-msgstr "Čuva dokument pod drugim nazivom"
+msgstr "Sačuvaj dokument pod novim imenom datoteke"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
-#| msgid "Create a new document"
 msgctxt "shortcut window"
 msgid "Save all the documents"
-msgstr "Čuva sve dokumente"
+msgstr "Sačuvaj sve dokumente"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
-#| msgid "Close Document"
 msgctxt "shortcut window"
 msgid "Close the document"
-msgstr "Zatvara dokument"
+msgstr "Zatvori dokument"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
-#| msgid "Close Document"
 msgctxt "shortcut window"
 msgid "Close all the documents"
-msgstr "Zatvara sve dokumente"
+msgstr "Zatvori sve dokumente"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
-#| msgid "Select the entire document"
 msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
-msgstr "Ponovo otvara najskorije zatvoreni dokument"
+msgstr "Ponovo otvori poslednje zatvoreni dokument"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
-#| msgid "Switch to the next tab group"
 msgctxt "shortcut window"
 msgid "Switch to the next document"
-msgstr "Prebacuje se na sledeći dokument"
+msgstr "Prebaci se na sledeći dokument"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
-#| msgid "Switch to the previous tab group"
 msgctxt "shortcut window"
 msgid "Switch to the previous document"
-msgstr "Prebacuje se na prethodni dokument"
+msgstr "Prebaci se na prethodni dokument"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
-#| msgid "Switch to the next tab group"
 msgctxt "shortcut window"
 msgid "Switch to the first - ninth document"
-msgstr "Prebacuje se na prvi — deveti dokument"
+msgstr "Prebaci se na prvi – deveti dokument"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
 msgctxt "shortcut window"
 msgid "Windows and Panels"
-msgstr "Prozori i paneli"
+msgstr "Prozori i površi"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
-#| msgid "Create a new document"
 msgctxt "shortcut window"
 msgid "Create a new document in a window"
-msgstr "Pravi novi dokument u prozoru"
+msgstr "Napravi novi dokument u prozoru"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
-#| msgid "Create a new tab group"
 msgctxt "shortcut window"
 msgid "Create a new tab group"
-msgstr "Pravi novu grupu jezička"
+msgstr "Napravi novu grupu jezička"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
-#| msgid "Hide panel"
 msgctxt "shortcut window"
 msgid "Show side panel"
-msgstr "Prikazuje bočnu površ"
+msgstr "Prikaži bočnu površ"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
-#| msgid "_Bottom Panel"
 msgctxt "shortcut window"
 msgid "Show bottom panel"
-msgstr "Prikazuje donju površ"
+msgstr "Prikaži donju površ"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
-#| msgid "_Fullscreen"
 msgctxt "shortcut window"
 msgid "Fullscreen on / off"
-msgstr "Isklj./uklj. prikaz preko celog ekrana"
+msgstr "Uključi ili isključi prikaz preko celog ekrana"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
-#| msgid "About this application"
 msgctxt "shortcut window"
 msgid "Quit the application"
-msgstr "Izlazi iz programa"
+msgstr "Izađi iz programa"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
-#| msgid "Find and Replace"
 msgctxt "shortcut window"
 msgid "Find and Replace"
-msgstr "Nalazi i zamenjuje"
+msgstr "Nađi i zameni"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
-#| msgctxt "label of the find button"
-#| msgid "_Find"
 msgctxt "shortcut window"
 msgid "Find"
-msgstr "Nalazi"
+msgstr "Nađi"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
 msgctxt "shortcut window"
 msgid "Find the next match"
-msgstr "Nalazi sledeće poklapanje"
+msgstr "Nađi sledeće podudaranje"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
-#| msgid "Show the previous page"
 msgctxt "shortcut window"
 msgid "Find the previous match"
-msgstr "Nalazi prethodno poklapanje"
+msgstr "Nađi prethodno podudaranje"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
-#| msgid "_Clear Highlight"
 msgctxt "shortcut window"
 msgid "Clear highlight"
-msgstr "Uklanja isticanje"
+msgstr "Očisti isticanje"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
-#| msgid "_Go to Line…"
 msgctxt "shortcut window"
 msgid "Go to line"
-msgstr "Ide na red"
+msgstr "Idi na red"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
 msgctxt "shortcut window"
 msgid "Copy and Paste"
-msgstr "Umnožavanje i ubacivanje"
+msgstr "Umnoži i ubaci"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
-#| msgid "Change selected text to lower case"
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
-msgstr "Umnožava izabrani tekst u ostavu"
+msgstr "Umnoži izabrani tekst u ostavu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
-#| msgid "Change selected text to lower case"
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
-msgstr "Iseca izabrani tekst u ostavu"
+msgstr "Iseci umnoženi tekst u ostavu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
-#| msgid "Paste the clipboard"
 msgctxt "shortcut window"
 msgid "Paste text from clipboard"
-msgstr "Ubacuje tekst iz ostave"
+msgstr "Ubaci tekst iz ostave"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
-#| msgid "Find and Replace"
 msgctxt "shortcut window"
 msgid "Undo and Redo"
-msgstr "Poništavanje i vraćanje"
+msgstr "Opozovi i ponovi"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
 msgctxt "shortcut window"
 msgid "Undo previous command"
-msgstr "Poništava prethodnu naredbu"
+msgstr "Opozovi prethodnu naredbu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
-#| msgid "Run command"
 msgctxt "shortcut window"
 msgid "Redo previous command"
-msgstr "Vraća prethodnu naredbu"
+msgstr "Ponovi prethodnu naredbu"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
-#| msgid "Selection"
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Izbor"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
-#| msgid "Select _All"
 msgctxt "shortcut window"
 msgid "Select all text"
-msgstr "Bira sav tekst"
+msgstr "Izaberi sav tekst"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
-#| msgid "Edit"
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Uređivanje"
@@ -2541,93 +2501,82 @@ msgstr "Uređivanje"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
 msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
-msgstr "Okida umetanje / prepisivanje"
+msgstr "Uključi ili isljkuči ubacivanje ili prepisivanje"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
-#| msgid "Highlight current line"
 msgctxt "shortcut window"
 msgid "Delete current line"
-msgstr "Briše tekući red"
+msgstr "Obriši trenutni red"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
-#| msgid "Export selected snippets"
 msgctxt "shortcut window"
 msgid "Join selected lines"
-msgstr "Spaja izabrane redove"
+msgstr "Spoji izabrane redove"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
-#| msgid "Current line"
 msgctxt "shortcut window"
 msgid "Move current line up"
-msgstr "Premešta tekući red na gore"
+msgstr "Pomeri trenutni red na gore"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
-#| msgid "Current line"
 msgctxt "shortcut window"
 msgid "Move current line down"
-msgstr "Premešta tekući red na dole"
+msgstr "Pomeri trenutni red na dole"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
-#| msgid "Current word"
 msgctxt "shortcut window"
 msgid "Move current word left"
-msgstr "Premešta tekuću reč na levo"
+msgstr "Pomeri trenutnu reč ulevo"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
-#| msgid "Current word"
 msgctxt "shortcut window"
 msgid "Move current word right"
-msgstr "Premešta tekuću reč na desno"
+msgstr "Pomeri trenutnu reč udesno"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
 msgctxt "shortcut window"
 msgid "Convert to uppercase"
-msgstr "Pretvara u velika slova"
+msgstr "Pretvori u velika slova"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
-#| msgid "Change selected text to lower case"
 msgctxt "shortcut window"
 msgid "Convert to lowercase"
-msgstr "Pretvara u mala slova"
+msgstr "Pretvori u mala slova"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
-#| msgid "_Invert Case"
 msgctxt "shortcut window"
 msgid "Invert case"
-msgstr "Obrće veličinu slova"
+msgstr "Obrni veličinu slova"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
 msgctxt "shortcut window"
 msgid "Increment number at cursor"
-msgstr "Povećava broj na kurzoru"
+msgstr "Povećaj broj na pokazivaču"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
 msgctxt "shortcut window"
 msgid "Decrement number at cursor"
-msgstr "Smanjuje broj na kurzoru"
+msgstr "Smanji broj na pokazivaču"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
-#| msgid "Tools"
 msgctxt "shortcut window"
 msgid "Tools"
 msgstr "Alati"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
-#| msgid "Check spelling"
 msgctxt "shortcut window"
 msgid "Check spelling"
-msgstr "Proverava pisanje"
+msgstr "Provera pisanja"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
-#| msgid "Print the current page"
 msgctxt "shortcut window"
 msgid "Print the document"
-msgstr "Štampa dokument"
+msgstr "Štampaj dokument"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
 msgctxt "shortcut window"
 msgid "Show completion window"
-msgstr "Prikazuje prozor dovršavanja"
+msgstr "Prikaži prozor za samodopunjavanje"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
@@ -2808,15 +2757,16 @@ msgstr "Izvršava spoljne naredbe i skripte ljuske."
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
-msgstr "Da li će biti korišćen slovni lik sistema"
+msgstr "Da li će biti korišćen font sistema"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
-"Ako je izabrano, spoljni alati će koristiti desktop-global standardna slova "
-"ako je monospejs (i većina sličnih slova može da dođe u obzir)."
+"Ako je izabrano, spoljni alati će koristiti stoni, globalni standardni font "
+"ako je font utvrđene širine (u suprotnom će se koristiti najsličniji font "
+"koji se može naći)."
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
@@ -2951,7 +2901,7 @@ msgstr "Zamenite tekući dokument"
 
 #: ../plugins/externaltools/tools/tools.ui.h:17
 msgid "Replace current selection"
-msgstr "Zamenite trenutno označeni tekst"
+msgstr "Zamenite trenutno izabrani tekst"
 
 #: ../plugins/externaltools/tools/tools.ui.h:18
 msgid "Insert at cursor position"
@@ -3450,7 +3400,7 @@ msgstr "Opšte"
 
 #: ../plugins/snippets/snippets/manager.py:406
 msgid "Revert selected snippet"
-msgstr "Povrati označeni isečak"
+msgstr "Povrati odabrani isečak"
 
 #: ../plugins/snippets/snippets/manager.py:409
 #: ../plugins/snippets/snippets/snippets.ui.h:4
@@ -3464,7 +3414,7 @@ msgid ""
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
 "[, etc."
 msgstr ""
-"Ovo nije ispravan prekidač za jezičak. Prekidači mogu da sadrže slovno-"
+"Ovo nije ispravan prekidač za jezičak. Prekidači mogu da sadrže slovno–"
 "brojevne znake (ili _ : i .) ili jednostruke znake koji nisu slova ni cifre, "
 "poput {, [, itd."
 
@@ -3529,7 +3479,7 @@ msgstr "Izvoz je uspešno završen"
 #: ../plugins/snippets/snippets/manager.py:844
 #: ../plugins/snippets/snippets/manager.py:911
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
-msgstr "Da li želite da uključite označene <b>sistemske</b> isečke pri izvozu?"
+msgstr "Da li želite da uključite odabrane <b>sistemske</b> isečke pri izvozu?"
 
 #: ../plugins/snippets/snippets/manager.py:859
 #: ../plugins/snippets/snippets/manager.py:929
@@ -3766,11 +3716,20 @@ msgstr "Umeće trenutni datum i vreme na poziciju kursora."
 #~ msgid "gedit"
 #~ msgstr "Vilenjakova beležnica"
 
-#~ msgid "Question"
-#~ msgstr "Pitanje"
+#~ msgid "File"
+#~ msgstr "Datoteka"
+
+#~ msgid "Edit"
+#~ msgstr "Uređivanje"
+
+#~ msgid "Search"
+#~ msgstr "Pretraga"
 
 #~ msgid "Help"
 #~ msgstr "Pomoć"
+
+#~ msgid "Question"
+#~ msgstr "Pitanje"
 
 #~ msgid "(no suggested words)"
 #~ msgstr "(nema predloga reči)"
