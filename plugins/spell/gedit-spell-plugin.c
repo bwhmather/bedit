@@ -137,6 +137,15 @@ gedit_spell_plugin_init (GeditSpellPlugin *plugin)
 	plugin->priv = gedit_spell_plugin_get_instance_private (plugin);
 }
 
+static GspellChecker *
+get_spell_checker (GeditDocument *doc)
+{
+	GspellTextBuffer *gspell_buffer;
+
+	gspell_buffer = gspell_text_buffer_get_from_gtk_text_buffer (GTK_TEXT_BUFFER (doc));
+	return gspell_text_buffer_get_spell_checker (gspell_buffer);
+}
+
 static const GspellLanguage *
 get_language_from_metadata (GeditDocument *doc)
 {
@@ -216,7 +225,7 @@ set_language_cb (GSimpleAction *action,
 	doc = gedit_window_get_active_document (priv->window);
 	g_return_if_fail (doc != NULL);
 
-	checker = gspell_text_buffer_get_spell_checker (GTK_TEXT_BUFFER (doc));
+	checker = get_spell_checker (doc);
 	g_return_if_fail (checker != NULL);
 
 	lang = gspell_checker_get_language (checker);
@@ -436,7 +445,7 @@ on_document_loaded (GeditDocument    *doc,
 	GeditTab *tab;
 	GeditView *view;
 
-	checker = gspell_text_buffer_get_spell_checker (GTK_TEXT_BUFFER (doc));
+	checker = get_spell_checker (doc);
 
 	if (checker != NULL)
 	{
@@ -470,7 +479,7 @@ on_document_saved (GeditDocument *doc,
 
 	/* Make sure to save the metadata here too */
 
-	checker = gspell_text_buffer_get_spell_checker (GTK_TEXT_BUFFER (doc));
+	checker = get_spell_checker (doc);
 
 	if (checker != NULL)
 	{
@@ -502,10 +511,14 @@ activate_spell_checking_in_view (GeditSpellPlugin *plugin,
 	/* It is possible that a GspellChecker has already been set, for example
 	 * if a GeditTab has moved to another window.
 	 */
-	if (gspell_text_buffer_get_spell_checker (GTK_TEXT_BUFFER (doc)) == NULL)
+	if (get_spell_checker (doc) == NULL)
 	{
-		const GspellLanguage *lang = get_language_from_metadata (doc);
-		GspellChecker *checker = gspell_checker_new (lang);
+		const GspellLanguage *lang;
+		GspellChecker *checker;
+		GspellTextBuffer *gspell_buffer;
+
+		lang = get_language_from_metadata (doc);
+		checker = gspell_checker_new (lang);
 
 		g_signal_connect_object (checker,
 					 "notify::language",
@@ -513,7 +526,8 @@ activate_spell_checking_in_view (GeditSpellPlugin *plugin,
 					 doc,
 					 0);
 
-		gspell_text_buffer_set_spell_checker (GTK_TEXT_BUFFER (doc), checker);
+		gspell_buffer = gspell_text_buffer_get_from_gtk_text_buffer (GTK_TEXT_BUFFER (doc));
+		gspell_text_buffer_set_spell_checker (gspell_buffer, checker);
 		g_object_unref (checker);
 
 		setup_inline_checker_from_metadata (plugin, view);
@@ -554,13 +568,15 @@ static void
 deactivate_spell_checking_in_view (GeditSpellPlugin *plugin,
 				   GeditView        *view)
 {
-	GtkTextBuffer *buffer;
+	GtkTextBuffer *gtk_buffer;
+	GspellTextBuffer *gspell_buffer;
 	GspellInlineCheckerTextView *inline_checker;
 
 	disconnect_view (plugin, view);
 
-	buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
-	gspell_text_buffer_set_spell_checker (buffer, NULL);
+	gtk_buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+	gspell_buffer = gspell_text_buffer_get_from_gtk_text_buffer (gtk_buffer);
+	gspell_text_buffer_set_spell_checker (gspell_buffer, NULL);
 
 	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
 	gspell_inline_checker_text_view_set_enabled (inline_checker, FALSE);
