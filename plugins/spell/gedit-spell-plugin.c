@@ -317,10 +317,10 @@ inline_checker_change_state_cb (GSimpleAction *action,
 	view = gedit_window_get_active_view (priv->window);
 	if (view != NULL)
 	{
-		GspellInlineCheckerTextView *inline_checker;
+		GspellTextView *gspell_view;
 
-		inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
-		gspell_inline_checker_text_view_set_enabled (inline_checker, active);
+		gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (view));
+		gspell_text_view_set_inline_spell_checking (gspell_view, active);
 
 		g_simple_action_set_state (action, g_variant_new_boolean (active));
 	}
@@ -370,14 +370,14 @@ update_ui (GeditSpellPlugin *plugin)
 	if (tab != NULL &&
 	    gedit_tab_get_state (tab) == GEDIT_TAB_STATE_NORMAL)
 	{
-		GspellInlineCheckerTextView *inline_checker;
-		gboolean inline_checker_enabled;
+		GspellTextView *gspell_view;
+		gboolean inline_checking_enabled;
 
-		inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
-		inline_checker_enabled = gspell_inline_checker_text_view_get_enabled (inline_checker);
+		gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (view));
+		inline_checking_enabled = gspell_text_view_get_inline_spell_checking (gspell_view);
 
 		g_action_change_state (inline_checker_action,
-				       g_variant_new_boolean (inline_checker_enabled));
+				       g_variant_new_boolean (inline_checking_enabled));
 	}
 }
 
@@ -388,7 +388,7 @@ setup_inline_checker_from_metadata (GeditSpellPlugin *plugin,
 	GeditDocument *doc;
 	gboolean enabled = FALSE;
 	gchar *enabled_str;
-	GspellInlineCheckerTextView *inline_checker;
+	GspellTextView *gspell_view;
 	GeditView *active_view;
 
 	doc = GEDIT_DOCUMENT (gtk_text_view_get_buffer (GTK_TEXT_VIEW (view)));
@@ -400,8 +400,8 @@ setup_inline_checker_from_metadata (GeditSpellPlugin *plugin,
 		g_free (enabled_str);
 	}
 
-	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
-	gspell_inline_checker_text_view_set_enabled (inline_checker, enabled);
+	gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (view));
+	gspell_text_view_set_inline_spell_checking (gspell_view, enabled);
 
 	/* In case that the view is the active one we mark the spell action */
 	active_view = gedit_window_get_active_view (plugin->priv->window);
@@ -474,8 +474,8 @@ on_document_saved (GeditDocument *doc,
 	GeditView *view;
 	GspellChecker *checker;
 	const gchar *language_code = NULL;
-	GspellInlineCheckerTextView *inline_checker;
-	gboolean inline_checker_enabled;
+	GspellTextView *gspell_view;
+	gboolean inline_checking_enabled;
 
 	/* Make sure to save the metadata here too */
 
@@ -489,12 +489,12 @@ on_document_saved (GeditDocument *doc,
 	tab = gedit_tab_get_from_document (doc);
 	view = gedit_tab_get_view (tab);
 
-	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
-	inline_checker_enabled = gspell_inline_checker_text_view_get_enabled (inline_checker);
+	gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (view));
+	inline_checking_enabled = gspell_text_view_get_inline_spell_checking (gspell_view);
 
 	gedit_document_set_metadata (doc,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_ENABLED,
-				     inline_checker_enabled ? SPELL_ENABLED_STR : NULL,
+				     inline_checking_enabled ? SPELL_ENABLED_STR : NULL,
 	                             GEDIT_METADATA_ATTRIBUTE_SPELL_LANGUAGE,
 	                             language_code,
 	                             NULL);
@@ -570,7 +570,7 @@ deactivate_spell_checking_in_view (GeditSpellPlugin *plugin,
 {
 	GtkTextBuffer *gtk_buffer;
 	GspellTextBuffer *gspell_buffer;
-	GspellInlineCheckerTextView *inline_checker;
+	GspellTextView *gspell_view;
 
 	disconnect_view (plugin, view);
 
@@ -578,8 +578,8 @@ deactivate_spell_checking_in_view (GeditSpellPlugin *plugin,
 	gspell_buffer = gspell_text_buffer_get_from_gtk_text_buffer (gtk_buffer);
 	gspell_text_buffer_set_spell_checker (gspell_buffer, NULL);
 
-	inline_checker = gspell_text_view_get_inline_checker (GTK_TEXT_VIEW (view));
-	gspell_inline_checker_text_view_set_enabled (inline_checker, FALSE);
+	gspell_view = gspell_text_view_get_from_gtk_text_view (GTK_TEXT_VIEW (view));
+	gspell_text_view_set_inline_spell_checking (gspell_view, FALSE);
 }
 
 static void
