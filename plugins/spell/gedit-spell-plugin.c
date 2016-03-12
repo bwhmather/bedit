@@ -183,7 +183,6 @@ check_spell_cb (GSimpleAction *action,
 
 	navigator = gspell_navigator_text_view_new (GTK_TEXT_VIEW (view));
 	dialog = gspell_checker_dialog_new (GTK_WINDOW (priv->window), navigator);
-	g_object_unref (navigator);
 
 	gtk_widget_show (dialog);
 }
