@@ -5,12 +5,12 @@
 # Anita Reitere <nitalynx@gmail.com>, 2012.
 # Tomass Andersons, 2011-2012.
 # Matīss Baldonis, 2011-2012.
-# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2012, 2013, 2014.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2012, 2013, 2014, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"POT-Creation-Date: 2014-03-23 06:18+0000\n"
-"PO-Revision-Date: 2014-03-23 23:36+0200\n"
+"POT-Creation-Date: 2016-03-12 07:00+0000\n"
+"PO-Revision-Date: 2016-03-13 10:02+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 2.0\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -29,35 +29,56 @@ msgstr ""
 "Matīss Baldonis\n"
 "Anita Reitere <nitalynx@gmail.com>"
 
+#. (itstool) path: info/desc
+#: C/gedit-change-color-scheme.page:8
+msgid "Change the text and background colors in gedit."
+msgstr "Mainīt teksta un fona krāsu gedit lietotnē."
+
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:9 C/gedit-change-default-font.page:9
-#: C/gedit-close-file.page:9 C/gedit-create-new-file.page:11
-#: C/gedit-edit-as-root.page:9 C/gedit-files-basic.page:9
-#: C/gedit-full-screen.page:11 C/gedit-open-files-from-sidepane.page:10
-#: C/gedit-open-files.page:16 C/gedit-open-on-server.page:9
-#: C/gedit-open-recent.page:9 C/gedit-plugin-guide.page:9
+#: C/gedit-change-color-scheme.page:13 C/gedit-change-default-font.page:10
+#: C/gedit-close-file.page:10 C/gedit-create-new-file.page:12
+#: C/gedit-edit-as-root.page:10 C/gedit-files-basic.page:10
+#: C/gedit-full-screen.page:12 C/gedit-open-files-from-sidepane.page:11
+#: C/gedit-open-files.page:17 C/gedit-open-on-server.page:10
+#: C/gedit-open-recent.page:10 C/gedit-plugin-guide.page:10
 #: C/gedit-plugins-change-case.page:14 C/gedit-plugins-doc-stats.page:14
 #: C/gedit-plugins-external-tools.page:15 C/gedit-plugins-file-browser.page:14
 #: C/gedit-plugins-insert-date-time.page:14 C/gedit-plugins-install.page:8
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:9
 #: C/gedit-plugins-quick-open.page:10 C/gedit-plugins-snippets.page:9
-#: C/gedit-plugins-sort.page:13 C/gedit-printing.page:9
-#: C/gedit-quickstart.page:11 C/gedit-replace.page:11
-#: C/gedit-save-file.page:11 C/gedit-search.page:10
-#: C/gedit-shortcut-keys.page:13 C/gedit-spellcheck.page:11
-#: C/gedit-syntax-highlighting.page:9 C/gedit-tabs-moving.page:12
-#: C/gedit-tabs.page:13 C/gedit-undo-recent-action.page:11
-#: C/gedit-view-open-files-in-sidepane.page:10 C/index.page:13
+#: C/gedit-plugins-sort.page:13 C/gedit-printing.page:10
+#: C/gedit-quickstart.page:12 C/gedit-replace.page:13 C/gedit-save-file.page:12
+#: C/gedit-search.page:11 C/gedit-shortcut-keys.page:14
+#: C/gedit-spellcheck.page:12 C/gedit-syntax-highlighting.page:10
+#: C/gedit-tabs-moving.page:13 C/gedit-tabs.page:14
+#: C/gedit-undo-recent-action.page:12 C/index.page:14
 msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
+#. (itstool) path: credit/name
+#: C/gedit-change-color-scheme.page:17
+msgid "Jana Svarova"
+msgstr "Jana Svarova"
+
+#. (itstool) path: credit/years
+#: C/gedit-change-color-scheme.page:19 C/gedit-change-color-scheme.page:24
+#: C/gedit-shortcut-keys.page:41
+msgid "2015"
+msgstr "2015"
+
+#. (itstool) path: credit/name
+#: C/gedit-change-color-scheme.page:22 C/gedit-replace.page:25
+#: C/gedit-shortcut-keys.page:39
+msgid "Ekaterina Gerasimova"
+msgstr "Ekaterina Gerasimova"
+
 #. (itstool) path: page/title
-#: C/gedit-change-color-scheme.page:14
+#: C/gedit-change-color-scheme.page:30
 msgid "Change the color scheme"
 msgstr "Mainīt krāsu shēmu"
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:16
+#: C/gedit-change-color-scheme.page:32
 msgid ""
 "<app>gedit</app> includes several different color schemes, allowing you to "
 "change the appearance of the main text window."
@@ -65,37 +86,43 @@ msgstr ""
 "<app>gedit</app> ir vairākas atšķirīgas krāsu shēmas, kas ļauj mainīt "
 "galvenā teksta loga izskatu."
 
-#. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:19
-msgid "To change the color scheme, complete the following steps:"
-msgstr "Lai nomainītu krāsu shēmu, veiciet šādas darbības:"
+#. (itstool) path: steps/title
+#: C/gedit-change-color-scheme.page:36
+#| msgid "Change the color scheme"
+msgid "To change the color scheme:"
+msgstr "Lai mainītu krāsu shēmu:"
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:21 C/gedit-change-default-font.page:23
+#: C/gedit-change-color-scheme.page:38
+#| msgid ""
+#| "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+#| "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgid ""
-"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+"Open the <gui style=\"menu\">gedit</gui> menu from the top bar, then select "
+"<guiseq><gui style=\"menuitem\">Preferences</gui><gui>Font &amp; Colors</"
+"gui></guiseq>."
 msgstr ""
-"Izvēlieties <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-"\">Iestatījumi</gui> <gui>Fonts un krāsas</gui></guiseq>."
+"Atveriet <gui style=\"menu\">gedit</gui> izvēlni augšējā joslā, tad "
+"izvēlieties <guiseq><gui style=\"menuitem\">Iestatījumi</gui><gui>Fonts un "
+"krāsas</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-change-color-scheme.page:24
+#: C/gedit-change-color-scheme.page:43
 msgid "Choose your desired color scheme."
 msgstr "Izvēlieties vēlamo krāsu shēmu."
 
 #. (itstool) path: page/p
-#: C/gedit-change-color-scheme.page:27
+#: C/gedit-change-color-scheme.page:47
 msgid "The new color scheme will be applied immediately."
 msgstr "Jaunā krāsu shēma tiks pielietota tūlīt."
 
 #. (itstool) path: section/title
-#: C/gedit-change-color-scheme.page:30
+#: C/gedit-change-color-scheme.page:50
 msgid "Use a Custom Color Scheme"
 msgstr "Izmantot pielāgotu krāsu shēmu"
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:35
+#: C/gedit-change-color-scheme.page:56
 msgid ""
 "You can also use color schemes that have been created by others, or create "
 "and use your own color schemes."
@@ -104,28 +131,39 @@ msgstr ""
 "un lietot savas krāsu shēmas."
 
 #. (itstool) path: section/p
-#: C/gedit-change-color-scheme.page:37
+#: C/gedit-change-color-scheme.page:59
+#| msgid ""
+#| "Instructions on how to install custom color schemes, as well as examples "
+#| "of color schemes that you can download and use, are available on the "
+#| "<link href=\"http://live.gnome.org/GtkSourceView/StyleSchemes\">gedit "
+#| "wiki</link>."
 msgid ""
 "Instructions on how to install custom color schemes, as well as examples of "
 "color schemes that you can download and use, are available on the <link href="
-"\"http://live.gnome.org/GtkSourceView/StyleSchemes\">gedit wiki</link>."
+"\"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes\">gedit wiki</"
+"link>."
 msgstr ""
 "Instrukcijas pielāgotu krāsu shēmu instalēšanai, kā arī pieejamo krāsu shēmu "
-"piemēri, ir atrodami <link href=\"http://live.gnome.org/GtkSourceView/"
-"StyleSchemes\">gedit wiki</link>."
+"piemēri, ir atrodami <link href=\"https://wiki.gnome.org/Projects/GtkSourceVie"
+"w/StyleSchemes\">gedit wiki</link>."
+
+#. (itstool) path: info/desc
+#: C/gedit-change-default-font.page:6
+msgid "Use a custom font for your text in gedit."
+msgstr "Izmatot pielāgotu fontu tekstam gedit lietotnē."
 
 #. (itstool) path: credit/years
-#: C/gedit-change-default-font.page:11
+#: C/gedit-change-default-font.page:12
 msgid "2011 2012 2013"
 msgstr "2011 2012 2013"
 
 #. (itstool) path: page/title
-#: C/gedit-change-default-font.page:15
+#: C/gedit-change-default-font.page:19
 msgid "Change the default font"
 msgstr "Nomainīt noklusēto fontu"
 
 #. (itstool) path: page/p
-#: C/gedit-change-default-font.page:17
+#: C/gedit-change-default-font.page:21
 msgid ""
 "<app>gedit</app> will use the system fixed-width font by default, but you "
 "can change the default <app>gedit</app> font to suit your preferences."
@@ -134,19 +172,28 @@ msgstr ""
 "bet <app>gedit</app> noklusēto fontu var mainīt pēc jūsu izvēles."
 
 #. (itstool) path: steps/title
-#: C/gedit-change-default-font.page:22
+#: C/gedit-change-default-font.page:26
 msgid "To change the default font in <app>gedit</app>:"
 msgstr "Lai nomainītu noklusēto fontu <app>gedit</app>:"
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:26
+#: C/gedit-change-default-font.page:27
+msgid ""
+"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
+msgstr ""
+"Izvēlieties <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Iestatījumi</gui> <gui>Fonts un krāsas</gui></guiseq>."
+
+#. (itstool) path: item/p
+#: C/gedit-change-default-font.page:30
 msgid ""
 "Uncheck the box next to the phrase, \"Use the system fixed-width font.\""
 msgstr ""
 "Izņemiet ķeksīti līdzās teikumam \"Lietot sistēmas fiksētā platuma fontu\"."
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:28
+#: C/gedit-change-default-font.page:32
 msgid ""
 "Click on the current font name. <app>gedit</app> will open a font-chooser "
 "window, allowing you to see available fonts and choose the one that you "
@@ -156,7 +203,7 @@ msgstr ""
 "izvēlētāja logu, kas jums ļaus redzēt vairāk fontu un izvēlēties jums vēlamo."
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:31
+#: C/gedit-change-default-font.page:35
 msgid ""
 "After you have chosen a new font, use the <gui>slider</gui> under the list "
 "of fonts to set the default font size."
@@ -165,17 +212,22 @@ msgstr ""
 "saraksta, lai iestatītu noklusējuma fonta izmēru."
 
 #. (itstool) path: item/p
-#: C/gedit-change-default-font.page:33
+#: C/gedit-change-default-font.page:37
 msgid "Click <gui>Select</gui>, and then click <gui>Close</gui>."
 msgstr "Spiediet pogu <gui>Izvēlēties</gui>, un pēc tam <gui>Aizvērt</gui>."
 
+#. (itstool) path: info/desc
+#: C/gedit-close-file.page:7
+msgid "Exit from the file you are using."
+msgstr "Iziet no datnes, ko izmantojat."
+
 #. (itstool) path: page/title
-#: C/gedit-close-file.page:14
+#: C/gedit-close-file.page:17
 msgid "Close a file"
 msgstr "Aizvērt datni"
 
 #. (itstool) path: page/p
-#: C/gedit-close-file.page:16
+#: C/gedit-close-file.page:19
 msgid ""
 "To close a file in <app>gedit</app>, select <guiseq><gui>File</gui> "
 "<gui>Close</gui></guiseq>. Alternately, you can click the small \"X\" that "
@@ -187,7 +239,7 @@ msgstr ""
 "labajā pusē, vai nospiediet <keyseq><key>Ctrl</key><key>W</key></keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-close-file.page:20
+#: C/gedit-close-file.page:23
 msgid ""
 "Any one of these actions will close a file in <app>gedit</app>. If your file "
 "contains changes that have not been saved, <app>gedit</app> will prompt you "
@@ -197,25 +249,27 @@ msgstr ""
 "nesaglabātas izmaiņas, <app>gedit</app> piedāvās tās saglabāt, pirms aizvērt "
 "datni."
 
+#. (itstool) path: info/desc
+#: C/gedit-create-new-file.page:8
+#| msgid "Open a file or set of files"
+msgid "Open a new file for editing."
+msgstr "Atvērt jaunu datni rediģēšanai."
+
 #. (itstool) path: credit/name
-#: C/gedit-create-new-file.page:15 C/gedit-full-screen.page:15
-#: C/gedit-open-files.page:20 C/gedit-plugins-quick-open.page:14
-#: C/gedit-plugins-zeitgeist-dataprovider.page:10 C/gedit-save-file.page:19
-#: C/gedit-search.page:22 C/gedit-tabs.page:30
-#: C/gedit-undo-recent-action.page:23
+#: C/gedit-create-new-file.page:16 C/gedit-full-screen.page:16
+#: C/gedit-open-files.page:21 C/gedit-plugins-quick-open.page:14
+#: C/gedit-replace.page:29 C/gedit-save-file.page:20 C/gedit-search.page:23
+#: C/gedit-tabs.page:31 C/gedit-undo-recent-action.page:24
 msgid "Shobha Tyagi"
 msgstr "Shobha Tyagi"
 
 #. (itstool) path: page/title
-#: C/gedit-create-new-file.page:21
+#: C/gedit-create-new-file.page:22
 msgid "Create a new file"
 msgstr "Izveidot jaunu datni"
 
 #. (itstool) path: page/p
-#: C/gedit-create-new-file.page:23
-#| msgid ""
-#| "To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or "
-#| "press <keyseq><key>Ctrl</key><key>O</key></keyseq>."
+#: C/gedit-create-new-file.page:24
 msgid ""
 "The easiest way to create a new file in <app>gedit</app>, is to click the "
 "<gui>Create a new document</gui> button on the left side of the toolbar, or "
@@ -226,7 +280,7 @@ msgstr ""
 "spiediet <keyseq><key>Ctrl</key><key>T</key></keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-create-new-file.page:27
+#: C/gedit-create-new-file.page:28
 msgid ""
 "Any one of these actions will create a new file in the <app>gedit</app> "
 "window. If you have other files open in <app>gedit</app>, the new file that "
@@ -236,13 +290,18 @@ msgstr ""
 "<app>gedit</app> jau ir atvērtas citas datnes, jaunā datne parādīsies kā "
 "jauna cilne pa labi no jau esošajām."
 
+#. (itstool) path: info/desc
+#: C/gedit-edit-as-root.page:7
+msgid "Use administrative privileges to edit a file."
+msgstr "Izmantot administratora privilēģijas, lai rediģētu datni."
+
 #. (itstool) path: page/title
-#: C/gedit-edit-as-root.page:14
+#: C/gedit-edit-as-root.page:16
 msgid "Edit a file as the root user"
 msgstr "Rediģēt datni kā root lietotājs"
 
 #. (itstool) path: note/p
-#: C/gedit-edit-as-root.page:17
+#: C/gedit-edit-as-root.page:19
 msgid ""
 "Editing files as the root user is potentially dangerous, and may break your "
 "system in bad ways. Take great care when editing files as the root user."
@@ -252,7 +311,7 @@ msgstr ""
 "piesardzīgi."
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:22
+#: C/gedit-edit-as-root.page:24
 msgid ""
 "To edit files as the root user, launch <app>gedit</app> from the terminal by "
 "entering:"
@@ -261,13 +320,13 @@ msgstr ""
 "ievadot:"
 
 #. (itstool) path: page/code
-#: C/gedit-edit-as-root.page:24
+#: C/gedit-edit-as-root.page:26
 #, no-wrap
 msgid "sudo gedit"
 msgstr "sudo gedit"
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:26
+#: C/gedit-edit-as-root.page:28
 msgid ""
 "Using the <cmd>sudo</cmd> command, you will need to successfully enter your "
 "password before <app>gedit</app> will open."
@@ -276,7 +335,7 @@ msgstr ""
 "<app>gedit</app> tiks palaista."
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:29
+#: C/gedit-edit-as-root.page:31
 msgid ""
 "As an alternative to the <cmd>sudo</cmd> command, you may obtain "
 "administrative privileges by entering:"
@@ -285,20 +344,20 @@ msgstr ""
 "ievadot:"
 
 #. (itstool) path: page/code
-#: C/gedit-edit-as-root.page:31
+#: C/gedit-edit-as-root.page:33
 #, no-wrap
 msgid "su -"
 msgstr "su -"
 
 #. (itstool) path: page/p
-#: C/gedit-edit-as-root.page:33
+#: C/gedit-edit-as-root.page:35
 msgid ""
 "You would then launch <app>gedit</app> using the <cmd>gedit</cmd> command."
 msgstr ""
 "Pēc tam varat palaist <app>gedit</app>, ievadot <cmd>gedit</cmd> komandu."
 
 #. (itstool) path: note/p
-#: C/gedit-edit-as-root.page:37
+#: C/gedit-edit-as-root.page:39
 msgid ""
 "Once you have opened <app>gedit</app> with administrative privileges, "
 "<app>gedit</app> will keep those privileges until you close it."
@@ -306,13 +365,18 @@ msgstr ""
 "Kad <app>gedit</app> ir palaista ar administratīvajām tiesībām, šīs tiesības "
 "paliks spēkā līdz pat <app>gedit</app> aizvēršanai."
 
+#. (itstool) path: info/desc
+#: C/gedit-files-basic.page:7
+msgid "Learn the basics of how to work with files in gedit."
+msgstr "Iemācīties pamatus, kā strādāt ar datnēm gedit lietotnē."
+
 #. (itstool) path: page/title
-#: C/gedit-files-basic.page:14
+#: C/gedit-files-basic.page:16
 msgid "File basics: Open, close, and save files"
 msgstr "Pamatdarbības ar datnēm — datņu atvēršana, aizvēršana un saglabāšana"
 
 #. (itstool) path: page/p
-#: C/gedit-files-basic.page:16
+#: C/gedit-files-basic.page:18
 msgid ""
 "If you are new to <app>gedit</app>, these topics will help you with "
 "creating, saving, and opening and closing files."
@@ -320,13 +384,18 @@ msgstr ""
 "Jauniem <app>gedit</app> lietotājiem šīs sadaļas palīdzēs izveidot, "
 "saglabāt, atvērt un aizvērt datnes."
 
+#. (itstool) path: info/desc
+#: C/gedit-full-screen.page:8
+msgid "Set gedit to use the entire screen."
+msgstr "Iestatīt gedit, lai tas aizņemtu visu ekrānu."
+
 #. (itstool) path: page/title
-#: C/gedit-full-screen.page:21
+#: C/gedit-full-screen.page:22
 msgid "Use fullscreen mode"
 msgstr "Lietot pilnekrāna režīmu"
 
 #. (itstool) path: page/p
-#: C/gedit-full-screen.page:23
+#: C/gedit-full-screen.page:24
 msgid ""
 "When working with a large document, you may find it helpful to work in "
 "<app>gedit's</app> fullscreen mode. Using fullscreen mode will hide the "
@@ -340,28 +409,23 @@ msgstr ""
 "ļaujot jums labāk koncentrēties darbam."
 
 #. (itstool) path: section/title
-#: C/gedit-full-screen.page:30
+#: C/gedit-full-screen.page:31
 msgid "Turn on fullscreen mode"
 msgstr "Ieslēgt pilnekrāna režīmu"
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:31
-#| msgid ""
-#| "To turn on fullscreen mode, select <guiseq><gui>View</gui> "
-#| "<gui>Fullscreen</gui></guiseq>, or press <key>F11</key>. <app>gedit's</"
-#| "app> menu, title, and tab-bars will hide, and you will only be presented "
-#| "with the text of your current file."
+#: C/gedit-full-screen.page:32
 msgid ""
 "To turn on fullscreen mode, press <key>F11</key>. <app>gedit's</app> menu, "
 "title, and tab-bars will hide, and you will only be presented with the text "
 "of your current file."
 msgstr ""
-"Lai ieslēgtu pilnekrāna režīmu, nospiediet <key>F11</key>. "
-"<app>gedit</app> izvēļņu, loga virsraksta un ciļņu joslas tiks paslēptas, un "
-"jūs redzēsiet tikai pašlaik atvērtās datnes tekstu."
+"Lai ieslēgtu pilnekrāna režīmu, nospiediet <key>F11</key>. <app>gedit</app> "
+"izvēļņu, loga virsraksta un ciļņu joslas tiks paslēptas, un jūs redzēsiet "
+"tikai pašlaik atvērtās datnes tekstu."
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:34
+#: C/gedit-full-screen.page:35
 msgid ""
 "If you need to perform an action from the <app>gedit</app> menu while "
 "working in fullscreen mode, move your mouse pointer to the top of the "
@@ -373,7 +437,7 @@ msgstr ""
 "izvēlņu josla atkal parādīsies, un jūs varēsiet izvēlēties vēlamo darbību."
 
 #. (itstool) path: note/p
-#: C/gedit-full-screen.page:40
+#: C/gedit-full-screen.page:41
 msgid ""
 "To switch between open tabs while in fullscreen mode, press either "
 "<keyseq><key>Ctrl</key><key>Alt</key><key>PgUp</key></keyseq> or "
@@ -384,12 +448,12 @@ msgstr ""
 "<keyseq><key>Ctrl</key><key>Alt</key><key>PgDn</key></keyseq>."
 
 #. (itstool) path: section/title
-#: C/gedit-full-screen.page:48
+#: C/gedit-full-screen.page:49
 msgid "Turn off fullscreen mode"
 msgstr "Izslēgt pilnekrāna režīmu"
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:49
+#: C/gedit-full-screen.page:50
 msgid ""
 "To turn off fullscreen mode and return to the standard <app>gedit</app> "
 "window, press <key>F11</key>."
@@ -398,7 +462,7 @@ msgstr ""
 "loga, spiediet <key>F11</key>."
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:51
+#: C/gedit-full-screen.page:52
 msgid ""
 "You can also move your mouse cursor to the top of the screen, and wait for "
 "the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui> appears, "
@@ -407,13 +471,19 @@ msgstr ""
 "Jūs varat arī pārvietot peles rādītāju augšup, kamēr parādās <gui>izvēļņu "
 "josla</gui>. Tad izvēlieties <gui>Pamest pilnekrānu</gui>."
 
+#. (itstool) path: info/desc
+#: C/gedit-open-files-from-sidepane.page:8
+#| msgid "Use the side pane to browse and open files"
+msgid "Use gedit's side pane as a file browser."
+msgstr "Izmantot gedit sānu rūti datņu pārlūku."
+
 #. (itstool) path: page/title
-#: C/gedit-open-files-from-sidepane.page:15
+#: C/gedit-open-files-from-sidepane.page:17
 msgid "View and open files from the side pane"
 msgstr "Skatīt un atvērt datnes, izmantojot sānu rūti"
 
 #. (itstool) path: page/p
-#: C/gedit-open-files-from-sidepane.page:16
+#: C/gedit-open-files-from-sidepane.page:18
 msgid ""
 "The most common way to switch between files in <app>gedit</app> is by using "
 "the tabs at the top of the <app>gedit</app> window. In some cases, though, "
@@ -425,7 +495,7 @@ msgstr ""
 "lielu atvērtu datņu skaitu, var būt ērtāk izmantot <app>sānu rūti</app>."
 
 #. (itstool) path: page/p
-#: C/gedit-open-files-from-sidepane.page:23
+#: C/gedit-open-files-from-sidepane.page:25
 msgid ""
 "To activate the <app>side pane</app>, select <guiseq><gui>View</gui> "
 "<gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key."
@@ -434,7 +504,7 @@ msgstr ""
 "<gui>Sānu rūts</gui></guiseq> vai nospiediet <key>F9</key> taustiņu."
 
 #. (itstool) path: note/p
-#: C/gedit-open-files-from-sidepane.page:29
+#: C/gedit-open-files-from-sidepane.page:31
 msgid ""
 "You can toggle the <gui>side pane</gui> open or closed by pressing <key>F9</"
 "key> at any time."
@@ -443,13 +513,13 @@ msgstr ""
 "<key>F9</key> taustiņu."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:36
+#: C/gedit-open-files-from-sidepane.page:38
 #: C/gedit-plugins-file-browser.page:32
 msgid "Opening files from the side pane"
 msgstr "Datņu atvēršana no sānu rūts"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:37
+#: C/gedit-open-files-from-sidepane.page:39
 msgid ""
 "To open files from the <app>side pane</app>, first open the <app>side pane</"
 "app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></guiseq>, "
@@ -460,7 +530,7 @@ msgstr ""
 "guiseq>, tad veiciet klikšķi uz <gui>datņu pārlūka</gui> ikonas rūts apakšā."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:46
+#: C/gedit-open-files-from-sidepane.page:48
 #: C/gedit-plugins-file-browser.page:42
 msgid ""
 "This will activate the <em>file-browser</em> mode of the <app>side pane</"
@@ -471,12 +541,12 @@ msgstr ""
 "navigācijas pogas rūts augšā, var atrast un atvērt vēlamās datnes."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:54
+#: C/gedit-open-files-from-sidepane.page:56
 msgid "Using the side pane to switch between open files"
 msgstr "Pārslēgties starp atvērtajām datnēm, izmantojot sānu rūti"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:55
+#: C/gedit-open-files-from-sidepane.page:57
 msgid ""
 "Once you have several files open, you can use the side pane to switch "
 "between open files. To activate the file browser portion of the <app>side "
@@ -488,7 +558,7 @@ msgstr ""
 "<gui>datnes</gui> ikonas <gui>sānu rūts</gui> apakšā."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:64
+#: C/gedit-open-files-from-sidepane.page:66
 msgid ""
 "Clicking on any file name in the <gui>side pane</gui> will open that file "
 "for editing."
@@ -496,13 +566,18 @@ msgstr ""
 "Klikšķis uz jebkuras datnes nosaukuma <gui>sānu rūtī</gui> atvērs šo datni "
 "rediģēšanai."
 
+#. (itstool) path: info/desc
+#: C/gedit-open-files.page:12
+msgid "Open files to start working on them."
+msgstr "Atvērt datnes, lai sāktu ar tām strādāt."
+
 #. (itstool) path: page/title
-#: C/gedit-open-files.page:26
+#: C/gedit-open-files.page:27
 msgid "Open a file or set of files"
 msgstr "Atvērt datni vai datņu kopu"
 
 #. (itstool) path: page/p
-#: C/gedit-open-files.page:28
+#: C/gedit-open-files.page:29
 msgid ""
 "To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or "
 "press <keyseq><key>Ctrl</key><key>O</key></keyseq>."
@@ -511,35 +586,27 @@ msgstr ""
 "gui>, vai nospiediet <keyseq><key>Ctrl</key><key>O</key></keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-open-files.page:30
-#| msgid ""
-#| "This will cause the <gui>Open Files</gui> dialog to appear. Use your "
-#| "mouse or keyboard to select the file that you wish to open, and then "
-#| "click <gui>Open</gui>. The file that you've selected will open in a new "
-#| "tab."
+#: C/gedit-open-files.page:31
 msgid ""
 "This will cause the <gui>Open</gui> dialog to appear. Use your mouse or "
 "keyboard to select the file that you wish to open, and then click <gui>Open</"
 "gui>. The file that you've selected will open in a new tab."
 msgstr ""
-"Tad parādīsies dialoglodziņš <gui>Atvērt</gui>. Izvēlieties atveramo "
-"datni, izmantojot peli vai tastatūru, un spiediet pogu <gui>Atvērt</gui>. "
-"Izvēlētā datne tiks atvērta jaunā cilnē."
+"Tad parādīsies dialoglodziņš <gui>Atvērt</gui>. Izvēlieties atveramo datni, "
+"izmantojot peli vai tastatūru, un spiediet pogu <gui>Atvērt</gui>. Izvēlētā "
+"datne tiks atvērta jaunā cilnē."
 
 #. (itstool) path: page/p
-#: C/gedit-open-files.page:33
-#| msgid ""
-#| "To close the <gui>Open Files</gui> dialog without opening a file, click "
-#| "<gui>Cancel</gui>."
+#: C/gedit-open-files.page:34
 msgid ""
 "To close the <gui>Open</gui> dialog without opening a file, click "
 "<gui>Cancel</gui>."
 msgstr ""
-"Lai aizvērtu dialoglodziņu <gui>Atvērt</gui>, neatverot nevienu "
-"datni, spiediet <gui>Atcelt</gui>."
+"Lai aizvērtu dialoglodziņu <gui>Atvērt</gui>, neatverot nevienu datni, "
+"spiediet <gui>Atcelt</gui>."
 
 #. (itstool) path: note/p
-#: C/gedit-open-files.page:36
+#: C/gedit-open-files.page:37
 msgid ""
 "You can use the <key>Ctrl</key> and <key>Shift</key> keys to open more than "
 "one file at a time. If you hold down the <key>Ctrl</key> key while you "
@@ -552,7 +619,7 @@ msgstr ""
 "gui>, tiks atvērtas visas izvēlētās datnes."
 
 #. (itstool) path: note/p
-#: C/gedit-open-files.page:43
+#: C/gedit-open-files.page:44
 msgid ""
 "Holding down the <key>Shift</key> while you select multiple files will open "
 "the first file that you select, the last file that you select, and all of "
@@ -562,13 +629,18 @@ msgstr ""
 "pēdējā datne, uz kuriem veikts klikšķis, kā arī visas datnes, kas sarakstā "
 "atrodas starp tām."
 
+#. (itstool) path: info/desc
+#: C/gedit-open-on-server.page:7
+msgid "Access files that are stored on a different computer."
+msgstr "Piekļūt datnēm, kas ir saglabātas uz cita datora."
+
 #. (itstool) path: page/title
-#: C/gedit-open-on-server.page:14
+#: C/gedit-open-on-server.page:16
 msgid "Open a file that is located on a server"
 msgstr "Atvērt datni, kas atrodas uz servera"
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:16
+#: C/gedit-open-on-server.page:18
 msgid ""
 "Prior to opening a file on a server from within <app>gedit</app>, you need "
 "to know some technical information about the server. For example, you will "
@@ -580,7 +652,7 @@ msgstr ""
 "arī servera tips (piemēram, HTTP, FTP u.tml.)."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:21
+#: C/gedit-open-on-server.page:23
 msgid ""
 "Also, some types of servers impose restrictions on what you can do with "
 "files stored on the server. For example, you may be able to open a file from "
@@ -592,7 +664,7 @@ msgstr ""
 "izmaiņām nāksies saglabāt uz sava datora."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:26
+#: C/gedit-open-on-server.page:28
 msgid ""
 "With these caveats in mind, perform the following steps to open a file from "
 "a server using <app>gedit</app>:"
@@ -601,7 +673,7 @@ msgstr ""
 "šādi:"
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:30
+#: C/gedit-open-on-server.page:32
 msgid ""
 "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
 "<gui>Open Files</gui> dialog."
@@ -610,7 +682,7 @@ msgstr ""
 "dialoglodziņu<gui>Atvērt datnes</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:32
+#: C/gedit-open-on-server.page:34
 msgid ""
 "Select the <gui>Pencil</gui> icon near the top of the <gui>Open Files</gui> "
 "dialog."
@@ -619,29 +691,29 @@ msgstr ""
 "augšā."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:34
+#: C/gedit-open-on-server.page:36
 msgid "Enter the IP Address or URL of the appropriate server."
 msgstr "Ievadiet attiecīgā servera IP adresi vai URL."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:36
+#: C/gedit-open-on-server.page:38
 msgid "Find and select the file that you wish to open."
 msgstr "Atrodiet un izvēlieties datni, ko vēlaties atvērt."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:37
+#: C/gedit-open-on-server.page:39
 msgid ""
 "Use the Character coding drop-down list to select the appropriate character "
 "coding."
 msgstr "Izvēlieties atbilstošo rakstzīmju kodējumu no izkrītošās izvēlnes."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:39 C/gedit-plugins-quick-open.page:43
+#: C/gedit-open-on-server.page:41 C/gedit-plugins-quick-open.page:43
 msgid "Click <gui>Open</gui>."
 msgstr "Spiediet pogu <gui>Atvērt</gui>."
 
 #. (itstool) path: page/p
-#: C/gedit-open-on-server.page:42
+#: C/gedit-open-on-server.page:44
 msgid ""
 "Valid types of URI include http:, ftp:, file:, and all of the methods "
 "supported by <app>gvfs</app>."
@@ -650,7 +722,7 @@ msgstr ""
 "<app>gvfs</app>."
 
 #. (itstool) path: note/p
-#: C/gedit-open-on-server.page:46
+#: C/gedit-open-on-server.page:48
 msgid ""
 "Files from some types of URI are opened as read-only, and any changes you "
 "make must be saved to a different location. For example, HTTP only allows "
@@ -662,13 +734,18 @@ msgstr ""
 "atver no FTP, ir tikai lasāmas, jo ne visi FTP serveri atbalsta attālināto "
 "datņu saglabāšanu."
 
+#. (itstool) path: info/desc
+#: C/gedit-open-recent.page:7
+msgid "Access files that you have updated recently."
+msgstr "Piekļūt datnēm, kas ir nesen atjauninātas."
+
 #. (itstool) path: page/title
-#: C/gedit-open-recent.page:14
+#: C/gedit-open-recent.page:16
 msgid "Reopen a recently-used file"
 msgstr "Atvērt nesen lietotu datni"
 
 #. (itstool) path: page/p
-#: C/gedit-open-recent.page:16
+#: C/gedit-open-recent.page:18
 msgid ""
 "By default, <app>gedit</app> provides easy access to five of your most "
 "recently-used files. Here is how you can open a recently-used file:"
@@ -677,24 +754,24 @@ msgstr ""
 "lietotām datnēm. Lai atvērtu nesen lietotu datni:"
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:19
+#: C/gedit-open-recent.page:21
 msgid ""
 "Click the downward-facing arrow to the right of the <gui>Open</gui> button."
 msgstr "Nospiediet lejupvērsto bultiņu pa labi no pogas <gui>Atvērt</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:21
+#: C/gedit-open-recent.page:23
 msgid ""
 "<app>gedit</app> will display a list of the five most-recently used files."
 msgstr "<app>gedit</app> parādīs piecu pēdējo lietoto datņu sarakstu."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:23
+#: C/gedit-open-recent.page:25
 msgid "Select the desired file, and it will open in a new tab."
 msgstr "Izvēlieties vajadzīgo datni, un tās tiks atvērta jaunā cilnē."
 
 #. (itstool) path: note/p
-#: C/gedit-open-recent.page:26
+#: C/gedit-open-recent.page:28
 msgid ""
 "To adjust the number of recently-used files that gedit displays, you will "
 "need to use the <app>dconf-editor</app> application."
@@ -703,7 +780,7 @@ msgstr ""
 "<app>dconf-editor</app>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:30
+#: C/gedit-open-recent.page:32
 msgid ""
 "Launch <app>dconf-editor</app> and select <guiseq><gui>org</gui> <gui>gnome</"
 "gui><gui>gedit</gui><gui>preferences</gui><gui>ui</gui> <gui>max-recents</"
@@ -714,7 +791,7 @@ msgstr ""
 "recents</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:33
+#: C/gedit-open-recent.page:35
 msgid ""
 "Double-click on the number next to <gui>max-recents</gui> and change the "
 "number to your desired value."
@@ -722,13 +799,19 @@ msgstr ""
 "Izpildiet dubultklikšķi uz skaitļa līdzās <gui>max-recents</gui> un "
 "ierakstiet vēlamo vērtību."
 
+#. (itstool) path: info/desc
+#: C/gedit-plugin-guide.page:7
+msgid "Use plugins to customize how gedit works for you."
+msgstr "Izmantot spraudņus, lai pielāgotu gedit savām vajadzībām."
+
 #. (itstool) path: page/title
-#: C/gedit-plugin-guide.page:14
-msgid "Configure and use gedit Plugins"
+#: C/gedit-plugin-guide.page:16
+#| msgid "Configure and use gedit Plugins"
+msgid "Configure and use gedit plugins"
 msgstr "Konfigurēt un lietot gedit spraudņus"
 
 #. (itstool) path: page/p
-#: C/gedit-plugin-guide.page:15
+#: C/gedit-plugin-guide.page:17
 msgid ""
 "You can do more with <app>gedit</app> by using plugins. Several plugins are "
 "installed by default, but a large number of other plugins are available "
@@ -738,7 +821,7 @@ msgstr ""
 "jau ir instalēti, bet daudzi citi ir pieejami papildus."
 
 #. (itstool) path: note/p
-#: C/gedit-plugin-guide.page:19
+#: C/gedit-plugin-guide.page:21
 msgid ""
 "Many Linux distributions make a group of these plugins available as a "
 "<app>gedit-plugins</app> package. Install the <app>gedit-plugins</app> "
@@ -749,12 +832,12 @@ msgstr ""
 "app>, lai padarītu šos spraudņus pieejamus <app>gedit</app>."
 
 #. (itstool) path: section/title
-#: C/gedit-plugin-guide.page:24
+#: C/gedit-plugin-guide.page:26
 msgid "Default gedit Plugins"
 msgstr "Noklusētie gedit spraudņi"
 
 #. (itstool) path: section/title
-#: C/gedit-plugin-guide.page:28
+#: C/gedit-plugin-guide.page:30
 msgid "Additional gedit Plugins"
 msgstr "Papildu gedit spraudņi"
 
@@ -763,16 +846,16 @@ msgstr "Papildu gedit spraudņi"
 #: C/gedit-plugins-external-tools.page:11 C/gedit-plugins-file-browser.page:10
 #: C/gedit-plugins-insert-date-time.page:9 C/gedit-plugins-install.page:12
 #: C/gedit-plugins-modelines.page:9 C/gedit-plugins-sort.page:9
-#: C/gedit-replace.page:15 C/gedit-search.page:14 C/gedit-tabs-moving.page:16
-#: C/gedit-tabs.page:17 C/gedit-undo-recent-action.page:15
-#: C/gedit-view-open-files-in-sidepane.page:14
+#: C/gedit-replace.page:17 C/gedit-search.page:15 C/gedit-tabs-moving.page:17
+#: C/gedit-tabs.page:18 C/gedit-undo-recent-action.page:16
 msgid "Daniel Neel"
 msgstr "Daniel Neel"
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-change-case.page:17
-msgid "Change the case of selected text"
-msgstr "Mainīt izvēlēta teksta burtu reģistru (lielie, mazie burti)"
+#| msgid "Change the case of selected text"
+msgid "Change the case of selected text."
+msgstr "Mainīt izvēlēta teksta burtu reģistru (lielie, mazie burti)."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-change-case.page:20
@@ -857,8 +940,9 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-doc-stats.page:17
-msgid "View document statistics"
-msgstr "Skatīt dokumenta statistiku"
+#| msgid "View document statistics"
+msgid "View document statistics."
+msgstr "Skatīt dokumenta statistiku."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-doc-stats.page:20
@@ -914,9 +998,12 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-external-tools.page:18
-msgid "Run scripts on your current files, and interact with other applications"
+#| msgid ""
+#| "Run scripts on your current files, and interact with other applications"
+msgid ""
+"Run scripts on your current files, and interact with other applications."
 msgstr ""
-"Apstrādāt atvērtās datnes ar skriptiem un mijiedarboties ar citām lietotnēm"
+"Apstrādāt atvērtās datnes ar skriptiem un mijiedarboties ar citām lietotnēm."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-external-tools.page:22
@@ -970,8 +1057,9 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-file-browser.page:17
-msgid "Use the side pane to browse and open files"
-msgstr "Izmantot sānu rūti, lai pārlūkotu un atvērtu datnes"
+#| msgid "Use the side pane to browse and open files"
+msgid "Use the side pane to browse and open files."
+msgstr "Izmantot sānu rūti, lai pārlūkotu un atvērtu datnes."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-file-browser.page:20
@@ -1015,8 +1103,9 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-insert-date-time.page:17
-msgid "Insert the current date/time at the cursor position"
-msgstr "Ievietot tagadējo datumu/laiku kursora pozīcijā"
+#| msgid "Insert the current date/time at the cursor position"
+msgid "Insert the current date/time at the cursor position."
+msgstr "Ievietot tagadējo datumu/laiku kursora pozīcijā."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-insert-date-time.page:20
@@ -1058,8 +1147,9 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-install.page:15
-msgid "How to install third-party plugins"
-msgstr "Kā instalēt citus spraudņus"
+#| msgid "How to install third-party plugins"
+msgid "How to install third-party plugins."
+msgstr "Kā instalēt citus spraudņus."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-install.page:18
@@ -1072,19 +1162,19 @@ msgstr "Papildu gedit spraudņi"
 #| "Installing third-party plugins gives you extra functionality that isn't "
 #| "available in default <app>gedit</app> plugins, or even the extra plugins "
 #| "that are part of the <app>gedit-plugins</app> package. An online list of "
-#| "third-party plugins is <link href=\"http://live.gnome.org/Gedit/"
+#| "third-party plugins is <link href=\"https://wiki.gnome.org/Apps/Gedit/"
 #| "Plugins#third_party\">kept here</link>."
 msgid ""
 "Installing third-party plugins gives you extra functionality that isn't "
 "available in default <app>gedit</app> plugins, or even the extra plugins "
 "that are part of the <app>gedit-plugins</app> package. An online list of "
-"third-party plugins is <link href=\"https://wiki.gnome.org/Apps/Gedit/"
-"Plugins#third_party\">kept here</link>."
+"third-party plugins is <link href=\"https://wiki.gnome.org/Apps/Gedit\">kept "
+"here</link>."
 msgstr ""
 "Instalējot papildu spraudņus, jūs iegūstat funkcionalitāti, kas nav pieejama "
 "noklusējuma <app>gedit</app> un <app>gedit-plugins</app> pakas spraudņos. Ir "
-"pieejams <link href=\"https://wiki.gnome.org/Apps/Gedit/"
-"Plugins#third_party\">tiešsaistes papildu spraudņu saraksts</link>."
+"pieejams <link href=\"https://wiki.gnome.org/Apps/Gedit\">tiešsaistes papildu "
+"spraudņu saraksts</link>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-install.page:27
@@ -1172,8 +1262,9 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-modelines.page:16
-msgid "Emacs, Kate and Vim-style modelines support for gedit"
-msgstr "Emacs, Kate un Vim tipa režīma rindiņu atbalsts"
+#| msgid "Emacs, Kate and Vim-style modelines support for gedit"
+msgid "Emacs, Kate and Vim-style modelines support for gedit."
+msgstr "Emacs, Kate un Vim-stila modeline atbalsts gedit redaktoram."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-modelines.page:19
@@ -1397,17 +1488,18 @@ msgstr ""
 "apmeklējiet <link href=\"http://www.vim.org/\">Vim tīmekļa vietni</link>."
 
 #. (itstool) path: info/desc
-#: C/gedit-plugins-pyconsole.page:12
-msgid "Add an interactive Python console to the bottom pane"
-msgstr "Pievienot interaktīvu Python konsoli apakšējai rūtij"
+#: C/gedit-plugins-pyconsole.page:13
+#| msgid "Add an interactive Python console to the bottom pane"
+msgid "Add an interactive Python console to the bottom pane."
+msgstr "Pievienot interaktīvu Python konsoli apakšējai rūtij."
 
 #. (itstool) path: page/title
-#: C/gedit-plugins-pyconsole.page:15
+#: C/gedit-plugins-pyconsole.page:16
 msgid "Python console"
 msgstr "Python konsole"
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-pyconsole.page:17
+#: C/gedit-plugins-pyconsole.page:18
 msgid ""
 "You can add a Python console to the bottom pane, allowing you to test Python "
 "scripts without leaving <app>gedit</app>. To enable the Python console, "
@@ -1420,7 +1512,7 @@ msgstr ""
 "\">Iestatījumi</gui><gui>Spraudņi</gui><gui>Python konsole</gui></guiseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-pyconsole.page:23
+#: C/gedit-plugins-pyconsole.page:24
 msgid ""
 "Once the Python console is enabled, you can open it by selecting "
 "<guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just press "
@@ -1431,7 +1523,7 @@ msgstr ""
 "<keyseq><key>Shift</key><key>F9</key></keyseq>."
 
 #. (itstool) path: note/p
-#: C/gedit-plugins-pyconsole.page:27
+#: C/gedit-plugins-pyconsole.page:28
 msgid ""
 "If you have also enabled the <gui>Embeded Terminal</gui> plugin, the "
 "<gui>Python Console</gui> will appear as a separate tab in the bottom pane."
@@ -1441,8 +1533,9 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-quick-open.page:18
-msgid "Quickly open a file or set of files"
-msgstr "Ātri atvērt vienu vai vairākas datnes"
+#| msgid "Quickly open a file or set of files"
+msgid "Quickly open a file or set of files."
+msgstr "Ātri atvērt vienu vai vairākas datnes."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-quick-open.page:21
@@ -1533,9 +1626,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-quick-open.page:53
-#| msgid ""
-#| "Recent documents which are also shown in the<file>Recent</file> folder in "
-#| "<app>Files</app>"
 msgid ""
 "Recent documents which are also shown in the <file>Recent</file> folder in "
 "<app>Files</app>"
@@ -1583,20 +1673,20 @@ msgstr ""
 
 #. (itstool) path: credit/name
 #: C/gedit-plugins-snippets.page:13 C/gedit-plugins-sort.page:17
-#: C/gedit-printing-order.page:14 C/gedit-printing.page:13
-#: C/gedit-printing-select.page:13 C/gedit-quickstart.page:15
-#: C/gedit-replace.page:19 C/gedit-save-file.page:15 C/gedit-search.page:18
-#: C/gedit-shortcut-keys.page:29 C/gedit-spellcheck.page:19
-#: C/gedit-syntax-highlighting.page:13 C/gedit-tabs-moving.page:20
-#: C/gedit-tabs.page:21 C/gedit-undo-recent-action.page:19
-#: C/gedit-view-open-files-in-sidepane.page:18 C/index.page:17
+#: C/gedit-printing-order.page:15 C/gedit-printing.page:14
+#: C/gedit-printing-select.page:14 C/gedit-quickstart.page:16
+#: C/gedit-replace.page:21 C/gedit-save-file.page:16 C/gedit-search.page:19
+#: C/gedit-shortcut-keys.page:30 C/gedit-spellcheck.page:20
+#: C/gedit-syntax-highlighting.page:14 C/gedit-tabs-moving.page:21
+#: C/gedit-tabs.page:22 C/gedit-undo-recent-action.page:20 C/index.page:18
 msgid "Sindhu S"
 msgstr "Sindhu S"
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-snippets.page:17
-msgid "Use snippets to quickly insert often-used pieces of text"
-msgstr "Izmantot fragmentus, lai ātri ievietotu bieži lietotus teksta gabalus"
+#| msgid "Use snippets to quickly insert often-used pieces of text"
+msgid "Use snippets to quickly insert often-used pieces of text."
+msgstr "Izmantot fragmentus, lai ātri ievietotu bieži lietotus teksta gabalus."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-snippets.page:20
@@ -1629,7 +1719,7 @@ msgstr "Aktivēt <gui>fragmentu</gui> spraudni:"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:35 C/gedit-plugins-sort.page:44
-#: C/gedit-plugins-zeitgeist-dataprovider.page:29 C/gedit-spellcheck.page:36
+#: C/gedit-spellcheck.page:36
 msgid ""
 "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
 "\">Preferences</gui> <gui style=\"tab\">Plugins</gui></guiseq>."
@@ -1785,6 +1875,10 @@ msgid ""
 "language has been set for the document), select <gui>Global</gui> from the "
 "<gui>Manage Snippets</gui> sidebar."
 msgstr ""
+"Lai pievienotu fragmentu, kas darbojas globāli (tas ir, kad dokumentam nav "
+"iestatīta kāda noteikta sintakse vai valoda), izvēlieties <gui>Globāls</gui> "
+"no "
+"<gui>Pārvaldīt fragmentus</gui> sānu joslas."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:129
@@ -1792,6 +1886,8 @@ msgid ""
 "To add a new snippet, click on the \"plus\" icon in the <gui>Manage "
 "Snippets</gui> sidebar."
 msgstr ""
+"Lai pievienotu jaunu fragmentu, spiediet “plusa” ikonu <gui>Pārvaldīt "
+"fragmentus</gui> sānu joslā."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:133
@@ -1799,6 +1895,8 @@ msgid ""
 "Input a name for the new snippet. The name of the snippet can be different "
 "from the snippet you want to add."
 msgstr ""
+"Ievadiet fragmenta nosaukumu. Fragmenta nosaukums var atšķirties no "
+"fragmenta, kuru vēlaties pievienot."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:137
@@ -1807,6 +1905,9 @@ msgid ""
 "term for the <gui style=\"input\">Tab trigger:</gui> textarea. You will be "
 "using this term to insert your snippet."
 msgstr ""
+"Sadaļā <gui style=\"group\">Aktivizācijas</gui> jums jāievada terms <gui "
+"style=\"input\">Tabulācijas trigeris:</gui> teksta laukumam. Jūs izmantosiet "
+"šo termu, lai ievietotu savu fragmentu."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-snippets.page:141
@@ -1816,6 +1917,10 @@ msgid ""
 "the desired combination of keys. Once you have pressed and released the "
 "keys, the keyboard shortcut will be set."
 msgstr ""
+"Ja vēlaties ievietot fragmentu ar tastatūras saīsni, spiediet savu peles "
+"rādītāju uz  <gui style=\"input\">Īsinājumtaustiņš:</gui> teksta laukuma un "
+"spiediet attiecīgo taustiņu kombināciju. Kad būsiet piespieduši un atlaiduši "
+"taustiņus, tastatūras saīsne būs iestatīta."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:148
@@ -1825,6 +1930,9 @@ msgid ""
 "where <em>n</em> is replaced with a number that represents the numerical "
 "order of variables included."
 msgstr ""
+"Zem <gui style=\"input\">Rediģēt:</gui> teksta laukuma, ievadiet vēlamo "
+"fragmenta tekstu. Jūs varat izmantot <code>${n}</code> lai norādītu mainīgos, "
+"kur <em>n</em> norāda skaitli, kas apzīmē iekļauto mainīgo skaitlisko secību."
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-snippets.page:158
@@ -1838,6 +1946,10 @@ msgid ""
 "<gui style=\"input\">Tab trigger:</gui>. The <gui style=\"input\">Edit:</"
 "gui> textarea contains:"
 msgstr ""
+"Pieņemsim, ka izveidojāt fragmentu ar termu <var>sveiciens</var> sadaļā "
+"<gui style=\"input\">Tabulācijas trigeris:</gui>. Teksta laukums <gui "
+"style=\"input\">Rediģēt:</"
+"gui> satur:"
 
 #. (itstool) path: section/code
 #: C/gedit-plugins-snippets.page:164
@@ -1860,6 +1972,8 @@ msgid ""
 "and pressing the <key>Tab</key> key. The following text snippet will be "
 "inserted:"
 msgstr ""
+"Jūs varat ievietot šo fragmentu, dokumentā rakstot <var>sveiciens</var> un "
+"spiežot taustiņu <key>Tab</key>. Tiks ievietot šis fragments:"
 
 #. (itstool) path: section/code
 #: C/gedit-plugins-snippets.page:173
@@ -1881,11 +1995,16 @@ msgid ""
 "\"wonderful\" and \"amazing\" and press <key>Del</key> to delete the least "
 "preferred option."
 msgstr ""
+"Vārdus “lieliskā” un “apbrīnojāmā” var paturēt vai dzēst, atkarībā no "
+"lietošanas izvēles. Lai tā darītu, spiediet <key>Tab</key>, lai izvēlētos "
+"starp “lieliskā” un “apbrīnojāmā” un spiediet <key>Del</key>, lai dzēstu "
+"mazāk vēlamo opciju."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-sort.page:21
-msgid "Sort lines of text into alphabetical order"
-msgstr "Sakārtot teksta rindas alfabētiskā secībā"
+#| msgid "Sort lines of text into alphabetical order"
+msgid "Sort lines of text into alphabetical order."
+msgstr "Sakārtot teksta rindas alfabētiskā secībā."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-sort.page:24
@@ -1996,52 +2115,27 @@ msgid "To perform the sort operation, click <gui>Sort</gui>."
 msgstr "Lai veiktu kārtošanas darbību, spiediet pogu <gui>Kārtot</gui>."
 
 #. (itstool) path: info/desc
-#: C/gedit-plugins-zeitgeist-dataprovider.page:15
-msgid "Log user activity for documents which are opened in gedit"
-msgstr "Reģistrēt lietotāja aktivitāti dokumentiem, kas ir atvērti ar gedit"
-
-#. (itstool) path: page/title
-#: C/gedit-plugins-zeitgeist-dataprovider.page:18
-msgid "Zeitgeist dataprovider"
-msgstr "Zeitgeist datu piegādātājs"
-
-#. (itstool) path: page/p
-#: C/gedit-plugins-zeitgeist-dataprovider.page:20
-msgid ""
-"Zeitgeist is a service that logs user activities and events. Zeitgeist lets "
-"other applications access this information in the form of statistics and "
-"timelines.The Zeitgeist dataprovider plugin for <app>gedit</app> records "
-"user activity for documents used with gedit giving easy access to recently-"
-"used and frequently-used files."
-msgstr ""
-
-#. (itstool) path: steps/title
-#: C/gedit-plugins-zeitgeist-dataprovider.page:27
-msgid "Enable Zeitgeist dataprovider"
-msgstr "Aktivēt Zeitgeist datu piegādātāju"
-
-#. (itstool) path: item/p
-#: C/gedit-plugins-zeitgeist-dataprovider.page:34
-msgid "Select <gui style=\"menuitem\">Zietgeist Dataprovider</gui>."
-msgstr "Izvēlieties <gui style=\"menuitem\">Zietgeist datu piegādātāju</gui>."
+#: C/gedit-printing-order.page:7
+msgid "Set the pages to print in a certain order."
+msgstr "Iestatīt lappuses, lai drukātu noteiktā secībā."
 
 #. (itstool) path: credit/name
-#: C/gedit-printing-order.page:10 C/gedit-printing-select.page:9
+#: C/gedit-printing-order.page:11 C/gedit-printing-select.page:10
 msgid "Phil Bull"
 msgstr "Phil Bull"
 
 #. (itstool) path: page/title
-#: C/gedit-printing-order.page:20
+#: C/gedit-printing-order.page:21
 msgid "Getting Copies To Print In The Correct Order"
 msgstr "Sakārtot lappuses pareizā secībā, drukājot kopijas"
 
 #. (itstool) path: section/title
-#: C/gedit-printing-order.page:23
+#: C/gedit-printing-order.page:24
 msgid "Reverse"
 msgstr "Otrādi"
 
 #. (itstool) path: section/p
-#: C/gedit-printing-order.page:25
+#: C/gedit-printing-order.page:26
 msgid ""
 "Printers usually print the first page first, and the last page last, so the "
 "pages end up in reverse order when you pick them up. To reverse the order:"
@@ -2050,7 +2144,7 @@ msgstr ""
 "iznāk pretējā secībā, kādas tu tās esi izvēlējies. Lai apgrieztu secību:"
 
 #. (itstool) path: item/p
-#: C/gedit-printing-order.page:31
+#: C/gedit-printing-order.page:32
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui></guiseq>."
@@ -2059,7 +2153,7 @@ msgstr ""
 "\">Drukāt</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-printing-order.page:35
+#: C/gedit-printing-order.page:36
 msgid ""
 "In the <gui style=\"tab\">General</gui> tab of the Print dialog under <gui "
 "style=\"group\">Copies</gui>, check <gui style=\"checkbox\">Reverse</gui>."
@@ -2068,17 +2162,17 @@ msgstr ""
 "\"group\">Kopijas</gui> atzīmējiet <gui style=\"checkbox\">Apgriezti</gui>."
 
 #. (itstool) path: section/p
-#: C/gedit-printing-order.page:41
+#: C/gedit-printing-order.page:42
 msgid "The last page will be printed first, and so on."
 msgstr "Pēdējā lapa tiks drukāta kā pirmā un tā tālāk."
 
 #. (itstool) path: section/title
-#: C/gedit-printing-order.page:45
+#: C/gedit-printing-order.page:46
 msgid "Collate"
 msgstr "Salikt pa lappusēm"
 
 #. (itstool) path: section/p
-#: C/gedit-printing-order.page:47
+#: C/gedit-printing-order.page:48
 msgid ""
 "If you are printing more than one copy of the document, the print outs will "
 "be grouped by page number by default. (e.g. The copies of page one come out, "
@@ -2091,12 +2185,12 @@ msgstr ""
 "kopijas lapas ir saliktas kopā."
 
 #. (itstool) path: section/p
-#: C/gedit-printing-order.page:52
+#: C/gedit-printing-order.page:53
 msgid "To Collate:"
 msgstr "Lai saliktu pa lappusēm:"
 
 #. (itstool) path: item/p
-#: C/gedit-printing-order.page:55
+#: C/gedit-printing-order.page:56
 msgid ""
 "Click <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui></guiseq>."
@@ -2105,7 +2199,7 @@ msgstr ""
 "\">Drukāt</gui></guiseq>"
 
 #. (itstool) path: item/p
-#: C/gedit-printing-order.page:59
+#: C/gedit-printing-order.page:60
 msgid ""
 "In the <gui style=\"tab\">General</gui> tab of the Print dialog under <gui "
 "style=\"group\">Copies</gui> check <gui style=\"checkbox\">Collate</gui>."
@@ -2114,13 +2208,19 @@ msgstr ""
 "\"group\">Kopijas</gui> atzīmējiet <gui style=\"checkbox\">Salikt pa "
 "lappusēm</gui>."
 
+#. (itstool) path: info/desc
+#: C/gedit-printing.page:7
+#| msgid "Find and select the file that you wish to open."
+msgid "Print the files that you create with gedit."
+msgstr "Drukāt datnes, ko veidojāt ar gedit lietotni."
+
 #. (itstool) path: page/title
-#: C/gedit-printing.page:19
+#: C/gedit-printing.page:20
 msgid "Printing documents"
 msgstr "Dokumentu drukāšana"
 
 #. (itstool) path: note/p
-#: C/gedit-printing.page:22
+#: C/gedit-printing.page:23
 msgid ""
 "Printing with <app>gedit</app> requires that you have connected and "
 "configured your printer. If you have not done this, please consult the <link "
@@ -2131,17 +2231,17 @@ msgstr ""
 "href=\"help:gnome-help/printing\">GNOME drukāšanas palīdzību</link>."
 
 #. (itstool) path: page/p
-#: C/gedit-printing.page:27
+#: C/gedit-printing.page:28
 msgid "<app>gedit</app> allows you to print both to a file and to paper."
 msgstr "<app>gedit</app> ļauj drukāt gan datnē, gan uz papīra."
 
 #. (itstool) path: section/title
-#: C/gedit-printing.page:30
+#: C/gedit-printing.page:31
 msgid "Print Preview"
 msgstr "Drukas priekšskatījums"
 
 #. (itstool) path: section/p
-#: C/gedit-printing.page:32
+#: C/gedit-printing.page:33
 msgid ""
 "Prior to printing your document, you can preview how the printed document "
 "will look by using <gui>Print Preview</gui>. To preview the document:"
@@ -2151,7 +2251,7 @@ msgstr ""
 "dokumentu:"
 
 #. (itstool) path: item/p
-#: C/gedit-printing.page:37
+#: C/gedit-printing.page:38
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print "
 "Preview</gui></guiseq>. Alternatively, you can press <keyseq><key>Shift</"
@@ -2162,28 +2262,34 @@ msgstr ""
 "<keyseq><key>Shift</key><key>Ctrl</key> <key>P</key></keyseq>."
 
 #. (itstool) path: section/p
-#: C/gedit-printing.page:44
+#: C/gedit-printing.page:45
 msgid ""
 "A preview of your document will open in the same tab as the file. You can "
 "browse this preview with help of navigation buttons and tools in the toolbar "
 "at the top of the document preview tab. To close and return to the document "
 "click <gui style=\"button\">Close Preview</gui>."
 msgstr ""
+"Jūsu dokumenta priekšskatījums tiks atvērts tajā pat cilnē kā datne. Jūs "
+"varat pārlūkot šo priekšskatījumu ar navigācijas pogām un rīkiem rīku joslā "
+"dokumenta augšpusē priekšskatījuma cilnē. Lai aizvērtu un atgrieztos uz "
+"dokumentu, spiediet <gui style=\"button\">Aizvērt priekšskatījumu</gui>."
 
 #. (itstool) path: section/title
-#: C/gedit-printing.page:52
+#: C/gedit-printing.page:53
 msgid "Printing To Paper"
 msgstr "Drukāšana uz papīra"
 
 #. (itstool) path: section/p
-#: C/gedit-printing.page:54
+#: C/gedit-printing.page:55
 msgid ""
 "You can print your documents to paper using a local or remote printer. To "
 "print a file:"
 msgstr ""
+"Jūs varat izdrukāt savus dokumentus uz papīra, izmantojot lokālo vai "
+"attālināto printeri. Lai izdrukātu datni:"
 
 #. (itstool) path: item/p
-#: C/gedit-printing.page:59
+#: C/gedit-printing.page:60
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui> <gui style=\"tab\">General</gui></guiseq>."
@@ -2192,20 +2298,23 @@ msgstr ""
 "\">Drukāt</gui> <gui style=\"tab\">Vispārīgi</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-printing.page:64
+#: C/gedit-printing.page:65
 msgid "Select the desired printer from the list of printers available."
 msgstr "Izvēlieties vēlamo printeri no pieejamo printeru saraksta."
 
 #. (itstool) path: item/p
-#: C/gedit-printing.page:67
+#: C/gedit-printing.page:68
 msgid ""
 "You can preview the file using <gui style=\"button\">Print Preview</gui> and "
 "once you are satisfied with the settings, click <gui style=\"button\">Print</"
 "gui> to send the file to printer."
 msgstr ""
+"Jūs varat priekšskatīt datni, izmantojot <gui style=\"button\">Drukāšanas "
+"priekšskatījums</gui> un kad jūs apmierina iestatījumi, spiediet <gui "
+"style=\"button\">Drukāt</gui>, lai sūtītu datni uz printeri."
 
 #. (itstool) path: section/p
-#: C/gedit-printing.page:73
+#: C/gedit-printing.page:74
 msgid ""
 "Additionally, from <gui style=\"tab\">Page Setup</gui> tab: you can choose "
 "<gui style=\"group\">Layout</gui> and <gui style=\"group\">Paper</gui> "
@@ -2213,33 +2322,44 @@ msgid ""
 "programs, please consult <link href=\"help:gnome-help/printing#paper"
 "\">Layout and Paper options</link> help."
 msgstr ""
+"Un vēl, cilnē <gui style=\"tab\">Lappuses iestatīšana</gui> varat izvēlēties "
+"<gui style=\"group\">Izkārtojums</gui> un <gui style=\"group\">Papīrs</gui> "
+"opcijas. Tā kā šie iestatījumi ir pieejami daudzās <app>GNOME</app> "
+"lietotnēs, lai uzzinātu vairāk, skatiet <link "
+"href=\"help:gnome-help/printing#paper"
+"\">Izkārtojums un lappuses iestatījumi</link>."
 
 #. (itstool) path: section/title
-#: C/gedit-printing.page:83
+#: C/gedit-printing.page:84
 msgid "Print Multiple Copies And Between Specified Ranges"
-msgstr ""
+msgstr "Drukāt vairākas kopijas un starp norādītajiem apgabaliem"
 
 #. (itstool) path: section/p
-#: C/gedit-printing.page:85
+#: C/gedit-printing.page:86
 msgid ""
 "You can set <gui style=\"group\">Range</gui> and <gui style=\"group"
 "\">Copies</gui> options to help you:"
 msgstr ""
+"Jūs varat iestatīt diapazona (<gui style=\"group\">Drukāt</gui>) un <gui "
+"style=\"group"
+"\">Kopijas</gui> opcijas, lai jums palīdzētu:"
 
 #. (itstool) path: section/title
-#: C/gedit-printing.page:91
+#: C/gedit-printing.page:92
 msgid "Printing To File"
 msgstr "Drukāšana datnē"
 
 #. (itstool) path: section/p
-#: C/gedit-printing.page:93
+#: C/gedit-printing.page:94
 msgid ""
 "You can also use <app>gedit</app> to print to a file. To print your document "
 "to file of a different format:"
 msgstr ""
+"Jūs varat arī izmantot <app>gedit</app>, lai drukātu datnē. Lai drukātu savu "
+"dokumentu datnē ar citu formātu:"
 
 #. (itstool) path: item/p
-#: C/gedit-printing.page:98
+#: C/gedit-printing.page:99
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui> <gui style=\"menuitem\">Print to File</gui></guiseq>."
@@ -2248,46 +2368,56 @@ msgstr ""
 "\">Drukāt</gui> <gui style=\"menuitem\">Drukāt datnē</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-printing.page:103
+#: C/gedit-printing.page:104
 msgid ""
 "Printing is enabled for the following file formats, you may select from:"
 msgstr "Drukāšanai pieejami šādi datņu formāti, jūs varat izvēlēties no:"
 
 #. (itstool) path: item/p
-#: C/gedit-printing.page:107
+#: C/gedit-printing.page:108
 msgid "Portable Document Format (.pdf)"
 msgstr "Portable Document Format (.pdf)"
 
 #. (itstool) path: item/p
-#: C/gedit-printing.page:110
+#: C/gedit-printing.page:111
 msgid "PostScript (.ps)"
 msgstr "PostScript (.ps)"
 
 #. (itstool) path: item/p
-#: C/gedit-printing.page:113
+#: C/gedit-printing.page:114
 msgid "Scalable Vector Graphic (.svg)"
 msgstr "Scalable Vector Graphic (.svg)"
 
 #. (itstool) path: item/p
-#: C/gedit-printing.page:118
+#: C/gedit-printing.page:119
 msgid "To print the document to file, click <gui style=\"button\">Print</gui>."
 msgstr "Lai drukātu dokumentu datnē, spiediet <gui>Drukāt</gui>."
 
+#. (itstool) path: info/desc
+#: C/gedit-printing-select.page:7
+#| msgid "Select the name of the session that you want to delete."
+msgid "Choose the pages that you want to print."
+msgstr "Izvēlieties lappuses, kuras vēlaties drukāt."
+
 #. (itstool) path: page/title
-#: C/gedit-printing-select.page:19
-msgid "Only Printing Certain Pages"
+#: C/gedit-printing-select.page:20
+#| msgid "Only Printing Certain Pages"
+msgid "Only print certain pages"
 msgstr "Drukāt tikai noteiktas lappuses"
 
 #. (itstool) path: page/p
-#: C/gedit-printing-select.page:21
+#: C/gedit-printing-select.page:22
 msgid ""
 "You can selectively print only certain pages from the document. For example, "
 "if you enter the page numbers \"1,3,5-7,9\", then only pages 1, 3, 5, 6, 7 "
 "and 9 will be printed. To print pages of your choice:"
 msgstr ""
+"Jūs varat drukāt tikai atsevišķas dokumenta lappuses. Piemēram, ja ievadīsiet "
+"lappušu numurus “1,3,5-7,9”, tad tiks izdrukātas tikai lappuses 1, 3, 5, 6, 7 "
+"un 9. Lai izdrukātu tikai izvēlētās lappuses:"
 
 #. (itstool) path: item/p
-#: C/gedit-printing-select.page:27
+#: C/gedit-printing-select.page:28
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print…"
 "</gui></guiseq>."
@@ -2296,7 +2426,7 @@ msgstr ""
 "\">Drukāt…</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-printing-select.page:31
+#: C/gedit-printing-select.page:32
 msgid ""
 "In the <gui style=\"tab\">General</gui> tab in the Print dialog choose <gui "
 "style=\"radiobutton\">Pages</gui> from the <gui style=\"group\">Range</gui> "
@@ -2307,7 +2437,7 @@ msgstr ""
 "gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-printing-select.page:35
+#: C/gedit-printing-select.page:36
 msgid ""
 "Type the numbers of the pages you want to print from the document, separated "
 "by commas. Use a dash to specify a range of pages."
@@ -2320,22 +2450,31 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/gedit-quickstart.page:27
+#: C/gedit-quickstart.page:28
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gedit3-screenshot.png' "
+#| "md5='3f101415d3b97ca8b0e81dc3cc1a6bd7'"
 msgctxt "_"
 msgid ""
 "external ref='figures/gedit3-screenshot.png' "
-"md5='3f101415d3b97ca8b0e81dc3cc1a6bd7'"
+"md5='883fe82b057396bce097926551bb109e'"
 msgstr ""
 "external ref='figures/gedit3-screenshot.png' "
-"md5='3f101415d3b97ca8b0e81dc3cc1a6bd7'"
+"md5='883fe82b057396bce097926551bb109e'"
+
+#. (itstool) path: info/desc
+#: C/gedit-quickstart.page:9
+msgid "A brief introduction to gedit."
+msgstr "Īss gedit ievads."
 
 #. (itstool) path: page/title
-#: C/gedit-quickstart.page:21
+#: C/gedit-quickstart.page:22
 msgid "Get started with gedit"
 msgstr "Sākt darbu ar gedit"
 
 #. (itstool) path: page/p
-#: C/gedit-quickstart.page:22
+#: C/gedit-quickstart.page:23
 msgid ""
 "<app>gedit</app> is a full-featured text editor for the GNOME desktop "
 "environment. You can use it to prepare simple notes and documents, or you "
@@ -2348,16 +2487,20 @@ msgstr ""
 "programmatūras izstrādes vidi."
 
 #. (itstool) path: page/p
-#: C/gedit-quickstart.page:29
+#: C/gedit-quickstart.page:30
+#| msgid ""
+#| "Once <app>gedit</app> launches, you can start writing right away. To save "
+#| "your text, just click <gui>Save</gui>."
 msgid ""
 "Once <app>gedit</app> launches, you can start writing right away. To save "
-"your text, just click <gui>Save</gui>."
+"your text, just click the <gui>Save</gui> icon in the <app>gedit</app> "
+"toolbar."
 msgstr ""
 "Kolīdz <app>gedit</app> ir palaista, var sākt rakstīt. Lai saglabātu tekstu, "
-"nospiediet <gui>Saglabāt</gui>."
+"nospiediet <gui>Saglabāt</gui> ikonu <app>gedit</app> rīkjoslā."
 
 #. (itstool) path: page/p
-#: C/gedit-quickstart.page:32
+#: C/gedit-quickstart.page:34
 msgid ""
 "To learn about additional <app>gedit</app> features and to get assistance "
 "with performing additional tasks, explore <link xref=\"index\">the other "
@@ -2367,18 +2510,24 @@ msgstr ""
 "darbību veikšanā, apskatiet <app>gedit</app> palīdzības <link xref=\"index"
 "\">pārējās sadaļas</link>."
 
+#. (itstool) path: info/desc
+#: C/gedit-replace.page:8
+#| msgid "Replace a word within the current file"
+msgid "Replace portions of text in a file."
+msgstr "Aizvietot daļu teksta datnē."
+
 #. (itstool) path: credit/name
-#: C/gedit-replace.page:23
-msgid "Ekaterina Gerasimova"
-msgstr "Ekaterina Gerasimova"
+#: C/gedit-replace.page:33
+msgid "Young Li"
+msgstr "Young Li"
 
 #. (itstool) path: page/title
-#: C/gedit-replace.page:29
+#: C/gedit-replace.page:39
 msgid "Replace text"
 msgstr "Teksta aizvietošana"
 
 #. (itstool) path: page/p
-#: C/gedit-replace.page:31
+#: C/gedit-replace.page:41
 msgid ""
 "Editing text can be time consuming. To save time, <app>gedit</app> includes "
 "a <app>Replace</app> function that helps you to find and replace portions of "
@@ -2389,45 +2538,41 @@ msgstr ""
 "daļas."
 
 #. (itstool) path: steps/title
-#: C/gedit-replace.page:36
+#: C/gedit-replace.page:46
 msgid "Replace text in <app>gedit</app>"
 msgstr "Teksta aizvietošana <app>gedit</app>"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:38
+#: C/gedit-replace.page:48
 #| msgid ""
-#| "Open the Replace tool by clicking <guiseq><gui style=\"menu\">Search</"
-#| "gui> <gui style=\"menuitem\">Replace</gui></guiseq> or press "
+#| "Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"menu"
+#| "\">Search</gui><gui style=\"menuitem\">Replace…</gui></guiseq> or press "
 #| "<keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgid ""
-"Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"menu"
-"\">Search</gui><gui style=\"menuitem\">Replace…</gui></guiseq> or press "
-"<keyseq><key>Ctrl</key><key>H</key></keyseq>."
+"Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"button"
+"\">Menu button</gui><gui style=\"menuitem\">Find and Replace…</gui></guiseq> "
+"or press <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgstr ""
-"Atveriet <gui>Aizvietošanas</gui> rīku, izvēloties <guiseq><gui "
-"style=\"menu\">Meklēt</"
-"gui><gui style=\"menuitem\">Aizvietot…</gui></guiseq> vai nospiežot <keyseq><"
-"key>Ctrl</key><key>H</key></keyseq>."
+"Atveriet <gui>Aizvietošanas</gui> rīku, spiežot <guiseq><gui style=\"button"
+"\">Izvēlnes pogu</gui><gui style=\"menuitem\">Meklēt un aizvietot…</gui><"
+"/guiseq> vai "
+"nospiežot <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:43
-#| msgid ""
-#| "Enter the text that you wish to replace into the 'Search for:' field."
+#: C/gedit-replace.page:54
 msgid ""
 "Enter the text that you wish to replace into the <gui>Search for:</gui> "
 "field."
 msgstr "Ievietojiet aizvietojamo tekstu lauciņā <gui>Meklēt:</gui>"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:47
-#| msgid "Enter the new, replacement text into the 'Replace with:' field."
+#: C/gedit-replace.page:58
 msgid ""
 "Enter the new, replacement text into the <gui>Replace with:</gui> field."
 msgstr "Ievietojiet jauno tekstu lauciņā <gui>Aizvietot ar:</gui>"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:51
-#, fuzzy
+#: C/gedit-replace.page:62
 #| msgid ""
 #| "Once you have entered the original and replacement text, select your "
 #| "desired replacement options:"
@@ -2435,22 +2580,21 @@ msgid ""
 "Once you have entered the original and replacement text, you can add extra "
 "parameters to the search. You can also choose what you want to replace:"
 msgstr ""
-"Kad ievadīts sākotnējais un vēlamais teksts, izvēlieties aizvietošanas "
-"iespējas:"
+"Kad ievadīts sākotnējais un vēlamais teksts, jūs varat pievienot papildu "
+"meklēšanas parametrus. Varat arī izvēlēties, ko vēlaties aizvietot:"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:56
-#, fuzzy
+#: C/gedit-replace.page:67
 #| msgid ""
 #| "To replace <em>only</em> the next matching portion of text, click "
 #| "<gui>Replace</gui>."
 msgid "To replace <em>only</em> the next match, click <gui>Replace</gui>."
 msgstr ""
-"Lai aizvietotu <em>tikai</em> pirmo atrasto teksta fragmentu, spiediet "
+"Lai aizvietotu <em>tikai</em> nākamo atrasto teksta fragmentu, spiediet "
 "<gui>Aizvietot</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:60
+#: C/gedit-replace.page:71
 msgid ""
 "To replace <em>all occurrences</em> of the searched-for text, click "
 "<gui>Replace All</gui>."
@@ -2459,7 +2603,7 @@ msgstr ""
 "spiediet <gui>Aizvietot visus</gui>."
 
 #. (itstool) path: note/p
-#: C/gedit-replace.page:68
+#: C/gedit-replace.page:79
 msgid ""
 "Use the <gui>Replace All</gui> function with care. <gui>Replace All</gui> "
 "works on the entirety of your text file, and does not allow you to highlight "
@@ -2470,22 +2614,22 @@ msgstr ""
 "kurās notiks aizvietošana."
 
 #. (itstool) path: section/title
-#: C/gedit-replace.page:75
+#: C/gedit-replace.page:86
 msgid "More options"
 msgstr "Vairāk iespēju"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:77
+#: C/gedit-replace.page:88
 msgid "If you wish, you can add some extra parameters to your search:"
-msgstr ""
+msgstr "Ja vēlaties, varat pievienot papildu parametrus savam meklējumam:"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:81
+#: C/gedit-replace.page:92
 msgid "Match case"
-msgstr "Reģistra saskaņa"
+msgstr "Reģistrjutīgs"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:82
+#: C/gedit-replace.page:93
 msgid ""
 "The <em>Match case</em> option allows you to specify whether you want your "
 "search to be case-sensitive. If this option is selected, searches will be "
@@ -2497,12 +2641,12 @@ msgstr ""
 "reģistru."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:87
+#: C/gedit-replace.page:98
 msgid "Match entire word only"
 msgstr "Atlasīt tikai veselus vārdus"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:88
+#: C/gedit-replace.page:99
 msgid ""
 "Use this option to search for a specific word without including fragments of "
 "other words. For example, if you searched for the word 'and' with this "
@@ -2515,12 +2659,12 @@ msgstr ""
 "atrasti."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:95
+#: C/gedit-replace.page:106
 msgid "Search backwards"
 msgstr "Meklēt pretējā virzienā"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:96
+#: C/gedit-replace.page:107
 msgid ""
 "This command behaves identically to the Find Previous command. If you wish "
 "to step through search results from end to beginning, select this option."
@@ -2530,12 +2674,12 @@ msgstr ""
 "opciju."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:101
+#: C/gedit-replace.page:112
 msgid "Wrap around"
 msgstr "Apliekt (apskatīt visu datni)"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:102
+#: C/gedit-replace.page:113
 msgid ""
 "With the <app>wrap around</app> option enabled, <app>gedit</app> will re-"
 "start the search/replace action at the top of the file after it has reached "
@@ -2548,50 +2692,51 @@ msgstr ""
 "datnē."
 
 #. (itstool) path: section/title
-#: C/gedit-replace.page:112
+#: C/gedit-replace.page:123
 msgid "Using escape sequences"
 msgstr "Izmantot atsoļa virknes"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:114
+#: C/gedit-replace.page:125
 msgid ""
-"You can use <em>escape sequences</em> to search for line breaks and tabs."
+"You can use <em>escape sequences</em> to search for line breaks, carriage "
+"returns, and tabs."
 msgstr ""
+"Jūs varat izmantot <em>atsoļu virknes</em>, lai meklētu pāriešanu jaunā "
+"rindā, kursora atgriešanu un tabulācijas."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:119
+#: C/gedit-replace.page:130
 msgid "\\n"
 msgstr "\\n"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:120
-#| msgid "Modelines"
+#: C/gedit-replace.page:131
 msgid "Newline"
 msgstr "Jauna rinda"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:123
-msgid "\\t"
-msgstr "\\t"
-
-#. (itstool) path: item/p
-#: C/gedit-replace.page:124
-#| msgid "Tabs"
-msgid "Tab"
-msgstr "Tabulācija"
-
-#. (itstool) path: item/title
-#: C/gedit-replace.page:127
+#: C/gedit-replace.page:134
 msgid "\\r"
 msgstr "\\r"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:128
+#: C/gedit-replace.page:135
 msgid "Carriage return"
 msgstr "Kursora atgriešanās"
 
+#. (itstool) path: item/title
+#: C/gedit-replace.page:138
+msgid "\\t"
+msgstr "\\t"
+
+#. (itstool) path: item/p
+#: C/gedit-replace.page:139
+msgid "Tab"
+msgstr "Tabulācija"
+
 #. (itstool) path: section/p
-#: C/gedit-replace.page:132
+#: C/gedit-replace.page:143
 msgid ""
 "If you actually want to search for a <output>\\</output> (backslash) or one "
 "of the escape sequences in the text, you need to escape the backslash with "
@@ -2600,15 +2745,26 @@ msgid ""
 "search for escape sequences in the same way: to search for or replace with a "
 "<input>\\n</input>, use the <input>\\\\n</input> term."
 msgstr ""
+"Ja vēlaties meklēt pašu <output>\\</output> (atpakaļvērstā slīpsvītra) vai "
+"kādu no atsoļa virknēm paša tekstā, jums vajadzēs veikt atsoli "
+"atpakaļvērstajai slīpsvītrai, lai iegūtu vēl vienu atpakaļvērstu slīpsvītru. "
+"Piemēram, lai meklētu <input>\\</input>, jums jāievada <input>\\\\</input> "
+"meklēšanas vai aizvietošanas laukā. Jūs varat meklēt atsoļa virknes tādā pat "
+"veidā — lai meklētu vai aizvietotu <input>\\n</input>, lietojiet termu <input>"
+"\\\\n</input>."
+
+#. (itstool) path: info/desc
+#: C/gedit-save-file.page:8
+msgid "Save your file to work on it later."
+msgstr "Saglabāt datni, lai ar to strādātu vēlāk."
 
 #. (itstool) path: page/title
-#: C/gedit-save-file.page:26
+#: C/gedit-save-file.page:27
 msgid "Save a file"
 msgstr "Datnes saglabāšana"
 
 #. (itstool) path: page/p
-#: C/gedit-save-file.page:28
-#, fuzzy
+#: C/gedit-save-file.page:29
 #| msgid ""
 #| "To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or "
 #| "press <keyseq><key>Ctrl</key><key>O</key></keyseq>."
@@ -2617,60 +2773,69 @@ msgid ""
 "the current file</gui> button with the disk-drive icon on the right side of "
 "the toolbar or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
 msgstr ""
-"Lai atvērtu datni <app>gedit</app>, veiciet klikšķi uz pogas <gui>Atvērt</"
-"gui>, vai nospiediet <keyseq><key>Ctrl</key><key>O</key></keyseq>."
+"Lai saglabātu datni <app>gedit</app>, spiediet pogu <gui>Saglabāt šo datni</"
+"gui> ar diska dziņa ikonu labajā rīkjoslas pusē, vai spiediet <keyseq><key>"
+"Ctrl</key><key>S</key></keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-save-file.page:31
-#| msgid ""
-#| "If you are saving a new file, the <gui>Save File</gui> dialog will "
-#| "appear, and you can select a name for the file, as well as the directory "
-#| "where you would like the file to be saved."
+#: C/gedit-save-file.page:32
 msgid ""
 "If you are saving a new file, the <gui>Save As</gui> dialog will appear, and "
 "you can select a name for the file, as well as the directory where you would "
 "like the file to be saved."
 msgstr ""
-"Ja saglabājat jaunu datni, parādīsies dialoglodziņš <gui>Saglabāt kā</"
-"gui>. Tajā var izvēlēties datnes nosaukumu un mapi, kurā saglabāt datni."
+"Ja saglabājat jaunu datni, parādīsies dialoglodziņš <gui>Saglabāt kā</gui>. "
+"Tajā var izvēlēties datnes nosaukumu un mapi, kurā saglabāt datni."
+
+#. (itstool) path: info/desc
+#: C/gedit-search.page:8
+#| msgid "Find a word within the current file"
+msgid "Find a portion of text within a file."
+msgstr "Atrastu teksta fragmentu datnē."
 
 #. (itstool) path: page/title
-#: C/gedit-search.page:28
+#: C/gedit-search.page:29
 msgid "Search for text"
 msgstr "Meklēt tekstu"
 
 #. (itstool) path: page/p
-#: C/gedit-search.page:30
+#: C/gedit-search.page:31
 msgid ""
 "The Find tool can help you find specific sequences of text within in your "
 "file."
 msgstr "Meklēšanas rīks var palīdzēt atrast datnē konkrētu teksta fragmentu."
 
 #. (itstool) path: steps/title
-#: C/gedit-search.page:34
+#: C/gedit-search.page:35
 msgid "Finding text"
 msgstr "Teksta meklēšana"
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:36
+#: C/gedit-search.page:37
+#| msgid ""
+#| "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
+#| "\">Search</gui> <gui style=\"menuitem\">Find</gui> </guiseq> or pressing "
+#| "<keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your cursor "
+#| "to the start of the <gui>search window</gui>."
 msgid ""
 "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
-"\">Search</gui> <gui style=\"menuitem\">Find</gui> </guiseq> or pressing "
-"<keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your cursor to "
-"the start of the <gui>search window</gui>."
+"\">Menu Button</gui> <gui style=\"menuitem\">Find…</gui> </guiseq> or "
+"pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your "
+"cursor to the start of the <gui>search window</gui>."
 msgstr ""
 "Atveriet <gui>meklēšanas logu</gui>, izvēloties <guiseq><gui style=\"menu"
-"\">Meklēt</gui><gui style=\"menuitem\">Meklēt</gui></guiseq> vai spiežot "
+"\">Izvēlnes pogu</gui><gui style=\"menuitem\">Meklēt…</gui></guiseq> vai "
+"spiežot "
 "<keyseq><key>Ctrl</key><key>F</key></keyseq>. Kursors automātiski tiks "
 "pārvietots, lai varētu sākt meklēšanu."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:43
+#: C/gedit-search.page:44
 msgid "Type the text you wish to search for in the <gui>search window</gui>."
 msgstr "Ierakstiet tekstu, kuru vēlaties meklēt,  <gui>meklēšanas logā</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:47
+#: C/gedit-search.page:48
 msgid ""
 "As you type, <app>gedit</app> will begin highlighting the portions of text "
 "that match what you have entered."
@@ -2679,12 +2844,12 @@ msgstr ""
 "ievadīto."
 
 #. (itstool) path: page/p
-#: C/gedit-search.page:52
+#: C/gedit-search.page:53
 msgid "To scroll through the search results, do any of the following:"
 msgstr "Lai caurskatītu meklēšanas rezultātus, veiciet kādu no šīm darbībām:"
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:55
+#: C/gedit-search.page:56
 msgid ""
 "Click on the <gui style=\"button\">up</gui> or <gui style=\"button\">down</"
 "gui> facing arrows next to the <gui>search window</gui>."
@@ -2693,7 +2858,7 @@ msgstr ""
 "\"button\">lejup</gui> vērstās bultas <gui>meklēšanas logā</gui>"
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:60
+#: C/gedit-search.page:61
 msgid ""
 "Press the <key>up arrow</key> or <key>down arrow</key> keys on your keyboard."
 msgstr ""
@@ -2701,7 +2866,7 @@ msgstr ""
 "tastatūras."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:64
+#: C/gedit-search.page:65
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
 "key><key>Shift</key><key>G</key></keyseq>."
@@ -2710,7 +2875,7 @@ msgstr ""
 "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:68
+#: C/gedit-search.page:69
 msgid ""
 "Press the <key>Ctrl</key> and use your mouse or touchpad's <key>scroll</key> "
 "feature to move up or down through the text."
@@ -2719,7 +2884,7 @@ msgstr ""
 "skārienpaliktņa <key>ritināšanas</key> funkciju."
 
 #. (itstool) path: page/p
-#: C/gedit-search.page:73
+#: C/gedit-search.page:74
 msgid ""
 "To close the <gui>search window</gui>, press either <key>Esc</key> or "
 "<key>Enter</key>. Pressing <key>Esc</key> will return the cursor to where it "
@@ -2732,12 +2897,12 @@ msgstr ""
 "uz pašreizējo pozīciju meklēšanas rezultātos."
 
 #. (itstool) path: list/title
-#: C/gedit-search.page:79
+#: C/gedit-search.page:80
 msgid "Search tips"
 msgstr "Meklēšanas padomi"
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:81
+#: C/gedit-search.page:82
 msgid ""
 "If you highlight a portion of text with your mouse, and then press "
 "<keyseq><key>Ctrl</key><key>F</key></keyseq>, the text you've highlighted "
@@ -2747,7 +2912,7 @@ msgstr ""
 "key><key>F</key></keyseq> nospiešanas tas parādīsies meklēšanas logā."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:86
+#: C/gedit-search.page:87
 msgid ""
 "For more search options, click on the <gui style=\"button\">Magnifying "
 "Glass</gui> icon in the search window, or right-click anywhere in the search "
@@ -2758,26 +2923,30 @@ msgstr ""
 "meklēšanas logā. Jūs varat izvēlēties vienu vai vairākas meklēšanas opcijas:"
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:92
+#: C/gedit-search.page:93
 msgid "Select <gui>Match Case</gui> to make the search case sensitive."
 msgstr ""
 "Izvēlieties <gui>Reģistrjutīgs</gui>, lai meklējot būtu burtu reģistram būtu "
 "nozīme."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:95
+#: C/gedit-search.page:96
 msgid "Select <gui>Match Entire Word Only</gui> to search only complete words."
 msgstr ""
+"Izvēlieties <gui>Atlasīt tikai veselus vārdus</gui>, lai meklētu tikai "
+"veselus vārdus."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:99
+#: C/gedit-search.page:100
 msgid ""
 "Select <gui>Wrap Around</gui> to search text from top to bottom and cycle "
 "back again."
 msgstr ""
+"Izvēlieties <gui>Apskatīt visu dokumentu</gui>, lai meklētu tekstu no augšas "
+"līdz apakšai, un pēc tam turpinātu atkal meklēt no augšas."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:105
+#: C/gedit-search.page:106
 msgid ""
 "The text that you've searched for will remain highlighted by gedit, even "
 "after you have completed your search. To remove the highlight, click "
@@ -2789,45 +2958,50 @@ msgstr ""
 "guiseq> vai nospiediet <keyseq><key>Ctrl</key><key>Shift</key><key>K</key></"
 "keyseq>."
 
+#. (itstool) path: info/desc
+#: C/gedit-shortcut-keys.page:9
+msgid "Use keyboard shortcuts to help you work more quickly."
+msgstr "Lietojiet tastatūras saīsnes, lai varētu strādāt ātrāk."
+
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:17
+#: C/gedit-shortcut-keys.page:18
 msgid "Paolo Borelli"
 msgstr "Paolo Borelli"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:20
+#: C/gedit-shortcut-keys.page:21
 msgid "Jesse van den Kieboom"
 msgstr "Jesse van den Kieboom"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:23
+#: C/gedit-shortcut-keys.page:24
 msgid "Steve Frécinaux"
 msgstr "Steve Frécinaux"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:26
+#: C/gedit-shortcut-keys.page:27
 msgid "Ignacio Casal Quinteiro"
 msgstr "Ignacio Casal Quinteiro"
 
 #. (itstool) path: credit/name
-#: C/gedit-shortcut-keys.page:33 C/gedit-tab-groups.page:14
-#: C/gedit-tabs-moving.page:24 C/gedit-tabs.page:25
+#: C/gedit-shortcut-keys.page:34 C/gedit-tab-groups.page:15
+#: C/gedit-tabs-moving.page:25 C/gedit-tabs.page:26
 msgid "Radina Matic"
 msgstr "Radina Matic"
 
 #. (itstool) path: credit/years
-#: C/gedit-shortcut-keys.page:35 C/gedit-tab-groups.page:16
-#: C/gedit-tabs-moving.page:26 C/gedit-tabs.page:27
+#: C/gedit-shortcut-keys.page:36 C/gedit-tab-groups.page:17
+#: C/gedit-tabs-moving.page:27 C/gedit-tabs.page:28
 msgid "2013"
 msgstr "2013"
 
 #. (itstool) path: page/title
-#: C/gedit-shortcut-keys.page:40
+#: C/gedit-shortcut-keys.page:47
 msgid "Shortcut keys"
 msgstr "Īsinājumtaustiņi"
 
 #. (itstool) path: page/p
-#: C/gedit-shortcut-keys.page:42
+#: C/gedit-shortcut-keys.page:49
 msgid ""
 "Use <gui>shortcut keys</gui> to perform common tasks more quickly than with "
 "the mouse and menus. The following tables list all of <app>gedit's</app> "
@@ -2838,119 +3012,114 @@ msgstr ""
 "īsinājumtaustiņi."
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:61
+#: C/gedit-shortcut-keys.page:54
 msgid "Tab-related Shortcut keys"
 msgstr "Īsinājumtaustiņi darbam ar cilnēm"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:64 C/gedit-shortcut-keys.page:120
-#: C/gedit-shortcut-keys.page:166 C/gedit-shortcut-keys.page:260
-#: C/gedit-shortcut-keys.page:281 C/gedit-shortcut-keys.page:318
-#: C/gedit-shortcut-keys.page:347
-msgid "To Do This"
-msgstr "Veicamā darbība"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:65 C/gedit-shortcut-keys.page:121
+#: C/gedit-shortcut-keys.page:57 C/gedit-shortcut-keys.page:113
 #: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:261
-#: C/gedit-shortcut-keys.page:282 C/gedit-shortcut-keys.page:319
-#: C/gedit-shortcut-keys.page:348
-msgid "Press This"
-msgstr "Īsinājumtaustiņi"
+#: C/gedit-shortcut-keys.page:286 C/gedit-shortcut-keys.page:323
+#: C/gedit-shortcut-keys.page:352
+msgid "Action"
+msgstr "Darbība"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:70
+#: C/gedit-shortcut-keys.page:58 C/gedit-shortcut-keys.page:114
+#: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:262
+#: C/gedit-shortcut-keys.page:287 C/gedit-shortcut-keys.page:324
+#: C/gedit-shortcut-keys.page:353
+msgid "Keyboard shortcut"
+msgstr "Tastatūras saīsne"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:63
 msgid "Switch to the next tab to the left"
 msgstr "Pārslēgties uz nākamo cilni kreisajā pusē"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:71
+#: C/gedit-shortcut-keys.page:64
 msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:75
+#: C/gedit-shortcut-keys.page:68
 msgid "Switch to the next tab to the right"
 msgstr "Pārslēgties uz nākamo cilni labajā pusē"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:76
+#: C/gedit-shortcut-keys.page:69
 msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:80
+#: C/gedit-shortcut-keys.page:73
 msgid "Close tab"
 msgstr "Aizvērt cilni"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:81 C/gedit-shortcut-keys.page:153
+#: C/gedit-shortcut-keys.page:74 C/gedit-shortcut-keys.page:154
 msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:84
+#: C/gedit-shortcut-keys.page:77
 msgid "Save all tabs"
 msgstr "Saglabāt visas cilnes"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:85
+#: C/gedit-shortcut-keys.page:78
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:89
+#: C/gedit-shortcut-keys.page:82
 msgid "Close all tabs"
 msgstr "Aizvērt visas cilnes"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:90
-#| msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>W</key></keyseq>"
+#: C/gedit-shortcut-keys.page:83
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:93
-#, fuzzy
+#: C/gedit-shortcut-keys.page:86
 #| msgid "Reopen a recently-used file"
 msgid "Reopen the most recently closed tab"
-msgstr "Atvērt nesen lietotu datni"
+msgstr "Atkal atvērt pēdējo aizvērto cilni"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:94
-#| msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
+#: C/gedit-shortcut-keys.page:87
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:97
+#: C/gedit-shortcut-keys.page:90
 msgid "Jump to <var>n</var>th tab"
 msgstr "Pārslēgties uz <var>n</var>-to cilni"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:98
+#: C/gedit-shortcut-keys.page:91
 msgid "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:102
+#: C/gedit-shortcut-keys.page:95
 msgid "New tab group"
 msgstr "Jauna ciļņu grupa"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:103
-#| msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
+#: C/gedit-shortcut-keys.page:96
 msgid "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:106
+#: C/gedit-shortcut-keys.page:99
 msgid "Previous tab group"
 msgstr "Iepriekšējā ciļņu grupa"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:107
-#| msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
+#: C/gedit-shortcut-keys.page:100
 msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></"
 "keyseq>"
@@ -2959,13 +3128,12 @@ msgstr ""
 "keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:110
+#: C/gedit-shortcut-keys.page:103
 msgid "Next tab group"
 msgstr "Nākamā ciļņu grupa"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:111
-#| msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
+#: C/gedit-shortcut-keys.page:104
 msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></"
 "keyseq>"
@@ -2974,449 +3142,489 @@ msgstr ""
 "keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:117
+#: C/gedit-shortcut-keys.page:110
 msgid "Shortcut keys for working with files"
 msgstr "Īsinājumtaustiņi darbam ar datnēm"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:126
-msgid "Create a new document"
-msgstr "Izveidot jaunu dokumentu"
+#: C/gedit-shortcut-keys.page:119
+#| msgid "Create a new document"
+msgid "Create a new document in a new window"
+msgstr "Izveidot jaunu dokumentu jaunā logā"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:127
+#: C/gedit-shortcut-keys.page:120
 msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:130
+#: C/gedit-shortcut-keys.page:123
+#| msgid "Create a new document"
+msgid "Create a new document in a new tab"
+msgstr "Izveidot jaunu dokumentu jaunā cilnē"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:124
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:127
 msgid "Open a document"
 msgstr "Atvērt dokumentu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:131
+#: C/gedit-shortcut-keys.page:128
 msgid "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:134
+#: C/gedit-shortcut-keys.page:131
+#| msgid "The <gui>Quick Open</gui> file dialog will appear."
+msgid "Open the <gui>Quick Open</gui> window"
+msgstr "Atvērt logu <gui>Ātrā atvēršana</gui>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:132
+#| msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
+msgid "<keyseq><key>Alt</key><key>O</key></keyseq>"
+msgstr "<keyseq><key>Alt</key><key>O</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:135
 msgid "Save the current document"
 msgstr "Saglabāt pašreizējo dokumentu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:135
+#: C/gedit-shortcut-keys.page:136
 msgid "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:138
+#: C/gedit-shortcut-keys.page:139
 msgid "Save the current document with a new filename"
 msgstr "Saglabāt pašreizējo dokumentu ar jaunu nosaukumu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:139
+#: C/gedit-shortcut-keys.page:140
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:143
+#: C/gedit-shortcut-keys.page:144
 msgid "Print the current document"
 msgstr "Izdrukāt pašreizējo dokumentu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:144
+#: C/gedit-shortcut-keys.page:145
 msgid "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:147
+#: C/gedit-shortcut-keys.page:148
 msgid "Print preview"
 msgstr "Drukas priekšskatījums"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:148
+#: C/gedit-shortcut-keys.page:149
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:152
+#: C/gedit-shortcut-keys.page:153
 msgid "Close the current document"
 msgstr "Aizvērt pašreizējo dokumentu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:156
+#: C/gedit-shortcut-keys.page:157
 msgid "Quit gedit"
 msgstr "Iziet no gedit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:157
+#: C/gedit-shortcut-keys.page:158
 msgid "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:163
+#: C/gedit-shortcut-keys.page:164
 msgid "Shortcut keys for editing files"
 msgstr "Īsinājumtaustiņi datņu rediģēšanai"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:172
+#: C/gedit-shortcut-keys.page:173
 msgid "Move to the beginning of the current line"
 msgstr "Pārvietot uz pašreizējās rindas sākumu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:173
+#: C/gedit-shortcut-keys.page:174
 msgid "<key>Home</key>"
 msgstr "<key>Home</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:176
+#: C/gedit-shortcut-keys.page:177
 msgid "Move to the end of the current line"
 msgstr "Pārvietot uz pašreizējās rindas beigām"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:177
+#: C/gedit-shortcut-keys.page:178
 msgid "<key>End</key>"
 msgstr "<key>End</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:180
+#: C/gedit-shortcut-keys.page:181
 msgid "Move to the beginning of the document"
 msgstr "Pāriet uz dokumenta sākumu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:181
+#: C/gedit-shortcut-keys.page:182
 msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:184
+#: C/gedit-shortcut-keys.page:185
 msgid "Move to the end of the document"
 msgstr "Pāriet uz dokumenta beigām"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:185
+#: C/gedit-shortcut-keys.page:186
 msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:188
+#: C/gedit-shortcut-keys.page:189
 msgid "Move the selected word right one word"
 msgstr "Pārvietot izvēlēto vārdu vienu vārdu pa labi"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:189
+#: C/gedit-shortcut-keys.page:190
 msgid "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Labā bulta</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:192
+#: C/gedit-shortcut-keys.page:193
 msgid "Move the selected word left one word"
 msgstr "Pārvietot izvēlēto vārdu vienu vārdu pa kreisi"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:193
+#: C/gedit-shortcut-keys.page:194
 msgid "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Kreisā bulta</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:196
+#: C/gedit-shortcut-keys.page:197
 msgid "Undo the last action"
 msgstr "Atsaukt pēdējo darbību"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:197
+#: C/gedit-shortcut-keys.page:198
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:200
+#: C/gedit-shortcut-keys.page:201
 msgid "Redo the last undone action"
 msgstr "Atatsaukt pēdējo atsaukto darbību"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:201
+#: C/gedit-shortcut-keys.page:202
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:205
+#: C/gedit-shortcut-keys.page:206
 msgid "Cut the selected text or region and place it on the clipboard"
 msgstr "Izgriezt atlasīto tekstu vai apgabalu un ievietot to starpliktuvē"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:207
+#: C/gedit-shortcut-keys.page:208
 msgid "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:210
+#: C/gedit-shortcut-keys.page:211
 msgid "Copy the selected text or region onto the clipboard"
 msgstr "Iekopēt atlasīto tekstu vai apgabalu starpliktuvē"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:211
+#: C/gedit-shortcut-keys.page:212
 msgid "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:214
+#: C/gedit-shortcut-keys.page:215
 msgid "Paste the contents of the clipboard"
 msgstr "Ielīmēt starpliktuves (clipboard) saturu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:215
+#: C/gedit-shortcut-keys.page:216
 msgid "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:218
+#: C/gedit-shortcut-keys.page:219
 msgid "Select all text in the file"
 msgstr "Izvēlēties visu datnes tekstu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:219
+#: C/gedit-shortcut-keys.page:220
 msgid "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:222
+#: C/gedit-shortcut-keys.page:223
 msgid "Delete the current line"
 msgstr "Izdzēst pašreizējo rindu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:223
+#: C/gedit-shortcut-keys.page:224
 msgid "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:226
+#: C/gedit-shortcut-keys.page:227
 msgid "Move the selected line up one line"
 msgstr "Pārvietot izvēlēto rindu augšup"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:227
+#: C/gedit-shortcut-keys.page:228
 msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Bulta augšup</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:230
+#: C/gedit-shortcut-keys.page:231
 msgid "Move the selected line down one line"
 msgstr "Pārvietot izvēlēto rindu lejup"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:231
+#: C/gedit-shortcut-keys.page:232
 msgid "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Bulta lejup</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:234
+#: C/gedit-shortcut-keys.page:235
 msgid "Add a tab stop"
 msgstr "Pievienot tabulācijas pieturu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:235
+#: C/gedit-shortcut-keys.page:236
 msgid "<keyseq><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:238
+#: C/gedit-shortcut-keys.page:239
 msgid "Remove a tab stop"
 msgstr "Izņemt tabulācijas pieturu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:239
+#: C/gedit-shortcut-keys.page:240
 msgid "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:242
-#| msgid "Move the selected line up one line"
+#: C/gedit-shortcut-keys.page:243
 msgid "Convert the selected text to upper case"
 msgstr "Konvertēt izvēlēto tekstu uz lielajiem burtiem"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:243
-#| msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
-msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>L</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>L</key></keyseq>"
+#: C/gedit-shortcut-keys.page:244
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:246
-#| msgid "Move the selected line down one line"
+#: C/gedit-shortcut-keys.page:247
 msgid "Convert the selected text to lower case"
 msgstr "Pārveidot izvēlēto tekstu uz mazajiem burtiem"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:247 C/gedit-shortcut-keys.page:251
-#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+#: C/gedit-shortcut-keys.page:248
 msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:250
-#| msgid "Change the case of selected text"
+#: C/gedit-shortcut-keys.page:251
 msgid "Toggle case of the selected text"
 msgstr "Pārslēgt izvēlētā teksta burtu reģistru uz pretējo"
 
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:252
+#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
+
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:257
+#: C/gedit-shortcut-keys.page:258
 msgid "Shortcut keys for showing and hiding panes"
 msgstr "Īsinājumtaustiņi saskarnes elementu parādīšanai un slēpšanai"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:266
+#: C/gedit-shortcut-keys.page:267
 msgid "Show / hide the side pane"
 msgstr "Parādīt / slēpt sānu rūti"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:267
+#: C/gedit-shortcut-keys.page:268
 msgid "<key>F9</key>"
 msgstr "<key>F9</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:270
-msgid "Show / hide the bottom pane."
+#: C/gedit-shortcut-keys.page:271
+#| msgid "Show / hide the bottom pane."
+msgid "Show / hide the bottom pane"
 msgstr "Parādīt / slēpt apakšējo rūti"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:271
+#: C/gedit-shortcut-keys.page:272
 msgid "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:276
+#| msgid "Open the gedit user guide"
+msgid "Open the file menu"
+msgstr "Atvērt datņu izvēlni"
+
+#. (itstool) path: td/p
+#: C/gedit-shortcut-keys.page:277
+#| msgid "<key>F1</key>"
+msgid "<key>F10</key>"
+msgstr "<key>F10</key>"
+
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:278
+#: C/gedit-shortcut-keys.page:283
 msgid "Shortcut keys for searching"
 msgstr "Īsinājumtaustiņi meklēšanai"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:287
+#: C/gedit-shortcut-keys.page:292
 msgid "Find a string"
 msgstr "Atrast virkni (teksta fragmentu)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:288
+#: C/gedit-shortcut-keys.page:293
 msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:291
+#: C/gedit-shortcut-keys.page:296
 msgid "Find the next instance of the string"
 msgstr "Atrast nākamo vietu, kur tekstā ir dotā virkne"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:292
+#: C/gedit-shortcut-keys.page:297
 msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:295
+#: C/gedit-shortcut-keys.page:300
 msgid "Find the previous instance of the string"
 msgstr "Atrast iepriekšējo vietu, kur tekstā ir dotā virkne"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:296
+#: C/gedit-shortcut-keys.page:301
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:299
+#: C/gedit-shortcut-keys.page:304
 msgid "Search and Replace"
 msgstr "Atrast un aizvietot"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:300
+#: C/gedit-shortcut-keys.page:305
 msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:303
+#: C/gedit-shortcut-keys.page:308
 msgid "Clear highlight"
 msgstr "Noņemt izcēlumu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:304
+#: C/gedit-shortcut-keys.page:309
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:308
+#: C/gedit-shortcut-keys.page:313
 msgid "Goto line"
 msgstr "Doties uz rindu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:309
+#: C/gedit-shortcut-keys.page:314
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:315
+#: C/gedit-shortcut-keys.page:320
 msgid "Shortcut keys for tools"
 msgstr "Īsinājumtaustiņi rīkiem"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:324
+#: C/gedit-shortcut-keys.page:329
 msgid "Check spelling"
 msgstr "Pārbaudīt pareizrakstību"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:325
+#: C/gedit-shortcut-keys.page:330
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:328
+#: C/gedit-shortcut-keys.page:333
 msgid "Remove trailing spaces (with plugin)"
 msgstr "Aizvākt atstarpes rindas beigās (ar spraudni)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:329
+#: C/gedit-shortcut-keys.page:334
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:332
+#: C/gedit-shortcut-keys.page:337
 msgid "Run \"make\" in the current directory (with plugin)"
 msgstr "Palaist \"make\" aktuālajā direktorijā (ar spraudni)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:333
+#: C/gedit-shortcut-keys.page:338
 msgid "<key>F8</key>"
 msgstr "<key>F8</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:336
+#: C/gedit-shortcut-keys.page:341
 msgid "Directory listing (with plugin)"
 msgstr "Direktorija saraksts (ar spraudni)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:337
+#: C/gedit-shortcut-keys.page:342
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:344
+#: C/gedit-shortcut-keys.page:349
 msgid "Shortcut keys for user help"
 msgstr "Īsinājumtaustiņi palīdzībai"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:353
+#: C/gedit-shortcut-keys.page:358
 msgid "Open the gedit user guide"
 msgstr "Atvērt gedit lietotāja ceļvedi"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:354
+#: C/gedit-shortcut-keys.page:359
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
+#. (itstool) path: info/desc
+#: C/gedit-spellcheck.page:7
+msgid "Check your files for spelling errors."
+msgstr "Pārbaudiet savas datnes uz pareizrakstības kļūdām."
+
 #. (itstool) path: credit/name
-#: C/gedit-spellcheck.page:15
+#: C/gedit-spellcheck.page:16
 msgid "Baptiste Mille-Mathias"
 msgstr "Baptiste Mille-Mathias"
-
-#. (itstool) path: info/desc
-#: C/gedit-spellcheck.page:25
-msgid "Enable and use spell-checking feature"
-msgstr "Aktivēt un izmantot pareizrakstības pārbaudes iespēju"
 
 #. (itstool) path: page/title
 #. (itstool) path: section/title
@@ -3485,6 +3693,10 @@ msgid ""
 "displayed in bold style next to <gui>Misspelled word:</gui>. You can choose "
 "from the following corrective actions:"
 msgstr ""
+"Nepareizi uzrakstītiem vārdiem jūs varat izvēlēties labojumus, izmantojot "
+"pareizrakstības pārbaudes dialoglodziņu. Pareizrakstības pārbaudītājā "
+"nepareizi uzrakstītie vārdi ir izcelti treknrakstā pie <gui>Nepareizi "
+"uzrakstītie vārdi:</gui>. Jūs varat izvēlēties no šīm korekcijas darbībām:"
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:77
@@ -3492,6 +3704,8 @@ msgid ""
 "<gui style=\"input\">Change to:</gui> allows you to input a word and use "
 "<gui style=\"button\">Check Word</gui> to check the validity of the spelling."
 msgstr ""
+"<gui style=\"input\">Mainīt uz:</gui> ļauj jums ievadīt vārdu un izmantot "
+"<gui style=\"button\">Pārbaudīt vārdu</gui>, lai pārbaudītu pareizrakstību."
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:82
@@ -3499,6 +3713,7 @@ msgid ""
 "<gui style=\"menu\">Suggestions:</gui> lists the available substitutions for "
 "the word."
 msgstr ""
+"<gui style=\"menu\">Ieteikumi:</gui> uzskaita pieejamos vārda labojumus."
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:86
@@ -3506,6 +3721,9 @@ msgid ""
 "<gui style=\"button\">Ignore</gui> allows you to bypass spell check for "
 "<em>a</em> instance of current word."
 msgstr ""
+"<gui style=\"button\">Ignorēt</gui> ļauj jums izlaist pareizrakstības "
+"pārbaudi "
+"<em>šai</em> vārda instancei."
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:90
@@ -3513,6 +3731,9 @@ msgid ""
 "<gui style=\"button\">Ignore All</gui> allows you to bypass spell check for "
 "<em>all</em> instances of the current word."
 msgstr ""
+"<gui style=\"button\">Ignorēt visus</gui> ļauj jums izlaist pareizrakstības "
+"pārbaudi "
+"<em>visām</em> vārda instancēm."
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:94
@@ -3521,6 +3742,10 @@ msgid ""
 "word with <em>a</em> chosen substitute from the <gui style=\"menuitem"
 "\">Suggestions:</gui> list."
 msgstr ""
+"<gui style=\"button\">Mainīt</gui> aizvieto <em>vienu</em> nepareizi "
+"uzrakstīto vai neatpazīto vārdu ar izvēlētu aizvietojumu no <gui "
+"style=\"menuitem"
+"\">Ieteikumi:</gui> saraksta."
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:99
@@ -3529,6 +3754,10 @@ msgid ""
 "unrecognized words with the chosen substitute from the <gui style=\"menuitem"
 "\">Suggestions:</gui> list."
 msgstr ""
+"<gui style=\"button\">Mainīt visus</gui> aizvieto <em>visus</em> nepareizi "
+"uzrakstītos vai neatpazītos vārdus ar izvēlētu aizvietojumu no <gui "
+"style=\"menuitem"
+"\">Ieteikumi:</gui> saraksta."
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:104
@@ -3538,6 +3767,10 @@ msgid ""
 "<gui>User dictionary</gui> will allow <app>gedit</app> to recognize the word "
 "in documents and thus will not be highlighted as a misspelt word."
 msgstr ""
+"<gui style=\"button\">Pievienot vārdu</gui> ļauj jums pievienot aktuālo vārdu "
+"<app>gedit</app> lietotnes <gui>lietotāja vārdnīcai</gui>. Pielāgotu vārdu "
+"pievienošana <gui>lietotāja vārdnīcai</gui> ļaus <app>gedit</app> atpazīt "
+"vārdus dokumentā un tie netiks izcelti kā nepareizi uzrakstīti."
 
 #. (itstool) path: section/title
 #: C/gedit-spellcheck.page:115
@@ -3552,6 +3785,11 @@ msgid ""
 "style=\"menu\">Tools</gui><gui style=\"menuitem\">Set Language…</gui></"
 "guiseq>, then choose the language you want to use."
 msgstr ""
+"Pēc noklusējuma <app>gedit</app> izmantos jūsu pašreizējo valodu, lai "
+"pārbaudītu pareizrakstību dokumentā. Ja jums ir jāizmanto cita valoda, "
+"izvēlieties <guiseq><gui "
+"style=\"menu\">Rīki</gui><gui style=\"menuitem\">Iestatīt valodu…</gui></"
+"guiseq>, tad izvēlieties valodu, ko izmantot."
 
 #. (itstool) path: section/title
 #: C/gedit-spellcheck.page:123
@@ -3566,6 +3804,11 @@ msgid ""
 "use several different dictionaries to check your spelling. Two such "
 "dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>."
 msgstr ""
+"<app>gedit</app> pareizrakstības pārbaudīšanai izmanto <link "
+"href=\"http://www.abisource.com/projects/enchant/\">Enchant</link> – maza "
+"sistēmas utilītprogramma. Enchant var izmantot vairākas dažādas vārdnīcas, "
+"lai pārbaudītu pareizrakstību. <em>Hunspell</em> un <em>Aspell</em> ir "
+"piemēri atbalstītiem vārdnīcu nodrošinātājiem."
 
 #. (itstool) path: section/p
 #: C/gedit-spellcheck.page:131
@@ -3574,19 +3817,28 @@ msgid ""
 "your computer's software installer or package manager to install the "
 "dictionary back-end that you want."
 msgstr ""
+"Ja jums vajadzīgā valoda nav pieejama <app>gedit</app> lietotnē, izmantojiet "
+"datora programmatūras instalētāju vai pakotņu pārvaldnieku, lai uzinstalētu "
+"vajadzīgo vārdnīcu nodrošinātāju."
+
+#. (itstool) path: info/desc
+#: C/gedit-syntax-highlighting.page:7
+msgid "Highlight your text to make it easier to read."
+msgstr "Izceliet savu tekstu, lai to būtu vieglāk lasīt."
 
 #. (itstool) path: page/title
-#: C/gedit-syntax-highlighting.page:19
+#: C/gedit-syntax-highlighting.page:20
 msgid "Turn on syntax highlighting"
 msgstr "Ieslēgt sintakses iekrāsošanu"
 
 #. (itstool) path: section/title
-#: C/gedit-syntax-highlighting.page:22
-msgid "Syntax Highlighting"
+#: C/gedit-syntax-highlighting.page:23
+#| msgid "Syntax Highlighting"
+msgid "Syntax highlighting"
 msgstr "Sintakses iekrāsošana"
 
 #. (itstool) path: section/p
-#: C/gedit-syntax-highlighting.page:23
+#: C/gedit-syntax-highlighting.page:24
 msgid ""
 "<app>gedit</app> provides syntax highlighting for a wide range of markup, "
 "programming, and scientific languages. If <app>gedit</app> recognizes the "
@@ -3598,7 +3850,7 @@ msgstr ""
 "jūsu atvērtajā datnē lietoto sintaksi, tā automātiski iekrāso tekstu."
 
 #. (itstool) path: section/p
-#: C/gedit-syntax-highlighting.page:28
+#: C/gedit-syntax-highlighting.page:29
 msgid ""
 "If your syntax or language is not highlighted upon startup, you can select "
 "the appropriate syntax or language by clicking <guiseq><gui style=\"menu"
@@ -3611,13 +3863,18 @@ msgstr ""
 "\">Skats</gui><gui style=\"menuitem\">Iekrāsošanas režīms</gui></guiseq>, "
 "vai arī no saraksta <app>gedit</app> loga apakšā."
 
+#. (itstool) path: info/desc
+#: C/gedit-tab-groups.page:11
+msgid "Group similar tabs together."
+msgstr "Grupēt kopā līdzīgas cilnes."
+
 #. (itstool) path: page/title
-#: C/gedit-tab-groups.page:22
+#: C/gedit-tab-groups.page:23
 msgid "Organize files in grouped tabs"
 msgstr "Organizēt datnes grupētās cilnēs"
 
 #. (itstool) path: page/p
-#: C/gedit-tab-groups.page:24
+#: C/gedit-tab-groups.page:25
 msgid ""
 "If you are working with multiple tabs in <app>gedit</app> you can group "
 "them, making it easier to keep your opened files organized. Adding a new tab "
@@ -3625,75 +3882,81 @@ msgid ""
 "\"Untitled Document\" in the new pane, and make it active. You can open "
 "files into that tab group and move tabs from one tab group to another."
 msgstr ""
+"Ja jūs izmantojat vairākas cilnes <app>gedit</app> lietotnē, jūs varat tās "
+"sagrupēt, kas palīdz organizēt atvērtās datnes. Jaunas ciļņu grupas "
+"pievienošana sadalīs <app>gedit</app> logu divās rūtīs, atveriet jaunu "
+"“Nenosauktu dokumentu” jaunajā rūtī un padariet to aktīvu. Jūs varat atvērt "
+"datnes tajā ciļņu grupā un pārvietot cilnes no vienas ciļņu grupas uz otru."
 
 #. (itstool) path: section/title
-#: C/gedit-tab-groups.page:31
-#| msgid "Move a tab to another gedit window"
+#: C/gedit-tab-groups.page:32
 msgid "Open a new tab group in the gedit window"
 msgstr "Atvērt jaunu ciļņu grupu gedit logā"
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:33
+#: C/gedit-tab-groups.page:34
 msgid "To open a new tab group you can:"
-msgstr ""
+msgstr "Lai atvērtu jaunu ciļņu grupu, jūs varat:"
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:37
-#| msgid ""
-#| "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
-#| "<gui>Open Files</gui> dialog."
+#: C/gedit-tab-groups.page:38
 msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>New Tab Group</gui></guiseq> in the "
 "main menu."
 msgstr ""
-"Ejiet uz <guiseq><gui>Dokumenti</gui><gui>Jauna ciļņu grupa</gui></guiseq> "
+"Iet uz <guiseq><gui>Dokumenti</gui><gui>Jauna ciļņu grupa</gui></guiseq> "
 "galvenajā izvēlnē."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:41
-#, fuzzy
+#: C/gedit-tab-groups.page:42
 #| msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 msgid ""
 "Use the <keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq> shortcut."
-msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
+msgstr ""
+"Izmantot <keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq> saīsni."
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:46
+#: C/gedit-tab-groups.page:47
 msgid ""
 "This action will divide the <app>gedit</app> window in two panes, and the "
 "pane with the new tab group will be placed on the right of the active tab. "
 "You can move the handle right or left assigning more or less space of "
 "<app>gedit</app> window between panes according to your needs."
 msgstr ""
+"Šī darbība sadalīs <app>gedit</app> logu divās rūtīs un rūts ar jauno ciļņu "
+"grupu tiks novietota aktīvās cilnes labajā pusē. Jūs varat pārvietot turi pa "
+"kreisi vai pa pa labi, piešķirot vairāk vai mazāk vietas <app>gedit</app> "
+"logam starp rūtīm."
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:51
+#: C/gedit-tab-groups.page:52
 msgid ""
 "You can open as much tab groups in <app>gedit</app> window as your screen "
 "allows, but you will have to move the handle in order to see them correctly."
 msgstr ""
+"Jūs varat atvērt tik daudz ciļņu grupas<app>gedit</app> logā, cik var "
+"ietilpināt ekrānā, bet jums vajadzēs pārvietot turi, lai varētu tos pareizi "
+"redzēt."
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:55
+#: C/gedit-tab-groups.page:56
 msgid ""
 "To close a tab group pane just close all the tabs that are opened inside it."
 msgstr ""
+"Lai aizvērtu ciļņu grupas rūti, aizveriet visas cilnes, kas tajā ir atvērtas."
 
 #. (itstool) path: section/title
-#: C/gedit-tab-groups.page:61
+#: C/gedit-tab-groups.page:62
 msgid "Move through tab groups"
-msgstr ""
+msgstr "Pārvietoties caur ciļņu grupām"
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:63
+#: C/gedit-tab-groups.page:64
 msgid "To move forward (on the next) tab group:"
-msgstr ""
+msgstr "Lai ietu uz priekšu (uz nākamo) ciļņu grupu:"
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:67
-#| msgid ""
-#| "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
-#| "<gui>Open Files</gui> dialog."
+#: C/gedit-tab-groups.page:68
 msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>Next Tab Group</gui></guiseq> in the "
 "main menu."
@@ -3702,34 +3965,30 @@ msgstr ""
 "galvenajā izvēlnē."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:71
-#| msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
+#: C/gedit-tab-groups.page:72
 msgid ""
 "Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</"
 "key></keyseq> shortcut."
 msgstr ""
 "Lietojiet <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page "
-"down</"
-"key></keyseq> saīsni."
+"down</key></keyseq> saīsni."
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:76
+#: C/gedit-tab-groups.page:77
 msgid "To move backward (on the previous) tab group:"
 msgstr "Lai ietu atpakaļ (iepriekšējā) ciļņu grupā:"
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:80
-#| msgid "<guiseq><gui>File</gui><gui>Print</gui></guiseq>"
+#: C/gedit-tab-groups.page:81
 msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>Previous Tab Group</gui></guiseq> in "
 "the main menu."
 msgstr ""
-"Ejiet uz <guiseq><gui>Dokumenti</gui><gui>Iepriekšējā ciļņu grupa</gui><"
-"/guiseq> galvenajā izvēlnē."
+"Ejiet uz <guiseq><gui>Dokumenti</gui><gui>Iepriekšējā ciļņu grupa</gui></"
+"guiseq> galvenajā izvēlnē."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:84
-#| msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
+#: C/gedit-tab-groups.page:85
 msgid ""
 "Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</"
 "key></keyseq> shortcut."
@@ -3738,47 +3997,40 @@ msgstr ""
 "up</key></keyseq> saīsni."
 
 #. (itstool) path: section/title
-#: C/gedit-tab-groups.page:92
-#| msgid "Move a tab to another gedit window"
+#: C/gedit-tab-groups.page:93
 msgid "Move a tab to another tab group"
 msgstr "Pārvietot cilni uz citu ciļņu grupu"
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:94
-#| msgid "If you want to move a tab from one window to another:"
+#: C/gedit-tab-groups.page:95
 msgid "If you want to move a tab from one tab group to another:"
 msgstr "Ja jūs vēlaties pārvietot cilni no vienas ciļņu grupas uz citu:"
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:98 C/gedit-tabs-moving.page:44
-#: C/gedit-tabs-moving.page:65 C/gedit-tabs-moving.page:91
+#: C/gedit-tab-groups.page:99 C/gedit-tabs-moving.page:45
+#: C/gedit-tabs-moving.page:66 C/gedit-tabs-moving.page:89
 msgid "Click and hold the mouse button on the tab."
 msgstr "Piespiediet un turiet peles pogu uz cilnes."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:101
-#, fuzzy
+#: C/gedit-tab-groups.page:102
 #| msgid "Drag the tab to the new window."
 msgid "Drag the tab to another tab group pane."
-msgstr "Pārvelciet cilni uz jauno logu."
+msgstr "Pārvelciet cilni uz citu ciļņu grupas rūti."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:104
-#| msgid "Place it beside other tabs in the new window."
+#: C/gedit-tab-groups.page:105
 msgid "Place it beside other tabs in the tab group."
 msgstr "Novietojiet to līdzās citām cilnēm jaunajā ciļņu grupā."
 
 #. (itstool) path: item/p
-#: C/gedit-tab-groups.page:107 C/gedit-tabs-moving.page:50
-#: C/gedit-tabs-moving.page:71 C/gedit-tabs-moving.page:100
+#: C/gedit-tab-groups.page:108 C/gedit-tabs-moving.page:51
+#: C/gedit-tabs-moving.page:72 C/gedit-tabs-moving.page:98
 msgid "Release the mouse button."
 msgstr "Atlaidiet peles pogu."
 
 #. (itstool) path: section/p
-#: C/gedit-tab-groups.page:111
-#| msgid ""
-#| "See the <link xref=\"gedit-shortcut-keys\">tab-related shortcut keys</"
-#| "link> table to make it easier to manage your tabs."
+#: C/gedit-tab-groups.page:112
 msgid ""
 "See the <link xref=\"gedit-shortcut-keys\">tab-related shortcut keys</link> "
 "table to make it easier to manage your tab groups."
@@ -3786,13 +4038,19 @@ msgstr ""
 "Skatiet <link xref=\"gedit-shortcut-keys\">tastatūras saīsnes cilnēm</link>, "
 "kas var atvieglot ciļņu grupu pārvaldību."
 
+#. (itstool) path: info/desc
+#: C/gedit-tabs-moving.page:10
+#| msgid "Change the order of tabs in the gedit window"
+msgid "Change the position of a tab in the gedit window."
+msgstr "Mainīt cilnes novietojumu gedit logā."
+
 #. (itstool) path: page/title
-#: C/gedit-tabs-moving.page:31
+#: C/gedit-tabs-moving.page:32
 msgid "Move and re-order tabs"
 msgstr "Pārvietot un sakārtot cilnes"
 
 #. (itstool) path: page/p
-#: C/gedit-tabs-moving.page:32
+#: C/gedit-tabs-moving.page:33
 msgid ""
 "Tabs in <app>gedit</app> can be moved, making it easier to work with your "
 "files. Tabs can be can re-ordered within the same window, moved outside of "
@@ -3804,22 +4062,22 @@ msgstr ""
 "pārvietot no viena loga uz citu."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs-moving.page:38
+#: C/gedit-tabs-moving.page:39
 msgid "Change the order of tabs in the gedit window"
 msgstr "Izmainīt ciļņu secību gedit logā"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:40
+#: C/gedit-tabs-moving.page:41
 msgid "To change the ordering of tabs in a window:"
 msgstr "Lai izmainītu ciļņu secību logā:"
 
 #. (itstool) path: item/p
-#: C/gedit-tabs-moving.page:47
+#: C/gedit-tabs-moving.page:48
 msgid "Move the tab to the desired position among the other tab."
 msgstr "Pārvietojiet cilni uz vēlamo vietu starp citām cilnēm."
 
 #. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:54
+#: C/gedit-tabs-moving.page:55
 msgid ""
 "The tab will be placed in the position closest to where you release the tab, "
 "immediately beside other opened tabs."
@@ -3828,31 +4086,22 @@ msgstr ""
 "citām atvērtajām cilnēm."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs-moving.page:60
+#: C/gedit-tabs-moving.page:61
 msgid "Move a tab, creating a new gedit window"
 msgstr "Pārvietot cilni, izveidojot jaunu gedit logu"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:61
+#: C/gedit-tabs-moving.page:62
 msgid "To create a new window from an existing tab:"
 msgstr "Lai izveidotu jaunu logu no esošas cilnes:"
 
 #. (itstool) path: item/p
-#: C/gedit-tabs-moving.page:68
+#: C/gedit-tabs-moving.page:69
 msgid "Drag the tab out of the <app>gedit</app> window."
 msgstr "Izvelciet cilni no <app>gedit</app> loga."
 
-#. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:75
-msgid ""
-"or, while the tab to be moved is open, choose <guiseq><gui>Documents </"
-"gui><gui>Move to New Window</gui></guiseq>"
-msgstr ""
-"vai, kad pārvietojamā cilne ir atvērta, izvēlieties<guiseq><gui>Dokumenti</"
-"gui><gui>Pārvietot uz jaunu logu</gui></guiseq>"
-
 #. (itstool) path: note/p
-#: C/gedit-tabs-moving.page:79
+#: C/gedit-tabs-moving.page:77
 msgid ""
 "To move a tab into a new window when <app>gedit</app> is maximized, drag the "
 "tab onto the top bar at the top of the screen."
@@ -3861,36 +4110,40 @@ msgstr ""
 "maksimizēts, velciet cilni uz joslu ekrāna augšā."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs-moving.page:85
+#: C/gedit-tabs-moving.page:83
 msgid "Move a tab to another gedit window"
 msgstr "Pārvietot cilni uz citu gedit logu"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:87
+#: C/gedit-tabs-moving.page:85
 msgid "If you want to move a tab from one window to another:"
 msgstr "Ja jūs vēlaties pārvietot cilni no viena loga uz citu:"
 
 #. (itstool) path: item/p
-#: C/gedit-tabs-moving.page:94
+#: C/gedit-tabs-moving.page:92
 msgid "Drag the tab to the new window."
 msgstr "Pārvelciet cilni uz jauno logu."
 
 #. (itstool) path: item/p
-#: C/gedit-tabs-moving.page:97
+#: C/gedit-tabs-moving.page:95
 msgid "Place it beside other tabs in the new window."
 msgstr "Novietojiet to līdzās citām cilnēm jaunajā logā."
 
 #. (itstool) path: note/p
-#: C/gedit-tabs-moving.page:106
+#: C/gedit-tabs-moving.page:104
 msgid ""
 "You may find it easier to move a tab from one window to another by dragging "
 "the tab to the <gui>Activities</gui> hot-corner of <gui>GNOME Shell</gui>. "
 "This will reveal each of the open <app>gedit</app> windows. You can then "
 "release the tab on the desired <app>gedit</app> window."
 msgstr ""
+"Jums var likties vieglāk pārvietot cilni no viena loga uz citu, velkot cilni "
+"uz <gui>Aktivitātes</gui> karsto stūri <gui>GNOME čaulā</gui>. "
+"Tas parādīs katru atvērto <app>gedit</app> logu. Tad jūs varat atlaist cilni "
+"vēlamajā <app>gedit</app> logā."
 
 #. (itstool) path: section/p
-#: C/gedit-tabs-moving.page:113
+#: C/gedit-tabs-moving.page:111
 msgid ""
 "See the <link xref=\"gedit-shortcut-keys\">tab-related shortcut keys</link> "
 "table to make it easier to manage your tabs."
@@ -3898,13 +4151,19 @@ msgstr ""
 "Skatiet <link xref=\"gedit-shortcut-keys\">tastatūras saīsnes cilnēm</link>, "
 "kas var atvieglot ciļņu pārvaldību."
 
+#. (itstool) path: info/desc
+#: C/gedit-tabs.page:10
+#| msgid "Change the order of tabs in the gedit window"
+msgid "Create or close tabs in the gedit window."
+msgstr "Veidot vai aizvērt cilnes gedit logā."
+
 #. (itstool) path: page/title
-#: C/gedit-tabs.page:37
+#: C/gedit-tabs.page:38
 msgid "Add and remove tabs"
 msgstr "Pievienot vai noņemt cilnes"
 
 #. (itstool) path: page/p
-#: C/gedit-tabs.page:38
+#: C/gedit-tabs.page:39
 msgid ""
 "Working with tabs in <app>gedit</app> allows you to keep an eye on several "
 "files in a single window. The tab that is larger than the other tabs "
@@ -3917,15 +4176,12 @@ msgstr ""
 "strādāt."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs.page:44
+#: C/gedit-tabs.page:45
 msgid "Adding tabs"
 msgstr "Pievieno cilnes"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs.page:45
-#| msgid ""
-#| "To add a new tab, create a new file with <keyseq><key>Ctrl</key> <key>N</"
-#| "key></keyseq>. The tab will be added to the right side of any other tabs."
+#: C/gedit-tabs.page:46
 msgid ""
 "To add a new tab, create a new file with <keyseq><key>Ctrl</key> <key>T</"
 "key></keyseq>. The tab will be added to the right side of any other tabs."
@@ -3935,12 +4191,12 @@ msgstr ""
 "no pārējām cilnēm."
 
 #. (itstool) path: section/title
-#: C/gedit-tabs.page:51
+#: C/gedit-tabs.page:52
 msgid "Removing tabs"
 msgstr "Noņem cilnes"
 
 #. (itstool) path: section/p
-#: C/gedit-tabs.page:52
+#: C/gedit-tabs.page:53
 msgid ""
 "To remove a tab, click the <gui style=\"button\">×</gui> on the tab's right "
 "side. To remove all open tabs, press <keyseq><key>Ctrl</key> <key>Shift</"
@@ -3950,16 +4206,18 @@ msgstr ""
 "labajā pusē. Lai noņemtu visas cilnes, nospiediet <keyseq><key>Ctrl</"
 "key><key>Shift</key><key>W</key></keyseq>."
 
+#. (itstool) path: info/desc
+#: C/gedit-undo-recent-action.page:8
+msgid "Revert a recent change to one of your files."
+msgstr "Atgriezt atpakaļ nesenās izmaiņas kādā no datnēm."
+
 #. (itstool) path: page/title
-#: C/gedit-undo-recent-action.page:30
+#: C/gedit-undo-recent-action.page:31
 msgid "Undo a recent action"
 msgstr "Atsaukt nesen veiktu darbību"
 
 #. (itstool) path: page/p
-#: C/gedit-undo-recent-action.page:32
-#| msgid ""
-#| "To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or "
-#| "press <keyseq><key>Ctrl</key><key>O</key></keyseq>."
+#: C/gedit-undo-recent-action.page:33
 msgid ""
 "If you make a mistake while using <app>gedit</app>, you can undo it by "
 "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>."
@@ -3968,69 +4226,10 @@ msgstr ""
 "spiežot <keyseq><key>Ctrl</key><key>Z</key></keyseq>."
 
 #. (itstool) path: note/p
-#: C/gedit-undo-recent-action.page:36
-#, fuzzy
+#: C/gedit-undo-recent-action.page:37
 #| msgid "You cannot undo a change after you have saved it."
 msgid "You cannot undo a change after you have closed a <app>gedit</app> file."
-msgstr "Pēc saglabāšanas izmaiņas nevar atsaukt."
-
-#. (itstool) path: page/title
-#: C/gedit-view-open-files-in-sidepane.page:24
-msgid "View a list of files in the side pane"
-msgstr "Skatīt datņu sarakstu sānu rūtī"
-
-#. (itstool) path: page/p
-#: C/gedit-view-open-files-in-sidepane.page:26
-msgid ""
-"Keeping track of a large number of files using tabs can be difficult. One "
-"way of managing large numbers of files is viewing them in a side pane. Side "
-"panes allow you to view more files at a time than is possible using tabs "
-"alone."
-msgstr ""
-"Pārskatīt daudzas datnes, izmantojot cilnes, var būt sarežģīti. Viens "
-"risinājums ir skatīt tās sānu rūtī. Sānu rūts parāda vairāk datnes "
-"vienlaicīgi nekā cilnes."
-
-#. (itstool) path: page/p
-#: C/gedit-view-open-files-in-sidepane.page:31
-msgid ""
-"To view a list of open files in a side pane, click <guiseq><gui style=\"menu"
-"\">View</gui> <gui style=\"menuitem\">Side Pane</gui></guiseq>. A pane will "
-"appear to the left of the workspace with a listing of all currently open "
-"files. Clicking a file in the side pane will display that file in the "
-"workspace."
-msgstr ""
-"Lai skatītu sarakstu ar atvērtajām datnēm sānu rūtī, nospiediet <guiseq><gui "
-"style=\"menu\">Skats</gui><gui style=\"menuitem\">Sānu rūts</gui></guiseq>. "
-"Pa kreisi no darba laukuma parādīsies rūts ar sarakstu, kurā būs visas "
-"šobrīd atvērtās datnes. Izpildot klikšķi uz datnes sānu rūtī, datne tiks "
-"atvērts darba laukumā."
-
-#. (itstool) path: media/span
-#: C/gedit-view-open-files-in-sidepane.page:39
-msgid "documents icon"
-msgstr "dokumentu ikona"
-
-#. (itstool) path: page/p
-#: C/gedit-view-open-files-in-sidepane.page:37
-msgid ""
-"The side pane also contains a <app>File Browser</app> view. If the pane "
-"displays a file directory instead of currently open files, click <_:media-1/"
-"> at the bottom of the pane to switch to the <app>Documents</app> view."
-msgstr ""
-"Sānu rūts satur arī <app>Datņu pārlūka</app> skatu. Ja logs rāda datņu "
-"sarakstu, nevis šobrīd atvērtās datnes, spiediet <_:media-1/> loga "
-"lejasdaļā, lai pārslēgtos uz <app>dokumentu</app> skatu."
-
-#. (itstool) path: note/p
-#: C/gedit-view-open-files-in-sidepane.page:44
-msgid ""
-"The side pane only displays files that are open in the current window. When "
-"multiple windows are open, only the files in the current window will be "
-"displayed in the side pane."
-msgstr ""
-"Sānu rūts parāda tikai datnes, kas ir atvērtas aktīvajā logā. Kad ir atvērti "
-"vairāki logi, tikai esošā loga datnes tiks parādīti tā sānu rūtī."
+msgstr "Izmaiņas nevar atsaukt pēc <app>gedit</app> datnes aizvēršanas."
 
 #. (itstool) path: info/title
 #: C/index.page:8
@@ -4044,13 +4243,19 @@ msgctxt "text"
 msgid "gedit Text Editor"
 msgstr "gedit teksta redaktors"
 
+#. (itstool) path: info/desc
+#: C/index.page:11
+#| msgid "Open the gedit user guide"
+msgid "Home page of the gedit help guide."
+msgstr "Mājas lapa gedit lietotāja ceļvedim."
+
 #. (itstool) path: page/title
-#: C/index.page:25
+#: C/index.page:26
 msgid "<_:media-1/> gedit Text Editor"
 msgstr "<_:media-1/> gedit teksta redaktors"
 
 #. (itstool) path: page/p
-#: C/index.page:29
+#: C/index.page:30
 msgid ""
 "Welcome to the <app>gedit</app> help guide. For a quick introduction into "
 "both <app>gedit's</app> most basic features, as well as some advanced "
@@ -4064,7 +4269,7 @@ msgstr ""
 "xref=\"gedit-shortcut-keys\">Tastatūras saīsnes</link>."
 
 #. (itstool) path: page/p
-#: C/index.page:35
+#: C/index.page:36
 msgid ""
 "Other help topics are grouped together into sections below. Enjoy using "
 "<app>gedit</app>!"
@@ -4073,1350 +4278,32 @@ msgstr ""
 "<app>gedit</app>!"
 
 #. (itstool) path: section/title
-#: C/index.page:39
+#: C/index.page:40
 msgid "Working With Files"
 msgstr "Strādāšana ar datnēm"
 
 #. (itstool) path: section/title
-#: C/index.page:44
+#: C/index.page:45
 msgid "Configure gedit"
 msgstr "Konfigurēt gedit"
 
 #. (itstool) path: section/title
-#: C/index.page:48
+#: C/index.page:49
 msgid "gedit Plugins"
 msgstr "gedit spraudņi"
 
 #. (itstool) path: section/title
-#: C/index.page:52
+#: C/index.page:53
 msgid "Printing with gedit"
 msgstr "Drukāšana ar gedit"
 
 #. (itstool) path: p/link
 #: C/legal.xml:3
-msgid "http://creativecommons.org/licenses/by-sa/3.0/"
-msgstr "http://creativecommons.org/licenses/by-sa/3.0/"
+#| msgid "Creative Commons Share Alike 3.0"
+msgid "Creative Commons Attribution-ShareAlike 3.0 Unported License"
+msgstr "Creative Commons Attribution-Share Alike 3.0 neportētā licence"
 
 #. (itstool) path: license/p
 #: C/legal.xml:3
-msgid ""
-"This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 "
-"Unported License. To view a copy of this license, visit <_:link-1/> or send "
-"a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, "
-"California, 94041, USA."
-msgstr ""
-
-#~| msgid ""
-#~| "The easiest way to create a new file in <app>gedit</app>, is to click "
-#~| "the icon that looks like a blank piece of paper with a \"plus\" sign "
-#~| "next to it. If you prefer, you may also select <guiseq><gui>File</"
-#~| "gui><gui>New</gui></guiseq>, or press <keyseq><key>Ctrl</key><key>N</"
-#~| "key></keyseq>."
-#~ msgid ""
-#~ "The easiest way to create a new file in <app>gedit</app>, is to click the "
-#~ "icon in the toolbar that looks like a blank piece of paper. If you "
-#~ "prefer, you may also select <guiseq><gui>File</gui><gui>New</gui></"
-#~ "guiseq>, or press <keyseq><key>Ctrl</key><key>N</key></keyseq>."
-#~ msgstr ""
-#~ "Vienkāršākais veids, kā izveidot jaunu datni <app>gedit</app>, ir ar pogu "
-#~ "rīkjoslā, uz kuras attēlota tukša papīra lapa. Tikpat labi varat arī "
-#~ "izvēlēties <guiseq><gui>Datne</gui><gui>Jauns</gui></guiseq> vai nospiest "
-#~ "<keyseq><key>Ctrl</key><key>N</key></keyseq>."
-
-#~| msgid ""
-#~| "To save a file in <app>gedit</app>, click on the disk-drive icon with "
-#~| "the word <gui>Save</gui> next to it. You may also select "
-#~| "<guiseq><gui>File</gui><gui>Save</gui></guiseq>, or just press "
-#~| "<keyseq><key>Ctrl</key><key>S</key></keyseq>."
-#~ msgid ""
-#~ "To save a file in <app>gedit</app>, click on the disk-drive icon with the "
-#~ "word <gui style=\"button\">Save</gui> next to it. You may also select "
-#~ "<guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Save</"
-#~ "gui></guiseq>, or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
-#~ msgstr ""
-#~ "Lai saglabātu datni <app>gedit</app>, veiciet klikšķi uz pogas ar vārdu "
-#~ "<gui style=\"button\">Saglabāt</gui>. Jūs varat arī izvēlēties "
-#~ "<guiseq><gui style=\"menu\">Datne</gui><gui style=\"menuitem\">Saglabāt</"
-#~ "gui></guiseq> vai nospiest <keyseq><key>Ctrl</key><key>S</key></keyseq>."
-
-#~| msgid ""
-#~| "If you make a mistake while using <app>gedit</app>, you can undo it by "
-#~| "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
-#~| "<guiseq><gui>Edit</gui><gui>Undo</gui></guiseq>. Doing so will cause "
-#~| "<app>gedit</app> to undo one set of similar actions."
-#~ msgid ""
-#~ "If you make a mistake while using <app>gedit</app>, you can undo it by "
-#~ "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>, or by clicking "
-#~ "<guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem\">Undo</"
-#~ "gui></guiseq>. Doing so will cause <app>gedit</app> to undo one set of "
-#~ "similar actions."
-#~ msgstr ""
-#~ "Ja rakstot ar <app>gedit</app> gadās pieļaut kļūdu, izmaiņas var atsaukt "
-#~ "spiežot <keyseq><key>Ctrl</key><key>Z</key></keyseq> vai spiežot "
-#~ "<guiseq><gui style=\"menu\">gedit</gui><gui style=\"menuitem\">Atsaukt</"
-#~ "gui></guiseq>. Rezultātā <app>gedit</app> atsaukts pēdējās līdzīgās "
-#~ "darbības."
-
-#~ msgid ""
-#~ "Undoing a \"set of similar actions\" means, for example, that <app>gedit</"
-#~ "app> will remove an entire word rather than removing each character in "
-#~ "the word one at a time. This makes <app>gedit</app>'s <em>undo</em> "
-#~ "feature more efficient."
-#~ msgstr ""
-#~ "Ar “atsaukts pēdējās līdzīgās darbības” jāsaprot, piemēram, ka "
-#~ "<app>gedit</app> izņems visu vārdu, nevis izņems pa vienai rakstzīmei. "
-#~ "Tas padara <app>gedit</app> <em>atsaukšanas</em> funkciju efektīvāku."
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-icon.png' "
-#~ "md5='a7174de2671462e1ac4f80a82ad09184'"
-#~ msgstr ""
-#~ "external ref='figures/gedit-icon.png' "
-#~ "md5='a7174de2671462e1ac4f80a82ad09184'"
-
-#~ msgid ""
-#~ "<media type=\"image\" mime=\"image/png\" src=\"figures/gedit-icon.png\"> "
-#~ "</media> gedit Text Editor"
-#~ msgstr ""
-#~ "<media type=\"image\" mime=\"image/png\" src=\"figures/gedit-icon.png\"> "
-#~ "</media> gedit teksta redaktors"
-
-#~ msgid ""
-#~ "Select <keyseq><key>Edit</key><key>Preferences</key><key>Font &amp; "
-#~ "Colors</key></keyseq>."
-#~ msgstr ""
-#~ "Izvēlieties <keyseq><key>Rediģēt</key><key>Iestatījumi</key><key>Fonts "
-#~ "&amp; Krāsas</key></keyseq>."
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-side-pane1.png' "
-#~ "md5='ac9c80cb0552d63b593c71f23be69b53'"
-#~ msgstr ""
-#~ "external ref='figures/gedit-side-pane1.png' "
-#~ "md5='ac9c80cb0552d63b593c71f23be69b53'"
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-side-pane2.png' "
-#~ "md5='e7a12a43adc9c9cb8c992ad22a815a57'"
-#~ msgstr ""
-#~ "external ref='figures/gedit-side-pane2.png' "
-#~ "md5='e7a12a43adc9c9cb8c992ad22a815a57'"
-
-#~ msgid "Record commonly-referenced locations with bookmarks"
-#~ msgstr "Saglabāt bieži vajadzīgās vietas grāmatzīmēs"
-
-#~ msgid "Bookmarks"
-#~ msgstr "Grāmatzīmes"
-
-#~ msgid ""
-#~ "Gedit bookmarks allow you to highlight important lines of text within "
-#~ "your document or program, making them easier to find. You can also move "
-#~ "up or down between bookmarks, making document navigation a bit faster."
-#~ msgstr ""
-#~ "Gedit grāmatzīmes dod iespēju atzīmēt svarīgas teksta rindas dokumentā "
-#~ "vai programmā, lai tās būtu vieglāk atrast. Iespējams arī pāriet uz "
-#~ "nākamo vai iepriekšējo grāmatzīmi ātrākai navigācijai pa dokumentu."
-
-#~ msgid ""
-#~ "To enable the bookmark plugin, select <guiseq><gui>Edit</gui><gui> "
-#~ "Preferences</gui><gui>Plugins</gui><gui>Bookmarks</gui></guiseq>."
-#~ msgstr ""
-#~ "Lai ieslēgtu grāmatzīmju spraudni, izvēlieties <guiseq><gui>Rediģēt</"
-#~ "gui><gui> Iestatījumi</gui><gui>Spraudņi</gui><gui>Grāmatzīmes</gui></"
-#~ "guiseq>."
-
-#~ msgid ""
-#~ "Bookmarks are inserted and removed by completing the same action. To "
-#~ "insert or remove bookmarks:"
-#~ msgstr ""
-#~ "Grāmatzīmes ievieto un izņem ar vienu un to pašu darbību. Lai ievietotu "
-#~ "vai izņemtu grāmatzīmi:"
-
-#~ msgid ""
-#~ "Navigate to the line where you want to insert or remove the bookmark."
-#~ msgstr "Ievietojiet kursoru rindā, kur jāievieto vai jāizņem grāmatzīme."
-
-#~ msgid ""
-#~ "Press <keyseq><key>Ctrl</key><key>Alt</key><key>B</key></keyseq>, or "
-#~ "click <guiseq><gui>Edit</gui><gui>Toggle Bookmark</gui></guiseq>."
-#~ msgstr ""
-#~ "Nospiediet <keyseq><key>Ctrl</key><key>Alt</key><key>B</key></keyseq> vai "
-#~ "izvēlieties <guiseq><gui>Rediģēt</gui><gui>Ielikt / izņemt grāmatzīmi</"
-#~ "gui></guiseq>."
-
-#~ msgid "To move between bookmarks:"
-#~ msgstr "Lai pārvietotos starp grāmatzīmēm:"
-
-#~ msgid ""
-#~ "Press <keyseq><key>Ctrl</key><key>B</key></keyseq> to move to the next "
-#~ "bookmark."
-#~ msgstr ""
-#~ "Spiediet <keyseq><key>Ctrl</key><key>B</key></keyseq>, lai nonāktu pie "
-#~ "nākamās grāmatzīmes."
-
-#~ msgid ""
-#~ "Press <keyseq><key>Ctrl</key><key>Shift</key><key>B</key></keyseq> to "
-#~ "move to the previous bookmark."
-#~ msgstr ""
-#~ "Spiediet <keyseq><key>Ctrl</key><key>Shift</key><key>B</key></keyseq>, "
-#~ "lai nonāktu pie iepriekšējās grāmatzīmes."
-
-#~ msgid ""
-#~ "If you prefer using the mouse, you can click <guiseq><gui>Edit</gui> "
-#~ "<gui>Go to Next Bookmark</gui></guiseq> or <guiseq><gui>Edit</gui><gui>Go "
-#~ "to Previous Bookmark</gui></guiseq>."
-#~ msgstr ""
-#~ "Ja labprātāk izmantojat peli, varat izvēlēties <guiseq><gui>Rediģēt</"
-#~ "gui><gui>Pāriet uz nākamo grāmatzīmi</gui></guiseq> vai "
-#~ "<guiseq><gui>Rediģēt</gui><gui>Pāriet uz iepriekšējo grāmatzīmi</gui></"
-#~ "guiseq>."
-
-#~ msgid "Auto-complete closing brackets"
-#~ msgstr "Automātiski veikt iekavu aizvēršanu"
-
-#~ msgid "Bracket completion"
-#~ msgstr "Iekavu noslēgšana"
-
-#~ msgid ""
-#~ "The <app>Bracket Completion</app> plugin will auto-complete closing "
-#~ "brackets for curly braces, parentheses, and square brackets."
-#~ msgstr ""
-#~ "Spraudnis <app>Iekavu noslēgšana</app> automātiski ievietos aizverošās "
-#~ "figūriekavas {}, apaļās iekavas () un kvadrātiekavas [ ]."
-
-#~ msgid ""
-#~ "To enable the plugin, select <guiseq><gui>Edit</gui><gui>Preferences</"
-#~ "gui><gui>Plugins</gui><gui>Bracket Completion</gui></guiseq>."
-#~ msgstr ""
-#~ "Lai ieslēgtu šo spraudni, izvēlieties <guiseq><gui>Rediģēt</"
-#~ "gui><gui>Iestatījumi</gui><gui>Spraudņi</gui><gui>Iekavu noslēgšana</"
-#~ "gui></guiseq>."
-
-#~ msgid "This plugin does not automatically insert closing HTML or XML tags."
-#~ msgstr ""
-#~ "Šis spraudnis neveic automātisku aizverošo HTML vai XML birku ievietošanu."
-
-#~ msgid "Paul Weaver"
-#~ msgstr "Paul Weaver"
-
-#~ msgid "Insert special characters just by clicking on them"
-#~ msgstr "Ievietot īpašās rakstzīmes ar peles klikšķi"
-
-#~ msgid "Character map"
-#~ msgstr "Rakstzīmju tabula"
-
-#~ msgid ""
-#~ "The <app>Character Map</app> plugin enables you to insert characters into "
-#~ "your document that you may not be able to type easily using your "
-#~ "keyboard. To enable this plugin, select <guiseq><gui>Edit</"
-#~ "gui><gui>Preferences</gui><gui>Plugins</gui><gui>Character Map</gui></"
-#~ "guiseq>."
-#~ msgstr ""
-#~ "Spraudnis <app>Rakstzīmju tabula</app> ļauj viegli ievietot tās "
-#~ "rakstzīmes, kuras ir grūti uzrakstīt, izmanotjot tastatūru. Lai ieslēgtu "
-#~ "šo spraudni, izvēlieties <guiseq><gui>Rediģēt</gui><gui>Iestatījumi</"
-#~ "gui><gui>Spraudņi</gui><gui>Rakstzīmju tabula</gui></guiseq>  "
-
-#~ msgid "Using Character Map"
-#~ msgstr "Rakstzīmju tabulas izmantošana"
-
-#~ msgid ""
-#~ "Once the plugin is enabled, you can add characters from the <em>Character "
-#~ "Map</em> tab of the side panel (<guiseq><gui>View</gui><gui>Side Panel</"
-#~ "gui></guiseq>)."
-#~ msgstr ""
-#~ "Kad spraudnis ir ieslēgts, var ievietot rakstzīmes no sānu rūts "
-#~ "<em>Rakstzīmju tabulas</em> cilnes (<guiseq><gui>Skats</gui><gui>Sānu "
-#~ "rūts</gui></guiseq>)."
-
-#~ msgid ""
-#~ "Place the cursor at the point in your document at which you would like "
-#~ "your special character."
-#~ msgstr "Novietojiet kursoru dokumenta vietā, kur jāievieto īpašā rakstzīme."
-
-#~ msgid ""
-#~ "Open the side panel by selecting <guiseq><gui>View</gui><gui>Side Panel</"
-#~ "gui></guiseq>, or by pressing <key>F9</key>."
-#~ msgstr ""
-#~ "Atveriet sānu rūti, izvēloties <guiseq><gui>Skats</gui><gui>Sānu rūts</"
-#~ "gui></guiseq> vai nospiežot <key>F9</key>."
-
-#~ msgid "Select the <em>Character Map</em> tab in the side panel."
-#~ msgstr "Izvēlieties cilni <em>Rakstzīmju tabula</em> sānu rūtī."
-
-#~ msgid ""
-#~ "If neccessary, choose the character set to which your character belongs "
-#~ "from the list at the top of the <em>Character Map</em> tab (e.g., Arabic)."
-#~ msgstr ""
-#~ "Ja vajadzīgs, izvēlieties rakstzīmju kopu, kurai pieder vajadzīgā "
-#~ "rakstzīme (piemēram, \"Arābu\"), no saraksta cilnes <em>Rakstzīmes "
-#~ "tabula</em> augšā."
-
-#~ msgid "Double click your desired character to insert it."
-#~ msgstr "Veiciet dubultklikšķi uz izvēlētās rakstzīmes, lai to ievietotu."
-
-#~ msgid ""
-#~ "You must click on the editing view of your document to continue editing "
-#~ "normally."
-#~ msgstr "Lai turpinātu rediģēt dokumentu, jāveic klikšķis rediģēšanas skatā."
-
-#~ msgid "Real-time error highlighting for supported languages"
-#~ msgstr "Reālā laika kļūdu izcelšana atbalstītajām valodām"
-
-#~ msgid "Code assistance"
-#~ msgstr "Kodēšanas palīdzība"
-
-#~ msgid ""
-#~ "The <app>gedit-code-assistance</app> plugin provides real-time error "
-#~ "highlighting for C, C++ and Objective-C. To enable this plugin, select "
-#~ "<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui><gui>Code "
-#~ "Assistance</gui></guiseq>."
-#~ msgstr ""
-#~ "Spraudnis <app>gedit-code-assistance</app> nodrošina reālā laika kļūdu "
-#~ "izcelšanu programmēšanas valodām C, C++ un Objective-C. Lai ieslēgtu šo "
-#~ "spraudni, izvēlieties <guiseq><gui>Rediģēt</gui><gui>Iestatījumi</gui> "
-#~ "<gui>Spraudņi</gui><gui>Kodēšanas palīdzība</gui></guiseq>."
-
-#~ msgid "How the code assistance plugin works"
-#~ msgstr "Kā strādā kodēšanas palīdzības spraudnis"
-
-#~ msgid ""
-#~ "The plugin currently relies on information in the makefile to deduce the "
-#~ "Clang error-highlighting rules. It examines the <code>make</code> rules "
-#~ "and determines which targets depend on the the file that is being parsed. "
-#~ "The plugin then extracts the compiler flags by simulating an execution of "
-#~ "those targets."
-#~ msgstr ""
-#~ "Pašlaik spraudnis izmanto informāciju no makefile, lai izsecinātu Clang "
-#~ "kļūdu izcelšanas kārtulas. Tas apskata <code>make</code> kārtulas un "
-#~ "nosaka, kuri mērķi ir atkarīgi no parsējamās datnes. Tad spraudnis iegūst "
-#~ "kompilatora karodziņus, simulējot šo mērķu izpildi."
-
-#~ msgid ""
-#~ "This is not completely fool proof, of course. In the future, the plugin "
-#~ "will allow you to manually specify the compile flags."
-#~ msgstr ""
-#~ "Protams, šī nav ideāla metode. Nākotnē spraudnis ļaus norādīt "
-#~ "kompilēšanas karodziņus manuāli."
-
-#~ msgid "Comment-out or uncomment a block of code"
-#~ msgstr "Izkomentēt vai atkomentēt koda bloku."
-
-#~ msgid "Code comment"
-#~ msgstr "Koda komentārs"
-
-#~ msgid ""
-#~ "Code comments are portions of text that make it easier for people to "
-#~ "understand a program's code, but they don't affect how a program works. "
-#~ "Comments are separated from other parts of a program by special "
-#~ "characters."
-#~ msgstr ""
-#~ "Koda komentāri ir teksta daļas, kas palīdz cilvēkiem saprast programmas "
-#~ "kodu, bet neietekmē to, kā programma strādā. Komentāri ir atdalīti no "
-#~ "citām programmas daļām ar īpašām rakstzīmēm."
-
-#~ msgid ""
-#~ "The <app>code comment</app> plugin makes it easier to quickly create or "
-#~ "remove code comments. To enable the code comment plugin, select "
-#~ "<guiseq><gui> Edit</gui><gui> Preferences</gui><gui>Plugins</"
-#~ "gui><gui>Code comment</gui> </guiseq>."
-#~ msgstr ""
-#~ "Spraudnis <app>Koda komentārs</app> palīdz ātri izveidot vai noņemt koda "
-#~ "komentārus. Lai ieslēgtu koda komentāru spraudni, izvēlieties "
-#~ "<guiseq><gui>Rediģēt</gui><gui>Iestatījumi</gui><gui>Spraudņi</"
-#~ "gui><gui>Koda komentārs</gui> </guiseq>."
-
-#~ msgid "To create or remove a comment:"
-#~ msgstr "Lai izveidotu vai noņemtu komentāru:"
-
-#~ msgid ""
-#~ "Highlight the portion of text where you want to add or remove a comment."
-#~ msgstr ""
-#~ "Iezīmējiet teksta daļu, kuru jūs vēlaties pārvērst par komentāru vai "
-#~ "otrādi — no komentāra par aktīvu kodu."
-
-#~ msgid ""
-#~ "To add a comment, click <guiseq><gui>Edit</gui><gui>Comment Code</gui></"
-#~ "guiseq>, or press <keyseq><key>Ctrl</key><key>M</key></keyseq>."
-#~ msgstr ""
-#~ "Lai izveidotu komentāru, izvēlieties <guiseq><gui>Rediģēt</"
-#~ "gui><gui>Komentēt kodu</gui></guiseq> vai nospiediet <keyseq><key>Ctrl</"
-#~ "key><key>M</key></keyseq>."
-
-#~ msgid ""
-#~ "<app>Gedit</app> will automatically use the correct style of comment "
-#~ "based on the language or syntax of the file. If <app>gedit </app> doesn't "
-#~ "identify your language or syntax, you can select it from the language "
-#~ "list in the bottom <gui>Status bar</gui>."
-#~ msgstr ""
-#~ "<app>Gedit</app> automātiski izmantos pareizo komentāra stilu saskaņā ar "
-#~ "datnes valodu vai sintaksi. Ja <app>gedit</app> neatpazīst valodu vai "
-#~ "sintaksi, to var izvēlēties no saraksta <gui>statusa joslā</gui> loga "
-#~ "apakšā."
-
-#~ msgid "Pick a color from a dialog and insert its hexadecimal representation"
-#~ msgstr ""
-#~ "Izvēlēties krāsu no dialoga un ievietot tās heksadecimālo apzīmējumu"
-
-#~ msgid "Color picker"
-#~ msgstr "Krāsas izvēle"
-
-#~ msgid ""
-#~ "The <app>color picker</app> plugin helps you to insert the character "
-#~ "codes that represent a certain color. This can make it easier to choose "
-#~ "and use the correct color in your programs."
-#~ msgstr ""
-#~ "Spraudnis <app>Krāsas izvēle</app> palīdzēs jums ievietot rakstzīmju "
-#~ "kodus, kas apzīmē attiecīgo krāsu. Tas atvieglo pareizās krāsas izvēli un "
-#~ "izmantošanu jūsu programmās."
-
-#~ msgid ""
-#~ "To enable the color picker plugin, select <guiseq><gui> Edit</"
-#~ "gui><gui>Preferences</gui><gui>Plugins</gui><gui>Color Picker</gui> </"
-#~ "guiseq>."
-#~ msgstr ""
-#~ "Lai ieslēgtu krāsas izvēles spraudni, izvēlieties <guiseq><gui>Rediģēt</"
-#~ "gui><gui>Iestatījumi</gui><gui>Spraudņi</gui><gui>Krāsas izvēle</gui></"
-#~ "guiseq>."
-
-#~ msgid "To open and use the color picker:"
-#~ msgstr "Lai atvērtu un izmantotu krāsas izvēles dialogu:"
-
-#~ msgid ""
-#~ "Place your cursor at the point in your document where you want to insert "
-#~ "the color code."
-#~ msgstr ""
-#~ "Novietojiet kursoru tajā dokumenta vietā, kur vēlaties ievietot krāsas "
-#~ "kodu."
-
-#~ msgid ""
-#~ "Select <guiseq><gui>Tools</gui><gui>Pick Color...</gui></guiseq>. The "
-#~ "color picker dialog will appear."
-#~ msgstr ""
-#~ "Izvēlieties <guiseq><gui>Rīki</gui><gui>Izvēlēties krāsu...</gui></"
-#~ "guiseq>. Parādīsies krāsas izvēles dialogs."
-
-#~ msgid ""
-#~ "If the color that you want to select is currently on your screen, click "
-#~ "on the icon that looks like an eyedropper."
-#~ msgstr ""
-#~ "Ja vēlamā krāsa ir uz jūsu ekrāna, uzklikšķiniet uz ikonas, kas izskatās "
-#~ "pēc pipetes."
-
-#~ msgid ""
-#~ "Your mouse pointer will change appearance, and will look like an "
-#~ "eyedropper."
-#~ msgstr "Peles rādītājs iegūs pipetes izskatu."
-
-#~ msgid ""
-#~ "Use the eyedropper and click on the portion of your screen that contains "
-#~ "the color you want to use. The color code for that color will appear in "
-#~ "the color picker window."
-#~ msgstr ""
-#~ "Ar šo pipeti veiciet klikšķi uz tās ekrāna daļas, kas ir vajadzīgajā "
-#~ "krāsā. Šīs krāsas kods parādīsies krāsas izvēles logā."
-
-#~ msgid ""
-#~ "To insert that color code into your document, click <gui> Insert</gui>. "
-#~ "The code will be inserted where you had placed your cursor."
-#~ msgstr ""
-#~ "Lai ievietotu iegūto krāsu kodu dokumentā, spiediet pogu <gui>Ievietot</"
-#~ "gui>. Kods tiks ievietots kursora pozīcijā."
-
-#~ msgid "To close the <app>color picker</app>, click <gui>Close</gui>."
-#~ msgstr ""
-#~ "Lai aizvērtu <app>krāsu izvēles</app> dialoglodziņu, spiediet pogu "
-#~ "<gui>Aizvērt</gui>."
-
-#~ msgid ""
-#~ "You can make fine-grained adjustments to the color by adjusting the "
-#~ "values for Hue, Saturation, Value, Red, Green, or Blue."
-#~ msgstr ""
-#~ "Krāsu var precīzi koriģēt, mainot vērtības laukos Nokrāsa, Piesātinājums, "
-#~ "Vērtība, Sarkanā, Zaļā un Zilā. "
-
-#~ msgid ""
-#~ "Additionally, you can save colors by right-clicking on any of the colored "
-#~ "boxes in the color picker, and selecting <gui>Save color here</gui>. This "
-#~ "will make it easier to insert commonly-used colors later."
-#~ msgstr ""
-#~ "Ir iespējams arī saglabāt krāsas, veicot labo peles klikšķi uz kādas no "
-#~ "paletes rūtiņām un izvēloties <gui>Saglabāt krāsu šeit</gui>.  Tas var "
-#~ "atvieglot biežāk izmantoto krāsu ievietošanu."
-
-#~ msgid "Use a command-line interface for advanced editing"
-#~ msgstr "Izmantot komandrindas saskarni padziļinātai rediģēšanai"
-
-#~ msgid "Commander"
-#~ msgstr "Commander"
-
-#~ msgid ""
-#~ "The <app>Commander</app> plugin is a plugin for advanced <app>gedit</app> "
-#~ "users that allows you to perform command-line actions on the current "
-#~ "file. To enable the commander plugin, select <guiseq><gui>Edit</gui><gui> "
-#~ "Preferences</gui><gui>Plugins</gui><gui>Commander</gui></guiseq>."
-#~ msgstr ""
-#~ "<app>Commander</app> ir spraudnis pieredzējušiem <app>gedit</app> "
-#~ "lietotājiem, kas ļauj veikt komandrindas darbības ar atvērto datni. Lai "
-#~ "ieslēgtu šo spraudni, izvēlieties <guiseq><gui>Rediģēt</"
-#~ "gui><gui>Iestatījumi</gui><gui>Spraudņi</gui><gui>Commander</gui></"
-#~ "guiseq>."
-
-#~ msgid ""
-#~ "Once you have enabled the plugin, activate it by pressing <keyseq><key> "
-#~ "Ctrl</key><key>.</key></keyseq>."
-#~ msgstr ""
-#~ "Kad spraudnis ieslēgts, aktivizējiet to, nospiežot <keyseq><key>Ctrl</"
-#~ "key><key>.</key></keyseq>."
-
-#~ msgid "The last key in the above key combination is a period."
-#~ msgstr "Pēdējais taustiņš minētajā taustiņu kombinācijā ir punkts."
-
-#~ msgid "See an overview of available commands"
-#~ msgstr "Apskatītu pieejamo komandu pārskatu"
-
-#~ msgid "Tab + Tab"
-#~ msgstr "Tab + Tab"
-
-#~ msgid "Find a word within the current file"
-#~ msgstr "Atrastu vārdu pašreizējā datnē"
-
-#~ msgid "/ <em>foo </em>"
-#~ msgstr "/ <em>aka </em>"
-
-#~ msgid "This will find the word <em>foo</em>."
-#~ msgstr "Tiks atrasts vārds <em>aka</em>."
-
-#~ msgid "Replace a word within the current file"
-#~ msgstr "Aizvietotu vārdu pašreizējā datnē"
-
-#~ msgid "// foo bar"
-#~ msgstr "// aka ūdensvads"
-
-#~ msgid "This will replace <em>foo</em> with <em>bar</em>."
-#~ msgstr "Vārds <em>aka</em> tiks aizvietots ar vārdu <em>ūdensvads</em>."
-
-#~ msgid "Move the cursor to a certain line number in your file"
-#~ msgstr "Pārvietot kursoru uz datnes rindu ar noteiktu numuru"
-
-#~ msgid "go [line number] <em>or</em> just <em>g</em> [line number]"
-#~ msgstr ""
-#~ "go [rindas numurs] <em>vai</em> vienkārši <em>g</em> [rindas numurs]"
-
-#~ msgid "bookmark <em>or</em> just <em>b</em>"
-#~ msgstr "bookmark <em>vai</em> vienkārši <em>b</em>"
-
-#~ msgid ""
-#~ "Some commands, such as the <app>bookmark</app> command require that the "
-#~ "appropriate plugin be installed and activated. If you do not have the "
-#~ "appropriate plugin installed and activated, you will receive an error "
-#~ "message."
-#~ msgstr ""
-#~ "Dažām komandām, piemēram, komandai <app>bookmark</app>, nepieciešams "
-#~ "atbilstošais spraudnis. Ja šāds spraudnis nav instalēts vai nav ieslēgts, "
-#~ "saņemsiet kļūdas ziņojumu."
-
-#~ msgid "Display recently-used and most-used files on startup"
-#~ msgstr "Rādīt nesen un visbiežāk lietotās datnes, uzsākot darbu"
-
-#~ msgid "Dashboard"
-#~ msgstr "Datņu panelis"
-
-#~ msgid ""
-#~ "The <app>Dashboard</app> plugin provides quick access to your most "
-#~ "recently-used files and most-frequently used files. To activate the "
-#~ "<app>Dashboard</app> plugin, select <guiseq><gui>Edit</gui><gui> "
-#~ "Preferences</gui><gui>Plugins</gui><gui>Dashboard</gui></guiseq>. You "
-#~ "will need to restart <app>gedit</app> to activate the <app>Dashboard</"
-#~ "app> plugin."
-#~ msgstr ""
-#~ "<app>Datņu paneļa</app> spraudnis nodrošina ātru piekļuvi nesen un "
-#~ "visbiežāk lietotajām datnēm. Lai ieslēgtu <app>Datņu paneļa</app> "
-#~ "spraudni, izvēlieties <keyseq><key>Rediģēt</key><key> Iestatījumi</key> "
-#~ "<key>Spraudņi</key><key>Datņu panelis</key></keyseq>, un pārstartējiet "
-#~ "<app>gedit</app>, lai aktivētu <app>Datņu paneļa</app> spraudni."
-
-#~ msgid ""
-#~ "The <app>dashboard</app> also includes a <gui>Search</gui> window, "
-#~ "allowing you to search for files that may not appear in the list of files."
-#~ msgstr ""
-#~ "<app>Datņu panelim</app> ir arī <gui>meklēšanas</gui> logs, lai atrastu "
-#~ "datnes, kuru nav sarakstā."
-
-#~ msgid "Recently used files"
-#~ msgstr "Nesen izmantotās datnes"
-
-#~ msgid ""
-#~ "The dashboard will initially display a shortcut for an <gui>empty "
-#~ "document</gui> and seven of your most recently-used files. Click on the "
-#~ "<gui>empty document</gui> to create a new file. Click on any of the other "
-#~ "files to open that file."
-#~ msgstr ""
-#~ "Sākotnēji datņu panelis rādīs <gui>tukša dokumenta</gui> īsceļu un "
-#~ "septiņus nesen izmantotas datnes. Veiciet klikšķi uz <gui>tukšā "
-#~ "dokumenta</gui>, lai izveidotu jaunu datni. Veiciet klikšķi uz jebkuras "
-#~ "citas datnes, lai atvērtu atbilstošo datni."
-
-#~ msgid "Most frequently-used files"
-#~ msgstr "Visbiežāk izmantotās datnes"
-
-#~ msgid ""
-#~ "Similarly, the dashboard displays a shortcut for an <gui>empty document </"
-#~ "gui> and seven of your most frequently-used files. Click on the <gui> "
-#~ "empty document</gui> to create a new file. Click on any of the other "
-#~ "files to open that file."
-#~ msgstr ""
-#~ "Līdzīgi, datņu panelis rāda <gui>tukša dokumenta</gui> īsceļu un septiņus "
-#~ "visbiežāk izmantotās datnes. Veiciet klikšķi uz <gui>tukšā dokumenta</"
-#~ "gui>, lai izveidotu jaunu datni. Veiciet klikšķi uz jebkuras citas "
-#~ "datnes, lai atvērtu atbilstošo datni."
-
-#~ msgid ""
-#~ "Once activated, the <app>dashboard</app> will be displayed by default "
-#~ "when you open <app>gedit</app>. You can also open the <app>dashboard</"
-#~ "app> by clicking <guiseq><gui>File</gui><gui>New</gui> </guiseq>, or by "
-#~ "pressing <keyseq><key>Ctrl</key><key>N</key></keyseq>."
-#~ msgstr ""
-#~ "Kad spraudnis <app>Datņu panelis</app> ir ieslēgts, panelis parādīsies "
-#~ "pēc noklusējuma, atverot <app>gedit</app>. Paneli var atvērt arī, "
-#~ "izvēloties <guiseq><gui>Datne</gui><gui>Jauns</gui> </guiseq> vai "
-#~ "nospiežot <keyseq><key>Ctrl</key><key>N</key></keyseq>."
-
-#~ msgid "Show white space between words or portions of code"
-#~ msgstr "Parādīt atstarpi starp vārdiem vai koda daļām"
-
-#~ msgid "Draw spaces"
-#~ msgstr "Zīmēt atstarpes "
-
-#~ msgid ""
-#~ "The <app>Draw Spaces</app> plugin is a simple plugin that can mark "
-#~ "spaces, tabs, and other types of whitespace with a small, visible marker. "
-#~ "By making whitespace visible, you can more easily see how whitespace is "
-#~ "used in a document, and can apply spacing strategies more consistently."
-#~ msgstr ""
-#~ "Spraudnis <app>Zīmēt atstarpes</app> ir vienkāršs spraudnis, kas var "
-#~ "atzīmēt atstarpes, tabulācijas zīmes, un citas baltstarpas rakstzīmes ar "
-#~ "mazu, redzamu marķieri. Padarot šīs rakstzīmes redzamas, var vieglāk "
-#~ "novērtēt baltstarpas rakstzīmju izvietojumu visā dokumentā, lai veidotu "
-#~ "atstarpes konsekventi."
-
-#~ msgid ""
-#~ "To enable this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</"
-#~ "gui> <gui>Plugins</gui><gui>Draw Spaces</gui></guiseq>. After you have "
-#~ "enabled the plugin, you can set its options by highlighting the plugin "
-#~ "and selecting <gui>Preferences</gui>."
-#~ msgstr ""
-#~ "Lai ieslēgtu šo spraudni, izvēlieties <guiseq><gui>Rediģēt</gui> "
-#~ "<gui>Iestatījumi</gui><gui>Spraudņi</gui><gui>Zīmēt atstarpes</gui></"
-#~ "guiseq>."
-
-#~ msgid ""
-#~ "By default, the <app>Draw Spaces</app> plugin will mark the following "
-#~ "types of whitespace in a file:"
-#~ msgstr ""
-#~ "Pēc noklusējuma, spraudnis <app>Zīmēt atstarpes</app> atzīmēs šādas "
-#~ "atstarpju rakstzīmes datnē:"
-
-#~ msgid "Spaces"
-#~ msgstr "Atstarpes"
-
-#~ msgid "Leading spaces"
-#~ msgstr "Atstarpes rindas sākumā"
-
-#~ msgid "Spaces in text"
-#~ msgstr "Atstarpes tekstā"
-
-#~ msgid "Trailing spaces"
-#~ msgstr "Atstarpes rindas beigās"
-
-#~ msgid "You can also set the plugin to mark:"
-#~ msgstr "Spraudni var arī iestatīt, lai atzīmētu:"
-
-#~ msgid "New Lines"
-#~ msgstr "Jaunas rindas zīmes"
-
-#~ msgid "Non-breaking spaces"
-#~ msgstr "Nedalāmās atstarpes"
-
-#~ msgid ""
-#~ "Though you will be able to see the dots when you work on a file, the dots "
-#~ "will not be visible when you print a file to paper."
-#~ msgstr ""
-#~ "Lai gan jūs redzēsiet punktus, strādājot ar datni, tie nebūs redzami, kad "
-#~ "datne tiks izdrukāta uz papīra."
-
-#~ msgid "Join several lines of text, or split long lines"
-#~ msgstr "Apvienot vairākas teksta rindas vai sadalīt garas rindas"
-
-#~ msgid "Join/Split lines"
-#~ msgstr "Sadalīt / apvienot rindas"
-
-#~ msgid ""
-#~ "The <app>Join/Split Lines</app> plugin can join shorter lines into one "
-#~ "longer line, or can split a long line into multiple shorter lines."
-#~ msgstr ""
-#~ "Spraudnis <app>Sadalīt / apvienot rindas</app> var apvienot īsākas rindas "
-#~ "vienā garā rindā, vai arī sadalīt garu rindu vairākās īsās rindās."
-
-#~ msgid ""
-#~ "To enable this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</"
-#~ "gui> <gui>Plugins</gui><gui>Join/Split Lines</gui></guiseq>."
-#~ msgstr ""
-#~ "Lai ieslēgtu šo spraudni, izvēlieties <guiseq><gui>Rediģēt</"
-#~ "gui><gui>Iestatījumi</gui><gui>Spraudņi</gui><gui>Sadalīt / apvienot "
-#~ "rindas</gui></guiseq>."
-
-#~ msgid "To join multiple lines into one longer line:"
-#~ msgstr "Lai apvienotu vairākas rindas vienā garākā rindā:"
-
-#~ msgid ""
-#~ "Select the lines that you want to join. To do this, you can use the "
-#~ "mouse, or you can press <keyseq><key>Shift</key><key>Up Arrow</key> </"
-#~ "keyseq> or <keyseq><key>Shift</key><key>Down Arrow</key></keyseq>."
-#~ msgstr ""
-#~ "Atlasiet apvienojamās rindas, izmantojot peli vai taustiņu kombinācijas "
-#~ "<keyseq><key>Shift</key><key>Augšup</key> </keyseq> vai "
-#~ "<keyseq><key>Shift</key><key>Lejup</key></keyseq>."
-
-#~ msgid "The lines that you selected will be joined into one longer line."
-#~ msgstr "Atlasītās rindas tiks apvienotas vienā garā rindā."
-
-#~ msgid "To split one line into multiple lines:"
-#~ msgstr "Lai sadalītu vienu rindu vairākās:"
-
-#~ msgid ""
-#~ "Select the line that you want to split by placing your cursor anywhere on "
-#~ "that line."
-#~ msgstr "Izvēlieties sadalāmo rindu, ievietojot kursoru jebkurā tās vietā."
-
-#~ msgid ""
-#~ "The line will be split into multiple lines. Spaces are used to determine "
-#~ "where it is safe to split a line, and the length of each line will not "
-#~ "exceed 80 characters."
-#~ msgstr ""
-#~ "Rinda būs sadalīta vairākās. Sadalīšana var notikt tikai pie atstarpēm, "
-#~ "un katras rindas garums nepārsniegs 80 rakstzīmes."
-
-#~ msgid "2011"
-#~ msgstr "2011"
-
-#~ msgid "Edit a document in multiple places at once"
-#~ msgstr "Rediģēt dokumentu vairākās vietās vienlaicīgi"
-
-#~ msgid "Multi edit"
-#~ msgstr "Multirediģēšana"
-
-#~ msgid ""
-#~ "The <app>Multi Edit</app> plugin allows you to edit a document in "
-#~ "multiple places at once. This can be helpful when performing tedious "
-#~ "editing tasks. To enable the Multi Edit plugin, select <guiseq><gui>Edit</"
-#~ "gui><gui> Preferences</gui><gui>Plugins</gui><gui>Multi Edit</gui></"
-#~ "guiseq>."
-#~ msgstr ""
-#~ "Spraudnis <app>Multirediģēšana</app> ļauj rediģēt dokumentu vairākās "
-#~ "vietās vienlaicīgi. Tas var būt noderīgs, veicot garlaicīgus rediģēšanas "
-#~ "uzdevumus. Lai ieslēgtu multirediģēšanas spraudni, izvēlieties "
-#~ "<guiseq><gui>Rediģēt</gui><gui> Iestatījumi</gui><gui>Spraudņi</"
-#~ "gui><gui>Multirediģēšana</gui></guiseq>."
-
-#~ msgid ""
-#~ "After you have enabled the plugin, turn-on Multi Edit mode by pressing "
-#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>C</key></keyseq>, or clicking "
-#~ "<guiseq><gui>Edit</gui><gui>Multi Edit Mode</gui></guiseq>. You can then "
-#~ "select the points in your file that you would like start editing."
-#~ msgstr ""
-#~ "Kad spraudnis ieslēgts, multirediģēšanu var sākt, nospiežot "
-#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>C</key></keyseq> vai "
-#~ "izvēloties <guiseq><gui>Rediģēt</gui><gui>Multirediģēšanas režīms</gui></"
-#~ "guiseq>. "
-
-#~ msgid "To insert editing points in your file:"
-#~ msgstr "Lai ievietotu datnē rediģēšanas punktus:"
-
-#~ msgid "Place your cursor at your first desired editing point."
-#~ msgstr "Novietojiet kursoru pirmajā vēlamajā rediģēšanas punktā."
-
-#~ msgid ""
-#~ "Move to your next editing point, and press <keyseq><key>Ctrl</key> "
-#~ "<key>E</key></keyseq> again."
-#~ msgstr ""
-#~ "Pārvietojiet kursoru uz nākamo rediģēšanas punktu un nospiediet "
-#~ "<keyseq><key>Ctrl</key> <key>E</key></keyseq> vēlreiz."
-
-#~ msgid "Continue inserting editing points, adding as many as you need."
-#~ msgstr ""
-#~ "Turpiniet ievietot rediģēšanas punktus, pievienojot tos vajadzīgajā "
-#~ "skaitā."
-
-#~ msgid ""
-#~ "Once you have inserted all of your editing points, you can make your "
-#~ "desired edits."
-#~ msgstr "Kad ievietoti visi rediģēšanas punkti, var veikt vēlamās izmaiņas."
-
-#~ msgid ""
-#~ "To remove editing points, press the <key>Esc</key> key. This will remove "
-#~ "all of the editing points. Pressing the <key>Esc</key> key again will "
-#~ "turn off Multi Edit mode, returning the editor back to its normal state."
-#~ msgstr ""
-#~ "Lai izņemtu rediģēšanas punktus, spiediet <key>Esc</key> taustiņu. Tas "
-#~ "izņems visus rediģēšanas punktus. Nospiežot <key>Esc</key> taustiņu "
-#~ "vēlreiz, tiks izslēgts multirediģēšanas režīms, atgriežot redaktoru tā "
-#~ "parastajā stāvoklī."
-
-#~ msgid "Once you've enabled it, here is how to use the plugin:"
-#~ msgstr "Kad spraudnis ieslēgts, to var lietot šādi:"
-
-#~ msgid ""
-#~ "The <app>Quick Open</app> plugin will only display files that you have "
-#~ "previously opened."
-#~ msgstr ""
-#~ "Spraudnis <app>Ātrā atvēršana</app> parādīs tikai iepriekš atvērtās "
-#~ "datnes."
-
-#~ msgid "Save and restore your working sessions"
-#~ msgstr "Saglabāt un atjaunot jūsu darba sesijas"
-
-#~ msgid "Session Saver"
-#~ msgstr "Sesiju saglabātājs"
-
-#~ msgid ""
-#~ "The <app>Session Saver</app> plugin saves groups of files together so "
-#~ "that you can open them together at a later time. To enable the plugin, "
-#~ "select <guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui> "
-#~ "<gui>Session Saver</gui></guiseq>."
-#~ msgstr ""
-#~ "Spraudnis <app>Sesiju saglabātājs</app> saglabā datni grupas kopā, lai "
-#~ "vēlāk varētu tās visus kopā atvērt. Lai ieslēgtu šo spraudni, izvēlieties "
-#~ "<guiseq><gui>Rediģēt</gui><gui>Iestatījumi</gui> <gui>Spraudņi</"
-#~ "gui><gui>Sesiju saglabātājs</gui></guiseq>."
-
-#~ msgid "To save a new session:"
-#~ msgstr "Lai saglabātu jaunu sesiju:"
-
-#~ msgid "Type a session name in the <gui>Save session</gui> dialog box."
-#~ msgstr "Ierakstiet sesijas nosaukumu dialogā <gui>Saglabāt sesiju</gui>."
-
-#~ msgid "Click <gui>Save</gui>."
-#~ msgstr "Spiediet pogu <gui>Saglabāt</gui>."
-
-#~ msgid "To open an existing session:"
-#~ msgstr "Lai atvērtu saglabātu sesiju:"
-
-#~ msgid "Click the name of your desired session."
-#~ msgstr "Veiciet klikšķi uz vēlamās sesijas nosaukuma."
-
-#~ msgid "To delete an existing session:"
-#~ msgstr "Lai izdzēstu agrāk saglabātu sesiju:"
-
-#~ msgid ""
-#~ "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui><gui> Manage saved "
-#~ "sessions</gui></guiseq>."
-#~ msgstr ""
-#~ "Izvēlieties<guiseq><gui>Datne</gui><gui>Saglabātās sesijas</"
-#~ "gui><gui>Pārvaldīt saglabātās sesijas</gui></guiseq>."
-
-#~ msgid "Select the name of the session that you want to delete."
-#~ msgstr "Izvēlieties dzēšamās sesijas nosaukumu."
-
-#~ msgid "Click <gui>Delete</gui>."
-#~ msgstr "Spiediet pogu <gui>Dzēst</gui>."
-
-#~ msgid ""
-#~ "The session name will still be listed in your list of sessions until you "
-#~ "close <app>gedit</app>."
-#~ msgstr ""
-#~ "Izdzēstās sesijas nosaukums paliks sesiju sarakstā līdz <app>gedit</app> "
-#~ "aizvēršanai."
-
-#~ msgid ""
-#~ "To enable the <app>Snippets</app> plugin, select <guiseq><gui>Edit</gui> "
-#~ "<gui>Preferences</gui><gui>Plugins</gui><gui>Snippets</gui></guiseq>."
-#~ msgstr ""
-#~ "Lai ieslēgtu spraudni <app>Fragmenti</app>, izvēlieties "
-#~ "<guiseq><gui>Rediģēt</gui><gui>Iestatījumi</gui><gui>Spraudņi</"
-#~ "gui><gui>Fragmenti</gui></guiseq>."
-
-#~ msgid "Using, Modifying and creating snippets"
-#~ msgstr "Fragmentu lietošana, modificēšana un veidošana"
-
-#~ msgid "Inserting snippets of text into your files"
-#~ msgstr "Ievietot datnēs teksta fragmentus"
-
-#~ msgid "The following points will help you get started with using snippets:"
-#~ msgstr "Šie norādījumi palīdzēs jums sākt lietot fragmentus:"
-
-#~ msgid "Make sure the syntax is set appropriately."
-#~ msgstr "Pārliecinieties, ka ir iestatīta atbilstošā sintakse."
-
-#~ msgid "Review the default snippets."
-#~ msgstr "Pārskatiet pieejamos fragmentus."
-
-#~ msgid ""
-#~ "Select <guiseq><gui>Tools</gui><gui>Manage Snippets</gui></guiseq>. "
-#~ "Review the snippets that are available for your language or syntax. Find "
-#~ "some basic snippets that you think might be useful for you."
-#~ msgstr ""
-#~ "Izvēlieties <guiseq><gui>Rīki</gui><gui>Pārvaldīt fragmentus</gui></"
-#~ "guiseq>. Pārskatiet attiecīgajai valodai vai sintaksei pieejamos "
-#~ "fragmentus. Sameklējiet dažus vienkāršus fragmentus, kuri varētu jums "
-#~ "noderēt."
-
-#~ msgid "Try using some of the snippets."
-#~ msgstr "Mēģiniet izmantot fragmentus."
-
-#~ msgid ""
-#~ "To enable the <app>Sort</app> plugin, select <guiseq><gui>Edit</"
-#~ "gui><gui>Preferences</gui><gui>Plugins</gui><gui>Sort</gui></guiseq>."
-#~ msgstr ""
-#~ "Lai ieslēgtu spraudni <app>Kārtot</app>, izvēlieties "
-#~ "<guiseq><gui>Rediģēt</gui><gui>Iestatījumi</gui><gui>Spraudņi</"
-#~ "gui><gui>Kārtot</gui></guiseq>."
-
-#~ msgid ""
-#~ "After you have enabled the <gui>Sort</gui> plugin, use it by selecting "
-#~ "the lines of text you want to sort, and then clicking <guiseq><gui>Edit</"
-#~ "gui><gui>Sort</gui></guiseq>."
-#~ msgstr ""
-#~ "Kad spraudnis ir ieslēgts, to lieto, iezīmējot sakārtojamās teksta rindas "
-#~ "un izvēloties <guiseq><gui>Rediģēt</gui><gui>Sakārtot</gui></guiseq>."
-
-#~ msgctxt "_"
-#~ msgid ""
-#~ "external ref='figures/gedit-side-pane3.png' "
-#~ "md5='4b800d370193ac0ed8db9eb33b86e11c'"
-#~ msgstr ""
-#~ "external ref='figures/gedit-side-pane3.png' "
-#~ "md5='4b800d370193ac0ed8db9eb33b86e11c'"
-
-#~ msgid ""
-#~ "Automatically insert tags, strings and special characters into a document"
-#~ msgstr "Automātiski ievietot birkas, virknes un īpašās rakstzīmes dokumentā"
-
-#~ msgid "Tag list"
-#~ msgstr "Birku saraksts"
-
-#~ msgid ""
-#~ "The <app>Tag List</app> plugin allows you to insert common tags and "
-#~ "special characters from a list in the side pane. By default, the plugin "
-#~ "can insert tags and special characters for HTML, XHTML, XSLT, XUL and "
-#~ "LaTeX."
-#~ msgstr ""
-#~ "Spraudnis <app>Birku saraksts</app> dod iespēju ievietot bieži lietotas "
-#~ "birkas un īpašās rakstzīmes no saraksta sānu rūtī. Pēc noklusējuma "
-#~ "spraudnis var ievietot birkas un īpašās rakstzīmes HTML, XHTML, XSLT, XUL "
-#~ "un LaTeX valodās."
-
-#~ msgid "Using the Tag List plugin"
-#~ msgstr "Birku saraksta spraudņa izmantošana"
-
-#~ msgid ""
-#~ "To use the <app>Tag List</app> plugin, you will need to enable the "
-#~ "plugin, and then activate the tag-list portion of the side pane."
-#~ msgstr ""
-#~ "Lai izmantotu spraudni <app>Birku saraksts</app>, ir jāieslēdz šis "
-#~ "spraudnis un pēc tam jāaktivē birku saraksts sānu rūtī."
-
-#~ msgid ""
-#~ "You can activate the plugin by selecting <guiseq><gui>Edit</"
-#~ "gui><gui>Preferences</gui><gui>Plugins</gui><gui>Tag List</gui></guiseq>. "
-#~ "Once you have activated the plugin, access it by selecting "
-#~ "<guiseq><gui>View</gui><gui>Side Pane</gui></guiseq>, or by pressing "
-#~ "<key>F9</key>."
-#~ msgstr ""
-#~ "Spraudni var ieslēgt, izvēloties <guiseq><gui>Rediģēt</"
-#~ "gui><gui>Iestatījumi</gui><gui>Spraudņi</gui><gui>Birku saraksts</gui></"
-#~ "guiseq>. Kad spraudnis ir ieslēgts, piekļūstiet tam, izvēloties "
-#~ "<guiseq><gui>Skatīt</gui><gui>Sānu rūts</gui></guiseq>, vai spiežot "
-#~ "<key>F9</key>."
-
-#~ msgid ""
-#~ "The side pane initially shows a list of open documents, so to view and "
-#~ "use the <app>tag list</app>, you will need to click on the tab showing "
-#~ "the \"plus\" icon at the bottom of the side pane. The icon will look "
-#~ "similar to this:"
-#~ msgstr ""
-#~ "Sānu rūts sākotnēji rāda atvērto dokumentu sarakstu, tāpēc, lai skatītu "
-#~ "un izmantotu <app>birku sarakstu</app>, ir jāveic klikšķis uz cilnes ar "
-#~ "\"plus\" ikonu sānu rūts apakšā. Ikona izskatīsies apmēram šādi:"
-
-#~ msgid "Inserting Tags and Special Characters"
-#~ msgstr "Birku un īpašo rakstzīmju ievietošana"
-
-#~ msgid ""
-#~ "The <app>tag list</app> uses a drop-down menu to let you choose from the "
-#~ "different types of tags. For example, one tag option is <gui>HTML - Tags</"
-#~ "gui>."
-#~ msgstr ""
-#~ "<app>Birku saraksts</app> izmanto izkrītošu izvēlni, kas nosaka birku "
-#~ "tipu. Piemēram, viens variants ir <gui>HTML - birkas</gui>."
-
-#~ msgid "To start inserting tags, complete the following:"
-#~ msgstr "Lai sāktu ievietot iezīmes, veiciet šādas darbības:"
-
-#~ msgid ""
-#~ "Move the cursor to where you will want to insert the tag or special "
-#~ "character."
-#~ msgstr ""
-#~ "Novietojiet kursoru tur, kur vēlaties ievietot iezīmi vai speciālo "
-#~ "rakstzīmi."
-
-#~ msgid "Scroll through the list to find the desired tag or character."
-#~ msgstr "Ritiniet cauri sarakstam, lai atrastu vēlamo iezīmi vai rakstzīmi."
-
-#~ msgid "Double-click on the tag in the tag list."
-#~ msgstr "Veiciet dubultklikšķi uz birkas sarakstā."
-
-#~ msgid ""
-#~ "The tag or special character you've chosen will then be displayed in your "
-#~ "document."
-#~ msgstr "Izvēlētā iezīme vai speciālā rakstzīme parādīsies dokumentā."
-
-#~ msgid "Tag List Tips"
-#~ msgstr "Birku saraksta padomi"
-
-#~ msgid ""
-#~ "You can also insert a tag by pressing <key>Return</key> or "
-#~ "<keyseq><key>Shift</key><key>Return</key></keyseq>."
-#~ msgstr ""
-#~ "Birku var ievietot arī nospiežot<key>Return</key> vai <keyseq><key>Shift</"
-#~ "key><key>Return</key></keyseq>."
-
-#~ msgid ""
-#~ "Pressing the <key>Return</key> key will insert the tag at the cursor "
-#~ "position, and then return focus to the document. Pressing "
-#~ "<keyseq><key>Shift</key><key>Return</key></keyseq> will insert the tag at "
-#~ "the cursor position, but will keep the focus on the <app>tag-list</app>."
-#~ msgstr ""
-#~ "Nospiežot <key>Return</key> taustiņu, birka tiks ievietota kursora "
-#~ "pozīcijā, un fokuss tiks pārslēgts uz dokumentu. Nospiežot  "
-#~ "<keyseq><key>Shift</key><key>Return</key></keyseq>, birka tiks ievietota "
-#~ "kursora pozīcijā, bet fokuss tiks paturēts <app>birku sarakstā</app>."
-
-#~ msgid ""
-#~ "You can see a preview of what text will be inserted for each tag and "
-#~ "special character by clicking on the word the <gui>Preview</gui> at the "
-#~ "bottom of the side pane."
-#~ msgstr ""
-#~ "Jūs varat apskatīt, kāds teksts tiks ievietots katrai birkai un īpašai "
-#~ "rakstzīmei, nospiežot uz vārda <gui>Priekšskatījums</gui> sānu rūts "
-#~ "apakšā."
-
-#~ msgid "Add a terminal console to the bottom pane"
-#~ msgstr "Pievienot termināļa konsoli apakšējai rūtij"
-
-#~ msgid "Embedded terminal"
-#~ msgstr "Iegultais terminālis"
-
-#~ msgid ""
-#~ "<app>gedit</app> makes it possible to include an embedded version of "
-#~ "<app>Gnome Terminal</app>, the GNOME command-line application, in the "
-#~ "bottom pane of the <app>gedit</app> window. This will let you run "
-#~ "scripts, install needed software, or test your program without leaving "
-#~ "<app>gedit</app>."
-#~ msgstr ""
-#~ "<app>gedit</app> ir iespēja ievietot iegultu <app>Gnome termināļa</app>, "
-#~ "GNOME komandrindas lietotnes, versiju apakšējā <app>gedit</app> loga "
-#~ "rūtī. Tas ļaus jums palaist skriptus, instalēt vajadzīgās programmas vai "
-#~ "testēt topošo programmu, neatstājot <app>gedit</app>."
-
-#~ msgid ""
-#~ "To enable this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</"
-#~ "gui><gui>Plugins</gui><gui>Embedded Terminal</gui></guiseq>."
-#~ msgstr ""
-#~ "Lai ieslēgtu šo spraudni, izvēlieties <guiseq><gui>Rediģēt</gui> "
-#~ "<gui>Iestatījumi</gui> <gui>Spraudņi</gui><gui>Iegultais terminālis</"
-#~ "gui></guiseq>."
-
-#~ msgid ""
-#~ "Once you have enabled the plugin, add the terminal to the bottom pane by "
-#~ "selecting <guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just "
-#~ "press <keyseq><key>Ctrl</key><key>F9</key></keyseq>."
-#~ msgstr ""
-#~ "Kad spraudnis ir ieslēgts, pievienojiet termināli apakšējai rūtij, "
-#~ "izvēloties <guiseq><gui>Skats</gui><gui>Apakšējā rūts</gui></guiseq> vai "
-#~ "nospiežot <keyseq><key>Ctrl</key><key>F9</key></keyseq>."
-
-#~ msgid "Increase or decrease the text size"
-#~ msgstr "Palielināt vai samazināt teksta izmēru"
-
-#~ msgid "Text Size"
-#~ msgstr "Teksta izmērs"
-
-#~ msgid ""
-#~ "The text size plugin allows you to temporarily change the text size in "
-#~ "<app>gedit</app> without changing the program's default text size. To "
-#~ "enable this plugin, select <guiseq><gui>Edit</gui><gui>Preferences</"
-#~ "gui><gui>Plugins </gui><gui>Text Size</gui></guiseq>."
-#~ msgstr ""
-#~ "Teksta izmēra spraudnis ļauj uz laiku manīt teksta izmēru <app>gedit</"
-#~ "app>, nemainot noklusēto teksta izmēru. Lai ieslēgtu šo spraudni, "
-#~ "izvēlieties <guiseq><gui>Rediģēt</gui><gui>Iestatījumi</gui><gui>Spraudņi "
-#~ "</gui><gui>Teksta izmērs</gui></guiseq>."
-
-#~ msgid ""
-#~ "Once you have enabled the plugin, do any of the following to change the "
-#~ "text size in <app>gedit</app>:"
-#~ msgstr ""
-#~ "Kad spraudnis ieslēgts, mainiet teksta izmēru ar kādu no šīm darbībām:"
-
-#~ msgid ""
-#~ "To <em>increase</em> the text size, select <keyseq><key>Ctrl</key> <key>"
-#~ "+</key></keyseq>."
-#~ msgstr ""
-#~ "Lai <em>palielinātu</em> tekstu, nospiediet <keyseq><key>Ctrl</key> <key>"
-#~ "+</key></keyseq>."
-
-#~ msgid ""
-#~ "To <em>decrease</em> the text size, select <keyseq><key>Ctrl</key> <key>-"
-#~ "</key></keyseq>."
-#~ msgstr ""
-#~ "Lai <em>samazinātu</em> tekstu, nospiediet <keyseq><key>Ctrl</key> <key>-"
-#~ "</key></keyseq>."
-
-#~ msgid ""
-#~ "To <em>reset</em> the text size to the default size, select "
-#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq>."
-#~ msgstr ""
-#~ "Lai <em>atstatītu</em> teksta izmēru uz noklusēto, nospiediet "
-#~ "<keyseq><key>Ctrl</key> <key>0</key></keyseq>."
-
-#~ msgid "Autocomplete words or portions of code as you type"
-#~ msgstr "Automātiskā vārdu vai koda daļu pabeigšana rakstīšanas laikā"
-
-#~ msgid "Word completion"
-#~ msgstr "Vārdu pabeigšana"
-
-#~ msgid ""
-#~ "The <app>Word Completion</app> plugin can speed up your editing by "
-#~ "suggesting completions of words as you type. To enable the plugin, select "
-#~ "<guiseq><gui>Edit</gui><gui>Preferences</gui><gui>Plugins</gui><gui>Word "
-#~ "Completion</gui></guiseq>."
-#~ msgstr ""
-#~ "Spraudnis <app>Vārdu pabeigšana</app> var paātrināt rediģēšanu, "
-#~ "piedāvājot vārdus rakstīšanas laikā. Lai ieslēgtu spraudni, izvēlieties "
-#~ "<guiseq><gui>Rediģēt</gui><gui>Iestatījumi</gui><gui>Spraudņi</"
-#~ "gui><gui>Vārdu pabeigšana</gui></guiseq>."
-
-#~ msgid ""
-#~ "While editing, the <app>Word Completion</app> plugin will automatically "
-#~ "display a pop-up list of words that begin with the letters you have "
-#~ "already typed. Word suggestions are based upon words that appear "
-#~ "elsewhere in your document and upon pre-defined keywords if your document "
-#~ "is of a recognised format."
-#~ msgstr ""
-#~ "Rediģēšanas laikā spraudnis <app>Vārdu pabeigšana</app> automātiski "
-#~ "parādīs uznirstošu vārdu sarakstu, kas sākas ar jau uzrakstītajiem "
-#~ "burtiem. Vārdu ieteikumi ir balstīti uz vārdiem, kas parādās citur "
-#~ "dokumentā, un uz iepriekšnoteiktiem atslēgas vārdiem, ja ir atpazīts "
-#~ "dokumenta formāts."
-
-#~ msgid ""
-#~ "To insert a suggested word, double-click on it in the pop-up list or "
-#~ "press <keyseq><key>Alt</key><key>Num</key></keyseq>, where <key>Num</key> "
-#~ "is the number displayed next to your desired word."
-#~ msgstr ""
-#~ "Lai ievietotu ierosinātu vārdu, veiciet dubultklikšķi uz tā uznirstošajā "
-#~ "sarakstā vai nospiediet <keyseq><key>Alt</key><key>Num</key></keyseq>, "
-#~ "kur <key>Num</key> ir vēlamā vārda numurs."
-
-#~ msgctxt "_"
-#~ msgid "external ref='reverse-collate.png' md5='__failed__'"
-#~ msgstr "external ref='reverse-collate.png' md5='__failed__'"
-
-#~ msgid "Creative Commons Share Alike 3.0"
-#~ msgstr "Creative Commons Share Alike 3.0"
-
-#~ msgid "To reverse the order:"
-#~ msgstr "Lai mainītu secību uz pretējo:"
-
-#~ msgid ""
-#~ "In the <gui>General</gui> tab of the Print window under <em>Copies</em>, "
-#~ "check <gui>Reverse</gui>. The last page will be printed first, and so on."
-#~ msgstr ""
-#~ "Drukas loga cilnē <gui>Vispārīgi</gui>, sadaļā <em>Kopijas</em>, "
-#~ "atzīmējiet <gui>Otrādi</gui>. Pēdējā lapa tiks drukāta pirmā un tā tālāk."
-
-#~ msgid "Printing output to a file"
-#~ msgstr "Drukāšana datnē"
-
-#~ msgid ""
-#~ "You can also use <app>gedit</app> to print to a file. To do so, select "
-#~ "<guiseq><gui>File</gui><gui>Print</gui><gui>Print to File</gui></guiseq>."
-#~ msgstr ""
-#~ "Ar <app>gedit</app> var arī saglabāt tekstu kādā no formātiem, kas īpaši "
-#~ "paredzēti lasīšanai un izdrukāšanai. Lai to izdarītu, izvēlieties "
-#~ "<guiseq><gui>Datne</gui><gui>Drukāt</gui><gui>Drukāt datnē</gui></guiseq>."
-
-#~ msgctxt "_"
-#~ msgid "external ref='print-select.png' md5='__failed__'"
-#~ msgstr "external ref='print-select.png' md5='__failed__'"
-
-#~ msgid "To only print certain pages from the document:"
-#~ msgstr "Lai drukātu tikai noteiktas dokumenta lappuses:"
-
-#~ msgid "Click <guiseq><gui>File</gui><gui> Print...</gui></guiseq>"
-#~ msgstr "Izvēlieties <guiseq><gui>Datne</gui> <gui>Drukāt...</gui></guiseq>"
-
-#~ msgid ""
-#~ "For example, if you enter \"1,3,5-7,9\" in the <gui>Pages</gui> textbox, "
-#~ "pages 1,3,5,6,7 and 9 will be printed."
-#~ msgstr ""
-#~ "Piemēram, ievadot \"1,3,5-7,9\" laukā <gui>Lapas</gui>, tiks izdrukātas "
-#~ "1., 3., 5., 6. ,7. un 9. lappuses."
-
-#~ msgid "Ctrl + Alt + PageUp"
-#~ msgstr "Ctrl + Alt + PageUp"
-
-#~ msgid "Ctrl + Alt + PageDown"
-#~ msgstr "Ctrl + Alt + PageDown"
-
-#~ msgid "Ctrl + W"
-#~ msgstr "Ctrl + W"
-
-#~ msgid "Ctrl + Shift + L"
-#~ msgstr "Ctrl + Shift + L"
-
-#~ msgid "Ctrl + Shift + W"
-#~ msgstr "Ctrl + Shift + W"
-
-#~ msgid "Alt + <var>n</var>"
-#~ msgstr "Alt + <var>n</var>"
-
-#~ msgid "Ctrl + N"
-#~ msgstr "Ctrl + N"
-
-#~ msgid "Ctrl + O"
-#~ msgstr "Ctrl + O"
-
-#~ msgid "Ctrl + S"
-#~ msgstr "Ctrl + S"
-
-#~ msgid "Ctrl + Shift + S"
-#~ msgstr "Ctrl + Shift + S"
-
-#~ msgid "Ctrl + P"
-#~ msgstr "Ctrl + P"
-
-#~ msgid "Ctrl + Shift + P"
-#~ msgstr "Ctrl + Shift + P"
-
-#~ msgid "Ctrl + Q"
-#~ msgstr "Ctrl + Q"
-
-#~ msgid "Ctrl + Z"
-#~ msgstr "Ctrl + Z"
-
-#~ msgid "Ctrl + Shift + Z"
-#~ msgstr "Ctrl + Shift + Z"
-
-#~ msgid "Ctrl + X"
-#~ msgstr "Ctrl + X"
-
-#~ msgid "Ctrl + C"
-#~ msgstr "Ctrl + C"
-
-#~ msgid "Ctrl + V"
-#~ msgstr "Ctrl + V"
-
-#~ msgid "Ctrl + A"
-#~ msgstr "Ctrl + A"
-
-#~ msgid "Ctrl + D"
-#~ msgstr "Ctrl + D"
-
-#~ msgid "Alt + Up Arrow"
-#~ msgstr "Alt + Up Arrow"
-
-#~ msgid "Alt + Down Arrow"
-#~ msgstr "Alt + Down Arrow"
-
-#~ msgid "F9"
-#~ msgstr "F9"
-
-#~ msgid "Ctrl + F9"
-#~ msgstr "Ctrl + F9"
-
-#~ msgid "Ctrl + F"
-#~ msgstr "Ctrl + F"
-
-#~ msgid "Ctrl + G"
-#~ msgstr "Ctrl + G"
-
-#~ msgid "Ctrl + Shift + G"
-#~ msgstr "Ctrl + Shift + G"
-
-#~ msgid "Ctrl + H"
-#~ msgstr "Ctrl + H"
-
-#~ msgid "Ctrl + Shift + K"
-#~ msgstr "Ctrl + Shift + K"
-
-#~ msgid "Ctrl + I"
-#~ msgstr "Ctrl + I"
-
-#~ msgid "Shift + F7"
-#~ msgstr "Shift + F7"
-
-#~ msgid "Alt + F12"
-#~ msgstr "Alt + F12"
-
-#~ msgid "F8"
-#~ msgstr "F8"
-
-#~ msgid "Ctrl + Shift + D"
-#~ msgstr "Ctrl + Shift + D"
-
-#~ msgid "F1"
-#~ msgstr "F1"
-
-#~ msgid ""
-#~ "Using the spell-check feature in <app>gedit</app> requires that you first "
-#~ "enable the spell-check plugin. To enable the plugin, select "
-#~ "<guiseq><gui>Edit </gui><gui>Preferences</gui><gui>Plugins</"
-#~ "gui><gui>Spell Checker</gui> </guiseq>."
-#~ msgstr ""
-#~ "Pareizrakstības pārbaudīšanai programmā <app>gedit</app> vispirms "
-#~ "jāieslēdz pareizrakstības pārbaudes spraudnis. Lai ieslēgtu šo spraudni, "
-#~ "izvēlieties  <guiseq><gui>Rediģēt</gui><gui>Iestatījumi</"
-#~ "gui><gui>Spraudņi</gui><gui>Pareizrakstības pārbaudītājs</gui></guiseq>."
-
-#~ msgid ""
-#~ "Select <guiseq><gui>Tools</gui><gui>Autocheck Spelling</gui></guiseq> to "
-#~ "make <app>gedit</app> highlight spelling errors while you type."
-#~ msgstr ""
-#~ "Izvēlieties <guiseq><gui>Rīki</gui><gui>Automātiski pārbaudīt "
-#~ "pareizrakstību</gui></guiseq>, lai <app>gedit</app> izceltu "
-#~ "pareizrakstības kļūdas rakstīšanas laikā."
-
-#~ msgid "Click and hold the mouse button on the tab"
-#~ msgstr "Piespiediet un turiet peles pogu uz cilnes"
-
-#~ msgid "Release the mouse button"
-#~ msgstr "Atlaidiet peles pogu"
-
-#~ msgid "To drag a tab into a new window:"
-#~ msgstr "Lai pārvilktu cilni jaunā logā:"
-
-#~ msgid ""
-#~ "We all make mistakes. Even <app>gedit</app> users make mistakes. "
-#~ "Fortunately, <app>gedit</app> can help you recover from mistakes. To undo "
-#~ "an action in <app>gedit</app>, press <keyseq><key>Ctrl</key><key>Z</key></"
-#~ "keyseq>, or click <guiseq><gui>Edit</gui><gui>Undo</gui></guiseq>."
-#~ msgstr ""
-#~ "Mēs visi kļūdāmies. Pat <app>gedit</app> lietotāji kļūdās. Par laimi,"
-#~ "<app>gedit</app> var palīdzēt jums izlabot kļūdas. Lai atsauktu darbību "
-#~ "programmā <app>gedit</app>, nospiediet <keyseq><key> Ctrl</key><key>Z</"
-#~ "key></keyseq>, vai noklikšķiniet <guiseq><gui>Rediģēt</gui><gui>Atsaukt</"
-#~ "gui></guiseq>."
-
-#~ msgid ""
-#~ "<app>gedit</app> will undo one action every time you press "
-#~ "<keyseq><key>Ctrl</key><key>Z</key></keyseq> or select <guiseq><gui>Edit</"
-#~ "gui><gui>Undo</gui></guiseq>."
-#~ msgstr ""
-#~ "<app>gedit</app> atsauks vienu darbību katru reizi, kad jūs nospiedīsiet "
-#~ "<keyseq><key>Ctrl</key><key>Z</key></keyseq> vai izvēlēsieties "
-#~ "<guiseq><gui>Rediģēt</gui><gui>Atsaukt</gui></guiseq>."
+msgid "This work is licensed under a <_:link-1/>."
+msgstr "Šis darbs ir licencēts zem <_:link-1/>."
