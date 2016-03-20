@@ -3,15 +3,15 @@ dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.63.2)
 
 m4_define(gedit_major_version, 3)
-m4_define(gedit_minor_version, 19)
-m4_define(gedit_micro_version, 5)
+m4_define(gedit_minor_version, 20)
+m4_define(gedit_micro_version, 0)
 m4_define(gedit_version, gedit_major_version.gedit_minor_version.gedit_micro_version)
 
 AC_INIT([gedit],
         [gedit_version],
-	[https://wiki.gnome.org/Apps/Gedit/ReportingBugs],
-	[gedit],
-	[https://wiki.gnome.org/Apps/Gedit])
+        [https://wiki.gnome.org/Apps/Gedit/ReportingBugs],
+        [gedit],
+        [https://wiki.gnome.org/Apps/Gedit])
 
 GEDIT_API_VERSION=3.14
 AC_SUBST(GEDIT_API_VERSION)
