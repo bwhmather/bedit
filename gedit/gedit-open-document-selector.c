@@ -1008,7 +1008,6 @@ on_treeview_allocate (GtkWidget                 *widget     G_GNUC_UNUSED,
 {
 	GeditOpenDocumentSelectorStore *selector_store;
 	GtkStyleContext *context;
-	GtkStateFlags state;
 	gint name_renderer_natural_size;
 	gint path_renderer_natural_size;
 	GtkBorder padding;
@@ -1022,7 +1021,9 @@ on_treeview_allocate (GtkWidget                 *widget     G_GNUC_UNUSED,
 	selector_store = selector->selector_store;
 
 	context = gtk_widget_get_style_context (selector->treeview);
-	state = gtk_style_context_get_state (context);
+	gtk_style_context_get_padding (context,
+				       gtk_style_context_get_state (context),
+				       &padding);
 
 	/* Treeview height computation */
 	gtk_cell_renderer_get_preferred_height (selector->name_renderer,
@@ -1035,7 +1036,6 @@ on_treeview_allocate (GtkWidget                 *widget     G_GNUC_UNUSED,
 	                                        NULL,
 	                                        &path_renderer_natural_size);
 
-	gtk_style_context_get_padding (context, state, &padding);
 	gtk_cell_renderer_get_padding (selector->name_renderer, NULL, &ypad);
 	gtk_widget_style_get (selector->treeview, "grid-line-width", &grid_line_width, NULL);
 
@@ -1062,23 +1062,37 @@ on_treeview_style_updated (GtkWidget                 *widget,
                            GeditOpenDocumentSelector *selector)
 {
 	GtkStyleContext *context;
-	GtkStateFlags state;
 
 	context = gtk_widget_get_style_context (widget);
-	state = gtk_style_context_get_state (context);
 
 	/* Name label foreground and font size styling */
 	gtk_style_context_save (context);
 	gtk_style_context_add_class (context, "open-document-selector-name-label");
-	gtk_style_context_get_color (context, state, &selector->name_label_color);
-	gtk_style_context_get (context, state, "font-size", &selector->name_font_size, NULL);
+
+	gtk_style_context_get_color (context,
+				     gtk_style_context_get_state (context),
+				     &selector->name_label_color);
+
+	gtk_style_context_get (context,
+			       gtk_style_context_get_state (context),
+			       "font-size", &selector->name_font_size,
+			       NULL);
+
 	gtk_style_context_restore (context);
 
 	/* Path label foreground and font size styling */
 	gtk_style_context_save (context);
 	gtk_style_context_add_class (context, "open-document-selector-path-label");
-	gtk_style_context_get_color (context, state, &selector->path_label_color);
-	gtk_style_context_get (context, state, "font-size", &selector->path_font_size, NULL);
+
+	gtk_style_context_get_color (context,
+				     gtk_style_context_get_state (context),
+				     &selector->path_label_color);
+
+	gtk_style_context_get (context,
+			       gtk_style_context_get_state (context),
+			       "font-size", &selector->path_font_size,
+			       NULL);
+
 	gtk_style_context_restore (context);
 }
 
