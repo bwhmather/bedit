@@ -85,7 +85,6 @@ typedef struct
 	/* command line parsing */
 	gboolean new_window;
 	gboolean new_document;
-	gchar *geometry;
 	const GtkSourceEncoding *encoding;
 	GInputStream *stdin_stream;
 	GSList *file_list;
@@ -137,13 +136,6 @@ static const GOptionEntry options[] =
 		"new-document", '\0', 0, G_OPTION_ARG_NONE, NULL,
 		N_("Create a new document in an existing instance of gedit"),
 		NULL
-	},
-
-	/* Window geometry */
-	{
-		"geometry", 'g', 0, G_OPTION_ARG_STRING, NULL,
-		N_("Set the size and position of the window (WIDTHxHEIGHT+X+Y)"),
-		N_("GEOMETRY")
 	},
 
 	/* Wait for closing documents */
@@ -420,7 +412,6 @@ static void
 open_files (GApplication            *application,
 	    gboolean                 new_window,
 	    gboolean                 new_document,
-	    gchar                   *geometry,
 	    gint                     line_position,
 	    gint                     column_position,
 	    const GtkSourceEncoding *encoding,
@@ -444,11 +435,6 @@ open_files (GApplication            *application,
 
 		gedit_debug_message (DEBUG_APP, "Show window");
 		gtk_widget_show (GTK_WIDGET (window));
-	}
-
-	if (geometry)
-	{
-		gtk_window_parse_geometry (GTK_WINDOW (window), geometry);
 	}
 
 	if (stdin_stream)
@@ -536,7 +522,6 @@ new_document_activated (GSimpleAction *action,
 	open_files (application,
 	            FALSE,
 	            TRUE,
-	            NULL,
 	            0,
 	            0,
 	            NULL,
@@ -899,7 +884,6 @@ gedit_app_activate (GApplication *application)
 	open_files (application,
 	            priv->new_window,
 	            priv->new_document,
-	            priv->geometry,
 	            priv->line_position,
 	            priv->column_position,
 	            priv->encoding,
@@ -915,13 +899,11 @@ clear_options (GeditApp *app)
 
 	priv = gedit_app_get_instance_private (app);
 
-	g_free (priv->geometry);
 	g_clear_object (&priv->stdin_stream);
 	g_slist_free_full (priv->file_list, g_object_unref);
 
 	priv->new_window = FALSE;
 	priv->new_document = FALSE;
-	priv->geometry = NULL;
 	priv->encoding = NULL;
 	priv->file_list = NULL;
 	priv->line_position = 0;
@@ -969,7 +951,6 @@ gedit_app_command_line (GApplication            *application,
 
 	g_variant_dict_lookup (options, "new-window", "b", &priv->new_window);
 	g_variant_dict_lookup (options, "new-document", "b", &priv->new_document);
-	g_variant_dict_lookup (options, "geometry", "s", &priv->geometry);
 
 	if (g_variant_dict_contains (options, "wait"))
 	{
@@ -1110,7 +1091,6 @@ gedit_app_open (GApplication  *application,
 	open_files (application,
 	            FALSE,
 	            FALSE,
-	            NULL,
 	            0,
 	            0,
 	            NULL,
