@@ -765,6 +765,9 @@ gedit_app_startup (GApplication *application)
 	const gchar *cache_dir;
 	gchar *metadata_filename;
 #endif
+#ifndef OS_OSX
+	const gchar *current_desktop;
+#endif
 
 	priv = gedit_app_get_instance_private (GEDIT_APP (application));
 
@@ -797,7 +800,16 @@ gedit_app_startup (GApplication *application)
 	                                 application);
 
 	/* menus */
-	priv->hamburger_menu = get_menu_model (GEDIT_APP (application), "hamburger-menu");
+#ifndef OS_OSX
+	/* We will use a menubar with osx or unity */
+	current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
+	if (current_desktop == NULL ||
+	    g_ascii_strcasecmp (current_desktop, "Unity") != 0)
+	{
+		priv->hamburger_menu = get_menu_model (GEDIT_APP (application),
+		                                       "hamburger-menu");
+	}
+#endif
 	priv->notebook_menu = get_menu_model (GEDIT_APP (application), "notebook-menu");
 	priv->tab_width_menu = get_menu_model (GEDIT_APP (application), "tab-width-menu");
 	priv->line_col_menu = get_menu_model (GEDIT_APP (application), "line-col-menu");
@@ -1920,7 +1932,7 @@ _gedit_app_get_line_col_menu (GeditApp *app)
 
 GeditMenuExtension *
 _gedit_app_extend_menu (GeditApp    *app,
-                       const gchar *extension_point)
+                        const gchar *extension_point)
 {
 	GeditAppPrivate *priv;
 	GMenuModel *model;
