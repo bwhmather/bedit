@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-06 21:24+0100\n"
-"PO-Revision-Date: 2016-02-06 21:25+0100\n"
+"POT-Creation-Date: 2016-03-30 18:28+0200\n"
+"PO-Revision-Date: 2016-03-30 18:29+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -71,7 +71,7 @@ msgstr "Edytor tekstu gedit"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "Text;Editor;"
-msgstr "Tekst;Edytor;"
+msgstr "gedit;Tekst;Edytor;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "Open a New Window"
@@ -1062,8 +1062,8 @@ msgstr "Dokument bez tytułu %d"
 msgid "Tab Group %i"
 msgstr "Grupa kart %i"
 
-#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1166
-#: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
+#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
+#: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
 msgid "Read-Only"
 msgstr "Tylko do odczytu"
 
@@ -1137,7 +1137,7 @@ msgstr "Kodowanie znaków:"
 msgid "Line Ending:"
 msgstr "Koniec wiersza:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1250
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1716,40 +1716,40 @@ msgstr "Poszukiwane wyrażenie"
 msgid "Line you want to move the cursor to"
 msgstr "Numer wiersza, do którego ma zostać przeniesiony kursor"
 
-#: ../gedit/gedit-window.c:1003
+#: ../gedit/gedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "Parowanie nawiasów jest poza zakresem"
 
-#: ../gedit/gedit-window.c:1008
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "Nie odnaleziono pasującego nawiasu"
 
-#: ../gedit/gedit-window.c:1013
+#: ../gedit/gedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "Odnaleziono pasujący nawias w wierszu: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1048
+#: ../gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Wrsz %d, kol %d"
 
-#: ../gedit/gedit-window.c:1232
+#: ../gedit/gedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Szerokość tabulacji: %u"
 
-#: ../gedit/gedit-window.c:1601
+#: ../gedit/gedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "Są niezapisane dokumenty"
 
-#: ../gedit/gedit-window.c:2449
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "Zmienia stronę panelu bocznego"
 
-#: ../gedit/gedit-window.c:2469 ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -1818,7 +1818,7 @@ msgstr "_Skróty klawiszowe"
 
 #: ../gedit/resources/gtk/menus.ui.h:4
 #: ../gedit/resources/gtk/menus-traditional.ui.h:46
-#: ../plugins/spell/gedit-spell-plugin.c:239
+#: ../plugins/spell/gedit-spell-plugin.c:246
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
 msgid "_Help"
 msgstr "Pomo_c"
