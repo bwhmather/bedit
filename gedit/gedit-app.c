@@ -755,6 +755,39 @@ add_accelerator (GtkApplication *app,
 	gtk_application_set_accels_for_action (app, action_name, vaccels);
 }
 
+#ifndef OS_OSX
+static gboolean
+in_desktop (const gchar *name)
+{
+	const gchar *xdg_current_desktop;
+	gboolean result;
+	gchar **desktops;
+	gint i;
+
+	xdg_current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
+	if (xdg_current_desktop == NULL)
+	{
+		return FALSE;
+	}
+
+	result = FALSE;
+	desktops = g_strsplit (xdg_current_desktop, ":", -1);
+
+	for (i = 0; desktops[i] != NULL; i++)
+	{
+		if (g_strcmp0 (desktops[i], name) == 0)
+		{
+			result = TRUE;
+			break;
+		}
+	}
+
+	g_strfreev (desktops);
+
+	return result;
+}
+#endif
+
 static void
 gedit_app_startup (GApplication *application)
 {
@@ -764,9 +797,6 @@ gedit_app_startup (GApplication *application)
 #ifndef ENABLE_GVFS_METADATA
 	const gchar *cache_dir;
 	gchar *metadata_filename;
-#endif
-#ifndef OS_OSX
-	const gchar *current_desktop;
 #endif
 
 	priv = gedit_app_get_instance_private (GEDIT_APP (application));
@@ -802,9 +832,7 @@ gedit_app_startup (GApplication *application)
 	/* menus */
 #ifndef OS_OSX
 	/* We will use a menubar with osx or unity */
-	current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
-	if (current_desktop == NULL ||
-	    g_ascii_strcasecmp (current_desktop, "Unity") != 0)
+	if (!in_desktop ("Unity"))
 	{
 		priv->hamburger_menu = get_menu_model (GEDIT_APP (application),
 		                                       "hamburger-menu");
