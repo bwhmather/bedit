@@ -755,38 +755,18 @@ add_accelerator (GtkApplication *app,
 	gtk_application_set_accels_for_action (app, action_name, vaccels);
 }
 
-#ifndef OS_OSX
 static gboolean
-in_desktop (const gchar *name)
+show_menubar (void)
 {
-	const gchar *xdg_current_desktop;
+	GtkSettings *settings = gtk_settings_get_default ();
 	gboolean result;
-	gchar **desktops;
-	gint i;
 
-	xdg_current_desktop = g_getenv ("XDG_CURRENT_DESKTOP");
-	if (xdg_current_desktop == NULL)
-	{
-		return FALSE;
-	}
-
-	result = FALSE;
-	desktops = g_strsplit (xdg_current_desktop, ":", -1);
-
-	for (i = 0; desktops[i] != NULL; i++)
-	{
-		if (g_strcmp0 (desktops[i], name) == 0)
-		{
-			result = TRUE;
-			break;
-		}
-	}
-
-	g_strfreev (desktops);
+	g_object_get (settings,
+	              "gtk-shell-shows-menubar", &result,
+	              NULL);
 
 	return result;
 }
-#endif
 
 static void
 gedit_app_startup (GApplication *application)
@@ -830,14 +810,13 @@ gedit_app_startup (GApplication *application)
 	                                 application);
 
 	/* menus */
-#ifndef OS_OSX
-	/* We will use a menubar with osx or unity */
-	if (!in_desktop ("Unity"))
+	if (!show_menubar ())
 	{
+		gtk_application_set_menubar (application, NULL);
 		priv->hamburger_menu = get_menu_model (GEDIT_APP (application),
 		                                       "hamburger-menu");
 	}
-#endif
+
 	priv->notebook_menu = get_menu_model (GEDIT_APP (application), "notebook-menu");
 	priv->tab_width_menu = get_menu_model (GEDIT_APP (application), "tab-width-menu");
 	priv->line_col_menu = get_menu_model (GEDIT_APP (application), "line-col-menu");
