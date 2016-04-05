@@ -150,7 +150,7 @@ create_chroot_system() {
 }
 
 install_gedit_packages() {
-  pacman -S mingw-w64-${_arch}-librsvg mingw-w64-${_arch}-gedit mingw-w64-${_arch}-gedit-plugins mingw-w64-${_arch}-adwaita-icon-theme --noconfirm --root "${_newgedit}"
+  pacman -S mingw-w64-${_arch}-librsvg mingw-w64-${_arch}-gedit mingw-w64-${_arch}-gedit-plugins mingw-w64-${_arch}-gspell mingw-w64-${_arch}-adwaita-icon-theme --noconfirm --root "${_newgedit}"
   _result=$?
   if [ "$_result" -ne "0" ]; then
     exit_cleanly "1" "failed to create newgedit via command 'pacman -S gedit --noconfirm --root ${_newgedit}'"
