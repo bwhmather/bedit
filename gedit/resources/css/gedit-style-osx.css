@@ -95,23 +95,23 @@
 }
 
 entry {
-  gtk-key-bindings: gtk-osx-editable, gtk-osx-text-entry;
+  -gtk-key-bindings: gtk-osx-editable, gtk-osx-text-entry;
 }
 
 textview {
-  gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view;
+  -gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view;
 }
 
 textview.sourceview {
-  gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view, gtk-osx-source-view;
+  -gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view, gtk-osx-source-view;
 }
 
 textview.gedit-view {
-  gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view, gtk-osx-source-view, gedit-osx-view;
+  -gtk-key-bindings: gtk-osx-editable, gtk-osx-text-view, gtk-osx-source-view, gedit-osx-view;
 }
 
 treeview {
-  gtk-key-bindings: gtk-osx-tree-view;
+  -gtk-key-bindings: gtk-osx-tree-view;
 }
 
 notebook {
