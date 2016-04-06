@@ -482,7 +482,13 @@ on_document_saved (GeditDocument *doc,
 
 	if (checker != NULL)
 	{
-		language_code = gspell_language_get_code (gspell_checker_get_language (checker));
+		const GspellLanguage *lang;
+
+		lang = gspell_checker_get_language (checker);
+		if (lang != NULL)
+		{
+			language_code = gspell_language_get_code (lang);
+		}
 	}
 
 	tab = gedit_tab_get_from_document (doc);
