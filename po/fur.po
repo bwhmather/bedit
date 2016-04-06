@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2016-04-06 09:22+0000\n"
-"PO-Revision-Date: 2016-04-06 17:22+0200\n"
+"PO-Revision-Date: 2016-04-06 18:23+0200\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
@@ -262,23 +262,23 @@ msgstr "Specifiche la posizion dal margjin di diestre."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:36
 msgid "Display Overview Map"
-msgstr ""
+msgstr "Mostre mape panoramiche"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid "Whether gedit should display the overview map for the document."
-msgstr ""
+msgstr "Indiche se gedit al à di mostra la mape panoramiche dal document."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Document background pattern type"
-msgstr ""
+msgstr "Motîf dal fondâl dal document"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid "Whether the document will get a background pattern painted."
-msgstr ""
+msgstr "Indiche se il document al varà di vê un motîf di fondâl disegnât."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Smart Home End"
-msgstr ""
+msgstr "Inizi/Fin Inteligjent"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid ""
@@ -290,6 +290,13 @@ msgid ""
 "the start/end of the line and \"always\" to always move to the start/end of "
 "the text instead of the start/end of the line."
 msgstr ""
+"Specifiche ce mût che il cursôr al à di movisi cuant che i tascj Inizi e Fin "
+"a son fracâts. Dopre \"disabled\" par movi simpri tal inizi/fin de rie, "
+"\"after\" par movisi al inizi/fin de rie de prime volte che si fracave i "
+"tascj e al inizi/fin dal test, escludût i spazis, de seconde volte che si ju "
+"frache. Doprâ \"before\" par movisi al inizi/fin dal test prime che si "
+"movisi al inizi/fin de rie e \"always\" par movisi simpri al inizi/fin dal "
+"test invezit che de rie."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid "Restore Previous Cursor Position"
@@ -457,7 +464,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:77
 msgid "Margin Left"
-msgstr ""
+msgstr "Margjin a çampe"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:78
 msgid "The left margin, in millimeters."
@@ -465,7 +472,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:79
 msgid "Margin Top"
-msgstr ""
+msgstr "Margjin superiôr"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:80
 msgid "The top margin, in millimeters."
@@ -473,7 +480,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:81
 msgid "Margin Right"
-msgstr ""
+msgstr "Margjin a drete"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:82
 msgid "The right margin, in millimeters."
@@ -481,7 +488,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:83
 msgid "Margin Bottom"
-msgstr ""
+msgstr "Margjin inferiôr"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid "The bottom margin, in millimeters."
@@ -501,7 +508,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Active plugins"
-msgstr ""
+msgstr "Plugins atîfs"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid ""
@@ -511,7 +518,7 @@ msgstr ""
 
 #: ../gedit/gedit-app.c:111
 msgid "Show the application's version"
-msgstr ""
+msgstr "Mostre la version de aplicazion"
 
 #: ../gedit/gedit-app.c:117
 msgid "Display list of possible values for the encoding option"
@@ -541,7 +548,7 @@ msgstr ""
 
 #: ../gedit/gedit-app.c:146
 msgid "GEOMETRY"
-msgstr ""
+msgstr "GJEOMETRIE"
 
 #: ../gedit/gedit-app.c:152
 msgid "Open files and block process until files are closed"
@@ -708,14 +715,14 @@ msgstr ""
 #: ../gedit/gedit-commands-file.c:261
 #, c-format
 msgid "Loading file '%s'…"
-msgstr ""
+msgstr "Daur a cjamâ “%s”…"
 
 #: ../gedit/gedit-commands-file.c:270
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Daûr a cjamâ %d file..."
+msgstr[1] "Daûr a cjamâ %d file..."
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
@@ -748,11 +755,11 @@ msgstr "_Sostituî"
 
 #: ../gedit/gedit-commands-file.c:608
 msgid "Save the file using compression?"
-msgstr ""
+msgstr "Salvâ il file doprant la compression?"
 
 #: ../gedit/gedit-commands-file.c:612
 msgid "Save the file as plain text?"
-msgstr ""
+msgstr "Salvâ il file come test sempliç?"
 
 #: ../gedit/gedit-commands-file.c:625
 #, c-format
@@ -763,7 +770,7 @@ msgstr ""
 
 #: ../gedit/gedit-commands-file.c:629
 msgid "_Save Using Compression"
-msgstr ""
+msgstr "_Salve doprant compression"
 
 #: ../gedit/gedit-commands-file.c:634
 #, c-format
@@ -774,12 +781,12 @@ msgstr ""
 
 #: ../gedit/gedit-commands-file.c:637
 msgid "_Save As Plain Text"
-msgstr ""
+msgstr "_Salve come test sempliç"
 
 #: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
 msgid "Saving file '%s'…"
-msgstr ""
+msgstr "Daûr a salvâ %s..."
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
@@ -867,7 +874,7 @@ msgstr ""
 
 #: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
-msgstr ""
+msgstr "Fabio Tomat <f.t.public@gmail.com>"
 
 #: ../gedit/gedit-commands-search.c:107
 #, c-format
@@ -885,12 +892,12 @@ msgstr ""
 #: ../gedit/gedit-commands-search.c:142
 #, c-format
 msgid "\"%s\" not found"
-msgstr ""
+msgstr "Nol è stât cjatât \"%s\""
 
 #: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
 #, c-format
 msgid "Untitled Document %d"
-msgstr ""
+msgstr "Document cence titul %d"
 
 #: ../gedit/gedit-documents-panel.c:399
 #, c-format
@@ -978,7 +985,7 @@ msgstr ""
 #: ../plugins/externaltools/tools/manager.py:433
 #: ../plugins/externaltools/tools/manager.py:767
 msgid "Plain Text"
-msgstr ""
+msgstr "Test sempliç"
 
 #: ../gedit/gedit-io-error-info-bar.c:143
 #: ../gedit/gedit-io-error-info-bar.c:491
@@ -988,7 +995,7 @@ msgstr ""
 #: ../gedit/gedit-io-error-info-bar.c:163
 #, c-format
 msgid "Could not find the file “%s”."
-msgstr ""
+msgstr "Impussibil cjatâ il file \"%s\"."
 
 #: ../gedit/gedit-io-error-info-bar.c:165
 #: ../gedit/gedit-io-error-info-bar.c:205
@@ -1037,7 +1044,7 @@ msgstr ""
 #: ../gedit/gedit-io-error-info-bar.c:269
 #, c-format
 msgid "“%s” is not a regular file."
-msgstr ""
+msgstr "\"%s\" nol è un file regolâr."
 
 #: ../gedit/gedit-io-error-info-bar.c:274
 msgid "Connection timed out. Please try again."
@@ -1145,16 +1152,16 @@ msgstr ""
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:773
 msgid "D_on't Edit"
-msgstr ""
+msgstr "No m_odificâ"
 
 #: ../gedit/gedit-io-error-info-bar.c:783
 #, c-format
 msgid "This file “%s” is already open in another window."
-msgstr ""
+msgstr "Il file \"%s\" al è za viert intun altri barcon."
 
 #: ../gedit/gedit-io-error-info-bar.c:797
 msgid "Do you want to edit it anyway?"
-msgstr ""
+msgstr "Vûstu modificâlu distès?"
 
 #: ../gedit/gedit-io-error-info-bar.c:853
 #: ../gedit/gedit-io-error-info-bar.c:943
@@ -1166,7 +1173,7 @@ msgstr "S_alve distès"
 #: ../gedit/gedit-io-error-info-bar.c:946
 #: ../gedit/gedit-io-error-info-bar.c:1238
 msgid "D_on't Save"
-msgstr ""
+msgstr "N_o salvâ"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
@@ -1257,16 +1264,16 @@ msgstr ""
 #: ../gedit/gedit-io-error-info-bar.c:1121
 #, c-format
 msgid "Could not save the file “%s”."
-msgstr ""
+msgstr "Impussibil salvâ il file \"%s\"."
 
 #: ../gedit/gedit-io-error-info-bar.c:1161
 #, c-format
 msgid "The file “%s” changed on disk."
-msgstr ""
+msgstr "Il file \"%s\" al è cambiât sul disc."
 
 #: ../gedit/gedit-io-error-info-bar.c:1172
 msgid "Drop Changes and _Reload"
-msgstr ""
+msgstr "Bute vie lis modifichis e _torne cjarie"
 
 #: ../gedit/gedit-io-error-info-bar.c:1182 ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
@@ -1307,11 +1314,11 @@ msgstr ""
 
 #: ../gedit/gedit-preferences-dialog.c:821
 msgid "Add Scheme"
-msgstr ""
+msgstr "Zonte Scheme"
 
 #: ../gedit/gedit-preferences-dialog.c:826
 msgid "A_dd Scheme"
-msgstr ""
+msgstr "_Zonte scheme"
 
 #: ../gedit/gedit-preferences-dialog.c:830
 msgid "Color Scheme Files"
@@ -1324,16 +1331,16 @@ msgstr ""
 
 #: ../gedit/gedit-print-job.c:227
 msgid "Preparing..."
-msgstr ""
+msgstr "Daûr a prontâ..."
 
 #: ../gedit/gedit-print-job.c:539
 #, c-format
 msgid "File: %s"
-msgstr ""
+msgstr "File: %s"
 
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
-msgstr ""
+msgstr "Pagjine %N di %Q"
 
 #: ../gedit/gedit-print-job.c:626
 #, c-format
