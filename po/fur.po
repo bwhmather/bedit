@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2016-04-06 09:22+0000\n"
-"PO-Revision-Date: 2016-04-07 12:49+0200\n"
+"PO-Revision-Date: 2016-04-07 13:22+0200\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
@@ -325,7 +325,7 @@ msgstr "Ativâ la evidenziazion dal test cirût"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
-msgstr "Indiche se gedit al à di evidenziâ dutis lis ocorincis dal test cirût."
+msgstr "Indiche se gedit al à di evidenziâ dutis lis presincis dal test cirût."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid "Ensure Trailing Newline"
@@ -966,7 +966,7 @@ msgstr ""
 
 #: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
-msgstr ""
+msgstr "gedit al è un piçul e lizêr editôr di test pal ambient grafic GNOME"
 
 #: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
@@ -976,12 +976,12 @@ msgstr "Fabio Tomat <f.t.public@gmail.com>"
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cjate e sostituìs %d câs"
+msgstr[1] "Cjate e sostituìs %d câs"
 
 #: ../gedit/gedit-commands-search.c:116
 msgid "Found and replaced one occurrence"
-msgstr ""
+msgstr "Cjate e sostituìs un câs"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
@@ -998,7 +998,7 @@ msgstr "Document cence titul %d"
 #: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
-msgstr ""
+msgstr "Grup di schedis %i"
 
 #: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
 #: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
@@ -1008,7 +1008,7 @@ msgstr "Dome leture"
 #: ../gedit/gedit-encodings-combo-box.c:299
 #: ../gedit/gedit-file-chooser-dialog-osx.c:565
 msgid "Automatically Detected"
-msgstr ""
+msgstr "Ricognossiment automatic"
 
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
@@ -1018,12 +1018,12 @@ msgstr "Zonte o gjave..."
 #: ../gedit/gedit-encoding-items.c:92
 #, c-format
 msgid "Current Locale (%s)"
-msgstr ""
+msgstr "Configurazion regjonâl atuâl (%s)"
 
 #: ../gedit/gedit-encodings-dialog.c:95
 #, c-format
 msgid "%s (Current Locale)"
-msgstr ""
+msgstr "%s (Configurazion regjonâl atuâl)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
 msgid "Do you really want to reset the character encodings' preferences?"
@@ -1044,11 +1044,11 @@ msgstr "Gjave"
 
 #: ../gedit/gedit-encodings-dialog.c:785
 msgid "Move to a higher priority"
-msgstr ""
+msgstr "Sposte intune prioritât plui alte"
 
 #: ../gedit/gedit-encodings-dialog.c:796
 msgid "Move to a lower priority"
-msgstr ""
+msgstr "Sposte intune prioritât plui basse"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:41
 #: ../gedit/gedit-preferences-dialog.c:834
@@ -1057,23 +1057,23 @@ msgstr "Ducj i file"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:42
 msgid "All Text Files"
-msgstr ""
+msgstr "Ducj i file di test"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:307
 msgid "C_haracter Encoding:"
-msgstr ""
+msgstr "Codifiche c_aratars:"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:366
 msgid "L_ine Ending:"
-msgstr ""
+msgstr "F_in di rie:"
 
 #: ../gedit/gedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
-msgstr ""
+msgstr "Codifiche caratars:"
 
 #: ../gedit/gedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
-msgstr ""
+msgstr "Fin di rie:"
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
 #: ../plugins/externaltools/tools/manager.py:108
@@ -1086,7 +1086,7 @@ msgstr "Test sempliç"
 #: ../gedit/gedit-io-error-info-bar.c:143
 #: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
-msgstr ""
+msgstr "_Torne prove"
 
 #: ../gedit/gedit-io-error-info-bar.c:163
 #, c-format
@@ -1097,21 +1097,21 @@ msgstr "Impussibil cjatâ il file \"%s\"."
 #: ../gedit/gedit-io-error-info-bar.c:205
 #: ../gedit/gedit-io-error-info-bar.c:212
 msgid "Please check that you typed the location correctly and try again."
-msgstr ""
+msgstr "Controle di vê scrit la posizion juste e torne prove."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:184
 #, c-format
 msgid "Unable to handle “%s:” locations."
-msgstr ""
+msgstr "Impussibil gjestî lis posizions \"%s:\"."
 
 #: ../gedit/gedit-io-error-info-bar.c:190
 msgid "Unable to handle this location."
-msgstr ""
+msgstr "Impussibil gjestî cheste posizion."
 
 #: ../gedit/gedit-io-error-info-bar.c:199
 msgid "The location of the file cannot be accessed."
-msgstr ""
+msgstr "La posizion dal file no pues jessi doprade."
 
 #: ../gedit/gedit-io-error-info-bar.c:203
 #, c-format
@@ -1129,6 +1129,8 @@ msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
 "correct and try again."
 msgstr ""
+"Impussibil cjatâ il host \"%s\". Controle che lis impostazions proxy a sedin "
+"justis e torne prove."
 
 #: ../gedit/gedit-io-error-info-bar.c:261
 #, c-format
@@ -1136,6 +1138,8 @@ msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
 msgstr ""
+"Il non host nol jere valit. Controle di vê scrit la posizion juste e torne "
+"prove."
 
 #: ../gedit/gedit-io-error-info-bar.c:269
 #, c-format
@@ -1144,16 +1148,17 @@ msgstr "\"%s\" nol è un file regolâr."
 
 #: ../gedit/gedit-io-error-info-bar.c:274
 msgid "Connection timed out. Please try again."
-msgstr ""
+msgstr "Conession scjadude. Torne prove."
 
 #: ../gedit/gedit-io-error-info-bar.c:307
 #, c-format
 msgid "Unexpected error: %s"
-msgstr ""
+msgstr "Erôr inspietât: %s"
 
 #: ../gedit/gedit-io-error-info-bar.c:343
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr ""
+"Impussibil cjatâ il file domandât. Forsit al è stât eliminât di resint."
 
 #: ../gedit/gedit-io-error-info-bar.c:353
 #, c-format
@@ -1162,16 +1167,16 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:380
 msgid "Ch_aracter Encoding:"
-msgstr ""
+msgstr "Codifiche ca_ratars:"
 
 #: ../gedit/gedit-io-error-info-bar.c:441
 #, c-format
 msgid "The location “%s” is not currently reachable."
-msgstr ""
+msgstr "La posizion \"%s\" no je, par cumò, disponibil."
 
 #: ../gedit/gedit-io-error-info-bar.c:456
 msgid "Your system is offline. Check your network."
-msgstr ""
+msgstr "Il to sisteme al è fûr rêt. Controle la tô rêt."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
@@ -1185,19 +1190,21 @@ msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
+"Il numar dai colegaments di lâ daûr al è limitât e nol è stât pussibil cjatâ "
+"il file chenti chest limit."
 
 #: ../gedit/gedit-io-error-info-bar.c:595
 msgid "You do not have the permissions necessary to open the file."
-msgstr ""
+msgstr "No tu âs i permès necessaris par vierzi il file."
 
 #: ../gedit/gedit-io-error-info-bar.c:601
 msgid "Unable to detect the character encoding."
-msgstr ""
+msgstr "Impussibil ricognossi la codifiche caratars."
 
 #: ../gedit/gedit-io-error-info-bar.c:602
 #: ../gedit/gedit-io-error-info-bar.c:626
 msgid "Please check that you are not trying to open a binary file."
-msgstr ""
+msgstr "Controle che no tu stedis cirint di vierzi un file binari."
 
 #: ../gedit/gedit-io-error-info-bar.c:603
 msgid "Select a character encoding from the menu and try again."
@@ -1581,7 +1588,7 @@ msgstr ""
 #: ../gedit/gedit-view-frame.c:671
 #, c-format
 msgid "%d of %d"
-msgstr ""
+msgstr "%d di %d"
 
 #. create "Wrap Around" menu item.
 #: ../gedit/gedit-view-frame.c:763
