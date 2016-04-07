@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2016-04-06 09:22+0000\n"
-"PO-Revision-Date: 2016-04-07 12:02+0200\n"
+"PO-Revision-Date: 2016-04-07 12:49+0200\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
@@ -536,6 +536,11 @@ msgid ""
 "recognized encodings are used. The default value is the empty list, in which "
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
+"Liste des codifichis pussibilis mostradis intal menù Codifiche caratar intal "
+"seletôr di vierzidure/salvament file. \"CURRENT\" al rapresente la codifiche "
+"atuâl. Nome lis codifichis ricognossudis a vegnin dopradis. Il valôr "
+"predefinît al è une liste vueide, in chel câs gedit al sielzarà chês miôr su "
+"la fonde dal paîs e de lenghe."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Active plugins"
@@ -546,6 +551,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
+"Liste di plugin atîfs. Al ten la \"Posizion\" dai plugin atîfs. Viôt il "
+"file .gedit-plugin par vê la \"Posizion\" di un particolâr plugin."
 
 #: ../gedit/gedit-app.c:111
 msgid "Show the application's version"
@@ -553,29 +560,31 @@ msgstr "Mostre la version de aplicazion"
 
 #: ../gedit/gedit-app.c:117
 msgid "Display list of possible values for the encoding option"
-msgstr ""
+msgstr "Mostre la liste dai pussibii valôrs pe opzion di codifiche"
 
 #: ../gedit/gedit-app.c:124
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr ""
+"Met la codifiche dal caratar di doprâ par vierzi i file listâts te rie di "
+"comant"
 
 #: ../gedit/gedit-app.c:125
 msgid "ENCODING"
-msgstr ""
+msgstr "CODIFICHE"
 
 #: ../gedit/gedit-app.c:131
 msgid "Create a new top-level window in an existing instance of gedit"
-msgstr ""
+msgstr "Cree un gnûf barcon di nivel plui alt intune istance esistent di gedit"
 
 #: ../gedit/gedit-app.c:138
 msgid "Create a new document in an existing instance of gedit"
-msgstr ""
+msgstr "Cree un gnûf document intune istance esistent di gedit"
 
 #: ../gedit/gedit-app.c:145
 msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr ""
+msgstr "Impueste la dimension e la posizion di un barcon (LARGJECExALTECE+X+Y)"
 
 #: ../gedit/gedit-app.c:146
 msgid "GEOMETRY"
@@ -583,24 +592,24 @@ msgstr "GJEOMETRIE"
 
 #: ../gedit/gedit-app.c:152
 msgid "Open files and block process until files are closed"
-msgstr ""
+msgstr "Vierç i file e bloche il procès fintremai la sieradure dai file"
 
 #: ../gedit/gedit-app.c:159
 msgid "Run gedit in standalone mode"
-msgstr ""
+msgstr "Eseguìs gedit in modalitât indipendent"
 
 #: ../gedit/gedit-app.c:166
 msgid "[FILE...] [+LINE[:COLUMN]]"
-msgstr ""
+msgstr "[FILE...] [+LINIE[:COLONE]]"
 
 #: ../gedit/gedit-app.c:281
 msgid "There was an error displaying the help."
-msgstr ""
+msgstr "Al è saltât fûr un erôr tal mostrâ il jutori."
 
 #: ../gedit/gedit-app.c:986
 #, c-format
 msgid "%s: invalid encoding."
-msgstr ""
+msgstr "%s: codifiche no valide."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
@@ -649,12 +658,18 @@ msgid_plural ""
 "If you don't save, changes from the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
+"Se no tu salvis, lis modifichis fatis tal ultin %ld secont a laran pierdudis "
+"par simpri."
 msgstr[1] ""
+"Se no tu salvis, lis modifichis fatis tai ultins %ld seconts a laran "
+"pierdudis par simpri."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
+"Se no tu salvis, lis modifichis fatis tal ultin minût a laran pierdudis par "
+"simpri."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
@@ -665,7 +680,11 @@ msgid_plural ""
 "If you don't save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
+"Se no tu salvis, lis modifichis fatis tal ultin minût e %ld secont a laran "
+"pierdudis par simpri."
 msgstr[1] ""
+"Se no tu salvis, lis modifichis fatis tal ultin minût e %ld seconts a laran "
+"pierdudis par simpri."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
@@ -675,11 +694,17 @@ msgid_plural ""
 "If you don't save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
+"Se no tu salvis, lis modifichis fatis tal ultin %ld minût a laran pierdudis "
+"par simpri."
 msgstr[1] ""
+"Se no tu salvis, lis modifichis fatis tai ultins %ld minûts a laran "
+"pierdudis par simpri."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
+"Se no tu salvis, lis modifichis fatis te ultime ore a laran pierdudis par "
+"simpri."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
@@ -690,7 +715,11 @@ msgid_plural ""
 "If you don't save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
+"Se no tu salvis, lis modifichis fatis te ultime ore e %d minût a laran "
+"pierdudis par simpri."
 msgstr[1] ""
+"Se no tu salvis, lis modifichis fatis te ultime ore e %d minûts a laran "
+"pierdudis par simpri."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
@@ -699,29 +728,33 @@ msgid ""
 msgid_plural ""
 "If you don't save, changes from the last %d hours will be permanently lost."
 msgstr[0] ""
+"Se no tu salvis, lis modifichis fatis te ultime %d ore a laran pierdudis par "
+"simpri."
 msgstr[1] ""
+"Se no tu salvis, lis modifichis fatis tes ultimis %d oris a laran pierdudis "
+"par simpri."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
-msgstr ""
+msgstr "Lis modifichis dal document \"%s\" a laran pierdudis par simpri."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
-msgstr ""
+msgstr "Salvâ i cambiaments dal document \"%s\" prime di sierâ?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:434
 #: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
-msgstr ""
+msgstr "Salvament disabilitât dal aministradôr di sisteme."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lis modifichis fatis a %d document a laran pierdudis par simpri."
+msgstr[1] "Lis modifichis fatis a %d documents a laran pierdudis par simpri."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
@@ -729,19 +762,23 @@ msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
+"A 'nd è %d document cun modifichis no salvadis. Salvâ i cambiaments prime di "
+"sierâ?"
 msgstr[1] ""
+"A 'ndi son %d documents cun modifichis no salvadis. Salvâ i cambiaments "
+"prime di sierâ?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
-msgstr ""
+msgstr "Docum_ents cun modifichis no salvadis:"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
-msgstr ""
+msgstr "S_elezione i documents che tu vuelis salvâ:"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
-msgstr ""
+msgstr "Se no tu salvis, dutis lis modifichis a laran pierdudis par simpri."
 
 #: ../gedit/gedit-commands-file.c:261
 #, c-format
@@ -777,7 +814,7 @@ msgstr "Il file \"%s\" al è in modalitât dome leture."
 
 #: ../gedit/gedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
-msgstr ""
+msgstr "Vûstu provâ a sostituîlu cun chel che tu stâs par salvâ?"
 
 #: ../gedit/gedit-commands-file.c:568
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
@@ -798,6 +835,8 @@ msgid ""
 "The file \"%s\" was previously saved as plain text and will now be saved "
 "using compression."
 msgstr ""
+"Il file \"%s\" al jere stât salvât come test sempliç e cumò al vegnarà "
+"salvât doprant la compression."
 
 #: ../gedit/gedit-commands-file.c:629
 msgid "_Save Using Compression"
@@ -809,6 +848,8 @@ msgid ""
 "The file \"%s\" was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
+"Il file \"%s\" al jere stât salvât doprant la compression e cumò al vegnarà "
+"salvât come test sempliç."
 
 #: ../gedit/gedit-commands-file.c:637
 msgid "_Save As Plain Text"
@@ -843,12 +884,18 @@ msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
+"Lis modifichis fatis tal document intal ultin %ld secont a laran pierdudis "
+"par simpri."
 msgstr[1] ""
+"Lis modifichis fatis tal document intai ultins %ld seconts a laran pierdudis "
+"par simpri."
 
 #: ../gedit/gedit-commands-file.c:1494
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
 msgstr ""
+"Lis modifichis fatis tal document intal ultin minût a laran pierdudis par "
+"simpri."
 
 #: ../gedit/gedit-commands-file.c:1500
 #, c-format
@@ -859,7 +906,11 @@ msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
+"Lis modifichis fatis tal document intal ultin minût e %ld secont a laran "
+"pierdudis par simpri."
 msgstr[1] ""
+"Lis modifichis fatis tal document intal ultin minût e %ld seconts a laran "
+"pierdudis par simpri."
 
 #: ../gedit/gedit-commands-file.c:1510
 #, c-format
@@ -869,11 +920,17 @@ msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
+"Lis modifichis fatis tal document intal ultin %ld minût a laran pierdudis "
+"par simpri."
 msgstr[1] ""
+"Lis modifichis fatis tal document intai ultins %ld minûts a laran pierdudis "
+"par simpri."
 
 #: ../gedit/gedit-commands-file.c:1525
 msgid "Changes made to the document in the last hour will be permanently lost."
 msgstr ""
+"Lis modifichis fatis tal document inte ultime ore a laran pierdudis par "
+"simpri."
 
 #: ../gedit/gedit-commands-file.c:1531
 #, c-format
@@ -884,7 +941,11 @@ msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
+"Lis modifichis fatis tal document inte ultime ore e %d minût a laran "
+"pierdudis par simpri."
 msgstr[1] ""
+"Lis modifichis fatis tal document inte ultime ore e %d minûts a laran "
+"pierdudis par simpri."
 
 #: ../gedit/gedit-commands-file.c:1546
 #, c-format
@@ -893,7 +954,11 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
 msgstr[0] ""
+"Lis modifichis fatis tal document inte ultime %d ore a laran pierdudis par "
+"simpri."
 msgstr[1] ""
+"Lis modifichis fatis tal document intes ultimis %d oris a laran pierdudis "
+"par simpri."
 
 #: ../gedit/gedit-commands-file.c:1569
 msgid "_Revert"
