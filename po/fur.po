@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2016-04-06 09:22+0000\n"
-"PO-Revision-Date: 2016-04-07 13:36+0200\n"
+"PO-Revision-Date: 2016-04-07 17:49+0200\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
@@ -429,6 +429,10 @@ msgid ""
 "individual character boundaries. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
+"Specifiche ce mût fâ la rie gnove automatiche pes riis masse lungjis cuant "
+"che si stampe. \"word\" par fâle su la fonde di singulis peraulis e \"char\" "
+"par fâle sui singui caratars. Viôt che i valôrs a son sensibii aes "
+"maiusculis, duncje sta atent di scrivilis come che a son scritis chi."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid "Print Line Numbers"
@@ -1027,12 +1031,12 @@ msgstr "%s (Configurazion regjonâl atuâl)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
 msgid "Do you really want to reset the character encodings' preferences?"
-msgstr ""
+msgstr "Tornâ a impuestâ lis preferencis de codifiche dai caratars?"
 
 #. Reset button
 #: ../gedit/gedit-encodings-dialog.c:195 ../gedit/gedit-encodings-dialog.c:820
 msgid "_Reset"
-msgstr ""
+msgstr "_Torne impueste"
 
 #: ../gedit/gedit-encodings-dialog.c:731
 msgid "Add"
@@ -1313,6 +1317,10 @@ msgid ""
 "can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
 msgstr ""
+"Impussibil creâ un backup de vecje version dal file prime dal salvament di "
+"chê atuâl. Tu puedis ignorâ chest avîs e salvâ il file distès, ma se un erôr "
+"al ven fûr dilunc il salvament, tu podaressis pierdi la vecje version dal "
+"file. Salvâ distès?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:1047
@@ -1321,12 +1329,16 @@ msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
+"Impussibil gjestî lis posizions \"%s\" in modalitât scriture. Controle di vê "
+"scrit ben la posizion e torne prove."
 
 #: ../gedit/gedit-io-error-info-bar.c:1055
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
 msgstr ""
+"Impussibil gjestî cheste posizion in modalitât scriture. Controle di vê "
+"scrit ben la posizion e torne prove."
 
 #: ../gedit/gedit-io-error-info-bar.c:1064
 #, c-format
@@ -1334,34 +1346,44 @@ msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
 "correctly and try again."
 msgstr ""
+"\"%s\" no je une posizion valide. Controle di vê scrit ben la posizion e "
+"torne prove."
 
 #: ../gedit/gedit-io-error-info-bar.c:1071
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
 msgstr ""
+"No tu âs i permès necessaris par salvâ il file. Controle di vê scrit ben la "
+"posizion e torne prove."
 
 #: ../gedit/gedit-io-error-info-bar.c:1077
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
 msgstr ""
+"Nol è vonde spazi tal disc par salvâ il file. Libare un tic di spazi sul "
+"disc e torne prove."
 
 #: ../gedit/gedit-io-error-info-bar.c:1082
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
 msgstr ""
+"Tu stâs cirint di salvâ il file suntun disc di dome leture. Controle di vê "
+"scrit ben la posizion e torne prove."
 
 #: ../gedit/gedit-io-error-info-bar.c:1088
 msgid "A file with the same name already exists. Please use a different name."
-msgstr ""
+msgstr "Un file cul stes non al esist za. Dopre un non diviers."
 
 #: ../gedit/gedit-io-error-info-bar.c:1093
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
 msgstr ""
+"Il disc dulà che tu stâs cirint di salvâ il file al à limitazions te "
+"lungjece dai nons dai file. Dopre un non plui curt."
 
 #: ../gedit/gedit-io-error-info-bar.c:1104
 msgid ""
@@ -1369,6 +1391,9 @@ msgid ""
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
 "have this limitation."
 msgstr ""
+"Il disc dulà che tu stâs cirint di salvâ il file al à limitazions su le "
+"dimension dai file. Cîr di salvâ un file plui piçul o salvilu suntun disc "
+"che nol à cheste limitazion."
 
 #: ../gedit/gedit-io-error-info-bar.c:1121
 #, c-format
@@ -1397,29 +1422,34 @@ msgstr "_Ignore"
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr ""
+"Al è stât rilevât cualchi caratar no valit intant che si salvave \"%s\""
 
 #: ../gedit/gedit-io-error-info-bar.c:1264
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
+"Se tu continuis a salvâ chest file tu puedis ruvinâ il document. Salvâ "
+"distès?"
 
 #: ../gedit/gedit-preferences-dialog.c:455
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
+"Fâs clic su chest boton par sielzi il caratar che al vegnarà doprât dal "
+"editôr"
 
 #: ../gedit/gedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
-msgstr ""
+msgstr "_Doprâ il caratar a spazis fis di sisteme (%s)"
 
 #: ../gedit/gedit-preferences-dialog.c:601
 #, c-format
 msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
-msgstr ""
+msgstr "Impussibil creâ la cartele '%s': g_mkdir_with_parents() falît: %s"
 
 #: ../gedit/gedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
-msgstr ""
+msgstr "Il scheme di colôr selezionât nol pues jessi instalât."
 
 #: ../gedit/gedit-preferences-dialog.c:821
 msgid "Add Scheme"
@@ -1431,12 +1461,12 @@ msgstr "_Zonte scheme"
 
 #: ../gedit/gedit-preferences-dialog.c:830
 msgid "Color Scheme Files"
-msgstr ""
+msgstr "File di scheme di colôr"
 
 #: ../gedit/gedit-preferences-dialog.c:861
 #, c-format
 msgid "Could not remove color scheme \"%s\"."
-msgstr ""
+msgstr "Impussibil gjavâ il scheme di colôr \"%s\"."
 
 #: ../gedit/gedit-print-job.c:227
 msgid "Preparing..."
@@ -1454,7 +1484,7 @@ msgstr "Pagjine %N di %Q"
 #: ../gedit/gedit-print-job.c:626
 #, c-format
 msgid "Rendering page %d of %d..."
-msgstr ""
+msgstr "Daûr a prontâ la visualizazion de pagjine %d di %d"
 
 #: ../gedit/gedit-print-preview.c:653
 #, c-format
@@ -1464,7 +1494,7 @@ msgstr "Pagjine %d di %d"
 #: ../gedit/gedit-replace-dialog.c:690
 #: ../plugins/externaltools/tools/tools.ui.h:7
 msgid "Nothing"
-msgstr ""
+msgstr "Nuie"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
@@ -1474,11 +1504,11 @@ msgstr "Cjate e sostituìs"
 #. Use spaces to leave padding proportional to the font size
 #: ../gedit/gedit-statusbar.c:58 ../gedit/gedit-statusbar.c:64
 msgid "OVR"
-msgstr ""
+msgstr "SSC"
 
 #: ../gedit/gedit-statusbar.c:58 ../gedit/gedit-statusbar.c:64
 msgid "INS"
-msgstr ""
+msgstr "INS"
 
 #: ../gedit/gedit-statusbar.c:244
 #, c-format
@@ -1504,29 +1534,29 @@ msgstr ""
 #: ../gedit/gedit-tab.c:834
 #, c-format
 msgid "Loading %s from %s"
-msgstr ""
+msgstr "Daûr a cjamâ %s di %s"
 
 #: ../gedit/gedit-tab.c:841
 #, c-format
 msgid "Loading %s"
-msgstr ""
+msgstr "Daûr a cjamâ %s"
 
 #. Translators: the first %s is a file name (e.g. test.txt) the second one
 #. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
 #: ../gedit/gedit-tab.c:921
 #, c-format
 msgid "Saving %s to %s"
-msgstr ""
+msgstr "Daûr a salvâ %s su %s"
 
 #: ../gedit/gedit-tab.c:926
 #, c-format
 msgid "Saving %s"
-msgstr ""
+msgstr "Daûr a salvâ %s"
 
 #: ../gedit/gedit-tab.c:1529
 #, c-format
 msgid "Error opening file %s"
-msgstr ""
+msgstr "Erôr tal vierzi il file %s"
 
 #: ../gedit/gedit-tab.c:1534
 #, c-format
@@ -1536,7 +1566,7 @@ msgstr ""
 #: ../gedit/gedit-tab.c:1539
 #, c-format
 msgid "Error saving file %s"
-msgstr ""
+msgstr "Erôr tal salvâ il file %s"
 
 #: ../gedit/gedit-tab.c:1570
 msgid "Name:"
@@ -1552,23 +1582,23 @@ msgstr "Codifiche:"
 
 #: ../gedit/gedit-utils.c:841
 msgid "Please check your installation."
-msgstr ""
+msgstr "Controle la tô instalazion."
 
 #: ../gedit/gedit-utils.c:902
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
-msgstr ""
+msgstr "Impussibil vierzi il file di IU %s. Erôr: %s"
 
 #: ../gedit/gedit-utils.c:921
 #, c-format
 msgid "Unable to find the object '%s' inside file %s."
-msgstr ""
+msgstr "Impussibil cjatâ l'ogjet '%s' dentri il file %s."
 
 #. Translators: '/ on <remote-share>'
 #: ../gedit/gedit-utils.c:1159
 #, c-format
 msgid "/ on %s"
-msgstr ""
+msgstr "/ su %s"
 
 #: ../gedit/gedit-utils.c:1463
 msgid "Unix/Linux"
@@ -1599,7 +1629,7 @@ msgstr "%d di %d"
 #. create "Wrap Around" menu item.
 #: ../gedit/gedit-view-frame.c:763
 msgid "_Wrap Around"
-msgstr ""
+msgstr "_Torne al inizi"
 
 #. create "Match as Regular Expression" menu item.
 #: ../gedit/gedit-view-frame.c:773
