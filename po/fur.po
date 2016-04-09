@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2016-04-09 06:12+0000\n"
-"PO-Revision-Date: 2016-04-09 17:06+0200\n"
+"PO-Revision-Date: 2016-04-09 17:33+0200\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -3291,7 +3291,7 @@ msgstr "Vierç subite"
 
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:2
 msgid "Quickly open files"
-msgstr "Vierç subite i file"
+msgstr "\tVierç subite i file"
 
 #: ../plugins/quickopen/quickopen/popup.py:83
 msgid "Type to search..."
@@ -3394,20 +3394,22 @@ msgstr ""
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr ""
+"Peraule singule cun la cuâl il snippet al ven ativât dopo vê fracât il tast "
+"di tabulazion"
 
 #: ../plugins/snippets/snippets/manager.py:758
 #, python-format
 msgid "The following error occurred while importing: %s"
-msgstr ""
+msgstr "I erôrs chi daurman a son vignûts fûr dilunc la importazion: %s"
 
 #: ../plugins/snippets/snippets/manager.py:765
 msgid "Import successfully completed"
-msgstr ""
+msgstr "Importazion completade cun sucès"
 
 #: ../plugins/snippets/snippets/manager.py:779
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
-msgstr ""
+msgstr "Impuarte i snippet"
 
 #: ../plugins/snippets/snippets/manager.py:784
 #: ../plugins/snippets/snippets/manager.py:870
@@ -3429,7 +3431,7 @@ msgstr "Archivi comprimût Bzip2"
 
 #: ../plugins/snippets/snippets/manager.py:787
 msgid "Single snippets file"
-msgstr ""
+msgstr "File snippet singul"
 
 #: ../plugins/snippets/snippets/manager.py:788
 #: ../plugins/snippets/snippets/manager.py:874
@@ -3440,7 +3442,7 @@ msgstr "Ducj i files"
 #: ../plugins/snippets/snippets/manager.py:800
 #, python-format
 msgid "The following error occurred while exporting: %s"
-msgstr ""
+msgstr "I erôrs chi daurman a son vignûts fûr dilunc la esportazion: %s"
 
 #: ../plugins/snippets/snippets/manager.py:804
 msgid "Export successfully completed"
@@ -3450,17 +3452,17 @@ msgstr "Esportazion completade cun sucès"
 #: ../plugins/snippets/snippets/manager.py:844
 #: ../plugins/snippets/snippets/manager.py:911
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
-msgstr ""
+msgstr "Includi te esportazion i snippet di <b>sisteme</b> selezionâts?"
 
 #: ../plugins/snippets/snippets/manager.py:859
 #: ../plugins/snippets/snippets/manager.py:929
 msgid "There are no snippets selected to be exported"
-msgstr ""
+msgstr "No son snippets selezionât di espuartâ"
 
 #: ../plugins/snippets/snippets/manager.py:864
 #: ../plugins/snippets/snippets/manager.py:902
 msgid "Export snippets"
-msgstr ""
+msgstr "Espuarte i snippet"
 
 #: ../plugins/snippets/snippets/manager.py:1041
 msgid "Type a new shortcut, or press Backspace to clear"
@@ -3476,15 +3478,17 @@ msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
 msgstr ""
+"La esecuzion dal comant Python (%s) e je lade fûr dal timp massim, esecuzion "
+"terminade."
 
 #: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
-msgstr ""
+msgstr "Esecuzion dal comant Python (%s) falide: %s"
 
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:2
 msgid "Insert often-used pieces of text in a fast way"
-msgstr ""
+msgstr "Al inserìs in mût rapit tocs di test doprâts dispès"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:1
 msgid "Manage Snippets"
@@ -3520,7 +3524,7 @@ msgstr "Ativazion"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:11
 msgid "    "
-msgstr ""
+msgstr "    "
 
 #. "tab" here means the tab key, not the notebook tab!
 #: ../plugins/snippets/snippets/snippets.ui.h:13
@@ -3537,7 +3541,7 @@ msgstr "Tast di scurte cul cuâl il snippet al ven ativât"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:17
 msgid "_Drop targets:"
-msgstr ""
+msgstr "_Molâ destinazions:"
 
 #: ../plugins/sort/gedit-sort-plugin.c:243
 msgid "S_ort..."
@@ -3571,19 +3575,19 @@ msgstr "O_rdene"
 
 #: ../plugins/sort/sort.plugin.desktop.in.h:2
 msgid "Sorts a document or selected text."
-msgstr ""
+msgstr "Ordene un document o il test selezionât."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
-msgstr ""
+msgstr "_Controle la ortografie..."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:147
 msgid "Set _Language..."
-msgstr ""
+msgstr "Impueste _Lenghe..."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
-msgstr ""
+msgstr "_Evidenzie peraulis scritis mâl"
 
 #. ex:set ts=8 noet:
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
@@ -3592,11 +3596,11 @@ msgstr "Control ortografic"
 
 #: ../plugins/spell/spell.plugin.desktop.in.h:2
 msgid "Checks the spelling of the current document."
-msgstr ""
+msgstr "Controle la ortografie dal document atuâl."
 
 #: ../plugins/time/gedit-time-plugin.c:270
 msgid "In_sert Date and Time..."
-msgstr ""
+msgstr "In_serìs date e ore..."
 
 #: ../plugins/time/gedit-time-plugin.c:496
 msgid "Available formats"
@@ -3612,6 +3616,8 @@ msgid ""
 "If the user should be prompted for a format or if the selected or custom "
 "format should be used."
 msgstr ""
+"Indiche se l'utent al à di jessi interogât par un formât opûr se doprâ il "
+"formât selezionât o chel personalizât."
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
 msgid "Selected Format"
@@ -3619,15 +3625,15 @@ msgstr "Formât selezionât"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
 msgid "The selected format used when inserting the date/time."
-msgstr ""
+msgstr "Il formât selezionât doprât cuant che si inserìs la date/ore."
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
 msgid "Custom Format"
-msgstr ""
+msgstr "Formât personalizât"
 
 #: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
 msgid "The custom format used when inserting the date/time."
-msgstr ""
+msgstr "Il formât personalizât doprât cuant che si inserìs la date/ore."
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
 msgid "Insert Date and Time"
@@ -3641,7 +3647,7 @@ msgstr "Dopre il formât _selezionât"
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:6
 msgid "_Use custom format"
-msgstr ""
+msgstr "_Dopre formât personalizât"
 
 #. Translators: Use the more common date format in your locale
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:5
@@ -3666,16 +3672,16 @@ msgstr "Configure il plugin di date/ore"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
 msgid "When inserting date/time..."
-msgstr ""
+msgstr "Tal inserî date/ore..."
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
-msgstr ""
+msgstr "_Domande un formât"
 
 #: ../plugins/time/time.plugin.desktop.in.h:1
 msgid "Insert Date/Time"
-msgstr ""
+msgstr "Inserìs date e ore"
 
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
-msgstr ""
+msgstr "Al inserìs date e ore atuâl te posizion dal cursôr."
