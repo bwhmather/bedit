@@ -53,7 +53,7 @@ class ToolMenu(object):
 
         for tool in sorted(directory.tools, key=lambda x: x.name.lower()):
             # FIXME: find a better way to share the action name
-            action_name = 'external-tool_%X_%X' % (id(tool), id(tool.name))
+            action_name = 'external-tool-%X-%X' % (id(tool), id(tool.name))
             item = Gio.MenuItem.new(tool.name.replace('_', '__'), "win.%s" % action_name)
             item.set_attribute_value("hidden-when", GLib.Variant.new_string("action-disabled"))
             menu.append_item(item)

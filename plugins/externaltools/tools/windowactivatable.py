@@ -45,7 +45,8 @@ class ToolActions(object):
 
     def _insert_directory(self, directory):
         for tool in sorted(directory.tools, key=lambda x: x.name.lower()):
-            action_name = 'external-tool_%X_%X' % (id(tool), id(tool.name))
+            # FIXME: find a better way to share the action name
+            action_name = 'external-tool-%X-%X' % (id(tool), id(tool.name))
             self._action_tools[action_name] = tool
 
             action = Gio.SimpleAction(name=action_name)
