@@ -812,7 +812,7 @@ gedit_app_startup (GApplication *application)
 	/* menus */
 	if (!show_menubar ())
 	{
-		gtk_application_set_menubar (application, NULL);
+		gtk_application_set_menubar (GTK_APPLICATION (application), NULL);
 		priv->hamburger_menu = get_menu_model (GEDIT_APP (application),
 		                                       "hamburger-menu");
 	}
