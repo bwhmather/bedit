@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_ENCODING_ITEMS_H__
-#define __GEDIT_ENCODING_ITEMS_H__
+#ifndef GEDIT_ENCODING_ITEMS_H
+#define GEDIT_ENCODING_ITEMS_H
 
 #include <gtksourceview/gtksource.h>
 
@@ -35,6 +35,6 @@ const gchar			*gedit_encoding_item_get_name		(GeditEncodingItem *item);
 
 G_END_DECLS
 
-#endif /* __GEDIT_ENCODING_ITEMS_H__ */
+#endif /* GEDIT_ENCODING_ITEMS_H */
 
 /* ex:set ts=8 noet: */

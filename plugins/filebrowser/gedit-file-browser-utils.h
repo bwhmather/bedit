@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_FILE_BROWSER_UTILS_H__
-#define __GEDIT_FILE_BROWSER_UTILS_H__
+#ifndef GEDIT_FILE_BROWSER_UTILS_H
+#define GEDIT_FILE_BROWSER_UTILS_H
 
 #include <gedit/gedit-window.h>
 #include <gio/gio.h>
@@ -41,5 +41,5 @@ gboolean	 gedit_file_browser_utils_confirmation_dialog	(GeditWindow    *window,
 								 gchar const    *secondary,
 								 gchar const    *button_label);
 
-#endif /* __GEDIT_FILE_BROWSER_UTILS_H__ */
+#endif /* GEDIT_FILE_BROWSER_UTILS_H */
 /* ex:set ts=8 noet: */

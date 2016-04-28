@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_PROGRESS_INFO_BAR_H__
-#define __GEDIT_PROGRESS_INFO_BAR_H__
+#ifndef GEDIT_PROGRESS_INFO_BAR_H
+#define GEDIT_PROGRESS_INFO_BAR_H
 
 #include <gtk/gtk.h>
 
@@ -48,6 +48,6 @@ void		 gedit_progress_info_bar_pulse			(GeditProgressInfoBar *bar);
 
 G_END_DECLS
 
-#endif  /* __GEDIT_PROGRESS_INFO_BAR_H__  */
+#endif  /* GEDIT_PROGRESS_INFO_BAR_H  */
 
 /* ex:set ts=8 noet: */

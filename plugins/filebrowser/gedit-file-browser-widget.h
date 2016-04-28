@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_FILE_BROWSER_WIDGET_H__
-#define __GEDIT_FILE_BROWSER_WIDGET_H__
+#ifndef GEDIT_FILE_BROWSER_WIDGET_H
+#define GEDIT_FILE_BROWSER_WIDGET_H
 
 #include <gtk/gtk.h>
 #include <gedit/gedit-menu-extension.h>
@@ -122,5 +122,5 @@ void		 _gedit_file_browser_widget_register_type      (GTypeModule            *ty
 
 G_END_DECLS
 
-#endif /* __GEDIT_FILE_BROWSER_WIDGET_H__ */
+#endif /* GEDIT_FILE_BROWSER_WIDGET_H */
 /* ex:set ts=8 noet: */

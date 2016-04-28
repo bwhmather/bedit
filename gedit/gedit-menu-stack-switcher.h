@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_MENU_STACK_SWITCHER_H__
-#define __GEDIT_MENU_STACK_SWITCHER_H__
+#ifndef GEDIT_MENU_STACK_SWITCHER_H
+#define GEDIT_MENU_STACK_SWITCHER_H
 
 #include <gtk/gtk.h>
 
@@ -38,6 +38,6 @@ GtkStack *   gedit_menu_stack_switcher_get_stack  (GeditMenuStackSwitcher *switc
 
 G_END_DECLS
 
-#endif  /* __GEDIT_MENU_STACK_SWITCHER_H__  */
+#endif  /* GEDIT_MENU_STACK_SWITCHER_H  */
 
 /* ex:set ts=2 sw=2 et: */

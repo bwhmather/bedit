@@ -21,8 +21,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_DOCUMENT_H__
-#define __GEDIT_DOCUMENT_H__
+#ifndef GEDIT_DOCUMENT_H
+#define GEDIT_DOCUMENT_H
 
 #include <gtksourceview/gtksource.h>
 
@@ -127,5 +127,5 @@ GtkSourceSearchContext *
 
 G_END_DECLS
 
-#endif /* __GEDIT_DOCUMENT_H__ */
+#endif /* GEDIT_DOCUMENT_H */
 /* ex:set ts=8 noet: */

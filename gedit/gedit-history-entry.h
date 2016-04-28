@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_HISTORY_ENTRY_H__
-#define __GEDIT_HISTORY_ENTRY_H__
+#ifndef GEDIT_HISTORY_ENTRY_H
+#define GEDIT_HISTORY_ENTRY_H
 
 #include <gtk/gtk.h>
 
@@ -54,6 +54,6 @@ GtkWidget	*gedit_history_entry_get_entry			(GeditHistoryEntry *entry);
 
 G_END_DECLS
 
-#endif /* __GEDIT_HISTORY_ENTRY_H__ */
+#endif /* GEDIT_HISTORY_ENTRY_H */
 
 /* ex:set ts=8 noet: */

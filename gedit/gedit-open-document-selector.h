@@ -18,8 +18,8 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_OPEN_DOCUMENT_SELECTOR_H__
-#define __GEDIT_OPEN_DOCUMENT_SELECTOR_H__
+#ifndef GEDIT_OPEN_DOCUMENT_SELECTOR_H
+#define GEDIT_OPEN_DOCUMENT_SELECTOR_H
 
 #include <glib-object.h>
 #include "gedit-window.h"
@@ -40,5 +40,5 @@ GtkWidget			*gedit_open_document_selector_get_search_entry	(GeditOpenDocumentSel
 
 G_END_DECLS
 
-#endif /* __GEDIT_OPEN_DOCUMENT_SELECTOR_H__ */
+#endif /* GEDIT_OPEN_DOCUMENT_SELECTOR_H */
 /* ex:set ts=8 noet: */

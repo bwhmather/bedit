@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_TAB_H__
-#define __GEDIT_TAB_H__
+#ifndef GEDIT_TAB_H
+#define GEDIT_TAB_H
 
 #include <gtksourceview/gtksource.h>
 #include <gedit/gedit-view.h>
@@ -74,6 +74,6 @@ void		 gedit_tab_set_info_bar			(GeditTab            *tab,
 
 G_END_DECLS
 
-#endif  /* __GEDIT_TAB_H__  */
+#endif  /* GEDIT_TAB_H  */
 
 /* ex:set ts=8 noet: */

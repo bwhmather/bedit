@@ -19,8 +19,8 @@
  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_APP_ACTIVATABLE_H__
-#define __GEDIT_APP_ACTIVATABLE_H__
+#ifndef GEDIT_APP_ACTIVATABLE_H
+#define GEDIT_APP_ACTIVATABLE_H
 
 #include <glib-object.h>
 #include <gedit/gedit-menu-extension.h>
@@ -60,5 +60,5 @@ GeditMenuExtension	*gedit_app_activatable_extend_menu	(GeditAppActivatable *acti
 
 G_END_DECLS
 
-#endif /* __GEDIT_APP_ACTIVATABLE_H__ */
+#endif /* GEDIT_APP_ACTIVATABLE_H */
 /* ex:set ts=8 noet: */

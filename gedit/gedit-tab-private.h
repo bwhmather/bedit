@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_TAB_PRIVATE_H__
-#define __GEDIT_TAB_PRIVATE_H__
+#ifndef GEDIT_TAB_PRIVATE_H
+#define GEDIT_TAB_PRIVATE_H
 
 #include "gedit-tab.h"
 #include "gedit-view-frame.h"
@@ -79,6 +79,6 @@ void		 _gedit_tab_set_network_available	(GeditTab	     *tab,
 
 G_END_DECLS
 
-#endif  /* __GEDIT_TAB_PRIVATE_H__ */
+#endif  /* GEDIT_TAB_PRIVATE_H */
 
 /* ex:set ts=8 noet: */

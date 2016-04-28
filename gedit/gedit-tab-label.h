@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_TAB_LABEL_H__
-#define __GEDIT_TAB_LABEL_H__
+#ifndef GEDIT_TAB_LABEL_H
+#define GEDIT_TAB_LABEL_H
 
 #include <gtk/gtk.h>
 #include <gedit/gedit-tab.h>
@@ -36,6 +36,6 @@ GeditTab	*gedit_tab_label_get_tab			(GeditTabLabel *tab_label);
 
 G_END_DECLS
 
-#endif /* __GEDIT_TAB_LABEL_H__ */
+#endif /* GEDIT_TAB_LABEL_H */
 
 /* ex:set ts=8 noet: */

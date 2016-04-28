@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __GEDIT_APP_X11_H__
-#define __GEDIT_APP_X11_H__
+#ifndef GEDIT_APP_X11_H
+#define GEDIT_APP_X11_H
 
 #include "gedit-app.h"
 
@@ -33,6 +33,6 @@ G_DECLARE_FINAL_TYPE (GeditAppX11, gedit_app_x11, GEDIT, APP_X11, GeditApp)
 
 G_END_DECLS
 
-#endif /* __GEDIT_APP_X11_H__ */
+#endif /* GEDIT_APP_X11_H */
 
 /* ex:set ts=8 noet: */

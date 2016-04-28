@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_FILE_BROWSER_MESSAGES_H__
-#define __GEDIT_FILE_BROWSER_MESSAGES_H__
+#ifndef GEDIT_FILE_BROWSER_MESSAGES_H
+#define GEDIT_FILE_BROWSER_MESSAGES_H
 
 #include <gedit/gedit-window.h>
 #include <gedit/gedit-message-bus.h>
@@ -29,5 +29,5 @@ void gedit_file_browser_messages_register   (GeditWindow            *window,
 					     GeditFileBrowserWidget *widget);
 void gedit_file_browser_messages_unregister (GeditWindow            *window);
 
-#endif /* __GEDIT_FILE_BROWSER_MESSAGES_H__ */
+#endif /* GEDIT_FILE_BROWSER_MESSAGES_H */
 /* ex:set ts=8 noet: */

@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __GEDIT_APP_OSX_H__
-#define __GEDIT_APP_OSX_H__
+#ifndef GEDIT_APP_OSX_H
+#define GEDIT_APP_OSX_H
 
 #include "gedit-app.h"
 
@@ -41,6 +41,6 @@ gboolean	 gedit_app_osx_show_url			(GeditAppOSX *app,
 
 G_END_DECLS
 
-#endif /* __GEDIT_APP_OSX_H__ */
+#endif /* GEDIT_APP_OSX_H */
 
 /* ex:set ts=8 noet: */

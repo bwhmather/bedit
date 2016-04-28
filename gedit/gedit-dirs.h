@@ -19,8 +19,8 @@
  */
 
 
-#ifndef __GEDIT_DIRS_H__
-#define __GEDIT_DIRS_H__
+#ifndef GEDIT_DIRS_H
+#define GEDIT_DIRS_H
 
 #include <glib.h>
 
@@ -50,6 +50,6 @@ const gchar	*gedit_dirs_get_gedit_plugins_data_dir	(void);
 
 G_END_DECLS
 
-#endif /* __GEDIT_DIRS_H__ */
+#endif /* GEDIT_DIRS_H */
 
 /* ex:set ts=8 noet: */

@@ -20,8 +20,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef __GEDIT_VIEW_CENTERING_H__
-#define __GEDIT_VIEW_CENTERING_H__
+#ifndef GEDIT_VIEW_CENTERING_H
+#define GEDIT_VIEW_CENTERING_H
 
 #include <gtk/gtk.h>
 
@@ -62,6 +62,6 @@ gboolean		gedit_view_centering_get_centered		(GeditViewCentering *container);
 
 G_END_DECLS
 
-#endif /* __GEDIT_VIEW_CENTERING_H__ */
+#endif /* GEDIT_VIEW_CENTERING_H */
 
 /* ex:set ts=8 noet: */

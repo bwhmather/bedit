@@ -18,8 +18,8 @@
  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_WINDOW_ACTIVATABLE_H__
-#define __GEDIT_WINDOW_ACTIVATABLE_H__
+#ifndef GEDIT_WINDOW_ACTIVATABLE_H
+#define GEDIT_WINDOW_ACTIVATABLE_H
 
 #include <glib-object.h>
 
@@ -45,5 +45,5 @@ void	 gedit_window_activatable_update_state	(GeditWindowActivatable *activatable
 
 G_END_DECLS
 
-#endif /* __GEDIT_WINDOW_ACTIVATABLE_H__ */
+#endif /* GEDIT_WINDOW_ACTIVATABLE_H */
 /* ex:set ts=8 noet: */

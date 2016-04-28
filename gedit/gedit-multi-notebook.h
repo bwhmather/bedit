@@ -21,8 +21,8 @@
  */
 
 
-#ifndef __GEDIT_MULTI_NOTEBOOK_H__
-#define __GEDIT_MULTI_NOTEBOOK_H__
+#ifndef GEDIT_MULTI_NOTEBOOK_H
+#define GEDIT_MULTI_NOTEBOOK_H
 
 #include <gtk/gtk.h>
 
@@ -143,6 +143,6 @@ void			_gedit_multi_notebook_set_show_tabs		(GeditMultiNotebook *mnb,
 
 G_END_DECLS
 
-#endif /* __GEDIT_MULTI_NOTEBOOK_H__ */
+#endif /* GEDIT_MULTI_NOTEBOOK_H */
 
 /* ex:set ts=8 noet: */

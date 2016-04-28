@@ -19,8 +19,8 @@
  */
 
 
-#ifndef __GEDIT_NOTEBOOK_POPUP_MENU_H__
-#define __GEDIT_NOTEBOOK_POPUP_MENU_H__
+#ifndef GEDIT_NOTEBOOK_POPUP_MENU_H
+#define GEDIT_NOTEBOOK_POPUP_MENU_H
 
 #include <gtk/gtk.h>
 #include "gedit-window.h"
@@ -36,4 +36,4 @@ GtkWidget           *gedit_notebook_popup_menu_new          (GeditWindow *window
 
 G_END_DECLS
 
-#endif /* __GEDIT_NOTEBOOK_POPUP_MENU_H__ */
+#endif /* GEDIT_NOTEBOOK_POPUP_MENU_H */

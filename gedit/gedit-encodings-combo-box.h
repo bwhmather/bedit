@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_ENCODINGS_COMBO_BOX_H__
-#define __GEDIT_ENCODINGS_COMBO_BOX_H__
+#ifndef GEDIT_ENCODINGS_COMBO_BOX_H
+#define GEDIT_ENCODINGS_COMBO_BOX_H
 
 #include <gtksourceview/gtksource.h>
 
@@ -38,6 +38,6 @@ void			 gedit_encodings_combo_box_set_selected_encoding	(GeditEncodingsComboBox 
 
 G_END_DECLS
 
-#endif /* __GEDIT_ENCODINGS_COMBO_BOX_H__ */
+#endif /* GEDIT_ENCODINGS_COMBO_BOX_H */
 
 /* ex:set ts=8 noet: */

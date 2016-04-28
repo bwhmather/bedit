@@ -21,8 +21,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_COMMANDS_H__
-#define __GEDIT_COMMANDS_H__
+#ifndef GEDIT_COMMANDS_H
+#define GEDIT_COMMANDS_H
 
 #include <gtksourceview/gtksource.h>
 #include <gedit/gedit-window.h>
@@ -59,5 +59,5 @@ void		 gedit_commands_save_all_documents 	(GeditWindow         *window);
 
 G_END_DECLS
 
-#endif /* __GEDIT_COMMANDS_H__ */
+#endif /* GEDIT_COMMANDS_H */
 /* ex:set ts=8 noet: */

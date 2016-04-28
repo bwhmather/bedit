@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __GEDIT_APP_WIN32_H__
-#define __GEDIT_APP_WIN32_H__
+#ifndef GEDIT_APP_WIN32_H
+#define GEDIT_APP_WIN32_H
 
 #include "gedit-app.h"
 
@@ -33,6 +33,6 @@ G_DECLARE_FINAL_TYPE (GeditAppWin32, gedit_app_win32, GEDIT, APP_WIN32, GeditApp
 
 G_END_DECLS
 
-#endif /* __GEDIT_APP_WIN32_H__ */
+#endif /* GEDIT_APP_WIN32_H */
 
 /* ex:set ts=8 noet: */

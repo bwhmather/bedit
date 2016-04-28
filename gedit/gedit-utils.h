@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_UTILS_H__
-#define __GEDIT_UTILS_H__
+#ifndef GEDIT_UTILS_H
+#define GEDIT_UTILS_H
 
 #include <gtksourceview/gtksource.h>
 
@@ -141,6 +141,6 @@ const gchar     *gedit_utils_newline_type_to_string	(GtkSourceNewlineType newlin
 
 G_END_DECLS
 
-#endif /* __GEDIT_UTILS_H__ */
+#endif /* GEDIT_UTILS_H */
 
 /* ex:set ts=8 noet: */

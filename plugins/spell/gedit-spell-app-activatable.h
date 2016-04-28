@@ -19,8 +19,8 @@
  */
 
 
-#ifndef __GEDIT_SPELL_APP_ACTIVATABLE_H__
-#define __GEDIT_SPELL_APP_ACTIVATABLE_H__
+#ifndef GEDIT_SPELL_APP_ACTIVATABLE_H
+#define GEDIT_SPELL_APP_ACTIVATABLE_H
 
 #include <glib-object.h>
 
@@ -35,4 +35,4 @@ void	gedit_spell_app_activatable_register	(GTypeModule *module);
 
 G_END_DECLS
 
-#endif /* __GEDIT_SPELL_APP_ACTIVATABLE_H__ */
+#endif /* GEDIT_SPELL_APP_ACTIVATABLE_H */

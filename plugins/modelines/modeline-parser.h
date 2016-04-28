@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __MODELINE_PARSER_H__
-#define __MODELINE_PARSER_H__
+#ifndef MODELINE_PARSER_H
+#define MODELINE_PARSER_H
 
 #include <glib.h>
 #include <gtksourceview/gtksource.h>
@@ -32,5 +32,5 @@ void	modeline_parser_apply_modeline	(GtkSourceView *view);
 
 G_END_DECLS
 
-#endif /* __MODELINE_PARSER_H__ */
+#endif /* MODELINE_PARSER_H */
 /* ex:set ts=8 noet: */

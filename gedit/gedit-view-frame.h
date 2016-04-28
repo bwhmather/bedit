@@ -18,8 +18,8 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_VIEW_FRAME_H__
-#define __GEDIT_VIEW_FRAME_H__
+#ifndef GEDIT_VIEW_FRAME_H
+#define GEDIT_VIEW_FRAME_H
 
 #include <gtk/gtk.h>
 #include "gedit-document.h"
@@ -46,4 +46,4 @@ void		 gedit_view_frame_clear_search		(GeditViewFrame *frame);
 
 G_END_DECLS
 
-#endif /* __GEDIT_VIEW_FRAME_H__ */
+#endif /* GEDIT_VIEW_FRAME_H */

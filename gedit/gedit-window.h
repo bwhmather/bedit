@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_WINDOW_H__
-#define __GEDIT_WINDOW_H__
+#ifndef GEDIT_WINDOW_H
+#define GEDIT_WINDOW_H
 
 #include <gtksourceview/gtksource.h>
 #include <gio/gio.h>
@@ -169,6 +169,6 @@ GFile		*_gedit_window_pop_last_closed_doc	(GeditWindow         *window);
 
 G_END_DECLS
 
-#endif  /* __GEDIT_WINDOW_H__  */
+#endif  /* GEDIT_WINDOW_H  */
 
 /* ex:set ts=8 noet: */

@@ -19,8 +19,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_PLUGINS_ENGINE_H__
-#define __GEDIT_PLUGINS_ENGINE_H__
+#ifndef GEDIT_PLUGINS_ENGINE_H
+#define GEDIT_PLUGINS_ENGINE_H
 
 #include <glib.h>
 #include <libpeas/peas.h>
@@ -34,6 +34,6 @@ GeditPluginsEngine	*gedit_plugins_engine_get_default	(void);
 
 G_END_DECLS
 
-#endif  /* __GEDIT_PLUGINS_ENGINE_H__ */
+#endif  /* GEDIT_PLUGINS_ENGINE_H */
 
 /* ex:set ts=8 noet: */

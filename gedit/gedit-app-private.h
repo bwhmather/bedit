@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_APP_PRIVATE_H__
-#define __GEDIT_APP_PRIVATE_H__
+#ifndef GEDIT_APP_PRIVATE_H
+#define GEDIT_APP_PRIVATE_H
 
 #include "gedit-app.h"
 #include "gedit-settings.h"
@@ -63,6 +63,6 @@ GeditMenuExtension	*_gedit_app_extend_menu			(GeditApp    *app,
 
 G_END_DECLS
 
-#endif /* __GEDIT_APP_PRIVATE_H__ */
+#endif /* GEDIT_APP_PRIVATE_H */
 
 /* ex:set ts=8 noet: */

@@ -19,8 +19,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_PREFERENCES_DIALOG_H__
-#define __GEDIT_PREFERENCES_DIALOG_H__
+#ifndef GEDIT_PREFERENCES_DIALOG_H
+#define GEDIT_PREFERENCES_DIALOG_H
 
 #include "gedit-window.h"
 
@@ -30,6 +30,6 @@ void		 gedit_show_preferences_dialog		(GeditWindow *parent);
 
 G_END_DECLS
 
-#endif /* __GEDIT_PREFERENCES_DIALOG_H__ */
+#endif /* GEDIT_PREFERENCES_DIALOG_H */
 
 /* ex:set ts=8 noet: */

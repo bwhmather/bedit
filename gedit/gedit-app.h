@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_APP_H__
-#define __GEDIT_APP_H__
+#ifndef GEDIT_APP_H
+#define GEDIT_APP_H
 
 #include <gtk/gtk.h>
 #include <gedit/gedit-window.h>
@@ -91,6 +91,6 @@ gboolean	gedit_app_process_window_event		(GeditApp    *app,
 
 G_END_DECLS
 
-#endif /* __GEDIT_APP_H__ */
+#endif /* GEDIT_APP_H */
 
 /* ex:set ts=8 noet: */

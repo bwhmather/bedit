@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_ENCODINGS_DIALOG_H__
-#define __GEDIT_ENCODINGS_DIALOG_H__
+#ifndef GEDIT_ENCODINGS_DIALOG_H
+#define GEDIT_ENCODINGS_DIALOG_H
 
 #include <gtk/gtk.h>
 
@@ -33,5 +33,5 @@ GtkWidget	*gedit_encodings_dialog_new		(void);
 
 G_END_DECLS
 
-#endif /* __GEDIT_ENCODINGS_DIALOG_H__ */
+#endif /* GEDIT_ENCODINGS_DIALOG_H */
 /* ex:set ts=8 noet: */

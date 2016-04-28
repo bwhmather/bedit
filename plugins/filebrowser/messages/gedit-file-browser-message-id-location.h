@@ -22,8 +22,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H__
-#define __GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H__
+#ifndef GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H
+#define GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H
 
 #include <gedit/gedit-message.h>
 
@@ -67,4 +67,4 @@ GType gedit_file_browser_message_id_location_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H__ */
+#endif /* GEDIT_FILE_BROWSER_MESSAGE_ID_LOCATION_H */

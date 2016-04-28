@@ -17,8 +17,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_TIME_PLUGIN_H__
-#define __GEDIT_TIME_PLUGIN_H__
+#ifndef GEDIT_TIME_PLUGIN_H
+#define GEDIT_TIME_PLUGIN_H
 
 #include <glib.h>
 #include <glib-object.h>
@@ -57,5 +57,5 @@ G_MODULE_EXPORT void	peas_register_types		(PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* __GEDIT_TIME_PLUGIN_H__ */
+#endif /* GEDIT_TIME_PLUGIN_H */
 /* ex:set ts=8 noet: */

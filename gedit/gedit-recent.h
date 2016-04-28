@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_RECENT_H__
-#define __GEDIT_RECENT_H__
+#ifndef GEDIT_RECENT_H
+#define GEDIT_RECENT_H
 
 #include <gtk/gtk.h>
 #include <gedit/gedit-document.h>
@@ -51,6 +51,6 @@ GList		*gedit_recent_get_items			 (GeditRecentConfiguration *config);
 
 G_END_DECLS
 
-#endif  /* __GEDIT_RECENT_H__  */
+#endif  /* GEDIT_RECENT_H  */
 
 /* ex:set ts=8 noet: */

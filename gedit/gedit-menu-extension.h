@@ -18,8 +18,8 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_MENU_EXTENSION_H__
-#define __GEDIT_MENU_EXTENSION_H__
+#ifndef GEDIT_MENU_EXTENSION_H
+#define GEDIT_MENU_EXTENSION_H
 
 #include <glib-object.h>
 #include <gio/gio.h>
@@ -42,6 +42,6 @@ void                      gedit_menu_extension_remove_items        (GeditMenuExt
 
 G_END_DECLS
 
-#endif /* __GEDIT_MENU_EXTENSION_H__ */
+#endif /* GEDIT_MENU_EXTENSION_H */
 
 /* ex:set ts=8 noet: */

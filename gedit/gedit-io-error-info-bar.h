@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_IO_ERROR_INFO_BAR_H__
-#define __GEDIT_IO_ERROR_INFO_BAR_H__
+#ifndef GEDIT_IO_ERROR_INFO_BAR_H
+#define GEDIT_IO_ERROR_INFO_BAR_H
 
 #include <gtksourceview/gtksource.h>
 
@@ -59,6 +59,6 @@ GtkWidget	*gedit_network_unavailable_info_bar_new			(GFile               *locati
 
 G_END_DECLS
 
-#endif  /* __GEDIT_IO_ERROR_INFO_BAR_H__  */
+#endif  /* GEDIT_IO_ERROR_INFO_BAR_H  */
 
 /* ex:set ts=8 noet: */

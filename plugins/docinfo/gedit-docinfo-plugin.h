@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef __GEDIT_DOCINFO_PLUGIN_H__
-#define __GEDIT_DOCINFO_PLUGIN_H__
+#ifndef GEDIT_DOCINFO_PLUGIN_H
+#define GEDIT_DOCINFO_PLUGIN_H
 
 #include <glib.h>
 #include <glib-object.h>
@@ -58,6 +58,6 @@ G_MODULE_EXPORT void peas_register_types (PeasObjectModule *module);
 
 G_END_DECLS
 
-#endif /* __GEDIT_DOCINFO_PLUGIN_H__ */
+#endif /* GEDIT_DOCINFO_PLUGIN_H */
 
 /* ex:set ts=8 noet: */

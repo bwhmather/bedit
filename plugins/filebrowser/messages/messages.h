@@ -1,5 +1,5 @@
-#ifndef __GEDIT_FILE_BROWER_MESSAGES_MESSAGES_H__
-#define __GEDIT_FILE_BROWER_MESSAGES_MESSAGES_H__
+#ifndef GEDIT_FILE_BROWER_MESSAGES_MESSAGES_H
+#define GEDIT_FILE_BROWER_MESSAGES_MESSAGES_H
 
 #include "gedit-file-browser-message-activation.h"
 #include "gedit-file-browser-message-add-filter.h"
@@ -12,5 +12,5 @@
 #include "gedit-file-browser-message-set-markup.h"
 #include "gedit-file-browser-message-set-root.h"
 
-#endif /* __GEDIT_FILE_BROWER_MESSAGES_MESSAGES_H__ */
+#endif /* GEDIT_FILE_BROWER_MESSAGES_MESSAGES_H */
 

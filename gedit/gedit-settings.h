@@ -21,8 +21,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __GEDIT_SETTINGS_H__
-#define __GEDIT_SETTINGS_H__
+#ifndef GEDIT_SETTINGS_H
+#define GEDIT_SETTINGS_H
 
 #include <glib-object.h>
 #include <glib.h>
@@ -107,6 +107,6 @@ void			 gedit_settings_set_list			(GSettings     *settings,
 
 G_END_DECLS
 
-#endif /* __GEDIT_SETTINGS_H__ */
+#endif /* GEDIT_SETTINGS_H */
 
 /* ex:set ts=8 noet: */

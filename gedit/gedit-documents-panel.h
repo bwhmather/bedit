@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_DOCUMENTS_PANEL_H__
-#define __GEDIT_DOCUMENTS_PANEL_H__
+#ifndef GEDIT_DOCUMENTS_PANEL_H
+#define GEDIT_DOCUMENTS_PANEL_H
 
 #include <gtk/gtk.h>
 
@@ -35,6 +35,6 @@ GtkWidget	*gedit_documents_panel_new 	(GeditWindow *window);
 
 G_END_DECLS
 
-#endif  /* __GEDIT_DOCUMENTS_PANEL_H__  */
+#endif  /* GEDIT_DOCUMENTS_PANEL_H  */
 
 /* ex:set ts=8 noet: */

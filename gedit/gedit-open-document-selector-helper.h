@@ -18,8 +18,8 @@
  * along with gedit. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_OPEN_DOCUMENT_SELECTOR_HELPER_H__
-#define __GEDIT_OPEN_DOCUMENT_SELECTOR_HELPER_H__
+#ifndef GEDIT_OPEN_DOCUMENT_SELECTOR_HELPER_H
+#define GEDIT_OPEN_DOCUMENT_SELECTOR_HELPER_H
 
 #include "gedit-open-document-selector.h"
 
@@ -98,6 +98,6 @@ FileItem	*gedit_open_document_selector_copy_fileitem_item	(FileItem *item);
 
 G_END_DECLS
 
-#endif /* __GEDIT_OPEN_DOCUMENT_SELECTOR_HELPER_H__ */
+#endif /* GEDIT_OPEN_DOCUMENT_SELECTOR_HELPER_H */
 
 /* ex:set ts=8 noet: */

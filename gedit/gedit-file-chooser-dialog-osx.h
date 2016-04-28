@@ -19,8 +19,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_FILE_CHOOSER_DIALOG_OSX_H__
-#define __GEDIT_FILE_CHOOSER_DIALOG_OSX_H__
+#ifndef GEDIT_FILE_CHOOSER_DIALOG_OSX_H
+#define GEDIT_FILE_CHOOSER_DIALOG_OSX_H
 
 #include <gtk/gtk.h>
 #include "gedit-file-chooser-dialog.h"
@@ -42,6 +42,6 @@ GeditFileChooserDialog	*gedit_file_chooser_dialog_osx_create		(const gchar      
 
 G_END_DECLS
 
-#endif /* __GEDIT_FILE_CHOOSER_DIALOG_OSX_H__ */
+#endif /* GEDIT_FILE_CHOOSER_DIALOG_OSX_H */
 
 /* ex:set ts=8 noet: */

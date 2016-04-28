@@ -21,8 +21,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_COMMANDS_PRIVATE_H__
-#define __GEDIT_COMMANDS_PRIVATE_H__
+#ifndef GEDIT_COMMANDS_PRIVATE_H
+#define GEDIT_COMMANDS_PRIVATE_H
 
 #include <gtksourceview/gtksource.h>
 #include <gedit/gedit-window.h>
@@ -168,5 +168,5 @@ void		_gedit_cmd_file_close_notebook		(GeditWindow   *window,
 
 G_END_DECLS
 
-#endif /* __GEDIT_COMMANDS_PRIVATE_H__ */
+#endif /* GEDIT_COMMANDS_PRIVATE_H */
 /* ex:set ts=8 noet: */

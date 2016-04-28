@@ -21,8 +21,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_DOCUMENT_PRIVATE_H__
-#define __GEDIT_DOCUMENT_PRIVATE_H__
+#ifndef GEDIT_DOCUMENT_PRIVATE_H
+#define GEDIT_DOCUMENT_PRIVATE_H
 
 #include "gedit-document.h"
 
@@ -51,5 +51,5 @@ gboolean	 _gedit_document_get_create				(GeditDocument       *doc);
 
 G_END_DECLS
 
-#endif /* __GEDIT_DOCUMENT_PRIVATE_H__ */
+#endif /* GEDIT_DOCUMENT_PRIVATE_H */
 /* ex:set ts=8 noet: */

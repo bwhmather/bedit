@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_NOTEBOOK_STACK_SWITCHER_H__
-#define __GEDIT_NOTEBOOK_STACK_SWITCHER_H__
+#ifndef GEDIT_NOTEBOOK_STACK_SWITCHER_H
+#define GEDIT_NOTEBOOK_STACK_SWITCHER_H
 
 #include <gtk/gtk.h>
 
@@ -66,6 +66,6 @@ GtkStack	*gedit_notebook_stack_switcher_get_stack  (GeditNotebookStackSwitcher *
 
 G_END_DECLS
 
-#endif  /* __GEDIT_NOTEBOOK_STACK_SWITCHER_H__  */
+#endif  /* GEDIT_NOTEBOOK_STACK_SWITCHER_H  */
 
 /* ex:set ts=8 noet: */

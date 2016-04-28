@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_VIEW_H__
-#define __GEDIT_VIEW_H__
+#ifndef GEDIT_VIEW_H
+#define GEDIT_VIEW_H
 
 #include <gtk/gtk.h>
 
@@ -77,6 +77,6 @@ void 		 gedit_view_set_font		(GeditView       *view,
 
 G_END_DECLS
 
-#endif /* __GEDIT_VIEW_H__ */
+#endif /* GEDIT_VIEW_H */
 
 /* ex:set ts=8 noet: */

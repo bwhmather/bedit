@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __GEDIT_MESSAGE_BUS_H__
-#define __GEDIT_MESSAGE_BUS_H__
+#ifndef GEDIT_MESSAGE_BUS_H
+#define GEDIT_MESSAGE_BUS_H
 
 #include <glib-object.h>
 #include <gedit/gedit-message.h>
@@ -149,6 +149,6 @@ GeditMessage     *gedit_message_bus_send_sync          (GeditMessageBus        *
 
 G_END_DECLS
 
-#endif /* __GEDIT_MESSAGE_BUS_H__ */
+#endif /* GEDIT_MESSAGE_BUS_H */
 
 /* ex:set ts=8 noet: */

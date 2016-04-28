@@ -17,8 +17,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_PRINT_PREVIEW_H__
-#define __GEDIT_PRINT_PREVIEW_H__
+#ifndef GEDIT_PRINT_PREVIEW_H
+#define GEDIT_PRINT_PREVIEW_H
 
 #include <gtk/gtk.h>
 
@@ -34,6 +34,6 @@ GtkWidget	*gedit_print_preview_new	(GtkPrintOperation        *operation,
 
 G_END_DECLS
 
-#endif /* __GEDIT_PRINT_PREVIEW_H__ */
+#endif /* GEDIT_PRINT_PREVIEW_H */
 
 /* ex:set ts=8 noet: */

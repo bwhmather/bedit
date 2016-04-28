@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_FILE_BOOKMARKS_STORE_H__
-#define __GEDIT_FILE_BOOKMARKS_STORE_H__
+#ifndef GEDIT_FILE_BOOKMARKS_STORE_H
+#define GEDIT_FILE_BOOKMARKS_STORE_H
 
 #include <gtk/gtk.h>
 
@@ -86,5 +86,5 @@ void			 _gedit_file_bookmarks_store_register_type	(GTypeModule             *type
 
 G_END_DECLS
 
-#endif /* __GEDIT_FILE_BOOKMARKS_STORE_H__ */
+#endif /* GEDIT_FILE_BOOKMARKS_STORE_H */
 /* ex:set ts=8 noet: */

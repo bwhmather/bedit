@@ -19,8 +19,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_PRINT_JOB_H__
-#define __GEDIT_PRINT_JOB_H__
+#ifndef GEDIT_PRINT_JOB_H
+#define GEDIT_PRINT_JOB_H
 
 #include <gtk/gtk.h>
 #include <gedit/gedit-view.h>
@@ -65,6 +65,6 @@ GtkPageSetup		*gedit_print_job_get_page_setup		(GeditPrintJob            *job);
 
 G_END_DECLS
 
-#endif /* __GEDIT_PRINT_JOB_H__ */
+#endif /* GEDIT_PRINT_JOB_H */
 
 /* ex:set ts=8 noet: */

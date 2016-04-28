@@ -20,8 +20,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef __GEDIT_MESSAGE_H__
-#define __GEDIT_MESSAGE_H__
+#ifndef GEDIT_MESSAGE_H
+#define GEDIT_MESSAGE_H
 
 #include <glib-object.h>
 
@@ -72,6 +72,6 @@ gchar       *gedit_message_type_identifier      (const gchar  *object_path,
 
 G_END_DECLS
 
-#endif /* __GEDIT_MESSAGE_H__ */
+#endif /* GEDIT_MESSAGE_H */
 
 /* ex:set ts=8 noet: */

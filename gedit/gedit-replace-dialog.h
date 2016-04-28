@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_REPLACE_DIALOG_H__
-#define __GEDIT_REPLACE_DIALOG_H__
+#ifndef GEDIT_REPLACE_DIALOG_H
+#define GEDIT_REPLACE_DIALOG_H
 
 #include <gtk/gtk.h>
 #include <gtksourceview/gtksource.h>
@@ -53,6 +53,6 @@ void			 gedit_replace_dialog_set_replace_error		(GeditReplaceDialog *dialog,
 
 G_END_DECLS
 
-#endif  /* __GEDIT_REPLACE_DIALOG_H__  */
+#endif  /* GEDIT_REPLACE_DIALOG_H  */
 
 /* ex:set ts=8 noet: */

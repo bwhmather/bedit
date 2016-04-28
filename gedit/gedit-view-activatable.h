@@ -18,8 +18,8 @@
  *  along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_VIEW_ACTIVATABLE_H__
-#define __GEDIT_VIEW_ACTIVATABLE_H__
+#ifndef GEDIT_VIEW_ACTIVATABLE_H
+#define GEDIT_VIEW_ACTIVATABLE_H
 
 #include <glib-object.h>
 
@@ -43,5 +43,5 @@ void	 gedit_view_activatable_deactivate	(GeditViewActivatable *activatable);
 
 G_END_DECLS
 
-#endif /* __GEDIT_VIEW_ACTIVATABLE_H__ */
+#endif /* GEDIT_VIEW_ACTIVATABLE_H */
 /* ex:set ts=8 noet: */

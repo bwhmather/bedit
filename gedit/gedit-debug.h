@@ -20,8 +20,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_DEBUG_H__
-#define __GEDIT_DEBUG_H__
+#ifndef GEDIT_DEBUG_H
+#define GEDIT_DEBUG_H
 
 #include <glib.h>
 
@@ -81,5 +81,5 @@ void gedit_debug_plugin_message (const gchar       *file,
 				 const gchar       *function,
 				 const gchar       *message);
 
-#endif /* __GEDIT_DEBUG_H__ */
+#endif /* GEDIT_DEBUG_H */
 /* ex:set ts=8 noet: */

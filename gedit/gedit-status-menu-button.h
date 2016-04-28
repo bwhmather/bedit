@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_STATUS_MENU_BUTTON_H__
-#define __GEDIT_STATUS_MENU_BUTTON_H__
+#ifndef GEDIT_STATUS_MENU_BUTTON_H
+#define GEDIT_STATUS_MENU_BUTTON_H
 
 #include <gtk/gtk.h>
 
@@ -38,6 +38,6 @@ const gchar *gedit_status_menu_button_get_label (GeditStatusMenuButton *button);
 
 G_END_DECLS
 
-#endif /* __GEDIT_STATUS_MENU_BUTTON_H__ */
+#endif /* GEDIT_STATUS_MENU_BUTTON_H */
 
 /* ex:set ts=8 noet: */

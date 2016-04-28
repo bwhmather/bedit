@@ -19,8 +19,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__
-#define __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__
+#ifndef GEDIT_CLOSE_CONFIRMATION_DIALOG_H
+#define GEDIT_CLOSE_CONFIRMATION_DIALOG_H
 
 #include <glib.h>
 #include <gtk/gtk.h>
@@ -42,5 +42,5 @@ const GList	*gedit_close_confirmation_dialog_get_unsaved_documents  (GeditCloseC
 
 GList		*gedit_close_confirmation_dialog_get_selected_documents	(GeditCloseConfirmationDialog *dlg);
 
-#endif /* __GEDIT_CLOSE_CONFIRMATION_DIALOG_H__ */
+#endif /* GEDIT_CLOSE_CONFIRMATION_DIALOG_H */
 /* ex:set ts=8 noet: */

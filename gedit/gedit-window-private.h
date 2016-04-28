@@ -18,8 +18,8 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GEDIT_WINDOW_PRIVATE_H__
-#define __GEDIT_WINDOW_PRIVATE_H__
+#ifndef GEDIT_WINDOW_PRIVATE_H
+#define GEDIT_WINDOW_PRIVATE_H
 
 #include <libpeas/peas-extension-set.h>
 
@@ -122,5 +122,5 @@ struct _GeditWindowPrivate
 
 G_END_DECLS
 
-#endif  /* __GEDIT_WINDOW_PRIVATE_H__  */
+#endif  /* GEDIT_WINDOW_PRIVATE_H  */
 /* ex:set ts=8 noet: */

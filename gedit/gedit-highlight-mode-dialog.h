@@ -19,8 +19,8 @@
  */
 
 
-#ifndef __GEDIT_HIGHLIGHT_MODE_DIALOG_H__
-#define __GEDIT_HIGHLIGHT_MODE_DIALOG_H__
+#ifndef GEDIT_HIGHLIGHT_MODE_DIALOG_H
+#define GEDIT_HIGHLIGHT_MODE_DIALOG_H
 
 #include <glib.h>
 #include "gedit-highlight-mode-selector.h"
@@ -37,6 +37,6 @@ GeditHighlightModeSelector *gedit_highlight_mode_dialog_get_selector    (GeditHi
 
 G_END_DECLS
 
-#endif /* __GEDIT_HIGHLIGHT_MODE_DIALOG_H__ */
+#endif /* GEDIT_HIGHLIGHT_MODE_DIALOG_H */
 
 /* ex:set ts=8 noet: */
