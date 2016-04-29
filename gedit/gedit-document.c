@@ -195,18 +195,17 @@ save_metadata (GeditDocument *doc)
 static void
 gedit_document_dispose (GObject *object)
 {
-	GeditDocumentPrivate *priv;
+	GeditDocument *doc = GEDIT_DOCUMENT (object);
+	GeditDocumentPrivate *priv = gedit_document_get_instance_private (doc);
 
 	gedit_debug (DEBUG_DOCUMENT);
-
-	priv = gedit_document_get_instance_private (GEDIT_DOCUMENT (object));
 
 	/* Metadata must be saved here and not in finalize because the language
 	 * is gone by the time finalize runs.
 	 */
 	if (priv->file != NULL)
 	{
-		save_metadata (GEDIT_DOCUMENT (object));
+		save_metadata (doc);
 
 		g_object_unref (priv->file);
 		priv->file = NULL;
