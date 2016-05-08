@@ -573,18 +573,21 @@ parse_kate_modeline (gchar           *s,
  * Line numbers are counted starting at one.
  */
 static void
-parse_modeline (gchar           *s,
+parse_modeline (gchar           *line,
 		gint             line_number,
 		gint             line_count,
 		ModelineOptions *options)
 {
-	gchar prev;
+	gchar *s = line;
 
 	/* look for the beginning of a modeline */
-	for (prev = ' '; (s != NULL) && (*s != '\0'); prev = *(s++))
+	while (s != NULL && *s != '\0')
 	{
-		if (!g_ascii_isspace (prev))
+		if (s > line && !g_ascii_isspace (*(s - 1)))
+		{
+			s++;
 			continue;
+		}
 
 		if ((line_number <= 3 || line_number > line_count - 3) &&
 		    (strncmp (s, "ex:", 3) == 0 ||
@@ -593,8 +596,12 @@ parse_modeline (gchar           *s,
 		{
 			gedit_debug_message (DEBUG_PLUGINS, "Vim modeline on line %d", line_number);
 
-		    	while (*s != ':') s++;
-		    	s = parse_vim_modeline (s + 1, options);
+			while (*s != ':')
+			{
+				s++;
+			}
+
+			s = parse_vim_modeline (s + 1, options);
 		}
 		else if (line_number <= 2 && strncmp (s, "-*-", 3) == 0)
 		{
@@ -608,6 +615,10 @@ parse_modeline (gchar           *s,
 			gedit_debug_message (DEBUG_PLUGINS, "Kate modeline on line %d", line_number);
 
 			s = parse_kate_modeline (s + 5, options);
+		}
+		else
+		{
+			s++;
 		}
 	}
 }
