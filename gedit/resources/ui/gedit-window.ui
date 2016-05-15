@@ -12,7 +12,7 @@
         <child>
           <object class="GtkHeaderBar" id="side_headerbar">
             <property name="visible" bind-source="side_panel" bind-property="visible" bind-flags="sync-create"/>
-            <property name="show_close_button">False</property>
+            <property name="show_close_button">True</property>
             <property name="title" translatable="yes">Documents</property>
           </object>
           <packing>
