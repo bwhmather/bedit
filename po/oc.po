@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: gedit HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-04-29 06:14+0000\n"
+"POT-Creation-Date: 2016-05-19 06:11+0000\n"
 "PO-Revision-Date: 2016-04-08 09:48+0200\n"
 "Last-Translator: Cédric VALMARY <cvalmary@yahoo.fr>\n"
 "Language-Team: Tot en òc (totenoc.eu)\n"
@@ -143,8 +143,8 @@ msgid ""
 "option."
 msgstr ""
 "Indica se gedit deu activar l'enregistrament automatic dels fichièrs "
-"modificats aprèp un certan interval de temps. Podètz definir l'interval "
-"de temps amb l'opcion « Interval de l'enregistrament automatic »."
+"modificats aprèp un certan interval de temps. Podètz definir l'interval de "
+"temps amb l'opcion « Interval de l'enregistrament automatic »."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid "Autosave Interval"
@@ -213,7 +213,7 @@ msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr ""
-"Definís lo nombre d'espacis qui devraient èsser afichats a la plaça dels "
+"Definís lo nombre d'espacis que devraient èsser afichats a la plaça dels "
 "caractèrs de tabulacion."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:22
@@ -569,19 +569,19 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Lista dels empeutons actius. Conten l'« emplaçament » dels empeutons "
-"actius. Consultez lo fichièr .gedit-plugin per obténer l'« emplaçament "
-"» (Location) d'un empeuton donat."
+"Lista dels empeutons actius. Conten l'« emplaçament » dels empeutons actius. "
+"Consultez lo fichièr .gedit-plugin per obténer l'« emplaçament » (Location) "
+"d'un empeuton donat."
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
 msgstr "Aficha la version de l'aplicacion"
 
-#: ../gedit/gedit-app.c:117
+#: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr "Aficha la lista de las valors possiblas per l'opcion d'encodatge"
 
-#: ../gedit/gedit-app.c:124
+#: ../gedit/gedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -589,46 +589,38 @@ msgstr ""
 "Definís l'encodatge de caractèrs d'utilizar per dobrir los fichièrs listats "
 "dins la linha de comanda"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:124
 msgid "ENCODING"
 msgstr "CODAGE"
 
-#: ../gedit/gedit-app.c:131
+#: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr ""
 "Crèa una novèla fenèstra de primièr nivèl dins una instància existenta de "
 "gedit"
 
-#: ../gedit/gedit-app.c:138
+#: ../gedit/gedit-app.c:137
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Crèa un novèl document en utilizant una instància existenta de gedit"
 
-#: ../gedit/gedit-app.c:145
-msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr "Definís la talha e la posicion de la fenèstra (LARGORxNAUTOR+X+Y)"
-
-#: ../gedit/gedit-app.c:146
-msgid "GEOMETRY"
-msgstr "GEOMETRIA"
-
-#: ../gedit/gedit-app.c:152
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr ""
 "Dobrís los fichièrs e blòca lo processus fins a la tampadura dels fichièrs"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "Executa gedit en mòde autonòm"
 
-#: ../gedit/gedit-app.c:166
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FICHIÈR...] [+LINHA[:COLOMNA]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "Una error s'es produita al moment de l'afichatge de l'ajuda."
 
-#: ../gedit/gedit-app.c:986
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s : encodatge pas valid."
@@ -891,7 +883,6 @@ msgstr "Enregistrament del fichièr « %s »…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
-#, fuzzy
 #| msgid "Save As"
 msgctxt "window title"
 msgid "Save As"
@@ -1028,7 +1019,7 @@ msgstr "Una ocurréncia trobada e remplaçada"
 msgid "\"%s\" not found"
 msgstr "« %s » es pas estat trobat"
 
-#: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
+#: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
 msgid "Untitled Document %d"
 msgstr "Document sens nom %d"
@@ -1138,7 +1129,7 @@ msgstr "Lo fichièr « %s » es introbable."
 #: ../gedit/gedit-io-error-info-bar.c:212
 msgid "Please check that you typed the location correctly and try again."
 msgstr ""
-"Verificatz qu'avètz picat corrèctament l'emplaçament e ensajatz tornarmai."
+"Verificatz qu'avètz picat corrèctament l'emplaçament e ensajatz tornamai."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:184
@@ -1189,7 +1180,7 @@ msgstr "« %s » es pas un fichièr standard."
 
 #: ../gedit/gedit-io-error-info-bar.c:274
 msgid "Connection timed out. Please try again."
-msgstr "Relambi de connexion depassat. Ensajatz tornarmai."
+msgstr "Relambi de connexion depassat. Ensajatz tornamai."
 
 #: ../gedit/gedit-io-error-info-bar.c:307
 #, c-format
@@ -1300,8 +1291,8 @@ msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
 msgstr ""
-"Lo document conten un o plusieurs caractèrs qui pòdon pas èsser "
-"representats en utilizant l'encodatge de caractèrs indicat."
+"Lo document conten un o plusieurs caractèrs que pòdon pas èsser representats "
+"en utilizant l'encodatge de caractèrs indicat."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
@@ -2759,8 +2750,8 @@ msgid ""
 "You can download the new version of gedit by clicking on the download button "
 "or ignore that version and wait for a new one"
 msgstr ""
-"Podètz telecargar la novèla version de gedit en clicant sul boton "
-"Telecargar o ignorar aquesta version e attendre una novèla"
+"Podètz telecargar la novèla version de gedit en clicant sul boton Telecargar "
+"o ignorar aquesta version e attendre una novèla"
 
 #. ex:set ts=8 noet:
 #: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
@@ -2869,7 +2860,7 @@ msgstr "Executa de comandas extèrnas e d'escripts shell."
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
-msgstr "Indica s'il faut utilizar la poliça sistèma"
+msgstr "Indica se cal utilizar la poliça sistèma"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
@@ -2961,7 +2952,7 @@ msgstr "Totes los documents"
 
 #: ../plugins/externaltools/tools/tools.ui.h:3
 msgid "All documents except untitled ones"
-msgstr "Totes los documents sauf ceux sens nom"
+msgstr "Totes los documents levat ceux sens nom"
 
 #: ../plugins/externaltools/tools/tools.ui.h:4
 msgid "Local files only"
@@ -3259,8 +3250,8 @@ msgid ""
 "the actual root."
 msgstr ""
 "Lo repertòri raiç virtual del gestionari de fichièrs d'utilizar al cargament "
-"de l'empeuton se la vista arborescenta a l'aviada (onload/tree_view) es VERAI. "
-"Lo repertòri raiç virtual deu totjorn èsser en dejós de la raiç reala."
+"de l'empeuton se la vista arborescenta a l'aviada (onload/tree_view) es "
+"VERAI. Lo repertòri raiç virtual deu totjorn èsser en dejós de la raiç reala."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
@@ -3268,7 +3259,7 @@ msgstr "Activar la restauration dels emplaçament distants"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
-msgstr "Definís s'il faut activar la restauration dels emplaçaments distants."
+msgstr "Definís se cal activar la restauration dels emplaçaments distants."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
@@ -3282,9 +3273,9 @@ msgid ""
 "with Nautilus, etc.)"
 msgstr ""
 "Se VERAI, l'empeuton del gestionari de fichièrs afichara lo repertòri del "
-"primièr document dobèrt dès lors que lo gestionari de fichièrs es pas "
-"encara estat utilizat. Aquò s'aplica generalament a la dobertura d'un "
-"document a partir de la linha de comanda o a partir de Nautilus, etc."
+"primièr document dobèrt dès lors que lo gestionari de fichièrs es pas encara "
+"estat utilizat. Aquò s'aplica generalament a la dobertura d'un document a "
+"partir de la linha de comanda o a partir de Nautilus, etc."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
@@ -3842,6 +3833,12 @@ msgstr "Inserir la data e l'ora"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 
+#~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+#~ msgstr "Definís la talha e la posicion de la fenèstra (LARGORxNAUTOR+X+Y)"
+
+#~ msgid "GEOMETRY"
+#~ msgstr "GEOMETRIA"
+
 #~ msgid "gedit"
 #~ msgstr "gedit"
 
@@ -4338,9 +4335,9 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ "encoding of a file. \"CURRENT\" represents the current locale encoding. "
 #~ "Only recognized encodings are used."
 #~ msgstr ""
-#~ "Lista triada des codages utilizats per gedit per la deteccion "
-#~ "automatica de l'encodatge d'un fichièr. « CURRENT » es l'encodatge local "
-#~ "actual. Sols los encodatges reconeguts son utilizats."
+#~ "Lista triada des codages utilizats per gedit per la deteccion automatica "
+#~ "de l'encodatge d'un fichièr. « CURRENT » es l'encodatge local actual. "
+#~ "Sols los encodatges reconeguts son utilizats."
 
 #~ msgid "Encodings shown in menu"
 #~ msgstr "Encodatges afichats dins lo menú"
@@ -4349,9 +4346,9 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ "List of encodings shown in the Character Encoding menu in open/save file "
 #~ "selector. Only recognized encodings are used."
 #~ msgstr ""
-#~ "Lista dels encodatges afichats dins lo menú Encodatge de caractèrs dins lo "
-#~ "selector de fichièrs ouvrir/enregistrar. Sols los encodatges reconeguts son "
-#~ "utilizats."
+#~ "Lista dels encodatges afichats dins lo menú Encodatge de caractèrs dins "
+#~ "lo selector de fichièrs ouvrir/enregistrar. Sols los encodatges "
+#~ "reconeguts son utilizats."
 
 #~ msgid "Character encodings"
 #~ msgstr "Encodatges dels caractèrs"
