@@ -422,12 +422,12 @@ do_replace (GeditReplaceDialog *dialog,
 
 	gtk_text_buffer_get_selection_bounds (GTK_TEXT_BUFFER (doc), &start, &end);
 
-	gtk_source_search_context_replace (search_context,
-					   &start,
-					   &end,
-					   unescaped_replace_text,
-					   -1,
-					   &error);
+	gtk_source_search_context_replace2 (search_context,
+					    &start,
+					    &end,
+					    unescaped_replace_text,
+					    -1,
+					    &error);
 
 	g_free (unescaped_replace_text);
 
