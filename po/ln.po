@@ -1,0 +1,3287 @@
+# Lingala translation for gedit.
+# Copyright (C) 2016 gedit's COPYRIGHT HOLDER
+# This file is distributed under the same license as the gedit package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gedit master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-03-12 07:00+0000\n"
+"PO-Revision-Date: 2016-05-17 09:30+0100\n"
+"Last-Translator: Arnauld NEDATI <arnauldndt@gmail.com>\n"
+"Language-Team: Lingala <ubuntu-cd@lists.ubuntu.com>\n"
+"Language: ln\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);;\n"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:1
+msgid "gedit is the official text editor of the GNOME desktop environment. While aiming at simplicity and ease of use, gedit is a powerful general purpose text editor."
+msgstr "gedit azali mobɔngele nkomá mokonzi ya nzíngazínga ya biló GNOME.  Soki olongi ésaleli ya pasi tɛ̂ mpe ya makasi tɛ̂, gedit azali mobɔngele nkomá ya makasi ya bosaléli banso."
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+msgid "Whether you are writing the next bestseller, programming an innovative application, or simply taking some quick notes, gedit will be a reliable tool to accomplish your task."
+msgstr "Te okoma best-seller ékoya, pologami ya sika, to mpe olingi kazwa ndambo ya noti, gedit azali esaleli ya kitoko mpona kokokisa misala na yo."
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+msgid "Its flexible plugin system allows you to tailor the application to your needs and adapt it to your workflow."
+msgstr "sistɛ́mɛ na ye ya kotíngisa epesi yo ndingisa ya kosalela esáliseli na mposa na yo mpe na lolenge na yo ya mosala."
+
+#: ../data/org.gnome.gedit.desktop.in.in.h:1
+#: ../gedit/gedit-print-job.c:730
+msgid "Text Editor"
+msgstr "mobɔngele nkomá ; editɛ́lɛ"
+
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Bɔngisa kásá ya nkomá"
+
+#: ../data/org.gnome.gedit.desktop.in.in.h:3
+msgid "gedit Text Editor"
+msgstr "gedit mobɔngele nkomá"
+
+#: ../data/org.gnome.gedit.desktop.in.in.h:4
+msgid "Text;Editor;"
+msgstr "Nkoma;ebɔngele;"
+
+#: ../data/org.gnome.gedit.desktop.in.in.h:5
+msgid "Open a New Window"
+msgstr "Fungola lininísa ya sika"
+
+#: ../data/org.gnome.gedit.desktop.in.in.h:6
+msgid "Open a New Document"
+msgstr "Fungola dokimá ya sika"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:1
+msgid "Use Default Font"
+msgstr "Salela polósi likwá"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:2
+msgid "Whether to use the system's default fixed width font for editing text instead of a font specific to gedit. If this option is turned off, then the font named in the \"Editor Font\" option will be used instead of the system font."
+msgstr "Lakisa soki ebongi kosalela bonene ya polosi likwa ya sistɛ́mɛ mpona libongeli nkoma na esika ya kosalela polosi moko ya gedit. Soki liponi wana eza ya kokangama, na tango wana polosi oyo éponami na liponi \" Polosi ya ebɔngeli\" eko salelama na esika ya polosi ya sistɛ́mɛ."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+msgid "'Monospace 12'"
+msgstr "'Monospace 12'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:4
+msgid "Editor Font"
+msgstr "Editor polósi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:5
+msgid "A custom font that will be used for the editing area. This will only take effect if the \"Use Default Font\" option is turned off."
+msgstr "Polosi ya koúlinisa nde esalelami na étando ya libongeli . Ekoki ko zwa esika soki liponi ya \"Salela polosi likwa\" ekangami."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:6
+msgid "Style Scheme"
+msgstr "Nzɛ́ngá ya Libɔngisi "
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:7
+msgid "The ID of a GtkSourceView Style Scheme used to color the text."
+msgstr "ID ya libɔngisi nzenga ya GtkSourceView bisaleli mpona botiyi langi ya nkoma"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:8
+msgid "Create Backup Copies"
+msgstr "Kela kopí ya bobíkisi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:9
+msgid "Whether gedit should create backup copies for the files it saves."
+msgstr "Lakisa soki gedit akoki kokela kopí ya bobíkisi ba kasa oyo azali ko bombisa"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:10
+msgid "Autosave"
+msgstr "mɛ́i-bombómbisi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:11
+msgid "Whether gedit should automatically save modified files after a time interval. You can set the time interval with the \"Autosave Interval\" option."
+msgstr "Lakisa soki gedit akoki ko bombisa ya mɛ́i kasa eye ebóngolámí sima ya ntaka ya ngonga. Okoki kotiya ntaka ya ngonga na lopini \"ntaka ya mɛ́i-bombómbisi\"."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:12
+msgid "Autosave Interval"
+msgstr "Etando ya bombómbisi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:13
+msgid "Number of minutes after which gedit will automatically save modified files. This will only take effect if the \"Autosave\" option is turned on."
+msgstr "Motango ya miniti oyo sima na yango nde gedit akoki ko bombisa ye mɛ́i kasa ebóngolámí. Ekoki ko zwa esika soki liponi ya \"mɛ́i-bombómbisi\" ézali polélé."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:14
+msgid "Maximum Number of Undo Actions"
+msgstr "Suka ya mutaya ya ekelá bwakisami"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:15
+msgid "Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for unlimited number of actions."
+msgstr "Mutaya ya suka ya bikelá oyo gedit akoki kobákwisa to kozóngela. Salela \"-1\"  soki olingi kotiya ndelo tɛ̂."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:16
+msgid "Line Wrapping Mode"
+msgstr "modɛ ya bozongi na liníɛ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:17
+msgid "Specifies how to wrap long lines in the editing area. Use \"none\" for no wrapping, \"word\" for wrapping at word boundaries, and \"char\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
+msgstr "Lakisa ndenge ya kokabola ba linie ya milayi na kati ya étando ya libɔngeli. Salela \"none\"  soki olingi kokabola tê, \"word\" pona kokabola na suka ya lokoma, mpe \"char\" pona kokabola na ndélo ya mokoma.  Yeba té mbenza bana bizali na botáli likomá, Sale té émonana ndengé étiyami."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:18
+msgid "Last split mode choice for line wrapping mode"
+msgstr "Bopɔni ya suka na mode ya bokaboli linie"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:19
+msgid "Specifies the last split mode used with line wrapping mode, so that when wrapping mode is off we still remember the split mode choice. Use \"word\" for wrapping at word boundaries, and \"char\" for wrapping at individual character boundaries."
+msgstr "Tiya bopɔni ya suka na mode ya bokaboli linie, mpo mode oyo étikala na  memuále ata soki fɔksío wana ékangami. Salela \"word\" pona kokabola na suka ya lokoma, mpe \"char\" pona kokabola na ndélo ya mokoma. "
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:20
+msgid "Tab Size"
+msgstr "lipipi ya bolaí"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:21
+msgid "Specifies the number of spaces that should be displayed instead of Tab characters."
+msgstr "Tiya motuya ya sipasi oyo ékomonisama na ésika ya  monkoma ya lipipi."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:22
+msgid "Insert spaces"
+msgstr "Kóákisa sipasi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:23
+msgid "Whether gedit should insert spaces instead of tabs."
+msgstr "Lakisa tango gedit alingi kokóákisa sipasi to tabulation"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:24
+msgid "Automatic indent"
+msgstr "Mɛ́i--bénda"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:25
+msgid "Whether gedit should enable automatic indentation."
+msgstr "Lakisa tango gedit alingi kolamusa bobéndi otomatíki"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:26
+msgid "Display Line Numbers"
+msgstr " Mɔ́nisa Mitúya ya Liníɛ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:27
+msgid "Whether gedit should display line numbers in the editing area."
+msgstr "Lakisa tango gedit alingi kolakisa mamɛlo ya liníɛ na kati ya étando ya libɔngeli."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:28
+msgid "Highlight Current Line"
+msgstr "Kongengisa liníɛ ya sikáwa"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:29
+msgid "Whether gedit should highlight the current line."
+msgstr "Lakisa tango gedit alingi kongengisa liníɛ ya sikawa."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:30
+msgid "Highlight Matching Brackets"
+msgstr "Ngengisa bilembo ya botangoli oyo ekokani"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:31
+msgid "Whether gedit should highlight matching brackets."
+msgstr "Lakisa soki gedit akoki kongengisa bilembo ya botangoli oyo ekokani"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:32
+msgid "Display Right Margin"
+msgstr "Komónisa marzi n’elómi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:33
+msgid "Whether gedit should display the right margin in the editing area."
+msgstr "Lakisa soki gedit akoki komonisa marzi nelómi nakati ya etando ya libɔngeli "
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:34
+msgid "Right Margin Position"
+msgstr "Esika ya Marzi n’elómi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:35
+msgid "Specifies the position of the right margin."
+msgstr "Limbola poziso ya marzi nelómi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:36
+msgid "Display Overview Map"
+msgstr "Monisa mapi ya apɛ́lɛsi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+msgid "Whether gedit should display the overview map for the document."
+msgstr "Lakisa soki gedit akoki komonisa calati ya bomoni lisanga ya ba dokima "
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+msgid "Document background pattern type"
+msgstr " Ndéngé ya motifi ya simasima ya dokima"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+msgid "Whether the document will get a background pattern painted."
+msgstr "Lakisa soki dokima akozwa motifi ya simasima ya kokóba."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
+msgid "Smart Home End"
+msgstr "Yambo mpe suka ya mayɛ́lɛ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
+msgid "Specifies how the cursor moves when the HOME and END keys are pressed. Use \"disabled\" to always move at the start/end of the line, \"after\" to move to the start/end of the line the first time the keys are pressed and to the start/end of the text ignoring whitespaces the second time the keys are pressed, \"before\" to move to the start/end of the text before moving to the start/end of the line and \"always\" to always move to the start/end of the text instead of the start/end of the line."
+msgstr "Lakisa ndenge nini motúmbé azali kotambola tango tusi ya yambo mpe ya suka éfinami. Salela \"disabled\"  (ékangami)  pona kokende tango inso liboso/suka ya linie,  \"after\" (sima) pona kokende liboso/suka ya linie na ngonga  ya yambo oyo ba tusi bifinami mpe liboso/suka ya nkoma nakobosanaka ba sipasi, na tango ya ibalé oyo ba tusi bifanami, \"before\" (liboso) pona kokende liboso/suka ya linie liboso ya kokende liboso/suka ya linie mpe \"always\" (tango inso) pona kokende tango inso liboso/suka ya nkoma na ésika ya liboso/suka ya linie."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
+msgid "Restore Previous Cursor Position"
+msgstr "Zongisa motúmbé na ésika éleki"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+msgid "Whether gedit should restore the previous cursor position when a file is loaded."
+msgstr "Lakisa soki gedit akoki kozongisa motúmbé na ésika éleki tango ya kotombisa kasa."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+msgid "Enable Syntax Highlighting"
+msgstr "Lamusa bongengisi ya sɛtákisi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+msgid "Whether gedit should enable syntax highlighting."
+msgstr "Lakisa soki gedit akoki kolamusa bongengisi sɛtákisi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+msgid "Enable Search Highlighting"
+msgstr "Lamusa bogéngísámí ya boluki "
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+msgid "Whether gedit should highlight all the occurrences of the searched text."
+msgstr "Lakisa soki gedit akoki kongengisa ba okilansɛ niɔ́nsɔ ya boluki nkoma "
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+msgid "Ensure Trailing Newline"
+msgstr "Laka liníɛ ya suka ya sika"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+msgid "Whether gedit will ensure that documents always end with a trailing newline."
+msgstr "Lakisa soki gedit akoki ko keba te ba dokima esila ntángo ínsɔ na linie ya sika na suka ya kasa."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+msgid "Toolbar is Visible"
+msgstr "Ndáko ya bisáleli a komónisama"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+msgid "Whether the toolbar should be visible in editing windows."
+msgstr "Lakisa soki ndáko ya bisáleli akoki komónisama na lininisa ya libɔngeli"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+msgid "Notebook Show Tabs Mode"
+msgstr "Mode ya bolakisi lipipi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
+msgid "Specifies when to show the notebook tabs. Use \"never\" to never show the tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only when there is more than one tab. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
+msgstr "Tiya ndengé ya komonisa  lipipi ya lininisa. Salela  \"never\"  mpona komonisa yango tê,  \"always\" mpona komonisa yango seko, mpe \"auto\" mpona komonisa yango soki éleki moko.  Yeba té mbenza bana bizali na botáli likomá, Sale té émonana ndengé étiyami."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+msgid "Status Bar is Visible"
+msgstr "barɛ ya ezalela ézali komónisama"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+msgid "Whether the status bar at the bottom of editing windows should be visible."
+msgstr "Lakisa soki  barɛ ya stati na nsé ya lininisa ya libɔngeli ekoki komonana. "
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+msgid "Side panel is Visible"
+msgstr "Pano ya pembeni ézali komónisama"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+msgid "Whether the side panel at the left of editing windows should be visible."
+msgstr "Lakisa soki pano ya mopanzi na embembé ya lininisa ya libɔngeli ekoki komonana. "
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+msgid "Maximum Recent Files"
+msgstr "Nsúka ya ba kásá ya sikawa"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
+msgid "Specifies the maximum number of recently opened files that will be displayed in the \"Recent Files\" submenu."
+msgstr "Lakisa motuya ya suka ya ba kasa biwuti kofungolama biyé bikomonisama na méni-mwǎna \"Kasa ya sikawa\"."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+msgid "Print Syntax Highlighting"
+msgstr "BImisa bongengisi sɛtákisi"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+msgid "Whether gedit should print syntax highlighting when printing documents."
+msgstr "Lakisa soki gedit akoki kobimisa bongengisa sɛtákisi tango ya bobimisi ya ba dokima."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+msgid "Print Header"
+msgstr "kobimisa likoló lia lonkásá"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+msgid "Whether gedit should include a document header when printing documents."
+msgstr "Lakisa soki gedit akoki kotiya likoló lia lonkásá tango ya bobimisi ya ba dokima."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+msgid "Printing Line Wrapping Mode"
+msgstr "Bimisa na mode ya bozongi na linie"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+msgid "Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, \"word\" for wrapping at word boundaries, and \"char\" for wrapping at individual character boundaries. Note that the values are case-sensitive, so make sure they appear exactly as mentioned here."
+msgstr "Lakisa ndenge ya kokabola ba linie ya milayi tango ya bobimisi. Salela \"none\"  soki olingi kokabola tê, \"word\" pona kokabola na suka ya lokoma, mpe \"char\" pona kokabola na ndélo ya mokoma.  Yeba té mbenza bana bizali na botáli likomá, Sale té émonana ndengé étiyami."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+msgid "Print Line Numbers"
+msgstr "Bimisa mamelo ya liníɛ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+msgid "If this value is 0, then no line numbers will be inserted when printing a document. Otherwise, gedit will print line numbers every such number of lines."
+msgstr "Soki mbenza oyo ézali 0, numelo moko tê ya linie éko koakisama tango ya bobimisi dokima. Soki tê, gedit ako lakisa numélo ya linie na ba linie nionso."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+msgid "'Monospace 9'"
+msgstr "'Monospace 9'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:69
+msgid "Body Font for Printing"
+msgstr "Polosi pona bobimisi nzoto lia lonkasa"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+msgid "Specifies the font to use for a document's body when printing documents."
+msgstr "Lakisa polosi ya kosalela mpona nzoto ya dokima ntango ya bobimisi."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+msgid "'Sans 11'"
+msgstr "'Sans 11'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+msgid "Header Font for Printing"
+msgstr "Polosi pona bobimisi likolo lia lonkasa"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+msgid "Specifies the font to use for page headers when printing a document. This will only take effect if the \"Print Header\" option is turned on."
+msgstr "Lakisa polosi ya kosalela mpona likola lia lonkasa  ntango ya bobimisi dokima. Ekoki ko zwa esika soki liponi ya \"Bimisa likola lia lonksa\" ézali polele."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+msgid "'Sans 8'"
+msgstr "'Sans 8'"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+msgid "Line Number Font for Printing"
+msgstr "Polosi pona bobimisi numelo ya liniɛ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+msgid "Specifies the font to use for line numbers when printing. This will only take effect if the \"Print Line Numbers\" option is non-zero."
+msgstr "Lakisa polosi ya kosalela mpona ba numelo ya linie ntango ya bobimisi.  Ekoki ko zwa esika soki liponi ya \"Bimisa numelo ya linie\" ézali zeló tê."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+msgid "Margin Left"
+msgstr "Marzi ya embembé"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+msgid "The left margin, in millimeters."
+msgstr "Marzi ya embembé, na milimɛ́tɛlɛ."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+msgid "Margin Top"
+msgstr "Marzi ya Likoló"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+msgid "The top margin, in millimeters."
+msgstr "Marzi ya likoló, na milimɛ́tɛlɛ."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+msgid "Margin Right"
+msgstr "Marzi n’elómi "
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+msgid "The right margin, in millimeters."
+msgstr "Marzi nélomi, na milimɛ́tɛlɛ."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+msgid "Margin Bottom"
+msgstr "Marzi ya nsé"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+msgid "The bottom margin, in millimeters."
+msgstr "Marzi ya nsé, na milimɛ́tɛlɛ."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+msgid "Candidate Encodings"
+msgstr "Akɔdaze oyo esengelami"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+msgid "List of candidate encodings shown in the Character Encoding menu in the open/save file chooser. \"CURRENT\" represents the current locale encoding. Only recognized encodings are used. The default value is the empty list, in which case gedit will choose good defaults depending on the country and language."
+msgstr "Liste ya ba akɔdaze émonisami na ongele ya Fungola/bombisa mpe meni akɔdaze ya minkomá ya époniseli ya kasa. \"Ya sikawa\" élakisi akɔdaze ya minkomá ya sikawa. Kaka ba akɔdaze éyabani ndé ésalelami. Mpenza likwá ézali liste ya mpamba, na cas wana gedit akopono ya kitoko engebene na ekólo mpe lokóta na yo."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:87
+msgid "Active plugins"
+msgstr "Kotingisi ngâ"
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:88
+msgid "List of active plugins. It contains the \"Location\" of the active plugins. See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+msgstr "Lisiti ya motingisa ngâ. Ezali na \"ésika\"  ya  motingisa ngâ. Tala kasa ya .gedit-plugin mpona kozwa \"ésika\" ya motingisi moko."
+
+#: ../gedit/gedit-app.c:111
+msgid "Show the application's version"
+msgstr "Monisa versio ya esáliseli"
+
+#: ../gedit/gedit-app.c:117
+msgid "Display list of possible values for the encoding option"
+msgstr "Monisa lístɛ ya ba mbenza mpona liponi ya akɔdaze"
+
+#: ../gedit/gedit-app.c:124
+msgid "Set the character encoding to be used to open the files listed on the command line"
+msgstr "Tiya akɔdaze ya minkomá ya kosalela mpona kofungola ba kasa etíyámí molɔngɔ́ na ekomiselo bitámboseli"
+
+#: ../gedit/gedit-app.c:125
+msgid "ENCODING"
+msgstr "AKODAZE"
+
+#: ../gedit/gedit-app.c:131
+msgid "Create a new top-level window in an existing instance of gedit"
+msgstr "Kela lninisa ya nivo likolo na kati ya esitansi ya gedit oyo ezali"
+
+#: ../gedit/gedit-app.c:138
+msgid "Create a new document in an existing instance of gedit"
+msgstr "Kela dokima ya sika na kati ya esitansi ézali na gedit"
+
+#: ../gedit/gedit-app.c:145
+msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+msgstr "Kotisa bonɛ́nɛ mpe poziso ya lininisa (bonɛ́nɛ+bosándá+X+Y)"
+
+#: ../gedit/gedit-app.c:146
+msgid "GEOMETRY"
+msgstr "ZOMELETI "
+
+#: ../gedit/gedit-app.c:152
+msgid "Open files and block process until files are closed"
+msgstr "Fungola kásá mpe tɛ́lɛmisa etámboli kino kásá eko kangama"
+
+#: ../gedit/gedit-app.c:159
+msgid "Run gedit in standalone mode"
+msgstr "Sálela gedit na modɛ ya bomíyángeli"
+
+#: ../gedit/gedit-app.c:166
+msgid "[FILE...] [+LINE[:COLUMN]]"
+msgstr "[Kásá...] [+Liníɛ[:Likonzí]]"
+
+#: ../gedit/gedit-app.c:281
+msgid "There was an error displaying the help."
+msgstr "zíko moko ésalami tango ya bomonisi lisálisi"
+
+#: ../gedit/gedit-app.c:967
+#, c-format
+msgid "%s: invalid encoding."
+msgstr "%s: akɔdaze ya kobɔngɛlɛ tɛ̂"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:277
+msgid "Close _without Saving"
+msgstr "Kanga tángo na bobómbisi "
+
+#: ../gedit/gedit-close-confirmation-dialog.c:278
+#: ../gedit/gedit-commands-file.c:462
+#: ../gedit/gedit-commands-file.c:567
+#: ../gedit/gedit-commands-file.c:643
+#: ../gedit/gedit-commands-file.c:854
+#: ../gedit/gedit-commands-file.c:1568
+#: ../gedit/gedit-encodings-dialog.c:194
+#: ../gedit/gedit-io-error-info-bar.c:130
+#: ../gedit/gedit-io-error-info-bar.c:511
+#: ../gedit/gedit-preferences-dialog.c:825
+#: ../gedit/gedit-progress-info-bar.c:49
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
+#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
+#: ../plugins/filebrowser/gedit-file-browser-utils.c:170
+#: ../plugins/quickopen/quickopen/popup.py:38
+#: ../plugins/snippets/snippets/manager.py:781
+#: ../plugins/snippets/snippets/manager.py:866
+#: ../plugins/snippets/snippets/manager.py:904
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
+msgid "_Cancel"
+msgstr "_Longola"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus.ui.h:10
+msgid "_Save Asâ€¦"
+msgstr "_Bómbisa na â€¦"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/gedit-commands-file.c:855
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+#: ../gedit/resources/ui/gedit-window.ui.h:7
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:905
+msgid "_Save"
+msgstr "_Bómbisa"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:324
+#, c-format
+msgid "If you don't save, changes from the last %ld second will be permanently lost."
+msgid_plural "If you don't save, changes from the last %ld seconds will be permanently lost."
+msgstr[0] "Soki o bombisi tɛ̂, bobɔngisi ya sima ya sɛgɔ́ndi moko eko bungisama mpona libela."
+msgstr[1] "Soki o bombisi tɛ̂, bobɔngisi ya sima ya sɛgɔ́ndi %ld eko bungisama mpona libela."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:333
+msgid "If you don't save, changes from the last minute will be permanently lost."
+msgstr "Soki o bombisi tɛ̂, bobɔngisi ya sima ya minuti moko eko bungisama mpona libela."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:339
+#, c-format
+msgid "If you don't save, changes from the last minute and %ld second will be permanently lost."
+msgid_plural "If you don't save, changes from the last minute and %ld seconds will be permanently lost."
+msgstr[0] "Soki o bombisi tɛ̂, bobɔngisi ya sima ya minuti mpe sɛgɔ́ndi moko eko bungisama mpona libela."
+msgstr[1] "Soki o bombisi tɛ̂, bobɔngisi ya sima ya minuti moko mpe sɛgɔ́ndi %ld eko bungisama mpona libela."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:349
+#, c-format
+msgid "If you don't save, changes from the last %ld minute will be permanently lost."
+msgid_plural "If you don't save, changes from the last %ld minutes will be permanently lost."
+msgstr[0] "Soki o bombisi tɛ̂, bobɔngisi ya sima ya minuti moko eko bungisama mpona libela."
+msgstr[1] "Soki o bombisi tɛ̂, bobɔngisi ya sima ya minuti %ld eko bungisama mpona libela."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:364
+msgid "If you don't save, changes from the last hour will be permanently lost."
+msgstr "Soki o bombisi tɛ̂, bobɔngisi ya sima ya mwa ngonga eko bungisama mpona libela."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:370
+#, c-format
+msgid "If you don't save, changes from the last hour and %d minute will be permanently lost."
+msgid_plural "If you don't save, changes from the last hour and %d minutes will be permanently lost."
+msgstr[0] "Soki o bombisi tɛ̂, bobɔngisi ya sima ya ngonga mpe minuti moko eko bungisama mpona libela."
+msgstr[1] "Soki o bombisi tɛ̂, bobɔngisi ya sima ya ngonga mpe minuti %d eko bungisama mpona libela."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:385
+#, c-format
+msgid "If you don't save, changes from the last %d hour will be permanently lost."
+msgid_plural "If you don't save, changes from the last %d hours will be permanently lost."
+msgstr[0] "Soki o bombisi tɛ̂, bobɔngisi ya sima ya ngonga moko eko bungisama mpona libela."
+msgstr[1] "Soki o bombisi tɛ̂, bobɔngisi ya sima ya ngonga %d eko bungisama mpona libela."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:414
+#, c-format
+msgid "Changes to document â€œ%sâ€ will be permanently lost."
+msgstr "Bobɔngisi esalemi na dokima â€œ%sâ€ eko bungisama mpona libela."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:419
+#, c-format
+msgid "Save changes to document â€œ%sâ€ before closing?"
+msgstr "Olingi kobombisa bobɔngisi esalemi na dokima â€œ%sâ€ liboso ya kokanga?"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
+msgid "Saving has been disabled by the system administrator."
+msgstr "Bobombisi épékisami na moyángeli kompíta."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:500
+#, c-format
+msgid "Changes to %d document will be permanently lost."
+msgid_plural "Changes to %d documents will be permanently lost."
+msgstr[0] " Bobɔngisi esalemi na dokima %d eko bungisama mpona libela."
+msgstr[1] " Bobɔngisi esalemi na ba dokima %d eko bungisama mpona libela."
+
+#: ../gedit/gedit-close-confirmation-dialog.c:508
+#, c-format
+msgid "There is %d document with unsaved changes. Save changes before closing?"
+msgid_plural "There are %d documents with unsaved changes. Save changes before closing?"
+msgstr[0] "Ezali na dokima moko na mabongisi ebómbisámí tɛ̂. Olingi kobombisa mabongisi liboso ya kokanga?"
+msgstr[1] "Ezali na ba dokima %d na mabongisi ebómbisámí tɛ̂. Olingi kobombisa mabongisi liboso ya kokanga?"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:534
+msgid "Docum_ents with unsaved changes:"
+msgstr "Dokima na mabongisi ebómbisámí tɛ̂:"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:538
+msgid "S_elect the documents you want to save:"
+msgstr "P_ɔnɔ dokima oyo olingi kobombisa"
+
+#: ../gedit/gedit-close-confirmation-dialog.c:562
+msgid "If you don't save, all your changes will be permanently lost."
+msgstr "Soki o bombisi tɛ̂, bobɔngisi niɔ́nsɔ eko bungisama mpona libela."
+
+#: ../gedit/gedit-commands-file.c:261
+#, c-format
+msgid "Loading file '%s'â€¦"
+msgstr "Tómbisa kásá '%s'â€¦"
+
+#: ../gedit/gedit-commands-file.c:270
+#, c-format
+msgid "Loading %d fileâ€¦"
+msgid_plural "Loading %d filesâ€¦"
+msgstr[0] "Tómbisa %d kásáâ€¦"
+msgstr[1] "Tómbisa %d ba kásáâ€¦"
+
+#. Translators: "Open" is the title of the file chooser window.
+#: ../gedit/gedit-commands-file.c:456
+msgctxt "window title"
+msgid "Open"
+msgstr "Fúngola"
+
+#: ../gedit/gedit-commands-file.c:463
+#: ../gedit/resources/gtk/menus-traditional.ui.h:4
+#: ../gedit/resources/ui/gedit-window.ui.h:3
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
+#: ../plugins/quickopen/quickopen/popup.py:39
+#: ../plugins/snippets/snippets/manager.py:782
+msgid "_Open"
+msgstr "_Fúngola"
+
+#: ../gedit/gedit-commands-file.c:558
+#, c-format
+msgid "The file \"%s\" is read-only."
+msgstr "Lokásá \"%s\" eza kotángama káka"
+
+#: ../gedit/gedit-commands-file.c:563
+msgid "Do you want to try to replace it with the one you are saving?"
+msgstr "Olingi kokitanisa yango na éyé ozali komeka kobombisa?"
+
+#: ../gedit/gedit-commands-file.c:568
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
+msgid "_Replace"
+msgstr "_Kitana"
+
+#: ../gedit/gedit-commands-file.c:608
+msgid "Save the file using compression?"
+msgstr "Olingi kobombisa kásá na bosáleli bominioli?"
+
+#: ../gedit/gedit-commands-file.c:612
+msgid "Save the file as plain text?"
+msgstr "Olingi kobombisa kásá lokola nkomá ya sɛ́nzi?"
+
+#: ../gedit/gedit-commands-file.c:625
+#, c-format
+msgid "The file \"%s\" was previously saved as plain text and will now be saved using compression."
+msgstr "Kasa  \"%s\" é bombisamaki liboso na nkomá ya sɛ́nzi mpe sikawa éko bombisama na bominioli."
+
+#: ../gedit/gedit-commands-file.c:629
+msgid "_Save Using Compression"
+msgstr "_Bombisa na bosáleli bominioli"
+
+#: ../gedit/gedit-commands-file.c:634
+#, c-format
+msgid "The file \"%s\" was previously saved using compression and will now be saved as plain text."
+msgstr "Kasa  \"%s\" é bombisamaki liboso na bominioli mpe sikawa éko bombisama na nkomá ya sɛ́nzi."
+
+#: ../gedit/gedit-commands-file.c:637
+msgid "_Save As Plain Text"
+msgstr "_Bombisa lokola nkomá ya sɛ́nzi"
+
+#: ../gedit/gedit-commands-file.c:752
+#: ../gedit/gedit-commands-file.c:1019
+#, c-format
+msgid "Saving file '%s'â€¦"
+msgstr "Bobómbisi kásá '%s'â€¦"
+
+#. Translators: "Save As" is the title of the file chooser window.
+#: ../gedit/gedit-commands-file.c:847
+msgctxt "window title"
+msgid "Save As"
+msgstr "Bómbisa na"
+
+#: ../gedit/gedit-commands-file.c:1429
+#, c-format
+msgid "Reverting the document '%s'â€¦"
+msgstr "Bozongeli dokima '%s'â€¦"
+
+#: ../gedit/gedit-commands-file.c:1476
+#, c-format
+msgid "Revert unsaved changes to document '%s'?"
+msgstr "Kobútoa mabongisi ya dokima éyé ebómbisámí tɛ̂ '%s'?"
+
+#: ../gedit/gedit-commands-file.c:1485
+#, c-format
+msgid "Changes made to the document in the last %ld second will be permanently lost."
+msgid_plural "Changes made to the document in the last %ld seconds will be permanently lost."
+msgstr[0] "Bobongoli esalami na dokima na sɛgɔ́ndi ya súka eko bungama libela."
+msgstr[1] "Bobongoli esalami na dokima na sɛgɔ́ndi %ld ya súka eko bungama libela."
+
+#: ../gedit/gedit-commands-file.c:1494
+msgid "Changes made to the document in the last minute will be permanently lost."
+msgstr "Bobongoli esalami na dokima na minuti ya súka eko bungama libela."
+
+#: ../gedit/gedit-commands-file.c:1500
+#, c-format
+msgid "Changes made to the document in the last minute and %ld second will be permanently lost."
+msgid_plural "Changes made to the document in the last minute and %ld seconds will be permanently lost."
+msgstr[0] "Bobongoli esalami na dokima na minuti ya súka mpe sɛgɔ́ndi ya súka eko bungama libela."
+msgstr[1] "Bobongoli esalami na dokima na minuti ya súka mpe sɛgɔ́ndi %ld ya súka eko bungama libela."
+
+#: ../gedit/gedit-commands-file.c:1510
+#, c-format
+msgid "Changes made to the document in the last %ld minute will be permanently lost."
+msgid_plural "Changes made to the document in the last %ld minutes will be permanently lost."
+msgstr[0] "Bobongoli esalami na dokima na minuti ya súka eko bungama libela."
+msgstr[1] "Bobongoli esalami na dokima na minuti %ld ya súka eko bungama libela."
+
+#: ../gedit/gedit-commands-file.c:1525
+msgid "Changes made to the document in the last hour will be permanently lost."
+msgstr "Bobongoli esalami na dokima na ngonga ya súka eko bungama libela."
+
+#: ../gedit/gedit-commands-file.c:1531
+#, c-format
+msgid "Changes made to the document in the last hour and %d minute will be permanently lost."
+msgid_plural "Changes made to the document in the last hour and %d minutes will be permanently lost."
+msgstr[0] "Bobongoli esalami na dokima na ngonga ya súka mpe minuti ya súka eko bungama libela."
+msgstr[1] "Bobongoli esalami na dokima na ngonga ya súka mpe minuti %d ya súka eko bungama libela."
+
+#: ../gedit/gedit-commands-file.c:1546
+#, c-format
+msgid "Changes made to the document in the last %d hour will be permanently lost."
+msgid_plural "Changes made to the document in the last %d hours will be permanently lost."
+msgstr[0] "Bobongoli esalami na dokima na ngonga ya súka eko bungama libela."
+msgstr[1] "Bobongoli esalami na dokima na ngonga %d ya súka eko bungama libela."
+
+#: ../gedit/gedit-commands-file.c:1569
+msgid "_Revert"
+msgstr "_Bútoa"
+
+#: ../gedit/gedit-commands-help.c:110
+msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
+msgstr "gedit azali mobɔngele nkoma ya moke mpe pepele pona buro GNOME"
+
+#: ../gedit/gedit-commands-help.c:132
+msgid "translator-credits"
+msgstr "Arnauld NEDATI<arnauldndt@gmail.com>"
+
+#: ../gedit/gedit-commands-search.c:107
+#, c-format
+msgid "Found and replaced %d occurrence"
+msgid_plural "Found and replaced %d occurrences"
+msgstr[0] "Okilansɛ %d émonani mpe ekitanámí"
+msgstr[1] "Ba Okilansɛ %d émonani mpe ekitanámí"
+
+#: ../gedit/gedit-commands-search.c:116
+msgid "Found and replaced one occurrence"
+msgstr "Okilansɛ moko émonani mpe ekitanámí"
+
+#. Translators: %s is replaced by the text
+#. entered by the user in the search box
+#: ../gedit/gedit-commands-search.c:142
+#, c-format
+msgid "\"%s\" not found"
+msgstr "\"%s\" Emónání tɛ̂"
+
+#: ../gedit/gedit-document.c:1104
+#: ../gedit/gedit-document.c:1137
+#, c-format
+msgid "Untitled Document %d"
+msgstr "Dokima %d eza na títɛlɛ tɛ̂"
+
+#: ../gedit/gedit-documents-panel.c:399
+#, c-format
+msgid "Tab Group %i"
+msgstr "Lisánga ya lipipi %i"
+
+#: ../gedit/gedit-documents-panel.c:499
+#: ../gedit/gedit-window.c:1161
+#: ../gedit/gedit-window.c:1167
+#: ../gedit/gedit-window.c:1175
+msgid "Read-Only"
+msgstr "Tánga káka"
+
+#: ../gedit/gedit-encodings-combo-box.c:299
+#: ../gedit/gedit-file-chooser-dialog-osx.c:565
+msgid "Automatically Detected"
+msgstr "Emónámí yangoméi"
+
+#: ../gedit/gedit-encodings-combo-box.c:328
+#: ../gedit/gedit-file-chooser-dialog-osx.c:574
+msgid "Add or Remove..."
+msgstr "Bakisa to Longola..."
+
+#: ../gedit/gedit-encoding-items.c:92
+#, c-format
+msgid "Current Locale (%s)"
+msgstr "Lokalɛ ya sikáwa (%s)"
+
+#: ../gedit/gedit-encodings-dialog.c:95
+#, c-format
+msgid "%s (Current Locale)"
+msgstr "%s (Lokalɛ ya Sikáwa)"
+
+#: ../gedit/gedit-encodings-dialog.c:190
+msgid "Do you really want to reset the character encodings' preferences?"
+msgstr "Olingi sɔ̂lɔ́ kobandisela lilúli ya akɔdaze ya minkomá"
+
+#. Reset button
+#: ../gedit/gedit-encodings-dialog.c:195
+#: ../gedit/gedit-encodings-dialog.c:820
+msgid "_Reset"
+msgstr "_Bandisela"
+
+#: ../gedit/gedit-encodings-dialog.c:731
+msgid "Add"
+msgstr "Bakisa"
+
+#: ../gedit/gedit-encodings-dialog.c:774
+msgid "Remove"
+msgstr "Longola"
+
+#: ../gedit/gedit-encodings-dialog.c:785
+msgid "Move to a higher priority"
+msgstr "Likisa yambo o likoló koleka"
+
+#: ../gedit/gedit-encodings-dialog.c:796
+msgid "Move to a lower priority"
+msgstr "Likisa yambo na nsé koleka"
+
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
+#: ../gedit/gedit-preferences-dialog.c:834
+msgid "All Files"
+msgstr "Kásá niɔ́nsɔ"
+
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:42
+msgid "All Text Files"
+msgstr "Nkomá niɔ́nsɔ ya kásá"
+
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:307
+msgid "C_haracter Encoding:"
+msgstr "akɔdaze ya m_inkomá"
+
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:366
+msgid "L_ine Ending:"
+msgstr "S_uka ya liníɛ:"
+
+#: ../gedit/gedit-file-chooser-dialog-osx.c:547
+msgid "Character Encoding:"
+msgstr "akɔdaze ya minkomá:"
+
+#: ../gedit/gedit-file-chooser-dialog-osx.c:620
+msgid "Line Ending:"
+msgstr "Suka ya liníɛ:"
+
+#: ../gedit/gedit-highlight-mode-selector.c:269
+#: ../gedit/gedit-window.c:1245
+#: ../plugins/externaltools/tools/manager.py:108
+#: ../plugins/externaltools/tools/manager.py:317
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:767
+msgid "Plain Text"
+msgstr "Nkomá ya sɛ́nzi"
+
+#: ../gedit/gedit-io-error-info-bar.c:143
+#: ../gedit/gedit-io-error-info-bar.c:491
+msgid "_Retry"
+msgstr "_Meka lisúsu"
+
+#: ../gedit/gedit-io-error-info-bar.c:163
+#, c-format
+msgid "Could not find the file â€œ%sâ€."
+msgstr "Makoki ma kokuta Kásá eye â€œ%sâ€ ezali tɛ̂ ."
+
+#: ../gedit/gedit-io-error-info-bar.c:165
+#: ../gedit/gedit-io-error-info-bar.c:205
+#: ../gedit/gedit-io-error-info-bar.c:212
+msgid "Please check that you typed the location correctly and try again."
+msgstr "Tala na bonkutu soki o bɛti esika na ya ngo malamu mpe meka lisusu."
+
+#. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
+#: ../gedit/gedit-io-error-info-bar.c:184
+#, c-format
+msgid "Unable to handle â€œ%s:â€ locations."
+msgstr "Bozangi makoki ya kosala na ésika â€œ%s:â€."
+
+#: ../gedit/gedit-io-error-info-bar.c:190
+msgid "Unable to handle this location."
+msgstr "Bozangi makoki ya kosala na ésika oyo."
+
+#: ../gedit/gedit-io-error-info-bar.c:199
+msgid "The location of the file cannot be accessed."
+msgstr "Esíká ya kásá ekoki koyíngelama tɛ̂"
+
+#: ../gedit/gedit-io-error-info-bar.c:203
+#, c-format
+msgid "â€œ%sâ€ is a directory."
+msgstr "â€œ%sâ€ ezali monkɛ́lɛ."
+
+#: ../gedit/gedit-io-error-info-bar.c:210
+#, c-format
+msgid "â€œ%sâ€ is not a valid location."
+msgstr "â€œ%sâ€ ezali esíká endimami tɛ̂"
+
+#: ../gedit/gedit-io-error-info-bar.c:246
+#, c-format
+msgid "Host â€œ%sâ€ could not be found. Please check that your proxy settings are correct and try again."
+msgstr "Osti â€œ%sâ€  emonani te. Tala na bonkutu soki palamɛ́tɛlɛ ya proksi na yo  eza malamu mpe meka lisusu."
+
+#: ../gedit/gedit-io-error-info-bar.c:261
+#, c-format
+msgid "Hostname was invalid. Please check that you typed the location correctly and try again."
+msgstr "nkómbó ya osti ezali malamu tɛ̂. Tala na bonkutu soki o bɛti esika na ya ngo malamu mpe meka lisusu."
+
+#: ../gedit/gedit-io-error-info-bar.c:269
+#, c-format
+msgid "â€œ%sâ€ is not a regular file."
+msgstr "â€œ%sâ€ ezali kásá ya momɛsɛno tɛ̂"
+
+#: ../gedit/gedit-io-error-info-bar.c:274
+msgid "Connection timed out. Please try again."
+msgstr "Eelaká ya kɔnɛkiso etúyámí. Zongela na bonkutu"
+
+#: ../gedit/gedit-io-error-info-bar.c:307
+#, c-format
+msgid "Unexpected error: %s"
+msgstr "zíko ya mbálákáká : %s"
+
+#: ../gedit/gedit-io-error-info-bar.c:343
+msgid "Cannot find the requested file. Perhaps it has recently been deleted."
+msgstr "Kasa osengi ézali tɛ̂. Mbala mosusu elímuísámí kala tɛ̂."
+
+#: ../gedit/gedit-io-error-info-bar.c:353
+#, c-format
+msgid "Could not revert the file â€œ%sâ€."
+msgstr "Makoki ya kobútoa kásá â€œ%sâ€ ezali tɛ̂."
+
+#: ../gedit/gedit-io-error-info-bar.c:380
+msgid "Ch_aracter Encoding:"
+msgstr "akɔdaze ya mi_nkomá"
+
+#: ../gedit/gedit-io-error-info-bar.c:441
+#, c-format
+msgid "The location â€œ%sâ€ is not currently reachable."
+msgstr "Esika â€œ%sâ€ ekoki kozwama sikawa tɛ̂. "
+
+#: ../gedit/gedit-io-error-info-bar.c:456
+msgid "Your system is offline. Check your network."
+msgstr "Sistɛ́mɛ na yo ézali libanda lya rézo. Tala rézo na yo"
+
+#. Translators: the access key chosen for this string should be
+#. different from other main menu access keys (Open, Edit, View...)
+#: ../gedit/gedit-io-error-info-bar.c:499
+#: ../gedit/gedit-io-error-info-bar.c:768
+msgid "Edit Any_way"
+msgstr "Bɔngisa ka_ka"
+
+#: ../gedit/gedit-io-error-info-bar.c:591
+msgid "The number of followed links is limited and the actual file could not be found within this limit."
+msgstr "Motuya ya ekangisele ezali na ndelo mpe kasa ya sɔ̂lɔ́ ekoki komonana tê mpona ndelo wana."
+
+#: ../gedit/gedit-io-error-info-bar.c:595
+msgid "You do not have the permissions necessary to open the file."
+msgstr "Ozali na ndingisa ya kokoka te mpona kofungola kásá."
+
+#: ../gedit/gedit-io-error-info-bar.c:601
+msgid "Unable to detect the character encoding."
+msgstr "Akokí tɛ̂ komona akɔdaze ya minkomá"
+
+#: ../gedit/gedit-io-error-info-bar.c:602
+#: ../gedit/gedit-io-error-info-bar.c:626
+msgid "Please check that you are not trying to open a binary file."
+msgstr "Tala soki ozali komeka kofungola kasa ya binɛrɛ tɛ̂."
+
+#: ../gedit/gedit-io-error-info-bar.c:603
+msgid "Select a character encoding from the menu and try again."
+msgstr "Pono akɔdaze ya minkomá uta na meni mpe meka lisúsu."
+
+#: ../gedit/gedit-io-error-info-bar.c:609
+#, c-format
+msgid "There was a problem opening the file â€œ%sâ€."
+msgstr "Likambo moko ésalami tango ya bofungoli kásá â€œ%sâ€."
+
+#: ../gedit/gedit-io-error-info-bar.c:611
+msgid "The file you opened has some invalid characters. If you continue editing this file you could corrupt this document."
+msgstr "Kasa ofungoli ézali na ba monkomá ya malamu tɛ̂. Soki okobi ko kobɔngisa kasa oyo, okoki kobébisa dokima."
+
+#: ../gedit/gedit-io-error-info-bar.c:614
+msgid "You can also choose another character encoding and try again."
+msgstr "Okoki kopɔnɔ akɔdaze ya minkomá mosusu mpe meka lisúsu."
+
+#: ../gedit/gedit-io-error-info-bar.c:623
+#, c-format
+msgid "Could not open the file â€œ%sâ€ using the â€œ%sâ€ character encoding."
+msgstr "Okoki kofungola Kásá oyo â€œ%sâ€ tɛ̂ salela  â€œ%sâ€ ya akɔdaze ya minkomá."
+
+#: ../gedit/gedit-io-error-info-bar.c:627
+#: ../gedit/gedit-io-error-info-bar.c:702
+msgid "Select a different character encoding from the menu and try again."
+msgstr "Pono akɔdaze ya minkomá ya bokeseni uta na meni mpe meka lisúsu."
+
+#: ../gedit/gedit-io-error-info-bar.c:639
+#, c-format
+msgid "Could not open the file â€œ%sâ€."
+msgstr "Makoki ya  kofungola kásá â€œ%sâ€ ezali tɛ̂."
+
+#: ../gedit/gedit-io-error-info-bar.c:697
+#, c-format
+msgid "Could not save the file â€œ%sâ€ using the â€œ%sâ€ character encoding."
+msgstr "Okoki kobombisa Kásá oyo â€œ%sâ€ tɛ̂ salela  â€œ%sâ€ ya akɔdaze ya minkomá."
+
+#: ../gedit/gedit-io-error-info-bar.c:700
+msgid "The document contains one or more characters that cannot be encoded using the specified character encoding."
+msgstr "Dokima ézali na monkoma moko to mpe ébele oyo ekoki tê koakɔdɛ na boselelaka akɔdaze ya minkomá olakisi. "
+
+#. Translators: the access key chosen for this string should be
+#. different from other main menu access keys (Open, Edit, View...)
+#: ../gedit/gedit-io-error-info-bar.c:773
+msgid "D_on't Edit"
+msgstr "Ko_bɔngisa tɛ̂"
+
+#: ../gedit/gedit-io-error-info-bar.c:783
+#, c-format
+msgid "This file â€œ%sâ€ is already open in another window."
+msgstr "Kásá oyo â€œ%sâ€ ézali kotangama na lininisa mosusu."
+
+#: ../gedit/gedit-io-error-info-bar.c:797
+msgid "Do you want to edit it anyway?"
+msgstr "Olingi kobɔngisa yango kaka?"
+
+#: ../gedit/gedit-io-error-info-bar.c:853
+#: ../gedit/gedit-io-error-info-bar.c:943
+#: ../gedit/gedit-io-error-info-bar.c:1235
+msgid "S_ave Anyway"
+msgstr "Bo_mbisa kaka"
+
+#: ../gedit/gedit-io-error-info-bar.c:856
+#: ../gedit/gedit-io-error-info-bar.c:946
+#: ../gedit/gedit-io-error-info-bar.c:1238
+msgid "D_on't Save"
+msgstr "Kobómbisa tɛ̂"
+
+#. FIXME: review this message, it's not clear since for the user the "modification"
+#. * could be interpreted as the changes he made in the document. beside "reading" is
+#. * not accurate (since last load/save)
+#.
+#: ../gedit/gedit-io-error-info-bar.c:870
+#, c-format
+msgid "The file â€œ%sâ€ has been modified since reading it."
+msgstr "Kasa â€œ%sâ€ ebongolamaki na  botángi ye ya suka."
+
+#: ../gedit/gedit-io-error-info-bar.c:885
+msgid "If you save it, all the external changes could be lost. Save it anyway?"
+msgstr "Soki obombisi yango, ba mabóngolámí niɔ́nsɔ ya libanda ekobungama. Olingi kobombisa kaka?"
+
+#: ../gedit/gedit-io-error-info-bar.c:965
+#, c-format
+msgid "Could not create a backup file while saving â€œ%sâ€"
+msgstr "Okoki te kobíkisa kásá tango ya bombisi â€œ%sâ€"
+
+#: ../gedit/gedit-io-error-info-bar.c:970
+#, c-format
+msgid "Could not create a temporary backup file while saving â€œ%sâ€"
+msgstr "Okoki tê kokela kasa ya libikisi ya séko tɛ̂ tango ya bobombisi â€œ%sâ€"
+
+#: ../gedit/gedit-io-error-info-bar.c:987
+msgid "Could not back up the old copy of the file before saving the new one. You can ignore this warning and save the file anyway, but if an error occurs while saving, you could lose the old copy of the file. Save anyway?"
+msgstr "Okoki tê kobikisa kopi ya kasa ya kala liboso ya kobombisa versio ya sika. Okoki kobwakisa bokébisi wana mpe kobombisa kasa, kasi soki ziko moko ésalami okoki mpe kobungisa kopi ya kasa ya kala. Olingi kobombisa ?"
+
+#. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
+#: ../gedit/gedit-io-error-info-bar.c:1047
+#, c-format
+msgid "Cannot handle â€œ%s:â€ locations in write mode. Please check that you typed the location correctly and try again."
+msgstr "Okoki tê koyangela protokole â€œ%s:â€ na mode ya bokomi. Tala soki okomi ésika malamu mpe meka lisusu."
+
+#: ../gedit/gedit-io-error-info-bar.c:1055
+msgid "Cannot handle this location in write mode. Please check that you typed the location correctly and try again."
+msgstr "Okoki tê koyangela protokole oyo na mode ya bokomi. Tala soki okomi ésika malamu mpe meka lisusu."
+
+#: ../gedit/gedit-io-error-info-bar.c:1064
+#, c-format
+msgid "â€œ%sâ€ is not a valid location. Please check that you typed the location correctly and try again."
+msgstr "â€œ%sâ€ ézali ésika ya malamu tê. Tala soki okomi ésika malamu mpe meka lisusu."
+
+#: ../gedit/gedit-io-error-info-bar.c:1071
+msgid "You do not have the permissions necessary to save the file. Please check that you typed the location correctly and try again."
+msgstr "Ozali tê na ndingisa ékoki mpona kobombisa kasa oyo. Tala soki okomi ésika malamu mpe meka lisusu."
+
+#: ../gedit/gedit-io-error-info-bar.c:1077
+msgid "There is not enough disk space to save the file. Please free some disk space and try again."
+msgstr "Sipasi disiski ézali ya kokoka tê mpona kobombisa kasa. Tika sipasi disiski mpe meka lisusu."
+
+#: ../gedit/gedit-io-error-info-bar.c:1082
+msgid "You are trying to save the file on a read-only disk. Please check that you typed the location correctly and try again."
+msgstr "Olingi kobombisa kasa na disiski ya kotánga káka. Tala soki okomi ésika malamu mpe meka lisusu."
+
+#: ../gedit/gedit-io-error-info-bar.c:1088
+msgid "A file with the same name already exists. Please use a different name."
+msgstr "Kasa na nkombo oyo ézali. Salela nkombo mosusu."
+
+#: ../gedit/gedit-io-error-info-bar.c:1093
+msgid "The disk where you are trying to save the file has a limitation on length of the file names. Please use a shorter name."
+msgstr "Disiski oyo olingi kobombisa na kasa nayo ézali na ndelo na bolai ya nkombo ya ba kasa. Salela nkombo ya mokuse."
+
+#: ../gedit/gedit-io-error-info-bar.c:1104
+msgid "The disk where you are trying to save the file has a limitation on file sizes. Please try saving a smaller file or saving it to a disk that does not have this limitation."
+msgstr "Disiski oyo olingi kobombisa na kasa nayo ézali na ndélo mpona bonene ya ba kasa. Meka kobombisa kasa ya moke to bombisa yango na disiski oyo ézali na ndelo oyo tê."
+
+#: ../gedit/gedit-io-error-info-bar.c:1121
+#, c-format
+msgid "Could not save the file â€œ%sâ€."
+msgstr "Makoki ya  Kobombisa kásá eye â€œ%sâ€ ezali tɛ̂."
+
+#: ../gedit/gedit-io-error-info-bar.c:1161
+#, c-format
+msgid "The file â€œ%sâ€ changed on disk."
+msgstr "Kásá â€œ%sâ€ ebongisami na disiki."
+
+#: ../gedit/gedit-io-error-info-bar.c:1172
+msgid "Drop Changes and _Reload"
+msgstr "Tika bobongoli mpe _Tómbisa lisúsu"
+
+#: ../gedit/gedit-io-error-info-bar.c:1182
+#: ../gedit/resources/gtk/menus.ui.h:7
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
+msgid "_Reload"
+msgstr "Tómbisa lisúsu"
+
+#: ../gedit/gedit-io-error-info-bar.c:1187
+msgid "_Ignore"
+msgstr "_kosála elɔ́kɔ tɛ̂"
+
+#: ../gedit/gedit-io-error-info-bar.c:1248
+#, c-format
+msgid "Some invalid chars have been detected while saving â€œ%sâ€"
+msgstr "Minkoma ya mabe émonani tango ya bobombisi â€œ%sâ€"
+
+#: ../gedit/gedit-io-error-info-bar.c:1264
+msgid "If you continue saving this file you can corrupt the document.  Save anyway?"
+msgstr "Soki okobi na bobombisi ya kasa oyo oko bébisa dokima. Olingi kobombisa kaka?"
+
+#: ../gedit/gedit-preferences-dialog.c:455
+msgid "Click on this button to select the font to be used by the editor"
+msgstr "klikɛ buto oyo mpona kopona polosi ya kosalela na ebɔngele"
+
+#: ../gedit/gedit-preferences-dialog.c:461
+#, c-format
+msgid "_Use the system fixed width font (%s)"
+msgstr "_Salela polosi sistɛ́mɛ ya bonɛ́nɛ ebɔngísámí (%s) "
+
+#: ../gedit/gedit-preferences-dialog.c:601
+#, c-format
+msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+msgstr "Okoki te kokela monkɛ́lɛ́ '%s': g_mkdir_with_parents() ekatáni: %s"
+
+#: ../gedit/gedit-preferences-dialog.c:798
+msgid "The selected color scheme cannot be installed."
+msgstr "langi ya libɔngisi eye éponomi ekoki kofánda tɛ̂."
+
+#: ../gedit/gedit-preferences-dialog.c:821
+msgid "Add Scheme"
+msgstr "Bakisa Libɔngisi"
+
+#: ../gedit/gedit-preferences-dialog.c:826
+msgid "A_dd Scheme"
+msgstr "Ba_kisa Libɔngisi"
+
+#: ../gedit/gedit-preferences-dialog.c:830
+msgid "Color Scheme Files"
+msgstr "Langi ya libɔngisi kásá"
+
+#: ../gedit/gedit-preferences-dialog.c:861
+#, c-format
+msgid "Could not remove color scheme \"%s\"."
+msgstr "Okoki tɛ̂ kolongola langi ya libɔngisi \"%s\"."
+
+#: ../gedit/gedit-print-job.c:227
+msgid "Preparing..."
+msgstr "Bolɛngɛli "
+
+#: ../gedit/gedit-print-job.c:539
+#, c-format
+msgid "File: %s"
+msgstr "Kásá: %s"
+
+#: ../gedit/gedit-print-job.c:548
+msgid "Page %N of %Q"
+msgstr "Lonkásá %N of %Q"
+
+#: ../gedit/gedit-print-job.c:626
+#, c-format
+msgid "Rendering page %d of %d..."
+msgstr "botɔisi lonkásá  %d n a %d..."
+
+#: ../gedit/gedit-print-preview.c:653
+#, c-format
+msgid "Page %d of %d"
+msgstr "Lonkásá %d of %d"
+
+#: ../gedit/gedit-replace-dialog.c:690
+#: ../plugins/externaltools/tools/tools.ui.h:7
+msgid "Nothing"
+msgstr "Eloko tɛ̂"
+
+#: ../gedit/gedit-replace-dialog.c:779
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
+msgid "Find and Replace"
+msgstr "Kúta mpe kitanisa"
+
+#. Use spaces to leave padding proportional to the font size
+#: ../gedit/gedit-statusbar.c:58
+#: ../gedit/gedit-statusbar.c:64
+msgid "OVR"
+msgstr "OVR"
+
+#: ../gedit/gedit-statusbar.c:58
+#: ../gedit/gedit-statusbar.c:64
+msgid "INS"
+msgstr "INS"
+
+#: ../gedit/gedit-statusbar.c:244
+#, c-format
+msgid "There is a tab with errors"
+msgid_plural "There are %d tabs with errors"
+msgstr[0] "Lipipi moko ezali na ba zíko"
+msgstr[1] "Lipipi %d ezali na ba zíko"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:814
+#, c-format
+msgid "Reverting %s from %s"
+msgstr "Bozongisi %s uta na %s"
+
+#: ../gedit/gedit-tab.c:821
+#, c-format
+msgid "Reverting %s"
+msgstr "Kobongisa %s"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:834
+#, c-format
+msgid "Loading %s from %s"
+msgstr "Kotómbisa %s wuta na %s"
+
+#: ../gedit/gedit-tab.c:841
+#, c-format
+msgid "Loading %s"
+msgstr "kotómbisa %s"
+
+#. Translators: the first %s is a file name (e.g. test.txt) the second one
+#. is a directory (e.g. ssh://master.gnome.org/home/users/paolo)
+#: ../gedit/gedit-tab.c:921
+#, c-format
+msgid "Saving %s to %s"
+msgstr "Bobómbisi %s na %s"
+
+#: ../gedit/gedit-tab.c:926
+#, c-format
+msgid "Saving %s"
+msgstr "Bobómbisi %s"
+
+#: ../gedit/gedit-tab.c:1529
+#, c-format
+msgid "Error opening file %s"
+msgstr "Zíko ya bofungoli kásá %s"
+
+#: ../gedit/gedit-tab.c:1534
+#, c-format
+msgid "Error reverting file %s"
+msgstr "ziko ya botɔisi kasa %s"
+
+#: ../gedit/gedit-tab.c:1539
+#, c-format
+msgid "Error saving file %s"
+msgstr "Zíko ya bombisi kásá %s"
+
+#: ../gedit/gedit-tab.c:1570
+msgid "Name:"
+msgstr "Nkómbó"
+
+#: ../gedit/gedit-tab.c:1571
+msgid "MIME Type:"
+msgstr "Ndenge ya MIME:"
+
+#: ../gedit/gedit-tab.c:1572
+msgid "Encoding:"
+msgstr "Akɔdaze:"
+
+#: ../gedit/gedit-utils.c:841
+msgid "Please check your installation."
+msgstr "Tala bofándisi na bonkútú."
+
+#: ../gedit/gedit-utils.c:902
+#, c-format
+msgid "Unable to open UI file %s. Error: %s"
+msgstr "E-kokí tɛ̂ kofungola kasa ya étando %s. Ziko:%s"
+
+#: ../gedit/gedit-utils.c:921
+#, c-format
+msgid "Unable to find the object '%s' inside file %s."
+msgstr "E-kokí tɛ̂ kokuta etule '%s' na kati ya kasa %s."
+
+#. Translators: '/ on <remote-share>'
+#: ../gedit/gedit-utils.c:1159
+#, c-format
+msgid "/ on %s"
+msgstr "/ likolo ya %s"
+
+#: ../gedit/gedit-utils.c:1463
+msgid "Unix/Linux"
+msgstr "Unix/Linux"
+
+#: ../gedit/gedit-utils.c:1465
+msgid "Mac OS Classic"
+msgstr "Mac OS Classic"
+
+#: ../gedit/gedit-utils.c:1467
+msgid "Windows"
+msgstr "Windows"
+
+#: ../gedit/gedit-view.c:468
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
+msgid "_Display line numbers"
+msgstr "_Monisa numelo ya linie"
+
+#. Translators: the first %d is the position of the current search
+#. * occurrence, and the second %d is the total number of search
+#. * occurrences.
+#.
+#: ../gedit/gedit-view-frame.c:671
+#, c-format
+msgid "%d of %d"
+msgstr "%d likolo lya %d"
+
+#. create "Wrap Around" menu item.
+#: ../gedit/gedit-view-frame.c:763
+msgid "_Wrap Around"
+msgstr "_Luka zínga"
+
+#. create "Match as Regular Expression" menu item.
+#: ../gedit/gedit-view-frame.c:773
+msgid "Match as _Regular Expression"
+msgstr "Likomi ya _momɛsɛno"
+
+#. create "Match Entire Word Only" menu item.
+#: ../gedit/gedit-view-frame.c:787
+msgid "Match _Entire Word Only"
+msgstr "Lokoma ya mobimba kaka"
+
+#. create "Match Case" menu item.
+#: ../gedit/gedit-view-frame.c:801
+msgid "_Match Case"
+msgstr "_Tosa likomá"
+
+#: ../gedit/gedit-view-frame.c:1023
+msgid "String you want to search for"
+msgstr "Nkomi oyo oeali koluka"
+
+#: ../gedit/gedit-view-frame.c:1035
+msgid "Line you want to move the cursor to"
+msgstr "Linie oyo olingi o telemisa motúmbé"
+
+#: ../gedit/gedit-window.c:998
+msgid "Bracket match is out of range"
+msgstr "Bilembo ya botangoli bikokani ezali libanda ya etando"
+
+#: ../gedit/gedit-window.c:1003
+msgid "Bracket match not found"
+msgstr "Elembo ya botangoli oyo ekokani emonani tɛ́"
+
+#: ../gedit/gedit-window.c:1008
+#, c-format
+msgid "Bracket match found on line: %d"
+msgstr "Elembo ya botangoli oyo ekokani emonani na lilie: %d"
+
+#. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
+#. use abbreviations if possible to avoid space problems.
+#: ../gedit/gedit-window.c:1043
+#, c-format
+msgid "  Ln %d, Col %d"
+msgstr "  Li %d, Lk %d"
+
+#: ../gedit/gedit-window.c:1227
+#, c-format
+msgid "Tab Width: %u"
+msgstr "Bonene ya lipipi: %u"
+
+#: ../gedit/gedit-window.c:1596
+msgid "There are unsaved documents"
+msgstr "Eza na ba dokima oyo ebombani tɛ́"
+
+#: ../gedit/gedit-window.c:2444
+msgid "Change side panel page"
+msgstr "Bongolo lonkasa na pano ya mopanzi"
+
+#: ../gedit/gedit-window.c:2464
+#: ../gedit/resources/ui/gedit-window.ui.h:1
+msgid "Documents"
+msgstr "Badokimá"
+
+#. ex:set ts=8 noet:
+#: ../gedit/resources/gtk/menus-common.ui.h:1
+msgid "Move _Left"
+msgstr "Kɛndɛ na  _Embembé"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:2
+msgid "Move _Right"
+msgstr "Kɛndɛ na _elómi"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:3
+msgid "Move to New _Window"
+msgstr "Kɛndɛ na lininisa_ ya_sika"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:4
+msgid "Move to New Tab _Group"
+msgstr "Kɛndɛ na lisánga_ya_lipipi ya sika"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:5
+#: ../gedit/resources/gtk/menus.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
+msgid "_Close"
+msgstr "_Kanga"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:6
+msgid "Automatic Indentation"
+msgstr "Bobéndi otomatíki"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:7
+msgid "Use Spaces"
+msgstr "Salela Sipasi"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:8
+msgid "Display line numbers"
+msgstr "Monisa ba numelo ya linie"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:9
+msgid "Display right margin"
+msgstr "Monisa marzi n'elómi"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:10
+msgid "Highlight current line"
+msgstr "Ngengisa liníɛ ya sikawa "
+
+#: ../gedit/resources/gtk/menus-common.ui.h:11
+msgid "Text wrapping"
+msgstr "Liníɛ élai"
+
+#: ../gedit/resources/gtk/menus.ui.h:1
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+msgid "_New Window"
+msgstr "Lininísa ya _Sika"
+
+#: ../gedit/resources/gtk/menus.ui.h:2
+#: ../gedit/resources/gtk/menus-traditional.ui.h:23
+msgid "_Preferences"
+msgstr "_Nsekú"
+
+#: ../gedit/resources/gtk/menus.ui.h:3
+msgid "_Keyboard Shortcuts"
+msgstr "_Ekomelo lakusi"
+
+#: ../gedit/resources/gtk/menus.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:46
+#: ../plugins/spell/gedit-spell-plugin.c:247
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
+msgid "_Help"
+msgstr "_Bosálisi"
+
+#: ../gedit/resources/gtk/menus.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:47
+msgid "_About"
+msgstr "Oyo _etalí"
+
+#: ../gedit/resources/gtk/menus.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+msgid "_Quit"
+msgstr "_Bima"
+
+#: ../gedit/resources/gtk/menus.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+msgid "_Printâ€¦"
+msgstr "_Bimisa-kásá â€¦"
+
+#: ../gedit/resources/gtk/menus.ui.h:9
+#: ../gedit/resources/gtk/menus-traditional.ui.h:27
+msgid "_Fullscreen"
+msgstr "_Emɔ́niselo mobimba"
+
+#: ../gedit/resources/gtk/menus.ui.h:11
+msgid "Save _All"
+msgstr "Bómbisa _Niɔ́nsɔ"
+
+#: ../gedit/resources/gtk/menus.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:30
+msgid "_Findâ€¦"
+msgstr "_Kúta"
+
+#: ../gedit/resources/gtk/menus.ui.h:13
+msgid "_Find and Replaceâ€¦"
+msgstr "_Kúta mpe kitanisa â€¦"
+
+#: ../gedit/resources/gtk/menus.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:34
+msgid "_Clear Highlight"
+msgstr "_Zímisa Bongengisi"
+
+#: ../gedit/resources/gtk/menus.ui.h:15
+msgid "_Go to Lineâ€¦"
+msgstr "_Kɛndɛ na liníɛâ€¦"
+
+#: ../gedit/resources/gtk/menus.ui.h:16
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+msgid "View"
+msgstr "Mónisa"
+
+#: ../gedit/resources/gtk/menus.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:25
+msgid "Side _Panel"
+msgstr "Pano ya pembeni "
+
+#: ../gedit/resources/gtk/menus.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:26
+msgid "_Bottom Panel"
+msgstr "Panó ya _Nsé"
+
+#: ../gedit/resources/gtk/menus.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:28
+msgid "_Highlight Modeâ€¦"
+msgstr "Mode ya bongengisi"
+
+#: ../gedit/resources/gtk/menus.ui.h:20
+msgid "Tools"
+msgstr "Bisáleli"
+
+#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:39
+msgid "_Close All"
+msgstr "_Kanga niɔ́nsɔ"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:1
+msgid "_File"
+msgstr "_Kásá"
+
+#. _New is the menu item under the File menu on OS X which creates a new empty document.
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+msgid "_New"
+msgstr "_Ya sika"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+msgid "Open _Recent"
+msgstr "Fungola ya _sika wa"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+msgid "Reopen Closed _Tab"
+msgstr "Fungola lisusu Lipipi ekangámí"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+msgid "Save _Asâ€¦"
+msgstr "Bómbisa çna â€¦"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+msgid "_Edit"
+msgstr "_Bɔngisa"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+msgid "_Undo"
+msgstr "_Bákwisa"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:16
+msgid "_Redo"
+msgstr "_Zóngela"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+msgid "C_ut"
+msgstr "Káta"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+msgid "_Copy"
+msgstr "_Kopí"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+msgid "_Paste"
+msgstr "_Bamba"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
+msgid "_Delete"
+msgstr "_Zimbisa"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
+msgid "Overwrite _Mode"
+msgstr "Koniɛtɛ_modɛ"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:22
+msgid "Select _All"
+msgstr "Pɔnɔ ínsɔ"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:24
+msgid "_View"
+msgstr "_Mónisa"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:29
+msgid "_Search"
+msgstr "_Luka"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:31
+msgid "Find Ne_xt"
+msgstr "Kúta Elá_ndi"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:32
+msgid "Find Pre_vious"
+msgstr "Kúta El_ékí"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:33
+msgid "Find and _Replaceâ€¦"
+msgstr "Kúta mpe _Kitanisa â€¦"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:35
+msgid "Go to _Lineâ€¦"
+msgstr "Kɛndɛ na _liníɛâ€¦"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:36
+msgid "_Tools"
+msgstr "_Bisáleli"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:37
+msgid "_Documents"
+msgstr "_Ba dokimá"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:38
+msgid "_Save All"
+msgstr "_Bombisa niɔ́nsɔ"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:40
+msgid "_New Tab Group"
+msgstr "Lisanga ya lipipi ya _sika"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:41
+msgid "P_revious Tab Group"
+msgstr "Lisanga ya lipipi elekí"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:42
+msgid "Nex_t Tab Group"
+msgstr "Lisanga ya lipipi elandi"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:43
+msgid "_Previous Document"
+msgstr "Dokimá _Elekí"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:44
+msgid "N_ext Document"
+msgstr "Dokimá El_andí"
+
+#: ../gedit/resources/gtk/menus-traditional.ui.h:45
+msgid "_Move To New Window"
+msgstr "_Kɛndɛ na lininísa ya sika "
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
+msgid "Character Encodings"
+msgstr "Akɔdaze ya Minkomá"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:3
+msgid "_Apply"
+msgstr "_Ndimisa"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
+msgid "A_vailable Encodings"
+msgstr "Akɔdaze ezalí sei"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
+msgid "Cho_sen Encodings"
+msgstr "Akɔdaze epɔnámí"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
+msgid "_Description"
+msgstr "_Bolimboli"
+
+#: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:7
+msgid "_Encoding"
+msgstr "_Akɔdaze"
+
+#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:1
+msgid "Highlight Mode"
+msgstr "Mode ya bongengisi"
+
+#: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
+msgid "_Select"
+msgstr "_Pɔnɔ"
+
+#: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
+msgid "Search highlight mode..."
+msgstr "Lukisa modɛ ya bongengisi... "
+
+#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
+msgid "No results"
+msgstr "rézita eza tɛ̂"
+
+#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
+msgid "Other _Documentsâ€¦"
+msgstr "_Document Mosúsu â€¦"
+
+#: ../gedit/resources/ui/gedit-open-document-selector.ui.h:3
+msgid "Open another file"
+msgstr "Fungolo kásá mosusu"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:1
+msgid "Preferences"
+msgstr "Nsekú"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:3
+msgid "Display right _margin at column:"
+msgstr "Monisa marzi nélomi na likonzí"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:4
+msgid "Display _statusbar"
+msgstr "Monisa _barɛ ya ezalela"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
+msgid "Display _overview map"
+msgstr "Monisa kalati ya bomonisi lisanga"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
+msgid "Display _grid pattern"
+msgstr "Monisa motifi ya eténiténi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:7
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:9
+msgid "Text Wrapping"
+msgstr "Liníɛ élai"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:8
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:10
+msgid "Enable text _wrapping"
+msgstr "Lamuna bozongi na linie"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:11
+msgid "Do not _split words over two lines"
+msgstr "Kokata lokomá na linies mibalé te"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
+msgid "Highlighting"
+msgstr "Bongengisi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
+msgid "Highlight current _line"
+msgstr "Ngengisa linie ya sikawa"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
+msgid "Highlight matching _brackets"
+msgstr "Ngengisa bilembo ya  botangoli bikokani"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:14
+msgid "Tab Stops"
+msgstr "Kanga Lipipi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:15
+msgid "_Tab width:"
+msgstr "Bonɛ́nɛ_ya_lipipi:"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:16
+msgid "Insert _spaces instead of tabs"
+msgstr "Koakisa sipasi na ésika ya lipipi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:17
+msgid "_Enable automatic indentation"
+msgstr "_Lamuna bobéndi otomatiki"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
+msgid "File Saving"
+msgstr "Bómbisi ya ba kásá"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
+msgid "Create a _backup copy of files before saving"
+msgstr "Kela kopí ya bobíkisi ya ba kasa liboso ya bobombisi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
+msgid "_Autosave files every"
+msgstr "_Mɛ́i-bombómbisi ba kasa niɔ́nsɔ"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
+msgid "_minutes"
+msgstr "_Baminúti"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
+msgid "Editor"
+msgstr "Ebɔngele"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:23
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
+msgid "Font"
+msgstr "Polósi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
+msgid "Editor _font: "
+msgstr "Ebɔngele ya _bikomá"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
+msgid "Pick the editor font"
+msgstr "pɔnɔ polosi ya ebɔngele"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
+msgid "Color Scheme"
+msgstr "Libɔngisi ya lángi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:27
+msgid "Install scheme"
+msgstr "Fándisa Libɔngisi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:28
+msgid "Install Scheme"
+msgstr "Fándisa Libɔngisi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:29
+msgid "Uninstall scheme"
+msgstr "Bakola Libɔngisi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:30
+msgid "Uninstall Scheme"
+msgstr "Bakola Libɔngisi"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:31
+msgid "Font & Colors"
+msgstr "lángi & bikomá"
+
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:32
+msgid "Plugins"
+msgstr "kotíngisa"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:1
+msgid "Syntax Highlighting"
+msgstr "Bongengisi sɛtákisi"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:2
+msgid "Print synta_x highlighting"
+msgstr "Bimisa bongengisi sɛtákisi"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:3
+msgid "Line Numbers"
+msgstr "Motuya ya liníɛ"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:4
+msgid "Print line nu_mbers"
+msgstr "Bimisa ba_numelo ya linie"
+
+#.
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
+msgid "_Number every"
+msgstr "_Numelo na niɔ́nsɔ"
+
+#.
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
+msgid "lines"
+msgstr "liníɛ"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:12
+msgid "Page header"
+msgstr "likoló lia lonkásá"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:13
+msgid "Print page _headers"
+msgstr "Bimisa ba likoló lia lonkásá"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:14
+msgid "Fonts"
+msgstr "Bapolósi"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:15
+msgid "_Body:"
+msgstr "  _Nzóto:"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:16
+msgid "_Line numbers:"
+msgstr "_Limelo ya liníɛ:"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:17
+msgid "He_aders and footers:"
+msgstr "likoló lia lonkásá mpe nsé ya lonkásá"
+
+#: ../gedit/resources/ui/gedit-print-preferences.ui.h:18
+msgid "_Restore Default Fonts"
+msgstr "_Zongisa polosi likwá"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:1
+msgid "Show the previous page"
+msgstr "Mónisa lonkásá eleka"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:2
+msgid "Show the next page"
+msgstr "Mónisa lonkásá elandi"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:3
+msgid "Current page (Alt+P)"
+msgstr "Lonkásá ya sikáwa  (Alt+P)"
+
+#. the "of" from "1 of 19" in print preview
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:5
+msgid "of"
+msgstr "ya"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:6
+msgid "Page total"
+msgstr "totálɛ ya ba lonkásá"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:7
+msgid "The total number of pages in the document"
+msgstr " Limelo totálɛ ya ba lonkásá na kati ya dokima"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:8
+msgid "Show multiple pages"
+msgstr "Mónisa lonkásá bíké"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:9
+msgid "Zoom 1:1"
+msgstr "Kozúma 1:1"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:10
+msgid "Zoom to fit the whole page"
+msgstr "Monisa ba lonkásá niɔ́nsɔ"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:11
+msgid "Zoom the page in"
+msgstr "kozúma  likoló na lonkásá"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:12
+msgid "Zoom the page out"
+msgstr "kozúma nsé na lonkásá "
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:13
+msgid "Close print preview"
+msgstr "Kanga botáli yambo ya kobimisa"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:14
+msgid "_Close Preview"
+msgstr "_Kanga botáli yambo"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:15
+msgid "Page Preview"
+msgstr "Botáli yambo"
+
+#: ../gedit/resources/ui/gedit-print-preview.ui.h:16
+msgid "The preview of a page in the document to be printed"
+msgstr "botáli yambo ya lonkásá naki ya dokima ya kobimisa"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:3
+msgid "Replace _All"
+msgstr "Kitanisa _Niɔ́nsɔ"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:5
+msgctxt "label of the find button"
+msgid "_Find"
+msgstr "_Kúta"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
+msgctxt "label on the left of the GtkEntry containing text to search"
+msgid "F_ind "
+msgstr "K_úta"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
+msgid "Replace _with "
+msgstr "Kitanisa _na"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:8
+msgid "_Match case"
+msgstr "likomá enɛ́nɛ / likomá ekɛ́"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:9
+msgid "Match _entire word only"
+msgstr "_Lokoma mobimba kaka"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
+msgid "Re_gular expression"
+msgstr "Likomi ya momɛsɛno:"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:11
+msgid "Search _backwards"
+msgstr "Luka na sima"
+
+#: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
+msgid "Wra_p around"
+msgstr "Luka na kozínga"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+msgctxt "shortcut window"
+msgid "Documents"
+msgstr "Badokimá"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgctxt "shortcut window"
+msgid "Create a new document in a tab"
+msgstr "Kela dokima ya sika na lipipi"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgctxt "shortcut window"
+msgid "Open a document"
+msgstr "Fungola dokima"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgctxt "shortcut window"
+msgid "Save the document"
+msgstr "Bómbisa ba dokima"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgctxt "shortcut window"
+msgid "Save the document with a new filename"
+msgstr "Bombisa dokima na nkómbó ya kásá"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgctxt "shortcut window"
+msgid "Save all the documents"
+msgstr "Bombisa ba dokima niɔ́nsɔ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgctxt "shortcut window"
+msgid "Close the document"
+msgstr "Kanga dokima"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgctxt "shortcut window"
+msgid "Close all the documents"
+msgstr "Kanga ba dokima niɔ́nsɔ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgctxt "shortcut window"
+msgid "Reopen the most recently closed document"
+msgstr "Fungola lisusu dokima oyo ékangami na suka"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgctxt "shortcut window"
+msgid "Switch to the next document"
+msgstr "Lekisa na dokima elandí"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgctxt "shortcut window"
+msgid "Switch to the previous document"
+msgstr "Lekisa na dokima elekí"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to the first - ninth document"
+msgstr "Lekisa ne dokima ya yambo- ya libwa"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgctxt "shortcut window"
+msgid "Windows and Panels"
+msgstr "Lininísa mpe Panó"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgctxt "shortcut window"
+msgid "Create a new document in a window"
+msgstr "Kela dokima ya sika na lininísa"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgctxt "shortcut window"
+msgid "Create a new tab group"
+msgstr "Kela libóké ya ba lipipi ya sika"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgctxt "shortcut window"
+msgid "Show side panel"
+msgstr "Mónisa pano ya mopanzi"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgctxt "shortcut window"
+msgid "Show bottom panel"
+msgstr "Mónisa pano ya nsé"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgctxt "shortcut window"
+msgid "Fullscreen on / off"
+msgstr "Emɔ́niselo mobimba fungola/kanga"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgctxt "shortcut window"
+msgid "Quit the application"
+msgstr "Bima na esáliseli"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+msgctxt "shortcut window"
+msgid "Find and Replace"
+msgstr "Kúta mpe Kitanisa"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "Kúta"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgctxt "shortcut window"
+msgid "Find the next match"
+msgstr "Kuta eye ekokani élandi "
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgctxt "shortcut window"
+msgid "Find the previous match"
+msgstr "Kúta ya ko kokona elékí "
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgctxt "shortcut window"
+msgid "Clear highlight"
+msgstr "Zimisa bongengisi"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgctxt "shortcut window"
+msgid "Go to line"
+msgstr "Kende na liníɛ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgctxt "shortcut window"
+msgid "Copy and Paste"
+msgstr "Koákisa mpe Bánda"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgctxt "shortcut window"
+msgid "Copy selected text to clipboard"
+msgstr "koákisa nkoma epɔnámí na zaú"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgctxt "shortcut window"
+msgid "Cut selected text to clipboard"
+msgstr "Kata nkoma epɔnámí na zau"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgctxt "shortcut window"
+msgid "Paste text from clipboard"
+msgstr "kobánda nkoma wuta na zaú"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgctxt "shortcut window"
+msgid "Undo and Redo"
+msgstr "Bákwisa mpe Zóngela"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgctxt "shortcut window"
+msgid "Undo previous command"
+msgstr "bákwisa etámboseli eleki"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgctxt "shortcut window"
+msgid "Redo previous command"
+msgstr "Zóngela etámboseli eleki"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+msgctxt "shortcut window"
+msgid "Selection"
+msgstr "Bopɔni"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgctxt "shortcut window"
+msgid "Select all text"
+msgstr "pɔnɔ nkomá niɔ́nsɔ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Libɔngeli"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgctxt "shortcut window"
+msgid "Toggle insert / overwrite"
+msgstr "Kodóndoa kokóákisa/koniɛtɛ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgctxt "shortcut window"
+msgid "Delete current line"
+msgstr "limuisa liníɛ ya sikawa"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgctxt "shortcut window"
+msgid "Join selected lines"
+msgstr "Tingisa ba liníɛ oyo epɔnámí"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgctxt "shortcut window"
+msgid "Move current line up"
+msgstr "Lekisa liníɛ ya sikawa likolo"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgctxt "shortcut window"
+msgid "Move current line down"
+msgstr "Lekisa liníɛ ya sikawa na nsé"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgctxt "shortcut window"
+msgid "Move current word left"
+msgstr "Lekisa liníɛ ya sikawa na embembé"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgctxt "shortcut window"
+msgid "Move current word right"
+msgstr "Lekisa liníɛ ya sikawa na elómi"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgctxt "shortcut window"
+msgid "Convert to uppercase"
+msgstr "Bongola na likomá enɛ́nɛ"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgctxt "shortcut window"
+msgid "Convert to lowercase"
+msgstr "Bongola na likomá mokɛ́"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgctxt "shortcut window"
+msgid "Invert case"
+msgstr "Bumbola likoma"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgctxt "shortcut window"
+msgid "Increment number at cursor"
+msgstr "Matisa motuya na motúmbé "
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgctxt "shortcut window"
+msgid "Decrement number at cursor"
+msgstr "Kitisa motuya na motúmbé "
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+msgctxt "shortcut window"
+msgid "Tools"
+msgstr "Bisaleli"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgctxt "shortcut window"
+msgid "Check spelling"
+msgstr "Kotála likomisi"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgctxt "shortcut window"
+msgid "Print the document"
+msgstr "Bimisa-dokima"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgctxt "shortcut window"
+msgid "Show completion window"
+msgstr "Monisa lininisa kokokisa"
+
+#: ../gedit/resources/ui/gedit-tab-label.ui.h:1
+msgid "Close Document"
+msgstr "Kanga dokima"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:2
+msgid "Open a file"
+msgstr "Fungola kásá"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:4
+msgid "Open"
+msgstr "Fúngola"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:5
+msgid "Create a new document"
+msgstr "Kela dokima ya sika"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:6
+msgid "New"
+msgstr "Ya sika"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:8
+msgid "Save the current file"
+msgstr "Bombisa kásá ya sikawa"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:9
+msgid "Save"
+msgstr "Bómbisa "
+
+#: ../gedit/resources/ui/gedit-window.ui.h:10
+msgid "Hide panel"
+msgstr "Pano ya kobatama"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:11
+msgid "Open a file dialog"
+msgstr "Fungola kásá ya bosololi"
+
+#: ../gedit/resources/ui/gedit-window.ui.h:12
+msgid "Leave Fullscreen"
+msgstr "Longwa na emɔ́niselo mobimba"
+
+#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
+msgid "Check update"
+msgstr "Tala botíyi ya sika"
+
+#: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
+msgid "Check for latest version of gedit"
+msgstr "Luka versio ya suka ya gedit"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:245
+msgid "There was an error displaying the URI."
+msgstr "Ziko moko esalami tango ya bomonisi URI."
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:282
+msgid "_Download"
+msgstr "_Tíyolo"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:283
+msgid "_Ignore Version"
+msgstr "_Bosana Versió"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:288
+msgid "There is a new version of gedit"
+msgstr "Versio ya sika ya gedit ézali"
+
+#: ../plugins/checkupdate/gedit-check-update-plugin.c:291
+msgid "You can download the new version of gedit by clicking on the download button or ignore that version and wait for a new one"
+msgstr "Okoki ko kotíyolo versio ya sika ya gedit na koklikɛ na lipúngu ya kotíyola tó tika versio oyo mpe zela mosusu ya sika"
+
+#. ex:set ts=8 noet:
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
+msgid "Version to Ignore"
+msgstr "_Versió ya kobosana"
+
+#. This is releated to the next gedit version to be released
+#: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
+msgid "Version to ignore until a newer version is released."
+msgstr "Versio ya kotika ti mokolo versio ya sika ekobima."
+
+#. ex:set ts=8 noet:
+#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:1
+msgid "Document Statistics"
+msgstr "Statistíki ya dokima"
+
+#: ../plugins/docinfo/docinfo.plugin.desktop.in.h:2
+msgid "Report the number of words, lines and characters in a document."
+msgstr "Lapɔ́lɔ ya motuya ya lokomá, linies mpe minkomá na kati ya dokima."
+
+#: ../plugins/docinfo/gedit-docinfo-plugin.c:537
+msgid "_Document Statistics"
+msgstr "Statistíki ya ba _dokima"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
+msgid "Document"
+msgstr "Dokima"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Bopɔni"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
+msgid "Lines"
+msgstr "Liníɛ"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:5
+msgid "Words"
+msgstr "Ba liloba"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:6
+msgid "Characters (with spaces)"
+msgstr "Minkomá (na sipasi)"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:7
+msgid "Characters (no spaces)"
+msgstr "Minkomá (na sipasi te)"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:8
+msgid "Bytes"
+msgstr "Ba okté"
+
+#: ../plugins/externaltools/data/build.desktop.in.h:1
+msgid "Build"
+msgstr "Tónga"
+
+#: ../plugins/externaltools/data/build.desktop.in.h:2
+msgid "Run \"make\" in the document directory"
+msgstr "Sálela  \"make\"  na monkɛ́lɛ́ ya dokima"
+
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
+#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
+msgid "Open terminal here"
+msgstr "Fungola esúkele awa"
+
+#: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:2
+#: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:2
+msgid "Open a terminal in the document location"
+msgstr "Fungola terminalɛ na esíká ya dokima"
+
+#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:1
+msgid "Remove trailing spaces"
+msgstr "Longola ba sipasi ya suka"
+
+#: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:2
+msgid "Remove useless trailing spaces in your file"
+msgstr "Longola ba sipasi ya suka na ba linie ezangatina na kasa na yo"
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:1
+msgid "Run command"
+msgstr "Sálela etámboseli"
+
+#: ../plugins/externaltools/data/run-command.desktop.in.h:2
+msgid "Execute a custom command and put its output in a new document"
+msgstr "Bandisa étamboseli ya yo moko mpe tiya rézilta na yango na dokima ya sika"
+
+#: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:1
+msgid "Send to fpaste"
+msgstr "Tindela fpaste"
+
+#: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
+msgid "Paste selected text or current document to fpaste"
+msgstr "Bamba nkoma éponomi to dokima ya sikawa épayi na fpaste"
+
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
+msgid "External Tools"
+msgstr "Bisaleli ya libándá"
+
+#: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
+msgid "Execute external commands and shell scripts."
+msgstr "Banda bitamboseli ya libanda mpe ba skríptɛ shell."
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
+msgid "Whether to use the system font"
+msgstr "Lakisa soki ébongi kosalela polosi ya sistɛ́mɛ"
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
+msgid "If true, the external tools will use the desktop-global standard font if it's monospace (and the most similar font it can come up with otherwise)."
+msgstr "Soki ya solo, bisaleli ya libanda ésaléla polosi sitándalɛ ya mobimba ya bilo soki ézali monospace (mpe, na bozángi, polosi ékokani makasi akuti)"
+
+#: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
+msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgstr "Polosi na nkombo Pango. Ndakisa \"Sans 12\" to \"Monospace Bold 14\"."
+
+#: ../plugins/externaltools/tools/appactivatable.py:126
+msgid "Manage _External Tools..."
+msgstr "Yangela bisaleli ya _libándá..."
+
+#: ../plugins/externaltools/tools/appactivatable.py:131
+msgid "External _Tools"
+msgstr "Esaleli ya libándá"
+
+#: ../plugins/externaltools/tools/capture.py:99
+#, python-format
+msgid "Could not execute command: %s"
+msgstr "Bonzangi makoki ya kobanda etámboseli: %s"
+
+#: ../plugins/externaltools/tools/functions.py:184
+msgid "You must be inside a word to run this command"
+msgstr "Osengeli kozala na kati ya lokoma mpo obanda etámboseli oyo."
+
+#: ../plugins/externaltools/tools/functions.py:302
+msgid "Running tool:"
+msgstr "Botámbuisi ésaleli:"
+
+#: ../plugins/externaltools/tools/functions.py:333
+msgid "Done."
+msgstr "Esálémí."
+
+#: ../plugins/externaltools/tools/functions.py:335
+msgid "Exited"
+msgstr "Bima"
+
+#: ../plugins/externaltools/tools/manager.py:106
+msgid "All languages"
+msgstr " Ba lokóta niɔ́nsɔ"
+
+#: ../plugins/externaltools/tools/manager.py:422
+#: ../plugins/externaltools/tools/manager.py:426
+#: ../plugins/externaltools/tools/manager.py:765
+#: ../plugins/externaltools/tools/tools.ui.h:31
+msgid "All Languages"
+msgstr " Ba Lokóta Niɔ́nsɔ"
+
+#: ../plugins/externaltools/tools/manager.py:539
+msgid "New tool"
+msgstr "Esaleli ya sika"
+
+#: ../plugins/externaltools/tools/manager.py:676
+#, python-format
+msgid "This accelerator is already bound to %s"
+msgstr "Lakusi oyo ésili épésameli %s"
+
+#: ../plugins/externaltools/tools/manager.py:720
+msgid "Type a new accelerator, or press Backspace to clear"
+msgstr "Bete lacusi ya sika, to fina na túsi bozóngi mpona kozimuisa"
+
+#: ../plugins/externaltools/tools/manager.py:722
+msgid "Type a new accelerator"
+msgstr "Bete lakusi ya sika"
+
+#: ../plugins/externaltools/tools/outputpanel.py:122
+msgid "Stopped."
+msgstr "etɛ́lɛmísámí"
+
+#. ex:ts=4:et:
+#: ../plugins/externaltools/tools/outputpanel.ui.h:1
+msgid "Stop Tool"
+msgstr "Tɛ́lɛmisa Esaleli"
+
+#: ../plugins/externaltools/tools/tools.ui.h:1
+msgid "Always available"
+msgstr "Ntángo ínsɔ polélé"
+
+#: ../plugins/externaltools/tools/tools.ui.h:2
+msgid "All documents"
+msgstr "Ba dokima niɔ́nsɔ"
+
+#: ../plugins/externaltools/tools/tools.ui.h:3
+msgid "All documents except untitled ones"
+msgstr "Ba dokima noínsɔ longola sé oyo eza na títɛlɛ tɛ̂"
+
+#: ../plugins/externaltools/tools/tools.ui.h:4
+msgid "Local files only"
+msgstr "Ba kásá ya ndako kaka"
+
+#: ../plugins/externaltools/tools/tools.ui.h:5
+msgid "Remote files only"
+msgstr "Ba kásá ya mosíká kaka"
+
+#: ../plugins/externaltools/tools/tools.ui.h:6
+msgid "Untitled documents only"
+msgstr "Kaka ba dokima oyo eza na títɛlɛ tɛ̂"
+
+#: ../plugins/externaltools/tools/tools.ui.h:8
+msgid "Current document"
+msgstr "Dokimá ngâ"
+
+#: ../plugins/externaltools/tools/tools.ui.h:9
+msgid "Current selection"
+msgstr "Bopɔni ya sikawa "
+
+#: ../plugins/externaltools/tools/tools.ui.h:10
+msgid "Current selection (default to document)"
+msgstr "Bopɔni ya sikawa (bozángi ya dokima)"
+
+#: ../plugins/externaltools/tools/tools.ui.h:11
+msgid "Current line"
+msgstr "Liníɛ ya sikawa"
+
+#: ../plugins/externaltools/tools/tools.ui.h:12
+msgid "Current word"
+msgstr "Nkomá ya sikawa"
+
+#: ../plugins/externaltools/tools/tools.ui.h:13
+msgid "Display in bottom pane"
+msgstr "Monisa na pano ya nsé"
+
+#: ../plugins/externaltools/tools/tools.ui.h:14
+msgid "Create new document"
+msgstr "Kela dokima ya sika"
+
+#: ../plugins/externaltools/tools/tools.ui.h:15
+msgid "Append to current document"
+msgstr "Bákema dokima ya sikawa"
+
+#: ../plugins/externaltools/tools/tools.ui.h:16
+msgid "Replace current document"
+msgstr "Kitana dokima ya sikawa"
+
+#: ../plugins/externaltools/tools/tools.ui.h:17
+msgid "Replace current selection"
+msgstr "Kitana maponomi ya sikawa"
+
+#: ../plugins/externaltools/tools/tools.ui.h:18
+msgid "Insert at cursor position"
+msgstr "Kotisa na ésika ya motúmbé"
+
+#: ../plugins/externaltools/tools/tools.ui.h:19
+msgid "Manage External Tools"
+msgstr "Yangela bisaleli ya libanda"
+
+#: ../plugins/externaltools/tools/tools.ui.h:20
+msgid "Add a new tool"
+msgstr "Bakisa esaleli ya sika"
+
+#: ../plugins/externaltools/tools/tools.ui.h:21
+msgid "Add Tool"
+msgstr "Bakisa esáleli"
+
+#: ../plugins/externaltools/tools/tools.ui.h:22
+msgid "Remove selected tool"
+msgstr "Longola bisaleli oyo éponami"
+
+#: ../plugins/externaltools/tools/tools.ui.h:23
+msgid "Remove Tool"
+msgstr "Longola esáleli"
+
+#: ../plugins/externaltools/tools/tools.ui.h:24
+msgid "Revert tool"
+msgstr "Bútoa esáleli"
+
+#: ../plugins/externaltools/tools/tools.ui.h:25
+msgid "Revert Tool"
+msgstr "Bútoa Esáleli"
+
+#: ../plugins/externaltools/tools/tools.ui.h:26
+msgid "Shortcut _key:"
+msgstr "Lakúsi lifungola:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:27
+msgid "_Save:"
+msgstr "_Bómbisa:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:28
+msgid "_Input:"
+msgstr "_kɔ́tisa:"
+
+#: ../plugins/externaltools/tools/tools.ui.h:29
+msgid "_Output:"
+msgstr "_Bozwi"
+
+#: ../plugins/externaltools/tools/tools.ui.h:30
+msgid "_Applicability:"
+msgstr "_Ebɔngélí:"
+
+#: ../plugins/externaltools/tools/windowactivatable.py:118
+msgid "Tool Output"
+msgstr "Bozwi esaleli"
+
+#. ex:ts=4:et:
+#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:1
+msgid "File Browser Panel"
+msgstr "Pano ya molúki ya ba kasa"
+
+#: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
+msgid "Easy file access from the side panel"
+msgstr "Yingela kasa na malembe na pano ya mopanzi"
+
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:205
+msgid "Home"
+msgstr "Yambo"
+
+#: ../plugins/filebrowser/gedit-file-bookmarks-store.c:231
+msgid "File System"
+msgstr "Lisánga lia kásá"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:523
+msgid "File Browser"
+msgstr "Molúki Kásá"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:659
+msgid "An error occurred while creating a new directory"
+msgstr "Ziko moko esalami tango ya bokeli monkɛ́lɛ́ ya sika"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:662
+msgid "An error occurred while creating a new file"
+msgstr "Ziko moko esalami tango ya bokeli kasa ya sika"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:665
+msgid "An error occurred while renaming a file or directory"
+msgstr "Ziko moko esalami tango ya kobongola nkombo ya kasa to  monkɛ́lɛ́"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:668
+msgid "An error occurred while deleting a file or directory"
+msgstr "Ziko moko esalami tango kolimuisa kasa to monkɛ́lɛ́"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:671
+msgid "An error occurred while opening a directory in the file manager"
+msgstr "Ziko moko esalami tango ya kofungola monkɛ́lɛ́ na moyangeli ya ba kasa "
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:674
+msgid "An error occurred while setting a root directory"
+msgstr "Ziko moko esalemi tango ya kotíya palamɛ́tɛlɛ na monkɛ́lɛ́ lasínɛ"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:677
+msgid "An error occurred while loading a directory"
+msgstr "Ziko moko esalemi tango ya kotómbisa monkɛ́lɛ́"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:680
+msgid "An error occurred"
+msgstr "Ziko moko esalemi"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+msgid ""
+"Cannot move file to trash, do you\n"
+"want to delete permanently?"
+msgstr ""
+"Okoki te kotinda kasa na ékundé, \n"
+"Olingi kolimuisa  libela?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#, c-format
+msgid "The file \"%s\" cannot be moved to the trash."
+msgstr "Kasa \"%s\" ékoki kokende na ékundé tɛ̂."
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+msgid "The selected files cannot be moved to the trash."
+msgstr "Kasa éponami ékoki kokende na ékundé tɛ̂."
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#, c-format
+msgid "Are you sure you want to permanently delete \"%s\"?"
+msgstr "Olingi penza kolimuisa \"%s\" libela ?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+msgid "Are you sure you want to permanently delete the selected files?"
+msgstr "Olingi penza kolimuisa kasa éponami libela ?"
+
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+msgid "If you delete an item, it is permanently lost."
+msgstr "Soki olimuisi itɛmɛ moko, ekobunga libela."
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:1794
+msgid "(Empty)"
+msgstr "(Mpámba)"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3515
+msgid "The renamed file is currently filtered out. You need to adjust your filter settings to make the file visible"
+msgstr "Kasa obongoli nkombo ékɔngɔlɔmi sikawa. ɛ́ngɛbinia palamɛ́tɛlɛ ya ekɔngole mpona komonisa kasa."
+
+#. Translators: This is the default name of new files created by the file browser pane.
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3772
+msgid "Untitled File"
+msgstr "Kásá ezanga títɛlɛ"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3800
+msgid "The new file is currently filtered out. You need to adjust your filter settings to make the file visible"
+msgstr "Kasa ya sika ékɔngɔlɔmi sikawa. ɛ́ngɛbinia palamɛ́tɛlɛ ya ekɔngole mpona komonisa kasa."
+
+#. Translators: This is the default name of new directories created by the file browser pane.
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3831
+msgid "Untitled Folder"
+msgstr "ebombi ezanga títɛlɛ"
+
+#: ../plugins/filebrowser/gedit-file-browser-store.c:3856
+msgid "The new directory is currently filtered out. You need to adjust your filter settings to make the directory visible"
+msgstr "Monkɛ́lɛ́ ya sika ékɔngɔlɔmi sikawa. ɛ́ngɛbinia palamɛ́tɛlɛ ya ekɔngole mpona komonisa monkɛ́lɛ́."
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:754
+msgid "Bookmarks"
+msgstr "Ba Lembete"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:1995
+#, c-format
+msgid "No mount object for mounted volume: %s"
+msgstr "Etule moko te ebakémí mpona volimɛ ebakémí: %s"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2072
+#, c-format
+msgid "Could not open media: %s"
+msgstr "Makoki ya  kofungola médiya: %s ezali tɛ̂."
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2119
+#, c-format
+msgid "Could not mount volume: %s"
+msgstr "Ozangi makoki ya kobakéma volimɛ: %s"
+
+#: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
+#, c-format
+msgid "Error when loading '%s': No such directory"
+msgstr "Ziko tango ya kotómbisa '%s': monkɛ́lɛ́ ezali tɛ̂"
+
+#. ex:set ts=8 noet:
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
+msgid "Open With Tree View"
+msgstr "Kofungola na bomonisi ya moété"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:2
+msgid "Open the tree view when the file browser plugin gets loaded instead of the bookmarks view"
+msgstr "Fungola bomonisi ya moété tango motingisi ya moyangeli bya ba ka étombisami na ésika ya motalisi lembete."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
+msgid "File Browser Root Directory"
+msgstr "Monkɛ́lɛ́ lasínɛ ya moyangeli ya ba kasa"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:4
+msgid "The file browser root directory to use when loading the file browser plugin and onload/tree_view is TRUE."
+msgstr "Monkɛ́lɛ́ lasínɛ ya moyangeli ya ba kasa ya kosalela tango ya kotómbisa molúki kasa soki bomonisi ya moété na botómbisi (onload/tree_view) ezali solo."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
+msgid "File Browser Virtual Root Directory"
+msgstr "Monkɛ́lɛ́ lasínɛ zímba ya moyangeli ya ba kasa"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:6
+msgid "The file browser virtual root directory to use when loading the file browser plugin when onload/tree_view is TRUE. The virtual root must always be below the actual root."
+msgstr "Monkɛ́lɛ́ lasínɛ zimba ya moyangeli ya ba kasa ya kosalela tango ya botómbisi molúki kasa soki bomonisi ya moété na botómbisi (onload/tree_view) ezali solo. Monkɛ́lɛ́ lasínɛ zimba ébongi ézala tango inso likolo ya lacine mpenza."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
+msgid "Enable Restore of Remote Locations"
+msgstr "Lamusa bozongisi ya ba ésika ya mosika"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
+msgid "Sets whether to enable restoring of remote locations."
+msgstr "Kotisa soki obongi kolamusa bozongisi ya ba ésika ya mosika."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
+msgid "Set Location to First Document"
+msgstr "Kotisa ésika na dokima ya liboso"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
+msgid "If TRUE the file browser plugin will view the directory of the first opened document given that the file browser hasn't been used yet. (Thus this generally applies to opening a document from the command line or opening it with Nautilus, etc.)"
+msgstr "Soki ya SOLO motingisi ya moyangeli ya ba kasa akomonisa monkɛ́lɛ́ ya dokima oyo éfungolami liboso tango moyangeli ya ba kasa ésalelami nano tê. (Oyo ékosalema na bofungoli dokima na ekomiselo bitámboseli to na Nautilus, etc.)"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
+msgid "File Browser Filter Mode"
+msgstr "Mode ya ekɔngole ya moyangeli ya kasa"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
+msgid "This value determines what files get filtered from the file browser. Valid values are: none (filter nothing), hide-hidden (filter hidden files) and hide-binary (filter binary files)."
+msgstr "Mbenza oyo ézo lakisa kasa nini ya moyangeli ya ba kasa ékongolami . Mbenza ya kosálela ézali: none(kokongolo éloko tê), hide-hidden (kongolo ba kasa ebátámí) mpe hide-binary (kongolo ba kasa binɛrɛ)."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
+msgid "File Browser Filter Pattern"
+msgstr "Motifi ya ekɔngole ya moyangeli ya kasa"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
+msgid "The filter pattern to filter the file browser with. This filter works on top of the filter_mode."
+msgstr "Mitifi ya ekɔngole ya kosela na moyangeli ya ba kasa. Mosala ya ekɔngole wana ézali na mode ekɔngole (filter_mode)."
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
+msgid "File Browser Binary Patterns"
+msgstr "Motifi ya ekɔngole ya moluki ya binɛrɛ"
+
+#: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
+msgid "The supplemental patterns to use when filtering binary files."
+msgstr "Motifi ya bobakisi ya kosalela tango ya kokɔngɔlɔ ba kasa ya binɛrɛ. "
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:2
+msgid "_Set Root to Active Document"
+msgstr "_Kotisa lintina mpo na kolamuisa dokima"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:3
+msgid "_New Folder"
+msgstr "_Dosíyé ya Sika"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:4
+msgid "New F_ile"
+msgstr "Kásá ya S_ika"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
+msgid "_Rename..."
+msgstr "_Pésa nkómbó lisúsu..."
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
+msgid "_Move to Trash"
+msgstr "_ Kɛndɛ ekúndé"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:8
+msgid "Re_fresh View"
+msgstr "Tóma bomɔ́nisi ya sika "
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:9
+msgid "_View Folder"
+msgstr "_Mónisa Dosíyé "
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:10
+msgid "_Open in Terminal"
+msgstr "_Fingola na esúkele"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:11
+msgid "_Filter"
+msgstr "_Ekɔngole"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:12
+msgid "Show _Hidden"
+msgstr "Mónisa oyo _ebátámí"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:13
+msgid "Show _Binary"
+msgstr "Mónisa _Binɛrɛ"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:14
+msgid "Match Filename"
+msgstr "Kongolo nkómbó ya kásá"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:1
+msgid "History"
+msgstr "Lisitoliki"
+
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:2
+msgid "Open history menu"
+msgstr "Fungola meni ya lisitoliki"
+
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:1
+msgid "Modelines"
+msgstr "Mobongoli "
+
+#: ../plugins/modelines/modelines.plugin.desktop.in.h:2
+msgid "Emacs, Kate and Vim-style modelines support for gedit."
+msgstr "Emacs, Kate mpe Vim-style Bisálisi bobongoli nakati ya gedit"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
+msgid "Command Color Text"
+msgstr "Lángi ya nkoma ya etámboseli"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:2
+msgid "The command color text"
+msgstr "Lángi ya nkoma ya etámboseli"
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:3
+msgid "Error Color Text"
+msgstr "Lángi ya nkoma lya ziko "
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:4
+msgid "The error color text"
+msgstr "Lángi ya nkoma lya ziko "
+
+#: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
+msgid "If true, the terminal will use the desktop-global standard font if it's monospace (and the most similar font it can come up with otherwise)."
+msgstr "Soki ya sɔ̂lɔ́, esúkele eko salela polosi sitándalɛ ya bilo soki ézali monospace (na bozángi, polosi éye ékokani makasi ako zwa)."
+
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
+msgid "C_ommand color:"
+msgstr "L_ángi ya etámboseli:"
+
+#: ../plugins/pythonconsole/pythonconsole/config.ui.h:2
+msgid "_Error color:"
+msgstr "_Lángi ya ziko:"
+
+#. ex:et:ts=4:
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
+msgid "Python Console"
+msgstr "Konsolɛ ya Python"
+
+#: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
+msgid "Interactive Python console standing in the bottom panel"
+msgstr "Konsolɛ ya bozóngiselani Python nakati ya pano ya nsé"
+
+#: ../plugins/quickopen/quickopen/__init__.py:40
+msgid "Quick Open..."
+msgstr "Fúngola na Lombángu..."
+
+#. ex:ts=4:et:
+#: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
+#: ../plugins/quickopen/quickopen/popup.py:33
+msgid "Quick Open"
+msgstr " Fúngola na Lombángu"
+
+#: ../plugins/quickopen/quickopen.plugin.desktop.in.h:2
+msgid "Quickly open files"
+msgstr "Fungola ba kásá na lombángu"
+
+#: ../plugins/quickopen/quickopen/popup.py:83
+msgid "Type to search..."
+msgstr "Ndéngé ya boluki..."
+
+#: ../plugins/snippets/snippets/appactivatable.py:81
+msgid "Manage _Snippets..."
+msgstr "Koyángela ba _éteni ya kɔde ..."
+
+#. Do the fancy completion dialog
+#. ex:ts=4:et:
+#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:145
+#: ../plugins/snippets/snippets/document.py:659
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:1
+msgid "Snippets"
+msgstr "Éteni ya kɔde ..."
+
+#: ../plugins/snippets/snippets/exporter.py:80
+#, python-format
+msgid "The archive \"%s\" could not be created"
+msgstr "Libómbí \"%s\" ékoki ko kelama tɛ̂"
+
+#: ../plugins/snippets/snippets/exporter.py:97
+#, python-format
+msgid "Target directory \"%s\" does not exist"
+msgstr "Monkɛ́lɛ́ ngbangbata  \"%s\"  ézali tɛ̂"
+
+#: ../plugins/snippets/snippets/exporter.py:100
+#, python-format
+msgid "Target directory \"%s\" is not a valid directory"
+msgstr "Monkɛ́lɛ́ ngbangbata  \"%s\"  ézali Monkɛ́lɛ́ ya ɛ́ngɛ́bɛ́nɛ́ tɛ̂"
+
+#: ../plugins/snippets/snippets/importer.py:47
+#: ../plugins/snippets/snippets/importer.py:108
+#, python-format
+msgid "File \"%s\" does not exist"
+msgstr "Kásá  \"%s\" ezálí tɛ̂"
+
+#: ../plugins/snippets/snippets/importer.py:50
+#, python-format
+msgid "File \"%s\" is not a valid snippets file"
+msgstr "Kásá \"%s\" ézali kásá ya éteni ya kɔde ya malamu tɛ̂"
+
+#: ../plugins/snippets/snippets/importer.py:67
+#, python-format
+msgid "Imported file \"%s\" is not a valid snippets file"
+msgstr "Kasa éwuti na \"%s\"  ézali kasa ya éteni ya kode ya malamu tê."
+
+#: ../plugins/snippets/snippets/importer.py:77
+#, python-format
+msgid "The archive \"%s\" could not be extracted"
+msgstr "Libómbí \"%s\" ékoki kobima tê"
+
+#: ../plugins/snippets/snippets/importer.py:95
+#, python-format
+msgid "The following files could not be imported: %s"
+msgstr "Bozangi makoki ya komema épai kasa oyo: %s"
+
+#: ../plugins/snippets/snippets/importer.py:111
+#: ../plugins/snippets/snippets/importer.py:124
+#, python-format
+msgid "File \"%s\" is not a valid snippets archive"
+msgstr "Kásá \"%s\" ézali libómbí ya éteni ya kɔde ya malamu tɛ̂"
+
+#: ../plugins/snippets/snippets/manager.py:42
+msgid "Snippets archive"
+msgstr "libómbí ya éteni ya kɔde"
+
+#: ../plugins/snippets/snippets/manager.py:66
+msgid "Add a new snippet..."
+msgstr "Bakisa éteni ya kɔde ya sika"
+
+#: ../plugins/snippets/snippets/manager.py:116
+msgid "Global"
+msgstr "Ya Mobimba"
+
+#: ../plugins/snippets/snippets/manager.py:406
+msgid "Revert selected snippet"
+msgstr "Bútoa éteni ya kɔde éyé epɔnámí"
+
+#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/snippets.ui.h:4
+msgid "Delete selected snippet"
+msgstr " Límuisa éteni ya kɔde éyé epɔnámí"
+
+#. self['hbox_tab_trigger'].set_spacing(3)
+#: ../plugins/snippets/snippets/manager.py:662
+msgid "This is not a valid Tab trigger. Triggers can either contain alphanumeric characters (or _, : and .) or a single (non-alphanumeric) character like: {, [, etc."
+msgstr "Ezali ébandiseli ya malamu tê. Ebandiseli ékoki kozala na ba monkoma afánimeríki (to_,:mpe.) to monkoma moko afánimeríki lokola: {, [, etc."
+
+#. self['hbox_tab_trigger'].set_spacing(0)
+#: ../plugins/snippets/snippets/manager.py:669
+#: ../plugins/snippets/snippets/snippets.ui.h:14
+msgid "Single word the snippet is activated with after pressing Tab"
+msgstr "Lokoma yɔ̌kɔ́ pona kolamuisa éteni ya kode sima kofina na tusi ya lipipi"
+
+#: ../plugins/snippets/snippets/manager.py:758
+#, python-format
+msgid "The following error occurred while importing: %s"
+msgstr "Ziko oyo ésalami tango ya bomisi épai: %s"
+
+#: ../plugins/snippets/snippets/manager.py:765
+msgid "Import successfully completed"
+msgstr "Boyengelisami ésili na nkɔnzɔ"
+
+#: ../plugins/snippets/snippets/manager.py:779
+#: ../plugins/snippets/snippets/snippets.ui.h:6
+msgid "Import snippets"
+msgstr "Yengisa étenni ya kɔde"
+
+#: ../plugins/snippets/snippets/manager.py:784
+#: ../plugins/snippets/snippets/manager.py:870
+#: ../plugins/snippets/snippets/manager.py:933
+msgid "All supported archives"
+msgstr "Libombisi niɔ́nsɔ elingisámí"
+
+#: ../plugins/snippets/snippets/manager.py:785
+#: ../plugins/snippets/snippets/manager.py:871
+#: ../plugins/snippets/snippets/manager.py:934
+msgid "Gzip compressed archive"
+msgstr "Libimbisi ekówamí Gzip"
+
+#: ../plugins/snippets/snippets/manager.py:786
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:935
+msgid "Bzip2 compressed archive"
+msgstr "Libimbisi ekówamí Bzip2"
+
+#: ../plugins/snippets/snippets/manager.py:787
+msgid "Single snippets file"
+msgstr "Kasa yɔ̌kɔ́ ya éteni ya kode "
+
+#: ../plugins/snippets/snippets/manager.py:788
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:937
+msgid "All files"
+msgstr "Ba kásá niɔ́nsɔ"
+
+#: ../plugins/snippets/snippets/manager.py:800
+#, python-format
+msgid "The following error occurred while exporting: %s"
+msgstr "Ziko éye esálémí tango ya bomemi épai: %s"
+
+#: ../plugins/snippets/snippets/manager.py:804
+msgid "Export successfully completed"
+msgstr "Bamemi épai ésili na nkɔnzɔ"
+
+#. Ask if system snippets should also be exported
+#: ../plugins/snippets/snippets/manager.py:844
+#: ../plugins/snippets/snippets/manager.py:911
+msgid "Do you want to include selected <b>system</b> snippets in your export?"
+msgstr "Olingi kotiya éteni ya kode <b>sistɛ́mɛ</b>  éponami na kati ya bomemi na yo?"
+
+#: ../plugins/snippets/snippets/manager.py:859
+#: ../plugins/snippets/snippets/manager.py:929
+msgid "There are no snippets selected to be exported"
+msgstr "Eteni ya kode moko te éponami mpona komema épai"
+
+#: ../plugins/snippets/snippets/manager.py:864
+#: ../plugins/snippets/snippets/manager.py:902
+msgid "Export snippets"
+msgstr "Mɛmɛ epái ba éteni ya kode"
+
+#: ../plugins/snippets/snippets/manager.py:1041
+msgid "Type a new shortcut, or press Backspace to clear"
+msgstr "Bɛtɛ lakúsi ya sika, to fina túsi ya bozóngi mpona kozimisa"
+
+#: ../plugins/snippets/snippets/manager.py:1043
+msgid "Type a new shortcut"
+msgstr "Bɛtɛ lakúsi ya sika"
+
+#: ../plugins/snippets/snippets/placeholder.py:597
+#, python-format
+msgid "Execution of the Python command (%s) exceeds the maximum time, execution aborted."
+msgstr "Ntango ya kobandisa etámboseli ya Python(%s) eleki ngonga ya suka, bobandisi étiki."
+
+#: ../plugins/snippets/snippets/placeholder.py:605
+#, python-format
+msgid "Execution of the Python command (%s) failed: %s"
+msgstr "Bobandisa etámboseli ya Python(%s) ekatáni: %s"
+
+#: ../plugins/snippets/snippets.plugin.desktop.in.h:2
+msgid "Insert often-used pieces of text in a fast way"
+msgstr "Koakisa ba éteni ya kode elesalemeka mingi na lombangu"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:1
+msgid "Manage Snippets"
+msgstr "Yangela  éteni ya kode"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:2
+msgid "Create new snippet"
+msgstr "Kela éteni ya kode ya sika"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:3
+msgid "Add Snippet"
+msgstr "Bakisa  éteni ya kode"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:5
+msgid "Remove Snippet"
+msgstr "Longola  éteni ya kode"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:7
+msgid "Import Snippets"
+msgstr "Yengisa  éteni ya kode"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:8
+msgid "Export selected snippets"
+msgstr "Mɛmɛ epái  éteni ya kode éyé epɔnámí"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:9
+msgid "Export Snippets"
+msgstr "Mɛmɛ epái  éteni ya kode"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:10
+msgid "Activation"
+msgstr "Bolamuisi"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:11
+msgid "    "
+msgstr "    "
+
+#. "tab" here means the tab key, not the notebook tab!
+#: ../plugins/snippets/snippets/snippets.ui.h:13
+msgid "_Tab trigger:"
+msgstr "_Kobandisa lipipi:"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:15
+msgid "S_hortcut key:"
+msgstr "La_kúsi ya túsi:"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:16
+msgid "Shortcut key with which the snippet is activated"
+msgstr "tusi ya lakusi mpona kolamuisa éteni ya kode"
+
+#: ../plugins/snippets/snippets/snippets.ui.h:17
+msgid "_Drop targets:"
+msgstr "_Tika ngbangbata:"
+
+#: ../plugins/sort/gedit-sort-plugin.c:243
+msgid "S_ort..."
+msgstr "La_ndisa..."
+
+#. ex:set ts=8 noet:
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
+#: ../plugins/sort/sort.plugin.desktop.in.h:1
+msgid "Sort"
+msgstr "Landisa"
+
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:2
+msgid "_Reverse order"
+msgstr "_Bumbolisa molongo"
+
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:3
+msgid "R_emove duplicates"
+msgstr "Longola ba oyo ézongeli"
+
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:4
+msgid "C_ase sensitive"
+msgstr "Bo_táli likomá"
+
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
+msgid "S_tart at column:"
+msgstr "Banda na likonzi:"
+
+#: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
+msgid "_Sort"
+msgstr "_Landisa"
+
+#: ../plugins/sort/sort.plugin.desktop.in.h:2
+msgid "Sorts a document or selected text."
+msgstr "Landisa dokima to nkoma éponami"
+
+#: ../plugins/spell/gedit-spell-app-activatable.c:143
+msgid "_Check Spelling..."
+msgstr "_Tála likomisi"
+
+#: ../plugins/spell/gedit-spell-app-activatable.c:147
+msgid "Set _Language..."
+msgstr "Kotîsa _Lokóta..."
+
+#: ../plugins/spell/gedit-spell-app-activatable.c:151
+msgid "_Highlight Misspelled Words"
+msgstr "_Ngengisa lokoma ekomámí mabé"
+
+#. ex:set ts=8 noet:
+#: ../plugins/spell/spell.plugin.desktop.in.h:1
+msgid "Spell Checker"
+msgstr "Motáleli bokomi"
+
+#: ../plugins/spell/spell.plugin.desktop.in.h:2
+msgid "Checks the spelling of the current document."
+msgstr "Tala likomisi ya dokima ya sikawa."
+
+#: ../plugins/time/gedit-time-plugin.c:270
+msgid "In_sert Date and Time..."
+msgstr "Kó_ákisa date mpe Ntango..."
+
+#: ../plugins/time/gedit-time-plugin.c:496
+msgid "Available formats"
+msgstr "Foloma ezalí sei"
+
+#. ex:set ts=8 noet:
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:1
+msgid "Prompt Type"
+msgstr "Típɛ ya balibali"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:2
+msgid "If the user should be prompted for a format or if the selected or custom format should be used."
+msgstr "Lakisa soki moseleli atunami pona foloma ya  kosalela to soki foloma éponami to foloma ya ye moko éndimami."
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:3
+msgid "Selected Format"
+msgstr "Pɔnɔ foloma"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:4
+msgid "The selected format used when inserting the date/time."
+msgstr "Pono foloma ya kosalela tango ya kokoakisa date/ngonga."
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:5
+msgid "Custom Format"
+msgstr "Foloma ya kosekisa"
+
+#: ../plugins/time/org.gnome.gedit.plugins.time.gschema.xml.in.h:6
+msgid "The custom format used when inserting the date/time."
+msgstr "Foloma ya yo moko ésalelami tango ya kokoakisa date/ngonga."
+
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:1
+msgid "Insert Date and Time"
+msgstr "Kóákisa Dáte mpe Ntángo"
+
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:2
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:5
+msgid "Use the _selected format"
+msgstr "Salela foloma oyo epɔnámí"
+
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:3
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:6
+msgid "_Use custom format"
+msgstr "_Salela folama ya yo moko"
+
+#. Translators: Use the more common date format in your locale
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:5
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:9
+#, no-c-format
+msgid "%d/%m/%Y %H:%M:%S"
+msgstr "%m%s%M %N:%M:%S"
+
+#. Translators: This example should follow the date format defined in the entry above
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:6
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:11
+msgid "01/11/2009 17:52:00"
+msgstr "01/11/2009 17:52:00"
+
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:9
+msgid "_Insert"
+msgstr "_Kóákisa"
+
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:1
+msgid "Configure date/time plugin"
+msgstr "Bongisa modilɛ ya bobakisi ya kokoakisa date/ngonga"
+
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
+msgid "When inserting date/time..."
+msgstr "Tango ya ko kotisa date/ntango..."
+
+#: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
+msgid "_Prompt for a format"
+msgstr "_Senga foloma moko"
+
+#: ../plugins/time/time.plugin.desktop.in.h:1
+msgid "Insert Date/Time"
+msgstr "Kóákisa Dáte/Ntángo"
+
+#: ../plugins/time/time.plugin.desktop.in.h:2
+msgid "Inserts current date and time at the cursor position."
+msgstr "Kóákisa date mpe ngonga ya sikawa na esika ya motúmbé."
+
