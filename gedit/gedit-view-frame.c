@@ -323,11 +323,12 @@ start_search_finished (GtkSourceSearchContext *search_context,
 	gboolean found;
 	GtkSourceBuffer *buffer;
 
-	found = gtk_source_search_context_forward_finish (search_context,
-							  result,
-							  &match_start,
-							  &match_end,
-							  NULL);
+	found = gtk_source_search_context_forward_finish2 (search_context,
+							   result,
+							   &match_start,
+							   &match_end,
+							   NULL,
+							   NULL);
 
 	buffer = gtk_source_search_context_get_buffer (search_context);
 
@@ -386,11 +387,12 @@ forward_search_finished (GtkSourceSearchContext *search_context,
 	GtkTextIter match_end;
 	gboolean found;
 
-	found = gtk_source_search_context_forward_finish (search_context,
-							  result,
-							  &match_start,
-							  &match_end,
-							  NULL);
+	found = gtk_source_search_context_forward_finish2 (search_context,
+							   result,
+							   &match_start,
+							   &match_end,
+							   NULL,
+							   NULL);
 
 	if (found)
 	{
@@ -443,11 +445,12 @@ backward_search_finished (GtkSourceSearchContext *search_context,
 	gboolean found;
 	GtkSourceBuffer *buffer;
 
-	found = gtk_source_search_context_backward_finish (search_context,
-							   result,
-							   &match_start,
-							   &match_end,
-							   NULL);
+	found = gtk_source_search_context_backward_finish2 (search_context,
+							    result,
+							    &match_start,
+							    &match_end,
+							    NULL,
+							    NULL);
 
 	buffer = gtk_source_search_context_get_buffer (search_context);
 

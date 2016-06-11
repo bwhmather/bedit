@@ -174,11 +174,12 @@ forward_search_finished (GtkSourceSearchContext *search_context,
 	GtkTextIter match_start;
 	GtkTextIter match_end;
 
-	found = gtk_source_search_context_forward_finish (search_context,
-							  result,
-							  &match_start,
-							  &match_end,
-							  NULL);
+	found = gtk_source_search_context_forward_finish2 (search_context,
+							   result,
+							   &match_start,
+							   &match_end,
+							   NULL,
+							   NULL);
 
 	buffer = gtk_source_search_context_get_buffer (search_context);
 
@@ -279,11 +280,12 @@ backward_search_finished (GtkSourceSearchContext *search_context,
 	GtkTextIter match_end;
 	GtkSourceBuffer *buffer;
 
-	found = gtk_source_search_context_backward_finish (search_context,
-							   result,
-							   &match_start,
-							   &match_end,
-							   NULL);
+	found = gtk_source_search_context_backward_finish2 (search_context,
+							    result,
+							    &match_start,
+							    &match_end,
+							    NULL,
+							    NULL);
 
 	buffer = gtk_source_search_context_get_buffer (search_context);
 
