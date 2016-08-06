@@ -2919,7 +2919,7 @@ on_treeview_key_press_event (GeditFileBrowserView   *treeview,
 			delete_selected_files (obj, FALSE);
 			return TRUE;
 		}
-		else if ((event->state & modifiers) == GDK_CONTROL_MASK)
+		else if ((event->state & modifiers) == 0)
 		{
 			delete_selected_files (obj, TRUE);
 			return TRUE;
