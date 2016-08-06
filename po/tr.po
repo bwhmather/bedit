@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-01-09 06:59+0000\n"
-"PO-Revision-Date: 2016-01-09 19:08+0200\n"
+"POT-Creation-Date: 2016-06-10 15:12+0000\n"
+"PO-Revision-Date: 2016-08-06 22:06+0300\n"
 "Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -56,31 +56,27 @@ msgstr ""
 "Gedit'in esnek eklenti sistemi, uygulamayı gereksinimlerinize göre "
 "uyarlamanıza ve iş akışınıza uyumlu hale getirmenize olanak tanır."
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1
-msgid "gedit"
-msgstr "gedit"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:730
+#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Metin Düzenleyici"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:3
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
 msgid "Edit text files"
 msgstr "Metin dosyalarını düzenle"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
+#: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "gedit Metin Düzenleyici"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:5
+#: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "Text;Editor;"
 msgstr "Metin;Düzenleyici;"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:6
+#: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "Open a New Window"
 msgstr "Yeni Pencere Aç"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:7
+#: ../data/org.gnome.gedit.desktop.in.in.h:6
 msgid "Open a New Document"
 msgstr "Yeni Belge Aç"
 
@@ -556,57 +552,49 @@ msgstr ""
 "Kullanılan eklentiler listesi. Kullanılan eklentilerin \"Yeri\"ni içerir."
 "Eklentilerin \"Yeri\" için .gedit-plugins dosyasına bakın."
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
 msgstr "Uygulamanın sürümünü göster"
 
-#: ../gedit/gedit-app.c:117
+#: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr "Kodlama seçeneği için geçerli değerlerin listesini göster"
 
-#: ../gedit/gedit-app.c:124
+#: ../gedit/gedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr "Komut satırında dosya açmada kodlanmış karakter kümesi kullan"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:124
 msgid "ENCODING"
 msgstr "KODLAMA"
 
-#: ../gedit/gedit-app.c:131
+#: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Gedit'in mevcut bir örneğinde yeni bir en üst düzey pencere yarat"
 
-#: ../gedit/gedit-app.c:138
+#: ../gedit/gedit-app.c:137
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Gedit'in mevcut durumuna yeni bir belge yarat"
 
-#: ../gedit/gedit-app.c:145
-msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr "Pencerenin boyutunu ve konumunu ayarla (GENİŞLİKxYÜKSEKLİK+X+Y)"
-
-#: ../gedit/gedit-app.c:146
-msgid "GEOMETRY"
-msgstr "GEOMETRİ"
-
-#: ../gedit/gedit-app.c:152
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr "Dosyaları aç ve işlemi dosyalar kapanana kadar durdur"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "Gedit'i bağımsız kipte çalıştır"
 
-#: ../gedit/gedit-app.c:166
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[DOSYA...] [+SATIR[:SÜTUN]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "Yardım görüntülenirken bir hata oluştu."
 
-#: ../gedit/gedit-app.c:977
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: geçersiz kodlama."
@@ -636,13 +624,14 @@ msgid "_Cancel"
 msgstr "_İptal"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:306
-#: ../gedit/resources/gtk/menus-default.ui.h:10
+#: ../gedit/resources/gtk/menus.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "Farklı _Kaydet…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:306
-#: ../gedit/gedit-commands-file.c:855 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/gedit-commands-file.c:855
+#: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -778,7 +767,8 @@ msgctxt "window title"
 msgid "Open"
 msgstr "Aç"
 
-#: ../gedit/gedit-commands-file.c:463 ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/gedit-commands-file.c:463
+#: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:39
@@ -949,18 +939,18 @@ msgstr "Bir eşleşme bulundu ve değiştirildi"
 msgid "\"%s\" not found"
 msgstr "\"%s\" bulunamadı"
 
-#: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
+#: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
 msgid "Untitled Document %d"
 msgstr "Adsız Belge %d"
 
-#: ../gedit/gedit-documents-panel.c:434
+#: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "Sekme Grubu %i"
 
-#: ../gedit/gedit-documents-panel.c:534 ../gedit/gedit-window.c:1166
-#: ../gedit/gedit-window.c:1172 ../gedit/gedit-window.c:1180
+#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
+#: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
 msgid "Read-Only"
 msgstr "Salt Okunur"
 
@@ -1034,7 +1024,7 @@ msgstr "Karakter Kodlaması:"
 msgid "Line Ending:"
 msgstr "Satır Sonu:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1250
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
 #: ../plugins/externaltools/tools/manager.py:108
 #: ../plugins/externaltools/tools/manager.py:317
 #: ../plugins/externaltools/tools/manager.py:433
@@ -1364,9 +1354,9 @@ msgid "Drop Changes and _Reload"
 msgstr "Değişiklikleri Sil ve Yeniden Y_ükle"
 
 #: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:7
+#: ../gedit/resources/gtk/menus-common.ui.h:21
+#: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "_Yeniden Yükle"
 
@@ -1453,7 +1443,6 @@ msgstr "Hiçbir şey"
 
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgid "Find and Replace"
 msgstr "Bul ve Değiştir"
 
@@ -1567,7 +1556,7 @@ msgstr "Klasik Mac OS"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:464
+#: ../gedit/gedit-view.c:468
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "Satır sayılarını _göster"
@@ -1576,65 +1565,65 @@ msgstr "Satır sayılarını _göster"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:657
+#: ../gedit/gedit-view-frame.c:671
 #, c-format
 msgid "%d of %d"
 msgstr "%d / %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:749
+#: ../gedit/gedit-view-frame.c:763
 msgid "_Wrap Around"
 msgstr "_Satır Bölme"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:759
+#: ../gedit/gedit-view-frame.c:773
 msgid "Match as _Regular Expression"
 msgstr "_Düzenli İfade olarak Eşleştir"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:787
 msgid "Match _Entire Word Only"
 msgstr "Sadece Tüm _Kelimeyi Eşleştir"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:801
 msgid "_Match Case"
 msgstr "Büyük/Küçük _Harf Eşleştir"
 
-#: ../gedit/gedit-view-frame.c:1004
+#: ../gedit/gedit-view-frame.c:1023
 msgid "String you want to search for"
 msgstr "Arama yapılacak dizgi"
 
-#: ../gedit/gedit-view-frame.c:1016
+#: ../gedit/gedit-view-frame.c:1035
 msgid "Line you want to move the cursor to"
 msgstr "İmleci taşımak istediğiniz satır"
 
-#: ../gedit/gedit-window.c:1003
+#: ../gedit/gedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "Parantez eşlemesi erişim dışı"
 
-#: ../gedit/gedit-window.c:1008
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "Parantez eşleşmesi bulunamadı"
 
-#: ../gedit/gedit-window.c:1013
+#: ../gedit/gedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "%d satırında parantez eşleşmesi bulundu."
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1048
+#: ../gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Sat %d, Süt %d"
 
-#: ../gedit/gedit-window.c:1232
+#: ../gedit/gedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Etiket Genişliği: %u"
 
-#: ../gedit/gedit-window.c:1601
+#: ../gedit/gedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "Kaydedilmemiş belgeler var"
 
@@ -1642,9 +1631,7 @@ msgstr "Kaydedilmemiş belgeler var"
 msgid "Change side panel page"
 msgstr "Yan panel sayfasını değiştir"
 
-#: ../gedit/gedit-window.c:2464 ../gedit/resources/gtk/menus-osx.ui.h:35
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
-#: ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Belgeler"
 
@@ -1666,9 +1653,8 @@ msgid "Move to New Tab _Group"
 msgstr "Yeni Sekme _Grubuna Taşı"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:22
+#: ../gedit/resources/gtk/menus.ui.h:22
 #: ../gedit/resources/gtk/menus-traditional.ui.h:20
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
@@ -1698,228 +1684,241 @@ msgstr "Geçerli satırı vurgula"
 msgid "Text wrapping"
 msgstr "Metin kaydırma"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
+#: ../gedit/resources/gtk/menus-common.ui.h:12
+#| msgid "File"
+msgid "_File"
+msgstr "_Dosya"
+
+#. _New is the menu item under the File menu on OS X which creates a new empty document.
+#: ../gedit/resources/gtk/menus-common.ui.h:14
+msgid "_New"
+msgstr "_Yeni Belge"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:16
+msgid "Open _Recent"
+msgstr "_Son Kayıtları Aç"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:17
+msgid "Reopen Closed _Tab"
+msgstr "Kapatılan Sekmeyi _Tekrar Aç"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:19
+msgid "Save _As…"
+msgstr "_Farklı Kaydet…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:20
+#: ../gedit/resources/gtk/menus.ui.h:1
 msgid "_New Window"
 msgstr "Ye_ni Pencere"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:2
-#: ../gedit/resources/gtk/menus-traditional.ui.h:15
-msgid "_Preferences"
-msgstr "_Tercihler"
+#: ../gedit/resources/gtk/menus-common.ui.h:22
+#: ../gedit/resources/gtk/menus.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:2
+msgid "_Print…"
+msgstr "_Yazdır..."
 
-#: ../gedit/resources/gtk/menus-default.ui.h:3
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:45
-msgid "_Keyboard Shortcuts"
-msgstr "_Klavye Kısayolları"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
-#: ../gedit/resources/gtk/menus-osx.ui.h:46
-#: ../plugins/spell/gedit-spell-plugin.c:236
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
-msgid "_Help"
-msgstr "_Yardım"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
-msgid "_About"
-msgstr "_Hakkında"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-common.ui.h:23
+#: ../gedit/resources/gtk/menus.ui.h:6
 #: ../gedit/resources/gtk/menus-traditional.ui.h:21
 msgid "_Quit"
 msgstr "Çı_k"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
-msgid "_Print…"
-msgstr "_Yazdır..."
+#: ../gedit/resources/gtk/menus-common.ui.h:24
+#| msgid "Edit"
+msgid "_Edit"
+msgstr "Düz_en"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:9
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
-msgid "_Fullscreen"
-msgstr "_Tam Ekran"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:11
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
-msgid "Save _All"
-msgstr "_Tümünü Kaydet"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
-msgid "_Find…"
-msgstr "_Bul…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:13
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
-msgid "_Find and Replace…"
-msgstr "_Bul ve Değiştir..."
-
-#: ../gedit/resources/gtk/menus-default.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
-msgid "_Clear Highlight"
-msgstr "_Vurguları Temizle"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:15
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
-msgid "_Go to Line…"
-msgstr "Satıra _Git..."
-
-#: ../gedit/resources/gtk/menus-default.ui.h:16
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
-msgid "View"
-msgstr "Görünüm"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
-msgid "Side _Panel"
-msgstr "Yan _Panel"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
-msgid "_Bottom Panel"
-msgstr "_Alt Panel"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
-msgid "_Highlight Mode…"
-msgstr "_Vurgu Kipi…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus-osx.ui.h:34
-#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
-msgid "Tools"
-msgstr "Araçlar"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
-msgid "_Close All"
-msgstr "_Hepsini Kapat"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:1
-msgid "File"
-msgstr "Dosya"
-
-#. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
-msgid "_New"
-msgstr "_Yeni Belge"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
-msgid "Open _Recent"
-msgstr "_Son Kayıtları Aç"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
-msgid "Reopen Closed _Tab"
-msgstr "Kapatılan Sekmeyi _Tekrar Aç"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
-msgid "Save _As…"
-msgstr "_Farklı Kaydet…"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
-msgid "Edit"
-msgstr "Düzenle"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
+#: ../gedit/resources/gtk/menus-common.ui.h:25
 msgid "_Undo"
 msgstr "_Geri Al"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
+#: ../gedit/resources/gtk/menus-common.ui.h:26
 msgid "_Redo"
 msgstr "_Yinele"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
+#: ../gedit/resources/gtk/menus-common.ui.h:27
 msgid "C_ut"
 msgstr "K_es"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
+#: ../gedit/resources/gtk/menus-common.ui.h:28
 msgid "_Copy"
 msgstr "_Kopyala"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
+#: ../gedit/resources/gtk/menus-common.ui.h:29
 msgid "_Paste"
 msgstr "_Yapıştır"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
+#: ../gedit/resources/gtk/menus-common.ui.h:30
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Sil"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
+#: ../gedit/resources/gtk/menus-common.ui.h:31
 msgid "Overwrite _Mode"
 msgstr "Üstüne Yazma _Kipi"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
+#: ../gedit/resources/gtk/menus-common.ui.h:32
 msgid "Select _All"
 msgstr "Tü_münü Seç"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
-msgid "Search"
-msgstr "Ara"
+#: ../gedit/resources/gtk/menus-common.ui.h:33
+#: ../gedit/resources/gtk/menus.ui.h:2
+#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+msgid "_Preferences"
+msgstr "_Tercihler"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
+#: ../gedit/resources/gtk/menus-common.ui.h:34
+#| msgid "View"
+msgid "_View"
+msgstr "G_örünüm"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:35
+#: ../gedit/resources/gtk/menus.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+msgid "Side _Panel"
+msgstr "Yan _Panel"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:36
+#: ../gedit/resources/gtk/menus.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+msgid "_Bottom Panel"
+msgstr "_Alt Panel"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:37
+#: ../gedit/resources/gtk/menus.ui.h:9
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+msgid "_Fullscreen"
+msgstr "_Tam Ekran"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:38
+#: ../gedit/resources/gtk/menus.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+msgid "_Highlight Mode…"
+msgstr "_Vurgu Kipi…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:39
+#| msgid "Search"
+msgid "_Search"
+msgstr "_Ara"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:40
+#: ../gedit/resources/gtk/menus.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+msgid "_Find…"
+msgstr "_Bul…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:41
 msgid "Find Ne_xt"
 msgstr "Sonrakini B_ul"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
+#: ../gedit/resources/gtk/menus-common.ui.h:42
 msgid "Find Pre_vious"
 msgstr "Ö_ncekini Bul"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
+#: ../gedit/resources/gtk/menus-common.ui.h:43
 msgid "Find and _Replace…"
 msgstr "Bul ve Değişti_r..."
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
+#: ../gedit/resources/gtk/menus-common.ui.h:44
+#: ../gedit/resources/gtk/menus.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+msgid "_Clear Highlight"
+msgstr "_Vurguları Temizle"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:45
 msgid "Go to _Line…"
 msgstr "Satıra _Git..."
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
+#: ../gedit/resources/gtk/menus-common.ui.h:46
+#| msgid "Tools"
+msgid "_Tools"
+msgstr "_Araçlar"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:47
+#| msgid "Documents"
+msgid "_Documents"
+msgstr "_Belgeler"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:48
 msgid "_Save All"
 msgstr "Tümünü _Kaydet"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
+#: ../gedit/resources/gtk/menus-common.ui.h:49
+#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+msgid "_Close All"
+msgstr "_Hepsini Kapat"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:50
 msgid "_New Tab Group"
 msgstr "Ye_ni Sekme Grubu"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
+#: ../gedit/resources/gtk/menus-common.ui.h:51
 msgid "P_revious Tab Group"
 msgstr "Önceki Sekme G_rubu"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
+#: ../gedit/resources/gtk/menus-common.ui.h:52
 msgid "Nex_t Tab Group"
 msgstr "Sonrak_i Sekme Grubu"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
+#: ../gedit/resources/gtk/menus-common.ui.h:53
 msgid "_Previous Document"
 msgstr "_Önceki Belge"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
+#: ../gedit/resources/gtk/menus-common.ui.h:54
 msgid "N_ext Document"
 msgstr "Sonraki B_elge"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
+#: ../gedit/resources/gtk/menus-common.ui.h:55
 msgid "_Move To New Window"
 msgstr "Yeni Pencereye _Taşı"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
-msgid "Help"
-msgstr "Yardım"
+#: ../gedit/resources/gtk/menus-common.ui.h:56
+#: ../gedit/resources/gtk/menus.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../plugins/spell/gedit-spell-plugin.c:246
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
+msgid "_Help"
+msgstr "_Yardım"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:57
+#: ../gedit/resources/gtk/menus.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+msgid "_About"
+msgstr "_Hakkında"
+
+#: ../gedit/resources/gtk/menus.ui.h:3
+#: ../gedit/resources/gtk/menus-traditional.ui.h:16
+msgid "_Keyboard Shortcuts"
+msgstr "_Klavye Kısayolları"
+
+#: ../gedit/resources/gtk/menus.ui.h:11
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+msgid "Save _All"
+msgstr "_Tümünü Kaydet"
+
+#: ../gedit/resources/gtk/menus.ui.h:13
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+msgid "_Find and Replace…"
+msgstr "_Bul ve Değiştir..."
+
+#: ../gedit/resources/gtk/menus.ui.h:15
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+msgid "_Go to Line…"
+msgstr "Satıra _Git..."
+
+#: ../gedit/resources/gtk/menus.ui.h:16
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+msgid "View"
+msgstr "Görünüm"
+
+#: ../gedit/resources/gtk/menus.ui.h:20
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+msgid "Tools"
+msgstr "Araçlar"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character Encodings"
@@ -2247,209 +2246,309 @@ msgstr "_Geriye doğru ara"
 msgid "Wra_p around"
 msgstr "_Bitince Başa Dön"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+#| msgid "Documents"
+msgctxt "shortcut window"
+msgid "Documents"
+msgstr "Belgeler"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+#| msgid "Create a new document in a tab"
+msgctxt "shortcut window"
 msgid "Create a new document in a tab"
-msgstr "Yeni bir sekmede yeni belge oluştur"
+msgstr "Bir sekmede yeni belge oluştur"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+#| msgid "Open a document"
+msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "Belge aç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+#| msgid "Save the document"
+msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "Belgeyi kaydet"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+#| msgid "Save the document with a new filename"
+msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "Belgeyi yeni bir dosya adı ile kaydet"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+#| msgid "Save all the documents"
+msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "Tüm belgeleri kaydet"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+#| msgid "Close the document"
+msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "Belgeyi kapat"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+#| msgid "Close all the documents"
+msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "Tüm belgeleri kapat"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+#| msgid "Reopen the most recently closed document"
+msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
 msgstr "En son kapatılan belgeyi yeniden aç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+#| msgid "Switch to the next document"
+msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "Sonraki belgeye geç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+#| msgid "Switch to the previous document"
+msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "Önceki belgeye geç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+#| msgid "Switch to the first - ninth document"
+msgctxt "shortcut window"
 msgid "Switch to the first - ninth document"
 msgstr "Baştan dokuzuncu belgeye geç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+#| msgid "Windows and Panels"
+msgctxt "shortcut window"
 msgid "Windows and Panels"
 msgstr "Pencereler ve Paneller"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+#| msgid "Create a new document in a window"
+msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "Bir pencerede yeni bir belge oluştur"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+#| msgid "Create a new tab group"
+msgctxt "shortcut window"
 msgid "Create a new tab group"
 msgstr "Yeni bir sekme grubu oluştur"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+#| msgid "Show side panel"
+msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "Yan paneli göster"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+#| msgid "Show bottom panel"
+msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "Alt paneli göster"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+#| msgid "Fullscreen on / off"
+msgctxt "shortcut window"
 msgid "Fullscreen on / off"
-msgstr "Tam Ekran açık / kapalı"
+msgstr "Tam ekran açık / kapalı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+#| msgid "Quit the application"
+msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Uygulamadan çık"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+#| msgid "Find and Replace"
+msgctxt "shortcut window"
+msgid "Find and Replace"
+msgstr "Bul ve Değiştir"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+#| msgid "Find"
+msgctxt "shortcut window"
 msgid "Find"
 msgstr "Bul"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+#| msgid "Find the next match"
+msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "Sonraki eşleşmeyi bul"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+#| msgid "Find the previous match"
+msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "Önceki eşleşmeyi bul"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+#| msgid "Clear highlight"
+msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "Vurguyu temizle"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+#| msgid "Go to line"
+msgctxt "shortcut window"
 msgid "Go to line"
 msgstr "Satıra git"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+#| msgid "Copy and Paste"
+msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "Kopyala ve Yapıştır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+#| msgid "Copy selected text to clipboard"
+msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Seçili metni panoya kopyala"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+#| msgid "Cut selected text to clipboard"
+msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Seçili metni kes ve panoya yapıştır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+#| msgid "Paste text from clipboard"
+msgctxt "shortcut window"
 msgid "Paste text from clipboard"
 msgstr "Panodaki metni yapıştır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
-#| msgid "Find and Replace"
+#| msgid "Undo and Redo"
+msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "Geri Al ve Yinele"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+#| msgid "Undo previous command"
+msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Önceki komutu geri al"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
-#| msgid "Run command"
+#| msgid "Redo previous command"
+msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Önceki komutu yinele"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
-#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+#| msgid "Selection"
+msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Seçim"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
-#| msgid "Select _All"
+#| msgid "Select all text"
+msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Tüm metni seç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
-#| msgid "Edit"
+#| msgid "Editing"
+msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Düzenleme"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+#| msgid "Toggle insert / overwrite"
+msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "Araya ekleme / üzerine yazmayı aç/kapat"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
-#| msgid "Highlight current line"
+#| msgid "Delete current line"
+msgctxt "shortcut window"
 msgid "Delete current line"
 msgstr "Geçerli satırı sil"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
-#| msgid "Export selected snippets"
+#| msgid "Join selected lines"
+msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "Seçili satırları birleştir"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
-#| msgid "Current line"
+#| msgid "Move current line up"
+msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "Geçerli satırı yukarı taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
-#| msgid "Current line"
+#| msgid "Move current line down"
+msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "Geçerli satırı aşağı taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
-#| msgid "Current word"
+#| msgid "Move current word left"
+msgctxt "shortcut window"
 msgid "Move current word left"
 msgstr "Geçerli kelimeyi sola taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
-#| msgid "Current word"
+#| msgid "Move current word right"
+msgctxt "shortcut window"
 msgid "Move current word right"
 msgstr "Geçerli kelimeyi sağa taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+#| msgid "Convert to uppercase"
+msgctxt "shortcut window"
 msgid "Convert to uppercase"
 msgstr "Büyük harfe dönüştür"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+#| msgid "Convert to lowercase"
+msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "Küçük harfe dönüştür"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
-#| msgid "_Ignore case"
+#| msgid "Invert case"
+msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "BÜYÜK/küçük harf değiştir"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+#| msgid "Increment number at cursor"
+msgctxt "shortcut window"
 msgid "Increment number at cursor"
 msgstr "İmleçteki sayıyı artır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+#| msgid "Decrement number at cursor"
+msgctxt "shortcut window"
 msgid "Decrement number at cursor"
 msgstr "İmleçteki sayıyı azalt"
 
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+#| msgid "Tools"
+msgctxt "shortcut window"
+msgid "Tools"
+msgstr "Araçlar"
+
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
-#| msgid "Check Spelling"
+#| msgid "Check spelling"
+msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "Yazım denetimi yap"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
-#| msgid "Current document"
+#| msgid "Print the document"
+msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "Belgeyi yazdır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+#| msgid "Show completion window"
+msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Tamamlama penceresini göster"
 
@@ -2552,6 +2651,10 @@ msgstr "_Belge İstatistikleri"
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:2
 msgid "Document"
 msgstr "Belge"
+
+#: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:3
+msgid "Selection"
+msgstr "Seçim"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:4
 msgid "Lines"
@@ -2825,7 +2928,7 @@ msgstr "_Çıktı:"
 msgid "_Applicability:"
 msgstr "Ç_alıştırılabilirlik:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:118
+#: ../plugins/externaltools/tools/windowactivatable.py:119
 msgid "Tool Output"
 msgstr "Araç Çıktısı"
 
@@ -3580,6 +3683,18 @@ msgstr "Tarih/Zaman Ekle"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "İmlecin bulunduğu yere şimdiki tarihi ve zamanı ekler."
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+#~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+#~ msgstr "Pencerenin boyutunu ve konumunu ayarla (GENİŞLİKxYÜKSEKLİK+X+Y)"
+
+#~ msgid "GEOMETRY"
+#~ msgstr "GEOMETRİ"
+
+#~ msgid "Help"
+#~ msgstr "Yardım"
 
 #~ msgid "Question"
 #~ msgstr "Soru"
