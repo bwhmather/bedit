@@ -1094,6 +1094,9 @@ on_treeview_style_updated (GtkWidget                 *widget,
 			       NULL);
 
 	gtk_style_context_restore (context);
+
+	selector->name_font_size = selector->name_font_size * 72.0 / 96.0;
+	selector->path_font_size = selector->path_font_size * 72.0 / 96.0;
 }
 
 static void
