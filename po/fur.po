@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-04-15 18:11+0000\n"
-"PO-Revision-Date: 2016-04-16 01:21+0200\n"
+"POT-Creation-Date: 2016-08-21 04:20+0000\n"
+"PO-Revision-Date: 2016-08-22 21:05+0200\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.5\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -60,16 +60,16 @@ msgid "gedit Text Editor"
 msgstr "Editôr di test gedit"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-msgid "Text;Editor;"
-msgstr "Text;Editor;Test;Editôr;"
+msgid "Text;Editor;Plaintext;Write;"
+msgstr "Text;Editor;Test;Editôr;Testplat;Scrivi;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-msgid "Open a New Window"
-msgstr "Vierç un gnûf barcon"
+msgid "New Window"
+msgstr "Gnûf barcon"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-msgid "Open a New Document"
-msgstr "Vierç un gnûf document"
+msgid "New Document"
+msgstr "Gnûf document"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
@@ -558,15 +558,15 @@ msgstr ""
 "Liste di plugin atîfs. Al ten la \"Posizion\" dai plugin atîfs. Viôt il "
 "file .gedit-plugin par vê la \"Posizion\" di un particolâr plugin."
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
 msgstr "Mostre la version de aplicazion"
 
-#: ../gedit/gedit-app.c:117
+#: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr "Mostre la liste dai pussibii valôrs pe opzion di codifiche"
 
-#: ../gedit/gedit-app.c:124
+#: ../gedit/gedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -574,43 +574,35 @@ msgstr ""
 "Met la codifiche dal caratar di doprâ par vierzi i file listâts te rie di "
 "comant"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:124
 msgid "ENCODING"
 msgstr "CODIFICHE"
 
-#: ../gedit/gedit-app.c:131
+#: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Cree un gnûf barcon di nivel plui alt intune istance esistent di gedit"
 
-#: ../gedit/gedit-app.c:138
+#: ../gedit/gedit-app.c:137
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Cree un gnûf document intune istance esistent di gedit"
 
-#: ../gedit/gedit-app.c:145
-msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr "Impueste la dimension e la posizion di un barcon (LARGJECExALTECE+X+Y)"
-
-#: ../gedit/gedit-app.c:146
-msgid "GEOMETRY"
-msgstr "GJEOMETRIE"
-
-#: ../gedit/gedit-app.c:152
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr "Vierç i file e bloche il procès fintremai la sieradure dai file"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "Eseguìs gedit in modalitât indipendent"
 
-#: ../gedit/gedit-app.c:166
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FILE...] [+LINIE[:COLONE]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "Al è saltât fûr un erôr tal mostrâ il jutori."
 
-#: ../gedit/gedit-app.c:986
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codifiche no valide."
@@ -994,7 +986,7 @@ msgstr "Cjate e sostituìs un câs"
 msgid "\"%s\" not found"
 msgstr "Nol è stât cjatât \"%s\""
 
-#: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
+#: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
 msgid "Untitled Document %d"
 msgstr "Document cence titul %d"
@@ -1623,36 +1615,36 @@ msgstr "_Mostre numars di rie"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:671
+#: ../gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d di %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:763
+#: ../gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_Torne al inizi"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "scugnî scugi "
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "Corispuindince nome peraulis _intieris"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:801
+#: ../gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "Corispuindince _maiusculis"
 
-#: ../gedit/gedit-view-frame.c:1023
+#: ../gedit/gedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "Stringhe di cirî"
 
-#: ../gedit/gedit-view-frame.c:1035
+#: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "Rie dulà movi il cursôr"
 
@@ -2928,7 +2920,7 @@ msgstr "_Jessude:"
 msgid "_Applicability:"
 msgstr "_Aplicabilitât:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:118
+#: ../plugins/externaltools/tools/windowactivatable.py:119
 msgid "Tool Output"
 msgstr "Strument di jessude"
 
@@ -3685,3 +3677,16 @@ msgstr "Inserìs date e ore"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Al inserìs date e ore atuâl te posizion dal cursôr."
+
+#~ msgid "Open a New Window"
+#~ msgstr "Vierç un gnûf barcon"
+
+#~ msgid "Open a New Document"
+#~ msgstr "Vierç un gnûf document"
+
+#~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+#~ msgstr ""
+#~ "Impueste la dimension e la posizion di un barcon (LARGJECExALTECE+X+Y)"
+
+#~ msgid "GEOMETRY"
+#~ msgstr "GJEOMETRIE"
