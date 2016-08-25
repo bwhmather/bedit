@@ -11,18 +11,18 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-05-02 20:04+0200\n"
-"PO-Revision-Date: 2016-05-02 20:13+0200\n"
+"POT-Creation-Date: 2016-08-21 21:28+0200\n"
+"PO-Revision-Date: 2016-08-21 21:28+0200\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
-"Language: sl\n"
+"Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 msgid ""
@@ -64,16 +64,16 @@ msgid "gedit Text Editor"
 msgstr "Gedit urejevalnik besedil "
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-msgid "Text;Editor;"
-msgstr "urejevalnik;besedilo;gedit;"
+msgid "Text;Editor;Plaintext;Write;"
+msgstr "Besedilo;Urejevalnik;tekst;Write;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-msgid "Open a New Window"
-msgstr "Odpri novo okno"
+msgid "New Window"
+msgstr "Novo okno"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-msgid "Open a New Document"
-msgstr "Odpri nov dokument"
+msgid "New Document"
+msgstr "Nov dokument"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
@@ -541,15 +541,15 @@ msgstr ""
 "Seznam dejavnih vstavkov. Vsebuje \"Mesto\" dejavnih vstavkov. Glejte "
 "datoteko .gedit-plugin za pridobitev \"Mesta\" danega vstavka."
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
 msgstr "Pokaži različico programa"
 
-#: ../gedit/gedit-app.c:117
+#: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr "Pokaži seznam mogočih vrednosti kodiranja"
 
-#: ../gedit/gedit-app.c:124
+#: ../gedit/gedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -557,43 +557,35 @@ msgstr ""
 "Nastavi kodiranje znakov, ki naj bo uporabljeno za odpiranje datotek, "
 "naštetih v ukazni vrstici"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:124
 msgid "ENCODING"
 msgstr "KODIRANJE"
 
-#: ../gedit/gedit-app.c:131
+#: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Ustvari novo vrhnje okno v obstoječem oknu gedit"
 
-#: ../gedit/gedit-app.c:138
+#: ../gedit/gedit-app.c:137
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Ustvari nov dokument v obstoječem primerku gedit"
 
-#: ../gedit/gedit-app.c:145
-msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr "Nastavitve položaja in velikost okna (širina x višina + X + Y)"
-
-#: ../gedit/gedit-app.c:146
-msgid "GEOMETRY"
-msgstr "GEOMETRIJA"
-
-#: ../gedit/gedit-app.c:152
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr "Odpri datoteke in zadrži proces dokler datoteke ne bodo zaprte"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "Zaženi gedit v samostojnem načinu"
 
-#: ../gedit/gedit-app.c:166
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[DATOTEKA ...] [+VRSTICA[:STOLPEC]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "Prišlo je do napake med prikazovanjem pomoči."
 
-#: ../gedit/gedit-app.c:986
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: neveljavno kodiranje."
@@ -1649,36 +1641,36 @@ msgstr "_Pokaži številke vrstic"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:671
+#: ../gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d od %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:763
+#: ../gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_Prelomi vrstice"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "Poišči kot _logični izraz"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "Poišči le _cele besede"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:801
+#: ../gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "_Upoštevaj velikost črk"
 
-#: ../gedit/gedit-view-frame.c:1023
+#: ../gedit/gedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "Niz, ki ga želite poiskati"
 
-#: ../gedit/gedit-view-frame.c:1035
+#: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "Vrstica, na katero želite premakniti kazalko"
 
@@ -3711,6 +3703,21 @@ msgstr "Vstavi datum/uro"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Vstavi trenutna datum in uro na položaju kazalke."
+
+#~ msgid "Text;Editor;"
+#~ msgstr "urejevalnik;besedilo;gedit;"
+
+#~ msgid "Open a New Window"
+#~ msgstr "Odpri novo okno"
+
+#~ msgid "Open a New Document"
+#~ msgstr "Odpri nov dokument"
+
+#~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+#~ msgstr "Nastavitve položaja in velikost okna (širina x višina + X + Y)"
+
+#~ msgid "GEOMETRY"
+#~ msgstr "GEOMETRIJA"
 
 #~ msgid "gedit"
 #~ msgstr "gedit"
