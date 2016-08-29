@@ -1053,6 +1053,8 @@ on_treeview_allocate (GtkWidget                 *widget     G_GNUC_UNUSED,
 	treeview_height = row_height * limit_capped;
 	gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (selector->scrolled_window),
 	                                            treeview_height);
+	gtk_scrolled_window_set_max_content_height (GTK_SCROLLED_WINDOW (selector->scrolled_window),
+	                                            treeview_height);
 
 	gtk_widget_set_size_request (selector->placeholder_box, -1, treeview_height);
 }
