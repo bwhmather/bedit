@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-05 06:55+0300\n"
-"PO-Revision-Date: 2016-04-05 06:51+0300\n"
+"POT-Creation-Date: 2016-09-08 06:12+0300\n"
+"PO-Revision-Date: 2016-09-05 16:33+0300\n"
 "Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -65,16 +65,16 @@ msgid "gedit Text Editor"
 msgstr "Текстов редактор (gedit)"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-msgid "Text;Editor;"
-msgstr "текст;редактор;text;editor;"
+msgid "Text;Editor;Plaintext;Write;"
+msgstr "текст;редактор;text;editor;plaintext;write;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-msgid "Open a New Window"
-msgstr "Отваряне на нов прозорец"
+msgid "New Window"
+msgstr "Нов прозорец"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-msgid "Open a New Document"
-msgstr "Отваряне на нов документ"
+msgid "New Document"
+msgstr "Нов документ"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
@@ -548,17 +548,17 @@ msgstr ""
 "приставки. Погледнете файла „.gedit-plugin“, за да намерите "
 "„местоположението“ на дадена приставка."
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
 msgstr "Извеждане на версията приложението"
 
-#: ../gedit/gedit-app.c:117
+#: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr ""
 "Показване на възможните стойности\n"
 "                                    за кодирането"
 
-#: ../gedit/gedit-app.c:124
+#: ../gedit/gedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -568,45 +568,37 @@ msgstr ""
 "чрез\n"
 "                                    командния ред"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:124
 msgid "ENCODING"
 msgstr "КОДИРАНЕ"
 
-#: ../gedit/gedit-app.c:131
+#: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Създаване на нов прозорец в работещ gedit"
 
-#: ../gedit/gedit-app.c:138
+#: ../gedit/gedit-app.c:137
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Създаване на нов документ в работещ gedit"
 
-#: ../gedit/gedit-app.c:145
-msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr "Геометрия на прозореца за X Window (ВИСОЧИНАxШИРОЧИНА+X+Y)"
-
-#: ../gedit/gedit-app.c:146
-msgid "GEOMETRY"
-msgstr "ГЕОМЕТРИЯ"
-
-#: ../gedit/gedit-app.c:152
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr ""
 "Отваряне на файловете и заключване на програмата, докато файловете не се "
 "затворят"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "Изпълнение в самостоятелен режим"
 
-#: ../gedit/gedit-app.c:166
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[ФАЙЛ…] [+РЕД[:КОЛОНА]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "Грешка при изобразяване на ръководството."
 
-#: ../gedit/gedit-app.c:986
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: неправилно кодиране на знаците."
@@ -643,7 +635,7 @@ msgstr "_Запазване като…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855
-#: ../gedit/resources/gtk/menus-traditional.ui.h:28
+#: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -801,7 +793,7 @@ msgid "Open"
 msgstr "Отваряне"
 
 #: ../gedit/gedit-commands-file.c:463
-#: ../gedit/resources/gtk/menus-traditional.ui.h:25
+#: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:39
@@ -1004,7 +996,7 @@ msgstr "Намерено и заменено едно съвпадение."
 msgid "\"%s\" not found"
 msgstr "Низът „%s“ не е открит"
 
-#: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
+#: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
 msgid "Untitled Document %d"
 msgstr "Незапазен документ %d"
@@ -1419,7 +1411,9 @@ msgstr "Файлът „%s“ е променен на диска."
 msgid "Drop Changes and _Reload"
 msgstr "Забравяне на промените и п_резареждане"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182 ../gedit/resources/gtk/menus.ui.h:7
+#: ../gedit/gedit-io-error-info-bar.c:1182
+#: ../gedit/resources/gtk/menus-common.ui.h:21
+#: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 msgid "_Reload"
 msgstr "П_резареждане"
@@ -1630,36 +1624,36 @@ msgstr "Показване на _номера на редовете"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:671
+#: ../gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d от %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:763
+#: ../gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_След края — от началото"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "Съвпадение като _регулярен израз"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "Само съвпадения на _цяла дума"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:801
+#: ../gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "Зачитане на р_егистъра"
 
-#: ../gedit/gedit-view-frame.c:1023
+#: ../gedit/gedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "Низ, който да бъде търсен"
 
-#: ../gedit/gedit-view-frame.c:1035
+#: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "Ред, на който искате да преместите курсора"
 
@@ -1749,21 +1743,192 @@ msgstr "Оцветяване на текущия ред"
 msgid "Text wrapping"
 msgstr "Режим с пренасяне"
 
+#: ../gedit/resources/gtk/menus-common.ui.h:12
+msgid "_File"
+msgstr "_Файл"
+
+#. _New is the menu item under the File menu on OS X which creates a new empty document.
+#: ../gedit/resources/gtk/menus-common.ui.h:14
+msgid "_New"
+msgstr "_Нов"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:16
+msgid "Open _Recent"
+msgstr "Отваряне на _скоро ползван документ"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:17
+msgid "Reopen Closed _Tab"
+msgstr "_Преотваряне на затворен подпрозорец"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:19
+msgid "Save _As…"
+msgstr "_Запазване като…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:20
 #: ../gedit/resources/gtk/menus.ui.h:1
-#: ../gedit/resources/gtk/menus-traditional.ui.h:30
 msgid "_New Window"
 msgstr "_Нов прозорец"
 
+#: ../gedit/resources/gtk/menus-common.ui.h:22
+#: ../gedit/resources/gtk/menus.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:2
+msgid "_Print…"
+msgstr "_Печат…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:23
+#: ../gedit/resources/gtk/menus.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
+msgid "_Quit"
+msgstr "_Спиране на програмата"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:24
+msgid "_Edit"
+msgstr "_Редактиране"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:25
+msgid "_Undo"
+msgstr "_Отмяна"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:26
+msgid "_Redo"
+msgstr "_Повторение"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:27
+msgid "C_ut"
+msgstr "_Отрязване"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:28
+msgid "_Copy"
+msgstr "_Копиране"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:29
+msgid "_Paste"
+msgstr "_Поставяне"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:30
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
+msgid "_Delete"
+msgstr "_Изтриване"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:31
+msgid "Overwrite _Mode"
+msgstr "Режим на за_местване"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:32
+msgid "Select _All"
+msgstr "Избор на _всичко"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:33
 #: ../gedit/resources/gtk/menus.ui.h:2
 #: ../gedit/resources/gtk/menus-traditional.ui.h:15
 msgid "_Preferences"
 msgstr "_Настройки"
 
-#: ../gedit/resources/gtk/menus.ui.h:3
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
-msgid "_Keyboard Shortcuts"
-msgstr "_Клавишни комбинации"
+#: ../gedit/resources/gtk/menus-common.ui.h:34
+msgid "_View"
+msgstr "_Изглед"
 
+#: ../gedit/resources/gtk/menus-common.ui.h:35
+#: ../gedit/resources/gtk/menus.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+msgid "Side _Panel"
+msgstr "Страничен _панел"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:36
+#: ../gedit/resources/gtk/menus.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+msgid "_Bottom Panel"
+msgstr "_Долен панел"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:37
+#: ../gedit/resources/gtk/menus.ui.h:9
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+msgid "_Fullscreen"
+msgstr "На _цял екран"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:38
+#: ../gedit/resources/gtk/menus.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+msgid "_Highlight Mode…"
+msgstr "_Режим на оцветяване…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:39
+msgid "_Search"
+msgstr "_Търсене"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:40
+#: ../gedit/resources/gtk/menus.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+msgid "_Find…"
+msgstr "_Търсене…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:41
+msgid "Find Ne_xt"
+msgstr "_Следваща поява"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:42
+msgid "Find Pre_vious"
+msgstr "_Предишна поява"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:43
+msgid "Find and _Replace…"
+msgstr "Търсене и _замяна…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:44
+#: ../gedit/resources/gtk/menus.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+msgid "_Clear Highlight"
+msgstr "Из_чистване на оцветяването"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:45
+msgid "Go to _Line…"
+msgstr "Отиване на _ред…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:46
+msgid "_Tools"
+msgstr "_Инструменти"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:47
+msgid "_Documents"
+msgstr "_Документи"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:48
+msgid "_Save All"
+msgstr "Запазване на _всички"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:49
+#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+msgid "_Close All"
+msgstr "Зат_варяне на всички"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:50
+msgid "_New Tab Group"
+msgstr "_Нова група подпрозорци"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:51
+msgid "P_revious Tab Group"
+msgstr "П_редишна група подпрозорци"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:52
+msgid "Nex_t Tab Group"
+msgstr "С_ледваща група подпрозорци"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:53
+msgid "_Previous Document"
+msgstr "_Предишен документ"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:54
+msgid "N_ext Document"
+msgstr "_Следващ документ"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:55
+msgid "_Move To New Window"
+msgstr "Преместване в нов _прозорец"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:56
 #: ../gedit/resources/gtk/menus.ui.h:4
 #: ../gedit/resources/gtk/menus-traditional.ui.h:17
 #: ../plugins/spell/gedit-spell-plugin.c:246
@@ -1771,45 +1936,26 @@ msgstr "_Клавишни комбинации"
 msgid "_Help"
 msgstr "Помо_щ"
 
+#: ../gedit/resources/gtk/menus-common.ui.h:57
 #: ../gedit/resources/gtk/menus.ui.h:5
 #: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_About"
 msgstr "_Относно"
 
-#: ../gedit/resources/gtk/menus.ui.h:6
-#: ../gedit/resources/gtk/menus-traditional.ui.h:21
-msgid "_Quit"
-msgstr "_Спиране на програмата"
-
-#: ../gedit/resources/gtk/menus.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
-msgid "_Print…"
-msgstr "_Печат…"
-
-#: ../gedit/resources/gtk/menus.ui.h:9
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
-msgid "_Fullscreen"
-msgstr "На _цял екран"
+#: ../gedit/resources/gtk/menus.ui.h:3
+#: ../gedit/resources/gtk/menus-traditional.ui.h:16
+msgid "_Keyboard Shortcuts"
+msgstr "_Клавишни комбинации"
 
 #: ../gedit/resources/gtk/menus.ui.h:11
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
 msgid "Save _All"
 msgstr "Запазване на _всички"
 
-#: ../gedit/resources/gtk/menus.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
-msgid "_Find…"
-msgstr "_Търсене…"
-
 #: ../gedit/resources/gtk/menus.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
 msgstr "_Търсене и замяна…"
-
-#: ../gedit/resources/gtk/menus.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
-msgid "_Clear Highlight"
-msgstr "Из_чистване на оцветяването"
 
 #: ../gedit/resources/gtk/menus.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
@@ -1822,150 +1968,10 @@ msgstr "Отиване на _ред…"
 msgid "View"
 msgstr "Изглед"
 
-#: ../gedit/resources/gtk/menus.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-msgid "Side _Panel"
-msgstr "Страничен _панел"
-
-#: ../gedit/resources/gtk/menus.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
-msgid "_Bottom Panel"
-msgstr "_Долен панел"
-
-#: ../gedit/resources/gtk/menus.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-msgid "_Highlight Mode…"
-msgstr "_Режим на оцветяване…"
-
 #: ../gedit/resources/gtk/menus.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 msgid "Tools"
 msgstr "Инструменти"
-
-#: ../gedit/resources/gtk/menus.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
-msgid "_Close All"
-msgstr "Зат_варяне на всички"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:22
-msgid "_File"
-msgstr "_Файл"
-
-#. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-traditional.ui.h:24
-msgid "_New"
-msgstr "_Нов"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:26
-msgid "Open _Recent"
-msgstr "Отваряне на _скоро ползван документ"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:27
-msgid "Reopen Closed _Tab"
-msgstr "_Преотваряне на затворен подпрозорец"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:29
-msgid "Save _As…"
-msgstr "_Запазване като…"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:31
-msgid "_Edit"
-msgstr "_Редактиране"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:32
-msgid "_Undo"
-msgstr "_Отмяна"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:33
-msgid "_Redo"
-msgstr "_Повторение"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:34
-msgid "C_ut"
-msgstr "_Отрязване"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:35
-msgid "_Copy"
-msgstr "_Копиране"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:36
-msgid "_Paste"
-msgstr "_Поставяне"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:37
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
-#: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
-msgid "_Delete"
-msgstr "_Изтриване"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:38
-msgid "Overwrite _Mode"
-msgstr "Режим на за_местване"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:39
-msgid "Select _All"
-msgstr "Избор на _всичко"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:40
-msgid "_View"
-msgstr "_Изглед"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:41
-msgid "_Search"
-msgstr "_Търсене"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:42
-msgid "Find Ne_xt"
-msgstr "_Следваща поява"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:43
-msgid "Find Pre_vious"
-msgstr "_Предишна поява"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:44
-msgid "Find and _Replace…"
-msgstr "Търсене и _замяна…"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:45
-msgid "Go to _Line…"
-msgstr "Отиване на _ред…"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:46
-msgid "_Tools"
-msgstr "_Инструменти"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:47
-msgid "_Documents"
-msgstr "_Документи"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:48
-msgid "_Save All"
-msgstr "Запазване на _всички"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:49
-msgid "_New Tab Group"
-msgstr "_Нова група подпрозорци"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:50
-msgid "P_revious Tab Group"
-msgstr "П_редишна група подпрозорци"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:51
-msgid "Nex_t Tab Group"
-msgstr "С_ледваща група подпрозорци"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:52
-msgid "_Previous Document"
-msgstr "_Предишен документ"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:53
-msgid "N_ext Document"
-msgstr "_Следващ документ"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:54
-msgid "_Move To New Window"
-msgstr "Преместване в нов _прозорец"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character Encodings"
@@ -2924,7 +2930,7 @@ msgstr "_Изход:"
 msgid "_Applicability:"
 msgstr "Прило_жимост:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:118
+#: ../plugins/externaltools/tools/windowactivatable.py:119
 msgid "Tool Output"
 msgstr "Изведена информация от инструмент"
 
@@ -3682,3 +3688,15 @@ msgstr "Вмъкване дата / време"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Вмъкване на текущите дата и час на позицията на курсора."
+
+#~ msgid "Open a New Window"
+#~ msgstr "Отваряне на нов прозорец"
+
+#~ msgid "Open a New Document"
+#~ msgstr "Отваряне на нов документ"
+
+#~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+#~ msgstr "Геометрия на прозореца за X Window (ВИСОЧИНАxШИРОЧИНА+X+Y)"
+
+#~ msgid "GEOMETRY"
+#~ msgstr "ГЕОМЕТРИЯ"
