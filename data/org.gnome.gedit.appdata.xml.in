@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2014 Paolo Borelli <pborelli@gnome.org> -->
-<application>
-  <id type="desktop">org.gnome.gedit.desktop</id>
-  <metadata_license>CC0</metadata_license>
+<component type="desktop">
+  <id>org.gnome.gedit.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
+  <name>gedit</name>
+  <summary>Edit text files</summary>
   <description>
     <_p>
       gedit is the official text editor of the GNOME desktop environment.
@@ -27,11 +29,17 @@
     <kudo>UserDocs</kudo>
   </kudos>
   <screenshots>
-    <screenshot type="default">https://git.gnome.org/browse/gedit/plain/data/screenshot.png</screenshot>
+    <screenshot type="default">
+      <image>https://git.gnome.org/browse/gedit/plain/data/screenshot.png</image>
+    </screenshot>
   </screenshots>
   <url type="homepage">https://wiki.gnome.org/Apps/Gedit</url>
-  <updatecontact>pborelli@gnome.org</updatecontact>
+  <url type="bugtracker">https://bugzilla.gnome.org/enter_bug.cgi?product=gedit</url>
+  <url type="donation">http://www.gnome.org/friends/</url>
+  <url type="help">https://help.gnome.org/users/gedit/stable/</url>
+  <url type="translate">https://wiki.gnome.org/TranslationProject</url>
+  <update_contact>pborelli@gnome.org</update_contact>
   <project_group>GNOME</project_group>
   <compulsory_for_desktop>GNOME</compulsory_for_desktop>
   <translation type="gettext">gedit</translation>
-</application>
+</component>
