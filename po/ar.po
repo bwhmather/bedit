@@ -15,9 +15,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-10 20:18+0200\n"
-"PO-Revision-Date: 2016-04-10 20:18+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&k"
+"eywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-09-14 16:03+0000\n"
+"PO-Revision-Date: 2016-09-21 09:25+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -30,48 +31,56 @@ msgstr ""
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "حرّر الملفات النصية"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
 "text editor."
 msgstr ""
+"ج‌إدِت هو محرر النصوص الرسمي لسطح مكتب جنوم. يجمع بين البساطة و القوة كمحرر "
+"نصوص عام."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
 "tool to accomplish your task."
 msgstr ""
+"سواء كنت تكتب الكتاب الأكثر مبيعًا القادم، أو تبرمج تطبيقًا ثوريًا، أو حتى "
+"تدون بعض الملاحظات، فستجد ج‌إدِت أداة يعتمد عليها لتنفيذ مهامك."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
-msgstr ""
+msgstr "نظام الملحقات القوي يسمح بتطويع البرنامج لحاجاتك و استخداماتك."
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "محرّر النصوص"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "حرّر الملفات النصية"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "محرّر النصوص ج‌إدِت"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-msgid "Text;Editor;"
+#| msgid "Text;Editor;"
+msgid "Text;Editor;Plaintext;Write;"
 msgstr "محرّر;نصوص;نص;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-msgid "Open a New Window"
-msgstr "افتح نافذة جديدة"
+#| msgid "_New Window"
+msgid "New Window"
+msgstr "نافذة جديدة"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-msgid "Open a New Document"
-msgstr "افتح مستندا جديدا"
+#| msgid "N_ext Document"
+msgid "New Document"
+msgstr "مستند جديد"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
@@ -85,8 +94,8 @@ msgid ""
 "font."
 msgstr ""
 "ما إذا وجب استعمال الخط ثابت العرض الافتراضي للنظام لتحرير النصوص بدلا من خط "
-"خاص بـمحرر النصوص. إذا أغلق هذا الخيار، فإن الخطّ المختار في خيار \"خط المحرر"
-"\" سيستعمل بدلًا من خطّ النظام."
+"خاص بـمحرر النصوص. إذا أغلق هذا الخيار، فإن الخطّ المختار في خيار \"خط "
+"المحرر\" سيستعمل بدلًا من خطّ النظام."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
 msgid "'Monospace 12'"
@@ -251,9 +260,8 @@ msgid "Specifies the position of the right margin."
 msgstr "يحدد موقع الحاشية اليمنى."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:36
-#, fuzzy
 msgid "Display Overview Map"
-msgstr "اعرض الحاشية اليمنى"
+msgstr "اعرض مخطط عام"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:37
 #, fuzzy
@@ -525,57 +533,49 @@ msgstr ""
 "قائمة الملحقات النشطة. تضم \"Location\" الملحقات النشطة. انظر الملف .gedit-"
 "plugin، للحصول على\"Location\"  ملحق معين."
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
 msgstr "أظهر نسخة التطبيق"
 
-#: ../gedit/gedit-app.c:117
+#: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr "اعرض قائمة بالقيم الممكنة لخيار الترميز"
 
-#: ../gedit/gedit-app.c:124
+#: ../gedit/gedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr "عيّن التّرميز الذي سيستخدم لفتح الملفّات المسردة على سطر الأوامر"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:124
 msgid "ENCODING"
 msgstr "الترميز"
 
-#: ../gedit/gedit-app.c:131
+#: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "أنشئ نافذة مستوى أعلى جديدة في سيرورة موجودة من محرر النصوص"
 
-#: ../gedit/gedit-app.c:138
+#: ../gedit/gedit-app.c:137
 msgid "Create a new document in an existing instance of gedit"
 msgstr "أنشئ مستندا جديدا في سيرورة موجودة من محرر النصوص"
 
-#: ../gedit/gedit-app.c:145
-msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr "عيّن حجم وموضع للنافذة (WIDTHxHEIGHT+X+Y)"
-
-#: ../gedit/gedit-app.c:146
-msgid "GEOMETRY"
-msgstr "الأبعاد"
-
-#: ../gedit/gedit-app.c:152
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr "افتح الملفات وانتظر حتى تُغلق الملفات"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "شغّل محرر النصوص في النمط المستقل"
 
-#: ../gedit/gedit-app.c:166
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[ملف...] [+سطر[:عمود]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "حدث خطأ عند عرض المساعدة."
 
-#: ../gedit/gedit-app.c:986
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "‏%s: ترميز غير سليم."
@@ -992,7 +992,7 @@ msgstr "تمّ إيجاد واستبدال حدوث واحد"
 msgid "\"%s\" not found"
 msgstr "‏\"%s\" غير موجود"
 
-#: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
+#: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
 msgid "Untitled Document %d"
 msgstr "مستند غير محفوظ %Id"
@@ -1604,36 +1604,36 @@ msgstr "ا_عرض أرقام السطور"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:671
+#: ../gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%Id من %Id"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:763
+#: ../gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_لف حول"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "طابق ك_تعبير نمطي"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "طابِق _كل الكلمة فقط"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:801
+#: ../gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "_طابِق الحالة"
 
-#: ../gedit/gedit-view-frame.c:1023
+#: ../gedit/gedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "السلسة التي تريد البحث عنها"
 
-#: ../gedit/gedit-view-frame.c:1035
+#: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "السطر الذي تريد تحريك المؤشّر إليه"
 
@@ -2908,7 +2908,7 @@ msgstr "الخ_رْج:"
 msgid "_Applicability:"
 msgstr "قابلية الت_طبيق:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:118
+#: ../plugins/externaltools/tools/windowactivatable.py:119
 msgid "Tool Output"
 msgstr "خرْج الأداة"
 
@@ -3117,7 +3117,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
-msgstr "نمط الترشيح لمتصفح الملفات "
+msgstr "نمط الترشيح لمتصفح الملفات"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:12
 msgid ""
@@ -3130,7 +3130,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
-msgstr "نموذج الترشيح لمتصفح الملفات "
+msgstr "نموذج الترشيح لمتصفح الملفات"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:14
 msgid ""
@@ -3566,11 +3566,11 @@ msgstr "المدقق إملائي"
 msgid "Checks the spelling of the current document."
 msgstr "يدقق إملاء المستند الحالي."
 
-#: ../plugins/time/gedit-time-plugin.c:270
+#: ../plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time..."
 msgstr "أد_رج التاريخ والوقت..."
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "التنسيقات المتوفّرة"
 
@@ -3653,6 +3653,18 @@ msgstr "أدرج التاريخ/الوقت"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "لإدراج التاريخ والوقت الحاليين عند موقع المؤشر."
+
+#~ msgid "Open a New Window"
+#~ msgstr "افتح نافذة جديدة"
+
+#~ msgid "Open a New Document"
+#~ msgstr "افتح مستندا جديدا"
+
+#~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+#~ msgstr "عيّن حجم وموضع للنافذة (WIDTHxHEIGHT+X+Y)"
+
+#~ msgid "GEOMETRY"
+#~ msgstr "الأبعاد"
 
 #~ msgid "gedit"
 #~ msgstr "محرر جنوم"
