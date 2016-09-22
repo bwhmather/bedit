@@ -52,9 +52,9 @@ struct _GeditOpenDocumentSelector
 	GtkWidget *scrolled_window;
 
 	GdkRGBA name_label_color;
-	gdouble name_font_size;
+	PangoFontDescription *name_font;
 	GdkRGBA path_label_color;
-	gdouble path_font_size;
+	PangoFontDescription *path_font;
 
 	GeditOpenDocumentSelectorStore *selector_store;
 	GList *recent_items;
@@ -718,6 +718,9 @@ gedit_open_document_selector_dispose (GObject *object)
 		}
 	}
 
+	g_clear_pointer (&selector->name_font, pango_font_description_free);
+	g_clear_pointer (&selector->path_font, pango_font_description_free);
+
 	if (selector->recent_items)
 	{
 		gedit_open_document_selector_free_file_items_list (selector->recent_items);
@@ -1075,9 +1078,10 @@ on_treeview_style_updated (GtkWidget                 *widget,
 				     gtk_style_context_get_state (context),
 				     &selector->name_label_color);
 
+	g_clear_pointer (&selector->name_font, pango_font_description_free);
 	gtk_style_context_get (context,
 			       gtk_style_context_get_state (context),
-			       "font-size", &selector->name_font_size,
+			       "font", &selector->name_font,
 			       NULL);
 
 	gtk_style_context_restore (context);
@@ -1090,15 +1094,13 @@ on_treeview_style_updated (GtkWidget                 *widget,
 				     gtk_style_context_get_state (context),
 				     &selector->path_label_color);
 
+	g_clear_pointer (&selector->path_font, pango_font_description_free);
 	gtk_style_context_get (context,
 			       gtk_style_context_get_state (context),
-			       "font-size", &selector->path_font_size,
+			       "font", &selector->path_font,
 			       NULL);
 
 	gtk_style_context_restore (context);
-
-	selector->name_font_size = selector->name_font_size * 72.0 / 96.0;
-	selector->path_font_size = selector->path_font_size * 72.0 / 96.0;
 }
 
 static void
@@ -1109,7 +1111,7 @@ name_renderer_datafunc (GtkTreeViewColumn         *column        G_GNUC_UNUSED,
                         GeditOpenDocumentSelector *selector)
 {
 	g_object_set (selector->name_renderer, "foreground-rgba", &selector->name_label_color, NULL);
-	g_object_set (selector->name_renderer, "size-points", selector->name_font_size, NULL);
+	g_object_set (selector->name_renderer, "font-desc", selector->name_font, NULL);
 }
 
 static void
@@ -1120,7 +1122,7 @@ path_renderer_datafunc (GtkTreeViewColumn         *column        G_GNUC_UNUSED,
                         GeditOpenDocumentSelector *selector)
 {
 	g_object_set (selector->path_renderer, "foreground-rgba", &selector->path_label_color, NULL);
-	g_object_set (selector->path_renderer, "size-points", selector->path_font_size, NULL);
+	g_object_set (selector->path_renderer, "font-desc", selector->path_font, NULL);
 }
 
 static void
