@@ -7,11 +7,10 @@
 # Torstein Adolf Winterseth <kvikende@fsfe.org>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit 3.19.x\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-02-27 23:09+0000\n"
-"PO-Revision-Date: 2016-01-12 19:25+0100\n"
+"Project-Id-Version: gedit 3.22.x\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-15 13:39+0200\n"
+"PO-Revision-Date: 2016-10-15 13:39+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -21,6 +20,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Rediger tekstfiler"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -30,7 +34,7 @@ msgstr ""
 "GNOME. Selv om målet er å være enkelt og lett å bruke, er gedit et kraftig "
 "tekstredigeringsverktøy."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -40,7 +44,7 @@ msgstr ""
 "bare skriver noen raske notater, er gedit et pålitelig verktøy til å "
 "fullføre oppgaven med."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -52,25 +56,21 @@ msgstr ""
 msgid "Text Editor"
 msgstr "Tekstredigering"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "Rediger tekstfiler"
-
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "gedit tekstredigering"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-msgid "Text;Editor;"
-msgstr "Tekst;Redigering;"
+msgid "Text;Editor;Plaintext;Write;"
+msgstr "Tekst;Redigering;Vanlig tekst;Skriv;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-msgid "Open a New Window"
-msgstr "Åpne et nytt vindu"
+msgid "New Window"
+msgstr "Nytt vindu"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-msgid "Open a New Document"
-msgstr "Åpne et nytt dokument"
+msgid "New Document"
+msgstr "Nytt dokument"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
@@ -536,54 +536,46 @@ msgstr ""
 "til aktuelle tillegg. Se filen .gedit-plugin for å finne «adresse» for et "
 "gitt tillegg."
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
 msgstr "Vis programmets versjon"
 
-#: ../gedit/gedit-app.c:117
+#: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr "Vis liste med mulige verdier for kodingsalternativet"
 
-#: ../gedit/gedit-app.c:124
+#: ../gedit/gedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
 msgstr ""
 "Velg tegnkoding som skal brukes for å åpne filer gitt via kommandolinjen"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:124
 msgid "ENCODING"
 msgstr "KODING"
 
-#: ../gedit/gedit-app.c:131
+#: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr "Lag et nytt toppvindu i en eksisterende instans av gedit"
 
-#: ../gedit/gedit-app.c:138
+#: ../gedit/gedit-app.c:137
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Lag et nytt dokument i en eksisterende instans av gedit"
 
-#: ../gedit/gedit-app.c:145
-msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr "Velg størrelse og posisjon for vinduet (BREDDExHØYDE+X+Y)"
-
-#: ../gedit/gedit-app.c:146
-msgid "GEOMETRY"
-msgstr "GEOMETRI"
-
-#: ../gedit/gedit-app.c:152
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr "Åpne filer og blokker prosessen til filene er lukket"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "Kjør gedit i frittstående modus"
 
-#: ../gedit/gedit-app.c:166
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FIL …] [+LINJE[:KOLONNE]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "Det oppsto en feil under visning av hjelp."
 
@@ -618,12 +610,13 @@ msgstr "A_vbryt"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/resources/gtk/menus.ui.h:10
+#: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "Lagre _som …"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+#: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
 #: ../plugins/snippets/snippets/manager.py:867
 #: ../plugins/snippets/snippets/manager.py:905
@@ -770,7 +763,7 @@ msgid "Open"
 msgstr "Åpne"
 
 #: ../gedit/gedit-commands-file.c:463
-#: ../gedit/resources/gtk/menus-traditional.ui.h:4
+#: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
 #: ../plugins/quickopen/quickopen/popup.py:39
@@ -949,7 +942,7 @@ msgstr "Fant og erstattet én oppføring"
 msgid "\"%s\" not found"
 msgstr "Fant ikke «%s»"
 
-#: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
+#: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
 msgid "Untitled Document %d"
 msgstr "Dokument uten tittel %d"
@@ -1362,8 +1355,10 @@ msgstr "«%s» er endret på disk."
 msgid "Drop Changes and _Reload"
 msgstr "Forkast endringer og åpne på _nytt"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182 ../gedit/resources/gtk/menus.ui.h:7
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
+#: ../gedit/gedit-io-error-info-bar.c:1182
+#: ../gedit/resources/gtk/menus-common.ui.h:21
+#: ../gedit/resources/gtk/menus.ui.h:7
+#: ../gedit/resources/gtk/menus-traditional.ui.h:1
 msgid "_Reload"
 msgstr "_Åpne på nytt"
 
@@ -1574,36 +1569,36 @@ msgstr "Vis _linjenummer"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:671
+#: ../gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d av %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:763
+#: ../gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_Bryting"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "Søk som _regulært uttrykk"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "Kun treff på _hele ord"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:801
+#: ../gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "_Skill mellom små/store bokstaver"
 
-#: ../gedit/gedit-view-frame.c:1023
+#: ../gedit/gedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "Streng du vil søke etter"
 
-#: ../gedit/gedit-view-frame.c:1035
+#: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "Linje du vil flytte markøren til"
 
@@ -1663,7 +1658,7 @@ msgstr "Flytt til ny fane_gruppe"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
 #: ../gedit/resources/gtk/menus.ui.h:22
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
@@ -1693,217 +1688,235 @@ msgstr "Uthev gjeldende linje"
 msgid "Text wrapping"
 msgstr "Tekstbryting"
 
-#: ../gedit/resources/gtk/menus.ui.h:1
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
-msgid "_New Window"
-msgstr "_Nytt vindu"
-
-#: ../gedit/resources/gtk/menus.ui.h:2
-#: ../gedit/resources/gtk/menus-traditional.ui.h:23
-msgid "_Preferences"
-msgstr "_Brukervalg"
-
-#: ../gedit/resources/gtk/menus.ui.h:3
-msgid "_Keyboard Shortcuts"
-msgstr "_Tastatursnarveier"
-
-#: ../gedit/resources/gtk/menus.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:46
-#: ../plugins/spell/gedit-spell-plugin.c:238
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
-msgid "_Help"
-msgstr "_Hjelp"
-
-#: ../gedit/resources/gtk/menus.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:47
-msgid "_About"
-msgstr "_Om"
-
-#: ../gedit/resources/gtk/menus.ui.h:6
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-msgid "_Quit"
-msgstr "A_vslutt"
-
-#: ../gedit/resources/gtk/menus.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-msgid "_Print…"
-msgstr "_Skriv ut …"
-
-#: ../gedit/resources/gtk/menus.ui.h:9
-#: ../gedit/resources/gtk/menus-traditional.ui.h:27
-msgid "_Fullscreen"
-msgstr "_Fullskjerm"
-
-#: ../gedit/resources/gtk/menus.ui.h:11
-msgid "Save _All"
-msgstr "Lagre _alle"
-
-#: ../gedit/resources/gtk/menus.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:30
-msgid "_Find…"
-msgstr "_Søk …"
-
-#: ../gedit/resources/gtk/menus.ui.h:13
-msgid "_Find and Replace…"
-msgstr "_Søk og erstatt …"
-
-#: ../gedit/resources/gtk/menus.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:34
-msgid "_Clear Highlight"
-msgstr "_Fjern utheving"
-
-#: ../gedit/resources/gtk/menus.ui.h:15
-msgid "_Go to Line…"
-msgstr "Gå til _linje …"
-
-#: ../gedit/resources/gtk/menus.ui.h:16
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
-msgid "View"
-msgstr "Vis"
-
-#: ../gedit/resources/gtk/menus.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:25
-msgid "Side _Panel"
-msgstr "Side_panel"
-
-#: ../gedit/resources/gtk/menus.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:26
-msgid "_Bottom Panel"
-msgstr "_Bunnpanel"
-
-#: ../gedit/resources/gtk/menus.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:28
-msgid "_Highlight Mode…"
-msgstr "Ut_hevingsmodus"
-
-#: ../gedit/resources/gtk/menus.ui.h:20
-msgid "Tools"
-msgstr "Verktøy"
-
-#: ../gedit/resources/gtk/menus.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:39
-msgid "_Close All"
-msgstr "_Lukk alle"
-
-#: ../gedit/resources/gtk/menus-traditional.ui.h:1
+#: ../gedit/resources/gtk/menus-common.ui.h:12
 msgid "_File"
 msgstr "_Fil"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+#: ../gedit/resources/gtk/menus-common.ui.h:14
 msgid "_New"
 msgstr "_Ny"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+#: ../gedit/resources/gtk/menus-common.ui.h:16
 msgid "Open _Recent"
 msgstr "Åpne nylig b_rukt"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+#: ../gedit/resources/gtk/menus-common.ui.h:17
 msgid "Reopen Closed _Tab"
 msgstr "Gjenåpnet lukke_t fane"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+#: ../gedit/resources/gtk/menus-common.ui.h:19
 msgid "Save _As…"
 msgstr "Lagre _som …"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+#: ../gedit/resources/gtk/menus-common.ui.h:20
+#: ../gedit/resources/gtk/menus.ui.h:1
+msgid "_New Window"
+msgstr "_Nytt vindu"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:22
+#: ../gedit/resources/gtk/menus.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:2
+msgid "_Print…"
+msgstr "_Skriv ut …"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:23
+#: ../gedit/resources/gtk/menus.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
+msgid "_Quit"
+msgstr "A_vslutt"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:24
 msgid "_Edit"
 msgstr "R_ediger"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+#: ../gedit/resources/gtk/menus-common.ui.h:25
 msgid "_Undo"
 msgstr "_Angre"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
+#: ../gedit/resources/gtk/menus-common.ui.h:26
 msgid "_Redo"
 msgstr "_Gjenta"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../gedit/resources/gtk/menus-common.ui.h:27
 msgid "C_ut"
 msgstr "Klipp _ut"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+#: ../gedit/resources/gtk/menus-common.ui.h:28
 msgid "_Copy"
 msgstr "_Kopier"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+#: ../gedit/resources/gtk/menus-common.ui.h:29
 msgid "_Paste"
 msgstr "_Lim inn"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
+#: ../gedit/resources/gtk/menus-common.ui.h:30
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Slett"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:21
+#: ../gedit/resources/gtk/menus-common.ui.h:31
 msgid "Overwrite _Mode"
 msgstr "Overskrivingsmodus"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:22
+#: ../gedit/resources/gtk/menus-common.ui.h:32
 msgid "Select _All"
 msgstr "Velg _alle"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:24
+#: ../gedit/resources/gtk/menus-common.ui.h:33
+#: ../gedit/resources/gtk/menus.ui.h:2
+#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+msgid "_Preferences"
+msgstr "_Brukervalg"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:34
 msgid "_View"
 msgstr "_Vis"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:29
+#: ../gedit/resources/gtk/menus-common.ui.h:35
+#: ../gedit/resources/gtk/menus.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+msgid "Side _Panel"
+msgstr "Side_panel"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:36
+#: ../gedit/resources/gtk/menus.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+msgid "_Bottom Panel"
+msgstr "_Bunnpanel"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:37
+#: ../gedit/resources/gtk/menus.ui.h:9
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+msgid "_Fullscreen"
+msgstr "_Fullskjerm"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:38
+#: ../gedit/resources/gtk/menus.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+msgid "_Highlight Mode…"
+msgstr "Ut_hevingsmodus"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:39
 msgid "_Search"
 msgstr "_Søk"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:31
+#: ../gedit/resources/gtk/menus-common.ui.h:40
+#: ../gedit/resources/gtk/menus.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+msgid "_Find…"
+msgstr "_Søk …"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:41
 msgid "Find Ne_xt"
 msgstr "Søk etter _neste"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:32
+#: ../gedit/resources/gtk/menus-common.ui.h:42
 msgid "Find Pre_vious"
 msgstr "Søk etter _forrige"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:33
+#: ../gedit/resources/gtk/menus-common.ui.h:43
 msgid "Find and _Replace…"
 msgstr "Søk og e_rstatt …"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:35
+#: ../gedit/resources/gtk/menus-common.ui.h:44
+#: ../gedit/resources/gtk/menus.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+msgid "_Clear Highlight"
+msgstr "_Fjern utheving"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:45
 msgid "Go to _Line…"
 msgstr "Gå til _linje …"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:36
+#: ../gedit/resources/gtk/menus-common.ui.h:46
 msgid "_Tools"
 msgstr "Verk_tøy"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:37
+#: ../gedit/resources/gtk/menus-common.ui.h:47
 msgid "_Documents"
 msgstr "_Dokumenter"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:38
+#: ../gedit/resources/gtk/menus-common.ui.h:48
 msgid "_Save All"
 msgstr "_Lagre alle"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:40
+#: ../gedit/resources/gtk/menus-common.ui.h:49
+#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+msgid "_Close All"
+msgstr "_Lukk alle"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:50
 msgid "_New Tab Group"
 msgstr "_Ny fane_gruppe"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:41
+#: ../gedit/resources/gtk/menus-common.ui.h:51
 msgid "P_revious Tab Group"
 msgstr "Fo_rrige fanegruppe"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:42
+#: ../gedit/resources/gtk/menus-common.ui.h:52
 msgid "Nex_t Tab Group"
 msgstr "_Neste fanegruppe"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:43
+#: ../gedit/resources/gtk/menus-common.ui.h:53
 msgid "_Previous Document"
 msgstr "_Forrige dokument"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:44
+#: ../gedit/resources/gtk/menus-common.ui.h:54
 msgid "N_ext Document"
 msgstr "N_este dokument"
 
-#: ../gedit/resources/gtk/menus-traditional.ui.h:45
+#: ../gedit/resources/gtk/menus-common.ui.h:55
 msgid "_Move To New Window"
 msgstr "Flytt til _nytt vindu"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:56
+#: ../gedit/resources/gtk/menus.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../plugins/spell/gedit-spell-plugin.c:246
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
+msgid "_Help"
+msgstr "_Hjelp"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:57
+#: ../gedit/resources/gtk/menus.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+msgid "_About"
+msgstr "_Om"
+
+#: ../gedit/resources/gtk/menus.ui.h:3
+#: ../gedit/resources/gtk/menus-traditional.ui.h:16
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastatursnarveier"
+
+#: ../gedit/resources/gtk/menus.ui.h:11
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+msgid "Save _All"
+msgstr "Lagre _alle"
+
+#: ../gedit/resources/gtk/menus.ui.h:13
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+msgid "_Find and Replace…"
+msgstr "_Søk og erstatt …"
+
+#: ../gedit/resources/gtk/menus.ui.h:15
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+msgid "_Go to Line…"
+msgstr "Gå til _linje …"
+
+#: ../gedit/resources/gtk/menus.ui.h:16
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+msgid "View"
+msgstr "Vis"
+
+#: ../gedit/resources/gtk/menus.ui.h:20
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+msgid "Tools"
+msgstr "Verktøy"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character Encodings"
@@ -2861,7 +2874,7 @@ msgstr "_Utdata:"
 msgid "_Applicability:"
 msgstr "_Anvendbarhet:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:118
+#: ../plugins/externaltools/tools/windowactivatable.py:119
 msgid "Tool Output"
 msgstr "Utdata fra verktøy"
 
@@ -3527,11 +3540,11 @@ msgstr "Stavekontroll"
 msgid "Checks the spelling of the current document."
 msgstr "Kontrollerer staving i gjeldende dokument."
 
-#: ../plugins/time/gedit-time-plugin.c:270
+#: ../plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time..."
 msgstr "_Sett inn dato/klokkeslett …"
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Tilgjengelige formater"
 
