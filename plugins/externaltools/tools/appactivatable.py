@@ -130,7 +130,7 @@ class AppActivatable(GObject.Object, Gedit.AppActivatable):
                                                  self.css, 600)
 
         self.menu_ext = self.extend_menu("preferences-section")
-        item = Gio.MenuItem.new(_("Manage _External Tools..."), "app.manage-tools")
+        item = Gio.MenuItem.new(_("Manage _External Tools…"), "app.manage-tools")
         self.menu_ext.append_menu_item(item)
 
         self.submenu_ext = self.extend_menu("tools-section-1")

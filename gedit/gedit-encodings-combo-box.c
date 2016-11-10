@@ -325,7 +325,7 @@ update_menu (GeditEncodingsComboBox *menu)
 
 	gtk_list_store_append (store, &iter);
 	gtk_list_store_set (store, &iter,
-			    COLUMN_NAME, _("Add or Remove..."),
+			    COLUMN_NAME, _("Add or Remove…"),
 			    COLUMN_ENCODING, NULL,
 			    COLUMN_CONFIGURE_ROW, TRUE,
 			    -1);

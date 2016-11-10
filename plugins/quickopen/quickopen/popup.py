@@ -87,7 +87,7 @@ class Popup(Gtk.Dialog):
         action_area.set_spacing(6)
 
         self._entry = Gtk.SearchEntry()
-        self._entry.set_placeholder_text(_('Type to search...'))
+        self._entry.set_placeholder_text(_('Type to search…'))
 
         self._entry.connect('changed', self.on_changed)
         self._entry.connect('key-press-event', self.on_key_press_event)

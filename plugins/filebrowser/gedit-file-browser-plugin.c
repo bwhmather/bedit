@@ -904,7 +904,7 @@ on_confirm_no_trash_cb (GeditFileBrowserWidget *widget,
 	if (files->next == NULL)
 	{
 		normal = gedit_file_browser_utils_file_basename (G_FILE (files->data));
-	    	secondary = g_strdup_printf (_("The file \"%s\" cannot be moved to the trash."), normal);
+	    	secondary = g_strdup_printf (_("The file “%s” cannot be moved to the trash."), normal);
 		g_free (normal);
 	}
 	else
@@ -940,7 +940,7 @@ on_confirm_delete_cb (GeditFileBrowserWidget *widget,
 	if (paths->next == NULL)
 	{
 		normal = get_filename_from_path (GTK_TREE_MODEL (store), (GtkTreePath *)(paths->data));
-		message = g_strdup_printf (_("Are you sure you want to permanently delete \"%s\"?"), normal);
+		message = g_strdup_printf (_("Are you sure you want to permanently delete “%s”?"), normal);
 		g_free (normal);
 	}
 	else

@@ -766,7 +766,7 @@ gedit_file_already_open_warning_info_bar_new (GFile *location)
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
 	/* Translators: the access key chosen for this string should be
 	 different from other main menu access keys (Open, Edit, View...) */
-				 _("D_on't Edit"),
+				 _("D_on’t Edit"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
@@ -849,7 +849,7 @@ gedit_externally_modified_saving_error_info_bar_new (GFile        *location,
 				 _("S_ave Anyway"),
 				 GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("D_on't Save"),
+				 _("D_on’t Save"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
@@ -939,7 +939,7 @@ gedit_no_backup_saving_error_info_bar_new (GFile        *location,
 				 _("S_ave Anyway"),
 				 GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("D_on't Save"),
+				 _("D_on’t Save"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);
@@ -1229,7 +1229,7 @@ gedit_invalid_character_info_bar_new (GFile *location)
 				 _("S_ave Anyway"),
 				 GTK_RESPONSE_YES);
 	gtk_info_bar_add_button (GTK_INFO_BAR (info_bar),
-				 _("D_on't Save"),
+				 _("D_on’t Save"),
 				 GTK_RESPONSE_CANCEL);
 	gtk_info_bar_set_message_type (GTK_INFO_BAR (info_bar),
 				       GTK_MESSAGE_WARNING);

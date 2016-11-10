@@ -107,7 +107,7 @@ static const GOptionEntry options[] =
 	/* Version */
 	{
 		"version", 'V', 0, G_OPTION_ARG_NONE, NULL,
-		N_("Show the application's version"), NULL
+		N_("Show the application’s version"), NULL
 	},
 
 	/* List available encodings */
@@ -155,7 +155,7 @@ static const GOptionEntry options[] =
 	/* collects file arguments */
 	{
 		G_OPTION_REMAINING, '\0', 0, G_OPTION_ARG_FILENAME_ARRAY, NULL, NULL,
-		N_("[FILE...] [+LINE[:COLUMN]]")
+		N_("[FILE…] [+LINE[:COLUMN]]")
 	},
 
 	{NULL}

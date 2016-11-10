@@ -224,7 +224,7 @@ gedit_print_job_init (GeditPrintJob *job)
 {
 	job->gsettings = g_settings_new ("org.gnome.gedit.preferences.print");
 
-	job->status_string = g_strdup (_("Preparing..."));
+	job->status_string = g_strdup (_("Preparing…"));
 }
 
 static void
@@ -623,7 +623,7 @@ draw_page_cb (GtkPrintOperation *operation,
 		n_pages = gtk_source_print_compositor_get_n_pages (job->compositor);
 
 		g_free (job->status_string);
-		job->status_string = g_strdup_printf (_("Rendering page %d of %d..."), page_nr + 1, n_pages);
+		job->status_string = g_strdup_printf (_("Rendering page %d of %d…"), page_nr + 1, n_pages);
 
 		job->progress = page_nr / (2.0 * n_pages) + 0.5;
 

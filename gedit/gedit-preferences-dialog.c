@@ -598,7 +598,7 @@ file_copy (const gchar  *name,
 		g_set_error (error,
 			     G_FILE_ERROR,
 			     g_file_error_from_errno (save_errno),
-			     _("Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"),
+			     _("Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"),
 			     display_filename,
 			     g_strerror (save_errno));
 
@@ -858,7 +858,7 @@ uninstall_scheme_clicked (GtkButton              *button,
 	if (!uninstall_style_scheme (scheme))
 	{
 		gedit_warning (GTK_WINDOW (dlg),
-		               _("Could not remove color scheme \"%s\"."),
+		               _("Could not remove color scheme “%s”."),
 		               gtk_source_style_scheme_get_name (scheme));
 	}
 }

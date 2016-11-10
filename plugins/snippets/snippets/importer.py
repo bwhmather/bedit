@@ -52,10 +52,10 @@ class Importer:
 
     def import_file(self, filename):
         if not os.path.exists(filename):
-            return _('File "%s" does not exist') % filename
+            return _('File “%s” does not exist') % filename
 
         if not os.path.isfile(filename):
-            return _('File "%s" is not a valid snippets file') % filename
+            return _('File “%s” is not a valid snippets file') % filename
 
         # Find destination for file to copy to
         destdir, dest = self.import_destination(filename)
@@ -72,7 +72,7 @@ class Importer:
 
         # Add library
         if not Library().add_user_library(dest):
-            return _('Imported file "%s" is not a valid snippets file') % os.path.basename(dest)
+            return _('Imported file “%s” is not a valid snippets file') % os.path.basename(dest)
 
     def import_xml(self):
         return self.import_file(self.filename)
@@ -82,7 +82,7 @@ class Importer:
         status = os.system('cd %s; %s "%s"' % (dirname, cmd, self.filename))
 
         if status != 0:
-            return _('The archive "%s" could not be extracted' % self.filename)
+            return _('The archive “%s” could not be extracted' % self.filename)
 
         errors = []
 
@@ -113,10 +113,10 @@ class Importer:
 
     def run(self):
         if not os.path.exists(self.filename):
-            return _('File "%s" does not exist') % self.filename
+            return _('File “%s” does not exist') % self.filename
 
         if not os.path.isfile(self.filename):
-            return _('File "%s" is not a valid snippets archive') % self.filename
+            return _('File “%s” is not a valid snippets archive') % self.filename
 
         (root, ext) = os.path.splitext(self.filename)
 
@@ -129,6 +129,6 @@ class Importer:
             if self.filename.endswith(k):
                 return v()
 
-        return _('File "%s" is not a valid snippets archive') % self.filename
+        return _('File “%s” is not a valid snippets archive') % self.filename
 
 # ex:ts=4:et:

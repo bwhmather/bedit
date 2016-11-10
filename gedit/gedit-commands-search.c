@@ -139,7 +139,7 @@ text_not_found (GeditWindow        *window,
 				       window->priv->generic_message_cid,
 				       /* Translators: %s is replaced by the text
 				          entered by the user in the search box */
-				       _("\"%s\" not found"), truncated_text);
+				       _("“%s” not found"), truncated_text);
 
 	g_free (truncated_text);
 }

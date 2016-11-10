@@ -2766,7 +2766,7 @@ on_location_entry_activate (GtkEntry               *entry,
 		gchar *display_name, *msg;
 
 		display_name = g_file_get_parse_name (new_root);
-		msg = g_strdup_printf (_("Error when loading '%s': "
+		msg = g_strdup_printf (_("Error when loading “%s”: "
 		                         "No such directory"),
 		                       display_name);
 

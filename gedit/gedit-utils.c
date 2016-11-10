@@ -918,7 +918,7 @@ get_ui_objects_with_translation_domain (const gchar  *filename,
 
 		if (!*gobj)
 		{
-			*error_widget = handle_builder_error (_("Unable to find the object '%s' inside file %s."),
+			*error_widget = handle_builder_error (_("Unable to find the object “%s” inside file %s."),
 							      name,
 							      filename_markup),
 			ret = FALSE;

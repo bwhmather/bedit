@@ -571,7 +571,7 @@ create_encoding_combo (GeditFileChooserDialogOSX *dialog,
 	config = [[ConfigureEncodings alloc] initWithDialog:dialog];
 
 	[menu addItem:[NSMenuItem separatorItem]];
-	citem = [[EncodingItem alloc] initWithTitle:[NSString stringWithUTF8String:_("Add or Remove...")]
+	citem = [[EncodingItem alloc] initWithTitle:[NSString stringWithUTF8String:_("Add or Remove…")]
 	                                     action:@selector(activateConfigure:)
 	                              keyEquivalent:@""];
 

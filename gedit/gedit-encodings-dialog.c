@@ -188,7 +188,7 @@ reset_button_clicked_cb (GtkWidget            *button,
 							 GTK_BUTTONS_NONE,
 							 "%s",
 							 _("Do you really want to reset the "
-							   "character encodings' preferences?")));
+							   "character encodings’ preferences?")));
 
 	gtk_dialog_add_buttons (msg_dialog,
 				_("_Cancel"), GTK_RESPONSE_CANCEL,

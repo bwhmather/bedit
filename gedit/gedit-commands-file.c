@@ -258,7 +258,7 @@ load_file_list (GeditWindow             *window,
 
 		gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 					       window->priv->generic_message_cid,
-					       _("Loading file '%s'\342\200\246"),
+					       _("Loading file “%s”\342\200\246"),
 					       uri_for_display);
 
 		g_free (uri_for_display);
@@ -555,7 +555,7 @@ replace_read_only_file (GtkWindow *parent,
 					 GTK_DIALOG_DESTROY_WITH_PARENT,
 					 GTK_MESSAGE_QUESTION,
 					 GTK_BUTTONS_NONE,
-					 _("The file \"%s\" is read-only."),
+					 _("The file “%s” is read-only."),
 				         name_for_display);
 	g_free (name_for_display);
 
@@ -622,7 +622,7 @@ change_compression (GtkWindow *parent,
 	if (compressed)
 	{
 		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-							  _("The file \"%s\" was previously saved as plain "
+							  _("The file “%s” was previously saved as plain "
 							    "text and will now be saved using compression."),
 							  name_for_display);
 
@@ -631,7 +631,7 @@ change_compression (GtkWindow *parent,
 	else
 	{
 		gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
-							  _("The file \"%s\" was previously saved "
+							  _("The file “%s” was previously saved "
 							    "using compression and will now be saved as plain text."),
 							  name_for_display);
 		button_label = _("_Save As Plain Text");
@@ -749,7 +749,7 @@ save_dialog_response_cb (GeditFileChooserDialog *dialog,
 
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 				       window->priv->generic_message_cid,
-				       _("Saving file '%s'\342\200\246"),
+				       _("Saving file “%s”\342\200\246"),
 				       parse_name);
 
 	g_free (parse_name);
@@ -1016,7 +1016,7 @@ gedit_commands_save_document_async (GeditDocument       *document,
 	uri_for_display = gedit_document_get_uri_for_display (document);
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 				       window->priv->generic_message_cid,
-				       _("Saving file '%s'\342\200\246"),
+				       _("Saving file “%s”\342\200\246"),
 				       uri_for_display);
 
 	g_free (uri_for_display);
@@ -1426,7 +1426,7 @@ do_revert (GeditWindow *window,
 
 	gedit_statusbar_flash_message (GEDIT_STATUSBAR (window->priv->statusbar),
 				       window->priv->generic_message_cid,
-				       _("Reverting the document '%s'\342\200\246"),
+				       _("Reverting the document “%s”\342\200\246"),
 				       docname);
 
 	g_free (docname);
@@ -1473,7 +1473,7 @@ revert_dialog (GeditWindow   *window,
 	gedit_debug (DEBUG_COMMANDS);
 
 	docname = gedit_document_get_short_name_for_display (doc);
-	primary_msg = g_strdup_printf (_("Revert unsaved changes to document '%s'?"),
+	primary_msg = g_strdup_printf (_("Revert unsaved changes to document “%s”?"),
 	                               docname);
 	g_free (docname);
 

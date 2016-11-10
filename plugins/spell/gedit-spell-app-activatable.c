@@ -140,11 +140,11 @@ gedit_spell_app_activatable_activate (GeditAppActivatable *activatable)
 	gtk_application_set_accels_for_action (GTK_APPLICATION (priv->app),"win.check-spell", accels);
 	priv->menu_ext = gedit_app_activatable_extend_menu (activatable, "spell-section");
 
-	item = g_menu_item_new (_("_Check Spelling..."), "win.check-spell");
+	item = g_menu_item_new (_("_Check Spelling…"), "win.check-spell");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
 
-	item = g_menu_item_new (_("Set _Language..."), "win.config-spell");
+	item = g_menu_item_new (_("Set _Language…"), "win.config-spell");
 	gedit_menu_extension_append_menu_item (priv->menu_ext, item);
 	g_object_unref (item);
 

@@ -71,7 +71,7 @@ class Manager(Gtk.Window, Gtk.Buildable):
         return nodes
 
     def add_new_snippet_node(self, parent):
-        return self.model.append(parent, ('<i>' + _('Add a new snippet...') + \
+        return self.model.append(parent, ('<i>' + _('Add a new snippet…') + \
                 '</i>', '', None, None))
 
     def fill_language(self, piter, expand=True):
