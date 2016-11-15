@@ -209,7 +209,9 @@ class OutputPanel(UniqueById):
 
         # get the offset within the buffer from the x,y coordinates
         buff_x, buff_y = view.window_to_buffer_coords(Gtk.TextWindowType.TEXT, x, y)
-        iter_at_xy = view.get_iter_at_location(buff_x, buff_y)
+        (over_text, iter_at_xy) = view.get_iter_at_location(buff_x, buff_y)
+        if not over_text:
+            return None
         offset = iter_at_xy.get_offset()
 
         # find the first link that contains the offset
