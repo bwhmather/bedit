@@ -1712,6 +1712,11 @@ find_extension_point_section (GMenuModel  *model,
 
 			subsection = g_menu_model_get_item_link (model, i, G_MENU_LINK_SECTION);
 
+			if (!subsection)
+			{
+				subsection = model;
+			}
+
 			j_items = g_menu_model_get_n_items (subsection);
 
 			for (j = 0; j < j_items && !section; j++)
