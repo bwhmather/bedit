@@ -792,7 +792,6 @@ on_virtual_root_changed_cb (GeditFileBrowserStore  *store,
 	g_settings_set_string (priv->settings,
 	                       FILEBROWSER_ROOT,
 	                       uri_root);
-	g_free (uri_root);
 
 	virtual_root = gedit_file_browser_store_get_virtual_root (store);
 
@@ -819,6 +818,7 @@ on_virtual_root_changed_cb (GeditFileBrowserStore  *store,
 	g_signal_handlers_disconnect_by_func (priv->window,
 	                                      G_CALLBACK (on_tab_added_cb),
 	                                      plugin);
+	g_free (uri_root);
 }
 
 static void
