@@ -778,13 +778,13 @@ on_row_activated (GtkTreeView               *treeview,
                   GtkTreeViewColumn         *column G_GNUC_UNUSED,
                   GeditOpenDocumentSelector *selector)
 {
+	GtkTreeModel *liststore = GTK_TREE_MODEL (selector->liststore);
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 	gchar *uri;
 
-	gtk_tree_model_get_iter (GTK_TREE_MODEL (selector->liststore), &iter, path);
-	gtk_tree_model_get (GTK_TREE_MODEL (selector->liststore),
-	                    &iter,
+	g_return_if_fail (gtk_tree_model_get_iter (liststore, &iter, path));
+	gtk_tree_model_get (liststore, &iter,
 	                    URI_COLUMN, &uri,
 	                    -1);
 
