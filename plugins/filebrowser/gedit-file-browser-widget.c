@@ -882,30 +882,30 @@ on_locations_treeview_row_activated (GtkTreeView            *locations_treeview,
 {
 	GeditFileBrowserWidgetPrivate *priv = obj->priv;
 	GtkTreeIter iter;
-	guint id;
+	guint id = G_MAXUINT;
 	GFile *file;
 
-	gtk_tree_model_get_iter (GTK_TREE_MODEL (priv->locations_model), &iter, path);
-	gtk_tree_model_get (GTK_TREE_MODEL (priv->locations_model), &iter, COLUMN_ID, &id, -1);
-
-	switch (id)
+	if (gtk_tree_model_get_iter (GTK_TREE_MODEL (priv->locations_model), &iter, path))
 	{
-		case BOOKMARKS_ID:
-			gedit_file_browser_widget_show_bookmarks (obj);
-			break;
+		gtk_tree_model_get (GTK_TREE_MODEL (priv->locations_model), &iter, COLUMN_ID, &id, -1);
+	}
 
-		case PATH_ID:
-			gtk_tree_model_get (GTK_TREE_MODEL (priv->locations_model),
-			                    &iter,
-			                    COLUMN_FILE,
-			                    &file,
-			                    -1);
+	if (id == BOOKMARKS_ID)
+	{
+		gedit_file_browser_widget_show_bookmarks (obj);
+	}
+	else if (id == PATH_ID)
+	{
+		gtk_tree_model_get (GTK_TREE_MODEL (priv->locations_model),
+			            &iter,
+			            COLUMN_FILE,
+			            &file,
+			            -1);
 
-			gedit_file_browser_store_set_virtual_root_from_location (priv->file_store, file);
+		gedit_file_browser_store_set_virtual_root_from_location (priv->file_store, file);
 
-			g_object_unref (file);
-			gtk_cell_view_set_displayed_row (GTK_CELL_VIEW (priv->locations_cellview), path);
-			break;
+		g_object_unref (file);
+		gtk_cell_view_set_displayed_row (GTK_CELL_VIEW (priv->locations_cellview), path);
 	}
 
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->locations_button), FALSE);

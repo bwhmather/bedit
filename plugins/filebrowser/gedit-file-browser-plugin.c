@@ -871,7 +871,11 @@ get_filename_from_path (GtkTreeModel *model,
 	GFile *location;
 	gchar *ret = NULL;
 
-	gtk_tree_model_get_iter (model, &iter, path);
+	if (!gtk_tree_model_get_iter (model, &iter, path))
+	{
+		return NULL;
+	}
+
 	gtk_tree_model_get (model, &iter,
 			    GEDIT_FILE_BROWSER_STORE_COLUMN_LOCATION, &location,
 			    -1);
