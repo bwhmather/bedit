@@ -434,9 +434,9 @@ create_model (GtkWidget       *listview,
 	}
 
 	/* fall back to select the first iter */
-	if (!gtk_tree_selection_get_selected (selection, NULL, NULL))
+	if (!gtk_tree_selection_get_selected (selection, NULL, NULL) &&
+	    gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter))
 	{
-		gtk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter);
 		gtk_tree_selection_select_iter (selection, &iter);
 	}
 
