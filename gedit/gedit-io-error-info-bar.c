@@ -241,8 +241,8 @@ parse_gio_error (gint          code,
 						host_markup = g_markup_escape_text (host_name, -1);
 						g_free (host_name);
 
-						/* Translators: %s is a host name */
 						*message_details = g_strdup_printf (
+							/* Translators: %s is a host name */
 							_("Host “%s” could not be found. "
 							"Please check that your proxy settings "
 							"are correct and try again."),

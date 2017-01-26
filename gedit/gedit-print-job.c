@@ -538,13 +538,13 @@ create_compositor (GeditPrintJob *job)
 
 		left = g_strdup_printf (_("File: %s"), name_to_display);
 
-		/* Translators: %N is the current page number, %Q is the total
-		 * number of pages (ex. Page 2 of 10)
-		 */
 		gtk_source_print_compositor_set_header_format (job->compositor,
 							       TRUE,
 							       left,
 							       NULL,
+							       /* Translators: %N is the current page number, %Q is the total
+							        * number of pages (ex. Page 2 of 10)
+							        */
 							       _("Page %N of %Q"));
 
 		g_free (doc_name);
