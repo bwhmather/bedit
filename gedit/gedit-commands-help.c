@@ -104,7 +104,7 @@ _gedit_cmd_help_about (GeditWindow *window)
 		NULL
 	};
 
-	static const gchar copyright[] = "Copyright \xc2\xa9 1998-2016 - the gedit team";
+	static const gchar copyright[] = "Copyright \xc2\xa9 1998-2017 - the gedit team";
 
 	static const gchar comments[] = \
 		N_("gedit is a small and lightweight text editor for the GNOME Desktop");
