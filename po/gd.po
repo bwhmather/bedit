@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the gedit package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 # adc <alexd@garrit.freeserve.co.uk>, 2013.
-# GunChleoc <fios@foramnagaidhlig.net>, 2014, 2015, 2016.
+# GunChleoc <fios@foramnagaidhlig.net>, 2014, 2015, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
-"keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-06-08 22:23+0000\n"
-"PO-Revision-Date: 2016-06-10 16:11+0100\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gedit"
+"&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-02-23 23:55+0000\n"
+"PO-Revision-Date: 2017-03-07 13:18+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
 "Language: gd\n"
@@ -24,6 +24,11 @@ msgstr ""
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Deasaich faidhlichean teacsa"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -33,7 +38,7 @@ msgstr ""
 "an gedit. 'S e deasaiche teacsa coitcheann cumhachdach a th' ann an gedit "
 "ged a tha e ag amas a bhith simplidh agus furasta cleachdadh."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -43,7 +48,7 @@ msgstr ""
 "sgrìobhadh, 's e acainn sheasmhach a bhios ann an gedit gus na tha fainear "
 "dhut a thoirt gu buil."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -55,25 +60,23 @@ msgstr ""
 msgid "Text Editor"
 msgstr "Deasaiche teacsa"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "Deasaich faidhlichean teacsa"
-
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "Deasaiche teacsa gedit"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-msgid "Text;Editor;"
-msgstr "Text;Editor;Deasaiche;teacsa;teagsa;deasaich;deasachadh;"
+msgid "Text;Editor;Plaintext;Write;"
+msgstr "Teacsa;Deasaiche;Teacsa lom;Sgrìobh;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-msgid "Open a New Window"
-msgstr "Fosgail uinneag ùr"
+#| msgid "_New Window"
+msgid "New Window"
+msgstr "Uinneag ùr"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-msgid "Open a New Document"
-msgstr "Fosgail sgrìobhainn ùr"
+#| msgid "N_ext Document"
+msgid "New Document"
+msgstr "Sgrìobhainn ùr"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
@@ -1232,6 +1235,7 @@ msgstr "'S e pasgan a th' ann an \"%s\"."
 msgid "“%s” is not a valid location."
 msgstr "Chan e ionad dhligheach a th' ann an \"%s\"."
 
+#. Translators: %s is a host name
 #: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
@@ -1604,6 +1608,9 @@ msgstr "'Ga ullachadh..."
 msgid "File: %s"
 msgstr "Faidhle: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Duilleag %N de %Q"
@@ -1751,36 +1758,36 @@ msgstr "_Seall àireamhan loidhne"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:671
+#: ../gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d à %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:763
+#: ../gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_Pasgadh timcheall"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "Maidsich mar eas-preisean _riaghailteach"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "Faclan s_làna a-mhàin"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:801
+#: ../gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "Aire do litrichean _mòra 's beaga"
 
-#: ../gedit/gedit-view-frame.c:1023
+#: ../gedit/gedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "An sreang a tha thu airson lorg"
 
-#: ../gedit/gedit-view-frame.c:1035
+#: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "An loidhne dhan a bheil thu airson an cùrsair a ghluasad"
 
@@ -1933,8 +1940,8 @@ msgid "_Paste"
 msgstr "Cuir a_nn"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Sguab às"
@@ -3121,7 +3128,7 @@ msgstr "Thachair mearachd rè luchdadh pasgain"
 msgid "An error occurred"
 msgstr "Thachair mearachd"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -3129,28 +3136,28 @@ msgstr ""
 "Chan urrainn dhuinn am faidhle a ghluasad dhan sgudal,\n"
 "a bheil thu airson a sguabadh às gu buan?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Cha ghabh am faidhle \"%s\" gluasad dhan sgudal."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Cha ghabh na faidhlichean a thagh thu gluasad dhan sgudal."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr ""
 "A bheil thu cinnteach gu bheil thu airson \"%s\" a sguabadh às gu buan?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr ""
 "A bheil thu cinnteach gu bheil thu airson na faidhlichean a thagh thu a "
 "sguabadh às gu buan?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Ma sguabas tu às nì, thèid e air chall gu buan."
 
@@ -3747,11 +3754,11 @@ msgstr "Dearbhair-litreachaidh"
 msgid "Checks the spelling of the current document."
 msgstr "Dearbhaidh seo an litreachadh san sgrìobhainn làithreach."
 
-#: ../plugins/time/gedit-time-plugin.c:270
+#: ../plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time..."
 msgstr "Cuir a-_steach ceann-là is àm..."
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Fòrmatan ri làimh"
 
@@ -3838,6 +3845,15 @@ msgstr "Cuir a-steach ceann-là 's àm"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Cuiridh seo an ceann-là 's àm a-steach air àite a' chùrsair."
+
+#~ msgid "Text;Editor;"
+#~ msgstr "Text;Editor;Deasaiche;teacsa;teagsa;deasaich;deasachadh;"
+
+#~ msgid "Open a New Window"
+#~ msgstr "Fosgail uinneag ùr"
+
+#~ msgid "Open a New Document"
+#~ msgstr "Fosgail sgrìobhainn ùr"
 
 #~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 #~ msgstr "Suidhich meud is ionad na h-uinneige (LEUDxÀIRDE+X+Y)"
@@ -4339,9 +4355,6 @@ msgstr "Cuiridh seo an ceann-là 's àm a-steach air àite a' chùrsair."
 
 #~ msgid "Insert current date and time at the cursor position"
 #~ msgstr "Cuir a-steach an ceann-là is àm làithreach air àite a' chùrsair"
-
-#~ msgid "Text;Editor;Plaintext;Write;"
-#~ msgstr "Teacsa;Deasaiche;Teacsa lom;Sgrìobh;"
 
 #~ msgid "Open Files"
 #~ msgstr "Fosgail faidhlichean"
