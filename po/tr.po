@@ -14,21 +14,26 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-06-10 15:12+0000\n"
-"PO-Revision-Date: 2016-08-06 22:06+0300\n"
-"Last-Translator: Muhammet Kara <muhammetk@gmail.com>\n"
+"POT-Creation-Date: 2017-02-23 23:55+0000\n"
+"PO-Revision-Date: 2017-03-01 18:27+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-POOTLE-MTIME: 1433962102.000000\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Metin dosyalarını düzenle"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -38,17 +43,17 @@ msgstr ""
 "kullanım kolaylığını hedeflemekle birlikte, gedit güçlü bir genel amaçlı "
 "metin düzenleyicisidir."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
 "tool to accomplish your task."
 msgstr ""
 "Sonraki en çok satan kitabı yazıyor, yenilikçi bir uygulamayı programlıyor "
-"ya da sadece bazı hızlı notlar alıyor olun; gedit, bu görevleri yerine "
+"ya da yalnızca bazı hızlı notlar alıyor olun; gedit, bu görevleri yerine "
 "getirmede güvenilir bir araç olacaktır."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -60,29 +65,25 @@ msgstr ""
 msgid "Text Editor"
 msgstr "Metin Düzenleyici"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "Metin dosyalarını düzenle"
-
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "gedit Metin Düzenleyici"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-msgid "Text;Editor;"
-msgstr "Metin;Düzenleyici;"
+msgid "Text;Editor;Plaintext;Write;"
+msgstr "Metin;Düzenleyici;Düzyazı;Yaz;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-msgid "Open a New Window"
-msgstr "Yeni Pencere Aç"
+msgid "New Window"
+msgstr "Yeni Pencere"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-msgid "Open a New Document"
-msgstr "Yeni Belge Aç"
+msgid "New Document"
+msgstr "Yeni Belge"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
-msgstr "Öntanımlı Yazıtipini Kullan"
+msgstr "Öntanımlı Yazı Tipini Kullan"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
@@ -91,9 +92,9 @@ msgid ""
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"Metin düzenleme için sistemin öntanımlı yazıtipi yerine gedit'e belirtilen "
-"yazıtipininkullanılması. Bu seçenek kapalı ise, sistem yazıtipi yerine "
-"\"Editor Font\" seçeneğinde belirlenmiş olan yazıtipi kullanılır."
+"Metin düzenleme için sistemin öntanımlı yazı tipi yerine gedit'e belirtilen "
+"yazı tipinin kullanılması. Bu seçenek kapalı ise, sistem yazı tipi yerine "
+"\"Editor Font\" seçeneğinde belirlenmiş olan yazı tipi kullanılır."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
 msgid "'Monospace 12'"
@@ -101,14 +102,14 @@ msgstr "'Monospace 12'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
-msgstr "Düzenleyici Yazıtipi"
+msgstr "Düzenleyici Yazı Tipi"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
-"Düzenleme bölgesi için kullanılacak özel bir yazıtipi. Bu, sadece \"Use "
+"Düzenleme bölgesi için kullanılacak özel bir yazı tipi. Bu, yalnızca \"Use "
 "Default Font\" seçeneği kapalı ise etki gösterir."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:6
@@ -130,7 +131,7 @@ msgstr "Gedit'in kaydettiği dosyalar için yedek oluşturup oluşturmayacağı.
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
-msgstr "Otomatik Kaydet"
+msgstr "Kendiliğinden Kaydet"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid ""
@@ -144,7 +145,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid "Autosave Interval"
-msgstr "Otomatik Kaydetme Sıklığı"
+msgstr "Kendiliğinden Kaydetme Sıklığı"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid ""
@@ -152,7 +153,7 @@ msgid ""
 "This will only take effect if the \"Autosave\" option is turned on."
 msgstr ""
 "Gedit'in değiştirilmiş dosyaları kaç dakika sonra kendiliğinden kaydedeceği. "
-"Bu, sadece \"Auto Save\" seçeneği açık ise etki gösterir."
+"Bu, yalnızca \"Auto Save\" seçeneği açık ise etki gösterir."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Maximum Number of Undo Actions"
@@ -195,7 +196,7 @@ msgid ""
 msgstr ""
 "Satır kaydırma kipiyle birlikte kullanılan son bölünmüş kipi belirtir, "
 "böylece kaydırma kipi kapalıyken de bölünmüş kip seçimini hatırlayabiliriz. "
-"Kelime düzeyinde kaydırma için \"sözcük\" (\"word\"), karakter düzeyinde "
+"Sözcük düzeyinde kaydırma için \"sözcük\" (\"word\"), karakter düzeyinde "
 "kaydırma için \"karakter\" (\"char\") kullanın."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:20
@@ -238,7 +239,7 @@ msgstr "Geçerli Satırı Vurgula"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Whether gedit should highlight the current line."
-msgstr "Gedit'in mevcut satırı vurgulamasının etkinleştirilmesi."
+msgstr "Gedit'in geçerli satırı vurgulamasının etkinleştirilmesi."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Highlight Matching Brackets"
@@ -362,7 +363,7 @@ msgid ""
 msgstr ""
 "Defter sekmelerinin ne zaman gösterileceğini belirtir. Sekmelerin hiçbir "
 "zaman gösterilmemesi için \"hiçbir zaman\" (\"never\"), sekmelerin her zaman "
-"gösterilmesi için \"her zaman\" (\"always\") ve sadece birden fazla sekme "
+"gösterilmesi için \"her zaman\" (\"always\") ve yalnızca birden fazla sekme "
 "varsa gösterilmesi için de \"otomatik\" (\"auto\") kullanın. Değerlerin "
 "büyük/küçük harf duyarlı olduğunu unutmayın; tam olarak burada yer aldığı "
 "gibi kullanın."
@@ -450,13 +451,13 @@ msgstr "'Monospace 9'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid "Body Font for Printing"
-msgstr "Yazdırma için Gövde Yazıtipi"
+msgstr "Yazdırma için Gövde Yazı Tipi"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"Belge yazdırırken belge gövdesi için hangi yazıtipinin kullanılacağını "
+"Belge yazdırırken belge gövdesi için hangi yazı tipinin kullanılacağını "
 "belirtir."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
@@ -465,15 +466,15 @@ msgstr "'Sans 11'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid "Header Font for Printing"
-msgstr "Yazdırma İçin Sayfa Başlığı Yazıtipi"
+msgstr "Yazdırma İçin Sayfa Başlığı Yazı Tipi"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:73
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"Yazdırma işleminde satır sayıları için kullanılacak yazıtipini belirtir. Bu, "
-"sadece \"Print Header\" açık ise etki gösterir."
+"Yazdırma işleminde satır sayıları için kullanılacak yazı tipini belirtir. "
+"Bu, yalnızca \"Print Header\" açık ise etki gösterir."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 8'"
@@ -481,15 +482,15 @@ msgstr "'Sans 8'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Line Number Font for Printing"
-msgstr "Yazdırma için Satır Sayısı Yazıtipi"
+msgstr "Yazdırma için Satır Sayısı Yazı Tipi"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"Yazdırma işleminde satır sayıları için kullanılacak yazıtipini belirtir. Bu, "
-"sadece \"Print Line Numbers\" seçeneği sıfırdan başka bir şey ise etki "
+"Yazdırma işleminde satır sayıları için kullanılacak yazı tipini belirtir. "
+"Bu, yalnızca \"Print Line Numbers\" seçeneği sıfırdan başka bir şey ise etki "
 "gösterir."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:77
@@ -537,8 +538,9 @@ msgid ""
 msgstr ""
 "Dosya aç/kaydet seçicisindeki Karakter Kodlaması menüsünde gösterilen aday "
 "kodlamaların listesi. \"GEÇERLİ\" halen kullanılan karakter kodlamasını "
-"temsil eder. Sadece tanınmış kodlamaları kullanılır. Varsayılan değer gedit "
-"ülkenize ve dilinize göre uygun varsayılanlar seçmediği sürece boş listedir."
+"temsil eder. Yalnızca tanınmış kodlamaları kullanılır. Varsayılan değer "
+"gedit ülkenize ve dilinize göre uygun varsayılanlar seçmediği sürece boş "
+"listedir."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Active plugins"
@@ -957,7 +959,7 @@ msgstr "Salt Okunur"
 #: ../gedit/gedit-encodings-combo-box.c:299
 #: ../gedit/gedit-file-chooser-dialog-osx.c:565
 msgid "Automatically Detected"
-msgstr "Otomatik Algıla"
+msgstr "Kendiliğinden Algıla"
 
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
@@ -1072,6 +1074,7 @@ msgstr "\"%s\" bir dizindir."
 msgid "“%s” is not a valid location."
 msgstr "\"%s\" geçerli bir konum değil."
 
+#. Translators: %s is a host name
 #: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
@@ -1093,7 +1096,7 @@ msgstr ""
 #: ../gedit/gedit-io-error-info-bar.c:269
 #, c-format
 msgid "“%s” is not a regular file."
-msgstr "\"%s\" normal bir dosya değil."
+msgstr "\"%s\" sıradan bir dosya değil."
 
 #: ../gedit/gedit-io-error-info-bar.c:274
 msgid "Connection timed out. Please try again."
@@ -1124,7 +1127,7 @@ msgstr "\"%s\" konumuna şu anda erişilemiyor."
 
 #: ../gedit/gedit-io-error-info-bar.c:456
 msgid "Your system is offline. Check your network."
-msgstr "Sisteminiz çevrimdışı. Ağınızı kontrol edin."
+msgstr "Sisteminiz çevrim dışı. Ağınızı denetleyin."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
@@ -1319,7 +1322,7 @@ msgstr ""
 
 #: ../gedit/gedit-io-error-info-bar.c:1088
 msgid "A file with the same name already exists. Please use a different name."
-msgstr "Aynı isimde başka bir dosya zaten var. Lütfen başka bir isim kullanın."
+msgstr "Aynı adda başka bir dosya zaten var. Lütfen başka bir ad kullanın."
 
 #: ../gedit/gedit-io-error-info-bar.c:1093
 msgid ""
@@ -1327,7 +1330,7 @@ msgid ""
 "the file names. Please use a shorter name."
 msgstr ""
 "Dosyayı kaydetmeye çalıştığınız diskte dosya boyutu sınırı var. Lütfen daha "
-"kısa bir isim kullanın."
+"kısa bir ad kullanın."
 
 #: ../gedit/gedit-io-error-info-bar.c:1104
 msgid ""
@@ -1385,7 +1388,7 @@ msgstr ""
 #: ../gedit/gedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
-msgstr "_Sistem eş aralıklı yazıtipini (%s) kullan"
+msgstr "_Sistem eş aralıklı yazı tipini (%s) kullan"
 
 #: ../gedit/gedit-preferences-dialog.c:601
 #, c-format
@@ -1422,6 +1425,9 @@ msgstr "Hazırlanıyor..."
 msgid "File: %s"
 msgstr "Dosya: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Sayfa %N / %Q"
@@ -1514,7 +1520,7 @@ msgstr "%s dosyası kaydedilirken hata"
 
 #: ../gedit/gedit-tab.c:1570
 msgid "Name:"
-msgstr "İsim:"
+msgstr "Ad:"
 
 #: ../gedit/gedit-tab.c:1571
 msgid "MIME Type:"
@@ -1526,7 +1532,7 @@ msgstr "Kodlama:"
 
 #: ../gedit/gedit-utils.c:841
 msgid "Please check your installation."
-msgstr "Lütfen kurulumunuzu kontrol edin."
+msgstr "Lütfen kurulumunuzu denetleyin."
 
 #: ../gedit/gedit-utils.c:902
 #, c-format
@@ -1565,36 +1571,36 @@ msgstr "Satır sayılarını _göster"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:671
+#: ../gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d / %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:763
+#: ../gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_Satır Bölme"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "_Düzenli İfade olarak Eşleştir"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
-msgstr "Sadece Tüm _Kelimeyi Eşleştir"
+msgstr "Yalnızca Tüm _Sözcüğü Eşleştir"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:801
+#: ../gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "Büyük/Küçük _Harf Eşleştir"
 
-#: ../gedit/gedit-view-frame.c:1023
+#: ../gedit/gedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "Arama yapılacak dizgi"
 
-#: ../gedit/gedit-view-frame.c:1035
+#: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "İmleci taşımak istediğiniz satır"
 
@@ -1685,7 +1691,6 @@ msgid "Text wrapping"
 msgstr "Metin kaydırma"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:12
-#| msgid "File"
 msgid "_File"
 msgstr "_Dosya"
 
@@ -1724,7 +1729,6 @@ msgid "_Quit"
 msgstr "Çı_k"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:24
-#| msgid "Edit"
 msgid "_Edit"
 msgstr "Düz_en"
 
@@ -1749,8 +1753,8 @@ msgid "_Paste"
 msgstr "_Yapıştır"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Sil"
@@ -1770,7 +1774,6 @@ msgid "_Preferences"
 msgstr "_Tercihler"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:34
-#| msgid "View"
 msgid "_View"
 msgstr "G_örünüm"
 
@@ -1799,7 +1802,6 @@ msgid "_Highlight Mode…"
 msgstr "_Vurgu Kipi…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:39
-#| msgid "Search"
 msgid "_Search"
 msgstr "_Ara"
 
@@ -1832,12 +1834,10 @@ msgid "Go to _Line…"
 msgstr "Satıra _Git..."
 
 #: ../gedit/resources/gtk/menus-common.ui.h:46
-#| msgid "Tools"
 msgid "_Tools"
 msgstr "_Araçlar"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:47
-#| msgid "Documents"
 msgid "_Documents"
 msgstr "_Belgeler"
 
@@ -2001,7 +2001,7 @@ msgstr "Metin _bölmeyi etkinleştir"
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:9
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:11
 msgid "Do not _split words over two lines"
-msgstr "Ke_limeleri iki ayrı satıra bölme"
+msgstr "_Sözcükleri iki ayrı satıra bölme"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:10
 msgid "Highlighting"
@@ -2009,7 +2009,7 @@ msgstr "Vurgulama"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
 msgid "Highlight current _line"
-msgstr "Mevcut satırı _vurgula"
+msgstr "Geçerli satırı _vurgula"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
 msgid "Highlight matching _brackets"
@@ -2041,7 +2041,7 @@ msgstr "Dosyaları kaydetmeden önce _yedekleme kopyası oluştur"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
 msgid "_Autosave files every"
-msgstr "Dosyaları _otomatik kaydetme sıklığı"
+msgstr "Dosyaları _kendiliğinden kaydetme sıklığı"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
 msgid "_minutes"
@@ -2055,15 +2055,15 @@ msgstr "Düzenleyici"
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
-msgstr "Yazıtipi"
+msgstr "Yazı Tipi"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
-msgstr "_Düzenleyici yazıtipi: "
+msgstr "_Düzenleyici yazı tipi: "
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
-msgstr "Düzenleyici yazıtipi seç"
+msgstr "Düzenleyici yazı tipi seç"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
 msgid "Color Scheme"
@@ -2087,7 +2087,7 @@ msgstr "Şema Kaldır"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:31
 msgid "Font & Colors"
-msgstr "Yazıtipleri ve Renkler"
+msgstr "Yazı Tipleri ve Renkler"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:32
 msgid "Plugins"
@@ -2129,7 +2129,7 @@ msgstr "_Sayfa başlıklarını yazdır"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:14
 msgid "Fonts"
-msgstr "Yazıtipleri"
+msgstr "Yazı Tipleri"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:15
 msgid "_Body:"
@@ -2145,7 +2145,7 @@ msgstr "B_aşlıklar ve dipnotlar:"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:18
 msgid "_Restore Default Fonts"
-msgstr "Ö_ntanımlı Yazıtipine Dön"
+msgstr "Ö_ntanımlı Yazı Tipine Dön"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:1
 msgid "Show the previous page"
@@ -2232,7 +2232,7 @@ msgstr "Büyük/küçük _harf eşleştir"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:9
 msgid "Match _entire word only"
-msgstr "Sadece tüm _kelimeyi eşleştir"
+msgstr "Yalnızca tüm _sözcüğü eşleştir"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:10
 msgid "Re_gular expression"
@@ -2247,307 +2247,256 @@ msgid "Wra_p around"
 msgstr "_Bitince Başa Dön"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
-#| msgid "Documents"
 msgctxt "shortcut window"
 msgid "Documents"
 msgstr "Belgeler"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
-#| msgid "Create a new document in a tab"
 msgctxt "shortcut window"
 msgid "Create a new document in a tab"
 msgstr "Bir sekmede yeni belge oluştur"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
-#| msgid "Open a document"
 msgctxt "shortcut window"
 msgid "Open a document"
 msgstr "Belge aç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
-#| msgid "Save the document"
 msgctxt "shortcut window"
 msgid "Save the document"
 msgstr "Belgeyi kaydet"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
-#| msgid "Save the document with a new filename"
 msgctxt "shortcut window"
 msgid "Save the document with a new filename"
 msgstr "Belgeyi yeni bir dosya adı ile kaydet"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
-#| msgid "Save all the documents"
 msgctxt "shortcut window"
 msgid "Save all the documents"
 msgstr "Tüm belgeleri kaydet"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
-#| msgid "Close the document"
 msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "Belgeyi kapat"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
-#| msgid "Close all the documents"
 msgctxt "shortcut window"
 msgid "Close all the documents"
 msgstr "Tüm belgeleri kapat"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
-#| msgid "Reopen the most recently closed document"
 msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
 msgstr "En son kapatılan belgeyi yeniden aç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
-#| msgid "Switch to the next document"
 msgctxt "shortcut window"
 msgid "Switch to the next document"
 msgstr "Sonraki belgeye geç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
-#| msgid "Switch to the previous document"
 msgctxt "shortcut window"
 msgid "Switch to the previous document"
 msgstr "Önceki belgeye geç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
-#| msgid "Switch to the first - ninth document"
 msgctxt "shortcut window"
 msgid "Switch to the first - ninth document"
 msgstr "Baştan dokuzuncu belgeye geç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
-#| msgid "Windows and Panels"
 msgctxt "shortcut window"
 msgid "Windows and Panels"
 msgstr "Pencereler ve Paneller"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
-#| msgid "Create a new document in a window"
 msgctxt "shortcut window"
 msgid "Create a new document in a window"
 msgstr "Bir pencerede yeni bir belge oluştur"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
-#| msgid "Create a new tab group"
 msgctxt "shortcut window"
 msgid "Create a new tab group"
 msgstr "Yeni bir sekme grubu oluştur"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
-#| msgid "Show side panel"
 msgctxt "shortcut window"
 msgid "Show side panel"
 msgstr "Yan paneli göster"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
-#| msgid "Show bottom panel"
 msgctxt "shortcut window"
 msgid "Show bottom panel"
 msgstr "Alt paneli göster"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
-#| msgid "Fullscreen on / off"
 msgctxt "shortcut window"
 msgid "Fullscreen on / off"
 msgstr "Tam ekran açık / kapalı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
-#| msgid "Quit the application"
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Uygulamadan çık"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
-#| msgid "Find and Replace"
 msgctxt "shortcut window"
 msgid "Find and Replace"
 msgstr "Bul ve Değiştir"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
-#| msgid "Find"
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Bul"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
-#| msgid "Find the next match"
 msgctxt "shortcut window"
 msgid "Find the next match"
 msgstr "Sonraki eşleşmeyi bul"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
-#| msgid "Find the previous match"
 msgctxt "shortcut window"
 msgid "Find the previous match"
 msgstr "Önceki eşleşmeyi bul"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
-#| msgid "Clear highlight"
 msgctxt "shortcut window"
 msgid "Clear highlight"
 msgstr "Vurguyu temizle"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
-#| msgid "Go to line"
 msgctxt "shortcut window"
 msgid "Go to line"
 msgstr "Satıra git"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
-#| msgid "Copy and Paste"
 msgctxt "shortcut window"
 msgid "Copy and Paste"
 msgstr "Kopyala ve Yapıştır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
-#| msgid "Copy selected text to clipboard"
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
 msgstr "Seçili metni panoya kopyala"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
-#| msgid "Cut selected text to clipboard"
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
 msgstr "Seçili metni kes ve panoya yapıştır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
-#| msgid "Paste text from clipboard"
 msgctxt "shortcut window"
 msgid "Paste text from clipboard"
 msgstr "Panodaki metni yapıştır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
-#| msgid "Undo and Redo"
 msgctxt "shortcut window"
 msgid "Undo and Redo"
 msgstr "Geri Al ve Yinele"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
-#| msgid "Undo previous command"
 msgctxt "shortcut window"
 msgid "Undo previous command"
 msgstr "Önceki komutu geri al"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
-#| msgid "Redo previous command"
 msgctxt "shortcut window"
 msgid "Redo previous command"
 msgstr "Önceki komutu yinele"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
-#| msgid "Selection"
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Seçim"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
-#| msgid "Select all text"
 msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Tüm metni seç"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
-#| msgid "Editing"
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Düzenleme"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
-#| msgid "Toggle insert / overwrite"
 msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
 msgstr "Araya ekleme / üzerine yazmayı aç/kapat"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
-#| msgid "Delete current line"
 msgctxt "shortcut window"
 msgid "Delete current line"
 msgstr "Geçerli satırı sil"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
-#| msgid "Join selected lines"
 msgctxt "shortcut window"
 msgid "Join selected lines"
 msgstr "Seçili satırları birleştir"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
-#| msgid "Move current line up"
 msgctxt "shortcut window"
 msgid "Move current line up"
 msgstr "Geçerli satırı yukarı taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
-#| msgid "Move current line down"
 msgctxt "shortcut window"
 msgid "Move current line down"
 msgstr "Geçerli satırı aşağı taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
-#| msgid "Move current word left"
 msgctxt "shortcut window"
 msgid "Move current word left"
-msgstr "Geçerli kelimeyi sola taşı"
+msgstr "Geçerli sözcüğü sola taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
-#| msgid "Move current word right"
 msgctxt "shortcut window"
 msgid "Move current word right"
-msgstr "Geçerli kelimeyi sağa taşı"
+msgstr "Geçerli sözcüğü sağa taşı"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
-#| msgid "Convert to uppercase"
 msgctxt "shortcut window"
 msgid "Convert to uppercase"
 msgstr "Büyük harfe dönüştür"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
-#| msgid "Convert to lowercase"
 msgctxt "shortcut window"
 msgid "Convert to lowercase"
 msgstr "Küçük harfe dönüştür"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
-#| msgid "Invert case"
 msgctxt "shortcut window"
 msgid "Invert case"
 msgstr "BÜYÜK/küçük harf değiştir"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
-#| msgid "Increment number at cursor"
 msgctxt "shortcut window"
 msgid "Increment number at cursor"
 msgstr "İmleçteki sayıyı artır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
-#| msgid "Decrement number at cursor"
 msgctxt "shortcut window"
 msgid "Decrement number at cursor"
 msgstr "İmleçteki sayıyı azalt"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
-#| msgid "Tools"
 msgctxt "shortcut window"
 msgid "Tools"
 msgstr "Araçlar"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
-#| msgid "Check spelling"
 msgctxt "shortcut window"
 msgid "Check spelling"
 msgstr "Yazım denetimi yap"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
-#| msgid "Print the document"
 msgctxt "shortcut window"
 msgid "Print the document"
 msgstr "Belgeyi yazdır"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
-#| msgid "Show completion window"
 msgctxt "shortcut window"
 msgid "Show completion window"
 msgstr "Tamamlama penceresini göster"
@@ -2594,11 +2543,11 @@ msgstr "Tam Ekrandan Çık"
 
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
 msgid "Check update"
-msgstr "Güncelleme kontrol et"
+msgstr "Güncelleme denetle"
 
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
 msgid "Check for latest version of gedit"
-msgstr "Gedit'in en son sürümü için kontrol et"
+msgstr "Gedit'in en son sürümü için denetle"
 
 #: ../plugins/checkupdate/gedit-check-update-plugin.c:245
 msgid "There was an error displaying the URI."
@@ -2662,7 +2611,7 @@ msgstr "Satırlar"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:5
 msgid "Words"
-msgstr "Kelimeler"
+msgstr "Sözcükler"
 
 #: ../plugins/docinfo/resources/ui/gedit-docinfo-plugin.ui.h:6
 msgid "Characters (with spaces)"
@@ -2729,7 +2678,7 @@ msgstr "Harici komutları ve kabuk betiklerini çalıştırır."
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
-msgstr "Sistem yazıtipinin kullanılması"
+msgstr "Sistem yazı tipinin kullanılması"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
@@ -2743,7 +2692,7 @@ msgstr ""
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr ""
-"Pango yazıtipi adı. \"Sans 12\" veya \"Monospace Bold 14\" buna örnektir."
+"Pango yazı tipi adı. \"Sans 12\" veya \"Monospace Bold 14\" buna örnektir."
 
 #: ../plugins/externaltools/tools/appactivatable.py:126
 msgid "Manage _External Tools..."
@@ -2760,7 +2709,7 @@ msgstr "Komut çalıştırılamadı: %s"
 
 #: ../plugins/externaltools/tools/functions.py:184
 msgid "You must be inside a word to run this command"
-msgstr "Bu komutu çalıştırmak için kelimenin içinde olmanız gerekiyor"
+msgstr "Bu komutu çalıştırmak için sözcüğün içinde olmanız gerekiyor"
 
 #: ../plugins/externaltools/tools/functions.py:302
 msgid "Running tool:"
@@ -2822,19 +2771,19 @@ msgstr "Tüm belgeler"
 
 #: ../plugins/externaltools/tools/tools.ui.h:3
 msgid "All documents except untitled ones"
-msgstr "İsimlendirilmemişler dışında tüm belgeler"
+msgstr "Adlandırılmamışlar dışında tüm belgeler"
 
 #: ../plugins/externaltools/tools/tools.ui.h:4
 msgid "Local files only"
-msgstr "Sadece yerel dosyalar"
+msgstr "Yalnızca yerel dosyalar"
 
 #: ../plugins/externaltools/tools/tools.ui.h:5
 msgid "Remote files only"
-msgstr "Sadece uzaktaki dosyalar"
+msgstr "Yalnızca uzaktaki dosyalar"
 
 #: ../plugins/externaltools/tools/tools.ui.h:6
 msgid "Untitled documents only"
-msgstr "Sadece isimlendirilmemiş belgeler"
+msgstr "Yalnızca adlandırılmamış belgeler"
 
 #: ../plugins/externaltools/tools/tools.ui.h:8
 msgid "Current document"
@@ -2850,11 +2799,11 @@ msgstr "Mevcut seçim (belge olarak öntanımlıdır)"
 
 #: ../plugins/externaltools/tools/tools.ui.h:11
 msgid "Current line"
-msgstr "Mevcut satır"
+msgstr "Geçerli satır"
 
 #: ../plugins/externaltools/tools/tools.ui.h:12
 msgid "Current word"
-msgstr "Mevcut kelime"
+msgstr "Mevcut sözcük"
 
 #: ../plugins/externaltools/tools/tools.ui.h:13
 msgid "Display in bottom pane"
@@ -2866,7 +2815,7 @@ msgstr "Yeni belge oluştur"
 
 #: ../plugins/externaltools/tools/tools.ui.h:15
 msgid "Append to current document"
-msgstr "Mevcut belgeye ekle"
+msgstr "Geçerli belgeye ekle"
 
 #: ../plugins/externaltools/tools/tools.ui.h:16
 msgid "Replace current document"
@@ -2939,7 +2888,7 @@ msgstr "Dosya Tarayıcısı Paneli"
 
 #: ../plugins/filebrowser/filebrowser.plugin.desktop.in.h:2
 msgid "Easy file access from the side panel"
-msgstr "Yan panelden kolay dosya erişimi"
+msgstr "Yan bölmeden kolay dosya erişimi"
 
 #: ../plugins/filebrowser/gedit-file-bookmarks-store.c:205
 msgid "Home"
@@ -2985,7 +2934,7 @@ msgstr "Bir dizin yüklenirken hata oluştu"
 msgid "An error occurred"
 msgstr "Bir hata oluştu"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2993,25 +2942,25 @@ msgstr ""
 "Dosya çöpe taşınamıyor, \n"
 " kalıcı olarak silmek ister misiniz?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Dosya \"%s\" çöpe taşınamıyor."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Seçilen dosyalar çöpe taşınamıyor"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "\"%s\" dosyayı kalıcı olarak silmek istediğinizden emin misiniz?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Seçili dosyaları kalıcı olarak silmek istediğinizden emin misiniz?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Eğer bir öğeyi silerseniz, kalıcı bir şekilde kaybolur."
 
@@ -3024,7 +2973,7 @@ msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"İsmi değiştirilen dosya şu anda filtrelendi. Dosyayı görünebilir yapmak için "
+"Adı değiştirilen dosya şu anda filtrelendi. Dosyayı görünebilir yapmak için "
 "filtrenizi ayarlamanız gerekiyor"
 
 #. Translators: This is the default name of new files created by the file browser pane.
@@ -3055,7 +3004,7 @@ msgstr ""
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:754
 msgid "Bookmarks"
-msgstr "Yerimleri"
+msgstr "Yer İmleri"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:1995
 #, c-format
@@ -3596,11 +3545,11 @@ msgstr "Yazım Denetleyicisi"
 msgid "Checks the spelling of the current document."
 msgstr "Geçerli belgede yazım denetimi yapar."
 
-#: ../plugins/time/gedit-time-plugin.c:270
+#: ../plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time..."
 msgstr "Tari_h ve Zaman Ekle..."
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Kullanılabilir biçimler"
 
@@ -3683,6 +3632,12 @@ msgstr "Tarih/Zaman Ekle"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "İmlecin bulunduğu yere şimdiki tarihi ve zamanı ekler."
+
+#~ msgid "Open a New Window"
+#~ msgstr "Yeni Pencere Aç"
+
+#~ msgid "Open a New Document"
+#~ msgstr "Yeni Belge Aç"
 
 #~ msgid "gedit"
 #~ msgstr "gedit"
