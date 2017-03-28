@@ -1,5 +1,5 @@
 # Brazilian Portuguese translation of gedit documentation.
-# Copyright (C) 2002-2014 Free Software Foundation, Inc.
+# Copyright (C) 2002-2017 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gedit package.
 # Wagner Luís de A. M. Macêdo <wagnerluis1982@gmail.com>, 2007.
 # Pedro Vaz de Mello de Medeiros <pedrovmm@gmail.com>, 2007.
@@ -11,14 +11,14 @@
 # Jose Carlos Menezes <jcmenezes.91@gmail.com>, 2013.
 # Enrico Nicoletto <liverig@gmail.com>, 2013.
 # Felipe Braga <fbobraga@gmail.com>, 2015.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2014, 2016.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2014, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-help\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&k"
 "eywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 16:07+0000\n"
-"PO-Revision-Date: 2016-09-06 15:10-0200\n"
+"POT-Creation-Date: 2017-03-27 18:08+0000\n"
+"PO-Revision-Date: 2017-03-28 01:17-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Virtaal 1.0.0-beta1\n"
 "X-Project-Style: gnome\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -41,7 +41,7 @@ msgstr ""
 "Krix Apolinário <krixapolinario@gmail.com>, 2009\n"
 "José Carlos Menezes <jcmenezes.91@gmail.com>, 2013\n"
 "Enrico Nicoletto <liverig@gmail.com>, 2013, 2014\n"
-"Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2016"
+"Rafael Fontenelle <rafaelff@gnome.org>, 2013, 2016, 2017"
 
 #. (itstool) path: info/desc
 #: C/gedit-change-color-scheme.page:8
@@ -61,7 +61,7 @@ msgstr "Altere as cores de texto e de plano de fundo no gedit."
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:9
 #: C/gedit-plugins-quick-open.page:10 C/gedit-plugins-snippets.page:9
 #: C/gedit-plugins-sort.page:13 C/gedit-printing.page:10
-#: C/gedit-quickstart.page:12 C/gedit-replace.page:13 C/gedit-save-file.page:12
+#: C/gedit-quickstart.page:12 C/gedit-replace.page:13 C/gedit-save-file.page:13
 #: C/gedit-search.page:11 C/gedit-shortcut-keys.page:14
 #: C/gedit-spellcheck.page:12 C/gedit-syntax-highlighting.page:10
 #: C/gedit-tabs-moving.page:13 C/gedit-tabs.page:14
@@ -261,14 +261,13 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-create-new-file.page:8
-#| msgid "Open a file or set of files"
 msgid "Open a new file for editing."
 msgstr "Abra um novo arquivo para edição."
 
 #. (itstool) path: credit/name
 #: C/gedit-create-new-file.page:16 C/gedit-full-screen.page:16
 #: C/gedit-open-files.page:21 C/gedit-plugins-quick-open.page:14
-#: C/gedit-replace.page:29 C/gedit-save-file.page:20 C/gedit-search.page:23
+#: C/gedit-replace.page:29 C/gedit-save-file.page:21 C/gedit-search.page:23
 #: C/gedit-tabs.page:31 C/gedit-undo-recent-action.page:24
 msgid "Shobha Tyagi"
 msgstr "Shobha Tyagi"
@@ -489,7 +488,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-open-files-from-sidepane.page:8
-#| msgid "Use the side pane to browse and open files"
 msgid "Use gedit's side pane as a file browser."
 msgstr "Use o painel lateral do gedit como um navegador de arquivos."
 
@@ -836,7 +834,6 @@ msgstr "Use plug-ins para personalizar o funcionamento do gedit."
 
 #. (itstool) path: page/title
 #: C/gedit-plugin-guide.page:16
-#| msgid "Configure and use gedit Plugins"
 msgid "Configure and use gedit plugins"
 msgstr "Configurando e usando os plug-ins do gedit"
 
@@ -884,7 +881,6 @@ msgstr "Daniel Neel"
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-change-case.page:17
-#| msgid "Change the case of selected text"
 msgid "Change the case of selected text."
 msgstr "Altere entre maiúsculo e minúsculo o texto selecionado."
 
@@ -905,9 +901,9 @@ msgstr ""
 "Este plug-in ajuda a alterar entre maiúsculo e minúsculo partes selecionadas "
 "do texto. Você pode usá-lo para mudar o texto para ser todo em minúsculo, "
 "todo em maiúsculo, para inverter a maiusculização, ou aplicar maiusculização "
-"de título. Para ativar este plug-in, selecione <guiseq><gui style=\"menu\""
-">gedit</gui><gui style=\"menuitem\">Preferências</gui><gui>Plug-"
-"ins</gui><gui>Alterar maiusculização</gui></guiseq>."
+"de título. Para ativar este plug-in, selecione <guiseq><gui style=\"menu"
+"\">gedit</gui><gui style=\"menuitem\">Preferências</gui><gui>Plug-ins</"
+"gui><gui>Alterar maiusculização</gui></guiseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-change-case.page:28
@@ -973,7 +969,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-doc-stats.page:17
-#| msgid "View document statistics"
 msgid "View document statistics."
 msgstr "Veja estatísticas do documento."
 
@@ -1034,8 +1029,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-external-tools.page:18
-#| msgid ""
-#| "Run scripts on your current files, and interact with other applications"
 msgid ""
 "Run scripts on your current files, and interact with other applications."
 msgstr ""
@@ -1094,7 +1087,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-file-browser.page:17
-#| msgid "Use the side pane to browse and open files"
 msgid "Use the side pane to browse and open files."
 msgstr "Use o painel lateral para navegar e abrir arquivos."
 
@@ -1141,7 +1133,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-insert-date-time.page:17
-#| msgid "Insert the current date/time at the cursor position"
 msgid "Insert the current date/time at the cursor position."
 msgstr "Insira a data/hora atuais na posição do cursor."
 
@@ -1186,7 +1177,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-install.page:15
-#| msgid "How to install third-party plugins"
 msgid "How to install third-party plugins."
 msgstr "Como instalar plug-ins de terceiros."
 
@@ -1297,7 +1287,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-modelines.page:16
-#| msgid "Emacs, Kate and Vim-style modelines support for gedit"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr "Suporte a modelines de estilo de Emacs, Kate e Vim no gedit."
 
@@ -1545,7 +1534,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-pyconsole.page:13
-#| msgid "Add an interactive Python console to the bottom pane"
 msgid "Add an interactive Python console to the bottom pane."
 msgstr "Adicione um console Python interativo no canto inferior do painel."
 
@@ -1590,7 +1578,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-quick-open.page:18
-#| msgid "Quickly open a file or set of files"
 msgid "Quickly open a file or set of files."
 msgstr "Abra rapidamente um arquivo ou um conjunto de arquivos."
 
@@ -1716,25 +1703,11 @@ msgstr ""
 "A <app>Abertura rápida</app> exibe arquivos em quaisquer um dos locais "
 "citados acima, independente de terem sido ou não abertos anteriormente."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/gedit-plugins-snippets.page:64
-msgctxt "_"
-msgid ""
-"external ref='figures/gedit-html-snippet.png' "
-"md5='1f02c599b116ed209e6fb79e3e63b9ca'"
-msgstr ""
-"external ref='figures/gedit-html-snippet.png' "
-"md5='4499196ed6189a4d91f0fd8ba4cd6a99'"
-
 #. (itstool) path: credit/name
 #: C/gedit-plugins-snippets.page:13 C/gedit-plugins-sort.page:17
 #: C/gedit-printing-order.page:15 C/gedit-printing.page:14
 #: C/gedit-printing-select.page:14 C/gedit-quickstart.page:16
-#: C/gedit-replace.page:21 C/gedit-save-file.page:16 C/gedit-search.page:19
+#: C/gedit-replace.page:21 C/gedit-save-file.page:17 C/gedit-search.page:19
 #: C/gedit-shortcut-keys.page:30 C/gedit-spellcheck.page:20
 #: C/gedit-syntax-highlighting.page:14 C/gedit-tabs-moving.page:21
 #: C/gedit-tabs.page:22 C/gedit-undo-recent-action.page:20 C/index.page:18
@@ -1743,9 +1716,9 @@ msgstr "Sindhu S"
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-snippets.page:17
-#| msgid "Use snippets to quickly insert often-used pieces of text"
 msgid "Use snippets to quickly insert often-used pieces of text."
-msgstr "Use trechos para inserir rapidamente partes do texto geralmente usadas."
+msgstr ""
+"Use trechos para inserir rapidamente partes do texto geralmente usadas."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-snippets.page:20
@@ -1833,6 +1806,20 @@ msgstr ""
 #: C/gedit-plugins-snippets.page:62
 msgid "In this example, the language is set to HTML."
 msgstr "Neste exemplo, a linguagem é definida para HTML."
+
+#. (itstool) path: figure/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gedit-plugins-snippets.page:64
+msgctxt "_"
+msgid ""
+"external ref='figures/gedit-html-snippet.png' "
+"md5='1f02c599b116ed209e6fb79e3e63b9ca'"
+msgstr ""
+"external ref='figures/gedit-html-snippet.png' "
+"md5='4499196ed6189a4d91f0fd8ba4cd6a99'"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:69
@@ -2064,7 +2051,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-sort.page:21
-#| msgid "Sort lines of text into alphabetical order"
 msgid "Sort lines of text into alphabetical order."
 msgstr "Ordene linhas do texto em ordem alfabética."
 
@@ -2282,7 +2268,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-printing.page:7
-#| msgid "Find and select the file that you wish to open."
 msgid "Print the files that you create with gedit."
 msgstr "Imprima os arquivos que você criou com o gedit."
 
@@ -2438,8 +2423,9 @@ msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui> <gui style=\"menuitem\">Print to File</gui></guiseq>."
 msgstr ""
-"Selecione <guiseq><gui style=\"menu\">Arquivo</gui> <gui style=\"menuitem\""
-">Imprimir</gui> <gui style=\"menuitem\">Imprimir para arquivo</gui></guiseq>."
+"Selecione <guiseq><gui style=\"menu\">Arquivo</gui> <gui style=\"menuitem"
+"\">Imprimir</gui> <gui style=\"menuitem\">Imprimir para arquivo</gui></"
+"guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing.page:104
@@ -2471,13 +2457,11 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-printing-select.page:7
-#| msgid "Use your mouse to select the file or files that you want to open."
 msgid "Choose the pages that you want to print."
 msgstr "Escolha as páginas que você deseja imprimir."
 
 #. (itstool) path: page/title
 #: C/gedit-printing-select.page:20
-#| msgid "Only Printing Certain Pages"
 msgid "Only print certain pages"
 msgstr "Imprimindo apenas certas páginas"
 
@@ -2522,20 +2506,6 @@ msgstr ""
 "Digite os números das páginas que você deseja imprimir do documento, "
 "separados por vírgulas. Use um traço para indicar um intervalo de páginas."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/gedit-quickstart.page:28
-msgctxt "_"
-msgid ""
-"external ref='figures/gedit3-screenshot.png' "
-"md5='883fe82b057396bce097926551bb109e'"
-msgstr ""
-"external ref='figures/gedit3-screenshot.png' "
-"md5='31d11e976af240641c8be8cad9169138'"
-
 #. (itstool) path: info/desc
 #: C/gedit-quickstart.page:9
 msgid "A brief introduction to gedit."
@@ -2558,6 +2528,20 @@ msgstr ""
 "pode usá-lo para preparar notas e documentos simples, ou você pode usar "
 "alguns dos seus recursos avançados, tornando-o seu próprio ambiente de "
 "desenvolvimento de software."
+
+#. (itstool) path: page/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gedit-quickstart.page:28
+msgctxt "_"
+msgid ""
+"external ref='figures/gedit3-screenshot.png' "
+"md5='bf1c5551e623923504e51c4f9fd885b7'"
+msgstr ""
+"external ref='figures/gedit3-screenshot.png' "
+"md5='55a63172479d6e3ce8c0f7dc3e39d61d'"
 
 #. (itstool) path: page/p
 #: C/gedit-quickstart.page:30
@@ -2583,7 +2567,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-replace.page:8
-#| msgid "Select all text in the file"
 msgid "Replace portions of text in a file."
 msgstr "Substitua porções de texto em um arquivo."
 
@@ -2720,8 +2703,8 @@ msgid ""
 msgstr ""
 "Use esta opção para procurar uma palavra específica, sem incluir fragmentos "
 "de outras palavras. Por exemplo, se você procurou pela palavra \"and\" com "
-"esta opção selecionada, a palavra \"and\" coincidirá, mas as palavras \""
-"b<em>and</em>eira\" e \"com<em>and</em>o\" não coincidirão."
+"esta opção selecionada, a palavra \"and\" coincidirá, mas as palavras "
+"\"b<em>and</em>eira\" e \"com<em>and</em>o\" não coincidirão."
 
 #. (itstool) path: item/title
 #: C/gedit-replace.page:106
@@ -2764,8 +2747,6 @@ msgstr "Usando sequências de escapes"
 
 #. (itstool) path: section/p
 #: C/gedit-replace.page:125
-#| msgid ""
-#| "You can use <em>escape sequences</em> to search for line breaks and tabs."
 msgid ""
 "You can use <em>escape sequences</em> to search for line breaks, carriage "
 "returns, and tabs."
@@ -2818,9 +2799,8 @@ msgstr ""
 "barra invertida com uma barra invertida extra. Por exemplo, para pesquisar "
 "por <input>\\</input>, você precisa digitar <input>\\\\</input> no campo de "
 "pesquisar ou de substituir. Você pode pesquisar por sequências de escape da "
-"mesma forma: para pesquisar por ou substituir com um <input>\\n"
-"</input>, use o termo <input>\\\\n"
-"</input>."
+"mesma forma: para pesquisar por ou substituir com um <input>\\n</input>, use "
+"o termo <input>\\\\n</input>."
 
 #. (itstool) path: info/desc
 #: C/gedit-save-file.page:8
@@ -2828,32 +2808,40 @@ msgid "Save your file to work on it later."
 msgstr "Salve seu arquivo para trabalhar nele posteriormente."
 
 #. (itstool) path: page/title
-#: C/gedit-save-file.page:27
+#: C/gedit-save-file.page:28
 msgid "Save a file"
 msgstr "Salvando um arquivo"
 
 #. (itstool) path: page/p
-#: C/gedit-save-file.page:29
+#: C/gedit-save-file.page:30
+#| msgid ""
+#| "To save a file in <app>gedit</app>, click on the <gui style=\"button"
+#| "\">Save the current file</gui> button with the disk-drive icon on the "
+#| "right side of the toolbar or just press <keyseq><key>Ctrl</key><key>S</"
+#| "key></keyseq>."
 msgid ""
-"To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save "
-"the current file</gui> button with the disk-drive icon on the right side of "
-"the toolbar or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
+"To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save</"
+"gui> button on the right side of the toolbar or just press "
+"<keyseq><key>Ctrl</key><key>S</key></keyseq>."
 msgstr ""
 "Para salvar um arquivo no <app>gedit</app>, clique no botão <gui style=\""
-"button\">Salva o arquivo atual</gui> com o ícone de unidade de disco no lado "
-"direito da barra de ferramentas ou apenas pressione "
-"<keyseq><key>Ctrl</key><key>S</key></keyseq>."
+"button\">Salvar</gui> no lado direito da barra de ferramentas ou apenas "
+"pressione <keyseq><key>Ctrl</key><key>S</key></keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-save-file.page:32
+#| msgid ""
+#| "If you are saving a new file, the <gui>Save As</gui> dialog will appear, "
+#| "and you can select a name for the file, as well as the directory where "
+#| "you would like the file to be saved."
 msgid ""
-"If you are saving a new file, the <gui>Save As</gui> dialog will appear, and "
-"you can select a name for the file, as well as the directory where you would "
-"like the file to be saved."
+"If you are saving a new file, a dialog will appear, and you can select a "
+"name for the file, as well as the directory where you would like the file to "
+"be saved."
 msgstr ""
-"Se você estiver salvando um novo arquivo, o diálogo de <gui>Salvar como</"
-"gui> aparecerá e você poderá selecionar um nome para o arquivo, assim como o "
-"diretório onde gostaria em que o arquivo fosse salvo."
+"Se você estiver salvando um novo arquivo, um diálogo aparecerá e você poderá "
+"selecionar um nome para o arquivo, assim como o diretório onde gostaria em "
+"que o arquivo fosse salvo."
 
 #. (itstool) path: info/desc
 #: C/gedit-search.page:8
@@ -3215,7 +3203,6 @@ msgstr "Teclas de atalho para trabalhar com arquivos"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:119
-#| msgid "Create a new document"
 msgid "Create a new document in a new window"
 msgstr "Cria um novo documento em uma nova janela"
 
@@ -3226,13 +3213,11 @@ msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:123
-#| msgid "Create a new document"
 msgid "Create a new document in a new tab"
 msgstr "Cria um novo documento uma nova aba"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:124
-#| msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
 
@@ -3248,13 +3233,11 @@ msgstr "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:131
-#| msgid "The <gui>Quick Open</gui> file dialog will appear."
 msgid "Open the <gui>Quick Open</gui> window"
 msgstr "Abre a janela <gui>Abertura rápida</gui>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:132
-#| msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgid "<keyseq><key>Alt</key><key>O</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>O</key></keyseq>"
 
@@ -3537,7 +3520,6 @@ msgstr "<key>F9</key>"
 # Descrição de atalho de teclado. Tirei ponto ".", pois nenhuma outra descrição tem ponto.
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:271
-#| msgid "Show / hide the bottom pane."
 msgid "Show / hide the bottom pane"
 msgstr "Mostra / oculta o painel inferior"
 
@@ -3548,13 +3530,11 @@ msgstr "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:276
-#| msgid "Open the gedit user guide"
 msgid "Open the file menu"
 msgstr "Abre o menu do arquivo"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:277
-#| msgid "<key>F1</key>"
 msgid "<key>F10</key>"
 msgstr "<key>F10</key>"
 
@@ -3902,7 +3882,6 @@ msgstr "Ativando o destaque de sintaxe"
 
 #. (itstool) path: section/title
 #: C/gedit-syntax-highlighting.page:23
-#| msgid "Syntax Highlighting"
 msgid "Syntax highlighting"
 msgstr "Destaque de sintaxe"
 
@@ -4113,7 +4092,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-tabs-moving.page:10
-#| msgid "Change the order of tabs in the gedit window"
 msgid "Change the position of a tab in the gedit window."
 msgstr "Altere a posição de uma aba na janela do gedit."
 
@@ -4227,7 +4205,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-tabs.page:10
-#| msgid "Change the order of tabs in the gedit window"
 msgid "Create or close tabs in the gedit window."
 msgstr "Crie ou feche abas na janela do gedit."
 
@@ -4319,7 +4296,6 @@ msgstr "Editor de texto gedit"
 
 #. (itstool) path: info/desc
 #: C/index.page:11
-#| msgid "Open the gedit user guide"
 msgid "Home page of the gedit help guide."
 msgstr "Página inicial do manual do usuário do gedit."
 
@@ -4339,9 +4315,9 @@ msgid ""
 msgstr ""
 "Bem-vindo ao guia de ajuda do <app>gedit</app>. Para uma introdução rápida "
 "em ambos recursos mais básicos do <app>gedit</app>, tal como alguns atalhos "
-"avançados do teclado, visite as páginas <link xref=\"gedit-quickstart\">"
-"Primeiros passos com gedit</link> e <link xref=\"gedit-shortcut-keys\">"
-"Teclas de atalho</link>."
+"avançados do teclado, visite as páginas <link xref=\"gedit-quickstart"
+"\">Primeiros passos com gedit</link> e <link xref=\"gedit-shortcut-keys"
+"\">Teclas de atalho</link>."
 
 #. (itstool) path: page/p
 #: C/index.page:36
