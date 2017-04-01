@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit help\n"
-"POT-Creation-Date: 2015-09-19 05:28+0000\n"
-"PO-Revision-Date: 2016-11-30 08:42+0100\n"
+"POT-Creation-Date: 2017-03-28 04:31+0000\n"
+"PO-Revision-Date: 2017-03-30 09:41+0200\n"
 "Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -27,7 +27,7 @@ msgid "translator-credits"
 msgstr ""
 "Jan Arne Petersen <jap@gnome.org>, 2007\n"
 "Mario Blättermann <mario.blaettermann@gmail.com>, 2008-2013\n"
-"Christian Kirbach <christian.kirbach@gmail.com>, 2011-2015\n"
+"Christian Kirbach <christian.kirbach@gmail.com>, 2011-2017\n"
 "Benjamin Steinwender <b@stbe.at>, 2014-2015"
 
 #. (itstool) path: info/desc
@@ -48,7 +48,7 @@ msgstr "Text- und Hintergrundfarben in Gedit ändern."
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:9
 #: C/gedit-plugins-quick-open.page:10 C/gedit-plugins-snippets.page:9
 #: C/gedit-plugins-sort.page:13 C/gedit-printing.page:10
-#: C/gedit-quickstart.page:12 C/gedit-replace.page:13 C/gedit-save-file.page:12
+#: C/gedit-quickstart.page:12 C/gedit-replace.page:13 C/gedit-save-file.page:13
 #: C/gedit-search.page:11 C/gedit-shortcut-keys.page:14
 #: C/gedit-spellcheck.page:12 C/gedit-syntax-highlighting.page:10
 #: C/gedit-tabs-moving.page:13 C/gedit-tabs.page:14
@@ -257,7 +257,7 @@ msgstr "Eine neue Datei zum Bearbeiten öffnen."
 #. (itstool) path: credit/name
 #: C/gedit-create-new-file.page:16 C/gedit-full-screen.page:16
 #: C/gedit-open-files.page:21 C/gedit-plugins-quick-open.page:14
-#: C/gedit-replace.page:29 C/gedit-save-file.page:20 C/gedit-search.page:23
+#: C/gedit-replace.page:29 C/gedit-save-file.page:21 C/gedit-search.page:23
 #: C/gedit-tabs.page:31 C/gedit-undo-recent-action.page:24
 msgid "Shobha Tyagi"
 msgstr "Shobha Tyagi"
@@ -1697,23 +1697,11 @@ msgstr ""
 "<app>Schnelles Öffnen</app> zeigt Dateien in jeder der obigen Orte "
 "unabhängig davon, ob sie diese zuvor bereits geöffnet haben."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/gedit-plugins-snippets.page:64
-msgctxt "_"
-msgid ""
-"external ref='figures/gedit-html-snippet.png' "
-"md5='1f02c599b116ed209e6fb79e3e63b9ca'"
-msgstr "original"
-
 #. (itstool) path: credit/name
 #: C/gedit-plugins-snippets.page:13 C/gedit-plugins-sort.page:17
 #: C/gedit-printing-order.page:15 C/gedit-printing.page:14
 #: C/gedit-printing-select.page:14 C/gedit-quickstart.page:16
-#: C/gedit-replace.page:21 C/gedit-save-file.page:16 C/gedit-search.page:19
+#: C/gedit-replace.page:21 C/gedit-save-file.page:17 C/gedit-search.page:19
 #: C/gedit-shortcut-keys.page:30 C/gedit-spellcheck.page:20
 #: C/gedit-syntax-highlighting.page:14 C/gedit-tabs-moving.page:21
 #: C/gedit-tabs.page:22 C/gedit-undo-recent-action.page:20 C/index.page:18
@@ -1811,6 +1799,18 @@ msgstr ""
 #: C/gedit-plugins-snippets.page:62
 msgid "In this example, the language is set to HTML."
 msgstr "In diesem Beispiel ist die Sprache auf HTML gesetzt."
+
+#. (itstool) path: figure/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gedit-plugins-snippets.page:64
+msgctxt "_"
+msgid ""
+"external ref='figures/gedit-html-snippet.png' "
+"md5='1f02c599b116ed209e6fb79e3e63b9ca'"
+msgstr "original"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:69
@@ -2500,18 +2500,6 @@ msgstr ""
 "Kommata getrennt. Verwenden Sie einen Bindestrich, um einen "
 "zusammenhängenden Bereich anzugeben."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/gedit-quickstart.page:28
-msgctxt "_"
-msgid ""
-"external ref='figures/gedit3-screenshot.png' "
-"md5='883fe82b057396bce097926551bb109e'"
-msgstr "translated"
-
 #. (itstool) path: info/desc
 #: C/gedit-quickstart.page:9
 msgid "A brief introduction to gedit."
@@ -2534,6 +2522,23 @@ msgstr ""
 "Arbeitsumgebung. Sie können damit einfache Notizen und Dokumente bearbeiten, "
 "aber auch fortgeschrittene Funktionsmerkmale nutzen, um sich eine eigene "
 "Umgebung zur Softwareentwicklung zu schaffen."
+
+#. (itstool) path: page/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gedit-quickstart.page:28
+#, fuzzy
+#| msgctxt "_"
+#| msgid ""
+#| "external ref='figures/gedit3-screenshot.png' "
+#| "md5='883fe82b057396bce097926551bb109e'"
+msgctxt "_"
+msgid ""
+"external ref='figures/gedit3-screenshot.png' "
+"md5='bf1c5551e623923504e51c4f9fd885b7'"
+msgstr "translated"
 
 #. (itstool) path: page/p
 #: C/gedit-quickstart.page:30
@@ -2798,32 +2803,31 @@ msgid "Save your file to work on it later."
 msgstr "Speichen Sie Ihre Datei, um später weiter zu arbeiten."
 
 #. (itstool) path: page/title
-#: C/gedit-save-file.page:27
+#: C/gedit-save-file.page:28
 msgid "Save a file"
 msgstr "Eine Datei speichern"
 
 #. (itstool) path: page/p
-#: C/gedit-save-file.page:29
+#: C/gedit-save-file.page:30
 msgid ""
-"To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save "
-"the current file</gui> button with the disk-drive icon on the right side of "
-"the toolbar or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
+"To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save</"
+"gui> button on the right side of the toolbar or just press "
+"<keyseq><key>Ctrl</key><key>S</key></keyseq>."
 msgstr ""
 "Um eine Datei in <app>gedit</app> zu speichern, klicken Sie auf den Knopf "
-"<gui style=\"button\">Speichern</gui> neben dem Datenträgersymbol rechts in "
-"der Werkzeugleiste, oder drücken Sie <keyseq><key>Strg</key><key>S</key></"
-"keyseq>."
+"<gui style=\"button\">Speichern</gui> rechts in der Werkzeugleiste, oder "
+"drücken Sie <keyseq><key>Strg</key><key>S</key></keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-save-file.page:32
 msgid ""
-"If you are saving a new file, the <gui>Save As</gui> dialog will appear, and "
-"you can select a name for the file, as well as the directory where you would "
-"like the file to be saved."
+"If you are saving a new file, a dialog will appear, and you can select a "
+"name for the file, as well as the directory where you would like the file to "
+"be saved."
 msgstr ""
-"Wenn Sie eine neue Datei speichern, wird der Dialog <gui>Datei speichern</"
-"gui> geöffnet, in welchem Sie einen Namen für die Datei und einen Ordner "
-"auswählen können, in dem die Datei gespeichert werden soll."
+"Wenn Sie eine neue Datei speichern, öffnet sich ein Dialog, in welchem Sie "
+"einen Namen für die Datei und den Ordner auswählen können, in dem die Datei "
+"gespeichert werden soll."
 
 #. (itstool) path: info/desc
 #: C/gedit-search.page:8
