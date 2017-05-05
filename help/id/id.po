@@ -6,22 +6,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"POT-Creation-Date: 2016-09-14 16:05+0000\n"
-"PO-Revision-Date: 2016-11-03 11:31+0700\n"
-"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
+"POT-Creation-Date: 2017-04-18 11:07+0000\n"
+"PO-Revision-Date: 2017-05-05 20:18+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-Bookmarks: -1,118,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
-"Andika Triwidada <andika@gmail.com>, 2013, 2014\n"
+"Andika Triwidada <andika@gmail.com>, 2013, 2014, 2017\n"
 "Kukuh Syafaat <syafaatkukuh@gmail.com>, 2016"
 
 #. (itstool) path: info/desc
@@ -42,11 +42,11 @@ msgstr "Ubah teks dan warna latar belakang di gedit."
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:9
 #: C/gedit-plugins-quick-open.page:10 C/gedit-plugins-snippets.page:9
 #: C/gedit-plugins-sort.page:13 C/gedit-printing.page:10
-#: C/gedit-quickstart.page:12 C/gedit-replace.page:13 C/gedit-save-file.page:12
-#: C/gedit-search.page:11 C/gedit-shortcut-keys.page:14
-#: C/gedit-spellcheck.page:12 C/gedit-syntax-highlighting.page:10
-#: C/gedit-tabs-moving.page:13 C/gedit-tabs.page:14
-#: C/gedit-undo-recent-action.page:12 C/index.page:14
+#: C/gedit-quickstart.page:12 C/gedit-replace.page:13
+#: C/gedit-save-file.page:13 C/gedit-search.page:11
+#: C/gedit-shortcut-keys.page:14 C/gedit-spellcheck.page:12
+#: C/gedit-syntax-highlighting.page:10 C/gedit-tabs-moving.page:13
+#: C/gedit-tabs.page:14 C/gedit-undo-recent-action.page:12 C/index.page:14
 msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
@@ -247,7 +247,7 @@ msgstr "Membuka berkas baru untuk menyunting."
 #. (itstool) path: credit/name
 #: C/gedit-create-new-file.page:16 C/gedit-full-screen.page:16
 #: C/gedit-open-files.page:21 C/gedit-plugins-quick-open.page:14
-#: C/gedit-replace.page:29 C/gedit-save-file.page:20 C/gedit-search.page:23
+#: C/gedit-replace.page:29 C/gedit-save-file.page:21 C/gedit-search.page:23
 #: C/gedit-tabs.page:31 C/gedit-undo-recent-action.page:24
 msgid "Shobha Tyagi"
 msgstr "Shobha Tyagi"
@@ -1658,23 +1658,11 @@ msgstr ""
 "<app>Buka Cepat</app> menampilkan berkas dalam sebarang lokasi di atas tanpa "
 "peduli apakah Anda sebelumnya pernah membukanya atau belum."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/gedit-plugins-snippets.page:64
-msgctxt "_"
-msgid ""
-"external ref='figures/gedit-html-snippet.png' "
-"md5='1f02c599b116ed209e6fb79e3e63b9ca'"
-msgstr "-"
-
 #. (itstool) path: credit/name
 #: C/gedit-plugins-snippets.page:13 C/gedit-plugins-sort.page:17
 #: C/gedit-printing-order.page:15 C/gedit-printing.page:14
 #: C/gedit-printing-select.page:14 C/gedit-quickstart.page:16
-#: C/gedit-replace.page:21 C/gedit-save-file.page:16 C/gedit-search.page:19
+#: C/gedit-replace.page:21 C/gedit-save-file.page:17 C/gedit-search.page:19
 #: C/gedit-shortcut-keys.page:30 C/gedit-spellcheck.page:20
 #: C/gedit-syntax-highlighting.page:14 C/gedit-tabs-moving.page:21
 #: C/gedit-tabs.page:22 C/gedit-undo-recent-action.page:20 C/index.page:18
@@ -1773,6 +1761,18 @@ msgstr ""
 #: C/gedit-plugins-snippets.page:62
 msgid "In this example, the language is set to HTML."
 msgstr "Dalam contoh ini, bahasa diatur ke HTML."
+
+#. (itstool) path: figure/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gedit-plugins-snippets.page:64
+msgctxt "_"
+msgid ""
+"external ref='figures/gedit-html-snippet.png' "
+"md5='1f02c599b116ed209e6fb79e3e63b9ca'"
+msgstr "-"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:69
@@ -2451,18 +2451,6 @@ msgstr ""
 "Ketikkan nomor-nomor halaman yang ingin Anda cetak dari dokumen, dipisahkan "
 "dengan koma. Gunakan tanda hubung untuk menyatakan suatu jangkauan halaman."
 
-#. (itstool) path: media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/gedit-quickstart.page:28
-msgctxt "_"
-msgid ""
-"external ref='figures/gedit3-screenshot.png' "
-"md5='883fe82b057396bce097926551bb109e'"
-msgstr "-"
-
 #. (itstool) path: info/desc
 #: C/gedit-quickstart.page:9
 msgid "A brief introduction to gedit."
@@ -2485,6 +2473,20 @@ msgstr ""
 "desktop GNOME. Anda bisa memakainya untuk menyiapkan dokumen dan catatan "
 "serderhana, atau Anda bisa memakai fitur tingkat lanjutnya, membuatnya "
 "menjadi lingkungan pengembangan perangkat lunak milik Anda sendiri."
+
+#. (itstool) path: page/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/gedit-quickstart.page:28
+msgctxt "_"
+msgid ""
+"external ref='figures/gedit3-screenshot.png' "
+"md5='bf1c5551e623923504e51c4f9fd885b7'"
+msgstr ""
+"external ref='figures/gedit3-screenshot.png' "
+"md5='bf1c5551e623923504e51c4f9fd885b7'"
 
 #. (itstool) path: page/p
 #: C/gedit-quickstart.page:30
@@ -2747,31 +2749,31 @@ msgid "Save your file to work on it later."
 msgstr "Simpan berkas Anda untuk bekerja nanti."
 
 #. (itstool) path: page/title
-#: C/gedit-save-file.page:27
+#: C/gedit-save-file.page:28
 msgid "Save a file"
 msgstr "Menyimpan berkas"
 
 #. (itstool) path: page/p
-#: C/gedit-save-file.page:29
+#: C/gedit-save-file.page:30
 msgid ""
-"To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save "
-"the current file</gui> button with the disk-drive icon on the right side of "
-"the toolbar or just press <keyseq><key>Ctrl</key><key>S</key></keyseq>."
+"To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save</"
+"gui> button on the right side of the toolbar or just press "
+"<keyseq><key>Ctrl</key><key>S</key></keyseq>."
 msgstr ""
 "Untuk menyimpan berkas dalam <app>gedit</app>, klik tombol <gui style="
-"\"button\">Simpan berkas ini</gui> dengan ikon disk-drive di sisi kanan "
-"bilah alat, atau tekan saja <keyseq><key>Ctrl</key><key>S</key></keyseq>."
+"\"button\">Simpan</gui> di sisi kanan bilah alat atau tekan saja "
+"<keyseq><key>Ctrl</key><key>S</key></keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-save-file.page:32
 msgid ""
-"If you are saving a new file, the <gui>Save As</gui> dialog will appear, and "
-"you can select a name for the file, as well as the directory where you would "
-"like the file to be saved."
+"If you are saving a new file, a dialog will appear, and you can select a "
+"name for the file, as well as the directory where you would like the file to "
+"be saved."
 msgstr ""
-"Bila Anda menyimpan suatu berkas baru, dialog <gui>Simpan Sebagai</gui> akan "
-"muncul, dan Anda dapat memilih suatu nama bagi berkas, maupun direktori "
-"dimana Anda hendak menyimpan berkas tersebut."
+"Bila Anda menyimpan suatu berkas baru, suatu dialog akan muncul, dan Anda "
+"dapat memilih suatu nama bagi berkas, maupun direktori dimana Anda hendak "
+"menyimpan berkas tersebut."
 
 #. (itstool) path: info/desc
 #: C/gedit-search.page:8
