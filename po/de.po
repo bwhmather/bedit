@@ -19,20 +19,25 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-21 04:20+0000\n"
-"PO-Revision-Date: 2016-08-21 11:22+0200\n"
-"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"POT-Creation-Date: 2017-05-05 13:19+0000\n"
+"PO-Revision-Date: 2017-06-10 19:44+0200\n"
+"Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.0.1\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Textdateien bearbeiten"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -42,7 +47,7 @@ msgstr ""
 "Einfachheit und Bedienkomfort Wert gelegt wird, ist gedit ein mächtiger und "
 "universeller Texteditor."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -52,7 +57,7 @@ msgstr ""
 "entwickeln oder einfach nur Notizen festhalten wollen – gedit wird ein "
 "verlässliches Werkzeug sein, um Ihre Aufgabe zu erledigen."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -63,10 +68,6 @@ msgstr ""
 #: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Texteditor"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "Textdateien bearbeiten"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
@@ -999,7 +1000,7 @@ msgstr ""
 "Frank Arnold <frank@scirocco-5v-turbo.de>\n"
 "Jochen Skulj <jochen@jochenskulj.de>\n"
 "Andre Klapper <ak-47@gmx.net>\n"
-"Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
+"Christian Kirbach <Christian.Kirbach@gmail.com>\n"
 "Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>\n"
 "Simon Linden <xhi2018@gmail.com>"
@@ -1008,12 +1009,12 @@ msgstr ""
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
-msgstr[0] "%d Mal gefunden und ersetzt."
-msgstr[1] "%d Mal gefunden und ersetzt."
+msgstr[0] "%d Mal gefunden und ersetzt"
+msgstr[1] "%d Mal gefunden und ersetzt"
 
 #: ../gedit/gedit-commands-search.c:116
 msgid "Found and replaced one occurrence"
-msgstr "Ein Mal gefunden und ersetzt."
+msgstr "Ein Mal gefunden und ersetzt"
 
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
@@ -1158,6 +1159,7 @@ msgstr "»%s« ist ein Ordner."
 msgid "“%s” is not a valid location."
 msgstr "»%s« ist kein gültiger Ort."
 
+#. Translators: %s is a host name
 #: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
@@ -1532,6 +1534,9 @@ msgstr "Vorbereiten …"
 msgid "File: %s"
 msgstr "Datei: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Seite %N von %Q"
@@ -1858,8 +1863,8 @@ msgid "_Paste"
 msgstr "E_infügen"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Löschen"
@@ -2461,12 +2466,12 @@ msgstr "Suchen"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
 msgctxt "shortcut window"
 msgid "Find the next match"
-msgstr "Nächsten Treffer finden"
+msgstr "Nächsten Treffer suchen"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
 msgctxt "shortcut window"
 msgid "Find the previous match"
-msgstr "Vorherigen Treffer finden"
+msgstr "Vorherigen Treffer suchen"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
 msgctxt "shortcut window"
@@ -3051,7 +3056,7 @@ msgstr "Beim Laden eines Ordners ist ein Fehler aufgetreten."
 msgid "An error occurred"
 msgstr "Ein Fehler ist aufgetreten"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -3061,30 +3066,30 @@ msgstr ""
 "unwiderruflich gelöscht werden?"
 
 # CHECK
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Die Datei »%s« kann nicht in den Papierkorb verschoben werden."
 
 # CHECK
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr ""
 "Die ausgewählten Dateien können nicht in den Papierkorb verschoben werden."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr ""
 "Sind Sie sicher, dass die Datei »%s« unwiderruflich gelöscht werden soll?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr ""
 "Sind Sie sicher, dass die ausgewählten Dateien unwiderruflich gelöscht "
 "werden sollen?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Wenn Sie ein Element löschen, geht es unwiderruflich verloren."
 
@@ -3684,11 +3689,11 @@ msgstr "Rechtschreibprüfung"
 msgid "Checks the spelling of the current document."
 msgstr "Rechtschreibprüfung im momentan geöffneten Dokument durchführen."
 
-#: ../plugins/time/gedit-time-plugin.c:270
+#: ../plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time..."
 msgstr "_Datum und Uhrzeit einfügen …"
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Verfügbare Formate"
 
