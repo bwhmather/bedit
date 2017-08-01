@@ -24,6 +24,13 @@ from .outputpanel import OutputPanel
 from .capture import Capture
 from .functions import *
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class ToolActions(object):
     def __init__(self, library, window, panel):

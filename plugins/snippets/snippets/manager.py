@@ -28,6 +28,14 @@ from .importer import Importer
 from .exporter import Exporter
 from .languagemanager import get_language_manager
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
+
 class Manager(Gtk.Window, Gtk.Buildable):
     NAME_COLUMN = 0
     SORT_COLUMN = 1

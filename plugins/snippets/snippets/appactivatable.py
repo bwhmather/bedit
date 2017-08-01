@@ -21,6 +21,13 @@ from gi.repository import Gedit, Gtk, Gdk, GObject, Gio, GLib
 from .library import Library
 from .shareddata import SharedData
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class AppActivatable(GObject.Object, Gedit.AppActivatable):
     __gtype_name__ = "GeditSnippetsAppActivatable"

@@ -26,6 +26,13 @@ import subprocess
 import fcntl
 from gi.repository import GLib, GObject
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class Capture(GObject.Object):
     CAPTURE_STDOUT = 0x01

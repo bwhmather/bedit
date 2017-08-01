@@ -27,6 +27,13 @@ from . import linkparsing
 from . import filelookup
 from gi.repository import GLib, Gio, Gdk, Gtk, Pango, Gedit
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class UniqueById:
     __shared_state = WeakKeyDictionary()

@@ -21,6 +21,13 @@ from .library import ToolLibrary
 from .manager import Manager
 import os
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class ToolMenu(object):
     def __init__(self, library, menu):

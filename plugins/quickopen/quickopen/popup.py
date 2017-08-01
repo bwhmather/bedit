@@ -24,6 +24,13 @@ from gi.repository import GLib, Gio, GObject, Pango, Gtk, Gdk, Gedit
 import xml.sax.saxutils
 from .virtualdirs import VirtualDirectory
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class Popup(Gtk.Dialog):
     __gtype_name__ = "QuickOpenPopup"

@@ -28,6 +28,14 @@ from .signals import Signals
 from .shareddata import SharedData
 from . import helper
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
+
 class DynamicSnippet(dict):
     def __init__(self, text):
         self['text'] = text

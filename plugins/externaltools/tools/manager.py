@@ -25,6 +25,13 @@ import hashlib
 from xml.sax import saxutils
 from gi.repository import Gio, GObject, Gtk, GtkSource, Gedit
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class LanguagesPopup(Gtk.Popover):
     __gtype_name__ = "LanguagePopup"

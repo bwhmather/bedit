@@ -23,6 +23,14 @@ import shutil
 
 from .library import Library
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
+
 class Importer:
     def __init__(self, filename):
         self.filename = filename

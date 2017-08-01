@@ -33,6 +33,13 @@ from gi.repository import GObject, Gtk, Gedit, Peas, PeasGtk
 from .console import PythonConsole
 from .config import PythonConsoleConfigWidget
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class PythonConsolePlugin(GObject.Object, Gedit.WindowActivatable, PeasGtk.Configurable):
     __gtype_name__ = "PythonConsolePlugin"

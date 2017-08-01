@@ -26,6 +26,13 @@ from .popup import Popup
 from .virtualdirs import RecentDocumentsDirectory
 from .virtualdirs import CurrentDocumentsDirectory
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 class QuickOpenAppActivatable(GObject.Object, Gedit.AppActivatable):
     app = GObject.Property(type=Gedit.App)

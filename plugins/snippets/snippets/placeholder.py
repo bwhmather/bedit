@@ -26,6 +26,14 @@ from gi.repository import GObject, Gtk
 from . import helper
 from .substitutionparser import SubstitutionParser
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
+
 # These are places in a view where the cursor can go and do things
 class Placeholder:
     def __init__(self, view, tabstop, environ, defaults, begin):

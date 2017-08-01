@@ -22,6 +22,14 @@ import shutil
 import xml.etree.ElementTree as et
 from . import helper
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
+
 class Exporter:
     def __init__(self, filename, snippets):
         self.filename = filename

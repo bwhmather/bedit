@@ -20,6 +20,13 @@ import os
 from gi.repository import Gio, Gtk, Gdk, GtkSource, Gedit
 from .capture import *
 
+try:
+    import gettext
+    gettext.bindtextdomain('gedit')
+    gettext.textdomain('gedit')
+    _ = gettext.gettext
+except:
+    _ = lambda s: s
 
 def default(val, d):
     if val is not None:
