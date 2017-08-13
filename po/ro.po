@@ -6,14 +6,14 @@
 # Adi Roiban https://launchpad.net/~adiroiban, 2008, 2009
 # Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2009, 2010, 2011.
 # Bogdan Mințoi <mintoi.bogdan@gmail.com>, 2014.
-# Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2014, 2015.
+# Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2014, 2015, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&k"
-"eywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-10-22 17:41+0000\n"
-"PO-Revision-Date: 2015-10-22 19:49+0200\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gedit&"
+"keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-08-03 18:24+0000\n"
+"PO-Revision-Date: 2017-08-04 21:07+0200\n"
 "Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
 "Language-Team: Gnome Romanian Translation Team\n"
 "Language: ro\n"
@@ -26,6 +26,11 @@ msgstr ""
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Editare fișiere text"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -35,7 +40,7 @@ msgstr ""
 "simplicitatea și ușurința în utilizare, gedit este un puternic editor "
 "general de texte."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -45,7 +50,7 @@ msgstr ""
 "sau pur și simplu scrieți doar câteva notițe, gedit va fi o unealtă pe care "
 "vă puteți baza pentru a vă îndeplini scopul."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -53,33 +58,28 @@ msgstr ""
 "Sistemul său flexibil, de module, vă permite să personalizați și să adaptați "
 "aplicația la stilul personal de lucru."
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:1
-msgid "gedit"
-msgstr "gedit"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2 ../gedit/gedit-print-job.c:730
+#: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Editor de text"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
-msgid "Edit text files"
-msgstr "Editare fișiere text"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "gedit Text Editor"
 msgstr "Editor de text gedit"
 
+#: ../data/org.gnome.gedit.desktop.in.in.h:4
+#| msgid "Text;Editor;"
+msgid "Text;Editor;Plaintext;Write;"
+msgstr "Text;Editor;Plaintext;Write;Scrie;"
+
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-msgid "Text;Editor;"
-msgstr "Text;Editor;"
+#| msgid "_New Window"
+msgid "New Window"
+msgstr "Fereastră nouă"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-msgid "Open a New Window"
-msgstr "Deschide o fereastră nouă"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:7
-msgid "Open a New Document"
-msgstr "Deschide un document nou"
+#| msgid "N_ext Document"
+msgid "New Document"
+msgstr "Document nou"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
@@ -575,15 +575,15 @@ msgstr ""
 "Lista modulelor active. Conține „Locația” modulelor active. Pentru a obține "
 "„Locația” unui anumit modul, consultați fișierul de module .gedit-plugin."
 
-#: ../gedit/gedit-app.c:111
+#: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
 msgstr "Afișează versiunea aplicației"
 
-#: ../gedit/gedit-app.c:117
+#: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
 msgstr "Afișează o listă de valori posibile pentru opțiunea de codare"
 
-#: ../gedit/gedit-app.c:124
+#: ../gedit/gedit-app.c:123
 msgid ""
 "Set the character encoding to be used to open the files listed on the "
 "command line"
@@ -591,59 +591,46 @@ msgstr ""
 "Stabilește codarea caracterelor utilizată la deschiderea fișierelor listate "
 "în linia de comandă"
 
-#: ../gedit/gedit-app.c:125
+#: ../gedit/gedit-app.c:124
 msgid "ENCODING"
 msgstr "CODARE"
 
-#: ../gedit/gedit-app.c:131
+#: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
 msgstr ""
 "Creează o fereastră nouă de prim nivel într-o instanță gedit deja existentă"
 
-#: ../gedit/gedit-app.c:138
+#: ../gedit/gedit-app.c:137
 msgid "Create a new document in an existing instance of gedit"
 msgstr "Creează un document nou într-o instanță gedit deja existentă"
 
-# LG: nu sunt foarte sigur pe traducerea asta
-#: ../gedit/gedit-app.c:145
-msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-msgstr "Setează dimensiunea și poziția ferestrei (LĂȚIMExÎNĂLȚIME+X+Y)"
-
-#: ../gedit/gedit-app.c:146
-msgid "GEOMETRY"
-msgstr "GEOMETRIE"
-
-#: ../gedit/gedit-app.c:152
+#: ../gedit/gedit-app.c:144
 msgid "Open files and block process until files are closed"
 msgstr ""
 "Deschide fișierele și blochează procesele până când fișierele sunt închise"
 
-#: ../gedit/gedit-app.c:159
+#: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
 msgstr "Execută gedit în mod autonom"
 
-#: ../gedit/gedit-app.c:166
+#: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
 msgstr "[FIȘIER...] [+LINIE[:COLOANĂ]]"
 
-#: ../gedit/gedit-app.c:281
+#: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
 msgstr "A intervenit o eroare la afișarea ajutorului."
 
-#: ../gedit/gedit-app.c:972
+#: ../gedit/gedit-app.c:967
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codare nevalidă."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:155
-msgid "Question"
-msgstr "Întrebare"
-
-#: ../gedit/gedit-close-confirmation-dialog.c:317
+#: ../gedit/gedit-close-confirmation-dialog.c:277
 msgid "Close _without Saving"
 msgstr "Închide _fără a salva"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:318
+#: ../gedit/gedit-close-confirmation-dialog.c:278
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
@@ -654,31 +641,31 @@ msgstr "Închide _fără a salva"
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:781
-#: ../plugins/snippets/snippets/manager.py:866
-#: ../plugins/snippets/snippets/manager.py:904
+#: ../plugins/quickopen/quickopen/popup.py:45
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:3
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
 msgstr "_Anulează"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/resources/gtk/menus-default.ui.h:9
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/resources/gtk/menus.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
 msgstr "_Salvează ca…"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:346
-#: ../gedit/gedit-commands-file.c:855 ../gedit/resources/gtk/menus-osx.ui.h:7
+#: ../gedit/gedit-close-confirmation-dialog.c:306
+#: ../gedit/gedit-commands-file.c:855
+#: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:905
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "_Salvează"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:364
+#: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld second will be permanently lost."
@@ -694,13 +681,13 @@ msgstr[2] ""
 "Dacă nu salvați, modificările din ultimele %ld de secunde vor fi pierdute "
 "definitiv."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:373
+#: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
 "If you don't save, changes from the last minute will be permanently lost."
 msgstr ""
 "Dacă nu salvați, modificările din ultimul minut vor fi pierdute definitiv."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:379
+#: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
 "If you don't save, changes from the last minute and %ld second will be "
@@ -718,7 +705,7 @@ msgstr[2] ""
 "Dacă nu salvați, modificările din ultimul minut și %ld de secunde vor fi "
 "pierdute definitiv."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:389
+#: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
 "If you don't save, changes from the last %ld minute will be permanently lost."
@@ -734,12 +721,12 @@ msgstr[2] ""
 "Dacă nu salvați, modificările din ultimele %ld de minute vor fi pierdute "
 "definitiv."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:404
+#: ../gedit/gedit-close-confirmation-dialog.c:364
 msgid "If you don't save, changes from the last hour will be permanently lost."
 msgstr ""
 "Dacă nu salvați, modificările din ultima oră vor fi pierdute definitiv."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:410
+#: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
 "If you don't save, changes from the last hour and %d minute will be "
@@ -757,7 +744,7 @@ msgstr[2] ""
 "Dacă nu salvați, modificările din ultima oră și %d de minute vor fi pierdute "
 "definitiv."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:425
+#: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
 "If you don't save, changes from the last %d hour will be permanently lost."
@@ -771,22 +758,22 @@ msgstr[2] ""
 "Dacă nu salvați, modificările din ultimele %d de ore vor fi pierdute "
 "definitiv."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:469
+#: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
 msgstr "Modificările aduse documentului „%s” vor fi pierdute definitiv."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:474
+#: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
 msgstr "Salvați modificările aduse documentului „%s” înainte de a închide?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:489
-#: ../gedit/gedit-close-confirmation-dialog.c:647
+#: ../gedit/gedit-close-confirmation-dialog.c:434
+#: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
 msgstr "Salvarea a fost dezactivată de către administratorul de sistem."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:595
+#: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
@@ -794,7 +781,7 @@ msgstr[0] "Modificările pentru un document vor fi pierdute definitiv."
 msgstr[1] "Modificările pentru %d documente vor fi pierdute definitiv."
 msgstr[2] "Modificările pentru %d de documente vor fi pierdute definitiv."
 
-#: ../gedit/gedit-close-confirmation-dialog.c:603
+#: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
 msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
@@ -809,15 +796,15 @@ msgstr[2] ""
 "Există %d de documente cu modificări nesalvate. Salvați modificările înainte "
 "de închidere?"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:623
+#: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
 msgstr "Docum_ente cu modificări nesalvate:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:627
+#: ../gedit/gedit-close-confirmation-dialog.c:538
 msgid "S_elect the documents you want to save:"
 msgstr "S_electați documentele pe care doriți să le salvați:"
 
-#: ../gedit/gedit-close-confirmation-dialog.c:651
+#: ../gedit/gedit-close-confirmation-dialog.c:562
 msgid "If you don't save, all your changes will be permanently lost."
 msgstr "Dacă nu salvați, toate modificările aduse vor fi pierdute definitiv."
 
@@ -836,16 +823,16 @@ msgstr[2] "Se încarcă %d de fișiere..."
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
-#| msgid "Open"
 msgctxt "window title"
 msgid "Open"
 msgstr "Deschide"
 
-#: ../gedit/gedit-commands-file.c:463 ../gedit/resources/gtk/menus-osx.ui.h:4
+#: ../gedit/gedit-commands-file.c:463
+#: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:39
-#: ../plugins/snippets/snippets/manager.py:782
+#: ../plugins/quickopen/quickopen/popup.py:46
+#: ../plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "D_eschide"
 
@@ -904,7 +891,6 @@ msgstr "Se salvează fișierul „%s”..."
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
-#| msgid "Save As"
 msgctxt "window title"
 msgid "Save As"
 msgstr "Salvează ca"
@@ -1018,11 +1004,11 @@ msgstr[2] ""
 msgid "_Revert"
 msgstr "_Anulează"
 
-#: ../gedit/gedit-commands-help.c:79
+#: ../gedit/gedit-commands-help.c:110
 msgid "gedit is a small and lightweight text editor for the GNOME Desktop"
 msgstr "gedit este un editor de text simplu și rapid pentru desktopul Gnome"
 
-#: ../gedit/gedit-commands-help.c:103
+#: ../gedit/gedit-commands-help.c:132
 msgid "translator-credits"
 msgstr ""
 "Mișu Moldovan <dumol@go.ro>\n"
@@ -1031,6 +1017,7 @@ msgstr ""
 "Dan Damian <dand@gnome.ro>\n"
 "Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
 "Bogdan Mințoi <mintoi.bogdan@gmail.com>, 2014\n"
+"Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2016\n"
 "\n"
 "Contribuții Launchpad:\n"
 "  Adi Roiban https://launchpad.net/~adiroiban\n"
@@ -1063,19 +1050,18 @@ msgstr "A fost găsită și înlocuită o apariție."
 msgid "\"%s\" not found"
 msgstr "„%s” nu a fost găsit"
 
-#: ../gedit/gedit-document.c:1104 ../gedit/gedit-document.c:1137
+#: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
-#| msgid "Unsaved Document %d"
 msgid "Untitled Document %d"
 msgstr "Document fără nume %d"
 
-#: ../gedit/gedit-documents-panel.c:435
+#: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
 msgstr "Grup de taburi %i"
 
-#: ../gedit/gedit-documents-panel.c:535 ../gedit/gedit-window.c:1167
-#: ../gedit/gedit-window.c:1173 ../gedit/gedit-window.c:1181
+#: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
+#: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
 msgid "Read-Only"
 msgstr "Doar citire"
 
@@ -1149,11 +1135,11 @@ msgstr "Codare caracter:"
 msgid "Line Ending:"
 msgstr "Sfârșit de rând:"
 
-#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1251
-#: ../plugins/externaltools/tools/manager.py:108
-#: ../plugins/externaltools/tools/manager.py:317
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:767
+#: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
+#: ../plugins/externaltools/tools/manager.py:115
+#: ../plugins/externaltools/tools/manager.py:324
+#: ../plugins/externaltools/tools/manager.py:440
+#: ../plugins/externaltools/tools/manager.py:774
 msgid "Plain Text"
 msgstr "Text simplu"
 
@@ -1198,6 +1184,7 @@ msgstr "„%s” este un dosar."
 msgid "“%s” is not a valid location."
 msgstr "„%s” nu este o locație validă."
 
+#. Translators: %s is a host name
 #: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
@@ -1482,14 +1469,13 @@ msgstr "Anulează schimbările și _reîncarcă"
 
 # Lucian Adrian Grijincu: se bate pe accelerator cu „_Renunță” și „_Editează”
 #: ../gedit/gedit-io-error-info-bar.c:1182
-#: ../gedit/resources/gtk/menus-default.ui.h:6
+#: ../gedit/resources/gtk/menus-common.ui.h:21
+#: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:10
 msgid "_Reload"
 msgstr "Reî_ncarcă"
 
 #: ../gedit/gedit-io-error-info-bar.c:1187
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:7
 msgid "_Ignore"
 msgstr "_Ignoră"
 
@@ -1550,6 +1536,9 @@ msgstr "Se pregătește..."
 msgid "File: %s"
 msgstr "Fișier: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Pagina %N din %Q"
@@ -1687,7 +1676,7 @@ msgstr "SO Mac clasic"
 msgid "Windows"
 msgstr "Windows"
 
-#: ../gedit/gedit-view.c:464
+#: ../gedit/gedit-view.c:468
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:2
 msgid "_Display line numbers"
 msgstr "Afișează _numerotarea rândurilor"
@@ -1696,74 +1685,73 @@ msgstr "Afișează _numerotarea rândurilor"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:657
+#: ../gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d din %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:749
+#: ../gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "Reia de la începu_t"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:759
+#: ../gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "Potrivire ca expresie _regulată"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "Potrivir_e doar pentru întreg cuvântul"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "_Majuscule semnificative"
 
-#: ../gedit/gedit-view-frame.c:1004
+#: ../gedit/gedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "Șirul pe care doriți să-l căutați"
 
-#: ../gedit/gedit-view-frame.c:1016
+#: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "Rândul la care doriți să mutați cursorul"
 
-#: ../gedit/gedit-window.c:1004
+#: ../gedit/gedit-window.c:998
 msgid "Bracket match is out of range"
 msgstr "Paranteza pereche este în afara intervalului valid"
 
-#: ../gedit/gedit-window.c:1009
+#: ../gedit/gedit-window.c:1003
 msgid "Bracket match not found"
 msgstr "Nu s-a găsit o paranteză pereche"
 
-#: ../gedit/gedit-window.c:1014
+#: ../gedit/gedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
 msgstr "S-a găsit paranteza pereche pe linia: %d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
-#: ../gedit/gedit-window.c:1049
+#: ../gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
 msgstr "  Rând %d, Col %d"
 
-#: ../gedit/gedit-window.c:1233
+#: ../gedit/gedit-window.c:1227
 #, c-format
 msgid "Tab Width: %u"
 msgstr "Lățime tab: %u"
 
-#: ../gedit/gedit-window.c:1602
+#: ../gedit/gedit-window.c:1596
 msgid "There are unsaved documents"
 msgstr "Sunt documente nesalvate"
 
-#: ../gedit/gedit-window.c:2447
+#: ../gedit/gedit-window.c:2444
 msgid "Change side panel page"
 msgstr "Modifică pagina panoului lateral"
 
-#: ../gedit/gedit-window.c:2467 ../gedit/resources/gtk/menus-osx.ui.h:35
-#: ../gedit/resources/ui/gedit-window.ui.h:1
+#: ../gedit/gedit-window.c:2464 ../gedit/resources/ui/gedit-window.ui.h:1
 msgid "Documents"
 msgstr "Documente"
 
@@ -1785,9 +1773,8 @@ msgid "Move to New Tab _Group"
 msgstr "Mută în _grup nou de taburi"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:5
-#: ../gedit/resources/gtk/menus-default.ui.h:21
-#: ../gedit/resources/gtk/menus-traditional.ui.h:19
-#: ../gedit/resources/gtk/menus-osx.ui.h:12
+#: ../gedit/resources/gtk/menus.ui.h:22
+#: ../gedit/resources/gtk/menus-traditional.ui.h:20
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:2
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:2
 msgid "_Close"
@@ -1817,221 +1804,235 @@ msgstr "Evidențiază rândul curent"
 msgid "Text wrapping"
 msgstr "Încadrare text"
 
-#: ../gedit/resources/gtk/menus-default.ui.h:1
-#: ../gedit/resources/gtk/menus-osx.ui.h:9
-msgid "_New Window"
-msgstr "Fereastră _nouă"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:2
-#: ../gedit/resources/gtk/menus-traditional.ui.h:15
-msgid "_Preferences"
-msgstr "_Preferințe"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:3
-#: ../gedit/resources/gtk/menus-traditional.ui.h:16
-#: ../gedit/resources/gtk/menus-osx.ui.h:45
-#: ../plugins/spell/gedit-spell-plugin.c:364
-#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
-msgid "_Help"
-msgstr "_Ajutor"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:4
-#: ../gedit/resources/gtk/menus-traditional.ui.h:17
-msgid "_About"
-msgstr "_Despre"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:5
-#: ../gedit/resources/gtk/menus-traditional.ui.h:20
-msgid "_Quit"
-msgstr "_Ieșire"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:7
-#: ../gedit/resources/gtk/menus-traditional.ui.h:2
-#: ../gedit/resources/gtk/menus-osx.ui.h:11
-msgid "_Print…"
-msgstr "Ti_părește…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:8
-#: ../gedit/resources/gtk/menus-traditional.ui.h:3
-#: ../gedit/resources/gtk/menus-osx.ui.h:25
-msgid "_Fullscreen"
-msgstr "Ecran compl_et"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:10
-#: ../gedit/resources/gtk/menus-traditional.ui.h:5
-msgid "Save _All"
-msgstr "_Salvează tot"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:11
-#: ../gedit/resources/gtk/menus-traditional.ui.h:6
-#: ../gedit/resources/gtk/menus-osx.ui.h:28
-msgid "_Find…"
-msgstr "C_aută…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:12
-#: ../gedit/resources/gtk/menus-traditional.ui.h:7
-msgid "_Find and Replace…"
-msgstr "C_aută și înlocuiește…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:13
-#: ../gedit/resources/gtk/menus-traditional.ui.h:8
-#: ../gedit/resources/gtk/menus-osx.ui.h:32
-msgid "_Clear Highlight"
-msgstr "E_limină evidențierea"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:14
-#: ../gedit/resources/gtk/menus-traditional.ui.h:9
-msgid "_Go to Line…"
-msgstr "Du-te la l_inia…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:15
-#: ../gedit/resources/gtk/menus-traditional.ui.h:10
-#: ../gedit/resources/gtk/menus-osx.ui.h:22
-#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
-msgid "View"
-msgstr "Vizualizare"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:16
-#: ../gedit/resources/gtk/menus-traditional.ui.h:11
-#: ../gedit/resources/gtk/menus-osx.ui.h:23
-msgid "Side _Panel"
-msgstr "_Panou lateral"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:17
-#: ../gedit/resources/gtk/menus-traditional.ui.h:12
-#: ../gedit/resources/gtk/menus-osx.ui.h:24
-msgid "_Bottom Panel"
-msgstr "Panou _inferior"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:18
-#: ../gedit/resources/gtk/menus-traditional.ui.h:13
-#: ../gedit/resources/gtk/menus-osx.ui.h:26
-msgid "_Highlight Mode…"
-msgstr "_Mod evidențiere…"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:19
-#: ../gedit/resources/gtk/menus-traditional.ui.h:14
-#: ../gedit/resources/gtk/menus-osx.ui.h:34
-msgid "Tools"
-msgstr "Unelte"
-
-#: ../gedit/resources/gtk/menus-default.ui.h:20
-#: ../gedit/resources/gtk/menus-traditional.ui.h:18
-#: ../gedit/resources/gtk/menus-osx.ui.h:37
-msgid "_Close All"
-msgstr "În_chide toate"
-
-#: ../gedit/resources/gtk/menus-osx.ui.h:1
-msgid "File"
-msgstr "Fișier"
+#: ../gedit/resources/gtk/menus-common.ui.h:12
+msgid "_File"
+msgstr "_Fișier"
 
 #. _New is the menu item under the File menu on OS X which creates a new empty document.
-#: ../gedit/resources/gtk/menus-osx.ui.h:3
+#: ../gedit/resources/gtk/menus-common.ui.h:14
 msgid "_New"
 msgstr "_Nou"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:5
+#: ../gedit/resources/gtk/menus-common.ui.h:16
 msgid "Open _Recent"
 msgstr "Deschise _recent"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:6
+#: ../gedit/resources/gtk/menus-common.ui.h:17
 msgid "Reopen Closed _Tab"
 msgstr "Redeschide tabul închis"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:8
+#: ../gedit/resources/gtk/menus-common.ui.h:19
 msgid "Save _As…"
 msgstr "Salve_ază ca…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:13
-msgid "Edit"
-msgstr "Editare"
+#: ../gedit/resources/gtk/menus-common.ui.h:20
+#: ../gedit/resources/gtk/menus.ui.h:1
+msgid "_New Window"
+msgstr "Fereastră _nouă"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:14
+#: ../gedit/resources/gtk/menus-common.ui.h:22
+#: ../gedit/resources/gtk/menus.ui.h:8
+#: ../gedit/resources/gtk/menus-traditional.ui.h:2
+msgid "_Print…"
+msgstr "Ti_părește…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:23
+#: ../gedit/resources/gtk/menus.ui.h:6
+#: ../gedit/resources/gtk/menus-traditional.ui.h:21
+msgid "_Quit"
+msgstr "_Ieșire"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:24
+msgid "_Edit"
+msgstr "_Editare"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:25
 msgid "_Undo"
 msgstr "_Anulează"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:15
+#: ../gedit/resources/gtk/menus-common.ui.h:26
 msgid "_Redo"
 msgstr "_Refă"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:16
+#: ../gedit/resources/gtk/menus-common.ui.h:27
 msgid "C_ut"
 msgstr "T_aie"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:17
+#: ../gedit/resources/gtk/menus-common.ui.h:28
 msgid "_Copy"
 msgstr "_Copiază"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:18
+#: ../gedit/resources/gtk/menus-common.ui.h:29
 msgid "_Paste"
 msgstr "_Lipește"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:19
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../gedit/resources/gtk/menus-common.ui.h:30
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "Șter_ge"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:20
+#: ../gedit/resources/gtk/menus-common.ui.h:31
 msgid "Overwrite _Mode"
 msgstr "_Modul de suprascriere"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:21
+#: ../gedit/resources/gtk/menus-common.ui.h:32
 msgid "Select _All"
 msgstr "Selectează t_ot"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:27
-msgid "Search"
-msgstr "Caută"
+#: ../gedit/resources/gtk/menus-common.ui.h:33
+#: ../gedit/resources/gtk/menus.ui.h:2
+#: ../gedit/resources/gtk/menus-traditional.ui.h:15
+msgid "_Preferences"
+msgstr "_Preferințe"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:29
+#: ../gedit/resources/gtk/menus-common.ui.h:34
+msgid "_View"
+msgstr "_Vizualizare"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:35
+#: ../gedit/resources/gtk/menus.ui.h:17
+#: ../gedit/resources/gtk/menus-traditional.ui.h:11
+msgid "Side _Panel"
+msgstr "_Panou lateral"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:36
+#: ../gedit/resources/gtk/menus.ui.h:18
+#: ../gedit/resources/gtk/menus-traditional.ui.h:12
+msgid "_Bottom Panel"
+msgstr "Panou _inferior"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:37
+#: ../gedit/resources/gtk/menus.ui.h:9
+#: ../gedit/resources/gtk/menus-traditional.ui.h:3
+msgid "_Fullscreen"
+msgstr "Ecran compl_et"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:38
+#: ../gedit/resources/gtk/menus.ui.h:19
+#: ../gedit/resources/gtk/menus-traditional.ui.h:13
+msgid "_Highlight Mode…"
+msgstr "_Mod evidențiere…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:39
+msgid "_Search"
+msgstr "_Căutare"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:40
+#: ../gedit/resources/gtk/menus.ui.h:12
+#: ../gedit/resources/gtk/menus-traditional.ui.h:6
+msgid "_Find…"
+msgstr "C_aută…"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:41
 msgid "Find Ne_xt"
 msgstr "Caută _următorul"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:30
+#: ../gedit/resources/gtk/menus-common.ui.h:42
 msgid "Find Pre_vious"
 msgstr "Caută _precedentul"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:31
+#: ../gedit/resources/gtk/menus-common.ui.h:43
 msgid "Find and _Replace…"
 msgstr "Caută și înlocui_ește…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:33
+#: ../gedit/resources/gtk/menus-common.ui.h:44
+#: ../gedit/resources/gtk/menus.ui.h:14
+#: ../gedit/resources/gtk/menus-traditional.ui.h:8
+msgid "_Clear Highlight"
+msgstr "E_limină evidențierea"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:45
 msgid "Go to _Line…"
 msgstr "Du-te la _linia…"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:36
+#: ../gedit/resources/gtk/menus-common.ui.h:46
+msgid "_Tools"
+msgstr "Unel_te"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:47
+msgid "_Documents"
+msgstr "_Documente"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:48
 msgid "_Save All"
 msgstr "_Salvează toate"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:38
+#: ../gedit/resources/gtk/menus-common.ui.h:49
+#: ../gedit/resources/gtk/menus.ui.h:21
+#: ../gedit/resources/gtk/menus-traditional.ui.h:19
+msgid "_Close All"
+msgstr "În_chide toate"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:50
 msgid "_New Tab Group"
 msgstr "_Nou grup de taburi"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:39
+#: ../gedit/resources/gtk/menus-common.ui.h:51
 msgid "P_revious Tab Group"
 msgstr "G_rupul de taburi precedent"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:40
+#: ../gedit/resources/gtk/menus-common.ui.h:52
 msgid "Nex_t Tab Group"
 msgstr "Grupul de _taburi următor"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:41
+#: ../gedit/resources/gtk/menus-common.ui.h:53
 msgid "_Previous Document"
 msgstr "Documentul _precedent"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:42
+#: ../gedit/resources/gtk/menus-common.ui.h:54
 msgid "N_ext Document"
 msgstr "Docum_entul următor"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:43
+#: ../gedit/resources/gtk/menus-common.ui.h:55
 msgid "_Move To New Window"
 msgstr "_Mută în fereastră nouă"
 
-#: ../gedit/resources/gtk/menus-osx.ui.h:44
-msgid "Help"
-msgstr "Ajutor"
+#: ../gedit/resources/gtk/menus-common.ui.h:56
+#: ../gedit/resources/gtk/menus.ui.h:4
+#: ../gedit/resources/gtk/menus-traditional.ui.h:17
+#: ../plugins/spell/gedit-spell-plugin.c:246
+#: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:7
+msgid "_Help"
+msgstr "_Ajutor"
+
+#: ../gedit/resources/gtk/menus-common.ui.h:57
+#: ../gedit/resources/gtk/menus.ui.h:5
+#: ../gedit/resources/gtk/menus-traditional.ui.h:18
+msgid "_About"
+msgstr "_Despre"
+
+#: ../gedit/resources/gtk/menus.ui.h:3
+#: ../gedit/resources/gtk/menus-traditional.ui.h:16
+msgid "_Keyboard Shortcuts"
+msgstr "S_curtături de tastatură"
+
+#: ../gedit/resources/gtk/menus.ui.h:11
+#: ../gedit/resources/gtk/menus-traditional.ui.h:5
+msgid "Save _All"
+msgstr "_Salvează tot"
+
+#: ../gedit/resources/gtk/menus.ui.h:13
+#: ../gedit/resources/gtk/menus-traditional.ui.h:7
+msgid "_Find and Replace…"
+msgstr "C_aută și înlocuiește…"
+
+#: ../gedit/resources/gtk/menus.ui.h:15
+#: ../gedit/resources/gtk/menus-traditional.ui.h:9
+msgid "_Go to Line…"
+msgstr "Du-te la l_inia…"
+
+#: ../gedit/resources/gtk/menus.ui.h:16
+#: ../gedit/resources/gtk/menus-traditional.ui.h:10
+#: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
+msgid "View"
+msgstr "Vizualizare"
+
+#: ../gedit/resources/gtk/menus.ui.h:20
+#: ../gedit/resources/gtk/menus-traditional.ui.h:14
+msgid "Tools"
+msgstr "Unelte"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:1
 msgid "Character Encodings"
@@ -2062,7 +2063,6 @@ msgid "Highlight Mode"
 msgstr "Modul de evidențiere"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:3
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:4
 msgid "_Select"
 msgstr "_Selectează"
 
@@ -2357,9 +2357,263 @@ msgid "Search _backwards"
 msgstr "Caută în sens _invers"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
-#| msgid "_Wrap around"
 msgid "Wra_p around"
 msgstr "Reia de la înce_put"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
+msgctxt "shortcut window"
+msgid "Documents"
+msgstr "Documente"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
+msgctxt "shortcut window"
+msgid "Create a new document in a tab"
+msgstr "Creează un document nou într-un tab"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
+msgctxt "shortcut window"
+msgid "Open a document"
+msgstr "Deschide un document"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
+msgctxt "shortcut window"
+msgid "Save the document"
+msgstr "Salvează documentul"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
+msgctxt "shortcut window"
+msgid "Save the document with a new filename"
+msgstr "Salvează documentul cu un nou nume de fișier"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
+msgctxt "shortcut window"
+msgid "Save all the documents"
+msgstr "Salvează toate documentele"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
+msgctxt "shortcut window"
+msgid "Close the document"
+msgstr "Închide documentul"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
+msgctxt "shortcut window"
+msgid "Close all the documents"
+msgstr "Închide toate documentele"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
+msgctxt "shortcut window"
+msgid "Reopen the most recently closed document"
+msgstr "Redeschide documentul închis cel mai recent"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
+msgctxt "shortcut window"
+msgid "Switch to the next document"
+msgstr "Comută la următorul document"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
+msgctxt "shortcut window"
+msgid "Switch to the previous document"
+msgstr "Comută la precedentul document"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+msgctxt "shortcut window"
+msgid "Switch to the first - ninth document"
+msgstr "Comută la primul - al 9-lea document"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
+msgctxt "shortcut window"
+msgid "Windows and Panels"
+msgstr "Ferestre și panouri"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
+msgctxt "shortcut window"
+msgid "Create a new document in a window"
+msgstr "Creează un document nou într-o fereastră"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
+msgctxt "shortcut window"
+msgid "Create a new tab group"
+msgstr "Creează un grup de taburi nou"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
+msgctxt "shortcut window"
+msgid "Show side panel"
+msgstr "Arată panoul lateral"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
+msgctxt "shortcut window"
+msgid "Show bottom panel"
+msgstr "Arată panoul de jos"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
+msgctxt "shortcut window"
+msgid "Fullscreen on / off"
+msgstr "Ecran complet pornit / oprit"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
+msgctxt "shortcut window"
+msgid "Quit the application"
+msgstr "Închide aplicația"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
+msgctxt "shortcut window"
+msgid "Find and Replace"
+msgstr "Caută și înlocuieșe"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
+msgctxt "shortcut window"
+msgid "Find"
+msgstr "Caută"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
+msgctxt "shortcut window"
+msgid "Find the next match"
+msgstr "Caută potrivirea următoare"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
+msgctxt "shortcut window"
+msgid "Find the previous match"
+msgstr "Caută potrivirea precedentă"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
+msgctxt "shortcut window"
+msgid "Clear highlight"
+msgstr "Sterge evidențierea"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
+msgctxt "shortcut window"
+msgid "Go to line"
+msgstr "Navighează la linia"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
+msgctxt "shortcut window"
+msgid "Copy and Paste"
+msgstr "Copiază și lipește"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
+msgctxt "shortcut window"
+msgid "Copy selected text to clipboard"
+msgstr "Copiază textul selectat în clipboard"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
+msgctxt "shortcut window"
+msgid "Cut selected text to clipboard"
+msgstr "Taie textul selectat în clipboard"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
+msgctxt "shortcut window"
+msgid "Paste text from clipboard"
+msgstr "Lipește textul din clipboard"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
+msgctxt "shortcut window"
+msgid "Undo and Redo"
+msgstr "Anulează și refă"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
+msgctxt "shortcut window"
+msgid "Undo previous command"
+msgstr "Anulează comanda precedentă"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
+msgctxt "shortcut window"
+msgid "Redo previous command"
+msgstr "Refă comanda precedentă"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
+msgctxt "shortcut window"
+msgid "Selection"
+msgstr "Selecție"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
+msgctxt "shortcut window"
+msgid "Select all text"
+msgstr "Selectează tot textul"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Editare"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
+msgctxt "shortcut window"
+msgid "Toggle insert / overwrite"
+msgstr "Comută introducere / suprascriere"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
+msgctxt "shortcut window"
+msgid "Delete current line"
+msgstr "Șterge linia curentă"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
+msgctxt "shortcut window"
+msgid "Join selected lines"
+msgstr "Îmbină liniile selectate"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
+msgctxt "shortcut window"
+msgid "Move current line up"
+msgstr "Mută linia curentă în sus"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
+msgctxt "shortcut window"
+msgid "Move current line down"
+msgstr "Mută linia curentă în jos"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
+msgctxt "shortcut window"
+msgid "Move current word left"
+msgstr "Mută cuvântul curent la stânga"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
+msgctxt "shortcut window"
+msgid "Move current word right"
+msgstr "Mută cuvântul curent la dreapta"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
+msgctxt "shortcut window"
+msgid "Convert to uppercase"
+msgstr "Convertește la majuscule"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
+msgctxt "shortcut window"
+msgid "Convert to lowercase"
+msgstr "Convertește la minuscule"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
+msgctxt "shortcut window"
+msgid "Invert case"
+msgstr "Inversează mărimile"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
+msgctxt "shortcut window"
+msgid "Increment number at cursor"
+msgstr "Incrementează numărul de la cursor"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
+msgctxt "shortcut window"
+msgid "Decrement number at cursor"
+msgstr "Decrementează numărul de la cursor"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
+msgctxt "shortcut window"
+msgid "Tools"
+msgstr "Unelte"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
+msgctxt "shortcut window"
+msgid "Check spelling"
+msgstr "Verifică ortografia"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
+msgctxt "shortcut window"
+msgid "Print the document"
+msgstr "Tipărește documentul"
+
+#: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
+msgctxt "shortcut window"
+msgid "Show completion window"
+msgstr "Arată fereastra de completare"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
@@ -2554,66 +2808,66 @@ msgstr ""
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "Un nume de font Pango. De ex. „Sans 12” sau „Monospace Bold 14”."
 
-#: ../plugins/externaltools/tools/appactivatable.py:126
+#: ../plugins/externaltools/tools/appactivatable.py:133
 msgid "Manage _External Tools..."
 msgstr "Administrare unelte _externe..."
 
-#: ../plugins/externaltools/tools/appactivatable.py:131
+#: ../plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
 msgstr "Unel_te externe"
 
-#: ../plugins/externaltools/tools/capture.py:99
+#: ../plugins/externaltools/tools/capture.py:106
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Nu s-a putut executa comanda: %s"
 
-#: ../plugins/externaltools/tools/functions.py:184
+#: ../plugins/externaltools/tools/functions.py:191
 msgid "You must be inside a word to run this command"
 msgstr ""
 "Trebuie să fiți în interiorul unui cuvânt pentru a executa această comandă"
 
-#: ../plugins/externaltools/tools/functions.py:302
+#: ../plugins/externaltools/tools/functions.py:309
 msgid "Running tool:"
 msgstr "Unealtă de executare:"
 
-#: ../plugins/externaltools/tools/functions.py:333
+#: ../plugins/externaltools/tools/functions.py:340
 msgid "Done."
 msgstr "Realizat."
 
-#: ../plugins/externaltools/tools/functions.py:335
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Exited"
 msgstr "Terminat"
 
-#: ../plugins/externaltools/tools/manager.py:106
+#: ../plugins/externaltools/tools/manager.py:113
 msgid "All languages"
 msgstr "Toate limbile"
 
-#: ../plugins/externaltools/tools/manager.py:422
-#: ../plugins/externaltools/tools/manager.py:426
-#: ../plugins/externaltools/tools/manager.py:765
+#: ../plugins/externaltools/tools/manager.py:429
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:772
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "Toate limbile"
 
-#: ../plugins/externaltools/tools/manager.py:539
+#: ../plugins/externaltools/tools/manager.py:546
 msgid "New tool"
 msgstr "Unealtă nouă"
 
-#: ../plugins/externaltools/tools/manager.py:676
+#: ../plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Acest accelerator este deja asociat cu %s"
 
-#: ../plugins/externaltools/tools/manager.py:720
+#: ../plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr ""
 "Introduceți un nou accelerator sau apăsați tasta [Backspace] pentru ștergere"
 
-#: ../plugins/externaltools/tools/manager.py:722
+#: ../plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator"
 msgstr "Introduceți un nou accelerator"
 
-#: ../plugins/externaltools/tools/outputpanel.py:122
+#: ../plugins/externaltools/tools/outputpanel.py:129
 msgid "Stopped."
 msgstr "Oprit."
 
@@ -2738,7 +2992,7 @@ msgstr "_Ieșire:"
 msgid "_Applicability:"
 msgstr "_Aplicabilitate:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:118
+#: ../plugins/externaltools/tools/windowactivatable.py:126
 msgid "Tool Output"
 msgstr "Ieșire instrument"
 
@@ -2796,7 +3050,7 @@ msgstr "A intervenit o eroare la încărcarea unui dosar"
 msgid "An error occurred"
 msgstr "A intervenit o eroare"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2804,25 +3058,25 @@ msgstr ""
 "Fișierul nu poate fi mutat la coșul de gunoi;\n"
 "doriți să îl ștergeți definitiv?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Fișierul „%s” nu poate fi mutat la coșul de gunoi."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Fișierele selectate nu pot fi mutate la coșul de gunoi."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Sigur doriți să ștergeți definitiv „%s”?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Sigur doriți ștergerea definitivă a fișierelor selectate?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Dacă ștergeți un element, nu îl veți mai putea recupera."
 
@@ -3086,7 +3340,7 @@ msgid "_Error color:"
 msgstr "Culoare _eroare:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Consolă Python"
@@ -3095,13 +3349,13 @@ msgstr "Consolă Python"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Consolă Python interactivă în panoul inferior"
 
-#: ../plugins/quickopen/quickopen/__init__.py:40
+#: ../plugins/quickopen/quickopen/__init__.py:47
 msgid "Quick Open..."
 msgstr "Deschidere rapidă..."
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:33
+#: ../plugins/quickopen/quickopen/popup.py:40
 msgid "Quick Open"
 msgstr "Deschidere rapidă"
 
@@ -3109,93 +3363,93 @@ msgstr "Deschidere rapidă"
 msgid "Quickly open files"
 msgstr "Deschidere rapidă a fișierelor"
 
-#: ../plugins/quickopen/quickopen/popup.py:83
+#: ../plugins/quickopen/quickopen/popup.py:90
 msgid "Type to search..."
 msgstr "Tastați pentru a căuta..."
 
-#: ../plugins/snippets/snippets/appactivatable.py:81
+#: ../plugins/snippets/snippets/appactivatable.py:88
 msgid "Manage _Snippets..."
 msgstr "Admini_strează fragmente de text..."
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:56
-#: ../plugins/snippets/snippets/document.py:145
-#: ../plugins/snippets/snippets/document.py:659
+#: ../plugins/snippets/snippets/document.py:64
+#: ../plugins/snippets/snippets/document.py:153
+#: ../plugins/snippets/snippets/document.py:667
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Fragmente de text"
 
-#: ../plugins/snippets/snippets/exporter.py:80
+#: ../plugins/snippets/snippets/exporter.py:88
 #, python-format
 msgid "The archive \"%s\" could not be created"
 msgstr "Nu s-a putut crea arhiva „%s”"
 
-#: ../plugins/snippets/snippets/exporter.py:97
+#: ../plugins/snippets/snippets/exporter.py:105
 #, python-format
 msgid "Target directory \"%s\" does not exist"
 msgstr "Dosarul destinație „%s” nu există"
 
-#: ../plugins/snippets/snippets/exporter.py:100
+#: ../plugins/snippets/snippets/exporter.py:108
 #, python-format
 msgid "Target directory \"%s\" is not a valid directory"
 msgstr "Dosarul destinație „%s” nu este un dosar valid"
 
-#: ../plugins/snippets/snippets/importer.py:47
-#: ../plugins/snippets/snippets/importer.py:108
+#: ../plugins/snippets/snippets/importer.py:55
+#: ../plugins/snippets/snippets/importer.py:116
 #, python-format
 msgid "File \"%s\" does not exist"
 msgstr "Fișierul „%s” nu există"
 
-#: ../plugins/snippets/snippets/importer.py:50
+#: ../plugins/snippets/snippets/importer.py:58
 #, python-format
 msgid "File \"%s\" is not a valid snippets file"
 msgstr "Fișierul „%s” nu este un fișier valid de fragmente"
 
-#: ../plugins/snippets/snippets/importer.py:67
+#: ../plugins/snippets/snippets/importer.py:75
 #, python-format
 msgid "Imported file \"%s\" is not a valid snippets file"
 msgstr "Fișierul importat „%s” nu este un fișier valid de fragmente"
 
-#: ../plugins/snippets/snippets/importer.py:77
+#: ../plugins/snippets/snippets/importer.py:85
 #, python-format
 msgid "The archive \"%s\" could not be extracted"
 msgstr "Arhiva „%s” nu a putut fi extrasă"
 
-#: ../plugins/snippets/snippets/importer.py:95
+#: ../plugins/snippets/snippets/importer.py:103
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "Următoarele fișiere nu au putut fi importate: %s"
 
-#: ../plugins/snippets/snippets/importer.py:111
-#: ../plugins/snippets/snippets/importer.py:124
+#: ../plugins/snippets/snippets/importer.py:119
+#: ../plugins/snippets/snippets/importer.py:132
 #, python-format
 msgid "File \"%s\" is not a valid snippets archive"
 msgstr "Fișierul „%s” nu este o arhivă validă de fragmente"
 
-#: ../plugins/snippets/snippets/manager.py:42
+#: ../plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
 msgstr "Arhivă fragmente"
 
-#: ../plugins/snippets/snippets/manager.py:66
+#: ../plugins/snippets/snippets/manager.py:74
 msgid "Add a new snippet..."
 msgstr "Adaugă un nou fragment de text..."
 
-#: ../plugins/snippets/snippets/manager.py:116
+#: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
 msgstr "Global"
 
-#: ../plugins/snippets/snippets/manager.py:406
+#: ../plugins/snippets/snippets/manager.py:414
 msgid "Revert selected snippet"
 msgstr "Refă fragmentul selectat"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:417
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "Șterge fragment selectat"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:662
+#: ../plugins/snippets/snippets/manager.py:670
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3206,89 +3460,89 @@ msgstr ""
 "caracter precum: {, [, etc."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:669
+#: ../plugins/snippets/snippets/manager.py:677
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Un singur cuvânt care activează fragmentul după ce se apasă tasta TAB"
 
-#: ../plugins/snippets/snippets/manager.py:758
+#: ../plugins/snippets/snippets/manager.py:766
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "S-a produs următoarea eroare la importare: %s"
 
-#: ../plugins/snippets/snippets/manager.py:765
+#: ../plugins/snippets/snippets/manager.py:773
 msgid "Import successfully completed"
 msgstr "Import finalizat cu succes"
 
-#: ../plugins/snippets/snippets/manager.py:779
+#: ../plugins/snippets/snippets/manager.py:787
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "Importă fragmente"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All supported archives"
 msgstr "Toate arhivele suportate"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:793
+#: ../plugins/snippets/snippets/manager.py:879
+#: ../plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
 msgstr "Arhivă Gzip"
 
-#: ../plugins/snippets/snippets/manager.py:786
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:935
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
 msgstr "Arhivă comprimată bzip2"
 
-#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
 msgstr "Un singur fișier cu fragmente"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "All files"
 msgstr "Toate fișierele"
 
-#: ../plugins/snippets/snippets/manager.py:800
+#: ../plugins/snippets/snippets/manager.py:808
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "S-a produs următoarea eroare la exportare: %s"
 
-#: ../plugins/snippets/snippets/manager.py:804
+#: ../plugins/snippets/snippets/manager.py:812
 msgid "Export successfully completed"
 msgstr "Export finalizat cu succes"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:844
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:852
+#: ../plugins/snippets/snippets/manager.py:919
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "Doriți să includeți în export fragmentele <b>sistem</b> selectate?"
 
-#: ../plugins/snippets/snippets/manager.py:859
-#: ../plugins/snippets/snippets/manager.py:929
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "There are no snippets selected to be exported"
 msgstr "Nu au fost selectate fragmente pentru exportare"
 
-#: ../plugins/snippets/snippets/manager.py:864
-#: ../plugins/snippets/snippets/manager.py:902
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:910
 msgid "Export snippets"
 msgstr "Export fragmente"
 
-#: ../plugins/snippets/snippets/manager.py:1041
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
 "Introduceți o nouă combinație de taste sau apăsați [Backspace] pentru "
 "ștergere"
 
-#: ../plugins/snippets/snippets/manager.py:1043
+#: ../plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
 msgstr "Introduceți o nouă combinație de taste"
 
-#: ../plugins/snippets/snippets/placeholder.py:597
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3297,7 +3551,7 @@ msgstr ""
 "Execuția comenzii Python (%s) a depășit timpul maxim; execuția a fost "
 "abandonată."
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: ../plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Execuția comenzii Python (%s) a eșuat: %s"
@@ -3393,35 +3647,6 @@ msgstr "_Sortează"
 msgid "Sorts a document or selected text."
 msgstr "Sortează un document sau un text selectat."
 
-#. No suggestions. Put something in the menu anyway...
-#. Translators: Displayed in the "Check Spelling"
-#. * dialog if there are no suggestions for the current
-#. * misspelled word.
-#.
-#: ../plugins/spell/gedit-automatic-spell-checker.c:573
-#: ../plugins/spell/gedit-spell-checker-dialog.c:152
-msgid "(no suggested words)"
-msgstr "(nici o sugestie)"
-
-#: ../plugins/spell/gedit-automatic-spell-checker.c:596
-msgid "_More..."
-msgstr "_Mai mult..."
-
-#. Ignore all
-#: ../plugins/spell/gedit-automatic-spell-checker.c:636
-msgid "_Ignore All"
-msgstr "_Ignoră tot"
-
-#. Add to Dictionary
-#: ../plugins/spell/gedit-automatic-spell-checker.c:645
-msgid "_Add"
-msgstr "Ada_ugă"
-
-#. Prepend suggestions
-#: ../plugins/spell/gedit-automatic-spell-checker.c:682
-msgid "_Spelling Suggestions..."
-msgstr "_Sugestii ortografice..."
-
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling..."
 msgstr "_Verifică ortografia..."
@@ -3434,116 +3659,7 @@ msgstr "Definește _limba..."
 msgid "_Highlight Misspelled Words"
 msgstr "E_vidențiază cuvintele ortografiate greșit"
 
-#: ../plugins/spell/gedit-spell-checker.c:464
-#, c-format
-msgid "Error when checking the spelling of word “%s”: %s"
-msgstr "Eroare la verificarea ortografică a cuvântului „%s”: %s"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:237
-msgid "Error:"
-msgstr "Eroare:"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:274
-msgid "Completed spell checking"
-msgstr "Verificarea ortografică s-a terminat"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:278
-msgid "No misspelled words"
-msgstr "Niciun cuvânt ortografiat greșit"
-
-#. Translators: Displayed in the "Check
-#. * Spelling" dialog if the current word
-#. * isn't misspelled.
-#.
-#: ../plugins/spell/gedit-spell-checker-dialog.c:508
-msgid "(correct spelling)"
-msgstr "(ortografie corectă)"
-
-#: ../plugins/spell/gedit-spell-checker-dialog.c:646
-msgid "Suggestions"
-msgstr "Sugestii"
-
-#. Translators: the first %s is the language name, and
-#. * the second %s is the locale name. Example:
-#. * "French (France)"
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:363
-#: ../plugins/spell/gedit-spell-checker-language.c:369
-#, c-format
-msgctxt "language"
-msgid "%s (%s)"
-msgstr "%s (%s)"
-
-#. Translators: this refers to an unknown language code
-#. * (one which isn't in our built-in list).
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:378
-#, c-format
-msgctxt "language"
-msgid "Unknown (%s)"
-msgstr "Necunoscut (%s)"
-
-#. Translators: this refers the Default language used by the
-#. * spell checker
-#.
-#: ../plugins/spell/gedit-spell-checker-language.c:484
-msgctxt "language"
-msgid "Default"
-msgstr "Implicită"
-
 #. ex:set ts=8 noet:
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:1
-msgid "Set Language"
-msgstr "Definește limba"
-
-#: ../plugins/spell/resources/ui/languages-dialog.ui.h:2
-msgid "Select the _language of the current document."
-msgstr "Selectați _limba documentului curent."
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:1
-msgid "Check Spelling"
-msgstr "Verifică ortografia"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:2
-msgid "Misspelled word:"
-msgstr "Cuvânt ortografiat greșit:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:3
-msgid "word"
-msgstr "cuvânt"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:4
-msgid "Change _to:"
-msgstr "Schimbă î_n:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:5
-msgid "Check _Word"
-msgstr "Verifică _cuvântul"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:6
-msgid "_Suggestions:"
-msgstr "_Sugestii:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:8
-msgid "Ignore _All"
-msgstr "Ignoră _tot"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:9
-msgid "Cha_nge"
-msgstr "_Schimbă"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:10
-msgid "Change A_ll"
-msgstr "Schimbă t_ot"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:11
-msgid "User dictionary:"
-msgstr "Dicționar personal:"
-
-#: ../plugins/spell/resources/ui/spell-checker.ui.h:12
-msgid "Add w_ord"
-msgstr "Adaugă cu_vântul"
-
 #: ../plugins/spell/spell.plugin.desktop.in.h:1
 msgid "Spell Checker"
 msgstr "Verificare ortografică"
@@ -3552,11 +3668,11 @@ msgstr "Verificare ortografică"
 msgid "Checks the spelling of the current document."
 msgstr "Verifică ortografia documentului curent."
 
-#: ../plugins/time/gedit-time-plugin.c:270
+#: ../plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time..."
 msgstr "In_serează data și ora..."
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Formate disponibile"
 
@@ -3640,6 +3756,112 @@ msgstr "Inserare dată și oră"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Inserează data și ora curentă la poziția cursorului."
 
+#~ msgid "Open a New Window"
+#~ msgstr "Deschide o fereastră nouă"
+
+#~ msgid "Open a New Document"
+#~ msgstr "Deschide un document nou"
+
+#~ msgid "gedit"
+#~ msgstr "gedit"
+
+# LG: nu sunt foarte sigur pe traducerea asta
+#~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
+#~ msgstr "Setează dimensiunea și poziția ferestrei (LĂȚIMExÎNĂLȚIME+X+Y)"
+
+#~ msgid "GEOMETRY"
+#~ msgstr "GEOMETRIE"
+
+#~ msgid "Question"
+#~ msgstr "Întrebare"
+
+#~ msgid "Help"
+#~ msgstr "Ajutor"
+
+#~ msgid "(no suggested words)"
+#~ msgstr "(nici o sugestie)"
+
+#~ msgid "_More..."
+#~ msgstr "_Mai mult..."
+
+#~ msgid "_Ignore All"
+#~ msgstr "_Ignoră tot"
+
+#~ msgid "_Add"
+#~ msgstr "Ada_ugă"
+
+#~ msgid "_Spelling Suggestions..."
+#~ msgstr "_Sugestii ortografice..."
+
+#~ msgid "Error when checking the spelling of word “%s”: %s"
+#~ msgstr "Eroare la verificarea ortografică a cuvântului „%s”: %s"
+
+#~ msgid "Error:"
+#~ msgstr "Eroare:"
+
+#~ msgid "Completed spell checking"
+#~ msgstr "Verificarea ortografică s-a terminat"
+
+#~ msgid "No misspelled words"
+#~ msgstr "Niciun cuvânt ortografiat greșit"
+
+#~ msgid "(correct spelling)"
+#~ msgstr "(ortografie corectă)"
+
+#~ msgid "Suggestions"
+#~ msgstr "Sugestii"
+
+#~ msgctxt "language"
+#~ msgid "%s (%s)"
+#~ msgstr "%s (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Unknown (%s)"
+#~ msgstr "Necunoscut (%s)"
+
+#~ msgctxt "language"
+#~ msgid "Default"
+#~ msgstr "Implicită"
+
+#~ msgid "Set Language"
+#~ msgstr "Definește limba"
+
+#~ msgid "Select the _language of the current document."
+#~ msgstr "Selectați _limba documentului curent."
+
+#~ msgid "Check Spelling"
+#~ msgstr "Verifică ortografia"
+
+#~ msgid "Misspelled word:"
+#~ msgstr "Cuvânt ortografiat greșit:"
+
+#~ msgid "word"
+#~ msgstr "cuvânt"
+
+#~ msgid "Change _to:"
+#~ msgstr "Schimbă î_n:"
+
+#~ msgid "Check _Word"
+#~ msgstr "Verifică _cuvântul"
+
+#~ msgid "_Suggestions:"
+#~ msgstr "_Sugestii:"
+
+#~ msgid "Ignore _All"
+#~ msgstr "Ignoră _tot"
+
+#~ msgid "Cha_nge"
+#~ msgstr "_Schimbă"
+
+#~ msgid "Change A_ll"
+#~ msgstr "Schimbă t_ot"
+
+#~ msgid "User dictionary:"
+#~ msgstr "Dicționar personal:"
+
+#~ msgid "Add w_ord"
+#~ msgstr "Adaugă cu_vântul"
+
 #~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 #~ msgstr "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
 
@@ -3707,9 +3929,6 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 
 #~ msgid "The document is empty."
 #~ msgstr "Acest document este gol."
-
-#~ msgid "Check spelling"
-#~ msgstr "Verifică ortografia"
 
 #~ msgid ""
 #~ "List of VFS schemes gedit supports in write mode. The 'file' scheme is "
@@ -3868,9 +4087,6 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 #~ msgid "Unicode (UTF-8)"
 #~ msgstr "Unicode (UTF-8)"
 
-#~ msgid "_View"
-#~ msgstr "_Vizualizare"
-
 #~ msgid "_Open..."
 #~ msgstr "_Deschide..."
 
@@ -3883,14 +4099,8 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 #~ msgid "_Contents"
 #~ msgstr "_Conținut"
 
-#~ msgid "About this application"
-#~ msgstr "Despre această aplicație"
-
 #~ msgid "Save _As..."
 #~ msgstr "Salvează c_a..."
-
-#~ msgid "Save the current file with a different name"
-#~ msgstr "Salvează fișierul curent cu un alt nume"
 
 #~ msgid "Revert to a saved version of the file"
 #~ msgstr "Revino la o versiune salvată a fișierului"
@@ -3904,9 +4114,6 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 #~ msgid "_Print..."
 #~ msgstr "Ti_părește..."
 
-#~ msgid "Print the current page"
-#~ msgstr "Tipărește pagina curentă"
-
 #~ msgid "Undo the last action"
 #~ msgstr "Anulează ultima acțiune"
 
@@ -3919,14 +4126,8 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 #~ msgid "Copy the selection"
 #~ msgstr "Copiază selecția"
 
-#~ msgid "Paste the clipboard"
-#~ msgstr "Lipește textul din clipboard"
-
 #~ msgid "Delete the selected text"
 #~ msgstr "Șterge textul selectat"
-
-#~ msgid "Select the entire document"
-#~ msgstr "Selectează tot documentul"
 
 #~ msgid "_Find..."
 #~ msgstr "Cau_tă..."
@@ -3960,15 +4161,6 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 
 #~ msgid "Close all open files"
 #~ msgstr "Închide toate fișierele deschise"
-
-#~ msgid "Create a new tab group"
-#~ msgstr "Creează un grup de taburi nou"
-
-#~ msgid "Switch to the previous tab group"
-#~ msgstr "Comută la grupul de taburi precedent"
-
-#~ msgid "Switch to the next tab group"
-#~ msgstr "Comută la grupul de taburi următor"
 
 #~ msgid "Activate previous document"
 #~ msgstr "Activează documentul precedent"
@@ -4033,12 +4225,6 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 #~ msgid "All _Lower Case"
 #~ msgstr "Toate _normale"
 
-#~ msgid "Change selected text to lower case"
-#~ msgstr "Elimină majusculele în textul selectat"
-
-#~ msgid "_Invert Case"
-#~ msgstr "_Inversează mărimile"
-
 #~ msgid "Invert the case of selected text"
 #~ msgstr "Inversează mărimile în textul selectat"
 
@@ -4060,14 +4246,8 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 #~ msgid "External Tools Manager"
 #~ msgstr "Administrator unelte externe"
 
-#~ msgid "_Edit:"
-#~ msgstr "_Editare:"
-
 #~ msgid "_Shortcut Key:"
 #~ msgstr "Tastă _scurtătură:"
-
-#~ msgid "_Tools:"
-#~ msgstr "_Unelte:"
 
 #~ msgid "Opens the External Tools Manager"
 #~ msgstr "Deschide administratorul de unelte externe"
@@ -4134,9 +4314,6 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 
 #~ msgid "Previous location"
 #~ msgstr "Adresa precedentă"
-
-#~ msgid "Go to previous location"
-#~ msgstr "Salt la adresa precedentă"
 
 #~ msgid "Go to a previously opened location"
 #~ msgstr "Salt la o adresă deschisă anterior"
@@ -5463,9 +5640,6 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 #~ msgid "U_nindent"
 #~ msgstr "_Deindentează"
 
-#~ msgid "Unindent selected lines"
-#~ msgstr "Deindentează liniile selectate"
-
 #~ msgid "Indent Lines"
 #~ msgstr "Indentează linii"
 
@@ -5777,9 +5951,6 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 #~ msgid "Redo"
 #~ msgstr "Refă"
 
-#~ msgid "Select All"
-#~ msgstr "Selectează tot"
-
 #~ msgid ""
 #~ "Set toolbar button style according to desktop Menu and Toolbar Preferences"
 #~ msgstr ""
@@ -5926,9 +6097,6 @@ msgstr "Inserează data și ora curentă la poziția cursorului."
 
 #~ msgid "Tag _List"
 #~ msgstr "Listă _etichete"
-
-#~ msgid "Show the tag list window"
-#~ msgstr "Arată fereastra cu lista de etichete"
 
 #~ msgid "gedit View"
 #~ msgstr "Vizualizare gedit"
