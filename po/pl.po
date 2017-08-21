@@ -1,5 +1,5 @@
 # Polish translation for gedit.
-# Copyright © 1999-2016 the gedit authors.
+# Copyright © 1999-2017 the gedit authors.
 # This file is distributed under the same license as the gedit package.
 # Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 1999-2003.
 # Artur Flinta <aflinta@at.kernel.pl>, 2003-2005.
@@ -7,17 +7,17 @@
 # Wadim Dziedzic <wdziedzic@aviary.pl>, 2007.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009.
 # Piotr Zaryk <pzaryk@aviary.pl>, 2008.
-# Piotr Drąg <piotrdrag@gmail.com>, 2009-2016.
+# Piotr Drąg <piotrdrag@gmail.com>, 2009-2017.
 # Wojciech Szczęsny <wszczesny@aviary.pl>, 2013.
 # Paweł Żołnowski <pawel@zolnowski.name>, 2014-2015.
-# Aviary.pl <community-poland@mozilla.org>, 2006-2016.
+# Aviary.pl <community-poland@mozilla.org>, 2006-2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-08 04:23+0200\n"
-"PO-Revision-Date: 2016-09-08 04:24+0200\n"
+"POT-Creation-Date: 2017-08-21 02:04+0200\n"
+"PO-Revision-Date: 2017-08-21 02:05+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -28,6 +28,11 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Edytor plików tekstowych"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -36,7 +41,7 @@ msgstr ""
 "gedit to oficjalny edytor tekstu środowiska GNOME. Będąc jednocześnie prosty "
 "i łatwy w użyciu, oferuje on wiele dodatkowych możliwości."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -45,7 +50,7 @@ msgstr ""
 "Programu gedit można używać zarówno do pisania książek, jak i do "
 "programowania czy po prostu do robienia szybkich notatek."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -56,10 +61,6 @@ msgstr ""
 #: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Edytor tekstu"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "Edytor plików tekstowych"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
@@ -574,8 +575,8 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
-"Lista aktywnych wtyczek. Zawiera „Położenie” aktywnej wtyczki. Plik .gedit-"
-"plugins zawiera „Położenie” danej wtyczki."
+"Lista aktywnych wtyczek. Zawiera „Location” (położenie) aktywnej wtyczki. "
+"Plik .gedit-plugins zawiera „Location” (położenie) danej wtyczki."
 
 #: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
@@ -642,10 +643,10 @@ msgstr "Zamknij _bez zapisywania"
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:781
-#: ../plugins/snippets/snippets/manager.py:866
-#: ../plugins/snippets/snippets/manager.py:904
+#: ../plugins/quickopen/quickopen/popup.py:45
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
@@ -661,8 +662,8 @@ msgstr "Z_apisz jako…"
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:905
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "_Zapisz"
 
@@ -838,8 +839,8 @@ msgstr "Otwarcie"
 #: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:39
-#: ../plugins/snippets/snippets/manager.py:782
+#: ../plugins/quickopen/quickopen/popup.py:46
+#: ../plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "_Otwórz"
 
@@ -1018,10 +1019,10 @@ msgstr ""
 "Wadim Dziedzic <wdziedzic@aviary.pl>, 2007\n"
 "Tomasz Dominikowski <dominikowski@gmail.com>, 2008-2009\n"
 "Piotr Zaryk <pzaryk@aviary.pl>, 2008\n"
-"Piotr Drąg <piotrdrag@gmail.com>, 2009-2016\n"
+"Piotr Drąg <piotrdrag@gmail.com>, 2009-2017\n"
 "Wojciech Szczęsny <wszczesny@aviary.pl>, 2013\n"
 "Paweł Żołnowski <pawel@zolnowski.name>, 2014-2015\n"
-"Aviary.pl <community-poland@mozilla.org>, 2006-2016"
+"Aviary.pl <community-poland@mozilla.org>, 2006-2017"
 
 #: ../gedit/gedit-commands-search.c:107
 #, c-format
@@ -1045,12 +1046,12 @@ msgstr "Nie odnaleziono wyrażenia „%s”"
 #: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
 msgid "Untitled Document %d"
-msgstr "Dokument bez tytułu %d"
+msgstr "%d. dokument bez tytułu"
 
 #: ../gedit/gedit-documents-panel.c:399
 #, c-format
 msgid "Tab Group %i"
-msgstr "Grupa kart %i"
+msgstr "%i. grupa kart"
 
 #: ../gedit/gedit-documents-panel.c:499 ../gedit/gedit-window.c:1161
 #: ../gedit/gedit-window.c:1167 ../gedit/gedit-window.c:1175
@@ -1128,10 +1129,10 @@ msgid "Line Ending:"
 msgstr "Koniec wiersza:"
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
-#: ../plugins/externaltools/tools/manager.py:108
-#: ../plugins/externaltools/tools/manager.py:317
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:767
+#: ../plugins/externaltools/tools/manager.py:115
+#: ../plugins/externaltools/tools/manager.py:324
+#: ../plugins/externaltools/tools/manager.py:440
+#: ../plugins/externaltools/tools/manager.py:774
 msgid "Plain Text"
 msgstr "Zwykły tekst"
 
@@ -1177,6 +1178,7 @@ msgstr "„%s” jest katalogiem."
 msgid "“%s” is not a valid location."
 msgstr "„%s” nie jest prawidłowym położeniem."
 
+#. Translators: %s is a host name
 #: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
@@ -1530,19 +1532,22 @@ msgstr "Przygotowywanie…"
 msgid "File: %s"
 msgstr "Plik: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
-msgstr "Strona %N z %Q"
+msgstr "%N. strona z %Q"
 
 #: ../gedit/gedit-print-job.c:626
 #, c-format
 msgid "Rendering page %d of %d..."
-msgstr "Wyświetlanie strony %d z %d…"
+msgstr "Wyświetlanie %d. strony z %d…"
 
 #: ../gedit/gedit-print-preview.c:653
 #, c-format
 msgid "Page %d of %d"
-msgstr "Strona %d z %d"
+msgstr "%d. strona z %d"
 
 #: ../gedit/gedit-replace-dialog.c:690
 #: ../plugins/externaltools/tools/tools.ui.h:7
@@ -1857,8 +1862,8 @@ msgid "_Paste"
 msgstr "Wk_lej"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Usuń"
@@ -1925,7 +1930,7 @@ msgstr "Znajdź p_oprzednie"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:43
 msgid "Find and _Replace…"
-msgstr "_Znajdź i zastąp…"
+msgstr "Z_najdź i zastąp…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:44
 #: ../gedit/resources/gtk/menus.ui.h:14
@@ -1947,13 +1952,13 @@ msgstr "_Dokumenty"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:48
 msgid "_Save All"
-msgstr "Z_apisz wszystko"
+msgstr "Zapisz _wszystko"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:49
 #: ../gedit/resources/gtk/menus.ui.h:21
 #: ../gedit/resources/gtk/menus-traditional.ui.h:19
 msgid "_Close All"
-msgstr "Za_mknij wszystko"
+msgstr "Zam_knij wszystko"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:50
 msgid "_New Tab Group"
@@ -2141,7 +2146,7 @@ msgstr "Zapisywanie pliku"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
 msgid "Create a _backup copy of files before saving"
-msgstr "Tworzenie kopii _zapasowych przed zapisem"
+msgstr "Tworzenie kopii _zapasowej przed zapisem"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
 msgid "_Autosave files every"
@@ -2149,7 +2154,7 @@ msgstr "_Automatycznie co"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
 msgid "_minutes"
-msgstr "mi_nut"
+msgstr "mi_n"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:22
 msgid "Editor"
@@ -2216,7 +2221,7 @@ msgstr "Drukowa_nie"
 #.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:6
 msgid "_Number every"
-msgstr "_Numery wierszy co"
+msgstr "_Co"
 
 #.
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:8
@@ -2241,11 +2246,11 @@ msgstr "_Treść:"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:16
 msgid "_Line numbers:"
-msgstr "Numery _wierszy:"
+msgstr "_Numery wierszy:"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:17
 msgid "He_aders and footers:"
-msgstr "Nagłó_wki i stopki:"
+msgstr "Nagłówki i _stopki:"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:18
 msgid "_Restore Default Fonts"
@@ -2731,7 +2736,7 @@ msgstr "Bajty"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:1
 msgid "Build"
-msgstr "Budowanie"
+msgstr "Zbuduj"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
 msgid "Run \"make\" in the document directory"
@@ -2740,7 +2745,7 @@ msgstr "Wykonuje „make” w katalogu dokumentu"
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
 msgid "Open terminal here"
-msgstr "Otwarcie terminalu w tym miejscu"
+msgstr "Otwórz terminal w tym miejscu"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:2
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:2
@@ -2749,7 +2754,7 @@ msgstr "Otwiera terminal w katalogu dokumentu"
 
 #: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:1
 msgid "Remove trailing spaces"
-msgstr "Usunięcie końcowych spacji"
+msgstr "Usuń końcowe spacje"
 
 #: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:2
 msgid "Remove useless trailing spaces in your file"
@@ -2757,7 +2762,7 @@ msgstr "Usuwa z pliku niepotrzebne końcowe spacje"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:1
 msgid "Run command"
-msgstr "Wykonanie polecenia"
+msgstr "Wykonaj polecenie"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:2
 msgid "Execute a custom command and put its output in a new document"
@@ -2800,68 +2805,68 @@ msgstr ""
 "Nazwa czcionki biblioteki Pango. Przykłady: „Sans 12” lub „Monospace Bold "
 "14”."
 
-#: ../plugins/externaltools/tools/appactivatable.py:126
+#: ../plugins/externaltools/tools/appactivatable.py:133
 msgid "Manage _External Tools..."
 msgstr "Zarządzaj narzędziami z_ewnętrznymi…"
 
-#: ../plugins/externaltools/tools/appactivatable.py:131
+#: ../plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
 msgstr "_Narzędzia zewnętrzne"
 
-#: ../plugins/externaltools/tools/capture.py:99
+#: ../plugins/externaltools/tools/capture.py:106
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Nie można wykonać polecenia: %s"
 
-#: ../plugins/externaltools/tools/functions.py:184
+#: ../plugins/externaltools/tools/functions.py:191
 msgid "You must be inside a word to run this command"
 msgstr ""
 "Kursor musi znajdować się wewnątrz słowa, aby możliwe było wykonanie tego "
 "polecenia"
 
-#: ../plugins/externaltools/tools/functions.py:302
+#: ../plugins/externaltools/tools/functions.py:309
 msgid "Running tool:"
 msgstr "Uruchamianie narzędzia:"
 
-#: ../plugins/externaltools/tools/functions.py:333
+#: ../plugins/externaltools/tools/functions.py:340
 msgid "Done."
 msgstr "Gotowe."
 
-#: ../plugins/externaltools/tools/functions.py:335
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Exited"
 msgstr "Zakończono"
 
-#: ../plugins/externaltools/tools/manager.py:106
+#: ../plugins/externaltools/tools/manager.py:113
 msgid "All languages"
 msgstr "Wszystkie języki"
 
-#: ../plugins/externaltools/tools/manager.py:422
-#: ../plugins/externaltools/tools/manager.py:426
-#: ../plugins/externaltools/tools/manager.py:765
+#: ../plugins/externaltools/tools/manager.py:429
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:772
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "Wszystkie języki"
 
-#: ../plugins/externaltools/tools/manager.py:539
+#: ../plugins/externaltools/tools/manager.py:546
 msgid "New tool"
 msgstr "Nowe narzędzie"
 
-#: ../plugins/externaltools/tools/manager.py:676
+#: ../plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Ten skrót jest już przypisany do %s"
 
-#: ../plugins/externaltools/tools/manager.py:720
+#: ../plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr ""
 "Proszę wprowadzić nowy skrót lub nacisnąć klawisz Backspace, aby usunąć "
 "obecny"
 
-#: ../plugins/externaltools/tools/manager.py:722
+#: ../plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator"
 msgstr "Proszę wprowadzić nowy skrót"
 
-#: ../plugins/externaltools/tools/outputpanel.py:122
+#: ../plugins/externaltools/tools/outputpanel.py:129
 msgid "Stopped."
 msgstr "Zatrzymano."
 
@@ -2940,7 +2945,7 @@ msgstr "Wstawia w pozycji kursora"
 
 #: ../plugins/externaltools/tools/tools.ui.h:19
 msgid "Manage External Tools"
-msgstr "Zarządzaj narzędziami zewnętrznymi"
+msgstr "Zarządzanie narzędziami zewnętrznymi"
 
 #: ../plugins/externaltools/tools/tools.ui.h:20
 msgid "Add a new tool"
@@ -2986,7 +2991,7 @@ msgstr "O_kno wyjściowe:"
 msgid "_Applicability:"
 msgstr "Stosow_alność:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:119
+#: ../plugins/externaltools/tools/windowactivatable.py:126
 msgid "Tool Output"
 msgstr "Wyjście narzędzia"
 
@@ -3043,7 +3048,7 @@ msgstr "Wystąpił błąd podczas wczytywania katalogu"
 msgid "An error occurred"
 msgstr "Wystąpił błąd"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -3051,25 +3056,25 @@ msgstr ""
 "Nie można przenieść pliku do kosza.\n"
 "Usunąć go trwale?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Plik „%s” nie może zostać przeniesiony do kosza."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Zaznaczone pliki nie mogą być przeniesione do kosza."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Na pewno trwale usunąć plik „%s”?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Na pewno trwale usunąć zaznaczone pliki?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Usunięcie elementu spowoduje jego trwałą utratę."
 
@@ -3329,7 +3334,7 @@ msgid "_Error color:"
 msgstr "Kolor _błędu:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Konsola języka Python"
@@ -3338,13 +3343,13 @@ msgstr "Konsola języka Python"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktywna konsola języka Python dostępna w dolnym panelu"
 
-#: ../plugins/quickopen/quickopen/__init__.py:40
+#: ../plugins/quickopen/quickopen/__init__.py:47
 msgid "Quick Open..."
 msgstr "Szybko otwórz…"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:33
+#: ../plugins/quickopen/quickopen/popup.py:40
 msgid "Quick Open"
 msgstr "Szybkie otwarcie"
 
@@ -3352,93 +3357,93 @@ msgstr "Szybkie otwarcie"
 msgid "Quickly open files"
 msgstr "Szybko otwiera pliki"
 
-#: ../plugins/quickopen/quickopen/popup.py:83
+#: ../plugins/quickopen/quickopen/popup.py:90
 msgid "Type to search..."
 msgstr "Wyszukiwanie…"
 
-#: ../plugins/snippets/snippets/appactivatable.py:81
+#: ../plugins/snippets/snippets/appactivatable.py:88
 msgid "Manage _Snippets..."
 msgstr "Zarządzaj _wstawkami…"
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:56
-#: ../plugins/snippets/snippets/document.py:145
-#: ../plugins/snippets/snippets/document.py:659
+#: ../plugins/snippets/snippets/document.py:64
+#: ../plugins/snippets/snippets/document.py:153
+#: ../plugins/snippets/snippets/document.py:667
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Wstawki"
 
-#: ../plugins/snippets/snippets/exporter.py:80
+#: ../plugins/snippets/snippets/exporter.py:88
 #, python-format
 msgid "The archive \"%s\" could not be created"
 msgstr "Archiwum „%s” nie mogło być utworzone"
 
-#: ../plugins/snippets/snippets/exporter.py:97
+#: ../plugins/snippets/snippets/exporter.py:105
 #, python-format
 msgid "Target directory \"%s\" does not exist"
 msgstr "Katalog docelowy „%s” nie istnieje"
 
-#: ../plugins/snippets/snippets/exporter.py:100
+#: ../plugins/snippets/snippets/exporter.py:108
 #, python-format
 msgid "Target directory \"%s\" is not a valid directory"
 msgstr "Katalog docelowy „%s” nie jest prawidłowym katalogiem"
 
-#: ../plugins/snippets/snippets/importer.py:47
-#: ../plugins/snippets/snippets/importer.py:108
+#: ../plugins/snippets/snippets/importer.py:55
+#: ../plugins/snippets/snippets/importer.py:116
 #, python-format
 msgid "File \"%s\" does not exist"
 msgstr "Plik „%s” nie istnieje"
 
-#: ../plugins/snippets/snippets/importer.py:50
+#: ../plugins/snippets/snippets/importer.py:58
 #, python-format
 msgid "File \"%s\" is not a valid snippets file"
 msgstr "Plik „%s” nie jest prawidłowym plikiem wstawek"
 
-#: ../plugins/snippets/snippets/importer.py:67
+#: ../plugins/snippets/snippets/importer.py:75
 #, python-format
 msgid "Imported file \"%s\" is not a valid snippets file"
 msgstr "Importowany plik „%s” nie jest prawidłowym plikiem wstawek"
 
-#: ../plugins/snippets/snippets/importer.py:77
+#: ../plugins/snippets/snippets/importer.py:85
 #, python-format
 msgid "The archive \"%s\" could not be extracted"
 msgstr "Nie można było rozpakować archiwum „%s”"
 
-#: ../plugins/snippets/snippets/importer.py:95
+#: ../plugins/snippets/snippets/importer.py:103
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "Następujące pliki nie mogły zostać zaimportowane: %s"
 
-#: ../plugins/snippets/snippets/importer.py:111
-#: ../plugins/snippets/snippets/importer.py:124
+#: ../plugins/snippets/snippets/importer.py:119
+#: ../plugins/snippets/snippets/importer.py:132
 #, python-format
 msgid "File \"%s\" is not a valid snippets archive"
 msgstr "Plik „%s” nie jest prawidłowym archiwum wstawek"
 
-#: ../plugins/snippets/snippets/manager.py:42
+#: ../plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
 msgstr "Archiwum wstawek kodu"
 
-#: ../plugins/snippets/snippets/manager.py:66
+#: ../plugins/snippets/snippets/manager.py:74
 msgid "Add a new snippet..."
 msgstr "Dodaj nową wstawkę…"
 
-#: ../plugins/snippets/snippets/manager.py:116
+#: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
 msgstr "Globalna"
 
-#: ../plugins/snippets/snippets/manager.py:406
+#: ../plugins/snippets/snippets/manager.py:414
 msgid "Revert selected snippet"
 msgstr "Przywraca zaznaczoną wstawkę"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:417
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "Usuwa zaznaczoną wstawkę kodu"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:662
+#: ../plugins/snippets/snippets/manager.py:670
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3449,89 +3454,89 @@ msgstr ""
 "jak : {, [ itp."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:669
+#: ../plugins/snippets/snippets/manager.py:677
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Słowo aktywujące wstawkę kodu po naciśnięciu klawisza Tab"
 
-#: ../plugins/snippets/snippets/manager.py:758
+#: ../plugins/snippets/snippets/manager.py:766
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Wystąpił następujący błąd podczas importowania: %s"
 
-#: ../plugins/snippets/snippets/manager.py:765
+#: ../plugins/snippets/snippets/manager.py:773
 msgid "Import successfully completed"
 msgstr "Pomyślnie ukończono import"
 
-#: ../plugins/snippets/snippets/manager.py:779
+#: ../plugins/snippets/snippets/manager.py:787
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "Importuje wstawki kodu"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All supported archives"
 msgstr "Wszystkie obsługiwane archiwa"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:793
+#: ../plugins/snippets/snippets/manager.py:879
+#: ../plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
 msgstr "Archiwum skompresowane programem gzip"
 
-#: ../plugins/snippets/snippets/manager.py:786
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:935
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
 msgstr "Archiwum skompresowane programem bzip2"
 
-#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
 msgstr "Pojedynczy plik wstawek"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: ../plugins/snippets/snippets/manager.py:800
+#: ../plugins/snippets/snippets/manager.py:808
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Wystąpił następujący błąd podczas eksportowania: %s"
 
-#: ../plugins/snippets/snippets/manager.py:804
+#: ../plugins/snippets/snippets/manager.py:812
 msgid "Export successfully completed"
 msgstr "Pomyślnie ukończono eksport"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:844
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:852
+#: ../plugins/snippets/snippets/manager.py:919
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "Dołączyć zaznaczone wstawki <b>systemowe</b> do eksportu?"
 
-#: ../plugins/snippets/snippets/manager.py:859
-#: ../plugins/snippets/snippets/manager.py:929
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "There are no snippets selected to be exported"
 msgstr "Nie zaznaczono wstawek kodu do wyeksportowania"
 
-#: ../plugins/snippets/snippets/manager.py:864
-#: ../plugins/snippets/snippets/manager.py:902
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:910
 msgid "Export snippets"
 msgstr "Eksportuje wstawki"
 
-#: ../plugins/snippets/snippets/manager.py:1041
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
 "Proszę wprowadzić skrót klawiszowy albo nacisnąć klawisz Backspace, aby "
 "usunąć obecny"
 
-#: ../plugins/snippets/snippets/manager.py:1043
+#: ../plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
 msgstr "Nowy skrót klawiszowy"
 
-#: ../plugins/snippets/snippets/placeholder.py:597
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3540,7 +3545,7 @@ msgstr ""
 "Czas wykonania polecenia języka Python (%s) przekroczył ograniczenie, "
 "wstrzymano wykonanie."
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: ../plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Wykonanie polecenie języka Python (%s) się nie powiodło: %s"
@@ -3658,11 +3663,11 @@ msgstr "Sprawdzanie pisowni"
 msgid "Checks the spelling of the current document."
 msgstr "Sprawdza pisownię bieżącego dokumentu."
 
-#: ../plugins/time/gedit-time-plugin.c:270
+#: ../plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time..."
 msgstr "W_staw datę i czas…"
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Dostępne formaty"
 
@@ -3714,13 +3719,13 @@ msgstr "Nie_standardowy format"
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:9
 #, no-c-format
 msgid "%d/%m/%Y %H:%M:%S"
-msgstr "%d.%m.%Y %H∶%M∶%S"
+msgstr "%-d.%m.%Y %H∶%M∶%S"
 
 #. Translators: This example should follow the date format defined in the entry above
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:11
 msgid "01/11/2009 17:52:00"
-msgstr "01.11.2009 17∶52∶00"
+msgstr "1.11.2009 17∶52∶00"
 
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:9
 msgid "_Insert"
