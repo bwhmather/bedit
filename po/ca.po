@@ -9,11 +9,13 @@
 # Gil Forcada <gilforcada@guifi.net>, 2008-2014.
 # Josep Sànchez <papapep@gmx.com>, 2013.
 # Carles Ferrando Garcia <carles.ferrando@gmail.com>, 2015.
+# Jordi Serratosa <jordis@softcatala.cat>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-04 21:45+0200\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-06-28 17:23+0000\n"
 "PO-Revision-Date: 2016-09-04 20:30+0100\n"
 "Last-Translator: Francesc Famadas <kiski97@gmail.com>\n"
 "Language-Team: Catalan <Catalan <info@softcatala.org>>\n"
@@ -25,6 +27,11 @@ msgstr ""
 "X-Generator: Lokalize 1.5\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Editeu fitxers de text"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -33,7 +40,7 @@ msgstr ""
 "El gedit és l'editor de text oficial de l'entorn d'escriptori GNOME. Tot i "
 "ser simple i de fàcil ús, és un potent editor de text de propòsit general."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -43,7 +50,7 @@ msgstr ""
 "innovadora o, simplement, prenent algunes notes ràpides, el gedit és una "
 "eina fiable per fer la vostra tasca."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -54,10 +61,6 @@ msgstr ""
 #: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Editor de text"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "Editeu fitxers de text"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
@@ -551,7 +554,7 @@ msgstr ""
 "Llista de codificacions candidates mostrades al menú de codificacions de "
 "caràcter al selector de fitxers obre/ desa. «ACTUAL» representa la "
 "codificació local actual. Sols s'usen les codificacions que es reconeixen. "
-"El valor per defecte és la llista buida, en la qual gedit escollirà valors "
+"El valor per defecte és la llista buida, en la qual gedit triarà valors "
 "per defecte depenent del país i la llengua."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:87
@@ -825,7 +828,7 @@ msgstr "Voleu desar el fitxer comprimit?"
 
 #: ../gedit/gedit-commands-file.c:612
 msgid "Save the file as plain text?"
-msgstr "Voleu desar el fiter com a text pla?"
+msgstr "Voleu desar el fitxer com a text pla?"
 
 #: ../gedit/gedit-commands-file.c:625
 #, c-format
@@ -1119,6 +1122,7 @@ msgstr "«%s» és un directori."
 msgid "“%s” is not a valid location."
 msgstr "«%s» no és una ubicació vàlida."
 
+#. Translators: %s is a host name
 #: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
@@ -1380,7 +1384,7 @@ msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
 msgstr ""
-"El disc on esteu intentant desar el fitxer té una limitació quan a la "
+"El disc on esteu intentant desar el fitxer té una limitació de "
 "longitud dels noms dels fitxers, utilitzeu un nom més curt."
 
 #: ../gedit/gedit-io-error-info-bar.c:1104
@@ -1476,6 +1480,9 @@ msgstr "S'està preparant..."
 msgid "File: %s"
 msgstr "Fitxer: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Pàgina %N de %Q"
@@ -1803,8 +1810,8 @@ msgid "_Paste"
 msgstr "_Enganxa"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Suprimeix"
@@ -1984,7 +1991,7 @@ msgstr "Codi_ficacions disponibles"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
 msgid "Cho_sen Encodings"
-msgstr "Codificacions e_scollides"
+msgstr "Codificacion_s triades"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:6
 msgid "_Description"
@@ -2434,7 +2441,7 @@ msgstr "Copia el text seleccionat al porta-retalls"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
-msgstr "Talla el text seleccionat al porta-retalls"
+msgstr "Retalla el text seleccionat al porta-retalls"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
 msgctxt "shortcut window"
@@ -2739,7 +2746,7 @@ msgid ""
 "it's monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "Si és «true» (cert), les eines externes utilitzaran el tipus de lletra "
-"estàndard de l'escriptori si és la d'amplada fixa (i sinó el tipus de lletra "
+"estàndard de l'escriptori si és d'amplada fixa (i, si no, el tipus de lletra "
 "més semblant que es pugui trobar)."
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
@@ -2987,7 +2994,7 @@ msgstr "S'ha produït un error en carregar-se un directori"
 msgid "An error occurred"
 msgstr "S'ha produït un error"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2996,25 +3003,25 @@ msgstr ""
 "paperera, el voleu suprimir\n"
 "immediatament?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "No es pot moure el fitxer «%s» a la paperera."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "No es poden moure a la paperera els fitxers seleccionats."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Esteu segur que voleu suprimir permanentment «%s»?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Esteu segur que voleu suprimir permanentment els fitxers seleccionats?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Si suprimiu un element, aquest es perdrà per sempre."
 
@@ -3264,7 +3271,7 @@ msgid ""
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "Si és «true» (cert), el terminal utilitzarà el tipus de lletra estàndard de "
-"l'escriptori si és la d'amplada fixa (i sinó el tipus de lletra més semblant "
+"l'escriptori si és d'amplada fixa (i, si no, el tipus de lletra més semblant "
 "que es pugui trobar)."
 
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
@@ -3605,11 +3612,11 @@ msgstr "Comprovador d'ortografia"
 msgid "Checks the spelling of the current document."
 msgstr "Comprova l'ortografia del document actual."
 
-#: ../plugins/time/gedit-time-plugin.c:270
+#: ../plugins/time/gedit-time-plugin.c:265
 msgid "In_sert Date and Time..."
 msgstr "_Insereix la data/hora..."
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Formats disponibles"
 
