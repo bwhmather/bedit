@@ -16,9 +16,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-14 15:59+0000\n"
+"POT-Creation-Date: 2017-06-28 17:23+0000\n"
 "PO-Revision-Date: 2016-09-16 03:28+0900\n"
 "Last-Translator: sujiniku <sujinikusityuu@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -27,7 +27,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 #: ../data/org.gnome.gedit.desktop.in.in.h:2
@@ -1052,6 +1051,7 @@ msgstr "“%s”はフォルダーです。"
 msgid "“%s” is not a valid location."
 msgstr "“%s”は適切な場所ではありません"
 
+#. Translators: %s is a host name
 #: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
@@ -1406,6 +1406,9 @@ msgstr "準備中..."
 msgid "File: %s"
 msgstr "ファイル: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "ページ %N / %Q"
@@ -1731,8 +1734,8 @@ msgid "_Paste"
 msgstr "貼り付け(_P)"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "削除(_D)"
@@ -2912,7 +2915,7 @@ msgstr "フォルダーを読み込む際にエラーが発生しました"
 msgid "An error occurred"
 msgstr "エラーが発生しました"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2920,25 +2923,25 @@ msgstr ""
 "ファイルをゴミ箱へ移動できません。\n"
 "今すぐファイルを削除しますか?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "ファイル \"%s\" をゴミ箱へ移動できません。"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "選択したファイルをゴミ箱へ移動できません。"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "\"%s\" を完全に抹消してもよろしいですか?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "選択したファイルを完全に削除してもよろしいですか?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "削除すると、そのアイテムは完全に無くなります。"
 
