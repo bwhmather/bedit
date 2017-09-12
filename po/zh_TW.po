@@ -11,18 +11,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 3.3.7\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-15 19:02+0000\n"
-"PO-Revision-Date: 2017-02-23 08:43+0800\n"
-"Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
+"POT-Creation-Date: 2017-06-28 17:23+0000\n"
+"PO-Revision-Date: 2017-09-13 01:13+0800\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: 漢語 <>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 #: ../data/org.gnome.gedit.desktop.in.in.h:2
@@ -151,7 +151,7 @@ msgstr "復原動作次數上限"
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use "
 "\"-1\" for unlimited number of actions."
-msgstr "gedit 中復原或取消復原次數的上限。設為“-1”則為無限次。"
+msgstr "gedit 中復原或取消復原次數的上限。設為「-1」則為無限次。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid "Line Wrapping Mode"
@@ -318,7 +318,7 @@ msgstr "確保結尾以 Newline 結束"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
-msgstr "gedit 應否確保文件結尾是以換行(newline)結束。"
+msgstr "gedit 應否確保文件結尾是以新列(newline)結束。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid "Toolbar is Visible"
@@ -364,13 +364,13 @@ msgstr "編輯視窗左側是否應顯示側邊面板。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid "Maximum Recent Files"
-msgstr "最近開啟檔案數目的上限"
+msgstr "最近檔案數目上限"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the \"Recent Files\" submenu."
-msgstr "指定在「最近的檔案」副選單中，可以顯示多少個最近開啟的檔案。"
+msgstr "指定在「最近檔案」副選單中，可以顯示多少個最近開啟的檔案。"
 
 # zh_HK: msgstr "打印時顯示語法色彩"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:60
@@ -479,7 +479,7 @@ msgstr "左邊邊界"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:78
 msgid "The left margin, in millimeters."
-msgstr "左邊邊界，以毫米計。"
+msgstr "左邊邊界，以公釐計。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:79
 msgid "Margin Top"
@@ -487,7 +487,7 @@ msgstr "頂端邊界"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:80
 msgid "The top margin, in millimeters."
-msgstr "頂端邊界，以毫米計。"
+msgstr "頂端邊界，以公釐計。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:81
 msgid "Margin Right"
@@ -495,7 +495,7 @@ msgstr "右邊邊界"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:82
 msgid "The right margin, in millimeters."
-msgstr "右邊邊界，以毫米計。"
+msgstr "右邊邊界，以公釐計。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:83
 msgid "Margin Bottom"
@@ -503,7 +503,7 @@ msgstr "底部邊界"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid "The bottom margin, in millimeters."
-msgstr "底部邊界，以毫米計。"
+msgstr "底部邊界，以公釐計。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Candidate Encodings"
@@ -568,7 +568,7 @@ msgstr "以單獨模式執行 gedit"
 
 #: ../gedit/gedit-app.c:158
 msgid "[FILE...] [+LINE[:COLUMN]]"
-msgstr "[FILE…] [+LINE[:COLUMN]]"
+msgstr "[FILE...] [+LINE[:COLUMN]]"
 
 #: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
@@ -676,12 +676,12 @@ msgstr[0] "如果不儲存，將會永久地失去  %d 小時前所作的修改�
 #: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
-msgstr "將會永久地失去對文件“%s”所作的修改。"
+msgstr "將會永久地失去對文件「%s」所作的修改。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
-msgstr "在關閉前將變更儲存到文件“%s”？"
+msgstr "在關閉前將變更儲存到文件「%s」？"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:434
 #: ../gedit/gedit-close-confirmation-dialog.c:558
@@ -716,7 +716,7 @@ msgstr "如果不儲存，所有已修改的部份將會永久地遺失。"
 #: ../gedit/gedit-commands-file.c:261
 #, c-format
 msgid "Loading file '%s'…"
-msgstr "正在載入檔案‘%s’…"
+msgstr "正在載入檔案「%s」…"
 
 #: ../gedit/gedit-commands-file.c:270
 #, c-format
@@ -742,7 +742,7 @@ msgstr "開啟(_O)"
 #: ../gedit/gedit-commands-file.c:558
 #, c-format
 msgid "The file \"%s\" is read-only."
-msgstr "檔案“%s”是唯讀檔案。"
+msgstr "檔案「%s」是唯讀檔案。"
 
 #: ../gedit/gedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
@@ -786,7 +786,7 @@ msgstr "儲存為純文字(_S)"
 #: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
 msgid "Saving file '%s'…"
-msgstr "正在儲存檔案‘%s’…"
+msgstr "正在儲存檔案「%s」…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
@@ -797,12 +797,12 @@ msgstr "另存為"
 #: ../gedit/gedit-commands-file.c:1429
 #, c-format
 msgid "Reverting the document '%s'…"
-msgstr "正在還原文件‘%s’…"
+msgstr "正在還原文件「%s」…"
 
 #: ../gedit/gedit-commands-file.c:1476
 #, c-format
 msgid "Revert unsaved changes to document '%s'?"
-msgstr "是否將未儲存的文件‘%s’還原？"
+msgstr "是否將未儲存的文件「%s」還原？"
 
 #: ../gedit/gedit-commands-file.c:1485
 #, c-format
@@ -811,7 +811,7 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
-msgstr[0] "將會永久地失去 %ld 秒前對文件所作的修改。 "
+msgstr[0] "將會永久地失去 %ld 秒前對文件所作的修改。"
 
 #: ../gedit/gedit-commands-file.c:1494
 msgid ""
@@ -971,7 +971,7 @@ msgstr "字元編碼(_H):"
 
 #: ../gedit/gedit-file-chooser-dialog-gtk.c:366
 msgid "L_ine Ending:"
-msgstr "行結尾(_I):"
+msgstr "列結尾(_I)："
 
 #: ../gedit/gedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
@@ -979,7 +979,7 @@ msgstr "字元編碼："
 
 #: ../gedit/gedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
-msgstr "行結尾："
+msgstr "列結尾："
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
 #: ../plugins/externaltools/tools/manager.py:108
@@ -1029,6 +1029,7 @@ msgstr "「%s」是一個目錄。"
 msgid "“%s” is not a valid location."
 msgstr "「%s」不是有效的位置。"
 
+#. Translators: %s is a host name
 #: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
@@ -1229,7 +1230,7 @@ msgstr "無法以寫入模式處理此位置。請檢查所輸入的位置是否
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
 "correctly and try again."
-msgstr "“%s”並不是一個有效的位置。請檢查所輸入的位置是否正確後再試一次。"
+msgstr "「%s」並不是一個有效的位置。請檢查所輸入的位置是否正確後再試一次。"
 
 #: ../gedit/gedit-io-error-info-bar.c:1071
 msgid ""
@@ -1271,12 +1272,12 @@ msgstr ""
 #: ../gedit/gedit-io-error-info-bar.c:1121
 #, c-format
 msgid "Could not save the file “%s”."
-msgstr "無法儲存檔案“%s”。"
+msgstr "無法儲存檔案「%s」。"
 
 #: ../gedit/gedit-io-error-info-bar.c:1161
 #, c-format
 msgid "The file “%s” changed on disk."
-msgstr "檔案“%s”在磁碟上已變更。"
+msgstr "檔案「%s」在磁碟上已變更。"
 
 #: ../gedit/gedit-io-error-info-bar.c:1172
 msgid "Drop Changes and _Reload"
@@ -1296,7 +1297,7 @@ msgstr "忽略(_I)"
 #: ../gedit/gedit-io-error-info-bar.c:1248
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
-msgstr "當儲存“%s”時偵測到一些無效的字元"
+msgstr "當儲存「%s」時偵測到一些無效的字元"
 
 #: ../gedit/gedit-io-error-info-bar.c:1264
 msgid ""
@@ -1347,6 +1348,9 @@ msgstr "正在準備…"
 msgid "File: %s"
 msgstr "檔案：%s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "%N / %Q 頁"
@@ -1521,7 +1525,7 @@ msgstr "要搜尋的字串"
 
 #: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
-msgstr "游標要移至的行"
+msgstr "游標要移至的列"
 
 #: ../gedit/gedit-window.c:998
 msgid "Bracket match is out of range"
@@ -1534,14 +1538,14 @@ msgstr "找不到成對括弧"
 #: ../gedit/gedit-window.c:1008
 #, c-format
 msgid "Bracket match found on line: %d"
-msgstr "對稱括弧於行：%d"
+msgstr "對稱括弧於列：%d"
 
 #. Translators: "Ln" is an abbreviation for "Line", Col is an abbreviation for "Column". Please,
 #. use abbreviations if possible to avoid space problems.
 #: ../gedit/gedit-window.c:1043
 #, c-format
 msgid "  Ln %d, Col %d"
-msgstr "第 %d 行第 %d 字"
+msgstr "  第 %d 列，第 %d 字"
 
 #: ../gedit/gedit-window.c:1227
 #, c-format
@@ -1603,7 +1607,7 @@ msgstr "顯示右邊邊界"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:10
 msgid "Highlight current line"
-msgstr "標示目前的行"
+msgstr "標示目前的列"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:11
 msgid "Text wrapping"
@@ -1620,7 +1624,7 @@ msgstr "新增(_N)"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:16
 msgid "Open _Recent"
-msgstr "最近開啟(_R)"
+msgstr "開啟最近(_R)"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:17
 msgid "Reopen Closed _Tab"
@@ -1672,8 +1676,8 @@ msgid "_Paste"
 msgstr "貼上(_P)"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "刪除(_D)"
@@ -1826,7 +1830,7 @@ msgstr "尋找並取代(_F)…"
 #: ../gedit/resources/gtk/menus.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
-msgstr "移至行(_G)…"
+msgstr "移至列(_G)…"
 
 #: ../gedit/resources/gtk/menus.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
@@ -1929,7 +1933,7 @@ msgstr "標示"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:11
 msgid "Highlight current _line"
-msgstr "標示當前的行(_L)"
+msgstr "標示當前的列(_L)"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:12
 msgid "Highlight matching _brackets"
@@ -1961,7 +1965,7 @@ msgstr "儲存前先製作暫存檔(_B)"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
 msgid "_Autosave files every"
-msgstr "每隔指定時間自動儲存檔案(_A):"
+msgstr "每隔指定時間自動儲存檔案(_A)"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:21
 msgid "_minutes"
@@ -1979,7 +1983,7 @@ msgstr "字型"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
-msgstr "編輯器字型(_F):"
+msgstr "編輯器字型(_F)："
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
@@ -2554,7 +2558,7 @@ msgstr "建立"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
 msgid "Run \"make\" in the document directory"
-msgstr "在文件資料夾中執行“make”指令"
+msgstr "在文件資料夾中執行「make」指令"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
@@ -2855,7 +2859,7 @@ msgstr "載入資料夾時發生錯誤"
 msgid "An error occurred"
 msgstr "發生錯誤"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2863,25 +2867,25 @@ msgstr ""
 "檔案無法移至回收筒，\n"
 "要把它永久地刪除嗎？"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
-msgstr "檔案“%s”無法移至回收筒。"
+msgstr "檔案「%s」無法移至回收筒。"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "所選的檔案無法移至回收筒。"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "確定要永遠刪除“%s”嗎？"
+msgstr "確定要永遠刪除「%s」嗎？"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "確定要永久刪除已選的檔案嗎？"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "如果將項目刪除，它將會永久失去。"
 
@@ -2961,8 +2965,8 @@ msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
 msgstr ""
-"檔案瀏覽器根資料夾是用於載入檔案瀏覽器外掛程式及 onload/tree_view 設定"
-"為‘TRUE’時。"
+"檔案瀏覽器根資料夾是用於載入檔案瀏覽器外掛程式及 onload/tree_view 設定為"
+"「TRUE」時。"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
@@ -2974,8 +2978,8 @@ msgid ""
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
 "the actual root."
 msgstr ""
-"檔案瀏覽器虛擬根資料夾是用於載入檔案瀏覽器外掛程式及 onload/tree_view 設定"
-"為‘TRUE’時。虛擬根資料夾必須是處於真正的根資料夾之下。"
+"檔案瀏覽器虛擬根資料夾是用於載入檔案瀏覽器外掛程式及 onload/tree_view 設定為"
+"「TRUE」時。虛擬根資料夾必須是處於真正的根資料夾之下。"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
@@ -2983,7 +2987,7 @@ msgstr "啟用遠端位置回復"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
-msgstr "設定是否啟用遠端位置回復"
+msgstr "設定是否啟用遠端位置回復。"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
@@ -3092,7 +3096,7 @@ msgstr "Modelines"
 
 #: ../plugins/modelines/modelines.plugin.desktop.in.h:2
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
-msgstr "geit 的 Emacs, Kate 及 Vim 風格的 modeline 支援"
+msgstr "geit 的 Emacs, Kate 及 Vim 風格的 modeline 支援。"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:1
 msgid "Command Color Text"
