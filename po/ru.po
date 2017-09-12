@@ -21,9 +21,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-14 16:03+0000\n"
+"POT-Creation-Date: 2017-09-01 20:25+0000\n"
 "PO-Revision-Date: 2016-09-16 15:37+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
@@ -76,17 +76,14 @@ msgid "gedit Text Editor"
 msgstr "Текстовый редактор gedit"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-#| msgid "Text;Editor;"
 msgid "Text;Editor;Plaintext;Write;"
 msgstr "Текст;Редактор;Запись;Текстовый;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-#| msgid "_New Window"
 msgid "New Window"
 msgstr "Создать окно"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-#| msgid "N_ext Document"
 msgid "New Document"
 msgstr "Создать документ"
 
@@ -621,10 +618,10 @@ msgstr "Закрыть _без сохранения"
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:781
-#: ../plugins/snippets/snippets/manager.py:866
-#: ../plugins/snippets/snippets/manager.py:904
+#: ../plugins/quickopen/quickopen/popup.py:45
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
@@ -640,8 +637,8 @@ msgstr "_Сохранить как…"
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:905
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "Со_хранить"
 
@@ -812,8 +809,8 @@ msgstr "Открыть"
 #: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:39
-#: ../plugins/snippets/snippets/manager.py:782
+#: ../plugins/quickopen/quickopen/popup.py:46
+#: ../plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "_Открыть"
 
@@ -1103,10 +1100,10 @@ msgid "Line Ending:"
 msgstr "Конец строки:"
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
-#: ../plugins/externaltools/tools/manager.py:108
-#: ../plugins/externaltools/tools/manager.py:317
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:767
+#: ../plugins/externaltools/tools/manager.py:115
+#: ../plugins/externaltools/tools/manager.py:324
+#: ../plugins/externaltools/tools/manager.py:440
+#: ../plugins/externaltools/tools/manager.py:774
 msgid "Plain Text"
 msgstr "Текст"
 
@@ -1150,6 +1147,7 @@ msgstr "«%s» является каталогом."
 msgid "“%s” is not a valid location."
 msgstr "«%s» имеет неверный адрес."
 
+#. Translators: %s is a host name
 #: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
@@ -1498,6 +1496,9 @@ msgstr "Подготовка…"
 msgid "File: %s"
 msgstr "Файл: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Страница %N из %Q"
@@ -1825,8 +1826,8 @@ msgid "_Paste"
 msgstr "_Вставить"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Удалить"
@@ -1959,7 +1960,7 @@ msgstr "_Справка"
 #: ../gedit/resources/gtk/menus.ui.h:5
 #: ../gedit/resources/gtk/menus-traditional.ui.h:18
 msgid "_About"
-msgstr "_О программе"
+msgstr "_О приложении"
 
 #: ../gedit/resources/gtk/menus.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
@@ -2767,64 +2768,64 @@ msgstr ""
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
 msgstr "Название шрифта Pango. Например, «Sans 12» или «Monospace Bold 14»."
 
-#: ../plugins/externaltools/tools/appactivatable.py:126
+#: ../plugins/externaltools/tools/appactivatable.py:133
 msgid "Manage _External Tools..."
 msgstr "Управление _внешними инструментами…"
 
-#: ../plugins/externaltools/tools/appactivatable.py:131
+#: ../plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
 msgstr "Внешние _инструменты"
 
-#: ../plugins/externaltools/tools/capture.py:99
+#: ../plugins/externaltools/tools/capture.py:106
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Не удалось выполнить команду: %s"
 
-#: ../plugins/externaltools/tools/functions.py:184
+#: ../plugins/externaltools/tools/functions.py:191
 msgid "You must be inside a word to run this command"
 msgstr "Вы должны быть внутри слова для запуска данной команды"
 
-#: ../plugins/externaltools/tools/functions.py:302
+#: ../plugins/externaltools/tools/functions.py:309
 msgid "Running tool:"
 msgstr "Запускается утилита:"
 
-#: ../plugins/externaltools/tools/functions.py:333
+#: ../plugins/externaltools/tools/functions.py:340
 msgid "Done."
 msgstr "Готово."
 
-#: ../plugins/externaltools/tools/functions.py:335
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Exited"
 msgstr "Выход"
 
-#: ../plugins/externaltools/tools/manager.py:106
+#: ../plugins/externaltools/tools/manager.py:113
 msgid "All languages"
 msgstr "Все языки"
 
-#: ../plugins/externaltools/tools/manager.py:422
-#: ../plugins/externaltools/tools/manager.py:426
-#: ../plugins/externaltools/tools/manager.py:765
+#: ../plugins/externaltools/tools/manager.py:429
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:772
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "Все языки"
 
-#: ../plugins/externaltools/tools/manager.py:539
+#: ../plugins/externaltools/tools/manager.py:546
 msgid "New tool"
 msgstr "Новый инструмент"
 
-#: ../plugins/externaltools/tools/manager.py:676
+#: ../plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Этот акселератор уже привязан к %s"
 
-#: ../plugins/externaltools/tools/manager.py:720
+#: ../plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Введите новую комбинацию клавиш, или нажмите Backspace для очистки"
 
-#: ../plugins/externaltools/tools/manager.py:722
+#: ../plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator"
 msgstr "Введите новую комбинацию клавиш"
 
-#: ../plugins/externaltools/tools/outputpanel.py:122
+#: ../plugins/externaltools/tools/outputpanel.py:129
 msgid "Stopped."
 msgstr "Остановлено."
 
@@ -2949,7 +2950,7 @@ msgstr "_Окно вывода:"
 msgid "_Applicability:"
 msgstr "_Применимость:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:119
+#: ../plugins/externaltools/tools/windowactivatable.py:126
 msgid "Tool Output"
 msgstr "Вывод инструмента"
 
@@ -3006,7 +3007,7 @@ msgstr "При загрузке каталога произошла ошибка
 msgid "An error occurred"
 msgstr "Произошла ошибка"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -3014,25 +3015,25 @@ msgstr ""
 "Невозможно переместить файл в корзину,\n"
 "удалить его безвозвратно?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Невозможно переместить файл «%s» в корзину."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Невозможно переместить выбранные файлы в корзину."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Действительно безвозвратно удалить «%s»?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Действительно безвозвратно удалить выделенные файлы?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Если удалить элемент, он будет безвозвратно утерян."
 
@@ -3293,7 +3294,7 @@ msgid "_Error color:"
 msgstr "Цвет _ошибок:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Консоль Python"
@@ -3302,13 +3303,13 @@ msgstr "Консоль Python"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Интерактивная консоль python в нижней панели"
 
-#: ../plugins/quickopen/quickopen/__init__.py:40
+#: ../plugins/quickopen/quickopen/__init__.py:47
 msgid "Quick Open..."
 msgstr "Быстрое открытие…"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:33
+#: ../plugins/quickopen/quickopen/popup.py:40
 msgid "Quick Open"
 msgstr "Быстрое открытие"
 
@@ -3316,93 +3317,93 @@ msgstr "Быстрое открытие"
 msgid "Quickly open files"
 msgstr "Быстрое открытие файлов"
 
-#: ../plugins/quickopen/quickopen/popup.py:83
+#: ../plugins/quickopen/quickopen/popup.py:90
 msgid "Type to search..."
 msgstr "Найти…"
 
-#: ../plugins/snippets/snippets/appactivatable.py:81
+#: ../plugins/snippets/snippets/appactivatable.py:88
 msgid "Manage _Snippets..."
 msgstr "Управление _фрагментами…"
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:56
-#: ../plugins/snippets/snippets/document.py:145
-#: ../plugins/snippets/snippets/document.py:659
+#: ../plugins/snippets/snippets/document.py:64
+#: ../plugins/snippets/snippets/document.py:153
+#: ../plugins/snippets/snippets/document.py:667
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Фрагменты текста"
 
-#: ../plugins/snippets/snippets/exporter.py:80
+#: ../plugins/snippets/snippets/exporter.py:88
 #, python-format
 msgid "The archive \"%s\" could not be created"
 msgstr "Не удалось создать архив «%s»"
 
-#: ../plugins/snippets/snippets/exporter.py:97
+#: ../plugins/snippets/snippets/exporter.py:105
 #, python-format
 msgid "Target directory \"%s\" does not exist"
 msgstr "Целевой каталог «%s» не существует"
 
-#: ../plugins/snippets/snippets/exporter.py:100
+#: ../plugins/snippets/snippets/exporter.py:108
 #, python-format
 msgid "Target directory \"%s\" is not a valid directory"
 msgstr "Целевой каталог «%s» не корректен"
 
-#: ../plugins/snippets/snippets/importer.py:47
-#: ../plugins/snippets/snippets/importer.py:108
+#: ../plugins/snippets/snippets/importer.py:55
+#: ../plugins/snippets/snippets/importer.py:116
 #, python-format
 msgid "File \"%s\" does not exist"
 msgstr "Файл «%s» не существует"
 
-#: ../plugins/snippets/snippets/importer.py:50
+#: ../plugins/snippets/snippets/importer.py:58
 #, python-format
 msgid "File \"%s\" is not a valid snippets file"
 msgstr "Файл «%s» не содержит фрагментов текста"
 
-#: ../plugins/snippets/snippets/importer.py:67
+#: ../plugins/snippets/snippets/importer.py:75
 #, python-format
 msgid "Imported file \"%s\" is not a valid snippets file"
 msgstr "Импортируемый файл «%s» не содержит корректных фрагментов текста"
 
-#: ../plugins/snippets/snippets/importer.py:77
+#: ../plugins/snippets/snippets/importer.py:85
 #, python-format
 msgid "The archive \"%s\" could not be extracted"
 msgstr "Не удалось извлечь содержимое архива «%s»"
 
-#: ../plugins/snippets/snippets/importer.py:95
+#: ../plugins/snippets/snippets/importer.py:103
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "Следующие файлы не удалось импортировать: %s"
 
-#: ../plugins/snippets/snippets/importer.py:111
-#: ../plugins/snippets/snippets/importer.py:124
+#: ../plugins/snippets/snippets/importer.py:119
+#: ../plugins/snippets/snippets/importer.py:132
 #, python-format
 msgid "File \"%s\" is not a valid snippets archive"
 msgstr "Файл «%s» не является корректным архивом фрагментов текста"
 
-#: ../plugins/snippets/snippets/manager.py:42
+#: ../plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
 msgstr "Архив фрагментов"
 
-#: ../plugins/snippets/snippets/manager.py:66
+#: ../plugins/snippets/snippets/manager.py:74
 msgid "Add a new snippet..."
 msgstr "Добавить новый фрагмент…"
 
-#: ../plugins/snippets/snippets/manager.py:116
+#: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
 msgstr "Глобальный"
 
-#: ../plugins/snippets/snippets/manager.py:406
+#: ../plugins/snippets/snippets/manager.py:414
 msgid "Revert selected snippet"
 msgstr "Отменить выделенный фрагмент текста"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:417
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "Удалить выделенный фрагмент"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:662
+#: ../plugins/snippets/snippets/manager.py:670
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3413,90 +3414,90 @@ msgstr ""
 "символ, такой как «{», «[», и т. д."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:669
+#: ../plugins/snippets/snippets/manager.py:677
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr ""
 "Слово, которое используется для вставки фрагмента текста. Фрагмент "
 "вставляется, если после слова нажать Tab"
 
-#: ../plugins/snippets/snippets/manager.py:758
+#: ../plugins/snippets/snippets/manager.py:766
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "При импорте произошла следующая ошибка: %s"
 
-#: ../plugins/snippets/snippets/manager.py:765
+#: ../plugins/snippets/snippets/manager.py:773
 msgid "Import successfully completed"
 msgstr "Импорт успешно завершён"
 
-#: ../plugins/snippets/snippets/manager.py:779
+#: ../plugins/snippets/snippets/manager.py:787
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "Импортировать фрагменты"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All supported archives"
 msgstr "Все поддерживаемые архивы"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:793
+#: ../plugins/snippets/snippets/manager.py:879
+#: ../plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
 msgstr "Архивы Gzip"
 
-#: ../plugins/snippets/snippets/manager.py:786
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:935
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
 msgstr "Архивы Bzip2"
 
-#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
 msgstr "Одиночные файлы фрагментов"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "All files"
 msgstr "Все файлы"
 
-#: ../plugins/snippets/snippets/manager.py:800
+#: ../plugins/snippets/snippets/manager.py:808
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "При экспорте произошла следующая ошибка: %s"
 
-#: ../plugins/snippets/snippets/manager.py:804
+#: ../plugins/snippets/snippets/manager.py:812
 msgid "Export successfully completed"
 msgstr "Экспорт успешно завершён"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:844
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:852
+#: ../plugins/snippets/snippets/manager.py:919
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "Включить выделенные <b>системные</b> фрагменты текста в экспортируемый архив?"
 
-#: ../plugins/snippets/snippets/manager.py:859
-#: ../plugins/snippets/snippets/manager.py:929
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "There are no snippets selected to be exported"
 msgstr "Не выбрано фрагментов для экспорта"
 
-#: ../plugins/snippets/snippets/manager.py:864
-#: ../plugins/snippets/snippets/manager.py:902
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:910
 msgid "Export snippets"
 msgstr "Экспортировать фрагменты"
 
-#: ../plugins/snippets/snippets/manager.py:1041
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Введите новую комбинацию клавиш, или нажмите Backspace для очистки"
 
-#: ../plugins/snippets/snippets/manager.py:1043
+#: ../plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
 msgstr "Введите новую комбинацию клавиш"
 
-#: ../plugins/snippets/snippets/placeholder.py:597
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3505,7 +3506,7 @@ msgstr ""
 "Время исполнения команды Python (%s) превысило допустимую норму, исполнение "
 "прервано."
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: ../plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Не удалось исполнить команду Python (%s): %s"
