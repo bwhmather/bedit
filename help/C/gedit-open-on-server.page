@@ -5,7 +5,7 @@
   <info>
     <link type="guide" xref="gedit-files-basic" group="sixth"/>
     <desc>Access files that are stored on a different computer.</desc>
-    <revision pkgversion="3.8" date="2013-02-24" status="review"/>
+    <revision pkgversion="3.24" date="2017-09-14" status="review"/>
     <credit type="author">
       <name>Jim Campbell</name>
       <email>jcampbell@gnome.org</email>
@@ -29,14 +29,14 @@
   from a server using <app>gedit</app>:</p>
 
     <steps>
-      <item><p>Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to
-      display the <gui>Open Files</gui> dialog.</p></item>
-      <item><p>Select the <gui>Pencil</gui> icon near the top of the
-      <gui>Open Files</gui> dialog.</p></item>
+      <item><p>In the title bar, click on <gui>Open</gui>.</p></item>
+      <item><p>Click <gui>Other Documents…</gui>.</p></item>
+      <item><p>Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the
+      <gui>Open</gui> dialog.</p></item>
       <item><p>Enter the IP Address or URL of the appropriate
       server.</p></item>
       <item><p>Find and select the file that you wish to open.</p></item>
-      <item><p>Use the Character coding drop-down list to select the
+      <item><p>Use the Character Encoding drop-down list to select the
       appropriate character coding.</p></item>
       <item><p>Click <gui>Open</gui>.</p></item>
     </steps>
