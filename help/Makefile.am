@@ -9,7 +9,6 @@ HELP_MEDIA = \
 	figures/gedit-new-external-tool.png \
 	figures/gedit-open-location.png \
 	figures/gedit3-screenshot.png \
-	figures/gedit-side-pane2.png \
 	figures/gedit-side-pane3.png
 
 HELP_FILES = \
