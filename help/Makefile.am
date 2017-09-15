@@ -6,8 +6,7 @@ HELP_ID = gedit
 HELP_MEDIA = \
 	figures/gedit-html-snippet.png \
 	figures/gedit-icon.png \
-	figures/gedit3-screenshot.png \
-	figures/gedit-side-pane3.png
+	figures/gedit3-screenshot.png
 
 HELP_FILES = \
 	gedit-change-color-scheme.page \
