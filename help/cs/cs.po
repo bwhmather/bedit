@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"POT-Creation-Date: 2017-09-14 20:19+0000\n"
-"PO-Revision-Date: 2017-09-15 08:42+0200\n"
+"POT-Creation-Date: 2017-09-15 08:14+0000\n"
+"PO-Revision-Date: 2017-09-15 13:33+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -516,21 +516,23 @@ msgstr "Otevírání souborů z postranního panelu"
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:39
+#: C/gedit-plugins-file-browser.page:33
 msgid ""
 "To open files from the <app>side pane</app>, first open the <app>side pane</"
-"app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></guiseq>, "
-"then click on the <gui>file-browser</gui> icon at the bottom of the pane."
+"app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></guiseq> (or "
+"just press <key>F9</key>), and then choose <gui>File Browser</gui> from the "
+"dropdown at the top of the pane."
 msgstr ""
 "Abyste mohli z <gui>postranního panelu</gui> otevřít soubory, nejdříve jej "
 "zobrazte pomocí <guiseq><gui>Zobrazit</gui> <gui>Postranní panel</gui></"
-"guiseq> a pak klikněte na ikonu <gui>prohlížeče souborů</gui> ve spodní "
-"části panelu."
+"guiseq> (nebo jen zmáčkněte <key>F9</key>) a pak zvolte <gui>Prohlížeč souborů"
+"</gui> z rozbalovací nabídky v horní části panelu."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:48
-#: C/gedit-plugins-file-browser.page:42
+#: C/gedit-open-files-from-sidepane.page:47
+#: C/gedit-plugins-file-browser.page:41
 msgid ""
-"This will activate the <em>file-browser</em> mode of the <app>side pane</"
+"This will activate the <em>File Browser</em> mode of the <app>side pane</"
 "app>. You can then use the navigation buttons at the top of the pane to "
 "locate and open your desired files."
 msgstr ""
@@ -539,25 +541,23 @@ msgstr ""
 "požadovaných souborů."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:56
+#: C/gedit-open-files-from-sidepane.page:55
 msgid "Using the side pane to switch between open files"
 msgstr "Používejte postranní panel k přepínání mezi soubory"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:57
+#: C/gedit-open-files-from-sidepane.page:56
 msgid ""
 "Once you have several files open, you can use the side pane to switch "
-"between open files. To activate the file browser portion of the <app>side "
-"pane</app>, click on the <gui>file</gui> icon at the bottom of the <gui>side "
-"pane</gui>."
+"between open files. To list open files, choose <gui>Documents</gui> from the "
+"dropdown at the top of the pane."
 msgstr ""
 "Když máte otevřeno několik souborů, můžete použít postranní panel k "
-"přepínání mezi nimi. Aktivujte prohlížeč souborů v <app>postranním panelu</"
-"app> a klikněte na ikonu <gui>souboru</gui> ve spodní části <gui>postranního "
-"panelu</gui>."
+"přepínání mezi nimi. Pro vypsání souborů zvolte <gui>Dokumenty</gui> z "
+"rozbalovací nabídky v horní části panelu."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:66
+#: C/gedit-open-files-from-sidepane.page:62
 msgid ""
 "Clicking on any file name in the <gui>side pane</gui> will open that file "
 "for editing."
@@ -689,8 +689,8 @@ msgid ""
 "Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the <gui>Open</gui> "
 "dialog."
 msgstr ""
-"V dialogovém okně <gui>Otevření</gui> zmáčkněte <keyseq><key>Ctrl</key><key>L"
-"</key></keyseq>."
+"V dialogovém okně <gui>Otevření</gui> zmáčkněte <keyseq><key>Ctrl</"
+"key><key>L</key></keyseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:36
@@ -1092,17 +1092,6 @@ msgstr ""
 "Zásuvný modul můžete zapnout pomocí <guiseq><gui style=\"menu\">gedit</gui> "
 "<gui style=\"menuitem\">Předvolby</gui> <gui>Zásuvné moduly</gui> <gui>Panel "
 "prohlížeče souborů</gui></guiseq>."
-
-#. (itstool) path: section/p
-#: C/gedit-plugins-file-browser.page:33
-msgid ""
-"To activate and use the <gui>side pane</gui>, select <guiseq><gui>View</"
-"gui><gui>Side pane</gui></guiseq> (or just press <key>F9</key>), and then "
-"click on the <gui>file-browser</gui> icon at the bottom of the pane."
-msgstr ""
-"K aktivaci <gui>postranního panelu</gui> použijte <guiseq><gui>Zobrazit</"
-"gui> <gui>Postranní panel</gui></guiseq> (nebo jen zmáčkněte <key>F9</key>) "
-"a pak klikněte na ikonu <gui>prohlížeče souborů</gui> ve spodní části panelu."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-insert-date-time.page:17
@@ -2990,16 +2979,16 @@ msgstr "Klávesové zkratky vztahující se ke kartám"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:57 C/gedit-shortcut-keys.page:113
 #: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:261
-#: C/gedit-shortcut-keys.page:286 C/gedit-shortcut-keys.page:323
-#: C/gedit-shortcut-keys.page:352
+#: C/gedit-shortcut-keys.page:281 C/gedit-shortcut-keys.page:318
+#: C/gedit-shortcut-keys.page:347
 msgid "Action"
 msgstr "Činnost"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:58 C/gedit-shortcut-keys.page:114
 #: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:262
-#: C/gedit-shortcut-keys.page:287 C/gedit-shortcut-keys.page:324
-#: C/gedit-shortcut-keys.page:353
+#: C/gedit-shortcut-keys.page:282 C/gedit-shortcut-keys.page:319
+#: C/gedit-shortcut-keys.page:348
 msgid "Keyboard shortcut"
 msgstr "Klávesová zkratka"
 
@@ -3433,146 +3422,136 @@ msgstr "<key>F9</key>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:271
-msgid "Show / hide the bottom pane"
-msgstr "Zobrazit/skrýt spodní panel"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:272
-msgid "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:276
 msgid "Open the file menu"
 msgstr "Otevřít nabídku pro soubor"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:277
+#: C/gedit-shortcut-keys.page:272
 msgid "<key>F10</key>"
 msgstr "<key>F10</key>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:283
+#: C/gedit-shortcut-keys.page:278
 msgid "Shortcut keys for searching"
 msgstr "Klávesové zkratky pro hledávání"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:292
+#: C/gedit-shortcut-keys.page:287
 msgid "Find a string"
 msgstr "Hledat řetězec"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:293
+#: C/gedit-shortcut-keys.page:288
 msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:296
+#: C/gedit-shortcut-keys.page:291
 msgid "Find the next instance of the string"
 msgstr "Hledat následující výskyt téhož řetězce"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:297
+#: C/gedit-shortcut-keys.page:292
 msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:300
+#: C/gedit-shortcut-keys.page:295
 msgid "Find the previous instance of the string"
 msgstr "Hledat předchozí výskyt téhož řetězce"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:301
+#: C/gedit-shortcut-keys.page:296
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:304
+#: C/gedit-shortcut-keys.page:299
 msgid "Search and Replace"
 msgstr "Vyhledat a nahradit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:305
+#: C/gedit-shortcut-keys.page:300
 msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:308
+#: C/gedit-shortcut-keys.page:303
 msgid "Clear highlight"
 msgstr "Zrušit zvýrazňování"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:309
+#: C/gedit-shortcut-keys.page:304
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:313
+#: C/gedit-shortcut-keys.page:308
 msgid "Goto line"
 msgstr "Přejít na řádek"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:314
+#: C/gedit-shortcut-keys.page:309
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:320
+#: C/gedit-shortcut-keys.page:315
 msgid "Shortcut keys for tools"
 msgstr "Klávesové zkratky pro nástroje"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:329
+#: C/gedit-shortcut-keys.page:324
 msgid "Check spelling"
 msgstr "Zkontrolovat pravopis"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:330
+#: C/gedit-shortcut-keys.page:325
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:333
+#: C/gedit-shortcut-keys.page:328
 msgid "Remove trailing spaces (with plugin)"
 msgstr "Odstranit koncové mezery (se zásuvným modulem)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:334
+#: C/gedit-shortcut-keys.page:329
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:337
+#: C/gedit-shortcut-keys.page:332
 msgid "Run \"make\" in the current directory (with plugin)"
 msgstr "Spustit „make“ v aktuální složce (se zásuvným modulem)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:338
+#: C/gedit-shortcut-keys.page:333
 msgid "<key>F8</key>"
 msgstr "<key>F8</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:341
+#: C/gedit-shortcut-keys.page:336
 msgid "Directory listing (with plugin)"
 msgstr "Výpis složky (se zásuvným modulem)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:342
+#: C/gedit-shortcut-keys.page:337
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:349
+#: C/gedit-shortcut-keys.page:344
 msgid "Shortcut keys for user help"
 msgstr "Klávesové zkratky pro nápovědu"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:358
+#: C/gedit-shortcut-keys.page:353
 msgid "Open the gedit user guide"
 msgstr "Otevřít uživatelskou příručku k aplikaci gedit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:359
+#: C/gedit-shortcut-keys.page:354
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
