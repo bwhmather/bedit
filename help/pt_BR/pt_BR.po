@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: gedit-help\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&k"
 "eywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-03-27 18:08+0000\n"
-"PO-Revision-Date: 2017-03-28 01:17-0200\n"
+"POT-Creation-Date: 2017-09-15 08:14+0000\n"
+"PO-Revision-Date: 2017-09-15 07:06-0200\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -483,8 +483,8 @@ msgid ""
 "select <gui>Leave Fullscreen</gui>."
 msgstr ""
 "Você também pode mover o cursor do seu mouse para o topo da tela e esperar "
-"aparecer a <gui>barra de menu</gui>. Quando ela aparecer, selecione <gui>"
-"Sair de tela cheia</gui>."
+"aparecer a <gui>barra de menu</gui>. Quando ela aparecer, selecione "
+"<gui>Sair de tela cheia</gui>."
 
 #. (itstool) path: info/desc
 #: C/gedit-open-files-from-sidepane.page:8
@@ -537,21 +537,32 @@ msgstr "Abrindo arquivos do painel lateral"
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:39
+#: C/gedit-plugins-file-browser.page:33
+#| msgid ""
+#| "To open files from the <app>side pane</app>, first open the <app>side "
+#| "pane</app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></"
+#| "guiseq>, then click on the <gui>file-browser</gui> icon at the bottom of "
+#| "the pane."
 msgid ""
 "To open files from the <app>side pane</app>, first open the <app>side pane</"
-"app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></guiseq>, "
-"then click on the <gui>file-browser</gui> icon at the bottom of the pane."
+"app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></guiseq> (or "
+"just press <key>F9</key>), and then choose <gui>File Browser</gui> from the "
+"dropdown at the top of the pane."
 msgstr ""
-"Para abrir arquivos do <app>Painel lateral</app>, primeiro abra o "
-"<app>Painel lateral</app> selecionando <guiseq><gui>Ver</gui> <gui>Painel "
-"lateral</gui></guiseq>, e então clique no ícone de <gui>Navegador de "
-"arquivos</gui> na parte inferior do painel."
+"Para abrir arquivos do <app>Painel lateral</app>, primeiro abra o <app>"
+"Painel lateral</app> selecionando <guiseq><gui>Ver</gui> <gui>Painel "
+"lateral</gui></guiseq> (ou pressione <key>F9</key> e então escolha o <gui>"
+"Navegador de arquivos</gui> a partir da lista suspensa no topo do painel."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:48
-#: C/gedit-plugins-file-browser.page:42
+#: C/gedit-open-files-from-sidepane.page:47
+#: C/gedit-plugins-file-browser.page:41
+#| msgid ""
+#| "This will activate the <em>file-browser</em> mode of the <app>side pane</"
+#| "app>. You can then use the navigation buttons at the top of the pane to "
+#| "locate and open your desired files."
 msgid ""
-"This will activate the <em>file-browser</em> mode of the <app>side pane</"
+"This will activate the <em>File Browser</em> mode of the <app>side pane</"
 "app>. You can then use the navigation buttons at the top of the pane to "
 "locate and open your desired files."
 msgstr ""
@@ -560,25 +571,29 @@ msgstr ""
 "localizar e abrir seus arquivos desejados."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:56
+#: C/gedit-open-files-from-sidepane.page:55
 msgid "Using the side pane to switch between open files"
 msgstr "Usando o painel lateral para alternar entre arquivos abertos"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:57
+#: C/gedit-open-files-from-sidepane.page:56
+#| msgid ""
+#| "Once you have several files open, you can use the side pane to switch "
+#| "between open files. To activate the file browser portion of the <app>side "
+#| "pane</app>, click on the <gui>file</gui> icon at the bottom of the "
+#| "<gui>side pane</gui>."
 msgid ""
 "Once you have several files open, you can use the side pane to switch "
-"between open files. To activate the file browser portion of the <app>side "
-"pane</app>, click on the <gui>file</gui> icon at the bottom of the <gui>side "
-"pane</gui>."
+"between open files. To list open files, choose <gui>Documents</gui> from the "
+"dropdown at the top of the pane."
 msgstr ""
 "Quando que você tiver vários arquivos abertos, você pode usar o painel "
-"lateral para alternar entre os arquivos abertos. Para ativar a parte "
-"navegador de arquivos do <app>Painel lateral</app>, clique no ícone <gui> "
-"arquivo</gui> no parte inferior do <gui>Painel lateral</gui>."
+"lateral para alternar entre os arquivos abertos. Para listar arquivos "
+"abertos, escolha <gui>Documentos</gui> a partir da lista suspensa no topo do "
+"painel."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:66
+#: C/gedit-open-files-from-sidepane.page:62
 msgid ""
 "Clicking on any file name in the <gui>side pane</gui> will open that file "
 "for editing."
@@ -696,21 +711,25 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:32
-msgid ""
-"Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
-"<gui>Open Files</gui> dialog."
-msgstr ""
-"Escolha <guiseq><gui>Arquivo</gui><gui>Abrir</gui></guiseq> para exibir a "
-"janela de <gui>Abrir arquivos</gui>."
+#| msgid "Click <gui>Open</gui>."
+msgid "In the title bar, click on <gui>Open</gui>."
+msgstr "Na barra de título, clique em <gui>Abrir</gui>."
+
+#. (itstool) path: item/p
+#: C/gedit-open-on-server.page:33
+#| msgid "Click <gui>Open</gui>."
+msgid "Click <gui>Other Documents…</gui>."
+msgstr "Clique em <gui>Abrir documentos…</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:34
+#| msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgid ""
-"Select the <gui>Pencil</gui> icon near the top of the <gui>Open Files</gui> "
+"Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the <gui>Open</gui> "
 "dialog."
 msgstr ""
-"Selecione o ícone de <gui>Lápis</gui> próximo ao topo da janela de "
-"<gui>Abrir arquivos</gui>."
+"Pressione <keyseq><key>Ctrl</key><key>L</key></keyseq> no diálogo "
+"<gui>Abrir</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:36
@@ -724,9 +743,12 @@ msgstr "Localize e selecione o arquivo que deseja abrir."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:39
+#| msgid ""
+#| "Use the Character coding drop-down list to select the appropriate "
+#| "character coding."
 msgid ""
-"Use the Character coding drop-down list to select the appropriate character "
-"coding."
+"Use the Character Encoding drop-down list to select the appropriate "
+"character coding."
 msgstr ""
 "Use a lista suspensa de codificação de caracteres para selecionar a "
 "codificação de caracteres apropriada."
@@ -1118,18 +1140,6 @@ msgstr ""
 "Você pode habilitar o <gui>Painel lateral</gui> selecionando <guiseq><gui "
 "style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferências</"
 "gui><gui>Plug-ins</gui><gui>Painel de navegação de arquivos</gui></guiseq>."
-
-#. (itstool) path: section/p
-#: C/gedit-plugins-file-browser.page:33
-msgid ""
-"To activate and use the <gui>side pane</gui>, select <guiseq><gui>View</"
-"gui><gui>Side pane</gui></guiseq> (or just press <key>F9</key>), and then "
-"click on the <gui>file-browser</gui> icon at the bottom of the pane."
-msgstr ""
-"Para ativar e usar o <gui>painel lateral</gui>, selecione <guiseq><gui>Ver</"
-"gui><gui>Painel lateral</gui></guiseq>(ou apenas pressione <key>F9</key>), e "
-"então clique no ícone do <gui>navegador de arquivos</gui> no canto inferior "
-"do painel."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-insert-date-time.page:17
@@ -2718,9 +2728,9 @@ msgid ""
 "This command behaves identically to the Find Previous command. If you wish "
 "to step through search results from end to beginning, select this option."
 msgstr ""
-"Esse comando se comporta identicamente ao comando <gui>Localizar "
-"anterior</gui>. Se deseja passar por resultados de pesquisa do fim para o "
-"inicio, selecione essa opção."
+"Esse comando se comporta identicamente ao comando <gui>Localizar anterior</"
+"gui>. Se deseja passar por resultados de pesquisa do fim para o inicio, "
+"selecione essa opção."
 
 #. (itstool) path: item/title
 #: C/gedit-replace.page:112
@@ -2814,26 +2824,17 @@ msgstr "Salvando um arquivo"
 
 #. (itstool) path: page/p
 #: C/gedit-save-file.page:30
-#| msgid ""
-#| "To save a file in <app>gedit</app>, click on the <gui style=\"button"
-#| "\">Save the current file</gui> button with the disk-drive icon on the "
-#| "right side of the toolbar or just press <keyseq><key>Ctrl</key><key>S</"
-#| "key></keyseq>."
 msgid ""
 "To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save</"
 "gui> button on the right side of the toolbar or just press "
 "<keyseq><key>Ctrl</key><key>S</key></keyseq>."
 msgstr ""
-"Para salvar um arquivo no <app>gedit</app>, clique no botão <gui style=\""
-"button\">Salvar</gui> no lado direito da barra de ferramentas ou apenas "
+"Para salvar um arquivo no <app>gedit</app>, clique no botão <gui style="
+"\"button\">Salvar</gui> no lado direito da barra de ferramentas ou apenas "
 "pressione <keyseq><key>Ctrl</key><key>S</key></keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-save-file.page:32
-#| msgid ""
-#| "If you are saving a new file, the <gui>Save As</gui> dialog will appear, "
-#| "and you can select a name for the file, as well as the directory where "
-#| "you would like the file to be saved."
 msgid ""
 "If you are saving a new file, a dialog will appear, and you can select a "
 "name for the file, as well as the directory where you would like the file to "
@@ -3075,16 +3076,16 @@ msgstr "Teclas de atalho relacionadas a abas"
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:57 C/gedit-shortcut-keys.page:113
 #: C/gedit-shortcut-keys.page:167 C/gedit-shortcut-keys.page:261
-#: C/gedit-shortcut-keys.page:286 C/gedit-shortcut-keys.page:323
-#: C/gedit-shortcut-keys.page:352
+#: C/gedit-shortcut-keys.page:281 C/gedit-shortcut-keys.page:318
+#: C/gedit-shortcut-keys.page:347
 msgid "Action"
 msgstr "Ação"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:58 C/gedit-shortcut-keys.page:114
 #: C/gedit-shortcut-keys.page:168 C/gedit-shortcut-keys.page:262
-#: C/gedit-shortcut-keys.page:287 C/gedit-shortcut-keys.page:324
-#: C/gedit-shortcut-keys.page:353
+#: C/gedit-shortcut-keys.page:282 C/gedit-shortcut-keys.page:319
+#: C/gedit-shortcut-keys.page:348
 msgid "Keyboard shortcut"
 msgstr "Atalhos de teclado"
 
@@ -3517,149 +3518,138 @@ msgstr "Mostra / oculta o painel lateral"
 msgid "<key>F9</key>"
 msgstr "<key>F9</key>"
 
-# Descrição de atalho de teclado. Tirei ponto ".", pois nenhuma outra descrição tem ponto.
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:271
-msgid "Show / hide the bottom pane"
-msgstr "Mostra / oculta o painel inferior"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:272
-msgid "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
-
-#. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:276
 msgid "Open the file menu"
 msgstr "Abre o menu do arquivo"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:277
+#: C/gedit-shortcut-keys.page:272
 msgid "<key>F10</key>"
 msgstr "<key>F10</key>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:283
+#: C/gedit-shortcut-keys.page:278
 msgid "Shortcut keys for searching"
 msgstr "Teclas de atalhos para pesquisas"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:292
+#: C/gedit-shortcut-keys.page:287
 msgid "Find a string"
 msgstr "Localiza um texto"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:293
+#: C/gedit-shortcut-keys.page:288
 msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:296
+#: C/gedit-shortcut-keys.page:291
 msgid "Find the next instance of the string"
 msgstr "Localiza a próxima instância do texto"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:297
+#: C/gedit-shortcut-keys.page:292
 msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:300
+#: C/gedit-shortcut-keys.page:295
 msgid "Find the previous instance of the string"
 msgstr "Localiza a instância anterior do texto"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:301
+#: C/gedit-shortcut-keys.page:296
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:304
+#: C/gedit-shortcut-keys.page:299
 msgid "Search and Replace"
 msgstr "Pesquisa e substitui"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:305
+#: C/gedit-shortcut-keys.page:300
 msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:308
+#: C/gedit-shortcut-keys.page:303
 msgid "Clear highlight"
 msgstr "Limpa destaque"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:309
+#: C/gedit-shortcut-keys.page:304
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:313
+#: C/gedit-shortcut-keys.page:308
 msgid "Goto line"
 msgstr "Vai para a linha"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:314
+#: C/gedit-shortcut-keys.page:309
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:320
+#: C/gedit-shortcut-keys.page:315
 msgid "Shortcut keys for tools"
 msgstr "Teclas de atalho para ferramentas"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:329
+#: C/gedit-shortcut-keys.page:324
 msgid "Check spelling"
 msgstr "Verifica ortografia"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:330
+#: C/gedit-shortcut-keys.page:325
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:333
+#: C/gedit-shortcut-keys.page:328
 msgid "Remove trailing spaces (with plugin)"
 msgstr "Remove espaços à direita (com plug-in)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:334
+#: C/gedit-shortcut-keys.page:329
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:337
+#: C/gedit-shortcut-keys.page:332
 msgid "Run \"make\" in the current directory (with plugin)"
 msgstr "Executa \"make\" no diretório atual (com plug-in)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:338
+#: C/gedit-shortcut-keys.page:333
 msgid "<key>F8</key>"
 msgstr "<key>F8</key>"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:341
+#: C/gedit-shortcut-keys.page:336
 msgid "Directory listing (with plugin)"
 msgstr "Lista diretórios (com plug-in)"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:342
+#: C/gedit-shortcut-keys.page:337
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 
 #. (itstool) path: table/title
-#: C/gedit-shortcut-keys.page:349
+#: C/gedit-shortcut-keys.page:344
 msgid "Shortcut keys for user help"
 msgstr "Teclas de atalho para ajuda"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:358
+#: C/gedit-shortcut-keys.page:353
 msgid "Open the gedit user guide"
 msgstr "Abre o manual do usuário do gedit"
 
 #. (itstool) path: td/p
-#: C/gedit-shortcut-keys.page:359
+#: C/gedit-shortcut-keys.page:354
 msgid "<key>F1</key>"
 msgstr "<key>F1</key>"
 
@@ -4358,6 +4348,37 @@ msgstr ""
 #: C/legal.xml:3
 msgid "This work is licensed under a <_:link-1/>."
 msgstr "Esta obra está licenciada sob a <_:link-1/>."
+
+#~ msgid ""
+#~ "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
+#~ "<gui>Open Files</gui> dialog."
+#~ msgstr ""
+#~ "Escolha <guiseq><gui>Arquivo</gui><gui>Abrir</gui></guiseq> para exibir a "
+#~ "janela de <gui>Abrir arquivos</gui>."
+
+#~ msgid ""
+#~ "Select the <gui>Pencil</gui> icon near the top of the <gui>Open Files</"
+#~ "gui> dialog."
+#~ msgstr ""
+#~ "Selecione o ícone de <gui>Lápis</gui> próximo ao topo da janela de "
+#~ "<gui>Abrir arquivos</gui>."
+
+#~ msgid ""
+#~ "To activate and use the <gui>side pane</gui>, select <guiseq><gui>View</"
+#~ "gui><gui>Side pane</gui></guiseq> (or just press <key>F9</key>), and then "
+#~ "click on the <gui>file-browser</gui> icon at the bottom of the pane."
+#~ msgstr ""
+#~ "Para ativar e usar o <gui>painel lateral</gui>, selecione "
+#~ "<guiseq><gui>Ver</gui><gui>Painel lateral</gui></guiseq>(ou apenas "
+#~ "pressione <key>F9</key>), e então clique no ícone do <gui>navegador de "
+#~ "arquivos</gui> no canto inferior do painel."
+
+# Descrição de atalho de teclado. Tirei ponto ".", pois nenhuma outra descrição tem ponto.
+#~ msgid "Show / hide the bottom pane"
+#~ msgstr "Mostra / oculta o painel inferior"
+
+#~ msgid "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
+#~ msgstr "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
 
 #~ msgid "To Do This"
 #~ msgstr "Para fazer isso"
