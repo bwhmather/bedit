@@ -237,15 +237,16 @@ REGEXP_PERL = r"""
 )"""
 
 # mcs (C#) 'Test.cs(12,7): error CS0103: The name `fakeMethod'
+# fpc (Pascal) 'hello.pas(11,1) Fatal: Syntax error, ":" expected but "BEGIN"'
 REGEXP_MCS = r"""
 ^
 (?P<lnk>
-    (?P<pth> .*\.[cC][sS] )
+    (?P<pth> \S+ )
     \(
     (?P<ln> \d+ )
     ,\d+\)
 )
-\:\s
+\:?\s
 """
 
 # ex:ts=4:et:

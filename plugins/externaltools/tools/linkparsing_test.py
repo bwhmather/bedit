@@ -189,6 +189,14 @@ test.rb:5: undefined method `fake_method' for main:Object (NoMethodError)
         self.assert_link(lnk, "Test.cs", 12)
         self.assert_link_text(line, lnk, 'Test.cs(12,7)')
 
+    def test_parse_pas_one_line(self):
+        line = 'hello.pas(11,1) Fatal: Syntax error, ":" expected but "BEGIN"'
+        links = self.p.parse(line)
+        self.assert_link_count(links, 1)
+        lnk = links[0]
+        self.assert_link(lnk, "hello.pas", 11)
+        self.assert_link_text(line, lnk, 'hello.pas(11,1)')
+
 if __name__ == '__main__':
     unittest.main()
 
