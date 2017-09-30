@@ -11,10 +11,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-10-11 21:03+0000\n"
-"PO-Revision-Date: 2016-10-27 14:36+0200\n"
+"POT-Creation-Date: 2017-06-28 17:23+0000\n"
+"PO-Revision-Date: 2017-10-01 00:04+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.10\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 #: ../data/org.gnome.gedit.desktop.in.in.h:2
@@ -1127,6 +1127,7 @@ msgstr "”%s” är en katalog."
 msgid "“%s” is not a valid location."
 msgstr "”%s” är inte en giltig plats."
 
+#. Translators: %s is a host name
 #: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
@@ -1476,6 +1477,9 @@ msgstr "Förbereder…"
 msgid "File: %s"
 msgstr "Fil: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Sida %N av %Q"
@@ -1802,8 +1806,8 @@ msgid "_Paste"
 msgstr "Klistra _in"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Ta bort"
@@ -1876,7 +1880,7 @@ msgstr "Sök och _ersätt…"
 #: ../gedit/resources/gtk/menus.ui.h:14
 #: ../gedit/resources/gtk/menus-traditional.ui.h:8
 msgid "_Clear Highlight"
-msgstr "_Rensa färgmarkeringsläge"
+msgstr "_Rensa färgmarkering"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:45
 msgid "Go to _Line…"
@@ -2414,7 +2418,7 @@ msgstr "Sök föregående förekomst av söksträngen"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
 msgctxt "shortcut window"
 msgid "Clear highlight"
-msgstr "Rensa färgmarkeringsläge"
+msgstr "Rensa färgmarkering"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
 msgctxt "shortcut window"
@@ -2983,7 +2987,7 @@ msgstr "Ett fel uppstod vid inläsning av en katalog"
 msgid "An error occurred"
 msgstr "Ett fel inträffade"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2991,25 +2995,25 @@ msgstr ""
 "Kan inte flytta filen till papperskorgen.\n"
 "Vill du ta bort den permanent?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
 msgid "The file \"%s\" cannot be moved to the trash."
 msgstr "Filen ”%s” kan inte flyttas till papperskorgen."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "De markerade filerna kan inte flyttas till papperskorgen."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
 msgid "Are you sure you want to permanently delete \"%s\"?"
 msgstr "Är du säker på att du vill ta bort ”%s” permanent?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Är du säker på att du vill ta bort de markerade filerna permanent?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Om du tar bort ett objekt är det borta för alltid."
 
