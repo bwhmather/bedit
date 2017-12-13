@@ -255,7 +255,7 @@ gedit_app_show_help_impl (GeditApp    *app,
 
 	link = GEDIT_APP_GET_CLASS (app)->help_link_id (app, name, link_id);
 
-	ret = gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (parent)),
+	ret = gtk_show_uri_on_window (GTK_WINDOW (parent),
 	                    link,
 	                    GDK_CURRENT_TIME,
 	                    &error);
