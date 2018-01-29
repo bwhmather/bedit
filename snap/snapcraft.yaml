@@ -1,0 +1,79 @@
+name: gedit
+version: git
+summary: Edit text files
+description: |
+  gedit is the official text editor of the GNOME desktop environment.
+  While aiming at simplicity and ease of use, gedit is a powerful general
+  purpose text editor.
+
+  Whether you are writing the next bestseller, programming an innovative
+  application, or simply taking some quick notes, gedit will be a reliable
+  tool to accomplish your task.
+
+  Its flexible plugin system allows you to tailor the application to your
+  needs and adapt it to your workflow.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: strict
+
+plugs:
+    gnome-3-26-1604:
+      interface: content
+      target: $SNAP/gnome-platform
+      default-provider: gnome-3-26-1604:gnome-3-26-1604
+
+slots:
+  # for GtkApplication registration
+  gedit:
+    interface: dbus
+    bus: session
+    name: org.gnome.gedit
+
+apps:
+  gedit:
+    command: desktop-launch gedit
+    plugs:
+      - desktop
+      - desktop-legacy
+      - home
+      - network
+      - mount-observe
+      - gsettings
+      - unity7
+      - wayland
+    desktop: usr/share/applications/org.gnome.gedit.desktop
+    environment:
+      GSETTINGS_SCHEMA_DIR: $SNAP/share/glib-2.0/schemas
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/gedit
+
+parts:
+  gedit:
+    after: [desktop-gnome-platform]
+    source: .
+    source-type: git
+    plugin: autotools
+    configflags: [--prefix=/snap/gedit/current/usr]
+    organize:
+      snap/gedit/current/usr: usr
+    build-attributes: [no-system-libraries]
+    build-packages:
+      - desktop-file-utils
+      - gettext
+      - gnome-common
+      - gsettings-desktop-schemas-dev
+      - gtk-doc-tools
+      - intltool
+      - libsoup2.4-dev
+      - libgspell-1-dev
+      - libxml2-dev
+      - libglib2.0-dev
+      - libgtk-3-dev
+      - libgtksourceview-3.0-dev
+      - libpeas-dev
+      - libx11-dev
+      - python3
+      - python-gi-dev
+      - yelp-tools
+      - gobject-introspection
+      - libgirepository1.0-dev
+      - valac
