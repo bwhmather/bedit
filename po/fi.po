@@ -18,10 +18,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-21 04:20+0000\n"
-"PO-Revision-Date: 2016-08-21 12:33+0300\n"
+"POT-Creation-Date: 2018-01-29 03:07+0000\n"
+"PO-Revision-Date: 2018-02-03 21:19+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -30,9 +30,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2012-02-19 15:15:59+0000\n"
-"X-Generator: Gtranslator 2.91.7\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Muokkaa tekstitiedostoja"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -42,7 +47,7 @@ msgstr ""
 "suunnittelussa on korostettu yksinkertaisuutta ja helppokäyttöisyyttä, gedit "
 "on tehokas yleisluonteinen tekstimuokkain."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -52,40 +57,33 @@ msgstr ""
 "suosikkisovellusta tai teet muistiinpanoja, gedit on luotettava työkalu "
 "valitsemaasi tehtävään."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
 msgstr ""
 "Monipuolinen liitännäisjärjestelmä mahdollistaa sovelluksen mukauttamisen "
-"tarpeiseesi ja työnkulkuusi."
+"tarpeisiisi ja työnkulkuusi."
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "Tekstimuokkain"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "Muokkaa tekstitiedostoja"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "gedit-tekstimuokkain"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-#| msgid "Text;Editor;"
 msgid "Text;Editor;Plaintext;Write;"
 msgstr ""
 "Text;Editor;Plaintext;Write;teksti;muokkain;editori;tekstieditori;"
 "tekstimuokkain;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-#| msgid "_New Window"
 msgid "New Window"
 msgstr "Uusi ikkuna"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-#| msgid "N_ext Document"
 msgid "New Document"
 msgstr "Uusi asiakirja"
 
@@ -94,10 +92,16 @@ msgid "Use Default Font"
 msgstr "Käytä oletusfonttia"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
+#, fuzzy
+#| msgid ""
+#| "Whether to use the system's default fixed width font for editing text "
+#| "instead of a font specific to gedit. If this option is turned off, then "
+#| "the font named in the \"Editor Font\" option will be used instead of the "
+#| "system font."
 msgid ""
-"Whether to use the system's default fixed width font for editing text "
+"Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
-"font named in the \"Editor Font\" option will be used instead of the system "
+"font named in the “Editor Font” option will be used instead of the system "
 "font."
 msgstr ""
 "Määrittää käytetäänkö tekstin muokkaukseen järjestelmän oletusfonttia "
@@ -113,9 +117,13 @@ msgid "Editor Font"
 msgstr "Muokkaimen fontti"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:5
+#, fuzzy
+#| msgid ""
+#| "A custom font that will be used for the editing area. This will only take "
+#| "effect if the \"Use Default Font\" option is turned off."
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
-"effect if the \"Use Default Font\" option is turned off."
+"effect if the “Use Default Font” option is turned off."
 msgstr ""
 "Mukautettu fontti, jota käytetään muokkausalueella. Tämä on voimassa "
 "ainoastaan mikäli asetus ”Käytä oletusfonttia” ei ole päällä."
@@ -143,10 +151,14 @@ msgid "Autosave"
 msgstr "Autotallennus"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:11
+#, fuzzy
+#| msgid ""
+#| "Whether gedit should automatically save modified files after a time "
+#| "interval. You can set the time interval with the \"Autosave Interval\" "
+#| "option."
 msgid ""
 "Whether gedit should automatically save modified files after a time "
-"interval. You can set the time interval with the \"Autosave Interval\" "
-"option."
+"interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
 "Tallentaako gedit automaattisesti muokatut tiedostot tietyn ajan jälkeen. "
 "Haluttu aikaväli voidaan asettaa ”Autotallennus väli”-valintaan."
@@ -156,9 +168,13 @@ msgid "Autosave Interval"
 msgstr "Autotallennuksen väli"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:13
+#, fuzzy
+#| msgid ""
+#| "Number of minutes after which gedit will automatically save modified "
+#| "files. This will only take effect if the \"Autosave\" option is turned on."
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
-"This will only take effect if the \"Autosave\" option is turned on."
+"This will only take effect if the “Autosave” option is turned on."
 msgstr ""
 "Minuuttimäärä, joka jälkeen gedit automaattisesti tallentaa muokatut "
 "tiedostot. Tämä on toiminnassa vain jos ”Autotallennus”-valinta on käytössä."
@@ -168,9 +184,13 @@ msgid "Maximum Number of Undo Actions"
 msgstr "Kumoamistoimintojen enimmäismäärä"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:15
+#, fuzzy
+#| msgid ""
+#| "Maximum number of actions that gedit will be able to undo or redo. Use "
+#| "\"-1\" for unlimited number of actions."
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
+"for unlimited number of actions."
 msgstr ""
 "Suurin määrä toimintoja jotka gedit voi kumota tai tehdä uudestaan. Arvo "
 "”-1” tarkoittaa rajatonta määrää."
@@ -180,11 +200,17 @@ msgid "Line Wrapping Mode"
 msgstr "Rivitystapa"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:17
+#, fuzzy
+#| msgid ""
+#| "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
+#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+#| "wrapping at individual character boundaries. Note that the values are "
+#| "case-sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-"wrapping at individual character boundaries. Note that the values are case-"
-"sensitive, so make sure they appear exactly as mentioned here."
+"Specifies how to wrap long lines in the editing area. Use “none” for no "
+"wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
 msgstr ""
 "Määrittää kuinka pitkät rivit rivitetään muokkausalueella. Käytä arvoa "
 "”none” jos et halua rivittää, ”word” rivittääksesi sanan vaihtuessa, ja "
@@ -197,11 +223,17 @@ msgid "Last split mode choice for line wrapping mode"
 msgstr "Rivitystilan viimeisen jakotilan valinta"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:19
+#, fuzzy
+#| msgid ""
+#| "Specifies the last split mode used with line wrapping mode, so that when "
+#| "wrapping mode is off we still remember the split mode choice. Use \"word"
+#| "\" for wrapping at word boundaries, and \"char\" for wrapping at "
+#| "individual character boundaries."
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
-"wrapping mode is off we still remember the split mode choice. Use \"word\" "
-"for wrapping at word boundaries, and \"char\" for wrapping at individual "
-"character boundaries."
+"wrapping mode is off we still remember the split mode choice. Use “word” for "
+"wrapping at word boundaries, and “char” for wrapping at individual character "
+"boundaries."
 msgstr ""
 "Määrittää rivitystilan kanssa käytettävän viimeisen jakotilan, jotta "
 "rivityksen ollessa pois käytöstä jakotilan valinta muistettaisiin edelleen. "
@@ -295,14 +327,23 @@ msgid "Smart Home End"
 msgstr "Älykkäät Home/End-näppäimet"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:41
+#, fuzzy
+#| msgid ""
+#| "Specifies how the cursor moves when the HOME and END keys are pressed. "
+#| "Use \"disabled\" to always move at the start/end of the line, \"after\" "
+#| "to move to the start/end of the line the first time the keys are pressed "
+#| "and to the start/end of the text ignoring whitespaces the second time the "
+#| "keys are pressed, \"before\" to move to the start/end of the text before "
+#| "moving to the start/end of the line and \"always\" to always move to the "
+#| "start/end of the text instead of the start/end of the line."
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
-"\"disabled\" to always move at the start/end of the line, \"after\" to move "
-"to the start/end of the line the first time the keys are pressed and to the "
+"“disabled” to always move at the start/end of the line, “after” to move to "
+"the start/end of the line the first time the keys are pressed and to the "
 "start/end of the text ignoring whitespaces the second time the keys are "
-"pressed, \"before\" to move to the start/end of the text before moving to "
-"the start/end of the line and \"always\" to always move to the start/end of "
-"the text instead of the start/end of the line."
+"pressed, “before” to move to the start/end of the text before moving to the "
+"start/end of the line and “always” to always move to the start/end of the "
+"text instead of the start/end of the line."
 msgstr ""
 "Määrittää, kuinka kohdistin liikkuu, kun Home ja End-näppäimiä painetaan. "
 "Arvolla ”disabled” siirrytään aina rivin alkuun tai loppuun, arvolla ”after” "
@@ -363,9 +404,15 @@ msgid "Notebook Show Tabs Mode"
 msgstr "Muistio. Näytä välilehdet tila."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#, fuzzy
+#| msgid ""
+#| "Specifies when to show the notebook tabs. Use \"never\" to never show the "
+#| "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs "
+#| "only when there is more than one tab. Note that the values are case-"
+#| "sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
-"Specifies when to show the notebook tabs. Use \"never\" to never show the "
-"tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
+"Specifies when to show the notebook tabs. Use “never” to never show the "
+"tabs, “always” to always show the tabs, and “auto” to show the tabs only "
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
@@ -398,9 +445,13 @@ msgid "Maximum Recent Files"
 msgstr "Viimeisimmät tiedostot -listan enimmäispituus"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#, fuzzy
+#| msgid ""
+#| "Specifies the maximum number of recently opened files that will be "
+#| "displayed in the \"Recent Files\" submenu."
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
-"in the \"Recent Files\" submenu."
+"in the “Recent Files” submenu."
 msgstr ""
 "Määrittää kohdassa ”Viimeisimmät tiedostot” näytettävien äskettäin avattujen "
 "tiedostojen enimmäismäärän."
@@ -426,9 +477,15 @@ msgid "Printing Line Wrapping Mode"
 msgstr "Tulostuksen rivitystapa"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#, fuzzy
+#| msgid ""
+#| "Specifies how to wrap long lines for printing. Use \"none\" for no "
+#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+#| "wrapping at individual character boundaries. Note that the values are "
+#| "case-sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
-"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
+"“word” for wrapping at word boundaries, and “char” for wrapping at "
 "individual character boundaries. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
@@ -460,8 +517,11 @@ msgid "Body Font for Printing"
 msgstr "Tekstin tulostusfontti"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#, fuzzy
+#| msgid ""
+#| "Specifies the font to use for a document's body when printing documents."
 msgid ""
-"Specifies the font to use for a document's body when printing documents."
+"Specifies the font to use for a document’s body when printing documents."
 msgstr "Määrittää tulostettaessa käytettävän fontin."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
@@ -473,9 +533,13 @@ msgid "Header Font for Printing"
 msgstr "Otsikkotietojen tulostusfontti"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:73
+#, fuzzy
+#| msgid ""
+#| "Specifies the font to use for page headers when printing a document. This "
+#| "will only take effect if the \"Print Header\" option is turned on."
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
-"will only take effect if the \"Print Header\" option is turned on."
+"will only take effect if the “Print Header” option is turned on."
 msgstr ""
 "Määrittää tulostettaessa käytettävän otsikkotiedon fontin. Tämä on voimassa "
 "ainoastaan, mikäli asetus ”Tulosta otsikkotiedot” on päällä."
@@ -489,9 +553,13 @@ msgid "Line Number Font for Printing"
 msgstr "Rivinumeroiden tulostusfontti"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#, fuzzy
+#| msgid ""
+#| "Specifies the font to use for line numbers when printing. This will only "
+#| "take effect if the \"Print Line Numbers\" option is non-zero."
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
-"take effect if the \"Print Line Numbers\" option is non-zero."
+"take effect if the “Print Line Numbers” option is non-zero."
 msgstr ""
 "Määrittää tulostettaessa käytettävän rivinumeron fontin. Tämä on voimassa "
 "ainoastaan, mikäli asetuksen ”Tulosta rivinumerot” arvo on muu kuin nolla."
@@ -533,9 +601,16 @@ msgid "Candidate Encodings"
 msgstr "Mahdolliset koodaustavat"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#, fuzzy
+#| msgid ""
+#| "List of candidate encodings shown in the Character Encoding menu in the "
+#| "open/save file chooser. \"CURRENT\" represents the current locale "
+#| "encoding. Only recognized encodings are used. The default value is the "
+#| "empty list, in which case gedit will choose good defaults depending on "
+#| "the country and language."
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
-"save file chooser. \"CURRENT\" represents the current locale encoding. Only "
+"save file chooser. “CURRENT” represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
@@ -549,17 +624,22 @@ msgid "Active plugins"
 msgstr "Käytössä olevat liitännäiset"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:88
+#, fuzzy
+#| msgid ""
+#| "List of active plugins. It contains the \"Location\" of the active "
+#| "plugins. See the .gedit-plugin file for obtaining the \"Location\" of a "
+#| "given plugin."
 msgid ""
-"List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+"List of active plugins. It contains the “Location” of the active plugins. "
+"See the .gedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
 "Lista aktiivisista liitännäisistä. Lista sisältää aktiivisen liitännäisen "
 "sijainnin. Katso tiedostoa .gedit-plugin, josta voit selvittää kunkin "
 "liitännäisen sijainnin kohdasta ”Location”."
 
 #: ../gedit/gedit-app.c:110
-msgid "Show the application's version"
-msgstr "Näytä ohjelman versiotiedot"
+msgid "Show the application’s version"
+msgstr "Näytä ohjelman versio"
 
 #: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
@@ -595,7 +675,9 @@ msgid "Run gedit in standalone mode"
 msgstr "Suorita gedit erillisessä tilassa."
 
 #: ../gedit/gedit-app.c:158
-msgid "[FILE...] [+LINE[:COLUMN]]"
+#, fuzzy
+#| msgid "[FILE...] [+LINE[:COLUMN]]"
+msgid "[FILE…] [+LINE[:COLUMN]]"
 msgstr "[TIEDOSTO...] [+RIVI[:SARAKE]]"
 
 #: ../gedit/gedit-app.c:273
@@ -615,17 +697,15 @@ msgstr "_Sulje tallentamatta"
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
-#: ../gedit/gedit-io-error-info-bar.c:130
-#: ../gedit/gedit-io-error-info-bar.c:511
 #: ../gedit/gedit-preferences-dialog.c:825
 #: ../gedit/gedit-progress-info-bar.c:49
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:781
-#: ../plugins/snippets/snippets/manager.py:866
-#: ../plugins/snippets/snippets/manager.py:904
+#: ../plugins/quickopen/quickopen/popup.py:45
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
@@ -641,92 +721,85 @@ msgstr "_Tallenna nimellä…"
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:905
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "_Tallenna"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently lost."
+"If you don’t save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld seconds will be permanently "
+"If you don’t save, changes from the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
-"Mikäli et tallenna, muutokset viimeisen %ld sekunnin ajalta menetetään "
-"pysyvästi."
+"Jos et tallenna, muutokset viimeisen %ld sekunnin ajalta katoavat pysyvästi."
 msgstr[1] ""
-"Mikäli et tallenna, muutokset viimeisten %ld sekunnin ajalta menetetään "
-"pysyvästi."
+"Jos et tallenna, muutokset viimeisten %ld sekunnin ajalta katoavat pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
-"If you don't save, changes from the last minute will be permanently lost."
+"If you don’t save, changes from the last minute will be permanently lost."
 msgstr ""
-"Mikäli et tallenna, muutokset viimeisen minuutin ajalta menetetään pysyvästi."
+"Jos et tallenna, muutokset viimeisen minuutin ajalta katoavat pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
-"If you don't save, changes from the last minute and %ld second will be "
+"If you don’t save, changes from the last minute and %ld second will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last minute and %ld seconds will be "
+"If you don’t save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"Mikäli et tallenna, muutokset viimeisen minuutin ja %ld sekunnin ajalta "
-"menetetään pysyvästi."
+"Jos et tallenna, muutokset viimeisen minuutin ja %ld sekunnin ajalta "
+"katoavat pysyvästi."
 msgstr[1] ""
-"Mikäli et tallenna, muutokset viimeisten minuutin ja %ld sekunnin ajalta "
-"menetetään pysyvästi."
+"Jos et tallenna, muutokset viimeisten minuutin ja %ld sekunnin ajalta "
+"katoavat pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently lost."
+"If you don’t save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld minutes will be permanently "
+"If you don’t save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
-"Mikäli et tallenna, muutokset viimeisen %ld minuutin ajalta menetetään "
-"pysyvästi."
+"Jos et tallenna, muutokset viimeisen %ld minuutin ajalta katoavat pysyvästi."
 msgstr[1] ""
-"Mikäli et tallenna, muutokset viimeisten %ld minuutin ajalta menetetään "
-"pysyvästi."
+"Jos et tallenna, muutokset viimeisten %ld minuutin ajalta katoavat pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:364
-msgid "If you don't save, changes from the last hour will be permanently lost."
-msgstr ""
-"Mikäli et tallenna, muutokset viimeisen tunnin ajalta menetetään pysyvästi."
+msgid "If you don’t save, changes from the last hour will be permanently lost."
+msgstr "Jos et tallenna, muutokset viimeisen tunnin ajalta katoavat pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
-"If you don't save, changes from the last hour and %d minute will be "
+"If you don’t save, changes from the last hour and %d minute will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last hour and %d minutes will be "
+"If you don’t save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-"Mikäli et tallenna, muutokset viimeisen tunnin ja %d minuutin ajalta "
-"menetetään pysyvästi."
+"Jos et tallenna, muutokset viimeisen tunnin ja %d minuutin ajalta katoavat "
+"pysyvästi."
 msgstr[1] ""
-"Mikäli et tallenna, muutokset viimeisen tunnin ja %d minuutin ajalta "
-"menetetään pysyvästi."
+"Jos et tallenna, muutokset viimeisen tunnin ja %d minuutin ajalta katoavat "
+"pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
-"If you don't save, changes from the last %d hour will be permanently lost."
+"If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %d hours will be permanently lost."
+"If you don’t save, changes from the last %d hours will be permanently lost."
 msgstr[0] ""
-"Mikäli et tallenna, muutokset viimeisen %d tunnin ajalta menetetään "
-"pysyvästi."
+"Jos et tallenna, muutokset viimeisen %d tunnin ajalta katoavat pysyvästi."
 msgstr[1] ""
-"Mikäli et tallenna, muutokset viimeisten %d tunnin ajalta menetetään "
-"pysyvästi."
+"Jos et tallenna, muutokset viimeisten %d tunnin ajalta katoavat pysyvästi."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
@@ -771,13 +844,13 @@ msgid "S_elect the documents you want to save:"
 msgstr "Valits_e asiakirjat jotka haluat tallentaa:"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:562
-msgid "If you don't save, all your changes will be permanently lost."
-msgstr "Mikäli et tallenna, kaikki tekemäsi muutokset menetetään lopullisesti."
+msgid "If you don’t save, all your changes will be permanently lost."
+msgstr "Jos et tallenna, kaikki tekemäsi muutokset katoavat lopullisesti."
 
 #: ../gedit/gedit-commands-file.c:261
 #, c-format
-msgid "Loading file '%s'…"
-msgstr "Ladataan tiedostoa ”%s”…"
+msgid "Loading file “%s”…"
+msgstr "Ladataan tiedostoa “%s”…"
 
 #: ../gedit/gedit-commands-file.c:270
 #, c-format
@@ -796,15 +869,15 @@ msgstr "Avaa"
 #: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:39
-#: ../plugins/snippets/snippets/manager.py:782
+#: ../plugins/quickopen/quickopen/popup.py:46
+#: ../plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "_Avaa"
 
 #: ../gedit/gedit-commands-file.c:558
 #, c-format
-msgid "The file \"%s\" is read-only."
-msgstr "Tiedostoa ”%s” voi vain lukea."
+msgid "The file “%s” is read-only."
+msgstr "Tiedosto “%s” on kirjoitussuojattu."
 
 #: ../gedit/gedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
@@ -826,11 +899,11 @@ msgstr "Tallennetaanko tiedosto muotoilemattomana tekstinä?"
 #: ../gedit/gedit-commands-file.c:625
 #, c-format
 msgid ""
-"The file \"%s\" was previously saved as plain text and will now be saved "
-"using compression."
+"The file “%s” was previously saved as plain text and will now be saved using "
+"compression."
 msgstr ""
-"Tiedosto %s on aikaisemmin tallennettu tekstinä ja tallennetaan nyt käyttäen "
-"pakkausta."
+"Tiedosto “%s” on aikaisemmin tallennettu muotoilemattomana tekstinä ja "
+"tallennetaan nyt käyttäen pakkausta."
 
 #: ../gedit/gedit-commands-file.c:629
 msgid "_Save Using Compression"
@@ -839,10 +912,10 @@ msgstr "_Tallenna pakattuna"
 #: ../gedit/gedit-commands-file.c:634
 #, c-format
 msgid ""
-"The file \"%s\" was previously saved using compression and will now be saved "
+"The file “%s” was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
-"Tiedosto %s oli aiemmin tallennettu pakattuna ja tallennetaan nyt "
+"Tiedosto “%s” oli aiemmin tallennettu pakattuna ja tallennetaan nyt "
 "muotoilemattomana tekstinä."
 
 #: ../gedit/gedit-commands-file.c:637
@@ -851,8 +924,8 @@ msgstr "_Tallenna muotoilemattomana tekstinä"
 
 #: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
-msgid "Saving file '%s'…"
-msgstr "Tallennetaan tiedostoa ”%s”…"
+msgid "Saving file “%s”…"
+msgstr "Tallennetaan tiedostoa “%s”…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
@@ -862,13 +935,13 @@ msgstr "Tallenna nimellä"
 
 #: ../gedit/gedit-commands-file.c:1429
 #, c-format
-msgid "Reverting the document '%s'…"
-msgstr "Palautetaan asiakirjaa ”%s”…"
+msgid "Reverting the document “%s”…"
+msgstr "Palautetaan asiakirjaa “%s”…"
 
 #: ../gedit/gedit-commands-file.c:1476
 #, c-format
-msgid "Revert unsaved changes to document '%s'?"
-msgstr "Peru tekemättömät muutokset asiakirjaan ”%s”?"
+msgid "Revert unsaved changes to document “%s”?"
+msgstr "Palauta tallentamattomat muutokset asiakirjaan “%s”?"
 
 #: ../gedit/gedit-commands-file.c:1485
 #, c-format
@@ -993,8 +1066,8 @@ msgstr "Löydetty ja korvattu yksi esiintymä"
 #. entered by the user in the search box
 #: ../gedit/gedit-commands-search.c:142
 #, c-format
-msgid "\"%s\" not found"
-msgstr "”%s” ei löytynyt"
+msgid "“%s” not found"
+msgstr "“%s” ei löytynyt"
 
 #: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
@@ -1018,7 +1091,7 @@ msgstr "Automaattisesti tunnistettu"
 
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
-msgid "Add or Remove..."
+msgid "Add or Remove…"
 msgstr "Lisää tai poista…"
 
 #: ../gedit/gedit-encoding-items.c:92
@@ -1032,7 +1105,7 @@ msgid "%s (Current Locale)"
 msgstr "%s (nykyinen maa-asetusto)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
-msgid "Do you really want to reset the character encodings' preferences?"
+msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr "Haluatko varmasti palauttaa merkistökoodausten asetukset?"
 
 #. Reset button
@@ -1082,54 +1155,55 @@ msgid "Line Ending:"
 msgstr "Rivinloppu:"
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
-#: ../plugins/externaltools/tools/manager.py:108
-#: ../plugins/externaltools/tools/manager.py:317
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:767
+#: ../plugins/externaltools/tools/manager.py:115
+#: ../plugins/externaltools/tools/manager.py:324
+#: ../plugins/externaltools/tools/manager.py:440
+#: ../plugins/externaltools/tools/manager.py:774
 msgid "Plain Text"
 msgstr "Raakateksti"
 
-#: ../gedit/gedit-io-error-info-bar.c:143
+#: ../gedit/gedit-io-error-info-bar.c:142
 #: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "Yritä _uudestaan"
 
-#: ../gedit/gedit-io-error-info-bar.c:163
+#: ../gedit/gedit-io-error-info-bar.c:162
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Tiedostoa ”%s” ei löytynyt."
 
-#: ../gedit/gedit-io-error-info-bar.c:165
-#: ../gedit/gedit-io-error-info-bar.c:205
-#: ../gedit/gedit-io-error-info-bar.c:212
+#: ../gedit/gedit-io-error-info-bar.c:164
+#: ../gedit/gedit-io-error-info-bar.c:204
+#: ../gedit/gedit-io-error-info-bar.c:211
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Tarkista, että kirjoitit sijainnin oikein ja yritä uudelleen."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:184
+#: ../gedit/gedit-io-error-info-bar.c:183
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "”%s”-sijaintien käsittely ei onnistu."
 
-#: ../gedit/gedit-io-error-info-bar.c:190
+#: ../gedit/gedit-io-error-info-bar.c:189
 msgid "Unable to handle this location."
 msgstr "Tämän sijainnin käsittely ei onnistu."
 
-#: ../gedit/gedit-io-error-info-bar.c:199
+#: ../gedit/gedit-io-error-info-bar.c:198
 msgid "The location of the file cannot be accessed."
 msgstr "Tiedoston sijaintia ei voi käyttää."
 
-#: ../gedit/gedit-io-error-info-bar.c:203
+#: ../gedit/gedit-io-error-info-bar.c:202
 #, c-format
 msgid "“%s” is a directory."
 msgstr "”%s” on hakemisto."
 
-#: ../gedit/gedit-io-error-info-bar.c:210
+#: ../gedit/gedit-io-error-info-bar.c:209
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "”%s” ei ole kelvollinen sijainti."
 
-#: ../gedit/gedit-io-error-info-bar.c:246
+#. Translators: %s is a host name
+#: ../gedit/gedit-io-error-info-bar.c:245
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1138,7 +1212,7 @@ msgstr ""
 "Verkkonimeä \"%s\" ei löydy. Tarkista, että välityspalvelimesi asetukset "
 "ovat kunnossa ja yritä uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:261
+#: ../gedit/gedit-io-error-info-bar.c:260
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1147,50 +1221,50 @@ msgstr ""
 "Kohdekoneen nimi ei ole kelvollinen. Tarkista kirjoittamasi osoite ja koeta "
 "uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:269
+#: ../gedit/gedit-io-error-info-bar.c:268
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "\"%s\" ei ole tavallinen tiedosto."
 
-#: ../gedit/gedit-io-error-info-bar.c:274
+#: ../gedit/gedit-io-error-info-bar.c:273
 msgid "Connection timed out. Please try again."
 msgstr "Yhteys aikakatkaistiin, yritä uudestaan."
 
-#: ../gedit/gedit-io-error-info-bar.c:307
+#: ../gedit/gedit-io-error-info-bar.c:306
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Odottamaton virhe: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:343
+#: ../gedit/gedit-io-error-info-bar.c:342
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "Haluttua tiedostoa ei löydy. Se on ehkä poistettu äskettäin."
 
-#: ../gedit/gedit-io-error-info-bar.c:353
+#: ../gedit/gedit-io-error-info-bar.c:352
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "Tiedoston ”%s” palauttaminen epäonnistui."
 
-#: ../gedit/gedit-io-error-info-bar.c:380
+#: ../gedit/gedit-io-error-info-bar.c:379
 msgid "Ch_aracter Encoding:"
 msgstr "_Merkistökoodaus:"
 
-#: ../gedit/gedit-io-error-info-bar.c:441
+#: ../gedit/gedit-io-error-info-bar.c:440
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "Sijainti “%s” ei ole juuri nyt tavoitettavissa."
 
-#: ../gedit/gedit-io-error-info-bar.c:456
+#: ../gedit/gedit-io-error-info-bar.c:455
 msgid "Your system is offline. Check your network."
 msgstr "Järjestelmässäsi ei ole verkkoyhteyttä. Tarkista verkon asetukset."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:499
-#: ../gedit/gedit-io-error-info-bar.c:768
+#: ../gedit/gedit-io-error-info-bar.c:764
 msgid "Edit Any_way"
 msgstr "_Muokkaa silti"
 
-#: ../gedit/gedit-io-error-info-bar.c:591
+#: ../gedit/gedit-io-error-info-bar.c:587
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1198,29 +1272,29 @@ msgstr ""
 "Seurattujen linkkien lukumäärä on rajoitettu, eikä todellista tiedostoa "
 "löytynyt tämän rajan puitteissa."
 
-#: ../gedit/gedit-io-error-info-bar.c:595
+#: ../gedit/gedit-io-error-info-bar.c:591
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Sinulla ei ole tarvittavia oikeuksia tiedoston avaamiseksi."
 
-#: ../gedit/gedit-io-error-info-bar.c:601
+#: ../gedit/gedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
 msgstr "Merkistökoodausta ei onnistuttu havaitsemaan."
 
-#: ../gedit/gedit-io-error-info-bar.c:602
-#: ../gedit/gedit-io-error-info-bar.c:626
+#: ../gedit/gedit-io-error-info-bar.c:598
+#: ../gedit/gedit-io-error-info-bar.c:622
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Tarkista, ettet yritä avata binääritiedostoa."
 
-#: ../gedit/gedit-io-error-info-bar.c:603
+#: ../gedit/gedit-io-error-info-bar.c:599
 msgid "Select a character encoding from the menu and try again."
 msgstr "Valitse merkistökoodaus valikosta ja koeta uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:609
+#: ../gedit/gedit-io-error-info-bar.c:605
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "Tiedostoa \"%s\" avatessa tapahtui virhe."
 
-#: ../gedit/gedit-io-error-info-bar.c:611
+#: ../gedit/gedit-io-error-info-bar.c:607
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1228,33 +1302,33 @@ msgstr ""
 "Avatussa tiedostossa on epäkelvollisia merkkejä. Jos muokkaat tiedostoa, se "
 "voi vioittua."
 
-#: ../gedit/gedit-io-error-info-bar.c:614
+#: ../gedit/gedit-io-error-info-bar.c:610
 msgid "You can also choose another character encoding and try again."
 msgstr "Voit valita toisen merkistökoodauksen ja koettaa uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:619
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr ""
 "Tiedoston \"%s\" avaaminen käyttäen merkistökoodausta \"%s\" ei onnistunut."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
-#: ../gedit/gedit-io-error-info-bar.c:702
+#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:698
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Valitse toinen merkistökoodaus valikosta ja koeta uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:639
+#: ../gedit/gedit-io-error-info-bar.c:635
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "Tiedoston ”%s” avaaminen epäonnistui."
 
-#: ../gedit/gedit-io-error-info-bar.c:697
+#: ../gedit/gedit-io-error-info-bar.c:693
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr ""
 "Tiedoston \"%s\" tallennus käyttäen merkistökoodausta \"%s\" ei onnistunut."
 
-#: ../gedit/gedit-io-error-info-bar.c:700
+#: ../gedit/gedit-io-error-info-bar.c:696
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1264,59 +1338,59 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:773
-msgid "D_on't Edit"
+#: ../gedit/gedit-io-error-info-bar.c:769
+msgid "D_on’t Edit"
 msgstr "Älä mu_okkaa"
 
-#: ../gedit/gedit-io-error-info-bar.c:783
+#: ../gedit/gedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Tiedosto \"%s\" on jo auki toisessa ikkunassa."
 
-#: ../gedit/gedit-io-error-info-bar.c:797
+#: ../gedit/gedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
 msgstr "Haluatko muokata tiedostoa silti?"
 
-#: ../gedit/gedit-io-error-info-bar.c:853
-#: ../gedit/gedit-io-error-info-bar.c:943
-#: ../gedit/gedit-io-error-info-bar.c:1235
+#: ../gedit/gedit-io-error-info-bar.c:849
+#: ../gedit/gedit-io-error-info-bar.c:939
+#: ../gedit/gedit-io-error-info-bar.c:1229
 msgid "S_ave Anyway"
 msgstr "T_allenna joka tapauksessa"
 
-#: ../gedit/gedit-io-error-info-bar.c:856
-#: ../gedit/gedit-io-error-info-bar.c:946
-#: ../gedit/gedit-io-error-info-bar.c:1238
-msgid "D_on't Save"
-msgstr "Älä Ta_llenna"
+#: ../gedit/gedit-io-error-info-bar.c:852
+#: ../gedit/gedit-io-error-info-bar.c:942
+#: ../gedit/gedit-io-error-info-bar.c:1232
+msgid "D_on’t Save"
+msgstr "Älä ta_llenna"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:870
+#: ../gedit/gedit-io-error-info-bar.c:866
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "Tiedostoa ”%s” on muokattu sen avaamisen jälkeen."
 
-#: ../gedit/gedit-io-error-info-bar.c:885
+#: ../gedit/gedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Jos tallennat tiedoston, kaikki ulkopuoliset muutokset hukataan. "
 "Tallennetaanko silti?"
 
-#: ../gedit/gedit-io-error-info-bar.c:965
+#: ../gedit/gedit-io-error-info-bar.c:961
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "Varmuuskopiotiedostoa ei voitu luoda tallennettaessa tiedostoa \"%s\""
 
-#: ../gedit/gedit-io-error-info-bar.c:970
+#: ../gedit/gedit-io-error-info-bar.c:966
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
 "Väliaikaista varmuuskopiotiedostoa ei voitu luoda tallennettaessa tiedostoa "
 "\"%s\""
 
-#: ../gedit/gedit-io-error-info-bar.c:987
+#: ../gedit/gedit-io-error-info-bar.c:983
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1328,7 +1402,7 @@ msgstr ""
 "tiedostosta. Tallennetaanko tästä huolimatta?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1047
+#: ../gedit/gedit-io-error-info-bar.c:1043
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1337,7 +1411,7 @@ msgstr ""
 "”%s:”-sijainteja ei voi käsitellä kirjoitustilassa. Tarkista, että annoit "
 "sijainnin oikein ja yritä uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1055
+#: ../gedit/gedit-io-error-info-bar.c:1051
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1345,7 +1419,7 @@ msgstr ""
 "Tällaista sijaintia ei voi käsitellä kirjoitustilassa. Tarkista, että annoit "
 "sijainnin oikein ja yritä uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1064
+#: ../gedit/gedit-io-error-info-bar.c:1060
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1354,7 +1428,7 @@ msgstr ""
 "\"%s\" ei ole kelvollinen sijainti. Tarkista, että kirjoitit sijainnin "
 "oikein ja yritä uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1071
+#: ../gedit/gedit-io-error-info-bar.c:1067
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1362,7 +1436,7 @@ msgstr ""
 "Oikeutesi eivät riitä tiedoston tallentamiseen. Tarkista, että annoit "
 "sijainnin oikein ja yritä uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1077
+#: ../gedit/gedit-io-error-info-bar.c:1073
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1370,7 +1444,7 @@ msgstr ""
 "Levytila ei riitä tiedoston tallentamiseksi. Vapauta levytilaa ja yritä "
 "uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1078
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1378,11 +1452,11 @@ msgstr ""
 "Yrität tallentaa tiedostoa levylle, jolta voi vain lukea. Tarkista, että "
 "kirjoitit osoitteen oikein ja yritä uudelleen."
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../gedit/gedit-io-error-info-bar.c:1084
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Samanniminen tiedosto on jo olemassa. Käytä toista nimeä."
 
-#: ../gedit/gedit-io-error-info-bar.c:1093
+#: ../gedit/gedit-io-error-info-bar.c:1089
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1390,7 +1464,7 @@ msgstr ""
 "Levy, jolle yrität tallentaa tiedostoa, rajoittaa tiedostonimien pituutta. "
 "Valitse lyhyempi nimi."
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../gedit/gedit-io-error-info-bar.c:1100
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1400,37 +1474,33 @@ msgstr ""
 "tallentaa pienempi tiedosto tai tallenna se levylle, jolla ei ole tätä "
 "rajoitusta."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1117
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Tiedoston ”%s” tallentaminen epäonnistui."
 
-#: ../gedit/gedit-io-error-info-bar.c:1161
+#: ../gedit/gedit-io-error-info-bar.c:1157
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "Tiedosto %s on muuttunut levyllä."
 
-#: ../gedit/gedit-io-error-info-bar.c:1172
+#: ../gedit/gedit-io-error-info-bar.c:1168
 msgid "Drop Changes and _Reload"
 msgstr "_Hylkää muutokset ja lataa uudelleen"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182
+#: ../gedit/gedit-io-error-info-bar.c:1178
 #: ../gedit/resources/gtk/menus-common.ui.h:21
 #: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 msgid "_Reload"
 msgstr "_Lataa uudelleen"
 
-#: ../gedit/gedit-io-error-info-bar.c:1187
-msgid "_Ignore"
-msgstr "_Ohita"
-
-#: ../gedit/gedit-io-error-info-bar.c:1248
+#: ../gedit/gedit-io-error-info-bar.c:1242
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "Virheellisiä merkkejä havaittu tallennettaessa tiedostoa \"%s\""
 
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../gedit/gedit-io-error-info-bar.c:1258
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr "Jos jatkat tallettamista, niin tämä tiedosto voi vioittua."
@@ -1446,9 +1516,9 @@ msgstr "_Käytä järjestelmän tasalevyistä fonttia (%s)"
 
 #: ../gedit/gedit-preferences-dialog.c:601
 #, c-format
-msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
-"Kansiota ”%s” luominen epäonnistui, g_mkdir_with_parents() epäonnistui: %s"
+"Kansiota “%s” luominen epäonnistui, g_mkdir_with_parents() epäonnistui: %s"
 
 #: ../gedit/gedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
@@ -1468,11 +1538,11 @@ msgstr "Värimallitiedostot"
 
 #: ../gedit/gedit-preferences-dialog.c:861
 #, c-format
-msgid "Could not remove color scheme \"%s\"."
-msgstr "Värimallin ”%s” poisto epäonnistui"
+msgid "Could not remove color scheme “%s”."
+msgstr "Värimallin “%s” poisto epäonnistui"
 
 #: ../gedit/gedit-print-job.c:227
-msgid "Preparing..."
+msgid "Preparing…"
 msgstr "Valmistellaan…"
 
 #: ../gedit/gedit-print-job.c:539
@@ -1480,14 +1550,17 @@ msgstr "Valmistellaan…"
 msgid "File: %s"
 msgstr "Tiedosto: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Sivu %N / %Q"
 
 #: ../gedit/gedit-print-job.c:626
 #, c-format
-msgid "Rendering page %d of %d..."
-msgstr "Muodostetaan sivua %d/%d..."
+msgid "Rendering page %d of %d…"
+msgstr "Muodostetaan sivua %d/%d…"
 
 #: ../gedit/gedit-print-preview.c:653
 #, c-format
@@ -1594,8 +1667,8 @@ msgstr "Käyttöliittymätiedoston %s avaus epäonnistui. Virhe: %s"
 
 #: ../gedit/gedit-utils.c:921
 #, c-format
-msgid "Unable to find the object '%s' inside file %s."
-msgstr "Kohdetta ”%s” ei löydy tiedostosta %s."
+msgid "Unable to find the object “%s” inside file %s."
+msgstr "Kohdetta “%s” ei löydy tiedostosta %s."
 
 #. Translators: '/ on <remote-share>'
 #: ../gedit/gedit-utils.c:1159
@@ -1806,8 +1879,8 @@ msgid "_Paste"
 msgstr "_Liitä"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Poista"
@@ -1827,6 +1900,7 @@ msgid "_Preferences"
 msgstr "_Asetukset"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:34
+#: ../gedit/resources/gtk/menus.ui.h:16
 msgid "_View"
 msgstr "_Näytä"
 
@@ -1887,6 +1961,7 @@ msgid "Go to _Line…"
 msgstr "S_iirry riville…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:46
+#: ../gedit/resources/gtk/menus.ui.h:20
 msgid "_Tools"
 msgstr "_Työkalut"
 
@@ -1962,13 +2037,11 @@ msgstr "Etsi _ja korvaa…"
 msgid "_Go to Line…"
 msgstr "S_iirry riville…"
 
-#: ../gedit/resources/gtk/menus.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Näytä"
 
-#: ../gedit/resources/gtk/menus.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 msgid "Tools"
 msgstr "Työkalut"
@@ -2006,8 +2079,8 @@ msgid "_Select"
 msgstr "_Valitse"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
-msgid "Search highlight mode..."
-msgstr "Etsi korostustilaa..."
+msgid "Search highlight mode…"
+msgstr "Etsi korostustilaa…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
 msgid "No results"
@@ -2356,7 +2429,7 @@ msgstr "Vaihda edelliseen asiakirjaan"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
 msgctxt "shortcut window"
-msgid "Switch to the first - ninth document"
+msgid "Switch to the first — ninth document"
 msgstr "Vaihda asiakirjojen 1-9 välillä"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
@@ -2684,8 +2757,8 @@ msgid "Build"
 msgstr "Käännös"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
-msgid "Run \"make\" in the document directory"
-msgstr "Suorita ”make” asiakirjahakemistossa"
+msgid "Run “make” in the document directory"
+msgstr "Suorita “make” asiakirjahakemistossa"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
@@ -2735,9 +2808,13 @@ msgid "Whether to use the system font"
 msgstr "Käytetäänkö järjestelmän fonttia"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
+#, fuzzy
+#| msgid ""
+#| "If true, the external tools will use the desktop-global standard font if "
+#| "it's monospace (and the most similar font it can come up with otherwise)."
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
-"it's monospace (and the most similar font it can come up with otherwise)."
+"it’s monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "Jos tosi, ulkoiset työkalut käyttävät työpöydänlaajuista vakiofonttia mikäli "
 "kyseessä on tasalevyinen fontti (ja kaikkein vastaavanlaisinta fonttia "
@@ -2745,67 +2822,70 @@ msgstr ""
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
-msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+#, fuzzy
+#| msgid ""
+#| "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr "Pango-fontin nimi. Esimerkiksi ”Sans 12” tai ”Monospace Bold 14”."
 
-#: ../plugins/externaltools/tools/appactivatable.py:126
-msgid "Manage _External Tools..."
+#: ../plugins/externaltools/tools/appactivatable.py:133
+msgid "Manage _External Tools…"
 msgstr "Hallinnoi _ulkoisia työkaluja…"
 
-#: ../plugins/externaltools/tools/appactivatable.py:131
+#: ../plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
 msgstr "Ulkoiset _työkalut"
 
-#: ../plugins/externaltools/tools/capture.py:99
+#: ../plugins/externaltools/tools/capture.py:106
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Komennon suoritus epäonnistui: %s"
 
-#: ../plugins/externaltools/tools/functions.py:184
+#: ../plugins/externaltools/tools/functions.py:191
 msgid "You must be inside a word to run this command"
 msgstr "Kohdistimen täytyy olla sanan kohdalla jotta komento voidaan suorittaa"
 
-#: ../plugins/externaltools/tools/functions.py:302
+#: ../plugins/externaltools/tools/functions.py:309
 msgid "Running tool:"
 msgstr "Suoritetaan työkalua:"
 
-#: ../plugins/externaltools/tools/functions.py:333
+#: ../plugins/externaltools/tools/functions.py:340
 msgid "Done."
 msgstr "Valmis."
 
-#: ../plugins/externaltools/tools/functions.py:335
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Exited"
 msgstr "Päättyi"
 
-#: ../plugins/externaltools/tools/manager.py:106
+#: ../plugins/externaltools/tools/manager.py:113
 msgid "All languages"
 msgstr "Kaikki kielet"
 
-#: ../plugins/externaltools/tools/manager.py:422
-#: ../plugins/externaltools/tools/manager.py:426
-#: ../plugins/externaltools/tools/manager.py:765
+#: ../plugins/externaltools/tools/manager.py:429
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:772
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "Kaikki kielet"
 
-#: ../plugins/externaltools/tools/manager.py:539
+#: ../plugins/externaltools/tools/manager.py:546
 msgid "New tool"
 msgstr "Uusi työkalu"
 
-#: ../plugins/externaltools/tools/manager.py:676
+#: ../plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Tämä pikanäppäin on jo käytössä toiminnolle %s"
 
-#: ../plugins/externaltools/tools/manager.py:720
+#: ../plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Syötä uusi pikanäppäin tai tyhjennä arvo Backspacella"
 
-#: ../plugins/externaltools/tools/manager.py:722
+#: ../plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator"
 msgstr "Syötä uusi pikanäppäin"
 
-#: ../plugins/externaltools/tools/outputpanel.py:122
+#: ../plugins/externaltools/tools/outputpanel.py:129
 msgid "Stopped."
 msgstr "Pysäytetty."
 
@@ -2930,7 +3010,7 @@ msgstr "Tulosterivit:"
 msgid "_Applicability:"
 msgstr "_Kohteet:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:119
+#: ../plugins/externaltools/tools/windowactivatable.py:126
 msgid "Tool Output"
 msgstr "Työkalun tuloste"
 
@@ -2987,7 +3067,7 @@ msgstr "Virhe ladattaessa kansiota"
 msgid "An error occurred"
 msgstr "Tapahtui virhe"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2995,25 +3075,25 @@ msgstr ""
 "Tiedostoa ei voi siirtää roskakoriin.\n"
 "Haluatko poistaa sen pysyvästi?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
-msgid "The file \"%s\" cannot be moved to the trash."
-msgstr "Tiedostoa ”%s” ei voi siirtää roskakoriin."
+msgid "The file “%s” cannot be moved to the trash."
+msgstr "Tiedostoa “%s” ei voi siirtää roskakoriin."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Valittuja tiedostoja ei voi siirtää roskakoriin."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "Haluatko varmasti poistaa pysyvästi kohteen ”%s”?"
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "Haluatko varmasti poistaa pysyvästi kohteen “%s”?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Haluatko varmasti poistaa valitut tiedostot pysyvästi?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Jos poistat kohteen, se menetetään pysyvästi."
 
@@ -3076,8 +3156,8 @@ msgstr "Taltion liittäminen epäonnistui: %s"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
 #, c-format
-msgid "Error when loading '%s': No such directory"
-msgstr "Virhe ladattaessa kohdetta '%s': Kansiota ei ole olemassa"
+msgid "Error when loading “%s”: No such directory"
+msgstr "Virhe ladattaessa kohdetta “%s” Kansiota ei ole olemassa"
 
 #. ex:set ts=8 noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
@@ -3130,9 +3210,15 @@ msgid "Set Location to First Document"
 msgstr "Aseta sijainti ensimmäiselle asiakirjalle"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
+#, fuzzy
+#| msgid ""
+#| "If TRUE the file browser plugin will view the directory of the first "
+#| "opened document given that the file browser hasn't been used yet. (Thus "
+#| "this generally applies to opening a document from the command line or "
+#| "opening it with Nautilus, etc.)"
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
-"document given that the file browser hasn't been used yet. (Thus this "
+"document given that the file browser hasn’t been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
 "with Nautilus, etc.)"
 msgstr ""
@@ -3188,8 +3274,8 @@ msgid "New F_ile"
 msgstr "Uusi _tiedosto"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
-msgid "_Rename..."
-msgstr "_Nimeä uudelleen..."
+msgid "_Rename…"
+msgstr "_Nimeä uudelleen…"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
@@ -3256,8 +3342,12 @@ msgid "The error color text"
 msgstr "Virheen väri"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
+#, fuzzy
+#| msgid ""
+#| "If true, the terminal will use the desktop-global standard font if it's "
+#| "monospace (and the most similar font it can come up with otherwise)."
 msgid ""
-"If true, the terminal will use the desktop-global standard font if it's "
+"If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "Jos tosi, pääte käyttää työpöydänlaajuista vakiofonttia jos se on "
@@ -3272,7 +3362,7 @@ msgid "_Error color:"
 msgstr "_Virheen väri:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Python-konsoli"
@@ -3281,13 +3371,13 @@ msgstr "Python-konsoli"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktiivinen Python-konsoli alapaneelissa"
 
-#: ../plugins/quickopen/quickopen/__init__.py:40
-msgid "Quick Open..."
-msgstr "Pika-avaus..."
+#: ../plugins/quickopen/quickopen/__init__.py:47
+msgid "Quick Open…"
+msgstr "Pika-avaus…"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:33
+#: ../plugins/quickopen/quickopen/popup.py:40
 msgid "Quick Open"
 msgstr "Pika-avaus"
 
@@ -3295,93 +3385,93 @@ msgstr "Pika-avaus"
 msgid "Quickly open files"
 msgstr "Avaa tiedostoja nopeasti"
 
-#: ../plugins/quickopen/quickopen/popup.py:83
-msgid "Type to search..."
+#: ../plugins/quickopen/quickopen/popup.py:90
+msgid "Type to search…"
 msgstr "Hae kirjoittamalla…"
 
-#: ../plugins/snippets/snippets/appactivatable.py:81
-msgid "Manage _Snippets..."
-msgstr "Hallitse _tekstileikkeitä…"
+#: ../plugins/snippets/snippets/appactivatable.py:88
+msgid "Manage _Snippets…"
+msgstr "Hallitse tekstileikkeit_ä…"
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:56
-#: ../plugins/snippets/snippets/document.py:145
-#: ../plugins/snippets/snippets/document.py:659
+#: ../plugins/snippets/snippets/document.py:64
+#: ../plugins/snippets/snippets/document.py:153
+#: ../plugins/snippets/snippets/document.py:667
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Tekstileikkeet"
 
-#: ../plugins/snippets/snippets/exporter.py:80
+#: ../plugins/snippets/snippets/exporter.py:88
 #, python-format
-msgid "The archive \"%s\" could not be created"
-msgstr "Arkiston ”%s” luonti epäonnistui"
+msgid "The archive “%s” could not be created"
+msgstr "Arkiston “%s” luonti epäonnistui"
 
-#: ../plugins/snippets/snippets/exporter.py:97
+#: ../plugins/snippets/snippets/exporter.py:105
 #, python-format
-msgid "Target directory \"%s\" does not exist"
-msgstr "Kohdehakemistoa ”%s” ei ole olemassa"
+msgid "Target directory “%s” does not exist"
+msgstr "Kohdehakemistoa “%s” ei ole olemassa"
 
-#: ../plugins/snippets/snippets/exporter.py:100
+#: ../plugins/snippets/snippets/exporter.py:108
 #, python-format
-msgid "Target directory \"%s\" is not a valid directory"
-msgstr "Kohdehakemisto ”%s” ei ole kelvollinen hakemisto"
+msgid "Target directory “%s” is not a valid directory"
+msgstr "Kohdehakemisto “%s” ei ole kelvollinen hakemisto"
 
-#: ../plugins/snippets/snippets/importer.py:47
-#: ../plugins/snippets/snippets/importer.py:108
+#: ../plugins/snippets/snippets/importer.py:55
+#: ../plugins/snippets/snippets/importer.py:116
 #, python-format
-msgid "File \"%s\" does not exist"
-msgstr "Tiedostoa ”%s” ei ole olemassa"
+msgid "File “%s” does not exist"
+msgstr "Tiedostoa “%s” ei ole olemassa"
 
-#: ../plugins/snippets/snippets/importer.py:50
+#: ../plugins/snippets/snippets/importer.py:58
 #, python-format
-msgid "File \"%s\" is not a valid snippets file"
-msgstr "Tiedosto ”%s” ei ole kelvollinen tekstileiketiedosto"
+msgid "File “%s” is not a valid snippets file"
+msgstr "Tiedosto “%s” ei ole kelvollinen tekstileiketiedosto"
 
-#: ../plugins/snippets/snippets/importer.py:67
+#: ../plugins/snippets/snippets/importer.py:75
 #, python-format
-msgid "Imported file \"%s\" is not a valid snippets file"
-msgstr "Tuotu tiedosto ”%s” ei ole kelvollinen tekstileiketiedosto"
+msgid "Imported file “%s” is not a valid snippets file"
+msgstr "Tuotu tiedosto “%s” ei ole kelvollinen tekstileiketiedosto"
 
-#: ../plugins/snippets/snippets/importer.py:77
+#: ../plugins/snippets/snippets/importer.py:85
 #, python-format
-msgid "The archive \"%s\" could not be extracted"
-msgstr "Arkiston ”%s” purkaminen epäonnistui"
+msgid "The archive “%s” could not be extracted"
+msgstr "Arkiston “%s” purkaminen epäonnistui"
 
-#: ../plugins/snippets/snippets/importer.py:95
+#: ../plugins/snippets/snippets/importer.py:103
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "Seuraavien tiedostojen tuonti epäonnistui: %s"
 
-#: ../plugins/snippets/snippets/importer.py:111
-#: ../plugins/snippets/snippets/importer.py:124
+#: ../plugins/snippets/snippets/importer.py:119
+#: ../plugins/snippets/snippets/importer.py:132
 #, python-format
-msgid "File \"%s\" is not a valid snippets archive"
-msgstr "Tiedosto ”%s” ei ole kelvollinen tekstileikearkisto"
+msgid "File “%s” is not a valid snippets archive"
+msgstr "Tiedosto “%s” ei ole kelvollinen tekstileikearkisto"
 
-#: ../plugins/snippets/snippets/manager.py:42
+#: ../plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
 msgstr "Tekstileikearkisto"
 
-#: ../plugins/snippets/snippets/manager.py:66
-msgid "Add a new snippet..."
-msgstr "Lisää uusi tekstileike..."
+#: ../plugins/snippets/snippets/manager.py:74
+msgid "Add a new snippet…"
+msgstr "Lisää uusi tekstileike…"
 
-#: ../plugins/snippets/snippets/manager.py:116
+#: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
 msgstr "Kaikkialla"
 
-#: ../plugins/snippets/snippets/manager.py:406
+#: ../plugins/snippets/snippets/manager.py:414
 msgid "Revert selected snippet"
 msgstr "Kumoa valittu tekstileike"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:417
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "Poista valittu tekstileike"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:662
+#: ../plugins/snippets/snippets/manager.py:670
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3392,88 +3482,88 @@ msgstr ""
 "kuten: {, [, jne."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:669
+#: ../plugins/snippets/snippets/manager.py:677
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr ""
 "Yksi sana, joka aktivoi tekstileikkeen Tab-näppäimen painamisen jälkeen"
 
-#: ../plugins/snippets/snippets/manager.py:758
+#: ../plugins/snippets/snippets/manager.py:766
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Seuraava virhe tapahtui tuotaessa tekstileikkeitä: %s"
 
-#: ../plugins/snippets/snippets/manager.py:765
+#: ../plugins/snippets/snippets/manager.py:773
 msgid "Import successfully completed"
 msgstr "Tuonti valmistui onnistuneesti"
 
-#: ../plugins/snippets/snippets/manager.py:779
+#: ../plugins/snippets/snippets/manager.py:787
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "Tuo tekstileikkeitä"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All supported archives"
 msgstr "Kaikki tuetut arkistot"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:793
+#: ../plugins/snippets/snippets/manager.py:879
+#: ../plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
 msgstr "Gzip-pakattu arkisto"
 
-#: ../plugins/snippets/snippets/manager.py:786
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:935
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
 msgstr "Bzip2-pakattu arkisto"
 
-#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
 msgstr "Yksi tekstileiketiedosto"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "All files"
 msgstr "Kaikki tiedostot"
 
-#: ../plugins/snippets/snippets/manager.py:800
+#: ../plugins/snippets/snippets/manager.py:808
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Seuraava virhe tapahtui vietäessä tekstileikkeitä: %s"
 
-#: ../plugins/snippets/snippets/manager.py:804
+#: ../plugins/snippets/snippets/manager.py:812
 msgid "Export successfully completed"
 msgstr "Vienti valmistui onnistuneesti"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:844
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:852
+#: ../plugins/snippets/snippets/manager.py:919
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "Haluatko viedä myös valitut <b>järjestelmän</b> tekstileikkeet?"
 
-#: ../plugins/snippets/snippets/manager.py:859
-#: ../plugins/snippets/snippets/manager.py:929
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "There are no snippets selected to be exported"
 msgstr "Tekstileikkeitä ei ole valittu vietäväksi"
 
-#: ../plugins/snippets/snippets/manager.py:864
-#: ../plugins/snippets/snippets/manager.py:902
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:910
 msgid "Export snippets"
 msgstr "Vie tekstileikkeitä"
 
-#: ../plugins/snippets/snippets/manager.py:1041
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Syötä uusi pikanäppäin tai tyhjennä arvo Backspacella"
 
-#: ../plugins/snippets/snippets/manager.py:1043
+#: ../plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
 msgstr "Syötä uusi pikanäppäin"
 
-#: ../plugins/snippets/snippets/placeholder.py:597
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3482,7 +3572,7 @@ msgstr ""
 "Python-komennon (%s) suoritus ylitti suurimman sallitun ajan, joten suoritus "
 "keskeytettiin."
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: ../plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Python-komennon (%s) suoritus epäonnistui: %s"
@@ -3545,7 +3635,7 @@ msgid "_Drop targets:"
 msgstr "_Pudotuskohteet:"
 
 #: ../plugins/sort/gedit-sort-plugin.c:243
-msgid "S_ort..."
+msgid "S_ort…"
 msgstr "_Lajittele…"
 
 #. ex:set ts=8 noet:
@@ -3579,11 +3669,11 @@ msgid "Sorts a document or selected text."
 msgstr "Lajittelee asiakirjan tai valitun tekstin."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
-msgid "_Check Spelling..."
+msgid "_Check Spelling…"
 msgstr "_Tarkista oikeinkirjoitus…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:147
-msgid "Set _Language..."
+msgid "Set _Language…"
 msgstr "Aseta _kieli…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:151
@@ -3599,11 +3689,11 @@ msgstr "Oikoluku"
 msgid "Checks the spelling of the current document."
 msgstr "Tarkista aktiivisen asiakirjan oikeinkirjoitus."
 
-#: ../plugins/time/gedit-time-plugin.c:270
-msgid "In_sert Date and Time..."
-msgstr "Li_sää päiväys/aika…"
+#: ../plugins/time/gedit-time-plugin.c:265
+msgid "In_sert Date and Time…"
+msgstr "Lisää p_äiväys ja aika…"
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Käytettävissä olevat muodot"
 
@@ -3672,7 +3762,7 @@ msgid "Configure date/time plugin"
 msgstr "Muokkaa päiväys/aika -liitännäisen asetuksia"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
-msgid "When inserting date/time..."
+msgid "When inserting date/time…"
 msgstr "Kun lisätään päivämäärää/kellonaikaa…"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
@@ -3686,6 +3776,24 @@ msgstr "Lisää päiväys/aika"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Lisää päiväys ja aika kohdistimen kohdalle."
+
+#~ msgid "_Ignore"
+#~ msgstr "_Ohita"
+
+#~ msgid "Manage _External Tools..."
+#~ msgstr "Hallinnoi _ulkoisia työkaluja…"
+
+#~ msgid "Quick Open..."
+#~ msgstr "Pika-avaus..."
+
+#~ msgid "Manage _Snippets..."
+#~ msgstr "Hallitse _tekstileikkeitä…"
+
+#~ msgid "Set _Language..."
+#~ msgstr "Aseta _kieli…"
+
+#~ msgid "In_sert Date and Time..."
+#~ msgstr "Li_sää päiväys/aika…"
 
 #~ msgid "Open a New Window"
 #~ msgstr "Avaa uusi ikkuna"
@@ -3752,9 +3860,6 @@ msgstr "Lisää päiväys ja aika kohdistimen kohdalle."
 #~ msgctxt "language"
 #~ msgid "Default"
 #~ msgstr "Oletus"
-
-#~ msgid "Set Language"
-#~ msgstr "Aseta kieli"
 
 #~ msgid "Select the _language of the current document."
 #~ msgstr "Valitse _aktiivisen asiakirjan kieli."
