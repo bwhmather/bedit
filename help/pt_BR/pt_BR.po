@@ -15,18 +15,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-help\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gedit&k"
-"eywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-09-15 08:14+0000\n"
-"PO-Revision-Date: 2017-09-15 07:06-0200\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gedit&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2018-02-05 22:12+0000\n"
+"PO-Revision-Date: 2018-02-06 16:21-0300\n"
+"Last-Translator: Isaac Ferreira Filho <isaacmob@riseup.net>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 1.0.0-beta1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Project-Style: gnome\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -50,19 +50,19 @@ msgstr "Altere as cores de texto e de plano de fundo no gedit."
 
 #. (itstool) path: credit/name
 #: C/gedit-change-color-scheme.page:13 C/gedit-change-default-font.page:10
-#: C/gedit-close-file.page:10 C/gedit-create-new-file.page:12
+#: C/gedit-close-file.page:11 C/gedit-create-new-file.page:12
 #: C/gedit-edit-as-root.page:10 C/gedit-files-basic.page:10
-#: C/gedit-full-screen.page:12 C/gedit-open-files-from-sidepane.page:11
+#: C/gedit-full-screen.page:13 C/gedit-open-files-from-sidepane.page:11
 #: C/gedit-open-files.page:17 C/gedit-open-on-server.page:10
-#: C/gedit-open-recent.page:10 C/gedit-plugin-guide.page:10
+#: C/gedit-open-recent.page:11 C/gedit-plugin-guide.page:13
 #: C/gedit-plugins-change-case.page:14 C/gedit-plugins-doc-stats.page:14
-#: C/gedit-plugins-external-tools.page:15 C/gedit-plugins-file-browser.page:14
+#: C/gedit-plugins-external-tools.page:15 C/gedit-plugins-file-browser.page:15
 #: C/gedit-plugins-insert-date-time.page:14 C/gedit-plugins-install.page:8
-#: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:9
-#: C/gedit-plugins-quick-open.page:10 C/gedit-plugins-snippets.page:9
-#: C/gedit-plugins-sort.page:13 C/gedit-printing.page:10
-#: C/gedit-quickstart.page:12 C/gedit-replace.page:13 C/gedit-save-file.page:13
-#: C/gedit-search.page:11 C/gedit-shortcut-keys.page:14
+#: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:10
+#: C/gedit-plugins-quick-open.page:11 C/gedit-plugins-snippets.page:9
+#: C/gedit-plugins-sort.page:14 C/gedit-printing.page:10
+#: C/gedit-quickstart.page:12 C/gedit-replace.page:14 C/gedit-save-file.page:13
+#: C/gedit-search.page:12 C/gedit-shortcut-keys.page:14
 #: C/gedit-spellcheck.page:12 C/gedit-syntax-highlighting.page:10
 #: C/gedit-tabs-moving.page:13 C/gedit-tabs.page:14
 #: C/gedit-undo-recent-action.page:12 C/index.page:14
@@ -81,7 +81,7 @@ msgid "2015"
 msgstr "2015"
 
 #. (itstool) path: credit/name
-#: C/gedit-change-color-scheme.page:22 C/gedit-replace.page:25
+#: C/gedit-change-color-scheme.page:22 C/gedit-replace.page:26
 #: C/gedit-shortcut-keys.page:39
 msgid "Ekaterina Gerasimova"
 msgstr "Ekaterina Gerasimova"
@@ -231,25 +231,25 @@ msgid "Exit from the file you are using."
 msgstr "Saia do arquivo que você está usando."
 
 #. (itstool) path: page/title
-#: C/gedit-close-file.page:17
+#: C/gedit-close-file.page:18
 msgid "Close a file"
 msgstr "Fechando um arquivo"
 
 #. (itstool) path: page/p
-#: C/gedit-close-file.page:19
+#: C/gedit-close-file.page:20
 msgid ""
-"To close a file in <app>gedit</app>, select <guiseq><gui>File</gui> "
-"<gui>Close</gui></guiseq>. Alternately, you can click the small \"X\" that "
-"appears on the right-side of the file's tab, or press <keyseq><key>Ctrl</"
-"key> <key>W</key></keyseq>."
+"To close a file in <app>gedit</app>, select <gui style=\"menuitem\">Close</"
+"gui>. Alternately, you can click the small \"X\" that appears on the right-"
+"side of the file's tab, or press <keyseq><key>Ctrl</key> <key>W</key></"
+"keyseq>."
 msgstr ""
-"Para fechar um arquivo no <app>gedit</app>, selecione <guiseq><gui>Arquivo</"
-"gui><gui>Fechar</gui></guiseq>. Alternativamente, você pode clicar o pequeno "
-"\"X\" que aparece no canto direito da aba do arquivo ou pressionar "
-"<keyseq><key>Ctrl</key><key>W</key></keyseq>."
+"Para fechar um arquivo no <app>gedit</app>, selecione <gui style=\"menuitem"
+"\">Fechar</gui>. Alternativamente, você pode clicar o pequeno \"X\" que "
+"aparece no canto direito da aba do arquivo ou pressionar <keyseq><key>Ctrl</"
+"key><key>W</key></keyseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-close-file.page:23
+#: C/gedit-close-file.page:24
 msgid ""
 "Any one of these actions will close a file in <app>gedit</app>. If your file "
 "contains changes that have not been saved, <app>gedit</app> will prompt you "
@@ -265,9 +265,9 @@ msgid "Open a new file for editing."
 msgstr "Abra um novo arquivo para edição."
 
 #. (itstool) path: credit/name
-#: C/gedit-create-new-file.page:16 C/gedit-full-screen.page:16
-#: C/gedit-open-files.page:21 C/gedit-plugins-quick-open.page:14
-#: C/gedit-replace.page:29 C/gedit-save-file.page:21 C/gedit-search.page:23
+#: C/gedit-create-new-file.page:16 C/gedit-full-screen.page:17
+#: C/gedit-open-files.page:21 C/gedit-plugins-quick-open.page:15
+#: C/gedit-replace.page:30 C/gedit-save-file.page:21 C/gedit-search.page:24
 #: C/gedit-tabs.page:31 C/gedit-undo-recent-action.page:24
 msgid "Shobha Tyagi"
 msgstr "Shobha Tyagi"
@@ -402,12 +402,12 @@ msgid "Set gedit to use the entire screen."
 msgstr "Configure o gedit para usar a tela inteira."
 
 #. (itstool) path: page/title
-#: C/gedit-full-screen.page:22
+#: C/gedit-full-screen.page:23
 msgid "Use fullscreen mode"
 msgstr "Usando o modo tela cheia"
 
 #. (itstool) path: page/p
-#: C/gedit-full-screen.page:24
+#: C/gedit-full-screen.page:25
 msgid ""
 "When working with a large document, you may find it helpful to work in "
 "<app>gedit's</app> fullscreen mode. Using fullscreen mode will hide the "
@@ -422,12 +422,12 @@ msgstr ""
 "lhe ter mais foco em suas tarefas."
 
 #. (itstool) path: section/title
-#: C/gedit-full-screen.page:31
+#: C/gedit-full-screen.page:32
 msgid "Turn on fullscreen mode"
 msgstr "Ativando o modo de tela cheia"
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:32
+#: C/gedit-full-screen.page:33
 msgid ""
 "To turn on fullscreen mode, press <key>F11</key>. <app>gedit's</app> menu, "
 "title, and tab-bars will hide, and you will only be presented with the text "
@@ -438,7 +438,7 @@ msgstr ""
 "apresentado a você o texto de seu arquivo atual."
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:35
+#: C/gedit-full-screen.page:36
 msgid ""
 "If you need to perform an action from the <app>gedit</app> menu while "
 "working in fullscreen mode, move your mouse pointer to the top of the "
@@ -451,7 +451,7 @@ msgstr ""
 "ação desejada."
 
 #. (itstool) path: note/p
-#: C/gedit-full-screen.page:41
+#: C/gedit-full-screen.page:42
 msgid ""
 "To switch between open tabs while in fullscreen mode, press either "
 "<keyseq><key>Ctrl</key><key>Alt</key><key>PgUp</key></keyseq> or "
@@ -462,12 +462,12 @@ msgstr ""
 "<keyseq><key> Ctrl</key><key>Alt</key><key>PgDn</key></keyseq>."
 
 #. (itstool) path: section/title
-#: C/gedit-full-screen.page:49
+#: C/gedit-full-screen.page:50
 msgid "Turn off fullscreen mode"
 msgstr "Desativando o modo de tela cheia"
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:50
+#: C/gedit-full-screen.page:51
 msgid ""
 "To turn off fullscreen mode and return to the standard <app>gedit</app> "
 "window, press <key>F11</key>."
@@ -476,15 +476,15 @@ msgstr ""
 "<app>gedit</app>, pressione <key>F11</key>."
 
 #. (itstool) path: section/p
-#: C/gedit-full-screen.page:52
+#: C/gedit-full-screen.page:53
 msgid ""
 "You can also move your mouse cursor to the top of the screen, and wait for "
 "the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui> appears, "
-"select <gui>Leave Fullscreen</gui>."
+"select the <gui>Leave Fullscreen</gui> button."
 msgstr ""
 "Você também pode mover o cursor do seu mouse para o topo da tela e esperar "
-"aparecer a <gui>barra de menu</gui>. Quando ela aparecer, selecione "
-"<gui>Sair de tela cheia</gui>."
+"aparecer a <gui>barra de menu</gui>. Quando a <gui>barra de menu</gui> "
+"aparecer, selecione o botão <gui>Sair de tela cheia</gui>."
 
 #. (itstool) path: info/desc
 #: C/gedit-open-files-from-sidepane.page:8
@@ -493,7 +493,7 @@ msgstr "Use o painel lateral do gedit como um navegador de arquivos."
 
 #. (itstool) path: page/title
 #: C/gedit-open-files-from-sidepane.page:17
-msgid "View and open files from the side pane"
+msgid "View and open files from the side panel"
 msgstr "Vendo e abrindo arquivos do painel lateral"
 
 #. (itstool) path: page/p
@@ -502,90 +502,73 @@ msgid ""
 "The most common way to switch between files in <app>gedit</app> is by using "
 "the tabs at the top of the <app>gedit</app> window. In some cases, though, "
 "particularly when you are working with a large number of open files, you may "
-"find it easier to use the <app>side pane</app>."
+"find it easier to use the side panel."
 msgstr ""
 "A maneira mais comum para alternar entre arquivos no <app>gedit</app> é "
 "usando as abas no topo da janela no <app>gedit</app>. Em alguns casos, "
 "entretanto, especialmente quando você está trabalhando com um número grande "
-"de arquivos abertos, você pode achar que é mais fácil usar o <app>painel "
-"lateral</app>."
+"de arquivos abertos, você pode achar mais fácil usar o <app>painel lateral</"
+"app>."
 
 #. (itstool) path: page/p
 #: C/gedit-open-files-from-sidepane.page:25
 msgid ""
-"To activate the <app>side pane</app>, select <guiseq><gui>View</gui> "
-"<gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key."
+"To activate the side panel, select <guiseq><gui>View</gui> <gui>Side Panel</"
+"gui></guiseq>, or just press the <key>F9</key> key."
 msgstr ""
-"Para ativar o <app>Painel lateral</app>, selecione <guiseq><gui>Ver</gui> "
-"<gui>Painel lateral</gui></guiseq>, ou apenas pressione a tecla <key>F9</"
-"key>."
+"Para ativar o painel lateral, selecione <guiseq><gui>Ver</gui> <gui>Painel "
+"lateral</gui></guiseq>, ou apenas pressione a tecla <key>F9</key>."
 
 #. (itstool) path: note/p
 #: C/gedit-open-files-from-sidepane.page:31
 msgid ""
-"You can toggle the <gui>side pane</gui> open or closed by pressing <key>F9</"
-"key> at any time."
+"You can toggle the side panel open or closed by pressing <key>F9</key> at "
+"any time."
 msgstr ""
-"Você pode alternar o <gui>Painel lateral</gui> entre aberto ou fechado "
-"pressionando <key>F9</key> a qualquer momento."
+"Você pode alternar o painel lateral entre aberto ou fechado pressionando "
+"<key>F9</key> a qualquer momento."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:38
-#: C/gedit-plugins-file-browser.page:32
-msgid "Opening files from the side pane"
+#: C/gedit-open-files-from-sidepane.page:39
+#: C/gedit-plugins-file-browser.page:33
+msgid "Opening files from the side panel"
 msgstr "Abrindo arquivos do painel lateral"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:39
-#: C/gedit-plugins-file-browser.page:33
-#| msgid ""
-#| "To open files from the <app>side pane</app>, first open the <app>side "
-#| "pane</app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></"
-#| "guiseq>, then click on the <gui>file-browser</gui> icon at the bottom of "
-#| "the pane."
+#: C/gedit-open-files-from-sidepane.page:40
 msgid ""
-"To open files from the <app>side pane</app>, first open the <app>side pane</"
-"app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></guiseq> (or "
-"just press <key>F9</key>), and then choose <gui>File Browser</gui> from the "
-"dropdown at the top of the pane."
+"To open files from the side panel, first open the side panel by selecting "
+"<guiseq><gui>View</gui> <gui>Side Panel</gui></guiseq> (or just press "
+"<key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown at "
+"the top of the panel."
 msgstr ""
-"Para abrir arquivos do <app>Painel lateral</app>, primeiro abra o <app>"
-"Painel lateral</app> selecionando <guiseq><gui>Ver</gui> <gui>Painel "
-"lateral</gui></guiseq> (ou pressione <key>F9</key> e então escolha o <gui>"
-"Navegador de arquivos</gui> a partir da lista suspensa no topo do painel."
+"Para abrir arquivos do painel lateral, primeiro abra o painel lateral "
+"selecionando <guiseq><gui>Ver</gui> <gui>Painel lateral</gui></guiseq> (ou "
+"pressione <key>F9</key>) e então escolha o <gui>Navegador de arquivos</gui> "
+"a partir da lista suspensa no topo do painel."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:47
-#: C/gedit-plugins-file-browser.page:41
-#| msgid ""
-#| "This will activate the <em>file-browser</em> mode of the <app>side pane</"
-#| "app>. You can then use the navigation buttons at the top of the pane to "
-#| "locate and open your desired files."
+#: C/gedit-open-files-from-sidepane.page:48
 msgid ""
-"This will activate the <em>File Browser</em> mode of the <app>side pane</"
-"app>. You can then use the navigation buttons at the top of the pane to "
-"locate and open your desired files."
+"This will activate the <em>File Browser</em> mode of the side panel. You can "
+"then use the navigation buttons at the top of the panel to locate and open "
+"your desired files."
 msgstr ""
-"Isso irá ativar o modo <em>Navegador de arquivos</em> do <app>Painel "
-"lateral</app>. Você pode usar os botões de navegação no topo do painel para "
-"localizar e abrir seus arquivos desejados."
+"Isso irá ativar o modo <em>Navegador de arquivos</em> do painel lateral. "
+"Você pode usar os botões de navegação no topo do painel para localizar e "
+"abrir seus arquivos desejados."
 
 #. (itstool) path: section/title
-#: C/gedit-open-files-from-sidepane.page:55
-msgid "Using the side pane to switch between open files"
+#: C/gedit-open-files-from-sidepane.page:56
+msgid "Using the side panel to switch between open files"
 msgstr "Usando o painel lateral para alternar entre arquivos abertos"
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:56
-#| msgid ""
-#| "Once you have several files open, you can use the side pane to switch "
-#| "between open files. To activate the file browser portion of the <app>side "
-#| "pane</app>, click on the <gui>file</gui> icon at the bottom of the "
-#| "<gui>side pane</gui>."
+#: C/gedit-open-files-from-sidepane.page:57
 msgid ""
-"Once you have several files open, you can use the side pane to switch "
+"Once you have several files open, you can use the side panel to switch "
 "between open files. To list open files, choose <gui>Documents</gui> from the "
-"dropdown at the top of the pane."
+"dropdown at the top of the panel."
 msgstr ""
 "Quando que você tiver vários arquivos abertos, você pode usar o painel "
 "lateral para alternar entre os arquivos abertos. Para listar arquivos "
@@ -593,13 +576,12 @@ msgstr ""
 "painel."
 
 #. (itstool) path: section/p
-#: C/gedit-open-files-from-sidepane.page:62
+#: C/gedit-open-files-from-sidepane.page:63
 msgid ""
-"Clicking on any file name in the <gui>side pane</gui> will open that file "
-"for editing."
+"Clicking on any file name in the side panel will open that file for editing."
 msgstr ""
-"Clicar em algum nome de arquivo no<gui>Painel lateral</gui> irá abir este "
-"arquivo para edição."
+"Clicar em algum nome de arquivo no painel lateral abrirá este arquivo para "
+"edição."
 
 #. (itstool) path: info/desc
 #: C/gedit-open-files.page:12
@@ -711,19 +693,16 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:32
-#| msgid "Click <gui>Open</gui>."
 msgid "In the title bar, click on <gui>Open</gui>."
 msgstr "Na barra de título, clique em <gui>Abrir</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:33
-#| msgid "Click <gui>Open</gui>."
 msgid "Click <gui>Other Documents…</gui>."
 msgstr "Clique em <gui>Abrir documentos…</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:34
-#| msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the <gui>Open</gui> "
 "dialog."
@@ -743,9 +722,6 @@ msgstr "Localize e selecione o arquivo que deseja abrir."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:39
-#| msgid ""
-#| "Use the Character coding drop-down list to select the appropriate "
-#| "character coding."
 msgid ""
 "Use the Character Encoding drop-down list to select the appropriate "
 "character coding."
@@ -754,7 +730,7 @@ msgstr ""
 "codificação de caracteres apropriada."
 
 #. (itstool) path: item/p
-#: C/gedit-open-on-server.page:41 C/gedit-plugins-quick-open.page:43
+#: C/gedit-open-on-server.page:41 C/gedit-plugins-quick-open.page:44
 msgid "Click <gui>Open</gui>."
 msgstr "Clique em <gui>Abrir</gui>."
 
@@ -787,12 +763,12 @@ msgid "Access files that you have updated recently."
 msgstr "Acesse arquivos que você atualizou recentemente."
 
 #. (itstool) path: page/title
-#: C/gedit-open-recent.page:16
+#: C/gedit-open-recent.page:17
 msgid "Reopen a recently-used file"
 msgstr "Abrindo novamente um arquivo recentemente usado"
 
 #. (itstool) path: page/p
-#: C/gedit-open-recent.page:18
+#: C/gedit-open-recent.page:19
 msgid ""
 "By default, <app>gedit</app> provides easy access to five of your most "
 "recently-used files. Here is how you can open a recently-used file:"
@@ -802,10 +778,9 @@ msgstr ""
 "recentemente usado:"
 
 #. (itstool) path: item/p
-#: C/gedit-open-recent.page:21
-msgid ""
-"Click the downward-facing arrow to the right of the <gui>Open</gui> button."
-msgstr "Clique na seta virada para baixo à direita do botão <gui>Abrir</gui>."
+#: C/gedit-open-recent.page:22
+msgid "Click the <gui>Open</gui> button."
+msgstr "Clique no botão <gui>Abrir</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-recent.page:23
@@ -850,17 +825,17 @@ msgstr ""
 "para seu valor desejado."
 
 #. (itstool) path: info/desc
-#: C/gedit-plugin-guide.page:7
+#: C/gedit-plugin-guide.page:9
 msgid "Use plugins to customize how gedit works for you."
 msgstr "Use plug-ins para personalizar o funcionamento do gedit."
 
 #. (itstool) path: page/title
-#: C/gedit-plugin-guide.page:16
+#: C/gedit-plugin-guide.page:19
 msgid "Configure and use gedit plugins"
 msgstr "Configurando e usando os plug-ins do gedit"
 
 #. (itstool) path: page/p
-#: C/gedit-plugin-guide.page:17
+#: C/gedit-plugin-guide.page:20
 msgid ""
 "You can do more with <app>gedit</app> by using plugins. Several plugins are "
 "installed by default, but a large number of other plugins are available "
@@ -871,7 +846,7 @@ msgstr ""
 "ins estão disponíveis separadamente."
 
 #. (itstool) path: note/p
-#: C/gedit-plugin-guide.page:21
+#: C/gedit-plugin-guide.page:24
 msgid ""
 "Many Linux distributions make a group of these plugins available as a "
 "<app>gedit-plugins</app> package. Install the <app>gedit-plugins</app> "
@@ -881,22 +856,31 @@ msgstr ""
 "um pacote de <app>gedit-plugins</app>. Instale o pacote <app>gedit-plugins</"
 "app> para disponibilizar estes plug-ins extras para o <app>gedit</app>."
 
+#. (itstool) path: when/p
+#: C/gedit-plugin-guide.page:30
+msgid ""
+"<link action=\"install:gedit-plugins\" href=\"ftp://ftp.gnome.org/pub/gnome/"
+"sources/gedit-plugins/\" style=\"button\">Install gedit-plugins</link>"
+msgstr ""
+"<link action=\"install:gedit-plugins\" href=\"ftp://ftp.gnome.org/pub/gnome/"
+"sources/gedit-plugins/\" style=\"button\">Instalar gedit-plugins</link>"
+
 #. (itstool) path: section/title
-#: C/gedit-plugin-guide.page:26
+#: C/gedit-plugin-guide.page:36
 msgid "Default gedit Plugins"
 msgstr "Plug-ins padrão do gedit"
 
 #. (itstool) path: section/title
-#: C/gedit-plugin-guide.page:30
+#: C/gedit-plugin-guide.page:40
 msgid "Additional gedit Plugins"
 msgstr "Plug-ins adicionais do gedit"
 
 #. (itstool) path: credit/name
 #: C/gedit-plugins-change-case.page:9 C/gedit-plugins-doc-stats.page:10
-#: C/gedit-plugins-external-tools.page:11 C/gedit-plugins-file-browser.page:10
+#: C/gedit-plugins-external-tools.page:11 C/gedit-plugins-file-browser.page:11
 #: C/gedit-plugins-insert-date-time.page:9 C/gedit-plugins-install.page:12
-#: C/gedit-plugins-modelines.page:9 C/gedit-plugins-sort.page:9
-#: C/gedit-replace.page:17 C/gedit-search.page:15 C/gedit-tabs-moving.page:17
+#: C/gedit-plugins-modelines.page:9 C/gedit-plugins-sort.page:10
+#: C/gedit-replace.page:18 C/gedit-search.page:16 C/gedit-tabs-moving.page:17
 #: C/gedit-tabs.page:18 C/gedit-undo-recent-action.page:16
 msgid "Daniel Neel"
 msgstr "Daniel Neel"
@@ -1108,21 +1092,21 @@ msgstr ""
 "seus scripts podem afetar seu trabalho em maneiras inesperadas."
 
 #. (itstool) path: info/desc
-#: C/gedit-plugins-file-browser.page:17
-msgid "Use the side pane to browse and open files."
+#: C/gedit-plugins-file-browser.page:18
+msgid "Use the side panel to browse and open files."
 msgstr "Use o painel lateral para navegar e abrir arquivos."
 
 #. (itstool) path: page/title
-#: C/gedit-plugins-file-browser.page:20
-msgid "File browser pane"
+#: C/gedit-plugins-file-browser.page:21
+msgid "File browser panel"
 msgstr "Painel de navegação de arquivos"
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-file-browser.page:22
+#: C/gedit-plugins-file-browser.page:23
 msgid ""
 "Depending on how you use <app>gedit</app>, you may find it helpful to use "
 "the <app>File Browser pane</app> plugin. This plugin embeds a <app>file "
-"browser</app> in the side pane, giving you easy access to your frequently-"
+"browser</app> in the side panel, giving you easy access to your frequently-"
 "used files."
 msgstr ""
 "Dependendo em como usa o <app>gedit</app>, você pode achar útil usar o plug-"
@@ -1131,15 +1115,39 @@ msgstr ""
 "arquivos frequentemente usados."
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-file-browser.page:27
+#: C/gedit-plugins-file-browser.page:28
 msgid ""
-"You can enable the <gui>Side Pane</gui> by selecting <guiseq><gui style="
-"\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
-"gui><gui>File Browser Pane</gui></guiseq>."
+"You can enable the side panel by selecting <guiseq><gui style=\"menu"
+"\">gedit</gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
+"gui><gui>File Browser Panel</gui></guiseq>."
 msgstr ""
-"Você pode habilitar o <gui>Painel lateral</gui> selecionando <guiseq><gui "
-"style=\"menu\">gedit</gui><gui style=\"menuitem\">Preferências</"
-"gui><gui>Plug-ins</gui><gui>Painel de navegação de arquivos</gui></guiseq>."
+"Você pode habilitar o painel lateral selecionando <guiseq><gui style=\"menu"
+"\">gedit</gui><gui style=\"menuitem\">Preferências</gui><gui>Plug-ins</"
+"gui><gui>Painel de navegação de arquivos</gui></guiseq>."
+
+#. (itstool) path: section/p
+#: C/gedit-plugins-file-browser.page:34
+msgid ""
+"To open files from the side panel, first open the side panel by selecting "
+"<guiseq><gui>View</gui> <gui>Side Panel</gui></guiseq> (or just press "
+"<key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown at "
+"the top of the pane."
+msgstr ""
+"Para abrir arquivos do painel lateral, primeiro abra o painel lateral "
+"selecionando <guiseq><gui>Ver</gui> <gui>Painel lateral</gui></guiseq> (ou "
+"pressione <key>F9</key>) e então escolha o <gui>Navegador de arquivos</gui> "
+"a partir da lista suspensa no topo do painel."
+
+#. (itstool) path: section/p
+#: C/gedit-plugins-file-browser.page:42
+msgid ""
+"This will activate the <em>File Browser</em> mode of the side panel. You can "
+"then use the navigation buttons at the top of the pane to locate and open "
+"your desired files."
+msgstr ""
+"Isso irá ativar o modo <em>Navegador de arquivos</em> do painel lateral. "
+"Você pode usar os botões de navegação no topo do painel para localizar e "
+"abrir seus arquivos desejados."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-insert-date-time.page:17
@@ -1543,17 +1551,17 @@ msgstr ""
 "\"http://www.vim.org/\">página do Vim</link>."
 
 #. (itstool) path: info/desc
-#: C/gedit-plugins-pyconsole.page:13
+#: C/gedit-plugins-pyconsole.page:14
 msgid "Add an interactive Python console to the bottom pane."
 msgstr "Adicione um console Python interativo no canto inferior do painel."
 
 #. (itstool) path: page/title
-#: C/gedit-plugins-pyconsole.page:16
+#: C/gedit-plugins-pyconsole.page:17
 msgid "Python console"
 msgstr "Console python"
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-pyconsole.page:18
+#: C/gedit-plugins-pyconsole.page:19
 msgid ""
 "You can add a Python console to the bottom pane, allowing you to test Python "
 "scripts without leaving <app>gedit</app>. To enable the Python console, "
@@ -1567,15 +1575,13 @@ msgstr ""
 "gui><gui>Console python</gui></guiseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-pyconsole.page:24
+#: C/gedit-plugins-pyconsole.page:25
 msgid ""
 "Once the Python console is enabled, you can open it by selecting "
-"<guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just press "
-"<keyseq><key>Shift</key><key>F9</key></keyseq>."
+"<guiseq><gui>View</gui><gui>Bottom Panel</gui></guiseq>."
 msgstr ""
 "Assim que o console python estiver habilitado, você pode abri-lo "
-"selecionando <guiseq><gui>Ver</gui><gui>Painel inferior</gui></guiseq>, ou "
-"apenas pressione <keyseq><key>Shift</key><key>F9</key></keyseq>."
+"selecionando <guiseq><gui>Ver</gui><gui>Painel inferior</gui></guiseq>."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-pyconsole.page:28
@@ -1587,17 +1593,17 @@ msgstr ""
 "<gui>Console python</gui> aparecerá como uma aba separada no painel inferior."
 
 #. (itstool) path: info/desc
-#: C/gedit-plugins-quick-open.page:18
+#: C/gedit-plugins-quick-open.page:19
 msgid "Quickly open a file or set of files."
 msgstr "Abra rapidamente um arquivo ou um conjunto de arquivos."
 
 #. (itstool) path: page/title
-#: C/gedit-plugins-quick-open.page:21
+#: C/gedit-plugins-quick-open.page:22
 msgid "Quick open"
 msgstr "Abertura rápida"
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-quick-open.page:23
+#: C/gedit-plugins-quick-open.page:24
 msgid ""
 "As the name of this plugin would imply, the <app>Quick Open</app> plugin "
 "helps you to open files more quickly than using the usual ways of opening "
@@ -1611,7 +1617,7 @@ msgstr ""
 "rápida</gui></guiseq>."
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-quick-open.page:28
+#: C/gedit-plugins-quick-open.page:29
 msgid ""
 "Once you have enabled the <app>Quick Open</app> plugin you can use it as "
 "follows:"
@@ -1620,28 +1626,28 @@ msgstr ""
 "você poderá usá-lo destes modos:"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:32
+#: C/gedit-plugins-quick-open.page:33
 msgid ""
 "Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
-"key><key>Alt</key><key>O</key></keyseq>, or by selecting <guiseq><gui>File</"
-"gui><gui>Quick Open</gui></guiseq>."
+"key><key>Alt</key><key>O</key></keyseq>, or by selecting <gui style="
+"\"menuitem\">Quick Open…</gui>."
 msgstr ""
 "Abra o diálogo de <app>Abertura rápida</app> pressionando <keyseq><key>Ctrl</"
-"key><key>Alt</key><key>O</key></keyseq> ou selecionando "
-"<guiseq><gui>Arquivo</gui><gui>Abertura rápida</gui></guiseq>."
+"key><key>Alt</key><key>O</key></keyseq> ou selecionando <gui style=\"menuitem"
+"\">Abertura rápida...</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:35
+#: C/gedit-plugins-quick-open.page:36
 msgid "The <gui>Quick Open</gui> file dialog will appear."
 msgstr "O diálogo de arquivo do <gui>Abertura rápida</gui> aparecerá."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:36
+#: C/gedit-plugins-quick-open.page:37
 msgid "Use your mouse to select the file or files that you want to open."
 msgstr "Use o mouse para selecionar o arquivo ou os arquivos que deseja abrir."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:38
+#: C/gedit-plugins-quick-open.page:39
 msgid ""
 "To select several individual files, hold down your <key>Ctrl</key> key while "
 "you click on the files that you want to open."
@@ -1650,7 +1656,7 @@ msgstr ""
 "<key>Ctrl</key> enquanto você clica nos arquivos que deseja abrir."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:40
+#: C/gedit-plugins-quick-open.page:41
 msgid ""
 "To select a group of files, click on the first file that you want to open, "
 "hold down the <key>Shift</key> key, and then click on the last file in the "
@@ -1661,17 +1667,17 @@ msgstr ""
 "no último arquivo da lista que você deseja abrir."
 
 #. (itstool) path: page/p
-#: C/gedit-plugins-quick-open.page:46
+#: C/gedit-plugins-quick-open.page:47
 msgid "<app>Quick Open</app> will look for files in:"
 msgstr "A <app>Abertura rápida</app> irá procurar por arquivos em/no:"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:49
+#: C/gedit-plugins-quick-open.page:50
 msgid "The directory of the currently opened document"
 msgstr "O diretório do documento atualmente aberto"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:50
+#: C/gedit-plugins-quick-open.page:51
 msgid ""
 "The root directory of the <app xref=\"gedit-plugins-file-browser\">File "
 "Browser Pane</app> plugin"
@@ -1680,7 +1686,7 @@ msgstr ""
 "navegação de arquivos</app>"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:53
+#: C/gedit-plugins-quick-open.page:54
 msgid ""
 "Recent documents which are also shown in the <file>Recent</file> folder in "
 "<app>Files</app>"
@@ -1689,23 +1695,23 @@ msgstr ""
 "em <app>Arquivos</app>"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:55
+#: C/gedit-plugins-quick-open.page:56
 msgid "Directories which you have bookmarked in <app>Files</app>"
 msgstr ""
 "Diretórios que você tenha marcado como favoritos em <app>Arquivos</app>"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:57
+#: C/gedit-plugins-quick-open.page:58
 msgid "Your <file>Desktop</file> directory"
 msgstr "Seu diretório de <file>Área de trabalho</file>"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-quick-open.page:58
+#: C/gedit-plugins-quick-open.page:59
 msgid "Your <file>Home</file> directory"
 msgstr "Seu diretório de <file>Pasta pessoal</file>"
 
 #. (itstool) path: note/p
-#: C/gedit-plugins-quick-open.page:62
+#: C/gedit-plugins-quick-open.page:63
 msgid ""
 "<app>Quick Open</app> displays files in any of the above locations "
 "regardless of whether or not you have opened them previously."
@@ -1714,10 +1720,10 @@ msgstr ""
 "citados acima, independente de terem sido ou não abertos anteriormente."
 
 #. (itstool) path: credit/name
-#: C/gedit-plugins-snippets.page:13 C/gedit-plugins-sort.page:17
+#: C/gedit-plugins-snippets.page:13 C/gedit-plugins-sort.page:18
 #: C/gedit-printing-order.page:15 C/gedit-printing.page:14
 #: C/gedit-printing-select.page:14 C/gedit-quickstart.page:16
-#: C/gedit-replace.page:21 C/gedit-save-file.page:17 C/gedit-search.page:19
+#: C/gedit-replace.page:22 C/gedit-save-file.page:17 C/gedit-search.page:20
 #: C/gedit-shortcut-keys.page:30 C/gedit-spellcheck.page:20
 #: C/gedit-syntax-highlighting.page:14 C/gedit-tabs-moving.page:21
 #: C/gedit-tabs.page:22 C/gedit-undo-recent-action.page:20 C/index.page:18
@@ -1762,7 +1768,7 @@ msgid "To enable the <gui>Snippets</gui> plugin:"
 msgstr "Para habilitar o plug-in <gui>Trechos</gui>:"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-snippets.page:35 C/gedit-plugins-sort.page:44
+#: C/gedit-plugins-snippets.page:35 C/gedit-plugins-sort.page:37
 #: C/gedit-spellcheck.page:36
 msgid ""
 "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
@@ -2060,82 +2066,66 @@ msgstr ""
 "key> para excluir a opção que seja menos interessante."
 
 #. (itstool) path: info/desc
-#: C/gedit-plugins-sort.page:21
+#: C/gedit-plugins-sort.page:22
 msgid "Sort lines of text into alphabetical order."
 msgstr "Ordene linhas do texto em ordem alfabética."
 
 #. (itstool) path: page/title
-#: C/gedit-plugins-sort.page:24
+#: C/gedit-plugins-sort.page:25
 msgid "Sort"
 msgstr "Ordenar"
 
 # Acrescentei <gui> para que a página fique como as outras, destacando o nome do plug-in.
 #. (itstool) path: page/p
-#: C/gedit-plugins-sort.page:26
+#: C/gedit-plugins-sort.page:27
 msgid ""
 "The Sort plugin arranges selected lines of text into alphabetical order."
 msgstr ""
 "O plug-in <gui>Ordenar</gui> arruma linhas selecionadas do texto em ordem "
 "alfabética."
 
-#. (itstool) path: note/p
-#: C/gedit-plugins-sort.page:30
-msgid ""
-"You cannot use the <gui>Undo</gui> feature to correct a <gui>Sort</gui> "
-"operation, so we recommend that you save the file immediately before "
-"performing the sort. If you make a mistake with the sort, you can revert to "
-"the previously-saved version of the file by selecting <guiseq><gui>File</"
-"gui><gui>Revert</gui></guiseq>."
-msgstr ""
-"Você não pode usar o recurso <gui>Desfazer</gui> para corrigir uma operação "
-"<gui>Ordenar</gui>, por isso recomendamos que você salve o arquivo "
-"imediatamente antes de efetuar o ordenamento. Se você cometer um erro com a "
-"ordenação, você pode reverter para a versão salva anteriormente do arquivo "
-"selecionando <guiseq> <gui>Arquivo</gui><gui>Reverter</gui></guiseq>."
-
 #. (itstool) path: section/title
-#: C/gedit-plugins-sort.page:38
+#: C/gedit-plugins-sort.page:31
 msgid "Enable Sort Plugin"
 msgstr "Habilitando o plug-in Ordenar"
 
 #. (itstool) path: section/p
-#: C/gedit-plugins-sort.page:40
+#: C/gedit-plugins-sort.page:33
 msgid "To enable the <app>Sort</app> plugin:"
 msgstr "Para habilitar o plug-in <app>Ordenar</app>:"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-sort.page:49
+#: C/gedit-plugins-sort.page:42
 msgid "Select <gui style=\"menuitem\">Sort</gui> to enable the plugin."
 msgstr ""
 "Selecione <gui style=\"menuitem\">Ordenar</gui> para habilitar o plug-in."
 
 #. (itstool) path: section/title
-#: C/gedit-plugins-sort.page:56
+#: C/gedit-plugins-sort.page:49
 msgid "Using Sort Plugin"
 msgstr "Usando o plug-in de Ordenação"
 
 #. (itstool) path: section/p
-#: C/gedit-plugins-sort.page:58
+#: C/gedit-plugins-sort.page:51
 msgid "To use the <gui>Sort</gui> plugin:"
 msgstr "Para usar o plug-in <gui>Ordenar</gui>:"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-sort.page:62
+#: C/gedit-plugins-sort.page:55
 msgid "Drag and highlight the desired lines of text."
 msgstr "Arraste e destaque as linhas desejadas no texto."
 
-# Está errado o <gui style=\"menu\">gedit</gui> na mensagem original, motivo pelo qual traduzi com o item de menu certo: "Editar".
 #. (itstool) path: item/p
-#: C/gedit-plugins-sort.page:65
+#: C/gedit-plugins-sort.page:58
 msgid ""
-"Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem\">Sort</"
-"gui></guiseq>."
+"Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem\">Sort…"
+"</gui></guiseq>."
 msgstr ""
-"Selecione <guiseq><gui style=\"menu\">Editar</gui> <gui style=\"menuitem"
-"\">Ordenar</gui></guiseq>."
+"Selecione <guiseq><gui style=\"menu\">Arquivo</gui> <gui style=\"menuitem"
+"\">Ordenar...</gui></guiseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-sort.page:69
+#: C/gedit-plugins-sort.page:62
 msgid ""
 "The <gui>Sort</gui> dialog will open, allowing you to choose between several "
 "sorting options:"
@@ -2144,21 +2134,21 @@ msgstr ""
 "várias opções de ordenação:"
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-sort.page:73
+#: C/gedit-plugins-sort.page:66
 msgid ""
 "<gui>Reverse order</gui> will arrange the text in reverse alphabetical order."
 msgstr ""
 "<gui>Inverter ordem</gui> irá organizar o texto em ordem alfabética inversa."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-sort.page:77
+#: C/gedit-plugins-sort.page:70
 msgid ""
 "<gui>Remove duplicates</gui> will remove duplicate values from the list."
 msgstr ""
 "<gui>Remover duplicadas</gui> irá remover os valores duplicados da lista."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-sort.page:81
+#: C/gedit-plugins-sort.page:74
 msgid "<gui>Ignore case</gui> will ignore case sensitivity."
 msgstr ""
 "<gui>Ignorar maiúsculas/minúsculas</gui> irá ignorar diferença entre "
@@ -2166,7 +2156,7 @@ msgstr ""
 
 # "caixa de incremento" - http://bazar2.conectiva.com.br/pipermail/ldp-br/2007-November/002051.html
 #. (itstool) path: note/p
-#: C/gedit-plugins-sort.page:83
+#: C/gedit-plugins-sort.page:76
 msgid ""
 "To have the sort ignore the characters at the start of the lines, set the "
 "first character that should be used for sorting in the <gui>Start at</gui> "
@@ -2177,7 +2167,7 @@ msgstr ""
 "<gui>Iniciar na coluna</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-plugins-sort.page:91
+#: C/gedit-plugins-sort.page:84
 msgid "To perform the sort operation, click <gui>Sort</gui>."
 msgstr ""
 "Para efetuar a operação de ordenação, clique no botão <gui>Ordenar</gui>."
@@ -2581,17 +2571,17 @@ msgid "Replace portions of text in a file."
 msgstr "Substitua porções de texto em um arquivo."
 
 #. (itstool) path: credit/name
-#: C/gedit-replace.page:33
+#: C/gedit-replace.page:34
 msgid "Young Li"
 msgstr "Young Li"
 
 #. (itstool) path: page/title
-#: C/gedit-replace.page:39
+#: C/gedit-replace.page:40
 msgid "Replace text"
 msgstr "Substituindo texto"
 
 #. (itstool) path: page/p
-#: C/gedit-replace.page:41
+#: C/gedit-replace.page:42
 msgid ""
 "Editing text can be time consuming. To save time, <app>gedit</app> includes "
 "a <app>Replace</app> function that helps you to find and replace portions of "
@@ -2602,12 +2592,12 @@ msgstr ""
 "localizar e substituir partes do texto."
 
 #. (itstool) path: steps/title
-#: C/gedit-replace.page:46
+#: C/gedit-replace.page:47
 msgid "Replace text in <app>gedit</app>"
 msgstr "Substituindo texto no <app>gedit</app>"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:48
+#: C/gedit-replace.page:49
 msgid ""
 "Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"button"
 "\">Menu button</gui><gui style=\"menuitem\">Find and Replace…</gui></guiseq> "
@@ -2619,21 +2609,18 @@ msgstr ""
 "key><key>H</key></keyseq>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:54
-msgid ""
-"Enter the text that you wish to replace into the <gui>Search for:</gui> "
-"field."
+#: C/gedit-replace.page:55
+msgid "Enter the text that you wish to replace into the <gui>Find</gui> field."
 msgstr ""
-"Digite o texto que você deseja substituir no campo <gui>Pesquisar por:</gui>."
+"Digite o texto que você deseja substituir no campo <gui>Pesquisar</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:58
-msgid ""
-"Enter the new, replacement text into the <gui>Replace with:</gui> field."
+#: C/gedit-replace.page:59
+msgid "Enter the new, replacement text into the <gui>Replace with</gui> field."
 msgstr "Digite o texto substituto novo no campo <gui>Substituir por:</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:62
+#: C/gedit-replace.page:63
 msgid ""
 "Once you have entered the original and replacement text, you can add extra "
 "parameters to the search. You can also choose what you want to replace:"
@@ -2643,14 +2630,14 @@ msgstr ""
 "deseja substituir:"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:67
+#: C/gedit-replace.page:68
 msgid "To replace <em>only</em> the next match, click <gui>Replace</gui>."
 msgstr ""
 "Para substituir <em>apenas</em> a próxima ocorrência, clique em "
 "<gui>Substituir</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:71
+#: C/gedit-replace.page:72
 msgid ""
 "To replace <em>all occurrences</em> of the searched-for text, click "
 "<gui>Replace All</gui>."
@@ -2659,7 +2646,7 @@ msgstr ""
 "clique no botão <gui>Substituir todas</gui>."
 
 #. (itstool) path: note/p
-#: C/gedit-replace.page:79
+#: C/gedit-replace.page:80
 msgid ""
 "Use the <gui>Replace All</gui> function with care. <gui>Replace All</gui> "
 "works on the entirety of your text file, and does not allow you to highlight "
@@ -2671,23 +2658,23 @@ msgstr ""
 "executadas."
 
 #. (itstool) path: section/title
-#: C/gedit-replace.page:86
+#: C/gedit-replace.page:87
 msgid "More options"
 msgstr "Mais opções"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:88
+#: C/gedit-replace.page:89
 msgid "If you wish, you can add some extra parameters to your search:"
 msgstr ""
 "Se você quiser, você pode adicionar alguns parâmetros extras à sua pesquisa:"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:92
+#: C/gedit-replace.page:93
 msgid "Match case"
 msgstr "Diferenciando maiúsculas de minúsculas"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:93
+#: C/gedit-replace.page:94
 msgid ""
 "The <em>Match case</em> option allows you to specify whether you want your "
 "search to be case-sensitive. If this option is selected, searches will be "
@@ -2699,12 +2686,12 @@ msgstr ""
 "diferenciarão."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:98
+#: C/gedit-replace.page:99
 msgid "Match entire word only"
 msgstr "Coincidindo apenas com palavra completa"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:99
+#: C/gedit-replace.page:100
 msgid ""
 "Use this option to search for a specific word without including fragments of "
 "other words. For example, if you searched for the word 'and' with this "
@@ -2717,13 +2704,13 @@ msgstr ""
 "\"b<em>and</em>eira\" e \"com<em>and</em>o\" não coincidirão."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:106
+#: C/gedit-replace.page:107
 msgid "Search backwards"
 msgstr "Pesquisando para trás"
 
 # Adicionei <gui> para deixar claro que Localizar anterior é uma referência à interface gráfica.
 #. (itstool) path: item/p
-#: C/gedit-replace.page:107
+#: C/gedit-replace.page:108
 msgid ""
 "This command behaves identically to the Find Previous command. If you wish "
 "to step through search results from end to beginning, select this option."
@@ -2733,12 +2720,12 @@ msgstr ""
 "selecione essa opção."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:112
+#: C/gedit-replace.page:113
 msgid "Wrap around"
 msgstr "Voltando ao início"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:113
+#: C/gedit-replace.page:114
 msgid ""
 "With the <app>wrap around</app> option enabled, <app>gedit</app> will re-"
 "start the search/replace action at the top of the file after it has reached "
@@ -2751,12 +2738,12 @@ msgstr ""
 "substituição é feita no arquivo por inteiro."
 
 #. (itstool) path: section/title
-#: C/gedit-replace.page:123
+#: C/gedit-replace.page:124
 msgid "Using escape sequences"
 msgstr "Usando sequências de escapes"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:125
+#: C/gedit-replace.page:126
 msgid ""
 "You can use <em>escape sequences</em> to search for line breaks, carriage "
 "returns, and tabs."
@@ -2765,37 +2752,37 @@ msgstr ""
 "linhas, retornos de carro e tabulações."
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:130
+#: C/gedit-replace.page:131
 msgid "\\n"
 msgstr "\\n"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:131
+#: C/gedit-replace.page:132
 msgid "Newline"
 msgstr "Nova linha"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:134
+#: C/gedit-replace.page:135
 msgid "\\r"
 msgstr "\\r"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:135
+#: C/gedit-replace.page:136
 msgid "Carriage return"
 msgstr "Retorno de carro"
 
 #. (itstool) path: item/title
-#: C/gedit-replace.page:138
+#: C/gedit-replace.page:139
 msgid "\\t"
 msgstr "\\t"
 
 #. (itstool) path: item/p
-#: C/gedit-replace.page:139
+#: C/gedit-replace.page:140
 msgid "Tab"
 msgstr "Tabulação"
 
 #. (itstool) path: section/p
-#: C/gedit-replace.page:143
+#: C/gedit-replace.page:144
 msgid ""
 "If you actually want to search for a <output>\\</output> (backslash) or one "
 "of the escape sequences in the text, you need to escape the backslash with "
@@ -2850,13 +2837,13 @@ msgid "Find a portion of text within a file."
 msgstr "Localize uma porção de texto dentro de um arquivo."
 
 #. (itstool) path: page/title
-#: C/gedit-search.page:29
+#: C/gedit-search.page:30
 msgid "Search for text"
 msgstr "Pesquisando por texto"
 
 # Adicionei <gui> para deixar clara a referência à interface gráfica.
 #. (itstool) path: page/p
-#: C/gedit-search.page:31
+#: C/gedit-search.page:32
 msgid ""
 "The Find tool can help you find specific sequences of text within in your "
 "file."
@@ -2865,12 +2852,12 @@ msgstr ""
 "específicas de texto no seu arquivo."
 
 #. (itstool) path: steps/title
-#: C/gedit-search.page:35
+#: C/gedit-search.page:36
 msgid "Finding text"
 msgstr "Localizando texto"
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:37
+#: C/gedit-search.page:38
 msgid ""
 "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
 "\">Menu Button</gui> <gui style=\"menuitem\">Find…</gui> </guiseq> or "
@@ -2883,12 +2870,12 @@ msgstr ""
 "irá mover seu cursor para o início da <gui>janela de pesquisa</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:44
+#: C/gedit-search.page:45
 msgid "Type the text you wish to search for in the <gui>search window</gui>."
 msgstr "Digite o texto que deseja pesquisar na <gui>janela de pesquisa</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:48
+#: C/gedit-search.page:49
 msgid ""
 "As you type, <app>gedit</app> will begin highlighting the portions of text "
 "that match what you have entered."
@@ -2897,14 +2884,14 @@ msgstr ""
 "texto que correspondem com a que você digitou."
 
 #. (itstool) path: page/p
-#: C/gedit-search.page:53
+#: C/gedit-search.page:54
 msgid "To scroll through the search results, do any of the following:"
 msgstr ""
 "Para rolar pelos resultados de pesquisa, faça qualquer uma das ações a "
 "seguir:"
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:56
+#: C/gedit-search.page:57
 msgid ""
 "Click on the <gui style=\"button\">up</gui> or <gui style=\"button\">down</"
 "gui> facing arrows next to the <gui>search window</gui>."
@@ -2913,7 +2900,7 @@ msgstr ""
 "<gui style=\"button\">baixo</gui> próximas a <gui>janela de pesquisa</gui>."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:61
+#: C/gedit-search.page:62
 msgid ""
 "Press the <key>up arrow</key> or <key>down arrow</key> keys on your keyboard."
 msgstr ""
@@ -2921,7 +2908,7 @@ msgstr ""
 "no seu teclado."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:65
+#: C/gedit-search.page:66
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
 "key><key>Shift</key><key>G</key></keyseq>."
@@ -2929,17 +2916,8 @@ msgstr ""
 "Pressione <keyseq><key>Ctrl</key><key>G</key></keyseq> ou <keyseq><key>Ctrl</"
 "key><key>Shift</key><key>G</key></keyseq>."
 
-#. (itstool) path: item/p
-#: C/gedit-search.page:69
-msgid ""
-"Press the <key>Ctrl</key> and use your mouse or touchpad's <key>scroll</key> "
-"feature to move up or down through the text."
-msgstr ""
-"Pressione <key>Ctrl</key> e use o recurso de <key>rolagem</key> do seu mouse "
-"ou touchpad para mover para cima ou para baixo através do texto."
-
 #. (itstool) path: page/p
-#: C/gedit-search.page:74
+#: C/gedit-search.page:71
 msgid ""
 "To close the <gui>search window</gui>, press either <key>Esc</key> or "
 "<key>Enter</key>. Pressing <key>Esc</key> will return the cursor to where it "
@@ -2952,12 +2930,12 @@ msgstr ""
 "key> irá retornar o cursor para a posição atual nos resultados da pesquisa."
 
 #. (itstool) path: list/title
-#: C/gedit-search.page:80
+#: C/gedit-search.page:77
 msgid "Search tips"
 msgstr "Dicas de pesquisa"
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:82
+#: C/gedit-search.page:79
 msgid ""
 "If you highlight a portion of text with your mouse, and then press "
 "<keyseq><key>Ctrl</key><key>F</key></keyseq>, the text you've highlighted "
@@ -2968,7 +2946,7 @@ msgstr ""
 "aparecer na janela de pesquisa."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:87
+#: C/gedit-search.page:84
 msgid ""
 "For more search options, click on the <gui style=\"button\">Magnifying "
 "Glass</gui> icon in the search window, or right-click anywhere in the search "
@@ -2980,21 +2958,21 @@ msgstr ""
 "mais das seguintes opções de pesquisa:"
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:93
+#: C/gedit-search.page:90
 msgid "Select <gui>Match Case</gui> to make the search case sensitive."
 msgstr ""
 "Selecione <gui>Diferenciar maiúsculas/minúsculas</gui> para tornar a "
 "pesquisa sensível a caixa de texto maiúscula ou minúscula."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:96
+#: C/gedit-search.page:93
 msgid "Select <gui>Match Entire Word Only</gui> to search only complete words."
 msgstr ""
 "Selecione <gui>Coincidir apenas com palavra completa</gui> para pesquisar "
 "apenas palavras completas."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:100
+#: C/gedit-search.page:97
 msgid ""
 "Select <gui>Wrap Around</gui> to search text from top to bottom and cycle "
 "back again."
@@ -3003,17 +2981,17 @@ msgstr ""
 "baixo e retornar novamente."
 
 #. (itstool) path: item/p
-#: C/gedit-search.page:106
+#: C/gedit-search.page:103
 msgid ""
 "The text that you've searched for will remain highlighted by gedit, even "
-"after you have completed your search. To remove the highlight, click "
-"<guiseq><gui>Search</gui><gui>Clear Highlight</gui></guiseq>, or press "
-"<keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>."
+"after you have completed your search. To remove the highlight, click <gui "
+"style=\"menuitem\">Clear Highlight</gui>, or press <keyseq><key>Ctrl</"
+"key><key>Shift</key><key>K</key></keyseq>."
 msgstr ""
 "O texto pelo qual você pesquisou permanecerá destacado pelo gedit, ainda "
 "depois que você tiver completado sua pesquisa. Para remover o destaque, "
-"clique em <guiseq><gui>Pesquisar</gui><gui>Limpar Pesquisa</gui></guiseq> ou "
-"pressione <keyseq><key>Ctrl</key><key>Shift</key><key>N</key></keyseq>."
+"clique em <gui style=\"menuitem\">Limpar Destaque</gui>, ou pressione "
+"<keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>."
 
 #. (itstool) path: info/desc
 #: C/gedit-shortcut-keys.page:9
@@ -3510,7 +3488,7 @@ msgstr "Teclas de atalhos para mostrar e ocultar painéis"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:267
-msgid "Show / hide the side pane"
+msgid "Show / hide the side panel"
 msgstr "Mostra / oculta o painel lateral"
 
 #. (itstool) path: td/p
@@ -4348,6 +4326,41 @@ msgstr ""
 #: C/legal.xml:3
 msgid "This work is licensed under a <_:link-1/>."
 msgstr "Esta obra está licenciada sob a <_:link-1/>."
+
+#~ msgid ""
+#~ "Click the downward-facing arrow to the right of the <gui>Open</gui> "
+#~ "button."
+#~ msgstr ""
+#~ "Clique na seta virada para baixo à direita do botão <gui>Abrir</gui>."
+
+#~ msgid ""
+#~ "You cannot use the <gui>Undo</gui> feature to correct a <gui>Sort</gui> "
+#~ "operation, so we recommend that you save the file immediately before "
+#~ "performing the sort. If you make a mistake with the sort, you can revert "
+#~ "to the previously-saved version of the file by selecting "
+#~ "<guiseq><gui>File</gui><gui>Revert</gui></guiseq>."
+#~ msgstr ""
+#~ "Você não pode usar o recurso <gui>Desfazer</gui> para corrigir uma "
+#~ "operação <gui>Ordenar</gui>, por isso recomendamos que você salve o "
+#~ "arquivo imediatamente antes de efetuar o ordenamento. Se você cometer um "
+#~ "erro com a ordenação, você pode reverter para a versão salva "
+#~ "anteriormente do arquivo selecionando <guiseq> <gui>Arquivo</"
+#~ "gui><gui>Reverter</gui></guiseq>."
+
+# Está errado o <gui style=\"menu\">gedit</gui> na mensagem original, motivo pelo qual traduzi com o item de menu certo: "Editar".
+#~ msgid ""
+#~ "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+#~ "\">Sort</gui></guiseq>."
+#~ msgstr ""
+#~ "Selecione <guiseq><gui style=\"menu\">Editar</gui> <gui style=\"menuitem"
+#~ "\">Ordenar</gui></guiseq>."
+
+#~ msgid ""
+#~ "Press the <key>Ctrl</key> and use your mouse or touchpad's <key>scroll</"
+#~ "key> feature to move up or down through the text."
+#~ msgstr ""
+#~ "Pressione <key>Ctrl</key> e use o recurso de <key>rolagem</key> do seu "
+#~ "mouse ou touchpad para mover para cima ou para baixo através do texto."
 
 #~ msgid ""
 #~ "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
