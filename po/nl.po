@@ -15,26 +15,31 @@
 # Kenneth Venken <kenneth.venken@gmail.com>, 2010.
 # Hannie Dumoleyn <hannie@ubuntu.org>, 2010-2012, 2013, 2015, 2016.
 # Erwin Poeze <donnut@outlook.com>, 2014.
-# Nathan Follens <nthn@unseen.is>, 2015.
+# Nathan Follens <nthn@unseen.is>, 2015, 2018.
 # Justin van Steijn <justin50@live.nl>, 2016.
 # Reinout van Schouwen <reinouts@gnome.org>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-06 18:36+0000\n"
-"PO-Revision-Date: 2016-09-10 16:32+0200\n"
-"Last-Translator: Hannie Dumoleyn <hannie@ubuntu-nl.org>\n"
+"POT-Creation-Date: 2018-01-29 03:07+0000\n"
+"PO-Revision-Date: 2018-02-08 14:01+0100\n"
+"Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Tekstbestanden bewerken"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -43,7 +48,7 @@ msgstr ""
 "gedit is de officiële teksteditor voor de Gnome-werkomgeving. Het is een "
 "gebruiksvriendelijke, krachtige, universele teksteditor."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -53,7 +58,7 @@ msgstr ""
 "gewoon wat snelle aantekeningen maakt, met gedit heeft u een betrouwbaar "
 "hulpmiddel om uw taak te volbrengen."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -65,28 +70,21 @@ msgstr ""
 msgid "Text Editor"
 msgstr "Teksteditor"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "Tekstbestanden bewerken"
-
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
 msgstr "gedit-teksteditor"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-#| msgid "Text;Editor;"
 msgid "Text;Editor;Plaintext;Write;"
 msgstr ""
-"Text;tekst;Editor;teksteditor;tekstverwerker;Plaintext;platte "
-"tekst;Write;schrijven;"
+"Text;tekst;Editor;teksteditor;tekstverwerker;Plaintext;platte tekst;Write;"
+"schrijven;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-#| msgid "_New Window"
 msgid "New Window"
 msgstr "Nieuw venster"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-#| msgid "N_ext Document"
 msgid "New Document"
 msgstr "Nieuw document"
 
@@ -96,9 +94,9 @@ msgstr "Standaardlettertype gebruiken"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
-"Whether to use the system's default fixed width font for editing text "
+"Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
-"font named in the \"Editor Font\" option will be used instead of the system "
+"font named in the “Editor Font” option will be used instead of the system "
 "font."
 msgstr ""
 "Of het standaard, vaste-breedte systeemlettertype gebruikt dient te worden "
@@ -109,7 +107,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
 msgid "'Monospace 12'"
-msgstr "'Monospace 12'"
+msgstr "‘Monospace 12’"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
@@ -118,7 +116,7 @@ msgstr "Editorlettertype"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
-"effect if the \"Use Default Font\" option is turned off."
+"effect if the “Use Default Font” option is turned off."
 msgstr ""
 "Het lettertype dat gebruikt wordt in het bewerkingsgedeelte van de "
 "teksteditor. Dit heeft alleen effect indien de optie ‘Standaardlettertype "
@@ -140,7 +138,7 @@ msgstr "Reservekopieën maken"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid "Whether gedit should create backup copies for the files it saves."
-msgstr "Aanmaken van reservekopieën van opgeslagen bestanden"
+msgstr "Of gedit reservekopieën van opgeslagen bestanden moet aanmaken."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Autosave"
@@ -149,8 +147,7 @@ msgstr "Automatisch opslaan"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid ""
 "Whether gedit should automatically save modified files after a time "
-"interval. You can set the time interval with the \"Autosave Interval\" "
-"option."
+"interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
 "Automatisch opslaan van gewijzigde bestanden na een ingestelde tijd. U kunt "
 "deze tijdsinterval instellen met de de optie ‘Interval voor automatisch "
@@ -163,7 +160,7 @@ msgstr "Interval voor automatisch opslaan"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
-"This will only take effect if the \"Autosave\" option is turned on."
+"This will only take effect if the “Autosave” option is turned on."
 msgstr ""
 "Aantal minuten waarna gedit gewijzigde bestanden automatisch opslaat. Dit "
 "heeft alleen effect wanneer de optie ‘Automatisch opslaan’ ingeschakeld is."
@@ -174,8 +171,8 @@ msgstr "Maximum aantal acties dat ongedaan gemaakt kan worden"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
+"for unlimited number of actions."
 msgstr ""
 "Maximum aantal acties dat gedit ongedaan kan maken of opnieuw kan doen. "
 "Gebruik ‘-1’ voor een ongelimiteerd aantal acties."
@@ -186,10 +183,10 @@ msgstr "Regelafbreekmodus"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-"wrapping at individual character boundaries. Note that the values are case-"
-"sensitive, so make sure they appear exactly as mentioned here."
+"Specifies how to wrap long lines in the editing area. Use “none” for no "
+"wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
 msgstr ""
 "Geeft aan hoe lange regels worden afgebroken tijdens het bewerken. Gebruik "
 "‘none’ om niet af te breken, ‘word’ om op woorden af te breken, en ‘char’ om "
@@ -203,9 +200,9 @@ msgstr "Laatste keuze deelmodus voor regelafbreking gebruiken"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
-"wrapping mode is off we still remember the split mode choice. Use \"word\" "
-"for wrapping at word boundaries, and \"char\" for wrapping at individual "
-"character boundaries."
+"wrapping mode is off we still remember the split mode choice. Use “word” for "
+"wrapping at word boundaries, and “char” for wrapping at individual character "
+"boundaries."
 msgstr ""
 "Specificeert de laatst gebruikte deelmodus met regelafbreking zo dat bij "
 "uitgeschakelde regelafbreking de deelmoduskeuze bewaard blijft. Gebruik "
@@ -301,12 +298,12 @@ msgstr "Slimme Home/End-toetsen"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
-"\"disabled\" to always move at the start/end of the line, \"after\" to move "
-"to the start/end of the line the first time the keys are pressed and to the "
+"“disabled” to always move at the start/end of the line, “after” to move to "
+"the start/end of the line the first time the keys are pressed and to the "
 "start/end of the text ignoring whitespaces the second time the keys are "
-"pressed, \"before\" to move to the start/end of the text before moving to "
-"the start/end of the line and \"always\" to always move to the start/end of "
-"the text instead of the start/end of the line."
+"pressed, “before” to move to the start/end of the text before moving to the "
+"start/end of the line and “always” to always move to the start/end of the "
+"text instead of the start/end of the line."
 msgstr ""
 "Geeft aan hoe de cursor beweegt wanneer de HOME- en END-toetsen ingedrukt "
 "worden. Gebruik ‘disabled’ om altijd naar het begin/einde van een regel te "
@@ -370,8 +367,8 @@ msgstr "Zichtbaarheid tabbladen"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
-"Specifies when to show the notebook tabs. Use \"never\" to never show the "
-"tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
+"Specifies when to show the notebook tabs. Use “never” to never show the "
+"tabs, “always” to always show the tabs, and “auto” to show the tabs only "
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
@@ -409,7 +406,7 @@ msgstr "Maximum aantal recente bestanden"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
-"in the \"Recent Files\" submenu."
+"in the “Recent Files” submenu."
 msgstr ""
 "Het maximum aantal recent geopende bestanden dat wordt weergegeven in het "
 "deelmenu ‘Recente bestanden’."
@@ -436,8 +433,8 @@ msgstr "Regels afbreken bij afdrukken"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
-"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
+"“word” for wrapping at word boundaries, and “char” for wrapping at "
 "individual character boundaries. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
@@ -461,7 +458,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid "'Monospace 9'"
-msgstr "'Monospace 9'"
+msgstr "‘Monospace 9’"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid "Body Font for Printing"
@@ -469,14 +466,14 @@ msgstr "Afdruklettertype voor inhoud"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid ""
-"Specifies the font to use for a document's body when printing documents."
+"Specifies the font to use for a document’s body when printing documents."
 msgstr ""
 "Het lettertype dat bij het afdrukken gebruikt wordt voor de inhoud van "
-"documenten ."
+"documenten."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "'Sans 11'"
-msgstr "'Sans 11'"
+msgstr "‘Sans 11’"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid "Header Font for Printing"
@@ -485,7 +482,7 @@ msgstr "Afdruklettertype voor kop"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:73
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
-"will only take effect if the \"Print Header\" option is turned on."
+"will only take effect if the “Print Header” option is turned on."
 msgstr ""
 "Het lettertype dat bij het afdrukken gebruikt wordt voor de paginakoppen. "
 "Dit heeft alleen effect indien de optie ‘Paginakoppen afdrukken’ is "
@@ -493,7 +490,7 @@ msgstr ""
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 8'"
-msgstr "'Sans 8'"
+msgstr "‘Sans 8’"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Line Number Font for Printing"
@@ -502,10 +499,10 @@ msgstr "Afdruklettertype voor regelnummers"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
-"take effect if the \"Print Line Numbers\" option is non-zero."
+"take effect if the “Print Line Numbers” option is non-zero."
 msgstr ""
 "Het lettertype dat bij het afdrukken gebruikt wordt voor de regelnummers. "
-"Dit heeft alleen effect indien de optie \"Regelnummers afdrukken' is "
+"Dit heeft alleen effect indien de optie ‘Regelnummers afdrukken’ is "
 "ingeschakeld."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:77
@@ -547,12 +544,12 @@ msgstr "Kandidaatsets"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
-"save file chooser. \"CURRENT\" represents the current locale encoding. Only "
+"save file chooser. “CURRENT” represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
 "Lijst met kandidaatsets weergegeven in het tekensetmenu van Bestand openen/"
-"opslaan. \"HUIDIGE\" betekent de huidige taalomgeving. Er worden alleen "
+"opslaan. ‘HUIDIGE’ betekent de huidige taalomgeving. Er worden alleen "
 "erkende tekensets gebruikt. De standaardwaarde is de lege lijst, waarbij "
 "gedit goede standaardwaarden kiest, afhankelijk van land en taal."
 
@@ -562,15 +559,15 @@ msgstr "Actieve plug-ins"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid ""
-"List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+"List of active plugins. It contains the “Location” of the active plugins. "
+"See the .gedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
 "Lijst van actieve plug-ins. Deze bevat de ‘Locatie’ van de actieve plug-ins. "
-"Zie het .gedit-plug-inbestand voor informatie over de ‘Locatie’ van een "
+"Zie het .gedit-plugin-bestand voor informatie over de ‘Locatie’ van een "
 "bepaalde plug-in."
 
 #: ../gedit/gedit-app.c:110
-msgid "Show the application's version"
+msgid "Show the application’s version"
 msgstr "De toepassingsversie tonen"
 
 #: ../gedit/gedit-app.c:116
@@ -606,7 +603,7 @@ msgid "Run gedit in standalone mode"
 msgstr "gedit in standalone-modus draaien"
 
 #: ../gedit/gedit-app.c:158
-msgid "[FILE...] [+LINE[:COLUMN]]"
+msgid "[FILE…] [+LINE[:COLUMN]]"
 msgstr "[BESTAND…] [+REGEL[:KOLOM]]"
 
 #: ../gedit/gedit-app.c:273
@@ -626,17 +623,15 @@ msgstr "Sluiten _zonder opslaan"
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
-#: ../gedit/gedit-io-error-info-bar.c:130
-#: ../gedit/gedit-io-error-info-bar.c:511
 #: ../gedit/gedit-preferences-dialog.c:825
 #: ../gedit/gedit-progress-info-bar.c:49
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:781
-#: ../plugins/snippets/snippets/manager.py:866
-#: ../plugins/snippets/snippets/manager.py:904
+#: ../plugins/quickopen/quickopen/popup.py:45
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
@@ -652,63 +647,63 @@ msgstr "Opslaan _als…"
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:905
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "Op_slaan"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently lost."
+"If you don’t save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld seconds will be permanently "
+"If you don’t save, changes from the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
-"Als u niet opslaat, zijn de wijzigingen van de afgelopen %ld seconde "
-"definitief verloren."
+"Als u niet opslaat, zullen de wijzigingen van de afgelopen %ld seconde "
+"definitief verloren gaan."
 msgstr[1] ""
-"Als u niet opslaat, zijn de wijzigingen van de afgelopen %ld seconden "
-"definitief verloren."
+"Als u niet opslaat, zullen de wijzigingen van de afgelopen %ld seconden "
+"definitief verloren gaan."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
-"If you don't save, changes from the last minute will be permanently lost."
+"If you don’t save, changes from the last minute will be permanently lost."
 msgstr ""
-"Als u niet opslaat, zijn de wijzigingen van de afgelopen minuut definitief "
-"verloren."
+"Als u niet opslaat, zullen de wijzigingen van de afgelopen minuut definitief "
+"verloren gaan."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
-"If you don't save, changes from the last minute and %ld second will be "
+"If you don’t save, changes from the last minute and %ld second will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last minute and %ld seconds will be "
+"If you don’t save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"Als u niet opslaat, zijn de wijzigingen van de afgelopen minuut en %ld "
-"seconde definitief verloren."
+"Als u niet opslaat, zullen de wijzigingen van de afgelopen minuut en %ld "
+"seconde definitief verloren gaan."
 msgstr[1] ""
-"Als u niet opslaat, zijn de wijzigingen van de afgelopen minuut en %ld "
-"seconden definitief verloren."
+"Als u niet opslaat, zullen de wijzigingen van de afgelopen minuut en %ld "
+"seconden definitief verloren gaan."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently lost."
+"If you don’t save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld minutes will be permanently "
+"If you don’t save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
-"Als u niet opslaat, zijn de wijzigingen van de afgelopen %ld minuut "
-"definitief verloren."
+"Als u niet opslaat, zullen de wijzigingen van de afgelopen %ld minuut "
+"definitief verloren gaan."
 msgstr[1] ""
-"Als u niet opslaat, zijn de wijzigingen van de afgelopen %ld minuten "
-"definitief verloren."
+"Als u niet opslaat, zullen de wijzigingen van de afgelopen %ld minuten "
+"definitief verloren gaan."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:364
-msgid "If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don’t save, changes from the last hour will be permanently lost."
 msgstr ""
 "Als u niet opslaat, zullen de wijzigingen van het afgelopen uur definitief "
 "verloren gaan."
@@ -716,30 +711,30 @@ msgstr ""
 #: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
-"If you don't save, changes from the last hour and %d minute will be "
+"If you don’t save, changes from the last hour and %d minute will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last hour and %d minutes will be "
+"If you don’t save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-"Als u niet opslaat, zijn de wijzigingen van het afgelopen uur en %d minuut "
-"definitief verloren."
+"Als u niet opslaat, zullen de wijzigingen van het afgelopen uur en %d minuut "
+"definitief verloren gaan."
 msgstr[1] ""
-"Als u niet opslaat, zijn de wijzigingen van het afgelopen uur en %d minuten "
-"definitief verloren."
+"Als u niet opslaat, zullen de wijzigingen van het afgelopen uur en %d "
+"minuten definitief verloren gaan."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
-"If you don't save, changes from the last %d hour will be permanently lost."
+"If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %d hours will be permanently lost."
+"If you don’t save, changes from the last %d hours will be permanently lost."
 msgstr[0] ""
 "Als u niet opslaat, zullen de wijzigingen van het afgelopen uur definitief "
 "verloren gaan."
 msgstr[1] ""
 "Als u niet opslaat, zullen de wijzigingen van de afgelopen %d uur definitief "
-"verloren."
+"verloren gaan."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
@@ -784,12 +779,12 @@ msgid "S_elect the documents you want to save:"
 msgstr "S_electeer de documenten die u wilt opslaan:"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:562
-msgid "If you don't save, all your changes will be permanently lost."
-msgstr "Als u niet opslaat, zijn al uw wijzigingen definitief verloren."
+msgid "If you don’t save, all your changes will be permanently lost."
+msgstr "Als u niet opslaat, zullen al uw wijzigingen definitief verloren gaan."
 
 #: ../gedit/gedit-commands-file.c:261
 #, c-format
-msgid "Loading file '%s'…"
+msgid "Loading file “%s”…"
 msgstr "Laden van bestand ‘%s’…"
 
 #: ../gedit/gedit-commands-file.c:270
@@ -809,14 +804,14 @@ msgstr "Openen"
 #: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:39
-#: ../plugins/snippets/snippets/manager.py:782
+#: ../plugins/quickopen/quickopen/popup.py:46
+#: ../plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "_Openen"
 
 #: ../gedit/gedit-commands-file.c:558
 #, c-format
-msgid "The file \"%s\" is read-only."
+msgid "The file “%s” is read-only."
 msgstr "Het bestand ‘%s’ is alleen-lezen."
 
 #: ../gedit/gedit-commands-file.c:563
@@ -839,8 +834,8 @@ msgstr "Bestand als platte tekst opslaan?"
 #: ../gedit/gedit-commands-file.c:625
 #, c-format
 msgid ""
-"The file \"%s\" was previously saved as plain text and will now be saved "
-"using compression."
+"The file “%s” was previously saved as plain text and will now be saved using "
+"compression."
 msgstr ""
 "Het bestand ‘%s’ was hiervoor als platte tekst opgeslagen en zal nu met "
 "compressie opgeslagen worden."
@@ -852,7 +847,7 @@ msgstr "_Opslaan met compressie"
 #: ../gedit/gedit-commands-file.c:634
 #, c-format
 msgid ""
-"The file \"%s\" was previously saved using compression and will now be saved "
+"The file “%s” was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
 "Het bestand ‘%s’ was hiervoor met compressie opgeslagen en zal nu als platte "
@@ -860,11 +855,11 @@ msgstr ""
 
 #: ../gedit/gedit-commands-file.c:637
 msgid "_Save As Plain Text"
-msgstr "Als platte tekst op_slaan"
+msgstr "Op_slaan als platte tekst"
 
 #: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
-msgid "Saving file '%s'…"
+msgid "Saving file “%s”…"
 msgstr "Opslaan van bestand ‘%s’…"
 
 #. Translators: "Save As" is the title of the file chooser window.
@@ -875,12 +870,12 @@ msgstr "Opslaan als"
 
 #: ../gedit/gedit-commands-file.c:1429
 #, c-format
-msgid "Reverting the document '%s'…"
+msgid "Reverting the document “%s”…"
 msgstr "Terugzetten van document ‘%s’…"
 
 #: ../gedit/gedit-commands-file.c:1476
 #, c-format
-msgid "Revert unsaved changes to document '%s'?"
+msgid "Revert unsaved changes to document “%s”?"
 msgstr "Niet opgeslagen wijzigingen in document ‘%s’ terugdraaien?"
 
 #: ../gedit/gedit-commands-file.c:1485
@@ -995,7 +990,7 @@ msgstr ""
 "Nathan Follens\n"
 "Justin van Steijn\n"
 "\n"
-"Kijk voor meer informatie op http://nl.gnome.org/"
+"Meer info over Gnome-NL http://nl.gnome.org/"
 
 #: ../gedit/gedit-commands-search.c:107
 #, c-format
@@ -1012,7 +1007,7 @@ msgstr "Eén zoekterm gevonden en vervangen"
 #. entered by the user in the search box
 #: ../gedit/gedit-commands-search.c:142
 #, c-format
-msgid "\"%s\" not found"
+msgid "“%s” not found"
 msgstr "‘%s’ niet gevonden"
 
 #: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
@@ -1037,8 +1032,8 @@ msgstr "Automatisch herkend"
 
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
-msgid "Add or Remove..."
-msgstr "Toevoegen of verwijderen..."
+msgid "Add or Remove…"
+msgstr "Toevoegen of verwijderen…"
 
 #: ../gedit/gedit-encoding-items.c:92
 #, c-format
@@ -1051,7 +1046,7 @@ msgid "%s (Current Locale)"
 msgstr "Huidige taalomgeving (%s)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
-msgid "Do you really want to reset the character encodings' preferences?"
+msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr "Weet u zeker dat u de tekensetvoorkeuren wilt resetten?"
 
 #. Reset button
@@ -1101,55 +1096,56 @@ msgid "Line Ending:"
 msgstr "Regeleinde:"
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
-#: ../plugins/externaltools/tools/manager.py:108
-#: ../plugins/externaltools/tools/manager.py:317
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:767
+#: ../plugins/externaltools/tools/manager.py:115
+#: ../plugins/externaltools/tools/manager.py:324
+#: ../plugins/externaltools/tools/manager.py:440
+#: ../plugins/externaltools/tools/manager.py:774
 msgid "Plain Text"
 msgstr "Platte tekst"
 
-#: ../gedit/gedit-io-error-info-bar.c:143
+#: ../gedit/gedit-io-error-info-bar.c:142
 #: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "_Opnieuw"
 
-#: ../gedit/gedit-io-error-info-bar.c:163
+#: ../gedit/gedit-io-error-info-bar.c:162
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Bestand ‘%s’ niet gevonden."
 
-#: ../gedit/gedit-io-error-info-bar.c:165
-#: ../gedit/gedit-io-error-info-bar.c:205
-#: ../gedit/gedit-io-error-info-bar.c:212
+#: ../gedit/gedit-io-error-info-bar.c:164
+#: ../gedit/gedit-io-error-info-bar.c:204
+#: ../gedit/gedit-io-error-info-bar.c:211
 msgid "Please check that you typed the location correctly and try again."
 msgstr ""
 "Controleer of u de locatie juist heeft ingevoerd en probeer het opnieuw."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:184
+#: ../gedit/gedit-io-error-info-bar.c:183
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "gedit kan ‘%s:’-locaties niet aan."
 
-#: ../gedit/gedit-io-error-info-bar.c:190
+#: ../gedit/gedit-io-error-info-bar.c:189
 msgid "Unable to handle this location."
 msgstr "gedit kan deze locatie niet aan."
 
-#: ../gedit/gedit-io-error-info-bar.c:199
+#: ../gedit/gedit-io-error-info-bar.c:198
 msgid "The location of the file cannot be accessed."
 msgstr "Geen toegang tot de locatie van het bestand."
 
-#: ../gedit/gedit-io-error-info-bar.c:203
+#: ../gedit/gedit-io-error-info-bar.c:202
 #, c-format
 msgid "“%s” is a directory."
 msgstr "‘%s’ is een map."
 
-#: ../gedit/gedit-io-error-info-bar.c:210
+#: ../gedit/gedit-io-error-info-bar.c:209
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "‘%s’ is een ongeldige locatie."
 
-#: ../gedit/gedit-io-error-info-bar.c:246
+#. Translators: %s is a host name
+#: ../gedit/gedit-io-error-info-bar.c:245
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1158,7 +1154,7 @@ msgstr ""
 "De computer ‘%s’ is onvindbaar. Controleer of de proxy-instellingen juist "
 "zijn en probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:261
+#: ../gedit/gedit-io-error-info-bar.c:260
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1167,50 +1163,50 @@ msgstr ""
 "De gegeven computernaam is ongeldig. Controleer of u de juiste locatie heeft "
 "ingevoerd en probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:269
+#: ../gedit/gedit-io-error-info-bar.c:268
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "‘%s’ is geen gewoon bestand."
 
-#: ../gedit/gedit-io-error-info-bar.c:274
+#: ../gedit/gedit-io-error-info-bar.c:273
 msgid "Connection timed out. Please try again."
 msgstr "Verbingswachttijd verlopen. Probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:307
+#: ../gedit/gedit-io-error-info-bar.c:306
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Onverwachte fout: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:343
+#: ../gedit/gedit-io-error-info-bar.c:342
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "gedit kan het bestand niet vinden. Mogelijk is het onlangs verwijderd."
 
-#: ../gedit/gedit-io-error-info-bar.c:353
+#: ../gedit/gedit-io-error-info-bar.c:352
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "Bestand ‘%s’ kon niet worden teruggezet."
 
-#: ../gedit/gedit-io-error-info-bar.c:380
+#: ../gedit/gedit-io-error-info-bar.c:379
 msgid "Ch_aracter Encoding:"
 msgstr "T_ekenset:"
 
-#: ../gedit/gedit-io-error-info-bar.c:441
+#: ../gedit/gedit-io-error-info-bar.c:440
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "De locatie ‘%s’ kan momenteel niet bereikt worden."
 
-#: ../gedit/gedit-io-error-info-bar.c:456
+#: ../gedit/gedit-io-error-info-bar.c:455
 msgid "Your system is offline. Check your network."
 msgstr "Uw systeem is offline. Controleer het netwerk."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:499
-#: ../gedit/gedit-io-error-info-bar.c:768
+#: ../gedit/gedit-io-error-info-bar.c:764
 msgid "Edit Any_way"
 msgstr "Toch be_werken"
 
-#: ../gedit/gedit-io-error-info-bar.c:591
+#: ../gedit/gedit-io-error-info-bar.c:587
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1218,29 +1214,29 @@ msgstr ""
 "Het aantal gevolgde verwijzigen is gelimiteerd en het daadwerkelijke bestand "
 "kon niet gevonden worden binnen deze limiet."
 
-#: ../gedit/gedit-io-error-info-bar.c:595
+#: ../gedit/gedit-io-error-info-bar.c:591
 msgid "You do not have the permissions necessary to open the file."
 msgstr "U heeft niet de benodigde rechten om het bestand te openen."
 
-#: ../gedit/gedit-io-error-info-bar.c:601
+#: ../gedit/gedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
 msgstr "gedit kon de tekenset niet detecteren."
 
-#: ../gedit/gedit-io-error-info-bar.c:602
-#: ../gedit/gedit-io-error-info-bar.c:626
+#: ../gedit/gedit-io-error-info-bar.c:598
+#: ../gedit/gedit-io-error-info-bar.c:622
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Controleer of u geen binair-bestand probeert te openen."
 
-#: ../gedit/gedit-io-error-info-bar.c:603
+#: ../gedit/gedit-io-error-info-bar.c:599
 msgid "Select a character encoding from the menu and try again."
 msgstr "Selecteer een tekenset uit het menu en probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:609
+#: ../gedit/gedit-io-error-info-bar.c:605
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "Er is een probleem opgetreden bij het openen van het bestand ‘%s’."
 
-#: ../gedit/gedit-io-error-info-bar.c:611
+#: ../gedit/gedit-io-error-info-bar.c:607
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1248,31 +1244,31 @@ msgstr ""
 "Het geopende bestand bevat enkele ongeldige tekens. Indien u doorgaat met "
 "het bewerken van dit bestand, kunt u het document mogelijk onbruikbaar maken."
 
-#: ../gedit/gedit-io-error-info-bar.c:614
+#: ../gedit/gedit-io-error-info-bar.c:610
 msgid "You can also choose another character encoding and try again."
 msgstr "U kunt ook een andere tekenset kiezen en het opnieuw proberen."
 
-#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:619
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "Bestand ‘%s’ kon niet geopend worden met de ‘%s’-tekenset."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
-#: ../gedit/gedit-io-error-info-bar.c:702
+#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:698
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Selecteer een andere tekenset uit het menu en probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:639
+#: ../gedit/gedit-io-error-info-bar.c:635
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "Bestand ‘%s’ kon niet worden geopend."
 
-#: ../gedit/gedit-io-error-info-bar.c:697
+#: ../gedit/gedit-io-error-info-bar.c:693
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "Bestand ‘%s’ kon niet opgeslagen worden met de ‘%s’-tekenset."
 
-#: ../gedit/gedit-io-error-info-bar.c:700
+#: ../gedit/gedit-io-error-info-bar.c:696
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1282,58 +1278,58 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:773
-msgid "D_on't Edit"
+#: ../gedit/gedit-io-error-info-bar.c:769
+msgid "D_on’t Edit"
 msgstr "_Niet bewerken"
 
-#: ../gedit/gedit-io-error-info-bar.c:783
+#: ../gedit/gedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Dit bestand ‘%s’ is al geopend in een ander venster."
 
-#: ../gedit/gedit-io-error-info-bar.c:797
+#: ../gedit/gedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
 msgstr "Wilt u het bestand toch bewerken?"
 
-#: ../gedit/gedit-io-error-info-bar.c:853
-#: ../gedit/gedit-io-error-info-bar.c:943
-#: ../gedit/gedit-io-error-info-bar.c:1235
+#: ../gedit/gedit-io-error-info-bar.c:849
+#: ../gedit/gedit-io-error-info-bar.c:939
+#: ../gedit/gedit-io-error-info-bar.c:1229
 msgid "S_ave Anyway"
 msgstr "Toc_h opslaan"
 
-#: ../gedit/gedit-io-error-info-bar.c:856
-#: ../gedit/gedit-io-error-info-bar.c:946
-#: ../gedit/gedit-io-error-info-bar.c:1238
-msgid "D_on't Save"
-msgstr "_Niet opslaan"
+#: ../gedit/gedit-io-error-info-bar.c:852
+#: ../gedit/gedit-io-error-info-bar.c:942
+#: ../gedit/gedit-io-error-info-bar.c:1232
+msgid "D_on’t Save"
+msgstr "Niet _opslaan"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:870
+#: ../gedit/gedit-io-error-info-bar.c:866
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "Het bestand ‘%s’ is gewijzigd nadat het werd ingelezen."
 
-#: ../gedit/gedit-io-error-info-bar.c:885
+#: ../gedit/gedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Als u het opslaat kunnen alle externe wijzigingen verloren gaan. Toch "
 "opslaan?"
 
-#: ../gedit/gedit-io-error-info-bar.c:965
+#: ../gedit/gedit-io-error-info-bar.c:961
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "Maken van een reservekopie tijdens het opslaan van ‘%s’ is mislukt"
 
-#: ../gedit/gedit-io-error-info-bar.c:970
+#: ../gedit/gedit-io-error-info-bar.c:966
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
 "Maken van een tijdelijke reservekopie tijdens het opslaan van ‘%s’ is mislukt"
 
-#: ../gedit/gedit-io-error-info-bar.c:987
+#: ../gedit/gedit-io-error-info-bar.c:983
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1345,7 +1341,7 @@ msgstr ""
 "nieuwe bestand, dan kunt u mogelijk het oude bestand verliezen. Toch opslaan?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1047
+#: ../gedit/gedit-io-error-info-bar.c:1043
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1354,7 +1350,7 @@ msgstr ""
 "gedit kan ‘%s:’-locaties niet gebruiken in schrijfmodus. Controleer of u de "
 "locatie correct heeft ingevoerd en probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:1055
+#: ../gedit/gedit-io-error-info-bar.c:1051
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1362,7 +1358,7 @@ msgstr ""
 "gedit kan deze locatie niet gebruiken in schrijfmodus. Controleer of u de "
 "locatie correct heeft ingevoerd en probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:1064
+#: ../gedit/gedit-io-error-info-bar.c:1060
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1371,7 +1367,7 @@ msgstr ""
 "‘%s’ is een geen geldige locatie. Controleer of u de locatie correct heeft "
 "ingevoerd en probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:1071
+#: ../gedit/gedit-io-error-info-bar.c:1067
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1379,7 +1375,7 @@ msgstr ""
 "U heeft niet de benodigde rechten om het bestand op te slaan. Controleer of "
 "u de locatie correct heeft ingevoerd en probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:1077
+#: ../gedit/gedit-io-error-info-bar.c:1073
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1387,7 +1383,7 @@ msgstr ""
 "Er is niet genoeg vrije schijfruimte om het bestand op te slaan. Maak wat "
 "schijfruimte vrij en probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1078
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1395,11 +1391,11 @@ msgstr ""
 "U probeert het bestand op een alleen-lezen-schijf op te slaan. Controleer of "
 "u de locatie correct heeft ingevoerd en probeer het opnieuw."
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../gedit/gedit-io-error-info-bar.c:1084
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Er bestaat al een bestand met dezelfde naam. Gebruik een andere naam."
 
-#: ../gedit/gedit-io-error-info-bar.c:1093
+#: ../gedit/gedit-io-error-info-bar.c:1089
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1407,7 +1403,7 @@ msgstr ""
 "De schijf waarop u probeert op te slaan heeft een limiet voor de lengte van "
 "bestandsnamen. Gebruik een kortere bestandsnaam."
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../gedit/gedit-io-error-info-bar.c:1100
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1417,37 +1413,33 @@ msgstr ""
 "bestanden. Probeer het bestand kleiner te maken of probeer naar een schijf "
 "op te slaan die deze limiet niet heeft."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1117
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Het bestand ‘%s’ kon niet opgeslagen worden."
 
-#: ../gedit/gedit-io-error-info-bar.c:1161
+#: ../gedit/gedit-io-error-info-bar.c:1157
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "Het bestand ‘%s’ is gewijzigd op schijf."
 
-#: ../gedit/gedit-io-error-info-bar.c:1172
+#: ../gedit/gedit-io-error-info-bar.c:1168
 msgid "Drop Changes and _Reload"
 msgstr "Wijzigingen annuleren en _herladen"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182
+#: ../gedit/gedit-io-error-info-bar.c:1178
 #: ../gedit/resources/gtk/menus-common.ui.h:21
 #: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 msgid "_Reload"
 msgstr "He_rladen"
 
-#: ../gedit/gedit-io-error-info-bar.c:1187
-msgid "_Ignore"
-msgstr "Ne_geren"
-
-#: ../gedit/gedit-io-error-info-bar.c:1248
+#: ../gedit/gedit-io-error-info-bar.c:1242
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "Er zijn enkele ongeldige tekens gedetecteerd bij het opslaan van ‘%s’"
 
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../gedit/gedit-io-error-info-bar.c:1258
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1466,7 +1458,7 @@ msgstr "_Vaste-breedte systeemlettertype (%s) gebruiken"
 
 #: ../gedit/gedit-preferences-dialog.c:601
 #, c-format
-msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Map ‘%s’ kon niet worden aangemaakt: g_mkdir_with_parents() mislukt: %s"
 
@@ -1488,11 +1480,11 @@ msgstr "Kleurschema-bestanden"
 
 #: ../gedit/gedit-preferences-dialog.c:861
 #, c-format
-msgid "Could not remove color scheme \"%s\"."
-msgstr "Het kleurenschema ‘%s’ kon niet worden verwijderd"
+msgid "Could not remove color scheme “%s”."
+msgstr "Het kleurenschema ‘%s’ kon niet worden verwijderd."
 
 #: ../gedit/gedit-print-job.c:227
-msgid "Preparing..."
+msgid "Preparing…"
 msgstr "Voorbereiden…"
 
 #: ../gedit/gedit-print-job.c:539
@@ -1500,14 +1492,17 @@ msgstr "Voorbereiden…"
 msgid "File: %s"
 msgstr "Bestand: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Pagina %N van %Q"
 
 #: ../gedit/gedit-print-job.c:626
 #, c-format
-msgid "Rendering page %d of %d..."
-msgstr "Pagina %d van %d wordt gerenderd..."
+msgid "Rendering page %d of %d…"
+msgstr "Pagina %d van %d wordt gerenderd…"
 
 #: ../gedit/gedit-print-preview.c:653
 #, c-format
@@ -1614,7 +1609,7 @@ msgstr "Kon UI-bestand ‘%s’ niet openen. Fout: %s"
 
 #: ../gedit/gedit-utils.c:921
 #, c-format
-msgid "Unable to find the object '%s' inside file %s."
+msgid "Unable to find the object “%s” inside file %s."
 msgstr "Kon object ‘%s’ in het bestand ‘%s’ niet vinden."
 
 #. Translators: '/ on <remote-share>'
@@ -1826,8 +1821,8 @@ msgid "_Paste"
 msgstr "_Plakken"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Verwijderen"
@@ -1847,6 +1842,7 @@ msgid "_Preferences"
 msgstr "_Voorkeuren"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:34
+#: ../gedit/resources/gtk/menus.ui.h:16
 msgid "_View"
 msgstr "_Beeld"
 
@@ -1907,6 +1903,7 @@ msgid "Go to _Line…"
 msgstr "Ga naar rege_l…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:46
+#: ../gedit/resources/gtk/menus.ui.h:20
 msgid "_Tools"
 msgstr "_Extra"
 
@@ -1982,13 +1979,11 @@ msgstr "_Zoeken en vervangen…"
 msgid "_Go to Line…"
 msgstr "_Ga naar regel…"
 
-#: ../gedit/resources/gtk/menus.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Beeld"
 
-#: ../gedit/resources/gtk/menus.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 msgid "Tools"
 msgstr "Extra"
@@ -2026,7 +2021,7 @@ msgid "_Select"
 msgstr "_Selecteren"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
-msgid "Search highlight mode..."
+msgid "Search highlight mode…"
 msgstr "Markering zoeken…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
@@ -2132,7 +2127,7 @@ msgstr "Lettertype"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
-msgstr "_Editorlettertype:"
+msgstr "_Editorlettertype: "
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
@@ -2239,15 +2234,15 @@ msgstr "van"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:6
 msgid "Page total"
-msgstr "Totaal aantal pagina's"
+msgstr "Totaal aantal pagina’s"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:7
 msgid "The total number of pages in the document"
-msgstr "Het totale aantal pagina's in het document"
+msgstr "Het totale aantal pagina’s in het document"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:8
 msgid "Show multiple pages"
-msgstr "Meerdere pagina's tonen"
+msgstr "Meerdere pagina’s tonen"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:9
 msgid "Zoom 1:1"
@@ -2293,7 +2288,7 @@ msgstr "_Zoeken"
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
-msgstr "Zoe_ken"
+msgstr "Zoe_ken "
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
 msgid "Replace _with "
@@ -2376,8 +2371,8 @@ msgstr "Naar vorig document wisselen"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
 msgctxt "shortcut window"
-msgid "Switch to the first - ninth document"
-msgstr "Naar het eerste - negende document wisselen"
+msgid "Switch to the first — ninth document"
+msgstr "Naar het eerste — negende document wisselen"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
 msgctxt "shortcut window"
@@ -2654,7 +2649,7 @@ msgstr "Te negeren versie"
 #. This is releated to the next gedit version to be released
 #: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
-msgstr "Te negeren versie totdat de volgende versie is uitgegeven"
+msgstr "Te negeren versie totdat de volgende versie is uitgegeven."
 
 #. ex:set ts=8 noet:
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
@@ -2703,7 +2698,7 @@ msgid "Build"
 msgstr "Bouwen"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
-msgid "Run \"make\" in the document directory"
+msgid "Run “make” in the document directory"
 msgstr "‘make’ uitvoeren in de documentmap"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
@@ -2744,7 +2739,7 @@ msgstr "Geselecteerde tekst of huidige document naar fpaste plakken"
 
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
-msgstr "Externe hulpprogramma's"
+msgstr "Externe hulpprogramma’s"
 
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:2
 msgid "Execute external commands and shell scripts."
@@ -2758,7 +2753,7 @@ msgstr "Of het systeemlettertype gebruikt moet worden"
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
-"it's monospace (and the most similar font it can come up with otherwise)."
+"it’s monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "Indien ingeschakeld zullen de externe hulpmiddelen het standaardlettertype "
 "van de werkomgeving gebruiken als dat een vaste breedte heeft (en het meest "
@@ -2766,71 +2761,71 @@ msgstr ""
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
-msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr ""
 "Een Pango-lettertypebeschrijving. Voorbeelden zijn ‘Sans 12’ of ‘Monospace "
 "Bold 14’."
 
-#: ../plugins/externaltools/tools/appactivatable.py:126
-msgid "Manage _External Tools..."
-msgstr "Beheer _externe hulpprogramma's…"
+#: ../plugins/externaltools/tools/appactivatable.py:133
+msgid "Manage _External Tools…"
+msgstr "Beheer _externe hulpprogramma’s…"
 
-#: ../plugins/externaltools/tools/appactivatable.py:131
+#: ../plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
-msgstr "Externe _hulpprogramma's"
+msgstr "Externe _hulpprogramma’s"
 
-#: ../plugins/externaltools/tools/capture.py:99
+#: ../plugins/externaltools/tools/capture.py:106
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "De opdracht %s kon niet worden uitgevoerd"
 
 # deze opdracht werkt alleen binnen een woord/wanneer u zich in een
 # woord bevindt/wanneer de cursor zich binnen een woord bevindt
-#: ../plugins/externaltools/tools/functions.py:184
+#: ../plugins/externaltools/tools/functions.py:191
 msgid "You must be inside a word to run this command"
 msgstr "Deze opdracht werkt alleen binnen een woord"
 
-#: ../plugins/externaltools/tools/functions.py:302
+#: ../plugins/externaltools/tools/functions.py:309
 msgid "Running tool:"
 msgstr "Uitvoeren hulp-opdracht:"
 
-#: ../plugins/externaltools/tools/functions.py:333
+#: ../plugins/externaltools/tools/functions.py:340
 msgid "Done."
 msgstr "Klaar."
 
-#: ../plugins/externaltools/tools/functions.py:335
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Exited"
 msgstr "Afgesloten"
 
-#: ../plugins/externaltools/tools/manager.py:106
+#: ../plugins/externaltools/tools/manager.py:113
 msgid "All languages"
 msgstr "Alle talen"
 
-#: ../plugins/externaltools/tools/manager.py:422
-#: ../plugins/externaltools/tools/manager.py:426
-#: ../plugins/externaltools/tools/manager.py:765
+#: ../plugins/externaltools/tools/manager.py:429
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:772
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "Alle talen"
 
-#: ../plugins/externaltools/tools/manager.py:539
+#: ../plugins/externaltools/tools/manager.py:546
 msgid "New tool"
 msgstr "Nieuw hulpprogramma"
 
-#: ../plugins/externaltools/tools/manager.py:676
+#: ../plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Deze sneltoets is al gekoppeld aan %s"
 
-#: ../plugins/externaltools/tools/manager.py:720
+#: ../plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Typ een nieuwe sneltoets, of druk op Backspace om te wissen"
 
-#: ../plugins/externaltools/tools/manager.py:722
+#: ../plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator"
 msgstr "Typ een nieuwe sneltoets"
 
-#: ../plugins/externaltools/tools/outputpanel.py:122
+#: ../plugins/externaltools/tools/outputpanel.py:129
 msgid "Stopped."
 msgstr "Gestopt."
 
@@ -2909,7 +2904,7 @@ msgstr "Invoegen op cursorpositie"
 
 #: ../plugins/externaltools/tools/tools.ui.h:19
 msgid "Manage External Tools"
-msgstr "Beheer externe hulpprogramma's"
+msgstr "Beheer externe hulpprogramma’s"
 
 #: ../plugins/externaltools/tools/tools.ui.h:20
 msgid "Add a new tool"
@@ -2955,7 +2950,7 @@ msgstr "_Uitvoer:"
 msgid "_Applicability:"
 msgstr "Toe_pasbaarheid:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:119
+#: ../plugins/externaltools/tools/windowactivatable.py:126
 msgid "Tool Output"
 msgstr "Uitvoer hulpprogramma"
 
@@ -3014,7 +3009,7 @@ msgstr "Er is een fout opgetreden bij het laden van een map"
 msgid "An error occurred"
 msgstr "Er is een fout opgetreden"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -3022,27 +3017,27 @@ msgstr ""
 "Kan het bestand niet naar de prullenbak verplaatsen.\n"
 "Wilt u het definitief verwijderen?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
-msgid "The file \"%s\" cannot be moved to the trash."
+msgid "The file “%s” cannot be moved to the trash."
 msgstr "Het bestand ‘%s’ kan niet naar de prullenbak worden verplaatst."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr ""
 "De geselecteerde bestanden kunnen niet naar de prullenbak worden verplaatst."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
+msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "Weet u zeker dat u ‘%s’ definitief wilt verwijderen?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr ""
 "Weet u zeker dat u de geselecteerde bestanden definitief wilt verwijderen?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Wanneer u een item verwijdert is het definitief weg."
 
@@ -3056,7 +3051,7 @@ msgid ""
 "settings to make the file visible"
 msgstr ""
 "Het hernoemde bestand is momenteel niet zichtbaar door het filter. U moet uw "
-"filter aanpassen om het bestand zichtbaar te maken."
+"filter aanpassen om het bestand zichtbaar te maken"
 
 #. Translators: This is the default name of new files created by the file browser pane.
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3772
@@ -3082,7 +3077,7 @@ msgid ""
 "settings to make the directory visible"
 msgstr ""
 "De nieuwe map is momenteel niet zichtbaar door het filter. U moet uw filter "
-"aanpassen om de map zichtbaar te maken."
+"aanpassen om de map zichtbaar te maken"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:754
 msgid "Bookmarks"
@@ -3105,7 +3100,7 @@ msgstr "Kon volume niet aankoppelen: %s"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
 #, c-format
-msgid "Error when loading '%s': No such directory"
+msgid "Error when loading “%s”: No such directory"
 msgstr "Er is een fout opgetreden bij het laden van ‘%s’: map niet gevonden"
 
 #. ex:set ts=8 noet:
@@ -3167,7 +3162,7 @@ msgstr "Locatie van eerste document instellen"
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
-"document given that the file browser hasn't been used yet. (Thus this "
+"document given that the file browser hasn’t been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
 "with Nautilus, etc.)"
 msgstr ""
@@ -3228,8 +3223,8 @@ msgid "New F_ile"
 msgstr "Nieuw _bestand"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
-msgid "_Rename..."
-msgstr "_Hernoemen…"
+msgid "_Rename…"
+msgstr "He_rnoemen…"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
@@ -3298,7 +3293,7 @@ msgstr "De tekstkleur voor foutmeldingen"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
-"If true, the terminal will use the desktop-global standard font if it's "
+"If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "Indien ingeschakeld zal de terminal het standaardlettertype van de "
@@ -3314,7 +3309,7 @@ msgid "_Error color:"
 msgstr "_Foutmeldingskleur:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Python-opdrachtregel"
@@ -3323,13 +3318,13 @@ msgstr "Python-opdrachtregel"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interactieve Python-opdrachtregel in het onderpaneel"
 
-#: ../plugins/quickopen/quickopen/__init__.py:40
-msgid "Quick Open..."
+#: ../plugins/quickopen/quickopen/__init__.py:47
+msgid "Quick Open…"
 msgstr "Snel openen…"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:33
+#: ../plugins/quickopen/quickopen/popup.py:40
 msgid "Quick Open"
 msgstr "Snel openen"
 
@@ -3337,93 +3332,93 @@ msgstr "Snel openen"
 msgid "Quickly open files"
 msgstr "Bestanden snel openen"
 
-#: ../plugins/quickopen/quickopen/popup.py:83
-msgid "Type to search..."
+#: ../plugins/quickopen/quickopen/popup.py:90
+msgid "Type to search…"
 msgstr "Typ om te zoeken…"
 
-#: ../plugins/snippets/snippets/appactivatable.py:81
-msgid "Manage _Snippets..."
-msgstr "Knipsels _beheren…"
+#: ../plugins/snippets/snippets/appactivatable.py:88
+msgid "Manage _Snippets…"
+msgstr "Knip_selbeheer…"
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:56
-#: ../plugins/snippets/snippets/document.py:145
-#: ../plugins/snippets/snippets/document.py:659
+#: ../plugins/snippets/snippets/document.py:64
+#: ../plugins/snippets/snippets/document.py:153
+#: ../plugins/snippets/snippets/document.py:667
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Knipsels"
 
-#: ../plugins/snippets/snippets/exporter.py:80
+#: ../plugins/snippets/snippets/exporter.py:88
 #, python-format
-msgid "The archive \"%s\" could not be created"
+msgid "The archive “%s” could not be created"
 msgstr "Het archief ‘%s’ kon niet worden aangemaakt"
 
-#: ../plugins/snippets/snippets/exporter.py:97
+#: ../plugins/snippets/snippets/exporter.py:105
 #, python-format
-msgid "Target directory \"%s\" does not exist"
+msgid "Target directory “%s” does not exist"
 msgstr "Doelmap ‘%s’ bestaat niet"
 
-#: ../plugins/snippets/snippets/exporter.py:100
+#: ../plugins/snippets/snippets/exporter.py:108
 #, python-format
-msgid "Target directory \"%s\" is not a valid directory"
+msgid "Target directory “%s” is not a valid directory"
 msgstr "Doelmap ‘%s’ is geen geldige map"
 
-#: ../plugins/snippets/snippets/importer.py:47
-#: ../plugins/snippets/snippets/importer.py:108
+#: ../plugins/snippets/snippets/importer.py:55
+#: ../plugins/snippets/snippets/importer.py:116
 #, python-format
-msgid "File \"%s\" does not exist"
+msgid "File “%s” does not exist"
 msgstr "Het bestand ‘%s’ bestaat niet"
 
-#: ../plugins/snippets/snippets/importer.py:50
+#: ../plugins/snippets/snippets/importer.py:58
 #, python-format
-msgid "File \"%s\" is not a valid snippets file"
-msgstr "Bestand ‘%s’ is geen geldig knipselbestand."
+msgid "File “%s” is not a valid snippets file"
+msgstr "Bestand ‘%s’ is geen geldig knipselbestand"
 
-#: ../plugins/snippets/snippets/importer.py:67
+#: ../plugins/snippets/snippets/importer.py:75
 #, python-format
-msgid "Imported file \"%s\" is not a valid snippets file"
+msgid "Imported file “%s” is not a valid snippets file"
 msgstr "Geïmporteerd bestand ‘%s’ is geen geldig knipselbestand"
 
-#: ../plugins/snippets/snippets/importer.py:77
+#: ../plugins/snippets/snippets/importer.py:85
 #, python-format
-msgid "The archive \"%s\" could not be extracted"
+msgid "The archive “%s” could not be extracted"
 msgstr "Het archief ‘%s’ kon niet worden uitgepakt"
 
-#: ../plugins/snippets/snippets/importer.py:95
+#: ../plugins/snippets/snippets/importer.py:103
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "De volgende bestanden konden niet worden geïmporteerd: %s"
 
-#: ../plugins/snippets/snippets/importer.py:111
-#: ../plugins/snippets/snippets/importer.py:124
+#: ../plugins/snippets/snippets/importer.py:119
+#: ../plugins/snippets/snippets/importer.py:132
 #, python-format
-msgid "File \"%s\" is not a valid snippets archive"
+msgid "File “%s” is not a valid snippets archive"
 msgstr "Bestand ‘%s’ is geen geldig knipselarchief"
 
-#: ../plugins/snippets/snippets/manager.py:42
+#: ../plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
 msgstr "Knipselarchief"
 
-#: ../plugins/snippets/snippets/manager.py:66
-msgid "Add a new snippet..."
+#: ../plugins/snippets/snippets/manager.py:74
+msgid "Add a new snippet…"
 msgstr "Nieuw knipsel toevoegen…"
 
-#: ../plugins/snippets/snippets/manager.py:116
+#: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
 msgstr "Algemeen"
 
-#: ../plugins/snippets/snippets/manager.py:406
+#: ../plugins/snippets/snippets/manager.py:414
 msgid "Revert selected snippet"
 msgstr "Geselecteerd knipsel terugdraaien"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:417
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "Geselecteerd knipsel verwijderen"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:662
+#: ../plugins/snippets/snippets/manager.py:670
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3433,89 +3428,89 @@ msgstr ""
 "‘:’ en ‘.’) of een enkel (niet-alfanumeriek) teken zoals ‘{’ of ‘[’."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:669
+#: ../plugins/snippets/snippets/manager.py:677
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr ""
 "Enkel woord waarmee het knipsel geactiveerd wordt na het drukken op de "
 "tabtoets"
 
-#: ../plugins/snippets/snippets/manager.py:758
+#: ../plugins/snippets/snippets/manager.py:766
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Het importeren is mislukt met fout: %s"
 
-#: ../plugins/snippets/snippets/manager.py:765
+#: ../plugins/snippets/snippets/manager.py:773
 msgid "Import successfully completed"
 msgstr "Importeren succesvol voltooid"
 
-#: ../plugins/snippets/snippets/manager.py:779
+#: ../plugins/snippets/snippets/manager.py:787
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "Knipsels importeren"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All supported archives"
 msgstr "Alle ondersteunde archieven"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:793
+#: ../plugins/snippets/snippets/manager.py:879
+#: ../plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
 msgstr "Gzip-gecomprimeerd archief"
 
-#: ../plugins/snippets/snippets/manager.py:786
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:935
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
 msgstr "Bzip2-gecomprimeerd archief"
 
-#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
 msgstr "Een enkel knipselarchief"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "All files"
 msgstr "Alle bestanden"
 
-#: ../plugins/snippets/snippets/manager.py:800
+#: ../plugins/snippets/snippets/manager.py:808
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Er deed zich een fout voor tijdens het exporteren: %s"
 
-#: ../plugins/snippets/snippets/manager.py:804
+#: ../plugins/snippets/snippets/manager.py:812
 msgid "Export successfully completed"
 msgstr "Exporteren succesvol voltooid"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:844
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:852
+#: ../plugins/snippets/snippets/manager.py:919
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "Wilt u de geselecteerde <b>systeem</b>-knipsels opnemen in uw export?"
 
-#: ../plugins/snippets/snippets/manager.py:859
-#: ../plugins/snippets/snippets/manager.py:929
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "There are no snippets selected to be exported"
 msgstr "Er zijn geen knipsels geselecteerd om te exporteren"
 
-#: ../plugins/snippets/snippets/manager.py:864
-#: ../plugins/snippets/snippets/manager.py:902
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:910
 msgid "Export snippets"
 msgstr "Knipsels exporteren"
 
-#: ../plugins/snippets/snippets/manager.py:1041
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Typ een nieuwe sneltoets, of druk op Backspace om te wissen"
 
-#: ../plugins/snippets/snippets/manager.py:1043
+#: ../plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
 msgstr "Typ een nieuwe sneltoets"
 
-#: ../plugins/snippets/snippets/placeholder.py:597
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3524,7 +3519,7 @@ msgstr ""
 "Uitvoeren van de python-opdracht (%s) duurt langer dan toegestaan; het "
 "uitvoeren is afgebroken."
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: ../plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Uitvoeren van Python-opdracht (%s) mislukt: %s"
@@ -3587,7 +3582,7 @@ msgid "_Drop targets:"
 msgstr "Slee_pdoelen:"
 
 #: ../plugins/sort/gedit-sort-plugin.c:243
-msgid "S_ort..."
+msgid "S_ort…"
 msgstr "S_orteren…"
 
 #. ex:set ts=8 noet:
@@ -3621,12 +3616,12 @@ msgid "Sorts a document or selected text."
 msgstr "Sorteert een document of de geselecteerde tekst."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
-msgid "_Check Spelling..."
+msgid "_Check Spelling…"
 msgstr "Spelling _controleren…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:147
-msgid "Set _Language..."
-msgstr "Taal in_stellen…"
+msgid "Set _Language…"
+msgstr "Taa_l instellen…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
@@ -3639,13 +3634,13 @@ msgstr "Spellingcontrole"
 
 #: ../plugins/spell/spell.plugin.desktop.in.h:2
 msgid "Checks the spelling of the current document."
-msgstr "De spelling van het huidige document controleren"
+msgstr "Controleert de spelling van het huidige document."
 
-#: ../plugins/time/gedit-time-plugin.c:270
-msgid "In_sert Date and Time..."
-msgstr "Da_tum en tijd invoegen…"
+#: ../plugins/time/gedit-time-plugin.c:265
+msgid "In_sert Date and Time…"
+msgstr "Dat_um en tijd invoegen…"
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Beschikbare vormen"
 
@@ -3711,11 +3706,11 @@ msgstr "_Invoegen"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:1
 msgid "Configure date/time plugin"
-msgstr "'Datum/tijd invoegen'-plug-in configureren"
+msgstr "‘Datum/tijd invoegen’-plug-in configureren"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
-msgid "When inserting date/time..."
-msgstr "Tijdens invoegen van datum/tijd..."
+msgid "When inserting date/time…"
+msgstr "Tijdens invoegen van datum/tijd…"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
@@ -3728,6 +3723,24 @@ msgstr "Datum/tijd invoegen"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Voegt de huidige datum en tijd in op de cursor positie."
+
+#~ msgid "_Ignore"
+#~ msgstr "Ne_geren"
+
+#~ msgid "Manage _External Tools..."
+#~ msgstr "Beheer _externe hulpprogramma's…"
+
+#~ msgid "Quick Open..."
+#~ msgstr "Snel openen…"
+
+#~ msgid "Manage _Snippets..."
+#~ msgstr "Knipsels _beheren…"
+
+#~ msgid "Set _Language..."
+#~ msgstr "Taal in_stellen…"
+
+#~ msgid "In_sert Date and Time..."
+#~ msgstr "Da_tum en tijd invoegen…"
 
 #~ msgid "Open a New Window"
 #~ msgstr "Nieuw venster openen"
@@ -3796,9 +3809,6 @@ msgstr "Voegt de huidige datum en tijd in op de cursor positie."
 #~ msgctxt "language"
 #~ msgid "Default"
 #~ msgstr "Standaard"
-
-#~ msgid "Set Language"
-#~ msgstr "Taal instellen"
 
 #~ msgid "Select the _language of the current document."
 #~ msgstr "De taa_l van het huidige document selecteren"
