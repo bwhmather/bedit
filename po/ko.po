@@ -4,7 +4,7 @@
 # Sung-Hyun Nam <namsh@lgic.co.kr>, 1998
 # Chideok Hwang <hwang@mizi.co.kr>, 2000, 2001
 # Young-Ho, Cha <ganadist@chollian.net>, 2000, 2002, 2007
-# Changwoo Ryu <cwryu@debian.org>, 2004, 2007-2016.
+# Changwoo Ryu <cwryu@debian.org>, 2004, 2007-2016, 2018.
 #
 # 새로 번역하시는 분은 아래 translator-credits에 추가하세요.
 #
@@ -17,10 +17,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-08-22 09:11+0000\n"
-"PO-Revision-Date: 2016-09-03 23:18+0900\n"
+"POT-Creation-Date: 2018-02-24 12:37+0000\n"
+"PO-Revision-Date: 2018-02-25 22:56+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -30,6 +30,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "텍스트 파일을 편집합니다"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -38,7 +43,7 @@ msgstr ""
 "지에디트는 그놈 데스크톱 환경의 공식 텍스트 편집기입니다. 간단하고 쓰기 쉬운 "
 "편집기를 목표로 만들어졌지만, 강력한 일반적인 용도의 텍스트 편집기입니다."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
@@ -47,7 +52,7 @@ msgstr ""
 "베스트셀러 문학 작품을 쓰거나, 기발한 프로그램을 만들거나, 아니면 간단한 메모"
 "를 남길 때에도 지에디트가 해당 작업을 하기 좋은 프로그램입니다."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -58,10 +63,6 @@ msgstr ""
 #: ../data/org.gnome.gedit.desktop.in.in.h:1 ../gedit/gedit-print-job.c:730
 msgid "Text Editor"
 msgstr "텍스트 편집기"
-
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "텍스트 파일을 편집합니다"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
 msgid "gedit Text Editor"
@@ -85,13 +86,13 @@ msgstr "기본 글꼴 사용"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
-"Whether to use the system's default fixed width font for editing text "
+"Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
-"font named in the \"Editor Font\" option will be used instead of the system "
+"font named in the “Editor Font” option will be used instead of the system "
 "font."
 msgstr ""
 "편집 영역에 지에디트에서 지정한 글꼴 대신 시스템의 기본 고정폭 글꼴을 씁니"
-"다. 이 옵션이 꺼져 있으면 시스템 글꼴 대신 \"편집기 글꼴\" 옵션의 글꼴을 씁니"
+"다. 이 옵션이 꺼져 있으면 시스템 글꼴 대신 “편집기 글꼴” 옵션의 글꼴을 씁니"
 "다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
@@ -105,10 +106,10 @@ msgstr "편집기 글꼴"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
-"effect if the \"Use Default Font\" option is turned off."
+"effect if the “Use Default Font” option is turned off."
 msgstr ""
-"편집 영역에서 사용자 글꼴을 씁니다. \"기본 글꼴 사용\" 옵션이 꺼져 있어야만 "
-"적용됩니다."
+"편집 영역에서 사용자 글꼴을 씁니다. “기본 글꼴 사용” 옵션이 꺼져 있어야만 적"
+"용됩니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:6
 msgid "Style Scheme"
@@ -133,10 +134,9 @@ msgstr "자동 저장"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid ""
 "Whether gedit should automatically save modified files after a time "
-"interval. You can set the time interval with the \"Autosave Interval\" "
-"option."
+"interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
-"바뀐 파일을 일정 시간 간격마다 자동으로 저장합니다. \"자동 저장 간격\"옵션에"
+"바뀐 파일을 일정 시간 간격마다 자동으로 저장합니다. “자동 저장 간격” 옵션에"
 "서 시간 간격을 설정할 수 있습니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:12
@@ -146,10 +146,10 @@ msgstr "자동 저장 간격"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
-"This will only take effect if the \"Autosave\" option is turned on."
+"This will only take effect if the “Autosave” option is turned on."
 msgstr ""
-"지에디트에서 바뀐 파일을 자동으로 저장하는 시간입니다.\"자동 저장\"옵션이 켜"
-"져 있어야만 적용됩니다."
+"지에디트에서 바뀐 파일을 자동으로 저장하는 시간입니다. “\"자동 저장” 옵션이 "
+"켜져 있어야만 적용됩니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Maximum Number of Undo Actions"
@@ -157,10 +157,10 @@ msgstr "입력취소 최대 개수"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
+"for unlimited number of actions."
 msgstr ""
-"지에디트에서 실행 취소나 다시 실행을 할 수 있는 최대 회수. \"-1\"이면 무제한."
+"지에디트에서 실행 취소나 다시 실행을 할 수 있는 최대 회수. “-1”이면 무제한."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid "Line Wrapping Mode"
@@ -168,15 +168,15 @@ msgstr "줄 바꿈 모드"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-"wrapping at individual character boundaries. Note that the values are case-"
-"sensitive, so make sure they appear exactly as mentioned here."
+"Specifies how to wrap long lines in the editing area. Use “none” for no "
+"wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
 msgstr ""
 "편집 영역에서 긴 줄을 바꾸는 방법을 지정합니다. 줄 바꿈을 하지 않으려면 "
-"\"none\"을, 단어 단위로 줄 바꿈을 하려면 \"word\"를, 문자 단위로 줄 바꿈을 하"
-"려면 \"char\"을 쓰십시오. 대소문자를 가리기 때문에 여기에 적힌대로 완벽히 입"
-"력해야 합니다."
+"“none”을, 단어 단위로 줄 바꿈을 하려면 “word”를, 문자 단위로 줄 바꿈을 하려"
+"면 “char”을 쓰십시오. 대소문자를 가리기 때문에 여기에 적힌대로 완벽히 입력해"
+"야 합니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid "Last split mode choice for line wrapping mode"
@@ -185,13 +185,13 @@ msgstr "줄 바꿈 모드에서 최근의 구분 모드"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
-"wrapping mode is off we still remember the split mode choice. Use \"word\" "
-"for wrapping at word boundaries, and \"char\" for wrapping at individual "
-"character boundaries."
+"wrapping mode is off we still remember the split mode choice. Use “word” for "
+"wrapping at word boundaries, and “char” for wrapping at individual character "
+"boundaries."
 msgstr ""
 "줄 바꿈 모드에서 최근에 사용한 모드를 저장합니다. 그래서 줄 바꿈 모드를 끄더"
-"라도 구분 모드를 기억합니다. \"word\"를 사용하면 단어 단위로 바꾸고, \"char"
-"\"를 사용하면 문자 단위로 구분합니다."
+"라도 구분 모드를 기억합니다. “word”를 사용하면 단어 단위로 바꾸고, “char”를 "
+"사용하면 문자 단위로 구분합니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid "Tab Size"
@@ -283,19 +283,19 @@ msgstr "똑똑한 Home End"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
-"\"disabled\" to always move at the start/end of the line, \"after\" to move "
-"to the start/end of the line the first time the keys are pressed and to the "
+"“disabled” to always move at the start/end of the line, “after” to move to "
+"the start/end of the line the first time the keys are pressed and to the "
 "start/end of the text ignoring whitespaces the second time the keys are "
-"pressed, \"before\" to move to the start/end of the text before moving to "
-"the start/end of the line and \"always\" to always move to the start/end of "
-"the text instead of the start/end of the line."
+"pressed, “before” to move to the start/end of the text before moving to the "
+"start/end of the line and “always” to always move to the start/end of the "
+"text instead of the start/end of the line."
 msgstr ""
-"HOME 및 END 키를 눌렀을 때 커서 움직임을 지정합니다. \"disabled\"로 하면 줄"
-"의 처음과 끝으로 이동합니다. \"after\"로 하면 키를 처음 눌렀을 때 줄의 처음"
-"과 끝으로 이동하고 두번째로 누르면 공백 문자를 무시한 글의 처음과 끝으로 이동"
-"합니다. \"before\"로 하면 글의 처음과 끝으로 이동한 다음 그 다음에 눌렀을 때 "
-"줄의 처음과 끝으로 이동합니다. \"always\"로 하면 항상 줄과 관계 없이 글의 처"
-"음과 끝으로만 이동합니다."
+"HOME 및 END 키를 눌렀을 때 커서 움직임을 지정합니다. “disabled”로 하면 줄의 "
+"처음과 끝으로 이동합니다. “after”로 하면 키를 처음 눌렀을 때 줄의 처음과 끝으"
+"로 이동하고 두번째로 누르면 공백 문자를 무시한 글의 처음과 끝으로 이동합니"
+"다. “before”로 하면 글의 처음과 끝으로 이동한 다음 그 다음에 눌렀을 때 줄의 "
+"처음과 끝으로 이동합니다. “always”로 하면 항상 줄과 관계 없이 글의 처음과 끝"
+"으로만 이동합니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid "Restore Previous Cursor Position"
@@ -347,14 +347,14 @@ msgstr "노트북 탭 보기 모드"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
-"Specifies when to show the notebook tabs. Use \"never\" to never show the "
-"tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
+"Specifies when to show the notebook tabs. Use “never” to never show the "
+"tabs, “always” to always show the tabs, and “auto” to show the tabs only "
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"인쇄할 때 긴 줄을 바꾸는 방법을 지정합니다. 줄 바꿈을 하지 않으려면 \"none"
-"\"을, 단어 단위로 줄 바꿈을 하려면 \"word\"를, 문자 단위로 줄 바꿈을 하려면 "
-"\"char\"을 쓰십시오. 대소문자를 가리기 때문에 여기에 적힌대로 완벽히 입력해"
+"인쇄할 때 긴 줄을 바꾸는 방법을 지정합니다. 줄 바꿈을 하지 않으려면 "
+"“none”을, 단어 단위로 줄 바꿈을 하려면 “word”를, 문자 단위로 줄 바꿈을 하려"
+"면 “char”을 쓰십시오. 대소문자를 가리기 때문에 여기에 적힌대로 완벽히 입력해"
 "야 합니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:54
@@ -382,9 +382,8 @@ msgstr "최근 파일 최대 개수"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
-"in the \"Recent Files\" submenu."
-msgstr ""
-"\"최근 파일\" 메뉴에서 보여줄 최근에 열린 파일의 최대 개수를 지정합니다."
+"in the “Recent Files” submenu."
+msgstr "“최근 파일” 메뉴에서 보여줄 최근에 열린 파일의 최대 개수를 지정합니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid "Print Syntax Highlighting"
@@ -408,14 +407,14 @@ msgstr "줄 바꿈 모드 인쇄"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
-"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
+"“word” for wrapping at word boundaries, and “char” for wrapping at "
 "individual character boundaries. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"인쇄할 때 긴 줄을 바꾸는 방법을 지정합니다. 줄 바꿈을 하지 않으려면 \"none"
-"\"을, 단어 단위로 줄 바꿈을 하려면 \"word\"를, 문자 단위로 줄 바꿈을 하려면 "
-"\"char\"을 쓰십시오. 대소문자를 가리기 때문에 여기에 적힌대로 완벽히 입력해"
+"인쇄할 때 긴 줄을 바꾸는 방법을 지정합니다. 줄 바꿈을 하지 않으려면 "
+"“none”을, 단어 단위로 줄 바꿈을 하려면 “word”를, 문자 단위로 줄 바꿈을 하려"
+"면 “char”을 쓰십시오. 대소문자를 가리기 때문에 여기에 적힌대로 완벽히 입력해"
 "야 합니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:66
@@ -441,7 +440,7 @@ msgstr "인쇄용 본문 글꼴"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid ""
-"Specifies the font to use for a document's body when printing documents."
+"Specifies the font to use for a document’s body when printing documents."
 msgstr "문서를 인쇄할 때 문서의 본문에 쓸 글꼴을 지정합니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
@@ -455,10 +454,10 @@ msgstr "인쇄용 머릿말 글꼴"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:73
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
-"will only take effect if the \"Print Header\" option is turned on."
+"will only take effect if the “Print Header” option is turned on."
 msgstr ""
-"문서를 인쇄할 때 머릿말에 쓸 글꼴을 지정합니다. \"머릿말 인쇄\" 옵션이 켜져 "
-"있어야만 적용됩니다."
+"문서를 인쇄할 때 머릿말에 쓸 글꼴을 지정합니다. “머릿말 인쇄” 옵션이 켜져 있"
+"어야만 적용됩니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 8'"
@@ -471,9 +470,9 @@ msgstr "인쇄용 줄 번호 글꼴"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
-"take effect if the \"Print Line Numbers\" option is non-zero."
+"take effect if the “Print Line Numbers” option is non-zero."
 msgstr ""
-"인쇄할 때 줄 번호에 쓸 글꼴을 지정합니다. \"줄 번호 인쇄\" 옵션이 0이 아닌 값"
+"인쇄할 때 줄 번호에 쓸 글꼴을 지정합니다. “줄 번호 인쇄” 옵션이 0이 아닌 값"
 "일 때 적용됩니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:77
@@ -515,14 +514,14 @@ msgstr "문자 인코딩"
 #: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
-"save file chooser. \"CURRENT\" represents the current locale encoding. Only "
+"save file chooser. “CURRENT” represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
-"파일 열기/저장 창의 문자 인코딩 메뉴에 표시할 후보 인코딩의 목록. \"CURRENT"
-"\"는 현재 로캘의 인코딩을 말합니다. 무슨 인코딩인지 알 수 있는 값만 사용합니"
-"다. 기본값은 빈 목록으로, 이 경우 국가와 언어에 따라 적당한 기본값을 표시합니"
-"다."
+"파일 열기/저장 창의 문자 인코딩 메뉴에 표시할 후보 인코딩의 목록. "
+"“CURRENT”는 현재 로캘의 인코딩을 말합니다. 무슨 인코딩인지 알 수 있는 값만 사"
+"용합니다. 기본값은 빈 목록으로, 이 경우 국가와 언어에 따라 적당한 기본값을 표"
+"시합니다."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Active plugins"
@@ -530,15 +529,15 @@ msgstr "활성 플러그인"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid ""
-"List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+"List of active plugins. It contains the “Location” of the active plugins. "
+"See the .gedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
-"활성화된 플러그인 목록. 활성화된 플러그인의 위치(\"Location\")가 들어 있습니"
-"다. 주어진 플러그인의 위치(\"Location\")를 알아보려면 .gedit-plugin 파일을 보"
-"십시오."
+"활성화된 플러그인 목록. 활성화된 플러그인의 위치(“Location”)가 들어 있습니"
+"다. 주어진 플러그인의 위치(“Location”)를 알아보려면 .gedit-plugin 파일을 보십"
+"시오."
 
 #: ../gedit/gedit-app.c:110
-msgid "Show the application's version"
+msgid "Show the application’s version"
 msgstr "프로그램 버전을 표시합니다"
 
 #: ../gedit/gedit-app.c:116
@@ -572,8 +571,8 @@ msgid "Run gedit in standalone mode"
 msgstr "독립 모드로 실행합니다"
 
 #: ../gedit/gedit-app.c:158
-msgid "[FILE...] [+LINE[:COLUMN]]"
-msgstr "[<파일>...] [+<행>[:<열>]]"
+msgid "[FILE…] [+LINE[:COLUMN]]"
+msgstr "[<파일>…] [+<행>[:<열>]]"
 
 #: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
@@ -592,17 +591,15 @@ msgstr "저장하지 않고 닫기(_W)"
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
-#: ../gedit/gedit-io-error-info-bar.c:130
-#: ../gedit/gedit-io-error-info-bar.c:511
 #: ../gedit/gedit-preferences-dialog.c:825
 #: ../gedit/gedit-progress-info-bar.c:49
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:781
-#: ../plugins/snippets/snippets/manager.py:866
-#: ../plugins/snippets/snippets/manager.py:904
+#: ../plugins/quickopen/quickopen/popup.py:45
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
@@ -618,76 +615,76 @@ msgstr "다른 이름으로 저장(_S)…"
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:905
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "저장(_S)"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently lost."
+"If you don’t save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld seconds will be permanently "
+"If you don’t save, changes from the last %ld seconds will be permanently "
 "lost."
-msgstr[0] "저장하지 않으면, 최근 %ld초동안 편집한 사항을 잃어버립니다."
+msgstr[0] "저장하지 않으면, 최근 %ld초 동안 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
-"If you don't save, changes from the last minute will be permanently lost."
-msgstr "저장하지 않으면, 최근 1분동안 편집한 사항을 잃어버립니다."
+"If you don’t save, changes from the last minute will be permanently lost."
+msgstr "저장하지 않으면, 최근 1분 동안 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
-"If you don't save, changes from the last minute and %ld second will be "
+"If you don’t save, changes from the last minute and %ld second will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last minute and %ld seconds will be "
+"If you don’t save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"저장하지 않으면, 최근 1분 %ld초동안 편집한 사항을 모두 잃어버립니다."
+"저장하지 않으면, 최근 1분 %ld초 동안 편집한 사항을 모두 잃어버립니다."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently lost."
+"If you don’t save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld minutes will be permanently "
+"If you don’t save, changes from the last %ld minutes will be permanently "
 "lost."
-msgstr[0] "저장하지 않으면, 최근 %ld분동안 편집한 사항을 잃어버립니다."
+msgstr[0] "저장하지 않으면, 최근 %ld분 동안 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:364
-msgid "If you don't save, changes from the last hour will be permanently lost."
-msgstr "저장하지 않으면, 최근 1시간동안 편집한 사항을 잃어버립니다."
+msgid "If you don’t save, changes from the last hour will be permanently lost."
+msgstr "저장하지 않으면, 최근 1시간 동안 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
-"If you don't save, changes from the last hour and %d minute will be "
+"If you don’t save, changes from the last hour and %d minute will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last hour and %d minutes will be "
+"If you don’t save, changes from the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] "저장하지 않으면, 최근 1시간 %d분동안 편집한 사항을 잃어버립니다."
+msgstr[0] "저장하지 않으면, 최근 1시간 %d분 동안 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
-"If you don't save, changes from the last %d hour will be permanently lost."
+"If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %d hours will be permanently lost."
-msgstr[0] "저장하지 않으면, 최근 %d시간동안 편집한 사항을 잃어버립니다."
+"If you don’t save, changes from the last %d hours will be permanently lost."
+msgstr[0] "저장하지 않으면, 최근 %d시간 동안 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
 msgid "Changes to document “%s” will be permanently lost."
-msgstr "문서 “%s”의 바뀐 점을 잃어버립니다."
+msgstr "문서 “%s”의 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:419
 #, c-format
 msgid "Save changes to document “%s” before closing?"
-msgstr "닫기 전에 문서 “%s”의 바뀐 사항을 저장하시겠습니까?"
+msgstr "닫기 전에 문서 “%s”의 편집한 사항을 저장하시겠습니까?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:434
 #: ../gedit/gedit-close-confirmation-dialog.c:558
@@ -698,7 +695,7 @@ msgstr "시스템 관리자가 저장을 하지 못하게 했습니다."
 #, c-format
 msgid "Changes to %d document will be permanently lost."
 msgid_plural "Changes to %d documents will be permanently lost."
-msgstr[0] "%d개 문서의 바뀐 점을 잃어버립니다."
+msgstr[0] "%d개 문서의 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:508
 #, c-format
@@ -706,8 +703,8 @@ msgid "There is %d document with unsaved changes. Save changes before closing?"
 msgid_plural ""
 "There are %d documents with unsaved changes. Save changes before closing?"
 msgstr[0] ""
-"바뀌었는데 저장하지 않은 문서가 %d개 있습니다. 닫기 전에 바뀐 사항을 저장하시"
-"겠습니까?"
+"바뀌었는데 저장하지 않은 문서가 %d개 있습니다. 닫기 전에 편집한 사항을 저장하"
+"시겠습니까?"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:534
 msgid "Docum_ents with unsaved changes:"
@@ -718,13 +715,13 @@ msgid "S_elect the documents you want to save:"
 msgstr "저장하려는 문서를 선택하십시오(_E):"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:562
-msgid "If you don't save, all your changes will be permanently lost."
-msgstr "저장하지 않으면, 바뀐 사항을 모두 잃게 됩니다."
+msgid "If you don’t save, all your changes will be permanently lost."
+msgstr "저장하지 않으면, 편집한 사항을 모두 잃게 됩니다."
 
 #: ../gedit/gedit-commands-file.c:261
 #, c-format
-msgid "Loading file '%s'…"
-msgstr "'%s' 파일을 읽어들이는 중입니다…"
+msgid "Loading file “%s”…"
+msgstr "“%s” 파일을 읽어들이는 중입니다…"
 
 #: ../gedit/gedit-commands-file.c:270
 #, c-format
@@ -742,15 +739,15 @@ msgstr "열기"
 #: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:39
-#: ../plugins/snippets/snippets/manager.py:782
+#: ../plugins/quickopen/quickopen/popup.py:46
+#: ../plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "열기(_O)"
 
 #: ../gedit/gedit-commands-file.c:558
 #, c-format
-msgid "The file \"%s\" is read-only."
-msgstr "\"%s\" 파일이 읽기 전용입니다."
+msgid "The file “%s” is read-only."
+msgstr "“%s” 파일이 읽기 전용입니다."
 
 #: ../gedit/gedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
@@ -772,10 +769,9 @@ msgstr "파일을 일반 텍스트로 저장하시겠습니까?"
 #: ../gedit/gedit-commands-file.c:625
 #, c-format
 msgid ""
-"The file \"%s\" was previously saved as plain text and will now be saved "
-"using compression."
-msgstr ""
-"\"%s\" 파일은 이전에 일반 텍스트로 저장했지만 이제 압축해서 저장합니다."
+"The file “%s” was previously saved as plain text and will now be saved using "
+"compression."
+msgstr "“%s” 파일은 이전에 일반 텍스트로 저장했지만 이제 압축해서 저장합니다."
 
 #: ../gedit/gedit-commands-file.c:629
 msgid "_Save Using Compression"
@@ -784,10 +780,9 @@ msgstr "압축해서 저장(_S)"
 #: ../gedit/gedit-commands-file.c:634
 #, c-format
 msgid ""
-"The file \"%s\" was previously saved using compression and will now be saved "
+"The file “%s” was previously saved using compression and will now be saved "
 "as plain text."
-msgstr ""
-"\"%s\" 파일은 이전에 압축해서 저장했지만 이제 일반 텍스트로 저장합니다."
+msgstr "“%s” 파일은 이전에 압축해서 저장했지만 이제 일반 텍스트로 저장합니다."
 
 #: ../gedit/gedit-commands-file.c:637
 msgid "_Save As Plain Text"
@@ -795,8 +790,8 @@ msgstr "일반 텍스트로 저장(_S)"
 
 #: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
-msgid "Saving file '%s'…"
-msgstr "'%s' 파일을 읽어들이는 중입니다…"
+msgid "Saving file “%s”…"
+msgstr "“%s” 파일을 읽어들이는 중입니다…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
@@ -806,13 +801,13 @@ msgstr "다른 이름으로 저장"
 
 #: ../gedit/gedit-commands-file.c:1429
 #, c-format
-msgid "Reverting the document '%s'…"
-msgstr "'%s' 문서를 되돌리는 중입니다…"
+msgid "Reverting the document “%s”…"
+msgstr "“%s” 문서를 되돌리는 중입니다…"
 
 #: ../gedit/gedit-commands-file.c:1476
 #, c-format
-msgid "Revert unsaved changes to document '%s'?"
-msgstr "문서 '%s'의 저장하지 않은 바뀐 점을 되돌리시겠습니까?"
+msgid "Revert unsaved changes to document “%s”?"
+msgstr "문서 “%s”의 저장하지 않은 편집한 사항을 되돌리시겠습니까?"
 
 #: ../gedit/gedit-commands-file.c:1485
 #, c-format
@@ -821,12 +816,12 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld seconds will be permanently "
 "lost."
-msgstr[0] "최근 %ld초동안 문서에 바뀐 점을 잃어버립니다."
+msgstr[0] "최근 %ld초 동안 문서에 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-commands-file.c:1494
 msgid ""
 "Changes made to the document in the last minute will be permanently lost."
-msgstr "최근 1분동안 문서에 바뀐 점을 잃어버립니다."
+msgstr "최근 1분 동안 문서에 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-commands-file.c:1500
 #, c-format
@@ -836,7 +831,7 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last minute and %ld seconds will be "
 "permanently lost."
-msgstr[0] "최근 %ld초동안 문서에 바뀐 점을 잃어버립니다."
+msgstr[0] "최근 %ld초 동안 문서에 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-commands-file.c:1510
 #, c-format
@@ -845,11 +840,11 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last %ld minutes will be permanently "
 "lost."
-msgstr[0] "최근 %ld분동안 문서에 바뀐 점을 잃어버립니다."
+msgstr[0] "최근 %ld분 동안 문서에 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-commands-file.c:1525
 msgid "Changes made to the document in the last hour will be permanently lost."
-msgstr "최근 한시간동안 문서에 바뀐 점을 잃어버립니다."
+msgstr "최근 한시간 동안 문서에 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-commands-file.c:1531
 #, c-format
@@ -859,7 +854,7 @@ msgid ""
 msgid_plural ""
 "Changes made to the document in the last hour and %d minutes will be "
 "permanently lost."
-msgstr[0] "최근 1시간 %d분동안 문서에 바뀐 점을 잃어버립니다."
+msgstr[0] "최근 1시간 %d분 동안 문서에 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-commands-file.c:1546
 #, c-format
@@ -867,7 +862,7 @@ msgid ""
 "Changes made to the document in the last %d hour will be permanently lost."
 msgid_plural ""
 "Changes made to the document in the last %d hours will be permanently lost."
-msgstr[0] "최근 %d시간동안 문서에 바뀐 점을 잃어버립니다."
+msgstr[0] "최근 %d시간 동안 문서에 편집한 사항을 잃어버립니다."
 
 #: ../gedit/gedit-commands-file.c:1569
 msgid "_Revert"
@@ -899,8 +894,8 @@ msgstr "한번 발견하고 바꿨습니다"
 #. entered by the user in the search box
 #: ../gedit/gedit-commands-search.c:142
 #, c-format
-msgid "\"%s\" not found"
-msgstr "\"%s\"이(가) 없습니다"
+msgid "“%s” not found"
+msgstr "“%s”이(가) 없습니다"
 
 #: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
@@ -924,8 +919,8 @@ msgstr "자동 인식"
 
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
-msgid "Add or Remove..."
-msgstr "추가 혹은 제거..."
+msgid "Add or Remove…"
+msgstr "추가 혹은 제거…"
 
 #: ../gedit/gedit-encoding-items.c:92
 #, c-format
@@ -938,7 +933,7 @@ msgid "%s (Current Locale)"
 msgstr "%s(현재 로캘)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
-msgid "Do you really want to reset the character encodings' preferences?"
+msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr "정말로 문자 인코딩 설정을 초기화하시겠습니까?"
 
 #. Reset button
@@ -988,55 +983,56 @@ msgid "Line Ending:"
 msgstr "줄 바꿈:"
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
-#: ../plugins/externaltools/tools/manager.py:108
-#: ../plugins/externaltools/tools/manager.py:317
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:767
+#: ../plugins/externaltools/tools/manager.py:115
+#: ../plugins/externaltools/tools/manager.py:324
+#: ../plugins/externaltools/tools/manager.py:440
+#: ../plugins/externaltools/tools/manager.py:774
 msgid "Plain Text"
 msgstr "일반 텍스트"
 
-#: ../gedit/gedit-io-error-info-bar.c:143
+#: ../gedit/gedit-io-error-info-bar.c:142
 #: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "다시 시도(_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:163
+#: ../gedit/gedit-io-error-info-bar.c:162
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "“%s” 파일을 찾을 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:165
-#: ../gedit/gedit-io-error-info-bar.c:205
-#: ../gedit/gedit-io-error-info-bar.c:212
+#: ../gedit/gedit-io-error-info-bar.c:164
+#: ../gedit/gedit-io-error-info-bar.c:204
+#: ../gedit/gedit-io-error-info-bar.c:211
 msgid "Please check that you typed the location correctly and try again."
 msgstr "입력한 위치가 올바른지 확인하고 다시 시도하십시오."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:184
+#: ../gedit/gedit-io-error-info-bar.c:183
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "“%s:” 위치를 처리할 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:190
+#: ../gedit/gedit-io-error-info-bar.c:189
 msgid "Unable to handle this location."
 msgstr "이 위치를 처리할 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:199
+#: ../gedit/gedit-io-error-info-bar.c:198
 msgid "The location of the file cannot be accessed."
 msgstr "파일의 위치를 접근할 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:203
+#: ../gedit/gedit-io-error-info-bar.c:202
 #, c-format
 msgid "“%s” is a directory."
 msgstr "“%s”(은)는 디렉터리 입니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:210
+#: ../gedit/gedit-io-error-info-bar.c:209
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "“%s”(은)는 올바른 위치가 아닙니다."
 
 # c-format
-#: ../gedit/gedit-io-error-info-bar.c:246
+#. Translators: %s is a host name
+#: ../gedit/gedit-io-error-info-bar.c:245
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1045,7 +1041,7 @@ msgstr ""
 "호스트 “%s”을(를) 찾을 수 없습니다. 프록시 설정이 올바른지 확인하고 다시 시도"
 "하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:261
+#: ../gedit/gedit-io-error-info-bar.c:260
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1054,50 +1050,50 @@ msgstr ""
 "호스트 이름이 올바르지 않습니다. 입력한 위치가 올바른지 확인하고 다시 시도하"
 "십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:269
+#: ../gedit/gedit-io-error-info-bar.c:268
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "“%s”(은)는 일반 파일이 아닙니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:274
+#: ../gedit/gedit-io-error-info-bar.c:273
 msgid "Connection timed out. Please try again."
 msgstr "연결 제한시간이 지났습니다. 다시 시도합니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:307
+#: ../gedit/gedit-io-error-info-bar.c:306
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "예기치 않은 오류: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:343
+#: ../gedit/gedit-io-error-info-bar.c:342
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "요청한 파일을 찾지 못했습니다. 최근에 지워졌을 것입니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:353
+#: ../gedit/gedit-io-error-info-bar.c:352
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "“%s” 파일을 되돌릴 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:380
+#: ../gedit/gedit-io-error-info-bar.c:379
 msgid "Ch_aracter Encoding:"
 msgstr "문자 인코딩(_A):"
 
-#: ../gedit/gedit-io-error-info-bar.c:441
+#: ../gedit/gedit-io-error-info-bar.c:440
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "현재 “%s” 위치에 접근할 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:456
+#: ../gedit/gedit-io-error-info-bar.c:455
 msgid "Your system is offline. Check your network."
 msgstr "컴퓨터가 오프라인 상태입니다. 네트워크 연결을 확인하십시오."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:499
-#: ../gedit/gedit-io-error-info-bar.c:768
+#: ../gedit/gedit-io-error-info-bar.c:764
 msgid "Edit Any_way"
 msgstr "그래도 편집(_W)"
 
-#: ../gedit/gedit-io-error-info-bar.c:591
+#: ../gedit/gedit-io-error-info-bar.c:587
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1105,29 +1101,29 @@ msgstr ""
 "링크 따라가는 개수는 정해져 있습니다. 그 개수 제한 안에서 실제 파일을 찾을 "
 "수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:595
+#: ../gedit/gedit-io-error-info-bar.c:591
 msgid "You do not have the permissions necessary to open the file."
 msgstr "파일을 열 수 있는 권한이 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:601
+#: ../gedit/gedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
 msgstr "문자 인코딩을 알아낼 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:602
-#: ../gedit/gedit-io-error-info-bar.c:626
+#: ../gedit/gedit-io-error-info-bar.c:598
+#: ../gedit/gedit-io-error-info-bar.c:622
 msgid "Please check that you are not trying to open a binary file."
 msgstr "이진 파일을 열려고 한 것인지 확인하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:603
+#: ../gedit/gedit-io-error-info-bar.c:599
 msgid "Select a character encoding from the menu and try again."
 msgstr "메뉴에서 문자 인코딩을 선택해서 다시 시도하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:609
+#: ../gedit/gedit-io-error-info-bar.c:605
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "“%s” 파일을 여는데 문제가 발생했습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:611
+#: ../gedit/gedit-io-error-info-bar.c:607
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1135,31 +1131,31 @@ msgstr ""
 "연 파일 안에 올바르지 않은 문자가 들어 있습니다. 이 파일을 계속 편집하면 문서"
 "가 손상될 수도 있습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:614
+#: ../gedit/gedit-io-error-info-bar.c:610
 msgid "You can also choose another character encoding and try again."
 msgstr "다른 문자 인코딩을 선택해서 다시 시도해 볼 수도 있습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:619
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "“%2$s” 문자 인코딩으로 “%1$s” 파일을 열 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
-#: ../gedit/gedit-io-error-info-bar.c:702
+#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:698
 msgid "Select a different character encoding from the menu and try again."
 msgstr "메뉴에서 다른 문자 인코딩을 선택한 후 다시 시도하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:639
+#: ../gedit/gedit-io-error-info-bar.c:635
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr " “%s” 파일을 열 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:697
+#: ../gedit/gedit-io-error-info-bar.c:693
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "“%2$s” 문자 인코딩으로 “%1$s” 파일을 저장할 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:700
+#: ../gedit/gedit-io-error-info-bar.c:696
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1168,55 +1164,55 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:773
-msgid "D_on't Edit"
+#: ../gedit/gedit-io-error-info-bar.c:769
+msgid "D_on’t Edit"
 msgstr "편집하지 않기(_O)"
 
-#: ../gedit/gedit-io-error-info-bar.c:783
+#: ../gedit/gedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "이 “%s” 파일은 다른 지에디트 창에 열려있습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:797
+#: ../gedit/gedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
 msgstr "그래도 파일을 편집하시겠습니까?"
 
-#: ../gedit/gedit-io-error-info-bar.c:853
-#: ../gedit/gedit-io-error-info-bar.c:943
-#: ../gedit/gedit-io-error-info-bar.c:1235
+#: ../gedit/gedit-io-error-info-bar.c:849
+#: ../gedit/gedit-io-error-info-bar.c:939
+#: ../gedit/gedit-io-error-info-bar.c:1229
 msgid "S_ave Anyway"
 msgstr "어쨋든 저장(_A)"
 
-#: ../gedit/gedit-io-error-info-bar.c:856
-#: ../gedit/gedit-io-error-info-bar.c:946
-#: ../gedit/gedit-io-error-info-bar.c:1238
-msgid "D_on't Save"
+#: ../gedit/gedit-io-error-info-bar.c:852
+#: ../gedit/gedit-io-error-info-bar.c:942
+#: ../gedit/gedit-io-error-info-bar.c:1232
+msgid "D_on’t Save"
 msgstr "저장하지 않음(_O)"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:870
+#: ../gedit/gedit-io-error-info-bar.c:866
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr " “%s”  파일이 읽은 뒤에 수정되었습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:885
+#: ../gedit/gedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr "저장하면, 외부에서 바꾼 것을 잃어버리게 됩니다. 계속 저장하겠습니까?"
 
-#: ../gedit/gedit-io-error-info-bar.c:965
+#: ../gedit/gedit-io-error-info-bar.c:961
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "“%s” 파일을 저장할 때 백업 파일을 만들 수 없습니다"
 
-#: ../gedit/gedit-io-error-info-bar.c:970
+#: ../gedit/gedit-io-error-info-bar.c:966
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "“%s” 파일을 저장할 때 임시 백업 파일을 만들 수 없습니다"
 
-#: ../gedit/gedit-io-error-info-bar.c:987
+#: ../gedit/gedit-io-error-info-bar.c:983
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1227,7 +1223,7 @@ msgstr ""
 "하겠습니까?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1047
+#: ../gedit/gedit-io-error-info-bar.c:1043
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1236,7 +1232,7 @@ msgstr ""
 "“%s:”  위치를 쓰기 모드로 처리할 수 없습니다. 입력한 위치가 올바른지 확인하"
 "고 다시 시도하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:1055
+#: ../gedit/gedit-io-error-info-bar.c:1051
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1244,7 +1240,7 @@ msgstr ""
 "이 위치를 쓰기 모드로 처리할 수 없습니다. 입력한 위치가 올바른지 확인하고 다"
 "시 시도하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:1064
+#: ../gedit/gedit-io-error-info-bar.c:1060
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1253,7 +1249,7 @@ msgstr ""
 "“%s”은(는) 올바른 위치가 아닙니다. 입력한 위치가 올바른지 확인하고 다시 시도"
 "하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:1071
+#: ../gedit/gedit-io-error-info-bar.c:1067
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1261,7 +1257,7 @@ msgstr ""
 "파일을 저장할 권한이 없습니다. 입력한 위치가 올바른지 확인하고 다시 시도하십"
 "시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:1077
+#: ../gedit/gedit-io-error-info-bar.c:1073
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1269,7 +1265,7 @@ msgstr ""
 "파일을 저장하기 위한 디스크 공간이 부족합니다. 디스크 공간을 확보하고 다시 시"
 "도하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1078
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1277,11 +1273,11 @@ msgstr ""
 "읽기 전용 디스크에 파일을 저장하려 합니다. 입력한 위치가 올바른지 확인하고 다"
 "시 시도하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../gedit/gedit-io-error-info-bar.c:1084
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "같은 이름의 파일이 이미 있습니다. 다른 이름을 쓰도록 하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:1093
+#: ../gedit/gedit-io-error-info-bar.c:1089
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1289,7 +1285,7 @@ msgstr ""
 "파일을 저장하려는 디스크에 파일 이름 길이 제한이 걸려있습니다. 짧은 파일이름"
 "을 쓰도록 하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../gedit/gedit-io-error-info-bar.c:1100
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1298,37 +1294,33 @@ msgstr ""
 "파일을 저장하려는 디스크에 파일 크기 제한이 걸려있습니다. 파일 크기를 줄이던"
 "지 크기 제한이 풀려있는 디스크에 저장하십시오."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1117
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "“%s” 파일을 저장할 수 없습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:1161
+#: ../gedit/gedit-io-error-info-bar.c:1157
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "“%s” 파일이 바뀌었습니다."
 
-#: ../gedit/gedit-io-error-info-bar.c:1172
+#: ../gedit/gedit-io-error-info-bar.c:1168
 msgid "Drop Changes and _Reload"
-msgstr "바뀐 사항 버리고 버리고 다시 읽기(_R)"
+msgstr "편집한 사항 버리고 버리고 다시 읽기(_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182
+#: ../gedit/gedit-io-error-info-bar.c:1178
 #: ../gedit/resources/gtk/menus-common.ui.h:21
 #: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 msgid "_Reload"
 msgstr "다시 읽기(_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:1187
-msgid "_Ignore"
-msgstr "무시(_I)"
-
-#: ../gedit/gedit-io-error-info-bar.c:1248
+#: ../gedit/gedit-io-error-info-bar.c:1242
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "“%s” 파일을 저장하는데 잘못된 문자를 발견했습니다"
 
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../gedit/gedit-io-error-info-bar.c:1258
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr "파일 저장을 계속하시면 문서가 손상됩니다. 그래도 계속하시겠습니까?"
@@ -1344,8 +1336,8 @@ msgstr "시스템 고정폭 글꼴(%s) 사용(_U)"
 
 #: ../gedit/gedit-preferences-dialog.c:601
 #, c-format
-msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
-msgstr "'%s' 디렉터리를 만들 수 없습니다: g_mkdir_with_parents() 실패: %s"
+msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
+msgstr "“%s” 디렉터리를 만들 수 없습니다: g_mkdir_with_parents() 실패: %s"
 
 #: ../gedit/gedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
@@ -1365,26 +1357,29 @@ msgstr "색상 모음 파일"
 
 #: ../gedit/gedit-preferences-dialog.c:861
 #, c-format
-msgid "Could not remove color scheme \"%s\"."
-msgstr "색상 모음 파일 \"%s\"을(를) 지울 수 없습니다."
+msgid "Could not remove color scheme “%s”."
+msgstr "색상 모음 파일 “%s”을(를) 제거할 수 없습니다."
 
 #: ../gedit/gedit-print-job.c:227
-msgid "Preparing..."
-msgstr "준비하는 중..."
+msgid "Preparing…"
+msgstr "준비하는 중…"
 
 #: ../gedit/gedit-print-job.c:539
 #, c-format
 msgid "File: %s"
 msgstr "파일: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "%N페이지, 전체 %Q"
 
 #: ../gedit/gedit-print-job.c:626
 #, c-format
-msgid "Rendering page %d of %d..."
-msgstr "렌더링: %d페이지, 전체 %d..."
+msgid "Rendering page %d of %d…"
+msgstr "렌더링: %d페이지, 전체 %d…"
 
 #: ../gedit/gedit-print-preview.c:653
 #, c-format
@@ -1492,8 +1487,8 @@ msgstr "%s UI 파일을 열 수 없습니다. 오류: %s"
 
 #: ../gedit/gedit-utils.c:921
 #, c-format
-msgid "Unable to find the object '%s' inside file %s."
-msgstr "'%s' 오브젝트를(%s 파일) 찾을 수 없습니다."
+msgid "Unable to find the object “%s” inside file %s."
+msgstr "“%s” 오브젝트를 (%s 파일) 찾을 수 없습니다."
 
 #. Translators: '/ on <remote-share>'
 #: ../gedit/gedit-utils.c:1159
@@ -1704,8 +1699,8 @@ msgid "_Paste"
 msgstr "붙여넣기(_P)"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "삭제(_D)"
@@ -1725,6 +1720,7 @@ msgid "_Preferences"
 msgstr "기본 설정(_P)"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:34
+#: ../gedit/resources/gtk/menus.ui.h:16
 msgid "_View"
 msgstr "보기(_V)"
 
@@ -1785,6 +1781,7 @@ msgid "Go to _Line…"
 msgstr "지정한 줄로 이동(_L)…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:46
+#: ../gedit/resources/gtk/menus.ui.h:20
 msgid "_Tools"
 msgstr "도구(_T)"
 
@@ -1860,13 +1857,11 @@ msgstr "찾아서 바꾸기(_F)…"
 msgid "_Go to Line…"
 msgstr "줄로 이동(_G)…"
 
-#: ../gedit/resources/gtk/menus.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "보기"
 
-#: ../gedit/resources/gtk/menus.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 msgid "Tools"
 msgstr "도구"
@@ -1905,8 +1900,8 @@ msgstr "선택(_S)"
 
 # 검색어 입력 창의 텍스트
 #: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
-msgid "Search highlight mode..."
-msgstr "강조 모드 검색..."
+msgid "Search highlight mode…"
+msgstr "강조 모드 검색…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
 msgid "No results"
@@ -2259,8 +2254,8 @@ msgstr "이전 문서로 이동"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
 msgctxt "shortcut window"
-msgid "Switch to the first - ninth document"
-msgstr "1번째 - 9번째 문서로 이동"
+msgid "Switch to the first — ninth document"
+msgstr "1번째 — 9번째 문서로 이동"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
 msgctxt "shortcut window"
@@ -2586,8 +2581,8 @@ msgid "Build"
 msgstr "컴파일하기"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
-msgid "Run \"make\" in the document directory"
-msgstr "문서 디렉터리에서 \"make\"를 실행합니다"
+msgid "Run “make” in the document directory"
+msgstr "문서 디렉터리에서 “make”를 실행합니다"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
 #: ../plugins/externaltools/data/open-terminal-here-osx.desktop.in.h:1
@@ -2639,74 +2634,74 @@ msgstr "시스템 글꼴을 사용할지 여부"
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
-"it's monospace (and the most similar font it can come up with otherwise)."
+"it’s monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "참이면 외부 도구가 고정폭인 경우 desktop-global 표준 글꼴을 사용합니다. (고정"
 "폭이 아닌 경우 가장 비슷한 글꼴을 사용합니다.)"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
-msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
-msgstr "판고 글꼴 이름. 예를 들어 \"Sans 12\" 혹은 \"Monospace Bold 14\"."
+msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
+msgstr "판고 글꼴 이름. 예를 들어 “Sans 12” 또는 “Monospace Bold 14”."
 
-#: ../plugins/externaltools/tools/appactivatable.py:126
-msgid "Manage _External Tools..."
-msgstr "외부 도구 관리(_E)..."
+#: ../plugins/externaltools/tools/appactivatable.py:133
+msgid "Manage _External Tools…"
+msgstr "외부 도구 관리(_E)…"
 
-#: ../plugins/externaltools/tools/appactivatable.py:131
+#: ../plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
 msgstr "외부 도구(_T)"
 
-#: ../plugins/externaltools/tools/capture.py:99
+#: ../plugins/externaltools/tools/capture.py:106
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "명령을 실행할 수 없습니다: %s"
 
-#: ../plugins/externaltools/tools/functions.py:184
+#: ../plugins/externaltools/tools/functions.py:191
 msgid "You must be inside a word to run this command"
 msgstr "이 명령을 실행하려면 단어안에 있어야 합니다"
 
-#: ../plugins/externaltools/tools/functions.py:302
+#: ../plugins/externaltools/tools/functions.py:309
 msgid "Running tool:"
 msgstr "도구 실행 중:"
 
-#: ../plugins/externaltools/tools/functions.py:333
+#: ../plugins/externaltools/tools/functions.py:340
 msgid "Done."
 msgstr "완료."
 
-#: ../plugins/externaltools/tools/functions.py:335
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Exited"
 msgstr "끝났음"
 
-#: ../plugins/externaltools/tools/manager.py:106
+#: ../plugins/externaltools/tools/manager.py:113
 msgid "All languages"
 msgstr "모든 언어"
 
-#: ../plugins/externaltools/tools/manager.py:422
-#: ../plugins/externaltools/tools/manager.py:426
-#: ../plugins/externaltools/tools/manager.py:765
+#: ../plugins/externaltools/tools/manager.py:429
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:772
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "모든 언어"
 
-#: ../plugins/externaltools/tools/manager.py:539
+#: ../plugins/externaltools/tools/manager.py:546
 msgid "New tool"
 msgstr "새 도구"
 
-#: ../plugins/externaltools/tools/manager.py:676
+#: ../plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "이 단축키는 %s에 연결되어 있습니다"
 
-#: ../plugins/externaltools/tools/manager.py:720
+#: ../plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "새 단축키를 누르십시오. 지우려면 백스페이스를 누르십시오"
 
-#: ../plugins/externaltools/tools/manager.py:722
+#: ../plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator"
 msgstr "새 단축키를 누르십시오"
 
-#: ../plugins/externaltools/tools/outputpanel.py:122
+#: ../plugins/externaltools/tools/outputpanel.py:129
 msgid "Stopped."
 msgstr "정지됨."
 
@@ -2831,7 +2826,7 @@ msgstr "출력(_O):"
 msgid "_Applicability:"
 msgstr "적용 범위(_A):"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:119
+#: ../plugins/externaltools/tools/windowactivatable.py:126
 msgid "Tool Output"
 msgstr "도구 출력"
 
@@ -2888,7 +2883,7 @@ msgstr "디렉터리를 읽는데 오류가 생겼습니다"
 msgid "An error occurred"
 msgstr "오류가 생겼습니다"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2896,25 +2891,25 @@ msgstr ""
 "파일을 휴지통에 버릴 수 없습니다.\n"
 "그냥 지워버리겠습니까?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
-msgid "The file \"%s\" cannot be moved to the trash."
-msgstr "파일 \"%s\"(을)를 휴지통에 버릴 수 없습니다."
+msgid "The file “%s” cannot be moved to the trash."
+msgstr "파일 “%s”(을)를 휴지통에 버릴 수 없습니다."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "선택한 파일을 휴지통에 버릴 수 없습니다."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
-msgstr "\"%s\"(을)를 완전히 지우시겠습니까?"
+msgid "Are you sure you want to permanently delete “%s”?"
+msgstr "“%s”(을)를 완전히 지우시겠습니까?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "선택한 파일을 완전히 지우시겠습니까?."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "항목을 지우면, 완전히 없어집니다."
 
@@ -2976,8 +2971,8 @@ msgstr "볼륨을 마운트할 수 없습니다: %s"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
 #, c-format
-msgid "Error when loading '%s': No such directory"
-msgstr "'%s' 읽는데 오류가 발생했습니다: 그런 디렉터리가 없습니다"
+msgid "Error when loading “%s”: No such directory"
+msgstr "“%s” 읽는데 오류가 발생했습니다: 그런 디렉터리가 없습니다"
 
 #. ex:set ts=8 noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
@@ -3031,7 +3026,7 @@ msgstr "첫번째 문서의 위치 설정"
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
-"document given that the file browser hasn't been used yet. (Thus this "
+"document given that the file browser hasn’t been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
 "with Nautilus, etc.)"
 msgstr ""
@@ -3085,8 +3080,8 @@ msgid "New F_ile"
 msgstr "새 파일(_I)"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
-msgid "_Rename..."
-msgstr "이름 바꾸기(_R)..."
+msgid "_Rename…"
+msgstr "이름 바꾸기(_R)…"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
@@ -3154,7 +3149,7 @@ msgstr "오류 색"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
-"If true, the terminal will use the desktop-global standard font if it's "
+"If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "참이면 터미널이 고정폭인 경우 desktop-global 표준 글꼴을 사용합니다. (고정폭"
@@ -3169,7 +3164,7 @@ msgid "_Error color:"
 msgstr "오류 색(_E):"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "파이썬 콘솔"
@@ -3178,13 +3173,13 @@ msgstr "파이썬 콘솔"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "아래 패널에 파이썬 콘솔을 엽니다."
 
-#: ../plugins/quickopen/quickopen/__init__.py:40
-msgid "Quick Open..."
-msgstr "빠르게 열기..."
+#: ../plugins/quickopen/quickopen/__init__.py:47
+msgid "Quick Open…"
+msgstr "빠르게 열기…"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:33
+#: ../plugins/quickopen/quickopen/popup.py:40
 msgid "Quick Open"
 msgstr "빠르게 열기"
 
@@ -3192,93 +3187,93 @@ msgstr "빠르게 열기"
 msgid "Quickly open files"
 msgstr "문서를 빠르게 엽니다"
 
-#: ../plugins/quickopen/quickopen/popup.py:83
-msgid "Type to search..."
-msgstr "검색할 말 입력..."
+#: ../plugins/quickopen/quickopen/popup.py:90
+msgid "Type to search…"
+msgstr "검색할 말 입력…"
 
-#: ../plugins/snippets/snippets/appactivatable.py:81
-msgid "Manage _Snippets..."
-msgstr "관용구 관리(_S)..."
+#: ../plugins/snippets/snippets/appactivatable.py:88
+msgid "Manage _Snippets…"
+msgstr "관용구 관리(_S)…"
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:56
-#: ../plugins/snippets/snippets/document.py:145
-#: ../plugins/snippets/snippets/document.py:659
+#: ../plugins/snippets/snippets/document.py:64
+#: ../plugins/snippets/snippets/document.py:153
+#: ../plugins/snippets/snippets/document.py:667
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "관용구"
 
-#: ../plugins/snippets/snippets/exporter.py:80
+#: ../plugins/snippets/snippets/exporter.py:88
 #, python-format
-msgid "The archive \"%s\" could not be created"
-msgstr "압축 파일 \"%s\"(을)를 만들 수 없습니다"
+msgid "The archive “%s” could not be created"
+msgstr "압축 파일 “%s”(을)를 만들 수 없습니다"
 
-#: ../plugins/snippets/snippets/exporter.py:97
+#: ../plugins/snippets/snippets/exporter.py:105
 #, python-format
-msgid "Target directory \"%s\" does not exist"
-msgstr "목표 디렉터리 \"%s\"(을)를 만들 수 없습니다"
+msgid "Target directory “%s” does not exist"
+msgstr "목표 디렉터리 “%s”(을)를 만들 수 없습니다"
 
-#: ../plugins/snippets/snippets/exporter.py:100
+#: ../plugins/snippets/snippets/exporter.py:108
 #, python-format
-msgid "Target directory \"%s\" is not a valid directory"
-msgstr "목표 디렉터리 \"%s\"(은)는 올바른 디렉터리가 아닙니다"
+msgid "Target directory “%s” is not a valid directory"
+msgstr "목표 디렉터리 “%s”(은)는 올바른 디렉터리가 아닙니다"
 
-#: ../plugins/snippets/snippets/importer.py:47
-#: ../plugins/snippets/snippets/importer.py:108
+#: ../plugins/snippets/snippets/importer.py:55
+#: ../plugins/snippets/snippets/importer.py:116
 #, python-format
-msgid "File \"%s\" does not exist"
-msgstr "파일 \"%s\"이(가) 없습니다"
+msgid "File “%s” does not exist"
+msgstr "파일 “%s”이(가) 없습니다"
 
-#: ../plugins/snippets/snippets/importer.py:50
+#: ../plugins/snippets/snippets/importer.py:58
 #, python-format
-msgid "File \"%s\" is not a valid snippets file"
-msgstr "파일 \"%s\"(은)는 올바른 관용구 파일이 아닙니다"
+msgid "File “%s” is not a valid snippets file"
+msgstr "파일 “%s”(은)는 올바른 관용구 파일이 아닙니다"
 
-#: ../plugins/snippets/snippets/importer.py:67
+#: ../plugins/snippets/snippets/importer.py:75
 #, python-format
-msgid "Imported file \"%s\" is not a valid snippets file"
-msgstr "가져온 파일 \"%s\"(은)는 올바른 관용구 파일이 아닙니다"
+msgid "Imported file “%s” is not a valid snippets file"
+msgstr "가져온 파일 “%s”(은)는 올바른 관용구 파일이 아닙니다"
 
-#: ../plugins/snippets/snippets/importer.py:77
+#: ../plugins/snippets/snippets/importer.py:85
 #, python-format
-msgid "The archive \"%s\" could not be extracted"
-msgstr "압축 파일 \"%s\"(을)를 풀어낼 수 없습니다"
+msgid "The archive “%s” could not be extracted"
+msgstr "압축 파일 “%s”(을)를 풀어낼 수 없습니다"
 
-#: ../plugins/snippets/snippets/importer.py:95
+#: ../plugins/snippets/snippets/importer.py:103
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "다음 파일은 가져올 수 없습니다: %s"
 
-#: ../plugins/snippets/snippets/importer.py:111
-#: ../plugins/snippets/snippets/importer.py:124
+#: ../plugins/snippets/snippets/importer.py:119
+#: ../plugins/snippets/snippets/importer.py:132
 #, python-format
-msgid "File \"%s\" is not a valid snippets archive"
-msgstr "\"%s\" 파일은 올바른 관용구 모음이 아닙니다"
+msgid "File “%s” is not a valid snippets archive"
+msgstr "“%s” 파일은 올바른 관용구 모음이 아닙니다"
 
-#: ../plugins/snippets/snippets/manager.py:42
+#: ../plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
 msgstr "관용구 묶음"
 
-#: ../plugins/snippets/snippets/manager.py:66
-msgid "Add a new snippet..."
-msgstr "관용구 추가..."
+#: ../plugins/snippets/snippets/manager.py:74
+msgid "Add a new snippet…"
+msgstr "관용구 추가…"
 
-#: ../plugins/snippets/snippets/manager.py:116
+#: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
 msgstr "전체"
 
-#: ../plugins/snippets/snippets/manager.py:406
+#: ../plugins/snippets/snippets/manager.py:414
 msgid "Revert selected snippet"
 msgstr "선택한 관용구를 되돌립니다"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:417
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "선택한 관용구를 지웁니다"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:662
+#: ../plugins/snippets/snippets/manager.py:670
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3288,87 +3283,87 @@ msgstr ""
 "는 알파벳이 아닌 한 글자로(예: '{', '[' 등) 이루어져야 합니다."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:669
+#: ../plugins/snippets/snippets/manager.py:677
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "탭을 누른 다음에 관용구를 사용하게 되는 단어 한 개"
 
-#: ../plugins/snippets/snippets/manager.py:758
+#: ../plugins/snippets/snippets/manager.py:766
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "파일을 가져오는데 다음 오류가 생겼습니다: %s"
 
-#: ../plugins/snippets/snippets/manager.py:765
+#: ../plugins/snippets/snippets/manager.py:773
 msgid "Import successfully completed"
 msgstr "가져오기를 성공적으로 완료했습니다"
 
-#: ../plugins/snippets/snippets/manager.py:779
+#: ../plugins/snippets/snippets/manager.py:787
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "관용구를 가져옵니다"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All supported archives"
 msgstr "지원되는 모든 파일"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:793
+#: ../plugins/snippets/snippets/manager.py:879
+#: ../plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
 msgstr "GZIP 압축 파일"
 
-#: ../plugins/snippets/snippets/manager.py:786
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:935
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
 msgstr "BZIP2 압축 파일"
 
-#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
 msgstr "관용구 파일"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "All files"
 msgstr "모든 파일"
 
-#: ../plugins/snippets/snippets/manager.py:800
+#: ../plugins/snippets/snippets/manager.py:808
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "내보내는데 다음 오류가 생겼습니다: %s"
 
-#: ../plugins/snippets/snippets/manager.py:804
+#: ../plugins/snippets/snippets/manager.py:812
 msgid "Export successfully completed"
 msgstr "내보내기를 성공적으로 완료했습니다"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:844
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:852
+#: ../plugins/snippets/snippets/manager.py:919
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "선택한 <b>시스템</b> 관용구를 같이 내보내시겠습니까?"
 
-#: ../plugins/snippets/snippets/manager.py:859
-#: ../plugins/snippets/snippets/manager.py:929
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "There are no snippets selected to be exported"
 msgstr "내보낼 관용구가 선택되지 않았습니다"
 
-#: ../plugins/snippets/snippets/manager.py:864
-#: ../plugins/snippets/snippets/manager.py:902
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:910
 msgid "Export snippets"
 msgstr "관용구 내보내기"
 
-#: ../plugins/snippets/snippets/manager.py:1041
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "새 바로 가기 키를 누르십시오. 지우려면 백스페이스를 누르십시오"
 
-#: ../plugins/snippets/snippets/manager.py:1043
+#: ../plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
 msgstr "새 바로 가기 키를 누르십시오"
 
-#: ../plugins/snippets/snippets/placeholder.py:597
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3376,7 +3371,7 @@ msgid ""
 msgstr ""
 "파이썬 명령의(%s) 수행 제한 시간이 최대값을 넘겼습니다, 실행을 취소합니다."
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: ../plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "파이썬 명령(%s) 실행이 실패했습니다: %s"
@@ -3439,8 +3434,8 @@ msgid "_Drop targets:"
 msgstr "예외 대상(_D):"
 
 #: ../plugins/sort/gedit-sort-plugin.c:243
-msgid "S_ort..."
-msgstr "정렬(_O)..."
+msgid "S_ort…"
+msgstr "정렬(_O)…"
 
 #. ex:set ts=8 noet:
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
@@ -3473,12 +3468,12 @@ msgid "Sorts a document or selected text."
 msgstr "문서나 선택한 텍스트를 정렬합니다."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
-msgid "_Check Spelling..."
-msgstr "맞춤법 검사(_C)..."
+msgid "_Check Spelling…"
+msgstr "맞춤법 검사(_C)…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:147
-msgid "Set _Language..."
-msgstr "언어 설정(_L)..."
+msgid "Set _Language…"
+msgstr "언어 선택(_L)…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
@@ -3493,11 +3488,11 @@ msgstr "맞춤법 검사"
 msgid "Checks the spelling of the current document."
 msgstr "현재 문서의 맞춤법을 검사합니다."
 
-#: ../plugins/time/gedit-time-plugin.c:270
-msgid "In_sert Date and Time..."
-msgstr "날짜 및 시간 입력(_S)..."
+#: ../plugins/time/gedit-time-plugin.c:265
+msgid "In_sert Date and Time…"
+msgstr "날짜 및 시간 입력(_S)…"
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "사용할 수 있는 형식"
 
@@ -3566,8 +3561,8 @@ msgid "Configure date/time plugin"
 msgstr "날짜/시간 플러그인 설정"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
-msgid "When inserting date/time..."
-msgstr "날짜/시간 넣기..."
+msgid "When inserting date/time…"
+msgstr "날짜/시간 넣기…"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
@@ -3580,496 +3575,3 @@ msgstr "날짜/시간 넣기"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "커서 위치에 현재의 날짜와 시간을 끼워넣습니다."
-
-#~ msgid "Open a New Window"
-#~ msgstr "새 창 열기"
-
-#~ msgid "Open a New Document"
-#~ msgstr "새 문서 열기"
-
-#~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
-#~ msgstr "창의 크기와 위치 지정(너비x높이+가로+세로)"
-
-#~ msgid "GEOMETRY"
-#~ msgstr "<크기및위치>"
-
-#~ msgid "gedit"
-#~ msgstr "지에디트"
-
-#~ msgid "Question"
-#~ msgstr "물음"
-
-#~ msgid "Help"
-#~ msgstr "도움말"
-
-#~ msgid "(no suggested words)"
-#~ msgstr "(추천 단어 없음)"
-
-#~ msgid "_More..."
-#~ msgstr "기타(_M)..."
-
-#~ msgid "_Ignore All"
-#~ msgstr "모두 무시(_I)"
-
-#~ msgid "_Add"
-#~ msgstr "추가(_A)"
-
-#~ msgid "_Spelling Suggestions..."
-#~ msgstr "맞춤법 추천(_S)..."
-
-#~ msgid "Error when checking the spelling of word “%s”: %s"
-#~ msgstr "단어 “%s”의 맞춤법을 검사하는 중 오류: %s"
-
-#~ msgid "Error:"
-#~ msgstr "오류:"
-
-#~ msgid "Completed spell checking"
-#~ msgstr "맞춤법 검사 완료"
-
-#~ msgid "No misspelled words"
-#~ msgstr "모든 맞춤법이 올바릅니다"
-
-#~ msgid "(correct spelling)"
-#~ msgstr "(올바른 맞춤법)"
-
-#~ msgid "Suggestions"
-#~ msgstr "추천 단어"
-
-#~ msgctxt "language"
-#~ msgid "%s (%s)"
-#~ msgstr "%s (%s)"
-
-#~ msgctxt "language"
-#~ msgid "Unknown (%s)"
-#~ msgstr "알 수 없음(%s)"
-
-#~ msgctxt "language"
-#~ msgid "Default"
-#~ msgstr "기본 언어"
-
-#~ msgid "Set Language"
-#~ msgstr "언어 선택"
-
-#~ msgid "Select the _language of the current document."
-#~ msgstr "현재 문서의 언어를 선택(_L)."
-
-#~ msgid "Check Spelling"
-#~ msgstr "맞춤법 검사"
-
-#~ msgid "Misspelled word:"
-#~ msgstr "맞춤법이 틀린 단어:"
-
-#~ msgid "word"
-#~ msgstr "단어"
-
-#~ msgid "Change _to:"
-#~ msgstr "바꿀 단어(_T):"
-
-#~ msgid "Check _Word"
-#~ msgstr "단어 검사(_W)"
-
-#~ msgid "_Suggestions:"
-#~ msgstr "추천 단어(_S):"
-
-#~ msgid "Ignore _All"
-#~ msgstr "모두 무시(_A)"
-
-#~ msgid "Cha_nge"
-#~ msgstr "바꾸기(_N)"
-
-#~ msgid "Change A_ll"
-#~ msgstr "모두 바꾸기(_L)"
-
-#~ msgid "User dictionary:"
-#~ msgstr "사용자 사전:"
-
-#~ msgid "Add w_ord"
-#~ msgstr "단어 추가(_O)"
-
-#~ msgid "['UTF-8', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
-#~ msgstr "['UTF-8', 'CURRENT', 'CP949', 'UTF-16']"
-
-#~ msgid "Automatically Detected Encodings"
-#~ msgstr "인코딩 자동 인식"
-
-#~ msgid ""
-#~ "Sorted list of encodings used by gedit for automatically detecting the "
-#~ "encoding of a file. \"CURRENT\" represents the current locale encoding. "
-#~ "Only recognized encodings are used."
-#~ msgstr ""
-#~ "지에디트에서 파일 인코딩을 자동 인식할 때 사용할 인코딩의 정렬된 목록.  "
-#~ "\"CURRENT\"는 현재 로캘 인코딩을 말합니다. 이 목록에서 알려져 있는 인코딩 "
-#~ "이름만을 사용합니다."
-
-#~ msgid "['ISO-8859-15']"
-#~ msgstr "['UTF-8']"
-
-#~ msgid "Encodings shown in menu"
-#~ msgstr "메뉴에 보일 인코딩"
-
-#~ msgid ""
-#~ "List of encodings shown in the Character Encoding menu in open/save file "
-#~ "selector. Only recognized encodings are used."
-#~ msgstr ""
-#~ "파일 열기/저장에서 글자 인코딩 메뉴에 보일 인코딩 목록. 알려져 있는 인코"
-#~ "딩 이름만을 사용합니다."
-
-#~ msgid "RO"
-#~ msgstr "RO"
-
-#~ msgid "Character encodings"
-#~ msgstr "문자 인코딩"
-
-#~ msgid "_OK"
-#~ msgstr "확인(_O)"
-
-#~ msgid "E_ncodings shown in menu:"
-#~ msgstr "메뉴에 보여줄 인코딩(_N):"
-
-#~ msgid "_Ignore case"
-#~ msgstr "대소문자 무시(_I)"
-
-#~ msgid "You cannot undo a sort operation"
-#~ msgstr "한번 정렬하면 되돌릴 수 없습니다"
-
-#~ msgid "Set language"
-#~ msgstr "언어 선택"
-
-#~ msgid "Languages"
-#~ msgstr "언어"
-
-#~ msgid "The document is empty."
-#~ msgstr "문서가 비어있습니다."
-
-#~ msgid "P_revious Page"
-#~ msgstr "이전 페이지(_R)"
-
-#~ msgid "_Next Page"
-#~ msgstr "다음 페이지(_N)"
-
-#~ msgid "Replace"
-#~ msgstr "바꾸기"
-
-#~ msgid "_Search for: "
-#~ msgstr "검색할 문자열(_S): "
-
-#~ msgid ""
-#~ "Whether gedit should create backup copies for the files it saves. You can "
-#~ "set the backup file extension with the \"Backup Copy Extension\" option."
-#~ msgstr ""
-#~ "파일을 저장할 때 예비본을 만듭니다. 예비본 파일의 확장자는 \"예비본 확장자"
-#~ "\" 옵션에서 설정할 수 있습니다."
-
-#~ msgid "About gedit"
-#~ msgstr "지에디트 정보"
-
-#~ msgid "Unicode"
-#~ msgstr "유니코드"
-
-#~ msgid "Western"
-#~ msgstr "서유럽어"
-
-#~ msgid "Central European"
-#~ msgstr "중앙 유럽어"
-
-#~ msgid "South European"
-#~ msgstr "남부 유럽어"
-
-#~ msgid "Baltic"
-#~ msgstr "발트어"
-
-#~ msgid "Cyrillic"
-#~ msgstr "키릴어"
-
-#~ msgid "Arabic"
-#~ msgstr "아라비아어"
-
-#~ msgid "Greek"
-#~ msgstr "그리스어"
-
-#~ msgid "Hebrew Visual"
-#~ msgstr "히브리어 비주얼"
-
-#~ msgid "Turkish"
-#~ msgstr "터키어"
-
-#~ msgid "Nordic"
-#~ msgstr "북유럽어"
-
-#~ msgid "Celtic"
-#~ msgstr "켈트어"
-
-#~ msgid "Romanian"
-#~ msgstr "루마니아어"
-
-#~ msgid "Armenian"
-#~ msgstr "아르메니아어"
-
-#~ msgid "Chinese Traditional"
-#~ msgstr "중국어 번체"
-
-#~ msgid "Cyrillic/Russian"
-#~ msgstr "키릴/러시아어"
-
-#~ msgid "Japanese"
-#~ msgstr "일본어"
-
-#~ msgid "Korean"
-#~ msgstr "한국어"
-
-#~ msgid "Chinese Simplified"
-#~ msgstr "중국어 간체"
-
-#~ msgid "Georgian"
-#~ msgstr "그루지야어"
-
-#~ msgid "Hebrew"
-#~ msgstr "히브리어"
-
-#~ msgid "Cyrillic/Ukrainian"
-#~ msgstr "키릴/우크라이나어"
-
-#~ msgid "Vietnamese"
-#~ msgstr "베트남어"
-
-#~ msgid "Thai"
-#~ msgstr "타이어"
-
-#~ msgid "Unknown"
-#~ msgstr "알 수 없음"
-
-#~ msgid "The file is too big."
-#~ msgstr "파일이 너무 큽니다."
-
-#~ msgid "Unicode (UTF-8)"
-#~ msgstr "유니코드(UTF-8)"
-
-#~ msgid "Open a recently used file"
-#~ msgstr "최근에 열었던 파일을 엽니다"
-
-#~ msgid "Recent files"
-#~ msgstr "최근 파일"
-
-#~ msgid "Zeitgeist dataprovider"
-#~ msgstr "자이트가이스트 데이터 프로바이더"
-
-#~ msgid "Logs access and leave event for documents used with gedit"
-#~ msgstr "지에디트에서 사용하는 문서의 접근 기록 및 이벤트를 기록합니다"
-
-#~ msgid "Undo Actions Limit (DEPRECATED)"
-#~ msgstr "실행 취소 제한(낡음)"
-
-#~ msgid ""
-#~ "Maximum number of actions that gedit will be able to undo or redo. Use "
-#~ "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
-#~ msgstr ""
-#~ "지에디트에서 실행 취소나 다시 실행을 할 수 있는 최대 회수. \"-1\"이면 무제"
-#~ "한.2.12.0부터는 낡은 값"
-
-#~ msgid "Show the application's help"
-#~ msgstr "프로그램 도움말을 표시합니다"
-
-#~ msgid "- Edit text files"
-#~ msgstr "- 텍스트 파일을 편집합니다"
-
-#~ msgid ""
-#~ "%s\n"
-#~ "Run '%s --help' to see a full list of available command line options.\n"
-#~ msgstr ""
-#~ "%s\n"
-#~ "명령행 옵션을 모두 보려면 '%s --help' 명령을 실행하십시오.\n"
-
-#~ msgid "Save _As..."
-#~ msgstr "다른 이름으로 저장(_A)..."
-
-#~ msgid "_Print..."
-#~ msgstr "인쇄(_P)..."
-
-#~ msgid "Empty"
-#~ msgstr "비어있음"
-
-#~ msgid "gedit Preferences"
-#~ msgstr "지에디트 기본 설정"
-
-#~ msgid "column"
-#~ msgstr "열"
-
-#~ msgid "_Open..."
-#~ msgstr "열기(_O)..."
-
-#~ msgid "Pr_eferences"
-#~ msgstr "기본 설정(_E)"
-
-#~ msgid "Configure the application"
-#~ msgstr "프로그램을 설정합니다"
-
-#~ msgid "_Contents"
-#~ msgstr "차례(_C)"
-
-#~ msgid "Revert to a saved version of the file"
-#~ msgstr "저장한 파일의 상태로 되돌아갑니다"
-
-#~ msgid "Print Previe_w"
-#~ msgstr "인쇄 미리보기(_W)"
-
-#~ msgid "Print preview"
-#~ msgstr "인쇄 미리보기"
-
-#~ msgid "Undo the last action"
-#~ msgstr "마지막에 했던 작업을 취소합니다"
-
-#~ msgid "Redo the last undone action"
-#~ msgstr "실행 취소했던 작업을 다시 합니다"
-
-#~ msgid "Cut the selection"
-#~ msgstr "선택한 부분을 자릅니다"
-
-#~ msgid "Copy the selection"
-#~ msgstr "선택한 부분을 복사합니다"
-
-#~ msgid "Delete the selected text"
-#~ msgstr "선택한 텍스트를 지웁니다"
-
-#~ msgid "_Highlight Mode..."
-#~ msgstr "강조 모드(_H)..."
-
-#~ msgid "Changes the highlight mode of the active document"
-#~ msgstr "현재 문서의 강조 모드를 바꿉니다"
-
-#~ msgid "_Find..."
-#~ msgstr "찾기(_F)..."
-
-#~ msgid "Search for text"
-#~ msgstr "텍스트를 찾습니다"
-
-#~ msgid "Search forwards for the same text"
-#~ msgstr "같은 텍스트를 앞 방향으로 찾습니다"
-
-#~ msgid "Search backwards for the same text"
-#~ msgstr "같은 텍스트를 뒤 방향으로 찾습니다"
-
-#~ msgid "_Replace..."
-#~ msgstr "바꾸기(_R)..."
-
-#~ msgid "Search for and replace text"
-#~ msgstr "텍스트를 찾아서 바꿉니다"
-
-#~ msgid "Clear highlighting of search matches"
-#~ msgstr "검색 결과의 강조를 지웁니다"
-
-#~ msgid "Go to a specific line"
-#~ msgstr "특정 줄로 이동합니다"
-
-#~ msgid "Save all open files"
-#~ msgstr "열려있는 모든 파일을 저장합니다"
-
-#~ msgid "Close all open files"
-#~ msgstr "열린 모든 파일을 닫습니다"
-
-#~ msgid "Activate previous document"
-#~ msgstr "이전 문서를 불러옵니다"
-
-#~ msgid "Activate next document"
-#~ msgstr "다음 문서를 불러옵니다"
-
-#~ msgid "Move the current document to a new window"
-#~ msgstr "현재 문서를 새 창으로 옮깁니다"
-
-#~ msgid "Close the current file"
-#~ msgstr "현재 파일을 닫습니다"
-
-#~ msgid "Quit the program"
-#~ msgstr "프로그램을 끝냅니다"
-
-#~ msgid "_Toolbar"
-#~ msgstr "도구 모음(_T)"
-
-#~ msgid "Show or hide the toolbar in the current window"
-#~ msgstr "현재 창의 도구 모음 보기 여부를 바꿉니다"
-
-#~ msgid "Show or hide the statusbar in the current window"
-#~ msgstr "현재 창의 상태 표시줄 보기 여부를 바꿉니다"
-
-#~ msgid "Edit text in fullscreen"
-#~ msgstr "전체 화면에서 텍스트 편집"
-
-#~ msgid "Show or hide the side panel in the current window"
-#~ msgstr "현재 창의 가장자리 패널 보기 여부를 바꿉니다"
-
-#~ msgid "Show or hide the bottom panel in the current window"
-#~ msgstr "현재 창의 아래 패널의 보기 여부를 바꿉니다"
-
-#~ msgid "Open '%s'"
-#~ msgstr "'%s'을(를) 엽니다"
-
-#~ msgid "Activate '%s'"
-#~ msgstr "%s 활성"
-
-#~ msgid "Change Case"
-#~ msgstr "대소문자 바꾸기"
-
-#~ msgid "Changes the case of selected text."
-#~ msgstr "선택한 텍스트의 대소문자를 바꿉니다."
-
-#~ msgid "C_hange Case"
-#~ msgstr "대소문자 바꾸기(_H)"
-
-#~ msgid "All _Upper Case"
-#~ msgstr "모두 대문자(_U)"
-
-#~ msgid "All _Lower Case"
-#~ msgstr "모두 소문자(_L)"
-
-#~ msgid "Invert the case of selected text"
-#~ msgstr "선택한 텍스트의 대소문자를 뒤바꿉니다"
-
-#~ msgid "_Title Case"
-#~ msgstr "제목 대소문자(_T)"
-
-#~ msgid "Capitalize the first letter of each selected word"
-#~ msgstr "각 단어의 첫번째 글자만 대문자로 바꿉니다"
-
-#~ msgid "Get statistical information on the current document"
-#~ msgstr "현재 문서의 통계 정보를 가져옵니다"
-
-#~ msgid "_Update"
-#~ msgstr "업데이트(_U)"
-
-#~ msgid "File Name"
-#~ msgstr "파일 이름"
-
-#~ msgid "Opens the External Tools Manager"
-#~ msgstr "외부 도구 관리자 열기"
-
-#~ msgid "External tools"
-#~ msgstr "외부 도구"
-
-#~ msgid "Quickly open documents"
-#~ msgstr "문서를 빠르게 엽니다"
-
-#~ msgid "_Snippets:"
-#~ msgstr "관용구(_S):"
-
-#~ msgid "Manage snippets"
-#~ msgstr "관용구 관리"
-
-#~ msgid "Sort the current document or selection"
-#~ msgstr "현재 문서나 선택한 부분을 정렬합니다."
-
-#~ msgid "Check the current document for incorrect spelling"
-#~ msgstr "현재 문서의 잘못된 맞춤법을 검사합니다"
-
-#~ msgid "Set the language of the current document"
-#~ msgstr "현재 문서의 언어를 설정합니다"
-
-#~ msgid "Automatically spell-check the current document"
-#~ msgstr "현재 문서의 맞춤법을 자동으로 검사합니다"
-
-#~ msgid "Language:"
-#~ msgstr "언어:"
-
-#~ msgid "Language"
-#~ msgstr "언어"
-
-#~ msgid "Insert current date and time at the cursor position"
-#~ msgstr "커서 위치에 현재의 날짜와 시간을 끼워넣습니다"
