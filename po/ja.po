@@ -18,8 +18,8 @@ msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-28 17:23+0000\n"
-"PO-Revision-Date: 2016-09-16 03:28+0900\n"
+"POT-Creation-Date: 2018-01-28 21:46+0000\n"
+"PO-Revision-Date: 2018-01-19 19:14+0700\n"
 "Last-Translator: sujiniku <sujinikusityuu@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -27,6 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 #: ../data/org.gnome.gedit.desktop.in.in.h:2
@@ -69,10 +70,9 @@ msgid "gedit Text Editor"
 msgstr "gedit テキストエディター"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-#, fuzzy
-#| msgid "Text;Editor;"
 msgid "Text;Editor;Plaintext;Write;"
-msgstr "Text;Editor;テキスト;エディター;"
+msgstr ""
+"Text;Editor;Plaintext;Write;テキスト;エディター;プレーンテキスト;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
 msgid "New Window"
@@ -87,10 +87,16 @@ msgid "Use Default Font"
 msgstr "デフォルトのフォントを使う"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
+#, fuzzy
+#| msgid ""
+#| "Whether to use the system's default fixed width font for editing text "
+#| "instead of a font specific to gedit. If this option is turned off, then "
+#| "the font named in the \"Editor Font\" option will be used instead of the "
+#| "system font."
 msgid ""
-"Whether to use the system's default fixed width font for editing text "
+"Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
-"font named in the \"Editor Font\" option will be used instead of the system "
+"font named in the “Editor Font” option will be used instead of the system "
 "font."
 msgstr ""
 "gedit で指定したフォントの代わりにシステムのデフォルトフォントを編集で使用す"
@@ -106,9 +112,13 @@ msgid "Editor Font"
 msgstr "エディターのフォント"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:5
+#, fuzzy
+#| msgid ""
+#| "A custom font that will be used for the editing area. This will only take "
+#| "effect if the \"Use Default Font\" option is turned off."
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
-"effect if the \"Use Default Font\" option is turned off."
+"effect if the “Use Default Font” option is turned off."
 msgstr ""
 "編集領域で使用するカスタムフォントを指定します。これは \"デフォルトのフォント"
 "を使う\" オプションを無効にしている場合にのみ効果があります。"
@@ -136,10 +146,14 @@ msgid "Autosave"
 msgstr "自動保存"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:11
+#, fuzzy
+#| msgid ""
+#| "Whether gedit should automatically save modified files after a time "
+#| "interval. You can set the time interval with the \"Autosave Interval\" "
+#| "option."
 msgid ""
 "Whether gedit should automatically save modified files after a time "
-"interval. You can set the time interval with the \"Autosave Interval\" "
-"option."
+"interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
 "指定時間後に変更されたファイルを gedit が自動的に保存するかどうかを指定しま"
 "す。\"自動保存の間隔\" オプションで時間を設定できます。"
@@ -149,9 +163,13 @@ msgid "Autosave Interval"
 msgstr "自動保存の間隔"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:13
+#, fuzzy
+#| msgid ""
+#| "Number of minutes after which gedit will automatically save modified "
+#| "files. This will only take effect if the \"Autosave\" option is turned on."
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
-"This will only take effect if the \"Autosave\" option is turned on."
+"This will only take effect if the “Autosave” option is turned on."
 msgstr ""
 "変更したファイルを gedit が自動的に保存するまでの時間(分単位)です。これは "
 "\"自動保存\" オプションが有効の場合のみ効果があります。"
@@ -161,9 +179,13 @@ msgid "Maximum Number of Undo Actions"
 msgstr "\"元に戻す\" の最大回数"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:15
+#, fuzzy
+#| msgid ""
+#| "Maximum number of actions that gedit will be able to undo or redo. Use "
+#| "\"-1\" for unlimited number of actions."
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
+"for unlimited number of actions."
 msgstr ""
 "gedit で \"元に戻す\" または \"やり直す\" ことができる動作の回数を最大値で指"
 "定します (無制限にする場合は \"-1\")。"
@@ -173,11 +195,17 @@ msgid "Line Wrapping Mode"
 msgstr "行折り返しモード"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:17
+#, fuzzy
+#| msgid ""
+#| "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
+#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+#| "wrapping at individual character boundaries. Note that the values are "
+#| "case-sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-"wrapping at individual character boundaries. Note that the values are case-"
-"sensitive, so make sure they appear exactly as mentioned here."
+"Specifies how to wrap long lines in the editing area. Use “none” for no "
+"wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
 msgstr ""
 "編集領域内の長い行をどのように折り返すかを指定します。折り返さない場合は "
 "\"none\"、単語の境界で折り返す場合は \"word\"、そして文字の境界で折り返す場合"
@@ -189,11 +217,17 @@ msgid "Last split mode choice for line wrapping mode"
 msgstr "行折り返しモードの直前の設定値"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:19
+#, fuzzy
+#| msgid ""
+#| "Specifies the last split mode used with line wrapping mode, so that when "
+#| "wrapping mode is off we still remember the split mode choice. Use \"word"
+#| "\" for wrapping at word boundaries, and \"char\" for wrapping at "
+#| "individual character boundaries."
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
-"wrapping mode is off we still remember the split mode choice. Use \"word\" "
-"for wrapping at word boundaries, and \"char\" for wrapping at individual "
-"character boundaries."
+"wrapping mode is off we still remember the split mode choice. Use “word” for "
+"wrapping at word boundaries, and “char” for wrapping at individual character "
+"boundaries."
 msgstr ""
 "行折り返しモードに設定した直前の分割モードを指定します。折り返しモードが OFF "
 "になった場合でも分割モードを記憶しておくために使用します。単語の境界で折り返"
@@ -286,14 +320,23 @@ msgid "Smart Home End"
 msgstr "スマート [Home]/[End]"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:41
+#, fuzzy
+#| msgid ""
+#| "Specifies how the cursor moves when the HOME and END keys are pressed. "
+#| "Use \"disabled\" to always move at the start/end of the line, \"after\" "
+#| "to move to the start/end of the line the first time the keys are pressed "
+#| "and to the start/end of the text ignoring whitespaces the second time the "
+#| "keys are pressed, \"before\" to move to the start/end of the text before "
+#| "moving to the start/end of the line and \"always\" to always move to the "
+#| "start/end of the text instead of the start/end of the line."
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
-"\"disabled\" to always move at the start/end of the line, \"after\" to move "
-"to the start/end of the line the first time the keys are pressed and to the "
+"“disabled” to always move at the start/end of the line, “after” to move to "
+"the start/end of the line the first time the keys are pressed and to the "
 "start/end of the text ignoring whitespaces the second time the keys are "
-"pressed, \"before\" to move to the start/end of the text before moving to "
-"the start/end of the line and \"always\" to always move to the start/end of "
-"the text instead of the start/end of the line."
+"pressed, “before” to move to the start/end of the text before moving to the "
+"start/end of the line and “always” to always move to the start/end of the "
+"text instead of the start/end of the line."
 msgstr ""
 "[Home]/[End] キーを押下した時のカーソルの動きを指定します。\"disabled\" を指"
 "定すると常に行の先頭/末尾にカーソルを移動し、\"after\" を指定するとキーを初め"
@@ -352,9 +395,15 @@ msgid "Notebook Show Tabs Mode"
 msgstr "ノートブックをタブモードで表示"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#, fuzzy
+#| msgid ""
+#| "Specifies when to show the notebook tabs. Use \"never\" to never show the "
+#| "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs "
+#| "only when there is more than one tab. Note that the values are case-"
+#| "sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
-"Specifies when to show the notebook tabs. Use \"never\" to never show the "
-"tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
+"Specifies when to show the notebook tabs. Use “never” to never show the "
+"tabs, “always” to always show the tabs, and “auto” to show the tabs only "
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
@@ -386,9 +435,13 @@ msgid "Maximum Recent Files"
 msgstr "\"最近使ったファイル\" に表示する最大数"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#, fuzzy
+#| msgid ""
+#| "Specifies the maximum number of recently opened files that will be "
+#| "displayed in the \"Recent Files\" submenu."
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
-"in the \"Recent Files\" submenu."
+"in the “Recent Files” submenu."
 msgstr ""
 "\"最近使ったファイル\" のサブメニューに表示するエントリの最大数を指定します。"
 
@@ -414,9 +467,15 @@ msgid "Printing Line Wrapping Mode"
 msgstr "印刷時の行の折り返しモード"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#, fuzzy
+#| msgid ""
+#| "Specifies how to wrap long lines for printing. Use \"none\" for no "
+#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+#| "wrapping at individual character boundaries. Note that the values are "
+#| "case-sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
-"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
+"“word” for wrapping at word boundaries, and “char” for wrapping at "
 "individual character boundaries. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
@@ -447,8 +506,11 @@ msgid "Body Font for Printing"
 msgstr "印刷時の本文に使われるフォント"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#, fuzzy
+#| msgid ""
+#| "Specifies the font to use for a document's body when printing documents."
 msgid ""
-"Specifies the font to use for a document's body when printing documents."
+"Specifies the font to use for a document’s body when printing documents."
 msgstr "ドキュメントを印刷する際の本文に使用するフォントを指定します。"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
@@ -460,9 +522,13 @@ msgid "Header Font for Printing"
 msgstr "印刷時のヘッダーに使用するフォント"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:73
+#, fuzzy
+#| msgid ""
+#| "Specifies the font to use for page headers when printing a document. This "
+#| "will only take effect if the \"Print Header\" option is turned on."
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
-"will only take effect if the \"Print Header\" option is turned on."
+"will only take effect if the “Print Header” option is turned on."
 msgstr ""
 "ドキュメントを印刷する際のページヘッダーに使用するフォントを指定します。これ"
 "は \"ヘッダーの印刷\" オプションが有効の場合のみ効果があります。"
@@ -476,9 +542,13 @@ msgid "Line Number Font for Printing"
 msgstr "印刷時の行番号に使用するフォント"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#, fuzzy
+#| msgid ""
+#| "Specifies the font to use for line numbers when printing. This will only "
+#| "take effect if the \"Print Line Numbers\" option is non-zero."
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
-"take effect if the \"Print Line Numbers\" option is non-zero."
+"take effect if the “Print Line Numbers” option is non-zero."
 msgstr ""
 "印刷する際の行番号に使用するフォントを指定します。これは \"行番号の印刷\" オ"
 "プションが 0 以外の場合のみ効果があります。"
@@ -520,9 +590,16 @@ msgid "Candidate Encodings"
 msgstr "文字エンコーディング"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#, fuzzy
+#| msgid ""
+#| "List of candidate encodings shown in the Character Encoding menu in the "
+#| "open/save file chooser. \"CURRENT\" represents the current locale "
+#| "encoding. Only recognized encodings are used. The default value is the "
+#| "empty list, in which case gedit will choose good defaults depending on "
+#| "the country and language."
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
-"save file chooser. \"CURRENT\" represents the current locale encoding. Only "
+"save file chooser. “CURRENT” represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
@@ -537,15 +614,22 @@ msgid "Active plugins"
 msgstr "利用可能なプラグイン"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:88
+#, fuzzy
+#| msgid ""
+#| "List of active plugins. It contains the \"Location\" of the active "
+#| "plugins. See the .gedit-plugin file for obtaining the \"Location\" of a "
+#| "given plugin."
 msgid ""
-"List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+"List of active plugins. It contains the “Location” of the active plugins. "
+"See the .gedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
 "利用可能なプラグインの一覧です。プラグインの \"場所\" が含まれます。指定した"
 "プラグインの \"場所\" を得るには .gedit-plugin ファイルを参照してください。"
 
 #: ../gedit/gedit-app.c:110
-msgid "Show the application's version"
+#, fuzzy
+#| msgid "Show the application's version"
+msgid "Show the application’s version"
 msgstr "バージョンを表示する"
 
 #: ../gedit/gedit-app.c:116
@@ -579,7 +663,9 @@ msgid "Run gedit in standalone mode"
 msgstr "geditをスタンドアローンモードで動かす"
 
 #: ../gedit/gedit-app.c:158
-msgid "[FILE...] [+LINE[:COLUMN]]"
+#, fuzzy
+#| msgid "[FILE...] [+LINE[:COLUMN]]"
+msgid "[FILE…] [+LINE[:COLUMN]]"
 msgstr "[FILE...] [+LINE[:COLUMN]]"
 
 #: ../gedit/gedit-app.c:273
@@ -599,17 +685,15 @@ msgstr "保存せずに閉じる(_W)"
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
-#: ../gedit/gedit-io-error-info-bar.c:130
-#: ../gedit/gedit-io-error-info-bar.c:511
 #: ../gedit/gedit-preferences-dialog.c:825
 #: ../gedit/gedit-progress-info-bar.c:49
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:781
-#: ../plugins/snippets/snippets/manager.py:866
-#: ../plugins/snippets/snippets/manager.py:904
+#: ../plugins/quickopen/quickopen/popup.py:45
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
@@ -625,64 +709,99 @@ msgstr "名前を付けて保存(_S)…"
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:905
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "保存(_S)"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:324
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "If you don't save, changes from the last %ld second will be permanently "
+#| "lost."
+#| msgid_plural ""
+#| "If you don't save, changes from the last %ld seconds will be permanently "
+#| "lost."
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently lost."
+"If you don’t save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld seconds will be permanently "
+"If you don’t save, changes from the last %ld seconds will be permanently "
 "lost."
 msgstr[0] "保存しないと、%ld秒前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:333
+#, fuzzy
+#| msgid ""
+#| "If you don't save, changes from the last minute will be permanently lost."
 msgid ""
-"If you don't save, changes from the last minute will be permanently lost."
+"If you don’t save, changes from the last minute will be permanently lost."
 msgstr "保存しないと、1分前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:339
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "If you don't save, changes from the last minute and %ld second will be "
+#| "permanently lost."
+#| msgid_plural ""
+#| "If you don't save, changes from the last minute and %ld seconds will be "
+#| "permanently lost."
 msgid ""
-"If you don't save, changes from the last minute and %ld second will be "
+"If you don’t save, changes from the last minute and %ld second will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last minute and %ld seconds will be "
+"If you don’t save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] "保存しないと、1分 %ld秒前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:349
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "If you don't save, changes from the last %ld minute will be permanently "
+#| "lost."
+#| msgid_plural ""
+#| "If you don't save, changes from the last %ld minutes will be permanently "
+#| "lost."
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently lost."
+"If you don’t save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld minutes will be permanently "
+"If you don’t save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] "保存しないと、%ld分前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:364
-msgid "If you don't save, changes from the last hour will be permanently lost."
+#, fuzzy
+#| msgid ""
+#| "If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don’t save, changes from the last hour will be permanently lost."
 msgstr "保存しないと、1時間前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:370
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "If you don't save, changes from the last hour and %d minute will be "
+#| "permanently lost."
+#| msgid_plural ""
+#| "If you don't save, changes from the last hour and %d minutes will be "
+#| "permanently lost."
 msgid ""
-"If you don't save, changes from the last hour and %d minute will be "
+"If you don’t save, changes from the last hour and %d minute will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last hour and %d minutes will be "
+"If you don’t save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] "保存しないと、1時間 %d分前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:385
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "If you don't save, changes from the last %d hour will be permanently lost."
+#| msgid_plural ""
+#| "If you don't save, changes from the last %d hours will be permanently "
+#| "lost."
 msgid ""
-"If you don't save, changes from the last %d hour will be permanently lost."
+"If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %d hours will be permanently lost."
+"If you don’t save, changes from the last %d hours will be permanently lost."
 msgstr[0] "保存しないと、%d時間前からの変更内容が完全に失われます。"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:414
@@ -724,12 +843,15 @@ msgid "S_elect the documents you want to save:"
 msgstr "保存するドキュメントを選択してください(_E):"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:562
-msgid "If you don't save, all your changes will be permanently lost."
+#, fuzzy
+#| msgid "If you don't save, all your changes will be permanently lost."
+msgid "If you don’t save, all your changes will be permanently lost."
 msgstr "保存しないと変更した内容が完全に失われます。"
 
 #: ../gedit/gedit-commands-file.c:261
-#, c-format
-msgid "Loading file '%s'…"
+#, fuzzy, c-format
+#| msgid "Loading file '%s'…"
+msgid "Loading file “%s”…"
 msgstr "ファイル '%s' を読み込んでいます…"
 
 #: ../gedit/gedit-commands-file.c:270
@@ -748,14 +870,15 @@ msgstr "開く"
 #: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:39
-#: ../plugins/snippets/snippets/manager.py:782
+#: ../plugins/quickopen/quickopen/popup.py:46
+#: ../plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "開く(_O)"
 
 #: ../gedit/gedit-commands-file.c:558
-#, c-format
-msgid "The file \"%s\" is read-only."
+#, fuzzy, c-format
+#| msgid "The file \"%s\" is read-only."
+msgid "The file “%s” is read-only."
 msgstr "ファイル \"%s\" は読み込み専用です。"
 
 #: ../gedit/gedit-commands-file.c:563
@@ -776,10 +899,13 @@ msgid "Save the file as plain text?"
 msgstr "ファイルをプレーンテキストで保存しますか?"
 
 #: ../gedit/gedit-commands-file.c:625
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "The file \"%s\" was previously saved as plain text and will now be saved "
+#| "using compression."
 msgid ""
-"The file \"%s\" was previously saved as plain text and will now be saved "
-"using compression."
+"The file “%s” was previously saved as plain text and will now be saved using "
+"compression."
 msgstr ""
 "ファイル %s は以前プレーンテキストで保存されていましたが、今回は圧縮をかけて"
 "保存しました。"
@@ -789,9 +915,12 @@ msgid "_Save Using Compression"
 msgstr "圧縮をかけて保存(_S)"
 
 #: ../gedit/gedit-commands-file.c:634
-#, c-format
+#, fuzzy, c-format
+#| msgid ""
+#| "The file \"%s\" was previously saved using compression and will now be "
+#| "saved as plain text."
 msgid ""
-"The file \"%s\" was previously saved using compression and will now be saved "
+"The file “%s” was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
 "ファイル \"%s\" は圧縮されていますが、プレーンテキストとして保存しなおしま"
@@ -802,8 +931,9 @@ msgid "_Save As Plain Text"
 msgstr "プレーンテキストで保存(_S)"
 
 #: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
-#, c-format
-msgid "Saving file '%s'…"
+#, fuzzy, c-format
+#| msgid "Saving file '%s'…"
+msgid "Saving file “%s”…"
 msgstr "ファイル \"%s\" を保存しています…"
 
 #. Translators: "Save As" is the title of the file chooser window.
@@ -813,13 +943,15 @@ msgid "Save As"
 msgstr "名前を付けて保存"
 
 #: ../gedit/gedit-commands-file.c:1429
-#, c-format
-msgid "Reverting the document '%s'…"
+#, fuzzy, c-format
+#| msgid "Reverting the document '%s'…"
+msgid "Reverting the document “%s”…"
 msgstr "ドキュメント '%s' を戻しています…"
 
 #: ../gedit/gedit-commands-file.c:1476
-#, c-format
-msgid "Revert unsaved changes to document '%s'?"
+#, fuzzy, c-format
+#| msgid "Revert unsaved changes to document '%s'?"
+msgid "Revert unsaved changes to document “%s”?"
 msgstr "変更部分を保存しないで、元のドキュメント '%s' に戻しますか?"
 
 #: ../gedit/gedit-commands-file.c:1485
@@ -914,8 +1046,9 @@ msgstr "1 ヶ所で検索と置換を行いました。"
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
 #: ../gedit/gedit-commands-search.c:142
-#, c-format
-msgid "\"%s\" not found"
+#, fuzzy, c-format
+#| msgid "\"%s\" not found"
+msgid "“%s” not found"
 msgstr "\"%s\" は見つかりませんでした"
 
 #: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
@@ -940,7 +1073,9 @@ msgstr "自動検出"
 
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
-msgid "Add or Remove..."
+#, fuzzy
+#| msgid "Add or Remove..."
+msgid "Add or Remove…"
 msgstr "追加と削除..."
 
 #: ../gedit/gedit-encoding-items.c:92
@@ -954,7 +1089,9 @@ msgid "%s (Current Locale)"
 msgstr "%s (現在のロケール)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
-msgid "Do you really want to reset the character encodings' preferences?"
+#, fuzzy
+#| msgid "Do you really want to reset the character encodings' preferences?"
+msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr "文字エンコーディング設定をリセットしてもよろしいですか?"
 
 #. Reset button
@@ -1004,55 +1141,55 @@ msgid "Line Ending:"
 msgstr "改行文字:"
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
-#: ../plugins/externaltools/tools/manager.py:108
-#: ../plugins/externaltools/tools/manager.py:317
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:767
+#: ../plugins/externaltools/tools/manager.py:115
+#: ../plugins/externaltools/tools/manager.py:324
+#: ../plugins/externaltools/tools/manager.py:440
+#: ../plugins/externaltools/tools/manager.py:774
 msgid "Plain Text"
 msgstr "なし"
 
-#: ../gedit/gedit-io-error-info-bar.c:143
+#: ../gedit/gedit-io-error-info-bar.c:142
 #: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "再試行(_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:163
+#: ../gedit/gedit-io-error-info-bar.c:162
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "ファイル“%s”が見つかりませんでした。"
 
-#: ../gedit/gedit-io-error-info-bar.c:165
-#: ../gedit/gedit-io-error-info-bar.c:205
-#: ../gedit/gedit-io-error-info-bar.c:212
+#: ../gedit/gedit-io-error-info-bar.c:164
+#: ../gedit/gedit-io-error-info-bar.c:204
+#: ../gedit/gedit-io-error-info-bar.c:211
 msgid "Please check that you typed the location correctly and try again."
 msgstr "入力した場所が正しいか確認して、もう一度実行してみてください。"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:184
+#: ../gedit/gedit-io-error-info-bar.c:183
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "場所“%s:”を処理できません。"
 
-#: ../gedit/gedit-io-error-info-bar.c:190
+#: ../gedit/gedit-io-error-info-bar.c:189
 msgid "Unable to handle this location."
 msgstr "この場所を処理できません。"
 
-#: ../gedit/gedit-io-error-info-bar.c:199
+#: ../gedit/gedit-io-error-info-bar.c:198
 msgid "The location of the file cannot be accessed."
 msgstr "ファイルが格納されている場所にアクセスできません。"
 
-#: ../gedit/gedit-io-error-info-bar.c:203
+#: ../gedit/gedit-io-error-info-bar.c:202
 #, c-format
 msgid "“%s” is a directory."
 msgstr "“%s”はフォルダーです。"
 
-#: ../gedit/gedit-io-error-info-bar.c:210
+#: ../gedit/gedit-io-error-info-bar.c:209
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "“%s”は適切な場所ではありません"
 
 #. Translators: %s is a host name
-#: ../gedit/gedit-io-error-info-bar.c:246
+#: ../gedit/gedit-io-error-info-bar.c:245
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1061,7 +1198,7 @@ msgstr ""
 "ホスト“%s”が見つかりませんでした。プロキシの設定が正しいか確認して、もう一度"
 "実行してみてください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:261
+#: ../gedit/gedit-io-error-info-bar.c:260
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1070,39 +1207,39 @@ msgstr ""
 "ホスト名が間違っています。入力した場所が正しいか確認して、もう一度実行してみ"
 "てください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:269
+#: ../gedit/gedit-io-error-info-bar.c:268
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "“%s”は通常のファイルではありません。"
 
-#: ../gedit/gedit-io-error-info-bar.c:274
+#: ../gedit/gedit-io-error-info-bar.c:273
 msgid "Connection timed out. Please try again."
 msgstr "接続がタイムアウトしたので、もう一度実行してみてください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:307
+#: ../gedit/gedit-io-error-info-bar.c:306
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "原因不明のエラー: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:343
+#: ../gedit/gedit-io-error-info-bar.c:342
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "ファイルが見つかりません。少し前に削除された可能性があります。"
 
-#: ../gedit/gedit-io-error-info-bar.c:353
+#: ../gedit/gedit-io-error-info-bar.c:352
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "ファイル“%s”を元に戻せませんでした"
 
-#: ../gedit/gedit-io-error-info-bar.c:380
+#: ../gedit/gedit-io-error-info-bar.c:379
 msgid "Ch_aracter Encoding:"
 msgstr "エンコーディング(_A):"
 
-#: ../gedit/gedit-io-error-info-bar.c:441
+#: ../gedit/gedit-io-error-info-bar.c:440
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "“%s”に現在アクセスできません。"
 
-#: ../gedit/gedit-io-error-info-bar.c:456
+#: ../gedit/gedit-io-error-info-bar.c:455
 msgid "Your system is offline. Check your network."
 msgstr ""
 "お使いのシステムは現在オフラインです。ネットワーク接続を確認してください。"
@@ -1110,11 +1247,11 @@ msgstr ""
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:499
-#: ../gedit/gedit-io-error-info-bar.c:768
+#: ../gedit/gedit-io-error-info-bar.c:764
 msgid "Edit Any_way"
 msgstr "強制的に編集する(_W)"
 
-#: ../gedit/gedit-io-error-info-bar.c:591
+#: ../gedit/gedit-io-error-info-bar.c:587
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1122,29 +1259,29 @@ msgstr ""
 "リンクの数が制限され、実際のファイルがこの制限内に見つけることができませんで"
 "した。"
 
-#: ../gedit/gedit-io-error-info-bar.c:595
+#: ../gedit/gedit-io-error-info-bar.c:591
 msgid "You do not have the permissions necessary to open the file."
 msgstr "そのファイルを開く権限がありません。"
 
-#: ../gedit/gedit-io-error-info-bar.c:601
+#: ../gedit/gedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
 msgstr "文字のエンコーディングを検出できませんでした。"
 
-#: ../gedit/gedit-io-error-info-bar.c:602
-#: ../gedit/gedit-io-error-info-bar.c:626
+#: ../gedit/gedit-io-error-info-bar.c:598
+#: ../gedit/gedit-io-error-info-bar.c:622
 msgid "Please check that you are not trying to open a binary file."
 msgstr "バイナリファイルを開こうとしていないか確認してください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:603
+#: ../gedit/gedit-io-error-info-bar.c:599
 msgid "Select a character encoding from the menu and try again."
 msgstr "メニューから文字エンコーディングを選択して、もう一度実行してください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:609
+#: ../gedit/gedit-io-error-info-bar.c:605
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "ファイル“%s”を開く際にエラーが発生しました。"
 
-#: ../gedit/gedit-io-error-info-bar.c:611
+#: ../gedit/gedit-io-error-info-bar.c:607
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1152,32 +1289,32 @@ msgstr ""
 "開いたファイルに正しくない文字が含まれています。このファイルを編集し続ける"
 "と、この文書が壊れてしまうかもしれません。"
 
-#: ../gedit/gedit-io-error-info-bar.c:614
+#: ../gedit/gedit-io-error-info-bar.c:610
 msgid "You can also choose another character encoding and try again."
 msgstr "メニューから文字エンコーディングを選択して、もう一度実行してください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:619
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "ファイル“%s”を文字エンコーディング“%s”で開けませんでした。"
 
-#: ../gedit/gedit-io-error-info-bar.c:627
-#: ../gedit/gedit-io-error-info-bar.c:702
+#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:698
 msgid "Select a different character encoding from the menu and try again."
 msgstr ""
 "メニューから別の文字エンコーディングを選択して、もう一度実行してください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:639
+#: ../gedit/gedit-io-error-info-bar.c:635
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "ファイル“%s”を開けませんでした。"
 
-#: ../gedit/gedit-io-error-info-bar.c:697
+#: ../gedit/gedit-io-error-info-bar.c:693
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "ファイル“%s”を文字エンコーディング“%s”で保存できませんでした。"
 
-#: ../gedit/gedit-io-error-info-bar.c:700
+#: ../gedit/gedit-io-error-info-bar.c:696
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1187,59 +1324,63 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:773
-msgid "D_on't Edit"
+#: ../gedit/gedit-io-error-info-bar.c:769
+#, fuzzy
+#| msgid "D_on't Edit"
+msgid "D_on’t Edit"
 msgstr "編集しない(_O)"
 
-#: ../gedit/gedit-io-error-info-bar.c:783
+#: ../gedit/gedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "このファイル“%s”は既に別の gedit ウィンドウで開いています。"
 
-#: ../gedit/gedit-io-error-info-bar.c:797
+#: ../gedit/gedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
 msgstr "とにかく編集しますか?"
 
-#: ../gedit/gedit-io-error-info-bar.c:853
-#: ../gedit/gedit-io-error-info-bar.c:943
-#: ../gedit/gedit-io-error-info-bar.c:1235
+#: ../gedit/gedit-io-error-info-bar.c:849
+#: ../gedit/gedit-io-error-info-bar.c:939
+#: ../gedit/gedit-io-error-info-bar.c:1229
 msgid "S_ave Anyway"
 msgstr "とにかく保存する(_A)"
 
-#: ../gedit/gedit-io-error-info-bar.c:856
-#: ../gedit/gedit-io-error-info-bar.c:946
-#: ../gedit/gedit-io-error-info-bar.c:1238
-msgid "D_on't Save"
+#: ../gedit/gedit-io-error-info-bar.c:852
+#: ../gedit/gedit-io-error-info-bar.c:942
+#: ../gedit/gedit-io-error-info-bar.c:1232
+#, fuzzy
+#| msgid "D_on't Save"
+msgid "D_on’t Save"
 msgstr "保存しない(_O)"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:870
+#: ../gedit/gedit-io-error-info-bar.c:866
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr ""
 "ファイル“%s”は、読み込んだあとにアプリケーションの外部から内容が書き換えられ"
 "ました。"
 
-#: ../gedit/gedit-io-error-info-bar.c:885
+#: ../gedit/gedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "このファイルを保存すると外部からの変更はすべて失われます。強制的に保存します"
 "か?"
 
-#: ../gedit/gedit-io-error-info-bar.c:965
+#: ../gedit/gedit-io-error-info-bar.c:961
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "“%s”を保存する際にバックアップファイルを作成できませんでした。"
 
-#: ../gedit/gedit-io-error-info-bar.c:970
+#: ../gedit/gedit-io-error-info-bar.c:966
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "“%s”を保存する際に作業用のバックアップファイルを作成できませんでした。"
 
-#: ../gedit/gedit-io-error-info-bar.c:987
+#: ../gedit/gedit-io-error-info-bar.c:983
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1251,7 +1392,7 @@ msgstr ""
 "保存しますか?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1047
+#: ../gedit/gedit-io-error-info-bar.c:1043
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1260,7 +1401,7 @@ msgstr ""
 "場所“%s:”へ書き込めません。入力した場所が正しいことを確認して、もう一度実行し"
 "てみてください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1055
+#: ../gedit/gedit-io-error-info-bar.c:1051
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1268,7 +1409,7 @@ msgstr ""
 "この場所へ書き込めません。入力した場所が正しいことを確認して、もう一度実行し"
 "てみてください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1064
+#: ../gedit/gedit-io-error-info-bar.c:1060
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1277,7 +1418,7 @@ msgstr ""
 "場所“%s”が間違っています。入力した場所が正しいことを確認して、もう一度実行し"
 "てみてください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1071
+#: ../gedit/gedit-io-error-info-bar.c:1067
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1285,7 +1426,7 @@ msgstr ""
 "そのファイルを保存するために必要な権限がありません。入力した場所が正しいか確"
 "認して、もう一度実行してみてください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1077
+#: ../gedit/gedit-io-error-info-bar.c:1073
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1293,7 +1434,7 @@ msgstr ""
 "そのファイルを保存するのに十分な空き容量がありません。空き容量を増やしてか"
 "ら、もう一度実行してみてください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1078
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1301,11 +1442,11 @@ msgstr ""
 "読み込み専用のディスクにファイルを保存しようとしています。入力した場所が正し"
 "いか確認して、もう一度実行してみてください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../gedit/gedit-io-error-info-bar.c:1084
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "同名のファイルが存在します。別の名前にしてください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1093
+#: ../gedit/gedit-io-error-info-bar.c:1089
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1313,7 +1454,7 @@ msgstr ""
 "保存先のディスクには指定できるファイル名の長さに制限があります。もっと短い"
 "ファイル名にしてください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../gedit/gedit-io-error-info-bar.c:1100
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1322,37 +1463,33 @@ msgstr ""
 "保存先のディスクにはファイルサイズの制限があります。小さいファイルを保存する"
 "か、この制限のないディスクに保存してください。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1117
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "ファイル“%s”を保存できませんでした。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1161
+#: ../gedit/gedit-io-error-info-bar.c:1157
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "ファイル“%s”の内容がアプリケーションの外部で書き換えられました。"
 
-#: ../gedit/gedit-io-error-info-bar.c:1172
+#: ../gedit/gedit-io-error-info-bar.c:1168
 msgid "Drop Changes and _Reload"
 msgstr "手元の編集内容を破棄して再読み込み(_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182
+#: ../gedit/gedit-io-error-info-bar.c:1178
 #: ../gedit/resources/gtk/menus-common.ui.h:21
 #: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 msgid "_Reload"
 msgstr "再読み込み(_R)"
 
-#: ../gedit/gedit-io-error-info-bar.c:1187
-msgid "_Ignore"
-msgstr "無視(_I)"
-
-#: ../gedit/gedit-io-error-info-bar.c:1248
+#: ../gedit/gedit-io-error-info-bar.c:1242
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "“%s”を保存する際に不正な文字を検出しました"
 
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../gedit/gedit-io-error-info-bar.c:1258
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1370,8 +1507,10 @@ msgid "_Use the system fixed width font (%s)"
 msgstr "システムの固定幅フォント (%s) を使う(_U)"
 
 #: ../gedit/gedit-preferences-dialog.c:601
-#, c-format
-msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+#, fuzzy, c-format
+#| msgid ""
+#| "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "'%s' というフォルダーを生成できませんでした: g_mkdir_with_parents() に失敗: "
 "%s"
@@ -1393,12 +1532,15 @@ msgid "Color Scheme Files"
 msgstr "色のスキーム"
 
 #: ../gedit/gedit-preferences-dialog.c:861
-#, c-format
-msgid "Could not remove color scheme \"%s\"."
+#, fuzzy, c-format
+#| msgid "Could not remove color scheme \"%s\"."
+msgid "Could not remove color scheme “%s”."
 msgstr "色のスキーム \"%s\" を削除できませんでした。"
 
 #: ../gedit/gedit-print-job.c:227
-msgid "Preparing..."
+#, fuzzy
+#| msgid "Preparing..."
+msgid "Preparing…"
 msgstr "準備中..."
 
 #: ../gedit/gedit-print-job.c:539
@@ -1414,8 +1556,9 @@ msgid "Page %N of %Q"
 msgstr "ページ %N / %Q"
 
 #: ../gedit/gedit-print-job.c:626
-#, c-format
-msgid "Rendering page %d of %d..."
+#, fuzzy, c-format
+#| msgid "Rendering page %d of %d..."
+msgid "Rendering page %d of %d…"
 msgstr "%d / %d ページを描画中..."
 
 #: ../gedit/gedit-print-preview.c:653
@@ -1521,8 +1664,9 @@ msgid "Unable to open UI file %s. Error: %s"
 msgstr "UI ファイル %s を開けません。エラー: %s"
 
 #: ../gedit/gedit-utils.c:921
-#, c-format
-msgid "Unable to find the object '%s' inside file %s."
+#, fuzzy, c-format
+#| msgid "Unable to find the object '%s' inside file %s."
+msgid "Unable to find the object “%s” inside file %s."
 msgstr "オブジェクトの '%s' は %s というファイルの中にありませんでした。"
 
 #. Translators: '/ on <remote-share>'
@@ -1755,6 +1899,7 @@ msgid "_Preferences"
 msgstr "設定(_P)"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:34
+#: ../gedit/resources/gtk/menus.ui.h:16
 msgid "_View"
 msgstr "表示(_V)"
 
@@ -1816,6 +1961,7 @@ msgid "Go to _Line…"
 msgstr "指定行へ移動(_L)…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:46
+#: ../gedit/resources/gtk/menus.ui.h:20
 msgid "_Tools"
 msgstr "ツール(_T)"
 
@@ -1892,13 +2038,11 @@ msgstr "置換(_F)…"
 msgid "_Go to Line…"
 msgstr "指定行へ移動(_G)…"
 
-#: ../gedit/resources/gtk/menus.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "表示"
 
-#: ../gedit/resources/gtk/menus.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 msgid "Tools"
 msgstr "ツール"
@@ -1936,7 +2080,9 @@ msgid "_Select"
 msgstr "選択(_S)"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
-msgid "Search highlight mode..."
+#, fuzzy
+#| msgid "Search highlight mode..."
+msgid "Search highlight mode…"
 msgstr "ハイライトモードを検索します..."
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
@@ -2285,8 +2431,11 @@ msgid "Switch to the previous document"
 msgstr "前のドキュメントに切り替える"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Switch to the first - ninth document"
 msgctxt "shortcut window"
-msgid "Switch to the first - ninth document"
+msgid "Switch to the first — ninth document"
 msgstr "指定位置のドキュメントに切り替える(1番目-9番目)"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
@@ -2613,7 +2762,9 @@ msgid "Build"
 msgstr "ビルド"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
-msgid "Run \"make\" in the document directory"
+#, fuzzy
+#| msgid "Run \"make\" in the document directory"
+msgid "Run “make” in the document directory"
 msgstr "ドキュメントのあるフォルダーで \"make\" を実行します"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
@@ -2664,76 +2815,85 @@ msgid "Whether to use the system font"
 msgstr "システムフォントを使うかどうか"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
+#, fuzzy
+#| msgid ""
+#| "If true, the external tools will use the desktop-global standard font if "
+#| "it's monospace (and the most similar font it can come up with otherwise)."
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
-"it's monospace (and the most similar font it can come up with otherwise)."
+"it’s monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "もし true ならば、外部ツールはデスクトップ標準が monospace フォントであれば "
 "monospace (あるいは他の似たようなフォント) を使います。"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
-msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+#, fuzzy
+#| msgid ""
+#| "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr "Pango フォント名。例: \"Sans 12\"、\"Monospace Bold 14\""
 
-#: ../plugins/externaltools/tools/appactivatable.py:126
-msgid "Manage _External Tools..."
-msgstr "外部ツールの管理(_E)..."
+#: ../plugins/externaltools/tools/appactivatable.py:133
+#, fuzzy
+#| msgid "Manage External Tools"
+msgid "Manage _External Tools…"
+msgstr "外部ツールの管理"
 
-#: ../plugins/externaltools/tools/appactivatable.py:131
+#: ../plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
 msgstr "外部ツール(_T)"
 
-#: ../plugins/externaltools/tools/capture.py:99
+#: ../plugins/externaltools/tools/capture.py:106
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "次のコマンドを実行できませんでした: %s"
 
-#: ../plugins/externaltools/tools/functions.py:184
+#: ../plugins/externaltools/tools/functions.py:191
 msgid "You must be inside a word to run this command"
 msgstr "このコマンドを実行するために必要な語句を入力してください"
 
-#: ../plugins/externaltools/tools/functions.py:302
+#: ../plugins/externaltools/tools/functions.py:309
 msgid "Running tool:"
 msgstr "実行したツール:"
 
-#: ../plugins/externaltools/tools/functions.py:333
+#: ../plugins/externaltools/tools/functions.py:340
 msgid "Done."
 msgstr "完了しました。"
 
-#: ../plugins/externaltools/tools/functions.py:335
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Exited"
 msgstr "終了コード:"
 
-#: ../plugins/externaltools/tools/manager.py:106
+#: ../plugins/externaltools/tools/manager.py:113
 msgid "All languages"
 msgstr "すべての言語"
 
-#: ../plugins/externaltools/tools/manager.py:422
-#: ../plugins/externaltools/tools/manager.py:426
-#: ../plugins/externaltools/tools/manager.py:765
+#: ../plugins/externaltools/tools/manager.py:429
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:772
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "すべての言語"
 
-#: ../plugins/externaltools/tools/manager.py:539
+#: ../plugins/externaltools/tools/manager.py:546
 msgid "New tool"
 msgstr "新しいツール"
 
-#: ../plugins/externaltools/tools/manager.py:676
+#: ../plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "既にこのアクセラレータは %s に割り当てられています"
 
-#: ../plugins/externaltools/tools/manager.py:720
+#: ../plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "(新しいアクセラレータを入力してください/[BS]キーでクリア)"
 
-#: ../plugins/externaltools/tools/manager.py:722
+#: ../plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator"
 msgstr "(新しいアクセラレータを入力してください)"
 
-#: ../plugins/externaltools/tools/outputpanel.py:122
+#: ../plugins/externaltools/tools/outputpanel.py:129
 msgid "Stopped."
 msgstr "停止しました。"
 
@@ -2858,7 +3018,7 @@ msgstr "出力(_O):"
 msgid "_Applicability:"
 msgstr "適用範囲(_A):"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:119
+#: ../plugins/externaltools/tools/windowactivatable.py:126
 msgid "Tool Output"
 msgstr "ツールの出力"
 
@@ -2924,8 +3084,9 @@ msgstr ""
 "今すぐファイルを削除しますか?"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
-#, c-format
-msgid "The file \"%s\" cannot be moved to the trash."
+#, fuzzy, c-format
+#| msgid "The file \"%s\" cannot be moved to the trash."
+msgid "The file “%s” cannot be moved to the trash."
 msgstr "ファイル \"%s\" をゴミ箱へ移動できません。"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
@@ -2933,8 +3094,9 @@ msgid "The selected files cannot be moved to the trash."
 msgstr "選択したファイルをゴミ箱へ移動できません。"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
+#, fuzzy, c-format
+#| msgid "Are you sure you want to permanently delete \"%s\"?"
+msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "\"%s\" を完全に抹消してもよろしいですか?"
 
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
@@ -3003,8 +3165,9 @@ msgid "Could not mount volume: %s"
 msgstr "次のボリュームをマウントできませんでした: %s"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
-#, c-format
-msgid "Error when loading '%s': No such directory"
+#, fuzzy, c-format
+#| msgid "Error when loading '%s': No such directory"
+msgid "Error when loading “%s”: No such directory"
 msgstr "'%s' を読み込む際にエラー: そのようなフォルダーはありません"
 
 #. ex:set ts=8 noet:
@@ -3060,9 +3223,15 @@ msgid "Set Location to First Document"
 msgstr "初めて開くドキュメントの場所を設定"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
+#, fuzzy
+#| msgid ""
+#| "If TRUE the file browser plugin will view the directory of the first "
+#| "opened document given that the file browser hasn't been used yet. (Thus "
+#| "this generally applies to opening a document from the command line or "
+#| "opening it with Nautilus, etc.)"
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
-"document given that the file browser hasn't been used yet. (Thus this "
+"document given that the file browser hasn’t been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
 "with Nautilus, etc.)"
 msgstr ""
@@ -3118,7 +3287,9 @@ msgid "New F_ile"
 msgstr "新しいファイル(_I)"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
-msgid "_Rename..."
+#, fuzzy
+#| msgid "_Rename..."
+msgid "_Rename…"
 msgstr "名前の変更(_R)..."
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
@@ -3186,8 +3357,12 @@ msgid "The error color text"
 msgstr "エラーの色"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
+#, fuzzy
+#| msgid ""
+#| "If true, the terminal will use the desktop-global standard font if it's "
+#| "monospace (and the most similar font it can come up with otherwise)."
 msgid ""
-"If true, the terminal will use the desktop-global standard font if it's "
+"If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "もし true ならば、端末はデスクトップ標準が monospace フォントであれば "
@@ -3202,7 +3377,7 @@ msgid "_Error color:"
 msgstr "エラーの色(_E):"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Python コンソール"
@@ -3211,13 +3386,15 @@ msgstr "Python コンソール"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "ボトムパネルに対話式の Python コンソールを開きます。"
 
-#: ../plugins/quickopen/quickopen/__init__.py:40
-msgid "Quick Open..."
-msgstr "クイックオープン..."
+#: ../plugins/quickopen/quickopen/__init__.py:47
+#, fuzzy
+#| msgid "Quick Open"
+msgid "Quick Open…"
+msgstr "クイックオープン"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:33
+#: ../plugins/quickopen/quickopen/popup.py:40
 msgid "Quick Open"
 msgstr "クイックオープン"
 
@@ -3225,68 +3402,80 @@ msgstr "クイックオープン"
 msgid "Quickly open files"
 msgstr "素早くファイルを開きます"
 
-#: ../plugins/quickopen/quickopen/popup.py:83
-msgid "Type to search..."
+#: ../plugins/quickopen/quickopen/popup.py:90
+#, fuzzy
+#| msgid "Type to search..."
+msgid "Type to search…"
 msgstr "タイプして検索..."
 
-#: ../plugins/snippets/snippets/appactivatable.py:81
-msgid "Manage _Snippets..."
-msgstr "スニペットの管理(_S)..."
+#: ../plugins/snippets/snippets/appactivatable.py:88
+#, fuzzy
+#| msgid "Manage Snippets"
+msgid "Manage _Snippets…"
+msgstr "スニペットの管理"
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:56
-#: ../plugins/snippets/snippets/document.py:145
-#: ../plugins/snippets/snippets/document.py:659
+#: ../plugins/snippets/snippets/document.py:64
+#: ../plugins/snippets/snippets/document.py:153
+#: ../plugins/snippets/snippets/document.py:667
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "コードスニペット"
 
-#: ../plugins/snippets/snippets/exporter.py:80
-#, python-format
-msgid "The archive \"%s\" could not be created"
+#: ../plugins/snippets/snippets/exporter.py:88
+#, fuzzy, python-format
+#| msgid "The archive \"%s\" could not be created"
+msgid "The archive “%s” could not be created"
 msgstr "アーカイブ \"%s\" を作成できませんでした"
 
-#: ../plugins/snippets/snippets/exporter.py:97
-#, python-format
-msgid "Target directory \"%s\" does not exist"
+#: ../plugins/snippets/snippets/exporter.py:105
+#, fuzzy, python-format
+#| msgid "Target directory \"%s\" does not exist"
+msgid "Target directory “%s” does not exist"
 msgstr "対象ディレクトリ \"%s\" が存在しません"
 
-#: ../plugins/snippets/snippets/exporter.py:100
-#, python-format
-msgid "Target directory \"%s\" is not a valid directory"
+#: ../plugins/snippets/snippets/exporter.py:108
+#, fuzzy, python-format
+#| msgid "Target directory \"%s\" is not a valid directory"
+msgid "Target directory “%s” is not a valid directory"
 msgstr "対象ディレクトリ \"%s\" は妥当なディレクトリではありません"
 
-#: ../plugins/snippets/snippets/importer.py:47
-#: ../plugins/snippets/snippets/importer.py:108
-#, python-format
-msgid "File \"%s\" does not exist"
+#: ../plugins/snippets/snippets/importer.py:55
+#: ../plugins/snippets/snippets/importer.py:116
+#, fuzzy, python-format
+#| msgid "File \"%s\" does not exist"
+msgid "File “%s” does not exist"
 msgstr "ファイル \"%s\" は存在しません"
 
-#: ../plugins/snippets/snippets/importer.py:50
-#, python-format
-msgid "File \"%s\" is not a valid snippets file"
+#: ../plugins/snippets/snippets/importer.py:58
+#, fuzzy, python-format
+#| msgid "File \"%s\" is not a valid snippets file"
+msgid "File “%s” is not a valid snippets file"
 msgstr "ファイル \"%s\" は妥当なスニペットファイルではありません"
 
-#: ../plugins/snippets/snippets/importer.py:67
-#, python-format
-msgid "Imported file \"%s\" is not a valid snippets file"
+#: ../plugins/snippets/snippets/importer.py:75
+#, fuzzy, python-format
+#| msgid "Imported file \"%s\" is not a valid snippets file"
+msgid "Imported file “%s” is not a valid snippets file"
 msgstr "インポートしたファイル \"%s\" は妥当なスニペットファイルではありません"
 
-#: ../plugins/snippets/snippets/importer.py:77
-#, python-format
-msgid "The archive \"%s\" could not be extracted"
+#: ../plugins/snippets/snippets/importer.py:85
+#, fuzzy, python-format
+#| msgid "The archive \"%s\" could not be extracted"
+msgid "The archive “%s” could not be extracted"
 msgstr "アーカイブ \"%s\" を解凍できませんでした"
 
-#: ../plugins/snippets/snippets/importer.py:95
+#: ../plugins/snippets/snippets/importer.py:103
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "次のファイルをインポートできませんでした: %s"
 
-#: ../plugins/snippets/snippets/importer.py:111
-#: ../plugins/snippets/snippets/importer.py:124
-#, python-format
-msgid "File \"%s\" is not a valid snippets archive"
+#: ../plugins/snippets/snippets/importer.py:119
+#: ../plugins/snippets/snippets/importer.py:132
+#, fuzzy, python-format
+#| msgid "File \"%s\" is not a valid snippets archive"
+msgid "File “%s” is not a valid snippets archive"
 msgstr "ファイル \"%s\" は妥当なスニペットアーカイブではありません"
 
 # snippet=断片,抜粋,...
@@ -3296,29 +3485,31 @@ msgstr "ファイル \"%s\" は妥当なスニペットアーカイブではあ�
 # "snippet" (スニペット) はコードエディタにある機能で
 # 従来の "コード補間" 機能を発展させたものです。
 # (例) http://www.microsoft.com/japan/msdn/vs05/vbasic/vbnet2005_preview.asp#vbnetwhidbey_updated%20v2_topic2
-#: ../plugins/snippets/snippets/manager.py:42
+#: ../plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
 msgstr "スニペットのアーカイブ"
 
-#: ../plugins/snippets/snippets/manager.py:66
-msgid "Add a new snippet..."
+#: ../plugins/snippets/snippets/manager.py:74
+#, fuzzy
+#| msgid "Add a new snippet..."
+msgid "Add a new snippet…"
 msgstr "新しいスニペットの追加..."
 
-#: ../plugins/snippets/snippets/manager.py:116
+#: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
 msgstr "全般"
 
-#: ../plugins/snippets/snippets/manager.py:406
+#: ../plugins/snippets/snippets/manager.py:414
 msgid "Revert selected snippet"
 msgstr "選択したスニペットを戻します"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:417
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "選択したスニペットを削除します"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:662
+#: ../plugins/snippets/snippets/manager.py:670
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3329,94 +3520,94 @@ msgstr ""
 "{、[ など) のいずれかです。"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:669
+#: ../plugins/snippets/snippets/manager.py:677
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "スニペットを実行するために [Tab] キーを押下する前に入力する単語です"
 
-#: ../plugins/snippets/snippets/manager.py:758
+#: ../plugins/snippets/snippets/manager.py:766
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "インポートする際に次のエラーが発生しました: %s"
 
-#: ../plugins/snippets/snippets/manager.py:765
+#: ../plugins/snippets/snippets/manager.py:773
 msgid "Import successfully completed"
 msgstr "インポートが完了しました"
 
-#: ../plugins/snippets/snippets/manager.py:779
+#: ../plugins/snippets/snippets/manager.py:787
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "スニペットをインポートします"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All supported archives"
 msgstr "サポートしている全アーカイブ"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:793
+#: ../plugins/snippets/snippets/manager.py:879
+#: ../plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
 msgstr "Gzip 圧縮のアーカイブ"
 
-#: ../plugins/snippets/snippets/manager.py:786
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:935
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
 msgstr "Bzip2 圧縮のアーカイブ"
 
-#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
 msgstr "単一のファイル"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "All files"
 msgstr "すべてのファイル"
 
-#: ../plugins/snippets/snippets/manager.py:800
+#: ../plugins/snippets/snippets/manager.py:808
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "スニペットを保存する際にエラーが発生しました: %s"
 
-#: ../plugins/snippets/snippets/manager.py:804
+#: ../plugins/snippets/snippets/manager.py:812
 msgid "Export successfully completed"
 msgstr "保存が完了しました"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:844
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:852
+#: ../plugins/snippets/snippets/manager.py:919
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "選択した<b>システム</b>スニペットも一緒に保存しますか?"
 
-#: ../plugins/snippets/snippets/manager.py:859
-#: ../plugins/snippets/snippets/manager.py:929
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "There are no snippets selected to be exported"
 msgstr "保存するスニペットがありません"
 
-#: ../plugins/snippets/snippets/manager.py:864
-#: ../plugins/snippets/snippets/manager.py:902
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:910
 msgid "Export snippets"
 msgstr "スニペットの保存"
 
-#: ../plugins/snippets/snippets/manager.py:1041
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "(新しいショートカットを入力してください/[BS]キーでクリア)"
 
-#: ../plugins/snippets/snippets/manager.py:1043
+#: ../plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
 msgstr "(新しいショートカットを入力してください)"
 
-#: ../plugins/snippets/snippets/placeholder.py:597
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
 msgstr "Python コマンド (%s) の実行がタイムアウトしたので中止します"
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: ../plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Python コマンド (%s) の実行に失敗しました: %s"
@@ -3479,7 +3670,9 @@ msgid "_Drop targets:"
 msgstr "挿入する対象(_D):"
 
 #: ../plugins/sort/gedit-sort-plugin.c:243
-msgid "S_ort..."
+#, fuzzy
+#| msgid "S_ort..."
+msgid "S_ort…"
 msgstr "並び替え(_O)..."
 
 #. ex:set ts=8 noet:
@@ -3513,12 +3706,16 @@ msgid "Sorts a document or selected text."
 msgstr "ドキュメントまたは選択した文字列を並べ替えます。"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
-msgid "_Check Spelling..."
+#, fuzzy
+#| msgid "_Check Spelling..."
+msgid "_Check Spelling…"
 msgstr "スペルチェック(_C)..."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:147
-msgid "Set _Language..."
-msgstr "言語の設定(_L)..."
+#, fuzzy
+#| msgid "Set Language"
+msgid "Set _Language…"
+msgstr "言語の設定"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
@@ -3534,8 +3731,10 @@ msgid "Checks the spelling of the current document."
 msgstr "このドキュメントのスペルをチェックします。"
 
 #: ../plugins/time/gedit-time-plugin.c:265
-msgid "In_sert Date and Time..."
-msgstr "日付/時刻の挿入(_S)"
+#, fuzzy
+#| msgid "Insert Date and Time"
+msgid "In_sert Date and Time…"
+msgstr "日付と時間の挿入"
 
 #: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
@@ -3606,7 +3805,9 @@ msgid "Configure date/time plugin"
 msgstr "日付/時間プラグインの設定"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
-msgid "When inserting date/time..."
+#, fuzzy
+#| msgid "When inserting date/time..."
+msgid "When inserting date/time…"
 msgstr "日付/時刻を挿入する時..."
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
@@ -3620,6 +3821,24 @@ msgstr "日付/時刻の挿入"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "カーソル位置に現在の日付と時刻を挿入します。"
+
+#~ msgid "Manage _External Tools..."
+#~ msgstr "外部ツールの管理(_E)..."
+
+#~ msgid "Quick Open..."
+#~ msgstr "クイックオープン..."
+
+#~ msgid "Manage _Snippets..."
+#~ msgstr "スニペットの管理(_S)..."
+
+#~ msgid "Set _Language..."
+#~ msgstr "言語の設定(_L)..."
+
+#~ msgid "In_sert Date and Time..."
+#~ msgstr "日付/時刻の挿入(_S)"
+
+#~ msgid "_Ignore"
+#~ msgstr "無視(_I)"
 
 #~ msgid "Open a New Window"
 #~ msgstr "新しいウィンドウを開く"
@@ -3686,9 +3905,6 @@ msgstr "カーソル位置に現在の日付と時刻を挿入します。"
 #~ msgctxt "language"
 #~ msgid "Default"
 #~ msgstr "デフォルト"
-
-#~ msgid "Set Language"
-#~ msgstr "言語の設定"
 
 #~ msgid "Select the _language of the current document."
 #~ msgstr "このドキュメントの言語を選択してください(_L):"
