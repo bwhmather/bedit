@@ -6,8 +6,8 @@ msgstr ""
 "Project-Id-Version: gedit 0\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-03-04 16:35+0000\n"
-"PO-Revision-Date: 2018-03-07 17:37+0100\n"
+"POT-Creation-Date: 2018-03-13 21:02+0000\n"
+"PO-Revision-Date: 2018-03-16 18:27+0100\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -88,15 +88,16 @@ msgstr ""
 "onda će se umjesto slova sustava koristiti slova navedena u mogućnosti "
 "\"Uređivač slova\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:4
+#: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid "Editor Font"
 msgstr "Slova uređivača"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:5
+#: ../data/org.gnome.gedit.gschema.xml.in.h:6
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the “Use Default Font” option is turned off."
@@ -104,27 +105,27 @@ msgstr ""
 "Odabrana slova koja će biti korištena u prostoru za uređivanje teksta. Nema "
 "učinka ako je postavka \"Koristi uobičajena slova\" uključena."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:6
+#: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "Style Scheme"
 msgstr "Shema izgleda"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:7
+#: ../data/org.gnome.gedit.gschema.xml.in.h:8
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "ID GtkSourceWiew shema izgleda koje će se koristiti za boju teksta."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:8
+#: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid "Create Backup Copies"
 msgstr "Stvori sigurnosne kopije"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:9
+#: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "Treba li gedit stvoriti sigurnosne kopije za datoteke koju sprema."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:10
+#: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid "Autosave"
 msgstr "Automatsko spremanje"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:11
+#: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
@@ -133,11 +134,11 @@ msgstr ""
 "vremenskog razdoblja? Vremensko razdoblje možete postaviti s \"Razdoblje "
 "automatskog spremanja\" mogućnosti."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:12
+#: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid "Autosave Interval"
 msgstr "Razdoblje automatskog spremanja"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:13
+#: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
@@ -146,11 +147,11 @@ msgstr ""
 "To će biti primijenjeno samo ako je mogućnost \"Automatsko spremanje\" "
 "isključena."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:14
+#: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid "Maximum Number of Undo Actions"
 msgstr "Najveći broj radnji poništavanja"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:15
+#: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
@@ -158,11 +159,11 @@ msgstr ""
 "Najveći broj radnji koje će gedit moći poništiti ili vratiti. Koristite "
 "\"-1\" za neograničen broj radnji."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:16
+#: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid "Line Wrapping Mode"
 msgstr "Način prijeloma retka"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:17
+#: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use “none” for no "
 "wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -174,11 +175,11 @@ msgstr ""
 "\" za prijelom na granicama znakova. Vrijednosti su osjetljive na velika i "
 "mala slova, stoga pazite da se pojavljuju na isti način kao i ovdje."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:18
+#: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid "Last split mode choice for line wrapping mode"
 msgstr "Posljednji odabir načina prijeloma prijelom redaka"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:19
+#: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
 "wrapping mode is off we still remember the split mode choice. Use “word” for "
@@ -190,94 +191,94 @@ msgstr ""
 "prijeloma. Koristite \"word\" za prijelom kod riječi ili \"char\" za "
 "prijelom kod pojedinog znaka."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:20
+#: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid "Tab Size"
 msgstr "Tab veličina"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:21
+#: ../data/org.gnome.gedit.gschema.xml.in.h:22
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr "Određuje broj razmaka koji se prikazuju umjesto Tab znaka."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:22
+#: ../data/org.gnome.gedit.gschema.xml.in.h:23
 msgid "Insert spaces"
 msgstr "Umetni razmake"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:23
+#: ../data/org.gnome.gedit.gschema.xml.in.h:24
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Treba li gedit umetnuti razmake umjesto tabova."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:24
+#: ../data/org.gnome.gedit.gschema.xml.in.h:25
 msgid "Automatic indent"
 msgstr "Automatsko poravnavanje"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:25
-msgid "Whether gedit should enable automatic indentation."
-msgstr "Treba li gedit omogućiti automatsko poravnavanje"
-
 #: ../data/org.gnome.gedit.gschema.xml.in.h:26
+msgid "Whether gedit should enable automatic indentation."
+msgstr "Treba li gedit omogućiti automatsko poravnavanje."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Display Line Numbers"
 msgstr "Prikaži brojeve redaka"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:27
+#: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr ""
 "Treba li gedit prikazivati brojeve redaka u prostoru za izmjenu teksta."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:28
+#: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Highlight Current Line"
 msgstr "Istakni trenutni redak"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:29
+#: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Whether gedit should highlight the current line."
 msgstr "Treba li gedit istaknuti trenutni redak."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:30
+#: ../data/org.gnome.gedit.gschema.xml.in.h:31
 msgid "Highlight Matching Brackets"
 msgstr "Istakni odgovarajuće zagrade"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:31
+#: ../data/org.gnome.gedit.gschema.xml.in.h:32
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Treba li gedit istaknuti odgovarajuće zagrade."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:32
+#: ../data/org.gnome.gedit.gschema.xml.in.h:33
 msgid "Display Right Margin"
 msgstr "Prikaži desni rub"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:33
+#: ../data/org.gnome.gedit.gschema.xml.in.h:34
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Treba li gedit prikazivati desni rub u prostoru uređivanja teksta."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:34
+#: ../data/org.gnome.gedit.gschema.xml.in.h:35
 msgid "Right Margin Position"
 msgstr "Položaj desnog ruba"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:35
+#: ../data/org.gnome.gedit.gschema.xml.in.h:36
 msgid "Specifies the position of the right margin."
 msgstr "Određuje položaj desnog ruba."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:36
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid "Display Overview Map"
 msgstr "Prikaži pregled mape"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Whether gedit should display the overview map for the document."
 msgstr "Treba li gedit prikazati pregled mape za dokument."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid "Document background pattern type"
 msgstr "Vrsta uzorka pozadine dokumenta"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:39
-msgid "Whether the document will get a background pattern painted."
-msgstr "Treba li pozadini dokumenta dodati obojani uzorak"
-
 #: ../data/org.gnome.gedit.gschema.xml.in.h:40
+msgid "Whether the document will get a background pattern painted."
+msgstr "Treba li pozadini dokumenta dodati obojani uzorak."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid "Smart Home End"
 msgstr "Pametne Home i End tipke"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "“disabled” to always move at the start/end of the line, “after” to move to "
@@ -295,11 +296,11 @@ msgstr ""
 "početak/kraj retka i \"uvijek\" kako biste se uvijek pomaknuli na početak/"
 "kraj teksta umjesto na početak/kraj retka."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid "Restore Previous Cursor Position"
 msgstr "Vrati prijašnji položaj pokazivača"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
@@ -307,47 +308,47 @@ msgstr ""
 "Treba li gedit postaviti pokazivač na prijašnji položaj prilikom učitavanja "
 "datoteke."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid "Enable Syntax Highlighting"
 msgstr "Uključi isticanje sintakse"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Treba li gedit omogućiti isticanje sintakse."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid "Enable Search Highlighting"
 msgstr "Omogući isticanje pretraga"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr ""
 "Treba li gedit isticati sva pojavljivanja teksta za kojm se pretražuje."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid "Ensure Trailing Newline"
 msgstr "Osiguraj novi redak na kraju"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
 "Treba li gedit osigurati da dokumenti uvijek imaju novi redak na kraju."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid "Toolbar is Visible"
 msgstr "Alatna traka je vidljiva"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Treba li alatna traka biti vidljiva u prozorima za uređivanje."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid "Notebook Show Tabs Mode"
 msgstr "Prikazivanje kartica na prijenosnicima"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid ""
 "Specifies when to show the notebook tabs. Use “never” to never show the "
 "tabs, “always” to always show the tabs, and “auto” to show the tabs only "
@@ -360,29 +361,29 @@ msgstr ""
 "osjetljive na velika i mala slova, stoga pazite da se pojavljuju na isti "
 "način kao i ovdje."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid "Status Bar is Visible"
 msgstr "Statusna traka je vidljiva"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Treba li statusna traka u dnu prozora za uređivanje biti vidljiva."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid "Side panel is Visible"
 msgstr "Bočni panel je vidljiv"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Treba li bočni panel lijevo od prozora za uređivanje biti vidljiv."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid "Maximum Recent Files"
 msgstr "Najviše nedavno otvorenih datoteka"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the “Recent Files” submenu."
@@ -390,28 +391,28 @@ msgstr ""
 "Određuje najveći broj nedavno otvorenih datoteka koje se prikazuju u "
 "podizborniku \"Nedavno otvorene datoteke\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid "Print Syntax Highlighting"
 msgstr "Ispis isticanja sintakse"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
 "Treba li gedit ispisivati istaknutu sintaksu prilikom ispisa dokumenata."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid "Print Header"
 msgstr "Ispis zaglavlja"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Treba li gedit uključiti zaglavlje dokumenta prilikom ispisa."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Printing Line Wrapping Mode"
 msgstr "Ispis načina prijeloma redaka"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid ""
 "Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
 "“word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -423,11 +424,11 @@ msgstr ""
 "prijelom na granicama znakova. Vrijednosti su osjetljive na velika i mala "
 "slova, stoga pazite da se pojavljuju na isti način kao i ovdje."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "Print Line Numbers"
 msgstr "Ispis brojeva redaka"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -437,30 +438,32 @@ msgstr ""
 "brojevi redaka. U suprotnom, ispisivati će se broj retka na svakih toliko "
 "redaka."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:69
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Body Font for Printing"
 msgstr "Slova glavnog teksta pri ispisu"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr ""
 "Određuje vrstu slova koja se koriste za glavni tekst dokumenta prilikom "
 "ispisa."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Header Font for Printing"
 msgstr "Slova zaglavlja prilikom ispisa"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the “Print Header” option is turned on."
@@ -468,15 +471,16 @@ msgstr ""
 "Određuje slova koja se koriste za ispis zaglavlja stranice. Ovo ima efekta "
 "samo ako je uključena mogućnost \"Ispisuj zaglavlje\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
 msgid "Line Number Font for Printing"
 msgstr "Slova broja retka prilikom ispisa"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the “Print Line Numbers” option is non-zero."
@@ -484,43 +488,43 @@ msgstr ""
 "Određuje slova koja se koriste za ispis brojeva redaka. Ovo ima učinak samo "
 "ako mogućnost \"Ispisuj brojeve redaka\" nije postavljena na 0."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+#: ../data/org.gnome.gedit.gschema.xml.in.h:81
 msgid "Margin Left"
 msgstr "Lijevi rub"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+#: ../data/org.gnome.gedit.gschema.xml.in.h:82
 msgid "The left margin, in millimeters."
 msgstr "Lijevi rub u milimetrima."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+#: ../data/org.gnome.gedit.gschema.xml.in.h:83
 msgid "Margin Top"
 msgstr "Gornji rub"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid "The top margin, in millimeters."
 msgstr "Gornji rub u milimetrima."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Margin Right"
 msgstr "Desni rub"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid "The right margin, in millimeters."
 msgstr "Desni rub u milimetrima."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+#: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Margin Bottom"
 msgstr "Donji rub"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid "The bottom margin, in millimeters."
 msgstr "Donji rub u milimetrima."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:89
 msgid "Candidate Encodings"
 msgstr "Kôdne stranice"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:90
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
@@ -532,11 +536,11 @@ msgstr ""
 "kôdne stranice koriste. Zadana vrijednost je prazan popis, za koji će gedit "
 "odabrati najbolju zadanu kôdnu stranicu ovisno o zemlji i jeziku."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:87
+#: ../data/org.gnome.gedit.gschema.xml.in.h:91
 msgid "Active plugins"
 msgstr "Aktivni priključci"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:88
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
 "See the .gedit-plugin file for obtaining the “Location” of a given plugin."
@@ -582,7 +586,7 @@ msgstr "Pokreni gedit u samostalnom načinu rada"
 
 #: ../gedit/gedit-app.c:158
 msgid "[FILE…] [+LINE[:COLUMN]]"
-msgstr "[DATOTEKA...][+REDAK[:STUPAC]]"
+msgstr "[DATOTEKA…][+REDAK[:STUPAC]]"
 
 #: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
@@ -619,7 +623,7 @@ msgstr "_Odustani"
 #: ../gedit/resources/gtk/menus.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
-msgstr "_Spremi kao..."
+msgstr "_Spremi kao…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855
@@ -770,15 +774,15 @@ msgstr "Ako ne spremite, sve vaše promjene će biti zauvijek izgubljene."
 #: ../gedit/gedit-commands-file.c:261
 #, c-format
 msgid "Loading file “%s”…"
-msgstr "Učitavanje datoteke '%s'..."
+msgstr "Učitavanje datoteke '%s'…"
 
 #: ../gedit/gedit-commands-file.c:270
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
-msgstr[0] "Učitavanje %d datoteke..."
-msgstr[1] "Učitavanje %d datoteke..."
-msgstr[2] "Učitavanje %d datoteka..."
+msgstr[0] "Učitavanje %d datoteke…"
+msgstr[1] "Učitavanje %d datoteke…"
+msgstr[2] "Učitavanje %d datoteka…"
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
@@ -846,7 +850,7 @@ msgstr "_Spremi kao običan tekst"
 #: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
 msgid "Saving file “%s”…"
-msgstr "Spremanje datoteke \"%s\"..."
+msgstr "Spremanje datoteke \"%s\"…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
@@ -857,7 +861,7 @@ msgstr "Spremi kao"
 #: ../gedit/gedit-commands-file.c:1429
 #, c-format
 msgid "Reverting the document “%s”…"
-msgstr "Vraćanje dokumenta \"%s\" u izvorno stanje..."
+msgstr "Vraćanje dokumenta \"%s\" u izvorno stanje…"
 
 #: ../gedit/gedit-commands-file.c:1476
 #, c-format
@@ -1031,7 +1035,7 @@ msgstr "Automatski otkriveno"
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
 msgid "Add or Remove…"
-msgstr "Dodaj ili ukloni..."
+msgstr "Dodaj ili ukloni…"
 
 #: ../gedit/gedit-encoding-items.c:92
 #, c-format
@@ -1480,7 +1484,7 @@ msgstr "Shemu boja \"%s\" nije moguće ukloniti."
 
 #: ../gedit/gedit-print-job.c:227
 msgid "Preparing…"
-msgstr "Pripremanje..."
+msgstr "Pripremanje…"
 
 #: ../gedit/gedit-print-job.c:539
 #, c-format
@@ -1497,7 +1501,7 @@ msgstr "Stranica %N od %Q"
 #: ../gedit/gedit-print-job.c:626
 #, c-format
 msgid "Rendering page %d of %d…"
-msgstr "Iscrtavanje stranice %d od %d..."
+msgstr "Iscrtavanje stranice %d od %d…"
 
 #: ../gedit/gedit-print-preview.c:653
 #, c-format
@@ -1773,7 +1777,7 @@ msgstr "Ponovno otvori zatvorenu _karticu"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:19
 msgid "Save _As…"
-msgstr "Spremi _kao..."
+msgstr "Spremi _kao…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:20
 #: ../gedit/resources/gtk/menus.ui.h:1
@@ -1784,7 +1788,7 @@ msgstr "_Novi prozor"
 #: ../gedit/resources/gtk/menus.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
 msgid "_Print…"
-msgstr "_Ispiši..."
+msgstr "_Ispiši…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:23
 #: ../gedit/resources/gtk/menus.ui.h:6
@@ -1864,7 +1868,7 @@ msgstr "_Cjelozaslonski prikaz"
 #: ../gedit/resources/gtk/menus.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
 msgid "_Highlight Mode…"
-msgstr "_Način isticanja..."
+msgstr "_Način isticanja…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:39
 msgid "_Search"
@@ -1874,7 +1878,7 @@ msgstr "_Pretraži"
 #: ../gedit/resources/gtk/menus.ui.h:12
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
 msgid "_Find…"
-msgstr "_Potraži..."
+msgstr "_Potraži…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:41
 msgid "Find Ne_xt"
@@ -1886,7 +1890,7 @@ msgstr "Pronađi pri_jašnje"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:43
 msgid "Find and _Replace…"
-msgstr "Potraži i _zamijeni..."
+msgstr "Potraži i _zamijeni…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:44
 #: ../gedit/resources/gtk/menus.ui.h:14
@@ -1896,7 +1900,7 @@ msgstr "_Ukloni isticanje"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:45
 msgid "Go to _Line…"
-msgstr "Idi na _redak..."
+msgstr "Idi na _redak…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:46
 #: ../gedit/resources/gtk/menus.ui.h:20
@@ -1968,12 +1972,12 @@ msgstr "_Spremi sve"
 #: ../gedit/resources/gtk/menus.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
-msgstr "_Potraži i zamijeni..."
+msgstr "_Potraži i zamijeni…"
 
 #: ../gedit/resources/gtk/menus.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
-msgstr "_Idi na redak..."
+msgstr "_Idi na redak…"
 
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
@@ -1994,7 +1998,7 @@ msgstr "_Primijeni"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:4
 msgid "A_vailable Encodings"
-msgstr "D_ostupne kôdne stranice:"
+msgstr "D_ostupne kôdne stranice"
 
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:5
 msgid "Cho_sen Encodings"
@@ -2018,7 +2022,7 @@ msgstr "_Odaberi"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
 msgid "Search highlight mode…"
-msgstr "Pretraži način isticanja..."
+msgstr "Pretraži način isticanja…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
 msgid "No results"
@@ -2026,7 +2030,7 @@ msgstr "Nema rezultata"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
 msgid "Other _Documents…"
-msgstr "Ostali _dokumenti..."
+msgstr "Ostali _dokumenti…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:3
 msgid "Open another file"
@@ -2398,7 +2402,7 @@ msgstr "Prikaži donji panel"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
 msgctxt "shortcut window"
 msgid "Fullscreen on / off"
-msgstr "Cjelozaslonski prikaz uklj. / isklj."
+msgstr "Cjelozaslonski prikaz uklj / isklj"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
 msgctxt "shortcut window"
@@ -3201,7 +3205,7 @@ msgstr "Nova d_atoteka"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
 msgid "_Rename…"
-msgstr "_Preimenuj..."
+msgstr "_Preimenuj…"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
@@ -3309,7 +3313,7 @@ msgstr "Brzo otvaranje datoteka"
 
 #: ../plugins/quickopen/quickopen/popup.py:90
 msgid "Type to search…"
-msgstr "Upišite za pretragu..."
+msgstr "Upišite za pretragu…"
 
 #: ../plugins/snippets/snippets/appactivatable.py:88
 msgid "Manage _Snippets…"
@@ -3377,7 +3381,7 @@ msgstr "Arhiva isječaka"
 
 #: ../plugins/snippets/snippets/manager.py:74
 msgid "Add a new snippet…"
-msgstr "Dodaj novi isječak..."
+msgstr "Dodaj novi isječak…"
 
 #: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
@@ -3557,7 +3561,7 @@ msgstr "_Otkaži mete:"
 
 #: ../plugins/sort/gedit-sort-plugin.c:243
 msgid "S_ort…"
-msgstr "R_azvrstaj..."
+msgstr "R_azvrstaj…"
 
 #. ex:set ts=8 noet:
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
@@ -3591,11 +3595,11 @@ msgstr "Razvrstava dokument ili odabrani tekst."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
 msgid "_Check Spelling…"
-msgstr "_Provjera pravopisa..."
+msgstr "_Provjera pravopisa…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:147
 msgid "Set _Language…"
-msgstr "Postavi _jezik..."
+msgstr "Postavi _jezik…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
@@ -3684,7 +3688,7 @@ msgstr "Podesi priključak za datum/vrijeme"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
 msgid "When inserting date/time…"
-msgstr "Pri umetanju datuma/vremena..."
+msgstr "Pri umetanju datuma/vremena…"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
