@@ -11,9 +11,9 @@ msgstr ""
 "Project-Id-Version: gedit 2.6-branch\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-12-04 14:53+0000\n"
-"PO-Revision-Date: 2018-01-17 21:43+0200\n"
-"Last-Translator: Pieter Schoeman <pieter@sonbesie.co.za>\n"
+"POT-Creation-Date: 2018-01-29 11:29+0000\n"
+"PO-Revision-Date: 2018-02-19 19:14+0200\n"
+"Last-Translator: Pieter Schalk Schoeman <pieter@sonbesie.co.za>\n"
 "Language-Team: Afrikaans <pieter@sonbesie.co.za>\n"
 "Language: af\n"
 "MIME-Version: 1.0\n"
@@ -66,21 +66,19 @@ msgstr "gedit-teksredigeerder"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
 msgid "Text;Editor;Plaintext;Write;"
-msgstr "Teks;Redigeerder;Gewone;Skryf;"
+msgstr "teks;redigeerder;gewone;skryf;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-#| msgid "Windows"
 msgid "New Window"
 msgstr "Nuwe venster"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-#| msgid "N_ext Document"
 msgid "New Document"
-msgstr "Nuwe Dokument"
+msgstr "Nuwe dokument"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
-msgstr "Gebruik verstekfont"
+msgstr "Gebruik verstek lettertipe"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
@@ -89,28 +87,28 @@ msgid ""
 "font named in the \"Editor Font\" option will be used instead of the system "
 "font."
 msgstr ""
-"Of die stelsel se verstekfont in plaas van 'n font wat spesifiek aan gedit "
-"is, vir die redigeer van teks gebruik moet word. Indien hierdie opsie "
-"afgeskakel word, sal die font wat in die \"Redigeerderfont\"-opsie vermeld "
-"word, gebruik word in plaas van die stelselfont."
+"Of die stelsel se verstek lettertipe in plaas van 'n lettertipe wat "
+"spesifiek aan gedit is, vir die redigeer van teks gebruik moet word. Indien "
+"hierdie opsie afgeskakel word, sal die lettertipe wat in die \"Redigeerder-"
+"lettertipe\"-opsie vermeld word, gebruik word in plaas van die stelsel-"
+"lettertipe."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:3
-#| msgid "Monospace 12"
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "Editor Font"
-msgstr "Redigeerfont"
+msgstr "Redigeer-lettertipe"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the \"Use Default Font\" option is turned off."
 msgstr ""
-"'n Doelgemaakte font wat vir die redigeerbare gebied gebruik sal word. Dit "
-"sal eers in werking tree as die \"Gebruik verstekfont\"-opsie buite werking "
-"gestel word."
+"'n Doelgemaakte lettertipe wat vir die redigeerbare gebied gebruik sal word. "
+"Dit sal eers in werking tree as die \"Gebruik verstekfont\"-opsie buite "
+"werking gestel word."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:6
 msgid "Style Scheme"
@@ -177,6 +175,10 @@ msgid ""
 "wrapping at individual character boundaries. Note that the values are case-"
 "sensitive, so make sure they appear exactly as mentioned here."
 msgstr ""
+"Spesifiseer hoe om lang reëls in die teksarea om te vou. Gebruik \"none\" om "
+"nie om te vou nie, \"word\" om by woordgrense om te vou, \"char\" om by "
+"karaktergrense om te vou. Neem kennis dat waardes kassensitief is, so maak "
+"seker hulle verskyn presies soos hier vertoon."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid "Last split mode choice for line wrapping mode"
@@ -272,7 +274,7 @@ msgstr "Dokument agtergrond patroon tipe"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid "Whether the document will get a background pattern painted."
-msgstr ""
+msgstr "Of die dokument 'n agtergrond patroon gaan kry."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Smart Home End"
@@ -337,7 +339,7 @@ msgstr "Of die nutsbalk in redigeervensters sigbaar moet wees."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Notebook Show Tabs Mode"
-msgstr "Notaboek wys oortjie modus"
+msgstr "Vertoon notaboek-oortjies modus"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid ""
@@ -346,6 +348,11 @@ msgid ""
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
+"Spesifiseer wanneer om notaboek-oortjies te vertoon. Gebruik \"never\" om "
+"nooit oortjies te vertoon nie, \"always\" om altyd oortjies te vertoon, en "
+"\"auto\" om slegs oortjies te vertoon indien daar meer as een oortjie is. "
+"Neem kennis dat waardes kassensitief is, so maak seker hulle verskyn presies "
+"soos hier vertoon."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid "Status Bar is Visible"
@@ -404,6 +411,10 @@ msgid ""
 "individual character boundaries. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
+"Spesifiseer hoe om lang reëls vir druk om te vou. Gebruik \"none\" om nie om "
+"te vou nie, \"word\" om by woordgrense om te vou, \"char\" om by "
+"karaktergrense om te vou. Neem kennis dat waardes kassensitief is, so maak "
+"seker hulle verskyn presies soos hier vertoon."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid "Print Line Numbers"
@@ -420,54 +431,53 @@ msgstr ""
 "reëls druk."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:68
-#| msgid "Monospace 9"
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:69
 msgid "Body Font for Printing"
-msgstr "Lyffont vir drukwerk"
+msgstr "Lyf-lettertipe vir drukwerk"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid ""
 "Specifies the font to use for a document's body when printing documents."
 msgstr ""
-"Spesifiseer watter font vir 'n dokument se lyf gebruik moet word wanneer "
-"dokumente gedruk word."
+"Spesifiseer watter lettertipe vir 'n dokument se lyf gebruik moet word "
+"indien die dokumente gedruk word."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:71
-#| msgid "Sans 11"
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid "Header Font for Printing"
-msgstr "Kopreëlfont vir drukwerk"
+msgstr "Kopreël-lettertipe vir drukwerk"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:73
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the \"Print Header\" option is turned on."
 msgstr ""
-"Spesifiseer watter font vir bladsykoppe gebruik moet word by drukwerk. Dit "
-"sal eers in werking tree as die \"Druk kop\"-opsie in werking gestel word."
+"Spesifiseer watter lettertipe vir bladsykoppe gebruik moet word by drukwerk. "
+"Dit sal eers in werking tree as die \"Druk kop\"-opsie in werking gestel "
+"word."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:74
-#| msgid "Sans 8"
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Line Number Font for Printing"
-msgstr "Reëlnommerfont vir drukwerk"
+msgstr "Reëlnommer-lettertipe vir drukwerk"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the \"Print Line Numbers\" option is non-zero."
 msgstr ""
-"Spesifiseer watter font vir reëlnommers gebruik moet word by drukwerk. Dit "
-"sal slegs in werking tree wanneer die \"Druk reëlnommers\"-opsie nie-nul is."
+"Spesifiseer watter lettertipe vir reëlnommers gebruik moet word by drukwerk. "
+"Dit sal slegs in werking tree wanneer die \"Druk reëlnommers\"-opsie nie-nul "
+"is."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:77
 msgid "Margin Left"
@@ -503,7 +513,7 @@ msgstr "Die onderste kantruimte, in millimeters."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Candidate Encodings"
-msgstr "Kanidaatkoderings"
+msgstr "kandidaatkoderings"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid ""
@@ -512,6 +522,10 @@ msgid ""
 "recognized encodings are used. The default value is the empty list, in which "
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
+"Lys van kandidaatkoderings vertoon in die karakter-enkodering-kieslys in die "
+"oop / stoor lêer kieser. \"CURRENT\" verteenwoordig die huidige plaaslike "
+"kodering. Slegs erkende enkoderings word gebruik. Die verstekwaarde is 'n "
+"leë lys, waar gedit goeie waardes sal kies afhangende van die land en taal."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Active plugins"
@@ -522,6 +536,9 @@ msgid ""
 "List of active plugins. It contains the \"Location\" of the active plugins. "
 "See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
 msgstr ""
+"'n Lys aktiewe inproppe. Dit bevat die \"Ligging\" van aktiewe inproppe. "
+"Verwys na die .gedit-inprop- lêer om die \"Ligging\" van 'n gegewe inprop te "
+"vind."
 
 #: ../gedit/gedit-app.c:110
 msgid "Show the application's version"
@@ -580,25 +597,25 @@ msgstr "Sluit _sonder om te stoor"
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
+#: ../gedit/gedit-io-error-info-bar.c:130
+#: ../gedit/gedit-io-error-info-bar.c:511
 #: ../gedit/gedit-preferences-dialog.c:825
 #: ../gedit/gedit-progress-info-bar.c:49
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:45
-#: ../plugins/snippets/snippets/manager.py:789
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:912
+#: ../plugins/quickopen/quickopen/popup.py:38
+#: ../plugins/snippets/snippets/manager.py:781
+#: ../plugins/snippets/snippets/manager.py:866
+#: ../plugins/snippets/snippets/manager.py:904
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
-#| msgid "_Cancel Logout"
 msgid "_Cancel"
 msgstr "_Kanselleer"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/resources/gtk/menus.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
-#| msgid "Save As…"
 msgid "_Save As…"
 msgstr "_Stoor As…"
 
@@ -606,9 +623,8 @@ msgstr "_Stoor As…"
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:875
-#: ../plugins/snippets/snippets/manager.py:913
-#| msgid "_Save:"
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:905
 msgid "_Save"
 msgstr "_Stoor"
 
@@ -756,7 +772,6 @@ msgstr[1] "Laai tans %d lêers…"
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
-#| msgid "Open"
 msgctxt "window title"
 msgid "Open"
 msgstr "Open"
@@ -765,9 +780,8 @@ msgstr "Open"
 #: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:46
-#: ../plugins/snippets/snippets/manager.py:790
-#| msgid "Open"
+#: ../plugins/quickopen/quickopen/popup.py:39
+#: ../plugins/snippets/snippets/manager.py:782
 msgid "_Open"
 msgstr "_Open"
 
@@ -826,7 +840,6 @@ msgstr "Stoor tans lêer '%s'…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
-#| msgid "Save As"
 msgctxt "window title"
 msgid "Save As"
 msgstr "Stoor As"
@@ -960,7 +973,7 @@ msgstr "\"%s\" nie gevind nie"
 #: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
 #, c-format
 msgid "Untitled Document %d"
-msgstr "Ongetitelde dokument %d"
+msgstr "Titelloos %d"
 
 #: ../gedit/gedit-documents-panel.c:399
 #, c-format
@@ -975,7 +988,7 @@ msgstr "Leesalleen"
 #: ../gedit/gedit-encodings-combo-box.c:299
 #: ../gedit/gedit-file-chooser-dialog-osx.c:565
 msgid "Automatically Detected"
-msgstr "Outomaties bespeur"
+msgstr "Bespeur outomaties"
 
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
@@ -1002,7 +1015,6 @@ msgid "_Reset"
 msgstr "Stel te_rug"
 
 #: ../gedit/gedit-encodings-dialog.c:731
-#| msgid "_Add"
 msgid "Add"
 msgstr "Voeg by"
 
@@ -1044,55 +1056,55 @@ msgid "Line Ending:"
 msgstr "Einde van lyn:"
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
-#: ../plugins/externaltools/tools/manager.py:115
-#: ../plugins/externaltools/tools/manager.py:324
-#: ../plugins/externaltools/tools/manager.py:440
-#: ../plugins/externaltools/tools/manager.py:774
+#: ../plugins/externaltools/tools/manager.py:108
+#: ../plugins/externaltools/tools/manager.py:317
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:767
 msgid "Plain Text"
 msgstr "Skoonteks"
 
-#: ../gedit/gedit-io-error-info-bar.c:142
+#: ../gedit/gedit-io-error-info-bar.c:143
 #: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "P_robeer weer"
 
-#: ../gedit/gedit-io-error-info-bar.c:162
+#: ../gedit/gedit-io-error-info-bar.c:163
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Kon nie die lêer \"%s\" kry nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:164
-#: ../gedit/gedit-io-error-info-bar.c:204
-#: ../gedit/gedit-io-error-info-bar.c:211
+#: ../gedit/gedit-io-error-info-bar.c:165
+#: ../gedit/gedit-io-error-info-bar.c:205
+#: ../gedit/gedit-io-error-info-bar.c:212
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Maak seker die ligging is reg ingetik en probeer weer."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:183
+#: ../gedit/gedit-io-error-info-bar.c:184
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "Kan nie \"%s\": liggings hanteer nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:189
+#: ../gedit/gedit-io-error-info-bar.c:190
 msgid "Unable to handle this location."
 msgstr "Kan nie hierdie ligging hanteer nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:198
+#: ../gedit/gedit-io-error-info-bar.c:199
 msgid "The location of the file cannot be accessed."
 msgstr "Die ligging van die lêer is ontoeganklik."
 
-#: ../gedit/gedit-io-error-info-bar.c:202
+#: ../gedit/gedit-io-error-info-bar.c:203
 #, c-format
 msgid "“%s” is a directory."
 msgstr "\"%s\" is 'n gids."
 
-#: ../gedit/gedit-io-error-info-bar.c:209
+#: ../gedit/gedit-io-error-info-bar.c:210
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "\"%s\" is nie 'n geldige ligging nie."
 
 #. Translators: %s is a host name
-#: ../gedit/gedit-io-error-info-bar.c:245
+#: ../gedit/gedit-io-error-info-bar.c:246
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1101,7 +1113,7 @@ msgstr ""
 "Die gasheer \"%s\" kon nie gevind word nie. Maak seker dat die instellings "
 "vir instaanbedieners korrek is, en probeer gerus weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:260
+#: ../gedit/gedit-io-error-info-bar.c:261
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1110,50 +1122,50 @@ msgstr ""
 "Gasheernaam was nie geldig nie. Maak asseblief seker dat die ligging korrek "
 "ingetik is en probeer weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:268
+#: ../gedit/gedit-io-error-info-bar.c:269
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "\"%s\" is nie 'n gewone lêer nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:273
+#: ../gedit/gedit-io-error-info-bar.c:274
 msgid "Connection timed out. Please try again."
 msgstr "Verbinding het uitgetel. Probeer gerus weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:306
+#: ../gedit/gedit-io-error-info-bar.c:307
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Onverwagse fout: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:342
+#: ../gedit/gedit-io-error-info-bar.c:343
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "Kan die lêer nie vind nie. Dalk is die lêer onlangs geskrap."
 
-#: ../gedit/gedit-io-error-info-bar.c:352
+#: ../gedit/gedit-io-error-info-bar.c:353
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "Kon nie na die lêer \"%s\" terugkeer nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:379
+#: ../gedit/gedit-io-error-info-bar.c:380
 msgid "Ch_aracter Encoding:"
 msgstr "K_arakterkodering:"
 
-#: ../gedit/gedit-io-error-info-bar.c:440
+#: ../gedit/gedit-io-error-info-bar.c:441
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "Die ligging \"%s\" is tans nie bereikbaar nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:455
+#: ../gedit/gedit-io-error-info-bar.c:456
 msgid "Your system is offline. Check your network."
 msgstr "Jou stelsel is nie aanlyn nie. Gaan jou netwerk na."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:499
-#: ../gedit/gedit-io-error-info-bar.c:764
+#: ../gedit/gedit-io-error-info-bar.c:768
 msgid "Edit Any_way"
 msgstr "_Redigeer in elkgeval"
 
-#: ../gedit/gedit-io-error-info-bar.c:587
+#: ../gedit/gedit-io-error-info-bar.c:591
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1161,29 +1173,29 @@ msgstr ""
 "Die aantal gevolgde skakels is beperk en die eintlike lêer kon nie binne "
 "hierdie beperking gevind word nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:591
+#: ../gedit/gedit-io-error-info-bar.c:595
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Jy het nie die nodige toestemming om hierdie lêer oop te maak nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:597
+#: ../gedit/gedit-io-error-info-bar.c:601
 msgid "Unable to detect the character encoding."
 msgstr "Kon nie die karakterenkodering bepaal nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:598
-#: ../gedit/gedit-io-error-info-bar.c:622
+#: ../gedit/gedit-io-error-info-bar.c:602
+#: ../gedit/gedit-io-error-info-bar.c:626
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Kontroleer of u moontlik 'n binêre lêer probeer oopmaak."
 
-#: ../gedit/gedit-io-error-info-bar.c:599
+#: ../gedit/gedit-io-error-info-bar.c:603
 msgid "Select a character encoding from the menu and try again."
 msgstr "Kies 'n karakterkodering van die kieslys en probeer weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:605
+#: ../gedit/gedit-io-error-info-bar.c:609
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "Daar was 'n probleem met die oopmaak van die lêer \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:607
+#: ../gedit/gedit-io-error-info-bar.c:611
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1191,31 +1203,31 @@ msgstr ""
 "Die lêer wat oopgemaak is, het 'n paar ongeldige karakters. Indien jy "
 "voortgaan met die redigeer van die lêer kan die lêer korrupteer."
 
-#: ../gedit/gedit-io-error-info-bar.c:610
+#: ../gedit/gedit-io-error-info-bar.c:614
 msgid "You can also choose another character encoding and try again."
 msgstr "Jy kan ook 'n ander karakterenkodering kies en weer probeer."
 
-#: ../gedit/gedit-io-error-info-bar.c:619
+#: ../gedit/gedit-io-error-info-bar.c:623
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "Kon die lêer \"%s\" nie met die karakterenkodering \"%s\" oopmaak nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:623
-#: ../gedit/gedit-io-error-info-bar.c:698
+#: ../gedit/gedit-io-error-info-bar.c:627
+#: ../gedit/gedit-io-error-info-bar.c:702
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Kies 'n ander karakterenkodering van die kieslys en probeer weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:635
+#: ../gedit/gedit-io-error-info-bar.c:639
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "Kon nie die lêer \"%s\" open nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:693
+#: ../gedit/gedit-io-error-info-bar.c:697
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "Kon die lêer \"%s\" met die karakterenkodering \"%s\" stoor nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:696
+#: ../gedit/gedit-io-error-info-bar.c:700
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1225,28 +1237,28 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:769
+#: ../gedit/gedit-io-error-info-bar.c:773
 msgid "D_on't Edit"
 msgstr "M_oenie redigeer nie"
 
-#: ../gedit/gedit-io-error-info-bar.c:779
+#: ../gedit/gedit-io-error-info-bar.c:783
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Hierdie lêer \"%s\" is reeds oop in 'n ander gedit-venster."
 
-#: ../gedit/gedit-io-error-info-bar.c:793
+#: ../gedit/gedit-io-error-info-bar.c:797
 msgid "Do you want to edit it anyway?"
 msgstr "Wil u die lêer in elkgeval redigeer?"
 
-#: ../gedit/gedit-io-error-info-bar.c:849
-#: ../gedit/gedit-io-error-info-bar.c:939
-#: ../gedit/gedit-io-error-info-bar.c:1229
+#: ../gedit/gedit-io-error-info-bar.c:853
+#: ../gedit/gedit-io-error-info-bar.c:943
+#: ../gedit/gedit-io-error-info-bar.c:1235
 msgid "S_ave Anyway"
 msgstr "St_oor in elk geval"
 
-#: ../gedit/gedit-io-error-info-bar.c:852
-#: ../gedit/gedit-io-error-info-bar.c:942
-#: ../gedit/gedit-io-error-info-bar.c:1232
+#: ../gedit/gedit-io-error-info-bar.c:856
+#: ../gedit/gedit-io-error-info-bar.c:946
+#: ../gedit/gedit-io-error-info-bar.c:1238
 msgid "D_on't Save"
 msgstr "M_oenie stoor nie"
 
@@ -1254,28 +1266,28 @@ msgstr "M_oenie stoor nie"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:866
+#: ../gedit/gedit-io-error-info-bar.c:870
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "Die lêer \"%s\" is verander sedert dit gelees is."
 
-#: ../gedit/gedit-io-error-info-bar.c:881
+#: ../gedit/gedit-io-error-info-bar.c:885
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Indien dit nou gestoor word, sal alle eksterne veranderinge verloor word. "
 "Stoor in elk geval?"
 
-#: ../gedit/gedit-io-error-info-bar.c:961
+#: ../gedit/gedit-io-error-info-bar.c:965
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "Kon nie 'n rugsteunlêer skep terwyl \"%s\" gestoor is nie"
 
-#: ../gedit/gedit-io-error-info-bar.c:966
+#: ../gedit/gedit-io-error-info-bar.c:970
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "Kon nie 'n tydelike rugsteunlêer skep terwyl \"%s\" gestoor word nie"
 
-#: ../gedit/gedit-io-error-info-bar.c:983
+#: ../gedit/gedit-io-error-info-bar.c:987
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1287,7 +1299,7 @@ msgstr ""
 "die lêer verloor. Nogtans stoor?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1043
+#: ../gedit/gedit-io-error-info-bar.c:1047
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1296,7 +1308,7 @@ msgstr ""
 "Kan nie liggings \"%s:\" hanteer in skryfmodus nie. Maak seker dat jy die "
 "ligging reg ingetik het en probeer weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:1051
+#: ../gedit/gedit-io-error-info-bar.c:1055
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1304,7 +1316,7 @@ msgstr ""
 "Kan nie hierdie ligging in skryfmodus hanteer nie. Maak seker dat die "
 "ligging reg ingetik is en probeer weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:1060
+#: ../gedit/gedit-io-error-info-bar.c:1064
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1313,7 +1325,7 @@ msgstr ""
 "\"%s\" is nie 'n geldige ligging nie. Maak seker dat die ligging reg ingetik "
 "is en probeer weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:1067
+#: ../gedit/gedit-io-error-info-bar.c:1071
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1321,7 +1333,7 @@ msgstr ""
 "Jy het nie die nodige toestemming om die lêer te stoor nie. Maak seker dat "
 "die ligging reg ingetik is en probeer weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:1073
+#: ../gedit/gedit-io-error-info-bar.c:1077
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1329,7 +1341,7 @@ msgstr ""
 "Daar is nie voldoende skyfspasie om die lêer te stoor nie. Maak 'n bietjie "
 "spasie beskikbaar en probeer weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:1078
+#: ../gedit/gedit-io-error-info-bar.c:1082
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1337,11 +1349,11 @@ msgstr ""
 "Jy probeer om 'n lêer te stoor op 'n leesalleen skyf. Maak seker dat die "
 "ligging reg ingetik is en probeer weer."
 
-#: ../gedit/gedit-io-error-info-bar.c:1084
+#: ../gedit/gedit-io-error-info-bar.c:1088
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "'n Lêer met daardie naam bestaan reeds. Kies asseblief 'n ander naam."
 
-#: ../gedit/gedit-io-error-info-bar.c:1089
+#: ../gedit/gedit-io-error-info-bar.c:1093
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1349,7 +1361,7 @@ msgstr ""
 "Die skyf waarheen jy die lêer probeer stoor, het 'n beperking op die lengte "
 "van lêername. Probeer 'n korter lêernaam."
 
-#: ../gedit/gedit-io-error-info-bar.c:1100
+#: ../gedit/gedit-io-error-info-bar.c:1104
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1359,33 +1371,37 @@ msgstr ""
 "lêergroottes. Probeer 'n kleiner lêer stoor, of stoor dit op 'n skyf wat nie "
 "hierdie beperking het nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:1117
+#: ../gedit/gedit-io-error-info-bar.c:1121
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Kon nie die lêer \"%s\" stoor nie."
 
-#: ../gedit/gedit-io-error-info-bar.c:1157
+#: ../gedit/gedit-io-error-info-bar.c:1161
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "Die lêer \"%s\" het verander op die skyf."
 
-#: ../gedit/gedit-io-error-info-bar.c:1168
+#: ../gedit/gedit-io-error-info-bar.c:1172
 msgid "Drop Changes and _Reload"
 msgstr "Los veranderinge en He_rlaai"
 
-#: ../gedit/gedit-io-error-info-bar.c:1178
+#: ../gedit/gedit-io-error-info-bar.c:1182
 #: ../gedit/resources/gtk/menus-common.ui.h:21
 #: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 msgid "_Reload"
 msgstr "He_rlaai"
 
-#: ../gedit/gedit-io-error-info-bar.c:1242
+#: ../gedit/gedit-io-error-info-bar.c:1187
+msgid "_Ignore"
+msgstr "_Ignoreer"
+
+#: ../gedit/gedit-io-error-info-bar.c:1248
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr "Enkele ongeldige karakters is tydens die stoor van \"%s\" opgespoor"
 
-#: ../gedit/gedit-io-error-info-bar.c:1258
+#: ../gedit/gedit-io-error-info-bar.c:1264
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1395,13 +1411,13 @@ msgstr ""
 #: ../gedit/gedit-preferences-dialog.c:455
 msgid "Click on this button to select the font to be used by the editor"
 msgstr ""
-"Druk dié knoppie om die font te kies wat gebruik moet word deur die "
+"Druk dié knoppie om die lettertipe te kies wat gebruik moet word deur die "
 "redigeerder"
 
 #: ../gedit/gedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
-msgstr "Gebr_uik die stelsel se vastewydte font (%s)"
+msgstr "Gebr_uik die stelsel se vastewydte lettertipe (%s)"
 
 #: ../gedit/gedit-preferences-dialog.c:601
 #, c-format
@@ -1567,7 +1583,7 @@ msgstr "/ op %s"
 
 #: ../gedit/gedit-utils.c:1463
 msgid "Unix/Linux"
-msgstr "Unix/Linux"
+msgstr "Unix / Linux"
 
 #: ../gedit/gedit-utils.c:1465
 msgid "Mac OS Classic"
@@ -1588,7 +1604,6 @@ msgstr "_Vertoon reëlnommers"
 #.
 #: ../gedit/gedit-view-frame.c:674
 #, c-format
-#| msgid "Page %d of %d"
 msgid "%d of %d"
 msgstr "%d of %d"
 
@@ -1724,7 +1739,6 @@ msgid "Reopen Closed _Tab"
 msgstr "Heropen toegemaakte _oortjie"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:19
-#| msgid "Save As…"
 msgid "Save _As…"
 msgstr "Stoor _as…"
 
@@ -1923,7 +1937,6 @@ msgstr "_Vind en Vervang…"
 
 #: ../gedit/resources/gtk/menus.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
-#| msgid "_Go to Line"
 msgid "_Go to Line…"
 msgstr "_Gaan na Reël…"
 
@@ -2073,15 +2086,15 @@ msgstr "Redigeerder"
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:3
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:7
 msgid "Font"
-msgstr "Font"
+msgstr "Lettertipe"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
-msgstr "Redigeer_font: "
+msgstr "Redigeer _lettertipe: "
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
-msgstr "Kies die redigeerfont"
+msgstr "Kies die redigeerder-lettertipe"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:26
 msgid "Color Scheme"
@@ -2105,7 +2118,7 @@ msgstr "Verwyder skema"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:31
 msgid "Font & Colors"
-msgstr "Font en kleure"
+msgstr "Lettertipe en kleur"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:32
 msgid "Plugins"
@@ -2236,7 +2249,6 @@ msgid "_Find"
 msgstr "_Vind"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
-#| msgid "Find Ne_xt"
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
 msgstr "_Vind "
@@ -2266,7 +2278,6 @@ msgid "Wra_p around"
 msgstr "_Vou om"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
-#| msgid "Documents"
 msgctxt "shortcut window"
 msgid "Documents"
 msgstr "Dokumente"
@@ -2367,7 +2378,6 @@ msgid "Find and Replace"
 msgstr "Vind en vervang"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
-#| msgid "Find"
 msgctxt "shortcut window"
 msgid "Find"
 msgstr "Vind"
@@ -2433,13 +2443,11 @@ msgid "Selection"
 msgstr "Seleksie"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
-#| msgid "Select All"
 msgctxt "shortcut window"
 msgid "Select all text"
 msgstr "Merk alle teks"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
-#| msgid "_Edit"
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Redigeer"
@@ -2701,77 +2709,81 @@ msgstr "Voer eksterne bevele en skripte uit."
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:1
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:5
 msgid "Whether to use the system font"
-msgstr "Of die stelselfont gebruik moet word"
+msgstr "Of die stelsel-lettertipe gebruik moet word"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it's monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
+"As waar sal eksterne gereedskap die globale standaard lettertipe, indien dit "
+"monospace is, gebruik (of anders die mees soortgelyke lettertipe waarmee dit "
+"kan opkom)."
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
 msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
-msgstr "'n Pango-fontnaam, byvoorbeeld \"Sans 12\" of \"Monospace Bold 14\"."
+msgstr ""
+"'n Pango-lettertipenaam, byvoorbeeld \"Sans 12\" of \"Monospace Bold 14\"."
 
-#: ../plugins/externaltools/tools/appactivatable.py:133
+#: ../plugins/externaltools/tools/appactivatable.py:126
 msgid "Manage _External Tools..."
 msgstr "Bestuur _eksterne gereedskap..."
 
-#: ../plugins/externaltools/tools/appactivatable.py:138
+#: ../plugins/externaltools/tools/appactivatable.py:131
 msgid "External _Tools"
 msgstr "Eks_terne gereedskap"
 
-#: ../plugins/externaltools/tools/capture.py:106
+#: ../plugins/externaltools/tools/capture.py:99
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Kon nie die bevel uitvoer nie: %s"
 
-#: ../plugins/externaltools/tools/functions.py:191
+#: ../plugins/externaltools/tools/functions.py:184
 msgid "You must be inside a word to run this command"
 msgstr "Jy moet binne 'n woord wees om hierdie bevel te laat uitvoer"
 
-#: ../plugins/externaltools/tools/functions.py:309
+#: ../plugins/externaltools/tools/functions.py:302
 msgid "Running tool:"
 msgstr "Hardloop gereedskap:"
 
-#: ../plugins/externaltools/tools/functions.py:340
+#: ../plugins/externaltools/tools/functions.py:333
 msgid "Done."
 msgstr "Klaar."
 
-#: ../plugins/externaltools/tools/functions.py:342
+#: ../plugins/externaltools/tools/functions.py:335
 msgid "Exited"
 msgstr "Uitgegaan"
 
-#: ../plugins/externaltools/tools/manager.py:113
+#: ../plugins/externaltools/tools/manager.py:106
 msgid "All languages"
 msgstr "Alle tale"
 
-#: ../plugins/externaltools/tools/manager.py:429
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:772
+#: ../plugins/externaltools/tools/manager.py:422
+#: ../plugins/externaltools/tools/manager.py:426
+#: ../plugins/externaltools/tools/manager.py:765
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "Alle tale"
 
-#: ../plugins/externaltools/tools/manager.py:546
+#: ../plugins/externaltools/tools/manager.py:539
 msgid "New tool"
 msgstr "Nuwe gereedskap"
 
-#: ../plugins/externaltools/tools/manager.py:683
+#: ../plugins/externaltools/tools/manager.py:676
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Die versneller is reeds gekoppel aan %s"
 
-#: ../plugins/externaltools/tools/manager.py:727
+#: ../plugins/externaltools/tools/manager.py:720
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Tik 'n nuwe versneller, of druk trusleutel om skoon te maak"
 
-#: ../plugins/externaltools/tools/manager.py:729
+#: ../plugins/externaltools/tools/manager.py:722
 msgid "Type a new accelerator"
 msgstr "Tik 'n nuwe versneller"
 
-#: ../plugins/externaltools/tools/outputpanel.py:129
+#: ../plugins/externaltools/tools/outputpanel.py:122
 msgid "Stopped."
 msgstr "Gestop."
 
@@ -2896,7 +2908,7 @@ msgstr "_Afvoer:"
 msgid "_Applicability:"
 msgstr "Toep_asbaarheid:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:126
+#: ../plugins/externaltools/tools/windowactivatable.py:119
 msgid "Tool Output"
 msgstr "_Gereedskap afvoer"
 
@@ -3011,7 +3023,6 @@ msgstr ""
 
 #. Translators: This is the default name of new directories created by the file browser pane.
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3831
-#| msgid "_View Folder"
 msgid "Untitled Folder"
 msgstr "Naamlose gids"
 
@@ -3057,6 +3068,8 @@ msgid ""
 "Open the tree view when the file browser plugin gets loaded instead of the "
 "bookmarks view"
 msgstr ""
+"Vertoon die boomaansig indien die lêerblaaier-inprop gelaai word in plaas "
+"van boekmerke"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:3
 msgid "File Browser Root Directory"
@@ -3067,6 +3080,8 @@ msgid ""
 "The file browser root directory to use when loading the file browser plugin "
 "and onload/tree_view is TRUE."
 msgstr ""
+"Die lêerblaaier se wortelgids om te gebruik indien die lêerblaaier-inprop "
+"gelaai word en onload/tree_view WAAR is."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:5
 msgid "File Browser Virtual Root Directory"
@@ -3078,6 +3093,9 @@ msgid ""
 "plugin when onload/tree_view is TRUE. The virtual root must always be below "
 "the actual root."
 msgstr ""
+"Die lêerblaaier se virtuele wortelgids wat gebruik word wanneer die "
+"lêerblaaier-inprop laai indien onload / tree_view WAAR is. Die virtuele "
+"wortel moet altyd onder die werklike wortel wees."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
@@ -3098,6 +3116,10 @@ msgid ""
 "generally applies to opening a document from the command line or opening it "
 "with Nautilus, etc.)"
 msgstr ""
+"Indien WAAR sal die lêerblaaier-inprop die gids van die eerste oopgemaakte "
+"dokument vertoon, indien die lêerblaaier nog nie gebruik is nie. (Dit geld "
+"dus gewoonlik vir die oopmaak van dokumente vanaf die opdraglyn of om met "
+"Nautilus, ens.)"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
@@ -3109,6 +3131,9 @@ msgid ""
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
 "hide-binary (filter binary files)."
 msgstr ""
+"Hierdie waarde bepaal watter lêers uit die lêerblaaier gefilter word. "
+"Geldige waardes is: none (geen filter nie), hide-hidden (filter verborge "
+"lêers) en hide-binary (filter binêre lêers)."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:13
 msgid "File Browser Filter Pattern"
@@ -3119,14 +3144,17 @@ msgid ""
 "The filter pattern to filter the file browser with. This filter works on top "
 "of the filter_mode."
 msgstr ""
+"Die filterpatroon om die lêerblaaier mee te filter. Hierdie filter werk "
+"bykomende tot die filter_mode."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:15
 msgid "File Browser Binary Patterns"
-msgstr ""
+msgstr "Lêerblaaier binêre patrone"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:16
 msgid "The supplemental patterns to use when filtering binary files."
 msgstr ""
+"Die aanvullende patrone om te gebruik wanneer binêre lêers gefilter word."
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:2
 msgid "_Set Root to Active Document"
@@ -3141,7 +3169,6 @@ msgid "New F_ile"
 msgstr "Nuwe lê_er"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
-#| msgid "_Rename"
 msgid "_Rename..."
 msgstr "He_rnoem..."
 
@@ -3178,7 +3205,6 @@ msgid "Match Filename"
 msgstr "Vind passende lêernaam"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui.h:1
-#| msgid "directory"
 msgid "History"
 msgstr "Geskiedenis"
 
@@ -3215,8 +3241,9 @@ msgid ""
 "If true, the terminal will use the desktop-global standard font if it's "
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
-"As waar sal die terminaal die globale standaard font, indien dit monospace "
-"is, gebruik (of anders die mees soortgelyke font waarmee dit kan opkom)."
+"As waar sal die terminaal die globale standaard lettertipe, indien dit "
+"monospace is, gebruik (of anders die mees soortgelyke lettertipe waarmee dit "
+"kan opkom)."
 
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
 msgid "C_ommand color:"
@@ -3227,7 +3254,7 @@ msgid "_Error color:"
 msgstr "_Foutkleur:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Python-konsole"
@@ -3236,13 +3263,13 @@ msgstr "Python-konsole"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktiewe Python konsole in die onderste paneel"
 
-#: ../plugins/quickopen/quickopen/__init__.py:47
+#: ../plugins/quickopen/quickopen/__init__.py:40
 msgid "Quick Open..."
 msgstr "Vinnige oopmaak..."
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:40
+#: ../plugins/quickopen/quickopen/popup.py:33
 msgid "Quick Open"
 msgstr "Vinnige oopmaak"
 
@@ -3250,184 +3277,184 @@ msgstr "Vinnige oopmaak"
 msgid "Quickly open files"
 msgstr "Open alle lêers vinnig"
 
-#: ../plugins/quickopen/quickopen/popup.py:90
+#: ../plugins/quickopen/quickopen/popup.py:83
 msgid "Type to search..."
 msgstr "Tik om te soek..."
 
-#: ../plugins/snippets/snippets/appactivatable.py:88
+#: ../plugins/snippets/snippets/appactivatable.py:81
 msgid "Manage _Snippets..."
 msgstr "Bestuur _flenters..."
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:64
-#: ../plugins/snippets/snippets/document.py:153
-#: ../plugins/snippets/snippets/document.py:667
+#: ../plugins/snippets/snippets/document.py:56
+#: ../plugins/snippets/snippets/document.py:145
+#: ../plugins/snippets/snippets/document.py:659
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Flenters"
 
-#: ../plugins/snippets/snippets/exporter.py:88
+#: ../plugins/snippets/snippets/exporter.py:80
 #, python-format
 msgid "The archive \"%s\" could not be created"
 msgstr "Die argief \"%s\" kon nie geskep word nie"
 
-#: ../plugins/snippets/snippets/exporter.py:105
+#: ../plugins/snippets/snippets/exporter.py:97
 #, python-format
 msgid "Target directory \"%s\" does not exist"
 msgstr "Die teikengids \"%s\" bestana nie"
 
-#: ../plugins/snippets/snippets/exporter.py:108
+#: ../plugins/snippets/snippets/exporter.py:100
 #, python-format
 msgid "Target directory \"%s\" is not a valid directory"
 msgstr "Die teikengids \"%s\" is nie 'n geldige gids nie"
 
-#: ../plugins/snippets/snippets/importer.py:55
-#: ../plugins/snippets/snippets/importer.py:116
+#: ../plugins/snippets/snippets/importer.py:47
+#: ../plugins/snippets/snippets/importer.py:108
 #, python-format
 msgid "File \"%s\" does not exist"
 msgstr "Die lêer \"%s\" bestaan nie"
 
-#: ../plugins/snippets/snippets/importer.py:58
+#: ../plugins/snippets/snippets/importer.py:50
 #, python-format
 msgid "File \"%s\" is not a valid snippets file"
 msgstr "Die lêer \"%s\" is nie 'n geldige flenterslêer nie"
 
-#: ../plugins/snippets/snippets/importer.py:75
+#: ../plugins/snippets/snippets/importer.py:67
 #, python-format
 msgid "Imported file \"%s\" is not a valid snippets file"
 msgstr "Die ingevoerde lêer \"%s\" is nie 'n geldige flenterslêer nie"
 
-#: ../plugins/snippets/snippets/importer.py:85
+#: ../plugins/snippets/snippets/importer.py:77
 #, python-format
 msgid "The archive \"%s\" could not be extracted"
 msgstr "Die argief \"%s\" kon nie onttrek word nie"
 
-#: ../plugins/snippets/snippets/importer.py:103
+#: ../plugins/snippets/snippets/importer.py:95
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "Die volgende lêers kon nie ingevoer word nie: %s"
 
-#: ../plugins/snippets/snippets/importer.py:119
-#: ../plugins/snippets/snippets/importer.py:132
+#: ../plugins/snippets/snippets/importer.py:111
+#: ../plugins/snippets/snippets/importer.py:124
 #, python-format
 msgid "File \"%s\" is not a valid snippets archive"
 msgstr "Die lêer \"%s\" is nie 'n geldige flentersargief nie"
 
-#: ../plugins/snippets/snippets/manager.py:50
+#: ../plugins/snippets/snippets/manager.py:42
 msgid "Snippets archive"
 msgstr "Flenterargief"
 
-#: ../plugins/snippets/snippets/manager.py:74
+#: ../plugins/snippets/snippets/manager.py:66
 msgid "Add a new snippet..."
 msgstr "Voeg nuwe flenter by..."
 
-#: ../plugins/snippets/snippets/manager.py:124
+#: ../plugins/snippets/snippets/manager.py:116
 msgid "Global"
 msgstr "Globaal"
 
-#: ../plugins/snippets/snippets/manager.py:414
+#: ../plugins/snippets/snippets/manager.py:406
 msgid "Revert selected snippet"
 msgstr "Stel geselekteerde flenter terug"
 
-#: ../plugins/snippets/snippets/manager.py:417
+#: ../plugins/snippets/snippets/manager.py:409
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "Wis geselekteerde flenter"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:670
+#: ../plugins/snippets/snippets/manager.py:662
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
 "[, etc."
 msgstr ""
 "Dit is nie 'n geldige keep sneller nie. Snellers kan of alfanumeriese "
-"karakters (of _, : en .) of 'n enkel (nie-alfanumeriese) karakter soos:  {, "
+"karakters (of _, : en .) of 'n enkel (nie-alfanumeriese) karakter soos: {, "
 "[, ens. bevat"
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:677
+#: ../plugins/snippets/snippets/manager.py:669
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Enkele woord wat die flenter aktiveer ná Tab gedruk word"
 
-#: ../plugins/snippets/snippets/manager.py:766
+#: ../plugins/snippets/snippets/manager.py:758
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Die volgende fout het voorgekom tydens die invoer van: %s"
 
-#: ../plugins/snippets/snippets/manager.py:773
+#: ../plugins/snippets/snippets/manager.py:765
 msgid "Import successfully completed"
 msgstr "Invoer suksesvol voltooi"
 
-#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:779
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "Voer flenters in"
 
-#: ../plugins/snippets/snippets/manager.py:792
-#: ../plugins/snippets/snippets/manager.py:878
-#: ../plugins/snippets/snippets/manager.py:941
+#: ../plugins/snippets/snippets/manager.py:784
+#: ../plugins/snippets/snippets/manager.py:870
+#: ../plugins/snippets/snippets/manager.py:933
 msgid "All supported archives"
 msgstr "Alle ondersteunde argiewe"
 
-#: ../plugins/snippets/snippets/manager.py:793
-#: ../plugins/snippets/snippets/manager.py:879
-#: ../plugins/snippets/snippets/manager.py:942
+#: ../plugins/snippets/snippets/manager.py:785
+#: ../plugins/snippets/snippets/manager.py:871
+#: ../plugins/snippets/snippets/manager.py:934
 msgid "Gzip compressed archive"
 msgstr "Met gzip gekompakteerde argief"
 
-#: ../plugins/snippets/snippets/manager.py:794
-#: ../plugins/snippets/snippets/manager.py:880
-#: ../plugins/snippets/snippets/manager.py:943
+#: ../plugins/snippets/snippets/manager.py:786
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:935
 msgid "Bzip2 compressed archive"
 msgstr "Met bzip2 gekompakteerde argief"
 
-#: ../plugins/snippets/snippets/manager.py:795
+#: ../plugins/snippets/snippets/manager.py:787
 msgid "Single snippets file"
 msgstr "Enkele flenterslêer"
 
-#: ../plugins/snippets/snippets/manager.py:796
-#: ../plugins/snippets/snippets/manager.py:882
-#: ../plugins/snippets/snippets/manager.py:945
+#: ../plugins/snippets/snippets/manager.py:788
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "All files"
 msgstr "Alle lêers"
 
-#: ../plugins/snippets/snippets/manager.py:808
+#: ../plugins/snippets/snippets/manager.py:800
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Die volgende fout het tydens uitvoer voorgekom: %s"
 
-#: ../plugins/snippets/snippets/manager.py:812
+#: ../plugins/snippets/snippets/manager.py:804
 msgid "Export successfully completed"
 msgstr "Uitvoer suksesvol voltooi"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:852
-#: ../plugins/snippets/snippets/manager.py:919
+#: ../plugins/snippets/snippets/manager.py:844
+#: ../plugins/snippets/snippets/manager.py:911
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr "Wil jy <b>stelsel</b>-flenters in die uitvoer insluit?"
 
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:859
+#: ../plugins/snippets/snippets/manager.py:929
 msgid "There are no snippets selected to be exported"
 msgstr "Geen flenters is vir uitvoer geselekteer nie"
 
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:910
+#: ../plugins/snippets/snippets/manager.py:864
+#: ../plugins/snippets/snippets/manager.py:902
 msgid "Export snippets"
 msgstr "Voer flenters uit"
 
-#: ../plugins/snippets/snippets/manager.py:1049
+#: ../plugins/snippets/snippets/manager.py:1041
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr "Tik 'n nuwe kortpad, of druk Backspace om skoon te maak"
 
-#: ../plugins/snippets/snippets/manager.py:1051
+#: ../plugins/snippets/snippets/manager.py:1043
 msgid "Type a new shortcut"
 msgstr "Tik 'n nuwe kortpad in"
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: ../plugins/snippets/snippets/placeholder.py:597
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3435,7 +3462,7 @@ msgid ""
 msgstr ""
 "Uitvoer van die Python bevel (%s) oorskry die maksimum tyd, uitvoer gestop."
 
-#: ../plugins/snippets/snippets/placeholder.py:613
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Uitvoer van die Python bevel (%s) het misluk: %s"
@@ -3445,7 +3472,6 @@ msgid "Insert often-used pieces of text in a fast way"
 msgstr "Kits-invoeg van veelgebruikte stukkies teks"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:1
-#| msgid "Manage snippets"
 msgid "Manage Snippets"
 msgstr "Bestuur flenters"
 
@@ -3454,17 +3480,14 @@ msgid "Create new snippet"
 msgstr "Skep nuwe flenter"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:3
-#| msgid "Snippets"
 msgid "Add Snippet"
 msgstr "Voeg flenters by"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:5
-#| msgid "Snippets"
 msgid "Remove Snippet"
 msgstr "Verwyder flenter"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:7
-#| msgid "Import snippets"
 msgid "Import Snippets"
 msgstr "Voer flenters in"
 
@@ -3473,7 +3496,6 @@ msgid "Export selected snippets"
 msgstr "Voer geselekteerde flenters uit"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:9
-#| msgid "Export snippets"
 msgid "Export Snippets"
 msgstr "Voer flenters uit"
 
@@ -4176,9 +4198,6 @@ msgstr "Voeg huidige datum en tyd by die wyserposisie in."
 
 #~ msgid "User dictionary:"
 #~ msgstr "Gebuikerwoordeboek:"
-
-#~ msgid "_Ignore"
-#~ msgstr "_Ignoreer"
 
 #~ msgid "_Suggestions:"
 #~ msgstr "_Voorstelle:"
