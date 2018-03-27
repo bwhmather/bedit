@@ -23,7 +23,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2018-02-11 18:16+0000\n"
-"PO-Revision-Date: 2018-03-07 00:24+0100\n"
+"PO-Revision-Date: 2018-03-27 19:25+0200\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -140,21 +140,17 @@ msgstr "Gem automatisk"
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
-msgstr ""
-"Om ændrede filer skal gemmes efter et stykke tid. Du kan angive intervallet "
-"med “Interval for automatisk gemning”."
+msgstr "Om ændrede filer skal gemmes efter et stykke tid. Du kan angive intervallet med “Interval for gem automatisk”."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid "Autosave Interval"
-msgstr "Interval for automatisk gemning"
+msgstr "Interval for gem automatisk"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
-msgstr ""
-"Antal minutter der går før ændrede filer gemmes automatisk. Træder kun i "
-"kraft hvis “Automatisk gemning” slås til."
+msgstr "Antal minutter der går før ændrede filer gemmes automatisk. Træder kun i kraft hvis “Gem automatisk” slås til."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid "Maximum Number of Undo Actions"
@@ -709,7 +705,7 @@ msgstr "Gem ændringer i dokumentet “%s” før programmet lukkes?"
 #: ../gedit/gedit-close-confirmation-dialog.c:434
 #: ../gedit/gedit-close-confirmation-dialog.c:558
 msgid "Saving has been disabled by the system administrator."
-msgstr "Gemning er deaktiveret af systemadministratoren."
+msgstr "Gemmefunktionen er deaktiveret af systemadministratoren."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:500
 #, c-format
@@ -1265,22 +1261,19 @@ msgstr "Hvis du gemmer den, går alle eksterne ændringer tabt. Gem alligevel?"
 #: ../gedit/gedit-io-error-info-bar.c:961
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
-msgstr "Kunne ikke oprette en sikkerhedskopi ved gemning af “%s”"
+msgstr "Kunne ikke oprette en sikkerhedskopi mens “%s” blev gemt"
 
 #: ../gedit/gedit-io-error-info-bar.c:966
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
-msgstr "Kunne ikke oprette en midlertidig sikkerhedskopi ved gemning af “%s”"
+msgstr "Kunne ikke oprette en midlertidig sikkerhedskopi mens “%s” blev gemt"
 
 #: ../gedit/gedit-io-error-info-bar.c:983
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
 "while saving, you could lose the old copy of the file. Save anyway?"
-msgstr ""
-"Kan ikke tage en sikkerhedskopi af filen før den nye bliver gemt. Du kan "
-"ignorere denne advarsel og gemme filen alligevel, men hvis der opstår en "
-"fejl ved gemningen, kan du miste den gamle kopi af filen. Gem alligevel?"
+msgstr "Kan ikke tage en sikkerhedskopi af filen før den nye bliver gemt. Du kan ignorere denne advarsel og gemme filen alligevel, men hvis der opstår en fejl under gemmehandlingen, kan du miste den gamle kopi af filen. Gem alligevel?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
 #: ../gedit/gedit-io-error-info-bar.c:1043
@@ -1525,7 +1518,7 @@ msgstr "Fejl ved forkastning af filen %s"
 #: ../gedit/gedit-tab.c:1539
 #, c-format
 msgid "Error saving file %s"
-msgstr "Fejl ved gemning af filen %s"
+msgstr "Fejl ved forsøg på at gemme filen %s"
 
 #: ../gedit/gedit-tab.c:1570
 msgid "Name:"
@@ -2043,11 +2036,11 @@ msgstr "_Aktivér automatisk indrykning"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:18
 msgid "File Saving"
-msgstr "Filgemning"
+msgstr "Gemmefunktioner"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:19
 msgid "Create a _backup copy of files before saving"
-msgstr "Opret en _sikkerhedskopi af filer før gemning"
+msgstr "Opret en _sikkerhedskopi af filer før de gemmes"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:20
 msgid "_Autosave files every"
