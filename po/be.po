@@ -7,10 +7,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-09-14 16:03+0000\n"
-"PO-Revision-Date: 2017-01-26 13:12+0300\n"
+"POT-Creation-Date: 2018-03-26 22:08+0000\n"
+"PO-Revision-Date: 2018-04-05 12:43+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 #: ../data/org.gnome.gedit.desktop.in.in.h:2
@@ -80,96 +80,96 @@ msgstr "Ужыць прадвызначаны шрыфт"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
 msgid ""
-"Whether to use the system's default fixed width font for editing text "
+"Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
-"font named in the \"Editor Font\" option will be used instead of the system "
+"font named in the “Editor Font” option will be used instead of the system "
 "font."
 msgstr ""
 "Ці трэба выкарыстоўваць для рэдагавання тэксту сістэмны прадвызначаны "
 "роўнашырокі шрыфт замест адмысловага шрыфту для gedit. Калі гэта опцыя "
 "выключана, шрыфт будзе вызначаны опцыяй \"Шрыфт рэдактара\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:4
+#: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid "Editor Font"
 msgstr "Шрыфт рэдактара"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:5
+#: ../data/org.gnome.gedit.gschema.xml.in.h:6
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
-"effect if the \"Use Default Font\" option is turned off."
+"effect if the “Use Default Font” option is turned off."
 msgstr ""
 "Уласны шрыфт для абшару рэдагавання. Уздзейнічае, толькі калі выключана "
 "опцыя \"Ужыць прадвызначаны шрыфт\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:6
+#: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "Style Scheme"
 msgstr "Схема афармлення"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:7
+#: ../data/org.gnome.gedit.gschema.xml.in.h:8
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr "Ідэнтыфікатар схемы афармлення GtkSourceView для афарбоўкі тэксту."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:8
+#: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid "Create Backup Copies"
 msgstr "Стварэнне запасных копій"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:9
+#: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr "Ці трэба ствараць запасныя копіі файлаў пры захаванні."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:10
+#: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid "Autosave"
 msgstr "Аўтаматычнае захаванне"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:11
+#: ../data/org.gnome.gedit.gschema.xml.in.h:12
 msgid ""
 "Whether gedit should automatically save modified files after a time "
-"interval. You can set the time interval with the \"Autosave Interval\" "
-"option."
+"interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
 "Ці трэба праз пэўны час аўтаматычна захоўваць мадыфікаваныя файлы. Вызначыць "
 "такі прамежак часу можна з дапамогай опцыі \"Прамежак для аўтаматычнага "
 "захавання\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:12
+#: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid "Autosave Interval"
 msgstr "Прамежак для аўтаматычнага захавання"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:13
+#: ../data/org.gnome.gedit.gschema.xml.in.h:14
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
-"This will only take effect if the \"Autosave\" option is turned on."
+"This will only take effect if the “Autosave” option is turned on."
 msgstr ""
 "Колькасць хвілін да аўтаматычнага захавання змененых файлаў. Гэты ключ "
 "уздзейнічае на праграму, толькі калі ўключана опцыя \"Аўтаматычнае захаванне"
 "\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:14
+#: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid "Maximum Number of Undo Actions"
 msgstr "Максімальная колькасць дзеянняў, якія можна адрабіць назад"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:15
+#: ../data/org.gnome.gedit.gschema.xml.in.h:16
 msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions."
+"Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
+"for unlimited number of actions."
 msgstr ""
 "Максімальная колькасць дзеянняў, якія gedit дазваляе адрабіць назад ці зноў "
 "паўтарыць. Значэнне \"-1\" азначае неабмежаваную колькасць такіх дзеянняў."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:16
+#: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid "Line Wrapping Mode"
 msgstr "Рэжым пераносу радкоў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:17
+#: ../data/org.gnome.gedit.gschema.xml.in.h:18
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-"wrapping at individual character boundaries. Note that the values are case-"
-"sensitive, so make sure they appear exactly as mentioned here."
+"Specifies how to wrap long lines in the editing area. Use “none” for no "
+"wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
 msgstr ""
 "Вызначае спосаб пераносу доўгіх радкоў у абшары рэдагавання. Значэнне \"none"
 "\"азначае адсутнасць пераносаў; значэнне \"word\" азначае паслоўны перанос; "
@@ -177,116 +177,116 @@ msgstr ""
 "гэтыя значэнні адчувальныя да рэгістра літар, таму спраўдзіце, каб яны былі "
 "напісаныя так жа, як і тут."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:18
+#: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid "Last split mode choice for line wrapping mode"
 msgstr "Апошні выбраны рэжым пераносу радкоў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:19
+#: ../data/org.gnome.gedit.gschema.xml.in.h:20
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
-"wrapping mode is off we still remember the split mode choice. Use \"word\" "
-"for wrapping at word boundaries, and \"char\" for wrapping at individual "
-"character boundaries."
+"wrapping mode is off we still remember the split mode choice. Use “word” for "
+"wrapping at word boundaries, and “char” for wrapping at individual character "
+"boundaries."
 msgstr ""
 "Выбраны рэжым пераносу радкоў, захоўваецца нават калі перанос выключаны. У "
 "рэжыме \"word\" перанос паслоўны, а у рэжыме \"char\" - пазнакавы."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:20
+#: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid "Tab Size"
 msgstr "Памер табуляцыі"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:21
+#: ../data/org.gnome.gedit.gschema.xml.in.h:22
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr ""
 "Вызначае колькасць прабелаў, якія трэба паказваць замест знакаў табуляцыі."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:22
+#: ../data/org.gnome.gedit.gschema.xml.in.h:23
 msgid "Insert spaces"
 msgstr "Устаўка прабелаў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:23
+#: ../data/org.gnome.gedit.gschema.xml.in.h:24
 msgid "Whether gedit should insert spaces instead of tabs."
 msgstr "Ці трэба ўстаўляць прабелы замест знакаў табуляцыі."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:24
+#: ../data/org.gnome.gedit.gschema.xml.in.h:25
 msgid "Automatic indent"
 msgstr "Аўтаматычныя водступы"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:25
+#: ../data/org.gnome.gedit.gschema.xml.in.h:26
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Ці трэба аўтаматычна ўстаўляць водступы."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:26
+#: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Display Line Numbers"
 msgstr "Паказ нумароў радкоў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:27
+#: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr "Ці трэба паказваць нумарацыю радкоў у абшары рэдагавання."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:28
+#: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Highlight Current Line"
 msgstr "Падсветка бягучага радка"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:29
+#: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Whether gedit should highlight the current line."
 msgstr "Ці трэба падсвечваць бягучы радок."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:30
+#: ../data/org.gnome.gedit.gschema.xml.in.h:31
 msgid "Highlight Matching Brackets"
 msgstr "Падсветка адпаведных дужак"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:31
+#: ../data/org.gnome.gedit.gschema.xml.in.h:32
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Ці трэба падсвечваць адпаведныя дужкі."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:32
+#: ../data/org.gnome.gedit.gschema.xml.in.h:33
 msgid "Display Right Margin"
 msgstr "Паказ правага берага"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:33
+#: ../data/org.gnome.gedit.gschema.xml.in.h:34
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Ці трэба паказваць правы бераг у абшары рэдагавання."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:34
+#: ../data/org.gnome.gedit.gschema.xml.in.h:35
 msgid "Right Margin Position"
 msgstr "Размяшчэнне правага берага"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:35
+#: ../data/org.gnome.gedit.gschema.xml.in.h:36
 msgid "Specifies the position of the right margin."
 msgstr "Вызначае размяшчэнне правага берага."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:36
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid "Display Overview Map"
 msgstr "Паказ агляднай мапы"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Whether gedit should display the overview map for the document."
 msgstr "Ці трэба паказваць аглядную мапу дакумента."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid "Document background pattern type"
 msgstr "Тып фонавага ўзору дакумента"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Whether the document will get a background pattern painted."
 msgstr "Ці трэба паказваць фонавы узор дакумента."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:40
+#: ../data/org.gnome.gedit.gschema.xml.in.h:41
 msgid "Smart Home End"
 msgstr "Разумны Home/End"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:41
+#: ../data/org.gnome.gedit.gschema.xml.in.h:42
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
-"\"disabled\" to always move at the start/end of the line, \"after\" to move "
-"to the start/end of the line the first time the keys are pressed and to the "
+"“disabled” to always move at the start/end of the line, “after” to move to "
+"the start/end of the line the first time the keys are pressed and to the "
 "start/end of the text ignoring whitespaces the second time the keys are "
-"pressed, \"before\" to move to the start/end of the text before moving to "
-"the start/end of the line and \"always\" to always move to the start/end of "
-"the text instead of the start/end of the line."
+"pressed, “before” to move to the start/end of the text before moving to the "
+"start/end of the line and “always” to always move to the start/end of the "
+"text instead of the start/end of the line."
 msgstr ""
 "Вызначае спосаб перамяшчэння курсора пры націску клавіш HOME ці END. "
 "Значэнне \"disabled\" азначае, што курсор будзе заўсёды перамяшчацца ў "
@@ -297,58 +297,58 @@ msgstr ""
 "пачатак/канец радка; значэнне \"always\" азначае, што курсор будзе заўсёды "
 "перамяшчацца ў пачатак/канец тэксту, а не ў пачатак/канец радка."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:42
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid "Restore Previous Cursor Position"
 msgstr "Аднаўленне папярэдняга размяшчэння курсора"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
 msgstr "Ці трэба аднаўляць папярэдняе размяшчэнне курсора пры загрузцы файла."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid "Enable Syntax Highlighting"
 msgstr "Уключэнне падсветкі сінтаксісу"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Ці трэба ўключыць падсветку сінтаксісу."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid "Enable Search Highlighting"
 msgstr "Уключэнне падсветкі пошуку"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr "Ці трэба падсвечваць усе знойдзеныя адпаведнікі шуканага тэксту."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid "Ensure Trailing Newline"
 msgstr "Заўсёды ўстаўляць новы радок у канцы дакумента"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr "Ці трэба заўсёды ўстаўляць знак новага радка ў канцы дакумента."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid "Toolbar is Visible"
 msgstr "Бачнасць паліцы прылад"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr "Ці трэба паказваць паліцу прылад у акне рэдагавання."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid "Notebook Show Tabs Mode"
 msgstr "Рэжым паказу картак"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
 msgid ""
-"Specifies when to show the notebook tabs. Use \"never\" to never show the "
-"tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
+"Specifies when to show the notebook tabs. Use “never” to never show the "
+"tabs, “always” to always show the tabs, and “auto” to show the tabs only "
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
@@ -359,60 +359,60 @@ msgstr ""
 "адчувальныя да рэгістра літар, таму спраўдзіце, каб яны былі напісаныя так "
 "жа, як і тут."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid "Status Bar is Visible"
 msgstr "Бачнасць стужкі стану"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr "Ці трэба паказваць стужку стану ўнізе ў акне рэдагавання."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid "Side panel is Visible"
 msgstr "Бачнасць бакавой панэлі"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr "Ці трэба паказваць бакавую панэль злева ў акне рэдагавання."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid "Maximum Recent Files"
 msgstr "Максімальная колькасць элементаў у спісе нядаўніх файлаў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
-"in the \"Recent Files\" submenu."
+"in the “Recent Files” submenu."
 msgstr ""
 "Вызначае максімальную колькасць нядаўна адкрытых файлаў, якія будуць "
 "паказвацца ў падменю \"Нядаўнія файлы\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid "Print Syntax Highlighting"
 msgstr "Друк падсветкі сінтаксісу"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr "Ці трэба друкаваць дакументы з падсветкай сінтаксісу."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid "Print Header"
 msgstr "Друк загалоўка"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "Whether gedit should include a document header when printing documents."
 msgstr "Ці трэба друкаваць загаловак дакумента."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Printing Line Wrapping Mode"
 msgstr "Рэжым пераносу радкоў для друку"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
-"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
+"“word” for wrapping at word boundaries, and “char” for wrapping at "
 "individual character boundaries. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
@@ -422,11 +422,11 @@ msgstr ""
 "значэнні адчувальныя да рэгістра літар, таму спраўдзіце, каб яны былі "
 "напісаныя так жа, як і тут."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "Print Line Numbers"
 msgstr "Друк нумарацыі радкоў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -435,93 +435,96 @@ msgstr ""
 "Калі ключ мае нулявое значэнне, радкі друкуюцца без нумарацыі. Іначай gedit "
 "будзе друкаваць нумары радкоў з пэўным прамежкам."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:69
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Body Font for Printing"
 msgstr "Шрыфт для друку асноўнага тэксту"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
 msgid ""
-"Specifies the font to use for a document's body when printing documents."
+"Specifies the font to use for a document’s body when printing documents."
 msgstr "Вызначае шрыфт для друку асноўнага тэксту дакументаў."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Header Font for Printing"
 msgstr "Шрыфт для друку загалоўка"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
-"will only take effect if the \"Print Header\" option is turned on."
+"will only take effect if the “Print Header” option is turned on."
 msgstr ""
 "Вызначае шрыфт для друку загалоўкаў старонак дакумента. Гэта настройка "
 "ўплывае на паводзіны праграмы, толькі калі ўключана опцыя \"Друк загалоўкаў"
 "\"."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
 msgid "Line Number Font for Printing"
 msgstr "Шрыфт для друку нумарацыі радкоў"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
-"take effect if the \"Print Line Numbers\" option is non-zero."
+"take effect if the “Print Line Numbers” option is non-zero."
 msgstr ""
 "Вызначае шрыфт для друку нумарацыі радкоў. Гэта настройка ўплывае на "
 "паводзіны праграмы, толькі калі опцыя \"Друк нумарацыі радкоў\" мае "
 "ненулявое значэнне."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+#: ../data/org.gnome.gedit.gschema.xml.in.h:81
 msgid "Margin Left"
 msgstr "Левы бераг"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+#: ../data/org.gnome.gedit.gschema.xml.in.h:82
 msgid "The left margin, in millimeters."
 msgstr "Левы бераг у міліметрах."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+#: ../data/org.gnome.gedit.gschema.xml.in.h:83
 msgid "Margin Top"
 msgstr "Верхні бераг"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid "The top margin, in millimeters."
-msgstr "Верхні бераг у міліметрах"
+msgstr "Верхні бераг у міліметрах."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Margin Right"
 msgstr "Правы бераг"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid "The right margin, in millimeters."
-msgstr "Правы бераг у міліметрах"
+msgstr "Правы бераг у міліметрах."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+#: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Margin Bottom"
 msgstr "Ніжні бераг"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid "The bottom margin, in millimeters."
-msgstr "Ніжні бераг у міліметрах"
+msgstr "Ніжні бераг у міліметрах."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:89
 msgid "Candidate Encodings"
 msgstr "Прапануемыя кадаванні"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:90
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
-"save file chooser. \"CURRENT\" represents the current locale encoding. Only "
+"save file chooser. “CURRENT” represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
@@ -531,21 +534,21 @@ msgstr ""
 "Прадвызначанае значэнне - пусты спіс, у гэтым выпадку выбар будзе залежыць "
 "ад настроек страны і мовы."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:87
+#: ../data/org.gnome.gedit.gschema.xml.in.h:91
 msgid "Active plugins"
 msgstr "Актыўныя плугіны"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:88
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
 msgid ""
-"List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+"List of active plugins. It contains the “Location” of the active plugins. "
+"See the .gedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
 "Спіс актыўных плугінаў. Ён змяшчае \"Месцапалажэнні\" актыўных плугінаў. "
 "\"Месцапалажэнне\" пэўнага плугіна можна адшукаць у адпаведным файле \"."
 "gedit-plugin\"."
 
 #: ../gedit/gedit-app.c:110
-msgid "Show the application's version"
+msgid "Show the application’s version"
 msgstr "Паказаць нумар версіі праграмы"
 
 #: ../gedit/gedit-app.c:116
@@ -579,7 +582,7 @@ msgid "Run gedit in standalone mode"
 msgstr "Запусціць gedit у самастойным рэжыме"
 
 #: ../gedit/gedit-app.c:158
-msgid "[FILE...] [+LINE[:COLUMN]]"
+msgid "[FILE…] [+LINE[:COLUMN]]"
 msgstr "[ФАЙЛ...] [+РАДОК[:СЛУПОК]]"
 
 #: ../gedit/gedit-app.c:273
@@ -599,17 +602,15 @@ msgstr "_Закрыць, не захоўваючы"
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
-#: ../gedit/gedit-io-error-info-bar.c:130
-#: ../gedit/gedit-io-error-info-bar.c:511
 #: ../gedit/gedit-preferences-dialog.c:825
 #: ../gedit/gedit-progress-info-bar.c:49
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:781
-#: ../plugins/snippets/snippets/manager.py:866
-#: ../plugins/snippets/snippets/manager.py:904
+#: ../plugins/quickopen/quickopen/popup.py:45
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
@@ -619,23 +620,23 @@ msgstr "_Скасаваць"
 #: ../gedit/resources/gtk/menus.ui.h:10
 #: ../gedit/resources/gtk/menus-traditional.ui.h:4
 msgid "_Save As…"
-msgstr "_Захаваць як..."
+msgstr "_Захаваць як…"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:306
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:905
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "_Захаваць"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:324
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently lost."
+"If you don’t save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld seconds will be permanently "
+"If you don’t save, changes from the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
 "Змены за %ld апошнюю секунду будуць незваротна страчаны, калі вы іх не "
@@ -649,17 +650,17 @@ msgstr[2] ""
 
 #: ../gedit/gedit-close-confirmation-dialog.c:333
 msgid ""
-"If you don't save, changes from the last minute will be permanently lost."
+"If you don’t save, changes from the last minute will be permanently lost."
 msgstr ""
 "Змены за апошнюю хвіліну будуць незваротна страчаны, калі вы іх не захаваеце."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:339
 #, c-format
 msgid ""
-"If you don't save, changes from the last minute and %ld second will be "
+"If you don’t save, changes from the last minute and %ld second will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last minute and %ld seconds will be "
+"If you don’t save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
 "Змены за апошнюю хвіліну і %ld секунду будуць незваротна страчаны, калі вы "
@@ -674,9 +675,9 @@ msgstr[2] ""
 #: ../gedit/gedit-close-confirmation-dialog.c:349
 #, c-format
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently lost."
+"If you don’t save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld minutes will be permanently "
+"If you don’t save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
 "Змены за апошнюю %ld хвіліну будуць незваротна страчаны, калі вы іх не "
@@ -685,21 +686,21 @@ msgstr[1] ""
 "Змены за апошнія %ld хвіліны будуць незваротна страчаны, калі вы іх не "
 "захаваеце."
 msgstr[2] ""
-"Змены за апошнія %ld секунд будуць незваротна страчаны, калі вы іх не "
+"Змены за апошнія %ld хвілін будуць незваротна страчаны, калі вы іх не "
 "захаваеце."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:364
-msgid "If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don’t save, changes from the last hour will be permanently lost."
 msgstr ""
 "Змены за апошнюю гадзіну будуць незваротна страчаны, калі вы іх не захаваеце."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:370
 #, c-format
 msgid ""
-"If you don't save, changes from the last hour and %d minute will be "
+"If you don’t save, changes from the last hour and %d minute will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last hour and %d minutes will be "
+"If you don’t save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
 "Змены за апошнюю гадзіну і %d хвіліну будуць незваротна страчаны, калі вы іх "
@@ -714,9 +715,9 @@ msgstr[2] ""
 #: ../gedit/gedit-close-confirmation-dialog.c:385
 #, c-format
 msgid ""
-"If you don't save, changes from the last %d hour will be permanently lost."
+"If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %d hours will be permanently lost."
+"If you don’t save, changes from the last %d hours will be permanently lost."
 msgstr[0] ""
 "Змены за апошнюю %d гадзіну будуць незваротна страчаны, калі вы іх не "
 "захаваеце."
@@ -768,21 +769,21 @@ msgid "S_elect the documents you want to save:"
 msgstr "_Вылучыце дакументы, якія трэба захаваць:"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:562
-msgid "If you don't save, all your changes will be permanently lost."
+msgid "If you don’t save, all your changes will be permanently lost."
 msgstr "Усе змены будуць незваротна страчаны, калі вы іх не захаваеце."
 
 #: ../gedit/gedit-commands-file.c:261
 #, c-format
-msgid "Loading file '%s'…"
-msgstr "Загрузка файла \"%s\"..."
+msgid "Loading file “%s”…"
+msgstr "Загрузка файла \"%s\"…"
 
 #: ../gedit/gedit-commands-file.c:270
 #, c-format
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
-msgstr[0] "Загрузка %d файла..."
-msgstr[1] "Загрузка %d файлаў..."
-msgstr[2] "Загрузка %d файлаў..."
+msgstr[0] "Загрузка %d файла…"
+msgstr[1] "Загрузка %d файлаў…"
+msgstr[2] "Загрузка %d файлаў…"
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
@@ -794,14 +795,14 @@ msgstr "Адкрыць"
 #: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:39
-#: ../plugins/snippets/snippets/manager.py:782
+#: ../plugins/quickopen/quickopen/popup.py:46
+#: ../plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "_Адкрыць"
 
 #: ../gedit/gedit-commands-file.c:558
 #, c-format
-msgid "The file \"%s\" is read-only."
+msgid "The file “%s” is read-only."
 msgstr "Файл \"%s\" даступны толькі для чытання."
 
 #: ../gedit/gedit-commands-file.c:563
@@ -824,8 +825,8 @@ msgstr "Захаваць файл як звычайны тэкст?"
 #: ../gedit/gedit-commands-file.c:625
 #, c-format
 msgid ""
-"The file \"%s\" was previously saved as plain text and will now be saved "
-"using compression."
+"The file “%s” was previously saved as plain text and will now be saved using "
+"compression."
 msgstr ""
 "Файл \"%s\" раней быў захаваны як звычайны тэкст, а зараз будзе захаваны са "
 "сцісканнем."
@@ -837,7 +838,7 @@ msgstr "_Захаваць са сцісканнем"
 #: ../gedit/gedit-commands-file.c:634
 #, c-format
 msgid ""
-"The file \"%s\" was previously saved using compression and will now be saved "
+"The file “%s” was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
 "Файл \"%s\" раней быў захаваны са сцісканнем, а зараз будзе захаваны як "
@@ -849,8 +850,8 @@ msgstr "Захаваць _як звычайны тэкст"
 
 #: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
 #, c-format
-msgid "Saving file '%s'…"
-msgstr "Захаванне файла \"%s\"..."
+msgid "Saving file “%s”…"
+msgstr "Захаванне файла \"%s\"…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
@@ -860,12 +861,12 @@ msgstr "Захаванне"
 
 #: ../gedit/gedit-commands-file.c:1429
 #, c-format
-msgid "Reverting the document '%s'…"
-msgstr "Адрабленне змен у дакуменце \"%s\"..."
+msgid "Reverting the document “%s”…"
+msgstr "Адрабленне змен у дакуменце \"%s\"…"
 
 #: ../gedit/gedit-commands-file.c:1476
 #, c-format
-msgid "Revert unsaved changes to document '%s'?"
+msgid "Revert unsaved changes to document “%s”?"
 msgstr "Адрабіць незахаваныя змены ў дакуменце \"%s\"?"
 
 #: ../gedit/gedit-commands-file.c:1485
@@ -980,15 +981,16 @@ msgstr ""
 "Віталь Хілько <dojlid@mova.org>\n"
 "Алесь Няхайчык <nab@mail.by>\n"
 "Святлана Лясовіч <xelj.gjkz@bk.ru>\n"
-"Ігар Грачышка <ihar.hrachyshka@gmail.com>"
+"Ігар Грачышка <ihar.hrachyshka@gmail.com>\n"
+"Юрась Шумовіч <shumovichy@gmail.com>"
 
 #: ../gedit/gedit-commands-search.c:107
 #, c-format
 msgid "Found and replaced %d occurrence"
 msgid_plural "Found and replaced %d occurrences"
-msgstr[0] "Знойдзена і заменена %d адпаведнасць."
-msgstr[1] "Знойдзены і заменены %d адпаведнасці."
-msgstr[2] "Знойдзены і заменены %d адпаведнасцяў."
+msgstr[0] "Знойдзена і заменена %d адпаведнасць"
+msgstr[1] "Знойдзены і заменены %d адпаведнасці"
+msgstr[2] "Знойдзены і заменены %d адпаведнасцяў"
 
 #: ../gedit/gedit-commands-search.c:116
 msgid "Found and replaced one occurrence"
@@ -998,7 +1000,7 @@ msgstr "Знойдзена і заменена адна адпаведнасць
 #. entered by the user in the search box
 #: ../gedit/gedit-commands-search.c:142
 #, c-format
-msgid "\"%s\" not found"
+msgid "“%s” not found"
 msgstr "Шуканы тэкст (\"%s\") не знойдзены"
 
 #: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
@@ -1023,8 +1025,8 @@ msgstr "Аўтаматычна вызначанае"
 
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
-msgid "Add or Remove..."
-msgstr "Дадаць ці выдаліць..."
+msgid "Add or Remove…"
+msgstr "Дадаць ці выдаліць…"
 
 #: ../gedit/gedit-encoding-items.c:92
 #, c-format
@@ -1037,7 +1039,7 @@ msgid "%s (Current Locale)"
 msgstr "%s (Дзейная лакальнасць)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
-msgid "Do you really want to reset the character encodings' preferences?"
+msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr "Ці вы сапраўды хочаце скінуць настройкі кадавання знакаў?"
 
 #. Reset button
@@ -1087,54 +1089,55 @@ msgid "Line Ending:"
 msgstr "Знак канца радка:"
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
-#: ../plugins/externaltools/tools/manager.py:108
-#: ../plugins/externaltools/tools/manager.py:317
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:767
+#: ../plugins/externaltools/tools/manager.py:115
+#: ../plugins/externaltools/tools/manager.py:324
+#: ../plugins/externaltools/tools/manager.py:440
+#: ../plugins/externaltools/tools/manager.py:774
 msgid "Plain Text"
 msgstr "Звычайны тэкст"
 
-#: ../gedit/gedit-io-error-info-bar.c:143
+#: ../gedit/gedit-io-error-info-bar.c:142
 #: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "_Паўтарыць спробу"
 
-#: ../gedit/gedit-io-error-info-bar.c:163
+#: ../gedit/gedit-io-error-info-bar.c:162
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Не ўдалося адшукаць файл \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:165
-#: ../gedit/gedit-io-error-info-bar.c:205
-#: ../gedit/gedit-io-error-info-bar.c:212
+#: ../gedit/gedit-io-error-info-bar.c:164
+#: ../gedit/gedit-io-error-info-bar.c:204
+#: ../gedit/gedit-io-error-info-bar.c:211
 msgid "Please check that you typed the location correctly and try again."
 msgstr "Праверце правільнасць напісання адрасу і паўтарыце спробу."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:184
+#: ../gedit/gedit-io-error-info-bar.c:183
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "Немагчыма апрацаваць адрасы \"%s:\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:190
+#: ../gedit/gedit-io-error-info-bar.c:189
 msgid "Unable to handle this location."
 msgstr "Немагчыма апрацаваць гэты адрас."
 
-#: ../gedit/gedit-io-error-info-bar.c:199
+#: ../gedit/gedit-io-error-info-bar.c:198
 msgid "The location of the file cannot be accessed."
 msgstr "Не ўдалося атрымаць доступ да адрасу файла."
 
-#: ../gedit/gedit-io-error-info-bar.c:203
+#: ../gedit/gedit-io-error-info-bar.c:202
 #, c-format
 msgid "“%s” is a directory."
 msgstr "\"%s\" з'яўляецца каталогам."
 
-#: ../gedit/gedit-io-error-info-bar.c:210
+#: ../gedit/gedit-io-error-info-bar.c:209
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "\"%s\" не з'яўляецца сапраўдным адрасам."
 
-#: ../gedit/gedit-io-error-info-bar.c:246
+#. Translators: %s is a host name
+#: ../gedit/gedit-io-error-info-bar.c:245
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1143,7 +1146,7 @@ msgstr ""
 "Не ўдалося адшукаць хост \"%s\". Праверце настройкі проксі-сервера і "
 "паўтарыце спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:261
+#: ../gedit/gedit-io-error-info-bar.c:260
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1152,50 +1155,50 @@ msgstr ""
 "Хібная назва хоста. Праверце правільнасць напісання адрасу і паўтарыце "
 "спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:269
+#: ../gedit/gedit-io-error-info-bar.c:268
 #, c-format
 msgid "“%s” is not a regular file."
 msgstr "\"%s\" не з'яўляецца звычайным файлам."
 
-#: ../gedit/gedit-io-error-info-bar.c:274
+#: ../gedit/gedit-io-error-info-bar.c:273
 msgid "Connection timed out. Please try again."
 msgstr "Тэрмін чакання злучэння вычарпаны. Паўтарыце спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:307
+#: ../gedit/gedit-io-error-info-bar.c:306
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Нечаканая памылка: %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:343
+#: ../gedit/gedit-io-error-info-bar.c:342
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr "Не ўдалося адшукаць патрэбны файл. Мабыць, яго нядаўна выдалілі."
 
-#: ../gedit/gedit-io-error-info-bar.c:353
+#: ../gedit/gedit-io-error-info-bar.c:352
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "Не ўдалося адрабіць змесціва файла \"%s\" назад."
 
-#: ../gedit/gedit-io-error-info-bar.c:380
+#: ../gedit/gedit-io-error-info-bar.c:379
 msgid "Ch_aracter Encoding:"
 msgstr "_Кадаванне знакаў:"
 
-#: ../gedit/gedit-io-error-info-bar.c:441
+#: ../gedit/gedit-io-error-info-bar.c:440
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "Месцапалажэнне \"%s\" недасяжна."
 
-#: ../gedit/gedit-io-error-info-bar.c:456
+#: ../gedit/gedit-io-error-info-bar.c:455
 msgid "Your system is offline. Check your network."
 msgstr "Сістэма па-за сеткай. Праверце спалучэнне з сеткай."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:499
-#: ../gedit/gedit-io-error-info-bar.c:768
+#: ../gedit/gedit-io-error-info-bar.c:764
 msgid "Edit Any_way"
 msgstr "_Усё роўна рэдагаваць"
 
-#: ../gedit/gedit-io-error-info-bar.c:591
+#: ../gedit/gedit-io-error-info-bar.c:587
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
@@ -1203,29 +1206,29 @@ msgstr ""
 "Колькасць пераходаў па спасылках абмежавана, і яна была дасягнута, хоць файл "
 "так і не быў знойдзены."
 
-#: ../gedit/gedit-io-error-info-bar.c:595
+#: ../gedit/gedit-io-error-info-bar.c:591
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Вам не хапае дазволу на адкрыццё гэтага файла."
 
-#: ../gedit/gedit-io-error-info-bar.c:601
+#: ../gedit/gedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
 msgstr "Не ўдалося апазнаць кадаванне знакаў."
 
-#: ../gedit/gedit-io-error-info-bar.c:602
-#: ../gedit/gedit-io-error-info-bar.c:626
+#: ../gedit/gedit-io-error-info-bar.c:598
+#: ../gedit/gedit-io-error-info-bar.c:622
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Праверце, ці вы не спрабуеце адкрыць двайковы файл."
 
-#: ../gedit/gedit-io-error-info-bar.c:603
+#: ../gedit/gedit-io-error-info-bar.c:599
 msgid "Select a character encoding from the menu and try again."
 msgstr "Выберыце кадаванне знакаў з меню і паўтарыце спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:609
+#: ../gedit/gedit-io-error-info-bar.c:605
 #, c-format
 msgid "There was a problem opening the file “%s”."
 msgstr "Узнікла праблема пры адкрыцці файла \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:611
+#: ../gedit/gedit-io-error-info-bar.c:607
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1233,31 +1236,31 @@ msgstr ""
 "Адкрыты вамі файл мае нейкія хібныя знакі. Далейшае рэдагаванне гэтага файла "
 "можа пашкодзіць дакумент."
 
-#: ../gedit/gedit-io-error-info-bar.c:614
+#: ../gedit/gedit-io-error-info-bar.c:610
 msgid "You can also choose another character encoding and try again."
 msgstr "Вы можаце выбраць іншае кадаванне знакаў і паўтарыць спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:619
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr "Не ўдалося адкрыць файл \"%s\" з выкарыстаннем кадавання \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
-#: ../gedit/gedit-io-error-info-bar.c:702
+#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:698
 msgid "Select a different character encoding from the menu and try again."
 msgstr "Выберыце іншае кадаванне ў меню і паўтарыць спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:639
+#: ../gedit/gedit-io-error-info-bar.c:635
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "Не ўдалося адкрыць файл \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:697
+#: ../gedit/gedit-io-error-info-bar.c:693
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr "Не ўдалося захаваць файл \"%s\" з выкарыстаннем кадавання \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:700
+#: ../gedit/gedit-io-error-info-bar.c:696
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
@@ -1267,57 +1270,57 @@ msgstr ""
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:773
-msgid "D_on't Edit"
+#: ../gedit/gedit-io-error-info-bar.c:769
+msgid "D_on’t Edit"
 msgstr "_Не рэдагаваць"
 
-#: ../gedit/gedit-io-error-info-bar.c:783
+#: ../gedit/gedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Файл \"%s\" ужо адкрыты ў іншым акне."
 
-#: ../gedit/gedit-io-error-info-bar.c:797
+#: ../gedit/gedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
 msgstr "Усё роўна рэдагаваць?"
 
-#: ../gedit/gedit-io-error-info-bar.c:853
-#: ../gedit/gedit-io-error-info-bar.c:943
-#: ../gedit/gedit-io-error-info-bar.c:1235
+#: ../gedit/gedit-io-error-info-bar.c:849
+#: ../gedit/gedit-io-error-info-bar.c:939
+#: ../gedit/gedit-io-error-info-bar.c:1229
 msgid "S_ave Anyway"
 msgstr "Усё роўна _захаваць"
 
-#: ../gedit/gedit-io-error-info-bar.c:856
-#: ../gedit/gedit-io-error-info-bar.c:946
-#: ../gedit/gedit-io-error-info-bar.c:1238
-msgid "D_on't Save"
+#: ../gedit/gedit-io-error-info-bar.c:852
+#: ../gedit/gedit-io-error-info-bar.c:942
+#: ../gedit/gedit-io-error-info-bar.c:1232
+msgid "D_on’t Save"
 msgstr "_Не захоўваць"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:870
+#: ../gedit/gedit-io-error-info-bar.c:866
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "Файл \"%s\" быў зменены пасля яго прачытання."
 
-#: ../gedit/gedit-io-error-info-bar.c:885
+#: ../gedit/gedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Калі вы захаваеце яго, усе вонкавыя змены могуць быць страчаны. Усё роўна "
 "захаваць?"
 
-#: ../gedit/gedit-io-error-info-bar.c:965
+#: ../gedit/gedit-io-error-info-bar.c:961
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr "Не ўдалося стварыць запасную копію файла пры захаванні \"%s\""
 
-#: ../gedit/gedit-io-error-info-bar.c:970
+#: ../gedit/gedit-io-error-info-bar.c:966
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr "Не ўдалося стварыць часовую запасную копію файла пры захаванні \"%s\""
 
-#: ../gedit/gedit-io-error-info-bar.c:987
+#: ../gedit/gedit-io-error-info-bar.c:983
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1329,7 +1332,7 @@ msgstr ""
 "старую копію файла. Усё роўна захаваць?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1047
+#: ../gedit/gedit-io-error-info-bar.c:1043
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1338,7 +1341,7 @@ msgstr ""
 "Немагчыма працаваць з адрасамі \"%s:\" у рэжыме запісу. Праверце "
 "правільнасць напісання адрасу і паўтарыце спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:1055
+#: ../gedit/gedit-io-error-info-bar.c:1051
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1346,7 +1349,7 @@ msgstr ""
 "Немагчыма апрацаваць гэты адрас у рэжыме запісу. Праверце правільнасць "
 "напісання адрасу і паўтарыце спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:1064
+#: ../gedit/gedit-io-error-info-bar.c:1060
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1355,7 +1358,7 @@ msgstr ""
 "\"%s\" не з'яўляецца сапраўдным адрасам. Праверце правільнасць напісання "
 "адрасу і паўтарыце спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:1071
+#: ../gedit/gedit-io-error-info-bar.c:1067
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1363,7 +1366,7 @@ msgstr ""
 "Вы не маеце патрэбных дазволаў для захавання файла. Праверце правільнасць "
 "напісання адрасу і паўтарыце спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:1077
+#: ../gedit/gedit-io-error-info-bar.c:1073
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1371,7 +1374,7 @@ msgstr ""
 "Не хапае вольнай дыскавай прасторы для захавання файла. Вызваліце крыху "
 "дыскавай прасторы і паўтарыце спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1078
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1379,11 +1382,11 @@ msgstr ""
 "Вы спрабуеце захаваць файл на дыску, даступным толькі для чытання. Праверце "
 "правільнасць напісання адрасу і паўтарыце спробу."
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../gedit/gedit-io-error-info-bar.c:1084
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Файл з такой назвай ужо існуе. Падайце іншую назву."
 
-#: ../gedit/gedit-io-error-info-bar.c:1093
+#: ../gedit/gedit-io-error-info-bar.c:1089
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1391,7 +1394,7 @@ msgstr ""
 "Дыск, на якім вы спрабуеце захаваць файл, мае абмежаванне на даўжыню назваў "
 "файлаў. Падайце карацейшую назву."
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../gedit/gedit-io-error-info-bar.c:1100
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1401,37 +1404,33 @@ msgstr ""
 "Паспрабуйце захаваць файл меншага памеру або на іншым дыску, які б не меў "
 "такога абмежавання."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1117
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Не ўдалося захаваць файл \"%s\"."
 
-#: ../gedit/gedit-io-error-info-bar.c:1161
+#: ../gedit/gedit-io-error-info-bar.c:1157
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "Файл \"%s\" змяніўся на дыску."
 
-#: ../gedit/gedit-io-error-info-bar.c:1172
+#: ../gedit/gedit-io-error-info-bar.c:1168
 msgid "Drop Changes and _Reload"
 msgstr "Ануляваць змены і пера_чытаць"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182
+#: ../gedit/gedit-io-error-info-bar.c:1178
 #: ../gedit/resources/gtk/menus-common.ui.h:21
 #: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 msgid "_Reload"
 msgstr "Пера_чытаць"
 
-#: ../gedit/gedit-io-error-info-bar.c:1187
-msgid "_Ignore"
-msgstr "І_гнараваць"
-
-#: ../gedit/gedit-io-error-info-bar.c:1248
+#: ../gedit/gedit-io-error-info-bar.c:1242
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
-msgstr "Падчас захавання \"%s\" выяўленыя хібныя знакі"
+msgstr "Падчас захавання \"%s\" выяўлены хібныя знакі"
 
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../gedit/gedit-io-error-info-bar.c:1258
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1449,7 +1448,7 @@ msgstr "_Ужыць сістэмны роўнашырокі шрыфт (%s)"
 
 #: ../gedit/gedit-preferences-dialog.c:601
 #, c-format
-msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
 "Не ўдалося стварыць каталог \"%s\": няўдалы запуск g_mkdir_with_parents(): %s"
 
@@ -1471,26 +1470,29 @@ msgstr "Файлы схем колераў"
 
 #: ../gedit/gedit-preferences-dialog.c:861
 #, c-format
-msgid "Could not remove color scheme \"%s\"."
+msgid "Could not remove color scheme “%s”."
 msgstr "Не ўдалося выдаліць схему колераў \"%s\"."
 
 #: ../gedit/gedit-print-job.c:227
-msgid "Preparing..."
-msgstr "Падрыхтоўка..."
+msgid "Preparing…"
+msgstr "Падрыхтоўка…"
 
 #: ../gedit/gedit-print-job.c:539
 #, c-format
 msgid "File: %s"
 msgstr "Файл: %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Старонка %N з %Q"
 
 #: ../gedit/gedit-print-job.c:626
 #, c-format
-msgid "Rendering page %d of %d..."
-msgstr "Апрацоўка старонкі %d з %d"
+msgid "Rendering page %d of %d…"
+msgstr "Апрацоўка старонкі %d з %d…"
 
 #: ../gedit/gedit-print-preview.c:653
 #, c-format
@@ -1505,7 +1507,7 @@ msgstr "Нічога"
 #: ../gedit/gedit-replace-dialog.c:779
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:1
 msgid "Find and Replace"
-msgstr "Знайсці і замяніць..."
+msgstr "Знайсці і замяніць"
 
 #. Use spaces to leave padding proportional to the font size
 #: ../gedit/gedit-statusbar.c:58 ../gedit/gedit-statusbar.c:64
@@ -1563,7 +1565,7 @@ msgstr "Захаванне %s"
 #: ../gedit/gedit-tab.c:1529
 #, c-format
 msgid "Error opening file %s"
-msgstr "Памылка адкрыцця файла \"%s\""
+msgstr "Памылка адкрыцця файла %s"
 
 #: ../gedit/gedit-tab.c:1534
 #, c-format
@@ -1573,7 +1575,7 @@ msgstr "Памылка адраблення змен (\"%s\")"
 #: ../gedit/gedit-tab.c:1539
 #, c-format
 msgid "Error saving file %s"
-msgstr "Памылка захавання файла \"%s\""
+msgstr "Памылка захавання файла %s"
 
 #: ../gedit/gedit-tab.c:1570
 msgid "Name:"
@@ -1598,8 +1600,8 @@ msgstr "Не ўдалося адкрыць файл інтэрфейсу кар�
 
 #: ../gedit/gedit-utils.c:921
 #, c-format
-msgid "Unable to find the object '%s' inside file %s."
-msgstr "Не ўдалося адшукаць аб'ект \"%s\" у файле \"%s\"."
+msgid "Unable to find the object “%s” inside file %s."
+msgstr "Не ўдалося адшукаць аб'ект \"%s\" у файле %s."
 
 #. Translators: '/ on <remote-share>'
 #: ../gedit/gedit-utils.c:1159
@@ -1766,7 +1768,7 @@ msgstr "Адкрыць закрытую картку"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:19
 msgid "Save _As…"
-msgstr "_Захаваць як..."
+msgstr "_Захаваць як…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:20
 #: ../gedit/resources/gtk/menus.ui.h:1
@@ -1777,7 +1779,7 @@ msgstr "_Новае акно"
 #: ../gedit/resources/gtk/menus.ui.h:8
 #: ../gedit/resources/gtk/menus-traditional.ui.h:2
 msgid "_Print…"
-msgstr "_Надрукаваць..."
+msgstr "_Надрукаваць…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:23
 #: ../gedit/resources/gtk/menus.ui.h:6
@@ -1810,8 +1812,8 @@ msgid "_Paste"
 msgstr "_Уставіць"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Выдаліць"
@@ -1831,6 +1833,7 @@ msgid "_Preferences"
 msgstr "_Настройкі"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:34
+#: ../gedit/resources/gtk/menus.ui.h:16
 msgid "_View"
 msgstr "_Від"
 
@@ -1856,7 +1859,7 @@ msgstr "На ўвесь _экран"
 #: ../gedit/resources/gtk/menus.ui.h:19
 #: ../gedit/resources/gtk/menus-traditional.ui.h:13
 msgid "_Highlight Mode…"
-msgstr "_Рэжым падсветкі..."
+msgstr "_Рэжым падсветкі…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:39
 msgid "_Search"
@@ -1866,7 +1869,7 @@ msgstr "_Шукаць"
 #: ../gedit/resources/gtk/menus.ui.h:12
 #: ../gedit/resources/gtk/menus-traditional.ui.h:6
 msgid "_Find…"
-msgstr "_Шукаць..."
+msgstr "_Шукаць…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:41
 msgid "Find Ne_xt"
@@ -1878,7 +1881,7 @@ msgstr "Шукаць папярэдні"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:43
 msgid "Find and _Replace…"
-msgstr "_Знайсці і замяніць..."
+msgstr "_Знайсці і замяніць…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:44
 #: ../gedit/resources/gtk/menus.ui.h:14
@@ -1888,9 +1891,10 @@ msgstr "_Схаваць падсветку"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:45
 msgid "Go to _Line…"
-msgstr "Пера_йсці ў радок..."
+msgstr "Пера_йсці ў радок…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:46
+#: ../gedit/resources/gtk/menus.ui.h:20
 msgid "_Tools"
 msgstr "_Прылады"
 
@@ -1959,20 +1963,18 @@ msgstr "З_ахаваць усё"
 #: ../gedit/resources/gtk/menus.ui.h:13
 #: ../gedit/resources/gtk/menus-traditional.ui.h:7
 msgid "_Find and Replace…"
-msgstr "_Знайсці і замяніць..."
+msgstr "_Знайсці і замяніць…"
 
 #: ../gedit/resources/gtk/menus.ui.h:15
 #: ../gedit/resources/gtk/menus-traditional.ui.h:9
 msgid "_Go to Line…"
-msgstr "Пера_йсці ў радок..."
+msgstr "Пера_йсці ў радок…"
 
-#: ../gedit/resources/gtk/menus.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Від"
 
-#: ../gedit/resources/gtk/menus.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 msgid "Tools"
 msgstr "Прылады"
@@ -2010,8 +2012,8 @@ msgid "_Select"
 msgstr "_Вылучыць"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
-msgid "Search highlight mode..."
-msgstr "Пошук рэжыму падсветкі..."
+msgid "Search highlight mode…"
+msgstr "Пошук рэжыму падсветкі…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
 msgid "No results"
@@ -2019,7 +2021,7 @@ msgstr "Няма вынікаў"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:2
 msgid "Other _Documents…"
-msgstr "_Іншыя дакументы"
+msgstr "_Іншыя дакументы…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:3
 msgid "Open another file"
@@ -2277,11 +2279,11 @@ msgstr "_Шукаць"
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
-msgstr "_Шукаць"
+msgstr "_Шукаць "
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
 msgid "Replace _with "
-msgstr "Замяніць _на"
+msgstr "Замяніць _на "
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:8
 msgid "_Match case"
@@ -2360,7 +2362,7 @@ msgstr "Паказаць папярэдні дакумент"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
 msgctxt "shortcut window"
-msgid "Switch to the first - ninth document"
+msgid "Switch to the first — ninth document"
 msgstr "Паказаць першы - дзевяты дакумент"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
@@ -2687,7 +2689,7 @@ msgid "Build"
 msgstr "Пабудова"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
-msgid "Run \"make\" in the document directory"
+msgid "Run “make” in the document directory"
 msgstr "Запуск \"make\" у каталозе дакумента"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
@@ -2740,76 +2742,76 @@ msgstr "Ці трэба выкарыстоўваць сістэмны шрыфт
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
-"it's monospace (and the most similar font it can come up with otherwise)."
+"it’s monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "Калі ўключана, вонкавыя прылады будуць выкарыстоўваць звычайны глабальны "
 "шрыфт, калі ён роўнашырокі (або найбольш падобны на яго)."
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
-msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr "Назва шрыфту Pango. Напрыклад: \"Sans 12\" ці \"Monospace Bold 14\"."
 
-#: ../plugins/externaltools/tools/appactivatable.py:126
-msgid "Manage _External Tools..."
-msgstr "Кіраванне _вонкавымі прыладамі..."
+#: ../plugins/externaltools/tools/appactivatable.py:133
+msgid "Manage _External Tools…"
+msgstr "Кіраванне _вонкавымі прыладамі…"
 
-#: ../plugins/externaltools/tools/appactivatable.py:131
+#: ../plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
 msgstr "_Вонкавыя прылады"
 
-#: ../plugins/externaltools/tools/capture.py:99
+#: ../plugins/externaltools/tools/capture.py:106
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Не ўдалося запусціць загад: %s"
 
-#: ../plugins/externaltools/tools/functions.py:184
+#: ../plugins/externaltools/tools/functions.py:191
 msgid "You must be inside a word to run this command"
 msgstr ""
 "Каб запусціць гэты загад, трэба спачатку размясціць курсор унутры слова"
 
-#: ../plugins/externaltools/tools/functions.py:302
+#: ../plugins/externaltools/tools/functions.py:309
 msgid "Running tool:"
 msgstr "Прымяненне прылады:"
 
-#: ../plugins/externaltools/tools/functions.py:333
+#: ../plugins/externaltools/tools/functions.py:340
 msgid "Done."
 msgstr "Зроблена."
 
-#: ../plugins/externaltools/tools/functions.py:335
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Exited"
 msgstr "Выхад"
 
-#: ../plugins/externaltools/tools/manager.py:106
+#: ../plugins/externaltools/tools/manager.py:113
 msgid "All languages"
 msgstr "Усе мовы"
 
-#: ../plugins/externaltools/tools/manager.py:422
-#: ../plugins/externaltools/tools/manager.py:426
-#: ../plugins/externaltools/tools/manager.py:765
+#: ../plugins/externaltools/tools/manager.py:429
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:772
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "Усе мовы"
 
-#: ../plugins/externaltools/tools/manager.py:539
+#: ../plugins/externaltools/tools/manager.py:546
 msgid "New tool"
 msgstr "Новая прылада"
 
-#: ../plugins/externaltools/tools/manager.py:676
+#: ../plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Гэтая хуткая клавіша ўжо звязана з %s"
 
-#: ../plugins/externaltools/tools/manager.py:720
+#: ../plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr ""
 "Увядзіце новую хуткую клавішу або націсніце Backspace, каб скасаваць наяўную"
 
-#: ../plugins/externaltools/tools/manager.py:722
+#: ../plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator"
 msgstr "Увядзіце новую хуткую клавішу"
 
-#: ../plugins/externaltools/tools/outputpanel.py:122
+#: ../plugins/externaltools/tools/outputpanel.py:129
 msgid "Stopped."
 msgstr "Спынена."
 
@@ -2934,7 +2936,7 @@ msgstr "_Вывад:"
 msgid "_Applicability:"
 msgstr "_Дастасоўнасць:"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:119
+#: ../plugins/externaltools/tools/windowactivatable.py:126
 msgid "Tool Output"
 msgstr "Вывад прылады"
 
@@ -2991,7 +2993,7 @@ msgstr "Узнікла памылка пры загрузцы каталога"
 msgid "An error occurred"
 msgstr "Узнікла памылка"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
@@ -2999,25 +3001,25 @@ msgstr ""
 "Не ўдалося выкінуць файл у сметніцу.\n"
 "Ці вы хочаце незваротна яго выдаліць?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
 #, c-format
-msgid "The file \"%s\" cannot be moved to the trash."
+msgid "The file “%s” cannot be moved to the trash."
 msgstr "Не ўдалося выкінуць файл \"%s\" у сметніцу."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Не ўдалося выкінуць вылучаныя файлы ў сметніцу."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
 #, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
+msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "Вы сапраўды хочаце незваротна выдаліць \"%s\"?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr "Вы сапраўды хочаце незваротна выдаліць вылучаныя файлы?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Калі вы выдаліце аб'ект, ён будзе незваротна страчаны."
 
@@ -3030,7 +3032,7 @@ msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
 msgstr ""
-"Пераназваны файл адфільтраваны. Каб убачыць яго, трэба падстроіць фільтр."
+"Пераназваны файл адфільтраваны. Каб убачыць яго, трэба падстроіць фільтр"
 
 #. Translators: This is the default name of new files created by the file browser pane.
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3772
@@ -3041,7 +3043,7 @@ msgstr "Файл без назвы"
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
-msgstr "Новы файл адфільтраваны. Каб убачыць яго, трэба падстроіць фільтр."
+msgstr "Новы файл адфільтраваны. Каб убачыць яго, трэба падстроіць фільтр"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
 #: ../plugins/filebrowser/gedit-file-browser-store.c:3831
@@ -3052,7 +3054,7 @@ msgstr "Папка без назвы"
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
-msgstr "Новы каталог адфільтраваны. Каб убачыць яго, трэба падстроіць фільтр."
+msgstr "Новы каталог адфільтраваны. Каб убачыць яго, трэба падстроіць фільтр"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:754
 msgid "Bookmarks"
@@ -3075,7 +3077,7 @@ msgstr "Не ўдалося прымацаваць дыскавы том: %s"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
 #, c-format
-msgid "Error when loading '%s': No such directory"
+msgid "Error when loading “%s”: No such directory"
 msgstr "Памылка падчас загрузкі \"%s\": каталог не існуе"
 
 #. ex:set ts=8 noet:
@@ -3132,14 +3134,14 @@ msgstr "Прызначаць месцапалажэнне першага дак�
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
-"document given that the file browser hasn't been used yet. (Thus this "
+"document given that the file browser hasn’t been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
 "with Nautilus, etc.)"
 msgstr ""
 "Калі ўключана, плугін агляду файлаў пакажа каталог першага адкрытага "
-"дакумента, калі яго яшчэ не выкарыстоўвалі. Гэта значыць, што опцыя "
-"стасуецца толькі да сітуацый кшталту адкрыцця дакумента праз загадны радок "
-"або Наўтылус."
+"дакумента, калі аглядчык файлаў яшчэ не выкарыстоўвалі. (Гэта значыць, што "
+"опцыя стасуецца толькі да сітуацый кшталту адкрыцця дакумента праз загадны "
+"радок або Наўтылус.)"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
@@ -3188,8 +3190,8 @@ msgid "New F_ile"
 msgstr "_Новы файл"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
-msgid "_Rename..."
-msgstr "Пера_назваць..."
+msgid "_Rename…"
+msgstr "Пера_назваць…"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
@@ -3257,7 +3259,7 @@ msgstr "Колер тэксту памылкі"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
 msgid ""
-"If true, the terminal will use the desktop-global standard font if it's "
+"If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
 "Калі ўключана, тэрмінал будзе выкарыстоўваць звычайны глабальны шрыфт, калі "
@@ -3272,7 +3274,7 @@ msgid "_Error color:"
 msgstr "Колер _памылкі:"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Python-кансоль"
@@ -3281,13 +3283,13 @@ msgstr "Python-кансоль"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Інтэрактыўная Python-кансоль у ніжняй панэлі"
 
-#: ../plugins/quickopen/quickopen/__init__.py:40
-msgid "Quick Open..."
-msgstr "Хуткае адкрыццё..."
+#: ../plugins/quickopen/quickopen/__init__.py:47
+msgid "Quick Open…"
+msgstr "Хуткае адкрыццё…"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:33
+#: ../plugins/quickopen/quickopen/popup.py:40
 msgid "Quick Open"
 msgstr "Хуткае адкрыццё"
 
@@ -3295,93 +3297,93 @@ msgstr "Хуткае адкрыццё"
 msgid "Quickly open files"
 msgstr "Хуткае адкрыццё файлаў"
 
-#: ../plugins/quickopen/quickopen/popup.py:83
-msgid "Type to search..."
-msgstr "Імгненны пошук..."
+#: ../plugins/quickopen/quickopen/popup.py:90
+msgid "Type to search…"
+msgstr "Імгненны пошук…"
 
-#: ../plugins/snippets/snippets/appactivatable.py:81
-msgid "Manage _Snippets..."
-msgstr "_Кіраванне ўрыўкамі..."
+#: ../plugins/snippets/snippets/appactivatable.py:88
+msgid "Manage _Snippets…"
+msgstr "Кіраванне ў_рыўкамі…"
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:56
-#: ../plugins/snippets/snippets/document.py:145
-#: ../plugins/snippets/snippets/document.py:659
+#: ../plugins/snippets/snippets/document.py:64
+#: ../plugins/snippets/snippets/document.py:153
+#: ../plugins/snippets/snippets/document.py:667
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Урыўкі"
 
-#: ../plugins/snippets/snippets/exporter.py:80
+#: ../plugins/snippets/snippets/exporter.py:88
 #, python-format
-msgid "The archive \"%s\" could not be created"
+msgid "The archive “%s” could not be created"
 msgstr "Не ўдалося стварыць архіў \"%s\""
 
-#: ../plugins/snippets/snippets/exporter.py:97
+#: ../plugins/snippets/snippets/exporter.py:105
 #, python-format
-msgid "Target directory \"%s\" does not exist"
+msgid "Target directory “%s” does not exist"
 msgstr "Мэтавы каталог \"%s\" не існуе"
 
-#: ../plugins/snippets/snippets/exporter.py:100
+#: ../plugins/snippets/snippets/exporter.py:108
 #, python-format
-msgid "Target directory \"%s\" is not a valid directory"
+msgid "Target directory “%s” is not a valid directory"
 msgstr "Мэтавы каталог \"%s\" не з'яўляецца прыдатным каталогам"
 
-#: ../plugins/snippets/snippets/importer.py:47
-#: ../plugins/snippets/snippets/importer.py:108
+#: ../plugins/snippets/snippets/importer.py:55
+#: ../plugins/snippets/snippets/importer.py:116
 #, python-format
-msgid "File \"%s\" does not exist"
+msgid "File “%s” does not exist"
 msgstr "Файл \"%s\" не існуе"
 
-#: ../plugins/snippets/snippets/importer.py:50
+#: ../plugins/snippets/snippets/importer.py:58
 #, python-format
-msgid "File \"%s\" is not a valid snippets file"
+msgid "File “%s” is not a valid snippets file"
 msgstr "Файл \"%s\" не з'яўляецца прыдатным файлам урыўкаў"
 
-#: ../plugins/snippets/snippets/importer.py:67
+#: ../plugins/snippets/snippets/importer.py:75
 #, python-format
-msgid "Imported file \"%s\" is not a valid snippets file"
+msgid "Imported file “%s” is not a valid snippets file"
 msgstr "Імпартаваны файл \"%s\" не з'яўляецца прыдатным файлам урыўкаў"
 
-#: ../plugins/snippets/snippets/importer.py:77
+#: ../plugins/snippets/snippets/importer.py:85
 #, python-format
-msgid "The archive \"%s\" could not be extracted"
+msgid "The archive “%s” could not be extracted"
 msgstr "Не ўдалося выняць змесціва архіва \"%s\""
 
-#: ../plugins/snippets/snippets/importer.py:95
+#: ../plugins/snippets/snippets/importer.py:103
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "Не ўдалося імпартаваць наступныя файлы: %s"
 
-#: ../plugins/snippets/snippets/importer.py:111
-#: ../plugins/snippets/snippets/importer.py:124
+#: ../plugins/snippets/snippets/importer.py:119
+#: ../plugins/snippets/snippets/importer.py:132
 #, python-format
-msgid "File \"%s\" is not a valid snippets archive"
+msgid "File “%s” is not a valid snippets archive"
 msgstr "Файл \"%s\" не з'яўляецца прыдатным архівам урыўкаў"
 
-#: ../plugins/snippets/snippets/manager.py:42
+#: ../plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
 msgstr "Архіў урыўкаў"
 
-#: ../plugins/snippets/snippets/manager.py:66
-msgid "Add a new snippet..."
-msgstr "Дадаць новы ўрывак..."
+#: ../plugins/snippets/snippets/manager.py:74
+msgid "Add a new snippet…"
+msgstr "Дадаць новы ўрывак…"
 
-#: ../plugins/snippets/snippets/manager.py:116
+#: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
 msgstr "Глабальныя"
 
-#: ../plugins/snippets/snippets/manager.py:406
+#: ../plugins/snippets/snippets/manager.py:414
 msgid "Revert selected snippet"
 msgstr "Адрабіць змены ў вылучаным урыўку"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:417
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "Выдаліць вылучаны ўрывак"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:662
+#: ../plugins/snippets/snippets/manager.py:670
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3389,93 +3391,93 @@ msgid ""
 msgstr ""
 "Гэта непрыдатны актыватар табуляцыі. Актыватары могуць складацца або толькі "
 "з літар і лічбаў (а таксама _, : і .), або з аднаго нялітарна-лічбавага "
-"знака, напрыклад: { ці ["
+"знака, напрыклад: {, [ і г.д."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:669
+#: ../plugins/snippets/snippets/manager.py:677
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr "Слова, пасля якога націск клавішы Tab актывізуе ўрывак"
 
-#: ../plugins/snippets/snippets/manager.py:758
+#: ../plugins/snippets/snippets/manager.py:766
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "Падчас імпартавання ўзнікла наступная памылка: %s"
 
-#: ../plugins/snippets/snippets/manager.py:765
+#: ../plugins/snippets/snippets/manager.py:773
 msgid "Import successfully completed"
 msgstr "Імпартаванне паспяхова закончана"
 
-#: ../plugins/snippets/snippets/manager.py:779
+#: ../plugins/snippets/snippets/manager.py:787
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "Імпартаваць урыўкі"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All supported archives"
 msgstr "Усе вядомыя архівы"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:793
+#: ../plugins/snippets/snippets/manager.py:879
+#: ../plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
 msgstr "Архіў, сціснуты з дапамогай gzip"
 
-#: ../plugins/snippets/snippets/manager.py:786
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:935
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
 msgstr "Архіў, сціснуты з дапамогай bzip2"
 
-#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
 msgstr "Файл з асобным урыўкам"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "All files"
 msgstr "Усе файлы"
 
-#: ../plugins/snippets/snippets/manager.py:800
+#: ../plugins/snippets/snippets/manager.py:808
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "Падчас экспартавання ўзнікла наступная памылка: %s"
 
-#: ../plugins/snippets/snippets/manager.py:804
+#: ../plugins/snippets/snippets/manager.py:812
 msgid "Export successfully completed"
 msgstr "Экспартаванне паспяхова закончана"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:844
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:852
+#: ../plugins/snippets/snippets/manager.py:919
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "Ці трэба ўлучыць выбраныя <b>сістэмныя</b> ўрыўкі ў ваша экспартаванне?"
 
-#: ../plugins/snippets/snippets/manager.py:859
-#: ../plugins/snippets/snippets/manager.py:929
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "There are no snippets selected to be exported"
 msgstr "Ні адзін урывак не вылучаны для экспартавання"
 
-#: ../plugins/snippets/snippets/manager.py:864
-#: ../plugins/snippets/snippets/manager.py:902
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:910
 msgid "Export snippets"
 msgstr "Экспартанне ўрыўкаў"
 
-#: ../plugins/snippets/snippets/manager.py:1041
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
 "Увядзіце новы клавіятурны скарот або націсніце Backspace, каб скасаваць "
 "наяўны"
 
-#: ../plugins/snippets/snippets/manager.py:1043
+#: ../plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
 msgstr "Увядзіце новы клавіятурны скарот"
 
-#: ../plugins/snippets/snippets/placeholder.py:597
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3484,7 +3486,7 @@ msgstr ""
 "Працягласць выканання загаду Python (%s) перавысіла максімальны дазволены "
 "час, выкананне перарванае."
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: ../plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "Не ўдалося выканаць загад Python (%s): %s"
@@ -3547,8 +3549,8 @@ msgid "_Drop targets:"
 msgstr "_Мэтавыя тыпы:"
 
 #: ../plugins/sort/gedit-sort-plugin.c:243
-msgid "S_ort..."
-msgstr "_Адсартаваць..."
+msgid "S_ort…"
+msgstr "_Адсартаваць…"
 
 #. ex:set ts=8 noet:
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
@@ -3581,12 +3583,12 @@ msgid "Sorts a document or selected text."
 msgstr "Сартаванне змесціва дакумента ці вылучанага тэксту."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
-msgid "_Check Spelling..."
-msgstr "Праверыць _арфаграфію..."
+msgid "_Check Spelling…"
+msgstr "Праверыць _арфаграфію…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:147
-msgid "Set _Language..."
-msgstr "Вызначыць _мову..."
+msgid "Set _Language…"
+msgstr "Вызначыць _мову…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
@@ -3602,8 +3604,8 @@ msgid "Checks the spelling of the current document."
 msgstr "Праверка арфаграфіі для адкрытага дакумента."
 
 #: ../plugins/time/gedit-time-plugin.c:265
-msgid "In_sert Date and Time..."
-msgstr "_Уставіць дату і час..."
+msgid "In_sert Date and Time…"
+msgstr "_Устаўка даты і часу…"
 
 #: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
@@ -3674,8 +3676,8 @@ msgid "Configure date/time plugin"
 msgstr "Настроіць плугін даты/часу"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
-msgid "When inserting date/time..."
-msgstr "Пры ўстаўцы даты/часу..."
+msgid "When inserting date/time…"
+msgstr "Пры ўстаўцы даты/часу…"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
@@ -3688,6 +3690,24 @@ msgstr "Устаўка даты/часу"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Устаўка бягучай даты і часу ў месцы размяшчэння курсора."
+
+#~ msgid "_Ignore"
+#~ msgstr "І_гнараваць"
+
+#~ msgid "Manage _External Tools..."
+#~ msgstr "Кіраванне _вонкавымі прыладамі..."
+
+#~ msgid "Quick Open..."
+#~ msgstr "Хуткае адкрыццё..."
+
+#~ msgid "Manage _Snippets..."
+#~ msgstr "_Кіраванне ўрыўкамі..."
+
+#~ msgid "Set _Language..."
+#~ msgstr "Вызначыць _мову..."
+
+#~ msgid "In_sert Date and Time..."
+#~ msgstr "_Уставіць дату і час..."
 
 #~ msgid "gedit"
 #~ msgstr "gedit"
@@ -3896,9 +3916,6 @@ msgstr "Устаўка бягучай даты і часу ў месцы раз�
 
 #~ msgid "No misspelled words"
 #~ msgstr "Няма слоў з арфаграфічнымі памылкамі"
-
-#~ msgid "Set Language"
-#~ msgstr "Вызначыць мову"
 
 #~ msgid "Select the _language of the current document."
 #~ msgstr "Вызначыце _мову для адкрытага дакумента."
