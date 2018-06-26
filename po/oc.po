@@ -2,19 +2,15 @@
 # Copyright (C) 1998-2014 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gedit package.
 # Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>, 2007.
-# Cédric Valmary (Tot en Òc) <cvalmary@yahoo.fr>, 2015.
-# Cédric Valmary (Tot en òc) <cvalmary@yahoo.fr>, 2015.
-# Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>, 2015, 2016.
-# Cédric VALMARY <cvalmary@yahoo.fr>, 2016.
+# Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>, 2015, 2016, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-05-19 06:11+0000\n"
-"PO-Revision-Date: 2016-04-08 09:48+0200\n"
-"Last-Translator: Cédric VALMARY <cvalmary@yahoo.fr>\n"
-"Language-Team: Tot en òc (totenoc.eu)\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"POT-Creation-Date: 2018-06-01 08:44+0000\n"
+"PO-Revision-Date: 2018-06-26 14:58+0200\n"
+"Last-Translator: Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>\n"
+"Language-Team: Tot En Òc\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +20,13 @@ msgstr ""
 "X-Launchpad-Export-Date: 2016-04-08 07:28+0000\n"
 "X-Project-Style: gnome\n"
 
+# Utilisation de l’infinitif sus les infobulles del Bureau
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
+#: ../data/org.gnome.gedit.desktop.in.in.h:2
+msgid "Edit text files"
+msgstr "Editar de fichièrs tèxte"
+
+#: ../data/org.gnome.gedit.appdata.xml.in.h:2
 msgid ""
 "gedit is the official text editor of the GNOME desktop environment. While "
 "aiming at simplicity and ease of use, gedit is a powerful general purpose "
@@ -34,17 +36,17 @@ msgstr ""
 "visant simplicitat e facilitat d'utilizacion, gedit es un poderós editor de "
 "tèxte d'usatge general."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:2
+#: ../data/org.gnome.gedit.appdata.xml.in.h:3
 msgid ""
 "Whether you are writing the next bestseller, programming an innovative "
 "application, or simply taking some quick notes, gedit will be a reliable "
 "tool to accomplish your task."
 msgstr ""
 "Qu'escriguèssetz lo prochèn best-seller, la programacion d'una aplicacion "
-"innovante, o que cerquèssetz simplament a prene qualques nòtas rapidas, "
+"innovanta, o que cerquèssetz simplament a prene qualques nòtas rapidas, "
 "gedit serà una aisina fisabla per acomplir vòstre prètzfait."
 
-#: ../data/org.gnome.gedit.appdata.xml.in.h:3
+#: ../data/org.gnome.gedit.appdata.xml.in.h:4
 msgid ""
 "Its flexible plugin system allows you to tailor the application to your "
 "needs and adapt it to your workflow."
@@ -56,268 +58,300 @@ msgstr ""
 msgid "Text Editor"
 msgstr "Editor de tèxte"
 
-#: ../data/org.gnome.gedit.desktop.in.in.h:2
-msgid "Edit text files"
-msgstr "Editar de fichièrs tèxte"
-
 #: ../data/org.gnome.gedit.desktop.in.in.h:3
-#, fuzzy
 #| msgid "Text Editor"
 msgid "gedit Text Editor"
-msgstr "Editor de tèxte"
+msgstr "Editor de tèxte gedit"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:4
-#, fuzzy
-#| msgid "Text Editor"
-msgid "Text;Editor;"
-msgstr "Editor de tèxte"
+msgid "Text;Editor;Plaintext;Write;"
+msgstr "Tèxte;Editor;Tèxte brut;Escriure;"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:5
-msgid "Open a New Window"
-msgstr "Dobrir una novèla fenèstra"
+#| msgid "_New Window"
+msgid "New Window"
+msgstr "Novèla fenèstra"
 
 #: ../data/org.gnome.gedit.desktop.in.in.h:6
-msgid "Open a New Document"
-msgstr "Dobrir un novèl document"
+#| msgid "N_ext Document"
+msgid "New Document"
+msgstr "Novèl document"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:1
 msgid "Use Default Font"
-msgstr "Utilizar la poliça per défaut"
+msgstr "Utilizar la poliça per defaut"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
+#| msgid ""
+#| "Whether to use the system's default fixed width font for editing text "
+#| "instead of a font specific to gedit. If this option is turned off, then "
+#| "the font named in the \"Editor Font\" option will be used instead of the "
+#| "system font."
 msgid ""
-"Whether to use the system's default fixed width font for editing text "
+"Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
-"font named in the \"Editor Font\" option will be used instead of the system "
+"font named in the “Editor Font” option will be used instead of the system "
 "font."
 msgstr ""
-"Indica se cal utilizar la poliça de chassa fixa per defaut del sistèma per "
-"l'edicion de tèxte a la plaça d'una poliça especifica a gedit. Se aquesta "
-"opcion es desactivada, alara la poliça causida dins l'opcion « Poliça de "
-"l'editor » serà utilizada a la plaça de la poliça del sistèma."
+"Indica se cal utilizar la poliça de chassa fixa per defaut del sistèma "
+"per l’edicion de tèxte a la plaça d’una poliça especifica a gedit. Se aquesta "
+"opcion es desactivada, alara la poliça causida dins l’opcion « Poliça de l’"
+"editor » serà utilizada a la plaça de la poliça del sistèma."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:3
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:4
 msgid "'Monospace 12'"
 msgstr "'Monospace 12'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:4
+#: ../data/org.gnome.gedit.gschema.xml.in.h:5
 msgid "Editor Font"
 msgstr "Poliça de l'editor"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:5
+#: ../data/org.gnome.gedit.gschema.xml.in.h:6
+#| msgid ""
+#| "A custom font that will be used for the editing area. This will only take "
+#| "effect if the \"Use Default Font\" option is turned off."
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
-"effect if the \"Use Default Font\" option is turned off."
+"effect if the “Use Default Font” option is turned off."
 msgstr ""
-"Una poliça personalizada que serà utilizada per la zòna d'edicion. Serà "
-"aplicat sonque se l'opcion \"Utilizar la poliça per defaut\" es desactivada."
+"La poliça personalizada que serà utilizada dins la zòna d’edicion. Aquò s’"
+"aplica pas que se l’opcion « Utilizar la poliça per defaut » es desactivada."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:6
+#: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "Style Scheme"
 msgstr "Jòc d'estils"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:7
+#: ../data/org.gnome.gedit.gschema.xml.in.h:8
 msgid "The ID of a GtkSourceView Style Scheme used to color the text."
 msgstr ""
 "L'identificant d'un jòc d'estils GtkSourceView utilizat per la coloracion "
 "sintaxica del tèxte."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:8
+#: ../data/org.gnome.gedit.gschema.xml.in.h:9
 msgid "Create Backup Copies"
 msgstr "Crear de còpias de salvament"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:9
+#: ../data/org.gnome.gedit.gschema.xml.in.h:10
 msgid "Whether gedit should create backup copies for the files it saves."
 msgstr ""
-"Indica se gedit deu crear de còpias de salvament dels fichièrs qu'il "
-"enregistre."
+"Indica se gedit deu crear de còpias de salvament dels fichièrs qu'"
+"enregistra."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:10
+#: ../data/org.gnome.gedit.gschema.xml.in.h:11
 msgid "Autosave"
 msgstr "Enregistrament automatic"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:11
+#: ../data/org.gnome.gedit.gschema.xml.in.h:12
+#| msgid ""
+#| "Whether gedit should automatically save modified files after a time "
+#| "interval. You can set the time interval with the \"Autosave Interval\" "
+#| "option."
 msgid ""
 "Whether gedit should automatically save modified files after a time "
-"interval. You can set the time interval with the \"Autosave Interval\" "
-"option."
+"interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
-"Indica se gedit deu activar l'enregistrament automatic dels fichièrs "
-"modificats aprèp un certan interval de temps. Podètz definir l'interval de "
-"temps amb l'opcion « Interval de l'enregistrament automatic »."
+"Indica se gedit deu activar l’enregistrament automatic dels fichièrs "
+"modificats aprèp un certan interval de temps. Podètz definir l’"
+"interval de temps amb l’opcion « Interval de l’enregistrament "
+"automatic »."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:12
+#: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid "Autosave Interval"
 msgstr "Interval per l'enregistrament automatic"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:13
+#: ../data/org.gnome.gedit.gschema.xml.in.h:14
+#| msgid ""
+#| "Number of minutes after which gedit will automatically save modified "
+#| "files. This will only take effect if the \"Autosave\" option is turned on."
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
-"This will only take effect if the \"Autosave\" option is turned on."
+"This will only take effect if the “Autosave” option is turned on."
 msgstr ""
 "Nombre de minutas aprèp las qualas gedit enregistra automaticament los "
-"fichièrs modificats. Aquò s'aplica que se l'opcion « Enregistrament "
+"fichièrs modificats. Aquò s’aplica pas que se l’opcion « Enregistrament "
 "automatic » es activada."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:14
+#: ../data/org.gnome.gedit.gschema.xml.in.h:15
 msgid "Maximum Number of Undo Actions"
 msgstr "Nombre maximum d'anullacions possiblas"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:15
-msgid ""
-"Maximum number of actions that gedit will be able to undo or redo. Use "
-"\"-1\" for unlimited number of actions."
-msgstr ""
-"Nombre maximum d'accions que gedit serà en mesura d'anullar o de reïntegrar. "
-"Indicatz « -1 » se volètz pas indicar de limit."
-
 #: ../data/org.gnome.gedit.gschema.xml.in.h:16
+#| msgid ""
+#| "Maximum number of actions that gedit will be able to undo or redo. Use "
+#| "\"-1\" for unlimited number of actions."
+msgid ""
+"Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
+"for unlimited number of actions."
+msgstr ""
+"Nombre maximum d’accions que gedit serà en mesura d’anullar o de "
+"reïntegrar. Indicatz « -1 » se volètz pas indicar cap de limit."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid "Line Wrapping Mode"
 msgstr "Mòde retorn a la linha"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:17
+#: ../data/org.gnome.gedit.gschema.xml.in.h:18
+#| msgid ""
+#| "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
+#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+#| "wrapping at individual character boundaries. Note that the values are "
+#| "case-sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
-"Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-"wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-"wrapping at individual character boundaries. Note that the values are case-"
-"sensitive, so make sure they appear exactly as mentioned here."
+"Specifies how to wrap long lines in the editing area. Use “none” for no "
+"wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
+"individual character boundaries. Note that the values are case-sensitive, so "
+"make sure they appear exactly as mentioned here."
 msgstr ""
-"Indica cossí separar las longas linhas dins la zòna d'edicion. Utilizatz « "
-"none » per las separar pas, « word » per separar a la fin d'un mot e « char "
-"» per separar a quin caractèr que siá. Notatz qu'aquestas valors son "
-"sensiblas a la cassa, fasètz en sòrta qu'aparescan exactament coma "
+"Indica cossí separar las longas linhas dins la zòna d’edicion. Utilizatz «"
+" none » per las separar pas, « word » per separar a la fin d’un mot e «"
+" char » per separar a quin caractèr que siá. Notatz qu'aquelas valors son "
+"sensiblas a la cassa, fasètz en sòrta qu’aparescan exactament coma "
 "mencionadas aicí."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:18
+#: ../data/org.gnome.gedit.gschema.xml.in.h:19
 msgid "Last split mode choice for line wrapping mode"
 msgstr "Darrièra causida de mòde de scission de las linhas"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:19
+#: ../data/org.gnome.gedit.gschema.xml.in.h:20
+#| msgid ""
+#| "Specifies the last split mode used with line wrapping mode, so that when "
+#| "wrapping mode is off we still remember the split mode choice. Use \"word"
+#| "\" for wrapping at word boundaries, and \"char\" for wrapping at "
+#| "individual character boundaries."
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
-"wrapping mode is off we still remember the split mode choice. Use \"word\" "
-"for wrapping at word boundaries, and \"char\" for wrapping at individual "
-"character boundaries."
+"wrapping mode is off we still remember the split mode choice. Use “word” for "
+"wrapping at word boundaries, and “char” for wrapping at individual character "
+"boundaries."
 msgstr ""
-"Definís lo darrièra causida de mòde de scission de las linhas, per "
-"qu'aqueste mòde siá gardat en memòria quitament quand aquesta foncion es "
-"desactivada. Utilizatz « word » per separar a la fin d'un mot e « char » per "
-"separar a quin caractèr que siá."
+"Definís la darrièra causida de mòde de scission de las linhas, per que aqueste mòde "
+"siá gardat en memòria quitament quand aquesta foncion es desactivada. Utilizatz « "
+"word » per separar a la fin d’un mot e « char » per separar a "
+"quin caractèr que siá."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:20
+#: ../data/org.gnome.gedit.gschema.xml.in.h:21
 msgid "Tab Size"
 msgstr "Talha de la tabulacion"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:21
+#: ../data/org.gnome.gedit.gschema.xml.in.h:22
 msgid ""
 "Specifies the number of spaces that should be displayed instead of Tab "
 "characters."
 msgstr ""
-"Definís lo nombre d'espacis que devraient èsser afichats a la plaça dels "
+"Definís lo nombre d'espacis que deurián èsser afichats a la plaça dels "
 "caractèrs de tabulacion."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:22
+#: ../data/org.gnome.gedit.gschema.xml.in.h:23
 msgid "Insert spaces"
 msgstr "Inserir d'espacis"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:23
-msgid "Whether gedit should insert spaces instead of tabs."
-msgstr "Indica se gedit deu inserir d'espacis al luòc de las tabulacions."
-
 #: ../data/org.gnome.gedit.gschema.xml.in.h:24
+msgid "Whether gedit should insert spaces instead of tabs."
+msgstr "Indica se gedit deu inserir d'espacis a la plaça de las tabulacions."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:25
 msgid "Automatic indent"
 msgstr "Indentacion automatica"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:25
+#: ../data/org.gnome.gedit.gschema.xml.in.h:26
 msgid "Whether gedit should enable automatic indentation."
 msgstr "Indica se gedit deu activar l'indentacion automatica."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:26
+#: ../data/org.gnome.gedit.gschema.xml.in.h:27
 msgid "Display Line Numbers"
 msgstr "Afichar los numèros de linha"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:27
+#: ../data/org.gnome.gedit.gschema.xml.in.h:28
 msgid "Whether gedit should display line numbers in the editing area."
 msgstr ""
 "Indica se gedit deu afichar los numèros de linhas dins la zòna d'edicion."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:28
+#: ../data/org.gnome.gedit.gschema.xml.in.h:29
 msgid "Highlight Current Line"
 msgstr "Suslinhar la linha actuala"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:29
+#: ../data/org.gnome.gedit.gschema.xml.in.h:30
 msgid "Whether gedit should highlight the current line."
 msgstr "Indica se gedit deu suslinhar la linha actuala."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:30
+#: ../data/org.gnome.gedit.gschema.xml.in.h:31
 msgid "Highlight Matching Brackets"
 msgstr "Suslinhar las parentèsis correspondentas"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:31
+#: ../data/org.gnome.gedit.gschema.xml.in.h:32
 msgid "Whether gedit should highlight matching brackets."
 msgstr "Indica se gedit deu suslinhar las parentèsis correspondentas."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:32
+#: ../data/org.gnome.gedit.gschema.xml.in.h:33
 msgid "Display Right Margin"
 msgstr "Afichar lo marge de dreita"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:33
+#: ../data/org.gnome.gedit.gschema.xml.in.h:34
 msgid "Whether gedit should display the right margin in the editing area."
 msgstr "Indica se gedit deu afichar lo marge de dreita dins la zòna d'edicion."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:34
+#: ../data/org.gnome.gedit.gschema.xml.in.h:35
 msgid "Right Margin Position"
 msgstr "Posicion del marge de dreita"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:35
+#: ../data/org.gnome.gedit.gschema.xml.in.h:36
 msgid "Specifies the position of the right margin."
 msgstr "Indica la posicion del marge de dreita."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:36
+#: ../data/org.gnome.gedit.gschema.xml.in.h:37
 msgid "Display Overview Map"
 msgstr "Afichar la mapa de la vista d'ensemble"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:37
+#: ../data/org.gnome.gedit.gschema.xml.in.h:38
 msgid "Whether gedit should display the overview map for the document."
 msgstr ""
 "Indica se gedit deu afichar la mapa de la vista d'ensemble del document."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:38
+#: ../data/org.gnome.gedit.gschema.xml.in.h:39
 msgid "Document background pattern type"
 msgstr "Tipe del motiu de rèireplan del document"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:39
+#: ../data/org.gnome.gedit.gschema.xml.in.h:40
 msgid "Whether the document will get a background pattern painted."
 msgstr "Indica se lo document va recebre un motiu de rèireplan pintrat."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:40
-msgid "Smart Home End"
-msgstr "« Origina » e « Fin » intelligentas"
-
 #: ../data/org.gnome.gedit.gschema.xml.in.h:41
-msgid ""
-"Specifies how the cursor moves when the HOME and END keys are pressed. Use "
-"\"disabled\" to always move at the start/end of the line, \"after\" to move "
-"to the start/end of the line the first time the keys are pressed and to the "
-"start/end of the text ignoring whitespaces the second time the keys are "
-"pressed, \"before\" to move to the start/end of the text before moving to "
-"the start/end of the line and \"always\" to always move to the start/end of "
-"the text instead of the start/end of the line."
-msgstr ""
-"Indica cossí lo cursor se desplaça quand las tòcas « Origina » e « Fin » son "
-"quichadas. Utilizatz « disabled » (desactivat) per anar totjorn en "
-"començament/fin de linha, « after » (aprèp) per anar en començament/fin de "
-"linha o primièr còp que las tòcas son quichadas e en començament/fin de "
-"tèxte en ignorant los espacis, lo segond còp que las tòcas son manobradas, « "
-"before » (abans) per anar en començament/fin de tèxte abans de se desplaçar "
-"en començament/fin de linha e « always » (totjorn) per totjorn anar en "
-"començament/fin de tèxte a la plaça de començament/fin de linha."
+msgid "Smart Home End"
+msgstr "« Origina » e « Fin » intelligentas"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:42
+#| msgid ""
+#| "Specifies how the cursor moves when the HOME and END keys are pressed. "
+#| "Use \"disabled\" to always move at the start/end of the line, \"after\" "
+#| "to move to the start/end of the line the first time the keys are pressed "
+#| "and to the start/end of the text ignoring whitespaces the second time the "
+#| "keys are pressed, \"before\" to move to the start/end of the text before "
+#| "moving to the start/end of the line and \"always\" to always move to the "
+#| "start/end of the text instead of the start/end of the line."
+msgid ""
+"Specifies how the cursor moves when the HOME and END keys are pressed. Use "
+"“disabled” to always move at the start/end of the line, “after” to move to "
+"the start/end of the line the first time the keys are pressed and to the "
+"start/end of the text ignoring whitespaces the second time the keys are "
+"pressed, “before” to move to the start/end of the text before moving to the "
+"start/end of the line and “always” to always move to the start/end of the "
+"text instead of the start/end of the line."
+msgstr ""
+"Indica cossí lo cursor se desplaça quand las tòcas « Origina » e « Fin "
+"» son quichadas. Utilizatz « disabled » (desactivat) per anar totjorn en "
+"començament/fin de linha, « after » (aprèp) per anar en començament/fin de linha lo "
+"primièr còp que las tòcas son quichadas e en començament/fin de tèxte en "
+"ignorant los espacis, lo segond còp que las tòcas son manobradas, « "
+"before » (abans) per anar en començament/fin de tèxte abans de se desplaçar en "
+"començament/fin de linha e « always » (totjorn) per totjorn anar en començament/fin "
+"de tèxte a la plaça de començament/fin de linha."
+
+#: ../data/org.gnome.gedit.gschema.xml.in.h:43
 msgid "Restore Previous Cursor Position"
 msgstr "Restablir la precedenta posicion del cursor"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:43
+#: ../data/org.gnome.gedit.gschema.xml.in.h:44
 msgid ""
 "Whether gedit should restore the previous cursor position when a file is "
 "loaded."
@@ -325,135 +359,149 @@ msgstr ""
 "Indica se gedit deu restablir lo precedent emplaçament del cursor quand un "
 "fichièr es cargat."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:44
+#: ../data/org.gnome.gedit.gschema.xml.in.h:45
 msgid "Enable Syntax Highlighting"
 msgstr "Activar la coloracion sintaxica"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:45
+#: ../data/org.gnome.gedit.gschema.xml.in.h:46
 msgid "Whether gedit should enable syntax highlighting."
 msgstr "Indica se gedit deu activar la coloracion sintaxica."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:46
+#: ../data/org.gnome.gedit.gschema.xml.in.h:47
 msgid "Enable Search Highlighting"
 msgstr "Activar la coloracion de recèrca"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:47
+#: ../data/org.gnome.gedit.gschema.xml.in.h:48
 msgid ""
 "Whether gedit should highlight all the occurrences of the searched text."
 msgstr ""
 "Indica se gedit deu suslinhar totas las ocurréncias del tèxte recercat."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:48
+#: ../data/org.gnome.gedit.gschema.xml.in.h:49
 msgid "Ensure Trailing Newline"
 msgstr "Assegurar una novèla linha terminala"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:49
+#: ../data/org.gnome.gedit.gschema.xml.in.h:50
 msgid ""
 "Whether gedit will ensure that documents always end with a trailing newline."
 msgstr ""
 "Indica se gedit deu s'assegurar que los documents s'acaban totjorn per una "
 "novèla linha en fin de fichièr."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:50
+#: ../data/org.gnome.gedit.gschema.xml.in.h:51
 msgid "Toolbar is Visible"
 msgstr "La barra d'aisinas es visibla"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:51
+#: ../data/org.gnome.gedit.gschema.xml.in.h:52
 msgid "Whether the toolbar should be visible in editing windows."
 msgstr ""
 "Indica se la barra d'aisinas deu èsser visibla dins las fenèstras d'edicion."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:52
+#: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid "Notebook Show Tabs Mode"
 msgstr "Mòde d'afichatge dels onglets"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:53
+#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#| msgid ""
+#| "Specifies when to show the notebook tabs. Use \"never\" to never show the "
+#| "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs "
+#| "only when there is more than one tab. Note that the values are case-"
+#| "sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
-"Specifies when to show the notebook tabs. Use \"never\" to never show the "
-"tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs only "
+"Specifies when to show the notebook tabs. Use “never” to never show the "
+"tabs, “always” to always show the tabs, and “auto” to show the tabs only "
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"Definís lo mòde d'afichatge dels onglets de fenèstra. Utilizatz « never » "
-"per los afichar pas jamai, « always » per los afichar totjorn e « auto » per "
-"los afichar se n'i a mai d'un. Notatz qu'aquestas valors son sensiblas a la "
-"cassa, asseguratz-vos doncas qu'aparescan exactament coma indicat çaisús."
+"Definís lo mòde d’afichatge dels onglets de fenèstra. Utilizatz « never » per "
+"los afichar pas jamai, « always » per los afichar totjorn e « auto » "
+"per los afichar se n'i a mai d’un. Notatz qu'aquelas valors son "
+"sensiblas a la cassa, asseguratz-vos doncas qu’aparescan exactament "
+"coma indicat çaisús."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:54
+#: ../data/org.gnome.gedit.gschema.xml.in.h:55
 msgid "Status Bar is Visible"
 msgstr "Barra d'estat visibla"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:55
+#: ../data/org.gnome.gedit.gschema.xml.in.h:56
 msgid ""
 "Whether the status bar at the bottom of editing windows should be visible."
 msgstr ""
 "Indica se la barra d'estat aval de las fenèstras d'edicion deu èsser visibla."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:56
+#: ../data/org.gnome.gedit.gschema.xml.in.h:57
 msgid "Side panel is Visible"
 msgstr "Lo panèl lateral es visible"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:57
+#: ../data/org.gnome.gedit.gschema.xml.in.h:58
 msgid ""
 "Whether the side panel at the left of editing windows should be visible."
 msgstr ""
 "Indica se lo panèl lateral a esquèrra de las fenèstras d'edicion deu èsser "
 "visible."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:58
+#: ../data/org.gnome.gedit.gschema.xml.in.h:59
 msgid "Maximum Recent Files"
 msgstr "Nombre maximum de fichièrs recents"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:59
+#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#| msgid ""
+#| "Specifies the maximum number of recently opened files that will be "
+#| "displayed in the \"Recent Files\" submenu."
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
-"in the \"Recent Files\" submenu."
+"in the “Recent Files” submenu."
 msgstr ""
-"Especifica lo nombre maximum de fichièrs recentament dobèrts que seràn "
-"afichats dins lo sosmenú \"Fichièrs recents\"."
+"Indica lo nombre maximum de fichièrs dobèrts recentament que seràn afichats "
+"dins lo sosmenú « Fichièrs recents »."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:60
+#: ../data/org.gnome.gedit.gschema.xml.in.h:61
 msgid "Print Syntax Highlighting"
 msgstr "Imprimir la coloracion sintaxica"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:61
+#: ../data/org.gnome.gedit.gschema.xml.in.h:62
 msgid "Whether gedit should print syntax highlighting when printing documents."
 msgstr ""
 "Indica se gedit deu imprimir la coloracion sintaxica al moment de "
 "l'impression dels documents."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:62
+#: ../data/org.gnome.gedit.gschema.xml.in.h:63
 msgid "Print Header"
 msgstr "Imprimir l'entèsta"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:63
+#: ../data/org.gnome.gedit.gschema.xml.in.h:64
 msgid "Whether gedit should include a document header when printing documents."
 msgstr ""
 "Indica se gedit deu enclure una entèsta de document al moment de "
 "l'impression dels documents."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:64
+#: ../data/org.gnome.gedit.gschema.xml.in.h:65
 msgid "Printing Line Wrapping Mode"
 msgstr "Imprimir amb lo mòde de retorn a la linha"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:65
+#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#| msgid ""
+#| "Specifies how to wrap long lines for printing. Use \"none\" for no "
+#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
+#| "wrapping at individual character boundaries. Note that the values are "
+#| "case-sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
-"Specifies how to wrap long lines for printing. Use \"none\" for no wrapping, "
-"\"word\" for wrapping at word boundaries, and \"char\" for wrapping at "
+"Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
+"“word” for wrapping at word boundaries, and “char” for wrapping at "
 "individual character boundaries. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"Indica cossí separar las longas linhas a l'impression. Utilizatz « none » "
-"per las separar pas, « word » per separar la linha a la fin d'un mot e « "
-"char » per la separar a quin caractèr que siá. Notatz qu'aquestas valors son "
-"sensiblas a la cassa, fasètz en sòrta qu'aparescan exactament coma "
-"mencionadas aicí."
+"Indica cossí separar las longas linhas a l’impression. Utilizatz « none » "
+"per las separar pas, « word » per separar la linha a la fin d’un mot e "
+"« char » per la separar a quin caractèr que siá. Notatz qu'aquelas valors "
+"son sensiblas a la cassa, fasètz en sòrta qu’aparescan exactament "
+"coma mencionadas aicí."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:66
+#: ../data/org.gnome.gedit.gschema.xml.in.h:67
 msgid "Print Line Numbers"
 msgstr "Imprimir los numèros de linha"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:67
+#: ../data/org.gnome.gedit.gschema.xml.in.h:68
 msgid ""
 "If this value is 0, then no line numbers will be inserted when printing a "
 "document. Otherwise, gedit will print line numbers every such number of "
@@ -463,119 +511,142 @@ msgstr ""
 "moment de l'impression d'un document. Siquenon, gedit afichara un numèro de "
 "linha a cada x linhas."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:68
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:70
 msgid "'Monospace 9'"
 msgstr "'Monospace 9'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:69
+#: ../data/org.gnome.gedit.gschema.xml.in.h:71
 msgid "Body Font for Printing"
 msgstr "Poliça per l'impression del còs de tèxte"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:70
+#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#| msgid ""
+#| "Specifies the font to use for a document's body when printing documents."
 msgid ""
-"Specifies the font to use for a document's body when printing documents."
+"Specifies the font to use for a document’s body when printing documents."
 msgstr ""
-"Indica la poliça d'utilizar pel còs d'un document al moment de l'impression."
+"Indica la poliça d'utilizar pel còs d’un document al moment de "
+"l’impression."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:71
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:74
 msgid "'Sans 11'"
 msgstr "'Sans 11'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:72
+#: ../data/org.gnome.gedit.gschema.xml.in.h:75
 msgid "Header Font for Printing"
 msgstr "Poliça per l'impression de l'entèsta"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:73
+#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#| msgid ""
+#| "Specifies the font to use for page headers when printing a document. This "
+#| "will only take effect if the \"Print Header\" option is turned on."
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
-"will only take effect if the \"Print Header\" option is turned on."
+"will only take effect if the “Print Header” option is turned on."
 msgstr ""
-"Indica la poliça d'utilizar per las entèstas de pagina al moment de "
-"l'impression d'un document. Aquò s'aplicarà pas que se l'opcion « Afichar "
-"l'entèsta » es activada."
+"Indica la poliça d'utilizar per las entèstas de pagina al moment de l’impression "
+"d’un document. Aquò s’aplicarà pas que se l’opcion « Afichar l’entèsta » "
+"es activada."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:74
+#. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
+#: ../data/org.gnome.gedit.gschema.xml.in.h:78
 msgid "'Sans 8'"
 msgstr "'Sans 8'"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:75
+#: ../data/org.gnome.gedit.gschema.xml.in.h:79
 msgid "Line Number Font for Printing"
 msgstr "Poliça per l'impression dels numèros de linha"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:76
+#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#| msgid ""
+#| "Specifies the font to use for line numbers when printing. This will only "
+#| "take effect if the \"Print Line Numbers\" option is non-zero."
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
-"take effect if the \"Print Line Numbers\" option is non-zero."
+"take effect if the “Print Line Numbers” option is non-zero."
 msgstr ""
-"Indica la poliça d'utilizar pels numèros de linha al moment de l'impression. "
-"Aquò s'aplicarà pas que se l'opcion « Afichar los numèros de linha » es pas "
-"nulla."
+"Indica la poliça d'utilizar pels numèros de linha al moment de l’impression. "
+"Aquò s’aplicarà pas que se l’opcion « Afichar los numèros de linha » es "
+"non-nulla."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:77
+#: ../data/org.gnome.gedit.gschema.xml.in.h:81
 msgid "Margin Left"
 msgstr "Marge d'esquèrra"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:78
+#: ../data/org.gnome.gedit.gschema.xml.in.h:82
 msgid "The left margin, in millimeters."
 msgstr "Lo marge d'esquèrra, en millimètres."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:79
+#: ../data/org.gnome.gedit.gschema.xml.in.h:83
 msgid "Margin Top"
 msgstr "Marge superior"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:80
+#: ../data/org.gnome.gedit.gschema.xml.in.h:84
 msgid "The top margin, in millimeters."
 msgstr "Lo marge d'amont, en millimètres."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:81
+#: ../data/org.gnome.gedit.gschema.xml.in.h:85
 msgid "Margin Right"
 msgstr "Marge de dreita"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:82
+#: ../data/org.gnome.gedit.gschema.xml.in.h:86
 msgid "The right margin, in millimeters."
 msgstr "Lo marge de dreita, en millimètres."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:83
+#: ../data/org.gnome.gedit.gschema.xml.in.h:87
 msgid "Margin Bottom"
 msgstr "Marge inferior"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:84
+#: ../data/org.gnome.gedit.gschema.xml.in.h:88
 msgid "The bottom margin, in millimeters."
 msgstr "Lo marge d'aval, en millimètres."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:85
+#: ../data/org.gnome.gedit.gschema.xml.in.h:89
 msgid "Candidate Encodings"
 msgstr "Encodatges possibles"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:86
+#: ../data/org.gnome.gedit.gschema.xml.in.h:90
+#| msgid ""
+#| "List of candidate encodings shown in the Character Encoding menu in the "
+#| "open/save file chooser. \"CURRENT\" represents the current locale "
+#| "encoding. Only recognized encodings are used. The default value is the "
+#| "empty list, in which case gedit will choose good defaults depending on "
+#| "the country and language."
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
-"save file chooser. \"CURRENT\" represents the current locale encoding. Only "
+"save file chooser. “CURRENT” represents the current locale encoding. Only "
 "recognized encodings are used. The default value is the empty list, in which "
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
-"La lista dels encodatges possibles es afichada dins l'onglet Dobrir/"
-"Enregistrar e lo menú Encodatge de caractèrs del selector de fichièr. "
-"« Locala actuala » es l'encodatge utilizat actualament. Sols los encodatges "
-"reconeguts son utilizats. La valor per defaut es una lista voida, dins aquel "
-"cas gedit causís automaticament la melhora en foncion del país e de la lenga."
+"La lista dels codatges possibles es afichada dins l’onglet Dobrir/Enregistrar "
+"e lo menú Codatge de caractèrs del selector de fichièr. « Locala actuala » "
+"es lo codatge utilizat actualament. Sols los codatges reconeguts son "
+"utilizats. La valor per defaut es una lista voida, e dins aquel cas gedit causís "
+"automaticament la melhora en foncion del país e de la lenga."
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:87
+#: ../data/org.gnome.gedit.gschema.xml.in.h:91
 msgid "Active plugins"
 msgstr "Empeutons actius"
 
-#: ../data/org.gnome.gedit.gschema.xml.in.h:88
+#: ../data/org.gnome.gedit.gschema.xml.in.h:92
+#| msgid ""
+#| "List of active plugins. It contains the \"Location\" of the active "
+#| "plugins. See the .gedit-plugin file for obtaining the \"Location\" of a "
+#| "given plugin."
 msgid ""
-"List of active plugins. It contains the \"Location\" of the active plugins. "
-"See the .gedit-plugin file for obtaining the \"Location\" of a given plugin."
+"List of active plugins. It contains the “Location” of the active plugins. "
+"See the .gedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
-"Lista dels empeutons actius. Conten l'« emplaçament » dels empeutons actius. "
-"Consultez lo fichièr .gedit-plugin per obténer l'« emplaçament » (Location) "
-"d'un empeuton donat."
+"Lista dels empeutons actius. Conten l’« emplaçament » dels empeutons "
+"actius. Consultatz lo fichièr .gedit-plugin per obténer l’« emplaçament » "
+"(Location) d’un empeuton donat."
 
 #: ../gedit/gedit-app.c:110
-msgid "Show the application's version"
-msgstr "Aficha la version de l'aplicacion"
+#| msgid "Show the application's version"
+msgid "Show the application’s version"
+msgstr "Aficha la version de l’aplicacion"
 
 #: ../gedit/gedit-app.c:116
 msgid "Display list of possible values for the encoding option"
@@ -591,7 +662,7 @@ msgstr ""
 
 #: ../gedit/gedit-app.c:124
 msgid "ENCODING"
-msgstr "CODAGE"
+msgstr "CODATGE"
 
 #: ../gedit/gedit-app.c:130
 msgid "Create a new top-level window in an existing instance of gedit"
@@ -613,8 +684,9 @@ msgid "Run gedit in standalone mode"
 msgstr "Executa gedit en mòde autonòm"
 
 #: ../gedit/gedit-app.c:158
-msgid "[FILE...] [+LINE[:COLUMN]]"
-msgstr "[FICHIÈR...] [+LINHA[:COLOMNA]]"
+#| msgid "[FILE...] [+LINE[:COLUMN]]"
+msgid "[FILE…] [+LINE[:COLUMN]]"
+msgstr "[FICHIÈR…] [+LINHA[:COLOMNA]]"
 
 #: ../gedit/gedit-app.c:273
 msgid "There was an error displaying the help."
@@ -633,17 +705,15 @@ msgstr "_Tampar sens enregistrar"
 #: ../gedit/gedit-commands-file.c:462 ../gedit/gedit-commands-file.c:567
 #: ../gedit/gedit-commands-file.c:643 ../gedit/gedit-commands-file.c:854
 #: ../gedit/gedit-commands-file.c:1568 ../gedit/gedit-encodings-dialog.c:194
-#: ../gedit/gedit-io-error-info-bar.c:130
-#: ../gedit/gedit-io-error-info-bar.c:511
 #: ../gedit/gedit-preferences-dialog.c:825
 #: ../gedit/gedit-progress-info-bar.c:49
 #: ../gedit/resources/ui/gedit-encodings-dialog.ui.h:2
 #: ../gedit/resources/ui/gedit-highlight-mode-dialog.ui.h:2
 #: ../plugins/filebrowser/gedit-file-browser-utils.c:170
-#: ../plugins/quickopen/quickopen/popup.py:38
-#: ../plugins/snippets/snippets/manager.py:781
-#: ../plugins/snippets/snippets/manager.py:866
-#: ../plugins/snippets/snippets/manager.py:904
+#: ../plugins/quickopen/quickopen/popup.py:45
+#: ../plugins/snippets/snippets/manager.py:789
+#: ../plugins/snippets/snippets/manager.py:874
+#: ../plugins/snippets/snippets/manager.py:912
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:6
 #: ../plugins/time/resources/ui/gedit-time-dialog.ui.h:8
 msgid "_Cancel"
@@ -659,94 +729,127 @@ msgstr "Enregistrar _jos…"
 #: ../gedit/gedit-commands-file.c:855
 #: ../gedit/resources/gtk/menus-common.ui.h:18
 #: ../gedit/resources/ui/gedit-window.ui.h:7
-#: ../plugins/snippets/snippets/manager.py:867
-#: ../plugins/snippets/snippets/manager.py:905
+#: ../plugins/snippets/snippets/manager.py:875
+#: ../plugins/snippets/snippets/manager.py:913
 msgid "_Save"
 msgstr "_Enregistrar"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:324
-#, c-format
+#, c-format, c-format
+#| msgid ""
+#| "If you don't save, changes from the last %ld second will be permanently "
+#| "lost."
+#| msgid_plural ""
+#| "If you don't save, changes from the last %ld seconds will be permanently "
+#| "lost."
 msgid ""
-"If you don't save, changes from the last %ld second will be permanently lost."
+"If you don’t save, changes from the last %ld second will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld seconds will be permanently "
+"If you don’t save, changes from the last %ld seconds will be permanently "
 "lost."
 msgstr[0] ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi una segonda seràn "
-"definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi una segonda "
+"seràn definitivament perdudas."
 msgstr[1] ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi %ld segondas seràn "
-"definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi %ld segondas "
+"seràn definitivament perdudas."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:333
+#| msgid ""
+#| "If you don't save, changes from the last minute will be permanently lost."
 msgid ""
-"If you don't save, changes from the last minute will be permanently lost."
+"If you don’t save, changes from the last minute will be permanently lost."
 msgstr ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi una minuta seràn "
-"definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi una minuta "
+"seràn definitivament perdudas."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:339
-#, c-format
+#, c-format, c-format
+#| msgid ""
+#| "If you don't save, changes from the last minute and %ld second will be "
+#| "permanently lost."
+#| msgid_plural ""
+#| "If you don't save, changes from the last minute and %ld seconds will be "
+#| "permanently lost."
 msgid ""
-"If you don't save, changes from the last minute and %ld second will be "
+"If you don’t save, changes from the last minute and %ld second will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last minute and %ld seconds will be "
+"If you don’t save, changes from the last minute and %ld seconds will be "
 "permanently lost."
 msgstr[0] ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi una minuta e una "
-"segonda seràn definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi una minuta e "
+"une segonda seràn definitivament perdudas."
 msgstr[1] ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi una minuta e %ld "
-"segondas seràn definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi una minuta e "
+"%ld segondas seràn definitivament perdudas."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:349
-#, c-format
+#, c-format, c-format
+#| msgid ""
+#| "If you don't save, changes from the last %ld minute will be permanently "
+#| "lost."
+#| msgid_plural ""
+#| "If you don't save, changes from the last %ld minutes will be permanently "
+#| "lost."
 msgid ""
-"If you don't save, changes from the last %ld minute will be permanently lost."
+"If you don’t save, changes from the last %ld minute will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %ld minutes will be permanently "
+"If you don’t save, changes from the last %ld minutes will be permanently "
 "lost."
 msgstr[0] ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi una minuta seràn "
-"definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi una minuta "
+"seràn definitivament perdudas."
 msgstr[1] ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi %ld minutas seràn "
-"definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi %ld minutas "
+"seràn definitivament perdudas."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:364
-msgid "If you don't save, changes from the last hour will be permanently lost."
+#| msgid ""
+#| "If you don't save, changes from the last hour will be permanently lost."
+msgid "If you don’t save, changes from the last hour will be permanently lost."
 msgstr ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi una ora seràn "
-"definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi una ora "
+"seràn definitivament perdudas."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:370
-#, c-format
+#, c-format, c-format
+#| msgid ""
+#| "If you don't save, changes from the last hour and %d minute will be "
+#| "permanently lost."
+#| msgid_plural ""
+#| "If you don't save, changes from the last hour and %d minutes will be "
+#| "permanently lost."
 msgid ""
-"If you don't save, changes from the last hour and %d minute will be "
+"If you don’t save, changes from the last hour and %d minute will be "
 "permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last hour and %d minutes will be "
+"If you don’t save, changes from the last hour and %d minutes will be "
 "permanently lost."
 msgstr[0] ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi una ora e una "
-"minuta seràn definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi una ora e "
+"una minuta seràn definitivament perdudas."
 msgstr[1] ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi una ora e %d "
-"minutas seràn definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi una ora e %"
+"d minutas seràn definitivament perdudas."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:385
-#, c-format
+#, c-format, c-format
+#| msgid ""
+#| "If you don't save, changes from the last %d hour will be permanently lost."
+#| msgid_plural ""
+#| "If you don't save, changes from the last %d hours will be permanently "
+#| "lost."
 msgid ""
-"If you don't save, changes from the last %d hour will be permanently lost."
+"If you don’t save, changes from the last %d hour will be permanently lost."
 msgid_plural ""
-"If you don't save, changes from the last %d hours will be permanently lost."
+"If you don’t save, changes from the last %d hours will be permanently lost."
 msgstr[0] ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi una ora seràn "
-"definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi una ora "
+"seràn definitivament perdudas."
 msgstr[1] ""
-"Se enregistratz pas, las modificacions efectuadas dempuèi %d oras seràn "
-"definitivament perdudas."
+"Se enregistratz pas, las modificacions efectuadas dempuèi %d oras "
+"seràn definitivament perdudas."
 
 #: ../gedit/gedit-close-confirmation-dialog.c:414
 #, c-format
@@ -794,14 +897,16 @@ msgid "S_elect the documents you want to save:"
 msgstr "_Seleccionatz los documents que volètz enregistrar :"
 
 #: ../gedit/gedit-close-confirmation-dialog.c:562
-msgid "If you don't save, all your changes will be permanently lost."
+#| msgid "If you don't save, all your changes will be permanently lost."
+msgid "If you don’t save, all your changes will be permanently lost."
 msgstr ""
 "Se enregistratz pas, totas vòstras modificacions seràn definitivament "
 "perdudas."
 
 #: ../gedit/gedit-commands-file.c:261
-#, c-format
-msgid "Loading file '%s'…"
+#, c-format, c-format
+#| msgid "Loading file '%s'…"
+msgid "Loading file “%s”…"
 msgstr "Cargament del fichièr « %s »…"
 
 #: ../gedit/gedit-commands-file.c:270
@@ -809,11 +914,10 @@ msgstr "Cargament del fichièr « %s »…"
 msgid "Loading %d file…"
 msgid_plural "Loading %d files…"
 msgstr[0] "Cargament d'un fichièr…"
-msgstr[1] "Cargament de %d fichièrs..."
+msgstr[1] "Cargament de %d fichièrs..."
 
 #. Translators: "Open" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:456
-#, fuzzy
 #| msgid "Open"
 msgctxt "window title"
 msgid "Open"
@@ -823,19 +927,20 @@ msgstr "Dobrir"
 #: ../gedit/resources/gtk/menus-common.ui.h:15
 #: ../gedit/resources/ui/gedit-window.ui.h:3
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:1
-#: ../plugins/quickopen/quickopen/popup.py:39
-#: ../plugins/snippets/snippets/manager.py:782
+#: ../plugins/quickopen/quickopen/popup.py:46
+#: ../plugins/snippets/snippets/manager.py:790
 msgid "_Open"
 msgstr "_Dobrir"
 
 #: ../gedit/gedit-commands-file.c:558
-#, c-format
-msgid "The file \"%s\" is read-only."
-msgstr "Lo fichièr « %s » es en lectura sola."
+#, c-format, c-format
+#| msgid "The file \"%s\" is read-only."
+msgid "The file “%s” is read-only."
+msgstr "Lo fichièr « %s » es en lectura sola."
 
 #: ../gedit/gedit-commands-file.c:563
 msgid "Do you want to try to replace it with the one you are saving?"
-msgstr "Lo volètz remplaçar per lo qu'ensajatz d'enregistrar ?"
+msgstr "Lo volètz remplaçar per lo qu'ensajatz d'enregistrar ?"
 
 #: ../gedit/gedit-commands-file.c:568
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:4
@@ -851,51 +956,59 @@ msgid "Save the file as plain text?"
 msgstr "Enregistrar lo fichièr en tèxte brut ?"
 
 #: ../gedit/gedit-commands-file.c:625
-#, c-format
+#, c-format, c-format
+#| msgid ""
+#| "The file \"%s\" was previously saved as plain text and will now be saved "
+#| "using compression."
 msgid ""
-"The file \"%s\" was previously saved as plain text and will now be saved "
-"using compression."
+"The file “%s” was previously saved as plain text and will now be saved using "
+"compression."
 msgstr ""
-"Lo fichièr « %s » èra estat enregistrat precedentament en tèxte brut ; il "
-"serà maintenant enregistrat en utilizant la compression."
+"Lo fichièr « %s » èra estat precedentament enregistrat en tèxte brut ; serà "
+"ara enregistrat en utilizant la compression."
 
 #: ../gedit/gedit-commands-file.c:629
 msgid "_Save Using Compression"
 msgstr "Enregi_strar amb compression"
 
 #: ../gedit/gedit-commands-file.c:634
-#, c-format
+#, c-format, c-format
+#| msgid ""
+#| "The file \"%s\" was previously saved using compression and will now be "
+#| "saved as plain text."
 msgid ""
-"The file \"%s\" was previously saved using compression and will now be saved "
+"The file “%s” was previously saved using compression and will now be saved "
 "as plain text."
 msgstr ""
-"Lo fichièr « %s » èra estat enregistrat precedentament en utilizant la "
-"compression ; il serà maintenant enregistrat en tèxte brut."
+"Lo fichièr « %s » èra estat precedentament enregistrat en utilizant la "
+"compression ; serà ara enregistrat en tèxte brut."
 
 #: ../gedit/gedit-commands-file.c:637
 msgid "_Save As Plain Text"
-msgstr "Enregi_strer en tèxte brut"
+msgstr "Enregi_strar en tèxte brut"
 
 #: ../gedit/gedit-commands-file.c:752 ../gedit/gedit-commands-file.c:1019
-#, c-format
-msgid "Saving file '%s'…"
+#, c-format, c-format
+#| msgid "Saving file '%s'…"
+msgid "Saving file “%s”…"
 msgstr "Enregistrament del fichièr « %s »…"
 
 #. Translators: "Save As" is the title of the file chooser window.
 #: ../gedit/gedit-commands-file.c:847
-#| msgid "Save As"
 msgctxt "window title"
 msgid "Save As"
 msgstr "Enregistrar jos"
 
 #: ../gedit/gedit-commands-file.c:1429
-#, c-format
-msgid "Reverting the document '%s'…"
+#, c-format, c-format
+#| msgid "Reverting the document '%s'…"
+msgid "Reverting the document “%s”…"
 msgstr "Recuperacion del document « %s »…"
 
 #: ../gedit/gedit-commands-file.c:1476
-#, c-format
-msgid "Revert unsaved changes to document '%s'?"
+#, c-format, c-format
+#| msgid "Revert unsaved changes to document '%s'?"
+msgid "Revert unsaved changes to document “%s”?"
 msgstr "Anullar las modificacions non enregistradas del document « %s » ?"
 
 #: ../gedit/gedit-commands-file.c:1485
@@ -1015,8 +1128,9 @@ msgstr "Una ocurréncia trobada e remplaçada"
 #. Translators: %s is replaced by the text
 #. entered by the user in the search box
 #: ../gedit/gedit-commands-search.c:142
-#, c-format
-msgid "\"%s\" not found"
+#, c-format, c-format
+#| msgid "\"%s\" not found"
+msgid "“%s” not found"
 msgstr "« %s » es pas estat trobat"
 
 #: ../gedit/gedit-document.c:1103 ../gedit/gedit-document.c:1136
@@ -1041,8 +1155,9 @@ msgstr "Detectat automaticament"
 
 #: ../gedit/gedit-encodings-combo-box.c:328
 #: ../gedit/gedit-file-chooser-dialog-osx.c:574
-msgid "Add or Remove..."
-msgstr "Apondre o suprimir..."
+#| msgid "Add or Remove..."
+msgid "Add or Remove…"
+msgstr "Apondre o suprimir…"
 
 #: ../gedit/gedit-encoding-items.c:92
 #, c-format
@@ -1055,10 +1170,11 @@ msgid "%s (Current Locale)"
 msgstr "%s (Locala actuala)"
 
 #: ../gedit/gedit-encodings-dialog.c:190
-msgid "Do you really want to reset the character encodings' preferences?"
+#| msgid "Do you really want to reset the character encodings' preferences?"
+msgid "Do you really want to reset the character encodings’ preferences?"
 msgstr ""
-"Sètz segur que volètz reïnicializar las preferéncias d'encodatge de "
-"caractèrs ?"
+"Sètz segur que volètz reïnicializar las preferéncias de codatge de "
+"caractèrs ?"
 
 #. Reset button
 #: ../gedit/gedit-encodings-dialog.c:195 ../gedit/gedit-encodings-dialog.c:820
@@ -1107,55 +1223,56 @@ msgid "Line Ending:"
 msgstr "Fin de linha :"
 
 #: ../gedit/gedit-highlight-mode-selector.c:269 ../gedit/gedit-window.c:1245
-#: ../plugins/externaltools/tools/manager.py:108
-#: ../plugins/externaltools/tools/manager.py:317
-#: ../plugins/externaltools/tools/manager.py:433
-#: ../plugins/externaltools/tools/manager.py:767
+#: ../plugins/externaltools/tools/manager.py:115
+#: ../plugins/externaltools/tools/manager.py:324
+#: ../plugins/externaltools/tools/manager.py:440
+#: ../plugins/externaltools/tools/manager.py:774
 msgid "Plain Text"
 msgstr "Tèxte brut"
 
-#: ../gedit/gedit-io-error-info-bar.c:143
+#: ../gedit/gedit-io-error-info-bar.c:142
 #: ../gedit/gedit-io-error-info-bar.c:491
 msgid "_Retry"
 msgstr "_Ensajar tornamai"
 
-#: ../gedit/gedit-io-error-info-bar.c:163
+#: ../gedit/gedit-io-error-info-bar.c:162
 #, c-format
 msgid "Could not find the file “%s”."
 msgstr "Lo fichièr « %s » es introbable."
 
-#: ../gedit/gedit-io-error-info-bar.c:165
-#: ../gedit/gedit-io-error-info-bar.c:205
-#: ../gedit/gedit-io-error-info-bar.c:212
+#: ../gedit/gedit-io-error-info-bar.c:164
+#: ../gedit/gedit-io-error-info-bar.c:204
+#: ../gedit/gedit-io-error-info-bar.c:211
 msgid "Please check that you typed the location correctly and try again."
 msgstr ""
 "Verificatz qu'avètz picat corrèctament l'emplaçament e ensajatz tornamai."
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:184
+#: ../gedit/gedit-io-error-info-bar.c:183
 #, c-format
 msgid "Unable to handle “%s:” locations."
 msgstr "Impossible de prene en carga los protocòls « %s »."
 
-#: ../gedit/gedit-io-error-info-bar.c:190
+#: ../gedit/gedit-io-error-info-bar.c:189
 msgid "Unable to handle this location."
 msgstr "Impossible de prene en carga aqueste emplaçament."
 
-#: ../gedit/gedit-io-error-info-bar.c:199
+#: ../gedit/gedit-io-error-info-bar.c:198
 msgid "The location of the file cannot be accessed."
 msgstr "L'emplaçament del fichièr es inaccessible."
 
-#: ../gedit/gedit-io-error-info-bar.c:203
+#: ../gedit/gedit-io-error-info-bar.c:202
 #, c-format
 msgid "“%s” is a directory."
 msgstr "« %s » es un repertòri."
 
-#: ../gedit/gedit-io-error-info-bar.c:210
+#: ../gedit/gedit-io-error-info-bar.c:209
 #, c-format
 msgid "“%s” is not a valid location."
 msgstr "« %s » es pas un emplaçament valid."
 
-#: ../gedit/gedit-io-error-info-bar.c:246
+#. Translators: %s is a host name
+#: ../gedit/gedit-io-error-info-bar.c:245
 #, c-format
 msgid ""
 "Host “%s” could not be found. Please check that your proxy settings are "
@@ -1164,7 +1281,7 @@ msgstr ""
 "L'òste « %s » es introbable. Verificatz vòstres reglatges de proxy e tornatz "
 "ensajar."
 
-#: ../gedit/gedit-io-error-info-bar.c:261
+#: ../gedit/gedit-io-error-info-bar.c:260
 #, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
@@ -1173,82 +1290,82 @@ msgstr ""
 "Lo nom d'òste es invalid. Verificatz qu'avèz picat corrèctament son "
 "emplaçament e tornatz ensajar."
 
-#: ../gedit/gedit-io-error-info-bar.c:269
+#: ../gedit/gedit-io-error-info-bar.c:268
 #, c-format
 msgid "“%s” is not a regular file."
-msgstr "« %s » es pas un fichièr standard."
+msgstr "« %s » es pas un fichièr estandard."
 
-#: ../gedit/gedit-io-error-info-bar.c:274
+#: ../gedit/gedit-io-error-info-bar.c:273
 msgid "Connection timed out. Please try again."
 msgstr "Relambi de connexion depassat. Ensajatz tornamai."
 
-#: ../gedit/gedit-io-error-info-bar.c:307
+#: ../gedit/gedit-io-error-info-bar.c:306
 #, c-format
 msgid "Unexpected error: %s"
 msgstr "Error inesperada : %s"
 
-#: ../gedit/gedit-io-error-info-bar.c:343
+#: ../gedit/gedit-io-error-info-bar.c:342
 msgid "Cannot find the requested file. Perhaps it has recently been deleted."
 msgstr ""
 "Impossible de trobar lo fichièr demandat. Es possible que siá estat escafat "
 "recentament."
 
-#: ../gedit/gedit-io-error-info-bar.c:353
+#: ../gedit/gedit-io-error-info-bar.c:352
 #, c-format
 msgid "Could not revert the file “%s”."
 msgstr "Impossible de recuperar lo fichièr « %s »."
 
-#: ../gedit/gedit-io-error-info-bar.c:380
+#: ../gedit/gedit-io-error-info-bar.c:379
 msgid "Ch_aracter Encoding:"
 msgstr "_Encodatge de caractèrs :"
 
-#: ../gedit/gedit-io-error-info-bar.c:441
+#: ../gedit/gedit-io-error-info-bar.c:440
 #, c-format
 msgid "The location “%s” is not currently reachable."
 msgstr "L'emplaçament « %s » es pas atenhible actualament."
 
-#: ../gedit/gedit-io-error-info-bar.c:456
+#: ../gedit/gedit-io-error-info-bar.c:455
 msgid "Your system is offline. Check your network."
 msgstr "Vòstre sistèma es fòra linha. Verificatz vòstra connexion ret."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
 #: ../gedit/gedit-io-error-info-bar.c:499
-#: ../gedit/gedit-io-error-info-bar.c:768
+#: ../gedit/gedit-io-error-info-bar.c:764
 msgid "Edit Any_way"
-msgstr "Ou_vrir quand même"
+msgstr "Do_brir malgrat tot"
 
-#: ../gedit/gedit-io-error-info-bar.c:591
+#: ../gedit/gedit-io-error-info-bar.c:587
 msgid ""
 "The number of followed links is limited and the actual file could not be "
 "found within this limit."
 msgstr ""
-"Lo nombre de liens consécutifs es limitat e lo fichièr réel ne pòt èsser "
-"trobat compte tenu d'aquesta limite."
+"Lo nombre de ligams consecutius es limitat e lo fichièr réel pòt pas èsser "
+"trobat compte tengut d'aqueste limit."
 
-#: ../gedit/gedit-io-error-info-bar.c:595
+#: ../gedit/gedit-io-error-info-bar.c:591
 msgid "You do not have the permissions necessary to open the file."
 msgstr "Avètz pas los dreits necessaris a la dobertura del fichièr."
 
-#: ../gedit/gedit-io-error-info-bar.c:601
+#: ../gedit/gedit-io-error-info-bar.c:597
 msgid "Unable to detect the character encoding."
 msgstr "Impossible de detectar l'encodatge de caractèrs."
 
-#: ../gedit/gedit-io-error-info-bar.c:602
-#: ../gedit/gedit-io-error-info-bar.c:626
+#: ../gedit/gedit-io-error-info-bar.c:598
+#: ../gedit/gedit-io-error-info-bar.c:622
 msgid "Please check that you are not trying to open a binary file."
 msgstr "Verificatz qu'ensajatz pas de dobrir un fichièr binari."
 
-#: ../gedit/gedit-io-error-info-bar.c:603
+#: ../gedit/gedit-io-error-info-bar.c:599
 msgid "Select a character encoding from the menu and try again."
 msgstr "Seleccionatz un encodatge de caractèrs dins lo menú e tornatz ensajar."
 
-#: ../gedit/gedit-io-error-info-bar.c:609
+#: ../gedit/gedit-io-error-info-bar.c:605
 #, c-format
 msgid "There was a problem opening the file “%s”."
-msgstr "Un problèma es apparu al moment de la dobertura del fichièr « %s »."
+msgstr "Un problèma es aparegut al moment de la dobertura del fichièr « %s »."
 
-#: ../gedit/gedit-io-error-info-bar.c:611
+#: ../gedit/gedit-io-error-info-bar.c:607
 msgid ""
 "The file you opened has some invalid characters. If you continue editing "
 "this file you could corrupt this document."
@@ -1256,101 +1373,103 @@ msgstr ""
 "Lo fichièr qu'avètz dobèrt conten de caractèrs pas valids. Se contunhatz "
 "l'edicion del fichièr, poiriatz damatjar aqueste document."
 
-#: ../gedit/gedit-io-error-info-bar.c:614
+#: ../gedit/gedit-io-error-info-bar.c:610
 msgid "You can also choose another character encoding and try again."
 msgstr ""
 "Podètz tanben causir un autre encodatge de caractèrs e ensajar tornamai."
 
-#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:619
 #, c-format
 msgid "Could not open the file “%s” using the “%s” character encoding."
 msgstr ""
 "Impossible de dobrir lo fichièr « %s » amb l'encodatge de caractèrs « %s »."
 
-#: ../gedit/gedit-io-error-info-bar.c:627
-#: ../gedit/gedit-io-error-info-bar.c:702
+#: ../gedit/gedit-io-error-info-bar.c:623
+#: ../gedit/gedit-io-error-info-bar.c:698
 msgid "Select a different character encoding from the menu and try again."
 msgstr ""
 "Seleccionatz un encodatge de caractèrs diferent dins lo menú e tornatz "
 "ensajar."
 
-#: ../gedit/gedit-io-error-info-bar.c:639
+#: ../gedit/gedit-io-error-info-bar.c:635
 #, c-format
 msgid "Could not open the file “%s”."
 msgstr "Impossible de dobrir lo fichièr « %s »."
 
-#: ../gedit/gedit-io-error-info-bar.c:697
+#: ../gedit/gedit-io-error-info-bar.c:693
 #, c-format
 msgid "Could not save the file “%s” using the “%s” character encoding."
 msgstr ""
 "Impossible d'enregistrar lo fichièr « %s » amb l'encodatge de caractèrs « %s "
 "»."
 
-#: ../gedit/gedit-io-error-info-bar.c:700
+#: ../gedit/gedit-io-error-info-bar.c:696
 msgid ""
 "The document contains one or more characters that cannot be encoded using "
 "the specified character encoding."
 msgstr ""
-"Lo document conten un o plusieurs caractèrs que pòdon pas èsser representats "
+"Lo document conten un o mantun caractèr que pòdon pas èsser representats "
 "en utilizant l'encodatge de caractèrs indicat."
 
 #. Translators: the access key chosen for this string should be
 #. different from other main menu access keys (Open, Edit, View...)
-#: ../gedit/gedit-io-error-info-bar.c:773
-msgid "D_on't Edit"
-msgstr "Ne _pas editar"
+#: ../gedit/gedit-io-error-info-bar.c:769
+#| msgid "D_on't Edit"
+msgid "D_on’t Edit"
+msgstr "Editar _pas"
 
-#: ../gedit/gedit-io-error-info-bar.c:783
+#: ../gedit/gedit-io-error-info-bar.c:779
 #, c-format
 msgid "This file “%s” is already open in another window."
 msgstr "Aqueste fichièr « %s » es ja dobèrt dins una autra fenèstra."
 
-#: ../gedit/gedit-io-error-info-bar.c:797
+#: ../gedit/gedit-io-error-info-bar.c:793
 msgid "Do you want to edit it anyway?"
 msgstr "Lo volètz dobrir malgrat tot ?"
 
-#: ../gedit/gedit-io-error-info-bar.c:853
-#: ../gedit/gedit-io-error-info-bar.c:943
-#: ../gedit/gedit-io-error-info-bar.c:1235
+#: ../gedit/gedit-io-error-info-bar.c:849
+#: ../gedit/gedit-io-error-info-bar.c:939
+#: ../gedit/gedit-io-error-info-bar.c:1229
 msgid "S_ave Anyway"
 msgstr "_Enregistrar malgrat tot"
 
-#: ../gedit/gedit-io-error-info-bar.c:856
-#: ../gedit/gedit-io-error-info-bar.c:946
-#: ../gedit/gedit-io-error-info-bar.c:1238
-msgid "D_on't Save"
+#: ../gedit/gedit-io-error-info-bar.c:852
+#: ../gedit/gedit-io-error-info-bar.c:942
+#: ../gedit/gedit-io-error-info-bar.c:1232
+#| msgid "D_on't Save"
+msgid "D_on’t Save"
 msgstr "Enregistrar _pas"
 
 #. FIXME: review this message, it's not clear since for the user the "modification"
 #. * could be interpreted as the changes he made in the document. beside "reading" is
 #. * not accurate (since last load/save)
 #.
-#: ../gedit/gedit-io-error-info-bar.c:870
+#: ../gedit/gedit-io-error-info-bar.c:866
 #, c-format
 msgid "The file “%s” has been modified since reading it."
 msgstr "Lo fichièr « %s » es estat modificat dempuèi sa darrièra lectura."
 
-#: ../gedit/gedit-io-error-info-bar.c:885
+#: ../gedit/gedit-io-error-info-bar.c:881
 msgid "If you save it, all the external changes could be lost. Save it anyway?"
 msgstr ""
 "Se l'enregistratz, totas las modificacions extèrnes poirián èsser perdudas. "
 "Volètz enregistrar malgrat tot ?"
 
-#: ../gedit/gedit-io-error-info-bar.c:965
+#: ../gedit/gedit-io-error-info-bar.c:961
 #, c-format
 msgid "Could not create a backup file while saving “%s”"
 msgstr ""
 "Impossible de crear un fichièr de salvament al moment de l'enregistrament de "
 "« %s »"
 
-#: ../gedit/gedit-io-error-info-bar.c:970
+#: ../gedit/gedit-io-error-info-bar.c:966
 #, c-format
 msgid "Could not create a temporary backup file while saving “%s”"
 msgstr ""
 "Impossible de crear un fichièr de salvament temporari al moment de "
 "l'enregistrament de « %s »"
 
-#: ../gedit/gedit-io-error-info-bar.c:987
+#: ../gedit/gedit-io-error-info-bar.c:983
 msgid ""
 "Could not back up the old copy of the file before saving the new one. You "
 "can ignore this warning and save the file anyway, but if an error occurs "
@@ -1362,7 +1481,7 @@ msgstr ""
 "poiriatz pèrdre l'anciana còpia del fichièr. Volètz enregistrar malgrat tot ?"
 
 #. Translators: %s is a URI scheme (like for example http:, ftp:, etc.)
-#: ../gedit/gedit-io-error-info-bar.c:1047
+#: ../gedit/gedit-io-error-info-bar.c:1043
 #, c-format
 msgid ""
 "Cannot handle “%s:” locations in write mode. Please check that you typed the "
@@ -1371,7 +1490,7 @@ msgstr ""
 "Impossible de gerir los protocòls « %s » en mòde escritura. Verificatz "
 "l'ortografia de vòstre emplaçament e tornatz ensajar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1055
+#: ../gedit/gedit-io-error-info-bar.c:1051
 msgid ""
 "Cannot handle this location in write mode. Please check that you typed the "
 "location correctly and try again."
@@ -1379,7 +1498,7 @@ msgstr ""
 "Impossible de gerir aqueste protocòl en mòde escritura. Verificatz "
 "l'ortografia de vòstre emplaçament e tornatz ensajar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1064
+#: ../gedit/gedit-io-error-info-bar.c:1060
 #, c-format
 msgid ""
 "“%s” is not a valid location. Please check that you typed the location "
@@ -1388,7 +1507,7 @@ msgstr ""
 "« %s » es pas un emplaçament valid. Verificatz l'ortografia de vòstre "
 "emplaçament e tornatz ensajar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1071
+#: ../gedit/gedit-io-error-info-bar.c:1067
 msgid ""
 "You do not have the permissions necessary to save the file. Please check "
 "that you typed the location correctly and try again."
@@ -1396,7 +1515,7 @@ msgstr ""
 "Avètz pas las permissions necessàrias per enregistrar aqueste fichièr. "
 "Verificatz l'ortografia de vòstre emplaçament e tornatz ensajar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1077
+#: ../gedit/gedit-io-error-info-bar.c:1073
 msgid ""
 "There is not enough disk space to save the file. Please free some disk space "
 "and try again."
@@ -1404,7 +1523,7 @@ msgstr ""
 "I a pas pro d'espaci de disc per enregistrar lo fichièr. Liberatz de "
 "l'espaci de disc e tornatz ensajar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1082
+#: ../gedit/gedit-io-error-info-bar.c:1078
 msgid ""
 "You are trying to save the file on a read-only disk. Please check that you "
 "typed the location correctly and try again."
@@ -1412,11 +1531,11 @@ msgstr ""
 "Ensajatz d'enregistrar lo fichièr cap a un disc en lectura sola. Verificatz "
 "qu'avètz picat l'emplaçament corrèctament e tornatz ensajar."
 
-#: ../gedit/gedit-io-error-info-bar.c:1088
+#: ../gedit/gedit-io-error-info-bar.c:1084
 msgid "A file with the same name already exists. Please use a different name."
 msgstr "Un fichièr amb lo meteis nom existís ja. Utilizatz un autre nom."
 
-#: ../gedit/gedit-io-error-info-bar.c:1093
+#: ../gedit/gedit-io-error-info-bar.c:1089
 msgid ""
 "The disk where you are trying to save the file has a limitation on length of "
 "the file names. Please use a shorter name."
@@ -1424,7 +1543,7 @@ msgstr ""
 "Lo disc sul qual ensajatz d'enregistrar vòstre fichièr limita la talha dels "
 "noms de fichièrs. Utilizatz un nom mai cort."
 
-#: ../gedit/gedit-io-error-info-bar.c:1104
+#: ../gedit/gedit-io-error-info-bar.c:1100
 msgid ""
 "The disk where you are trying to save the file has a limitation on file "
 "sizes. Please try saving a smaller file or saving it to a disk that does not "
@@ -1434,39 +1553,35 @@ msgstr ""
 "fichièrs. Ensajatz d'enregistrar un fichièr mai pichon o d'enregistrar aquel "
 "fichièr sus un disc qu'aja pas de limitacion."
 
-#: ../gedit/gedit-io-error-info-bar.c:1121
+#: ../gedit/gedit-io-error-info-bar.c:1117
 #, c-format
 msgid "Could not save the file “%s”."
 msgstr "Impossible d'enregistrar lo fichièr « %s »."
 
-#: ../gedit/gedit-io-error-info-bar.c:1161
+#: ../gedit/gedit-io-error-info-bar.c:1157
 #, c-format
 msgid "The file “%s” changed on disk."
 msgstr "Lo fichièr « %s » es estat modificat sul disc."
 
-#: ../gedit/gedit-io-error-info-bar.c:1172
+#: ../gedit/gedit-io-error-info-bar.c:1168
 msgid "Drop Changes and _Reload"
 msgstr "Arrestar las modificacions e _recargar"
 
-#: ../gedit/gedit-io-error-info-bar.c:1182
+#: ../gedit/gedit-io-error-info-bar.c:1178
 #: ../gedit/resources/gtk/menus-common.ui.h:21
 #: ../gedit/resources/gtk/menus.ui.h:7
 #: ../gedit/resources/gtk/menus-traditional.ui.h:1
 msgid "_Reload"
 msgstr "_Actualizar"
 
-#: ../gedit/gedit-io-error-info-bar.c:1187
-msgid "_Ignore"
-msgstr "_Ignorar"
-
-#: ../gedit/gedit-io-error-info-bar.c:1248
+#: ../gedit/gedit-io-error-info-bar.c:1242
 #, c-format
 msgid "Some invalid chars have been detected while saving “%s”"
 msgstr ""
 "De caractèrs pas valids son estats detectats al moment de l'enregistrament "
 "de « %s »"
 
-#: ../gedit/gedit-io-error-info-bar.c:1264
+#: ../gedit/gedit-io-error-info-bar.c:1258
 msgid ""
 "If you continue saving this file you can corrupt the document.  Save anyway?"
 msgstr ""
@@ -1480,18 +1595,20 @@ msgstr "Clicatz sus aqueste boton per causir la poliça d'utilizar per l'editor"
 #: ../gedit/gedit-preferences-dialog.c:461
 #, c-format
 msgid "_Use the system fixed width font (%s)"
-msgstr "_Utilizar la poliça sistèma a chasse fixe (%s)"
+msgstr "_Utilizar la poliça sistèma de chassa fixa (%s)"
 
 #: ../gedit/gedit-preferences-dialog.c:601
-#, c-format
-msgid "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+#, c-format, c-format
+#| msgid ""
+#| "Directory '%s' could not be created: g_mkdir_with_parents() failed: %s"
+msgid "Directory “%s” could not be created: g_mkdir_with_parents() failed: %s"
 msgstr ""
-"Impossible de crear lo repertòri « %s » : g_mkdir_with_parents() a échoué : "
+"Impossible de crear lo repertòri « %s » : g_mkdir_with_parents() a fracassat : "
 "%s"
 
 #: ../gedit/gedit-preferences-dialog.c:798
 msgid "The selected color scheme cannot be installed."
-msgstr "Lo jòc de colors seleccionat ne pòt pas èsser installé."
+msgstr "Lo jòc de colors seleccionat pòt pas èsser installat."
 
 #: ../gedit/gedit-preferences-dialog.c:821
 msgid "Add Scheme"
@@ -1506,27 +1623,33 @@ msgid "Color Scheme Files"
 msgstr "Fichièrs de jòcs de colors"
 
 #: ../gedit/gedit-preferences-dialog.c:861
-#, c-format
-msgid "Could not remove color scheme \"%s\"."
+#, c-format, c-format
+#| msgid "Could not remove color scheme \"%s\"."
+msgid "Could not remove color scheme “%s”."
 msgstr "Impossible de suprimir lo jòc de colors « %s »."
 
 #: ../gedit/gedit-print-job.c:227
-msgid "Preparing..."
-msgstr "Preparacion..."
+#| msgid "Preparing..."
+msgid "Preparing…"
+msgstr "Preparacion…"
 
 #: ../gedit/gedit-print-job.c:539
 #, c-format
 msgid "File: %s"
-msgstr "Fichièr : %s"
+msgstr "Fichièr : %s"
 
+#. Translators: %N is the current page number, %Q is the total
+#. * number of pages (ex. Page 2 of 10)
+#.
 #: ../gedit/gedit-print-job.c:548
 msgid "Page %N of %Q"
 msgstr "Pagina %N sus %Q"
 
 #: ../gedit/gedit-print-job.c:626
-#, c-format
-msgid "Rendering page %d of %d..."
-msgstr "Rendu de la pagina %d sus %d en cours..."
+#, c-format, c-format
+#| msgid "Rendering page %d of %d..."
+msgid "Rendering page %d of %d…"
+msgstr "Rendut de la pagina %d sus %d en cors…"
 
 #: ../gedit/gedit-print-preview.c:653
 #, c-format
@@ -1612,11 +1735,11 @@ msgstr "Error al moment de l'enregistrament del fichièr %s"
 
 #: ../gedit/gedit-tab.c:1570
 msgid "Name:"
-msgstr "Nom :"
+msgstr "Nom :"
 
 #: ../gedit/gedit-tab.c:1571
 msgid "MIME Type:"
-msgstr "Tipe MIME :"
+msgstr "Tipe MIME :"
 
 #: ../gedit/gedit-tab.c:1572
 msgid "Encoding:"
@@ -1624,7 +1747,7 @@ msgstr "Encodatge :"
 
 #: ../gedit/gedit-utils.c:841
 msgid "Please check your installation."
-msgstr "Verificatz vòstra installation."
+msgstr "Verificatz vòstra installacion."
 
 #: ../gedit/gedit-utils.c:902
 #, c-format
@@ -1632,9 +1755,10 @@ msgid "Unable to open UI file %s. Error: %s"
 msgstr "Impossible de dobrir lo fichièr d'interfàcia %s. Error : %s"
 
 #: ../gedit/gedit-utils.c:921
-#, c-format
-msgid "Unable to find the object '%s' inside file %s."
-msgstr "Impossible de trobar l'objècte « %s » dins lo fichièr %s."
+#, c-format, c-format
+#| msgid "Unable to find the object '%s' inside file %s."
+msgid "Unable to find the object “%s” inside file %s."
+msgstr "Impossible de trobar l’objècte « %s » dins lo fichièr %s."
 
 #. Translators: '/ on <remote-share>'
 #: ../gedit/gedit-utils.c:1159
@@ -1663,42 +1787,42 @@ msgstr "Afichar los _numèros de linha"
 #. * occurrence, and the second %d is the total number of search
 #. * occurrences.
 #.
-#: ../gedit/gedit-view-frame.c:671
+#: ../gedit/gedit-view-frame.c:674
 #, c-format
 msgid "%d of %d"
 msgstr "%d sus %d"
 
 #. create "Wrap Around" menu item.
-#: ../gedit/gedit-view-frame.c:763
+#: ../gedit/gedit-view-frame.c:766
 msgid "_Wrap Around"
 msgstr "_Recèrca circulara"
 
 #. create "Match as Regular Expression" menu item.
-#: ../gedit/gedit-view-frame.c:773
+#: ../gedit/gedit-view-frame.c:776
 msgid "Match as _Regular Expression"
 msgstr "Expression _regulara"
 
 #. create "Match Entire Word Only" menu item.
-#: ../gedit/gedit-view-frame.c:787
+#: ../gedit/gedit-view-frame.c:790
 msgid "Match _Entire Word Only"
 msgstr "_Mots entièrs solament"
 
 #. create "Match Case" menu item.
-#: ../gedit/gedit-view-frame.c:801
+#: ../gedit/gedit-view-frame.c:804
 msgid "_Match Case"
 msgstr "Res_pectar la cassa"
 
-#: ../gedit/gedit-view-frame.c:1023
+#: ../gedit/gedit-view-frame.c:1026
 msgid "String you want to search for"
 msgstr "Cadena que recercatz"
 
-#: ../gedit/gedit-view-frame.c:1035
+#: ../gedit/gedit-view-frame.c:1038
 msgid "Line you want to move the cursor to"
 msgstr "La linha cap a la quala volètz desplaçar lo cursor"
 
 #: ../gedit/gedit-window.c:998
 msgid "Bracket match is out of range"
-msgstr "La correspondance de las parentèsis es hors de portée"
+msgstr "La correspondéncia de las parentèsis es hors de portée"
 
 #: ../gedit/gedit-window.c:1003
 msgid "Bracket match not found"
@@ -1780,7 +1904,7 @@ msgstr "Suslinhar la linha actuala"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:11
 msgid "Text wrapping"
-msgstr "Longas linhas"
+msgstr "Linhas longas"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:12
 msgid "_File"
@@ -1845,15 +1969,15 @@ msgid "_Paste"
 msgstr "_Pegar"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:915
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:953
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
 msgstr "_Suprimir"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:31
 msgid "Overwrite _Mode"
-msgstr "_Mòde écrasement"
+msgstr "_Mòde espotiment"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:32
 msgid "Select _All"
@@ -1866,6 +1990,7 @@ msgid "_Preferences"
 msgstr "_Preferéncias"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:34
+#: ../gedit/resources/gtk/menus.ui.h:16
 msgid "_View"
 msgstr "_Afichatge"
 
@@ -1926,6 +2051,7 @@ msgid "Go to _Line…"
 msgstr "Aller a la _linha…"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:46
+#: ../gedit/resources/gtk/menus.ui.h:20
 msgid "_Tools"
 msgstr "_Aisinas"
 
@@ -1945,7 +2071,7 @@ msgstr "Tot _fermer"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:50
 msgid "_New Tab Group"
-msgstr "_Novèl groupe d'onglets"
+msgstr "_Novèl grop d'onglets"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:51
 msgid "P_revious Tab Group"
@@ -1953,7 +2079,7 @@ msgstr "Grop d'onglets p_recedent"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:52
 msgid "Nex_t Tab Group"
-msgstr "Grop d'onglets sui_vant"
+msgstr "Grop d'onglets seg_uent"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:53
 msgid "_Previous Document"
@@ -1984,7 +2110,7 @@ msgstr "A _prepaus"
 #: ../gedit/resources/gtk/menus.ui.h:3
 #: ../gedit/resources/gtk/menus-traditional.ui.h:16
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "Acorchis de _clavièr"
 
 #: ../gedit/resources/gtk/menus.ui.h:11
 #: ../gedit/resources/gtk/menus-traditional.ui.h:5
@@ -2001,13 +2127,11 @@ msgstr "_Recercar e remplaçar…"
 msgid "_Go to Line…"
 msgstr "Anar a la _linha…"
 
-#: ../gedit/resources/gtk/menus.ui.h:16
 #: ../gedit/resources/gtk/menus-traditional.ui.h:10
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:13
 msgid "View"
 msgstr "Afichatge"
 
-#: ../gedit/resources/gtk/menus.ui.h:20
 #: ../gedit/resources/gtk/menus-traditional.ui.h:14
 msgid "Tools"
 msgstr "Aisinas"
@@ -2045,8 +2169,9 @@ msgid "_Select"
 msgstr "_Seleccionar"
 
 #: ../gedit/resources/ui/gedit-highlight-mode-selector.ui.h:1
-msgid "Search highlight mode..."
-msgstr "Recèrca del mòde de coloracion..."
+#| msgid "Search highlight mode..."
+msgid "Search highlight mode…"
+msgstr "Recèrca del mòde de coloracion…"
 
 #: ../gedit/resources/ui/gedit-open-document-selector.ui.h:1
 msgid "No results"
@@ -2074,7 +2199,7 @@ msgstr "Barre d'es_tat"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:5
 msgid "Display _overview map"
-msgstr "Afichar la mapa de la  _vista d'ensemble"
+msgstr "Afichar la mapa de la _vista d'ensemble"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:6
 msgid "Display _grid pattern"
@@ -2151,7 +2276,7 @@ msgstr "Poliça"
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:24
 msgid "Editor _font: "
-msgstr "_Poliça de l'editor : "
+msgstr "_Poliça de l'editor : "
 
 #: ../gedit/resources/ui/gedit-preferences-dialog.ui.h:25
 msgid "Pick the editor font"
@@ -2191,7 +2316,7 @@ msgstr "Coloracion sintaxica"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:2
 msgid "Print synta_x highlighting"
-msgstr "Imprimir la coloracion synta_xique"
+msgstr "Imprimir la coloracion sinta_xica"
 
 #: ../gedit/resources/ui/gedit-print-preferences.ui.h:3
 msgid "Line Numbers"
@@ -2286,7 +2411,7 @@ msgstr "Zoom arrièr sus la pagina"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:13
 msgid "Close print preview"
-msgstr "Tampar l'apercebut avant impression"
+msgstr "Tampar l'apercebut abans impression"
 
 #: ../gedit/resources/ui/gedit-print-preview.ui.h:14
 msgid "_Close Preview"
@@ -2335,151 +2460,130 @@ msgid "Search _backwards"
 msgstr "Recercar en _arrièr"
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:12
-#, fuzzy
 #| msgid "_Wrap around"
 msgid "Wra_p around"
 msgstr "Recèrca _circulara"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:1
-#, fuzzy
 #| msgid "Documents"
 msgctxt "shortcut window"
 msgid "Documents"
 msgstr "Documents"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
-#, fuzzy
 #| msgid "Create a new document"
 msgctxt "shortcut window"
 msgid "Create a new document in a tab"
-msgstr "Crèa un novèl document"
+msgstr "Crear un novèl document dins un onglet"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
-#, fuzzy
 #| msgid "Open a New Document"
 msgctxt "shortcut window"
 msgid "Open a document"
-msgstr "Dobrir un novèl document"
+msgstr "Dobrir un document"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
-#, fuzzy
 #| msgid "Save the current file"
 msgctxt "shortcut window"
 msgid "Save the document"
-msgstr "Enregistrar lo fichièr actual"
+msgstr "Enregistrar lo document"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
-#, fuzzy
 #| msgid "Save the current file with a different name"
 msgctxt "shortcut window"
 msgid "Save the document with a new filename"
-msgstr "Enregistra lo fichièr actual jos un autre nom"
+msgstr "Enregistrar lo document jos un nom de fichièr"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
-#, fuzzy
 #| msgid "Create a new document"
 msgctxt "shortcut window"
 msgid "Save all the documents"
-msgstr "Crèa un novèl document"
+msgstr "Enregistrar totes los documents"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
-#, fuzzy
 #| msgid "Close document"
 msgctxt "shortcut window"
 msgid "Close the document"
 msgstr "Tampar lo document"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
-#, fuzzy
 #| msgid "Close document"
 msgctxt "shortcut window"
 msgid "Close all the documents"
-msgstr "Tampar lo document"
+msgstr "Tampar totes los documents"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
-#, fuzzy
 #| msgid "Select the entire document"
 msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
-msgstr "Selecciona lo document entièr"
+msgstr "Redobrir lo darrièr document tampat"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
-#, fuzzy
 #| msgid "Switch to the next tab group"
 msgctxt "shortcut window"
 msgid "Switch to the next document"
-msgstr "Bascular al grop d'onglets seguent"
+msgstr "Passar al document seguent"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
-#, fuzzy
 #| msgid "Switch to the previous tab group"
 msgctxt "shortcut window"
 msgid "Switch to the previous document"
-msgstr "Bascular al grop d'onglets precedent"
+msgstr "Tornar al document precedent"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
-#, fuzzy
 #| msgid "Switch to the next tab group"
 msgctxt "shortcut window"
-msgid "Switch to the first - ninth document"
-msgstr "Bascular al grop d'onglets seguent"
+msgid "Switch to the first — ninth document"
+msgstr "Passar al primièr — noven document"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
 msgctxt "shortcut window"
 msgid "Windows and Panels"
-msgstr ""
+msgstr "Fenèstras e panèls"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
-#, fuzzy
 #| msgid "Create a new document"
 msgctxt "shortcut window"
 msgid "Create a new document in a window"
-msgstr "Crèa un novèl document"
+msgstr "Crear un novèl document dins una fenèstra"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
-#, fuzzy
 #| msgid "Create a new tab group"
 msgctxt "shortcut window"
 msgid "Create a new tab group"
-msgstr "Crèa un grop d'onglets novèl"
+msgstr "Crear un novèl grop d’onglets"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
-#, fuzzy
 #| msgid "Hide panel"
 msgctxt "shortcut window"
 msgid "Show side panel"
-msgstr "Masquer lo panèl"
+msgstr "Afichar lo panèl lateral"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
-#, fuzzy
 #| msgid "_Bottom Panel"
 msgctxt "shortcut window"
 msgid "Show bottom panel"
-msgstr "Panèl _inferior"
+msgstr "Afichar lo panèl inferior"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
-#, fuzzy
 #| msgid "_Fullscreen"
 msgctxt "shortcut window"
 msgid "Fullscreen on / off"
-msgstr "_Ecran complet"
+msgstr "Activar/desactivar lo mòde ecran complet"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
-#, fuzzy
 #| msgid "About this application"
 msgctxt "shortcut window"
 msgid "Quit the application"
-msgstr "A prepaus d'aquesta aplicacion"
+msgstr "Quitar l’aplicacion"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
-#, fuzzy
 #| msgid "Find and Replace"
 msgctxt "shortcut window"
 msgid "Find and Replace"
 msgstr "Recercar e remplaçar"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
-#, fuzzy
 #| msgid "Find"
 msgctxt "shortcut window"
 msgid "Find"
@@ -2488,198 +2592,175 @@ msgstr "Recercar"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
 msgctxt "shortcut window"
 msgid "Find the next match"
-msgstr ""
+msgstr "Recercar la correspondéncia seguenta"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
-#, fuzzy
 #| msgid "Show the previous page"
 msgctxt "shortcut window"
 msgid "Find the previous match"
-msgstr "Afichar la pagina precedenta"
+msgstr "Recercar la correspondéncia precedenta"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
-#, fuzzy
 #| msgid "_Clear Highlight"
 msgctxt "shortcut window"
 msgid "Clear highlight"
-msgstr "Suprimir la _coloracion"
+msgstr "Suprimir la coloracion"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
-#, fuzzy
 #| msgid "_Go to Line…"
 msgctxt "shortcut window"
 msgid "Go to line"
-msgstr "Anar a la _linha…"
+msgstr "Anar a la linha"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
 msgctxt "shortcut window"
 msgid "Copy and Paste"
-msgstr ""
+msgstr "Copiar e pegar"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
-#, fuzzy
 #| msgid "Change selected text to lower case"
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
-msgstr "Càmbia lo tèxte seleccionat en minuscula"
+msgstr "Copiar lo tèxte seleccionat dins lo quichapapièr"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
-#, fuzzy
 #| msgid "Change selected text to lower case"
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
-msgstr "Càmbia lo tèxte seleccionat en minuscula"
+msgstr "Talhar lo tèxte seleccionat dins lo quichapapièr"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
-#, fuzzy
 #| msgid "Paste the clipboard"
 msgctxt "shortcut window"
 msgid "Paste text from clipboard"
-msgstr "Empega lo contengut del quichapapièr"
+msgstr "Pegar lo tèxte seleccionat dempuèi lo quichapapièr"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
-#, fuzzy
 #| msgid "Find and Replace"
 msgctxt "shortcut window"
 msgid "Undo and Redo"
-msgstr "Recercar e remplaçar"
+msgstr "Anullar e restablir"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
 msgctxt "shortcut window"
 msgid "Undo previous command"
-msgstr ""
+msgstr "Anullar la comanda precedenta"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
-#, fuzzy
 #| msgid "Run command"
 msgctxt "shortcut window"
 msgid "Redo previous command"
-msgstr "Executar la comanda"
+msgstr "Restablir la comanda precedenta"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
-#, fuzzy
 #| msgid "Selection"
 msgctxt "shortcut window"
 msgid "Selection"
 msgstr "Seleccion"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
-#, fuzzy
 #| msgid "Select _All"
 msgctxt "shortcut window"
 msgid "Select all text"
-msgstr "Seleccionar _tot"
+msgstr "Seleccionar tot lo tèxte"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
-#, fuzzy
 #| msgid "Edit"
 msgctxt "shortcut window"
 msgid "Editing"
-msgstr "Edicion"
+msgstr "Modificacion"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
 msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
-msgstr ""
+msgstr "Bascular inserir/espotir"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
-#, fuzzy
 #| msgid "Highlight current line"
 msgctxt "shortcut window"
 msgid "Delete current line"
-msgstr "Suslinhar la linha actuala"
+msgstr "Suprimir la linha actuala"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
-#, fuzzy
 #| msgid "Export selected snippets"
 msgctxt "shortcut window"
 msgid "Join selected lines"
-msgstr "Expòrta los fragments de còdi seleccionats"
+msgstr "Jónher las linhas seleccionadas"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
-#, fuzzy
 #| msgid "Current line"
 msgctxt "shortcut window"
 msgid "Move current line up"
-msgstr "Linha actuala"
+msgstr "Remontar la linha actuala"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
-#, fuzzy
 #| msgid "Current line"
 msgctxt "shortcut window"
 msgid "Move current line down"
-msgstr "Linha actuala"
+msgstr "Davalar la linha actuala"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
-#, fuzzy
 #| msgid "Current word"
 msgctxt "shortcut window"
 msgid "Move current word left"
-msgstr "Mot actual"
+msgstr "Desplaçar lo mot actual cap a esquèrra"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
-#, fuzzy
 #| msgid "Current word"
 msgctxt "shortcut window"
 msgid "Move current word right"
-msgstr "Mot actual"
+msgstr "Desplaçar lo mot actual cap a dreita"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
-#, fuzzy
 #| msgid "Change selected text to upper case"
 msgctxt "shortcut window"
 msgid "Convert to uppercase"
-msgstr "Càmbia lo tèxte seleccionat en majuscula"
+msgstr "Convertir en majusculas"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
-#, fuzzy
 #| msgid "Change selected text to lower case"
 msgctxt "shortcut window"
 msgid "Convert to lowercase"
-msgstr "Càmbia lo tèxte seleccionat en minuscula"
+msgstr "Convertir en minusculas"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
-#, fuzzy
 #| msgid "_Invert Case"
 msgctxt "shortcut window"
 msgid "Invert case"
-msgstr "_Inversar la cassa"
+msgstr "Inversar la cassa"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
 msgctxt "shortcut window"
 msgid "Increment number at cursor"
-msgstr ""
+msgstr "Incrementar lo nombre amb lo cursor"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
 msgctxt "shortcut window"
 msgid "Decrement number at cursor"
-msgstr ""
+msgstr "Descrementar lo nombre amb lo cursor"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
-#, fuzzy
 #| msgid "Tools"
 msgctxt "shortcut window"
 msgid "Tools"
 msgstr "Aisinas"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
-#, fuzzy
 #| msgid "Check spelling"
 msgctxt "shortcut window"
 msgid "Check spelling"
-msgstr "Verificar l'ortografia"
+msgstr "Verificar l’ortografia"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
-#, fuzzy
 #| msgid "Print the current page"
 msgctxt "shortcut window"
 msgid "Print the document"
-msgstr "Imprimís la pagina actuala"
+msgstr "Imprimir lo document"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
 msgctxt "shortcut window"
 msgid "Show completion window"
-msgstr ""
+msgstr "Afichar la fenèstra de complecion"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
@@ -2711,7 +2792,7 @@ msgstr "Enregistrar"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:10
 msgid "Hide panel"
-msgstr "Masquer lo panèl"
+msgstr "Amagar lo panèl"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:11
 msgid "Open a file dialog"
@@ -2719,11 +2800,11 @@ msgstr "Dobrís una bóstia de dialòg de seleccion de fichièr"
 
 #: ../gedit/resources/ui/gedit-window.ui.h:12
 msgid "Leave Fullscreen"
-msgstr "Quitter lo mòde ecran complet"
+msgstr "Quitar lo mòde ecran complet"
 
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:1
 msgid "Check update"
-msgstr "Vérifie la disponibilitat de mesas a jorn"
+msgstr "Verifica la disponibilitat de mesas a jorn"
 
 #: ../plugins/checkupdate/checkupdate.plugin.desktop.in.h:2
 msgid "Check for latest version of gedit"
@@ -2751,7 +2832,7 @@ msgid ""
 "or ignore that version and wait for a new one"
 msgstr ""
 "Podètz telecargar la novèla version de gedit en clicant sul boton Telecargar "
-"o ignorar aquesta version e attendre una novèla"
+"o ignorar aquesta version e esperar una novèla"
 
 #. ex:set ts=8 noet:
 #: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:1
@@ -2762,7 +2843,7 @@ msgstr "Version d'ignorar"
 #: ../plugins/checkupdate/org.gnome.gedit.plugins.checkupdate.gschema.xml.in.h:3
 msgid "Version to ignore until a newer version is released."
 msgstr ""
-"Version a ignorar fins al moment qu'una version mai recenta serà publicada."
+"Version d'ignorar fins al moment qu'una version mai recenta serà publicada."
 
 #. ex:set ts=8 noet:
 #: ../plugins/docinfo/docinfo.plugin.desktop.in.h:1
@@ -2811,7 +2892,8 @@ msgid "Build"
 msgstr "Construire"
 
 #: ../plugins/externaltools/data/build.desktop.in.h:2
-msgid "Run \"make\" in the document directory"
+#| msgid "Run \"make\" in the document directory"
+msgid "Run “make” in the document directory"
 msgstr "Executar « make » dins lo repertòri del document"
 
 #: ../plugins/externaltools/data/open-terminal-here.desktop.in.h:1
@@ -2830,7 +2912,7 @@ msgstr "Levar los espacis de fin"
 
 #: ../plugins/externaltools/data/remove-trailing-spaces.desktop.in.h:2
 msgid "Remove useless trailing spaces in your file"
-msgstr "Levar los espacis en fin de linha inutiles dins vòstre fichièr"
+msgstr "Levar los espacis en fin de linha inutils dins vòstre fichièr"
 
 #: ../plugins/externaltools/data/run-command.desktop.in.h:1
 msgid "Run command"
@@ -2847,7 +2929,7 @@ msgstr "Mandar a fpaste"
 
 #: ../plugins/externaltools/data/send-to-fpaste.desktop.in.h:2
 msgid "Paste selected text or current document to fpaste"
-msgstr "Colle lo tèxte seleccionat o lo document actual dins fpaste"
+msgstr "Pega lo tèxte seleccionat o lo document actual dins fpaste"
 
 #: ../plugins/externaltools/externaltools.plugin.desktop.in.h:1
 msgid "External Tools"
@@ -2863,77 +2945,85 @@ msgid "Whether to use the system font"
 msgstr "Indica se cal utilizar la poliça sistèma"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
+#| msgid ""
+#| "If true, the external tools will use the desktop-global standard font if "
+#| "it's monospace (and the most similar font it can come up with otherwise)."
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
-"it's monospace (and the most similar font it can come up with otherwise)."
+"it’s monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
-"Se verai, las aisinas extèrnas utilizan la poliça globala estandarda del "
-"burèu se es monospace (e, a defaut, la poliça la mai semblanta que tròba)."
+"Se verai, las aisinas extèrnas utilizan la poliça globala estandarda del burèu "
+"se es monospace (e, manca d'aquò, la poliça la mai semblanta que "
+"tròbe)."
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:4
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:8
-msgid "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+#| msgid ""
+#| "A Pango font name. Examples are \"Sans 12\" or \"Monospace Bold 14\"."
+msgid "A Pango font name. Examples are “Sans 12” or “Monospace Bold 14”."
 msgstr ""
 "Un nom de poliça Pango. Per exemple, « Sans 12 » o « Monospace Bold 14 »."
 
-#: ../plugins/externaltools/tools/appactivatable.py:126
-msgid "Manage _External Tools..."
-msgstr "Gerir las aisinas e_xtèrnas..."
+#: ../plugins/externaltools/tools/appactivatable.py:133
+#| msgid "Manage External Tools"
+msgid "Manage _External Tools…"
+msgstr "Gestion de las aisinas _extèrnas…"
 
-#: ../plugins/externaltools/tools/appactivatable.py:131
+#: ../plugins/externaltools/tools/appactivatable.py:138
 msgid "External _Tools"
 msgstr "Aisinas e_xtèrnas"
 
-#: ../plugins/externaltools/tools/capture.py:99
+#: ../plugins/externaltools/tools/capture.py:106
 #, python-format
 msgid "Could not execute command: %s"
 msgstr "Impossible d'executar la comanda : %s"
 
-#: ../plugins/externaltools/tools/functions.py:184
+#: ../plugins/externaltools/tools/functions.py:191
 msgid "You must be inside a word to run this command"
 msgstr "Vos cal èsser a l'interior d'un mot per executar aquesta comanda"
 
-#: ../plugins/externaltools/tools/functions.py:302
+#: ../plugins/externaltools/tools/functions.py:309
 msgid "Running tool:"
 msgstr "Executar :"
 
-#: ../plugins/externaltools/tools/functions.py:333
+#: ../plugins/externaltools/tools/functions.py:340
 msgid "Done."
 msgstr "Acabat."
 
-#: ../plugins/externaltools/tools/functions.py:335
+#: ../plugins/externaltools/tools/functions.py:342
 msgid "Exited"
 msgstr "Sortida"
 
-#: ../plugins/externaltools/tools/manager.py:106
+# Il s’agit bien ici de langages de programmation
+#: ../plugins/externaltools/tools/manager.py:113
 msgid "All languages"
 msgstr "Totes los lengatges"
 
-#: ../plugins/externaltools/tools/manager.py:422
-#: ../plugins/externaltools/tools/manager.py:426
-#: ../plugins/externaltools/tools/manager.py:765
+#: ../plugins/externaltools/tools/manager.py:429
+#: ../plugins/externaltools/tools/manager.py:433
+#: ../plugins/externaltools/tools/manager.py:772
 #: ../plugins/externaltools/tools/tools.ui.h:31
 msgid "All Languages"
 msgstr "Totes los lengatges"
 
-#: ../plugins/externaltools/tools/manager.py:539
+#: ../plugins/externaltools/tools/manager.py:546
 msgid "New tool"
 msgstr "Novèl aisina"
 
-#: ../plugins/externaltools/tools/manager.py:676
+#: ../plugins/externaltools/tools/manager.py:683
 #, python-format
 msgid "This accelerator is already bound to %s"
 msgstr "Aqueste acorchi de clavièr es ja atribuit a %s"
 
-#: ../plugins/externaltools/tools/manager.py:720
+#: ../plugins/externaltools/tools/manager.py:727
 msgid "Type a new accelerator, or press Backspace to clear"
 msgstr "Picatz un novèl acorchi de clavièr o quichatz sus Retorn per escafar"
 
-#: ../plugins/externaltools/tools/manager.py:722
+#: ../plugins/externaltools/tools/manager.py:729
 msgid "Type a new accelerator"
 msgstr "Picatz un novèl acorchi de clavièr"
 
-#: ../plugins/externaltools/tools/outputpanel.py:122
+#: ../plugins/externaltools/tools/outputpanel.py:129
 msgid "Stopped."
 msgstr "Arrestat."
 
@@ -2952,11 +3042,11 @@ msgstr "Totes los documents"
 
 #: ../plugins/externaltools/tools/tools.ui.h:3
 msgid "All documents except untitled ones"
-msgstr "Totes los documents levat ceux sens nom"
+msgstr "Totes los documents levat los sens nom"
 
 #: ../plugins/externaltools/tools/tools.ui.h:4
 msgid "Local files only"
-msgstr "Unicament los fichièrs locaux"
+msgstr "Unicament los fichièrs locals"
 
 #: ../plugins/externaltools/tools/tools.ui.h:5
 msgid "Remote files only"
@@ -2976,7 +3066,7 @@ msgstr "Seleccion actuala"
 
 #: ../plugins/externaltools/tools/tools.ui.h:10
 msgid "Current selection (default to document)"
-msgstr "Seleccion actuala (le document per défaut)"
+msgstr "Seleccion actuala (lo document per defaut)"
 
 #: ../plugins/externaltools/tools/tools.ui.h:11
 msgid "Current line"
@@ -3044,7 +3134,7 @@ msgstr "_Tòca d'acorchi :"
 
 #: ../plugins/externaltools/tools/tools.ui.h:27
 msgid "_Save:"
-msgstr "_Enregistrar :"
+msgstr "_Enregistrar :"
 
 #: ../plugins/externaltools/tools/tools.ui.h:28
 msgid "_Input:"
@@ -3058,7 +3148,7 @@ msgstr "_Sortida :"
 msgid "_Applicability:"
 msgstr "_Aplicabilitat :"
 
-#: ../plugins/externaltools/tools/windowactivatable.py:119
+#: ../plugins/externaltools/tools/windowactivatable.py:126
 msgid "Tool Output"
 msgstr "Sortida de l'aisina"
 
@@ -3121,34 +3211,36 @@ msgstr "Una error s'es produita al moment del cargament d'un repertòri"
 msgid "An error occurred"
 msgstr "Una error s'es produita"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:898
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:902
 msgid ""
 "Cannot move file to trash, do you\n"
 "want to delete permanently?"
 msgstr ""
 "Impossible de metre lo fichièr a l'escobilhièr,\n"
-"lo volètz suprimir definitivament ?"
+"lo volètz suprimir definitivament ?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:903
-#, c-format
-msgid "The file \"%s\" cannot be moved to the trash."
-msgstr "Lo fichièr « %s » pòt pas èsser mes a l'escobilhièr."
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:907
+#, c-format, c-format
+#| msgid "The file \"%s\" cannot be moved to the trash."
+msgid "The file “%s” cannot be moved to the trash."
+msgstr "Lo fichièr « %s » pòt pas èsser mes a l'escobilhièr."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:908
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:912
 msgid "The selected files cannot be moved to the trash."
 msgstr "Los fichièrs seleccionats pòdon pas èsser meses a l'escobilhièr."
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:939
-#, c-format
-msgid "Are you sure you want to permanently delete \"%s\"?"
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:943
+#, c-format, c-format
+#| msgid "Are you sure you want to permanently delete \"%s\"?"
+msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "Sètz segur que volètz suprimir definitivament « %s » ?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:944
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:948
 msgid "Are you sure you want to permanently delete the selected files?"
 msgstr ""
 "Sètz segur que volètz suprimir definitivament los fichièrs seleccionats ?"
 
-#: ../plugins/filebrowser/gedit-file-browser-plugin.c:947
+#: ../plugins/filebrowser/gedit-file-browser-plugin.c:951
 msgid "If you delete an item, it is permanently lost."
 msgstr "Se suprimissètz un element, serà perdut definitivament."
 
@@ -3197,7 +3289,7 @@ msgstr "Marcapaginas"
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:1995
 #, c-format
 msgid "No mount object for mounted volume: %s"
-msgstr "Cap d'objècte pas montat pel volum montat : « %s »"
+msgstr "Cap d'objècte pas montat pel volum montat : « %s »"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2072
 #, c-format
@@ -3207,12 +3299,13 @@ msgstr "Impossible de dobrir lo mèdia : « %s »"
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2119
 #, c-format
 msgid "Could not mount volume: %s"
-msgstr "Impossible de monter lo volume « %s »"
+msgstr "Impossible de montar lo volum « %s »"
 
 #: ../plugins/filebrowser/gedit-file-browser-widget.c:2769
-#, c-format
-msgid "Error when loading '%s': No such directory"
-msgstr "Error al moment del cargament de « %s » : repertòri inexistant"
+#, c-format, c-format
+#| msgid "Error when loading '%s': No such directory"
+msgid "Error when loading “%s”: No such directory"
+msgstr "Error al moment del cargament de « %s » : repertòri inexistent"
 
 #. ex:set ts=8 noet:
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:1
@@ -3255,27 +3348,32 @@ msgstr ""
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:7
 msgid "Enable Restore of Remote Locations"
-msgstr "Activar la restauration dels emplaçament distants"
+msgstr "Activar lo restabliment dels emplaçament distants"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:8
 msgid "Sets whether to enable restoring of remote locations."
-msgstr "Definís se cal activar la restauration dels emplaçaments distants."
+msgstr "Definís se cal activar lo restabliment dels emplaçaments distants."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:9
 msgid "Set Location to First Document"
 msgstr "Definís l'emplaçament al primièr document"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
+#| msgid ""
+#| "If TRUE the file browser plugin will view the directory of the first "
+#| "opened document given that the file browser hasn't been used yet. (Thus "
+#| "this generally applies to opening a document from the command line or "
+#| "opening it with Nautilus, etc.)"
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
-"document given that the file browser hasn't been used yet. (Thus this "
+"document given that the file browser hasn’t been used yet. (Thus this "
 "generally applies to opening a document from the command line or opening it "
 "with Nautilus, etc.)"
 msgstr ""
-"Se VERAI, l'empeuton del gestionari de fichièrs afichara lo repertòri del "
-"primièr document dobèrt dès lors que lo gestionari de fichièrs es pas encara "
-"estat utilizat. Aquò s'aplica generalament a la dobertura d'un document a "
-"partir de la linha de comanda o a partir de Nautilus, etc."
+"Se VERAI, l'empeuton del gestionari de fichièrs aficharà lo repertòri del "
+"primièr document dobèrt tre que lo gestionari de fichièrs es pas "
+"encara estat utilizat. Aquò s’aplica generalament a la dobertura d’un document "
+"a partir de la linha de comanda o a partir de Nautilus, etc."
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:11
 msgid "File Browser Filter Mode"
@@ -3287,7 +3385,7 @@ msgid ""
 "values are: none (filter nothing), hide-hidden (filter hidden files) and "
 "hide-binary (filter binary files)."
 msgstr ""
-"Aquesta valor determina quins fichièrs del gestionari de fichièrs son "
+"Aquesta valor determina quines fichièrs del gestionari de fichièrs son "
 "filtrats. Las valors possiblas son : « none » (filtra pas res), « hide-"
 "hidden » (filtra los fichièrs amagats) e « hide-binary » (filtra los "
 "fichièrs binaris)."
@@ -3326,8 +3424,9 @@ msgid "New F_ile"
 msgstr "Novèl f_ichièr"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:5
-msgid "_Rename..."
-msgstr "_Renomenar..."
+#| msgid "_Rename..."
+msgid "_Rename…"
+msgstr "_Renomenar…"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:6
 msgid "_Move to Trash"
@@ -3347,7 +3446,7 @@ msgstr "_Dobrir dins un terminal"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:11
 msgid "_Filter"
-msgstr "_Filtrer"
+msgstr "_Filtrar"
 
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:12
 msgid "Show _Hidden"
@@ -3394,12 +3493,15 @@ msgid "The error color text"
 msgstr "La color del tèxte de las errors"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
+#| msgid ""
+#| "If true, the terminal will use the desktop-global standard font if it's "
+#| "monospace (and the most similar font it can come up with otherwise)."
 msgid ""
-"If true, the terminal will use the desktop-global standard font if it's "
+"If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
 msgstr ""
-"Se verai, lo terminal utiliza la poliça globala estandarda del burèu se es "
-"monospace (e, a defaut, la poliça la mai semblanta que tròba)."
+"Se verai, lo terminal utiliza la poliça globala estandarda del burèu se "
+"es monospace (e, manca d'aquò, la poliça la mai semblanta que tròbe)."
 
 #: ../plugins/pythonconsole/pythonconsole/config.ui.h:1
 msgid "C_ommand color:"
@@ -3410,7 +3512,7 @@ msgid "_Error color:"
 msgstr "Color de las _errors :"
 
 #. ex:et:ts=4:
-#: ../plugins/pythonconsole/pythonconsole/__init__.py:53
+#: ../plugins/pythonconsole/pythonconsole/__init__.py:60
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
 msgstr "Consòla Python"
@@ -3419,13 +3521,14 @@ msgstr "Consòla Python"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Consòla interactiva Python dins lo panèl inferior"
 
-#: ../plugins/quickopen/quickopen/__init__.py:40
-msgid "Quick Open..."
-msgstr "Dobertura rapida..."
+#: ../plugins/quickopen/quickopen/__init__.py:47
+#| msgid "Quick Open"
+msgid "Quick Open…"
+msgstr "Dobertura rapida…"
 
 #. ex:ts=4:et:
 #: ../plugins/quickopen/quickopen.plugin.desktop.in.h:1
-#: ../plugins/quickopen/quickopen/popup.py:33
+#: ../plugins/quickopen/quickopen/popup.py:40
 msgid "Quick Open"
 msgstr "Dobertura rapida"
 
@@ -3433,94 +3536,105 @@ msgstr "Dobertura rapida"
 msgid "Quickly open files"
 msgstr "Dobrís rapidament de fichièrs"
 
-#: ../plugins/quickopen/quickopen/popup.py:83
-msgid "Type to search..."
-msgstr "Picatz lo nom del fichièr a ouvrir..."
+#: ../plugins/quickopen/quickopen/popup.py:90
+#| msgid "Type to search..."
+msgid "Type to search…"
+msgstr "Picatz lo nom del fichièr de dobrir…"
 
-#: ../plugins/snippets/snippets/appactivatable.py:81
-msgid "Manage _Snippets..."
-msgstr "Gerir los _fragments de còdi..."
+#: ../plugins/snippets/snippets/appactivatable.py:88
+#| msgid "Manage Snippets"
+msgid "Manage _Snippets…"
+msgstr "Gestion dels _fragments de còdi…"
 
 #. Do the fancy completion dialog
 #. ex:ts=4:et:
-#: ../plugins/snippets/snippets/document.py:56
-#: ../plugins/snippets/snippets/document.py:145
-#: ../plugins/snippets/snippets/document.py:659
+#: ../plugins/snippets/snippets/document.py:64
+#: ../plugins/snippets/snippets/document.py:153
+#: ../plugins/snippets/snippets/document.py:667
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:1
 msgid "Snippets"
 msgstr "Fragments de còdi"
 
-#: ../plugins/snippets/snippets/exporter.py:80
-#, python-format
-msgid "The archive \"%s\" could not be created"
-msgstr "Impossible de crear l'archiu « %s »"
+#: ../plugins/snippets/snippets/exporter.py:88
+#, python-format, python-format
+#| msgid "The archive \"%s\" could not be created"
+msgid "The archive “%s” could not be created"
+msgstr "Impossible de crear l’archiu « %s »"
 
-#: ../plugins/snippets/snippets/exporter.py:97
-#, python-format
-msgid "Target directory \"%s\" does not exist"
+#: ../plugins/snippets/snippets/exporter.py:105
+#, python-format, python-format
+#| msgid "Target directory \"%s\" does not exist"
+msgid "Target directory “%s” does not exist"
 msgstr "Lo repertòri cibla « %s » existís pas"
 
-#: ../plugins/snippets/snippets/exporter.py:100
-#, python-format
-msgid "Target directory \"%s\" is not a valid directory"
+#: ../plugins/snippets/snippets/exporter.py:108
+#, python-format, python-format
+#| msgid "Target directory \"%s\" is not a valid directory"
+msgid "Target directory “%s” is not a valid directory"
 msgstr "Lo repertòri cibla « %s » es pas un repertòri valid"
 
-#: ../plugins/snippets/snippets/importer.py:47
-#: ../plugins/snippets/snippets/importer.py:108
-#, python-format
-msgid "File \"%s\" does not exist"
+#: ../plugins/snippets/snippets/importer.py:55
+#: ../plugins/snippets/snippets/importer.py:116
+#, python-format, python-format
+#| msgid "File \"%s\" does not exist"
+msgid "File “%s” does not exist"
 msgstr "Lo fichièr « %s » existís pas"
 
-#: ../plugins/snippets/snippets/importer.py:50
-#, python-format
-msgid "File \"%s\" is not a valid snippets file"
+#: ../plugins/snippets/snippets/importer.py:58
+#, python-format, python-format
+#| msgid "File \"%s\" is not a valid snippets file"
+msgid "File “%s” is not a valid snippets file"
 msgstr "Lo fichièr « %s » es pas un fichièr de fragments de còdi valid"
 
-#: ../plugins/snippets/snippets/importer.py:67
-#, python-format
-msgid "Imported file \"%s\" is not a valid snippets file"
+#: ../plugins/snippets/snippets/importer.py:75
+#, python-format, python-format
+#| msgid "Imported file \"%s\" is not a valid snippets file"
+msgid "Imported file “%s” is not a valid snippets file"
 msgstr ""
 "Lo fichièr importat « %s » es pas un fichièr de fragments de còdi valid"
 
-#: ../plugins/snippets/snippets/importer.py:77
-#, python-format
-msgid "The archive \"%s\" could not be extracted"
-msgstr "Impossible d'extraire l'archiu « %s »"
+#: ../plugins/snippets/snippets/importer.py:85
+#, python-format, python-format
+#| msgid "The archive \"%s\" could not be extracted"
+msgid "The archive “%s” could not be extracted"
+msgstr "Impossible d’extraire l’archiu « %s »"
 
-#: ../plugins/snippets/snippets/importer.py:95
+#: ../plugins/snippets/snippets/importer.py:103
 #, python-format
 msgid "The following files could not be imported: %s"
 msgstr "Impossible d'importar los fichièrs seguents : %s"
 
-#: ../plugins/snippets/snippets/importer.py:111
-#: ../plugins/snippets/snippets/importer.py:124
-#, python-format
-msgid "File \"%s\" is not a valid snippets archive"
+#: ../plugins/snippets/snippets/importer.py:119
+#: ../plugins/snippets/snippets/importer.py:132
+#, python-format, python-format
+#| msgid "File \"%s\" is not a valid snippets archive"
+msgid "File “%s” is not a valid snippets archive"
 msgstr "Lo fichièr « %s » es pas un archiu de fragments de còdi valid"
 
-#: ../plugins/snippets/snippets/manager.py:42
+#: ../plugins/snippets/snippets/manager.py:50
 msgid "Snippets archive"
-msgstr "Archive dels fragments de còdi"
+msgstr "Archiu dels fragments de còdi"
 
-#: ../plugins/snippets/snippets/manager.py:66
-msgid "Add a new snippet..."
-msgstr "Apondre un novèl extrait de còdi..."
+#: ../plugins/snippets/snippets/manager.py:74
+#| msgid "Add a new snippet..."
+msgid "Add a new snippet…"
+msgstr "Apondre un novèl extrait de còdi…"
 
-#: ../plugins/snippets/snippets/manager.py:116
+#: ../plugins/snippets/snippets/manager.py:124
 msgid "Global"
 msgstr "Global"
 
-#: ../plugins/snippets/snippets/manager.py:406
+#: ../plugins/snippets/snippets/manager.py:414
 msgid "Revert selected snippet"
-msgstr "Annule lo fragment de còdi seleccionat"
+msgstr "Anulla lo fragment de còdi seleccionat"
 
-#: ../plugins/snippets/snippets/manager.py:409
+#: ../plugins/snippets/snippets/manager.py:417
 #: ../plugins/snippets/snippets/snippets.ui.h:4
 msgid "Delete selected snippet"
 msgstr "Suprimís lo fragment de còdi seleccionat"
 
 #. self['hbox_tab_trigger'].set_spacing(3)
-#: ../plugins/snippets/snippets/manager.py:662
+#: ../plugins/snippets/snippets/manager.py:670
 msgid ""
 "This is not a valid Tab trigger. Triggers can either contain alphanumeric "
 "characters (or _, : and .) or a single (non-alphanumeric) character like: {, "
@@ -3531,93 +3645,93 @@ msgstr ""
 "{, [, etc."
 
 #. self['hbox_tab_trigger'].set_spacing(0)
-#: ../plugins/snippets/snippets/manager.py:669
+#: ../plugins/snippets/snippets/manager.py:677
 #: ../plugins/snippets/snippets/snippets.ui.h:14
 msgid "Single word the snippet is activated with after pressing Tab"
 msgstr ""
 "Mot unic que permet d'activar lo fragment de còdi aprèp una quichada sus la "
 "tòca tabulacion"
 
-#: ../plugins/snippets/snippets/manager.py:758
+#: ../plugins/snippets/snippets/manager.py:766
 #, python-format
 msgid "The following error occurred while importing: %s"
 msgstr "L'error seguenta s'es produita al moment de l'importacion : %s"
 
-#: ../plugins/snippets/snippets/manager.py:765
+#: ../plugins/snippets/snippets/manager.py:773
 msgid "Import successfully completed"
-msgstr "Importation realizada amb succès"
+msgstr "Importacion realizada amb succès"
 
-#: ../plugins/snippets/snippets/manager.py:779
+#: ../plugins/snippets/snippets/manager.py:787
 #: ../plugins/snippets/snippets/snippets.ui.h:6
 msgid "Import snippets"
 msgstr "Impòrta de fragments de còdi"
 
-#: ../plugins/snippets/snippets/manager.py:784
-#: ../plugins/snippets/snippets/manager.py:870
-#: ../plugins/snippets/snippets/manager.py:933
+#: ../plugins/snippets/snippets/manager.py:792
+#: ../plugins/snippets/snippets/manager.py:878
+#: ../plugins/snippets/snippets/manager.py:941
 msgid "All supported archives"
 msgstr "Totes los archius preses en carga"
 
-#: ../plugins/snippets/snippets/manager.py:785
-#: ../plugins/snippets/snippets/manager.py:871
-#: ../plugins/snippets/snippets/manager.py:934
+#: ../plugins/snippets/snippets/manager.py:793
+#: ../plugins/snippets/snippets/manager.py:879
+#: ../plugins/snippets/snippets/manager.py:942
 msgid "Gzip compressed archive"
 msgstr "Archiu compressat Gzip"
 
-#: ../plugins/snippets/snippets/manager.py:786
-#: ../plugins/snippets/snippets/manager.py:872
-#: ../plugins/snippets/snippets/manager.py:935
+#: ../plugins/snippets/snippets/manager.py:794
+#: ../plugins/snippets/snippets/manager.py:880
+#: ../plugins/snippets/snippets/manager.py:943
 msgid "Bzip2 compressed archive"
 msgstr "Archiu compressat Bzip2"
 
-#: ../plugins/snippets/snippets/manager.py:787
+#: ../plugins/snippets/snippets/manager.py:795
 msgid "Single snippets file"
 msgstr "Fichièr d'extrait de còdi unique"
 
-#: ../plugins/snippets/snippets/manager.py:788
-#: ../plugins/snippets/snippets/manager.py:874
-#: ../plugins/snippets/snippets/manager.py:937
+#: ../plugins/snippets/snippets/manager.py:796
+#: ../plugins/snippets/snippets/manager.py:882
+#: ../plugins/snippets/snippets/manager.py:945
 msgid "All files"
 msgstr "Totes los fichièrs"
 
-#: ../plugins/snippets/snippets/manager.py:800
+#: ../plugins/snippets/snippets/manager.py:808
 #, python-format
 msgid "The following error occurred while exporting: %s"
 msgstr "L'error seguenta s'es produita al moment de l'exportacion : %s"
 
-#: ../plugins/snippets/snippets/manager.py:804
+#: ../plugins/snippets/snippets/manager.py:812
 msgid "Export successfully completed"
 msgstr "Exportacion realizada amb succès"
 
 #. Ask if system snippets should also be exported
-#: ../plugins/snippets/snippets/manager.py:844
-#: ../plugins/snippets/snippets/manager.py:911
+#: ../plugins/snippets/snippets/manager.py:852
+#: ../plugins/snippets/snippets/manager.py:919
 msgid "Do you want to include selected <b>system</b> snippets in your export?"
 msgstr ""
 "Volètz inclure los fragments de còdi <b>sistèma</b> seleccionats dins vòstra "
 "exportacion ?"
 
-#: ../plugins/snippets/snippets/manager.py:859
-#: ../plugins/snippets/snippets/manager.py:929
+#: ../plugins/snippets/snippets/manager.py:867
+#: ../plugins/snippets/snippets/manager.py:937
 msgid "There are no snippets selected to be exported"
 msgstr "Cap d'extrait de còdi es pas estat seleccionat per l'exportacion"
 
-#: ../plugins/snippets/snippets/manager.py:864
-#: ../plugins/snippets/snippets/manager.py:902
+#: ../plugins/snippets/snippets/manager.py:872
+#: ../plugins/snippets/snippets/manager.py:910
 msgid "Export snippets"
 msgstr "Exportacion dels fragments de còdi"
 
-#: ../plugins/snippets/snippets/manager.py:1041
+#: ../plugins/snippets/snippets/manager.py:1049
 msgid "Type a new shortcut, or press Backspace to clear"
 msgstr ""
 "Picatz un novèl acorchi de clavièr o quichatz sus « Retorn arrièr » per "
 "escafar"
 
-#: ../plugins/snippets/snippets/manager.py:1043
+#: ../plugins/snippets/snippets/manager.py:1051
 msgid "Type a new shortcut"
 msgstr "Picatz un novèl acorchi de clavièr"
 
-#: ../plugins/snippets/snippets/placeholder.py:597
+#: ../plugins/snippets/snippets/placeholder.py:605
 #, python-format
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
@@ -3626,7 +3740,7 @@ msgstr ""
 "La durada d'execucion de la comanda Python (%s) a atent lo relambi maximum, "
 "l'execucion es arrestada."
 
-#: ../plugins/snippets/snippets/placeholder.py:605
+#: ../plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
 msgstr "L'execucion de la comanda Python (%s) a fracassat : %s"
@@ -3682,15 +3796,16 @@ msgstr "Tòca d'_acorchi :"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:16
 msgid "Shortcut key with which the snippet is activated"
-msgstr "Acorchi de clavièr permettant d'activar lo fragment de còdi"
+msgstr "Acorchi de clavièr que permet d'activar lo fragment de còdi"
 
 #: ../plugins/snippets/snippets/snippets.ui.h:17
 msgid "_Drop targets:"
 msgstr "Cibla de _destinacion :"
 
 #: ../plugins/sort/gedit-sort-plugin.c:243
-msgid "S_ort..."
-msgstr "_Triar..."
+#| msgid "S_ort..."
+msgid "S_ort…"
+msgstr "_Triar…"
 
 #. ex:set ts=8 noet:
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:1
@@ -3712,7 +3827,7 @@ msgstr "Sensible a la c_assa"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:5
 msgid "S_tart at column:"
-msgstr "_Començar a la colomna :"
+msgstr "_Començar a la colomna :"
 
 #: ../plugins/sort/resources/ui/gedit-sort-plugin.ui.h:7
 msgid "_Sort"
@@ -3723,12 +3838,14 @@ msgid "Sorts a document or selected text."
 msgstr "Tria un document o lo tèxte seleccionat."
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:143
-msgid "_Check Spelling..."
-msgstr "_Verificacion ortografica..."
+#| msgid "Check Spelling"
+msgid "_Check Spelling…"
+msgstr "_Verificacion ortografica…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:147
-msgid "Set _Language..."
-msgstr "Definir la _lenga..."
+#| msgid "Set Language"
+msgid "Set _Language…"
+msgstr "Definir la _lenga…"
 
 #: ../plugins/spell/gedit-spell-app-activatable.c:151
 msgid "_Highlight Misspelled Words"
@@ -3743,11 +3860,12 @@ msgstr "Verificador ortografic"
 msgid "Checks the spelling of the current document."
 msgstr "Verifica l'ortografia del document actual."
 
-#: ../plugins/time/gedit-time-plugin.c:270
-msgid "In_sert Date and Time..."
-msgstr "Inserir la _data e l'ora..."
+#: ../plugins/time/gedit-time-plugin.c:265
+#| msgid "Insert Date and Time"
+msgid "In_sert Date and Time…"
+msgstr "In_serir la data e l’ora…"
 
-#: ../plugins/time/gedit-time-plugin.c:496
+#: ../plugins/time/gedit-time-plugin.c:491
 msgid "Available formats"
 msgstr "Formats disponibles"
 
@@ -3818,8 +3936,9 @@ msgid "Configure date/time plugin"
 msgstr "Configurar l'empeuton d'insercion de data e d'ora"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:3
-msgid "When inserting date/time..."
-msgstr "Al moment de l'insercion de la data e de l'ora..."
+#| msgid "When inserting date/time..."
+msgid "When inserting date/time…"
+msgstr "Al moment de l’insercion de la data e de l’ora…"
 
 #: ../plugins/time/resources/ui/gedit-time-setup-dialog.ui.h:4
 msgid "_Prompt for a format"
@@ -3833,6 +3952,38 @@ msgstr "Inserir la data e l'ora"
 msgid "Inserts current date and time at the cursor position."
 msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 
+#, fuzzy
+#~| msgid "Text Editor"
+#~ msgid "Text;Editor;"
+#~ msgstr "Editor de tèxte"
+
+#~ msgid "Open a New Window"
+#~ msgstr "Dobrir una novèla fenèstra"
+
+#~ msgid "Open a New Document"
+#~ msgstr "Dobrir un novèl document"
+
+#~ msgid "_Ignore"
+#~ msgstr "_Ignorar"
+
+#~ msgid "Manage _External Tools..."
+#~ msgstr "Gerir las aisinas e_xtèrnas..."
+
+#~ msgid "Quick Open..."
+#~ msgstr "Dobertura rapida..."
+
+#~ msgid "Manage _Snippets..."
+#~ msgstr "Gerir los _fragments de còdi..."
+
+#~ msgid "_Check Spelling..."
+#~ msgstr "_Verificacion ortografica..."
+
+#~ msgid "Set _Language..."
+#~ msgstr "Definir la _lenga..."
+
+#~ msgid "In_sert Date and Time..."
+#~ msgstr "Inserir la _data e l'ora..."
+
 #~ msgid "Set the size and position of the window (WIDTHxHEIGHT+X+Y)"
 #~ msgstr "Definís la talha e la posicion de la fenèstra (LARGORxNAUTOR+X+Y)"
 
@@ -3841,9 +3992,6 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 
 #~ msgid "gedit"
 #~ msgstr "gedit"
-
-#~ msgid "Text;Editor;Plaintext;Write;"
-#~ msgstr "Tèxte;Editor;Tèxte brut;Escriure;"
 
 #~ msgid "Question"
 #~ msgstr "Question"
@@ -3873,10 +4021,10 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ msgstr "_Suggestions d'ortografias..."
 
 #~ msgid "Error when checking the spelling of word “%s”: %s"
-#~ msgstr "Error pendent la verificacion de l'ortografia del mot « %s » : %s"
+#~ msgstr "Error pendent la verificacion de l'ortografia del mot « %s » : %s"
 
 #~ msgid "Error:"
-#~ msgstr "Error :"
+#~ msgstr "Error :"
 
 #~ msgid "Completed spell checking"
 #~ msgstr "Verificacion ortografica acabada"
@@ -3902,14 +4050,8 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ msgid "Default"
 #~ msgstr "Per defaut"
 
-#~ msgid "Set Language"
-#~ msgstr "Definir la lenga"
-
 #~ msgid "Select the _language of the current document."
 #~ msgstr "Seleccionatz la _lenga del document actual."
-
-#~ msgid "Check Spelling"
-#~ msgstr "Verificar l'ortografia"
 
 #~ msgid "Misspelled word:"
 #~ msgstr "Mot mal ortografiat :"
@@ -4042,7 +4184,7 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ "\"-1\" for unlimited number of actions. Deprecated since 2.12.0"
 #~ msgstr ""
 #~ "Nombre maximum d'accions que gedit serà en mesura d'anullar o de "
-#~ "reïntegrar. Indicatz « -1 » se volètz pas indicar de limit. Desconselhat "
+#~ "reïntegrar. Indicatz « -1 » se volètz pas indicar de limit. Desconselhat "
 #~ "dempuèi 2.12.0"
 
 #~ msgid "Undo Actions Limit (DEPRECATED)"
@@ -4054,23 +4196,23 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ msgstr ""
 #~ "Indica se gedit deu activar la creacion de còpias de salvament pels "
 #~ "fichièrs que gedit enregistra. Podètz definir l'extension del fichièr de "
-#~ "salvament amb l'opcion « Extension de la còpia de salvament »."
+#~ "salvament amb l'opcion « Extension de la còpia de salvament »."
 
 #~ msgid "A_vailable encodings:"
-#~ msgstr "Encodatges _disponibles :"
+#~ msgstr "Encodatges _disponibles :"
 
 #~ msgid "Replace _with: "
-#~ msgstr "Remplaçar _per : "
+#~ msgstr "Remplaçar _per : "
 
 #~ msgid "_Search for: "
-#~ msgstr "_Recercar : "
+#~ msgstr "_Recercar : "
 
 #~ msgid ""
 #~ "%s\n"
 #~ "Run '%s --help' to see a full list of available command line options.\n"
 #~ msgstr ""
 #~ "%s\n"
-#~ "Aviatz « %s --help » per veire la lista completa de las opcions en linha "
+#~ "Aviatz « %s --help » per veire la lista completa de las opcions en linha "
 #~ "de comanda disponiblas.\n"
 
 #~ msgid "- Edit text files"
@@ -4164,10 +4306,10 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ msgstr "Aficha o amaga la barra d'estat dins la fenèstra actuala"
 
 #~ msgid "Activate '%s'"
-#~ msgstr "Activa « %s »"
+#~ msgstr "Activa « %s »"
 
 #~ msgid "Open '%s'"
-#~ msgstr "Dobrís « %s »"
+#~ msgstr "Dobrís « %s »"
 
 #~ msgid "Open a recently used file"
 #~ msgstr "Dobrís un fichièr utilizat recentament"
@@ -4197,7 +4339,7 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ msgstr "Met en majuscula la primièra letra de cada mot seleccionat"
 
 #~ msgid "_Edit:"
-#~ msgstr "E_dicion :"
+#~ msgstr "E_dicion :"
 
 #~ msgid "gedit Preferences"
 #~ msgstr "Preferéncias de gedit"
@@ -4218,7 +4360,7 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ msgstr "Dobrir rapidament de documents"
 
 #~ msgid "_Snippets:"
-#~ msgstr "_Extraits de còdi :"
+#~ msgstr "_Extraits de còdi :"
 
 #~ msgid "Sort the current document or selection"
 #~ msgstr "Tria lo document actual o la seleccion"
@@ -4236,7 +4378,7 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ msgstr "Verifica automaticament l'ortografia del document actual"
 
 #~ msgid "Language:"
-#~ msgstr "Lenga :"
+#~ msgstr "Lenga :"
 
 #~ msgid "File Name"
 #~ msgstr "Nom del fichièr"
@@ -4266,7 +4408,7 @@ msgstr "Inserís la data e l'ora actuala a l'emplaçament del cursor."
 #~ msgstr "Aisinas extèrnas"
 
 #~ msgid "_Tools:"
-#~ msgstr "_Aisinas :"
+#~ msgstr "_Aisinas :"
 
 #~ msgid "Zeitgeist dataprovider"
 #~ msgstr "Provesidor de donadas Zeitgeist"
