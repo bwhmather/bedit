@@ -17,10 +17,22 @@ grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: strict
 
 plugs:
-    gnome-3-26-1604:
-      interface: content
-      target: $SNAP/gnome-platform
-      default-provider: gnome-3-26-1604:gnome-3-26-1604
+  gnome-3-26-1604:
+    interface: content
+    target: $SNAP/gnome-platform
+    default-provider: gnome-3-26-1604
+  gtk-3-themes:
+    interface: content
+    target: $SNAP/data-dir/themes
+    default-provider: gtk-common-themes
+  icon-themes:
+    interface: content
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
 
 slots:
   # for GtkApplication registration
@@ -33,12 +45,14 @@ apps:
   gedit:
     command: desktop-launch gedit
     plugs:
+      - avahi-observe
+      - cups-control
       - desktop
       - desktop-legacy
+      - gsettings
       - home
       - network
       - mount-observe
-      - gsettings
       - unity7
       - wayland
     desktop: usr/share/applications/org.gnome.gedit.desktop
@@ -50,9 +64,14 @@ parts:
   gedit:
     after: [desktop-gnome-platform]
     source: .
-    source-type: git
     plugin: autotools
     configflags: [--prefix=/snap/gedit/current/usr]
+    override-build: |
+      sed -i.bak -e 's|Icon=gedit$|Icon=${SNAP}/meta/gui/gedit.png|g' data/org.gnome.gedit.desktop.in.in
+      snapcraftctl build
+      mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
+      cp ../src/data/icons/hicolor/256x256/apps/gedit.png $SNAPCRAFT_PART_INSTALL/meta/gui/
+      cp data/org.gnome.gedit.desktop $SNAPCRAFT_PART_INSTALL/meta/gui/
     organize:
       snap/gedit/current/usr: usr
     build-attributes: [no-system-libraries]
