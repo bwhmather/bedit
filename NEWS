@@ -1,3 +1,20 @@
+=============
+gedit 3.29.90
+=============
+Development release
+
+- Port GeditFileChooserDialogGtk to GtkFileChooserNative
+  so that it can use the file chooser portal for better confinement
+  when run as a Flatpak or Snap (James)
+- Add a style class to the main window for theming (abakkk)
+- Move nightly Flatpak manifest here (Jordan)
+- Misc bugfixes (Jeremy, Mathieu, Andre, nick, Ken)
+- Translation updates
+
+Contributors:
+ abakkk, Jeremy Bicha, Mathieu Bridon, James Henstridge, Andre Klapper,
+ Jordan Petridis, nick richards, Ken VanDine
+
 ============
 gedit 3.28.1
 ============
