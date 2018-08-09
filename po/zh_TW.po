@@ -11,10 +11,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 3.3.7\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-03-13 21:00+0000\n"
-"PO-Revision-Date: 2018-03-20 20:05+0800\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"POT-Creation-Date: 2018-08-08 16:05+0000\n"
+"PO-Revision-Date: 2018-08-09 21:37+0800\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: 漢語 <>\n"
 "Language: zh_TW\n"
@@ -22,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 #: ../data/org.gnome.gedit.desktop.in.in.h:2
@@ -949,27 +948,21 @@ msgstr "移至較高優先等級"
 msgid "Move to a lower priority"
 msgstr "移至較低優先等級"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:45
 #: ../gedit/gedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "所有檔案"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:42
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:46
 msgid "All Text Files"
 msgstr "所有文字檔"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:307
-msgid "C_haracter Encoding:"
-msgstr "字元編碼(_H):"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:366
-msgid "L_ine Ending:"
-msgstr "列結尾(_I)："
-
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:317
 #: ../gedit/gedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
 msgstr "字元編碼："
 
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:350
 #: ../gedit/gedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
 msgstr "列結尾："
@@ -3126,6 +3119,15 @@ msgstr "Python 終端"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "在底部面板的互動式 Python 主控臺"
 
+# zh_HK: msgstr "打印時顯示語法色彩"
+#: ../plugins/quickhighlight/quickhighlight.plugin.desktop.in.h:1
+msgid "Quick Highlight"
+msgstr "快速標明"
+
+#: ../plugins/quickhighlight/quickhighlight.plugin.desktop.in.h:2
+msgid "Highlights every occurrences of selected text."
+msgstr "標明選取文字的所有出現處。"
+
 #: ../plugins/quickopen/quickopen/__init__.py:47
 msgid "Quick Open…"
 msgstr "快速開啟…"
@@ -3525,6 +3527,12 @@ msgstr "插入日期/時間"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "在游標目前的位置插入現在的日期及時間。"
+
+#~ msgid "C_haracter Encoding:"
+#~ msgstr "字元編碼(_H):"
+
+#~ msgid "L_ine Ending:"
+#~ msgstr "列結尾(_I)："
 
 #~ msgid "_Ignore"
 #~ msgstr "忽略(_I)"
