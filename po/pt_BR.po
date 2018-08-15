@@ -26,20 +26,21 @@
 # Felipe Braga <fbobraga@gmail.com>, 2015.
 # Enrico Nicoletto <liverig@gmail.com>, 2013, 2014, 2015, 2016.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2012, 2013, 2014, 2018.
+# Ricardo Silva Veloso <ricvelozo@gmail.com>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2018-08-06 01:18+0000\n"
-"PO-Revision-Date: 2018-08-05 23:03-0200\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2018-08-08 16:22+0000\n"
+"PO-Revision-Date: 2018-08-12 01:34-0300\n"
+"Last-Translator: Ricardo Silva Veloso <ricvelozo@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Virtaal 1.0.0-beta1\n"
+"X-Generator: Poedit 2.1\n"
 "X-Project-Style: gnome\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
@@ -1023,7 +1024,8 @@ msgstr ""
 "Gabriel F. Vilar <cogumm@gmail.com>\n"
 "Thiago Branco Meurer <thiago@thiagopriest.net>\n"
 "Enrico Nicoletto <liverig@gmail.com>\n"
-"Rafael Fontenelle <rafaelff@gnome.org>"
+"Rafael Fontenelle <rafaelff@gnome.org>\n"
+"Ricardo Silva Veloso <ricvelozo@gmail.com>"
 
 #: ../gedit/gedit-commands-search.c:107
 #, c-format
@@ -1104,27 +1106,21 @@ msgstr "Aumentar a prioridade"
 msgid "Move to a lower priority"
 msgstr "Diminuir a prioridade"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:45
 #: ../gedit/gedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "Todos os arquivos"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:42
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:46
 msgid "All Text Files"
 msgstr "Todos os arquivos de texto"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:307
-msgid "C_haracter Encoding:"
-msgstr "_Codificação de caracteres:"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:366
-msgid "L_ine Ending:"
-msgstr "F_im de linha:"
-
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:317
 #: ../gedit/gedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
 msgstr "Codificação de caractere:"
 
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:350
 #: ../gedit/gedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
 msgstr "Fim de linha:"
@@ -1846,7 +1842,7 @@ msgstr "_Editar"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:25
 msgid "_Undo"
-msgstr "Desfa_zer"
+msgstr "_Desfazer"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:26
 msgid "_Redo"
@@ -1862,14 +1858,14 @@ msgstr "_Copiar"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:29
 msgid "_Paste"
-msgstr "Co_lar"
+msgstr "C_olar"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:30
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:919
 #: ../plugins/filebrowser/gedit-file-browser-plugin.c:957
 #: ../plugins/filebrowser/resources/ui/gedit-file-browser-menus.ui.h:7
 msgid "_Delete"
-msgstr "Ex_cluir"
+msgstr "E_xcluir"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:31
 msgid "Overwrite _Mode"
@@ -1877,7 +1873,7 @@ msgstr "Modo de so_brescrita"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:32
 msgid "Select _All"
-msgstr "Selecionar t_udo"
+msgstr "_Selecionar tudo"
 
 #: ../gedit/resources/gtk/menus-common.ui.h:33
 #: ../gedit/resources/gtk/menus.ui.h:2
@@ -2366,57 +2362,57 @@ msgstr "Documentos"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:2
 msgctxt "shortcut window"
 msgid "Create a new document in a tab"
-msgstr "Criar um novo documento em uma aba"
+msgstr "Cria um novo documento em uma aba"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:3
 msgctxt "shortcut window"
 msgid "Open a document"
-msgstr "Abrir um documento"
+msgstr "Abre um documento"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:4
 msgctxt "shortcut window"
 msgid "Save the document"
-msgstr "Salvar o documento"
+msgstr "Salva o documento"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:5
 msgctxt "shortcut window"
 msgid "Save the document with a new filename"
-msgstr "Salvar o arquivo atual com um novo nome de arquivo"
+msgstr "Salva o arquivo atual com um novo nome de arquivo"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:6
 msgctxt "shortcut window"
 msgid "Save all the documents"
-msgstr "Salvar todos os documentos"
+msgstr "Salva todos os documentos"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:7
 msgctxt "shortcut window"
 msgid "Close the document"
-msgstr "Fechar o documento"
+msgstr "Fecha o documento"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:8
 msgctxt "shortcut window"
 msgid "Close all the documents"
-msgstr "Fechar todos os documentos"
+msgstr "Fecha todos os documentos"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:9
 msgctxt "shortcut window"
 msgid "Reopen the most recently closed document"
-msgstr "Reabrir o documento recentemente fechado"
+msgstr "Reabre o documento recentemente fechado"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:10
 msgctxt "shortcut window"
 msgid "Switch to the next document"
-msgstr "Mudar para o próximo documento"
+msgstr "Muda para o próximo documento"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:11
 msgctxt "shortcut window"
 msgid "Switch to the previous document"
-msgstr "Mudar para o documento anterior"
+msgstr "Muda para o documento anterior"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:12
 msgctxt "shortcut window"
 msgid "Switch to the first — ninth document"
-msgstr "Mudar para o primeiro – nono documento"
+msgstr "Muda para o primeiro – nono documento"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:13
 msgctxt "shortcut window"
@@ -2426,22 +2422,22 @@ msgstr "Janelas e painéis"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:14
 msgctxt "shortcut window"
 msgid "Create a new document in a window"
-msgstr "Criar um novo documento em uma janela"
+msgstr "Cria um novo documento em uma janela"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:15
 msgctxt "shortcut window"
 msgid "Create a new tab group"
-msgstr "Criar um novo grupo de abas"
+msgstr "Cria um novo grupo de abas"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:16
 msgctxt "shortcut window"
 msgid "Show side panel"
-msgstr "Mostrar o painel lateral"
+msgstr "Mostra o painel lateral"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:17
 msgctxt "shortcut window"
 msgid "Show bottom panel"
-msgstr "Mostrar o painel inferior"
+msgstr "Mostra o painel inferior"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:18
 msgctxt "shortcut window"
@@ -2451,7 +2447,7 @@ msgstr "Tela cheia"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:19
 msgctxt "shortcut window"
 msgid "Quit the application"
-msgstr "Sair do aplicativo"
+msgstr "Sai do aplicativo"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:20
 msgctxt "shortcut window"
@@ -2461,27 +2457,27 @@ msgstr "Localizar e substituir"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:21
 msgctxt "shortcut window"
 msgid "Find"
-msgstr "Localizar"
+msgstr "Localiza"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:22
 msgctxt "shortcut window"
 msgid "Find the next match"
-msgstr "Localizar a próxima ocorrência"
+msgstr "Localiza a próxima ocorrência"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:23
 msgctxt "shortcut window"
 msgid "Find the previous match"
-msgstr "Localizar a ocorrência anterior"
+msgstr "Localiza a ocorrência anterior"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:24
 msgctxt "shortcut window"
 msgid "Clear highlight"
-msgstr "Limpar destaque"
+msgstr "Limpa o realce"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:25
 msgctxt "shortcut window"
 msgid "Go to line"
-msgstr "Ir para a linha"
+msgstr "Vai para a linha"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:26
 msgctxt "shortcut window"
@@ -2491,17 +2487,17 @@ msgstr "Copiar e colar"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:27
 msgctxt "shortcut window"
 msgid "Copy selected text to clipboard"
-msgstr "Copiar o texto selecionado para a área de transferência"
+msgstr "Copia o texto selecionado para a área de transferência"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:28
 msgctxt "shortcut window"
 msgid "Cut selected text to clipboard"
-msgstr "Cortar o texto selecionado para a área de transferência"
+msgstr "Recorta o texto selecionado para a área de transferência"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:29
 msgctxt "shortcut window"
 msgid "Paste text from clipboard"
-msgstr "Colar o texto da área de transferência"
+msgstr "Cola o texto da área de transferência"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:30
 msgctxt "shortcut window"
@@ -2511,12 +2507,12 @@ msgstr "Desfazer e refazer"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:31
 msgctxt "shortcut window"
 msgid "Undo previous command"
-msgstr "Desfazer o comando anterior"
+msgstr "Desfaz o comando anterior"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:32
 msgctxt "shortcut window"
 msgid "Redo previous command"
-msgstr "Refazer o comando anterior"
+msgstr "Refaz o comando anterior"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:33
 msgctxt "shortcut window"
@@ -2526,7 +2522,7 @@ msgstr "Seleção"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:34
 msgctxt "shortcut window"
 msgid "Select all text"
-msgstr "Selecionar todo o texto"
+msgstr "Seleciona todo o texto"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:35
 msgctxt "shortcut window"
@@ -2536,62 +2532,62 @@ msgstr "Edição"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:36
 msgctxt "shortcut window"
 msgid "Toggle insert / overwrite"
-msgstr "Ativar inserir / sobrescrever"
+msgstr "Alterna inserir / sobrescrever"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:37
 msgctxt "shortcut window"
 msgid "Delete current line"
-msgstr "Excluir a linha atual"
+msgstr "Exclui a linha atual"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:38
 msgctxt "shortcut window"
 msgid "Join selected lines"
-msgstr "Juntar as linhas selecionadas"
+msgstr "Junta as linhas selecionadas"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:39
 msgctxt "shortcut window"
 msgid "Move current line up"
-msgstr "Mover a linha atual para cima"
+msgstr "Move a linha atual para cima"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:40
 msgctxt "shortcut window"
 msgid "Move current line down"
-msgstr "Mover a linha atual para baixo"
+msgstr "Move a linha atual para baixo"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:41
 msgctxt "shortcut window"
 msgid "Move current word left"
-msgstr "Mover a palavra atual para esquerda"
+msgstr "Move a palavra atual para esquerda"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:42
 msgctxt "shortcut window"
 msgid "Move current word right"
-msgstr "Mover a palavra atual para direita"
+msgstr "Move a palavra atual para direita"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:43
 msgctxt "shortcut window"
 msgid "Convert to uppercase"
-msgstr "Converter para maiúsculo"
+msgstr "Converte para maiúsculas"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:44
 msgctxt "shortcut window"
 msgid "Convert to lowercase"
-msgstr "Converter para minúsculo"
+msgstr "Converte para minúsculas"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:45
 msgctxt "shortcut window"
 msgid "Invert case"
-msgstr "Inverter maiúsculo/minúsculo"
+msgstr "Inverte caixa"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:46
 msgctxt "shortcut window"
 msgid "Increment number at cursor"
-msgstr "Incrementar o número no cursor"
+msgstr "Incrementa o número no cursor"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:47
 msgctxt "shortcut window"
 msgid "Decrement number at cursor"
-msgstr "Decrementar o número no cursor"
+msgstr "Decrementa o número no cursor"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:48
 msgctxt "shortcut window"
@@ -2601,7 +2597,7 @@ msgstr "Ferramentas"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:49
 msgctxt "shortcut window"
 msgid "Check spelling"
-msgstr "Verificar ortografia"
+msgstr "Verifica ortografia"
 
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:50
 msgctxt "shortcut window"
@@ -2611,7 +2607,7 @@ msgstr "Imprime o documento"
 #: ../gedit/resources/ui/gedit-shortcuts.ui.h:51
 msgctxt "shortcut window"
 msgid "Show completion window"
-msgstr "Mostrar janela de completação"
+msgstr "Mostra janela de completação"
 
 #: ../gedit/resources/ui/gedit-tab-label.ui.h:1
 msgid "Close Document"
@@ -3338,19 +3334,17 @@ msgstr "Cor de _erro:"
 #: ../plugins/pythonconsole/pythonconsole/__init__.py:60
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:1
 msgid "Python Console"
-msgstr "Console python"
+msgstr "Console Python"
 
 #: ../plugins/pythonconsole/pythonconsole.plugin.desktop.in.h:2
 msgid "Interactive Python console standing in the bottom panel"
-msgstr "Console python interativo situado no painel inferior"
+msgstr "Console Python interativo situado no painel inferior"
 
 #: ../plugins/quickhighlight/quickhighlight.plugin.desktop.in.h:1
-#| msgid "Highlighting"
 msgid "Quick Highlight"
 msgstr "Destaque rápido"
 
 #: ../plugins/quickhighlight/quickhighlight.plugin.desktop.in.h:2
-#| msgid "Changes the case of selected text."
 msgid "Highlights every occurrences of selected text."
 msgstr "Destaca todas as ocorrências do texto selecionado."
 
@@ -3552,12 +3546,12 @@ msgstr "Digite um novo atalho"
 msgid ""
 "Execution of the Python command (%s) exceeds the maximum time, execution "
 "aborted."
-msgstr "A execução do comando python (%s) excedeu o tempo máximo: abortando."
+msgstr "A execução do comando Python (%s) excedeu o tempo máximo: abortando."
 
 #: ../plugins/snippets/snippets/placeholder.py:613
 #, python-format
 msgid "Execution of the Python command (%s) failed: %s"
-msgstr "Falha na execução do comando python (%s): %s"
+msgstr "Falha na execução do comando Python (%s): %s"
 
 #: ../plugins/snippets/snippets.plugin.desktop.in.h:2
 msgid "Insert often-used pieces of text in a fast way"
@@ -3758,6 +3752,12 @@ msgstr "Inserir data/hora"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Insere a data e hora atuais na posição do cursor."
+
+#~ msgid "C_haracter Encoding:"
+#~ msgstr "_Codificação de caracteres:"
+
+#~ msgid "L_ine Ending:"
+#~ msgstr "F_im de linha:"
 
 #~ msgid "_Ignore"
 #~ msgstr "_Ignorar"
