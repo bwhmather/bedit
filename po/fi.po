@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2018-08-08 16:05+0000\n"
-"PO-Revision-Date: 2018-08-18 11:34+0300\n"
+"POT-Creation-Date: 2018-08-18 08:36+0000\n"
+"PO-Revision-Date: 2018-08-18 21:50+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -91,20 +91,14 @@ msgid "Use Default Font"
 msgstr "Käytä oletusfonttia"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:2
-#, fuzzy
-#| msgid ""
-#| "Whether to use the system's default fixed width font for editing text "
-#| "instead of a font specific to gedit. If this option is turned off, then "
-#| "the font named in the \"Editor Font\" option will be used instead of the "
-#| "system font."
 msgid ""
 "Whether to use the system’s default fixed width font for editing text "
 "instead of a font specific to gedit. If this option is turned off, then the "
 "font named in the “Editor Font” option will be used instead of the system "
 "font."
 msgstr ""
-"Määrittää käytetäänkö tekstin muokkaukseen järjestelmän oletusfonttia "
-"geditissä määritellyn fontin sijasta. Jos tämä otetaan pois päältä, "
+"Määrittää käytetäänkö tekstin muokkaukseen järjestelmän tasalevyistä "
+"oletusfonttia geditissä määritellyn fontin sijasta. Jos tämä on pois päältä, "
 "käytetään kohdassa ”Muokkaimen fontti” määriteltyä fonttia."
 
 #. Translators: This is a GSettings default value. Do NOT change or localize the quotation marks!
@@ -117,16 +111,12 @@ msgid "Editor Font"
 msgstr "Muokkaimen fontti"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:6
-#, fuzzy
-#| msgid ""
-#| "A custom font that will be used for the editing area. This will only take "
-#| "effect if the \"Use Default Font\" option is turned off."
 msgid ""
 "A custom font that will be used for the editing area. This will only take "
 "effect if the “Use Default Font” option is turned off."
 msgstr ""
-"Mukautettu fontti, jota käytetään muokkausalueella. Tämä on voimassa "
-"ainoastaan mikäli asetus ”Käytä oletusfonttia” ei ole päällä."
+"Muokkausalueella käytettävä omavalintainen fontti. Tämä on voimassa "
+"ainoastaan mikäli valinta “Käytä oletusfonttia” ei ole päällä."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:7
 msgid "Style Scheme"
@@ -151,27 +141,18 @@ msgid "Autosave"
 msgstr "Autotallennus"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:12
-#, fuzzy
-#| msgid ""
-#| "Whether gedit should automatically save modified files after a time "
-#| "interval. You can set the time interval with the \"Autosave Interval\" "
-#| "option."
 msgid ""
 "Whether gedit should automatically save modified files after a time "
 "interval. You can set the time interval with the “Autosave Interval” option."
 msgstr ""
 "Tallentaako gedit automaattisesti muokatut tiedostot tietyn ajan jälkeen. "
-"Haluttu aikaväli voidaan asettaa ”Autotallennus väli”-valintaan."
+"Haluttu aikaväli voidaan asettaa ”Autotallennuksen väli”-valintaan."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:13
 msgid "Autosave Interval"
 msgstr "Autotallennuksen väli"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:14
-#, fuzzy
-#| msgid ""
-#| "Number of minutes after which gedit will automatically save modified "
-#| "files. This will only take effect if the \"Autosave\" option is turned on."
 msgid ""
 "Number of minutes after which gedit will automatically save modified files. "
 "This will only take effect if the “Autosave” option is turned on."
@@ -184,28 +165,18 @@ msgid "Maximum Number of Undo Actions"
 msgstr "Kumoamistoimintojen enimmäismäärä"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:16
-#, fuzzy
-#| msgid ""
-#| "Maximum number of actions that gedit will be able to undo or redo. Use "
-#| "\"-1\" for unlimited number of actions."
 msgid ""
 "Maximum number of actions that gedit will be able to undo or redo. Use “-1” "
 "for unlimited number of actions."
 msgstr ""
 "Suurin määrä toimintoja jotka gedit voi kumota tai tehdä uudestaan. Arvo "
-"”-1” tarkoittaa rajatonta määrää."
+"“-1” tarkoittaa rajatonta määrää."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:17
 msgid "Line Wrapping Mode"
 msgstr "Rivitystapa"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:18
-#, fuzzy
-#| msgid ""
-#| "Specifies how to wrap long lines in the editing area. Use \"none\" for no "
-#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-#| "wrapping at individual character boundaries. Note that the values are "
-#| "case-sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
 "Specifies how to wrap long lines in the editing area. Use “none” for no "
 "wrapping, “word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -213,8 +184,8 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr ""
 "Määrittää kuinka pitkät rivit rivitetään muokkausalueella. Käytä arvoa "
-"”none” jos et halua rivittää, ”word” rivittääksesi sanan vaihtuessa, ja "
-"”char” rivittääksesi yksittäisen merkin kohdalta. Huomaa, että kirjainkoko "
+"“none” jos et halua rivittää, “word” rivittääksesi sanan vaihtuessa, ja "
+"“char” rivittääksesi yksittäisen merkin kohdalta. Huomaa, että kirjainkoko "
 "merkitsee arvoissa, joten varmista että kirjoitat arvon täsmälleen kuten "
 "tässä on neuvottu."
 
@@ -223,12 +194,6 @@ msgid "Last split mode choice for line wrapping mode"
 msgstr "Rivitystilan viimeisen jakotilan valinta"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:20
-#, fuzzy
-#| msgid ""
-#| "Specifies the last split mode used with line wrapping mode, so that when "
-#| "wrapping mode is off we still remember the split mode choice. Use \"word"
-#| "\" for wrapping at word boundaries, and \"char\" for wrapping at "
-#| "individual character boundaries."
 msgid ""
 "Specifies the last split mode used with line wrapping mode, so that when "
 "wrapping mode is off we still remember the split mode choice. Use “word” for "
@@ -236,8 +201,8 @@ msgid ""
 "boundaries."
 msgstr ""
 "Määrittää rivitystilan kanssa käytettävän viimeisen jakotilan, jotta "
-"rivityksen ollessa pois käytöstä jakotilan valinta muistettaisiin edelleen. "
-"Käytä arvoa ”word\" rivittääksesi sanan vaihtuessa, ja ”char\" rivittääksesi "
+"rivityksen ollessa pois käytöstä jakotilan valinta muistetaan edelleen. "
+"Käytä arvoa “word” rivittääksesi sanan vaihtuessa, ja “char” rivittääksesi "
 "yksittäisten merkkien kohdalta."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:21
@@ -327,15 +292,6 @@ msgid "Smart Home End"
 msgstr "Älykkäät Home/End-näppäimet"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:42
-#, fuzzy
-#| msgid ""
-#| "Specifies how the cursor moves when the HOME and END keys are pressed. "
-#| "Use \"disabled\" to always move at the start/end of the line, \"after\" "
-#| "to move to the start/end of the line the first time the keys are pressed "
-#| "and to the start/end of the text ignoring whitespaces the second time the "
-#| "keys are pressed, \"before\" to move to the start/end of the text before "
-#| "moving to the start/end of the line and \"always\" to always move to the "
-#| "start/end of the text instead of the start/end of the line."
 msgid ""
 "Specifies how the cursor moves when the HOME and END keys are pressed. Use "
 "“disabled” to always move at the start/end of the line, “after” to move to "
@@ -345,12 +301,12 @@ msgid ""
 "start/end of the line and “always” to always move to the start/end of the "
 "text instead of the start/end of the line."
 msgstr ""
-"Määrittää, kuinka kohdistin liikkuu, kun Home ja End-näppäimiä painetaan. "
-"Arvolla ”disabled” siirrytään aina rivin alkuun tai loppuun, arvolla ”after” "
+"Määrittää, kuinka kohdistin liikkuu, kun Home- ja End-näppäimiä painetaan. "
+"Arvolla “disabled” siirrytään aina rivin alkuun tai loppuun, arvolla “after” "
 "siirrytään ensi kerralla rivin alkuun tai loppuun, ja toisella "
 "painalluksella tekstin alkuun tai loppuun, jättäen tyhjä tila huomioimatta, "
-"arvolla ”before” siirrytään aina ensin tekstin alkuun tai loppuun ennen "
-"rivin alkuun tai loppuun siirtymistä, ja arvolla ”always” siirrytään aina "
+"arvolla “before” siirrytään aina ensin tekstin alkuun tai loppuun ennen "
+"rivin alkuun tai loppuun siirtymistä, ja arvolla “always” siirrytään aina "
 "tekstin alkuun tai loppuun rivin alun tai lopun sijasta."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:43
@@ -401,23 +357,17 @@ msgstr "Määrittää näytetäänkö muokkausikkunoissa työkalupalkki."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:53
 msgid "Notebook Show Tabs Mode"
-msgstr "Muistio. Näytä välilehdet tila."
+msgstr "Muistio. Näytä välilehdet -tila"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:54
-#, fuzzy
-#| msgid ""
-#| "Specifies when to show the notebook tabs. Use \"never\" to never show the "
-#| "tabs, \"always\" to always show the tabs, and \"auto\" to show the tabs "
-#| "only when there is more than one tab. Note that the values are case-"
-#| "sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
 "Specifies when to show the notebook tabs. Use “never” to never show the "
 "tabs, “always” to always show the tabs, and “auto” to show the tabs only "
 "when there is more than one tab. Note that the values are case-sensitive, so "
 "make sure they appear exactly as mentioned here."
 msgstr ""
-"Määrittää milloin välilehdet näytetään. Käytä arvoa ”never” jos et halua "
-"välilehtiä koskaan, ”always” välilehtien näyttämiseksi aina ja ”auto” "
+"Määrittää milloin välilehdet näytetään. Käytä arvoa “never” jos et halua "
+"välilehtiä koskaan, “always” välilehtien näyttämiseksi aina ja “auto” "
 "välilehtien näyttämiseksi vain kun niitä on yli yksi. Huomaa, että "
 "kirjainkoko merkitsee arvoissa, joten varmista että kirjoitat arvon "
 "täsmälleen kuten tässä on neuvottu."
@@ -445,15 +395,11 @@ msgid "Maximum Recent Files"
 msgstr "Viimeisimmät tiedostot -listan enimmäispituus"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:60
-#, fuzzy
-#| msgid ""
-#| "Specifies the maximum number of recently opened files that will be "
-#| "displayed in the \"Recent Files\" submenu."
 msgid ""
 "Specifies the maximum number of recently opened files that will be displayed "
 "in the “Recent Files” submenu."
 msgstr ""
-"Määrittää kohdassa ”Viimeisimmät tiedostot” näytettävien äskettäin avattujen "
+"Määrittää kohdassa “Viimeisimmät tiedostot” näytettävien äskettäin avattujen "
 "tiedostojen enimmäismäärän."
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:61
@@ -477,12 +423,6 @@ msgid "Printing Line Wrapping Mode"
 msgstr "Tulostuksen rivitystapa"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:66
-#, fuzzy
-#| msgid ""
-#| "Specifies how to wrap long lines for printing. Use \"none\" for no "
-#| "wrapping, \"word\" for wrapping at word boundaries, and \"char\" for "
-#| "wrapping at individual character boundaries. Note that the values are "
-#| "case-sensitive, so make sure they appear exactly as mentioned here."
 msgid ""
 "Specifies how to wrap long lines for printing. Use “none” for no wrapping, "
 "“word” for wrapping at word boundaries, and “char” for wrapping at "
@@ -490,8 +430,8 @@ msgid ""
 "make sure they appear exactly as mentioned here."
 msgstr ""
 "Määrittää kuinka pitkät rivit rivitetään tulostusta varten. Käytä arvoa "
-"”none” jos et halua rivittää, ”word” rivittääksesi sanan vaihtuessa, ja "
-"”char” rivittääksesi yksittäisen merkin kohdalta. Huomaa, että kirjainkoko "
+"“none” jos et halua rivittää, “word” rivittääksesi sanan vaihtuessa, ja "
+"“char” rivittääksesi yksittäisen merkin kohdalta. Huomaa, että kirjainkoko "
 "merkitsee arvoissa, joten varmista että kirjoitat arvon täsmälleen kuten "
 "tässä on neuvottu."
 
@@ -518,9 +458,6 @@ msgid "Body Font for Printing"
 msgstr "Tekstin tulostusfontti"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:72
-#, fuzzy
-#| msgid ""
-#| "Specifies the font to use for a document's body when printing documents."
 msgid ""
 "Specifies the font to use for a document’s body when printing documents."
 msgstr "Määrittää tulostettaessa käytettävän fontin."
@@ -535,10 +472,6 @@ msgid "Header Font for Printing"
 msgstr "Otsikkotietojen tulostusfontti"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:76
-#, fuzzy
-#| msgid ""
-#| "Specifies the font to use for page headers when printing a document. This "
-#| "will only take effect if the \"Print Header\" option is turned on."
 msgid ""
 "Specifies the font to use for page headers when printing a document. This "
 "will only take effect if the “Print Header” option is turned on."
@@ -556,10 +489,6 @@ msgid "Line Number Font for Printing"
 msgstr "Rivinumeroiden tulostusfontti"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:80
-#, fuzzy
-#| msgid ""
-#| "Specifies the font to use for line numbers when printing. This will only "
-#| "take effect if the \"Print Line Numbers\" option is non-zero."
 msgid ""
 "Specifies the font to use for line numbers when printing. This will only "
 "take effect if the “Print Line Numbers” option is non-zero."
@@ -604,13 +533,6 @@ msgid "Candidate Encodings"
 msgstr "Mahdolliset koodaustavat"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:90
-#, fuzzy
-#| msgid ""
-#| "List of candidate encodings shown in the Character Encoding menu in the "
-#| "open/save file chooser. \"CURRENT\" represents the current locale "
-#| "encoding. Only recognized encodings are used. The default value is the "
-#| "empty list, in which case gedit will choose good defaults depending on "
-#| "the country and language."
 msgid ""
 "List of candidate encodings shown in the Character Encoding menu in the open/"
 "save file chooser. “CURRENT” represents the current locale encoding. Only "
@@ -618,7 +540,7 @@ msgid ""
 "case gedit will choose good defaults depending on the country and language."
 msgstr ""
 "Luettelo tiedoston avaus- ja tallennusikkunassa näytettävistä mahdollisista "
-"koodaustavoista. ”CURRENT” edustaa vallitsevan maa-asetuston koodaustapaa. "
+"koodaustavoista. “CURRENT” edustaa vallitsevan maa-asetuston koodaustapaa. "
 "Vain tunnistettuja koodaustapoja käytetään. Oletusarvo on tyhjä lista, ja "
 "tällöin gedit valitsee hyvät oletusarvot maan ja kielen mukaan."
 
@@ -627,18 +549,13 @@ msgid "Active plugins"
 msgstr "Käytössä olevat liitännäiset"
 
 #: ../data/org.gnome.gedit.gschema.xml.in.h:92
-#, fuzzy
-#| msgid ""
-#| "List of active plugins. It contains the \"Location\" of the active "
-#| "plugins. See the .gedit-plugin file for obtaining the \"Location\" of a "
-#| "given plugin."
 msgid ""
 "List of active plugins. It contains the “Location” of the active plugins. "
 "See the .gedit-plugin file for obtaining the “Location” of a given plugin."
 msgstr ""
 "Lista aktiivisista liitännäisistä. Lista sisältää aktiivisen liitännäisen "
 "sijainnin. Katso tiedostoa .gedit-plugin, josta voit selvittää kunkin "
-"liitännäisen sijainnin kohdasta ”Location”."
+"liitännäisen sijainnin kohdasta “Location” ."
 
 #: ../gedit/gedit-app.c:110
 msgid "Show the application’s version"
@@ -675,7 +592,7 @@ msgstr ""
 
 #: ../gedit/gedit-app.c:151
 msgid "Run gedit in standalone mode"
-msgstr "Suorita gedit erillisessä tilassa."
+msgstr "Suorita gedit standalone-tilassa."
 
 #: ../gedit/gedit-app.c:158
 msgid "[FILE…] [+LINE[:COLUMN]]"
@@ -2343,7 +2260,7 @@ msgstr "_Etsi"
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:6
 msgctxt "label on the left of the GtkEntry containing text to search"
 msgid "F_ind "
-msgstr "Et_si"
+msgstr "Et_si "
 
 #: ../gedit/resources/ui/gedit-replace-dialog.ui.h:7
 msgid "Replace _with "
@@ -2805,10 +2722,6 @@ msgid "Whether to use the system font"
 msgstr "Käytetäänkö järjestelmän fonttia"
 
 #: ../plugins/externaltools/org.gnome.gedit.plugins.externaltools.gschema.xml.in.h:2
-#, fuzzy
-#| msgid ""
-#| "If true, the external tools will use the desktop-global standard font if "
-#| "it's monospace (and the most similar font it can come up with otherwise)."
 msgid ""
 "If true, the external tools will use the desktop-global standard font if "
 "it’s monospace (and the most similar font it can come up with otherwise)."
@@ -3204,12 +3117,6 @@ msgid "Set Location to First Document"
 msgstr "Aseta sijainti ensimmäiselle asiakirjalle"
 
 #: ../plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in.h:10
-#, fuzzy
-#| msgid ""
-#| "If TRUE the file browser plugin will view the directory of the first "
-#| "opened document given that the file browser hasn't been used yet. (Thus "
-#| "this generally applies to opening a document from the command line or "
-#| "opening it with Nautilus, etc.)"
 msgid ""
 "If TRUE the file browser plugin will view the directory of the first opened "
 "document given that the file browser hasn’t been used yet. (Thus this "
@@ -3336,10 +3243,6 @@ msgid "The error color text"
 msgstr "Virheen väri"
 
 #: ../plugins/pythonconsole/org.gnome.gedit.plugins.pythonconsole.gschema.xml.in.h:6
-#, fuzzy
-#| msgid ""
-#| "If true, the terminal will use the desktop-global standard font if it's "
-#| "monospace (and the most similar font it can come up with otherwise)."
 msgid ""
 "If true, the terminal will use the desktop-global standard font if it’s "
 "monospace (and the most similar font it can come up with otherwise)."
