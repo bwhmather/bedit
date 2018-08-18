@@ -13,7 +13,7 @@
 # Wouter Bolsterlee <wbolster@gnome.org>, 2008–2013.
 # Rob van den Berg <linuxned@gmail.com>, 2010.
 # Kenneth Venken <kenneth.venken@gmail.com>, 2010.
-# Hannie Dumoleyn <hannie@ubuntu.org>, 2010-2012, 2013, 2015, 2016.
+# Hannie Dumoleyn <hannie@ubuntu.org>, 2010-2012, 2013, 2015, 2016, 2018.
 # Erwin Poeze <donnut@outlook.com>, 2014.
 # Nathan Follens <nthn@unseen.is>, 2015, 2018.
 # Justin van Steijn <jvs@fsfe.org>, 2016, 2018.
@@ -21,18 +21,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-03-28 14:58+0000\n"
-"PO-Revision-Date: 2018-03-29 21:28+0200\n"
-"Last-Translator: Justin van Steijn <jvs@fsfe.org>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"POT-Creation-Date: 2018-08-08 16:05+0000\n"
+"PO-Revision-Date: 2018-08-18 10:11+0100\n"
+"Last-Translator: Hannie Dumoleyn <hannie@ubuntu-nl.org>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Lokalize 2.0\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 #: ../data/org.gnome.gedit.desktop.in.in.h:2
@@ -1074,27 +1073,21 @@ msgstr "Verplaatsen naar een hogere prioriteit"
 msgid "Move to a lower priority"
 msgstr "Verplaatsen naar een lagere prioriteit"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:45
 #: ../gedit/gedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "Alle bestanden"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:42
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:46
 msgid "All Text Files"
 msgstr "Alle tekstbestanden"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:307
-msgid "C_haracter Encoding:"
-msgstr "T_ekenset:"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:366
-msgid "L_ine Ending:"
-msgstr "Rege_leinde:"
-
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:317
 #: ../gedit/gedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
 msgstr "Tekenset:"
 
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:350
 #: ../gedit/gedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
 msgstr "Regeleinde:"
@@ -3322,6 +3315,16 @@ msgstr "Python-opdrachtregel"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interactieve Python-opdrachtregel in het onderpaneel"
 
+#: ../plugins/quickhighlight/quickhighlight.plugin.desktop.in.h:1
+#| msgid "Highlighting"
+msgid "Quick Highlight"
+msgstr "Snel markeren"
+
+#: ../plugins/quickhighlight/quickhighlight.plugin.desktop.in.h:2
+#| msgid "Sorts a document or selected text."
+msgid "Highlights every occurrences of selected text."
+msgstr "Elke geselecteerde tekst wordt gemarkeerd."
+
 #: ../plugins/quickopen/quickopen/__init__.py:47
 msgid "Quick Open…"
 msgstr "Snel openen…"
@@ -3727,6 +3730,12 @@ msgstr "Datum/tijd invoegen"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Voegt de huidige datum en tijd in op de cursor positie."
+
+#~ msgid "C_haracter Encoding:"
+#~ msgstr "T_ekenset:"
+
+#~ msgid "L_ine Ending:"
+#~ msgstr "Rege_leinde:"
 
 #~ msgid "_Ignore"
 #~ msgstr "Ne_geren"
