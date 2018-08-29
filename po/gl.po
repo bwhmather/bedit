@@ -16,12 +16,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit-master-po-gl-116402.merged\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-03-26 22:08+0000\n"
-"PO-Revision-Date: 2018-02-09 15:09+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"POT-Creation-Date: 2018-08-08 16:05+0000\n"
+"PO-Revision-Date: 2018-08-30 00:53+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
-"Language-Team: Galician\n"
+"Language-Team: Proxecto Trasno <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1066,27 +1065,21 @@ msgstr "Mover a unha prioridade máis alta"
 msgid "Move to a lower priority"
 msgstr "Mover a unha prioridade máis baixa"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:45
 #: ../gedit/gedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "Todos os ficheiros"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:42
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:46
 msgid "All Text Files"
 msgstr "Todos os ficheiros de texto"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:307
-msgid "C_haracter Encoding:"
-msgstr "Codificación de _caracteres:"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:366
-msgid "L_ine Ending:"
-msgstr "Finalización de li_ña:"
-
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:317
 #: ../gedit/gedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
 msgstr "Codificación de caracteres:"
 
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:350
 #: ../gedit/gedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
 msgstr "Finalización de liña:"
@@ -3305,6 +3298,16 @@ msgstr "Consola de Python"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Consola interactiva de Python no panel inferior"
 
+#: ../plugins/quickhighlight/quickhighlight.plugin.desktop.in.h:1
+#| msgid "Highlighting"
+msgid "Quick Highlight"
+msgstr "Realce rápido"
+
+#: ../plugins/quickhighlight/quickhighlight.plugin.desktop.in.h:2
+#| msgid "Changes the case of selected text."
+msgid "Highlights every occurrences of selected text."
+msgstr "Realza todas as aparicións do texto seleccionado."
+
 #: ../plugins/quickopen/quickopen/__init__.py:47
 msgid "Quick Open…"
 msgstr "Abrir rápido…"
@@ -3710,6 +3713,12 @@ msgstr "Inserir data e hora"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Insire a data e hora actuais na posición do cursor."
+
+#~ msgid "C_haracter Encoding:"
+#~ msgstr "Codificación de _caracteres:"
+
+#~ msgid "L_ine Ending:"
+#~ msgstr "Finalización de li_ña:"
 
 #~ msgid "_Ignore"
 #~ msgstr "_Ignorar"
@@ -4176,9 +4185,6 @@ msgstr "Insire a data e hora actuais na posición do cursor."
 
 #~ msgid "Change Case"
 #~ msgstr "Cambiar maiúsculas e minúsculas"
-
-#~ msgid "Changes the case of selected text."
-#~ msgstr "Cambia as maiúsculas e minúsculas no texto seleccionado."
 
 #~ msgid "C_hange Case"
 #~ msgstr "C_ambiar maiúsculas e minúsculas"
