@@ -4,10 +4,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit 0\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gedit&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-03-13 21:02+0000\n"
-"PO-Revision-Date: 2018-03-16 18:27+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
+"POT-Creation-Date: 2018-08-08 16:05+0000\n"
+"PO-Revision-Date: 2018-09-02 14:17+0200\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -17,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2016-09-22 10:43+0000\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: ../data/org.gnome.gedit.appdata.xml.in.h:1
 #: ../data/org.gnome.gedit.desktop.in.in.h:2
@@ -1072,27 +1071,21 @@ msgstr "Premjesti u viši prioritet"
 msgid "Move to a lower priority"
 msgstr "Premjesti u niži prioritet"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:41
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:45
 #: ../gedit/gedit-preferences-dialog.c:834
 msgid "All Files"
 msgstr "Sve datoteke"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:42
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:46
 msgid "All Text Files"
 msgstr "Sve tekstovne datoteke"
 
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:307
-msgid "C_haracter Encoding:"
-msgstr "Kôdiranje z_nakova:"
-
-#: ../gedit/gedit-file-chooser-dialog-gtk.c:366
-msgid "L_ine Ending:"
-msgstr "Završetak r_etka:"
-
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:317
 #: ../gedit/gedit-file-chooser-dialog-osx.c:547
 msgid "Character Encoding:"
 msgstr "Kôdne stranice:"
 
+#: ../gedit/gedit-file-chooser-dialog-gtk.c:350
 #: ../gedit/gedit-file-chooser-dialog-osx.c:620
 msgid "Line Ending:"
 msgstr "Završetak retka:"
@@ -3297,6 +3290,14 @@ msgstr "Python konzola"
 msgid "Interactive Python console standing in the bottom panel"
 msgstr "Interaktivna Python konzola smještena u donjem panelu"
 
+#: ../plugins/quickhighlight/quickhighlight.plugin.desktop.in.h:1
+msgid "Quick Highlight"
+msgstr "Brzo isticanje"
+
+#: ../plugins/quickhighlight/quickhighlight.plugin.desktop.in.h:2
+msgid "Highlights every occurrences of selected text."
+msgstr "Ističe svako pjavljivanje odabranog teksta."
+
 #: ../plugins/quickopen/quickopen/__init__.py:47
 msgid "Quick Open…"
 msgstr "Brzo otvaranje…"
@@ -3701,6 +3702,12 @@ msgstr "Umetni datum/vrijeme"
 #: ../plugins/time/time.plugin.desktop.in.h:2
 msgid "Inserts current date and time at the cursor position."
 msgstr "Umeće trenutni datum i vrijeme na mjesto pokazivača."
+
+#~ msgid "C_haracter Encoding:"
+#~ msgstr "Kôdiranje z_nakova:"
+
+#~ msgid "L_ine Ending:"
+#~ msgstr "Završetak r_etka:"
 
 #~ msgid "_Ignore"
 #~ msgstr "_Zanemari"
