@@ -214,7 +214,7 @@ chooser_hide (GeditFileChooserDialog *dialog)
 static void
 chooser_destroy (GeditFileChooserDialog *dialog)
 {
-	//gtk_widget_destroy (GTK_WIDGET (dialog));
+	g_object_unref (dialog);
 }
 
 static void
