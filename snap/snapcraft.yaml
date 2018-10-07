@@ -67,7 +67,7 @@ parts:
     plugin: autotools
     configflags: [--prefix=/snap/gedit/current/usr]
     override-build: |
-      sed -i.bak -e 's|Icon=gedit$|Icon=${SNAP}/meta/gui/gedit.png|g' data/org.gnome.gedit.desktop.in.in
+      sed -i.bak -e 's|Icon=org.gnome.gedit$|Icon=${SNAP}/meta/gui/org.gnome.gedit.png|g' data/org.gnome.gedit.desktop.in.in
       snapcraftctl build
       mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
       cp ../src/data/icons/hicolor/256x256/apps/gedit.png $SNAPCRAFT_PART_INSTALL/meta/gui/
