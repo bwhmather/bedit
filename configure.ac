@@ -472,11 +472,11 @@ It will probably crash and you will lose your data.
 If you are looking for a stable release of gedit, either download
 it from:
 
-  http://ftp.gnome.org/pub/gnome/sources/gedit/${GEDIT_MAJOR_VERSION}.${stable_version}/
+  https://download.gnome.org/sources/gedit/${GEDIT_MAJOR_VERSION}.${stable_version}/
 
 Or checkout the gnome-${GEDIT_MAJOR_VERSION}-${stable_version} branch of the gedit module from:
 
-  git://git.gnome.org/gedit
+  https://gitlab.gnome.org/GNOME/gedit
 
 Thanks,
 The gedit team
