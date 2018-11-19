@@ -436,6 +436,23 @@ fileitem_setup (FileItem *item)
 	return candidate;
 }
 
+static inline gboolean
+is_filter_in_candidate (const gchar *candidate,
+                        const gchar *filter)
+{
+	gchar *candidate_fold;
+	gboolean ret;
+
+	g_assert (candidate != NULL);
+	g_assert (filter != NULL);
+
+	candidate_fold = g_utf8_casefold (candidate, -1);
+	ret = (strstr (candidate_fold, filter) != NULL);
+
+	g_free (candidate_fold);
+	return ret;
+}
+
 /* If filter == NULL then items are
  * not checked against the filter.
  */
@@ -445,6 +462,10 @@ fileitem_list_filter (GList       *items,
 {
 	GList *new_items = NULL;
 	GList *l;
+	gchar *filter_fold = NULL;
+
+	if (filter != NULL)
+		filter_fold = g_utf8_casefold (filter, -1);
 
 	for (l = items; l != NULL; l = l->next)
 	{
@@ -453,16 +474,19 @@ fileitem_list_filter (GList       *items,
 
 		item = l->data;
 		candidate = fileitem_setup (item);
-
-		if (candidate && (filter ==  NULL || strstr (candidate, filter)))
+		if (candidate != NULL)
 		{
-			new_items = g_list_prepend (new_items,
-			                            gedit_open_document_selector_copy_fileitem_item (item));
-		}
+			if (filter == NULL || is_filter_in_candidate (candidate, filter_fold))
+			{
+				new_items = g_list_prepend (new_items,
+					                    gedit_open_document_selector_copy_fileitem_item (item));
+			}
 
-		g_free (candidate);
+			g_free (candidate);
+		}
 	}
 
+	g_free (filter_fold);
 	new_items = g_list_reverse (new_items);
 	return new_items;
 }
