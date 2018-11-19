@@ -65,15 +65,15 @@
 
 struct _GeditOpenDocumentSelectorStore
 {
-	GObject parent_instance;
+	GObject                   parent_instance;
 
-	GSource *recent_source;
+	GSource                  *recent_source;
 
-	GeditRecentConfiguration recent_config;
-	gchar *filter;
-	GList *recent_items;
-	gint recent_config_limit;
-	gboolean recent_items_need_update;
+	GeditRecentConfiguration  recent_config;
+	gchar                    *filter;
+	GList                    *recent_items;
+	gint                      recent_config_limit;
+	gboolean                  recent_items_need_update;
 };
 
 G_LOCK_DEFINE_STATIC (recent_files_filter_lock);
