@@ -484,9 +484,7 @@ multi_pages_button_clicked (GtkWidget         *button,
 	gtk_menu_attach (GTK_MENU (menu), item, 1, 2, 0, 1);
 	g_signal_connect (item, "activate", G_CALLBACK (on_1x2_clicked), preview);
 
-	gtk_menu_popup (GTK_MENU (menu),
-			NULL, NULL, NULL, preview, 0,
-			GDK_CURRENT_TIME);
+	gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
 }
 
 static void

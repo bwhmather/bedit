@@ -938,10 +938,7 @@ search_entry_icon_release (GtkEntry             *entry,
 			  G_CALLBACK (gtk_widget_destroy),
 			  NULL);
 
-	gtk_menu_popup (GTK_MENU (menu),
-	                NULL, NULL,
-	                gedit_utils_menu_position_under_widget, entry,
-	                event->button, event->time);
+	gtk_menu_popup_at_widget (GTK_MENU (menu), GTK_WIDGET (entry), GDK_GRAVITY_SOUTH_WEST, GDK_GRAVITY_NORTH_WEST, NULL);
 }
 
 static void

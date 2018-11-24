@@ -1178,6 +1178,7 @@ gedit_file_browser_widget_get_first_selected (GeditFileBrowserWidget *obj,
 
 static gboolean
 popup_menu (GeditFileBrowserWidget *obj,
+	    GtkTreeView            *treeview,
 	    GdkEventButton         *event,
 	    GtkTreeModel           *model)
 {
@@ -1197,13 +1198,13 @@ popup_menu (GeditFileBrowserWidget *obj,
 	if (event != NULL)
 	{
 		GtkTreeSelection *selection;
-		selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (obj->priv->treeview));
+		selection = gtk_tree_view_get_selection (treeview);
 
 		if (gtk_tree_selection_count_selected_rows (selection) <= 1)
 		{
 			GtkTreePath *path;
 
-			if (gtk_tree_view_get_path_at_pos (GTK_TREE_VIEW (obj->priv->treeview),
+			if (gtk_tree_view_get_path_at_pos (treeview,
 			                                   (gint)event->x, (gint)event->y,
 			                                   &path, NULL, NULL, NULL))
 			{
@@ -1213,16 +1214,26 @@ popup_menu (GeditFileBrowserWidget *obj,
 			}
 		}
 
-		gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL,
-				event->button, event->time);
+		gtk_menu_popup_at_pointer (GTK_MENU (menu), (GdkEvent *)event);
 	}
 	else
 	{
-		gtk_menu_popup (GTK_MENU (menu), NULL, NULL,
-				gedit_utils_menu_position_under_tree_view,
-				obj->priv->treeview, 0,
-				gtk_get_current_event_time ());
-		gtk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
+		GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (treeview));
+		GdkGravity rect_gravity = GDK_GRAVITY_EAST;
+		GdkGravity menu_gravity = GDK_GRAVITY_NORTH_WEST;
+		GdkRectangle rect;
+
+		if (gedit_utils_menu_position_under_tree_view (treeview, &rect))
+		{
+			if (gtk_widget_get_direction (GTK_WIDGET (treeview)) == GTK_TEXT_DIR_RTL)
+			{
+				rect_gravity = GDK_GRAVITY_WEST;
+				menu_gravity = GDK_GRAVITY_NORTH_EAST;
+			}
+
+			gtk_menu_popup_at_rect (GTK_MENU (menu), window, &rect, rect_gravity, menu_gravity, NULL);
+			gtk_menu_shell_select_first (GTK_MENU_SHELL (menu), FALSE);
+		}
 	}
 
 	return TRUE;
@@ -2501,82 +2512,6 @@ on_treeview_error (GeditFileBrowserView   *tree_view,
 	g_signal_emit (obj, signals[ERROR], 0, code, message);
 }
 
-/* Copied from GTK+'s gtkmenubutton.c and modified */
-static void
-menu_position_func (GtkMenu   *menu,
-		    gint      *x,
-		    gint      *y,
-		    gboolean  *push_in,
-		    GtkWidget *widget)
-{
-	GtkWidget *popup = GTK_WIDGET (menu);
-	GtkWidget *toplevel;
-	GtkRequisition menu_req;
-	GtkTextDirection direction;
-	GdkRectangle monitor;
-	gint monitor_num;
-	GdkScreen *screen;
-	GdkWindow *window;
-	GtkAllocation allocation, arrow_allocation;
-	GtkAlign align;
-
-	/* Set the corresponding type hint on the toplevel,
-	 * so the WM can omit the top side of the shadows.
-	 */
-	toplevel = gtk_widget_get_toplevel (popup);
-	gtk_window_set_type_hint (GTK_WINDOW (toplevel), GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU);
-
-	gtk_widget_get_preferred_size (popup, &menu_req, NULL);
-
-	align = gtk_widget_get_halign (popup);
-	direction = gtk_widget_get_direction (widget);
-	window = gtk_widget_get_window (widget);
-
-	screen = gtk_widget_get_screen (GTK_WIDGET (menu));
-	monitor_num = gdk_screen_get_monitor_at_window (screen, window);
-
-	if (monitor_num < 0)
-		monitor_num = 0;
-
-	gdk_screen_get_monitor_workarea (screen, monitor_num, &monitor);
-
-	gtk_widget_get_allocation (widget, &allocation);
-	gtk_widget_get_allocation (widget, &arrow_allocation);
-
-	gdk_window_get_origin (window, x, y);
-	*x += allocation.x;
-	*y += allocation.y;
-
-	/* treat the default align value like START */
-	if (align == GTK_ALIGN_FILL)
-		align = GTK_ALIGN_START;
-
-	if (align == GTK_ALIGN_CENTER)
-	{
-		*x -= (menu_req.width - allocation.width) / 2;
-	}
-	else if ((align == GTK_ALIGN_START && direction == GTK_TEXT_DIR_LTR) ||
-	         (align == GTK_ALIGN_END && direction == GTK_TEXT_DIR_RTL))
-	{
-		*x += MAX (allocation.width - menu_req.width, 0);
-	}
-	else if (menu_req.width > allocation.width)
-	{
-		*x -= menu_req.width - allocation.width;
-	}
-
-	if ((*y + arrow_allocation.height + menu_req.height) <= monitor.y + monitor.height)
-		*y += arrow_allocation.height;
-	else if ((*y - menu_req.height) >= monitor.y)
-		*y -= menu_req.height;
-	else if (monitor.y + monitor.height - (*y + arrow_allocation.height) > *y)
-		*y += arrow_allocation.height;
-	else
-		*y -= menu_req.height;
-
-	*push_in = FALSE;
-}
-
 static gboolean
 on_location_button_press_event (GtkWidget              *button,
 				GdkEventButton         *event,
@@ -2592,9 +2527,7 @@ on_location_button_press_event (GtkWidget              *button,
 	else
 		menu = obj->priv->location_next_menu;
 
-	gtk_menu_popup_for_device (GTK_MENU (menu), event->device, NULL, NULL,
-	                           (GtkMenuPositionFunc) menu_position_func,
-	                           button, NULL, event->button, event->time);
+	gtk_menu_popup_at_pointer (GTK_MENU (menu), (GdkEvent *)event);
 
 	return TRUE;
 }
@@ -2697,7 +2630,7 @@ static gboolean
 on_treeview_popup_menu (GeditFileBrowserView   *treeview,
 			GeditFileBrowserWidget *obj)
 {
-	return popup_menu (obj, NULL, gtk_tree_view_get_model (GTK_TREE_VIEW (treeview)));
+	return popup_menu (obj, treeview, NULL, gtk_tree_view_get_model (GTK_TREE_VIEW (treeview)));
 }
 
 static gboolean
@@ -2707,6 +2640,7 @@ on_treeview_button_press_event (GeditFileBrowserView   *treeview,
 {
 	if (event->type == GDK_BUTTON_PRESS && event->button == GDK_BUTTON_SECONDARY)
 		return popup_menu (obj,
+				   treeview,
 				   event,
 				   gtk_tree_view_get_model (GTK_TREE_VIEW (treeview)));
 

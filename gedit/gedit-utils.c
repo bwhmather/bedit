@@ -78,55 +78,37 @@ gedit_utils_menu_position_under_widget (GtkMenu  *menu,
 	*push_in = TRUE;
 }
 
-void
-gedit_utils_menu_position_under_tree_view (GtkMenu  *menu,
-					   gint     *x,
-					   gint     *y,
-					   gboolean *push_in,
-					   gpointer  user_data)
+gboolean
+gedit_utils_menu_position_under_tree_view (GtkTreeView  *tree_view,
+					   GdkRectangle *rect)
 {
-	GtkTreeView *tree = GTK_TREE_VIEW (user_data);
-	GtkTreeModel *model;
 	GtkTreeSelection *selection;
-	GtkTreeIter iter;
+	GtkTreeModel *model;
+	gint count_rows;
+	GList *rows;
+	gint widget_x, widget_y;
 
-	model = gtk_tree_view_get_model (tree);
-	g_return_if_fail (model != NULL);
+	model = gtk_tree_view_get_model (tree_view);
+	g_return_val_if_fail (model != NULL, FALSE);
 
-	selection = gtk_tree_view_get_selection (tree);
-	g_return_if_fail (selection != NULL);
+	selection = gtk_tree_view_get_selection (tree_view);
+	g_return_val_if_fail (selection != NULL, FALSE);
 
-	if (gtk_tree_selection_get_selected (selection, NULL, &iter))
-	{
-		GtkTreePath *path;
-		GdkRectangle rect;
+	count_rows = gtk_tree_selection_count_selected_rows (selection);
+	if (count_rows != 1)
+		return FALSE;
 
-		widget_get_origin (GTK_WIDGET (tree), x, y);
+	rows = gtk_tree_selection_get_selected_rows (selection, &model);
+	gtk_tree_view_get_cell_area (tree_view, (GtkTreePath *)(rows->data),
+				     gtk_tree_view_get_column (tree_view, 0),
+				     rect);
 
-		path = gtk_tree_model_get_path (model, &iter);
-		gtk_tree_view_get_cell_area (tree, path,
-					     gtk_tree_view_get_column (tree, 0), /* FIXME 0 for RTL ? */
-					     &rect);
-		gtk_tree_path_free (path);
+	gtk_tree_view_convert_bin_window_to_widget_coords (tree_view, rect->x, rect->y, &widget_x, &widget_y);
+	rect->x = widget_x;
+	rect->y = widget_y;
 
-		*x += rect.x;
-		*y += rect.y + rect.height;
-
-		if (gtk_widget_get_direction (GTK_WIDGET (tree)) == GTK_TEXT_DIR_RTL)
-		{
-			GtkRequisition requisition;
-			gtk_widget_get_preferred_size (GTK_WIDGET (menu),
-			                               &requisition, NULL);
-			*x += rect.width - requisition.width;
-		}
-	}
-	else
-	{
-		/* no selection -> regular "under widget" positioning */
-		gedit_utils_menu_position_under_widget (menu,
-							x, y, push_in,
-							tree);
-	}
+	g_list_free_full (rows, (GDestroyNotify) gtk_tree_path_free);
+	return TRUE;
 }
 
 /**

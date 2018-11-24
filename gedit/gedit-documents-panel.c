@@ -1506,12 +1506,7 @@ row_on_button_pressed (GtkWidget      *row_event_box,
 					  G_CALLBACK (gtk_widget_destroy),
 					  NULL);
 
-			gtk_menu_popup_for_device (GTK_MENU (menu),
-			                           gdk_event_get_device ((GdkEvent *)event),
-			                           NULL, NULL,
-			                           NULL, NULL, NULL,
-			                           event->button,
-			                           event->time);
+			gtk_menu_popup_at_pointer (GTK_MENU (menu), (GdkEvent *)event);
 
 			return TRUE;
 		}
