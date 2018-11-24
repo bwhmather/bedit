@@ -5,6 +5,8 @@
     <columns>
       <!-- column-name icon -->
       <column type="GdkPixbuf"/>
+      <!-- column-name icon name -->
+      <column type="gchararray"/>
       <!-- column-name name -->
       <column type="gchararray"/>
       <!-- column-name file -->
@@ -38,9 +40,6 @@
               <object class="GtkTreeViewColumn" id="treeview_icon_column">
                 <child>
                   <object class="GtkCellRendererPixbuf" id="treeview_icon_renderer"/>
-                  <attributes>
-                    <attribute name="pixbuf">0</attribute>
-                  </attributes>
                 </child>
               </object>
             </child>
@@ -51,7 +50,7 @@
                     <property name="ellipsize">end</property>
                   </object>
                   <attributes>
-                    <attribute name="text">1</attribute>
+                    <attribute name="text">2</attribute>
                   </attributes>
                 </child>
               </object>
@@ -156,16 +155,13 @@
                     <property name="model">locations_model</property>
                     <child>
                       <object class="GtkCellRendererPixbuf" id="cellview_icon_renderer"/>
-                      <attributes>
-                        <attribute name="pixbuf">0</attribute>
-                      </attributes>
                     </child>
                     <child>
                       <object class="GtkCellRendererText" id="cellview_name_renderer">
                         <property name="ellipsize">end</property>
                       </object>
                       <attributes>
-                        <attribute name="text">1</attribute>
+                        <attribute name="text">2</attribute>
                       </attributes>
                     </child>
                   </object>

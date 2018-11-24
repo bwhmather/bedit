@@ -52,6 +52,7 @@ enum
 enum
 {
 	COLUMN_ICON,
+	COLUMN_ICON_NAME,
 	COLUMN_NAME,
 	COLUMN_FILE,
 	COLUMN_ID,
@@ -103,6 +104,7 @@ typedef struct
 typedef struct
 {
 	gchar     *name;
+	gchar     *icon_name;
 	GdkPixbuf *icon;
 } NameIcon;
 
@@ -123,6 +125,8 @@ struct _GeditFileBrowserWidgetPrivate
 	GtkWidget               *locations_button;
 	GtkWidget               *locations_popover;
 	GtkWidget               *locations_treeview;
+	GtkTreeViewColumn       *treeview_icon_column;
+	GtkCellRenderer         *treeview_icon_renderer;
 	GtkTreeSelection        *locations_treeview_selection;
 	GtkWidget               *locations_button_arrow;
 	GtkWidget               *locations_cellview;
@@ -278,6 +282,7 @@ free_name_icon (gpointer data)
 	if (item == NULL)
 		return;
 
+	g_free (item->icon_name);
 	g_free (item->name);
 
 	if (item->icon)
@@ -530,6 +535,8 @@ gedit_file_browser_widget_class_init (GeditFileBrowserWidgetClass *klass)
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_popover);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_treeview);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_treeview_selection);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, treeview_icon_column);
+	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, treeview_icon_renderer);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_cellview);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_button_arrow);
 	gtk_widget_class_bind_template_child_private (widget_class, GeditFileBrowserWidget, locations_model);
@@ -576,6 +583,7 @@ static gboolean
 get_from_bookmark_file (GeditFileBrowserWidget  *obj,
 			GFile                   *file,
 			gchar                  **name,
+			gchar                  **icon_name,
 			GdkPixbuf              **icon)
 {
 	NameIcon *item = (NameIcon *)g_hash_table_lookup (obj->priv->bookmarks_hash, file);
@@ -584,6 +592,7 @@ get_from_bookmark_file (GeditFileBrowserWidget  *obj,
 		return FALSE;
 
 	*name = g_strdup (item->name);
+	*icon_name = g_strdup (item->icon_name);
 
 	if (icon != NULL && item->icon != NULL)
 	{
@@ -600,16 +609,17 @@ insert_path_item (GeditFileBrowserWidget *obj,
 		  GtkTreeIter            *iter)
 {
 	gchar *unescape = NULL;
+	gchar *icon_name = NULL;
 	GdkPixbuf *icon = NULL;
 
 	/* Try to get the icon and name from the bookmarks hash */
-	if (!get_from_bookmark_file (obj, file, &unescape, &icon))
+	if (!get_from_bookmark_file (obj, file, &unescape, &icon_name, &icon))
 	{
 		/* It's not a bookmark, fetch the name and the icon ourselves */
 		unescape = gedit_file_browser_utils_file_basename (file);
 
 		/* Get the icon */
-		icon = gedit_file_browser_utils_pixbuf_from_file (file, GTK_ICON_SIZE_MENU, TRUE);
+		icon_name = gedit_file_browser_utils_symbolic_icon_name_from_file (file);
 	}
 
 	gtk_list_store_insert_after (obj->priv->locations_model, iter, after);
@@ -617,6 +627,7 @@ insert_path_item (GeditFileBrowserWidget *obj,
 	gtk_list_store_set (obj->priv->locations_model,
 	                    iter,
 	                    COLUMN_ICON, icon,
+	                    COLUMN_ICON_NAME, icon_name,
 	                    COLUMN_NAME, unescape,
 	                    COLUMN_FILE, file,
 	                    COLUMN_ID, PATH_ID,
@@ -625,6 +636,7 @@ insert_path_item (GeditFileBrowserWidget *obj,
 	if (icon)
 		g_object_unref (icon);
 
+	g_free (icon_name);
 	g_free (unescape);
 }
 
@@ -636,6 +648,7 @@ insert_separator_item (GeditFileBrowserWidget *obj)
 	gtk_list_store_insert (obj->priv->locations_model, &iter, 1);
 	gtk_list_store_set (obj->priv->locations_model, &iter,
 			    COLUMN_ICON, NULL,
+			    COLUMN_ICON_NAME, NULL,
 			    COLUMN_NAME, NULL,
 			    COLUMN_ID, SEPARATOR_ID, -1);
 }
@@ -734,16 +747,13 @@ static void
 fill_locations_model (GeditFileBrowserWidget *obj)
 {
 	GeditFileBrowserWidgetPrivate *priv = obj->priv;
-	GtkListStore *store;
 	GtkTreeIter iter;
-	GdkPixbuf *icon;
 
-	store = obj->priv->locations_model;
-	icon = gedit_file_browser_utils_pixbuf_from_theme ("user-bookmarks-symbolic", GTK_ICON_SIZE_MENU);
-
-	gtk_list_store_append (store, &iter);
-	gtk_list_store_set (store, &iter,
-			    COLUMN_ICON, icon,
+	gtk_list_store_append (priv->locations_model, &iter);
+	gtk_list_store_set (priv->locations_model,
+			    &iter,
+			    COLUMN_ICON, NULL,
+			    COLUMN_ICON_NAME, "user-bookmarks-symbolic",
 			    COLUMN_NAME, _("Bookmarks"),
 			    COLUMN_ID, BOOKMARKS_ID, -1);
 
@@ -783,6 +793,7 @@ add_bookmark_hash (GeditFileBrowserWidget *obj,
 	GtkTreeModel *model = GTK_TREE_MODEL (obj->priv->bookmarks_store);
 	GdkPixbuf *pixbuf;
 	gchar *name;
+	gchar *icon_name;
 	GFile *location;
 	NameIcon *item;
 
@@ -792,11 +803,13 @@ add_bookmark_hash (GeditFileBrowserWidget *obj,
 	gtk_tree_model_get (model,
 			    iter,
 			    GEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
+			    GEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
 			    GEDIT_FILE_BOOKMARKS_STORE_COLUMN_NAME, &name,
 			    -1);
 
 	item = g_slice_new (NameIcon);
 	item->name = name;
+	item->icon_name = icon_name;
 	item->icon = pixbuf;
 
 	g_hash_table_insert (obj->priv->bookmarks_hash,
@@ -910,6 +923,31 @@ static GActionEntry browser_entries[] = {
 };
 
 static void
+locations_icon_renderer_cb (GtkTreeViewColumn      *tree_column,
+			    GtkCellRenderer        *cell,
+			    GtkTreeModel           *tree_model,
+			    GtkTreeIter            *iter,
+			    GeditFileBrowserWidget *obj)
+{
+	GdkPixbuf *pixbuf;
+	gchar *icon_name;
+
+	gtk_tree_model_get (tree_model,
+			    iter,
+			    GEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON_NAME, &icon_name,
+			    GEDIT_FILE_BOOKMARKS_STORE_COLUMN_ICON, &pixbuf,
+			    -1);
+
+	if (icon_name != NULL)
+		g_object_set (cell, "icon-name", icon_name, NULL);
+	else
+		g_object_set (cell, "pixbuf", pixbuf, NULL);
+
+	g_clear_object (&pixbuf);
+	g_free (icon_name);
+}
+
+static void
 gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 {
 	GtkBuilder *builder;
@@ -972,6 +1010,11 @@ gedit_file_browser_widget_init (GeditFileBrowserWidget *obj)
 
 	/* locations popover */
 	gtk_tree_selection_set_mode (obj->priv->locations_treeview_selection, GTK_SELECTION_SINGLE);
+	gtk_tree_view_column_set_cell_data_func (obj->priv->treeview_icon_column,
+						 obj->priv->treeview_icon_renderer,
+						 (GtkTreeCellDataFunc)locations_icon_renderer_cb,
+						 obj,
+						 NULL);
 	fill_locations_model (obj);
 
 	g_signal_connect (obj->priv->locations_treeview_selection, "changed",
@@ -1341,8 +1384,10 @@ create_goto_menu_item (GeditFileBrowserWidget *obj,
 {
 	Location *loc = (Location *) (item->data);
 	GtkWidget *result;
+	gchar *icon_name = NULL;
 	gchar *unescape = NULL;
 
+	if (!get_from_bookmark_file (obj, loc->virtual_root, &unescape, &icon_name, NULL))
 		unescape = gedit_file_browser_utils_file_basename (loc->virtual_root);
 
 	result = gtk_menu_item_new_with_label (unescape);
@@ -1353,6 +1398,7 @@ create_goto_menu_item (GeditFileBrowserWidget *obj,
 
 	gtk_widget_show (result);
 
+	g_free (icon_name);
 	g_free (unescape);
 
 	return result;

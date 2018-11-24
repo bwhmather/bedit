@@ -951,6 +951,35 @@ cell_data_cb (GtkTreeViewColumn    *tree_column,
 }
 
 static void
+icon_renderer_cb (GtkTreeViewColumn    *tree_column,
+                  GtkCellRenderer      *cell,
+                  GtkTreeModel         *tree_model,
+                  GtkTreeIter          *iter,
+                  GeditFileBrowserView *obj)
+{
+	GdkPixbuf *pixbuf;
+	gchar *icon_name;
+	gboolean set_pixbuf = FALSE;
+
+	gtk_tree_model_get (tree_model,
+			    iter,
+			    GEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME, &icon_name,
+			    GEDIT_FILE_BROWSER_STORE_COLUMN_ICON, &pixbuf,
+			    -1);
+
+	if (pixbuf != NULL && (GEDIT_IS_FILE_BROWSER_STORE (tree_model) || icon_name == NULL))
+		set_pixbuf = TRUE;
+
+	if (set_pixbuf)
+		g_object_set (cell, "pixbuf", pixbuf, NULL);
+	else
+		g_object_set (cell, "icon-name", icon_name, NULL);
+
+	g_clear_object (&pixbuf);
+	g_free (icon_name);
+}
+
+static void
 gedit_file_browser_view_init (GeditFileBrowserView *obj)
 {
 	obj->priv = gedit_file_browser_view_get_instance_private (obj);
@@ -961,10 +990,12 @@ gedit_file_browser_view_init (GeditFileBrowserView *obj)
 	gtk_tree_view_column_pack_start (obj->priv->column,
 					 obj->priv->pixbuf_renderer,
 					 FALSE);
-	gtk_tree_view_column_add_attribute (obj->priv->column,
-					    obj->priv->pixbuf_renderer,
-					    "pixbuf",
-					    GEDIT_FILE_BROWSER_STORE_COLUMN_ICON);
+
+	gtk_tree_view_column_set_cell_data_func (obj->priv->column,
+						 obj->priv->pixbuf_renderer,
+						 (GtkTreeCellDataFunc)icon_renderer_cb,
+						 obj,
+						 NULL);
 
 	obj->priv->text_renderer = gtk_cell_renderer_text_new ();
 	gtk_tree_view_column_pack_start (obj->priv->column,

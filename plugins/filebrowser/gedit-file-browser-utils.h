@@ -24,22 +24,23 @@
 #include <gedit/gedit-window.h>
 #include <gio/gio.h>
 
-GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_theme	(gchar const    *name,
-								 GtkIconSize     size);
+gchar           *gedit_file_browser_utils_name_from_themed_icon         (GIcon          *icon);
+GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_theme	        (gchar const    *name,
+									 GtkIconSize     size);
 
-GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_icon	(GIcon          *icon,
-								 GtkIconSize     size);
-GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_file	(GFile          *file,
-								 GtkIconSize     size,
-								 gboolean        use_symbolic);
+GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_icon	        (GIcon          *icon,
+									 GtkIconSize     size);
+GdkPixbuf	*gedit_file_browser_utils_pixbuf_from_file        	(GFile          *file,
+									 GtkIconSize     size,
+									 gboolean        use_symbolic);
+gchar           *gedit_file_browser_utils_symbolic_icon_name_from_file  (GFile *file);
+gchar		*gedit_file_browser_utils_file_basename		        (GFile          *file);
 
-gchar		*gedit_file_browser_utils_file_basename		(GFile          *file);
-
-gboolean	 gedit_file_browser_utils_confirmation_dialog	(GeditWindow    *window,
-								 GtkMessageType  type,
-								 gchar const    *message,
-								 gchar const    *secondary,
-								 gchar const    *button_label);
+gboolean	 gedit_file_browser_utils_confirmation_dialog	        (GeditWindow    *window,
+									 GtkMessageType  type,
+									 gchar const    *message,
+									 gchar const    *secondary,
+									 gchar const    *button_label);
 
 #endif /* GEDIT_FILE_BROWSER_UTILS_H */
 /* ex:set ts=8 noet: */

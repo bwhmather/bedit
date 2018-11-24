@@ -139,6 +139,49 @@ gedit_file_browser_utils_pixbuf_from_file (GFile       *file,
 }
 
 gchar *
+gedit_file_browser_utils_symbolic_icon_name_from_file (GFile *file)
+{
+	GFileInfo *info;
+	GIcon *icon;
+
+	info = g_file_query_info (file,
+				  G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON,
+				  G_FILE_QUERY_INFO_NONE,
+				  NULL,
+				  NULL);
+
+	if (!info)
+		return NULL;
+
+	if ((icon = g_file_info_get_symbolic_icon (info)) && G_IS_THEMED_ICON (icon))
+	{
+		const gchar * const *names = g_themed_icon_get_names (G_THEMED_ICON (icon));
+		return g_strdup (names[0]);
+	}
+
+	g_object_unref (info);
+	return NULL;
+}
+
+gchar *
+gedit_file_browser_utils_name_from_themed_icon (GIcon *icon)
+{
+	GtkIconTheme *theme;
+	const gchar * const *names;
+
+	if (!G_IS_THEMED_ICON (icon))
+		return NULL;
+
+	theme = gtk_icon_theme_get_default ();
+	names = g_themed_icon_get_names (G_THEMED_ICON (icon));
+
+	if (gtk_icon_theme_has_icon (theme, names[0]))
+		return g_strdup (names[0]);
+
+	return NULL;
+}
+
+gchar *
 gedit_file_browser_utils_file_basename (GFile *file)
 {
 	return gedit_utils_basename_for_display (file);

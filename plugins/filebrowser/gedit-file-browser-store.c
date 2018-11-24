@@ -85,6 +85,7 @@ struct _FileBrowserNode
 {
 	GFile           *file;
 	guint            flags;
+	gchar           *icon_name;
 	gchar           *name;
 	gchar           *markup;
 
@@ -476,6 +477,7 @@ gedit_file_browser_store_init (GeditFileBrowserStore *obj)
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_MARKUP] = G_TYPE_STRING;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_FLAGS] = G_TYPE_UINT;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_ICON] = GDK_TYPE_PIXBUF;
+	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME] = G_TYPE_STRING;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_NAME] = G_TYPE_STRING;
 	obj->priv->column_types[GEDIT_FILE_BROWSER_STORE_COLUMN_EMBLEM] = GDK_TYPE_PIXBUF;
 
@@ -701,6 +703,9 @@ gedit_file_browser_store_get_value (GtkTreeModel *tree_model,
 			break;
 		case GEDIT_FILE_BROWSER_STORE_COLUMN_ICON:
 			g_value_set_object (value, node->icon);
+			break;
+		case GEDIT_FILE_BROWSER_STORE_COLUMN_ICON_NAME:
+			g_value_set_string (value, node->icon_name);
 			break;
 		case GEDIT_FILE_BROWSER_STORE_COLUMN_NAME:
 			g_value_set_string (value, node->name);
@@ -1417,6 +1422,7 @@ file_browser_node_free (GeditFileBrowserStore *model,
 	if (node->emblem)
 		g_object_unref (node->emblem);
 
+	g_free (node->icon_name);
 	g_free (node->name);
 	g_free (node->markup);
 
@@ -2165,8 +2171,7 @@ model_add_node_from_dir (GeditFileBrowserStore *model,
 		if (node->name == NULL)
 			file_browser_node_set_name (node);
 
-		if (node->icon == NULL)
-			node->icon = gedit_file_browser_utils_pixbuf_from_theme ("folder-symbolic", GTK_ICON_SIZE_MENU);
+		node->icon_name = g_strdup ("folder-symbolic");
 
 		model_add_node (model, node, parent);
 	}
