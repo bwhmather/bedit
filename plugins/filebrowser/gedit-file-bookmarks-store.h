@@ -65,7 +65,7 @@ enum
 
 struct _GeditFileBookmarksStore
 {
-	GtkTreeStore parent;
+	GtkTreeStore                    parent;
 
 	GeditFileBookmarksStorePrivate *priv;
 };

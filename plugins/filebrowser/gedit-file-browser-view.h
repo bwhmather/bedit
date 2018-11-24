@@ -43,7 +43,7 @@ typedef enum {
 
 struct _GeditFileBrowserView
 {
-	GtkTreeView parent;
+	GtkTreeView                  parent;
 
 	GeditFileBrowserViewPrivate *priv;
 };
