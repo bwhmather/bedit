@@ -1207,7 +1207,7 @@ row_deleted (GeditFileBrowserStore *model,
 	GtkTreePath *copy;
 
 	/* We should always be called when the row is still inserted */
-	g_return_if_fail (node->inserted == TRUE);
+	g_return_if_fail (node->inserted == TRUE || NODE_IS_DUMMY (node));
 
 	hidden = FILE_IS_HIDDEN (node->flags);
 	node->flags &= ~GEDIT_FILE_BROWSER_STORE_FLAG_IS_HIDDEN;
