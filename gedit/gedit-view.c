@@ -43,10 +43,10 @@ enum
 
 struct _GeditViewPrivate
 {
-	GSettings *editor_settings;
-	GtkTextBuffer *current_buffer;
+	GSettings        *editor_settings;
+	GtkTextBuffer    *current_buffer;
 	PeasExtensionSet *extensions;
-	gchar *direct_save_uri;
+	gchar            *direct_save_uri;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)

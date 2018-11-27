@@ -43,7 +43,7 @@ typedef struct _GeditViewPrivate	GeditViewPrivate;
 
 struct _GeditView
 {
-	GtkSourceView view;
+	GtkSourceView     view;
 
 	/*< private >*/
 	GeditViewPrivate *priv;
@@ -51,12 +51,12 @@ struct _GeditView
 
 struct _GeditViewClass
 {
-	GtkSourceViewClass parent_class;
+	GtkSourceViewClass   parent_class;
 
-	void	 (* drop_uris)			(GeditView	 *view,
-						 gchar          **uri_list);
+	void	           (*drop_uris)     (GeditView  *view,
+					     gchar     **uri_list);
 
-	gpointer padding;
+	gpointer             padding;
 };
 
 GType		 gedit_view_get_type     	(void) G_GNUC_CONST;
