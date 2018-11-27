@@ -1461,7 +1461,6 @@ gedit_view_frame_init (GeditViewFrame *frame)
 {
 	GeditDocument *doc;
 	GtkSourceFile *file;
-	GdkRGBA transparent = {0, 0, 0, 0};
 
 	gedit_debug (DEBUG_WINDOW);
 
@@ -1473,8 +1472,6 @@ gedit_view_frame_init (GeditViewFrame *frame)
 	                 frame->map_frame,
 	                 "visible",
 	                 G_SETTINGS_BIND_GET | G_SETTINGS_BIND_NO_SENSITIVITY);
-
-	gtk_widget_override_background_color (GTK_WIDGET (frame), 0, &transparent);
 
 	doc = get_document (frame);
 	file = gedit_document_get_file (doc);
