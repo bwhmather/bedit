@@ -2630,7 +2630,7 @@ static gboolean
 on_treeview_popup_menu (GeditFileBrowserView   *treeview,
 			GeditFileBrowserWidget *obj)
 {
-	return popup_menu (obj, treeview, NULL, gtk_tree_view_get_model (GTK_TREE_VIEW (treeview)));
+	return popup_menu (obj, GTK_TREE_VIEW (treeview), NULL, gtk_tree_view_get_model (GTK_TREE_VIEW (treeview)));
 }
 
 static gboolean
@@ -2640,7 +2640,7 @@ on_treeview_button_press_event (GeditFileBrowserView   *treeview,
 {
 	if (event->type == GDK_BUTTON_PRESS && event->button == GDK_BUTTON_SECONDARY)
 		return popup_menu (obj,
-				   treeview,
+				   GTK_TREE_VIEW (treeview),
 				   event,
 				   gtk_tree_view_get_model (GTK_TREE_VIEW (treeview)));
 
