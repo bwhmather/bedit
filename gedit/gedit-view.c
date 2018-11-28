@@ -28,6 +28,7 @@
 #include "gedit-view-activatable.h"
 #include "gedit-plugins-engine.h"
 #include "gedit-debug.h"
+#include "gedit-pango.h"
 #include "gedit-utils.h"
 #include "gedit-settings.h"
 #include "gedit-app.h"
@@ -43,10 +44,13 @@ enum
 
 struct _GeditViewPrivate
 {
-	GSettings        *editor_settings;
-	GtkTextBuffer    *current_buffer;
-	PeasExtensionSet *extensions;
-	gchar            *direct_save_uri;
+	GSettings            *editor_settings;
+	GtkTextBuffer        *current_buffer;
+	PeasExtensionSet     *extensions;
+	gchar                *direct_save_uri;
+
+	GtkCssProvider       *css_provider;
+	PangoFontDescription *font_desc;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (GeditView, gedit_view, GTK_SOURCE_TYPE_VIEW)
@@ -154,8 +158,14 @@ gedit_view_init (GeditView *view)
 			  G_CALLBACK (on_notify_buffer_cb),
 			  NULL);
 
+
+	view->priv->css_provider = gtk_css_provider_new ();
 	context = gtk_widget_get_style_context (GTK_WIDGET (view));
 	gtk_style_context_add_class (context, "gedit-view");
+
+	gtk_style_context_add_provider (context,
+					GTK_STYLE_PROVIDER (view->priv->css_provider),
+					GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
 static void
@@ -175,6 +185,9 @@ gedit_view_dispose (GObject *object)
 	 * several times (if dispose() is called several times).
 	 */
 	g_signal_handlers_disconnect_by_func (view, on_notify_buffer_cb, NULL);
+
+	g_clear_object (&view->priv->css_provider);
+	g_clear_pointer (&view->priv->font_desc, pango_font_description_free);
 
 	G_OBJECT_CLASS (gedit_view_parent_class)->dispose (object);
 }
@@ -951,6 +964,23 @@ gedit_view_scroll_to_cursor (GeditView *view)
 	                              0.0);
 }
 
+static void
+update_css_provider (GeditView *view)
+{
+	gchar *str;
+	gchar *css;
+
+	g_assert (GEDIT_IS_VIEW (view));
+	g_assert (view->priv->font_desc != NULL);
+
+	str = gedit_pango_font_description_to_css (view->priv->font_desc);
+	css = g_strdup_printf ("textview { %s }", str ? str : "");
+	gtk_css_provider_load_from_data (view->priv->css_provider, css, -1, NULL);
+
+	g_free (css);
+	g_free (str);
+}
+
 /**
  * gedit_view_set_font:
  * @view: a #GeditView
@@ -965,11 +995,11 @@ gedit_view_set_font (GeditView   *view,
 		     gboolean     default_font,
 		     const gchar *font_name)
 {
-	PangoFontDescription *font_desc;
-
 	gedit_debug (DEBUG_VIEW);
 
 	g_return_if_fail (GEDIT_IS_VIEW (view));
+
+	g_clear_pointer (&view->priv->font_desc, pango_font_description_free);
 
 	if (default_font)
 	{
@@ -979,21 +1009,19 @@ gedit_view_set_font (GeditView   *view,
 		settings = _gedit_app_get_settings (GEDIT_APP (g_application_get_default ()));
 		font = gedit_settings_get_system_font (settings);
 
-		font_desc = pango_font_description_from_string (font);
+		view->priv->font_desc = pango_font_description_from_string (font);
 		g_free (font);
 	}
 	else
 	{
 		g_return_if_fail (font_name != NULL);
 
-		font_desc = pango_font_description_from_string (font_name);
+		view->priv->font_desc = pango_font_description_from_string (font_name);
 	}
 
-	g_return_if_fail (font_desc != NULL);
+	g_return_if_fail (view->priv->font_desc != NULL);
 
-	gtk_widget_override_font (GTK_WIDGET (view), font_desc);
-
-	pango_font_description_free (font_desc);
+	update_css_provider (view);
 }
 
 /* ex:set ts=8 noet: */

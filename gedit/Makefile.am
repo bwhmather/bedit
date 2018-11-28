@@ -120,6 +120,7 @@ gedit_NOINST_H_FILES =					\
 	gedit/gedit-open-document-selector.h		\
 	gedit/gedit-open-document-selector-helper.h	\
 	gedit/gedit-open-document-selector-store.h	\
+	gedit/gedit-pango.h				\
 	gedit/gedit-plugins-engine.h			\
 	gedit/gedit-preferences-dialog.h		\
 	gedit/gedit-print-job.h				\
@@ -192,6 +193,7 @@ gedit_libgedit_c_files =				\
 	gedit/gedit-open-document-selector.c		\
 	gedit/gedit-open-document-selector-helper.c	\
 	gedit/gedit-open-document-selector-store.c	\
+	gedit/gedit-pango.c				\
 	gedit/gedit-plugins-engine.c			\
 	gedit/gedit-preferences-dialog.c		\
 	gedit/gedit-print-job.c				\
