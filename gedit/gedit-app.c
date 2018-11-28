@@ -307,33 +307,30 @@ is_in_viewport (GtkWindow    *window,
 {
 	GdkScreen *s;
 	GdkDisplay *display;
+	GdkMonitor *monitor;
 	GdkWindow *gdkwindow;
+	GdkRectangle geometry;
 	const gchar *cur_name;
 	const gchar *name;
-	gint cur_n;
-	gint n;
 	gint ws;
-	gint sc_width, sc_height;
 	gint x, y, width, height;
-	gint vp_x, vp_y;
 
 	/* Check for screen and display match */
 	display = gdk_screen_get_display (screen);
 	cur_name = gdk_display_get_name (display);
-	cur_n = gdk_screen_get_number (screen);
 
 	s = gtk_window_get_screen (window);
 	display = gdk_screen_get_display (s);
 	name = gdk_display_get_name (display);
-	n = gdk_screen_get_number (s);
 
-	if (strcmp (cur_name, name) != 0 || cur_n != n)
+	if (strcmp (cur_name, name) != 0)
 	{
 		return FALSE;
 	}
 
 	/* Check for workspace match */
 	ws = gedit_utils_get_window_workspace (window);
+
 	if (ws != workspace && ws != GEDIT_ALL_WORKSPACES)
 	{
 		return FALSE;
@@ -344,17 +341,17 @@ is_in_viewport (GtkWindow    *window,
 	gdk_window_get_position (gdkwindow, &x, &y);
 	width = gdk_window_get_width (gdkwindow);
 	height = gdk_window_get_height (gdkwindow);
-	gedit_utils_get_current_viewport (screen, &vp_x, &vp_y);
-	x += vp_x;
-	y += vp_y;
 
-	sc_width = gdk_screen_get_width (screen);
-	sc_height = gdk_screen_get_height (screen);
+	x += viewport_x;
+	y += viewport_y;
 
-	return x + width * .25 >= viewport_x &&
-	       x + width * .75 <= viewport_x + sc_width &&
-	       y >= viewport_y &&
-	       y + height <= viewport_y + sc_height;
+	monitor = gdk_display_get_monitor_at_window(display, gdkwindow);
+	gdk_monitor_get_geometry(monitor, &geometry);
+
+	return x + width * .75 >= geometry.x &&
+	       x + width * .25 <= geometry.x + geometry.width &&
+	       y + height * .75 >= geometry.y &&
+	       y + height * .25 <= geometry.y + geometry.height;
 }
 
 static GeditWindow *
