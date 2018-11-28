@@ -575,12 +575,12 @@ gedit_utils_get_current_workspace (GdkScreen *screen)
 		guint *current_desktop;
 		gint err, result;
 
-		gdk_error_trap_push ();
+		gdk_x11_display_error_trap_push (display);
 		result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
 					     gdk_x11_get_xatom_by_name_for_display (display, "_NET_CURRENT_DESKTOP"),
 					     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
 					     &bytes_after, (gpointer) &current_desktop);
-		err = gdk_error_trap_pop ();
+		err = gdk_x11_display_error_trap_pop (display);
 
 		if (err != Success || result != Success)
 			return ret;
@@ -633,12 +633,12 @@ gedit_utils_get_window_workspace (GtkWindow *gtkwindow)
 
 	if (GDK_IS_X11_DISPLAY (display))
 	{
-		gdk_error_trap_push ();
+		gdk_x11_display_error_trap_push (display);
 		result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (window),
 					     gdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"),
 					     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
 					     &bytes_after, (gpointer) &workspace);
-		err = gdk_error_trap_pop ();
+		err = gdk_x11_display_error_trap_pop (display);
 
 		if (err != Success || result != Success)
 			return ret;
@@ -694,12 +694,12 @@ gedit_utils_get_current_viewport (GdkScreen    *screen,
 
 	if (GDK_IS_X11_DISPLAY (display))
 	{
-		gdk_error_trap_push ();
+		gdk_x11_display_error_trap_push (display);
 		result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display), GDK_WINDOW_XID (root_win),
 					     gdk_x11_get_xatom_by_name_for_display (display, "_NET_DESKTOP_VIEWPORT"),
 					     0, G_MAXLONG, False, XA_CARDINAL, &type, &format, &nitems,
 					     &bytes_after, (void*) &coordinates);
-		err = gdk_error_trap_pop ();
+		err = gdk_x11_display_error_trap_pop (display);
 
 		if (err != Success || result != Success)
 			return;
