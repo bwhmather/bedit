@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2018-10-21 15:40+0000\n"
-"PO-Revision-Date: 2018-10-25 18:25+0200\n"
+"POT-Creation-Date: 2018-11-28 22:08+0000\n"
+"PO-Revision-Date: 2018-12-01 21:42+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -594,7 +594,7 @@ msgstr "[DATOTEKA ...] [+VRSTICA[:STOLPEC]]"
 msgid "There was an error displaying the help."
 msgstr "Prišlo je do napake med prikazovanjem pomoči."
 
-#: gedit/gedit-app.c:967
+#: gedit/gedit-app.c:964
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: neveljavno kodiranje."
@@ -610,7 +610,7 @@ msgstr "Zapri _brez shranjevanja"
 #: gedit/gedit-progress-info-bar.c:49
 #: gedit/resources/ui/gedit-encodings-dialog.ui:44
 #: gedit/resources/ui/gedit-highlight-mode-dialog.ui:31
-#: plugins/filebrowser/gedit-file-browser-utils.c:170
+#: plugins/filebrowser/gedit-file-browser-utils.c:213
 #: plugins/quickopen/quickopen/popup.py:45
 #: plugins/snippets/snippets/manager.py:789
 #: plugins/snippets/snippets/manager.py:874
@@ -620,7 +620,7 @@ msgstr "Zapri _brez shranjevanja"
 msgid "_Cancel"
 msgstr "_Prekliči"
 
-#: gedit/gedit-close-confirmation-dialog.c:306 gedit/resources/gtk/menus.ui:65
+#: gedit/gedit-close-confirmation-dialog.c:306 gedit/resources/gtk/menus.ui:37
 #: gedit/resources/gtk/menus-traditional.ui:30
 msgid "_Save As…"
 msgstr "Shrani _kot ..."
@@ -1420,7 +1420,7 @@ msgid "Drop Changes and _Reload"
 msgstr "Zavrzi spremembe in _ponovno naloži"
 
 #: gedit/gedit-io-error-info-bar.c:1178 gedit/resources/gtk/menus-common.ui:148
-#: gedit/resources/gtk/menus.ui:44 gedit/resources/gtk/menus-traditional.ui:9
+#: gedit/resources/gtk/menus.ui:9 gedit/resources/gtk/menus-traditional.ui:9
 msgid "_Reload"
 msgstr "Ponovno _naloži"
 
@@ -1493,7 +1493,7 @@ msgstr "Stran %N od %Q"
 msgid "Rendering page %d of %d…"
 msgstr "Izrisovanje strani %d od %d ..."
 
-#: gedit/gedit-print-preview.c:653
+#: gedit/gedit-print-preview.c:651
 #, c-format
 msgid "Page %d of %d"
 msgstr "Stran %d od %d"
@@ -1590,39 +1590,39 @@ msgstr "Vrsta MIME:"
 msgid "Encoding:"
 msgstr "Nabor znakov:"
 
-#: gedit/gedit-utils.c:841
+#: gedit/gedit-utils.c:823
 msgid "Please check your installation."
 msgstr "Preverite namestitev."
 
-#: gedit/gedit-utils.c:902
+#: gedit/gedit-utils.c:884
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Ni mogoče odpreti vmesniške datoteke %s. Napaka: %s"
 
-#: gedit/gedit-utils.c:921
+#: gedit/gedit-utils.c:903
 #, c-format
 msgid "Unable to find the object “%s” inside file %s."
 msgstr "Ni mogoče najti predmeta »%s« v datoteki %s."
 
 #. Translators: '/ on <remote-share>'
-#: gedit/gedit-utils.c:1159
+#: gedit/gedit-utils.c:1141
 #, c-format
 msgid "/ on %s"
 msgstr "/ na %s"
 
-#: gedit/gedit-utils.c:1463
+#: gedit/gedit-utils.c:1445
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: gedit/gedit-utils.c:1465
+#: gedit/gedit-utils.c:1447
 msgid "Mac OS Classic"
 msgstr "Mac OS"
 
-#: gedit/gedit-utils.c:1467
+#: gedit/gedit-utils.c:1449
 msgid "Windows"
 msgstr "Okna"
 
-#: gedit/gedit-view.c:468 gedit/resources/ui/gedit-preferences-dialog.ui:41
+#: gedit/gedit-view.c:481 gedit/resources/ui/gedit-preferences-dialog.ui:41
 msgid "_Display line numbers"
 msgstr "_Pokaži številke vrstic"
 
@@ -1655,11 +1655,11 @@ msgstr "Poišči le _cele besede"
 msgid "_Match Case"
 msgstr "_Upoštevaj velikost črk"
 
-#: gedit/gedit-view-frame.c:1032
+#: gedit/gedit-view-frame.c:1029
 msgid "String you want to search for"
 msgstr "Niz, ki ga želite poiskati"
 
-#: gedit/gedit-view-frame.c:1044
+#: gedit/gedit-view-frame.c:1041
 msgid "Line you want to move the cursor to"
 msgstr "Vrstica, na katero želite premakniti kazalko"
 
@@ -1692,11 +1692,11 @@ msgstr "Širina _tabulatorja: %u"
 msgid "There are unsaved documents"
 msgstr "Odprti so neshranjeni dokumenti"
 
-#: gedit/gedit-window.c:2444
+#: gedit/gedit-window.c:2442
 msgid "Change side panel page"
 msgstr "Spremeni stran stranskega pladnja"
 
-#: gedit/gedit-window.c:2464 gedit/resources/ui/gedit-window.ui:19
+#: gedit/gedit-window.c:2462 gedit/resources/ui/gedit-window.ui:19
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -1717,7 +1717,7 @@ msgid "Move to New Tab _Group"
 msgstr "Prestavi na novo _skupino zavihkov"
 
 #: gedit/resources/gtk/menus-common.ui:27
-#: gedit/resources/gtk/menus-common.ui:163 gedit/resources/gtk/menus.ui:144
+#: gedit/resources/gtk/menus-common.ui:163
 #: gedit/resources/gtk/menus-traditional.ui:131
 #: gedit/resources/ui/gedit-replace-dialog.ui:23
 #: plugins/time/resources/ui/gedit-time-setup-dialog.ui:21
@@ -1769,16 +1769,16 @@ msgstr "Ponovno odpri zaprt _zavihek"
 msgid "Save _As…"
 msgstr "Shrani _kot ..."
 
-#: gedit/resources/gtk/menus-common.ui:140 gedit/resources/gtk/menus.ui:8
+#: gedit/resources/gtk/menus-common.ui:140 gedit/resources/gtk/menus.ui:27
 msgid "_New Window"
 msgstr "_Novo okno"
 
-#: gedit/resources/gtk/menus-common.ui:155 gedit/resources/gtk/menus.ui:49
+#: gedit/resources/gtk/menus-common.ui:155 gedit/resources/gtk/menus.ui:14
 #: gedit/resources/gtk/menus-traditional.ui:14
 msgid "_Print…"
 msgstr "_Natisni ..."
 
-#: gedit/resources/gtk/menus-common.ui:168 gedit/resources/gtk/menus.ui:34
+#: gedit/resources/gtk/menus-common.ui:168
 #: gedit/resources/gtk/menus-traditional.ui:135
 msgid "_Quit"
 msgstr "_Končaj"
@@ -1822,31 +1822,31 @@ msgstr "Način _prepisovanja"
 msgid "Select _All"
 msgstr "Izberi _vse"
 
-#: gedit/resources/gtk/menus-common.ui:230 gedit/resources/gtk/menus.ui:15
+#: gedit/resources/gtk/menus-common.ui:230 gedit/resources/gtk/menus.ui:112
 #: gedit/resources/gtk/menus-traditional.ui:105
 msgid "_Preferences"
 msgstr "_Možnosti"
 
-#: gedit/resources/gtk/menus-common.ui:237 gedit/resources/gtk/menus.ui:100
+#: gedit/resources/gtk/menus-common.ui:237 gedit/resources/gtk/menus.ui:72
 msgid "_View"
 msgstr "P_ogled"
 
-#: gedit/resources/gtk/menus-common.ui:241 gedit/resources/gtk/menus.ui:104
+#: gedit/resources/gtk/menus-common.ui:241 gedit/resources/gtk/menus.ui:76
 #: gedit/resources/gtk/menus-traditional.ui:69
 msgid "Side _Panel"
 msgstr "Stranski _pladenj"
 
-#: gedit/resources/gtk/menus-common.ui:246 gedit/resources/gtk/menus.ui:108
+#: gedit/resources/gtk/menus-common.ui:246 gedit/resources/gtk/menus.ui:80
 #: gedit/resources/gtk/menus-traditional.ui:73
 msgid "_Bottom Panel"
 msgstr "_Spodnji pladenj"
 
-#: gedit/resources/gtk/menus-common.ui:255 gedit/resources/gtk/menus.ui:54
+#: gedit/resources/gtk/menus-common.ui:255 gedit/resources/gtk/menus.ui:19
 #: gedit/resources/gtk/menus-traditional.ui:19
 msgid "_Fullscreen"
 msgstr "_Celozaslonski način"
 
-#: gedit/resources/gtk/menus-common.ui:263 gedit/resources/gtk/menus.ui:119
+#: gedit/resources/gtk/menus-common.ui:263 gedit/resources/gtk/menus.ui:91
 #: gedit/resources/gtk/menus-traditional.ui:84
 msgid "_Highlight Mode…"
 msgstr "_Način poudarjanja ..."
@@ -1855,7 +1855,7 @@ msgstr "_Način poudarjanja ..."
 msgid "_Search"
 msgstr "I_skanje"
 
-#: gedit/resources/gtk/menus-common.ui:273 gedit/resources/gtk/menus.ui:82
+#: gedit/resources/gtk/menus-common.ui:273 gedit/resources/gtk/menus.ui:54
 #: gedit/resources/gtk/menus-traditional.ui:47
 msgid "_Find…"
 msgstr "_Najdi ..."
@@ -1872,7 +1872,7 @@ msgstr "Najdi _predhodne"
 msgid "Find and _Replace…"
 msgstr "Najdi in _zamenjaj ..."
 
-#: gedit/resources/gtk/menus-common.ui:299 gedit/resources/gtk/menus.ui:90
+#: gedit/resources/gtk/menus-common.ui:299 gedit/resources/gtk/menus.ui:62
 #: gedit/resources/gtk/menus-traditional.ui:55
 msgid "_Clear Highlight"
 msgstr "_Počisti poudarjanje"
@@ -1881,7 +1881,7 @@ msgstr "_Počisti poudarjanje"
 msgid "Go to _Line…"
 msgstr "Skoči na _vrstico ..."
 
-#: gedit/resources/gtk/menus-common.ui:314 gedit/resources/gtk/menus.ui:125
+#: gedit/resources/gtk/menus-common.ui:314 gedit/resources/gtk/menus.ui:97
 msgid "_Tools"
 msgstr "_Orodja"
 
@@ -1893,7 +1893,7 @@ msgstr "_Dokumenti"
 msgid "_Save All"
 msgstr "Shrani _vse"
 
-#: gedit/resources/gtk/menus-common.ui:338 gedit/resources/gtk/menus.ui:140
+#: gedit/resources/gtk/menus-common.ui:338
 #: gedit/resources/gtk/menus-traditional.ui:127
 msgid "_Close All"
 msgstr "_Zapri vse"
@@ -1923,33 +1923,34 @@ msgid "_Move To New Window"
 msgstr "_Prestavi na novo okno"
 
 #: gedit/resources/gtk/menus-common.ui:383
-#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:26
+#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:120
 #: gedit/resources/gtk/menus-traditional.ui:116
 #: plugins/spell/gedit-spell-plugin.c:246
 #: plugins/time/resources/ui/gedit-time-dialog.ui:133
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:30
+#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:124
 #: gedit/resources/gtk/menus-traditional.ui:120
-msgid "_About"
+msgid "_About Text Editor"
 msgstr "_O programu"
 
-#: gedit/resources/gtk/menus.ui:22 gedit/resources/gtk/menus-traditional.ui:112
-msgid "_Keyboard Shortcuts"
-msgstr "_Tipkovne bližnjice"
-
-#: gedit/resources/gtk/menus.ui:69 gedit/resources/gtk/menus-traditional.ui:34
+#: gedit/resources/gtk/menus.ui:41 gedit/resources/gtk/menus-traditional.ui:34
 msgid "Save _All"
 msgstr "Shrani _vse"
 
-#: gedit/resources/gtk/menus.ui:86 gedit/resources/gtk/menus-traditional.ui:51
+#: gedit/resources/gtk/menus.ui:58 gedit/resources/gtk/menus-traditional.ui:51
 msgid "_Find and Replace…"
 msgstr "Najdi in _zamenjaj ..."
 
-#: gedit/resources/gtk/menus.ui:94 gedit/resources/gtk/menus-traditional.ui:59
+#: gedit/resources/gtk/menus.ui:66 gedit/resources/gtk/menus-traditional.ui:59
 msgid "_Go to Line…"
 msgstr "_Pojdi v vrstico ..."
+
+#: gedit/resources/gtk/menus.ui:116
+#: gedit/resources/gtk/menus-traditional.ui:112
+msgid "_Keyboard Shortcuts"
+msgstr "_Tipkovne bližnjice"
 
 #: gedit/resources/gtk/menus-traditional.ui:65
 #: gedit/resources/ui/gedit-preferences-dialog.ui:285
@@ -2952,11 +2953,11 @@ msgstr "Enostaven dostop do datotek iz stranskega pladnja"
 msgid "system-file-manager"
 msgstr "system-file-manager"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:205
+#: plugins/filebrowser/gedit-file-bookmarks-store.c:200
 msgid "Home"
 msgstr "Osebna mapa"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:231
+#: plugins/filebrowser/gedit-file-bookmarks-store.c:233
 msgid "File System"
 msgstr "Datotečni sistem"
 
@@ -3026,11 +3027,11 @@ msgstr "Ali ste prepričani, da želite trajno izbrisati izbrane datoteke?"
 msgid "If you delete an item, it is permanently lost."
 msgstr "V kolikor izbrišete predmet, bo trajno izgubljen."
 
-#: plugins/filebrowser/gedit-file-browser-store.c:1794
+#: plugins/filebrowser/gedit-file-browser-store.c:1703
 msgid "(Empty)"
 msgstr "(Prazno)"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3515
+#: plugins/filebrowser/gedit-file-browser-store.c:3327
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3039,11 +3040,11 @@ msgstr ""
 "filtriranja je treba prilagoditi, da bo datoteka vidna"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3772
+#: plugins/filebrowser/gedit-file-browser-store.c:3578
 msgid "Untitled File"
 msgstr "Neimenovana datoteka"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3800
+#: plugins/filebrowser/gedit-file-browser-store.c:3606
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3052,11 +3053,11 @@ msgstr ""
 "je treba prilagoditi, da bo datoteka vidna"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3831
+#: plugins/filebrowser/gedit-file-browser-store.c:3635
 msgid "Untitled Folder"
 msgstr "Neimenovana mapa"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3856
+#: plugins/filebrowser/gedit-file-browser-store.c:3658
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -3064,26 +3065,26 @@ msgstr ""
 "Nova mapa je zaradi filtriranja trenutno nevidna. Nastavitve filtriranja je "
 "treba prilagoditi, da bo mapa vidna."
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:754
+#: plugins/filebrowser/gedit-file-browser-widget.c:757
 msgid "Bookmarks"
 msgstr "Zaznamki"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:1995
+#: plugins/filebrowser/gedit-file-browser-widget.c:1957
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Ni priklopnega predmeta za priklopljen pogon: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2072
+#: plugins/filebrowser/gedit-file-browser-widget.c:2026
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Ni mogoče odpreti nosilca: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2119
+#: plugins/filebrowser/gedit-file-browser-widget.c:2069
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Ni mogoče priklopiti pogona: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2769
+#: plugins/filebrowser/gedit-file-browser-widget.c:2581
 #, c-format
 msgid "Error when loading “%s”: No such directory"
 msgstr "Napaka nalaganja »%s«: ni take mape"
@@ -3233,11 +3234,11 @@ msgstr "Pokaži _binarne"
 msgid "Match Filename"
 msgstr "Skladanje imen datotek"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:187
+#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:183
 msgid "History"
 msgstr "Zgodovina"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:188
+#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:184
 msgid "Open history menu"
 msgstr "Odpri meni zgodovine"
 
@@ -3321,7 +3322,6 @@ msgstr "Hitro odpiranje datotek"
 #. TRANSLATORS: Do NOT translate or transliterate this text!
 #. This is an icon file name.
 #: plugins/quickopen/quickopen.plugin.desktop.in:10
-#| msgid "Document"
 msgid "document-open"
 msgstr "document-open"
 
@@ -3639,7 +3639,6 @@ msgstr "Preverjanje črkovanja trenutnega dokumenta"
 #. TRANSLATORS: Do NOT translate or transliterate this text!
 #. This is an icon file name.
 #: plugins/spell/spell.plugin.desktop.in:9
-#| msgid "Check spelling"
 msgid "tools-check-spelling"
 msgstr "tools-check-spelling"
 
@@ -3728,6 +3727,9 @@ msgstr "Vstavi datum/čas"
 #: plugins/time/time.plugin.desktop.in:6
 msgid "Inserts current date and time at the cursor position."
 msgstr "Vstavi trenutni datum in čas na položaju kazalke."
+
+#~ msgid "_About"
+#~ msgstr "_O programu"
 
 #~ msgid "gedit Text Editor"
 #~ msgstr "Urejevalnik besedil gedit"
