@@ -55,6 +55,7 @@ struct _GeditOpenDocumentSelector
 	PangoFontDescription *name_font;
 	GdkRGBA path_label_color;
 	PangoFontDescription *path_font;
+	gchar *match_markup_color;
 
 	GeditOpenDocumentSelectorStore *selector_store;
 	GList *recent_items;
@@ -132,8 +133,9 @@ get_byte_run (const guint8 *byte_array,
 }
 
 static gchar*
-get_markup_from_tagged_byte_array (const gchar  *str,
-                                   const guint8 *byte_array)
+get_markup_from_tagged_byte_array (GeditOpenDocumentSelector *selector,
+                                   const gchar               *str,
+                                   const guint8              *byte_array)
 {
 	gchar *txt;
 	GString *string;
@@ -149,7 +151,9 @@ get_markup_from_tagged_byte_array (const gchar  *str,
 		txt = g_markup_escape_text (str, count);
 		if (tag == SELECTOR_TAG_MATCH)
 		{
-			g_string_append_printf (string, "<span weight =\"heavy\" color =\"black\">%s</span>", txt);
+			g_string_append (string, selector->match_markup_color);
+			g_string_append (string, txt);
+			g_string_append (string, "</span>");
 		}
 		else
 		{
@@ -219,11 +223,12 @@ get_tagged_byte_array (const gchar *uri,
 }
 
 static void
-get_markup_for_path_and_name (GRegex       *filter_regex,
-                              const gchar  *src_path,
-                              const gchar  *src_name,
-                              gchar       **dst_path,
-                              gchar       **dst_name)
+get_markup_for_path_and_name (GeditOpenDocumentSelector  *selector,
+                              GRegex                     *filter_regex,
+                              const gchar                *src_path,
+                              const gchar                *src_name,
+                              gchar                     **dst_path,
+                              gchar                     **dst_name)
 {
 	gchar *filename;
 	gsize path_len;
@@ -248,8 +253,8 @@ get_markup_for_path_and_name (GRegex       *filter_regex,
 		/* name_byte_array is part of byte_array, so released with it */
 		name_byte_array = (guint8 *)((gsize)byte_array + path_len + path_separator_len);
 
-		*dst_path = get_markup_from_tagged_byte_array (src_path, path_byte_array);
-		*dst_name = get_markup_from_tagged_byte_array (src_name, name_byte_array);
+		*dst_path = get_markup_from_tagged_byte_array (selector, src_path, path_byte_array);
+		*dst_name = get_markup_from_tagged_byte_array (selector, src_name, name_byte_array);
 
 		g_free (byte_array);
 		g_free (path_byte_array);
@@ -277,7 +282,8 @@ create_row (GeditOpenDocumentSelector *selector,
 
 	if (filter_regex)
 	{
-		get_markup_for_path_and_name (filter_regex,
+		get_markup_for_path_and_name (selector,
+					      filter_regex,
 		                              (const gchar *)item->path,
 		                              (const gchar *)item->name,
 		                              &dst_path,
@@ -744,6 +750,7 @@ gedit_open_document_selector_dispose (GObject *object)
 
 	g_clear_pointer (&selector->name_font, pango_font_description_free);
 	g_clear_pointer (&selector->path_font, pango_font_description_free);
+	g_free (selector->match_markup_color);
 
 	if (selector->recent_items)
 	{
@@ -1086,11 +1093,27 @@ on_treeview_allocate (GtkWidget                 *widget     G_GNUC_UNUSED,
 	gtk_widget_set_size_request (selector->placeholder_box, -1, treeview_height);
 }
 
+static inline gchar *
+rgba_to_hex8 (GdkRGBA *rgba)
+{
+	guint red = (guint)(0.5 + CLAMP (rgba->red, 0.0, 1.0) * 255.0);
+	guint green = (guint)(0.5 + CLAMP (rgba->green, 0.0, 1.0) * 255.0);
+	guint blue = (guint)(0.5 + CLAMP (rgba->blue, 0.0, 1.0) * 255.0);
+	guint alpha = (guint)(0.5 + CLAMP (rgba->alpha, 0.0, 1.0) * 255.0);
+	gchar *str = g_strdup_printf ("#%02X%02X%02X%02X", red, green, blue, alpha);
+
+	return str;
+}
+
 static void
 on_treeview_style_updated (GtkWidget                 *widget,
                            GeditOpenDocumentSelector *selector)
 {
 	GtkStyleContext *context;
+	GdkRGBA match_foreground_rgba = {0.0, 0.0, 0.0, 0.0};
+	GdkRGBA match_background_rgba = {0.0, 0.0, 0.0, 0.0};
+	gchar *match_foreground_hex8;
+	gchar *match_background_hex8;
 
 	context = gtk_widget_get_style_context (widget);
 
@@ -1125,6 +1148,33 @@ on_treeview_style_updated (GtkWidget                 *widget,
 			       NULL);
 
 	gtk_style_context_restore (context);
+
+	/* Match styling */
+	gtk_style_context_save (context);
+	gtk_style_context_add_class (context, "open-document-selector-match");
+
+	gtk_style_context_get_color (context,
+				     gtk_style_context_get_state (context),
+				     &match_foreground_rgba);
+
+	G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+	gtk_style_context_get_background_color (context,
+						gtk_style_context_get_state (context),
+						&match_background_rgba);
+	G_GNUC_END_IGNORE_DEPRECATIONS;
+
+	gtk_style_context_restore (context);
+	g_free (selector->match_markup_color);
+
+	match_foreground_hex8 = rgba_to_hex8 (&match_foreground_rgba);
+	match_background_hex8 = rgba_to_hex8 (&match_background_rgba);
+
+	selector->match_markup_color = g_strdup_printf ("<span weight =\"heavy\" foreground =\"%s\" background =\"%s\">",
+							match_foreground_hex8,
+							match_background_hex8);
+
+	g_free (match_foreground_hex8);
+	g_free (match_background_hex8);
 }
 
 static void
