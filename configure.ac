@@ -352,8 +352,7 @@ AM_CONDITIONAL(ENABLE_USER_HELP, test x"$enable_user_help" = "xyes")
 dnl ================================================================
 dnl GObject Introspection
 dnl ================================================================
-
-GOBJECT_INTROSPECTION_CHECK([0.9.3])
+GOBJECT_INTROSPECTION_CHECK([1.42.0])
 
 if test "$found_introspection" = "yes"; then
 	enable_introspection=yes
