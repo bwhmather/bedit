@@ -143,6 +143,10 @@ main (int argc, char *argv[])
 	                    "flags", G_APPLICATION_HANDLES_COMMAND_LINE | G_APPLICATION_HANDLES_OPEN,
 	                    NULL);
 
+
+	/* https://honk.sigxcpu.org/con/GTK__and_the_application_id.html */
+	g_set_prgname("org.gnome.gedit");
+
 	status = g_application_run (G_APPLICATION (app), argc, argv);
 
 	/* Break reference cycles caused by the PeasExtensionSet
