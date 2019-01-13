@@ -48,10 +48,6 @@ localdir = join_paths(datadir, 'local')
 vapidir = join_paths(datadir, 'vala', 'vapi')
 
 # Subprojects
-if not get_option('buildtype').contains('plain')
-  run_command('git', '-C', meson.source_root(), 'submodule', 'update', '--init', '--recursive')
-endif
-
 libgd_sp = subproject(
   'libgd',
   default_options: [
