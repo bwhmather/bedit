@@ -65,7 +65,7 @@ parts:
   gedit:
     after: [desktop-gnome-platform]
     source: .
-    plugin: autotools
+    plugin: meson
     configflags: [--prefix=/snap/gedit/current/usr]
     override-build: |
       sed -i.bak -e 's|Icon=org.gnome.gedit$|Icon=${SNAP}/meta/gui/org.gnome.gedit.png|g' data/org.gnome.gedit.desktop.in.in

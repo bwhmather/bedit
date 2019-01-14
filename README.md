@@ -74,14 +74,11 @@ Simple install procedure:
 ```
 % tar Jxf gedit-3.31.3.tar.xz			# unpack the sources
 % cd gedit-3.31.3				# change to the toplevel directory
-% ./configure					# run the `configure' script
-% make					# build gedit
+% meson _build					# run the `configure' script
+% ninja -C _build				# build gedit
 [ Become root if necessary ]
-% make install				# install gedit
+% ninja -C _build install				# install gedit
 ```
-
-See the file 'INSTALL' for more detailed information.
-
 
 How to report bugs
 ==================
