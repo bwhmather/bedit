@@ -66,22 +66,22 @@ parts:
     after: [desktop-gnome-platform]
     source: .
     plugin: meson
-    configflags: [--prefix=/snap/gedit/current/usr]
+    meson-parameters: [--prefix=/snap/gedit/current/usr]
     override-build: |
-      sed -i.bak -e 's|Icon=org.gnome.gedit$|Icon=${SNAP}/meta/gui/org.gnome.gedit.png|g' data/org.gnome.gedit.desktop.in.in
+      sed -i.bak -e 's|Icon=org.gnome.gedit$|Icon=${SNAP}/meta/gui/org.gnome.gedit.svg|g' data/org.gnome.gedit.desktop.in.in
       snapcraftctl build
       mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
-      cp ../src/data/icons/hicolor/256x256/apps/gedit.png $SNAPCRAFT_PART_INSTALL/meta/gui/
-      cp data/org.gnome.gedit.desktop $SNAPCRAFT_PART_INSTALL/meta/gui/
+      cp ../src/data/icons/hicolor/scalable/apps/org.gnome.gedit.svg $SNAPCRAFT_PART_INSTALL/meta/gui/
+      cp snapbuild/data/org.gnome.gedit.desktop $SNAPCRAFT_PART_INSTALL/meta/gui/
     organize:
       snap/gedit/current/usr: usr
     build-attributes: [no-system-libraries]
     build-packages:
       - desktop-file-utils
       - gettext
-      - gnome-common
       - gsettings-desktop-schemas-dev
       - gtk-doc-tools
+      - itstool
       - libsoup2.4-dev
       - libgspell-1-dev
       - libxml2-dev
@@ -92,7 +92,6 @@ parts:
       - libx11-dev
       - python3
       - python-gi-dev
-      - yelp-tools
       - gobject-introspection
       - libgirepository1.0-dev
       - valac
