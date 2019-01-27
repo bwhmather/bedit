@@ -5,7 +5,7 @@ import subprocess
 import sys
 
 libdir = sys.argv[1]
-datadir = sys.argv[1]
+datadir = sys.argv[2]
 
 # Packaging tools define DESTDIR and this isn't needed for them
 if 'DESTDIR' not in os.environ:
