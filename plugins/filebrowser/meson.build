@@ -29,15 +29,36 @@ libfilebrowser_c_args = [
 
 subdir('messages')
 
-libfilebrowser_enums = gnome.mkenums(
+libfilebrowser_register_enums = gnome.mkenums(
+  'gedit-file-browser-enum-register',
+  sources: libfilebrowser_public_h,
+  c_template: 'gedit-file-browser-enum-register.c.template',
+)
+
+libfilebrowser_type_enums = gnome.mkenums(
   'gedit-file-browser-enum-types',
+  depends : [libfilebrowser_register_enums],
   sources: libfilebrowser_public_h,
   h_template: 'gedit-file-browser-enum-types.h.template',
-  c_template: 'gedit-file-browser-enum-types.c.template',
+  c_template: 'gedit-file-browser-enum-types-stage1.c.template',
+)
+
+# cat won't work on Windows so this
+# will need to be reimplemented as a script
+cat = find_program('cat')
+
+# Combine the 2 C mkenums templates together before compiling
+libfilebrowser_enums_c = custom_target('libfilebrowser_enums_c',
+  input: [libfilebrowser_type_enums.get(0),
+          libfilebrowser_register_enums],
+  output: 'gedit-file-browser-enum-types.c',
+  command: [cat, '@INPUT0@', '@INPUT1@'],
+  # redirects the command output since we can't use >> here
+  capture: true,
 )
 
 libfilebrowser_sources += [
-  libfilebrowser_enums.get(0),
+  libfilebrowser_enums_c,
 ]
 
 subdir('resources')
