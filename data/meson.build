@@ -9,14 +9,6 @@ install_data('org.gnome.gedit-symbolic.svg',
 install_man('gedit.1')
 
 install_data(
-  'gedit.convert',
-  install_dir: join_paths(
-    gconfdir,
-    'gsettings',
-  )
-)
-
-install_data(
   'gedit-bugreport.sh',
   install_dir: join_paths(
     libexecdir,
