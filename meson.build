@@ -41,7 +41,6 @@ pkglibdir = join_paths(libdir, package_name)
 pkgdatadir = join_paths(datadir, package_name)
 
 dbusdir = join_paths(datadir, 'dbus-1')
-gconfdir = join_paths(datadir, 'GConf')
 glibdir = join_paths(datadir, 'glib-2.0')
 gtkdocdir = join_paths(datadir, 'gtk-doc')
 localdir = join_paths(datadir, 'local')
