@@ -13,7 +13,7 @@ description: |
   Its flexible plugin system allows you to tailor the application to your
   needs and adapt it to your workflow.
 
-grade: devel # must be 'stable' to release into candidate/stable channels
+grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 base: core18
 
@@ -41,6 +41,11 @@ slots:
     interface: dbus
     bus: session
     name: org.gnome.gedit
+
+passthrough:
+  layout:
+    /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpeas-1.0:
+      symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libpeas-1.0
 
 apps:
   gedit:
@@ -76,10 +81,8 @@ parts:
       mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
 
   gtksourceview:
-    after: [desktop-gnome-platform]
     source: https://gitlab.gnome.org/GNOME/gtksourceview.git
     source-type: git
-    source-tag: 4.0.3
     plugin: autotools
     configflags: [--prefix=/usr]
     organize:
@@ -97,17 +100,11 @@ parts:
       - valac
 
   gedit:
-    after: [gtksourceview]
-    source: https://gitlab.gnome.org/GNOME/gedit.git
+    after: [desktop-gnome-platform, gtksourceview]
+    source: .
     source-type: git
- #   source-tag: 3.30.2
     plugin: meson
-    meson-parameters:
-      - --prefix=/snap/gedit/current/usr
-      - -Dintrospection=false
-    build-environment:
-      - PKG_CONFIG_PATH: $SNAPCRAFT_STAGE/usr/lib/pkgconfig
-      - VAPIDIR: $SNAPCRAFT_STAGE/usr/share/vala/vapi
+    meson-parameters: [--prefix=/snap/gedit/current/usr]
     override-build: |
        sed -i.bak -e 's|Icon=org.gnome.gedit$|Icon=${SNAP}/meta/gui/org.gnome.gedit.svg|g' data/org.gnome.gedit.desktop.in.in
        snapcraftctl build
@@ -134,3 +131,53 @@ parts:
       - gobject-introspection
       - libgirepository1.0-dev
       - valac
+    stage-packages:
+      - gir1.2-ggit-1.0
+      - gir1.2-gucharmap-2.90
+      - gir1.2-glib-2.0
+      - gir1.2-pango-1.0
+      - gir1.2-peas-1.0
+      - gir1.2-vte-2.91
+      - iso-codes
+      - libgspell-1-1
+      - libpeas-1.0-0
+      - python3-dbus
+      - python3-gi
+      - python3-gi-cairo
+
+  gedit-plugins:
+    after: [gedit]
+    source: https://gitlab.gnome.org/GNOME/gedit-plugins.git
+    source-type: git
+    plugin: autotools
+    configflags: [--prefix=/usr]
+    organize:
+      snap/gedit-plugins/current/usr: usr
+    build-environment:
+      - C_INCLUDE_PATH: $SNAPCRAFT_STAGE/usr/include/gedit-3.14/
+    build-packages:
+      - build-essential
+      - gettext
+      - gnome-common
+      - itstool
+      - libgit2-glib-1.0-dev
+      - libglib2.0-dev
+      - libgtk-3-dev
+      - libgucharmap-2-90-dev
+      - libvte-2.91-dev
+      - python3
+      - python3-dbus
+      - python-dbus-dev
+      - python-gi-dev
+      - yelp-tools
+# Overriding VAPIDIR in build-environment doesn't seem to work
+    override-build: |
+      sed -i.bak -e 's|--pkg\ config|--vapidir=$SNAPCRAFT_STAGE/usr/share/vala/vapi\ --pkg\ config|g' plugins/findinfiles/Makefile.am
+      sed -i.bak -e 's|--pkg\ config|--vapidir=$SNAPCRAFT_STAGE/usr/share/vala/vapi\ --pkg\ config|g' plugins/findinfiles/Makefile.am
+      snapcraftctl build
+# Zeitgeist plugin isn't as useful in a Snap.
+    stage:
+      - -usr/lib/gedit/plugins/libzeitgeist.so
+      - -usr/lib/gedit/plugins/zeitgeist.plugin
+      - -usr/share/help/*/gedit/zeitgeist-dataprovider.page
+      - -usr/share/metainfo/gedit-zeitgeist.metainfo.xml
