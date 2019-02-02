@@ -1,22 +1,22 @@
-# Hungarian translation of gedit help
-# Copyright (C) 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
+# Hungarian translation for gedit help.
+# Copyright (C) 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gedit help.
 #
 # Mate Ory <orymate at gmail dot com>, 2007, 2008.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017.
-# Balázs Úr <urbalazs at gmail dot com>, 2014, 2015, 2017.
+# Balázs Úr <urbalazs at gmail dot com>, 2014, 2015, 2017, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit_help master\n"
-"POT-Creation-Date: 2017-09-17 01:26+0000\n"
-"PO-Revision-Date: 2017-09-28 23:28+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
-"Language-Team: Hungarian <openscope at googlegroups dot com>\n"
+"POT-Creation-Date: 2019-01-30 22:23+0000\n"
+"PO-Revision-Date: 2019-02-02 08:59+0100\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
+"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -222,21 +222,16 @@ msgstr "Fájl bezárása"
 
 #. (itstool) path: page/p
 #: C/gedit-close-file.page:20
-#| msgid ""
-#| "To close a file in <app>gedit</app>, select <guiseq><gui>File</gui> "
-#| "<gui>Close</gui></guiseq>. Alternately, you can click the small \"X\" "
-#| "that appears on the right-side of the file's tab, or press "
-#| "<keyseq><key>Ctrl</key> <key>W</key></keyseq>."
 msgid ""
 "To close a file in <app>gedit</app>, select <gui style=\"menuitem\">Close</"
 "gui>. Alternately, you can click the small \"X\" that appears on the right-"
 "side of the file's tab, or press <keyseq><key>Ctrl</key> <key>W</key></"
 "keyseq>."
 msgstr ""
-"Fájl bezárásához a <app>geditben</app> válassza a <gui style=\"menuitem\">"
-"Bezárás</gui> menüpontot. Ennek alternatívájaként rákattinthat a fájl "
-"lapjának jobb oldalán megjelenő kis „X”-re, vagy "
-"megnyomhatja a <keyseq><key>Ctrl</key><key>W</key></keyseq> kombinációt."
+"Fájl bezárásához a <app>geditben</app> válassza a <gui style=\"menuitem"
+"\">Bezárás</gui> menüpontot. Ennek alternatívájaként rákattinthat a fájl "
+"lapjának jobb oldalán megjelenő kis „X”-re, vagy megnyomhatja a "
+"<keyseq><key>Ctrl</key><key>W</key></keyseq> kombinációt."
 
 #. (itstool) path: page/p
 #: C/gedit-close-file.page:24
@@ -464,10 +459,6 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gedit-full-screen.page:53
-#| msgid ""
-#| "You can also move your mouse cursor to the top of the screen, and wait "
-#| "for the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui> "
-#| "appears, select <gui>Leave Fullscreen</gui>."
 msgid ""
 "You can also move your mouse cursor to the top of the screen, and wait for "
 "the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui> appears, "
@@ -484,17 +475,11 @@ msgstr "A gedit oldalpaneljének használata fájlböngészőként."
 
 #. (itstool) path: page/title
 #: C/gedit-open-files-from-sidepane.page:17
-#| msgid "View and open files from the side pane"
 msgid "View and open files from the side panel"
 msgstr "Fájlok megjelenítése és megnyitása az oldalpanelen"
 
 #. (itstool) path: page/p
 #: C/gedit-open-files-from-sidepane.page:18
-#| msgid ""
-#| "The most common way to switch between files in <app>gedit</app> is by "
-#| "using the tabs at the top of the <app>gedit</app> window. In some cases, "
-#| "though, particularly when you are working with a large number of open "
-#| "files, you may find it easier to use the <app>side pane</app>."
 msgid ""
 "The most common way to switch between files in <app>gedit</app> is by using "
 "the tabs at the top of the <app>gedit</app> window. In some cases, though, "
@@ -507,22 +492,16 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-open-files-from-sidepane.page:25
-#| msgid ""
-#| "To activate the <app>side pane</app>, select <guiseq><gui>View</gui> "
-#| "<gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key."
 msgid ""
 "To activate the side panel, select <guiseq><gui>View</gui> <gui>Side Panel</"
 "gui></guiseq>, or just press the <key>F9</key> key."
 msgstr ""
 "Az oldalsó ablaktábla aktiválásához válassza a <guiseq><gui>Nézet</gui> "
-"<gui>Oldalpanel</gui></guiseq> menüpontot, vagy nyomja meg az "
-"<key>F9</key> billentyűt."
+"<gui>Oldalpanel</gui></guiseq> menüpontot, vagy nyomja meg az <key>F9</key> "
+"billentyűt."
 
 #. (itstool) path: note/p
 #: C/gedit-open-files-from-sidepane.page:31
-#| msgid ""
-#| "You can toggle the <gui>side pane</gui> open or closed by pressing "
-#| "<key>F9</key> at any time."
 msgid ""
 "You can toggle the side panel open or closed by pressing <key>F9</key> at "
 "any time."
@@ -533,34 +512,24 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/gedit-open-files-from-sidepane.page:39
 #: C/gedit-plugins-file-browser.page:33
-#| msgid "Opening files from the side pane"
 msgid "Opening files from the side panel"
 msgstr "Fájlok megnyitása az oldalpanelről"
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:40
-#| msgid ""
-#| "To open files from the <app>side pane</app>, first open the <app>side "
-#| "pane</app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></"
-#| "guiseq>, then click on the <gui>file-browser</gui> icon at the bottom of "
-#| "the pane."
 msgid ""
 "To open files from the side panel, first open the side panel by selecting "
 "<guiseq><gui>View</gui> <gui>Side Panel</gui></guiseq> (or just press "
 "<key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown at "
 "the top of the panel."
 msgstr ""
-"Fájlok oldalpanelről való megnyitásához első lépésként nyissa meg "
-"az oldalpanelt a <guiseq><gui>Nézet</gui> <gui>Oldalpanel</"
-"gui></guiseq> menüpont kiválasztásával, majd az ablaktábla tetején a "
-"<gui>Fájlböngésző</gui> megnyomásával."
+"Fájlok oldalpanelről való megnyitásához első lépésként nyissa meg az "
+"oldalpanelt a <guiseq><gui>Nézet</gui> <gui>Oldalpanel</gui></guiseq> "
+"menüpont kiválasztásával, majd az ablaktábla tetején a <gui>Fájlböngésző</"
+"gui> megnyomásával."
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:48
-#| msgid ""
-#| "This will activate the <em>file-browser</em> mode of the <app>side pane</"
-#| "app>. You can then use the navigation buttons at the top of the pane to "
-#| "locate and open your desired files."
 msgid ""
 "This will activate the <em>File Browser</em> mode of the side panel. You can "
 "then use the navigation buttons at the top of the panel to locate and open "
@@ -572,31 +541,22 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/gedit-open-files-from-sidepane.page:56
-#| msgid "Using the side pane to switch between open files"
 msgid "Using the side panel to switch between open files"
 msgstr "Az oldalpanel használata a nyitott fájlok közti váltásra"
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:57
-#| msgid ""
-#| "Once you have several files open, you can use the side pane to switch "
-#| "between open files. To activate the file browser portion of the <app>side "
-#| "pane</app>, click on the <gui>file</gui> icon at the bottom of the "
-#| "<gui>side pane</gui>."
 msgid ""
 "Once you have several files open, you can use the side panel to switch "
 "between open files. To list open files, choose <gui>Documents</gui> from the "
 "dropdown at the top of the panel."
 msgstr ""
 "Ha több fájlja van megnyitva, akkor az oldalpanel használatával is válthat a "
-"nyitott fájlok közt. A nyitott fájlok felsorolásához kattintson az oldalpanel "
-"tetején lévő <gui>Dokumentumok</gui> elemre."
+"nyitott fájlok közt. A nyitott fájlok felsorolásához kattintson az "
+"oldalpanel tetején lévő <gui>Dokumentumok</gui> elemre."
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:63
-#| msgid ""
-#| "Clicking on any file name in the <gui>side pane</gui> will open that file "
-#| "for editing."
 msgid ""
 "Clicking on any file name in the side panel will open that file for editing."
 msgstr ""
@@ -714,19 +674,16 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:32
-#| msgid "Click <gui>Open</gui>."
-msgid "In the title bar, click on <gui>Open</gui>."
-msgstr "A címsoron kattintson a <gui>Megnyitás</gui> gombra."
+msgid "In the header bar, click on <gui>Open</gui>."
+msgstr "A fejlécsávon kattintson a <gui>Megnyitás</gui> gombra."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:33
-#| msgid "Click <gui>Open</gui>."
 msgid "Click <gui>Other Documents…</gui>."
 msgstr "Kattintson az <gui>Egyéb dokumentumok</gui> gombra."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:34
-#| msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the <gui>Open</gui> "
 "dialog."
@@ -746,9 +703,6 @@ msgstr "Keresse meg, és válassza ki a megnyitni kívánt fájlt."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:39
-#| msgid ""
-#| "Use the Character coding drop-down list to select the appropriate "
-#| "character coding."
 msgid ""
 "Use the Character Encoding drop-down list to select the appropriate "
 "character coding."
@@ -805,7 +759,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-recent.page:22
-#| msgid "Click <gui>Open</gui>."
 msgid "Click the <gui>Open</gui> button."
 msgstr "Kattintson a <gui>Megnyitás</gui> gombra."
 
@@ -1117,23 +1070,16 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-file-browser.page:18
-#| msgid "Use the side pane to browse and open files."
 msgid "Use the side panel to browse and open files."
 msgstr "Az oldalpanel használata fájlok tallózására és megnyitására."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-file-browser.page:21
-#| msgid "File browser pane"
 msgid "File browser panel"
 msgstr "Fájlböngésző ablaktábla"
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-file-browser.page:23
-#| msgid ""
-#| "Depending on how you use <app>gedit</app>, you may find it helpful to use "
-#| "the <app>File Browser pane</app> plugin. This plugin embeds a <app>file "
-#| "browser</app> in the side pane, giving you easy access to your frequently-"
-#| "used files."
 msgid ""
 "Depending on how you use <app>gedit</app>, you may find it helpful to use "
 "the <app>File Browser pane</app> plugin. This plugin embeds a <app>file "
@@ -1147,51 +1093,38 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-file-browser.page:28
-#| msgid ""
-#| "You can enable the <gui>Side Pane</gui> by selecting <guiseq><gui style="
-#| "\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> "
-#| "<gui>Plugins</gui><gui>File Browser Pane</gui></guiseq>."
 msgid ""
 "You can enable the side panel by selecting <guiseq><gui style=\"menu"
 "\">gedit</gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
 "gui><gui>File Browser Panel</gui></guiseq>."
 msgstr ""
-"Az oldalpanel engedélyezhető a <guiseq><gui style=\"menu\">gedit</"
-"gui> <gui style=\"menuitem\">Beállítások</gui> <gui>Bővítmények</"
-"gui><gui>Fájlböngésző panel</gui></guiseq> kiválasztásával."
+"Az oldalpanel engedélyezhető a <guiseq><gui style=\"menu\">gedit</gui> <gui "
+"style=\"menuitem\">Beállítások</gui> <gui>Bővítmények</gui><gui>Fájlböngésző "
+"panel</gui></guiseq> kiválasztásával."
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-file-browser.page:34
-#| msgid ""
-#| "To open files from the <app>side pane</app>, first open the <app>side "
-#| "pane</app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></"
-#| "guiseq>, then click on the <gui>file-browser</gui> icon at the bottom of "
-#| "the pane."
 msgid ""
 "To open files from the side panel, first open the side panel by selecting "
 "<guiseq><gui>View</gui> <gui>Side Panel</gui></guiseq> (or just press "
 "<key>F9</key>), and then choose <gui>File Browser</gui> from the dropdown at "
 "the top of the pane."
 msgstr ""
-"Fájlok oldalpanelről való megnyitásához első lépésként nyissa meg "
-"az oldalpanelt a <guiseq><gui>Nézet</gui> <gui>Oldalpanel</"
-"gui></guiseq> menüpont kiválasztásával, majd az ablaktábla tetején a "
-"<gui>Fájlböngésző</gui> megnyomásával."
+"Fájlok oldalpanelről való megnyitásához első lépésként nyissa meg az "
+"oldalpanelt a <guiseq><gui>Nézet</gui> <gui>Oldalpanel</gui></guiseq> "
+"menüpont kiválasztásával, majd az ablaktábla tetején a <gui>Fájlböngésző</"
+"gui> megnyomásával."
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-file-browser.page:42
-#| msgid ""
-#| "This will activate the <em>file-browser</em> mode of the <app>side pane</"
-#| "app>. You can then use the navigation buttons at the top of the pane to "
-#| "locate and open your desired files."
 msgid ""
 "This will activate the <em>File Browser</em> mode of the side panel. You can "
 "then use the navigation buttons at the top of the pane to locate and open "
 "your desired files."
 msgstr ""
-"Ez aktiválja az oldalpanel <em>fájlböngésző</em> módját. Ekkor az "
-"oldalpanel tetején lévő navigációs gombokkal megkeresheti és megnyithatja a "
-"kívánt fájlokat."
+"Ez aktiválja az oldalpanel <em>fájlböngésző</em> módját. Ekkor az oldalpanel "
+"tetején lévő navigációs gombokkal megkeresheti és megnyithatja a kívánt "
+"fájlokat."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-insert-date-time.page:17
@@ -1599,10 +1532,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-pyconsole.page:25
-#| msgid ""
-#| "Once the Python console is enabled, you can open it by selecting "
-#| "<guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just press "
-#| "<keyseq><key>Shift</key><key>F9</key></keyseq>."
 msgid ""
 "Once the Python console is enabled, you can open it by selecting "
 "<guiseq><gui>View</gui><gui>Bottom Panel</gui></guiseq>."
@@ -1654,10 +1583,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-quick-open.page:33
-#| msgid ""
-#| "Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
-#| "key><key>Alt</key><key>O</key></keyseq>, or by selecting "
-#| "<guiseq><gui>File</gui><gui>Quick Open</gui></guiseq>."
 msgid ""
 "Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
 "key><key>Alt</key><key>O</key></keyseq>, or by selecting <gui style="
@@ -2144,14 +2069,12 @@ msgstr "Jelölje ki a kívánt szövegsorokat."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:58
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem"
-#| "\">Print…</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem\">Sort…"
 "</gui></guiseq>."
 msgstr ""
-"Válassza az <guiseq><gui>Eszközök</gui><gui>Rendezés</gui></guiseq> menüpontot"
+"Válassza az <guiseq><gui>Eszközök</gui><gui>Rendezés</gui></guiseq> "
+"menüpontot"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:62
@@ -2640,16 +2563,11 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:55
-#| msgid ""
-#| "Enter the text that you wish to replace into the <gui>Search for:</gui> "
-#| "field."
 msgid "Enter the text that you wish to replace into the <gui>Find</gui> field."
 msgstr "A cserélni kívánt szöveget írja be a <gui>Keresés erre</gui> mezőbe."
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:59
-#| msgid ""
-#| "Enter the new, replacement text into the <gui>Replace with:</gui> field."
 msgid "Enter the new, replacement text into the <gui>Replace with</gui> field."
 msgstr "Az új helyettesítő szöveget írja be a <gui>Csere ezzel</gui> mezőbe."
 
@@ -3005,11 +2923,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:103
-#| msgid ""
-#| "The text that you've searched for will remain highlighted by gedit, even "
-#| "after you have completed your search. To remove the highlight, click "
-#| "<guiseq><gui>Search</gui><gui>Clear Highlight</gui></guiseq>, or press "
-#| "<keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>."
 msgid ""
 "The text that you've searched for will remain highlighted by gedit, even "
 "after you have completed your search. To remove the highlight, click <gui "
@@ -3515,7 +3428,6 @@ msgstr "Ablaktáblákat elrejtő és megjelenítő gyorsbillentyűk"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:267
-#| msgid "Show / hide the side pane"
 msgid "Show / hide the side panel"
 msgstr "Oldalpanel megjelenítése/elrejtése"
 
@@ -4349,66 +4261,3 @@ msgstr "Creative Commons Nevezd meg!-Így add tovább! 3.0 átíratlan licenc"
 msgid "This work is licensed under a <_:link-1/>."
 msgstr "Ez a munka a <_:link-1/> feltételei szerint használható."
 
-#~ msgid ""
-#~ "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
-#~ "<gui>Open Files</gui> dialog."
-#~ msgstr ""
-#~ "Válassza a <guiseq><gui>Fájl</gui><gui>Megnyitás</gui></guiseq> "
-#~ "menüpontot a <gui>Fájlok megnyitása</gui> ablak megjelenítéséhez."
-
-#~ msgid ""
-#~ "Select the <gui>Pencil</gui> icon near the top of the <gui>Open Files</"
-#~ "gui> dialog."
-#~ msgstr ""
-#~ "Válassza a <gui>Toll</gui> ikont a <gui>Fájlok megnyitása</gui> ablak "
-#~ "tetején."
-
-#~ msgid ""
-#~ "Click the downward-facing arrow to the right of the <gui>Open</gui> "
-#~ "button."
-#~ msgstr ""
-#~ "Kattintson a lefelé mutató nyílra a <gui>Megnyitás</gui> gomb jobb "
-#~ "oldalán."
-
-#~ msgid ""
-#~ "To activate and use the <gui>side pane</gui>, select <guiseq><gui>View</"
-#~ "gui><gui>Side pane</gui></guiseq> (or just press <key>F9</key>), and then "
-#~ "click on the <gui>file-browser</gui> icon at the bottom of the pane."
-#~ msgstr ""
-#~ "Az <gui>oldalsáv</gui> aktiválásához és használatához válassza a "
-#~ "<guiseq><gui>Nézet</gui><gui>Oldalsó ablaktábla</gui></guiseq> menüpontot "
-#~ "(vagy nyomja meg az <key>F9</key> billentyűt), majd az ablaktábla alján "
-#~ "kattintson a <gui>fájlböngésző</gui> ikonra."
-
-#~ msgid ""
-#~ "You cannot use the <gui>Undo</gui> feature to correct a <gui>Sort</gui> "
-#~ "operation, so we recommend that you save the file immediately before "
-#~ "performing the sort. If you make a mistake with the sort, you can revert "
-#~ "to the previously-saved version of the file by selecting "
-#~ "<guiseq><gui>File</gui><gui>Revert</gui></guiseq>."
-#~ msgstr ""
-#~ "A rendezés műveletre nem használható a <gui>Visszavonás</gui> funkció, "
-#~ "ezért érdemes végrehajtása előtt menteni. Ha a rendezést elrontja, akkor "
-#~ "a mentett verzióra való visszatéréshez válassza a <guiseq><gui>Fájl</"
-#~ "gui><gui>Visszaállítás</gui></guiseq> menüpontot."
-
-#~ msgid ""
-#~ "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
-#~ "\">Sort</gui></guiseq>."
-#~ msgstr ""
-#~ "Válassza a <guiseq><gui style=\"menu\">gedit</gui><gui>Rendezés</gui></"
-#~ "guiseq> menüpontot."
-
-#~ msgid ""
-#~ "Press the <key>Ctrl</key> and use your mouse or touchpad's <key>scroll</"
-#~ "key> feature to move up or down through the text."
-#~ msgstr ""
-#~ "Tartsa lenyomva a <key>Ctrl</key> billentyűt, és az egér vagy az "
-#~ "érintőtábla <key>görgetés</key> funkciójával mozogjon felfelé vagy lefelé "
-#~ "a szövegben."
-
-#~ msgid "Show / hide the bottom pane"
-#~ msgstr "Alsó ablaktábla megjelenítése/elrejtése"
-
-#~ msgid "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
-#~ msgstr "<keyseq><key>Ctrl</key><key>F9</key></keyseq>"
