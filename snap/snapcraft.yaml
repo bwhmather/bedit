@@ -108,7 +108,7 @@ parts:
       - --prefix=/snap/gedit/current/usr
       - -Dintrospection=false
     build-environment:
-      - PKG_CONFIG_PATH: $SNAPCRAFT_STAGE/usr/lib/pkgconfig
+      - C_INCLUDE_PATH: $SNAPCRAFT_STAGE/usr/include/gedit-3.14/
     override-build: |
        sed -i.bak -e 's|Icon=org.gnome.gedit$|Icon=${SNAP}/meta/gui/org.gnome.gedit.svg|g' data/org.gnome.gedit.desktop.in.in
        snapcraftctl build
