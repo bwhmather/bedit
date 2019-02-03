@@ -1,4 +1,3 @@
-# translation of gedit.master.po to
 # Hungarian translation for gedit.
 # Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gedit package.
@@ -14,10 +13,10 @@
 # Balázs Úr <urbalazs at gmail dot com>, 2013, 2014, 2015, 2016, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: gedit.master\n"
+"Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-01-13 11:51+0000\n"
-"PO-Revision-Date: 2019-01-26 22:25+0100\n"
+"POT-Creation-Date: 2019-02-01 16:41+0000\n"
+"PO-Revision-Date: 2019-02-03 08:06+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -1113,6 +1112,7 @@ msgstr ""
 "próbálja újra."
 
 #: gedit/gedit-io-error-info-bar.c:260
+#, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
@@ -3659,7 +3659,7 @@ msgstr "_Egyéni formátum használata"
 #: plugins/time/resources/ui/gedit-time-dialog.ui:89
 #: plugins/time/resources/ui/gedit-time-setup-dialog.ui:165
 msgid "%d/%m/%Y %H:%M:%S"
-msgstr "%Y. %m. %d., %k.%M.%S"
+msgstr "%Y. %m. %d. %H:%M:%S"
 
 #. Translators: This example should follow the date format defined in the entry above
 #: plugins/time/resources/ui/gedit-time-dialog.ui:106
