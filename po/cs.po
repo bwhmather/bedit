@@ -14,14 +14,14 @@
 # Kamil Páral <ripper42@gmail.com>, 2009.
 # Lucas Lommer <llommer@svn.gnome.org>, 2009. (just one fix).
 # Petr Kovar <pknbe@volny.cz>, 2008, 2009, 2010.
-# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018.
+# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2018-10-10 14:03+0000\n"
-"PO-Revision-Date: 2018-10-12 13:42+0200\n"
+"POT-Creation-Date: 2019-02-03 19:30+0000\n"
+"PO-Revision-Date: 2019-02-06 10:29+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -609,7 +609,7 @@ msgstr "[SOUBOR…] [+ŘÁDEK[:SLOUPEC]]"
 msgid "There was an error displaying the help."
 msgstr "Při zobrazování nápovědy došlo k chybě."
 
-#: gedit/gedit-app.c:967
+#: gedit/gedit-app.c:964
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: neplatné kódování."
@@ -625,7 +625,7 @@ msgstr "Zavřít _bez uložení"
 #: gedit/gedit-progress-info-bar.c:49
 #: gedit/resources/ui/gedit-encodings-dialog.ui:44
 #: gedit/resources/ui/gedit-highlight-mode-dialog.ui:31
-#: plugins/filebrowser/gedit-file-browser-utils.c:170
+#: plugins/filebrowser/gedit-file-browser-utils.c:213
 #: plugins/quickopen/quickopen/popup.py:45
 #: plugins/snippets/snippets/manager.py:789
 #: plugins/snippets/snippets/manager.py:874
@@ -635,7 +635,7 @@ msgstr "Zavřít _bez uložení"
 msgid "_Cancel"
 msgstr "_Zrušit"
 
-#: gedit/gedit-close-confirmation-dialog.c:306 gedit/resources/gtk/menus.ui:65
+#: gedit/gedit-close-confirmation-dialog.c:306 gedit/resources/gtk/menus.ui:37
 #: gedit/resources/gtk/menus-traditional.ui:30
 msgid "_Save As…"
 msgstr "_Uložit jako…"
@@ -1148,6 +1148,7 @@ msgstr ""
 "správné, a zkuste to znovu."
 
 #: gedit/gedit-io-error-info-bar.c:260
+#, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
@@ -1413,7 +1414,7 @@ msgid "Drop Changes and _Reload"
 msgstr "Zahodit změny a z_novu načíst"
 
 #: gedit/gedit-io-error-info-bar.c:1178 gedit/resources/gtk/menus-common.ui:148
-#: gedit/resources/gtk/menus.ui:44 gedit/resources/gtk/menus-traditional.ui:9
+#: gedit/resources/gtk/menus.ui:9 gedit/resources/gtk/menus-traditional.ui:9
 msgid "_Reload"
 msgstr "Zn_ovu načíst"
 
@@ -1487,7 +1488,7 @@ msgstr "Stránka %N z %Q"
 msgid "Rendering page %d of %d…"
 msgstr "Vykresluje se stránka %d z %d…"
 
-#: gedit/gedit-print-preview.c:653
+#: gedit/gedit-print-preview.c:651
 #, c-format
 msgid "Page %d of %d"
 msgstr "Stránka %d z %d"
@@ -1583,39 +1584,39 @@ msgstr "Typ MIME:"
 msgid "Encoding:"
 msgstr "Kódování:"
 
-#: gedit/gedit-utils.c:841
+#: gedit/gedit-utils.c:823
 msgid "Please check your installation."
 msgstr "Zkontrolujte prosím svou instalaci."
 
-#: gedit/gedit-utils.c:902
+#: gedit/gedit-utils.c:884
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Nelze otevřít soubor „%s“ s uživatelským rozhraním. Chyba: %s"
 
-#: gedit/gedit-utils.c:921
+#: gedit/gedit-utils.c:903
 #, c-format
 msgid "Unable to find the object “%s” inside file %s."
 msgstr "Nelze najít objekt „%s“ uvnitř souboru %s."
 
 #. Translators: '/ on <remote-share>'
-#: gedit/gedit-utils.c:1159
+#: gedit/gedit-utils.c:1141
 #, c-format
 msgid "/ on %s"
 msgstr "/ na %s"
 
-#: gedit/gedit-utils.c:1463
+#: gedit/gedit-utils.c:1445
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: gedit/gedit-utils.c:1465
+#: gedit/gedit-utils.c:1447
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: gedit/gedit-utils.c:1467
+#: gedit/gedit-utils.c:1449
 msgid "Windows"
 msgstr "Windows"
 
-#: gedit/gedit-view.c:468 gedit/resources/ui/gedit-preferences-dialog.ui:41
+#: gedit/gedit-view.c:481 gedit/resources/ui/gedit-preferences-dialog.ui:41
 msgid "_Display line numbers"
 msgstr "Zobrazovat čísla řá_dků"
 
@@ -1648,11 +1649,11 @@ msgstr "Hledat pouze _celá slova"
 msgid "_Match Case"
 msgstr "_Rozlišovat velikost písmen"
 
-#: gedit/gedit-view-frame.c:1032
+#: gedit/gedit-view-frame.c:1029
 msgid "String you want to search for"
 msgstr "Řetězec, který chcete hledat"
 
-#: gedit/gedit-view-frame.c:1044
+#: gedit/gedit-view-frame.c:1041
 msgid "Line you want to move the cursor to"
 msgstr "Řádek, na který chcete přesunout kurzor"
 
@@ -1685,11 +1686,11 @@ msgstr "Šířka tabulátoru: %u"
 msgid "There are unsaved documents"
 msgstr "Některé dokumenty nejsou uložené"
 
-#: gedit/gedit-window.c:2444
+#: gedit/gedit-window.c:2442
 msgid "Change side panel page"
 msgstr "Změnit stránku postranního panelu"
 
-#: gedit/gedit-window.c:2464 gedit/resources/ui/gedit-window.ui:19
+#: gedit/gedit-window.c:2462 gedit/resources/ui/gedit-window.ui:19
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -1710,7 +1711,7 @@ msgid "Move to New Tab _Group"
 msgstr "Přesunout do nové s_kupiny karet"
 
 #: gedit/resources/gtk/menus-common.ui:27
-#: gedit/resources/gtk/menus-common.ui:163 gedit/resources/gtk/menus.ui:144
+#: gedit/resources/gtk/menus-common.ui:163
 #: gedit/resources/gtk/menus-traditional.ui:131
 #: gedit/resources/ui/gedit-replace-dialog.ui:23
 #: plugins/time/resources/ui/gedit-time-setup-dialog.ui:21
@@ -1762,16 +1763,16 @@ msgstr "Znovu otevřít zavřenou kar_tu"
 msgid "Save _As…"
 msgstr "Uložit j_ako…"
 
-#: gedit/resources/gtk/menus-common.ui:140 gedit/resources/gtk/menus.ui:8
+#: gedit/resources/gtk/menus-common.ui:140 gedit/resources/gtk/menus.ui:27
 msgid "_New Window"
 msgstr "_Nové okno"
 
-#: gedit/resources/gtk/menus-common.ui:155 gedit/resources/gtk/menus.ui:49
+#: gedit/resources/gtk/menus-common.ui:155 gedit/resources/gtk/menus.ui:14
 #: gedit/resources/gtk/menus-traditional.ui:14
 msgid "_Print…"
 msgstr "_Tisk…"
 
-#: gedit/resources/gtk/menus-common.ui:168 gedit/resources/gtk/menus.ui:34
+#: gedit/resources/gtk/menus-common.ui:168
 #: gedit/resources/gtk/menus-traditional.ui:135
 msgid "_Quit"
 msgstr "U_končit"
@@ -1815,31 +1816,32 @@ msgstr "Reži_m přepisování"
 msgid "Select _All"
 msgstr "Vybrat _vše"
 
-#: gedit/resources/gtk/menus-common.ui:230 gedit/resources/gtk/menus.ui:15
+#: gedit/resources/gtk/menus-common.ui:230 gedit/resources/gtk/menus.ui:112
 #: gedit/resources/gtk/menus-traditional.ui:105
 msgid "_Preferences"
 msgstr "_Předvolby"
 
-#: gedit/resources/gtk/menus-common.ui:237 gedit/resources/gtk/menus.ui:100
+#: gedit/resources/gtk/menus-common.ui:237 gedit/resources/gtk/menus.ui:72
+#: gedit/resources/gtk/menus-traditional.ui:65
 msgid "_View"
 msgstr "_Zobrazit"
 
-#: gedit/resources/gtk/menus-common.ui:241 gedit/resources/gtk/menus.ui:104
+#: gedit/resources/gtk/menus-common.ui:241 gedit/resources/gtk/menus.ui:76
 #: gedit/resources/gtk/menus-traditional.ui:69
 msgid "Side _Panel"
 msgstr "Postranní _panel"
 
-#: gedit/resources/gtk/menus-common.ui:246 gedit/resources/gtk/menus.ui:108
+#: gedit/resources/gtk/menus-common.ui:246 gedit/resources/gtk/menus.ui:80
 #: gedit/resources/gtk/menus-traditional.ui:73
 msgid "_Bottom Panel"
 msgstr "_Spodní panel"
 
-#: gedit/resources/gtk/menus-common.ui:255 gedit/resources/gtk/menus.ui:54
+#: gedit/resources/gtk/menus-common.ui:255 gedit/resources/gtk/menus.ui:19
 #: gedit/resources/gtk/menus-traditional.ui:19
 msgid "_Fullscreen"
 msgstr "_Celá obrazovka"
 
-#: gedit/resources/gtk/menus-common.ui:263 gedit/resources/gtk/menus.ui:119
+#: gedit/resources/gtk/menus-common.ui:263 gedit/resources/gtk/menus.ui:91
 #: gedit/resources/gtk/menus-traditional.ui:84
 msgid "_Highlight Mode…"
 msgstr "Režim _zvýrazňování…"
@@ -1848,7 +1850,7 @@ msgstr "Režim _zvýrazňování…"
 msgid "_Search"
 msgstr "_Hledat"
 
-#: gedit/resources/gtk/menus-common.ui:273 gedit/resources/gtk/menus.ui:82
+#: gedit/resources/gtk/menus-common.ui:273 gedit/resources/gtk/menus.ui:54
 #: gedit/resources/gtk/menus-traditional.ui:47
 msgid "_Find…"
 msgstr "_Hledat…"
@@ -1865,7 +1867,7 @@ msgstr "Najít předcho_zí"
 msgid "Find and _Replace…"
 msgstr "Najít a nah_radit…"
 
-#: gedit/resources/gtk/menus-common.ui:299 gedit/resources/gtk/menus.ui:90
+#: gedit/resources/gtk/menus-common.ui:299 gedit/resources/gtk/menus.ui:62
 #: gedit/resources/gtk/menus-traditional.ui:55
 msgid "_Clear Highlight"
 msgstr "_Zrušit zvýrazňování"
@@ -1874,7 +1876,8 @@ msgstr "_Zrušit zvýrazňování"
 msgid "Go to _Line…"
 msgstr "Přejít na řá_dek…"
 
-#: gedit/resources/gtk/menus-common.ui:314 gedit/resources/gtk/menus.ui:125
+#: gedit/resources/gtk/menus-common.ui:314 gedit/resources/gtk/menus.ui:97
+#: gedit/resources/gtk/menus-traditional.ui:90
 msgid "_Tools"
 msgstr "_Nástroje"
 
@@ -1886,7 +1889,7 @@ msgstr "_Dokumenty"
 msgid "_Save All"
 msgstr "Uložit _vše"
 
-#: gedit/resources/gtk/menus-common.ui:338 gedit/resources/gtk/menus.ui:140
+#: gedit/resources/gtk/menus-common.ui:338
 #: gedit/resources/gtk/menus-traditional.ui:127
 msgid "_Close All"
 msgstr "Zavřít vš_e"
@@ -1916,42 +1919,34 @@ msgid "_Move To New Window"
 msgstr "Pře_sunout do nového okna"
 
 #: gedit/resources/gtk/menus-common.ui:383
-#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:26
+#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:120
 #: gedit/resources/gtk/menus-traditional.ui:116
 #: plugins/spell/gedit-spell-plugin.c:246
 #: plugins/time/resources/ui/gedit-time-dialog.ui:133
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:30
+#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:124
 #: gedit/resources/gtk/menus-traditional.ui:120
-msgid "_About"
-msgstr "O _aplikaci"
+msgid "_About Text Editor"
+msgstr "O _aplikaci Textový editor"
 
-#: gedit/resources/gtk/menus.ui:22 gedit/resources/gtk/menus-traditional.ui:112
-msgid "_Keyboard Shortcuts"
-msgstr "_Klávesové zkratky"
-
-#: gedit/resources/gtk/menus.ui:69 gedit/resources/gtk/menus-traditional.ui:34
+#: gedit/resources/gtk/menus.ui:41 gedit/resources/gtk/menus-traditional.ui:34
 msgid "Save _All"
 msgstr "Uložit _vše"
 
-#: gedit/resources/gtk/menus.ui:86 gedit/resources/gtk/menus-traditional.ui:51
+#: gedit/resources/gtk/menus.ui:58 gedit/resources/gtk/menus-traditional.ui:51
 msgid "_Find and Replace…"
 msgstr "_Hledat a nahradit…"
 
-#: gedit/resources/gtk/menus.ui:94 gedit/resources/gtk/menus-traditional.ui:59
+#: gedit/resources/gtk/menus.ui:66 gedit/resources/gtk/menus-traditional.ui:59
 msgid "_Go to Line…"
 msgstr "Přejít na řá_dek…"
 
-#: gedit/resources/gtk/menus-traditional.ui:65
-#: gedit/resources/ui/gedit-preferences-dialog.ui:285
-msgid "View"
-msgstr "Zobrazit"
-
-#: gedit/resources/gtk/menus-traditional.ui:90
-msgid "Tools"
-msgstr "Nástroje"
+#: gedit/resources/gtk/menus.ui:116
+#: gedit/resources/gtk/menus-traditional.ui:112
+msgid "_Keyboard Shortcuts"
+msgstr "_Klávesové zkratky"
 
 #: gedit/resources/ui/gedit-encodings-dialog.ui:41
 msgid "Character Encodings"
@@ -2050,6 +2045,10 @@ msgstr "Zvýrazňovat _aktuální řádek"
 #: gedit/resources/ui/gedit-preferences-dialog.ui:252
 msgid "Highlight matching _brackets"
 msgstr "Zvýrazňovat _odpovídající závorky"
+
+#: gedit/resources/ui/gedit-preferences-dialog.ui:285
+msgid "View"
+msgstr "Zobrazit"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:307
 msgid "Tab Stops"
@@ -2947,11 +2946,11 @@ msgstr "Snadný přístup k souborům z postranního panelu"
 msgid "system-file-manager"
 msgstr "system-file-manager"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:205
+#: plugins/filebrowser/gedit-file-bookmarks-store.c:200
 msgid "Home"
 msgstr "Domů"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:231
+#: plugins/filebrowser/gedit-file-bookmarks-store.c:233
 msgid "File System"
 msgstr "Systém souborů"
 
@@ -3021,11 +3020,11 @@ msgstr "Opravdu chcete trvale smazat vybrané soubory?"
 msgid "If you delete an item, it is permanently lost."
 msgstr "Pokud položku smažete, bude nenávratně ztracena."
 
-#: plugins/filebrowser/gedit-file-browser-store.c:1794
+#: plugins/filebrowser/gedit-file-browser-store.c:1703
 msgid "(Empty)"
 msgstr "(Prázdné)"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3515
+#: plugins/filebrowser/gedit-file-browser-store.c:3327
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3034,11 +3033,11 @@ msgstr ""
 "své nastavení filtrování."
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3772
+#: plugins/filebrowser/gedit-file-browser-store.c:3578
 msgid "Untitled File"
 msgstr "Nepojmenovaný soubor"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3800
+#: plugins/filebrowser/gedit-file-browser-store.c:3606
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3047,11 +3046,11 @@ msgstr ""
 "nastavení filtrování."
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3831
+#: plugins/filebrowser/gedit-file-browser-store.c:3635
 msgid "Untitled Folder"
 msgstr "Nepojmenovaná složka"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3856
+#: plugins/filebrowser/gedit-file-browser-store.c:3658
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -3059,26 +3058,26 @@ msgstr ""
 "Nová složka je nyní odfiltrována. Aby byla viditelná, musíte upravit své "
 "nastavení filtrování."
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:754
+#: plugins/filebrowser/gedit-file-browser-widget.c:757
 msgid "Bookmarks"
 msgstr "Záložky"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:1995
+#: plugins/filebrowser/gedit-file-browser-widget.c:1957
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Žádný připojovací objekt pro připojený svazek: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2072
+#: plugins/filebrowser/gedit-file-browser-widget.c:2026
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Nelze otevřít médium: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2119
+#: plugins/filebrowser/gedit-file-browser-widget.c:2069
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Nelze připojit svazek: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2769
+#: plugins/filebrowser/gedit-file-browser-widget.c:2581
 #, c-format
 msgid "Error when loading “%s”: No such directory"
 msgstr "Chyba při načítání „%s“: Taková složka neexistuje"
@@ -3227,11 +3226,11 @@ msgstr "Zobrazit _binární"
 msgid "Match Filename"
 msgstr "vyhovující masce"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:187
+#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:183
 msgid "History"
 msgstr "Historie"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:188
+#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:184
 msgid "Open history menu"
 msgstr "Otevřít nabídku s historií"
 
