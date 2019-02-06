@@ -142,19 +142,6 @@ parts:
       - gobject-introspection
       - libgirepository1.0-dev
       - valac
-    stage-packages:
-      - gir1.2-ggit-1.0
-      - gir1.2-gucharmap-2.90
-      - gir1.2-glib-2.0
-      - gir1.2-pango-1.0
-      - gir1.2-peas-1.0
-      - gir1.2-vte-2.91
-      - iso-codes
-      - libgspell-1-1
-      - libpeas-1.0-0
-      - python3-dbus
-      - python3-gi
-      - python3-gi-cairo
 
   gedit-plugins:
     after: [gedit]
