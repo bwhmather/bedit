@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2019-01-13 11:51+0000\n"
-"PO-Revision-Date: 2019-01-01 22:43+0900\n"
+"POT-Creation-Date: 2019-02-06 20:35+0000\n"
+"PO-Revision-Date: 2019-02-09 18:10+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -625,7 +625,7 @@ msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
 #: gedit/gedit-close-confirmation-dialog.c:306 gedit/resources/gtk/menus.ui:37
-#: gedit/resources/gtk/menus-traditional.ui:30
+#: gedit/resources/gtk/menus-traditional.ui:33
 msgid "_Save As…"
 msgstr "名前を付けて保存(_S)…"
 
@@ -1065,6 +1065,7 @@ msgstr ""
 "実行してみてください。"
 
 #: gedit/gedit-io-error-info-bar.c:260
+#, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
@@ -1630,7 +1631,7 @@ msgstr "新しいタブグループへ移動(_G)"
 
 #: gedit/resources/gtk/menus-common.ui:27
 #: gedit/resources/gtk/menus-common.ui:163
-#: gedit/resources/gtk/menus-traditional.ui:131
+#: gedit/resources/gtk/menus-traditional.ui:134
 #: gedit/resources/ui/gedit-replace-dialog.ui:23
 #: plugins/time/resources/ui/gedit-time-setup-dialog.ui:21
 msgid "_Close"
@@ -1691,7 +1692,7 @@ msgid "_Print…"
 msgstr "印刷(_P)…"
 
 #: gedit/resources/gtk/menus-common.ui:168
-#: gedit/resources/gtk/menus-traditional.ui:135
+#: gedit/resources/gtk/menus-traditional.ui:138
 msgid "_Quit"
 msgstr "終了(_Q)"
 
@@ -1735,21 +1736,22 @@ msgid "Select _All"
 msgstr "すべて選択(_A)"
 
 #: gedit/resources/gtk/menus-common.ui:230 gedit/resources/gtk/menus.ui:112
-#: gedit/resources/gtk/menus-traditional.ui:105
+#: gedit/resources/gtk/menus-traditional.ui:108
 msgid "_Preferences"
 msgstr "設定(_P)"
 
 #: gedit/resources/gtk/menus-common.ui:237 gedit/resources/gtk/menus.ui:72
+#: gedit/resources/gtk/menus-traditional.ui:68
 msgid "_View"
 msgstr "表示(_V)"
 
 #: gedit/resources/gtk/menus-common.ui:241 gedit/resources/gtk/menus.ui:76
-#: gedit/resources/gtk/menus-traditional.ui:69
+#: gedit/resources/gtk/menus-traditional.ui:72
 msgid "Side _Panel"
 msgstr "サイドパネル(_P)"
 
 #: gedit/resources/gtk/menus-common.ui:246 gedit/resources/gtk/menus.ui:80
-#: gedit/resources/gtk/menus-traditional.ui:73
+#: gedit/resources/gtk/menus-traditional.ui:76
 msgid "_Bottom Panel"
 msgstr "ボトムパネル(_B)"
 
@@ -1759,7 +1761,7 @@ msgid "_Fullscreen"
 msgstr "フルスクリーン(_F)"
 
 #: gedit/resources/gtk/menus-common.ui:263 gedit/resources/gtk/menus.ui:91
-#: gedit/resources/gtk/menus-traditional.ui:84
+#: gedit/resources/gtk/menus-traditional.ui:87
 msgid "_Highlight Mode…"
 msgstr "ハイライトモード(_H)…"
 
@@ -1768,7 +1770,7 @@ msgid "_Search"
 msgstr "検索(_S)"
 
 #: gedit/resources/gtk/menus-common.ui:273 gedit/resources/gtk/menus.ui:54
-#: gedit/resources/gtk/menus-traditional.ui:47
+#: gedit/resources/gtk/menus-traditional.ui:50
 msgid "_Find…"
 msgstr "検索(_F)…"
 
@@ -1786,7 +1788,7 @@ msgid "Find and _Replace…"
 msgstr "置換(_R)…"
 
 #: gedit/resources/gtk/menus-common.ui:299 gedit/resources/gtk/menus.ui:62
-#: gedit/resources/gtk/menus-traditional.ui:55
+#: gedit/resources/gtk/menus-traditional.ui:58
 msgid "_Clear Highlight"
 msgstr "強調表示のクリア(_C)"
 
@@ -1795,6 +1797,7 @@ msgid "Go to _Line…"
 msgstr "指定行へ移動(_L)…"
 
 #: gedit/resources/gtk/menus-common.ui:314 gedit/resources/gtk/menus.ui:97
+#: gedit/resources/gtk/menus-traditional.ui:93
 msgid "_Tools"
 msgstr "ツール(_T)"
 
@@ -1807,7 +1810,7 @@ msgid "_Save All"
 msgstr "すべて保存(_S)"
 
 #: gedit/resources/gtk/menus-common.ui:338
-#: gedit/resources/gtk/menus-traditional.ui:127
+#: gedit/resources/gtk/menus-traditional.ui:130
 msgid "_Close All"
 msgstr "すべて閉じる(_C)"
 
@@ -1836,44 +1839,35 @@ msgid "_Move To New Window"
 msgstr "新しいウィンドウへ移動(_M)"
 
 #: gedit/resources/gtk/menus-common.ui:383
-#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:120
-#: gedit/resources/gtk/menus-traditional.ui:116
+#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:123
+#: gedit/resources/gtk/menus-traditional.ui:119
 #: plugins/spell/gedit-spell-plugin.c:246
 #: plugins/time/resources/ui/gedit-time-dialog.ui:133
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:124
-#: gedit/resources/gtk/menus-traditional.ui:120
+#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:127
+#: gedit/resources/gtk/menus-traditional.ui:123
 msgid "_About Text Editor"
 msgstr "テキストエディターについて(_A)"
 
-#: gedit/resources/gtk/menus.ui:41 gedit/resources/gtk/menus-traditional.ui:34
+#: gedit/resources/gtk/menus.ui:41 gedit/resources/gtk/menus-traditional.ui:37
 msgid "Save _All"
 msgstr "すべて保存(_A)"
 
 # 置換だけでも十分理解可能
-#: gedit/resources/gtk/menus.ui:58 gedit/resources/gtk/menus-traditional.ui:51
+#: gedit/resources/gtk/menus.ui:58 gedit/resources/gtk/menus-traditional.ui:54
 msgid "_Find and Replace…"
 msgstr "置換(_F)…"
 
-#: gedit/resources/gtk/menus.ui:66 gedit/resources/gtk/menus-traditional.ui:59
+#: gedit/resources/gtk/menus.ui:66 gedit/resources/gtk/menus-traditional.ui:62
 msgid "_Go to Line…"
 msgstr "指定行へ移動(_G)…"
 
-#: gedit/resources/gtk/menus.ui:116
-#: gedit/resources/gtk/menus-traditional.ui:112
+#: gedit/resources/gtk/menus.ui:119
+#: gedit/resources/gtk/menus-traditional.ui:115
 msgid "_Keyboard Shortcuts"
 msgstr "キーボードショートカット(_K)"
-
-#: gedit/resources/gtk/menus-traditional.ui:65
-#: gedit/resources/ui/gedit-preferences-dialog.ui:285
-msgid "View"
-msgstr "表示"
-
-#: gedit/resources/gtk/menus-traditional.ui:90
-msgid "Tools"
-msgstr "ツール"
 
 #: gedit/resources/ui/gedit-encodings-dialog.ui:41
 msgid "Character Encodings"
@@ -1972,6 +1966,10 @@ msgstr "カーソルのある行を強調表示する(_L)"
 #: gedit/resources/ui/gedit-preferences-dialog.ui:252
 msgid "Highlight matching _brackets"
 msgstr "対応するカッコを強調表示する(_B)"
+
+#: gedit/resources/ui/gedit-preferences-dialog.ui:285
+msgid "View"
+msgstr "表示"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:307
 msgid "Tab Stops"
@@ -3217,7 +3215,7 @@ msgstr "クイックハイライト"
 
 #: plugins/quickhighlight/quickhighlight.plugin.desktop.in:6
 msgid "Highlights every occurrences of selected text."
-msgstr ""
+msgstr "選択した文字列と一致する部分を強調表示します。"
 
 #: plugins/quickopen/quickopen/__init__.py:47
 msgid "Quick Open…"
@@ -3645,6 +3643,9 @@ msgstr "日付/時刻の挿入"
 #: plugins/time/time.plugin.desktop.in:6
 msgid "Inserts current date and time at the cursor position."
 msgstr "カーソル位置に現在の日付と時刻を挿入します。"
+
+#~ msgid "Tools"
+#~ msgstr "ツール"
 
 #~ msgid "gedit Text Editor"
 #~ msgstr "gedit テキストエディター"
