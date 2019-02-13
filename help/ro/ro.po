@@ -6,25 +6,27 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
-"POT-Creation-Date: 2018-01-29 03:09+0000\n"
-"PO-Revision-Date: 2018-03-02 18:38+0200\n"
+"POT-Creation-Date: 2019-02-09 15:15+0000\n"
+"PO-Revision-Date: 2019-02-13 18:03+0100\n"
 "Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
-"Language-Team: Gnome Romanian Translation Team\n"
+"Language-Team: Gnome Romanian Translation Team <gnomero-list@lists."
+"sourceforge.net>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2);;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
+"%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Project-Style: gnome\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Laurențiu Cristian Ion <ionlaurentiucristian@gmail.com>, 2012\n"
-"Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2015, 2018"
+"Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2015, 2018-2019"
 
 #. (itstool) path: info/desc
 #: C/gedit-change-color-scheme.page:8
@@ -133,14 +135,14 @@ msgid ""
 msgstr ""
 "Instrucțiuni despre cum se instalează scheme de culori personalizate, precum "
 "și exemple de scheme de culori pe care să le puteți descărca și utiliza, "
-"sunt disponibile în <link href=\""
-"https://wiki.gnome.org/Projects/GtkSourceView/StyleSchemes\">wiki-ul "
-"gedit</link>."
+"sunt disponibile în <link href=\"https://wiki.gnome.org/Projects/"
+"GtkSourceView/StyleSchemes\">wiki-ul gedit</link>."
 
 #. (itstool) path: info/desc
 #: C/gedit-change-default-font.page:6
 msgid "Use a custom font for your text in gedit."
-msgstr "Utilizarea unui font personalizat în gedit pentru textul dumneavoastră."
+msgstr ""
+"Utilizarea unui font personalizat în gedit pentru textul dumneavoastră."
 
 #. (itstool) path: credit/years
 #: C/gedit-change-default-font.page:12
@@ -173,8 +175,8 @@ msgid ""
 "Select <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
 "\">Preferences</gui> <gui>Font &amp; Colors</gui></guiseq>."
 msgstr ""
-"Selectați <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem\""
-">Preferințe</gui> <gui>Font și culori</gui></guiseq>."
+"Selectați <guiseq><gui style=\"menu\">gedit</gui> <gui style=\"menuitem"
+"\">Preferințe</gui> <gui>Font și culori</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-change-default-font.page:30
@@ -220,19 +222,14 @@ msgstr "Închiderea unui fișier"
 
 #. (itstool) path: page/p
 #: C/gedit-close-file.page:20
-#| msgid ""
-#| "To close a file in <app>gedit</app>, select <guiseq><gui>File</gui> "
-#| "<gui>Close</gui></guiseq>. Alternately, you can click the small \"X\" "
-#| "that appears on the right-side of the file's tab, or press "
-#| "<keyseq><key>Ctrl</key> <key>W</key></keyseq>."
 msgid ""
 "To close a file in <app>gedit</app>, select <gui style=\"menuitem\">Close</"
 "gui>. Alternately, you can click the small \"X\" that appears on the right-"
 "side of the file's tab, or press <keyseq><key>Ctrl</key> <key>W</key></"
 "keyseq>."
 msgstr ""
-"Pentru a închide un fișier în <app>gedit</app>, selectați <gui style=\""
-"menuitem\">Închide</gui>. Alternativ, apăsați pe micul „X” care apare în "
+"Pentru a închide un fișier în <app>gedit</app>, selectați <gui style="
+"\"menuitem\">Închide</gui>. Alternativ, apăsați pe micul „X” care apare în "
 "partea dreaptă a tabului fișierului, sau apăsați <keyseq><key>Ctrl</key> "
 "<key>W</key></keyseq>."
 
@@ -249,7 +246,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-create-new-file.page:8
-#| msgid "Open a file or set of files"
 msgid "Open a new file for editing."
 msgstr "Deschiderea unui fișier nou pentru editare."
 
@@ -275,8 +271,8 @@ msgid ""
 msgstr ""
 "Cea mai ușoară modalitate de a creea un fișier nou în <app>gedit</app>, este "
 "să apăsați pe butonul <gui>Creează un document nou</gui> din partea stângă a "
-"barei de instrumente, sau apăsați "
-"<keyseq><key>Ctrl</key><key>T</key></keyseq>."
+"barei de instrumente, sau apăsați <keyseq><key>Ctrl</key><key>T</key></"
+"keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-create-new-file.page:28
@@ -285,10 +281,10 @@ msgid ""
 "window. If you have other files open in <app>gedit</app>, the new file that "
 "you create will appear as a new tab to the right of those files."
 msgstr ""
-"Oricare dintre aceste acțiuni va crea un nou fișier în fereastra "
-"<app>gedit</app>. Dacă aveți alte fișierele deschise în <app>gedit</app>, "
-"fișierul nou pe care îl creați va apărea ca un tab nou în partea dreaptă a "
-"acestor fișiere."
+"Oricare dintre aceste acțiuni va crea un nou fișier în fereastra <app>gedit</"
+"app>. Dacă aveți alte fișierele deschise în <app>gedit</app>, fișierul nou "
+"pe care îl creați va apărea ca un tab nou în partea dreaptă a acestor "
+"fișiere."
 
 #. (itstool) path: info/desc
 #: C/gedit-edit-as-root.page:7
@@ -446,9 +442,8 @@ msgid ""
 "<keyseq><key>Ctrl</key><key>Alt</key><key>PgDn</key></keyseq>."
 msgstr ""
 "Pentru a comuta între taburile deschise în timp ce sunteți în modul „pe tot "
-"ecranul”, apăsați "
-"<keyseq><key>Ctrl</key><key>Alt</key><key>PgUp</key></keyseq>, ori "
-"<keyseq><key>Ctrl</key><key>Alt</key><key>PgDn</key></keyseq>."
+"ecranul”, apăsați <keyseq><key>Ctrl</key><key>Alt</key><key>PgUp</key></"
+"keyseq>, ori <keyseq><key>Ctrl</key><key>Alt</key><key>PgDn</key></keyseq>."
 
 #. (itstool) path: section/title
 #: C/gedit-full-screen.page:50
@@ -466,39 +461,28 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gedit-full-screen.page:53
-#| msgid ""
-#| "You can also move your mouse cursor to the top of the screen, and wait "
-#| "for the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui> "
-#| "appears, select <gui>Leave Fullscreen</gui>."
 msgid ""
 "You can also move your mouse cursor to the top of the screen, and wait for "
 "the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui> appears, "
 "select the <gui>Leave Fullscreen</gui> button."
 msgstr ""
 "Puteți de asemenea să deplasați cursorul mausului în partea de sus a "
-"ecranului, și așteptați apariția <gui>barei de meniu</gui>. Când apare <gui>"
-"bara de meniu</gui>, selectați butonul <gui>Părăsește modul pe tot "
+"ecranului, și așteptați apariția <gui>barei de meniu</gui>. Când apare "
+"<gui>bara de meniu</gui>, selectați butonul <gui>Părăsește modul pe tot "
 "ecranul</gui>."
 
 #. (itstool) path: info/desc
 #: C/gedit-open-files-from-sidepane.page:8
-#| msgid "Use the side pane to browse and open files"
 msgid "Use gedit's side pane as a file browser."
 msgstr "Utilizarea panoului lateral din gedit ca navigator de fișiere."
 
 #. (itstool) path: page/title
 #: C/gedit-open-files-from-sidepane.page:17
-#| msgid "View and open files from the side pane"
 msgid "View and open files from the side panel"
 msgstr "Vizualizarea și deschiderea fișierelor din panoul lateral"
 
 #. (itstool) path: page/p
 #: C/gedit-open-files-from-sidepane.page:18
-#| msgid ""
-#| "The most common way to switch between files in <app>gedit</app> is by "
-#| "using the tabs at the top of the <app>gedit</app> window. In some cases, "
-#| "though, particularly when you are working with a large number of open "
-#| "files, you may find it easier to use the <app>side pane</app>."
 msgid ""
 "The most common way to switch between files in <app>gedit</app> is by using "
 "the tabs at the top of the <app>gedit</app> window. In some cases, though, "
@@ -512,9 +496,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-open-files-from-sidepane.page:25
-#| msgid ""
-#| "To activate the <app>side pane</app>, select <guiseq><gui>View</gui> "
-#| "<gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key."
 msgid ""
 "To activate the side panel, select <guiseq><gui>View</gui> <gui>Side Panel</"
 "gui></guiseq>, or just press the <key>F9</key> key."
@@ -524,9 +505,6 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: C/gedit-open-files-from-sidepane.page:31
-#| msgid ""
-#| "You can toggle the <gui>side pane</gui> open or closed by pressing "
-#| "<key>F9</key> at any time."
 msgid ""
 "You can toggle the side panel open or closed by pressing <key>F9</key> at "
 "any time."
@@ -537,17 +515,11 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/gedit-open-files-from-sidepane.page:39
 #: C/gedit-plugins-file-browser.page:33
-#| msgid "Opening files from the side pane"
 msgid "Opening files from the side panel"
 msgstr "Deschiderea fișierelor din panoul lateral"
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:40
-#| msgid ""
-#| "To open files from the <app>side pane</app>, first open the <app>side "
-#| "pane</app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></"
-#| "guiseq>, then click on the <gui>file-browser</gui> icon at the bottom of "
-#| "the pane."
 msgid ""
 "To open files from the side panel, first open the side panel by selecting "
 "<guiseq><gui>View</gui> <gui>Side Panel</gui></guiseq> (or just press "
@@ -555,17 +527,12 @@ msgid ""
 "the top of the panel."
 msgstr ""
 "Pentru a deschide fișiere din panoul lateral, mai întâi deschideți panoul "
-"lateral selectând <guiseq><gui>Vizualizare</gui> <gui>Panou "
-"lateral</gui></guiseq>, (sau doar apăsați <key>F9</key>) apoi alegeți <gui>"
-"Navigator de fișiere</gui> din lista de selecție din partea de sus a "
-"panoului."
+"lateral selectând <guiseq><gui>Vizualizare</gui> <gui>Panou lateral</gui></"
+"guiseq>, (sau doar apăsați <key>F9</key>) apoi alegeți <gui>Navigator de "
+"fișiere</gui> din lista de selecție din partea de sus a panoului."
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:48
-#| msgid ""
-#| "This will activate the <em>file-browser</em> mode of the <app>side panel</"
-#| "app>. You can then use the navigation buttons at the top of the pane to "
-#| "locate and open your desired files."
 msgid ""
 "This will activate the <em>File Browser</em> mode of the side panel. You can "
 "then use the navigation buttons at the top of the panel to locate and open "
@@ -577,17 +544,11 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/gedit-open-files-from-sidepane.page:56
-#| msgid "Using the side pane to switch between open files"
 msgid "Using the side panel to switch between open files"
 msgstr "Folosirea panoului lateral pentru a comuta între fișierele deschise"
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:57
-#| msgid ""
-#| "Once you have several files open, you can use the side pane to switch "
-#| "between open files. To activate the file browser portion of the <app>side "
-#| "pane</app>, click on the <gui>file</gui> icon at the bottom of the "
-#| "<gui>side pane</gui>."
 msgid ""
 "Once you have several files open, you can use the side panel to switch "
 "between open files. To list open files, choose <gui>Documents</gui> from the "
@@ -600,9 +561,6 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:63
-#| msgid ""
-#| "Clicking on any file name in the <gui>side pane</gui> will open that file "
-#| "for editing."
 msgid ""
 "Clicking on any file name in the side panel will open that file for editing."
 msgstr ""
@@ -721,21 +679,16 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:32
-#| msgid "Click <gui>Open</gui>."
-msgid "In the title bar, click on <gui>Open</gui>."
-msgstr "În bara de titlu, apăsați <gui>Deschide</gui>."
+msgid "In the header bar, click on <gui>Open</gui>."
+msgstr "În bara de sus, apăsați <gui>Deschide</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:33
-#| msgid "Click <gui>Open</gui>."
 msgid "Click <gui>Other Documents…</gui>."
 msgstr "Apăsați <gui>Alte documente…</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:34
-#| msgid ""
-#| "Press <keyseq><key>Ctrl</key><key>B</key></keyseq> to move to the next "
-#| "bookmark."
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the <gui>Open</gui> "
 "dialog."
@@ -755,9 +708,6 @@ msgstr "Găsiți și alegeți fișierul pe care doriți să-l deschideți."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:39
-#| msgid ""
-#| "Use the Character coding drop-down list to select the appropriate "
-#| "character coding."
 msgid ""
 "Use the Character Encoding drop-down list to select the appropriate "
 "character coding."
@@ -815,7 +765,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-recent.page:22
-#| msgid "Click <gui>Open</gui>."
 msgid "Click the <gui>Open</gui> button."
 msgstr "Apăsați pe butonul <gui>Deschide</gui>."
 
@@ -869,7 +818,6 @@ msgstr ""
 
 #. (itstool) path: page/title
 #: C/gedit-plugin-guide.page:19
-#| msgid "Configure and use gedit Plugins"
 msgid "Configure and use gedit plugins"
 msgstr "Configurarea și utilizarea modulelor gedit"
 
@@ -901,9 +849,8 @@ msgid ""
 "<link action=\"install:gedit-plugins\" href=\"ftp://ftp.gnome.org/pub/gnome/"
 "sources/gedit-plugins/\" style=\"button\">Install gedit-plugins</link>"
 msgstr ""
-"<link action=\"install:gedit-plugins\" href=\""
-"ftp://ftp.gnome.org/pub/gnome/sources/gedit-plugins/\" style=\"button\">"
-"Instalați module gedit</link>"
+"<link action=\"install:gedit-plugins\" href=\"ftp://ftp.gnome.org/pub/gnome/"
+"sources/gedit-plugins/\" style=\"button\">Instalați module gedit</link>"
 
 #. (itstool) path: section/title
 #: C/gedit-plugin-guide.page:36
@@ -927,7 +874,6 @@ msgstr "Daniel Neel"
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-change-case.page:17
-#| msgid "Change the case of selected text"
 msgid "Change the case of selected text."
 msgstr "Modifică dimensiunea textului selectat."
 
@@ -948,9 +894,9 @@ msgstr ""
 "Acest modul vă ajută să modificați mărimea porțiunilor selectate de text. Îl "
 "puteți folosi pentru a modifica textul să fie toate minuscule, toate "
 "majuscule, pentru a inversa mărimea, sau aplica prima literă majusculă. "
-"Pentru a activa acest modul, selectați <guiseq><gui style=\"menu\""
-">gedit</gui><gui style=\"menuitem\">Preferințe</gui> <gui>Module</gui><gui>"
-"Dimensiune text</gui></guiseq>."
+"Pentru a activa acest modul, selectați <guiseq><gui style=\"menu\">gedit</"
+"gui><gui style=\"menuitem\">Preferințe</gui> <gui>Module</"
+"gui><gui>Dimensiune text</gui></guiseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-change-case.page:28
@@ -1015,7 +961,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-doc-stats.page:17
-#| msgid "View document statistics"
 msgid "View document statistics."
 msgstr "Vizualizează statisticile documentului."
 
@@ -1076,8 +1021,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-external-tools.page:18
-#| msgid ""
-#| "Run scripts on your current files, and interact with other applications"
 msgid ""
 "Run scripts on your current files, and interact with other applications."
 msgstr ""
@@ -1137,23 +1080,16 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-file-browser.page:18
-#| msgid "Use the side pane to browse and open files"
 msgid "Use the side panel to browse and open files."
 msgstr "Folosește panoul lateral pentru a căuta și deschide fișiere."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-file-browser.page:21
-#| msgid "File browser pane"
 msgid "File browser panel"
 msgstr "Panoul de navigare fișiere"
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-file-browser.page:23
-#| msgid ""
-#| "Depending on how you use <app>gedit</app>, you may find it helpful to use "
-#| "the <app>File Browser pane</app> plugin. This plugin embeds a <app>file "
-#| "browser</app> in the side pane, giving you easy access to your frequently-"
-#| "used files."
 msgid ""
 "Depending on how you use <app>gedit</app>, you may find it helpful to use "
 "the <app>File Browser pane</app> plugin. This plugin embeds a <app>file "
@@ -1167,26 +1103,17 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-file-browser.page:28
-#| msgid ""
-#| "You can enable the <gui>Side Pane</gui> by selecting <guiseq><gui style="
-#| "\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> "
-#| "<gui>Plugins</gui><gui>File Browser Pane</gui></guiseq>."
 msgid ""
 "You can enable the side panel by selecting <guiseq><gui style=\"menu"
 "\">gedit</gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
 "gui><gui>File Browser Panel</gui></guiseq>."
 msgstr ""
-"Puteți activa panoul lateral selectând <guiseq><gui style=\"menu\""
-">gedit</gui><gui style=\"menuitem\">Preferințe</gui> <gui>Module</gui><gui>"
-"Panoul de navigare fișiere</gui></guiseq>."
+"Puteți activa panoul lateral selectând <guiseq><gui style=\"menu\">gedit</"
+"gui><gui style=\"menuitem\">Preferințe</gui> <gui>Module</gui><gui>Panoul de "
+"navigare fișiere</gui></guiseq>."
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-file-browser.page:34
-#| msgid ""
-#| "To open files from the <app>side pane</app>, first open the <app>side "
-#| "pane</app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></"
-#| "guiseq>, then click on the <gui>file-browser</gui> icon at the bottom of "
-#| "the pane."
 msgid ""
 "To open files from the side panel, first open the side panel by selecting "
 "<guiseq><gui>View</gui> <gui>Side Panel</gui></guiseq> (or just press "
@@ -1194,16 +1121,12 @@ msgid ""
 "the top of the pane."
 msgstr ""
 "Pentru a deschide fișiere din <app>panoul lateral</app>, mai întâi "
-"deschideți <app>panoul lateral</app> selectând <guiseq><gui>Vizualizare</gui>"
-" <gui>Panou lateral</gui></guiseq>, apoi apăsați pe iconița <gui>Navigator "
-"de fișiere</gui> din partea de jos a panoului."
+"deschideți <app>panoul lateral</app> selectând <guiseq><gui>Vizualizare</"
+"gui> <gui>Panou lateral</gui></guiseq>, apoi apăsați pe iconița "
+"<gui>Navigator de fișiere</gui> din partea de jos a panoului."
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-file-browser.page:42
-#| msgid ""
-#| "This will activate the <em>file-browser</em> mode of the <app>side panel</"
-#| "app>. You can then use the navigation buttons at the top of the pane to "
-#| "locate and open your desired files."
 msgid ""
 "This will activate the <em>File Browser</em> mode of the side panel. You can "
 "then use the navigation buttons at the top of the pane to locate and open "
@@ -1215,7 +1138,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-insert-date-time.page:17
-#| msgid "Insert the current date/time at the cursor position"
 msgid "Insert the current date/time at the cursor position."
 msgstr "Introduce data/ora curentă la poziția cursorului."
 
@@ -1260,7 +1182,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-install.page:15
-#| msgid "How to install third-party plugins"
 msgid "How to install third-party plugins."
 msgstr "Cum se instalează module din părți terțe."
 
@@ -1372,7 +1293,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-modelines.page:16
-#| msgid "Emacs, Kate and Vim-style modelines support for gedit"
 msgid "Emacs, Kate and Vim-style modelines support for gedit."
 msgstr ""
 "Suport linii de mod (modelines) în stil Emacs, Kate și Vim pentru gedit."
@@ -1520,27 +1440,27 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/gedit-plugins-modelines.page:72
 msgid "tab-width"
-msgstr "Lățimea tabului"
+msgstr "lățimea tabului"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-modelines.page:73
 msgid "indent-width"
-msgstr "Lățimea indentăii"
+msgstr "lățimea indentării"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-modelines.page:74
 msgid "space-indent"
-msgstr "Indentarea spațiului"
+msgstr "indentarea spațiului"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-modelines.page:75
 msgid "word-wrap"
-msgstr "Încadrare cuvintelor"
+msgstr "încadrare cuvintelor"
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-modelines.page:76
 msgid "word-wrap-column"
-msgstr "Încadrare cuvintelor pe coloană"
+msgstr "încadrare cuvintelor pe coloană"
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-modelines.page:79
@@ -1603,7 +1523,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-pyconsole.page:14
-#| msgid "Add an interactive Python console to the bottom pane"
 msgid "Add an interactive Python console to the bottom pane."
 msgstr "Adăugați o consolă Python interactivă în panoul de jos."
 
@@ -1628,10 +1547,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-pyconsole.page:25
-#| msgid ""
-#| "Once the Python console is enabled, you can open it by selecting "
-#| "<guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just press "
-#| "<keyseq><key>Shift</key><key>F9</key></keyseq>."
 msgid ""
 "Once the Python console is enabled, you can open it by selecting "
 "<guiseq><gui>View</gui><gui>Bottom Panel</gui></guiseq>."
@@ -1650,7 +1565,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-quick-open.page:19
-#| msgid "Quickly open a file or set of files"
 msgid "Quickly open a file or set of files."
 msgstr "Deschide rapid un fișier sau un set de fișiere."
 
@@ -1684,18 +1598,14 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-quick-open.page:33
-#| msgid ""
-#| "Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
-#| "key><key>Alt</key><key>O</key></keyseq>, or by selecting "
-#| "<guiseq><gui>File</gui><gui>Quick Open</gui></guiseq>."
 msgid ""
 "Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
 "key><key>Alt</key><key>O</key></keyseq>, or by selecting <gui style="
 "\"menuitem\">Quick Open…</gui>."
 msgstr ""
-"Deschideți dialogul <app>Deschidere rapidă</app> apăsând "
-"<keyseq><key>Ctrl</key><key>Alt</key><key>O</key></keyseq>, sau selectând <"
-"gui style=\"menuitem\">Deschidere rapidă…</gui>."
+"Deschideți dialogul <app>Deschidere rapidă</app> apăsând <keyseq><key>Ctrl</"
+"key><key>Alt</key><key>O</key></keyseq>, sau selectând <gui style=\"menuitem"
+"\">Deschidere rapidă…</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-quick-open.page:36
@@ -1795,7 +1705,6 @@ msgstr "Sindhu S"
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-snippets.page:17
-#| msgid "Use snippets to quickly insert often-used pieces of text"
 msgid "Use snippets to quickly insert often-used pieces of text."
 msgstr ""
 "Utilizează fragmente de text pentru a introduce rapid bucăți de text "
@@ -1894,9 +1803,6 @@ msgstr "În acest exemplu, limbajul configurat este HTML."
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gedit-plugins-snippets.page:64
-#| msgid ""
-#| "@@image: 'figures/gedit-html-snippet.png'; "
-#| "md5=1f02c599b116ed209e6fb79e3e63b9ca"
 msgctxt "_"
 msgid ""
 "external ref='figures/gedit-html-snippet.png' "
@@ -2052,9 +1958,9 @@ msgid ""
 "keys, the keyboard shortcut will be set."
 msgstr ""
 "Dacă doriți să introduceți un fragment cu o scurtătură de tastatură, apoi "
-"apăsați cu mausul pe zona de text <gui style=\"input\">Tastă "
-"scurtătură:</gui> și apăsați combinația dorită de taste. Odată ce ați apăsat "
-"și ați eliberat tastele, scurtătura de tastatură va fi stabilită."
+"apăsați cu mausul pe zona de text <gui style=\"input\">Tastă scurtătură:</"
+"gui> și apăsați combinația dorită de taste. Odată ce ați apăsat și ați "
+"eliberat tastele, scurtătura de tastatură va fi stabilită."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-snippets.page:148
@@ -2082,8 +1988,8 @@ msgid ""
 "gui> textarea contains:"
 msgstr ""
 "Presupunem că ați creeat un fragent cu termenul <var>salutări</var> în <gui "
-"style=\"input\">Declanșator tab:</gui>. Zona de text <gui style=\"input\""
-">Editare:</gui> conține:"
+"style=\"input\">Declanșator tab:</gui>. Zona de text <gui style=\"input"
+"\">Editare:</gui> conține:"
 
 #. (itstool) path: section/code
 #: C/gedit-plugins-snippets.page:164
@@ -2118,8 +2024,7 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"      &lt;salutări&gt;Saluări lume fantasticăextraordinară!&lt;/salutări&gt;"
-"\n"
+"      &lt;salutări&gt;Saluări lume fantasticăextraordinară!&lt;/salutări&gt;\n"
 "    "
 
 #. (itstool) path: section/p
@@ -2131,13 +2036,12 @@ msgid ""
 "preferred option."
 msgstr ""
 "Cuvintele „fantastică” și „extraordinară” pot fi reținute sau șterse în "
-"funcție de alegerea dumneavoastră. Pentru a facea asta, apăsați "
-"<key>Tab</key> pentru a alege între „fantastică” și „extraordinară” și "
-"apăsați tasta <key>Del</key> pentru a șterge opțiunea mai puțin preferată."
+"funcție de alegerea dumneavoastră. Pentru a facea asta, apăsați <key>Tab</"
+"key> pentru a alege între „fantastică” și „extraordinară” și apăsați tasta "
+"<key>Del</key> pentru a șterge opțiunea mai puțin preferată."
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-sort.page:22
-#| msgid "Sort lines of text into alphabetical order"
 msgid "Sort lines of text into alphabetical order."
 msgstr "Aranjați liniile textului în ordine alfabetică."
 
@@ -2156,7 +2060,6 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-sort.page:31
-#| msgid "Enabling the Plugin"
 msgid "Enable Sort Plugin"
 msgstr "Activarea modulului de sortare"
 
@@ -2173,7 +2076,6 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/gedit-plugins-sort.page:49
-#| msgid "Enabling the Plugin"
 msgid "Using Sort Plugin"
 msgstr "Utilizarea modulului Sortare"
 
@@ -2189,19 +2091,15 @@ msgstr "Trageți și subliniați liniile de text dorite."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:58
-#| msgid "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem\">Sort…"
 "</gui></guiseq>."
 msgstr ""
-"Selectați <guiseq><gui style=\"menu\">Unelte</gui> <gui style=\"menuitem\""
-">Sortare…</gui></guiseq>."
+"Selectați <guiseq><gui style=\"menu\">Unelte</gui> <gui style=\"menuitem"
+"\">Sortare…</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:62
-#| msgid ""
-#| "The Sort dialog will open, allowing you to choose between several sorting "
-#| "options:"
 msgid ""
 "The <gui>Sort</gui> dialog will open, allowing you to choose between several "
 "sorting options:"
@@ -2211,9 +2109,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:66
-#| msgid ""
-#| "<em>Reverse order</em> will arrange the text in reverse alphabetical "
-#| "order."
 msgid ""
 "<gui>Reverse order</gui> will arrange the text in reverse alphabetical order."
 msgstr ""
@@ -2221,24 +2116,17 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:70
-#| msgid ""
-#| "<em>Remove duplicates</em> will remove duplicate values from the list."
 msgid ""
 "<gui>Remove duplicates</gui> will remove duplicate values from the list."
 msgstr "<gui>Elimină duplicate</gui> va elimina valorile duplicate din listă."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:74
-#| msgid "<em>Ignore case</em> will ignore case sensitivity."
 msgid "<gui>Ignore case</gui> will ignore case sensitivity."
 msgstr "<gui>Ignorare majuscule</gui> va ignora sensibilitatea la majuscule."
 
 #. (itstool) path: note/p
 #: C/gedit-plugins-sort.page:76
-#| msgid ""
-#| "To have the sort ignore the characters at the start of the lines, set the "
-#| "first character that should be used for sorting in the <em>Start at</em> "
-#| "column spin box."
 msgid ""
 "To have the sort ignore the characters at the start of the lines, set the "
 "first character that should be used for sorting in the <gui>Start at</gui> "
@@ -2285,13 +2173,12 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-printing-order.page:32
-#| msgid "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui></guiseq>."
 msgstr ""
-"Selectați <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem\""
-">Tipărește</gui></guiseq>."
+"Selectați <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem"
+"\">Tipărește</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing-order.page:36
@@ -2299,9 +2186,9 @@ msgid ""
 "In the <gui style=\"tab\">General</gui> tab of the Print dialog under <gui "
 "style=\"group\">Copies</gui>, check <gui style=\"checkbox\">Reverse</gui>."
 msgstr ""
-"În tabul <gui style=\"tab\">Generale</gui> al dialogului „Tipărește” sub <"
-"gui style=\"group\">Cópii</gui>, bifați <gui style=\"checkbox\""
-">Inversat</gui>."
+"În tabul <gui style=\"tab\">Generale</gui> al dialogului „Tipărește” sub "
+"<gui style=\"group\">Cópii</gui>, bifați <gui style=\"checkbox\">Inversat</"
+"gui>."
 
 #. (itstool) path: section/p
 #: C/gedit-printing-order.page:42
@@ -2333,13 +2220,12 @@ msgstr "Pentru a asambla:"
 
 #. (itstool) path: item/p
 #: C/gedit-printing-order.page:56
-#| msgid "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui></guiseq>."
 msgid ""
 "Click <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui></guiseq>."
 msgstr ""
-"Apăsați pe <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem\""
-">Tipărește</gui></guiseq>."
+"Apăsați pe <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem"
+"\">Tipărește</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing-order.page:60
@@ -2347,35 +2233,29 @@ msgid ""
 "In the <gui style=\"tab\">General</gui> tab of the Print dialog under <gui "
 "style=\"group\">Copies</gui> check <gui style=\"checkbox\">Collate</gui>."
 msgstr ""
-"În tabul <gui style=\"tab\">Generale</gui> al dialogului „Tipărește” sub <"
-"gui style=\"group\">Cópii</gui>, bifați <gui style=\"checkbox\">Colaj</gui>."
+"În tabul <gui style=\"tab\">Generale</gui> al dialogului „Tipărește” sub "
+"<gui style=\"group\">Cópii</gui>, bifați <gui style=\"checkbox\">Colaj</gui>."
 
 #. (itstool) path: info/desc
 #: C/gedit-printing.page:7
-#| msgid "Find and select the file that you wish to open."
 msgid "Print the files that you create with gedit."
 msgstr "Tipăriți fișierele pe care le creeați cu gedit."
 
 #. (itstool) path: page/title
 #: C/gedit-printing.page:20
-#| msgid "Print the current document"
 msgid "Printing documents"
 msgstr "Tipărirea documentelor"
 
 #. (itstool) path: note/p
 #: C/gedit-printing.page:23
-#| msgid ""
-#| "Printing with <app>gedit</app> requires that you have connected and "
-#| "configured your printer. If you have not done this, please consult the "
-#| "printing help documentation for your desktop environment."
 msgid ""
 "Printing with <app>gedit</app> requires that you have connected and "
 "configured your printer. If you have not done this, please consult the <link "
 "href=\"help:gnome-help/printing\">printing help for GNOME</link>."
 msgstr ""
 "Tipărirea cu <app>gedit</app> necesită că v-ați conectat și configurat "
-"imprimanta. Dacă nu ați făcut acest lucru, consultați <link href=\"help"
-":gnome-help/printing\">documentația de ajutor pentru imprimare GNOME</link>."
+"imprimanta. Dacă nu ați făcut acest lucru, consultați <link href=\"help:"
+"gnome-help/printing\">documentația de ajutor pentru imprimare GNOME</link>."
 
 #. (itstool) path: page/p
 #: C/gedit-printing.page:28
@@ -2384,17 +2264,11 @@ msgstr "<app>gedit</app> vă permite să tipăriți într-un fișier sau pe hâr
 
 #. (itstool) path: section/title
 #: C/gedit-printing.page:31
-#| msgid "Print preview"
 msgid "Print Preview"
 msgstr "Previzualizarea pentru tipărire"
 
 #. (itstool) path: section/p
 #: C/gedit-printing.page:33
-#| msgid ""
-#| "<app>gedit</app> allows you to both print output to a file, as well as "
-#| "printing output to paper. Prior to printing your document, you can also "
-#| "preview how the printed document will look by using the <app>Print "
-#| "Preview</app> feature."
 msgid ""
 "Prior to printing your document, you can preview how the printed document "
 "will look by using <gui>Print Preview</gui>. To preview the document:"
@@ -2405,17 +2279,13 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-printing.page:38
-#| msgid ""
-#| "To remove a comment, click <guiseq><gui>Edit</gui><gui>Uncomment Code</"
-#| "gui></guiseq>, or press <keyseq><key>Shift</key><key>Ctrl</key><key>M</"
-#| "key></keyseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print "
 "Preview</gui></guiseq>. Alternatively, you can press <keyseq><key>Shift</"
 "key><key>Ctrl</key> <key>P</key></keyseq>."
 msgstr ""
-"Selectați <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem\">"
-"Previzualizare tipărire</gui></guiseq>. Alternativ, puteți apăsa "
+"Selectați <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem"
+"\">Previzualizare tipărire</gui></guiseq>. Alternativ, puteți apăsa "
 "<keyseq><key>Shift</key><key>Ctrl</key> <key>P</key></keyseq>."
 
 #. (itstool) path: section/p
@@ -2434,7 +2304,6 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/gedit-printing.page:53
-#| msgid "Printing to paper"
 msgid "Printing To Paper"
 msgstr "Tipărirea pe hârtie"
 
@@ -2449,21 +2318,15 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-printing.page:60
-#| msgid ""
-#| "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui><gui>Save current "
-#| "session</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui> <gui style=\"tab\">General</gui></guiseq>."
 msgstr ""
-"Selectați <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem\""
-">Tipărește</gui> <gui style=\"tab\">Generale</gui></guiseq>."
+"Selectați <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem"
+"\">Tipărește</gui> <gui style=\"tab\">Generale</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing.page:65
-#| msgid ""
-#| "Select the desired tag type from the drop-down menu at the top of the "
-#| "side pane."
 msgid "Select the desired printer from the list of printers available."
 msgstr "Alegeți imprimanta dorită din lista de imprimante disponibile."
 
@@ -2488,10 +2351,10 @@ msgid ""
 "\">Layout and Paper options</link> help."
 msgstr ""
 "Adițional, din tabul <gui style=\"tab\">Opțiuni pagină</gui>: puteți alege "
-"opțiuni de <gui style=\"group\">Aspect</gui> și <gui style=\"group\""
-">Hârtie</gui>. După cum aceste opțiuni sunt disponibile în toate programele "
-"<app>GNOME</app>, Consultați ajutorul pentru <link href=\"help:gnome-"
-"help/printing#paper\">Opțiuni de aspect și hârtie</link>."
+"opțiuni de <gui style=\"group\">Aspect</gui> și <gui style=\"group\">Hârtie</"
+"gui>. După cum aceste opțiuni sunt disponibile în toate programele "
+"<app>GNOME</app>, Consultați ajutorul pentru <link href=\"help:gnome-help/"
+"printing#paper\">Opțiuni de aspect și hârtie</link>."
 
 #. (itstool) path: section/title
 #: C/gedit-printing.page:84
@@ -2509,7 +2372,6 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/gedit-printing.page:92
-#| msgid "Printing to paper"
 msgid "Printing To File"
 msgstr "Tipărirea în fișier"
 
@@ -2524,19 +2386,16 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-printing.page:99
-#| msgid ""
-#| "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui><gui>Save current "
-#| "session</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print</"
 "gui> <gui style=\"menuitem\">Print to File</gui></guiseq>."
 msgstr ""
-"Selectați <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem\""
-">Tipărește</gui> <gui style=\"menuitem\">Tipărește în fișier</gui></guiseq>."
+"Selectați <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem"
+"\">Tipărește</gui> <gui style=\"menuitem\">Tipărește în fișier</gui></"
+"guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing.page:104
-#| msgid "Printing is enabled for the following file formats:"
 msgid ""
 "Printing is enabled for the following file formats, you may select from:"
 msgstr ""
@@ -2560,15 +2419,13 @@ msgstr "Grafică vectorială scalabilă (.svg)"
 
 #. (itstool) path: item/p
 #: C/gedit-printing.page:119
-#| msgid "To perform the sort operation, click <gui>Sort</gui>."
 msgid "To print the document to file, click <gui style=\"button\">Print</gui>."
 msgstr ""
-"Pentru a tipări documentul în fișier, apăsați pe <gui style=\"button\""
-">Tipărește</gui>."
+"Pentru a tipări documentul în fișier, apăsați pe <gui style=\"button"
+"\">Tipărește</gui>."
 
 #. (itstool) path: info/desc
 #: C/gedit-printing-select.page:7
-#| msgid "Select the name of the session that you want to delete."
 msgid "Choose the pages that you want to print."
 msgstr "Alegeți paginile pe care doriți să le tipăriți."
 
@@ -2590,13 +2447,12 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-printing-select.page:28
-#| msgid "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem\">Print…"
 "</gui></guiseq>."
 msgstr ""
-"Selectați <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem\""
-">Tipărește…</gui></guiseq>."
+"Selectați <guiseq><gui style=\"menu\">Fișier</gui> <gui style=\"menuitem"
+"\">Tipărește…</gui></guiseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing-select.page:32
@@ -2606,8 +2462,8 @@ msgid ""
 "section."
 msgstr ""
 "În tabul <gui style=\"tab\">Generale</gui> în dialogul Tipărire alegeți <gui "
-"style=\"radiobutton\">Pagini</gui> din secțiunea <gui style=\"group\""
-">Interval</gui>."
+"style=\"radiobutton\">Pagini</gui> din secțiunea <gui style=\"group"
+"\">Interval</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-printing-select.page:36
@@ -2648,9 +2504,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/gedit-quickstart.page:28
-#| msgid ""
-#| "@@image: 'figures/gedit3-screenshot.png'; "
-#| "md5=3f101415d3b97ca8b0e81dc3cc1a6bd7"
 msgctxt "_"
 msgid ""
 "external ref='figures/gedit3-screenshot.png' "
@@ -2661,9 +2514,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-quickstart.page:30
-#| msgid ""
-#| "Once <app>gedit</app> launches, you can start writing right away. To save "
-#| "your text, just click <gui>Save</gui>."
 msgid ""
 "Once <app>gedit</app> launches, you can start writing right away. To save "
 "your text, just click the <gui>Save</gui> icon in the <app>gedit</app> "
@@ -2686,7 +2536,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-replace.page:8
-#| msgid "Select all text in the file"
 msgid "Replace portions of text in a file."
 msgstr "Înlocuirea porțiunilor de text dintr-un fișier."
 
@@ -2718,39 +2567,30 @@ msgstr "Înlocuiți textul în <app>gedit</app>"
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:49
-#| msgid ""
-#| "Open the Replace tool by clicking <guiseq><gui>Search</gui><gui>Replace</"
-#| "gui></guiseq> or press <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgid ""
 "Open the <gui>Replace</gui> tool by clicking <guiseq><gui style=\"button"
 "\">Menu button</gui><gui style=\"menuitem\">Find and Replace…</gui></guiseq> "
 "or press <keyseq><key>Ctrl</key><key>H</key></keyseq>."
 msgstr ""
-"Deschideț instrumentul de <gui>Înlocuire</gui> apăsând pe <guiseq><gui style="
-"\"button\">butonul Meniu</gui><gui style=\"menuitem\">Caută și "
-"înlocuiește…</gui></guiseq> sau apăsați "
-"<keyseq><key>Ctrl</key><key>H</key></keyseq>."
+"Deschideți instrumentul de <gui>Înlocuire</gui> apăsând pe <guiseq><gui "
+"style=\"button\">butonul Meniu</gui><gui style=\"menuitem\">Caută și "
+"înlocuiește…</gui></guiseq> sau apăsați <keyseq><key>Ctrl</key><key>H</key></"
+"keyseq>."
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:55
-#| msgid ""
-#| "Enter the text that you wish to replace into the 'Search for:' field."
 msgid "Enter the text that you wish to replace into the <gui>Find</gui> field."
 msgstr ""
-"Introduceți textul pe care doriți să-l înlocuiți în câmpul "
-"<gui>Căutare</gui>."
+"Introduceți textul pe care doriți să-l înlocuiți în câmpul <gui>Căutare</"
+"gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:59
-#| msgid "Enter the new, replacement text into the 'Replace with:' field."
 msgid "Enter the new, replacement text into the <gui>Replace with</gui> field."
 msgstr "Introduceți noul text de înlocuit în câmpul <gui>Înlocuiește cu</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:63
-#| msgid ""
-#| "Once you have entered the original and replacement text, select your "
-#| "desired replacement options:"
 msgid ""
 "Once you have entered the original and replacement text, you can add extra "
 "parameters to the search. You can also choose what you want to replace:"
@@ -2760,9 +2600,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:68
-#| msgid ""
-#| "To replace <em>only</em> the next matching portion of text, click "
-#| "<gui>Replace</gui>."
 msgid "To replace <em>only</em> the next match, click <gui>Replace</gui>."
 msgstr ""
 "Pentru a înlocui <em>numai</em> potrivirea următoare, apăsați pe "
@@ -2889,7 +2726,6 @@ msgstr "\\n"
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:132
-#| msgid "Modelines"
 msgid "Newline"
 msgstr "Linie nouă"
 
@@ -2910,7 +2746,6 @@ msgstr "\\t"
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:140
-#| msgid "Tabs"
 msgid "Tab"
 msgstr "Tab"
 
@@ -2929,9 +2764,8 @@ msgstr ""
 "backslash. De exemplu, pentru a căuta după <input>\\</input>, trebuie să "
 "introduceți <input>\\\\</input> în căsuța de căutare sau câmpul de "
 "înlocuire. Similar, puteți căuta după secvențele de citare în același mod: "
-"pentru a căuta sau înlocui un <input>\\n"
-"</input>, folosiți termentul <input>\\\\n"
-"</input>."
+"pentru a căuta sau înlocui un <input>\\n</input>, folosiți termentul <input>"
+"\\\\n</input>."
 
 #. (itstool) path: info/desc
 #: C/gedit-save-file.page:8
@@ -2945,23 +2779,17 @@ msgstr "Salvarea unui fișier"
 
 #. (itstool) path: page/p
 #: C/gedit-save-file.page:30
-#| msgid ""
-#| "To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or "
-#| "press <keyseq><key>Ctrl</key><key>O</key></keyseq>."
 msgid ""
 "To save a file in <app>gedit</app>, click on the <gui style=\"button\">Save</"
 "gui> button on the right side of the toolbar or just press "
 "<keyseq><key>Ctrl</key><key>S</key></keyseq>."
 msgstr ""
-"Pentru a salva un fișier în <app>gedit</app>, apăsați pe butonul "
-"<gui>Salvează</gui> sau apăsați <keyseq><key>Ctrl</key><key>S</key></keyseq>."
+"Pentru a salva un fișier în <app>gedit</app>, apăsați pe butonul <gui style="
+"\"button\">Salvează</gui> sau apăsați <keyseq><key>Ctrl</key><key>S</key></"
+"keyseq>."
 
 #. (itstool) path: page/p
 #: C/gedit-save-file.page:32
-#| msgid ""
-#| "If you are saving a new file, the <gui>Save File</gui> dialog will "
-#| "appear, and you can select a name for the file, as well as the directory "
-#| "where you would like the file to be saved."
 msgid ""
 "If you are saving a new file, a dialog will appear, and you can select a "
 "name for the file, as well as the directory where you would like the file to "
@@ -2997,19 +2825,14 @@ msgstr "Găsiți text"
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:38
-#| msgid ""
-#| "Open the <gui style=\"menu\">search window</gui> by clicking "
-#| "<guiseq><gui>Search</gui><gui>Find</gui></guiseq> or pressing "
-#| "<keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your cursor "
-#| "to the start of the <gui>search window</gui>."
 msgid ""
 "Open the <gui>search window</gui> by clicking <guiseq><gui style=\"menu"
 "\">Menu Button</gui> <gui style=\"menuitem\">Find…</gui> </guiseq> or "
 "pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This will move your "
 "cursor to the start of the <gui>search window</gui>."
 msgstr ""
-"Deschideți <gui>fereastra de căutare</gui> apăsând pe <guiseq><gui style=\""
-"menu\">butonul Meniu</gui> <gui style=\"menuitem\">Caută…</gui> </guiseq> "
+"Deschideți <gui>fereastra de căutare</gui> apăsând pe <guiseq><gui style="
+"\"menu\">butonul Meniu</gui> <gui style=\"menuitem\">Caută…</gui> </guiseq> "
 "sau apăsând <keyseq><key>Ctrl</key><key>F</key></keyseq>. Acest lucru va "
 "muta cursorul la începutul <gui>fereastrei de căutare</gui>."
 
@@ -3037,21 +2860,15 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:57
-#| msgid ""
-#| "Click on the <gui>up</gui> or <gui>down</gui> facing arrows next to the "
-#| "<gui>search window</gui>"
 msgid ""
 "Click on the <gui style=\"button\">up</gui> or <gui style=\"button\">down</"
 "gui> facing arrows next to the <gui>search window</gui>."
 msgstr ""
-"Apăsați pe săgețile <gui style=\"button\">sus</gui> sau <gui style=\"button\""
-">jos</gui> de lângă <gui>fereastra de căutare</gui>."
+"Apăsați pe săgețile <gui style=\"button\">sus</gui> sau <gui style=\"button"
+"\">jos</gui> de lângă <gui>fereastra de căutare</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:62
-#| msgid ""
-#| "Press the <key>up arrow</key> or <key>down arrow</key> keys on your "
-#| "keyboard"
 msgid ""
 "Press the <key>up arrow</key> or <key>down arrow</key> keys on your keyboard."
 msgstr ""
@@ -3098,18 +2915,15 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:84
-#| msgid ""
-#| "For advanced search options, you can click on the <gui>Magnifying Glass</"
-#| "gui> icon in the search window, or you can right-click on any portion of "
-#| "the search window."
 msgid ""
 "For more search options, click on the <gui style=\"button\">Magnifying "
 "Glass</gui> icon in the search window, or right-click anywhere in the search "
 "window. You can select one or more of the following search options:"
 msgstr ""
-"Pentru mai multe opțiuni de căutare, apăsați pe iconița <gui>Lupă</gui> din "
-"fereastra de căutare, sau apăsați clic dreapta pe orice parte a ferestrei "
-"Căutare. Puteți selecta una sau mai multe din următoarele opțiuni:"
+"Pentru mai multe opțiuni de căutare, apăsați pe iconița <gui style=\"button"
+"\">Lupă</gui> din fereastra de căutare, sau apăsați clic dreapta pe orice "
+"parte a ferestrei Căutare. Puteți selecta una sau mai multe din următoarele "
+"opțiuni:"
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:90
@@ -3136,11 +2950,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:103
-#| msgid ""
-#| "The text that you've searched for will remain highlighted by gedit, even "
-#| "after you have completed your search. To remove the highlight, click "
-#| "<guiseq><gui>Search</gui><gui>Clear Highlight</gui></guiseq>, or press "
-#| "<keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>."
 msgid ""
 "The text that you've searched for will remain highlighted by gedit, even "
 "after you have completed your search. To remove the highlight, click <gui "
@@ -3149,8 +2958,8 @@ msgid ""
 msgstr ""
 "Textul pe care le-ați cautat va rămâne evidențiat de gedit, chiar și după ce "
 "ați finalizat căutarea. Pentru a elimina evidențierea, apăsați pe <gui style="
-"\"menuitem\">Elimină evidențierea</gui>, sau apăsați "
-"<keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>."
+"\"menuitem\">Elimină evidențierea</gui>, sau apăsați <keyseq><key>Ctrl</"
+"key><key>Shift</key><key>K</key></keyseq>."
 
 #. (itstool) path: info/desc
 #: C/gedit-shortcut-keys.page:9
@@ -3233,9 +3042,8 @@ msgstr "Comutați la tab-ul următor din stânga"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:64
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
-msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>."
+msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageUp</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:68
@@ -3244,7 +3052,6 @@ msgstr "Comutați la tab-ul următor din dreapta"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:69
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key> <key>PageDown</key></keyseq>"
 
@@ -3255,7 +3062,6 @@ msgstr "Închideți tab-ul"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:74 C/gedit-shortcut-keys.page:154
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>W</key></keyseq>"
 
@@ -3266,7 +3072,6 @@ msgstr "Salvați toate filele"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:78
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>L</key></keyseq>"
 
@@ -3277,19 +3082,16 @@ msgstr "Închideți toate tab-urile"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:83
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>W</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:86
-#| msgid "Reopen a recently-used file"
 msgid "Reopen the most recently closed tab"
 msgstr "Redeschide tabul închis cel mai recent"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:87
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>T</key></keyseq>"
 
@@ -3300,7 +3102,6 @@ msgstr "Salt la al <var>n</var>-lea tab"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:91
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key> <var>n</var></key></keyseq>"
 
@@ -3311,7 +3112,6 @@ msgstr "Grup nou de taburi"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:96
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>"
 
@@ -3322,15 +3122,12 @@ msgstr "Grupul precedent de taburi"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:100
-#| msgid ""
-#| "Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
-#| "key><key>Shift</key><key>G</key></keyseq>."
 msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></"
 "keyseq>"
 msgstr ""
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page "
-"up</key></keyseq>"
+"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</key></"
+"keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:103
@@ -3339,15 +3136,12 @@ msgstr "Grupul următor de taburi"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:104
-#| msgid ""
-#| "Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
-#| "key><key>Shift</key><key>G</key></keyseq>."
 msgid ""
 "<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></"
 "keyseq>"
 msgstr ""
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page "
-"down</key></keyseq>"
+"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</key></"
+"keyseq>"
 
 #. (itstool) path: table/title
 #: C/gedit-shortcut-keys.page:110
@@ -3356,25 +3150,21 @@ msgstr "Taste pentru scurtături pentru lucrul cu fișiere"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:119
-#| msgid "Create a new document"
 msgid "Create a new document in a new window"
 msgstr "Creează un nou document într-o nouă fereastră"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:120
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>N</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:123
-#| msgid "Create a new document"
 msgid "Create a new document in a new tab"
 msgstr "Creaează un nou document într-un tab nou"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:124
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
 
@@ -3385,19 +3175,16 @@ msgstr "Deschideți un document"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:128
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>O</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:131
-#| msgid "The <gui>Quick Open</gui> file dialog will appear."
 msgid "Open the <gui>Quick Open</gui> window"
 msgstr "Deschide fereastra <gui>Deschidere rapidă</gui>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:132
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key>O</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>O</key></keyseq>"
 
@@ -3408,7 +3195,6 @@ msgstr "Salvați documentul curent"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:136
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>S</key></keyseq>"
 
@@ -3419,7 +3205,6 @@ msgstr "Salvați documentul curent cu un nou nume de fișier"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:140
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>S</key></keyseq>"
 
@@ -3430,7 +3215,6 @@ msgstr "Printați documentul curent"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:145
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl </key><key>P</key></keyseq>"
 
@@ -3441,7 +3225,6 @@ msgstr "Previzualizare printare"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:149
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>P</key></keyseq>"
 
@@ -3457,7 +3240,6 @@ msgstr "Părăsiți gedit"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:158
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Q</key></keyseq>"
 
@@ -3468,7 +3250,6 @@ msgstr "Taste pentru scurtături pentru editarea fișierelor"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:173
-#| msgid "Delete the current line"
 msgid "Move to the beginning of the current line"
 msgstr "Mută cursorul la începutul liniei curente"
 
@@ -3479,7 +3260,6 @@ msgstr "<key>Home</key>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:177
-#| msgid "Delete the current line"
 msgid "Move to the end of the current line"
 msgstr "Mută cursorul la sfârșitul liniei curente"
 
@@ -3490,49 +3270,41 @@ msgstr "<key>End</key>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:181
-#| msgid "Save the current document"
 msgid "Move to the beginning of the document"
 msgstr "Mută cursorul la începutul documentului"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:182
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Home</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:185
-#| msgid "Save the current document"
 msgid "Move to the end of the document"
 msgstr "Mută cursorul la sfârșitul documentului"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:186
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>End</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:189
-#| msgid "Move the selected line up one line"
 msgid "Move the selected word right one word"
 msgstr "Mută cuvântul selectat la dreapta cu un cuvânt"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:190
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Right Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:193
-#| msgid "Move the selected line up one line"
 msgid "Move the selected word left one word"
 msgstr "Mută cuvântul selectat la stânga cu un cuvânt"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:194
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Left Arrow</key></keyseq>"
 
@@ -3543,7 +3315,6 @@ msgstr "Anulați ultima acțiune"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:198
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Z</key></keyseq>"
 
@@ -3554,7 +3325,6 @@ msgstr "Refaceți ultima acțiune anulată"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:202
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>Z</key></keyseq>"
 
@@ -3565,7 +3335,6 @@ msgstr "Tăiați textul sau regiunea selectată și plasați-o pe clipboard"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:208
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>X</key></keyseq>"
 
@@ -3576,7 +3345,6 @@ msgstr "Copiați textul sau regiunea selectată pe clipboard"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:212
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>C</key></keyseq>"
 
@@ -3587,7 +3355,6 @@ msgstr "Lipiți conținutul din clipboard"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:216
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>V</key></keyseq>"
 
@@ -3598,7 +3365,6 @@ msgstr "Selectați tot textul din fișier"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:220
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>A</key></keyseq>"
 
@@ -3609,7 +3375,6 @@ msgstr "Stergeți linia curentă"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:224
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>D</key></keyseq>"
 
@@ -3620,7 +3385,6 @@ msgstr "Mutați linia selectată în sus cu o linie"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:228
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Up Arrow</key></keyseq>"
 
@@ -3631,67 +3395,56 @@ msgstr "Mutați linia selectată în jos cu o linie"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:232
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>Down Arrow</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:235
-#| msgid "Adding tabs"
 msgid "Add a tab stop"
 msgstr "Adaugă un tab"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:236
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:239
-#| msgid "Removing tabs"
 msgid "Remove a tab stop"
 msgstr "Elimină un tab"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:240
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>Tab</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:243
-#| msgid "Move the selected line up one line"
 msgid "Convert the selected text to upper case"
 msgstr "Convertește textul selectat în majuscule"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:244
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>U</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:247
-#| msgid "Move the selected line down one line"
 msgid "Convert the selected text to lower case"
 msgstr "Convertește textul selectat în minuscule"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:248
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>L</key></keyseq>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:251
-#| msgid "Change the case of selected text"
 msgid "Toggle case of the selected text"
 msgstr "Comută majuscule sau minuscule pentru textul selectat"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:252
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>~</key></keyseq>"
 
@@ -3702,7 +3455,6 @@ msgstr "Taste pentru scurtături pentru afișarea și ascunderea panourilor"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:267
-#| msgid "Show / hide the side pane"
 msgid "Show / hide the side panel"
 msgstr "Arată / ascunde panoul lateral"
 
@@ -3713,7 +3465,6 @@ msgstr "<key>F9</key>"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:271
-#| msgid "Open the gedit user guide"
 msgid "Open the file menu"
 msgstr "Deschide meniul fișier"
 
@@ -3734,7 +3485,6 @@ msgstr "Găsiți un șir"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:288
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>F</key></keyseq>"
 
@@ -3745,7 +3495,6 @@ msgstr "Găsiți următoarea apariție a șirului"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:292
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>G</key></keyseq>"
 
@@ -3756,7 +3505,6 @@ msgstr "Găsiți apariția anterioară a șirului"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:296
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>G</key></keyseq>"
 
@@ -3767,7 +3515,6 @@ msgstr "Căutați și înloocuiți"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:300
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>H</key></keyseq>"
 
@@ -3778,7 +3525,6 @@ msgstr "Stergeți evidențierea"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:304
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>K</key></keyseq>"
 
@@ -3789,7 +3535,6 @@ msgstr "Mergeți la linia"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:309
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>I</key></keyseq>"
 
@@ -3805,7 +3550,6 @@ msgstr "Verificați ortografia"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:325
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 msgstr "<keyseq><key>Shift</key><key>F7</key></keyseq>"
 
@@ -3816,7 +3560,6 @@ msgstr "Eliminați spațiile rămase în urmă (cu plugin)"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:329
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 msgstr "<keyseq><key>Alt</key><key>F12</key></keyseq>"
 
@@ -3837,7 +3580,6 @@ msgstr "Listare director (cu plugin)"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:337
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>Shift</key> <key>D</key></keyseq>"
 
@@ -3903,13 +3645,12 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:55
-#| msgid "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem\">Check "
 "Spelling</gui></guiseq>."
 msgstr ""
-"Selectați <guiseq><gui style=\"menu\">Unelte</gui> <gui style=\"menuitem\">"
-"Verifică ortografia</gui></guiseq>."
+"Selectați <guiseq><gui style=\"menu\">Unelte</gui> <gui style=\"menuitem"
+"\">Verifică ortografia</gui></guiseq>."
 
 #. (itstool) path: note/p
 #: C/gedit-spellcheck.page:61
@@ -3919,9 +3660,9 @@ msgid ""
 "style=\"menuitem\">Highlight Misspelled Words</gui></guiseq>."
 msgstr ""
 "Pentru ca <app>gedit</app> să evidențieze automat cuvintele ortografiate "
-"greșit în timp ce tastați, selectați <guiseq><gui style=\"menu\""
-">Unelte</gui><gui style=\"menuitem\">Evidențiază cuvintele ortografiate "
-"greșit</gui></guiseq>."
+"greșit în timp ce tastați, selectați <guiseq><gui style=\"menu\">Unelte</"
+"gui><gui style=\"menuitem\">Evidențiază cuvintele ortografiate greșit</gui></"
+"guiseq>."
 
 #. (itstool) path: section/title
 #: C/gedit-spellcheck.page:68
@@ -3938,8 +3679,8 @@ msgid ""
 msgstr ""
 "Puteți alege substituirea cuvintelor ortografiate greșit din dialogul "
 "Verifică ortografia. Cuvântul ortografiat greșit verificat de verificatorul "
-"ortografic este afișat în stil aldin lângă <gui>Cuvânt ortografiat "
-"greșit:</gui>. Puteți alege dintre următoarele acțiuni de corectare:"
+"ortografic este afișat în stil aldin lângă <gui>Cuvânt ortografiat greșit:</"
+"gui>. Puteți alege dintre următoarele acțiuni de corectare:"
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:77
@@ -3986,8 +3727,8 @@ msgid ""
 "\">Suggestions:</gui> list."
 msgstr ""
 "<gui style=\"button\">Schimbă</gui> înlocuiește cuvântul ortografiat greșit "
-"sau nerecuonscut cu <em>un</em> înlocuitor din lista cu <gui style=\""
-"menuitem\">Sugestii:</gui>."
+"sau nerecuonscut cu <em>un</em> înlocuitor din lista cu <gui style=\"menuitem"
+"\">Sugestii:</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-spellcheck.page:99
@@ -4029,8 +3770,8 @@ msgid ""
 msgstr ""
 "Implicit, <app>gedit</app> va utiliza limba curentă pentru a verifica "
 "ortografic. Dacă trebuie să folosiți altă limbă, selectați <guiseq><gui "
-"style=\"menu\">Unelte</gui><gui style=\"menuitem\">Stabilește "
-"limba…</gui></guiseq>, apoi alegeți limba pe care doriți să o utilizați."
+"style=\"menu\">Unelte</gui><gui style=\"menuitem\">Stabilește limba…</gui></"
+"guiseq>, apoi alegeți limba pe care doriți să o utilizați."
 
 #. (itstool) path: section/title
 #: C/gedit-spellcheck.page:123
@@ -4045,11 +3786,11 @@ msgid ""
 "use several different dictionaries to check your spelling. Two such "
 "dictionary back-ends are <em>Hunspell</em> and <em>Aspell</em>."
 msgstr ""
-"<app>gedit</app> utilizează <link href=\""
-"http://www.abisource.com/projects/enchant/\">Enchant</link>, un mic utilitar "
-"de sistem, pentru verificare ortografică. Enchant poate utiliza mai multe "
-"dicționare diferite pentru a verifica ortografia. Două asemenea dicționare "
-"sunt <em>Hunspell</em> și <em>Aspell</em>."
+"<app>gedit</app> utilizează <link href=\"http://www.abisource.com/projects/"
+"enchant/\">Enchant</link>, un mic utilitar de sistem, pentru verificare "
+"ortografică. Enchant poate utiliza mai multe dicționare diferite pentru a "
+"verifica ortografia. Două asemenea dicționare sunt <em>Hunspell</em> și "
+"<em>Aspell</em>."
 
 #. (itstool) path: section/p
 #: C/gedit-spellcheck.page:131
@@ -4058,9 +3799,9 @@ msgid ""
 "your computer's software installer or package manager to install the "
 "dictionary back-end that you want."
 msgstr ""
-"Dacă limba pe care doriți să o utilizați nu este disponibilă în "
-"<app>gedit</app>, utilizați administratorul de pachete pentru a instala "
-"dicționarul dorit."
+"Dacă limba pe care doriți să o utilizați nu este disponibilă în <app>gedit</"
+"app>, utilizați administratorul de pachete pentru a instala dicționarul "
+"dorit."
 
 #. (itstool) path: info/desc
 #: C/gedit-syntax-highlighting.page:7
@@ -4074,7 +3815,6 @@ msgstr "Porniți sintaxa evidențierii"
 
 #. (itstool) path: section/title
 #: C/gedit-syntax-highlighting.page:23
-#| msgid "Syntax Highlighting"
 msgid "Syntax highlighting"
 msgstr "Evidențierea sintaxei"
 
@@ -4092,12 +3832,6 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gedit-syntax-highlighting.page:29
-#| msgid ""
-#| "If your syntax or language is not highlighted upon startup, you can "
-#| "select the appropriate syntax or language by clicking <guiseq><gui>View</"
-#| "gui><gui>Highlight Mode</gui></guiseq>, and then choosing the desired "
-#| "syntax. Alternately, you can select the syntax name from a list at the "
-#| "bottom of the <app>gedit</app> window."
 msgid ""
 "If your syntax or language is not highlighted upon startup, you can select "
 "the appropriate syntax or language by clicking <guiseq><gui style=\"menu"
@@ -4106,11 +3840,10 @@ msgid ""
 "name from a list at the bottom of the <app>gedit</app> window."
 msgstr ""
 "Dacă sintaxa sau limba dumneavoastră nu este evidențiată la pornire, puteți "
-"selecta sintaxa sau limbajul corespunzător apăsând pe <guiseq><gui style=\""
-"menu\">Vizualizare</gui> <gui style=\"menuitem\">Modul de "
-"evidențiere</gui></guiseq>, și apoi selectând sintaxa dorită. Alternativ, "
-"puteți selecta numele sintaxei dintr-o listă în partea de jos a ferestrei "
-"<app>gedit</app>."
+"selecta sintaxa sau limbajul corespunzător apăsând pe <guiseq><gui style="
+"\"menu\">Vizualizare</gui> <gui style=\"menuitem\">Modul de evidențiere</"
+"gui></guiseq>, și apoi selectând sintaxa dorită. Alternativ, puteți selecta "
+"numele sintaxei dintr-o listă în partea de jos a ferestrei <app>gedit</app>."
 
 #. (itstool) path: info/desc
 #: C/gedit-tab-groups.page:11
@@ -4133,13 +3866,12 @@ msgid ""
 msgstr ""
 "Dacă lucrați cu taburi multiple în <app>gedit</app> le puteți grupa, făcând "
 "mai ușor organizarea fișierelor deschise. Adăugând un nou grup de taburi a "
-"diviza fereastra <app>gedit</app> în două panouri, va deschide un nou „"
-"Documen neintitulat” în panoul cel nou și îl va face activ. Puteți deschide "
+"diviza fereastra <app>gedit</app> în două panouri, va deschide un nou "
+"„Documen neintitulat” în panoul cel nou și îl va face activ. Puteți deschide "
 "fișiere în acel grup de taburi și să mutați taburi dintr-un grup în altul."
 
 #. (itstool) path: section/title
 #: C/gedit-tab-groups.page:32
-#| msgid "Move a tab to another gedit window"
 msgid "Open a new tab group in the gedit window"
 msgstr "Deschiderea unui grup de taburi în fereastra gedit"
 
@@ -4150,9 +3882,6 @@ msgstr "Pentru a deschide un tab puteți:"
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:38
-#| msgid ""
-#| "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
-#| "<gui>Open Files</gui> dialog."
 msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>New Tab Group</gui></guiseq> in the "
 "main menu."
@@ -4162,12 +3891,11 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:42
-#| msgid "Press <keyseq><key>Ctrl</key><key>E</key></keyseq>."
 msgid ""
 "Use the <keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq> shortcut."
 msgstr ""
-"Utiliza scurtătura "
-"<keyseq><key>Ctrl</key><key>Alt</key><key>N</key></keyseq>."
+"Utiliza scurtătura <keyseq><key>Ctrl</key><key>Alt</key><key>N</key></"
+"keyseq>."
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:47
@@ -4189,9 +3917,9 @@ msgid ""
 "You can open as much tab groups in <app>gedit</app> window as your screen "
 "allows, but you will have to move the handle in order to see them correctly."
 msgstr ""
-"Puteți deschide atât de multe grupuri de taburi în fereastra <app>gedit</app>"
-" cât vă permite ecranul, dar va trebui să mutați mânerul pentru a le vedea "
-"corect."
+"Puteți deschide atât de multe grupuri de taburi în fereastra <app>gedit</"
+"app> cât vă permite ecranul, dar va trebui să mutați mânerul pentru a le "
+"vedea corect."
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:56
@@ -4213,28 +3941,21 @@ msgstr "Pentru a muta înainte (la următorul) grup de taburi:"
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:68
-#| msgid ""
-#| "Choose <guiseq><gui>File</gui><gui>Open</gui></guiseq> to display the "
-#| "<gui>Open Files</gui> dialog."
 msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>Next Tab Group</gui></guiseq> in the "
 "main menu."
 msgstr ""
-"Navigați la <guiseq><gui>Documente</gui><gui>Următorul grup de "
-"taburi</gui></guiseq> din meniul principal."
+"Navigați la <guiseq><gui>Documente</gui><gui>Următorul grup de taburi</gui></"
+"guiseq> din meniul principal."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:72
-#| msgid ""
-#| "Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
-#| "key><key>Shift</key><key>G</key></keyseq>."
 msgid ""
 "Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page down</"
 "key></keyseq> shortcut."
 msgstr ""
-"Utilizați scurtătura "
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page "
-"down</key></keyseq>."
+"Utilizați scurtătura <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</"
+"key><key>Page down</key></keyseq>."
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:77
@@ -4243,70 +3964,56 @@ msgstr "Pentru a muta înapoi (la precedentul) grup de taburi:"
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:81
-#| msgid "Select <guiseq><gui>File</gui><gui>Saved Sessions</gui></guiseq>."
 msgid ""
 "Go to <guiseq><gui>Documents</gui><gui>Previous Tab Group</gui></guiseq> in "
 "the main menu."
 msgstr ""
-"Navigați la <guiseq><gui>Documente</gui><gui>Precedentul grup de "
-"taburi</gui></guiseq> din meniul principal."
+"Navigați la <guiseq><gui>Documente</gui><gui>Precedentul grup de taburi</"
+"gui></guiseq> din meniul principal."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:85
-#| msgid ""
-#| "Press <keyseq><key>Ctrl</key><key>G</key></keyseq> or <keyseq><key>Ctrl</"
-#| "key><key>Shift</key><key>G</key></keyseq>."
 msgid ""
 "Use the <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page up</"
 "key></keyseq> shortcut."
 msgstr ""
-"Utilizați scurtătura "
-"<keyseq><key>Shift</key><key>Ctrl</key><key>Alt</key><key>Page "
-"up</key></keyseq>."
+"Utilizați scurtătura <keyseq><key>Shift</key><key>Ctrl</key><key>Alt</"
+"key><key>Page up</key></keyseq>."
 
 #. (itstool) path: section/title
 #: C/gedit-tab-groups.page:93
-#| msgid "Move a tab to another gedit window"
 msgid "Move a tab to another tab group"
 msgstr "Mutarea unui tab în alt grup de taburi"
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:95
-#| msgid "If you want to move a tab from one window to another:"
 msgid "If you want to move a tab from one tab group to another:"
 msgstr "Dacă doriți să mutați un tab dintr-un grup de taburi în altul:"
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:99 C/gedit-tabs-moving.page:45
 #: C/gedit-tabs-moving.page:66 C/gedit-tabs-moving.page:89
-#| msgid "Click and hold the mouse button on the tab"
 msgid "Click and hold the mouse button on the tab."
 msgstr "Apăsați și țineți mausul pe tab."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:102
-#| msgid "Drag the tab out of the space it occupies"
 msgid "Drag the tab to another tab group pane."
 msgstr "Trageți tabu spre alt panou cu grup de taburi."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:105
-#| msgid "Place it beside other tabs in the new window"
 msgid "Place it beside other tabs in the tab group."
 msgstr "Plasați-l lângă alte taburi din grupul de taburi."
 
 #. (itstool) path: item/p
 #: C/gedit-tab-groups.page:108 C/gedit-tabs-moving.page:51
 #: C/gedit-tabs-moving.page:72 C/gedit-tabs-moving.page:98
-#| msgid "Release the mouse button"
 msgid "Release the mouse button."
 msgstr "Eliberați butonul mausului."
 
 #. (itstool) path: section/p
 #: C/gedit-tab-groups.page:112
-#| msgid ""
-#| "See <link xref=\"gedit-shortcut-keys#gedit-tab-shortcuts\"/> for "
-#| "shortcuts to make it easier to manage your tabs."
 msgid ""
 "See the <link xref=\"gedit-shortcut-keys\">tab-related shortcut keys</link> "
 "table to make it easier to manage your tab groups."
@@ -4317,7 +4024,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-tabs-moving.page:10
-#| msgid "Change the order of tabs in the gedit window"
 msgid "Change the position of a tab in the gedit window."
 msgstr "Schimbați poziția unui tab în fereastra gedit."
 
@@ -4351,7 +4057,6 @@ msgstr "Pentru a shimba ordinea tab-urilor într-o fereastră:"
 
 #. (itstool) path: item/p
 #: C/gedit-tabs-moving.page:48
-#| msgid "Move the tab to the desired position among the other tabs"
 msgid "Move the tab to the desired position among the other tab."
 msgstr "Mutați tabul la poziția dorită printre alte taburi."
 
@@ -4376,7 +4081,6 @@ msgstr "Pentru a creea o nouă fereastră dintr-un tab existent:"
 
 #. (itstool) path: item/p
 #: C/gedit-tabs-moving.page:69
-#| msgid "Drag the tab to the new window"
 msgid "Drag the tab out of the <app>gedit</app> window."
 msgstr "Trageți și plasați tabul în afara ferestrei <app>gedit</app>."
 
@@ -4401,13 +4105,11 @@ msgstr "Dacă doriți să mutați un tab dintr-o fereastră în alta:"
 
 #. (itstool) path: item/p
 #: C/gedit-tabs-moving.page:92
-#| msgid "Drag the tab to the new window"
 msgid "Drag the tab to the new window."
 msgstr "Trageți tabul în fereastra nouă."
 
 #. (itstool) path: item/p
 #: C/gedit-tabs-moving.page:95
-#| msgid "Place it beside other tabs in the new window"
 msgid "Place it beside other tabs in the new window."
 msgstr "Plasați-l lângă alte taburi în noua fereastră."
 
@@ -4420,15 +4122,12 @@ msgid ""
 "release the tab on the desired <app>gedit</app> window."
 msgstr ""
 "Este posibil ca să vi se pară mai ușor să mutați un tab dintr-o fereastră în "
-"alta trăgând tabul către colțul <gui>Activități</gui> din <gui>GNOME "
-"Shell</gui>. Aceasta va dezvălui toate ferestrele <app>gedit</app> deschise. "
-"Apoi puteți elibera tabul pe fereastra <app>gedit</app> dorită."
+"alta trăgând tabul către colțul <gui>Activități</gui> din <gui>GNOME Shell</"
+"gui>. Aceasta va dezvălui toate ferestrele <app>gedit</app> deschise. Apoi "
+"puteți elibera tabul pe fereastra <app>gedit</app> dorită."
 
 #. (itstool) path: section/p
 #: C/gedit-tabs-moving.page:111
-#| msgid ""
-#| "See <link xref=\"gedit-shortcut-keys#gedit-tab-shortcuts\"/> for "
-#| "shortcuts to make it easier to manage your tabs."
 msgid ""
 "See the <link xref=\"gedit-shortcut-keys\">tab-related shortcut keys</link> "
 "table to make it easier to manage your tabs."
@@ -4438,7 +4137,6 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-tabs.page:10
-#| msgid "Change the order of tabs in the gedit window"
 msgid "Create or close tabs in the gedit window."
 msgstr "Creeați sau închideți taburi în fereastra gedit."
 
@@ -4467,9 +4165,6 @@ msgstr "Adăugați tab-uri"
 
 #. (itstool) path: section/p
 #: C/gedit-tabs.page:46
-#| msgid ""
-#| "To add a new tab, create a new file with <keyseq><key>Ctrl</key><key>N</"
-#| "key></keyseq>. The tab will be added to the right side of any other tabs."
 msgid ""
 "To add a new tab, create a new file with <keyseq><key>Ctrl</key> <key>T</"
 "key></keyseq>. The tab will be added to the right side of any other tabs."
@@ -4485,10 +4180,6 @@ msgstr "Eliminați tab-uri"
 
 #. (itstool) path: section/p
 #: C/gedit-tabs.page:53
-#| msgid ""
-#| "To remove a tab, click the <guiseq><gui>X</gui></guiseq> on the tab's "
-#| "right side. To remove all open tabs, press <keyseq><key>Ctrl</"
-#| "key><key>Shift</key><key>W</key></keyseq>"
 msgid ""
 "To remove a tab, click the <gui style=\"button\">×</gui> on the tab's right "
 "side. To remove all open tabs, press <keyseq><key>Ctrl</key> <key>Shift</"
@@ -4510,9 +4201,6 @@ msgstr "Anulați o acțiune recentă"
 
 #. (itstool) path: page/p
 #: C/gedit-undo-recent-action.page:33
-#| msgid ""
-#| "To open a file in <app>gedit</app>, click the <gui>Open</gui> button, or "
-#| "press <keyseq><key>Ctrl</key><key>O</key></keyseq>."
 msgid ""
 "If you make a mistake while using <app>gedit</app>, you can undo it by "
 "pressing <keyseq><key>Ctrl</key><key>Z</key></keyseq>."
@@ -4524,32 +4212,28 @@ msgstr ""
 #: C/gedit-undo-recent-action.page:37
 msgid "You cannot undo a change after you have closed a <app>gedit</app> file."
 msgstr ""
-"Nu veți putea anula o schimbare după ce ați închis un fișier "
-"<app>gedit</app>."
+"Nu veți putea anula o schimbare după ce ați închis un fișier <app>gedit</"
+"app>."
 
 #. (itstool) path: info/title
 #: C/index.page:8
-#| msgid "gedit Text Editor"
 msgctxt "link"
 msgid "gedit Text Editor"
 msgstr "Editorul de text gedit"
 
 #. (itstool) path: info/title
 #: C/index.page:9
-#| msgid "gedit Text Editor"
 msgctxt "text"
 msgid "gedit Text Editor"
 msgstr "Editorul de text gedit"
 
 #. (itstool) path: info/desc
 #: C/index.page:11
-#| msgid "Open the gedit user guide"
 msgid "Home page of the gedit help guide."
 msgstr "Pagina principală a ghidului gedit."
 
 #. (itstool) path: page/title
 #: C/index.page:26
-#| msgid "gedit Text Editor"
 msgid "<_:media-1/> gedit Text Editor"
 msgstr "<_:media-1/> Editorul de text gedit"
 
@@ -4590,7 +4274,7 @@ msgstr "Configurați gedit"
 #. (itstool) path: section/title
 #: C/index.page:49
 msgid "gedit Plugins"
-msgstr "Plugin-uri gedit"
+msgstr "Module gedit"
 
 #. (itstool) path: section/title
 #: C/index.page:53
