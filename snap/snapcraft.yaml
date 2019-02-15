@@ -25,6 +25,8 @@ passthrough:
       symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gedit
     /usr/share/gedit:
       symlink: $SNAP/usr/share/gedit
+    /usr/share/xml/iso-codes:
+      symlink: $SNAP/gnome-platform/usr/share/xml/iso-codes
 
 plugs:
   gnome-3-28-1804:
