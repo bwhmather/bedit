@@ -6,27 +6,27 @@
 # Jorge González <jorgegonz@svn.gnome.org>, 2006, 2007, 2009, 2010, 2011.
 # 
 # 
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011-2015, 2017.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011-2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gedit.help.master\n"
-"POT-Creation-Date: 2017-09-17 01:26+0000\n"
-"PO-Revision-Date: 2017-12-12 13:39+0100\n"
+"POT-Creation-Date: 2019-02-09 09:14+0000\n"
+"PO-Revision-Date: 2019-02-15 13:24+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
-"Language: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 3.31.90\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
-"Daniel Mustieles <daniel.mustieles@gmail.com>, 2011-2017\n"
+"Daniel Mustieles <daniel.mustieles@gmail.com>, 2011-2019\n"
 "Jorge González <jorgegonz@svn.gnome.org>, 2006-2011\n"
 "María Majadas <maria.majadas@hispalinux.es>, 2005"
 
@@ -48,11 +48,11 @@ msgstr "Cambiar los colores del texto y del fondo en gedit."
 #: C/gedit-plugins-modelines.page:13 C/gedit-plugins-pyconsole.page:10
 #: C/gedit-plugins-quick-open.page:11 C/gedit-plugins-snippets.page:9
 #: C/gedit-plugins-sort.page:14 C/gedit-printing.page:10
-#: C/gedit-quickstart.page:12 C/gedit-replace.page:14
-#: C/gedit-save-file.page:13 C/gedit-search.page:12
-#: C/gedit-shortcut-keys.page:14 C/gedit-spellcheck.page:12
-#: C/gedit-syntax-highlighting.page:10 C/gedit-tabs-moving.page:13
-#: C/gedit-tabs.page:14 C/gedit-undo-recent-action.page:12 C/index.page:14
+#: C/gedit-quickstart.page:12 C/gedit-replace.page:14 C/gedit-save-file.page:13
+#: C/gedit-search.page:12 C/gedit-shortcut-keys.page:14
+#: C/gedit-spellcheck.page:12 C/gedit-syntax-highlighting.page:10
+#: C/gedit-tabs-moving.page:13 C/gedit-tabs.page:14
+#: C/gedit-undo-recent-action.page:12 C/index.page:14
 msgid "Jim Campbell"
 msgstr "Jim Campbell"
 
@@ -224,11 +224,6 @@ msgstr "Cerrar un archivo"
 
 #. (itstool) path: page/p
 #: C/gedit-close-file.page:20
-#| msgid ""
-#| "To close a file in <app>gedit</app>, select <guiseq><gui>File</gui> "
-#| "<gui>Close</gui></guiseq>. Alternately, you can click the small \"X\" "
-#| "that appears on the right-side of the file's tab, or press "
-#| "<keyseq><key>Ctrl</key> <key>W</key></keyseq>."
 msgid ""
 "To close a file in <app>gedit</app>, select <gui style=\"menuitem\">Close</"
 "gui>. Alternately, you can click the small \"X\" that appears on the right-"
@@ -467,10 +462,6 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gedit-full-screen.page:53
-#| msgid ""
-#| "You can also move your mouse cursor to the top of the screen, and wait "
-#| "for the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui> "
-#| "appears, select <gui>Leave Fullscreen</gui>."
 msgid ""
 "You can also move your mouse cursor to the top of the screen, and wait for "
 "the <gui>menu bar</gui> to appear. When the <gui>menu bar</gui> appears, "
@@ -488,17 +479,11 @@ msgstr "Usar el panel lateral de gedit como un examinador de archivos."
 
 #. (itstool) path: page/title
 #: C/gedit-open-files-from-sidepane.page:17
-#| msgid "View and open files from the side pane"
 msgid "View and open files from the side panel"
 msgstr "Ver y abrir archivos desde el panel lateral"
 
 #. (itstool) path: page/p
 #: C/gedit-open-files-from-sidepane.page:18
-#| msgid ""
-#| "The most common way to switch between files in <app>gedit</app> is by "
-#| "using the tabs at the top of the <app>gedit</app> window. In some cases, "
-#| "though, particularly when you are working with a large number of open "
-#| "files, you may find it easier to use the <app>side pane</app>."
 msgid ""
 "The most common way to switch between files in <app>gedit</app> is by using "
 "the tabs at the top of the <app>gedit</app> window. In some cases, though, "
@@ -512,9 +497,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-open-files-from-sidepane.page:25
-#| msgid ""
-#| "To activate the <app>side pane</app>, select <guiseq><gui>View</gui> "
-#| "<gui>Side Pane</gui></guiseq>, or just press the <key>F9</key> key."
 msgid ""
 "To activate the side panel, select <guiseq><gui>View</gui> <gui>Side Panel</"
 "gui></guiseq>, or just press the <key>F9</key> key."
@@ -524,9 +506,6 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: C/gedit-open-files-from-sidepane.page:31
-#| msgid ""
-#| "You can toggle the <gui>side pane</gui> open or closed by pressing "
-#| "<key>F9</key> at any time."
 msgid ""
 "You can toggle the side panel open or closed by pressing <key>F9</key> at "
 "any time."
@@ -537,17 +516,11 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/gedit-open-files-from-sidepane.page:39
 #: C/gedit-plugins-file-browser.page:33
-#| msgid "Opening files from the side pane"
 msgid "Opening files from the side panel"
 msgstr "Abrir archivos desde el panel lateral"
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:40
-#| msgid ""
-#| "To open files from the <app>side pane</app>, first open the <app>side "
-#| "pane</app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></"
-#| "guiseq>, then click on the <gui>file-browser</gui> icon at the bottom of "
-#| "the pane."
 msgid ""
 "To open files from the side panel, first open the side panel by selecting "
 "<guiseq><gui>View</gui> <gui>Side Panel</gui></guiseq> (or just press "
@@ -561,10 +534,6 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:48
-#| msgid ""
-#| "This will activate the <em>file-browser</em> mode of the <app>side panel</"
-#| "app>. You can then use the navigation buttons at the top of the pane to "
-#| "locate and open your desired files."
 msgid ""
 "This will activate the <em>File Browser</em> mode of the side panel. You can "
 "then use the navigation buttons at the top of the panel to locate and open "
@@ -576,17 +545,11 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/gedit-open-files-from-sidepane.page:56
-#| msgid "Using the side pane to switch between open files"
 msgid "Using the side panel to switch between open files"
 msgstr "Usar el panel lateral para cambiar entre archivos abiertos"
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:57
-#| msgid ""
-#| "Once you have several files open, you can use the side pane to switch "
-#| "between open files. To activate the file browser portion of the <app>side "
-#| "pane</app>, click on the <gui>file</gui> icon at the bottom of the "
-#| "<gui>side pane</gui>."
 msgid ""
 "Once you have several files open, you can use the side panel to switch "
 "between open files. To list open files, choose <gui>Documents</gui> from the "
@@ -598,9 +561,6 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gedit-open-files-from-sidepane.page:63
-#| msgid ""
-#| "Clicking on any file name in the <gui>side pane</gui> will open that file "
-#| "for editing."
 msgid ""
 "Clicking on any file name in the side panel will open that file for editing."
 msgstr ""
@@ -717,19 +677,17 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:32
-#| msgid "Click <gui>Open</gui>."
-msgid "In the title bar, click on <gui>Open</gui>."
-msgstr "En la barra de título pulse <gui>Abrir</gui>."
+#| msgid "In the title bar, click on <gui>Open</gui>."
+msgid "In the header bar, click on <gui>Open</gui>."
+msgstr "En la barra de cabecera pulse <gui>Abrir</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:33
-#| msgid "Click <gui>Open</gui>."
 msgid "Click <gui>Other Documents…</gui>."
 msgstr "Pulse en <gui>Otros documentos…</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:34
-#| msgid "Press <keyseq><key>Ctrl</key><key>J</key></keyseq>."
 msgid ""
 "Press <keyseq><key>Ctrl</key><key>L</key></keyseq> in the <gui>Open</gui> "
 "dialog."
@@ -749,9 +707,6 @@ msgstr "Buscar y seleccionar el archivo que quiere abrir."
 
 #. (itstool) path: item/p
 #: C/gedit-open-on-server.page:39
-#| msgid ""
-#| "Use the Character coding drop-down list to select the appropriate "
-#| "character coding."
 msgid ""
 "Use the Character Encoding drop-down list to select the appropriate "
 "character coding."
@@ -809,7 +764,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-open-recent.page:22
-#| msgid "Click <gui>Open</gui>."
 msgid "Click the <gui>Open</gui> button."
 msgstr "Pulse el botón <gui>Abrir</gui>."
 
@@ -1126,23 +1080,16 @@ msgstr ""
 
 #. (itstool) path: info/desc
 #: C/gedit-plugins-file-browser.page:18
-#| msgid "Use the side pane to browse and open files."
 msgid "Use the side panel to browse and open files."
 msgstr "Usar el panel lateral para examinar y abrir archivos."
 
 #. (itstool) path: page/title
 #: C/gedit-plugins-file-browser.page:21
-#| msgid "File browser pane"
 msgid "File browser panel"
 msgstr "Panel del examinador de archivos"
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-file-browser.page:23
-#| msgid ""
-#| "Depending on how you use <app>gedit</app>, you may find it helpful to use "
-#| "the <app>File Browser pane</app> plugin. This plugin embeds a <app>file "
-#| "browser</app> in the side pane, giving you easy access to your frequently-"
-#| "used files."
 msgid ""
 "Depending on how you use <app>gedit</app>, you may find it helpful to use "
 "the <app>File Browser pane</app> plugin. This plugin embeds a <app>file "
@@ -1156,10 +1103,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-file-browser.page:28
-#| msgid ""
-#| "You can enable the <gui>Side Pane</gui> by selecting <guiseq><gui style="
-#| "\"menu\">gedit</gui><gui style=\"menuitem\">Preferences</gui> "
-#| "<gui>Plugins</gui><gui>File Browser Pane</gui></guiseq>."
 msgid ""
 "You can enable the side panel by selecting <guiseq><gui style=\"menu"
 "\">gedit</gui><gui style=\"menuitem\">Preferences</gui> <gui>Plugins</"
@@ -1171,11 +1114,6 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-file-browser.page:34
-#| msgid ""
-#| "To open files from the <app>side pane</app>, first open the <app>side "
-#| "pane</app> by selecting <guiseq><gui>View</gui> <gui>Side Pane</gui></"
-#| "guiseq>, then click on the <gui>file-browser</gui> icon at the bottom of "
-#| "the pane."
 msgid ""
 "To open files from the side panel, first open the side panel by selecting "
 "<guiseq><gui>View</gui> <gui>Side Panel</gui></guiseq> (or just press "
@@ -1189,10 +1127,6 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/gedit-plugins-file-browser.page:42
-#| msgid ""
-#| "This will activate the <em>file-browser</em> mode of the <app>side panel</"
-#| "app>. You can then use the navigation buttons at the top of the pane to "
-#| "locate and open your desired files."
 msgid ""
 "This will activate the <em>File Browser</em> mode of the side panel. You can "
 "then use the navigation buttons at the top of the pane to locate and open "
@@ -1614,10 +1548,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gedit-plugins-pyconsole.page:25
-#| msgid ""
-#| "Once the Python console is enabled, you can open it by selecting "
-#| "<guiseq><gui>View</gui><gui>Bottom Pane</gui></guiseq>, or just press "
-#| "<keyseq><key>Shift</key><key>F9</key></keyseq>."
 msgid ""
 "Once the Python console is enabled, you can open it by selecting "
 "<guiseq><gui>View</gui><gui>Bottom Panel</gui></guiseq>."
@@ -1670,10 +1600,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-quick-open.page:33
-#| msgid ""
-#| "Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
-#| "key><key>Alt</key><key>O</key></keyseq>, or by selecting "
-#| "<guiseq><gui>File</gui><gui>Quick Open</gui></guiseq>."
 msgid ""
 "Open the <app>Quick Open</app> dialog box by pressing <keyseq><key>Ctrl</"
 "key><key>Alt</key><key>O</key></keyseq>, or by selecting <gui style="
@@ -2164,9 +2090,6 @@ msgstr "Arrastre y resalte las línea de texto que quiere."
 
 #. (itstool) path: item/p
 #: C/gedit-plugins-sort.page:58
-#| msgid ""
-#| "Select <guiseq><gui style=\"menu\">File</gui> <gui style=\"menuitem"
-#| "\">Print…</gui></guiseq>."
 msgid ""
 "Select <guiseq><gui style=\"menu\">Tools</gui> <gui style=\"menuitem\">Sort…"
 "</gui></guiseq>."
@@ -2653,17 +2576,12 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:55
-#| msgid ""
-#| "Enter the text that you wish to replace into the <gui>Search for:</gui> "
-#| "field."
 msgid "Enter the text that you wish to replace into the <gui>Find</gui> field."
 msgstr ""
 "Introduzca el texto que quiere reemplazar en el campo <gui>Buscar</gui>."
 
 #. (itstool) path: item/p
 #: C/gedit-replace.page:59
-#| msgid ""
-#| "Enter the new, replacement text into the <gui>Replace with:</gui> field."
 msgid "Enter the new, replacement text into the <gui>Replace with</gui> field."
 msgstr ""
 "Introduzca el nuevo texto de reemplazo en el campo <gui>Reemplazar con</gui>."
@@ -3027,11 +2945,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gedit-search.page:103
-#| msgid ""
-#| "The text that you've searched for will remain highlighted by gedit, even "
-#| "after you have completed your search. To remove the highlight, click "
-#| "<guiseq><gui>Search</gui><gui>Clear Highlight</gui></guiseq>, or press "
-#| "<keyseq><key>Ctrl</key><key>Shift</key><key>K</key></keyseq>."
 msgid ""
 "The text that you've searched for will remain highlighted by gedit, even "
 "after you have completed your search. To remove the highlight, click <gui "
@@ -3537,7 +3450,6 @@ msgstr "Teclas rápidas para mostrar y ocultar paneles"
 
 #. (itstool) path: td/p
 #: C/gedit-shortcut-keys.page:267
-#| msgid "Show / hide the side pane"
 msgid "Show / hide the side panel"
 msgstr "Mostrar/ocultar el panel lateral"
 
