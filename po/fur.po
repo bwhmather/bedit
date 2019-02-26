@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gedit master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gedit/issues\n"
-"POT-Creation-Date: 2018-11-07 15:00+0000\n"
-"PO-Revision-Date: 2018-12-26 16:56+0100\n"
+"POT-Creation-Date: 2019-02-21 12:24+0000\n"
+"PO-Revision-Date: 2019-02-26 21:33+0100\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <f.t.public@gmail.com>\n"
 "Language: fur\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.gedit.appdata.xml.in:7
 msgid "gedit"
@@ -615,7 +615,7 @@ msgstr "[FILE…] [+LINIE[:COLONE]]"
 msgid "There was an error displaying the help."
 msgstr "Al è saltât fûr un erôr tal mostrâ il jutori."
 
-#: gedit/gedit-app.c:967
+#: gedit/gedit-app.c:964
 #, c-format
 msgid "%s: invalid encoding."
 msgstr "%s: codifiche no valide."
@@ -631,7 +631,7 @@ msgstr "Siere _cence salvâ"
 #: gedit/gedit-progress-info-bar.c:49
 #: gedit/resources/ui/gedit-encodings-dialog.ui:44
 #: gedit/resources/ui/gedit-highlight-mode-dialog.ui:31
-#: plugins/filebrowser/gedit-file-browser-utils.c:170
+#: plugins/filebrowser/gedit-file-browser-utils.c:213
 #: plugins/quickopen/quickopen/popup.py:45
 #: plugins/snippets/snippets/manager.py:789
 #: plugins/snippets/snippets/manager.py:874
@@ -642,7 +642,7 @@ msgid "_Cancel"
 msgstr "_Anule"
 
 #: gedit/gedit-close-confirmation-dialog.c:306 gedit/resources/gtk/menus.ui:37
-#: gedit/resources/gtk/menus-traditional.ui:30
+#: gedit/resources/gtk/menus-traditional.ui:33
 msgid "_Save As…"
 msgstr "_Salve come…"
 
@@ -1036,7 +1036,7 @@ msgstr "Sigûrs di ristabilî lis preferencis de codifiche dai caratars?"
 #. Reset button
 #: gedit/gedit-encodings-dialog.c:195 gedit/gedit-encodings-dialog.c:820
 msgid "_Reset"
-msgstr "_Torne impueste"
+msgstr "_Torne stabilìs"
 
 #: gedit/gedit-encodings-dialog.c:731
 msgid "Add"
@@ -1130,6 +1130,7 @@ msgstr ""
 "justis e torne prove."
 
 #: gedit/gedit-io-error-info-bar.c:260
+#, c-format
 msgid ""
 "Hostname was invalid. Please check that you typed the location correctly and "
 "try again."
@@ -1472,7 +1473,7 @@ msgstr "Pagjine %N di %Q"
 msgid "Rendering page %d of %d…"
 msgstr "Daûr a prontâ la visualizazion de pagjine %d di %d…"
 
-#: gedit/gedit-print-preview.c:653
+#: gedit/gedit-print-preview.c:651
 #, c-format
 msgid "Page %d of %d"
 msgstr "Pagjine %d di %d"
@@ -1567,39 +1568,39 @@ msgstr "Gjenar MIME:"
 msgid "Encoding:"
 msgstr "Codifiche:"
 
-#: gedit/gedit-utils.c:841
+#: gedit/gedit-utils.c:823
 msgid "Please check your installation."
 msgstr "Controle la tô instalazion."
 
-#: gedit/gedit-utils.c:902
+#: gedit/gedit-utils.c:884
 #, c-format
 msgid "Unable to open UI file %s. Error: %s"
 msgstr "Impussibil vierzi il file di IU %s. Erôr: %s"
 
-#: gedit/gedit-utils.c:921
+#: gedit/gedit-utils.c:903
 #, c-format
 msgid "Unable to find the object “%s” inside file %s."
 msgstr "Impussibil cjatâ l'ogjet “%s” dentri dal file %s."
 
 #. Translators: '/ on <remote-share>'
-#: gedit/gedit-utils.c:1159
+#: gedit/gedit-utils.c:1141
 #, c-format
 msgid "/ on %s"
 msgstr "/ su %s"
 
-#: gedit/gedit-utils.c:1463
+#: gedit/gedit-utils.c:1445
 msgid "Unix/Linux"
 msgstr "Unix/Linux"
 
-#: gedit/gedit-utils.c:1465
+#: gedit/gedit-utils.c:1447
 msgid "Mac OS Classic"
 msgstr "Mac OS Classic"
 
-#: gedit/gedit-utils.c:1467
+#: gedit/gedit-utils.c:1449
 msgid "Windows"
 msgstr "Windows"
 
-#: gedit/gedit-view.c:468 gedit/resources/ui/gedit-preferences-dialog.ui:41
+#: gedit/gedit-view.c:481 gedit/resources/ui/gedit-preferences-dialog.ui:41
 msgid "_Display line numbers"
 msgstr "_Mostre numars di rie"
 
@@ -1632,11 +1633,11 @@ msgstr "Corispuindince nome peraulis _intieris"
 msgid "_Match Case"
 msgstr "Corispuindince _maiusculis"
 
-#: gedit/gedit-view-frame.c:1032
+#: gedit/gedit-view-frame.c:1029
 msgid "String you want to search for"
 msgstr "Stringhe di cirî"
 
-#: gedit/gedit-view-frame.c:1044
+#: gedit/gedit-view-frame.c:1041
 msgid "Line you want to move the cursor to"
 msgstr "Rie dulà movi il cursôr"
 
@@ -1669,11 +1670,11 @@ msgstr "Largjece schede: %u"
 msgid "There are unsaved documents"
 msgstr "A 'ndi son documents no salvâts"
 
-#: gedit/gedit-window.c:2444
+#: gedit/gedit-window.c:2442
 msgid "Change side panel page"
 msgstr "Cambie la pagjine dal panel laterâl"
 
-#: gedit/gedit-window.c:2464 gedit/resources/ui/gedit-window.ui:19
+#: gedit/gedit-window.c:2462 gedit/resources/ui/gedit-window.ui:19
 msgid "Documents"
 msgstr "Documents"
 
@@ -1695,7 +1696,7 @@ msgstr "Sposte intun _gnûf grup di schedis"
 
 #: gedit/resources/gtk/menus-common.ui:27
 #: gedit/resources/gtk/menus-common.ui:163
-#: gedit/resources/gtk/menus-traditional.ui:131
+#: gedit/resources/gtk/menus-traditional.ui:134
 #: gedit/resources/ui/gedit-replace-dialog.ui:23
 #: plugins/time/resources/ui/gedit-time-setup-dialog.ui:21
 msgid "_Close"
@@ -1756,7 +1757,7 @@ msgid "_Print…"
 msgstr "_Stampe…"
 
 #: gedit/resources/gtk/menus-common.ui:168
-#: gedit/resources/gtk/menus-traditional.ui:135
+#: gedit/resources/gtk/menus-traditional.ui:138
 msgid "_Quit"
 msgstr "_Jes"
 
@@ -1800,21 +1801,22 @@ msgid "Select _All"
 msgstr "Selezione _Dut"
 
 #: gedit/resources/gtk/menus-common.ui:230 gedit/resources/gtk/menus.ui:112
-#: gedit/resources/gtk/menus-traditional.ui:105
+#: gedit/resources/gtk/menus-traditional.ui:108
 msgid "_Preferences"
 msgstr "_Preferencis"
 
 #: gedit/resources/gtk/menus-common.ui:237 gedit/resources/gtk/menus.ui:72
+#: gedit/resources/gtk/menus-traditional.ui:68
 msgid "_View"
 msgstr "_Visualize"
 
 #: gedit/resources/gtk/menus-common.ui:241 gedit/resources/gtk/menus.ui:76
-#: gedit/resources/gtk/menus-traditional.ui:69
+#: gedit/resources/gtk/menus-traditional.ui:72
 msgid "Side _Panel"
 msgstr "_Panel laterâl"
 
 #: gedit/resources/gtk/menus-common.ui:246 gedit/resources/gtk/menus.ui:80
-#: gedit/resources/gtk/menus-traditional.ui:73
+#: gedit/resources/gtk/menus-traditional.ui:76
 msgid "_Bottom Panel"
 msgstr "Panel _inferiôr"
 
@@ -1824,7 +1826,7 @@ msgid "_Fullscreen"
 msgstr "_A plen visôr"
 
 #: gedit/resources/gtk/menus-common.ui:263 gedit/resources/gtk/menus.ui:91
-#: gedit/resources/gtk/menus-traditional.ui:84
+#: gedit/resources/gtk/menus-traditional.ui:87
 msgid "_Highlight Mode…"
 msgstr "Modalitât _evidenziazion…"
 
@@ -1833,7 +1835,7 @@ msgid "_Search"
 msgstr "_Cîr"
 
 #: gedit/resources/gtk/menus-common.ui:273 gedit/resources/gtk/menus.ui:54
-#: gedit/resources/gtk/menus-traditional.ui:47
+#: gedit/resources/gtk/menus-traditional.ui:50
 msgid "_Find…"
 msgstr "_Cjate…"
 
@@ -1850,7 +1852,7 @@ msgid "Find and _Replace…"
 msgstr "Cjate e _sostituìs…"
 
 #: gedit/resources/gtk/menus-common.ui:299 gedit/resources/gtk/menus.ui:62
-#: gedit/resources/gtk/menus-traditional.ui:55
+#: gedit/resources/gtk/menus-traditional.ui:58
 msgid "_Clear Highlight"
 msgstr "Ne_te evidenziazion"
 
@@ -1859,6 +1861,7 @@ msgid "Go to _Line…"
 msgstr "Va ae _rie…"
 
 #: gedit/resources/gtk/menus-common.ui:314 gedit/resources/gtk/menus.ui:97
+#: gedit/resources/gtk/menus-traditional.ui:93
 msgid "_Tools"
 msgstr "_Struments"
 
@@ -1871,7 +1874,7 @@ msgid "_Save All"
 msgstr "Salve Duc_j"
 
 #: gedit/resources/gtk/menus-common.ui:338
-#: gedit/resources/gtk/menus-traditional.ui:127
+#: gedit/resources/gtk/menus-traditional.ui:130
 msgid "_Close All"
 msgstr "_Siere ducj"
 
@@ -1900,43 +1903,34 @@ msgid "_Move To New Window"
 msgstr "_Sposte intun gnûf barcon"
 
 #: gedit/resources/gtk/menus-common.ui:383
-#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:120
-#: gedit/resources/gtk/menus-traditional.ui:116
+#: gedit/resources/gtk/menus-common.ui:387 gedit/resources/gtk/menus.ui:123
+#: gedit/resources/gtk/menus-traditional.ui:119
 #: plugins/spell/gedit-spell-plugin.c:246
 #: plugins/time/resources/ui/gedit-time-dialog.ui:133
 msgid "_Help"
 msgstr "_Jutori"
 
-#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:124
-#: gedit/resources/gtk/menus-traditional.ui:120
+#: gedit/resources/gtk/menus-common.ui:394 gedit/resources/gtk/menus.ui:127
+#: gedit/resources/gtk/menus-traditional.ui:123
 msgid "_About Text Editor"
 msgstr "_Informazions su Editôr di test"
 
-#: gedit/resources/gtk/menus.ui:41 gedit/resources/gtk/menus-traditional.ui:34
+#: gedit/resources/gtk/menus.ui:41 gedit/resources/gtk/menus-traditional.ui:37
 msgid "Save _All"
 msgstr "Salve Duc_j"
 
-#: gedit/resources/gtk/menus.ui:58 gedit/resources/gtk/menus-traditional.ui:51
+#: gedit/resources/gtk/menus.ui:58 gedit/resources/gtk/menus-traditional.ui:54
 msgid "_Find and Replace…"
 msgstr "_Cjate e sostituìs…"
 
-#: gedit/resources/gtk/menus.ui:66 gedit/resources/gtk/menus-traditional.ui:59
+#: gedit/resources/gtk/menus.ui:66 gedit/resources/gtk/menus-traditional.ui:62
 msgid "_Go to Line…"
 msgstr "Va a_e rie…"
 
-#: gedit/resources/gtk/menus.ui:116
-#: gedit/resources/gtk/menus-traditional.ui:112
+#: gedit/resources/gtk/menus.ui:119
+#: gedit/resources/gtk/menus-traditional.ui:115
 msgid "_Keyboard Shortcuts"
 msgstr "_Scurtis di tastiere"
-
-#: gedit/resources/gtk/menus-traditional.ui:65
-#: gedit/resources/ui/gedit-preferences-dialog.ui:285
-msgid "View"
-msgstr "Viodude"
-
-#: gedit/resources/gtk/menus-traditional.ui:90
-msgid "Tools"
-msgstr "Struments"
 
 #: gedit/resources/ui/gedit-encodings-dialog.ui:41
 msgid "Character Encodings"
@@ -2035,6 +2029,10 @@ msgstr "Evidenzie _rie curint"
 #: gedit/resources/ui/gedit-preferences-dialog.ui:252
 msgid "Highlight matching _brackets"
 msgstr "Evidenzie _parentesis corispuindintis"
+
+#: gedit/resources/ui/gedit-preferences-dialog.ui:285
+msgid "View"
+msgstr "Viodude"
 
 #: gedit/resources/ui/gedit-preferences-dialog.ui:307
 msgid "Tab Stops"
@@ -2930,11 +2928,11 @@ msgstr "Acès facil ai file dal panel laterâl"
 msgid "system-file-manager"
 msgstr "system-file-manager"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:205
+#: plugins/filebrowser/gedit-file-bookmarks-store.c:200
 msgid "Home"
 msgstr "Cjase"
 
-#: plugins/filebrowser/gedit-file-bookmarks-store.c:231
+#: plugins/filebrowser/gedit-file-bookmarks-store.c:233
 msgid "File System"
 msgstr "File System"
 
@@ -3004,11 +3002,11 @@ msgstr "Sigûrs di eliminâ par simpri i file selezionâts?"
 msgid "If you delete an item, it is permanently lost."
 msgstr "Se tu eliminis un element tu lu pierdarâs par simpri."
 
-#: plugins/filebrowser/gedit-file-browser-store.c:1794
+#: plugins/filebrowser/gedit-file-browser-store.c:1703
 msgid "(Empty)"
 msgstr "(Vueit)"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3515
+#: plugins/filebrowser/gedit-file-browser-store.c:3327
 msgid ""
 "The renamed file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3017,11 +3015,11 @@ msgstr ""
 "justâ lis impostazions dal filtri par rindilu visibil"
 
 #. Translators: This is the default name of new files created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3772
+#: plugins/filebrowser/gedit-file-browser-store.c:3578
 msgid "Untitled File"
 msgstr "File cence titul"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3800
+#: plugins/filebrowser/gedit-file-browser-store.c:3606
 msgid ""
 "The new file is currently filtered out. You need to adjust your filter "
 "settings to make the file visible"
@@ -3030,11 +3028,11 @@ msgstr ""
 "impostazions dal filtri par rindilu visibil"
 
 #. Translators: This is the default name of new directories created by the file browser pane.
-#: plugins/filebrowser/gedit-file-browser-store.c:3831
+#: plugins/filebrowser/gedit-file-browser-store.c:3635
 msgid "Untitled Folder"
 msgstr "Cartele cence titul"
 
-#: plugins/filebrowser/gedit-file-browser-store.c:3856
+#: plugins/filebrowser/gedit-file-browser-store.c:3658
 msgid ""
 "The new directory is currently filtered out. You need to adjust your filter "
 "settings to make the directory visible"
@@ -3042,26 +3040,26 @@ msgstr ""
 "La gnove cartele e je stade taiade fûr dal filtri. Tu scugnis justâ lis "
 "impostazions dal filtri par rindile visibil"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:754
+#: plugins/filebrowser/gedit-file-browser-widget.c:757
 msgid "Bookmarks"
 msgstr "Segnelibris"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:1995
+#: plugins/filebrowser/gedit-file-browser-widget.c:1957
 #, c-format
 msgid "No mount object for mounted volume: %s"
 msgstr "Nissun ogjet montât pal volum: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2072
+#: plugins/filebrowser/gedit-file-browser-widget.c:2026
 #, c-format
 msgid "Could not open media: %s"
 msgstr "Impussibil vierzi il supuart: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2119
+#: plugins/filebrowser/gedit-file-browser-widget.c:2069
 #, c-format
 msgid "Could not mount volume: %s"
 msgstr "Impussibil montâ il volum: %s"
 
-#: plugins/filebrowser/gedit-file-browser-widget.c:2769
+#: plugins/filebrowser/gedit-file-browser-widget.c:2581
 #, c-format
 msgid "Error when loading “%s”: No such directory"
 msgstr "Erôr tal cjariâ “%s”: cartele inesistent"
@@ -3114,7 +3112,7 @@ msgstr "Indiche se abilitâ il ripristinament des posizions rimotis."
 
 #: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:25
 msgid "Set Location to First Document"
-msgstr "Impueste posizion al prin document"
+msgstr "Stabilìs la posizion al prin document"
 
 #: plugins/filebrowser/org.gnome.gedit.plugins.filebrowser.gschema.xml.in:26
 msgid ""
@@ -3210,11 +3208,11 @@ msgstr "Mostre _Binaris"
 msgid "Match Filename"
 msgstr "Corispuindince non dal file"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:187
+#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:183
 msgid "History"
 msgstr "Cronologjie"
 
-#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:188
+#: plugins/filebrowser/resources/ui/gedit-file-browser-widget.ui:184
 msgid "Open history menu"
 msgstr "Vierç il menù de cronologjie"
 
@@ -3297,7 +3295,6 @@ msgstr "Vierç subite i file"
 #. TRANSLATORS: Do NOT translate or transliterate this text!
 #. This is an icon file name.
 #: plugins/quickopen/quickopen.plugin.desktop.in:10
-#| msgid "Document"
 msgid "document-open"
 msgstr "document-open"
 
@@ -3617,8 +3614,6 @@ msgstr "Controle la ortografie dal document atuâl."
 #. TRANSLATORS: Do NOT translate or transliterate this text!
 #. This is an icon file name.
 #: plugins/spell/spell.plugin.desktop.in:9
-#| msgctxt "shortcut window"
-#| msgid "Check spelling"
 msgid "tools-check-spelling"
 msgstr "tools-check-spelling"
 
@@ -3707,6 +3702,9 @@ msgstr "Inserìs date e ore"
 #: plugins/time/time.plugin.desktop.in:6
 msgid "Inserts current date and time at the cursor position."
 msgstr "Al inserìs date e ore atuâl te posizion dal cursôr."
+
+#~ msgid "Tools"
+#~ msgstr "Struments"
 
 #~ msgid "gedit Text Editor"
 #~ msgstr "Editôr di test gedit"
