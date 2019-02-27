@@ -750,7 +750,7 @@ gedit_open_document_selector_dispose (GObject *object)
 
 	g_clear_pointer (&selector->name_font, pango_font_description_free);
 	g_clear_pointer (&selector->path_font, pango_font_description_free);
-	g_free (selector->match_markup_color);
+	g_clear_pointer (&selector->match_markup_color, g_free);
 
 	if (selector->recent_items)
 	{
