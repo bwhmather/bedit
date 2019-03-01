@@ -1,18 +1,6 @@
 name: gedit
 version: git
-summary: Edit text files
-description: |
-  gedit is the official text editor of the GNOME desktop environment.
-  While aiming at simplicity and ease of use, gedit is a powerful general
-  purpose text editor.
-
-  Whether you are writing the next bestseller, programming an innovative
-  application, or simply taking some quick notes, gedit will be a reliable
-  tool to accomplish your task.
-
-  Its flexible plugin system allows you to tailor the application to your
-  needs and adapt it to your workflow.
-
+adopt-info: gedit
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 base: core18
@@ -68,7 +56,7 @@ apps:
       - removable-media
       - unity7
       - wayland
-    desktop: usr/share/applications/org.gnome.gedit.desktop
+    common-id: org.gnome.gedit.desktop
     environment:
       GSETTINGS_SCHEMA_DIR: $SNAP/share/glib-2.0/schemas
       LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/$SNAPCRAFT_ARCH_TRIPLET/gedit
@@ -116,6 +104,7 @@ parts:
     after: [desktop-gnome-platform, gtksourceview]
     source: .
     source-type: git
+    parse-info: [usr/share/metainfo/org.gnome.gedit.appdata.xml]
     plugin: meson
     meson-parameters:
       - --prefix=/usr
